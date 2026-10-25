@@ -1066,3 +1066,67 @@ body:has(.home-v5) {
 .home-v5 #home-about p {
   max-width: 72ch;
 }
+
+/* ---------- loading orbs (feat/loading-orbs) ----------
+   Globe zone + lazy card-image placeholders. Both reuse the existing
+   `.meridian-spinner` (src/styles.css: its reduced-motion media query
+   already kills the spin, so under prefers-reduced-motion these render
+   as a static ring — no animation is declared on the overlays
+   themselves, and the opacity transition is deliberately kept so the
+   transitionend unmount still fires). Overlays are aria-hidden and
+   pointer-events:none: no focus stops, no blocked card clicks, no
+   interference with globe drag/keyboard. No layout shift: the globe
+   overlay covers the mount's existing aspect-ratio box, and the card
+   wrapper carries the image's own layout class. */
+.home-v5 .hv5-globe-orb {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  /* Opaque: the pre-texture globe renders black/faceted, and no frame
+     of it may show through. Matches the hero's page gradient. */
+  background: linear-gradient(180deg, var(--atlas-bg-1), var(--atlas-bg-2));
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+.home-v5 .hv5-globe-orb-fading {
+  opacity: 0;
+}
+.home-v5 .hv5-globe-orb .hv5-orb-spinner {
+  width: 64px;
+  height: 64px;
+  border-width: 4px;
+}
+.home-v5 .hv5-lazy-img {
+  position: relative;
+  overflow: hidden;
+}
+.home-v5 .hv5-lazy-img > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.home-v5 .hv5-lazy-orb {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+.home-v5 .hv5-lazy-orb-fading {
+  opacity: 0;
+}
+.home-v5 .hv5-orb-spinner {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid var(--hv5-line);
+  border-top-color: var(--hv5-brown-deep);
+}

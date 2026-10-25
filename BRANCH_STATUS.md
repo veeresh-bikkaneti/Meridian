@@ -1,109 +1,123 @@
-# BRANCH_STATUS — feat/crash-report-verdicts
+# BRANCH_STATUS — feat/loading-orbs
 
-**Branch:** `feat/crash-report-verdicts`
-**Base:** `main` at `d26b90a` (rebased 2026-10-25 after PR #243 merged;
-originally built on `28c5fea`, the PR #245 merge)
-**State: READY — the independent Reality Checker's round-1 blocker
-(bgTerminal inferred from lastMilestone when a trail records no
-visibility entry) was fixed, and a fresh independent re-review returned
-READY with no blockers. After the rebase onto `d26b90a` all gates were
-re-run by the parent (logs/rebase/) with identical results (below).
-Liz authorized push + PR on 2026-10-25; the parent replays the commits
-via the GitHub API helper. Not merged, not deployed.**
-It supersedes the previous contents of this file (the
-`fix/chunk-load-recovery` branch record, whose history lives on PR #245).
+**Branch:** `feat/loading-orbs`
+**Base:** origin/main @ `ddb6d28` (PR #242 merged 2026-10-25 11:22 CDT)
+**State: IMPLEMENTED, gates running — NOT pushed. Push is the Chair's call after panel review.**
+**Remote branch:** does NOT exist yet (verified at build time).
 
-## Scope (exactly this — Slice 1 of the crash-report verdicts design)
+This branch replaces the stale record that used to live here (old
+card-redesign branch, base `28c5fea`, PR #242 OPEN). That record is
+superseded: #242 is merged, and this branch starts from its merge.
 
-Design: `meridian-crash-report-verdicts-design-2026-10-25.md` §6 Slice 1
-(A1+A2+A3). Reader wording: Liz-approved samples 2026-10-25
-(✅ IGNORE — No action needed / 🔧 IGNORE — Fixed itself (confirmed) /
-🚨 FIX — Developer action needed / ❔ WAIT — Can't tell from this report).
-Consensus Manifest: `~/workspace/meridian-crash-verdicts/CONSENSUS-MANIFEST-slice1.md`
-(signed, execution token issued; Councilor C's CHALLENGE resolved by the
-manifest's binding constraints, none waived).
+## Scope (exactly this — owner-decided, no expansion)
 
-1. **Client stamps** (`src/lib/observability.ts`, in place): a pure
-   classifier `classifyCrashVerdict(facts) → { verdict, whyKey }` plus
-   evidence stamps — `bgTerminal` / `buildReplaced` / `trailStuck`
-   (booleans, `suspected_crash` only, derived at `init()` from the stored
-   trail before any payload trimming), `storageOk` (boolean, every event,
-   at the single `emit()` choke point) and `lcV` (classifier version
-   string, every event). Crash-class events also carry the client's
-   provisional `verdict` / `whyKey`.
-2. **Worker verdicts** (`workers/crash-report/src/index.ts`, in place):
-   the mirrored classifier re-derives the verdict from the stamped facts
-   at ingest (a client-stamped verdict is never rendered), and
-   `buildAlert` renders verdict line first (Discord), verdict in the
-   email subject, verdict + why in the email body, `action:` line on
-   developer-needed only, existing fields kept below with "last step"
-   wording and plain-language last-step values.
-3. **Tests**: classifier table on both sides (trail shapes A–F +
-   precedence + fail-closed missing fields + never `auto_fixed` in
-   Slice 1), stamp tests through the real `createObservability`
-   init/emit path, cap-survival, worker rendering/subject/banned-word
-   tests, and a Playwright journey in
-   `tests/e2e/crash-classification.mobile.spec.ts` (backgrounded kill →
-   next boot → emitted `suspected_crash` carries the stamps).
+- **1. Globe zone loading orb** (`src/components/home-globe.tsx` +
+  `src/components/home-v5.css`): a HomeGlobe-INTERNAL placeholder. New
+  `textured` state (default false), plumbed via an `onTextured` callback
+  into `initGlobe` so `TextureLoader`'s onLoad fires it (existing
+  colorSpace/anisotropy work kept). The orb overlay renders INSIDE the
+  mount div while the texture is pending, then crossfades out (CSS
+  opacity transition, unmounted on a single transitionend handler — no
+  timer chains). The overlay is aria-hidden, pointer-events:none,
+  absolutely positioned + centered, and covers the mount opaquely (hero
+  gradient) so no black/faceted pre-texture frame shows through. The
+  mount keeps its aspect-ratio box: no CLS.
+- **2. Lazy card-image loading orbs** (`src/components/game-app.tsx`
+  home page ONLY + new shared `src/components/lazy-home-image.tsx`):
+  one wrapper rendering the same reused `.meridian-spinner` overlay
+  centered over the image until onLoad fires, then the same
+  fade-on-transitionend pattern. Used at exactly the six verified home
+  lazy sites, each img's classes/src/alt/aria preserved exactly:
+  GeoDetective `.hv5-pic` (desertRuinsUrl), Cold Trail `.hv5-pic`
+  (patagoniaUrl), Review `.hv5-art` (archiveToolsUrl), journal teaser
+  `.hv5-art` (journalTreeUrl), grown-ups `.hv5-art`
+  (binocularsHatUrl), journal entry `.hv5-entry-art` figures
+  (`journalImageUrl(note.image)`, alt kept as `note.imageAlt`). The
+  wrapper carries the image's layout class, so card layout is
+  unchanged. Cached images: complete && naturalWidth > 0 at mount
+  skips the orb outright (no polling). On error the orb clears and
+  current browser behavior applies — no error-fallback UI invented
+  (that design ruling is still owed by the owner).
+- **Visual correction applied:** there is NO dedicated "thinking orb"
+  component in this codebase (BootSplash is text-only). Both orbs reuse
+  the existing `.meridian-spinner` (border spinner, 900ms linear
+  infinite; reduced-motion query kills the spin → static ring). No new
+  multi-dot orb design was invented, no new image assets.
 
-Not in scope (later slices, not built here): no new event type
-(`recovery_outcome` stays rejected), no recovery marker, no
-`afterRecovery` stamp, no digest regrouping, no alerting-policy change,
-no signature counters, no KV TTL, no build-currency fetch. `auto_fixed`
-is structurally unreachable in Slice 1 — Slice 1 renders three verdicts.
+## Explicitly NOT touched
 
-Known limitations carried from the design (§3.5): a fully storage-blocked
-session emits no `suspected_crash` at all, so `storageOk` cannot size
-that blind spot (F4); the worker's re-derivation is a consistency check
-over client-stamped facts, not independent verification (F9); verdict
-mismatch surfacing is Slice 3, not Slice 1.
+- The globe-zone `Suspense fallback={null}` in game-app.tsx (a fallback
+  swap cannot cover the post-mount waterfall — forbidden, left alone).
+- No eager three.js load; the 390px IntersectionObserver gate
+  (rootMargin 200px) is unchanged — the placeholder shows when the zone
+  is reached, not on first paint below the fold (expected, not a defect).
+- Edition maps (Loading pill + Try-Again dialog + MapLoadingFallback),
+  stories/storyteller, BootSplash, first-load/update orbs, and every
+  other wait. No orbs anywhere else.
+- Fallback paths unchanged: reduced-motion / Save-Data / low-memory /
+  WebGL failure / import failure / texture onError all land on the
+  existing static disc, with NO orb (the disc IS the content).
+  Dispose/teardown leak-free: `disposed` flag guards all post-unmount
+  setState.
+- Reduced motion (standing law): placeholders are STATIC — overlays
+  declare no animation of their own, and the spinner's existing
+  reduced-motion media query kills the spin. The opacity transition is
+  deliberately kept under reduced motion so the transitionend unmount
+  still fires (a fade is not spinning motion, and killing the
+  transition would strand the overlay in the DOM).
+- No changes to #242's merged code beyond placeholder wiring. No
+  refactoring of working code.
 
-## Verification (local, this branch)
+## Tests
 
-- Baseline (pristine main @ 28c5fea, same environment, logs in
-  `~/workspace/meridian-crash-verdicts/logs/baseline/`): tsc clean;
-  npm test scripts 832 pass / 0 fail, src 1539/1539; worker 42/42;
-  lint-cards GATE PASSED; build:pages green; crash E2E specs 7 passed /
-  1 failed — `crash-watchdog.spec.ts` "stale build" spec fails on
-  pristine main too (pre-existing, not a Slice 1 regression).
-- Branch numbers (logs in `~/workspace/meridian-crash-verdicts/logs/branch/`):
-  tsc clean; npm test scripts 832 pass / 0 fail (identical to baseline),
-  src 1563/1563 (1539 baseline + 24 new Slice 1 tests); worker 69/69
-  (42 baseline + 27 new); lint-cards GATE PASSED; build:pages green —
-  the built entry bundle contains the `bgTerminal` stamp and the
-  classifier why-keys. Playwright (built artifact, crash surfaces):
-  11 passed / 2 failed. Both failures are baseline-matched: the
-  crash-watchdog "stale build" spec fails on pristine main in the same
-  environment, and the crash-classification visibility spec fails solo
-  on a pristine-main worktree build with the identical signature
-  (`storyteller_ready` races past `backgrounded` — it passed in the
-  first baseline batch run, failed in the RED run on the baseline
-  artifact, and fails on pristine main solo; pre-existing timing race,
-  untouched code path). The 2 new Slice 1 stamp journeys pass.
-- Fix round (Reality Checker blocker, logs in
-  `~/workspace/meridian-crash-verdicts/logs/fixround/`): `bgTerminal` is
-  now OMITTED when the stored trail records no visibility transition
-  (`terminalBackgrounded` returns undefined; `init()` stamps
-  conditionally) — never inferred from `lastMilestone`; the verdict
-  fails closed to `insufficient_evidence/missing_fields`. New unit stamp
-  test + a third Playwright journey pin it. Re-run: tsc clean; npm test
-  scripts 832 pass / 0 fail, src 1564/1564; worker 69/69; lint-cards
-  GATE PASSED; build:pages green; Playwright 12 passed / 2 failed —
-  the same two baseline-matched failures, all 3 Slice 1 journeys pass.
+- New `src/components/home-loading-orbs.test.ts` (16 tests, colocated
+  per repo convention). No React-render/jsdom harness exists in this
+  repo, so — following the `game-app-lazy-boundary.test.ts` precedent —
+  the wiring is pinned by reading the source: orb shows initially, orb
+  clears on load, orb clears on error, cached-complete shows no
+  lingering orb, reduced-motion static variant, globe textured-state
+  transition plumbing (three.js itself is NOT faked in unit tests).
+- Globe visual transition coverage is owed by the test seat's E2E
+  specs against the built app (stated explicitly, not faked here).
 
-- Rebase re-run (parent, after rebase onto main `d26b90a` — PR #243
-  merged by another team; the only rebase conflict was this file,
-  resolved by keeping this branch's record; logs in
-  `~/workspace/meridian-crash-verdicts/logs/rebase/`): tsc clean;
-  npm test scripts 832 pass / 0 fail, src 1564/1564; worker 69/69;
-  lint-cards GATE PASSED; build:pages green; Playwright crash surfaces
-  12 passed / 2 failed — the same two baseline-matched failures
-  (crash-watchdog "stale build"; crash-classification visibility race),
-  all 3 Slice 1 journeys pass.
+## Gates (all green, 2026-10-25)
 
-## Push status
+- `npx tsc --noEmit`: CLEAN, exit 0.
+- `npm test`: GREEN, exit 0. Scripts suite: 841 tests (832 pass,
+  9 skipped, 0 fail). Src suite: 1555 tests, 1555 pass, 0 fail
+  (includes the 16 new home-loading-orbs tests). Combined: 2396
+  tests, 2387 pass, 9 skipped, 0 fail.
+- `node scripts/lint-cards.mjs`: GATE PASSED (chunk audit 124690
+  records: 8802 with hook, 115888 hook-missing, 0 legacy, 0
+  curated-note violations).
+- `npm run build:pages`: GREEN, exit 0. Verified:
+  dist/client/build-meta.json buildId == `ddb6d28` == HEAD short hash,
+  and dist/client/sw.js VERSION == `meridian-ddb6d28` (matches).
 
-Push + PR authorized by Liz 2026-10-25. The parent replays the local
-commits onto the remote branch via the GitHub API helper (SHAs may
-differ from the local ones; content, messages and authorship are the
-same). Not merged, not deployed.
+## Commits
+
+- (commit lands below after gates pass; message:
+  "feat(home): loading orbs for globe zone + lazy card images")
+
+## Pending
+
+- Panel review of this branch (Chair-arranged).
+- Push decision: Chair pushes after panel review (implementer does NOT
+  push).
+- E2E visual confirmation of the globe orb transition (test seat).
+- Owner green-light / Chitti review path for this branch (per standing
+  Meridian flow), then the owner's merge call.
+
+## Known limits (do not paper over)
+
+- The lazy-chunk window BEFORE HomeGlobe mounts still shows Suspense
+  fallback={null}: the orb covers the post-mount texture waterfall
+  only, not the chunk download.
+- Every home lazy image found in code is covered (six sites, verified
+  by grep before editing); no home lazy image was found missing from
+  the brief's list, and no listed site turned out not to be a home lazy
+  image.
+- Card orb overlays are transparent (spinner only, no opaque block):
+  the opaque cover requirement applies to the globe mount, where a
+  black pre-texture frame exists; card art areas are empty before load,
+  and an opaque block would sit badly over the masked `.hv5-art` blobs.
