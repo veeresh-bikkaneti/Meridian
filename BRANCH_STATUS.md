@@ -1,14 +1,23 @@
 # BRANCH_STATUS — feat/loading-orbs
 
 **Branch:** `feat/loading-orbs`
-**Base:** origin/main @ `d26b90a` (PR #243 merged 2026-10-25 15:44 CDT; PR #242 merged 2026-10-25 11:22 CDT)
-**Rebased head:** `9a402e1af2f12f37e03892d93a876b45c27561a8` (`9a402e1` — the rebased equivalent of the panel docs commit `5f434a5`; see Rebase section below). This docs correction rides on top of `9a402e1`.
-**State: PANEL-REVIEWED, REBASED onto `d26b90a`, LOCAL ONLY — NOT pushed.**
-**Remote branch:** EXISTS — `origin/feat/loading-orbs` is pushed through `5f434a5`. PR #246 is OPEN at head `5f434a5`. The rebased head `9a402e1` (and this docs commit on top of it) is committed locally and NOT pushed; push awaits the owner's word.
+**Base:** origin/main @ `5f6164b` (PR #247 merged 2026-10-25 18:37 CDT; PR #243 merged 2026-10-25 15:44 CDT; PR #242 merged 2026-10-25 11:22 CDT)
+**Rebased head:** `3e46c15399ec57ee06e311b4cce95e69653a1332` (`3e46c15` — the rebased equivalent of the selector-fix commit `69e9dd5`; see Rebase section below). This docs correction rides on top of `3e46c15`.
+**State: PANEL-REVIEWED, REBASED onto `5f6164b`, LOCAL ONLY — NOT pushed.**
+**Remote branch:** EXISTS — `origin/feat/loading-orbs` is pushed through `5f434a5`. PR #246 is OPEN at head `5f434a5`. The rebased head `3e46c15` (and this docs commit on top of it) is committed locally and NOT pushed; push awaits the owner's word.
 
 This branch replaces the stale record that used to live here (old
 card-redesign branch, base `28c5fea`, PR #242 OPEN). That record is
 superseded: #242 is merged, and this branch starts from its merge.
+
+## Rebase onto 5f6164b (2026-10-25, rebase seat)
+
+- Old head: `69e9dd5b463df10043c936f7f0f4f0eee5df6126` (`69e9dd5`); old base `d26b90a`; new base `origin/main` = `5f6164bc4005910b2671bcb83dc66a7358b46d0d` (`5f6164b`, "feat(crash reports): Slice 1 — verdict + why line on every crash report (#247)", merged 2026-10-25 18:37 CDT).
+- Rebased chain (same messages, new SHAs): `60d1666` (feat, ex-`dc8ad13`), `f74f613` (fix, ex-`a40ebff`), `b5b6b85` (test, ex-`675880a`), `34b3035` (docs, ex-`9a402e1`), `119fe0b` (docs, ex-`53a84d8`), `3e46c15` (test, ex-`69e9dd5`).
+- Conflicts: BRANCH_STATUS.md ONLY, at the first replayed commit (`dc8ad13`). Two hunks, both resolved by keeping this branch's record (the `dc8ad13` version of the file, verbatim — verified byte-identical to `dc8ad13:BRANCH_STATUS.md`): hunk 1, header (crash-reports record from #247 vs orb record); hunk 2, scope/commits/evidence/gates/pending body (same sides). The #247 record is not lost — it lives on main at `5f6164b`. No code conflicts: #247's files (observability lib, crash-report worker, crash-classification spec) are disjoint from every orb file, and the replayed commits after the first applied with no further conflict.
+- Code check after rebase: tree diff old head `69e9dd5` → rebased head `3e46c15` is exactly #247's five files (`src/lib/observability.ts` + test, `workers/crash-report/src/index.ts` + test, `tests/e2e/crash-classification.mobile.spec.ts`) — no orb code gained or lost, no silent side taken. BRANCH_STATUS.md is byte-identical at both ends (the conflict resolution kept the branch record and the replayed docs commits restored it), so it does not appear in the diff.
+- Live PR state at rebase time: PR #246 OPEN, head `5f434a5`, mergeStateStatus DIRTY (conflicting) before the rebase. This rebased head is local only and NOT pushed; the remote still reads `5f434a5` until the owner orders a push.
+- Stale lines corrected by this commit: base `d26b90a` → `5f6164b`; rebased head `9a402e1` → `3e46c15` above. No feature or src changes in this commit (BRANCH_STATUS.md only). Construction caveat (same as last rebase): the file names `3e46c15` (the rebased app head) and cannot contain its own commit SHA, which is recorded in `review-orb-rebase2/rebase-record.md` and `git log` instead.
 
 ## Rebase onto d26b90a (2026-10-25, frontend seat)
 
@@ -244,7 +253,7 @@ and deserves its own ticket.
 
 ## Pending
 
-- Push of the rebased head (`9a402e1` + this docs commit) to `origin/feat/loading-orbs` — OWNER'S CALL ONLY; not pushed by the rebase seat. Until then the remote still reads `5f434a5` and PR #246 still shows its pre-rebase head. No force-push, no rewriting beyond this rebase, no merge.
+- Push of the rebased head (`3e46c15` + this docs commit) to `origin/feat/loading-orbs` — OWNER'S CALL ONLY; not pushed by the rebase seat. Until then the remote still reads `5f434a5` and PR #246 still shows its pre-rebase head. No force-push, no rewriting beyond this rebase, no merge.
 - Owner green-light / Chitti review path for this branch (per
   standing Meridian flow), then the owner's merge call.
 - Owner follow-ups (NOT PR blockers — see Known limits): static
