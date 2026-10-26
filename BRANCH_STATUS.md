@@ -2,55 +2,59 @@
 
 **Branch:** `fix/154-item6-manual-full-tile-failure`
 **Base:** `main` at `5f24c6c` (2026-10-26)
-**State: BUILT + GATES GREEN (2026-10-26).** Coordinator C
+**State: CORRECTED + BUILT (2026-10-26).** Coordinator C
 (UX/UI & Frontend + Game Squad) cluster branch 3 of 3. Not merged —
 merge is the owner's word.
 
+> **Correction (2026-10-26, after the first push):** this branch
+> originally added a new WS-4 E2E leg for item 6. A deeper
+> verification pass then found the scenario ALREADY pinned on main
+> (see item 6 below) — the added leg was substantially duplicative
+> and has been **withdrawn** (the ws4 spec is byte-identical to
+> main again). What remains is the one genuinely open remainder:
+> item 5's stale comment, in its mutated form. The branch name is
+> kept (renaming would orphan the PR); its content is now item 5.
+
 ## Scope: #154 items 2–7 (item 1 is PR #197 — untouched)
 
-Every remaining item was verified against current `main` first
-(two independent squad passes, file/line evidence). Verdict: items
-2, 3, 4, 5, 7 are **already fixed or superseded** — fixing them
-again would be duplicate work. Only item 6 has a live remainder,
-in a superseded form. This branch carries exactly that remainder.
+Three verification passes against current `main`, file/line
+evidence. Final verdicts:
 
 | Item | Status on main | Evidence |
 | :--- | :--- | :--- |
-| 2. Stale decay comment | FIXED | The "accept writes an auto scout that decays" comment is gone; current comments state the post-#151 rule (game-app boot effect, capability.ts StoredMapMode docs) |
-| 3. `planBootMapMode` dead `stored` param | FIXED | Signature is now `planBootMapMode(decision)`; its docstring explicitly records the #154 item-3 resolution; unit pins cover both branches |
-| 4. Offer dialog `aria-describedby` | SUPERSEDED | `scout-boot-offer.tsx` no longer exists — the dialog was removed by the owner's 2026-10-20 silent-auto-switch ruling; no dialog, no missing description |
-| 5. motionmaxxing stale comment | FIXED | The "boots in scout map mode" comment was replaced by an accurate `forceFullMapMode` comment (manual localStorage override, never decays) |
-| 6. Declined-offer + WS-4 coverage gap | **OPEN (superseded form) — THIS BRANCH** | See below |
-| 7. No unit test for accept→`accepted=true` | SUPERSEDED | The accept write path no longer exists (dialog removed); the surviving contract — auto records carry NO `accepted` flag; legacy accepted records never decay — is pinned in capability.test.ts and E2E |
+| 2. Stale decay comment | FIXED | The filed comment is gone; game-app boot comments (L1274-1286) and capability.ts L181-183 state the post-#151 rule |
+| 3. `planBootMapMode` dead `stored` param | FIXED | Signature is `planBootMapMode(decision)` (capability.ts:322); docstring L299-305 explicitly records the item-3 resolution; unit pins cover both branches |
+| 4. Offer dialog `aria-describedby` | SUPERSEDED | `scout-boot-offer.tsx` returns 404 on main — the dialog was removed by the 2026-10-20 silent-auto-switch ruling; capability.test.ts pins that it must not come back |
+| 5. motionmaxxing stale comment | **STILL OPEN (mutated) — FIXED BY THIS BRANCH** | See below |
+| 6. Declined-offer + WS-4 coverage gap | **ALREADY FIXED on main** | `scout-capability-offer.desktop.spec.ts`: "settled manual full → WS-4 tile failure: visit switches to scout, manual record untouched" — seeds manual full, aborts tiles, pins the Try-again card, the session-only switch, the untouched record, and the switch note; its header cites the #154 item-6 lineage. (An earlier pass missed this test; the duplicate leg added for it was withdrawn — see the correction note.) |
+| 7. No unit test for accept→`accepted=true` | SUPERSEDED | The accept path no longer exists at all; its successor pin is capability.test.ts "game-app wiring: boot applies the plan's persistSource as an auto record", plus auto-record-no-accepted-flag and legacy-accepted-never-decays tests |
 
-## Item 6, modern form (what this branch adds)
+## Item 5, mutated form (what this branch changes)
 
-As filed, item 6 wanted: a *declined capability offer* (manual full)
-followed by a WS-4 tile failure. The decline action no longer
-exists, but its product — a standing **manual full record** — does,
-and the combination was still untested: every WS-4 golden seeds a
-capable device with **no record**, and every manual-record golden
-never fails tiles.
+The filed phrase ("the VM boots in scout map mode") is gone, but
+its replacement comment in `tests/e2e/motionmaxxing.spec.ts`
+(L180-185) is itself stale post-2026-10-20: it says the failed
+WebGL probe "raises the Scout Map choice dialog instead of booting
+into scout silently; the session starts in full mode either way."
+There is no dialog anymore, and unpinned this VM would now boot
+into Scout SILENTLY. The helper it describes (`forceFullMapMode`)
+is still correct — only its explanation was wrong. This branch
+rewrites that one comment to describe the silent auto-switch
+ruling and why the manual pin is still needed. Comment-only;
+no behavior change.
 
-New E2E leg in `tests/e2e/ws4-tile-fallback.desktop.spec.ts`:
-seed manual full → boot stands on the record (full, no rewrite, no
-offer) → tiles aborted → one "Try again" → session-only Scout
-switch + switch note → **stored record byte-identical** (raw string
-compared; any rewrite would move `setAt`) → reload honors the
-record again (full map, card returns).
+**Diff (whole branch vs main):**
+`tests/e2e/motionmaxxing.spec.ts` (one comment) + this file.
 
-No production code changes. No other #154 item is touched.
+## Gates
 
-## Gates (2026-10-26, this head)
-
-- [x] `npx tsc --noEmit` — clean, exit 0
-- [x] `npm test` — scripts 832 pass / 0 fail / 9 skipped;
-      src 1633/1633 pass (test-only branch; counts = main baseline)
-- [x] `node scripts/lint-cards.mjs` — GATE PASSED
-- [x] `npm run build:pages` — exit 0
-- [x] Playwright `--workers=1`: ws4-tile-fallback **4/4** — the
-      three pre-existing goldens plus the new #154 item-6 leg
-      (46.2 s)
+- [x] On the pre-correction head: tsc clean, npm test green
+      (scripts 832/0/9, src 1633/1633), lint-cards PASSED,
+      build:pages exit 0, ws4-tile-fallback 4/4 — that head is
+      superseded; the corrected head changes no production code
+      and one E2E comment.
+- [ ] Corrected head: `npx tsc --noEmit` + motionmaxxing spec
+      parse/run check (comment-only change).
 
 ## Out of scope
 
