@@ -1,120 +1,16 @@
-# BRANCH_STATUS — feat/crash-recovery-outcome
+# Branch status — fix/193-card-compose-header
 
-**Branch:** `feat/crash-recovery-outcome`
-**Base:** `main` at `3fa68c0` (rebased 2026-10-26 onto the zod
-4.6.7 deps bump, PR #239; zero conflicts — the base delta touched
-only `package.json`/`package-lock.json`. A full final-head evidence
-pass on the previous head `38bf8ac` passed every gate but its
-verdict did not transfer when the base moved; decisive gates are
-re-run on this rebased head under Liz's "Fix 250" order, followed
-by a fresh independent Reality Check)
-**State: Slice 2 BUILT + gates run (2026-10-26).** Built under the
-signed Tier 2 Consensus Manifest
-(`~/workspace/meridian-crash-slice2/CONSENSUS-MANIFEST-slice2-build.md`),
-including ADDENDUM 2 (Liz's Option A ruling, 2026-10-26).
-Push + PR authorized by Liz 2026-10-26, including the
-crash-watchdog stale-build pin update (the journey now ingests the
-js_error + the designed stood_down recovery_outcome; the spec's
-next assertion still hits the pre-existing breadcrumb race —
-expected `data_chunk_load_start`, got `storyteller_ready` — the
-same signature documented on pristine bases since PR #245).
-The parent replays the local commits onto the remote branch via
-the GitHub API helper (SHAs may differ; content, messages and
-authorship are the same). Not merged, not deployed. Slice 3 not
-started.**
+Issue: #193 — stale header in `scripts/card-compose.mjs`.
 
-## Option A harness amendment (Liz, 2026-10-26)
+## Done
+- [x] Read issue #193 in full; verified against merged code: `scripts/facts-ladder.mjs` exists on `main` (the facts ladder merged in PR #104), so the header's "on the facts-ladder branch" is stale.
+- [x] Header cure (comment only, no code change): the `fact` field now reads "(scripts/facts-ladder.mjs)." with no branch reference.
 
-The fake harness's write counting is scoped PER KEY
-(`calls.setByKey` alongside the global counter; `countingThrowingStorage`
-and the 2-U default-host stub gained the same per-key counts). ONLY the
-counter expressions changed in exactly these 7 pre-existing tests —
-every behavioural assertion byte-identical, no assertion weakened or
-removed:
+## Pending
+- [ ] Gates: card-compose unit test, `node scripts/lint-cards.mjs`, `npx tsc --noEmit`, `npm test`, `npm run build:pages`
+- [ ] PR opened (no merge — owner merges)
 
-- `1-U`, `10-U`, `2-U`, `7-U` (×2 lines), `5C-U-roundtrip` — stamp pins
-  now count writes to `meridian.chunkReloadAt` (expect 1).
-- `6-U` — stamp pin counts `meridian.chunkReloadAt` (expect 0).
-- `5C-U-offer` (×2 lines) — stamp pins count `meridian.chunkReloadAt`
-  via `setsByKey` (expect 0 at the offer, 1 after the blocked failure).
-
-Diff proof: `~/workspace/meridian-crash-slice2/logs2/optionA-test-diff.txt`.
-Chunk suite after the amendment: **55/55** (41 pre-existing as amended
-+ O1–O14).
-
-## What Slice 2 built
-
-- **chunk-recovery** (WIP `bad9f8a`, pre-existing this session): outcome
-  marker `meridian.chunkRecovery`, pending-at-install state machine,
-  observation-time terminal signals, pending-only clear countdown,
-  optional host outcome hooks.
-- **observability**: `init()` marker protocol in manifest order
-  (terminal delete-silent; invalid split with `meridian.chunkReloadAt`
-  corroboration → `marker_unreadable`; >24 h → `unconfirmed_expired`;
-  claimed leftover → `unconfirmed_died` (+ `afterRecovery` on this
-  boot's `suspected_crash`) / `unconfirmed_closed`, delete-before-emit;
-  unclaimed → claim by spread + read-back, hold pending).
-  `noteRecoverySignal` + singleton wrapper (GameApp's wiring target);
-  confirmation legs latched in the closure (`gameLoaded` set inside
-  `recordMilestone`); resolve = delete marker, set resolved, emit
-  exactly once. `afterRecovery` choke point at `emit()` for
-  captured-error types while pending+unresolved (never stamped false,
-  not a classifier input). `recovery_outcome` added to the event-type
-  union and protected in queue eviction. Classifier gains the
-  `recovery_outcome` branch FIRST; `CLASSIFIER_VERSION` "1" → "2".
-  Marker validity predicate identical to chunk-recovery's,
-  fixture-tested in both test files.
-- **Worker** (`workers/crash-report`): `EVENT_TYPES` +=
-  `recovery_outcome` (the only schema change; no enum hard-validation —
-  classifier + `tierOf` fail closed). `tierOf(type, recoveryOutcome?)`:
-  crash-class ONLY for `repeat_failure`, counted-only otherwise;
-  `handleRequest` passes the outcome. Classifier mirror + the five
-  manifest why-lines verbatim. The Slice 1 `recovery_outcome` rejection
-  pin was INVERTED to acceptance (expected evolution). No digest change
-  (Slice 3 owns it).
-- **GameApp wiring** (install call site only):
-  `installChunkLoadRecovery(undefined, { buildId: CURRENT_BUILD_ID,
-  onRecoverySignal })` routing signals to observability's
-  `noteRecoverySignal` singleton wrapper.
-- **E2E** (appended to `tests/e2e/chunk-recovery.desktop.spec.ts`,
-  built artifact via `serveBuiltArtifact`, production path): S2-E1
-  recovered/confirmed, S2-E2 repeat_failure, S2-E3 stood_down, S2-E4
-  storage-blocked, S2-E5 leftover claimed+clean, S2-E6 leftover
-  claimed+unclean (+afterRecovery), S2-E7 no-marker control — all pass.
-- Consequential pin updates (same category as the worker inversion):
-  stamped-`lcV` expectations "1" → "2" in `observability.test.ts` (5)
-  and `crash-classification.mobile.spec.ts` (3) — the mechanical result
-  of the mandated `CLASSIFIER_VERSION` bump. One tsc fix in the WIP
-  O9-U test (annotated map param; assertion unchanged).
-
-## Gates on the final head (logs `~/workspace/meridian-crash-slice2/logs2/final-*`)
-
-- `npx tsc --noEmit` — clean
-- `npm test` — scripts 832 pass / 0 fail (841, 9 skipped); src 1633/1633
-  (pristine-base baseline: scripts 832/0, src 1592/1592)
-- `npm run test:worker` — 85/85 (baseline 69/69)
-- `node scripts/lint-cards.mjs` — GATE PASSED
-- `npm run build:pages` — green
-- Playwright crash-surface set (chunk-recovery.desktop,
-  crash-classification.mobile, crash-watchdog, crash-loop-breaker,
-  observability) — **27 passed / 2 failed**. Both failing names match
-  the pristine-base baseline's two known failures:
-  (1) crash-classification "backgrounding the tab records
-  'backgrounded'; returning records 'foregrounded'" (visibility race,
-  same mode as baseline);
-  (2) crash-watchdog "stale build" — SAME test name as the baseline
-  failure. The spec WAS edited on Liz's word (2026-10-26): its
-  exact-count pin now expects the js_error + the designed Slice 2
-  `recovery_outcome` (stood_down) — length 2 — and that pin passes.
-  The journey's remaining failure is the pre-existing breadcrumb
-  race at the milestone assertion (expected `data_chunk_load_start`,
-  got `storyteller_ready`), the same signature as pristine base.
-
-## Not built / not tested
-
-- Slice 3 (digest grouping, alerting policy §5.6, signature counters)
-  — not started, per authorization.
-- Pushed; PR #250 open. No merge, no deploy. Worker deploy-order
-  note for the eventual PR: the receiver whitelist must deploy BEFORE
-  or WITH the client emitter, never after, or outcome events are
-  400-rejected.
+## Notes
+- Comment-only change. No behaviour changes.
+- This file replaced the previous branch's status file, which shipped on `main` with PR #250 (repo convention: one status file per active branch).
+- Coordinator D (QA & Performance + Narrative squad); #191/#199/#200/#214 are handled on sibling branches.
