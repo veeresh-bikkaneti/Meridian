@@ -56,10 +56,13 @@ test("End game → summary → Done retires the switched notice (#188)", async (
   // notice on its own and make this pin vacuous), then end this
   // session through the summary.
   await page.getByRole("button", { name: "Play the globe" }).click();
-  await expect(page.locator(".satellite-map")).toBeVisible({
+  // Wait on the aim phase + the End game control itself (what this leg
+  // actually uses) — not the map element, whose chunk mount is the
+  // slowest, most contention-sensitive part of the start.
+  await expect.poll(() => readPhase(page), { timeout: 60_000 }).toBe("aim");
+  await expect(page.getByRole("button", { name: "End game" })).toBeVisible({
     timeout: 30_000,
   });
-  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
   await page.getByRole("button", { name: "End game" }).click();
   const dialog = page.getByRole("dialog", { name: "Game summary" });
   await expect(dialog).toBeVisible({ timeout: 30_000 });
