@@ -2,7 +2,7 @@
 
 **Branch:** `fix/154-item6-manual-full-tile-failure`
 **Base:** `main` at `5f24c6c` (2026-10-26)
-**State: BUILT — gates in progress (2026-10-26).** Coordinator C
+**State: BUILT + GATES GREEN (2026-10-26).** Coordinator C
 (UX/UI & Frontend + Game Squad) cluster branch 3 of 3. Not merged —
 merge is the owner's word.
 
@@ -41,13 +41,16 @@ record again (full map, card returns).
 
 No production code changes. No other #154 item is touched.
 
-## Gates
+## Gates (2026-10-26, this head)
 
-- [ ] `npx tsc --noEmit`
-- [ ] `npm test`
-- [ ] `node scripts/lint-cards.mjs`
-- [ ] `npm run build:pages`
-- [ ] Playwright `--workers=1`: ws4-tile-fallback (4 tests incl. new)
+- [x] `npx tsc --noEmit` — clean, exit 0
+- [x] `npm test` — scripts 832 pass / 0 fail / 9 skipped;
+      src 1633/1633 pass (test-only branch; counts = main baseline)
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — exit 0
+- [x] Playwright `--workers=1`: ws4-tile-fallback **4/4** — the
+      three pre-existing goldens plus the new #154 item-6 leg
+      (46.2 s)
 
 ## Out of scope
 
