@@ -6,8 +6,15 @@ Issue: #193 — stale header in `scripts/card-compose.mjs`.
 - [x] Read issue #193 in full; verified against merged code: `scripts/facts-ladder.mjs` exists on `main` (the facts ladder merged in PR #104), so the header's "on the facts-ladder branch" is stale.
 - [x] Header cure (comment only, no code change): the `fact` field now reads "(scripts/facts-ladder.mjs)." with no branch reference.
 
+## Gates (on this branch's head)
+- [x] `node --test scripts/card-compose.test.mjs` — 15/15
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — scripts 832 pass / 0 fail / 9 skipped; src 1633 pass / 0 fail (same counts as the `main` baseline)
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — exit 0
+- E2E: not applicable — comment-only change, no spec covers the header text.
+
 ## Pending
-- [ ] Gates: card-compose unit test, `node scripts/lint-cards.mjs`, `npx tsc --noEmit`, `npm test`, `npm run build:pages`
 - [ ] PR opened (no merge — owner merges)
 
 ## Notes
