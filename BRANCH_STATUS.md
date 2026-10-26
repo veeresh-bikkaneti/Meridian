@@ -58,18 +58,36 @@ merge is the owner's word.
   build-meta mismatch → new-version prompt)
 - `docs/handbook/02-game-design-decisions.md` (§11 extended)
 
+## Panel-spec amendment (2026-10-26, after the squad specs landed)
+
+Four refinements from the UX/Frontend squad's full spec, folded in
+before panel review:
+
+- **#209 zombie guard:** a territory import that lands AFTER its
+  timeout is now discarded via a load-generation check — it no
+  longer populates the cache or double-counts the conversion seam;
+  the retry owns the cache. Executed pin in territory-timeout.test.ts.
+- **#209 HomeGlobe:** its lazy factory is timeout-wrapped too — a
+  hang lands on the existing GlobeChunkFallback.
+- **#210 one-shot guard:** the boundary's Refresh offer honors the
+  shared `meridian.staleRefresh` guard (probe skipped once armed;
+  Refresh arms it) — parity with openRun / LoopScreen, pinned
+  against game-app's identical key literal.
+- **#211 item 3, executed:** `scoring-territory-pin.test.ts` pins
+  the money invariant with real calls — regionBonus 0 before the
+  preload, +15 after.
+
 ## Gates (2026-10-26, this head)
 
-- [x] Targeted unit tests (46) incl. all new pins — pass
 - [x] `npx tsc --noEmit` — clean, exit 0
 - [x] `npm test` — scripts 832 pass / 0 fail / 9 skipped;
-      src 1649/1649 pass
+      src 1652/1652 pass (incl. the amendment pins)
 - [x] `node scripts/lint-cards.mjs` — GATE PASSED
 - [x] `npm run build:pages` — exit 0
 - [x] Playwright `--workers=1`: chunk-boundary-copy **2/2** (new
       #210 legs) + chunk-recovery **15/15** (neighbors, incl. the
       6-E stand-down oracle) = 17/17; coldtrail **11/11** (Trail
-      heading neighbor)
+      heading neighbor, pre-amendment head)
 
 ## Out of scope / sequencing notes
 
