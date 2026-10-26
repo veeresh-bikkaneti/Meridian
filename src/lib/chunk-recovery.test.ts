@@ -1146,7 +1146,7 @@ test("O9-U: pending with a stale stamp gets a pending-only clear leg — 30 fail
   p2.advanceTimersBy(29_999);
   assert.deepEqual(p2.signals, []);
   p2.advanceTimersBy(1);
-  assert.deepEqual(p2.signals.map((s) => s.signal), ["episode_cleared"]);
+  assert.deepEqual(p2.signals.map((s: SignalCall) => s.signal), ["episode_cleared"]);
 });
 
 test("O10-U: after a terminal signal in a stale-stamp pending session, a later failure is a fresh attempt — it reloads and writes a fresh marker", () => {
