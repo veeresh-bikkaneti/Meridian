@@ -84,6 +84,8 @@ frame-ancestors 'none'; upgrade-insecure-requests
 | `/sw.js`, `/flags.json`, `/build-meta.json`, `/manifest.webmanifest` | `no-cache` | update detection and remote kill switches must see changes immediately |
 | Rendered HTML on the Worker (`/`, `/privacy`, the 404 page, …) | `public, max-age=0, must-revalidate` | set by the request middleware (`HTML_CACHE_CONTROL` in `src/lib/security-headers.ts`) — the plain value with **no `s-maxage`**, owner-ruled 2026-10-22 (WI-18). `_headers` never reaches Worker-rendered pages, so this row — not the one below — is the live contract for rendered pages |
 | `/`, `/index.html` (asset-served copies only) | `public, max-age=0, s-maxage=60, must-revalidate` | policy of record for an asset-served root (e.g. a static host serving the built document). The live site's pages are Worker-rendered and use the row above, so this rule never reaches them |
+| `/offline`, `/offline.html`, `/_shell.html` | `public, max-age=0, must-revalidate` | served as assets (`/offline.html` at its canonical path `/offline`). `/_shell.html` currently answers 404 from the app server, so its rule is policy of record, expected-inert today: a probe passes only conjunctively — 404 AND no ETag AND no CF-Cache-Status; an asset-served 200 without headers is a FAIL (the #203 failure shape) |
+| Everything else (`/audio/*`, `/icons/*`, …) | *(no rule in this file)* | deliberate: these paths take the platform default (`public, max-age=0, must-revalidate` + ETag) and must never become immutable — the simulation test in `scripts/security-headers.test.mjs` fails if a rule ever covers them |
 
 ## Verify after deploy
 
