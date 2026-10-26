@@ -191,9 +191,10 @@ test("3A-E: a seeded stamp blocks the reload; removing it re-arms and the return
  * read-back throws, or the write is silently dropped), recovery must
  * stand down: zero navigations, however many failures fire. Sabotage
  * is scoped to the guard key only — chunk-recovery is its sole
- * reader/writer — and each journey ends with a positive control:
- * restore storage, dispatch again, and the reload MUST happen (a
- * journey that cannot reload when storage works proves nothing).
+ * reader/writer — and each journey ends with a positive control on a
+ * fresh page in the same context: the same failure MUST reload
+ * exactly once there (the stand-down latches per page load, so the
+ * sabotaged page itself can never serve as its own control).
  * Every leg waits 4_000 ms, more than twice the 1_500 ms decision
  * delay, so a wrongly scheduled reload would already have fired.
  */
@@ -241,24 +242,28 @@ test("5B-E: guard-stamp write throws — zero navigations across repeated failur
   expect(await markerGone(page)).toBe(false);
   expect(navigations()).toBe(bootNavs);
 
-  // Positive control: healing storage must restore the reload.
-  await page.evaluate(() => {
-    Storage.prototype.setItem = (
-      window as unknown as Record<string, unknown>
-    ).__crOrigSet as typeof Storage.prototype.setItem;
-  });
-  await page
+  // Positive control: the ruled stand-down latches for THIS page
+  // load even if storage heals, so the control runs on a fresh page
+  // in the same context (no sabotage): the same failure MUST reload
+  // exactly once there — proving the sabotage, not the app, is what
+  // suppressed the reloads above.
+  const control = await context.newPage();
+  const controlNavs = countNavigations(control);
+  await bootAndMark(control);
+  const controlBootNavs = controlNavs();
+  await control
     .evaluate(() => {
       window.dispatchEvent(new Event("vite:preloadError"));
     })
     .catch(() => {
       // Navigation cuts the evaluate short.
     });
-  await expect.poll(() => markerGone(page), { timeout: 30_000 }).toBe(true);
-  await expect.poll(() => navigations(), { timeout: 30_000 }).toBe(bootNavs + 1);
-  const stamp = await page.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY);
+  await expect.poll(() => markerGone(control), { timeout: 30_000 }).toBe(true);
+  await expect.poll(() => controlNavs(), { timeout: 30_000 }).toBe(controlBootNavs + 1);
+  const stamp = await control.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY);
   expect(stamp).not.toBeNull();
   expect(Number.isFinite(Number(stamp))).toBe(true);
+  await control.close();
 
   await page.close();
 });
@@ -303,21 +308,28 @@ test("5C-E: guard-stamp read-back throws — zero navigations, the unverified st
   expect(await markerGone(page)).toBe(false);
   expect(navigations()).toBe(bootNavs);
 
-  // Positive control: healing the read must restore the reload.
-  await page.evaluate(() => {
-    Storage.prototype.getItem = (
-      window as unknown as Record<string, unknown>
-    ).__crOrigGet as typeof Storage.prototype.getItem;
-  });
-  await page
+  // Positive control: the ruled stand-down latches for THIS page
+  // load even if storage heals, so the control runs on a fresh page
+  // in the same context (no sabotage): the same failure MUST reload
+  // exactly once there — proving the sabotage, not the app, is what
+  // suppressed the reloads above.
+  const control = await context.newPage();
+  const controlNavs = countNavigations(control);
+  await bootAndMark(control);
+  const controlBootNavs = controlNavs();
+  await control
     .evaluate(() => {
       window.dispatchEvent(new Event("vite:preloadError"));
     })
     .catch(() => {
       // Navigation cuts the evaluate short.
     });
-  await expect.poll(() => markerGone(page), { timeout: 30_000 }).toBe(true);
-  await expect.poll(() => navigations(), { timeout: 30_000 }).toBe(bootNavs + 1);
+  await expect.poll(() => markerGone(control), { timeout: 30_000 }).toBe(true);
+  await expect.poll(() => controlNavs(), { timeout: 30_000 }).toBe(controlBootNavs + 1);
+  const stamp = await control.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY);
+  expect(stamp).not.toBeNull();
+  expect(Number.isFinite(Number(stamp))).toBe(true);
+  await control.close();
 
   await page.close();
 });
@@ -352,21 +364,28 @@ test("5D-E: guard-stamp write is silently dropped — zero navigations across re
   expect(await markerGone(page)).toBe(false);
   expect(navigations()).toBe(bootNavs);
 
-  // Positive control: a storing write must restore the reload.
-  await page.evaluate(() => {
-    Storage.prototype.setItem = (
-      window as unknown as Record<string, unknown>
-    ).__crOrigSet as typeof Storage.prototype.setItem;
-  });
-  await page
+  // Positive control: the ruled stand-down latches for THIS page
+  // load even if storage heals, so the control runs on a fresh page
+  // in the same context (no sabotage): the same failure MUST reload
+  // exactly once there — proving the sabotage, not the app, is what
+  // suppressed the reloads above.
+  const control = await context.newPage();
+  const controlNavs = countNavigations(control);
+  await bootAndMark(control);
+  const controlBootNavs = controlNavs();
+  await control
     .evaluate(() => {
       window.dispatchEvent(new Event("vite:preloadError"));
     })
     .catch(() => {
       // Navigation cuts the evaluate short.
     });
-  await expect.poll(() => markerGone(page), { timeout: 30_000 }).toBe(true);
-  await expect.poll(() => navigations(), { timeout: 30_000 }).toBe(bootNavs + 1);
+  await expect.poll(() => markerGone(control), { timeout: 30_000 }).toBe(true);
+  await expect.poll(() => controlNavs(), { timeout: 30_000 }).toBe(controlBootNavs + 1);
+  const stamp = await control.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY);
+  expect(stamp).not.toBeNull();
+  expect(Number.isFinite(Number(stamp))).toBe(true);
+  await control.close();
 
   await page.close();
 });
