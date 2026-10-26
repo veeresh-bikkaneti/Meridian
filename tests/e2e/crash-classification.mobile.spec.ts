@@ -116,7 +116,7 @@ test("next boot after a backgrounded kill emits suspected_crash carrying the Sli
   expect(crash.trailStuck).toBe(false);
   expect(crash.buildReplaced).toBe(true);
   expect(crash.storageOk).toBe(true);
-  expect(crash.lcV).toBe("1");
+  expect(crash.lcV).toBe("2");
   expect(crash.verdict).toBe("not_a_real_issue");
   expect(crash.whyKey).toBe("bg_close");
   await page.close();
@@ -136,7 +136,7 @@ test("next boot after a foreground gameplay kill emits suspected_crash with bgTe
   expect(crash.bgTerminal).toBe(false);
   expect(crash.buildReplaced).toBe(true);
   expect(crash.storageOk).toBe(true);
-  expect(crash.lcV).toBe("1");
+  expect(crash.lcV).toBe("2");
   expect(crash.verdict).toBe("insufficient_evidence");
   expect(crash.whyKey).toBe("fg_kill_replaced");
   await page.close();
@@ -160,7 +160,7 @@ test("next boot after a kill with no visibility record emits suspected_crash wit
   expect(crash.bgTerminal).toBeUndefined();
   expect(crash.buildReplaced).toBe(true);
   expect(crash.storageOk).toBe(true);
-  expect(crash.lcV).toBe("1");
+  expect(crash.lcV).toBe("2");
   expect(crash.verdict).toBe("insufficient_evidence");
   expect(crash.whyKey).toBe("missing_fields");
   await page.close();

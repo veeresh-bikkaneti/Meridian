@@ -189,7 +189,7 @@ async function ringWhileFocused(page: Page, cardSelector: string) {
     const after = getComputedStyle(btn, "::after");
     const btnStyle = getComputedStyle(btn);
     const cardBox = card.getBoundingClientRect();
-    const img = card.querySelector("img.hv5-pic") as HTMLElement | null;
+    const img = card.querySelector(".hv5-pic img") as HTMLElement | null;
     const imgBox = img ? img.getBoundingClientRect() : null;
     return {
       focused: document.activeElement === btn,
@@ -221,7 +221,7 @@ async function cardPoints(page: Page, cardSelector: string) {
   const box = await card.boundingBox();
   const head = await card.locator("h2").boundingBox();
   const para = await card.locator("p").first().boundingBox();
-  const img = await card.locator("img.hv5-pic").boundingBox();
+  const img = await card.locator(".hv5-pic img").boundingBox();
   return {
     image: { x: img!.x + img!.width / 2, y: img!.y + img!.height / 2 },
     heading: { x: head!.x + head!.width / 2, y: head!.y + head!.height / 2 },
@@ -249,7 +249,7 @@ test("B: GeoDetective split order + whole-card clicks open the game", async ({ p
   // Image before text in DOM order (not CSS order).
   const firstChildClass = await card.evaluate((el) => el.firstElementChild?.className ?? "");
   expect(firstChildClass).toContain("hv5-pic");
-  const imgBox = await card.locator("img.hv5-pic").boundingBox();
+  const imgBox = await card.locator(".hv5-pic img").boundingBox();
   const txtBox = await card.locator(".hv5-txt").boundingBox();
   expect(imgBox!.y).toBeLessThan(txtBox!.y);
 
@@ -275,7 +275,7 @@ test("B: Cold Trail split order + whole-card clicks open the game", async ({ pag
   await expect(card).toBeVisible();
   const firstChildClass = await card.evaluate((el) => el.firstElementChild?.className ?? "");
   expect(firstChildClass).toContain("hv5-pic");
-  const imgBox = await card.locator("img.hv5-pic").boundingBox();
+  const imgBox = await card.locator(".hv5-pic img").boundingBox();
   const txtBox = await card.locator(".hv5-txt").boundingBox();
   expect(imgBox!.y).toBeLessThan(txtBox!.y);
 

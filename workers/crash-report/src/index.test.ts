@@ -934,8 +934,8 @@ test("validateEvent: verdict stamps ride the extra-primitive rule, and the full 
   assert.ok(validateEvent(validEvent({ lcV: "x".repeat(257) })).length > 0, "oversized stamp string rejected");
 });
 
-test("validateEvent: recovery_outcome is still rejected in Slice 1 (no new event type)", () => {
-  assert.ok(validateEvent(validEvent({ type: "recovery_outcome" })).length > 0);
+test("validateEvent: recovery_outcome is accepted in Slice 2 (the Slice 1 rejection pin, inverted — expected evolution)", () => {
+  assert.deepEqual(validateEvent(validEvent({ type: "recovery_outcome" })), []);
 });
 
 // --- Slice 1: buildAlert rendering ----------------------------------------
@@ -1101,4 +1101,183 @@ test("handleRequest: a shape A suspected_crash is still forwarded individually i
   assert.equal(fetchCalls.length, 1);
   const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
   assert.ok(sent.startsWith("✅ IGNORE — No action needed"), "Discord payload starts with the verdict line");
+});
+
+// --- Slice 2: recovery outcome loop (Consensus Manifest 2026-10-25) -----
+//
+// recovery_outcome whitelist (the ONLY schema change), tierOf's outcome
+// branch, the classifier mirror's recovery branch (fixture table
+// identical to src/lib/observability.test.ts), and the verbatim
+// why-lines. No digest change (Slice 3 owns it).
+
+const RECOVERY_CLASSIFIER_TABLE: Array<{
+  name: string;
+  facts: CrashVerdictFacts;
+  verdict: string;
+  whyKey: string;
+}> = [
+  { name: "confirmed → auto_fixed/recovery_confirmed", facts: { type: "recovery_outcome", recoveryOutcome: "confirmed" }, verdict: "auto_fixed", whyKey: "recovery_confirmed" },
+  { name: "repeat_failure → developer_needed/recovery_failed", facts: { type: "recovery_outcome", recoveryOutcome: "repeat_failure" }, verdict: "developer_needed", whyKey: "recovery_failed" },
+  { name: "stood_down → insufficient_evidence/recovery_stood_down (never auto_fixed)", facts: { type: "recovery_outcome", recoveryOutcome: "stood_down" }, verdict: "insufficient_evidence", whyKey: "recovery_stood_down" },
+  { name: "unconfirmed_closed → insufficient_evidence/recovery_unconfirmed", facts: { type: "recovery_outcome", recoveryOutcome: "unconfirmed_closed" }, verdict: "insufficient_evidence", whyKey: "recovery_unconfirmed" },
+  { name: "unconfirmed_died → insufficient_evidence/recovery_unconfirmed", facts: { type: "recovery_outcome", recoveryOutcome: "unconfirmed_died" }, verdict: "insufficient_evidence", whyKey: "recovery_unconfirmed" },
+  { name: "unconfirmed_expired → insufficient_evidence/recovery_unconfirmed", facts: { type: "recovery_outcome", recoveryOutcome: "unconfirmed_expired" }, verdict: "insufficient_evidence", whyKey: "recovery_unconfirmed" },
+  { name: "marker_unreadable → insufficient_evidence/marker_unreadable", facts: { type: "recovery_outcome", recoveryOutcome: "marker_unreadable" }, verdict: "insufficient_evidence", whyKey: "marker_unreadable" },
+  { name: "missing recoveryOutcome → insufficient_evidence/missing_fields (fail closed)", facts: { type: "recovery_outcome" }, verdict: "insufficient_evidence", whyKey: "missing_fields" },
+  { name: "invalid recoveryOutcome → insufficient_evidence/missing_fields (fail closed)", facts: { type: "recovery_outcome", recoveryOutcome: "bogus" }, verdict: "insufficient_evidence", whyKey: "missing_fields" },
+  { name: "branch is FIRST: a confirmed outcome carrying an error field still classifies auto_fixed", facts: { type: "recovery_outcome", recoveryOutcome: "confirmed", error: { name: "Error", message: "boom" } }, verdict: "auto_fixed", whyKey: "recovery_confirmed" },
+];
+
+for (const row of RECOVERY_CLASSIFIER_TABLE) {
+  test(`classifier (Slice 2): ${row.name}`, () => {
+    assert.deepEqual(classifyCrashVerdict(row.facts), { verdict: row.verdict, whyKey: row.whyKey });
+  });
+}
+
+test("tierOf (Slice 2): recovery_outcome is crash-class ONLY for repeat_failure; every other/missing/invalid value is counted-only", () => {
+  assert.equal(tierOf("recovery_outcome" as never, "repeat_failure"), "crash");
+  for (const v of ["confirmed", "stood_down", "unconfirmed_closed", "unconfirmed_died", "unconfirmed_expired", "marker_unreadable", "bogus"]) {
+    assert.equal(tierOf("recovery_outcome" as never, v), "hiccup", v);
+  }
+  assert.equal(tierOf("recovery_outcome" as never), "hiccup", "missing value fails closed to counted-only");
+  assert.equal(tierOf("recovery_outcome" as never, undefined), "hiccup");
+  // Non-outcome types unchanged.
+  assert.equal(tierOf("suspected_crash" as never, "repeat_failure"), "crash");
+  assert.equal(tierOf("tile_failed" as never, "repeat_failure"), "hiccup");
+});
+
+test("validateEvent (Slice 2): a fully-stamped outcome event validates within MAX_TOP_LEVEL_KEYS — no enum hard-validation of recoveryOutcome", () => {
+  // Exactly the key set the Slice 2 client emits for recovery_outcome.
+  const full = validEvent({
+    type: "recovery_outcome",
+    sessionId: "s-1",
+    edition: "state",
+    regionId: "nebraska",
+    chunkId: "chunk-1",
+    lastMilestone: "game_loaded",
+    device: { os: "android", form: "mobile" },
+    mapMode: "full",
+    storageOk: true,
+    lcV: "2",
+    recoveryOutcome: "confirmed",
+    verdict: "auto_fixed",
+    whyKey: "recovery_confirmed",
+  });
+  assert.equal(Object.keys(full).length, 15, "fixture carries the full Slice 2 key set");
+  assert.deepEqual(validateEvent(full), []);
+  // Fleet skew: an unknown outcome value is NOT hard-rejected — the
+  // classifier and tierOf fail closed on it instead.
+  assert.deepEqual(validateEvent(validEvent({ type: "recovery_outcome", recoveryOutcome: "from-the-future" })), []);
+  assert.deepEqual(
+    classifyCrashVerdict({ type: "recovery_outcome", recoveryOutcome: "from-the-future" }),
+    { verdict: "insufficient_evidence", whyKey: "missing_fields" },
+  );
+});
+
+function outcomeEvent(overrides: Record<string, unknown> = {}): CrashReportEvent {
+  return {
+    type: "recovery_outcome",
+    ts: 1_729_000_000_000,
+    buildId: "28c5fea",
+    edition: "state",
+    regionId: "nebraska",
+    lastMilestone: "game_loaded",
+    device: { os: "android", form: "mobile" },
+    storageOk: true,
+    lcV: "2",
+    recoveryOutcome: "confirmed",
+    ...overrides,
+  } as CrashReportEvent;
+}
+
+test("buildAlert (Slice 2): confirmed renders 🔧 Fixed itself with the bounded verbatim why-line", () => {
+  const alert = buildAlert(outcomeEvent());
+  const lines = alert.discord.split("\n");
+  assert.equal(lines[0], "🔧 IGNORE — Fixed itself (confirmed)");
+  assert.ok(alert.discord.includes("verdict: automatically fixed (confirmed)"));
+  assert.ok(
+    alert.discord.includes(
+      "why: A game file failed to load. The app reloaded itself once, then reached the game and no repeat failure was observed for at least 30 seconds. (Whether the failing file itself was tried again in that time is not observed.)",
+    ),
+    "bounded why-line verbatim (Manifest)",
+  );
+  assert.ok(!alert.discord.includes("action: "), "no action line on the fixed class");
+  assert.equal(alert.emailSubject, "[Meridian] 🔧 IGNORE — Fixed itself (confirmed) · recovery_outcome · build 28c5fea · state");
+});
+
+test("buildAlert (Slice 2): repeat_failure renders 🚨 FIX with the verbatim why-line and the action line", () => {
+  const alert = buildAlert(outcomeEvent({ recoveryOutcome: "repeat_failure" }));
+  assert.equal(alert.discord.split("\n")[0], "🚨 FIX — Developer action needed");
+  assert.ok(
+    alert.discord.includes(
+      "why: The app reloaded to fix a failed game file, and a game file failed to load again in the session that followed.",
+    ),
+  );
+  assert.ok(alert.discord.includes("action: Read the error below."));
+});
+
+test("buildAlert (Slice 2): stood_down / unconfirmed / marker_unreadable render ❔ WAIT with their verbatim why-lines, never 🔧", () => {
+  const stood = buildAlert(outcomeEvent({ recoveryOutcome: "stood_down" }));
+  assert.equal(stood.discord.split("\n")[0], "❔ WAIT — Can't tell from this report");
+  assert.ok(
+    stood.discord.includes(
+      "why: A game file failed to load and the app showed its update offer instead of reloading. Whether the player accepted it — and whether accepting fixed the file — is not observed here.",
+    ),
+  );
+  for (const v of ["unconfirmed_closed", "unconfirmed_died", "unconfirmed_expired"]) {
+    const alert = buildAlert(outcomeEvent({ recoveryOutcome: v }));
+    assert.equal(alert.discord.split("\n")[0], "❔ WAIT — Can't tell from this report", v);
+    assert.ok(
+      alert.discord.includes(
+        "why: The app reloaded to fix a failed game file; whether it worked was never confirmed — the player may simply not have come back, and the session's ending may be unrelated.",
+      ),
+      v,
+    );
+  }
+  const unreadable = buildAlert(outcomeEvent({ recoveryOutcome: "marker_unreadable" }));
+  assert.equal(unreadable.discord.split("\n")[0], "❔ WAIT — Can't tell from this report");
+  assert.ok(
+    unreadable.discord.includes(
+      "why: A recovery attempt was recorded, but its record could not be read, so the outcome can't be told.",
+    ),
+  );
+  const missing = buildAlert(outcomeEvent({ recoveryOutcome: undefined }));
+  assert.equal(missing.discord.split("\n")[0], "❔ WAIT — Can't tell from this report", "missing outcome fails closed");
+});
+
+test("handleRequest (Slice 2): repeat_failure forwards immediately (crash tier); a confirmed outcome is counted only", async () => {
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+
+  const failed = await handleRequest(
+    postEvent({ type: "recovery_outcome", ts: Date.now(), buildId: "28c5fea", recoveryOutcome: "repeat_failure", lcV: "2" }),
+    env,
+  );
+  assert.equal(failed.status, 200);
+  const failedJson = (await failed.json()) as { forwarded: boolean; counted: boolean };
+  assert.equal(failedJson.forwarded, true, "repeat_failure is the one crash-class outcome");
+  assert.equal(failedJson.counted, true);
+  assert.equal(fetchCalls.length, 1);
+  const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
+  assert.ok(sent.startsWith("🚨 FIX — Developer action needed"));
+
+  const confirmed = await handleRequest(
+    postEvent({ type: "recovery_outcome", ts: Date.now(), buildId: "28c5fea", recoveryOutcome: "confirmed", lcV: "2" }),
+    env,
+  );
+  assert.equal(confirmed.status, 200);
+  const confirmedJson = (await confirmed.json()) as { forwarded: boolean; counted: boolean };
+  assert.equal(confirmedJson.forwarded, false, "confirmed outcomes are counted only in Slice 2 (policy is Slice 3)");
+  assert.equal(confirmedJson.counted, true);
+  assert.equal(fetchCalls.length, 1, "no second forward");
+
+  const hour = hourLabelOf(Date.now());
+  const { store } = memoryStore();
+  void store;
+  const bucket = JSON.parse(map.get(bucketKey(hour, "recovery_outcome")) as string) as { total: number };
+  assert.equal(bucket.total, 2, "both outcomes counted under the new type");
 });

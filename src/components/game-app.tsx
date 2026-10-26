@@ -2,7 +2,7 @@ import { distanceKm } from "@/game/geo";
 import { formatLength, unitForEdition } from "@/game/units";
 import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor, storyForBand } from "@/game/generated-places";
-import { isNewBuildDeployed } from "@/game/build-staleness";
+import { CURRENT_BUILD_ID, isNewBuildDeployed } from "@/game/build-staleness";
 import { preloadAdmin1Boundaries, preloadAdmin1ForCountry, admin1ChunkIso2ForRegion } from "@/game/reverse-geocode";
 import { preloadTerritory } from "@/game/territory";
 import {
@@ -110,6 +110,7 @@ import { LockedLoop } from "./age-profile/LockedLoop";
 import { ReadAloudPrefPrompt } from "./age-profile/ReadAloudPrefPrompt";
 import { ReadAloudPrefSettings } from "./age-profile/ReadAloudPrefSettings";
 import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
+import { LazyHomeImage } from "./lazy-home-image";
 import {
   applyPendingAtBoundary,
   audioMode,
@@ -169,6 +170,7 @@ import {
   emitEvent,
   initObservability,
   installGlobalErrorHandlers,
+  noteRecoverySignal,
   recordMilestone,
   sanitizeError,
   setObservabilityEndpoint,
@@ -1268,7 +1270,10 @@ export function GameApp() {
     // screen import can fire, so a deploy that lands mid-session
     // reloads the tab once onto the current build instead of stranding
     // the player on a chunk-404 error card (see src/lib/chunk-recovery.ts).
-    installChunkLoadRecovery();
+    installChunkLoadRecovery(undefined, {
+      buildId: CURRENT_BUILD_ID,
+      onRecoverySignal: (signal, facts) => noteRecoverySignal(signal, facts),
+    });
     // If the previous page auto-reloaded (or the player tapped the
     // error card's "Try again"), explain the reload now that the new
     // page is up: consume the one-shot notice flag (chunk-recovery).
@@ -2882,7 +2887,7 @@ function Choose({
               with the image. The card action is the stretched CTA below
               (Form S): the card itself cannot be the <button> because
               EarnedBadgeRow renders real badge <button>s inside it. */}
-          <img className="hv5-pic" loading="lazy" decoding="async" src={desertRuinsUrl} alt="" aria-hidden="true" />
+          <LazyHomeImage className="hv5-pic" src={desertRuinsUrl} alt="" ariaHidden />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -2930,7 +2935,7 @@ function Choose({
           {/* Variant A, same as GeoDetective: image first in DOM order;
               whole-card action via the stretched CTA (Form S, shared form
               so both game cards behave identically). */}
-          <img className="hv5-pic" loading="lazy" decoding="async" src={patagoniaUrl} alt="" aria-hidden="true" />
+          <LazyHomeImage className="hv5-pic" src={patagoniaUrl} alt="" ariaHidden />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -2999,7 +3004,7 @@ function Choose({
                 <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
               )}
             </div>
-            <img className="hv5-art" loading="lazy" decoding="async" src={archiveToolsUrl} alt="" aria-hidden="true" />
+            <LazyHomeImage className="hv5-art" src={archiveToolsUrl} alt="" ariaHidden />
           </section>
         ) : (
           <div aria-hidden="true" />
@@ -3029,7 +3034,7 @@ function Choose({
               READ THE ENTRY
             </button>
           </div>
-          <img className="hv5-art" loading="lazy" decoding="async" src={journalTreeUrl} alt="" aria-hidden="true" />
+          <LazyHomeImage className="hv5-art" src={journalTreeUrl} alt="" ariaHidden />
         </article>
         <article className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)}>
           <div className="hv5-txt">
@@ -3050,7 +3055,7 @@ function Choose({
               <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
             </button>
           </div>
-          <img className="hv5-art" loading="lazy" decoding="async" src={binocularsHatUrl} alt="" aria-hidden="true" />
+          <LazyHomeImage className="hv5-art" src={binocularsHatUrl} alt="" ariaHidden />
         </article>
       </div>
 
@@ -3078,12 +3083,7 @@ function Choose({
             <article key={note.id} className="hv5-entry" data-testid="journal-note">
               {note.image && note.imageAlt && (
                 <figure className="hv5-entry-art">
-                  <img
-                    src={journalImageUrl(note.image)}
-                    alt={note.imageAlt}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <LazyHomeImage src={journalImageUrl(note.image)} alt={note.imageAlt} />
                 </figure>
               )}
               <h3>{note.place}</h3>

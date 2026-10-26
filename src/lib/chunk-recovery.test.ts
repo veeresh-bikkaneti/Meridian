@@ -2,6 +2,7 @@ import { strict as assert } from "node:assert";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import {
+  CHUNK_RECOVERY_KEY,
   CHUNK_RELOAD_KEY,
   installChunkLoadRecovery,
   isChunkLoadError,
@@ -25,6 +26,8 @@ const SAFARI_MSG = "Importing a module script failed.";
 const FIREFOX_MSG = "error loading dynamically imported module";
 const BLOCKED_SENTENCE =
   "auto-recovery promises at most one auto-reload per page load when session storage is blocked, and it makes no promise that a later page load will be prevented from auto-reloading once again if the same chunk is still missing";
+const STAND_DOWN_SENTENCE =
+  "When the reload stamp cannot be persisted and read back verified, auto-recovery stands down and does not auto-reload on this or any later failure in that page load.";
 
 test("isChunkLoadError: matches the three browser chunk-failure signatures", () => {
   assert.equal(isChunkLoadError(new TypeError(CHROME_MSG)), true);
@@ -57,14 +60,20 @@ test("isChunkLoadError: rejects unrelated errors and non-errors", () => {
  */
 interface SharedStorage {
   store: Map<string, string>;
-  calls: { set: number; remove: number; setArgs: Array<[string, string]>; removeArgs: string[] };
+  calls: {
+    set: number;
+    setByKey: Record<string, number>;
+    remove: number;
+    setArgs: Array<[string, string]>;
+    removeArgs: string[];
+  };
   failRemove: boolean;
   failSetKeys?: Set<string>;
 }
 function sharedStorage(failRemove = false, failSetKeys?: Set<string>): SharedStorage {
   return {
     store: new Map(),
-    calls: { set: 0, remove: 0, setArgs: [], removeArgs: [] },
+    calls: { set: 0, setByKey: {}, remove: 0, setArgs: [], removeArgs: [] },
     failRemove,
     failSetKeys,
   };
@@ -86,6 +95,7 @@ function fakeHost(startNow = 1_000_000, shared: SharedStorage = sharedStorage())
       setItem: (k, v) => {
         if (shared.failSetKeys?.has(k)) throw new Error("set blocked for key");
         calls.set += 1;
+        calls.setByKey[k] = (calls.setByKey[k] ?? 0) + 1;
         calls.setArgs.push([k, v]);
         store.set(k, v);
       },
@@ -155,7 +165,7 @@ test("1-U: fresh episode reloads once at T0+1500, writes the stamp once, never a
   assert.equal(f.state.reloads, 0);
   f.advanceTimersBy(1_500);
   assert.equal(f.state.reloads, 1);
-  assert.equal(f.calls.set, 2); // stamp + post-reload notice (14-U1)
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
   assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
   f.advanceTimersBy(60_000); // failure-free: the write alone never arms the clear countdown
   assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
@@ -195,7 +205,7 @@ test("10-U: a burst of failures collapses into one decision — one pending time
   assert.deepEqual(f.pendingTimers(), [1_500]);
   f.advanceTimersBy(1_500);
   assert.equal(f.state.reloads, 1);
-  assert.equal(f.calls.set, 2); // stamp + notice
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
 });
 
 test("6-U: the app's stale-build offer on screen stands recovery down — and does not consume the guard", () => {
@@ -208,7 +218,7 @@ test("6-U: the app's stale-build offer on screen stands recovery down — and do
   // Standing down must not consume the guard: once the offer is gone,
   // a later failure still recovers.
   assert.equal(f.store.get(CHUNK_RELOAD_KEY), undefined);
-  assert.equal(f.calls.set, 0);
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 0);
   f.state.offerVisible = false;
   fireVite(f);
   f.advanceTimersBy(1_500);
@@ -257,29 +267,32 @@ test("install: a pre-existing guard stamp inside the window blocks the reload", 
   assert.equal(state.reloads, 0);
 });
 
-test("5A-U: storage that throws cannot break the guard (in-memory fallback)", () => {
+test("5A-U: storage that throws stands recovery down — zero reloads, latched for the page load", () => {
   const f = fakeHost();
   f.host.storage = throwingStorage();
   installChunkLoadRecovery(f.host);
   fireVite(f);
   f.advanceTimersBy(1_500);
-  assert.equal(f.state.reloads, 1);
+  assert.equal(f.state.reloads, 0);
+  f.advanceTimersBy(10_000); // past any delayed-reload variant
+  assert.equal(f.state.reloads, 0);
   fireVite(f);
   f.advanceTimersBy(1_500);
-  assert.equal(f.state.reloads, 1);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0); // the stand-down latches for this page load
 });
 
-test("5A-U clock leg: throwing storage — clock advance alone (+10 windows) never re-arms the writing page", () => {
+test("5A-U clock leg: throwing storage — zero reloads, and clock advance alone (+300_000) never re-arms the page", () => {
   const f = fakeHost();
   f.host.storage = throwingStorage();
   installChunkLoadRecovery(f.host);
   fireVite(f);
   f.advanceTimersBy(1_500);
-  assert.equal(f.state.reloads, 1);
+  assert.equal(f.state.reloads, 0);
   f.advanceTimersBy(300_000);
   fireVite(f);
   f.advanceTimersBy(1_500);
-  assert.equal(f.state.reloads, 1); // RED pre-fix (new leg): 2
+  assert.equal(f.state.reloads, 0);
 });
 
 test("install: installing twice on the same host registers once", () => {
@@ -339,10 +352,12 @@ function stubWindow(
 test("2-U: two no-arg installs register exactly 3 listeners; one dispatch reloads once with one stamp", () => {
   const m = new Map<string, string>();
   let sets = 0;
+  const setsByKey: Record<string, number> = {};
   const ss = {
     getItem: (k: string) => m.get(k) ?? null,
     setItem: (k: string, v: string) => {
       sets += 1;
+      setsByKey[k] = (setsByKey[k] ?? 0) + 1;
       m.set(k, v);
     },
     removeItem: (k: string) => {
@@ -364,10 +379,10 @@ test("2-U: two no-arg installs register exactly 3 listeners; one dispatch reload
   assert.equal(after3, 3); // RED pre-fix: 9
   assert.deepEqual(timerMs, [1_500]);
   assert.equal(reloads, 1);
-  assert.equal(sets, 2); // stamp + notice (14-U1, default-host path)
+  assert.equal(setsByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
 });
 
-test("2-U-blocked: blocked storage via the default host — one dispatch reloads exactly once, second dispatch still once", () => {
+test("2-U-blocked: blocked storage via the default host — no dispatch reloads, second dispatch still zero", () => {
   const boom = () => {
     throw new Error("storage blocked");
   };
@@ -382,9 +397,9 @@ test("2-U-blocked: blocked storage via the default host — one dispatch reloads
   w.flush();
   const reloads2 = w.state.reloads;
   w.cleanup();
-  assert.equal(reloads1, 1); // RED pre-fix: 2 (duplicate listener sets x per-closure memory stamps)
+  assert.equal(reloads1, 0); // blocked storage stands the default host down too
   assert.equal(regs, 3); // RED pre-fix: 6
-  assert.equal(reloads2, 1);
+  assert.equal(reloads2, 0);
 });
 
 test("3A-U: seeded episode blocks, clears after 30000 failure-free, then the next failure reloads", () => {
@@ -528,20 +543,26 @@ test("4-U-neg: the page that wrote the stamp never re-arms on clock advance alon
   assert.equal(f.state.reloads, 1);
 });
 
-test("5B: two throwing-storage hosts each reload once per simulated page load", () => {
-  for (let i = 0; i < 2; i += 1) {
+test("5B: three throwing-storage page loads each reload zero times — no unrememberable reloads", () => {
+  let total = 0;
+  for (let i = 0; i < 3; i += 1) {
     const f = fakeHost();
     f.host.storage = throwingStorage();
     installChunkLoadRecovery(f.host);
     fireVite(f);
     f.advanceTimersBy(1_500);
-    assert.equal(f.state.reloads, 1);
+    assert.equal(f.state.reloads, 0);
+    f.advanceTimersBy(10_000); // past any delayed-reload variant
+    assert.equal(f.state.reloads, 0);
+    total += f.state.reloads;
   }
+  assert.equal(total, 0); // the F4b loop measurement was 3 reloads over 3 loads
 });
 
-test("5B-SRC-U: the module source pins the storage-blocked claim verbatim and bans the never-loop strings", () => {
+test("5B-SRC-U: the module source pins the no-unrememberable-reloads claim verbatim and bans the old blocked-storage promise", () => {
   const src = readFileSync(new URL("./chunk-recovery.ts", import.meta.url), "utf8").replace(/^\s*\* ?/gm, " ").replace(/\s+/g, " ");
-  assert.equal(src.includes(BLOCKED_SENTENCE), true);
+  assert.equal(src.includes(STAND_DOWN_SENTENCE), true);
+  assert.equal(src.includes(BLOCKED_SENTENCE), false);
   assert.equal(src.includes("never loop"), false);
   assert.equal(src.includes("can never loop"), false);
   assert.equal(src.includes("CHUNK_EPISODE_CLEAR_MS"), true);
@@ -556,11 +577,11 @@ test("7-U: an offer arriving after the decision point does not stand recovery do
   fireVite(f);
   f.advanceTimersBy(1_500);
   assert.equal(f.state.reloads, 1);
-  assert.equal(f.calls.set, 2); // stamp + notice
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
   f.state.offerVisible = true; // too late — the decision already fired
   f.advanceTimersBy(10_000);
   assert.equal(f.state.reloads, 1);
-  assert.equal(f.calls.set, 2);
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
 });
 
 test("9-Ua: a restarted countdown no-ops the stale generation at the original deadline and clears at the new one", () => {
@@ -634,6 +655,632 @@ test("9-Ud: unrelated errors inside an active episode do not restart the countdo
 });
 
 /**
+ * 5C series — no unrememberable reloads (D6 fix). A reload is authorised
+ * only by a stamp whose write is read back verified from storage
+ * itself (never via the in-memory mirror). Every zero-reload leg waits
+ * the 1_500 ms decision delay AND a further 10_000 ms, so a delayed
+ * reload cannot pass vacuously.
+ */
+function countingThrowingStorage() {
+  const state = { sets: 0, setsByKey: {} as Record<string, number> };
+  const boom = () => {
+    throw new Error("storage blocked");
+  };
+  const storage: NonNullable<ChunkRecoveryHost["storage"]> = {
+    getItem: boom,
+    setItem: (k: string) => {
+      state.sets += 1;
+      state.setsByKey[k] = (state.setsByKey[k] ?? 0) + 1;
+      throw new Error("storage blocked");
+    },
+    removeItem: boom,
+  };
+  return { storage, state };
+}
+
+test("5C-U-null: storage is null — zero reloads, repeated failures still zero", () => {
+  const f = fakeHost();
+  f.host.storage = null;
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0);
+});
+
+test("5C-U-set-throws: setItem throws at write time (storage healthy at install) — zero reloads, one attempt", () => {
+  const f = fakeHost();
+  const backing = new Map<string, string>();
+  let broken = false;
+  let sets = 0;
+  f.host.storage = {
+    getItem: (k) => backing.get(k) ?? null,
+    setItem: (k, v) => {
+      sets += 1;
+      if (broken) throw new Error("storage blocked");
+      backing.set(k, v);
+    },
+    removeItem: (k) => {
+      backing.delete(k);
+    },
+  };
+  installChunkLoadRecovery(f.host); // install reads healthy storage
+  broken = true; // storage breaks only after install
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0);
+  assert.equal(sets, 1); // persistence is judged at write time, not install time
+});
+
+test("5C-U-verify-throws: setItem succeeds but the read-back throws — zero reloads, the unverified stamp is cleaned up", () => {
+  const f = fakeHost();
+  const backing = new Map<string, string>();
+  let sets = 0;
+  f.host.storage = {
+    getItem: () => {
+      throw new Error("read blocked");
+    },
+    setItem: (k, v) => {
+      sets += 1;
+      backing.set(k, v);
+    },
+    removeItem: (k) => {
+      backing.delete(k);
+    },
+  };
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0);
+  assert.equal(sets, 1);
+  // The write landed but could not be verified: best-effort cleanup
+  // removes it, so no dangling stamp survives this decision.
+  assert.equal(backing.has(CHUNK_RELOAD_KEY), false);
+});
+
+test("5C-U-dangling: cleanup also fails — the surviving stamp latches the next page load as an ordinary episode", () => {
+  const backing = new Map<string, string>();
+  const f = fakeHost();
+  f.host.storage = {
+    getItem: () => {
+      throw new Error("read blocked");
+    },
+    setItem: (k, v) => {
+      backing.set(k, v);
+    },
+    removeItem: () => {
+      throw new Error("remove blocked");
+    },
+  };
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0);
+  // The stamp WAS written; only its verification and cleanup failed.
+  assert.equal(backing.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
+
+  // Next page load, storage healthy again: the surviving stamp is an
+  // ordinary fresh stamp — install latches on it (episode semantics),
+  // it is not a second hidden stand-down.
+  const f2 = fakeHost(T0 + 5_000);
+  f2.host.storage = {
+    getItem: (k) => backing.get(k) ?? null,
+    setItem: (k, v) => {
+      backing.set(k, v);
+    },
+    removeItem: (k) => {
+      backing.delete(k);
+    },
+  };
+  installChunkLoadRecovery(f2.host);
+  fireVite(f2);
+  f2.advanceTimersBy(1_500);
+  f2.advanceTimersBy(10_000);
+  assert.equal(f2.state.reloads, 0);
+  assert.equal(backing.get(CHUNK_RELOAD_KEY), String(T0 + 1_500)); // never rewritten
+});
+
+test("5C-U-silent-drop: setItem silently stores nothing, read-back returns null — zero reloads", () => {
+  const f = fakeHost();
+  let sets = 0;
+  f.host.storage = {
+    getItem: () => null,
+    setItem: () => {
+      sets += 1; // no throw — the write is silently discarded
+    },
+    removeItem: () => {},
+  };
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0);
+  assert.equal(sets, 1);
+});
+
+test("5C-U-mismatch: read-back returns a different value — zero reloads (exact-equality check)", () => {
+  const f = fakeHost();
+  const backing = new Map<string, string>();
+  f.host.storage = {
+    getItem: () => "999",
+    setItem: (k, v) => {
+      backing.set(k, v);
+    },
+    removeItem: (k) => {
+      backing.delete(k);
+    },
+  };
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0);
+  assert.equal(backing.has(CHUNK_RELOAD_KEY), false); // cleanup ran
+});
+
+test("5C-U-latch: after an unrememberable decision, later failures make no new write attempt", () => {
+  const f = fakeHost();
+  const { storage, state } = countingThrowingStorage();
+  f.host.storage = storage;
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0);
+  assert.equal(state.sets, 1);
+  f.fire("error", { type: "error", error: new TypeError(CHROME_MSG) });
+  f.fire("unhandledrejection", { type: "unhandledrejection", reason: new TypeError(CHROME_MSG) });
+  f.advanceTimersBy(1_500);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0);
+  assert.equal(state.sets, 1); // the latch, not a per-failure retry
+});
+
+test("5C-U-heal: storage healing mid-page-load does not re-arm that page; a fresh page load with healed storage reloads once", () => {
+  const f = fakeHost();
+  f.host.storage = throwingStorage();
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0);
+  // Storage heals on the SAME page load: the stand-down still holds.
+  const healed = new Map<string, string>();
+  const healedStorage: NonNullable<ChunkRecoveryHost["storage"]> = {
+    getItem: (k) => healed.get(k) ?? null,
+    setItem: (k, v) => {
+      healed.set(k, v);
+    },
+    removeItem: (k) => {
+      healed.delete(k);
+    },
+  };
+  f.host.storage = healedStorage;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0);
+  // A FRESH page load on the healed storage recovers normally.
+  const f2 = fakeHost();
+  f2.host.storage = healedStorage;
+  installChunkLoadRecovery(f2.host);
+  fireVite(f2);
+  f2.advanceTimersBy(1_500);
+  assert.equal(f2.state.reloads, 1);
+  assert.equal(healed.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
+});
+
+test("5C-U-burst: a burst on unrememberable storage collapses to one decision, one write attempt, zero reloads", () => {
+  const f = fakeHost();
+  const { storage, state } = countingThrowingStorage();
+  f.host.storage = storage;
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.fire("error", { type: "error", error: new TypeError(CHROME_MSG) });
+  f.fire("unhandledrejection", { type: "unhandledrejection", reason: new TypeError(CHROME_MSG) });
+  assert.deepEqual(f.pendingTimers(), [1_500]);
+  f.advanceTimersBy(1_500);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0);
+  assert.equal(state.sets, 1);
+});
+
+test("5C-U-offer: stale-offer stand-down attempts no write; a later failure on blocked storage still reloads zero times", () => {
+  const f = fakeHost();
+  const { storage, state } = countingThrowingStorage();
+  f.host.storage = storage;
+  installChunkLoadRecovery(f.host);
+  f.state.offerVisible = true;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0);
+  assert.equal(state.setsByKey[CHUNK_RELOAD_KEY] ?? 0, 0); // the offer check precedes any write attempt
+  f.state.offerVisible = false;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0);
+  assert.equal(state.setsByKey[CHUNK_RELOAD_KEY] ?? 0, 1); // the blocked failure attempted once, then latched
+});
+
+test("5C-U-after-clear: an episode that clears, then fails with storage now broken, stands down", () => {
+  const f = fakeHost();
+  f.seed(1_000);
+  installChunkLoadRecovery(f.host);
+  f.advanceTimersBy(30_000); // the episode clears (stamp removed)
+  assert.equal(f.calls.remove, 1);
+  assert.equal(f.store.has(CHUNK_RELOAD_KEY), false);
+  const working = f.host.storage as NonNullable<ChunkRecoveryHost["storage"]>;
+  f.host.storage = {
+    ...working,
+    setItem: () => {
+      throw new Error("storage blocked");
+    },
+  };
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  f.advanceTimersBy(10_000);
+  assert.equal(f.state.reloads, 0);
+});
+
+test("5C-U-roundtrip: working storage reloads exactly once, only on an exact verified round-trip", () => {
+  const f = fakeHost();
+  const ops: string[] = [];
+  const inner = f.host.storage as NonNullable<ChunkRecoveryHost["storage"]>;
+  f.host.storage = {
+    getItem: (k) => {
+      ops.push("get");
+      return inner.getItem(k);
+    },
+    setItem: (k, v) => {
+      ops.push("set");
+      inner.setItem(k, v);
+    },
+    removeItem: (k) => {
+      ops.push("remove");
+      inner.removeItem(k);
+    },
+  };
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  const mark = ops.length;
+  f.advanceTimersBy(1_499);
+  assert.equal(f.state.reloads, 0);
+  f.advanceTimersBy(1); // the decision fires at T0+1_500
+  assert.equal(f.state.reloads, 1);
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 1); // verification does not double-write
+  assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
+  const decisionOps = ops.slice(mark);
+  const setIdx = decisionOps.indexOf("set");
+  assert.notEqual(setIdx, -1);
+  // The read-back actually happened on the success path, after the set.
+  assert.equal(decisionOps.indexOf("get", setIdx) > setIdx, true);
+});
+
+// --- Slice 2: recovery outcome marker + signals (Consensus Manifest 2026-10-25) ---
+//
+// The outcome marker (meridian.chunkRecovery) is written ONLY by this
+// module; observability claims it at the next init and owns terminal
+// emission. These contracts pin the chunk side: marker writes, the
+// pending-at-install state machine, and the host signal seam. A page
+// pair sharing one storage models the reload (the F4b probe idiom).
+
+type OutcomeSignal = "episode_cleared" | "repeat_failure" | "stood_down";
+interface SignalCall {
+  signal: OutcomeSignal;
+  build?: string;
+  at?: number;
+}
+
+function outcomeFake(startNow = T0, shared: SharedStorage = sharedStorage()) {
+  const f = fakeHost(startNow, shared);
+  const signals: SignalCall[] = [];
+  const host: ChunkRecoveryHost = {
+    ...f.host,
+    buildId: "build-a",
+    onRecoverySignal: (signal, facts) => {
+      signals.push({ signal, build: facts?.build, at: facts?.at });
+    },
+  };
+  return { ...f, host, signals };
+}
+type OFake = ReturnType<typeof outcomeFake>;
+
+/** Run a fresh page-1 failure through to its reload on shared storage. */
+function pageOneReload(shared: SharedStorage): OFake {
+  const p1 = outcomeFake(T0, shared);
+  installChunkLoadRecovery(p1.host);
+  fireVite(p1);
+  p1.advanceTimersBy(1_500);
+  assert.equal(p1.state.reloads, 1);
+  return p1;
+}
+
+function readMarker(store: Map<string, string>): Record<string, unknown> | null {
+  const raw = store.get(CHUNK_RECOVERY_KEY);
+  if (raw === undefined) return null;
+  return JSON.parse(raw) as Record<string, unknown>;
+}
+
+test("O1-U: a verified reload writes the outcome marker with the stamp's own `at` and the failing build", () => {
+  const shared = sharedStorage();
+  pageOneReload(shared);
+  const marker = readMarker(shared.store);
+  assert.ok(marker);
+  assert.equal(marker.v, 1);
+  assert.equal(marker.at, T0 + 1_500);
+  assert.equal(marker.build, "build-a");
+  assert.equal(marker.outcome, undefined);
+  assert.equal(shared.store.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
+});
+
+test("O2-U: a marker write that throws never blocks the reload and fires no signal", () => {
+  const shared = sharedStorage();
+  const f = fakeHost(T0, shared);
+  const signals: SignalCall[] = [];
+  const inner = f.host.storage!;
+  const host: ChunkRecoveryHost = {
+    ...f.host,
+    storage: {
+      getItem: (k) => inner.getItem(k),
+      setItem: (k, v) => {
+        if (k === CHUNK_RECOVERY_KEY) throw new Error("marker blocked");
+        inner.setItem(k, v);
+      },
+      removeItem: (k) => inner.removeItem(k),
+    },
+    buildId: "build-a",
+    onRecoverySignal: (signal, facts) => signals.push({ signal, build: facts?.build, at: facts?.at }),
+  };
+  installChunkLoadRecovery(host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1);
+  assert.equal(shared.store.has(CHUNK_RECOVERY_KEY), false);
+  assert.deepEqual(signals, []);
+});
+
+test("O3-U: the offer stand-down writes a terminal marker, fires stood_down, then removes the marker", () => {
+  const shared = sharedStorage();
+  const f = fakeHost(T0, shared);
+  const ops: string[] = [];
+  const inner = f.host.storage!;
+  let markerAtSignal: string | null = null;
+  const host: ChunkRecoveryHost = {
+    ...f.host,
+    storage: {
+      getItem: (k) => inner.getItem(k),
+      setItem: (k, v) => {
+        if (k === CHUNK_RECOVERY_KEY) ops.push("marker-set");
+        inner.setItem(k, v);
+      },
+      removeItem: (k) => {
+        if (k === CHUNK_RECOVERY_KEY) ops.push("marker-remove");
+        inner.removeItem(k);
+      },
+    },
+    buildId: "build-a",
+    onRecoverySignal: (signal) => {
+      ops.push(`signal:${signal}`);
+      markerAtSignal = shared.store.get(CHUNK_RECOVERY_KEY) ?? null;
+    },
+  };
+  installChunkLoadRecovery(host);
+  f.state.offerVisible = true;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0);
+  assert.deepEqual(ops, ["marker-set", "signal:stood_down", "marker-remove"]);
+  const written = markerAtSignal ? (JSON.parse(markerAtSignal) as Record<string, unknown>) : null;
+  assert.ok(written);
+  assert.equal(written.v, 1);
+  assert.equal(written.build, "build-a");
+  assert.equal(written.outcome, "stood_down");
+  assert.equal(shared.store.has(CHUNK_RECOVERY_KEY), false);
+  assert.equal(shared.store.has(CHUNK_RELOAD_KEY), false);
+  // A second failure while the offer stands does not re-signal.
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.deepEqual(ops, ["marker-set", "signal:stood_down", "marker-remove"]);
+});
+
+test("O4-U: an unverifiable stand-down marker write fires NO stood_down signal (no record, no report)", () => {
+  const shared = sharedStorage();
+  const f = fakeHost(T0, shared);
+  const inner = f.host.storage!;
+  const signals: SignalCall[] = [];
+  const host: ChunkRecoveryHost = {
+    ...f.host,
+    storage: {
+      getItem: (k) => inner.getItem(k),
+      setItem: (k, v) => {
+        if (k === CHUNK_RECOVERY_KEY) return; // silently dropped
+        inner.setItem(k, v);
+      },
+      removeItem: (k) => inner.removeItem(k),
+    },
+    buildId: "build-a",
+    onRecoverySignal: (signal, facts) => signals.push({ signal, build: facts?.build, at: facts?.at }),
+  };
+  installChunkLoadRecovery(host);
+  f.state.offerVisible = true;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0);
+  assert.deepEqual(signals, []);
+});
+
+test("O5-U: in the recovered session a recurrence fires repeat_failure at observation, exactly once, and consumes the decide cycle", () => {
+  const shared = sharedStorage();
+  pageOneReload(shared);
+  const p2 = outcomeFake(T0 + 2_000, shared);
+  installChunkLoadRecovery(p2.host);
+  fireVite(p2);
+  // Observation-time: the signal lands BEFORE any timer advance.
+  assert.deepEqual(p2.signals.map((s) => s.signal), ["repeat_failure"]);
+  assert.equal(p2.signals[0].build, "build-a");
+  // The same failure through the other two listeners adds nothing.
+  p2.fire("error", { type: "error", error: new TypeError(CHROME_MSG) });
+  p2.fire("unhandledrejection", { type: "unhandledrejection", reason: new TypeError(CHROME_MSG) });
+  assert.equal(p2.signals.length, 1);
+  // The pending decide cycle is consumed: no reload, no second signal,
+  // and the held marker is NOT chunk-recovery's to delete.
+  p2.state.offerVisible = true;
+  p2.advanceTimersBy(10_000);
+  assert.equal(p2.state.reloads, 0);
+  assert.equal(p2.signals.length, 1);
+  assert.ok(readMarker(shared.store));
+});
+
+test("O6-U: in the recovered session an offer already on screen at observation resolves the attempt as stood_down", () => {
+  const shared = sharedStorage();
+  pageOneReload(shared);
+  const p2 = outcomeFake(T0 + 2_000, shared);
+  installChunkLoadRecovery(p2.host);
+  p2.state.offerVisible = true;
+  fireVite(p2);
+  assert.deepEqual(p2.signals.map((s) => s.signal), ["stood_down"]);
+  p2.advanceTimersBy(10_000);
+  assert.equal(p2.state.reloads, 0);
+  assert.equal(p2.signals.length, 1);
+  assert.ok(readMarker(shared.store)); // held marker: observability deletes on emission
+});
+
+test("O7-U: episode_cleared is not terminal — a recurrence after the clear leg still fires repeat_failure", () => {
+  const shared = sharedStorage();
+  pageOneReload(shared);
+  const p2 = outcomeFake(T0 + 2_000, shared);
+  installChunkLoadRecovery(p2.host);
+  p2.advanceTimersBy(30_000); // the install-armed clear countdown completes
+  assert.deepEqual(p2.signals.map((s) => s.signal), ["episode_cleared"]);
+  assert.equal(shared.store.has(CHUNK_RELOAD_KEY), false); // the latch clear still ran
+  fireVite(p2);
+  assert.deepEqual(p2.signals.map((s) => s.signal), ["episode_cleared", "repeat_failure"]);
+  p2.advanceTimersBy(10_000);
+  assert.equal(p2.state.reloads, 0);
+  assert.equal(p2.signals.length, 2);
+});
+
+test("O8-U: a marker that vanished before the recurrence means the outcome already emitted — the failure is treated as fresh", () => {
+  const shared = sharedStorage();
+  pageOneReload(shared);
+  const p2 = outcomeFake(T0 + 2_000, shared);
+  installChunkLoadRecovery(p2.host);
+  shared.store.delete(CHUNK_RECOVERY_KEY); // observability emitted + deleted
+  fireVite(p2);
+  assert.deepEqual(p2.signals, []);
+  p2.advanceTimersBy(1_500);
+  assert.equal(p2.state.reloads, 0); // the episode latch still blocks it
+});
+
+test("O9-U: pending with a stale stamp gets a pending-only clear leg — 30 failure-free seconds fire episode_cleared without touching the latch", () => {
+  const shared = sharedStorage();
+  const now = T0 + 901_000;
+  shared.store.set(CHUNK_RELOAD_KEY, String(T0)); // stale at install (>900 s)
+  shared.store.set(
+    CHUNK_RECOVERY_KEY,
+    JSON.stringify({ v: 1, at: T0, build: "build-a" }),
+  );
+  const p2 = outcomeFake(now, shared);
+  installChunkLoadRecovery(p2.host);
+  assert.equal(shared.store.has(CHUNK_RELOAD_KEY), false); // stale stamp cleared by shipped install logic
+  p2.advanceTimersBy(29_999);
+  assert.deepEqual(p2.signals, []);
+  p2.advanceTimersBy(1);
+  assert.deepEqual(p2.signals.map((s: SignalCall) => s.signal), ["episode_cleared"]);
+});
+
+test("O10-U: after a terminal signal in a stale-stamp pending session, a later failure is a fresh attempt — it reloads and writes a fresh marker", () => {
+  const shared = sharedStorage();
+  const now = T0 + 901_000;
+  shared.store.set(CHUNK_RELOAD_KEY, String(T0));
+  shared.store.set(
+    CHUNK_RECOVERY_KEY,
+    JSON.stringify({ v: 1, at: T0, build: "build-a" }),
+  );
+  const p2 = outcomeFake(now, shared);
+  installChunkLoadRecovery(p2.host);
+  fireVite(p2); // resolves the stale attempt as repeat_failure
+  assert.deepEqual(p2.signals.map((s) => s.signal), ["repeat_failure"]);
+  p2.advanceTimersBy(1_500); // consumed cycle
+  assert.equal(p2.state.reloads, 0);
+  shared.store.delete(CHUNK_RECOVERY_KEY); // observability consumed the outcome
+  fireVite(p2); // a genuinely new failure
+  p2.advanceTimersBy(1_500);
+  assert.equal(p2.state.reloads, 1);
+  const marker = readMarker(shared.store);
+  assert.ok(marker);
+  assert.equal(marker.at, now + 3_000);
+});
+
+test("O11-U: a terminal stand-down record in storage is not a pending attempt", () => {
+  const shared = sharedStorage();
+  shared.store.set(
+    CHUNK_RECOVERY_KEY,
+    JSON.stringify({ v: 1, at: T0, build: "build-a", outcome: "stood_down" }),
+  );
+  const f = outcomeFake(T0, shared);
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1); // treated as an ordinary fresh failure
+  assert.deepEqual(f.signals, []);
+  const marker = readMarker(shared.store);
+  assert.ok(marker);
+  assert.equal(marker.outcome, undefined); // replaced by the new attempt's marker
+});
+
+test("O12-U: a corrupt marker at install is not a pending attempt", () => {
+  const shared = sharedStorage();
+  shared.store.set(CHUNK_RECOVERY_KEY, "not json {");
+  const f = outcomeFake(T0, shared);
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1);
+  assert.deepEqual(f.signals, []);
+});
+
+test("O13-U: with no outcome hooks anywhere, recovery behaves exactly as before (marker carries the 'unknown' build sentinel)", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1);
+  const marker = readMarker(f.store);
+  assert.ok(marker);
+  assert.equal(marker.build, "unknown");
+});
+
+test("O14-U: install-call hooks fill the seam when the host itself carries no outcome fields", () => {
+  const shared = sharedStorage();
+  const f = fakeHost(T0, shared);
+  const signals: SignalCall[] = [];
+  installChunkLoadRecovery(f.host, {
+    buildId: "build-b",
+    onRecoverySignal: (signal, facts) => signals.push({ signal, build: facts?.build, at: facts?.at }),
+  });
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1);
+  const marker = readMarker(shared.store);
+  assert.ok(marker);
+  assert.equal(marker.build, "build-b");
+  // And the signal seam is live on the recovered page.
+  const p2 = fakeHost(T0 + 2_000, shared);
+  installChunkLoadRecovery(p2.host, {
+    buildId: "build-b",
+    onRecoverySignal: (signal, facts) => signals.push({ signal, build: facts?.build, at: facts?.at }),
+  });
+  fireVite(p2);
+  assert.deepEqual(signals.map((s) => s.signal), ["repeat_failure"]);
+});
+
+/**
  * A11Y announcement round (manifest 2026-10-25-a11y-reload-announcement):
  * when the map error card is on screen at the decision point, the
  * reload defers once by CHUNK_ANNOUNCE_DWELL_MS so the card gets at
@@ -676,10 +1323,13 @@ test("11-U: card visible at the decision defers once — nothing written, reload
   const at = String(T0 + 1_500 + DWELL_MS);
   assert.equal(f.store.get(CHUNK_RELOAD_KEY), at);
   assert.equal(f.store.get(NOTICE_KEY), at);
-  assert.deepEqual(f.calls.setArgs, [
-    [CHUNK_RELOAD_KEY, at],
-    [NOTICE_KEY, at],
-  ]);
+  assert.deepEqual(
+    f.calls.setArgs.filter(([k]) => k !== CHUNK_RECOVERY_KEY),
+    [
+      [CHUNK_RELOAD_KEY, at],
+      [NOTICE_KEY, at],
+    ],
+  );
 });
 
 test("11-U2a: the probe is at decision time — a card appearing during the window still defers", () => {
@@ -755,7 +1405,8 @@ test("11-U5: a burst during the dwell schedules no earlier decision and does not
   assert.deepEqual(f.pendingTimers(), [DWELL_MS]); // mutation: [10000, 1500]
   f.advanceTimersBy(DWELL_MS);
   assert.equal(f.state.reloads, 1);
-  assert.equal(f.calls.set, 2); // one stamp + one notice, not two decisions' worth
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY], 1); // one stamp + one notice, not two decisions' worth
+  assert.equal(f.calls.setByKey[NOTICE_KEY], 1);
 });
 
 test("11-U6: the stale offer beats the card at the first decision — stand-down does not spend the deferral", () => {
@@ -767,7 +1418,8 @@ test("11-U6: the stale offer beats the card at the first decision — stand-down
   f.advanceTimersBy(1_500);
   assert.equal(f.state.reloads, 0);
   assert.deepEqual(f.pendingTimers(), []); // mutation (card first): [10000]
-  assert.equal(f.calls.set, 0);
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 0);
+  assert.equal(f.calls.setByKey[NOTICE_KEY] ?? 0, 0);
   f.state.offerVisible = false;
   fireVite(f);
   f.advanceTimersBy(1_500);
@@ -942,10 +1594,13 @@ test("14-U1: every auto-reload writes the notice, including the no-card fast pat
   f.advanceTimersBy(1_500);
   assert.equal(f.state.reloads, 1);
   assert.equal(f.store.get(NOTICE_KEY), String(T0 + 1_500)); // RED pre-fix: undefined
-  assert.deepEqual(f.calls.setArgs, [
-    [CHUNK_RELOAD_KEY, String(T0 + 1_500)],
-    [NOTICE_KEY, String(T0 + 1_500)],
-  ]);
+  assert.deepEqual(
+    f.calls.setArgs.filter(([k]) => k !== CHUNK_RECOVERY_KEY),
+    [
+      [CHUNK_RELOAD_KEY, String(T0 + 1_500)],
+      [NOTICE_KEY, String(T0 + 1_500)],
+    ],
+  );
 });
 
 test("14-U2 GUARD: a notice-write failure never blocks the reload", () => {
