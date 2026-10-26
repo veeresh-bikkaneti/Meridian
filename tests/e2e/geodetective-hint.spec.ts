@@ -106,6 +106,30 @@ test("8-10: hint stays used after a mid-mystery reload (#185)", async ({
   await expect(afterReload).toHaveAccessibleName(/Hint used/i);
 });
 
+test("8-10: a reload BEFORE any hint keeps the button enabled (#185 negative control)", async ({
+  page,
+  context,
+}) => {
+  await seedProfile(context, "8-10");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openLoop(page);
+
+  const button = page.getByTestId("hint-button");
+  await expect(button).toBeVisible({ timeout: 15_000 });
+  await expect(button).toBeEnabled();
+
+  // Hydration must restore the persisted count — zero here — not a
+  // sticky "used". Guards against an over-eager fix that disables the
+  // button after any reload.
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
+    timeout: 30_000,
+  });
+  const afterReload = page.getByTestId("hint-button");
+  await expect(afterReload).toBeVisible({ timeout: 15_000 });
+  await expect(afterReload).toBeEnabled();
+});
+
 test("11-13: no hint button at all", async ({ page, context }) => {
   await seedProfile(context, "11-13");
   await page.setViewportSize({ width: 390, height: 844 });
