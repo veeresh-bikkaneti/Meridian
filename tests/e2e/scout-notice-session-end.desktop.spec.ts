@@ -39,7 +39,7 @@ async function flipInGameAndExpectNotice(
     page.getByRole("button", { name: "Play the globe" }),
   ).toBeVisible({ timeout: 30_000 });
   const notice = page.getByTestId("map-switched-notice");
-  await expect(notice).toBeVisible({ timeout: 10_000 });
+  await expect(notice).toBeVisible({ timeout: 30_000 });
   await expect(notice).toContainText("Your score is kept.");
   return notice;
 }
@@ -76,9 +76,11 @@ test("End game → summary → Done retires the switched notice (#188)", async (
 });
 
 test("idle-kill retires the switched notice (#188)", async ({ page }) => {
-  // 20 s idle budget: long enough to start a run and flip on the slow
-  // harness, short enough to watch the kill land without input.
-  await startGlobeRun(page, 20_000);
+  // 45 s idle budget: long enough to start a run and flip even on a
+  // contended harness (a shorter budget can idle-kill the session
+  // before the flip lands, and the flip then hits the Home control,
+  // which sets no notice), short enough to watch the kill land.
+  await startGlobeRun(page, 45_000);
   await flipInGameAndExpectNotice(page);
 
   // No further input: the watchdog kills the session (the flip was the
@@ -86,7 +88,7 @@ test("idle-kill retires the switched notice (#188)", async ({ page }) => {
   // whose "score is kept" claim the kill just falsified — must not.
   await expect(
     page.getByText("Your game ended after 2 minutes of inactivity."),
-  ).toBeVisible({ timeout: 60_000 });
+  ).toBeVisible({ timeout: 90_000 });
   await expect(page.getByTestId("map-switched-notice")).toHaveCount(0);
   await expect
     .poll(() => readPhase(page).catch(() => null), { timeout: 5_000 })
