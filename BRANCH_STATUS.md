@@ -45,7 +45,9 @@ merge is the owner's word.
 - [x] `npm run build:pages` — exit 0 (first attempt's prerender was
       OOM-killed at exit 137 under parallel-coordinator load; retry
       on the same tree passed)
-- [x] Playwright `--workers=1`: geodetective-hint **6/6** (incl. the
+- [x] Playwright `--workers=1`: geodetective-hint **7/7** (incl. the
+      #185 reload pin and its negative control — a reload BEFORE any
+      hint keeps the button enabled; amendment 2026-10-26)
       new #185 reload leg), scout-notice-session-end **2/2** (new
       #188 End-game + idle-kill legs). A combined run with
       scout-toggle.desktop.spec.ts under heavy parallel E2E load
