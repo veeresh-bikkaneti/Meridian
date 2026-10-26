@@ -227,18 +227,19 @@ test("5B-E: guard-stamp write throws — zero navigations across repeated failur
     };
   }, GUARD_KEY);
   await bootAndMark(page);
-  expect(navigations()).toBe(1);
+  const bootNavs = navigations(); // boot itself may navigate more than once
+  expect(bootNavs).toBeGreaterThanOrEqual(1);
 
   await dispatchPreloadError(page);
   await page.waitForTimeout(4_000);
   expect(await markerGone(page)).toBe(false);
-  expect(navigations()).toBe(1);
+  expect(navigations()).toBe(bootNavs);
   expect(await page.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY)).toBeNull();
 
   await dispatchPreloadError(page);
   await page.waitForTimeout(4_000);
   expect(await markerGone(page)).toBe(false);
-  expect(navigations()).toBe(1);
+  expect(navigations()).toBe(bootNavs);
 
   // Positive control: healing storage must restore the reload.
   await page.evaluate(() => {
@@ -254,7 +255,7 @@ test("5B-E: guard-stamp write throws — zero navigations across repeated failur
       // Navigation cuts the evaluate short.
     });
   await expect.poll(() => markerGone(page), { timeout: 30_000 }).toBe(true);
-  expect(navigations()).toBe(2);
+  await expect.poll(() => navigations(), { timeout: 30_000 }).toBe(bootNavs + 1);
   const stamp = await page.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY);
   expect(stamp).not.toBeNull();
   expect(Number.isFinite(Number(stamp))).toBe(true);
@@ -280,12 +281,13 @@ test("5C-E: guard-stamp read-back throws — zero navigations, the unverified st
     };
   }, GUARD_KEY);
   await bootAndMark(page);
-  expect(navigations()).toBe(1);
+  const bootNavs = navigations(); // boot itself may navigate more than once
+  expect(bootNavs).toBeGreaterThanOrEqual(1);
 
   await dispatchPreloadError(page);
   await page.waitForTimeout(4_000);
   expect(await markerGone(page)).toBe(false);
-  expect(navigations()).toBe(1);
+  expect(navigations()).toBe(bootNavs);
   // The write landed but could not be verified; cleanup removed it.
   expect(
     await page.evaluate((key) => {
@@ -299,7 +301,7 @@ test("5C-E: guard-stamp read-back throws — zero navigations, the unverified st
   await dispatchPreloadError(page);
   await page.waitForTimeout(4_000);
   expect(await markerGone(page)).toBe(false);
-  expect(navigations()).toBe(1);
+  expect(navigations()).toBe(bootNavs);
 
   // Positive control: healing the read must restore the reload.
   await page.evaluate(() => {
@@ -315,7 +317,7 @@ test("5C-E: guard-stamp read-back throws — zero navigations, the unverified st
       // Navigation cuts the evaluate short.
     });
   await expect.poll(() => markerGone(page), { timeout: 30_000 }).toBe(true);
-  expect(navigations()).toBe(2);
+  await expect.poll(() => navigations(), { timeout: 30_000 }).toBe(bootNavs + 1);
 
   await page.close();
 });
@@ -336,18 +338,19 @@ test("5D-E: guard-stamp write is silently dropped — zero navigations across re
     };
   }, GUARD_KEY);
   await bootAndMark(page);
-  expect(navigations()).toBe(1);
+  const bootNavs = navigations(); // boot itself may navigate more than once
+  expect(bootNavs).toBeGreaterThanOrEqual(1);
 
   await dispatchPreloadError(page);
   await page.waitForTimeout(4_000);
   expect(await markerGone(page)).toBe(false);
-  expect(navigations()).toBe(1);
+  expect(navigations()).toBe(bootNavs);
   expect(await page.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY)).toBeNull();
 
   await dispatchPreloadError(page);
   await page.waitForTimeout(4_000);
   expect(await markerGone(page)).toBe(false);
-  expect(navigations()).toBe(1);
+  expect(navigations()).toBe(bootNavs);
 
   // Positive control: a storing write must restore the reload.
   await page.evaluate(() => {
@@ -363,7 +366,7 @@ test("5D-E: guard-stamp write is silently dropped — zero navigations across re
       // Navigation cuts the evaluate short.
     });
   await expect.poll(() => markerGone(page), { timeout: 30_000 }).toBe(true);
-  expect(navigations()).toBe(2);
+  await expect.poll(() => navigations(), { timeout: 30_000 }).toBe(bootNavs + 1);
 
   await page.close();
 });
