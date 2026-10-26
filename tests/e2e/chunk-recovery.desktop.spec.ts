@@ -212,7 +212,7 @@ async function dispatchPreloadError(page: import("playwright/test").Page): Promi
   });
 }
 
-test("5B-E: guard-stamp write throws — zero navigations across repeated failures, reload returns when storage heals", async ({
+test("5B-E: guard-stamp write throws — zero navigations across repeated failures; a fresh unsabotaged page reloads once", async ({
   context,
 }) => {
   await serveBuiltArtifact(context);
