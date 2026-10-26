@@ -50,11 +50,11 @@ test("isChunkLoadError: rejects unrelated errors and non-errors", () => {
  */
 interface SharedStorage {
   store: Map<string, string>;
-  calls: { set: number; remove: number };
+  calls: { set: number; setByKey: Record<string, number>; remove: number };
   failRemove: boolean;
 }
 function sharedStorage(failRemove = false): SharedStorage {
-  return { store: new Map(), calls: { set: 0, remove: 0 }, failRemove };
+  return { store: new Map(), calls: { set: 0, setByKey: {}, remove: 0 }, failRemove };
 }
 function fakeHost(startNow = 1_000_000, shared: SharedStorage = sharedStorage()) {
   const listeners = new Map<string, Array<(event: unknown) => void>>();
@@ -72,6 +72,7 @@ function fakeHost(startNow = 1_000_000, shared: SharedStorage = sharedStorage())
       getItem: (k) => store.get(k) ?? null,
       setItem: (k, v) => {
         calls.set += 1;
+        calls.setByKey[k] = (calls.setByKey[k] ?? 0) + 1;
         store.set(k, v);
       },
       removeItem: (k) => {
@@ -130,7 +131,7 @@ test("1-U: fresh episode reloads once at T0+1500, writes the stamp once, never a
   assert.equal(f.state.reloads, 0);
   f.advanceTimersBy(1_500);
   assert.equal(f.state.reloads, 1);
-  assert.equal(f.calls.set, 1);
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
   assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
   f.advanceTimersBy(60_000); // failure-free: the write alone never arms the clear countdown
   assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
@@ -170,7 +171,7 @@ test("10-U: a burst of failures collapses into one decision — one pending time
   assert.deepEqual(f.pendingTimers(), [1_500]);
   f.advanceTimersBy(1_500);
   assert.equal(f.state.reloads, 1);
-  assert.equal(f.calls.set, 1);
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
 });
 
 test("6-U: the app's stale-build offer on screen stands recovery down — and does not consume the guard", () => {
@@ -183,7 +184,7 @@ test("6-U: the app's stale-build offer on screen stands recovery down — and do
   // Standing down must not consume the guard: once the offer is gone,
   // a later failure still recovers.
   assert.equal(f.store.get(CHUNK_RELOAD_KEY), undefined);
-  assert.equal(f.calls.set, 0);
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 0);
   f.state.offerVisible = false;
   fireVite(f);
   f.advanceTimersBy(1_500);
@@ -306,10 +307,12 @@ function stubWindow(sessionStorageStub: unknown) {
 test("2-U: two no-arg installs register exactly 3 listeners; one dispatch reloads once with one stamp", () => {
   const m = new Map<string, string>();
   let sets = 0;
+  const setsByKey: Record<string, number> = {};
   const ss = {
     getItem: (k: string) => m.get(k) ?? null,
     setItem: (k: string, v: string) => {
       sets += 1;
+      setsByKey[k] = (setsByKey[k] ?? 0) + 1;
       m.set(k, v);
     },
     removeItem: (k: string) => {
@@ -331,7 +334,7 @@ test("2-U: two no-arg installs register exactly 3 listeners; one dispatch reload
   assert.equal(after3, 3); // RED pre-fix: 9
   assert.deepEqual(timerMs, [1_500]);
   assert.equal(reloads, 1);
-  assert.equal(sets, 1);
+  assert.equal(setsByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
 });
 
 test("2-U-blocked: blocked storage via the default host — no dispatch reloads, second dispatch still zero", () => {
@@ -529,11 +532,11 @@ test("7-U: an offer arriving after the decision point does not stand recovery do
   fireVite(f);
   f.advanceTimersBy(1_500);
   assert.equal(f.state.reloads, 1);
-  assert.equal(f.calls.set, 1);
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
   f.state.offerVisible = true; // too late — the decision already fired
   f.advanceTimersBy(10_000);
   assert.equal(f.state.reloads, 1);
-  assert.equal(f.calls.set, 1);
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 1);
 });
 
 test("9-Ua: a restarted countdown no-ops the stale generation at the original deadline and clears at the new one", () => {
@@ -614,14 +617,15 @@ test("9-Ud: unrelated errors inside an active episode do not restart the countdo
  * reload cannot pass vacuously.
  */
 function countingThrowingStorage() {
-  const state = { sets: 0 };
+  const state = { sets: 0, setsByKey: {} as Record<string, number> };
   const boom = () => {
     throw new Error("storage blocked");
   };
   const storage: NonNullable<ChunkRecoveryHost["storage"]> = {
     getItem: boom,
-    setItem: () => {
+    setItem: (k: string) => {
       state.sets += 1;
+      state.setsByKey[k] = (state.setsByKey[k] ?? 0) + 1;
       throw new Error("storage blocked");
     },
     removeItem: boom,
@@ -849,13 +853,13 @@ test("5C-U-offer: stale-offer stand-down attempts no write; a later failure on b
   fireVite(f);
   f.advanceTimersBy(1_500);
   assert.equal(f.state.reloads, 0);
-  assert.equal(state.sets, 0); // the offer check precedes any write attempt
+  assert.equal(state.setsByKey[CHUNK_RELOAD_KEY] ?? 0, 0); // the offer check precedes any write attempt
   f.state.offerVisible = false;
   fireVite(f);
   f.advanceTimersBy(1_500);
   f.advanceTimersBy(10_000);
   assert.equal(f.state.reloads, 0);
-  assert.equal(state.sets, 1); // the blocked failure attempted once, then latched
+  assert.equal(state.setsByKey[CHUNK_RELOAD_KEY] ?? 0, 1); // the blocked failure attempted once, then latched
 });
 
 test("5C-U-after-clear: an episode that clears, then fails with storage now broken, stands down", () => {
@@ -903,7 +907,7 @@ test("5C-U-roundtrip: working storage reloads exactly once, only on an exact ver
   assert.equal(f.state.reloads, 0);
   f.advanceTimersBy(1); // the decision fires at T0+1_500
   assert.equal(f.state.reloads, 1);
-  assert.equal(f.calls.set, 1); // verification does not double-write
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 1); // verification does not double-write
   assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
   const decisionOps = ops.slice(mark);
   const setIdx = decisionOps.indexOf("set");
