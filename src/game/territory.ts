@@ -55,28 +55,61 @@ function importAtlas(): Promise<{ default: unknown }> {
 
 let atlasImporter: () => Promise<{ default: unknown }> = importAtlas;
 
-function loadCountryFeatures(): Promise<CountryFeature[]> {
+/**
+ * #209: a HUNG import is worse than a failed one. Failures already
+ * retry-evict below, but a hung import never settles at all — and
+ * every awaiter of this load (`openRun`, the boot restore) then waits
+ * forever behind its loading fallback. The load is therefore raced
+ * against this bound: on timeout the attempt is evicted exactly like
+ * a failure, readers stay fail-closed, and the next preload retries.
+ * 10 s is the order of the build-staleness probe bound (8 s) and well
+ * under the crash watchdog's ~28 s boot budget, so the recoverable
+ * path always wins the race. If the import lands after the bound its
+ * data still populates the cache — late is fine; only the wait was
+ * bounded. (When a load is already in flight, the FIRST caller's
+ * bound governs; later callers share its promise.)
+ */
+export const TERRITORY_LOAD_TIMEOUT_MS = 10_000;
+
+function loadCountryFeatures(
+  timeoutMs: number = TERRITORY_LOAD_TIMEOUT_MS,
+): Promise<CountryFeature[]> {
   if (!loadPromise) {
     loadRuns += 1;
-    loadPromise = atlasImporter()
-      .then((mod) => {
-        const topo = mod.default as unknown as {
-          objects: { countries: unknown };
-        };
-        const features = (
-          feature(topo, topo.objects.countries) as unknown as Collection
-        ).features;
-        conversionRuns += 1;
-        cachedCountries = features;
-        return features;
-      })
-      .catch((err: unknown) => {
-        // Retry eviction (the admin-1 chunk precedent in
-        // reverse-geocode.ts): a failed load must not poison the cache —
-        // the next preload call retries.
-        loadPromise = null;
-        throw err;
-      });
+    const attempt = atlasImporter().then((mod) => {
+      const topo = mod.default as unknown as {
+        objects: { countries: unknown };
+      };
+      const features = (
+        feature(topo, topo.objects.countries) as unknown as Collection
+      ).features;
+      conversionRuns += 1;
+      cachedCountries = features;
+      return features;
+    });
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const timed = new Promise<CountryFeature[]>((resolve, reject) => {
+      timer = setTimeout(() => {
+        reject(new Error(`territory load timed out after ${timeoutMs} ms`));
+      }, timeoutMs);
+      attempt.then(
+        (features) => {
+          if (timer) clearTimeout(timer);
+          resolve(features);
+        },
+        (err: unknown) => {
+          if (timer) clearTimeout(timer);
+          reject(err);
+        },
+      );
+    });
+    loadPromise = timed.catch((err: unknown) => {
+      // Retry eviction (the admin-1 chunk precedent in
+      // reverse-geocode.ts): a failed — or timed-out — load must not
+      // poison the cache; the next preload call retries.
+      loadPromise = null;
+      throw err;
+    });
   }
   return loadPromise;
 }
@@ -85,10 +118,14 @@ function loadCountryFeatures(): Promise<CountryFeature[]> {
  * Idempotent: starts the countries-50m load on the first call and reuses
  * the in-flight / settled promise afterwards (no double fetch, no double
  * parse). Never rejects: a failed load degrades every sync reader to its
- * fail-closed result, and the next call retries.
+ * fail-closed result, and the next call retries. Never hangs either: a
+ * load that has not settled within `timeoutMs` resolves the same way
+ * (#209), so awaiters behind loading fallbacks always get an answer.
  */
-export function preloadTerritory(): Promise<void> {
-  return loadCountryFeatures().then(
+export function preloadTerritory(
+  timeoutMs: number = TERRITORY_LOAD_TIMEOUT_MS,
+): Promise<void> {
+  return loadCountryFeatures(timeoutMs).then(
     () => undefined,
     () => undefined,
   );
