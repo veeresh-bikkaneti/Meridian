@@ -2,7 +2,7 @@ import { distanceKm } from "@/game/geo";
 import { formatLength, unitForEdition } from "@/game/units";
 import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor, storyForBand } from "@/game/generated-places";
-import { isNewBuildDeployed } from "@/game/build-staleness";
+import { CURRENT_BUILD_ID, isNewBuildDeployed } from "@/game/build-staleness";
 import { preloadAdmin1Boundaries, preloadAdmin1ForCountry, admin1ChunkIso2ForRegion } from "@/game/reverse-geocode";
 import { preloadTerritory } from "@/game/territory";
 import {
@@ -170,6 +170,7 @@ import {
   emitEvent,
   initObservability,
   installGlobalErrorHandlers,
+  noteRecoverySignal,
   recordMilestone,
   sanitizeError,
   setObservabilityEndpoint,
@@ -1264,7 +1265,10 @@ export function GameApp() {
     // screen import can fire, so a deploy that lands mid-session
     // reloads the tab once onto the current build instead of stranding
     // the player on a chunk-404 error card (see src/lib/chunk-recovery.ts).
-    installChunkLoadRecovery();
+    installChunkLoadRecovery(undefined, {
+      buildId: CURRENT_BUILD_ID,
+      onRecoverySignal: (signal, facts) => noteRecoverySignal(signal, facts),
+    });
     // Scout Map boot qualification: resolve the mode pre-mount — before
     // any map instance exists.
     // Write policy (Q3): a live stored assignment (manual forever, auto
