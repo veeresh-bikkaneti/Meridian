@@ -1,72 +1,41 @@
-# BRANCH_STATUS — fix/wave2-build-stamp
+# BRANCH_STATUS — docs/221-194-observability-sync
 
-**State: PR #225 open. Engineering Lead verdict: READY (round 1, 6 non-blocking nits — 3 fixed in the nit round, 3 deferred in the PR comment). Next: Chitti — only the owner merges.**
-Base: `origin/main d2b643e` (rebased 2026-10-23 after #232, #235 and #219 landed; original base was the PR #222 merge commit `1ca4c04`). Only conflict was this file, resolved per convention (the branch's own status wins).
-Full write-up: `docs/reviews/2026-10-21-wave2-build-stamp.md`.
+**State: in progress (Coordinator B, SecOps & DevOps cluster, 2026-10-26). Owner merges only — do not merge.**
+Base: `origin/main dbb83a3` (#225).
 
 ## What this branch does
 
-- **WI-7a — build stamping for the Workers build.** One build id,
-  computed once in `vite.config.ts` (`BUILD_ID`), is shared by the
-  bundle define, the sw.js fingerprint plugin and the new build-meta
-  plugin, which writes `build-meta.json` into the build output
-  inside the Vite build itself. Before this, build-meta.json was
-  generated only by npm `prebuild` hooks, so a direct `vite build`
-  (the Workers Builds shape) on a fresh checkout served none.
-  `scripts/verify-build-stamp.mjs` proves meta == sw.js VERSION ==
-  a prefix of HEAD for any built tree.
-- **WI-7b — production smoke script.** `node scripts/prod-smoke.mjs
-  [baseUrl]` (GET only, non-zero exit on failure) checks the live
-  site's security headers, `/_serverFn/` 404, security.txt, manifest
-  start_url and the build stamp. Documented in the README Deployment
-  section; a manual-only GitHub Actions workflow runs it
-  (`workflow_dispatch`, no schedule).
-
-## Context finding (WI-7a)
-
-Production's earlier `36bad5e` stamp was real, not coincidence:
-`resolveBuildId()` uses the 12-char `GITHUB_SHA` prefix on GitHub
-Actions (Pages) and falls back to the 7-char `git rev-parse --short
-HEAD` on Workers Builds. Details and the divergence gaps in the
-review doc.
-
-## Finding (not this branch's files)
-
-The smoke script fails ONE check against current production:
-`GET /_serverFn/` returns TanStack's unhandled 500, not the 404
-PR #222's ServerFnGuard produces on main. The guard is not effective
-in the deployed Workers/Nitro build. Needs an owner-assigned
-follow-up branch (server-entry wiring); `src/` is outside this
-branch's file list.
+- **#221 (residual only):** most of the stale Phase-1 passages named in
+  the issue were already cured on main. This branch fixes what was
+  left: the Files-section description of `wrangler.toml` in
+  `workers/crash-report/README.md` (it still claimed a commented-out
+  KV block "awaiting merge" — the uncommented block with the real
+  namespace id is on main via PR #204), two leftover `cf.py`
+  references (the current helper is `cf-version.py` and secrets ride
+  with a version upload), and the same stale `cf.py` wording in the
+  `wrangler.toml` header comment.
+- **#221 rider:** handbook ch07 §4 now carries the caveat that
+  `smoke:crash` check 4 is a known open failure on the workers.dev
+  root, so "(4/4)" is not fully green.
+- **#194:** event-type lists synced to the source of truth.
+  `docs/observability.md` gains the missing `boot_failure` and
+  `tile_failed` rows; handbook ch07 gains `boot_failure`. Both places
+  now say plainly: the worker accepts 7 types, the client type lists
+  13 (adding `storyteller_shown` and the `narration_*` types), and
+  the extra 6 stay client-side.
 
 ## Files
 
-- `scripts/build-meta-plugin.mjs` (new)
-- `scripts/build-meta-plugin.test.mjs` (new)
-- `scripts/verify-build-stamp.mjs` (new)
-- `scripts/prod-smoke.mjs` (new)
-- `scripts/prod-smoke.test.mjs` (new)
-- `scripts/fingerprint-sw-plugin.mjs` (optional pinned build id)
-- `vite.config.ts` (one shared BUILD_ID; build-meta plugin registered)
-- `package.json` (`smoke:prod`, `verify:build-stamp` scripts)
-- `.github/workflows/prod-smoke.yml` (new, manual only)
-- `README.md` (Deployment: stamping + smoke subsections)
-- `docs/reviews/2026-10-21-wave2-build-stamp.md` (new)
+- `workers/crash-report/README.md`
+- `workers/crash-report/wrangler.toml` (header comment only)
+- `docs/observability.md`
+- `docs/handbook/07-engineering-and-ops.md`
 - `BRANCH_STATUS.md` (this file)
 
 ## Gates
 
-- typecheck clean · npm test green (scripts 831, src 1473, 0 fail)
-- lint-cards GATE PASSED
-- `npm run build`, `npm run build:pages`, direct `npx vite build`
-  all green; `verify-build-stamp` PASS on both output trees
-- Playwright hydration-boot against the built artifact: 1/1
-- prod-smoke vs live production: 4 PASS / 1 FAIL (the S5-prod
-  finding above — pre-existing, not this branch)
+- Docs-only change; gate results recorded in the PR / coordinator report.
 
 ## Pending
 
-- Chitti → owner's merge call. ("Ready to merge? NO" until both.)
-- After the owner merges: run `node scripts/prod-smoke.mjs` against
-  production and post the real output on the PR (it will keep
-  failing the `/_serverFn/` check until the S5-prod follow-up lands).
+- Panel re-vote on the final tip, then the owner's merge call.
