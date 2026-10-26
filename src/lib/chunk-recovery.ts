@@ -45,10 +45,9 @@
  * That limit is demand-driven: a chunk that is never requested cannot
  * fail; an idle page can end an episode without the broken chunk being
  * retried — recovery then re-arms for the player's next attempt. When
- * session storage is blocked, auto-recovery promises at most one
- * auto-reload per page load when session storage is blocked, and it makes
- * no promise that a later page load will be prevented from auto-reloading
- * once again if the same chunk is still missing. The stand-down for the
+ * the reload stamp cannot be persisted and read back verified,
+ * auto-recovery stands down and does not auto-reload on this or any
+ * later failure in that page load. The stand-down for the
  * app's own recovery applies only to an offer already on screen at the
  * decision point, CHUNK_RECOVERY_DELAY_MS after the failure; an offer
  * that appears after that point does not stand this handler down.
@@ -188,14 +187,20 @@ export function installChunkLoadRecovery(hostArg?: ChunkRecoveryHost): void {
     installedWindows.add(win);
   }
 
-  // Same-page backstop for when sessionStorage is blocked: after a
-  // reload this resets, but the storage stamp (when writable) is the
-  // cross-reload guard; this one only has to outlive the current page.
+  // Same-page mirror of the storage stamp: after a reload this
+  // resets, but the storage stamp is the cross-reload guard; this one
+  // only has to outlive the current page. The mirror never authorises
+  // a reload on its own — a reload requires a stamp that persisted
+  // and read back verified (see persistStamp).
   let memoryStamp: number | null = null;
   // Episode latch (D2): all of this state is per-install closure
   // state; the only module-level state is the two install guards.
   let episodeCleared = false;
   let installStale = false;
+  // Set when a stamp write could not be persisted and verified: this
+  // page load never auto-reloads again (no unrememberable reloads).
+  // Never cleared within the page load.
+  let unrememberable = false;
   let clearGeneration = 0;
   // One decision in flight at a time: a burst of chunk failures from
   // the same incident collapses into a single deferred decision.
@@ -215,17 +220,43 @@ export function installChunkLoadRecovery(hostArg?: ChunkRecoveryHost): void {
     return Math.max(stored, memoryStamp);
   };
 
-  const writeStamp = (at: number): void => {
+  // The only stamp write, called solely from decide(). A reload is
+  // authorised only by a stamp that persisted AND read back verified
+  // from storage itself — never by the in-memory mirror, which dies
+  // with the page and so cannot guard the reload it would authorise.
+  // Storage null, a throw at either step, or a read-back that is
+  // missing or not exactly the written value all fail verification:
+  // the page stands down for good (unrememberable), the mirror is
+  // left unset, and a best-effort cleanup removes any stamp the
+  // failed attempt wrote — a survivor is judged again at the next
+  // install under the normal age rule.
+  const persistStamp = (at: number): boolean => {
+    if (!host.storage) {
+      unrememberable = true;
+      return false;
+    }
+    let verified = false;
+    try {
+      host.storage.setItem(CHUNK_RELOAD_KEY, String(at));
+      verified = host.storage.getItem(CHUNK_RELOAD_KEY) === String(at);
+    } catch {
+      verified = false;
+    }
+    if (!verified) {
+      unrememberable = true;
+      try {
+        host.storage.removeItem(CHUNK_RELOAD_KEY);
+      } catch {
+        // Best-effort cleanup; see the note above.
+      }
+      return false;
+    }
     memoryStamp = at;
     // Any stamp write begins a new episode on this page (D6 S3); the
     // write itself never arms the clear countdown.
     episodeCleared = false;
     installStale = false;
-    try {
-      host.storage?.setItem(CHUNK_RELOAD_KEY, String(at));
-    } catch {
-      // Storage unavailable — the in-memory stamp still guards this page.
-    }
+    return true;
   };
 
   const clearStamp = (): void => {
@@ -278,13 +309,17 @@ export function installChunkLoadRecovery(hostArg?: ChunkRecoveryHost): void {
   const decide = (): void => {
     decisionPending = false;
     try {
+      // An earlier failure in this page load could not be remembered
+      // (its stamp never persisted): no later failure reloads here.
+      if (unrememberable) return;
       // The app's confirmed-stale offer owns the screen — stand down
       // and let the player's Refresh tap (or dismissal) decide.
       if (host.staleOfferVisible()) return;
       // An active, uncleared episode never reloads and never rewrites
       // the stamp.
       if (episodeActive()) return;
-      writeStamp(host.now());
+      // No unrememberable reloads: reload only on a verified stamp.
+      if (!persistStamp(host.now())) return;
       host.reload();
     } catch {
       // Recovery is best-effort: a failure here must never become a
