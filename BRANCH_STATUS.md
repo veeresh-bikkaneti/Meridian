@@ -2,7 +2,7 @@
 
 **Branch:** `fix/209-210-211-chunk-territory`
 **Base:** `main` at `5f24c6c` (2026-10-26)
-**State: BUILT — gates in progress (2026-10-26).** Coordinator C
+**State: BUILT + GATES GREEN (2026-10-26).** Coordinator C
 (UX/UI & Frontend + Game Squad) cluster branch 1 of 3. Not merged —
 merge is the owner's word.
 
@@ -58,15 +58,18 @@ merge is the owner's word.
   build-meta mismatch → new-version prompt)
 - `docs/handbook/02-game-design-decisions.md` (§11 extended)
 
-## Gates
+## Gates (2026-10-26, this head)
 
 - [x] Targeted unit tests (46) incl. all new pins — pass
-- [x] `npx tsc --noEmit` — clean
-- [ ] `npm test` (full)
-- [ ] `node scripts/lint-cards.mjs`
-- [ ] `npm run build:pages`
-- [ ] Playwright `--workers=1`: chunk-boundary-copy (new),
-      chunk-recovery + geodetective-hint (neighbors)
+- [x] `npx tsc --noEmit` — clean, exit 0
+- [x] `npm test` — scripts 832 pass / 0 fail / 9 skipped;
+      src 1649/1649 pass
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — exit 0
+- [x] Playwright `--workers=1`: chunk-boundary-copy **2/2** (new
+      #210 legs) + chunk-recovery **15/15** (neighbors, incl. the
+      6-E stand-down oracle) = 17/17; coldtrail **11/11** (Trail
+      heading neighbor)
 
 ## Out of scope / sequencing notes
 
