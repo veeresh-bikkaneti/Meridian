@@ -12,8 +12,14 @@ Issue: #199 — storyteller audio follow-ups (per-family CI guard test + stale `
   - Guard result on this branch: 6/6 pass, loudness tier executed (not skipped) on this machine.
 - [x] Header cure: `src/components/storyteller-lines.ts` now states the post-#174 truth — Grok-generated Santa voice accepted 2026-10-21, all 14 clips, DO NOT regenerate via the Kokoro scripts (superseded `am_fenrir`), with a pointer to the guard test. A test in the guard file pins this wording so the header cannot quietly go stale again.
 
+## Gates (on this branch's head)
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — exit 0: scripts 838 pass / 0 fail / 9 skipped (832 baseline + 6 new guard tests, loudness tier executed not skipped); src 1633 pass / 0 fail
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — exit 0
+- E2E: not applicable — unit-level guard + comment header; no E2E surface changes.
+
 ## Pending
-- [ ] Full gates: `npx tsc --noEmit`, `npm test`, `node scripts/lint-cards.mjs`, `npm run build:pages`
 - [ ] PR opened (no merge — owner merges)
 
 ## Notes
