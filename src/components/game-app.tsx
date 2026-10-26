@@ -165,6 +165,7 @@ import {
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
 import { installChunkLoadRecovery } from "@/lib/chunk-recovery";
+import { withChunkTimeout } from "@/lib/chunk-timeout";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
@@ -225,11 +226,19 @@ import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // HomeGlobe idiom above).
 const loadLoopScreen = () => import("@/game/loop/LoopScreen");
 const loadTrailScreen = () => import("@/game/coldtrail/TrailScreen");
+// #209: each lazy load is raced against CHUNK_LOAD_TIMEOUT_MS (inside
+// withChunkTimeout) — a HUNG import never settles, so without the race
+// the Suspense fallback below would spin forever; with it, the race
+// rejection lands in MapErrorBoundary's recoverable card instead.
 const LoopScreen = lazy(() =>
-  loadLoopScreen().then((m) => ({ default: m.LoopScreen })),
+  withChunkTimeout(loadLoopScreen(), "GeoDetective screen").then((m) => ({
+    default: m.LoopScreen,
+  })),
 );
 const TrailScreen = lazy(() =>
-  loadTrailScreen().then((m) => ({ default: m.TrailScreen })),
+  withChunkTimeout(loadTrailScreen(), "Cold Trail screen").then((m) => ({
+    default: m.TrailScreen,
+  })),
 );
 /**
  * F2b intent prefetch for the edition + case cards: hovering, focusing,
@@ -247,9 +256,38 @@ const TrailScreen = lazy(() =>
  * keep by contrast: its loader evicts a failed load and retries on the
  * next call, and a miss degrades fail-closed at the readers instead of
  * surfacing an error card.
+ *
+ * #211 item 1: FOCUS is the weakest of the three intent signals — a
+ * keyboard or screen-reader user tabs PAST these cards on the way to
+ * somewhere else, and focus alone starts a ~206 KB (brotli) download.
+ * On a Save-Data connection that spend is exactly what the player
+ * asked the browser to avoid, so the focus-triggered prefetch is
+ * gated on the Save-Data signal (the home-globe precedent in
+ * home-globe.tsx reads the same `navigator.connection.saveData`).
+ * Pointer intent (hover / press) is deliberate and stays ungated;
+ * and nothing about play changes — a tap still awaits the load in
+ * openRun before the run commits.
  */
 function prefetchTerritoryData(): void {
   void preloadTerritory();
+}
+
+/** True when the browser reports the player's Save-Data preference. */
+function saveDataEnabled(): boolean {
+  try {
+    return Boolean(
+      (navigator as Navigator & { connection?: { saveData?: boolean } })
+        .connection?.saveData,
+    );
+  } catch {
+    return false;
+  }
+}
+
+/** The focus-triggered variant: skipped entirely under Save-Data. */
+function prefetchTerritoryDataOnFocus(): void {
+  if (saveDataEnabled()) return;
+  prefetchTerritoryData();
 }
 import {
   REVIEW_DECK_COPY,
@@ -413,7 +451,9 @@ const RUN_DROP_KEY = "meridian.drop";
  * document — only a reload genuinely re-fetches the chunk. The run is
  * restored from sessionStorage on boot, so the game survives the reload.
  */
-const SatelliteMap = lazy(() => import("@/map/satellite-map"));
+const SatelliteMap = lazy(() =>
+  withChunkTimeout(import("@/map/satellite-map"), "Satellite map"),
+);
 
 /**
  * Suspense fallback while the lazy satellite-map chunk downloads. Mirrors
@@ -1559,6 +1599,9 @@ export function GameApp() {
           // rejects (a failed load fails closed at the readers), so
           // deferring the commit on it cannot strand the boot; the
           // splash stays up until it lands, then ready is set.
+          // (#209: the preload is timeout-bounded in territory.ts,
+          // so this deferral always settles — a hung import can no
+          // longer hold the splash up forever.)
           void preloadTerritory().then(() => {
             commit(restored);
             ensureSession(restored);
@@ -1647,10 +1690,18 @@ export function GameApp() {
         // so a run must never start ahead of it. preloadTerritory never
         // rejects (a failed load fails closed at the readers), so this
         // await cannot fail the start.
-        const [places] = await Promise.all([
-          placesFor(edition, regionId, choice, tierSplit),
-          preloadTerritory(),
-        ]);
+        // #209: the pair is raced against CHUNK_LOAD_TIMEOUT_MS — a
+        // HUNG places import never settles, and without the bound the
+        // "Fetching this region's places…" state would spin forever.
+        // A timeout lands in the catch below like any other load
+        // failure: fail-closed, recoverable, stale-probed.
+        const [places] = await withChunkTimeout(
+          Promise.all([
+            placesFor(edition, regionId, choice, tierSplit),
+            preloadTerritory(),
+          ]),
+          `places for ${regionName}`,
+        );
         if (gen !== runStartGenRef.current) return; // stale (BLOCK-A)
         recordMilestone("data_loaded", { edition, regionId, chunkId: regionId });
         const dateKey = trailDate();
@@ -2147,7 +2198,7 @@ export function GameApp() {
     return (
       <>
         {mapModeAnnouncer}
-        <MapErrorBoundary>
+        <MapErrorBoundary surface="GeoDetective">
           <Suspense fallback={<SessionLoadingFallback label="Loading GeoDetective…" />}>
             <LoopScreen
               onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
@@ -2168,7 +2219,7 @@ export function GameApp() {
     return (
       <>
         {mapModeAnnouncer}
-        <MapErrorBoundary>
+        <MapErrorBoundary surface="Cold Trail">
           <Suspense fallback={<SessionLoadingFallback label="Loading Cold Trail…" />}>
             <TrailScreen onLeave={() => { writeColdTrailOpen(false); setColdTrailOpen(false); }} />
           </Suspense>
@@ -2825,19 +2876,19 @@ function Choose({
             <path d="M248 97 C244 97 242 100 242 102.4 C242 106 248 110.6 248 110.6 C248 110.6 254 106 254 102.4 C254 100 252 97 248 97 Z" fill="#EFEAD6" />
           </svg>
           <div className="hv5-editions">
-            <button type="button" className="hv5-edition" onClick={onState} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryData}>
+            <button type="button" className="hv5-edition" onClick={onState} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryDataOnFocus}>
               <span className="hv5-idx">N° 01</span>
               <MapPin className="size-5" aria-hidden="true" />
               <span className="hv5-etitle">State</span>
               <span className="hv5-eaction">Choose a state</span>
             </button>
-            <button type="button" className="hv5-edition" onClick={onCountry} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryData}>
+            <button type="button" className="hv5-edition" onClick={onCountry} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryDataOnFocus}>
               <span className="hv5-idx">N° 02</span>
               <Flag className="size-5" aria-hidden="true" />
               <span className="hv5-etitle">Country</span>
               <span className="hv5-eaction">Choose a country</span>
             </button>
-            <button type="button" className="hv5-edition" onClick={onGlobe} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryData}>
+            <button type="button" className="hv5-edition" onClick={onGlobe} onPointerEnter={prefetchTerritoryData} onPointerDown={prefetchTerritoryData} onFocus={prefetchTerritoryDataOnFocus}>
               <span className="hv5-idx">N° 03</span>
               <Globe2 className="size-5" aria-hidden="true" />
               <span className="hv5-etitle">Globe</span>
@@ -2892,7 +2943,7 @@ function Choose({
               onClick={onLoop}
               onPointerEnter={prefetchTerritoryData}
               onPointerDown={prefetchTerritoryData}
-              onFocus={prefetchTerritoryData}
+              onFocus={prefetchTerritoryDataOnFocus}
               aria-label={loopProgress.inProgress ? "GeoDetective: Resume your case" : "GeoDetective: Solve a mystery"}
             >
               {loopProgress.inProgress ? (
@@ -2934,7 +2985,7 @@ function Choose({
               onClick={onColdTrail}
               onPointerEnter={prefetchTerritoryData}
               onPointerDown={prefetchTerritoryData}
-              onFocus={prefetchTerritoryData}
+              onFocus={prefetchTerritoryDataOnFocus}
               aria-label="Cold Trail: Start the trail"
             >
               <span aria-hidden="true">❄️</span>{" "}Start the trail

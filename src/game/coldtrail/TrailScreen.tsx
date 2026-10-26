@@ -130,9 +130,14 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
 
   if (!caseData) {
     // Fail closed: a corrupt or empty deck never starts a broken case.
+    // #211 item 2 (focus parity with Loop): the heading carries the
+    // case-heading ref + tabIndex, so the arrival-focus effect above
+    // lands keyboard/screen-reader focus here too — on the healthy
+    // path it targets the case heading at the bottom of this file;
+    // without the ref this branch silently dropped the focus landing.
     return (
       <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
-        <h1 className="mode-title text-3xl text-fg">❄️ Cold Trail</h1>
+        <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title text-3xl text-fg">❄️ Cold Trail</h1>
         <p className="mt-4 text-fg" role="alert">
           The case files didn&rsquo;t load. No case to play right now.
         </p>

@@ -1,13 +1,14 @@
 import { Component, createRef, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { emitMapError } from "@/lib/observability";
+import { isNewBuildDeployed } from "@/game/build-staleness";
 
 /**
- * Error boundary around the lazily-loaded SatelliteMap (P0 Safari launch
- * fix). A chunk-load failure (stale hashed URL after a deploy, flaky
- * connection, CDN hiccup) — or a post-load render error inside the map —
- * must never strand the player on a blank page: this renders a
- * user-friendly retry card instead.
+ * Error boundary around the lazily-loaded screens and map (P0 Safari
+ * launch fix). A chunk-load failure (stale hashed URL after a deploy,
+ * flaky connection, CDN hiccup) — or a post-load render error inside
+ * the wrapped screen — must never strand the player on a blank page:
+ * this renders a user-friendly retry card instead.
  *
  * "Try again" reloads the whole page — deliberately NOT an in-place
  * re-import. Two platform facts force this: (1) React.lazy caches the
@@ -22,13 +23,43 @@ import { emitMapError } from "@/lib/observability";
  * the only recovery for the stale-deploy case (the old hashed URL is gone
  * for good; only a fresh shell has the new one). The run is restored from
  * sessionStorage on boot, so retrying never loses the game in progress.
+ *
+ * #210: the card answers the question the player is actually asking —
+ * "is this tab just old?" When the error lands, the boundary probes
+ * `isNewBuildDeployed()` (the same probe openRun and LoopScreen use):
+ *
+ * - Stale build → the card becomes the owner-approved update prompt
+ *   ("A new version of Meridian is available." + Refresh), the same
+ *   words as every other stale surface, instead of a generic failure.
+ * - Anything else → destination-neutral copy naming the wrapped
+ *   surface (`surface` prop): this boundary wraps GeoDetective and
+ *   Cold Trail as well as the map, and "Couldn't load the map" was
+ *   simply wrong on those screens.
+ *
+ * The probe never blocks the card: the neutral card renders at once
+ * and swaps in place if the probe lands stale (the probe itself is
+ * bounded at 8 s inside build-staleness). It fails closed — any probe
+ * problem keeps the neutral card. While the separate chunk-recovery
+ * handler (#245) may auto-reload a stale tab on its own schedule,
+ * this card remains the player's own visible, tappable recovery for
+ * as long as it is on screen.
  */
 export class MapErrorBoundary extends Component<
-  { children: ReactNode },
-  { error: Error | null }
+  {
+    children: ReactNode;
+    /** What this boundary wraps, for the neutral card's heading:
+     *  "the map" (default), "GeoDetective", "Cold Trail", … */
+    surface?: string;
+    /** Test seam: substitute the staleness probe. Defaults to the
+     *  real build-meta probe. */
+    probeStaleBuild?: () => Promise<boolean>;
+  },
+  { error: Error | null; staleBuild: boolean }
 > {
-  state = { error: null as Error | null };
+  state = { error: null as Error | null, staleBuild: false };
   private alertRef = createRef<HTMLDivElement>();
+  private probedFor: Error | null = null;
+  private unmounted = false;
 
   static getDerivedStateFromError(error: Error): { error: Error } {
     return { error };
@@ -37,16 +68,24 @@ export class MapErrorBoundary extends Component<
   componentDidMount(): void {
     // The chunk can fail on the very first render (the boundary then mounts
     // already holding the error) — move focus to the alert either way.
-    if (this.state.error) this.focusAlert();
+    if (this.state.error) {
+      this.focusAlert();
+      this.startStaleProbe(this.state.error);
+    }
   }
 
   componentDidUpdate(
     _prevProps: { children: ReactNode },
-    prevState: { error: Error | null },
+    prevState: { error: Error | null; staleBuild: boolean },
   ): void {
     // When the fallback appears, move focus to it so screen-reader and
     // keyboard users land on the recovery UI instead of a silent blank.
     if (this.state.error && !prevState.error) this.focusAlert();
+    if (this.state.error) this.startStaleProbe(this.state.error);
+  }
+
+  componentWillUnmount(): void {
+    this.unmounted = true;
   }
 
   componentDidCatch(error: Error): void {
@@ -56,6 +95,21 @@ export class MapErrorBoundary extends Component<
     // truncated message only — see src/lib/observability.ts). No-op
     // until an endpoint is configured in flags.json.
     emitMapError(error);
+    this.startStaleProbe(error);
+  }
+
+  /** #210: ask once per error whether a newer build is deployed. */
+  private startStaleProbe(error: Error): void {
+    if (this.probedFor === error) return;
+    this.probedFor = error;
+    const probe = this.props.probeStaleBuild ?? isNewBuildDeployed;
+    void probe()
+      .then((stale) => {
+        if (!this.unmounted && stale) this.setState({ staleBuild: true });
+      })
+      .catch(() => {
+        // Fail closed: a probe problem keeps the neutral card.
+      });
   }
 
   private focusAlert(): void {
@@ -71,6 +125,7 @@ export class MapErrorBoundary extends Component<
 
   render(): ReactNode {
     if (this.state.error) {
+      const surface = this.props.surface ?? "the map";
       return (
         <div
           ref={this.alertRef}
@@ -79,18 +134,37 @@ export class MapErrorBoundary extends Component<
           className="absolute inset-0 flex items-center justify-center bg-bg p-6 focus:outline-none"
         >
           <div className="w-full max-w-sm rounded-2xl border border-line bg-surface p-6 text-center">
-            <p className="text-base font-semibold text-fg">
-              Couldn&rsquo;t load the map.
-            </p>
-            <p className="mt-1 text-sm text-muted">
-              Your game is safe &mdash; the map just didn&rsquo;t finish
-              loading. Check your connection, then try again.
-            </p>
-            <div className="mt-4 flex justify-center">
-              <Button type="button" onClick={this.retry}>
-                Try again
-              </Button>
-            </div>
+            {this.state.staleBuild ? (
+              <>
+                <p className="text-base font-semibold text-fg">
+                  A new version of Meridian is available.
+                </p>
+                <p className="mt-1 text-sm text-muted">
+                  Your game is safe &mdash; this tab is running an older
+                  copy. Refresh to get the new version and keep playing.
+                </p>
+                <div className="mt-4 flex justify-center">
+                  <Button type="button" onClick={this.retry}>
+                    Refresh
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="text-base font-semibold text-fg">
+                  Couldn&rsquo;t load {surface}.
+                </p>
+                <p className="mt-1 text-sm text-muted">
+                  Your game is safe &mdash; it just didn&rsquo;t finish
+                  loading. Check your connection, then try again.
+                </p>
+                <div className="mt-4 flex justify-center">
+                  <Button type="button" onClick={this.retry}>
+                    Try again
+                  </Button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       );
