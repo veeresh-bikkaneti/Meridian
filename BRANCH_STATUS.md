@@ -1,76 +1,120 @@
-# BRANCH_STATUS — fix/no-unrememberable-reloads
+# BRANCH_STATUS — feat/crash-recovery-outcome
 
-**Branch:** `fix/no-unrememberable-reloads`
-**Base:** `main` at `a512916` (PR #246 merged 2026-10-25; branch
-rebased onto it the same day — the only conflict was this file,
-kept as this branch's record; gates re-run on the rebased head)
-**State: READY — independent Reality Checker verdict READY (no
-blockers, no majors; two minors: the 5B-E title wording, fixed in
-`c80859b`, and the checked dist buildId predating HEAD by
-test/docs-only commits, source-identical — a rebuild from final HEAD
-at merge time removes the question). The Reality Checker re-ran the
-evidence first-hand: unit 41/41 branch + 29/29 baseline, full suite
-1576/1576, tsc/lint/worker green, the 3 new E2E journeys 3/3, and
-adjudicated both flagged items (5-test rewrite; fresh-page positive
-control) as legitimate. The D6
-fix (Liz's Option 2 ruling, 2026-10-25): stand down on
-unrememberable reloads. Tier 2 council (ATDD → TDD contracts →
-adversarial rounds 1–2 → Chair sign-off) complete; manifest at
-`~/workspace/meridian-reload-loop-fix/CONSENSUS-MANIFEST-loop-fix.md`.
-Push + PR authorized by Liz 2026-10-25; the parent replays the
-local commits onto the remote branch via the GitHub API helper
-(SHAs may differ; content, messages and authorship are the same).
-Not merged, not deployed. Slice 2 (crash-report recovery outcomes)
-is NOT started; it comes after this fix merges.**
-It supersedes the previous contents of this file (the
-`feat/crash-report-verdicts` branch record, whose history lives on
-PR #247).
+**Branch:** `feat/crash-recovery-outcome`
+**Base:** `main` at `3fa68c0` (rebased 2026-10-26 onto the zod
+4.6.7 deps bump, PR #239; zero conflicts — the base delta touched
+only `package.json`/`package-lock.json`. A full final-head evidence
+pass on the previous head `38bf8ac` passed every gate but its
+verdict did not transfer when the base moved; decisive gates are
+re-run on this rebased head under Liz's "Fix 250" order, followed
+by a fresh independent Reality Check)
+**State: Slice 2 BUILT + gates run (2026-10-26).** Built under the
+signed Tier 2 Consensus Manifest
+(`~/workspace/meridian-crash-slice2/CONSENSUS-MANIFEST-slice2-build.md`),
+including ADDENDUM 2 (Liz's Option A ruling, 2026-10-26).
+Push + PR authorized by Liz 2026-10-26, including the
+crash-watchdog stale-build pin update (the journey now ingests the
+js_error + the designed stood_down recovery_outcome; the spec's
+next assertion still hits the pre-existing breadcrumb race —
+expected `data_chunk_load_start`, got `storyteller_ready` — the
+same signature documented on pristine bases since PR #245).
+The parent replays the local commits onto the remote branch via
+the GitHub API helper (SHAs may differ; content, messages and
+authorship are the same). Not merged, not deployed. Slice 3 not
+started.**
 
-## Scope (exactly this)
+## Option A harness amendment (Liz, 2026-10-26)
 
-Design: `meridian-crash-report-verdicts-design-2026-10-25.md` §3.5 F4b;
-Slice 2 phase-1 report (BLOCKED, D6) at
-`~/workspace/meridian-crash-slice2/REPORT-slice2.md`.
+The fake harness's write counting is scoped PER KEY
+(`calls.setByKey` alongside the global counter; `countingThrowingStorage`
+and the 2-U default-host stub gained the same per-key counts). ONLY the
+counter expressions changed in exactly these 7 pre-existing tests —
+every behavioural assertion byte-identical, no assertion weakened or
+removed:
 
-1. **The fix** (`src/lib/chunk-recovery.ts`, in place): at the reload
-   decision, the stamp write must persist and read back verified
-   (direct storage read, exact value). Storage null, any throw, or a
-   mismatch stands recovery down for the rest of the page load — no
-   auto-reload for that failure or any later one. Module header states
-   the new rule in the council-pinned sentence.
-2. **Tests** (`src/lib/chunk-recovery.test.ts`,
-   `tests/e2e/chunk-recovery.desktop.spec.ts`, in place): 5 named
-   rewrites of tests that pinned the old blocked-storage promise
-   (5B, 5B-SRC-U, 5A-U, 5A-U clock leg, 2-U-blocked — the last three
-   flagged in the manifest as a brief collision: they pin the same
-   old promise through the same path), plus new blocked-mode,
-   dangling-stamp, latch, and built-artifact journeys. Every other
-   existing test passes unchanged.
+- `1-U`, `10-U`, `2-U`, `7-U` (×2 lines), `5C-U-roundtrip` — stamp pins
+  now count writes to `meridian.chunkReloadAt` (expect 1).
+- `6-U` — stamp pin counts `meridian.chunkReloadAt` (expect 0).
+- `5C-U-offer` (×2 lines) — stamp pins count `meridian.chunkReloadAt`
+  via `setsByKey` (expect 0 at the offer, 1 after the blocked failure).
 
-Not in scope: Slice 2 (recovery outcomes), observability/worker
-changes, any other file. Recorded limitations (manifest §5):
-ephemeral-but-readable storage is undetectable from the page;
-stand-down is field-unverifiable in this pass; MapErrorBoundary's
-"Your game is safe" copy is inaccurate for the storage-blocked cohort
-(out of scope here, flagged for separate routing).
+Diff proof: `~/workspace/meridian-crash-slice2/logs2/optionA-test-diff.txt`.
+Chunk suite after the amendment: **55/55** (41 pre-existing as amended
++ O1–O14).
 
-## Verification (local, this branch; logs in `~/workspace/meridian-reload-loop-fix/logs/`)
+## What Slice 2 built
 
-- RED first: unit 24 pass / 17 fail (exactly the 5 rewrites + 12 new
-  5C tests); the 3 new E2E journeys failed on the pre-fix artifact at
-  `markerGone → true` (the page reloaded under sabotage). Mutations:
-  no-read-back fails exactly the 5 predicted tests; no-sticky-latch
-  fails exactly latch + heal.
-- Gates, branch vs pristine-main baseline (same environment):
-  `npx tsc --noEmit` exit 0 / 0 · `node scripts/lint-cards.mjs`
-  GATE PASSED / GATE PASSED · `npm test` 1576/1576 / 1564/1564 (the
-  delta is exactly the 12 new tests) · `npm run test:worker` 69/69 /
-  69/69 · `npm run build:pages` exit 0 / 0.
-- Playwright (chunk-recovery + crash-classification + crash-watchdog
-  + crash-loop-breaker + observability): branch 20 passed / 2 failed;
-  baseline 18 passed / 1 failed (the branch run includes the 3 new
-  journeys, all passing). Failures: crash-watchdog "stale build"
-  (fails on pristine too — pre-existing) and crash-classification
-  "backgrounding" (documented visibility race: isolated re-runs fail
-  2/2 on BOTH trees; passed once inside each tree's full-suite
-  ordering — see `logs/flake-characterisation.txt`).
+- **chunk-recovery** (WIP `bad9f8a`, pre-existing this session): outcome
+  marker `meridian.chunkRecovery`, pending-at-install state machine,
+  observation-time terminal signals, pending-only clear countdown,
+  optional host outcome hooks.
+- **observability**: `init()` marker protocol in manifest order
+  (terminal delete-silent; invalid split with `meridian.chunkReloadAt`
+  corroboration → `marker_unreadable`; >24 h → `unconfirmed_expired`;
+  claimed leftover → `unconfirmed_died` (+ `afterRecovery` on this
+  boot's `suspected_crash`) / `unconfirmed_closed`, delete-before-emit;
+  unclaimed → claim by spread + read-back, hold pending).
+  `noteRecoverySignal` + singleton wrapper (GameApp's wiring target);
+  confirmation legs latched in the closure (`gameLoaded` set inside
+  `recordMilestone`); resolve = delete marker, set resolved, emit
+  exactly once. `afterRecovery` choke point at `emit()` for
+  captured-error types while pending+unresolved (never stamped false,
+  not a classifier input). `recovery_outcome` added to the event-type
+  union and protected in queue eviction. Classifier gains the
+  `recovery_outcome` branch FIRST; `CLASSIFIER_VERSION` "1" → "2".
+  Marker validity predicate identical to chunk-recovery's,
+  fixture-tested in both test files.
+- **Worker** (`workers/crash-report`): `EVENT_TYPES` +=
+  `recovery_outcome` (the only schema change; no enum hard-validation —
+  classifier + `tierOf` fail closed). `tierOf(type, recoveryOutcome?)`:
+  crash-class ONLY for `repeat_failure`, counted-only otherwise;
+  `handleRequest` passes the outcome. Classifier mirror + the five
+  manifest why-lines verbatim. The Slice 1 `recovery_outcome` rejection
+  pin was INVERTED to acceptance (expected evolution). No digest change
+  (Slice 3 owns it).
+- **GameApp wiring** (install call site only):
+  `installChunkLoadRecovery(undefined, { buildId: CURRENT_BUILD_ID,
+  onRecoverySignal })` routing signals to observability's
+  `noteRecoverySignal` singleton wrapper.
+- **E2E** (appended to `tests/e2e/chunk-recovery.desktop.spec.ts`,
+  built artifact via `serveBuiltArtifact`, production path): S2-E1
+  recovered/confirmed, S2-E2 repeat_failure, S2-E3 stood_down, S2-E4
+  storage-blocked, S2-E5 leftover claimed+clean, S2-E6 leftover
+  claimed+unclean (+afterRecovery), S2-E7 no-marker control — all pass.
+- Consequential pin updates (same category as the worker inversion):
+  stamped-`lcV` expectations "1" → "2" in `observability.test.ts` (5)
+  and `crash-classification.mobile.spec.ts` (3) — the mechanical result
+  of the mandated `CLASSIFIER_VERSION` bump. One tsc fix in the WIP
+  O9-U test (annotated map param; assertion unchanged).
+
+## Gates on the final head (logs `~/workspace/meridian-crash-slice2/logs2/final-*`)
+
+- `npx tsc --noEmit` — clean
+- `npm test` — scripts 832 pass / 0 fail (841, 9 skipped); src 1633/1633
+  (pristine-base baseline: scripts 832/0, src 1592/1592)
+- `npm run test:worker` — 85/85 (baseline 69/69)
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — green
+- Playwright crash-surface set (chunk-recovery.desktop,
+  crash-classification.mobile, crash-watchdog, crash-loop-breaker,
+  observability) — **27 passed / 2 failed**. Both failing names match
+  the pristine-base baseline's two known failures:
+  (1) crash-classification "backgrounding the tab records
+  'backgrounded'; returning records 'foregrounded'" (visibility race,
+  same mode as baseline);
+  (2) crash-watchdog "stale build" — SAME test name as the baseline
+  failure. The spec WAS edited on Liz's word (2026-10-26): its
+  exact-count pin now expects the js_error + the designed Slice 2
+  `recovery_outcome` (stood_down) — length 2 — and that pin passes.
+  The journey's remaining failure is the pre-existing breadcrumb
+  race at the milestone assertion (expected `data_chunk_load_start`,
+  got `storyteller_ready`), the same signature as pristine base.
+
+## Not built / not tested
+
+- Slice 3 (digest grouping, alerting policy §5.6, signature counters)
+  — not started, per authorization.
+- Pushed; PR #250 open. No merge, no deploy. Worker deploy-order
+  note for the eventual PR: the receiver whitelist must deploy BEFORE
+  or WITH the client emitter, never after, or outcome events are
+  400-rejected.

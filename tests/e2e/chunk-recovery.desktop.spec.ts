@@ -430,3 +430,339 @@ test("6-E: the app's own new-version offer on screen stands recovery down — no
 
   await page.close();
 });
+
+// --- Slice 2: recovery outcome journeys (Consensus Manifest 2026-10-25) ---
+//
+// The outcome protocol end-to-end on the production path: chunk-recovery
+// writes the marker, observability claims it at the next boot and emits
+// exactly one `recovery_outcome`. Events are observed the same way the
+// crash-classification specs observe them — flags.json is stubbed to
+// carry the observability endpoint and the endpoint is intercepted
+// (route control, no test doubles anywhere in the app chain). Every leg
+// waits longer than the delay it guards (1.5 s decision, 30 s clear).
+
+const MARKER_KEY = "meridian.chunkRecovery";
+const OUTCOME_ENDPOINT = "https://meridian-crash-report.knowledgetest.workers.dev/ingest";
+
+async function collectIngested(
+  context: Parameters<typeof serveBuiltArtifact>[0],
+): Promise<Array<Record<string, unknown>>> {
+  const ingested: Array<Record<string, unknown>> = [];
+  await context.route("**/flags.json*", async (route) => {
+    return route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({
+        version: 1,
+        flags: { learningOutcomes: true, pwaUpdateToast: true },
+        observabilityEndpoint: OUTCOME_ENDPOINT,
+      }),
+    });
+  });
+  await context.route(OUTCOME_ENDPOINT, async (route) => {
+    try {
+      ingested.push(route.request().postDataJSON() as Record<string, unknown>);
+    } catch {
+      ingested.push({});
+    }
+    return route.fulfill({ status: 204, body: "" });
+  });
+  return ingested;
+}
+
+const outcomesOf = (ingested: Array<Record<string, unknown>>) =>
+  ingested.filter((e) => e.type === "recovery_outcome");
+
+test("S2-E1 recovered: failure → reload → game_loaded + 30 failure-free seconds → exactly one recovery_outcome confirmed", async ({
+  context,
+}) => {
+  test.setTimeout(300_000);
+  await serveBuiltArtifact(context);
+  const ingested = await collectIngested(context);
+  const page = await context.newPage();
+  await bootAndMark(page);
+
+  await page
+    .evaluate(() => {
+      window.dispatchEvent(new Event("vite:preloadError"));
+    })
+    .catch(() => {
+      // Navigation cuts the evaluate short.
+    });
+  await expect.poll(() => markerGone(page), { timeout: 30_000 }).toBe(true);
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 60_000,
+  });
+
+  // The recovered boot claimed the marker (observability's claim
+  // rewrite) and holds the attempt pending.
+  await expect
+    .poll(
+      () =>
+        page.evaluate((k) => {
+          const raw = sessionStorage.getItem(k);
+          if (!raw) return false;
+          return (JSON.parse(raw) as { claimed?: boolean }).claimed === true;
+        }, MARKER_KEY),
+      { timeout: 20_000 },
+    )
+    .toBe(true);
+
+  // Reach the game on the recovered page (the game_loaded leg).
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expect
+    .poll(
+      () =>
+        page.evaluate(() => {
+          const raw = sessionStorage.getItem("meridian.breadcrumb");
+          if (!raw) return false;
+          const crumb = JSON.parse(raw) as { history?: Array<{ name: string }> };
+          return (crumb.history ?? []).some((h) => h.name === "game_loaded");
+        }),
+      { timeout: 120_000 },
+    )
+    .toBe(true);
+
+  // The 30 s failure-free clear leg completes the AND-gate.
+  await expect
+    .poll(() => outcomesOf(ingested).length, { timeout: 120_000 })
+    .toBe(1);
+  const outcome = outcomesOf(ingested)[0];
+  expect(outcome.recoveryOutcome).toBe("confirmed");
+  expect(outcome.verdict).toBe("auto_fixed");
+  expect(outcome.whyKey).toBe("recovery_confirmed");
+  expect(outcome.lcV).toBe("2");
+  expect(await page.evaluate((k) => sessionStorage.getItem(k), MARKER_KEY)).toBeNull();
+  await page.waitForTimeout(3_000);
+  expect(outcomesOf(ingested).length).toBe(1, "exactly one outcome per attempt");
+
+  await page.close();
+});
+
+test("S2-E2 repeat_failure: the failure recurs after the reload → exactly one repeat_failure, emitted before the latch can act", async ({
+  context,
+}) => {
+  test.setTimeout(180_000);
+  await serveBuiltArtifact(context);
+  const ingested = await collectIngested(context);
+  const page = await context.newPage();
+  await bootAndMark(page);
+
+  await page
+    .evaluate(() => {
+      window.dispatchEvent(new Event("vite:preloadError"));
+    })
+    .catch(() => {
+      // Navigation cuts the evaluate short.
+    });
+  await expect.poll(() => markerGone(page), { timeout: 30_000 }).toBe(true);
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 60_000,
+  });
+  await setMarker(page);
+
+  // The same failure signature recurs in the recovered session.
+  await page.evaluate(() => {
+    window.dispatchEvent(new Event("vite:preloadError"));
+  });
+  await expect
+    .poll(() => outcomesOf(ingested).length, { timeout: 30_000 })
+    .toBe(1);
+  const outcome = outcomesOf(ingested)[0];
+  expect(outcome.recoveryOutcome).toBe("repeat_failure");
+  expect(outcome.verdict).toBe("developer_needed");
+  expect(outcome.whyKey).toBe("recovery_failed");
+
+  // Emitted at observation, before the 1.5 s decision point: the
+  // decision cycle was consumed, so no navigation follows.
+  await page.waitForTimeout(4_000);
+  expect(await markerGone(page)).toBe(false);
+  expect(outcomesOf(ingested).length).toBe(1, "no second outcome from the same failure's decide cycle");
+
+  await page.close();
+});
+
+test("S2-E3 stood_down: the app's update offer on screen at the decision point → stood_down, never auto_fixed, marker does not survive", async ({
+  context,
+}) => {
+  test.setTimeout(180_000);
+  await serveBuiltArtifact(context);
+  const ingested = await collectIngested(context);
+  // The crash-watchdog stale-build recipe (as 6-E): abort the lazy
+  // geonames chunk and stub build-meta.json with a mismatched buildId
+  // so the app's real new-version offer appears.
+  await context.route("**/assets/globe-*.js", (route) => route.abort());
+  await context.route("**/build-meta.json", async (route) => {
+    return route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ buildId: "e2e-different-build" }),
+    });
+  });
+
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 60_000,
+  });
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await expect(page.getByText(REFRESH_COPY, { exact: true })).toBeVisible({
+    timeout: 30_000,
+  });
+
+  await setMarker(page);
+  await page.evaluate(() => {
+    window.dispatchEvent(new Event("vite:preloadError"));
+  });
+  await page.waitForTimeout(3_500); // past the 1.5 s decision delay
+  expect(await markerGone(page)).toBe(false);
+  expect(await page.evaluate((key) => sessionStorage.getItem(key), GUARD_KEY)).toBeNull();
+  expect(await page.evaluate((key) => sessionStorage.getItem(key), MARKER_KEY)).toBeNull();
+
+  await expect
+    .poll(() => outcomesOf(ingested).length, { timeout: 20_000 })
+    .toBe(1);
+  const outcome = outcomesOf(ingested)[0];
+  expect(outcome.recoveryOutcome).toBe("stood_down");
+  expect(outcome.verdict).toBe("insufficient_evidence");
+  expect(outcome.whyKey).toBe("recovery_stood_down");
+  await page.waitForTimeout(3_000);
+  expect(outcomesOf(ingested).length).toBe(1);
+
+  await page.close();
+});
+
+test("S2-E4 storage-blocked: the stamp cannot persist → no reload, no marker, no outcome event", async ({
+  context,
+}) => {
+  test.setTimeout(180_000);
+  await serveBuiltArtifact(context);
+  const ingested = await collectIngested(context);
+  const page = await context.newPage();
+  await page.addInitScript((key) => {
+    const proto = Storage.prototype;
+    const origSet = proto.setItem;
+    proto.setItem = function (k: string, v: string) {
+      if (k === key) throw new Error("storage blocked");
+      return origSet.call(this, k, v);
+    };
+  }, GUARD_KEY);
+  await bootAndMark(page);
+
+  await dispatchPreloadError(page);
+  await page.waitForTimeout(4_000);
+  expect(await markerGone(page)).toBe(false);
+  expect(outcomesOf(ingested).length).toBe(0);
+  expect(await page.evaluate((key) => sessionStorage.getItem(key), MARKER_KEY)).toBeNull();
+
+  await dispatchPreloadError(page);
+  await page.waitForTimeout(4_000);
+  expect(await markerGone(page)).toBe(false);
+  expect(outcomesOf(ingested).length).toBe(0);
+
+  await page.close();
+});
+
+test("S2-E5 leftover claimed + clean exit → unconfirmed_closed exactly once", async ({
+  context,
+}) => {
+  test.setTimeout(180_000);
+  await serveBuiltArtifact(context);
+  const ingested = await collectIngested(context);
+  await context.addInitScript(() => {
+    if (sessionStorage.getItem("meridian.slice2Seeded")) return;
+    sessionStorage.setItem("meridian.slice2Seeded", "1");
+    sessionStorage.setItem("meridian.cleanExit", "1");
+    sessionStorage.setItem(
+      "meridian.chunkRecovery",
+      JSON.stringify({ v: 1, at: Date.now() - 1_000, build: "e2e-old-build", claimed: true }),
+    );
+  });
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 60_000,
+  });
+  await expect
+    .poll(() => outcomesOf(ingested).length, { timeout: 30_000 })
+    .toBe(1);
+  const outcome = outcomesOf(ingested)[0];
+  expect(outcome.recoveryOutcome).toBe("unconfirmed_closed");
+  expect(outcome.buildId).toBe("e2e-old-build");
+  expect(outcome.verdict).toBe("insufficient_evidence");
+  expect(outcome.whyKey).toBe("recovery_unconfirmed");
+  expect(await page.evaluate((key) => sessionStorage.getItem(key), MARKER_KEY)).toBeNull();
+
+  // A later boot has nothing left to resolve.
+  await page.reload();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 60_000,
+  });
+  await page.waitForTimeout(4_000);
+  expect(outcomesOf(ingested).length).toBe(1);
+
+  await page.close();
+});
+
+test("S2-E6 leftover claimed + unclean exit → unconfirmed_died exactly once, and that boot's suspected_crash carries afterRecovery", async ({
+  context,
+}) => {
+  test.setTimeout(180_000);
+  await serveBuiltArtifact(context);
+  const ingested = await collectIngested(context);
+  await context.addInitScript(() => {
+    if (sessionStorage.getItem("meridian.slice2Seeded")) return;
+    sessionStorage.setItem("meridian.slice2Seeded", "1");
+    sessionStorage.setItem("meridian.cleanExit", "0");
+    sessionStorage.setItem(
+      "meridian.breadcrumb",
+      JSON.stringify({
+        sessionId: "prev-slice2-session",
+        buildId: "prev-build",
+        startedAt: Date.now() - 60_000,
+        lastMilestone: "game_loaded",
+        history: [{ name: "boot_start", at: Date.now() - 60_000 }],
+        edition: "state",
+        regionId: "nebraska",
+        device: { ua: "e2e", dpr: 2, screenW: 414, screenH: 896 },
+      }),
+    );
+    sessionStorage.setItem(
+      "meridian.chunkRecovery",
+      JSON.stringify({ v: 1, at: Date.now() - 1_000, build: "e2e-old-build", claimed: true }),
+    );
+  });
+  const page = await context.newPage();
+  await page.goto(APP_NO_IDLE);
+  await expect
+    .poll(
+      () => ingested.filter((e) => e.type === "suspected_crash").length,
+      { timeout: 30_000 },
+    )
+    .toBe(1);
+  await expect
+    .poll(() => outcomesOf(ingested).length, { timeout: 30_000 })
+    .toBe(1);
+  const outcome = outcomesOf(ingested)[0];
+  expect(outcome.recoveryOutcome).toBe("unconfirmed_died");
+  expect(outcome.buildId).toBe("e2e-old-build");
+  const crash = ingested.find((e) => e.type === "suspected_crash") as Record<string, unknown>;
+  expect(crash.afterRecovery).toBe(true);
+
+  await page.close();
+});
+
+test("S2-E7 no-marker control: an ordinary session emits no recovery_outcome", async ({
+  context,
+}) => {
+  test.setTimeout(180_000);
+  await serveBuiltArtifact(context);
+  const ingested = await collectIngested(context);
+  const page = await context.newPage();
+  await bootAndMark(page);
+  await page.waitForTimeout(5_000);
+  expect(outcomesOf(ingested).length).toBe(0);
+  expect(await page.evaluate((key) => sessionStorage.getItem(key), MARKER_KEY)).toBeNull();
+
+  await page.close();
+});
