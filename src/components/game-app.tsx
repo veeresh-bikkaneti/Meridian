@@ -1248,6 +1248,12 @@ export function GameApp() {
     replaceSession(null);
     setIdleWarn(false);
     setIdleEndedNote(true);
+    // #188: session end retires the switched notice too — the same
+    // lifecycle logic Block B applied to mode flips. Left standing, a
+    // "You switched to … Your score is kept." notice would sit beside
+    // the idle-ended notice above and read stale (the score it says
+    // was kept has just been dropped with the session).
+    setMapSwitchedNote(null);
   }, [replaceSession]);
 
   useEffect(() => {
@@ -2088,6 +2094,10 @@ export function GameApp() {
             setRun(null);
             setMenu(null);
             replaceSession(null);
+            // #188: session end retires the switched notice (same
+            // lifecycle rule as killIdleSession) — it must not carry
+            // into the fresh session the player starts from Home.
+            setMapSwitchedNote(null);
           }}
           onReplayed={() => {
             // Play again after End game: the old session ended with the

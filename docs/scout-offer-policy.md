@@ -94,6 +94,16 @@ downloading, but the game never starts, its record is never saved,
 and no "couldn't load" error appears for a start the player
 already cancelled.
 
+Session end retires the notice too (#188, 2026-10-26). When the
+session itself ends — the idle timer runs out, or the player taps
+Done on the end-game summary — the notice is cleared with everything
+else the session owned. That matters because the notice says the
+score was kept: true while the session lives, and confusingly wrong
+the moment it ends. A player who comes back to Home after an
+idle-ended or finished game should never see a switched notice
+standing next to the "your game ended" note, and a fresh session
+never inherits one.
+
 Test seam: the boot auto-switch is suppressed only by
 `window.__meridianSuppressScoutOffer === true` (set by the e2e harness
 init script — the Playwright VM's SwiftShader renderer reads as a weak
