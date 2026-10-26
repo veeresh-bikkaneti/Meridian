@@ -27,6 +27,15 @@
  * id, or an entry with `image` but no `imageAlt` aborts generation with a
  * named error. Regeneration must never silently wipe the art.
  *
+ * Catalog `src(...)` calls (#200): the parser in parseCatalog tolerates
+ * line breaks inside a call — after `src(`, around the comma, and
+ * before `)` — because a formatter pass (Prettier, printWidth 100) can
+ * rewrap a long call into that shape. The older one-line-only parser
+ * silently dropped such a place from the dataset, and the loss only
+ * surfaced later as a misleading art-manifest "unknown id" abort. A
+ * present-but-unparseable `src(` call now fails loudly, naming the
+ * place. See docs/journal-spec.md §1 for the same note.
+ *
  * Dependency-free. Re-running on an unchanged catalog + manifest is
  * byte-stable.
  * Usage: node scripts/build-journal-dataset.mjs
@@ -83,6 +92,16 @@ function decodeString(raw) {
  * `source:` field is genuinely MISSING parses with that field null, and
  * the caller excludes the place and prints it in the report — a missing
  * field must never become a parse throw or a silent drop.
+ *
+ * Wrapped `src(...)` calls (#200): the `source:` parser tolerates line
+ * breaks anywhere whitespace may appear inside the call — after `src(`,
+ * before or after the comma, and before `)`. This matters because
+ * Prettier (printWidth 100) rewraps long one-line calls into exactly
+ * that shape; the old one-line-only regex silently dropped such a
+ * place from the dataset. A `src(` call that is present but still
+ * unparseable (e.g. single-quoted arguments) is malformed, not
+ * missing: parseCatalog throws, naming the place, instead of dropping
+ * it silently.
  */
 export function parseCatalog(sourceText) {
   const idTally = (sourceText.match(/\n\s*id: "/g) ?? []).length;
@@ -107,7 +126,19 @@ export function parseCatalog(sourceText) {
       );
     }
     const story = block.match(/story:\s*\n?\s*"((?:[^"\\]|\\.)*)"/);
-    const source = block.match(/source:\s*src\("((?:[^"\\]|\\.)*)",\s*"((?:[^"\\]|\\.)*)"\)/);
+    const source = block.match(/source:\s*src\(\s*"((?:[^"\\]|\\.)*)"\s*,\s*"((?:[^"\\]|\\.)*)"\s*\)/);
+    if (!source && /\bsource\s*:\s*src\s*\(/.test(block)) {
+      // A src(...) call is PRESENT but unparseable — that is malformed,
+      // not missing. Throwing here (naming the place) is what stops a
+      // formatting change from silently dropping the place from the
+      // dataset (#200). A genuinely missing source: field still parses
+      // as null below and is excluded/reported by the caller, per §1.
+      throw new Error(
+        `catalog entry "${decodeString(id[1])}" has a source: src(...) call the parser ` +
+          `could not parse — it would otherwise be silently excluded as a missing ` +
+          `source. Fix the catalog formatting or the parser.`,
+      );
+    }
     places.push({
       id: decodeString(id[1]),
       name: decodeString(name[1]),
