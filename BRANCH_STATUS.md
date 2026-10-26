@@ -53,8 +53,15 @@ no behavior change.
       build:pages exit 0, ws4-tile-fallback 4/4 — that head is
       superseded; the corrected head changes no production code
       and one E2E comment.
-- [ ] Corrected head: `npx tsc --noEmit` + motionmaxxing spec
-      parse/run check (comment-only change).
+- [x] Corrected head: `npx tsc --noEmit` clean. motionmaxxing
+      spec: **5/6 passed** — including M5, the test that uses
+      `forceFullMapMode` (the helper whose comment changed). The
+      one failure is the "tap storm" test: 90 s test-timeout on
+      this contended VM, reproduced on a solo re-run; it never
+      calls the helper, the branch diff is comment-only (zero
+      runtime surface), and tap-storm pacing is a known
+      test-budget problem (tracked as #191). Not a regression
+      this branch can cause — flagged here rather than hidden.
 
 ## Out of scope
 
