@@ -2,15 +2,15 @@
 
 **Branch:** `fix/no-unrememberable-reloads`
 **Base:** `main` at `5f6164b` (includes the PR #247 merge)
-**State: MANIFEST SIGNED — the D6 fix (Liz's Option 2 ruling,
-2026-10-25): stand down on unrememberable reloads. Tier 2 council
-(ATDD → TDD contracts → adversarial rounds 1–2 → Chair sign-off)
-complete; manifest at
-`~/workspace/meridian-reload-loop-fix/CONSENSUS-MANIFEST-loop-fix.md`
-(execution token issued). Build in progress: RED → GREEN → gates →
-independent Reality Checker gate. The branch is LOCAL ONLY — not
-pushed, no PR, not merged, not deployed. Slice 2 (crash-report
-recovery outcomes) is NOT started; it comes after this fix merges.**
+**State: BUILT — all gates run (below); independent Reality Checker
+gate is the remaining step before this can be called ready. The D6
+fix (Liz's Option 2 ruling, 2026-10-25): stand down on
+unrememberable reloads. Tier 2 council (ATDD → TDD contracts →
+adversarial rounds 1–2 → Chair sign-off) complete; manifest at
+`~/workspace/meridian-reload-loop-fix/CONSENSUS-MANIFEST-loop-fix.md`.
+The branch is LOCAL ONLY — not pushed, no PR, not merged, not
+deployed. Slice 2 (crash-report recovery outcomes) is NOT started;
+it comes after this fix merges.**
 It supersedes the previous contents of this file (the
 `feat/crash-report-verdicts` branch record, whose history lives on
 PR #247).
@@ -43,10 +43,23 @@ stand-down is field-unverifiable in this pass; MapErrorBoundary's
 "Your game is safe" copy is inaccurate for the storage-blocked cohort
 (out of scope here, flagged for separate routing).
 
-## Verification (local, this branch)
+## Verification (local, this branch; logs in `~/workspace/meridian-reload-loop-fix/logs/`)
 
-- Baseline (pristine main @ 5f6164b, same environment, logs in
-  `~/workspace/meridian-reload-loop-fix/logs/`): chunk-recovery unit
-  suite 29/29 (coordinator's own run before any change). Full gate
-  baseline + branch numbers are recorded here when the gate run
-  completes.
+- RED first: unit 24 pass / 17 fail (exactly the 5 rewrites + 12 new
+  5C tests); the 3 new E2E journeys failed on the pre-fix artifact at
+  `markerGone → true` (the page reloaded under sabotage). Mutations:
+  no-read-back fails exactly the 5 predicted tests; no-sticky-latch
+  fails exactly latch + heal.
+- Gates, branch vs pristine-main baseline (same environment):
+  `npx tsc --noEmit` exit 0 / 0 · `node scripts/lint-cards.mjs`
+  GATE PASSED / GATE PASSED · `npm test` 1576/1576 / 1564/1564 (the
+  delta is exactly the 12 new tests) · `npm run test:worker` 69/69 /
+  69/69 · `npm run build:pages` exit 0 / 0.
+- Playwright (chunk-recovery + crash-classification + crash-watchdog
+  + crash-loop-breaker + observability): branch 20 passed / 2 failed;
+  baseline 18 passed / 1 failed (the branch run includes the 3 new
+  journeys, all passing). Failures: crash-watchdog "stale build"
+  (fails on pristine too — pre-existing) and crash-classification
+  "backgrounding" (documented visibility race: isolated re-runs fail
+  2/2 on BOTH trees; passed once inside each tree's full-suite
+  ordering — see `logs/flake-characterisation.txt`).
