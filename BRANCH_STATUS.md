@@ -11,7 +11,16 @@ the pre-rebase result, both failures the known pair)
 signed Tier 2 Consensus Manifest
 (`~/workspace/meridian-crash-slice2/CONSENSUS-MANIFEST-slice2-build.md`),
 including ADDENDUM 2 (Liz's Option A ruling, 2026-10-26).
-**Not pushed, no PR, not merged, not deployed. Slice 3 not started.**
+Push + PR authorized by Liz 2026-10-26, including the
+crash-watchdog stale-build pin update (the journey now ingests the
+js_error + the designed stood_down recovery_outcome; the spec's
+next assertion still hits the pre-existing breadcrumb race —
+expected `data_chunk_load_start`, got `storyteller_ready` — the
+same signature documented on pristine bases since PR #245).
+The parent replays the local commits onto the remote branch via
+the GitHub API helper (SHAs may differ; content, messages and
+authorship are the same). Not merged, not deployed. Slice 3 not
+started.**
 
 ## Option A harness amendment (Liz, 2026-10-26)
 
