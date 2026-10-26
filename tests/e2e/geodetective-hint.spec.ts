@@ -78,6 +78,34 @@ test("8-10: hint button visible, shows a directional hint, then disables", async
   await expect(button).toHaveAccessibleName(/Hint used/i);
 });
 
+test("8-10: hint stays used after a mid-mystery reload (#185)", async ({
+  page,
+  context,
+}) => {
+  await seedProfile(context, "8-10");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openLoop(page);
+
+  const button = page.getByTestId("hint-button");
+  await expect(button).toBeVisible({ timeout: 15_000 });
+  await button.click();
+  await expect(button).toBeDisabled();
+  await expect(button).toHaveAccessibleName(/Hint used/i);
+
+  // Reload mid-mystery: the persisted loop-open flag restores the
+  // screen and the persisted puzzle carries hintsUsed = 1. Pre-#185 the
+  // local counter remounted at zero and the button came back enabled —
+  // a second hint for a one-per-round player.
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
+    timeout: 30_000,
+  });
+  const afterReload = page.getByTestId("hint-button");
+  await expect(afterReload).toBeVisible({ timeout: 15_000 });
+  await expect(afterReload).toBeDisabled();
+  await expect(afterReload).toHaveAccessibleName(/Hint used/i);
+});
+
 test("11-13: no hint button at all", async ({ page, context }) => {
   await seedProfile(context, "11-13");
   await page.setViewportSize({ width: 390, height: 844 });
