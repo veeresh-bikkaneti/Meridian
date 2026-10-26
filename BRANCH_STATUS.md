@@ -15,9 +15,14 @@ Issues: #191 (tap-storm test un-passable by construction) + #214 (E2E pin for th
 - [x] Honest limits documented in the spec header: `viaKeyboard` is hard-coded `true` in the dismiss onClick (focus return also fires for pointer dismissal — the pin proves the keyboard outcome, not a modality split), and there is no Escape-to-dismiss for the home bubble.
 - [x] `home-visual-layout.desktop.spec.ts` header: the "pointer only" limit line now points at the new pin.
 
+## Gates (on this branch's head)
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — exit 0: scripts 832 pass / 0 fail / 9 skipped; src 1633 pass / 0 fail (baseline counts; this branch changes no unit-tested code)
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — exit 0
+- [x] E2E (sequential, `--workers=1`, via the VM-wide flock, against this branch's build): **21/21 passed** — home-greeting-keyboard 2/2 (32.2s, 31.1s), home-visual-layout 13/13 (no regression), motionmaxxing 6/6 with **tap storm at 36.9s** (previously a deterministic 90s timeout).
+
 ## Pending
-- [ ] Gates: `npx tsc --noEmit`, `npm test`, `node scripts/lint-cards.mjs`, `npm run build:pages`
-- [ ] E2E (sequential, `--workers=1`, via the VM-wide flock): motionmaxxing + home-greeting-keyboard + home-visual-layout (regression neighbour)
 - [ ] PR opened (no merge — owner merges)
 
 ## Notes
