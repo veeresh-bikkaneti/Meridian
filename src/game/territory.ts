@@ -44,6 +44,13 @@ let cachedCountries: CountryFeature[] | null = null;
 let loadPromise: Promise<CountryFeature[]> | null = null;
 let conversionRuns = 0;
 let loadRuns = 0;
+/** #209 zombie guard: bumped when a load attempt starts AND when one is
+ * evicted after a timeout. A timed-out import is not cancelled — it can
+ * still land later — but its generation no longer matches, so its late
+ * landing is discarded instead of populating the cache behind the back
+ * of the retry that replaced it (which would also double-count the
+ * conversion-runs seam the load-once pins rely on). */
+let loadGeneration = 0;
 
 /** The atlas import, behind a named binding so tests can substitute a
  * failing importer (see territoryImporterForTests below). */
@@ -64,10 +71,10 @@ let atlasImporter: () => Promise<{ default: unknown }> = importAtlas;
  * a failure, readers stay fail-closed, and the next preload retries.
  * 10 s is the order of the build-staleness probe bound (8 s) and well
  * under the crash watchdog's ~28 s boot budget, so the recoverable
- * path always wins the race. If the import lands after the bound its
- * data still populates the cache — late is fine; only the wait was
- * bounded. (When a load is already in flight, the FIRST caller's
- * bound governs; later callers share its promise.)
+ * path always wins the race. An import that lands after the bound is
+ * discarded by the generation guard below — the retry owns the cache.
+ * (When a load is already in flight, the FIRST caller's bound governs;
+ * later callers share its promise.)
  */
 export const TERRITORY_LOAD_TIMEOUT_MS = 10_000;
 
@@ -76,6 +83,7 @@ function loadCountryFeatures(
 ): Promise<CountryFeature[]> {
   if (!loadPromise) {
     loadRuns += 1;
+    const generation = (loadGeneration += 1);
     const attempt = atlasImporter().then((mod) => {
       const topo = mod.default as unknown as {
         objects: { countries: unknown };
@@ -83,8 +91,14 @@ function loadCountryFeatures(
       const features = (
         feature(topo, topo.objects.countries) as unknown as Collection
       ).features;
-      conversionRuns += 1;
-      cachedCountries = features;
+      // Zombie guard (#209): if this attempt was timed out and evicted
+      // before it landed, a newer generation owns the cache — discard
+      // the late landing instead of double-counting the conversion or
+      // overwriting the retry's data.
+      if (generation === loadGeneration) {
+        conversionRuns += 1;
+        cachedCountries = features;
+      }
       return features;
     });
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -106,8 +120,10 @@ function loadCountryFeatures(
     loadPromise = timed.catch((err: unknown) => {
       // Retry eviction (the admin-1 chunk precedent in
       // reverse-geocode.ts): a failed — or timed-out — load must not
-      // poison the cache; the next preload call retries.
+      // poison the cache; the next preload call retries. The generation
+      // bump retires this attempt even if its import lands later.
       loadPromise = null;
+      loadGeneration += 1;
       throw err;
     });
   }

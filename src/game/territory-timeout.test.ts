@@ -14,6 +14,7 @@ import test from "node:test";
 import {
   preloadTerritory,
   territoryAt,
+  territoryConversionRunsForTests,
   territoryImporterForTests,
   territoryLoadRunsForTests,
 } from "./territory.ts";
@@ -53,4 +54,49 @@ test("a hung atlas import resolves preloadTerritory at the bound, fails closed, 
     name: "France",
     continent: "europe",
   });
+});
+
+test("an import that lands AFTER its timeout is discarded, not cached (#209 zombie guard)", async () => {
+  const realAtlas = await import("world-atlas/countries-50m.json", {
+    with: { type: "json" },
+  });
+  let calls = 0;
+  territoryImporterForTests(() => {
+    calls += 1;
+    if (calls === 1) {
+      // Slow, not hung: lands at ~150 ms, long past the 25 ms bound.
+      return new Promise<{ default: unknown }>((resolve) => {
+        setTimeout(() => resolve(realAtlas as { default: unknown }), 150);
+      });
+    }
+    return Promise.resolve(realAtlas as { default: unknown });
+  });
+  // conversionRuns is cumulative across this file's tests — assert
+  // relative to wherever it stands now.
+  const conversionsBefore = territoryConversionRunsForTests();
+  try {
+    await assert.doesNotReject(() => preloadTerritory(25));
+    assert.equal(territoryAt([2.35, 48.85]), null, "timed out: still unloaded");
+
+    // The retry imports again and lands inside its bound.
+    await preloadTerritory(5_000);
+    assert.equal(territoryAt([2.35, 48.85])?.name, "France");
+    assert.equal(
+      territoryConversionRunsForTests(),
+      conversionsBefore + 1,
+      "only the retry converted into the cache",
+    );
+
+    // Let the zombie land. It must change nothing: no second
+    // conversion counted, no cache overwrite.
+    await new Promise((resolve) => setTimeout(resolve, 250));
+    assert.equal(
+      territoryConversionRunsForTests(),
+      conversionsBefore + 1,
+      "the late landing was discarded",
+    );
+    assert.equal(territoryAt([2.35, 48.85])?.name, "France");
+  } finally {
+    territoryImporterForTests(null);
+  }
 });
