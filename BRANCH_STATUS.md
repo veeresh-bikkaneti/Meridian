@@ -1,8 +1,12 @@
 # BRANCH_STATUS — feat/crash-recovery-outcome
 
 **Branch:** `feat/crash-recovery-outcome`
-**Base:** `main` at `bce7f15` (includes Slice 1, PR #247, and the D6
-loop fix, PR #249)
+**Base:** `main` at `99c0e5b` (rebased 2026-10-26 onto the vite
+8.3.4 deps bump, PR #187; zero conflicts. Gates re-run on the
+rebased head, logs `~/workspace/meridian-crash-slice2/logs/rebase/`:
+tsc clean, src 1633/1633, worker 85/85, lint GATE PASSED, build
+green, Playwright crash-surface 27 passed / 2 failed — identical to
+the pre-rebase result, both failures the known pair)
 **State: Slice 2 BUILT + gates run (2026-10-26).** Built under the
 signed Tier 2 Consensus Manifest
 (`~/workspace/meridian-crash-slice2/CONSENSUS-MANIFEST-slice2-build.md`),
