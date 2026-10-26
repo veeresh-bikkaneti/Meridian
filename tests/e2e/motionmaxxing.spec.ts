@@ -150,12 +150,31 @@ test.describe("home cascade + press (1280×800)", () => {
     await page.waitForTimeout(1500);
 
     // 12 rapid clicks on the State card button — one navigation outcome.
+    //
+    // Per-click timeout is 1s, not the default-length 5s (#191): the
+    // first click navigates, so the remaining clicks target a detached
+    // button and each one burns its FULL click timeout in the
+    // catch-and-continue below. At 5s that is 22 clicks × up to 5s ≈
+    // 110s of pure timeout burn against this suite's 90s test budget
+    // (playwright.config.ts) — the test was un-passable by
+    // construction, failing with a bare "Test timeout of 90000ms
+    // exceeded" over a healthy page. At 1s the worst case is ~21s of
+    // burn, and nothing is weakened: the click results are discarded
+    // either way — every real assertion is after the loops (heading
+    // visible, figure visible, clean console), each with its own
+    // timeout. 1s is still ~an order of magnitude above the dispatch
+    // time of a settled, locally served button.
+    // Honest scope note: on the State side only the first click is
+    // delivered to the app — clicks 2–12 land after navigation, so the
+    // delivered storm is 1 (State) + 10 (figure, below). The counts
+    // stay at 12 + 10: the defect was the timeout arithmetic, not the
+    // storm size.
     const stateBtn = page
       .locator('[data-testid="tour-stop-editions"]')
       .getByRole("button", { name: "Choose a state" });
     await expect(stateBtn).toBeVisible();
     for (let i = 0; i < 12; i++) {
-      await stateBtn.click({ timeout: 5_000 }).catch(() => {});
+      await stateBtn.click({ timeout: 1_000 }).catch(() => {});
     }
     await expect(
       page.getByRole("heading", { name: "State", exact: true }),
@@ -167,7 +186,13 @@ test.describe("home cascade + press (1280×800)", () => {
     const figure = page.locator(".storyteller-figure").first();
     if (await figure.count()) {
       for (let i = 0; i < 10; i++) {
-        await figure.click({ timeout: 5_000 }).catch(() => {});
+        // force: true (#191): the figure's breathing animation never
+        // settles, which defeats Playwright's click stability check —
+        // without force these clicks time out undelivered and the loop
+        // proves nothing (the sibling home-visual-layout pin
+        // force-clicks the figure for the same reason). Real taps on a
+        // real device don't wait for the animation to settle either.
+        await figure.click({ timeout: 1_000, force: true }).catch(() => {});
       }
       // Figure still mounted, still operable — no stuck state.
       await expect(figure).toBeVisible();

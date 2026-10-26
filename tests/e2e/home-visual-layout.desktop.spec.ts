@@ -41,7 +41,8 @@ import { serveBuiltArtifact } from "./helpers";
  *
  * Honest limit: this pin drives a pointer tap only — it exercises no
  * keyboard or screen-reader route to the greeting, so it says nothing
- * about that path.
+ * about that path. That route has its own pin:
+ * home-greeting-keyboard.desktop.spec.ts (#214).
  */
 test.setTimeout(240_000);
 
