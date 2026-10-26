@@ -10,7 +10,7 @@
  */
 import { test, expect, type BrowserContext, type Page } from "playwright/test";
 import { serveBuiltArtifact, startGlobeRun, commitMiss, APP_NO_IDLE } from "./helpers";
-import { readMapMode, spoofCapableDevice } from "./scout-helpers";
+import { readMapMode, readStoredMapMode, seedManualMode, spoofCapableDevice } from "./scout-helpers";
 
 test.setTimeout(240_000);
 
@@ -83,6 +83,55 @@ test("after the switch, a reload starts on the full map with one 'Try again'", a
   await expect.poll(() => readMapMode(page), { timeout: 60_000 }).toBe("full");
   await expect(tryAgainCard(page)).toBeVisible({ timeout: 60_000 });
   await expect(tryAgainCard(page).getByRole("button", { name: "Try again" })).toBeVisible();
+});
+
+test("a standing manual-full record + WS-4 tile failure: session-only switch, record never rewritten (#154 item 6)", async ({
+  context,
+  page,
+}) => {
+  // #154 item 6, in its modern form. As filed it asked for "a declined
+  // capability offer (manual full) followed by a WS-4 tile failure" —
+  // the offer dialog it names was removed by the owner's 2026-10-20
+  // silent-auto-switch ruling, so the scenario's modern equivalent is
+  // a standing MANUAL full record (what a decline used to write, and
+  // what the Home/Play toggle writes today) meeting a tile failure.
+  // The neighboring goldens seed a capable device but no record; this
+  // leg pins the combination: the stored manual choice must stand
+  // untouched through boot, the session-only switch, and a reload.
+  await seedManualMode(context, "full");
+  await blockTiles(context);
+  await startGlobeRun(page, 0);
+
+  // Boot stood on the manual record: full mode, no stored rewrite,
+  // and nothing resembling the removed boot offer appears.
+  expect(await readMapMode(page)).toBe("full");
+  await expect(page.getByTestId("scout-boot-offer")).toHaveCount(0);
+  const seeded = await readStoredMapMode(page);
+  expect(seeded?.mode).toBe("full");
+  expect(seeded?.source).toBe("manual");
+  const seededRaw = await page.evaluate((k) => localStorage.getItem(k), MAP_MODE_KEY);
+  expect(seededRaw).not.toBeNull();
+
+  // The WS-4 path runs exactly as it does without a record: one
+  // "Try again", then the session-only Scout switch with its note.
+  const card = tryAgainCard(page);
+  await expect(card).toBeVisible({ timeout: 60_000 });
+  await card.getByRole("button", { name: "Try again" }).click();
+  await expect.poll(() => readMapMode(page), { timeout: 90_000 }).toBe("scout");
+  await commitMiss(page);
+  await expect(page.getByText(SWITCH_COPY)).toBeVisible({ timeout: 30_000 });
+
+  // The switch wrote NOTHING over the manual record — the raw stored
+  // string is byte-identical (a rewrite would at least move `setAt`).
+  const afterRaw = await page.evaluate((k) => localStorage.getItem(k), MAP_MODE_KEY);
+  expect(afterRaw).toBe(seededRaw);
+  expect(await readStoredMapMode(page)).toEqual(seeded);
+
+  // And a reload honors the record again: full map, one more
+  // "Try again" card — the manual choice outlives the session switch.
+  await page.reload();
+  await expect.poll(() => readMapMode(page), { timeout: 60_000 }).toBe("full");
+  await expect(tryAgainCard(page)).toBeVisible({ timeout: 60_000 });
 });
 
 test("if the retry works, nothing switches", async ({ context, page }) => {
