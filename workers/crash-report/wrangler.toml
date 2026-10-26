@@ -18,7 +18,11 @@
 # (fail-open). The digest cron below was likewise set via the API
 # schedules endpoint (2026-10-21); this block is its record.
 name = "meridian-crash-report"
-main = "src/index.ts"
+# Local dev only: main points at the dev-entry wrapper, not index.ts —
+# workerd rejects index.ts's test-only named exports (constants) as
+# handler candidates (#234). Production uploads index.ts directly
+# through the API and never reads this file.
+main = "src/dev-entry.ts"
 compatibility_date = "2026-10-01"
 
 [triggers]
