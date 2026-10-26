@@ -70,7 +70,7 @@
  * see README.md).
  */
 
-/** Event types this worker accepts: the v1 set plus `boot_failure` and `tile_failed`. */
+/** Event types this worker accepts: the v1 set plus `boot_failure`, `tile_failed`, and (Slice 2) `recovery_outcome`. */
 export const EVENT_TYPES = [
   "suspected_crash",
   "boot_failure",
@@ -79,6 +79,7 @@ export const EVENT_TYPES = [
   "map_error",
   "tile_failed",
   "webgl_context_lost",
+  "recovery_outcome",
 ] as const;
 
 export type CrashReportEventType = (typeof EVENT_TYPES)[number];
@@ -473,8 +474,8 @@ export async function readBodyCapped(request: Request, max: number): Promise<str
 // here. That re-derivation is a consistency check over client-stamped
 // facts, not independent verification (design F9). Absent stamps (older
 // builds in the fleet) fail closed to insufficient_evidence, never to
-// benign (F8). `auto_fixed` is never returned in Slice 1: no
-// recovery-outcome facts exist yet (Slice 2), and an attempt alone
+// benign (F8). `auto_fixed` is returned only by the Slice 2
+// recovery_outcome branch (a confirmed recovery); an attempt alone
 // never earns it.
 
 export type CrashVerdict =
@@ -490,6 +491,11 @@ export type CrashWhyKey =
   | "fg_kill_replaced"
   | "fg_kill_current"
   | "captured_error"
+  | "recovery_confirmed"
+  | "recovery_failed"
+  | "recovery_stood_down"
+  | "recovery_unconfirmed"
+  | "marker_unreadable"
   | "missing_fields";
 
 export interface CrashVerdictFacts {
@@ -500,6 +506,7 @@ export interface CrashVerdictFacts {
   buildReplaced?: boolean;
   trailStuck?: boolean;
   lcV?: string;
+  recoveryOutcome?: string;
 }
 
 /** Types whose presence alone is a captured failure (design §2.2). */
@@ -530,6 +537,27 @@ const GAMEPLAY_MILESTONES = new Set([
 export function classifyCrashVerdict(
   facts: CrashVerdictFacts,
 ): { verdict: CrashVerdict; whyKey: CrashWhyKey } {
+  // Slice 2: the recovery_outcome branch is evaluated FIRST, before the
+  // captured-error rule (Consensus Manifest 2026-10-25). A missing or
+  // invalid recoveryOutcome fails closed to insufficient_evidence.
+  if (facts.type === "recovery_outcome") {
+    switch (facts.recoveryOutcome) {
+      case "confirmed":
+        return { verdict: "auto_fixed", whyKey: "recovery_confirmed" };
+      case "repeat_failure":
+        return { verdict: "developer_needed", whyKey: "recovery_failed" };
+      case "stood_down":
+        return { verdict: "insufficient_evidence", whyKey: "recovery_stood_down" };
+      case "unconfirmed_closed":
+      case "unconfirmed_died":
+      case "unconfirmed_expired":
+        return { verdict: "insufficient_evidence", whyKey: "recovery_unconfirmed" };
+      case "marker_unreadable":
+        return { verdict: "insufficient_evidence", whyKey: "marker_unreadable" };
+      default:
+        return { verdict: "insufficient_evidence", whyKey: "missing_fields" };
+    }
+  }
   if (facts.error || CAPTURED_ERROR_TYPES.has(facts.type)) {
     return { verdict: "developer_needed", whyKey: "captured_error" };
   }
@@ -590,6 +618,16 @@ function whyLineFor(whyKey: CrashWhyKey, event: CrashReportEvent): string {
         : "The app failed to start; that failure was captured and it did not recover.";
     case "missing_fields":
       return "This report is missing the evidence needed to classify it, so it can't be called harmless.";
+    case "recovery_confirmed":
+      return "A game file failed to load. The app reloaded itself once, then reached the game and no repeat failure was observed for at least 30 seconds. (Whether the failing file itself was tried again in that time is not observed.)";
+    case "recovery_failed":
+      return "The app reloaded to fix a failed game file, and a game file failed to load again in the session that followed.";
+    case "recovery_stood_down":
+      return "A game file failed to load and the app showed its update offer instead of reloading. Whether the player accepted it — and whether accepting fixed the file — is not observed here.";
+    case "recovery_unconfirmed":
+      return "The app reloaded to fix a failed game file; whether it worked was never confirmed — the player may simply not have come back, and the session's ending may be unrelated.";
+    case "marker_unreadable":
+      return "A recovery attempt was recorded, but its record could not be read, so the outcome can't be told.";
   }
 }
 
@@ -657,6 +695,7 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
     buildReplaced: typeof event.buildReplaced === "boolean" ? event.buildReplaced : undefined,
     trailStuck: typeof event.trailStuck === "boolean" ? event.trailStuck : undefined,
     lcV: typeof event.lcV === "string" ? event.lcV : undefined,
+    recoveryOutcome: typeof event.recoveryOutcome === "string" ? event.recoveryOutcome : undefined,
   });
   const presentation = VERDICT_PRESENTATION[verdict];
   const why = whyLineFor(whyKey, event);
@@ -793,8 +832,16 @@ export const HICCUP_CLASS_TYPES = ["tile_failed", "webgl_context_lost"] as const
 
 export type TelemetryTier = "crash" | "hiccup";
 
-/** Classify an event type into its severity tier. */
-export function tierOf(type: CrashReportEventType): TelemetryTier {
+/**
+ * Classify an event type into its severity tier. Slice 2:
+ * `recovery_outcome` is crash-class ONLY for `repeat_failure`; every
+ * other outcome value — and a missing/invalid one — is counted-only
+ * (fail closed, Manifest A6/F8). Non-outcome types are unchanged.
+ */
+export function tierOf(type: CrashReportEventType, recoveryOutcome?: string): TelemetryTier {
+  if (type === "recovery_outcome") {
+    return recoveryOutcome === "repeat_failure" ? "crash" : "hiccup";
+  }
   return (HICCUP_CLASS_TYPES as readonly string[]).includes(type) ? "hiccup" : "crash";
 }
 
@@ -1202,7 +1249,10 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
       forwardToDiscord(discordUrl, tele.alertText).catch(() => {});
     }
 
-    const tier = tierOf(valid.type);
+    const tier = tierOf(
+      valid.type,
+      typeof valid.recoveryOutcome === "string" ? valid.recoveryOutcome : undefined,
+    );
     const alert = buildAlert(valid);
     const attempts: Array<{ channel: "discord" | "email"; promise: Promise<boolean> }> = [];
     if (tier === "crash") {
