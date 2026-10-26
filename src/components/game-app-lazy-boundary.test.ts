@@ -210,6 +210,10 @@ describe("#209 — every gameplay chunk load is timeout-bounded", () => {
   // places+territory await. Removing any wrap reopens the hang.
   it("the lazy factories for Loop, Trail, and the satellite map race withChunkTimeout", () => {
     assert.ok(
+      gameAppSource.includes('withChunkTimeout(import("./home-globe"), "the home globe")'),
+      "the home globe's lazy load must be timeout-bounded too — a hang lands on its chunk fallback (#209)",
+    );
+    assert.ok(
       gameAppSource.includes('withChunkTimeout(loadLoopScreen(), "GeoDetective screen")'),
       "LoopScreen's lazy load must be timeout-bounded (#209)",
     );

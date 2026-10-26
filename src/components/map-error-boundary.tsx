@@ -43,7 +43,17 @@ import { isNewBuildDeployed } from "@/game/build-staleness";
  * handler (#245) may auto-reload a stale tab on its own schedule,
  * this card remains the player's own visible, tappable recovery for
  * as long as it is on screen.
+ *
+ * The Refresh offer is one-shot per tab, like every other stale
+ * surface: `meridian.staleRefresh` (the same key game-app.tsx uses)
+ * is set when the player taps Refresh, and while it is set the probe
+ * is skipped — if the refreshed tab STILL fails, the build is broken,
+ * not stale, and the neutral card is the honest answer.
  */
+
+/** One-shot stale-refresh guard key — must match game-app.tsx's
+ *  STALE_REFRESH_KEY (pinned together in map-error-boundary.test.ts). */
+const STALE_REFRESH_KEY = "meridian.staleRefresh";
 export class MapErrorBoundary extends Component<
   {
     children: ReactNode;
@@ -98,10 +108,17 @@ export class MapErrorBoundary extends Component<
     this.startStaleProbe(error);
   }
 
-  /** #210: ask once per error whether a newer build is deployed. */
+  /** #210: ask once per error whether a newer build is deployed.
+   *  Skipped when this tab already refreshed once for staleness —
+   *  the one-shot guard the other stale surfaces use. */
   private startStaleProbe(error: Error): void {
     if (this.probedFor === error) return;
     this.probedFor = error;
+    try {
+      if (window.sessionStorage.getItem(STALE_REFRESH_KEY) === "1") return;
+    } catch {
+      // Storage unreadable — probe anyway; it still fails closed.
+    }
     const probe = this.props.probeStaleBuild ?? isNewBuildDeployed;
     void probe()
       .then((stale) => {
@@ -119,7 +136,16 @@ export class MapErrorBoundary extends Component<
   private retry = (): void => {
     // Reload: the only recovery that actually re-fetches the chunk (see the
     // doc comment above). The boot restores the run from sessionStorage, so
-    // the player's game survives the reload intact.
+    // the player's game survives the reload intact. A stale-card Refresh
+    // also arms the one-shot guard, so a still-broken refreshed tab gets
+    // the neutral card instead of an endless Refresh prompt.
+    if (this.state.staleBuild) {
+      try {
+        window.sessionStorage.setItem(STALE_REFRESH_KEY, "1");
+      } catch {
+        // Storage full/blocked — the reload still happens.
+      }
+    }
     window.location.reload();
   };
 

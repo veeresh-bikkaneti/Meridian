@@ -142,7 +142,7 @@ function GlobeChunkFallback() {
   );
 }
 const HomeGlobe = lazy(() =>
-  import("./home-globe")
+  withChunkTimeout(import("./home-globe"), "the home globe")
     .then((m) => ({ default: m.HomeGlobe }))
     .catch(() => ({ default: GlobeChunkFallback })),
 );

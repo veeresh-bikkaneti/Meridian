@@ -82,4 +82,25 @@ describe("#210 boundary probes staleness and routes to the update prompt", () =>
       "the TrailScreen site must name Cold Trail (#210)",
     );
   });
+
+  it("the Refresh offer honors the shared one-shot stale-refresh guard", () => {
+    assert.ok(
+      boundarySource.includes('const STALE_REFRESH_KEY = "meridian.staleRefresh";'),
+      "the boundary must use the shared stale-refresh key",
+    );
+    assert.ok(
+      gameAppSource.includes('const STALE_REFRESH_KEY = "meridian.staleRefresh";'),
+      "game-app must use the same key — the two literals are pinned together",
+    );
+    const probe = segment(boundarySource, "private startStaleProbe", "private focusAlert");
+    assert.ok(
+      probe.includes('getItem(STALE_REFRESH_KEY) === "1") return;'),
+      "an already-refreshed tab must skip the probe (neutral card, no Refresh loop)",
+    );
+    const retry = segment(boundarySource, "private retry", "render()");
+    assert.ok(
+      retry.includes('setItem(STALE_REFRESH_KEY, "1")'),
+      "tapping Refresh on the stale card must arm the one-shot guard",
+    );
+  });
 });
