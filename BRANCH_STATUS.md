@@ -1,12 +1,13 @@
 # BRANCH_STATUS — feat/crash-recovery-outcome
 
 **Branch:** `feat/crash-recovery-outcome`
-**Base:** `main` at `99c0e5b` (rebased 2026-10-26 onto the vite
-8.3.4 deps bump, PR #187; zero conflicts. Gates re-run on the
-rebased head, logs `~/workspace/meridian-crash-slice2/logs/rebase/`:
-tsc clean, src 1633/1633, worker 85/85, lint GATE PASSED, build
-green, Playwright crash-surface 27 passed / 2 failed — identical to
-the pre-rebase result, both failures the known pair)
+**Base:** `main` at `3fa68c0` (rebased 2026-10-26 onto the zod
+4.6.7 deps bump, PR #239; zero conflicts — the base delta touched
+only `package.json`/`package-lock.json`. A full final-head evidence
+pass on the previous head `38bf8ac` passed every gate but its
+verdict did not transfer when the base moved; decisive gates are
+re-run on this rebased head under Liz's "Fix 250" order, followed
+by a fresh independent Reality Check)
 **State: Slice 2 BUILT + gates run (2026-10-26).** Built under the
 signed Tier 2 Consensus Manifest
 (`~/workspace/meridian-crash-slice2/CONSENSUS-MANIFEST-slice2-build.md`),
