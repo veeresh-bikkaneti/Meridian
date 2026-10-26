@@ -2,8 +2,15 @@
 
 **Branch:** `fix/no-unrememberable-reloads`
 **Base:** `main` at `5f6164b` (includes the PR #247 merge)
-**State: BUILT — all gates run (below); independent Reality Checker
-gate is the remaining step before this can be called ready. The D6
+**State: READY — independent Reality Checker verdict READY (no
+blockers, no majors; two minors: the 5B-E title wording, fixed in
+`c80859b`, and the checked dist buildId predating HEAD by
+test/docs-only commits, source-identical — a rebuild from final HEAD
+at merge time removes the question). The Reality Checker re-ran the
+evidence first-hand: unit 41/41 branch + 29/29 baseline, full suite
+1576/1576, tsc/lint/worker green, the 3 new E2E journeys 3/3, and
+adjudicated both flagged items (5-test rewrite; fresh-page positive
+control) as legitimate. The D6
 fix (Liz's Option 2 ruling, 2026-10-25): stand down on
 unrememberable reloads. Tier 2 council (ATDD → TDD contracts →
 adversarial rounds 1–2 → Chair sign-off) complete; manifest at
