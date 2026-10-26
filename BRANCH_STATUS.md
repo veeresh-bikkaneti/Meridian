@@ -10,8 +10,14 @@ Issue: #200 — journal dataset generator: one-line `src()` parser gotcha.
 - [x] Docs: the gotcha + fix documented in the generator's header comment, in the `parseCatalog` doc comment, and in `docs/journal-spec.md` §1.
 - [x] Real regeneration is byte-stable: `node scripts/build-journal-dataset.mjs` on the real catalog reports 106 notes included (Chimney Rock among them) and leaves `src/components/home-journal.data.ts` unchanged.
 
+## Gates (on this branch's head)
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — exit 0: scripts 838 pass / 0 fail / 9 skipped (832 baseline + 6 new #200 tests); src 1633 pass / 0 fail
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — exit 0
+- E2E: not applicable — generator/parser change, covered by unit tests + byte-stable real regeneration above.
+
 ## Pending
-- [ ] Full gates: `npx tsc --noEmit`, `npm test`, `node scripts/lint-cards.mjs`, `npm run build:pages`
 - [ ] PR opened (no merge — owner merges)
 
 ## Notes
