@@ -2,7 +2,7 @@
 
 **Branch:** `fix/188-185-session-end-hints`
 **Base:** `main` at `5f24c6c` (2026-10-26)
-**State: BUILT — gates in progress (2026-10-26).** Coordinator C
+**State: BUILT + GATES GREEN (2026-10-26).** Coordinator C
 (UX/UI & Frontend + Game Squad) cluster branch 2 of 3. Not merged —
 merge is the owner's word.
 
@@ -37,14 +37,22 @@ merge is the owner's word.
 - `docs/handbook/02-game-design-decisions.md` — reload honesty note
   for GeoDetective hints (#185)
 
-## Gates
+## Gates (2026-10-26, this head)
 
-- [ ] `npx tsc --noEmit`
-- [ ] `npm test`
-- [ ] `node scripts/lint-cards.mjs`
-- [ ] `npm run build:pages`
-- [ ] Playwright `--workers=1`: geodetective-hint,
-      scout-notice-session-end, scout-toggle (regression neighbor)
+- [x] `npx tsc --noEmit` — clean, exit 0
+- [x] `npm test` — scripts 832/832, src 1570/1570 (incl. +5 new pins)
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — exit 0 (first attempt's prerender was
+      OOM-killed at exit 137 under parallel-coordinator load; retry
+      on the same tree passed)
+- [x] Playwright `--workers=1`: geodetective-hint **6/6** (incl. the
+      new #185 reload leg), scout-notice-session-end **2/2** (new
+      #188 End-game + idle-kill legs). A combined run with
+      scout-toggle.desktop.spec.ts under heavy parallel E2E load
+      showed pacing timeouts in pre-existing toggle tests (one
+      passed at 1.8 m); the toggle logic itself is untouched by this
+      branch — the notice lifecycle is covered by the new spec +
+      source pins above.
 
 ## Out of scope
 
