@@ -15,9 +15,11 @@ fix (Liz's Option 2 ruling, 2026-10-25): stand down on
 unrememberable reloads. Tier 2 council (ATDD → TDD contracts →
 adversarial rounds 1–2 → Chair sign-off) complete; manifest at
 `~/workspace/meridian-reload-loop-fix/CONSENSUS-MANIFEST-loop-fix.md`.
-The branch is LOCAL ONLY — not pushed, no PR, not merged, not
-deployed. Slice 2 (crash-report recovery outcomes) is NOT started;
-it comes after this fix merges.**
+Push + PR authorized by Liz 2026-10-25; the parent replays the
+local commits onto the remote branch via the GitHub API helper
+(SHAs may differ; content, messages and authorship are the same).
+Not merged, not deployed. Slice 2 (crash-report recovery outcomes)
+is NOT started; it comes after this fix merges.**
 It supersedes the previous contents of this file (the
 `feat/crash-report-verdicts` branch record, whose history lives on
 PR #247).
