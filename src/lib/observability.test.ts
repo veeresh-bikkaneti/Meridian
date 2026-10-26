@@ -9,12 +9,16 @@ import {
 } from "../game/clean-exit.ts";
 import {
   BREADCRUMB_KEY,
+  CHUNK_RECOVERY_KEY,
+  CHUNK_RELOAD_KEY,
   MAX_HISTORY,
   MAX_PAYLOAD_BYTES,
   classifyCrashVerdict,
   coarseDeviceFacts,
   createObservability,
   dprBucket,
+  isValidRecoveryMarker,
+  parseRecoveryMarker,
   screenBucket,
   truncateEventToCap,
   type CrashVerdictFacts,
@@ -799,7 +803,7 @@ test("stamps: suspected_crash via init carries bgTerminal=true when the last vis
   assert.equal(payload.trailStuck, false);
   assert.equal(payload.buildReplaced, true, "prev build differs from the running build");
   assert.equal(payload.storageOk, true);
-  assert.equal(payload.lcV, "1");
+  assert.equal(payload.lcV, "2");
   assert.equal(payload.verdict, "not_a_real_issue");
   assert.equal(payload.whyKey, "bg_close");
 });
@@ -870,7 +874,7 @@ test("stamps: only suspected_crash carries bgTerminal/buildReplaced/trailStuck �
   assert.equal(beacons.length, 1);
   const payload = JSON.parse(beacons[0].body) as ObservabilityEvent;
   assert.equal(payload.storageOk, true);
-  assert.equal(payload.lcV, "1");
+  assert.equal(payload.lcV, "2");
   assert.equal(payload.verdict, "developer_needed");
   assert.equal(payload.whyKey, "captured_error");
   assert.ok(!("bgTerminal" in payload), "no bgTerminal on a live error event");
@@ -890,7 +894,7 @@ test("stamps: a hiccup event carries storageOk and lcV but never a verdict", () 
   assert.equal(beacons.length, 1);
   const payload = JSON.parse(beacons[0].body) as ObservabilityEvent;
   assert.equal(payload.storageOk, true);
-  assert.equal(payload.lcV, "1");
+  assert.equal(payload.lcV, "2");
   assert.ok(!("verdict" in payload), "hiccup-class events are counted only — no verdict in Slice 1");
   assert.ok(!("whyKey" in payload));
 });
@@ -919,7 +923,7 @@ test("stamps: storageOk=false is stamped at the emit choke point when storage th
   const payload = JSON.parse(beacons[0].body) as ObservabilityEvent;
   assert.equal(payload.type, "map_error");
   assert.equal(payload.storageOk, false);
-  assert.equal(payload.lcV, "1");
+  assert.equal(payload.lcV, "2");
 });
 
 test("stamps: stamps survive the queued path — init with no endpoint, then setEndpoint flushes exactly one suspected_crash carrying all stamps", () => {
@@ -944,7 +948,7 @@ test("stamps: stamps survive the queued path — init with no endpoint, then set
   assert.equal(payload.buildReplaced, true);
   assert.equal(payload.trailStuck, false);
   assert.equal(payload.storageOk, true);
-  assert.equal(payload.lcV, "1");
+  assert.equal(payload.lcV, "2");
   assert.equal(payload.verdict, "not_a_real_issue");
   assert.equal(payload.whyKey, "bg_close");
 });
@@ -987,4 +991,356 @@ test("stamps: stamps still present after truncateEventToCap on a max-history (12
   assert.equal(parsed.lcV, "1");
   assert.equal(parsed.verdict, "not_a_real_issue");
   assert.equal(parsed.whyKey, "bg_close");
+});
+
+// --- Slice 2: recovery outcome loop (Consensus Manifest 2026-10-25) -----
+//
+// Claim/hold at init, leftover resolution, the marker_unreadable split,
+// noteRecoverySignal, the confirmation AND-gate, the afterRecovery
+// choke point, queue-eviction protection, and the classifier's
+// recovery_outcome branch (mirrored in the worker's test file).
+
+const S2_NOW = 100_000_000;
+
+function markerJson(over: Record<string, unknown> = {}): string {
+  return JSON.stringify({ v: 1, at: S2_NOW - 1_000, build: "build-a", ...over });
+}
+
+function s2Obs(
+  initial: Record<string, string>,
+  over: { unclean?: boolean; endpoint?: string | null; buildId?: string } = {},
+) {
+  const store = makeStorage(initial);
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: store,
+    transport,
+    endpoint: over.endpoint === undefined ? "https://example.com/ingest" : over.endpoint,
+    now: () => S2_NOW,
+    randomId: () => "s2-session",
+    device: DEVICE,
+    buildId: over.buildId ?? "b2",
+    isUnclean: () => over.unclean ?? false,
+  });
+  return { store, beacons, obs };
+}
+
+function outcomeEvents(beacons: Array<{ url: string; body: string }>): ObservabilityEvent[] {
+  return beacons
+    .map((b) => JSON.parse(b.body) as ObservabilityEvent)
+    .filter((e) => e.type === "recovery_outcome");
+}
+
+// Classifier: recovery_outcome branch (evaluated FIRST).
+const RECOVERY_CLASSIFIER_TABLE: Array<{
+  name: string;
+  facts: CrashVerdictFacts;
+  verdict: string;
+  whyKey: string;
+}> = [
+  { name: "confirmed → auto_fixed/recovery_confirmed", facts: { type: "recovery_outcome", recoveryOutcome: "confirmed" }, verdict: "auto_fixed", whyKey: "recovery_confirmed" },
+  { name: "repeat_failure → developer_needed/recovery_failed", facts: { type: "recovery_outcome", recoveryOutcome: "repeat_failure" }, verdict: "developer_needed", whyKey: "recovery_failed" },
+  { name: "stood_down → insufficient_evidence/recovery_stood_down (never auto_fixed)", facts: { type: "recovery_outcome", recoveryOutcome: "stood_down" }, verdict: "insufficient_evidence", whyKey: "recovery_stood_down" },
+  { name: "unconfirmed_closed → insufficient_evidence/recovery_unconfirmed", facts: { type: "recovery_outcome", recoveryOutcome: "unconfirmed_closed" }, verdict: "insufficient_evidence", whyKey: "recovery_unconfirmed" },
+  { name: "unconfirmed_died → insufficient_evidence/recovery_unconfirmed", facts: { type: "recovery_outcome", recoveryOutcome: "unconfirmed_died" }, verdict: "insufficient_evidence", whyKey: "recovery_unconfirmed" },
+  { name: "unconfirmed_expired → insufficient_evidence/recovery_unconfirmed", facts: { type: "recovery_outcome", recoveryOutcome: "unconfirmed_expired" }, verdict: "insufficient_evidence", whyKey: "recovery_unconfirmed" },
+  { name: "marker_unreadable → insufficient_evidence/marker_unreadable", facts: { type: "recovery_outcome", recoveryOutcome: "marker_unreadable" }, verdict: "insufficient_evidence", whyKey: "marker_unreadable" },
+  { name: "missing recoveryOutcome → insufficient_evidence/missing_fields (fail closed)", facts: { type: "recovery_outcome" }, verdict: "insufficient_evidence", whyKey: "missing_fields" },
+  { name: "invalid recoveryOutcome → insufficient_evidence/missing_fields (fail closed)", facts: { type: "recovery_outcome", recoveryOutcome: "bogus" }, verdict: "insufficient_evidence", whyKey: "missing_fields" },
+  { name: "branch is FIRST: a confirmed outcome carrying an error field still classifies auto_fixed", facts: { type: "recovery_outcome", recoveryOutcome: "confirmed", error: { name: "Error", message: "boom" } }, verdict: "auto_fixed", whyKey: "recovery_confirmed" },
+];
+
+for (const row of RECOVERY_CLASSIFIER_TABLE) {
+  test(`classifier (Slice 2): ${row.name}`, () => {
+    assert.deepEqual(classifyCrashVerdict(row.facts), { verdict: row.verdict, whyKey: row.whyKey });
+  });
+}
+
+test("marker predicate fixtures: the same shapes chunk-recovery's predicate decides (identical in both files)", () => {
+  // Valid pending / claimed.
+  assert.equal(parseRecoveryMarker(markerJson())?.kind, "valid");
+  assert.equal(parseRecoveryMarker(markerJson({ claimed: true }))?.kind, "valid");
+  assert.equal(isValidRecoveryMarker({ v: 1, at: 5, build: "b" }), true);
+  assert.equal(isValidRecoveryMarker({ v: 1, at: 5, build: "b", claimed: false }), true);
+  // Terminal record: an outcome string is never pending.
+  assert.equal(parseRecoveryMarker(markerJson({ outcome: "stood_down" }))?.kind, "terminal");
+  // Version split.
+  assert.equal(parseRecoveryMarker(markerJson({ v: 2 }))?.kind, "invalid-version");
+  // Predicate failures.
+  assert.equal(parseRecoveryMarker("not json {")?.kind, "invalid");
+  assert.equal(parseRecoveryMarker(markerJson({ at: "soon" }))?.kind, "invalid");
+  assert.equal(parseRecoveryMarker(markerJson({ build: "" }))?.kind, "invalid");
+  assert.equal(parseRecoveryMarker(markerJson({ claimed: "yes" }))?.kind, "invalid");
+  assert.equal(parseRecoveryMarker(markerJson({ outcome: 42 }))?.kind, "invalid");
+  assert.equal(parseRecoveryMarker(JSON.stringify([1, 2]))?.kind, "invalid");
+  assert.equal(isValidRecoveryMarker({ v: 1, at: Number.NaN, build: "b" }), false);
+  assert.equal(isValidRecoveryMarker(null), false);
+  // Absent.
+  assert.equal(parseRecoveryMarker(null), null);
+  assert.equal(parseRecoveryMarker(""), null);
+});
+
+test("Slice 2 claim: init claims an unclaimed marker by spread (at/build/extra fields preserved), holds pending, emits nothing", () => {
+  const { store, beacons, obs } = s2Obs({
+    [CHUNK_RECOVERY_KEY]: markerJson({ att: "keep-me" }),
+  });
+  obs.init();
+  assert.equal(beacons.length, 0, "claim alone emits nothing");
+  const stored = JSON.parse(store.getItem(CHUNK_RECOVERY_KEY) as string);
+  assert.equal(stored.claimed, true, "claimed by rewrite");
+  assert.equal(stored.at, S2_NOW - 1_000, "at never refreshed");
+  assert.equal(stored.build, "build-a");
+  assert.equal(stored.att, "keep-me", "spread preserves unknown fields");
+});
+
+test("Slice 2 confirmed: game_loaded leg first, episode_cleared second → exactly one confirmed, marker gone, later signals drop", () => {
+  const { store, beacons, obs } = s2Obs({ [CHUNK_RECOVERY_KEY]: markerJson() });
+  obs.init();
+  obs.recordMilestone("game_loaded");
+  assert.equal(outcomeEvents(beacons).length, 0, "one leg alone never confirms");
+  obs.noteRecoverySignal("episode_cleared");
+  const outcomes = outcomeEvents(beacons);
+  assert.equal(outcomes.length, 1);
+  assert.equal(outcomes[0].recoveryOutcome, "confirmed");
+  assert.equal(outcomes[0].buildId, "build-a", "attributed to the failing session's build");
+  assert.equal(outcomes[0].verdict, "auto_fixed");
+  assert.equal(outcomes[0].whyKey, "recovery_confirmed");
+  assert.equal(outcomes[0].lcV, "2");
+  assert.equal(store.getItem(CHUNK_RECOVERY_KEY), null, "resolve deletes the marker");
+  obs.noteRecoverySignal("repeat_failure");
+  obs.noteRecoverySignal("episode_cleared");
+  assert.equal(outcomeEvents(beacons).length, 1, "at-most-once: later signals drop");
+});
+
+test("Slice 2 confirmed: clear leg first, game_loaded second → emission happens at the second leg", () => {
+  const { beacons, obs } = s2Obs({ [CHUNK_RECOVERY_KEY]: markerJson() });
+  obs.init();
+  obs.noteRecoverySignal("episode_cleared");
+  assert.equal(outcomeEvents(beacons).length, 0);
+  obs.recordMilestone("game_loaded");
+  const outcomes = outcomeEvents(beacons);
+  assert.equal(outcomes.length, 1);
+  assert.equal(outcomes[0].recoveryOutcome, "confirmed");
+});
+
+test("Slice 2 repeat_failure: a recurrence resolves the attempt at once, replacing any held legs", () => {
+  const { store, beacons, obs } = s2Obs({ [CHUNK_RECOVERY_KEY]: markerJson() });
+  obs.init();
+  obs.recordMilestone("game_loaded");
+  obs.noteRecoverySignal("repeat_failure");
+  const outcomes = outcomeEvents(beacons);
+  assert.equal(outcomes.length, 1);
+  assert.equal(outcomes[0].recoveryOutcome, "repeat_failure");
+  assert.equal(outcomes[0].verdict, "developer_needed");
+  assert.equal(outcomes[0].whyKey, "recovery_failed");
+  assert.equal(store.getItem(CHUNK_RECOVERY_KEY), null);
+  obs.noteRecoverySignal("episode_cleared");
+  assert.equal(outcomeEvents(beacons).length, 1, "no confirmation can stand after a failure");
+});
+
+test("Slice 2: signals with no held attempt drop — repeat_failure and episode_cleared emit nothing", () => {
+  const { beacons, obs } = s2Obs({});
+  obs.init();
+  obs.noteRecoverySignal("repeat_failure");
+  obs.noteRecoverySignal("episode_cleared");
+  obs.recordMilestone("game_loaded");
+  assert.equal(outcomeEvents(beacons).length, 0);
+});
+
+test("Slice 2 stood_down standalone: no held attempt → emitted with the failing session's build from the signal facts", () => {
+  const { beacons, obs } = s2Obs({});
+  obs.init();
+  obs.noteRecoverySignal("stood_down", { build: "build-x", at: S2_NOW });
+  const outcomes = outcomeEvents(beacons);
+  assert.equal(outcomes.length, 1);
+  assert.equal(outcomes[0].recoveryOutcome, "stood_down");
+  assert.equal(outcomes[0].buildId, "build-x");
+  assert.equal(outcomes[0].verdict, "insufficient_evidence");
+  assert.equal(outcomes[0].whyKey, "recovery_stood_down");
+});
+
+test("Slice 2 stood_down with a held attempt: resolves the pending attempt with the MARKER's build, not the signal's", () => {
+  const { store, beacons, obs } = s2Obs({ [CHUNK_RECOVERY_KEY]: markerJson() });
+  obs.init();
+  obs.noteRecoverySignal("stood_down", { build: "other-build" });
+  const outcomes = outcomeEvents(beacons);
+  assert.equal(outcomes.length, 1);
+  assert.equal(outcomes[0].recoveryOutcome, "stood_down");
+  assert.equal(outcomes[0].buildId, "build-a");
+  assert.equal(store.getItem(CHUNK_RECOVERY_KEY), null);
+  obs.noteRecoverySignal("stood_down", { build: "other-build" });
+  assert.equal(outcomeEvents(beacons).length, 1, "resolved attempts drop later signals");
+});
+
+test("Slice 2 leftover: claimed marker + clean exit → unconfirmed_closed exactly once, marker deleted", () => {
+  const { store, beacons, obs } = s2Obs(
+    { [CHUNK_RECOVERY_KEY]: markerJson({ claimed: true }) },
+    { unclean: false },
+  );
+  obs.init();
+  const outcomes = outcomeEvents(beacons);
+  assert.equal(outcomes.length, 1);
+  assert.equal(outcomes[0].recoveryOutcome, "unconfirmed_closed");
+  assert.equal(outcomes[0].buildId, "build-a");
+  assert.equal(outcomes[0].verdict, "insufficient_evidence");
+  assert.equal(outcomes[0].whyKey, "recovery_unconfirmed");
+  assert.equal(store.getItem(CHUNK_RECOVERY_KEY), null);
+});
+
+test("Slice 2 leftover: claimed marker + unclean exit → unconfirmed_died exactly once, and that boot's suspected_crash carries afterRecovery", () => {
+  const { store, beacons, obs } = s2Obs(
+    {
+      [CHUNK_RECOVERY_KEY]: markerJson({ claimed: true }),
+      [BREADCRUMB_KEY]: prevBreadcrumbJson(),
+    },
+    { unclean: true },
+  );
+  obs.init();
+  const outcomes = outcomeEvents(beacons);
+  assert.equal(outcomes.length, 1);
+  assert.equal(outcomes[0].recoveryOutcome, "unconfirmed_died");
+  const crashes = beacons
+    .map((b) => JSON.parse(b.body) as ObservabilityEvent)
+    .filter((e) => e.type === "suspected_crash");
+  assert.equal(crashes.length, 1);
+  assert.equal(crashes[0].afterRecovery, true, "the §3.3.4 same-init link");
+  assert.equal(store.getItem(CHUNK_RECOVERY_KEY), null);
+});
+
+test("Slice 2 leftover: a claimed marker older than 24h resolves unconfirmed_expired — expired beats claimed, no afterRecovery link", () => {
+  const { store, beacons, obs } = s2Obs(
+    {
+      [CHUNK_RECOVERY_KEY]: markerJson({ claimed: true, at: S2_NOW - 86_400_001 }),
+      [BREADCRUMB_KEY]: prevBreadcrumbJson(),
+    },
+    { unclean: true },
+  );
+  obs.init();
+  const outcomes = outcomeEvents(beacons);
+  assert.equal(outcomes.length, 1);
+  assert.equal(outcomes[0].recoveryOutcome, "unconfirmed_expired");
+  const crashes = beacons
+    .map((b) => JSON.parse(b.body) as ObservabilityEvent)
+    .filter((e) => e.type === "suspected_crash");
+  assert.equal(crashes.length, 1);
+  assert.ok(!("afterRecovery" in crashes[0]), "no afterRecovery linkage for expiry");
+  assert.equal(store.getItem(CHUNK_RECOVERY_KEY), null);
+});
+
+test("Slice 2: a terminal stand-down record at init is deleted silently — never claimed, never emitted", () => {
+  const { store, beacons, obs } = s2Obs({
+    [CHUNK_RECOVERY_KEY]: markerJson({ outcome: "stood_down" }),
+  });
+  obs.init();
+  assert.equal(beacons.length, 0);
+  assert.equal(store.getItem(CHUNK_RECOVERY_KEY), null);
+  obs.noteRecoverySignal("repeat_failure");
+  assert.equal(outcomeEvents(beacons).length, 0, "no pending was held");
+});
+
+test("Slice 2 marker_unreadable: a parseable marker with numeric v !== 1 emits unreadable with the RUNNING build", () => {
+  const { store, beacons, obs } = s2Obs({
+    [CHUNK_RECOVERY_KEY]: markerJson({ v: 2 }),
+  });
+  obs.init();
+  const outcomes = outcomeEvents(beacons);
+  assert.equal(outcomes.length, 1);
+  assert.equal(outcomes[0].recoveryOutcome, "marker_unreadable");
+  assert.equal(outcomes[0].buildId, "b2", "no trustworthy marker build exists — running build");
+  assert.equal(outcomes[0].verdict, "insufficient_evidence");
+  assert.equal(outcomes[0].whyKey, "marker_unreadable");
+  assert.equal(store.getItem(CHUNK_RECOVERY_KEY), null);
+});
+
+test("Slice 2 marker_unreadable split: unparseable marker + fresh reload stamp → unreadable; without corroboration → silent delete", () => {
+  const corroborated = s2Obs({
+    [CHUNK_RECOVERY_KEY]: "not json {",
+    [CHUNK_RELOAD_KEY]: String(S2_NOW - 1_000),
+  });
+  corroborated.obs.init();
+  assert.equal(outcomeEvents(corroborated.beacons).length, 1);
+  assert.equal(outcomeEvents(corroborated.beacons)[0].recoveryOutcome, "marker_unreadable");
+  assert.equal(corroborated.store.getItem(CHUNK_RECOVERY_KEY), null);
+
+  const silent = s2Obs({ [CHUNK_RECOVERY_KEY]: "not json {" });
+  silent.obs.init();
+  assert.equal(silent.beacons.length, 0, "uncorroborated garbage deletes silently");
+  assert.equal(silent.store.getItem(CHUNK_RECOVERY_KEY), null);
+
+  const stale = s2Obs({
+    [CHUNK_RECOVERY_KEY]: markerJson({ build: "" }),
+    [CHUNK_RELOAD_KEY]: String(S2_NOW - 900_001),
+  });
+  stale.obs.init();
+  assert.equal(stale.beacons.length, 0, "a stale stamp does not corroborate");
+  assert.equal(stale.store.getItem(CHUNK_RECOVERY_KEY), null);
+});
+
+test("Slice 2 claim: a failed claim read-back holds nothing — the attempt re-presents at the next boot", () => {
+  const raw = new Map<string, string>([[CHUNK_RECOVERY_KEY, markerJson()]]);
+  const dropping: ObsStorage = {
+    getItem: (k: string) => (raw.has(k) ? (raw.get(k) as string) : null),
+    setItem: (k: string, v: string) => {
+      if (k === CHUNK_RECOVERY_KEY) return; // claim write silently dropped
+      raw.set(k, v);
+    },
+    removeItem: (k: string) => void raw.delete(k),
+  };
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: dropping, transport, endpoint: "https://example.com/ingest",
+    now: () => S2_NOW, randomId: () => "s2-drop", device: DEVICE, buildId: "b2", isUnclean: () => false,
+  });
+  obs.init();
+  obs.recordMilestone("game_loaded");
+  obs.noteRecoverySignal("episode_cleared");
+  obs.noteRecoverySignal("repeat_failure");
+  assert.equal(outcomeEvents(beacons).length, 0, "nothing held, nothing emitted");
+  assert.equal(raw.get(CHUNK_RECOVERY_KEY), markerJson(), "marker survives for the next boot's claim retry");
+});
+
+test("Slice 2 afterRecovery choke point: captured-error types gain afterRecovery only while a claimed outcome is pending + unresolved", () => {
+  const { beacons, obs } = s2Obs({ [CHUNK_RECOVERY_KEY]: markerJson() });
+  obs.init();
+  obs.emit({ type: "js_error", ts: S2_NOW, buildId: "b2", error: { name: "Error", message: "boom" } });
+  obs.emit({ type: "boot_failure", ts: S2_NOW, buildId: "b2" });
+  obs.emitTileFailed();
+  const sent = beacons.map((b) => JSON.parse(b.body) as ObservabilityEvent);
+  const js = sent.find((e) => e.type === "js_error");
+  const boot = sent.find((e) => e.type === "boot_failure");
+  const tile = sent.find((e) => e.type === "tile_failed");
+  assert.equal(js?.afterRecovery, true);
+  assert.equal(boot?.afterRecovery, true);
+  assert.ok(tile && !("afterRecovery" in tile), "hiccup types are never stamped");
+  // afterRecovery is evidence-neutral: the js_error still classifies
+  // developer_needed by its own facts.
+  assert.equal(js?.verdict, "developer_needed");
+  assert.equal(js?.whyKey, "captured_error");
+  // After resolution the choke point closes.
+  obs.noteRecoverySignal("repeat_failure");
+  obs.emit({ type: "js_error", ts: S2_NOW, buildId: "b2", error: { name: "Error", message: "later" } });
+  const after = beacons
+    .map((b) => JSON.parse(b.body) as ObservabilityEvent)
+    .filter((e) => e.type === "js_error");
+  assert.equal(after.length, 2);
+  assert.ok(!("afterRecovery" in after[1]), "never stamped once resolved — and never stamped false");
+});
+
+test("Slice 2 queue eviction: a queued recovery_outcome survives a burst of live errors and flushes first", () => {
+  const { beacons, obs } = s2Obs(
+    { [CHUNK_RECOVERY_KEY]: markerJson() },
+    { endpoint: null },
+  );
+  obs.init();
+  obs.noteRecoverySignal("repeat_failure");
+  assert.equal(obs.getQueueLength(), 1, "outcome queued with no endpoint");
+  for (let i = 0; i < 25; i++) {
+    obs.emit({ type: "js_error", ts: S2_NOW + i, buildId: "b2", error: { name: "Error", message: `burst-${i}` } });
+  }
+  assert.equal(obs.getQueueLength(), 20, "queue still capped");
+  obs.setEndpoint("https://example.com/ingest");
+  const flushed = beacons.map((b) => JSON.parse(b.body) as ObservabilityEvent);
+  assert.equal(flushed.length, 20);
+  assert.equal(flushed[0].type, "recovery_outcome", "protected from eviction like suspected_crash");
+  assert.equal(flushed.filter((e) => e.type === "recovery_outcome").length, 1);
 });
