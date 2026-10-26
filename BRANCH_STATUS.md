@@ -1,7 +1,9 @@
 # BRANCH_STATUS — fix/no-unrememberable-reloads
 
 **Branch:** `fix/no-unrememberable-reloads`
-**Base:** `main` at `5f6164b` (includes the PR #247 merge)
+**Base:** `main` at `a512916` (PR #246 merged 2026-10-25; branch
+rebased onto it the same day — the only conflict was this file,
+kept as this branch's record; gates re-run on the rebased head)
 **State: READY — independent Reality Checker verdict READY (no
 blockers, no majors; two minors: the 5B-E title wording, fixed in
 `c80859b`, and the checked dist buildId predating HEAD by
