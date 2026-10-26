@@ -230,10 +230,11 @@ test("stale build: the app's refresh UI wins, the watchdog stands down, and the 
   await waitOutWatchdogTimer(page);
   await expect(page.locator("#mv")).toHaveCount(0);
   await expect(page.getByText(GENERIC_HEADING, { exact: true })).toHaveCount(0);
-  // The watchdog stood down: no boot_failure was ever emitted (the single
-  // js_error from the chunk failure above is the only ingestion).
+  // The watchdog stood down: no boot_failure was ever emitted (the
+  // js_error plus the stood_down recovery_outcome are the only
+  // ingestions).
   expect(ingested.filter((e) => e.type === "boot_failure")).toHaveLength(0);
-  expect(ingested).toHaveLength(1);
+  expect(ingested).toHaveLength(2);
 
   await page.close();
 });

@@ -102,19 +102,18 @@ Chunk suite after the amendment: **55/55** (41 pre-existing as amended
   'backgrounded'; returning records 'foregrounded'" (visibility race,
   same mode as baseline);
   (2) crash-watchdog "stale build" — SAME test name as the baseline
-  failure, but the first failing assertion differs: on this branch the
-  spec's `ingested` length-1 pin trips earlier because the stale-build
-  journey now also emits the designed Slice 2 `recovery_outcome`
-  (stood_down) alongside the js_error; on pristine base the length
-  assertions passed and the test failed later on the milestone race.
-  The watchdog spec was NOT edited (outside the manifest's file list) —
-  updating its exact-count pin to expect the stood_down outcome is a
-  coordinator/Liz call.
+  failure. The spec WAS edited on Liz's word (2026-10-26): its
+  exact-count pin now expects the js_error + the designed Slice 2
+  `recovery_outcome` (stood_down) — length 2 — and that pin passes.
+  The journey's remaining failure is the pre-existing breadcrumb
+  race at the milestone assertion (expected `data_chunk_load_start`,
+  got `storyteller_ready`), the same signature as pristine base.
 
 ## Not built / not tested
 
 - Slice 3 (digest grouping, alerting policy §5.6, signature counters)
   — not started, per authorization.
-- No push, no PR, no merge, no deploy. Worker deploy-order note for the
-  eventual PR: the receiver whitelist must deploy BEFORE or WITH the
-  client emitter, never after, or outcome events are 400-rejected.
+- Pushed; PR #250 open. No merge, no deploy. Worker deploy-order
+  note for the eventual PR: the receiver whitelist must deploy BEFORE
+  or WITH the client emitter, never after, or outcome events are
+  400-rejected.
