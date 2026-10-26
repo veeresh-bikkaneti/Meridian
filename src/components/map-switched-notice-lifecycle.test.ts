@@ -61,6 +61,27 @@ describe("#188 switched notice is retired when the session ends", () => {
     );
   });
 
+  it("the other summary exits (Play again, Review) clear it too", () => {
+    const replayed = segment(
+      gameAppSource,
+      "onReplayed={() => {",
+      "onReviewDeck={handleReviewDeck}",
+    );
+    assert.ok(
+      replayed.includes("setMapSwitchedNote(null);"),
+      "Play again starts a fresh session — it must not inherit the notice (#188)",
+    );
+    const review = segment(
+      gameAppSource,
+      "const handleReviewDeck = useCallback(",
+      "const onTakeTour = useCallback(",
+    );
+    assert.ok(
+      review.includes("setMapSwitchedNote(null);"),
+      "the review session replaces the ended one — the notice must not resurface after it (#188)",
+    );
+  });
+
   it("control: a manual in-game flip still SETS the notice", () => {
     const manual = segment(
       gameAppSource,

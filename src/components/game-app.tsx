@@ -1856,6 +1856,10 @@ export function GameApp() {
     clearDrop();
     setRun(null);
     setMenu(null);
+    // #188: the review session replaces the ended one — retire the
+    // switched notice here too, or it would resurface when the
+    // review lands back on Home.
+    setMapSwitchedNote(null);
     startReview();
   }, [startReview]);
 
@@ -2103,6 +2107,9 @@ export function GameApp() {
             // Play again after End game: the old session ended with the
             // summary, so the replay starts a brand-new session.
             replaceSession(startSession(trailDate(), Date.now()));
+            // #188: a fresh session never inherits the old session's
+            // switched notice — same retirement as summary-done.
+            setMapSwitchedNote(null);
           }}
           onReviewDeck={handleReviewDeck}
           onCleared={(info) => setCleared(info)}
