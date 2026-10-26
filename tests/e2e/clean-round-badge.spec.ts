@@ -45,7 +45,7 @@ async function seedProfile(
 /** Open the GeoDetective; `puzzle` pins the deal via the ?loop-puzzle= seam. */
 async function openLoop(page: import("playwright/test").Page, puzzle?: string) {
   await page.goto(puzzle ? `${BASE}?loop-puzzle=${puzzle}` : BASE);
-  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 30_000,
   });

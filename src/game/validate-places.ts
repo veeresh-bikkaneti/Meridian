@@ -145,11 +145,11 @@ export function validateGeneratedPlace(place: {
 }
 
 /**
- * Starter-schema coverage (starters.ts — the 327 hand-curated state /
+ * Starter-schema coverage (starters.ts — the 331 hand-curated state /
  * country / globe edition places). Same Hyderabad rule, different schema:
  * starters declare `edition` + `regionId` instead of `ring`.
  *
- * Audited 2026-09-30: all 327 pass (250 state, 65 country, 12 globe).
+ * Audited 2026-09-30: all 331 pass (250 state, 65 country, 16 globe).
  * Three audit-script false positives during the pass were box errors, not
  * data errors (Utah's 42°N northern border, Northern Ireland's western
  * extent, Okinawa) — the boxes below include those corrections.
@@ -240,6 +240,10 @@ export const STARTER_GLOBE_COUNTRY_BOXES: Record<string, { country: string; box:
   "Puerto Ayora": { country: "Ecuador/Galápagos", box: { minLon: -92, minLat: -2, maxLon: -89, maxLat: 1 } },
   Serengeti: { country: "Tanzania", box: { minLon: 29, minLat: -12, maxLon: 41, maxLat: -1 } },
   Gullfoss: { country: "Iceland", box: { minLon: -25, minLat: 63, maxLon: -13, maxLat: 67 } },
+  "Statue of Liberty": { country: "United States", box: { minLon: -125, minLat: 24, maxLon: -66, maxLat: 50 } },
+  "Chichén Itzá": { country: "Mexico", box: { minLon: -118, minLat: 14, maxLon: -86, maxLat: 33 } },
+  "Eiffel Tower": { country: "France", box: { minLon: -5, minLat: 41, maxLon: 10, maxLat: 51 } },
+  "Sydney Opera House": { country: "Australia", box: { minLon: 112, minLat: -44, maxLon: 154, maxLat: -10 } },
 };
 
 export type ValidatableStarter = {

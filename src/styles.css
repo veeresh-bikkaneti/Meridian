@@ -66,6 +66,7 @@
   --line: color-mix(in oklab, var(--fg) 14%, transparent);
   --accent: #d7ddd9;
   --accent-fg: #101211;
+  --error: #f1948a; /* error text on dark surfaces */
   --font-body: "Avenir Next", "Segoe UI", sans-serif;
   --font-display-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
   /* ---- Atlas home design tokens (chart-room identity; home screen only for now) ---- */
@@ -124,6 +125,7 @@
     --accent: #1c2420;
     --accent-fg: #f4f1ea;
     --gold-ink: #8a6410; /* gold text on light surfaces */
+    --error: #b91c1c; /* error text on light surfaces */
     /* ---- Atlas home: expedition journal (light) ---- */
     --atlas-bg-1: #f8f2df;
     --atlas-bg-2: #eadfc3;
@@ -177,6 +179,7 @@
   --accent: #1c2420;
   --accent-fg: #f4f1ea;
   --gold-ink: #8a6410; /* gold text on light surfaces */
+  --error: #b91c1c; /* error text on light surfaces */
   /* ---- Atlas home: expedition journal (paper) ---- */
   --atlas-bg-1: #f8f2df;
   --atlas-bg-2: #eadfc3;
@@ -244,6 +247,7 @@
   --map-arc: #f4f1ea;
   --map-cross: #d7ddd9;
   --gold-ink: #f2c14e; /* gold text on dark surfaces */
+  --error: #f1948a; /* error text on dark surfaces */
   color-scheme: dark;
 }
 
@@ -258,6 +262,7 @@
   --color-accent: var(--accent);
   --color-accent-fg: var(--accent-fg);
   --color-gold-ink: var(--gold-ink);
+  --color-error: var(--error);
   --font-sans: var(--font-body);
   --font-display: var(--font-display-family);
   --radius-sm: 8px;
@@ -1876,5 +1881,128 @@
   .ct-overlap-pulse {
     animation: none;
     display: none;
+  }
+}
+
+/* =====================================================================
+ * Mode screens (WI-12)
+ * Atlas token parity for the quiz play, GeoDetective and Cold Trail
+ * screens. Built only from existing tokens — no token definition is
+ * added or changed here.
+ * ===================================================================== */
+
+.mode-screen {
+  position: relative;
+  color: var(--atlas-ink);
+  font-family: var(--font-atlas-body);
+}
+
+.mode-screen::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(110% 70% at 50% -10%, var(--atlas-glow), transparent 60%),
+    linear-gradient(180deg, var(--atlas-bg-1) 0%, var(--atlas-bg-2) 100%);
+}
+
+.mode-title {
+  font-family: var(--font-atlas-display);
+}
+
+.mode-card {
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 18px;
+}
+
+.mode-surface {
+  background: var(--atlas-card);
+  border-color: var(--atlas-card-line);
+}
+
+/* =====================================================================
+ * Cold Trail layout (WI-13)
+ * Sticky map: DOM order is unchanged (header -> sighting cards -> map
+ * section); .ct-map renders above the cards via order:-1 inside the
+ * flex .ct-layout and stays pinned while the cards scroll beneath it.
+ * At >=1024px the same wrapper becomes a two-column grid (sightings in
+ * column 1, sticky map in column 2). No transition, animation or
+ * smooth scrolling on any .ct-* rule (Child Safety condition 5).
+ * Scroll-margin values are MEASURED (see comment in the rules below),
+ * not estimated: sighting cards must never land under the sticky map.
+ * ===================================================================== */
+
+.ct-layout {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  gap: 1.5rem;
+}
+
+.ct-map {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--game-chrome-solid);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--game-chrome-line);
+  order: -1;
+}
+
+/* Measured on the branch build (Playwright harness, serveBuiltArtifact)
+ * with a hint visible, worst state = all-rings-down status + hint:
+ * 320x568 -> .ct-map 341px (reading strip 568-341 = 227px, >= the 200px
+ * floor); 375x667 -> 361.1px; 768x1024 -> 613.5px.
+ * scroll-margin-top = measured + 8px, rounded up, per breakpoint. */
+.ct-layout [data-testid="sighting-card"] {
+  scroll-margin-top: 349px;
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .ct-layout [data-testid="sighting-card"] {
+    scroll-margin-top: 370px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ct-layout [data-testid="sighting-card"] {
+    scroll-margin-top: 622px;
+  }
+}
+
+/* The shrink applies only on short viewports, where the un-shrunk map
+ * would squeeze the reading strip: on tall phones (e.g. 390x844) the
+ * full-height map fits, and shrinking it would move the map's bottom
+ * attribution bar into the area players tap to plant rings. */
+@media (max-width: 767px) and (max-height: 800px) {
+  .ct-map [data-testid="loop-map"] {
+    height: 36dvh;
+    min-height: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ct-layout {
+    display: grid;
+    grid-template-columns: minmax(320px, 380px) 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .ct-layout .ct-sightings {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .ct-layout .ct-map {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .ct-layout [data-testid="sighting-card"] {
+    scroll-margin-top: 8px;
   }
 }

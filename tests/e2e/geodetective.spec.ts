@@ -39,7 +39,7 @@ test.beforeEach(async ({ context }) => {
 /** Open the GeoDetective; `puzzle` pins the deal via the ?loop-puzzle= seam. */
 async function openLoop(page: import("playwright/test").Page, puzzle?: string) {
   await page.goto(puzzle ? `${BASE}?loop-puzzle=${puzzle}` : BASE);
-  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({ timeout: 30_000 });
   // The first clue card is visible once the clue file loads.
   await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible({ timeout: 30_000 });
@@ -452,9 +452,9 @@ test("leave and return: menu shows the resume variant; reload doesn't hijack", a
 
   // Leave explicitly: the menu offers to resume the case.
   await page.getByRole("button", { name: "Editions" }).click();
-  await expect(page.getByRole("button", { name: "▶️ Resume your case" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible();
   await page.reload();
-  await expect(page.getByRole("button", { name: "▶️ Resume your case" })).toBeVisible({
+  await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible({
     timeout: 30_000,
   });
   // The loop screen (not the menu's edition card) is closed: no map, no search.
@@ -462,7 +462,7 @@ test("leave and return: menu shows the resume variant; reload doesn't hijack", a
   await expect(page.getByRole("combobox", { name: "Search the map" })).toHaveCount(0);
 
   // Resuming restores the in-progress mystery.
-  await page.getByRole("button", { name: "▶️ Resume your case" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Resume your case" }).click();
   await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible({
     timeout: 30_000,
   });
@@ -480,7 +480,7 @@ test("edition card shows the streak after a win", async ({ page }) => {
   const card = page.getByRole("article").filter({ hasText: "GeoDetective" });
   await expect(card.getByText("🔥 Streak: 1")).toBeVisible();
   // The finished mystery is acknowledged: fresh deal, not resume.
-  await expect(card.getByRole("button", { name: "🔎 Solve a mystery" })).toBeVisible();
+  await expect(card.getByRole("button", { name: "GeoDetective: Solve a mystery" })).toBeVisible();
 });
 
 test("loop state is namespaced: v2 key only, endless-run keys untouched, v1 archive inert", async ({
