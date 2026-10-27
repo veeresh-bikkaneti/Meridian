@@ -60,7 +60,7 @@ function Enter({
           ? "translate-y-0 scale-100 opacity-100"
           : reduced
             ? "translate-y-0 scale-100 opacity-0"
-            : "translate-y-3 scale-[0.98] opacity-0"
+            : "translate-y-1 scale-[0.98] opacity-0"
       }`}
       style={{ transitionDuration: `${reduced ? 150 : durationMs}ms` }}
     >
@@ -94,7 +94,7 @@ export function QuestionBubble({
 
   if (view === "dismissed") {
     return (
-      <div className="pcard pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20">
+      <div className="pcard pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] min-[420px]:top-[max(3.625rem,env(safe-area-inset-top))] left-2.5 z-20">
         <Enter durationMs={267} reduced={reduced}>
           <button
             type="button"
@@ -136,7 +136,7 @@ export function QuestionBubble({
     </div>
   );
   return (
-    <div className="pcard pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] left-2.5 z-20 w-[min(352px,calc(100vw-20px))]">
+    <div className="pcard pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] min-[420px]:top-[max(3.625rem,env(safe-area-inset-top))] left-2.5 z-20 w-[min(296px,calc(100vw-20px))]">
       {/* No remount key on this Enter: the card shell stays MOUNTED across
           expand/collapse. Remounting on the view state would detach the
           scroll region div while useMoreBelow's effect keeps observing the

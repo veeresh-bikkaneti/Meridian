@@ -3713,6 +3713,7 @@ function PlayLoaded({
   const dropHitRef = useRef<boolean | null>(null);
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>(defaultBubbleView);
+  const userCollapsedBubbleRef = useRef(false);
   const [cardDismissed, setCardDismissed] = useState(false);
   // Hint UI (follow-up Item A — hints are a REAL feature, owner 2026-10-09).
   // Hints NEVER touch points. Per-place usage drives the 8-10 one-per-place
@@ -3875,6 +3876,13 @@ function PlayLoaded({
   useEffect(() => {
     setAim(null);
     setBubble(defaultBubbleView());
+    if (
+      run.results.length > 0 ||
+      (session?.placesPlayed ?? 0) > 0 ||
+      userCollapsedBubbleRef.current
+    ) {
+      setBubble("collapsed");
+    }
     setCardDismissed(false);
     // Hint UI resets per place (8-10: one hint per place).
     setHintsUsedThisPlace(0);
@@ -3931,9 +3939,12 @@ function PlayLoaded({
         return;
       }
       if (aim !== null) return;
-      setBubble((view) =>
-        view === "dismissed" ? view : view === "collapsed" ? "open" : "collapsed",
-      );
+      setBubble((view) => {
+        const next =
+          view === "dismissed" ? view : view === "collapsed" ? "open" : "collapsed";
+        userCollapsedBubbleRef.current = next !== "open";
+        return next;
+      });
     }
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
@@ -4252,6 +4263,7 @@ function PlayLoaded({
     setAimAnnouncement(null);
     setDrop(null);
     clearDrop();
+    userCollapsedBubbleRef.current = false;
     setBubble(defaultBubbleView());
     setCardDismissed(false);
     setRevealDone(false);
@@ -4469,26 +4481,28 @@ function PlayLoaded({
             <span className="sr-only" role="status">
               Session score {sessionTotal.toLocaleString("en-US")}
             </span>
-            {run.streak >= 2 ? (
-              // The flame celebrates the LIVE streak in this run (each
-              // edition is a fresh run with its own combo); the summary's
-              // "best streak" is session-wide and may come from another
-              // edition. Both labels are honest about what they measure.
-              <p
-                data-testid="streak-flame"
-                className="game-chrome rounded-md px-3 py-1.5 text-sm tabular-nums"
-              >
-                <span role="img" aria-label={`${run.streak}-place streak`}>
-                  🔥
-                </span>{" "}
-                {run.streak}
+            <div className="flex items-center gap-1.5">
+              {run.streak >= 2 ? (
+                // The flame celebrates the LIVE streak in this run (each
+                // edition is a fresh run with its own combo); the summary's
+                // "best streak" is session-wide and may come from another
+                // edition. Both labels are honest about what they measure.
+                <p
+                  data-testid="streak-flame"
+                  className="game-chrome rounded-md px-3 py-1.5 text-sm tabular-nums"
+                >
+                  <span role="img" aria-label={`${run.streak}-place streak`}>
+                    🔥
+                  </span>{" "}
+                  {run.streak}
+                </p>
+              ) : null}
+              <p className="game-chrome rounded-md px-3 py-2 text-sm">
+                {/* Session-scoped places (not this run's): switching editions
+                    no longer drops the counter back to 0. */}
+                {session?.hits ?? run.hits} placed
               </p>
-            ) : null}
-            <p className="game-chrome rounded-md px-3 py-2 text-sm">
-              {/* Session-scoped places (not this run's): switching editions
-                  no longer drops the counter back to 0. */}
-              {session?.hits ?? run.hits} placed
-            </p>
+            </div>
             {/* Place-card redesign 2026-10-11: the aim-phase End-game pill
                 lives in the bottom-right dock (it overlapped the question
                 card's X dismiss at 390px when it sat here). During
@@ -4570,7 +4584,10 @@ function PlayLoaded({
             difficulty={place.difficulty}
             hasPin={aim !== null}
             view={bubble}
-            onViewChange={setBubble}
+            onViewChange={(next) => {
+              userCollapsedBubbleRef.current = next !== "open";
+              setBubble(next);
+            }}
           />
           {/* Hint UI now lives in the bottom-right aim dock (above the
               End-game pill) — see the dock comment. Removed 2026-10-19:
