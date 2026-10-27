@@ -106,5 +106,6 @@ here consumes main's production content; no game code touches clue content.
   `LoopScreen.tsx` (screen)
 - `scripts/build-loop.mjs` — data pipeline (seed verification, name
   index, manifest); `scripts/build-loop.test.mjs` — pipeline tests
-- `public/loop/` — `manifest.json`, `names.json` (119,038-entry guess
-  index, built by `build-loop.mjs`), `clues/{index}.json`
+- `public/loop/` — `manifest.json`, `names.v2.json` (119,038-entry guess
+  index as packed columns, built by `build-loop.mjs`, decoded by
+  `src/game/loop/names-codec.ts`), `clues/{index}.json`

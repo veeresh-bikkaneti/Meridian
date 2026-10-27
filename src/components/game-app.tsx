@@ -164,7 +164,7 @@ import {
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
-import { installChunkLoadRecovery } from "@/lib/chunk-recovery";
+import { consumeChunkReloadNotice, installChunkLoadRecovery } from "@/lib/chunk-recovery";
 import { withChunkTimeout } from "@/lib/chunk-timeout";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
@@ -1104,6 +1104,11 @@ export function GameApp() {
   const ageBand: AgeBandId = resolveBand(ageProfile);
   const [ageSettingsOpen, setAgeSettingsOpen] = useState(false);
   const [ageToast, setAgeToast] = useState<string | null>(null);
+  // Post-reload notice (chunk-recovery): set once at boot when the
+  // previous page's reload left a notice flag. Deliberately NO
+  // auto-dismiss timer (unlike ageToast above): a timed status can be
+  // deleted before a screen reader reaches it. Close button only.
+  const [chunkReloadNotice, setChunkReloadNotice] = useState(false);
   useEffect(() => {
     if (ageToast === null) return;
     const id = window.setTimeout(() => setAgeToast(null), 3500);
@@ -1309,6 +1314,10 @@ export function GameApp() {
       buildId: CURRENT_BUILD_ID,
       onRecoverySignal: (signal, facts) => noteRecoverySignal(signal, facts),
     });
+    // If the previous page auto-reloaded (or the player tapped the
+    // error card's "Try again"), explain the reload now that the new
+    // page is up: consume the one-shot notice flag (chunk-recovery).
+    if (consumeChunkReloadNotice()) setChunkReloadNotice(true);
     // Scout Map boot qualification: resolve the mode pre-mount — before
     // any map instance exists.
     // Write policy (Q3): a live stored assignment (manual forever, auto
@@ -1324,23 +1333,19 @@ export function GameApp() {
     // probes clean returns to full. (This replaced the boot choice
     // dialog; see planBootMapMode's docstring for the superseded
     // directive.)
-    // E2E seam: the harness init script
-    // (window.__meridianSuppressScoutOffer, set by serveBuiltArtifact)
-    // suppresses the auto-switch — the Playwright VM's SwiftShader
-    // renderer reads as a weak device, so unsuppressed every fresh boot
-    // would silently start in Scout and block unrelated specs. The seam
-    // now guards the auto-switch instead of the removed dialog; whether
-    // it should keep shipping in production is issue #154 item 1 — the
-    // owner's call, still owed.
+    // There is deliberately NO test bypass here (issue #154 item 1):
+    // the E2E harness used to set a window flag to suppress this
+    // auto-switch on its SwiftShader VM, which reads as a weak device.
+    // That flag shipped in production, where any page script could set
+    // it. The harness now spoofs the device signals themselves
+    // (tests/e2e/helpers.ts), so this boot path is the only one that
+    // exists — in production and in tests alike.
     try {
       const stored = readStoredMapMode();
       if (stored) {
         setReportMapMode(stored.mode);
         setMapMode(stored.mode);
       } else {
-        const suppressAutoSwitch =
-          typeof window !== "undefined" &&
-          (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer === true;
         const plan = planBootMapMode(
           qualifyMapMode({
             priorMapCrash: wasMapAttributedCrash(),
@@ -1348,7 +1353,7 @@ export function GameApp() {
             deviceMemoryGB: readDeviceMemoryGB(),
           }),
         );
-        if (plan.mode === "scout" && !suppressAutoSwitch) {
+        if (plan.mode === "scout") {
           if (plan.persistSource !== null) {
             writeStoredMapMode("scout", plan.persistSource);
           }
@@ -2467,6 +2472,25 @@ export function GameApp() {
           {loadNotice}
         </>
       }
+      homeToast={
+        chunkReloadNotice && !ageToast ? (
+          <div
+            role="status"
+            data-testid="chunk-reload-notice"
+            className="relative z-10 mt-3 mx-auto flex w-full max-w-md items-center justify-between gap-3 rounded-xl border border-line bg-surface pl-4 pr-1 py-1 text-sm text-fg shadow-xl"
+          >
+            <span>{"Meridian had to reload. You're back! Keep playing!"}</span>
+            <button
+              type="button"
+              aria-label="Close"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-fg"
+              onClick={() => setChunkReloadNotice(false)}
+            >
+              ✕
+            </button>
+          </div>
+        ) : null
+      }
     />
     </div>
     {ageSettingsOpen ? (
@@ -2529,6 +2553,7 @@ function Choose({
   onReview,
   deck,
   notice,
+  homeToast,
   difficultyChoice,
   onDifficultyChoice,
   tutorialInvite,
@@ -2555,6 +2580,7 @@ function Choose({
   /** Deck entry status (flag-gated; see useDeckStatus). */
   deck: { enabled: boolean; due: number; total: number };
   notice?: ReactNode;
+  homeToast?: ReactNode;
   difficultyChoice: PickerDifficulty;
   onDifficultyChoice: (choice: PickerDifficulty) => void;
   tutorialInvite?: ReactNode;
@@ -2726,6 +2752,7 @@ function Choose({
           </button>
         </div>
       </header>
+      {homeToast}
 
       <div className="hv5-bento">
         <section className="hv5-hero home-rise" style={rise(2)} aria-label="Welcome to Meridian">
@@ -3737,6 +3764,7 @@ function PlayLoaded({
   const dropHitRef = useRef<boolean | null>(null);
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>(defaultBubbleView);
+  const userCollapsedBubbleRef = useRef(false);
   const [cardDismissed, setCardDismissed] = useState(false);
   // Hint UI (follow-up Item A — hints are a REAL feature, owner 2026-10-09).
   // Hints NEVER touch points. Per-place usage drives the 8-10 one-per-place
@@ -3899,6 +3927,13 @@ function PlayLoaded({
   useEffect(() => {
     setAim(null);
     setBubble(defaultBubbleView());
+    if (
+      run.results.length > 0 ||
+      (session?.placesPlayed ?? 0) > 0 ||
+      userCollapsedBubbleRef.current
+    ) {
+      setBubble("collapsed");
+    }
     setCardDismissed(false);
     // Hint UI resets per place (8-10: one hint per place).
     setHintsUsedThisPlace(0);
@@ -3955,9 +3990,12 @@ function PlayLoaded({
         return;
       }
       if (aim !== null) return;
-      setBubble((view) =>
-        view === "dismissed" ? view : view === "collapsed" ? "open" : "collapsed",
-      );
+      setBubble((view) => {
+        const next =
+          view === "dismissed" ? view : view === "collapsed" ? "open" : "collapsed";
+        userCollapsedBubbleRef.current = next !== "open";
+        return next;
+      });
     }
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
@@ -4276,6 +4314,7 @@ function PlayLoaded({
     setAimAnnouncement(null);
     setDrop(null);
     clearDrop();
+    userCollapsedBubbleRef.current = false;
     setBubble(defaultBubbleView());
     setCardDismissed(false);
     setRevealDone(false);
@@ -4414,8 +4453,8 @@ function PlayLoaded({
             />
           </Suspense>
         </MapErrorBoundary>
-        <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
-          <div className="flex items-start gap-2">
+        <div className="pointer-events-none absolute top-2 right-2.5 left-2.5 z-30 flex items-start justify-between gap-2 sm:top-3 sm:right-3 sm:left-3 sm:gap-3">
+          <div className="flex items-start gap-1.5 sm:gap-2">
             <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
               {review ? REVIEW_DECK_COPY.exitReview : "Editions"}
             </Button>
@@ -4441,7 +4480,7 @@ function PlayLoaded({
               {pool.length}
             </p>
           ) : (
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex flex-col items-end gap-0.5 sm:gap-2">
             <div className="relative">
               <button
                 type="button"
@@ -4450,7 +4489,7 @@ function PlayLoaded({
                 aria-controls="session-score-breakdown"
                 aria-label={`Session score ${sessionTotal.toLocaleString("en-US")}. Toggle score breakdown by edition and difficulty.`}
                 onClick={() => setShowBreakdown((v) => !v)}
-                className="game-chrome pointer-events-auto rounded-md px-3 py-2 text-sm font-semibold tabular-nums"
+                className="game-chrome pointer-events-auto rounded-md px-2 py-0.5 text-[11px] leading-tight font-semibold tabular-nums whitespace-nowrap sm:px-3 sm:py-2 sm:text-sm"
               >
                 SCORE {sessionTotal.toLocaleString("en-US")}
               </button>
@@ -4493,26 +4532,28 @@ function PlayLoaded({
             <span className="sr-only" role="status">
               Session score {sessionTotal.toLocaleString("en-US")}
             </span>
-            {run.streak >= 2 ? (
-              // The flame celebrates the LIVE streak in this run (each
-              // edition is a fresh run with its own combo); the summary's
-              // "best streak" is session-wide and may come from another
-              // edition. Both labels are honest about what they measure.
-              <p
-                data-testid="streak-flame"
-                className="game-chrome rounded-md px-3 py-1.5 text-sm tabular-nums"
-              >
-                <span role="img" aria-label={`${run.streak}-place streak`}>
-                  🔥
-                </span>{" "}
-                {run.streak}
+            <div className="flex items-center gap-1.5">
+              {run.streak >= 2 ? (
+                // The flame celebrates the LIVE streak in this run (each
+                // edition is a fresh run with its own combo); the summary's
+                // "best streak" is session-wide and may come from another
+                // edition. Both labels are honest about what they measure.
+                <p
+                  data-testid="streak-flame"
+                  className="game-chrome rounded-md px-1.5 py-0.5 text-[11px] leading-tight tabular-nums whitespace-nowrap sm:px-3 sm:py-1.5 sm:text-sm"
+                >
+                  <span role="img" aria-label={`${run.streak}-place streak`}>
+                    🔥
+                  </span>{" "}
+                  {run.streak}
+                </p>
+              ) : null}
+              <p className="game-chrome rounded-md px-2 py-0.5 text-[11px] leading-tight whitespace-nowrap sm:px-3 sm:py-2 sm:text-sm">
+                {/* Session-scoped places (not this run's): switching editions
+                    no longer drops the counter back to 0. */}
+                {session?.hits ?? run.hits} placed
               </p>
-            ) : null}
-            <p className="game-chrome rounded-md px-3 py-2 text-sm">
-              {/* Session-scoped places (not this run's): switching editions
-                  no longer drops the counter back to 0. */}
-              {session?.hits ?? run.hits} placed
-            </p>
+            </div>
             {/* Place-card redesign 2026-10-11: the aim-phase End-game pill
                 lives in the bottom-right dock (it overlapped the question
                 card's X dismiss at 390px when it sat here). During
@@ -4594,7 +4635,10 @@ function PlayLoaded({
             difficulty={place.difficulty}
             hasPin={aim !== null}
             view={bubble}
-            onViewChange={setBubble}
+            onViewChange={(next) => {
+              userCollapsedBubbleRef.current = next !== "open";
+              setBubble(next);
+            }}
           />
           {/* Hint UI now lives in the bottom-right aim dock (above the
               End-game pill) — see the dock comment. Removed 2026-10-19:

@@ -1,5 +1,6 @@
 import { Component, createRef, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { markChunkReloadNotice } from "@/lib/chunk-recovery";
 import { emitMapError } from "@/lib/observability";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 
@@ -136,9 +137,12 @@ export class MapErrorBoundary extends Component<
   private retry = (): void => {
     // Reload: the only recovery that actually re-fetches the chunk (see the
     // doc comment above). The boot restores the run from sessionStorage, so
-    // the player's game survives the reload intact. A stale-card Refresh
+    // the player's game survives the reload intact. Leave the notice flag
+    // first, so the reloaded page explains itself exactly as an
+    // auto-reload does (chunk-recovery, manifest D9). A stale-card Refresh
     // also arms the one-shot guard, so a still-broken refreshed tab gets
     // the neutral card instead of an endless Refresh prompt.
+    markChunkReloadNotice();
     if (this.state.staleBuild) {
       try {
         window.sessionStorage.setItem(STALE_REFRESH_KEY, "1");
