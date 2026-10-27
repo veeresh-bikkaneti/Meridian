@@ -4,7 +4,8 @@
  * Reads the 124,690 GeoNames places in src/game/data/geonames/chunks/*.json
  * and emits the lazy-loaded typeahead guess index:
  *
- *   public/loop/names.json       [{n,id,lon,lat,r,p}]  (~119k entries)
+ *   public/loop/names.v2.json    packed columns of {n,id,lon,lat,r,p}  (~119k entries;
+ *                                format + decoder: src/game/loop/names-codec.ts)
  *
  * The runtime day-index contract (mirrored in scripts/build-loop.test.mjs):
  *   index = Math.floor(Date.now() / 86400000) % manifest.size
@@ -33,6 +34,7 @@ import { fileURLToPath } from "node:url";
 // Single shared normalizer with the runtime typeahead (src/game/loop/evaluate.ts).
 // The build and the query path must never drift again.
 import { normalizeLoopName } from "../src/game/loop/normalize.ts";
+import { packNameIndex } from "../src/game/loop/names-codec.ts";
 // The REAL runtime ranker — the findability gate below must use the same
 // matching logic the typeahead uses, never a reimplementation.
 import { rankLoopSuggestions } from "../src/game/loop/evaluate.ts";
@@ -301,8 +303,8 @@ async function main() {
   console.log(`loopTargets=${targetIds.size}`);
   const index = buildNamesIndex(places, pops, [], targetIds);
   assertTargetsFindable(index, places, targetIds);
-  writeJson(join(OUT_DIR, "names.json"), index);
-  console.log(`names.json entries=${index.length}`);
+  writeJson(join(OUT_DIR, "names.v2.json"), packNameIndex(index));
+  console.log(`names.v2.json entries=${index.length}`);
 }
 
 const isMain = process.argv[1] === fileURLToPath(import.meta.url);

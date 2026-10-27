@@ -1,5 +1,5 @@
 import { test, expect } from "playwright/test";
-import { serveBuiltArtifact } from "./helpers";
+import { loopNameIndex, openMysteryPlaceId, serveBuiltArtifact } from "./helpers";
 
 /**
  * Clean Round badge E2E (#113 BLOCK 1 + BLOCK 2).
@@ -61,15 +61,8 @@ function searchBox(page: import("playwright/test").Page) {
 
 /** Resolve the open mystery's target entry from the guess index. */
 async function targetEntry(page: import("playwright/test").Page) {
-  return page.evaluate(async () => {
-    const store = JSON.parse(localStorage.getItem("meridian.loop.v2")!);
-    const clue = await fetch(`loop/clues/${store.current.index}.json`).then((r) => r.json());
-    const names = await fetch("loop/names.json").then((r) => r.json());
-    return names.find((e: { id: string }) => e.id === clue.placeId) as {
-      n: string;
-      id: string;
-    };
-  });
+  const placeId = await openMysteryPlaceId(page);
+  return loopNameIndex().find((e) => e.id === placeId)!;
 }
 
 /** Guess the resolved target through the search box (exact entry id). */
@@ -88,24 +81,16 @@ async function guessTarget(
 }
 
 /** Five wrong guesses (never the target) for the loss path. */
-async function wrongQueries(
-  page: import("playwright/test").Page,
-  targetId: string,
-): Promise<string[]> {
-  return page.evaluate(async ({ targetId }: { targetId: string }) => {
-    const names = await fetch("loop/names.json").then((r) => r.json());
-    const cands = ["paris", "tokyo", "sydney", "cairo", "new york"];
-    const out: string[] = [];
-    for (const q of cands) {
-      const hit = names.find(
-        (e: { n: string; id: string }) =>
-          e.n.toLowerCase().startsWith(q) && e.id !== targetId,
-      );
-      if (hit) out.push(hit.n);
-      if (out.length === 5) break;
-    }
-    return out;
-  }, { targetId });
+function wrongQueries(targetId: string): string[] {
+  const names = loopNameIndex();
+  const cands = ["paris", "tokyo", "sydney", "cairo", "new york"];
+  const out: string[] = [];
+  for (const q of cands) {
+    const hit = names.find((e) => e.n.toLowerCase().startsWith(q) && e.id !== targetId);
+    if (hit) out.push(hit.n);
+    if (out.length === 5) break;
+  }
+  return out;
 }
 
 async function guessViaMap(page: import("playwright/test").Page, query: string) {
@@ -176,7 +161,7 @@ test("Clean Round badge never overlaps the win-reveal CTA", async ({ page }) => 
 test("Clean Round: a loss never earns it, even hint-free on 11-13", async ({ page }) => {
   await openLoop(page, "218"); // Ankara
   const entry = await targetEntry(page);
-  for (const q of await wrongQueries(page, entry.id)) {
+  for (const q of wrongQueries(entry.id)) {
     await guessViaMap(page, q);
   }
   await expect(page.getByText("Out of guesses")).toBeVisible({ timeout: 15_000 });

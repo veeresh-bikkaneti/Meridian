@@ -80,6 +80,7 @@ const HOOKS_SOURCE = [
 register("data:text/javascript," + encodeURIComponent(HOOKS_SOURCE));
 
 const { GuessInput } = (await import("./guess-input.tsx")) as typeof import("./guess-input.tsx");
+const { packNameIndex } = (await import("./names-codec.ts")) as typeof import("./names-codec.ts");
 const { clearLoopIndexCache } = (await import("./evaluate.ts")) as typeof import("./evaluate.ts");
 const aaStub = (await import(AA_STUB_URL)) as {
   calls: Array<{ el: unknown; options: unknown }>;
@@ -120,14 +121,14 @@ afterEach(() => {
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const ENTRIES = [
-  { n: "paris", id: "geo-1", lon: 2.35, lat: 48.85, r: "France", p: 2000000 },
-  { n: "paris texas", id: "geo-2", lon: -95.55, lat: 33.66, r: "Texas, USA", p: 25000 },
+  { n: "paris", id: "geonames:1", lon: 2.35, lat: 48.85, r: "France", p: 2000000 },
+  { n: "paris texas", id: "geonames:2", lon: -95.55, lat: 33.66, r: "Texas, USA", p: 25000 },
 ];
 
 function stubFetch() {
   (globalThis as Record<string, unknown>).fetch = async () => ({
     ok: true,
-    json: async () => ENTRIES,
+    json: async () => packNameIndex(ENTRIES),
   });
 }
 
