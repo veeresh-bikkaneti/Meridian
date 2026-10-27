@@ -108,9 +108,10 @@ block as a caveat.
   owner records why and accepts the residual risk first. No verified
   recovery path, no destructive change.
 - **Player-facing locks.** Donation copy is verbatim-locked: line 1 is
-  "Grown-ups — buy me a coffee? ☕" and line 2 is "Your support keeps
-  Meridian free for kids" — any change to either line, including
-  punctuation, the em dash (U+2014), or the ☕ (U+2615), is a block.
+  "Grown-ups — buy me a coffee? ☕" and line 2 is
+  "Your support keeps Meridian free for kids" — any change to either
+  line, including punctuation, the em dash (U+2014), or the ☕ (U+2615),
+  is a block.
   Monetization: no paywalls ever; no real-money purchases; no gated
   progression; and no paid clues or hints. Earnable in-game currency is
   allowed only if it is earned through gameplay, with no real-money
