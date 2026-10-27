@@ -2,7 +2,7 @@ import { distanceKm } from "@/game/geo";
 import { formatLength, unitForEdition } from "@/game/units";
 import { isHit, radiusKm } from "@/game/radius";
 import { placesFor, poolSizeFor, storyForBand } from "@/game/generated-places";
-import { isNewBuildDeployed } from "@/game/build-staleness";
+import { CURRENT_BUILD_ID, isNewBuildDeployed } from "@/game/build-staleness";
 import { preloadAdmin1Boundaries, preloadAdmin1ForCountry, admin1ChunkIso2ForRegion } from "@/game/reverse-geocode";
 import { preloadTerritory } from "@/game/territory";
 import {
@@ -110,6 +110,7 @@ import { LockedLoop } from "./age-profile/LockedLoop";
 import { ReadAloudPrefPrompt } from "./age-profile/ReadAloudPrefPrompt";
 import { ReadAloudPrefSettings } from "./age-profile/ReadAloudPrefSettings";
 import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
+import { LazyHomeImage } from "./lazy-home-image";
 import {
   applyPendingAtBoundary,
   audioMode,
@@ -163,11 +164,13 @@ import {
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
+import { consumeChunkReloadNotice, installChunkLoadRecovery } from "@/lib/chunk-recovery";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
   initObservability,
   installGlobalErrorHandlers,
+  noteRecoverySignal,
   recordMilestone,
   sanitizeError,
   setObservabilityEndpoint,
@@ -1061,6 +1064,11 @@ export function GameApp() {
   const ageBand: AgeBandId = resolveBand(ageProfile);
   const [ageSettingsOpen, setAgeSettingsOpen] = useState(false);
   const [ageToast, setAgeToast] = useState<string | null>(null);
+  // Post-reload notice (chunk-recovery): set once at boot when the
+  // previous page's reload left a notice flag. Deliberately NO
+  // auto-dismiss timer (unlike ageToast above): a timed status can be
+  // deleted before a screen reader reaches it. Close button only.
+  const [chunkReloadNotice, setChunkReloadNotice] = useState(false);
   useEffect(() => {
     if (ageToast === null) return;
     const id = window.setTimeout(() => setAgeToast(null), 3500);
@@ -1258,6 +1266,18 @@ export function GameApp() {
     // null = transport disabled), then flush. Never throws.
     initObservability();
     installGlobalErrorHandlers();
+    // Stale-chunk auto-recovery: registered at boot, before any lazy
+    // screen import can fire, so a deploy that lands mid-session
+    // reloads the tab once onto the current build instead of stranding
+    // the player on a chunk-404 error card (see src/lib/chunk-recovery.ts).
+    installChunkLoadRecovery(undefined, {
+      buildId: CURRENT_BUILD_ID,
+      onRecoverySignal: (signal, facts) => noteRecoverySignal(signal, facts),
+    });
+    // If the previous page auto-reloaded (or the player tapped the
+    // error card's "Try again"), explain the reload now that the new
+    // page is up: consume the one-shot notice flag (chunk-recovery).
+    if (consumeChunkReloadNotice()) setChunkReloadNotice(true);
     // Scout Map boot qualification: resolve the mode pre-mount — before
     // any map instance exists.
     // Write policy (Q3): a live stored assignment (manual forever, auto
@@ -1273,23 +1293,19 @@ export function GameApp() {
     // probes clean returns to full. (This replaced the boot choice
     // dialog; see planBootMapMode's docstring for the superseded
     // directive.)
-    // E2E seam: the harness init script
-    // (window.__meridianSuppressScoutOffer, set by serveBuiltArtifact)
-    // suppresses the auto-switch — the Playwright VM's SwiftShader
-    // renderer reads as a weak device, so unsuppressed every fresh boot
-    // would silently start in Scout and block unrelated specs. The seam
-    // now guards the auto-switch instead of the removed dialog; whether
-    // it should keep shipping in production is issue #154 item 1 — the
-    // owner's call, still owed.
+    // There is deliberately NO test bypass here (issue #154 item 1):
+    // the E2E harness used to set a window flag to suppress this
+    // auto-switch on its SwiftShader VM, which reads as a weak device.
+    // That flag shipped in production, where any page script could set
+    // it. The harness now spoofs the device signals themselves
+    // (tests/e2e/helpers.ts), so this boot path is the only one that
+    // exists — in production and in tests alike.
     try {
       const stored = readStoredMapMode();
       if (stored) {
         setReportMapMode(stored.mode);
         setMapMode(stored.mode);
       } else {
-        const suppressAutoSwitch =
-          typeof window !== "undefined" &&
-          (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer === true;
         const plan = planBootMapMode(
           qualifyMapMode({
             priorMapCrash: wasMapAttributedCrash(),
@@ -1297,7 +1313,7 @@ export function GameApp() {
             deviceMemoryGB: readDeviceMemoryGB(),
           }),
         );
-        if (plan.mode === "scout" && !suppressAutoSwitch) {
+        if (plan.mode === "scout") {
           if (plan.persistSource !== null) {
             writeStoredMapMode("scout", plan.persistSource);
           }
@@ -2405,6 +2421,25 @@ export function GameApp() {
           {loadNotice}
         </>
       }
+      homeToast={
+        chunkReloadNotice && !ageToast ? (
+          <div
+            role="status"
+            data-testid="chunk-reload-notice"
+            className="relative z-10 mt-3 mx-auto flex w-full max-w-md items-center justify-between gap-3 rounded-xl border border-line bg-surface pl-4 pr-1 py-1 text-sm text-fg shadow-xl"
+          >
+            <span>{"Meridian had to reload. You're back! Keep playing!"}</span>
+            <button
+              type="button"
+              aria-label="Close"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-fg"
+              onClick={() => setChunkReloadNotice(false)}
+            >
+              ✕
+            </button>
+          </div>
+        ) : null
+      }
     />
     </div>
     {ageSettingsOpen ? (
@@ -2467,6 +2502,7 @@ function Choose({
   onReview,
   deck,
   notice,
+  homeToast,
   difficultyChoice,
   onDifficultyChoice,
   tutorialInvite,
@@ -2493,6 +2529,7 @@ function Choose({
   /** Deck entry status (flag-gated; see useDeckStatus). */
   deck: { enabled: boolean; due: number; total: number };
   notice?: ReactNode;
+  homeToast?: ReactNode;
   difficultyChoice: PickerDifficulty;
   onDifficultyChoice: (choice: PickerDifficulty) => void;
   tutorialInvite?: ReactNode;
@@ -2664,6 +2701,7 @@ function Choose({
           </button>
         </div>
       </header>
+      {homeToast}
 
       <div className="hv5-bento">
         <section className="hv5-hero home-rise" style={rise(2)} aria-label="Welcome to Meridian">
@@ -2844,11 +2882,17 @@ function Choose({
           <LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />
         ) : (
         <article
-          aria-labelledby="geodetective-title"
-          className="hv5-card hv5-split hv5-case home-rise"
+          className="hv5-card hv5-split hv5-stack hv5-case home-rise"
           style={rise(5)}
           data-testid="tour-stop-geodetective"
+          aria-labelledby="geodetective-title"
         >
+          {/* Card-redesign Variant A: picture first in DOM order (not CSS
+              order), so scanning, screen-reader, and tab order all start
+              with the image. The card action is the stretched CTA below
+              (Form S): the card itself cannot be the <button> because
+              EarnedBadgeRow renders real badge <button>s inside it. */}
+          <LazyHomeImage className="hv5-pic" src={desertRuinsUrl} alt="" ariaHidden />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -2871,24 +2915,32 @@ function Choose({
             <EarnedBadgeRow />
             <button
               type="button"
-              className="hv5-go"
+              className="hv5-go hv5-stretch"
               onClick={onLoop}
               onPointerEnter={prefetchTerritoryData}
               onPointerDown={prefetchTerritoryData}
               onFocus={prefetchTerritoryData}
+              aria-label={loopProgress.inProgress ? "GeoDetective: Resume your case" : "GeoDetective: Solve a mystery"}
             >
-              {loopProgress.inProgress ? "▶️ Resume your case" : "🔎 Solve a mystery"}
+              {loopProgress.inProgress ? (
+                <><span aria-hidden="true">▶️</span>{" "}Resume your case</>
+              ) : (
+                <><span aria-hidden="true">🔎</span>{" "}Solve a mystery</>
+              )}
             </button>
           </div>
-          <img className="hv5-pic" loading="lazy" decoding="async" src={desertRuinsUrl} alt="" aria-hidden="true" />
         </article>
         )}
         {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
         <article
-          aria-labelledby="coldtrail-title"
-          className="hv5-card hv5-split hv5-dispatch home-rise"
+          className="hv5-card hv5-split hv5-stack hv5-dispatch home-rise"
           style={rise(5)}
+          aria-labelledby="coldtrail-title"
         >
+          {/* Variant A, same as GeoDetective: image first in DOM order;
+              whole-card action via the stretched CTA (Form S, shared form
+              so both game cards behave identically). */}
+          <LazyHomeImage className="hv5-pic" src={patagoniaUrl} alt="" ariaHidden />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -2905,16 +2957,16 @@ function Choose({
             </p>
             <button
               type="button"
-              className="hv5-go"
+              className="hv5-go hv5-stretch"
               onClick={onColdTrail}
               onPointerEnter={prefetchTerritoryData}
               onPointerDown={prefetchTerritoryData}
               onFocus={prefetchTerritoryData}
+              aria-label="Cold Trail: Start the trail"
             >
-              ❄️ Start the trail
+              <span aria-hidden="true">❄️</span>{" "}Start the trail
             </button>
           </div>
-          <img className="hv5-pic" loading="lazy" decoding="async" src={patagoniaUrl} alt="" aria-hidden="true" />
         </article>
       </div>
       </div>
@@ -2922,8 +2974,8 @@ function Choose({
       <div className="hv5-grid3">
         {deck.enabled ? (
           <section
-            aria-label={REVIEW_DECK_COPY.pickerTitle}
-            className="hv5-card hv5-spot home-rise"
+            aria-labelledby="review-title"
+            className={`hv5-card hv5-spot home-rise${deck.due > 0 ? " hv5-review-due" : " hv5-review-empty"}`}
             style={rise(7)}
             data-testid="tour-stop-review"
             id="home-review"
@@ -2935,16 +2987,21 @@ function Choose({
                 </span>
                 <span className="hv5-label">Cases</span>
               </div>
-              <h2>{REVIEW_DECK_COPY.pickerTitle}</h2>
+              <h2 id="review-title">{REVIEW_DECK_COPY.pickerTitle}</h2>
               {deck.due > 0 ? (
                 <>
                   <p>{REVIEW_DECK_COPY.pickerDueLine}</p>
                   <p style={{ fontWeight: 700, color: "var(--hv5-ink)" }} data-testid="deck-due-count">
                     {deck.due} {deck.due === 1 ? "card" : "cards"} due
                   </p>
-                  <button type="button" className="hv5-go" onClick={onReview}>
+                  {/* Whole-card action (Form S): the CTA stretches over
+                      the card via .hv5-stretch; the REVIEW → pill is the
+                      visible discoverability cue (aria-hidden, pointer-
+                      events none — taps pass through to the CTA). */}
+                  <button type="button" className="hv5-go hv5-stretch" onClick={onReview} aria-label="Review my misses: Start review">
                     {REVIEW_DECK_COPY.startReview}
                   </button>
+                  <span className="hv5-review-cue" aria-hidden="true">REVIEW →</span>
                 </>
               ) : deck.total > 0 ? (
                 <p>{REVIEW_DECK_COPY.pickerCaughtUp}</p>
@@ -2952,7 +3009,7 @@ function Choose({
                 <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
               )}
             </div>
-            <img className="hv5-art" loading="lazy" decoding="async" src={archiveToolsUrl} alt="" aria-hidden="true" />
+            <LazyHomeImage className="hv5-art" src={archiveToolsUrl} alt="" ariaHidden />
           </section>
         ) : (
           <div aria-hidden="true" />
@@ -2982,7 +3039,7 @@ function Choose({
               READ THE ENTRY
             </button>
           </div>
-          <img className="hv5-art" loading="lazy" decoding="async" src={journalTreeUrl} alt="" aria-hidden="true" />
+          <LazyHomeImage className="hv5-art" src={journalTreeUrl} alt="" ariaHidden />
         </article>
         <article className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)}>
           <div className="hv5-txt">
@@ -3003,7 +3060,7 @@ function Choose({
               <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
             </button>
           </div>
-          <img className="hv5-art" loading="lazy" decoding="async" src={binocularsHatUrl} alt="" aria-hidden="true" />
+          <LazyHomeImage className="hv5-art" src={binocularsHatUrl} alt="" ariaHidden />
         </article>
       </div>
 
@@ -3031,12 +3088,7 @@ function Choose({
             <article key={note.id} className="hv5-entry" data-testid="journal-note">
               {note.image && note.imageAlt && (
                 <figure className="hv5-entry-art">
-                  <img
-                    src={journalImageUrl(note.image)}
-                    alt={note.imageAlt}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <LazyHomeImage src={journalImageUrl(note.image)} alt={note.imageAlt} />
                 </figure>
               )}
               <h3>{note.place}</h3>
@@ -3096,6 +3148,9 @@ function Choose({
         </Link>
         <Link to="/contact" className="agep-footer-link" data-testid="contact-link">
           Contact us (grown-ups)
+        </Link>
+        <Link to="/credits" className="agep-footer-link" data-testid="credits-link">
+          Credits
         </Link>
         {/* Kids-privacy promise (owner 2026-10-21). Deliberately FACTUAL
             statements, not a "COPPA compliant" badge: compliance is a legal
@@ -3420,10 +3475,10 @@ function Play({
 
   if (poolError) {
     return (
-      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
-        <p className="text-sm tracking-wide text-muted uppercase">Couldn&rsquo;t load places</p>
-        <h1 className="mt-2 font-display text-4xl text-fg">{run.regionName}</h1>
-        <p role="alert" className="mt-4 max-w-md text-lg text-muted">
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+        <p className="name-eyebrow">Couldn&rsquo;t load places</p>
+        <h1 className="mode-title mt-2 text-4xl text-fg">{run.regionName}</h1>
+        <p role="alert" className="mt-4 max-w-md text-lg text-fg">
           {poolError} The run was not started with a partial pool — pick the region again to retry.
         </p>
         <div className="mt-6">
@@ -3435,10 +3490,10 @@ function Play({
 
   if (!places) {
     return (
-      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
-        <p className="text-sm tracking-wide text-muted uppercase">Loading places</p>
-        <h1 className="mt-2 font-display text-4xl text-fg">{run.regionName}</h1>
-        <p className="mt-4 max-w-md text-lg text-muted" role="status">
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+        <p className="name-eyebrow">Loading places</p>
+        <h1 className="mode-title mt-2 text-4xl text-fg">{run.regionName}</h1>
+        <p className="mt-4 max-w-md text-lg text-fg" role="status">
           Fetching this region&rsquo;s places&hellip;
         </p>
       </main>
@@ -3658,6 +3713,7 @@ function PlayLoaded({
   const dropHitRef = useRef<boolean | null>(null);
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>(defaultBubbleView);
+  const userCollapsedBubbleRef = useRef(false);
   const [cardDismissed, setCardDismissed] = useState(false);
   // Hint UI (follow-up Item A — hints are a REAL feature, owner 2026-10-09).
   // Hints NEVER touch points. Per-place usage drives the 8-10 one-per-place
@@ -3820,6 +3876,13 @@ function PlayLoaded({
   useEffect(() => {
     setAim(null);
     setBubble(defaultBubbleView());
+    if (
+      run.results.length > 0 ||
+      (session?.placesPlayed ?? 0) > 0 ||
+      userCollapsedBubbleRef.current
+    ) {
+      setBubble("collapsed");
+    }
     setCardDismissed(false);
     // Hint UI resets per place (8-10: one hint per place).
     setHintsUsedThisPlace(0);
@@ -3876,9 +3939,12 @@ function PlayLoaded({
         return;
       }
       if (aim !== null) return;
-      setBubble((view) =>
-        view === "dismissed" ? view : view === "collapsed" ? "open" : "collapsed",
-      );
+      setBubble((view) => {
+        const next =
+          view === "dismissed" ? view : view === "collapsed" ? "open" : "collapsed";
+        userCollapsedBubbleRef.current = next !== "open";
+        return next;
+      });
     }
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
@@ -4197,6 +4263,7 @@ function PlayLoaded({
     setAimAnnouncement(null);
     setDrop(null);
     clearDrop();
+    userCollapsedBubbleRef.current = false;
     setBubble(defaultBubbleView());
     setCardDismissed(false);
     setRevealDone(false);
@@ -4335,8 +4402,8 @@ function PlayLoaded({
             />
           </Suspense>
         </MapErrorBoundary>
-        <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
-          <div className="flex items-start gap-2">
+        <div className="pointer-events-none absolute top-2 right-2.5 left-2.5 z-30 flex items-start justify-between gap-2 sm:top-3 sm:right-3 sm:left-3 sm:gap-3">
+          <div className="flex items-start gap-1.5 sm:gap-2">
             <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
               {review ? REVIEW_DECK_COPY.exitReview : "Editions"}
             </Button>
@@ -4345,7 +4412,7 @@ function PlayLoaded({
                 all play calls go through the isSoundEnabled() gate. */}
             <SoundToggle
               testId="sound-toggle-game"
-              className="pointer-events-auto rounded-md border border-line bg-surface px-2.5 py-2 text-fg transition-colors hover:text-white"
+              className="pointer-events-auto rounded-md border border-line bg-surface px-2.5 py-2 text-fg transition-colors"
             />
             {/* Scout Map settings toggle. The choice writes
                 meridian:map-mode and sends the player home — the new
@@ -4356,13 +4423,13 @@ function PlayLoaded({
           {review ? (
             <p
               data-testid="review-progress"
-              className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold text-fg"
+              className="game-chrome pointer-events-auto rounded-md px-3 py-2 text-sm font-semibold"
             >
               {REVIEW_DECK_COPY.progressOf} {Math.min(run.index + 1, pool.length)} of{" "}
               {pool.length}
             </p>
           ) : (
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex flex-col items-end gap-0.5 sm:gap-2">
             <div className="relative">
               <button
                 type="button"
@@ -4371,7 +4438,7 @@ function PlayLoaded({
                 aria-controls="session-score-breakdown"
                 aria-label={`Session score ${sessionTotal.toLocaleString("en-US")}. Toggle score breakdown by edition and difficulty.`}
                 onClick={() => setShowBreakdown((v) => !v)}
-                className="pointer-events-auto rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold tabular-nums text-fg"
+                className="game-chrome pointer-events-auto rounded-md px-2 py-0.5 text-[11px] leading-tight font-semibold tabular-nums whitespace-nowrap sm:px-3 sm:py-2 sm:text-sm"
               >
                 SCORE {sessionTotal.toLocaleString("en-US")}
               </button>
@@ -4414,26 +4481,28 @@ function PlayLoaded({
             <span className="sr-only" role="status">
               Session score {sessionTotal.toLocaleString("en-US")}
             </span>
-            {run.streak >= 2 ? (
-              // The flame celebrates the LIVE streak in this run (each
-              // edition is a fresh run with its own combo); the summary's
-              // "best streak" is session-wide and may come from another
-              // edition. Both labels are honest about what they measure.
-              <p
-                data-testid="streak-flame"
-                className="rounded-md border border-line bg-surface px-3 py-1.5 text-sm tabular-nums text-fg"
-              >
-                <span role="img" aria-label={`${run.streak}-place streak`}>
-                  🔥
-                </span>{" "}
-                {run.streak}
+            <div className="flex items-center gap-1.5">
+              {run.streak >= 2 ? (
+                // The flame celebrates the LIVE streak in this run (each
+                // edition is a fresh run with its own combo); the summary's
+                // "best streak" is session-wide and may come from another
+                // edition. Both labels are honest about what they measure.
+                <p
+                  data-testid="streak-flame"
+                  className="game-chrome rounded-md px-1.5 py-0.5 text-[11px] leading-tight tabular-nums whitespace-nowrap sm:px-3 sm:py-1.5 sm:text-sm"
+                >
+                  <span role="img" aria-label={`${run.streak}-place streak`}>
+                    🔥
+                  </span>{" "}
+                  {run.streak}
+                </p>
+              ) : null}
+              <p className="game-chrome rounded-md px-2 py-0.5 text-[11px] leading-tight whitespace-nowrap sm:px-3 sm:py-2 sm:text-sm">
+                {/* Session-scoped places (not this run's): switching editions
+                    no longer drops the counter back to 0. */}
+                {session?.hits ?? run.hits} placed
               </p>
-            ) : null}
-            <p className="rounded-md border border-line bg-surface px-3 py-2 text-sm text-fg">
-              {/* Session-scoped places (not this run's): switching editions
-                  no longer drops the counter back to 0. */}
-              {session?.hits ?? run.hits} placed
-            </p>
+            </div>
             {/* Place-card redesign 2026-10-11: the aim-phase End-game pill
                 lives in the bottom-right dock (it overlapped the question
                 card's X dismiss at 390px when it sat here). During
@@ -4445,7 +4514,7 @@ function PlayLoaded({
               <button
                 type="button"
                 onClick={onEndGame}
-                className="pointer-events-auto rounded-md border border-white/10 bg-[rgba(10,12,16,0.72)] px-3 py-1.5 text-xs text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
+                className="game-chrome pointer-events-auto rounded-md px-3 py-1.5 text-xs"
               >
                 End game
               </button>
@@ -4485,7 +4554,7 @@ function PlayLoaded({
             type="button"
             onClick={onEndGame}
             data-testid="end-game-button"
-            className="pointer-events-auto flex min-h-[44px] items-center rounded-full border border-white/10 bg-[rgba(10,12,16,0.72)] px-4 text-sm font-semibold text-white/70 backdrop-blur-[14px] transition-colors hover:text-white"
+            className="game-chrome pointer-events-auto flex min-h-[44px] items-center rounded-full px-4 text-sm font-semibold"
           >
             End game
           </button>
@@ -4515,7 +4584,10 @@ function PlayLoaded({
             difficulty={place.difficulty}
             hasPin={aim !== null}
             view={bubble}
-            onViewChange={setBubble}
+            onViewChange={(next) => {
+              userCollapsedBubbleRef.current = next !== "open";
+              setBubble(next);
+            }}
           />
           {/* Hint UI now lives in the bottom-right aim dock (above the
               End-game pill) — see the dock comment. Removed 2026-10-19:
@@ -4572,13 +4644,13 @@ function PlayLoaded({
           role="status"
           className="pointer-events-none fixed inset-x-4 top-16 z-50"
         >
-          <div className="pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.85)] p-4 pl-5 text-white shadow-xl backdrop-blur-[14px]">
+          <div className="game-chrome pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl p-4 pl-5 shadow-xl">
             <p className="m-0 flex-1 text-sm leading-snug">{TILE_FALLBACK_COPY.switchNote}</p>
             <button
               type="button"
               aria-label="Dismiss"
               onClick={() => setTileSwitchNote(null)}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg leading-none text-white/70 transition-colors hover:text-white"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--game-chrome-line)] text-lg leading-none text-[var(--atlas-muted)] transition-colors hover:text-[var(--atlas-ink)]"
             >
               <span aria-hidden="true">×</span>
             </button>
@@ -4599,13 +4671,13 @@ function PlayLoaded({
           role="status"
           className="pointer-events-none fixed inset-x-4 top-16 z-50"
         >
-          <div className="pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.85)] p-4 pl-5 text-white shadow-xl backdrop-blur-[14px]">
+          <div className="game-chrome pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-2xl p-4 pl-5 shadow-xl">
             <p className="m-0 flex-1 text-sm leading-snug">{SCOUT_COPY.switchNote}</p>
             <button
               type="button"
               aria-label="Dismiss"
               onClick={() => setScoutSwitchNote(null)}
-              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 text-lg leading-none text-white/70 transition-colors hover:text-white"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[var(--game-chrome-line)] text-lg leading-none text-[var(--atlas-muted)] transition-colors hover:text-[var(--atlas-ink)]"
             >
               <span aria-hidden="true">×</span>
             </button>

@@ -33,7 +33,7 @@ test.setTimeout(120_000);
 
 test.beforeEach(async ({ context }) => {
   // Production boot behavior: do NOT suppress the auto-switch.
-  await serveBuiltArtifact(context, { suppressScoutOffer: false });
+  await serveBuiltArtifact(context, { spoofCapableDevice: false });
 });
 
 test("prior crash → silent scout at boot: auto record written, no dialog, scout mounts", async ({

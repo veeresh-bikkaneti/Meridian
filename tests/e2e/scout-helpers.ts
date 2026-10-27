@@ -40,6 +40,13 @@
  * BEHAVIORS they assert are the contract.
  */
 import type { BrowserContext, Page } from "playwright/test";
+import { spoofCapableDevice, spoofLowMemoryDevice } from "./helpers";
+
+// The device-signal spoofs live in helpers.ts now (serveBuiltArtifact
+// installs the capable one by default — issue #154 item 1). They are
+// re-exported here so existing Scout specs keep importing them from
+// this module.
+export { spoofCapableDevice, spoofLowMemoryDevice };
 
 export const APP_URL = "http://127.0.0.1:4123/Meridian/";
 export const MAP_MODE_KEY = "meridian:map-mode";
@@ -106,69 +113,6 @@ export async function readStoredMapMode(page: Page): Promise<StoredMapMode | nul
   } catch {
     return null;
   }
-}
-
-/**
- * Spoof a CAPABLE device (false-demotion golden): discrete-GPU renderer
- * string, 8 GB deviceMemory. The VM's real Chromium reports a SwiftShader
- * renderer, so without this the harness itself reads as a weak device.
- * Must be installed via context.addInitScript BEFORE navigation.
- */
-export async function spoofCapableDevice(context: BrowserContext): Promise<void> {
-  await spoofDevice(context, 8);
-}
-
-/**
- * Spoof a LOW-MEMORY device in isolation: capable GPU (the probe passes)
- * but 1 GB deviceMemory, so the qualification source is "low-memory" and
- * not "probe". Must be installed via context.addInitScript BEFORE
- * navigation.
- */
-export async function spoofLowMemoryDevice(context: BrowserContext): Promise<void> {
-  await spoofDevice(context, 1);
-}
-
-async function spoofDevice(context: BrowserContext, deviceMemoryGB: number): Promise<void> {
-  await context.addInitScript((gb: number) => {
-    const NVIDIA =
-      "ANGLE (NVIDIA, NVIDIA GeForce RTX 4090 (0x00002684) Direct3D11 vs_5_0 ps_5_0, D3D11)";
-    const R = 0x9246;
-    const V = 0x9245;
-    const proto = HTMLCanvasElement.prototype;
-    const origGetContext = proto.getContext;
-    (proto as unknown as Record<string, unknown>).getContext = function (
-      this: HTMLCanvasElement,
-      type: string,
-      opts?: unknown,
-    ) {
-      const ctx = (origGetContext as Function).call(this, type, opts) as
-        | (WebGLRenderingContext & Record<string, unknown>)
-        | null;
-      if (
-        ctx &&
-        (type === "webgl" || type === "webgl2" || type === "experimental-webgl")
-      ) {
-        const origGetExtension = ctx.getExtension.bind(ctx);
-        const origGetParameter = ctx.getParameter.bind(ctx);
-        ctx.getExtension = ((name: string) => {
-          if (name === "WEBGL_debug_renderer_info") {
-            return { UNMASKED_RENDERER_WEBGL: R, UNMASKED_VENDOR_WEBGL: V };
-          }
-          return origGetExtension(name);
-        }) as typeof ctx.getExtension;
-        ctx.getParameter = ((p: number) => {
-          if (p === R) return NVIDIA;
-          if (p === V) return "Google Inc. (NVIDIA)";
-          return origGetParameter(p);
-        }) as typeof ctx.getParameter;
-      }
-      return ctx;
-    };
-    Object.defineProperty(Navigator.prototype, "deviceMemory", {
-      get: () => gb,
-      configurable: true,
-    });
-  }, deviceMemoryGB);
 }
 
 /** The settings toggle locator per the Phase A contract. */

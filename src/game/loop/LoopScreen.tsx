@@ -624,23 +624,23 @@ export function LoopScreen({
     dealBand ?? current?.dealBandConfig?.band ?? "11-13";
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
       <div className="flex items-center justify-between gap-3">
         <Button variant="ghost" className="self-start" onClick={onLeave}>
           Editions
         </Button>
-        <p className="text-sm text-muted">Case #{caseNo}</p>
+        <p className="text-sm text-fg">Case #{caseNo}</p>
       </div>
       <header className="mt-4">
-        <h1 ref={headingRef} tabIndex={-1} className="font-display text-5xl text-fg">GeoDetective</h1>
-        <p className="mt-3 max-w-md text-lg text-muted">
+        <h1 ref={headingRef} tabIndex={-1} className="mode-title text-4xl text-fg sm:text-5xl">GeoDetective</h1>
+        <p className="mt-3 max-w-md text-lg text-fg">
           Five guesses, one mystery place. Each guess unlocks another clue — and tells you how
           far off you were, and in which direction.
         </p>
       </header>
 
       {load.phase === "loading" ? (
-        <p className="mt-10 text-lg text-muted" role="status">
+        <p className="mt-10 text-lg text-fg" role="status">
           {load.message}
         </p>
       ) : null}
@@ -649,7 +649,7 @@ export function LoopScreen({
         load.staleBuild ? (
           <div
             role="alert"
-            className="mt-10 flex items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg"
+            className="mode-card mt-10 flex items-center justify-between gap-3 p-4 text-sm text-fg"
           >
             <p>A new version of Meridian is available.</p>
             <Button type="button" onClick={refreshForNewBuild}>
@@ -661,7 +661,7 @@ export function LoopScreen({
           // Host: none — the loop screen's voice is the impersonal
           // case-file narrator. Same copy for mount-deal and
           // Next-mystery-deal paths.
-          <div role="alert" className="mt-10 rounded-xl border border-line bg-surface p-5">
+          <div role="alert" className="mode-card mt-10 p-5">
             <p className="text-fg">This mystery can't open right now 🔍</p>
             <p className="mt-2 text-muted">
               The clues need the internet the first time. Once a mystery opens, you can
@@ -672,7 +672,7 @@ export function LoopScreen({
             </Button>
           </div>
         ) : (
-          <div role="alert" className="mt-10 rounded-xl border border-line bg-surface p-5">
+          <div role="alert" className="mode-card mt-10 p-5">
             <p className="text-fg">Couldn&rsquo;t load this mystery: {load.message}</p>
             <Button className="mt-4" onClick={() => setReloadKey((k) => k + 1)}>
               Retry
@@ -947,7 +947,7 @@ function LoopGame({
         aria-label="Detective's map"
         className="flex flex-col gap-3"
       >
-        <p className="text-sm text-muted" role="status">
+        <p className="text-sm text-fg" role="status">
           Guess {puzzle.guesses.length + 1} of {dealConfig.guessCap}
           {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
         </p>
@@ -990,7 +990,7 @@ function LoopGame({
               ✕&thinsp;=&thinsp;searched&ensp;·&ensp;<span className="text-[#f2c14e]">gold ring</span>&thinsp;=&thinsp;exact distance from that guess
             </p>
             {emptyTapHint === "loading" ? (
-              <p role="status" className="text-sm text-muted">
+              <p role="status" className="text-sm text-fg">
                 Still loading place names — one moment…
               </p>
             ) : null}
@@ -1001,7 +1001,7 @@ function LoopGame({
             ) : null}
           </>
         ) : (
-          <p className="text-sm text-muted">
+          <p className="text-sm text-fg">
             Case closed — the gold star marks the answer.
           </p>
         )}
@@ -1059,7 +1059,7 @@ function LoopGame({
 
       {puzzle.guesses.length > 0 ? (
         <section aria-label="Your guesses" className="flex flex-col gap-2">
-          <h2 className="text-sm tracking-wide text-muted uppercase">Your guesses</h2>
+          <h2 className="text-sm tracking-wide text-fg uppercase">Your guesses</h2>
           {/* Cartographer's Plate PR3 (spec §5): the LIST scrolls
               (max-h 40dvh) — rows never do. Named region + tabindex="0"
               so keyboard users can reach it (spec §8.1). */}
@@ -1210,7 +1210,7 @@ function PlaceSheet({
         className="absolute inset-0 cursor-default bg-black/60"
       />
       <div
-        className="relative flex w-full max-w-md flex-col rounded-t-3xl border border-line bg-surface"
+        className="mode-surface relative flex w-full max-w-md flex-col rounded-t-3xl border"
         style={{
           maxHeight: fullDetent ? "min(85dvh, 36rem)" : "min(45dvh, 20rem)",
           overscrollBehavior: "contain",
@@ -1223,7 +1223,7 @@ function PlaceSheet({
             (flex-shrink: 0 — never scrolled away). */}
         <div className="sheet-header flex shrink-0 items-start justify-between gap-3 px-6 pt-2">
           <div className="min-w-0">
-            <p className="text-[11px] tracking-wider text-muted uppercase">You tapped</p>
+            <p className="name-eyebrow">You tapped</p>
             <h2
               className="place-name sheetname mt-1"
               data-name-tier={nameTier(tappedName)}
@@ -1294,9 +1294,9 @@ function ClueCard({
   return (
     <article
       aria-label={`Clue ${index + 1}: ${tier}${revealed ? "" : " (locked)"}`}
-      className="rounded-xl border border-line bg-surface p-4"
+      className="mode-card p-4"
     >
-      <p className="text-[11px] tracking-wider text-muted uppercase">
+      <p className="name-eyebrow">
         Clue {index + 1} · {tier}
       </p>
       {body}
@@ -1394,7 +1394,7 @@ function LoopReveal({
       <section
         ref={revealRef}
         aria-label={won ? "You won" : "Out of guesses"}
-        className="loop-reveal rounded-2xl border border-line bg-surface"
+        className="loop-reveal mode-surface rounded-2xl border"
       >
         {/* ---- Zone 1: pinned header — verdict + answer, never buried ---- */}
         <div className="loop-reveal-header">
