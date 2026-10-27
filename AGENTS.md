@@ -76,14 +76,34 @@ If a task cannot be done within these rules, stop and ask first.
   target, and explicit approval. If backup is technically inapplicable, the
   owner records why and accepts the residual risk first. No verified
   recovery path, no destructive change.
-- **Player-facing locks.** Donation copy is verbatim-locked ("Grown-ups buy
-  me a coffee? / Your support keeps Meridian free for kids") — any change
-  is a block. No paywalls or real-money mechanics. COPPA-safe: no PII in
-  analytics, no raw user-agent strings, coarse device buckets only.
+- **Player-facing locks.** Donation copy is verbatim-locked: line 1 is
+  "Grown-ups — buy me a coffee? ☕" and line 2 is "Your support keeps
+  Meridian free for kids" — any change to either line, including
+  punctuation, the em dash (U+2014), or the ☕ (U+2615), is a block.
+  Monetization: no paywalls ever; no real-money purchases; no gated
+  progression; and no paid clues or hints. Earnable in-game currency is
+  allowed only if it is earned through gameplay, with no real-money
+  purchase of it, no cash-out, and no conversion to or from real money
+  or any real-money-purchasable currency. The only real-money flow is
+  Ko-fi, solely as voluntary, grown-up-gated support that never locks,
+  gates, or conditions access to any game, map, mystery, clue, hint, or
+  progression, and gives no in-game currency, item, or advantage in
+  return. COPPA-safe, scoped to what leaves the device: no PII in
+  analytics or telemetry. A raw user-agent string may exist on-device
+  only, inside the locally stored session crash breadcrumb; it never
+  leaves the device. Outbound telemetry carries coarse buckets only —
+  OS, form factor, device-pixel-ratio, and screen size — never the raw
+  user-agent string. One carve-out: the contact form is the only place
+  user-entered PII exists — what someone types there goes only to the
+  contact endpoint, to handle their message, and never into analytics
+  or telemetry.
 - **Never cut safeguards to go green.** Do not weaken a failing gate,
   validation at a trust boundary, error handling for corruption/data loss,
   or accessibility on an affected surface without the owner's approval and
-  a recorded rationale.
+  a recorded rationale. Accessibility floors on player-facing surfaces are
+  safeguards, not styling: touch targets are at least 44×44 px and text
+  contrast is at least 4.5:1 — do not ship or cut a surface below either
+  floor.
 
 ## Project invariants (the game itself)
 
