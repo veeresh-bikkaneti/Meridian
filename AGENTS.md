@@ -3,28 +3,37 @@
 Geography quiz game (Vite + React + TypeScript). Guess places on a satellite
 map; every reveal shows a kid-friendly story card.
 
-> **Merged edition, 2026-10-27 (owner-approved draft).** Structure and
-> Meridian rules from the previous `AGENTS.md`; governance sections
-> (authority, safeguards, task capsule, bounded loop, budget, evals) ported
-> from the Agent Call Sheet AGENTS v4 and recalibrated for this repo's real
-> scale. Companion doc: `docs/ops/agent-council-protocol.md` (Tier 2 detail).
+> **Merged edition, 2026-10-27 — owner-directed draft.** Owner, 2026-10-27:
+> “Draft the merged AGENTS.md (v4 chassis + Meridian layer, calibrated)”;
+> and: “just focus on Agents.md and yes cut a branch and open PR”. Those
+> words direct this draft and its PR; they do not approve its final text —
+> approval is the owner's explicit per-PR merge word, after the review
+> panel approves the final tip. Structure and Meridian rules from the
+> previous `AGENTS.md`; governance sections (authority, safeguards, task
+> capsule, bounded loop, budget, evals) ported from the Agent Call Sheet
+> AGENTS v4 and recalibrated for this repo's real scale. Companion doc:
+> `docs/ops/agent-council-protocol.md` (Tier 2 detail).
 
 ## Authority and precedence
 
 In case of conflict, this order governs:
 
 1. Law and platform requirements.
-2. **The owner's (Veeresh's) explicit instruction for the task at hand.**
+2. **The owner's (Veeresh's) explicit instruction for the task at hand — for that task's goal, scope, priority, owner-set tier, and choice among safeguard-compliant methods only (see the safeguard carve-out below).**
 3. This file's Constitution, Non-negotiable safeguards, Project invariants, and Card content rules.
 4. The council protocol and any signed Consensus Manifest for the task.
 5. Agent plans, preferences, and conventions from other repos or packs.
 
 A Consensus Manifest binds within its task's scope only; it cannot waive, suspend, or override anything at this rank.
 
+**Safeguard carve-out (binds rung 2).** An owner instruction for a task governs that task, but it does not waive, suspend, or override this file's Constitution or its Non-negotiable safeguards, and no agent may treat it as doing so. The sole in-task exception is the bounded Chair-lift of Constitution rules 1 and 3 stated after the Constitution below. A Constitution rule or a safeguard changes only by explicit amendment: a PR whose body states in its first section, in so many words, that it amends the named rule or safeguard, gives the rationale, and is merged only on the owner's explicit per-PR word after the review panel approves the final tip. An instruction that would require waiving a rule or safeguard is therefore treated as a proposal to amend it: stop and ask, and do not proceed on the instruction as if the waiver had already happened.
+
 A council or panel can reject a *method*, record dissent, and block on the
 gates below. It cannot silently replace the owner's goal, expand scope, waive
 a safeguard, or authorize an external action. Only the owner merges, and only
 on his explicit per-PR word.
+
+**ARCHETYPE law (#231) — disposition.** `docs/ops/ARCHETYPE_law.md`, proposed verbatim in PR #231, has no rung of its own in the ladder above; at most it is a convention under rung 5, and it confers no authority, budget, tier, seat, or vote in this repo. If both files are on `main`, then to the extent of any conflict this file — and, for Tier 2 process, `docs/ops/agent-council-protocol.md` — governs and supersedes the law in this repo, without editing the law's verbatim text. The governing numbers are this file's: budgets of 25k / 100k / 400k tokens by Tier 0 / 1 / 2, not the law's `MAX_TOKENS` of 15k per task; a cycle cap of 5 edit-and-verify cycles, not the law's 3 fix loops; tiers 0 / 1 / 2, scope-based, not the law's risk-based T1 / T2 / T3; seats of Chair plus Councilors A, B, and C under the protocol, with Councilor C a separate agent, not the law's Councilors A–D; and decision by the panel approving the final tip plus the owner's explicit per-PR merge word, not the law's “3/4 + Chair veto” formula. The task capsule's three files are a default scope in this file, not the law's hard “Scoped Files (max 3)” limit, and the law's provision for a loop to mutate it into “Archetype v1.1” has no effect in this repo: either file changes only by a PR. Nothing in this clause rules on items 2–5 of PR #231 — the Councilor C finding quota, the Layer-3 / DAG product mismatch, the law's silence on model tiers, and the “3/4 + Chair veto” ambiguity in the law's own text — which remain open owner decisions.
 
 **Ambiguity.** Inspect repository evidence first. If a task has several
 reasonable readings, state them and proceed on the narrow, safe, reversible
@@ -55,6 +64,8 @@ handling, and side effects.
 
 If a task cannot be done within these rules, stop and ask first.
 
+**Chair-lift (protocol §2.3) — kept, as a bounded exception granted by this file.** The council protocol (§2, directive 3) ranks below this file in the ladder, so this lift has effect only because this section grants it; the protocol may not widen it, and widening it requires an amendment under the safeguard carve-out above. The Chair may lift Constitution rules 1 and 3 only, and only for a verified vulnerability or an interface incompatibility, and only to the minimum extent the verified trigger requires. The trigger, the evidence verifying it, the rules lifted, and the exact scope of the lift must be recorded in the Consensus Manifest before implementation, and the lift must be named in the final report the owner sees. The lift never applies to Constitution rules 2 or 4, and it never lifts, waives, or substitutes for any Non-negotiable safeguard — including merge authority and panel approval of the final tip, no self-certification, the destructive-change recovery path, player-facing locks, branch protection, or the eval discipline for this file. If the trigger is not verified in the manifest, the lift is void: stop and ask the owner.
+
 ## Non-negotiable safeguards
 
 - **Merge authority.** Merges happen only on the owner's explicit per-PR
@@ -69,9 +80,7 @@ If a task cannot be done within these rules, stop and ask first.
 - **No self-certification.** The builder or author of decisive work cannot
   be its independent checker. Tier 2 keeps Councilor C a separate agent;
   PR review keeps the panel separate from the branch owner.
-- **No unapproved side effects.** Push, PR, merge, publish, release,
-  third-party install, external message, production write, or remote-setting
-  change each require authorization covering that exact action.
+- **No unapproved side effects.** Except for the standing push authorization stated in Working conventions below, each of these requires authorization covering that exact action and target: opening a PR, merge, publish, release, third-party install, external message, production write, or remote-setting change. A push to a branch other than the assigned branch, and any force-push (including `--force-with-lease` after a rebase), likewise requires authorization naming that branch and that push.
 - **Destructive changes.** Work that may destroy or irreversibly transform
   data requires, before execution: a backup/snapshot with a demonstrated
   restore (or a tested rollback), stated pre/post invariants, the exact
@@ -289,8 +298,7 @@ strategy.
 | 1 — Solo TDD | 100k tokens |
 | 2 — Council / multi-agent | 400k tokens |
 
-(Defaults, set 2026-10-27 — the owner tunes them from actual run data;
-routine overruns are grounds to revisit a default, not to ignore it.)
+(Defaults proposed in this draft — no owner citation in the record sets these numbers, so none is claimed for them; the owner may tune them from actual run data, and routine overruns are grounds to revisit a default, not to ignore it.)
 
 At or before the cap: stop, report `BUDGET EXCEEDED` with what is done,
 what remains, and the evidence so far. Work resumes only on the owner's
@@ -313,10 +321,8 @@ estimate as a meter reading.
   exact external state (pushed? PR open? nothing sent?). The verification
   record names the target revision, exact commands, environment, case
   counts (pass/fail/skip), and a durable evidence path.
-- **Checker unavailable ≠ deadlock.** If a required independent checker
-  genuinely cannot be staffed, the gate does not silently pass: the work
-  is reported `UNVERIFIED`, and it proceeds only on the owner's recorded
-  risk acceptance for that specific item. Absent that record, it waits.
+- **Checker unavailable ≠ deadlock, and ≠ a safeguard waiver.** If a required independent checker genuinely cannot be staffed, the gate does not silently pass: the work is reported `UNVERIFIED`, and it proceeds only on the owner's recorded risk acceptance for that specific item — a record that names the item, the missing checker, the risk accepted, and the date. Absent that record, it waits.
+- **Limits on that acceptance.** The paragraph above waives nothing in the Non-negotiable safeguards. If the absent checker is the checker for a safeguard block itself — merge authority and the panel's approval of the final tip, branch protection or a ruleset, the destructive-change recovery path, a player-facing lock, or the weakening of a gate, trust-boundary validation, corruption/data-loss handling, or accessibility — owner risk acceptance does not substitute for the check: the item does not proceed. Nor does risk acceptance cure self-certification: the builder or author of the work may not supply the missing verdict, may not be recorded as its checker, and may not accept the risk on their own work; the final report still states `UNVERIFIED` and names the owner's acceptance record.
 
 ## Prompt, skill, and persona changes — eval discipline
 
@@ -372,7 +378,7 @@ contention flake, not signal (see the cycle-cap evidence rule).
 - **Stage named files only, never `git add -A`** — and check `git status`
   plus the staged diff before committing on any branch a second crew
   shares; a dirty shared index sweeps other work into your commit.
-- **Push early and often** — the VM is not durable storage for unpushed work.
+- **Push early and often — standing authorization.** The owner's assignment of a task on a named branch is standing authorization to commit named files on that branch and to push that branch, and only that branch, to origin as the work lands — including updates to that branch's `BRANCH_STATUS.md` and cure commits to the same PR branch. The VM is not durable storage for unpushed work, so use this authorization; do not hoard commits locally. It covers no other action in the "No unapproved side effects" bullet: opening a PR (unless the assignment itself says to open one), merge, publish, release, install, external message, production write, remote-setting change, and force-push each still need authorization for that exact action. If no branch was assigned, or the task was assigned as read-only, no push authorization exists.
 - Every feature branch carries `BRANCH_STATUS.md` at the repo root tracking
   done vs pending; update and push it with the work. (Known structural
   cost: concurrent branches conflict on this one file by construction.
