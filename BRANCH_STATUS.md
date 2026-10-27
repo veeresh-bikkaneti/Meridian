@@ -48,6 +48,147 @@ cure round — not rebuilt here.
 
 ---
 
+# BRANCH_STATUS — feat/213-headers-simulation
+
+**State: in progress (Coordinator B, SecOps & DevOps cluster, 2026-10-26). Owner merges only — do not merge.**
+Base: `origin/main dbb83a3` (#225).
+
+## What this branch does (#213)
+
+Until now the only guard on `public/_headers` was a live post-merge
+probe, plus literal pins that key rules by pattern and cannot prove
+what a browser actually receives. This branch adds a parse-and-simulate
+pin to `scripts/security-headers.test.mjs`:
+
+- An order-preserving parser + a simulator of Cloudflare's documented
+  semantics (every matching rule applies, in file order; detachments
+  before sets within a rule; first set replaces, later sets append).
+- Pins the single effective `Cache-Control` for every path class:
+  hashed `/assets/*` = immutable; the 3 carved files = one
+  `public, max-age=0, must-revalidate` value (the detach+set proof —
+  a missing detach would comma-join and fail); `/sw.js`, `/flags.json`,
+  `/build-meta.json`, `/manifest.webmanifest` = `no-cache`; `/` and
+  `/index.html` = the `s-maxage=60` value; `/offline`, `/offline.html`,
+  `/_shell.html` = the revalidate value; and **no rule at all** for
+  `/audio/*` and other unlisted paths (they take the platform default
+  and must never become immutable).
+- Note vs the issue text: the unioned file's values win — `/flags.json`
+  is `no-cache` (not the pre-union revalidate line) and `/` carries
+  `s-maxage=60`; the pins follow the file on main.
+- Docs: the `/_shell.html` Acceptance wording is now conjunctive and
+  lives in the `_headers` comment itself (404 AND no ETag AND no
+  CF-Cache-Status = expected-inert; an asset-served header-less 200 =
+  FAIL) — the old pointer to an Acceptance definition in
+  BRANCH_STATUS.md dangled. `docs/security-headers.md` gains the
+  missing `/offline*` / `/_shell.html` and no-rule rows.
+
+## Files
+
+- `scripts/security-headers.test.mjs`
+- `public/_headers` (comment only — no rule changes)
+- `docs/security-headers.md`
+- `BRANCH_STATUS.md` (this file)
+
+## Gates
+
+- `node --test scripts/security-headers.test.mjs` — 9/9 pass.
+- Mutation check: deleting a detach line turns the suite red (2 fails);
+  restored, green again.
+- Full gates recorded in the PR / coordinator report.
+
+## Pending
+
+- Panel re-vote on the final tip, then the owner's merge call.
+
+---
+
+# BRANCH_STATUS — fix/223-watchdog-byte-budget
+
+**State: in progress (Coordinator B, SecOps & DevOps cluster, 2026-10-26). Owner merges only — do not merge.**
+Base: `origin/main dbb83a3` (#225).
+
+## What this branch does (#223)
+
+The crash watchdog's 5120-byte budget was silently broken in
+production: the budget test's fixture build id was 10 chars (rendered
+exactly 5120), but production ids are 12 chars in CI (5122 bytes) and
+14 for the timestamp fallback (5124). Fix, keeping the 5120 budget
+(raising it was rejected — the shave is free and the budget guards
+bytes inlined into every shell load):
+
+- `scripts/crash-watchdog.mjs`: the embedded-source RENAME map now
+  also renames `crashWatchdogMain` → `M` and `CSS` → `G` in the
+  shipped output (neither is an object key or property, so this is
+  semantics-preserving; `buildId` was deliberately NOT renamed — it
+  is a payload key). Measured after: 7-char 5097, 10-char 5100,
+  12-char 5102, 14-char 5104 bytes.
+- `scripts/crash-watchdog.test.mjs`: the budget test now renders all
+  four real build-id lengths instead of only the 10-char fixture.
+- `docs/reviews/2026-10-21-remaining.md`: the stale "5118 bytes" line
+  corrected to the measured values, with the reasoning recorded.
+
+## Files
+
+- `scripts/crash-watchdog.mjs`
+- `scripts/crash-watchdog.test.mjs`
+- `docs/reviews/2026-10-21-remaining.md`
+- `BRANCH_STATUS.md` (this file)
+
+## Gates
+
+- `node --test scripts/crash-watchdog.test.mjs` — 42/42 pass.
+- Full gates recorded in the PR / coordinator report.
+
+## Pending
+
+- Panel re-vote on the final tip, then the owner's merge call.
+
+---
+
+# BRANCH_STATUS — docs/221-194-observability-sync
+
+**State: in progress (Coordinator B, SecOps & DevOps cluster, 2026-10-26). Owner merges only — do not merge.**
+Base: `origin/main dbb83a3` (#225).
+
+## What this branch does
+
+- **#221 (residual only):** most of the stale Phase-1 passages named in
+  the issue were already cured on main. This branch fixes what was
+  left: the Files-section description of `wrangler.toml` in
+  `workers/crash-report/README.md` (it still claimed a commented-out
+  KV block "awaiting merge" — the uncommented block with the real
+  namespace id is on main via PR #204), two leftover `cf.py`
+  references (the current helper is `cf-version.py` and secrets ride
+  with a version upload), and the same stale `cf.py` wording in the
+  `wrangler.toml` header comment.
+- **#221 rider:** handbook ch07 §4 now carries the caveat that
+  `smoke:crash` check 4 is a known open failure on the workers.dev
+  root, so "(4/4)" is not fully green.
+- **#194:** event-type lists synced to the source of truth.
+  `docs/observability.md` gains the missing `boot_failure` and
+  `tile_failed` rows; handbook ch07 gains `boot_failure`. Both places
+  now say plainly: the worker accepts 7 types, the client type lists
+  13 (adding `storyteller_shown` and the `narration_*` types), and
+  the extra 6 stay client-side.
+
+## Files
+
+- `workers/crash-report/README.md`
+- `workers/crash-report/wrangler.toml` (header comment only)
+- `docs/observability.md`
+- `docs/handbook/07-engineering-and-ops.md`
+- `BRANCH_STATUS.md` (this file)
+
+## Gates
+
+- Docs-only change; gate results recorded in the PR / coordinator report.
+
+## Pending
+
+- Panel re-vote on the final tip, then the owner's merge call.
+
+---
+
 # BRANCH_STATUS — fix/154-item6-manual-full-tile-failure
 
 **Branch:** `fix/154-item6-manual-full-tile-failure`
