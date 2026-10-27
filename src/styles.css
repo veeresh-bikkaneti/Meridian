@@ -945,15 +945,15 @@
 .qname[data-name-tier="short"] {
   font-family: var(--font-atlas-display);
   font-weight: 600;
-  font-size: clamp(22px, 5.6vw, 28px);
-  line-height: 1.12;
+  font-size: clamp(18px, 4.5vw, 22px);
+  line-height: 1.14;
 }
 
 .qname[data-name-tier="medium"] {
   font-family: var(--font-atlas-display);
   font-weight: 500;
-  font-size: clamp(17px, 4.4vw, 22px);
-  line-height: 1.28;
+  font-size: clamp(15px, 3.8vw, 18px);
+  line-height: 1.24;
 }
 
 .qname[data-name-tier="long"] {
@@ -978,10 +978,10 @@
 
 .bubble-hint {
   font-family: var(--font-atlas-body);
-  font-size: 13.5px;
-  line-height: 1.45;
+  font-size: 12px;
+  line-height: 1.35;
   color: var(--atlas-muted);
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
 /* ---- Reveal card answer heading (result-card.tsx) ---- */
@@ -1377,12 +1377,12 @@
 
 /* ---- Question bubble backstop (question-bubble.tsx, spec §5) ---- */
 .bubble-shell {
-  --bubble-px: 14px;
-  --bubble-pl: 16px;
+  --bubble-px: 10px;
+  --bubble-pl: 12px;
   display: flex;
   flex-direction: column;
   max-height: min(38dvh, 20rem); /* the backstop */
-  padding: 8px var(--bubble-px) 0 var(--bubble-pl);
+  padding: 2px var(--bubble-px) 0 var(--bubble-pl);
 }
 
 /* Spec §6.1 — chrome compacts one step before type steps down: the
@@ -1412,7 +1412,7 @@
   min-height: 44px;
   overflow: hidden;
   margin: 0 calc(-1 * var(--bubble-px)) 0 calc(-1 * var(--bubble-pl));
-  padding: 4px var(--bubble-px) 4px var(--bubble-pl);
+  padding: 0 var(--bubble-px) 0 var(--bubble-pl);
   background: var(--game-chrome-solid);
   border-radius: 20px 20px 0 0;
 }
@@ -1454,6 +1454,10 @@
   padding: 4px 2px 6px;
 }
 
+.bubble-shell:not([data-name-tier="long"]) .bubble-scroll {
+  min-height: 0;
+}
+
 /* Collapse toggle: full-width, min-height 44px, names its consequence
  * ("Show/Hide instructions" — the name stays put, the instructions fold)
  * with aria-expanded (spec §5/§8.6). */
@@ -1461,15 +1465,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   width: auto;
   min-height: 44px;
-  margin: 2px calc(-1 * var(--bubble-px)) 0 calc(-1 * var(--bubble-pl));
-  padding: 4px var(--bubble-pl);
+  margin: 0 calc(-1 * var(--bubble-px)) 0 calc(-1 * var(--bubble-pl));
+  padding: 2px var(--bubble-pl);
   border-top: 1px solid var(--game-chrome-line);
   border-radius: 0 0 20px 20px;
   font-family: var(--font-atlas-body);
-  font-size: 14px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--atlas-muted);
 }
@@ -1499,7 +1503,7 @@
   flex: 0 1 auto;
   min-height: 0;
   max-height: min(24dvh, 12rem);
-  padding-bottom: 10px;
+  padding-bottom: 4px;
 }
 
 /* Expand/collapse chevron rides the vendored curves (transform-only):

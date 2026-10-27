@@ -4429,7 +4429,7 @@ function PlayLoaded({
               {pool.length}
             </p>
           ) : (
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex flex-col items-end gap-1 sm:gap-2">
             <div className="relative">
               <button
                 type="button"
@@ -4438,7 +4438,7 @@ function PlayLoaded({
                 aria-controls="session-score-breakdown"
                 aria-label={`Session score ${sessionTotal.toLocaleString("en-US")}. Toggle score breakdown by edition and difficulty.`}
                 onClick={() => setShowBreakdown((v) => !v)}
-                className="game-chrome pointer-events-auto rounded-md px-3 py-2 text-sm font-semibold tabular-nums"
+                className="game-chrome pointer-events-auto rounded-md px-2.5 py-1.5 text-xs font-semibold tabular-nums whitespace-nowrap sm:px-3 sm:py-2 sm:text-sm"
               >
                 SCORE {sessionTotal.toLocaleString("en-US")}
               </button>
@@ -4489,7 +4489,7 @@ function PlayLoaded({
                 // edition. Both labels are honest about what they measure.
                 <p
                   data-testid="streak-flame"
-                  className="game-chrome rounded-md px-3 py-1.5 text-sm tabular-nums"
+                  className="game-chrome rounded-md px-2 py-1 text-xs tabular-nums whitespace-nowrap sm:px-3 sm:py-1.5 sm:text-sm"
                 >
                   <span role="img" aria-label={`${run.streak}-place streak`}>
                     🔥
@@ -4497,7 +4497,7 @@ function PlayLoaded({
                   {run.streak}
                 </p>
               ) : null}
-              <p className="game-chrome rounded-md px-3 py-2 text-sm">
+              <p className="game-chrome rounded-md px-2.5 py-1 text-xs whitespace-nowrap sm:px-3 sm:py-2 sm:text-sm">
                 {/* Session-scoped places (not this run's): switching editions
                     no longer drops the counter back to 0. */}
                 {session?.hits ?? run.hits} placed

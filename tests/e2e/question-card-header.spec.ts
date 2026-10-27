@@ -276,7 +276,7 @@ test("globe overlap fix: compact 296px card at top 58px, no false 'more below', 
     if (vp.width >= 420) {
       expect(box!.y, `box.y <= 62 at ${vp.width}x${vp.height}`).toBeLessThanOrEqual(62);
     } else {
-      expect(box!.y, `box.y >= 94 at ${vp.width}x${vp.height}`).toBeGreaterThanOrEqual(94);
+      expect(box!.y, `box.y >= 86 at ${vp.width}x${vp.height}`).toBeGreaterThanOrEqual(86);
     }
 
     const hudLocators: [string, ReturnType<Page["locator"]>][] = [

@@ -955,19 +955,19 @@ describe("globe-overlap fix (2026-10-26) — auto-collapse after round 1, no fal
     );
   });
 
-  it("uses responsive top offset (6rem on <420px mobile, 3.625rem on >=420px), 296px width cap, and single-row streak+placed HUD", () => {
+  it("uses responsive top offset (5.5rem on <420px mobile, 3.625rem on >=420px), compact 224px/248px width cap, and single-row streak+placed HUD", () => {
     const responsiveTopMatches =
       source.match(
-        /top-\[max\(6rem,env\(safe-area-inset-top\)\)\] min-\[420px\]:top-\[max\(3\.625rem,env\(safe-area-inset-top\)\)\]/g,
+        /top-\[max\(5\.5rem,env\(safe-area-inset-top\)\)\] min-\[420px\]:top-\[max\(3\.625rem,env\(safe-area-inset-top\)\)\]/g,
       ) ?? [];
     assert.equal(
       responsiveTopMatches.length,
       2,
-      "both QuestionBubble wrappers must sit at 6rem on <420px mobile and 3.625rem on >=420px viewports",
+      "both QuestionBubble wrappers must sit at 5.5rem on <420px mobile and 3.625rem on >=420px viewports",
     );
     assert.ok(
-      source.includes("w-[min(296px,calc(100vw-20px))]"),
-      "the open/collapsed card wrapper must cap width at 296px",
+      source.includes("w-[min(224px,calc(100vw-20px))] sm:w-[248px]"),
+      "the open/collapsed card wrapper must cap width at 224px on mobile and 248px on >=640px",
     );
     assert.ok(
       !source.includes("352px"),
