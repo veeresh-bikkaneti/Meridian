@@ -35,7 +35,7 @@ test("reduced motion: placement flow completes, armed border is static", async (
   expect(reduced).toBe(true);
 
   await page.goto(BASE);
-  await page.getByRole("button", { name: "❄️ Start the trail" }).click();
+  await page.getByRole("button", { name: "Cold Trail: Start the trail" }).click();
   await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 30_000 });
   await expect(page.getByTestId("sighting-card")).toHaveCount(3, { timeout: 30_000 });
 

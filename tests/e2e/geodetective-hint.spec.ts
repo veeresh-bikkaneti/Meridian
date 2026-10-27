@@ -48,7 +48,7 @@ async function seedProfile(
 /** Open GeoDetective on the pinned Ankara mystery. */
 async function openLoop(page: import("playwright/test").Page) {
   await page.goto(`${BASE}?loop-puzzle=218`);
-  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 30_000,
   });

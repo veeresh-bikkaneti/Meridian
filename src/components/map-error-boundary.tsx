@@ -1,5 +1,6 @@
 import { Component, createRef, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
+import { markChunkReloadNotice } from "@/lib/chunk-recovery";
 import { emitMapError } from "@/lib/observability";
 
 /**
@@ -65,7 +66,10 @@ export class MapErrorBoundary extends Component<
   private retry = (): void => {
     // Reload: the only recovery that actually re-fetches the chunk (see the
     // doc comment above). The boot restores the run from sessionStorage, so
-    // the player's game survives the reload intact.
+    // the player's game survives the reload intact. Leave the notice flag
+    // first, so the reloaded page explains itself exactly as an
+    // auto-reload does (chunk-recovery, manifest D9).
+    markChunkReloadNotice();
     window.location.reload();
   };
 

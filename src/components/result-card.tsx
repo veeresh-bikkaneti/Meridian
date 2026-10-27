@@ -24,6 +24,7 @@ import { preloadTerritory } from "@/game/territory";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
 import { ReadAloudButton } from "./age-profile/ReadAloudButton";
 import { audioMode, resolveBand } from "@/game/age-profile";
+import { storyForBand } from "@/game/generated-places";
 
 // Frosted chrome tokens shared by the floating aim/reveal chrome.
 const CHROME =
@@ -208,7 +209,11 @@ export function ResultCard({
 }) {
   const reduced = usePrefersReducedMotion();
   const aiSports = useAiSportsTeams(place);
-  const baseStory = story ?? place?.story ?? "";
+  const baseStory =
+    story ??
+    (place?.curated === true
+      ? storyForBand(place, resolveBand())
+      : (place?.story ?? ""));
   // On-device AI story fallback (story-ai.ts): fires only for generated
   // places with no build-time enrichment (no history hook, no ladder fact,
   // not curated). No Wikipedia extract is passed at this wiring stage, so
@@ -571,6 +576,14 @@ export function ResultCard({
                       </div>
                     </dl>
                   ) : null}
+                  <div className="agep-listen-row">
+                    <ReadAloudButton
+                      text={baseStory}
+                      mode={audioMode(resolveBand())}
+                      autoplay={place.audioAutoplay ?? false}
+                      speakKey={place.id}
+                    />
+                  </div>
                   <BoundedText
                     variant="body"
                     data-testid="miss-subscript"

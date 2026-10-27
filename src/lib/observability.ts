@@ -67,6 +67,7 @@ export type MilestoneName =
 
 export type ObservabilityEventType =
   | "suspected_crash"
+  | "recovery_outcome"
   | "boot_failure"
   | "js_error"
   | "unhandled_rejection"
@@ -310,6 +311,296 @@ export function isBenignBrowserNoise(message: string): boolean {
   }
 }
 
+// --- Crash-report verdicts (Slice 1, 2026-10-25) --------------------------
+//
+// Every crash-class report carries a verdict, derived from evidence
+// stamps on the event. The classifier is a pure function of the stamped
+// facts; it is MIRRORED in workers/crash-report/src/index.ts, where the
+// receiver re-derives the verdict authoritatively and renders it (the
+// client stamp below is provisional only). Keep the two copies in step —
+// the fixture tables in both test files are identical on purpose.
+//
+// Evidence stamps (design §4 A1, Consensus Manifest 2026-10-25):
+// - `bgTerminal` / `buildReplaced` / `trailStuck`: booleans stamped on
+//   `suspected_crash` only, derived at init() from the STORED trail
+//   before any payload trimming (a raw last-milestone test is wrong: a
+//   non-visibility milestone can be recorded while the tab is still
+//   backgrounded, so bgTerminal comes from the last VISIBILITY entry —
+//   and is OMITTED when the trail records no visibility transition at
+//   all, so the classifier fails closed instead of guessing).
+// - `storageOk`: boolean stamped on every event at the emit() choke
+//   point. It records whether this session's storage reads/writes have
+//   succeeded so far. It cannot size the storage-blocked blind spot: a
+//   fully blocked session emits no suspected_crash at all (design F4).
+// - `lcV`: this classifier's logic version, stamped on every event.
+//   Absent stamps (older builds in the fleet) fail closed — see the
+//   classifier's missing-fields rule.
+
+/** Classifier logic version stamped on every event as `lcV`. */
+export const CLASSIFIER_VERSION = "2";
+
+export type CrashVerdict =
+  | "not_a_real_issue"
+  | "auto_fixed"
+  | "developer_needed"
+  | "insufficient_evidence";
+
+export type CrashWhyKey =
+  | "bg_close"
+  | "bg_stuck"
+  | "fg_vanished"
+  | "fg_kill_replaced"
+  | "fg_kill_current"
+  | "captured_error"
+  | "recovery_confirmed"
+  | "recovery_failed"
+  | "recovery_stood_down"
+  | "recovery_unconfirmed"
+  | "marker_unreadable"
+  | "missing_fields";
+
+export interface CrashVerdictFacts {
+  type: string;
+  error?: { name: string; message: string };
+  lastMilestone?: string;
+  bgTerminal?: boolean;
+  buildReplaced?: boolean;
+  trailStuck?: boolean;
+  lcV?: string;
+  recoveryOutcome?: string;
+}
+
+/** Types whose presence alone is a captured failure (design §2.2). */
+const CAPTURED_ERROR_TYPES = new Set([
+  "js_error",
+  "unhandled_rejection",
+  "map_error",
+  "boot_failure",
+]);
+
+/** Types that carry a verdict at all in Slice 1 (hiccup/funnel: never). */
+const CRASH_CLASS_TYPES = new Set([
+  "suspected_crash",
+  "boot_failure",
+  "js_error",
+  "unhandled_rejection",
+  "map_error",
+]);
+
+/** Last-step values that mean the session was in active play (shapes D/E). */
+const GAMEPLAY_MILESTONES = new Set([
+  "run_start",
+  "data_chunk_load_start",
+  "data_loaded",
+  "map_init_start",
+  "map_ready",
+  "game_loaded",
+  "storyteller_ready",
+]);
+
+/**
+ * Classify one report from its stamped facts. Precedence (design §2.3):
+ * a captured error defeats every benign pattern and every missing-stamp
+ * gap; developer-needed evidence defeats insufficient-evidence; benign
+ * is the last resort, reachable only with its full evidence pattern.
+ * `auto_fixed` is returned only by the Slice 2 recovery_outcome branch
+ * above (a confirmed recovery); an attempt alone never earns it.
+ */
+export function classifyCrashVerdict(
+  facts: CrashVerdictFacts,
+): { verdict: CrashVerdict; whyKey: CrashWhyKey } {
+  // Slice 2: the recovery_outcome branch is evaluated FIRST, before the
+  // captured-error rule (Consensus Manifest 2026-10-25). A missing or
+  // invalid recoveryOutcome fails closed to insufficient_evidence.
+  if (facts.type === "recovery_outcome") {
+    switch (facts.recoveryOutcome) {
+      case "confirmed":
+        return { verdict: "auto_fixed", whyKey: "recovery_confirmed" };
+      case "repeat_failure":
+        return { verdict: "developer_needed", whyKey: "recovery_failed" };
+      case "stood_down":
+        return { verdict: "insufficient_evidence", whyKey: "recovery_stood_down" };
+      case "unconfirmed_closed":
+      case "unconfirmed_died":
+      case "unconfirmed_expired":
+        return { verdict: "insufficient_evidence", whyKey: "recovery_unconfirmed" };
+      case "marker_unreadable":
+        return { verdict: "insufficient_evidence", whyKey: "marker_unreadable" };
+      default:
+        return { verdict: "insufficient_evidence", whyKey: "missing_fields" };
+    }
+  }
+  if (facts.error || CAPTURED_ERROR_TYPES.has(facts.type)) {
+    return { verdict: "developer_needed", whyKey: "captured_error" };
+  }
+  if (facts.type !== "suspected_crash") {
+    return { verdict: "insufficient_evidence", whyKey: "missing_fields" };
+  }
+  // Fail closed (design F8): any absent stamp → can't tell, never benign.
+  if (
+    typeof facts.bgTerminal !== "boolean" ||
+    typeof facts.buildReplaced !== "boolean" ||
+    typeof facts.trailStuck !== "boolean" ||
+    typeof facts.lcV !== "string" ||
+    facts.lcV.length === 0
+  ) {
+    return { verdict: "insufficient_evidence", whyKey: "missing_fields" };
+  }
+  if (facts.bgTerminal) {
+    return facts.trailStuck
+      ? { verdict: "insufficient_evidence", whyKey: "bg_stuck" }
+      : { verdict: "not_a_real_issue", whyKey: "bg_close" };
+  }
+  if (facts.lastMilestone && GAMEPLAY_MILESTONES.has(facts.lastMilestone)) {
+    return facts.buildReplaced
+      ? { verdict: "insufficient_evidence", whyKey: "fg_kill_replaced" }
+      : { verdict: "developer_needed", whyKey: "fg_kill_current" };
+  }
+  return { verdict: "insufficient_evidence", whyKey: "fg_vanished" };
+}
+
+// --- Recovery outcome marker (Slice 2, 2026-10-25) -----------------------
+//
+// chunk-recovery writes `meridian.chunkRecovery` before a verified
+// auto-reload (design §3.3 / §4 A4); observability claims it at init()
+// and owns every terminal `recovery_outcome` emission. The validity
+// predicate below is specified once in the Slice 2 Consensus Manifest
+// and implemented IDENTICALLY in src/lib/chunk-recovery.ts — the two
+// must not drift, and both test files fixture-test the same shapes.
+
+/** sessionStorage key holding the recovery-outcome marker (Slice 2). */
+export const CHUNK_RECOVERY_KEY = "meridian.chunkRecovery";
+/** sessionStorage key holding the chunk-reload stamp (corroboration). */
+export const CHUNK_RELOAD_KEY = "meridian.chunkReloadAt";
+/** A valid marker older than this at init resolves unconfirmed_expired. */
+export const RECOVERY_MARKER_MAX_AGE_MS = 86_400_000;
+/** A fresh reload stamp (age ≤ this) corroborates an unreadable marker. */
+export const RELOAD_STAMP_CORROBORATION_MAX_AGE_MS = 900_000;
+
+/** Outcome signals arriving from chunk-recovery via the host wiring. */
+export type RecoverySignal = "episode_cleared" | "repeat_failure" | "stood_down";
+
+/** Facts accompanying a recovery signal (the attempt it belongs to). */
+export interface RecoverySignalFacts {
+  build?: string;
+  at?: number;
+}
+
+export interface RecoveryMarker {
+  v: 1;
+  at: number;
+  build: string;
+  claimed?: boolean;
+  outcome?: string;
+  [key: string]: unknown;
+}
+
+/**
+ * The marker-validity predicate (Consensus Manifest, Slice 2): parses
+ * as a JSON object; `v === 1`; `at` a finite number; `build` a non-empty
+ * string; `claimed`, if present, a boolean; `outcome`, if present, a
+ * string. A marker carrying an `outcome` field is a TERMINAL record,
+ * never a pending attempt.
+ */
+export function isValidRecoveryMarker(parsed: unknown): parsed is RecoveryMarker {
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return false;
+  const m = parsed as Record<string, unknown>;
+  if (m.v !== 1) return false;
+  if (typeof m.at !== "number" || !Number.isFinite(m.at)) return false;
+  if (typeof m.build !== "string" || m.build.length === 0) return false;
+  if (m.claimed !== undefined && typeof m.claimed !== "boolean") return false;
+  if (m.outcome !== undefined && typeof m.outcome !== "string") return false;
+  return true;
+}
+
+export type RecoveryMarkerParse =
+  | { kind: "valid"; marker: RecoveryMarker }
+  | { kind: "terminal"; marker: RecoveryMarker }
+  | { kind: "invalid-version" }
+  | { kind: "invalid" };
+
+/**
+ * Parse a raw marker string for init()'s claim protocol. `terminal` =
+ * a parseable record carrying an `outcome` string (already reported;
+ * deleted silently). `invalid-version` = parseable with a numeric
+ * `v !== 1` (always `marker_unreadable`). `invalid` = unparseable or
+ * predicate-failing (the corroboration split decides). Null raw input
+ * (no marker stored) returns null.
+ */
+export function parseRecoveryMarker(raw: string | null): RecoveryMarkerParse | null {
+  if (raw === null || raw === undefined || raw === "") return null;
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return { kind: "invalid" };
+  }
+  if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+    const m = parsed as Record<string, unknown>;
+    if (typeof m.outcome === "string") {
+      return { kind: "terminal", marker: m as RecoveryMarker };
+    }
+    if (typeof m.v === "number" && m.v !== 1) return { kind: "invalid-version" };
+  }
+  if (isValidRecoveryMarker(parsed)) return { kind: "valid", marker: parsed };
+  return { kind: "invalid" };
+}
+
+/**
+ * Terminal visibility state of a stored trail: true when the session
+ * ended backgrounded — the last VISIBILITY entry in its history is
+ * "backgrounded" (a later non-visibility entry does not change that;
+ * the tab was still in the background when it was recorded); false when
+ * that entry is "foregrounded". With NO visibility entry at all the
+ * state is unknown and this returns undefined — the stamp is then
+ * omitted and the classifier fails closed (design §4 A1: a raw
+ * last-milestone test is wrong; C3 binding constraint). Never inferred
+ * from lastMilestone.
+ */
+export function terminalBackgrounded(prev: Breadcrumb): boolean | undefined {
+  const history = Array.isArray(prev.history) ? prev.history : [];
+  for (let i = history.length - 1; i >= 0; i--) {
+    const name = history[i]?.name;
+    if (name === "backgrounded") return true;
+    if (name === "foregrounded") return false;
+  }
+  return undefined;
+}
+
+/** Start milestones whose matching ready/loaded step never arrived. */
+const START_MILESTONES = new Set([
+  "run_start",
+  "data_chunk_load_start",
+  "map_init_start",
+]);
+
+/**
+ * Shape A-stuck: the session ended backgrounded, but the last progress
+ * step before that backgrounding was a start-without-ready — the player
+ * backgrounded an app that appeared stuck, so the background-close
+ * pattern must not whitewash it (design §2.3). Reads the stored history
+ * before any trimming, like terminalBackgrounded.
+ */
+export function trailWasStuck(prev: Breadcrumb): boolean {
+  if (terminalBackgrounded(prev) !== true) return false;
+  const history = Array.isArray(prev.history) ? prev.history : [];
+  let bgIdx = -1;
+  for (let i = history.length - 1; i >= 0; i--) {
+    if (history[i]?.name === "backgrounded") {
+      bgIdx = i;
+      break;
+    }
+    if (history[i]?.name === "foregrounded") break;
+  }
+  if (bgIdx < 0) return false;
+  for (let i = bgIdx - 1; i >= 0; i--) {
+    const name = history[i]?.name;
+    if (name === "backgrounded" || name === "foregrounded") continue;
+    return START_MILESTONES.has(name);
+  }
+  return false;
+}
+
 function byteLength(s: string): number {
   try {
     return new TextEncoder().encode(s).length;
@@ -389,6 +680,12 @@ export interface Observability {
   wasMapAttributedCrash: () => boolean;
   /** PBI-8: record the current map mount's tile-failure count on the trail. */
   setTileErrorCount: (count: number) => void;
+  /**
+   * Slice 2: a recovery signal from chunk-recovery (wired by GameApp).
+   * Resolves the claimed outcome marker at most once — see the Slice 2
+   * Consensus Manifest for the per-signal rules.
+   */
+  noteRecoverySignal: (signal: RecoverySignal, facts?: RecoverySignalFacts) => void;
 }
 
 /**
@@ -424,12 +721,36 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
   let visibilityTracked = false;
   /** PBI-6: set once in init() — the previous page died with the map mounted. */
   let mapAttributedCrash = false;
+  /** Slice 1: false once any storage read/write in this session throws. */
+  let storageOk = true;
+  /**
+   * Slice 2: the claimed recovery attempt held by init(). The two
+   * confirmation legs are LATCHED BOOLEANS here in the closure — never
+   * re-derived from the capped trail history. `resolved` enforces the
+   * at-most-once rule: resolve deletes the marker, sets this flag, and
+   * emits exactly once; every later signal for the attempt drops.
+   */
+  interface PendingRecovery {
+    build: string;
+    at: number;
+    gameLoaded: boolean;
+    clearLeg: boolean;
+    resolved: boolean;
+  }
+  let pendingRecovery: PendingRecovery | null = null;
   const queue: ObservabilityEvent[] = [];
 
   function readStoredBreadcrumb(): Breadcrumb | null {
+    let raw: string | null = null;
     try {
-      const raw = storage?.getItem(BREADCRUMB_KEY);
-      if (!raw) return null;
+      raw = storage?.getItem(BREADCRUMB_KEY) ?? null;
+    } catch {
+      // A throwing read is the storageOk probe failing (Slice 1).
+      storageOk = false;
+      return null;
+    }
+    if (!raw) return null;
+    try {
       const parsed = JSON.parse(raw) as Breadcrumb;
       if (typeof parsed !== "object" || parsed === null || typeof parsed.sessionId !== "string") return null;
       return parsed;
@@ -443,6 +764,103 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       if (breadcrumb) storage?.setItem(BREADCRUMB_KEY, JSON.stringify(breadcrumb));
     } catch {
       // Storage blocked/full — trail lives in memory only.
+      storageOk = false;
+    }
+  }
+
+  /** Slice 2: best-effort marker deletion (init claim + resolve). */
+  function deleteRecoveryMarker(): void {
+    try {
+      storage?.removeItem(CHUNK_RECOVERY_KEY);
+    } catch {
+      storageOk = false;
+    }
+  }
+
+  /**
+   * Slice 2: build + emit one recovery_outcome event. Built from the
+   * CURRENT breadcrumb (as every existing emit site does) and carrying
+   * buildId = the marker's failing-session build — the event is
+   * attributed to the session it is about (the suspected_crash
+   * precedent). Callers pass the running build only for
+   * marker_unreadable, where no trustworthy marker build exists.
+   */
+  function emitRecoveryOutcome(
+    recoveryOutcome: string,
+    eventBuildId: string,
+    ctx?: {
+      sessionId?: string;
+      edition?: string;
+      regionId?: string;
+      chunkId?: string;
+      lastMilestone?: string;
+    },
+  ): void {
+    emit({
+      type: "recovery_outcome",
+      ts: now(),
+      buildId: eventBuildId,
+      recoveryOutcome,
+      sessionId: ctx?.sessionId ?? breadcrumb?.sessionId,
+      lastMilestone: ctx?.lastMilestone ?? breadcrumb?.lastMilestone,
+      edition: ctx?.edition ?? breadcrumb?.edition,
+      regionId: ctx?.regionId ?? breadcrumb?.regionId,
+      chunkId: ctx?.chunkId ?? breadcrumb?.chunkId,
+    });
+  }
+
+  /**
+   * Slice 2: resolve the held attempt exactly once — delete the
+   * marker, set resolved, then emit (delete-before-emit: a lost queue
+   * can lose an outcome, it can never double-report one).
+   */
+  function resolveRecovery(recoveryOutcome: string): void {
+    if (!pendingRecovery || pendingRecovery.resolved) return;
+    const eventBuild = pendingRecovery.build;
+    pendingRecovery.resolved = true;
+    deleteRecoveryMarker();
+    emitRecoveryOutcome(recoveryOutcome, eventBuild);
+  }
+
+  /**
+   * Slice 2: the confirmation AND-gate. Confirmation emits at whichever
+   * leg lands second: game_loaded (latched in recordMilestone) AND the
+   * failure-free clear leg (episode_cleared from chunk-recovery).
+   */
+  function maybeResolveConfirmed(): void {
+    if (!pendingRecovery || pendingRecovery.resolved) return;
+    if (pendingRecovery.gameLoaded && pendingRecovery.clearLeg) {
+      resolveRecovery("confirmed");
+    }
+  }
+
+  function noteRecoverySignal(signal: RecoverySignal, facts?: RecoverySignalFacts): void {
+    try {
+      if (signal === "episode_cleared") {
+        if (!pendingRecovery || pendingRecovery.resolved) return;
+        pendingRecovery.clearLeg = true;
+        maybeResolveConfirmed();
+        return;
+      }
+      if (signal === "repeat_failure") {
+        if (!pendingRecovery || pendingRecovery.resolved) return;
+        // Replaces any held legs — a recurrence before confirmation
+        // flips the outcome (Manifest A2(iii)).
+        resolveRecovery("repeat_failure");
+        return;
+      }
+      if (signal === "stood_down") {
+        if (pendingRecovery) {
+          if (pendingRecovery.resolved) return;
+          resolveRecovery("stood_down");
+          return;
+        }
+        // No held attempt: the chunk side's own stand-down record —
+        // emitted standalone with the FAILING session's build.
+        emitRecoveryOutcome("stood_down", facts?.build || buildId);
+      }
+    } catch {
+      // Outcome reporting must never break gameplay.
     }
   }
 
@@ -490,7 +908,58 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
         // PBI-8: every event (including crash reports) carries the game
         // map mode — the Scout adoption / crash-delta signal.
         mapMode: event.mapMode ?? reportMapMode,
+        // Slice 1 evidence stamps, at this single choke point so every
+        // event carries them (design §4 A1): whether this session's
+        // storage has worked so far, and the classifier logic version.
+        storageOk,
+        lcV: CLASSIFIER_VERSION,
       };
+      // Slice 2 afterRecovery choke point (Manifest A1): while a
+      // claimed outcome is pending and unresolved, captured-error
+      // events gain afterRecovery: true (present only when true, never
+      // stamped false). Evidence-neutral: NOT a classifier input in
+      // either mirror, and it never alters the paired report's own
+      // classification. (The one suspected_crash case — the same-init
+      // leftover link — is stamped explicitly in init(), not here:
+      // suspected_crash is not a captured-error type.)
+      if (
+        enriched.afterRecovery === undefined &&
+        pendingRecovery &&
+        !pendingRecovery.resolved &&
+        CAPTURED_ERROR_TYPES.has(enriched.type)
+      ) {
+        enriched.afterRecovery = true;
+      }
+      // Slice 1: the provisional verdict for crash-class events. The
+      // receiver re-derives it from these same stamped facts and renders
+      // its own derivation — this stamp is a cross-check, never the
+      // rendered text (design §2.5). Hiccup/funnel events carry none.
+      if (enriched.verdict === undefined && CRASH_CLASS_TYPES.has(enriched.type)) {
+        const derived = classifyCrashVerdict({
+          type: enriched.type,
+          error: enriched.error,
+          lastMilestone: enriched.lastMilestone,
+          bgTerminal: typeof enriched.bgTerminal === "boolean" ? enriched.bgTerminal : undefined,
+          buildReplaced: typeof enriched.buildReplaced === "boolean" ? enriched.buildReplaced : undefined,
+          trailStuck: typeof enriched.trailStuck === "boolean" ? enriched.trailStuck : undefined,
+          lcV: CLASSIFIER_VERSION,
+        });
+        enriched.verdict = derived.verdict;
+        enriched.whyKey = derived.whyKey;
+      }
+      // Slice 2: the provisional verdict for recovery_outcome events,
+      // stamped through the same classifier (NOT via CRASH_CLASS_TYPES
+      // — Manifest A10). The receiver re-derives it authoritatively.
+      if (enriched.verdict === undefined && enriched.type === "recovery_outcome") {
+        const derived = classifyCrashVerdict({
+          type: enriched.type,
+          recoveryOutcome:
+            typeof enriched.recoveryOutcome === "string" ? enriched.recoveryOutcome : undefined,
+          lcV: CLASSIFIER_VERSION,
+        });
+        enriched.verdict = derived.verdict;
+        enriched.whyKey = derived.whyKey;
+      }
       if (!endpoint) {
         queue.push(enriched);
         // Bounded queue with suspected_crash protection (D3): evict the
@@ -500,7 +969,12 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
         // events may drop its oldest one. The MAX_QUEUE memory bound
         // still holds either way.
         while (queue.length > MAX_QUEUE) {
-          const evictIdx = queue.findIndex((ev) => ev.type !== "suspected_crash");
+          // Slice 2: recovery_outcome is protected like suspected_crash
+          // (Manifest, Architect miss #3) — evict the oldest event that
+          // is neither, first.
+          const evictIdx = queue.findIndex(
+            (ev) => ev.type !== "suspected_crash" && ev.type !== "recovery_outcome",
+          );
           if (evictIdx >= 0) queue.splice(evictIdx, 1);
           else queue.splice(0, 1);
         }
@@ -542,6 +1016,14 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       if (context?.regionId) breadcrumb.regionId = context.regionId;
       if (context?.chunkId) breadcrumb.chunkId = context.chunkId;
       persist();
+      // Slice 2: the game_loaded confirmation leg is LATCHED here,
+      // inside the closure, when the milestone records while an
+      // outcome is pending (Manifest A14) — never re-derived later
+      // from the capped trail history.
+      if (name === "game_loaded" && pendingRecovery && !pendingRecovery.resolved) {
+        pendingRecovery.gameLoaded = true;
+        maybeResolveConfirmed();
+      }
     } catch {
       // Milestones silently no-op on any failure.
     }
@@ -566,6 +1048,99 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       } catch {
         unclean = false;
       }
+      // Slice 2: recovery-marker handling — after the `unclean`
+      // computation, before the suspected_crash construction, on this
+      // module's own storage handle, in the Consensus Manifest's exact
+      // order. Init-time outcome events carry the previous trail's
+      // context (the current breadcrumb does not exist yet).
+      let suspectedAfterRecovery = false;
+      try {
+        const prevCtx = {
+          sessionId: prev?.sessionId,
+          edition: prev?.edition,
+          regionId: prev?.regionId,
+          chunkId: prev?.chunkId,
+          lastMilestone: prev?.lastMilestone,
+        };
+        let rawMarker: string | null = null;
+        try {
+          rawMarker = storage?.getItem(CHUNK_RECOVERY_KEY) ?? null;
+        } catch {
+          storageOk = false;
+          rawMarker = null;
+        }
+        const parsedMarker = parseRecoveryMarker(rawMarker);
+        if (parsedMarker?.kind === "terminal") {
+          // (1) Already reported by the chunk side — delete silently,
+          // never claim.
+          deleteRecoveryMarker();
+        } else if (parsedMarker?.kind === "invalid-version") {
+          // (2a) Parseable with a numeric v !== 1 — always unreadable.
+          deleteRecoveryMarker();
+          emitRecoveryOutcome("marker_unreadable", buildId, prevCtx);
+        } else if (parsedMarker?.kind === "invalid") {
+          // (2b) Unparseable / predicate-failing: unreadable only when
+          // a fresh reload stamp corroborates that a recovery attempt
+          // really happened; otherwise delete silently.
+          let corroborated = false;
+          try {
+            const rawStamp = storage?.getItem(CHUNK_RELOAD_KEY) ?? null;
+            const stamp = rawStamp === null || rawStamp === undefined ? NaN : Number(rawStamp);
+            corroborated =
+              Number.isFinite(stamp) &&
+              now() - stamp <= RELOAD_STAMP_CORROBORATION_MAX_AGE_MS;
+          } catch {
+            storageOk = false;
+          }
+          deleteRecoveryMarker();
+          if (corroborated) emitRecoveryOutcome("marker_unreadable", buildId, prevCtx);
+        } else if (parsedMarker?.kind === "valid") {
+          const marker = parsedMarker.marker;
+          if (now() - marker.at > RECOVERY_MARKER_MAX_AGE_MS) {
+            // (3) Expired beats claimed; NO afterRecovery linkage.
+            deleteRecoveryMarker();
+            emitRecoveryOutcome("unconfirmed_expired", marker.build, prevCtx);
+          } else if (marker.claimed === true) {
+            // (4) Leftover from a session that never resolved it.
+            // Delete BEFORE queueing the emit (at-most-once).
+            deleteRecoveryMarker();
+            if (unclean) {
+              suspectedAfterRecovery = true;
+              emitRecoveryOutcome("unconfirmed_died", marker.build, prevCtx);
+            } else {
+              emitRecoveryOutcome("unconfirmed_closed", marker.build, prevCtx);
+            }
+          } else {
+            // (5) Claim: rewrite the parsed object spread plus
+            // claimed: true (never reconstruct, never refresh `at`),
+            // and hold pending state only on a verified read-back.
+            let claimed = false;
+            try {
+              storage?.setItem(
+                CHUNK_RECOVERY_KEY,
+                JSON.stringify({ ...marker, claimed: true }),
+              );
+              const back = storage?.getItem(CHUNK_RECOVERY_KEY) ?? null;
+              const reparsed = parseRecoveryMarker(back);
+              claimed = reparsed?.kind === "valid" && reparsed.marker.claimed === true;
+            } catch {
+              storageOk = false;
+              claimed = false;
+            }
+            if (claimed) {
+              pendingRecovery = {
+                build: marker.build,
+                at: marker.at,
+                gameLoaded: false,
+                clearLeg: false,
+                resolved: false,
+              };
+            }
+          }
+        }
+      } catch {
+        // Marker handling must never block boot.
+      }
       // PBI-6: map-attributed crash detection — the previous page was
       // killed AND its trail ends at a map-mounted milestone. This is the
       // signal behind the Scout Map boot offer (offer, not force).
@@ -580,6 +1155,10 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
         // regardless, so it never persists past this boot.
         const prevCopy: Breadcrumb = { ...prev };
         delete prevCopy.device;
+        // bgTerminal is stamped only when the stored history actually
+        // records a visibility transition — absent means unknown, and
+        // the classifier fails closed on it (never benign).
+        const bgTerminal = terminalBackgrounded(prev);
         const event: ObservabilityEvent = {
           type: "suspected_crash",
           ts: now(),
@@ -591,6 +1170,17 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
           lastMilestone: prev.lastMilestone,
           device: coarseDeviceFacts(),
           breadcrumb: prevCopy,
+          // Slice 1 evidence stamps, derived HERE from the stored trail
+          // — the only moment the full, untrimmed history is in hand
+          // (design §4 A1/F7). emit() adds storageOk/lcV and the
+          // provisional verdict computed from these same facts.
+          ...(bgTerminal !== undefined ? { bgTerminal } : {}),
+          buildReplaced: (prev.buildId || buildId) !== buildId,
+          trailStuck: trailWasStuck(prev),
+          // Slice 2: the one suspected_crash afterRecovery case — the
+          // same-init leftover link (a claimed marker resolved as
+          // unconfirmed_died directly above, §3.3.4).
+          ...(suspectedAfterRecovery ? { afterRecovery: true } : {}),
         };
         try {
           storage?.removeItem(BREADCRUMB_KEY);
@@ -598,6 +1188,7 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
           // Even if removal fails, the in-memory trail below is fresh;
           // a stale stored copy could re-fire — storage failure is the
           // documented best-effort limit of exactly-once.
+          storageOk = false;
         }
         emit(event);
       }
@@ -707,6 +1298,7 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
     installGlobalHandlers,
     wasMapAttributedCrash: () => mapAttributedCrash,
     setTileErrorCount,
+    noteRecoverySignal,
   };
 }
 
@@ -741,6 +1333,15 @@ export function emitEvent(event: ObservabilityEvent): boolean {
     return getObservability().emit(event);
   } catch {
     return false;
+  }
+}
+
+/** Slice 2: GameApp's wiring target for chunk-recovery signals. */
+export function noteRecoverySignal(signal: RecoverySignal, facts?: RecoverySignalFacts): void {
+  try {
+    getObservability().noteRecoverySignal(signal, facts);
+  } catch {
+    // Never break gameplay.
   }
 }
 
