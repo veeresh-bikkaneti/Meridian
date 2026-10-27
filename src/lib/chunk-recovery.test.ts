@@ -8,6 +8,16 @@ import {
   isChunkLoadError,
   type ChunkRecoveryHost,
 } from "./chunk-recovery.ts";
+import * as chunkRecovery from "./chunk-recovery.ts";
+
+/** The notice key, as a literal: contracts pin the exported constant to it. */
+const NOTICE_KEY = "meridian.chunkReloadNotice";
+/** Ratified announcement dwell (manifest D3); contracts pin the constant. */
+const DWELL_MS = 10_000;
+const NOTICE_SCOPED_SENTENCE =
+  "The post-reload notice is promised only where session storage is writable; where storage is blocked the reload still happens and no notice is shown.";
+const DWELL_SCOPED_SENTENCE =
+  "The deferral applies only to a map error card already on screen at the decision point; a card that appears after the decision point does not defer the reload.";
 
 const T0 = 1_000_000;
 const CHROME_MSG =
@@ -50,18 +60,30 @@ test("isChunkLoadError: rejects unrelated errors and non-errors", () => {
  */
 interface SharedStorage {
   store: Map<string, string>;
-  calls: { set: number; setByKey: Record<string, number>; remove: number };
+  calls: {
+    set: number;
+    setByKey: Record<string, number>;
+    remove: number;
+    setArgs: Array<[string, string]>;
+    removeArgs: string[];
+  };
   failRemove: boolean;
+  failSetKeys?: Set<string>;
 }
-function sharedStorage(failRemove = false): SharedStorage {
-  return { store: new Map(), calls: { set: 0, setByKey: {}, remove: 0 }, failRemove };
+function sharedStorage(failRemove = false, failSetKeys?: Set<string>): SharedStorage {
+  return {
+    store: new Map(),
+    calls: { set: 0, setByKey: {}, remove: 0, setArgs: [], removeArgs: [] },
+    failRemove,
+    failSetKeys,
+  };
 }
 function fakeHost(startNow = 1_000_000, shared: SharedStorage = sharedStorage()) {
   const listeners = new Map<string, Array<(event: unknown) => void>>();
   const store = shared.store;
   const calls = shared.calls;
   const timers: Array<{ fn: () => void; ms: number; due: number }> = [];
-  const state = { now: startNow, reloads: 0, offerVisible: false };
+  const state = { now: startNow, reloads: 0, offerVisible: false, cardVisible: false, cardThrows: false };
   const host: ChunkRecoveryHost = {
     addEventListener: (type, listener) => {
       const list = listeners.get(type) ?? [];
@@ -71,12 +93,15 @@ function fakeHost(startNow = 1_000_000, shared: SharedStorage = sharedStorage())
     storage: {
       getItem: (k) => store.get(k) ?? null,
       setItem: (k, v) => {
+        if (shared.failSetKeys?.has(k)) throw new Error("set blocked for key");
         calls.set += 1;
         calls.setByKey[k] = (calls.setByKey[k] ?? 0) + 1;
+        calls.setArgs.push([k, v]);
         store.set(k, v);
       },
       removeItem: (k) => {
         calls.remove += 1;
+        calls.removeArgs.push(k);
         if (shared.failRemove) throw new Error("remove blocked");
         store.delete(k);
       },
@@ -89,6 +114,10 @@ function fakeHost(startNow = 1_000_000, shared: SharedStorage = sharedStorage())
       timers.push({ fn, ms, due: state.now + ms });
     },
     staleOfferVisible: () => state.offerVisible,
+    mapErrorCardVisible: () => {
+      if (state.cardThrows) throw new Error("card probe boom");
+      return state.cardVisible;
+    },
   };
   const fire = (type: string, event: unknown) => {
     for (const listener of listeners.get(type) ?? []) listener(event);
@@ -112,7 +141,12 @@ function fakeHost(startNow = 1_000_000, shared: SharedStorage = sharedStorage())
     store.set(CHUNK_RELOAD_KEY, v);
     return v;
   };
-  return { host, fire, state, store, calls, advanceTimersBy, pendingTimers, registrations, seed };
+  const seedNotice = (age: number) => {
+    const v = String(state.now - age);
+    store.set(NOTICE_KEY, v);
+    return v;
+  };
+  return { host, fire, state, store, calls, advanceTimersBy, pendingTimers, registrations, seed, seedNotice };
 }
 type Fake = ReturnType<typeof fakeHost>;
 const fireVite = (f: Fake) =>
@@ -271,7 +305,11 @@ test("install: installing twice on the same host registers once", () => {
   assert.equal(f.state.reloads, 1);
 });
 
-function stubWindow(sessionStorageStub: unknown) {
+function stubWindow(
+  sessionStorageStub: unknown,
+  bodyText: string | null = "",
+  bodyOverride?: unknown,
+) {
   const registrations: Array<{ type: string; listener: (e: unknown) => void }> = [];
   const timers: Array<{ fn: () => void; ms: number }> = [];
   const state = { reloads: 0 };
@@ -291,7 +329,14 @@ function stubWindow(sessionStorageStub: unknown) {
   };
   const g = globalThis as unknown as Record<string, unknown>;
   g.window = win;
-  g.document = { body: { innerText: "", textContent: "" } };
+  // bodyText null => no body at all (12-Uc); bodyOverride replaces the
+  // body wholesale (e.g. a throwing innerText getter, 12-Uc leg 2).
+  g.document =
+    bodyOverride !== undefined
+      ? { body: bodyOverride }
+      : bodyText === null
+        ? {}
+        : { body: { innerText: bodyText, textContent: bodyText } };
   return {
     registrations,
     timers,
@@ -1233,4 +1278,468 @@ test("O14-U: install-call hooks fill the seam when the host itself carries no ou
   });
   fireVite(p2);
   assert.deepEqual(signals.map((s) => s.signal), ["repeat_failure"]);
+});
+
+/**
+ * A11Y announcement round (manifest 2026-10-25-a11y-reload-announcement):
+ * when the map error card is on screen at the decision point, the
+ * reload defers once by CHUNK_ANNOUNCE_DWELL_MS so the card gets at
+ * least that much additional dwell before navigation; every reload
+ * (and the boundary's manual retry) leaves a timestamped notice flag
+ * the next boot consumes exactly once. New symbols are reached via
+ * the namespace import so each RED stays at its own assertion.
+ */
+
+test("11-U0: the dwell constant is pinned at 10000 and exceeds the decision delay", () => {
+  assert.equal(typeof chunkRecovery.CHUNK_ANNOUNCE_DWELL_MS, "number");
+  assert.equal(chunkRecovery.CHUNK_ANNOUNCE_DWELL_MS, DWELL_MS);
+  assert.ok(
+    chunkRecovery.CHUNK_ANNOUNCE_DWELL_MS > chunkRecovery.CHUNK_RECOVERY_DELAY_MS,
+  );
+  // The card copy is pinned codepoint-for-codepoint: the boundary
+  // renders a typographic apostrophe (&rsquo; in
+  // map-error-boundary.tsx), and an ASCII look-alike here would make
+  // the probe silently never match in production — e2e 11-E caught
+  // exactly that in this round's first gate run.
+  assert.equal(chunkRecovery.MAP_ERROR_CARD_COPY, "Couldn’t load the map.");
+});
+
+test("11-U: card visible at the decision defers once — nothing written, reload at T0+1500+DWELL", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  f.state.cardVisible = true;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0); // RED pre-fix: 1
+  assert.equal(f.store.has(CHUNK_RELOAD_KEY), false);
+  assert.equal(f.store.has(NOTICE_KEY), false);
+  assert.equal(f.calls.set, 0);
+  assert.deepEqual(f.pendingTimers(), [DWELL_MS]);
+  f.advanceTimersBy(DWELL_MS - 1);
+  assert.equal(f.state.reloads, 0);
+  f.advanceTimersBy(1);
+  assert.equal(f.state.reloads, 1);
+  assert.deepEqual(f.pendingTimers(), []);
+  const at = String(T0 + 1_500 + DWELL_MS);
+  assert.equal(f.store.get(CHUNK_RELOAD_KEY), at);
+  assert.equal(f.store.get(NOTICE_KEY), at);
+  assert.deepEqual(
+    f.calls.setArgs.filter(([k]) => k !== CHUNK_RECOVERY_KEY),
+    [
+      [CHUNK_RELOAD_KEY, at],
+      [NOTICE_KEY, at],
+    ],
+  );
+});
+
+test("11-U2a: the probe is at decision time — a card appearing during the window still defers", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.state.cardVisible = true; // renders during the 1_500 ms window
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0); // RED pre-fix: 1
+  assert.deepEqual(f.pendingTimers(), [DWELL_MS]);
+  f.advanceTimersBy(DWELL_MS);
+  assert.equal(f.state.reloads, 1);
+});
+
+test("11-U2b GUARD: a card clearing before the decision reloads on time", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  f.state.cardVisible = true;
+  fireVite(f);
+  f.state.cardVisible = false; // gone before the decision point
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1);
+  assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
+  assert.equal(f.store.get(NOTICE_KEY), String(T0 + 1_500));
+  assert.deepEqual(f.pendingTimers(), []);
+});
+
+test("11-U3: the deferral is spent after one use — a card still up at the deferred decision reloads", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  f.state.cardVisible = true;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0); // RED pre-fix: 1 (the deferral happened)
+  assert.deepEqual(f.pendingTimers(), [DWELL_MS]);
+  f.advanceTimersBy(DWELL_MS);
+  assert.equal(f.state.reloads, 1); // mutation (no once-guard): 0
+  assert.deepEqual(f.pendingTimers(), []);
+  f.advanceTimersBy(30_000);
+  assert.equal(f.state.reloads, 1);
+});
+
+test("11-U4: cancellation — the card leaving during the dwell stands the deferred decision down", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  f.state.cardVisible = true;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0);
+  assert.deepEqual(f.pendingTimers(), [DWELL_MS]);
+  f.state.cardVisible = false; // the player recovered during the dwell
+  f.advanceTimersBy(DWELL_MS);
+  assert.equal(f.state.reloads, 0); // mutation (no card re-check): 1
+  assert.equal(f.store.has(CHUNK_RELOAD_KEY), false);
+  assert.equal(f.store.has(NOTICE_KEY), false);
+  assert.equal(f.calls.set, 0);
+  assert.deepEqual(f.pendingTimers(), []);
+  // Recovery is not wedged by the cancellation: a later failure with
+  // no card recovers normally.
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1);
+});
+
+test("11-U5: a burst during the dwell schedules no earlier decision and does not extend the dwell", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  f.state.cardVisible = true;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.deepEqual(f.pendingTimers(), [DWELL_MS]);
+  fireVite(f); // burst inside the dwell
+  assert.deepEqual(f.pendingTimers(), [DWELL_MS]); // mutation: [10000, 1500]
+  f.advanceTimersBy(DWELL_MS);
+  assert.equal(f.state.reloads, 1);
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY], 1); // one stamp + one notice, not two decisions' worth
+  assert.equal(f.calls.setByKey[NOTICE_KEY], 1);
+});
+
+test("11-U6: the stale offer beats the card at the first decision — stand-down does not spend the deferral", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  f.state.offerVisible = true;
+  f.state.cardVisible = true; // the real DOM case: the offer sits in an alert too
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0);
+  assert.deepEqual(f.pendingTimers(), []); // mutation (card first): [10000]
+  assert.equal(f.calls.setByKey[CHUNK_RELOAD_KEY] ?? 0, 0);
+  assert.equal(f.calls.setByKey[NOTICE_KEY] ?? 0, 0);
+  f.state.offerVisible = false;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0); // deferred now — the deferral was not spent
+  assert.deepEqual(f.pendingTimers(), [DWELL_MS]);
+  f.advanceTimersBy(DWELL_MS);
+  assert.equal(f.state.reloads, 1);
+});
+
+test("11-U7: a stale offer arriving during the dwell stands the deferred decision down", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  f.state.cardVisible = true;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.deepEqual(f.pendingTimers(), [DWELL_MS]);
+  f.state.offerVisible = true; // the app's own recovery lands mid-dwell
+  f.advanceTimersBy(DWELL_MS);
+  assert.equal(f.state.reloads, 0); // mutation (no stale re-check): 1
+  assert.equal(f.store.has(CHUNK_RELOAD_KEY), false);
+  assert.equal(f.store.has(NOTICE_KEY), false);
+  assert.deepEqual(f.pendingTimers(), []);
+  f.state.offerVisible = false;
+  f.state.cardVisible = false;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1); // re-armed, guard unconsumed
+});
+
+test("11-U8: the episode latch is re-checked at the deferred decision", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  f.state.cardVisible = true;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.deepEqual(f.pendingTimers(), [DWELL_MS]);
+  // Another page's reload stamps the episode during the dwell.
+  f.store.set(CHUNK_RELOAD_KEY, String(f.state.now));
+  f.advanceTimersBy(DWELL_MS);
+  assert.equal(f.state.reloads, 0); // mutation (no latch re-check): 1
+  assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
+  assert.equal(f.calls.set, 0);
+  assert.equal(f.store.has(NOTICE_KEY), false);
+});
+
+test("11-U9: an active episode at the first decision blocks without spending the deferral", () => {
+  const f = fakeHost();
+  f.seed(1_000);
+  installChunkLoadRecovery(f.host); // arms the 30_000 clear countdown
+  f.state.cardVisible = true;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0);
+  assert.equal(f.pendingTimers().includes(DWELL_MS), false); // latch precedes the card check
+  assert.equal(f.calls.set, 0);
+  f.advanceTimersBy(28_500); // T0+30_000: the episode clears
+  assert.equal(f.calls.remove, 1);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 0); // deferred — the deferral survived the blocked decision
+  assert.deepEqual(f.pendingTimers(), [DWELL_MS]);
+  f.advanceTimersBy(DWELL_MS);
+  assert.equal(f.state.reloads, 1);
+  const at = String(T0 + 41_500);
+  assert.equal(f.store.get(CHUNK_RELOAD_KEY), at);
+  assert.equal(f.store.get(NOTICE_KEY), at);
+});
+
+test("11-U10 GUARD: a throwing card probe reads as no card — the reload is on time, nothing escapes", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  f.state.cardThrows = true;
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1); // an unguarded probe inside decide() would swallow this
+  assert.equal(f.store.get(NOTICE_KEY), String(T0 + 1_500));
+});
+
+function stubStorageMap() {
+  const m = new Map<string, string>();
+  let sets = 0;
+  const ss = {
+    getItem: (k: string) => m.get(k) ?? null,
+    setItem: (k: string, v: string) => {
+      sets += 1;
+      m.set(k, v);
+    },
+    removeItem: (k: string) => {
+      m.delete(k);
+    },
+  };
+  return { m, ss, getSets: () => sets };
+}
+
+test("12-Ua: the default probe sees the boundary card copy in rendered body text — defer, then reload", () => {
+  const { ss } = stubStorageMap();
+  // Stub text is built FROM the exported constant (whose exact
+  // codepoints 11-U0 pins against the boundary's rendered copy), so
+  // this probe test can never drift into an ASCII self-mirror.
+  const w = stubWindow(ss, `${chunkRecovery.MAP_ERROR_CARD_COPY} Your game is safe — try again.`);
+  installChunkLoadRecovery();
+  w.dispatch("vite:preloadError");
+  const recorded = w.timers.map((t) => t.ms);
+  w.flush(); // the 1_500 decision runs; the dwell timer it schedules is NOT run by this flush
+  const afterFirst = { reloads: w.state.reloads, pending: w.timers.map((t) => t.ms) };
+  w.flush(); // the dwell decision
+  const reloadsFinal = w.state.reloads;
+  w.cleanup();
+  assert.deepEqual(recorded, [1_500]);
+  assert.equal(afterFirst.reloads, 0); // RED pre-fix: 1
+  assert.deepEqual(afterFirst.pending, [DWELL_MS]);
+  assert.equal(reloadsFinal, 1);
+});
+
+test("12-Ub: body text without the card copy (incl. other alert text) does not defer", () => {
+  for (const text of ["Your game is safe — some other alert entirely", "  \n "]) {
+    const { ss } = stubStorageMap();
+    const w = stubWindow(ss, text);
+    installChunkLoadRecovery();
+    w.dispatch("vite:preloadError");
+    w.flush();
+    const reloads = w.state.reloads;
+    const pending = w.timers.map((t) => t.ms);
+    w.cleanup();
+    assert.equal(reloads, 1);
+    assert.deepEqual(pending, []);
+  }
+});
+
+test("12-Uc GUARD: a missing body or a throwing innerText reads as no card", () => {
+  const a = stubStorageMap();
+  const wa = stubWindow(a.ss, null); // document with no body
+  installChunkLoadRecovery();
+  wa.dispatch("vite:preloadError");
+  wa.flush();
+  const reloadsA = wa.state.reloads;
+  wa.cleanup();
+  assert.equal(reloadsA, 1);
+  const b = stubStorageMap();
+  const throwingBody = {
+    get innerText(): string {
+      throw new Error("innerText boom");
+    },
+    textContent: "",
+  };
+  const wb = stubWindow(b.ss, "", throwingBody);
+  installChunkLoadRecovery();
+  wb.dispatch("vite:preloadError");
+  wb.flush();
+  const reloadsB = wb.state.reloads;
+  wb.cleanup();
+  assert.equal(reloadsB, 1);
+});
+
+test("12-Ud GUARD: stale-offer copy alone in body text stands down — no dwell timer", () => {
+  const { ss } = stubStorageMap();
+  const w = stubWindow(ss, String(chunkRecovery.STALE_OFFER_COPY));
+  installChunkLoadRecovery();
+  w.dispatch("vite:preloadError");
+  w.flush();
+  const reloads = w.state.reloads;
+  const pending = w.timers.map((t) => t.ms);
+  w.cleanup();
+  assert.equal(reloads, 0);
+  assert.deepEqual(pending, []); // mutation (card checked before stale): [10000]
+});
+
+test("14-U1: every auto-reload writes the notice, including the no-card fast path", () => {
+  const f = fakeHost();
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1);
+  assert.equal(f.store.get(NOTICE_KEY), String(T0 + 1_500)); // RED pre-fix: undefined
+  assert.deepEqual(
+    f.calls.setArgs.filter(([k]) => k !== CHUNK_RECOVERY_KEY),
+    [
+      [CHUNK_RELOAD_KEY, String(T0 + 1_500)],
+      [NOTICE_KEY, String(T0 + 1_500)],
+    ],
+  );
+});
+
+test("14-U2 GUARD: a notice-write failure never blocks the reload", () => {
+  const shared = sharedStorage(false, new Set([NOTICE_KEY]));
+  const f = fakeHost(T0, shared);
+  installChunkLoadRecovery(f.host);
+  fireVite(f);
+  f.advanceTimersBy(1_500);
+  assert.equal(f.state.reloads, 1); // mutation (unguarded notice write): 0
+  assert.equal(f.store.get(CHUNK_RELOAD_KEY), String(T0 + 1_500));
+  assert.equal(f.store.has(NOTICE_KEY), false);
+});
+
+test("14-U3: markChunkReloadNotice writes a finite timestamp via the default storage and never throws", () => {
+  assert.equal(typeof chunkRecovery.markChunkReloadNotice, "function"); // RED pre-fix
+  const { m, ss } = stubStorageMap();
+  const w = stubWindow(ss);
+  chunkRecovery.markChunkReloadNotice();
+  const written = m.get(NOTICE_KEY);
+  w.cleanup();
+  assert.equal(typeof written, "string");
+  assert.equal(Number.isFinite(Number(written)), true);
+  const boom = () => {
+    throw new Error("storage blocked");
+  };
+  const w2 = stubWindow({ getItem: boom, setItem: boom, removeItem: boom });
+  chunkRecovery.markChunkReloadNotice(); // must not throw
+  w2.cleanup();
+});
+
+test("13-U0: the notice constants are pinned", () => {
+  assert.equal(chunkRecovery.CHUNK_RELOAD_NOTICE_KEY, NOTICE_KEY); // RED pre-fix: undefined
+  assert.equal(chunkRecovery.CHUNK_RELOAD_NOTICE_MAX_AGE_MS, 900_000);
+});
+
+test("13-Ua: a fresh flag shows exactly once and is removed exactly once", () => {
+  assert.equal(typeof chunkRecovery.consumeChunkReloadNotice, "function"); // RED pre-fix
+  const f = fakeHost();
+  f.seedNotice(60_000);
+  assert.equal(chunkRecovery.consumeChunkReloadNotice(f.host), true);
+  assert.equal(f.store.has(NOTICE_KEY), false);
+  assert.deepEqual(f.calls.removeArgs, [NOTICE_KEY]);
+  assert.equal(chunkRecovery.consumeChunkReloadNotice(f.host), false);
+  assert.deepEqual(f.calls.removeArgs, [NOTICE_KEY]); // unchanged by the second consume
+});
+
+test("13-Ub: an absent flag returns false with zero storage writes", () => {
+  const f = fakeHost();
+  assert.equal(chunkRecovery.consumeChunkReloadNotice(f.host), false);
+  assert.deepEqual(f.calls.removeArgs, []);
+  assert.deepEqual(f.calls.setArgs, []);
+});
+
+test("13-Uc: the freshness boundary is inclusive — age MAX shows, MAX+1 does not, both are cleared", () => {
+  const a = fakeHost();
+  a.seedNotice(900_000);
+  assert.equal(chunkRecovery.consumeChunkReloadNotice(a.host), true);
+  assert.equal(a.store.has(NOTICE_KEY), false);
+  const b = fakeHost();
+  b.seedNotice(900_001);
+  assert.equal(chunkRecovery.consumeChunkReloadNotice(b.host), false);
+  assert.equal(b.store.has(NOTICE_KEY), false); // a stale flag can never surface later
+  assert.deepEqual(b.calls.removeArgs, [NOTICE_KEY]);
+});
+
+test("13-Ud: malformed flag values return false and are cleared", () => {
+  for (const bad of ["abc", ""]) {
+    const f = fakeHost();
+    f.store.set(NOTICE_KEY, bad);
+    assert.equal(chunkRecovery.consumeChunkReloadNotice(f.host), false);
+    assert.equal(f.store.has(NOTICE_KEY), false);
+    assert.deepEqual(f.calls.removeArgs, [NOTICE_KEY]);
+  }
+});
+
+test("13-Ue: a future flag timestamp is corrupt state — false, and cleared", () => {
+  const f = fakeHost();
+  f.store.set(NOTICE_KEY, String(T0 + 1));
+  assert.equal(chunkRecovery.consumeChunkReloadNotice(f.host), false);
+  assert.equal(f.store.has(NOTICE_KEY), false);
+});
+
+test("13-Uf: storage adversity never throws in consume", () => {
+  assert.equal(
+    chunkRecovery.consumeChunkReloadNotice({ storage: null, now: () => T0 }),
+    false,
+  );
+  const boom = () => {
+    throw new Error("storage blocked");
+  };
+  assert.equal(
+    chunkRecovery.consumeChunkReloadNotice({
+      storage: { getItem: boom, setItem: boom, removeItem: boom },
+      now: () => T0,
+    }),
+    false,
+  );
+  // Fresh flag + throwing removeItem: shown anyway (best-effort removal).
+  const f = fakeHost(T0, sharedStorage(true));
+  f.seedNotice(1_000);
+  assert.equal(chunkRecovery.consumeChunkReloadNotice(f.host), true);
+  assert.deepEqual(f.calls.removeArgs, [NOTICE_KEY]); // attempted exactly once
+});
+
+test("13-Ug: consume touches no key but the notice", () => {
+  const f = fakeHost();
+  const stamp = f.seed(5_000);
+  f.seedNotice(5_000);
+  f.store.set("unrelated.key", "x");
+  assert.equal(chunkRecovery.consumeChunkReloadNotice(f.host), true);
+  assert.equal(f.store.get(CHUNK_RELOAD_KEY), stamp);
+  assert.equal(f.store.get("unrelated.key"), "x");
+  assert.deepEqual(f.calls.setArgs, []);
+  assert.deepEqual(f.calls.removeArgs, [NOTICE_KEY]);
+});
+
+test("13-Uh: the no-arg consume reads the default window storage, once", () => {
+  const { m, ss } = stubStorageMap();
+  m.set(NOTICE_KEY, String(Date.now()));
+  const w = stubWindow(ss);
+  const first = chunkRecovery.consumeChunkReloadNotice();
+  const stillThere = m.has(NOTICE_KEY);
+  const second = chunkRecovery.consumeChunkReloadNotice();
+  w.cleanup();
+  assert.equal(first, true); // RED pre-fix: typeof/function failure above, or false
+  assert.equal(stillThere, false);
+  assert.equal(second, false);
+});
+
+test("15-U: the module source pins both scoped sentences verbatim and bans the overclaim strings", () => {
+  const src = readFileSync(new URL("./chunk-recovery.ts", import.meta.url), "utf8")
+    .replace(/^\s*\* ?/gm, " ")
+    .replace(/\s+/g, " ");
+  assert.equal(src.includes(NOTICE_SCOPED_SENTENCE), true); // RED pre-fix
+  assert.equal(src.includes(DWELL_SCOPED_SENTENCE), true); // RED pre-fix
+  assert.equal(src.includes("announcement not truncated"), false);
+  assert.equal(src.includes("fully announced"), false);
+  // Show-once is removal-dependent (13-Uf): the unqualified claim is
+  // banned in either of its wordings (Reality Checker B2, fix round).
+  assert.equal(src.includes("consumes it exactly once"), false);
+  assert.equal(src.includes("true exactly once"), false);
 });

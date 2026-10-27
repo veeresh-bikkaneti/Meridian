@@ -178,11 +178,11 @@ test.describe("home cascade + press (1280×800)", () => {
 });
 
 // PBI-3: in this VM's headless Chromium the WebGL probe fails, which —
-// since the #147 offer flow — raises the Scout Map choice dialog instead
-// of booting into scout silently; the session starts in full mode either
-// way. For the motion assertions we pin full mode via the manual
-// localStorage override (never decays) before the app boots, so no
-// dialog interrupts and the celebration takes the full-motion path.
+// since the owner's 2026-10-20 silent auto-switch ruling (the #147
+// boot choice dialog is gone) — would boot the session into Scout Map
+// silently. For the motion assertions we pin full mode via the manual
+// localStorage override (never decays) before the app boots, so the
+// celebration takes the full-motion path.
 async function forceFullMapMode(context: import("playwright/test").BrowserContext) {
   await context.addInitScript(() => {
     localStorage.setItem(
