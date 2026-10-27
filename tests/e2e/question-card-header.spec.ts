@@ -273,11 +273,7 @@ test("globe overlap fix: compact 296px card at top 58px, no false 'more below', 
     await expect(shell).toBeVisible();
     const box = await shell.boundingBox();
     expect(box, `shell box at ${vp.width}x${vp.height}`).not.toBeNull();
-    if (vp.width >= 420) {
-      expect(box!.y, `box.y <= 62 at ${vp.width}x${vp.height}`).toBeLessThanOrEqual(62);
-    } else {
-      expect(box!.y, `box.y >= 86 at ${vp.width}x${vp.height}`).toBeGreaterThanOrEqual(86);
-    }
+    expect(box!.y, `box.y <= 62 at ${vp.width}x${vp.height}`).toBeLessThanOrEqual(62);
 
     const hudLocators: [string, ReturnType<Page["locator"]>][] = [
       ["Editions", page.getByRole("button", { name: "Editions" })],

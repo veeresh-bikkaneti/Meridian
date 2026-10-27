@@ -938,8 +938,8 @@ describe("globe-overlap fix (2026-10-26) — auto-collapse after round 1, no fal
     const scrollBlock = /\.bubble-scroll\s*\{([\s\S]*?)\}/.exec(stylesSource)?.[1];
     assert.ok(scrollBlock, ".bubble-scroll CSS block must exist");
     assert.ok(
-      scrollBlock.includes("padding: 4px 2px 6px"),
-      ".bubble-scroll must use tight padding (4px 2px 6px) so short/medium names do not overflow the 120px min-height",
+      scrollBlock.includes("padding: 2px 2px 4px"),
+      ".bubble-scroll must use tight padding (2px 2px 4px) so short/medium names do not overflow the 120px min-height",
     );
     assert.ok(
       !scrollBlock.includes("30px"),
@@ -955,19 +955,19 @@ describe("globe-overlap fix (2026-10-26) — auto-collapse after round 1, no fal
     );
   });
 
-  it("uses responsive top offset (5.5rem on <420px mobile, 3.625rem on >=420px), compact 224px/248px width cap, and single-row streak+placed HUD", () => {
+  it("uses compact top offset (3.5rem on <640px mobile, 3.625rem on >=640px), compact 236px/248px width cap, and single-row streak+placed HUD", () => {
     const responsiveTopMatches =
       source.match(
-        /top-\[max\(5\.5rem,env\(safe-area-inset-top\)\)\] min-\[420px\]:top-\[max\(3\.625rem,env\(safe-area-inset-top\)\)\]/g,
+        /top-\[max\(3\.5rem,env\(safe-area-inset-top\)\)\] sm:top-\[max\(3\.625rem,env\(safe-area-inset-top\)\)\]/g,
       ) ?? [];
     assert.equal(
       responsiveTopMatches.length,
       2,
-      "both QuestionBubble wrappers must sit at 5.5rem on <420px mobile and 3.625rem on >=420px viewports",
+      "both QuestionBubble wrappers must sit at 3.5rem on <640px mobile and 3.625rem on >=640px viewports",
     );
     assert.ok(
-      source.includes("w-[min(224px,calc(100vw-20px))] sm:w-[248px]"),
-      "the open/collapsed card wrapper must cap width at 224px on mobile and 248px on >=640px",
+      source.includes("w-[min(236px,calc(100vw-20px))] sm:w-[248px]"),
+      "the open/collapsed card wrapper must cap width at 236px on mobile and 248px on >=640px",
     );
     assert.ok(
       !source.includes("352px"),
