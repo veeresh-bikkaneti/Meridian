@@ -4,6 +4,7 @@ import {
   serveBuiltArtifact,
   readPhase,
   dismissTileOverlayIfPresent,
+  commitPin,
 } from "./helpers";
 import type { Page } from "playwright/test";
 
@@ -140,6 +141,7 @@ test("country: 'West Cambridge/Harvard Square, Massachusetts' renders in full â€
   await page.goto(APP);
   await seedSeenExcept(page);
   await playCountryUS(page);
+  await expect(page.locator(".bubble-shell .scroll-cue")).toHaveCount(0);
 
   // The full qualified label Veeresh screenshotted as truncated.
   const heading = page.getByRole("heading", { name: TARGET_LABEL });
@@ -212,4 +214,39 @@ test("mid-session edition switch updates the header", async ({ page }) => {
   await expect(
     page.getByText("State Â· Nebraska", { exact: true }),
   ).toHaveCount(0);
+});
+
+test("globe overlap fix: compact 296px card at top 58px, no false 'more below', and auto-collapses instructions on round 2+", async ({
+  page,
+}) => {
+  const errors = collectErrors(page);
+  await page.goto(APP);
+  await playState(page, "Nebraska");
+
+  const shell = page.locator(".bubble-shell").first();
+  await expect(shell).toBeVisible({ timeout: 15_000 });
+  const box1 = await shell.boundingBox();
+  expect(box1, "round 1 card bounding box").not.toBeNull();
+  expect(box1!.y, "card sits high in top-left (~58px)").toBeLessThanOrEqual(62);
+  expect(box1!.width, "card width capped at 296px").toBeLessThanOrEqual(297);
+
+  // Medium-tier label ('West Cambridge/Harvard Square, Massachusetts') must not trigger false 'more below' cue.
+  await expect(shell.locator(".scroll-cue")).toHaveCount(0);
+
+  // Round 1 starts with instructions open on desktop (1280x720).
+  await expect(page.getByRole("button", { name: "Hide instructions" })).toBeVisible();
+
+  // Place a pin on the map and advance to round 2.
+  const { phase } = await commitPin(page, 640, 360);
+  expect(phase).toMatch(/^(story|done)$/);
+  await page.getByRole("button", { name: /Next place/i }).click();
+  await expectAim(page);
+
+  // On round 2 (1 placed), instructions auto-collapse so the globe stays uncovered.
+  const showToggle = page.getByRole("button", { name: "Show instructions" });
+  await expect(showToggle).toBeVisible({ timeout: 10_000 });
+  await expect(showToggle).toHaveAttribute("aria-expanded", "false");
+  await expect(page.locator(".bubble-hint")).toBeHidden();
+
+  expect(errors, `console/page errors: ${JSON.stringify(errors)}`).toEqual([]);
 });

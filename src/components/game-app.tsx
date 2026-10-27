@@ -3713,6 +3713,7 @@ function PlayLoaded({
   const dropHitRef = useRef<boolean | null>(null);
   const [story, setStory] = useState<string | null>(null);
   const [bubble, setBubble] = useState<BubbleViewState>(defaultBubbleView);
+  const userCollapsedBubbleRef = useRef(false);
   const [cardDismissed, setCardDismissed] = useState(false);
   // Hint UI (follow-up Item A — hints are a REAL feature, owner 2026-10-09).
   // Hints NEVER touch points. Per-place usage drives the 8-10 one-per-place
@@ -3875,6 +3876,13 @@ function PlayLoaded({
   useEffect(() => {
     setAim(null);
     setBubble(defaultBubbleView());
+    if (
+      run.results.length > 0 ||
+      (session?.placesPlayed ?? 0) > 0 ||
+      userCollapsedBubbleRef.current
+    ) {
+      setBubble("collapsed");
+    }
     setCardDismissed(false);
     // Hint UI resets per place (8-10: one hint per place).
     setHintsUsedThisPlace(0);
@@ -3931,9 +3939,12 @@ function PlayLoaded({
         return;
       }
       if (aim !== null) return;
-      setBubble((view) =>
-        view === "dismissed" ? view : view === "collapsed" ? "open" : "collapsed",
-      );
+      setBubble((view) => {
+        const next =
+          view === "dismissed" ? view : view === "collapsed" ? "open" : "collapsed";
+        userCollapsedBubbleRef.current = next !== "open";
+        return next;
+      });
     }
     window.addEventListener("keydown", onKeyDown, true);
     return () => window.removeEventListener("keydown", onKeyDown, true);
@@ -4252,6 +4263,7 @@ function PlayLoaded({
     setAimAnnouncement(null);
     setDrop(null);
     clearDrop();
+    userCollapsedBubbleRef.current = false;
     setBubble(defaultBubbleView());
     setCardDismissed(false);
     setRevealDone(false);
@@ -4570,7 +4582,10 @@ function PlayLoaded({
             difficulty={place.difficulty}
             hasPin={aim !== null}
             view={bubble}
-            onViewChange={setBubble}
+            onViewChange={(next) => {
+              userCollapsedBubbleRef.current = next !== "open";
+              setBubble(next);
+            }}
           />
           {/* Hint UI now lives in the bottom-right aim dock (above the
               End-game pill) — see the dock comment. Removed 2026-10-19:
