@@ -1,0 +1,134 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import test from "node:test";
+import {
+  HIGH_CONTRAST,
+  PALETTE_STORAGE_KEY,
+  STANDARD,
+  contrastRatio,
+  selectPalette,
+} from "./palette.ts";
+
+const HEX = /^#[0-9a-f]{6}$/;
+
+/** Independent WCAG 2 relative-luminance contrast. The export must match this, unrounded. */
+function wcagContrast(a: string, b: string): number {
+  const channel = (hex: string, start: number): number => {
+    const s = parseInt(hex.slice(start, start + 2), 16) / 255;
+    return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+  };
+  const lum = (hex: string): number =>
+    0.2126 * channel(hex, 1) + 0.7152 * channel(hex, 3) + 0.0722 * channel(hex, 5);
+  const lighter = Math.max(lum(a), lum(b));
+  const darker = Math.min(lum(a), lum(b));
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+function rgb(hex: string): { r: number; g: number; b: number } {
+  return {
+    r: parseInt(hex.slice(1, 3), 16),
+    g: parseInt(hex.slice(3, 5), 16),
+    b: parseInt(hex.slice(5, 7), 16),
+  };
+}
+
+test("PALETTE_STORAGE_KEY is the future toggle key and this module does not touch storage", () => {
+  assert.equal(PALETTE_STORAGE_KEY, "meridian.palette");
+  const src = readFileSync(new URL("./palette.ts", import.meta.url), "utf8");
+  assert.doesNotMatch(src, /document|localStorage|fetch|window/);
+});
+
+test("STANDARD matches the live dark-theme map tokens", () => {
+  assert.deepEqual(STANDARD, {
+    water: "#10262e",
+    land: "#3c4a3c",
+    arc: "#f4f1ea",
+    lake: "#1c5160",
+    coast: "#0c1816",
+  });
+  for (const value of Object.values(STANDARD)) {
+    assert.match(value, HEX);
+  }
+});
+
+test("HIGH_CONTRAST exposes lowercase #rrggbb swatches", () => {
+  for (const key of ["water", "land", "arc", "lake", "coast"] as const) {
+    assert.match(HIGH_CONTRAST[key], HEX, key);
+  }
+});
+
+test("contrastRatio is the unrounded WCAG relative-luminance ratio", () => {
+  assert.equal(contrastRatio("#000000", "#ffffff"), 21);
+  assert.equal(contrastRatio("#ffffff", "#000000"), 21);
+  assert.equal(contrastRatio("#ffffff", "#ffffff"), 1);
+  for (const [a, b] of [
+    ["#10262e", "#f4f1ea"],
+    ["#0b0d10", "#f6f3ea"],
+    ["#c45c12", "#0b0d10"],
+    ["#c45c12", "#f6f3ea"],
+  ] as const) {
+    assert.equal(contrastRatio(a, b), wcagContrast(a, b));
+    assert.equal(contrastRatio(b, a), contrastRatio(a, b));
+  }
+});
+
+test("HIGH_CONTRAST separates water from land and keeps the arc readable on both", () => {
+  const waterLand = contrastRatio(HIGH_CONTRAST.water, HIGH_CONTRAST.land);
+  const arcWater = contrastRatio(HIGH_CONTRAST.arc, HIGH_CONTRAST.water);
+  const arcLand = contrastRatio(HIGH_CONTRAST.arc, HIGH_CONTRAST.land);
+  assert.ok(waterLand >= 9, `water/land ${waterLand}`);
+  assert.ok(arcWater >= 3, `arc/water ${arcWater}`);
+  assert.ok(arcLand >= 3, `arc/land ${arcLand}`);
+});
+
+test("HIGH_CONTRAST does not separate water and land by blue-vs-green hue", () => {
+  const water = rgb(HIGH_CONTRAST.water);
+  const land = rgb(HIGH_CONTRAST.land);
+  const arc = rgb(HIGH_CONTRAST.arc);
+  const spread = (c: { r: number; g: number; b: number }) =>
+    Math.max(c.r, c.g, c.b) - Math.min(c.r, c.g, c.b);
+
+  assert.ok(water.r <= 40 && water.g <= 40 && water.b <= 40, "water is dark");
+  assert.ok(spread(water) <= 24, "water is a neutral, not a saturated blue");
+  assert.ok(water.b - Math.max(water.r, water.g) <= 12, "water is not blue-dominant");
+
+  assert.ok(land.r >= 220 && land.g >= 220 && land.b >= 200, "land is light");
+  assert.ok(spread(land) <= 40, "land is a neutral");
+  assert.ok(land.g - land.r <= 8, "land is not a green");
+  assert.ok(!(land.g > land.r && land.g > land.b), "land is not green-dominant");
+
+  const yellowOrange =
+    arc.r >= 160 &&
+    arc.g >= 40 &&
+    arc.g <= 180 &&
+    arc.b <= 90 &&
+    arc.r - arc.g >= 40 &&
+    arc.g > arc.b;
+  const magenta =
+    arc.r >= 140 && arc.b >= 140 && arc.g <= Math.min(arc.r, arc.b) - 40;
+  assert.ok(yellowOrange || magenta, "arc is magenta or yellow-orange");
+  assert.doesNotMatch(HIGH_CONTRAST.arc, /^#00/);
+  assert.ok(!(arc.b > arc.r && arc.b > arc.g && arc.r < 80), "arc is not a pure blue");
+});
+
+test("selectPalette fails closed except for the exact high-contrast token", () => {
+  assert.equal(selectPalette(undefined), STANDARD);
+  assert.equal(selectPalette(null), STANDARD);
+  assert.equal(selectPalette(""), STANDARD);
+  assert.equal(selectPalette("standard"), STANDARD);
+  assert.equal(selectPalette("high-contrast"), HIGH_CONTRAST);
+  for (const raw of ["HIGH-CONTRAST", "High-Contrast", "high contrast", "high_contrast", "nope", 1, 0, false, true, {}, [], " standard"]) {
+    assert.equal(selectPalette(raw), STANDARD, JSON.stringify(raw));
+  }
+});
+
+test("selectPalette does not mutate STANDARD or HIGH_CONTRAST", () => {
+  const standard = JSON.stringify(STANDARD);
+  const high = JSON.stringify(HIGH_CONTRAST);
+  selectPalette("high-contrast");
+  selectPalette("standard");
+  selectPalette(null);
+  selectPalette({ water: "#ffffff" });
+  assert.equal(JSON.stringify(STANDARD), standard);
+  assert.equal(JSON.stringify(HIGH_CONTRAST), high);
+});
