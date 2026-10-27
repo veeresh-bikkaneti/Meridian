@@ -104,13 +104,18 @@ idle-ended or finished game should never see a switched notice
 standing next to the "your game ended" note, and a fresh session
 never inherits one.
 
-Test seam: the boot auto-switch is suppressed only by
-`window.__meridianSuppressScoutOffer === true` (set by the e2e harness
-init script — the Playwright VM's SwiftShader renderer reads as a weak
-device). There is deliberately no URL parameter for it. Whether this
-seam should keep shipping in production is issue #154 item 1 — the
-owner's call, still owed. (The seam's name predates the ruling: it used
-to suppress the dialog below.)
+Test harness: there is NO test seam in the app (issue #154 item 1,
+resolved 2026-10-21 — the owner's call was to remove it). The app once
+read a window flag (`window.__meridianSuppressScoutOffer`) that the e2e
+harness set to suppress the auto-switch on its SwiftShader VM, which
+reads as a weak device; that flag shipped in production, where any
+page script could set it. The harness now spoofs the device signals
+instead — the WebGL debug renderer reports a discrete GPU and
+`navigator.deviceMemory` reports 8 GB (`tests/e2e/helpers.ts`,
+installed by `serveBuiltArtifact` unless a spec opts out) — so the
+app's own probe honestly qualifies the test VM as capable. Production
+and tests run the same boot path, and there is deliberately no URL
+parameter or window flag for suppression.
 
 ## Superseded: the boot offer dialog (shipped until 2026-10-20)
 
