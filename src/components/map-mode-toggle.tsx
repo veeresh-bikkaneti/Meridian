@@ -70,7 +70,12 @@ export function MapModeToggle(props: {
           Math.max(8, rect.left),
           Math.max(8, window.innerWidth - width - 8),
         );
-        setHomePos({ top: rect.bottom + 8, left });
+        const estHeight = 188;
+        const top = Math.min(
+          Math.max(8, rect.bottom + 8),
+          Math.max(8, window.innerHeight - estHeight - 8),
+        );
+        setHomePos({ top, left });
       }
     }
     setOpen((v) => !v);
@@ -121,13 +126,20 @@ export function MapModeToggle(props: {
         onClick={toggleOpen}
         className={
           atHome
-            ? // Home theme: brass outline, matching the sound toggle
-              // beside it (styles.css .atlas-sound-toggle).
-              "pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full border border-[var(--atlas-card-line)] bg-transparent text-[var(--atlas-brass)] transition-colors hover:border-[var(--atlas-brass)]"
+            ? "hv5-pill hv5-map-mode-pill pointer-events-auto"
             : "pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[rgba(10,12,16,0.72)] text-white/80 backdrop-blur-[14px] transition-colors hover:text-white"
         }
       >
-        <Layers aria-hidden="true" size={20} />
+        {atHome ? (
+          <>
+            <Layers aria-hidden="true" size={16} />
+            <span data-testid="map-mode-indicator" data-mode={props.mapMode}>
+              {scout ? "Scout Map" : "Full map"}
+            </span>
+          </>
+        ) : (
+          <Layers aria-hidden="true" size={20} />
+        )}
       </button>
       {open ? (
         // Placement differs by host. In Play the button sits in the

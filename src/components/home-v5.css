@@ -88,12 +88,13 @@ body:has(.home-v5) {
   gap: 30px;
   margin: 0 auto;
 }
-.home-v5 .hv5-nav nav button {
+.home-v5 .hv5-nav nav button,
+.home-v5 .hv5-nav nav a {
   font-family: var(--hv5-body);
   font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.13em;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 6px 2px;
@@ -101,8 +102,11 @@ body:has(.home-v5) {
   color: var(--hv5-ink);
   background: none;
   border: none;
+  text-decoration: none;
+  cursor: pointer;
 }
-.home-v5 .hv5-nav nav button:hover:not([aria-disabled="true"]) {
+.home-v5 .hv5-nav nav button:hover:not([aria-disabled="true"]),
+.home-v5 .hv5-nav nav a:hover {
   color: var(--hv5-brown);
 }
 .home-v5 .hv5-nav nav button[aria-disabled="true"] {
@@ -237,6 +241,25 @@ body:has(.home-v5) {
   border: 1px solid var(--hv5-line-warm);
   display: grid;
   place-items: center;
+}
+.home-v5 .hv5-pill.hv5-map-mode-pill {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 8px 16px 8px 14px;
+  color: var(--hv5-ink);
+  cursor: pointer;
+  transition:
+    border-color 160ms var(--hv5-ease),
+    background-color 160ms var(--hv5-ease),
+    color 160ms var(--hv5-ease);
+}
+.home-v5 .hv5-pill.hv5-map-mode-pill svg {
+  color: var(--atlas-brass, var(--hv5-brown));
+  flex-shrink: 0;
+}
+.home-v5 .hv5-pill.hv5-map-mode-pill:hover {
+  border-color: var(--atlas-brass, var(--hv5-brown));
+  background: #ece3c5;
 }
 .home-v5 .hv5-h1 {
   font-family: var(--hv5-display);
@@ -784,14 +807,17 @@ body:has(.home-v5) {
 
 @media (max-width: 1080px) {
   .home-v5 .hv5-nav {
-    gap: 20px;
+    gap: 16px;
   }
   .home-v5 .hv5-nav nav {
-    gap: 17px;
+    gap: 14px;
   }
-  .home-v5 .hv5-nav nav button {
-    font-size: 11px;
-    letter-spacing: 0.09em;
+  .home-v5 .hv5-nav nav button,
+  .home-v5 .hv5-nav nav a {
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    gap: 4px;
+    white-space: nowrap;
   }
   .home-v5 .hv5-brand .hv5-word {
     font-size: 19px;
@@ -845,6 +871,18 @@ body:has(.home-v5) {
     display: none;
   }
 }
+@media (max-width: 860px) {
+  .home-v5 .hv5-nav {
+    flex-wrap: wrap;
+  }
+  .home-v5 .hv5-nav nav {
+    display: flex;
+    order: 3;
+    flex-basis: 100%;
+    gap: 18px;
+    margin: 2px 0 0;
+  }
+}
 @media (max-width: 680px) {
   .home-v5 .hv5-nav {
     flex-wrap: wrap;
@@ -857,7 +895,7 @@ body:has(.home-v5) {
     display: flex;
     order: 3;
     flex-basis: 100%;
-    gap: 16px;
+    gap: 10px;
     overflow-x: auto;
     margin: 2px 0 0;
     /* Right-edge fade: the visible scroll affordance for the clipped
@@ -865,7 +903,8 @@ body:has(.home-v5) {
     -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
     mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
   }
-  .home-v5 .hv5-nav nav button {
+  .home-v5 .hv5-nav nav button,
+  .home-v5 .hv5-nav nav a {
     font-size: 11px;
     letter-spacing: 0.09em;
     white-space: nowrap;
@@ -1005,6 +1044,44 @@ body:has(.home-v5) {
    due only; empty/caught-up cards have no stretch layer. */
 .home-v5 .hv5-review-due .hv5-txt {
   position: static;
+}
+/* Journal ("What the land remembers") and Get Involved ("For grown-ups")
+   cards also stretch their primary CTA across the full card while elevating
+   nested links in .hv5-involved above the stretch overlay. */
+.home-v5 .hv5-journal .hv5-txt,
+.home-v5 .hv5-involved .hv5-txt {
+  position: static;
+}
+.home-v5 .hv5-journal .hv5-stretch::after,
+.home-v5 .hv5-involved .hv5-stretch::after {
+  z-index: 2;
+  cursor: pointer;
+}
+/* A transform on :active creates a new containing block for ::after and
+   collapses the whole-card hit area between mousedown and mouseup. */
+.home-v5 .hv5-btn.hv5-stretch:active {
+  transform: none;
+}
+.home-v5 .hv5-involved p a {
+  position: relative;
+  z-index: 3;
+  display: inline-block;
+  color: var(--hv5-brown-deep);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: rgba(138, 109, 47, 0.14);
+  transition:
+    background-color 150ms var(--hv5-ease),
+    color 150ms var(--hv5-ease);
+}
+.home-v5 .hv5-involved p a:hover,
+.home-v5 .hv5-involved p a:focus-visible {
+  background: rgba(138, 109, 47, 0.26);
+  color: var(--hv5-ink);
 }
 .home-v5 .hv5-stack .atlas-badges {
   position: relative;
