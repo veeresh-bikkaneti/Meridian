@@ -44,6 +44,13 @@ let cachedCountries: CountryFeature[] | null = null;
 let loadPromise: Promise<CountryFeature[]> | null = null;
 let conversionRuns = 0;
 let loadRuns = 0;
+/** #209 zombie guard: bumped when a load attempt starts AND when one is
+ * evicted after a timeout. A timed-out import is not cancelled — it can
+ * still land later — but its generation no longer matches, so its late
+ * landing is discarded instead of populating the cache behind the back
+ * of the retry that replaced it (which would also double-count the
+ * conversion-runs seam the load-once pins rely on). */
+let loadGeneration = 0;
 
 /** The atlas import, behind a named binding so tests can substitute a
  * failing importer (see territoryImporterForTests below). */
@@ -55,28 +62,70 @@ function importAtlas(): Promise<{ default: unknown }> {
 
 let atlasImporter: () => Promise<{ default: unknown }> = importAtlas;
 
-function loadCountryFeatures(): Promise<CountryFeature[]> {
+/**
+ * #209: a HUNG import is worse than a failed one. Failures already
+ * retry-evict below, but a hung import never settles at all — and
+ * every awaiter of this load (`openRun`, the boot restore) then waits
+ * forever behind its loading fallback. The load is therefore raced
+ * against this bound: on timeout the attempt is evicted exactly like
+ * a failure, readers stay fail-closed, and the next preload retries.
+ * 10 s is the order of the build-staleness probe bound (8 s) and well
+ * under the crash watchdog's ~28 s boot budget, so the recoverable
+ * path always wins the race. An import that lands after the bound is
+ * discarded by the generation guard below — the retry owns the cache.
+ * (When a load is already in flight, the FIRST caller's bound governs;
+ * later callers share its promise.)
+ */
+export const TERRITORY_LOAD_TIMEOUT_MS = 10_000;
+
+function loadCountryFeatures(
+  timeoutMs: number = TERRITORY_LOAD_TIMEOUT_MS,
+): Promise<CountryFeature[]> {
   if (!loadPromise) {
     loadRuns += 1;
-    loadPromise = atlasImporter()
-      .then((mod) => {
-        const topo = mod.default as unknown as {
-          objects: { countries: unknown };
-        };
-        const features = (
-          feature(topo, topo.objects.countries) as unknown as Collection
-        ).features;
+    const generation = (loadGeneration += 1);
+    const attempt = atlasImporter().then((mod) => {
+      const topo = mod.default as unknown as {
+        objects: { countries: unknown };
+      };
+      const features = (
+        feature(topo, topo.objects.countries) as unknown as Collection
+      ).features;
+      // Zombie guard (#209): if this attempt was timed out and evicted
+      // before it landed, a newer generation owns the cache — discard
+      // the late landing instead of double-counting the conversion or
+      // overwriting the retry's data.
+      if (generation === loadGeneration) {
         conversionRuns += 1;
         cachedCountries = features;
-        return features;
-      })
-      .catch((err: unknown) => {
-        // Retry eviction (the admin-1 chunk precedent in
-        // reverse-geocode.ts): a failed load must not poison the cache —
-        // the next preload call retries.
-        loadPromise = null;
-        throw err;
-      });
+      }
+      return features;
+    });
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const timed = new Promise<CountryFeature[]>((resolve, reject) => {
+      timer = setTimeout(() => {
+        reject(new Error(`territory load timed out after ${timeoutMs} ms`));
+      }, timeoutMs);
+      attempt.then(
+        (features) => {
+          if (timer) clearTimeout(timer);
+          resolve(features);
+        },
+        (err: unknown) => {
+          if (timer) clearTimeout(timer);
+          reject(err);
+        },
+      );
+    });
+    loadPromise = timed.catch((err: unknown) => {
+      // Retry eviction (the admin-1 chunk precedent in
+      // reverse-geocode.ts): a failed — or timed-out — load must not
+      // poison the cache; the next preload call retries. The generation
+      // bump retires this attempt even if its import lands later.
+      loadPromise = null;
+      loadGeneration += 1;
+      throw err;
+    });
   }
   return loadPromise;
 }
@@ -85,10 +134,14 @@ function loadCountryFeatures(): Promise<CountryFeature[]> {
  * Idempotent: starts the countries-50m load on the first call and reuses
  * the in-flight / settled promise afterwards (no double fetch, no double
  * parse). Never rejects: a failed load degrades every sync reader to its
- * fail-closed result, and the next call retries.
+ * fail-closed result, and the next call retries. Never hangs either: a
+ * load that has not settled within `timeoutMs` resolves the same way
+ * (#209), so awaiters behind loading fallbacks always get an answer.
  */
-export function preloadTerritory(): Promise<void> {
-  return loadCountryFeatures().then(
+export function preloadTerritory(
+  timeoutMs: number = TERRITORY_LOAD_TIMEOUT_MS,
+): Promise<void> {
+  return loadCountryFeatures(timeoutMs).then(
     () => undefined,
     () => undefined,
   );

@@ -37,6 +37,7 @@ const trailScreenSource = readFileSync(
   join(here, "coldtrail/TrailScreen.tsx"),
   "utf8",
 );
+const scoringSource = readFileSync(join(here, "scoring.ts"), "utf8");
 
 /** The source between two markers (both must exist). */
 function segment(src: string, from: string, to: string): string {
@@ -61,7 +62,7 @@ describe("F2b lazy boundary — territory.ts holds no static atlas import", () =
 
   it("the load is a cached-promise loader behind preloadTerritory", () => {
     assert.ok(
-      territorySource.includes("export function preloadTerritory()"),
+      territorySource.includes("export function preloadTerritory("),
       "preloadTerritory is the public entry point gameplay code awaits",
     );
     assert.ok(
@@ -95,7 +96,7 @@ describe("F2b wiring — gameplay entry points start or await the preload", () =
     for (const hook of [
       "onPointerEnter={prefetchTerritoryData}",
       "onPointerDown={prefetchTerritoryData}",
-      "onFocus={prefetchTerritoryData}",
+      "onFocus={prefetchTerritoryDataOnFocus}",
     ]) {
       assert.ok(gameAppSource.includes(hook), `missing edition-card prefetch wiring: ${hook}`);
     }
@@ -117,7 +118,7 @@ describe("F2b wiring — gameplay entry points start or await the preload", () =
       assert.ok(
         button.includes("onPointerEnter={prefetchTerritoryData}") &&
           button.includes("onPointerDown={prefetchTerritoryData}") &&
-          button.includes("onFocus={prefetchTerritoryData}"),
+          button.includes("onFocus={prefetchTerritoryDataOnFocus}"),
         `case card at ${marker} must fire the territory prefetch on pointerenter/pointerdown/focus`,
       );
     }
@@ -143,7 +144,10 @@ describe("F2b wiring — gameplay entry points start or await the preload", () =
     // fails. Pinned by shape — the two-branch then() that maps both
     // fulfillment and rejection to undefined.
     const preload = segment(territorySource, "export function preloadTerritory", "territoryLoadRunsForTests");
-    assert.ok(preload.includes("loadCountryFeatures().then("), "preload must ride the shared loader");
+    assert.ok(
+      /loadCountryFeatures\([^)]*\)\.then\(/.test(preload),
+      "preload must ride the shared loader (any timeout argument, #209)",
+    );
     assert.equal(
       preload.split("() => undefined").length - 1,
       2,
@@ -254,6 +258,83 @@ describe("Core F-3 — GeoDetective tap names are re-resolved at pick time", () 
     assert.ok(
       !sheet.includes("entry={selected}"),
       "the sheet must not render the frozen selected snapshot directly",
+    );
+  });
+});
+
+describe("#211 item 1 — the focus-triggered prefetch is Save-Data gated", () => {
+  it("the focus variant exists, checks Save-Data first, and every card focus uses it", () => {
+    const focusFn = segment(
+      gameAppSource,
+      "function prefetchTerritoryDataOnFocus",
+      "import {",
+    );
+    assert.ok(
+      focusFn.includes("if (saveDataEnabled()) return;"),
+      "the focus prefetch must return early under Save-Data (#211 item 1)",
+    );
+    assert.ok(
+      focusFn.includes("prefetchTerritoryData();"),
+      "without Save-Data the focus prefetch still warms the territory data",
+    );
+    assert.ok(
+      gameAppSource.includes("connection?.saveData"),
+      "the gate must read navigator.connection.saveData (home-globe precedent)",
+    );
+    assert.ok(
+      !gameAppSource.includes("onFocus={prefetchTerritoryData}"),
+      "no card may wire focus to the UNGATED prefetch (#211 item 1)",
+    );
+  });
+});
+
+describe("#211 item 3 — territoryAt caller pin: scoring reads territory only after the awaited preload", () => {
+  // The invariant: `territoryAt` unloaded ⇒ no region bonus (fail
+  // closed). Today that holds by CONVENTION at the call sites —
+  // openRun / the boot restore / the summary replay await
+  // preloadTerritory() before any commit that can score. This pin
+  // makes the convention a test: a future caller that scores ahead of
+  // the preload — or a scorer that starts the load itself — fails
+  // here instead of shipping a silent bonus-0 (or worse, a false +15
+  // from a half-loaded read).
+  it("scoring.ts never starts the load and never awaits — it only reads territoryAt synchronously", () => {
+    // Code only: scoring.ts's header comment NAMES the contract
+    // ("until preloadTerritory() has landed") — strip comments so the
+    // pin judges the executable source, not the documentation.
+    const scoringCode = scoringSource.replace(/\/\*[\s\S]*?\*\//g, "");
+    assert.ok(
+      !scoringCode.includes("preloadTerritory"),
+      "scoring.ts must not import/call preloadTerritory — entry points own the await (#211 item 3)",
+    );
+    assert.ok(
+      scoringCode.includes("import { territoryAt }"),
+      "scoring.ts must import territoryAt (and, per the check above, nothing load-related)",
+    );
+    assert.ok(
+      scoringSource.includes("territoryAt("),
+      "control: scoring.ts does read territoryAt (the pin is about ordering, not absence)",
+    );
+  });
+
+  it("in game-app, every preloadTerritory() await sits before the commit that follows it (no scoring ahead of the data)", () => {
+    // openRun: the awaited pair lands before commit(next).
+    const openRun = segment(gameAppSource, "const openRun = useCallback(", "// \"Try again\" on the in-run start-failure box");
+    const openAwait = openRun.indexOf("preloadTerritory()");
+    const openCommit = openRun.indexOf("commit(next);");
+    assert.ok(openAwait >= 0 && openCommit > openAwait, "openRun must await the preload before committing the run");
+    assert.ok(
+      !openRun.slice(0, openAwait).includes("scorePlace("),
+      "openRun must not score before the awaited preload (#211 item 3)",
+    );
+    // Boot restore (aim phase): the preload .then carries the commit.
+    const restore = segment(gameAppSource, 'if (restored.phase === "aim")', "// Non-aim restore");
+    assert.ok(
+      restore.includes("void preloadTerritory().then(() => {"),
+      "the aim-phase restore must defer its commit on the preload (#211 item 3)",
+    );
+    assert.ok(
+      restore.indexOf("preloadTerritory()") < restore.indexOf("commit(restored);"),
+      "the restore commit must sit inside/after the preload continuation",
     );
   });
 });

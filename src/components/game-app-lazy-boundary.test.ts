@@ -91,7 +91,8 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
 
   it("the loopOpen branch renders LoopScreen inside Suspense + MapErrorBoundary", () => {
     const branch = segment(gameAppSource, "if (loopOpen) {", "if (coldTrailOpen) {");
-    assert.ok(branch.includes("<MapErrorBoundary>"), "loop branch needs the chunk-failure boundary");
+    // #210: the boundary carries the surface name for its card copy.
+    assert.ok(branch.includes('<MapErrorBoundary surface="GeoDetective">'), "loop branch needs the chunk-failure boundary");
     assert.ok(
       branch.includes('<Suspense fallback={<SessionLoadingFallback label="Loading GeoDetective…" />}>'),
       "loop branch must show the destination-named session fallback while the chunk loads",
@@ -99,7 +100,7 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
     assert.ok(branch.includes("<LoopScreen"), "loop branch must render LoopScreen");
     // Boundary outside Suspense, mirroring the SatelliteMap render site.
     assert.ok(
-      branch.indexOf("<MapErrorBoundary>") < branch.indexOf("<Suspense"),
+      branch.indexOf("<MapErrorBoundary") < branch.indexOf("<Suspense"),
       "the error boundary wraps the Suspense boundary (SatelliteMap order)",
     );
   });
@@ -110,7 +111,7 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
       "if (coldTrailOpen) {",
       "// Chunk loading state:",
     );
-    assert.ok(branch.includes("<MapErrorBoundary>"), "trail branch needs the chunk-failure boundary");
+    assert.ok(branch.includes('<MapErrorBoundary surface="Cold Trail">'), "trail branch needs the chunk-failure boundary");
     assert.ok(
       branch.includes('<Suspense fallback={<SessionLoadingFallback label="Loading Cold Trail…" />}>'),
       "trail branch must show the destination-named session fallback while the chunk loads",
@@ -194,10 +195,47 @@ describe("Core F-4 — no component prefetch; territory-data prefetch kept", () 
       for (const hook of [
         "onPointerEnter={prefetchTerritoryData}",
         "onPointerDown={prefetchTerritoryData}",
-        "onFocus={prefetchTerritoryData}",
+        "onFocus={prefetchTerritoryDataOnFocus}",
       ]) {
         assert.ok(button.includes(hook), `${name} case card missing territory prefetch wiring: ${hook}`);
       }
     }
+  });
+});
+
+describe("#209 — every gameplay chunk load is timeout-bounded", () => {
+  // A hung import never settles, so an unbounded lazy()/await spins
+  // its fallback forever. The race in src/lib/chunk-timeout.ts (unit
+  // tested there) must wrap: the three lazy factories and openRun's
+  // places+territory await. Removing any wrap reopens the hang.
+  it("the lazy factories for Loop, Trail, and the satellite map race withChunkTimeout", () => {
+    assert.ok(
+      gameAppSource.includes('withChunkTimeout(import("./home-globe"), "the home globe")'),
+      "the home globe's lazy load must be timeout-bounded too — a hang lands on its chunk fallback (#209)",
+    );
+    assert.ok(
+      gameAppSource.includes('withChunkTimeout(loadLoopScreen(), "GeoDetective screen")'),
+      "LoopScreen's lazy load must be timeout-bounded (#209)",
+    );
+    assert.ok(
+      gameAppSource.includes('withChunkTimeout(loadTrailScreen(), "Cold Trail screen")'),
+      "TrailScreen's lazy load must be timeout-bounded (#209)",
+    );
+    assert.ok(
+      gameAppSource.includes('withChunkTimeout(import("@/map/satellite-map"), "Satellite map")'),
+      "the satellite map's lazy load must be timeout-bounded (#209)",
+    );
+  });
+
+  it("openRun races its places+territory await, so a hang lands in the existing start-error catch", () => {
+    const openRun = segment(gameAppSource, "const openRun = useCallback(", "// \"Try again\" on the in-run start-failure box");
+    assert.ok(
+      openRun.includes("await withChunkTimeout("),
+      "openRun's chunk await must be timeout-bounded (#209)",
+    );
+    assert.ok(
+      openRun.indexOf("await withChunkTimeout(") < openRun.indexOf("commit(next);"),
+      "the bounded await must precede the run commit",
+    );
   });
 });

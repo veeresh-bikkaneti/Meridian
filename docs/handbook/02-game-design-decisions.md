@@ -159,6 +159,12 @@ meridian <date>
 
 When a region chunk fails to load *only* because the deploy moved on (build-meta mismatch), the kid sees **"A new version of Meridian is available."** with a **one-tap Refresh button** — never a dead-end error screen.
 
+**Extended to every screen (issues #209–#211, 2026-10-26).** Three gaps from the PR #203 review are now closed, in plain terms:
+
+- **No more endless spinners (#209).** A download can *hang* — never finish, never fail — and a hang used to leave the loading spinner up forever. Every big download behind a loading screen now has a 10-second patience limit: the map data, the place lists, and the GeoDetective / Cold Trail / map screens themselves. A download that runs out of patience lands on the same friendly, recoverable error card a failed download gets.
+- **The error card tells the truth (#210).** The card that catches a broken screen download used to always say "Couldn't load the map" — even when GeoDetective or Cold Trail was the thing that failed. It now names what actually failed. And it checks whether the tab is simply old: if a new version has been deployed, the card *is* the new-version prompt above, Refresh button included, on every screen — not just where a game starts.
+- **Small politeness + focus fixes (#211).** Merely *focusing* a home-screen card (tabbing past it with a keyboard) no longer starts the map-data download for players who turned on their browser's Save-Data mode — tapping or hovering still warms it up, and starting a game always loads it for real. Cold Trail's "couldn't load" screen now receives keyboard/screen-reader focus on arrival, exactly like GeoDetective's heading already did. And a new automated pin keeps score honest: the region bonus may only be read after the map data has fully loaded — never guessed from a half-loaded map.
+
 ## 12. Edition → picker → dealing flow
 
 ```mermaid
