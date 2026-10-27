@@ -19,6 +19,11 @@ the Worker contains undici. The 2 `workers/crash-report` alerts are out of scope
 Files: `package.json` (`overrides` +1 line), `package-lock.json` (npm-regenerated, +36/-20),
 `scripts/undici-lockfile-floor.test.mjs` (1 test, RED before / GREEN after).
 
+Also included, NOT a dependency change (added at the owner's direction, 2026-10-27, commit `1989c63`):
+the `team-board/` Claude Code plugin, 4 files, 235 lines (`plugin.json`, `hooks.json`,
+`hooks/register.js`, `README.md`). No `src/` or `tests/` touched; no council was convened for it;
+`claude plugin validate ./team-board` passes, but it has never been run in a live session.
+
 ## Council rulings
 
 - Scope X (override only). wrangler 4.153.0 is deferred (<24h old, enters the credentialed
