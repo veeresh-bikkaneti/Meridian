@@ -1,0 +1,6 @@
+{
+  "name": "team-board",
+  "version": "0.1.0",
+  "description": "Shows which subagents are working, stuck, or silent, and whether they message each other",
+  "author": { "name": "Veeresh" }
+}
