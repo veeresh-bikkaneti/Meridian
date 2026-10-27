@@ -107,13 +107,38 @@ If a task cannot be done within these rules, stop and ask first.
 
 ## Project invariants (the game itself)
 
+- **Learning wins.** Players are learners who want to grow; success is
+  learning + engagement, never revenue alone. Difficulty tiers are
+  learning scaffolding (famous first → obscure), not gamer difficulty.
+  Cards are the learning payload and the game is the delivery vehicle;
+  engagement mechanics serve retention-for-learning. When a mechanic and
+  a learning outcome conflict, the learning outcome wins; the trade
+  goes to the owner via stop-and-ask (see Authority and precedence).
 - **Hyderabad rule:** every place's coordinates must match its claimed
   location. Build-time validation gates this; never bypass them.
-- **Fail-closed dealing:** questions always come from the selected region's
-  subset (`buildRegionPool`); corrupted pool data throws, never degrades.
-- **Editions drill Globe → Country → State**, every level playable; never
-  hardcode the 50 US states. The map shows **no labels** — naming places is
-  the game. Boundaries reveal progressively with zoom.
+- **Fail-closed dealing (scoped).** Questions always come from the
+  selected region's subset — standard: `buildRegionPool` in
+  `src/game/pool.ts`. Never deal outside the selection: a mis-assigned
+  or duplicated place throws and breaks the build deliberately. That is
+  throw-to-fail — deliberately visible failure, not silent hardening:
+  outside this building block, a guess whose exact place is missing
+  degrades by design to an honest "near <city>" label, and a failed
+  region-chunk load shows the stale-deploy refresh prompt; neither is a
+  violation of this rule.
+- **Editions.** Four editions: Globe, Country, State, and GeoDetective.
+  Globe → Country → State drill-down; each level playable, never
+  hardcoded to US states. In the three quiz editions there are no place
+  labels anywhere (naming is the game); boundaries reveal continent →
+  country → state with zoom, lines subtle under the region highlight.
+  GeoDetective — the 5-guess mystery edition — is the one designed
+  exception: guesses are made on a labeled satellite map with a labeled
+  tap surface.
+- **Difficulty is a fame tier.** Every place carries a fame tier, 1–5,
+  and that one field drives scoring multipliers, the picker bands, and
+  dealing weights: Easy = tiers 1–2, Medium = tiers 2–4, Hard = tiers
+  4–5, and every dealable pool keeps at least one tier-≤2 anchor place.
+  A corrupt stored tier degrades to a neutral 3 — deliberately visible,
+  not silent hardening; do not describe it as fail-closed.
 - **Hints are ON by default** (players' ages are not checked).
 - Product decisions of record live in the Meridian Handbook; when a ruling
   changes, update it — mark superseded decisions, never delete them.
