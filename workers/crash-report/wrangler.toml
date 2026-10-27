@@ -1,13 +1,14 @@
 # Meridian crash-report worker (Cloudflare Workers).
 #
-# NO secrets in this file — secrets are set through the Cloudflare
-# API (`cf.py secret <NAME>`; see README.md, Deploy/Secrets). This
-# worker ships by direct API script upload, never `wrangler deploy`.
-# There are no [vars]: everything configurable that is not a secret
-# lives in code defaults.
+# NO secrets in this file — secrets ride with a version upload as
+# bindings in its metadata (see README.md, Deploy/Secrets; a secret
+# cannot be set on its own afterwards — the platform rejects that).
+# This worker ships by direct API version upload, never
+# `wrangler deploy`. There are no [vars]: everything configurable
+# that is not a secret lives in code defaults.
 #
 # This file is the human config record of the intended setup —
-# `cf.py deploy` never reads it. Bindings and triggers take effect
+# the upload path never reads it. Bindings and triggers take effect
 # as version metadata on an upload, not from this file.
 #
 # Phase 1 telemetry: event counters live in a KV namespace bound as
