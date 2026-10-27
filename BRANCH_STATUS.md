@@ -1,3 +1,29 @@
+# Branch status — fix/193-card-compose-header
+
+Issue: #193 — stale header in `scripts/card-compose.mjs`.
+
+## Done
+- [x] Read issue #193 in full; verified against merged code: `scripts/facts-ladder.mjs` exists on `main` (the facts ladder merged in PR #104), so the header's "on the facts-ladder branch" is stale.
+- [x] Header cure (comment only, no code change): the `fact` field now reads "(scripts/facts-ladder.mjs)." with no branch reference.
+
+## Gates (on this branch's head)
+- [x] `node --test scripts/card-compose.test.mjs` — 15/15
+- [x] `npx tsc --noEmit` — clean
+- [x] `npm test` — scripts 832 pass / 0 fail / 9 skipped; src 1633 pass / 0 fail (same counts as the `main` baseline)
+- [x] `node scripts/lint-cards.mjs` — GATE PASSED
+- [x] `npm run build:pages` — exit 0
+- E2E: not applicable — comment-only change, no spec covers the header text.
+
+## Pending
+- [ ] PR opened (no merge — owner merges)
+
+## Notes
+- Comment-only change. No behaviour changes.
+- This file replaced the previous branch's status file, which shipped on `main` with PR #250 (repo convention: one status file per active branch).
+- Coordinator D (QA & Performance + Narrative squad); #191/#199/#200/#214 are handled on sibling branches.
+
+---
+
 # BRANCH_STATUS — fix/234-crash-worker-dev-boot
 
 **State: in progress (Coordinator B, SecOps & DevOps cluster, 2026-10-26). Owner merges only — do not merge.**
