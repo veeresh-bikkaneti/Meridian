@@ -1,23 +1,27 @@
 /**
  * Storyteller mascot — narration lines + pure helpers.
  *
- * FINAL COPY (spoken form — regenerate the mp3s if these change; the
- * pairing is positional, mirroring comet-greetings.ts).
+ * FINAL COPY (spoken form — the pairing is positional, mirroring
+ * comet-greetings.ts). If these words ever change, the mp3s stop
+ * matching the captions and new clips must be recorded to match.
  *
- * Voice: `am_fenrir` (Kokoro-82M, en-us male) @ speed 1.05 — the game
- * designer's 2026-10-08 pick (trailer energy; retires the old cloud `tts`
- * CLI path per the standing no-cloud/no-key/no-spend rules).
- * Audio lives at `public/audio/storyteller/*.mp3`. No runtime synthesis, ever.
+ * Voice: the Grok-generated Santa voice. Veeresh accepted it as THE
+ * storyteller voice on 2026-10-21, after PR #174 (merged 2026-10-19)
+ * replaced all 14 storyteller clips with it — these 3 narration clips,
+ * the 6 home greetings, and the 5 pokes. One voice everywhere; the
+ * older per-family voice split (#137) is history.
  *
- * REGENERATION (exact, reproducible — closes the caption==audio drift risk):
- *   node scripts/render-storyteller-voice.mjs [--out <dir>]
- * The script refuses to render unless its lines match the `text` fields
- * below character-for-character, renders with local Kokoro-82M q8
- * (offline/$0/keyless via the aidemo-pilot engine checkout, network
- * disabled), then masters the set: edge silence trimmed to ≤150 ms,
- * ebur128-measured gain to −16 LUFS integrated, 4x-oversampled true-peak
- * limiting at −1.5 dBTP, 24 kHz mono MP3.
- * Env: AIDEMO_ENGINE_DIR (default ~/workspace/aidemo-pilot/engine).
+ * DO NOT regenerate these clips with the Kokoro scripts
+ * (scripts/render-storyteller-voice.mjs and
+ * scripts/render-storyteller-greets.mjs). Those scripts render the
+ * superseded `am_fenrir` voice and are kept for the record only —
+ * running one would overwrite the Santa clips with the wrong voice.
+ * Both scripts carry the same warning in their own headers.
+ *
+ * Audio lives at `public/audio/storyteller/*.mp3`. No runtime
+ * synthesis, ever. Guard: scripts/storyteller-audio-guard.test.mjs
+ * checks in CI that every clip stays 24 kHz mono at the accepted
+ * loudness, so a stray re-render cannot ship silently.
  */
 
 export interface StorytellerLine {

@@ -38,6 +38,16 @@ describing."
   must be byte-stable for unchanged catalog input. A unit test imports
   `PLACES` directly and asserts the generated dataset matches it field
   for field — generation drift fails the suite.
+- Catalog `source: src("label", "href")` calls may be wrapped across
+  lines (#200): the generator's parser accepts a line break anywhere
+  whitespace may appear inside the call — after `src(`, before or after
+  the comma, and before `)`. This matters because a formatter pass
+  (`.prettierrc` sets `printWidth: 100`) can rewrap a long call into
+  exactly that shape; an older one-line-only parser silently dropped
+  such a place from the dataset. A `src(` call that is present but
+  still unparseable (for example, single-quoted arguments) is not a
+  §1 exclusion: the generator fails loudly, naming the place, instead
+  of dropping it.
 - Note record (one per place): `placeId`, `title` (= place `name`),
   `ring`, `geography` (label from §2), `story` (**verbatim** from the
   catalog — light formatting only, zero invented facts; card content rule
