@@ -443,6 +443,14 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
 // (a word preceded by "." is skipped), and never appear inside strings or
 // regexes — so semantics are preserved exactly.
 const RENAME = {
+  // #223: crashWatchdogMain and CSS are renamed too — production build
+  // ids are 12 chars (14 for the timestamp fallback), which pushed the
+  // rendered script 2–4 bytes over the 5120 budget while the 10-char
+  // test fixture still passed. These two renames free 20 bytes, so the
+  // worst real case (14 chars) renders at 5104 bytes. Neither name is
+  // an object-literal key or a property, so the rename is safe here.
+  crashWatchdogMain: "M",
+  CSS: "G",
   isValidEndpointFn: "ok",
   ingestHosts: "ih",
   hosts: "hs",
