@@ -1293,6 +1293,12 @@ export function GameApp() {
     replaceSession(null);
     setIdleWarn(false);
     setIdleEndedNote(true);
+    // #188: session end retires the switched notice too — the same
+    // lifecycle logic Block B applied to mode flips. Left standing, a
+    // "You switched to … Your score is kept." notice would sit beside
+    // the idle-ended notice above and read stale (the score it says
+    // was kept has just been dropped with the session).
+    setMapSwitchedNote(null);
   }, [replaceSession]);
 
   useEffect(() => {
@@ -1906,6 +1912,10 @@ export function GameApp() {
     clearDrop();
     setRun(null);
     setMenu(null);
+    // #188: the review session replaces the ended one — retire the
+    // switched notice here too, or it would resurface when the
+    // review lands back on Home.
+    setMapSwitchedNote(null);
     startReview();
   }, [startReview]);
 
@@ -2144,11 +2154,18 @@ export function GameApp() {
             setRun(null);
             setMenu(null);
             replaceSession(null);
+            // #188: session end retires the switched notice (same
+            // lifecycle rule as killIdleSession) — it must not carry
+            // into the fresh session the player starts from Home.
+            setMapSwitchedNote(null);
           }}
           onReplayed={() => {
             // Play again after End game: the old session ended with the
             // summary, so the replay starts a brand-new session.
             replaceSession(startSession(trailDate(), Date.now()));
+            // #188: a fresh session never inherits the old session's
+            // switched notice — same retirement as summary-done.
+            setMapSwitchedNote(null);
           }}
           onReviewDeck={handleReviewDeck}
           onCleared={(info) => setCleared(info)}
@@ -2454,15 +2471,9 @@ export function GameApp() {
       onGrownUpOpen={openAgeSettings}
       headingRef={homeHeadingRef}
       mapModeControl={
-        // Block C: the map-mode control lives on Home too, beside a
-        // visible indicator of the current mode — Scout is seeable and
-        // reversible without starting (and discarding) a game.
-        <span className="inline-flex items-center gap-2">
-          <MapModeToggle context="home" mapMode={mapMode} onSelect={handleHomeMapMode} />
-          <span className="hv5-pill" data-testid="map-mode-indicator" data-mode={mapMode}>
-            {mapMode === "scout" ? "Scout Map" : "Full map"}
-          </span>
-        </span>
+        // Block C: the map-mode control lives on Home as a single unified
+        // pill button showing both the Layers icon and current mode label.
+        <MapModeToggle context="home" mapMode={mapMode} onSelect={handleHomeMapMode} />
       }
       notice={
         <>
@@ -2735,8 +2746,9 @@ function Choose({
             <svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true"><path d="M1 1l3.5 3.5L8 1" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg>
           </button>
           <button type="button" onClick={() => scrollTo("home-about")}>ABOUT</button>
+          <Link to="/contact" data-testid="nav-contact-link">CONTACT</Link>
           <button type="button" onClick={() => scrollTo("home-journal")}>JOURNAL</button>
-          <button type="button" onClick={() => scrollTo("home-involved")}>GET INVOLVED</button>
+          <button type="button" onClick={() => scrollTo("home-grownups")}>GET INVOLVED</button>
         </nav>
         <div className="hv5-actions">
           <button
@@ -3086,13 +3098,13 @@ function Choose({
                   : `Now showing: ${journalEntry.geography} · ${journalEntry.notes.length} field notes`}
               </p>
             ) : null}
-            <button type="button" className="hv5-go" data-testid="journal-open" onClick={() => scrollTo("home-journal")}>
+            <button type="button" className="hv5-go hv5-stretch" data-testid="journal-open" onClick={() => scrollTo("home-journal")}>
               READ THE ENTRY
             </button>
           </div>
           <LazyHomeImage className="hv5-art" src={journalTreeUrl} alt="" ariaHidden />
         </article>
-        <article className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)}>
+        <article id="home-grownups" tabIndex={-1} className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)} data-testid="grownups-card">
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -3106,7 +3118,7 @@ function Choose({
               Read our <Link to="/privacy">privacy notice</Link> or{" "}
               <Link to="/contact">contact us</Link>.
             </p>
-            <button type="button" className="hv5-btn hv5-btn-brown" onClick={onGrownUpOpen}>
+            <button type="button" className="hv5-btn hv5-btn-brown hv5-stretch" data-testid="grownups-card-open" onClick={onGrownUpOpen}>
               JOIN US
               <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
             </button>

@@ -233,6 +233,35 @@ function authPopupPlugin(): Plugin {
   };
 }
 
+/**
+ * Bake build-time `CONTACT_DISCORD_WEBHOOK_URL` / `CONTACT_ALLOWED_ORIGINS`
+ * into the server-only ("ssr") Worker bundle as a fallback when the variable
+ * is configured in Cloudflare Workers Builds build settings rather than as a
+ * runtime Worker secret binding (see wrangler.jsonc lines 26-28).
+ *
+ * Scoped strictly to `name === "ssr"` and `!githubPages`: client bundles and
+ * the GitHub Pages static build always receive `""`, so the webhook URL can
+ * never leak into `dist/client` or `.vercel/output/static`.
+ */
+function ssrContactEnvPlugin(): Plugin {
+  return {
+    name: "meridian:ssr-contact-env",
+    configEnvironment(name) {
+      const isSsr = name === "ssr" && !githubPages;
+      return {
+        define: {
+          __MERIDIAN_SSR_CONTACT_WEBHOOK_URL__: JSON.stringify(
+            isSsr ? (process.env.CONTACT_DISCORD_WEBHOOK_URL ?? "") : "",
+          ),
+          __MERIDIAN_SSR_CONTACT_ALLOWED_ORIGINS__: JSON.stringify(
+            isSsr ? (process.env.CONTACT_ALLOWED_ORIGINS ?? "") : "",
+          ),
+        },
+      };
+    },
+  };
+}
+
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
@@ -259,6 +288,7 @@ export default defineConfig(({ command, isPreview }) => ({
   resolve: { tsconfigPaths: true },
   plugins: [
     pgliteBootstrapPlugin(),
+    ssrContactEnvPlugin(),
     // Before tanstackStart so /auth/popup never falls through to the SPA.
     authPopupPlugin(),
     // Dev-only /__app-env, read by scripts/check-auth-invariant.mjs.

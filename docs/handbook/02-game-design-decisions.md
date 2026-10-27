@@ -210,6 +210,8 @@ What the ruling does (issue #182):
 
 *Superseded:* the pre-2026-10-20 default — "no profile resolves to 11-13 for everything, hint policy included" — is replaced by the rule above. The per-band table itself is unchanged since 2026-10-09.
 
+**Reload honesty (issue #185, 2026-10-26).** In GeoDetective, "one hint per mystery" now survives a mid-mystery reload: the bulb's used-up state is read back from the mystery's saved hint count when the screen opens again, instead of starting fresh. Before this fix, reloading after using a hint quietly offered a second one. (The Clean Round badge was never fooled — it always read the saved count. Only the button forgot.)
+
 ## Sources
 
 - `~/workspace/your_files/meridian-scoring-proposal.md` — scoring v3 design, formula, worked examples, display + share design, migration notes

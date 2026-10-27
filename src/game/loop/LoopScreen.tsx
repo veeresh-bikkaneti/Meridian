@@ -816,14 +816,29 @@ function LoopGame({
   const hintPolicy =
     puzzle.dealBandConfig?.hintPolicy ?? getBandConfig(dealBand).hintPolicy;
   const [hintMessage, setHintMessage] = useState<string | null>(null);
-  const [hintsUsedThisMystery, setHintsUsedThisMystery] = useState(0);
+  // #185: the local counter starts from the mystery's PERSISTED count
+  // (puzzle.hintsUsed, committed by onHintUsed below), never from a
+  // blind zero — a mid-mystery reload remounts this screen, and a zero
+  // start would hand a one-per-round player a second hint in the UI.
+  // (The store count already blocks the Clean Round badge; this keeps
+  // the button honest too.) Legacy puzzles carry no count → zero.
+  const [hintsUsedThisMystery, setHintsUsedThisMystery] = useState(
+    () => puzzle.hintsUsed ?? 0,
+  );
   const [hintOfferDismissed, setHintOfferDismissed] = useState(false);
   // New mystery → fresh hint state (keyed on the dealt puzzle index).
+  // The count resets to the NEW mystery's persisted count — zero for a
+  // freshly dealt mystery, its saved count for a restored one (#185) —
+  // so the key change alone can never resurrect a spent hint.
   const hintResetKey = `${puzzle.cycle}:${puzzle.index}`;
   useEffect(() => {
     setHintMessage(null);
-    setHintsUsedThisMystery(0);
+    setHintsUsedThisMystery(puzzle.hintsUsed ?? 0);
     setHintOfferDismissed(false);
+    // hintResetKey is the trigger; puzzle.hintsUsed is read at that
+    // moment (a later commit for the same mystery updates it through
+    // onUseGeoHint's own setState, not through this effect).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hintResetKey]);
 
   function onUseGeoHint() {

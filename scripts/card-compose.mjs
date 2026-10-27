@@ -7,8 +7,8 @@
  *
  * The hook sentence comes from exactly two trusted sources, in precedence
  * order:
- *   1. `fact` — the fact ladder's field (scripts/facts-ladder.mjs, on the
- *      facts-ladder branch). Contract: { text, kind:
+ *   1. `fact` — the fact ladder's field (scripts/facts-ladder.mjs).
+ *      Contract: { text, kind:
  *      'wikidata'|'wikitext'|'eb1911'|'hook', source:
  *      'Wikidata'|'Wikipedia'|'EB1911', qid?, href? }. Every composed fact
  *      passed the ladder's no-fabrication validator before merge.

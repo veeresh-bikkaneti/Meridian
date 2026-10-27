@@ -111,11 +111,18 @@ the list, passed into the script at render. A drift test compares it with
 an Origin header (needed after S4).
 
 Byte budget: the watchdog must stay within 5120 bytes. It is at
-5118 bytes for a 10-character build id and 5116 for a 7-character git sha. To
+5100 bytes for a 10-character build id and 5097 for a 7-character git sha
+(measured 2026-10-26, #223; the 5118/5116 figures previously recorded
+here were stale). To
 fit the host list, the minifier now folds adjacent `"…"+"…"` literals and
 drops the space in `return !1`, a few long locals were renamed, and
-`indexOf()===-1` became `<0`. The next change to the watchdog will need to
-find bytes, or the owner can raise the budget.
+`indexOf()===-1` became `<0`. Production build ids are longer than the
+old test fixture — 12 characters in CI, 14 for the timestamp fallback —
+and rendered 5122/5124 bytes until #223 renamed `crashWatchdogMain` and
+`CSS` in the shipped output too (12-char now renders 5102, 14-char
+5104). The budget test now checks all four id lengths. The next change
+to the watchdog will need to find bytes, or the owner can raise the
+budget deliberately with the reasoning recorded.
 
 E2E specs (`observability`, `crash-watchdog`) now use the real ingest URL,
 intercepted by `context.route`, so no request leaves the test.
