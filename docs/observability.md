@@ -70,10 +70,17 @@ and rejected by the receiver above 8 KB.
 | Type | When |
 |---|---|
 | `suspected_crash` | Next boot after an unclean shutdown with a previous breadcrumb (above). |
+| `boot_failure` | The crash watchdog's fallback fired: the app never signalled ready, so the boot is treated as failed. |
 | `js_error` | `window` error event (installed once, guarded). |
 | `unhandled_rejection` | `unhandledrejection` event. |
 | `map_error` | `MapErrorBoundary.componentDidCatch`. |
+| `tile_failed` | A map tile failed to load (hiccup-class: counted, not forwarded on its own). |
 | `webgl_context_lost` | `webglcontextlost` on the MapLibre canvas. |
+
+These 7 are the types the crash-report worker accepts. The client
+event type (`ObservabilityEventType` in `src/lib/observability.ts`)
+lists 13: it adds `storyteller_shown` and the five `narration_*`
+types, which are client-side only and are not sent to the worker.
 
 ## Privacy statement
 

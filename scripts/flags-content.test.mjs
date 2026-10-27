@@ -50,3 +50,18 @@ test("public/flags.json ships globeTierSplit on (the faster Globe path)", () => 
   const payload = JSON.parse(readFileSync(FLAGS_PATH, "utf8"));
   assert.equal(payload.flags.globeTierSplit, true);
 });
+
+test("public/flags.json wires the contact endpoint to /api/contact on the meridian worker", () => {
+  const payload = JSON.parse(readFileSync(FLAGS_PATH, "utf8"));
+  assert.ok(
+    isValidEndpoint(payload.contactEndpoint),
+    `contactEndpoint must be a valid https URL or root-relative path, got: ${JSON.stringify(
+      payload.contactEndpoint,
+    )}`,
+  );
+  assert.equal(
+    payload.contactEndpoint,
+    "https://meridian.knowledgetest.workers.dev/api/contact",
+    "contactEndpoint must point at the main meridian worker /api/contact route",
+  );
+});
