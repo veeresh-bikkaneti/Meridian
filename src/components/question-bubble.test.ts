@@ -907,3 +907,77 @@ describe("cartographer's plate PR3 — GeoDetective scroll architecture (LoopScr
     );
   });
 });
+
+describe("globe-overlap fix (2026-10-26) — auto-collapse after round 1, no false scroll cue, compact geometry", () => {
+  it("auto-collapses instructions after the first placed pin or manual collapse, and resets on replay", () => {
+    assert.ok(
+      gameAppSource.includes("const userCollapsedBubbleRef = useRef(false);"),
+      "PlayLoaded must track manual instruction collapse in userCollapsedBubbleRef",
+    );
+    assert.ok(
+      /setBubble\(defaultBubbleView\(\)\);\s*if\s*\(\s*run\.results\.length > 0 \|\|\s*\(session\?\.placesPlayed \?\? 0\) > 0 \|\|\s*userCollapsedBubbleRef\.current\s*\)\s*\{\s*setBubble\("collapsed"\);\s*\}/.test(
+        gameAppSource,
+      ),
+      "advancing to the next place must collapse instructions once 1+ pins are placed or after manual collapse",
+    );
+    assert.ok(
+      /userCollapsedBubbleRef\.current = next !== "open";\s*setBubble\(next\);/.test(
+        gameAppSource,
+      ),
+      "onViewChange must record manual collapse/expand in userCollapsedBubbleRef",
+    );
+    assert.ok(
+      /userCollapsedBubbleRef\.current = false;\s*setBubble\(defaultBubbleView\(\)\);/.test(
+        gameAppSource,
+      ),
+      "onReplay must reset userCollapsedBubbleRef before re-initializing bubble view",
+    );
+  });
+
+  it("eliminates false 'more below' scroll cue on short/medium names by reserving deep bottom padding for long-tier names", () => {
+    const scrollBlock = /\.bubble-scroll\s*\{([\s\S]*?)\}/.exec(stylesSource)?.[1];
+    assert.ok(scrollBlock, ".bubble-scroll CSS block must exist");
+    assert.ok(
+      scrollBlock.includes("padding: 2px 2px 4px"),
+      ".bubble-scroll must use tight padding (2px 2px 4px) so short/medium names do not overflow the 120px min-height",
+    );
+    assert.ok(
+      !scrollBlock.includes("30px"),
+      ".bubble-scroll must not apply 30px bottom padding to short/medium names",
+    );
+    const longScrollBlock =
+      /\.bubble-shell\[data-name-tier="long"\] \.bubble-scroll:not\(\.pcard-compact\)\s*\{([\s\S]*?)\}/.exec(
+        stylesSource,
+      )?.[1];
+    assert.ok(
+      longScrollBlock && longScrollBlock.includes("padding-bottom: 28px"),
+      "long-tier open scroll region keeps 28px bottom padding for the scroll-cue fade",
+    );
+  });
+
+  it("uses compact top offset (3.5rem on <640px mobile, 3.625rem on >=640px), compact 236px/248px width cap, and single-row streak+placed HUD", () => {
+    const responsiveTopMatches =
+      source.match(
+        /top-\[max\(3\.5rem,env\(safe-area-inset-top\)\)\] sm:top-\[max\(3\.625rem,env\(safe-area-inset-top\)\)\]/g,
+      ) ?? [];
+    assert.equal(
+      responsiveTopMatches.length,
+      2,
+      "both QuestionBubble wrappers must sit at 3.5rem on <640px mobile and 3.625rem on >=640px viewports",
+    );
+    assert.ok(
+      source.includes("w-[min(236px,calc(100vw-20px))] sm:w-[248px]"),
+      "the open/collapsed card wrapper must cap width at 236px on mobile and 248px on >=640px",
+    );
+    assert.ok(
+      !source.includes("352px"),
+      "old 352px width must be gone",
+    );
+    assert.ok(
+      /<div className="flex items-center gap-1\.5">[\s\S]*?data-testid="streak-flame"[\s\S]*?\{session\?\.hits \?\? run\.hits\} placed[\s\S]*?<\/div>/.test(
+        gameAppSource,
+      ),
+      "streak-flame and placed pill must share a horizontal flex row so streak >= 2 never adds a 3rd vertical HUD row",
+    );
+  });
+});

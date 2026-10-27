@@ -2,6 +2,7 @@ import { distanceKm, initialBearing, octantOf } from "../geo.ts";
 import { resolvePin } from "../reverse-geocode.ts";
 import type { LoopGuess, LoopNameEntry } from "./types.ts";
 import { normalizeLoopName } from "./normalize.ts";
+import { unpackNameIndex } from "./names-codec.ts";
 
 // Pure logic behind the GeoDetective guess input (Worker 3). Kept in a plain
 // TS module so it is unit-testable without a DOM/React; guess-input.tsx is
@@ -160,26 +161,14 @@ export type FetchLike = (url: string) => Promise<{
  */
 export function loopNamesUrl(): string {
   const base = import.meta.env?.BASE_URL ?? "/";
-  return `${base}loop/names.json`;
-}
-
-function isLoopNameEntry(value: unknown): value is LoopNameEntry {
-  if (typeof value !== "object" || value === null) return false;
-  const v = value as Record<string, unknown>;
-  return (
-    typeof v.n === "string" &&
-    typeof v.id === "string" &&
-    typeof v.lon === "number" &&
-    typeof v.lat === "number" &&
-    typeof v.r === "string" &&
-    typeof v.p === "number"
-  );
+  return `${base}loop/names.v2.json`;
 }
 
 let indexPromise: Promise<LoopNameEntry[]> | null = null;
 
 /**
- * Lazy-load public/loop/names.json — never in the main bundle. The first
+ * Lazy-load public/loop/names.v2.json (packed columns, see names-codec.ts) —
+ * never in the main bundle. The first
  * call hits the network; later calls reuse the in-flight/resolved promise.
  * A failed load clears the cache so the next focus can retry.
  */
@@ -188,11 +177,7 @@ export function fetchLoopIndex(fetchImpl: FetchLike = fetch): Promise<LoopNameEn
     indexPromise = (async () => {
       const res = await fetchImpl(loopNamesUrl());
       if (!res.ok) throw new Error(`loop names index: HTTP ${res.status}`);
-      const data: unknown = await res.json();
-      if (!Array.isArray(data) || !data.every(isLoopNameEntry)) {
-        throw new Error("loop names index: unexpected shape");
-      }
-      return data;
+      return unpackNameIndex(await res.json());
     })();
     indexPromise.catch(() => {
       indexPromise = null;
