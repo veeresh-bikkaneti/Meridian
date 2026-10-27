@@ -1,165 +1,124 @@
-# BRANCH_STATUS — fix/a11y-reload-announcement
+# BRANCH_STATUS — fix/154-seam-test-only (issue #154 item 1)
 
-**Branch:** `fix/a11y-reload-announcement` (pushed via API replay;
-PR #248 open — merge remains Liz's word)
-**Base:** origin/main @ `985f5214` (merged `origin/main` after PR #217 landed; originally built on `d26b90a` / `5f6164b` / `5f24c6c5`)
-**State: BUILD COMPLETE — all five gates run; awaiting the
-independent Reality Checker gate.** It supersedes the previous
-contents of this file (the `fix/storyteller-pending-tap` branch
-record, whose history lives on its own PR).
+**State: BUILD COMPLETE, all builder gates green (below). Ready = NO —
+the full panel pipeline and the owner's merge word are still owed**
+(standing rule: the panel approves the final tip itself).
 
-## Scope (exactly this — no drive-by changes)
+Base: `origin/main 34ec705` (merged in 2026-10-26, after #248/#250; previously `1ca4c04`). Removes the production test seam
+`window.__meridianSuppressScoutOffer` (issue #154 item 1 — the owner's
+standing recommendation: remove it from production; the build was
+authorized 2026-10-21).
 
-Tier 2 council round (manifest
-`.council/manifests/2026-10-25-a11y-reload-announcement.md`, signed
-before any production code) fixing the two PR #245 follow-ups Liz
-approved on 2026-10-25 ("Yes fix them both"), reversing the earlier
-knowingly-accept of review items A11Y-2/A11Y-1/A11Y-4:
+## Census (verified at base, grep over src/ + tests/ + docs/)
 
-1. **Announcement dwell** — `src/lib/chunk-recovery.ts`: when
-   MapErrorBoundary's error card is already on screen at the 1_500 ms
-   decision point, the auto-reload defers once by
-   `CHUNK_ANNOUNCE_DWELL_MS` (10_000), giving the card at least that
-   much additional dwell before navigation. The deferred decision
-   re-checks the stale offer, the episode latch, and the card
-   itself; if the card has gone, the reload stands down. The probe
-   matches the boundary's own copy (`MAP_ERROR_CARD_COPY`), never a
-   generic alert.
-2. **Post-reload notice** — every auto-reload, and the boundary's
-   manual "Try again" (`map-error-boundary.tsx`), writes a
-   timestamped flag (`meridian.chunkReloadNotice`); the next boot
-   consumes it (`game-app.tsx`), which shows a `role="status"`
-   notice — "Meridian had to reload. You're back! Keep playing!" —
-   with a Close button and no auto-dismiss timer. Show-once holds
-   where the flag's removal succeeds; removal is best-effort, so a
-   surviving flag can show the notice once more at a later boot
-   inside its freshness window (pinned, knowingly, by unit 13-Uf).
+- `src/components/game-app.tsx` — the ONLY production read: the boot
+  effect computed `suppressAutoSwitch` from the window flag and skipped
+  the silent Scout auto-switch when it was `true`. Comment block above
+  it described the seam.
+- `tests/e2e/helpers.ts` — the ONLY writer: `serveBuiltArtifact` set
+  the flag via an init script by default; specs exercising the real
+  auto-switch opted out with `{ suppressScoutOffer: false }`
+  (scout-capability-offer, scout-offer, scout-throttled).
+- `src/map/capability.test.ts` — a unit pin asserting the seam "stays
+  wired" in game-app.tsx.
+- `docs/scout-offer-policy.md` — the "Test seam" paragraph describing it.
 
-Preserved, pinned by the existing contracts: episode latch,
-stale-offer stand-down, idempotent install, unrelated errors never
-reload. No new dependencies, no game-logic changes.
+Why the seam existed: the Playwright VM's Chromium uses SwiftShader,
+which the boot WebGL probe (correctly) reads as a weak device — so
+without suppression every fresh E2E boot silently auto-switched to
+Scout and blocked unrelated specs.
 
-Claim discipline (manifest D10): the claim is *additional dwell*,
-not that any announcement is guaranteed complete; WCAG 3.2.5 remains
-AAA-unmet (mitigated, not cured). Race pin (D1): a card that renders
-after the decision point gets no deferral — a documented non-fix,
-stated in the module header verbatim.
+## Design: stub the inputs, not the app
 
-## Spike (Branch A — B's mandatory pre-11-E gate)
+Rejected: gating the flag behind a build-time env switch. The E2E suite
+serves the *production* artifact (`npm run build:pages` output), so a
+seam that is compiled out of that artifact cannot be used by the suite
+at all — and a seam compiled in behind an env name is still a shipped
+window global any page script could set.
 
-Pre-fix build, safari-launch recipe (context-abort
-`**/satellite-map*.js`, no synthetic dispatch): card at
-alertAtMs=5532 after the click, recovery navigation at navAtMs=6887,
-guard stamp present (log `spike-run2.log`). Recovery DOES engage on
-the real SatelliteMap path — 11-E is the primary variant.
+Chosen: the harness now fakes the *device*, not the decision.
 
-## Commits
+- Production: the flag read is deleted. Boot qualification is exactly
+  the stored-record check + `planBootMapMode(qualifyMapMode({ priorMapCrash,
+  webglProbeOk, deviceMemoryGB }))` it always was, minus the bypass.
+  Real players never had the flag set (only the harness init script set
+  it), so player-visible behavior is unchanged.
+- Harness: `serveBuiltArtifact` installs, by default, the capable-device
+  spoof that already existed in `tests/e2e/scout-helpers.ts` (WebGL
+  debug renderer reports a discrete NVIDIA GPU; `navigator.deviceMemory`
+  reports 8 GB). The app's own probe then honestly qualifies the VM as
+  capable and boots full — suppression happens *upstream* of the app,
+  through its real qualification path. Specs exercising the auto-switch
+  opt out with the renamed option `{ spoofCapableDevice: false }` and see
+  the genuine weak-device boot.
+- The spoof only neutralizes the probe + memory signals. A stored
+  manual record still wins (it always did — boot checks it first), and
+  a map-attributed prior crash still outranks the probe in
+  `qualifyMapMode`'s order — exactly the signals the Scout specs pin.
 
-1. `e51478d` — docs(council): signed manifest
-2. `128558f` — test(recovery): RED contracts (unit file: **28
-   failing of 58** in the full-file RED run, log `red-unit.log`,
-   with the predicted signatures; a 29th contract, 11-U3, was
-   strengthened immediately after that run and verified failing in
-   a targeted run before implementation)
-3. `59dba35` — fix(recovery): dwell + notice implementation;
-   game-app consume/render; boundary retry flag
-4. `d4b7163` — docs(council): footprint revision recorded
-   (chunk-recovery.ts +173 vs +140 estimate; same files/functions)
-5. `d8fa834` — fix(recovery): card copy U+2019 (see Defect record)
-6. `b2e0f0a` — docs(council): gate-round defect record
-7. `58b4023` — test(e2e): 11-E / 13-E / 14-E / 6-E2
+## Discriminating pins
 
-## Defect record (found by this round's own oracle)
+- Unit (`src/map/capability.test.ts`): the old pin is inverted — it now
+  asserts game-app.tsx does NOT contain the seam name, and still plans
+  the boot via `planBootMapMode` + persists the planned source. It fails
+  if the seam creeps back into production source.
+- E2E (`tests/e2e/scout-harness-suppression.desktop.spec.ts`, new): a
+  default-served boot on this genuinely weak VM stays full, writes NO
+  stored record, and shows no auto-switch note; the same boot with the
+  spoof opted out DOES auto-switch to Scout with a probe auto record.
+  If the spoof ever stops working, the first test goes red — the VM
+  really is a weak device, so there is no way for it to pass vacuously.
+- Gate (this PR's process, not a committed test): the production
+  bundle from `npm run build:pages` is grepped for the seam name —
+  zero hits required.
 
-First Playwright run: 11-E failed, dwell Received 1364 — the probe
-never matched in production because `MAP_ERROR_CARD_COPY` used an
-ASCII apostrophe and the boundary renders `&rsquo;` (U+2019); unit
-12-Ua passed against a stub mirroring the same wrong character.
-Fixed in `d8fa834`; 11-U0 now pins the copy codepoint-for-codepoint
-and 12-Ua builds its stub text from the constant.
+## Done
 
-## Gates (logs in `~/workspace/meridian-a11y-announce/logs/`)
+- [x] Census (above)
+- [x] Design chosen + recorded (this file)
+- [x] game-app.tsx: seam read + comment removed (`effcd43`)
+- [x] helpers.ts: capable-device spoof is the serve default (single
+      implementation, moved from scout-helpers.ts, which re-exports it);
+      the three auto-switch specs use `{ spoofCapableDevice: false }`;
+      new discriminating spec (`2aef86d`)
+- [x] capability.test.ts pin inverted
+- [x] docs/scout-offer-policy.md "Test seam" paragraph rewritten (`c2f1fbb`)
+- [x] Synced with `origin/main` (`34ec705`); updated `commitPin` in `tests/e2e/helpers.ts` to also wait for `aria-hidden !== "true"` alongside `data-tile-status === "ready"` so early low-zoom spin tiles (warmed by boot `probeWebGL2()` now running un-bypassed) cannot trigger pin clicks while `.satellite-map` is still `inert` during the intro beat
 
-| Gate | Result |
-| :--- | :--- |
-| `npx tsc --noEmit` | clean, exit 0 (`gate-tsc.log`) |
-| `npm test` | scripts **832 pass / 0 fail / 9 skipped**; src **1568 pass / 0 fail** (`gate-npm-test.log`) — chunk-recovery file 58/58 (29 prior + 29 new/amended) |
-| `node scripts/lint-cards.mjs` | **GATE PASSED**, exit 0 (`gate-lint.log`) |
-| `npm run build:pages` | green, exit 0 (`gate2-build.log`) |
-| Playwright chunk-recovery (desktop) | **9 passed / 0 failed** (`gate2-pw-chunk-recovery.log`) — 5 prior + 11-E, 13-E, 14-E, 6-E2 |
-| Playwright observability | **3 passed / 0 failed** (`gate2-pw-observability.log`) |
-| Playwright safari-launch | **4 passed / 0 failed** (`gate2-pw-safari-launch.log`) — incl. the manual Try again card path |
-| Playwright crash-watchdog | **3 passed / 1 failed** (`gate2-pw-crash-watchdog.log`) — the one failure is the proven pre-existing stale-build breadcrumb assertion (spec L217, expected `data_chunk_load_start`, got `storyteller_ready`), identical on pristine `a59ee4c`; baseline-matched, not a regression, not worse |
+## Gates (builder-run at the branch tip)
 
-Gate-log timing note (Reality Checker fix round): the `gate-tsc.log`
-and `gate-npm-test.log` runs predate the U+2019 fix commit
-(`d8fa834`, a one-string change). Both gates were re-run at the
-final head by the independent Reality Checker with identical
-results (tsc clean; scripts 832/0/9, src 1568/0), and the
-chunk-recovery unit file was re-run by the crew at `d8fa834`
-(58/58) and again in this fix round.
+- `npx tsc --noEmit && npm run typecheck:worker` — clean
+- `npm test && npm run test:worker` — scripts suite (841 tests: 832 pass / 9 skip / 0 fail) + src suite (1670 pass / 0 fail) + worker suite (85 pass / 0 fail) all green
+- `node scripts/lint-cards.mjs` — `lint-cards: GATE PASSED`
+- `npm run build:pages` (Ko-fi env set) — green
+- **Bundle proof:** `rg __meridianSuppressScoutOffer dist/client/`
+  → **0 hits**
+- E2E against the built artifact (`PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome`):
+  - All 9 `tests/e2e/scout-*.spec.ts` files — **47/47 pass** (including `scout-harness-suppression.desktop.spec.ts` 2/2, `scout-capability-offer.desktop.spec.ts` 13/13, `scout-toggle.desktop.spec.ts` 11/11, `scout-switch-note.desktop.spec.ts` 6/6, `scout-offer.desktop.spec.ts` 4/4, `scout-narrow-repro.zoom-space.spec.ts` 4/4, `scout-context-lost.desktop.spec.ts` 3/3, `scout-false-demotion.desktop.spec.ts` 3/3, `scout-throttled.desktop.spec.ts` 1/1)
+  - `tests/e2e/cleared-mode.spec.ts` — **11/11 pass**
+  - `tests/e2e/chunk-recovery.desktop.spec.ts` — **19/19 pass**
+  - `tests/e2e/ws4-tile-fallback.desktop.spec.ts` — **3/3 pass**
+  - `tests/e2e/grownups-privacy-contact.desktop.spec.ts` — **3/3 pass**
+  - `tests/e2e/hydration-boot.desktop.spec.ts` — **1/1 pass**
+  - `tests/e2e/observability.spec.ts` — **3/3 pass**
+  - `tests/e2e/geodetective.spec.ts` — **17/18 pass** (the 1 failure at line 238 is a pre-existing `main` strict-mode collision between `PlaceSheet` exit clone and `LoopReveal` heading during `@formkit/auto-animate` 250ms exit; unrelated to Scout Map)
 
-## Mutation record
+## Design risk for the panel
 
-- Unit: deferral disabled → 10 failures; cancellation re-check
-  disabled → 11-U4 fails; notice write removed → 14-U1 + 11-U fail
-  (logs `mutation-1-nodefer.log`, `mutation-2-nocancel.log`,
-  `mutation-3-nonotice.log`). Restored file: 58/58.
-- E2E: deferral disabled → rebuild → 11-E FAILS (Expected
-  ≥ 10_000, Received 1579; log `mut-e2e-11e.log`); revert +
-  rebuild + full chunk-recovery spec re-run: 9 passed (log
-  `gate3-pw-chunk-recovery.log`).
+- The serve-default spoof also sets `navigator.deviceMemory = 8` for
+  EVERY spec (previously only Scout specs spoofed). Other readers of
+  deviceMemory: confetti's low-end particle cap and home-globe's
+  low-memory fallback (both treat 8 as capable — the same reading the
+  real VM's Chromium already reports, capped at 8) and observability's
+  device stamp. The full Scout + GeoDetective batch above ran under
+  the new default; a full-suite E2E pass remains the panel's to run.
+- Init-script ordering: the serve-default spoof is registered when
+  `serveBuiltArtifact` is called; a spec that calls
+  `spoofLowMemoryDevice` afterwards still wins for deviceMemory
+  (configurable getter, later script redefines it) — pinned by the
+  low-memory test in scout-capability-offer passing in the batch.
 
-## Untested / not claimed
+## Pending
 
-- No live screen-reader pass (NVDA/JAWS/VoiceOver/TalkBack) — the
-  dwell is a timing guarantee measured by the oracles, not a
-  heard-announcement observation. This untested item stays open.
-- No throttled-network run; full Playwright suite not run
-  (targeted specs only, per the round's scope).
-- Notice render coverage: the main GameApp return only (manifest
-  D7); early-return error screens do not show it, though the flag
-  is still consumed at boot.
-- Councilor A's Scenario 8 (card renders after the decision point)
-  is a recorded unresolved objection + documented non-fix (D1).
-
-## Fix Round 3 (2026-10-26) — Home Toast Slot Below Header Rows + Merge `origin/main` (`985f5214`)
-
-### Why Round 2 (`71fd843`) Was Blocked
-- **Round 1 (`2dba089`)** rendered `chunk-reload-notice` using `.agep-toast` (`position: fixed; bottom: max(24px, ...)`) with a bare `className="ml-3 font-bold"` Close button (`< 44x44px` tap target), floating over home page content.
-- **Round 2 (`71fd843`)** moved `chunk-reload-notice` to a top-fixed banner (`fixed inset-x-4 top-16 z-50`, `y = 64..120px`). While `tutorial-invite` was visible above `<header className="hv5-nav">`, the header was pushed down to `y >= 146px`. Once `tutorial-invite` was dismissed (**post-dismiss**), `<header className="hv5-nav">` shifted up to `y = 32..119px` (desktop, 1 row) and `y = 32..248px` (mobile `<=680px`, wrapped rows), causing the fixed `top-16` toast to overlap the header links/buttons across all 6 viewports (`320x568`, `375x667`, `390x844`, `768x1024`, `1024x768`, `1280x800`).
-
-### Round 3 Fix (`src/components/game-app.tsx`, `tests/e2e/chunk-recovery.desktop.spec.ts`)
-- Added `homeToast?: ReactNode` to `Choose` in `src/components/game-app.tsx`, rendering the post-reload notice in normal document flow in a dedicated home toast slot immediately below `</header>` (`<header className="hv5-nav">`) and above `<div className="hv5-bento">`.
-- Styled `chunk-reload-notice` as `relative z-10 mt-3 mx-auto flex w-full max-w-md items-center justify-between gap-3 rounded-xl border border-line bg-surface pl-4 pr-1 py-1 text-sm text-fg shadow-xl` with a `44x44px` Close button (`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg font-bold hover:bg-fg/10`).
-- Extended E2E test `13-E` in `tests/e2e/chunk-recovery.desktop.spec.ts` to verify across all 6 viewports (`320x568`, `375x667`, `390x844`, `768x1024`, `1024x768`, `1280x800`), both **pre-dismiss** and **post-dismiss** of `tutorial-invite`:
-  - `chunk-reload-notice` sits strictly below `header.hv5-nav` (`nBox.y >= hBox.y + hBox.height - 1`) and above `.hv5-bento` (`nBox.y + nBox.height <= bBox.y + 1`).
-  - Zero bounding-box overlap (`overlapX * overlapY === 0`) with all 8 `header.hv5-nav button, header.hv5-nav a` elements.
-  - Close button tap target is `44x44px` (`>= 44x44px`).
-
-### 6-Viewport Bounding-Box Proof (Pre-Dismiss & Post-Dismiss)
-
-| State | Viewport | `header.hv5-nav` Y (px) | `chunk-reload-notice` Rect `(x, y, w×h)` | Gap Below Header (px) | `.hv5-bento` Top Y (px) | Gap Above Bento (px) | Close Target (px) | Header Links Checked | Max Overlap Area (px²) |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| pre-dismiss | `320x568` | `204..420` | `(20, 430, 280x54)` | `10` | `490` | `6` | `44x44` | 8 | `0` |
-| pre-dismiss | `375x667` | `202..418` | `(20, 430, 335x54)` | `12` | `490` | `6` | `44x44` | 8 | `0` |
-| pre-dismiss | `390x844` | `202..418` | `(20, 430, 350x54)` | `12` | `490` | `6` | `44x44` | 8 | `0` |
-| pre-dismiss | `768x1024` | `150..245` | `(160, 257, 448x54)` | `12` | `317` | `6` | `44x44` | 8 | `0` |
-| pre-dismiss | `1024x768` | `150..236` | `(288, 248, 448x54)` | `12` | `308` | `6` | `44x44` | 8 | `0` |
-| pre-dismiss | `1280x800` | `150..237` | `(416, 249, 448x54)` | `12` | `309` | `6` | `44x44` | 8 | `0` |
-| post-dismiss | `320x568` | `32..248` | `(20, 260, 280x54)` | `12` | `320` | `6` | `44x44` | 8 | `0` |
-| post-dismiss | `375x667` | `32..248` | `(20, 260, 335x54)` | `12` | `320` | `6` | `44x44` | 8 | `0` |
-| post-dismiss | `390x844` | `32..248` | `(20, 260, 350x54)` | `12` | `320` | `6` | `44x44` | 8 | `0` |
-| post-dismiss | `768x1024` | `32..127` | `(160, 139, 448x54)` | `12` | `199` | `6` | `44x44` | 8 | `0` |
-| post-dismiss | `1024x768` | `32..118` | `(288, 130, 448x54)` | `12` | `190` | `6` | `44x44` | 8 | `0` |
-| post-dismiss | `1280x800` | `32..119` | `(416, 131, 448x54)` | `12` | `191` | `6` | `44x44` | 8 | `0` |
-
-### Round 3 Gate Results (on merged `origin/main` `985f5214`)
-
-| Gate | Result |
-| :--- | :--- |
-| `npx tsc --noEmit` | **PASS** (exit 0, 0 errors) |
-| `npm test` | **PASS** — scripts **832 pass / 0 fail / 9 skipped**; src **1670 pass / 0 fail** (`src/lib/chunk-recovery.test.ts` **84/84 pass**) |
-| `node scripts/lint-cards.mjs` | **GATE PASSED** (exit 0) |
-| `npm run build:pages` | **PASS** (exit 0, `dist/client` built cleanly) |
-| `npx playwright test tests/e2e/chunk-recovery.desktop.spec.ts --workers=1` | **19 passed / 0 failed** (3.0m, incl. 6-viewport pre/post-dismiss `13-E`) |
+- [ ] Panel pipeline (full) on the final tip
+- [ ] Owner's merge word

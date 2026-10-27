@@ -89,29 +89,104 @@ const MIME: Record<string, string> = {
 };
 
 /**
+ * Device-signal spoof (the Scout boot suppression, harness-side).
+ *
+ * The harness boots on a SwiftShader VM that the app's capability probe
+ * reads — correctly — as a weak device, so without help every fresh
+ * boot would silently auto-switch to Scout (owner ruling, 2026-10-20)
+ * and block unrelated specs. The old fix was a window flag the app
+ * itself honored (window.__meridianSuppressScoutOffer), which shipped
+ * in production where any page script could set it. It was removed
+ * (issue #154 item 1): the harness now spoofs the SIGNALS the probe
+ * reads — the WebGL debug renderer reports a discrete NVIDIA GPU and
+ * navigator.deviceMemory reports the given size — so the app's own
+ * qualification honestly reaches "capable" and boots full. The app
+ * contains no test bypass at all; production and tests run the same
+ * boot path. Must be installed via context.addInitScript BEFORE
+ * navigation (addInitScript here does exactly that).
+ */
+async function spoofDevice(context: BrowserContext, deviceMemoryGB: number): Promise<void> {
+  await context.addInitScript((gb: number) => {
+    const NVIDIA =
+      "ANGLE (NVIDIA, NVIDIA GeForce RTX 4090 (0x00002684) Direct3D11 vs_5_0 ps_5_0, D3D11)";
+    const R = 0x9246;
+    const V = 0x9245;
+    const proto = HTMLCanvasElement.prototype;
+    const origGetContext = proto.getContext;
+    (proto as unknown as Record<string, unknown>).getContext = function (
+      this: HTMLCanvasElement,
+      type: string,
+      opts?: unknown,
+    ) {
+      const ctx = (origGetContext as Function).call(this, type, opts) as
+        | (WebGLRenderingContext & Record<string, unknown>)
+        | null;
+      if (
+        ctx &&
+        (type === "webgl" || type === "webgl2" || type === "experimental-webgl")
+      ) {
+        const origGetExtension = ctx.getExtension.bind(ctx);
+        const origGetParameter = ctx.getParameter.bind(ctx);
+        ctx.getExtension = ((name: string) => {
+          if (name === "WEBGL_debug_renderer_info") {
+            return { UNMASKED_RENDERER_WEBGL: R, UNMASKED_VENDOR_WEBGL: V };
+          }
+          return origGetExtension(name);
+        }) as typeof ctx.getExtension;
+        ctx.getParameter = ((p: number) => {
+          if (p === R) return NVIDIA;
+          if (p === V) return "Google Inc. (NVIDIA)";
+          return origGetParameter(p);
+        }) as typeof ctx.getParameter;
+      }
+      return ctx;
+    };
+    Object.defineProperty(Navigator.prototype, "deviceMemory", {
+      get: () => gb,
+      configurable: true,
+    });
+  }, deviceMemoryGB);
+}
+
+/**
+ * Spoof a CAPABLE device (false-demotion golden): discrete-GPU renderer
+ * string, 8 GB deviceMemory. The VM's real Chromium reports a SwiftShader
+ * renderer, so without this the harness itself reads as a weak device.
+ */
+export async function spoofCapableDevice(context: BrowserContext): Promise<void> {
+  await spoofDevice(context, 8);
+}
+
+/**
+ * Spoof a LOW-MEMORY device in isolation: capable GPU (the probe passes)
+ * but 1 GB deviceMemory, so the qualification source is "low-memory" and
+ * not "probe".
+ */
+export async function spoofLowMemoryDevice(context: BrowserContext): Promise<void> {
+  await spoofDevice(context, 1);
+}
+
+/**
  * Serves the built Pages artifact for E2E (see header comment).
  *
- * Scout Map boot seam: the harness boots on a SwiftShader VM that the
- * capability probe reads as a weak device, so without suppression every
- * fresh boot would silently auto-switch to Scout (owner ruling,
- * 2026-10-20) and block unrelated specs. By default
- * (suppressScoutOffer !== false) an init script sets
- * window.__meridianSuppressScoutOffer, which game-app's boot effect
- * honors by skipping the auto-switch (there is no URL parameter for
- * this — a URL cannot hide the switch). The option/flag names are
- * historical: they date from the removed boot offer dialog. Specs that
- * exercise the auto-switch itself pass { suppressScoutOffer: false }.
- * Whether this seam should ship in production at all is issue #154
- * item 1 — the owner's call, still owed.
+ * Scout Map boot: by default (spoofCapableDevice !== false) the
+ * capable-device spoof above is installed, so boots on this weak VM
+ * stay in the full map unless a spec is exercising Scout itself. Specs
+ * that exercise the auto-switch pass { spoofCapableDevice: false } and
+ * see the genuine weak-device boot.
+ *
+ * Precedence note (owner ruling Q2): the spoof fakes the WebGL probe and
+ * navigator.deviceMemory only; a stored map-mode record wins first, then
+ * a seeded prior-map crash (priorMapCrash). Crash-seeding specs should
+ * serve with { spoofCapableDevice: false } unless the crash itself is
+ * the subject under test.
  */
 export async function serveBuiltArtifact(
   context: BrowserContext,
-  opts: { suppressScoutOffer?: boolean } = {},
+  opts: { spoofCapableDevice?: boolean } = {},
 ): Promise<void> {
-  if (opts.suppressScoutOffer !== false) {
-    await context.addInitScript(() => {
-      (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer = true;
-    });
+  if (opts.spoofCapableDevice !== false) {
+    await spoofCapableDevice(context);
   }
   await context.route("**/*", async (route) => {
     const url = new URL(route.request().url());
@@ -439,9 +514,17 @@ export async function commitPin(
   for (let attempt = 0; attempt < 3; attempt++) {
     await dismissTileOverlayIfPresent(page);
     try {
+      // Also wait for the intro spin+narrow beat to finish (aria-hidden lifts
+      // with inert + tap-handlers attachment): low-zoom spin tiles can mark
+      // data-tile-status="ready" before rearm-tiles resets it for narrow-in.
       await expect
-        .poll(() => map.getAttribute("data-tile-status"), { timeout: 30_000 })
-        .toBe("ready");
+        .poll(
+          async () =>
+            (await map.getAttribute("data-tile-status")) === "ready" &&
+            (await map.getAttribute("aria-hidden")) !== "true",
+          { timeout: 30_000 },
+        )
+        .toBe(true);
       break;
     } catch (err) {
       if (attempt === 2) throw err;
