@@ -1,5 +1,5 @@
 import { test, expect } from "playwright/test";
-import { serveBuiltArtifact } from "./helpers";
+import { loopNameIndex, openMysteryPlaceId, serveBuiltArtifact } from "./helpers";
 
 /**
  * GeoDetective unlimited-mode deploy-gate E2E.
@@ -39,7 +39,7 @@ test.beforeEach(async ({ context }) => {
 /** Open the GeoDetective; `puzzle` pins the deal via the ?loop-puzzle= seam. */
 async function openLoop(page: import("playwright/test").Page, puzzle?: string) {
   await page.goto(puzzle ? `${BASE}?loop-puzzle=${puzzle}` : BASE);
-  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({ timeout: 30_000 });
   // The first clue card is visible once the clue file loads.
   await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible({ timeout: 30_000 });
@@ -77,16 +77,8 @@ async function loopStore(page: import("playwright/test").Page) {
 
 /** Resolve the open mystery's target entry from the guess index. */
 async function targetEntry(page: import("playwright/test").Page) {
-  return page.evaluate(async () => {
-    const store = JSON.parse(localStorage.getItem("meridian.loop.v2")!);
-    const clue = await fetch(`loop/clues/${store.current.index}.json`).then((r) => r.json());
-    const names = await fetch("loop/names.json").then((r) => r.json());
-    return names.find((e: { id: string }) => e.id === clue.placeId) as {
-      n: string;
-      id: string;
-      r: string;
-    };
-  });
+  const placeId = await openMysteryPlaceId(page);
+  return loopNameIndex().find((e) => e.id === placeId)!;
 }
 
 /**
@@ -111,36 +103,16 @@ async function guessTarget(
 }
 
 /** Famous-place queries guaranteed not to be the target (by place id). */
-async function wrongQueries(
-  page: import("playwright/test").Page,
-  targetId: string,
-  count = 5,
-): Promise<string[]> {
-  return page.evaluate(
-    async ({ targetId, count }: { targetId: string; count: number }) => {
-      const names = await fetch("loop/names.json").then((r) => r.json());
-      const cands = [
-        "paris",
-        "tokyo",
-        "sydney",
-        "cairo",
-        "new york",
-        "london",
-        "moscow",
-        "beijing",
-        "mumbai",
-        "lagos",
-      ];
-      const out: string[] = [];
-      for (const q of cands) {
-        const e = names.find((x: { n: string }) => x.n === q);
-        if (e && e.id !== targetId) out.push(q);
-        if (out.length === count) break;
-      }
-      return out;
-    },
-    { targetId, count },
-  );
+function wrongQueries(targetId: string, count = 5): string[] {
+  const names = loopNameIndex();
+  const cands = ["paris", "tokyo", "sydney", "cairo", "new york", "london", "moscow", "beijing", "mumbai", "lagos"];
+  const out: string[] = [];
+  for (const q of cands) {
+    const e = names.find((x) => x.n === q);
+    if (e && e.id !== targetId) out.push(q);
+    if (out.length === count) break;
+  }
+  return out;
 }
 
 /** Drive the map camera deterministically through the E2E seam. */
@@ -307,7 +279,7 @@ test("real deck deal: loss path, streak reset, Next mystery deals a different pu
 
   // Five wrong guesses, none of which can be the target.
   const entry = await targetEntry(page);
-  for (const q of await wrongQueries(page, entry.id)) {
+  for (const q of wrongQueries(entry.id)) {
     await guessViaMap(page, q);
   }
 
@@ -480,9 +452,9 @@ test("leave and return: menu shows the resume variant; reload doesn't hijack", a
 
   // Leave explicitly: the menu offers to resume the case.
   await page.getByRole("button", { name: "Editions" }).click();
-  await expect(page.getByRole("button", { name: "▶️ Resume your case" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible();
   await page.reload();
-  await expect(page.getByRole("button", { name: "▶️ Resume your case" })).toBeVisible({
+  await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible({
     timeout: 30_000,
   });
   // The loop screen (not the menu's edition card) is closed: no map, no search.
@@ -490,7 +462,7 @@ test("leave and return: menu shows the resume variant; reload doesn't hijack", a
   await expect(page.getByRole("combobox", { name: "Search the map" })).toHaveCount(0);
 
   // Resuming restores the in-progress mystery.
-  await page.getByRole("button", { name: "▶️ Resume your case" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Resume your case" }).click();
   await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible({
     timeout: 30_000,
   });
@@ -508,7 +480,7 @@ test("edition card shows the streak after a win", async ({ page }) => {
   const card = page.getByRole("article").filter({ hasText: "GeoDetective" });
   await expect(card.getByText("🔥 Streak: 1")).toBeVisible();
   // The finished mystery is acknowledged: fresh deal, not resume.
-  await expect(card.getByRole("button", { name: "🔎 Solve a mystery" })).toBeVisible();
+  await expect(card.getByRole("button", { name: "GeoDetective: Solve a mystery" })).toBeVisible();
 });
 
 test("loop state is namespaced: v2 key only, endless-run keys untouched, v1 archive inert", async ({

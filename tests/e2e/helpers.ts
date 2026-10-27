@@ -33,6 +33,31 @@ import path from "node:path";
 // VITE_KOFI_URL (the cloud must render nothing there).
 const DIST = path.resolve(process.env.KOFI_E2E_DIST ?? "dist/client");
 const BASE = "/Meridian/";
+/**
+ * The GeoDetective guess index as `{n, id}` rows, decoded from the same
+ * packed file the app fetches (public/loop/names.v2.json — format in
+ * src/game/loop/names-codec.ts). Read from the built artifact in Node, so
+ * specs filter 119k rows here instead of shipping them through page.evaluate.
+ */
+export function loopNameIndex(): { n: string; id: string; r: string }[] {
+  const packed = JSON.parse(readFileSync(path.join(DIST, "loop", "names.v2.json"), "utf8")) as {
+    regions: string[];
+    n: string[];
+    id: number[];
+    r: number[];
+  };
+  return packed.n.map((n, i) => ({ n, id: `geonames:${packed.id[i]}`, r: packed.regions[packed.r[i]] }));
+}
+
+/** The open mystery's place id, from the page's persisted loop store + clue file. */
+export async function openMysteryPlaceId(page: Page): Promise<string> {
+  return page.evaluate(async () => {
+    const store = JSON.parse(localStorage.getItem("meridian.loop.v2")!);
+    const clue = await fetch(`loop/clues/${store.current.index}.json`).then((r) => r.json());
+    return clue.placeId as string;
+  });
+}
+
 export const EVIDENCE = "/home/hatch/workspace/meridian-review/evidence";
 export const RUN_KEY = "meridian.run";
 
@@ -483,9 +508,17 @@ export async function commitPin(
   for (let attempt = 0; attempt < 3; attempt++) {
     await dismissTileOverlayIfPresent(page);
     try {
+      // Also wait for the intro spin+narrow beat to finish (aria-hidden lifts
+      // with inert + tap-handlers attachment): low-zoom spin tiles can mark
+      // data-tile-status="ready" before rearm-tiles resets it for narrow-in.
       await expect
-        .poll(() => map.getAttribute("data-tile-status"), { timeout: 30_000 })
-        .toBe("ready");
+        .poll(
+          async () =>
+            (await map.getAttribute("data-tile-status")) === "ready" &&
+            (await map.getAttribute("aria-hidden")) !== "true",
+          { timeout: 30_000 },
+        )
+        .toBe(true);
       break;
     } catch (err) {
       if (attempt === 2) throw err;

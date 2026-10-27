@@ -33,6 +33,7 @@ jobs:
     - run: npm run typecheck
     - run: npm run build --if-present
     - run: npm test
+    - run: npm run lint:content
     - run: npm run test:worker
     - run: npm run typecheck:worker
 
@@ -63,6 +64,7 @@ jobs:
     - run: npm run build:pages
     - run: >-
         npx playwright test
+        tests/e2e/credits.desktop.spec.ts
         tests/e2e/grownups-privacy-contact.desktop.spec.ts
         tests/e2e/hydration-boot.desktop.spec.ts
         tests/e2e/observability.spec.ts

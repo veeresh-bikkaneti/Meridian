@@ -55,13 +55,38 @@ test("hashed /assets/* are immutable; sw.js and flags.json always revalidate", (
   for (const p of ["/sw.js", "/flags.json"]) {
     assert.ok((rules.get(p) ?? []).some((l) => /no-cache/.test(l)), p);
   }
-  // Un-hashed files under /assets/ detach the immutable header, and use the
-  // detach line ALONE: a second set-line would comma-join, not override.
+  // Un-hashed files under /assets/ detach the immutable header AND set their
+  // own value in the same block. Detach alone is not enough: Cloudflare
+  // documents `! ` as removing a default header, so detaching also removed
+  // the platform's own public, max-age=0, must-revalidate and the carved
+  // files shipped with no Cache-Control at all (PR #203 bug, live-verified
+  // 2026-10-21; fixed in PR #212). Detachments run before sets within a
+  // rule, so the set is the path's only value and nothing comma-joins.
   for (const p of [
     "/assets/maplibre-gl-worker.mjs",
     "/assets/maplibre-gl-shared.mjs",
     "/assets/storyteller/storyteller-assets.json",
   ]) {
-    assert.deepEqual(rules.get(p), ["! Cache-Control"], p);
+    assert.deepEqual(
+      rules.get(p),
+      ["! Cache-Control", "Cache-Control: public, max-age=0, must-revalidate"],
+      p,
+    );
+  }
+});
+
+test("asset-served / and /index.html keep their literal s-maxage value (drift pin)", () => {
+  // These two rules only ever reach an ASSET-SERVED copy of the document;
+  // the live site's HTML is rendered by the Worker, which sends
+  // HTML_CACHE_CONTROL ("public, max-age=0, must-revalidate", NO s-maxage)
+  // from src/start.ts instead. The divergence is deliberate and
+  // owner-ruled (WI-18, 2026-10-22) — pin the asset literal so an edit
+  // here cannot silently drift the two values together or apart.
+  for (const p of ["/", "/index.html"]) {
+    assert.deepEqual(
+      rules.get(p),
+      ["Cache-Control: public, max-age=0, s-maxage=60, must-revalidate"],
+      p,
+    );
   }
 });

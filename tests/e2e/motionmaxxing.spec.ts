@@ -286,7 +286,7 @@ test("M2: clue stagger derives from the clue index at runtime", async ({
 }) => {
   const errors = await cleanConsole(page);
   await page.goto(`${BASE}?loop-puzzle=218`);
-  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 30_000,
   });

@@ -14,6 +14,7 @@ import {
   rankLoopSuggestions,
 } from "./evaluate.ts";
 import type { FetchLike } from "./evaluate.ts";
+import { packNameIndex } from "./names-codec.ts";
 import type { LoopNameEntry } from "./types.ts";
 
 const FAKE_INDEX: LoopNameEntry[] = [
@@ -26,8 +27,8 @@ const FAKE_INDEX: LoopNameEntry[] = [
   { n: "picacho", id: "geonames:9999999", lon: -110.0, lat: 32.0, r: "Arizona, United States", p: 90000 },
 ];
 
-function mockFetch(index: unknown): FetchLike {
-  return async () => ({ ok: true, status: 200, json: async () => index });
+function mockFetch(index: LoopNameEntry[]): FetchLike {
+  return async () => ({ ok: true, status: 200, json: async () => packNameIndex(index) });
 }
 
 test("component pipeline: type 'spring' -> top-8 suggestions ranked by population", async () => {

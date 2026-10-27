@@ -5,6 +5,7 @@ import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
 import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
 import { playCelebrationSound } from "@/game/audio/play-guards";
+import { resolveBand, type AgeBandId } from "@/game/age-profile";
 import { LoopMap } from "../loop/LoopMap";
 import { coldtrailCaseCount, getColdtrailCase } from "./cases";
 import {
@@ -12,8 +13,8 @@ import {
   effectiveRadius,
   scoreIntercept,
   SOLVE_REWARD,
-  verdictFor,
 } from "./engine";
+import { themeForBand, verdictForTheme } from "./themes";
 import {
   buildEvidenceOverlays,
   nudgeDirection,
@@ -60,6 +61,10 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
       live = false;
     };
   }, []);
+  // WI-13 band theme: snapshot at mount, refreshed in onNextCase only —
+  // a mid-case profile change never re-themes an open case.
+  const [band, setBand] = useState<AgeBandId>(() => resolveBand());
+  const theme = themeForBand(band);
   const [store, setStore] = useState<ColdTrailStore>(loadColdtrail);
   const [pending, setPending] = useState<{ lon: number; lat: number } | null>(null);
   const [hint, setHint] = useState<string | null>(null);
@@ -126,8 +131,8 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   if (!caseData) {
     // Fail closed: a corrupt or empty deck never starts a broken case.
     return (
-      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
-        <h1 className="font-display text-3xl text-fg">❄️ Cold Trail</h1>
+      <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
+        <h1 className="mode-title text-3xl text-fg">❄️ Cold Trail</h1>
         <p className="mt-4 text-fg" role="alert">
           The case files didn&rsquo;t load. No case to play right now.
         </p>
@@ -253,9 +258,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
       });
       const freshOverlap = tripleOverlap(freshLocked);
       setHint(
-        freshOverlap?.polygon
-          ? "All 3 rings are down — tap where they cross to set your interception."
-          : "All 3 rings are down, but they don't cross — use ↩ Move on a ring to shift it closer.",
+        freshOverlap?.polygon ? theme.map.hintAllCross : theme.map.hintAllNoCross,
       );
     } else {
       setHint(`Ring ${i + 1} locked. ${3 - locked} to go — tap 📍 Place ring on the next sighting.`);
@@ -362,7 +365,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     };
     next.informantOn[i] = true;
     commit({ ...store, stars: store.stars - INFORMANT_COST, current: next });
-    setHint("🎙️ The informant tightened that ring to half its radius.");
+    setHint(theme.helper.hint);
   };
 
   // Map tap: the interception guess (only once all 3 rings are locked).
@@ -383,7 +386,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     if (!pending || revealed) return;
     playConfirmGuess();
     const scoreKm = scoreIntercept(pending.lon, pending.lat, caseData.hideout.lon, caseData.hideout.lat);
-    const verdict = verdictFor(scoreKm);
+    const verdict = verdictForTheme(theme, scoreKm);
     if (verdict.caught) playWin();
     else playLose();
     const next = {
@@ -402,6 +405,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   };
 
   const onNextCase = () => {
+    setBand(resolveBand());
     setPending(null);
     setHint(null);
     setPlacing(null);
@@ -409,35 +413,36 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     commit({ ...store, caseIndex: store.caseIndex + 1, current: freshProgress() });
   };
 
-  const verdict = progress.scoreKm !== null ? verdictFor(progress.scoreKm) : null;
+  const verdict = progress.scoreKm !== null ? verdictForTheme(theme, progress.scoreKm) : null;
   const placingNow = placing !== null;
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8" data-testid="coldtrail-screen">
+    <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8 lg:max-w-6xl" data-testid="coldtrail-screen">
       <header>
         <div className="flex items-start justify-between gap-3">
           <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
             ← All games
           </Button>
-          <p data-testid="coldtrail-stars" className="text-sm text-muted" aria-label={`${store.stars} stars`}>
+          <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
             ⭐ {store.stars}
           </p>
         </div>
-        <p className="mt-4 text-[11px] tracking-wider text-muted uppercase">❄️ Cold Trail · Case file</p>
-        <h1 ref={caseHeadingRef} tabIndex={-1} className="font-display mt-1 text-3xl text-fg">
-          Case #{String(caseData.caseNo).padStart(3, "0")}
+        <p className="name-eyebrow mt-4">{theme.eyebrow}</p>
+        <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
+          {theme.heading(caseData.caseNo)}
         </h1>
-        <p className="mt-2 text-muted">
-          A smuggler is moving between cities. Three sightings, three rings — triangulate
-          the hideout and tap your interception.
+        <p className="mt-2 text-fg">
+          {theme.intro}
         </p>
       </header>
 
-      <section aria-label="Sightings" className="mt-6 flex flex-col gap-3">
+      <div className="ct-layout mt-6">
+      <section aria-label="Sightings" className="ct-sightings flex flex-col gap-3">
         {caseData.sightings.map((s, i) => (
           <SightingCard
             key={s.id}
             sighting={s}
+            theme={theme}
             index={i}
             unit={hideoutUnit}
             ringPlaced={progress.ringsPlaced[i]!}
@@ -459,18 +464,18 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
         ))}
       </section>
 
-      <section aria-label="Trail map" className="mt-6 flex flex-col gap-3">
+      <section aria-label="Trail map" className="ct-map flex flex-col gap-3">
         {/* Plain text, not a live region: the hint below (role="status") is
             the single announcer — two live regions were double-announcing
             the same sentences (e.g. "All 3 rings are down"). Every state
             shown here is also announced via the hint or a focus move. */}
-        <p className="text-sm text-muted">
+        <p className="text-sm text-fg">
           {revealed
-            ? "Case closed — the gold star marks the hideout."
+            ? theme.map.statusDone
             : allRingsPlaced
               ? evidenceOverlap?.polygon
-                ? "All 3 rings are down — tap where they cross to set your interception."
-                : "All 3 rings are down, but they don't cross — use ↩ Move on a ring to shift it closer."
+                ? theme.map.statusReadyCross
+                : theme.map.statusReadyNoCross
               : `Rings placed: ${ringsPlacedCount} of 3`}
         </p>
         <div className="relative">
@@ -487,7 +492,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             mapLabel={
               placingNow
                 ? `Cold Trail map — placing the ring for sighting ${placing! + 1}. Tap the map where you think the ring goes, or press Enter to plant it at the map center, then use arrow keys to move it.`
-                : "Cold Trail map. Place each sighting ring where you think the witness saw the smuggler, then tap where the rings cross to set your interception."
+                : theme.map.ariaLabel
             }
             placementActive={placingNow}
             onPlacementTap={onPlacementTap}
@@ -520,70 +525,69 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
             </>
           ) : null}
         </div>
-        {!revealed ? (
-          <p className="text-xs text-muted" aria-hidden="true">
-            <span className="text-gold-ink">gold ring</span>&thinsp;=&thinsp;witness sighting radius
-            {placingNow ? (
-              <>
-                &ensp;·&ensp;<span className="text-gold-ink">dashed ring</span>&thinsp;=&thinsp;your draft — not locked yet
-              </>
-            ) : null}
-            &ensp;·&ensp;{allRingsPlaced && !evidenceOverlap?.polygon ? (
-              <>use ↩ Move on a sighting card to shift a ring closer</>
-            ) : (
-              <>tap where the rings cross to intercept</>
-            )}
-          </p>
-        ) : null}
         {hint ? (
           <div className="flex items-center justify-between gap-3">
             <p role="status" data-testid="map-hint" className="text-sm text-fg">
               {hint}
             </p>
             {placingNow ? (
-              <button
+              <Button
                 type="button"
+                variant="ghost"
                 data-testid="cancel-placement-banner-btn"
                 onClick={onCancelPlacement}
-                className="min-h-[44px] shrink-0 px-3 text-sm text-muted underline"
+                className="min-h-[44px] shrink-0 px-3 text-sm underline"
               >
                 Cancel
-              </button>
+              </Button>
             ) : null}
           </div>
         ) : null}
       </section>
+      </div>
+
+      {!revealed ? (
+        <p className="mode-surface mt-6 rounded-[18px] border px-3 py-2 text-xs text-muted" aria-hidden="true">
+          <span className="text-gold-ink">gold ring</span>&thinsp;=&thinsp;{theme.map.legendRing}
+          {placingNow ? (
+            <>
+              &ensp;·&ensp;<span className="text-gold-ink">dashed ring</span>&thinsp;=&thinsp;{theme.map.legendDraft}
+            </>
+          ) : null}
+          &ensp;·&ensp;{allRingsPlaced && !evidenceOverlap?.polygon ? (
+            <>{theme.map.legendNoCross}</>
+          ) : (
+            <>{theme.map.legendCross}</>
+          )}
+        </p>
+      ) : null}
 
       {pending && !revealed ? (
-        <InterceptConfirm onConfirm={onConfirmIntercept} onCancel={() => setPending(null)} />
+        <InterceptConfirm theme={theme} onConfirm={onConfirmIntercept} onCancel={() => setPending(null)} />
       ) : null}
 
       {revealed && verdict && progress.scoreKm !== null ? (
         <section
           aria-label="Case result"
           data-testid="coldtrail-reveal"
-          className="mt-6 rounded-xl border border-line bg-surface p-5"
+          className="mode-card mt-6 p-5"
         >
-          <p className="text-[11px] tracking-wider text-muted uppercase">Case closed</p>
-          <h2 ref={resultHeadingRef} tabIndex={-1} className="mt-1 text-2xl font-semibold text-fg">{verdict.title}</h2>
+          <p className="text-[11px] tracking-wider text-muted uppercase">{theme.reveal.eyebrow}</p>
+          <h2 ref={resultHeadingRef} tabIndex={-1} className="mode-title mt-1 text-2xl font-semibold text-fg">{verdict.title}</h2>
           <p className="mt-2 text-fg">
-            The hideout was <strong>{caseData.hideout.name}</strong>.
+            {theme.reveal.targetLine(caseData.hideout.name)}
           </p>
           <p className="mt-1 text-muted">
-            Your intercept missed by{" "}
-            <strong className="text-fg">
-              {formatLength(progress.scoreKm, hideoutUnit)}
-            </strong>
-            . {verdict.line}
+            {theme.reveal.missLine(formatLength(progress.scoreKm, hideoutUnit))} {verdict.line}
           </p>
-          <p className="mt-2 text-sm text-muted">+{SOLVE_REWARD}⭐ for closing the case</p>
+          <p className="mt-2 text-sm text-muted">{theme.reveal.closing}</p>
           <Button
             type="button"
             data-testid="next-case-btn"
             onClick={onNextCase}
             className="mt-4 min-h-[48px] w-full text-base"
           >
-            🔎 Next case
+            {theme.reveal.nextButton}
           </Button>
         </section>
       ) : null}

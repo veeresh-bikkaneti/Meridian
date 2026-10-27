@@ -6,6 +6,7 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { nitro } from "nitro/vite";
+import { cloudflare } from "@cloudflare/vite-plugin";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { grokPwaPlugin } from "./scripts/grok-pwa-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
@@ -14,6 +15,8 @@ import { noswHatchPlugin } from "./scripts/nosw-hatch-plugin.mjs";
 import { crashWatchdogPlugin } from "./scripts/crash-watchdog-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { fingerprintSwPlugin } from "./scripts/fingerprint-sw-plugin.mjs";
+// @ts-expect-error JS plugin alongside the TS vite config
+import { buildMetaPlugin } from "./scripts/build-meta-plugin.mjs";
 // @ts-expect-error JS plugin alongside the TS vite config
 import { appEnvPlugin } from "./scripts/app-env-plugin.mjs";
 // @ts-expect-error JS module alongside the TS vite config
@@ -38,6 +41,15 @@ function buildIdForBundle(): string {
   }
   return resolveBuildId();
 }
+
+/**
+ * The ONE build id for this vite invocation (WI-7a). Computed once and
+ * shared by the bundle `define`, the fingerprint-sw plugin and the
+ * build-meta plugin, so the baked id, the sw.js VERSION and the served
+ * build-meta.json are the same string by construction — two separate
+ * buildIdForBundle() calls could diverge on the timestamp fallback.
+ */
+const BUILD_ID = buildIdForBundle();
 import { isMigrationFile } from "./scripts/migration-plan.mjs";
 
 /** The files `src/lib/db.ts` globs — same directory, same non-recursive scope. */
@@ -232,7 +244,7 @@ export default defineConfig(({ command, isPreview }) => ({
   base: githubPages ? "/Meridian/" : "/",
   define: {
     // Baked-in build identity for deploy-awareness (see src/game/build-staleness.ts).
-    __MERIDIAN_BUILD_ID__: JSON.stringify(buildIdForBundle()),
+    __MERIDIAN_BUILD_ID__: JSON.stringify(BUILD_ID),
   },
   server: {
     host: "0.0.0.0",
@@ -254,6 +266,18 @@ export default defineConfig(({ command, isPreview }) => ({
     // PWA head + ?install=1 tutorial page; runs before Start/Nitro.
     grokPwaPlugin(),
     tailwindcss(),
+    // Cloudflare deploy shape for the production Worker: builds the
+    // "ssr" environment into the bundle `wrangler deploy` uploads (the
+    // entry is src/server.ts — see the root wrangler.jsonc) and writes
+    // the config that deploy follows. Scoped to the ssr environment
+    // only, so the client build and the GitHub Pages build are
+    // unchanged in substance — the only exceptions are an inert
+    // `.assetsignore` (+24 B), `_shell.html` +282 B (its embedded
+    // router manifest now also lists the home route), and growth
+    // in the unpublished `dist/server` build intermediate.
+    // Must be registered before tanstackStart.
+    // Why: docs/reviews/2026-10-22-wrangler-config-entry.md (WI-19b).
+    cloudflare({ viteEnvironment: { name: "ssr" } }),
     tanstackStart(githubPages ? { spa: { enabled: true } } : undefined),
     // ?nosw=1 escape hatch AFTER tanstackStart: its buildApp post hook must
     // run after TanStack's prerender wrote _shell.html (same post order +
@@ -267,7 +291,13 @@ export default defineConfig(({ command, isPreview }) => ({
     // build so it works even when vite is invoked directly (bypassing npm
     // lifecycle hooks). Idempotent — safe alongside postbuild hooks.
     // See scripts/fingerprint-sw-plugin.mjs.
-    fingerprintSwPlugin(),
+    fingerprintSwPlugin(BUILD_ID),
+    // Write build-meta.json into the build output with the SAME id.
+    // The npm prebuild hooks write public/build-meta.json, but a direct
+    // vite invocation (the Workers Builds path) bypasses them — before
+    // this plugin, that path served no meta file at all on a fresh
+    // checkout. See scripts/build-meta-plugin.mjs.
+    buildMetaPlugin(BUILD_ID),
     ...(githubPages
       ? []
       : command === "build" || isPreview

@@ -1725,7 +1725,7 @@ export function GrandpaCoffeeRun() {
                       e.stopPropagation();
                       openCloudGate();
                     }}
-                    aria-label="Grown-ups — buy me a coffee? Activate to learn how to support Meridian."
+                    aria-label="Grown-ups — buy me a coffee? Your support keeps Meridian free for kids. Activate to learn how to support Meridian."
                   >
                     <strong>Grown-ups — buy me a coffee? ☕</strong>
                     <span>Your support keeps Meridian free for kids</span>

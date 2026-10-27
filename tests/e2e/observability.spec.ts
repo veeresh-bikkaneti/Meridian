@@ -235,7 +235,14 @@ test("D1 real-sequence: kill during Globe chunk load (armed through the real run
       return raw ? (JSON.parse(raw) as { sessionId?: string }).sessionId ?? null : null;
     });
     armedSessionId = armed;
-    expect(globeRequests).toBeGreaterThanOrEqual(1, "the real Globe chunk request was made (and is held)");
+    // Wait for the chunk request instead of asserting it has already
+    // landed: game-app.tsx records the data_chunk_load_start milestone
+    // BEFORE the awaits that issue the chunk import, so the milestone
+    // poll above can resolve while the request is still in flight. A
+    // bare assertion here makes this test a coin flip on slow machines.
+    await expect
+      .poll(() => globeRequests, { timeout: 15_000, message: "the real Globe chunk request was made (and is held)" })
+      .toBeGreaterThanOrEqual(1);
 
     // The "next boot": window.open clones the armed tab's sessionStorage
     // into the popup (see the header comment for exactly what this does

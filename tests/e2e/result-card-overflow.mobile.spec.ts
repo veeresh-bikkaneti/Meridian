@@ -9,6 +9,8 @@ import {
   readQuestion,
   spotViewportPoint,
   tapHitsMap,
+  loopNameIndex,
+  openMysteryPlaceId,
 } from "./helpers";
 import { BOUNDED_TEXT_REGISTRY } from "../../scripts/bounded-text-registry.mjs";
 
@@ -328,20 +330,14 @@ async function setupVariant(
 ): Promise<void> {
   if (variant === "geodetective-reveal") {
     await page.goto("http://127.0.0.1:4123/Meridian/?loop-puzzle=218");
-    await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+    await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
     await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
       timeout: 30_000,
     });
     // Guess the pinned target through the search box (same seam as
     // geodetective.spec.ts).
-    const entry = await page.evaluate(async () => {
-      const store = JSON.parse(localStorage.getItem("meridian.loop.v2")!);
-      const clue = await fetch(`loop/clues/${store.current.index}.json`).then((r) => r.json());
-      const names: { id: string; n: string }[] = await fetch("loop/names.json").then((r) =>
-        r.json(),
-      );
-      return names.find((e) => e.id === clue.placeId)!;
-    });
+    const placeId = await openMysteryPlaceId(page);
+    const entry = loopNameIndex().find((e) => e.id === placeId)!;
     const box = page.getByRole("combobox", { name: "Search the map" });
     await box.click();
     await box.fill(entry.n);

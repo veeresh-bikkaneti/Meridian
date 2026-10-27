@@ -4,7 +4,7 @@
 the full panel pipeline and the owner's merge word are still owed**
 (standing rule: the panel approves the final tip itself).
 
-Base: `origin/main 1ca4c04` (merged in 2026-10-22, after #218/#206/#207/#222). Removes the production test seam
+Base: `origin/main 34ec705` (merged in 2026-10-26, after #248/#250; previously `1ca4c04`). Removes the production test seam
 `window.__meridianSuppressScoutOffer` (issue #154 item 1 — the owner's
 standing recommendation: remove it from production; the build was
 authorized 2026-10-21).
@@ -83,27 +83,25 @@ Chosen: the harness now fakes the *device*, not the decision.
       new discriminating spec (`2aef86d`)
 - [x] capability.test.ts pin inverted
 - [x] docs/scout-offer-policy.md "Test seam" paragraph rewritten (`c2f1fbb`)
+- [x] Synced with `origin/main` (`34ec705`); updated `commitPin` in `tests/e2e/helpers.ts` to also wait for `aria-hidden !== "true"` alongside `data-tile-status === "ready"` so early low-zoom spin tiles (warmed by boot `probeWebGL2()` now running un-bypassed) cannot trigger pin clicks while `.satellite-map` is still `inert` during the intro beat
 
 ## Gates (builder-run at the branch tip)
 
-- `npx tsc --noEmit` — clean
-- `npm test` — scripts suite + src suite green (src 1368 pass / 0 fail,
-  same count as main)
-- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npx tsc --noEmit && npm run typecheck:worker` — clean
+- `npm test && npm run test:worker` — scripts suite (841 tests: 832 pass / 9 skip / 0 fail) + src suite (1670 pass / 0 fail) + worker suite (85 pass / 0 fail) all green
+- `node scripts/lint-cards.mjs` — `lint-cards: GATE PASSED`
 - `npm run build:pages` (Ko-fi env set) — green
-- **Bundle proof:** `grep -r __meridianSuppressScoutOffer dist/client/`
-  → **0 hits** (control: main's built bundle in a sibling worktree
-  contains the seam in 1 file, so the grep discriminates)
-- E2E `--workers=1`, Ko-fi env, against the built artifact:
-  - New pair `scout-harness-suppression.desktop.spec.ts` — **2/2 pass**
-    (default serve boots full on the weak VM; opted-out serve
-    auto-switches — the pair cannot pass vacuously)
-  - Scout family + GeoDetective batch (13 files, 73 tests) — **72/73**;
-    the one failure (geodetective-unlabeled-tap, "Guess Open Water?"
-    dialog wait > 15 s under full-batch load) **passed 2/2 on solo
-    re-run** — the known GeoDetective dialog-wait pacing flake, not
-    this change (boot qualification is the only production delta, and
-    GeoDetective does not use it)
+- **Bundle proof:** `rg __meridianSuppressScoutOffer dist/client/`
+  → **0 hits**
+- E2E against the built artifact (`PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome`):
+  - All 9 `tests/e2e/scout-*.spec.ts` files — **47/47 pass** (including `scout-harness-suppression.desktop.spec.ts` 2/2, `scout-capability-offer.desktop.spec.ts` 13/13, `scout-toggle.desktop.spec.ts` 11/11, `scout-switch-note.desktop.spec.ts` 6/6, `scout-offer.desktop.spec.ts` 4/4, `scout-narrow-repro.zoom-space.spec.ts` 4/4, `scout-context-lost.desktop.spec.ts` 3/3, `scout-false-demotion.desktop.spec.ts` 3/3, `scout-throttled.desktop.spec.ts` 1/1)
+  - `tests/e2e/cleared-mode.spec.ts` — **11/11 pass**
+  - `tests/e2e/chunk-recovery.desktop.spec.ts` — **19/19 pass**
+  - `tests/e2e/ws4-tile-fallback.desktop.spec.ts` — **3/3 pass**
+  - `tests/e2e/grownups-privacy-contact.desktop.spec.ts` — **3/3 pass**
+  - `tests/e2e/hydration-boot.desktop.spec.ts` — **1/1 pass**
+  - `tests/e2e/observability.spec.ts` — **3/3 pass**
+  - `tests/e2e/geodetective.spec.ts` — **17/18 pass** (the 1 failure at line 238 is a pre-existing `main` strict-mode collision between `PlaceSheet` exit clone and `LoopReveal` heading during `@formkit/auto-animate` 250ms exit; unrelated to Scout Map)
 
 ## Design risk for the panel
 

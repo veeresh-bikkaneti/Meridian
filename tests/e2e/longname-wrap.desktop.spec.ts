@@ -7,6 +7,8 @@ import {
   dismissTileOverlayIfPresent,
   commitPin,
   tapHitsMap,
+  loopNameIndex,
+  openMysteryPlaceId,
 } from "./helpers";
 
 /**
@@ -205,7 +207,7 @@ async function missPointOnNamedPlace(page: Page): Promise<{ x: number; y: number
 
 async function openLoop(page: Page, puzzle: string): Promise<void> {
   await page.goto(`${APP.split("?")[0]}?loop-puzzle=${puzzle}&idle-ms=3600000`);
-  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 30_000,
   });
@@ -233,18 +235,8 @@ async function openSheetFor(page: Page, query: string, entryId: string): Promise
 
 /** Resolve the open mystery's target entry from the guess index. */
 async function targetEntry(page: Page) {
-  return page.evaluate(async () => {
-    const store = JSON.parse(localStorage.getItem("meridian.loop.v2")!);
-    const clue = await fetch(`loop/clues/${store.current.index}.json`).then((r) =>
-      r.json(),
-    );
-    const names = await fetch("loop/names.json").then((r) => r.json());
-    return names.find((e: { id: string }) => e.id === clue.placeId) as {
-      n: string;
-      id: string;
-      r: string;
-    };
-  });
+  const placeId = await openMysteryPlaceId(page);
+  return loopNameIndex().find((e) => e.id === placeId)!;
 }
 
 /** Guess the resolved target through the search box (win path). */
