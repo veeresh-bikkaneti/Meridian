@@ -21,6 +21,15 @@ import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
  */
 export function HomeGlobe() {
   const mountRef = useRef<HTMLDivElement | null>(null);
+  // Loading-orb state: false until the globe texture uploads. The orb
+  // overlay renders inside the mount while the texture is pending, then
+  // fades out (opacity transition, unmounted on transition end); it is
+  // NOT a Suspense fallback — the fallback cannot cover this post-mount
+  // waterfall. Reduced-motion / Save-Data / low-memory / WebGL-failure /
+  // import-failure / texture-error paths all land on the static disc
+  // below, where no orb ever appears.
+  const [textured, setTextured] = useState(false);
+  const [orbGone, setOrbGone] = useState(false);
   const [fallback, setFallback] = useState<boolean>(() => {
     if (typeof window === "undefined") return false;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -58,9 +67,16 @@ export function HomeGlobe() {
         .then((THREE) => {
           if (disposed) return;
           try {
-            cleanup = initGlobe(THREE, mount, () => {
-              if (!disposed) setFallback(true);
-            });
+            cleanup = initGlobe(
+              THREE,
+              mount,
+              () => {
+                if (!disposed) setFallback(true);
+              },
+              () => {
+                if (!disposed) setTextured(true);
+              },
+            );
           } catch {
             if (!disposed) setFallback(true);
           }
@@ -98,12 +114,31 @@ export function HomeGlobe() {
       />
     );
   }
-  return <div ref={mountRef} className="hv5-globe-mount" />;
+  return (
+    <div ref={mountRef} className="hv5-globe-mount">
+      {orbGone ? null : (
+        <span
+          aria-hidden="true"
+          className={textured ? "hv5-globe-orb hv5-globe-orb-fading" : "hv5-globe-orb"}
+          onTransitionEnd={(e) => {
+            if (e.propertyName === "opacity") setOrbGone(true);
+          }}
+        >
+          <span aria-hidden="true" className="meridian-spinner hv5-orb-spinner" />
+        </span>
+      )}
+    </div>
+  );
 }
 
 type ThreeModule = typeof import("three");
 
-function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void): () => void {
+function initGlobe(
+  THREE: ThreeModule,
+  mount: HTMLDivElement,
+  onFail: () => void,
+  onTextured: () => void,
+): () => void {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   if (!renderer.getContext()) {
     renderer.dispose();
@@ -143,6 +178,7 @@ function initGlobe(THREE: ThreeModule, mount: HTMLDivElement, onFail: () => void
     (t) => {
       t.colorSpace = THREE.SRGBColorSpace;
       t.anisotropy = 4;
+      onTextured();
     },
     undefined,
     () => onFail(),

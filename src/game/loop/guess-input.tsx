@@ -37,7 +37,7 @@ function useDebouncedValue<T>(value: T, delayMs: number): T {
  * Camera-jump search for the GeoDetective "Detective's Atlas" map
  * (WAI-ARIA 1.2 combobox).
  *
- * - The name index (public/loop/names.json) is fetched lazily on first
+ * - The name index (public/loop/names.v2.json) is fetched lazily on first
  *   focus and never ships in the main bundle.
  * - Suggestions match every query word against "name + region", ranked
  *   exact-name > word-boundary > substring > region-only, then population;

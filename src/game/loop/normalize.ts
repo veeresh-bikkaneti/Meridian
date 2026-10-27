@@ -2,7 +2,7 @@
  * The single shared place-name normalizer for the GeoDetective guess index.
  *
  * Used by BOTH the build-time pipeline (`scripts/build-loop.mjs`, which
- * writes the normalized `n` field of `public/loop/names.json`) and the
+ * writes the normalized `n` field of `public/loop/names.v2.json`) and the
  * runtime typeahead (`src/game/loop/evaluate.ts`, which normalizes the
  * player's query). One source of truth — the two sides must never drift
  * again (2026-10-05: a duplicated normalizer made Białystok and Hınıs

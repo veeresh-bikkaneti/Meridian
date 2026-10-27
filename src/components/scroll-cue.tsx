@@ -32,6 +32,7 @@ export function useMoreBelow<T extends HTMLElement>(): {
     };
     update();
     el.addEventListener("scroll", update, { passive: true });
+    el.addEventListener("transitionend", update);
     // Content can change height without scrolling (fonts, tier shifts,
     // clue expansion) — re-evaluate on resize of the region. rAF-coalesced
     // so the synchronous read/write loop can't trip the benign
@@ -39,6 +40,7 @@ export function useMoreBelow<T extends HTMLElement>(): {
     const stopObserving = observeResize(el, update);
     return () => {
       el.removeEventListener("scroll", update);
+      el.removeEventListener("transitionend", update);
       stopObserving();
     };
   }, []);

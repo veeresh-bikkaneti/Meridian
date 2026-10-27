@@ -177,11 +177,13 @@ function ContactForm() {
         </div>
 
         {problems.length > 0 ? (
-          <ul role="alert" className="text-red-700">
-            {problems.map((p) => (
-              <li key={p}>{p}</li>
-            ))}
-          </ul>
+          <div role="alert">
+            <ul className="text-error">
+              {problems.map((p) => (
+                <li key={p}>{p}</li>
+              ))}
+            </ul>
+          </div>
         ) : null}
         {result && result.status !== "sent" ? (
           <p role="alert" data-testid="contact-error">

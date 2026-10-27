@@ -13,6 +13,7 @@ import {
   unlabeledSpotEntry,
 } from "./evaluate.ts";
 import type { FetchLike } from "./evaluate.ts";
+import { packNameIndex } from "./names-codec.ts";
 import { preloadAdmin1Boundaries } from "../reverse-geocode.ts";
 import { preloadTerritory } from "../territory.ts";
 
@@ -129,7 +130,7 @@ test("rankLoopSuggestions: caps at the limit and dedupes ids", () => {
 // ---------------------------------------------------------------------------
 
 test("loopNamesUrl respects the app base path", () => {
-  assert.ok(loopNamesUrl().endsWith("loop/names.json"), loopNamesUrl());
+  assert.ok(loopNamesUrl().endsWith("loop/names.v2.json"), loopNamesUrl());
 });
 
 test("fetchLoopIndex: loads, validates, and caches the index", async () => {
@@ -137,7 +138,7 @@ test("fetchLoopIndex: loads, validates, and caches the index", async () => {
   let calls = 0;
   const fake: FetchLike = async () => {
     calls++;
-    return { ok: true, status: 200, json: async () => FAKE_INDEX };
+    return { ok: true, status: 200, json: async () => packNameIndex(FAKE_INDEX) };
   };
   const first = await fetchLoopIndex(fake);
   const second = await fetchLoopIndex(fake);
@@ -152,7 +153,7 @@ test("fetchLoopIndex: bad shape and HTTP errors reject (and allow retry)", async
   const badShape: FetchLike = async () => ({
     ok: true,
     status: 200,
-    json: async () => [{ nope: true }],
+    json: async () => [{ nope: true }], // e.g. the retired array-of-objects names.json
   });
   await assert.rejects(() => fetchLoopIndex(badShape), /unexpected shape/);
 
@@ -160,7 +161,7 @@ test("fetchLoopIndex: bad shape and HTTP errors reject (and allow retry)", async
   const flaky: FetchLike = async () => {
     calls++;
     if (calls === 1) return { ok: false, status: 500, json: async () => null };
-    return { ok: true, status: 200, json: async () => FAKE_INDEX };
+    return { ok: true, status: 200, json: async () => packNameIndex(FAKE_INDEX) };
   };
   await assert.rejects(() => fetchLoopIndex(flaky), /HTTP 500/);
   const recovered = await fetchLoopIndex(flaky); // retry works: cache was cleared

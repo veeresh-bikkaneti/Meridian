@@ -465,6 +465,16 @@
 }
 
 .agep-footer-link {
+  /* This one class is shared by <button> and <a> items, and the two
+     element types lay out their text differently inside the 44px box:
+     Chromium vertically centers a button's content on its own, while a
+     link's line box sits at the top of the box — so the buttons' labels
+     rendered ~11.5px lower than the links' (measured on the production
+     build, 2026-10-23). Making every item an inline-flex box that
+     centers its own content removes the difference at the source. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 44px;
   padding: 0 16px;
   background: none;
