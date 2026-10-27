@@ -160,6 +160,6 @@ Command: `npm run build:pages && node scripts/perf-globe-easy.mjs --runs 5` (pla
 
 **Recommended next, in order of expected gain:**
 1. Home weight (WS-5 in the orchestrator brief): find the largest modules in `routes-*.js` (2.25 MB raw) and lazy-load secondary screens; resize `grandpa-directions.webp` (377 kB). Target: home ready below 5.0 s and the `safari-launch` ceiling.
-2. `names.json` columnar encoding (-31% gzip, parse 154 ms -> 34 ms measured locally): needs the build-loop tests to change, so it needs your approval.
+2. ~~`names.json` columnar encoding~~ — done in WI-1 (`loop/names.v2.json`, see `docs/reviews/2026-10-21-wi1-load-speed.md`).
 3. Medium/Hard: if Medium matters on phones, split tier 3/4 by country; the field-dedupe experiment (drop `edition`/`regionId`/`hookMissing`/`difficulty`) saves only 3% gzip on t1+t2 (462,111 -> 446,351 B), so do not bother.
 4. Fix the boot effect that deletes `meridian.run` when `difficultyChoice` changes (see `docs/ops/specs/ws-0-globe-tier-flag.md` section 9), then revisit "Try again".
