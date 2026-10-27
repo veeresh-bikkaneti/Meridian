@@ -436,6 +436,36 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
     const cBox = (await navContact.boundingBox())!;
     expect(cBox.width).toBeGreaterThanOrEqual(44);
     expect(cBox.height).toBeGreaterThanOrEqual(44);
+
+    // Map-mode popover opens directly below map-mode-button and scrolls WITH the button
+    const mapBtnVp = page.getByTestId("map-mode-button");
+    await mapBtnVp.click();
+    const popVp = page.getByTestId("map-mode-popover");
+    await expect(popVp).toBeVisible();
+    const btnBefore = (await mapBtnVp.boundingBox())!;
+    const popBefore = (await popVp.boundingBox())!;
+    expect(
+      Math.abs(popBefore.y - (btnBefore.y + btnBefore.height + 8)),
+      `${w}x${h} popover top must be 8px below button bottom before scroll`,
+    ).toBeLessThanOrEqual(2);
+    expect(popBefore.x, `${w}x${h} popover left margin`).toBeGreaterThanOrEqual(8);
+    expect(popBefore.x + popBefore.width, `${w}x${h} popover right margin`).toBeLessThanOrEqual(w - 8);
+
+    await page.evaluate(() => window.scrollBy(0, 200));
+    const btnAfter = (await mapBtnVp.boundingBox())!;
+    const popAfter = (await popVp.boundingBox())!;
+    expect(
+      Math.abs(popAfter.y - (btnAfter.y + btnAfter.height + 8)),
+      `${w}x${h} popover top must remain 8px below button bottom after scroll`,
+    ).toBeLessThanOrEqual(2);
+    expect(
+      Math.abs(popBefore.y - popAfter.y),
+      `${w}x${h} popover must scroll with the page instead of staying fixed`,
+    ).toBeGreaterThanOrEqual(150);
+
+    await page.keyboard.press("Escape");
+    await expect(popVp).toHaveCount(0);
+    await page.evaluate(() => window.scrollTo(0, 0));
   }
 
   // 1. Unified map-mode pill button contains map-mode-indicator inside map-mode-button
