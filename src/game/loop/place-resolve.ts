@@ -6,7 +6,7 @@ import type { LoopNameEntry } from "./types.ts";
  *
  * The Esri reference tiles are raster: the map cannot tell us which label
  * the player tapped. Instead we resolve the tap against our own guess
- * index (public/loop/names.json, 119k entries) with a grid spatial index:
+ * index (public/loop/names.v2.json, 119k entries) with a grid spatial index:
  * the nearest indexed place within the tap tolerance wins. The bottom
  * sheet always shows the resolved place's real name, so a near-miss
  * resolution is honest, never a silent wrong pick — and taps far from any

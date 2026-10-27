@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { BoundedText } from "@/components/bounded-text";
 import { formatLength, type LengthUnit } from "@/game/units";
 import { effectiveRadius, INFORMANT_COST } from "./engine.ts";
+import type { ColdTrailTheme } from "./themes.ts";
 import type { ColdTrailSighting } from "./types.ts";
 
 /**
@@ -18,6 +19,7 @@ import type { ColdTrailSighting } from "./types.ts";
  */
 export function SightingCard({
   sighting,
+  theme,
   index,
   unit,
   ringPlaced,
@@ -35,6 +37,7 @@ export function SightingCard({
   actionRef,
 }: {
   sighting: ColdTrailSighting;
+  theme: ColdTrailTheme;
   index: number;
   /** Length unit for the "Ring radius" line: miles for a USA hideout. */
   unit: LengthUnit;
@@ -67,12 +70,12 @@ export function SightingCard({
     <article
       aria-label={`Sighting ${index + 1}: ${sighting.cityName}`}
       data-testid="sighting-card"
-      className="rounded-xl border border-line bg-surface p-4"
+      className="mode-card p-4"
     >
-      <p className="text-[11px] tracking-wider text-muted uppercase">
-        🕵️ Sighting {index + 1} · {sighting.timestamp}
+      <p className="name-eyebrow">
+        {theme.sightingEyebrow(index + 1, sighting.timestamp)}
       </p>
-      <p className="mt-1 text-fg">{sighting.text}</p>
+      <p className="mt-1 text-fg">{theme.sightingSentence(sighting)}</p>
       <BoundedText
         as="p"
         variant="body"
@@ -85,7 +88,7 @@ export function SightingCard({
       <p className="mt-2 text-sm text-muted">
         Ring radius:{" "}
         <span className="text-gold-ink">~{formatLength(radius, unit)}</span>
-        {informantOn ? " (informant tightened)" : ""}
+        {informantOn ? theme.helper.suffix : ""}
         {ringPlaced
           ? ""
           : placingActive
@@ -169,12 +172,12 @@ export function SightingCard({
                 }
                 aria-label={
                   informantAffordable
-                    ? `Informant: tighten ring to half radius, costs ${INFORMANT_COST} star`
-                    : `Informant unavailable: needs ${INFORMANT_COST} star, you have ${stars}`
+                    ? theme.helper.ariaAffordable
+                    : theme.helper.ariaUnavailable(INFORMANT_COST, stars)
                 }
                 className="min-h-[44px]"
               >
-                🎙️ Informant: tighten 50% (1⭐)
+                {theme.helper.button}
               </Button>
             ) : null}
           </div>

@@ -3,9 +3,9 @@
  *
  * Covers: name normalization, the (name, region) dedupe policy, the
  * day-index contract shared with the Loop runtime, and schema validity of
- * the generated public/loop/names.json guess index.
+ * the generated public/loop/names.v2.json guess index.
  *
- * The names.json tests assume `node scripts/build-loop.mjs` has run.
+ * The names.v2.json tests assume `node scripts/build-loop.mjs` has run.
  * This script owns ONLY the guess index: public/loop/clues/** and
  * public/loop/manifest.json are production content (PR #59) and are never
  * written or asserted by this pipeline.
@@ -24,11 +24,14 @@ import {
   regionLabel,
 } from "./build-loop.mjs";
 import { rankLoopSuggestions } from "../src/game/loop/evaluate.ts";
+import { unpackNameIndex } from "../src/game/loop/names-codec.ts";
 
 const SCRIPTS_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = dirname(SCRIPTS_DIR);
 const OUT_DIR = join(ROOT, "public/loop");
 const readJson = (p) => JSON.parse(readFileSync(p, "utf8"));
+/** The shipped guess index, decoded back to {n,id,lon,lat,r,p} rows. */
+const readNames = () => unpackNameIndex(readJson(join(OUT_DIR, "names.v2.json")));
 
 // ---------------------------------------------------------------------------
 // normalization
@@ -168,8 +171,8 @@ test("regionLabel builds State, Country for states and Country otherwise", () =>
 // generated guess index
 // ---------------------------------------------------------------------------
 
-test("names.json entries are well-formed and normalized", () => {
-  const entries = readJson(join(OUT_DIR, "names.json"));
+test("names.v2.json entries are well-formed and normalized", () => {
+  const entries = readNames();
   const targetIds = loadLoopTargetIds(join(OUT_DIR, "clues"));
   assert.ok(Array.isArray(entries) && entries.length > 100_000);
   const seen = new Map();
@@ -203,7 +206,7 @@ test("names.json entries are well-formed and normalized", () => {
 });
 
 test("springfield yields several distinct regions", () => {
-  const entries = readJson(join(OUT_DIR, "names.json"));
+  const entries = readNames();
   const regions = new Set(
     entries.filter((e) => e.n === "springfield").map((e) => e.r),
   );
@@ -213,7 +216,7 @@ test("springfield yields several distinct regions", () => {
 });
 
 test("production loop targets are guessable by their own names", () => {
-  const entries = readJson(join(OUT_DIR, "names.json"));
+  const entries = readNames();
   const byId = new Map();
   for (const e of entries) {
     if (!byId.has(e.id)) byId.set(e.id, e);
@@ -221,15 +224,15 @@ test("production loop targets are guessable by their own names", () => {
   // La Ceiba (clues/132.json) and Williamstown (clues/370.json) — both
   // absent from the old placeholder-era index; the regenerate-don't-patch
   // rule requires the builder to pick them up from the chunks.
-  assert.ok(byId.has("geonames:8556321"), "La Ceiba missing from names.json");
-  assert.ok(byId.has("geonames:2058304"), "Williamstown missing from names.json");
+  assert.ok(byId.has("geonames:8556321"), "La Ceiba missing from names.v2.json");
+  assert.ok(byId.has("geonames:2058304"), "Williamstown missing from names.v2.json");
 
   // B1 build gate: EVERY production clue target must be present in the
   // index — pin-through-dedupe, not hand-patching.
   const targetIds = [...loadLoopTargetIds(join(OUT_DIR, "clues"))].sort();
   assert.equal(targetIds.length, 387, `expected 387 clue targets, got ${targetIds.length}`);
   const absent = targetIds.filter((id) => !byId.has(id));
-  assert.deepEqual(absent, [], `${absent.length} clue targets missing from names.json`);
+  assert.deepEqual(absent, [], `${absent.length} clue targets missing from names.v2.json`);
 });
 
 test("every production loop target is reachable by typing its own display name", () => {
@@ -239,7 +242,7 @@ test("every production loop target is reachable by typing its own display name",
   // logic duplication). NOTE: this types the indexed (normalized) name; the
   // natural-name findability gate lives in build-loop.mjs itself
   // (assertTargetsFindable), which has the unnormalized names in memory.
-  const entries = readJson(join(OUT_DIR, "names.json"));
+  const entries = readNames();
   const byId = new Map();
   for (const e of entries) {
     if (!byId.has(e.id)) byId.set(e.id, e);
@@ -249,7 +252,7 @@ test("every production loop target is reachable by typing its own display name",
   for (const id of targetIds) {
     const entry = byId.get(id);
     if (!entry) {
-      failures.push(`${id}: absent from names.json`);
+      failures.push(`${id}: absent from names.v2.json`);
       continue;
     }
     // A player types the display name ("La Ceiba, Honduras" normalizes to
@@ -267,7 +270,7 @@ test("tricky natural names are findable (B1 regression: build/runtime normalizer
   // normalizers that disagreed on punctuation and non-decomposable letters
   // (ł, ı) — Białystok and Hınıs were in the index but unfindable by typing
   // their natural names. These queries must surface the right place id.
-  const entries = readJson(join(OUT_DIR, "names.json"));
+  const entries = readNames();
   const cases = [
     ["Białystok", "geonames:776069"],
     ["Hınıs", "geonames:312114"],

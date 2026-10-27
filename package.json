@@ -18,6 +18,7 @@
     "typecheck": "tsc --noEmit",
     "check:auth": "node scripts/check-auth-invariant.mjs",
     "check:contact": "node --experimental-strip-types scripts/contact-readiness.mjs",
+    "lint:content": "node --experimental-strip-types scripts/lint-content.mjs",
     "test": "node --test 'scripts/**/*.test.mjs'; S1=$?; node --experimental-strip-types --test 'src/**/*.test.ts'; S2=$?; test $S1 -eq 0 -a $S2 -eq 0",
     "format": "prettier --write .",
     "prebuild": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs",
@@ -53,7 +54,7 @@
     "lightningcss": "^1.28.0",
     "lucide-react": "^0.510.0",
     "maplibre-gl": "^6.11.2",
-    "nitro": "3.0.260610-beta",
+    "nitro": "3.0.260903-beta",
     "pg": "^8.16.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
@@ -63,9 +64,9 @@
     "topojson-client": "^3.1.0",
     "typescript": "^5.7.0",
     "us-atlas": "^3.0.1",
-    "vite": "^8.2.0",
+    "vite": "^8.3.4",
     "world-atlas": "^2.0.2",
-    "zod": "^4.4.0"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.64.0",
