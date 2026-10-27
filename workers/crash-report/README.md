@@ -34,11 +34,11 @@ Deploy **one** of them as the `observabilityEndpoint` target, not both.
 env)` is exported pure for tests; the default export wires it as `fetch`
 plus a `scheduled` handler for the hourly digest.
 - `wrangler.toml` — the **human config record**: worker name, entry
-  point, compatibility date, the hourly cron trigger, and a
-  commented-out `TELEMETRY_COUNTS` KV binding block. The deploy path
-  never reads this file (see Deploy) — the KV namespace exists
-  (created 2026-10-21), and the binding block carrying its real id is
-  recorded on branch `ops/telemetry-phase1-deploy`, awaiting merge.
+  point, compatibility date, the hourly cron trigger, and the
+  `TELEMETRY_COUNTS` KV binding block. The deploy path never reads
+  this file (see Deploy) — the KV namespace exists (created
+  2026-10-21), and the uncommented `[[kv_namespaces]]` block
+  carrying the real namespace id is on `main` (PR #204).
   Contains **no secrets** and no `[vars]`.
 - `tsconfig.json` — editor-only strict config. The root `tsconfig.json`
   includes only `src` and `server`, so root `npx tsc --noEmit` ignores
@@ -269,8 +269,8 @@ curl https://meridian-crash-report.knowledgetest.workers.dev/health   # → {"ok
 > ⚠️ **Warning:** followed literally, the old instructions produce
 > a live version with `TELEMETRY_COUNTS` unbound and
 > `DISCORD_WEBHOOK_URL` absent — crash reporting silently blind
-> while `/health` stays 200. A bare script upload (for example a
-> bare `cf.py deploy`) produces exactly that blind version: a
+> while `/health` stays 200. A bare script upload (an upload whose
+> metadata carries no bindings) produces exactly that blind version: a
 > version without bindings and triggers. Always upload a version
 > whose metadata carries the bindings, then deploy that version.
 
@@ -444,9 +444,9 @@ needed: deploy the same code twice under different names — e.g.
 `meridian-crash-report-staging` (secrets point at a test Discord
 channel / your own inbox) and `meridian-crash-report`
 (production) — and point a staging flags deploy at the staging
-worker. Note `cf.py` is hardcoded to the production script name, so
-a staging upload would go through the dashboard/API (or a copy of
-the helper with the name changed). Alternative: wrangler
+worker. Note the ops helper (`cf-version.py`) is set up for the
+production script name, so a staging upload would go through the
+dashboard/API (or a copy of the helper with the name changed). Alternative: wrangler
 environments (`[env.staging]`) — likewise not configured here; add
 only if you outgrow the two-deploy approach.
 
