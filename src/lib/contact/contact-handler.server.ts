@@ -416,21 +416,67 @@ export async function handleContactRequest(
     : json(502, { error: "could not deliver — try again later" }, origin);
 }
 
+// Server-only build-time fallbacks injected by `ssrContactEnvPlugin()` in
+// `vite.config.ts` ONLY for the `"ssr"` Worker bundle (never in `"client"` or
+// `build:pages`). Used when `CONTACT_DISCORD_WEBHOOK_URL` is configured in
+// Cloudflare Workers Builds build variables rather than as a runtime binding.
+declare const __MERIDIAN_SSR_CONTACT_WEBHOOK_URL__: string | undefined;
+declare const __MERIDIAN_SSR_CONTACT_ALLOWED_ORIGINS__: string | undefined;
+
+const CLOUDFLARE_WORKERS_SPECIFIER = "cloudflare:workers";
+
+function nonEmptyEnvString(value: unknown): string | undefined {
+  return typeof value === "string" && value.trim().length > 0 ? value : undefined;
+}
+
+async function readCloudflareWorkerEnvStrings(): Promise<
+  Pick<ContactEnv, "CONTACT_DISCORD_WEBHOOK_URL" | "CONTACT_ALLOWED_ORIGINS">
+> {
+  try {
+    const mod = (await import(/* @vite-ignore */ CLOUDFLARE_WORKERS_SPECIFIER)) as {
+      env?: Record<string, unknown>;
+    };
+    const workerEnv = mod?.env;
+    if (!workerEnv || typeof workerEnv !== "object") return {};
+    const out: Pick<ContactEnv, "CONTACT_DISCORD_WEBHOOK_URL" | "CONTACT_ALLOWED_ORIGINS"> = {};
+    const webhook = nonEmptyEnvString(workerEnv.CONTACT_DISCORD_WEBHOOK_URL);
+    if (webhook) out.CONTACT_DISCORD_WEBHOOK_URL = webhook;
+    const origins = nonEmptyEnvString(workerEnv.CONTACT_ALLOWED_ORIGINS);
+    if (origins) out.CONTACT_ALLOWED_ORIGINS = origins;
+    return out;
+  } catch {
+    return {};
+  }
+}
+
 /**
- * Read the contact config (strings only) from the runtime. On the
- * Cloudflare `meridian` worker, secrets reach `process.env` only when the
- * worker runs with the `nodejs_compat` compatibility flag and a
- * compatibility date of 2025-04-01 or later (or with
- * `nodejs_compat_populate_process_env`). Without that, this returns {} and
- * the handler falls back to NoopSink and the default origins. That fails
- * safe, but no message would be delivered.
+ * Read the contact config (strings only) from synchronous sources:
+ * 1. `process.env` (Node tests and `nodejs_compat` runtimes)
+ * 2. `globalThis.__env__` (Nitro / test harness injection)
+ * 3. Server-only SSR build-time fallback (`__MERIDIAN_SSR_CONTACT_WEBHOOK_URL__`,
+ *    for Cloudflare Workers Builds build-time variables — see wrangler.jsonc)
  */
 export function readContactEnv(): ContactEnv {
   try {
-    const env = (globalThis as { process?: { env?: Record<string, string | undefined> } }).process?.env ?? {};
+    const procEnv = (globalThis as { process?: { env?: Record<string, unknown> } }).process?.env;
+    const nitroEnv = (globalThis as { __env__?: Record<string, unknown> }).__env__;
+    const ssrWebhook =
+      typeof __MERIDIAN_SSR_CONTACT_WEBHOOK_URL__ === "string"
+        ? __MERIDIAN_SSR_CONTACT_WEBHOOK_URL__
+        : undefined;
+    const ssrOrigins =
+      typeof __MERIDIAN_SSR_CONTACT_ALLOWED_ORIGINS__ === "string"
+        ? __MERIDIAN_SSR_CONTACT_ALLOWED_ORIGINS__
+        : undefined;
     return {
-      CONTACT_DISCORD_WEBHOOK_URL: env.CONTACT_DISCORD_WEBHOOK_URL,
-      CONTACT_ALLOWED_ORIGINS: env.CONTACT_ALLOWED_ORIGINS,
+      CONTACT_DISCORD_WEBHOOK_URL:
+        nonEmptyEnvString(procEnv?.CONTACT_DISCORD_WEBHOOK_URL) ??
+        nonEmptyEnvString(nitroEnv?.CONTACT_DISCORD_WEBHOOK_URL) ??
+        nonEmptyEnvString(ssrWebhook),
+      CONTACT_ALLOWED_ORIGINS:
+        nonEmptyEnvString(procEnv?.CONTACT_ALLOWED_ORIGINS) ??
+        nonEmptyEnvString(nitroEnv?.CONTACT_ALLOWED_ORIGINS) ??
+        nonEmptyEnvString(ssrOrigins),
     };
   } catch {
     return {};
@@ -438,10 +484,30 @@ export function readContactEnv(): ContactEnv {
 }
 
 /**
- * Full runtime config for the route: the string config above, plus the
- * Workers Rate Limiting binding objects. Bindings never appear in
- * process.env (see readRateLimitBindings).
+ * Full runtime config for the route: checks `process.env`, `globalThis.__env__`,
+ * the Cloudflare Workers runtime `env` module (`import("cloudflare:workers")`,
+ * which works without `nodejs_compat`), the SSR build-time fallback, plus the
+ * Workers Rate Limiting binding objects.
  */
 export async function readContactRuntimeEnv(): Promise<ContactEnv> {
-  return { ...readContactEnv(), ...(await readRateLimitBindings()) };
+  const procEnv = (globalThis as { process?: { env?: Record<string, unknown> } }).process?.env;
+  const nitroEnv = (globalThis as { __env__?: Record<string, unknown> }).__env__;
+  const [cfStrings, bindings] = await Promise.all([
+    readCloudflareWorkerEnvStrings(),
+    readRateLimitBindings(),
+  ]);
+  const fromSync = readContactEnv();
+  return {
+    CONTACT_DISCORD_WEBHOOK_URL:
+      nonEmptyEnvString(procEnv?.CONTACT_DISCORD_WEBHOOK_URL) ??
+      nonEmptyEnvString(nitroEnv?.CONTACT_DISCORD_WEBHOOK_URL) ??
+      cfStrings.CONTACT_DISCORD_WEBHOOK_URL ??
+      fromSync.CONTACT_DISCORD_WEBHOOK_URL,
+    CONTACT_ALLOWED_ORIGINS:
+      nonEmptyEnvString(procEnv?.CONTACT_ALLOWED_ORIGINS) ??
+      nonEmptyEnvString(nitroEnv?.CONTACT_ALLOWED_ORIGINS) ??
+      cfStrings.CONTACT_ALLOWED_ORIGINS ??
+      fromSync.CONTACT_ALLOWED_ORIGINS,
+    ...bindings,
+  };
 }

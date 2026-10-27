@@ -8,6 +8,7 @@ import {
   handleContactRequest as handleRequest,
   readContactEnv,
   validateContact,
+  readContactRuntimeEnv,
   resetContactStateForTests,
   selectSink,
   DiscordWebhookSink,
@@ -305,4 +306,43 @@ test("rate limit: a throwing binding fails open to the in-memory floor", async (
     assert.equal((await handleRequest(post({ topic: "bug", message: `m${i}` }, { "cf-connecting-ip": "198.51.100.88" }), env, 1000)).status, 200);
   }
   assert.equal((await handleRequest(post({ topic: "bug", message: "m4" }, { "cf-connecting-ip": "198.51.100.88" }), env, 1000)).status, 429);
+});
+
+test("readContactEnv and readContactRuntimeEnv read from process.env and globalThis.__env__ (process.env wins)", async () => {
+  const g = globalThis as { __env__?: Record<string, unknown> };
+  const prevProcWebhook = process.env.CONTACT_DISCORD_WEBHOOK_URL;
+  const prevProcOrigins = process.env.CONTACT_ALLOWED_ORIGINS;
+  const prevNitroEnv = g.__env__;
+  try {
+    delete process.env.CONTACT_DISCORD_WEBHOOK_URL;
+    delete process.env.CONTACT_ALLOWED_ORIGINS;
+    g.__env__ = {
+      CONTACT_DISCORD_WEBHOOK_URL: "https://discord.com/api/webhooks/111/from-nitro",
+      CONTACT_ALLOWED_ORIGINS: "https://mirror.example",
+    };
+    assert.deepEqual(readContactEnv(), {
+      CONTACT_DISCORD_WEBHOOK_URL: "https://discord.com/api/webhooks/111/from-nitro",
+      CONTACT_ALLOWED_ORIGINS: "https://mirror.example",
+    });
+    const rtFromNitro = await readContactRuntimeEnv();
+    assert.equal(rtFromNitro.CONTACT_DISCORD_WEBHOOK_URL, "https://discord.com/api/webhooks/111/from-nitro");
+    assert.equal(rtFromNitro.CONTACT_ALLOWED_ORIGINS, "https://mirror.example");
+
+    process.env.CONTACT_DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/222/from-process";
+    process.env.CONTACT_ALLOWED_ORIGINS = "https://proc.example";
+    assert.deepEqual(readContactEnv(), {
+      CONTACT_DISCORD_WEBHOOK_URL: "https://discord.com/api/webhooks/222/from-process",
+      CONTACT_ALLOWED_ORIGINS: "https://proc.example",
+    });
+    const rtFromProc = await readContactRuntimeEnv();
+    assert.equal(rtFromProc.CONTACT_DISCORD_WEBHOOK_URL, "https://discord.com/api/webhooks/222/from-process");
+    assert.equal(rtFromProc.CONTACT_ALLOWED_ORIGINS, "https://proc.example");
+  } finally {
+    if (prevProcWebhook === undefined) delete process.env.CONTACT_DISCORD_WEBHOOK_URL;
+    else process.env.CONTACT_DISCORD_WEBHOOK_URL = prevProcWebhook;
+    if (prevProcOrigins === undefined) delete process.env.CONTACT_ALLOWED_ORIGINS;
+    else process.env.CONTACT_ALLOWED_ORIGINS = prevProcOrigins;
+    if (prevNitroEnv === undefined) delete g.__env__;
+    else g.__env__ = prevNitroEnv;
+  }
 });
