@@ -1,3 +1,27 @@
+# BRANCH_STATUS — docs/contact-rate-limit-deploy-step
+
+**Branch:** `docs/contact-rate-limit-deploy-step`
+**Base:** `origin/main` at `5b43737` (2026-10-27)
+**State: DRAFT, ready for review.** Tier 0 (docs only). Merge is the owner's word.
+
+## What it does
+
+`docs/contact-rate-limiting.md`, "Owner deploy step": the doc said the
+`meridian` worker's wrangler config "is not in this repo". That has been false
+since WI-19b (#228 / PR #232): the root `wrangler.jsonc` is the deploy config.
+The line now points there. `config/cloudflare/meridian.wrangler.toml` already
+said so; only the doc was stale.
+
+One sentence changed. No code, no config, no behaviour.
+
+## Not done (owner decision)
+
+The two `[[ratelimits]]` blocks are still NOT in `wrangler.jsonc`
+(it says "Deliberately NO bindings"). Adding them is a production deploy
+change; this PR only corrects where the doc says to put them.
+
+---
+
 # BRANCH_STATUS — fix/154-item6-manual-full-tile-failure
 
 **Branch:** `fix/154-item6-manual-full-tile-failure`
