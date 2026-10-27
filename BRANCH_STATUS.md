@@ -1,3 +1,45 @@
+# BRANCH_STATUS — fix/undici-lockfile-floor
+
+**Branch:** `fix/undici-lockfile-floor`
+**Base:** `origin/main` at `5b43737` (2026-10-27)
+**State: DRAFT, gates pending.** Tier 2 (security/dependency): manifest signed by the Chair (opus),
+token `AUTH_RUN_TDD_IMPLEMENTATION`. Rule 2 waived for fix branches (owner, 2026-10-27). Merge is the owner's word.
+
+## What it does
+
+Clears the 4 npm-audit findings and the matching Dependabot alerts on the root
+`package-lock.json`: every lockfile copy of undici now resolves to 7.30.1 (override
+`^7.30.1`). **NOT fixed:** undici 7.29.1 is still bundled inline in wrangler 4.152.0
+(`wrangler-dist/cli.js`), in the plugin's nested wrangler 4.151.0, and in
+`@cloudflare/vite-plugin` 1.64.0 (`dist/index.mjs`). npm audit and Dependabot cannot see
+bundled code, so a closed alert does not mean these are gone. They stay until we adopt
+wrangler >=4.153.0 and a vite-plugin release that bundles undici >=7.30.1 (1.65.0, latest
+on 2026-10-27, does not). All affected code is dev/build/deploy tooling; nothing deployed to
+the Worker contains undici. The 2 `workers/crash-report` alerts are out of scope and remain open.
+
+Files: `package.json` (`overrides` +1 line), `package-lock.json` (npm-regenerated, +36/-20),
+`scripts/undici-lockfile-floor.test.mjs` (new, 1 test, RED before / GREEN after).
+`wrangler` stays 4.152.0, `@cloudflare/vite-plugin` stays 1.64.0.
+
+## Council rulings (summary)
+
+- Scope X (override only). Bumping wrangler to 4.153.0 is deferred: published <24h before
+  this work and it would enter the credentialed Workers Builds deploy path with a new
+  workerd/miniflare. Do it as its own PR after >=7 days, ideally with a plugin that bundles
+  undici >=7.30.1, and verify with a Workers Builds preview build. Owner's call.
+- Forcing the plugin's nested wrangler to 4.153.0: rejected (untested pairing in the build path).
+- Pin `^7.30.1`, never `>=7.30.1` (that resolves undici 8.12.3).
+- Removal condition: delete the override once every lockfile path resolves >=7.30.1 without it
+  (regenerate, `npm audit --package-lock-only` = 0). Revisit at once if a dependency asks for 8.x.
+- Do not dismiss the alerts by hand; let them auto-close on re-scan.
+
+## Pending
+
+- [ ] Gates by a haiku tester (results added here); CI `build (22.x)` + `e2e` on the pushed head.
+- [ ] Owner merge word. Tracking issue for the bundled copies / Y follow-up.
+
+---
+
 # BRANCH_STATUS — fix/154-item6-manual-full-tile-failure
 
 **Branch:** `fix/154-item6-manual-full-tile-failure`
