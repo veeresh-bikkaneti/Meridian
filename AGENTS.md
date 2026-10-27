@@ -3,6 +3,17 @@
 Geography quiz game (Vite + React + TypeScript). Guess places on a satellite
 map; every reveal shows a kid-friendly story card.
 
+> **New here? Cold start, in order:** (1) this box, (2) Authority and
+> precedence, (3) your tier in Agent council — match the process to the
+> task, (4) Quality gates before you call anything done. Everything else
+> in this file is consulted on demand, by the headings below — you do not
+> need to hold it all to start.
+>
+> **First five minutes:** find your tier → run the matching process →
+> gates before done.
+
+**Contents — in reading order:** Authority and precedence · Agent council — match the process to the task · Non-negotiable safeguards · Quality gates (all mandatory for a PR) · Constitution · Project invariants (the game itself) · Task capsule and the bounded loop · Budget · Verification and the record · Prompt, skill, and persona changes — eval discipline · Worker roles run on the cheapest capable model · Card content rules (Veeresh's standing principles) · Working conventions.
+
 > **Merged edition, 2026-10-27 — owner-directed draft.** Owner, 2026-10-27:
 > “Draft the merged AGENTS.md (v4 chassis + Meridian layer, calibrated)”;
 > and: “just focus on Agents.md and yes cut a branch and open PR”. Those
@@ -30,8 +41,7 @@ A Consensus Manifest binds within its task's scope only; it cannot waive, suspen
 
 A council or panel can reject a *method*, record dissent, and block on the
 gates below. It cannot silently replace the owner's goal, expand scope, waive
-a safeguard, or authorize an external action. Only the owner merges, and only
-on his explicit per-PR word.
+a safeguard, or authorize an external action. Merge authority is stated once, canonically, in Non-negotiable safeguards → Merge authority; it is not restated here.
 
 **ARCHETYPE law (#231) — disposition.** `docs/ops/ARCHETYPE_law.md`, proposed verbatim in PR #231, has no rung of its own in the ladder above; at most it is a convention under rung 5, and it confers no authority, budget, tier, seat, or vote in this repo. If both files are on `main`, then to the extent of any conflict this file — and, for Tier 2 process, `docs/ops/agent-council-protocol.md` — governs and supersedes the law in this repo, without editing the law's verbatim text. The governing numbers are this file's: budgets of 25k / 100k / 400k tokens by Tier 0 / 1 / 2, not the law's `MAX_TOKENS` of 15k per task; a cycle cap of 5 edit-and-verify cycles, not the law's 3 fix loops; tiers 0 / 1 / 2, scope-based, not the law's risk-based T1 / T2 / T3; seats of Chair plus Councilors A, B, and C under the protocol, with Councilor C a separate agent, not the law's Councilors A–D; and decision by the panel approving the final tip plus the owner's explicit per-PR merge word, not the law's “3/4 + Chair veto” formula. The task capsule's three files are a default scope in this file, not the law's hard “Scoped Files (max 3)” limit, and the law's provision for a loop to mutate it into “Archetype v1.1” has no effect in this repo: either file changes only by a PR. Nothing in this clause rules on items 2–5 of PR #231 — the Councilor C finding quota, the Layer-3 / DAG product mismatch, the law's silence on model tiers, and the “3/4 + Chair veto” ambiguity in the law's own text — which remain open owner decisions.
 
@@ -50,21 +60,31 @@ license or a scanner verdict is not a safety review: before running
 third-party code, check its tool permissions, shell/network access, secret
 handling, and side effects.
 
-## Constitution (standing rules for every agent — Veeresh, 2026-10-21)
+## Agent council — match the process to the task
 
-1. **Do not refactor existing working code.**
-2. **Do not create new branches or duplicate files.** Work on the branch you
-   were assigned (or the one already checked out) and edit existing files in
-   place. `main` stays protected, so the work still ships as a PR from that
-   one branch.
-3. **Edit only the targeted functions, in place.** Touch nothing outside the
-   function or block the task names.
-4. **Output only unified git diffs** when showing code changes — no whole-file
-   rewrites, no pasted full files.
+Routine work does not convene a council.
 
-If a task cannot be done within these rules, stop and ask first.
+**Panel, council, checker — who is who.** A *panel* is the PR review body: the seats of the standing review pipeline, and it approves or blocks the final tip of a PR. A *council* is the per-task Tier-2 design body of the protocol (Chair + Councilors A/B/C), and it signs the Consensus Manifest for its task; the two are different bodies with different powers, and neither substitutes for the other. A *checker* is whatever independent verifier a gate names for a piece of work — a panel seat, a council seat, or a separate reviewer — and it is never the work's own builder (see Non-negotiable safeguards → No self-certification).
 
-**Chair-lift (protocol §2.3) — kept, as a bounded exception granted by this file.** The council protocol (§2, directive 3) ranks below this file in the ladder, so this lift has effect only because this section grants it; the protocol may not widen it, and widening it requires an amendment under the safeguard carve-out above. The Chair may lift Constitution rules 1 and 3 only, and only for a verified vulnerability or an interface incompatibility, and only to the minimum extent the verified trigger requires. The trigger, the evidence verifying it, the rules lifted, and the exact scope of the lift must be recorded in the Consensus Manifest before implementation, and the lift must be named in the final report the owner sees. The lift never applies to Constitution rules 2 or 4, and it never lifts, waives, or substitutes for any Non-negotiable safeguard — including merge authority and panel approval of the final tip, no self-certification, the destructive-change recovery path, player-facing locks, branch protection, or the eval discipline for this file. If the trigger is not verified in the manifest, the lift is void: stop and ask the owner.
+| Tier | Scope | Process |
+| :--- | :--- | :--- |
+| **0 — Direct** | Docs, `BRANCH_STATUS.md`, config, or copy that is not locked or owner-approved in this file or the Handbook | Make the change, run the gates. Any change to locked or owner-approved copy — even a typo, a punctuation mark, an emoji, or whitespace — is not Tier 0: stop, ask, and proceed only on the owner's explicit word for that exact change. Exception — this file: a change to `AGENTS.md` itself, or to any reusable prompt, skill, or council/persona definition, is never Tier 0 — not even a typo or a docs-only edit — and follows Prompt, skill, and persona changes — eval discipline in full. |
+| **1 — Solo TDD** | One bug, one function, a clear repro | Failing test first, then the minimal fix. |
+| **2 — Council** | New feature or module, 3+ files, API/storage/schema, anything under `src/game/data/`, security or privacy | Full protocol: `docs/ops/agent-council-protocol.md` |
+
+Unsure which tier → Tier 2. An owner-set tier overrides this table.
+
+**Tier 2 in one line** *(summary only — incomplete; the protocol governs)*: no implementation code until a signed Consensus
+Manifest exists (ATDD scenarios → TDD contracts → adversarial challenge →
+Chair sign-off), then RED, minimal GREEN, gates, unified diff.
+
+**Findings standard (every tier's review).** An actionable finding states:
+concrete input/state/reachable path → expected behaviour or invariant →
+observed or provable wrong result → evidence. No concrete case, no
+actionable finding. Records are claims, not facts: any "owner approved /
+decided / agreed" line carries a citation to the owner's actual words
+(message and date), and a "safe to merge" claim lists every unresolved
+block as a caveat.
 
 ## Non-negotiable safeguards
 
@@ -116,6 +136,37 @@ If a task cannot be done within these rules, stop and ask first.
   contrast is at least 4.5:1 — do not ship or cut a surface below either
   floor.
 
+## Quality gates (all mandatory for a PR)
+
+- `npx tsc --noEmit` — clean
+- `npm test` — the scripts and src unit suites green: `node --test "scripts/**/*.test.mjs"` plus `node --experimental-strip-types --test "src/**/*.test.ts"`. This script does **not** run the worker suite.
+- `npm run test:worker` — the worker suite green (`workers/crash-report/src/index.test.ts`), run separately from `npm test`; a PR touching `workers/` also requires `npm run typecheck:worker` — clean
+- `node scripts/lint-cards.mjs` — the prebuild card gate; must print GATE PASSED
+- `npm run build:pages` — production build green
+- Playwright E2E — `tests/e2e/` specs run against the built artifact via
+  `serveBuiltArtifact` (serves on `127.0.0.1:4123/Meridian/`)
+
+E2E runs sequentially (`--workers=1`) under the shared VM lock (`flock
+~/workspace/.e2e.lock`) before any failure is called a regression: on this
+VM, parallel failures that pass sequentially are contention flake, not
+signal (see Task capsule and the bounded loop — the cycle-cap evidence rule).
+
+## Constitution (standing rules for every agent — Veeresh, 2026-10-21)
+
+1. **Do not refactor existing working code.**
+2. **Do not create new branches or duplicate files.** Work on the branch you
+   were assigned (or the one already checked out) and edit existing files in
+   place. `main` stays protected, so the work still ships as a PR from that
+   one branch.
+3. **Edit only the targeted functions, in place.** Touch nothing outside the
+   function or block the task names.
+4. **Output only unified git diffs** when showing code changes — no whole-file
+   rewrites, no pasted full files.
+
+If a task cannot be done within these rules, stop and ask first.
+
+**Chair-lift (protocol §2.3) — kept, as a bounded exception granted by this file.** The council protocol (§2, directive 3) ranks below this file in the ladder, so this lift has effect only because this section grants it; the protocol may not widen it, and widening it requires an amendment under the safeguard carve-out above. The Chair may lift Constitution rules 1 and 3 only, and only for a verified vulnerability or an interface incompatibility, and only to the minimum extent the verified trigger requires. The trigger, the evidence verifying it, the rules lifted, and the exact scope of the lift must be recorded in the Consensus Manifest before implementation, and the lift must be named in the final report the owner sees. The lift never applies to Constitution rules 2 or 4, and it never lifts, waives, or substitutes for any Non-negotiable safeguard — including merge authority and panel approval of the final tip, no self-certification, the destructive-change recovery path, player-facing locks, branch protection, or the eval discipline for this file. If the trigger is not verified in the manifest, the lift is void: stop and ask the owner.
+
 ## Project invariants (the game itself)
 
 - **Learning wins.** Players are learners who want to grow; success is
@@ -151,95 +202,14 @@ If a task cannot be done within these rules, stop and ask first.
   A corrupt stored tier degrades to a neutral 3 — deliberately visible,
   not silent hardening; do not describe it as fail-closed.
 - **Hints are ON by default** (players' ages are not checked).
-- Product decisions of record live in the Meridian Handbook; when a ruling
-  changes, update it — mark superseded decisions, never delete them.
-
-## Worker roles run on the cheapest capable model
-
-Orchestrate; do not do every role yourself. Any role whose job is to **run
-something and report what happened** is delegated to a subagent on the
-cheapest model that can do it (`haiku` first, `sonnet` only if `haiku`
-cannot):
-
-- tester
-- pen tester
-- UAT tester
-- **visual tester** — delegated by default; do it inline only when
-  delegation is impossible, and say so
-- workflow tester
-- **developer**, only for execution-shaped work: applying an agreed patch,
-  running a scripted change, a mechanical edit with a known answer.
-  Authoring is not execution — design, non-obvious implementation and
-  anything needing judgement about *what* to build stays with the
-  orchestrator.
-
-**Not worker roles.** Review, verdict and design roles — code review, a
-panel seat, architecture calls, security judgement — are not delegated on
-cost grounds. They turn on judgement, and a cheap mistake there is the
-dearest kind.
-
-The orchestrator stays on `opus` and reads conclusions, not bulk output.
-Give each worker a brief that names the branch, what is already built, the
-exact commands, and what to report — it has no other context. Match the
-model to the size of the job: a one-command check does not need `sonnet`,
-and a long multi-step run on `haiku` that has to be redone saves nothing.
-
-Delegation helps because the worker's reading stays in the worker's
-context, but it is the **third** of four savings levers — after the tier
-gate and narrow context resolution, and ahead of model tier. See
-`docs/ops/agent-council-protocol.md` §3 for the full ranking.
-
-**Delegation discipline (all tiers).**
-
-- A child agent inherits neither the conversation nor files already read.
-  Every brief is self-contained: objective, input paths, constraints,
-  permitted tools, write scope, done condition, expected evidence, budget
-  share, and stop condition.
-- Persona seats (review panels, crews) are staffed from the owner's
-  installed persona packs with the persona file loaded into the brief —
-  a role title alone does not engage the specialist. A missing persona
-  file is disclosed, never silently improvised.
-- Research and review workers are read-only by default. Delegated
-  execution gets least-privilege tools, its own workspace/worktree, and
-  **no inherited secrets**; credentials are scoped and short-lived when a
-  task genuinely needs them.
-- Parallelize only independent work with separate file ownership or
-  separate worktrees and a named integrator. Inspect every worker diff —
-  including outside its assigned paths — and run combined checks before
-  anything is called done.
-- Track delegated work as `{task_id, status, owner, evidence, blocker}`
-  with status one of `queued`, `running`, `blocked`, `ready_for_review`,
-  `verified`, `closed`. A child's claim is unverified until checked
-  against its evidence.
-
-## Agent council — match the process to the task
-
-Routine work does not convene a council.
-
-| Tier | Scope | Process |
-| :--- | :--- | :--- |
-| **0 — Direct** | Docs, `BRANCH_STATUS.md`, config, or copy that is not locked or owner-approved in this file or the Handbook | Make the change, run the gates. Any change to locked or owner-approved copy — even a typo, a punctuation mark, an emoji, or whitespace — is not Tier 0: stop, ask, and proceed only on the owner's explicit word for that exact change. Exception — this file: a change to `AGENTS.md` itself, or to any reusable prompt, skill, or council/persona definition, is never Tier 0 — not even a typo or a docs-only edit — and follows Prompt, skill, and persona changes — eval discipline in full. |
-| **1 — Solo TDD** | One bug, one function, a clear repro | Failing test first, then the minimal fix. |
-| **2 — Council** | New feature or module, 3+ files, API/storage/schema, anything under `src/game/data/`, security or privacy | Full protocol: `docs/ops/agent-council-protocol.md` |
-
-Unsure which tier → Tier 2. An owner-set tier overrides this table.
-
-**Tier 2 in one line:** no implementation code until a signed Consensus
-Manifest exists (ATDD scenarios → TDD contracts → adversarial challenge →
-Chair sign-off), then RED, minimal GREEN, gates, unified diff.
-
-**Findings standard (every tier's review).** An actionable finding states:
-concrete input/state/reachable path → expected behaviour or invariant →
-observed or provable wrong result → evidence. No concrete case, no
-actionable finding. Records are claims, not facts: any "owner approved /
-decided / agreed" line carries a citation to the owner's actual words
-(message and date), and a "safe to merge" claim lists every unresolved
-block as a caveat.
+- **Handbook.** Product decisions of record live in the Meridian Handbook
+  (`docs/handbook/README.md` in this repo); when a ruling changes, update
+  it there — mark superseded decisions, never delete them.
 
 ## Task capsule and the bounded loop
 
 Every task starts from a brief plan. Tier 2 uses the Consensus Manifest;
-Tier 0/1 use this capsule (in the PR body or `BRANCH_STATUS.md`):
+Tier 0/1 use this capsule (in the PR body or `BRANCH_STATUS.md`; full protocol: `docs/ops/agent-council-protocol.md`):
 
 ```text
 TASK / requested outcome:
@@ -349,25 +319,70 @@ voice is the invariant (handbook ch03) — with the storyteller audio guard
 4. Verified failures become permanent regression cases with stable IDs.
    Never promote a case that is contaminated or ambiguous.
 
+**Eval card — the template.** Case ID · claim under test · input/trigger · expected behaviour · should-trigger or should-not-trigger · side effects that block promotion · baseline result · candidate result · verdict. A card without should-not-trigger cases is incomplete.
+
 Reducing human review or adding autonomy for a workflow follows the same
 rule at one level up: predeclared evidence thresholds, repeated success,
 a demonstrated failure-detection path, a tested rollback, and a working
 escalation path — never a single green run.
 
-## Quality gates (all mandatory for a PR)
+## Worker roles run on the cheapest capable model
 
-- `npx tsc --noEmit` — clean
-- `npm test` — the scripts and src unit suites green: `node --test "scripts/**/*.test.mjs"` plus `node --experimental-strip-types --test "src/**/*.test.ts"`. This script does **not** run the worker suite.
-- `npm run test:worker` — the worker suite green (`workers/crash-report/src/index.test.ts`), run separately from `npm test`; a PR touching `workers/` also requires `npm run typecheck:worker` — clean
-- `node scripts/lint-cards.mjs` — the prebuild card gate; must print GATE PASSED
-- `npm run build:pages` — production build green
-- Playwright E2E — `tests/e2e/` specs run against the built artifact via
-  `serveBuiltArtifact` (serves on `127.0.0.1:4123/Meridian/`)
+Orchestrate; do not do every role yourself. Any role whose job is to **run
+something and report what happened** is delegated to a subagent on the
+cheapest model that can do it (`haiku` first, `sonnet` only if `haiku`
+cannot):
 
-E2E runs sequentially (`--workers=1`) under the shared VM lock (`flock
-~/workspace/.e2e.lock`) before any failure is called a regression: on this
-VM, parallel failures that pass sequentially are contention flake, not
-signal (see the cycle-cap evidence rule).
+- tester
+- pen tester
+- UAT tester
+- **visual tester** — delegated by default; do it inline only when
+  delegation is impossible, and say so
+- workflow tester
+- **developer**, only for execution-shaped work: applying an agreed patch,
+  running a scripted change, a mechanical edit with a known answer.
+  Authoring is not execution — design, non-obvious implementation and
+  anything needing judgement about *what* to build stays with the
+  orchestrator.
+
+**Not worker roles.** Review, verdict and design roles — code review, a
+panel seat, architecture calls, security judgement — are not delegated on
+cost grounds. They turn on judgement, and a cheap mistake there is the
+dearest kind.
+
+The orchestrator stays on `opus` and reads conclusions, not bulk output.
+Give each worker a brief that names the branch, what is already built, the
+exact commands, and what to report — it has no other context. Match the
+model to the size of the job: a one-command check does not need `sonnet`,
+and a long multi-step run on `haiku` that has to be redone saves nothing.
+
+Delegation helps because the worker's reading stays in the worker's
+context, but it is the **third** of four savings levers — after the tier
+gate and narrow context resolution, and ahead of model tier. See
+`docs/ops/agent-council-protocol.md` §3 for the full ranking.
+
+**Delegation discipline (all tiers).**
+
+- A child agent inherits neither the conversation nor files already read.
+  Every brief is self-contained: objective, input paths, constraints,
+  permitted tools, write scope, done condition, expected evidence, budget
+  share, and stop condition.
+- Persona seats (review panels, crews) are staffed from the owner's
+  installed persona packs with the persona file loaded into the brief —
+  a role title alone does not engage the specialist. A missing persona
+  file is disclosed, never silently improvised.
+- Research and review workers are read-only by default. Delegated
+  execution gets least-privilege tools, its own workspace/worktree, and
+  **no inherited secrets**; credentials are scoped and short-lived when a
+  task genuinely needs them.
+- Parallelize only independent work with separate file ownership or
+  separate worktrees and a named integrator. Inspect every worker diff —
+  including outside its assigned paths — and run combined checks before
+  anything is called done.
+- Track delegated work as `{task_id, status, owner, evidence, blocker}`
+  with status one of `queued`, `running`, `blocked`, `ready_for_review`,
+  `verified`, `closed`. A child's claim is unverified until checked
+  against its evidence.
 
 ## Card content rules (Veeresh's standing principles)
 
@@ -381,7 +396,7 @@ signal (see the cycle-cap evidence rule).
 
 ## Working conventions
 
-- `main` is protected: feature branch → PR → merge. `gh` CLI is authenticated.
+- `main` is protected: feature branch → PR → merge. `gh` CLI is authenticated. Merge authority itself is stated canonically in Non-negotiable safeguards → Merge authority.
 - **Stage named files only, never `git add -A`** — and check `git status`
   plus the staged diff before committing on any branch a second crew
   shares; a dirty shared index sweeps other work into your commit.
@@ -390,7 +405,7 @@ signal (see the cycle-cap evidence rule).
   done vs pending; update and push it with the work. (Known structural
   cost: concurrent branches conflict on this one file by construction.
   The per-branch record — `docs/branch-status/<branch>.md` — is the
-  owner's pending decision, not a convention an agent may adopt alone.)
+  owner's pending decision, not a convention an agent may adopt alone.) A PR whose scope is one file records its capsule and status in the PR body under the same exception.
 - **A merged branch is deleted, not left behind.** Cleanup is part of the task,
   not a follow-up someone has to ask for. Keep *Settings -> General -> Pull
   Requests -> Automatically delete head branches* switched on so this happens
