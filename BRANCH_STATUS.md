@@ -1,3 +1,48 @@
+# BRANCH_STATUS — ci/weak-device-test-in-ci
+
+**State: DRAFT, ready for review.** Tier 1 code change (2 files) plus Tier 0 docs
+close-out. Owner order 2026-10-27: work the open issues one at a time, rule 2
+(no new branches) waived for this fix branch, and keep an eye on `main`.
+
+**Base:** origin/main @ `5b43737`. Opened as a single commit on top of it.
+
+## What this does
+- `tests/e2e/scout-harness-suppression.desktop.spec.ts`: test 1 (mounts the 3D
+  map, which the CI runner cannot render reliably) is tagged `@local-only`.
+- `.github/workflows/node.js.yml`: the `e2e` job lists that spec and passes
+  `--grep-invert @local-only`, with a comment stating the convention, why, and
+  that the runner must stay weak. Result: every PR now proves the app degrades
+  to Scout on a genuinely weak device (test 2).
+- Docs close-out per the panel's lifecycle ruling: the posture record is stamped
+  COMPLETE and its cost line now has a measured number; the handoff brief is
+  deleted; its durable pitfalls moved to `docs/ops/ci-sandbox-pitfalls.md`.
+- No test skipped, disabled or quarantined. Test 1 still exists and still runs
+  locally.
+
+## Done
+- [x] Evidence, `playwright test --list`: spec alone without the flag lists 2
+      tests; with `--grep-invert @local-only` lists exactly 1 (the opted-out
+      serve). The exact CI list with the flag: `Total: 10 tests in 5 files`,
+      `default serve` excluded, `opted-out serve` included.
+- [x] Kept test, fresh `build:pages`: `1 passed (16.7s)`, 18 s wall.
+- [x] `npx tsc --noEmit` clean; `lint-cards` GATE PASSED; workflow YAML parses.
+      (Run by a `haiku` tester; the git state was checked independently.)
+
+## Not verified
+- [ ] The test on the CI runner itself. The first CI run of this PR is the
+      evidence; CI runners are slower than this VM, so >17 s is expected.
+- [ ] The Esri attribution, Dependabot alerts and Workers Builds failure are
+      separate issues, not touched here.
+
+## Pending
+- [ ] The owner's merge word. Agents do not mark ready or merge.
+
+---
+
+*The record below is main's `BRANCH_STATUS.md` as of this branch's base
+(`fix/154-item6-manual-full-tile-failure`). It is kept unmodified; this branch's own record is the section
+above.*
+
 # BRANCH_STATUS — fix/154-item6-manual-full-tile-failure
 
 **Branch:** `fix/154-item6-manual-full-tile-failure`

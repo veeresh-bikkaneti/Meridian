@@ -2,15 +2,17 @@
 
 **Date:** 2026-10-22
 **Author:** Claude (Opus 5), at the owner's direction
-**Status:** RULED. The owner answered every open question on 2026-10-21
+**Status:** COMPLETE — ruled, built and shipped. The owner answered every open question on 2026-10-21
 ("Adopt all"; the session ran through midnight, and the panel comment
 recording the rulings was posted 2026-10-22); the rulings are recorded
 in §7 against each question.
 **Change A (§5.1) has shipped** — PR #226, merged 2026-10-22; `main`'s `e2e`
-is green again. Changes B and C (§5.2, §5.3) are **not yet built**.
-This document is the permanent record of the decision; the companion
-`2026-10-22-weak-vm-e2e-handoff.md` is working material and is deleted with
-the PR that lands the last change.
+is green again. **Changes B and C (§5.2, §5.3) have shipped** in one PR: the weak-device spec joins
+the CI `e2e` job, test 1 is held out with `--grep-invert @local-only`, and the
+cost is measured (§5.2). This document is the permanent record of the decision.
+The companion implementation brief (`2026-10-22-weak-vm-e2e-handoff.md`) was
+deleted in that same PR, as planned, and its durable pitfalls moved to
+`docs/ops/ci-sandbox-pitfalls.md`.
 **Owner's framing (verbatim, 2026-10-22):** *"your vm is week and our app
 should work even when vm is week"*
 
@@ -167,7 +169,7 @@ is written and passing, and runs nowhere automatic.
 ## 5. Proposal
 
 Three changes, smallest first. **Change A has shipped** (§5.1 — PR #226,
-merged 2026-10-22). **Changes B and C are not yet built.**
+merged 2026-10-22). **Changes B and C have shipped** (§5.2, §5.3: one PR; see Status).
 
 ### 5.1 Fix the race (unbreaks `main`)
 
@@ -200,9 +202,8 @@ on every slow machine, including the users' machines.
 Add `tests/e2e/scout-harness-suppression.desktop.spec.ts` **test 2** to the
 `e2e` job's spec list.
 
-**The spec does not exist on `main`.** It lives only on branch
-`fix/154-seam-test-only` (PR #197), so this change lands inside #197 or
-after it — never before.
+**Prerequisite, now met:** the spec was added to `main` by PR #197 (merged
+2026-10-27), so this change could land after it, as ruled.
 
 **Mechanism (owner ruling, Q5: Option 1).** Tag test 1 `@local-only` in its
 title and add `--grep-invert @local-only` to the CI command, so the file can
@@ -214,11 +215,11 @@ read in `expect.poll` — same class of race as §5.1.
 
 - Test 2 performs no map taps and needs no WebGL rendering — it reads
   `sessionStorage`, the mode indicator attribute and the notice element.
-- **Cost:** the pair (tests 1 + 2) measured ~46 s locally. Test 2 alone is a
-  fraction of that, but has not been timed in isolation, and CI runners are
-  slower than this VM. An earlier draft of this document estimated "a few
-  seconds"; that was roughly an order of magnitude optimistic. Budget tens
-  of seconds and measure in the implementing PR.
+- **Cost (measured):** the kept test alone runs in ~17 s (18 s wall) locally on a
+  fresh build. The pair measured ~46 s earlier. CI runners are slower than this
+  VM, so expect more than 17 s there; the first CI run of the `e2e` job gives
+  the true number. An earlier draft estimated "a few seconds"; that was
+  roughly an order of magnitude optimistic.
 - Effect: every PR proves the app degrades correctly on a weak device.
 
 ### 5.3 Keep test 1 out of CI, for now
@@ -236,7 +237,7 @@ either the runner improves or the assertion is made render-independent.
 | Risk | Assessment |
 | :--- | :--- |
 | 5.1 masks a real app bug by waiting longer | The 15 s poll fails if the request never fires. It converts "assert instantly" into "assert within a bound" — strictly more honest, not more permissive. |
-| 5.2 makes CI slower | Test 2 only, with test 1 held out by `--grep-invert @local-only`. The pair measured ~46 s locally; test 2 alone was not timed in isolation. Measure it in the implementing PR, and reconsider if test 2 alone exceeds ~30 s. |
+| 5.2 makes CI slower | Test 2 only, with test 1 held out by `--grep-invert @local-only`. The pair measured ~46 s locally; test 2 alone measured ~17 s (18 s wall) locally. Reconsider if the CI `e2e` job's added time exceeds ~30 s. |
 | 5.2 is itself flaky on a loaded runner | Possible. It asserts state transitions with explicit waits and no rendering, which is the low-risk end. Mitigation: if it flakes once, fix the wait, do not quarantine it. |
 | The spoof hides real weak-device failures from every other spec | **Real, and accepted.** The owner ruled (Q1) that targeted coverage is enough and declined a second all-weak CI lane. The exposure stands; it is a known, chosen limit rather than an oversight. |
 
