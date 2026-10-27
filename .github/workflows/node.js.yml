@@ -62,12 +62,21 @@ jobs:
     - run: npm ci
     - run: npx playwright install --with-deps chromium
     - run: npm run build:pages
+    # Convention: an e2e test whose title contains @local-only is skipped here
+    # (--grep-invert below). tests/e2e/scout-harness-suppression.desktop.spec.ts
+    # holds a pair: test 1 mounts the 3D map, which this runner cannot render
+    # reliably, so it is tagged @local-only and runs only on a developer machine;
+    # test 2 (the weak-device degradation check) runs here. THE RUNNER MUST STAY
+    # WEAK: do not "fix" the VM to make test 1 pass, because test 2 relies on
+    # the real SwiftShader device being read as weak.
     - run: >-
         npx playwright test
         tests/e2e/credits.desktop.spec.ts
         tests/e2e/grownups-privacy-contact.desktop.spec.ts
         tests/e2e/hydration-boot.desktop.spec.ts
         tests/e2e/observability.spec.ts
+        tests/e2e/scout-harness-suppression.desktop.spec.ts
+        --grep-invert @local-only
         --workers=1 --reporter=line
     - name: Upload the Playwright report on failure
       if: failure()
