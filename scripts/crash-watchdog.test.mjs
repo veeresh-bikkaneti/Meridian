@@ -252,9 +252,15 @@ test("renderCrashWatchdogScript emits a single self-contained inline script", ()
 });
 
 test("rendered script stays within the 5120-byte budget", () => {
-  const script = renderCrashWatchdogScript("test-build");
-  const bytes = Buffer.byteLength(script, "utf8");
-  assert.ok(bytes <= 5120, `rendered script is ${bytes} bytes, over budget`);
+  // #223: check the build-id shapes production actually uses, not just
+  // the old 10-char fixture — a 12-char CI id (GITHUB_SHA slice) and the
+  // 14-char timestamp fallback rendered 5122/5124 bytes and silently
+  // broke the budget while this test still passed at exactly 5120.
+  for (const buildId of ["abcdef0", "test-build", "abcdef012345", "local-mvpr1hgb"]) {
+    const script = renderCrashWatchdogScript(buildId);
+    const bytes = Buffer.byteLength(script, "utf8");
+    assert.ok(bytes <= 5120, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
+  }
 });
 
 test("rendered script is ES5-only", () => {
