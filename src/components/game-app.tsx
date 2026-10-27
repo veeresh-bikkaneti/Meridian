@@ -4402,8 +4402,8 @@ function PlayLoaded({
             />
           </Suspense>
         </MapErrorBoundary>
-        <div className="pointer-events-none absolute top-3 right-3 left-3 z-30 flex items-start justify-between gap-3">
-          <div className="flex items-start gap-2">
+        <div className="pointer-events-none absolute top-2 right-2.5 left-2.5 z-30 flex items-start justify-between gap-2 sm:top-3 sm:right-3 sm:left-3 sm:gap-3">
+          <div className="flex items-start gap-1.5 sm:gap-2">
             <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
               {review ? REVIEW_DECK_COPY.exitReview : "Editions"}
             </Button>
@@ -4429,7 +4429,7 @@ function PlayLoaded({
               {pool.length}
             </p>
           ) : (
-          <div className="flex flex-col items-end gap-2">
+          <div className="flex flex-col items-end gap-0.5 sm:gap-2">
             <div className="relative">
               <button
                 type="button"
@@ -4438,7 +4438,7 @@ function PlayLoaded({
                 aria-controls="session-score-breakdown"
                 aria-label={`Session score ${sessionTotal.toLocaleString("en-US")}. Toggle score breakdown by edition and difficulty.`}
                 onClick={() => setShowBreakdown((v) => !v)}
-                className="game-chrome pointer-events-auto rounded-md px-3 py-2 text-sm font-semibold tabular-nums"
+                className="game-chrome pointer-events-auto rounded-md px-2 py-0.5 text-[11px] leading-tight font-semibold tabular-nums whitespace-nowrap sm:px-3 sm:py-2 sm:text-sm"
               >
                 SCORE {sessionTotal.toLocaleString("en-US")}
               </button>
@@ -4489,7 +4489,7 @@ function PlayLoaded({
                 // edition. Both labels are honest about what they measure.
                 <p
                   data-testid="streak-flame"
-                  className="game-chrome rounded-md px-3 py-1.5 text-sm tabular-nums"
+                  className="game-chrome rounded-md px-1.5 py-0.5 text-[11px] leading-tight tabular-nums whitespace-nowrap sm:px-3 sm:py-1.5 sm:text-sm"
                 >
                   <span role="img" aria-label={`${run.streak}-place streak`}>
                     🔥
@@ -4497,7 +4497,7 @@ function PlayLoaded({
                   {run.streak}
                 </p>
               ) : null}
-              <p className="game-chrome rounded-md px-3 py-2 text-sm">
+              <p className="game-chrome rounded-md px-2 py-0.5 text-[11px] leading-tight whitespace-nowrap sm:px-3 sm:py-2 sm:text-sm">
                 {/* Session-scoped places (not this run's): switching editions
                     no longer drops the counter back to 0. */}
                 {session?.hits ?? run.hits} placed

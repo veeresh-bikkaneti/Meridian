@@ -94,7 +94,7 @@ export function QuestionBubble({
 
   if (view === "dismissed") {
     return (
-      <div className="pcard pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] min-[420px]:top-[max(3.625rem,env(safe-area-inset-top))] left-2.5 z-20">
+      <div className="pcard pointer-events-none absolute top-[max(3.5rem,env(safe-area-inset-top))] sm:top-[max(3.625rem,env(safe-area-inset-top))] left-2.5 z-20">
         <Enter durationMs={267} reduced={reduced}>
           <button
             type="button"
@@ -130,13 +130,13 @@ export function QuestionBubble({
           onClick={() => onViewChange("dismissed")}
           className="bubble-icon-button"
         >
-          <X className="size-5" aria-hidden="true" />
+          <X className="size-4 sm:size-5" aria-hidden="true" />
         </button>
       </div>
     </div>
   );
   return (
-    <div className="pcard pointer-events-none absolute top-[max(6rem,env(safe-area-inset-top))] min-[420px]:top-[max(3.625rem,env(safe-area-inset-top))] left-2.5 z-20 w-[min(296px,calc(100vw-20px))]">
+    <div className="pcard pointer-events-none absolute top-[max(3.5rem,env(safe-area-inset-top))] sm:top-[max(3.625rem,env(safe-area-inset-top))] left-2.5 z-20 w-[min(236px,calc(100vw-20px))] sm:w-[248px]">
       {/* No remount key on this Enter: the card shell stays MOUNTED across
           expand/collapse. Remounting on the view state would detach the
           scroll region div while useMoreBelow's effect keeps observing the
@@ -190,7 +190,7 @@ export function QuestionBubble({
             onClick={() => onViewChange(expanded ? "collapsed" : "open")}
           >
             <ChevronDown
-              className={`size-5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+              className={`size-4 sm:size-5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
               aria-hidden="true"
             />
             {expanded ? "Hide instructions" : "Show instructions"}
