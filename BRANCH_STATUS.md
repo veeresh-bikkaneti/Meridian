@@ -1,7 +1,7 @@
 # BRANCH_STATUS — fix/154-item6-manual-full-tile-failure
 
 **Branch:** `fix/154-item6-manual-full-tile-failure`
-**Base:** `main` at `5f24c6c` (2026-10-26)
+**Base:** `origin/main` at `16ec9b3` (2026-10-26, synced with PR #197 / #154 item 1 merged on `main`)
 **State: CORRECTED + BUILT (2026-10-26).** Coordinator C
 (UX/UI & Frontend + Game Squad) cluster branch 3 of 3. Not merged —
 merge is the owner's word.
@@ -15,14 +15,15 @@ merge is the owner's word.
 > item 5's stale comment, in its mutated form. The branch name is
 > kept (renaming would orphan the PR); its content is now item 5.
 
-## Scope: #154 items 2–7 (item 1 is PR #197 — untouched)
+## Scope: #154 items 1–7 (item 1 is now merged on `main` via PR #197 / `16ec9b3`)
 
-Three verification passes against current `main`, file/line
+Verification against `origin/main` (`16ec9b3`), file/line
 evidence. Final verdicts:
 
 | Item | Status on main | Evidence |
 | :--- | :--- | :--- |
-| 2. Stale decay comment | FIXED | The filed comment is gone; game-app boot comments (L1274-1286) and capability.ts L181-183 state the post-#151 rule |
+| 1. Production test seam (`__meridianSuppressScoutOffer`) | FIXED (`16ec9b3`, PR #197) | Seam removed from `src/components/game-app.tsx`; harness spoofs device signals in `tests/e2e/helpers.ts`; inverted pin in `src/map/capability.test.ts` (L456-465) and E2E pin in `tests/e2e/scout-harness-suppression.desktop.spec.ts` |
+| 2. Stale decay comment | FIXED | The filed comment is gone; game-app boot comments (L1281-1305) and capability.ts L181-183 state the post-#151 / post-2026-10-20 rule |
 | 3. `planBootMapMode` dead `stored` param | FIXED | Signature is `planBootMapMode(decision)` (capability.ts:322); docstring L299-305 explicitly records the item-3 resolution; unit pins cover both branches |
 | 4. Offer dialog `aria-describedby` | SUPERSEDED | `scout-boot-offer.tsx` returns 404 on main — the dialog was removed by the 2026-10-20 silent-auto-switch ruling; capability.test.ts pins that it must not come back |
 | 5. motionmaxxing stale comment | **STILL OPEN (mutated) — FIXED BY THIS BRANCH** | See below |
@@ -46,26 +47,23 @@ no behavior change.
 **Diff (whole branch vs main):**
 `tests/e2e/motionmaxxing.spec.ts` (one comment) + this file.
 
-## Gates
+## Gates (synced with `origin/main` `16ec9b3`)
 
-- [x] On the pre-correction head: tsc clean, npm test green
-      (scripts 832/0/9, src 1633/1633), lint-cards PASSED,
-      build:pages exit 0, ws4-tile-fallback 4/4 — that head is
-      superseded; the corrected head changes no production code
-      and one E2E comment.
-- [x] Corrected head: `npx tsc --noEmit` clean. motionmaxxing
-      spec: **5/6 passed** — including M5, the test that uses
-      `forceFullMapMode` (the helper whose comment changed). The
-      one failure is the "tap storm" test: 90 s test-timeout on
-      this contended VM, reproduced on a solo re-run; it never
-      calls the helper, the branch diff is comment-only (zero
-      runtime surface), and tap-storm pacing is a known
-      test-budget problem (tracked as #191). Not a regression
-      this branch can cause — flagged here rather than hidden.
+- [x] `npx tsc --noEmit && npm run typecheck:worker` — clean (exit 0)
+- [x] `npm test && npm run test:worker` — scripts 832 pass / 9 skip / 0 fail (841 total), src 1670 pass / 0 fail, worker 85 pass / 0 fail
+- [x] `node scripts/lint-cards.mjs` — `lint-cards: GATE PASSED`
+- [x] `VITE_KOFI_URL=https://ko-fi.com/meridian npm run build:pages` — exit 0
+- [x] Playwright E2E against built artifact:
+      - `scout-capability-offer.desktop.spec.ts`: **13/13 passed** (including #154 item 6 test)
+      - `scout-harness-suppression.desktop.spec.ts`: **2/2 passed** (#154 item 1 test)
+      - `ws4-tile-fallback.desktop.spec.ts`: **3/3 passed**
+      - `grownups-privacy-contact.desktop.spec.ts`: **3/3 passed**
+      - `hydration-boot.desktop.spec.ts`: **1/1 passed**
+      - `observability.spec.ts`: **3/3 passed**
+      - `motionmaxxing.reduced.spec.ts`: **6/6 passed**
+      - `motionmaxxing.spec.ts`: **5/6 passed** — including M5, the test that uses `forceFullMapMode` (the helper whose comment changed). The one failure is the pre-existing "tap storm" test: 90 s test-timeout on this contended VM; it never calls the helper, the branch diff is comment-only (zero runtime surface), and tap-storm pacing is a known test-budget problem (tracked as #191).
 
 ## Out of scope
 
-- #154 item 1 / PR #197 (production test seam) — untouched.
-- Closing #154 itself: the issue stays open on item 1 (PR #197)
-  regardless of this branch; noted in the PR body.
+- #154 item 1 / PR #197 (production test seam) — now merged on `main` as `16ec9b3`.
 - No merge, no branch-protection changes.

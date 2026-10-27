@@ -31,7 +31,7 @@ test.use({ reducedMotion: "reduce" });
 
 test.beforeEach(async ({ context }) => {
   // Production boot behavior: do NOT suppress the auto-switch.
-  await serveBuiltArtifact(context, { suppressScoutOffer: false });
+  await serveBuiltArtifact(context, { spoofCapableDevice: false });
 });
 
 test("SwiftShader + 6x CPU throttle: scout auto-switches silently and the game completes", async ({

@@ -164,7 +164,7 @@ import {
   shouldArmRevealWatchdog,
 } from "./reveal-watchdog";
 import { isEnabled, loadFlags, getObservabilityEndpoint } from "@/lib/flags";
-import { installChunkLoadRecovery } from "@/lib/chunk-recovery";
+import { consumeChunkReloadNotice, installChunkLoadRecovery } from "@/lib/chunk-recovery";
 import { resolveGlobeTierSplit } from "@/lib/globe-tier-split";
 import {
   emitEvent,
@@ -1064,6 +1064,11 @@ export function GameApp() {
   const ageBand: AgeBandId = resolveBand(ageProfile);
   const [ageSettingsOpen, setAgeSettingsOpen] = useState(false);
   const [ageToast, setAgeToast] = useState<string | null>(null);
+  // Post-reload notice (chunk-recovery): set once at boot when the
+  // previous page's reload left a notice flag. Deliberately NO
+  // auto-dismiss timer (unlike ageToast above): a timed status can be
+  // deleted before a screen reader reaches it. Close button only.
+  const [chunkReloadNotice, setChunkReloadNotice] = useState(false);
   useEffect(() => {
     if (ageToast === null) return;
     const id = window.setTimeout(() => setAgeToast(null), 3500);
@@ -1269,6 +1274,10 @@ export function GameApp() {
       buildId: CURRENT_BUILD_ID,
       onRecoverySignal: (signal, facts) => noteRecoverySignal(signal, facts),
     });
+    // If the previous page auto-reloaded (or the player tapped the
+    // error card's "Try again"), explain the reload now that the new
+    // page is up: consume the one-shot notice flag (chunk-recovery).
+    if (consumeChunkReloadNotice()) setChunkReloadNotice(true);
     // Scout Map boot qualification: resolve the mode pre-mount — before
     // any map instance exists.
     // Write policy (Q3): a live stored assignment (manual forever, auto
@@ -1284,23 +1293,19 @@ export function GameApp() {
     // probes clean returns to full. (This replaced the boot choice
     // dialog; see planBootMapMode's docstring for the superseded
     // directive.)
-    // E2E seam: the harness init script
-    // (window.__meridianSuppressScoutOffer, set by serveBuiltArtifact)
-    // suppresses the auto-switch — the Playwright VM's SwiftShader
-    // renderer reads as a weak device, so unsuppressed every fresh boot
-    // would silently start in Scout and block unrelated specs. The seam
-    // now guards the auto-switch instead of the removed dialog; whether
-    // it should keep shipping in production is issue #154 item 1 — the
-    // owner's call, still owed.
+    // There is deliberately NO test bypass here (issue #154 item 1):
+    // the E2E harness used to set a window flag to suppress this
+    // auto-switch on its SwiftShader VM, which reads as a weak device.
+    // That flag shipped in production, where any page script could set
+    // it. The harness now spoofs the device signals themselves
+    // (tests/e2e/helpers.ts), so this boot path is the only one that
+    // exists — in production and in tests alike.
     try {
       const stored = readStoredMapMode();
       if (stored) {
         setReportMapMode(stored.mode);
         setMapMode(stored.mode);
       } else {
-        const suppressAutoSwitch =
-          typeof window !== "undefined" &&
-          (window as unknown as Record<string, unknown>).__meridianSuppressScoutOffer === true;
         const plan = planBootMapMode(
           qualifyMapMode({
             priorMapCrash: wasMapAttributedCrash(),
@@ -1308,7 +1313,7 @@ export function GameApp() {
             deviceMemoryGB: readDeviceMemoryGB(),
           }),
         );
-        if (plan.mode === "scout" && !suppressAutoSwitch) {
+        if (plan.mode === "scout") {
           if (plan.persistSource !== null) {
             writeStoredMapMode("scout", plan.persistSource);
           }
@@ -2416,6 +2421,25 @@ export function GameApp() {
           {loadNotice}
         </>
       }
+      homeToast={
+        chunkReloadNotice && !ageToast ? (
+          <div
+            role="status"
+            data-testid="chunk-reload-notice"
+            className="relative z-10 mt-3 mx-auto flex w-full max-w-md items-center justify-between gap-3 rounded-xl border border-line bg-surface pl-4 pr-1 py-1 text-sm text-fg shadow-xl"
+          >
+            <span>{"Meridian had to reload. You're back! Keep playing!"}</span>
+            <button
+              type="button"
+              aria-label="Close"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-muted hover:text-fg focus-visible:outline focus-visible:outline-2 focus-visible:outline-fg"
+              onClick={() => setChunkReloadNotice(false)}
+            >
+              ✕
+            </button>
+          </div>
+        ) : null
+      }
     />
     </div>
     {ageSettingsOpen ? (
@@ -2478,6 +2502,7 @@ function Choose({
   onReview,
   deck,
   notice,
+  homeToast,
   difficultyChoice,
   onDifficultyChoice,
   tutorialInvite,
@@ -2504,6 +2529,7 @@ function Choose({
   /** Deck entry status (flag-gated; see useDeckStatus). */
   deck: { enabled: boolean; due: number; total: number };
   notice?: ReactNode;
+  homeToast?: ReactNode;
   difficultyChoice: PickerDifficulty;
   onDifficultyChoice: (choice: PickerDifficulty) => void;
   tutorialInvite?: ReactNode;
@@ -2675,6 +2701,7 @@ function Choose({
           </button>
         </div>
       </header>
+      {homeToast}
 
       <div className="hv5-bento">
         <section className="hv5-hero home-rise" style={rise(2)} aria-label="Welcome to Meridian">
