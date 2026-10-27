@@ -82,19 +82,8 @@ function ContactForm() {
     <InfoPage title="Contact us">
       <p>
         For parents, carers, and teachers — questions about privacy, a request about your data, or a
-        bug report.
-      </p>
-      <p
-        className="rounded-lg border border-line bg-surface p-4 text-base font-medium"
-        role="note"
-        data-testid="contact-parked-note"
-      >
-        ⏸️ This form isn&rsquo;t switched on yet. Our contact inbox isn&rsquo;t connected, so a
-        message sent here can&rsquo;t reach us or be answered yet — and the form will tell you the
-        same thing if you try to send. Please check back soon. Our{" "}
-        <Link to="/privacy">privacy notice</Link> explains how delivery will work once it is on:
-        what the form will send, where messages will go (a private Discord channel), and how long
-        they will be kept.
+        bug report. Our <Link to="/privacy">privacy notice</Link> explains what this form sends,
+        where messages go (a private Discord channel), and how long they are kept.
       </p>
       <p
         className="rounded-lg border border-line bg-surface p-4 text-base font-medium"
@@ -106,12 +95,12 @@ function ContactForm() {
       </p>
 
       {result?.status === "sent" ? (
-        <p role="status" data-testid="contact-sent">
-          {result.stored
-            ? "Thanks — your message was sent."
-            : // NoopSink (no inbox connected yet): be honest rather than
-              // let a grown-up wait for a reply that cannot come.
-              "Thanks — we received it, but our contact inbox isn't connected yet, so nobody can read or answer it right now. Please check back soon."}
+        <p
+          role="status"
+          data-testid="contact-sent"
+          className="rounded-lg border border-line bg-surface p-4 text-base font-medium"
+        >
+          Thanks — we received your request and will get back to you.
         </p>
       ) : null}
 

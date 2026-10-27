@@ -142,6 +142,72 @@ test("parseCatalog: structural mismatch (id tally vs blocks) throws", () => {
   assert.throws(() => parseCatalog(broken), /catalog parse mismatch/);
 });
 
+// ------------------------------------------------------- §1 src() wraps (#200)
+//
+// A formatter pass (Prettier, printWidth 100) can rewrap a long
+// one-line `source: src("label", "href")` call across lines. The old
+// one-line-only regex then failed to match, the place parsed with
+// source: null, and it was silently dropped from the dataset. The
+// parser must tolerate a break at every point where whitespace may
+// appear inside the call — and fail loudly when a present src( call
+// is malformed instead of dropping the place.
+
+const EXPECTED_SOURCE = { label: "Source", href: "https://example.org/" };
+
+test("parseCatalog: src() wrapped after src( still parses (#200)", () => {
+  const places = parseCatalog(
+    catalogOf(entry({ id: "wrapped-open", source: 'src(\n      "Source", "https://example.org/")' })),
+  );
+  assert.deepEqual(places[0].source, EXPECTED_SOURCE);
+});
+
+test("parseCatalog: src() wrapped before ) still parses (#200)", () => {
+  const places = parseCatalog(
+    catalogOf(entry({ id: "wrapped-close", source: 'src("Source", "https://example.org/"\n    )' })),
+  );
+  assert.deepEqual(places[0].source, EXPECTED_SOURCE);
+});
+
+test("parseCatalog: src() wrapped before the comma still parses (#200)", () => {
+  const places = parseCatalog(
+    catalogOf(entry({ id: "wrapped-before-comma", source: 'src("Source"\n      , "https://example.org/")' })),
+  );
+  assert.deepEqual(places[0].source, EXPECTED_SOURCE);
+});
+
+test("parseCatalog: src() wrapped after the comma still parses (#200 regression pin)", () => {
+  // This shape already parsed before #200 (the old regex had `,\s*`) —
+  // pinned so the tolerance is never lost in a future regex edit.
+  const places = parseCatalog(
+    catalogOf(entry({ id: "wrapped-after-comma", source: 'src("Source",\n      "https://example.org/")' })),
+  );
+  assert.deepEqual(places[0].source, EXPECTED_SOURCE);
+});
+
+test("parseCatalog: fully wrapped src() (the real Prettier shape) still parses (#200)", () => {
+  const places = parseCatalog(
+    catalogOf(
+      entry({
+        id: "wrapped-full",
+        source: 'src(\n      "Source",\n      "https://example.org/"\n    )',
+      }),
+    ),
+  );
+  assert.deepEqual(places[0].source, EXPECTED_SOURCE);
+});
+
+test("parseCatalog: a present-but-unparseable src() throws, naming the place (#200)", () => {
+  // Single-quoted arguments are malformed for this parser: the place
+  // must NOT degrade to source: null (the silent-drop path).
+  assert.throws(
+    () =>
+      parseCatalog(
+        catalogOf(entry({ id: "badquotes", source: "src('Source', 'https://example.org/')" })),
+      ),
+    /"badquotes".*could not parse/,
+  );
+});
+
 // ---------------------------------------------------------------- §3 sets
 
 test("formSets: pure triples per ring, leftovers chunk 3/3/1 as Field Notes", () => {
