@@ -80,8 +80,9 @@ test("opted-out serve: the same weak VM auto-switches to Scout (contrast pin)", 
     page.getByRole("button", { name: "Play the globe" }),
   ).toBeVisible({ timeout: 30_000 });
 
-  const stored = await readStoredMapMode(page);
-  expect(stored).toMatchObject({ mode: "scout", source: "probe" });
+  await expect
+    .poll(() => readStoredMapMode(page), { timeout: 10_000 })
+    .toMatchObject({ mode: "scout", source: "probe" });
   await expect(page.getByTestId("scout-auto-notice")).toBeVisible({
     timeout: 10_000,
   });

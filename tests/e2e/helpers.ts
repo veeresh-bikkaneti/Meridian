@@ -174,6 +174,12 @@ export async function spoofLowMemoryDevice(context: BrowserContext): Promise<voi
  * stay in the full map unless a spec is exercising Scout itself. Specs
  * that exercise the auto-switch pass { spoofCapableDevice: false } and
  * see the genuine weak-device boot.
+ *
+ * Precedence note (owner ruling Q2): the spoof fakes the WebGL probe and
+ * navigator.deviceMemory only; a stored map-mode record wins first, then
+ * a seeded prior-map crash (priorMapCrash). Crash-seeding specs should
+ * serve with { spoofCapableDevice: false } unless the crash itself is
+ * the subject under test.
  */
 export async function serveBuiltArtifact(
   context: BrowserContext,
