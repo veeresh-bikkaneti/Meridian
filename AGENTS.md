@@ -270,7 +270,7 @@ the done condition → pass, correct, or stop/escalate
 ```
 
 - **Cycle cap: 5 edit-and-verify cycles per task**, counted across the
-  parent and all delegates together — child work never resets the count.
+  parent and all delegates together — child work never resets the count. A cycle is one edit-and-verify pass over a single finding: an edit (or one atomic commit) made to cure it, followed by re-running the verification that produced it. A new finding raised by that re-run starts a new cycle against the new finding; re-running a check with no intervening edit is not a cycle.
   A re-run forced by environment flake (VM contention, a crashed runner)
   does not consume a cycle **when** the flake is evidenced (sequential
   re-run passes, or the same failure exists on unmodified main) and
@@ -300,11 +300,13 @@ strategy.
 
 (Defaults proposed in this draft — no owner citation in the record sets these numbers, so none is claimed for them; the owner may tune them from actual run data, and routine overruns are grounds to revisit a default, not to ignore it.)
 
+The tier caps above (25k / 100k / 400k) bind the parent/orchestrator's own token consumption plus all its delegates' consumption combined — they are one shared budget per task, not a per-agent allowance. The counter's owner is the parent/orchestrator. The meter is the runtime or session token count reported for the run, summed across the parent and every delegate it spawned. No meter exists in this repo — there is no token-counting script, CI job, or telemetry field for agent runs — so where the runtime reports no count, the parent states its estimate and its uncertainty and labels the report `BUDGET EXCEEDED (estimated, no meter)` rather than presenting the estimate as a meter reading.
+
 At or before the cap: stop, report `BUDGET EXCEEDED` with what is done,
 what remains, and the evidence so far. Work resumes only on the owner's
 approval of a revised cap or a narrower plan. If exact counts are
 unavailable, state the estimate and its uncertainty — never present an
-estimate as a meter reading.
+estimate as a meter reading. The budget never waives a gate: hitting the cap stops and reports — it does not skip, defer, or soften any gate in Quality gates, and it does not waive the panel's approval of the final tip or the owner's merge word.
 
 ## Verification and the record
 
@@ -352,7 +354,8 @@ escalation path — never a single green run.
 ## Quality gates (all mandatory for a PR)
 
 - `npx tsc --noEmit` — clean
-- `npm test` — full unit suite green
+- `npm test` — the scripts and src unit suites green: `node --test "scripts/**/*.test.mjs"` plus `node --experimental-strip-types --test "src/**/*.test.ts"`. This script does **not** run the worker suite.
+- `npm run test:worker` — the worker suite green (`workers/crash-report/src/index.test.ts`), run separately from `npm test`; a PR touching `workers/` also requires `npm run typecheck:worker` — clean
 - `node scripts/lint-cards.mjs` — the prebuild card gate; must print GATE PASSED
 - `npm run build:pages` — production build green
 - Playwright E2E — `tests/e2e/` specs run against the built artifact via
