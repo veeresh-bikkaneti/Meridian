@@ -329,7 +329,10 @@ estimate as a meter reading. The budget never waives a gate: hitting the cap sto
 ## Prompt, skill, and persona changes — eval discipline
 
 Changes to reusable prompts, skills, council/persona definitions, or this
-file are behaviour changes and are evaluated like behaviour:
+file are behaviour changes and are evaluated like behaviour. Storyteller
+audio clip swaps are behaviour changes under the same discipline — one
+voice is the invariant (handbook ch03) — with the storyteller audio guard
+(`scripts/storyteller-audio-guard.test.mjs`) as the regression check:
 
 1. Before the run, record an eval card: stable case IDs with expected
    outcomes, **should-trigger and should-not-trigger** cases, the side
@@ -361,9 +364,10 @@ escalation path — never a single green run.
 - Playwright E2E — `tests/e2e/` specs run against the built artifact via
   `serveBuiltArtifact` (serves on `127.0.0.1:4123/Meridian/`)
 
-E2E runs sequentially (`--workers=1`) before any failure is called a
-regression: on this VM, parallel failures that pass sequentially are
-contention flake, not signal (see the cycle-cap evidence rule).
+E2E runs sequentially (`--workers=1`) under the shared VM lock (`flock
+~/workspace/.e2e.lock`) before any failure is called a regression: on this
+VM, parallel failures that pass sequentially are contention flake, not
+signal (see the cycle-cap evidence rule).
 
 ## Card content rules (Veeresh's standing principles)
 
