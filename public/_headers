@@ -80,8 +80,9 @@
 # build output, but a live probe (2026-10-21) shows GET /_shell.html
 # answering 404 from the app server — the same signature as / — so the
 # rule below cannot reach it today either. It is kept as policy of
-# record, and a bare or 404 probe result for it is expected-inert, not
-# a failure (see the Acceptance definition in BRANCH_STATUS.md).
+# record. Acceptance for a live probe of it is conjunctive:
+# 404 AND no ETag AND no CF-Cache-Status = expected-inert (pass);
+# an asset-served 200 without headers = FAIL (the #203 failure shape).
 #
 # Unioned with main 2026-10-22 (#207/#222 landed first, adding the /*
 # security block and the no-cache / s-maxage blocks below). Where the
