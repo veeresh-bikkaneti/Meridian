@@ -4481,26 +4481,28 @@ function PlayLoaded({
             <span className="sr-only" role="status">
               Session score {sessionTotal.toLocaleString("en-US")}
             </span>
-            {run.streak >= 2 ? (
-              // The flame celebrates the LIVE streak in this run (each
-              // edition is a fresh run with its own combo); the summary's
-              // "best streak" is session-wide and may come from another
-              // edition. Both labels are honest about what they measure.
-              <p
-                data-testid="streak-flame"
-                className="game-chrome rounded-md px-3 py-1.5 text-sm tabular-nums"
-              >
-                <span role="img" aria-label={`${run.streak}-place streak`}>
-                  🔥
-                </span>{" "}
-                {run.streak}
+            <div className="flex items-center gap-1.5">
+              {run.streak >= 2 ? (
+                // The flame celebrates the LIVE streak in this run (each
+                // edition is a fresh run with its own combo); the summary's
+                // "best streak" is session-wide and may come from another
+                // edition. Both labels are honest about what they measure.
+                <p
+                  data-testid="streak-flame"
+                  className="game-chrome rounded-md px-3 py-1.5 text-sm tabular-nums"
+                >
+                  <span role="img" aria-label={`${run.streak}-place streak`}>
+                    🔥
+                  </span>{" "}
+                  {run.streak}
+                </p>
+              ) : null}
+              <p className="game-chrome rounded-md px-3 py-2 text-sm">
+                {/* Session-scoped places (not this run's): switching editions
+                    no longer drops the counter back to 0. */}
+                {session?.hits ?? run.hits} placed
               </p>
-            ) : null}
-            <p className="game-chrome rounded-md px-3 py-2 text-sm">
-              {/* Session-scoped places (not this run's): switching editions
-                  no longer drops the counter back to 0. */}
-              {session?.hits ?? run.hits} placed
-            </p>
+            </div>
             {/* Place-card redesign 2026-10-11: the aim-phase End-game pill
                 lives in the bottom-right dock (it overlapped the question
                 card's X dismiss at 390px when it sat here). During

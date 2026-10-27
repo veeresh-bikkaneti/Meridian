@@ -248,5 +248,57 @@ test("globe overlap fix: compact 296px card at top 58px, no false 'more below', 
   await expect(showToggle).toHaveAttribute("aria-expanded", "false");
   await expect(page.locator(".bubble-hint")).toBeHidden();
 
+  // Verify 0 px² bounding-box overlap with all visible top HUD elements across all 6 viewports,
+  // and verify responsive top offset (y >= 94 on < 420px mobile; y <= 62 on >= 420px).
+  const overlapArea = (
+    a: { x: number; y: number; width: number; height: number },
+    b: { x: number; y: number; width: number; height: number },
+  ): number => {
+    const ix = Math.max(0, Math.min(a.x + a.width, b.x + b.width) - Math.max(a.x, b.x));
+    const iy = Math.max(0, Math.min(a.y + a.height, b.y + b.height) - Math.max(a.y, b.y));
+    return ix * iy;
+  };
+
+  const viewports = [
+    { width: 320, height: 568 },
+    { width: 375, height: 667 },
+    { width: 390, height: 844 },
+    { width: 768, height: 1024 },
+    { width: 1024, height: 768 },
+    { width: 1280, height: 800 },
+  ];
+
+  for (const vp of viewports) {
+    await page.setViewportSize(vp);
+    await expect(shell).toBeVisible();
+    const box = await shell.boundingBox();
+    expect(box, `shell box at ${vp.width}x${vp.height}`).not.toBeNull();
+    if (vp.width >= 420) {
+      expect(box!.y, `box.y <= 62 at ${vp.width}x${vp.height}`).toBeLessThanOrEqual(62);
+    } else {
+      expect(box!.y, `box.y >= 94 at ${vp.width}x${vp.height}`).toBeGreaterThanOrEqual(94);
+    }
+
+    const hudLocators: [string, ReturnType<Page["locator"]>][] = [
+      ["Editions", page.getByRole("button", { name: "Editions" })],
+      ["sound-toggle-game", page.getByTestId("sound-toggle-game")],
+      ["map-mode-button", page.getByTestId("map-mode-button")],
+      ["score-total", page.getByTestId("score-total")],
+      ["placed-pill", page.getByText(/^\d+ placed$/)],
+      ["streak-flame", page.getByTestId("streak-flame")],
+    ];
+
+    for (const [label, loc] of hudLocators) {
+      if (await loc.isVisible()) {
+        const hudBox = await loc.boundingBox();
+        expect(hudBox, `${label} box at ${vp.width}x${vp.height}`).not.toBeNull();
+        expect(
+          overlapArea(box!, hudBox!),
+          `0 px² overlap between .bubble-shell and ${label} at ${vp.width}x${vp.height}`,
+        ).toBe(0);
+      }
+    }
+  }
+
   expect(errors, `console/page errors: ${JSON.stringify(errors)}`).toEqual([]);
 });

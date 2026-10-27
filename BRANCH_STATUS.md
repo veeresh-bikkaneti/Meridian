@@ -20,19 +20,19 @@ Base: `origin/main 16ec9b39448df96272e7795332fec7c5c906e186`. Fixes the owner's 
    - Reduced `<Enter>` pre-mount offset in `question-bubble.tsx` from `translate-y-3` to `translate-y-1` (within the 6px bottom padding) and added a `transitionend` listener in `useMoreBelow` (`src/components/scroll-cue.tsx`).
    - Tightened `.bubble-shell` top padding (`14px` → `8px`) and `.bubble-toggle` vertical spacing (`margin-top: 2px; padding: 4px var(--bubble-pl);`, keeping `min-height: 44px`).
 
-3. **Move `QuestionBubble` higher into the top-left corner and narrow its width (`src/components/question-bubble.tsx`)**:
-   - Moved both `.pcard` wrappers from `top-[max(6rem,env(safe-area-inset-top))]` (`96px`, which left a 44px dead gap below the `Editions` bar) to `top-[max(3.625rem,env(safe-area-inset-top))]` (`58px`, 8px below the top-left HUD bar).
+3. **Responsive top offset & 296px width on `QuestionBubble` + single-row `streak-flame` / `N placed` HUD (`src/components/question-bubble.tsx`, `src/components/game-app.tsx`)**:
    - Narrowed the card width from `w-[min(352px,calc(100vw-20px))]` (`352px`) to `w-[min(296px,calc(100vw-20px))]` (`296px`), uncovering a large swath of the upper-left 3D globe.
+   - Set both `.pcard` wrappers to `top-[max(6rem,env(safe-area-inset-top))] min-[420px]:top-[max(3.625rem,env(safe-area-inset-top))]` so viewports `>= 420px` (where `x = 10..306` is horizontally clear of the right HUD stack) sit high at `58px`, while `< 420px` mobile viewports (`320x568`, `375x667`, `390x844`, where `defaultBubbleView()` already starts `"collapsed"`) sit at `96px` below the `N placed` row (`0 px²` HUD overlap across all 6 viewports).
+   - Wrapped `streak-flame` and `{session?.hits ?? run.hits} placed` in `<div className="flex items-center gap-1.5">` inside the top-right HUD column in `src/components/game-app.tsx` so `streak >= 2` sits side-by-side with `N placed` on row 2 instead of stacking a 3rd vertical HUD row.
 
 ## Builder Gates (Node v22.22.2)
 
-- Gate 1 (`npx tsc --noEmit && npm run typecheck:worker`): PASS (`10.2s`)
-- Gate 2 (`npm test && npm run test:worker`): PASS (`11.3s`, including 49/49 in `src/components/question-bubble.test.ts` and 85/85 worker tests)
-- Gate 3 (`node scripts/lint-cards.mjs`): PASS (`0.66s`, 124,690 records validated)
-- Gate 4 (`VITE_KOFI_URL=https://ko-fi.com/meridian npm run build:pages`): PASS (`20.8s`)
+- Gate 1 (`npx tsc --noEmit && npm run typecheck:worker`): PASS (`11.5s`)
+- Gate 2 (`npm test && npm run test:worker`): PASS (`11.4s`, 832/832 script tests, 1673/1673 src tests including 49/49 in `src/components/question-bubble.test.ts`, and 85/85 worker tests)
+- Gate 3 (`node scripts/lint-cards.mjs`): PASS (`0.64s`, 124,690 records validated)
+- Gate 4 (`VITE_KOFI_URL=https://ko-fi.com/meridian npm run build:pages`): PASS (`21.5s`)
 - Gate 5 (Playwright E2E against built artifact):
-  - `tests/e2e/question-wrap.spec.ts`: 1/1 PASS
-  - `tests/e2e/question-card-header.spec.ts`: 6/6 PASS (including new regression test for 296px width, 58px top offset, no false `more below`, and round 2+ auto-collapse)
-  - `tests/e2e/place-card-redesign.mobile.spec.ts`: 6/6 PASS (`compact shell=(10,58,296x166) viewport=390x844`, `overlap=0.0px²`)
-  - `tests/e2e/longname-scroll-a11y.desktop.spec.ts` (`-g "bubble backstop|dedicated probes"`): 13/13 PASS
-  - `tests/e2e/longname-tiers.desktop.spec.ts` (`-g "question card"`): 24/24 PASS
+  - `tests/e2e/question-wrap.spec.ts`: 1/1 PASS (`9.0s`)
+  - `tests/e2e/question-card-header.spec.ts`: 6/6 PASS (including 6-viewport `0 px²` HUD non-overlap assertion across `320x568`, `375x667`, `390x844`, `768x1024`, `1024x768`, `1280x800`, responsive `y >= 94` / `y <= 62` bounds, 296px width, no false `more below`, and round 2+ auto-collapse)
+  - `tests/e2e/place-card-redesign.mobile.spec.ts`: 6/6 PASS (`compact shell=(10,96,296x166) viewport=390x844`, `overlap=0.0px²`)
+  - `tests/e2e/longname-scroll-a11y.desktop.spec.ts` (`-g "bubble backstop|dedicated probes"`): 13/13 PASS (`1m22.5s`)

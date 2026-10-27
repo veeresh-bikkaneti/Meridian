@@ -955,21 +955,29 @@ describe("globe-overlap fix (2026-10-26) — auto-collapse after round 1, no fal
     );
   });
 
-  it("anchors QuestionBubble higher in the top-left (3.625rem) and narrows width (296px) to uncover the globe", () => {
-    const topMatches =
-      source.match(/top-\[max\(3\.625rem,env\(safe-area-inset-top\)\)\]/g) ?? [];
+  it("uses responsive top offset (6rem on <420px mobile, 3.625rem on >=420px), 296px width cap, and single-row streak+placed HUD", () => {
+    const responsiveTopMatches =
+      source.match(
+        /top-\[max\(6rem,env\(safe-area-inset-top\)\)\] min-\[420px\]:top-\[max\(3\.625rem,env\(safe-area-inset-top\)\)\]/g,
+      ) ?? [];
     assert.equal(
-      topMatches.length,
+      responsiveTopMatches.length,
       2,
-      "both QuestionBubble wrappers must sit at top-[max(3.625rem,env(safe-area-inset-top))]",
+      "both QuestionBubble wrappers must sit at 6rem on <420px mobile and 3.625rem on >=420px viewports",
     );
     assert.ok(
       source.includes("w-[min(296px,calc(100vw-20px))]"),
       "the open/collapsed card wrapper must cap width at 296px",
     );
     assert.ok(
-      !source.includes("top-[max(6rem") && !source.includes("352px"),
-      "old 6rem top offset and 352px width must be gone",
+      !source.includes("352px"),
+      "old 352px width must be gone",
+    );
+    assert.ok(
+      /<div className="flex items-center gap-1\.5">[\s\S]*?data-testid="streak-flame"[\s\S]*?\{session\?\.hits \?\? run\.hits\} placed[\s\S]*?<\/div>/.test(
+        gameAppSource,
+      ),
+      "streak-flame and placed pill must share a horizontal flex row so streak >= 2 never adds a 3rd vertical HUD row",
     );
   });
 });
