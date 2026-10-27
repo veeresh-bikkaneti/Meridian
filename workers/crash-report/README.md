@@ -33,6 +33,11 @@ Deploy **one** of them as the `observabilityEndpoint` target, not both.
 - `src/index.ts` — zero-runtime-dependency Worker. `handleRequest(request,
 env)` is exported pure for tests; the default export wires it as `fetch`
 plus a `scheduled` handler for the hourly digest.
+- `src/dev-entry.ts` — local-dev wrapper for `wrangler dev` only:
+  it re-exports just the default handler, because workerd rejects
+  `index.ts`'s test-only named exports (plain constants) as handler
+  candidates (#234). Production never uses it — a release bundles
+  `src/index.ts` directly.
 - `wrangler.toml` — the **human config record**: worker name, entry
   point, compatibility date, the hourly cron trigger, and the
   `TELEMETRY_COUNTS` KV binding block. The deploy path never reads
