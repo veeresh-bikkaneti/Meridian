@@ -346,3 +346,89 @@ test("readContactEnv and readContactRuntimeEnv read from process.env and globalT
     else g.__env__ = prevNitroEnv;
   }
 });
+
+test("full-stack E2E over real local HTTP server: readContactRuntimeEnv + handleContactRequest + DiscordWebhookSink -> real HTTP receiver", async () => {
+  const http = await import("node:http");
+  const receivedCalls: Array<{
+    method: string;
+    url: string;
+    contentType: string | undefined;
+    body: { content: string; allowed_mentions: { parse: string[] }; flags: number };
+  }> = [];
+
+  const webhookServer = http.createServer((req, res) => {
+    const chunks: Buffer[] = [];
+    req.on("data", (c: Buffer) => chunks.push(c));
+    req.on("end", () => {
+      receivedCalls.push({
+        method: req.method ?? "",
+        url: req.url ?? "",
+        contentType: req.headers["content-type"],
+        body: JSON.parse(Buffer.concat(chunks).toString("utf8")),
+      });
+      res.writeHead(204);
+      res.end();
+    });
+  });
+
+  await new Promise<void>((resolve) => webhookServer.listen(0, "127.0.0.1", resolve));
+  const address = webhookServer.address();
+  const port = typeof address === "object" && address ? address.port : 0;
+
+  const originalFetch = globalThis.fetch;
+  const prevWebhook = process.env.CONTACT_DISCORD_WEBHOOK_URL;
+  globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
+    const urlStr =
+      typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
+    if (urlStr.startsWith("https://discord.com/api/webhooks/")) {
+      const u = new URL(urlStr);
+      return originalFetch(`http://127.0.0.1:${port}${u.pathname}${u.search}`, init);
+    }
+    return originalFetch(input, init);
+  }) as typeof fetch;
+
+  try {
+    process.env.CONTACT_DISCORD_WEBHOOK_URL =
+      "https://discord.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyz0123456789?wait=true";
+
+    const env = await readContactRuntimeEnv();
+    const res = await handleRequest(
+      post(
+        {
+          topic: "privacy",
+          message: "Please verify full E2E pipeline",
+          replyTo: "parent@example.com",
+          website: "",
+        },
+        {
+          origin: "https://veeresh-bikkaneti.github.io",
+          "cf-connecting-ip": "198.51.100.42",
+        },
+      ),
+      env,
+    );
+
+    assert.equal(res.status, 200);
+    assert.equal(res.headers.get("access-control-allow-origin"), "https://veeresh-bikkaneti.github.io");
+    assert.deepEqual(await res.json(), { ok: true, stored: true });
+
+    assert.equal(receivedCalls.length, 1);
+    assert.equal(receivedCalls[0].method, "POST");
+    assert.equal(
+      receivedCalls[0].url,
+      "/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyz0123456789?wait=true",
+    );
+    assert.equal(receivedCalls[0].contentType, "application/json");
+    assert.deepEqual(receivedCalls[0].body.allowed_mentions, { parse: [] });
+    assert.equal(receivedCalls[0].body.flags, 4);
+    assert.match(receivedCalls[0].body.content, /\*\*Meridian contact\*\* · topic: privacy/);
+    assert.match(receivedCalls[0].body.content, /```text\nparent@example\.com\n```/);
+    assert.match(receivedCalls[0].body.content, /```text\nPlease verify full E2E pipeline\n```/);
+    assert.ok(!JSON.stringify(receivedCalls[0]).includes("198.51.100.42"));
+  } finally {
+    globalThis.fetch = originalFetch;
+    if (prevWebhook === undefined) delete process.env.CONTACT_DISCORD_WEBHOOK_URL;
+    else process.env.CONTACT_DISCORD_WEBHOOK_URL = prevWebhook;
+    await new Promise<void>((resolve) => webhookServer.close(() => resolve()));
+  }
+});

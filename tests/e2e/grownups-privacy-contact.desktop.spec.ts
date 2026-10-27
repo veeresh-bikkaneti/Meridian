@@ -1,22 +1,104 @@
+import http from "node:http";
 import { test, expect } from "playwright/test";
 import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
+import {
+  handleContactRequest,
+  readContactRuntimeEnv,
+  resetContactStateForTests,
+} from "../../src/lib/contact/contact-handler.server";
 
 /**
  * 2026-10-21 review remediation (P0-3, P1-5, P2-11 + the contact form)
- * and 2026-10-27 contact webhook enablement.
+ * and 2026-10-27 contact webhook enablement & full-stack E2E verification.
  *
  * Unit tests cover the pieces; this proves the home page wires them up in
- * the built artifact: the footer reaches /privacy and /contact by in-app
- * navigation (the static Pages mirror has no deep-link server, so that is
- * how real visitors get there), the contact form is hidden behind the
- * grown-up gate, submitting posts to the configured contactEndpoint and
- * shows a confirmation message to all users that we received their request
- * and will get back to them, and "Begin exploring" starts a round instead
- * of only scrolling.
+ * the built artifact AND exercises all moving parts of `/contact` end-to-end
+ * against the real server handler (`handleContactRequest` + `readContactRuntimeEnv`)
+ * and a real local HTTP Discord webhook receiver:
+ *   1. `public/flags.json` loader (`loadFlags()`) fetches `/flags.json` and
+ *      enables `contactEndpoint`.
+ *   2. Client UI & `GrownUpGate` math challenge unlock the form; client-side
+ *      validation checks topic, message, optional `replyTo`, and hidden
+ *      `website` honeypot.
+ *   3. Server `/api/contact` guards: `Origin` check (403 on disallowed/missing
+ *      origin, CORS headers on allowed cross-origin), `Content-Length` / stream
+ *      body cap (413), rate limiter (429 + `Retry-After` after 3 requests /
+ *      10 min per client IP), and honeypot (`200 { ok: true }` silent drop with
+ *      zero webhook calls).
+ *   4. Runtime env / secret resolution (`readContactRuntimeEnv()`) selects
+ *      `DiscordWebhookSink` when `CONTACT_DISCORD_WEBHOOK_URL` is configured
+ *      (and `NoopSink` when unset).
+ *   5. Outbound Discord webhook HTTP POST (`https://discord.com/api/webhooks/...`)
+ *      delivers formatted message with code-fenced `replyTo` & `message`,
+ *      `allowed_mentions: { parse: [] }`, and `flags: 4` (SUPPRESS_EMBEDS).
+ *   6. Browser post-submit state renders `[data-testid="contact-sent"]` with
+ *      "Thanks — we received your request and will get back to you." for all
+ *      users and resets form fields, or renders `[data-testid="contact-error"]`
+ *      when rate-limited (429).
  */
 test.setTimeout(180_000);
 
+interface CapturedDiscordWebhookCall {
+  method: string;
+  url: string;
+  headers: http.IncomingHttpHeaders;
+  body: {
+    content: string;
+    allowed_mentions: { parse: string[] };
+    flags: number;
+  };
+}
+
+/**
+ * Starts a real local HTTP server on 127.0.0.1 to act as the Discord webhook
+ * receiver, and redirects outbound `https://discord.com/api/webhooks/...`
+ * fetches from `DiscordWebhookSink` to that local server so the entire HTTP
+ * pipeline runs over real sockets without touching external Discord servers.
+ */
+async function startLocalDiscordWebhookReceiver() {
+  const calls: CapturedDiscordWebhookCall[] = [];
+  const server = http.createServer((req, res) => {
+    const chunks: Buffer[] = [];
+    req.on("data", (c: Buffer) => chunks.push(c));
+    req.on("end", () => {
+      const raw = Buffer.concat(chunks).toString("utf8");
+      calls.push({
+        method: req.method ?? "UNKNOWN",
+        url: req.url ?? "",
+        headers: req.headers,
+        body: JSON.parse(raw) as CapturedDiscordWebhookCall["body"],
+      });
+      res.writeHead(204);
+      res.end();
+    });
+  });
+
+  await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
+  const address = server.address();
+  const port = typeof address === "object" && address ? address.port : 0;
+
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
+    const urlStr =
+      typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url;
+    if (urlStr.startsWith("https://discord.com/api/webhooks/")) {
+      const u = new URL(urlStr);
+      return originalFetch(`http://127.0.0.1:${port}${u.pathname}${u.search}`, init);
+    }
+    return originalFetch(input, init);
+  }) as typeof fetch;
+
+  return {
+    calls,
+    async close() {
+      globalThis.fetch = originalFetch;
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+    },
+  };
+}
+
 test.beforeEach(async ({ context }) => {
+  resetContactStateForTests();
   await serveBuiltArtifact(context);
 });
 
@@ -47,65 +129,230 @@ test("footer links reach the privacy notice and the tour stays reachable", async
   await expect(page.getByRole("link", { name: "Contact us" }).first()).toBeVisible();
 });
 
-test("contact form sits behind the grown-up gate and shows confirmation message to all users", async ({
+test("full-stack E2E: contact form exercises all moving parts (flags, gate, real /api/contact handler, Discord webhook HTTP sink, honeypot, CORS/Origin guards, and rate limiter)", async ({
   context,
   page,
 }) => {
-  const postedPayloads: unknown[] = [];
-  let stubStored = true;
-  await context.route("https://meridian.knowledgetest.workers.dev/api/contact", async (route) => {
-    postedPayloads.push(route.request().postDataJSON());
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify({ ok: true, stored: stubStored }),
+  const webhookReceiver = await startLocalDiscordWebhookReceiver();
+  const prevWebhookEnv = process.env.CONTACT_DISCORD_WEBHOOK_URL;
+  const prevAllowedOriginsEnv = process.env.CONTACT_ALLOWED_ORIGINS;
+  process.env.CONTACT_DISCORD_WEBHOOK_URL =
+    "https://discord.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyz0123456789?wait=true";
+  // Allow both the GitHub Pages mirror and the E2E harness origin (http://127.0.0.1:4123)
+  process.env.CONTACT_ALLOWED_ORIGINS =
+    "https://veeresh-bikkaneti.github.io,http://127.0.0.1:4123";
+
+  let simulatedClientIp = "198.51.100.10";
+  const serverResponses: Array<{ status: number; body: unknown; headers: Record<string, string> }> =
+    [];
+
+  try {
+    // Wire the browser's requests to https://meridian.knowledgetest.workers.dev/api/contact
+    // directly into the REAL server handler (`handleContactRequest` + `readContactRuntimeEnv`),
+    // NOT a static mock response.
+    await context.route("https://meridian.knowledgetest.workers.dev/api/contact", async (route) => {
+      const pwReq = route.request();
+      const headers = new Headers(await pwReq.allHeaders());
+      if (!headers.has("cf-connecting-ip")) {
+        headers.set("cf-connecting-ip", simulatedClientIp);
+      }
+      const method = pwReq.method();
+      const rawBody = pwReq.postDataBuffer();
+      const webReq = new Request(pwReq.url(), {
+        method,
+        headers,
+        body: method !== "GET" && method !== "HEAD" && rawBody ? new Uint8Array(rawBody) : undefined,
+      });
+
+      const env = await readContactRuntimeEnv();
+      const webRes = await handleContactRequest(webReq, env);
+      const resBodyText = await webRes.text();
+      const resHeaders: Record<string, string> = {};
+      webRes.headers.forEach((v, k) => {
+        resHeaders[k] = v;
+      });
+      let parsedBody: unknown = null;
+      try {
+        parsedBody = resBodyText ? JSON.parse(resBodyText) : null;
+      } catch {
+        parsedBody = resBodyText;
+      }
+      serverResponses.push({ status: webRes.status, body: parsedBody, headers: resHeaders });
+
+      await route.fulfill({
+        status: webRes.status,
+        headers: resHeaders,
+        body: resBodyText,
+      });
     });
-  });
 
-  await page.goto(APP_NO_IDLE);
-  await page.getByTestId("contact-link").click();
-  await expect(page).toHaveURL(/\/contact$/);
+    // Moving Part 1 & 2: Navigate to /contact, fetch real /flags.json, and unlock GrownUpGate
+    await page.goto(APP_NO_IDLE);
+    await page.getByTestId("contact-link").click();
+    await expect(page).toHaveURL(/\/contact$/);
 
-  // The form must not render before the gate is passed.
-  const gate = page.getByTestId("grownup-gate");
-  await expect(gate).toBeVisible();
-  await expect(page.getByTestId("contact-form")).toHaveCount(0);
+    const gate = page.getByTestId("grownup-gate");
+    await expect(gate).toBeVisible();
+    await expect(page.getByTestId("contact-form")).toHaveCount(0);
 
-  const question = await page.locator(".agep-question").textContent();
-  const m = question?.match(/(\d+) × (\d+)/);
-  expect(m).not.toBeNull();
-  for (const d of String(Number(m![1]) * Number(m![2]))) await page.keyboard.press(d);
-  await page.keyboard.press("Enter");
+    const question = await page.locator(".agep-question").textContent();
+    const m = question?.match(/(\d+) × (\d+)/);
+    expect(m).not.toBeNull();
+    for (const d of String(Number(m![1]) * Number(m![2]))) await page.keyboard.press(d);
+    await page.keyboard.press("Enter");
 
-  const form = page.getByTestId("contact-form");
-  await expect(form).toBeVisible();
-  await expect(page.getByTestId("contact-parked-note")).toHaveCount(0);
-  await expect(page.getByTestId("contact-kid-note")).toBeVisible();
+    const form = page.getByTestId("contact-form");
+    await expect(form).toBeVisible();
+    await expect(page.getByTestId("contact-parked-note")).toHaveCount(0);
+    await expect(page.getByTestId("contact-kid-note")).toBeVisible();
 
-  // Case 1: stored: true -> confirmation message shown and form reset
-  await form.locator("select").selectOption("bug");
-  await form.locator("textarea").fill("The map froze on level 2");
-  await form.getByRole("button", { name: /send/i }).click();
+    // Moving Part 3, 4, 5, 6: Real browser submission -> real server validation ->
+    // real DiscordWebhookSink HTTP POST to local receiver -> 200 { ok: true, stored: true } ->
+    // confirmation banner shown & form reset.
+    await form.locator("select").selectOption("privacy");
+    await form.locator("textarea").fill("Please verify full E2E pipeline");
+    await form.locator('input[type="email"]').fill("parent@example.com");
+    await form.getByRole("button", { name: /send/i }).click();
 
-  const sentBanner = page.getByTestId("contact-sent");
-  await expect(sentBanner).toBeVisible();
-  await expect(sentBanner).toContainText(
-    "Thanks — we received your request and will get back to you.",
-  );
-  expect(postedPayloads).toEqual([{ topic: "bug", message: "The map froze on level 2", website: "" }]);
-  await expect(form.locator("textarea")).toHaveValue("");
+    const sentBanner = page.getByTestId("contact-sent");
+    await expect(sentBanner).toBeVisible();
+    await expect(sentBanner).toContainText(
+      "Thanks — we received your request and will get back to you.",
+    );
+    await expect(form.locator("textarea")).toHaveValue("");
+    await expect(form.locator('input[type="email"]')).toHaveValue("");
 
-  // Case 2: stored: false -> ALL users still get the same confirmation message
-  stubStored = false;
-  await form.locator("select").selectOption("other");
-  await form.locator("textarea").fill("Follow-up question from a teacher");
-  await form.getByRole("button", { name: /send/i }).click();
-  await expect(form.locator("textarea")).toHaveValue("");
-  expect(postedPayloads).toHaveLength(2);
-  await expect(sentBanner).toBeVisible();
-  await expect(sentBanner).toContainText(
-    "Thanks — we received your request and will get back to you.",
-  );
+    expect(serverResponses).toHaveLength(1);
+    expect(serverResponses[0].status).toBe(200);
+    expect(serverResponses[0].body).toEqual({ ok: true, stored: true });
+    expect(serverResponses[0].headers["access-control-allow-origin"]).toBe("http://127.0.0.1:4123");
+
+    expect(webhookReceiver.calls).toHaveLength(1);
+    expect(webhookReceiver.calls[0].method).toBe("POST");
+    expect(webhookReceiver.calls[0].url).toBe(
+      "/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyz0123456789?wait=true",
+    );
+    expect(webhookReceiver.calls[0].body.allowed_mentions).toEqual({ parse: [] });
+    expect(webhookReceiver.calls[0].body.flags).toBe(4);
+    expect(webhookReceiver.calls[0].body.content).toContain("**Meridian contact** · topic: privacy");
+    expect(webhookReceiver.calls[0].body.content).toContain("```text\nparent@example.com\n```");
+    expect(webhookReceiver.calls[0].body.content).toContain(
+      "```text\nPlease verify full E2E pipeline\n```",
+    );
+    expect(webhookReceiver.calls[0].body.content).toContain("within 90 days");
+
+    // Moving Part 4b (Fallback when webhook secret is unset -> NoopSink returns stored: false,
+    // and browser still shows the same confirmation message to all users):
+    delete process.env.CONTACT_DISCORD_WEBHOOK_URL;
+    await form.locator("select").selectOption("other");
+    await form.locator("textarea").fill("Follow-up question when sink is NoopSink");
+    await form.getByRole("button", { name: /send/i }).click();
+
+    await expect(form.locator("textarea")).toHaveValue("");
+    expect(serverResponses).toHaveLength(2);
+    expect(serverResponses[1].status).toBe(200);
+    expect(serverResponses[1].body).toEqual({ ok: true, stored: false });
+    // Webhook receiver was NOT called for NoopSink
+    expect(webhookReceiver.calls).toHaveLength(1);
+    await expect(sentBanner).toBeVisible();
+    await expect(sentBanner).toContainText(
+      "Thanks — we received your request and will get back to you.",
+    );
+
+    // Re-enable webhook secret for remaining moving parts
+    process.env.CONTACT_DISCORD_WEBHOOK_URL =
+      "https://discord.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyz0123456789?wait=true";
+
+    // Moving Part 3b (Honeypot filled in browser -> 200 { ok: true } silent drop, +0 webhook calls):
+    await form.locator("select").selectOption("bug");
+    await form.locator("textarea").fill("Bot spam submission");
+    await form.locator('input[type="text"]').fill("https://spam-bot.example");
+    await form.getByRole("button", { name: /send/i }).click();
+
+    await expect(form.locator("textarea")).toHaveValue("");
+    expect(serverResponses).toHaveLength(3);
+    expect(serverResponses[2].status).toBe(200);
+    expect(serverResponses[2].body).toEqual({ ok: true });
+    // Honeypot must NOT trigger the Discord webhook receiver!
+    expect(webhookReceiver.calls).toHaveLength(1);
+
+    // Moving Part 3c (Rate limiter: 4th submission from same client IP `198.51.100.10` within 10m ->
+    // 429 with Retry-After header, and browser displays rate-limit alert):
+    await form.locator("select").selectOption("bug");
+    await form.locator("textarea").fill("Fourth message from same IP triggers rate limit");
+    await form.getByRole("button", { name: /send/i }).click();
+
+    const errorBanner = page.getByTestId("contact-error");
+    await expect(errorBanner).toBeVisible();
+    await expect(errorBanner).toContainText(
+      "That's a lot of messages in a short time — please try again in a few minutes.",
+    );
+    expect(serverResponses).toHaveLength(4);
+    expect(serverResponses[3].status).toBe(429);
+    expect(Number(serverResponses[3].headers["retry-after"])).toBeGreaterThan(0);
+    expect(webhookReceiver.calls).toHaveLength(1);
+
+    // Moving Part 3d (Cross-origin CORS preflight + GitHub Pages origin + Disallowed origin):
+    const env = await readContactRuntimeEnv();
+    const preflightRes = await handleContactRequest(
+      new Request("https://meridian.knowledgetest.workers.dev/api/contact", {
+        method: "OPTIONS",
+        headers: { origin: "https://veeresh-bikkaneti.github.io" },
+      }),
+      env,
+    );
+    expect(preflightRes.status).toBe(204);
+    expect(preflightRes.headers.get("access-control-allow-origin")).toBe(
+      "https://veeresh-bikkaneti.github.io",
+    );
+
+    const pagesPostRes = await handleContactRequest(
+      new Request("https://meridian.knowledgetest.workers.dev/api/contact", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          origin: "https://veeresh-bikkaneti.github.io",
+          "cf-connecting-ip": "198.51.100.99",
+        },
+        body: JSON.stringify({
+          topic: "delete-data",
+          message: "Cross-origin request from GitHub Pages mirror",
+        }),
+      }),
+      env,
+    );
+    expect(pagesPostRes.status).toBe(200);
+    expect(pagesPostRes.headers.get("access-control-allow-origin")).toBe(
+      "https://veeresh-bikkaneti.github.io",
+    );
+    expect(await pagesPostRes.json()).toEqual({ ok: true, stored: true });
+    expect(webhookReceiver.calls).toHaveLength(2);
+
+    const attackerRes = await handleContactRequest(
+      new Request("https://meridian.knowledgetest.workers.dev/api/contact", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          origin: "https://attacker.example",
+          "cf-connecting-ip": "198.51.100.100",
+        },
+        body: JSON.stringify({
+          topic: "bug",
+          message: "Cross-origin request from disallowed origin",
+        }),
+      }),
+      env,
+    );
+    expect(attackerRes.status).toBe(403);
+    expect(await attackerRes.json()).toEqual({ error: "origin not allowed" });
+    expect(webhookReceiver.calls).toHaveLength(2);
+  } finally {
+    if (prevWebhookEnv === undefined) delete process.env.CONTACT_DISCORD_WEBHOOK_URL;
+    else process.env.CONTACT_DISCORD_WEBHOOK_URL = prevWebhookEnv;
+    if (prevAllowedOriginsEnv === undefined) delete process.env.CONTACT_ALLOWED_ORIGINS;
+    else process.env.CONTACT_ALLOWED_ORIGINS = prevAllowedOriginsEnv;
+    await webhookReceiver.close();
+  }
 });
 
 test("contact form fails closed if flags.json omits contactEndpoint", async ({ context, page }) => {
