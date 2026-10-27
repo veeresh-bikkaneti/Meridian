@@ -1,38 +1,69 @@
-# BRANCH_STATUS — fix/question-bubble-globe-overlap
+# BRANCH_STATUS — fix/154-item6-manual-full-tile-failure
 
-**State: BUILD COMPLETE, all 5 builder gates green (below). Ready = NO —
-the full panel pipeline and the owner's merge word are still owed**
-(standing rule: the panel approves the final tip itself).
+**Branch:** `fix/154-item6-manual-full-tile-failure`
+**Base:** `origin/main` at `9345b4c` (2026-10-27, synced with PR #263 and PR #197 / #154 item 1 merged on `main`)
+**State: CORRECTED + BUILT (2026-10-26).** Coordinator C
+(UX/UI & Frontend + Game Squad) cluster branch 3 of 3. Not merged —
+merge is the owner's word.
 
-Base: `origin/main 16ec9b39448df96272e7795332fec7c5c906e186`. Fixes the owner's bug report (`[t115u]`):
-> "Bug that name card covers half the globe making it diff ult to click location"
+> **Correction (2026-10-26, after the first push):** this branch
+> originally added a new WS-4 E2E leg for item 6. A deeper
+> verification pass then found the scenario ALREADY pinned on main
+> (see item 6 below) — the added leg was substantially duplicative
+> and has been **withdrawn** (the ws4 spec is byte-identical to
+> main again). What remains is the one genuinely open remainder:
+> item 5's stale comment, in its mutated form. The branch name is
+> kept (renaming would orphan the PR); its content is now item 5.
 
-## Root Causes & Fixes
+## Scope: #154 items 1–7 (item 1 is now merged on `main` via PR #197 / `16ec9b3`)
 
-1. **Auto-collapse instructions after the first placed pin (`run.results.length > 0` or `placesPlayed > 0`) and persist manual collapse across places (`src/components/game-app.tsx`)**:
-   - Previously, the `[place?.id]` effect in `PlayLoaded` unconditionally reset `setBubble(defaultBubbleView())` on every round, re-expanding the full gesture instructions on rounds 2+ (`7 placed` in the owner's screenshot) and wiping out manual `Hide instructions` collapses.
-   - Added `userCollapsedBubbleRef = useRef(false)` in `PlayLoaded` (updated via `QuestionBubble`'s `onViewChange` and Escape key toggle; reset in `onReplay`).
-   - In the `[place?.id]` effect, after `setBubble(defaultBubbleView())`, if `run.results.length > 0 || (session?.placesPlayed ?? 0) > 0 || userCollapsedBubbleRef.current`, the card immediately sets `setBubble("collapsed")` so only the compact place-name card is shown from round 2 onward.
+Verification against `origin/main` (`16ec9b3`), file/line
+evidence. Final verdicts:
 
-2. **Eliminate false `⋯ more below` scroll cue on short/medium place names & tighten vertical padding (`src/styles.css`, `src/components/question-bubble.tsx`, `src/components/scroll-cue.tsx`)**:
-   - `.bubble-scroll` previously applied `padding: 6px 2px 30px;` to all name tiers, adding 30px of empty bottom scroll height that pushed `scrollHeight` past `clientHeight` (`min-height: max(120px, 20%)`) on normal 2–3 line place names (`Paniqui, Central Luzon, Philippines`). In addition, `<Enter>`'s initial `translate-y-3` (12px) transform on `.bubble-hint` increased `scrollHeight` on mount frame 0 without triggering `ResizeObserver` when the transform settled.
-   - Changed `.bubble-scroll` padding to `padding: 4px 2px 6px;` and scoped the 28px scroll-cue fade reserve to `.bubble-shell[data-name-tier="long"] .bubble-scroll:not(.pcard-compact) { padding-bottom: 28px; }`.
-   - Reduced `<Enter>` pre-mount offset in `question-bubble.tsx` from `translate-y-3` to `translate-y-1` (within the 6px bottom padding) and added a `transitionend` listener in `useMoreBelow` (`src/components/scroll-cue.tsx`).
-   - Tightened `.bubble-shell` top padding (`14px` → `8px`) and `.bubble-toggle` vertical spacing (`margin-top: 2px; padding: 4px var(--bubble-pl);`, keeping `min-height: 44px`).
+| Item | Status on main | Evidence |
+| :--- | :--- | :--- |
+| 1. Production test seam (`__meridianSuppressScoutOffer`) | FIXED (`16ec9b3`, PR #197) | Seam removed from `src/components/game-app.tsx`; harness spoofs device signals in `tests/e2e/helpers.ts`; inverted pin in `src/map/capability.test.ts` (L456-465) and E2E pin in `tests/e2e/scout-harness-suppression.desktop.spec.ts` |
+| 2. Stale decay comment | FIXED | The filed comment is gone; game-app boot comments (L1281-1305) and capability.ts L181-183 state the post-#151 / post-2026-10-20 rule |
+| 3. `planBootMapMode` dead `stored` param | FIXED | Signature is `planBootMapMode(decision)` (capability.ts:322); docstring L299-305 explicitly records the item-3 resolution; unit pins cover both branches |
+| 4. Offer dialog `aria-describedby` | SUPERSEDED | `scout-boot-offer.tsx` returns 404 on main — the dialog was removed by the 2026-10-20 silent-auto-switch ruling; capability.test.ts pins that it must not come back |
+| 5. motionmaxxing stale comment | **STILL OPEN (mutated) — FIXED BY THIS BRANCH** | See below |
+| 6. Declined-offer + WS-4 coverage gap | **ALREADY FIXED on main** | `scout-capability-offer.desktop.spec.ts`: "settled manual full → WS-4 tile failure: visit switches to scout, manual record untouched" — seeds manual full, aborts tiles, pins the Try-again card, the session-only switch, the untouched record, and the switch note; its header cites the #154 item-6 lineage. (An earlier pass missed this test; the duplicate leg added for it was withdrawn — see the correction note.) |
+| 7. No unit test for accept→`accepted=true` | SUPERSEDED | The accept path no longer exists at all; its successor pin is capability.test.ts "game-app wiring: boot applies the plan's persistSource as an auto record", plus auto-record-no-accepted-flag and legacy-accepted-never-decays tests |
 
-3. **Responsive top offset & 296px width on `QuestionBubble` + single-row `streak-flame` / `N placed` HUD (`src/components/question-bubble.tsx`, `src/components/game-app.tsx`)**:
-   - Narrowed the card width from `w-[min(352px,calc(100vw-20px))]` (`352px`) to `w-[min(296px,calc(100vw-20px))]` (`296px`), uncovering a large swath of the upper-left 3D globe.
-   - Set both `.pcard` wrappers to `top-[max(6rem,env(safe-area-inset-top))] min-[420px]:top-[max(3.625rem,env(safe-area-inset-top))]` so viewports `>= 420px` (where `x = 10..306` is horizontally clear of the right HUD stack) sit high at `58px`, while `< 420px` mobile viewports (`320x568`, `375x667`, `390x844`, where `defaultBubbleView()` already starts `"collapsed"`) sit at `96px` below the `N placed` row (`0 px²` HUD overlap across all 6 viewports).
-   - Wrapped `streak-flame` and `{session?.hits ?? run.hits} placed` in `<div className="flex items-center gap-1.5">` inside the top-right HUD column in `src/components/game-app.tsx` so `streak >= 2` sits side-by-side with `N placed` on row 2 instead of stacking a 3rd vertical HUD row.
+## Item 5, mutated form (what this branch changes)
 
-## Builder Gates (Node v22.22.2)
+The filed phrase ("the VM boots in scout map mode") is gone, but
+its replacement comment in `tests/e2e/motionmaxxing.spec.ts`
+(L180-185) is itself stale post-2026-10-20: it says the failed
+WebGL probe "raises the Scout Map choice dialog instead of booting
+into scout silently; the session starts in full mode either way."
+There is no dialog anymore, and unpinned this VM would now boot
+into Scout SILENTLY. The helper it describes (`forceFullMapMode`)
+is still correct — only its explanation was wrong. This branch
+rewrites that one comment to describe the silent auto-switch
+ruling and why the manual pin is still needed. Comment-only;
+no behavior change.
 
-- Gate 1 (`npx tsc --noEmit && npm run typecheck:worker`): PASS (`11.5s`)
-- Gate 2 (`npm test && npm run test:worker`): PASS (`11.4s`, 832/832 script tests, 1673/1673 src tests including 49/49 in `src/components/question-bubble.test.ts`, and 85/85 worker tests)
-- Gate 3 (`node scripts/lint-cards.mjs`): PASS (`0.64s`, 124,690 records validated)
-- Gate 4 (`VITE_KOFI_URL=https://ko-fi.com/meridian npm run build:pages`): PASS (`21.5s`)
-- Gate 5 (Playwright E2E against built artifact):
-  - `tests/e2e/question-wrap.spec.ts`: 1/1 PASS (`9.0s`)
-  - `tests/e2e/question-card-header.spec.ts`: 6/6 PASS (including 6-viewport `0 px²` HUD non-overlap assertion across `320x568`, `375x667`, `390x844`, `768x1024`, `1024x768`, `1280x800`, responsive `y >= 94` / `y <= 62` bounds, 296px width, no false `more below`, and round 2+ auto-collapse)
-  - `tests/e2e/place-card-redesign.mobile.spec.ts`: 6/6 PASS (`compact shell=(10,96,296x166) viewport=390x844`, `overlap=0.0px²`)
-  - `tests/e2e/longname-scroll-a11y.desktop.spec.ts` (`-g "bubble backstop|dedicated probes"`): 13/13 PASS (`1m22.5s`)
+**Diff (whole branch vs main):**
+`tests/e2e/motionmaxxing.spec.ts` (one comment) + this file.
+
+## Gates (synced with `origin/main` `16ec9b3`)
+
+- [x] `npx tsc --noEmit && npm run typecheck:worker` — clean (exit 0)
+- [x] `npm test && npm run test:worker` — scripts 832 pass / 9 skip / 0 fail (841 total), src 1670 pass / 0 fail, worker 85 pass / 0 fail
+- [x] `node scripts/lint-cards.mjs` — `lint-cards: GATE PASSED`
+- [x] `VITE_KOFI_URL=https://ko-fi.com/meridian npm run build:pages` — exit 0
+- [x] Playwright E2E against built artifact:
+      - `scout-capability-offer.desktop.spec.ts`: **13/13 passed** (including #154 item 6 test)
+      - `scout-harness-suppression.desktop.spec.ts`: **2/2 passed** (#154 item 1 test)
+      - `ws4-tile-fallback.desktop.spec.ts`: **3/3 passed**
+      - `grownups-privacy-contact.desktop.spec.ts`: **3/3 passed**
+      - `hydration-boot.desktop.spec.ts`: **1/1 passed**
+      - `observability.spec.ts`: **3/3 passed**
+      - `motionmaxxing.reduced.spec.ts`: **6/6 passed**
+      - `motionmaxxing.spec.ts`: **5/6 passed** — including M5, the test that uses `forceFullMapMode` (the helper whose comment changed). The one failure is the pre-existing "tap storm" test: 90 s test-timeout on this contended VM; it never calls the helper, the branch diff is comment-only (zero runtime surface), and tap-storm pacing is a known test-budget problem (tracked as #191).
+
+## Out of scope
+
+- #154 item 1 / PR #197 (production test seam) — now merged on `main` as `16ec9b3`.
+- No merge, no branch-protection changes.
