@@ -1,3 +1,87 @@
+# BRANCH_STATUS — veer-c/adoring-volta-ql18ja
+
+**State: DRAFT — docs-only (Tier 0). Adds the owner's ARCHETYPE v3.0 "law"
+verbatim as `docs/ops/ARCHETYPE_law.md`. No source, test, config or
+`AGENTS.md` is touched. Awaiting the owner's word on how it sits beside the
+Constitution and `agent-council-protocol.md` (Pending, below).**
+
+**Base:** origin/main @ `d509268` (the #154 item 5 docs fix). **Rebased onto it
+2026-10-27** at the owner's order, replacing five merge commits with one clean
+commit. Opened on `62b960a` (PR #229's merge); main then moved 30 commits. This
+file was the only thing that ever conflicted, so the rebase resolved it once:
+this record on top, main's current record intact below. Owner's choice (2026-10-22): "Adopt as governing
+law + commit". The text is committed byte-for-byte as pasted, with its
+`{{YOUR_TASK}}` CONFIG placeholders unfilled: they are a template slot to fill
+per task.
+
+## Done
+- [x] `docs/ops/ARCHETYPE_law.md` added, verbatim (70 lines; key rules spot-checked).
+- [x] Gates, last run locally 2026-10-26 on main `5f24c6c` + this docs change
+      (the rebase onto `d509268` brings in only main's own already-merged code;
+      CI re-runs on the rebased head, see the PR checks): `npx tsc --noEmit` clean · `npm test` scripts **832 pass / 0 fail /
+      9 skip**, src **1,633 pass / 0 fail** · `node scripts/lint-cards.mjs`
+      **GATE PASSED** · `npm run build:pages` green · `npm run test:worker`
+      **85/85** · `npm run typecheck:worker` clean. No tracked file dirtied by
+      the build. (Run by a `haiku` gate-runner; the clean-tree and
+      lockfile-untouched claims were re-checked independently. The runner hit a
+      stale `node_modules` missing `@cloudflare/vite-plugin`, which arrived with
+      main, and fixed it with one `npm ci`; `package.json` and the lockfile are
+      identical to main.)
+- [x] Not run locally: Playwright E2E. The change has no source surface, and
+      protocol §6 scopes Playwright to "the specs that cover the changed surface".
+      CI runs the `e2e` job on the merged head.
+
+## Pending — the owner's call
+- [ ] **Where the law sits.** This PR does not edit `AGENTS.md` or
+      `docs/ops/agent-council-protocol.md`. In this repo the protocol says "the
+      Constitution in `AGENTS.md` governs throughout", which I read as the law's
+      own "System Invariants" tier. Replace, sit beside, or fold in is undecided.
+- [ ] **Overlaps with the existing protocol** (read from both files, not assumed):
+      - Seats: the law adds Councilor D (Historian) and a Layer-3 execution team;
+        protocol §1 has Chair + A/B/C only, requires C to be a separate agent,
+        and fixes models (opus Chair, sonnet/haiku councilors).
+      - Tiers: law T1/T2/T3 are **risk**-based (security/payments/auth);
+        `AGENTS.md` Tier 0/1/2 are **scope**-based and convene a council only at Tier 2.
+      - Budget: law caps `MAX_TOKENS: 15k/task`; protocol §3 controls cost with the
+        tier gate and sets no cap.
+      - Manifest: law has "Scoped Files (max 3)" and Token GRANTED/DENIED;
+        protocol §5 has protected files, "max +/- N lines" and `AUTH_RUN_TDD_IMPLEMENTATION`.
+      - Versioning: the law's Loop 3 mutates to "Archetype v1.1"; versioned
+        copies would collide with Constitution rule 2 (no duplicate files).
+- [ ] **Found on review at merge time (2026-10-26), not in the table above.**
+      Read from the law and the current `AGENTS.md` / protocol; the law is left
+      verbatim, so these are for the owner to rule on, not edits:
+      - Precedence: the law ranks `System Invariants > Council Protocol > Task
+        Config > User Request`, so the **User Request ranks last**. `AGENTS.md`
+        says "an owner-set tier overrides this table", and the Constitution is
+        the owner's standing word. Adopting the law as written would let the
+        council protocol outrank an explicit owner instruction.
+        **RULED (owner, 2026-10-27):** "You are debating that my word over
+        rulebook while we both say the same thing?" Read as: no conflict, so
+        merge as is. Nothing is added to `AGENTS.md`, and the law is untouched.
+      - Councilor C: the law requires "3 failures, 2 scope creeps, 1 simpler
+        alternative". Protocol §1 lets C end with `NO OBJECTION`. A fixed quota
+        invites invented findings when there are none.
+      - Layer 3 team ("Security, Consent, Accessibility, SMS, Email, QA
+        Verifier") and the DAG example (`RLS`, `Email`, `Consent`, `Chat`) read
+        like a different product. Meridian is a children's quiz with no
+        user-account backend; those seats do not map to it.
+      - `AGENTS.md` gained a **Worker roles run on the cheapest capable model**
+        rule (PR #219, merged after this PR was opened). The law's Layer 3
+        execution team says nothing about model tier.
+      - Vote "3/4 + Chair veto" is ambiguous with Chair + Councilors A-D: four
+        councilors, or four of five seats?
+- [ ] An earlier, different "ARCHETYPE v3.0" (seats A-E, 7 phases, per-tier token
+      budgets 6000/3000/1500) was pasted in the same session. It is superseded by
+      the owner's choice above and is **not** committed here.
+
+---
+
+*The record below is main's `BRANCH_STATUS.md` as of this rebase
+(`fix/154-item6-manual-full-tile-failure`). It is kept unmodified; this branch's own
+record is the section above. When this PR was opened the record here was
+`fix/serverfn-server-entry` (#229), which main has since replaced four times.*
+
 # BRANCH_STATUS — fix/154-item6-manual-full-tile-failure
 
 **Branch:** `fix/154-item6-manual-full-tile-failure`
