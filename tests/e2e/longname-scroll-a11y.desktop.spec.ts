@@ -8,6 +8,8 @@ import {
   commitPin,
   tapHitsMap,
   tabUntil,
+  loopNameIndex,
+  openMysteryPlaceId,
 } from "./helpers";
 
 /**
@@ -171,7 +173,7 @@ async function startCanadaRun(page: Page): Promise<void> {
 
 async function openLoop(page: Page, puzzle: string): Promise<void> {
   await page.goto(`${APP.split("?")[0]}?loop-puzzle=${puzzle}&idle-ms=3600000`);
-  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 30_000,
   });
@@ -449,17 +451,8 @@ for (const vp of VIEWPORTS) {
           await page.getByRole("button", { name: "Guess this place" }).click();
 
           // Win it: the reveal's case file compacts clues to summary rows.
-          const entry = await page.evaluate(async () => {
-            const store = JSON.parse(localStorage.getItem("meridian.loop.v2")!);
-            const clue = await fetch(`loop/clues/${store.current.index}.json`).then((r) =>
-              r.json(),
-            );
-            const names = await fetch("loop/names.json").then((r) => r.json());
-            return names.find((e: { id: string }) => e.id === clue.placeId) as {
-              n: string;
-              id: string;
-            };
-          });
+          const placeId = await openMysteryPlaceId(page);
+          const entry = loopNameIndex().find((e) => e.id === placeId)!;
           const box = searchBox(page);
           await box.click();
           await box.fill(entry.n);

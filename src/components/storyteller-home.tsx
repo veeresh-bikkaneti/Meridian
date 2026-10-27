@@ -252,6 +252,13 @@ export default function StorytellerHomeHost({
   const startedRef = useRef(started);
   const phaseRef = useRef(phase);
   phaseRef.current = phase;
+  // Pending-tap port (2026-10-24): tap-start intent registered by a figure
+  // tap that landed while the asset manifest was still in flight
+  // (greetAudio null). The tap-start effect below starts the greeting when
+  // greetAudio resolves. One-shot: set only alongside the one-shot
+  // consumption in handleFigureTap; cleared on dismiss / yield / phase
+  // exit / unmount.
+  const tapStartPendingRef = useRef(false);
   // Set when the entering beat has already moved on (timer, hang watchdog,
   // or a figure tap). Re-entering `entering` (tour-return follow-up) clears
   // it at the start of that effect.
@@ -408,6 +415,9 @@ export default function StorytellerHomeHost({
   useEffect(() => {
     if (yielded) {
       wasYieldedRef.current = true;
+      // Pending-tap port: a pending tap-start intent must not fire under
+      // (or after) a tour/celebration yield.
+      tapStartPendingRef.current = false;
       const wasNarrating = phase === "greeting_audio";
       // Capture BEFORE stopAudio() nulls the ref: phase lingers as
       // "greeting_audio" for POST_AUDIO_HOLD_MS after natural end, so
@@ -745,6 +755,40 @@ export default function StorytellerHomeHost({
     };
   }, [started, phase, mode, yielded, assets.greetAudio, beginGreetingAudio, greetingText, showBubble]);
 
+  // Pending-tap port (2026-10-24): a figure tap that landed while the
+  // asset manifest was still in flight registered tap-start intent in
+  // handleFigureTap (the one-shot was consumed there — greetAudio was
+  // null, so the first-gesture listener above was never armed). When
+  // greetAudio resolves, start the pending greeting — re-verifying
+  // phase/mode/yield/sound at start time. A mute in the interim releases
+  // the one-shot unconsumed (a muted tap must not consume it) and mirrors
+  // the window listener's sound-off hint.
+  useEffect(() => {
+    if (!assets.greetAudio) return;
+    if (!tapStartPendingRef.current) return;
+    tapStartPendingRef.current = false;
+    if (phase !== "greeting_text" || mode !== "greeting") return;
+    if (!gestureDoneRef.current) return; // not our one-shot consumption
+    if (yielded || tourActiveRef.current) return;
+    if (!isSoundEnabled()) {
+      gestureDoneRef.current = false;
+      window.clearTimeout(bubbleTimer.current);
+      setBubble(SOUND_OFF_HINT);
+      bubbleTimer.current = window.setTimeout(() => {
+        showBubble(greetingText, null);
+      }, SOUND_OFF_HINT_MS);
+      return;
+    }
+    showBubble(greetingText, null);
+    beginGreetingAudio();
+  }, [assets.greetAudio, phase, mode, yielded, beginGreetingAudio, greetingText, showBubble]);
+
+  // Pending-tap port: the tap-start intent only lives while the greeting
+  // is pending in greeting_text.
+  useEffect(() => {
+    if (phase !== "greeting_text") tapStartPendingRef.current = false;
+  }, [phase]);
+
   // Unmute starts the pending tale (panel 2026-10-09, BLOCK 5 round 2).
   // The muted-tap hint promises "tap the speaker above to hear my tale" —
   // the speaker tap is a genuine user gesture, so playback is allowed, and
@@ -767,6 +811,9 @@ export default function StorytellerHomeHost({
   // ---- Dismiss -------------------------------------------------------------
   const dismissBubble = useCallback(
     (viaKeyboard: boolean) => {
+      // Pending-tap port: dismissal cancels any pending tap-start intent —
+      // a dismissed greeting stays dismissed (#153).
+      tapStartPendingRef.current = false;
       // Snapshot before stopAudio nulls the element. The dismiss click's
       // pointerdown already started the clip, while `phase` can still be
       // greeting_text until the next render.
@@ -865,6 +912,51 @@ export default function StorytellerHomeHost({
     // down (pointerdown precedes click, and phase hasn't re-rendered yet) —
     // don't poke over it, and don't double-start it.
     if (audio) return;
+    // Pending-tap port (2026-10-24): the greeting is still pending —
+    // greeting_text, one-shot not yet consumed, no audio in flight, not
+    // yielded / tour not active. This tap IS the first gesture and must
+    // start narration, not fall through to a poke. This is the only start
+    // path when the first-gesture window listener was never armed because
+    // the asset manifest had not resolved yet (greetAudio still null); if
+    // the manifest hangs, pre-fix every figure tap poked and narration
+    // could never start from the figure.
+    if (
+      phase === "greeting_text" &&
+      mode === "greeting" &&
+      startedRef.current &&
+      !gestureDoneRef.current &&
+      !tourActiveRef.current &&
+      !yielded
+    ) {
+      if (!isSoundEnabled()) {
+        // Mirror the window listener's muted path (BLOCK 5): sound-off
+        // hint with the same restore behavior, and the one-shot stays
+        // armed — a muted tap must not consume it.
+        window.clearTimeout(bubbleTimer.current);
+        setBubble(SOUND_OFF_HINT);
+        bubbleTimer.current = window.setTimeout(() => {
+          showBubble(greetingText, null);
+        }, SOUND_OFF_HINT_MS);
+        return;
+      }
+      // Consume the one-shot immediately: the window listener (armed on
+      // this same tap's pointerdown, when it fires first) and any rapid
+      // second tap must not double-start the greeting — the consumed
+      // one-shot is the rapid-tap guard for this path (#153).
+      gestureDoneRef.current = true;
+      if (assetsRef.current.greetAudio) {
+        showBubble(greetingText, null);
+        beginGreetingAudio();
+      } else {
+        // Manifest still in flight — register the intent and make sure
+        // the load is in flight (the same cached promise the mount
+        // effect uses); the tap-start effect starts the greeting when
+        // greetAudio resolves, re-checking phase/mode/yield/sound then.
+        tapStartPendingRef.current = true;
+        void loadAssetManifest();
+      }
+      return;
+    }
     // Fix D — narration-silence recovery: a greeting that was attempted
     // but never heard must be replayable. The figure tap replays it
     // instead of rotating a text-only poke line that would trap the
@@ -911,7 +1003,7 @@ export default function StorytellerHomeHost({
       });
     }
     pokeVisual();
-  }, [mode, phase, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio, greetFromFigureTap, tutorialInviteVisible]);
+  }, [mode, phase, greetingText, yielded, showBubble, pokeVisual, beginGreetingAudio, failGreetingAudio, greetFromFigureTap, tutorialInviteVisible]);
 
   // ---- Loop send-off (copy G3) ----------------------------------------------
   useEffect(() => {
@@ -936,6 +1028,7 @@ export default function StorytellerHomeHost({
   // ---- Unmount: never leave audio or timers behind ---------------------------
   useEffect(() => {
     return () => {
+      tapStartPendingRef.current = false;
       clearTimers();
       audioRef.current?.pause();
       audioRef.current = null;

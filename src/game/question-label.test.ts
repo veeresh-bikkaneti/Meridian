@@ -96,7 +96,7 @@ test("every iso2 across all 64 chunks resolves to a country name", async () => {
 
 test("curated globe starters all carry a resolvable iso2", () => {
   const globe = STARTERS.filter((s) => s.edition === "globe");
-  assert.equal(globe.length, 12);
+  assert.equal(globe.length, 16);
   for (const s of globe) {
     assert.ok(
       typeof s.iso2 === "string" && countryNameForIso2(s.iso2) !== null,
@@ -116,6 +116,10 @@ test("curated globe starters all carry a resolvable iso2", () => {
   assert.equal(byId.get("globe-puerto-ayora"), "EC");
   assert.equal(byId.get("globe-serengeti"), "TZ");
   assert.equal(byId.get("globe-gullfoss"), "IS");
+  assert.equal(byId.get("globe-statue-of-liberty"), "US");
+  assert.equal(byId.get("globe-chichen-itza"), "MX");
+  assert.equal(byId.get("globe-eiffel-tower"), "FR");
+  assert.equal(byId.get("globe-sydney-opera-house"), "AU");
 });
 
 // ---------------------------------------------------------------------------

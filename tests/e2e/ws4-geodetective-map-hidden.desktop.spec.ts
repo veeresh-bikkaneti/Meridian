@@ -24,7 +24,7 @@ test.beforeEach(async ({ context }) => {
 
 async function openLoop(page: Page): Promise<void> {
   await page.goto(`${BASE}?loop-puzzle=${PUZZLE}`);
-  await page.getByRole("button", { name: "🔎 Solve a mystery" }).click();
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 60_000,
   });
@@ -72,7 +72,7 @@ test("place list not cached while offline: the existing designed error, no crash
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await context.route("**/loop/names.json", (route) => route.abort());
+  await context.route("**/loop/names.v2.json", (route) => route.abort());
   await openLoop(page);
   // The place list loads when the search box is first used.
   await page.getByRole("combobox", { name: "Search the map" }).click();
