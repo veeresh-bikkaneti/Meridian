@@ -903,6 +903,45 @@ test("13-E: after a recovery reload the explanation notice shows exactly once", 
   const noticeKey = await page.evaluate((key) => sessionStorage.getItem(key), NOTICE_KEY);
   expect(noticeKey).toBeNull(); // consumed at boot
 
+  // Home toast slot below header rows: zero overlap with header links/buttons
+  // and .hv5-bento across all 6 viewports, both pre-dismiss and post-dismiss
+  // of tutorial-invite, with a >=44x44 Close tap target.
+  const viewports: Array<[number, number]> = [
+    [320, 568], [375, 667], [390, 844], [768, 1024], [1024, 768], [1280, 800],
+  ];
+  const assertSlotClear = async () => {
+    for (const [width, height] of viewports) {
+      await page.setViewportSize({ width, height });
+      const nBox = (await notice.boundingBox())!;
+      const hBox = (await page.locator("header.hv5-nav").boundingBox())!;
+      const bBox = (await page.locator(".hv5-bento").boundingBox())!;
+      const cBox = (await notice.getByRole("button", { name: "Close" }).boundingBox())!;
+      expect(nBox.x).toBeGreaterThanOrEqual(0);
+      expect(nBox.x + nBox.width).toBeLessThanOrEqual(width + 1);
+      expect(nBox.y).toBeGreaterThanOrEqual(hBox.y + hBox.height - 1);
+      expect(nBox.y + nBox.height).toBeLessThanOrEqual(bBox.y + 1);
+      expect(cBox.width).toBeGreaterThanOrEqual(44);
+      expect(cBox.height).toBeGreaterThanOrEqual(44);
+      const headerButtons = page.locator("header.hv5-nav button, header.hv5-nav a");
+      const count = await headerButtons.count();
+      for (let i = 0; i < count; i += 1) {
+        const hb = (await headerButtons.nth(i).boundingBox())!;
+        const overlapX = Math.max(0, Math.min(nBox.x + nBox.width, hb.x + hb.width) - Math.max(nBox.x, hb.x));
+        const overlapY = Math.max(0, Math.min(nBox.y + nBox.height, hb.y + hb.height) - Math.max(nBox.y, hb.y));
+        expect(overlapX * overlapY).toBe(0);
+      }
+    }
+  };
+  await assertSlotClear();
+  const invite = page.getByTestId("tutorial-invite");
+  if ((await invite.count()) > 0) {
+    await invite.getByRole("button", { name: "Not now" }).click();
+    await expect(invite).toHaveCount(0);
+  }
+  await assertSlotClear();
+  await notice.getByRole("button", { name: "Close" }).click();
+  await expect(notice).toHaveCount(0);
+
   // Show-once across boots: a further manual reload shows no notice.
   await page.reload();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({

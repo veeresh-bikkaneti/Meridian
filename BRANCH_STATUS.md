@@ -2,10 +2,7 @@
 
 **Branch:** `fix/a11y-reload-announcement` (pushed via API replay;
 PR #248 open — merge remains Liz's word)
-**Base:** origin/main @ `5f6164b` (rebased 2026-10-25 after PR #247
-merged; originally built on `d26b90a`, with PR #245's squash
-`28c5fea` a verified ancestor — #242/#243 landed after it; the
-in-scope files are byte-identical between `28c5fea` and `d26b90a`)
+**Base:** origin/main @ `985f5214` (merged `origin/main` after PR #217 landed; originally built on `d26b90a` / `5f6164b` / `5f24c6c5`)
 **State: BUILD COMPLETE — all five gates run; awaiting the
 independent Reality Checker gate.** It supersedes the previous
 contents of this file (the `fix/storyteller-pending-tap` branch
@@ -125,3 +122,44 @@ chunk-recovery unit file was re-run by the crew at `d8fa834`
   is still consumed at boot.
 - Councilor A's Scenario 8 (card renders after the decision point)
   is a recorded unresolved objection + documented non-fix (D1).
+
+## Fix Round 3 (2026-10-26) — Home Toast Slot Below Header Rows + Merge `origin/main` (`985f5214`)
+
+### Why Round 2 (`71fd843`) Was Blocked
+- **Round 1 (`2dba089`)** rendered `chunk-reload-notice` using `.agep-toast` (`position: fixed; bottom: max(24px, ...)`) with a bare `className="ml-3 font-bold"` Close button (`< 44x44px` tap target), floating over home page content.
+- **Round 2 (`71fd843`)** moved `chunk-reload-notice` to a top-fixed banner (`fixed inset-x-4 top-16 z-50`, `y = 64..120px`). While `tutorial-invite` was visible above `<header className="hv5-nav">`, the header was pushed down to `y >= 146px`. Once `tutorial-invite` was dismissed (**post-dismiss**), `<header className="hv5-nav">` shifted up to `y = 32..119px` (desktop, 1 row) and `y = 32..248px` (mobile `<=680px`, wrapped rows), causing the fixed `top-16` toast to overlap the header links/buttons across all 6 viewports (`320x568`, `375x667`, `390x844`, `768x1024`, `1024x768`, `1280x800`).
+
+### Round 3 Fix (`src/components/game-app.tsx`, `tests/e2e/chunk-recovery.desktop.spec.ts`)
+- Added `homeToast?: ReactNode` to `Choose` in `src/components/game-app.tsx`, rendering the post-reload notice in normal document flow in a dedicated home toast slot immediately below `</header>` (`<header className="hv5-nav">`) and above `<div className="hv5-bento">`.
+- Styled `chunk-reload-notice` as `relative z-10 mt-3 mx-auto flex w-full max-w-md items-center justify-between gap-3 rounded-xl border border-line bg-surface pl-4 pr-1 py-1 text-sm text-fg shadow-xl` with a `44x44px` Close button (`inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg font-bold hover:bg-fg/10`).
+- Extended E2E test `13-E` in `tests/e2e/chunk-recovery.desktop.spec.ts` to verify across all 6 viewports (`320x568`, `375x667`, `390x844`, `768x1024`, `1024x768`, `1280x800`), both **pre-dismiss** and **post-dismiss** of `tutorial-invite`:
+  - `chunk-reload-notice` sits strictly below `header.hv5-nav` (`nBox.y >= hBox.y + hBox.height - 1`) and above `.hv5-bento` (`nBox.y + nBox.height <= bBox.y + 1`).
+  - Zero bounding-box overlap (`overlapX * overlapY === 0`) with all 8 `header.hv5-nav button, header.hv5-nav a` elements.
+  - Close button tap target is `44x44px` (`>= 44x44px`).
+
+### 6-Viewport Bounding-Box Proof (Pre-Dismiss & Post-Dismiss)
+
+| State | Viewport | `header.hv5-nav` Y (px) | `chunk-reload-notice` Rect `(x, y, w×h)` | Gap Below Header (px) | `.hv5-bento` Top Y (px) | Gap Above Bento (px) | Close Target (px) | Header Links Checked | Max Overlap Area (px²) |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| pre-dismiss | `320x568` | `204..420` | `(20, 430, 280x54)` | `10` | `490` | `6` | `44x44` | 8 | `0` |
+| pre-dismiss | `375x667` | `202..418` | `(20, 430, 335x54)` | `12` | `490` | `6` | `44x44` | 8 | `0` |
+| pre-dismiss | `390x844` | `202..418` | `(20, 430, 350x54)` | `12` | `490` | `6` | `44x44` | 8 | `0` |
+| pre-dismiss | `768x1024` | `150..245` | `(160, 257, 448x54)` | `12` | `317` | `6` | `44x44` | 8 | `0` |
+| pre-dismiss | `1024x768` | `150..236` | `(288, 248, 448x54)` | `12` | `308` | `6` | `44x44` | 8 | `0` |
+| pre-dismiss | `1280x800` | `150..237` | `(416, 249, 448x54)` | `12` | `309` | `6` | `44x44` | 8 | `0` |
+| post-dismiss | `320x568` | `32..248` | `(20, 260, 280x54)` | `12` | `320` | `6` | `44x44` | 8 | `0` |
+| post-dismiss | `375x667` | `32..248` | `(20, 260, 335x54)` | `12` | `320` | `6` | `44x44` | 8 | `0` |
+| post-dismiss | `390x844` | `32..248` | `(20, 260, 350x54)` | `12` | `320` | `6` | `44x44` | 8 | `0` |
+| post-dismiss | `768x1024` | `32..127` | `(160, 139, 448x54)` | `12` | `199` | `6` | `44x44` | 8 | `0` |
+| post-dismiss | `1024x768` | `32..118` | `(288, 130, 448x54)` | `12` | `190` | `6` | `44x44` | 8 | `0` |
+| post-dismiss | `1280x800` | `32..119` | `(416, 131, 448x54)` | `12` | `191` | `6` | `44x44` | 8 | `0` |
+
+### Round 3 Gate Results (on merged `origin/main` `985f5214`)
+
+| Gate | Result |
+| :--- | :--- |
+| `npx tsc --noEmit` | **PASS** (exit 0, 0 errors) |
+| `npm test` | **PASS** — scripts **832 pass / 0 fail / 9 skipped**; src **1670 pass / 0 fail** (`src/lib/chunk-recovery.test.ts` **84/84 pass**) |
+| `node scripts/lint-cards.mjs` | **GATE PASSED** (exit 0) |
+| `npm run build:pages` | **PASS** (exit 0, `dist/client` built cleanly) |
+| `npx playwright test tests/e2e/chunk-recovery.desktop.spec.ts --workers=1` | **19 passed / 0 failed** (3.0m, incl. 6-viewport pre/post-dismiss `13-E`) |
