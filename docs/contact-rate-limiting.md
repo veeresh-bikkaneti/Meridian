@@ -65,7 +65,7 @@ in-memory layer. Nothing else changes.
 ## Owner deploy step
 
 Copy the two `[[ratelimits]]` blocks from `config/cloudflare/meridian.wrangler.toml`
-into the `meridian` worker's wrangler config, which is used by Workers Builds
-and is not in this repo. This needs Wrangler 4.36.0 or later. The dashboard
+into the root `wrangler.jsonc` (as a `ratelimits` array), which Workers Builds
+deploys with (WI-19b, issue #228). This needs Wrangler 4.36.0 or later. The dashboard
 cannot add rate-limit bindings yet. The binding names must stay
 `CONTACT_RATE_LIMITER` and `CONTACT_GLOBAL_RATE_LIMITER`.
