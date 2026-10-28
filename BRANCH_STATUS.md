@@ -12,8 +12,15 @@
   (5 APPROVE / 6 APPROVE-WITH-NITS / 1 BLOCK / DevEx FAIL) — the
   BLOCK's premise is refuted by a probe E2E on the final tip and
   the DevEx record cures are dispositioned in the PR body and the
-  Panel record below. NO MERGE — the owner merges on his per-PR
-  word.
+  Panel record below. Final reconciliation (run report Stage 9):
+  no sustained BLOCK — the Game Feel seat's final report is
+  APPROVE-WITH-NITS; the DevEx FAIL stands on F1–F3, of which F2
+  was cured by the Stage 8 rebase record and F3's wording is
+  corrected in this file. The F1 documentation cure is committed
+  on the owner's order (2026-10-28, "Cure the F1 docs, then
+  re-vote"); the panel re-vote on the cured tip is the next step
+  and its verdict will replace this paragraph. NO MERGE — the
+  owner merges on his per-PR word.
 - **Task:** owner's words 2026-10-28 — "reset means now game remembers
   how many i missed, soon it will become huge, I want game allowing
   user to reset the past misses, so i can reset and start over
@@ -56,6 +63,12 @@
   NOT READY as voted (see Panel record below)
 - [x] Stage 7 — PR opened (**#281**, no merge); branch rebased onto
   `bf0f8be` at PR stage (this file was the only conflict)
+- [ ] Stage 9 — DevEx F1 docs cure (owner's call 2026-10-28:
+  "Cure the F1 docs, then re-vote"): §12 in
+  `docs/learning-outcomes.md`, §14 in handbook ch. 02, one README
+  paragraph, F3 wording correction in this file — docs-only commit;
+  full panel re-vote on the cured tip follows (record:
+  `~/workspace/meridian-reset/REVOTE-281.md`)
 
 ## Part 2 record (Stage 3)
 
@@ -69,9 +82,14 @@
   0.5px epsilon) at 360/390 in `mobile-home-overlap.spec.ts` and at
   1280/1024 in `card-redesign.desktop.spec.ts`. Desktop suite 11/11
   GREEN. Tip subset (22 tests): the new cue tests pass; all other
-  failures in these suites reproduce on pristine base `ab21c1c`
-  (base: 239 distinct failures under current box load; tip adds ZERO
-  new failures — stash-baseline attribution, logs in the run's /tmp).
+  failures in these suites reproduce on pristine base `ab21c1c`;
+  tip adds ZERO new failures. (Attribution corrected per DevEx F3:
+  an earlier draft of this record cited "239 distinct failures" —
+  a figure that aggregates repeated runs and cannot be a
+  distinct-test count for the ~37 tests in these suites. The
+  attribution rests on the Stage 5 re-run of the 26-test mobile
+  suite with the cue tests passing, log in
+  `.tmp/gates/e2e-mobile2.log`.)
 - **RED evidence:** pre-fix probe — cue box 100% × 97.8% inside the
   art box at 390px (`evidence/probe-part2-before-390.json`);
   `evidence/part2-before-390.png` shows the pill on the satchel.

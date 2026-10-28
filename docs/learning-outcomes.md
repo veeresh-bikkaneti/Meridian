@@ -419,3 +419,82 @@ bounded, completable review-complete screen ("You remembered X of Y").
 **Non-interference.** Every review branch is guarded by
 `isReviewRun(run)`; normal play is byte-identical with the flag off, and
 the deck adds no network, no backend, nothing leaving the device.
+
+## 12. "Start over" — the history reset (built 2026-10-28)
+
+**Status:** implemented on `feat/reset-history-and-card-fix` (PR #281),
+behind the same `learningOutcomes` flag as the deck (§11). Entry module:
+`src/game/reset-history.ts`, composing per-store clears that live in each
+store's owner module (`review-deck.ts`, `learning.ts`, `trail.ts`,
+`loop/store.ts`, `coldtrail/store.ts`, `session.ts`). Design of record:
+the Tier-2 Consensus Manifest
+`.council/manifests/2026-10-28-reset-history-and-card-fix.md`
+(decisions D1–D17).
+
+**Why it exists.** The deck only grows — every miss adds a card, and
+nothing ever deleted a player's history. A player who wants a clean
+slate ("reset my past misses and start over") had no way to get one.
+The reset is that door: one deliberate wipe of play history, entered
+from the deck's own surfaces, behind a confirm that names every loss
+in plain words before anything is deleted.
+
+**What it clears.** Everything that is a record of play:
+
+- the misses-review deck (`meridian:review-deck:v1`);
+- learning records — per-place attempts, mastery, and the growth
+  totals built from them (`meridian:learning:v1`);
+- the no-repeat memory — seen places and cleared-place marks
+  (`meridian:seen:v2:*`, the legacy `meridian:seen:v1:*` day keys,
+  `meridian:cleared:v1:*`);
+- GeoDetective progress — mysteries played, streaks, the solved
+  set — plus its "edition open" flag (`meridian.loop.v2`,
+  `meridian.loop.open`);
+- Cold Trail progress — cases, stars, streaks — plus the legacy v1
+  store (removed *before* v2, so it cannot resurrect the store on
+  the next load) and its open flag (`meridian.coldtrail.v2`,
+  `meridian.coldtrail.v1`, `meridian.coldtrail.open`);
+- today's session — the banked score — and any paused run and
+  current-place drop (`meridian.session`, `meridian.run`,
+  `meridian.drop`, all sessionStorage). A paused run's stored
+  results would otherwise re-seed the cleared session the next
+  time its edition opens, quietly un-resetting the score.
+
+**What it keeps.** Anything that is setup, not history: passport
+badges and the first-win celebration flag (earned recognition is not
+a score to reset), and every preference — palette, sound, age
+profile, map mode, difficulty, read-aloud, tutorial-seen. The inert
+`meridian.loop.v1` archive from the daily era is left untouched.
+The sweep matches exact keys and patterns only: keys the game does
+not own are never deleted, and a sentinel unit test proves the kept
+set byte-identical after a reset.
+
+**Where it lives.** A "Start over" opener on the home Review card
+and on the review-complete screen — shown only while the deck holds
+at least one card (due or caught up); with an empty deck there is
+nothing to reset, so no control renders. Because the deck itself is
+flag-gated, flag-off players have no reset door in v1 (recorded as
+an open question in the manifest).
+
+**The confirm.** One `alertdialog`, mirroring the age-profile
+reset: title "Start over?", a plain sub-line enumerating every loss
+and ending "This cannot be undone.", a danger "Yes, start over"
+and a ghost "Keep my history". Nothing is deleted before the
+confirm; Esc or "Keep my history" leaves every store
+byte-identical. On success the home surfaces refresh in place (no
+reload): the card flips to its empty state and a toast reads "All
+cleared. You are starting fresh."
+
+**The honest consequence.** Clearing the no-repeat memory means
+places you have already seen can be dealt again. That is not a
+side effect to apologise for — it is what starting over means.
+Growth displays start from zero, streaks restart, and a discarded
+paused game offers no Resume.
+
+**Partial failure.** Each store clears independently and the
+result is reported honestly (`resetHistory()` returns the cleared
+and failed stores, then re-reads every cleared store to check).
+If any store cannot be cleared, the dialog stays open with "Some
+things could not be cleared. Try again." and no success toast
+fires; a store that refuses deletion is overwritten with its
+empty value instead — the same fallback the age-profile reset
+uses.
