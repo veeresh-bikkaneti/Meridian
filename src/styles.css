@@ -251,6 +251,21 @@
   color-scheme: dark;
 }
 
+/* High-contrast view (settings toggle, manifest 2026-10-27): the five
+   HIGH_CONTRAST tokens from src/game/palette.ts as --map-* overrides.
+   Placed after every theme block so it wins at equal specificity over
+   :root, the light media query, paper, and night alike. A source-pin
+   test in palette-preference.test.ts keeps these values equal to
+   HIGH_CONTRAST. Only the palette's five tokens are overridden —
+   every other --map-* var keeps its theme value. */
+:root[data-palette="high-contrast"] {
+  --map-water: #0b0d10;
+  --map-land: #f6f3ea;
+  --map-arc: #c45c12;
+  --map-lake: #1a1d22;
+  --map-coast: #050608;
+}
+
 @theme inline {
   --color-bg: var(--bg);
   --color-fg: var(--fg);

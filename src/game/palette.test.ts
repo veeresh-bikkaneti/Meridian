@@ -81,6 +81,17 @@ test("HIGH_CONTRAST separates water from land and keeps the arc readable on both
   assert.ok(arcLand >= 3, `arc/land ${arcLand}`);
 });
 
+test("STANDARD keeps the arc readable on both water and land", () => {
+  // The 1cb6a41 commit message claims the arc "stays at least 3:1 on
+  // both water and land" — the HIGH_CONTRAST case above proves it for
+  // that palette; this proves the same claim for STANDARD (Council
+  // manifest 2026-10-27, Councilor C challenge 5: measure, don't assume).
+  const arcWater = contrastRatio(STANDARD.arc, STANDARD.water);
+  const arcLand = contrastRatio(STANDARD.arc, STANDARD.land);
+  assert.ok(arcWater >= 3, `arc/water ${arcWater}`);
+  assert.ok(arcLand >= 3, `arc/land ${arcLand}`);
+});
+
 test("HIGH_CONTRAST does not separate water and land by blue-vs-green hue", () => {
   const water = rgb(HIGH_CONTRAST.water);
   const land = rgb(HIGH_CONTRAST.land);

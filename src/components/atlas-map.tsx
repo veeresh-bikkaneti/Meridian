@@ -109,6 +109,19 @@ export function AtlasMap({
     });
   };
 
+  // High-contrast live swap (manifest 2026-10-27, D4a): readColors()
+  // is consulted on every draw, so a palette change only needs the
+  // basemap marked dirty and one redraw requested — the map repaints
+  // in place, with no remount and no round state lost.
+  useEffect(() => {
+    const onPaletteChange = () => {
+      basemapDirty.current = true;
+      requestDrawRef.current();
+    };
+    window.addEventListener("meridian:palette-change", onPaletteChange);
+    return () => window.removeEventListener("meridian:palette-change", onPaletteChange);
+  }, []);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const stage = stageRef.current;

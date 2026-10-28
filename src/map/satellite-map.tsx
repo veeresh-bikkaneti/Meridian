@@ -7,6 +7,7 @@ import { ZoomControls } from "@/components/zoom-controls.tsx";
 import { disk } from "@/game/geo";
 import { isHit } from "@/game/radius";
 import { startGlobeSpin, stopGlobeSpin } from "@/game/audio/sfx";
+import { readPalettePreference } from "@/game/palette-preference";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import { IMAGERY_NOTICE, imageryView } from "./imagery.ts";
 import { isTap, type PointerTapEndpoint } from "./pin-tap.ts";
@@ -572,6 +573,27 @@ export function SatelliteMap(props: {
   useEffect(() => {
     if (tileStatus.kind === "failed") emitTileFailed();
   }, [tileStatus.kind]);
+
+  // High-contrast live swap (manifest 2026-10-27, D4b): only the ring
+  // layer follows the palette arc — labels, markers, and the imagery
+  // itself are untouched (D5: GeoDetective labels are the game). If
+  // the style has not loaded the layer does not exist yet; the
+  // style-load addLayer below reads the then-current palette, which
+  // covers that ordering.
+  useEffect(() => {
+    const onPaletteChange = () => {
+      try {
+        const map = mapRef.current;
+        if (map?.getLayer(RING_SOURCE)) {
+          map.setPaintProperty(RING_SOURCE, "line-color", readPalettePreference().arc);
+        }
+      } catch {
+        // Layer mid-teardown — the next style load reads the palette.
+      }
+    };
+    window.addEventListener("meridian:palette-change", onPaletteChange);
+    return () => window.removeEventListener("meridian:palette-change", onPaletteChange);
+  }, []);
 
   // WS-4 Phase 1: after the one allowed "Try again", a failed satellite load
   // hands the map over to Scout Map for this visit. Fires once per episode;
@@ -1569,7 +1591,10 @@ export function SatelliteMap(props: {
         type: "line",
         source: RING_SOURCE,
         paint: {
-          "line-color": "#f4f1ea",
+          // The ring is the palette arc (STANDARD.arc is this literal):
+          // read the active palette so a map built after the toggle
+          // starts in the right colours (manifest 2026-10-27, D4b).
+          "line-color": readPalettePreference().arc,
           "line-width": 1.5,
           "line-opacity": 0.85,
           "line-dasharray": [2, 2],
