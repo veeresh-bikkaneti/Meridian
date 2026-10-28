@@ -3,8 +3,10 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
   HIGH_CONTRAST,
+  HIGH_CONTRAST_MARKS,
   PALETTE_STORAGE_KEY,
   STANDARD,
+  STANDARD_MARKS,
   contrastRatio,
   selectPalette,
 } from "./palette.ts";
@@ -32,7 +34,7 @@ function rgb(hex: string): { r: number; g: number; b: number } {
   };
 }
 
-test("PALETTE_STORAGE_KEY is the future toggle key and this module does not touch storage", () => {
+test("PALETTE_STORAGE_KEY is the palette toggle key and this module does not touch storage", () => {
   assert.equal(PALETTE_STORAGE_KEY, "meridian.palette");
   const src = readFileSync(new URL("./palette.ts", import.meta.url), "utf8");
   assert.doesNotMatch(src, /document|localStorage|fetch|window/);
@@ -130,6 +132,120 @@ test("selectPalette fails closed except for the exact high-contrast token", () =
   assert.equal(selectPalette("high-contrast"), HIGH_CONTRAST);
   for (const raw of ["HIGH-CONTRAST", "High-Contrast", "high contrast", "high_contrast", "nope", 1, 0, false, true, {}, [], " standard"]) {
     assert.equal(selectPalette(raw), STANDARD, JSON.stringify(raw));
+  }
+});
+
+test("HIGH_CONTRAST_MARKS exposes the exact mark key set as lowercase #rrggbb", () => {
+  // Council addendum 2026-10-28 (D9): the mark tokens are the surface the
+  // player must read — pin, answer, highlight, border, park, cross, lit.
+  assert.deepEqual(Object.keys(HIGH_CONTRAST_MARKS).sort(), [
+    "answer",
+    "border",
+    "cross",
+    "highlight",
+    "lit",
+    "park",
+    "pin",
+  ]);
+  for (const [key, value] of Object.entries(HIGH_CONTRAST_MARKS)) {
+    assert.match(value, HEX, key);
+  }
+  assert.deepEqual(Object.keys(STANDARD_MARKS).sort(), Object.keys(HIGH_CONTRAST_MARKS).sort());
+  for (const value of Object.values(STANDARD_MARKS)) {
+    assert.match(value, HEX);
+  }
+});
+
+test("STANDARD_MARKS equals today's dark-theme values exactly (standard path unchanged)", () => {
+  assert.deepEqual(STANDARD_MARKS, {
+    pin: "#f4f1ea",
+    answer: "#f2c14e",
+    highlight: "#f2c14e",
+    border: "#24302c",
+    park: "#1f4d36",
+    cross: "#d7ddd9",
+    lit: "#6e9084",
+  });
+});
+
+test("STANDARD marks keep pin and answer readable on STANDARD land and water", () => {
+  for (const mark of [STANDARD_MARKS.pin, STANDARD_MARKS.answer]) {
+    assert.ok(contrastRatio(mark, STANDARD.land) >= 3, `${mark} vs STANDARD land`);
+    assert.ok(contrastRatio(mark, STANDARD.water) >= 3, `${mark} vs STANDARD water`);
+  }
+});
+
+test("high-contrast Class A marks clear 3:1 on HC land, water, and lake", () => {
+  // Councilor C condition (a): lake is a third binding anchor, not just land/water.
+  const anchors = [HIGH_CONTRAST.land, HIGH_CONTRAST.water, HIGH_CONTRAST.lake];
+  for (const key of ["pin", "answer", "highlight", "cross"] as const) {
+    for (const anchor of anchors) {
+      const ratio = contrastRatio(HIGH_CONTRAST_MARKS[key], anchor);
+      assert.ok(ratio >= 3, `${key} ${HIGH_CONTRAST_MARKS[key]} vs ${anchor}: ${ratio}`);
+    }
+  }
+});
+
+test("high-contrast answer and highlight are the same mark (binding identity)", () => {
+  assert.equal(HIGH_CONTRAST_MARKS.answer, HIGH_CONTRAST_MARKS.highlight);
+});
+
+test("high-contrast pin, answer, arc, and cross are pairwise distinct", () => {
+  const marks = [
+    HIGH_CONTRAST_MARKS.pin,
+    HIGH_CONTRAST_MARKS.answer,
+    HIGH_CONTRAST.arc,
+    HIGH_CONTRAST_MARKS.cross,
+  ];
+  assert.equal(new Set(marks).size, marks.length, marks.join(", "));
+});
+
+test("high-contrast marks stay readable on the lit wash, and the wash stays pale on land", () => {
+  // Councilor C condition (c): the binding pins are marks-vs-lit; lit-vs-land
+  // is a CEILING (a pale wash), not a floor.
+  for (const mark of [HIGH_CONTRAST_MARKS.pin, HIGH_CONTRAST_MARKS.answer, HIGH_CONTRAST.arc]) {
+    const ratio = contrastRatio(mark, HIGH_CONTRAST_MARKS.lit);
+    assert.ok(ratio >= 3, `${mark} vs lit ${HIGH_CONTRAST_MARKS.lit}: ${ratio}`);
+  }
+  const wash = contrastRatio(HIGH_CONTRAST_MARKS.lit, HIGH_CONTRAST.land);
+  assert.ok(wash <= 1.45, `lit vs HC land ceiling: ${wash}`);
+  assert.ok(wash >= 1.0, `lit vs HC land: ${wash}`);
+});
+
+test("high-contrast border sits in the adjudicated [1.90, 2.00] band on HC land", () => {
+  // Chair ceiling 2.00 ∩ Councilor C floor 1.90, both bounds, unrounded.
+  const ratio = contrastRatio(HIGH_CONTRAST_MARKS.border, HIGH_CONTRAST.land);
+  assert.ok(ratio >= 1.9, `border vs HC land floor: ${ratio}`);
+  assert.ok(ratio <= 2.0, `border vs HC land ceiling: ${ratio}`);
+});
+
+test("high-contrast park stays a subtle wash on HC land", () => {
+  const ratio = contrastRatio(HIGH_CONTRAST_MARKS.park, HIGH_CONTRAST.land);
+  assert.ok(ratio >= 1.25, `park vs HC land floor: ${ratio}`);
+  assert.ok(ratio <= 1.5, `park vs HC land ceiling: ${ratio}`);
+});
+
+test("high-contrast hierarchy: borders and parks stay below every Class A mark on land", () => {
+  const subtle = Math.max(
+    contrastRatio(HIGH_CONTRAST_MARKS.border, HIGH_CONTRAST.land),
+    contrastRatio(HIGH_CONTRAST_MARKS.park, HIGH_CONTRAST.land),
+  );
+  const marks = Math.min(
+    contrastRatio(HIGH_CONTRAST_MARKS.pin, HIGH_CONTRAST.land),
+    contrastRatio(HIGH_CONTRAST_MARKS.answer, HIGH_CONTRAST.land),
+    contrastRatio(HIGH_CONTRAST_MARKS.highlight, HIGH_CONTRAST.land),
+    contrastRatio(HIGH_CONTRAST_MARKS.cross, HIGH_CONTRAST.land),
+  );
+  assert.ok(subtle < marks, `subtle ${subtle} < marks ${marks}`);
+});
+
+test("both theme river values clear 3:1 on the HC anchors (river keeps its theme values)", () => {
+  // --map-river in src/styles.css: dark theme #3c8496, light/paper #5b90a6.
+  // Councilor C condition (g) / adjudication: no HC override — both theme
+  // values are re-measured against the HC anchors and pass, so they stay.
+  for (const river of ["#3c8496", "#5b90a6"]) {
+    assert.ok(contrastRatio(river, HIGH_CONTRAST.land) >= 3, `${river} vs HC land`);
+    assert.ok(contrastRatio(river, HIGH_CONTRAST.water) >= 3, `${river} vs HC water`);
   }
 });
 

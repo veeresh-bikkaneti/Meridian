@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { HIGH_CONTRAST, PALETTE_STORAGE_KEY, STANDARD } from "./palette.ts";
+import { HIGH_CONTRAST, HIGH_CONTRAST_MARKS, PALETTE_STORAGE_KEY, STANDARD } from "./palette.ts";
 import {
   applyPalettePreference,
   isHighContrastEnabled,
@@ -193,6 +193,65 @@ test("styles.css high-contrast block equals HIGH_CONTRAST", () => {
   for (const [name, value] of Object.entries(expected)) {
     assert.ok(block.includes(`${name}: ${value};`), `${name} is ${value} in the high-contrast block`);
   }
+});
+
+test("styles.css high-contrast block carries the seven HIGH_CONTRAST_MARKS vars", () => {
+  // Council addendum 2026-10-28 (D9): the HC block grows from five palette
+  // tokens to twelve vars — the five plus the seven marks, sourced from
+  // HIGH_CONTRAST_MARKS so CSS and tokens cannot drift.
+  const css = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+  const start = css.indexOf(':root[data-palette="high-contrast"]');
+  assert.ok(start >= 0, "high-contrast block exists in styles.css");
+  const block = css.slice(start, css.indexOf("}", start));
+  const expected: Record<string, string> = {
+    "--map-pin": HIGH_CONTRAST_MARKS.pin,
+    "--map-answer": HIGH_CONTRAST_MARKS.answer,
+    "--map-highlight": HIGH_CONTRAST_MARKS.highlight,
+    "--map-border": HIGH_CONTRAST_MARKS.border,
+    "--map-park": HIGH_CONTRAST_MARKS.park,
+    "--map-cross": HIGH_CONTRAST_MARKS.cross,
+    "--map-lit": HIGH_CONTRAST_MARKS.lit,
+  };
+  for (const [name, value] of Object.entries(expected)) {
+    assert.ok(block.includes(`${name}: ${value};`), `${name} is ${value} in the high-contrast block`);
+  }
+});
+
+test("styles.css high-contrast block has no road, highway, road-case, or river override", () => {
+  // Adjudication (D9): roads are OUT of this cure (Councilor C's challenge
+  // recorded, Chair disposition) and river KEEPS both theme values — so the
+  // HC block must not carry any of those vars.
+  const css = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+  const start = css.indexOf(':root[data-palette="high-contrast"]');
+  assert.ok(start >= 0, "high-contrast block exists in styles.css");
+  const block = css.slice(start, css.indexOf("}", start));
+  for (const name of ["--map-road:", "--map-highway:", "--map-road-case:", "--map-river:"]) {
+    assert.ok(!block.includes(name), `high-contrast block must not override ${name}`);
+  }
+});
+
+test("pin centre-dot seam: theme blocks keep the translucent dot, HC block uses solid HC land", () => {
+  // Councilor C condition (f): rgba(0,0,0,0.38) over the new HC pin body
+  // composites to 1.95:1 — below the standard path's own 2.65:1. The dot
+  // rides a --map-pin-dot var through colors.ts (pinDot) into drawGuessPin.
+  // Standard themes keep the exact current value; HC alone goes solid.
+  const css = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+  const hcStart = css.indexOf(':root[data-palette="high-contrast"]');
+  assert.ok(hcStart >= 0, "high-contrast block exists in styles.css");
+  const hcBlock = css.slice(hcStart, css.indexOf("}", hcStart));
+  assert.ok(hcBlock.includes("--map-pin-dot: #f6f3ea;"), "HC dot is solid HC land");
+  const themeCss = css.slice(0, hcStart);
+  const standardDots = themeCss.match(/--map-pin-dot: rgba\(0,0,0,0\.38\);/g) ?? [];
+  assert.ok(standardDots.length >= 4, `theme blocks keep the standard dot (found ${standardDots.length})`);
+
+  const colors = readFileSync(new URL("../map/colors.ts", import.meta.url), "utf8");
+  assert.ok(
+    colors.includes('pinDot: pick("--map-pin-dot", "rgba(0,0,0,0.38)")'),
+    "colors.ts reads --map-pin-dot as pinDot with the standard rgba fallback",
+  );
+  const paint = readFileSync(new URL("../map/paint-scene.ts", import.meta.url), "utf8");
+  assert.ok(paint.includes("colors.pinDot"), "paintOverlay passes colors.pinDot to the pin");
+  assert.ok(!paint.includes('fillStyle = "rgba(0,0,0,0.38)"'), "the dot fill is no longer hard-coded");
 });
 
 test("game-app wires the toggle hosts and the boot apply", () => {

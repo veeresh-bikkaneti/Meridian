@@ -11,10 +11,17 @@ export type Colors = {
   coast: string;
   lit: string;
   pin: string;
+  /** Centre dot of the guess pin — a CSS var so high contrast can go solid (D9). */
+  pinDot: string;
   answer: string;
   arc: string;
   cross: string;
-  /** Region highlight gold — matches the satellite-map highlight (region-highlight.ts). */
+  /**
+   * Region highlight gold — matches the satellite-map highlight
+   * (region-highlight.ts) outside high contrast only; under HC the
+   * vector highlight darkens to #a86c00 while satellite GOLD stays
+   * (addendum 2026-10-28, D9 divergence disclosure).
+   */
   highlight: string;
 };
 
@@ -34,7 +41,8 @@ export function readColors(): Colors {
     coast: pick("--map-coast", "#0c1816"),
     lit: pick("--map-lit", "#6e9084"),
     pin: pick("--map-pin", "#f4f1ea"),
-    answer: pick("--map-answer", "#f2c14e"), // legend: "gold is the true spot" — region-highlight gold
+    pinDot: pick("--map-pin-dot", "rgba(0,0,0,0.38)"),
+    answer: pick("--map-answer", "#f2c14e"), // legend: "gold is the true spot" — region-highlight gold outside high contrast (D9)
     arc: pick("--map-arc", "#f4f1ea"),
     cross: pick("--map-cross", "#d7ddd9"),
     highlight: pick("--map-highlight", "#f2c14e"),

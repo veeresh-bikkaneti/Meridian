@@ -1,4 +1,4 @@
-/** Storage key for a future palette toggle. This module does not read or write it. */
+/** Storage key for the palette toggle (shipped in game-app.tsx). This module does not read or write it. */
 export const PALETTE_STORAGE_KEY = "meridian.palette";
 
 export type MapPalette = {
@@ -28,6 +28,53 @@ export const HIGH_CONTRAST: MapPalette = {
   arc: "#c45c12",
   lake: "#1a1d22",
   coast: "#050608",
+};
+
+/**
+ * Mark tokens: the colours drawn ON the map surface (pins, answer,
+ * highlight, borders, parks, crosshair, lit wash). Added by the
+ * council addendum 2026-10-28 (D9): flipping land dark→cream
+ * invalidates every dark-land-tuned mark until it is re-measured,
+ * so the marks a palette must carry are part of the token contract,
+ * not theme leftovers.
+ */
+export type MapMarkTokens = {
+  pin: string;
+  answer: string;
+  highlight: string;
+  border: string;
+  park: string;
+  cross: string;
+  lit: string;
+};
+
+/** Today's dark-theme mark values, exactly as styles.css ships them. */
+export const STANDARD_MARKS: MapMarkTokens = {
+  pin: "#f4f1ea",
+  answer: "#f2c14e",
+  highlight: "#f2c14e",
+  border: "#24302c",
+  park: "#1f4d36",
+  cross: "#d7ddd9",
+  lit: "#6e9084",
+};
+
+/**
+ * High-contrast marks, adjudicated in the D9 addendum with ratios
+ * from this module's contrastRatio: pin/answer/highlight/cross
+ * clear 3:1 on HC land, water, AND lake; answer === highlight;
+ * border sits in [1.90, 2.00] on land and park in [1.25, 1.50],
+ * so boundaries stay subtle under the marks; lit is a pale wash
+ * (<=1.45 on land) that the marks still clear 3:1 against.
+ */
+export const HIGH_CONTRAST_MARKS: MapMarkTokens = {
+  pin: "#b04a9e",
+  answer: "#a86c00",
+  highlight: "#a86c00",
+  border: "#beaf8d",
+  park: "#cfdcb4",
+  cross: "#757575",
+  lit: "#f0dca0",
 };
 
 /** WCAG 2 relative luminance contrast. Unrounded. */
