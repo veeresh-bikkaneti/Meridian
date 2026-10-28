@@ -156,8 +156,16 @@ radius, and the run summary offers a button that copies a fresh link to the
 same places. Challenge runs are isolated from normal play: they never write
 to the session, the review deck, learning records, or the seen-place stores,
 so a challenge can neither bank progress nor burn the no-repeat pool.
-Everything fails closed. With the flag off — the shipped default, in both
-`FLAG_DEFAULTS` and `public/flags.json` — a `#c=` hash is stripped from the
-URL and ignored and the app boots to Home exactly as before. A corrupt hash,
-an unknown place id, or a saved challenge run found while the flag is off
-lands the player on Home with no error shown; nothing partial is ever dealt.
+A challenge link never eats the game the player already had going. The
+`#c=` fragment is stripped from the URL first, before anything else reads
+it. With the flag off — the shipped default, in both `FLAG_DEFAULTS` and
+`public/flags.json` — nothing in the link is read at all: the boot simply
+continues into the ordinary saved-run boot, exactly as if the link had
+never been tapped, so a resumable saved run still resumes. (One exception,
+in the table above: a saved *challenge* run found while the flag is off is
+dropped and its saved state cleared, because the feature is off.) With the
+flag on, a link that cannot be used — a corrupt hash, a place id this
+build's Globe catalog does not have, or the catalog itself failing to
+load — shows the child-facing notice "Could not load this challenge." and
+then falls through to that same saved-run boot, so a saved run still
+resumes underneath the notice. Nothing partial is ever dealt.
