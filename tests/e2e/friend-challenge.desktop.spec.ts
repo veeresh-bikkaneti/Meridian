@@ -1,14 +1,23 @@
 import { test, expect, type BrowserContext, type Page } from "playwright/test";
+import { readFileSync } from "node:fs";
 import {
   serveBuiltArtifact,
   commitMiss,
+  commitPin,
   clickNextPlace,
+  dismissTileOverlayIfPresent,
   readPhase,
   readQuestion,
   resultCard,
+  tapHitsMap,
+  waitForSpotSettle,
   RUN_KEY,
 } from "./helpers";
-import { encodeChallenge, CHALLENGE_GLOBE_RADIUS_KM } from "../../src/game/challenge.ts";
+import {
+  encodeChallenge,
+  CHALLENGE_CHILD_COPY,
+  CHALLENGE_GLOBE_RADIUS_KM,
+} from "../../src/game/challenge.ts";
 import { SCORING_VERSION } from "../../src/game/scoring.ts";
 
 /**
@@ -17,10 +26,17 @@ import { SCORING_VERSION } from "../../src/game/scoring.ts";
  * Pins both flag states (`friendChallenges: false` and `friendChallenges: true`):
  * - Flag OFF (default): `#c=<valid>` and `#c=mc1.corrupt` fail closed silently,
  *   strip `location.hash`, throw zero page errors, render Home, and hide the
- *   challenge share action in the run summary.
+ *   challenge share action in the run summary. Flag OFF also never pre-empts
+ *   a saved run: a resumable saved run in sessionStorage resumes exactly as
+ *   it would without the hash (the flag-off boot is main's boot).
+ * - Flag ON: a corrupt or unknown-ID `#c=` link falls through to the saved
+ *   run when one exists; with no saved run it lands on Home WITH the
+ *   child-friendly boot notice ("Could not load this challenge.",
+ *   role="status") — a tapped link must never fail silently for a kid.
  * - Flag ON: `#c=<valid>` with 5 real Globe places boots directly into the
  *   deterministic 5-place Globe challenge in `playOrder` order, enforces the
- *   750 km pin radius freeze, never writes to session banking / learning
+ *   750 km pin radius freeze (proven behaviourally: a ~600 km pin is a hit,
+ *   a ~800 km pin is a miss), never writes to session banking / learning
  *   records / review deck / no-repeat history, and renders the challenge
  *   completion screen with a `< 2000`-char `#c=mc1...` share URL.
  */
@@ -88,6 +104,160 @@ async function waitForChallengeAim(page: Page): Promise<void> {
     .not.toBeNull();
 }
 
+/**
+ * Capture a real, resumable saved-run payload from a live globe run (the
+ * crash-loop-breaker spec's pattern): start a run on a throwaway page, read
+ * the exact bytes the app persisted, and close the page. Seeding those bytes
+ * back is the honest way to get a "resumable saved run" — the payload is
+ * whatever production itself wrote, never a hand-built lookalike.
+ */
+async function captureSavedRun(context: BrowserContext): Promise<string> {
+  const page = await context.newPage();
+  await page.goto(`${APP_URL}?idle-ms=3600000`);
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await waitForChallengeAim(page);
+  const raw = await page.evaluate((k) => sessionStorage.getItem(k), RUN_KEY);
+  await page.close();
+  expect(raw, "captured run must be persisted to sessionStorage").not.toBeNull();
+  return raw as string;
+}
+
+/**
+ * Seed a captured saved run into every later page in this context, with the
+ * clean-exit flag at "1" (a normal unload — the run is safe to auto-resume;
+ * "0" would be the crash-loop breaker's kill case, a different boot path).
+ */
+async function seedSavedRun(context: BrowserContext, runJson: string): Promise<void> {
+  await context.addInitScript(
+    (json: string) => {
+      sessionStorage.setItem("meridian.run", json);
+      sessionStorage.setItem("meridian.cleanExit", "1");
+    },
+    runJson,
+  );
+}
+
+/**
+ * The seen-store scan, as ONE page-side function shared by the isolation
+ * assertion and its live control: the real no-repeat prefix is
+ * `meridian:seen:v2:` (src/game/trail.ts). Running the identical function
+ * against a seeded sentinel key first proves the scan can actually see a
+ * seen key — an assertion whose scan uses the wrong prefix can never fail,
+ * which is exactly the vacuous-assertion bug this guards against.
+ */
+function scanSeenKeysInPage(): string[] {
+  const seenKeys: string[] = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k && k.startsWith("meridian:seen:v2:")) seenKeys.push(k);
+  }
+  return seenKeys;
+}
+
+/** True lon/lat of a challenge place, from the same built chunk data the app deals from. */
+function placeCoords(id: string): { lon: number; lat: number } {
+  const chunk = JSON.parse(
+    readFileSync("src/game/data/geonames/chunks/globe.json", "utf8"),
+  ) as { places: { id: string; lon: number; lat: number }[] };
+  const place = chunk.places.find((p) => p.id === id);
+  expect(place, `challenge place ${id} must exist in the globe chunk`).toBeTruthy();
+  return { lon: place!.lon, lat: place!.lat };
+}
+
+/**
+ * The point `distKm` from (lon, lat) along `bearingDeg`, on the same sphere
+ * (R = 6371.0088 km) the game's own distanceKm (src/game/geo.ts) measures
+ * on — so the pin the test drops really is ~distKm from the true place in
+ * the game's own judgement, not just on the test's ruler.
+ */
+function destinationPoint(
+  lon: number,
+  lat: number,
+  distKm: number,
+  bearingDeg: number,
+): { lon: number; lat: number } {
+  const R = 6371.0088;
+  const d = distKm / R;
+  const br = (bearingDeg * Math.PI) / 180;
+  const phi1 = (lat * Math.PI) / 180;
+  const lam1 = (lon * Math.PI) / 180;
+  const phi2 = Math.asin(
+    Math.sin(phi1) * Math.cos(d) + Math.cos(phi1) * Math.sin(d) * Math.cos(br),
+  );
+  const lam2 =
+    lam1 +
+    Math.atan2(
+      Math.sin(br) * Math.sin(d) * Math.cos(phi1),
+      Math.cos(d) - Math.sin(phi1) * Math.sin(phi2),
+    );
+  return { lon: (lam2 * 180) / Math.PI, lat: (phi2 * 180) / Math.PI };
+}
+
+/** Project a lon/lat to viewport pixels through the map's __project E2E seam. */
+async function projectToViewport(
+  page: Page,
+  lon: number,
+  lat: number,
+): Promise<{ x: number; y: number }> {
+  const p = await page.locator(".satellite-map").evaluate(
+    (el, [plon, plat]: [number, number]) => {
+      const hook = (
+        el as unknown as {
+          __project?: (lo: number, la: number) => { x: number; y: number } | null;
+        }
+      ).__project;
+      const s = hook?.(plon, plat) ?? null;
+      if (!s) return null;
+      const r = el.getBoundingClientRect();
+      return { x: Math.round(r.left + s.x), y: Math.round(r.top + s.y) };
+    },
+    [lon, lat] as [number, number],
+  );
+  expect(p, "the __project seam must resolve the pin point").not.toBeNull();
+  return p!;
+}
+
+/**
+ * Drop a pin ~`distKm` west of the current place and return the game's own
+ * judgement: the phase it landed in (story = hit, done = miss) and the
+ * result the run persisted (its measured distanceKm and hit flag). West
+ * keeps the pin on the same visible hemisphere as the Somali challenge
+ * places, towards the middle of the globe view.
+ */
+async function commitPinAtDistanceKm(
+  page: Page,
+  placeId: string,
+  distKm: number,
+): Promise<{ phase: string | null; judgedKm: number; hit: boolean }> {
+  const truth = placeCoords(placeId);
+  const target = destinationPoint(truth.lon, truth.lat, distKm, 270);
+  await waitForSpotSettle(page);
+  await dismissTileOverlayIfPresent(page);
+  // The question bubble can float over the map; hide it so the tap lands
+  // on the canvas, exactly as the longname specs do.
+  const hide = page.getByRole("button", { name: "Hide question" });
+  if (await hide.isVisible().catch(() => false)) {
+    await hide.click();
+  }
+  const point = await projectToViewport(page, target.lon, target.lat);
+  expect(
+    await tapHitsMap(page, point.x, point.y),
+    `pin point for ~${distKm} km must hit the map canvas, not chrome`,
+  ).toBe(true);
+  const { phase } = await commitPin(page, point.x, point.y);
+  const run = await page.evaluate(
+    (k) => JSON.parse(sessionStorage.getItem(k)!),
+    RUN_KEY,
+  );
+  const result = run.results[run.results.length - 1];
+  expect(result, "the committed pin must persist a result").toBeTruthy();
+  // Evidence for the report: the distance the game itself judged.
+  console.log(
+    `pin-pair: target ~${distKm} km from ${placeId} -> judged ${result.distanceKm} km, hit=${result.hit}`,
+  );
+  return { phase, judgedKm: result.distanceKm as number, hit: result.hit as boolean };
+}
+
 test("flag OFF: valid and corrupt #c= hashes fail closed silently, clean URL hash, and hide challenge share UI", async ({
   page,
   context,
@@ -104,6 +274,8 @@ test("flag OFF: valid and corrupt #c= hashes fail closed silently, clean URL has
   });
   expect(await page.evaluate(() => window.location.hash)).toBe("");
   expect(await page.evaluate((k) => sessionStorage.getItem(k), RUN_KEY)).toBeNull();
+  // Flag OFF stays silent: the feature does not exist, so no boot notice.
+  await expect(page.getByTestId("challenge-boot-notice")).toHaveCount(0);
 
   // 2. Corrupt #c=mc1.corrupt hash with flag OFF -> fails closed to Home, strips hash
   await page.goto(`${APP_URL}?idle-ms=3600001#c=mc1.corrupt_payload!!!`);
@@ -111,6 +283,7 @@ test("flag OFF: valid and corrupt #c= hashes fail closed silently, clean URL has
     timeout: 20_000,
   });
   expect(await page.evaluate(() => window.location.hash)).toBe("");
+  await expect(page.getByTestId("challenge-boot-notice")).toHaveCount(0);
 
   // 3. Normal Globe run summary hides challenge share button when flag OFF
   await page.getByRole("button", { name: "Play the globe" }).click();
@@ -124,7 +297,7 @@ test("flag OFF: valid and corrupt #c= hashes fail closed silently, clean URL has
   expect(relevantErrors(errors)).toEqual([]);
 });
 
-test("flag ON: corrupt or unknown-ID #c= hashes fail closed silently to Home and clean URL hash", async ({
+test("flag ON: corrupt or unknown-ID #c= hashes land on Home WITH the boot notice and a clean URL hash", async ({
   page,
   context,
 }) => {
@@ -137,13 +310,89 @@ test("flag ON: corrupt or unknown-ID #c= hashes fail closed silently to Home and
     ["gn-999999991", "gn-999999992", "gn-999999993", "gn-999999994", "gn-999999995"],
     SCORING_VERSION,
   );
+  // Unknown-ID link: Home, and the failure is NOT silent — the kid who
+  // tapped a friend's link gets the child-friendly notice, announced via
+  // its role="status" live region.
   await page.goto(`${APP_URL}?idle-ms=3600000${unknownHash}`);
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
     timeout: 20_000,
   });
+  const notice = page.getByTestId("challenge-boot-notice");
+  await expect(notice).toBeVisible();
+  await expect(notice).toContainText(CHALLENGE_CHILD_COPY);
+  await expect(notice).toHaveAttribute("role", "status");
+  expect(await page.evaluate(() => window.location.hash)).toBe("");
+  expect(await page.evaluate((k) => sessionStorage.getItem(k), RUN_KEY)).toBeNull();
+
+  // Corrupt link: same notice, same clean landing.
+  await page.goto(`${APP_URL}?idle-ms=3600001#c=mc1.corrupt_payload!!!`);
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 20_000,
+  });
+  await expect(page.getByTestId("challenge-boot-notice")).toBeVisible();
+  await expect(page.getByTestId("challenge-boot-notice")).toContainText(
+    CHALLENGE_CHILD_COPY,
+  );
   expect(await page.evaluate(() => window.location.hash)).toBe("");
   expect(await page.evaluate((k) => sessionStorage.getItem(k), RUN_KEY)).toBeNull();
   expect(relevantErrors(errors)).toEqual([]);
+});
+
+test("flag OFF: a #c= hash does not pre-empt a saved run — the saved run resumes", async ({
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: false, learningOutcomes: false });
+  const runJson = await captureSavedRun(context);
+  await seedSavedRun(context, runJson);
+
+  const page = await context.newPage();
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+
+  // Boot with a valid challenge hash while a normal run is saved. With the
+  // flag off the boot must be byte-for-byte main's boot: the saved run
+  // resumes, it does not land on Home.
+  await page.goto(`${APP_URL}?idle-ms=3600000${VALID_HASH}`);
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 30_000 });
+  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
+  await expect(page.getByRole("button", { name: "Play the globe" })).toHaveCount(0);
+  const resumed = await page.evaluate(
+    (k) => JSON.parse(sessionStorage.getItem(k)!),
+    RUN_KEY,
+  );
+  expect(resumed.regionId).toBe("globe");
+  // Flag OFF stays silent even on this fall-through path.
+  await expect(page.getByTestId("challenge-boot-notice")).toHaveCount(0);
+  expect(relevantErrors(errors)).toEqual([]);
+  await page.close();
+});
+
+test("flag ON: a corrupt #c= hash falls through to a saved run — the saved run resumes", async ({
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  const runJson = await captureSavedRun(context);
+  await seedSavedRun(context, runJson);
+
+  const page = await context.newPage();
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+
+  // A broken friend's link must not cost the player their in-progress run:
+  // decode fails, boot falls through, the saved run resumes.
+  await page.goto(`${APP_URL}?idle-ms=3600000#c=mc1.corrupt_payload!!!`);
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 30_000 });
+  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
+  await expect(page.getByRole("button", { name: "Play the globe" })).toHaveCount(0);
+  const resumed = await page.evaluate(
+    (k) => JSON.parse(sessionStorage.getItem(k)!),
+    RUN_KEY,
+  );
+  expect(resumed.regionId).toBe("globe");
+  expect(relevantErrors(errors)).toEqual([]);
+  await page.close();
 });
 
 test("flag ON: valid #c= link runs deterministic 5-place Globe challenge at 750 km, isolates stores, and emits <2000-char share link", async ({
@@ -195,24 +444,85 @@ test("flag ON: valid #c= link runs deterministic 5-place Globe challenge at 750 
 
   // Isolation invariant: session banking, learning records, review deck, and seen history are untouched
   const isolation = await page.evaluate(() => {
-    const seenKeys: string[] = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i);
-      if (k && k.startsWith("meridian.seen.")) seenKeys.push(k);
-    }
     return {
       session: sessionStorage.getItem("meridian.session"),
       learning: localStorage.getItem("meridian:learning:v1"),
       deck: localStorage.getItem("meridian:review-deck:v1"),
-      seenKeys,
     };
   });
   expect(isolation).toEqual({
     session: null,
     learning: null,
     deck: null,
-    seenKeys: [],
   });
 
+  // Seen-history isolation, with a LIVE control: the scan (the real
+  // `meridian:seen:v2:` prefix — an earlier version of this test scanned
+  // `meridian.seen.`, a prefix nothing writes, so it could never fail)
+  // must first prove it can see a seen key at all.
+  expect(await page.evaluate(scanSeenKeysInPage)).toEqual([]);
+  const SENTINEL = "meridian:seen:v2:e2e-control:control:medium";
+  await page.evaluate(
+    (k) => localStorage.setItem(k, JSON.stringify(["sentinel-place"])),
+    SENTINEL,
+  );
+  expect(
+    await page.evaluate(scanSeenKeysInPage),
+    "control: the seen scan must detect a seeded sentinel key",
+  ).toContain(SENTINEL);
+  await page.evaluate((k) => localStorage.removeItem(k), SENTINEL);
+  expect(
+    await page.evaluate(scanSeenKeysInPage),
+    "the challenge run wrote no seen keys (sentinel removed, scan empty again)",
+  ).toEqual([]);
+
+  expect(relevantErrors(errors)).toEqual([]);
+});
+
+test("flag ON: a pin ~600 km from the true place is a HIT under the frozen 750 km radius", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+
+  await page.goto(`${APP_URL}?idle-ms=3600000${VALID_HASH}`);
+  await waitForChallengeAim(page);
+  expect(await readQuestion(page)).toContain("Mogadishu");
+
+  // 600 km sits inside the frozen 750 km circle but outside the unscaled
+  // age-band tolerances a normal Globe run would use — only the freeze
+  // makes this a hit.
+  const judged = await commitPinAtDistanceKm(page, CHALLENGE_IDS[0], 600);
+  expect(judged.judgedKm).toBeGreaterThan(500);
+  expect(judged.judgedKm).toBeLessThan(CHALLENGE_GLOBE_RADIUS_KM);
+  expect(judged.hit).toBe(true);
+  expect(judged.phase).toBe("story");
+  await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
+  expect(relevantErrors(errors)).toEqual([]);
+});
+
+test("flag ON: a pin ~800 km from the true place is a MISS under the frozen 750 km radius", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+
+  await page.goto(`${APP_URL}?idle-ms=3600000${VALID_HASH}`);
+  await waitForChallengeAim(page);
+  expect(await readQuestion(page)).toContain("Mogadishu");
+
+  // 800 km is just outside the frozen circle: the pair with the 600 km hit
+  // brackets 750 km behaviourally, so deleting either freeze call site
+  // (or changing the constant) turns one of the pair red.
+  const judged = await commitPinAtDistanceKm(page, CHALLENGE_IDS[0], 800);
+  expect(judged.judgedKm).toBeGreaterThan(CHALLENGE_GLOBE_RADIUS_KM);
+  expect(judged.judgedKm).toBeLessThan(900);
+  expect(judged.hit).toBe(false);
+  expect(judged.phase).toBe("done");
+  await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
   expect(relevantErrors(errors)).toEqual([]);
 });
