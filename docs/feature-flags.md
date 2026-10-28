@@ -124,6 +124,7 @@ killed feature by a stale flags.json.
 | `pwaUpdateToast`   | `true`  | Unregisters any live SW; no registration, no update toast |
 | `learningOutcomes` | `false` | No learning records, no growth UI (disabling removes them) |
 | `globeTierSplit`   | `false` | Globe loads all five fame-tier files and deals the full canonical pool; on = Easy t1+t2, Medium t2-t4, Hard t4+t5 only |
+| `friendChallenges` | `false` | No challenge entry points: a `#c=` link is stripped from the URL and ignored, the run-summary share button is hidden, and a saved challenge run is dropped instead of resumed |
 
 **`globeTierSplit` and offline play.** With the flag on, the Globe fetches only
 the fame-tier files of the learning path being played, and the service worker
@@ -144,3 +145,19 @@ covers every learning path (the previous behaviour), and the first Globe run of
 a page load still waits for `flags.json` (at most 1.5 s on a slow connection,
 then it falls back to the full pool); the pool is unaffected. No cache-warming
 is done on purpose.
+
+**`friendChallenges` and challenge links.** This flag gates the friend
+challenge: a shareable `#c=mc1.` link that deals a fixed set of 5–10 Globe
+places to whoever opens it. The link carries only place ids and a seed
+derived from them (`src/game/challenge.ts`) — no names, no coordinates, no
+scores — so opening one cannot spoil the answers. With the flag on, a valid
+link starts a deterministic challenge run judged at a frozen 750 km pin
+radius, and the run summary offers a button that copies a fresh link to the
+same places. Challenge runs are isolated from normal play: they never write
+to the session, the review deck, learning records, or the seen-place stores,
+so a challenge can neither bank progress nor burn the no-repeat pool.
+Everything fails closed. With the flag off — the shipped default, in both
+`FLAG_DEFAULTS` and `public/flags.json` — a `#c=` hash is stripped from the
+URL and ignored and the app boots to Home exactly as before. A corrupt hash,
+an unknown place id, or a saved challenge run found while the flag is off
+lands the player on Home with no error shown; nothing partial is ever dealt.
