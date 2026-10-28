@@ -13,6 +13,8 @@ import {
 import { SHARE_URL, sessionShareText } from "@/game/share-action";
 import { LEARNING_COPY, type GrowthSummary } from "@/game/learning";
 import { REVIEW_DECK_COPY } from "@/game/review-deck";
+import { CHALLENGE_MIN_PLACES, CHALLENGE_SHARE_LABEL, decodeChallenge } from "@/game/challenge";
+import { SCORING_VERSION } from "@/game/scoring";
 import { Button } from "@/components/ui/button";
 import { ShareButton } from "./share-button";
 
@@ -45,8 +47,10 @@ export function RunSummaryCard(props: {
   onReview?: () => void;
   /** Cards currently due for review. */
   reviewDueCount?: number;
+  /** Optional Friend Challenge route URL (flag-gated, Globe edition only). */
+  challengeUrl?: string | null;
 }): JSX.Element {
-  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount } = props;
+  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount, challengeUrl } = props;
   // One unit for the whole card: miles only when EVERY played region is a
   // USA context (state edition, or the United States country run);
   // mixed or empty sessions fail closed to kilometers (owner ruling 2026-10-11).
@@ -64,6 +68,19 @@ export function RunSummaryCard(props: {
   // Session totals only — no per-place emoji strip; the session banks
   // totals, never per-place scores (see sessionShareText).
   const text = sessionShareText({ summary, regionName, dateKey });
+  // How many places the challenge share link below actually carries,
+  // counted from the link itself with the codec's own decoder — the
+  // codec allows 5–10 places, so the share text must never hardcode a
+  // count (it said "5" while only today's producer deals 5). Falls back
+  // to the minimum if the URL somehow does not decode; links minted by
+  // this app always do.
+  const challengePlaceCount = ((): number => {
+    if (!challengeUrl) return CHALLENGE_MIN_PLACES;
+    const hashAt = challengeUrl.indexOf("#");
+    if (hashAt < 0) return CHALLENGE_MIN_PLACES;
+    const decoded = decodeChallenge(challengeUrl.slice(hashAt), SCORING_VERSION);
+    return decoded.ok ? decoded.ids.length : CHALLENGE_MIN_PLACES;
+  })();
   // Breakdowns render from the same summary object the share text uses —
   // unplayed difficulty modes are omitted (never shown as 0%), and region
   // names come from the session verbatim.
@@ -266,6 +283,17 @@ export function RunSummaryCard(props: {
               </pre>
             }
           />
+          {challengeUrl ? (
+            <div data-testid="challenge-share-container" data-challenge-url={challengeUrl}>
+              <ShareButton
+                title="Meridian friend challenge"
+                text={`Play the same ${challengePlaceCount} places on the Globe!\n${challengeUrl}`}
+                url={challengeUrl}
+                label={CHALLENGE_SHARE_LABEL}
+                className="w-full"
+              />
+            </div>
+          ) : null}
           <Button data-testid="play-again" className="w-full" onClick={onPlayAgain}>
             Play again
           </Button>

@@ -1,152 +1,124 @@
-# BRANCH_STATUS — feat/high-contrast-view
+# BRANCH_STATUS — feat/challenge-v1 (P0-1 Stateless Friend Challenges)
 
-**Branch:** `feat/high-contrast-view`
-**Base:** `main` at `daa03ad028252060d57a5c83ee35aef8e988a1fe` (merge-base = base; no rebase needed)
-**State: BUILT + CURED. Original build gates green on code-final tip `ce95ac3` (2026-10-27); panel returned NOT READY (BLOCKs 1–4); cure round (owner order 2026-10-28) gates green on cured code tip `bd82e56`. This status commit is the only later change. Not merged — merge is the owner's word, after the panel approves the final tip (the cured tip returns to the panel for a re-vote).**
+- **Branch:** `feat/challenge-v1` (PR #274)
+- **Base:** `origin/main` at `d39bc3e` (2026-10-28 — PR #275 high-contrast merged; this branch was rebased onto it: one `BRANCH_STATUS.md` conflict, resolved by whole-file supersession, no other conflicts; every branch-owned file verified byte-identical to its pre-rebase version)
+- **State:** **FINAL CURE COMPLETE — the panel re-vote on `53d4f36` returned 0 BLOCKs with both round-1 BLOCKs withdrawn, but a DevEx FAIL on one stale `docs/feature-flags.md` paragraph. That paragraph, the `challenge.ts` interval comment, and the pin-pair freeze discrimination are cured on the owner's order (2026-10-28), and the branch is rebased onto current main. ALL 5 MANDATORY GATES GREEN on the final tip & PUSHED. Awaiting the panel re-vote on the final tip; merge remains the owner's per-PR word.**
+- **Task ID:** `P0-1` — Stateless `#c=mc1.<base64url>` Globe Friend Challenges (`friendChallenges`, default `false`)
 
-## Scope
+---
 
-Finish the high-contrast view: the palette tokens landed in `1cb6a41`
-(`src/game/palette.ts` + tests — fail-closed `selectPalette`,
-`STANDARD` / `HIGH_CONTRAST`, WCAG `contrastRatio`). This branch adds
-persistence, a settings toggle, live swap, and the GeoDetective
-label-safety guarantee, under the signed Tier-2 Consensus Manifest
-`.council/manifests/2026-10-27-high-contrast-view.md`.
+## 1. What Was Delivered on `feat/challenge-v1`
 
-**Manifest-first claim, corrected (panel BLOCK 4 cure):** Palette
-tokens (`1cb6a41`) predate the manifest; the manifest (`5588233`) was
-committed before the preference/toggle wiring implementation and
-scopes itself to post-`1cb6a41` work. The cure addendum (2026-10-28)
-was committed before the cure implementation.
+1. **Pure Challenge Codec & Dealer (`src/game/challenge.ts` + `src/game/challenge.test.ts`):**
+   - Browser-native base64url encoding/decoding (`TextEncoder` + `btoa` and `atob` + `TextDecoder("utf-8", { fatal: true })`) with **zero Node.js `Buffer` dependency** (verified by unit test with `globalThis.Buffer = undefined`).
+   - Strict canonical base64url validation (`/^[A-Za-z0-9_-]+$/`, `length % 4 !== 1`, and canonical zero trailing padding bits for `length % 4 === 2` and `length % 4 === 3`) returning `{ ok: false, reason: "format" }` on mutated trailing bits.
+   - Input guards: `encodeChallenge(ids, scoringVersion)` throws `RangeError("invalid scoringVersion")` when `!Number.isSafeInteger(scoringVersion) || scoringVersion < 1`; `dealChallenge(entries, count, seed)` returns `[]` for non-positive or non-safe-integer `count`.
+   - Frozen constants exported from `src/game/challenge.ts`:
+     - `CHALLENGE_GLOBE_RADIUS_KM = 750` (750 km pin radius freeze, bypassing age-band `pinToleranceKm` scaling)
+     - `CHALLENGE_REGION_ID = "challenge"`
+     - `CHALLENGE_REGION_NAME = "Friend challenge"`
+     - `CHALLENGE_MIN_PLACES = 5`, `CHALLENGE_MAX_PLACES = 10`
+     - `CHALLENGE_SHARE_LABEL = "Share this route with a friend"`
+2. **Feature Flag Registration (`src/lib/flags.ts`, `src/lib/flags.test.ts`, `public/flags.json`, `docs/feature-flags.md`):**
+   - `friendChallenges: false` registered in `FLAG_DEFAULTS` and `public/flags.json`, documented in `docs/feature-flags.md`.
+3. **Runtime Wiring, 750 km Pin Freeze & Store Isolation (`src/components/game-app.tsx`, `src/components/run-summary.tsx`):**
+   - **Boot hash handling (`#c=...` / `#c`):**
+     - Immediately strips `#c=...` from the URL via `window.history.replaceState(null, "", window.location.pathname + window.location.search)` — synchronously, before any async work.
+     - **Fall-through boot (cure round, 2026-10-28):** the saved-run boot is a named `bootSavedRun()` inside the boot effect, and every `#c=` failure exit falls through to it instead of ending the boot. **Flag OFF (`friendChallenges: false`, default):** the boot is exactly main's boot — a resumable saved run resumes (a saved challenge run is cleared by that same path, as before); no notice is shown; `[data-testid="challenge-share-container"]` stays hidden in `RunSummaryCard`. **Flag ON:** decode failure, unknown ID, and Globe-catalog load failure set the boot notice (Home shows `CHALLENGE_CHILD_COPY`, "Could not load this challenge.", in a `role="status"` region, `data-testid="challenge-boot-notice"`) and then fall through to `bootSavedRun()` too, so a broken link never costs the player a saved run.
+     - **Flag ON, valid link (`friendChallenges: true`):** Decodes `#c=mc1...` against `SCORING_VERSION`, verifies every ID exists in the full Globe catalog (`placesFor("globe", "globe", undefined, false)`), and starts a deterministic Globe challenge run (`regionId: "challenge"`) in `playOrder(decoded)` sequence.
+   - **750 km Globe radius freeze:** Challenge runs always use `CHALLENGE_GLOBE_RADIUS_KM` (`750`) for both `variation.radiusKm` and `onConfirm` hit evaluation, regardless of age-band profile settings.
+   - **Complete store isolation:** Challenge runs (`isChallengeRun(run)`) never call `ensureSession`, never bank to `meridian.session`, never write to `meridian:learning:v1` or `meridian:review-deck:v1`, and use `memorySeenStore()` so `meridian:seen:v2:` no-repeat history is never touched.
+   - **Completion & Share UI:** Finishing a challenge renders `<ChallengeComplete>` (`data-testid="challenge-complete"`) with warm, ~10-year-old reading-age copy and `<ShareButton label="Share this route with a friend" />` inside `data-testid="challenge-share-container"` (`data-challenge-url` `< 2000` chars). Normal Globe runs also expose the challenge share button on `RunSummaryCard` when `friendChallenges` is `true`.
+4. **Playwright E2E Spec (`tests/e2e/friend-challenge.desktop.spec.ts`) & Docs (`README.md`, `docs/feature-flags.md`):**
+   - 7 desktop E2E tests pinning both flag states (`friendChallenges: false` and `friendChallenges: true`), corrupt/unknown-ID boot notice (flag ON) vs silence (flag OFF), saved-run fall-through in both flag states, a behavioural 750 km pin-freeze pair (pin judged 608.4 km = hit; 809.8 km = miss — the miss is seeded with a 5–7 age profile whose band tolerance is 1125 km, so the pair proves the freeze itself and not just the number; mutation-verified: removing the `onConfirm` freeze flips the seeded miss to a hit), 5-place deterministic sequence, store isolation (with a seeded-sentinel control proving the `meridian:seen:v2:` scan is live), and `< 2000`-char share link.
+   - Added one truthful `Friend challenge` row to the MapTap comparison table in `README.md`.
 
-Task capsule (summary; the manifest is the record of record):
-- **Done condition:** scenarios 1–8 of the manifest — toggle on/off in
-  place, persistence across reload, mid-run live swap without
-  navigation or round loss, corrupt/throwing storage fails closed to
-  standard, GeoDetective labels untouched, arc ≥3:1 on water+land in
-  BOTH palettes proven by test.
-- **Deviation D1:** storage key is the shipped `PALETTE_STORAGE_KEY`
-  `"meridian.palette"` (dot form, pinned by the existing test and the
-  `meridian.sound` family pattern), not the brief's `"meridian:palette"`
-  spelling. Values: `"high-contrast"` / `"standard"`.
+---
 
-## Done
+## 2. Review record
 
-- [x] Tier-2 Consensus Manifest signed + committed alone + pushed (`5588233`)
-- [x] Palette verification: the 8 pre-existing palette tests pass, and
-      the STANDARD arc test this branch adds (the suite's 9th test at
-      build time) proves STANDARD arc ≥3:1 on water (13.9) and land
-      (8.3), measured — not assumed
-- [x] `src/game/palette-preference.ts` — storage + apply module
-      (sfx.ts pattern: try/catch storage, `data-palette` attribute,
-      `meridian:palette-change` event), fail-closed via `selectPalette`
-- [x] `src/styles.css` — `:root[data-palette="high-contrast"]` block with
-      the five HIGH_CONTRAST `--map-*` overrides (source-pinned to tokens)
-- [x] `game-app.tsx` — `HighContrastToggle` beside `SoundToggle` on home
-      (`high-contrast-toggle`) and in-game (`high-contrast-toggle-game`,
-      44px target), plus the boot `applyPalettePreference()` effect
-- [x] Live swap: `atlas-map.tsx` palette-change listener (dirty +
-      redraw); `satellite-map.tsx` ring layer takes the active palette
-      arc at style load + palette-change `setPaintProperty`
-- [x] GeoDetective: no label/marker/imagery code touched (manifest D5)
-- [x] Unit contracts: `palette-preference.test.ts` (RED first, then GREEN)
-- [x] E2E spec: `tests/e2e/high-contrast.desktop.spec.ts` (4 cases at build)
+An earlier version of this section quoted Coordinator A and Coordinator B
+"APPROVE" verdicts with no citation to any review record. Those quotes were
+**deleted in the 2026-10-28 cure round** (records rule: an approval claim
+without a citation to the owner's or a reviewer's actual words does not
+stand). The authoritative review record for this PR is the full-pipeline
+report `PIPELINE-274` (panel verdict on tip `a00cf3a`: NOT READY — 2 BLOCKs
++ DevEx FAIL), and the cure round it ordered. The cured tip returns to the
+panel for a fresh re-vote before any merge word.
 
-## Gates (on code-final tip `ce95ac3`, Node v24.22.1 local; CI 22.x canonical)
+**Re-vote on the cured tip `53d4f36` (2026-10-28):** panel **0 BLOCKs**
+(1 APPROVE, 11 APPROVE-WITH-NITS) — both round-1 BLOCK owners (Senior
+Architect, UX Researcher) withdrew their BLOCKs on the cured diff — but
+**DevEx FAIL**: the `friendChallenges` prose in `docs/feature-flags.md`
+(added by this PR's own earlier doc cure) still described the pre-cure
+boot and never mentioned the flag-on notice or the fall-through. The
+Level Architect also showed the pin pair proved the absolute 750 km but
+not the freeze vs band scaling (an unset profile's ×1.0 band misses at
+800 km either way), and the hit test's comment had the band tolerances
+inverted.
 
-- [x] (a) `npx tsc --noEmit` — exit 0, clean
-- [x] (b) `npm test` — exit 0 (scripts 861 tests: 850 pass / 11 skip /
-      0 fail; src 1720: 1720 pass / 0 fail) + `npm run test:worker` —
-      exit 0 (85: 85 pass / 0 fail). One cure cycle en route: a
-      source pin in `palette-preference.test.ts` asserted the wrong
-      source shape (`data-testid=` literal vs the `testId` prop
-      pattern) — pin fixed in `ce95ac3`, feature unchanged.
-- [x] (c) `node scripts/lint-cards.mjs` — exit 0, GATE PASSED
-- [x] (d) `npm run build:pages` — exit 0
-- [x] (e) `flock ~/workspace/.e2e.lock npx playwright test
-      tests/e2e/high-contrast.desktop.spec.ts --workers=1` — exit 0,
-      4/4 passed
+**Final cure (owner's order, 2026-10-28: "Merge #275, and run #274's
+final docs cure + re-vote"):** (a) the `docs/feature-flags.md` paragraph
+rewritten to describe the cured boot exactly; (b) the `challenge.ts`
+comment interval corrected to [0, 1); (c) the 800 km miss test now seeds
+a 5–7 profile (band tolerance 1125 km) and both pair comments state the
+discrimination honestly — mutation-verified (freeze removed → the seeded
+miss judges hit=true and the test fails); (d) this record. The branch was
+then rebased onto `origin/main` `d39bc3e` (PR #275 merged): one
+`BRANCH_STATUS.md` conflict resolved by whole-file supersession, every
+branch-owned file verified byte-identical to its pre-rebase version, and
+`game-app.tsx` carrying both this branch's boot work and #275's
+high-contrast toggle. Full record: `CURE-274-FINAL`.
 
-## Cure round (2026-10-28, panel BLOCKs 1–4)
+## 3. Verbatim Gate Results
 
-Council addendum `.council/manifests/2026-10-28-high-contrast-view-addendum.md`
-(decision D9) committed alone first (`b5f051d`), before the cure
-implementation. D9's principle: the scope of a palette change is the
-surface the player must read, not the definition site — flipping land
-dark→cream invalidates every dark-land-tuned token until re-measured.
+1. **Typecheck (`./node_modules/.bin/tsc --noEmit`):**
+   - Exit code `0` (0 errors).
+2. **Unit & Pipeline Tests (`npm test` + `npm run test:worker`) — full gate picture on the final rebased tip:**
+   - scripts suite: `# tests 861 | # pass 850 | # skipped 11 | # fail 0`
+   - src suite: `# tests 1753 | # pass 1753 | # fail 0` (including 14 tests in `src/game/challenge.test.ts` and **44 `it()` blocks in `src/lib/flags.test.ts`** — counted on the cured tip; an earlier version of this file said 34, which was wrong. The suite grew from 1721 to 1753 with the rebase onto main `d39bc3e`, which brought in PR #275's palette suites.)
+   - worker suite (`npm run test:worker`): `# tests 85 | # pass 85 | # fail 0`.
+3. **Card Content Gate (`node scripts/lint-cards.mjs`):**
+   - `lint-cards: GATE PASSED` (`124690 records: 8802 with hook, 115888 hook-missing, 0 legacy, 0 curated-note violations`).
+4. **Production Pages Build (`npm run build:pages`):**
+   - Exit code `0`, `sw.js` and `build-meta.json` stamped.
+5. **Playwright E2E (`flock ~/workspace/.e2e.lock npx playwright test tests/e2e/friend-challenge.desktop.spec.ts --workers=1`):**
+   - `7 passed (4.1m)` on the final rebased tip (Flag OFF fail-closed + hidden UI + silence; Flag ON corrupt/unknown-ID boot notice; Flag OFF saved-run fall-through; Flag ON corrupt-link saved-run fall-through; Flag ON deterministic 5-place run + store isolation + `< 2000`-char share link; 600 km hit / 800 km miss freeze pair, judged 608.4 km / 809.8 km — the miss with a seeded 5–7 profile, proving the freeze against band scaling).
+   - Environment note: local gates ran on Node v24.22.1; CI on Node 22.x is canonical. Playwright used the bundled chromium (do NOT set `PLAYWRIGHT_CHROMIUM_EXECUTABLE`).
 
-- [x] **Cure 1 — mark tokens (`dc0673e`):** additive `palette.ts` lift
-      (`MapMarkTokens` + `STANDARD_MARKS` / `HIGH_CONTRAST_MARKS`;
-      existing exports unchanged apart from the stale "future toggle"
-      comment). HC marks: pin `#b04a9e`, answer ≡ highlight `#a86c00`,
-      cross `#757575` (each ≥3:1 vs HC land, water, AND lake), lit
-      `#f0dca0` pale wash (marks ≥3:1 vs lit; lit 1.23 vs land), border
-      `#beaf8d` (1.9500 vs land, inside the binding [1.90, 2.00]),
-      park `#cfdcb4` (1.30). HC CSS block gains the seven mark vars.
-      River keeps both theme values (re-measured, both ≥3:1 vs HC
-      anchors); roads get NO HC override (see follow-up below).
-      Pin centre-dot cure: dot rides `--map-pin-dot` through
-      `colors.ts` (`pinDot`) into `drawGuessPin` — standard keeps
-      `rgba(0,0,0,0.38)`, HC goes solid `#f6f3ea` (4.38:1 vs pin body).
-      Tests RED first (missing-export signature), then GREEN.
-- [x] **Cure 2 — visible pressed state (`b465eed`, test fix `bd82e56`):**
-      `HighContrastToggle` renders a dedicated `atlas-contrast-toggle`
-      class in both hosts; `[aria-pressed="true"]` gets the `.atlas-seg`
-      brass fill (brass background, brass-ink foreground) and the
-      Contrast icon fills solid. E2E asserts the computed
-      background/foreground actually differ between states (RED first:
-      both were `rgba(0, 0, 0, 0)`). One test-only fix en route:
-      Chromium serializes the standard dot as `#00000061`, so the E2E
-      compares the captured computed value, not the authored spelling.
-- [x] **Cure 3 — records:** this file and the PR body carry the
-      corrected manifest-first claim (above) and the Workers Builds
-      disclosure (PR body).
-- **Satellite GOLD divergence (disclosed, D9):** under HC the vector
-  highlight darkens to `#a86c00`; the satellite region highlight
-  (`region-highlight.ts` GOLD `#f2c14e`) is untouched per D5. The
-  "matches region-highlight gold" coupling holds only outside HC;
-  comments in `styles.css` / `colors.ts` are reworded accordingly.
+---
 
-### Cure gates (Node v24.22.1 local; CI 22.x canonical)
+## 4. Handoff Document & Prompt for Next Agent (If Any Follow-Up Needed)
 
-Run on cured code tip `b465eed`; the only later code change is
-`bd82e56` (E2E-test-only), on which `build:pages` and the E2E gate
-were re-run, and `tsc` / `lint-cards` re-verified:
-
-- [x] (1) `npx tsc --noEmit` — exit 0 (both tips)
-- [x] (2) `npm test` — exit 0 (scripts 861: 850 pass / 11 skip / 0 fail;
-      src 1735: 1735 pass / 0 fail — 15 new cure tests over the build's
-      1720) + `npm run test:worker` — exit 0 (85: 85 pass / 0 fail)
-- [x] (3) `node scripts/lint-cards.mjs` — exit 0, GATE PASSED
-- [x] (4) `npm run build:pages` — exit 0 (rebuilt from `bd82e56`)
-- [x] (5) `flock ~/workspace/.e2e.lock npx playwright test
-      tests/e2e/high-contrast.desktop.spec.ts --workers=1` — exit 0,
-      **5/5 passed** on `bd82e56` (the 4 original cases + the new
-      visible-pressed-state case)
-
-## Follow-up (named, not in this cure)
-
-- **Roads residual:** the dark theme's `--map-road-case` `#241f1a`
-  measures 14.72:1 vs HC land. Councilor C's roads-system change was
-  NOT adopted in this cure (Chair disposition in the D9 addendum;
-  his CHALLENGE is recorded there). This needs a separate design
-  pass over the road/highway/road-case system under high contrast.
-
-## Pending
-
-- [x] PR opened — PR #275 (manifest summary, gate results, Node 24
-      local / CI 22.x canonical disclosure, "Do not merge without
-      owner word")
-- [ ] Panel re-vote on the cured final tip, then owner merge word
-      (neither is this builder's to give)
-
-## Docs note
-
-`docs/feature-flags.md` documents feature flags only; high-contrast is
-a settings toggle, not a flag, so no flag doc entry was added. The
-brief's `friendChallenges` documentation example does not exist in
-this repo (zero grep hits). No equivalent settings doc surface exists
-to mirror; the feature is documented in the manifest, the D9
-addendum, this file, and code comments. No README change: the README
-does not enumerate settings toggles, and no behaviour it describes
-changed shape.
+```text
+Branch `feat/challenge-v1` (PR #274) is feature-complete, cure-complete,
+AND final-cure-complete, rebased onto `origin/main` d39bc3e (PR #275
+merged). The pipeline on a00cf3a returned NOT READY (2 BLOCKs + DevEx
+FAIL); the first cure round fixed all three and the re-vote on 53d4f36
+returned 0 BLOCKs — but DevEx failed the PR on one stale
+`docs/feature-flags.md` paragraph, and the Level Architect showed the
+pin pair did not discriminate the freeze from band scaling. The final
+cure (owner's order, 2026-10-28: "Merge #275, and run #274's final docs
+cure + re-vote") fixed the paragraph, the codec comment interval, and
+the test discrimination (5–7 profile seeded on the miss; mutation-
+verified), then rebased. Verified across all 5 mandatory gates on the
+final tip (`tsc --noEmit` clean; `npm test` scripts 850 pass /
+11 skipped + src 1753 pass; `npm run test:worker` 85 pass;
+`lint-cards.mjs` GATE PASSED; `build:pages` green; friend-challenge E2E
+7/7) and pushed to `origin/feat/challenge-v1`.
+Next step is NOT a merge: the final tip returns to the 12-role panel for
+a re-vote, and merge happens only on the owner's explicit per-PR word.
+To inspect:
+1. Checkout `feat/challenge-v1` in ~/workspace/meridian-takeover.
+2. Local Node is v24.22.1 (CI's Node 22.x is canonical). Playwright uses
+   the bundled chromium — do NOT set PLAYWRIGHT_CHROMIUM_EXECUTABLE.
+   E2E: flock ~/workspace/.e2e.lock npx playwright test
+   tests/e2e/friend-challenge.desktop.spec.ts --workers=1, after
+   `npm run build:pages` (E2E serves the built artifact; a stale dist/
+   silently tests the wrong code).
+3. `friendChallenges` defaults to `false` in `src/lib/flags.ts` and
+   `public/flags.json` for dark-launch safety. Flipping
+   `"friendChallenges": true` in `public/flags.json` enables challenge
+   link boot and the "Share this route with a friend" action in
+   production.
+```

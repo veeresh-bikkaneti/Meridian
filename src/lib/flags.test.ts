@@ -428,6 +428,34 @@ describe("globeTierSplit flag", () => {
   });
 });
 
+describe("friendChallenges flag", () => {
+  beforeEach(() => resetFlags());
+
+  it("defaults to false — challenge links stay off", () => {
+    assert.equal(FLAG_DEFAULTS.friendChallenges, false);
+    assert.equal(isEnabled("friendChallenges"), false);
+  });
+
+  it("a boolean true in flags.json turns it on", async () => {
+    const { fn } = fakeFetch(okResponse({ flags: { friendChallenges: true } }));
+    await loadFlags({ ...BASE, fetch: fn });
+    assert.equal(isEnabled("friendChallenges"), true);
+  });
+
+  it("non-boolean values are ignored and the default false wins", async () => {
+    for (const bad of ["true", 1, null]) {
+      resetFlags();
+      const { fn } = fakeFetch(okResponse({ flags: { friendChallenges: bad } }));
+      await loadFlags({ ...BASE, fetch: fn });
+      assert.equal(isEnabled("friendChallenges"), false, `value ${JSON.stringify(bad)} must be ignored`);
+    }
+  });
+
+  it("is a registered flag: Object.keys(FLAG_DEFAULTS) includes it", () => {
+    assert.ok(Object.keys(FLAG_DEFAULTS).includes("friendChallenges"));
+  });
+});
+
 describe("observabilityEndpoint", () => {
   beforeEach(() => resetFlags());
   it("defaults to null (transport disabled — shipped behavior)", async () => {
