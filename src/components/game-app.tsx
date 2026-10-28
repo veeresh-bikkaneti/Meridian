@@ -3614,7 +3614,7 @@ function ChallengeComplete({
                 // somewhere visible to copy, or that state is a dead
                 // end. Same selectable-text block the GeoDetective
                 // share uses on themed surfaces.
-                <pre className="whitespace-pre-wrap rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+                <pre className="whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
                   {challengeText}
                 </pre>
               }

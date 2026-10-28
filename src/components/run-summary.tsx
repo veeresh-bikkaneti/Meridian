@@ -302,7 +302,7 @@ export function RunSummaryCard(props: {
                   // somewhere visible to copy, or that state is a dead
                   // end. Same selectable-text block as the score share
                   // above.
-                  <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-left font-sans text-sm leading-relaxed text-white">
+                  <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-left font-sans text-sm leading-relaxed text-white">
                     {challengeText}
                   </pre>
                 }
