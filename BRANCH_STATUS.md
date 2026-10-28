@@ -37,11 +37,41 @@
 - [x] Stage 0 — clone, branch, `npm ci`
 - [x] Stage 1 — research (store inventory, root causes)
 - [x] Stage 2 — council manifest committed alone (`f681e92`)
-- [ ] Stage 3 — Part 2 build (RED → fix → GREEN, screenshots)
+- [x] Stage 3 — Part 2 build (see Part 2 record below)
 - [ ] Stage 4 — Part 1 build (Layer-2 RED recorded below → GREEN)
 - [ ] Stage 5 — all 5 AGENTS.md gates on the final tip
 - [ ] Stage 6 — full panel (12 seats + DevEx) on the final tip
 - [ ] Stage 7 — PR opened (no merge)
+
+## Part 2 record (Stage 3)
+
+- **Fix (as committed):** cue-only move in `src/components/home-v5.css` —
+  `.hv5-review-cue` goes from `bottom:14px` to `top:14px` (top-right is
+  the card's one empty zone: head content is left-anchored, art is
+  bottom-anchored, and the in-flow CTA box occupies the bottom-left —
+  measured at all four contract widths). Shared `.hv5-art` rule and
+  sibling spot cards untouched.
+- **Tests:** non-overlap assertions (single-evaluate rect snapshots,
+  0.5px epsilon) at 360/390 in `mobile-home-overlap.spec.ts` and at
+  1280/1024 in `card-redesign.desktop.spec.ts`. Desktop suite 11/11
+  GREEN. Tip subset (22 tests): the new cue tests pass; all other
+  failures in these suites reproduce on pristine base `ab21c1c`
+  (base: 239 distinct failures under current box load; tip adds ZERO
+  new failures — stash-baseline attribution, logs in the run's /tmp).
+- **RED evidence:** pre-fix probe — cue box 100% × 97.8% inside the
+  art box at 390px (`evidence/probe-part2-before-390.json`);
+  `evidence/part2-before-390.png` shows the pill on the satchel.
+  Disclosed gap: the builder's RED *test* run passed vacuously (its
+  new assertions sit after base-failing tests in the same file), so
+  the deterministic RED record is the probe, not a failing-test
+  signature. The after screenshot is retaken in Stage 4.
+- **Recovery note (coordinator, 2026-10-28):** the Part 2 builder's
+  test runs were real (logs on disk), but its claimed commit never
+  landed — the finished tree sat in `stash@{0}` after its baseline
+  stash cycles, and its summary described an earlier fix iteration.
+  The coordinator recovered the stash, verified the diff, and
+  committed it. Both Part 2 suites get a mandatory re-run on the
+  final tip at the Stage 5 gates.
 
 ## RED evidence (manifest D8 — Layer-2 run recorded before GREEN)
 

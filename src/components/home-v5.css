@@ -1105,7 +1105,15 @@ body:has(.home-v5) {
 .home-v5 .hv5-review-cue {
   position: absolute;
   right: 14px;
-  bottom: 14px;
+  /* Part 2 (manifest D9): the cue used to sit bottom-right, entirely
+     inside the spot illustration box (.hv5-art: right:6, bottom:2,
+     172px wide) at every width. The bottom-left is NOT free either —
+     the in-flow "Start review" CTA box lives there (measured at all
+     four contract widths). The top-right corner is the card's one
+     empty zone (head content is left-anchored, the art is
+     bottom-anchored), so the cue moves there, cue-only: the shared
+     .hv5-art rule and the sibling spot cards are untouched. */
+  top: 14px;
   z-index: 1;
   pointer-events: none;
   background: var(--hv5-brown-deep);

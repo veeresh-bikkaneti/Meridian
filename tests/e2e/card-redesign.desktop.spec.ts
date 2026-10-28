@@ -451,6 +451,38 @@ test("F: CTA accessible names carry the card name; articles labelled; due outlin
   }
 });
 
+type RectBox = { x: number; y: number; width: number; height: number };
+
+/** Two boxes overlap only if they share more than ~0.5px in both axes
+ *  (same epsilon idiom as mobile-home-overlap.spec.ts). */
+function boxesOverlap(a: RectBox, b: RectBox): boolean {
+  const eps = 0.5;
+  return (
+    a.x + eps < b.x + b.width - eps &&
+    b.x + eps < a.x + a.width - eps &&
+    a.y + eps < b.y + b.height - eps &&
+    b.y + eps < a.y + a.height - eps
+  );
+}
+
+/** Part 2 (manifest D9): ONE page.evaluate snapshots the cue, the
+ *  illustration, and the card rects atomically — no scroll or layout
+ *  can interleave between the reads (friend-challenge single-evaluate
+ *  pattern). */
+async function cueArtSnapshot(page: Page) {
+  return page.evaluate(() => {
+    const section = document.querySelector('[data-testid="tour-stop-review"]');
+    const cue = section?.querySelector(".hv5-review-cue");
+    const art = section?.querySelector(".hv5-art");
+    const rect = (el: Element | null | undefined) => {
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      return { x: r.x, y: r.y, width: r.width, height: r.height };
+    };
+    return { card: rect(section), cue: rect(cue), art: rect(art) };
+  });
+}
+
 test("C: Review due → tap anywhere opens review, REVIEW → cue present", async ({ page, browser }) => {
   await seedDeckOn(page, deckSeed(0));
   await gotoHome(page, 1280);
@@ -478,6 +510,43 @@ test("C: Review due → tap anywhere opens review, REVIEW → cue present", asyn
       await fresh.mouse.click(pt.x, pt.y);
       await expect(freshSection).toHaveCount(0, { timeout: 20_000 });
       await expect(fresh.getByText("Lincoln", { exact: true }).first()).toBeVisible({ timeout: 20_000 });
+    } finally {
+      await context.close();
+    }
+  }
+});
+
+test("C: Review due → REVIEW cue never overlaps the illustration (1280 + 1024)", async ({ browser }) => {
+  // Manifest D9 contract: cue ∩ art is empty (0.5px epsilon) and both
+  // are fully visible inside the card, at desktop widths including the
+  // 1024px regime (769–1279) no other suite measures.
+  for (const [width, height] of [[1280, 900], [1024, 768]] as const) {
+    const { context, page: fresh } = await freshHome(browser, width, deckSeed(0));
+    try {
+      await fresh.setViewportSize({ width, height });
+      const section = fresh.getByTestId("tour-stop-review");
+      await expect(section).toBeVisible();
+      await expect(section.locator(".hv5-review-cue")).toHaveText("REVIEW →");
+      await section.scrollIntoViewIfNeeded();
+      const snap = await cueArtSnapshot(fresh);
+      expect(snap.cue, "REVIEW cue has a bounding box").not.toBeNull();
+      expect(snap.art, "review illustration has a bounding box").not.toBeNull();
+      expect(snap.card, "review card has a bounding box").not.toBeNull();
+      const { cue, art, card } = snap as { cue: RectBox; art: RectBox; card: RectBox };
+      expect(boxesOverlap(cue, art), "REVIEW cue overlaps review illustration").toBe(false);
+      // Both fully visible: each box sits entirely inside the card box.
+      for (const [name, box] of [["REVIEW cue", cue], ["review illustration", art]] as const) {
+        expect(box.width, `${name} width > 0`).toBeGreaterThan(0);
+        expect(box.height, `${name} height > 0`).toBeGreaterThan(0);
+        expect(box.x, `${name} left edge inside card`).toBeGreaterThanOrEqual(card.x - 0.5);
+        expect(box.y, `${name} top edge inside card`).toBeGreaterThanOrEqual(card.y - 0.5);
+        expect(box.x + box.width, `${name} right edge inside card`).toBeLessThanOrEqual(
+          card.x + card.width + 0.5,
+        );
+        expect(box.y + box.height, `${name} bottom edge inside card`).toBeLessThanOrEqual(
+          card.y + card.height + 0.5,
+        );
+      }
     } finally {
       await context.close();
     }
