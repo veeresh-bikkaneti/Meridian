@@ -428,3 +428,69 @@ export function writeLoopOpen(open: boolean): void {
     /* private-mode storage: the loop screen still works for the session */
   }
 }
+
+/**
+ * Remove the unlimited store and the open flag (the "Start over" reset,
+ * manifest 2026-10-28 §2). The v1 archive is NEVER touched — it is a
+ * deliberately inert namespace, not play history this reset owns.
+ * Follows resetProfile()'s precedent: where removal fails, overwrite
+ * with the empty value (a zeroed store whose empty deck reshuffles
+ * fresh on the next deal; "0" for the flag, which readLoopOpen reads as
+ * closed). Returns true only when a re-read proves the store is gone
+ * or empty — the reset reports the store as failed otherwise.
+ */
+export function clearLoopStore(
+  target?: Pick<Storage, "getItem" | "setItem" | "removeItem">,
+): boolean {
+  const s = target ?? storage();
+  if (!s) return true; // No storage = nothing was ever persisted.
+  try {
+    s.removeItem(LOOP_STORAGE_KEY_V2);
+  } catch {
+    try {
+      s.setItem(
+        LOOP_STORAGE_KEY_V2,
+        JSON.stringify({
+          deck: { deck: [], cycle: 1, cycleCompleted: 0 },
+          current: null,
+          streak: 0,
+          bestStreak: 0,
+          totals: { solved: 0, lost: 0 },
+        }),
+      );
+    } catch {
+      // Both paths blocked; the verification below reports it.
+    }
+  }
+  try {
+    s.removeItem(LOOP_OPEN_KEY);
+  } catch {
+    try {
+      s.setItem(LOOP_OPEN_KEY, "0");
+    } catch {
+      // The verification below reports it.
+    }
+  }
+  try {
+    const raw = s.getItem(LOOP_STORAGE_KEY_V2);
+    const storeGone =
+      raw === null ||
+      (() => {
+        try {
+          const parsed: unknown = JSON.parse(raw);
+          return (
+            isLoopUnlimitedStore(parsed) &&
+            parsed.current === null &&
+            parsed.streak === 0 &&
+            parsed.totals.solved === 0 &&
+            parsed.totals.lost === 0
+          );
+        } catch {
+          return false;
+        }
+      })();
+    return storeGone && s.getItem(LOOP_OPEN_KEY) !== "1";
+  } catch {
+    return false;
+  }
+}

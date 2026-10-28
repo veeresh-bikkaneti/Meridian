@@ -213,3 +213,89 @@ export function saveColdtrail(store: ColdTrailStore): void {
     // Quota or blocked storage: the game continues in memory.
   }
 }
+
+/**
+ * Remove the whole Cold Trail history (the "Start over" reset, manifest
+ * 2026-10-28 §2): the legacy v1 key FIRST, then the v2 store, then the
+ * open flag. The order is the contract — loadColdtrail() migrates a
+ * surviving v1 blob into v2 whenever v2 is absent, so removing v2 first
+ * would leave a window where the whole store resurrects on next load.
+ * Follows resetProfile()'s precedent: where removal fails, overwrite
+ * with the empty value (an inert v1 blob the migration ignores, the
+ * fresh v2 wallet, "0" for the flag). Returns true only when a re-read
+ * proves each key is gone or holds its empty value — the reset reports
+ * the store as failed otherwise.
+ */
+export function clearColdtrailStore(
+  target?: Pick<Storage, "getItem" | "setItem" | "removeItem">,
+): boolean {
+  let s = target;
+  if (!s) {
+    try {
+      s = typeof localStorage === "undefined" ? undefined : localStorage;
+    } catch {
+      s = undefined;
+    }
+  }
+  if (!s) return true; // No storage = nothing was ever persisted.
+  try {
+    s.removeItem(LEGACY_STORAGE_KEY);
+  } catch {
+    try {
+      s.setItem(LEGACY_STORAGE_KEY, '{"v":0}');
+    } catch {
+      // The verification below reports it.
+    }
+  }
+  try {
+    s.removeItem(COLDTRAIL_STORAGE_KEY);
+  } catch {
+    try {
+      s.setItem(COLDTRAIL_STORAGE_KEY, JSON.stringify(freshStore()));
+    } catch {
+      // The verification below reports it.
+    }
+  }
+  try {
+    s.removeItem(COLDTRAIL_OPEN_KEY);
+  } catch {
+    try {
+      s.setItem(COLDTRAIL_OPEN_KEY, "0");
+    } catch {
+      // The verification below reports it.
+    }
+  }
+  try {
+    const legacyRaw = s.getItem(LEGACY_STORAGE_KEY);
+    const legacyGone =
+      legacyRaw === null ||
+      (() => {
+        try {
+          const parsed = JSON.parse(legacyRaw) as { v?: unknown };
+          return parsed.v !== 1;
+        } catch {
+          return true; // Corrupt legacy blob: the migration ignores it too.
+        }
+      })();
+    const raw = s.getItem(COLDTRAIL_STORAGE_KEY);
+    const storeGone =
+      raw === null ||
+      (() => {
+        try {
+          const parsed = JSON.parse(raw) as Partial<ColdTrailStore>;
+          return (
+            parsed.v === 2 &&
+            (parsed.caseIndex ?? 0) === 0 &&
+            (parsed.stars ?? STARTING_STARS) === STARTING_STARS &&
+            (parsed.solved ?? 0) === 0 &&
+            (parsed.current ?? null) === null
+          );
+        } catch {
+          return false;
+        }
+      })();
+    return legacyGone && storeGone && s.getItem(COLDTRAIL_OPEN_KEY) !== "1";
+  } catch {
+    return false;
+  }
+}

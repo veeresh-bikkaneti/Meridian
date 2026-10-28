@@ -6,6 +6,7 @@ import {
   REVIEW_DECK_SCHEMA_VERSION,
   REVIEW_DECK_STORE_KEY,
   REVIEW_INTERVALS_DAYS,
+  clearReviewDeck,
   deckCounts,
   deckStarter,
   dueEntries,
@@ -294,4 +295,52 @@ test("emptyReviewDeck: schema version and empty entries", () => {
   assert.deepEqual(store.entries, {});
   assert.deepEqual(dueEntries(store, NOW), []);
   assert.deepEqual(deckCounts(store, NOW), { total: 0, due: 0 });
+});
+
+test("clearReviewDeck removes the deck key and reports success", () => {
+  const storage = memoryStorage();
+  writeReviewDeck(upsertMiss(emptyReviewDeck(), snapshot("a"), NOW), storage);
+  assert.notEqual(readReviewDeck(storage), null);
+  assert.equal(clearReviewDeck(storage), true);
+  assert.equal(storage.getItem(REVIEW_DECK_STORE_KEY), null);
+  assert.equal(readReviewDeck(storage), null);
+});
+
+test("clearReviewDeck: a throwing removeItem falls back to the empty deck", () => {
+  // resetProfile()'s precedent: when removal fails, overwrite with the
+  // empty/unset value so a stale blob cannot resurrect the deck.
+  const backing = new Map<string, string>();
+  backing.set(REVIEW_DECK_STORE_KEY, JSON.stringify(upsertMiss(emptyReviewDeck(), snapshot("a"), NOW)));
+  const storage = {
+    getItem: (k: string) => (backing.has(k) ? backing.get(k)! : null),
+    setItem: (k: string, v: string) => {
+      backing.set(k, v);
+    },
+    removeItem: () => {
+      throw new Error("denied");
+    },
+  };
+  assert.equal(clearReviewDeck(storage), true);
+  const after = readReviewDeck(storage);
+  assert.ok(after);
+  assert.deepEqual(deckCounts(after, NOW), { total: 0, due: 0 });
+});
+
+test("clearReviewDeck: fully blocked storage reports failure, never throws", () => {
+  const bad = {
+    getItem: () => {
+      throw new Error("denied");
+    },
+    setItem: () => {
+      throw new Error("denied");
+    },
+    removeItem: () => {
+      throw new Error("denied");
+    },
+  };
+  let result: boolean | undefined;
+  assert.doesNotThrow(() => {
+    result = clearReviewDeck(bad);
+  });
+  assert.equal(result, false);
 });

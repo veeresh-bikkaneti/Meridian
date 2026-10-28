@@ -2,6 +2,7 @@ import { strict as assert } from "node:assert";
 import { test } from "node:test";
 import { STARTING_STARS } from "./engine.ts";
 import {
+  clearColdtrailStore,
   COLDTRAIL_OPEN_KEY,
   COLDTRAIL_STORAGE_KEY,
   freshProgress,
@@ -385,4 +386,63 @@ test("cold trail open flag is a no-op without localStorage", () => {
   } finally {
     (globalThis as Record<string, unknown>).localStorage = prev;
   }
+});
+
+test("clearColdtrailStore removes v1 before v2, plus the open flag; load is fresh", () => {
+  const removed: string[] = [];
+  const data: Record<string, string> = {
+    [LEGACY_KEY]: JSON.stringify({ v: 1, caseIndex: 2, stars: 9, solved: 3 }),
+    [COLDTRAIL_STORAGE_KEY]: JSON.stringify(baseStore()),
+    [COLDTRAIL_OPEN_KEY]: "1",
+    "meridian.palette": "standard",
+  };
+  const fake: FakeStorage = {
+    getItem: (k) => (k in data ? data[k]! : null),
+    setItem: (k, v) => {
+      data[k] = v;
+    },
+    removeItem: (k) => {
+      removed.push(k);
+      delete data[k];
+    },
+  };
+  const prev = (globalThis as Record<string, unknown>).localStorage;
+  (globalThis as Record<string, unknown>).localStorage = fake;
+  try {
+    assert.equal(clearColdtrailStore(fake), true);
+    // Order is the contract: v1 first, so no later load can migrate it
+    // back into a fresh v2 after the wipe.
+    assert.ok(removed.indexOf(LEGACY_KEY) < removed.indexOf(COLDTRAIL_STORAGE_KEY));
+    assert.equal(data[LEGACY_KEY], undefined);
+    assert.equal(data[COLDTRAIL_STORAGE_KEY], undefined);
+    assert.equal(data[COLDTRAIL_OPEN_KEY], undefined);
+    assert.equal(readColdTrailOpen(), false);
+    // Kept keys byte-identical, and the loader sees a fresh wallet.
+    assert.equal(data["meridian.palette"], "standard");
+    const loaded = loadColdtrail();
+    assert.equal(loaded.caseIndex, 0);
+    assert.equal(loaded.stars, STARTING_STARS);
+    assert.equal(loaded.solved, 0);
+  } finally {
+    (globalThis as Record<string, unknown>).localStorage = prev;
+  }
+});
+
+test("clearColdtrailStore: fully blocked storage reports failure, never throws", () => {
+  const bad: FakeStorage = {
+    getItem: () => {
+      throw new Error("denied");
+    },
+    setItem: () => {
+      throw new Error("denied");
+    },
+    removeItem: () => {
+      throw new Error("denied");
+    },
+  };
+  let result: boolean | undefined;
+  assert.doesNotThrow(() => {
+    result = clearColdtrailStore(bad);
+  });
+  assert.equal(result, false);
 });
