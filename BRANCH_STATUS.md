@@ -2,7 +2,7 @@
 
 **Branch:** `feat/high-contrast-view`
 **Base:** `main` at `daa03ad028252060d57a5c83ee35aef8e988a1fe` (merge-base = base; no rebase needed)
-**State: BUILT — gates recorded below as they land. Not merged — merge is the owner's word, after the panel approves the final tip.**
+**State: BUILT + ALL 5 GATES GREEN on the code-final tip `ce95ac3` (2026-10-27). This status commit is the only later change. Not merged — merge is the owner's word, after the panel approves the final tip.**
 
 ## Scope
 
@@ -45,12 +45,28 @@ Task capsule (summary; the manifest is the record of record):
 - [x] Unit contracts: `palette-preference.test.ts` (RED first, then GREEN)
 - [x] E2E spec: `tests/e2e/high-contrast.desktop.spec.ts` (4 cases)
 
+## Gates (on code-final tip `ce95ac3`, Node v24.22.1 local; CI 22.x canonical)
+
+- [x] (a) `npx tsc --noEmit` — exit 0, clean
+- [x] (b) `npm test` — exit 0 (scripts 861 tests: 850 pass / 11 skip /
+      0 fail; src 1720: 1720 pass / 0 fail) + `npm run test:worker` —
+      exit 0 (85: 85 pass / 0 fail). One cure cycle en route: a
+      source pin in `palette-preference.test.ts` asserted the wrong
+      source shape (`data-testid=` literal vs the `testId` prop
+      pattern) — pin fixed in `ce95ac3`, feature unchanged.
+- [x] (c) `node scripts/lint-cards.mjs` — exit 0, GATE PASSED
+- [x] (d) `npm run build:pages` — exit 0
+- [x] (e) `flock ~/workspace/.e2e.lock npx playwright test
+      tests/e2e/high-contrast.desktop.spec.ts --workers=1` — exit 0,
+      4/4 passed
+
 ## Pending
 
-- [ ] Gates (a)–(e) on the final tip — results appended here and in
-      `P0-2-REPORT.md` (workspace run record, not committed)
 - [ ] PR opened with manifest summary, gate results, Node 24 local /
       CI 22.x canonical disclosure, "Do not merge without owner word"
+      (PR number/URL recorded in `P0-2-REPORT.md` and the PR body)
+- [ ] Owner merge word + panel approval of the final tip (not this
+      builder's to give)
 
 ## Docs note
 
