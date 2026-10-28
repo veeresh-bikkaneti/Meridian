@@ -1,10 +1,12 @@
 export const CHALLENGE_CHILD_COPY = "Could not load this challenge.";
 export const CHALLENGE_REGION_ID = "challenge";
 export const CHALLENGE_EDITION = "globe";
+export const CHALLENGE_GLOBE_RADIUS_KM = 750;
 
 const PREFIX = "#c=mc1.";
 const ID_RE = /^gn-[0-9]+$/;
 const KEYS = ["v", "e", "s", "ids", "seed"] as const;
+const B64URL_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 
 export type ChallengeOk = {
   ok: true;
@@ -44,11 +46,47 @@ function fail(reason: ChallengeFail["reason"]): ChallengeFail {
   return { ok: false, reason };
 }
 
+function toBase64Url(utf8: string): string {
+  const bytes = new TextEncoder().encode(utf8);
+  let bin = "";
+  for (let i = 0; i < bytes.length; i++) {
+    bin += String.fromCharCode(bytes[i]!);
+  }
+  return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+
+function fromBase64Url(body: string): string | null {
+  if (body.length === 0 || body.length % 4 === 1 || /[^A-Za-z0-9_-]/.test(body)) {
+    return null;
+  }
+  const rem = body.length % 4;
+  if (rem === 2 || rem === 3) {
+    const lastVal = B64URL_ALPHABET.indexOf(body[body.length - 1]!);
+    const mask = rem === 2 ? 0x0f : 0x03;
+    if (lastVal < 0 || (lastVal & mask) !== 0) return null;
+  }
+  const b64 =
+    body.replace(/-/g, "+").replace(/_/g, "/") + (rem === 0 ? "" : "=".repeat(4 - rem));
+  try {
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) {
+      bytes[i] = bin.charCodeAt(i);
+    }
+    return new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+  } catch {
+    return null;
+  }
+}
+
 export function encodeChallenge(ids: readonly string[], scoringVersion: number): string {
   if (!legalIds(ids)) throw new TypeError("challenge ids");
+  if (!Number.isSafeInteger(scoringVersion) || scoringVersion < 1) {
+    throw new RangeError("invalid scoringVersion");
+  }
   const seed = fnv1a(ids);
   const json = JSON.stringify({ v: 1, e: CHALLENGE_EDITION, s: scoringVersion, ids: [...ids], seed });
-  return PREFIX + Buffer.from(json, "utf8").toString("base64url");
+  return PREFIX + toBase64Url(json);
 }
 
 export function decodeChallenge(
@@ -58,10 +96,11 @@ export function decodeChallenge(
   if (fragment.length > 2000) return fail("tooBig");
   if (!fragment.startsWith(PREFIX)) return fail("format");
   const body = fragment.slice(PREFIX.length);
-  if (body.length === 0 || /[^A-Za-z0-9_-]/.test(body)) return fail("format");
+  const decodedUtf8 = fromBase64Url(body);
+  if (decodedUtf8 === null) return fail("format");
   let parsed: unknown;
   try {
-    parsed = JSON.parse(Buffer.from(body, "base64url").toString("utf8"));
+    parsed = JSON.parse(decodedUtf8);
   } catch {
     return fail("format");
   }
@@ -103,6 +142,7 @@ export function dealChallenge(
   count: number,
   seed: number,
 ): string[] {
+  if (!Number.isSafeInteger(count) || count <= 0) return [];
   const next = mulberry32(seed);
   const ranked = entries.map((entry, index) => {
     const u = next();
