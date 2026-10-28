@@ -55,7 +55,7 @@ import patagoniaUrl from "@/assets/home-v5/patagonia.webp";
 import archiveToolsUrl from "@/assets/home-v5/archive-tools.webp";
 import journalTreeUrl from "@/assets/home-v5/journal-tree.webp";
 import binocularsHatUrl from "@/assets/home-v5/binoculars-hat.webp";
-import { Compass, Flag, Globe2, MapPin, Volume2, VolumeX } from "lucide-react";
+import { Compass, Contrast, Flag, Globe2, MapPin, Volume2, VolumeX } from "lucide-react";
 import {
   initAudio,
   isSoundEnabled,
@@ -67,6 +67,11 @@ import {
   setSoundEnabled,
 } from "@/game/audio/sfx";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
+import {
+  applyPalettePreference,
+  isHighContrastEnabled,
+  setHighContrastEnabled,
+} from "@/game/palette-preference";
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -380,6 +385,61 @@ function SoundToggle({
       ) : (
         <VolumeX className={iconClassName} aria-hidden="true" />
       )}
+    </button>
+  );
+}
+
+/**
+ * High-contrast view toggle (manifest 2026-10-27): the SoundToggle
+ * pattern for the map palette — persisted under `meridian.palette`
+ * (PALETTE_STORAGE_KEY), default OFF (standard), one instance in the
+ * home hero and one in the game chrome, each reading the persisted
+ * value on mount. Flipping it repaints the map IN PLACE via the
+ * palette-preference module (data-palette attribute + the
+ * meridian:palette-change event): unlike the Scout Map switch it
+ * never ends a game and never navigates, because the palette is a
+ * paint choice, not a map-build input. A corrupt stored value fails
+ * closed to standard inside selectPalette — the toggle just shows
+ * OFF.
+ */
+function HighContrastToggle({
+  testId,
+  className,
+  style,
+  iconClassName = "size-5",
+}: {
+  testId: string;
+  className?: string;
+  style?: CSSProperties;
+  iconClassName?: string;
+}) {
+  const [highContrast, setHighContrast] = useState<boolean>(() => isHighContrastEnabled());
+  const toggleHighContrast = () => {
+    try {
+      const next = !highContrast;
+      setHighContrastEnabled(next);
+      setHighContrast(next);
+    } catch {
+      // The palette is enhancement-only; the toggle itself never throws.
+    }
+  };
+  return (
+    <button
+      type="button"
+      data-testid={testId}
+      aria-pressed={highContrast}
+      aria-label={highContrast ? "Turn high contrast off" : "Turn high contrast on"}
+      title={highContrast ? "High contrast on" : "High contrast off"}
+      onClick={toggleHighContrast}
+      // atlas-contrast-toggle: the dedicated class both hosts share, so
+      // styles.css can give [aria-pressed="true"] a VISIBLE pressed state
+      // (brass fill + filled icon, the .atlas-seg pattern) — aria-pressed
+      // alone is invisible to the sighted low-vision users this serves
+      // (panel BLOCK 3; manifest Scenarios 1–2: "I can see it pressed").
+      className={className ? `atlas-contrast-toggle ${className}` : "atlas-contrast-toggle"}
+      style={style}
+    >
+      <Contrast className={iconClassName} aria-hidden="true" />
     </button>
   );
 }
@@ -966,6 +1026,14 @@ export function GameApp() {
       window.removeEventListener("pointerdown", boot);
       window.removeEventListener("keydown", boot);
     };
+  }, []);
+  // High-contrast view (manifest 2026-10-27, D7): apply the stored
+  // palette once at boot so a persisted "high-contrast" reaches the
+  // --map-* vars on every GameApp-hosted screen (home, the quiz
+  // editions, and GeoDetective's LoopScreen) without waiting for a
+  // toggle tap. Fail-closed inside the module: corrupt → standard.
+  useEffect(() => {
+    applyPalettePreference();
   }, []);
   const [ready, setReady] = useState(false);
   // Exactly-once guard for the crash-watchdog ready signal below.
@@ -2785,6 +2853,7 @@ function Choose({
             </p>
             <CometEmblem />
             <SoundToggle testId="sound-toggle" className="atlas-sound-toggle" />
+            <HighContrastToggle testId="high-contrast-toggle" className="atlas-sound-toggle" />
             {mapModeControl}
             {/* Storyteller banner host (owner directive 2026-10-09): the
                 figure sits in the hero beside the branding — always visible,
@@ -4476,6 +4545,14 @@ function PlayLoaded({
             <SoundToggle
               testId="sound-toggle-game"
               className="pointer-events-auto rounded-md border border-line bg-surface px-2.5 py-2 text-fg transition-colors"
+            />
+            {/* High-contrast view (manifest 2026-10-27): the same
+                meridian.palette toggle, reachable mid-game; flipping
+                repaints in place and never ends the run. Sized to the
+                44px tap-target floor. */}
+            <HighContrastToggle
+              testId="high-contrast-toggle-game"
+              className="pointer-events-auto flex h-11 w-11 items-center justify-center rounded-md border border-line bg-surface text-fg transition-colors"
             />
             {/* Scout Map settings toggle. The choice writes
                 meridian:map-mode and sends the player home — the new

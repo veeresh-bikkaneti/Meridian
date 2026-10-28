@@ -276,7 +276,19 @@ export function paintBasemap(
   drawTerrain(context, path, terrainFor(scope), colors, mapStyle === "roads");
 }
 
-export function drawGuessPin(context: CanvasRenderingContext2D, x: number, y: number, fill: string, drop: number) {
+export function drawGuessPin(
+  context: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  fill: string,
+  drop: number,
+  // Centre-dot paint (addendum 2026-10-28, D9 condition (f)): the default
+  // is the standard translucent dot, byte-identical to the pre-cure
+  // rendering; paintOverlay passes colors.pinDot, which the high-contrast
+  // CSS block sets solid #f6f3ea because the translucent dot composites
+  // to only 1.95:1 over the HC pin body.
+  pinDot = "rgba(0,0,0,0.38)",
+) {
   const lift = 34 * (1 - Math.max(0, Math.min(1.08, drop)));
   context.save();
   context.translate(x, y - lift);
@@ -294,7 +306,7 @@ export function drawGuessPin(context: CanvasRenderingContext2D, x: number, y: nu
   context.shadowColor = "transparent";
   context.beginPath();
   context.arc(0, -15, 3.2, 0, Math.PI * 2);
-  context.fillStyle = "rgba(0,0,0,0.38)";
+  context.fillStyle = pinDot;
   context.fill();
   context.restore();
 }
@@ -381,14 +393,14 @@ export function paintOverlay(context: CanvasRenderingContext2D, overlay: Overlay
   }
   if (guess) {
     const xy = projection(guess);
-    if (xy) drawGuessPin(context, xy[0], xy[1], colors.pin, overlay.pinDrop);
+    if (xy) drawGuessPin(context, xy[0], xy[1], colors.pin, overlay.pinDrop, colors.pinDot);
   }
   if (overlay.revealed && answer && overlay.answerDrop > 0) {
     const xy = projection(answer);
     if (xy) drawAnswerMark(context, xy[0], xy[1], colors.answer, overlay.answerDrop);
   }
   if (overlay.ghost) {
-    drawGuessPin(context, overlay.ghost.x, overlay.ghost.y, colors.pin, 0.72);
+    drawGuessPin(context, overlay.ghost.x, overlay.ghost.y, colors.pin, 0.72, colors.pinDot);
   } else if (overlay.hover && !guess) {
     context.beginPath();
     context.arc(overlay.hover.x, overlay.hover.y, 7, 0, Math.PI * 2);

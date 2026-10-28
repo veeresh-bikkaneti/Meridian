@@ -100,7 +100,8 @@
   --map-coast: #0c1816;
   --map-lit: #6e9084;
   --map-pin: #f4f1ea;
-  --map-answer: #f2c14e; /* matches region-highlight gold */
+  --map-pin-dot: rgba(0,0,0,0.38);
+  --map-answer: #f2c14e; /* matches region-highlight gold outside high contrast (D9: HC answer is #a86c00) */
   --map-arc: #f4f1ea;
   --map-cross: #d7ddd9;
   /* ---- Cartographer's Plate: brass text/rule + derived game chrome (spec §4) ---- */
@@ -154,6 +155,7 @@
     --map-coast: #7f9aa2;
     --map-lit: #d5e4ea;
     --map-pin: #1c2420;
+    --map-pin-dot: rgba(0,0,0,0.38);
     --map-answer: #f2c14e; /* legend: gold is the true spot */
     --map-arc: #3e4c46;
     --map-cross: #1c2420;
@@ -208,6 +210,7 @@
   --map-coast: #7f9aa2;
   --map-lit: #d5e4ea;
   --map-pin: #1c2420;
+  --map-pin-dot: rgba(0,0,0,0.38);
   --map-answer: #f2c14e; /* legend: gold is the true spot */
   --map-arc: #3e4c46;
   --map-cross: #1c2420;
@@ -243,12 +246,42 @@
   --map-coast: #0c1816;
   --map-lit: #6e9084;
   --map-pin: #f4f1ea;
-  --map-answer: #f2c14e; /* matches region-highlight gold */
+  --map-pin-dot: rgba(0,0,0,0.38);
+  --map-answer: #f2c14e; /* matches region-highlight gold outside high contrast (D9: HC answer is #a86c00) */
   --map-arc: #f4f1ea;
   --map-cross: #d7ddd9;
   --gold-ink: #f2c14e; /* gold text on dark surfaces */
   --error: #f1948a; /* error text on dark surfaces */
   color-scheme: dark;
+}
+
+/* High-contrast view (settings toggle, manifest 2026-10-27; mark tokens
+   added by the council addendum 2026-10-28, D9): the five HIGH_CONTRAST
+   tokens plus the seven HIGH_CONTRAST_MARKS tokens from
+   src/game/palette.ts as --map-* overrides — twelve palette vars in
+   all, plus the pin centre-dot seam var below. Placed after every
+   theme block so it wins at equal specificity over :root, the light
+   media query, paper, and night alike. Source-pin tests in
+   palette-preference.test.ts keep these values equal to HIGH_CONTRAST
+   / HIGH_CONTRAST_MARKS. Roads, highway, road-case, and river are
+   deliberately NOT overridden (D9 adjudication): they keep their
+   theme values, re-measured against the HC anchors in palette.test.ts.
+   --map-highlight gets its first definition here; in the standard
+   path colors.ts's #f2c14e fallback governs it. */
+:root[data-palette="high-contrast"] {
+  --map-water: #0b0d10;
+  --map-land: #f6f3ea;
+  --map-arc: #c45c12;
+  --map-lake: #1a1d22;
+  --map-coast: #050608;
+  --map-pin: #b04a9e;
+  --map-answer: #a86c00;
+  --map-highlight: #a86c00;
+  --map-border: #beaf8d;
+  --map-park: #cfdcb4;
+  --map-cross: #757575;
+  --map-lit: #f0dca0;
+  --map-pin-dot: #f6f3ea;
 }
 
 @theme inline {
@@ -503,6 +536,23 @@
 }
 .atlas-sound-toggle:hover {
   border-color: var(--atlas-brass);
+}
+
+/* High-contrast toggle pressed state (panel BLOCK 3 cure): the same
+ * brass-fill language as .atlas-seg button[aria-pressed="true"], applied
+ * through the dedicated class HighContrastToggle renders in both hosts
+ * (home .atlas-sound-toggle and the in-game chrome). Lucide has no
+ * honest Contrast on/off pair, so the icon itself also changes: its
+ * stroke glyph fills solid in the pressed state. Background, foreground,
+ * and icon fill all change — a sighted user cannot miss that it is on. */
+.atlas-contrast-toggle[aria-pressed="true"] {
+  background: var(--atlas-brass);
+  color: var(--atlas-brass-ink);
+  border-color: var(--atlas-brass);
+  box-shadow: 0 8px 20px -10px var(--atlas-brass);
+}
+.atlas-contrast-toggle[aria-pressed="true"] svg {
+  fill: currentColor;
 }
 .atlas-sound-toggle:focus-visible {
   outline: 2px solid var(--atlas-brass);
