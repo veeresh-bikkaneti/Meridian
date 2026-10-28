@@ -2,7 +2,7 @@
 
 - **Branch:** `feat/challenge-v1` (PR #274)
 - **Base:** `origin/main` at `d39bc3e` (2026-10-28 — PR #275 high-contrast merged; this branch was rebased onto it: one `BRANCH_STATUS.md` conflict, resolved by whole-file supersession, no other conflicts; every branch-owned file verified byte-identical to its pre-rebase version)
-- **State:** **FINAL CURE COMPLETE — the panel re-vote on `53d4f36` returned 0 BLOCKs with both round-1 BLOCKs withdrawn, but a DevEx FAIL on one stale `docs/feature-flags.md` paragraph. That paragraph, the `challenge.ts` interval comment, and the pin-pair freeze discrimination are cured on the owner's order (2026-10-28), and the branch is rebased onto current main. ALL 5 MANDATORY GATES GREEN on the final tip & PUSHED. Awaiting the panel re-vote on the final tip; merge remains the owner's per-PR word.**
+- **State:** **MERGED 2026-10-28 (squash `a812c59`, PR #274) on the owner's word. Final panel re-vote on tip `bb5fc1c`: READY (1 APPROVE / 11 APPROVE-WITH-NITS / 0 BLOCKs, DevEx PASS-WITH-NITS); all 5 mandatory gates green on the final tip and full CI (22.x) green on that exact SHA. `friendChallenges` ships OFF; the pre-flag-flip follow-up list (share `failureFallback`, notice×resume test, `w:1` design call) is recorded in the cure reports. This file's branch record is now historical.**
 - **Task ID:** `P0-1` — Stateless `#c=mc1.<base64url>` Globe Friend Challenges (`friendChallenges`, default `false`)
 
 ---
