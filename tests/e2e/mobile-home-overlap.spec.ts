@@ -655,3 +655,98 @@ for (const width of WIDTHS) {
     });
   }
 }
+
+/* ---------- Part 2 (manifest D9): REVIEW cue vs illustration ----------
+ * On the home Review card in its DUE state the decorative REVIEW cue
+ * (.hv5-review-cue) sat entirely inside the illustration box
+ * (.hv5-spot .hv5-art). Contract: the two boxes are disjoint (0.5px
+ * epsilon, the overlaps()/noOverlap() helpers above) and both fully
+ * visible inside the card, at phone widths 360 and 390. The deck seed
+ * is the card-redesign.desktop.spec.ts deckSeed idiom (one Lincoln
+ * entry, already due). */
+const REVIEW_DECK_KEY = "meridian:review-deck:v1";
+
+function dueDeckSeed() {
+  return {
+    v: 1,
+    entries: {
+      "e2e-deck-lincoln": {
+        v: 1,
+        place: {
+          id: "e2e-deck-lincoln",
+          name: "Lincoln",
+          lon: -96.7,
+          lat: 40.83,
+          story: "Nebraska's capital, named for Abraham Lincoln.",
+          difficulty: 2,
+          edition: "state",
+          regionId: "nebraska",
+          regionName: "Nebraska",
+          subdivision: "Nebraska",
+          sourceLabel: "E2E",
+          sourceHref: "https://example.com",
+          mapMode: "flat",
+          regionBounds: [-104.05, 39.99, -95.31, 43.0],
+          radiusKm: 75,
+        },
+        streak: 0,
+        nextDueAt: 0,
+        lastReviewedAt: 0,
+        reviews: 0,
+      },
+    },
+  };
+}
+
+test.describe("Part 2 · review cue vs illustration (due deck)", () => {
+  for (const width of WIDTHS) {
+    test(`cue and illustration are disjoint at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.addInitScript(
+        ({ key, s }) => {
+          if (!localStorage.getItem(key)) localStorage.setItem(key, JSON.stringify(s));
+        },
+        { key: REVIEW_DECK_KEY, s: dueDeckSeed() },
+      );
+      const errors = await loadHome(page);
+      const section = page.getByTestId("tour-stop-review");
+      await expect(section).toBeVisible();
+      await expect(section.locator(".hv5-review-cue")).toHaveText("REVIEW →");
+      await section.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(300);
+      // ONE page.evaluate snapshots cue + art + card rects atomically —
+      // no scroll or layout can interleave between the reads.
+      const snap = await page.evaluate(() => {
+        const card = document.querySelector('[data-testid="tour-stop-review"]');
+        const cue = card?.querySelector(".hv5-review-cue");
+        const art = card?.querySelector(".hv5-art");
+        const rect = (el: Element | null | undefined) => {
+          if (!el) return null;
+          const r = el.getBoundingClientRect();
+          return { x: r.x, y: r.y, width: r.width, height: r.height };
+        };
+        return { card: rect(card), cue: rect(cue), art: rect(art) };
+      });
+      expect(snap.card, "review card has a bounding box").not.toBeNull();
+      noOverlap("REVIEW cue", snap.cue, "review illustration", snap.art);
+      // Both fully visible: each box sits entirely inside the card box.
+      const card = snap.card!;
+      for (const [name, box] of [
+        ["REVIEW cue", snap.cue!],
+        ["review illustration", snap.art!],
+      ] as const) {
+        expect(box.width, `${name} width > 0`).toBeGreaterThan(0);
+        expect(box.height, `${name} height > 0`).toBeGreaterThan(0);
+        expect(box.x, `${name} left edge inside card`).toBeGreaterThanOrEqual(card.x - 0.5);
+        expect(box.y, `${name} top edge inside card`).toBeGreaterThanOrEqual(card.y - 0.5);
+        expect(box.x + box.width, `${name} right edge inside card`).toBeLessThanOrEqual(
+          card.x + card.width + 0.5,
+        );
+        expect(box.y + box.height, `${name} bottom edge inside card`).toBeLessThanOrEqual(
+          card.y + card.height + 0.5,
+        );
+      }
+      expectCleanConsole(errors);
+    });
+  }
+});

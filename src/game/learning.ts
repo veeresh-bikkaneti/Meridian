@@ -408,12 +408,37 @@ export function writeLearningStore(store: LearningStore, storage?: StorageLike):
   }
 }
 
-/** Remove the store (player control = device control; nothing server-side). */
-export function clearLearningStore(storage?: StorageLike): void {
+/**
+ * Remove the store (player control = device control; nothing server-side).
+ * Follows resetProfile()'s precedent: if removal itself fails, overwrite
+ * with the empty store so a stale blob cannot resurrect the records.
+ * Returns true only when a re-read proves the store is gone or empty —
+ * the "Start over" reset (reset-history.ts) reports the store as failed
+ * otherwise. (Return value added for the reset; existing callers ignore it.)
+ */
+export function clearLearningStore(storage?: StorageLike): boolean {
+  const s = resolveStorage(storage);
+  if (!s) return true; // No storage = nothing was ever persisted.
   try {
-    resolveStorage(storage)?.removeItem(LEARNING_STORE_KEY);
+    s.removeItem(LEARNING_STORE_KEY);
   } catch {
-    // Already gone or storage blocked.
+    try {
+      s.setItem(LEARNING_STORE_KEY, JSON.stringify(emptyLearningStore()));
+    } catch {
+      // Both paths blocked; the verification below reports it.
+    }
+  }
+  try {
+    const raw = s.getItem(LEARNING_STORE_KEY);
+    if (raw === null) return true;
+    const parsed = parseLearningStore(JSON.parse(raw));
+    return (
+      parsed !== null &&
+      Object.keys(parsed.records).length === 0 &&
+      parsed.daysPlayed.length === 0
+    );
+  } catch {
+    return false;
   }
 }
 

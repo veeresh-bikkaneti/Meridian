@@ -1105,7 +1105,15 @@ body:has(.home-v5) {
 .home-v5 .hv5-review-cue {
   position: absolute;
   right: 14px;
-  bottom: 14px;
+  /* Part 2 (manifest D9): the cue used to sit bottom-right, entirely
+     inside the spot illustration box (.hv5-art: right:6, bottom:2,
+     172px wide) at every width. The bottom-left is NOT free either —
+     the in-flow "Start review" CTA box lives there (measured at all
+     four contract widths). The top-right corner is the card's one
+     empty zone (head content is left-anchored, the art is
+     bottom-anchored), so the cue moves there, cue-only: the shared
+     .hv5-art rule and the sibling spot cards are untouched. */
+  top: 14px;
   z-index: 1;
   pointer-events: none;
   background: var(--hv5-brown-deep);
@@ -1119,6 +1127,42 @@ body:has(.home-v5) {
 }
 .home-v5 .hv5-review-empty h2 {
   color: var(--hv5-ink-soft);
+}
+
+/* "Start over" reset opener (manifest 2026-10-28, Part 1): an in-flow
+   text button in the review card's text column. position:relative +
+   z-index:3 is the .hv5-involved p a precedent — the due card's CTA
+   stretches a click layer over the whole card at z-index:2, and the
+   opener must stay tappable above it without swallowing card taps
+   anywhere else. Not scoped to .home-v5: ReviewComplete (a plain
+   screen, no .home-v5 ancestor) renders the same control. The 44px
+   min-height is the accessibility tap-target floor. */
+.reset-history-open {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 10px;
+  margin-top: 2px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  color: var(--hv5-brown-deep, #77591f);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.reset-history-open:hover,
+.reset-history-open:focus-visible {
+  color: var(--hv5-ink, #33302a);
+}
+.reset-history-open:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep, #77591f);
+  outline-offset: 2px;
 }
 
 /* F7 — forced colors: the two-tone ring, the due outline, and the

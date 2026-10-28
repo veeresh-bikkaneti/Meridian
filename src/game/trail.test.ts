@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   clearClearedMark,
+  clearTrailHistory,
   clearedMarkKey,
   createDealer,
   cycleSeed,
@@ -796,4 +797,66 @@ test("isBandCleared is false for an empty catalog (never celebrate nothing)", ()
   store.write(["a"]);
   assert.equal(isBandCleared([], store), false);
   assert.equal(isBandCleared([], memorySeenStore()), false);
+});
+
+test("clearTrailHistory removes seen v2 (scoped + unscoped), seen v1, and cleared marks only", () => {
+  withFakeStorage((backing) => {
+    backing.set("meridian:seen:v2:globe:globe:medium", '["a"]');
+    backing.set("meridian:seen:v2:state:nebraska:easy", '["b"]');
+    backing.set("meridian:seen:v2:globe:globe", '["old"]');
+    backing.set("meridian:seen:v1:2026-10-01:globe:globe", '["v1"]');
+    backing.set("meridian:cleared:v1:globe:globe:medium", "1");
+    // Near-miss foreign keys and preferences survive byte-identical.
+    backing.set("meridian:seen:v3:globe:globe:medium", '["x"]');
+    backing.set("meridian:cleared:v2:globe:globe:medium", "1");
+    backing.set("meridian.difficulty", "hard");
+    assert.equal(clearTrailHistory(), true);
+    assert.deepEqual(
+      [...backing.keys()].sort(),
+      ["meridian.difficulty", "meridian:cleared:v2:globe:globe:medium", "meridian:seen:v3:globe:globe:medium"],
+    );
+    assert.equal(backing.get("meridian:seen:v3:globe:globe:medium"), '["x"]');
+    // The band store reads empty afterwards — nothing folds back in.
+    assert.deepEqual(seenStoreFor("globe", "globe", "medium").read(), []);
+    assert.equal(wasClearedCelebrated("globe", "globe", "medium"), false);
+  });
+});
+
+test("clearTrailHistory honours an injected storage and leaves the global alone", () => {
+  const backing = new Map<string, string>();
+  backing.set("meridian:seen:v2:globe:globe:medium", '["a"]');
+  const fake = {
+    getItem: (k: string) => (backing.has(k) ? backing.get(k)! : null),
+    setItem: (k: string, v: string) => {
+      backing.set(k, v);
+    },
+    removeItem: (k: string) => {
+      backing.delete(k);
+    },
+    get length() {
+      return backing.size;
+    },
+    key: (i: number) => [...backing.keys()][i] ?? null,
+  };
+  assert.equal(clearTrailHistory(fake), true);
+  assert.equal(backing.size, 0);
+});
+
+test("clearTrailHistory: throwing enumeration reports failure, never throws", () => {
+  const throwing = {
+    getItem: () => null,
+    setItem: () => {},
+    removeItem: () => {},
+    get length(): number {
+      throw new Error("denied");
+    },
+    key: (): null => {
+      throw new Error("denied");
+    },
+  };
+  let result: boolean | undefined;
+  assert.doesNotThrow(() => {
+    result = clearTrailHistory(throwing);
+  });
+  assert.equal(result, false);
 });

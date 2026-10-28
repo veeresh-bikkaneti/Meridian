@@ -579,3 +579,68 @@ export function createDealer<T extends { id: string }>(
 
   return { at, markDealtThrough };
 }
+
+/**
+ * Remove the whole no-repeat history (the "Start over" reset, manifest
+ * 2026-10-28 §2): every seen key of both generations — band-scoped v2,
+ * the legacy unscoped v2, and the day-keyed v1 — plus every cleared-place
+ * mark. Removing the v1 keys matters: a survivor would fold its ids back
+ * into v2 on the next read and resurrect the "cleared" history.
+ *
+ * Prefix discipline is the safety story: only the three exact prefixes
+ * this module owns are swept, so near-miss foreign keys
+ * (`meridian:seen:v3:*`, `meridian:cleared:v2:*`, other apps' keys) are
+ * never touched. Keys are collected into a snapshot BEFORE any removal
+ * (removing while iterating storage shifts the indexes). Where a seen
+ * key refuses removal, resetProfile()'s precedent applies — overwrite
+ * with the empty list; a cleared mark has no empty value (any value
+ * reads as "celebrated"), so a mark that refuses removal fails the
+ * clear. Returns true only when a re-read proves every target is gone
+ * (or emptied); the reset reports the store as failed otherwise.
+ */
+export function clearTrailHistory(
+  storage?: Pick<Storage, "getItem" | "setItem" | "removeItem" | "length" | "key">,
+): boolean {
+  const s = storage ?? safeStorage();
+  if (!s) return true; // No storage = nothing was ever persisted.
+  const isTarget = (k: string): boolean =>
+    k.startsWith(SEEN_KEY_PREFIX) ||
+    k.startsWith(LEGACY_SEEN_KEY_PREFIX) ||
+    k.startsWith(CLEARED_KEY_PREFIX);
+  let keys: string[];
+  try {
+    keys = [];
+    for (let i = 0; i < s.length; i++) {
+      const k = s.key(i);
+      if (k && isTarget(k)) keys.push(k);
+    }
+  } catch {
+    return false; // Cannot even enumerate: report failure, never throw.
+  }
+  for (const k of keys) {
+    try {
+      s.removeItem(k);
+    } catch {
+      if (!k.startsWith(CLEARED_KEY_PREFIX)) {
+        try {
+          s.setItem(k, "[]");
+        } catch {
+          // The verification below reports it.
+        }
+      }
+    }
+  }
+  // Post-clear re-read: every target key must be absent — or, for a seen
+  // key whose removal was blocked, hold the empty list we overwrote.
+  try {
+    for (const k of keys) {
+      const raw = s.getItem(k);
+      if (raw === null) continue;
+      if (!k.startsWith(CLEARED_KEY_PREFIX) && raw === "[]") continue;
+      return false;
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}

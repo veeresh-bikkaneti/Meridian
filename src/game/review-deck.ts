@@ -444,3 +444,33 @@ export function writeReviewDeck(store: ReviewDeckStore, storage?: StorageLike): 
     // Storage blocked or full; the game must never break on deck data.
   }
 }
+
+/**
+ * Remove the deck (the "Start over" reset, manifest 2026-10-28 §2).
+ * Follows resetProfile()'s precedent: remove the key; if removal itself
+ * fails, overwrite with the empty deck so a stale blob cannot resurrect
+ * the misses on the next read. Returns true only when a re-read proves
+ * the deck is gone or empty — the caller (reset-history.ts) reports the
+ * store as failed otherwise, never a false "all cleared".
+ */
+export function clearReviewDeck(storage?: StorageLike): boolean {
+  const s = resolveStorage(storage);
+  if (!s) return true; // No storage = nothing was ever persisted.
+  try {
+    s.removeItem(REVIEW_DECK_STORE_KEY);
+  } catch {
+    try {
+      s.setItem(REVIEW_DECK_STORE_KEY, JSON.stringify(emptyReviewDeck()));
+    } catch {
+      // Both paths blocked; the verification below reports it.
+    }
+  }
+  try {
+    const raw = s.getItem(REVIEW_DECK_STORE_KEY);
+    if (raw === null) return true;
+    const parsed = parseReviewDeck(JSON.parse(raw));
+    return parsed !== null && deckCounts(parsed).total === 0;
+  } catch {
+    return false;
+  }
+}

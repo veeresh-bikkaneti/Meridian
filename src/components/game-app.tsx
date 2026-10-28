@@ -73,6 +73,7 @@ import {
   setHighContrastEnabled,
 } from "@/game/palette-preference";
 import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { RunStartNotice } from "@/components/run-start-notice";
@@ -311,6 +312,7 @@ import {
   type DeckEntry,
   type DeckPlaceSnapshot,
 } from "@/game/review-deck";
+import { resetHistory, type ResetHistoryResult } from "@/game/reset-history";
 
 /**
  * Watched by the inline crash watchdog injected into _shell.html
@@ -999,7 +1001,10 @@ function globeTierSplitFor(edition: Edition, regionId: string): Promise<boolean>
  * would go stale — and a stale "N cards due" with an empty queue would make
  * "Start review" silently no-op.
  */
-function useDeckStatus(run: Run | null): { enabled: boolean; due: number; total: number } {
+function useDeckStatus(
+  run: Run | null,
+  historyResetEpoch: number,
+): { enabled: boolean; due: number; total: number } {
   const [status, setStatus] = useState({ enabled: false, due: 0, total: 0 });
   const onPicker = run === null;
   useEffect(() => {
@@ -1018,7 +1023,10 @@ function useDeckStatus(run: Run | null): { enabled: boolean; due: number; total:
     return () => {
       active = false;
     };
-  }, [onPicker]);
+    // historyResetEpoch (D14): a reset performed on the picker must
+    // re-read the deck in place — the picker never unmounted, so the
+    // onPicker edge alone would leave the stale due count on screen.
+  }, [onPicker, historyResetEpoch]);
   return status;
 }
 
@@ -1225,6 +1233,17 @@ export function GameApp() {
     const id = window.setTimeout(() => setAgeToast(null), 3500);
     return () => window.clearTimeout(id);
   }, [ageToast]);
+  // "Start over" reset (manifest 2026-10-28): the success toast reuses
+  // the age-toast styling/lifetime, and historyResetEpoch is the
+  // refresh pin (D14) — bumping it remounts <Choose> (re-reading the
+  // mount-only home surfaces) and re-runs useDeckStatus in place.
+  const [resetToast, setResetToast] = useState<string | null>(null);
+  const [historyResetEpoch, setHistoryResetEpoch] = useState(0);
+  useEffect(() => {
+    if (resetToast === null) return;
+    const id = window.setTimeout(() => setResetToast(null), 3500);
+    return () => window.clearTimeout(id);
+  }, [resetToast]);
   // Invoking control for the age settings (footer "For grown-ups" link or
   // locked-tile grown-up link) — focus returns here when the settings close.
   const ageTriggerRef = useRef<HTMLElement | null>(null);
@@ -2106,7 +2125,28 @@ export function GameApp() {
 
   // Review-deck status for the picker entry (flag-gated; re-read whenever
   // the app returns to the picker — see useDeckStatus).
-  const deckStatus = useDeckStatus(run);
+  const deckStatus = useDeckStatus(run, historyResetEpoch);
+
+  /**
+   * The "Start over" reset flow (manifest 2026-10-28, D4/D6/D13/D15):
+   * wipe the history stores via resetHistory(); only on a fully clean
+   * result (failed empty) drop the in-memory session, notify listeners,
+   * bump the epoch that remounts the home surfaces, and show the
+   * success toast. The run/drop pair is already gone at that point —
+   * resetHistory clears it from sessionStorage (D13), so a paused run
+   * can never re-seed a session after the wipe. A partial failure
+   * changes nothing on screen: the dialog stays open with its retry.
+   */
+  const handleResetHistory = useCallback((): ResetHistoryResult => {
+    const result = resetHistory();
+    if (result.failed.length === 0) {
+      replaceSession(null);
+      window.dispatchEvent(new CustomEvent("meridian:history-reset"));
+      setHistoryResetEpoch((n) => n + 1);
+      setResetToast(RESET_HISTORY_SUCCESS_TOAST);
+    }
+    return result;
+  }, [replaceSession]);
 
   /**
    * Start a review session over the currently-due deck cards. The session is
@@ -2304,6 +2344,13 @@ export function GameApp() {
     };
   }, [getSession, killIdleSession, idleTimeoutMs, idleWarnMs]);
 
+  // Reset success toast: rendered in the run branch (ReviewComplete is
+  // a Play surface) and the home branch alike, like idleToast below.
+  const resetToastEl = resetToast ? (
+    <div className="agep-toast" role="status" data-testid="reset-history-toast">
+      {resetToast}
+    </div>
+  ) : null;
   // Non-blocking idle warning. Rendered on EVERY screen where a session
   // can be live — in-game and the edition picker alike — so the 2-minute
   // kick never surprises. (The "Editions" button leaves the run while the
@@ -2403,6 +2450,7 @@ export function GameApp() {
             setMapSwitchedNote(null);
           }}
           onReviewDeck={handleReviewDeck}
+          onResetHistory={handleResetHistory}
           onCleared={(info) => setCleared(info)}
           mapMode={mapMode}
           onManualMapMode={handleManualMapMode}
@@ -2443,6 +2491,7 @@ export function GameApp() {
         ) : null}
         {celebrationOverlay}
         {runStartNotice}
+        {resetToastEl}
         {idleToast}
       </>
     );
@@ -2687,6 +2736,7 @@ export function GameApp() {
         is inert — non-interactive and removed from the tab order. */}
     <div inert={ageSettingsOpen || undefined}>
     <Choose
+      key={historyResetEpoch}
       onState={withCardTap("State", () => setMenu({ kind: "states" }))}
       onCountry={withCardTap("Country", () => setMenu({ kind: "countries" }))}
       onGlobe={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
@@ -2708,6 +2758,7 @@ export function GameApp() {
         setLoopOpen(true);
       })}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
+      onResetHistory={handleResetHistory}
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
       onDifficultyChoice={setDifficultyChoice}
@@ -2770,6 +2821,7 @@ export function GameApp() {
         {ageToast}
       </div>
     ) : null}
+    {resetToastEl}
     {celebrationOverlay}
     {idleToast}
     </>
@@ -2814,6 +2866,7 @@ function Choose({
   onLoop,
   onColdTrail,
   onReview,
+  onResetHistory,
   deck,
   notice,
   homeToast,
@@ -2840,6 +2893,8 @@ function Choose({
   onColdTrail: (e: ReactMouseEvent) => void;
   /** Start a review session over the due deck cards. */
   onReview: () => void;
+  /** Run the "Start over" history reset (GameApp owns the flow). */
+  onResetHistory: () => ResetHistoryResult;
   /** Deck entry status (flag-gated; see useDeckStatus). */
   deck: { enabled: boolean; due: number; total: number };
   notice?: ReactNode;
@@ -3310,6 +3365,15 @@ function Choose({
                   <p style={{ fontWeight: 700, color: "var(--hv5-ink)" }} data-testid="deck-due-count">
                     {deck.due} {deck.due === 1 ? "card" : "cards"} due
                   </p>
+                  {/* "Start over" reset entry (manifest 2026-10-28 D10):
+                      renders whenever the deck holds any card (due OR
+                      caught-up). In-flow in the text column, under the
+                      due line, with position:relative + z-index:3 (the
+                      .hv5-involved p a precedent) so it stays tappable
+                      above the CTA's whole-card stretch layer — and sits
+                      in the text column, clear of the REVIEW cue's centre
+                      click point (the cue is top-right since Part 2). */}
+                  <ResetHistoryControl onReset={onResetHistory} />
                   {/* Whole-card action (Form S): the CTA stretches over
                       the card via .hv5-stretch; the REVIEW → pill is the
                       visible discoverability cue (aria-hidden, pointer-
@@ -3320,7 +3384,12 @@ function Choose({
                   <span className="hv5-review-cue" aria-hidden="true">REVIEW →</span>
                 </>
               ) : deck.total > 0 ? (
-                <p>{REVIEW_DECK_COPY.pickerCaughtUp}</p>
+                <>
+                  <p>{REVIEW_DECK_COPY.pickerCaughtUp}</p>
+                  {/* Same reset entry as the due state (D10): visibility
+                      is deck total > 0, not due > 0. */}
+                  <ResetHistoryControl onReset={onResetHistory} />
+                </>
               ) : (
                 <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
               )}
@@ -3529,6 +3598,140 @@ function AtlasBackdrop() {
 }
 
 /**
+ * Locked player-facing copy for the "Start over" reset (manifest
+ * 2026-10-28 §4 — byte-exact; do not paraphrase, punctuate, or
+ * re-wrap in code or tests).
+ */
+const RESET_HISTORY_COPY = {
+  opener: "Start over",
+  title: "Start over?",
+  sub: "This clears your misses to practise again, every place you have seen or cleared, your learning growth, your GeoDetective streaks and solved cases, your Cold Trail case and stars, any game you left in the middle, and your score for today. Your badges stay. Your grown-up choices stay. This cannot be undone.",
+  confirm: "Yes, start over",
+  cancel: "Keep my history",
+  partial: "Some things could not be cleared. Try again.",
+} as const;
+
+/** The reset success toast (manifest 2026-10-28 §4, locked). */
+const RESET_HISTORY_SUCCESS_TOAST = "All cleared. You are starting fresh.";
+
+/**
+ * The reset entry point shared by both surfaces (home Review card and
+ * ReviewComplete): an opener button plus ONE role="alertdialog" confirm
+ * mirroring AgeProfileSettings — focus moves into the dialog on open,
+ * Esc means "no change", and focus returns to the opener on a
+ * no-change close. Nothing is deleted before the confirm. A partial
+ * failure keeps the dialog open with the locked partial line and the
+ * danger button becomes the retry; on success the opener unmounts with
+ * the wiped surface, so there is no focus return (the host shows the
+ * success toast instead).
+ */
+function ResetHistoryControl({
+  onReset,
+}: {
+  /** Run the reset; the result decides close-vs-retry. */
+  onReset: () => ResetHistoryResult;
+}) {
+  const [open, setOpen] = useState(false);
+  const [partial, setPartial] = useState(false);
+  const openerRef = useRef<HTMLButtonElement | null>(null);
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+
+  // Focus moves into the dialog when it opens (the AgeProfileSettings
+  // pattern) — this is also what lets the dialog's Esc handler fire.
+  useEffect(() => {
+    if (open) dialogRef.current?.focus({ preventScroll: true });
+  }, [open ]);
+
+  const closeWithoutChange = useCallback(() => {
+    setOpen(false);
+    setPartial(false);
+    const opener = openerRef.current;
+    if (opener && document.contains(opener)) {
+      // The dialog unmounts on the next paint — return focus after
+      // that, without scrolling the page (closeAgeSettings pattern).
+      requestAnimationFrame(() => {
+        if (document.contains(opener)) opener.focus({ preventScroll: true });
+      });
+    }
+  }, []);
+
+  const confirm = useCallback(() => {
+    const result = onReset();
+    if (result.failed.length > 0) {
+      // Honest partial failure (D4): stay open, name it, offer retry.
+      setPartial(true);
+      return;
+    }
+    setOpen(false);
+    setPartial(false);
+  }, [onReset]);
+
+  return (
+    <>
+      <button
+        type="button"
+        ref={openerRef}
+        className="reset-history-open"
+        data-testid="reset-history-open"
+        onClick={() => setOpen(true)}
+      >
+        {RESET_HISTORY_COPY.opener}
+      </button>
+      {/* The dialog renders through a portal at the document root (the
+          AgeProfileSettings placement): inside the review card, the
+          text column is a flex item with z-index 1, which caps the
+          dialog's own z-index below the sibling cards' stretch layers
+          — their buttons would paint and hit-test over the dialog. */}
+      {open
+        ? createPortal(
+            <div
+              role="alertdialog"
+              aria-modal="true"
+              aria-labelledby="reset-history-title"
+              className="agep-screen"
+              data-testid="reset-history-confirm"
+              ref={dialogRef}
+              tabIndex={-1}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") closeWithoutChange();
+              }}
+            >
+              <h1 id="reset-history-title" className="agep-h1">
+                {RESET_HISTORY_COPY.title}
+              </h1>
+              <p className="agep-sub">{RESET_HISTORY_COPY.sub}</p>
+              {partial ? (
+                <p className="agep-note" role="alert">
+                  {RESET_HISTORY_COPY.partial}
+                </p>
+              ) : null}
+              <div className="agep-actions">
+                <button
+                  type="button"
+                  className="agep-danger"
+                  data-testid="reset-history-confirm-clear"
+                  onClick={confirm}
+                >
+                  {RESET_HISTORY_COPY.confirm}
+                </button>
+                <button
+                  type="button"
+                  className="agep-ghost"
+                  data-testid="reset-history-cancel"
+                  onClick={closeWithoutChange}
+                >
+                  {RESET_HISTORY_COPY.cancel}
+                </button>
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
+    </>
+  );
+}
+
+/**
  * End of a review session: the due queue is exhausted. Bounded and
  * completable by design (ADHD-friendly). Cards answered correctly come
  * back later — further out every time; missed cards are due again right
@@ -3538,10 +3741,13 @@ function ReviewComplete({
   results,
   total,
   onDone,
+  onResetHistory,
 }: {
   results: PlaceResult[];
   total: number;
   onDone: () => void;
+  /** Present only when the deck still holds cards (fresh read, D16). */
+  onResetHistory?: () => ResetHistoryResult;
 }) {
   const remembered = results.filter((r) => r.hit).length;
   return (
@@ -3561,8 +3767,9 @@ function ReviewComplete({
             ? "Each card comes back later — further out every time you get it right."
             : "The ones you missed are due again right away. One more round locks them in."}
       </p>
-      <div className="mt-6">
+      <div className="mt-6 flex flex-col items-start gap-3">
         <Button onClick={onDone}>{REVIEW_DECK_COPY.backToEditions}</Button>
+        {onResetHistory ? <ResetHistoryControl onReset={onResetHistory} /> : null}
       </div>
     </main>
   );
@@ -3692,6 +3899,7 @@ function Play({
   onSummaryDone,
   onReplayed,
   onReviewDeck,
+  onResetHistory,
   onCleared,
   celebrationOpen,
   tutorial,
@@ -3728,6 +3936,8 @@ function Play({
   onReplayed: (run: Run) => void;
   /** "Review my misses" from the end-game summary. */
   onReviewDeck: () => void;
+  /** Run the "Start over" history reset (GameApp owns the flow). */
+  onResetHistory: () => ResetHistoryResult;
   /** A difficulty band was just cleared: show the celebration dialog. */
   onCleared: (info: ClearedInfo) => void;
   /**
@@ -3926,6 +4136,7 @@ function Play({
       onSummaryDone={onSummaryDone}
       onReplayed={onReplayed}
       onReviewDeck={onReviewDeck}
+      onResetHistory={onResetHistory}
       onCleared={onCleared}
       celebrationOpen={celebrationOpen}
       reviewEntries={reviewEntries}
@@ -3952,6 +4163,7 @@ function PlayLoaded({
   onSummaryDone: finishSummary,
   onReplayed,
   onReviewDeck,
+  onResetHistory,
   onCleared,
   celebrationOpen,
   reviewEntries,
@@ -3988,6 +4200,8 @@ function PlayLoaded({
   onCleared: (info: ClearedInfo) => void;
   /** "Review my misses" from the end-game summary. */
   onReviewDeck: () => void;
+  /** Run the "Start over" history reset (GameApp owns the flow). */
+  onResetHistory: () => ResetHistoryResult;
   /**
    * Whether the cleared-mode celebration dialog is open. The M5 Escape
    * handler yields while it is open so one Escape press dismisses only
@@ -4806,11 +5020,27 @@ function PlayLoaded({
     [learningEnabled, run.phase],
   );
 
+  // "Start over" entry on ReviewComplete (manifest 2026-10-28, D16):
+  // its visibility derives from a FRESH deck read at this render — not
+  // from the home reset epoch and not from deck state threaded down —
+  // so a reset performed on this screen hides the control at once, and
+  // total={pool.length} below stays the review-queue total it has
+  // always been.
+  const reviewDeckTotal =
+    review && run.index >= pool.length
+      ? deckCounts(readReviewDeck() ?? emptyReviewDeck(), Date.now()).total
+      : 0;
+
   // Review session complete: the due queue is exhausted. A bounded,
   // completable session — ADHD-friendly — never the endless run.
   if (review && run.index >= pool.length) {
     return (
-      <ReviewComplete results={run.results} total={pool.length} onDone={onEditions} />
+      <ReviewComplete
+        results={run.results}
+        total={pool.length}
+        onDone={onEditions}
+        onResetHistory={reviewDeckTotal > 0 ? onResetHistory : undefined}
+      />
     );
   }
   if (challenge && (run.index >= pool.length || run.phase === "summary")) {

@@ -43,6 +43,10 @@ Points follow scoring v3: a distance-based base (MapTap's curve) multiplied by t
 
 The edition picker asks "How do you want to grow your map today?" — three learning paths, not gamer difficulty. **Easy** deals famous places (tiers 1–2), the must-know spots every explorer starts with: world-famous cities and capitals, the curriculum core. **Medium** (tiers 2–4) mixes the familiar with the thought-provoking. **Hard** (tiers 4–5) opens the hidden corners of the world — small towns and neighborhoods most people have never heard of — for explorers ready to discover more. Within your path, famous places deal first: the mental map gets built before the obscure places attach to it. On Easy that rule is strict: the pool is hand-curated starters plus tier-1 places with a verified history hook, falling back to all tier-1 places and then the full 1–2 band only when a region is too small to fill a run (`src/game/easy-curation.ts`). The hero's **Begin exploring** button starts a Globe expedition at the path you picked — it no longer just scrolls the page. Your choice persists across editions and reloads; switching paths starts a fresh run.
 
+### Start over
+
+Every miss lands in a review deck on the edition picker, so you can practise the places that beat you — and the deck only ever grows. When it gets too big, or you simply want a clean slate, **Start over** (on the review card and the review-complete screen, behind a confirm that lists exactly what goes) wipes your game history: the deck, your learning growth, the places the game remembers you have seen, your GeoDetective and Cold Trail progress, today's score, and any game left half-finished. Your badges and settings stay. And because the game forgets what you've seen, familiar places can be dealt again — a true fresh start.
+
 The share line carries the trail, not just a number:
 
 ```

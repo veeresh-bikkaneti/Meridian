@@ -514,11 +514,46 @@ export function writeSession(session: Session): void {
   }
 }
 
-export function clearSession(): void {
+type SessionStorageLike = {
+  getItem(key: string): string | null;
+  setItem(key: string, value: string): void;
+  removeItem(key: string): void;
+};
+
+/**
+ * Drop the persisted session. With no argument this keeps the original
+ * behaviour (the global sessionStorage, errors swallowed — the in-memory
+ * copy is dropped by the caller too). The "Start over" reset passes its
+ * injected storage and reads the return value: removal follows
+ * resetProfile()'s precedent (on failure, overwrite with the empty
+ * value — "" reads back as no session, since readSession fails closed
+ * on an empty payload), and true is returned only when a re-read proves
+ * the key is gone or emptied.
+ */
+export function clearSession(target?: SessionStorageLike): boolean {
+  let s = target;
+  if (!s) {
+    try {
+      s = typeof sessionStorage === "undefined" ? undefined : sessionStorage;
+    } catch {
+      s = undefined;
+    }
+  }
+  if (!s) return true; // No storage = nothing was ever persisted.
   try {
-    sessionStorage.removeItem(SESSION_KEY);
+    s.removeItem(SESSION_KEY);
   } catch {
-    // Already gone or storage blocked; the in-memory copy is dropped too.
+    try {
+      s.setItem(SESSION_KEY, "");
+    } catch {
+      // Both paths blocked; the verification below reports it.
+    }
+  }
+  try {
+    const raw = s.getItem(SESSION_KEY);
+    return raw === null || raw === "";
+  } catch {
+    return false;
   }
 }
 
