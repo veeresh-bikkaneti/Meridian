@@ -43,7 +43,8 @@
 - [x] Stage 4 — Part 1 build (Layer-2 RED recorded below → unit
   GREEN; E2E has two named open items carried to Stage 5 — see
   "Part 1 E2E state at commit 2" below)
-- [ ] Stage 5 — all 5 AGENTS.md gates on the final tip
+- [x] Stage 5 — all 5 AGENTS.md gates on the final tip (see Gate
+  record below)
 - [ ] Stage 6 — full panel (12 seats + DevEx) on the final tip
 - [ ] Stage 7 — PR opened (no merge)
 
@@ -142,6 +143,56 @@
   bytes, 2026-10-28 18:22 UTC) but predates the final Part 1 build
   (the dialog portal fix was built later) and its provenance was not
   verified in this run — retake at Stage 5 on the final tip.
+
+## Gate record (Stage 5, coordinator-run on tip af30b09 + test cures)
+
+- `npx tsc --noEmit` — exit 0.
+- `npm test` — exit 0 (scripts 850 pass / 0 fail; src 1774 pass / 0
+  fail — +21 new tests over the 1753 base).
+- `npm run test:worker` — exit 0.
+- `node scripts/lint-cards.mjs` — GATE PASSED, exit 0.
+- `npm run build:pages` — exit 0. Benchmark: entry chunk
+  `index-*.js` = 445,738 B vs main baseline 445,718 B → **+20 B**
+  (flat; no benchmark regression). Rebuilt with the E2E-required
+  `VITE_KOFI_URL` inlined: 445,900 B (+182 B vs baseline — the URL
+  string; still flat).
+- E2E reset-history: builder's clean single pass was 4/6; the two
+  failures were diagnosed at Stage 5 as TEST defects, cured in the
+  spec (product code untouched):
+  1. Reload proof — the flow waited for Home while the seeded
+     `meridian.coldtrail.open=1` correctly routed the app to Cold
+     Trail (precedence loop > coldtrail > home). Cure: leave Cold
+     Trail via "← All games" (clears its flag) before the home
+     wait; landing on Cold Trail is now asserted as proof the
+     second flag was live.
+  2. TrailScreen entry — the final read-back demanded a persisted
+     `meridian.coldtrail.v2`, but `loadColdtrail()` returns a fresh
+     store WITHOUT persisting it (only the v1-migration path
+     saves), so absence is the correct wiped state. Cure: read-back
+     accepts null OR a fresh store (caseIndex 0 / solved 0 /
+     current null) — a resurrected seed still fails.
+- E2E reset-history on the cured spec: **single pass 6/6 (2.2m)**;
+  **`--repeat-each=10`: 59 passed / 1 failed (25.7m)** — the one
+  failure is the ReviewComplete test hitting the 240s test timeout
+  on a `locator.evaluate` under box load; the same test passed in
+  22.7s in the clean pass and in 9 of its 10 repeats. Recorded as a
+  load flake, not an assertion failure.
+- E2E card-redesign on the final tip: **11 passed (5.1m), exit 0**
+  — includes the Part 2 non-overlap tests and the D9 tap-anywhere
+  cure (focusable count 2 with the opener present).
+- E2E mobile-home-overlap on the final tip: 6 passed / 20 failed
+  (7.7m) — **the Part 2 cue tests pass at 360px and 390px**; all 20
+  failures are the (a)/(a2)/(b)/(b2)/(d) groups that fail
+  identically at base under this box's load (Stage 3 attribution).
+  (First attempt was a harness error — the spec requires
+  `VITE_KOFI_URL` in env; the recorded run has it.)
+- Screenshot: `evidence/part2-after-390.png` RETAKEN on the final
+  tip (coordinator, due seed, 390×844): REVIEW pill top-right clear
+  of the illustration, and the new "Start over" opener visible
+  under the due count. (evidence/ is untracked; paths cited in the
+  PR body point at the run report.)
+- Fresh CI read happens at PR time (CI runs on PRs, not branch
+  pushes — verified empty).
 
 ## Carried dissents / open questions
 

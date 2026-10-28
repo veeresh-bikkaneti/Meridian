@@ -346,10 +346,14 @@ test("reload proof: wiped open flags do not auto-open an edition after reload", 
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 20_000,
   });
-  // Leave GeoDetective for Home (leaving clears the loop flag itself),
-  // then put BOTH open flags back in storage so they are present at the
-  // moment the reset runs — the reset is what must remove them.
+  // Leave GeoDetective (leaving clears the loop flag itself). The
+  // seeded coldtrail flag is still live, so the app routes to Cold
+  // Trail next — GameApp's precedence is loop > coldtrail > home;
+  // landing there is itself proof the second flag was live. Leave it
+  // too ("← All games" clears its flag), then Home renders.
   await page.getByRole("button", { name: "Editions" }).click();
+  await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 20_000 });
+  await page.getByRole("button", { name: "← All games" }).click();
   await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
   await expect(page.getByTestId("deck-due-count")).toHaveText("1 card due");
   await page.evaluate(() => {
@@ -517,11 +521,19 @@ test("TrailScreen entry after reset: fresh case, fresh star wallet", async ({ pa
   await expect(page.getByTestId("sighting-card")).toHaveCount(3, { timeout: 30_000 });
   // Fresh wallet: the seeded 7 stars / case 4 / 2 solves are gone.
   await expect(page.getByTestId("coldtrail-stars")).toHaveText("⭐ 2");
+  // Storage read-back: loadColdtrail() returns a fresh store WITHOUT
+  // persisting it (src/game/coldtrail/store.ts — only the v1 migration
+  // path saves), so after a wipe the key is legitimately absent until
+  // the first case action saves. Absence IS the wiped state; if a
+  // store IS present it must be the fresh one — a resurrected seed
+  // (case 4 / 2 solves / 7 stars) fails here.
   const stored = await page.evaluate(() => {
     const raw = localStorage.getItem("meridian.coldtrail.v2");
     return raw ? JSON.parse(raw) : null;
   });
-  expect(stored).not.toBeNull();
-  expect(stored.caseIndex).toBe(0);
-  expect(stored.solved).toBe(0);
+  if (stored !== null) {
+    expect(stored.caseIndex).toBe(0);
+    expect(stored.solved).toBe(0);
+    expect(stored.current).toBeNull();
+  }
 });
