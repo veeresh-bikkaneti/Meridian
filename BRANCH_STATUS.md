@@ -2,7 +2,7 @@
 
 **Branch:** `feat/high-contrast-view`
 **Base:** `main` at `daa03ad028252060d57a5c83ee35aef8e988a1fe` (merge-base = base; no rebase needed)
-**State: BUILT + CURED. Original build gates green on code-final tip `ce95ac3` (2026-10-27); panel returned NOT READY (BLOCKs 1–4); cure round (owner order 2026-10-28) gates green on cured code tip `bd82e56`. This status commit is the only later change. Not merged — merge is the owner's word, after the panel approves the final tip (the cured tip returns to the panel for a re-vote).**
+**State: MERGED 2026-10-28 (squash `d39bc3e`, PR #275) on the owner's word, after the cure-round panel re-vote approved the final tip `c68e3f6` (READY, 0 BLOCKs, DevEx PASS-WITH-NITS). This file's branch record is now historical; main's live status is tracked per-branch as new work opens.**
 
 ## Scope
 
