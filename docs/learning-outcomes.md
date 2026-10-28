@@ -494,8 +494,8 @@ paused game offers no Resume.
 result is reported honestly (`resetHistory()` returns the cleared
 and failed stores, then re-reads the deck, the learning records,
 and the session to check they are really gone — the no-repeat
-marks, GeoDetective, and Cold Trail verify inside their own
-clear functions).
+marks, GeoDetective, Cold Trail, and the paused run verify
+inside their own clear functions).
 If any store cannot be cleared, the dialog stays open with "Some
 things could not be cleared. Try again." and no success toast
 fires. Where a store has an empty value, a store that refuses

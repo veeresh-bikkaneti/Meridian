@@ -23,11 +23,18 @@
   PASS-WITH-NITS "F1 CURED: yes"; record
   `~/workspace/meridian-reset/REVOTE-281.md`). The owner then
   ordered the re-vote's convergent §12 mechanism nit cured first
-  (2026-10-28, "Fix the §12 sentence first"); this commit rewrites
-  that paragraph's mechanism sentences to match the shipped code
-  exactly, and a third panel vote on the new tip follows (record:
-  `~/workspace/meridian-reset/REVOTE2-281.md`). NO MERGE — the
-  owner merges on his per-PR word.
+  (2026-10-28, "Fix the §12 sentence first"); that commit rewrote
+  the paragraph's mechanism sentences to match the shipped code
+  exactly, and the third panel vote on cured tip `fbbc506`
+  returned READY (10 APPROVE / 2 APPROVE-WITH-NITS / 0 BLOCK,
+  DevEx PASS; record `~/workspace/meridian-reset/REVOTE2-281.md`).
+  Vote 3's one new finding — the §12 re-read sentence enumerated
+  6 of the composer's 7 steps, omitting the paused run, an
+  omission this file's Stage 10 summary repeated — is cured by
+  this commit on the owner's order (2026-10-28, "Complete the
+  enumeration first"), and a fourth panel vote on the new tip
+  follows (record: `~/workspace/meridian-reset/REVOTE3-281.md`).
+  NO MERGE — the owner merges on his per-PR word.
 - **Task:** owner's words 2026-10-28 — "reset means now game remembers
   how many i missed, soon it will become huge, I want game allowing
   user to reset the past misses, so i can reset and start over
@@ -76,15 +83,28 @@
   paragraph, F3 wording correction in this file — docs-only commit
   `9836255`; full panel re-vote on the cured tip returned READY
   (record: `~/workspace/meridian-reset/REVOTE-281.md`)
-- [ ] Stage 10 — §12 mechanism-sentence cure (owner's call
+- [x] Stage 10 — §12 mechanism-sentence cure (owner's call
   2026-10-28: "Fix the §12 sentence first"): the Partial failure
   paragraph's re-read and empty-value-fallback sentences rewritten
   to state each store class's behaviour exactly (cleared-place
   marks and the paused-run pair have no empty value and fail;
-  deck/learning/session are re-read by the composer, the rest
-  verify inside their owner clears) — docs-only commit; third
-  panel vote on the new tip follows (record:
+  deck/learning/session are re-read by the composer; the
+  no-repeat marks, GeoDetective, and Cold Trail verify inside
+  their owner clears, and the paused run verifies inside its
+  own clear in the composer, its keys having no owner module) —
+  docs-only commit `fbbc506`; third panel vote on that tip
+  returned READY (record:
   `~/workspace/meridian-reset/REVOTE2-281.md`)
+- [ ] Stage 11 — enumeration-completion cure (owner's call
+  2026-10-28: "Complete the enumeration first"): vote 3's one
+  new finding — the §12 re-read sentence named 6 of the
+  composer's 7 steps, omitting the paused run, and the Stage 10
+  summary above repeated the omission — cured in both places;
+  the enumeration now matches the code's step list
+  (`src/game/reset-history.ts:113-121`: review-deck, learning,
+  trail, geodetective, coldtrail, session, paused-run) —
+  docs-only commit; fourth panel vote on the new tip follows
+  (record: `~/workspace/meridian-reset/REVOTE3-281.md`)
 
 ## Part 2 record (Stage 3)
 
