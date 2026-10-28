@@ -3585,6 +3585,9 @@ function ChallengeComplete({
     challengeHash && typeof window !== "undefined"
       ? `${window.location.origin}${window.location.pathname}${challengeHash}`
       : "";
+  // The re-share text, built once so the button and its failure fallback
+  // below can never drift apart.
+  const challengeText = `Play the same ${total} places on the Globe! I scored ${run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US")}.\n${challengeUrl}`;
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
       <p className="text-sm tracking-wide text-muted uppercase">
@@ -3601,10 +3604,20 @@ function ChallengeComplete({
           <div data-testid="challenge-share-container" data-challenge-url={challengeUrl}>
             <ShareButton
               title="Meridian friend challenge"
-              text={`Play the same ${total} places on the Globe! I scored ${run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US")}.\n${challengeUrl}`}
+              text={challengeText}
               url={challengeUrl}
               label={CHALLENGE_SHARE_LABEL}
               className="w-full"
+              failureFallback={
+                // If the share sheet and the clipboard both fail, the
+                // button says "Copy manually" — the link has to be
+                // somewhere visible to copy, or that state is a dead
+                // end. Same selectable-text block the GeoDetective
+                // share uses on themed surfaces.
+                <pre className="whitespace-pre-wrap rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+                  {challengeText}
+                </pre>
+              }
             />
           </div>
         ) : null}
