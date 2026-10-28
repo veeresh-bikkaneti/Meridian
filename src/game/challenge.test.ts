@@ -99,7 +99,7 @@ test("playOrder copies ids and does not mutate the decoded list", () => {
   if (!decoded.ok) return;
   const order: string[] = playOrder(decoded);
   assert.deepEqual(order, [...GOLDEN_IDS]);
-  order.push("gn-99");
+  (order as string[]).push("gn-99");
   assert.deepEqual(decoded.ids, [...GOLDEN_IDS]);
 });
 
