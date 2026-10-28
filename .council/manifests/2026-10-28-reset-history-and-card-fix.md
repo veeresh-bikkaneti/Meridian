@@ -63,7 +63,7 @@ likes the game set up. The owner's ask deletes history, not setup.
 | GeoDetective store `meridian.loop.v2` | `src/loop/store.ts` | **CLEARED** | Mysteries played, streaks, solved set — play history. |
 | GeoDetective open flag `meridian.loop.open` | `src/loop/store.ts` / game-app boot | **CLEARED** | A pointer into the wiped store; a kept flag auto-opens a fresh mystery on next boot instead of landing home. |
 | Cold Trail store `meridian.coldtrail.v2` | `src/coldtrail/store.ts` | **CLEARED** | Cases, stars, streaks — play history. |
-| Cold Trail legacy `meridian.coldtrail.v1` | `src/coldtrail/store.ts:181-189` (migrates into v2 on load) | **CLEARED, removed BEFORE v2** | A surviving v1 key resurrects the whole store on next load. |
+| Cold Trail legacy `meridian.coldtrail.v1` | `src/game/coldtrail/store.ts:181-189` (migrates into v2 on load) | **CLEARED, removed BEFORE v2** | A surviving v1 key resurrects the whole store on next load. |
 | Cold Trail open flag `meridian.coldtrail.open` | game-app boot | **CLEARED** | Same pointer rule as the loop flag. |
 | Session score `meridian.session` (sessionStorage) | `src/game/session.ts` (`clearSession()` exists) | **CLEARED** | Score/places/streak banked this session are game history; a reset that leaves the 500 points banked is a false "start over". Storage clear + in-memory reset via `replaceSession(null)` (D15). |
 | Saved run `meridian.run` (sessionStorage) | `src/game/session.ts` / boot | **CLEARED** (D13) | A paused run is in-progress play history: its stored results re-seed the session via `seedSessionFromRun` when the edition is reopened, resurrecting the "cleared" score. "Start over" discards it; no Resume is offered after a reset. |

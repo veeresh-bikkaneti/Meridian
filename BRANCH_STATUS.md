@@ -32,8 +32,17 @@
   6 of the composer's 7 steps, omitting the paused run, an
   omission this file's Stage 10 summary repeated — is cured by
   this commit on the owner's order (2026-10-28, "Complete the
-  enumeration first"), and a fourth panel vote on the new tip
-  follows (record: `~/workspace/meridian-reset/REVOTE3-281.md`).
+  enumeration first"), and the fourth panel vote on cured tip
+  `a18bd22` returned READY (5 APPROVE / 7 APPROVE-WITH-NITS /
+  0 BLOCK, DevEx PASS-WITH-NITS; record
+  `~/workspace/meridian-reset/REVOTE3-281.md`). Vote 4's one
+  convergent nit — this file's Stage 11 line cited the step
+  list as `reset-history.ts:113-121` where the measured span
+  is `:95-103` — is cured by this commit on the owner's order
+  (2026-10-28, "Cure the locator first"), together with the
+  manifest path typo the same sweep found, and a fifth panel
+  vote on the new tip follows (record:
+  `~/workspace/meridian-reset/REVOTE4-281.md`).
   NO MERGE — the owner merges on his per-PR word.
 - **Task:** owner's words 2026-10-28 — "reset means now game remembers
   how many i missed, soon it will become huge, I want game allowing
@@ -95,16 +104,28 @@
   docs-only commit `fbbc506`; third panel vote on that tip
   returned READY (record:
   `~/workspace/meridian-reset/REVOTE2-281.md`)
-- [ ] Stage 11 — enumeration-completion cure (owner's call
+- [x] Stage 11 — enumeration-completion cure (owner's call
   2026-10-28: "Complete the enumeration first"): vote 3's one
   new finding — the §12 re-read sentence named 6 of the
   composer's 7 steps, omitting the paused run, and the Stage 10
   summary above repeated the omission — cured in both places;
   the enumeration now matches the code's step list
-  (`src/game/reset-history.ts:113-121`: review-deck, learning,
+  (`src/game/reset-history.ts:95-103`: review-deck, learning,
   trail, geodetective, coldtrail, session, paused-run) —
-  docs-only commit; fourth panel vote on the new tip follows
-  (record: `~/workspace/meridian-reset/REVOTE3-281.md`)
+  docs-only commit `a18bd22`; fourth panel vote on that tip
+  returned READY (5 APPROVE / 7 APPROVE-WITH-NITS / 0 BLOCK,
+  DevEx PASS-WITH-NITS; record:
+  `~/workspace/meridian-reset/REVOTE3-281.md`)
+- [ ] Stage 12 — line-locator cure (owner's call 2026-10-28:
+  "Cure the locator first"): vote 4's one convergent nit —
+  the Stage 11 line above cited the step list as
+  `reset-history.ts:113-121`; the measured span is `:95-103`
+  (entries :96-102) — cured in this commit, which also fixes
+  the same sweep's one other measurably-wrong locator (the
+  manifest's `src/coldtrail/store.ts` path →
+  `src/game/coldtrail/store.ts`, range :181-189 verified);
+  docs-only commit; fifth panel vote on the new tip follows
+  (record: `~/workspace/meridian-reset/REVOTE4-281.md`)
 
 ## Part 2 record (Stage 3)
 
