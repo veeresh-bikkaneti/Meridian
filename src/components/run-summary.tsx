@@ -81,6 +81,11 @@ export function RunSummaryCard(props: {
     const decoded = decodeChallenge(challengeUrl.slice(hashAt), SCORING_VERSION);
     return decoded.ok ? decoded.ids.length : CHALLENGE_MIN_PLACES;
   })();
+  // The challenge share text, built once so the button and its failure
+  // fallback below can never drift apart.
+  const challengeText = challengeUrl
+    ? `Play the same ${challengePlaceCount} places on the Globe!\n${challengeUrl}`
+    : "";
   // Breakdowns render from the same summary object the share text uses —
   // unplayed difficulty modes are omitted (never shown as 0%), and region
   // names come from the session verbatim.
@@ -287,10 +292,20 @@ export function RunSummaryCard(props: {
             <div data-testid="challenge-share-container" data-challenge-url={challengeUrl}>
               <ShareButton
                 title="Meridian friend challenge"
-                text={`Play the same ${challengePlaceCount} places on the Globe!\n${challengeUrl}`}
+                text={challengeText}
                 url={challengeUrl}
                 label={CHALLENGE_SHARE_LABEL}
                 className="w-full"
+                failureFallback={
+                  // If the share sheet and the clipboard both fail, the
+                  // button says "Copy manually" — the link has to be
+                  // somewhere visible to copy, or that state is a dead
+                  // end. Same selectable-text block as the score share
+                  // above.
+                  <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-left font-sans text-sm leading-relaxed text-white">
+                    {challengeText}
+                  </pre>
+                }
               />
             </div>
           ) : null}

@@ -1,124 +1,115 @@
-# BRANCH_STATUS — feat/challenge-v1 (P0-1 Stateless Friend Challenges)
+# BRANCH_STATUS — fix/pre-flip-challenge-hardening
 
-- **Branch:** `feat/challenge-v1` (PR #274)
-- **Base:** `origin/main` at `d39bc3e` (2026-10-28 — PR #275 high-contrast merged; this branch was rebased onto it: one `BRANCH_STATUS.md` conflict, resolved by whole-file supersession, no other conflicts; every branch-owned file verified byte-identical to its pre-rebase version)
-- **State:** **MERGED 2026-10-28 (squash `a812c59`, PR #274) on the owner's word. Final panel re-vote on tip `bb5fc1c`: READY (1 APPROVE / 11 APPROVE-WITH-NITS / 0 BLOCKs, DevEx PASS-WITH-NITS); all 5 mandatory gates green on the final tip and full CI (22.x) green on that exact SHA. `friendChallenges` ships OFF; the pre-flag-flip follow-up list (share `failureFallback`, notice×resume test, `w:1` design call) is recorded in the cure reports. This file's branch record is now historical.**
-- **Task ID:** `P0-1` — Stateless `#c=mc1.<base64url>` Globe Friend Challenges (`friendChallenges`, default `false`)
-
----
-
-## 1. What Was Delivered on `feat/challenge-v1`
-
-1. **Pure Challenge Codec & Dealer (`src/game/challenge.ts` + `src/game/challenge.test.ts`):**
-   - Browser-native base64url encoding/decoding (`TextEncoder` + `btoa` and `atob` + `TextDecoder("utf-8", { fatal: true })`) with **zero Node.js `Buffer` dependency** (verified by unit test with `globalThis.Buffer = undefined`).
-   - Strict canonical base64url validation (`/^[A-Za-z0-9_-]+$/`, `length % 4 !== 1`, and canonical zero trailing padding bits for `length % 4 === 2` and `length % 4 === 3`) returning `{ ok: false, reason: "format" }` on mutated trailing bits.
-   - Input guards: `encodeChallenge(ids, scoringVersion)` throws `RangeError("invalid scoringVersion")` when `!Number.isSafeInteger(scoringVersion) || scoringVersion < 1`; `dealChallenge(entries, count, seed)` returns `[]` for non-positive or non-safe-integer `count`.
-   - Frozen constants exported from `src/game/challenge.ts`:
-     - `CHALLENGE_GLOBE_RADIUS_KM = 750` (750 km pin radius freeze, bypassing age-band `pinToleranceKm` scaling)
-     - `CHALLENGE_REGION_ID = "challenge"`
-     - `CHALLENGE_REGION_NAME = "Friend challenge"`
-     - `CHALLENGE_MIN_PLACES = 5`, `CHALLENGE_MAX_PLACES = 10`
-     - `CHALLENGE_SHARE_LABEL = "Share this route with a friend"`
-2. **Feature Flag Registration (`src/lib/flags.ts`, `src/lib/flags.test.ts`, `public/flags.json`, `docs/feature-flags.md`):**
-   - `friendChallenges: false` registered in `FLAG_DEFAULTS` and `public/flags.json`, documented in `docs/feature-flags.md`.
-3. **Runtime Wiring, 750 km Pin Freeze & Store Isolation (`src/components/game-app.tsx`, `src/components/run-summary.tsx`):**
-   - **Boot hash handling (`#c=...` / `#c`):**
-     - Immediately strips `#c=...` from the URL via `window.history.replaceState(null, "", window.location.pathname + window.location.search)` — synchronously, before any async work.
-     - **Fall-through boot (cure round, 2026-10-28):** the saved-run boot is a named `bootSavedRun()` inside the boot effect, and every `#c=` failure exit falls through to it instead of ending the boot. **Flag OFF (`friendChallenges: false`, default):** the boot is exactly main's boot — a resumable saved run resumes (a saved challenge run is cleared by that same path, as before); no notice is shown; `[data-testid="challenge-share-container"]` stays hidden in `RunSummaryCard`. **Flag ON:** decode failure, unknown ID, and Globe-catalog load failure set the boot notice (Home shows `CHALLENGE_CHILD_COPY`, "Could not load this challenge.", in a `role="status"` region, `data-testid="challenge-boot-notice"`) and then fall through to `bootSavedRun()` too, so a broken link never costs the player a saved run.
-     - **Flag ON, valid link (`friendChallenges: true`):** Decodes `#c=mc1...` against `SCORING_VERSION`, verifies every ID exists in the full Globe catalog (`placesFor("globe", "globe", undefined, false)`), and starts a deterministic Globe challenge run (`regionId: "challenge"`) in `playOrder(decoded)` sequence.
-   - **750 km Globe radius freeze:** Challenge runs always use `CHALLENGE_GLOBE_RADIUS_KM` (`750`) for both `variation.radiusKm` and `onConfirm` hit evaluation, regardless of age-band profile settings.
-   - **Complete store isolation:** Challenge runs (`isChallengeRun(run)`) never call `ensureSession`, never bank to `meridian.session`, never write to `meridian:learning:v1` or `meridian:review-deck:v1`, and use `memorySeenStore()` so `meridian:seen:v2:` no-repeat history is never touched.
-   - **Completion & Share UI:** Finishing a challenge renders `<ChallengeComplete>` (`data-testid="challenge-complete"`) with warm, ~10-year-old reading-age copy and `<ShareButton label="Share this route with a friend" />` inside `data-testid="challenge-share-container"` (`data-challenge-url` `< 2000` chars). Normal Globe runs also expose the challenge share button on `RunSummaryCard` when `friendChallenges` is `true`.
-4. **Playwright E2E Spec (`tests/e2e/friend-challenge.desktop.spec.ts`) & Docs (`README.md`, `docs/feature-flags.md`):**
-   - 7 desktop E2E tests pinning both flag states (`friendChallenges: false` and `friendChallenges: true`), corrupt/unknown-ID boot notice (flag ON) vs silence (flag OFF), saved-run fall-through in both flag states, a behavioural 750 km pin-freeze pair (pin judged 608.4 km = hit; 809.8 km = miss — the miss is seeded with a 5–7 age profile whose band tolerance is 1125 km, so the pair proves the freeze itself and not just the number; mutation-verified: removing the `onConfirm` freeze flips the seeded miss to a hit), 5-place deterministic sequence, store isolation (with a seeded-sentinel control proving the `meridian:seen:v2:` scan is live), and `< 2000`-char share link.
-   - Added one truthful `Friend challenge` row to the MapTap comparison table in `README.md`.
+- **Branch:** `fix/pre-flip-challenge-hardening`
+- **Base:** `origin/main` at `ab21c1c` (2026-10-28 — PRs #274 friend challenges, #275 high-contrast, #277 status record all merged)
+- **State:** ROUND-2 CURE COMPLETE — panel round 1 returned NOT READY (3 BLOCKs, one root cause: the new fallback `<pre>`s did not wrap the challenge URL — §3). The wrap cure is implemented with RED→GREEN evidence (§2), all gates re-run green on the cured tip `f8d3495` (§3), and CI is green on that exact tip. Panel re-vote on the cured tip is the next step; merges and the flag flip wait on its READY verdict under the owner's renewed authorization (2026-10-28): "Finish it: cure the wrap, re-vote, merge, flip, verify live".
+- **Task:** Pre-flag-flip hardening for `friendChallenges` (PR #274 follow-up list, `CURE-274-FINAL.md` Remaining items 2, 1, 3). Owner's order (2026-10-28): "Flip friend challenges ON — pre-flip fix first, then the flag". This branch is the "pre-flip fix first" half; the flag flip itself is a separate follow-up PR (`chore/flip-friend-challenges`) that ships only if this PR's panel verdict is READY and it merges.
+- **Out of scope (owner's design call, untouched):** Remaining item 4 — `w:1` fame flattening at the share deal site.
 
 ---
 
-## 2. Review record
+## 1. What this branch changes
 
-An earlier version of this section quoted Coordinator A and Coordinator B
-"APPROVE" verdicts with no citation to any review record. Those quotes were
-**deleted in the 2026-10-28 cure round** (records rule: an approval claim
-without a citation to the owner's or a reviewer's actual words does not
-stand). The authoritative review record for this PR is the full-pipeline
-report `PIPELINE-274` (panel verdict on tip `a00cf3a`: NOT READY — 2 BLOCKs
-+ DevEx FAIL), and the cure round it ordered. The cured tip returns to the
-panel for a fresh re-vote before any merge word.
+1. **Share-failure fallback on both challenge ShareButtons (Remaining item 2 — must-fix before flag flip).**
+   Neither challenge share button passed `failureFallback`, so when the share sheet and the
+   clipboard both failed, the button read "Copy manually" while the challenge URL existed
+   nowhere visible — a dead end. Both now render the selectable-text fallback the app already
+   uses for its other shares:
+   - `src/components/run-summary.tsx` — the summary's share-a-challenge button gets the same
+     `<pre>` block (same classes) as the score share directly above it; the share text is built
+     once into `challengeText` so button and fallback can never drift apart.
+   - `src/components/game-app.tsx` — `ChallengeComplete`'s re-share button gets the themed
+     `<pre>` block (the GeoDetective share's classes); its text is likewise built once into
+     `challengeText`.
 
-**Re-vote on the cured tip `53d4f36` (2026-10-28):** panel **0 BLOCKs**
-(1 APPROVE, 11 APPROVE-WITH-NITS) — both round-1 BLOCK owners (Senior
-Architect, UX Researcher) withdrew their BLOCKs on the cured diff — but
-**DevEx FAIL**: the `friendChallenges` prose in `docs/feature-flags.md`
-(added by this PR's own earlier doc cure) still described the pre-cure
-boot and never mentioned the flag-on notice or the fall-through. The
-Level Architect also showed the pin pair proved the absolute 750 km but
-not the freeze vs band scaling (an unset profile's ×1.0 band misses at
-800 km either way), and the hit test's comment had the band tolerances
-inverted.
+2. **E2E: notice × resume combination pinned (Remaining item 1).**
+   New test in `tests/e2e/friend-challenge.desktop.spec.ts`: flag ON + corrupt `#c=` link +
+   a resumable saved run → the run resumes, the boot notice is absent for the whole run and
+   the summary screen, and it surfaces on return Home with `CHALLENGE_CHILD_COPY` in its
+   `role="status"` region (deferred, not lost — exactly the behaviour the cure record
+   described; no production code change was needed).
 
-**Final cure (owner's order, 2026-10-28: "Merge #275, and run #274's
-final docs cure + re-vote"):** (a) the `docs/feature-flags.md` paragraph
-rewritten to describe the cured boot exactly; (b) the `challenge.ts`
-comment interval corrected to [0, 1); (c) the 800 km miss test now seeds
-a 5–7 profile (band tolerance 1125 km) and both pair comments state the
-discrimination honestly — mutation-verified (freeze removed → the seeded
-miss judges hit=true and the test fails); (d) this record. The branch was
-then rebased onto `origin/main` `d39bc3e` (PR #275 merged): one
-`BRANCH_STATUS.md` conflict resolved by whole-file supersession, every
-branch-owned file verified byte-identical to its pre-rebase version, and
-`game-app.tsx` carrying both this branch's boot work and #275's
-high-contrast toggle. Full record: `CURE-274-FINAL`.
+3. **E2E hardening: seeded-profile readback (Remaining item 3).**
+   `seedYoungBandProfile`'s catch comment claimed a blocked `setItem` makes the seeded test
+   fail; the truth is the opposite (unset profile = x1.0 band = the 800 km pin misses either
+   way, so the freeze test would pass vacuously). The comment now says so, and the new
+   `expectSeededYoungBand` readback asserts the seeded `meridian.ageProfile.v1` parses back
+   with band `"5-7"` inside the 800 km miss test.
 
-## 3. Verbatim Gate Results
+4. **Round-2 cure: the fallbacks wrap (panel round-1 BLOCK).**
+   Both new `<pre>`s carried `whitespace-pre-wrap` but no `overflow-wrap`, so the ~200-char
+   challenge URL (one ~150-char unbroken run) stretched them to 1,334–1,474px of scroll
+   width at a 390px phone viewport and overflowed the page — the "Copy manually" state the
+   fix created was itself a dead end on a phone (WCAG 1.4.10). Both `<pre>`s now carry
+   Tailwind's `wrap-anywhere` (`overflow-wrap: anywhere`) — the treatment `.share-pre`
+   exists for in `styles.css`, applied as the equivalent property because `.share-pre`
+   also sets border/background/color for the result-card surface and would override these
+   two blocks' deliberate themes. Two new E2E tests pin rendered widths at a 390px
+   viewport (one per surface): the `<pre>`'s `scrollWidth` must fit its `clientWidth`, and
+   the document must not scroll horizontally past the viewport.
 
-1. **Typecheck (`./node_modules/.bin/tsc --noEmit`):**
-   - Exit code `0` (0 errors).
-2. **Unit & Pipeline Tests (`npm test` + `npm run test:worker`) — full gate picture on the final rebased tip:**
-   - scripts suite: `# tests 861 | # pass 850 | # skipped 11 | # fail 0`
-   - src suite: `# tests 1753 | # pass 1753 | # fail 0` (including 14 tests in `src/game/challenge.test.ts` and **44 `it()` blocks in `src/lib/flags.test.ts`** — counted on the cured tip; an earlier version of this file said 34, which was wrong. The suite grew from 1721 to 1753 with the rebase onto main `d39bc3e`, which brought in PR #275's palette suites.)
-   - worker suite (`npm run test:worker`): `# tests 85 | # pass 85 | # fail 0`.
-3. **Card Content Gate (`node scripts/lint-cards.mjs`):**
-   - `lint-cards: GATE PASSED` (`124690 records: 8802 with hook, 115888 hook-missing, 0 legacy, 0 curated-note violations`).
-4. **Production Pages Build (`npm run build:pages`):**
-   - Exit code `0`, `sw.js` and `build-meta.json` stamped.
-5. **Playwright E2E (`flock ~/workspace/.e2e.lock npx playwright test tests/e2e/friend-challenge.desktop.spec.ts --workers=1`):**
-   - `7 passed (4.1m)` on the final rebased tip (Flag OFF fail-closed + hidden UI + silence; Flag ON corrupt/unknown-ID boot notice; Flag OFF saved-run fall-through; Flag ON corrupt-link saved-run fall-through; Flag ON deterministic 5-place run + store isolation + `< 2000`-char share link; 600 km hit / 800 km miss freeze pair, judged 608.4 km / 809.8 km — the miss with a seeded 5–7 profile, proving the freeze against band scaling).
-   - Environment note: local gates ran on Node v24.22.1; CI on Node 22.x is canonical. Playwright used the bundled chromium (do NOT set `PLAYWRIGHT_CHROMIUM_EXECUTABLE`).
+## 2. TDD evidence (tests first, predicted signatures)
 
----
+New/changed tests were run against the UNMODIFIED build first (`npm run build:pages` on
+`ab21c1c` sources + the new spec):
 
-## 4. Handoff Document & Prompt for Next Agent (If Any Follow-Up Needed)
+- "challenge completion share falls back…" — **RED, predicted signature:** button reached
+  "Copy manually" but no `<pre>` fallback existed (`element(s) not found`).
+- "summary share-a-challenge falls back…" — **RED, same signature** at the fallback
+  visibility assertion.
+- "corrupt #c= link over a saved run … defers the boot notice until Home" — **GREEN**
+  (behaviour already correct; the test pins it).
+- 800 km miss test with the new readback — **GREEN** (seed lands; freeze proof intact).
 
-```text
-Branch `feat/challenge-v1` (PR #274) is feature-complete, cure-complete,
-AND final-cure-complete, rebased onto `origin/main` d39bc3e (PR #275
-merged). The pipeline on a00cf3a returned NOT READY (2 BLOCKs + DevEx
-FAIL); the first cure round fixed all three and the re-vote on 53d4f36
-returned 0 BLOCKs — but DevEx failed the PR on one stale
-`docs/feature-flags.md` paragraph, and the Level Architect showed the
-pin pair did not discriminate the freeze from band scaling. The final
-cure (owner's order, 2026-10-28: "Merge #275, and run #274's final docs
-cure + re-vote") fixed the paragraph, the codec comment interval, and
-the test discrimination (5–7 profile seeded on the miss; mutation-
-verified), then rebased. Verified across all 5 mandatory gates on the
-final tip (`tsc --noEmit` clean; `npm test` scripts 850 pass /
-11 skipped + src 1753 pass; `npm run test:worker` 85 pass;
-`lint-cards.mjs` GATE PASSED; `build:pages` green; friend-challenge E2E
-7/7) and pushed to `origin/feat/challenge-v1`.
-Next step is NOT a merge: the final tip returns to the 12-role panel for
-a re-vote, and merge happens only on the owner's explicit per-PR word.
-To inspect:
-1. Checkout `feat/challenge-v1` in ~/workspace/meridian-takeover.
-2. Local Node is v24.22.1 (CI's Node 22.x is canonical). Playwright uses
-   the bundled chromium — do NOT set PLAYWRIGHT_CHROMIUM_EXECUTABLE.
-   E2E: flock ~/workspace/.e2e.lock npx playwright test
-   tests/e2e/friend-challenge.desktop.spec.ts --workers=1, after
-   `npm run build:pages` (E2E serves the built artifact; a stale dist/
-   silently tests the wrong code).
-3. `friendChallenges` defaults to `false` in `src/lib/flags.ts` and
-   `public/flags.json` for dark-launch safety. Flipping
-   `"friendChallenges": true` in `public/flags.json` enables challenge
-   link boot and the "Share this route with a friend" action in
-   production.
-```
+After the fix, all friend-challenge tests pass (full gate run in §3).
+
+**Wrap cure (round 2), against the uncured build of this branch:**
+- Both new 390px wrap tests — **RED, predicted signature:** the completion surface's
+  `<pre>` measured scrollWidth 1334 vs clientWidth 318; the summary surface's 1474 vs 306
+  (raw log preserved: `~/workspace/meridian-flip-reports/e2e-wrap-red.log`; a first attempt
+  whose completion test died in gameplay — the harness's `commitMiss` taps a fixed desktop
+  point outside a 390px viewport — is preserved as `e2e-wrap-red-attempt1.log`, and the
+  test now resizes at the completion screen, where the wrap is pure CSS at the current
+  viewport).
+- After the `wrap-anywhere` cure — **GREEN:** both wrap tests pass
+  (`e2e-wrap-green.log`).
+
+## 3. Gates + review record
+
+- Environment: Node v24.22.1 local (CI 22.x is canonical); Playwright bundled chromium-1243;
+  E2E sequential under `flock ~/workspace/.e2e.lock --workers=1`.
+- Gates on the fix (local, Node 24):
+  - `npx tsc --noEmit` — PASS (clean).
+  - `npm test` — PASS: scripts 850/850, src 1753 pass / 0 fail.
+  - `npm run test:worker` — PASS: 85/85.
+  - `node scripts/lint-cards.mjs` — PASS: GATE PASSED.
+  - `npm run build:pages` — PASS (entry chunk 445,738 B).
+  - Playwright E2E, touched surfaces — friend-challenge spec **10/10 PASS** (incl. all 3 new
+    tests). The neighbouring endgame-share spec's 2 tests fail in this VM with
+    `ERR_TUNNEL_CONNECTION_FAILED` — and fail **identically on unmodified main `ab21c1c`**
+    in a paired run (this VM's Chromium cannot tunnel any external fetch; pre-existing
+    environment failure, not a regression). CI (22.x) is the canonical reader for that
+    spec; its verdict lands on this PR's checks.
+- Panel round 1 (on `0a8d0a0`): **NOT READY — 3 BLOCKs, one root cause** (the unwrapped
+  fallback `<pre>`s, §1 item 4), measured first-hand in headless Chromium by two seats
+  (ChallengeComplete `<pre>` clientWidth 318 / scrollWidth 1,499; document scrollWidth
+  1,520 at both 390px and 1280px). Everything else passed: 11 seats APPROVE / AWN /
+  PASS-with-nits, CSO CONFIRMED ×2 (codec, fail-closed decode, store isolation
+  byte-unchanged), benchmark PASS (entry chunk +0 B). Full record:
+  `~/workspace/meridian-flip-reports/FIX-REPORT.md`.
+- Gates re-run on the cured tip `f8d3495` (local, Node 24): tsc PASS ·
+  `npm test` PASS (scripts 850 pass / 11 skipped of 861; src 1753/1753) ·
+  `test:worker` PASS (85/85) · lint-cards GATE PASSED · `build:pages` PASS (entry chunk
+  445,738 B — +0 B vs the uncured tip) · friend-challenge E2E **12/12**: one run went
+  11/12 when the desktop completion-fallback test hit the 240s test timeout under VM
+  load (no assertion error); its sequential re-run passed (3.7m) — contention flake per
+  the AGENTS.md evidence rule, logs `e2e-full-cured.log` + `e2e-test689-rerun.log`.
+- CI on the exact cured tip `f8d3495`: build (22.x) PASS · e2e PASS · GitGuardian PASS
+  (the Workers Builds check fails on this branch as it does on every branch including
+  main-based ones; it is not a required context and this diff touches no worker/build
+  config).
+- Panel re-vote on the cured tip: PENDING (this record is written before it runs).
+- Merge: conditional authorization in the owner's orders (2026-10-28, as relayed) — merge
+  only if the panel verdict is READY with CI green on the exact final tip and a fresh
+  check read immediately before merging; otherwise stop and report. The same renewed
+  authorization covers the follow-up flag-flip PR and live verification.
