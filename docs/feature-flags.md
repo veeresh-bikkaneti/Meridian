@@ -114,10 +114,11 @@ killed feature by a stale flags.json.
 ## Current catalog
 
 > **Graduated (2026-10):** `globeTierSplit` shipped ON in production
-> (PR #148, 2026-10-15) and `learningOutcomes` shipped ON (2026-10-04) —
-> `public/flags.json` carries both `true`. The Off-behavior column below
-> describes what flipping a flag off *would* change, not today's
-> production behavior.
+> (PR #148, 2026-10-15), `learningOutcomes` shipped ON (2026-10-04), and
+> `friendChallenges` shipped ON (2026-10-28, after the PR #278 pre-flip
+> hardening) — `public/flags.json` carries all three `true`. The
+> Off-behavior column below describes what flipping a flag off *would*
+> change, not today's production behavior.
 
 | Flag               | Default | Off behavior                                             |
 | ------------------ | ------- | -------------------------------------------------------- |
@@ -158,8 +159,9 @@ to the session, the review deck, learning records, or the seen-place stores,
 so a challenge can neither bank progress nor burn the no-repeat pool.
 A challenge link never eats the game the player already had going. The
 `#c=` fragment is stripped from the URL first, before anything else reads
-it. With the flag off — the shipped default, in both `FLAG_DEFAULTS` and
-`public/flags.json` — nothing in the link is read at all: the boot simply
+it. With the flag off — the `FLAG_DEFAULTS` code default, and the shipped
+value in `public/flags.json` until the 2026-10-28 flip turned it on —
+nothing in the link is read at all: the boot simply
 continues into the ordinary saved-run boot, exactly as if the link had
 never been tapped, so a resumable saved run still resumes. (One exception,
 in the table above: a saved *challenge* run found while the flag is off is
