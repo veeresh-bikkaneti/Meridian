@@ -2,7 +2,7 @@
 
 - **Branch:** `chore/flip-friend-challenges`
 - **Base:** `origin/main` at `f531c7e` (2026-10-28 — PR #278 pre-flip hardening merged)
-- **State:** FLIP — gates green locally (below); merge waits on CI green on the exact tip plus a fresh check read immediately before merging, under the owner's conditional authorization (2026-10-28, as relayed): "Finish it: cure the wrap, re-vote, merge, flip, verify live". Live verification on both hosts follows the merge.
+- **State:** MERGED + LIVE 2026-10-28 — PR #279 squash-merged as `5192aca` under the owner's conditional authorization (CI green on tip `78dd621`; fresh check read 17:46:19Z, merged 17:46:26Z). Live-verified on both hosts: `friendChallenges: true` at buildId `5192aca…` — GitHub Pages at 17:47:56Z, workers.dev at 17:49:01Z. Friend challenges are ON in production. (This header cure is a separate PR, left for the owner's merge word.)
 - **Task:** Turn friend challenges ON in production. PR #274 shipped the feature behind `friendChallenges` (shipped off); PR #278 landed the pre-flip hardening — share-failure fallbacks that wrap at phone width, the notice×resume E2E pin, the seed readback — and the panel's round-2 re-vote on its cured tip returned READY (14/14 seats, 0 standing BLOCKs; the one procedural BLOCK, an unrelated e2e failure on the first CI run of the final tip, was adjudicated a runner flake when the re-run of the unchanged tip went green). #278 merged as `f531c7e`. This PR is the flip itself.
 - **Tier:** 0 — config + docs (AGENTS.md tier table). The flip is the owner's explicit order; no code changes.
 
