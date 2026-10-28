@@ -197,7 +197,10 @@ test("styles.css high-contrast block equals HIGH_CONTRAST", () => {
 
 test("game-app wires the toggle hosts and the boot apply", () => {
   const src = readFileSync(new URL("../components/game-app.tsx", import.meta.url), "utf8");
-  assert.ok(src.includes('data-testid="high-contrast-toggle"'), "home toggle host");
-  assert.ok(src.includes('data-testid="high-contrast-toggle-game"'), "in-game toggle host");
+  // Hosts pass the id through the SoundToggle-pattern `testId` prop;
+  // HighContrastToggle renders it as data-testid={testId}.
+  assert.ok(src.includes('testId="high-contrast-toggle"'), "home toggle host");
+  assert.ok(src.includes('testId="high-contrast-toggle-game"'), "in-game toggle host");
+  assert.ok(src.includes("data-testid={testId}"), "toggle renders its testId as data-testid");
   assert.ok(src.includes("applyPalettePreference()"), "boot apply call");
 });
