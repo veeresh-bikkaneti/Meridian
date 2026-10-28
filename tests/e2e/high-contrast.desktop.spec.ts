@@ -84,6 +84,11 @@ test("toggle pressed state is visible: computed background differs on and off", 
   await expect(toggle).toHaveAttribute("aria-pressed", "false");
   const bgOff = await toggle.evaluate((el) => getComputedStyle(el).backgroundColor);
   const colorOff = await toggle.evaluate((el) => getComputedStyle(el).color);
+  // Chromium serializes the standard rgba(0,0,0,0.38) dot as #00000061;
+  // capture the initial computed value and compare against it, not the
+  // authored spelling.
+  const dotBefore = await mapVar(page, "--map-pin-dot");
+  expect(["rgba(0,0,0,0.38)", "#00000061"]).toContain(dotBefore);
 
   await toggle.click();
   await expect(toggle).toHaveAttribute("aria-pressed", "true");
@@ -101,7 +106,7 @@ test("toggle pressed state is visible: computed background differs on and off", 
   await expect(toggle).toHaveAttribute("aria-pressed", "false");
   const bgBack = await toggle.evaluate((el) => getComputedStyle(el).backgroundColor);
   expect(bgBack).toBe(bgOff);
-  expect(await mapVar(page, "--map-pin-dot")).toBe("rgba(0,0,0,0.38)");
+  expect(await mapVar(page, "--map-pin-dot")).toBe(dotBefore);
 });
 
 test("high contrast persists across reload", async ({ page }) => {
