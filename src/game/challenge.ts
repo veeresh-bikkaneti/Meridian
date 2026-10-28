@@ -1,3 +1,55 @@
+/**
+ * Friend challenges: one player finishes a Globe run, taps "Share this
+ * route with a friend", and sends a link. The friend taps the link and
+ * plays the SAME places, in the same order, judged by the same 750 km
+ * circle. This file is the whole link format plus the dealing helpers —
+ * it is pure (no storage, no DOM beyond the base64 built-ins), so the
+ * codec is unit-tested directly in challenge.test.ts.
+ *
+ * The wire format — what is inside a link like
+ * `https://…/Meridian/#c=mc1.eyJ2Ijox…`:
+ *
+ * - The link carries everything in the URL fragment (the part after
+ *   `#`). Fragments are never sent to a server, so a challenge needs no
+ *   backend, no account, and no stored state — that is why the format
+ *   exists at all. The app strips the fragment from the address bar the
+ *   moment it boots (see the boot effect in game-app.tsx), so the link
+ *   cannot be re-read or leaked by a later screenshot of the URL.
+ * - `#c=mc1.` is the prefix: `#c=` says "challenge", `mc1` is the format
+ *   name and version (Meridian Challenge 1). Anything that does not
+ *   start with exactly this prefix is not a challenge link.
+ * - After the prefix comes the payload: a small JSON object encoded as
+ *   base64url (the URL-safe base64 alphabet, `-` and `_` instead of
+ *   `+` and `/`, no `=` padding). The JSON keys are one letter each to
+ *   keep links short:
+ *     v    format version, currently always 1
+ *     e    edition — "globe"; challenges are Globe-only for now
+ *     s    the scoring version the sender's game used, so a link made
+ *          by an old build cannot be judged by new scoring rules
+ *     ids  the place ids to play, in play order (5–10 of them)
+ *     seed an integrity check over the ids — see fnv1a below
+ * - The whole fragment is capped at 2000 characters. Browsers, chat
+ *   apps, and QR-ish copy/paste paths all mangle very long URLs, and a
+ *   legal payload (at most 10 short ids) is nowhere near the cap — so
+ *   anything longer is treated as broken, not trimmed.
+ * - Decoding FAILS CLOSED: decodeChallenge never throws and never
+ *   returns a half-trusted challenge. It returns either the full
+ *   checked payload or `{ ok: false, reason }`, where reason is one of
+ *     "format"  — not our prefix, not valid canonical base64url, not
+ *                 JSON, wrong keys, illegal ids, or the seed does not
+ *                 match the ids (the link was edited or corrupted)
+ *     "version" — a future mc format this build does not understand
+ *     "scoring" — the sender's scoring version differs from ours
+ *     "edition" — not a Globe challenge
+ *     "tooBig"  — over the 2000-character cap
+ *   The reasons exist for tests and debugging; the player only ever
+ *   sees CHALLENGE_CHILD_COPY below, never a reason.
+ * - Spoiler safety: the payload holds ONLY ids and the seed. No place
+ *   names, no coordinates, no scores — a friend who inspects the link
+ *   learns nothing about where the places are, and the sender's result
+ *   is not in it either. The receiving game looks the ids up in its own
+ *   Globe catalog and refuses the run if any id is unknown.
+ */
 export const CHALLENGE_CHILD_COPY = "Could not load this challenge.";
 export const CHALLENGE_REGION_ID = "challenge";
 export const CHALLENGE_REGION_NAME = "Friend challenge";
@@ -26,6 +78,16 @@ export type ChallengeFail = {
   reason: "format" | "version" | "scoring" | "edition" | "tooBig";
 };
 
+/**
+ * The seed: an FNV-1a hash (a tiny, well-known non-cryptographic hash)
+ * of the ids joined with commas. Its job is INTEGRITY, not security —
+ * it catches a link that was truncated, mistyped, or casually edited,
+ * because any change to the ids changes the hash. It is NOT a
+ * signature: anyone can recompute it, so it proves nothing about who
+ * made the link. That is fine here — a forged link can only make the
+ * receiver play a different set of real Globe places, nothing more —
+ * but never reuse this seed as a trust check for anything that matters.
+ */
 function fnv1a(ids: readonly string[]): number {
   let h = 2166136261;
   const joined = ids.join(",");
@@ -65,6 +127,13 @@ function fromBase64Url(body: string): string | null {
   }
   const rem = body.length % 4;
   if (rem === 2 || rem === 3) {
+    // Canonical-form check: when the final base64 character carries
+    // unused trailing bits (the payload length is not a multiple of 3),
+    // those bits must be zero in anything our encoder produced. A link
+    // with them set was hand-edited after encoding — the decoded bytes
+    // would be identical, so without this check two different links
+    // could carry the same challenge and "the link was changed" would
+    // be undetectable. Fail closed instead.
     const lastVal = B64URL_ALPHABET.indexOf(body[body.length - 1]!);
     const mask = rem === 2 ? 0x0f : 0x03;
     if (lastVal < 0 || (lastVal & mask) !== 0) return null;
@@ -130,6 +199,15 @@ export function playOrder(decoded: ChallengeOk): string[] {
   return decoded.ids.slice();
 }
 
+/**
+ * mulberry32: a small seeded random-number generator. Why not
+ * Math.random()? Dealing a challenge from a seed must be REPEATABLE —
+ * the same seed must deal the same places on the sender's phone, the
+ * receiver's phone, and in tests — and Math.random() can never be
+ * seeded. This generator is deterministic across browsers because it
+ * uses only 32-bit integer math (Math.imul and bit ops), never floats
+ * whose rounding could differ between engines.
+ */
 function mulberry32(seed: number): () => number {
   let a = seed >>> 0;
   return () => {
@@ -150,6 +228,12 @@ export function dealChallenge(
   const next = mulberry32(seed);
   const ranked = entries.map((entry, index) => {
     const u = next();
+    // Weighted sampling without replacement, in one pass (the
+    // Efraimidis–Spirakis trick): each entry draws a random u in (0, 1]
+    // and scores u^(1/w). Sorting by that score, best first, picks
+    // higher-weighted entries more often, with no re-rolls and no
+    // duplicates. A non-positive or non-finite weight can never be
+    // dealt: its key is -Infinity, so it sorts last.
     const key =
       entry.w > 0 && Number.isFinite(entry.w) ? u ** (1 / entry.w) : Number.NEGATIVE_INFINITY;
     return { id: entry.id, key, index };
