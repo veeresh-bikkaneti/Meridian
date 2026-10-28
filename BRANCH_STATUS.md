@@ -1,8 +1,8 @@
 # BRANCH_STATUS — feat/challenge-v1 (P0-1 Stateless Friend Challenges)
 
 - **Branch:** `feat/challenge-v1` (PR #274)
-- **Base:** `origin/main` at `daa03ad` (2026-10-27)
-- **State:** **CURE ROUND COMPLETE — panel BLOCKs 1–2 + DevEx FAIL cured on the owner's order (2026-10-28); ALL 5 MANDATORY GATES GREEN on the cured code tip `0a75191` & PUSHED TO `origin/feat/challenge-v1`. Awaiting panel re-vote on the cured tip; merge remains the owner's per-PR word.**
+- **Base:** `origin/main` at `d39bc3e` (2026-10-28 — PR #275 high-contrast merged; this branch was rebased onto it: one `BRANCH_STATUS.md` conflict, resolved by whole-file supersession, no other conflicts; every branch-owned file verified byte-identical to its pre-rebase version)
+- **State:** **FINAL CURE COMPLETE — the panel re-vote on `53d4f36` returned 0 BLOCKs with both round-1 BLOCKs withdrawn, but a DevEx FAIL on one stale `docs/feature-flags.md` paragraph. That paragraph, the `challenge.ts` interval comment, and the pin-pair freeze discrimination are cured on the owner's order (2026-10-28), and the branch is rebased onto current main. ALL 5 MANDATORY GATES GREEN on the final tip & PUSHED. Awaiting the panel re-vote on the final tip; merge remains the owner's per-PR word.**
 - **Task ID:** `P0-1` — Stateless `#c=mc1.<base64url>` Globe Friend Challenges (`friendChallenges`, default `false`)
 
 ---
@@ -27,10 +27,10 @@
      - **Fall-through boot (cure round, 2026-10-28):** the saved-run boot is a named `bootSavedRun()` inside the boot effect, and every `#c=` failure exit falls through to it instead of ending the boot. **Flag OFF (`friendChallenges: false`, default):** the boot is exactly main's boot — a resumable saved run resumes (a saved challenge run is cleared by that same path, as before); no notice is shown; `[data-testid="challenge-share-container"]` stays hidden in `RunSummaryCard`. **Flag ON:** decode failure, unknown ID, and Globe-catalog load failure set the boot notice (Home shows `CHALLENGE_CHILD_COPY`, "Could not load this challenge.", in a `role="status"` region, `data-testid="challenge-boot-notice"`) and then fall through to `bootSavedRun()` too, so a broken link never costs the player a saved run.
      - **Flag ON, valid link (`friendChallenges: true`):** Decodes `#c=mc1...` against `SCORING_VERSION`, verifies every ID exists in the full Globe catalog (`placesFor("globe", "globe", undefined, false)`), and starts a deterministic Globe challenge run (`regionId: "challenge"`) in `playOrder(decoded)` sequence.
    - **750 km Globe radius freeze:** Challenge runs always use `CHALLENGE_GLOBE_RADIUS_KM` (`750`) for both `variation.radiusKm` and `onConfirm` hit evaluation, regardless of age-band profile settings.
-   - **Complete store isolation:** Challenge runs (`isChallengeRun(run)`) never call `ensureSession`, never bank to `meridian.session`, never write to `meridian:learning:v1` or `meridian:review-deck:v1`, and use `memorySeenStore()` so `meridian.seen.*` no-repeat history is never touched.
+   - **Complete store isolation:** Challenge runs (`isChallengeRun(run)`) never call `ensureSession`, never bank to `meridian.session`, never write to `meridian:learning:v1` or `meridian:review-deck:v1`, and use `memorySeenStore()` so `meridian:seen:v2:` no-repeat history is never touched.
    - **Completion & Share UI:** Finishing a challenge renders `<ChallengeComplete>` (`data-testid="challenge-complete"`) with warm, ~10-year-old reading-age copy and `<ShareButton label="Share this route with a friend" />` inside `data-testid="challenge-share-container"` (`data-challenge-url` `< 2000` chars). Normal Globe runs also expose the challenge share button on `RunSummaryCard` when `friendChallenges` is `true`.
 4. **Playwright E2E Spec (`tests/e2e/friend-challenge.desktop.spec.ts`) & Docs (`README.md`, `docs/feature-flags.md`):**
-   - 7 desktop E2E tests pinning both flag states (`friendChallenges: false` and `friendChallenges: true`), corrupt/unknown-ID boot notice (flag ON) vs silence (flag OFF), saved-run fall-through in both flag states, a behavioural 750 km pin-freeze pair (pin judged 608.4 km = hit; 809.8 km = miss), 5-place deterministic sequence, store isolation (with a seeded-sentinel control proving the `meridian:seen:v2:` scan is live), and `< 2000`-char share link.
+   - 7 desktop E2E tests pinning both flag states (`friendChallenges: false` and `friendChallenges: true`), corrupt/unknown-ID boot notice (flag ON) vs silence (flag OFF), saved-run fall-through in both flag states, a behavioural 750 km pin-freeze pair (pin judged 608.4 km = hit; 809.8 km = miss — the miss is seeded with a 5–7 age profile whose band tolerance is 1125 km, so the pair proves the freeze itself and not just the number; mutation-verified: removing the `onConfirm` freeze flips the seeded miss to a hit), 5-place deterministic sequence, store isolation (with a seeded-sentinel control proving the `meridian:seen:v2:` scan is live), and `< 2000`-char share link.
    - Added one truthful `Friend challenge` row to the MapTap comparison table in `README.md`.
 
 ---
@@ -46,20 +46,44 @@ report `PIPELINE-274` (panel verdict on tip `a00cf3a`: NOT READY — 2 BLOCKs
 + DevEx FAIL), and the cure round it ordered. The cured tip returns to the
 panel for a fresh re-vote before any merge word.
 
+**Re-vote on the cured tip `53d4f36` (2026-10-28):** panel **0 BLOCKs**
+(1 APPROVE, 11 APPROVE-WITH-NITS) — both round-1 BLOCK owners (Senior
+Architect, UX Researcher) withdrew their BLOCKs on the cured diff — but
+**DevEx FAIL**: the `friendChallenges` prose in `docs/feature-flags.md`
+(added by this PR's own earlier doc cure) still described the pre-cure
+boot and never mentioned the flag-on notice or the fall-through. The
+Level Architect also showed the pin pair proved the absolute 750 km but
+not the freeze vs band scaling (an unset profile's ×1.0 band misses at
+800 km either way), and the hit test's comment had the band tolerances
+inverted.
+
+**Final cure (owner's order, 2026-10-28: "Merge #275, and run #274's
+final docs cure + re-vote"):** (a) the `docs/feature-flags.md` paragraph
+rewritten to describe the cured boot exactly; (b) the `challenge.ts`
+comment interval corrected to [0, 1); (c) the 800 km miss test now seeds
+a 5–7 profile (band tolerance 1125 km) and both pair comments state the
+discrimination honestly — mutation-verified (freeze removed → the seeded
+miss judges hit=true and the test fails); (d) this record. The branch was
+then rebased onto `origin/main` `d39bc3e` (PR #275 merged): one
+`BRANCH_STATUS.md` conflict resolved by whole-file supersession, every
+branch-owned file verified byte-identical to its pre-rebase version, and
+`game-app.tsx` carrying both this branch's boot work and #275's
+high-contrast toggle. Full record: `CURE-274-FINAL`.
+
 ## 3. Verbatim Gate Results
 
 1. **Typecheck (`./node_modules/.bin/tsc --noEmit`):**
    - Exit code `0` (0 errors).
-2. **Unit & Pipeline Tests (`npm test` + `npm run test:worker`) — full gate picture on the cured tip:**
+2. **Unit & Pipeline Tests (`npm test` + `npm run test:worker`) — full gate picture on the final rebased tip:**
    - scripts suite: `# tests 861 | # pass 850 | # skipped 11 | # fail 0`
-   - src suite: `# tests 1721 | # pass 1721 | # fail 0` (including 14 tests in `src/game/challenge.test.ts` and **44 `it()` blocks in `src/lib/flags.test.ts`** — counted on the cured tip; an earlier version of this file said 34, which was wrong).
+   - src suite: `# tests 1753 | # pass 1753 | # fail 0` (including 14 tests in `src/game/challenge.test.ts` and **44 `it()` blocks in `src/lib/flags.test.ts`** — counted on the cured tip; an earlier version of this file said 34, which was wrong. The suite grew from 1721 to 1753 with the rebase onto main `d39bc3e`, which brought in PR #275's palette suites.)
    - worker suite (`npm run test:worker`): `# tests 85 | # pass 85 | # fail 0`.
 3. **Card Content Gate (`node scripts/lint-cards.mjs`):**
    - `lint-cards: GATE PASSED` (`124690 records: 8802 with hook, 115888 hook-missing, 0 legacy, 0 curated-note violations`).
 4. **Production Pages Build (`npm run build:pages`):**
    - Exit code `0`, `sw.js` and `build-meta.json` stamped.
 5. **Playwright E2E (`flock ~/workspace/.e2e.lock npx playwright test tests/e2e/friend-challenge.desktop.spec.ts --workers=1`):**
-   - `7 passed (4.1m)` on the cured tip (Flag OFF fail-closed + hidden UI + silence; Flag ON corrupt/unknown-ID boot notice; Flag OFF saved-run fall-through; Flag ON corrupt-link saved-run fall-through; Flag ON deterministic 5-place run + store isolation + `< 2000`-char share link; 600 km hit / 800 km miss freeze pair, judged 608.4 km / 809.8 km).
+   - `7 passed (4.1m)` on the final rebased tip (Flag OFF fail-closed + hidden UI + silence; Flag ON corrupt/unknown-ID boot notice; Flag OFF saved-run fall-through; Flag ON corrupt-link saved-run fall-through; Flag ON deterministic 5-place run + store isolation + `< 2000`-char share link; 600 km hit / 800 km miss freeze pair, judged 608.4 km / 809.8 km — the miss with a seeded 5–7 profile, proving the freeze against band scaling).
    - Environment note: local gates ran on Node v24.22.1; CI on Node 22.x is canonical. Playwright used the bundled chromium (do NOT set `PLAYWRIGHT_CHROMIUM_EXECUTABLE`).
 
 ---
@@ -67,16 +91,22 @@ panel for a fresh re-vote before any merge word.
 ## 4. Handoff Document & Prompt for Next Agent (If Any Follow-Up Needed)
 
 ```text
-Branch `feat/challenge-v1` (PR #274) is feature-complete AND cure-complete:
-the review pipeline on tip a00cf3a returned NOT READY (2 panel BLOCKs +
-DevEx FAIL), and the cure round ordered by the owner on 2026-10-28
-("Run both cure rounds + panel re-votes (#274 first, then #275)") fixed
-all of them on this branch. Verified across all 5 mandatory gates on the
-cured code tip (`tsc --noEmit` clean; `npm test` scripts 850 pass /
-11 skipped + src 1721 pass; `npm run test:worker` 85 pass;
+Branch `feat/challenge-v1` (PR #274) is feature-complete, cure-complete,
+AND final-cure-complete, rebased onto `origin/main` d39bc3e (PR #275
+merged). The pipeline on a00cf3a returned NOT READY (2 BLOCKs + DevEx
+FAIL); the first cure round fixed all three and the re-vote on 53d4f36
+returned 0 BLOCKs — but DevEx failed the PR on one stale
+`docs/feature-flags.md` paragraph, and the Level Architect showed the
+pin pair did not discriminate the freeze from band scaling. The final
+cure (owner's order, 2026-10-28: "Merge #275, and run #274's final docs
+cure + re-vote") fixed the paragraph, the codec comment interval, and
+the test discrimination (5–7 profile seeded on the miss; mutation-
+verified), then rebased. Verified across all 5 mandatory gates on the
+final tip (`tsc --noEmit` clean; `npm test` scripts 850 pass /
+11 skipped + src 1753 pass; `npm run test:worker` 85 pass;
 `lint-cards.mjs` GATE PASSED; `build:pages` green; friend-challenge E2E
 7/7) and pushed to `origin/feat/challenge-v1`.
-Next step is NOT a merge: the cured tip returns to the 12-role panel for
+Next step is NOT a merge: the final tip returns to the 12-role panel for
 a re-vote, and merge happens only on the owner's explicit per-PR word.
 To inspect:
 1. Checkout `feat/challenge-v1` in ~/workspace/meridian-takeover.
