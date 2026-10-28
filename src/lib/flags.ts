@@ -31,7 +31,7 @@
  */
 
 /** The flag catalog. Grow it by extending this union and `FLAG_DEFAULTS`. */
-export type FlagName = "pwaUpdateToast" | "learningOutcomes" | "globeTierSplit";
+export type FlagName = "pwaUpdateToast" | "learningOutcomes" | "globeTierSplit" | "friendChallenges";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -50,6 +50,9 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // order (the caller's filterByTier bands it). true = load only the tiers of
   // the run's learning path (Easy t1+t2, Medium t2-t4, Hard t4+t5).
   globeTierSplit: false,
+  // Friend challenge links. false = no entry points and a challenge hash
+  // is ignored. true = the deterministic shared run is available.
+  friendChallenges: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;
