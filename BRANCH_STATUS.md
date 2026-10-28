@@ -1,49 +1,57 @@
-# BRANCH_STATUS — chore/flip-friend-challenges
+# BRANCH_STATUS — feat/reset-history-and-card-fix
 
-- **Branch:** `chore/flip-friend-challenges`
-- **Base:** `origin/main` at `f531c7e` (2026-10-28 — PR #278 pre-flip hardening merged)
-- **State:** MERGED + LIVE 2026-10-28 — PR #279 squash-merged as `5192aca` under the owner's conditional authorization (required checks green on tip `78dd621` — `build (22.x)` and GitGuardian Security Checks; fresh check read 17:46:19Z, merged 17:46:26Z). Live-verified on both hosts: `friendChallenges: true` — GitHub Pages at 17:47:56Z (buildId `5192aca029cb`), workers.dev at 17:49:01Z (buildId `5192aca`). Friend challenges are ON in production. Recorded by PR #280 — this file's branch record is now historical.
-- **Task:** Turn friend challenges ON in production. PR #274 shipped the feature behind `friendChallenges` (shipped off); PR #278 landed the pre-flip hardening — share-failure fallbacks that wrap at phone width, the notice×resume E2E pin, the seed readback — and the panel's round-2 re-vote on its cured tip returned READY (14/14 seats, 0 standing BLOCKs; the one procedural BLOCK, an unrelated e2e failure on the first CI run of the final tip, was adjudicated a runner flake when the re-run of the unchanged tip went green). #278 merged as `f531c7e`. This PR is the flip itself.
-- **Tier:** 0 — config + docs (AGENTS.md tier table). The flip is the owner's explicit order; no code changes.
+- **Branch:** `feat/reset-history-and-card-fix` (PR pending)
+- **Base:** `origin/main` at `ab21c1c` (2026-10-28 — PR #277 merged)
+- **State:** **IN BUILD.** Tier-2 council manifest signed and committed
+  alone (`f681e92`, D1–D17 incl. Chair addendum). NO MERGE — the owner
+  merges on his per-PR word after the panel approves the final tip.
+- **Task:** owner's words 2026-10-28 — "reset means now game remembers
+  how many i missed, soon it will become huge, I want game allowing
+  user to reset the past misses, so i can reset and start over
+  deleting his game history. also fix the button overlay."
+- **Manifest:** `.council/manifests/2026-10-28-reset-history-and-card-fix.md`
+  (APPROVED as amended, token `AUTH_RUN_TDD_IMPLEMENTATION`)
 
 ---
 
-## 1. What this branch changes
+## What this branch delivers
 
-1. **`public/flags.json` — one value:** `"friendChallenges": false` → `true`.
-   This is the shipped value players' apps read at boot. The code default in
-   `src/lib/flags.ts` (`FLAG_DEFAULTS`) deliberately stays `false`: a client
-   that cannot load `flags.json` fails closed with the feature off, exactly
-   as before the flip.
-2. **`docs/feature-flags.md` — wording the flip makes false, corrected:**
-   the graduated-flags note now lists `friendChallenges` as shipped ON
-   (2026-10-28, after PR #278), and the challenge-links paragraph no longer
-   calls flag-off "the shipped default, in both `FLAG_DEFAULTS` and
-   `public/flags.json`" — it is the code default only now. The catalog
-   table's Default column is unchanged (it records `FLAG_DEFAULTS`).
-3. **This file** — the branch record, per convention.
+1. **Part 1 — "Start over" reset (history wipe).** Entry points on the
+   home Review card (deck total > 0) and on `ReviewComplete`; one
+   `alertdialog` confirm mirroring `AgeProfileSettings` with locked
+   copy (manifest §4). Clears exactly the manifest §2 CLEARED set
+   (deck, learning, seen/cleared, loop + coldtrail stores and open
+   flags, session + paused run + drop) via per-store owner-module
+   clears composed by `src/game/reset-history.ts`; honest partial
+   failure (`{cleared, failed}` + post-clear re-read, success toast
+   only when `failed` is empty); home refreshes in place via
+   `meridian:history-reset` + `historyResetEpoch` (D6/D14/D16).
+   Badges and the first-win flag are KEPT (D2, open question OQ1).
+2. **Part 2 — Review-card overlay fix.** The decorative REVIEW cue
+   `.hv5-review-cue` sits inside the illustration box `.hv5-art` by
+   construction; fix is scoped to the review card (manifest D9) with
+   bounding-box non-overlap asserted at 360/390/1024/1280.
 
-Nothing else: no source, no tests, no worker, no build config.
+## Stage tracker
 
-## 2. Gates + merge record
+- [x] Stage 0 — clone, branch, `npm ci`
+- [x] Stage 1 — research (store inventory, root causes)
+- [x] Stage 2 — council manifest committed alone (`f681e92`)
+- [ ] Stage 3 — Part 2 build (RED → fix → GREEN, screenshots)
+- [ ] Stage 4 — Part 1 build (Layer-2 RED recorded below → GREEN)
+- [ ] Stage 5 — all 5 AGENTS.md gates on the final tip
+- [ ] Stage 6 — full panel (12 seats + DevEx) on the final tip
+- [ ] Stage 7 — PR opened (no merge)
 
-- Environment: Node v24.22.1 local (CI 22.x is canonical); Playwright bundled
-  chromium-1243; E2E sequential under `flock ~/workspace/.e2e.lock`.
-- Local gates on this branch (logs: `~/workspace/meridian-flip-reports/gates-flip.log`,
-  `e2e-flip.log`):
-  - `npx tsc --noEmit` — PASS (clean).
-  - `npm test` — PASS: scripts 850 pass / 11 skipped (of 861); src 1753 pass / 0 fail.
-  - `npm run test:worker` — PASS: 85/85.
-  - `node scripts/lint-cards.mjs` — PASS: GATE PASSED.
-  - `npm run build:pages` — PASS.
-  - Playwright E2E, touched surface — friend-challenge spec: **12/12 PASS** on the flipped build.
-- CI on the exact tip + the fresh pre-merge check read: recorded in the PR
-  body and in `~/workspace/meridian-flip-reports/FLIP-REPORT.md`.
-- Post-merge live verification — DONE 2026-10-28: `flags.json` and
-  `build-meta.json` polled on both hosts —
-  `https://meridian.knowledgetest.workers.dev` and
-  `https://veeresh-bikkaneti.github.io/Meridian`. GitHub Pages showed
-  `friendChallenges: true` at buildId `5192aca029cb` from 17:47:56Z;
-  workers.dev showed `friendChallenges: true` at buildId `5192aca` from
-  17:49:01Z — both hosts live on this PR's merge SHA `5192aca`
-  (log: `~/workspace/meridian-flip-reports/live-verify.log`).
+## RED evidence (manifest D8 — Layer-2 run recorded before GREEN)
+
+_(builder fills: stub/no-op run → named behavioural failures, with the
+command and the failing test names)_
+
+## Carried dissents / open questions
+
+- C2 dissent (all-history wipe entered from the misses card) — carried
+  to the PR body; the owner's merge word is his ruling (manifest §7).
+- C9-cut dissent (ReviewComplete surface) — carried (manifest §7).
+- OQ1 badges/first-win kept; OQ2 `meridian.loop.v1` untouched;
+  OQ3 flag-off players have no reset door in v1 (manifest §9).
