@@ -1,12 +1,19 @@
 # BRANCH_STATUS — feat/reset-history-and-card-fix
 
-- **Branch:** `feat/reset-history-and-card-fix` (PR pending)
-- **Base:** `origin/main` at `ab21c1c` (2026-10-28 — PR #277 merged)
-- **State:** **PART 1 BUILT** (commits 1–2 pushed; unit GREEN, two
-  named E2E items carried to the Stage 5 gates — see below).
-  Tier-2 council manifest signed and committed
-  alone (`f681e92`, D1–D17 incl. Chair addendum). NO MERGE — the owner
-  merges on his per-PR word after the panel approves the final tip.
+- **Branch:** `feat/reset-history-and-card-fix` (**PR #281**)
+- **Base:** `origin/main` at `bf0f8be` — **rebased 2026-10-28** from
+  the original base `ab21c1c` onto current main (#278 pre-flip
+  hardening, #279 friendChallenges ON, #280 status record; friend
+  challenges are LIVE on main — this branch changes nothing about
+  them). The rebase's only content conflict was this file, resolved
+  by whole-file supersession (the branch's own status record).
+- **State:** **BUILT, GATED, PANELED — PR #281 OPEN, NO MERGE.**
+  Panel on tip `2ea97fc` (pre-rebase): NOT READY as voted
+  (5 APPROVE / 6 APPROVE-WITH-NITS / 1 BLOCK / DevEx FAIL) — the
+  BLOCK's premise is refuted by a probe E2E on the final tip and
+  the DevEx record cures are dispositioned in the PR body and the
+  Panel record below. NO MERGE — the owner merges on his per-PR
+  word.
 - **Task:** owner's words 2026-10-28 — "reset means now game remembers
   how many i missed, soon it will become huge, I want game allowing
   user to reset the past misses, so i can reset and start over
@@ -45,8 +52,10 @@
   "Part 1 E2E state at commit 2" below)
 - [x] Stage 5 — all 5 AGENTS.md gates on the final tip (see Gate
   record below)
-- [ ] Stage 6 — full panel (12 seats + DevEx) on the final tip
-- [ ] Stage 7 — PR opened (no merge)
+- [x] Stage 6 — full panel (12 seats + DevEx) on tip `2ea97fc`:
+  NOT READY as voted (see Panel record below)
+- [x] Stage 7 — PR opened (**#281**, no merge); branch rebased onto
+  `bf0f8be` at PR stage (this file was the only conflict)
 
 ## Part 2 record (Stage 3)
 
@@ -193,6 +202,33 @@
   PR body point at the run report.)
 - Fresh CI read happens at PR time (CI runs on PRs, not branch
   pushes — verified empty).
+
+## Panel record (Stage 6, on tip `2ea97fc`)
+
+- APPROVE: Game Audio, Narrative, Level Architect, Senior
+  Architect, Senior Developer.
+- APPROVE-WITH-NITS: Game Designer, Economy, Frontend, UX
+  Researcher, UX Designer, Office Hours.
+- BLOCK: Game Developer — claimed a ReviewComplete reset leaves
+  the in-memory session live. **Adjudicated REFUTED by the
+  coordinator:** the confirm path is GameApp's `handleResetHistory`
+  (→ `replaceSession(null)`) via the Play → PlayLoaded →
+  ReviewComplete prop chain, traced independently by three other
+  seats; and a probe E2E on the final tip replicating the seat's
+  scenario passed (banked 171 → reset at ReviewComplete →
+  `meridian.session` null → next game banks exactly 1 place).
+- DevEx FAIL (documentation): three items dispositioned —
+  (1) the claimed stale "(builder fills…)" RED placeholder does
+  NOT exist in this file at the reviewed tip (grep-verified at
+  `2ea97fc`; the full Layer-2 record sits under the RED evidence
+  heading above) — finding does not match the record;
+  (2) manifest errata, genuine and logged here: §6 names
+  `src/game/passport/badges.ts` (actual `src/game/badges.ts`);
+  D14(b)'s "effect deps" phrasing vs the implemented
+  epoch-parameter design (functionally compliant);
+  (3) `src/game/learning.ts` comment reword — genuine, left for
+  the owner's cure-round call (product-file edit).
+- Re-vote on the rebased tip + any cure round: the owner's call.
 
 ## Carried dissents / open questions
 
