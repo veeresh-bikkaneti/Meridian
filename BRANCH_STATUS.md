@@ -16,10 +16,17 @@
   no sustained BLOCK — the Game Feel seat's final report is
   APPROVE-WITH-NITS; the DevEx FAIL stands on F1–F3, of which F2
   was cured by the Stage 8 rebase record and F3's wording is
-  corrected in this file. The F1 documentation cure is committed
+  corrected in this file. The F1 documentation cure was committed
   on the owner's order (2026-10-28, "Cure the F1 docs, then
-  re-vote"); the panel re-vote on the cured tip is the next step
-  and its verdict will replace this paragraph. NO MERGE — the
+  re-vote") and the panel re-vote on cured tip `9836255` returned
+  READY (2 APPROVE / 10 APPROVE-WITH-NITS / 0 BLOCK, DevEx
+  PASS-WITH-NITS "F1 CURED: yes"; record
+  `~/workspace/meridian-reset/REVOTE-281.md`). The owner then
+  ordered the re-vote's convergent §12 mechanism nit cured first
+  (2026-10-28, "Fix the §12 sentence first"); this commit rewrites
+  that paragraph's mechanism sentences to match the shipped code
+  exactly, and a third panel vote on the new tip follows (record:
+  `~/workspace/meridian-reset/REVOTE2-281.md`). NO MERGE — the
   owner merges on his per-PR word.
 - **Task:** owner's words 2026-10-28 — "reset means now game remembers
   how many i missed, soon it will become huge, I want game allowing
@@ -63,12 +70,21 @@
   NOT READY as voted (see Panel record below)
 - [x] Stage 7 — PR opened (**#281**, no merge); branch rebased onto
   `bf0f8be` at PR stage (this file was the only conflict)
-- [ ] Stage 9 — DevEx F1 docs cure (owner's call 2026-10-28:
+- [x] Stage 9 — DevEx F1 docs cure (owner's call 2026-10-28:
   "Cure the F1 docs, then re-vote"): §12 in
   `docs/learning-outcomes.md`, §14 in handbook ch. 02, one README
-  paragraph, F3 wording correction in this file — docs-only commit;
-  full panel re-vote on the cured tip follows (record:
-  `~/workspace/meridian-reset/REVOTE-281.md`)
+  paragraph, F3 wording correction in this file — docs-only commit
+  `9836255`; full panel re-vote on the cured tip returned READY
+  (record: `~/workspace/meridian-reset/REVOTE-281.md`)
+- [ ] Stage 10 — §12 mechanism-sentence cure (owner's call
+  2026-10-28: "Fix the §12 sentence first"): the Partial failure
+  paragraph's re-read and empty-value-fallback sentences rewritten
+  to state each store class's behaviour exactly (cleared-place
+  marks and the paused-run pair have no empty value and fail;
+  deck/learning/session are re-read by the composer, the rest
+  verify inside their owner clears) — docs-only commit; third
+  panel vote on the new tip follows (record:
+  `~/workspace/meridian-reset/REVOTE2-281.md`)
 
 ## Part 2 record (Stage 3)
 

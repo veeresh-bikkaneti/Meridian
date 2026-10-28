@@ -492,9 +492,15 @@ paused game offers no Resume.
 
 **Partial failure.** Each store clears independently and the
 result is reported honestly (`resetHistory()` returns the cleared
-and failed stores, then re-reads every cleared store to check).
+and failed stores, then re-reads the deck, the learning records,
+and the session to check they are really gone — the no-repeat
+marks, GeoDetective, and Cold Trail verify inside their own
+clear functions).
 If any store cannot be cleared, the dialog stays open with "Some
 things could not be cleared. Try again." and no success toast
-fires; a store that refuses deletion is overwritten with its
-empty value instead — the same fallback the age-profile reset
-uses.
+fires. Where a store has an empty value, a store that refuses
+deletion is overwritten with it instead — the same fallback the
+age-profile reset uses. Cleared-place marks and the paused run
+have no empty value: the run and its current-place drop are
+removal-only, so a blocked removal there fails and is reported
+like any other store.
