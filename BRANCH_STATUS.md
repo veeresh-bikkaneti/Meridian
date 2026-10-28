@@ -2,7 +2,7 @@
 
 - **Branch:** `chore/flip-friend-challenges`
 - **Base:** `origin/main` at `f531c7e` (2026-10-28 — PR #278 pre-flip hardening merged)
-- **State:** FLIP — gates green locally (below); merge waits on CI green on the exact tip plus a fresh check read immediately before merging, under the owner's conditional authorization (2026-10-28, as relayed): "Finish it: cure the wrap, re-vote, merge, flip, verify live". Live verification on both hosts follows the merge.
+- **State:** MERGED + LIVE 2026-10-28 — PR #279 squash-merged as `5192aca` under the owner's conditional authorization (required checks green on tip `78dd621` — `build (22.x)` and GitGuardian Security Checks; fresh check read 17:46:19Z, merged 17:46:26Z). Live-verified on both hosts: `friendChallenges: true` — GitHub Pages at 17:47:56Z (buildId `5192aca029cb`), workers.dev at 17:49:01Z (buildId `5192aca`). Friend challenges are ON in production. Recorded by PR #280 — this file's branch record is now historical.
 - **Task:** Turn friend challenges ON in production. PR #274 shipped the feature behind `friendChallenges` (shipped off); PR #278 landed the pre-flip hardening — share-failure fallbacks that wrap at phone width, the notice×resume E2E pin, the seed readback — and the panel's round-2 re-vote on its cured tip returned READY (14/14 seats, 0 standing BLOCKs; the one procedural BLOCK, an unrelated e2e failure on the first CI run of the final tip, was adjudicated a runner flake when the re-run of the unchanged tip went green). #278 merged as `f531c7e`. This PR is the flip itself.
 - **Tier:** 0 — config + docs (AGENTS.md tier table). The flip is the owner's explicit order; no code changes.
 
@@ -39,7 +39,11 @@ Nothing else: no source, no tests, no worker, no build config.
   - Playwright E2E, touched surface — friend-challenge spec: **12/12 PASS** on the flipped build.
 - CI on the exact tip + the fresh pre-merge check read: recorded in the PR
   body and in `~/workspace/meridian-flip-reports/FLIP-REPORT.md`.
-- Post-merge live verification: poll `flags.json` and `build-meta.json` on
-  both hosts — `https://meridian.knowledgetest.workers.dev` and
-  `https://veeresh-bikkaneti.github.io/Meridian` — until
-  `friendChallenges: true` and buildId equals this PR's merge SHA.
+- Post-merge live verification — DONE 2026-10-28: `flags.json` and
+  `build-meta.json` polled on both hosts —
+  `https://meridian.knowledgetest.workers.dev` and
+  `https://veeresh-bikkaneti.github.io/Meridian`. GitHub Pages showed
+  `friendChallenges: true` at buildId `5192aca029cb` from 17:47:56Z;
+  workers.dev showed `friendChallenges: true` at buildId `5192aca` from
+  17:49:01Z — both hosts live on this PR's merge SHA `5192aca`
+  (log: `~/workspace/meridian-flip-reports/live-verify.log`).
