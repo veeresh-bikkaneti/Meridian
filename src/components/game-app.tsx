@@ -349,6 +349,18 @@ function isReviewRun(run: Run): boolean {
   return run.regionId === REVIEW_DECK_REGION_ID;
 }
 
+/**
+ * A friend-challenge run is identified by its region id alone — the run
+ * carries no other marker. Every isolation guard in this file keys off
+ * this one check, so there is exactly one place to get it right:
+ * challenge runs never bank into the session, never write learning
+ * records or review-deck cards, and never touch the persistent
+ * no-repeat history (see the dealer, the flag effect, and onConfirm).
+ * Why isolate them? The places were chosen by a FRIEND, not dealt to
+ * this player — letting them into the player's own history, deck, or
+ * score would teach the game the wrong lessons about what this player
+ * has seen and how well they are doing.
+ */
 export function isChallengeRun(run: Run): boolean {
   return run.regionId === CHALLENGE_REGION_ID;
 }
@@ -1113,6 +1125,18 @@ export function GameApp() {
    * taken over; the "picked for this device" note is stale).
    */
   const [autoScoutNote, setAutoScoutNote] = useState(false);
+  /**
+   * Friend-challenge boot notice (cure round for PR #274): set by the
+   * boot effect when a `#c=` link was tapped with the friendChallenges
+   * flag ON but the challenge could not be loaded (broken link, unknown
+   * place, or the Globe catalog failed to load). Home then shows the
+   * child-friendly CHALLENGE_CHILD_COPY in a role="status" region for
+   * the rest of that boot — a tapped link must never fail silently for
+   * a kid, and there is no auto-dismiss, so a slow screen reader (or a
+   * grown-up helping) still sees it. Flag OFF never sets it: with the
+   * feature off there is nothing to explain.
+   */
+  const [challengeBootNotice, setChallengeBootNotice] = useState(false);
 
   /**
    * Apply a runtime auto-switch: persist (Q3) + stamp crash reports +
@@ -1633,6 +1657,18 @@ export function GameApp() {
       setReady(true);
       return;
     }
+    // Friend-challenge links arrive as a `#c=…` URL fragment. The
+    // fragment is stripped from the address bar FIRST, synchronously,
+    // before anything async happens — a challenge link should never
+    // sit in the URL where a screenshot or a share could leak it, and
+    // stripping must not wait on the flag fetch below. What happens
+    // next depends on the friendChallenges flag, but every failure exit
+    // FALLS THROUGH to bootSavedRun() — the ordinary saved-run boot
+    // defined below — instead of ending the boot itself: a player who
+    // taps a friend's link (broken or not, feature on or off) must
+    // never lose the run they already had in progress. With the flag
+    // off this makes the `#c=` boot exactly the boot main would have
+    // run if the link had never been tapped.
     const rawHash = window.location.hash;
     if (rawHash.startsWith("#c=") || rawHash === "#c") {
       try {
@@ -1646,12 +1682,21 @@ export function GameApp() {
       }
       void loadFlags().then(async () => {
         if (!isEnabled("friendChallenges")) {
-          setReady(true);
+          // Flag off: the feature does not exist for this player, so
+          // the boot must be indistinguishable from main's — fall
+          // through to the saved-run boot (which also clears a saved
+          // CHALLENGE run, exactly as it does without a hash).
+          bootSavedRun();
           return;
         }
         const decoded = decodeChallenge(rawHash, SCORING_VERSION);
         if (!decoded.ok) {
-          setReady(true);
+          // Flag on, but the link is broken (corrupt, or made by a
+          // different scoring version): tell the player on Home via
+          // the boot notice, then fall through — a saved run, if one
+          // exists, still resumes underneath the notice.
+          setChallengeBootNotice(true);
+          bootSavedRun();
           return;
         }
         try {
@@ -1661,7 +1706,12 @@ export function GameApp() {
           ]);
           const validIds = new Set(globePlaces.map((p) => p.id));
           if (!decoded.ids.every((id) => validIds.has(id))) {
-            setReady(true);
+            // The link names a place this build's Globe catalog does
+            // not have (an old link, or a hand-edited one). Same
+            // child-facing failure as a corrupt link: notice + fall
+            // through to the saved-run boot.
+            setChallengeBootNotice(true);
+            bootSavedRun();
             return;
           }
           const orderedIds = playOrder(decoded);
@@ -1680,12 +1730,27 @@ export function GameApp() {
           commit(challengeRun);
           setMenu(null);
         } catch {
-          // Fail closed to Home if Globe catalog cannot load.
+          // The Globe catalog could not load, so the challenge cannot
+          // start. From the player's side this is the same failure as
+          // a broken link — show the same notice and fall through to
+          // the saved-run boot instead of stranding them on Home.
+          setChallengeBootNotice(true);
+          bootSavedRun();
+          return;
         }
         setReady(true);
       });
       return;
     }
+    // The ordinary saved-run boot: everything a hash-less boot does —
+    // challenge-run resume/clear, review and tutorial retirement,
+    // idle-expiry, and the resumable-run restore. It is a named
+    // function (declared here, hoisted within this effect) because the
+    // `#c=` branch above falls through to it on every failure exit;
+    // the hash-less path simply calls it directly. The body below is
+    // the pre-challenge boot, unchanged — if you are changing resume
+    // behaviour, change it here so BOTH entry points get it.
+    function bootSavedRun() {
     const saved = readRun();
     if (saved && saved.regionId === CHALLENGE_REGION_ID) {
       void loadFlags().then(async () => {
@@ -1798,7 +1863,9 @@ export function GameApp() {
         ensureSession(restored);
       }
     }
-    setReady(true);
+      setReady(true);
+    }
+    bootSavedRun();
   }, [commit, ensureSession, killIdleSession, idleTimeoutMs, difficultyChoice]);
 
   const refreshForNewBuild = useCallback(() => {
@@ -2513,6 +2580,22 @@ export function GameApp() {
     </div>
   ) : null;
 
+  // Friend-challenge boot notice: shown on Home when this boot followed
+  // a tapped `#c=` link that could not be loaded with the flag on (see
+  // challengeBootNotice above). role="status" makes it a live region, so
+  // a screen reader announces it as Home appears; it stays for the whole
+  // boot (no dismiss, no timer) because the link is already gone from
+  // the URL — this notice is the only record the failure happened.
+  const challengeBootNoticeEl = challengeBootNotice ? (
+    <div
+      role="status"
+      data-testid="challenge-boot-notice"
+      className="mb-4 rounded-xl border border-line bg-surface p-4 text-base text-fg"
+    >
+      <p>{CHALLENGE_CHILD_COPY}</p>
+    </div>
+  ) : null;
+
   if (menu?.kind === "countries") {
     // Only countries with a playable pool — never a dead end.
     const regions = COUNTRIES.filter((country) => poolSizeFor("country", country.id) > 0);
@@ -2523,7 +2606,7 @@ export function GameApp() {
         title="Country"
         subtitle="Play a country whole — or drill into its states where available."
         regions={regions}
-        notice={loadNotice}
+        notice={<>{challengeBootNoticeEl}{loadNotice}</>}
         onBack={() => setMenu(null)}
         onChoose={(region) => {
           const subdivisions = ADMIN1_BY_COUNTRY[region.id] ?? [];
@@ -2578,7 +2661,7 @@ export function GameApp() {
         title={menu.countryName}
         subtitle={`Play the whole ${menu.countryName}, or pick a state.`}
         regions={regions}
-        notice={loadNotice}
+        notice={<>{challengeBootNoticeEl}{loadNotice}</>}
         headerAction={{
           label: `Play entire ${menu.countryName}`,
           onClick: () => openRun("country", menu.countryId, menu.countryName, difficultyChoice),
@@ -2645,6 +2728,7 @@ export function GameApp() {
       }
       notice={
         <>
+          {challengeBootNoticeEl}
           {mapSwitchedNotice}
           {autoScoutNotice}
           {idleNotice}
@@ -3724,6 +3808,11 @@ function Play({
       };
     }
     if (challenge) {
+      // Challenge pool: the places are exactly the link's ids, in the
+      // link's order — no dealer, no band filter, no seen-history. Each
+      // id is looked up in THIS device's own Globe catalog; an id the
+      // catalog does not know fails the whole run closed with the
+      // child-friendly copy, never a substituted place.
       placesFor("globe", "globe", undefined, false).then(
         (list) => {
           if (cancelled) return;
@@ -3962,6 +4051,11 @@ function PlayLoaded({
       createDealer(
         pool,
         run.seed,
+        // Review and challenge runs get a throwaway in-memory seen
+        // store: their places must never enter the player's persistent
+        // no-repeat history (a friend's picks are not places this
+        // player was dealt). Normal runs use the real localStorage
+        // store, scoped to edition/region/band.
         review || challenge
           ? memorySeenStore()
           : seenStoreFor(run.edition, run.regionId, run.difficultyChoice),
@@ -4129,6 +4223,8 @@ function PlayLoaded({
     // load so a remote decision wins the boot-time race deterministically.
     loadFlags().then(() => {
       if (!active) return;
+      // Challenge runs are excluded even when the flag is on: a
+      // friend's route must not write this player's learning record.
       const on = isEnabled("learningOutcomes") && !challenge;
       setLearningEnabled(on);
       if (on) setLearningStore(readLearningStore() ?? emptyLearningStore());
@@ -4322,6 +4418,11 @@ function PlayLoaded({
       // Review cards replay the original question's hit radius.
       // Otherwise the age-profile band scales the tolerance (Phase 1 §3a):
       // x1.5 / x1.25 / x1.0, clamps applied after the multiplier.
+      // Challenge runs are the exception: the radius is FROZEN at
+      // 750 km whatever the player's age band says, because sender and
+      // receiver may be in different bands and a shared route is only
+      // fair if both players face the identical circle. This frozen
+      // value must match the one onConfirm judges with, below.
       radiusKm: challenge
         ? CHALLENGE_GLOBE_RADIUS_KM
         : review
@@ -4355,6 +4456,9 @@ function PlayLoaded({
     // Review cards are judged against the hit radius of the original
     // question (snapshotted at miss time) — the same bar as the first try.
     // Otherwise the age-profile band scales the tolerance (Phase 1 §3a).
+    // Challenge runs freeze the radius at 750 km (see the variation
+    // above for why): this is the judgement call site, and the E2E
+    // 600 km-hit / 800 km-miss pair brackets exactly this constant.
     const radius = challenge
       ? CHALLENGE_GLOBE_RADIUS_KM
       : review
@@ -4402,7 +4506,10 @@ function PlayLoaded({
     // the (unreachable here) no-op path. Skipped for the tutorial practice
     // round — the tour is unscored practice. Review sessions record their
     // learning record and deck sync below but never bank into the session's
-    // totals and streaks.
+    // totals and streaks. Challenge runs skip banking for the same
+    // reason they skip the other stores: the score belongs to the
+    // shared route's own completion screen, not to this player's
+    // session totals.
     if (!tutorial && !challenge && nextRun.results.length > bankedBefore) {
       if (!review) {
         onBankPlace({
@@ -5066,6 +5173,12 @@ function PlayLoaded({
           onReview={onReviewDeck}
           reviewDueCount={reviewDueCount}
           challengeUrl={(() => {
+            // The summary's share-a-challenge action (normal Globe runs
+            // only, flag on): deal a fresh route of exactly
+            // CHALLENGE_MIN_PLACES places from THIS run's pool and seed,
+            // and encode it as an mc1 link. The dealt count is read back
+            // from the ids themselves in RunSummaryCard's share text —
+            // never hardcode a number here or there.
             if (!friendChallengesEnabled || run.edition !== "globe") return null;
             const gnPool = pool.filter((p) => /^gn-[0-9]+$/.test(p.id));
             if (gnPool.length < CHALLENGE_MIN_PLACES) return null;
