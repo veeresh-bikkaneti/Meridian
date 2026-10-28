@@ -1129,6 +1129,42 @@ body:has(.home-v5) {
   color: var(--hv5-ink-soft);
 }
 
+/* "Start over" reset opener (manifest 2026-10-28, Part 1): an in-flow
+   text button in the review card's text column. position:relative +
+   z-index:3 is the .hv5-involved p a precedent — the due card's CTA
+   stretches a click layer over the whole card at z-index:2, and the
+   opener must stay tappable above it without swallowing card taps
+   anywhere else. Not scoped to .home-v5: ReviewComplete (a plain
+   screen, no .home-v5 ancestor) renders the same control. The 44px
+   min-height is the accessibility tap-target floor. */
+.reset-history-open {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 10px;
+  margin-top: 2px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  color: var(--hv5-brown-deep, #77591f);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.reset-history-open:hover,
+.reset-history-open:focus-visible {
+  color: var(--hv5-ink, #33302a);
+}
+.reset-history-open:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep, #77591f);
+  outline-offset: 2px;
+}
+
 /* F7 — forced colors: the two-tone ring, the due outline, and the
    REVIEW → cue all restate in system colors so none of them vanishes
    or goes low-contrast when the UA overrides author colors. Static

@@ -12,7 +12,8 @@ import { serveBuiltArtifact } from "./helpers";
  *    image, heading, paragraph, and corner inset each open the game;
  *    one focus stop per card; focus ring around the whole card.
  * C. Review my misses: due → whole-card click + visible REVIEW → cue;
- *    empty/caught-up → not focusable/clickable, no cue, no button.
+ *    empty → not focusable/clickable, no cue, no button; caught-up →
+ *    no cue/CTA either, but the Part 1 reset opener renders (total > 0).
  * D. Grid band: .hv5-pages children span full width at 768/1280 (row
  *    stretch only); no-op at 390px. The 768 .hv5-grid3 orphan is a
  *    separate container and is deliberately NOT covered here.
@@ -490,7 +491,12 @@ test("C: Review due → tap anywhere opens review, REVIEW → cue present", asyn
   await expect(section).toBeVisible();
   await expect(section.locator(".hv5-review-cue")).toHaveText("REVIEW →");
   await expect(page.getByRole("button", { name: "Review my misses: Start review" })).toBeVisible();
-  expect(await focusableCount(page, '[data-testid="tour-stop-review"]')).toBe(1);
+  // Part 1 cure (manifest D9): the count is 2, not 1 — with deck
+  // total > 0 the card now also hosts the "Start over" reset opener
+  // (CTA + opener). The opener sits in-flow in the text column, clear
+  // of the cue's centre click point, so the tap-anywhere loop below
+  // (heading / paragraph / cue / corner) still starts review.
+  expect(await focusableCount(page, '[data-testid="tour-stop-review"]')).toBe(2);
 
   for (const point of ["heading", "paragraph", "cue", "corner"] as const) {
     const { context, page: fresh } = await freshHome(browser, 1280, deckSeed(0));
@@ -553,7 +559,7 @@ test("C: Review due → REVIEW cue never overlaps the illustration (1280 + 1024)
   }
 });
 
-test("C: Review empty and caught-up → not focusable, not clickable, no cue", async ({ page, browser }) => {
+test("C: Review empty → not focusable, not clickable, no cue; caught-up → only the reset opener", async ({ page, browser }) => {
   // Empty deck: no entries at all.
   {
     const { context, page: fresh } = await freshHome(browser, 1280, { v: 1, entries: {} });
@@ -580,7 +586,12 @@ test("C: Review empty and caught-up → not focusable, not clickable, no cue", a
       await expect(section).toContainText("All caught up!");
       await expect(fresh.getByRole("button", { name: "Review my misses: Start review" })).toHaveCount(0);
       await expect(section.locator(".hv5-review-cue")).toHaveCount(0);
-      expect(await focusableCount(fresh, '[data-testid="tour-stop-review"]')).toBe(0);
+      // Part 1 cure (manifest D10): the caught-up card DOES carry one
+      // focusable element — the "Start over" reset opener, which
+      // renders whenever deck total > 0 (due OR caught-up). There is
+      // still no review CTA and no cue, and the card itself is not
+      // clickable (the click assertion above is the empty-deck half).
+      expect(await focusableCount(fresh, '[data-testid="tour-stop-review"]')).toBe(1);
     } finally {
       await context.close();
     }

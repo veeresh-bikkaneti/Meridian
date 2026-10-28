@@ -2,7 +2,9 @@
 
 - **Branch:** `feat/reset-history-and-card-fix` (PR pending)
 - **Base:** `origin/main` at `ab21c1c` (2026-10-28 — PR #277 merged)
-- **State:** **IN BUILD.** Tier-2 council manifest signed and committed
+- **State:** **PART 1 BUILT** (commits 1–2 pushed; unit GREEN, two
+  named E2E items carried to the Stage 5 gates — see below).
+  Tier-2 council manifest signed and committed
   alone (`f681e92`, D1–D17 incl. Chair addendum). NO MERGE — the owner
   merges on his per-PR word after the panel approves the final tip.
 - **Task:** owner's words 2026-10-28 — "reset means now game remembers
@@ -38,7 +40,9 @@
 - [x] Stage 1 — research (store inventory, root causes)
 - [x] Stage 2 — council manifest committed alone (`f681e92`)
 - [x] Stage 3 — Part 2 build (see Part 2 record below)
-- [ ] Stage 4 — Part 1 build (Layer-2 RED recorded below → GREEN)
+- [x] Stage 4 — Part 1 build (Layer-2 RED recorded below → unit
+  GREEN; E2E has two named open items carried to Stage 5 — see
+  "Part 1 E2E state at commit 2" below)
 - [ ] Stage 5 — all 5 AGENTS.md gates on the final tip
 - [ ] Stage 6 — full panel (12 seats + DevEx) on the final tip
 - [ ] Stage 7 — PR opened (no merge)
@@ -75,8 +79,69 @@
 
 ## RED evidence (manifest D8 — Layer-2 run recorded before GREEN)
 
-_(builder fills: stub/no-op run → named behavioural failures, with the
-command and the failing test names)_
+- **Command:** `node --experimental-strip-types --test src/game/reset-history.test.ts src/game/review-deck.test.ts src/game/trail.test.ts src/game/loop/store.test.ts src/game/coldtrail/store.test.ts`
+- **Setup:** stub `resetHistory()` returning `{ cleared: [], failed: [] }`
+  and stub per-store clears returning `false` (no-ops) — Layer-2, not
+  Layer-1 (every import resolves; the failures are behavioural).
+- **Result:** 143 tests, 127 pass (all pre-existing), **16 fail — every
+  failure is a new Part 1 test:**
+  - `U-R1 master sentinel: every cleared key gone, every kept key byte-identical` — `AssertionError: deep-equal: actual [] vs expected ['coldtrail','geodetective','learning','paused-run','review-deck','session','trail']` (the stub clears nothing)
+  - `U-R2: a second reset is a no-op and still reports success`
+  - `U-R3: throwing removeItem falls back to overwriting the empty value`
+  - `U-R4: throwing enumeration fails only the trail store, never throws`
+  - `U-R5: one blocked store does not abort the others`
+  - `U-R6: injected storage is honoured — the globals are never touched`
+  - `U-R7: the loop and coldtrail open flags are removed`
+  - `U-R8: coldtrail v1-only seed cannot resurrect after reset`
+  - `U-R8: trail v1-only seen keys cannot resurrect after reset`
+  - `clearReviewDeck removes the deck key and reports success` — `false !== true`
+  - `clearReviewDeck: a throwing removeItem falls back to the empty deck`
+  - `clearTrailHistory removes seen v2 (scoped + unscoped), seen v1, and cleared marks only` — `false !== true`
+  - `clearTrailHistory honours an injected storage and leaves the global alone` — `false !== true`
+  - `clearLoopStore removes the v2 store and the open flag, never the v1 archive`
+  - `clearLoopStore honours an injected storage and leaves the global alone`
+  - `clearColdtrailStore removes v1 before v2, plus the open flag; load is fresh`
+- The new negative-shape tests (blocked storage → `false`, never throws)
+  pass against the stubs by construction; they bind the GREEN
+  implementations, not the stubs.
+
+## Part 1 E2E state at commit 2 (honest record, 2026-10-28)
+
+- **Unit:** 209/209 pass (reset-history, review-deck, trail,
+  loop/store, coldtrail/store, learning, session suites).
+  `npx tsc --noEmit` clean; `npm run build:pages` succeeded.
+- **E2E, final spec, single clean-queue pass (retries=0): 4 passed /
+  2 failed.** Passing: home flow (locked copy, Esc/Keep, confirm,
+  in-place card flip, storage read-back); visibility (empty deck +
+  caught-up); ReviewComplete surface; Editions-paused variant (D13).
+- **OPEN 1 — `reload proof: wiped open flags do not auto-open an
+  edition after reload`:** fails at the mid-test home-heading wait.
+  After leaving GeoDetective, the seeded `meridian.coldtrail.open=1`
+  routes the app to the Cold Trail screen (GameApp branch precedence:
+  loop > coldtrail > home), so Home never renders at that step and
+  the post-reset assertions are not reached. This is a test-flow
+  defect — the app follows its own precedence rules. Stage 5: fix
+  the flow (also leave Cold Trail, or seed `coldtrail.open` only at
+  the re-seed step) and re-run.
+- **OPEN 2 — `TrailScreen entry after reset: fresh case, fresh star
+  wallet`:** the final raw read-back of `meridian.coldtrail.v2` is
+  null after entering Cold Trail post-reset (`stored` not.toBeNull
+  fails). Needs Stage 5 diagnosis: lazy store write on the trail
+  screen vs reset interference.
+- **repeat-each=10 NOT achieved.** Best verified state is the single
+  pass above. (An earlier spec revision passed 6/6 in one single
+  pass, but repeat runs in this session were polluted by queued
+  flock waiters from backgrounded commands sharing port 4123 and
+  `test-results/` — those tallies are not trustworthy either way.)
+  Stage 5 must run the `--repeat-each=10` gate on the final tip in a
+  clean queue, one run at a time.
+- **Extended suites not re-run on the final tip:** the D9-cured
+  `card-redesign.desktop.spec.ts` and `mobile-home-overlap.spec.ts`
+  are Stage 5 items.
+- **Screenshot:** `evidence/part2-after-390.png` exists (35,556
+  bytes, 2026-10-28 18:22 UTC) but predates the final Part 1 build
+  (the dialog portal fix was built later) and its provenance was not
+  verified in this run — retake at Stage 5 on the final tip.
 
 ## Carried dissents / open questions
 
