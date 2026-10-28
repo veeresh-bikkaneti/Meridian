@@ -537,6 +537,23 @@
 .atlas-sound-toggle:hover {
   border-color: var(--atlas-brass);
 }
+
+/* High-contrast toggle pressed state (panel BLOCK 3 cure): the same
+ * brass-fill language as .atlas-seg button[aria-pressed="true"], applied
+ * through the dedicated class HighContrastToggle renders in both hosts
+ * (home .atlas-sound-toggle and the in-game chrome). Lucide has no
+ * honest Contrast on/off pair, so the icon itself also changes: its
+ * stroke glyph fills solid in the pressed state. Background, foreground,
+ * and icon fill all change — a sighted user cannot miss that it is on. */
+.atlas-contrast-toggle[aria-pressed="true"] {
+  background: var(--atlas-brass);
+  color: var(--atlas-brass-ink);
+  border-color: var(--atlas-brass);
+  box-shadow: 0 8px 20px -10px var(--atlas-brass);
+}
+.atlas-contrast-toggle[aria-pressed="true"] svg {
+  fill: currentColor;
+}
 .atlas-sound-toggle:focus-visible {
   outline: 2px solid var(--atlas-brass);
   outline-offset: 2px;

@@ -73,6 +73,37 @@ test("toggle on applies high contrast without navigation, toggle off restores st
   expect(page.url()).toBe(urlBefore);
 });
 
+test("toggle pressed state is visible: computed background differs on and off", async ({ page }) => {
+  // Panel BLOCK 3 (UX Designer): aria-pressed alone is invisible to the
+  // sighted low-vision users this feature serves. The pressed treatment
+  // (brass fill, the .atlas-seg pattern) must change the toggle's
+  // COMPUTED background-color between states on the home placement.
+  await page.goto(APP_NO_IDLE);
+  const toggle = page.getByTestId("high-contrast-toggle");
+  await expect(toggle).toBeVisible();
+  await expect(toggle).toHaveAttribute("aria-pressed", "false");
+  const bgOff = await toggle.evaluate((el) => getComputedStyle(el).backgroundColor);
+  const colorOff = await toggle.evaluate((el) => getComputedStyle(el).color);
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  const bgOn = await toggle.evaluate((el) => getComputedStyle(el).backgroundColor);
+  const colorOn = await toggle.evaluate((el) => getComputedStyle(el).color);
+  expect(bgOn).not.toBe(bgOff);
+  expect(colorOn).not.toBe(colorOff);
+  // The pin centre-dot seam (D9 condition (f)): standard dot is the
+  // translucent value; under high contrast the computed var goes solid.
+  expect(await mapVar(page, "--map-pin-dot")).toBe("#f6f3ea");
+  expect(await mapVar(page, "--map-pin")).toBe("#b04a9e");
+  expect(await mapVar(page, "--map-answer")).toBe("#a86c00");
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-pressed", "false");
+  const bgBack = await toggle.evaluate((el) => getComputedStyle(el).backgroundColor);
+  expect(bgBack).toBe(bgOff);
+  expect(await mapVar(page, "--map-pin-dot")).toBe("rgba(0,0,0,0.38)");
+});
+
 test("high contrast persists across reload", async ({ page }) => {
   await page.goto(APP_NO_IDLE);
   await page.getByTestId("high-contrast-toggle").click();

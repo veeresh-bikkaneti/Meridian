@@ -254,6 +254,21 @@ test("pin centre-dot seam: theme blocks keep the translucent dot, HC block uses 
   assert.ok(!paint.includes('fillStyle = "rgba(0,0,0,0.38)"'), "the dot fill is no longer hard-coded");
 });
 
+test("toggle pressed state has a visible brass treatment (panel BLOCK 3 cure)", () => {
+  // UX Designer BLOCK: aria-pressed alone is invisible to sighted users.
+  // The toggle carries a dedicated class in BOTH hosts, and styles.css
+  // gives its [aria-pressed="true"] state the .atlas-seg brass fill plus
+  // a filled icon — a difference a sighted user cannot miss.
+  const src = readFileSync(new URL("../components/game-app.tsx", import.meta.url), "utf8");
+  assert.ok(src.includes("atlas-contrast-toggle"), "toggle renders the dedicated pressed-state class");
+  const css = readFileSync(new URL("../styles.css", import.meta.url), "utf8");
+  const start = css.indexOf('.atlas-contrast-toggle[aria-pressed="true"]');
+  assert.ok(start >= 0, "pressed rule exists in styles.css");
+  const block = css.slice(start, css.indexOf("}", start));
+  assert.ok(block.includes("background: var(--atlas-brass);"), "pressed background is the brass fill");
+  assert.ok(block.includes("color: var(--atlas-brass-ink);"), "pressed foreground is the brass ink");
+});
+
 test("game-app wires the toggle hosts and the boot apply", () => {
   const src = readFileSync(new URL("../components/game-app.tsx", import.meta.url), "utf8");
   // Hosts pass the id through the SoundToggle-pattern `testId` prop;

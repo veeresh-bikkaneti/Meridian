@@ -431,7 +431,12 @@ function HighContrastToggle({
       aria-label={highContrast ? "Turn high contrast off" : "Turn high contrast on"}
       title={highContrast ? "High contrast on" : "High contrast off"}
       onClick={toggleHighContrast}
-      className={className}
+      // atlas-contrast-toggle: the dedicated class both hosts share, so
+      // styles.css can give [aria-pressed="true"] a VISIBLE pressed state
+      // (brass fill + filled icon, the .atlas-seg pattern) — aria-pressed
+      // alone is invisible to the sighted low-vision users this serves
+      // (panel BLOCK 3; manifest Scenarios 1–2: "I can see it pressed").
+      className={className ? `atlas-contrast-toggle ${className}` : "atlas-contrast-toggle"}
       style={style}
     >
       <Contrast className={iconClassName} aria-hidden="true" />
