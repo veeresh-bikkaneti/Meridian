@@ -752,11 +752,15 @@ test("flag ON: challenge completion fallback wraps within a 390px phone viewport
   page,
   context,
 }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
   await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
 
+  // Gameplay runs at the harness's desktop viewport (commitMiss taps a
+  // fixed desktop point); the phone viewport is applied to the completed
+  // screen, whose fallback layout is what this test measures — the wrap
+  // is pure CSS at the current viewport, so the post-resize widths are
+  // the 390px layout the panel measured.
   await page.goto(`${APP_URL}?idle-ms=3600000${VALID_HASH}`);
   await waitForChallengeAim(page);
   for (let i = 0; i < CHALLENGE_IDS.length; i++) {
@@ -770,6 +774,12 @@ test("flag ON: challenge completion fallback wraps within a 390px phone viewport
 
   const shareContainer = page.getByTestId("challenge-share-container");
   await expect(shareContainer).toBeVisible();
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect
+    .poll(() =>
+      shareContainer.evaluate((el) => el.getBoundingClientRect().width),
+    )
+    .toBeLessThanOrEqual(390);
   await forceShareFailure(page);
   await shareContainer.getByRole("button").click();
   await expect(shareContainer.getByRole("button")).toHaveText("Copy manually");
