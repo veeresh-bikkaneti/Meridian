@@ -229,7 +229,7 @@ export function dealChallenge(
   const ranked = entries.map((entry, index) => {
     const u = next();
     // Weighted sampling without replacement, in one pass (the
-    // Efraimidis–Spirakis trick): each entry draws a random u in (0, 1]
+    // Efraimidis–Spirakis trick): each entry draws a random u in [0, 1)
     // and scores u^(1/w). Sorting by that score, best first, picks
     // higher-weighted entries more often, with no re-rolls and no
     // duplicates. A non-positive or non-finite weight can never be
