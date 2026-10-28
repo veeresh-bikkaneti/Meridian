@@ -1,7 +1,11 @@
 export const CHALLENGE_CHILD_COPY = "Could not load this challenge.";
 export const CHALLENGE_REGION_ID = "challenge";
+export const CHALLENGE_REGION_NAME = "Friend challenge";
 export const CHALLENGE_EDITION = "globe";
 export const CHALLENGE_GLOBE_RADIUS_KM = 750;
+export const CHALLENGE_MIN_PLACES = 5;
+export const CHALLENGE_MAX_PLACES = 10;
+export const CHALLENGE_SHARE_LABEL = "Share this route with a friend";
 
 const PREFIX = "#c=mc1.";
 const ID_RE = /^gn-[0-9]+$/;

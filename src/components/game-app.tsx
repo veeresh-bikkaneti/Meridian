@@ -40,7 +40,7 @@ import {
   type SessionSummary,
 } from "@/game/session";
 import { scoreRingForEdition } from "@/game/score";
-import { scorePlace, type ScoredPlace } from "@/game/scoring";
+import { SCORING_VERSION, scorePlace, type ScoredPlace } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
 import { resolveRunPool } from "@/game/pool";
 import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";
@@ -82,6 +82,7 @@ import { directionalHint } from "./hint-logic";
 import { canUseHint } from "@/game/age-profile/run-config.ts";
 import { ResultCard } from "./result-card";
 import { RunSummaryCard } from "./run-summary";
+import { ShareButton } from "./share-button";
 import { ClearedCelebrationDialog, type ClearedInfo } from "./cleared-celebration";
 import { CometEmblem } from "./comet-emblem";
 import { GrandpaCoffeeRun } from "./grandpa-coffee-run";
@@ -330,8 +331,26 @@ declare global {
  * the no-repeat history of real regions and never bank into the session —
  * review is practice, not scoring.
  */
+import {
+  CHALLENGE_CHILD_COPY,
+  CHALLENGE_GLOBE_RADIUS_KM,
+  CHALLENGE_MAX_PLACES,
+  CHALLENGE_MIN_PLACES,
+  CHALLENGE_REGION_ID,
+  CHALLENGE_REGION_NAME,
+  CHALLENGE_SHARE_LABEL,
+  dealChallenge,
+  decodeChallenge,
+  encodeChallenge,
+  playOrder,
+} from "@/game/challenge";
+
 function isReviewRun(run: Run): boolean {
   return run.regionId === REVIEW_DECK_REGION_ID;
+}
+
+export function isChallengeRun(run: Run): boolean {
+  return run.regionId === CHALLENGE_REGION_ID;
 }
 
 /**
@@ -1614,7 +1633,88 @@ export function GameApp() {
       setReady(true);
       return;
     }
+    const rawHash = window.location.hash;
+    if (rawHash.startsWith("#c=") || rawHash === "#c") {
+      try {
+        window.history.replaceState(
+          null,
+          "",
+          window.location.pathname + window.location.search,
+        );
+      } catch {
+        // History API blocked; proceed fail-closed.
+      }
+      void loadFlags().then(async () => {
+        if (!isEnabled("friendChallenges")) {
+          setReady(true);
+          return;
+        }
+        const decoded = decodeChallenge(rawHash, SCORING_VERSION);
+        if (!decoded.ok) {
+          setReady(true);
+          return;
+        }
+        try {
+          const [globePlaces] = await Promise.all([
+            placesFor("globe", "globe", undefined, false),
+            preloadTerritory(),
+          ]);
+          const validIds = new Set(globePlaces.map((p) => p.id));
+          if (!decoded.ids.every((id) => validIds.has(id))) {
+            setReady(true);
+            return;
+          }
+          const orderedIds = playOrder(decoded);
+          clearDrop();
+          const challengeRun = startRun(
+            {
+              edition: "globe",
+              regionId: CHALLENGE_REGION_ID,
+              regionName: CHALLENGE_REGION_NAME,
+              dateKey: trailDate(),
+              difficultyChoice,
+            },
+            orderedIds,
+            null,
+          );
+          commit(challengeRun);
+          setMenu(null);
+        } catch {
+          // Fail closed to Home if Globe catalog cannot load.
+        }
+        setReady(true);
+      });
+      return;
+    }
     const saved = readRun();
+    if (saved && saved.regionId === CHALLENGE_REGION_ID) {
+      void loadFlags().then(async () => {
+        if (!isEnabled("friendChallenges")) {
+          clearDrop();
+          try {
+            sessionStorage.removeItem(RUN_KEY);
+          } catch {
+            // Storage blocked.
+          }
+          setReady(true);
+          return;
+        }
+        const today = {
+          edition: saved.edition,
+          regionId: saved.regionId,
+          regionName: saved.regionName,
+          dateKey: trailDate(),
+          difficultyChoice: saved.difficultyChoice,
+        };
+        if (isResumable(saved, today)) {
+          const restored = resumeRun(saved, today);
+          await preloadTerritory();
+          commit(restored);
+        }
+        setReady(true);
+      });
+      return;
+    }
     // Review sessions never resume across reloads: the deck (localStorage)
     // is the durable state; the session queue is rebuilt fresh on every
     // start. Fail closed to the edition picker.
@@ -3384,6 +3484,54 @@ function ReviewComplete({
   );
 }
 
+function ChallengeComplete({
+  run,
+  total,
+  onDone,
+}: {
+  run: Run;
+  total: number;
+  onDone: () => void;
+}) {
+  const challengeHash =
+    run.poolIds.length >= CHALLENGE_MIN_PLACES && run.poolIds.length <= CHALLENGE_MAX_PLACES
+      ? encodeChallenge(run.poolIds, SCORING_VERSION)
+      : null;
+  const challengeUrl =
+    challengeHash && typeof window !== "undefined"
+      ? `${window.location.origin}${window.location.pathname}${challengeHash}`
+      : "";
+  return (
+    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+      <p className="text-sm tracking-wide text-muted uppercase">
+        {CHALLENGE_REGION_NAME}
+      </p>
+      <h1 className="mt-2 font-display text-4xl text-fg" data-testid="challenge-complete">
+        Route complete! You scored {run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US")} across {total} places.
+      </h1>
+      <p className="mt-4 max-w-md text-lg text-muted">
+        You landed inside the {CHALLENGE_GLOBE_RADIUS_KM} km circle on {run.hits} of {total} stops.
+      </p>
+      <div className="mt-6 flex max-w-xs flex-col gap-3">
+        {challengeUrl ? (
+          <div data-testid="challenge-share-container" data-challenge-url={challengeUrl}>
+            <ShareButton
+              title="Meridian friend challenge"
+              text={`Play the same ${total} places on the Globe! I scored ${run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US")}.\n${challengeUrl}`}
+              url={challengeUrl}
+              label={CHALLENGE_SHARE_LABEL}
+              className="w-full"
+            />
+          </div>
+        ) : null}
+        <Button onClick={onDone} data-testid="challenge-done">
+          {REVIEW_DECK_COPY.backToEditions}
+        </Button>
+      </div>
+    </main>
+  );
+}
+
 function RegionList({
   title,
   subtitle,
@@ -3525,7 +3673,10 @@ function Play({
   // dealer on the new band's seen store, and a stale place written into the
   // new band's no-repeat history. Deriving `places` makes that commit
   // impossible: a key mismatch renders "Loading places" instead.
-  const loadKey = placesLoadKey(run.edition, run.regionId, run.difficultyChoice);
+  const challenge = isChallengeRun(run);
+  const loadKey = challenge
+    ? `${CHALLENGE_REGION_ID}:${run.poolIds.join(",")}`
+    : placesLoadKey(run.edition, run.regionId, run.difficultyChoice);
   const [loadedPlaces, setLoadedPlaces] = useState<LoadedFor<Starter[]> | null>(null);
   const [poolFailure, setPoolFailure] = useState<LoadedFor<string> | null>(null);
   const places = loadedForKey(loadedPlaces, loadKey);
@@ -3568,6 +3719,35 @@ function Play({
           setPoolFailure({ key: loadKey, value: "Could not load your review deck." });
         }
       }
+      return () => {
+        cancelled = true;
+      };
+    }
+    if (challenge) {
+      placesFor("globe", "globe", undefined, false).then(
+        (list) => {
+          if (cancelled) return;
+          const byId = new Map(list.map((p) => [p.id, p]));
+          const ordered: Starter[] = [];
+          for (const id of run.poolIds) {
+            const found = byId.get(id);
+            if (!found) {
+              setPoolFailure({ key: loadKey, value: CHALLENGE_CHILD_COPY });
+              return;
+            }
+            ordered.push(found);
+          }
+          setLoadedPlaces({ key: loadKey, value: ordered });
+        },
+        (err: unknown) => {
+          if (!cancelled) {
+            setPoolFailure({
+              key: loadKey,
+              value: err instanceof Error ? err.message : String(err),
+            });
+          }
+        },
+      );
       return () => {
         cancelled = true;
       };
@@ -3749,6 +3929,7 @@ function PlayLoaded({
   // queue (due order) is the pool; review answers never bank into the
   // session and the cleared-mode celebration never fires here.
   const review = isReviewRun(run);
+  const challenge = isChallengeRun(run);
   const reviewEntryById = useMemo(
     () => new Map((reviewEntries ?? []).map((entry) => [entry.place.id, entry] as const)),
     [reviewEntries],
@@ -3781,14 +3962,16 @@ function PlayLoaded({
       createDealer(
         pool,
         run.seed,
-        seenStoreFor(run.edition, run.regionId, run.difficultyChoice),
+        review || challenge
+          ? memorySeenStore()
+          : seenStoreFor(run.edition, run.regionId, run.difficultyChoice),
         run.index,
         run.prevLastId,
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [pool, run.seed, run.dateKey, run.edition, run.regionId, run.difficultyChoice, run.prevLastId],
+    [pool, run.seed, run.dateKey, run.edition, run.regionId, run.difficultyChoice, run.prevLastId, review, challenge],
   );
-  const place = review ? pool[run.index] : dealer.at(run.index);
+  const place = review || challenge ? pool[run.index] : dealer.at(run.index);
   /** The deck entry behind the dealt card (review sessions only). */
   const reviewEntry = review && place ? reviewEntryById.get(place.id) : undefined;
   // The qualified question label ("Manhattan, Nebraska, United States" in
@@ -3823,9 +4006,9 @@ function PlayLoaded({
   // real regions' histories), and the tour must not pollute the France
   // band's persistent history with its practice place.
   useEffect(() => {
-    if (review || tutorial) return;
+    if (review || tutorial || challenge) return;
     dealer.markDealtThrough(run.index);
-  }, [dealer, review, run.index, tutorial]);
+  }, [dealer, review, challenge, run.index, tutorial]);
   // Tutorial beat 1 → 2: the pin was committed (phase left "aim"), so the
   // reveal feedback takes over. Any later phase change is a real run's
   // business — tutorial is already 2 or 3 by then.
@@ -3938,6 +4121,7 @@ function PlayLoaded({
   // is authoritative for the session (no mid-game surprises). Flag off =
   // no reads, no writes, no traces — dealing/scoring/session byte-identical.
   const [learningEnabled, setLearningEnabled] = useState(false);
+  const [friendChallengesEnabled, setFriendChallengesEnabled] = useState(false);
   const [learningStore, setLearningStore] = useState<LearningStore | null>(null);
   useEffect(() => {
     let active = true;
@@ -3945,14 +4129,15 @@ function PlayLoaded({
     // load so a remote decision wins the boot-time race deterministically.
     loadFlags().then(() => {
       if (!active) return;
-      const on = isEnabled("learningOutcomes");
+      const on = isEnabled("learningOutcomes") && !challenge;
       setLearningEnabled(on);
       if (on) setLearningStore(readLearningStore() ?? emptyLearningStore());
+      setFriendChallengesEnabled(isEnabled("friendChallenges"));
     });
     return () => {
       active = false;
     };
-  }, []);
+  }, [challenge]);
   // Session score: the HUD total accumulates across edition switches until
   // End game. Falls back to the run's own results when no session exists
   // (defensive; openRun always ensures one).
@@ -4083,12 +4268,12 @@ function PlayLoaded({
   }, [run.phase, aim, celebrationOpen]);
 
   useEffect(() => {
-    // Review sessions: an exhausted queue (place undefined) renders the
-    // review-complete screen — never the run "done" phase.
-    if (review) return;
+    // Review and challenge sessions: an exhausted queue (place undefined)
+    // renders the completion screen — never the run "done" phase.
+    if (review || challenge) return;
     if (place || run.phase === "done" || run.phase === "summary") return;
     onRun({ ...run, phase: "done" });
-  }, [onRun, place, review, run]);
+  }, [onRun, place, review, challenge, run]);
 
   useEffect(() => {
     if (run.phase !== "story" || !place) {
@@ -4137,9 +4322,11 @@ function PlayLoaded({
       // Review cards replay the original question's hit radius.
       // Otherwise the age-profile band scales the tolerance (Phase 1 §3a):
       // x1.5 / x1.25 / x1.0, clamps applied after the multiplier.
-      radiusKm: review
-        ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-        : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run))),
+      radiusKm: challenge
+        ? CHALLENGE_GLOBE_RADIUS_KM
+        : review
+          ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
+          : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run))),
       // Same unit as the result headline — USA plays read miles (owner ruling 2026-10-11).
       unit: unitForEdition(run.edition, run.regionId),
     };
@@ -4168,9 +4355,11 @@ function PlayLoaded({
     // Review cards are judged against the hit radius of the original
     // question (snapshotted at miss time) — the same bar as the first try.
     // Otherwise the age-profile band scales the tolerance (Phase 1 §3a).
-    const radius = review
-      ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-      : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run)));
+    const radius = challenge
+      ? CHALLENGE_GLOBE_RADIUS_KM
+      : review
+        ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
+        : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run)));
     const hit = isHit(distance, radius);
     // v3: the place is scored with the streak engine + difficulty multiplier;
     // a miss scores 0 and resets the streak (handled in dropPin). Review is
@@ -4214,7 +4403,7 @@ function PlayLoaded({
     // round — the tour is unscored practice. Review sessions record their
     // learning record and deck sync below but never bank into the session's
     // totals and streaks.
-    if (!tutorial && nextRun.results.length > bankedBefore) {
+    if (!tutorial && !challenge && nextRun.results.length > bankedBefore) {
       if (!review) {
         onBankPlace({
           edition: run.edition,
@@ -4326,7 +4515,7 @@ function PlayLoaded({
     // cycle can re-trigger, so the catalog/history scan below is skipped.
     // Review sessions never celebrate clears: the deck is a practice queue,
     // not a difficulty band.
-    if (!review && justAnswered && !wasClearedCelebrated(run.edition, run.regionId, run.difficultyChoice)) {
+    if (!review && !challenge && justAnswered && !wasClearedCelebrated(run.edition, run.regionId, run.difficultyChoice)) {
       // The band catalog is the unfiltered region catalog narrowed by the
       // run's difficulty band — the same filter the replay path uses.
       const bandCatalogIds = dealingPoolFor(places, run.difficultyChoice).map(
@@ -4367,6 +4556,11 @@ function PlayLoaded({
   }
 
   function onEndGame() {
+    if (challenge) {
+      clearDrop();
+      onRun(endRun(run).run);
+      return;
+    }
     // The summary tallies the whole session (every edition played), not
     // just this run; the session ends here.
     const final = requestEndGame();
@@ -4499,6 +4693,11 @@ function PlayLoaded({
       <ReviewComplete results={run.results} total={pool.length} onDone={onEditions} />
     );
   }
+  if (challenge && (run.index >= pool.length || run.phase === "summary")) {
+    return (
+      <ChallengeComplete run={run} total={pool.length} onDone={onEditions} />
+    );
+  }
 
   return (
     <main className="relative h-dvh bg-bg">
@@ -4567,6 +4766,14 @@ function PlayLoaded({
             >
               {REVIEW_DECK_COPY.progressOf} {Math.min(run.index + 1, pool.length)} of{" "}
               {pool.length}
+            </p>
+          ) : challenge ? (
+            <p
+              data-testid="challenge-progress"
+              className="game-chrome pointer-events-auto rounded-md px-3 py-2 text-sm font-semibold tabular-nums"
+            >
+              Place {Math.min(run.index + 1, pool.length)} of {pool.length} ·{" "}
+              {run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US")} pts
             </p>
           ) : (
           <div className="flex flex-col items-end gap-0.5 sm:gap-2">
@@ -4858,6 +5065,16 @@ function PlayLoaded({
           onPlayAgain={onSummaryPlayAgain}
           onReview={onReviewDeck}
           reviewDueCount={reviewDueCount}
+          challengeUrl={(() => {
+            if (!friendChallengesEnabled || run.edition !== "globe") return null;
+            const gnPool = pool.filter((p) => /^gn-[0-9]+$/.test(p.id));
+            if (gnPool.length < CHALLENGE_MIN_PLACES) return null;
+            const ids = dealChallenge(gnPool.map((p) => ({ id: p.id, w: 1 })), CHALLENGE_MIN_PLACES, run.seed);
+            return `${window.location.origin}${window.location.pathname}${encodeChallenge(
+              ids,
+              SCORING_VERSION,
+            )}`;
+          })()}
         />
       ) : null}
     </main>

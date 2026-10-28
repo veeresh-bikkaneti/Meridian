@@ -13,6 +13,7 @@ import {
 import { SHARE_URL, sessionShareText } from "@/game/share-action";
 import { LEARNING_COPY, type GrowthSummary } from "@/game/learning";
 import { REVIEW_DECK_COPY } from "@/game/review-deck";
+import { CHALLENGE_SHARE_LABEL } from "@/game/challenge";
 import { Button } from "@/components/ui/button";
 import { ShareButton } from "./share-button";
 
@@ -45,8 +46,10 @@ export function RunSummaryCard(props: {
   onReview?: () => void;
   /** Cards currently due for review. */
   reviewDueCount?: number;
+  /** Optional Friend Challenge route URL (flag-gated, Globe edition only). */
+  challengeUrl?: string | null;
 }): JSX.Element {
-  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount } = props;
+  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount, challengeUrl } = props;
   // One unit for the whole card: miles only when EVERY played region is a
   // USA context (state edition, or the United States country run);
   // mixed or empty sessions fail closed to kilometers (owner ruling 2026-10-11).
@@ -266,6 +269,17 @@ export function RunSummaryCard(props: {
               </pre>
             }
           />
+          {challengeUrl ? (
+            <div data-testid="challenge-share-container" data-challenge-url={challengeUrl}>
+              <ShareButton
+                title="Meridian friend challenge"
+                text={`Play the same 5 places on the Globe!\n${challengeUrl}`}
+                url={challengeUrl}
+                label={CHALLENGE_SHARE_LABEL}
+                className="w-full"
+              />
+            </div>
+          ) : null}
           <Button data-testid="play-again" className="w-full" onClick={onPlayAgain}>
             Play again
           </Button>
