@@ -1,4 +1,10 @@
-import { test, expect, type BrowserContext, type Page } from "playwright/test";
+import {
+  test,
+  expect,
+  type BrowserContext,
+  type Locator,
+  type Page,
+} from "playwright/test";
 import { readFileSync } from "node:fs";
 import {
   serveBuiltArtifact,
@@ -41,6 +47,11 @@ import { SCORING_VERSION } from "../../src/game/scoring.ts";
  *   summary's share-a-challenge action), the selectable-text fallback
  *   renders with the link in it — the button's "Copy manually" state
  *   must never be a dead end with the URL nowhere visible.
+ * - Flag ON: both fallbacks WRAP inside a 390px phone viewport — the
+ *   unbroken challenge URL must not stretch the <pre> (or the page)
+ *   wider than the screen. DOM-text assertions cannot see this; only
+ *   rendered widths can (the PR #278 panel BLOCK: scrollWidth ~1,500
+ *   against a ~330 clientWidth before the overflow-wrap cure).
  * - Flag ON: `#c=<valid>` with 5 real Globe places boots directly into the
  *   deterministic 5-place Globe challenge in `playOrder` order, enforces the
  *   750 km pin radius freeze (proven behaviourally: a ~600 km pin is a hit,
@@ -709,6 +720,90 @@ test("flag ON: challenge completion share falls back to selectable text when sha
   await expect(fallback).toBeVisible();
   await expect(fallback).toContainText("Play the same 5 places on the Globe!");
   await expect(fallback).toContainText(challengeUrl!);
+  expect(relevantErrors(errors)).toEqual([]);
+});
+
+/**
+ * The wrap assertion the PR #278 panel BLOCK was missing: a fallback can
+ * be visible with the right text and STILL be unusable — the unbroken
+ * challenge URL (~200 chars, ~150 of them one unbreakable run) stretches
+ * the <pre> to ~1,500px of scroll width unless it wraps. Pin rendered
+ * widths, not DOM text: the <pre>'s scrollWidth must fit its clientWidth,
+ * and the document must not scroll horizontally past the viewport.
+ */
+async function expectFallbackWraps(fallback: Locator): Promise<void> {
+  const metrics = await fallback.evaluate((el) => ({
+    preScrollWidth: el.scrollWidth,
+    preClientWidth: el.clientWidth,
+    docScrollWidth: document.documentElement.scrollWidth,
+    innerWidth: window.innerWidth,
+  }));
+  expect(
+    metrics.preScrollWidth,
+    `fallback <pre> must wrap inside its box: scrollWidth ${metrics.preScrollWidth} <= clientWidth ${metrics.preClientWidth}`,
+  ).toBeLessThanOrEqual(metrics.preClientWidth);
+  expect(
+    metrics.docScrollWidth,
+    `page must not scroll horizontally: document scrollWidth ${metrics.docScrollWidth} <= viewport width ${metrics.innerWidth}`,
+  ).toBeLessThanOrEqual(metrics.innerWidth);
+}
+
+test("flag ON: challenge completion fallback wraps within a 390px phone viewport", async ({
+  page,
+  context,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+
+  await page.goto(`${APP_URL}?idle-ms=3600000${VALID_HASH}`);
+  await waitForChallengeAim(page);
+  for (let i = 0; i < CHALLENGE_IDS.length; i++) {
+    await commitMiss(page);
+    await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
+    await clickNextPlace(page);
+  }
+  await expect(page.getByTestId("challenge-complete")).toBeVisible({
+    timeout: 15_000,
+  });
+
+  const shareContainer = page.getByTestId("challenge-share-container");
+  await expect(shareContainer).toBeVisible();
+  await forceShareFailure(page);
+  await shareContainer.getByRole("button").click();
+  await expect(shareContainer.getByRole("button")).toHaveText("Copy manually");
+  const fallback = shareContainer.locator("pre");
+  await expect(fallback).toBeVisible();
+  await expectFallbackWraps(fallback);
+  expect(relevantErrors(errors)).toEqual([]);
+});
+
+test("flag ON: summary share-a-challenge fallback wraps within a 390px phone viewport", async ({
+  page,
+  context,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+
+  await page.goto(`${APP_URL}?idle-ms=3600000`);
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await waitForChallengeAim(page);
+  await page.getByRole("button", { name: "End game" }).click();
+  await expect.poll(() => readPhase(page), { timeout: 10_000 }).toBe("summary");
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible();
+
+  const shareContainer = dialog.getByTestId("challenge-share-container");
+  await expect(shareContainer).toBeVisible();
+  await forceShareFailure(page);
+  await shareContainer.getByRole("button").click();
+  await expect(shareContainer.getByRole("button")).toHaveText("Copy manually");
+  const fallback = shareContainer.locator("pre");
+  await expect(fallback).toBeVisible();
+  await expectFallbackWraps(fallback);
   expect(relevantErrors(errors)).toEqual([]);
 });
 
