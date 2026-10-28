@@ -33,6 +33,14 @@ import { SCORING_VERSION } from "../../src/game/scoring.ts";
  *   run when one exists; with no saved run it lands on Home WITH the
  *   child-friendly boot notice ("Could not load this challenge.",
  *   role="status") — a tapped link must never fail silently for a kid.
+ * - Flag ON: a corrupt `#c=` link over a resumable saved run resumes the
+ *   run AND keeps the boot notice out of the run — the notice is deferred,
+ *   not lost: it surfaces when the player returns Home.
+ * - Flag ON: when the share sheet AND the clipboard both fail on a
+ *   challenge share button (the completion screen's re-share and the
+ *   summary's share-a-challenge action), the selectable-text fallback
+ *   renders with the link in it — the button's "Copy manually" state
+ *   must never be a dead end with the URL nowhere visible.
  * - Flag ON: `#c=<valid>` with 5 real Globe places boots directly into the
  *   deterministic 5-place Globe challenge in `playOrder` order, enforces the
  *   750 km pin radius freeze (proven behaviourally: a ~600 km pin is a hit,
@@ -162,10 +170,57 @@ async function seedYoungBandProfile(page: Page): Promise<void> {
         }),
       );
     } catch {
-      // Storage blocked; the profile stays unset (x1.0 band) and a test
-      // that needed the seed fails its judgement assertion instead of
-      // passing vacuously.
+      // Storage blocked: the profile stays unset (x1.0 band). That does
+      // NOT make a seeded test fail on its own — an unset band judges an
+      // 800 km pin a miss either way, so the miss test would pass without
+      // proving the freeze. The readback assertion below
+      // (expectSeededYoungBand) is what turns this silent hole into a
+      // loud failure.
     }
+  });
+}
+
+/**
+ * Readback for seedYoungBandProfile: proves the seeded profile actually
+ * landed in localStorage with band "5-7". A seed that silently failed
+ * leaves the x1.0 band in place, and any test pinning band-scaled
+ * behaviour (the 800 km freeze proof) would then pass vacuously — this
+ * assertion exists so that can never happen unnoticed.
+ */
+async function expectSeededYoungBand(page: Page): Promise<void> {
+  const band = await page.evaluate(() => {
+    try {
+      const raw = localStorage.getItem("meridian.ageProfile.v1");
+      return raw ? ((JSON.parse(raw) as { band?: string }).band ?? null) : null;
+    } catch {
+      return null;
+    }
+  });
+  expect(
+    band,
+    "the seeded 5-7 age profile must be readable back from localStorage",
+  ).toBe("5-7");
+}
+
+/**
+ * Force shareScore's dual-failure outcome in the current page: no native
+ * share sheet, and the clipboard write rejects. ShareButton then lands
+ * in its "failed" status — the only path that renders a failureFallback.
+ * Applied via evaluate right before the click, so it cannot disturb
+ * boot or play.
+ */
+async function forceShareFailure(page: Page): Promise<void> {
+  await page.evaluate(() => {
+    Object.defineProperty(navigator, "share", {
+      value: undefined,
+      configurable: true,
+    });
+    Object.defineProperty(navigator, "clipboard", {
+      value: {
+        writeText: () => Promise.reject(new Error("clipboard denied (test)")),
+      },
+      configurable: true,
+    });
   });
 }
 
@@ -556,6 +611,8 @@ test("flag ON: a pin ~800 km from the true place is a MISS under the frozen 750 
 
   await page.goto(`${APP_URL}?idle-ms=3600000${VALID_HASH}`);
   await waitForChallengeAim(page);
+  // Readback: the freeze proof below is only real if the 5-7 seed landed.
+  await expectSeededYoungBand(page);
   expect(await readQuestion(page)).toContain("Mogadishu");
 
   // 800 km is just outside the frozen circle but INSIDE the seeded band's
@@ -568,5 +625,123 @@ test("flag ON: a pin ~800 km from the true place is a MISS under the frozen 750 
   expect(judged.hit).toBe(false);
   expect(judged.phase).toBe("done");
   await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
+  expect(relevantErrors(errors)).toEqual([]);
+});
+
+test("flag ON: corrupt #c= link over a saved run resumes the run and defers the boot notice until Home", async ({
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  const runJson = await captureSavedRun(context);
+  await seedSavedRun(context, runJson);
+
+  const page = await context.newPage();
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+
+  // Corrupt link + resumable saved run, flag on: the boot falls through
+  // and the run resumes (pinned by the test above). This test pins the
+  // OTHER half of that boot: the failure notice the fall-through records
+  // must not interrupt the run — it is deferred, and surfaces when the
+  // player comes back Home. (Office Hours NIT-1 / UX-R MINOR from the
+  // PR #274 cure record: the combination was asserted by no E2E.)
+  await page.goto(`${APP_URL}?idle-ms=3600000#c=mc1.corrupt_payload!!!`);
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 30_000 });
+  await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
+  expect(await page.evaluate(() => window.location.hash)).toBe("");
+  // Deferred: no notice anywhere on the play screen.
+  await expect(page.getByTestId("challenge-boot-notice")).toHaveCount(0);
+
+  // Still deferred on the summary screen after ending the run.
+  await page.getByRole("button", { name: "End game" }).click();
+  await expect.poll(() => readPhase(page), { timeout: 10_000 }).toBe("summary");
+  await expect(page.getByRole("dialog", { name: "Game summary" })).toBeVisible();
+  await expect(page.getByTestId("challenge-boot-notice")).toHaveCount(0);
+
+  // Back Home: the notice surfaces — deferred, not lost.
+  await page
+    .getByRole("dialog", { name: "Game summary" })
+    .getByRole("button", { name: "Done" })
+    .click();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 20_000,
+  });
+  const notice = page.getByTestId("challenge-boot-notice");
+  await expect(notice).toBeVisible();
+  await expect(notice).toContainText(CHALLENGE_CHILD_COPY);
+  await expect(notice).toHaveAttribute("role", "status");
+  expect(relevantErrors(errors)).toEqual([]);
+  await page.close();
+});
+
+test("flag ON: challenge completion share falls back to selectable text when share and clipboard both fail", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+
+  await page.goto(`${APP_URL}?idle-ms=3600000${VALID_HASH}`);
+  await waitForChallengeAim(page);
+  for (let i = 0; i < CHALLENGE_IDS.length; i++) {
+    await commitMiss(page);
+    await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
+    await clickNextPlace(page);
+  }
+  await expect(page.getByTestId("challenge-complete")).toBeVisible({
+    timeout: 15_000,
+  });
+
+  const shareContainer = page.getByTestId("challenge-share-container");
+  await expect(shareContainer).toBeVisible();
+  const challengeUrl = await shareContainer.getAttribute("data-challenge-url");
+  expect(challengeUrl).toBeTruthy();
+
+  // Dual failure: the button reaches its "failed" state, and the
+  // fallback text (with the link in it) must render — before the fix the
+  // button said "Copy manually" while the URL existed nowhere visible.
+  await forceShareFailure(page);
+  await shareContainer.getByRole("button").click();
+  await expect(shareContainer.getByRole("button")).toHaveText("Copy manually");
+  const fallback = shareContainer.locator("pre");
+  await expect(fallback).toBeVisible();
+  await expect(fallback).toContainText("Play the same 5 places on the Globe!");
+  await expect(fallback).toContainText(challengeUrl!);
+  expect(relevantErrors(errors)).toEqual([]);
+});
+
+test("flag ON: summary share-a-challenge falls back to selectable text when share and clipboard both fail", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+
+  // A NORMAL Globe run's summary carries the share-a-challenge action
+  // (flag on): it deals a fresh route and offers it as an mc1 link.
+  await page.goto(`${APP_URL}?idle-ms=3600000`);
+  await page.getByRole("button", { name: "Play the globe" }).click();
+  await waitForChallengeAim(page);
+  await page.getByRole("button", { name: "End game" }).click();
+  await expect.poll(() => readPhase(page), { timeout: 10_000 }).toBe("summary");
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible();
+
+  const shareContainer = dialog.getByTestId("challenge-share-container");
+  await expect(shareContainer).toBeVisible();
+  const challengeUrl = await shareContainer.getAttribute("data-challenge-url");
+  expect(challengeUrl).toBeTruthy();
+  expect(challengeUrl!).toContain("#c=mc1.");
+
+  await forceShareFailure(page);
+  await shareContainer.getByRole("button").click();
+  await expect(shareContainer.getByRole("button")).toHaveText("Copy manually");
+  const fallback = shareContainer.locator("pre");
+  await expect(fallback).toBeVisible();
+  await expect(fallback).toContainText("Play the same 5 places on the Globe!");
+  await expect(fallback).toContainText(challengeUrl!);
   expect(relevantErrors(errors)).toEqual([]);
 });
