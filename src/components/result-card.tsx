@@ -1,3 +1,4 @@
+import { CHALLENGE_UNLOCK_HINT, challengeRevealLabel } from "@/game/challenge";
 import { initialBearing, windName8 } from "@/game/geo";
 import { formatLength, scoreGradeBand, unitForEdition } from "@/game/units";
 import { nameTier } from "@/game/place-name";
@@ -176,6 +177,7 @@ export function ResultCard({
   onContinue,
   growthLine,
   poolPlaces,
+  challengeOffer,
 }: {
   run: Run;
   place: Starter | null;
@@ -206,6 +208,15 @@ export function ResultCard({
    * renders. Safe default.
    */
   poolPlaces?: Starter[];
+  /**
+   * Friend-challenge reveal entry (manifest §1(c), Package B): a text
+   * link in the card footer below Next place, dealing a FRESH route in
+   * the run's region, plus the non-interactive line naming when the
+   * sender's own route unlocks. The parent passes it only when the
+   * flag is on, the run is a normal run, and a route can be dealt —
+   * absent/null means the footer renders exactly as before.
+   */
+  challengeOffer?: { regionName: string; onChallenge: () => void } | null;
 }) {
   const reduced = usePrefersReducedMotion();
   const aiSports = useAiSportsTeams(place);
@@ -654,6 +665,19 @@ export function ResultCard({
               <Button onClick={onContinue} className="min-h-[48px] w-full text-base">
                 Next place →
               </Button>
+              {challengeOffer ? (
+                <div className="mt-3 border-t border-white/10 pt-2 text-center">
+                  <button
+                    type="button"
+                    data-testid="reveal-challenge-link"
+                    onClick={challengeOffer.onChallenge}
+                    className="inline-flex min-h-[44px] items-center justify-center px-3 text-sm font-medium text-[#f2c14e] underline-offset-2 transition-colors hover:underline"
+                  >
+                    {challengeRevealLabel(challengeOffer.regionName)}
+                  </button>
+                  <p className="text-sm leading-snug text-white/70">{CHALLENGE_UNLOCK_HINT}</p>
+                </div>
+              ) : null}
             </div>
           ) : null}
         </section>

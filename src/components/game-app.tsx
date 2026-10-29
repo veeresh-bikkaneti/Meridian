@@ -55,7 +55,7 @@ import patagoniaUrl from "@/assets/home-v5/patagonia.webp";
 import archiveToolsUrl from "@/assets/home-v5/archive-tools.webp";
 import journalTreeUrl from "@/assets/home-v5/journal-tree.webp";
 import binocularsHatUrl from "@/assets/home-v5/binoculars-hat.webp";
-import { Compass, Contrast, Flag, Globe2, MapPin, Volume2, VolumeX } from "lucide-react";
+import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
 import {
   initAudio,
   isSoundEnabled,
@@ -350,7 +350,10 @@ import {
   CHALLENGE_UNKNOWN_CONTENT_COPY,
   CHALLENGE_UNKNOWN_REGION_COPY,
   CHALLENGE_WELCOME_TITLE,
+  challengeFreshRouteLabel,
+  challengeMidRunLabel,
   challengeRadiusOf,
+  challengeRevealLabel,
   challengeRunFields,
   createChallengeRoute,
   dealChallenge,
@@ -4336,6 +4339,7 @@ function ChallengeComplete({
   total,
   onDone,
   shareEnabled,
+  regionCatalog,
 }: {
   run: Run;
   total: number;
@@ -4343,6 +4347,11 @@ function ChallengeComplete({
   /** The completion re-share renders only while the flag is on: a flag
    * flipped off mid-challenge drops the share, never the run (§4). */
   shareEnabled: boolean;
+  /** The completed route's OWN region catalog (Package B, §1(f)): the
+   * fresh secondary deals from the region, never from the route itself.
+   * Null while the catalog has not loaded (or for mc1 runs, whose
+   * completion surface is frozen and never shows the secondary). */
+  regionCatalog?: readonly Starter[] | null;
 }) {
   // Origin preservation (manifest §2, contract 3): a route re-shares in
   // the format it arrived in — an mc1 route stays mc1 byte for byte, an
@@ -4381,6 +4390,34 @@ function ChallengeComplete({
       // the route back along the chain with their score on it.
       `I scored ${score} on your ${mc2Creation?.regionName ?? run.regionName} route — beat that! (Opens in the newest Meridian.)\n${challengeUrl}`
     : `Play the same ${total} places on the Globe! I scored ${score}.\n${challengeUrl}`;
+  // The fresh secondary (manifest §1(f), Package B): a NEW route in the
+  // completed route's region, dealt from the region catalog — the
+  // sources are built with no runPoolIds on purpose, so the route just
+  // played can never become its own deal source. mc2 completions only:
+  // the mc1 completion surface is frozen (§2). Like the re-share, it is
+  // creation, so it renders only while the flag is on (§4). The deal
+  // seed is the run's own seed — deterministic for a given completion.
+  const freshCreation =
+    isMc2 && shareEnabled && regionCatalog
+      ? createChallengeRoute({
+          edition: run.edition,
+          regionId: run.challengeRegionId ?? "globe",
+          scoringVersion: SCORING_VERSION,
+          mode: "fresh",
+          sources: buildCreationSources({
+            catalog: regionCatalog,
+            choice: run.difficultyChoice,
+          }),
+          dealSeed: run.seed,
+        })
+      : null;
+  const freshUrl =
+    freshCreation && typeof window !== "undefined"
+      ? `${window.location.origin}${window.location.pathname}${freshCreation.fragment}`
+      : "";
+  const freshText = freshCreation
+    ? `Find ${freshCreation.placeCount} places in ${freshCreation.regionName}! Get inside the ${freshCreation.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${freshUrl}`
+    : "";
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
       <p className="text-sm tracking-wide text-muted uppercase">
@@ -4409,6 +4446,22 @@ function ChallengeComplete({
                 // share uses on themed surfaces.
                 <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
                   {challengeText}
+                </pre>
+              }
+            />
+          </div>
+        ) : null}
+        {freshCreation && freshUrl ? (
+          <div data-testid="challenge-fresh-share-container" data-challenge-url={freshUrl}>
+            <ShareButton
+              title="Meridian friend challenge"
+              text={freshText}
+              url={freshUrl}
+              label={challengeFreshRouteLabel(freshCreation.regionName)}
+              className="w-full"
+              failureFallback={
+                <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+                  {freshText}
                 </pre>
               }
             />
@@ -4576,6 +4629,13 @@ function Play({
   const [loadedPlaces, setLoadedPlaces] = useState<LoadedFor<Starter[]> | null>(null);
   const [poolFailure, setPoolFailure] = useState<LoadedFor<string> | null>(null);
   const places = loadedForKey(loadedPlaces, loadKey);
+  // Package B (§1(f)): for a challenge run, `places` above is only the
+  // route's own places — the completion screen's fresh secondary deals
+  // from the route's REGION, so the full catalog the load branch fetched
+  // is kept alongside, keyed the same way.
+  const [loadedChallengeCatalog, setLoadedChallengeCatalog] =
+    useState<LoadedFor<Starter[]> | null>(null);
+  const challengeCatalog = loadedForKey(loadedChallengeCatalog, loadKey);
   const poolError = loadedForKey(poolFailure, loadKey);
   // Review sessions: the due deck entries in session order (the poolIds
   // order). Null for normal runs.
@@ -4629,6 +4689,7 @@ function Play({
       placesFor(run.edition, run.challengeRegionId ?? "globe", undefined, false).then(
         (list) => {
           if (cancelled) return;
+          setLoadedChallengeCatalog({ key: loadKey, value: list });
           const byId = new Map(list.map((p) => [p.id, p]));
           const ordered: Starter[] = [];
           for (const id of run.poolIds) {
@@ -4718,6 +4779,7 @@ function Play({
     <PlayLoaded
       run={run}
       places={places}
+      challengeCatalog={challengeCatalog}
       session={session}
       onRun={onRun}
       onBankPlace={onBankPlace}
@@ -4746,6 +4808,7 @@ function Play({
 function PlayLoaded({
   run,
   places,
+  challengeCatalog,
   session,
   onRun,
   onBankPlace,
@@ -4770,6 +4833,10 @@ function PlayLoaded({
 }: {
   run: Run;
   places: Starter[];
+  /** Package B (§1(f)): the challenge route's full region catalog,
+   * loaded by Play for challenge runs (where `places` is only the
+   * route itself). Null for normal runs and while loading. */
+  challengeCatalog?: Starter[] | null;
   /** Effective age band for tolerance + round params (parent-set). */
   ageBand: AgeBandId;
   session: Session | null;
@@ -5806,6 +5873,112 @@ function PlayLoaded({
       </div>
     ) : null;
 
+  // --- Package B: mid-run (b) and reveal (c) challenge creation ---
+  // One creation path behind two entries: the run-menu item (aim) and
+  // the result-card footer link (reveal). Both deal a FRESH five from
+  // the run's region — the widening chain is the manifest §1(b) one:
+  // run pool → region band, seen-INCLUDED → full region catalog, which
+  // is buildCreationSources with NO seenIds (nothing is subtracted).
+  // Creation is a pure read + fresh deal: it never touches the run,
+  // the dealer, or the pool, and the flag is re-read at tap time
+  // (click-atomic, §4) rather than trusted from render state. Normal
+  // runs only — the same exclusion the summary offers ship with:
+  // challenge runs pass their route along at completion (§1(f)) and
+  // review is its own surface (§1(e), Package C).
+  const [runChallengePreview, setRunChallengePreview] = useState<ChallengeCreation | null>(null);
+  const [runMenuOpen, setRunMenuOpen] = useState(false);
+  const runChallengeSources = useMemo(
+    () =>
+      !challenge && !review && places
+        ? buildCreationSources({
+            catalog: places,
+            choice: run.difficultyChoice,
+            runPoolIds: run.poolIds,
+          })
+        : [],
+    [challenge, review, places, run.difficultyChoice, run.poolIds],
+  );
+  const runChallengeAvailable =
+    friendChallengesEnabled &&
+    runChallengeSources.some(
+      (source) => new Set(source.map((entry) => entry.id)).size >= CHALLENGE_MIN_PLACES,
+    );
+  const createRunChallenge = useCallback(() => {
+    if (!isEnabled("friendChallenges")) return;
+    const creation = createChallengeRoute({
+      edition: run.edition,
+      regionId: run.regionId,
+      scoringVersion: SCORING_VERSION,
+      mode: "fresh",
+      sources: runChallengeSources,
+      dealSeed: mintSeed(),
+    });
+    if (creation) setRunChallengePreview(creation);
+  }, [run.edition, run.regionId, runChallengeSources]);
+  // The menu never survives the run it belongs to: Escape closes it,
+  // and the summary (or a new run) closes it too.
+  useEffect(() => {
+    if (!runMenuOpen) return;
+    const onKey = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") setRunMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [runMenuOpen]);
+  useEffect(() => {
+    if (run.phase === "summary") setRunMenuOpen(false);
+  }, [run.phase]);
+  // The preview sheet for (b)/(c): the picker's sheet copy — what the
+  // friend gets, stated before anything is shared; a share failure
+  // inside it still leaves a visible, copyable link (§5).
+  const runChallengePreviewEl = runChallengePreview ? (() => {
+    const creation = runChallengePreview;
+    const url = `${window.location.origin}${window.location.pathname}${creation.fragment}`;
+    const text = `Find ${creation.placeCount} places in ${creation.regionName}! Get inside the ${creation.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${url}`;
+    return (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Challenge a friend"
+        data-testid="challenge-preview"
+      >
+        <div className="w-full max-w-sm rounded-2xl border border-line bg-surface p-6 shadow-2xl">
+          <h2 className="font-display text-2xl text-fg">Challenge a friend</h2>
+          <p className="mt-3 text-base text-fg">
+            {creation.placeCount} places in {creation.regionName}
+          </p>
+          <p className="mt-1 text-base text-muted">
+            Get inside the {creation.radiusKm} km circle — closer is better!
+          </p>
+          <p className="mt-2 text-base text-muted">{CHALLENGE_FAIRNESS_COPY}</p>
+          <p className="mt-2 text-base text-muted">
+            Your friend gets this exact route — the same {creation.placeCount} places, in this order.
+          </p>
+          <div className="mt-5 flex flex-col gap-2">
+            <div data-testid="challenge-share-container" data-challenge-url={url}>
+              <ShareButton
+                title="Meridian friend challenge"
+                text={text}
+                url={url}
+                label={CHALLENGE_SHARE_LABEL}
+                className="w-full"
+                failureFallback={
+                  <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+                    {text}
+                  </pre>
+                }
+              />
+            </div>
+            <Button variant="secondary" onClick={() => setRunChallengePreview(null)}>
+              Back
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  })() : null;
+
   // Review session complete: the due queue is exhausted. A bounded,
   // completable session — ADHD-friendly — never the endless run.
   if (review && run.index >= pool.length) {
@@ -5825,6 +5998,7 @@ function PlayLoaded({
         total={pool.length}
         onDone={run.challengeOrigin === "mc2" && onChallengeDone ? onChallengeDone : onEditions}
         shareEnabled={friendChallengesEnabled}
+        regionCatalog={challengeCatalog}
       />
     );
   }
@@ -5888,6 +6062,49 @@ function PlayLoaded({
                 mode takes effect in the next game, because the map is
                 built once per game (owner ruling, 2026-10-20). */}
             <MapModeToggle mapMode={mapMode} onSelect={onManualMapMode} />
+            {/* Package B (§1(b)): the run menu. Mid-run challenge
+                creation lives HERE — one item in this overflow, in the
+                header chrome cluster beside the other run controls —
+                never as a new button on the aim surface, and physically
+                separated from End game (which sits in the bottom dock /
+                top-right score cluster). The button is not rendered at
+                all when no route can be dealt or the flag is off:
+                flag-off means the feature does not exist (§4). */}
+            {runChallengeAvailable ? (
+              <div className="relative">
+                <button
+                  type="button"
+                  data-testid="run-menu-button"
+                  aria-expanded={runMenuOpen}
+                  aria-haspopup="menu"
+                  aria-label="Run menu"
+                  onClick={() => setRunMenuOpen((v) => !v)}
+                  className="pointer-events-auto flex h-11 w-11 items-center justify-center rounded-md border border-line bg-surface text-fg transition-colors"
+                >
+                  <MoreHorizontal aria-hidden="true" size={20} />
+                </button>
+                {runMenuOpen ? (
+                  <div
+                    role="menu"
+                    data-testid="run-menu"
+                    className="pointer-events-auto absolute top-full left-0 z-40 mt-2 w-72 rounded-2xl border border-line bg-surface p-2 shadow-xl"
+                  >
+                    <button
+                      type="button"
+                      role="menuitem"
+                      data-testid="run-menu-challenge"
+                      onClick={() => {
+                        setRunMenuOpen(false);
+                        createRunChallenge();
+                      }}
+                      className="flex min-h-[44px] w-full items-center rounded-xl px-3 py-2.5 text-left text-sm font-medium text-fg transition-colors hover:bg-bg"
+                    >
+                      {challengeMidRunLabel(run.regionName)}
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
           </div>
           {review ? (
             <p
@@ -6111,8 +6328,16 @@ function PlayLoaded({
               ? growthLineFor(learningStore?.records[place.id]?.attempts ?? [])
               : null
           }
+          // Package B (§1(c)): the reveal footer's challenge link —
+          // present only when a fresh in-region route can be dealt.
+          challengeOffer={
+            runChallengeAvailable
+              ? { regionName: run.regionName, onChallenge: createRunChallenge }
+              : null
+          }
         />
       ) : null}
+      {runChallengePreviewEl}
       {/* WS-4 Phase 1: the same deferred break as the note below, for the
           satellite-failure switch. Its own copy and its own dismiss. */}
       {(tileSwitchNote && place && tileSwitchNote.placeId === place.id && (run.phase === "story" || run.phase === "done") && revealDone) ? (
