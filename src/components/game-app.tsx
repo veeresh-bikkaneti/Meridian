@@ -4548,10 +4548,11 @@ function Play({
     if (challenge) {
       // Challenge pool: the places are exactly the link's ids, in the
       // link's order — no dealer, no band filter, no seen-history. Each
-      // id is looked up in THIS device's own Globe catalog; an id the
-      // catalog does not know fails the whole run closed with the
-      // child-friendly copy, never a substituted place.
-      placesFor("globe", "globe", undefined, false).then(
+      // id is looked up in THIS device's own catalog FOR THE ROUTE'S
+      // REGION (the Globe for mc1; the named state or country for mc2);
+      // an id that catalog does not know fails the whole run closed
+      // with the child-friendly copy, never a substituted place.
+      placesFor(run.edition, run.challengeRegionId ?? "globe", undefined, false).then(
         (list) => {
           if (cancelled) return;
           const byId = new Map(list.map((p) => [p.id, p]));

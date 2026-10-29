@@ -60,6 +60,9 @@ export async function openMysteryPlaceId(page: Page): Promise<string> {
 
 export const EVIDENCE = "/home/hatch/workspace/meridian-review/evidence";
 export const RUN_KEY = "meridian.run";
+/** mc2 challenge runs persist under their own key (manifest C8); the
+ * phase-reading helpers below accept it via their optional key param. */
+export const MC2_RUN_KEY = "meridian.run.mc2";
 
 // 1x1 fully-transparent PNG (base64) — tile stub, see the header comment.
 // (The previous bytes decoded to semi-transparent GREEN, not transparent;
@@ -278,11 +281,11 @@ export async function dismissTileOverlayIfPresent(page: Page): Promise<void> {
   }
 }
 
-export async function readPhase(page: Page): Promise<string | null> {
-  return page.evaluate((key) => {
-    const raw = sessionStorage.getItem(key);
+export async function readPhase(page: Page, key: string = RUN_KEY): Promise<string | null> {
+  return page.evaluate((k) => {
+    const raw = sessionStorage.getItem(k);
     return raw ? (JSON.parse(raw) as { phase: string }).phase : null;
-  }, RUN_KEY);
+  }, key);
 }
 
 export async function readRun(page: Page): Promise<{
@@ -502,6 +505,7 @@ export async function commitPin(
   page: Page,
   x: number,
   y: number,
+  key: string = RUN_KEY,
 ): Promise<{ phase: string | null; committedAt: number }> {
   // The tile watchdog can fire on slow/flaky networks, and the reveal only
   // plays over healthy tiles (tile failure shows the card at once). The
@@ -540,7 +544,7 @@ export async function commitPin(
   await expect
     .poll(
       async () => {
-        phase = await readPhase(page);
+        phase = await readPhase(page, key);
         return phase;
       },
       { timeout: 20_000 },
@@ -616,13 +620,14 @@ export const resultCard = (page: Page) =>
  */
 export async function commitMiss(
   page: Page,
+  key: string = RUN_KEY,
 ): Promise<{ committedAt: number }> {
   for (let attempt = 0; attempt < 3; attempt++) {
-    const { phase, committedAt } = await commitPin(page, 500, 400);
+    const { phase, committedAt } = await commitPin(page, 500, 400, key);
     if (phase === "done") return { committedAt };
     // Rare hit: move on and try the next place.
     await clickNextPlace(page);
-    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+    await expect.poll(() => readPhase(page, key), { timeout: 20_000 }).toBe("aim");
   }
   throw new Error("commitMiss: (500, 400) hit three places in a row");
 }
