@@ -1160,6 +1160,38 @@ body:has(.home-v5) {
 .reset-history-open:focus-visible {
   color: var(--hv5-ink, #33302a);
 }
+
+/* The Review card's challenge opener (manifest §1(e), 2026-10-28): a
+   second, independent control sharing the card with the reset opener
+   above, so it carries the same geometry for the same reasons — in
+   normal flow inside the text column, above the card's stretched
+   start-review layer, 44px floor. It is a separate class on purpose:
+   the two controls must never drift into each other's styling or
+   behaviour by accident. Only the home card renders it —
+   ReviewComplete uses a standard button. */
+.review-challenge-open {
+  position: relative;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 6px 10px;
+  margin-top: 2px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  color: var(--hv5-brown-deep, #77591f);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+.review-challenge-open:hover,
+.review-challenge-open:focus-visible {
+  color: var(--hv5-ink, #33302a);
+}
 .reset-history-open:focus-visible {
   outline: 3px solid var(--hv5-brown-deep, #77591f);
   outline-offset: 2px;
