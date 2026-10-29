@@ -11,9 +11,11 @@ import { serveBuiltArtifact } from "./helpers";
  *    whole-card action via the stretched CTA (Form S): clicks on the
  *    image, heading, paragraph, and corner inset each open the game;
  *    one focus stop per card; focus ring around the whole card.
- * C. Review my misses: due → whole-card click + visible REVIEW → cue;
- *    empty → not focusable/clickable, no cue, no button; caught-up →
- *    no cue/CTA either, but the Part 1 reset opener renders (total > 0).
+ * C. Review my misses: due → explicit controls only (action-model
+ *    manifest 2026-10-29 — the card left Form S: body taps are inert,
+ *    the primary button opens review, the REVIEW → cue is removed);
+ *    empty → not focusable/clickable, no controls; caught-up → no
+ *    CTA either, but the Part 1 reset opener renders (total > 0).
  * D. Grid band: .hv5-pages children span full width at 768/1280 (row
  *    stretch only); no-op at 390px. The 768 .hv5-grid3 orphan is a
  *    separate container and is deliberately NOT covered here.
@@ -454,51 +456,41 @@ test("F: CTA accessible names carry the card name; articles labelled; due outlin
 
 type RectBox = { x: number; y: number; width: number; height: number };
 
-/** Two boxes overlap only if they share more than ~0.5px in both axes
- *  (same epsilon idiom as mobile-home-overlap.spec.ts). */
-function boxesOverlap(a: RectBox, b: RectBox): boolean {
-  const eps = 0.5;
-  return (
-    a.x + eps < b.x + b.width - eps &&
-    b.x + eps < a.x + a.width - eps &&
-    a.y + eps < b.y + b.height - eps &&
-    b.y + eps < a.y + a.height - eps
-  );
-}
-
-/** Part 2 (manifest D9): ONE page.evaluate snapshots the cue, the
- *  illustration, and the card rects atomically — no scroll or layout
- *  can interleave between the reads (friend-challenge single-evaluate
- *  pattern). */
-async function cueArtSnapshot(page: Page) {
+/** ONE page.evaluate snapshots the illustration and card rects
+ *  atomically — no scroll or layout can interleave between the reads
+ *  (friend-challenge single-evaluate pattern). The cue rect this
+ *  helper used to return is gone: the cue is removed (action-model
+ *  manifest 2026-10-29). */
+async function artSnapshot(page: Page) {
   return page.evaluate(() => {
     const section = document.querySelector('[data-testid="tour-stop-review"]');
-    const cue = section?.querySelector(".hv5-review-cue");
     const art = section?.querySelector(".hv5-art");
     const rect = (el: Element | null | undefined) => {
       if (!el) return null;
       const r = el.getBoundingClientRect();
       return { x: r.x, y: r.y, width: r.width, height: r.height };
     };
-    return { card: rect(section), cue: rect(cue), art: rect(art) };
+    return { card: rect(section), art: rect(art) };
   });
 }
 
-test("C: Review due → tap anywhere opens review, REVIEW → cue present", async ({ page, browser }) => {
+test("C: Review due → card body is inert, the primary button opens review, cue removed", async ({ page, browser }) => {
+  // Action-model manifest 2026-10-29: the Review card leaves Form S.
+  // Heading / paragraph / corner taps are INERT (they used to start
+  // the review via the stretched CTA); only the explicit primary
+  // button starts it. The REVIEW → cue is removed entirely.
   await seedDeckOn(page, deckSeed(0));
   await gotoHome(page, 1280);
   const section = page.getByTestId("tour-stop-review");
   await expect(section).toBeVisible();
-  await expect(section.locator(".hv5-review-cue")).toHaveText("REVIEW →");
+  await expect(section.locator(".hv5-review-cue")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Review my misses: Start review" })).toBeVisible();
-  // Part 1 cure (manifest D9): the count is 2, not 1 — with deck
-  // total > 0 the card now also hosts the "Start over" reset opener
-  // (CTA + opener). The opener sits in-flow in the text column, clear
-  // of the cue's centre click point, so the tap-anywhere loop below
-  // (heading / paragraph / cue / corner) still starts review.
+  // Focusable controls: the primary + the "Start over" reset opener
+  // (this spec's flags route leaves friendChallenges off, so no
+  // challenge entry renders).
   expect(await focusableCount(page, '[data-testid="tour-stop-review"]')).toBe(2);
 
-  for (const point of ["heading", "paragraph", "cue", "corner"] as const) {
+  for (const point of ["heading", "paragraph", "corner"] as const) {
     const { context, page: fresh } = await freshHome(browser, 1280, deckSeed(0));
     try {
       const freshSection = fresh.getByTestId("tour-stop-review");
@@ -506,53 +498,59 @@ test("C: Review due → tap anywhere opens review, REVIEW → cue present", asyn
       const box = await freshSection.boundingBox();
       const head = await freshSection.locator("h2").boundingBox();
       const para = await freshSection.locator("p").first().boundingBox();
-      const cue = await freshSection.locator(".hv5-review-cue").boundingBox();
       const pt = {
         heading: { x: head!.x + head!.width / 2, y: head!.y + head!.height / 2 },
         paragraph: { x: para!.x + para!.width / 2, y: para!.y + para!.height / 2 },
-        cue: { x: cue!.x + cue!.width / 2, y: cue!.y + cue!.height / 2 },
         corner: { x: box!.x + 8, y: box!.y + 8 },
       }[point];
       await fresh.mouse.click(pt.x, pt.y);
-      await expect(freshSection).toHaveCount(0, { timeout: 20_000 });
-      await expect(fresh.getByText("Lincoln", { exact: true }).first()).toBeVisible({ timeout: 20_000 });
+      // Inert: still on the home picker, card still rendered.
+      await fresh.waitForTimeout(600);
+      await expect(fresh.getByTestId("home-heading")).toBeVisible();
+      await expect(freshSection).toBeVisible();
     } finally {
       await context.close();
     }
   }
+
+  // The primary button itself still opens the review.
+  const { context, page: fresh } = await freshHome(browser, 1280, deckSeed(0));
+  try {
+    await fresh.getByRole("button", { name: "Review my misses: Start review" }).click();
+    await expect(fresh.getByTestId("tour-stop-review")).toHaveCount(0, { timeout: 20_000 });
+    await expect(fresh.getByText("Lincoln", { exact: true }).first()).toBeVisible({ timeout: 20_000 });
+  } finally {
+    await context.close();
+  }
 });
 
-test("C: Review due → REVIEW cue never overlaps the illustration (1280 + 1024)", async ({ browser }) => {
-  // Manifest D9 contract: cue ∩ art is empty (0.5px epsilon) and both
-  // are fully visible inside the card, at desktop widths including the
-  // 1024px regime (769–1279) no other suite measures.
+test("C: Review due → cue element absent at 1280 + 1024; illustration fully inside the card", async ({ browser }) => {
+  // Action-model manifest 2026-10-29: the REVIEW → cue is removed.
+  // What survives from the old D9 contract: the illustration box sits
+  // entirely inside the card at desktop widths including the 1024px
+  // regime (769–1279) no other suite measures.
   for (const [width, height] of [[1280, 900], [1024, 768]] as const) {
     const { context, page: fresh } = await freshHome(browser, width, deckSeed(0));
     try {
       await fresh.setViewportSize({ width, height });
       const section = fresh.getByTestId("tour-stop-review");
       await expect(section).toBeVisible();
-      await expect(section.locator(".hv5-review-cue")).toHaveText("REVIEW →");
+      await expect(section.locator(".hv5-review-cue")).toHaveCount(0);
       await section.scrollIntoViewIfNeeded();
-      const snap = await cueArtSnapshot(fresh);
-      expect(snap.cue, "REVIEW cue has a bounding box").not.toBeNull();
+      const snap = await artSnapshot(fresh);
       expect(snap.art, "review illustration has a bounding box").not.toBeNull();
       expect(snap.card, "review card has a bounding box").not.toBeNull();
-      const { cue, art, card } = snap as { cue: RectBox; art: RectBox; card: RectBox };
-      expect(boxesOverlap(cue, art), "REVIEW cue overlaps review illustration").toBe(false);
-      // Both fully visible: each box sits entirely inside the card box.
-      for (const [name, box] of [["REVIEW cue", cue], ["review illustration", art]] as const) {
-        expect(box.width, `${name} width > 0`).toBeGreaterThan(0);
-        expect(box.height, `${name} height > 0`).toBeGreaterThan(0);
-        expect(box.x, `${name} left edge inside card`).toBeGreaterThanOrEqual(card.x - 0.5);
-        expect(box.y, `${name} top edge inside card`).toBeGreaterThanOrEqual(card.y - 0.5);
-        expect(box.x + box.width, `${name} right edge inside card`).toBeLessThanOrEqual(
-          card.x + card.width + 0.5,
-        );
-        expect(box.y + box.height, `${name} bottom edge inside card`).toBeLessThanOrEqual(
-          card.y + card.height + 0.5,
-        );
-      }
+      const { art, card } = snap as { art: RectBox; card: RectBox };
+      expect(art.width, "review illustration width > 0").toBeGreaterThan(0);
+      expect(art.height, "review illustration height > 0").toBeGreaterThan(0);
+      expect(art.x, "review illustration left edge inside card").toBeGreaterThanOrEqual(card.x - 0.5);
+      expect(art.y, "review illustration top edge inside card").toBeGreaterThanOrEqual(card.y - 0.5);
+      expect(art.x + art.width, "review illustration right edge inside card").toBeLessThanOrEqual(
+        card.x + card.width + 0.5,
+      );
+      expect(art.y + art.height, "review illustration bottom edge inside card").toBeLessThanOrEqual(
+        card.y + card.height + 0.5,
+      );
     } finally {
       await context.close();
     }

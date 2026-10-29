@@ -656,14 +656,19 @@ for (const width of WIDTHS) {
   }
 }
 
-/* ---------- Part 2 (manifest D9): REVIEW cue vs illustration ----------
- * On the home Review card in its DUE state the decorative REVIEW cue
- * (.hv5-review-cue) sat entirely inside the illustration box
- * (.hv5-spot .hv5-art). Contract: the two boxes are disjoint (0.5px
- * epsilon, the overlaps()/noOverlap() helpers above) and both fully
- * visible inside the card, at phone widths 360 and 390. The deck seed
- * is the card-redesign.desktop.spec.ts deckSeed idiom (one Lincoln
- * entry, already due). */
+/* ---------- Part 3 (action-model manifest 2026-10-29): Review card
+ * controls at phone widths ----------
+ * Part 2 (the D9 cue-vs-illustration contract) is deleted with the
+ * cue itself: the Review card left Form S and the cue is removed.
+ * What replaces it — the new stack's geometry contract at 360/390px
+ * in the DUE state with friendChallenges ON (the tallest stack):
+ * the three controls (primary, challenge, reset) are pairwise
+ * disjoint, each >=44px tall, stacked in DOM order, unobstructed at
+ * their centres (elementFromPoint), and disjoint from the card's
+ * illustration box — the control∩art heir of the deleted cue test
+ * (Councilor C F8d: a taller stack beside bottom-anchored art is
+ * exactly the original bug class). One page.evaluate snapshots all
+ * rects + hit probes atomically after home-rise settles. */
 const REVIEW_DECK_KEY = "meridian:review-deck:v1";
 
 function dueDeckSeed() {
@@ -698,9 +703,22 @@ function dueDeckSeed() {
   };
 }
 
-test.describe("Part 2 · review cue vs illustration (due deck)", () => {
+test.describe("Part 3 · review card controls (due deck, challenges on)", () => {
   for (const width of WIDTHS) {
-    test(`cue and illustration are disjoint at ${width}px`, async ({ page }) => {
+    test(`controls disjoint, >=44px, ordered, clear of the art at ${width}px`, async ({
+      page,
+      context,
+    }) => {
+      await context.route("**/flags.json", async (route) => {
+        await route.fulfill({
+          status: 200,
+          contentType: "application/json; charset=utf-8",
+          body: JSON.stringify({
+            version: 1,
+            flags: { pwaUpdateToast: true, learningOutcomes: true, friendChallenges: true },
+          }),
+        });
+      });
       await page.setViewportSize({ width, height: 844 });
       await page.addInitScript(
         ({ key, s }) => {
@@ -711,41 +729,64 @@ test.describe("Part 2 · review cue vs illustration (due deck)", () => {
       const errors = await loadHome(page);
       const section = page.getByTestId("tour-stop-review");
       await expect(section).toBeVisible();
-      await expect(section.locator(".hv5-review-cue")).toHaveText("REVIEW →");
+      await expect(section.locator(".hv5-review-cue")).toHaveCount(0);
+      await expect(page.getByTestId("review-challenge-a-friend")).toBeVisible();
       await section.scrollIntoViewIfNeeded();
-      await page.waitForTimeout(300);
-      // ONE page.evaluate snapshots cue + art + card rects atomically —
-      // no scroll or layout can interleave between the reads.
+      await page.waitForTimeout(1_700); // home-rise settled before geometry
       const snap = await page.evaluate(() => {
-        const card = document.querySelector('[data-testid="tour-stop-review"]');
-        const cue = card?.querySelector(".hv5-review-cue");
-        const art = card?.querySelector(".hv5-art");
+        const card = document.querySelector('[data-testid="tour-stop-review"]')!;
         const rect = (el: Element | null | undefined) => {
           if (!el) return null;
           const r = el.getBoundingClientRect();
           return { x: r.x, y: r.y, width: r.width, height: r.height };
         };
-        return { card: rect(card), cue: rect(cue), art: rect(art) };
+        const primary = card.querySelector('button[aria-label="Review my misses: Start review"]');
+        const challenge = card.querySelector('[data-testid="review-challenge-a-friend"]');
+        const reset = card.querySelector('[data-testid="reset-history-open"]');
+        const hit = (el: Element | null) => {
+          if (!el) return false;
+          const r = el.getBoundingClientRect();
+          const top = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+          return !!top && (el === top || el.contains(top));
+        };
+        return {
+          card: rect(card),
+          art: rect(card.querySelector(".hv5-art")),
+          primary: rect(primary),
+          challenge: rect(challenge),
+          reset: rect(reset),
+          primaryHit: hit(primary),
+          challengeHit: hit(challenge),
+          resetHit: hit(reset),
+        };
       });
       expect(snap.card, "review card has a bounding box").not.toBeNull();
-      noOverlap("REVIEW cue", snap.cue, "review illustration", snap.art);
-      // Both fully visible: each box sits entirely inside the card box.
-      const card = snap.card!;
-      for (const [name, box] of [
-        ["REVIEW cue", snap.cue!],
-        ["review illustration", snap.art!],
-      ] as const) {
-        expect(box.width, `${name} width > 0`).toBeGreaterThan(0);
-        expect(box.height, `${name} height > 0`).toBeGreaterThan(0);
-        expect(box.x, `${name} left edge inside card`).toBeGreaterThanOrEqual(card.x - 0.5);
-        expect(box.y, `${name} top edge inside card`).toBeGreaterThanOrEqual(card.y - 0.5);
-        expect(box.x + box.width, `${name} right edge inside card`).toBeLessThanOrEqual(
-          card.x + card.width + 0.5,
-        );
-        expect(box.y + box.height, `${name} bottom edge inside card`).toBeLessThanOrEqual(
-          card.y + card.height + 0.5,
-        );
+      const controls = [
+        ["primary", snap.primary],
+        ["challenge", snap.challenge],
+        ["reset", snap.reset],
+      ] as const;
+      for (const [name, box] of controls) {
+        expect(box, `${name} has a bounding box`).not.toBeNull();
+        expect(box!.height, `${name} height >= 44px`).toBeGreaterThanOrEqual(43.5);
+        // >=14px inset from the card's left/right edges (finish-gate E1).
+        expect(box!.x - snap.card!.x, `${name} left inset >= 14px`).toBeGreaterThanOrEqual(13.5);
+        expect(
+          snap.card!.x + snap.card!.width - (box!.x + box!.width),
+          `${name} right inset >= 14px`,
+        ).toBeGreaterThanOrEqual(13.5);
+        noOverlap(name, box, "review illustration", snap.art);
       }
+      noOverlap("primary", snap.primary, "challenge", snap.challenge);
+      noOverlap("primary", snap.primary, "reset", snap.reset);
+      noOverlap("challenge", snap.challenge, "reset", snap.reset);
+      // Stack order = DOM order.
+      expect(snap.primary!.y, "primary above challenge").toBeLessThan(snap.challenge!.y);
+      expect(snap.challenge!.y, "challenge above reset").toBeLessThan(snap.reset!.y);
+      // Centres unobstructed.
+      expect(snap.primaryHit, "primary centre unobstructed").toBe(true);
+      expect(snap.challengeHit, "challenge centre unobstructed").toBe(true);
+      expect(snap.resetHit, "reset centre unobstructed").toBe(true);
       expectCleanConsole(errors);
     });
   }
