@@ -166,12 +166,61 @@ it — the reveal and the result still come into view, and End game stays
 visible above them. No duplicate accessible names, no new overlap
 surface: the existing single-`evaluate()` rect assertions now also cover
 the case-number / stars rects and the Next mystery / Next case rects.
+The Trail header row must be a direct `<main>` child, because a sticky
+element cannot stick past its short parent's box (first `<header>`
+placement failed F3 at y = −81.5).
 
 Chair sign-off, 2026-10-29: APPROVED. Rationale: this amends R5's
 mechanism, not its placement ruling — the button stays exactly where R5
 put it, and the amendment is the smallest change that makes S4/S5 true
 on every screen state the manifest already names (reveal-unacknowledged,
 result-unacknowledged), rather than only on mid-case screens.
+
+## 5B. Cycle-5 amendment — cap waiver, map offset, announcer clear, load-error row (final cure cycle)
+
+Chair sign-off, 2026-10-29: APPROVED. Three panel BLOCKs from the
+re-vote on `0266898` (5 BLOCKED, 2 APPROVE, 6 APPROVE-WITH-NITS), cured
+here; this is the final cure cycle — no further cycle exists.
+
+- Cap waiver (BLOCK A, seats 1, 8, 13). CHAIR RULING, verbatim: the
+  +900 cap is WAIVED for this PR only, because the overrun is
+  test-driven cure evidence, not product scope creep; manifest §3 cap
+  text itself is unchanged. Final-tip footprint (recomputed with
+  `git diff --numstat origin/main...HEAD`): branch total
+  +1647/−333; manifest +247/−0; BRANCH_STATUS
+  +58/−296; remainder (code + tests + README)
+  +1342/−37, over the §3 +900 cap on the record's own exclusion
+  basis (manifest and BRANCH_STATUS whole-file supersession excluded).
+  The waiver, not a reinterpretation or a trim, is the answer to the
+  overrun; BRANCH_STATUS carries the same numbers.
+- Map offset (BLOCK C, seat 3; a regression introduced by the cycle-4
+  cure). The Trail header row sticks at top-0 z-20, so the `.ct-map`
+  strip now sticks at top 60px — the measured header height (44px
+  buttons + py-2, asserted in the E2E test, not assumed) — keeping both
+  End game and the map strip fully visible and tappable on scrolled
+  mid-case screens. Sighting-card `scroll-margin-top` values were
+  re-measured against the new sticky stack (worst state = placing with
+  the hint banner: 360x740 stack 431.4px, 375x667 405.1px, 390x844
+  603.9px, hence a min-height split for tall phones; 768x1024 old
+  map-alone 613.5px + 60px header) and raised to 440px / 440px /
+  612px (tall phones) / 682px, each measured stack + 8px rounded up.
+  A scrolled mid-case Cold Trail E2E test asserts the map status line
+  rect is in-viewport below the header and a hit test at the canvas top
+  lands on the map, not the header, plus a scrolled-into-view card
+  landing below the stack with zero overlap.
+- Announcer clear (BLOCK B, seat 2; seats 1 and 5 agree as nits).
+  `handleModeSummaryDone` now clears `mapModeAnnouncement` (one line),
+  so a repeat mode End game with byte-identical totals (GeoDetective
+  End game → Done → Cold Trail End game, both 0/0, no classic play
+  between) changes the live-region text again and is announced. Mode
+  only: the classic announcement path and the announcement template
+  wording are unchanged, and no disclosure copy is added. A unit pin
+  asserts the clear and fails on the pre-cure tree.
+- Load-error row choice. §5A's sticky rule is main-return-only: the
+  Cold Trail load-error return is a short, non-scrolling screen with
+  no map strip, so its button row is not made sticky. Recorded here
+  rather than left ambiguous; the return keeps its own End game button
+  beside Back, unchanged.
 
 ## 6. Councilor C round-1 challenge — disposition
 
