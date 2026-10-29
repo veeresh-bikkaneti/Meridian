@@ -5610,20 +5610,28 @@ function PlayLoaded({
       secondary: { url: string; text: string; label: string } | null;
     };
     if (!friendChallengesEnabled || challenge || review || run.phase !== "summary") return none;
-    if (run.results.length < CHALLENGE_MIN_PLACES) return none;
     const origin = `${window.location.origin}${window.location.pathname}`;
+    // The exact offer needs the sender's own five; the FRESH offer does
+    // not — the shipped summary offered a fresh route even when the run
+    // ended before five places, and that surface is frozen in kind (the
+    // frozen E2E pair at friend-challenge.desktop.spec.ts:792/:820 pins
+    // it). Gating both on the played count was a Package A regression,
+    // caught by those frozen tests.
     const playedIds: string[] = [];
     for (let i = 0; i < run.results.length; i++) {
       const dealt = dealer.at(i);
       if (dealt) playedIds.push(dealt.id);
     }
-    const exact = createChallengeRoute({
-      edition: run.edition,
-      regionId: run.regionId,
-      scoringVersion: SCORING_VERSION,
-      mode: "exact",
-      exactIds: playedIds,
-    });
+    const exact =
+      run.results.length >= CHALLENGE_MIN_PLACES
+        ? createChallengeRoute({
+            edition: run.edition,
+            regionId: run.regionId,
+            scoringVersion: SCORING_VERSION,
+            mode: "exact",
+            exactIds: playedIds,
+          })
+        : null;
     const seenIds = new Set(
       seenStoreFor(run.edition, run.regionId, run.difficultyChoice).read(),
     );
@@ -5643,24 +5651,56 @@ function PlayLoaded({
     });
     const regionPhrase =
       run.edition === "globe" ? "on the Globe" : `in ${exact?.regionName ?? run.regionName}`;
+    const freshSecondary = fresh
+      ? {
+          url: `${origin}${fresh.fragment}`,
+          label: `New route in ${fresh.regionName} instead`,
+          text: `Find ${fresh.placeCount} places in ${fresh.regionName}! Get inside the ${fresh.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${origin}${fresh.fragment}`,
+        }
+      : null;
+    if (exact) {
+      return {
+        primary: {
+          url: `${origin}${exact.fragment}`,
+          label:
+            exact.fragment.startsWith("#c=mc1.") ? CHALLENGE_SHARE_LABEL : CHALLENGE_MC2_SHARE_LABEL,
+          text: exact.fragment.startsWith("#c=mc1.")
+            ? `Play the same ${exact.placeCount} places on the Globe!\n${origin}${exact.fragment}`
+            : `Play the same ${exact.placeCount} places ${regionPhrase}! I scored ${sessionTotal.toLocaleString("en-US")}. (Opens in the newest Meridian.)\n${origin}${exact.fragment}`,
+        },
+        secondary: freshSecondary,
+      };
+    }
+    // No exact offer (fewer than five played): the fresh route becomes
+    // the primary. On the Globe it takes the SHIPPED form byte for
+    // byte — the same flat deal from this run's pool and seed, encoded
+    // mc1 — because that surface predates mc2 and is frozen in kind.
+    if (run.edition === "globe") {
+      const gnPool = pool.filter((p) => /^gn-[0-9]+$/.test(p.id));
+      if (gnPool.length < CHALLENGE_MIN_PLACES) return none;
+      const ids = dealChallenge(
+        gnPool.map((p) => ({ id: p.id, w: 1 })),
+        CHALLENGE_MIN_PLACES,
+        run.seed,
+      );
+      const fragment = encodeChallenge(ids, SCORING_VERSION);
+      return {
+        primary: {
+          url: `${origin}${fragment}`,
+          label: CHALLENGE_SHARE_LABEL,
+          text: `Play the same ${ids.length} places on the Globe!\n${origin}${fragment}`,
+        },
+        secondary: null,
+      };
+    }
+    if (!fresh) return none;
     return {
-      primary: exact
-        ? {
-            url: `${origin}${exact.fragment}`,
-            label:
-              exact.fragment.startsWith("#c=mc1.") ? CHALLENGE_SHARE_LABEL : CHALLENGE_MC2_SHARE_LABEL,
-            text: exact.fragment.startsWith("#c=mc1.")
-              ? `Play the same ${exact.placeCount} places on the Globe!\n${origin}${exact.fragment}`
-              : `Play the same ${exact.placeCount} places ${regionPhrase}! I scored ${sessionTotal.toLocaleString("en-US")}. (Opens in the newest Meridian.)\n${origin}${exact.fragment}`,
-          }
-        : null,
-      secondary: fresh
-        ? {
-            url: `${origin}${fresh.fragment}`,
-            label: `New route in ${fresh.regionName} instead`,
-            text: `Find ${fresh.placeCount} places in ${fresh.regionName}! Get inside the ${fresh.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${origin}${fresh.fragment}`,
-          }
-        : null,
+      primary: {
+        url: `${origin}${fresh.fragment}`,
+        label: CHALLENGE_SHARE_LABEL,
+        text: freshSecondary!.text,
+      },
+      secondary: null,
     };
   }, [friendChallengesEnabled, challenge, review, run, dealer, pool, sessionTotal]);
 

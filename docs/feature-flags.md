@@ -183,9 +183,12 @@ build computes for the same region, so a hand-edited circle cannot rig the
 game. Creating a challenge: the Home screen's "Challenge a friend" button
 deals a fresh five from the region you pick, and the end-of-run summary
 offers the route you just played ("Play my route") plus a fresh route in
-the same region. Receiving one shows a welcome card first — your game in
-progress is only set aside when you tap Start, and it is offered back when
-the challenge ends. mc2 runs are saved under their own storage key
+the same region (a run that ends before five places still offers a fresh
+route — on the Globe that offer keeps its original mc1 form). Receiving
+one shows a welcome card first — your game in progress is only set aside
+when you tap Start, and it is offered back when the challenge ends;
+tapping "Not now" (or pressing Escape) closes the card and commits
+nothing. mc2 runs are saved under their own storage key
 (`meridian.run.mc2`), which older builds never read, and they are every
 bit as isolated as mc1 runs: no session banking, no learning records, no
 review deck, no seen history. Failures explain themselves in plain words
