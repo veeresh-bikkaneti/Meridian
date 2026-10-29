@@ -640,27 +640,34 @@ async function endgameSession(page: import("playwright/test").Page) {
 }
 
 /**
- * Intersection area of two buttons, measured in a SINGLE page.evaluate()
- * call (two sequential boundingBox() calls are not atomic).
+ * Largest intersection area of the first element with any of the others,
+ * measured in a SINGLE page.evaluate() call (sequential boundingBox()
+ * calls are not atomic). -1 when any element is missing.
  */
-async function singleEvaluateOverlap(
+async function singleEvaluateOverlaps(
   page: import("playwright/test").Page,
   first: import("playwright/test").Locator,
-  second: import("playwright/test").Locator,
+  others: import("playwright/test").Locator[],
 ): Promise<number> {
-  const h1 = await first.elementHandle();
-  const h2 = await second.elementHandle();
-  return page.evaluate(([a, b]) => {
-    if (!a || !b) return -1;
-    const ra = a.getBoundingClientRect();
-    const rb = b.getBoundingClientRect();
-    const w = Math.max(0, Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left));
-    const h = Math.max(0, Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top));
-    return w * h;
-  }, [h1, h2]);
+  const handles = await Promise.all([
+    first.elementHandle(),
+    ...others.map((l) => l.elementHandle()),
+  ]);
+  return page.evaluate((els) => {
+    if (els.some((e) => !e)) return -1;
+    const ra = els[0]!.getBoundingClientRect();
+    let max = 0;
+    for (const el of els.slice(1)) {
+      const rb = el!.getBoundingClientRect();
+      const w = Math.max(0, Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left));
+      const h = Math.max(0, Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top));
+      max = Math.max(max, w * h);
+    }
+    return max;
+  }, handles);
 }
 
-/** Shared visibility / size / no-overlap assertions for the mode button. */
+/** Shared visibility / size / in-viewport / no-overlap assertions. */
 async function expectEndGameClear(
   page: import("playwright/test").Page,
   leaveName: string,
@@ -670,14 +677,61 @@ async function expectEndGameClear(
   const box = await endGame.boundingBox();
   expect(box).not.toBeNull();
   expect(box!.height).toBeGreaterThanOrEqual(44);
+  expect(box!.width).toBeGreaterThanOrEqual(44);
   const vp = page.viewportSize();
+  expect(box!.x).toBeGreaterThanOrEqual(0);
+  expect(box!.y).toBeGreaterThanOrEqual(0);
+  expect(box!.x + box!.width).toBeLessThanOrEqual(vp!.width);
   expect(box!.y + box!.height).toBeLessThanOrEqual(vp!.height);
-  const overlap = await singleEvaluateOverlap(
-    page,
-    endGame,
+  const overlap = await singleEvaluateOverlaps(page, endGame, [
     page.getByRole("button", { name: leaveName }),
-  );
+    page.getByText(/^Case #\d+$/),
+  ]);
   expect(overlap).toBe(0);
+}
+
+/** End game rect fully inside the viewport — no scroll action taken. */
+async function expectEndGameInViewport(page: import("playwright/test").Page) {
+  const endGame = page.getByRole("button", { name: "End game" });
+  const box = await endGame.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.height).toBeGreaterThanOrEqual(44);
+  expect(box!.width).toBeGreaterThanOrEqual(44);
+  const vp = page.viewportSize();
+  expect(box!.x).toBeGreaterThanOrEqual(0);
+  expect(box!.y).toBeGreaterThanOrEqual(0);
+  expect(box!.x + box!.width).toBeLessThanOrEqual(vp!.width);
+  expect(box!.y + box!.height).toBeLessThanOrEqual(vp!.height);
+}
+
+/** Poll a locator's rect until it stops moving (scroll animations settle). */
+async function settledBox(page: import("playwright/test").Page, locator: import("playwright/test").Locator) {
+  let prev = await locator.boundingBox();
+  for (let i = 0; i < 12; i++) {
+    await page.waitForTimeout(250);
+    const cur = await locator.boundingBox();
+    if (prev && cur && Math.abs(prev.y - cur.y) < 1 && Math.abs(prev.x - cur.x) < 1) return cur;
+    prev = cur;
+  }
+  return prev;
+}
+
+/** Block-1 cure assertions: focus inside the dialog + totals announced. */
+async function expectModeSummaryAccessible(
+  page: import("playwright/test").Page,
+  total: number,
+) {
+  await expect
+    .poll(
+      () => page.evaluate(() => !!document.activeElement?.closest('[role="dialog"]')),
+      { timeout: 10_000 },
+    )
+    .toBe(true);
+  const announcer = await page.evaluate(
+    () => document.querySelector('[data-testid="map-mode-announcer"]')?.textContent ?? "",
+  );
+  expect(announcer).toContain("Game over");
+  expect(announcer).toContain(total.toLocaleString("en-US"));
 }
 
 /**
@@ -734,21 +788,23 @@ test("endgame: activation ends session and shows session summary", async ({ page
   await openLoopSeeded(page, "218");
   await guessViaMap(page, "paris");
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+  // GUARD: everything before the End game click passes before the fix.
   // Mode play must NOT change the session total (session banks classic only).
   expect((await endgameSession(page))?.totalScore).toBe(banked);
-  const before = await loopStore(page);
-  expect(before.current.index).toBe(218);
-  expect(before.current.guesses.length).toBe(1);
+  const before = await page.evaluate(() => localStorage.getItem("meridian.loop.v2"));
+  expect(before).not.toBeNull();
 
   await page.getByRole("button", { name: "End game" }).click();
   const dialog = page.getByRole("dialog", { name: "Game summary" });
   await expect(dialog).toBeVisible({ timeout: 15_000 });
+  // S11: no second End game on the summary itself.
+  await expect(dialog.getByRole("button", { name: "End game" })).toHaveCount(0);
+  await expectModeSummaryAccessible(page, banked);
   await expect(dialog.locator("p.text-5xl")).toContainText(banked.toLocaleString("en-US"));
   expect((await endgameSession(page))?.ended).toBe(true);
   expect(await page.evaluate(() => localStorage.getItem("meridian.loop.open"))).toBeNull();
-  const after = await loopStore(page);
-  expect(after.current.index).toBe(218);
-  expect(after.current.guesses.length).toBe(1);
+  // Full blob equality, symmetric with Cold Trail (not index + guesses only).
+  expect(await page.evaluate(() => localStorage.getItem("meridian.loop.v2"))).toBe(before);
 });
 
 test("endgame: mode-only End game shows honest 0/0 summary", async ({ page }) => {
@@ -759,6 +815,9 @@ test("endgame: mode-only End game shows honest 0/0 summary", async ({ page }) =>
   await page.getByRole("button", { name: "End game" }).click();
   const dialog = page.getByRole("dialog", { name: "Game summary" });
   await expect(dialog).toBeVisible({ timeout: 15_000 });
+  // S11: no second End game on the summary itself.
+  await expect(dialog.getByRole("button", { name: "End game" })).toHaveCount(0);
+  await expectModeSummaryAccessible(page, 0);
   expect((await endgameSession(page))?.ended).toBe(true);
   await expect(dialog.locator("p.text-5xl")).toHaveText("0");
   const placesRow = dialog.locator("div", { hasText: "Places played" }).last();
@@ -804,6 +863,67 @@ test("endgame: Done then return re-renders a finished-but-unacknowledged reveal"
   await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toHaveCount(0);
   await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByText("🎯 You found it!")).toBeVisible({ timeout: 30_000 });
+});
+
+test("endgame: End game stays in viewport on the reveal screen, clear of Next mystery", async ({ page }) => {
+  // Panel BLOCK 2 cure: the reveal's scrollIntoView used to push the header
+  // off-screen, so End game was reachable only by scrolling back up. The
+  // header row is sticky now; this test takes NO scroll action — it
+  // asserts the rect where the reveal left it. RED on 21afbf3: the button
+  // rect sits above the viewport (negative y) on the scrolled reveal.
+  test.setTimeout(240_000);
+  await page.goto(BASE);
+  await page.evaluate(() => localStorage.setItem("meridian.firstWinCelebrated", "1"));
+  await openLoop(page, "218");
+  await guessTarget(page, await targetEntry(page));
+  await expect(page.getByText("🎯 You found it!")).toBeVisible();
+  const endGame = page.getByRole("button", { name: "End game" });
+  await settledBox(page, endGame);
+  await expectEndGameInViewport(page);
+  const overlap = await singleEvaluateOverlaps(page, endGame, [
+    page.getByRole("button", { name: "Editions" }).first(),
+    page.getByText(/^Case #\d+$/),
+    page.getByRole("button", { name: /Next mystery/ }),
+  ]);
+  expect(overlap).toBe(0);
+});
+
+test("endgame: keyboard-only Tab to End game in header order, Enter shows summary", async ({ page }) => {
+  // E1: native buttons, header DOM order — Tab reaches Editions first,
+  // then End game; Enter ends the session and shows the summary.
+  test.setTimeout(180_000);
+  await openLoop(page, "218");
+  const seen: string[] = [];
+  for (let i = 0; i < 30; i++) {
+    await page.keyboard.press("Tab");
+    const name = await page.evaluate(() => {
+      const el = document.activeElement;
+      return el instanceof HTMLButtonElement ? el.textContent?.trim() ?? "" : "";
+    });
+    if ((name === "Editions" || name === "End game") && !seen.includes(name)) seen.push(name);
+    if (name === "End game") break;
+  }
+  expect(seen).toEqual(["Editions", "End game"]);
+  await page.keyboard.press("Enter");
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+});
+
+test("endgame: reload with a mode summary open loses the summary, case resumes", async ({ page }) => {
+  // E6 parity, stated not a defect: the summary is in-memory only, so a
+  // reload drops it; the ended session stays ended and the case resumes.
+  test.setTimeout(240_000);
+  await openLoop(page, "218");
+  await guessViaMap(page, "paris");
+  await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+  await page.getByRole("button", { name: "End game" }).click();
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+  await page.reload();
+  await expect(page.getByRole("dialog", { name: "Game summary" })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible({ timeout: 30_000 });
+  await page.getByRole("button", { name: "GeoDetective: Resume your case" }).click();
+  await expect(page.getByText("Guess 2 of 5")).toBeVisible({ timeout: 30_000 });
 });
 
 test("endgame: editions leave still works and does NOT end session", async ({ page }) => {

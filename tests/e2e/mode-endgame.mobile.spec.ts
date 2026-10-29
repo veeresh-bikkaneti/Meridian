@@ -20,11 +20,12 @@ test.beforeEach(async ({ context }) => {
 });
 
 /** Open GeoDetective; `puzzle` pins the deal via the ?loop-puzzle= seam. */
-async function openLoop(page: import("playwright/test").Page, puzzle?: string) {
+async function openLoop(page: import("playwright/test").Page, puzzle?: string, homeLabel = "Solve a mystery") {
   await page.goto(puzzle ? `${BASE}?loop-puzzle=${puzzle}` : BASE);
-  // Second viewport iteration re-enters an in-progress case, so home
-  // offers "Resume your case" instead of "Solve a mystery" — same screen.
-  await page.getByRole("button", { name: /GeoDetective: (Solve a mystery|Resume your case)/ }).click();
+  // Deterministic per pass: the 1st viewport pass opens a fresh case
+  // ("Solve a mystery"); the 2nd re-enters the in-progress case left by
+  // the 1st pass's Editions leave ("Resume your case") — same screen.
+  await page.getByRole("button", { name: `GeoDetective: ${homeLabel}` }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({ timeout: 30_000 });
   await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible({ timeout: 30_000 });
   await expect(page.getByTestId("loop-map")).toBeVisible({ timeout: 30_000 });
@@ -40,55 +41,67 @@ async function openColdTrail(page: import("playwright/test").Page) {
 }
 
 /**
- * Intersection area of two buttons, measured in a SINGLE page.evaluate()
- * call (two sequential boundingBox() calls are not atomic).
+ * Largest intersection area of the first element with any of the others,
+ * measured in a SINGLE page.evaluate() call (sequential boundingBox()
+ * calls are not atomic). -1 when any element is missing.
  */
-async function singleEvaluateOverlap(
+async function singleEvaluateOverlaps(
   page: import("playwright/test").Page,
   first: import("playwright/test").Locator,
-  second: import("playwright/test").Locator,
+  others: import("playwright/test").Locator[],
 ): Promise<number> {
-  const h1 = await first.elementHandle();
-  const h2 = await second.elementHandle();
-  return page.evaluate(([a, b]) => {
-    if (!a || !b) return -1;
-    const ra = a.getBoundingClientRect();
-    const rb = b.getBoundingClientRect();
-    const w = Math.max(0, Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left));
-    const h = Math.max(0, Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top));
-    return w * h;
-  }, [h1, h2]);
+  const handles = await Promise.all([
+    first.elementHandle(),
+    ...others.map((l) => l.elementHandle()),
+  ]);
+  return page.evaluate((els) => {
+    if (els.some((e) => !e)) return -1;
+    const ra = els[0]!.getBoundingClientRect();
+    let max = 0;
+    for (const el of els.slice(1)) {
+      const rb = el!.getBoundingClientRect();
+      const w = Math.max(0, Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left));
+      const h = Math.max(0, Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top));
+      max = Math.max(max, w * h);
+    }
+    return max;
+  }, handles);
 }
 
 /** Shared visibility / size / in-viewport / no-overlap assertions. */
 async function expectEndGameClear(
   page: import("playwright/test").Page,
   leaveName: string,
+  extra: import("playwright/test").Locator,
 ) {
   const endGame = page.getByRole("button", { name: "End game" });
   await expect(endGame).toBeVisible({ timeout: 15_000 });
   const box = await endGame.boundingBox();
   expect(box).not.toBeNull();
   expect(box!.height).toBeGreaterThanOrEqual(44);
+  expect(box!.width).toBeGreaterThanOrEqual(44);
   const vp = page.viewportSize();
+  expect(box!.x).toBeGreaterThanOrEqual(0);
+  expect(box!.y).toBeGreaterThanOrEqual(0);
+  expect(box!.x + box!.width).toBeLessThanOrEqual(vp!.width);
   expect(box!.y + box!.height).toBeLessThanOrEqual(vp!.height);
-  const overlap = await singleEvaluateOverlap(
-    page,
-    endGame,
+  const overlap = await singleEvaluateOverlaps(page, endGame, [
     page.getByRole("button", { name: leaveName }),
-  );
+    extra,
+  ]);
   expect(overlap).toBe(0);
 }
 
 test("mobile: GeoDetective End game visible without scrolling at 360x740 and 390x844", async ({ page }) => {
   test.setTimeout(240_000);
-  for (const viewport of [
-    { width: 360, height: 740 },
-    { width: 390, height: 844 },
-  ]) {
+  const passes = [
+    { viewport: { width: 360, height: 740 }, homeLabel: "Solve a mystery" },
+    { viewport: { width: 390, height: 844 }, homeLabel: "Resume your case" },
+  ] as const;
+  for (const { viewport, homeLabel } of passes) {
     await page.setViewportSize(viewport);
-    await openLoop(page, "218");
-    await expectEndGameClear(page, "Editions");
+    await openLoop(page, "218", homeLabel);
+    await expectEndGameClear(page, "Editions", page.getByText(/^Case #\d+$/));
     await page.getByRole("button", { name: "Editions" }).click();
     await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
   }
@@ -102,7 +115,7 @@ test("mobile: Cold Trail End game visible without scrolling at 360x740 and 390x8
   ]) {
     await page.setViewportSize(viewport);
     await openColdTrail(page);
-    await expectEndGameClear(page, "All games");
+    await expectEndGameClear(page, "All games", page.getByTestId("coldtrail-stars"));
     await page.getByRole("button", { name: "All games" }).click();
     await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
   }

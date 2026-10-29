@@ -126,11 +126,47 @@ describe("mode End game — handler semantics (R1)", () => {
   });
 });
 
+describe("mode End game — accessibility cure (panel BLOCK 1, cycle 4)", () => {
+  it("mode End game announces the totals on the persistent announcer", () => {
+    const handler = segment(gameAppSource, "const handleModeEndGame", "const handleModeSummaryDone");
+    assert.ok(handler.length > 0, "mode End game handler must exist");
+    assert.ok(
+      handler.includes("setMapModeAnnouncement"),
+      "mode End game must set the persistent mapModeAnnouncer (Play's live region unmounts with run === null)",
+    );
+    assert.ok(handler.includes("Game over."), "mode announcement must mirror classic's Game-over format");
+    assert.ok(handler.includes("placesPlayed"), "mode announcement must carry places played");
+    assert.ok(handler.includes("totalScore"), "mode announcement must carry the total score");
+  });
+
+  it("mode summary mount moves focus inside the dialog, classic untouched", () => {
+    const effect = segment(gameAppSource, "Mode-only summary mount focus", "}, [modeSummary]);");
+    assert.ok(effect.length > 0, "a mode-only summary-mount focus effect must exist");
+    assert.ok(effect.includes("if (!modeSummary) return;"), "focus effect must run only for mode summaries");
+    assert.ok(effect.includes('summary-done'), "mode summary mount focus must land on Done inside the dialog");
+    assert.ok(effect.includes("preventScroll"), "mode summary mount focus must not scroll the page");
+    // Classic summaries pass nothing new: the card's own focus fallback is
+    // untouched, and no autofocus prop is added to RunSummaryCard.
+    assert.ok(!summarySource.includes("autoFocus"), "classic summaries must gain no autofocus");
+  });
+
+  it("mode summary captures dateKey at End game time, not render time", () => {
+    const handler = segment(gameAppSource, "const handleModeEndGame", "const handleModeSummaryDone");
+    assert.ok(handler.includes("trailDate()"), "mode End game must capture dateKey via trailDate()");
+    assert.ok(handler.includes("dateKey"), "mode End game must store the captured dateKey on the summary");
+    const branch = segment(gameAppSource, "if (modeSummary)", "if (loopOpen)");
+    assert.ok(
+      branch.includes("dateKey={modeSummary.dateKey}"),
+      "mode summary must pass the captured modeSummary.dateKey, not trailDate() at render time",
+    );
+  });
+});
+
 describe("mode End game — GameApp-level summary branch (R1/R2/R4)", () => {
   it("mode summary state lives in GameApp, branch outranks home", () => {
     const gameAppStart = gameAppSource.indexOf("export function GameApp()");
     const decl = gameAppSource.indexOf(
-      "const [modeSummary, setModeSummary] = useState<SessionSummary | null>(null);",
+      "const [modeSummary, setModeSummary] = useState<(SessionSummary & { dateKey: string }) | null>(null);",
     );
     const playStart = gameAppSource.indexOf("function Play({");
     assert.ok(gameAppStart >= 0 && decl > gameAppStart, "modeSummary state must live in GameApp");
@@ -150,6 +186,10 @@ describe("mode End game — GameApp-level summary branch (R1/R2/R4)", () => {
     const done = segment(gameAppSource, "const handleModeSummaryDone", "}, [replaceSession]);");
     assert.ok(done.includes("setModeSummary(null)"), "mode Done must setModeSummary(null)");
     assert.ok(done.includes("setStartError(null)"), "mode Done must setStartError(null)");
+    assert.ok(
+      done.includes("landHomeFocusRef.current = true"),
+      "mode Done must land focus on the home heading (landHomeFocus pattern applies cleanly here)",
+    );
     assert.ok(!done.includes("clearLoopStore"), "mode Done must not clear the loop store");
     assert.ok(!done.includes("clearColdtrailStore"), "mode Done must not clear the cold trail store");
   });
@@ -161,7 +201,10 @@ describe("mode End game — GameApp-level summary branch (R1/R2/R4)", () => {
     assert.ok(branch.includes("required by type"), "mode summary onPlayAgain must carry the noop comment");
     assert.ok(branch.includes("modeSummary.regions"), "mode summary must derive regionName from summary.regions");
     assert.ok(branch.includes('"Meridian"'), 'mode summary regionName must fall back to "Meridian"');
-    assert.ok(branch.includes("trailDate()"), "mode summary dateKey must come from trailDate()");
+    assert.ok(
+      branch.includes("dateKey={modeSummary.dateKey}"),
+      "mode summary dateKey must be the value captured at End game time (see accessibility-cure test)",
+    );
     assert.ok(branch.includes("challengeUrl={null}"), "mode summary must pass challengeUrl={null}");
     assert.ok(branch.includes("growth={null}"), "mode summary must pass growth={null}");
     assert.ok(!branch.includes("onReview"), "mode summary must omit onReview");

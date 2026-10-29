@@ -377,24 +377,75 @@ async function coldtrailBlob(page: import("playwright/test").Page) {
 }
 
 /**
- * Intersection area of two buttons, measured in a SINGLE page.evaluate()
- * call (two sequential boundingBox() calls are not atomic).
+ * Largest intersection area of the first element with any of the others,
+ * measured in a SINGLE page.evaluate() call (sequential boundingBox()
+ * calls are not atomic). -1 when any element is missing.
  */
-async function singleEvaluateOverlap(
+async function singleEvaluateOverlaps(
   page: import("playwright/test").Page,
   first: import("playwright/test").Locator,
-  second: import("playwright/test").Locator,
+  others: import("playwright/test").Locator[],
 ): Promise<number> {
-  const h1 = await first.elementHandle();
-  const h2 = await second.elementHandle();
-  return page.evaluate(([a, b]) => {
-    if (!a || !b) return -1;
-    const ra = a.getBoundingClientRect();
-    const rb = b.getBoundingClientRect();
-    const w = Math.max(0, Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left));
-    const h = Math.max(0, Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top));
-    return w * h;
-  }, [h1, h2]);
+  const handles = await Promise.all([
+    first.elementHandle(),
+    ...others.map((l) => l.elementHandle()),
+  ]);
+  return page.evaluate((els) => {
+    if (els.some((e) => !e)) return -1;
+    const ra = els[0]!.getBoundingClientRect();
+    let max = 0;
+    for (const el of els.slice(1)) {
+      const rb = el!.getBoundingClientRect();
+      const w = Math.max(0, Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left));
+      const h = Math.max(0, Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top));
+      max = Math.max(max, w * h);
+    }
+    return max;
+  }, handles);
+}
+
+/** End game rect fully inside the viewport — no scroll action taken. */
+async function expectEndGameInViewport(page: import("playwright/test").Page) {
+  const endGame = page.getByRole("button", { name: "End game" });
+  const box = await endGame.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.height).toBeGreaterThanOrEqual(44);
+  expect(box!.width).toBeGreaterThanOrEqual(44);
+  const vp = page.viewportSize();
+  expect(box!.x).toBeGreaterThanOrEqual(0);
+  expect(box!.y).toBeGreaterThanOrEqual(0);
+  expect(box!.x + box!.width).toBeLessThanOrEqual(vp!.width);
+  expect(box!.y + box!.height).toBeLessThanOrEqual(vp!.height);
+}
+
+/** Poll a locator's rect until it stops moving (scroll/focus settle). */
+async function settledBox(page: import("playwright/test").Page, locator: import("playwright/test").Locator) {
+  let prev = await locator.boundingBox();
+  for (let i = 0; i < 12; i++) {
+    await page.waitForTimeout(250);
+    const cur = await locator.boundingBox();
+    if (prev && cur && Math.abs(prev.y - cur.y) < 1 && Math.abs(prev.x - cur.x) < 1) return cur;
+    prev = cur;
+  }
+  return prev;
+}
+
+/** Block-1 cure assertions: focus inside the dialog + totals announced. */
+async function expectModeSummaryAccessible(
+  page: import("playwright/test").Page,
+  total: number,
+) {
+  await expect
+    .poll(
+      () => page.evaluate(() => !!document.activeElement?.closest('[role="dialog"]')),
+      { timeout: 10_000 },
+    )
+    .toBe(true);
+  const announcer = await page.evaluate(
+    () => document.querySelector('[data-testid="map-mode-announcer"]')?.textContent ?? "",
+  );
+  expect(announcer).toContain("Game over");
+  expect(announcer).toContain(total.toLocaleString("en-US"));
 }
 
 /**
@@ -441,15 +492,18 @@ test("endgame: End game visible without scrolling, 44px, clear of All games", as
   const box = await endGame.boundingBox();
   expect(box).not.toBeNull();
   expect(box!.height).toBeGreaterThanOrEqual(44);
+  expect(box!.width).toBeGreaterThanOrEqual(44);
   const vp = page.viewportSize();
+  expect(box!.x).toBeGreaterThanOrEqual(0);
+  expect(box!.y).toBeGreaterThanOrEqual(0);
+  expect(box!.x + box!.width).toBeLessThanOrEqual(vp!.width);
   expect(box!.y + box!.height).toBeLessThanOrEqual(vp!.height);
   // Separate control, not a relabel of "All games".
   await expect(page.getByRole("button", { name: "All games" })).toBeVisible();
-  const overlap = await singleEvaluateOverlap(
-    page,
-    endGame,
+  const overlap = await singleEvaluateOverlaps(page, endGame, [
     page.getByRole("button", { name: "All games" }),
-  );
+    page.getByTestId("coldtrail-stars"),
+  ]);
   expect(overlap).toBe(0);
 });
 
@@ -458,6 +512,7 @@ test("endgame: activation ends session and shows session summary", async ({ page
   const banked = await seedBankedSession(page);
   await openColdTrailSeeded(page);
   await placeAndLockRing(page, { x: 300, y: 250 });
+  // GUARD: everything before the End game click passes before the fix.
   // Mode play must NOT change the session total (session banks classic only).
   expect((await endgameSession(page))?.totalScore).toBe(banked);
   const before = await coldtrailBlob(page);
@@ -466,6 +521,9 @@ test("endgame: activation ends session and shows session summary", async ({ page
   await page.getByRole("button", { name: "End game" }).click();
   const dialog = page.getByRole("dialog", { name: "Game summary" });
   await expect(dialog).toBeVisible({ timeout: 15_000 });
+  // S11: no second End game on the summary itself.
+  await expect(dialog.getByRole("button", { name: "End game" })).toHaveCount(0);
+  await expectModeSummaryAccessible(page, banked);
   await expect(dialog.locator("p.text-5xl")).toContainText(banked.toLocaleString("en-US"));
   expect((await endgameSession(page))?.ended).toBe(true);
   expect(await page.evaluate(() => localStorage.getItem("meridian.coldtrail.open"))).toBeNull();
@@ -479,6 +537,9 @@ test("endgame: mode-only End game shows honest 0/0 summary", async ({ page }) =>
   await page.getByRole("button", { name: "End game" }).click();
   const dialog = page.getByRole("dialog", { name: "Game summary" });
   await expect(dialog).toBeVisible({ timeout: 15_000 });
+  // S11: no second End game on the summary itself.
+  await expect(dialog.getByRole("button", { name: "End game" })).toHaveCount(0);
+  await expectModeSummaryAccessible(page, 0);
   expect((await endgameSession(page))?.ended).toBe(true);
   await expect(dialog.locator("p.text-5xl")).toHaveText("0");
   const placesRow = dialog.locator("div", { hasText: "Places played" }).last();
@@ -506,6 +567,57 @@ test("endgame: Done then return resumes the in-progress case", async ({ page }) 
   const afterParsed = JSON.parse(after!) as { caseIndex: number; current: { ringsPlaced: boolean[] } };
   expect(afterParsed.caseIndex).toBe(beforeParsed.caseIndex);
   expect(afterParsed.current.ringsPlaced[0]).toBe(true);
+});
+
+test("endgame: Done then return re-renders the same unacknowledged result", async ({ page }) => {
+  // F3, previously missing: solve a case → result shown → End game →
+  // Done → re-enter → the SAME result screen, not the next case. The
+  // result heading takes focus without preventScroll, which used to
+  // scroll the header (and End game) off-screen on a phone; the header
+  // row is sticky now, so End game stays in viewport on the result
+  // screen with NO scroll action taken by this test. RED on 21afbf3:
+  // the button rect sits above the viewport (negative y) once the
+  // result focus has scrolled the page.
+  test.setTimeout(240_000);
+  await page.goto(BASE);
+  await page.evaluate(() => localStorage.setItem("meridian.firstWinCelebrated", "1"));
+  await openColdTrail(page);
+  await placeAndLockRing(page, { x: 300, y: 250 });
+  await placeAndLockRing(page, { x: 315, y: 240 });
+  await placeAndLockRing(page, { x: 285, y: 265 });
+  await page.getByTestId("loop-map").click({ position: { x: 350, y: 280 } });
+  await page.getByTestId("intercept-confirm-btn").click();
+  const reveal = page.getByTestId("coldtrail-reveal");
+  await expect(reveal).toContainText("The trail led to", { timeout: 10_000 });
+  const hideout = (await reveal.textContent())
+    ?.match(/The trail led to ([^.]+)/)?.[1]
+    ?.trim();
+  expect(hideout).toBeTruthy();
+  const before = await coldtrailBlob(page);
+  const beforeParsed = JSON.parse(before!) as { caseIndex: number };
+  const endGame = page.getByRole("button", { name: "End game" });
+  await settledBox(page, endGame);
+  await expectEndGameInViewport(page);
+  const overlap = await singleEvaluateOverlaps(page, endGame, [
+    page.getByRole("button", { name: "All games" }),
+    page.getByTestId("coldtrail-stars"),
+    page.getByTestId("next-case-btn"),
+  ]);
+  expect(overlap).toBe(0);
+
+  await endGame.click();
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+  await dialog.getByRole("button", { name: "Done" }).click();
+  await expect(page.getByRole("button", { name: "Cold Trail: Start the trail" })).toBeVisible();
+  await page.getByRole("button", { name: "Cold Trail: Start the trail" }).click();
+  await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 30_000 });
+  const again = page.getByTestId("coldtrail-reveal");
+  await expect(again).toContainText("The trail led to", { timeout: 10_000 });
+  expect((await again.textContent()) ?? "").toContain(hideout!);
+  const after = await coldtrailBlob(page);
+  expect(after).toBe(before);
+  expect((JSON.parse(after!) as { caseIndex: number }).caseIndex).toBe(beforeParsed.caseIndex);
 });
 
 test("endgame: all-games leave still works and does NOT end session", async ({ page }) => {
