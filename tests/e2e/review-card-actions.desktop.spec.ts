@@ -221,19 +221,36 @@ test("stack + tab order: focus walks primary → challenge → reset (due, flag 
   expect(ys.primary).toBeLessThan(ys.challenge);
   expect(ys.challenge).toBeLessThan(ys.reset);
 
-  // Tab walk: collect the card's controls in focus order.
+  // Tab walk: record each DISTINCT focus stop until the card's last
+  // control is seen. After every Tab, poll until the focus actually
+  // changes before reading it — under VM load the renderer's focus
+  // update can lag the key event by seconds, and a stale read would
+  // record the same stop twice (the dedupe then starves the walk).
+  // The poll is deliberately long and NOT swallowed: a focus that
+  // never moves is a real failure, not a flake to paper over.
   await page.evaluate(() => (document.activeElement as HTMLElement)?.blur());
-  const walked: string[] = [];
-  for (let i = 0; i < 60 && walked.length < 3; i++) {
-    await page.keyboard.press("Tab");
-    const key = await page.evaluate(() => {
-      const el = document.activeElement;
-      if (!el || el.tagName !== "BUTTON") return null;
-      if (el.getAttribute("aria-label") === "Review my misses: Start review") return "primary";
-      if (el.getAttribute("data-testid") === "review-challenge-a-friend") return "challenge";
-      if (el.getAttribute("data-testid") === "reset-history-open") return "reset";
-      return null;
+  const signature = () =>
+    page.evaluate(() => {
+      const el = document.activeElement as HTMLElement | null;
+      if (!el || el === document.body) return "none";
+      return `${el.tagName}|${el.getAttribute("data-testid") ?? el.getAttribute("aria-label") ?? el.textContent?.trim().slice(0, 24) ?? ""}`;
     });
+  const keyOf = (sig: string): string | null => {
+    if (sig.includes("Review my misses: Start review")) return "primary";
+    if (sig.includes("review-challenge-a-friend")) return "challenge";
+    if (sig.includes("reset-history-open")) return "reset";
+    return null;
+  };
+  const walked: string[] = [];
+  let prev = await signature();
+  for (let i = 0; i < 48 && !walked.includes("reset"); i++) {
+    await page.keyboard.press("Tab");
+    await expect
+      .poll(async () => (await signature()) !== prev, { timeout: 15_000 })
+      .toBe(true);
+    const sig = await signature();
+    prev = sig;
+    const key = keyOf(sig);
     if (key && walked[walked.length - 1] !== key) walked.push(key);
   }
   expect(walked).toEqual(["primary", "challenge", "reset"]);
