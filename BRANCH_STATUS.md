@@ -5,9 +5,11 @@
 - **Prior record:** this file previously carried the Package B branch
   record; that work merged as PR #283 and its full record lives in that
   PR and in git history.
-- **State:** **BUILDING.** Issue #220: wire the Contact Us form's
-  delivery (root `wrangler.jsonc` bindings) and make the page honest
-  about delivery — SPEC §3 + §4 of
+- **State:** **READY FOR PANEL** (2026-10-29). All build units landed
+  and pushed; gates green except the contact E2E, which is recorded
+  below as lock-blocked (NOT run — no claim made). Issue #220: wire the
+  Contact Us form's delivery (root `wrangler.jsonc` bindings) and make
+  the page honest about delivery — SPEC §3 + §4 of
   `~/workspace/meridian-contact-activation/SPEC.md`. Animations are a
   separate follow-on PR and are NOT in this branch.
 
@@ -97,16 +99,42 @@ Approvals needed (exact action + owner), checker, escalation:
 ## Status
 
 - [x] Baseline: contact unit tests green on origin/main (43/43).
-- [ ] wrangler.jsonc — secret declaration + ratelimits + comments.
-- [ ] Handler — env precedence (runtime bindings first).
-- [ ] Handler — honeypot before origin gate.
-- [ ] Handler — email/phone stripping in message text + tests.
-- [ ] Page — honesty states + draft preservation (+ sendOutcome helper).
-- [ ] E2E — Part 4b updated to the honesty contract.
-- [ ] Docs — README contact paragraph; privacy header comment;
-      rate-limiter comment line.
-- [ ] Gates — tsc / npm test / lint-cards / builds / contact E2E.
-- [ ] Pushed to origin.
+- [x] wrangler.jsonc — secret declaration + ratelimits + comments
+      (`c09cec4`).
+- [x] Handler — env precedence (runtime bindings first) (`5c4e6c2`).
+- [x] Handler — honeypot before origin gate (`5c4e6c2`).
+- [x] Handler — email/phone stripping in message text + tests
+      (`5c4e6c2`, `b0a6c56`). NOT previously implemented — validateContact
+      only stripped control chars; stripContactDetails is new.
+- [x] Page — honesty states + draft preservation (+ sendOutcome helper)
+      (`3c67e1b`).
+- [x] E2E — Part 4b updated to the honesty contract; Part 3b's
+      client-visible expectation updated with it (the honeypot 200 has
+      no `stored` flag, so the client honestly treats it as
+      not-delivered and keeps the text; the drop is proven server-side)
+      (`c663be3`).
+- [x] Docs — README contact paragraph; privacy header comment;
+      rate-limiter comment line (`efe3edf`).
+- [x] Gates — tsc / npm test / lint-cards / builds (numbers below).
+- [ ] Gates — contact E2E: **NOT RUN — lock-blocked** (see Verification
+      record). Must be run before merge, once the shared E2E lock frees.
+- [x] Pushed to origin (standing authorization; this branch only).
+
+## Verification record (builder-run, 2026-10-29, on the final code tip)
+
+| Check | Result |
+|---|---|
+| Baseline contact unit tests (origin/main, pre-change) | 43/43 pass |
+| `npx tsc --noEmit` | PASS — clean, exit 0 |
+| `npm test` (scripts suite) | 861 tests: 850 pass / 0 fail / 11 skipped |
+| `npm test` (src suite) | 1821/1821 pass, 0 fail |
+| Contact unit files (handler + form + rate-limiter + readiness) | 50/50 pass (43 baseline + 7 new/updated) |
+| `node scripts/lint-cards.mjs` | GATE PASSED |
+| `npm run build` (Worker build) | PASS — exit 0 |
+| Emitted SSR `wrangler.json` (the deploy shape) | Verified: carries `secrets.required: ["CONTACT_DISCORD_WEBHOOK_URL"]`, both `ratelimits` (72071 @ 3/60, 72072 @ 10/60), `configPath` → root `wrangler.jsonc` |
+| `npm run build:pages` | PASS — exit 0 |
+| `npm run test:worker` | Not applicable — no `workers/` changes (AGENTS.md requires it only for PRs touching `workers/`) |
+| Contact E2E (`tests/e2e/grownups-privacy-contact.desktop.spec.ts`) | **NOT RUN — lock-blocked.** The shared `~/workspace/.e2e.lock` was held continuously by the Package C crew's full-suite Playwright run (from `~/workspace/meridian-challenge-c/repo`, 41+ min elapsed at last check). Two attempts by this builder (an initial ~17 min queue, then a bounded `flock -w 600`) never acquired the lock. Per the owner's instruction this is recorded, not waited out. The spec's updated Part 4b/3b expectations are unproven in a browser until this runs. |
 
 ## Notes for the panel
 
