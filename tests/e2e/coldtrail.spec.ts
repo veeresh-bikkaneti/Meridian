@@ -620,6 +620,105 @@ test("endgame: Done then return re-renders the same unacknowledged result", asyn
   expect((JSON.parse(after!) as { caseIndex: number }).caseIndex).toBe(beforeParsed.caseIndex);
 });
 
+test("endgame: scrolled mid-case map strip stays below the sticky header and tappable (cycle 5)", async ({ page }) => {
+  // Cycle-4 cure made the Trail header row sticky top-0 z-20, which then
+  // painted over the .ct-map strip (sticky top-0 z-10): the map status
+  // line was fully hidden and the top ~20px of the canvas untappable.
+  // Cycle-5 cure offsets the strip below the header (top: 60px). RED on
+  // the pre-cure placement: the status line rect sits under the header
+  // (status top < header bottom) and the hit test at the canvas top
+  // lands on the header, not the map.
+  test.setTimeout(240_000);
+  for (const vp of [
+    { width: 390, height: 844 },
+    { width: 360, height: 740 },
+  ]) {
+    await page.setViewportSize(vp);
+    // Fresh case per viewport: the app auto-restores an in-progress
+    // Cold Trail case on load, so without this the second iteration
+    // never sees home's "Start the trail" button.
+    await page.goto(BASE);
+    await page.evaluate(() => localStorage.clear());
+    await openColdTrail(page);
+    // Scroll far enough that the map strip is in its stuck position.
+    await page.evaluate(() => window.scrollTo(0, 1200));
+    await page.waitForTimeout(300);
+    const geom = await page.evaluate(() => {
+      const endGame = [...document.querySelectorAll("button")].find(
+        (b) => b.textContent?.trim() === "End game",
+      )!;
+      const header = endGame.closest(".sticky") as HTMLElement;
+      const mapSection = document.querySelector(".ct-map") as HTMLElement;
+      const status = mapSection.querySelector("p") as HTMLElement;
+      const mapEl = document.querySelector('[data-testid="loop-map"]') as HTMLElement;
+      const hr = header.getBoundingClientRect();
+      const mr = mapSection.getBoundingClientRect();
+      const sr = status.getBoundingClientRect();
+      const lr = mapEl.getBoundingClientRect();
+      // Hit test at the very top of the map canvas: this is the element
+      // a tap at that point would land on.
+      const hit = document.elementFromPoint(lr.left + lr.width / 2, lr.top + 5);
+      const hitOnMap = !!hit?.closest('[data-testid="loop-map"]');
+      const hitOnHeader = !!hit?.closest(".sticky");
+      return {
+        header: { top: hr.top, bottom: hr.bottom, height: hr.height },
+        map: { top: mr.top, bottom: mr.bottom },
+        status: { top: sr.top, bottom: sr.bottom },
+        canvas: { top: lr.top },
+        hitOnMap,
+        hitOnHeader,
+        viewportHeight: window.innerHeight,
+        scrollY: window.scrollY,
+      };
+    });
+    expect(geom.scrollY, "page must actually be scrolled for the stuck assertion").toBeGreaterThan(0);
+    // Header row height is the offset the map strip must clear: 44px
+    // buttons + py-2. Do not assume it blindly — measure it.
+    expect(geom.header.height).toBeGreaterThanOrEqual(59);
+    expect(geom.header.height).toBeLessThanOrEqual(61);
+    // End game itself stays visible above the strip.
+    expect(geom.header.top).toBeGreaterThanOrEqual(-1);
+    expect(geom.header.bottom).toBeLessThanOrEqual(geom.viewportHeight);
+    // Map strip fully below the header, status line fully in viewport.
+    expect(geom.map.top).toBeGreaterThanOrEqual(geom.header.bottom - 1);
+    expect(geom.status.top).toBeGreaterThanOrEqual(geom.header.bottom - 1);
+    expect(geom.status.top).toBeGreaterThanOrEqual(0);
+    expect(geom.status.bottom).toBeLessThanOrEqual(geom.viewportHeight);
+    // A tap at the top of the canvas lands on the map, not the header.
+    expect(geom.hitOnMap).toBe(true);
+    expect(geom.hitOnHeader).toBe(false);
+    // Focused-card landing: scrolling a sighting card to the top must
+    // land it below the whole sticky stack (header + map strip), not
+    // under it — this is what the sighting-card scroll-margin-top
+    // values buy. Overlap with either sticky element is the failure.
+    const landing = await page.evaluate(() => {
+      const cards = document.querySelectorAll('[data-testid="sighting-card"]');
+      const card = cards[1] as HTMLElement;
+      card.scrollIntoView({ block: "start" });
+      const endGame = [...document.querySelectorAll("button")].find(
+        (b) => b.textContent?.trim() === "End game",
+      )!;
+      const header = endGame.closest(".sticky") as HTMLElement;
+      const mapSection = document.querySelector(".ct-map") as HTMLElement;
+      const cr = card.getBoundingClientRect();
+      const hr = header.getBoundingClientRect();
+      const mr = mapSection.getBoundingClientRect();
+      const overlap = (a: DOMRect, b: DOMRect) =>
+        Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)) *
+        Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top));
+      return {
+        cardTop: cr.top,
+        mapBottom: mr.bottom,
+        headerOverlap: overlap(cr, hr),
+        mapOverlap: overlap(cr, mr),
+      };
+    });
+    expect(landing.cardTop).toBeGreaterThanOrEqual(landing.mapBottom - 2);
+    expect(landing.headerOverlap).toBe(0);
+    expect(landing.mapOverlap).toBe(0);
+  }
+});
+
 test("endgame: all-games leave still works and does NOT end session", async ({ page }) => {
   // GUARD: passes before the fix; must NOT be counted as RED.
   test.setTimeout(240_000);
@@ -631,3 +730,5 @@ test("endgame: all-games leave still works and does NOT end session", async ({ p
   expect(session?.totalScore).toBe(banked);
   expect(session?.ended).toBe(false);
 });
+
+

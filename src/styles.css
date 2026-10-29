@@ -2024,9 +2024,14 @@
   gap: 1.5rem;
 }
 
+/* Cycle-5 cure (panel BLOCK, sticky-header regression): the TrailScreen
+ * header row sticks at top-0 z-20 (cycle 4), so the map strip must stick
+ * BELOW it, not under it — 60px = the measured header row height
+ * (44px buttons + py-2). Anything less hides the map status line and
+ * leaves the top of the canvas untappable under the header. */
 .ct-map {
   position: sticky;
-  top: 0;
+  top: 60px;
   z-index: 10;
   background: var(--game-chrome-solid);
   padding: 8px 0;
@@ -2034,24 +2039,37 @@
   order: -1;
 }
 
-/* Measured on the branch build (Playwright harness, serveBuiltArtifact)
- * with a hint visible, worst state = all-rings-down status + hint:
- * 320x568 -> .ct-map 341px (reading strip 568-341 = 227px, >= the 200px
- * floor); 375x667 -> 361.1px; 768x1024 -> 613.5px.
- * scroll-margin-top = measured + 8px, rounded up, per breakpoint. */
+/* Cycle-5 re-measurement (Playwright harness, serveBuiltArtifact, sticky
+ * stack = 60px header row + .ct-map strip, worst state = placing with
+ * the hint banner visible; values are the stuck stack bottom, i.e.
+ * header + map height). The old values were measured for the map strip
+ * alone and no longer clear the stack:
+ * 360x740 -> stack 431.4px; 375x667 -> 405.1px; 390x844 -> 603.9px
+ * (tall phones get the full-height map; width alone cannot tell
+ * 390x844 from 375x667, hence the min-height split below);
+ * 768x1024 -> old map-alone 613.5px, + 60px header = 673.5px stack.
+ * scroll-margin-top = measured stack + 8px, rounded up, per breakpoint.
+ * The cycle-5 E2E test asserts a scrolled-into-view card lands at or
+ * below the stuck stack bottom with zero overlap against both stickies. */
 .ct-layout [data-testid="sighting-card"] {
-  scroll-margin-top: 349px;
+  scroll-margin-top: 440px;
 }
 
 @media (min-width: 375px) and (max-width: 767px) {
   .ct-layout [data-testid="sighting-card"] {
-    scroll-margin-top: 370px;
+    scroll-margin-top: 440px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767px) and (min-height: 801px) {
+  .ct-layout [data-testid="sighting-card"] {
+    scroll-margin-top: 612px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .ct-layout [data-testid="sighting-card"] {
-    scroll-margin-top: 622px;
+    scroll-margin-top: 682px;
   }
 }
 
