@@ -289,8 +289,23 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     // Honeypot must NOT trigger the Discord webhook receiver!
     expect(webhookReceiver.calls).toHaveLength(1);
 
-    // Moving Part 3c (Rate limiter: 4th submission from same client IP `198.51.100.10` within 10m ->
-    // 429 with Retry-After header, and browser displays rate-limit alert):
+    // Moving Part 3b' (SPEC §3.2 order — rate limit runs LAST, just before the sink):
+    // the honeypot drop above spent NO rate-limit quota, so after clearing the
+    // honeypot this same client IP can still deliver a real message — its 3rd
+    // COUNTED request (Parts 3 and 4b were the first two).
+    await form.locator('input[type="text"]').fill("");
+    await form.locator("select").selectOption("bug");
+    await form.locator("textarea").fill("Third counted message from same IP is still delivered");
+    await form.getByRole("button", { name: /send/i }).click();
+    await expect(sentBanner).toBeVisible();
+    await expect.poll(() => serverResponses.length).toBe(4);
+    expect(serverResponses[3].status).toBe(200);
+    expect(serverResponses[3].body).toEqual({ ok: true, stored: true });
+    expect(webhookReceiver.calls).toHaveLength(2);
+
+    // Moving Part 3c (Rate limiter: 4th COUNTED submission from same client IP
+    // `198.51.100.10` within 10m -> 429 with Retry-After header, and browser
+    // displays rate-limit alert):
     await form.locator("select").selectOption("bug");
     await form.locator("textarea").fill("Fourth message from same IP triggers rate limit");
     await form.getByRole("button", { name: /send/i }).click();
@@ -300,10 +315,10 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     await expect(errorBanner).toContainText(
       "That's a lot of messages in a short time — please try again in a few minutes.",
     );
-    expect(serverResponses).toHaveLength(4);
-    expect(serverResponses[3].status).toBe(429);
-    expect(Number(serverResponses[3].headers["retry-after"])).toBeGreaterThan(0);
-    expect(webhookReceiver.calls).toHaveLength(1);
+    expect(serverResponses).toHaveLength(5);
+    expect(serverResponses[4].status).toBe(429);
+    expect(Number(serverResponses[4].headers["retry-after"])).toBeGreaterThan(0);
+    expect(webhookReceiver.calls).toHaveLength(2);
 
     // Moving Part 3d (Cross-origin CORS preflight + GitHub Pages origin + Disallowed origin):
     const env = await readContactRuntimeEnv();
@@ -339,7 +354,7 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
       "https://veeresh-bikkaneti.github.io",
     );
     expect(await pagesPostRes.json()).toEqual({ ok: true, stored: true });
-    expect(webhookReceiver.calls).toHaveLength(2);
+    expect(webhookReceiver.calls).toHaveLength(3);
 
     const attackerRes = await handleContactRequest(
       new Request("https://meridian.knowledgetest.workers.dev/api/contact", {
@@ -358,7 +373,7 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     );
     expect(attackerRes.status).toBe(403);
     expect(await attackerRes.json()).toEqual({ error: "origin not allowed" });
-    expect(webhookReceiver.calls).toHaveLength(2);
+    expect(webhookReceiver.calls).toHaveLength(3);
   } finally {
     if (prevWebhookEnv === undefined) delete process.env.CONTACT_DISCORD_WEBHOOK_URL;
     else process.env.CONTACT_DISCORD_WEBHOOK_URL = prevWebhookEnv;

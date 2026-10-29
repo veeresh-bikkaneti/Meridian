@@ -119,8 +119,14 @@ export type ValidationResult =
 // eslint-disable-next-line no-control-regex -- stripping control chars is the point
 const CONTROL_CHARS = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]|\p{Cf}/gu;
 const EMAIL_SHAPE = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}$/;
-/** An email address appearing inside free text (EMAIL_SHAPE, unanchored). */
-const EMAIL_IN_TEXT = /[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}/g;
+/**
+ * An email address appearing inside free text (EMAIL_SHAPE, unanchored).
+ * The lookbehind only lets a match start at the beginning of a run of
+ * address characters, which keeps the scan linear on long runs with no
+ * "@" (the bare unanchored form was quadratic, issue #220). It finds the
+ * same matches: a leftmost match always starts at such a run boundary.
+ */
+const EMAIL_IN_TEXT = /(?<![^\s@<>()",;:])[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}/g;
 /**
  * Phone-number shapes inside free text: North-American numbers with the
  * usual separators or parentheses (+1 optional), +-prefixed
@@ -446,15 +452,6 @@ export async function handleContactRequest(
     parseFailed = true;
   }
 
-  // Rate-limit before the gates so junk floods are cheap to refuse.
-  const ip = request.headers.get("cf-connecting-ip")?.trim() || "unknown";
-  const limiter = selectRateLimiter(env, (binding) => log(`rate-limit-binding-error:${binding}`));
-  const slot = await limiter.take(ip, now);
-  if (!slot.allowed) {
-    log("rate-limited");
-    return json(429, { error: "too many messages — try again later" }, origin, { "retry-after": String(slot.retryAfterSec) });
-  }
-
   // Honeypot BEFORE the origin gate (issue #220): a bot that filled the
   // hidden field gets the same quiet 200 wherever it posts from, so the
   // response teaches it nothing — not even "your origin was wrong".
@@ -478,6 +475,20 @@ export async function handleContactRequest(
     // drop does not depend on the early check alone.
     log("honeypot-dropped");
     return json(200, { ok: true }, origin);
+  }
+  // Rate-limit LAST, just before delivery (SPEC §3.2 order: honeypot →
+  // origin → validation → rate limit → sink). Only a message that would
+  // actually be delivered spends quota, so junk (honeypot, wrong origin,
+  // invalid or malformed bodies) never uses up a real sender's slots or
+  // the shared global budget. The work junk gets before this point is
+  // bounded: the body is size-capped and parsed once, and validation is
+  // linear-time (EMAIL_IN_TEXT, issue #220).
+  const ip = request.headers.get("cf-connecting-ip")?.trim() || "unknown";
+  const limiter = selectRateLimiter(env, (binding) => log(`rate-limit-binding-error:${binding}`));
+  const slot = await limiter.take(ip, now);
+  if (!slot.allowed) {
+    log("rate-limited");
+    return json(429, { error: "too many messages — try again later" }, origin, { "retry-after": String(slot.retryAfterSec) });
   }
   const sink = selectSink(env);
   const delivery = await sink.deliver({ ...result.value, receivedAt: new Date(now).toISOString() });

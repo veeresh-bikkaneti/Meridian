@@ -512,6 +512,173 @@ test("honeypot beats the origin gate: filled honeypot + disallowed or missing Or
   }
 });
 
+test("SPEC §3.2 order: junk from one sender (honeypot, invalid, wrong/missing Origin, malformed JSON) uses no rate-limit quota", async () => {
+  const { env } = defaultEnv();
+  const ip = { "cf-connecting-ip": "203.0.113.70" };
+  const noOrigin = () =>
+    new Request("https://meridian.test/api/contact", {
+      method: "POST",
+      headers: { "content-type": "application/json", ...ip },
+      body: JSON.stringify({ topic: "bug", message: "x" }),
+    });
+  const junk: Array<[string, () => Request, number]> = [
+    ["honeypot", () => post({ topic: "other", message: "buy now", website: "http://spam" }, ip), 200],
+    ["invalid", () => post({ topic: "nope", message: "" }, ip), 400],
+    ["wrong origin", () => post({ topic: "bug", message: "x" }, { ...ip, origin: "https://evil.example" }), 403],
+    ["missing origin", noOrigin, 403],
+    ["malformed JSON", () => post("{not json", ip), 400],
+  ];
+  for (let round = 0; round < 2; round++) {
+    for (const [name, make, status] of junk) {
+      assert.equal((await handleRequest(make(), env, 1000)).status, status, `${name} (round ${round})`);
+    }
+  }
+  // The sender's full quota is still there: 3 real sends land, the 4th is limited.
+  for (let i = 0; i < 3; i++) {
+    assert.equal((await handleRequest(post({ topic: "bug", message: `real ${i}` }, ip), env, 2000)).status, 200, `real send ${i}`);
+  }
+  assert.equal((await handleRequest(post({ topic: "bug", message: "real 4" }, ip), env, 2000)).status, 429);
+});
+
+test("SPEC §3.2 order: 3 invalid sends then a valid send from the same sender → the valid send is delivered (200)", async () => {
+  const { env } = defaultEnv();
+  const ip = { "cf-connecting-ip": "203.0.113.72" };
+  for (let i = 0; i < 3; i++) {
+    assert.equal((await handleRequest(post({ topic: "bug", message: "   " }, ip), env, 1000)).status, 400, `invalid ${i}`);
+  }
+  const valid = await handleRequest(post({ topic: "bug", message: "the map froze" }, ip), env, 1000);
+  assert.equal(valid.status, 200);
+  assert.deepEqual(await valid.json(), { ok: true, stored: false });
+});
+
+test("SPEC §3.2 order: an over-quota sender still gets the honeypot silent 200 and the gate answers (origin 403, invalid 400), not 429", async () => {
+  const { env } = defaultEnv();
+  const ip = { "cf-connecting-ip": "203.0.113.71" };
+  for (let i = 0; i < 3; i++) {
+    assert.equal((await handleRequest(post({ topic: "bug", message: `m${i}` }, ip), env, 1000)).status, 200);
+  }
+  const honeypot = await handleRequest(post({ topic: "other", message: "buy", website: "http://spam" }, ip), env, 1000);
+  assert.equal(honeypot.status, 200, "honeypot stays a silent 200 after the quota is spent");
+  assert.deepEqual(await honeypot.json(), { ok: true });
+  assert.equal((await handleRequest(post({ topic: "bug", message: "x" }, { ...ip, origin: "https://evil.example" }), env, 1000)).status, 403);
+  assert.equal((await handleRequest(post({ topic: "nope", message: "" }, ip), env, 1000)).status, 400);
+  assert.equal((await handleRequest(post({ topic: "bug", message: "valid" }, ip), env, 1000)).status, 429);
+});
+
+test("SPEC §3.2 order: junk never reaches the Workers rate-limit binding (shared global budget untouched)", async () => {
+  let calls = 0;
+  const env: ContactEnv = { CONTACT_RATE_LIMITER: { limit: async () => (calls++, { success: true }) } };
+  const ip = { "cf-connecting-ip": "203.0.113.73" };
+  await handleRequest(post({ topic: "other", message: "buy", website: "http://spam" }, ip), env, 1000);
+  await handleRequest(post({ topic: "nope", message: "" }, ip), env, 1000);
+  await handleRequest(post({ topic: "bug", message: "x" }, { ...ip, origin: "https://evil.example" }), env, 1000);
+  await handleRequest(post("{not json", ip), env, 1000);
+  assert.equal(calls, 0, "no binding call for junk");
+  assert.equal((await handleRequest(post({ topic: "bug", message: "real" }, ip), env, 1000)).status, 200);
+  assert.ok(calls > 0, "a deliverable message is counted");
+});
+
+// --- Email detection: linear-time, and identical to the shipped regex ---
+
+/** Test-only oracle: the shipped (quadratic) EMAIL_IN_TEXT before #220 Option 1a. */
+const OLD_EMAIL_IN_TEXT = /[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}/g;
+const oldStripEmails = (s: string) => s.replace(OLD_EMAIL_IN_TEXT, "[email removed]");
+
+test("validateContact runs in linear time: long '@'-free and adversarial messages validate well under 1 ms-scale (median < 2 ms)", () => {
+  const adversarial: Array<[string, string]> = [
+    ["a x4000", "a".repeat(4000)],
+    ["'+1' x2000", "+1".repeat(2000)],
+    ["'a.' x2000", "a.".repeat(2000)],
+    ["'.' x4000", ".".repeat(4000)],
+    ["'x' x3998 + '@b'", "x".repeat(3998) + "@b"],
+    ["'a@' x2000", "a@".repeat(2000)],
+    ["'a@a.' x1000", "a@a.".repeat(1000)],
+  ];
+  for (const [name, message] of adversarial) {
+    const body = { topic: "bug", message };
+    validateContact(body); // warm-up
+    const times: number[] = [];
+    for (let i = 0; i < 9; i++) {
+      const t = performance.now();
+      validateContact(body);
+      times.push(performance.now() - t);
+    }
+    times.sort((x, y) => x - y);
+    const median = times[4];
+    assert.ok(median < 2, `${name}: median ${median.toFixed(2)} ms ≥ 2 ms (quadratic email scan?)`);
+  }
+});
+
+test("email stripping is identical to the shipped regex: hand-picked edges", () => {
+  const edges = [
+    "kid@example.com",
+    "kid@example.com is me",
+    "write to kid@example.com",
+    "kid+tag@example.co.uk, and a.b.c@d.e.fg; also x@y.zz",
+    "jöhn.dœ@exämple.de and 日本@例え.日本",
+    "a@b@c.com",
+    "a@b.c",
+    "a@b",
+    "@example.com",
+    "kid@.com",
+    "kid@example.",
+    "kid@example.c",
+    "<kid@example.com>",
+    "(kid@example.com)",
+    '"kid@example.com"',
+    "mail:kid@example.com",
+    "kid@@example.com",
+    "kid@example..com",
+    "...@...",
+    "a@b.cc@d.ee",
+    "x".repeat(500) + "@example.com",
+    "",
+    "no email here at all.",
+    "emoji😀@exa😀mple.co😀",
+  ];
+  for (const s of edges) assert.equal(stripContactDetails(s), oldStripEmails(s), JSON.stringify(s));
+  assert.equal(stripContactDetails("hi kid+tag@example.co.uk!"), "hi [email removed]");
+  assert.equal(stripContactDetails("a@b.c stays"), "a@b.c stays");
+});
+
+test("email stripping is identical to the shipped regex: 200k fixed-seed random/adversarial strings", () => {
+  // mulberry32, fixed seed — deterministic corpus. No digits, so the phone
+  // pass is a no-op and stripContactDetails isolates the email pass.
+  let seed = 0x220_1a;
+  const rand = () => {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+  const alphabet = ["a", "b", "Z", "é", "日", "😀", "_", "-", "+", ".", ".", "@", "@", " ", "\n", "\t", "\u00a0", "<", ">", "(", ")", '"', ",", ";", ":", "'", "/", "!"];
+  const units = ["a@", "@a", "a.", ".a", "ab", "a@b.cd", "@", ".", " ", "x", ".co", "+1", "a@b", ";", "<a@b.cc>"];
+  const N = 200_000;
+  let diffs = 0;
+  let withMatch = 0;
+  const firstDiffs: string[] = [];
+  for (let i = 0; i < N; i++) {
+    let s = "";
+    if (i % 4 === 3) {
+      // adversarial: repeated structural units
+      const reps = 1 + Math.floor(rand() * 40);
+      for (let r = 0; r < reps; r++) s += units[Math.floor(rand() * units.length)];
+    } else {
+      const len = Math.floor(rand() * 48);
+      for (let k = 0; k < len; k++) s += alphabet[Math.floor(rand() * alphabet.length)];
+    }
+    const want = oldStripEmails(s);
+    if (want !== s) withMatch++;
+    if (stripContactDetails(s) !== want) {
+      diffs++;
+      if (firstDiffs.length < 5) firstDiffs.push(JSON.stringify(s));
+    }
+  }
+  assert.equal(diffs, 0, `diffs: ${firstDiffs.join(" | ")}`);
+  assert.ok(withMatch > N / 20, `corpus too easy: only ${withMatch} strings contain an email`);
+});
+
 test("validateContact strips emails and phone numbers from the message, never the replyTo", () => {
   const r = validateContact({
     topic: "bug",
