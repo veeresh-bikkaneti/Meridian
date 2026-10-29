@@ -3587,11 +3587,8 @@ function Choose({
       {notice}
       {tutorialInvite}
       {/* v5 top nav. ABOUT and JOURNAL jump to the sections at the bottom
-          of the home page. Search has no surface yet. */}
+          of the home page. */}
       <header className="hv5-nav home-rise" style={rise(0)}>
-        <span id="hv5-unmapped-note" className="sr-only">
-          Not yet available
-        </span>
         <button
           type="button"
           className="hv5-brand"
@@ -3623,9 +3620,6 @@ function Choose({
           >
             JOIN THE JOURNEY
             <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
-          </button>
-          <button type="button" className="hv5-icon-btn" aria-label="Search" aria-disabled="true" aria-describedby="hv5-unmapped-note">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#33302A" strokeWidth="2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5L21 21" strokeLinecap="round" /></svg>
           </button>
         </div>
       </header>

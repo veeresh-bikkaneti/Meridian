@@ -349,6 +349,13 @@ export default defineConfig({
       },
     },
     {
+      name: "search-hidden",
+      // Wave 1 P0 Item 4H/4I: home has no Search control. Each test sets
+      // its own viewport (360x740 / 390x844); no mobile UA emulation
+      // (same note as badge-journey: isMobile/hasTouch breaks map mounting).
+      testMatch: /search-hidden\.spec\.ts/,
+    },
+    {
       name: "motionmaxxing-reduced",
       // Motionmaxxing reduced-motion gate (project reducedMotion fixture —
       // matches the repo's `reduced` project convention).

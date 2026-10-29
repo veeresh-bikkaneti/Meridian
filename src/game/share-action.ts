@@ -1,7 +1,7 @@
-import { BRAND } from "./brand.ts";
 import type { SessionSummary } from "./session.ts";
 import { DIFFICULTY_LABELS, formatSuccessRate } from "./session.ts";
 import { shareText } from "./share.ts";
+import { shareOrigin } from "../lib/og/share-meta.ts";
 
 /**
  * Outcome of a share attempt.
@@ -74,6 +74,8 @@ export function sessionShareText(input: {
   regionName: string;
   dateKey: string;
   now?: Date;
+  /** Vite build base; defaults to the running build's BASE_URL. */
+  baseUrl?: string;
 }): string {
   const base = shareText({
     regionName: input.regionName,
@@ -83,6 +85,7 @@ export function sessionShareText(input: {
     averagePerPlace: input.summary.averagePerPlace,
     bestStreak: input.summary.bestStreak,
     now: input.now,
+    baseUrl: input.baseUrl,
   });
   const lines = [base];
   for (const mode of input.summary.byDifficulty) {
@@ -104,5 +107,12 @@ export function sessionShareText(input: {
   return lines.join("\n");
 }
 
-/** The canonical share target — the text already carries it on its own line. */
-export const SHARE_URL = BRAND.siteUrl;
+/**
+ * The share target for the running build — the text already carries it on
+ * its own line. Build-aware (Wave 1 P0 Item 4E/4F): Pages build → Pages
+ * URL, any other build → Workers URL. Node has no import.meta.env, so the
+ * default base "/" (Workers origin) applies there.
+ */
+export const SHARE_URL = shareOrigin(
+  (import.meta as unknown as { env?: { BASE_URL?: string } }).env?.BASE_URL ?? "/",
+);

@@ -33,7 +33,11 @@ import {
  * session/run storage the app itself writes, mirroring shareText().
  */
 
-const SITE_URL = "https://meridian.knowledgetest.workers.dev/";
+// E2E artifact is Pages bytes served at localhost, so the expected share
+// URL is the Pages URL (build-aware share, Wave 1 P0 Item 4E/4F) — not the
+// Workers SITE_URL, not a localhost URL. The "meridian " first-line casing
+// below is UNCHANGED (CONDITIONAL wording, owner word still owed).
+const SITE_URL = "https://veeresh-bikkaneti.github.io/Meridian/";
 
 function collectErrors(page: Page): string[] {
   const errors: string[] = [];
@@ -241,7 +245,10 @@ test("end-game share: clipboard path copies the exact session share text", async
     await expect(
       dialog.getByRole("button", { name: "Copied ✓", exact: true }),
     ).toBeVisible();
-    await expect(dialog.locator('p[aria-live="polite"]')).toContainText("Copied ✓");
+    // Two live regions now live in this dialog (score ShareButton + the
+    // friend-challenge ShareButton shipped ON in flags.json #279): scope to
+    // the region announcing this share's feedback, same assertion as before.
+    await expect(dialog.locator('p[aria-live="polite"]', { hasText: "Copied ✓" })).toContainText("Copied ✓");
 
     expectCleanConsole(errors);
   } finally {
@@ -279,7 +286,8 @@ test("end-game share: mocked navigator.share is called once, clipboard untouched
     await expect(
       dialog.getByRole("button", { name: "Shared ✓", exact: true }),
     ).toBeVisible();
-    await expect(dialog.locator('p[aria-live="polite"]')).toContainText("Shared ✓");
+    // Same two-live-region scoping as the clipboard path above.
+    await expect(dialog.locator('p[aria-live="polite"]', { hasText: "Shared ✓" })).toContainText("Shared ✓");
 
     // Clipboard untouched by the native-share path.
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(SENTINEL);
