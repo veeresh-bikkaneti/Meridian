@@ -489,3 +489,60 @@ test("buildCreationSources orders the widening chain inside the region", () => {
   const noRun = buildCreationSources({ catalog, choice: "easy", seenIds: seen });
   assert.deepEqual(noRun[0].map((p) => p.id), ["gn-104", "gn-107"]);
 });
+
+test("re-share preserves an off-golden in-tolerance radius (manifest §6, the sharpest freeze test)", () => {
+  // Nebraska's computed radius is 87; a received link pinned 90 is
+  // honoured at receive — and the completion re-share must carry 90
+  // forward, never silently re-pin 87.
+  const created = createChallengeRoute({
+    edition: "state",
+    regionId: "nebraska",
+    scoringVersion: 3,
+    mode: "exact",
+    exactIds: ["gn-5072006", "gn-5074472", "gn-5063805", "gn-5068725", "gn-5069297"],
+    originFormat: "mc2",
+    radiusKmOverride: 90,
+  });
+  assert.ok(created);
+  assert.ok(created.fragment.startsWith("#c=mc2."));
+  assert.equal(created.radiusKm, 90);
+  const decoded = decodeChallengeLink(created.fragment, 3);
+  assert.ok(decoded.ok);
+  assert.equal(decoded.route.radiusKm, 90);
+  assert.deepEqual(decoded.route.ids, [
+    "gn-5072006",
+    "gn-5074472",
+    "gn-5063805",
+    "gn-5068725",
+    "gn-5069297",
+  ]);
+});
+
+test("re-share preserves origin format: an mc2 Globe route stays mc2, an mc1 route stays mc1", () => {
+  const ids = ["gn-101", "gn-102", "gn-103", "gn-104", "gn-105"];
+  const mc2Globe = createChallengeRoute({
+    edition: "globe",
+    regionId: "globe",
+    scoringVersion: 3,
+    mode: "exact",
+    exactIds: ids,
+    originFormat: "mc2",
+    radiusKmOverride: 750,
+  });
+  assert.ok(mc2Globe);
+  assert.ok(mc2Globe.fragment.startsWith("#c=mc2."));
+  const decoded2 = decodeChallengeLink(mc2Globe.fragment, 3);
+  assert.ok(decoded2.ok);
+  assert.equal(decoded2.route.radiusKm, 750);
+  assert.equal(decoded2.route.originFormat, "mc2");
+  const mc1Globe = createChallengeRoute({
+    edition: "globe",
+    regionId: "globe",
+    scoringVersion: 3,
+    mode: "exact",
+    exactIds: ids,
+    originFormat: "mc1",
+  });
+  assert.ok(mc1Globe);
+  assert.ok(mc1Globe.fragment.startsWith("#c=mc1."));
+});

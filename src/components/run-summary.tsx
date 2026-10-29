@@ -52,10 +52,21 @@ export function RunSummaryCard(props: {
    * re-derived here by decoding the link (the mc2 codec made the old
    * decode-it-yourself count the wrong tool for this card).
    */
-  challengePrimary?: { url: string; text: string; label: string } | null;
+  challengePrimary?: {
+    url: string;
+    text: string;
+    label: string;
+    /** The sender's exact played route: its share opens a preview
+     * sheet first (the exact-route privacy disclosure lives there,
+     * manifest §1(d)); a fresh-route primary shares directly, as the
+     * shipped surface always has. */
+    exact?: boolean;
+  } | null;
   challengeSecondary?: { url: string; text: string; label: string } | null;
+  /** Opens the exact-route preview sheet (owner renders the sheet). */
+  onChallengePrimaryPreview?: () => void;
 }): JSX.Element {
-  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount, challengePrimary, challengeSecondary } = props;
+  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount, challengePrimary, challengeSecondary, onChallengePrimaryPreview } = props;
   // One unit for the whole card: miles only when EVERY played region is a
   // USA context (state edition, or the United States country run);
   // mixed or empty sessions fail closed to kilometers (owner ruling 2026-10-11).
@@ -275,7 +286,11 @@ export function RunSummaryCard(props: {
               </pre>
             }
           />
-          {challengePrimary ? (
+          {challengePrimary?.exact && onChallengePrimaryPreview ? (
+            <Button className="w-full" onClick={onChallengePrimaryPreview}>
+              {challengePrimary.label}
+            </Button>
+          ) : challengePrimary ? (
             <div data-testid="challenge-share-container" data-challenge-url={challengePrimary.url}>
               <ShareButton
                 title="Meridian friend challenge"

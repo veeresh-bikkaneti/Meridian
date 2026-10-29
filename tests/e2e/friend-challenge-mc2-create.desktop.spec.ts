@@ -156,7 +156,13 @@ test("summary (state): primary is the sender's exact played route; secondary is 
   const dialog = page.getByRole("dialog", { name: "Game summary" });
   await expect(dialog).toBeVisible();
 
-  const primary = dialog.getByTestId("challenge-share-container");
+  // The exact primary opens the preview sheet first (manifest §1(d)):
+  // the disclosure line is the exact-route privacy mitigation.
+  await dialog.getByRole("button", { name: "Challenge a friend — play my route" }).click();
+  const sheet = page.getByTestId("challenge-preview");
+  await expect(sheet).toBeVisible();
+  await expect(sheet).toContainText("This shares the exact places you just played, in order.");
+  const primary = sheet.getByTestId("challenge-share-container");
   await expect(primary).toBeVisible();
   const primaryUrl = await primary.getAttribute("data-challenge-url");
   expect(primaryUrl).toBeTruthy();
@@ -168,7 +174,8 @@ test("summary (state): primary is the sender's exact played route; secondary is 
   expect(decodedPrimary.rad).toBe(87);
   // The route is the sender's own five, in the order they were asked.
   expect(decodedPrimary.ids.map((id) => NAME_BY_ID.get(id))).toEqual(askedNames);
-  await expect(dialog.getByRole("button", { name: "Play my route" })).toBeVisible();
+  await sheet.getByRole("button", { name: "Back" }).click();
+  await expect(sheet).toHaveCount(0);
 
   const secondary = dialog.getByTestId("challenge-share-secondary");
   await expect(secondary).toBeVisible();
@@ -187,7 +194,7 @@ test("summary (state): primary is the sender's exact played route; secondary is 
   ).toBeVisible();
 });
 
-test("summary (globe): the primary stays an mc1 link with the shipped label", async ({
+test("summary (globe): the exact primary opens the sheet; its link stays mc1 with the shipped text", async ({
   page,
   context,
 }) => {
@@ -204,7 +211,11 @@ test("summary (globe): the primary stays an mc1 link with the shipped label", as
   await page.getByRole("button", { name: "End game" }).click();
   await expect.poll(() => readPhase(page), { timeout: 15_000 }).toBe("summary");
   const dialog = page.getByRole("dialog", { name: "Game summary" });
-  const primary = dialog.getByTestId("challenge-share-container");
+  await dialog.getByRole("button", { name: "Challenge a friend — play my route" }).click();
+  const sheet = page.getByTestId("challenge-preview");
+  await expect(sheet).toBeVisible();
+  await expect(sheet).toContainText("This shares the exact places you just played, in order.");
+  const primary = sheet.getByTestId("challenge-share-container");
   await expect(primary).toBeVisible();
   const primaryUrl = await primary.getAttribute("data-challenge-url");
   expect(primaryUrl).toBeTruthy();
@@ -213,7 +224,7 @@ test("summary (globe): the primary stays an mc1 link with the shipped label", as
   expect(decoded.ok).toBe(true);
   if (decoded.ok) expect(decoded.ids).toHaveLength(5);
   await expect(
-    dialog.getByRole("button", { name: "Share this route with a friend" }),
+    sheet.getByRole("button", { name: "Share this route with a friend" }),
   ).toBeVisible();
 });
 

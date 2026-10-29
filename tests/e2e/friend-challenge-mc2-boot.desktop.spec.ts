@@ -14,7 +14,11 @@ import {
   RUN_KEY,
   MC2_RUN_KEY,
 } from "./helpers";
-import { encodeChallenge2 } from "../../src/game/challenge.ts";
+import {
+  encodeChallenge,
+  encodeChallenge2,
+  decodeChallengeLink,
+} from "../../src/game/challenge.ts";
 import { SCORING_VERSION } from "../../src/game/scoring.ts";
 
 /**
@@ -45,6 +49,10 @@ const NEBRASKA_IDS = [
   "gn-5068725", // Fremont
   "gn-5069297", // Grand Island
 ] as const;
+
+// Real Globe catalog ids (the golden fixture's summary-A route), for
+// building a genuine mc1 link in the cross-format test.
+const GOLDEN_MC1_IDS = ["gn-1579635", "gn-13665104", "gn-2526780", "gn-3574116", "gn-160950"];
 
 const NEBRASKA_HASH = encodeChallenge2(
   { edition: "state", regionId: "nebraska", radiusKm: 87, ids: NEBRASKA_IDS },
@@ -230,3 +238,67 @@ test("flag flipped OFF with an mc2 save in storage: the save is cleared, the boo
 // manifest and recorded in the PR; this skip keeps the obligation
 // visible in the suite instead of silently absent.
 test.skip("@old-build: a b09a5c3 build boots clean with an mc2 save present (scripted-manual gate)", async () => {});
+
+const NEBRASKA_HASH_90 = encodeChallenge2(
+  { edition: "state", regionId: "nebraska", radiusKm: 90, ids: NEBRASKA_IDS },
+  SCORING_VERSION,
+);
+
+test("completion re-share preserves an off-golden pinned radius (rad 90, not the computed 87)", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  await page.goto("about:blank");
+  await page.goto(`${APP_URL}?idle-ms=3600000${NEBRASKA_HASH_90}`);
+  await expect(page.getByTestId("challenge-welcome")).toBeVisible({ timeout: 30_000 });
+  // The card names the pinned circle, not the computed one.
+  await expect(page.getByTestId("challenge-welcome")).toContainText("90 km circle");
+  await page.getByTestId("challenge-start").click();
+  await waitForChallengeAim(page);
+  for (let i = 0; i < 5; i++) {
+    await playOneMiss(page);
+  }
+  const complete = page.getByTestId("challenge-complete");
+  await expect(complete).toBeVisible({ timeout: 15_000 });
+  await expect(page.getByText(/inside the 90 km circle/)).toBeVisible();
+  const container = page.getByTestId("challenge-share-container");
+  const url = await container.getAttribute("data-challenge-url");
+  expect(url).toBeTruthy();
+  expect(url).toContain("#c=mc2.");
+  const decoded = decodeChallengeLink(url!.slice(url!.indexOf("#")), SCORING_VERSION);
+  expect(decoded.ok).toBe(true);
+  if (decoded.ok) {
+    // The sharpest freeze test (manifest §6): the re-share carries the
+    // SAME circle the route was judged at.
+    expect(decoded.route.radiusKm).toBe(90);
+    expect(decoded.route.originFormat).toBe("mc2");
+    expect(decoded.route.ids).toEqual([...NEBRASKA_IDS]);
+  }
+});
+
+test("cross-format displacement: a new challenge's start clears the other format's saved challenge", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  // Capture a real saved mc1 challenge (an mc1 boot commits at once).
+  const mc1 = encodeChallenge(GOLDEN_MC1_IDS, SCORING_VERSION);
+  const capPage = await context.newPage();
+  await capPage.goto(`${APP_URL}?idle-ms=3600000${mc1}`);
+  await waitForChallengeAim(capPage, RUN_KEY);
+  const mc1Save = await capPage.evaluate((k) => sessionStorage.getItem(k), RUN_KEY);
+  expect(mc1Save).toBeTruthy();
+  await capPage.close();
+  // Seed it, then receive an mc2 link and tap Start: the mc1 challenge
+  // is displaced (one challenge at a time); the mc2 run owns its slot.
+  await context.addInitScript((json: string) => {
+    sessionStorage.setItem("meridian.run", json);
+    sessionStorage.setItem("meridian.cleanExit", "1");
+  }, mc1Save as string);
+  await startNebraskaChallenge(page);
+  const after = await page.evaluate((k) => sessionStorage.getItem(k), RUN_KEY);
+  expect(after).toBeNull();
+  const mc2Save = await page.evaluate((k) => sessionStorage.getItem(k), MC2_RUN_KEY);
+  expect(mc2Save).toBeTruthy();
+});

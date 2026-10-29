@@ -177,10 +177,11 @@ every quiz edition. The original `mc1` format is frozen — links already
 sitting in family chats must decode forever — so a second format carries
 the new routes: `#c=mc2.` links name an edition, a region, and the route's
 own hit/miss radius in whole kilometres (Globe 750; a state gets 12% of its
-greater side, clamped 25–160 km; a country 40–450 km). A receiver's build
-honours the pinned radius only when it sits within ±10% of the radius that
-build computes for the same region, so a hand-edited circle cannot rig the
-game. Creating a challenge: the Home screen's "Challenge a friend" button
+greater side, clamped 25–160 km; a country gets 12% too, clamped
+40–450 km). A receiver's build honours the pinned radius only when it
+sits within ±10% of the radius that build computes for the same region
+(the Globe is exact: 750 only, no tolerance), so a hand-edited circle
+cannot rig the game. Creating a challenge: the Home screen's "Challenge a friend" button
 deals a fresh five from the region you pick, and the end-of-run summary
 offers the route you just played ("Play my route") plus a fresh route in
 the same region (a run that ends before five places still offers a fresh

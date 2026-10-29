@@ -15,6 +15,7 @@ test("radius clamps by edition and the boundary is a hit", () => {
 
 // --- All-editions challenges (manifest 2026-10-28): per-region radii ---
 import { regionRadiusKm } from "./radius.ts";
+import { STATES, COUNTRIES } from "./regions.ts";
 import { SCORING_VERSION } from "./scoring.ts";
 
 /**
@@ -50,6 +51,11 @@ const GOLDEN_RADII: Record<string, number> = {
 test("golden radius table: every playable region computes its frozen challenge radius", () => {
   const keys = Object.keys(GOLDEN_RADII);
   assert.equal(keys.length, 64, "50 states + 13 countries + globe");
+  // Coverage is asserted against the region lists themselves, not just
+  // the literal's size: a region added to regions.ts without a golden
+  // entry must turn this test red, not slip through unmeasured.
+  for (const s of STATES) assert.ok(`state:${s.id}` in GOLDEN_RADII, `missing golden radius for state ${s.id}`);
+  for (const c of COUNTRIES) assert.ok(`country:${c.id}` in GOLDEN_RADII, `missing golden radius for country ${c.id}`);
   for (const key of keys) {
     const [edition, regionId] = key.split(":") as ["state" | "country" | "globe", string];
     assert.equal(

@@ -58,10 +58,14 @@ export const CHALLENGE_GLOBE_RADIUS_KM = 750;
 export const CHALLENGE_MIN_PLACES = 5;
 export const CHALLENGE_MAX_PLACES = 10;
 export const CHALLENGE_SHARE_LABEL = "Share this route with a friend";
-/** The mc2 summary primary's label (manifest §3(d)): the route is the
- * sender's own played run, so the verb is "Play", not "Share". The mc1
- * primary keeps CHALLENGE_SHARE_LABEL — shipped copy, frozen in kind. */
-export const CHALLENGE_MC2_SHARE_LABEL = "Play my route";
+/** The summary exact primary's label (manifest §1(d)): one verb for
+ * every share surface — "Challenge a friend" — with the route kind
+ * named after it. Applies in every edition, Globe included. */
+export const CHALLENGE_EXACT_SHARE_LABEL = "Challenge a friend — play my route";
+/** The completion re-share's label (manifest §1(f)): the receiver
+ * passes the route along in its origin format. mc1 completions keep
+ * CHALLENGE_SHARE_LABEL — that surface is frozen. */
+export const CHALLENGE_RESHARE_LABEL = "Pass this challenge to a friend";
 
 const PREFIX = "#c=mc1.";
 const ID_RE = /^gn-[0-9]+$/;
@@ -83,6 +87,10 @@ export type ChallengeFail = {
 };
 
 /**
+ * (This header describes the mc1 format. The mc2 all-editions format
+ * lives further down this file — search "mc2" — behind the same `#c=`
+ * catch-all, with its own strict decoder.)
+ *
  * The seed: an FNV-1a hash (a tiny, well-known non-cryptographic hash)
  * of the ids joined with commas. Its job is INTEGRITY, not security —
  * it catches a link that was truncated, mistyped, or casually edited,
@@ -693,6 +701,22 @@ export function createChallengeRoute(input: {
   exactIds?: readonly string[];
   count?: number;
   dealSeed?: number;
+  /**
+   * Completion re-share ONLY (manifest §2.3 + §6): the ORIGIN format of
+   * the route being re-encoded. A received mc2 route re-shares as mc2 —
+   * in every edition, Globe included — and a received mc1 route as mc1.
+   * Sender-side creations (summary, picker) omit it: there the format
+   * follows the edition (globe exact = the shipped mc1 surface).
+   */
+  originFormat?: "mc1" | "mc2";
+  /**
+   * Completion re-share ONLY: the radius the run was actually judged
+   * at (its snapshotted challengeRadiusKm). A link may pin an
+   * in-tolerance off-golden radius (rad 90 vs golden 87); the re-share
+   * must preserve THAT circle — "the sharpest freeze test" (§6) —
+   * never silently re-pin the computed one.
+   */
+  radiusKmOverride?: number;
 }): ChallengeCreation | null {
   const region = findRegion(input.edition, input.regionId);
   const radius = regionRadiusKm(input.edition, input.regionId);
@@ -700,19 +724,23 @@ export function createChallengeRoute(input: {
   if (input.mode === "exact") {
     const ids = (input.exactIds ?? []).slice(0, CHALLENGE_MAX_PLACES);
     if (!legalIds(ids)) return null;
-    // An EXACT globe route encodes mc1 (the frozen format — a played
-    // globe route re-shares as the link it always was). A FRESH globe
-    // route encodes mc2 (below). Never route a RECEIVED mc2 route
-    // through encodeChallenge: origin preservation forbids the
-    // downgrade (see ChallengeComplete).
-    const fragment =
-      input.edition === "globe"
-        ? encodeChallenge(ids, input.scoringVersion)
-        : encodeChallenge2(
-            { edition: input.edition, regionId: input.regionId, radiusKm: radius, ids },
-            input.scoringVersion,
-          );
-    return { fragment, placeCount: ids.length, regionName: region.name, radiusKm: radius, dealtIds: [...ids] };
+    const effectiveRadius = input.radiusKmOverride ?? radius;
+    // Format: an explicit origin (a re-share) wins over the edition
+    // default. Without one, an EXACT globe route encodes mc1 (the
+    // frozen format — a played globe route shares as the link it
+    // always was) and any other edition encodes mc2. Never route a
+    // RECEIVED mc2 route through encodeChallenge: origin preservation
+    // forbids the downgrade (see ChallengeComplete).
+    const useMc2 =
+      input.originFormat === "mc2" ||
+      (input.originFormat === undefined && input.edition !== "globe");
+    const fragment = useMc2
+      ? encodeChallenge2(
+          { edition: input.edition, regionId: input.regionId, radiusKm: effectiveRadius, ids },
+          input.scoringVersion,
+        )
+      : encodeChallenge(ids, input.scoringVersion);
+    return { fragment, placeCount: ids.length, regionName: region.name, radiusKm: effectiveRadius, dealtIds: [...ids] };
   }
   const count = input.count ?? CHALLENGE_MIN_PLACES;
   if (!Number.isInteger(count) || count < CHALLENGE_MIN_PLACES || count > CHALLENGE_MAX_PLACES) {

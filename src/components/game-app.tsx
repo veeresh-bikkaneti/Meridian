@@ -345,7 +345,8 @@ import {
   CHALLENGE_REGION_ID,
   CHALLENGE_REGION_NAME,
   CHALLENGE_SHARE_LABEL,
-  CHALLENGE_MC2_SHARE_LABEL,
+  CHALLENGE_EXACT_SHARE_LABEL,
+  CHALLENGE_RESHARE_LABEL,
   CHALLENGE_UNKNOWN_CONTENT_COPY,
   CHALLENGE_UNKNOWN_REGION_COPY,
   CHALLENGE_WELCOME_TITLE,
@@ -794,7 +795,16 @@ function readRunFrom(key: string): Run | null {
       ...(typeof record.challengeRegionId === "string"
         ? { challengeRegionId: record.challengeRegionId }
         : {}),
-      ...(Number.isInteger(record.challengeRadiusKm) && (record.challengeRadiusKm as number) > 0
+      ...(Number.isInteger(record.challengeRadiusKm) &&
+      // The decode-side envelopes, re-checked at the save boundary: a
+      // tampered slot must not widen the circle past what a link could
+      // legally pin (Globe exactly 750; state [25,160]; country
+      // [40,450]). Out-of-envelope degrades to the accessor default.
+      (record.edition === "globe"
+        ? record.challengeRadiusKm === CHALLENGE_GLOBE_RADIUS_KM
+        : record.edition === "state"
+          ? (record.challengeRadiusKm as number) >= 25 && (record.challengeRadiusKm as number) <= 160
+          : (record.challengeRadiusKm as number) >= 40 && (record.challengeRadiusKm as number) <= 450)
         ? { challengeRadiusKm: record.challengeRadiusKm as number }
         : {}),
       ...(record.challengeOrigin === "mc1" || record.challengeOrigin === "mc2"
@@ -1503,6 +1513,16 @@ export function GameApp() {
     if (!pendingChallenge) return;
     const fields = challengeRunFields(pendingChallenge.route);
     clearDrop();
+    // Cross-format displacement (manifest §3 persistence): if the
+    // normal slot holds a saved CHALLENGE (an mc1 run), starting this
+    // mc2 challenge displaces it — one challenge at a time, and the
+    // displacement commits here, on Start, never on arrival. A saved
+    // NORMAL run is not a challenge and is never touched: it survives
+    // underneath and is offered back on Done.
+    const savedNormal = readRun();
+    if (savedNormal && savedNormal.regionId === CHALLENGE_REGION_ID) {
+      sessionStorage.removeItem(RUN_KEY);
+    }
     const run: Run = {
       ...startRun(
         {
@@ -1976,6 +1996,12 @@ export function GameApp() {
             null,
           );
           commit(challengeRun);
+          // The mc1 boot is its commit point: a saved mc2 challenge is
+          // displaced now (a saved challenge is displaceable only on a
+          // new challenge's start — manifest §3 persistence). The
+          // normal slot now holds THIS challenge; nothing else is
+          // touched.
+          clearMc2Run();
           setMenu(null);
         } catch {
           // The Globe catalog could not load, so the challenge cannot
@@ -3009,7 +3035,7 @@ export function GameApp() {
                 label={CHALLENGE_SHARE_LABEL}
                 className="w-full"
                 failureFallback={
-                  <pre className="whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+                  <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
                     {text}
                   </pre>
                 }
@@ -3201,7 +3227,7 @@ export function GameApp() {
       })}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       challengeEnabled={friendChallengesOn}
-      onChallenge={openChallengePicker}
+      onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
@@ -3344,7 +3370,7 @@ function Choose({
   /** Friend challenges on (flag): show the "Challenge a friend" entry. */
   challengeEnabled?: boolean;
   /** Open the challenge region picker. */
-  onChallenge?: () => void;
+  onChallenge?: (e: ReactMouseEvent) => void;
   /** Deck entry status (flag-gated; see useDeckStatus). */
   deck: { enabled: boolean; due: number; total: number };
   notice?: ReactNode;
@@ -4329,6 +4355,12 @@ function ChallengeComplete({
         scoringVersion: SCORING_VERSION,
         mode: "exact",
         exactIds: run.poolIds,
+        // Origin preservation in full (manifest §2.3 + §6): the route
+        // re-encodes in the format it ARRIVED in and at the radius it
+        // was JUDGED at — an in-tolerance pinned circle (rad 90 vs the
+        // computed 87) survives the re-share, never re-pins.
+        originFormat: "mc2",
+        radiusKmOverride: run.challengeRadiusKm,
       })
     : null;
   const challengeHash = isMc2
@@ -4345,7 +4377,9 @@ function ChallengeComplete({
   // newest-Meridian suffix, because an old build cannot open them.
   const score = run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US");
   const challengeText = isMc2
-    ? `Play the same ${total} places ${run.edition === "globe" ? "on the Globe" : `in ${mc2Creation?.regionName ?? run.regionName}`}! I scored ${score}. (Opens in the newest Meridian.)\n${challengeUrl}`
+    ? // The pre-written reply text (manifest §1(f)): the receiver sends
+      // the route back along the chain with their score on it.
+      `I scored ${score} on your ${mc2Creation?.regionName ?? run.regionName} route — beat that! (Opens in the newest Meridian.)\n${challengeUrl}`
     : `Play the same ${total} places on the Globe! I scored ${score}.\n${challengeUrl}`;
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
@@ -4365,7 +4399,7 @@ function ChallengeComplete({
               title="Meridian friend challenge"
               text={challengeText}
               url={challengeUrl}
-              label={CHALLENGE_SHARE_LABEL}
+              label={isMc2 ? CHALLENGE_RESHARE_LABEL : CHALLENGE_SHARE_LABEL}
               className="w-full"
               failureFallback={
                 // If the share sheet and the clipboard both fail, the
@@ -4373,7 +4407,7 @@ function ChallengeComplete({
                 // somewhere visible to copy, or that state is a dead
                 // end. Same selectable-text block the GeoDetective
                 // share uses on themed surfaces.
-                <pre className="whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+                <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
                   {challengeText}
                 </pre>
               }
@@ -5595,18 +5629,30 @@ function PlayLoaded({
       : 0;
 
   /**
-   * The summary's friend-challenge offers (manifest §3(d), Package A):
+   * The summary's friend-challenge offers (manifest §1(d), Package A):
    * primary = the sender's OWN route — the places they just played, in
-   * play order, first ten, offered once at least five were played;
-   * secondary = a fresh five in the same region. A globe primary stays
-   * mc1 with its shipped label and text (the frozen surface); every
-   * other offer is mc2. Computed from the dealer: for a normal run the
-   * place at index i IS dealer.at(i), so the played ids are exact —
-   * PlaceResult carries scores, not ids.
+   * play order, first ten, offered once at least five were played; its
+   * share opens a preview sheet first, carrying the exact-route
+   * disclosure (the privacy trade's mitigation, §3). Secondary = a
+   * fresh five in the same region. A run that ends before five places
+   * has no exact route to share, so the fresh offer becomes the
+   * primary and shares directly — on the Globe in its shipped mc1 form
+   * byte for byte. A globe exact primary's TEXT also stays the shipped
+   * one; its fragment is mc1, every other exact fragment is mc2.
+   * Computed from the dealer: for a normal run the place at index i IS
+   * dealer.at(i), so the played ids are exact — PlaceResult carries
+   * scores, not ids.
    */
   const summaryChallengeOffers = useMemo(() => {
     const none = { primary: null, secondary: null } as {
-      primary: { url: string; text: string; label: string } | null;
+      primary: {
+        url: string;
+        text: string;
+        label: string;
+        exact?: boolean;
+        placeCount?: number;
+        regionName?: string;
+      } | null;
       secondary: { url: string; text: string; label: string } | null;
     };
     if (!friendChallengesEnabled || challenge || review || run.phase !== "summary") return none;
@@ -5662,8 +5708,13 @@ function PlayLoaded({
       return {
         primary: {
           url: `${origin}${exact.fragment}`,
-          label:
-            exact.fragment.startsWith("#c=mc1.") ? CHALLENGE_SHARE_LABEL : CHALLENGE_MC2_SHARE_LABEL,
+          // One label in every edition (manifest §1(d)): the primary
+          // opens the preview sheet, whose disclosure names the
+          // exact-route privacy trade before anything is shared.
+          label: CHALLENGE_EXACT_SHARE_LABEL,
+          exact: true,
+          placeCount: exact.placeCount,
+          regionName: exact.regionName,
           text: exact.fragment.startsWith("#c=mc1.")
             ? `Play the same ${exact.placeCount} places on the Globe!\n${origin}${exact.fragment}`
             : `Play the same ${exact.placeCount} places ${regionPhrase}! I scored ${sessionTotal.toLocaleString("en-US")}. (Opens in the newest Meridian.)\n${origin}${exact.fragment}`,
@@ -5703,6 +5754,57 @@ function PlayLoaded({
       secondary: null,
     };
   }, [friendChallengesEnabled, challenge, review, run, dealer, pool, sessionTotal]);
+
+  // The exact-route preview sheet (manifest §1(d)): the primary's tap
+  // opens it BEFORE any sharing — the disclosure line is the privacy
+  // trade's mitigation, and a share failure inside it still leaves a
+  // visible, copyable link (§5). Rendered only while the summary is up
+  // and the primary is an exact offer.
+  const [summaryPreviewOpen, setSummaryPreviewOpen] = useState(false);
+  const exactPrimary =
+    run.phase === "summary" && summaryChallengeOffers.primary?.exact
+      ? summaryChallengeOffers.primary
+      : null;
+  const summaryPreviewEl =
+    summaryPreviewOpen && exactPrimary ? (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Challenge a friend"
+        data-testid="challenge-preview"
+      >
+        <div className="w-full max-w-sm rounded-2xl border border-line bg-surface p-6 shadow-2xl">
+          <h2 className="font-display text-2xl text-fg">Challenge a friend</h2>
+          <p className="mt-3 text-base text-fg">
+            {exactPrimary.placeCount} places · {exactPrimary.regionName}
+          </p>
+          <p className="mt-2 text-base text-muted">
+            This shares the exact places you just played, in order.
+          </p>
+          <p className="mt-2 text-base text-muted">{CHALLENGE_FAIRNESS_COPY}</p>
+          <div className="mt-5 flex flex-col gap-2">
+            <div data-testid="challenge-share-container" data-challenge-url={exactPrimary.url}>
+              <ShareButton
+                title="Meridian friend challenge"
+                text={exactPrimary.text}
+                url={exactPrimary.url}
+                label={CHALLENGE_SHARE_LABEL}
+                className="w-full"
+                failureFallback={
+                  <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+                    {exactPrimary.text}
+                  </pre>
+                }
+              />
+            </div>
+            <Button variant="secondary" onClick={() => setSummaryPreviewOpen(false)}>
+              Back
+            </Button>
+          </div>
+        </div>
+      </div>
+    ) : null;
 
   // Review session complete: the due queue is exhausted. A bounded,
   // completable session — ADHD-friendly — never the endless run.
@@ -6095,8 +6197,10 @@ function PlayLoaded({
           reviewDueCount={reviewDueCount}
           challengePrimary={summaryChallengeOffers.primary}
           challengeSecondary={summaryChallengeOffers.secondary}
+          onChallengePrimaryPreview={() => setSummaryPreviewOpen(true)}
         />
       ) : null}
+      {summaryPreviewEl}
     </main>
   );
 }
