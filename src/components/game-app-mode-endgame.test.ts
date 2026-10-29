@@ -139,6 +139,24 @@ describe("mode End game — accessibility cure (panel BLOCK 1, cycle 4)", () => 
     assert.ok(handler.includes("totalScore"), "mode announcement must carry the total score");
   });
 
+  it("mode summary Done clears the announcer so a repeat-identical End game re-announces (cycle 5)", () => {
+    // A live region announces only on a text change: without this clear,
+    // GeoDetective End game -> Done -> Cold Trail End game with identical
+    // totals (both 0/0, no classic play between) sets the byte-identical
+    // string and nothing is announced. RED signature on the pre-cure
+    // tree: the Done segment contains no setMapModeAnnouncement call.
+    const done = segment(gameAppSource, "const handleModeSummaryDone", "}, [replaceSession]);");
+    assert.ok(done.length > 0, "mode summary Done handler must exist");
+    assert.ok(
+      done.includes('setMapModeAnnouncement("")'),
+      "mode summary Done must clear the persistent announcer (repeat-identical End game must change the live-region text again)",
+    );
+    // Mode-only: the classic announcement path is untouched — classic
+    // Done never touches this announcer, and the announcement template
+    // in handleModeEndGame is unchanged.
+    assert.ok(!done.includes("Game over."), "Done must clear, not re-announce, the totals");
+  });
+
   it("mode summary mount moves focus inside the dialog, classic untouched", () => {
     const effect = segment(gameAppSource, "Mode-only summary mount focus", "}, [modeSummary]);");
     assert.ok(effect.length > 0, "a mode-only summary-mount focus effect must exist");

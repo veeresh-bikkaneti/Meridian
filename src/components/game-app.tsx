@@ -2713,6 +2713,12 @@ export function GameApp() {
   // (there is no run to drop). It clears no mode case store and no open
   // flag (already false) — Done lands on home and the case resumes.
   const handleModeSummaryDone = useCallback(() => {
+    // Cycle-5 cure (panel BLOCK, repeat mode End game): clear the
+    // persistent announcer so a second mode End game with byte-identical
+    // totals changes the live-region text again and is actually announced
+    // (a live region speaks only on a text change). Classic Done is
+    // untouched — classic summaries never set this announcer.
+    setMapModeAnnouncement("");
     setModeSummary(null);
     // Panel BLOCK 1 cure (cycle 4): the Done button unmounts with the
     // summary, so land focus on the home heading via the existing
