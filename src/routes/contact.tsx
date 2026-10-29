@@ -9,6 +9,7 @@ import {
   CONTACT_REPLY_TO_MAX,
   CONTACT_TOPICS,
   sendContact,
+  sendOutcome,
   type ContactDraft,
   type SendResult,
 } from "@/lib/contact/contact-form";
@@ -75,7 +76,11 @@ function ContactForm() {
     const r = await sendContact(getContactEndpoint(), built.payload);
     setSending(false);
     setResult(r);
-    if (r.status === "sent") setDraft(EMPTY);
+    // The draft is cleared ONLY when the message was actually delivered
+    // (stored:true). On any other outcome the visitor keeps their text —
+    // clearing it on a failed delivery would throw their words away
+    // (issue #220).
+    if (sendOutcome(r) === "delivered") setDraft(EMPTY);
   };
 
   return (
@@ -94,7 +99,11 @@ function ContactForm() {
         personal details here. Ask a grown-up to help.
       </p>
 
-      {result?.status === "sent" ? (
+      {/* The thank-you renders ONLY on confirmed delivery (stored:true).
+          For every other outcome the visitor gets an honest state below
+          and keeps their draft — saying "we received your request" for a
+          message nobody received was the #220 bug. */}
+      {sendOutcome(result) === "delivered" ? (
         <p
           role="status"
           data-testid="contact-sent"
@@ -174,11 +183,14 @@ function ContactForm() {
             </ul>
           </div>
         ) : null}
-        {result && result.status !== "sent" ? (
+        {result && sendOutcome(result) !== "delivered" ? (
           <p role="alert" data-testid="contact-error">
-            {result.status === "not-configured"
-              ? "The contact form isn't switched on yet. Please check back soon."
-              : result.status === "rate-limited"
+            {sendOutcome(result) === "not-configured" || sendOutcome(result) === "not-delivered"
+              ? // "not-delivered" (accepted but stored:false — no inbox is
+                // connected) reuses the not-configured wording on purpose:
+                // same honest situation, same voice (SPEC §4).
+                "The contact form isn't switched on yet. Please check back soon."
+              : sendOutcome(result) === "rate-limited"
                 ? "That's a lot of messages in a short time — please try again in a few minutes."
                 : "We couldn't send that just now. Please try again later."}
           </p>

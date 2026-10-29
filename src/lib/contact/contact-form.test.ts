@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildContactPayload, sendContact, CONTACT_MESSAGE_MAX } from "./contact-form.ts";
+import { buildContactPayload, sendContact, sendOutcome, CONTACT_MESSAGE_MAX } from "./contact-form.ts";
 
 const draft = { topic: "bug" as const, message: " Map froze ", replyTo: "", website: "" };
 
@@ -35,6 +35,17 @@ test("sendContact maps server answers and never throws", async () => {
     }),
     { status: "error" },
   );
+});
+
+test("sendOutcome: delivered ONLY when sent AND stored (the honesty contract, #220)", () => {
+  assert.equal(sendOutcome(null), null);
+  assert.equal(sendOutcome({ status: "sent", stored: true }), "delivered");
+  // Accepted-but-not-stored must never read as delivered: the page shows
+  // the honest not-delivered state and keeps the draft.
+  assert.equal(sendOutcome({ status: "sent", stored: false }), "not-delivered");
+  assert.equal(sendOutcome({ status: "not-configured" }), "not-configured");
+  assert.equal(sendOutcome({ status: "rate-limited" }), "rate-limited");
+  assert.equal(sendOutcome({ status: "error" }), "error");
 });
 
 test("requests omit credentials and referrer", async () => {
