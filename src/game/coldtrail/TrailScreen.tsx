@@ -45,7 +45,7 @@ import type { ColdTrailStore } from "./types";
  * report raw coordinates instead of resolving to labeled places. No place
  * index is fetched in this mode.
  */
-export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
+export function TrailScreen({ onLeave, onEndGame }: { onLeave: () => void; onEndGame: () => void }): JSX.Element {
   // F2b: ring labels and the score read the hideout's territory
   // (unitForLoopTarget), which reads the lazy countries-50m data
   // (territory.ts) and fails closed to km until it lands. Start the load
@@ -141,9 +141,12 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
         <p className="mt-4 text-fg" role="alert">
           The case files didn&rsquo;t load. No case to play right now.
         </p>
-        <Button type="button" variant="secondary" onClick={onLeave} className="mt-6 min-h-[44px] self-start">
-          ← Back
-        </Button>
+        <div className="mt-6 flex flex-wrap items-center gap-2">
+          <Button type="button" variant="secondary" onClick={onLeave} className="min-h-[44px] self-start">
+            ← Back
+          </Button>
+          <Button type="button" variant="ghost" onClick={onEndGame} className="min-h-[44px]">End game</Button>
+        </div>
       </main>
     );
   }
@@ -425,9 +428,12 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8 lg:max-w-6xl" data-testid="coldtrail-screen">
       <header>
         <div className="flex items-start justify-between gap-3">
-          <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
-            ← All games
-          </Button>
+          <div className="flex items-start gap-2">
+            <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
+              ← All games
+            </Button>
+            <Button type="button" variant="ghost" onClick={onEndGame} className="min-h-[44px] px-2">End game</Button>
+          </div>
           <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
             ⭐ {store.stars}
           </p>

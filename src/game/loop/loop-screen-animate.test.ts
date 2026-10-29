@@ -177,7 +177,7 @@ function renderLoopScreen() {
   let renderer: TestRenderer.ReactTestRenderer | undefined;
   act(() => {
     renderer = TestRenderer.create(
-      createElement(LoopScreen, { onLeave: () => {}, onCelebrate: () => {} }),
+      createElement(LoopScreen, { onLeave: () => {}, onCelebrate: () => {}, onEndGame: () => {} }),
       {
         createNodeMock: (el: ReactElement) => {
           const props = el.props as Record<string, unknown>;

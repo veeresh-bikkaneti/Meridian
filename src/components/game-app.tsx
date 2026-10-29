@@ -1334,6 +1334,12 @@ export function GameApp() {
   // game is safe") returned a Trail player home while a GeoDetective
   // player resumed. In-progress cases resume from the store.
   const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(() => readColdTrailOpen());
+  // Mode End game (GeoDetective / Cold Trail): the session summary shown
+  // after ending from a mode screen. GameApp-level, not PlayLoaded's
+  // summary state — there is no run here, so the classic summary state
+  // (which lives with the run) cannot hold it. In-memory only: a reload
+  // while it is open loses the summary, matching classic parity.
+  const [modeSummary, setModeSummary] = useState<SessionSummary | null>(null);
   // Age profile (parent-set band). The profile object lives in state and
   // refreshes via the `ageprofile:changed` event — game screens never
   // touch the store directly. The settings screen (lazy) is the only
@@ -2654,6 +2660,38 @@ export function GameApp() {
     return summary;
   }, [updateSession]);
 
+  // Mode End game (R1): the SAME session-end action as classic, from a
+  // mode screen where no run exists. It must never call endRun (which
+  // requires a Run) and never onReplay (there is nothing to replay —
+  // returning to the case is resume, not play again). It clears ONLY the
+  // mode open flag: the case store is never touched, so the in-progress
+  // case resumes exactly where the player left it.
+  const handleModeEndGame = useCallback((mode: "loop" | "coldtrail") => {
+    const summary = handleEndGame();
+    clearDrop();
+    if (mode === "loop") {
+      writeLoopOpen(false);
+      setLoopOpen(false);
+    } else {
+      writeColdTrailOpen(false);
+      setColdTrailOpen(false);
+    }
+    setModeSummary(summary);
+  }, [handleEndGame]);
+
+  // Mode summary Done: mirrors classic summary Done minus the run ops
+  // (there is no run to drop). It clears no mode case store and no open
+  // flag (already false) — Done lands on home and the case resumes.
+  const handleModeSummaryDone = useCallback(() => {
+    setModeSummary(null);
+    setStartError(null);
+    replaceSession(null);
+    setRun(null);
+    setMenu(null);
+    clearDrop();
+    setMapSwitchedNote(null);
+  }, [replaceSession]);
+
   // Any interaction keeps the session alive; also dismisses the idle warning.
   useEffect(() => {
     const onActivity = () => {
@@ -2865,6 +2903,36 @@ export function GameApp() {
     );
   }
 
+  // Mode summary: shown after ending the session from a mode screen.
+  // It sits after the run branch (a live run takes precedence) and before
+  // the mode branches (the summary replaces the mode screen — it is not
+  // an overlay inside it). With run === null, the classic summary gate
+  // (run.phase === "summary") could never show it, hence this branch.
+  // Props with no run to derive them from: regionName falls back to the
+  // app name when the session played no region, dateKey is today, and
+  // challenge/growth/review do not exist here (R4).
+  if (modeSummary) {
+    return (
+      <>
+        {mapModeAnnouncer}
+        <RunSummaryCard
+          summary={modeSummary}
+          regionName={modeSummary.regions[0]?.regionName ? modeSummary.regions[0].regionName : "Meridian"}
+          dateKey={trailDate()}
+          growth={null}
+          onDone={handleModeSummaryDone}
+          onPlayAgain={() => {
+            // No-op: required by type; unreachable because the button is hidden by showPlayAgain={false}.
+          }}
+          showPlayAgain={false}
+          challengeUrl={null}
+        />
+        {celebrationOverlay}
+        {idleToast}
+      </>
+    );
+  }
+
   // GeoDetective lives outside the run machine: its own screen, its own
   // storage namespace, its own deck rhythm. An in-progress run takes
   // precedence (the player is mid-game); otherwise the open flag wins.
@@ -2877,6 +2945,7 @@ export function GameApp() {
             <LoopScreen
               onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
               onCelebrate={(spec) => setCelebration(spec)}
+              onEndGame={() => handleModeEndGame("loop")}
             />
           </Suspense>
         </MapErrorBoundary>
@@ -2895,7 +2964,7 @@ export function GameApp() {
         {mapModeAnnouncer}
         <MapErrorBoundary surface="Cold Trail">
           <Suspense fallback={<SessionLoadingFallback label="Loading Cold Trail…" />}>
-            <TrailScreen onLeave={() => { writeColdTrailOpen(false); setColdTrailOpen(false); }} />
+            <TrailScreen onLeave={() => { writeColdTrailOpen(false); setColdTrailOpen(false); }} onEndGame={() => handleModeEndGame("coldtrail")} />
           </Suspense>
         </MapErrorBoundary>
         {celebrationOverlay}

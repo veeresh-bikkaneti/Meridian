@@ -38,6 +38,14 @@ export function RunSummaryCard(props: {
   onDone: () => void;
   onPlayAgain: () => void;
   /**
+   * Hide the "Play again" button. Mode summaries pass false: classic
+   * Play again means a fresh run on a fresh seed plus a brand-new
+   * session, and no run exists to replay from a mode — returning to the
+   * same unsolved case is "resume", not "play again". Defaults to true,
+   * so classic summaries pass nothing and behave exactly as before.
+   */
+  showPlayAgain?: boolean;
+  /**
    * "Review my misses" invitation (flag-gated): starts a review session
    * over the due deck cards. Rendered only when reviewDueCount > 0 — the
    * deck is an invitation, never a gate.
@@ -66,7 +74,7 @@ export function RunSummaryCard(props: {
   /** Opens the exact-route preview sheet (owner renders the sheet). */
   onChallengePrimaryPreview?: () => void;
 }): JSX.Element {
-  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount, challengePrimary, challengeSecondary, onChallengePrimaryPreview } = props;
+  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount, challengePrimary, challengeSecondary, onChallengePrimaryPreview, showPlayAgain = true } = props;
   // One unit for the whole card: miles only when EVERY played region is a
   // USA context (state edition, or the United States country run);
   // mixed or empty sessions fail closed to kilometers (owner ruling 2026-10-11).
@@ -77,9 +85,15 @@ export function RunSummaryCard(props: {
   // onDismiss → Next-place CTA pattern.
   const modalRef = useRef<HTMLDivElement | null>(null);
   const focusPlayAgain = () => {
-    modalRef.current
-      ?.querySelector<HTMLElement>('[data-testid="play-again"]')
-      ?.focus({ preventScroll: true });
+    const playAgain = modalRef.current?.querySelector<HTMLElement>('[data-testid="play-again"]');
+    if (playAgain) {
+      playAgain.focus({ preventScroll: true });
+      return;
+    }
+    // Play again is hidden on mode summaries: land on Done instead, so
+    // narration-dismiss focus still lands somewhere sensible inside this
+    // role="dialog" (WCAG 2.4.3, the rule this fallback already cites).
+    modalRef.current?.querySelector<HTMLElement>('[data-testid="summary-done"]')?.focus({ preventScroll: true });
   };
   // Session totals only — no per-place emoji strip; the session banks
   // totals, never per-place scores (see sessionShareText).
@@ -327,10 +341,12 @@ export function RunSummaryCard(props: {
               />
             </div>
           ) : null}
-          <Button data-testid="play-again" className="w-full" onClick={onPlayAgain}>
-            Play again
-          </Button>
-          <Button variant="secondary" className="w-full" onClick={onDone}>
+          {showPlayAgain ? (
+            <Button data-testid="play-again" className="w-full" onClick={onPlayAgain}>
+              Play again
+            </Button>
+          ) : null}
+          <Button variant="secondary" data-testid="summary-done" className="w-full" onClick={onDone}>
             Done
           </Button>
         </div>

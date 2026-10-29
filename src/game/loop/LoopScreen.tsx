@@ -246,6 +246,7 @@ export function caseNumber(store: LoopUnlimitedStore): number {
 export function LoopScreen({
   onLeave,
   onCelebrate,
+  onEndGame,
 }: {
   onLeave: () => void;
   /**
@@ -253,6 +254,13 @@ export function LoopScreen({
    * Legendary overlay and the first-ever-win Parade overlay.
    */
   onCelebrate: (spec: CelebrationSpec) => void;
+  /**
+   * Ends the session (GameApp's mode End game handler): shows the session
+   * summary and clears only the open flag — the mystery itself is never
+   * touched, so it resumes on return. Distinct from onLeave, which leaves
+   * without ending anything.
+   */
+  onEndGame: () => void;
 }) {
   const reduced = usePrefersReducedMotion();
   // F2b: this screen's distances read the mystery target's territory
@@ -626,9 +634,12 @@ export function LoopScreen({
   return (
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
       <div className="flex items-center justify-between gap-3">
-        <Button variant="ghost" className="self-start" onClick={onLeave}>
-          Editions
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" className="self-start" onClick={onLeave}>
+            Editions
+          </Button>
+          <Button variant="ghost" className="min-h-[44px] self-start" onClick={onEndGame}>End game</Button>
+        </div>
         <p className="text-sm text-fg">Case #{caseNo}</p>
       </div>
       <header className="mt-4">
