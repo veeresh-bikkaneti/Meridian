@@ -598,6 +598,63 @@ test("package B: the mid-run/reveal widening chain never subtracts seen places",
   }
 });
 
+// ============================================================================
+// Package C surface (manifest 2026-10-28 §1(e)): the review entry. Its
+// label is the manifest's exact words, kept in challenge.ts beside the
+// other share labels. Its creation path is the picker's — sources built
+// from the picked region's CATALOG only. The deck is never an input:
+// the manifest §3 privacy rule (the design council ruled never-the-
+// deck; a "Beat my misses" opt-in was deferred to the owner as an
+// open question) — deck ids are decodable from any link that carries
+// them, so a deck-sourced deal would publish the sender's misses.
+// ============================================================================
+import { CHALLENGE_REVIEW_LABEL } from "./challenge.ts";
+
+test("package C: the review entry label is the manifest's exact words", () => {
+  assert.equal(CHALLENGE_REVIEW_LABEL, "Challenge a friend — pick a map");
+});
+
+test("package C: review creation deals only from the picked region's catalog, never the deck", () => {
+  // Construction pin for the §1(e) privacy rail. The "deck" fixture
+  // holds SIX ids foreign to the region catalog — enough to fill a
+  // route by itself — so the fixture is armed: any future change that
+  // feeds deck entries into the creation chain gives the dealer a
+  // foreign source to draw from, and the membership assertions below
+  // turn red. The behavioural proof (a real deck seeded in storage,
+  // the full review flow) lives in the Package C E2E spec.
+  const catalog = CREATION_CATALOG.map((p) => ({ ...p }));
+  const catalogIds = new Set<string>(catalog.map((p) => p.id));
+  const deckIds: string[] = ["gn-901", "gn-902", "gn-903", "gn-904", "gn-905", "gn-906"];
+  for (const id of deckIds) {
+    assert.ok(!catalogIds.has(id), `fixture: deck id ${id} must be foreign to the catalog`);
+  }
+  // The review path builds sources exactly like the picker's creation
+  // (catalog + difficulty choice + the SEEN store — never the deck)
+  // and deals with a fresh mint seed. Sweep the seeds: every route is
+  // five catalog ids, in the LINK as well as in the return value (the
+  // link is what would publish a deck id).
+  for (let dealSeed = 0; dealSeed < 50; dealSeed++) {
+    const sources = buildCreationSources({
+      catalog,
+      choice: "easy",
+      seenIds: new Set(["gn-101", "gn-102"]),
+    });
+    const created = createChallengeRoute({
+      edition: "state", regionId: "nebraska", scoringVersion: 3,
+      mode: "fresh", sources, dealSeed,
+    });
+    assert.ok(created, `seed ${dealSeed}: a route must exist`);
+    assert.equal(created.dealtIds.length, 5);
+    for (const id of created.dealtIds) {
+      assert.ok(catalogIds.has(id), `seed ${dealSeed}: ${id} must come from the region catalog`);
+      assert.ok(!deckIds.includes(id), `seed ${dealSeed}: ${id} came from the deck — privacy breach`);
+    }
+    const decoded = decodeChallenge2(created.fragment, 3);
+    assert.equal(decoded.ok, true);
+    if (decoded.ok) assert.deepEqual(decoded.ids, created.dealtIds);
+  }
+});
+
 test("package B: the completion fresh deal never sources from the route itself", () => {
   // Manifest §1(f): the secondary deals fresh from the completed route's
   // REGION — the sources are built from the catalog with no runPoolIds,
