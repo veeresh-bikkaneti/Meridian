@@ -546,3 +546,70 @@ test("re-share preserves origin format: an mc2 Globe route stays mc2, an mc1 rou
   assert.ok(mc1Globe);
   assert.ok(mc1Globe.fragment.startsWith("#c=mc1."));
 });
+
+// ============================================================================
+// Package B surfaces (manifest 2026-10-28 §1(b), §1(c), §1(f)): the labels
+// are the manifest's exact words, kept in challenge.ts beside the other
+// share labels so components and tests can never drift apart.
+// ============================================================================
+import {
+  CHALLENGE_UNLOCK_HINT,
+  challengeFreshRouteLabel,
+  challengeMidRunLabel,
+  challengeRevealLabel,
+} from "./challenge.ts";
+
+test("package B: surface labels are the manifest's exact words", () => {
+  assert.equal(challengeMidRunLabel("Nebraska"), "Challenge a friend — new route in Nebraska");
+  assert.equal(challengeMidRunLabel("Globe"), "Challenge a friend — new route in Globe");
+  assert.equal(challengeRevealLabel("Nebraska"), "Challenge a friend in Nebraska");
+  assert.equal(challengeRevealLabel("United Kingdom"), "Challenge a friend in United Kingdom");
+  assert.equal(challengeFreshRouteLabel("Nebraska"), "Or send a new Nebraska route");
+  assert.equal(CHALLENGE_UNLOCK_HINT, "Your route unlocks when you finish 🏁");
+});
+
+test("package B: the mid-run/reveal widening chain never subtracts seen places", () => {
+  // Manifest §1(b): run pool → region pool band-filtered, SEEN-INCLUDED →
+  // full region catalog. The surfaces build sources with NO seenIds, so
+  // the chain has no seen-minus step: step 2 is the band itself.
+  const catalog = CREATION_CATALOG.map((p) => ({ ...p }));
+  const chain = buildCreationSources({
+    catalog, choice: "easy", runPoolIds: ["gn-103", "gn-101"],
+  });
+  assert.deepEqual(chain[0].map((p) => p.id), ["gn-103", "gn-101"]);
+  assert.deepEqual(chain[1].map((p) => p.id), ["gn-102", "gn-104", "gn-106", "gn-107"]);
+  assert.deepEqual(chain[chain.length - 1].map((p) => p.id), catalog.map((p) => p.id));
+  // Shape pinned (panel round 1): with seenIds omitted the helper's
+  // chain is [runPool, band, band, catalog] — the band step appears
+  // twice. Harmless: createChallengeRoute takes the FIRST source that
+  // fills the count, so the duplicate is never reached when the band
+  // suffices, and changes nothing when it does not.
+  assert.equal(chain.length, 4);
+  assert.deepEqual(chain[2].map((p) => p.id), chain[1].map((p) => p.id));
+  // And a fresh deal through that chain succeeds in-region.
+  const created = createChallengeRoute({
+    edition: "state", regionId: "nebraska", scoringVersion: 3,
+    mode: "fresh", sources: chain, dealSeed: 7,
+  });
+  assert.ok(created);
+  assert.equal(created.dealtIds.length, 5);
+  for (const id of created.dealtIds) {
+    assert.ok(catalog.some((p) => p.id === id), `${id} must come from the region catalog`);
+  }
+});
+
+test("package B: the completion fresh deal never sources from the route itself", () => {
+  // Manifest §1(f): the secondary deals fresh from the completed route's
+  // REGION — the sources are built from the catalog with no runPoolIds,
+  // so the route's own five cannot become the whole deal source.
+  const catalog = CREATION_CATALOG.map((p) => ({ ...p }));
+  const chain = buildCreationSources({ catalog, choice: "easy" });
+  assert.deepEqual(chain[0].map((p) => p.id), ["gn-102", "gn-104", "gn-106", "gn-107"]);
+  const created = createChallengeRoute({
+    edition: "state", regionId: "nebraska", scoringVersion: 3,
+    mode: "fresh", sources: chain, dealSeed: 7,
+  });
+  assert.ok(created);
+  assert.equal(created.regionName, "Nebraska");
+  assert.equal(created.radiusKm, 87);
+});

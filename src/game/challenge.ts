@@ -66,6 +66,26 @@ export const CHALLENGE_EXACT_SHARE_LABEL = "Challenge a friend — play my route
  * passes the route along in its origin format. mc1 completions keep
  * CHALLENGE_SHARE_LABEL — that surface is frozen. */
 export const CHALLENGE_RESHARE_LABEL = "Pass this challenge to a friend";
+/** The mid-run run-menu item (manifest §1(b)): a fresh route in the
+ * run's own region, created from the menu only — never an aim-surface
+ * button. */
+export function challengeMidRunLabel(regionName: string): string {
+  return `Challenge a friend — new route in ${regionName}`;
+}
+/** The reveal text link (manifest §1(c)), in the result-card footer
+ * below Next place. */
+export function challengeRevealLabel(regionName: string): string {
+  return `Challenge a friend in ${regionName}`;
+}
+/** The non-interactive line under the reveal link (manifest §1(c)):
+ * the sender's own route — the summary's exact share — unlocks only
+ * when the run is finished. */
+export const CHALLENGE_UNLOCK_HINT = "Your route unlocks when you finish 🏁";
+/** The challenge-complete secondary (manifest §1(f)): a fresh route in
+ * the completed route's region, offered beside the pass-along. */
+export function challengeFreshRouteLabel(regionName: string): string {
+  return `Or send a new ${regionName} route`;
+}
 
 const PREFIX = "#c=mc1.";
 const ID_RE = /^gn-[0-9]+$/;
