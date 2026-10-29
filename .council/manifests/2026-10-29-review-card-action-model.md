@@ -2,7 +2,7 @@
 
 - **Date:** 2026-10-29 (CDT) · **Tier:** 2
 - **Branch:** `feat/review-card-action-model` (base: `main` at `3aa16b5`, PR #285 live)
-- **Estimated footprint:** `src/components/game-app.tsx` (Review branch of `Choose` only), `src/styles/home-v5.css` (Review-scoped rules + shared-rule deslop, zero behaviour change in the deslop commit), `tests/e2e/review-card-actions.desktop.spec.ts` (new), `tests/e2e/card-redesign.desktop.spec.ts` (re-spec), `tests/e2e/mobile-home-overlap.spec.ts` (re-spec), README + handbook touch (documentation is part of every fix, 2026-10-18)
+- **Estimated footprint:** `src/components/game-app.tsx` (Review branch of `Choose` only), `src/components/home-v5.css` (Review-scoped rules + shared-rule deslop, zero behaviour change in the deslop commit), `tests/e2e/review-card-actions.desktop.spec.ts` (new), `tests/e2e/card-redesign.desktop.spec.ts` (re-spec), `tests/e2e/mobile-home-overlap.spec.ts` (re-spec), README + handbook touch (documentation is part of every fix, 2026-10-18)
 - **Protected files:** `src/game/**` (the reset store/handler logic and `RESET_HISTORY_COPY` are locked — only the home opener's class/presentation may change), `src/game/data/**`, `package-lock.json`, shared `.hv5-stretch` Form-S rules for the sibling cards, `tour-stop-review` / `home-review` testids and the `home-rise` animation, `.hv5-art` geometry, the ReviewComplete surface (its Start-over opener keeps the base brown treatment — see §4/F2).
 
 ## 1 — The owner's charge
@@ -82,3 +82,9 @@ Councilor C, CHALLENGE summary (verbatim): *"destructive footer is a salience in
 - **Cycle budget consumed by this manifest:** coordinator + 3 councilors incl. delegates ≈ 355k tokens (estimate — the protocol's budget has no meter; cap 400k for Tier-2 incl. delegates).
 - **Builder execution token (protocol §3):** ceiling **1 build + 2 cure cycles on this branch**, panel-verdict stop, all 5 gates verbatim, E2E under `flock ~/workspace/.e2e.lock --workers=1`, rebase onto current main before the panel (an external End-game PR may land mid-run; resolve BRANCH_STATUS keeping both records accurate), STOP at PR — **no merge without the owner's per-PR word**; Phase 3 (CSO sweep, benchmark, document-generate, autoplan) is a later run.
 - **Chair sign-off:** signed — the model in §2 as amended by §5 is the build spec. Dissents (§4) and C's carried objection (§7) go to the panel and the owner unchanged.
+
+---
+
+**Coordinator's errata (2026-10-29, post-signing; the signed text above is unchanged except the CSS path, corrected from `src/styles/home-v5.css` to `src/components/home-v5.css` in §header — a locator typo, no decision affected):**
+1. **Perf baseline context:** the Phase-1 baseline JS figure (gz 142,312 B) was captured in a different build context. Pristine `main@3aa16b5` rebuilt with the E2E env measures JS gz 147,485 B; the honest like-for-like deltas are CSS +27 B gz, JS +19 B gz — within §5 F8(c)'s restated budgets.
+2. **Tab-walk flake:** the walk test failed twice in full-file runs (recorded only the first in-card stop) while a document-order dump and a standalone instrumented walk both showed stops 26/27/28 contiguous and correct. Cause: focus-change reads racing a starved renderer; the walk now polls for an actual focus change (15s, unswallowed) and the full file passes. Recorded under the repo's flake-evidence rule (sequential re-run passes; product behaviour independently proven).
