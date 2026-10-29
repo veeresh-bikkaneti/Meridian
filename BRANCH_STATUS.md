@@ -12,6 +12,71 @@
   the page honest about delivery — SPEC §3 + §4 of
   `~/workspace/meridian-contact-activation/SPEC.md`. Animations are a
   separate follow-on PR and are NOT in this branch.
+- **Option 1a (2026-10-29):** built on `scratch/220-option1a` (PR head
+  `911fc95` + `origin/main` `3aa16b5`, merge `cb56b4a`). Builder-run
+  record below; Councilor C review PENDING. Not pushed, not merged.
+
+## Option 1a — limiter last + linear email regex (2026-10-29)
+
+Owner decision, verbatim (Veeresh, 2026-10-29 2:46 PM CT): "Build 1a:
+Option 1 plus the linear email regex. I approve the Chair-lift for the
+regex edit."
+
+Disclosure (what this PR did before 1a): to put the honeypot silent-200
+ahead of the origin gate, the PR also moved the origin gate behind the
+rate limiter. On `6abe3e6` the order was origin (403) → limiter → parse
+→ validate. On PR head `911fc95` it was limiter → parse → validate →
+honeypot → origin. So junk with a bad or missing `Origin` spent a
+sender's quota and the shared binding budget, and a sender over quota
+got a 429 instead of the honeypot's silent 200. Option 1a resolves it.
+
+What changed:
+
+- **Order** (`handleContactRequest`): honeypot (silent 200) → origin
+  gate (403) → body cap + JSON parse (400) → validation (400) →
+  honeypot backstop (silent 200) → **rate limiter (429)** → sink. The
+  limiter moved from right after JSON parse to right before
+  `selectSink(env)`. IP privacy (salted/daily-hashed keys), the 4 KB
+  body cap, origin enforcement, honeypot silence and binding fail-open
+  are unchanged.
+- **Regex** (`EMAIL_IN_TEXT`): `/(?<![^\s@<>()",;:])[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}/g`.
+  The old unanchored form (added by this PR in `5c4e6c2`, not on main)
+  was quadratic on long runs with no `@`: ~15 ms for 4000 chars in
+  Node 22, ~4x per doubling. Option 1 puts that work ahead of the
+  limiter, so it needed the fix. The lookbehind only lets a match start
+  at the start of a run of address characters, where a leftmost match
+  always starts, so the matches are the same. Chair-lift scope: this
+  constant and its doc comment only (Constitution rule 3, and rule 1 to
+  the extent it applies). Manifest: builder-drafted, approved by the
+  owner's words above; no separate Chair signature.
+- **Counting:** only a message that would be delivered spends quota
+  (in-memory 3 per sender per 10 min + 60/h global; bindings 3/60 s per
+  sender, 10/60 s global). Honeypot, wrong/missing Origin, malformed
+  JSON and invalid payloads count zero. E2E: Parts 3, 4b and 3b' are
+  the 3 counted messages; the honeypot (3b) is not counted; the 5th
+  request (3c) is the 429.
+- **Docs:** `docs/contact-rate-limiting.md` says where the limiter
+  runs; its "Owner deploy step" was stale (the bindings are already in
+  root `wrangler.jsonc`, `c09cec4`) and is now "Deploy config".
+
+Evidence (builder-run; not self-certified):
+
+| Check | Result |
+|---|---|
+| RED, before code change | 5 fail as predicted: junk spends quota (429 not 403); 3 invalid then valid (429 not 200); honeypot over quota (429 not 200); binding calls on junk (3 not 0); `'a'x4000` median 15.20 ms ≥ 2 ms |
+| Equivalence vs old regex | 200k fixed-seed corpus in unit suite: 0 diffs. Scratch fuzz 2M cases (155,555 with a match): 0 diffs. Mutating the lookbehind makes both equivalence tests fail. |
+| validateContact, 4000 chars, no `@` | 14.968 ms → 0.025 ms (median) |
+| `npx tsc --noEmit` | exit 0 |
+| `npm test` | exit 0 — scripts 861 tests: 852 pass / 0 fail / 9 skipped; src 1830/1830 pass |
+| `npm run test:worker` | exit 0 — 85/85 pass |
+| `node scripts/lint-cards.mjs` | exit 0 — GATE PASSED |
+| `npm run build:pages` | exit 0 |
+| `npm run build` | exit 0 (db:migrate skipped: DATABASE_URL not set). Built SSR bundle carries the lookbehind regex unchanged. |
+| E2E: credits, grownups-privacy-contact, hydration-boot, observability (`--workers=1`, under `flock ~/workspace/.e2e.lock`) | exit 0 — 11 passed (30.3s) |
+
+Gates ran on `435fc1d`. Not measured: timing inside workerd itself.
+Workers Free allows 10 ms CPU per request (Cloudflare limits page,
+checked 2026-10-29); the old regex alone used ~15 ms in Node.
 
 ## Task capsule
 
@@ -26,7 +91,9 @@ Interpretations considered and selected reading:
     2026-10-21 ruling — read the secret from the Worker runtime bindings
     (cloudflare:workers env / globalThis.__env__), with process.env ONLY
     as a local-dev fallback. nodejs_compat is NOT added.
-  - Handler order: the mandated move is honeypot silent-200 BEFORE the
+  - [SUPERSEDED 2026-10-29 by Option 1a, see above: the limiter now
+    runs last, before the sink.]
+    Handler order: the mandated move is honeypot silent-200 BEFORE the
     origin gate (SPEC §3.2, §10.1, §12 all pin exactly that). The
     existing anti-flood rate limiter keeps its position ahead of the
     honeypot check: SPEC §3.2's prose lists rate limits later in the
