@@ -3876,65 +3876,75 @@ function Choose({
                   <p style={{ fontWeight: 700, color: "var(--hv5-ink)" }} data-testid="deck-due-count">
                     {deck.due} {deck.due === 1 ? "card" : "cards"} due
                   </p>
-                  {/* "Start over" reset entry (manifest 2026-10-28 D10):
-                      renders whenever the deck holds any card (due OR
-                      caught-up). In-flow in the text column, under the
-                      due line, with position:relative + z-index:3 (the
-                      .hv5-involved p a precedent) so it stays tappable
-                      above the CTA's whole-card stretch layer — and sits
-                      in the text column, clear of the REVIEW cue's centre
-                      click point (the cue is top-right since Part 2). */}
-                  <ResetHistoryControl onReset={onResetHistory} />
-                  {/* "Challenge a friend — pick a map" (manifest
-                      §1(e)): the deck-level door into the challenge
-                      region picker. It opens the shipped mini-picker
-                      and deals FRESH from the picked region — never
-                      from this deck (manifest §1(e)/§3: deck ids are
-                      decodable from any link, so a deck-sourced deal
-                      would publish the player's misses). Same
-                      placement pattern as the reset opener: in-flow
-                      in the text column, above the stretch layer.
-                      Visibility mirrors the reset entry's rule
-                      (deck total > 0) and the entry renders only
-                      with the friendChallenges flag on
-                      (fail-closed). */}
-                  {challengeEnabled && onChallenge ? (
-                    <button
-                      type="button"
-                      className="review-challenge-open"
-                      data-testid="review-challenge-a-friend"
-                      onClick={onChallenge}
-                    >
-                      {CHALLENGE_REVIEW_LABEL}
-                    </button>
-                  ) : null}
-                  {/* Whole-card action (Form S): the CTA stretches over
-                      the card via .hv5-stretch; the REVIEW → pill is the
-                      visible discoverability cue (aria-hidden, pointer-
-                      events none — taps pass through to the CTA). */}
-                  <button type="button" className="hv5-go hv5-stretch" onClick={onReview} aria-label="Review my misses: Start review">
-                    {REVIEW_DECK_COPY.startReview}
-                  </button>
-                  <span className="hv5-review-cue" aria-hidden="true">REVIEW →</span>
+                  {/* Action stack (action-model manifest 2026-10-29):
+                      the card is NOT a whole-card button any more.
+                      Three explicit controls in DOM = visual = tab
+                      order: the filled primary, the outline challenge
+                      pill, then Start over in the danger footer. */}
+                  <div className="hv5-review-stack">
+                    <div className="hv5-review-actions">
+                      <button type="button" className="hv5-btn hv5-btn-brown" onClick={onReview} aria-label="Review my misses: Start review">
+                        {REVIEW_DECK_COPY.startReview}
+                      </button>
+                      {/* "Challenge a friend — pick a map" (manifest
+                          §1(e)): the deck-level door into the challenge
+                          region picker. It opens the shipped
+                          mini-picker and deals FRESH from the picked
+                          region — never from this deck (manifest
+                          §1(e)/§3: deck ids are decodable from any
+                          link, so a deck-sourced deal would publish
+                          the player's misses). Visibility mirrors the
+                          reset entry's rule (deck total > 0) and the
+                          entry renders only with the friendChallenges
+                          flag on (fail-closed). */}
+                      {challengeEnabled && onChallenge ? (
+                        <button
+                          type="button"
+                          className="review-challenge-open"
+                          data-testid="review-challenge-a-friend"
+                          onClick={onChallenge}
+                        >
+                          {CHALLENGE_REVIEW_LABEL}
+                        </button>
+                      ) : null}
+                    </div>
+                    {/* "Start over" reset entry (manifest 2026-10-28
+                        D10): renders whenever the deck holds any card
+                        (due OR caught-up). Last on the card, alone in
+                        a hairline-separated danger footer — the
+                        destructive action shares neither a row nor a
+                        look with play/share. */}
+                    <div className="hv5-review-danger">
+                      <ResetHistoryControl onReset={onResetHistory} />
+                    </div>
+                  </div>
                 </>
               ) : deck.total > 0 ? (
                 <>
                   <p>{REVIEW_DECK_COPY.pickerCaughtUp}</p>
-                  {/* Same reset entry as the due state (D10): visibility
-                      is deck total > 0, not due > 0. */}
-                  <ResetHistoryControl onReset={onResetHistory} />
-                  {/* Same challenge entry as the due state (§1(e)):
-                      same visibility rule, same handler. */}
-                  {challengeEnabled && onChallenge ? (
-                    <button
-                      type="button"
-                      className="review-challenge-open"
-                      data-testid="review-challenge-a-friend"
-                      onClick={onChallenge}
-                    >
-                      {CHALLENGE_REVIEW_LABEL}
-                    </button>
-                  ) : null}
+                  {/* Same action stack as the due state (action-model
+                      manifest 2026-10-29), minus the primary: the
+                      challenge pill keeps the SAME outline treatment
+                      (one control, one look), then Start over in the
+                      danger footer. Same visibility rules as due
+                      (D10 / §1(e)). */}
+                  <div className="hv5-review-stack">
+                    {challengeEnabled && onChallenge ? (
+                      <div className="hv5-review-actions">
+                        <button
+                          type="button"
+                          className="review-challenge-open"
+                          data-testid="review-challenge-a-friend"
+                          onClick={onChallenge}
+                        >
+                          {CHALLENGE_REVIEW_LABEL}
+                        </button>
+                      </div>
+                    ) : null}
+                    <div className="hv5-review-danger">
+                      <ResetHistoryControl onReset={onResetHistory} />
+                    </div>
+                  </div>
                 </>
               ) : (
                 <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
