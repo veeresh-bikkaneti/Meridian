@@ -146,6 +146,33 @@ Directed default ADOPTED, with pins: the mode End game is the SAME session-end a
 - R7 — Test hardening (accepts C note 8). Single-`evaluate()` rect measurement; viewports 360×740 AND 390×844; mode-only tests assert exact 0/0 totals as rendered; activation pre-End halves + leave + classic specs labeled GUARDS, not RED; edition set closed at exactly two mode screens.
 - R8 — Reload parity (accepts C finding 2). Reload while a mode summary is open loses the summary (in-memory state only), matching classic parity. Stated, not a defect.
 
+## 5A. R5 amendment — sticky mode headers (cycle-4 cure)
+
+The panel's cycle-4 review found S4/S5 failing on scrolled screens: the
+GeoDetective reveal's `scrollIntoView({ block: "start" })` and the Cold
+Trail result heading's focus (without `preventScroll`) both push the
+header row — End game included — off-screen on a phone, so "visible
+without scrolling" did not hold on reveal/result screens. The cure keeps
+R5's placement (the header row, no second End game button) and adds a
+visibility mechanism: both mode header rows are `position: sticky;
+top: 0` with a solid `atlas-bg-1` background and `z-index` above scrolled
+content, so S4/S5 without-scrolling visibility holds on scrolled
+reveal/result screens too. The screens scroll via page scroll (no
+internal scroll container), so sticky on the row itself is what sticks.
+The reveal/result motions themselves are untouched: the reveal section
+carries `scroll-mt-20` and the result heading carries `scroll-mt-20`, so
+their scroll/focus landings stop below the sticky bar instead of under
+it — the reveal and the result still come into view, and End game stays
+visible above them. No duplicate accessible names, no new overlap
+surface: the existing single-`evaluate()` rect assertions now also cover
+the case-number / stars rects and the Next mystery / Next case rects.
+
+Chair sign-off, 2026-10-29: APPROVED. Rationale: this amends R5's
+mechanism, not its placement ruling — the button stays exactly where R5
+put it, and the amendment is the smallest change that makes S4/S5 true
+on every screen state the manifest already names (reveal-unacknowledged,
+result-unacknowledged), rather than only on mid-case screens.
+
 ## 6. Councilor C round-1 challenge — disposition
 
 C ended round 1 with `CHALLENGE` (5 blocks + 3 notes). Disposition by the Chair:
