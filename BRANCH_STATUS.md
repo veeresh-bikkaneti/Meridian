@@ -17,6 +17,61 @@
   record below; Councilor C issued a records-only CHALLENGE (F1-F4),
   corrected in this record. Not pushed, not merged.
 
+## Blockers round — aria-live + owner citations + PR body (2026-10-29)
+
+Owner instruction (Veeresh, 2026-10-29 4:20 PM CT, chat message to the
+agent), verbatim: "fix blocker". The blockers it refers to are the two
+items the Option 1 council listed as OUT of scope for the limiter move
+(aria-live, owner-citation gap) plus the stale PR #284 body. This
+capsule was recorded before any source edit in this round.
+
+```text
+TASK / requested outcome:
+  (1) The contact form's submit result (thank-you / not-delivered /
+      rate-limited / error) is announced to screen readers reliably,
+      once per result. (2) Every "owner decided/ruled/approved" line in
+      this branch's record and the PR #284 body carries a citation to
+      the owner's own words, or is downgraded. (3) The PR #284 body
+      matches verified state at the new head.
+Interpretations considered and selected reading:
+  aria-live gap = src/routes/contact.tsx ContactForm: the thank-you
+  (role="status") and the result alert (role="alert") are mounted in
+  the same render as their text, so no live region exists before the
+  update (a polite status inserted together with its content is not
+  reliably announced), and a repeated identical result (e.g. two
+  not-delivered sends) leaves the same node and text in place, so
+  nothing is re-announced while the stale result also stays visible
+  during the next send. Selected fix: keep both regions mounted from
+  the form's first render, empty until a result arrives; clear the
+  result when a new send starts; no nested live roles (no double
+  announcement). No copy changes, no new text.
+  Rejected: one combined region (moves the thank-you's visual
+  position); a visually hidden duplicate region (duplicate text in
+  browse mode).
+Tier and rationale:
+  Tier 1 for the aria-live fix (one bug, one function — ContactForm —
+  clear repro, no security/privacy logic touched, no handler change).
+  Tier 0 for records (BRANCH_STATUS.md, PR body). A stricter reading
+  of "unsure -> Tier 2" (the page is a privacy surface) is disclosed
+  for the panel.
+Done condition / evidence:
+  E2E (grownups-privacy-contact.desktop.spec.ts) asserts: before any
+  send, a role=status region and a role=alert region exist and are
+  empty; after a delivered send the thank-you is inside the status
+  region; the not-delivered and 429 messages are inside the alert
+  region; neither message node carries its own live role. RED on the
+  unmodified page first, GREEN after. All AGENTS.md gates.
+Files in scope:
+  src/routes/contact.tsx (ContactForm only),
+  tests/e2e/grownups-privacy-contact.desktop.spec.ts, BRANCH_STATUS.md,
+  PR #284 body. Out of scope: the handler, contact-form.ts, copy text,
+  source-code comments that mention the owner (listed below as open),
+  workers/, wrangler.jsonc, package-lock.json, src/game/data/**.
+Approvals: push to fix/220-contact-wiring (standing authorization,
+  AGENTS.md Working conventions) and the PR body edit. No merge, no
+  deploy. Checker: the review panel on the final tip (not the builder).
+```
+
 ## Option 1a — limiter last + linear email regex (2026-10-29)
 
 Owner decision, verbatim (Veeresh, 2026-10-29 2:46 PM CT): "Build 1a:
