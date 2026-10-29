@@ -19,13 +19,48 @@
   "main": "src/server.ts",
   // Same date the auto-generated config used (build log, 2026-10-22).
   "compatibility_date": "2026-10-19",
-  // Deliberately NO "compatibility_flags": the live Worker's flag set
-  // is empty (read via the API, 2026-10-22), and the generated config
-  // carried none. In particular nodejs_compat is NOT added on
-  // presumption — the /api/contact env question belongs to issue #220.
-  // Deliberately NO bindings and NO vars: the live version has none
-  // (the Builds project's CONTACT_DISCORD_WEBHOOK_URL / VITE_KOFI_URL
-  // are build-time variables, not runtime bindings).
+  // Deliberately NO "compatibility_flags": the contact handler reads its
+  // config from the Worker's runtime bindings (the `cloudflare:workers`
+  // env — see readContactRuntimeEnv in
+  // src/lib/contact/contact-handler.server.ts), so nodejs_compat is not
+  // needed. process.env is only the local-dev fallback in that read
+  // path (owner's route, 2026-10-21; wiring completed for issue #220).
+  //
+  // The contact webhook secret, declared BY NAME (never a value — the
+  // value is set as an encrypted runtime secret on the worker, see
+  // SPEC §3.3 of the #220 activation spec). Declaring it here makes the
+  // binding a first-class part of every Workers Builds deploy instead
+  // of a dashboard-only setting the next deploy can wipe — that wipe is
+  // what kept the form on NoopSink after the 2026-10-23 rotation, when
+  // the deployed version's bindings read []. Whether the value survives
+  // is proven by the post-deploy probe in SPEC §3.4, not assumed here.
+  // This is the CONTACT channel's own secret; it is never the
+  // crash-report worker's DISCORD_WEBHOOK_URL.
+  "secrets": {
+    "required": ["CONTACT_DISCORD_WEBHOOK_URL"]
+  },
+  // Workers Rate Limiting bindings for POST /api/contact (issue #220;
+  // the human record these were copied from is
+  // config/cloudflare/meridian.wrangler.toml — no build reads that
+  // file). The handler layers these over its always-on in-memory
+  // limiter (src/lib/contact/rate-limiter.server.ts): 3 messages per
+  // minute per sender, 10 per minute across everyone, per location.
+  // Namespace ids are unique in the account; 72073 is the crash
+  // worker's. The API is free (no plan gate, GA 2025-09-19).
+  "ratelimits": [
+    {
+      "name": "CONTACT_RATE_LIMITER",
+      "namespace_id": "72071",
+      "simple": { "limit": 3, "period": 60 }
+    },
+    {
+      "name": "CONTACT_GLOBAL_RATE_LIMITER",
+      "namespace_id": "72072",
+      "simple": { "limit": 10, "period": 60 }
+    }
+  ],
+  // Deliberately NO vars: the Builds project's VITE_KOFI_URL is a
+  // build-time variable, not a runtime binding.
   "observability": {
     "enabled": true
   }
