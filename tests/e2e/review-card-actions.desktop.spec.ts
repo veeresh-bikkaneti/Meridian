@@ -221,6 +221,19 @@ test("stack + tab order: focus walks primary → challenge → reset (due, flag 
   expect(ys.primary).toBeLessThan(ys.challenge);
   expect(ys.challenge).toBeLessThan(ys.reset);
 
+  // Bottom anchoring (panel round-1 B1, disproven by probe — locked
+  // here so it can never silently regress): the stack's margin-top:
+  // auto must engage, i.e. the danger footer's bottom edge sits on
+  // the text column's bottom edge (the column is height:100% of the
+  // card; the only space below the footer is the card's own padding).
+  const anchor = await page.evaluate(() => {
+    const sec = document.querySelector('[data-testid="tour-stop-review"]')!;
+    const txt = sec.querySelector(".hv5-txt")!.getBoundingClientRect();
+    const danger = sec.querySelector(".hv5-review-danger")!.getBoundingClientRect();
+    return { txtBottom: txt.bottom, dangerBottom: danger.bottom };
+  });
+  expect(Math.abs(anchor.dangerBottom - anchor.txtBottom)).toBeLessThanOrEqual(1.5);
+
   // Tab walk: record each DISTINCT focus stop until the card's last
   // control is seen. After every Tab, poll until the focus actually
   // changes before reading it — under VM load the renderer's focus

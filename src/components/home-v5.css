@@ -1037,9 +1037,15 @@ body:has(.home-v5) {
    uses Form S, so the two carve-outs that arbitrated its stretch layer
    (the ::after z-index lift and the static text column) are deleted
    with the mechanism. The text column keeps the shared .hv5-spot
-   position:relative behaviour, like every sibling spot card. The
-   shared .hv5-stretch rules above are untouched — GeoDetective,
-   Journal, and Get Involved still stretch. */
+   rule (position:relative + z-index:1 + height:100%) — and the new
+   action stack RELIES on two parts of it: height:100% gives the flex
+   column the card's full height so the stack's margin-top:auto can
+   anchor it to the bottom, and z-index:1 keeps the column (and its
+   controls) painted above the absolutely-positioned .hv5-art — both
+   verified by the hit-test + anchoring assertions in
+   tests/e2e/review-card-actions.desktop.spec.ts. The shared
+   .hv5-stretch rules above are untouched — GeoDetective, Journal,
+   and Get Involved still stretch. */
 /* Journal ("What the land remembers") and Get Involved ("For grown-ups")
    cards also stretch their primary CTA across the full card while elevating
    nested links in .hv5-involved above the stretch overlay. */
@@ -1149,9 +1155,10 @@ body:has(.home-v5) {
    longer stretches (action-model manifest 2026-10-29), but the rule
    is shared with ReviewComplete and is kept verbatim — the danger
    colour treatment lives in the Review-scoped override above, not
-   here. Not scoped to .home-v5: ReviewComplete (a plain screen, no
-   .home-v5 ancestor) renders the same control. The 44px min-height
-   is the accessibility tap-target floor. */
+   here. Not scoped to .home-v5: ReviewComplete renders the same
+   control in a different subtree of the app root (not inside a
+   .home-v5 card), so the base rule must live outside the .home-v5
+   scope. The 44px min-height is the accessibility tap-target floor. */
 .reset-history-open {
   position: relative;
   z-index: 3;
@@ -1227,6 +1234,14 @@ body:has(.home-v5) {
   }
   .home-v5 .hv5-review-due {
     outline-color: CanvasText;
+  }
+  /* The primary's brown fill is forced away in this mode and the
+     button carries no border, so at rest it would read as plain
+     text (panel cure, UX Researcher B3): give it a structural
+     border. Forced-colors maps the colour to a system button
+     colour; the width/style are what must be authored. */
+  .home-v5 .hv5-review-actions .hv5-btn-brown {
+    border: 2px solid ButtonText;
   }
 }
 
