@@ -16,6 +16,8 @@ import {
   MAX_BODY_BYTES,
   MAX_MESSAGE_CHARS,
   readBodyCapped,
+  honeypotFilled,
+  stripContactDetails,
   type ContactEnv,
 } from "./contact-handler.server.ts";
 
@@ -308,7 +310,7 @@ test("rate limit: a throwing binding fails open to the in-memory floor", async (
   assert.equal((await handleRequest(post({ topic: "bug", message: "m4" }, { "cf-connecting-ip": "198.51.100.88" }), env, 1000)).status, 429);
 });
 
-test("readContactEnv and readContactRuntimeEnv read from process.env and globalThis.__env__ (process.env wins)", async () => {
+test("readContactEnv and readContactRuntimeEnv prefer the runtime env (__env__) over process.env; process.env is the local-dev fallback", async () => {
   const g = globalThis as { __env__?: Record<string, unknown> };
   const prevProcWebhook = process.env.CONTACT_DISCORD_WEBHOOK_URL;
   const prevProcOrigins = process.env.CONTACT_ALLOWED_ORIGINS;
@@ -328,8 +330,21 @@ test("readContactEnv and readContactRuntimeEnv read from process.env and globalT
     assert.equal(rtFromNitro.CONTACT_DISCORD_WEBHOOK_URL, "https://discord.com/api/webhooks/111/from-nitro");
     assert.equal(rtFromNitro.CONTACT_ALLOWED_ORIGINS, "https://mirror.example");
 
+    // Both set: the runtime env wins. A local-dev shell value must never
+    // shadow the worker's configured bindings (owner's precedence,
+    // 2026-10-21, issue #220).
     process.env.CONTACT_DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/222/from-process";
     process.env.CONTACT_ALLOWED_ORIGINS = "https://proc.example";
+    assert.deepEqual(readContactEnv(), {
+      CONTACT_DISCORD_WEBHOOK_URL: "https://discord.com/api/webhooks/111/from-nitro",
+      CONTACT_ALLOWED_ORIGINS: "https://mirror.example",
+    });
+    const rtBoth = await readContactRuntimeEnv();
+    assert.equal(rtBoth.CONTACT_DISCORD_WEBHOOK_URL, "https://discord.com/api/webhooks/111/from-nitro");
+    assert.equal(rtBoth.CONTACT_ALLOWED_ORIGINS, "https://mirror.example");
+
+    // process.env alone still works — it is the local-dev fallback.
+    delete g.__env__;
     assert.deepEqual(readContactEnv(), {
       CONTACT_DISCORD_WEBHOOK_URL: "https://discord.com/api/webhooks/222/from-process",
       CONTACT_ALLOWED_ORIGINS: "https://proc.example",
@@ -430,5 +445,130 @@ test("full-stack E2E over real local HTTP server: readContactRuntimeEnv + handle
     if (prevWebhook === undefined) delete process.env.CONTACT_DISCORD_WEBHOOK_URL;
     else process.env.CONTACT_DISCORD_WEBHOOK_URL = prevWebhook;
     await new Promise<void>((resolve) => webhookServer.close(() => resolve()));
+  }
+});
+
+test("sink selection via the runtime-bindings route: the __env__ webhook wires Discord and wins over process.env", async () => {
+  const g = globalThis as { __env__?: Record<string, unknown> };
+  const prevProcWebhook = process.env.CONTACT_DISCORD_WEBHOOK_URL;
+  const prevNitroEnv = g.__env__;
+  try {
+    // A local-dev shell value must not shadow the worker's binding.
+    process.env.CONTACT_DISCORD_WEBHOOK_URL = "https://example.com/not-discord";
+    g.__env__ = { CONTACT_DISCORD_WEBHOOK_URL: "https://discord.com/api/webhooks/9/from-bindings" };
+    const env = await readContactRuntimeEnv();
+    assert.equal(env.CONTACT_DISCORD_WEBHOOK_URL, "https://discord.com/api/webhooks/9/from-bindings");
+    assert.ok(selectSink(env) instanceof DiscordWebhookSink);
+  } finally {
+    if (prevProcWebhook === undefined) delete process.env.CONTACT_DISCORD_WEBHOOK_URL;
+    else process.env.CONTACT_DISCORD_WEBHOOK_URL = prevProcWebhook;
+    if (prevNitroEnv === undefined) delete g.__env__;
+    else g.__env__ = prevNitroEnv;
+  }
+});
+
+test("honeypotFilled: only a non-blank string in the website field counts", () => {
+  assert.equal(honeypotFilled({ website: "http://spam" }), true);
+  assert.equal(honeypotFilled({ website: "  " }), false);
+  assert.equal(honeypotFilled({ website: "" }), false);
+  assert.equal(honeypotFilled({}), false);
+  assert.equal(honeypotFilled({ website: 42 }), false);
+  assert.equal(honeypotFilled(null), false);
+  assert.equal(honeypotFilled("website"), false);
+  assert.equal(honeypotFilled([]), false);
+});
+
+test("honeypot beats the origin gate: filled honeypot + disallowed or missing Origin still gets the quiet 200", async () => {
+  const realFetch = globalThis.fetch;
+  let called = 0;
+  globalThis.fetch = (async () => {
+    called++;
+    return new Response(null, { status: 204 });
+  }) as typeof fetch;
+  try {
+    const env: ContactEnv = { CONTACT_DISCORD_WEBHOOK_URL: "https://discord.com/api/webhooks/2/hook" };
+    const bot = { topic: "other", message: "buy now", website: "http://spam" };
+    const badOrigin = await handleRequest(post(bot, { origin: "https://evil.example" }), env);
+    assert.equal(badOrigin.status, 200);
+    assert.deepEqual(await badOrigin.json(), { ok: true });
+    const noOrigin = await handleRequest(
+      new Request("https://meridian.test/api/contact", {
+        method: "POST",
+        headers: { "content-type": "application/json", "cf-connecting-ip": "203.0.113.60" },
+        body: JSON.stringify(bot),
+      }),
+      env,
+    );
+    assert.equal(noOrigin.status, 200);
+    assert.equal(called, 0, "sink never called for honeypot drops");
+    // The gate still functions when the honeypot is empty.
+    const gated = await handleRequest(
+      post({ topic: "bug", message: "x" }, { origin: "https://evil.example", "cf-connecting-ip": "203.0.113.61" }),
+      env,
+    );
+    assert.equal(gated.status, 403);
+  } finally {
+    globalThis.fetch = realFetch;
+  }
+});
+
+test("validateContact strips emails and phone numbers from the message, never the replyTo", () => {
+  const r = validateContact({
+    topic: "bug",
+    message: "Reach me at kid@example.com or 402-555-1234 about the bug",
+    replyTo: "grownup@example.com",
+  });
+  assert.equal(r.ok, true);
+  if (r.ok) {
+    assert.equal(r.value.message, "Reach me at [email removed] or [phone removed] about the bug");
+    assert.equal(r.value.replyTo, "grownup@example.com");
+  }
+});
+
+test("stripContactDetails: phone shapes stripped, ordinary numbers left alone", () => {
+  for (const phone of [
+    "402-555-1234",
+    "(402) 555-1234",
+    "+1 402 555 1234",
+    "402.555.1234",
+    "4025551234",
+    "555-1234",
+    "+44 20 7946 0958",
+  ]) {
+    assert.equal(stripContactDetails(`call ${phone} now`), "call [phone removed] now", phone);
+  }
+  const benign = "I scored 1200 points on level 12 in 2026, ZIP 68501, version 1.2.3";
+  assert.equal(stripContactDetails(benign), benign);
+  // A message that is only an email still validates — as the placeholder.
+  const only = validateContact({ topic: "other", message: "kid@example.com" });
+  assert.equal(only.ok, true);
+  if (only.ok) assert.equal(only.value.message, "[email removed]");
+});
+
+test("delivered Discord copy carries the stripped message (no email, no phone)", async () => {
+  const bodies: string[] = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = (async (_url: string, init: RequestInit) => {
+    bodies.push(String(init.body));
+    return new Response(null, { status: 204 });
+  }) as unknown as typeof fetch;
+  try {
+    const env: ContactEnv = { CONTACT_DISCORD_WEBHOOK_URL: "https://discord.com/api/webhooks/2/hook" };
+    const res = await handleRequest(
+      post(
+        { topic: "other", message: "my phone is 402-555-1234 and email kid@example.com" },
+        { "cf-connecting-ip": "198.51.100.55" },
+      ),
+      env,
+    );
+    assert.equal(res.status, 200);
+    assert.deepEqual(await res.json(), { ok: true, stored: true });
+    assert.equal(bodies.length, 1);
+    assert.ok(!bodies[0].includes("402-555-1234"));
+    assert.ok(!bodies[0].includes("kid@example.com"));
+    assert.ok(bodies[0].includes("[phone removed]"));
+    assert.ok(bodies[0].includes("[email removed]"));
+  } finally {
+    globalThis.fetch = realFetch;
   }
 });
