@@ -23,14 +23,25 @@
  *   free Workers Rate Limiting binding adds a per-client and a global limit
  *   that are shared across isolates. The raw IP is never stored, logged, or
  *   forwarded.
- * - Delivery goes through a small ContactSink interface (delivery is
- *   PARKED — path B, adopted by the owner 2026-10-21 with the words
- *   "Adopt B — start the cure round": ship scaffolding only):
- *     NoopSink (default)        → accepts, stores nothing, reports
+ * - The message text is scrubbed before delivery: email addresses and
+ *   phone numbers typed into the message are replaced with placeholders
+ *   (validateContact → stripContactDetails). The form tells kids not to
+ *   type personal details; this is the safety net for when they do
+ *   anyway. The replyTo field is NOT scrubbed — it is the grown-up's
+ *   chosen reply path.
+ * - Delivery goes through a small ContactSink interface:
+ *     DiscordWebhookSink        → used when the
+ *                                 CONTACT_DISCORD_WEBHOOK_URL secret is
+ *                                 set on the worker (declared by name in
+ *                                 the root wrangler.jsonc, issue #220;
+ *                                 no URL is hard-coded)
+ *     NoopSink (fallback)       → accepts, stores nothing, reports
  *                                 `stored: false` so the page can say so
- *     DiscordWebhookSink        → wired ONLY when the
- *                                 CONTACT_DISCORD_WEBHOOK_URL secret is set
- *                                 (no URL is hard-coded)
+ *                                 honestly. This was the parked default
+ *                                 (path B, 2026-10-21) until #220 wired
+ *                                 the secret; it remains the fail-closed
+ *                                 fallback whenever the secret is unset
+ *                                 or malformed.
  *   A future KV / email sink just implements ContactSink and is chosen in
  *   selectSink(). What any sink receives: topic, message, replyTo (if
  *   given), received-at timestamp. No IP, user agent, headers, or cookies.
@@ -69,8 +80,11 @@ const DISCORD_MAX_CONTENT = 2000;
 
 export interface ContactEnv extends RateLimitBindings {
   /**
-   * Discord channel webhook URL for CONTACT messages (secret, optional —
-   * DEPLOY TODO). Unset → NoopSink. Never hard-code it.
+   * Discord channel webhook URL for CONTACT messages (secret, optional).
+   * Declared by name in the root wrangler.jsonc (`secrets.required`);
+   * the value itself is set as an encrypted runtime secret on the
+   * worker and read from the runtime bindings (see
+   * readContactRuntimeEnv). Unset → NoopSink. Never hard-code it.
    *
    * Set on the main `meridian` worker. Deliberately NOT
    * `DISCORD_WEBHOOK_URL`: that name is the crash-report worker's secret
@@ -105,6 +119,42 @@ export type ValidationResult =
 // eslint-disable-next-line no-control-regex -- stripping control chars is the point
 const CONTROL_CHARS = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]|\p{Cf}/gu;
 const EMAIL_SHAPE = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}$/;
+/** An email address appearing inside free text (EMAIL_SHAPE, unanchored). */
+const EMAIL_IN_TEXT = /[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}/g;
+/**
+ * Phone-number shapes inside free text: North-American numbers with the
+ * usual separators or parentheses (+1 optional), +-prefixed
+ * international numbers, 3+4 local numbers with a separator, and any
+ * bare run of 7+ digits. Deliberately conservative below 7 digits, so
+ * years, scores, and ZIP codes survive.
+ */
+const PHONE_IN_TEXT =
+  /(?:\+?1[\s.(-]?)?(?:\(\d{3}\)\s?|\d{3}[\s.-]?)\d{3}[\s.-]?\d{4}|\+\d[\d\s.-]{5,14}\d|\b\d{3}[\s.-]\d{4}\b|\d{7,}/g;
+
+/**
+ * Replace email addresses and phone numbers in free text with
+ * placeholders. The contact form tells children not to type personal
+ * details into the message; this is the safety net for when they do
+ * anyway, applied on the server before anything is delivered. The
+ * replyTo field is NOT passed through here — it is the grown-up's
+ * chosen reply path, validated separately.
+ */
+export function stripContactDetails(text: string): string {
+  return text.replace(EMAIL_IN_TEXT, "[email removed]").replace(PHONE_IN_TEXT, "[phone removed]");
+}
+
+/**
+ * The honeypot condition on a raw parsed body, before full validation:
+ * the hidden `website` field holds text. Humans never see the field, so
+ * only bots fill it. handleContactRequest checks this ahead of the
+ * origin gate; validateContact applies the same condition to the
+ * validated payload.
+ */
+export function honeypotFilled(parsed: unknown): boolean {
+  if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed)) return false;
+  const website = (parsed as Record<string, unknown>).website;
+  return typeof website === "string" && website.trim().length > 0;
+}
 
 /** Pure validation — the server never trusts the page's checks. */
 export function validateContact(input: unknown): ValidationResult {
@@ -121,7 +171,8 @@ export function validateContact(input: unknown): ValidationResult {
   if (typeof topic !== "string" || !CONTACT_TOPICS.includes(topic)) {
     problems.push("topic must be one of " + CONTACT_TOPICS.join(", "));
   }
-  const message = typeof o.message === "string" ? o.message.replace(CONTROL_CHARS, "").trim() : "";
+  const message =
+    typeof o.message === "string" ? stripContactDetails(o.message.replace(CONTROL_CHARS, "")).trim() : "";
   if (typeof o.message !== "string" || message.length === 0) problems.push("message is required");
   else if (message.length > MAX_MESSAGE_CHARS) problems.push(`message must be ≤ ${MAX_MESSAGE_CHARS} characters`);
 
@@ -137,7 +188,7 @@ export function validateContact(input: unknown): ValidationResult {
   if (o.website !== undefined && typeof o.website !== "string") problems.push("website must be a string");
 
   if (problems.length > 0) return { ok: false, problems };
-  const honeypot = typeof o.website === "string" && o.website.trim().length > 0;
+  const honeypot = honeypotFilled(o);
   return {
     ok: true,
     honeypot,
@@ -376,17 +427,25 @@ export async function handleContactRequest(
     });
   }
   if (request.method !== "POST") return json(405, { error: "method not allowed" }, origin, { allow: "POST, OPTIONS" });
-  // A browser always sends Origin on a fetch POST. No Origin means a
-  // non-browser client trying to skip the origin check, so refuse it.
-  if (!request.headers.get("origin")) return json(403, { error: "origin required" }, null);
-  if (origin === null) return json(403, { error: "origin not allowed" }, null);
 
   const declared = Number(request.headers.get("content-length") ?? "0");
   if (Number.isFinite(declared) && declared > MAX_BODY_BYTES) return json(413, { error: "body too large" }, origin);
   const body = await readBodyCapped(request, MAX_BODY_BYTES);
   if (body === null) return json(413, { error: "body too large" }, origin);
 
-  // Rate-limit before parsing so junk floods are cheap to refuse.
+  // Parse before the gates: the honeypot check below needs the field,
+  // and the body is already size-capped, so this is bounded work. A
+  // parse failure is only REPORTED after the origin gate, exactly as
+  // before — the gates keep their old answer precedence.
+  let parsed: unknown;
+  let parseFailed = false;
+  try {
+    parsed = JSON.parse(body);
+  } catch {
+    parseFailed = true;
+  }
+
+  // Rate-limit before the gates so junk floods are cheap to refuse.
   const ip = request.headers.get("cf-connecting-ip")?.trim() || "unknown";
   const limiter = selectRateLimiter(env, (binding) => log(`rate-limit-binding-error:${binding}`));
   const slot = await limiter.take(ip, now);
@@ -395,16 +454,27 @@ export async function handleContactRequest(
     return json(429, { error: "too many messages — try again later" }, origin, { "retry-after": String(slot.retryAfterSec) });
   }
 
-  let parsed: unknown;
-  try {
-    parsed = JSON.parse(body);
-  } catch {
-    return json(400, { error: "invalid JSON" }, origin);
+  // Honeypot BEFORE the origin gate (issue #220): a bot that filled the
+  // hidden field gets the same quiet 200 wherever it posts from, so the
+  // response teaches it nothing — not even "your origin was wrong".
+  if (!parseFailed && honeypotFilled(parsed)) {
+    log("honeypot-dropped");
+    return json(200, { ok: true }, origin);
   }
+
+  // A browser always sends Origin on a fetch POST. No Origin means a
+  // non-browser client trying to skip the origin check, so refuse it.
+  if (!request.headers.get("origin")) return json(403, { error: "origin required" }, null);
+  if (origin === null) return json(403, { error: "origin not allowed" }, null);
+
+  if (parseFailed) return json(400, { error: "invalid JSON" }, origin);
   const result = validateContact(parsed);
   // `"problems" in` narrows even in the non-strict single-file deploy emit.
   if ("problems" in result) return json(400, { error: "invalid message", problems: result.problems }, origin);
   if (result.honeypot) {
+    // Backstop: honeypotFilled() above applies the same condition to
+    // the raw body, so a filled honeypot never reaches validation. The
+    // drop does not depend on the early check alone.
     log("honeypot-dropped");
     return json(200, { ok: true }, origin);
   }
@@ -450,11 +520,17 @@ async function readCloudflareWorkerEnvStrings(): Promise<
 }
 
 /**
- * Read the contact config (strings only) from synchronous sources:
- * 1. `process.env` (Node tests and `nodejs_compat` runtimes)
- * 2. `globalThis.__env__` (Nitro / test harness injection)
- * 3. Server-only SSR build-time fallback (`__MERIDIAN_SSR_CONTACT_WEBHOOK_URL__`,
- *    for Cloudflare Workers Builds build-time variables — see wrangler.jsonc)
+ * Read the contact config (strings only) from synchronous sources, in
+ * the owner's precedence (2026-10-21): the Worker's runtime env first,
+ * `process.env` only as a local-dev fallback.
+ * 1. `globalThis.__env__` (the runtime env Nitro exposes)
+ * 2. Server-only SSR build-time fallback (`__MERIDIAN_SSR_CONTACT_*__`,
+ *    for Cloudflare Workers Builds build-time variables — see
+ *    wrangler.jsonc)
+ * 3. `process.env` (local dev and Node tests)
+ * The async readContactRuntimeEnv() additionally tries the
+ * `cloudflare:workers` env, which outranks all of these — that is where
+ * the declared secret binding (root wrangler.jsonc) shows up.
  */
 export function readContactEnv(): ContactEnv {
   try {
@@ -470,13 +546,13 @@ export function readContactEnv(): ContactEnv {
         : undefined;
     return {
       CONTACT_DISCORD_WEBHOOK_URL:
-        nonEmptyEnvString(procEnv?.CONTACT_DISCORD_WEBHOOK_URL) ??
         nonEmptyEnvString(nitroEnv?.CONTACT_DISCORD_WEBHOOK_URL) ??
-        nonEmptyEnvString(ssrWebhook),
+        nonEmptyEnvString(ssrWebhook) ??
+        nonEmptyEnvString(procEnv?.CONTACT_DISCORD_WEBHOOK_URL),
       CONTACT_ALLOWED_ORIGINS:
-        nonEmptyEnvString(procEnv?.CONTACT_ALLOWED_ORIGINS) ??
         nonEmptyEnvString(nitroEnv?.CONTACT_ALLOWED_ORIGINS) ??
-        nonEmptyEnvString(ssrOrigins),
+        nonEmptyEnvString(ssrOrigins) ??
+        nonEmptyEnvString(procEnv?.CONTACT_ALLOWED_ORIGINS),
     };
   } catch {
     return {};
@@ -484,30 +560,28 @@ export function readContactEnv(): ContactEnv {
 }
 
 /**
- * Full runtime config for the route: checks `process.env`, `globalThis.__env__`,
- * the Cloudflare Workers runtime `env` module (`import("cloudflare:workers")`,
- * which works without `nodejs_compat`), the SSR build-time fallback, plus the
- * Workers Rate Limiting binding objects.
+ * Full runtime config for the route, in the owner's precedence
+ * (2026-10-21 — runtime bindings first, `process.env` only as a
+ * local-dev fallback):
+ * 1. The Workers runtime `env` via `import("cloudflare:workers")`
+ *    (works without `nodejs_compat`) — where the declared
+ *    CONTACT_DISCORD_WEBHOOK_URL secret binding (root wrangler.jsonc,
+ *    issue #220) appears.
+ * 2. The synchronous sources in readContactEnv() (`globalThis.__env__`,
+ *    then the SSR build-time fallback, then `process.env`).
+ * Plus the Workers Rate Limiting binding objects.
  */
 export async function readContactRuntimeEnv(): Promise<ContactEnv> {
-  const procEnv = (globalThis as { process?: { env?: Record<string, unknown> } }).process?.env;
-  const nitroEnv = (globalThis as { __env__?: Record<string, unknown> }).__env__;
   const [cfStrings, bindings] = await Promise.all([
     readCloudflareWorkerEnvStrings(),
     readRateLimitBindings(),
   ]);
-  const fromSync = readContactEnv();
+  const fallback = readContactEnv();
   return {
     CONTACT_DISCORD_WEBHOOK_URL:
-      nonEmptyEnvString(procEnv?.CONTACT_DISCORD_WEBHOOK_URL) ??
-      nonEmptyEnvString(nitroEnv?.CONTACT_DISCORD_WEBHOOK_URL) ??
-      cfStrings.CONTACT_DISCORD_WEBHOOK_URL ??
-      fromSync.CONTACT_DISCORD_WEBHOOK_URL,
+      cfStrings.CONTACT_DISCORD_WEBHOOK_URL ?? fallback.CONTACT_DISCORD_WEBHOOK_URL,
     CONTACT_ALLOWED_ORIGINS:
-      nonEmptyEnvString(procEnv?.CONTACT_ALLOWED_ORIGINS) ??
-      nonEmptyEnvString(nitroEnv?.CONTACT_ALLOWED_ORIGINS) ??
-      cfStrings.CONTACT_ALLOWED_ORIGINS ??
-      fromSync.CONTACT_ALLOWED_ORIGINS,
+      cfStrings.CONTACT_ALLOWED_ORIGINS ?? fallback.CONTACT_ALLOWED_ORIGINS,
     ...bindings,
   };
 }
