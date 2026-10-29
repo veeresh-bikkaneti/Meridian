@@ -666,16 +666,18 @@ export function ResultCard({
                 Next place →
               </Button>
               {challengeOffer ? (
-                <div className="mt-3 border-t border-white/10 pt-2 text-center">
+                <div className="mt-3 border-t border-[var(--game-chrome-line)] pt-2 text-center">
                   <button
                     type="button"
                     data-testid="reveal-challenge-link"
                     onClick={challengeOffer.onChallenge}
-                    className="inline-flex min-h-[44px] items-center justify-center px-3 text-sm font-medium text-[#f2c14e] underline-offset-2 transition-colors hover:underline"
+                    className="inline-flex min-h-[44px] items-center justify-center px-3 text-sm font-medium text-[var(--atlas-brass)] underline-offset-2 transition-colors hover:underline"
                   >
                     {challengeRevealLabel(challengeOffer.regionName)}
                   </button>
-                  <p className="text-sm leading-snug text-white/70">{CHALLENGE_UNLOCK_HINT}</p>
+                  <BoundedText variant="body" className="result-note">
+                    {CHALLENGE_UNLOCK_HINT}
+                  </BoundedText>
                 </div>
               ) : null}
             </div>
