@@ -59,7 +59,11 @@ export interface RateLimitBinding {
   limit(options: { key: string }): Promise<{ success: boolean }>;
 }
 
-/** Binding names. They must match config/cloudflare/meridian.wrangler.toml. */
+/**
+ * Binding names. They must match the root wrangler.jsonc (the deploy
+ * config, issue #220); config/cloudflare/meridian.wrangler.toml is the
+ * human record the blocks were copied from.
+ */
 export const CLIENT_LIMITER_BINDING = "CONTACT_RATE_LIMITER";
 export const GLOBAL_LIMITER_BINDING = "CONTACT_GLOBAL_RATE_LIMITER";
 

@@ -269,8 +269,9 @@ export interface ContactSink {
 }
 
 /**
- * Default sink while the real target is parked: accepts and discards.
- * Returns stored:false so the page can be honest that nobody will read it.
+ * Fallback sink, used whenever the Discord secret is unset or malformed:
+ * accepts and discards. Returns stored:false so the page can be honest
+ * that nobody will read it.
  */
 export class NoopSink implements ContactSink {
   readonly name = "noop";
