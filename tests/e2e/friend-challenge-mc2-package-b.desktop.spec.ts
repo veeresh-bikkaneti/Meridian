@@ -284,6 +284,34 @@ test("(f) mc1 completion: pass-along stays mc1 byte-for-byte; the frozen surface
   await expect(page.getByTestId("challenge-fresh-share-container")).toHaveCount(0);
 });
 
+test.describe("phone-width viewport", () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+
+  test("(b) at 390px: the run-menu popover stays fully on screen and works", async ({
+    page,
+    context,
+  }) => {
+    await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+    await startNebraskaRun(page);
+
+    await page.getByTestId("run-menu-button").click();
+    const menu = page.getByTestId("run-menu");
+    await expect(menu).toBeVisible();
+    const box = await menu.boundingBox();
+    expect(box).not.toBeNull();
+    // Right-anchored (panel cure): the whole panel fits the viewport —
+    // a left-anchored 288px panel at this cluster position spilled
+    // ~150px past the right edge.
+    expect(box!.x).toBeGreaterThanOrEqual(0);
+    expect(box!.x + box!.width).toBeLessThanOrEqual(390);
+
+    await page.getByTestId("run-menu-challenge").click();
+    const preview = visiblePreview(page);
+    await expect(preview).toBeVisible({ timeout: 30_000 });
+    await expect(preview).toContainText("5 places in Nebraska");
+  });
+});
+
 test("flag OFF: no run menu in the run, no challenge link on the reveal", async ({
   page,
   context,

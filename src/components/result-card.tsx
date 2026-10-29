@@ -671,7 +671,7 @@ export function ResultCard({
                     type="button"
                     data-testid="reveal-challenge-link"
                     onClick={challengeOffer.onChallenge}
-                    className="inline-flex min-h-[44px] items-center justify-center px-3 text-sm font-medium text-[var(--atlas-brass)] underline-offset-2 transition-colors hover:underline"
+                    className="inline-flex min-h-[44px] items-center justify-center px-3 text-sm font-medium text-[var(--atlas-brass-text-sm)] underline underline-offset-2 transition-colors"
                   >
                     {challengeRevealLabel(challengeOffer.regionName)}
                   </button>

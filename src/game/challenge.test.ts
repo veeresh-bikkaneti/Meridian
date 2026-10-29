@@ -579,6 +579,13 @@ test("package B: the mid-run/reveal widening chain never subtracts seen places",
   assert.deepEqual(chain[0].map((p) => p.id), ["gn-103", "gn-101"]);
   assert.deepEqual(chain[1].map((p) => p.id), ["gn-102", "gn-104", "gn-106", "gn-107"]);
   assert.deepEqual(chain[chain.length - 1].map((p) => p.id), catalog.map((p) => p.id));
+  // Shape pinned (panel round 1): with seenIds omitted the helper's
+  // chain is [runPool, band, band, catalog] — the band step appears
+  // twice. Harmless: createChallengeRoute takes the FIRST source that
+  // fills the count, so the duplicate is never reached when the band
+  // suffices, and changes nothing when it does not.
+  assert.equal(chain.length, 4);
+  assert.deepEqual(chain[2].map((p) => p.id), chain[1].map((p) => p.id));
   // And a fresh deal through that chain succeeds in-region.
   const created = createChallengeRoute({
     edition: "state", regionId: "nebraska", scoringVersion: 3,

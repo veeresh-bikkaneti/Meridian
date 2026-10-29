@@ -5877,8 +5877,12 @@ function PlayLoaded({
   // One creation path behind two entries: the run-menu item (aim) and
   // the result-card footer link (reveal). Both deal a FRESH five from
   // the run's region — the widening chain is the manifest §1(b) one:
-  // run pool → region band, seen-INCLUDED → full region catalog, which
-  // is buildCreationSources with NO seenIds (nothing is subtracted).
+  // run pool → region band, seen-INCLUDED → the run's loaded catalog,
+  // which is buildCreationSources with NO seenIds (nothing is
+  // subtracted). One honesty note: on Globe the loaded catalog is the
+  // tier-split subset the run itself loaded, so the last step widens
+  // within that subset — still in-region, still fail-closed (no source
+  // reaching five means no entry is offered).
   // Creation is a pure read + fresh deal: it never touches the run,
   // the dealer, or the pool, and the flag is re-read at tap time
   // (click-atomic, §4) rather than trusted from render state. Normal
@@ -5913,7 +5917,13 @@ function PlayLoaded({
       sources: runChallengeSources,
       dealSeed: mintSeed(),
     });
-    if (creation) setRunChallengePreview(creation);
+    if (creation) {
+      // The cartographer's tap, matching the other challenge entry
+      // points (Package A's panel-cured precedent): entering the
+      // creation flow sounds, whichever entry the player used.
+      playCardTap();
+      setRunChallengePreview(creation);
+    }
   }, [run.edition, run.regionId, runChallengeSources]);
   // The menu never survives the run it belongs to: Escape closes it,
   // and the summary (or a new run) closes it too.
@@ -6067,10 +6077,16 @@ function PlayLoaded({
                 header chrome cluster beside the other run controls —
                 never as a new button on the aim surface, and physically
                 separated from End game (which sits in the bottom dock /
-                top-right score cluster). The button is not rendered at
-                all when no route can be dealt or the flag is off:
-                flag-off means the feature does not exist (§4). */}
-            {runChallengeAvailable ? (
+                top-right score cluster). Aim phase only: the reveal has
+                its own entry (§1(c)) and the summary its own (§1(d)).
+                The button is not rendered at all when no route can be
+                dealt or the flag is off: flag-off means the feature
+                does not exist (§4). The popover is RIGHT-anchored on
+                purpose: this cluster's right edge sits ~297px from the
+                viewport's left at any width, so the 288px panel always
+                fits on screen — a left-anchored panel would spill past
+                the right edge on phone-width viewports. */}
+            {runChallengeAvailable && run.phase === "aim" ? (
               <div className="relative pointer-events-auto">
                 <button
                   type="button"
@@ -6087,7 +6103,7 @@ function PlayLoaded({
                   <div
                     role="menu"
                     data-testid="run-menu"
-                    className="pointer-events-auto absolute top-full left-0 z-40 mt-2 w-72 rounded-2xl border border-line bg-surface p-2 shadow-xl"
+                    className="pointer-events-auto absolute top-full right-0 z-40 mt-2 w-72 rounded-2xl border border-line bg-surface p-2 shadow-xl"
                   >
                     <button
                       type="button"

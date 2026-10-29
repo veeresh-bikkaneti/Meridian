@@ -126,7 +126,7 @@ Nothing about a guess is stored on a server. The in-progress run lives in `sessi
 | Where | One daily world (and practice sets) | Globe, countries, and states — every level playable |
 | Map | MapTap's globe | Live satellite, unlabeled — zoom out to space, zoom back to the region |
 | Same puzzle | Yes, for that day's five | Fresh shuffle every visit; no-repeat until the pool cycles |
-| Friend challenge | Daily shared link | Stateless links in two formats: `#c=mc1...` Globe links (5–10 places, 750 km radius) and `#c=mc2...` links for any edition — a Globe, state, or country route with its own radius pinned in the link (flag-gated under `friendChallenges`). Create one from Home, mid-game from the run menu, on any reveal card, or at the end of a game; a finished challenge passes its exact route along |
+| Friend challenge | Daily shared link | Stateless links in two formats: `#c=mc1...` Globe links (5–10 places, 750 km radius) and `#c=mc2...` links for any edition — a Globe, state, or country route with its own radius pinned in the link (flag-gated under `friendChallenges`). Create one from Home, mid-game from the run menu, on a reveal card, or at the end of a game; a finished challenge passes its exact route along |
 
 MapTap's places are a checked atlas. Meridian's are too. A model does not invent the next place, so Safari and DuckDuckGo play the same trail as Chrome. If Chrome already has Gemini Nano installed, it may rewrite the story after a hit, using only the facts already written. It does not download a model, and it does not change the pin or the count.
 
