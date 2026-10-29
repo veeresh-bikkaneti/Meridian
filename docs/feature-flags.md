@@ -202,3 +202,22 @@ connection and tap the link again (a region file failed to load). With the
 flag off, a saved mc2 challenge is cleared on boot and the ordinary saved
 run — never collateral — boots as usual. GeoDetective and Cold Trail do
 not take part: their mysteries are solo investigations.
+
+**Creating mid-game (2026-10-29, Package B).** Three more doors into the
+same challenge, all behind the same flag. While a game is running, the
+"⋯" menu in the top corner offers "Challenge a friend — new route in
+{Region}": it deals a fresh five from the region you are playing (your
+game's own places first, then the rest of the region — places you have
+already seen can appear; nothing about your game changes). After each
+place is revealed, the result card's footer carries the same offer as a
+text link, "Challenge a friend in {Region}", with a line explaining
+that your own route — the one you are playing — unlocks when you
+finish. Both open the same preview sheet before anything is shared, so
+you always see the route and its circle first. And when you finish a
+challenge someone sent you, the completion screen passes that exact
+route along in its original format (an mc2 route stays mc2, circle and
+all) and — for mc2 routes — offers a brand-new route in the same region
+beside it ("Or send a new {Region} route"). Routes received in the
+original mc1 format keep their original completion screen, unchanged.
+Turning the flag off removes every one of these entries; a challenge
+already in progress still finishes, it just can't be shared onwards.

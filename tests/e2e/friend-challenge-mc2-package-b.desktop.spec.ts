@@ -114,6 +114,12 @@ async function waitForAimAt(page: Page, key: string): Promise<void> {
     .not.toBeNull();
 }
 
+// Two elements carry data-testid="challenge-preview" during a run:
+// the Home-level sheet (hidden while a run is active) and the run's own
+// Package B sheet. The visible one is the surface under test.
+const visiblePreview = (page: Page) =>
+  page.locator('[data-testid="challenge-preview"]:visible');
+
 function fragmentOf(url: string): string {
   return url.slice(url.indexOf("#"));
 }
@@ -157,7 +163,7 @@ test("(b) mid-run: the run menu deals a fresh in-region five; the live run does 
   await expect(item).toHaveText("Challenge a friend — new route in Nebraska");
   await item.click();
 
-  const preview = page.getByTestId("challenge-preview");
+  const preview = visiblePreview(page);
   await expect(preview).toBeVisible({ timeout: 30_000 });
   await expect(preview).toContainText("5 places in Nebraska");
   await expect(preview).toContainText("87 km circle");
@@ -190,7 +196,7 @@ test("(c) reveal: the footer link and unlock hint deal the same fresh five", asy
   await expect(resultCard(page)).toContainText("Your route unlocks when you finish 🏁");
   await link.click();
 
-  const preview = page.getByTestId("challenge-preview");
+  const preview = visiblePreview(page);
   await expect(preview).toBeVisible({ timeout: 30_000 });
   await expect(preview).toContainText("5 places in Nebraska");
   expectFreshNebraskaFive(
