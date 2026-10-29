@@ -344,6 +344,7 @@ import {
   CHALLENGE_MIN_PLACES,
   CHALLENGE_REGION_ID,
   CHALLENGE_REGION_NAME,
+  CHALLENGE_REVIEW_LABEL,
   CHALLENGE_SHARE_LABEL,
   CHALLENGE_EXACT_SHARE_LABEL,
   CHALLENGE_RESHARE_LABEL,
@@ -2494,6 +2495,26 @@ export function GameApp() {
   }, [replaceSession]);
 
   /**
+   * "Challenge a friend — pick a map" from the review-complete screen
+   * (manifest §1(e)). The review is finished, so the tap first runs
+   * the same exit as the screen's Editions button (clear the drop,
+   * end the run — the SESSION is untouched, no summary is fabricated:
+   * review answers never banked into one), then opens the shipped
+   * challenge-region mini-picker instead of the plain menu. The
+   * friendChallenges flag is re-read at tap time (click-atomic, the
+   * Package B precedent): if it flipped off after the screen booted,
+   * the tap degrades to the plain exit — never a trap, never a
+   * half-open picker. One state batch: Play unmounts and the menu
+   * branch mounts in the same commit, so there is no home flash.
+   */
+  const handleReviewChallenge = useCallback(() => {
+    setStartError(null);
+    clearDrop();
+    setRun(null);
+    setMenu(isEnabled("friendChallenges") ? { kind: "challengeRegions" } : null);
+  }, []);
+
+  /**
    * Start a review session over the currently-due deck cards. The session is
    * a synthetic Run (regionId "review-deck") whose pool is the due queue in
    * due order. Deliberately no ensureSession: review answers never bank
@@ -2797,6 +2818,7 @@ export function GameApp() {
           }}
           onReviewDeck={handleReviewDeck}
           onResetHistory={handleResetHistory}
+          onReviewChallenge={handleReviewChallenge}
           onCleared={(info) => setCleared(info)}
           mapMode={mapMode}
           onManualMapMode={handleManualMapMode}
@@ -3863,6 +3885,29 @@ function Choose({
                       in the text column, clear of the REVIEW cue's centre
                       click point (the cue is top-right since Part 2). */}
                   <ResetHistoryControl onReset={onResetHistory} />
+                  {/* "Challenge a friend — pick a map" (manifest
+                      §1(e)): the deck-level door into the challenge
+                      region picker. It opens the shipped mini-picker
+                      and deals FRESH from the picked region — never
+                      from this deck (manifest §1(e)/§3: deck ids are
+                      decodable from any link, so a deck-sourced deal
+                      would publish the player's misses). Same
+                      placement pattern as the reset opener: in-flow
+                      in the text column, above the stretch layer.
+                      Visibility mirrors the reset entry's rule
+                      (deck total > 0) and the entry renders only
+                      with the friendChallenges flag on
+                      (fail-closed). */}
+                  {challengeEnabled && onChallenge ? (
+                    <button
+                      type="button"
+                      className="review-challenge-open"
+                      data-testid="review-challenge-a-friend"
+                      onClick={onChallenge}
+                    >
+                      {CHALLENGE_REVIEW_LABEL}
+                    </button>
+                  ) : null}
                   {/* Whole-card action (Form S): the CTA stretches over
                       the card via .hv5-stretch; the REVIEW → pill is the
                       visible discoverability cue (aria-hidden, pointer-
@@ -3878,6 +3923,18 @@ function Choose({
                   {/* Same reset entry as the due state (D10): visibility
                       is deck total > 0, not due > 0. */}
                   <ResetHistoryControl onReset={onResetHistory} />
+                  {/* Same challenge entry as the due state (§1(e)):
+                      same visibility rule, same handler. */}
+                  {challengeEnabled && onChallenge ? (
+                    <button
+                      type="button"
+                      className="review-challenge-open"
+                      data-testid="review-challenge-a-friend"
+                      onClick={onChallenge}
+                    >
+                      {CHALLENGE_REVIEW_LABEL}
+                    </button>
+                  ) : null}
                 </>
               ) : (
                 <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
@@ -4231,12 +4288,18 @@ function ReviewComplete({
   total,
   onDone,
   onResetHistory,
+  onChallengeFriend,
 }: {
   results: PlaceResult[];
   total: number;
   onDone: () => void;
   /** Present only when the deck still holds cards (fresh read, D16). */
   onResetHistory?: () => ResetHistoryResult;
+  /** Present only while the friendChallenges flag is on (manifest
+   * §1(e)): the review-surface challenge entry. Unlike the reset
+   * entry it is NOT deck-gated — it deals fresh from the picked
+   * region, never from the deck, so an empty deck is fine here. */
+  onChallengeFriend?: () => void;
 }) {
   const remembered = results.filter((r) => r.hit).length;
   return (
@@ -4258,6 +4321,20 @@ function ReviewComplete({
       </p>
       <div className="mt-6 flex flex-col items-start gap-3">
         <Button onClick={onDone}>{REVIEW_DECK_COPY.backToEditions}</Button>
+        {/* "Challenge a friend — pick a map" (manifest §1(e)): the
+            review is finished, so this door leaves it — the GameApp
+            handler runs the Editions exit and opens the shipped
+            region mini-picker in one act. Secondary beside the
+            primary exit: the review's own flow stays the headline. */}
+        {onChallengeFriend ? (
+          <Button
+            variant="secondary"
+            onClick={onChallengeFriend}
+            data-testid="review-challenge-a-friend"
+          >
+            {CHALLENGE_REVIEW_LABEL}
+          </Button>
+        ) : null}
         {onResetHistory ? <ResetHistoryControl onReset={onResetHistory} /> : null}
       </div>
     </main>
@@ -4540,6 +4617,7 @@ function Play({
   onReplayed,
   onReviewDeck,
   onResetHistory,
+  onReviewChallenge,
   onCleared,
   celebrationOpen,
   tutorial,
@@ -4580,6 +4658,8 @@ function Play({
   onReviewDeck: () => void;
   /** Run the "Start over" history reset (GameApp owns the flow). */
   onResetHistory: () => ResetHistoryResult;
+  /** "Challenge a friend — pick a map" from review-complete (§1(e)). */
+  onReviewChallenge: () => void;
   /** A difficulty band was just cleared: show the celebration dialog. */
   onCleared: (info: ClearedInfo) => void;
   /**
@@ -4790,6 +4870,7 @@ function Play({
       onReplayed={onReplayed}
       onReviewDeck={onReviewDeck}
       onResetHistory={onResetHistory}
+      onReviewChallenge={onReviewChallenge}
       onCleared={onCleared}
       celebrationOpen={celebrationOpen}
       reviewEntries={reviewEntries}
@@ -4819,6 +4900,7 @@ function PlayLoaded({
   onReplayed,
   onReviewDeck,
   onResetHistory,
+  onReviewChallenge,
   onCleared,
   celebrationOpen,
   reviewEntries,
@@ -4863,6 +4945,8 @@ function PlayLoaded({
   onReviewDeck: () => void;
   /** Run the "Start over" history reset (GameApp owns the flow). */
   onResetHistory: () => ResetHistoryResult;
+  /** "Challenge a friend — pick a map" from review-complete (§1(e)). */
+  onReviewChallenge: () => void;
   /**
    * Whether the cleared-mode celebration dialog is open. The M5 Escape
    * handler yields while it is open so one Escape press dismisses only
@@ -5695,6 +5779,17 @@ function PlayLoaded({
       ? deckCounts(readReviewDeck() ?? emptyReviewDeck(), Date.now()).total
       : 0;
 
+  // "Challenge a friend — pick a map" on ReviewComplete (manifest
+  // §1(e)): entering the creation flow sounds the card tap (the
+  // Package B precedent — every creation entry sounds); the GameApp
+  // handler owns the exit + mini-picker transition and re-checks the
+  // flag at tap. Rendered only while this screen's boot-authoritative
+  // flag read says on — see the ReviewComplete call site below.
+  const reviewChallengeTap = useCallback(() => {
+    playCardTap();
+    onReviewChallenge();
+  }, [onReviewChallenge]);
+
   /**
    * The summary's friend-challenge offers (manifest §1(d), Package A):
    * primary = the sender's OWN route — the places they just played, in
@@ -5998,6 +6093,7 @@ function PlayLoaded({
         total={pool.length}
         onDone={onEditions}
         onResetHistory={reviewDeckTotal > 0 ? onResetHistory : undefined}
+        onChallengeFriend={friendChallengesEnabled ? reviewChallengeTap : undefined}
       />
     );
   }
