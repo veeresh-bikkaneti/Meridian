@@ -34,9 +34,11 @@ import {
  *      delivers formatted message with code-fenced `replyTo` & `message`,
  *      `allowed_mentions: { parse: [] }`, and `flags: 4` (SUPPRESS_EMBEDS).
  *   6. Browser post-submit state renders `[data-testid="contact-sent"]` with
- *      "Thanks — we received your request and will get back to you." for all
- *      users and resets form fields, or renders `[data-testid="contact-error"]`
- *      when rate-limited (429).
+ *      "Thanks — we received your request and will get back to you." and
+ *      resets form fields ONLY on confirmed delivery (stored:true, #220);
+ *      on stored:false it renders the honest `[data-testid="contact-error"]`
+ *      not-delivered state and preserves the draft, and likewise renders
+ *      `[data-testid="contact-error"]` when rate-limited (429).
  */
 test.setTimeout(180_000);
 
@@ -244,22 +246,26 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     expect(webhookReceiver.calls[0].body.content).toContain("within 90 days");
 
     // Moving Part 4b (Fallback when webhook secret is unset -> NoopSink returns stored: false,
-    // and browser still shows the same confirmation message to all users):
+    // and the browser is HONEST about it (#220): no thank-you banner, the
+    // not-delivered state in the not-configured wording, and the draft is
+    // preserved verbatim so the visitor keeps their words):
     delete process.env.CONTACT_DISCORD_WEBHOOK_URL;
     await form.locator("select").selectOption("other");
     await form.locator("textarea").fill("Follow-up question when sink is NoopSink");
     await form.getByRole("button", { name: /send/i }).click();
 
-    await expect(form.locator("textarea")).toHaveValue("");
+    await expect(sentBanner).toHaveCount(0);
+    const notDeliveredBanner = page.getByTestId("contact-error");
+    await expect(notDeliveredBanner).toBeVisible();
+    await expect(notDeliveredBanner).toContainText("isn't switched on yet");
     expect(serverResponses).toHaveLength(2);
     expect(serverResponses[1].status).toBe(200);
     expect(serverResponses[1].body).toEqual({ ok: true, stored: false });
     // Webhook receiver was NOT called for NoopSink
     expect(webhookReceiver.calls).toHaveLength(1);
-    await expect(sentBanner).toBeVisible();
-    await expect(sentBanner).toContainText(
-      "Thanks — we received your request and will get back to you.",
-    );
+    // Draft preserved: topic and message exactly as typed.
+    await expect(form.locator("select")).toHaveValue("other");
+    await expect(form.locator("textarea")).toHaveValue("Follow-up question when sink is NoopSink");
 
     // Re-enable webhook secret for remaining moving parts
     process.env.CONTACT_DISCORD_WEBHOOK_URL =
@@ -271,7 +277,12 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     await form.locator('input[type="text"]').fill("https://spam-bot.example");
     await form.getByRole("button", { name: /send/i }).click();
 
-    await expect(form.locator("textarea")).toHaveValue("");
+    // The honeypot 200 carries no `stored` flag, so on the client it is
+    // indistinguishable from a not-delivered send (#220 honesty states):
+    // no thank-you and the text stays in the box. The drop itself is
+    // proven server-side — 200 { ok: true } and zero webhook calls.
+    await expect.poll(() => serverResponses.length).toBe(3);
+    await expect(form.locator("textarea")).toHaveValue("Bot spam submission");
     expect(serverResponses).toHaveLength(3);
     expect(serverResponses[2].status).toBe(200);
     expect(serverResponses[2].body).toEqual({ ok: true });
