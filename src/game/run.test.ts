@@ -341,3 +341,36 @@ test("a run saved before the picker backfills to medium and resumes at the defau
   const tampered = { ...saved, difficultyChoice: "extreme" } as unknown as Run;
   assert.equal(resumeRun(tampered, today, ["p1"]).difficultyChoice, "medium");
 });
+
+// --- Challenge run fields (manifest 2026-10-28, Package A) ---
+
+test("resumeRun carries the challenge fields; a legacy challenge save defaults cleanly", () => {
+  const challengeToday = {
+    edition: "state" as const,
+    regionId: "challenge",
+    regionName: "Nebraska challenge",
+    dateKey: "2026-10-28",
+    difficultyChoice: "medium" as const,
+  };
+  const saved: Run = {
+    ...startRun(challengeToday, ["p1", "p2", "p3", "p4", "p5"]),
+    challengeRegionId: "nebraska",
+    challengeRadiusKm: 87,
+    challengeOrigin: "mc2",
+    phase: "aim" as const,
+  };
+  assert.equal(isResumable(saved, challengeToday), true);
+  const resumed = resumeRun(saved, challengeToday, ["p1", "p2", "p3", "p4", "p5"]);
+  assert.equal(resumed.challengeRegionId, "nebraska");
+  assert.equal(resumed.challengeRadiusKm, 87);
+  assert.equal(resumed.challengeOrigin, "mc2");
+
+  // A challenge run saved before the fields existed (an mc1 save) resumes
+  // with the fields absent — the radius accessor defaults it to 750 and
+  // the origin reads as mc1 downstream.
+  const legacy: Run = { ...startRun(challengeToday, ["p1", "p2", "p3"]), phase: "aim" as const };
+  const resumedLegacy = resumeRun(legacy, challengeToday, ["p1", "p2", "p3"]);
+  assert.equal(resumedLegacy.challengeRegionId, undefined);
+  assert.equal(resumedLegacy.challengeRadiusKm, undefined);
+  assert.equal(resumedLegacy.challengeOrigin, undefined);
+});
