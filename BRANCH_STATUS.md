@@ -3,7 +3,7 @@
 - **Branch:** `fix/endgame-editions` (no PR yet — PR opens after gates + panel)
 - **Base:** `origin/main` at `b09a5c36` ("Start over" history reset + Review-card overlay fix, #281)
 - **Task:** The "End game" button is not visible in GeoDetective, Cold Trail, or other new editions (owner's report, verbatim). Make the same End game control available inside those edition screens so a player can end the session and see the session summary from anywhere, exactly as in the classic Globe/Country/State run screens.
-- **State:** **MANIFEST SIGNED — BUILD NOT STARTED.** Tier-2 council complete (see below); no implementation code written yet. Next: RED tests per the manifest, then minimal GREEN.
+- **State:** **STAGE 2 DONE — GREEN, GATES RUN, PANEL PENDING.** Tier-2 council complete (see below); RED → GREEN built per the manifest (commits `816de50` tests, `cc133c3` implementation). Next: Stage 3 gates on the final tip (already run once here — see below), then Stage 4 panel, then Stage 5 PR. NO MERGE (owner's explicit per-PR word only, after panel verdict).
 
 ## Council record (Tier 2, protocol `docs/ops/agent-council-protocol.md`)
 
@@ -21,12 +21,29 @@
 - [x] AGENTS.md + council protocol read in full; Tier 2 confirmed; root cause re-verified with real line cites.
 - [x] Council: A scenarios + inventory, B contracts + RED signatures, C round 1 CHALLENGE (5 blocks + 3 notes), C round 2 CHALLENGE (1 blocker + 3 notes) — all dispositioned; manifest SIGNED.
 
+## Done (Stage 2)
+
+- [x] RED tests (unit source-pins + E2E in existing specs + mobile spec) — all failed with the predicted signatures before GREEN (unit 11/11, exit 1; E2E mode tests on the missing End game button; all guards pass).
+- [x] Minimal GREEN implementation per the manifest (mode buttons + handler + GameApp-level mode-summary branch + `showPlayAgain` prop + focus-to-Done fallback). Classic flow untouched: classic summaries pass nothing and behave identically.
+- [x] Docs: README (GeoDetective section: End game in modes, session-only totals, case resumes) + this file; code comments explain the why.
+- [x] Gates run on the final tip: `npx tsc --noEmit` clean · `npm test` 1785 pass / 0 fail · `npm run test:worker` 85 pass / 0 fail · `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green · E2E (serialized, `--workers=1`): geodetective endgame 6/6, coldtrail endgame 5/5, mobile 2/2, endless-game full 3/3 — all green.
+- [x] Footprint: implementation +122/−20 lines; tests + docs dominate (see `git diff --stat origin/main...HEAD`).
+
+## Known pre-existing failures (NOT caused by this branch — evidence in the Stage 2 report)
+
+- `session-score` 6/8 fail on this VM: the once-per-lifetime first-win Parade modal blocks clicks in that untouched spec (12 celebration-overlay intercepts in the log; 2 failure screenshots show "Your first discovery!" over the story card). Same failure reproduced pre-fix in RED phase. Celebration/banking code is untouched by this branch.
+- `endgame-share` 0/2 fail: strict-mode violation — the dialog holds two `p[aria-live="polite"]` regions (score ShareButton + challenge ShareButton) whenever a challenge URL exists. Base source (`b09a5c36`) already renders both ShareButtons; this branch's card diff touches none of that. The spec file is untouched.
+- Neither spec was modified to hide these; both are flagged for the panel/owner, not papered over.
+
+## Deviations from the manifest (all disclosed, none silent)
+
+- Seeded mode entry after globe seeding uses pushState + home-card click (GeoDetective) / direct home-card click (Cold Trail) instead of the specs' goto helpers: a reload drops the seed boot's `?idle-ms` (the 2-minute watchdog then kills the session mid-test) and restores the paused classic run instead of home. The `?loop-puzzle=218` seam itself is unchanged and still read at LoopScreen mount.
+- Seeded tests pre-seed `meridian.firstWinCelebrated = "1"` (the repo's own game-sfx/reset-history pattern) so the Parade modal does not block the seeded flow; mode-only tests do not need it.
+- Mobile GeoDetective helper accepts "Resume your case" as well as "Solve a mystery" on the second viewport iteration (the first iteration leaves an in-progress case).
+- `loop-screen-animate.test.ts` gains the new required `onEndGame` prop in its render call (construction sync only; no assertion changed).
+
 ## Pending
 
-- [ ] RED tests (unit source-pins + E2E in existing specs + mobile spec) — must fail with the predicted signatures before GREEN.
-- [ ] Minimal GREEN implementation per the manifest (mode buttons + handler + GameApp-level mode-summary branch + `showPlayAgain` prop + focus-to-Done fallback).
-- [ ] Docs: README + any doc the change touches, beginner-readable tone; code comments explain the why.
-- [ ] All 5 gates on the final tip: `npx tsc --noEmit` · `npm test && npm run test:worker` · `node scripts/lint-cards.mjs` · `npm run build:pages` · `flock ~/workspace/.e2e.lock npx playwright test --workers=1`.
 - [ ] Full panel review (12-role + DevEx) on the final tip; cure → re-vote if needed.
 - [ ] PR opened; NO MERGE (owner's explicit per-PR word only, after panel verdict).
 - [ ] Push: gh CLI is 401 on this machine (token invalid) — push/PR creation may need the owner route; if blocked, the branch + package are staged locally and the blocker is reported with evidence.

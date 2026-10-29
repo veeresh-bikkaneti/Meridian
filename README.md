@@ -71,6 +71,8 @@ https://meridian.knowledgetest.workers.dev/
 
 Solving all 387 mysteries earns the full-collection celebration.
 
+The same **End game** button sits in the GeoDetective header, next to Editions — and in Cold Trail's header, next to All games. Tapping it ends the session and shows the same session summary as a classic run (classic totals only; mystery and case play never count toward it). The mystery or case itself is untouched: tap Done to go home, then re-enter the edition and your case resumes exactly where you left it. Leaving through Editions or All games instead keeps the session alive — only End game ends it.
+
 ### The Journal
 
 The home page carries a Journal: 106 place notes rotating in 36 sets over 2-hour windows. Since 2026-10-17 every note is illustrated — each of the 106 places has its own storybook drawing (warm gouache-and-watercolor picture-book style, no text). Every note carries its source citation and a confidence label — **Verified** (government or university source) or **Cited** (named source recorded) — and the footer reads "Entry X of 36" with a countdown to the next set. Art integrates only through `scripts/journal-art-manifest.json` + the dataset generator (`scripts/build-journal-dataset.mjs`); the generated data file is never hand-edited.
