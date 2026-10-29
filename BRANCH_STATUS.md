@@ -14,7 +14,8 @@
   separate follow-on PR and are NOT in this branch.
 - **Option 1a (2026-10-29):** built on `scratch/220-option1a` (PR head
   `911fc95` + `origin/main` `3aa16b5`, merge `cb56b4a`). Builder-run
-  record below; Councilor C review PENDING. Not pushed, not merged.
+  record below; Councilor C issued a records-only CHALLENGE (F1-F4),
+  corrected in this record. Not pushed, not merged.
 
 ## Option 1a — limiter last + linear email regex (2026-10-29)
 
@@ -24,31 +25,45 @@ regex edit."
 
 Disclosure (what this PR did before 1a): to put the honeypot silent-200
 ahead of the origin gate, the PR also moved the origin gate behind the
-rate limiter. On `6abe3e6` the order was origin (403) → limiter → parse
-→ validate. On PR head `911fc95` it was limiter → parse → validate →
-honeypot → origin. So junk with a bad or missing `Origin` spent a
+rate limiter. On `6abe3e6` the order was origin (403) → body cap (413)
+→ limiter (429) → parse (400) → validate (400) → honeypot (silent 200)
+→ sink, so the origin gate ran before the limiter. On PR head `911fc95`
+it was body cap (413) → JSON parse attempt → limiter (429) → honeypot
+(silent 200) → origin (403) → parse-error/validation (400) → honeypot
+backstop → sink. So junk with a bad or missing `Origin` spent a
 sender's quota and the shared binding budget, and a sender over quota
 got a 429 instead of the honeypot's silent 200. Option 1a resolves it.
 
 What changed:
 
-- **Order** (`handleContactRequest`): honeypot (silent 200) → origin
-  gate (403) → body cap + JSON parse (400) → validation (400) →
-  honeypot backstop (silent 200) → **rate limiter (429)** → sink. The
-  limiter moved from right after JSON parse to right before
-  `selectSink(env)`. IP privacy (salted/daily-hashed keys), the 4 KB
+- **Order** (`handleContactRequest`, line numbers in
+  `contact-handler.server.ts` as of this record's commit; at `435fc1d`
+  the limiter and sink lines are 2 lower): method check (OPTIONS/405,
+  423-436) → 4 KB body cap (413, 438-441) → JSON.parse attempt (450)
+  → honeypot (silent 200, 458-461) → origin gate (403, 465-466) →
+  parse-error (400, 468) → validation (400, 469-471) → honeypot
+  backstop (silent 200, 472-478) → **rate limiter (429, 488-494)** →
+  sink (495). Because the cap runs first, a
+  filled-honeypot body over 4 KB gets 413, not the silent 200. The
+  limiter moved from right after the JSON parse attempt to right
+  before `selectSink(env)`. IP privacy (salted/daily-hashed keys), the 4 KB
   body cap, origin enforcement, honeypot silence and binding fail-open
   are unchanged.
 - **Regex** (`EMAIL_IN_TEXT`): `/(?<![^\s@<>()",;:])[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}/g`.
   The old unanchored form (added by this PR in `5c4e6c2`, not on main)
-  was quadratic on long runs with no `@`: ~15 ms for 4000 chars in
-  Node 22, ~4x per doubling. Option 1 puts that work ahead of the
-  limiter, so it needed the fix. The lookbehind only lets a match start
+  is quadratic on long runs with no `@` in Node 22 (~15 ms for 4000
+  chars, ~230 ms for 16000; ~4x per doubling). In local workerd
+  1.20261012 it ran far under 0.1 ms per call for every tested shape,
+  so production Cloudflare impact is NOT reproduced (not disproven:
+  no deployed measurement). Option 1 puts that work ahead of the
+  limiter; the edit is kept as defense-in-depth because the new regex
+  is output-identical and linear in both runtimes. The lookbehind only lets a match start
   at the start of a run of address characters, where a leftmost match
   always starts, so the matches are the same. Chair-lift scope: this
   constant and its doc comment only (Constitution rule 3, and rule 1 to
   the extent it applies). Manifest: builder-drafted, approved by the
-  owner's words above; no separate Chair signature.
+  owner's explicit words above; there is no separate Chair signature
+  beyond that approval.
 - **Counting:** only a message that would be delivered spends quota
   (in-memory 3 per sender per 10 min + 60/h global; bindings 3/60 s per
   sender, 10/60 s global). Honeypot, wrong/missing Origin, malformed
@@ -64,8 +79,9 @@ Evidence (builder-run; not self-certified):
 | Check | Result |
 |---|---|
 | RED, before code change | 5 fail as predicted: junk spends quota (429 not 403); 3 invalid then valid (429 not 200); honeypot over quota (429 not 200); binding calls on junk (3 not 0); `'a'x4000` median 15.20 ms ≥ 2 ms |
-| Equivalence vs old regex | 200k fixed-seed corpus in unit suite: 0 diffs. Scratch fuzz 2M cases (155,555 with a match): 0 diffs. Mutating the lookbehind makes both equivalence tests fail. |
-| validateContact, 4000 chars, no `@` | 14.968 ms → 0.025 ms (median) |
+| Equivalence vs old regex | 200k fixed-seed corpus in unit suite: 0 diffs. Scratch fuzz 2M cases (155,555 with a match): 0 diffs. Mutating the lookbehind makes both equivalence tests fail. Councilor C, independently: 0 diffs over 9,407,955 strings (`cc1a/equiv.txt`). |
+| validateContact, 4000 chars, no `@` (Node 22) | 14.968 ms → 0.025 ms (median; `perf1a-before.txt`, `perf1a-after.txt`) |
+| Old vs new regex in local workerd 1.20261012 (Councilor C) | old ≪ 0.1 ms per call for every tested shape; new likewise (`cc1a/workerd-abs.txt`, `cc1a/workerd-shapes.txt`) |
 | `npx tsc --noEmit` | exit 0 |
 | `npm test` | exit 0 — scripts 861 tests: 852 pass / 0 fail / 9 skipped; src 1830/1830 pass |
 | `npm run test:worker` | exit 0 — 85/85 pass |
@@ -74,9 +90,14 @@ Evidence (builder-run; not self-certified):
 | `npm run build` | exit 0 (db:migrate skipped: DATABASE_URL not set). Built SSR bundle carries the lookbehind regex unchanged. |
 | E2E: credits, grownups-privacy-contact, hydration-boot, observability (`--workers=1`, under `flock ~/workspace/.e2e.lock`) | exit 0 — 11 passed (30.3s) |
 
-Gates ran on `435fc1d`. Not measured: timing inside workerd itself.
-Workers Free allows 10 ms CPU per request (Cloudflare limits page,
-checked 2026-10-29); the old regex alone used ~15 ms in Node.
+Gates ran on `435fc1d`. The quadratic cost was measured in Node 22
+only. Councilor C's local workerd 1.20261012 run did not reproduce it,
+and no deployed Cloudflare CPU-time measurement was made, so this
+record makes no claim that production exceeds any Cloudflare CPU
+limit. The Chair-lift is kept as defense-in-depth (evidence above).
+Records corrected 2026-10-29 after Councilor C's records-only
+CHALLENGE (F1-F4): records only. No code logic or test changed; the
+only source edit is one clarified comment above the limiter block.
 
 ## Task capsule
 

@@ -477,7 +477,9 @@ export async function handleContactRequest(
     return json(200, { ok: true }, origin);
   }
   // Rate-limit LAST, just before delivery (SPEC §3.2 order: honeypot →
-  // origin → validation → rate limit → sink). Only a message that would
+  // origin → validation → rate limit → sink; the body cap and the JSON
+  // parse attempt run before all of these, and only the parse-error
+  // response comes after the origin gate). Only a message that would
   // actually be delivered spends quota, so junk (honeypot, wrong origin,
   // invalid or malformed bodies) never uses up a real sender's slots or
   // the shared global budget. The work junk gets before this point is

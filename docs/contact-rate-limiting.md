@@ -13,8 +13,12 @@ Config record: `config/cloudflare/meridian.wrangler.toml`.
 `LayeredRateLimiter` asks the in-memory layer first and the binding second.
 The first refusal wins and returns `429` with `Retry-After`.
 
-The handler takes a slot last, just before delivery (honeypot → origin →
-JSON parse → validation → rate limit → sink, issue #220). Only a message
+The handler takes a slot last, just before delivery (issue #220). The
+order is: 4 KB body cap (413) → JSON parse attempt → honeypot (silent
+200) → origin gate (403) → parse-error response (400) → validation
+(400) → honeypot backstop → rate limit (429) → sink. The parse runs
+first; only the parse-error response comes after the origin gate. A
+filled-honeypot body over 4 KB gets 413, not the silent 200. Only a message
 that would be delivered spends quota: a filled honeypot, a wrong or
 missing `Origin`, malformed JSON, or an invalid message never counts.
 
