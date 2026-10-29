@@ -1,24 +1,131 @@
-# BRANCH_STATUS — feat/challenge-mc2-package-b
+# BRANCH_STATUS — fix/220-contact-wiring
 
-- **Branch:** `feat/challenge-mc2-package-b`
-- **Base:** `origin/main` at `063de0c` (Package A, PR #282, merged + live). If the external End-game PR lands first, this branch rebases and this file resolves keeping both records accurate.
-- **State:** **BUILT — in verification.** Package B of all-editions friend challenges: (b) mid-run run-menu creation entry, (c) reveal-card creation link, (f) challenge-complete pass-along + fresh-route secondary. Owner order 2026-10-29: "Build B".
-- **Governing manifest:** `.council/manifests/2026-10-28-challenge-all-editions.md` (unchanged; the Package B note lives in `docs/feature-flags.md`, per the Package A convention).
-- **Prior record:** this file previously carried Package A's branch record; Package A merged as PR #282 at `063de0c`, and its full record lives in that PR and in git history.
-- **Interpretations recorded (narrow/safe, per the AGENTS.md ambiguity rule):**
-  1. The shipped app has no run menu; the design record's ruling (one item in the ⋯ overflow, physically separated from End game, never on the aim surface) is realized as a ⋯ popover button in the run header's chrome cluster (beside Editions / sound / contrast / map-mode), following the MapModeToggle popover pattern.
-  2. The (f) fresh secondary is added for **mc2 completions only** — the mc1 completion surface is frozen (manifest §2), following Package A's panel-approved precedent for mc1 byte-stability.
-  3. E2E on this VM runs Playwright's bundled chromium-1243 via `PLAYWRIGHT_CHROMIUM_EXECUTABLE` (a config-supported override): /opt/meta-chromium currently refuses headless launch ("Hatch WebGL domain policy is required for browser startup").
-- **What shipped on this branch:**
-  - Labels as code in `src/game/challenge.ts` (Package A's pattern): `challengeMidRunLabel`, `challengeRevealLabel`, `challengeFreshRouteLabel`, `CHALLENGE_UNLOCK_HINT` — unit-tested byte-exact against the manifest's words, plus widening-chain shape tests ((b) chain is seen-included; (f) the route is never its own deal source).
-  - (b) Run-menu button + single item in the PlayLoaded header cluster; opens a local preview sheet carrying the picker sheet's copy. The button is not rendered when the flag is off, the run is a challenge or review run, or no source can deal five; the flag is re-read at tap time (click-atomic). Creation is a pure read — the live run, dealer, and question never move.
-  - (c) ResultCard gains an optional `challengeOffer` footer: text link below Next place + the non-interactive unlock hint, rendered through BoundedText with the registered `result-note` class (card-gate clean).
-  - (f) ChallengeComplete: mc2 completions gain the fresh-route secondary, dealt from the completed route's region catalog (Play's challenge load branch now keeps the full catalog and passes it down as `challengeCatalog`); sources built with no runPoolIds, so the route itself is never the deal source. The Package A pass-along (origin format + pinned radius) is untouched, and so is the mc1 completion surface.
-  - Docs: `docs/feature-flags.md` Package B paragraph; README friend-challenge row.
-- **Gates (log-verified):** see the cure-round entry below for the current tip. On `c0c6d9f` the combined E2E was **26 passed / 0 failed, exit 0** (Package B spec 5/5; regression 21/21). Benchmark vs main: entry chunk identical size (445,738 B), total JS +5,158 B (+0.015%), no new deps.
-- **Correction of record:** an earlier combined E2E run's result was misreported from a crossed background-process record ("33 passed"); the run's own log showed 10 passed / 11 failed with browsers killed mid-run during this VM's process cleanup (contaminated, not a code signal), and a first clean re-run showed 25/26 with the single failure being this spec's own locator bug (below). The 26/0 run above is the verified result; all figures in the PR body are from log files.
-- **Panel round 1 (on `e474fce`) — COMPLETE: 11 approve-family, 2 BLOCK.** APPROVE: Narrative (labels byte-verified), Economy (zero economy delta, traced). APPROVE-WITH-NITS / PASS-WITH-NITS: Game Designer, Game Developer, Game Audio, Level Architect, Senior Architect, Senior Developer, UX Designer, Office Hours, DevEx. BLOCK: UX Researcher + Frontend, converging on the reveal link's light-theme contrast (measured 3.6–3.96:1 vs the 4.5:1 floor); Frontend additionally BLOCKED on the run-menu popover spilling ~151px off a 390px viewport.
-- **Cure round (on top of `e474fce`):** `a0b11d9` test-only locator scoping · `c0c6d9f` wrapper `pointer-events-auto` parity · `09c61c0` status record · `b0d7f8f` the BLOCK cures + verified nits: link uses `--atlas-brass-text-sm` (8.74:1 dark / 7.08:1 light) with a resting underline; popover right-anchored (cluster right edge ~297px at any width — panel always fits; 390px E2E pins it); run menu aim-phase only (§1(b)'s literal phase; also closes the menu-survives-phase nit); creation entry plays the cartographer's tap (Package A precedent); Globe tier-split comment corrected; chain-shape test pins the helper's duplicated band step; README "any" dropped. Recorded-not-cured, with the seats' own concurrence: (f) render-gating mirrors Package A's shipped pass-along and flags are boot-authoritative (no reachable in-session flip); sheet markup triplication is debt (extraction would refactor shipped A surfaces); (f) secondary is deterministic by design (run-seed deal).
-- **Gates on the cured tip (`b0d7f8f`):** tsc clean · unit 1814/1814 · worker 85/85 · lint-cards GATE PASSED · build green · E2E combined 25/27 with the 2 failures (both in `commitPin`'s map-tap path in pre-existing specs, surfaces untouched by the cures) passing 3/3 on sequential re-run — VM contention flake per the standing rule; all 27 tests green across the two log-verified runs, including the new 390px popover test.
-- **Panel re-vote (on the cured tip `5fc97eb`) — COMPLETE: 13/13 approve-family, zero BLOCKs. READY, awaiting the owner's merge word.** APPROVE: Frontend (BLOCK withdrawn — both cures verified geometrically), Economy, Narrative (copy SHA-verified byte-identical), Game Audio, Level Architect. APPROVE-WITH-NITS: Game Designer, Game Developer, Senior Architect, Senior Developer, UX Researcher (BLOCK withdrawn — ratios re-measured 8.74:1 dark / 7.08:1 light+paper across themes), UX Designer, Office Hours (self-ran unit: 1814/1814; verified the (f) flag-off state is unreachable by design at boot). DevEx: PASS. This commit is the record of that vote — docs-only, no code delta from the voted tip.
-- **Follow-ups recorded (none blocking, per the seats' own classifications):** (1) `runMenuOpen` is render-gated to aim but not state-cleared on leaving aim — an opened menu can reappear unprompted on the next round's aim (4 seats; one-line cure: clear on any `phase !== "aim"`); (2) focus-return/focus-trap debt across the run menu + all three preview sheets (UX Researcher; MapModeToggle's `close()` is the ready-made pattern — note it DOES return focus, correcting the parity framing used in the cure round); (3) preview-sheet markup exists in three copies — extraction is its own scoped PR; (4) a Package A comment in `ChallengeComplete` ("a flag flipped off mid-challenge drops the share") overstates reachability — flags are boot-authoritative; (5) real-device verification remains `[unverified — real device pending]` (share sheets, in-app browsers, screen-reader focus behaviour, kid discovery of the new entries).
+- **Branch:** `fix/220-contact-wiring`
+- **Base:** `origin/main` at `6abe3e6` (Package B, PR #283, merged).
+- **Prior record:** this file previously carried the Package B branch
+  record; that work merged as PR #283 and its full record lives in that
+  PR and in git history.
+- **State:** **BUILDING.** Issue #220: wire the Contact Us form's
+  delivery (root `wrangler.jsonc` bindings) and make the page honest
+  about delivery — SPEC §3 + §4 of
+  `~/workspace/meridian-contact-activation/SPEC.md`. Animations are a
+  separate follow-on PR and are NOT in this branch.
+
+## Task capsule
+
+```text
+TASK / requested outcome:
+  Implement SPEC §3 (wiring) + §4 (honesty states). When this branch is
+  done it is green (typecheck + unit suite + build + contact E2E) and
+  pushed, ready for the review pipeline. No merge, no deploy.
+
+Interpretations considered and selected reading:
+  - Env route: the SPEC §3.1 "pick one" is settled by the owner's
+    2026-10-21 ruling — read the secret from the Worker runtime bindings
+    (cloudflare:workers env / globalThis.__env__), with process.env ONLY
+    as a local-dev fallback. nodejs_compat is NOT added.
+  - Handler order: the mandated move is honeypot silent-200 BEFORE the
+    origin gate (SPEC §3.2, §10.1, §12 all pin exactly that). The
+    existing anti-flood rate limiter keeps its position ahead of the
+    honeypot check: SPEC §3.2's prose lists rate limits later in the
+    pipeline, but the verdictable surfaces (§10.1 tests, §12 checklist)
+    pin only honeypot-vs-origin, and moving the limiter would change
+    the counted-request arithmetic the full-stack E2E verifies (the
+    honeypot submission is a counted request today). Flagged here so
+    the panel can challenge the reading with full information.
+  - Thank-you copy: §5's new copy arrives with the animation PR. This
+    PR keeps the existing thank-you wording and only gates WHEN it
+    shows (stored:true), per the two-track dispatch (wiring+honesty
+    first, animations second).
+
+Tier and rationale:
+  Tier 2 surface (security/privacy, 3+ files), built under the
+  owner-approved SPEC as the design of record plus the owner's
+  2026-10-21 env-route ruling. Full review pipeline still gates the PR;
+  merge only on the owner's word.
+
+Done condition / scenarios / evidence:
+  - Root wrangler.jsonc declares the CONTACT_DISCORD_WEBHOOK_URL secret
+    (secrets.required, name only) + both ratelimits (72071 @ 3/60s,
+    72072 @ 10/60s); comments describe the wired state.
+  - Runtime env wins over process.env in readContactEnv /
+    readContactRuntimeEnv; crash-secret isolation preserved.
+  - Honeypot filled + bad/missing Origin -> silent 200; empty honeypot
+    + bad origin -> 403.
+  - Message text has emails + phone numbers stripped before delivery
+    (kids' safeguard); replyTo is NOT stripped (it is the reply path).
+  - Page: thank-you + draft clear ONLY on stored:true; stored:false
+    shows the honest not-delivered state (existing not-configured copy)
+    and preserves the draft verbatim.
+  - Gates: npx tsc --noEmit, npm test, node scripts/lint-cards.mjs,
+    npm run build + build:pages, contact E2E under the shared lock.
+
+Files and interfaces in scope:
+  wrangler.jsonc; src/lib/contact/contact-handler.server.ts (+ tests);
+  src/lib/contact/contact-form.ts (+ tests); src/routes/contact.tsx;
+  src/lib/contact/rate-limiter.server.ts (one stale comment line);
+  src/routes/privacy.tsx (header comment only — body copy checked,
+  see Notes); tests/e2e/grownups-privacy-contact.desktop.spec.ts
+  (Part 4b honesty expectations); README.md (contact paragraph);
+  BRANCH_STATUS.md.
+  Out of scope: config/cloudflare/meridian.wrangler.toml (record only,
+  no build reads it), workers/ (crash worker untouched), animations,
+  flags.json, any secret value.
+
+Verification contract (gates + isolation needs):
+  AGENTS.md quality gates; E2E sequentially under flock
+  ~/workspace/.e2e.lock against the built artifact.
+
+Assumptions, risks, unknowns:
+  - secrets.required is wrangler's config-level declaration of a secret
+    binding by name (verified against wrangler 4.152.0's bundled
+    config-schema.json). Whether a Builds deploy then preserves the
+    dashboard-set value is exactly what SPEC §3.4 verifies post-merge;
+    this PR cannot prove it from code.
+
+Approvals needed (exact action + owner), checker, escalation:
+  - OWNER STEP after merge + deploy (SPEC §3.3): Veeresh re-sets
+    CONTACT_DISCORD_WEBHOOK_URL as an encrypted runtime secret on the
+    meridian worker, then §3.4 verification runs (probe -> stored:true,
+    message eyeballed in Discord, real-form submission, re-deploy
+    probe). Until then the form correctly shows the honest
+    not-delivered state instead of the old false thank-you.
+  - Checker: the standing review panel on the final tip (not the
+    builder).
+```
+
+## Status
+
+- [x] Baseline: contact unit tests green on origin/main (43/43).
+- [ ] wrangler.jsonc — secret declaration + ratelimits + comments.
+- [ ] Handler — env precedence (runtime bindings first).
+- [ ] Handler — honeypot before origin gate.
+- [ ] Handler — email/phone stripping in message text + tests.
+- [ ] Page — honesty states + draft preservation (+ sendOutcome helper).
+- [ ] E2E — Part 4b updated to the honesty contract.
+- [ ] Docs — README contact paragraph; privacy header comment;
+      rate-limiter comment line.
+- [ ] Gates — tsc / npm test / lint-cards / builds / contact E2E.
+- [ ] Pushed to origin.
+
+## Notes for the panel
+
+- The existing unit test "readContactEnv and readContactRuntimeEnv read
+  from process.env and globalThis.__env__ (process.env wins)" pinned the
+  OLD precedence. The owner's 2026-10-21 ruling reverses it (runtime
+  bindings first, process.env = local-dev fallback), so that test's
+  expectations and title were updated to the new contract — a mandated
+  behavior change, not a weakening: both sources are still exercised,
+  and a new test asserts the bindings-route value is the one that wires
+  the sink.
+- Privacy page (§11 check): the BODY copy already describes the wired
+  state ("Discord receives the message…", retention, server keeps
+  nothing) and matches post-fix reality — no body change. Two flags:
+  (1) its header comment still described delivery as PARKED/future
+  tense — comment updated for consistency, body untouched; (2) the body
+  says the server "hands on" the message without mentioning that emails
+  and phone numbers typed into the message are stripped first — the
+  stripping only removes data, so no promise is broken, but the owner
+  may want a sentence about it in a later copy pass.
+- security.txt (SPEC §9): this fix is what closes the dead-end; the
+  file itself is unchanged, per spec.
