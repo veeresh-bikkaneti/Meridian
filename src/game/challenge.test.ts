@@ -350,7 +350,7 @@ test("mc2 seed covers ids, region, and radius (the constructible seed-only failu
   assert.deepEqual(decodeChallenge2(mc2Fragment(idsMutated), 3), { ok: false, reason: "format" });
   // region mutated to an equal-radius region (Delaware is also 25), seed stale
   const ri = mc2Payload({ r: "rhode-island", rad: 25 });
-  const regionMutated = { ...ri, r: "delaware" };
+  const regionMutated: Record<string, unknown> = { ...ri, r: "delaware" };
   assert.equal(regionMutated.seed, ri.seed);
   assert.deepEqual(decodeChallenge2(mc2Fragment(regionMutated), 3), { ok: false, reason: "format" });
   // radius mutated inside tolerance, seed stale

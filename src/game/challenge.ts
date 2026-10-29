@@ -519,7 +519,8 @@ export function decodeChallengeLink(
   fragment: unknown,
   expectedScoringVersion: number,
 ): ChallengeLinkResult {
-  if (typeof fragment === "string" && fragment.startsWith(CHALLENGE_MC2_PREFIX)) {
+  if (typeof fragment !== "string") return { ok: false, reason: "format" };
+  if (fragment.startsWith(CHALLENGE_MC2_PREFIX)) {
     const decoded = decodeChallenge2(fragment, expectedScoringVersion);
     if (!decoded.ok) return decoded;
     const region = findRegion(decoded.e, decoded.r);
@@ -733,3 +734,8 @@ export function createChallengeRoute(input: {
   }
   return null;
 }
+
+/** Failure class 1 detail (manifest C12): the link itself is broken —
+ * mistyped, truncated, tampered with, or minted under another scoring
+ * version. The fix is a fresh link from the friend, so say exactly that. */
+export const CHALLENGE_BROKEN_LINK_COPY = "Ask your friend to send the link again.";

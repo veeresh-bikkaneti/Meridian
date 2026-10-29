@@ -42,6 +42,7 @@ export type ResetHistoryResult = {
 };
 
 const RUN_KEY = "meridian.run";
+const RUN_MC2_KEY = "meridian.run.mc2";
 const DROP_KEY = "meridian.drop";
 
 function resolveLocal(explicit?: ResetStorage): ResetStorage | undefined {
@@ -71,7 +72,7 @@ function resolveSession(explicit?: ResetStorage): ResetStorage | undefined {
 function clearPausedRun(session: ResetStorage | undefined): boolean {
   if (!session) return true; // No storage = nothing was ever persisted.
   let ok = true;
-  for (const key of [RUN_KEY, DROP_KEY]) {
+  for (const key of [RUN_KEY, RUN_MC2_KEY, DROP_KEY]) {
     try {
       session.removeItem(key);
     } catch {
