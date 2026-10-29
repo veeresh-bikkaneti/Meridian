@@ -23,6 +23,15 @@ Owner decision, verbatim (Veeresh, 2026-10-29 2:46 PM CT): "Build 1a:
 Option 1 plus the linear email regex. I approve the Chair-lift for the
 regex edit."
 
+Owner reconfirmation, verbatim (Veeresh, 2026-10-29 3:18 PM CT; reply
+"A"), given after being told the regex slowdown trigger is verified in
+Node 22 only (production Cloudflare impact not reproduced): "Keep the
+regex edit as defense-in-depth. I reconfirm the Chair-lift knowing the
+slowdown was verified in Node 22 only." Open question on lift validity
+(AGENTS.md:169: "If the trigger is not verified in the manifest, the
+lift is void: stop and ask the owner"): RESOLVED by the owner with the
+reconfirmation above.
+
 Disclosure (what this PR did before 1a): to put the honeypot silent-200
 ahead of the origin gate, the PR also moved the origin gate behind the
 rate limiter. On `6abe3e6` the order was origin (403) → body cap (413)
@@ -63,7 +72,8 @@ What changed:
   constant and its doc comment only (Constitution rule 3, and rule 1 to
   the extent it applies). Manifest: builder-drafted, approved by the
   owner's explicit words above; there is no separate Chair signature
-  beyond that approval.
+  beyond that approval, reconfirmed by the owner on 2026-10-29
+  3:18 PM CT (see above; lift-validity question RESOLVED by the owner).
 - **Counting:** only a message that would be delivered spends quota
   (in-memory 3 per sender per 10 min + 60/h global; bindings 3/60 s per
   sender, 10/60 s global). Honeypot, wrong/missing Origin, malformed
@@ -90,7 +100,11 @@ Evidence (builder-run; not self-certified):
 | `npm run build` | exit 0 (db:migrate skipped: DATABASE_URL not set). Built SSR bundle carries the lookbehind regex unchanged. |
 | E2E: credits, grownups-privacy-contact, hydration-boot, observability (`--workers=1`, under `flock ~/workspace/.e2e.lock`) | exit 0 — 11 passed (30.3s) |
 
-Gates ran on `435fc1d`. The quadratic cost was measured in Node 22
+Gates ran on `435fc1d`; re-run green on `a118a49`
+(`/workspace/v220/gates1a-r2/`): tsc exit 0; npm test scripts 852 pass
+/ 0 fail / 9 skipped, src 1830/1830; test:worker 85/85; lint-cards
+GATE PASSED; build:pages and build exit 0; E2E 4 CI specs 11 passed
+(30.6s). The quadratic cost was measured in Node 22
 only. Councilor C's local workerd 1.20261012 run did not reproduce it,
 and no deployed Cloudflare CPU-time measurement was made, so this
 record makes no claim that production exceeds any Cloudflare CPU
