@@ -171,3 +171,28 @@ build's Globe catalog does not have, or the catalog itself failing to
 load — shows the child-facing notice "Could not load this challenge." and
 then falls through to that same saved-run boot, so a saved run still
 resumes underneath the notice. Nothing partial is ever dealt.
+
+**mc2 links (2026-10-28, Package A).** Challenges grew from Globe-only to
+every quiz edition. The original `mc1` format is frozen — links already
+sitting in family chats must decode forever — so a second format carries
+the new routes: `#c=mc2.` links name an edition, a region, and the route's
+own hit/miss radius in whole kilometres (Globe 750; a state gets 12% of its
+greater side, clamped 25–160 km; a country 40–450 km). A receiver's build
+honours the pinned radius only when it sits within ±10% of the radius that
+build computes for the same region, so a hand-edited circle cannot rig the
+game. Creating a challenge: the Home screen's "Challenge a friend" button
+deals a fresh five from the region you pick, and the end-of-run summary
+offers the route you just played ("Play my route") plus a fresh route in
+the same region. Receiving one shows a welcome card first — your game in
+progress is only set aside when you tap Start, and it is offered back when
+the challenge ends. mc2 runs are saved under their own storage key
+(`meridian.run.mc2`), which older builds never read, and they are every
+bit as isolated as mc1 runs: no session banking, no learning records, no
+review deck, no seen history. Failures explain themselves in plain words
+under the same "Could not load this challenge." headline — ask your friend
+to send the link again (broken link), a place or region this version of
+Meridian doesn't know yet (the sender's build is newer), or check your
+connection and tap the link again (a region file failed to load). With the
+flag off, a saved mc2 challenge is cleared on boot and the ordinary saved
+run — never collateral — boots as usual. GeoDetective and Cold Trail do
+not take part: their mysteries are solo investigations.

@@ -455,7 +455,8 @@ in plain words before anything is deleted.
   `meridian.coldtrail.v1`, `meridian.coldtrail.open`);
 - today's session — the banked score — and any paused run and
   current-place drop (`meridian.session`, `meridian.run`,
-  `meridian.drop`, all sessionStorage). A paused run's stored
+  `meridian.run.mc2` — the mc2 challenge slot, cleared in the same
+  paused-run step — and `meridian.drop`, all sessionStorage). A paused run's stored
   results would otherwise re-seed the cleared session the next
   time its edition opens, quietly un-resetting the score.
 
