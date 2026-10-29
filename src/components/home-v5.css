@@ -1035,10 +1035,12 @@ body:has(.home-v5) {
 }
 /* Review exception: .hv5-spot .hv5-txt is position:relative; z-index:1
    (so text sits above the spot art), which would otherwise swallow taps
-   on the heading/paragraph before they reach the stretch layer. Review
-   has no inner controls besides the CTA, so its stretch layer may sit
-   above the text; the cue stays visible through the transparent layer
-   and remains click-through. */
+   on the heading/paragraph before they reach the stretch layer. The
+   Review card DOES have inner controls — the reset opener (PR #281)
+   and the challenge opener (PR #285) — and they sit above this layer
+   at z-index:3 (see their rules below); the stretch layer sits above
+   the text only, so heading/paragraph taps still start the review and
+   the cue stays visible through the transparent layer. */
 .home-v5 .hv5-review-due .hv5-stretch::after {
   z-index: 2;
 }
@@ -1096,8 +1098,11 @@ body:has(.home-v5) {
 
 /* C — Review: due card gets the gold outline (mockup) and the REVIEW →
    cue pill; the cue is decorative and click-through so taps still hit
-   the stretched CTA beneath it. Empty/caught-up cards render no button
-   and no cue, are not focusable, and mute the heading. */
+   the stretched CTA beneath it. The empty card renders no controls at
+   all. The caught-up card renders no CTA and no cue, is not focusable
+   as a card, and mutes the heading — but the reset and challenge
+   openers still render there: they are deck-level actions, not run
+   actions, so they live in both deck states. */
 .home-v5 .hv5-review-due {
   outline: 3px solid var(--hv5-brass);
   outline-offset: 0;
@@ -1160,6 +1165,10 @@ body:has(.home-v5) {
 .reset-history-open:focus-visible {
   color: var(--hv5-ink, #33302a);
 }
+.reset-history-open:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep, #77591f);
+  outline-offset: 2px;
+}
 
 /* The Review card's challenge opener (manifest §1(e), 2026-10-28): a
    second, independent control sharing the card with the reset opener
@@ -1191,10 +1200,6 @@ body:has(.home-v5) {
 .review-challenge-open:hover,
 .review-challenge-open:focus-visible {
   color: var(--hv5-ink, #33302a);
-}
-.reset-history-open:focus-visible {
-  outline: 3px solid var(--hv5-brown-deep, #77591f);
-  outline-offset: 2px;
 }
 
 /* F7 — forced colors: the two-tone ring, the due outline, and the
