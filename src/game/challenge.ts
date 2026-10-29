@@ -58,6 +58,14 @@ export const CHALLENGE_GLOBE_RADIUS_KM = 750;
 export const CHALLENGE_MIN_PLACES = 5;
 export const CHALLENGE_MAX_PLACES = 10;
 export const CHALLENGE_SHARE_LABEL = "Share this route with a friend";
+/** The summary exact primary's label (manifest §1(d)): one verb for
+ * every share surface — "Challenge a friend" — with the route kind
+ * named after it. Applies in every edition, Globe included. */
+export const CHALLENGE_EXACT_SHARE_LABEL = "Challenge a friend — play my route";
+/** The completion re-share's label (manifest §1(f)): the receiver
+ * passes the route along in its origin format. mc1 completions keep
+ * CHALLENGE_SHARE_LABEL — that surface is frozen. */
+export const CHALLENGE_RESHARE_LABEL = "Pass this challenge to a friend";
 
 const PREFIX = "#c=mc1.";
 const ID_RE = /^gn-[0-9]+$/;
@@ -79,6 +87,10 @@ export type ChallengeFail = {
 };
 
 /**
+ * (This header describes the mc1 format. The mc2 all-editions format
+ * lives further down this file — search "mc2" — behind the same `#c=`
+ * catch-all, with its own strict decoder.)
+ *
  * The seed: an FNV-1a hash (a tiny, well-known non-cryptographic hash)
  * of the ids joined with commas. Its job is INTEGRITY, not security —
  * it catches a link that was truncated, mistyped, or casually edited,
@@ -88,14 +100,18 @@ export type ChallengeFail = {
  * receiver play a different set of real Globe places, nothing more —
  * but never reuse this seed as a trust check for anything that matters.
  */
-function fnv1a(ids: readonly string[]): number {
+/** FNV-1a over arbitrary text (the mc2 seal hashes a canonical string). */
+function fnv1aText(text: string): number {
   let h = 2166136261;
-  const joined = ids.join(",");
-  for (let i = 0; i < joined.length; i++) {
-    h ^= joined.charCodeAt(i);
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
     h = Math.imul(h, 16777619);
   }
   return h >>> 0;
+}
+
+function fnv1a(ids: readonly string[]): number {
+  return fnv1aText(ids.join(","));
 }
 
 function legalIds(ids: readonly string[]): boolean {
@@ -241,3 +257,522 @@ export function dealChallenge(
   ranked.sort((a, b) => b.key - a.key || a.index - b.index);
   return ranked.slice(0, count).map((row) => row.id);
 }
+
+// ============================================================================
+// mc2 — all-editions challenges (manifest 2026-10-28, Package A).
+//
+// mc1 above is FROZEN: it stays byte-identical because family chats are
+// full of mc1 links that must decode forever. mc2 is the versioned
+// successor that can name any edition and region and pin a radius:
+//
+//   #c=mc2.<base64url(canonical JSON)>
+//   keys, exactly: { v, e, r, rad, s, ids, seed }
+//     v    format version, 2
+//     e    edition: "globe" | "country" | "state"
+//     r    region slug inside that edition ("globe" for the globe)
+//     rad  hit/miss radius in whole kilometres, pinned by the sender
+//     s    scoring version the route was minted under
+//     ids  5–10 place ids, in play order
+//     seed FNV-1a over a canonical string covering v+e+r+rad+s+ids, so
+//          swapping a place, a region, or the circle breaks the seal
+//
+// Layers, each fail-closed: the strict per-version decoders (this file),
+// the radius binding (a pinned radius is honoured only near the radius
+// THIS build computes for the named region — see decodeChallenge2), the
+// pure receive seam (resolveChallengeRoute: decode, then membership in
+// the named region's own catalog), and only then the app boot.
+// ============================================================================
+
+import { findRegion } from "./regions.ts";
+import { regionRadiusKm } from "./radius.ts";
+import { asFameTier, filterByTier, type PickerDifficulty } from "./tier-filter.ts";
+import type { Edition } from "./run.ts";
+
+export const CHALLENGE_MC2_PREFIX = "#c=mc2.";
+const MC2_KEYS: readonly string[] = ["v", "e", "r", "rad", "s", "ids", "seed"];
+
+/** Locked fairness line (manifest C10) — shown on the welcome card and
+ * the creation preview so both kids know the deal before anyone plays. */
+export const CHALLENGE_FAIRNESS_COPY = "Same places, same circle for everyone.";
+/** Welcome-card title for an mc2 receive (Package A, decision D1). */
+export const CHALLENGE_WELCOME_TITLE = "A challenge from a friend!";
+/** Failure class 3 (manifest C12): the link was fine but a region chunk
+ * failed to load, so membership could not be checked. */
+export const CHALLENGE_LOAD_FAILURE_COPY = "Check your connection and tap the link again.";
+/** Failure class 2, place arm (manifest C12): a named place is unknown
+ * to this build (app older than the sender's, or an id from elsewhere). */
+export const CHALLENGE_UNKNOWN_CONTENT_COPY =
+  "This route visits a place this version of Meridian doesn't know yet.";
+/** Failure class 2, region arm (manifest C12): the region itself is
+ * unknown to this build. */
+export const CHALLENGE_UNKNOWN_REGION_COPY =
+  "This challenge is for a part of the world this version of Meridian doesn't have yet.";
+
+/** Every way an mc2 (or dispatched) link can fail, in gate order. */
+export type ChallengeFailReason =
+  | "format"
+  | "version"
+  | "scoring"
+  | "edition"
+  | "region"
+  | "radius"
+  | "tooBig";
+
+export interface DecodedChallenge2 {
+  ok: true;
+  v: 2;
+  e: Edition;
+  r: string;
+  rad: number;
+  s: number;
+  ids: string[];
+  seed: number;
+}
+
+export type ChallengeDecode2 = DecodedChallenge2 | { ok: false; reason: ChallengeFailReason };
+
+/** The canonical string the mc2 seed seals. Version-tagged so a future
+ * format can never collide with this one's seals. */
+function mc2Canonical(e: string, r: string, rad: number, s: number, ids: readonly string[]): string {
+  return `mc2|2|${e}|${r}|${rad}|${s}|${ids.join(",")}`;
+}
+
+function mc2Seed(e: string, r: string, rad: number, s: number, ids: readonly string[]): number {
+  return fnv1aText(mc2Canonical(e, r, rad, s, ids));
+}
+
+function isEdition(value: string): value is Edition {
+  return value === "globe" || value === "country" || value === "state";
+}
+
+/** The (edition, region) pair must name a region this build knows. */
+function legalRegionPair(e: Edition, r: string): boolean {
+  return findRegion(e, r) !== null;
+}
+
+/** Coarse radius sanity per edition; mirrors the RADIUS_LIMITS clamps in
+ * radius.ts. The binding check in decodeChallenge2 is the precise one. */
+const MC2_RADIUS_ENVELOPE: Record<Exclude<Edition, "globe">, { minKm: number; maxKm: number }> = {
+  state: { minKm: 25, maxKm: 160 },
+  country: { minKm: 40, maxKm: 450 },
+};
+
+/** A pinned radius is honoured within this share of the computed one. */
+const MC2_RADIUS_TOLERANCE = 0.1;
+
+interface Mc2Payload {
+  v: number;
+  e: string;
+  r: string;
+  rad: number;
+  s: number;
+  ids: string[];
+  seed: number;
+}
+
+function parseMc2Payload(fragment: string): Mc2Payload | { reason: ChallengeFailReason } {
+  const decodedUtf8 = fromBase64Url(fragment.slice(CHALLENGE_MC2_PREFIX.length));
+  if (decodedUtf8 === null) return { reason: "format" };
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(decodedUtf8);
+  } catch {
+    return { reason: "format" };
+  }
+  if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) {
+    return { reason: "format" };
+  }
+  const obj = parsed as Record<string, unknown>;
+  const keys = Object.keys(obj);
+  if (keys.length !== MC2_KEYS.length || MC2_KEYS.some((key) => !Object.hasOwn(obj, key))) {
+    return { reason: "format" };
+  }
+  const { v, e, r, rad, s, ids, seed } = obj;
+  if (
+    typeof v !== "number" ||
+    typeof e !== "string" ||
+    typeof r !== "string" ||
+    typeof rad !== "number" ||
+    !Number.isFinite(rad) ||
+    typeof s !== "number" ||
+    typeof seed !== "number"
+  ) {
+    return { reason: "format" };
+  }
+  if (!Array.isArray(ids) || ids.some((id) => typeof id !== "string") || !legalIds(ids as string[])) {
+    return { reason: "format" };
+  }
+  return { v, e, r, rad, s, ids: [...(ids as string[])], seed };
+}
+
+/**
+ * Mint an mc2 challenge fragment. Throws on illegal input (mirroring
+ * encodeChallenge's discipline): TypeError for bad ids, an unknown
+ * (edition, region) pair, or a radius the format cannot pin; RangeError
+ * for a non-positive-integer scoring version.
+ */
+export function encodeChallenge2(
+  input: { edition: Edition; regionId: string; radiusKm: number; ids: readonly string[] },
+  scoringVersion: number,
+): string {
+  if (!Number.isInteger(scoringVersion) || scoringVersion <= 0) {
+    throw new RangeError("encodeChallenge2: scoringVersion must be a positive integer");
+  }
+  if (!legalRegionPair(input.edition, input.regionId)) {
+    throw new TypeError(
+      `encodeChallenge2: unknown region ${input.edition}/${input.regionId}`,
+    );
+  }
+  if (!Number.isInteger(input.radiusKm) || input.radiusKm <= 0) {
+    throw new TypeError("encodeChallenge2: radiusKm must be a positive whole number of kilometres");
+  }
+  if (input.edition === "globe" && input.radiusKm !== CHALLENGE_GLOBE_RADIUS_KM) {
+    throw new TypeError("encodeChallenge2: the globe radius is always 750 km");
+  }
+  if (input.edition !== "globe") {
+    const envelope = MC2_RADIUS_ENVELOPE[input.edition];
+    if (input.radiusKm < envelope.minKm || input.radiusKm > envelope.maxKm) {
+      throw new TypeError("encodeChallenge2: radiusKm is outside the edition envelope");
+    }
+  }
+  if (!legalIds(input.ids)) {
+    throw new TypeError("encodeChallenge2: ids must be 5-10 unique gn-<number> ids");
+  }
+  const payload = {
+    v: 2,
+    e: input.edition,
+    r: input.regionId,
+    rad: input.radiusKm,
+    s: scoringVersion,
+    ids: [...input.ids],
+    seed: mc2Seed(input.edition, input.regionId, input.radiusKm, scoringVersion, input.ids),
+  };
+  return CHALLENGE_MC2_PREFIX + toBase64Url(JSON.stringify(payload));
+}
+
+/**
+ * Strictly decode an mc2 fragment. Gate order: length → prefix → shape
+ * → version → edition → region → scoring → radius → seed. The radius
+ * gate binds the pinned radius to the one THIS build computes for the
+ * named region: exact for the globe, within ±10% otherwise, and always
+ * inside the edition envelope. That binding is what makes a received
+ * route a fair contest — the sender's circle is a claim, and the
+ * receiver's own map data is the referee.
+ */
+export function decodeChallenge2(
+  fragment: unknown,
+  expectedScoringVersion: number,
+): ChallengeDecode2 {
+  if (typeof fragment === "string" && fragment.length > 2000) {
+    return { ok: false, reason: "tooBig" };
+  }
+  if (typeof fragment !== "string" || !fragment.startsWith(CHALLENGE_MC2_PREFIX)) {
+    return { ok: false, reason: "format" };
+  }
+  const payload = parseMc2Payload(fragment);
+  if ("reason" in payload) return { ok: false, reason: payload.reason };
+  if (payload.v !== 2) return { ok: false, reason: "version" };
+  if (!isEdition(payload.e)) return { ok: false, reason: "edition" };
+  const edition = payload.e;
+  if (!legalRegionPair(edition, payload.r)) return { ok: false, reason: "region" };
+  if (payload.s !== expectedScoringVersion) return { ok: false, reason: "scoring" };
+  const computed = regionRadiusKm(edition, payload.r);
+  if (computed === null || !Number.isInteger(payload.rad)) {
+    return { ok: false, reason: "radius" };
+  }
+  if (edition === "globe") {
+    if (payload.rad !== CHALLENGE_GLOBE_RADIUS_KM) return { ok: false, reason: "radius" };
+  } else {
+    const envelope = MC2_RADIUS_ENVELOPE[edition];
+    if (payload.rad < envelope.minKm || payload.rad > envelope.maxKm) {
+      return { ok: false, reason: "radius" };
+    }
+    if (Math.abs(payload.rad - computed) > computed * MC2_RADIUS_TOLERANCE) {
+      return { ok: false, reason: "radius" };
+    }
+  }
+  if (payload.seed !== mc2Seed(edition, payload.r, payload.rad, payload.s, payload.ids)) {
+    return { ok: false, reason: "format" };
+  }
+  return {
+    ok: true,
+    v: 2,
+    e: edition,
+    r: payload.r,
+    rad: payload.rad,
+    s: payload.s,
+    ids: [...payload.ids],
+    seed: payload.seed,
+  };
+}
+
+/** A decoded link, normalized so the app never branches on wire format. */
+export interface ChallengeRoute {
+  edition: Edition;
+  regionId: string;
+  regionName: string;
+  radiusKm: number;
+  ids: string[];
+  originFormat: "mc1" | "mc2";
+}
+
+export type ChallengeLinkResult =
+  | { ok: true; route: ChallengeRoute }
+  | { ok: false; reason: ChallengeFailReason };
+
+/**
+ * The version dispatcher behind the shipped `#c=` catch-all: mc2
+ * fragments go to the strict mc2 decoder; everything else goes to the
+ * frozen mc1 decoder, whose failure reasons are a subset of
+ * ChallengeFailReason. Unknown future versions fail closed as "format"
+ * (the mc1 decoder rejects their prefix), never as a partial decode.
+ */
+export function decodeChallengeLink(
+  fragment: unknown,
+  expectedScoringVersion: number,
+): ChallengeLinkResult {
+  if (typeof fragment !== "string") return { ok: false, reason: "format" };
+  if (fragment.startsWith(CHALLENGE_MC2_PREFIX)) {
+    const decoded = decodeChallenge2(fragment, expectedScoringVersion);
+    if (!decoded.ok) return decoded;
+    const region = findRegion(decoded.e, decoded.r);
+    if (!region) return { ok: false, reason: "region" };
+    return {
+      ok: true,
+      route: {
+        edition: decoded.e,
+        regionId: decoded.r,
+        regionName: region.name,
+        radiusKm: decoded.rad,
+        ids: [...decoded.ids],
+        originFormat: "mc2",
+      },
+    };
+  }
+  const decoded = decodeChallenge(fragment, expectedScoringVersion);
+  if (!decoded.ok) return { ok: false, reason: decoded.reason };
+  return {
+    ok: true,
+    route: {
+      edition: "globe",
+      regionId: "globe",
+      regionName: "Globe",
+      radiusKm: CHALLENGE_GLOBE_RADIUS_KM,
+      ids: [...decoded.ids],
+      originFormat: "mc1",
+    },
+  };
+}
+
+/**
+ * The pure receive seam (manifest §2, contract 3): decode the link, then
+ * check that EVERY id is a member of the named region's own catalog.
+ * Global existence is not membership — an id from another region's pool
+ * fails here with "region". The caller loads the catalog for exactly
+ * (edition, regionId) and passes it in; this function does no I/O, so
+ * the whole chain is unit-testable without booting the app.
+ */
+export function resolveChallengeRoute(
+  fragment: unknown,
+  expectedScoringVersion: number,
+  catalogIds: ReadonlySet<string> | readonly string[],
+): ChallengeLinkResult {
+  const link = decodeChallengeLink(fragment, expectedScoringVersion);
+  if (!link.ok) return link;
+  const catalog = catalogIds instanceof Set ? catalogIds : new Set(catalogIds);
+  if (!link.route.ids.every((id) => catalog.has(id))) {
+    return { ok: false, reason: "region" };
+  }
+  return link;
+}
+
+/**
+ * The run fields a received route starts with. The sentinel regionId
+ * stays the isolation key (isChallengeRun), the edition is the route's
+ * OWN edition (so the map keeps its projection and territory), and the
+ * display name says whose route it is. An mc1 route derives exactly the
+ * fields the shipped mc1 boot used — that path stays byte-identical.
+ */
+export function challengeRunFields(route: ChallengeRoute): {
+  edition: Edition;
+  regionId: typeof CHALLENGE_REGION_ID;
+  regionName: string;
+  challengeRegionId: string;
+  challengeRadiusKm: number;
+  challengeOrigin: "mc1" | "mc2";
+} {
+  if (route.originFormat === "mc1") {
+    return {
+      edition: "globe",
+      regionId: CHALLENGE_REGION_ID,
+      regionName: CHALLENGE_REGION_NAME,
+      challengeRegionId: "globe",
+      challengeRadiusKm: CHALLENGE_GLOBE_RADIUS_KM,
+      challengeOrigin: "mc1",
+    };
+  }
+  return {
+    edition: route.edition,
+    regionId: CHALLENGE_REGION_ID,
+    regionName: `${route.regionName} challenge`,
+    challengeRegionId: route.regionId,
+    challengeRadiusKm: route.radiusKm,
+    challengeOrigin: "mc2",
+  };
+}
+
+/**
+ * The ONE radius accessor both pin-judgement sites read for a challenge
+ * run (manifest §3): the radius snapshotted on the run at receive time,
+ * defaulting to the globe radius for legacy mc1 saves that predate the
+ * field. Judging never recomputes from bounds at play time.
+ */
+export function challengeRadiusOf(run: { challengeRadiusKm?: number }): number {
+  return run.challengeRadiusKm ?? CHALLENGE_GLOBE_RADIUS_KM;
+}
+
+// --- Creation: ONE pure helper behind the picker and summary offers ---
+
+export interface ChallengeCreation {
+  fragment: string;
+  placeCount: number;
+  regionName: string;
+  radiusKm: number;
+  dealtIds: string[];
+}
+
+export interface ChallengeCreationEntry {
+  id: string;
+  difficulty?: unknown;
+}
+
+/**
+ * The widening chain for fresh creation (manifest §4/C1), widest step
+ * last, every step inside the ONE named region's catalog:
+ *   the run's own pool (summary "new route" only) → the picker's band
+ *   minus places the sender has seen → the band → the full catalog.
+ * It never leaves the region: fail-closed dealing is the game's core
+ * promise, and a challenge must not break it.
+ */
+export function buildCreationSources(input: {
+  catalog: readonly ChallengeCreationEntry[];
+  choice: PickerDifficulty;
+  seenIds?: ReadonlySet<string>;
+  runPoolIds?: readonly string[] | null;
+}): ChallengeCreationEntry[][] {
+  const band = filterByTier([...input.catalog], input.choice);
+  const chain: ChallengeCreationEntry[][] = [];
+  if (input.runPoolIds && input.runPoolIds.length > 0) {
+    const byId = new Map(input.catalog.map((place) => [place.id, place]));
+    const runEntries: ChallengeCreationEntry[] = [];
+    for (const id of input.runPoolIds) {
+      const entry = byId.get(id);
+      if (entry) runEntries.push(entry);
+    }
+    if (runEntries.length > 0) chain.push(runEntries);
+  }
+  const seen = input.seenIds;
+  chain.push(seen ? band.filter((place) => !seen.has(place.id)) : band);
+  chain.push(band);
+  chain.push([...input.catalog]);
+  return chain;
+}
+
+/**
+ * Create a challenge for one surface, or null when no legal route
+ * exists (unknown region, or every widening source thinner than the
+ * minimum). Two modes:
+ *   "exact" — the sender's played places, verbatim play order, first
+ *     ten. A globe exact route encodes as mc1 (byte-identical shares
+ *     for the shipped surface); any other edition encodes as mc2.
+ *   "fresh" — deal `count` (default 5) from the first widening source
+ *     that can fill it, presented fame-tier ascending so a friend meets
+ *     the famous places first. Fresh routes always encode as mc2 —
+ *     except that nothing here ever re-encodes an mc1 route.
+ * The radius is THIS build's computed radius for the region, pinned
+ * into the link.
+ */
+export function createChallengeRoute(input: {
+  edition: Edition;
+  regionId: string;
+  scoringVersion: number;
+  mode: "fresh" | "exact";
+  sources?: readonly (readonly ChallengeCreationEntry[])[];
+  exactIds?: readonly string[];
+  count?: number;
+  dealSeed?: number;
+  /**
+   * Completion re-share ONLY (manifest §2.3 + §6): the ORIGIN format of
+   * the route being re-encoded. A received mc2 route re-shares as mc2 —
+   * in every edition, Globe included — and a received mc1 route as mc1.
+   * Sender-side creations (summary, picker) omit it: there the format
+   * follows the edition (globe exact = the shipped mc1 surface).
+   */
+  originFormat?: "mc1" | "mc2";
+  /**
+   * Completion re-share ONLY: the radius the run was actually judged
+   * at (its snapshotted challengeRadiusKm). A link may pin an
+   * in-tolerance off-golden radius (rad 90 vs golden 87); the re-share
+   * must preserve THAT circle — "the sharpest freeze test" (§6) —
+   * never silently re-pin the computed one.
+   */
+  radiusKmOverride?: number;
+}): ChallengeCreation | null {
+  const region = findRegion(input.edition, input.regionId);
+  const radius = regionRadiusKm(input.edition, input.regionId);
+  if (!region || radius === null) return null;
+  if (input.mode === "exact") {
+    const ids = (input.exactIds ?? []).slice(0, CHALLENGE_MAX_PLACES);
+    if (!legalIds(ids)) return null;
+    const effectiveRadius = input.radiusKmOverride ?? radius;
+    // Format: an explicit origin (a re-share) wins over the edition
+    // default. Without one, an EXACT globe route encodes mc1 (the
+    // frozen format — a played globe route shares as the link it
+    // always was) and any other edition encodes mc2. Never route a
+    // RECEIVED mc2 route through encodeChallenge: origin preservation
+    // forbids the downgrade (see ChallengeComplete).
+    const useMc2 =
+      input.originFormat === "mc2" ||
+      (input.originFormat === undefined && input.edition !== "globe");
+    const fragment = useMc2
+      ? encodeChallenge2(
+          { edition: input.edition, regionId: input.regionId, radiusKm: effectiveRadius, ids },
+          input.scoringVersion,
+        )
+      : encodeChallenge(ids, input.scoringVersion);
+    return { fragment, placeCount: ids.length, regionName: region.name, radiusKm: effectiveRadius, dealtIds: [...ids] };
+  }
+  const count = input.count ?? CHALLENGE_MIN_PLACES;
+  if (!Number.isInteger(count) || count < CHALLENGE_MIN_PLACES || count > CHALLENGE_MAX_PLACES) {
+    return null;
+  }
+  for (const source of input.sources ?? []) {
+    const unique = new Map<string, ChallengeCreationEntry>();
+    for (const entry of source) {
+      if (ID_RE.test(entry.id) && !unique.has(entry.id)) unique.set(entry.id, entry);
+    }
+    if (unique.size < count) continue;
+    const entries = [...unique.values()];
+    const dealt = dealChallenge(
+      entries.map((entry) => ({ id: entry.id, w: 1 })),
+      count,
+      input.dealSeed ?? 0,
+    );
+    const tierOf = new Map(entries.map((entry) => [entry.id, asFameTier(entry.difficulty)]));
+    const ordered = dealt
+      .map((id, index) => ({ id, index }))
+      .sort((a, b) => (tierOf.get(a.id) ?? 3) - (tierOf.get(b.id) ?? 3) || a.index - b.index)
+      .map((entry) => entry.id);
+    const fragment = encodeChallenge2(
+      { edition: input.edition, regionId: input.regionId, radiusKm: radius, ids: ordered },
+      input.scoringVersion,
+    );
+    return { fragment, placeCount: ordered.length, regionName: region.name, radiusKm: radius, dealtIds: ordered };
+  }
+  return null;
+}
+
+/** Failure class 1 detail (manifest C12): the link itself is broken —
+ * mistyped, truncated, tampered with, or minted under another scoring
+ * version. The fix is a fresh link from the friend, so say exactly that. */
+export const CHALLENGE_BROKEN_LINK_COPY = "Ask your friend to send the link again.";

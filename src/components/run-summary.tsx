@@ -13,8 +13,6 @@ import {
 import { SHARE_URL, sessionShareText } from "@/game/share-action";
 import { LEARNING_COPY, type GrowthSummary } from "@/game/learning";
 import { REVIEW_DECK_COPY } from "@/game/review-deck";
-import { CHALLENGE_MIN_PLACES, CHALLENGE_SHARE_LABEL, decodeChallenge } from "@/game/challenge";
-import { SCORING_VERSION } from "@/game/scoring";
 import { Button } from "@/components/ui/button";
 import { ShareButton } from "./share-button";
 
@@ -47,10 +45,28 @@ export function RunSummaryCard(props: {
   onReview?: () => void;
   /** Cards currently due for review. */
   reviewDueCount?: number;
-  /** Optional Friend Challenge route URL (flag-gated, Globe edition only). */
-  challengeUrl?: string | null;
+  /**
+   * Friend-challenge offers (flag-gated, all editions): the sender's own
+   * route (primary) and a fresh route in the same region (secondary).
+   * URL, text, and label arrive fully built — the count is a prop, never
+   * re-derived here by decoding the link (the mc2 codec made the old
+   * decode-it-yourself count the wrong tool for this card).
+   */
+  challengePrimary?: {
+    url: string;
+    text: string;
+    label: string;
+    /** The sender's exact played route: its share opens a preview
+     * sheet first (the exact-route privacy disclosure lives there,
+     * manifest §1(d)); a fresh-route primary shares directly, as the
+     * shipped surface always has. */
+    exact?: boolean;
+  } | null;
+  challengeSecondary?: { url: string; text: string; label: string } | null;
+  /** Opens the exact-route preview sheet (owner renders the sheet). */
+  onChallengePrimaryPreview?: () => void;
 }): JSX.Element {
-  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount, challengeUrl } = props;
+  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount, challengePrimary, challengeSecondary, onChallengePrimaryPreview } = props;
   // One unit for the whole card: miles only when EVERY played region is a
   // USA context (state edition, or the United States country run);
   // mixed or empty sessions fail closed to kilometers (owner ruling 2026-10-11).
@@ -68,24 +84,6 @@ export function RunSummaryCard(props: {
   // Session totals only — no per-place emoji strip; the session banks
   // totals, never per-place scores (see sessionShareText).
   const text = sessionShareText({ summary, regionName, dateKey });
-  // How many places the challenge share link below actually carries,
-  // counted from the link itself with the codec's own decoder — the
-  // codec allows 5–10 places, so the share text must never hardcode a
-  // count (it said "5" while only today's producer deals 5). Falls back
-  // to the minimum if the URL somehow does not decode; links minted by
-  // this app always do.
-  const challengePlaceCount = ((): number => {
-    if (!challengeUrl) return CHALLENGE_MIN_PLACES;
-    const hashAt = challengeUrl.indexOf("#");
-    if (hashAt < 0) return CHALLENGE_MIN_PLACES;
-    const decoded = decodeChallenge(challengeUrl.slice(hashAt), SCORING_VERSION);
-    return decoded.ok ? decoded.ids.length : CHALLENGE_MIN_PLACES;
-  })();
-  // The challenge share text, built once so the button and its failure
-  // fallback below can never drift apart.
-  const challengeText = challengeUrl
-    ? `Play the same ${challengePlaceCount} places on the Globe!\n${challengeUrl}`
-    : "";
   // Breakdowns render from the same summary object the share text uses —
   // unplayed difficulty modes are omitted (never shown as 0%), and region
   // names come from the session verbatim.
@@ -288,13 +286,17 @@ export function RunSummaryCard(props: {
               </pre>
             }
           />
-          {challengeUrl ? (
-            <div data-testid="challenge-share-container" data-challenge-url={challengeUrl}>
+          {challengePrimary?.exact && onChallengePrimaryPreview ? (
+            <Button className="w-full" onClick={onChallengePrimaryPreview}>
+              {challengePrimary.label}
+            </Button>
+          ) : challengePrimary ? (
+            <div data-testid="challenge-share-container" data-challenge-url={challengePrimary.url}>
               <ShareButton
                 title="Meridian friend challenge"
-                text={challengeText}
-                url={challengeUrl}
-                label={CHALLENGE_SHARE_LABEL}
+                text={challengePrimary.text}
+                url={challengePrimary.url}
+                label={challengePrimary.label}
                 className="w-full"
                 failureFallback={
                   // If the share sheet and the clipboard both fail, the
@@ -303,7 +305,23 @@ export function RunSummaryCard(props: {
                   // end. Same selectable-text block as the score share
                   // above.
                   <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-left font-sans text-sm leading-relaxed text-white">
-                    {challengeText}
+                    {challengePrimary.text}
+                  </pre>
+                }
+              />
+            </div>
+          ) : null}
+          {challengeSecondary ? (
+            <div data-testid="challenge-share-secondary" data-challenge-url={challengeSecondary.url}>
+              <ShareButton
+                title="Meridian friend challenge"
+                text={challengeSecondary.text}
+                url={challengeSecondary.url}
+                label={challengeSecondary.label}
+                className="w-full"
+                failureFallback={
+                  <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-white/10 bg-black/30 px-4 py-3 text-left font-sans text-sm leading-relaxed text-white">
+                    {challengeSecondary.text}
                   </pre>
                 }
               />

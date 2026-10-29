@@ -110,6 +110,28 @@ export type Run = {
    * across bands); the hint policy enum rides in bandConfig.
    */
   hintsUsed?: number;
+  /**
+   * Challenge runs only (regionId === "challenge"): the REAL region the
+   * route belongs to ("nebraska", "united-kingdom", "globe"). The sentinel
+   * regionId stays the isolation key; this field is what lets the map,
+   * the radius, and a re-share know which region the route is actually
+   * about. Absent on normal runs and on legacy mc1 saves, where it means
+   * "globe" (mc1 was globe-only).
+   */
+  challengeRegionId?: string;
+  /**
+   * Challenge runs only: the hit/miss radius in whole kilometres, pinned
+   * by the link that created the run and snapshotted here so a later
+   * bounds edit can never re-judge a route already in flight. Absent
+   * means the globe default (750) via challengeRadiusOf.
+   */
+  challengeRadiusKm?: number;
+  /**
+   * Challenge runs only: which link format created the run, so a
+   * completion re-share is encoded in the SAME format (mc1 stays mc1 —
+   * the frozen contract). Absent on a challenge run means "mc1".
+   */
+  challengeOrigin?: "mc1" | "mc2";
 };
 
 export function startRun(

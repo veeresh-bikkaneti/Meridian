@@ -12,7 +12,7 @@ import {
   stampCleanExitDirty,
 } from "@/game/clean-exit";
 import type { Starter } from "@/game/starters";
-import { ADMIN1_BY_COUNTRY, COUNTRIES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
+import { ADMIN1_BY_COUNTRY, COUNTRIES, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
 import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
@@ -334,17 +334,33 @@ declare global {
  * review is practice, not scoring.
  */
 import {
+  buildCreationSources,
+  CHALLENGE_BROKEN_LINK_COPY,
   CHALLENGE_CHILD_COPY,
+  CHALLENGE_FAIRNESS_COPY,
   CHALLENGE_GLOBE_RADIUS_KM,
+  CHALLENGE_LOAD_FAILURE_COPY,
   CHALLENGE_MAX_PLACES,
   CHALLENGE_MIN_PLACES,
   CHALLENGE_REGION_ID,
   CHALLENGE_REGION_NAME,
   CHALLENGE_SHARE_LABEL,
+  CHALLENGE_EXACT_SHARE_LABEL,
+  CHALLENGE_RESHARE_LABEL,
+  CHALLENGE_UNKNOWN_CONTENT_COPY,
+  CHALLENGE_UNKNOWN_REGION_COPY,
+  CHALLENGE_WELCOME_TITLE,
+  challengeRadiusOf,
+  challengeRunFields,
+  createChallengeRoute,
   dealChallenge,
   decodeChallenge,
+  decodeChallengeLink,
   encodeChallenge,
   playOrder,
+  resolveChallengeRoute,
+  type ChallengeCreation,
+  type ChallengeRoute,
 } from "@/game/challenge";
 
 function isReviewRun(run: Run): boolean {
@@ -521,6 +537,16 @@ const STALE_REFRESH_KEY = "meridian.staleRefresh";
 const RUN_KEY = "meridian.run";
 
 /**
+ * Saved mc2 challenge runs live under their OWN key (manifest C8): a
+ * build from before mc2 existed never reads this key, so an mc2 save
+ * can never be reinterpreted as a globe run by an old build — it is
+ * simply invisible to it, and the old build boots whatever normal run
+ * it finds under RUN_KEY. mc1 challenge saves keep using RUN_KEY,
+ * exactly as the shipped build wrote them.
+ */
+const RUN_MC2_KEY = "meridian.run.mc2";
+
+/**
  * Persisted pin-drop for the in-progress place. `drop`/`revealDone` are
  * React state only, so a page reload during the result card used to strand
  * the run (phase "done"/"story" restored, but no card and no Next place).
@@ -628,6 +654,21 @@ function trailDate(): string {
 }
 
 function boundsFor(run: Run): RegionBounds {
+  if (run.regionId === CHALLENGE_REGION_ID) {
+    // A challenge run's sentinel regionId names no real place; its
+    // bounds are the REAL region's (the route's own region), so the
+    // map frames and the territory resolves for the place the route is
+    // actually about. Legacy mc1 saves carry no region: the globe.
+    const regionId = run.challengeRegionId ?? "globe";
+    if (run.edition === "state") {
+      const regions = Object.values(ADMIN1_BY_COUNTRY).flat();
+      return regions.find((region) => region.id === regionId)?.bounds ?? [0, 0, 0, 0];
+    }
+    if (run.edition === "country") {
+      return COUNTRIES.find((region) => region.id === regionId)?.bounds ?? [0, 0, 0, 0];
+    }
+    return [0, 0, 0, 0];
+  }
   if (run.edition === "state") {
     // States can drill from any country that maps subdivisions; look across all of them.
     const regions = Object.values(ADMIN1_BY_COUNTRY).flat();
@@ -679,10 +720,10 @@ function writeDifficultyChoice(choice: PickerDifficulty) {
   }
 }
 
-function readRun(): Run | null {
+function readRunFrom(key: string): Run | null {
   try {
     if (typeof sessionStorage === "undefined") return null;
-    const raw = sessionStorage.getItem(RUN_KEY);
+    const raw = sessionStorage.getItem(key);
     if (!raw) return null;
     const parsed: unknown = JSON.parse(raw);
     if (!parsed || typeof parsed !== "object") return null;
@@ -748,15 +789,56 @@ function readRun(): Run | null {
       // Runs saved before the persistent no-repeat history get no boundary
       // id (null disables the swap), preserving their exact deal order.
       prevLastId: typeof record.prevLastId === "string" ? record.prevLastId : null,
+      // Challenge fields (mc2): parsed back only when well-formed, so a
+      // tampered save degrades to the mc1 defaults instead of inventing
+      // a region or a radius. Absent on normal runs and legacy saves.
+      ...(typeof record.challengeRegionId === "string"
+        ? { challengeRegionId: record.challengeRegionId }
+        : {}),
+      ...(Number.isInteger(record.challengeRadiusKm) &&
+      // The decode-side envelopes, re-checked at the save boundary: a
+      // tampered slot must not widen the circle past what a link could
+      // legally pin (Globe exactly 750; state [25,160]; country
+      // [40,450]). Out-of-envelope degrades to the accessor default.
+      (record.edition === "globe"
+        ? record.challengeRadiusKm === CHALLENGE_GLOBE_RADIUS_KM
+        : record.edition === "state"
+          ? (record.challengeRadiusKm as number) >= 25 && (record.challengeRadiusKm as number) <= 160
+          : (record.challengeRadiusKm as number) >= 40 && (record.challengeRadiusKm as number) <= 450)
+        ? { challengeRadiusKm: record.challengeRadiusKm as number }
+        : {}),
+      ...(record.challengeOrigin === "mc1" || record.challengeOrigin === "mc2"
+        ? { challengeOrigin: record.challengeOrigin }
+        : {}),
     };
   } catch {
     return null;
   }
 }
 
+function readRun(): Run | null {
+  return readRunFrom(RUN_KEY);
+}
+
+/** The saved mc2 challenge run, if one is in progress (see RUN_MC2_KEY). */
+function readMc2Run(): Run | null {
+  return readRunFrom(RUN_MC2_KEY);
+}
+
+function clearMc2Run() {
+  try {
+    sessionStorage.removeItem(RUN_MC2_KEY);
+  } catch {
+    // Storage blocked; the in-memory state is dropped regardless.
+  }
+}
+
 function writeRun(run: Run) {
   try {
-    sessionStorage.setItem(RUN_KEY, JSON.stringify(run));
+    // mc2 challenge runs persist to their own key (RUN_MC2_KEY) so old
+    // builds never see them; everything else keeps the shipped key.
+    const key = run.challengeOrigin === "mc2" ? RUN_MC2_KEY : RUN_KEY;
+    sessionStorage.setItem(key, JSON.stringify(run));
     // Crash-loop breaker: this page now holds unsaved-crash state. If the
     // process is killed without unloading, the next boot must not
     // auto-resume; `pagehide` clears this flag on every clean unload.
@@ -952,6 +1034,7 @@ async function revealStory(placeId: string, authored: string): Promise<string> {
 type Menu =
   | { kind: "countries" }
   | { kind: "states" }
+  | { kind: "challengeRegions" }
   | { kind: "admin1"; countryId: string; countryName: string; from: "countries" | "states" };
 
 /**
@@ -1144,7 +1227,40 @@ export function GameApp() {
    * grown-up helping) still sees it. Flag OFF never sets it: with the
    * feature off there is nothing to explain.
    */
-  const [challengeBootNotice, setChallengeBootNotice] = useState(false);
+  const [challengeBootNotice, setChallengeBootNotice] = useState<string | null>(null);
+
+  /**
+   * A validated mc2 challenge waiting on its welcome card (Package A):
+   * the boot decoded and membership-checked the route, but NOTHING is
+   * displaced yet — the player's saved run stays exactly where it was
+   * until they tap Start on the card (manifest C6). hasSavedRun drives
+   * the card's "your game is saved" line.
+   */
+  const [pendingChallenge, setPendingChallenge] = useState<{
+    route: ChallengeRoute;
+    hasSavedRun: boolean;
+  } | null>(null);
+
+  /** Home's friend-challenge entry points, flag-gated like every other
+   * challenge surface (PlayLoaded reads the same flag for its own). */
+  const [friendChallengesOn, setFriendChallengesOn] = useState(false);
+  useEffect(() => {
+    let active = true;
+    void loadFlags().then(() => {
+      if (active) setFriendChallengesOn(isEnabled("friendChallenges"));
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  /** A minted challenge waiting on its preview sheet (picker flow). */
+  const [challengePreview, setChallengePreview] = useState<{
+    creation: ChallengeCreation;
+    edition: Edition;
+    regionId: string;
+  } | null>(null);
+  const [challengePickError, setChallengePickError] = useState<string | null>(null);
 
   /**
    * Apply a runtime auto-switch: persist (Q3) + stamp crash reports +
@@ -1385,6 +1501,50 @@ export function GameApp() {
   }, []);
 
   /**
+   * The welcome card's Start tap — the moment a received mc2 challenge
+   * commits (manifest C6). The run is built from the validated route
+   * and persisted through commit/writeRun, which routes it to the mc2
+   * key; the player's saved normal run under RUN_KEY is never touched,
+   * so it survives underneath and is offered back when the challenge
+   * ends. The challenge never banks into the session (ensureSession is
+   * deliberately not called — the same isolation as mc1).
+   */
+  const startPendingChallenge = useCallback(() => {
+    if (!pendingChallenge) return;
+    const fields = challengeRunFields(pendingChallenge.route);
+    clearDrop();
+    // Cross-format displacement (manifest §3 persistence): if the
+    // normal slot holds a saved CHALLENGE (an mc1 run), starting this
+    // mc2 challenge displaces it — one challenge at a time, and the
+    // displacement commits here, on Start, never on arrival. A saved
+    // NORMAL run is not a challenge and is never touched: it survives
+    // underneath and is offered back on Done.
+    const savedNormal = readRun();
+    if (savedNormal && savedNormal.regionId === CHALLENGE_REGION_ID) {
+      sessionStorage.removeItem(RUN_KEY);
+    }
+    const run: Run = {
+      ...startRun(
+        {
+          edition: fields.edition,
+          regionId: fields.regionId,
+          regionName: fields.regionName,
+          dateKey: trailDate(),
+          difficultyChoice,
+        },
+        pendingChallenge.route.ids,
+        null,
+      ),
+      challengeRegionId: fields.challengeRegionId,
+      challengeRadiusKm: fields.challengeRadiusKm,
+      challengeOrigin: fields.challengeOrigin,
+    };
+    commit(run);
+    setPendingChallenge(null);
+    setMenu(null);
+  }, [pendingChallenge, difficultyChoice, commit]);
+
+  /**
    * Adopt the stored session when it is still live (same day, not ended),
    * otherwise start a fresh one. A fresh session seeded from a run that
    * already has results backfills exactly once: those places were never
@@ -1408,12 +1568,93 @@ export function GameApp() {
     [updateSession, idleTimeoutMs],
   );
 
+  /**
+   * An mc2 challenge's Done tap (manifest §2, contract 6): the
+   * challenge slot is cleared, and the normal run the challenge
+   * displaced is offered back — resumed in place when it is still
+   * resumable today. Nothing here touches the player's history: the
+   * challenge never wrote any.
+   */
+  const handleChallengeDone = useCallback(() => {
+    setStartError(null);
+    clearDrop();
+    clearMc2Run();
+    setRun(null);
+    setMenu(null);
+    const saved = readRun();
+    if (
+      saved &&
+      saved.regionId !== CHALLENGE_REGION_ID &&
+      saved.regionId !== REVIEW_DECK_REGION_ID
+    ) {
+      const today = {
+        edition: saved.edition,
+        regionId: saved.regionId,
+        regionName: saved.regionName,
+        dateKey: trailDate(),
+        difficultyChoice: saved.difficultyChoice,
+      };
+      if (isResumable(saved, today)) {
+        const restored = resumeRun(saved, today);
+        commit(restored);
+        ensureSession(restored);
+      }
+    }
+  }, [commit, ensureSession]);
+
+  const challengeMenuHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  useEffect(() => {
+    if (menu?.kind === "challengeRegions") {
+      challengeMenuHeadingRef.current?.focus({ preventScroll: true });
+    }
+  }, [menu]);
+
+  /** Picker flow, step 1: open the challenge region list. */
+  const openChallengePicker = useCallback(() => {
+    setChallengePickError(null);
+    setMenu({ kind: "challengeRegions" });
+  }, []);
+
+  /**
+   * Picker flow, step 2: deal a fresh 5 for the tapped region and show
+   * the preview sheet. The catalog is the region's OWN places
+   * (fail-closed dealing), widened inside the region only when the
+   * band/seen steps run thin (buildCreationSources).
+   */
+  const pickChallengeRegion = useCallback(
+    async (edition: Edition, regionId: string) => {
+      setChallengePickError(null);
+      try {
+        const catalog = await placesFor(edition, regionId, undefined, false);
+        const seenIds = new Set(seenStoreFor(edition, regionId, difficultyChoice).read());
+        const sources = buildCreationSources({ catalog, choice: difficultyChoice, seenIds });
+        const creation = createChallengeRoute({
+          edition,
+          regionId,
+          scoringVersion: SCORING_VERSION,
+          mode: "fresh",
+          sources,
+          dealSeed: mintSeed(),
+        });
+        if (!creation) {
+          setChallengePickError("Not enough places there yet — pick another region.");
+          return;
+        }
+        setChallengePreview({ creation, edition, regionId });
+      } catch {
+        setChallengePickError("That region could not load — check your connection and try again.");
+      }
+    },
+    [difficultyChoice],
+  );
+
   /** Idle kill: end the session and return the player to the home screen. */
   const killIdleSession = useCallback(() => {
     setStartError(null);
     clearDrop();
     try {
       sessionStorage.removeItem(RUN_KEY);
+      clearMc2Run();
     } catch {
       // Storage blocked; the in-memory run is dropped below regardless.
     }
@@ -1673,6 +1914,7 @@ export function GameApp() {
     // before.
     if (isUncleanShutdown()) {
       clearRunAfterUncleanShutdown(RUN_KEY);
+      clearRunAfterUncleanShutdown(RUN_MC2_KEY);
       setReady(true);
       return;
     }
@@ -1708,13 +1950,20 @@ export function GameApp() {
           bootSavedRun();
           return;
         }
+        if (rawHash.startsWith("#c=mc2.")) {
+          // mc2 links take their own receive path (welcome card, no
+          // displacement until Start). Everything else in this branch
+          // is the frozen mc1 path, byte-identical to the shipped one.
+          void receiveMc2Challenge(rawHash);
+          return;
+        }
         const decoded = decodeChallenge(rawHash, SCORING_VERSION);
         if (!decoded.ok) {
           // Flag on, but the link is broken (corrupt, or made by a
           // different scoring version): tell the player on Home via
           // the boot notice, then fall through — a saved run, if one
           // exists, still resumes underneath the notice.
-          setChallengeBootNotice(true);
+          setChallengeBootNotice("");
           bootSavedRun();
           return;
         }
@@ -1729,7 +1978,7 @@ export function GameApp() {
             // not have (an old link, or a hand-edited one). Same
             // child-facing failure as a corrupt link: notice + fall
             // through to the saved-run boot.
-            setChallengeBootNotice(true);
+            setChallengeBootNotice("");
             bootSavedRun();
             return;
           }
@@ -1747,13 +1996,19 @@ export function GameApp() {
             null,
           );
           commit(challengeRun);
+          // The mc1 boot is its commit point: a saved mc2 challenge is
+          // displaced now (a saved challenge is displaceable only on a
+          // new challenge's start — manifest §3 persistence). The
+          // normal slot now holds THIS challenge; nothing else is
+          // touched.
+          clearMc2Run();
           setMenu(null);
         } catch {
           // The Globe catalog could not load, so the challenge cannot
           // start. From the player's side this is the same failure as
           // a broken link — show the same notice and fall through to
           // the saved-run boot instead of stranding them on Home.
-          setChallengeBootNotice(true);
+          setChallengeBootNotice("");
           bootSavedRun();
           return;
         }
@@ -1770,6 +2025,93 @@ export function GameApp() {
     // the pre-challenge boot, unchanged — if you are changing resume
     // behaviour, change it here so BOTH entry points get it.
     function bootSavedRun() {
+    // mc2 challenge saves live under their own key (RUN_MC2_KEY) and
+    // take precedence over the normal slot: a player who left a
+    // challenge mid-route comes back to the challenge. With the flag
+    // off the challenge is cleared and the ordinary boot continues
+    // underneath — a saved normal run is never collateral (manifest
+    // C7's guard table). An mc2 save also shadows a stale mc1 save in
+    // the normal slot until it completes or is cleared.
+    const mc2Saved = readMc2Run();
+    if (mc2Saved) {
+      void loadFlags().then(async () => {
+        if (!isEnabled("friendChallenges")) {
+          clearMc2Run();
+          bootSavedRunBody();
+          return;
+        }
+        const today = {
+          edition: mc2Saved.edition,
+          regionId: mc2Saved.regionId,
+          regionName: mc2Saved.regionName,
+          dateKey: trailDate(),
+          difficultyChoice: mc2Saved.difficultyChoice,
+        };
+        if (isResumable(mc2Saved, today)) {
+          const restored = resumeRun(mc2Saved, today);
+          await preloadTerritory();
+          commit(restored);
+          setReady(true);
+          return;
+        }
+        clearMc2Run();
+        bootSavedRunBody();
+      });
+      return;
+    }
+    bootSavedRunBody();
+    }
+
+    /**
+     * The mc2 receive path (Package A): decode and bind the link, load
+     * the named region's catalog, check membership — fail-closed at
+     * every step with the manifest's three failure classes — and only
+     * then show the welcome card. The saved run is NOT touched here:
+     * displacement commits on the card's Start tap, never on arrival.
+     */
+    async function receiveMc2Challenge(hash: string) {
+      const link = decodeChallengeLink(hash, SCORING_VERSION);
+      if (!link.ok) {
+        // Class 2 (region arm) when the region itself is unknown to
+        // this build; class 1 for every other decode failure.
+        setChallengeBootNotice(
+          link.reason === "region" ? CHALLENGE_UNKNOWN_REGION_COPY : CHALLENGE_BROKEN_LINK_COPY,
+        );
+        bootSavedRun();
+        return;
+      }
+      try {
+        const [places] = await Promise.all([
+          placesFor(link.route.edition, link.route.regionId, undefined, false),
+          preloadTerritory(),
+        ]);
+        const resolved = resolveChallengeRoute(hash, SCORING_VERSION, places.map((p) => p.id));
+        if (!resolved.ok) {
+          // Class 2 (place arm): a named place is not in this build's
+          // catalog for the named region.
+          setChallengeBootNotice(CHALLENGE_UNKNOWN_CONTENT_COPY);
+          bootSavedRun();
+          return;
+        }
+        const saved = readRun();
+        setPendingChallenge({
+          route: resolved.route,
+          hasSavedRun:
+            !!saved &&
+            saved.regionId !== CHALLENGE_REGION_ID &&
+            saved.regionId !== REVIEW_DECK_REGION_ID,
+        });
+        setMenu(null);
+        setReady(true);
+      } catch {
+        // Class 3: the link may be perfect, but the region chunk did
+        // not load, so membership could not be checked.
+        setChallengeBootNotice(CHALLENGE_LOAD_FAILURE_COPY);
+        bootSavedRun();
+      }
+    }
+
+    function bootSavedRunBody() {
     const saved = readRun();
     if (saved && saved.regionId === CHALLENGE_REGION_ID) {
       void loadFlags().then(async () => {
@@ -2429,6 +2771,7 @@ export function GameApp() {
             setRun(null);
             setMenu(null);
           }}
+          onChallengeDone={handleChallengeDone}
           onSummaryDone={() => {
             // End game already ended the session; drop it and go home.
             setStartError(null);
@@ -2635,15 +2978,139 @@ export function GameApp() {
   // a screen reader announces it as Home appears; it stays for the whole
   // boot (no dismiss, no timer) because the link is already gone from
   // the URL — this notice is the only record the failure happened.
-  const challengeBootNoticeEl = challengeBootNotice ? (
+  const challengeBootNoticeEl = challengeBootNotice !== null ? (
     <div
       role="status"
       data-testid="challenge-boot-notice"
       className="mb-4 rounded-xl border border-line bg-surface p-4 text-base text-fg"
     >
       <p>{CHALLENGE_CHILD_COPY}</p>
+      {challengeBootNotice ? <p className="mt-1">{challengeBootNotice}</p> : null}
     </div>
   ) : null;
+
+  // The received-challenge welcome card: an overlay on Home, shown
+  // only between a validated mc2 boot and the player's Start tap.
+  const challengeWelcomeEl = pendingChallenge ? (
+    <ChallengeWelcome
+      route={pendingChallenge.route}
+      hasSavedRun={pendingChallenge.hasSavedRun}
+      onStart={startPendingChallenge}
+      onDismiss={() => setPendingChallenge(null)}
+    />
+  ) : null;
+
+  // The creation preview sheet: what the friend will get, stated before
+  // anything is shared (the route is exact, so the sheet discloses it).
+  const challengePreviewEl = challengePreview ? (() => {
+    const { creation } = challengePreview;
+    const url = `${window.location.origin}${window.location.pathname}${creation.fragment}`;
+    const text = `Find ${creation.placeCount} places in ${creation.regionName}! Get inside the ${creation.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${url}`;
+    return (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Challenge a friend"
+        data-testid="challenge-preview"
+      >
+        <div className="w-full max-w-sm rounded-2xl border border-line bg-surface p-6 shadow-2xl">
+          <h2 className="font-display text-2xl text-fg">Challenge a friend</h2>
+          <p className="mt-3 text-base text-fg">
+            {creation.placeCount} places in {creation.regionName}
+          </p>
+          <p className="mt-1 text-base text-muted">
+            Get inside the {creation.radiusKm} km circle — closer is better!
+          </p>
+          <p className="mt-2 text-base text-muted">{CHALLENGE_FAIRNESS_COPY}</p>
+          <p className="mt-2 text-base text-muted">
+            Your friend gets this exact route — the same {creation.placeCount} places, in this order.
+          </p>
+          <div className="mt-5 flex flex-col gap-2">
+            <div data-testid="challenge-share-container" data-challenge-url={url}>
+              <ShareButton
+                title="Meridian friend challenge"
+                text={text}
+                url={url}
+                label={CHALLENGE_SHARE_LABEL}
+                className="w-full"
+                failureFallback={
+                  <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+                    {text}
+                  </pre>
+                }
+              />
+            </div>
+            <Button variant="secondary" onClick={() => setChallengePreview(null)}>
+              Back
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  })() : null;
+
+  if (menu?.kind === "challengeRegions") {
+    // The challenge region picker: every playable region with at least
+    // CHALLENGE_MIN_PLACES catalog places, grouped by edition. A state
+    // row deals THAT state; a country row deals THAT country — region
+    // fidelity is the whole point of mc2.
+    const globeCount = poolSizeFor("globe", "globe");
+    const countries = COUNTRIES.filter((c) => poolSizeFor("country", c.id) >= CHALLENGE_MIN_PLACES);
+    const states = STATES.filter((s) => poolSizeFor("state", s.id) >= CHALLENGE_MIN_PLACES);
+    const rowClass =
+      "flex min-h-11 items-center justify-between rounded-xl border border-line bg-surface px-4 py-3 text-left text-base text-fg";
+    const regionRow = (edition: Edition, region: Region) => (
+      <button
+        key={`${edition}:${region.id}`}
+        type="button"
+        className={rowClass}
+        onClick={withCardTap(region.id, () => void pickChallengeRegion(edition, region.id))}
+      >
+        <span>{region.name}</span>
+        <span className="text-sm text-muted">{poolSizeFor(edition, region.id)} places</span>
+      </button>
+    );
+    return (
+      <>
+        {mapModeAnnouncer}
+        <main className="mx-auto w-full max-w-3xl px-5 py-8">
+          <Button variant="secondary" onClick={() => setMenu(null)}>
+            Back
+          </Button>
+          <h1
+            ref={challengeMenuHeadingRef}
+            tabIndex={-1}
+            className="mt-4 font-display text-3xl text-fg"
+          >
+            Challenge a friend
+          </h1>
+          <p className="mt-2 text-base text-muted">
+            Pick a region. We deal {CHALLENGE_MIN_PLACES} places from it, and your friend plays
+            the same route.
+          </p>
+          {challengeBootNoticeEl}
+          {challengePickError ? (
+            <p role="status" className="mt-3 text-base text-fg">
+              {challengePickError}
+            </p>
+          ) : null}
+          <div className="mt-6 flex flex-col gap-2">
+            {globeCount >= CHALLENGE_MIN_PLACES
+              ? regionRow("globe", { id: "globe", name: "Globe", bounds: [0, 0, 0, 0] })
+              : null}
+            <h2 className="mt-4 text-sm tracking-wide text-muted uppercase">Countries</h2>
+            {countries.map((region) => regionRow("country", region))}
+            <h2 className="mt-4 text-sm tracking-wide text-muted uppercase">US states</h2>
+            {states.map((region) => regionRow("state", region))}
+          </div>
+        </main>
+        {celebrationOverlay}
+        {idleToast}
+        {challengePreviewEl}
+      </>
+    );
+  }
 
   if (menu?.kind === "countries") {
     // Only countries with a playable pool — never a dead end.
@@ -2731,6 +3198,7 @@ export function GameApp() {
   return (
     <>
     {mapModeAnnouncer}
+    {challengeWelcomeEl}
     {/* While the grown-up gate/picker is open it is a full-viewport overlay:
         the home page underneath (incl. Comet's banner and the footer link)
         is inert — non-interactive and removed from the tab order. */}
@@ -2758,6 +3226,8 @@ export function GameApp() {
         setLoopOpen(true);
       })}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
+      challengeEnabled={friendChallengesOn}
+      onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
       deck={deckStatus}
       difficultyChoice={difficultyChoice}
@@ -2867,6 +3337,8 @@ function Choose({
   onColdTrail,
   onReview,
   onResetHistory,
+  challengeEnabled,
+  onChallenge,
   deck,
   notice,
   homeToast,
@@ -2895,6 +3367,10 @@ function Choose({
   onReview: () => void;
   /** Run the "Start over" history reset (GameApp owns the flow). */
   onResetHistory: () => ResetHistoryResult;
+  /** Friend challenges on (flag): show the "Challenge a friend" entry. */
+  challengeEnabled?: boolean;
+  /** Open the challenge region picker. */
+  onChallenge?: (e: ReactMouseEvent) => void;
   /** Deck entry status (flag-gated; see useDeckStatus). */
   deck: { enabled: boolean; due: number; total: number };
   notice?: ReactNode;
@@ -3242,6 +3718,16 @@ function Choose({
               <span className="hv5-eaction">Play the globe</span>
             </button>
           </div>
+          {challengeEnabled ? (
+            <Button
+              variant="secondary"
+              className="mt-3 w-full"
+              onClick={onChallenge}
+              data-testid="challenge-a-friend"
+            >
+              Challenge a friend
+            </Button>
+          ) : null}
         </div>
         </div>
 
@@ -3775,17 +4261,111 @@ function ReviewComplete({
   );
 }
 
+/**
+ * The mc2 welcome card (Package A): shown on Home after a challenge
+ * link validates, BEFORE anything is displaced. It states the route
+ * (places + region), the circle, the fairness line, and — when the
+ * player has a game in progress — that their game is saved and waiting.
+ * One action: Start. The displacement commits on that tap, never on
+ * the link's arrival (manifest C6).
+ */
+function ChallengeWelcome({
+  route,
+  hasSavedRun,
+  onStart,
+  onDismiss,
+}: {
+  route: ChallengeRoute;
+  hasSavedRun: boolean;
+  onStart: () => void;
+  /** Declining is free: nothing is committed, no save is touched — the
+   * displacement bargain (C6) binds only the Start tap. */
+  onDismiss: () => void;
+}) {
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    dialogRef.current?.focus({ preventScroll: true });
+  }, []);
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onDismiss();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onDismiss]);
+  return (
+    <div
+      ref={dialogRef}
+      tabIndex={-1}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label={CHALLENGE_WELCOME_TITLE}
+      data-testid="challenge-welcome"
+    >
+      <div className="w-full max-w-sm rounded-2xl border border-line bg-surface p-6 shadow-2xl">
+        <h2 className="font-display text-2xl text-fg">{CHALLENGE_WELCOME_TITLE}</h2>
+        <p className="mt-3 text-base text-fg">
+          Find {route.ids.length} places in {route.regionName}. Get inside the{" "}
+          {route.radiusKm} km circle — closer is better!
+        </p>
+        <p className="mt-2 text-base text-muted">{CHALLENGE_FAIRNESS_COPY}</p>
+        {hasSavedRun ? (
+          <p className="mt-2 text-base text-muted">
+            Your game in progress is saved — it will be waiting when you finish.
+          </p>
+        ) : null}
+        <Button className="mt-5 w-full" onClick={onStart} data-testid="challenge-start">
+          Start
+        </Button>
+        <Button
+          variant="secondary"
+          className="mt-2 w-full"
+          onClick={onDismiss}
+          data-testid="challenge-not-now"
+        >
+          Not now
+        </Button>
+      </div>
+    </div>
+  );
+}
+
 function ChallengeComplete({
   run,
   total,
   onDone,
+  shareEnabled,
 }: {
   run: Run;
   total: number;
   onDone: () => void;
+  /** The completion re-share renders only while the flag is on: a flag
+   * flipped off mid-challenge drops the share, never the run (§4). */
+  shareEnabled: boolean;
 }) {
-  const challengeHash =
-    run.poolIds.length >= CHALLENGE_MIN_PLACES && run.poolIds.length <= CHALLENGE_MAX_PLACES
+  // Origin preservation (manifest §2, contract 3): a route re-shares in
+  // the format it arrived in — an mc1 route stays mc1 byte for byte, an
+  // mc2 route stays mc2 with its own region named. Never a downgrade.
+  const isMc2 = run.challengeOrigin === "mc2";
+  const mc2Creation = isMc2
+    ? createChallengeRoute({
+        edition: run.edition,
+        regionId: run.challengeRegionId ?? "globe",
+        scoringVersion: SCORING_VERSION,
+        mode: "exact",
+        exactIds: run.poolIds,
+        // Origin preservation in full (manifest §2.3 + §6): the route
+        // re-encodes in the format it ARRIVED in and at the radius it
+        // was JUDGED at — an in-tolerance pinned circle (rad 90 vs the
+        // computed 87) survives the re-share, never re-pins.
+        originFormat: "mc2",
+        radiusKmOverride: run.challengeRadiusKm,
+      })
+    : null;
+  const challengeHash = isMc2
+    ? (mc2Creation?.fragment ?? null)
+    : run.poolIds.length >= CHALLENGE_MIN_PLACES && run.poolIds.length <= CHALLENGE_MAX_PLACES
       ? encodeChallenge(run.poolIds, SCORING_VERSION)
       : null;
   const challengeUrl =
@@ -3793,27 +4373,33 @@ function ChallengeComplete({
       ? `${window.location.origin}${window.location.pathname}${challengeHash}`
       : "";
   // The re-share text, built once so the button and its failure fallback
-  // below can never drift apart.
-  const challengeText = `Play the same ${total} places on the Globe! I scored ${run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US")}.\n${challengeUrl}`;
+  // below can never drift apart. mc2 texts name the region and carry the
+  // newest-Meridian suffix, because an old build cannot open them.
+  const score = run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US");
+  const challengeText = isMc2
+    ? // The pre-written reply text (manifest §1(f)): the receiver sends
+      // the route back along the chain with their score on it.
+      `I scored ${score} on your ${mc2Creation?.regionName ?? run.regionName} route — beat that! (Opens in the newest Meridian.)\n${challengeUrl}`
+    : `Play the same ${total} places on the Globe! I scored ${score}.\n${challengeUrl}`;
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
       <p className="text-sm tracking-wide text-muted uppercase">
-        {CHALLENGE_REGION_NAME}
+        {isMc2 ? run.regionName : CHALLENGE_REGION_NAME}
       </p>
       <h1 className="mt-2 font-display text-4xl text-fg" data-testid="challenge-complete">
         Route complete! You scored {run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US")} across {total} places.
       </h1>
       <p className="mt-4 max-w-md text-lg text-muted">
-        You landed inside the {CHALLENGE_GLOBE_RADIUS_KM} km circle on {run.hits} of {total} stops.
+        You landed inside the {challengeRadiusOf(run)} km circle on {run.hits} of {total} stops.
       </p>
       <div className="mt-6 flex max-w-xs flex-col gap-3">
-        {challengeUrl ? (
+        {challengeUrl && shareEnabled ? (
           <div data-testid="challenge-share-container" data-challenge-url={challengeUrl}>
             <ShareButton
               title="Meridian friend challenge"
               text={challengeText}
               url={challengeUrl}
-              label={CHALLENGE_SHARE_LABEL}
+              label={isMc2 ? CHALLENGE_RESHARE_LABEL : CHALLENGE_SHARE_LABEL}
               className="w-full"
               failureFallback={
                 // If the share sheet and the clipboard both fail, the
@@ -3821,7 +4407,7 @@ function ChallengeComplete({
                 // somewhere visible to copy, or that state is a dead
                 // end. Same selectable-text block the GeoDetective
                 // share uses on themed surfaces.
-                <pre className="whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+                <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
                   {challengeText}
                 </pre>
               }
@@ -3896,6 +4482,7 @@ function Play({
   onBankPlace,
   onEndGame,
   onEditions,
+  onChallengeDone,
   onSummaryDone,
   onReplayed,
   onReviewDeck,
@@ -3928,6 +4515,8 @@ function Play({
   }) => void;
   /** Ends the session and returns its summary (null when there is no session). */
   onEndGame: () => SessionSummary | null;
+  /** mc2 challenge Done: clear the challenge slot, offer the displaced run back. */
+  onChallengeDone?: () => void;
   /** Back to the edition picker mid-run; the session stays alive. */
   onEditions: () => void;
   /** Summary dismissed after End game; the session is already ended. */
@@ -4033,10 +4622,11 @@ function Play({
     if (challenge) {
       // Challenge pool: the places are exactly the link's ids, in the
       // link's order — no dealer, no band filter, no seen-history. Each
-      // id is looked up in THIS device's own Globe catalog; an id the
-      // catalog does not know fails the whole run closed with the
-      // child-friendly copy, never a substituted place.
-      placesFor("globe", "globe", undefined, false).then(
+      // id is looked up in THIS device's own catalog FOR THE ROUTE'S
+      // REGION (the Globe for mc1; the named state or country for mc2);
+      // an id that catalog does not know fails the whole run closed
+      // with the child-friendly copy, never a substituted place.
+      placesFor(run.edition, run.challengeRegionId ?? "globe", undefined, false).then(
         (list) => {
           if (cancelled) return;
           const byId = new Map(list.map((p) => [p.id, p]));
@@ -4133,6 +4723,7 @@ function Play({
       onBankPlace={onBankPlace}
       onEndGame={onEndGame}
       onEditions={onEditions}
+      onChallengeDone={onChallengeDone}
       onSummaryDone={onSummaryDone}
       onReplayed={onReplayed}
       onReviewDeck={onReviewDeck}
@@ -4160,6 +4751,7 @@ function PlayLoaded({
   onBankPlace,
   onEndGame: requestEndGame,
   onEditions,
+  onChallengeDone,
   onSummaryDone: finishSummary,
   onReplayed,
   onReviewDeck,
@@ -4194,6 +4786,8 @@ function PlayLoaded({
   }) => void;
   onEndGame: () => SessionSummary | null;
   onEditions: () => void;
+  /** mc2 challenge Done: clear the challenge slot, offer the displaced run back. */
+  onChallengeDone?: () => void;
   onSummaryDone: () => void;
   onReplayed: (run: Run) => void;
   /** A difficulty band was just cleared: show the celebration dialog. */
@@ -4645,13 +5239,15 @@ function PlayLoaded({
       // Review cards replay the original question's hit radius.
       // Otherwise the age-profile band scales the tolerance (Phase 1 §3a):
       // x1.5 / x1.25 / x1.0, clamps applied after the multiplier.
-      // Challenge runs are the exception: the radius is FROZEN at
-      // 750 km whatever the player's age band says, because sender and
+      // Challenge runs are the exception: the radius is the one the
+      // link pinned, snapshotted on the run (challengeRadiusOf) —
+      // never scaled by the player's age band, because sender and
       // receiver may be in different bands and a shared route is only
-      // fair if both players face the identical circle. This frozen
-      // value must match the one onConfirm judges with, below.
+      // fair if both players face the identical circle. mc1 routes
+      // resolve to the historic 750 km through the same accessor.
+      // This value must match the one onConfirm judges with, below.
       radiusKm: challenge
-        ? CHALLENGE_GLOBE_RADIUS_KM
+        ? challengeRadiusOf(run)
         : review
           ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
           : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run))),
@@ -4683,11 +5279,12 @@ function PlayLoaded({
     // Review cards are judged against the hit radius of the original
     // question (snapshotted at miss time) — the same bar as the first try.
     // Otherwise the age-profile band scales the tolerance (Phase 1 §3a).
-    // Challenge runs freeze the radius at 750 km (see the variation
-    // above for why): this is the judgement call site, and the E2E
-    // 600 km-hit / 800 km-miss pair brackets exactly this constant.
+    // Challenge runs judge against the run's snapshotted radius (see
+    // the variation above for why): this is the judgement call site,
+    // and the mc1 E2E 600 km-hit / 800 km-miss pair brackets the 750 km
+    // an mc1 route resolves to through the same accessor.
     const radius = challenge
-      ? CHALLENGE_GLOBE_RADIUS_KM
+      ? challengeRadiusOf(run)
       : review
         ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
         : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run)));
@@ -5031,6 +5628,184 @@ function PlayLoaded({
       ? deckCounts(readReviewDeck() ?? emptyReviewDeck(), Date.now()).total
       : 0;
 
+  /**
+   * The summary's friend-challenge offers (manifest §1(d), Package A):
+   * primary = the sender's OWN route — the places they just played, in
+   * play order, first ten, offered once at least five were played; its
+   * share opens a preview sheet first, carrying the exact-route
+   * disclosure (the privacy trade's mitigation, §3). Secondary = a
+   * fresh five in the same region. A run that ends before five places
+   * has no exact route to share, so the fresh offer becomes the
+   * primary and shares directly — on the Globe in its shipped mc1 form
+   * byte for byte. A globe exact primary's TEXT also stays the shipped
+   * one; its fragment is mc1, every other exact fragment is mc2.
+   * Computed from the dealer: for a normal run the place at index i IS
+   * dealer.at(i), so the played ids are exact — PlaceResult carries
+   * scores, not ids.
+   */
+  const summaryChallengeOffers = useMemo(() => {
+    const none = { primary: null, secondary: null } as {
+      primary: {
+        url: string;
+        text: string;
+        label: string;
+        exact?: boolean;
+        placeCount?: number;
+        regionName?: string;
+      } | null;
+      secondary: { url: string; text: string; label: string } | null;
+    };
+    if (!friendChallengesEnabled || challenge || review || run.phase !== "summary") return none;
+    const origin = `${window.location.origin}${window.location.pathname}`;
+    // The exact offer needs the sender's own five; the FRESH offer does
+    // not — the shipped summary offered a fresh route even when the run
+    // ended before five places, and that surface is frozen in kind (the
+    // frozen E2E pair at friend-challenge.desktop.spec.ts:792/:820 pins
+    // it). Gating both on the played count was a Package A regression,
+    // caught by those frozen tests.
+    const playedIds: string[] = [];
+    for (let i = 0; i < run.results.length; i++) {
+      const dealt = dealer.at(i);
+      if (dealt) playedIds.push(dealt.id);
+    }
+    const exact =
+      run.results.length >= CHALLENGE_MIN_PLACES
+        ? createChallengeRoute({
+            edition: run.edition,
+            regionId: run.regionId,
+            scoringVersion: SCORING_VERSION,
+            mode: "exact",
+            exactIds: playedIds,
+          })
+        : null;
+    const seenIds = new Set(
+      seenStoreFor(run.edition, run.regionId, run.difficultyChoice).read(),
+    );
+    const sources = buildCreationSources({
+      catalog: pool,
+      choice: run.difficultyChoice,
+      seenIds,
+      runPoolIds: run.poolIds,
+    });
+    const fresh = createChallengeRoute({
+      edition: run.edition,
+      regionId: run.regionId,
+      scoringVersion: SCORING_VERSION,
+      mode: "fresh",
+      sources,
+      dealSeed: run.seed,
+    });
+    const regionPhrase =
+      run.edition === "globe" ? "on the Globe" : `in ${exact?.regionName ?? run.regionName}`;
+    const freshSecondary = fresh
+      ? {
+          url: `${origin}${fresh.fragment}`,
+          label: `New route in ${fresh.regionName} instead`,
+          text: `Find ${fresh.placeCount} places in ${fresh.regionName}! Get inside the ${fresh.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${origin}${fresh.fragment}`,
+        }
+      : null;
+    if (exact) {
+      return {
+        primary: {
+          url: `${origin}${exact.fragment}`,
+          // One label in every edition (manifest §1(d)): the primary
+          // opens the preview sheet, whose disclosure names the
+          // exact-route privacy trade before anything is shared.
+          label: CHALLENGE_EXACT_SHARE_LABEL,
+          exact: true,
+          placeCount: exact.placeCount,
+          regionName: exact.regionName,
+          text: exact.fragment.startsWith("#c=mc1.")
+            ? `Play the same ${exact.placeCount} places on the Globe!\n${origin}${exact.fragment}`
+            : `Play the same ${exact.placeCount} places ${regionPhrase}! I scored ${sessionTotal.toLocaleString("en-US")}. (Opens in the newest Meridian.)\n${origin}${exact.fragment}`,
+        },
+        secondary: freshSecondary,
+      };
+    }
+    // No exact offer (fewer than five played): the fresh route becomes
+    // the primary. On the Globe it takes the SHIPPED form byte for
+    // byte — the same flat deal from this run's pool and seed, encoded
+    // mc1 — because that surface predates mc2 and is frozen in kind.
+    if (run.edition === "globe") {
+      const gnPool = pool.filter((p) => /^gn-[0-9]+$/.test(p.id));
+      if (gnPool.length < CHALLENGE_MIN_PLACES) return none;
+      const ids = dealChallenge(
+        gnPool.map((p) => ({ id: p.id, w: 1 })),
+        CHALLENGE_MIN_PLACES,
+        run.seed,
+      );
+      const fragment = encodeChallenge(ids, SCORING_VERSION);
+      return {
+        primary: {
+          url: `${origin}${fragment}`,
+          label: CHALLENGE_SHARE_LABEL,
+          text: `Play the same ${ids.length} places on the Globe!\n${origin}${fragment}`,
+        },
+        secondary: null,
+      };
+    }
+    if (!fresh) return none;
+    return {
+      primary: {
+        url: `${origin}${fresh.fragment}`,
+        label: CHALLENGE_SHARE_LABEL,
+        text: freshSecondary!.text,
+      },
+      secondary: null,
+    };
+  }, [friendChallengesEnabled, challenge, review, run, dealer, pool, sessionTotal]);
+
+  // The exact-route preview sheet (manifest §1(d)): the primary's tap
+  // opens it BEFORE any sharing — the disclosure line is the privacy
+  // trade's mitigation, and a share failure inside it still leaves a
+  // visible, copyable link (§5). Rendered only while the summary is up
+  // and the primary is an exact offer.
+  const [summaryPreviewOpen, setSummaryPreviewOpen] = useState(false);
+  const exactPrimary =
+    run.phase === "summary" && summaryChallengeOffers.primary?.exact
+      ? summaryChallengeOffers.primary
+      : null;
+  const summaryPreviewEl =
+    summaryPreviewOpen && exactPrimary ? (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Challenge a friend"
+        data-testid="challenge-preview"
+      >
+        <div className="w-full max-w-sm rounded-2xl border border-line bg-surface p-6 shadow-2xl">
+          <h2 className="font-display text-2xl text-fg">Challenge a friend</h2>
+          <p className="mt-3 text-base text-fg">
+            {exactPrimary.placeCount} places · {exactPrimary.regionName}
+          </p>
+          <p className="mt-2 text-base text-muted">
+            This shares the exact places you just played, in order.
+          </p>
+          <p className="mt-2 text-base text-muted">{CHALLENGE_FAIRNESS_COPY}</p>
+          <div className="mt-5 flex flex-col gap-2">
+            <div data-testid="challenge-share-container" data-challenge-url={exactPrimary.url}>
+              <ShareButton
+                title="Meridian friend challenge"
+                text={exactPrimary.text}
+                url={exactPrimary.url}
+                label={CHALLENGE_SHARE_LABEL}
+                className="w-full"
+                failureFallback={
+                  <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+                    {exactPrimary.text}
+                  </pre>
+                }
+              />
+            </div>
+            <Button variant="secondary" onClick={() => setSummaryPreviewOpen(false)}>
+              Back
+            </Button>
+          </div>
+        </div>
+      </div>
+    ) : null;
+
   // Review session complete: the due queue is exhausted. A bounded,
   // completable session — ADHD-friendly — never the endless run.
   if (review && run.index >= pool.length) {
@@ -5045,7 +5820,12 @@ function PlayLoaded({
   }
   if (challenge && (run.index >= pool.length || run.phase === "summary")) {
     return (
-      <ChallengeComplete run={run} total={pool.length} onDone={onEditions} />
+      <ChallengeComplete
+        run={run}
+        total={pool.length}
+        onDone={run.challengeOrigin === "mc2" && onChallengeDone ? onChallengeDone : onEditions}
+        shareEnabled={friendChallengesEnabled}
+      />
     );
   }
 
@@ -5415,24 +6195,12 @@ function PlayLoaded({
           onPlayAgain={onSummaryPlayAgain}
           onReview={onReviewDeck}
           reviewDueCount={reviewDueCount}
-          challengeUrl={(() => {
-            // The summary's share-a-challenge action (normal Globe runs
-            // only, flag on): deal a fresh route of exactly
-            // CHALLENGE_MIN_PLACES places from THIS run's pool and seed,
-            // and encode it as an mc1 link. The dealt count is read back
-            // from the ids themselves in RunSummaryCard's share text —
-            // never hardcode a number here or there.
-            if (!friendChallengesEnabled || run.edition !== "globe") return null;
-            const gnPool = pool.filter((p) => /^gn-[0-9]+$/.test(p.id));
-            if (gnPool.length < CHALLENGE_MIN_PLACES) return null;
-            const ids = dealChallenge(gnPool.map((p) => ({ id: p.id, w: 1 })), CHALLENGE_MIN_PLACES, run.seed);
-            return `${window.location.origin}${window.location.pathname}${encodeChallenge(
-              ids,
-              SCORING_VERSION,
-            )}`;
-          })()}
+          challengePrimary={summaryChallengeOffers.primary}
+          challengeSecondary={summaryChallengeOffers.secondary}
+          onChallengePrimaryPreview={() => setSummaryPreviewOpen(true)}
         />
       ) : null}
+      {summaryPreviewEl}
     </main>
   );
 }

@@ -9,8 +9,8 @@
  * `failed` is empty (D4). The UI pairs this with the in-memory half:
  * replaceSession(null) plus the epoch/event refresh (D6/D14/D15).
  *
- * The one exception to "no raw key removal here" is the paused-run pair
- * (`meridian.run` / `meridian.drop`, the "paused-run" step below): those
+ * The one exception to "no raw key removal here" is the paused-run keys
+ * (`meridian.run` / `meridian.run.mc2` / `meridian.drop`, the "paused-run" step below): those
  * keys have no owner module — they live in the UI layer
  * (game-app.tsx) — and a surviving run would re-seed the cleared
  * session via seedSessionFromRun when its edition is reopened (D13).
@@ -42,6 +42,7 @@ export type ResetHistoryResult = {
 };
 
 const RUN_KEY = "meridian.run";
+const RUN_MC2_KEY = "meridian.run.mc2";
 const DROP_KEY = "meridian.drop";
 
 function resolveLocal(explicit?: ResetStorage): ResetStorage | undefined {
@@ -63,7 +64,8 @@ function resolveSession(explicit?: ResetStorage): ResetStorage | undefined {
 }
 
 /**
- * The paused-run pair (D13). Removal only — there is no empty value a
+ * The paused-run keys (D13): both run slots plus the current-place
+ * drop. Removal only — there is no empty value a
  * run could be overwritten with that a reader would treat as "no run"
  * more honestly than a failed report, so a blocked removal fails the
  * step and the player can retry.
@@ -71,7 +73,7 @@ function resolveSession(explicit?: ResetStorage): ResetStorage | undefined {
 function clearPausedRun(session: ResetStorage | undefined): boolean {
   if (!session) return true; // No storage = nothing was ever persisted.
   let ok = true;
-  for (const key of [RUN_KEY, DROP_KEY]) {
+  for (const key of [RUN_KEY, RUN_MC2_KEY, DROP_KEY]) {
     try {
       session.removeItem(key);
     } catch {

@@ -18,3 +18,22 @@ export function radiusKm(edition: "state" | "country" | "globe", greaterSideKm: 
 export function isHit(distanceKm: number, radiusKm: number): boolean {
   return distanceKm <= radiusKm;
 }
+
+import { findRegion, greaterSideKm as regionGreaterSideKm } from "./regions.ts";
+
+/**
+ * The whole-kilometre challenge radius for one named region (manifest
+ * 2026-10-28): the same 12%-of-greater-side rule as radiusKm, pinned to
+ * an integer so a radius can travel inside a challenge link and print on
+ * the welcome card. Returns null for an unknown region — callers treat
+ * that as "this build cannot host that challenge" and fail closed.
+ */
+export function regionRadiusKm(
+  edition: "state" | "country" | "globe",
+  regionId: string,
+): number | null {
+  const region = findRegion(edition, regionId);
+  if (!region) return null;
+  if (edition === "globe") return GLOBE_RADIUS_KM;
+  return Math.round(radiusKm(edition, regionGreaterSideKm(region.bounds)));
+}

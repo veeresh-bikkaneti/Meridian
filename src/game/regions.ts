@@ -110,3 +110,26 @@ export function greaterSideKm(bounds: RegionBounds): number {
   const lonKm = decimalSpan(east, west) * LONGITUDE_KM * Math.cos((centerLat * Math.PI) / 180);
   return Math.max(latKm, lonKm);
 }
+
+/** The globe as a region in its own right (challenges name it like any region). */
+export const GLOBE_REGION: Region = { id: "globe", name: "Globe", bounds: [0, 0, 0, 0] };
+
+/**
+ * Resolve the region a challenge (or any region-keyed feature) names.
+ * State ids live in the admin-1 lists, so a future country's subdivisions
+ * become challengeable the moment their catalog plugs into
+ * ADMIN1_BY_COUNTRY — no second registry to keep in sync. Unknown ids
+ * fail closed to null.
+ */
+export function findRegion(
+  edition: "state" | "country" | "globe",
+  regionId: string,
+): Region | null {
+  if (edition === "globe") return regionId === "globe" ? GLOBE_REGION : null;
+  if (edition === "country") return COUNTRIES.find((r) => r.id === regionId) ?? null;
+  for (const regions of Object.values(ADMIN1_BY_COUNTRY)) {
+    const found = regions.find((r) => r.id === regionId);
+    if (found) return found;
+  }
+  return null;
+}
