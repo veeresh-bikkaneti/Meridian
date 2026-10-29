@@ -6071,7 +6071,7 @@ function PlayLoaded({
                 all when no route can be dealt or the flag is off:
                 flag-off means the feature does not exist (§4). */}
             {runChallengeAvailable ? (
-              <div className="relative">
+              <div className="relative pointer-events-auto">
                 <button
                   type="button"
                   data-testid="run-menu-button"
