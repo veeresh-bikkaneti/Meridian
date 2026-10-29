@@ -633,7 +633,16 @@ export function LoopScreen({
 
   return (
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
-      <div className="flex items-center justify-between gap-3">
+      {/* Panel BLOCK 2 cure (cycle 4, R5 amendment): this header row is
+          sticky, so End game stays visible when the reveal's
+          scrollIntoView pulls the page down — the page scrolls (no
+          internal scroll container), so sticky top-0 on the row itself
+          is what sticks. Solid atlas-bg-1 (the mode screens' top
+          gradient color) so scrolled content never ghosts behind it;
+          -mx-5/px-5 keeps the row full-bleed across the main's padding.
+          The reveal section carries scroll-mt-20 so its scrollIntoView
+          landing stops below this bar instead of under it. */}
+      <div className="sticky top-0 z-20 -mx-5 flex items-center justify-between gap-3 bg-[var(--atlas-bg-1)] px-5 py-2">
         <div className="flex items-center gap-2">
           <Button variant="ghost" className="self-start" onClick={onLeave}>
             Editions
@@ -1420,7 +1429,7 @@ function LoopReveal({
       <section
         ref={revealRef}
         aria-label={won ? "You won" : "Out of guesses"}
-        className="loop-reveal mode-surface rounded-2xl border"
+        className="loop-reveal mode-surface scroll-mt-20 rounded-2xl border"
       >
         {/* ---- Zone 1: pinned header — verdict + answer, never buried ---- */}
         <div className="loop-reveal-header">

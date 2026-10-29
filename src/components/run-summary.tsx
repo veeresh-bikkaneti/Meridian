@@ -20,7 +20,10 @@ import { ShareButton } from "./share-button";
  * End-of-game summary (endless mode). Shown after the player explicitly ends
  * the game — never auto-shown. The totals span the whole session (every
  * edition played since the game started), with a per-edition score
- * breakdown. The total is announced via the aria-live region.
+ * breakdown. The total is announced via a live region: classic summaries
+ * via Play's sr-only aria-live region, mode summaries via GameApp's
+ * persistent map-mode announcer (set by handleModeEndGame — the card
+ * itself owns no live region, and Play's region unmounts with run).
  *
  * When the learning-outcomes flag is on, a "My growth" section renders the
  * player's own progress (places explored/mastered, day streak, regions

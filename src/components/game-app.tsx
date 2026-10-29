@@ -1339,7 +1339,7 @@ export function GameApp() {
   // summary state — there is no run here, so the classic summary state
   // (which lives with the run) cannot hold it. In-memory only: a reload
   // while it is open loses the summary, matching classic parity.
-  const [modeSummary, setModeSummary] = useState<SessionSummary | null>(null);
+  const [modeSummary, setModeSummary] = useState<(SessionSummary & { dateKey: string }) | null>(null);
   // Age profile (parent-set band). The profile object lives in state and
   // refreshes via the `ageprofile:changed` event — game screens never
   // touch the store directly. The settings screen (lazy) is the only
@@ -1877,6 +1877,18 @@ export function GameApp() {
     landHomeFocusRef.current = false;
     heading.focus({ preventScroll: true });
   });
+
+  // Mode-only summary mount focus (panel BLOCK 1 cure, cycle 4): the
+  // button that activated End game unmounts with its mode screen, so
+  // without this focus falls to <body> (WCAG 2.4.3). On a mode summary
+  // mount only, land on Done inside the dialog. Classic summaries are
+  // untouched: this effect is gated on modeSummary, and RunSummaryCard
+  // gains no autofocus prop — its own narration-dismiss fallback already
+  // covers the classic path.
+  useEffect(() => {
+    if (!modeSummary) return;
+    document.querySelector<HTMLElement>('[data-testid="summary-done"]')?.focus({ preventScroll: true });
+  }, [modeSummary]);
 
   useEffect(() => {
     if (ready) recordMilestone("boot_ready");
@@ -2667,7 +2679,25 @@ export function GameApp() {
   // mode open flag: the case store is never touched, so the in-progress
   // case resumes exactly where the player left it.
   const handleModeEndGame = useCallback((mode: "loop" | "coldtrail") => {
+    // R4 cure (cycle 4): capture the date key HERE, at End game time —
+    // the branch below must not call trailDate() at render time, where a
+    // midnight crossing would date the share text a day late.
+    const dateKey = trailDate();
     const summary = handleEndGame();
+    // Panel BLOCK 1 cure (cycle 4): announce the totals on the persistent
+    // mapModeAnnouncer, mirroring classic's Game-over format exactly.
+    // Play's own sr-only live region unmounts with run === null, and the
+    // mode branch never set mapModeAnnouncement before, so the mode
+    // summary was never announced (WCAG 4.1.3). This node survives the
+    // mode → summary branch switch (it is the first child of both), so
+    // the text change is actually spoken.
+    if (summary) {
+      setMapModeAnnouncement(
+        `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore.toLocaleString("en-US")} — ${summary.byEdition
+          .map((b) => `${EDITION_LABELS[b.edition]} ${b.score.toLocaleString("en-US")}`)
+          .join(", ")}. Average ${summary.averagePerPlace} per place, best streak ${summary.bestStreak}.`,
+      );
+    }
     clearDrop();
     if (mode === "loop") {
       writeLoopOpen(false);
@@ -2676,7 +2706,7 @@ export function GameApp() {
       writeColdTrailOpen(false);
       setColdTrailOpen(false);
     }
-    setModeSummary(summary);
+    setModeSummary(summary ? { ...summary, dateKey } : null);
   }, [handleEndGame]);
 
   // Mode summary Done: mirrors classic summary Done minus the run ops
@@ -2684,6 +2714,11 @@ export function GameApp() {
   // flag (already false) — Done lands on home and the case resumes.
   const handleModeSummaryDone = useCallback(() => {
     setModeSummary(null);
+    // Panel BLOCK 1 cure (cycle 4): the Done button unmounts with the
+    // summary, so land focus on the home heading via the existing
+    // landHomeFocus pattern — it applies cleanly here because Done lands
+    // on home, which renders headingRef. Classic Done is untouched.
+    landHomeFocusRef.current = true;
     setStartError(null);
     replaceSession(null);
     setRun(null);
@@ -2909,8 +2944,9 @@ export function GameApp() {
   // an overlay inside it). With run === null, the classic summary gate
   // (run.phase === "summary") could never show it, hence this branch.
   // Props with no run to derive them from: regionName falls back to the
-  // app name when the session played no region, dateKey is today, and
-  // challenge/growth/review do not exist here (R4).
+  // app name when the session played no region, dateKey is the value
+  // captured at End game time (cycle-4 cure; never trailDate() here),
+  // and challenge/growth/review do not exist here (R4).
   if (modeSummary) {
     return (
       <>
@@ -2918,7 +2954,7 @@ export function GameApp() {
         <RunSummaryCard
           summary={modeSummary}
           regionName={modeSummary.regions[0]?.regionName ? modeSummary.regions[0].regionName : "Meridian"}
-          dateKey={trailDate()}
+          dateKey={modeSummary.dateKey}
           growth={null}
           onDone={handleModeSummaryDone}
           onPlayAgain={() => {

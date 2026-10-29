@@ -45,6 +45,12 @@ import type { ColdTrailStore } from "./types";
  * report raw coordinates instead of resolving to labeled places. No place
  * index is fetched in this mode.
  */
+/**
+ * onEndGame (mirror of LoopScreen's prop doc): ends the session via
+ * GameApp's mode End game handler — shows the session summary and clears
+ * only the open flag, never the case store, so the case resumes on
+ * return. Distinct from onLeave, which leaves without ending anything.
+ */
 export function TrailScreen({ onLeave, onEndGame }: { onLeave: () => void; onEndGame: () => void }): JSX.Element {
   // F2b: ring labels and the score read the hideout's territory
   // (unitForLoopTarget), which reads the lazy countries-50m data
@@ -145,6 +151,10 @@ export function TrailScreen({ onLeave, onEndGame }: { onLeave: () => void; onEnd
           <Button type="button" variant="secondary" onClick={onLeave} className="min-h-[44px] self-start">
             ← Back
           </Button>
+          {/* End game beside Back on the load-error return: the session
+              may still be live from classic play, so ending is valid
+              with no case — and this return shares no header with the
+              main return, so it needs its own button (not the header's). */}
           <Button type="button" variant="ghost" onClick={onEndGame} className="min-h-[44px]">End game</Button>
         </div>
       </main>
@@ -426,18 +436,30 @@ export function TrailScreen({ onLeave, onEndGame }: { onLeave: () => void; onEnd
 
   return (
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8 lg:max-w-6xl" data-testid="coldtrail-screen">
-      <header>
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex items-start gap-2">
-            <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
-              ← All games
-            </Button>
-            <Button type="button" variant="ghost" onClick={onEndGame} className="min-h-[44px] px-2">End game</Button>
-          </div>
-          <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
-            ⭐ {store.stars}
-          </p>
+      {/* Panel BLOCK 2 cure (cycle 4, R5 amendment): sticky header row,
+          as in LoopScreen — the result heading takes focus without
+          preventScroll, which used to scroll this row off-screen on a
+          phone. The row is a DIRECT child of main, not of <header>: a
+          sticky element cannot stick past its parent's box, and the
+          short header would scroll away carrying the row with it (that
+          first placement failed the F3 test at y = -81.5). DOM/visual
+          order is unchanged (row, eyebrow, title, intro). Page scroll
+          (no internal container), so sticky top-0 on the row itself is
+          what sticks; solid atlas-bg-1 so scrolled content never ghosts
+          behind it. The result heading carries scroll-mt-20 so its focus
+          scroll lands below the bar. */}
+      <div className="sticky top-0 z-20 -mx-5 flex items-start justify-between gap-3 bg-[var(--atlas-bg-1)] px-5 py-2">
+        <div className="flex items-start gap-2">
+          <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
+            ← All games
+          </Button>
+          <Button type="button" variant="ghost" onClick={onEndGame} className="min-h-[44px] px-2">End game</Button>
         </div>
+        <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
+          ⭐ {store.stars}
+        </p>
+      </div>
+      <header>
         <p className="name-eyebrow mt-4">{theme.eyebrow}</p>
         <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
           {theme.heading(caseData.caseNo)}
@@ -584,7 +606,7 @@ export function TrailScreen({ onLeave, onEndGame }: { onLeave: () => void; onEnd
           className="mode-card mt-6 p-5"
         >
           <p className="text-[11px] tracking-wider text-muted uppercase">{theme.reveal.eyebrow}</p>
-          <h2 ref={resultHeadingRef} tabIndex={-1} className="mode-title mt-1 text-2xl font-semibold text-fg">{verdict.title}</h2>
+          <h2 ref={resultHeadingRef} tabIndex={-1} className="mode-title mt-1 scroll-mt-20 text-2xl font-semibold text-fg">{verdict.title}</h2>
           <p className="mt-2 text-fg">
             {theme.reveal.targetLine(caseData.hideout.name)}
           </p>
