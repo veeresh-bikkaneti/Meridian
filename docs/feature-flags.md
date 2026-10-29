@@ -183,7 +183,9 @@ sits within ±10% of the radius that build computes for the same region
 (the Globe is exact: 750 only, no tolerance), so a hand-edited circle
 cannot rig the game. Creating a challenge: the Home screen's "Challenge a friend" button
 deals a fresh five from the region you pick, and the end-of-run summary
-offers the route you just played ("Play my route") plus a fresh route in
+offers the route you just played ("Challenge a friend — play my route",
+which first opens a preview sheet saying it shares the exact places you
+just played, in order) plus a fresh route in
 the same region (a run that ends before five places still offers a fresh
 route — on the Globe that offer keeps its original mc1 form). Receiving
 one shows a welcome card first — your game in progress is only set aside
