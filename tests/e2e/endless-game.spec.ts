@@ -95,3 +95,28 @@ test("endless: End game is reachable by keyboard", async ({ page }) => {
   await page.keyboard.press("Enter");
   await expect.poll(() => readPhase(page), { timeout: 10_000 }).toBe("summary");
 });
+
+test("endgame regression: classic Globe End game still ends with summary and Done returns home", async ({
+  page,
+}) => {
+  // GUARD: passes before the fix; classic flow must not change.
+  await startGlobeRun(page);
+  // Suppress the once-per-lifetime first-win Parade modal (repo pattern:
+  // game-sfx / reset-history pre-seed this key) so a first-place hit can
+  // advance like any later win.
+  await page.evaluate(() => localStorage.setItem("meridian.firstWinCelebrated", "1"));
+  await playOnePlace(page);
+  await playOnePlace(page);
+  await playOnePlace(page);
+  const run = await readRun(page);
+  expect(run.index).toBe(3);
+  expect(run.phase).toBe("aim");
+  await page.getByRole("button", { name: "End game" }).click();
+  await expect.poll(() => readPhase(page), { timeout: 10_000 }).toBe("summary");
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible();
+  await dialog.getByRole("button", { name: "Done" }).click();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 10_000,
+  });
+});

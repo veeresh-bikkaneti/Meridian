@@ -1,5 +1,14 @@
 import { test, expect } from "playwright/test";
-import { serveBuiltArtifact, sourceFeatures } from "./helpers";
+import {
+  serveBuiltArtifact,
+  sourceFeatures,
+  startGlobeRun,
+  commitHit,
+  dismissTileOverlayIfPresent,
+  clickNextPlace,
+  readPhase,
+  NO_IDLE,
+} from "./helpers";
 
 /**
  * Cold Trail vertical-slice deploy-gate E2E (WS1 "Every Place Findable").
@@ -340,4 +349,173 @@ test("desktop layout (1280x900): sightings column beside the map at scroll 0 (B-
   // At least one clue card is visible in the first viewport at scroll 0.
   expect(firstCard!.y).toBeLessThan(900);
   expect(firstCard!.y + firstCard!.height).toBeGreaterThan(0);
+});
+
+/**
+ * Mode End game (manifest 2026-10-28-endgame-editions, rulings R1/R5):
+ * Cold Trail gains an "End game" button in its header (plus its own in
+ * the !caseData error return, covered by the unit source-pin only — that
+ * branch is unseedable, see the manifest). Ending from a mode ends the
+ * session, shows the reused session summary, clears ONLY the open flag
+ * (the case blob is byte-identical afterwards), and never calls endRun.
+ * The leave test at the end is a GUARD: it passes before the fix.
+ * NOTE: no Cold Trail "Resume" label exists — blob equality is the
+ * resume assertion, not a label.
+ */
+
+/** Session totals + ended flag from sessionStorage. */
+async function endgameSession(page: import("playwright/test").Page) {
+  return page.evaluate(() => {
+    const raw = sessionStorage.getItem("meridian.session");
+    return raw ? (JSON.parse(raw) as { totalScore: number; ended: boolean }) : null;
+  });
+}
+
+/** Raw Cold Trail store blob from localStorage. */
+async function coldtrailBlob(page: import("playwright/test").Page) {
+  return page.evaluate(() => localStorage.getItem("meridian.coldtrail.v2"));
+}
+
+/**
+ * Intersection area of two buttons, measured in a SINGLE page.evaluate()
+ * call (two sequential boundingBox() calls are not atomic).
+ */
+async function singleEvaluateOverlap(
+  page: import("playwright/test").Page,
+  first: import("playwright/test").Locator,
+  second: import("playwright/test").Locator,
+): Promise<number> {
+  const h1 = await first.elementHandle();
+  const h2 = await second.elementHandle();
+  return page.evaluate(([a, b]) => {
+    if (!a || !b) return -1;
+    const ra = a.getBoundingClientRect();
+    const rb = b.getBoundingClientRect();
+    const w = Math.max(0, Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left));
+    const h = Math.max(0, Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top));
+    return w * h;
+  }, [h1, h2]);
+}
+
+/**
+ * Mode entry after globe seeding, for the tests that read the session
+ * afterwards. openColdTrail's goto reloads the app, which (a) drops the
+ * seed boot's ?idle-ms (the 2-minute watchdog then kills the session
+ * during this VM's slow mode leg — unrelated to the feature) and (b)
+ * restores the paused classic run instead of home. So instead: click
+ * the home card straight from the seed's home screen — no reload.
+ */
+async function openColdTrailSeeded(page: import("playwright/test").Page) {
+  await page.getByRole("button", { name: "Cold Trail: Start the trail" }).click();
+  await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("sighting-card")).toHaveCount(3, { timeout: 30_000 });
+  await expect(page.getByTestId("loop-map")).toBeVisible({ timeout: 30_000 });
+}
+
+/** Seed a live classic session with a banked globe total, then leave. */
+async function seedBankedSession(page: import("playwright/test").Page): Promise<number> {
+  await startGlobeRun(page, NO_IDLE);
+  await dismissTileOverlayIfPresent(page);
+  // Suppress the once-per-lifetime first-win Parade modal (repo pattern:
+  // game-sfx / reset-history pre-seed this key) so the seeded hit can
+  // advance past the story card like any later win.
+  await page.evaluate(() => localStorage.setItem("meridian.firstWinCelebrated", "1"));
+  await commitHit(page);
+  const banked = (await endgameSession(page))?.totalScore ?? -1;
+  expect(banked).toBeGreaterThan(0);
+  // Advance past the story card first (proven session-score pattern):
+  // leaving straight from the story phase leaves the celebration overlay
+  // over the Editions button and the click never lands.
+  await clickNextPlace(page);
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  await page.getByRole("button", { name: "Editions" }).click();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+  return banked;
+}
+
+test("endgame: End game visible without scrolling, 44px, clear of All games", async ({ page }) => {
+  test.setTimeout(180_000);
+  await openColdTrail(page);
+  const endGame = page.getByRole("button", { name: "End game" });
+  await expect(endGame).toBeVisible({ timeout: 15_000 });
+  const box = await endGame.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.height).toBeGreaterThanOrEqual(44);
+  const vp = page.viewportSize();
+  expect(box!.y + box!.height).toBeLessThanOrEqual(vp!.height);
+  // Separate control, not a relabel of "All games".
+  await expect(page.getByRole("button", { name: "All games" })).toBeVisible();
+  const overlap = await singleEvaluateOverlap(
+    page,
+    endGame,
+    page.getByRole("button", { name: "All games" }),
+  );
+  expect(overlap).toBe(0);
+});
+
+test("endgame: activation ends session and shows session summary", async ({ page }) => {
+  test.setTimeout(240_000);
+  const banked = await seedBankedSession(page);
+  await openColdTrailSeeded(page);
+  await placeAndLockRing(page, { x: 300, y: 250 });
+  // Mode play must NOT change the session total (session banks classic only).
+  expect((await endgameSession(page))?.totalScore).toBe(banked);
+  const before = await coldtrailBlob(page);
+  expect(before).not.toBeNull();
+
+  await page.getByRole("button", { name: "End game" }).click();
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+  await expect(dialog.locator("p.text-5xl")).toContainText(banked.toLocaleString("en-US"));
+  expect((await endgameSession(page))?.ended).toBe(true);
+  expect(await page.evaluate(() => localStorage.getItem("meridian.coldtrail.open"))).toBeNull();
+  expect(await coldtrailBlob(page)).toBe(before);
+});
+
+test("endgame: mode-only End game shows honest 0/0 summary", async ({ page }) => {
+  test.setTimeout(180_000);
+  await openColdTrail(page);
+  await placeAndLockRing(page, { x: 300, y: 250 });
+  await page.getByRole("button", { name: "End game" }).click();
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+  expect((await endgameSession(page))?.ended).toBe(true);
+  await expect(dialog.locator("p.text-5xl")).toHaveText("0");
+  const placesRow = dialog.locator("div", { hasText: "Places played" }).last();
+  await expect(placesRow).toContainText("0");
+  const eyebrow = await dialog.locator("p.uppercase").first().textContent();
+  expect((eyebrow ?? "").trim().length).toBeGreaterThan(0);
+});
+
+test("endgame: Done then return resumes the in-progress case", async ({ page }) => {
+  test.setTimeout(240_000);
+  await openColdTrail(page);
+  await placeAndLockRing(page, { x: 300, y: 250 });
+  const before = await coldtrailBlob(page);
+  const beforeParsed = JSON.parse(before!) as { caseIndex: number; current: { ringsPlaced: boolean[] } };
+  expect(beforeParsed.current.ringsPlaced[0]).toBe(true);
+  await page.getByRole("button", { name: "End game" }).click();
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+  await dialog.getByRole("button", { name: "Done" }).click();
+  await expect(page.getByRole("button", { name: "Cold Trail: Start the trail" })).toBeVisible();
+  await page.getByRole("button", { name: "Cold Trail: Start the trail" }).click();
+  await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 30_000 });
+  const after = await coldtrailBlob(page);
+  expect(after).toBe(before);
+  const afterParsed = JSON.parse(after!) as { caseIndex: number; current: { ringsPlaced: boolean[] } };
+  expect(afterParsed.caseIndex).toBe(beforeParsed.caseIndex);
+  expect(afterParsed.current.ringsPlaced[0]).toBe(true);
+});
+
+test("endgame: all-games leave still works and does NOT end session", async ({ page }) => {
+  // GUARD: passes before the fix; must NOT be counted as RED.
+  test.setTimeout(240_000);
+  const banked = await seedBankedSession(page);
+  await openColdTrailSeeded(page);
+  await page.getByRole("button", { name: "All games" }).click();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+  const session = await endgameSession(page);
+  expect(session?.totalScore).toBe(banked);
+  expect(session?.ended).toBe(false);
 });

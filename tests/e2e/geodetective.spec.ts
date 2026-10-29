@@ -1,5 +1,15 @@
 import { test, expect } from "playwright/test";
-import { loopNameIndex, openMysteryPlaceId, serveBuiltArtifact } from "./helpers";
+import {
+  loopNameIndex,
+  openMysteryPlaceId,
+  serveBuiltArtifact,
+  startGlobeRun,
+  commitHit,
+  dismissTileOverlayIfPresent,
+  clickNextPlace,
+  readPhase,
+  NO_IDLE,
+} from "./helpers";
 
 /**
  * GeoDetective unlimited-mode deploy-gate E2E.
@@ -610,4 +620,202 @@ test("no celebration on a mid-cycle win", async ({ page }) => {
   await guessTarget(page, await targetEntry(page));
   await expect(page.getByText("🎯 You found it!")).toBeVisible();
   await expect(page.getByRole("status", { name: "Cycle complete celebration" })).toHaveCount(0);
+});
+
+/**
+ * Mode End game (manifest 2026-10-28-endgame-editions, rulings R1/R5):
+ * GeoDetective gains an "End game" button in its header. Ending from a
+ * mode ends the session via the classic session-end path, shows the
+ * reused session summary, clears ONLY the open flag (the case store is
+ * never touched, so the case resumes), and never calls endRun.
+ * The leave test at the end is a GUARD: it passes before the fix.
+ */
+
+/** Session totals + ended flag from sessionStorage. */
+async function endgameSession(page: import("playwright/test").Page) {
+  return page.evaluate(() => {
+    const raw = sessionStorage.getItem("meridian.session");
+    return raw ? (JSON.parse(raw) as { totalScore: number; ended: boolean }) : null;
+  });
+}
+
+/**
+ * Intersection area of two buttons, measured in a SINGLE page.evaluate()
+ * call (two sequential boundingBox() calls are not atomic).
+ */
+async function singleEvaluateOverlap(
+  page: import("playwright/test").Page,
+  first: import("playwright/test").Locator,
+  second: import("playwright/test").Locator,
+): Promise<number> {
+  const h1 = await first.elementHandle();
+  const h2 = await second.elementHandle();
+  return page.evaluate(([a, b]) => {
+    if (!a || !b) return -1;
+    const ra = a.getBoundingClientRect();
+    const rb = b.getBoundingClientRect();
+    const w = Math.max(0, Math.min(ra.right, rb.right) - Math.max(ra.left, rb.left));
+    const h = Math.max(0, Math.min(ra.bottom, rb.bottom) - Math.max(ra.top, rb.top));
+    return w * h;
+  }, [h1, h2]);
+}
+
+/** Shared visibility / size / no-overlap assertions for the mode button. */
+async function expectEndGameClear(
+  page: import("playwright/test").Page,
+  leaveName: string,
+) {
+  const endGame = page.getByRole("button", { name: "End game" });
+  await expect(endGame).toBeVisible({ timeout: 15_000 });
+  const box = await endGame.boundingBox();
+  expect(box).not.toBeNull();
+  expect(box!.height).toBeGreaterThanOrEqual(44);
+  const vp = page.viewportSize();
+  expect(box!.y + box!.height).toBeLessThanOrEqual(vp!.height);
+  const overlap = await singleEvaluateOverlap(
+    page,
+    endGame,
+    page.getByRole("button", { name: leaveName }),
+  );
+  expect(overlap).toBe(0);
+}
+
+/**
+ * Mode entry after globe seeding, for the tests that read the session
+ * afterwards. openLoop's goto reloads the app, which (a) drops the seed
+ * boot's ?idle-ms (the 2-minute watchdog then kills the session during
+ * this VM's multi-minute mode leg — unrelated to the feature) and (b)
+ * restores the paused classic run instead of home. So instead: set the
+ * ?loop-puzzle= seam in place (LoopScreen reads location.search at
+ * mount) and click the home card — no reload, same seam, same screen.
+ */
+async function openLoopSeeded(page: import("playwright/test").Page, puzzle: string) {
+  await page.evaluate((p) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("loop-puzzle", p);
+    history.pushState(null, "", `${window.location.pathname}?${params.toString()}`);
+  }, puzzle);
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
+  await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("loop-map")).toBeVisible({ timeout: 30_000 });
+}
+
+/** Seed a live classic session with a banked globe total, then leave. */
+async function seedBankedSession(page: import("playwright/test").Page): Promise<number> {
+  await startGlobeRun(page, NO_IDLE);
+  await dismissTileOverlayIfPresent(page);
+  // Suppress the once-per-lifetime first-win Parade modal (repo pattern:
+  // game-sfx / reset-history pre-seed this key) so the seeded hit can
+  // advance past the story card like any later win.
+  await page.evaluate(() => localStorage.setItem("meridian.firstWinCelebrated", "1"));
+  await commitHit(page);
+  const banked = (await endgameSession(page))?.totalScore ?? -1;
+  expect(banked).toBeGreaterThan(0);
+  // Advance past the story card first (proven session-score pattern):
+  // leaving straight from the story phase leaves the celebration overlay
+  // over the Editions button and the click never lands.
+  await clickNextPlace(page);
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  await page.getByRole("button", { name: "Editions" }).click();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+  return banked;
+}
+
+test("endgame: End game visible without scrolling, 44px, clear of Editions", async ({ page }) => {
+  test.setTimeout(180_000);
+  await openLoop(page, "218");
+  await expectEndGameClear(page, "Editions");
+});
+
+test("endgame: activation ends session and shows session summary", async ({ page }) => {
+  test.setTimeout(240_000);
+  const banked = await seedBankedSession(page);
+  await openLoopSeeded(page, "218");
+  await guessViaMap(page, "paris");
+  await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+  // Mode play must NOT change the session total (session banks classic only).
+  expect((await endgameSession(page))?.totalScore).toBe(banked);
+  const before = await loopStore(page);
+  expect(before.current.index).toBe(218);
+  expect(before.current.guesses.length).toBe(1);
+
+  await page.getByRole("button", { name: "End game" }).click();
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+  await expect(dialog.locator("p.text-5xl")).toContainText(banked.toLocaleString("en-US"));
+  expect((await endgameSession(page))?.ended).toBe(true);
+  expect(await page.evaluate(() => localStorage.getItem("meridian.loop.open"))).toBeNull();
+  const after = await loopStore(page);
+  expect(after.current.index).toBe(218);
+  expect(after.current.guesses.length).toBe(1);
+});
+
+test("endgame: mode-only End game shows honest 0/0 summary", async ({ page }) => {
+  test.setTimeout(180_000);
+  await openLoop(page, "218");
+  await guessViaMap(page, "paris");
+  await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+  await page.getByRole("button", { name: "End game" }).click();
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+  expect((await endgameSession(page))?.ended).toBe(true);
+  await expect(dialog.locator("p.text-5xl")).toHaveText("0");
+  const placesRow = dialog.locator("div", { hasText: "Places played" }).last();
+  await expect(placesRow).toContainText("0");
+  const eyebrow = await dialog.locator("p.uppercase").first().textContent();
+  expect((eyebrow ?? "").trim().length).toBeGreaterThan(0);
+});
+
+test("endgame: Done then return resumes the in-progress case", async ({ page }) => {
+  test.setTimeout(240_000);
+  await openLoop(page, "218");
+  await guessViaMap(page, "paris");
+  await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+  await page.getByRole("button", { name: "End game" }).click();
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+  await dialog.getByRole("button", { name: "Done" }).click();
+  await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible();
+  await page.getByRole("button", { name: "GeoDetective: Resume your case" }).click();
+  await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+  const store = await loopStore(page);
+  expect(store.current.index).toBe(218);
+  expect(store.current.guesses.length).toBe(1);
+});
+
+test("endgame: Done then return re-renders a finished-but-unacknowledged reveal", async ({ page }) => {
+  test.setTimeout(240_000);
+  // Suppress the once-per-lifetime first-win Parade modal (same key the
+  // LoopScreen solve path checks) so the reveal's End game button is
+  // reachable like any later win's.
+  await page.goto(BASE);
+  await page.evaluate(() => localStorage.setItem("meridian.firstWinCelebrated", "1"));
+  await openLoop(page, "218");
+  await guessTarget(page, await targetEntry(page));
+  await expect(page.getByText("🎯 You found it!")).toBeVisible();
+  await page.getByRole("button", { name: "End game" }).click();
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible({ timeout: 15_000 });
+  await dialog.getByRole("button", { name: "Done" }).click();
+  // Finished-but-unacknowledged: home offers "Solve a mystery", NOT Resume.
+  await expect(page.getByRole("button", { name: "GeoDetective: Solve a mystery" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toHaveCount(0);
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
+  await expect(page.getByText("🎯 You found it!")).toBeVisible({ timeout: 30_000 });
+});
+
+test("endgame: editions leave still works and does NOT end session", async ({ page }) => {
+  // GUARD: passes before the fix; must NOT be counted as RED.
+  test.setTimeout(240_000);
+  const banked = await seedBankedSession(page);
+  await openLoopSeeded(page, "218");
+  await guessViaMap(page, "paris");
+  await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+  await page.getByRole("button", { name: "Editions" }).click();
+  await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible();
+  const session = await endgameSession(page);
+  expect(session?.totalScore).toBe(banked);
+  expect(session?.ended).toBe(false);
 });
