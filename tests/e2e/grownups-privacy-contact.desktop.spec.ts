@@ -210,6 +210,16 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     await expect(page.getByTestId("contact-parked-note")).toHaveCount(0);
     await expect(page.getByTestId("contact-kid-note")).toBeVisible();
 
+    // a11y (#220 blockers round): both result live regions are in the DOM,
+    // empty, BEFORE any send — a live region inserted together with its
+    // text is not reliably announced. Results are rendered INTO them.
+    const statusRegion = page.getByTestId("contact-status-region");
+    const alertRegion = page.getByTestId("contact-alert-region");
+    await expect(statusRegion).toHaveAttribute("role", "status");
+    await expect(statusRegion).toBeEmpty();
+    await expect(alertRegion).toHaveAttribute("role", "alert");
+    await expect(alertRegion).toBeEmpty();
+
     // Moving Part 3, 4, 5, 6: Real browser submission -> real server validation ->
     // real DiscordWebhookSink HTTP POST to local receiver -> 200 { ok: true, stored: true } ->
     // confirmation banner shown & form reset.
@@ -225,6 +235,11 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     );
     await expect(form.locator("textarea")).toHaveValue("");
     await expect(form.locator('input[type="email"]')).toHaveValue("");
+    // Announced once: the thank-you sits inside the pre-existing polite
+    // region and carries no live role of its own (no double announcement).
+    await expect(statusRegion.getByTestId("contact-sent")).toBeVisible();
+    await expect(sentBanner).not.toHaveAttribute("role");
+    await expect(alertRegion).toBeEmpty();
 
     expect(serverResponses).toHaveLength(1);
     expect(serverResponses[0].status).toBe(200);
@@ -258,6 +273,12 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     const notDeliveredBanner = page.getByTestId("contact-error");
     await expect(notDeliveredBanner).toBeVisible();
     await expect(notDeliveredBanner).toContainText("isn't switched on yet");
+    await expect(alertRegion.getByTestId("contact-error")).toBeVisible();
+    await expect(notDeliveredBanner).not.toHaveAttribute("role");
+    await expect(statusRegion).toBeEmpty();
+    // Keep a handle on this result node: the next send (Part 3b) ends in the
+    // SAME wording, and it must be a fresh insertion so it is announced again.
+    const firstNotDelivered = await notDeliveredBanner.elementHandle();
     expect(serverResponses).toHaveLength(2);
     expect(serverResponses[1].status).toBe(200);
     expect(serverResponses[1].body).toEqual({ ok: true, stored: false });
@@ -283,6 +304,10 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     // proven server-side — 200 { ok: true } and zero webhook calls.
     await expect.poll(() => serverResponses.length).toBe(3);
     await expect(form.locator("textarea")).toHaveValue("Bot spam submission");
+    // Same wording as Part 4b, but a NEW node in the alert region: the stale
+    // result was cleared when this send started, so the repeat is announced.
+    await expect(alertRegion.getByTestId("contact-error")).toContainText("isn't switched on yet");
+    expect(await firstNotDelivered!.evaluate((el) => el.isConnected)).toBe(false);
     expect(serverResponses).toHaveLength(3);
     expect(serverResponses[2].status).toBe(200);
     expect(serverResponses[2].body).toEqual({ ok: true });
@@ -315,6 +340,8 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     await expect(errorBanner).toContainText(
       "That's a lot of messages in a short time — please try again in a few minutes.",
     );
+    await expect(alertRegion.getByTestId("contact-error")).toBeVisible();
+    await expect(statusRegion).toBeEmpty();
     expect(serverResponses).toHaveLength(5);
     expect(serverResponses[4].status).toBe(429);
     expect(Number(serverResponses[4].headers["retry-after"])).toBeGreaterThan(0);

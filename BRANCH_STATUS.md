@@ -5,9 +5,12 @@
 - **Prior record:** this file previously carried the Package B branch
   record; that work merged as PR #283 and its full record lives in that
   PR and in git history.
-- **State:** **READY FOR PANEL** (2026-10-29). All build units landed
-  and pushed; gates green except the contact E2E, which is recorded
-  below as lock-blocked (NOT run — no claim made). Issue #220: wire the
+- **State:** **READY FOR PANEL** (2026-10-29, blockers round). All
+  build units landed and pushed; Option 1a pushed as `6b3c17c` on the
+  owner's words (Veeresh, 2026-10-29, chat): "Yes, push 6b3c17c to
+  fix/220-contact-wiring. Do not merge." The contact E2E, once
+  lock-blocked, has since run green (builder-run and CI; see Option 1a
+  evidence and the blockers-round record). Not merged. Issue #220: wire the
   Contact Us form's delivery (root `wrangler.jsonc` bindings) and make
   the page honest about delivery — SPEC §3 + §4 of
   `~/workspace/meridian-contact-activation/SPEC.md`. Animations are a
@@ -15,7 +18,8 @@
 - **Option 1a (2026-10-29):** built on `scratch/220-option1a` (PR head
   `911fc95` + `origin/main` `3aa16b5`, merge `cb56b4a`). Builder-run
   record below; Councilor C issued a records-only CHALLENGE (F1-F4),
-  corrected in this record. Not pushed, not merged.
+  corrected in this record. Pushed as `6b3c17c` (see State); not
+  merged.
 
 ## Blockers round — aria-live + owner citations + PR body (2026-10-29)
 
@@ -72,20 +76,57 @@ Approvals: push to fix/220-contact-wiring (standing authorization,
   deploy. Checker: the review panel on the final tip (not the builder).
 ```
 
+Blockers-round record (builder-run; not self-certified; checker = panel):
+
+- **aria-live** (`src/routes/contact.tsx`, ContactForm only): both
+  result regions (`role="status"`, `role="alert"`) are now always in
+  the DOM and empty until a result; the thank-you and the error text
+  render inside them and carry no role of their own; the old result is
+  cleared when a new send starts. Copy unchanged. `empty:-mt-5` /
+  `empty:-mt-4` cancel the column gap while a region is empty.
+- **E2E** (`grownups-privacy-contact.desktop.spec.ts`, full-stack test):
+  regions present and empty before any send; thank-you inside the
+  status region; not-delivered and 429 texts inside the alert region;
+  no inner role; a repeated identical not-delivered result (Part 4b ->
+  3b) is a new DOM node (old node disconnected).
+- RED on the unmodified page: 1 failed (`contact-status-region` not
+  found). RED probe with only the clear-on-send removed: 1 failed
+  (`isConnected` true, expected false). GREEN: 5/5 in the spec.
+- Owner-citation gap: uncited "owner ruling / dispatch / owner-approved
+  SPEC / owner's instruction" lines downgraded with errata (Task
+  capsule, Verification record, Notes); the 3:18 PM reconfirmation now
+  quotes the owner's actual reply "A". Source-code comments that still
+  say "owner's precedence (2026-10-21)" (contact-handler.server.ts) and
+  "owner's route, 2026-10-21" (privacy.tsx) were NOT edited (source
+  comments, outside this round's file scope) — open for the panel.
+
+| Gate (`/workspace/v220/gates-blockers/`) | Result |
+|---|---|
+| `npx tsc --noEmit` | exit 0 |
+| `npm test` | exit 0 — scripts 861: 850 pass / 0 fail / 11 skipped; src 1830/1830 |
+| `npm run test:worker` | exit 0 — 85/85 |
+| `node scripts/lint-cards.mjs` | GATE PASSED |
+| `npm run build:pages` | exit 0 |
+| `npm run build` | exit 0 |
+| E2E 4 CI specs, `--workers=1`, under `flock ~/workspace/.e2e.lock` | exit 0 — 11 passed (29.2s) |
+
 ## Option 1a — limiter last + linear email regex (2026-10-29)
 
 Owner decision, verbatim (Veeresh, 2026-10-29 2:46 PM CT): "Build 1a:
 Option 1 plus the linear email regex. I approve the Chair-lift for the
 regex edit."
 
-Owner reconfirmation, verbatim (Veeresh, 2026-10-29 3:18 PM CT; reply
-"A"), given after being told the regex slowdown trigger is verified in
-Node 22 only (production Cloudflare impact not reproduced): "Keep the
-regex edit as defense-in-depth. I reconfirm the Chair-lift knowing the
-slowdown was verified in Node 22 only." Open question on lift validity
+Owner reconfirmation (Veeresh, 2026-10-29, about 3:18 PM CT), the
+owner's words verbatim: "A". It was given after being told the regex
+slowdown trigger is verified in Node 22 only (production Cloudflare
+impact not reproduced), and it selected option A as the agent worded
+it: keep the regex edit as defense-in-depth and reconfirm the
+Chair-lift knowing the slowdown was verified in Node 22 only. That
+option wording is the agent's, not the owner's. Erratum (blockers
+round): an earlier version of this record quoted the option text as
+the owner's verbatim words; corrected. Open question on lift validity
 (AGENTS.md:169: "If the trigger is not verified in the manifest, the
-lift is void: stop and ask the owner"): RESOLVED by the owner with the
-reconfirmation above.
+lift is void: stop and ask the owner"): resolved by the owner's "A".
 
 Disclosure (what this PR did before 1a): to put the honeypot silent-200
 ahead of the origin gate, the PR also moved the origin gate behind the
@@ -127,8 +168,8 @@ What changed:
   constant and its doc comment only (Constitution rule 3, and rule 1 to
   the extent it applies). Manifest: builder-drafted, approved by the
   owner's explicit words above; there is no separate Chair signature
-  beyond that approval, reconfirmed by the owner on 2026-10-29
-  3:18 PM CT (see above; lift-validity question RESOLVED by the owner).
+  beyond that approval, reconfirmed by the owner's reply "A" on
+  2026-10-29, about 3:18 PM CT (see above).
 - **Counting:** only a message that would be delivered spends quota
   (in-memory 3 per sender per 10 min + 60/h global; bindings 3/60 s per
   sender, 10/60 s global). Honeypot, wrong/missing Origin, malformed
@@ -177,10 +218,16 @@ TASK / requested outcome:
   pushed, ready for the review pipeline. No merge, no deploy.
 
 Interpretations considered and selected reading:
-  - Env route: the SPEC §3.1 "pick one" is settled by the owner's
-    2026-10-21 ruling — read the secret from the Worker runtime bindings
-    (cloudflare:workers env / globalThis.__env__), with process.env ONLY
-    as a local-dev fallback. nodejs_compat is NOT added.
+  - Env route: the SPEC §3.1 "pick one" is read as: take the secret
+    from the Worker runtime bindings (cloudflare:workers env /
+    globalThis.__env__), with process.env ONLY as a local-dev fallback.
+    nodejs_compat is NOT added. Source: issue #220 Step 3 (plan text,
+    agent-written: "env read via Worker runtime bindings
+    (`cloudflare:workers` env; `process.env` only as local-dev
+    fallback)"). Erratum (blockers round): earlier versions called this
+    "the owner's 2026-10-21 ruling". No owner words for such a ruling
+    were found in this repo, issue #220, or the session, so that
+    attribution is withdrawn: owner ruling NOT cited.
   - [SUPERSEDED 2026-10-29 by Option 1a, see above: the limiter now
     runs last, before the sink.]
     Handler order: the mandated move is honeypot silent-200 BEFORE the
@@ -194,14 +241,17 @@ Interpretations considered and selected reading:
     the panel can challenge the reading with full information.
   - Thank-you copy: §5's new copy arrives with the animation PR. This
     PR keeps the existing thank-you wording and only gates WHEN it
-    shows (stored:true), per the two-track dispatch (wiring+honesty
-    first, animations second).
+    shows (stored:true), per the two-track plan (wiring+honesty first,
+    animations second). Source: the build brief; owner words for it
+    NOT cited (an earlier wording said "dispatch" as if owner-issued).
 
 Tier and rationale:
-  Tier 2 surface (security/privacy, 3+ files), built under the
-  owner-approved SPEC as the design of record plus the owner's
-  2026-10-21 env-route ruling. Full review pipeline still gates the PR;
-  merge only on the owner's word.
+  Tier 2 surface (security/privacy, 3+ files), built under SPEC.md as
+  the design of record plus the env route above (issue #220 Step 3).
+  Erratum (blockers round): earlier wording said "owner-approved SPEC"
+  and "the owner's 2026-10-21 env-route ruling"; no owner words for
+  either were found, so both are downgraded to NOT cited. Full review
+  pipeline still gates the PR; merge only on the owner's word.
 
 Done condition / scenarios / evidence:
   - Root wrangler.jsonc declares the CONTACT_DISCORD_WEBHOOK_URL secret
@@ -273,8 +323,10 @@ Approvals needed (exact action + owner), checker, escalation:
 - [x] Docs — README contact paragraph; privacy header comment;
       rate-limiter comment line (`efe3edf`).
 - [x] Gates — tsc / npm test / lint-cards / builds (numbers below).
-- [ ] Gates — contact E2E: **NOT RUN — lock-blocked** (see Verification
-      record). Must be run before merge, once the shared E2E lock frees.
+- [x] Gates — contact E2E: was lock-blocked on the first tip (see
+      Verification record, kept as history); since run green with the
+      4 CI specs on `435fc1d`, `a118a49` and in the blockers round, and
+      in CI (`e2e` check pass on `911fc95` and `6b3c17c`).
 - [x] Pushed to origin (standing authorization; this branch only).
 
 ## Verification record (builder-run, 2026-10-29, on the final code tip)
@@ -291,13 +343,14 @@ Approvals needed (exact action + owner), checker, escalation:
 | Emitted SSR `wrangler.json` (the deploy shape) | Verified: carries `secrets.required: ["CONTACT_DISCORD_WEBHOOK_URL"]`, both `ratelimits` (72071 @ 3/60, 72072 @ 10/60), `configPath` → root `wrangler.jsonc` |
 | `npm run build:pages` | PASS — exit 0 |
 | `npm run test:worker` | Not applicable — no `workers/` changes (AGENTS.md requires it only for PRs touching `workers/`) |
-| Contact E2E (`tests/e2e/grownups-privacy-contact.desktop.spec.ts`) | **NOT RUN — lock-blocked.** The shared `~/workspace/.e2e.lock` was held continuously by the Package C crew's full-suite Playwright run (from `~/workspace/meridian-challenge-c/repo`, 41+ min elapsed at last check). Two attempts by this builder (an initial ~17 min queue, then a bounded `flock -w 600`) never acquired the lock. Per the owner's instruction this is recorded, not waited out. The spec's updated Part 4b/3b expectations are unproven in a browser until this runs. |
+| Contact E2E (`tests/e2e/grownups-privacy-contact.desktop.spec.ts`) | [SUPERSEDED — since run green, see the checklist above.] At the time: **NOT RUN — lock-blocked.** The shared `~/workspace/.e2e.lock` was held continuously by the Package C crew's full-suite Playwright run (from `~/workspace/meridian-challenge-c/repo`, 41+ min elapsed at last check). Two attempts by this builder (an initial ~17 min queue, then a bounded `flock -w 600`) never acquired the lock. It was recorded, not waited out (an earlier wording said "per the owner's instruction"; owner words NOT cited, attribution withdrawn). |
 
 ## Notes for the panel
 
 - The existing unit test "readContactEnv and readContactRuntimeEnv read
   from process.env and globalThis.__env__ (process.env wins)" pinned the
-  OLD precedence. The owner's 2026-10-21 ruling reverses it (runtime
+  OLD precedence. The env route (issue #220 Step 3; owner ruling NOT
+  cited, see Task capsule) reverses it (runtime
   bindings first, process.env = local-dev fallback), so that test's
   expectations and title were updated to the new contract — a mandated
   behavior change, not a weakening: both sources are still exercised,

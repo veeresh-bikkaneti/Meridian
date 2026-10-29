@@ -69,6 +69,10 @@ function ContactForm() {
       return;
     }
     setProblems([]);
+    // Clear the previous result as the new send starts: the stale message
+    // leaves the live region now, so a repeat of the same wording is a
+    // fresh insertion and gets announced again.
+    setResult(null);
     setSending(true);
     // The endpoint comes from flags.json (contactEndpoint) — null until the
     // owner switches /api/contact on, in which case we say so honestly.
@@ -102,16 +106,22 @@ function ContactForm() {
       {/* The thank-you renders ONLY on confirmed delivery (stored:true).
           For every other outcome the visitor gets an honest state below
           and keeps their draft — saying "we received your request" for a
-          message nobody received was the #220 bug. */}
-      {sendOutcome(result) === "delivered" ? (
-        <p
-          role="status"
-          data-testid="contact-sent"
-          className="rounded-lg border border-line bg-surface p-4 text-base font-medium"
-        >
-          Thanks — we received your request and will get back to you.
-        </p>
-      ) : null}
+          message nobody received was the #220 bug.
+          Screen readers: the polite live region is ALWAYS in the DOM (empty
+          until a result) — a region inserted together with its text is not
+          reliably announced. The message inside has no role of its own, so
+          it is announced once. empty:-mt-5 cancels the column gap while it
+          is empty, so the layout is unchanged. */}
+      <div role="status" data-testid="contact-status-region" className="empty:-mt-5">
+        {sendOutcome(result) === "delivered" ? (
+          <p
+            data-testid="contact-sent"
+            className="rounded-lg border border-line bg-surface p-4 text-base font-medium"
+          >
+            Thanks — we received your request and will get back to you.
+          </p>
+        ) : null}
+      </div>
 
       <form className="flex flex-col gap-4" onSubmit={onSubmit} noValidate data-testid="contact-form">
         <label className="flex flex-col gap-1">
@@ -183,18 +193,23 @@ function ContactForm() {
             </ul>
           </div>
         ) : null}
-        {result && sendOutcome(result) !== "delivered" ? (
-          <p role="alert" data-testid="contact-error">
-            {sendOutcome(result) === "not-configured" || sendOutcome(result) === "not-delivered"
-              ? // "not-delivered" (accepted but stored:false — no inbox is
-                // connected) reuses the not-configured wording on purpose:
-                // same honest situation, same voice (SPEC §4).
-                "The contact form isn't switched on yet. Please check back soon."
-              : sendOutcome(result) === "rate-limited"
-                ? "That's a lot of messages in a short time — please try again in a few minutes."
-                : "We couldn't send that just now. Please try again later."}
-          </p>
-        ) : null}
+        {/* Same pattern as the status region above: the alert region is
+            always present (empty:-mt-4 cancels the form's gap while empty);
+            not-delivered / rate-limited / error results render inside it. */}
+        <div role="alert" data-testid="contact-alert-region" className="empty:-mt-4">
+          {result && sendOutcome(result) !== "delivered" ? (
+            <p data-testid="contact-error">
+              {sendOutcome(result) === "not-configured" || sendOutcome(result) === "not-delivered"
+                ? // "not-delivered" (accepted but stored:false — no inbox is
+                  // connected) reuses the not-configured wording on purpose:
+                  // same honest situation, same voice (SPEC §4).
+                  "The contact form isn't switched on yet. Please check back soon."
+                : sendOutcome(result) === "rate-limited"
+                  ? "That's a lot of messages in a short time — please try again in a few minutes."
+                  : "We couldn't send that just now. Please try again later."}
+            </p>
+          ) : null}
+        </div>
 
         <button
           type="submit"
