@@ -3889,7 +3889,7 @@ function Choose({
                       §1(e)): the deck-level door into the challenge
                       region picker. It opens the shipped mini-picker
                       and deals FRESH from the picked region — never
-                      from this deck (owner ruling OQ4: deck ids are
+                      from this deck (manifest §1(e)/§3: deck ids are
                       decodable from any link, so a deck-sourced deal
                       would publish the player's misses). Same
                       placement pattern as the reset opener: in-flow

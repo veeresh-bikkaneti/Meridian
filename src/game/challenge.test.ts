@@ -603,9 +603,10 @@ test("package B: the mid-run/reveal widening chain never subtracts seen places",
 // label is the manifest's exact words, kept in challenge.ts beside the
 // other share labels. Its creation path is the picker's — sources built
 // from the picked region's CATALOG only. The deck is never an input:
-// owner ruling OQ4 (no "Beat my misses") — deck ids are decodable from
-// any link that carries them, so a deck-sourced deal would publish the
-// sender's misses.
+// the manifest §3 privacy rule (the design council ruled never-the-
+// deck; a "Beat my misses" opt-in was deferred to the owner as an
+// open question) — deck ids are decodable from any link that carries
+// them, so a deck-sourced deal would publish the sender's misses.
 // ============================================================================
 import { CHALLENGE_REVIEW_LABEL } from "./challenge.ts";
 

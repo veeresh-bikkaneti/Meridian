@@ -229,8 +229,10 @@ same region picker as the Home door and deals a fresh five from
 whichever map you pick, through the same preview sheet. One rule is
 absolute here: the route is NEVER dealt from your review deck. A
 challenge link can be decoded by anyone who receives it, so a route
-built from your deck would publish exactly which places you missed —
-the owner's ruling when this was designed was no, plainly. The deck
+built from your deck would publish exactly which places you missed.
+When this was designed, the council's ruling was never-the-deck, and
+a labelled "Beat my misses" opt-in was deferred to the owner as an
+open question (the council's recommendation: no) — still open. The deck
 only decides whether the Home card shows the door (it appears while
 the deck holds any card, due or caught up, just like "Start over");
 the finished-review screen shows it whenever the flag is on. Turning

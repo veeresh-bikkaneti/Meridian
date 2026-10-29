@@ -89,8 +89,10 @@ export function challengeFreshRouteLabel(regionName: string): string {
 /** The review-surface entry (manifest §1(e)): deck-level, on the home
  * Review card and the review-complete screen. It opens the region
  * mini-picker and deals FRESH from the picked region — the deck's
- * cards are never a deal source (owner ruling OQ4: no "Beat my
- * misses"; deck ids are decodable from any link that carries them). */
+ * cards are never a deal source (the manifest's §3 privacy rule:
+ * the design council ruled never-the-deck, and a labelled "Beat my
+ * misses" opt-in was deferred to the owner as an open question;
+ * deck ids are decodable from any link that carries them). */
 export const CHALLENGE_REVIEW_LABEL = "Challenge a friend — pick a map";
 
 const PREFIX = "#c=mc1.";

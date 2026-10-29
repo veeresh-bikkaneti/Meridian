@@ -21,7 +21,7 @@ import { SCORING_VERSION } from "../../src/game/scoring.ts";
  *   deck-level entry, "Challenge a friend — pick a map" (never a
  *   per-card control), opening the shipped region mini-picker.
  * - The route it deals is FRESH from the picked region's catalog. The
- *   privacy rail (owner ruling OQ4: no "Beat my misses") — deck ids
+ *   privacy rail (manifest §1(e)/§3: never the deck) — deck ids
  *   are decodable from any link, so a deck-sourced deal would publish
  *   the sender's misses. The seeded deck below holds REAL Texas
  *   catalog ids; picking Nebraska must deal five Nebraska catalog ids
