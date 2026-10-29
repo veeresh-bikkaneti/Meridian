@@ -1,3 +1,31 @@
+# BRANCH_STATUS — feat/review-card-action-model
+
+- **Branch:** `feat/review-card-action-model`
+- **Base:** `origin/main` at `3aa16b5` (Package C, PR #285, merged + live). If the external End-game PR lands first, this branch rebases and this file resolves keeping both records accurate.
+- **State:** **Phase 1 COMPLETE — Tier-2 manifest Chair-signed and committed first (`a8f2354`). Phase 2 (TDD build → gates → rebase → retest → verify vs spec → panel → PR) in progress. NO MERGE without the owner's per-PR word; Phase 3 is a later run.**
+- **Governing manifest:** `.council/manifests/2026-10-29-review-card-action-model.md` (this branch, commit `a8f2354`).
+- **Prior record:** this file previously carried Package C's branch record; Package C merged as PR #285 at `3aa16b5`, and its full record lives in that PR and in git history.
+- **Task capsule:**
+  - TASK / outcome: owner report 2026-10-29 — the home Review card's action model is a mess: whole-card click target containing three look-alike text actions (Start review / Challenge a friend / Start over) with wildly different consequences. Redesign per the signed manifest: the card leaves Form S; three explicit controls (filled primary pill → outline Challenge pill → fixed-red danger footer); the REVIEW → cue is removed.
+  - Tier: 2 (owner-orchestrated squads + Tier-2 council; manifest signed before code). Process: deslop (zero-behaviour) → RED tests → build → 5 gates → rebase → retest → Finish-Gate verify vs manifest → full pipeline panel (12 seats + DevEx) on the final tip → PR. STOP at PR.
+  - Interpretations recorded (narrow/safe): (1) "Start over" stays on the card — relocation to "For grown-ups" is blocked in this run by the Finish-Gate veto, the PR #281 D10 ruling, and the locked opener copy; it is an open owner question in the manifest §8. (2) Danger colour is the fixed hex `#b3372a` (theme-invariant), not `var(--atlas-stamp)` — Councilor C F2: the token's night value fails the 4.5:1 floor on the parchment card. (3) The containment contract is hit-testing (`elementFromPoint`), not geometry (C F4).
+  - Files in scope: `src/components/game-app.tsx` (Review branch of `Choose` only), `src/styles/home-v5.css` (Review-scoped rules; deslop commit zero-behaviour), `tests/e2e/review-card-actions.desktop.spec.ts` (new), `tests/e2e/card-redesign.desktop.spec.ts` (re-spec), `tests/e2e/mobile-home-overlap.spec.ts` (re-spec), `README.md`, handbook, this file.
+  - Protected (untouched): `src/game/**` incl. `RESET_HISTORY_COPY` and the reset store logic, `src/game/data/**`, `package-lock.json`, shared `.hv5-stretch` rules for sibling cards, ReviewComplete's Start-over opener (stays brown — leakage check), tour anchors, `.hv5-art` geometry.
+  - Done condition: manifest §6 contracts green (hit-test probe, focus order = stack order, exact danger colour in both themes, ordered-identity state matrix, divider ownership); all 5 gates green; Finish-Gate A1–F6 evidence matrix complete; panel approves the final tip; PR open. Known follow-up (out of footprint, named in the PR body): reset confirm-success path returns no focus when the deck empties (C F8b, pre-existing).
+  - E2E environment: Playwright's bundled chromium-1243 via `PLAYWRIGHT_CHROMIUM_EXECUTABLE` — /opt/meta-chromium refuses headless launch on this VM.
+- **Stage log:**
+  - [x] Stage 0 — clone @ `3aa16b5`, branch created, npm ci (391 pkgs), constitution + council protocol + surfaces read and verified at source.
+  - [x] Stage 1 — Phase 1 office hours: 3 squads (18/19 seats exact persona files; Master Plan Architect = disclosed `master_orchestrator.toml` nearest-match), 2 cross-squad pairs, Accessibility Auditor + Finish-Gate vetoes exercised; Tier-2 council (A: 12 Gherkin scenarios, model satisfies all; B: TDD contracts; C: CHALLENGE, 9 findings — F2/F4/F5/F7/F8 sustained as amendments, F1/F3 carried verbatim); Chair-signed manifest committed first (`a8f2354`). Perf baseline: CSS gz 9,153 B / JS gz 142,312 B (budgets restated per C F8c: JS Δ ≤ +1 KB gz, CSS Δ ≤ +1 KB gz).
+  - [ ] Stage 2 — Deslop commit (zero-behaviour: 2 stale comments + stranded focus-rule regroup).
+  - [ ] Stage 3 — RED tests per manifest §6; build; gates.
+  - [ ] Stage 4 — Rebase onto current main; retest; Finish-Gate verify + evidence matrix.
+  - [ ] Stage 5 — Panel (12 seats + DevEx) on the final tip; cures re-voted.
+  - [ ] Stage 6 — PR opened. NO MERGE. Phase 3 readiness noted in the final report.
+
+---
+
+<!-- Record from origin/main (4597669 — PR #284 merged) kept below, per the coordination ledger: both operations' records are kept, never overwritten. -->
+
 # BRANCH_STATUS — fix/220-contact-wiring
 
 - **Branch:** `fix/220-contact-wiring`
