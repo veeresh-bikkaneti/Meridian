@@ -239,15 +239,17 @@ test("(f) mc2 completion: pass-along keeps format + pinned radius; fresh seconda
   if (!decodedPrimary.ok) return;
   expect([...decodedPrimary.ids]).toEqual([...NEBRASKA_IDS]);
   expect(decodedPrimary.rad).toBe(87);
+  // NB: data-testid="challenge-complete" is the heading element, not a
+  // panel — scope button lookups by their share containers instead.
   await expect(
-    complete.getByRole("button", { name: "Pass this challenge to a friend" }),
+    primary.getByRole("button", { name: "Pass this challenge to a friend" }),
   ).toBeVisible();
 
   // Secondary: a fresh route in the completed route's region.
   const fresh = page.getByTestId("challenge-fresh-share-container");
   await expect(fresh).toBeVisible();
   await expect(
-    complete.getByRole("button", { name: "Or send a new Nebraska route" }),
+    fresh.getByRole("button", { name: "Or send a new Nebraska route" }),
   ).toBeVisible();
   expectFreshNebraskaFive(await fresh.getAttribute("data-challenge-url"));
 });
