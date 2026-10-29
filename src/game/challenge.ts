@@ -58,6 +58,10 @@ export const CHALLENGE_GLOBE_RADIUS_KM = 750;
 export const CHALLENGE_MIN_PLACES = 5;
 export const CHALLENGE_MAX_PLACES = 10;
 export const CHALLENGE_SHARE_LABEL = "Share this route with a friend";
+/** The mc2 summary primary's label (manifest §3(d)): the route is the
+ * sender's own played run, so the verb is "Play", not "Share". The mc1
+ * primary keeps CHALLENGE_SHARE_LABEL — shipped copy, frozen in kind. */
+export const CHALLENGE_MC2_SHARE_LABEL = "Play my route";
 
 const PREFIX = "#c=mc1.";
 const ID_RE = /^gn-[0-9]+$/;
@@ -696,6 +700,11 @@ export function createChallengeRoute(input: {
   if (input.mode === "exact") {
     const ids = (input.exactIds ?? []).slice(0, CHALLENGE_MAX_PLACES);
     if (!legalIds(ids)) return null;
+    // An EXACT globe route encodes mc1 (the frozen format — a played
+    // globe route re-shares as the link it always was). A FRESH globe
+    // route encodes mc2 (below). Never route a RECEIVED mc2 route
+    // through encodeChallenge: origin preservation forbids the
+    // downgrade (see ChallengeComplete).
     const fragment =
       input.edition === "globe"
         ? encodeChallenge(ids, input.scoringVersion)

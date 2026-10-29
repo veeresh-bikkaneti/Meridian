@@ -361,3 +361,19 @@ test("flag OFF: an mc2 link is invisible — no card, no notice, clean Home", as
   expect(await page.evaluate(() => window.location.hash)).toBe("");
   expect(await page.evaluate((k) => sessionStorage.getItem(k), MC2_KEY)).toBeNull();
 });
+
+test("welcome card: Not now declines — nothing commits, no save is written", async ({
+  context,
+  page,
+}) => {
+  await serveBuiltArtifact(context);
+  await routeFlags(context, { friendChallenges: true });
+  await page.goto(`${APP_URL}?idle-ms=3600000${NEBRASKA_HASH}`);
+  await expect(page.getByTestId("challenge-welcome")).toBeVisible({ timeout: 30_000 });
+  await page.getByTestId("challenge-not-now").click();
+  await expect(page.getByTestId("challenge-welcome")).toHaveCount(0);
+  // Home is usable and no run of any kind was committed.
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+  expect(await page.evaluate((k) => sessionStorage.getItem(k), MC2_RUN_KEY)).toBeNull();
+  expect(await page.evaluate((k) => sessionStorage.getItem(k), RUN_KEY)).toBeNull();
+});

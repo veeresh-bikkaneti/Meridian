@@ -345,6 +345,7 @@ import {
   CHALLENGE_REGION_ID,
   CHALLENGE_REGION_NAME,
   CHALLENGE_SHARE_LABEL,
+  CHALLENGE_MC2_SHARE_LABEL,
   CHALLENGE_UNKNOWN_CONTENT_COPY,
   CHALLENGE_UNKNOWN_REGION_COPY,
   CHALLENGE_WELCOME_TITLE,
@@ -1580,6 +1581,13 @@ export function GameApp() {
       }
     }
   }, [commit, ensureSession]);
+
+  const challengeMenuHeadingRef = useRef<HTMLHeadingElement | null>(null);
+  useEffect(() => {
+    if (menu?.kind === "challengeRegions") {
+      challengeMenuHeadingRef.current?.focus({ preventScroll: true });
+    }
+  }, [menu]);
 
   /** Picker flow, step 1: open the challenge region list. */
   const openChallengePicker = useCallback(() => {
@@ -2962,6 +2970,7 @@ export function GameApp() {
       route={pendingChallenge.route}
       hasSavedRun={pendingChallenge.hasSavedRun}
       onStart={startPendingChallenge}
+      onDismiss={() => setPendingChallenge(null)}
     />
   ) : null;
 
@@ -3030,7 +3039,7 @@ export function GameApp() {
         key={`${edition}:${region.id}`}
         type="button"
         className={rowClass}
-        onClick={() => void pickChallengeRegion(edition, region.id)}
+        onClick={withCardTap(region.id, () => void pickChallengeRegion(edition, region.id))}
       >
         <span>{region.name}</span>
         <span className="text-sm text-muted">{poolSizeFor(edition, region.id)} places</span>
@@ -3043,7 +3052,13 @@ export function GameApp() {
           <Button variant="secondary" onClick={() => setMenu(null)}>
             Back
           </Button>
-          <h1 className="mt-4 font-display text-3xl text-fg">Challenge a friend</h1>
+          <h1
+            ref={challengeMenuHeadingRef}
+            tabIndex={-1}
+            className="mt-4 font-display text-3xl text-fg"
+          >
+            Challenge a friend
+          </h1>
           <p className="mt-2 text-base text-muted">
             Pick a region. We deal {CHALLENGE_MIN_PLACES} places from it, and your friend plays
             the same route.
@@ -4232,13 +4247,30 @@ function ChallengeWelcome({
   route,
   hasSavedRun,
   onStart,
+  onDismiss,
 }: {
   route: ChallengeRoute;
   hasSavedRun: boolean;
   onStart: () => void;
+  /** Declining is free: nothing is committed, no save is touched — the
+   * displacement bargain (C6) binds only the Start tap. */
+  onDismiss: () => void;
 }) {
+  const dialogRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    dialogRef.current?.focus({ preventScroll: true });
+  }, []);
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onDismiss();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onDismiss]);
   return (
     <div
+      ref={dialogRef}
+      tabIndex={-1}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
       role="dialog"
       aria-modal="true"
@@ -4259,6 +4291,14 @@ function ChallengeWelcome({
         ) : null}
         <Button className="mt-5 w-full" onClick={onStart} data-testid="challenge-start">
           Start
+        </Button>
+        <Button
+          variant="secondary"
+          className="mt-2 w-full"
+          onClick={onDismiss}
+          data-testid="challenge-not-now"
+        >
+          Not now
         </Button>
       </div>
     </div>
@@ -5608,7 +5648,7 @@ function PlayLoaded({
         ? {
             url: `${origin}${exact.fragment}`,
             label:
-              exact.fragment.startsWith("#c=mc1.") ? CHALLENGE_SHARE_LABEL : "Play my route",
+              exact.fragment.startsWith("#c=mc1.") ? CHALLENGE_SHARE_LABEL : CHALLENGE_MC2_SHARE_LABEL,
             text: exact.fragment.startsWith("#c=mc1.")
               ? `Play the same ${exact.placeCount} places on the Globe!\n${origin}${exact.fragment}`
               : `Play the same ${exact.placeCount} places ${regionPhrase}! I scored ${sessionTotal.toLocaleString("en-US")}. (Opens in the newest Meridian.)\n${origin}${exact.fragment}`,
