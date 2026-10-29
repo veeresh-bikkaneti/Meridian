@@ -3,7 +3,7 @@
 - **Branch:** `fix/endgame-editions` (no PR yet — PR opens after gates + panel)
 - **Base:** `origin/main` at `b09a5c36` ("Start over" history reset + Review-card overlay fix, #281)
 - **Task:** The "End game" button is not visible in GeoDetective, Cold Trail, or other new editions (owner's report, verbatim). Make the same End game control available inside those edition screens so a player can end the session and see the session summary from anywhere, exactly as in the classic Globe/Country/State run screens.
-- **State:** **STAGE 2 DONE — GREEN, GATES RUN, PANEL PENDING.** Tier-2 council complete (see below); RED → GREEN built per the manifest (commits `816de50` tests, `cc133c3` implementation). Next: Stage 3 gates on the final tip (already run once here — see below), then Stage 4 panel, then Stage 5 PR. NO MERGE (owner's explicit per-PR word only, after panel verdict).
+- **State:** **STAGE 3 DONE, STAGE 4 PANEL VERDICT: BLOCKED (2 seats) → CYCLE-4 CURE IN PROGRESS.** Tier-2 council complete (see below); Stage 2 built per the manifest (commits `816de50` tests, `cc133c3` implementation); Stage 3 gates ran green on the Stage-2 tip (see below); the Stage-4 panel then BLOCKED the tip (2 seats BLOCKED, 10 APPROVE-WITH-NITS, 1 APPROVE) and the cure below answers both BLOCKs plus the cheap nits in one pass (cycle 4 of the repo's 5-cycle cap; Stage 2 used 3). Next: gates on the cured tip, then panel re-vote, then Stage 5 PR. NO MERGE (owner's explicit per-PR word only, after panel verdict).
 
 ## Council record (Tier 2, protocol `docs/ops/agent-council-protocol.md`)
 
@@ -42,14 +42,26 @@
 - Mobile GeoDetective helper accepts "Resume your case" as well as "Solve a mystery" on the second viewport iteration (the first iteration leaves an in-progress case).
 - `loop-screen-animate.test.ts` gains the new required `onEndGame` prop in its render call (construction sync only; no assertion changed).
 
+## Cycle-4 cure (panel BLOCKs + cheap nits, 2026-10-29)
+
+- BLOCK 1 — Accessibility (WCAG 4.1.3, 2.4.3): `handleModeEndGame` now sets the persistent `mapModeAnnouncer` to the Game-over totals string in classic's exact format, and a mode-only GameApp effect moves focus to `summary-done` on mode-summary mount (classic summaries gain no autofocus). Mode Done also sets `landHomeFocusRef` so focus lands on the home heading (the landHomeFocus pattern applies cleanly: Done lands on home, which renders `headingRef`). `RunSummaryCard`'s header comment now states the announcement split (classic via Play's region, mode via the persistent announcer) instead of claiming the card's own aria-live region. Classic behavior byte-identical.
+- BLOCK 2 — UX (S4/S5 on reveal/result): both mode header rows are now `position: sticky; top: 0` with solid `atlas-bg-1` background (page scroll, no internal container, so sticky on the row itself sticks); the GeoDetective reveal section and the Cold Trail result heading carry `scroll-mt-20` so their untouched scroll/focus landings stop below the sticky bar. No second End game button; no change to the reveal `scrollIntoView` or result focus calls. Recorded as manifest §5A (R5 amendment, Chair sign-off 2026-10-29). Correction inside this cure (disclosed, not silent): the first Trail placement put the sticky row inside `<header>` and the F3 test still failed at y = −81.5 — a sticky element cannot stick past its short parent's box. The row is now a direct child of `<main>` (DOM/visual order unchanged: row, eyebrow, title, intro), and F3 passes.
+- Cheap nits, all cured: mode branch passes `modeSummary.dateKey` captured at End game time (state type widened to `SessionSummary & { dateKey: string }`); README reworded + Cold Trail load-error button clause + reload-loses-summary clause; TrailScreen WHY comments for `onEndGame` and the error-return button; GUARD comment lines above both activation pre-End halves; S11 zero-End-game assertions in all four mode-summary tests; Geo activation now asserts full loop-blob string equality; single-`evaluate()` rect calls also cover case-number / stars and Next mystery / Next case; width ≥ 44 + x ≥ 0 + x + width ≤ viewport added to visibility assertions; mobile helper takes exact per-pass labels ("Solve a mystery" 1st, "Resume your case" 2nd); one Geo keyboard Tab/Enter test; one mode-summary reload test (E6 parity); Cold Trail F3 E2E added (solve → result → End game → Done → re-enter → same result).
+- NOT cured (open/owner items, carried): 0/0 disclosure copy (owner Q2, locked-copy exclusion); Play again relabel "Back to case" (owner Q1); Cold Trail home resume cue (needs owner-worded label); idle-end + End game fresh 0/0 edge (pre-existing behavior newly exposed, out of scope); dedicated Parade-dismiss → End game test (dismissal covered by celebration-overlay tests; End game reads no Parade state).
+- Footprint + cap ruling (Chair accounting): branch total `+1037/−321` vs the manifest's `+900/−200` cap. Excluding the manifest file itself (`+171/−0`) and this file's whole-file supersession (`+40/−299`, per the file's own convention), code + tests + README = `+826/−22`, within cap. The cap question is thereby answered as accounting, not scope creep.
+- Per-spec E2E commands (all serialized under `flock ~/workspace/.e2e.lock`, `--workers=1`, with `PLAYWRIGHT_CHROMIUM_EXECUTABLE=$HOME/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome` — see Environment notes):
+  - `npx playwright test --workers=1 --project=geodetective --grep endgame tests/e2e/geodetective.spec.ts`
+  - `npx playwright test --workers=1 --project=coldtrail --grep endgame tests/e2e/coldtrail.spec.ts`
+  - `npx playwright test --workers=1 --project=mobile tests/e2e/mode-endgame.mobile.spec.ts`
+  - `npx playwright test --workers=1 --project=endless-game tests/e2e/endless-game.spec.ts`
+
 ## Pending
 
-- [ ] Full panel review (12-role + DevEx) on the final tip; cure → re-vote if needed.
-- [ ] PR opened; NO MERGE (owner's explicit per-PR word only, after panel verdict).
-- [ ] Push: gh CLI is 401 on this machine (token invalid) — push/PR creation may need the owner route; if blocked, the branch + package are staged locally and the blocker is reported with evidence.
+- [ ] Panel re-vote on the cured tip; then PR opened; NO MERGE (owner's explicit per-PR word only, after panel verdict).
+- [ ] Push: plain `git push` is 401-blocked on this machine (do not retry). Owner route, per the 2026-10-28 reconnection (Dinesh reconnected the custom.github credential via secure entry): verify FIRST with the helper's harmless proof-of-access read (GET /repos/veeresh-bikkaneti/Meridian) before any push, then use the Git Data API helper route (`gh_push_wave2.py`, parameterized --base/--head/--branch/--repo/--local) — git transport over HTTPS is NOT covered by that connection, so plain `git push` is not the path.
 
 ## Environment notes
 
 - Node v24.22.1 local; CI Node 22.x is canonical — a local pass is an early signal only.
-- Playwright bundled Chromium (to be verified at gate stage). `/home/box/node22/bin`, `/tmp/node22/bin`, `/usr/bin/google-chrome` do not exist here.
+- Playwright runs on the bundled Chromium (chromium-1248) via the config's own `PLAYWRIGHT_CHROMIUM_EXECUTABLE` override (CI-equivalent path): `PLAYWRIGHT_CHROMIUM_EXECUTABLE=$HOME/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome`. `/opt/meta-chromium` is currently broken: launch fails with "Hatch WebGL domain policy required" (and the first Stage-3 E2E run was SIGTERM-killed mid-endless-game before that failure appeared). `/home/box/node22/bin`, `/tmp/node22/bin`, `/usr/bin/google-chrome` do not exist here.
 - Commit author for this branch's agent commits: `Lotus <lotus@local>` (local marker, not the owner's identity) — set per-commit via `-c` flags since no git identity is configured on this machine.

@@ -71,7 +71,7 @@ https://meridian.knowledgetest.workers.dev/
 
 Solving all 387 mysteries earns the full-collection celebration.
 
-The same **End game** button sits in the GeoDetective header, next to Editions — and in Cold Trail's header, next to All games. Tapping it ends the session and shows the same session summary as a classic run (classic totals only; mystery and case play never count toward it). The mystery or case itself is untouched: tap Done to go home, then re-enter the edition and your case resumes exactly where you left it. Leaving through Editions or All games instead keeps the session alive — only End game ends it.
+The same **End game** button sits in the GeoDetective header, next to Editions — and in Cold Trail's header, next to All games; both header rows stay pinned at the top of the screen, so the button stays visible even when a reveal or result scrolls the page. Tapping it ends the session and shows the same session-summary card, without Play again (classic totals only; mystery and case play never count toward it). The mystery or case itself is untouched: tap Done to go home, then re-enter the edition and your case resumes exactly where you left it. Cold Trail's load-error screen carries its own End game button beside Back, for the same reason. Leaving through Editions or All games instead keeps the session alive — only End game ends it. Reloading while a mode summary is open loses the summary (it lives in memory only, like a classic summary); the session stays ended and the case still resumes on return.
 
 ### The Journal
 
