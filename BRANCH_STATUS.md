@@ -968,3 +968,17 @@ Approvals needed (exact action + owner), checker, escalation:
   timeout, Next-place button never stable for the click) in a test
   L4 does not touch — reported for Step 5, not fixed here (out of
   this finding's scope; one flake re-run owed there).
+- L5 (this commit): deleted `src/components/round-loop-a11y.documentation.ts`
+  (sole *.documentation.ts file; nothing imported it; `npm test` runs
+  only scripts/**/*.test.mjs + src/**/*.test.ts, so it never ran)
+  and wrote `docs/round-loop-a11y-design.md` as PROSE (design record
+  from the file header; the E2E observer suite is named as the gate;
+  prose is never cited as the gate). Deleted exactly the dead
+  `.hv5-icon-btn` block + its `[aria-disabled]` rule in home-v5.css
+  (16 lines); live nav rules + `.hv5-go` untouched; zero .tsx/.ts
+  references repo-wide. tsc clean.
+- Fix-round completion: all 7 findings committed + pushed, one commit
+  each (M1 0a1fb8f, M2 153bbd1, L1 8066262, L2 ced550f, L3 4e3b7d5,
+  L4 beb33f8, L5 this commit). Step 4 leave-alone items + Step 5
+  final gates + the report still owed at this commit; no merge word
+  is claimed here.
