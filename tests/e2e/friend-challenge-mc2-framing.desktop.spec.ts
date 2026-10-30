@@ -344,13 +344,38 @@ test("welcome card: weak device auto-selects Scout; flipping before Start builds
   await welcomeSwitch(page).click();
   await expect(welcomeSwitch(page)).toHaveAttribute("aria-checked", "false");
   await expect(welcomeMode(page)).toHaveAttribute("data-mode", "full");
-  // An explicit pick at open is a manual choice, like the Home toggle.
+  // The flip only STAGES the pick: the stored record is still the
+  // boot's auto record — declining now would commit nothing.
+  const staged = await readStoredMapMode(page);
+  expect(staged).toMatchObject({ mode: "scout" });
+  expect(staged?.source).not.toBe("manual");
+
+  await startChallenge(page);
+  // Start commits the staged pick as a manual record (the Home
+  // toggle's semantics), and the run builds on the full map.
   await expect
     .poll(() => readStoredMapMode(page), { timeout: 10_000 })
     .toMatchObject({ mode: "full", source: "manual" });
-
-  await startChallenge(page);
   expect(await readMapMode(page)).toBe("full");
+  await page.close();
+});
+
+test("welcome card: flipping then declining commits nothing", async ({
+  context,
+}) => {
+  await serveBuiltArtifact(context, { spoofCapableDevice: false });
+  const page = await context.newPage();
+  await openChallenge(page, NEBRASKA_HASH);
+  await expect(welcomeMode(page)).toHaveAttribute("data-mode", "scout");
+  await welcomeSwitch(page).click();
+  await expect(welcomeMode(page)).toHaveAttribute("data-mode", "full");
+  await page.getByTestId("challenge-not-now").click();
+  await expect(page.getByTestId("challenge-welcome")).toHaveCount(0);
+  // The staged pick died with the card: the boot's own record stands,
+  // no manual record was ever written.
+  const afterDecline = await readStoredMapMode(page);
+  expect(afterDecline).toMatchObject({ mode: "scout" });
+  expect(afterDecline?.source).not.toBe("manual");
   await page.close();
 });
 
@@ -401,6 +426,17 @@ test("in-challenge map toggle: explains, offers no switch, never forces home", a
   // pattern (friend-challenge-mc2-boot.desktop.spec.ts).
   const scratch = await context.newPage();
   await startPlayState(scratch, "Nebraska");
+  // Control, same component: in a NORMAL run the map popover DOES
+  // offer a switch — so its absence inside the challenge (asserted
+  // below) is the challenge context at work, not an inert popover.
+  await scratch.getByTestId("map-mode-button").click();
+  await expect(scratch.getByTestId("map-mode-popover")).toBeVisible({
+    timeout: 10_000,
+  });
+  await expect(
+    scratch.getByTestId("map-mode-popover").getByRole("switch"),
+  ).toHaveCount(1);
+  await scratch.getByTestId("map-mode-button").click();
   const normalRunBefore = await scratch.evaluate(
     (k) => sessionStorage.getItem(k),
     RUN_KEY,

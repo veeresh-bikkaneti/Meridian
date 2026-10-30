@@ -23,6 +23,16 @@ Process: diagnosis → TDD (failing-first E2E with measured before/after
 values) → the 5 gates → 12-seat panel + DevEx on the final tip → PR.
 NO MERGE (owner's per-PR word only).
 
+Capsule fields: Tier 2 (multi-file feature behaviour on the challenge
+surface; council manifest lineage from the challenge packages).
+Ownership: coordinator + delegated workers, this workspace only.
+Verification contract: the 5 AGENTS.md gates + the framing spec and
+named neighbour suites, sequentially under the E2E flock. Budget:
+parent cap for a Tier-2 run; consumption was dominated by coordinator
+re-runs after two delegated E2E reports proved unsupported by their
+own logs (see the environment note in the PR body) — no meter exists
+in this repo, so no exact figure is claimed.
+
 ## Diagnosis (code-proven; measured reproduction in the PR body)
 
 Defect 1: `challengeRunFields` (src/game/challenge.ts) sets the run's
@@ -74,7 +84,23 @@ the pre-run path (no run exists, nothing is discarded).
   spec 11/11; neighbours: mc2-receive 5/5, boot+isolation+frozen-mc1
   18/18, scout suites 17/17 (all coordinator-run)
 - [x] Docs updated (feature-flags.md, scout-offer-policy.md)
-- [ ] Panel (12 + DevEx) on final tip; cures re-voted
+- [x] Panel (12 + DevEx) on tip ad9c11a: NOT READY — 4 BLOCKs on two
+  findings: (F1) welcome switch hit area ~24px tall, below the 44px
+  floor (Frontend, Accessibility); (F2) the welcome flip wrote a
+  permanent manual record immediately, breaking the card's
+  "declining commits nothing" contract and understating the pick's
+  permanence (Code Reviewer, UX Researcher; Game Designer + Security
+  concurring). 8 AWN / 1 APPROVE otherwise.
+- [x] Cure round 1 (this record's commit): F1 — switch hit area is
+  now min 44×44px with an explicit focus ring. F2 — the flip only
+  STAGES the pick (new welcomeMapPick state); Start commits it via
+  handleWelcomeMapMode beside C6's displacement commit; "Not now"
+  drops it unwritten; the card note and docs now state the pick
+  becomes the saved manual choice (manual records never decay).
+  Spec: staged-commit assertions + a flip-then-decline test + a
+  same-test play-context control for the toggle test. Evidence logs
+  retained in ~/workspace/meridian-challenge-framing-evidence/.
+- [ ] Panel re-vote on the cured tip
 - [ ] PR open — NO MERGE
 
 Coordination: see ~/workspace/orchestrate/meridian/COORDINATION.md —

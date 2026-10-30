@@ -1245,6 +1245,16 @@ export function GameApp() {
     hasSavedRun: boolean;
   } | null>(null);
 
+  /**
+   * The welcome card's STAGED map pick. Flipping the card's switch
+   * only stages the choice here — nothing is written yet — because
+   * declining the card must commit nothing (the card's contract, and
+   * manifest C6: the bargain binds on Start). Start commits a staged
+   * pick that differs from the resolved mode via
+   * handleWelcomeMapMode; "Not now" just drops it.
+   */
+  const [welcomeMapPick, setWelcomeMapPick] = useState<MapMode | null>(null);
+
   /** Home's friend-challenge entry points, flag-gated like every other
    * challenge surface (PlayLoaded reads the same flag for its own). */
   const [friendChallengesOn, setFriendChallengesOn] = useState(false);
@@ -1513,8 +1523,41 @@ export function GameApp() {
    * ends. The challenge never banks into the session (ensureSession is
    * deliberately not called — the same isolation as mc1).
    */
+
+  /**
+   * Commit the challenge welcome card's staged map pick (owner
+   * ruling, 2026-10-29): a received challenge's map is chosen WHEN
+   * THE CHALLENGE OPENS — before Start builds the run's map — never
+   * mid-challenge, where the only switch used to be the force-home
+   * toggle that killed the challenge. The mode the card shows is the
+   * one the boot already resolved (a stored manual record stands;
+   * otherwise the capability qualification — the same signals, no
+   * new probe). Flipping the card's switch only STAGES the pick;
+   * this commit runs on Start (startPendingChallenge, below) and is
+   * a manual choice exactly like the Home toggle's: write the manual
+   * record (manual records never decay — the pick is the player's
+   * saved map choice from then on, which the card's note says out
+   * loud), apply at once, retire the boot auto-switch note. "Not
+   * now" never reaches here, so declining commits nothing.
+   * Declared before startPendingChallenge, which calls it.
+   */
+  const handleWelcomeMapMode = useCallback((mode: MapMode) => {
+    writeStoredMapMode(mode, "manual");
+    setReportMapMode(mode);
+    setMapMode(mode);
+    setAutoScoutNote(false);
+    setMapSwitchedNote(null);
+  }, []);
+
   const startPendingChallenge = useCallback(() => {
     if (!pendingChallenge) return;
+    // Commit the welcome card's staged map pick NOW, on Start — the
+    // moment the card's bargain binds. A flip followed by "Not now"
+    // never reaches this line, so declining still commits nothing.
+    if (welcomeMapPick && welcomeMapPick !== mapMode) {
+      handleWelcomeMapMode(welcomeMapPick);
+    }
+    setWelcomeMapPick(null);
     const fields = challengeRunFields(pendingChallenge.route);
     clearDrop();
     // Cross-format displacement (manifest §3 persistence): if the
@@ -1546,7 +1589,7 @@ export function GameApp() {
     commit(run);
     setPendingChallenge(null);
     setMenu(null);
-  }, [pendingChallenge, difficultyChoice, commit]);
+  }, [pendingChallenge, difficultyChoice, commit, welcomeMapPick, mapMode, handleWelcomeMapMode]);
 
   /**
    * Adopt the stored session when it is still live (same day, not ended),
@@ -1865,28 +1908,6 @@ export function GameApp() {
     );
     setAutoScoutNote(false);
     // BLOCK-2: this flip supersedes any earlier switched notice.
-    setMapSwitchedNote(null);
-  }, []);
-
-  /**
-   * The map pick on the challenge welcome card (owner ruling,
-   * 2026-10-29): a received challenge's map is chosen WHEN THE
-   * CHALLENGE OPENS — before Start builds the run's map — never
-   * mid-challenge, where the only switch used to be the force-home
-   * toggle that killed the challenge. The mode the card shows is the
-   * one the boot already resolved (a stored manual record stands;
-   * otherwise the capability qualification — the same signals, no new
-   * probe), and flipping it here is a pre-run manual choice exactly
-   * like the Home toggle's: write the manual record, apply at once,
-   * retire the boot auto-switch note. No run exists yet, so nothing
-   * is discarded and nothing is announced — the card itself shows the
-   * new state on its switch.
-   */
-  const handleWelcomeMapMode = useCallback((mode: MapMode) => {
-    writeStoredMapMode(mode, "manual");
-    setReportMapMode(mode);
-    setMapMode(mode);
-    setAutoScoutNote(false);
     setMapSwitchedNote(null);
   }, []);
 
@@ -3051,10 +3072,13 @@ export function GameApp() {
     <ChallengeWelcome
       route={pendingChallenge.route}
       hasSavedRun={pendingChallenge.hasSavedRun}
-      mapMode={mapMode}
-      onMapModeSelect={handleWelcomeMapMode}
+      mapMode={welcomeMapPick ?? mapMode}
+      onMapModeSelect={setWelcomeMapPick}
       onStart={startPendingChallenge}
-      onDismiss={() => setPendingChallenge(null)}
+      onDismiss={() => {
+        setWelcomeMapPick(null);
+        setPendingChallenge(null);
+      }}
     />
   ) : null;
 
@@ -4377,8 +4401,10 @@ function ChallengeWelcome({
   hasSavedRun: boolean;
   /** The map this challenge will be played on, resolved before the
    * card showed (stored manual record, else the boot capability
-   * qualification). The player can flip it here — at challenge open,
-   * the one moment a switch costs nothing (owner ruling, 2026-10-29). */
+   * qualification) — or the player's staged flip of it. Flipping
+   * here, at challenge open, is the one moment a switch costs
+   * nothing (owner ruling, 2026-10-29); the pick is staged, and
+   * Start commits it as the player's saved manual map choice. */
   mapMode: MapMode;
   onMapModeSelect: (mode: MapMode) => void;
   onStart: () => void;
@@ -4436,8 +4462,11 @@ function ChallengeWelcome({
             resolved for this device, shown before Start — and the one
             place a challenge receiver can change it, because the
             in-challenge toggle can no longer switch (it used to force
-            home and kill the challenge). The switch mirrors the map
-            toggle's own switch row. */}
+            home and kill the challenge). Flipping only stages the
+            pick; Start commits it, "Not now" drops it — declining
+            commits nothing. The switch's hit area is at least 44px
+            tall (the accessibility floor) even though the visual
+            track is 24px. */}
         <div className="mt-4 rounded-xl border border-line px-3 py-2.5">
           <div className="flex items-center justify-between gap-3">
             <span className="text-base text-fg">
@@ -4454,7 +4483,7 @@ function ChallengeWelcome({
               data-testid="challenge-welcome-map-switch"
               onClick={flipMap}
               onKeyDown={onMapSwitchKey}
-              className="flex shrink-0 cursor-pointer items-center gap-2"
+              className="flex min-h-[44px] min-w-[44px] shrink-0 cursor-pointer items-center justify-end gap-2 rounded-lg px-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f2c14e]"
             >
               <span className="text-sm font-medium text-muted">{scout ? "On" : "Off"}</span>
               <span

@@ -72,7 +72,7 @@ export const SCOUT_COPY = {
    */
   welcome: {
     label: "Map for this challenge",
-    note: "The map can't change once the challenge starts — pick the one you want now.",
+    note: "The map can't change once the challenge starts — pick the one you want now. When you start, it becomes your saved map choice for next time too.",
   },
   /**
    * Live-region announcements for the settings toggle. Flipping the

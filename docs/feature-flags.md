@@ -196,6 +196,11 @@ nothing. The card also carries the challenge's map pick (owner ruling,
 manual choice if the player has one, otherwise the map the device
 capability check picked at boot — and the receiver can flip it before
 tapping Start, because that is the one moment a switch costs nothing.
+Flipping only stages the pick: tapping Start commits it as the
+player's saved manual map choice — the same standing a Home-toggle
+choice has, and like every manual record it never decays — while
+"Not now" drops the staged pick and commits nothing, exactly as the
+paragraph above promises.
 Inside the challenge the map-mode toggle only explains this; it never
 switches and never sends the player home (see
 docs/scout-offer-policy.md). A received challenge frames and outlines
