@@ -506,11 +506,89 @@ export function readSession(): Session | null {
   }
 }
 
+/**
+ * Wave 1 P0 Item 1B durable record: a continuous shadow of the LIVE
+ * session in localStorage (key `meridian.discarded-notice`, manifest
+ * §2 Item 1B — rename only with a Chair nod, never silently). The run
+ * and session live in sessionStorage, which dies with the tab, so a
+ * tab closed mid-game would otherwise reopen to silent home: the
+ * shadow is what the next boot reads to notice the discarded game.
+ * It is a snapshot of a live session, NOT a discard record — the
+ * reason (inactivity / new day) is derived at boot from its fields.
+ * NEVER written for ended sessions; consumed (deleted) at first show.
+ */
+export const DISCARDED_NOTICE_KEY = "meridian.discarded-notice";
+
+export type DiscardedShadow = {
+  totalScore: number;
+  placesPlayed: number;
+  dateKey: string;
+  lastActivityAt: number;
+};
+
+function isDiscardedShadow(value: unknown): value is DiscardedShadow {
+  if (!value || typeof value !== "object") return false;
+  const r = value as Record<string, unknown>;
+  return (
+    typeof r.totalScore === "number" &&
+    Number.isFinite(r.totalScore) &&
+    r.totalScore >= 0 &&
+    typeof r.placesPlayed === "number" &&
+    Number.isInteger(r.placesPlayed) &&
+    r.placesPlayed >= 0 &&
+    typeof r.dateKey === "string" &&
+    typeof r.lastActivityAt === "number" &&
+    Number.isFinite(r.lastActivityAt)
+  );
+}
+
+/** Fail closed to null on anything malformed or tampered. */
+export function readDiscardedShadow(): DiscardedShadow | null {
+  try {
+    if (typeof localStorage === "undefined") return null;
+    const raw = localStorage.getItem(DISCARDED_NOTICE_KEY);
+    if (!raw) return null;
+    const parsed: unknown = JSON.parse(raw);
+    return isDiscardedShadow(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+export function writeDiscardedShadow(shadow: DiscardedShadow): void {
+  try {
+    localStorage.setItem(DISCARDED_NOTICE_KEY, JSON.stringify(shadow));
+  } catch {
+    // Best effort: the in-memory session still lives when storage is blocked.
+  }
+}
+
+export function clearDiscardedShadow(): void {
+  try {
+    localStorage.removeItem(DISCARDED_NOTICE_KEY);
+  } catch {
+    // A stale shadow is fail-closed at read time (shape-checked).
+  }
+}
+
 export function writeSession(session: Session): void {
   try {
     sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
   } catch {
     // The session still lives in memory when storage is blocked.
+  }
+  // Continuous shadow on every session bank: an ended session never
+  // leaves a record (End game already ends the session — a later boot
+  // must show plain home, never a lost-game notice for it).
+  if (session.ended) {
+    clearDiscardedShadow();
+  } else {
+    writeDiscardedShadow({
+      totalScore: session.totalScore,
+      placesPlayed: session.placesPlayed,
+      dateKey: session.dateKey,
+      lastActivityAt: session.lastActivityAt,
+    });
   }
 }
 
@@ -551,7 +629,11 @@ export function clearSession(target?: SessionStorageLike): boolean {
   }
   try {
     const raw = s.getItem(SESSION_KEY);
-    return raw === null || raw === "";
+    const cleared = raw === null || raw === "";
+    // Removing the session removes its shadow too: a deliberately
+    // reset session must never resurrect as a discarded-game notice.
+    if (cleared) clearDiscardedShadow();
+    return cleared;
   } catch {
     return false;
   }

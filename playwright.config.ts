@@ -365,6 +365,16 @@ export default defineConfig({
       },
     },
     {
+      name: "discarded-notice",
+      // Wave 1 P0 Item 1: the manifest-fixed filename matches no other
+      // project, so it gets its own (tests set viewports explicitly
+      // where a size matters).
+      testMatch: /discarded-notice\.spec\.ts/,
+      use: {
+        viewport: { width: 1440, height: 900 },
+      },
+    },
+    {
       name: "motionmaxxing-reduced",
       // Motionmaxxing reduced-motion gate (project reducedMotion fixture —
       // matches the repo's `reduced` project convention).

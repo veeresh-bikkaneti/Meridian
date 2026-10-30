@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   bankPlace,
   DIFFICULTY_LABELS,
+  DISCARDED_NOTICE_KEY,
   endSession,
   formatSuccessRate,
   IDLE_TIMEOUT_MS,
@@ -10,6 +11,7 @@ import {
   idleWarnMsFor,
   isIdleExpired,
   isSessionLive,
+  readDiscardedShadow,
   readSession,
   clearSession,
   seedSessionFromRun,
@@ -395,5 +397,56 @@ test("storage round-trip: session JSON preserves the new breakdown fields", () =
     ]);
   } finally {
     delete (globalThis as Record<string, unknown>).sessionStorage;
+  }
+});
+
+// Wave 1 P0 Item 1B durable record: the localStorage shadow of the live
+// session. sessionStorage and localStorage are SEPARATE fakes here, the
+// way a closed tab separates them (sessionStorage dies, localStorage
+// survives).
+test("discarded shadow: live writes shadow, ended clears it, garbage reads null", () => {
+  const sessionStore = new Map<string, string>();
+  const localStore = new Map<string, string>();
+  (globalThis as Record<string, unknown>).sessionStorage = {
+    getItem: (k: string) => (sessionStore.has(k) ? sessionStore.get(k)! : null),
+    setItem: (k: string, v: string) => void sessionStore.set(k, v),
+    removeItem: (k: string) => void sessionStore.delete(k),
+  };
+  (globalThis as Record<string, unknown>).localStorage = {
+    getItem: (k: string) => (localStore.has(k) ? localStore.get(k)! : null),
+    setItem: (k: string, v: string) => void localStore.set(k, v),
+    removeItem: (k: string) => void localStore.delete(k),
+  };
+  try {
+    assert.equal(readDiscardedShadow(), null);
+    let s = startSession("2026-10-02", NOW);
+    s = bankPlace(s, { edition: "globe", score: 100, hit: true, distanceKm: 40, streakAfter: 1, difficultyChoice: "easy", regionId: "globe", regionName: "Globe" });
+    writeSession(s);
+    assert.deepEqual(readDiscardedShadow(), {
+      totalScore: 100,
+      placesPlayed: 1,
+      dateKey: "2026-10-02",
+      lastActivityAt: NOW,
+    });
+    // The session record itself is untouched by the shadow.
+    assert.equal(readSession()?.totalScore, 100);
+    // Ending the session clears the shadow: a deliberate end is never
+    // reported as a lost game on the next boot.
+    writeSession(endSession(s));
+    assert.equal(readDiscardedShadow(), null);
+    // Malformed shadows fail closed.
+    localStore.set(DISCARDED_NOTICE_KEY, "{not json");
+    assert.equal(readDiscardedShadow(), null);
+    localStore.set(DISCARDED_NOTICE_KEY, JSON.stringify({ totalScore: -1, placesPlayed: 0, dateKey: "2026-10-02", lastActivityAt: NOW }));
+    assert.equal(readDiscardedShadow(), null);
+    // Clearing the session clears a live shadow with it.
+    writeSession(s);
+    assert.ok(readDiscardedShadow());
+    clearSession();
+    assert.equal(readSession(), null);
+    assert.equal(readDiscardedShadow(), null);
+  } finally {
+    delete (globalThis as Record<string, unknown>).sessionStorage;
+    delete (globalThis as Record<string, unknown>).localStorage;
   }
 });
