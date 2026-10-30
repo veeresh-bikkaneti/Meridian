@@ -3209,6 +3209,10 @@ export function GameApp() {
         onClick={() => {
           setDiscardedNotice(null);
           setIdleEndedNote(false);
+          // Fix round L1: dismissing the discarded notice lands focus
+          // on the home heading (the landHomeFocusRef target), not
+          // <body>. The idle notice's own Dismiss is untouched.
+          landHomeFocusRef.current = true;
         }}
       >
         Dismiss

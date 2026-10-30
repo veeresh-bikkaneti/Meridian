@@ -783,6 +783,38 @@ test("1E-mc2-unresumable unresumable mc2 save shows a challenges notice", async 
   });
 });
 
+test("1J Dismiss moves focus to home heading", async ({ page, context }) => {
+  await routeFriendChallenges(context, false);
+  await seedCleanExit(context);
+  await page.goto(APP_NO_IDLE);
+  await expectHome(page);
+  await page.evaluate(
+    ({ key, json }) => {
+      sessionStorage.setItem(key, json);
+    },
+    { key: MC2_RUN_KEY, json: mc2RunJson() },
+  );
+  await page.reload();
+  await expectHome(page);
+  await expectNotice(page, "challenges", ["inactivity", "new day", "scoring"], {
+    totalScore: 150,
+    placesPlayed: 2,
+  });
+  await notice(page).getByRole("button", { name: "Dismiss" }).click();
+  // Fix round L1: focus must land on the home heading (the
+  // landHomeFocusRef target), not fall back to <body> where keyboard
+  // users lose their place. Pre-fix this reads BODY.
+  await expect
+    .poll(
+      () =>
+        page.evaluate(
+          () => document.activeElement?.getAttribute("data-testid"),
+        ),
+      { timeout: 5000 },
+    )
+    .toBe("home-heading");
+});
+
 test("1B GUARD context check: a fresh context sees no notice (record is context-local)", async ({
   browser,
 }) => {

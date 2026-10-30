@@ -927,3 +927,8 @@ Approvals needed (exact action + owner), checker, escalation:
   at `expect(spotMoves).toBe(true)` with the ease frozen. Disclosed
   residual (Chair-approved): a completes-but-motionless regression
   would skip, not fail — recorded here and for the PR body.
+- L1 (this commit): discarded-notice Dismiss now lands focus on the
+  home heading via the existing landHomeFocusRef effect (same target
+  as summary-done), not <body>. Idle-notice Dismiss untouched (noted
+  follow-up). Test 1J (RED pre-fix: activeElement BODY; GREEN post-fix
+  in logs/l1-green.log).
