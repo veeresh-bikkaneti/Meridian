@@ -17,7 +17,8 @@ import { CONTACT_RETENTION_DAYS } from "@/lib/contact/retention";
  *   on a kids' site invites spam and mail from children; grown-ups reach
  *   us through the gated /contact form instead).
  * - Contact delivery was parked (path B, adopted by the owner
- *   2026-10-21) and is wired by issue #220: Discord is the processor
+ *   2026-10-21 — his words are quoted in that doc, decision 4) and is
+ *   wired by issue #220: Discord is the processor
  *   that holds the messages — including an optional reply-to address,
  *   which travels to Discord with the message — the server keeps no
  *   copy, and retention is CONTACT_RETENTION_DAYS

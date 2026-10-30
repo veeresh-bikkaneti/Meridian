@@ -215,6 +215,41 @@ test("validateContact strips \\p{Cf} format chars (zero-width, bidi overrides)",
   assert.equal(validateContact({ topic: "bug", message: "\u200b\u200d" }).ok, false, "only format chars → empty");
 });
 
+test("message length limit applies to the typed text, before contact details are scrubbed (#220 review F3)", async () => {
+  // The page accepts up to MAX_MESSAGE_CHARS typed characters. Scrubbing
+  // replaces a short email/phone with a longer placeholder, so checking the
+  // limit AFTER scrubbing rejected messages the page had accepted.
+  const nearLimit = "x".repeat(MAX_MESSAGE_CHARS - 10) + " me@ex.io";
+  assert.equal(nearLimit.length, MAX_MESSAGE_CHARS - 1); // 999 typed chars
+  const r = validateContact({ topic: "bug", message: nearLimit });
+  assert.deepEqual(r.ok ? [] : r.problems, [], "a 999-char message ending in an email is valid");
+  if (r.ok) assert.ok(r.value.message.endsWith(" [email removed]") && !r.value.message.includes("me@ex.io"));
+  const phones = ("555-1234 ").repeat(Math.floor(MAX_MESSAGE_CHARS / 9)).trim();
+  assert.ok(phones.length <= MAX_MESSAGE_CHARS);
+  assert.equal(validateContact({ topic: "bug", message: phones }).ok, true, "phone-dense message within the typed limit");
+  // The limit itself is unchanged: one typed character over is still refused.
+  assert.equal(validateContact({ topic: "bug", message: "x".repeat(MAX_MESSAGE_CHARS + 1) }).ok, false);
+  assert.equal(validateContact({ topic: "bug", message: "a@b.cc ".repeat(200) }).ok, false, "1400 typed chars");
+  // End to end through the handler: 200, not 400.
+  const res = await handleRequest(post({ topic: "bug", message: nearLimit }), {});
+  assert.equal(res.status, 200);
+});
+
+test("worst-case scrub expansion still fits Discord's 2000-char content limit (#220 review F3)", () => {
+  // "a@b.cc " (7 typed chars) becomes "[email removed] " (16): the most
+  // placeholder-dense message the page accepts, plus the longest reply-to.
+  const dense = "a@b.cc ".repeat(Math.floor(MAX_MESSAGE_CHARS / 7)).trim();
+  const r = validateContact({ topic: "bug", message: dense, replyTo: `${"r".repeat(240)}@example.com` });
+  assert.equal(r.ok, true);
+  if (!r.ok) return;
+  assert.ok(r.value.message.length > MAX_MESSAGE_CHARS, "scrubbed text is longer than the typed limit");
+  assert.ok(!r.value.message.includes("a@b.cc"));
+  const text = DiscordWebhookSink.format({ ...r.value, receivedAt: "2026-10-29T00:00:00.000Z" });
+  assert.ok(text.length <= 2000, `Discord content ${text.length} > 2000`);
+  assert.equal(text.match(/```/g)?.length, 4, "fences stay closed after the cut");
+  assert.ok(!text.includes("a@b.cc"));
+});
+
 test("400 problems never echo unknown field names", async () => {
   const res = await handleRequest(post({ topic: "bug", message: "x", "<script>": 1 }), {});
   assert.equal(res.status, 400);
@@ -331,8 +366,8 @@ test("readContactEnv and readContactRuntimeEnv prefer the runtime env (__env__) 
     assert.equal(rtFromNitro.CONTACT_ALLOWED_ORIGINS, "https://mirror.example");
 
     // Both set: the runtime env wins. A local-dev shell value must never
-    // shadow the worker's configured bindings (owner's precedence,
-    // 2026-10-21, issue #220).
+    // shadow the worker's configured bindings (env route: issue #220
+    // Step 3, plan text).
     process.env.CONTACT_DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/222/from-process";
     process.env.CONTACT_ALLOWED_ORIGINS = "https://proc.example";
     assert.deepEqual(readContactEnv(), {
@@ -584,28 +619,33 @@ test("SPEC §3.2 order: junk never reaches the Workers rate-limit binding (share
 const OLD_EMAIL_IN_TEXT = /[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}/g;
 const oldStripEmails = (s: string) => s.replace(OLD_EMAIL_IN_TEXT, "[email removed]");
 
-test("validateContact runs in linear time: long '@'-free and adversarial messages validate well under 1 ms-scale (median < 2 ms)", () => {
+test("email/phone scrub runs in linear time on long adversarial text (min of 3 runs < 100 ms at 32,000 chars)", () => {
+  // Load-tolerant by design (#220 review F4): the input is large enough
+  // that the linear regex takes well under 1 ms (Node 22) while the old
+  // unanchored, quadratic one takes about a second (~4x per doubling:
+  // ~16 ms at 4k, ~240 ms at 16k chars). The MIN of a few runs is used
+  // because machine load only ever adds time. stripContactDetails is
+  // called directly: validateContact refuses over-length text before it
+  // scrubs, so timing it on long input would not exercise the regex.
+  const n = 32_000;
   const adversarial: Array<[string, string]> = [
-    ["a x4000", "a".repeat(4000)],
-    ["'+1' x2000", "+1".repeat(2000)],
-    ["'a.' x2000", "a.".repeat(2000)],
-    ["'.' x4000", ".".repeat(4000)],
-    ["'x' x3998 + '@b'", "x".repeat(3998) + "@b"],
-    ["'a@' x2000", "a@".repeat(2000)],
-    ["'a@a.' x1000", "a@a.".repeat(1000)],
+    ["'a' run", "a".repeat(n)],
+    ["'+1' run", "+1".repeat(n / 2)],
+    ["'a.' run", "a.".repeat(n / 2)],
+    ["'.' run", ".".repeat(n)],
+    ["'x' run + '@b'", "x".repeat(n - 2) + "@b"],
+    ["'a@' run", "a@".repeat(n / 2)],
+    ["'a@a.' run", "a@a.".repeat(n / 4)],
   ];
-  for (const [name, message] of adversarial) {
-    const body = { topic: "bug", message };
-    validateContact(body); // warm-up
-    const times: number[] = [];
-    for (let i = 0; i < 9; i++) {
+  for (const [name, text] of adversarial) {
+    stripContactDetails(text); // warm-up
+    let best = Infinity;
+    for (let i = 0; i < 3; i++) {
       const t = performance.now();
-      validateContact(body);
-      times.push(performance.now() - t);
+      stripContactDetails(text);
+      best = Math.min(best, performance.now() - t);
     }
-    times.sort((x, y) => x - y);
-    const median = times[4];
-    assert.ok(median < 2, `${name}: median ${median.toFixed(2)} ms ≥ 2 ms (quadratic email scan?)`);
+    assert.ok(best < 100, `${name}: min ${best.toFixed(1)} ms ≥ 100 ms at ${n} chars (quadratic email scan?)`);
   }
 });
 

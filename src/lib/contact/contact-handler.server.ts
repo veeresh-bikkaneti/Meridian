@@ -177,10 +177,15 @@ export function validateContact(input: unknown): ValidationResult {
   if (typeof topic !== "string" || !CONTACT_TOPICS.includes(topic)) {
     problems.push("topic must be one of " + CONTACT_TOPICS.join(", "));
   }
-  const message =
-    typeof o.message === "string" ? stripContactDetails(o.message.replace(CONTROL_CHARS, "")).trim() : "";
-  if (typeof o.message !== "string" || message.length === 0) problems.push("message is required");
-  else if (message.length > MAX_MESSAGE_CHARS) problems.push(`message must be ≤ ${MAX_MESSAGE_CHARS} characters`);
+  // The length limit applies to the text as typed (what the page counts),
+  // BEFORE scrubbing: a placeholder is longer than the email/phone it
+  // replaces. The sink fits the scrubbed text to its own limit
+  // (DiscordWebhookSink.format cuts to 2000 chars).
+  const typed = typeof o.message === "string" ? o.message.replace(CONTROL_CHARS, "").trim() : "";
+  let message = "";
+  if (typeof o.message !== "string" || typed.length === 0) problems.push("message is required");
+  else if (typed.length > MAX_MESSAGE_CHARS) problems.push(`message must be ≤ ${MAX_MESSAGE_CHARS} characters`);
+  else message = stripContactDetails(typed).trim();
 
   let replyTo: string | undefined;
   if (o.replyTo !== undefined && o.replyTo !== null && o.replyTo !== "") {
@@ -535,8 +540,9 @@ async function readCloudflareWorkerEnvStrings(): Promise<
 
 /**
  * Read the contact config (strings only) from synchronous sources, in
- * the owner's precedence (2026-10-21): the Worker's runtime env first,
- * `process.env` only as a local-dev fallback.
+ * this precedence (issue #220 Step 3, plan text: "env read via Worker
+ * runtime bindings"): the Worker's runtime env first, `process.env`
+ * only as a local-dev fallback.
  * 1. `globalThis.__env__` (the runtime env Nitro exposes)
  * 2. Server-only SSR build-time fallback (`__MERIDIAN_SSR_CONTACT_*__`,
  *    for Cloudflare Workers Builds build-time variables — see
@@ -574,8 +580,8 @@ export function readContactEnv(): ContactEnv {
 }
 
 /**
- * Full runtime config for the route, in the owner's precedence
- * (2026-10-21 — runtime bindings first, `process.env` only as a
+ * Full runtime config for the route, in this precedence (issue #220
+ * Step 3, plan text — runtime bindings first, `process.env` only as a
  * local-dev fallback):
  * 1. The Workers runtime `env` via `import("cloudflare:workers")`
  *    (works without `nodejs_compat`) — where the declared

@@ -267,10 +267,19 @@ test("full-stack E2E: contact form exercises all moving parts (flags, gate, real
     delete process.env.CONTACT_DISCORD_WEBHOOK_URL;
     await form.locator("select").selectOption("other");
     await form.locator("textarea").fill("Follow-up question when sink is NoopSink");
+    const noopResponse = page.waitForResponse(
+      (res) => res.url().includes("/api/contact") && res.request().method() === "POST",
+    );
     await form.getByRole("button", { name: /send/i }).click();
 
-    await expect(sentBanner).toHaveCount(0);
+    // Honesty gate: judge the page only AFTER the stored:false response has
+    // arrived and a result has rendered. (Checking right after the click
+    // would pass trivially: the previous thank-you is cleared when a send
+    // starts.) The count below is deliberately non-retrying.
+    await noopResponse;
     const notDeliveredBanner = page.getByTestId("contact-error");
+    await expect(sentBanner.or(notDeliveredBanner)).toBeVisible();
+    expect(await sentBanner.count(), "no thank-you after a stored:false response").toBe(0);
     await expect(notDeliveredBanner).toBeVisible();
     await expect(notDeliveredBanner).toContainText("isn't switched on yet");
     await expect(alertRegion.getByTestId("contact-error")).toBeVisible();

@@ -24,7 +24,7 @@
   // env — see readContactRuntimeEnv in
   // src/lib/contact/contact-handler.server.ts), so nodejs_compat is not
   // needed. process.env is only the local-dev fallback in that read
-  // path (owner's route, 2026-10-21; wiring completed for issue #220).
+  // path (env route per issue #220 Step 3, plan text).
   //
   // The contact webhook secret, declared BY NAME (never a value — the
   // value is set as an encrypted runtime secret on the worker, see
