@@ -130,14 +130,24 @@ test("miss: a tap on the map skips the beat to the end state", async ({
   await startGlobeRun(page);
   await commitMiss(page);
 
-  // Wait for the beat to be confirmed running: the "Showing your pin..."
-  // announcement fires with the beat's intents, and the card must not be
-  // visible yet (if the card is already up, the beat completed
-  // synchronously — a near miss — and there is nothing to skip).
-  const announcement = page.locator("text=Showing your pin and the true spot.");
-  await expect(announcement).toBeAttached({ timeout: 10_000 });
+  // Wait for the beat to be confirmed running. Wave 1 P0 Item 3 removed
+  // the "Showing your pin..." live announcement during reveals (the
+  // GameApp paragraph is the single reveal announcer), so the gate uses
+  // the gap-view camera itself: the true spot's screen point moves while
+  // the ease runs and settles when it completes. If the card is already
+  // up, the beat completed synchronously — a near miss — and there is
+  // nothing to skip.
   const cardAlreadyUp = await nextPlaceButton(page).count();
-  if (cardAlreadyUp > 0) {
+  const spotMoves = await page.locator(".satellite-map").evaluate(async (el) => {
+    const hook = (
+      el as unknown as { __spotScreen?: () => { x: number; y: number } | null }
+    ).__spotScreen;
+    const a = hook?.();
+    await new Promise((r) => setTimeout(r, 300));
+    const b = hook?.();
+    return !!a && !!b && (a.x !== b.x || a.y !== b.y);
+  });
+  if (cardAlreadyUp > 0 || !spotMoves) {
     // Synchronous beat (near miss or tile failure): nothing to skip.
     // The main miss test covers the card content.
     return;
@@ -156,7 +166,7 @@ test("miss: a tap on the map skips the beat to the end state", async ({
   // take ~1 s, and tile/WebGL jank in CI can stretch the React/MapLibre
   // render for seconds after the synchronous skip — 5 s keeps the
   // "promptly" character without flaking. A no-op tap is impossible here:
-  // the beat is confirmed running (announcement attached, card not up) so
+  // the beat is confirmed running (spot moving, card not up) so
   // the skip listener is armed, and tapHitsMap proved the tap point hits
   // the canvas container the listener is attached to.)
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 10_000 });

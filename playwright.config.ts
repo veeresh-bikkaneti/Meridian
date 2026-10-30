@@ -356,6 +356,15 @@ export default defineConfig({
       testMatch: /search-hidden\.spec\.ts/,
     },
     {
+      name: "round-loop-a11y",
+      // Wave 1 P0 Item 3: round-loop accessibility. Desktop viewport;
+      // the spec itself sets 360x740 / 390x844 for its visual checks.
+      testMatch: /round-loop-a11y\.spec\.ts/,
+      use: {
+        viewport: { width: 1440, height: 900 },
+      },
+    },
+    {
       name: "motionmaxxing-reduced",
       // Motionmaxxing reduced-motion gate (project reducedMotion fixture —
       // matches the repo's `reduced` project convention).

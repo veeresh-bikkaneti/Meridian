@@ -5730,6 +5730,16 @@ function PlayLoaded({
     // cleared path above returns early, so the celebration never
     // double-sounds the applause; reload-restores advance silently.
     playCelebrationSound("nextPlace");
+    // Wave 1 P0 Item 3 (3B): the Next place button unmounts with the
+    // result card, so without this focus falls to body. After the new
+    // question commits, land on its map (tabIndex 0, role application):
+    // one Tab then reaches the new question's controls, and the live
+    // paragraph above announces the new question ("Find …").
+    window.setTimeout(() => {
+      document
+        .querySelector<HTMLElement>(".satellite-map")
+        ?.focus({ preventScroll: true });
+    }, 0);
   }
 
   function onEndGame() {
@@ -5749,6 +5759,14 @@ function PlayLoaded({
   function onSummaryDone() {
     setSummary(null);
     finishSummary();
+    // Wave 1 P0 Item 3 (3C): closing the summary unmounts Play — and the
+    // End-game opener with it — for home, so returning focus to the
+    // opener would land on body. Land on the home heading instead: the
+    // app's established visible focus landing for forced home exits
+    // (see landHomeFocusRef), never body, never a hidden control.
+    window.setTimeout(() => {
+      document.getElementById("home-heading")?.focus({ preventScroll: true });
+    }, 0);
   }
 
   function onSummaryPlayAgain() {
@@ -6487,7 +6505,12 @@ function PlayLoaded({
           : run.phase === "story" && place && revealDone
             ? `Pin dropped. ${drop ? formatLength(drop.distanceKm, unitForEdition(run.edition, run.regionId)) : "Hit"}. ${questionLabel}.${drop?.breakdown ? ` +${drop.breakdown.score} points.` : ""}`
             : run.phase === "story" && place
-              ? "Showing the answer."
+              // Wave 1 P0 Item 3: this paragraph is the ONE designated
+              // reveal announcer, and it must announce exactly once per
+              // reveal. The pre-card "Showing the answer." text was a
+              // second announcement in the same reveal window, so the
+              // beat stays silent here and speaks once at revealDone.
+              ? null
               : run.phase === "summary" && summary
                 ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore.toLocaleString("en-US")} — ${summary.byEdition
                     .map((b) => `${EDITION_LABELS[b.edition]} ${b.score.toLocaleString("en-US")}`)

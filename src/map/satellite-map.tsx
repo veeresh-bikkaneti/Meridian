@@ -1190,6 +1190,14 @@ export function SatelliteMap(props: {
             break;
           }
           case "announce": {
+            // Wave 1 P0 Item 3: while a reveal card is up, the GameApp
+            // sr-only paragraph is the ONE designated reveal announcer.
+            // Drop zoom-space announces here (reveal "Hit." / "Showing
+            // your pin and the true spot.", threshold crossings during
+            // the reveal beat) so the reveal is never announced twice.
+            // Outside reveals (variation null) this region works exactly
+            // as before — narrow/region/space announcements untouched.
+            if (variationRef.current) break;
             // Clear-then-set: consecutive identical messages (e.g. two
             // misses in a row) would not re-announce if the text node
             // never changes.
