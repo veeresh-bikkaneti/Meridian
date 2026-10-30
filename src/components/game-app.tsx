@@ -12,7 +12,7 @@ import {
   stampCleanExitDirty,
 } from "@/game/clean-exit";
 import type { Starter } from "@/game/starters";
-import { ADMIN1_BY_COUNTRY, COUNTRIES, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
+import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
 import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
@@ -72,7 +72,7 @@ import {
   isHighContrastEnabled,
   setHighContrastEnabled,
 } from "@/game/palette-preference";
-import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
+import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -1793,6 +1793,15 @@ export function GameApp() {
    * and hiding the notice.
    */
   const handleManualMapMode = useCallback((mode: MapMode) => {
+    // A challenge run is NEVER ended by the map switch (owner ruling,
+    // 2026-10-29): the force-home below would kill the challenge AND
+    // delete the player's preserved normal run under RUN_KEY — the run
+    // the challenge promised to keep safe underneath. A challenge's
+    // map is picked at challenge open (the welcome card), and the
+    // in-challenge toggle renders its challenge context with no switch
+    // at all; this guard is the choke-point backstop so no present or
+    // future caller can force-home out of a challenge either.
+    if (run && isChallengeRun(run)) return;
     // BLOCK-A: cancel any in-flight run start. Bumping the generation
     // makes the parked openRun stale, so when its chunk load resolves
     // it bails instead of committing the run this exit just ended.
@@ -1828,7 +1837,7 @@ export function GameApp() {
     writeColdTrailOpen(false);
     setColdTrailOpen(false);
     setStarting(null);
-  }, []);
+  }, [run]);
 
   /**
    * The same toggle, hosted on Home (Block C cure): the player can
@@ -1856,6 +1865,28 @@ export function GameApp() {
     );
     setAutoScoutNote(false);
     // BLOCK-2: this flip supersedes any earlier switched notice.
+    setMapSwitchedNote(null);
+  }, []);
+
+  /**
+   * The map pick on the challenge welcome card (owner ruling,
+   * 2026-10-29): a received challenge's map is chosen WHEN THE
+   * CHALLENGE OPENS — before Start builds the run's map — never
+   * mid-challenge, where the only switch used to be the force-home
+   * toggle that killed the challenge. The mode the card shows is the
+   * one the boot already resolved (a stored manual record stands;
+   * otherwise the capability qualification — the same signals, no new
+   * probe), and flipping it here is a pre-run manual choice exactly
+   * like the Home toggle's: write the manual record, apply at once,
+   * retire the boot auto-switch note. No run exists yet, so nothing
+   * is discarded and nothing is announced — the card itself shows the
+   * new state on its switch.
+   */
+  const handleWelcomeMapMode = useCallback((mode: MapMode) => {
+    writeStoredMapMode(mode, "manual");
+    setReportMapMode(mode);
+    setMapMode(mode);
+    setAutoScoutNote(false);
     setMapSwitchedNote(null);
   }, []);
 
@@ -3020,6 +3051,8 @@ export function GameApp() {
     <ChallengeWelcome
       route={pendingChallenge.route}
       hasSavedRun={pendingChallenge.hasSavedRun}
+      mapMode={mapMode}
+      onMapModeSelect={handleWelcomeMapMode}
       onStart={startPendingChallenge}
       onDismiss={() => setPendingChallenge(null)}
     />
@@ -4335,11 +4368,19 @@ function ReviewComplete({
 function ChallengeWelcome({
   route,
   hasSavedRun,
+  mapMode,
+  onMapModeSelect,
   onStart,
   onDismiss,
 }: {
   route: ChallengeRoute;
   hasSavedRun: boolean;
+  /** The map this challenge will be played on, resolved before the
+   * card showed (stored manual record, else the boot capability
+   * qualification). The player can flip it here — at challenge open,
+   * the one moment a switch costs nothing (owner ruling, 2026-10-29). */
+  mapMode: MapMode;
+  onMapModeSelect: (mode: MapMode) => void;
   onStart: () => void;
   /** Declining is free: nothing is committed, no save is touched — the
    * displacement bargain (C6) binds only the Start tap. */
@@ -4356,6 +4397,19 @@ function ChallengeWelcome({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [onDismiss]);
+  const scout = mapMode === "scout";
+  const flipMap = useCallback(() => {
+    onMapModeSelect(scout ? "full" : "scout");
+  }, [scout, onMapModeSelect]);
+  const onMapSwitchKey = useCallback(
+    (e: ReactKeyboardEvent<HTMLDivElement>) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        flipMap();
+      }
+    },
+    [flipMap],
+  );
   return (
     <div
       ref={dialogRef}
@@ -4378,6 +4432,41 @@ function ChallengeWelcome({
             Your game in progress is saved — it will be waiting when you finish.
           </p>
         ) : null}
+        {/* The map pick (owner ruling, 2026-10-29): the mode the boot
+            resolved for this device, shown before Start — and the one
+            place a challenge receiver can change it, because the
+            in-challenge toggle can no longer switch (it used to force
+            home and kill the challenge). The switch mirrors the map
+            toggle's own switch row. */}
+        <div className="mt-4 rounded-xl border border-line px-3 py-2.5">
+          <div className="flex items-center justify-between gap-3">
+            <span className="text-base text-fg">
+              {SCOUT_COPY.welcome.label}:{" "}
+              <span data-testid="challenge-welcome-map-mode" data-mode={mapMode}>
+                {scout ? "Scout Map" : "Full map"}
+              </span>
+            </span>
+            <div
+              role="switch"
+              aria-checked={scout}
+              aria-label={SCOUT_COPY.toggle.label}
+              tabIndex={0}
+              data-testid="challenge-welcome-map-switch"
+              onClick={flipMap}
+              onKeyDown={onMapSwitchKey}
+              className="flex shrink-0 cursor-pointer items-center gap-2"
+            >
+              <span className="text-sm font-medium text-muted">{scout ? "On" : "Off"}</span>
+              <span
+                aria-hidden="true"
+                className={`flex h-6 w-11 items-center rounded-full px-0.5 transition-colors ${scout ? "justify-end bg-[#f2c14e]" : "justify-start bg-black/15"}`}
+              >
+                <span className="h-5 w-5 rounded-full bg-white shadow" />
+              </span>
+            </div>
+          </div>
+          <p className="mt-1.5 text-sm text-muted">{SCOUT_COPY.welcome.note}</p>
+        </div>
         <Button className="mt-5 w-full" onClick={onStart} data-testid="challenge-start">
           Start
         </Button>
@@ -5724,6 +5813,18 @@ function PlayLoaded({
   const mapRegionName = review
     ? (reviewEntry?.place.regionName ?? REVIEW_DECK_REGION_NAME)
     : run.regionName;
+  // The satellite map resolves its region geometry BY NAME (the atlas
+  // index in satellite-map.tsx), so it must be handed the region's real
+  // name — never the run's display name. A challenge run's regionName
+  // is "<Region> challenge" (challengeRunFields), which names no atlas
+  // region: the lookup missed, the painter fell back to an empty
+  // polygon, and the challenge map showed no region outline or border
+  // on either renderer (owner report, 2026-10-29). Display surfaces
+  // (the question bubble) keep mapRegionName; only the map gets this.
+  const satelliteRegionName = challenge
+    ? (findRegion(run.edition, run.challengeRegionId ?? "globe")?.name ??
+      mapRegionName)
+    : mapRegionName;
   const mode = review
     ? (reviewEntry?.place.mapMode ?? "globe")
     : run.edition === "globe"
@@ -6107,7 +6208,7 @@ function PlayLoaded({
               initialView={scoutSwitchView}
               onWebglContextLost={handleWebglContextLost}
               edition={mapEdition}
-              regionName={mapRegionName}
+              regionName={satelliteRegionName}
               bounds={bounds}
               onAim={onAim}
               onConfirm={onConfirm}
@@ -6149,8 +6250,16 @@ function PlayLoaded({
             {/* Scout Map settings toggle. The choice writes
                 meridian:map-mode and sends the player home — the new
                 mode takes effect in the next game, because the map is
-                built once per game (owner ruling, 2026-10-20). */}
-            <MapModeToggle mapMode={mapMode} onSelect={onManualMapMode} />
+                built once per game (owner ruling, 2026-10-20). In a
+                challenge run it renders its challenge context instead
+                (reason copy, no switch): a challenge's map is picked
+                at challenge open, and the flip must never force-home
+                out of a challenge (owner ruling, 2026-10-29). */}
+            <MapModeToggle
+              mapMode={mapMode}
+              onSelect={onManualMapMode}
+              context={challenge ? "challenge" : "play"}
+            />
             {/* Package B (§1(b)): the run menu. Mid-run challenge
                 creation lives HERE — one item in this overflow, in the
                 header chrome cluster beside the other run controls —

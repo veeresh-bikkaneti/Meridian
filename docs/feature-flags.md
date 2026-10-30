@@ -191,7 +191,16 @@ route — on the Globe that offer keeps its original mc1 form). Receiving
 one shows a welcome card first — your game in progress is only set aside
 when you tap Start, and it is offered back when the challenge ends;
 tapping "Not now" (or pressing Escape) closes the card and commits
-nothing. mc2 runs are saved under their own storage key
+nothing. The card also carries the challenge's map pick (owner ruling,
+2026-10-29): it shows the map the challenge will be played on — a saved
+manual choice if the player has one, otherwise the map the device
+capability check picked at boot — and the receiver can flip it before
+tapping Start, because that is the one moment a switch costs nothing.
+Inside the challenge the map-mode toggle only explains this; it never
+switches and never sends the player home (see
+docs/scout-offer-policy.md). A received challenge frames and outlines
+its region exactly as Play does — the map zooms to the region and
+paints its gold border — on the full map and on Scout alike. mc2 runs are saved under their own storage key
 (`meridian.run.mc2`), which older builds never read, and they are every
 bit as isolated as mc1 runs: no session banking, no learning records, no
 review deck, no seen history. Failures explain themselves in plain words

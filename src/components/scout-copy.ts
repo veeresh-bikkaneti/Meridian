@@ -52,6 +52,27 @@ export const SCOUT_COPY = {
      */
     homeExplainer:
       "A lighter outline map — easier on your phone. Your next game uses the map you pick here.",
+    /**
+     * In-challenge explainer (owner ruling, 2026-10-29): inside a
+     * friend challenge the toggle shows this instead of the switch —
+     * a challenge's map is picked when the challenge opens (the
+     * welcome card), and the old force-home flip killed the challenge
+     * (and the player's saved game underneath it). There is no switch
+     * to warn about, so there is no warning line either.
+     */
+    challengeNote:
+      "This challenge's map was picked when it opened, so it can't change now. You can pick the map for your next game from Home.",
+  },
+  /**
+   * The map pick on the challenge welcome card (owner ruling,
+   * 2026-10-29): map selection happens at challenge open — the card
+   * shows the mode the boot resolved for this device (a stored manual
+   * choice stands; otherwise the capability check) and lets the
+   * receiver flip it before Start builds the run's map.
+   */
+  welcome: {
+    label: "Map for this challenge",
+    note: "The map can't change once the challenge starts — pick the one you want now.",
   },
   /**
    * Live-region announcements for the settings toggle. Flipping the

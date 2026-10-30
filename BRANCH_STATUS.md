@@ -1,3 +1,90 @@
+# BRANCH_STATUS — fix/challenge-framing-and-map-mode
+
+- **Branch:** `fix/challenge-framing-and-map-mode`
+- **Base:** `origin/main` at `24f4d2a` (#286 merged; rebased 2026-10-30 as second in the merge queue per the coordination ledger — the only rebase conflict was this file, resolved by keeping ALL records: this branch record first, then the records carried on main, verbatim below).
+- **Prior record:** this file previously carried the `fix/220-contact-wiring`
+  branch record; that work merged as PR #284 and its full record lives in
+  that PR and in git history.
+
+## Task capsule
+
+TASK / requested outcome (owner reports, 2026-10-29, from the shipped
+build): two defects on the challenge-open surface.
+(1) A received State/Country challenge does not zoom to or outline its
+region — Play frames and gold-outlines the region, a challenge start
+does not. Must hold on the full map AND Scout.
+(2) A challenge receiver cannot switch map type: the in-run toggle
+forces home and kills the challenge. Owner-directed fix: map selection
+happens AT CHALLENGE OPEN (choose at open, or auto-select from the
+existing capability computation); the force-home must never fire inside
+a challenge run.
+
+Process: diagnosis → TDD (failing-first E2E with measured before/after
+values) → the 5 gates → 12-seat panel + DevEx on the final tip → PR.
+NO MERGE (owner's per-PR word only).
+
+## Diagnosis (code-proven; measured reproduction in the PR body)
+
+Defect 1: `challengeRunFields` (src/game/challenge.ts) sets the run's
+regionName to the DISPLAY string "<Region> challenge". PlayLoaded
+passes run.regionName to SatelliteMap as `regionName`; satellite-map
+resolves geometry BY NAME (`lookupRegion`) — "<Region> challenge" is
+not an atlas name, so it falls back to a DTO with an EMPTY polygon and
+`paintRegionHighlight` paints nothing. Bounds framing resolves via
+run.challengeRegionId and is unaffected in code — measured in repro.
+Scout uses the same map component + painter, so one seam fixes both;
+Scout's absent admin-1 BAND is a separate, owner-accepted trade and is
+not touched.
+
+Defect 2: PlayLoaded's MapModeToggle calls GameApp.handleManualMapMode,
+which writes the manual record, deletes sessionStorage RUN_KEY, nulls
+the run, and forces home. Inside an mc2 challenge that (a) kills the
+live challenge and (b) deletes the player's preserved NORMAL run under
+RUN_KEY. The welcome card offered no map display or choice, so the
+lethal toggle was the receiver's only switch.
+
+Fix: (1) PlayLoaded resolves the map's region name from the route's
+real region for challenge runs. (2) MapModeToggle gains a "challenge"
+context: reason copy, no switch. (3) handleManualMapMode refuses to
+run while a challenge run is active (choke point). (4) The welcome
+card shows the resolved map (stored manual record > capability
+auto-select — the existing boot qualification, no new probe) and lets
+the player flip it before Start; the flip writes a manual record via
+the pre-run path (no run exists, nothing is discarded).
+
+## Status
+
+- [x] Diagnosis (code) — both defects
+- [x] Reproduction spec written (failing-first) + BEFORE values captured
+  (coordinator-verified runs against pre-fix main `4597669`, bundled
+  Chromium, 1440×900): challenge Nebraska full — announcement
+  "Nebraska challenge view", settle zoom 7, gold 131 px (noise floor —
+  no outline); challenge Nebraska Scout — same announcement, gold 131;
+  challenge UK full — "United Kingdom challenge view", zoom 4, gold
+  122. Controls: Play Nebraska full/Scout gold 13,152 / 13,150 with the
+  real "<Region> view" announcement. Zoom identical before/after —
+  framing survived; the border (and the view name) was the loss.
+- [x] Fix implemented (game-app.tsx, map-mode-toggle.tsx, scout-copy.ts)
+- [x] AFTER values captured (same reproduction, fixed build): challenge
+  Nebraska full "Nebraska view" z7 gold 12,969 (Play 12,974); Scout
+  gold 38,182 flash-phase catch, resting ≈ Play (Play 13,150); UK
+  "United Kingdom view" z4 gold 14,348
+- [x] All 5 gates + neighbouring specs — tsc exit 0, npm test exit 0,
+  test:worker PASS, lint-cards GATE PASSED, build:pages PASS; framing
+  spec 11/11; neighbours: mc2-receive 5/5, boot+isolation+frozen-mc1
+  18/18, scout suites 17/17 (all coordinator-run)
+- [x] Docs updated (feature-flags.md, scout-offer-policy.md)
+- [ ] Panel (12 + DevEx) on final tip; cures re-voted
+- [ ] PR open — NO MERGE
+
+Coordination: see ~/workspace/orchestrate/meridian/COORDINATION.md —
+this branch is adjacent to PR #286 (Review card) in game-app.tsx;
+whichever PR rebases second retests.
+
+---
+
+<!-- Records carried on origin/main (24f4d2a) kept verbatim below, per the coordination ledger: both operations' records are kept, never overwritten. -->
+
 # BRANCH_STATUS — feat/review-card-action-model
 
 - **Branch:** `feat/review-card-action-model`
