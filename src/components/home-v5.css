@@ -1094,9 +1094,13 @@ body:has(.home-v5) {
    the card is no longer clickable (the outline marks "cards due",
    not a hit area). The empty card renders no controls at all. The
    caught-up card renders no primary, is not focusable as a card, and
-   mutes the heading — but the reset and challenge controls still
-   render there: they are deck-level actions, not run actions, so
-   they live in both deck states. */
+   mutes the heading — but the reset control still renders there: it
+   is a deck-level action, not a run action, so it lives in both
+   deck states. (The challenge control that used to sit beside it
+   was removed by the owner's redundancy ruling, addendum
+   2026-10-29 — comment corrected in the cure round's record commit;
+   the challenge door lives on the picker and the review-complete
+   screen, not on this card.) */
 .home-v5 .hv5-review-due {
   outline: 3px solid var(--hv5-brass);
   outline-offset: 0;
