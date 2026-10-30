@@ -108,11 +108,37 @@ card commits nothing; see the panel record below).
 - [x] Cure round 2 (2276bdd): focus ring uses the fg token — ~14:1+
   against the card surface in both schemes; one class, nothing else.
   Targeted confirmation votes (Accessibility + Frontend) on the delta.
-- [ ] PR open — NO MERGE
+- [x] PR #288 open — NO MERGE (owner's per-PR word only). Panel
+  re-vote on the cured tip: READY 13/13 (record in the PR body).
+- [x] Rebase + retest (2026-10-30, owner-authorized "Rebase + retest
+  #288, then merge when green"): rebased onto main `24f4d2a` (#286
+  merged first, per the queue). New tip `0eda40c`; voted code tip
+  `2276bdd` is now `ef946b7`. The ONLY conflict was this file —
+  resolved keeping all four records (this record first, then main's
+  carried records verbatim below). game-app.tsx auto-merged.
+  CLEAN-rebase proof: range-diff — commits 2–5 identical (`=`),
+  commit 1 differs only in this file; the tree diff old-tip→new-tip
+  outside this file carries a change-line multiset IDENTICAL to
+  #286's own squash diff (1,127 lines) — both behaviours coexist,
+  nothing of either PR dropped. Per the #286 Senior Architect
+  precedent, a clean records-only rebase needs no panel re-vote.
+  Gates on `0eda40c`: tsc 0 · npm test exit 0 (src 1832/1832) ·
+  test:worker exit 0 · lint-cards GATE PASSED · build:pages exit 0.
+  E2E (flock, --workers=1, bundled chromium-1243): framing spec
+  12/12 · card-redesign 11/11 · mc2-review 2/3 · review-card-actions
+  5/6 · mobile-home-overlap 2/26. CONTROL RUN on unmodified main
+  `24f4d2a` (detached worktree, same env): mobile-home-overlap
+  0/26, danger test FAILED (30s visibility, earlier than the
+  branch's 240s helper timeout), mc2-review privacy FAILED (30s
+  visibility) — every local failure reproduces on main: this VM's
+  E2E environment, not the rebase. CI on this tip is the canonical
+  full-suite read. Logs:
+  ~/workspace/meridian-challenge-framing-evidence/.
 
 Coordination: see ~/workspace/orchestrate/meridian/COORDINATION.md —
 this branch is adjacent to PR #286 (Review card) in game-app.tsx;
-whichever PR rebases second retests.
+whichever PR rebases second retests. (Done: this branch rebased
+second, 2026-10-30.)
 
 ---
 
