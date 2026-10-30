@@ -16,16 +16,16 @@ import { CONTACT_RETENTION_DAYS } from "@/lib/contact/retention";
  * - No contact email is published (team rationale: a published address
  *   on a kids' site invites spam and mail from children; grown-ups reach
  *   us through the gated /contact form instead).
- * - Contact delivery is PARKED (path B, adopted by the owner
- *   2026-10-21): the form is off and nothing is delivered today. When
- *   delivery is activated, Discord is the processor that will hold the
- *   messages — including an optional reply-to address, which travels to
- *   Discord with the message — the server keeps no copy, and retention
- *   is CONTACT_RETENTION_DAYS (src/lib/contact/retention.ts), deleted
- *   manually once resolved. The page below says all of this in the
- *   future tense while parked. The grown-up gate is described honestly
- *   as a check that keeps kids out of the form, NOT as verified
- *   parental consent.
+ * - Contact delivery was parked (path B, adopted by the owner
+ *   2026-10-21 — his words are quoted in that doc, decision 4) and is
+ *   wired by issue #220: Discord is the processor
+ *   that holds the messages — including an optional reply-to address,
+ *   which travels to Discord with the message — the server keeps no
+ *   copy, and retention is CONTACT_RETENTION_DAYS
+ *   (src/lib/contact/retention.ts), deleted manually once resolved.
+ *   The page below describes that wired state. The grown-up gate is
+ *   described honestly as a check that keeps kids out of the form, NOT
+ *   as verified parental consent.
  */
 export const Route = createFileRoute("/privacy")({
   head: () => ({ meta: [{ title: "Privacy — Meridian" }] }),

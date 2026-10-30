@@ -13,6 +13,15 @@ Config record: `config/cloudflare/meridian.wrangler.toml`.
 `LayeredRateLimiter` asks the in-memory layer first and the binding second.
 The first refusal wins and returns `429` with `Retry-After`.
 
+The handler takes a slot last, just before delivery (issue #220). The
+order is: 4 KB body cap (413) → JSON parse attempt → honeypot (silent
+200) → origin gate (403) → parse-error response (400) → validation
+(400) → honeypot backstop → rate limit (429) → sink. The parse runs
+first; only the parse-error response comes after the origin gate. A
+filled-honeypot body over 4 KB gets 413, not the silent 200. Only a message
+that would be delivered spends quota: a filled honeypot, a wrong or
+missing `Origin`, malformed JSON, or an invalid message never counts.
+
 The in-memory layer alone is per isolate, so a sender who lands on several
 isolates gets several budgets, and the "global" cap is per isolate as well.
 The binding closes that gap within a location. A strict worldwide limit
@@ -62,10 +71,11 @@ in-memory layer. Nothing else changes.
   `rate-limit-binding-error:<name>` (no request data). The in-memory layer
   still applies.
 
-## Owner deploy step
+## Deploy config
 
-Copy the two `[[ratelimits]]` blocks from `config/cloudflare/meridian.wrangler.toml`
-into the `meridian` worker's wrangler config, which is used by Workers Builds
-and is not in this repo. This needs Wrangler 4.36.0 or later. The dashboard
-cannot add rate-limit bindings yet. The binding names must stay
+The two rate-limit bindings are declared in the root `wrangler.jsonc`
+(`ratelimits`, issue #220), which Workers Builds reads on every deploy.
+`config/cloudflare/meridian.wrangler.toml` is the human record they were
+copied from; no build reads it. Rate-limit bindings need Wrangler 4.36.0
+or later, and the dashboard cannot add them. The binding names must stay
 `CONTACT_RATE_LIMITER` and `CONTACT_GLOBAL_RATE_LIMITER`.

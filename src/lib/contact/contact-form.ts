@@ -64,13 +64,31 @@ export function buildContactPayload(
 
 export type SendResult =
   /**
-   * stored:false = the worker accepted it but no inbox is connected yet
-   * (NoopSink — delivery parked, path B 2026-10-21) — the page must say so.
+   * stored:false = the worker accepted it but no inbox is connected
+   * (the CONTACT_DISCORD_WEBHOOK_URL secret is not set on the worker, so
+   * the NoopSink fallback took it) — the page says so honestly and keeps
+   * the visitor's draft. See sendOutcome().
    */
   | { status: "sent"; stored: boolean }
   | { status: "not-configured" }
   | { status: "rate-limited" }
   | { status: "error" };
+
+/** What the page does with a SendResult — one decision, one place. */
+export type SendOutcome = "delivered" | "not-delivered" | "not-configured" | "rate-limited" | "error";
+
+/**
+ * Map a SendResult to the page's outcome. This is the single source of
+ * truth for the honesty contract (issue #220): "delivered" — and only
+ * "delivered" — may show the thank-you and clear the draft. A "sent"
+ * result with stored:false is "not-delivered": the visitor is told the
+ * message could not be delivered and keeps every word they typed.
+ */
+export function sendOutcome(result: SendResult | null): SendOutcome | null {
+  if (!result) return null;
+  if (result.status === "sent") return result.stored ? "delivered" : "not-delivered";
+  return result.status;
+}
 
 /** POST the payload. Never throws; maps server answers to page states. */
 export async function sendContact(
