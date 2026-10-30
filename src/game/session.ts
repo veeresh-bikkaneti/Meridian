@@ -542,6 +542,11 @@ function isDiscardedShadow(value: unknown): value is DiscardedShadow {
   );
 }
 
+/** Fix round L3: a discarded record older than this never notices — the
+ * next child on a shared device must not see the last child's score,
+ * even for a new-day discard. Policy: no notice after 24h. */
+export const SHADOW_MAX_AGE_MS = 24 * 3600 * 1000;
+
 /** Fail closed to null on anything malformed or tampered. */
 export function readDiscardedShadow(): DiscardedShadow | null {
   try {
@@ -549,7 +554,20 @@ export function readDiscardedShadow(): DiscardedShadow | null {
     const raw = localStorage.getItem(DISCARDED_NOTICE_KEY);
     if (!raw) return null;
     const parsed: unknown = JSON.parse(raw);
-    return isDiscardedShadow(parsed) ? parsed : null;
+    if (!isDiscardedShadow(parsed)) return null;
+    // Strictly older than 24h reads as expired AND clears the key, so
+    // the stale record cannot fire on any later boot. Exactly 24h
+    // still reads; a future timestamp reads (clock skew fails toward
+    // showing, never toward silently dropping a fresh record).
+    if (Date.now() - parsed.lastActivityAt > SHADOW_MAX_AGE_MS) {
+      try {
+        localStorage.removeItem(DISCARDED_NOTICE_KEY);
+      } catch {
+        // Best effort: the read still reports expired.
+      }
+      return null;
+    }
+    return parsed;
   } catch {
     return null;
   }

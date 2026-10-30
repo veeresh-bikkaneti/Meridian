@@ -945,3 +945,15 @@ Approvals needed (exact action + owner), checker, escalation:
   and observe() throws (probed 2026-10-30); the first GREEN run
   failed on the instrument, not the fix. Existing toHaveCount(0)
   absence assertions unaffected (they key on data-testid).
+- L3 (this commit): shadows older than 24h now read as expired AND
+  clear the key (read-level, the single enforcement point — the only
+  production reader is the body boot's shadow block, so a stale
+  record never reaches the dateKey branch). Policy: no notice after
+  24h, even for a new-day discard. Boundary unit tests: 23:59:59 kept,
+  exactly-24h kept (strictly-older rule; ms-tick retry so the pin is
+  deterministic), 24:00:01 null + key removed, future kept, malformed
+  null, 25h new-day silent + cleared. Fixture refresh: the shadow
+  unit test + the M1 unit test now anchor at run-time Date.now() +
+  today's dateKey (a fixed 2023 timestamp reads expired). Full 1B
+  E2E suite green: whole discarded-notice spec 26/26 in
+  logs/l3-green.log (Chair constraint met).
