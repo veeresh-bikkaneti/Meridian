@@ -724,10 +724,12 @@ Approvals needed (exact action + owner), checker, escalation:
 <!-- Rebase onto main 24f4d2a: HEAD Package C record kept above per the coordination ledger; Wave 1 record kept below. Neither record overwritten. -->
 
 - **Branch:** `fix/wave1-p0`
-- **Base:** main `45976699` (rebased tip; original base `3aa16b56` superseded — see rebase record below).
+- **Base:** main `24f4d2a` (rebased tip 2026-10-30; prior base `45976699` superseded — see rebase record below).
 - **State:** INTEGRATED — 3 shipped + Item 2 held out (see HELD-OUT record
-  in Done below); tip `ed2ff4b9` on base main `45976699`; full gates +
-  panel re-vote on this tip owed; PR not yet opened.
+  in Done below); tip `2c083b3` on base main `24f4d2a` (PR #286 merged);
+  PR #287 OPEN (opened at prior head `c2e7648b`; this rebase updates its
+  head automatically); full gates + Wave 1 suites + panel merge re-vote
+  on this tip owed.
   NO MERGE without the owner's per-PR word.
 - **Governing manifest:** `.council/manifests/2026-10-29-wave1-p0.md` (Tier-2,
   Chair APPROVED, token `AUTH_RUN_TDD_IMPLEMENTATION`; first commit `1fb73a0`,
@@ -755,6 +757,10 @@ Approvals needed (exact action + owner), checker, escalation:
       `b1ca852`): raw +2332/−67, cap-relevant +1855/−40; amended-waiver
       accounting at the panel-cure worktree was +2005/−62 (95 headroom at
       the time — superseded by the rebase recount).
+- [x] Footprint (rebased tip `2c083b3` vs base main `24f4d2a`): raw
+      +2327/−39; cap-relevant +1770/−38 — vs the amended +2100/−400 cap,
+      headroom 330, unchanged from the `45976699` recount (#286 touches no
+      branch file except this record).
 
 ## Blocked (no code, owner decisions)
 
@@ -804,6 +810,15 @@ Approvals needed (exact action + owner), checker, escalation:
   E2E blocked by EPERM on `ed2ff4b9`, 0 ran. So on the rebased tip: tsc,
   unit, worker, lint DONE; build:pages and E2E OWED (VM EPERM fault, not a
   code failure) before the panel re-vote.
+- Rebase onto main `24f4d2a` (2026-10-30, VM EPERM cleared): 8 commits
+  replayed — manifest `033e9dc4→480f0fb`, item4 `d6394cc6→7a94796`,
+  item3 `67c3972a→1f58c28`, item1 `962852d3→d1916ab`, branch-record
+  `36dd0aec→55e4eec`, waiver `c20dbce9→db376b8`, cure `ed2ff4b9→e11f93a`,
+  docs `c2e7648b→2c083b3`. One conflict only, in this file (main's
+  Package C record vs this branch's record — both kept per the ledger).
+  No code file conflicted; Item 2 still absent (0 hits). Full gates +
+  Wave 1 suites + panel merge re-vote on the post-record tip owed; the
+  `ed2ff4b9` gates paragraph above is superseded for the new base.
 - Closed-tab limits: "Closed-tab notice covers inactivity/new-day only; a
   closed tab's stale-scoring or challenges-off run cannot be derived from
   the shadow, and a challenge-only closed tab leaves no shadow." The
