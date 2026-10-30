@@ -366,6 +366,47 @@ test("1I(2) discarded notice covers the whole session, not just the last run", a
   await expectNotice(page, "inactivity", ["new day", "scoring", "challenges"], totals!);
 });
 
+test("1I(2)-boot reload after idle expiry shows whole-session totals, not last-run-only", async ({
+  page,
+}) => {
+  await page.clock.install({ time: T0 });
+  await startGlobeRunClocked(page, APP);
+  await playAtLeast(page, 1);
+  // Switch editions mid-session (no End game): the session banks both.
+  await page.getByRole("button", { name: "Editions" }).click();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
+  await page.getByRole("button", { name: "Choose a country" }).click();
+  await page.getByRole("button", { name: "United States" }).click();
+  await page.getByRole("button", { name: "Play entire United States" }).click();
+  await waitForAim(page);
+  await playAtLeast(page, 2);
+  const totals = await readSessionTotals(page);
+  expect(totals).not.toBeNull();
+  expect(totals!.placesPlayed).toBeGreaterThanOrEqual(2);
+  const lastRunSum = await readRunResultsSum(page);
+  // Precondition: the session total really spans both editions, so a
+  // last-run-only notice cannot match it.
+  expect(totals!.totalScore).toBeGreaterThan(lastRunSum);
+  // Boot expiry without touching the clock: backdate the session's
+  // lastActivityAt past the 120 s idle timeout, then reload in the same
+  // tab (sessionStorage survives; the session ref starts null at boot).
+  // The installed clock survives the reload at T0, so boot sees the
+  // session as live-but-expired. Pre-fix this notice showed last-run-only
+  // totals. UNVERIFIED (VM EPERM fault blocks browser runs).
+  await page.evaluate((aged) => {
+    const raw = sessionStorage.getItem("meridian.session");
+    if (!raw) throw new Error("no saved session to age");
+    const session = JSON.parse(raw) as { lastActivityAt: number };
+    session.lastActivityAt = aged;
+    sessionStorage.setItem("meridian.session", JSON.stringify(session));
+  }, T0 - 180_000);
+  await page.reload();
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 20_000,
+  });
+  await expectNotice(page, "inactivity", ["new day", "scoring", "challenges"], totals!);
+});
+
 test("1F GUARD deliberate End game then reload shows plain home with no lost-game notice", async ({
   page,
 }) => {
@@ -466,6 +507,9 @@ test("visual notice at 360x740 and 390x844 does not overlap its neighbours", asy
     });
     expect(boxes.note).not.toBeNull();
     expect(boxes.dismiss).not.toBeNull();
+    // Dismiss is a real 44×44 tap target (a11y floor), not just inside the card.
+    expect(boxes.dismiss!.width).toBeGreaterThanOrEqual(44);
+    expect(boxes.dismiss!.height).toBeGreaterThanOrEqual(44);
     // Dismiss sits inside its own card.
     expect(boxes.dismiss!.x).toBeGreaterThanOrEqual(boxes.note!.x - 1);
     expect(boxes.dismiss!.y).toBeGreaterThanOrEqual(boxes.note!.y - 1);
@@ -475,15 +519,15 @@ test("visual notice at 360x740 and 390x844 does not overlap its neighbours", asy
     expect(boxes.dismiss!.y + boxes.dismiss!.height).toBeLessThanOrEqual(
       boxes.note!.y + boxes.note!.height + 1,
     );
-    // The card never overlaps the edition button below it.
-    if (boxes.globe) {
-      const overlap =
-        boxes.note!.x < boxes.globe.x + boxes.globe.width &&
-        boxes.note!.x + boxes.note!.width > boxes.globe.x &&
-        boxes.note!.y < boxes.globe.y + boxes.globe.height &&
-        boxes.note!.y + boxes.note!.height > boxes.globe.y;
-      expect(overlap).toBe(false);
-    }
+    // The card never overlaps the edition button below it. The globe
+    // button must be present: a missing button used to skip this check.
+    expect(boxes.globe).not.toBeNull();
+    const overlap =
+      boxes.note!.x < boxes.globe!.x + boxes.globe!.width &&
+      boxes.note!.x + boxes.note!.width > boxes.globe!.x &&
+      boxes.note!.y < boxes.globe!.y + boxes.globe!.height &&
+      boxes.note!.y + boxes.note!.height > boxes.globe!.y;
+    expect(overlap).toBe(false);
     await page.screenshot({
       path: `tests/e2e/evidence/discarded-notice-${width}.png`,
     });

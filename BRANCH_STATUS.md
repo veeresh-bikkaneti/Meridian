@@ -745,6 +745,10 @@ Approvals needed (exact action + owner), checker, escalation:
 - [x] Item 3 — round-loop a11y: one reveal announcer, Next-place focus,
       summary-dialog trap/Escape/return focus.
 - [x] Item 4 (UNCONDITIONAL only) — build-aware share URL + dead Search hidden.
+- [x] Footprint: raw diff vs main at `b1ca852` is +2332/−67; cap-relevant
+      +1855/−40 after excluding the +414 manifest and BRANCH_STATUS.md
+      itself (+63/−27) — vs the +1200/−400 cap, Chair waiver GRANTED
+      (recorded below, before push/PR).
 
 ## Blocked (no code, owner decisions)
 
@@ -756,20 +760,54 @@ Approvals needed (exact action + owner), checker, escalation:
 
 ## Pending
 
-- [x] Footprint: integrated diff vs main is +2269/−40 including the +414
-      manifest (excluded from the cap); cap-relevant +1855/−40 vs the
-      +1200/−400 cap — Chair waiver GRANTED (recorded below, before push/PR).
-
 > **Chair footprint waiver (2026-10-29, Wave 1 P0, branch `fix/wave1-p0`):** Manifest §3 cap +1200/−400 is waived to a revised cap of **+1900/−400** (production + test diff, excluding the manifest and `BRANCH_STATUS.md`). Verified actual at integrated tip `f28e074`: **+1855/−40**. Reason: the overrun is test-driven, not production sprawl — production is ~442 lines across all four items; the excess is the manifest-mandated gating E2E bulk (15-test discarded-notice, round-loop-a11y, idle-seam live-check). No trim preserves the manifest's gating tests. This waiver covers the cap number only. Constitution rules 1 and 3 are NOT lifted; no gate, panel approval, or merge authority is waived.
 >
 > Coverage rule: the `BRANCH_STATUS.md` commit itself needs no waiver coverage (the manifest already excludes `BRANCH_STATUS.md` and the manifest from the footprint count). Panel-cure commits are covered only if (1) they cure panel findings on the four already-built items only — no new feature, no new scope, no protected file touched — and (2) cumulative additions stay at or under the revised +1900 cap (45 lines of headroom over the verified +1855). Any cure exceeding +1900 or adding scope must return to the Chair for a new ruling before it lands.
-- [ ] Full gates on the integrated tip (tsc, unit, worker, lint-cards,
+>
+> **Chair footprint waiver, amended (2026-10-29, Wave 1 P0, branch `fix/wave1-p0`):** Manifest §3 cap +1200/−400, previously waived to +1900/−400, is amended to a revised cap of **+2100/−400** (production + test diff, excluding the manifest and `BRANCH_STATUS.md`). Verified actual at the panel-cure worktree vs base `3aa16b56`: **+2005/−62** (rename-adjusted; +2005/−114 without rename detection, still inside −400). Reason: the +105 overrun over +1900 is the panel-mandated round-1 cure set on the four already-built items only — a real wrong-numbers bug fix (killIdleSession whole-session totals fallback), two a11y correctness fixes (HUD score-span `role="status"` removal; summary-done focus return via `landHomeFocusRef`), and test-honesty fixes (gap-view fail-loudly on missing hook, denied-set test pins, source-pin rename at 0 net) — not scope growth. No cure was trimmed to fit. This waiver covers the cap number only. Constitution rules 1 and 3 are NOT lifted; no gate, panel approval, E2E result, or merge authority is waived.
+>
+> Amended coverage: this ruling expressly covers committing the worktree cure set as verified (stage the rename pair together so the 0-net accounting applies). Further cure commits are covered only if (i) they cure panel round-1 or re-vote findings on the four built items only, no new feature/scope/protected file/CONDITIONAL change/Item 2 gate change, and (ii) cumulative additions stay ≤ +2100 (95 lines headroom over +2005, for commit-time accounting variance only). Anything beyond +2100 or adding scope returns to the Chair for a new ruling before it lands. Not waived: the two new E2E tests (1I(2)-boot, 3A-hit) remain UNVERIFIED until VM recovery — E2E reruns, full gates on the final head, and the panel re-vote are still owed before merge-ready. Rename accounting: rename detection is the correct method (moved file byte-identical, sha256 verified, 52 lines, 0 net); without it the count would be +2005/−114, still inside −400, so the waiver holds either way.
+- [ ] Full gates on the final tip (tsc, unit, worker, lint-cards,
       build:pages, changed-surface E2E + core journey regression, visual
-      360×740 + 390×844).
+      360×740 + 390×844). Non-E2E gates re-run per cure commit; E2E
+      reruns owed on VM recovery — see E2E environment caveats.
 - [ ] Panel re-vote on the final tip (a pre-integration sign-off never counts).
 - [ ] Item 2 deployed-origin live check (both hosts) or Item 2 held out.
 - [ ] Screen recording via parent browser delegation before any production claim.
 - [ ] PR (open only, owner merges; never merge from here).
+
+## E2E environment caveats
+
+- VM EPERM fault since ~01:00 UTC: browser runs fail with SIGTRAP, and
+  Playwright cache writes fail with EPERM (npm wrapper loads fail the
+  same way). That fault — not a code failure — is why E2E reruns stopped.
+- Per-suite tallies at the integrated tip `b1ca852` (code tip `f28e074`):
+  discarded-notice 15/15, round-loop-a11y 6/7 then 7/7 on rerun,
+  search-hidden 2/2, endgame-share 0/2 console-gate-only with functional
+  pass, gap-view-reveal 3/3, edition-drilldown 8/8, cleared-mode 11/11,
+  difficulty-picker 5/6 with zero clean reruns.
+- Gates 1–5 at the integrated tip are DONE (tsc, unit, worker, lint-cards,
+  build:pages green). E2E reruns are OWED, meaning: they must run on VM
+  recovery before the panel re-vote. OWED is not a waiver, not a pass,
+  and not deferred past merge-ready.
+- Closed-tab limits: "Closed-tab notice covers inactivity/new-day only; a
+  closed tab's stale-scoring or challenges-off run cannot be derived from
+  the shadow, and a challenge-only closed tab leaves no shadow." The
+  challenges-off limb is mc1 only (mc2 challenges-off clears silently —
+  a follow-up, not this cure).
+- Item 1 demoted source-pin: not written. No such documentation file
+  exists; do not cite one.
+- Panel round-1 cures (this commit): code delta +150/−22, taking
+  cap-relevant cumulative additions to +2005 vs the +1900 cap — 105 lines
+  over. AMENDED WAIVER GRANTED (Chair ruling, recorded verbatim below);
+  the cure commit lands under the amended cap. The Item 3
+  demoted source-pin file is renamed, content-identical, from
+  `src/components/round-loop-a11y.test.ts` to
+  `src/components/round-loop-a11y.documentation.ts` (out of the npm test
+  glob; still non-gating documentation). Two new E2E tests are UNVERIFIED
+  until VM recovery: the 1I(2)-boot test in
+  `tests/e2e/discarded-notice.spec.ts` and the 3A-hit test in
+  `tests/e2e/round-loop-a11y.spec.ts`.
 
 ## Integration notes
 
@@ -777,10 +815,14 @@ Approvals needed (exact action + owner), checker, escalation:
   `playwright.config.ts` merge conflict (Item 3 vs Item 4 project entries),
   resolved by keeping all three new project entries: `search-hidden`,
   `round-loop-a11y`, `discarded-notice`. All other files applied cleanly.
-- Panel questions carried to the re-vote: (1) 3C focus returns to the home
-  heading, not the End-game opener (opener unmounts with the game);
-  (2) GameApp live-paragraph edit (~6390) sits outside the manifest's
-  "continue handlers ~5632" scoping (builder: exactly-once unsatisfiable
-  without it); (3) 3D/3E are guards, not RED evidence, on tested paths;
-  (4) endgame-share spec fails only on VM-egress beacon console errors
-  (functional assertions pass; rerun-when-quiet or panel call).
+- Panel-accepted deviations (round-1 verdicts; Code Reviewer, Frontend
+  Developer, and Accessibility Auditor all accepted both): (1) 3C focus
+  returns to the home heading, not the End-game opener — the opener
+  unmounts with the game, so a literal return is impossible; (2) the
+  GameApp live-paragraph edit (~6390) sits outside the manifest's
+  "continue handlers ~5632" scoping — exactly-once is unsatisfiable
+  without touching the announcer paragraph. Honesty record: 3D/3E are
+  GUARDs, not RED evidence, on tested paths.
+- Panel question still carried to the re-vote: endgame-share spec fails
+  only on VM-egress beacon console errors (functional assertions pass;
+  rerun-when-quiet or panel call).

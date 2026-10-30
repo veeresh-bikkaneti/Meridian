@@ -1760,7 +1760,13 @@ export function GameApp() {
     const killedIsChallenge =
       !!killedRun &&
       (killedRun.regionId === CHALLENGE_REGION_ID || killedRun.challengeOrigin === "mc2");
-    const live = getSession();
+    // Boot fallback: at boot the session ref is still null (useSessionState
+    // starts null with no hydration) while the persisted session survives
+    // in sessionStorage, so a reload-after-expiry kill must total the whole
+    // persisted session, not just the killed run. Challenge kills stay
+    // run-only (challenges never bank). Live play is unchanged: the ref
+    // is non-null during play, so the fallback never runs there.
+    const live = getSession() ?? (killedIsChallenge ? null : readSession());
     const liveSummary = live && !killedIsChallenge ? summarizeSession(live) : null;
     const totals = liveSummary
       ? { totalScore: liveSummary.totalScore, placesPlayed: liveSummary.placesPlayed }
@@ -3003,6 +3009,11 @@ export function GameApp() {
           onChallengeDone={handleChallengeDone}
           onSummaryDone={() => {
             // End game already ended the session; drop it and go home.
+            // 3C focus return rides the landHomeFocusRef effect: the flag
+            // below arms it, and the effect retries after every commit,
+            // clearing only once the home heading actually takes focus —
+            // so the return survives Choose mounting after this commit.
+            landHomeFocusRef.current = true;
             setStartError(null);
             clearDrop();
             setRun(null);
@@ -5939,12 +5950,12 @@ function PlayLoaded({
     finishSummary();
     // Wave 1 P0 Item 3 (3C): closing the summary unmounts Play — and the
     // End-game opener with it — for home, so returning focus to the
-    // opener would land on body. Land on the home heading instead: the
-    // app's established visible focus landing for forced home exits
-    // (see landHomeFocusRef), never body, never a hidden control.
-    window.setTimeout(() => {
-      document.getElementById("home-heading")?.focus({ preventScroll: true });
-    }, 0);
+    // opener would land on body. Focus return rides GameApp's
+    // landHomeFocusRef flag (set by the summary-done handler that
+    // finishSummary runs): its effect retries after every commit and
+    // lands on the home heading once Choose has mounted — never body,
+    // never a hidden control. No setTimeout here: a single-shot timeout
+    // silently no-ops when Choose has not mounted yet.
   }
 
   function onSummaryPlayAgain() {
@@ -6595,7 +6606,7 @@ function PlayLoaded({
                 </div>
               ) : null}
             </div>
-            <span className="sr-only" role="status">
+            <span className="sr-only">
               Session score {sessionTotal.toLocaleString("en-US")}
             </span>
             <div className="flex items-center gap-1.5">

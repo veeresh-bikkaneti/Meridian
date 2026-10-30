@@ -138,17 +138,27 @@ test("miss: a tap on the map skips the beat to the end state", async ({
   // up, the beat completed synchronously — a near miss — and there is
   // nothing to skip.
   const cardAlreadyUp = await nextPlaceButton(page).count();
-  const spotMoves = await page.locator(".satellite-map").evaluate(async (el) => {
+  const beat = await page.locator(".satellite-map").evaluate(async (el) => {
     const hook = (
       el as unknown as { __spotScreen?: () => { x: number; y: number } | null }
     ).__spotScreen;
     const a = hook?.();
     await new Promise((r) => setTimeout(r, 300));
     const b = hook?.();
-    return !!a && !!b && (a.x !== b.x || a.y !== b.y);
+    return {
+      hookPresent: typeof hook === "function",
+      spotMoves: !!a && !!b && (a.x !== b.x || a.y !== b.y),
+    };
   });
-  if (cardAlreadyUp > 0 || !spotMoves) {
-    // Synchronous beat (near miss or tile failure): nothing to skip.
+  // A missing __spotScreen hook fails loudly, never passes vacuously:
+  // without the hook there is no beat to skip and no evidence the camera
+  // ran. Only an already-up card (synchronous beat) skips the test.
+  expect(
+    beat.hookPresent,
+    "gap-view camera must expose __spotScreen; a missing hook is a failure, not a skip",
+  ).toBe(true);
+  if (cardAlreadyUp > 0) {
+    // Synchronous beat (near miss): nothing to skip.
     // The main miss test covers the card content.
     return;
   }

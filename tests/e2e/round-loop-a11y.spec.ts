@@ -7,6 +7,8 @@ import {
   dropButton,
   nextPlaceButton,
   clickNextPlace,
+  spotViewportPoint,
+  tapHitsMap,
 } from "./helpers";
 
 /**
@@ -199,6 +201,64 @@ test("3A reveal announces exactly once to the screen reader", async ({ page }) =
   expect(
     announcements,
     `reveal must announce exactly once, got ${announcements.length}: ${JSON.stringify(announcements)}`,
+  ).toHaveLength(1);
+});
+
+/**
+ * Commit a guaranteed hit, slicing live announcements around the Drop
+ * click only — mirroring commitMissObserved, including its mark-after-tap
+ * placement (the map tap's own "Pin placed." announcement precedes the
+ * mark). A projected spot on the globe's far side commits as a miss:
+ * burn that place and retry, like the shared commitHit helper.
+ * UNVERIFIED (VM EPERM fault blocks browser runs).
+ */
+async function commitHitObserved(
+  page: Page,
+  obs: { slice: (from: number) => Promise<string[]>; length: () => Promise<number> },
+): Promise<{ announcements: string[]; phase: string | null }> {
+  for (let attempt = 0; attempt < 10; attempt++) {
+    await dismissTileOverlayIfPresent(page);
+    const spot = await spotViewportPoint(page);
+    const inView =
+      spot && spot.x >= 0 && spot.x <= 1440 && spot.y >= 0 && spot.y <= 900;
+    if (inView && (await tapHitsMap(page, spot.x, spot.y))) {
+      await page.mouse.click(spot.x, spot.y);
+      await expect(dropButton(page)).toBeEnabled();
+      const mark = await obs.length();
+      await dropButton(page).click();
+      let phase: string | null = null;
+      await expect
+        .poll(
+          async () => {
+            phase = await readPhase(page);
+            return phase;
+          },
+          { timeout: 20_000 },
+        )
+        .toMatch(/^(story|done)$/);
+      if (phase === "story") {
+        await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
+        return { announcements: await obs.slice(mark), phase };
+      }
+      // Far-side miss: burn this place and try the next.
+    } else {
+      // Spot not tappable: burn this place with a miss, move on.
+      await commitMissObserved(page, obs);
+    }
+    await clickNextPlace(page);
+    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  }
+  throw new Error("commitHitObserved: no tappable spot in 10 attempts");
+}
+
+test("3A-hit hit reveal announces exactly once to the screen reader", async ({ page }) => {
+  await startGlobeRun(page);
+  await awaitGlobeDiveDone(page);
+  const obs = await installLiveObserver(page);
+  const { announcements } = await commitHitObserved(page, obs);
+  expect(
+    announcements,
+    `hit reveal must announce exactly once, got ${announcements.length}: ${JSON.stringify(announcements)}`,
   ).toHaveLength(1);
 });
 
