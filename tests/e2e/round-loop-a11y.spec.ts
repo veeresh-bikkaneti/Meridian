@@ -210,7 +210,6 @@ test("3A reveal announces exactly once to the screen reader", async ({ page }) =
  * placement (the map tap's own "Pin placed." announcement precedes the
  * mark). A projected spot on the globe's far side commits as a miss:
  * burn that place and retry, like the shared commitHit helper.
- * UNVERIFIED (VM EPERM fault blocks browser runs).
  */
 async function commitHitObserved(
   page: Page,
@@ -291,6 +290,15 @@ test("3B Next place moves focus to the new question, not body", async ({ page })
     afterNext.tag,
     `focus after Next place must be on the new question, got ${afterNext.tag} "${afterNext.text}"`,
   ).not.toBe("BODY");
+  // Fix round L4: "not BODY" alone is weak — the focus must land
+  // INSIDE the map (probe-verified: a DIV inside .satellite-map).
+  // This is a GUARD, not RED evidence: it passes on the current
+  // build. The question proof stays the Tab-control + live
+  // announcement assertions below.
+  expect(
+    afterNext.inMap,
+    `focus after Next place must be inside .satellite-map, got ${afterNext.tag} "${afterNext.text}"`,
+  ).toBe(true);
   // One Tab after must land on a control of the new question.
   await page.keyboard.press("Tab");
   const afterTab = await activeElementInfo(page);

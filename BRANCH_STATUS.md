@@ -957,3 +957,14 @@ Approvals needed (exact action + owner), checker, escalation:
   today's dateKey (a fixed 2023 timestamp reads expired). Full 1B
   E2E suite green: whole discarded-notice spec 26/26 in
   logs/l3-green.log (Chair constraint met).
+- L4 (this commit): 3B now asserts focus lands INSIDE .satellite-map
+  after Next (expect inMap true), not just "not BODY". The inMap
+  assertion is a GUARD (passes pre-fix, probe-verified map DIV); the
+  question proof stays the Tab-control + live-announcement
+  assertions. The UNVERIFIED label on commitHitObserved is REMOVED:
+  3A-hit passed in this gate run (21.0s), which is the condition the
+  label's removal was gated on. Gate run logs/l4-green.log: 7/8 —
+  3B/3A-hit/3C/3D/3E/3F/visual pass; 3A FAILS pre-existing (480s
+  timeout, Next-place button never stable for the click) in a test
+  L4 does not touch — reported for Step 5, not fixed here (out of
+  this finding's scope; one flake re-run owed there).
