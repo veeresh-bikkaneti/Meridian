@@ -256,6 +256,48 @@ test("end-game share: clipboard path copies the exact session share text", async
   }
 });
 
+/**
+ * Click the summary's "Share score" button and verify the click took
+ * effect, retrying once if it was swallowed.
+ *
+ * Diagnosed 2026-10-30 on the rebased branch AND on base (5e5a440e):
+ * the dispatched click occasionally has no effect at all — button label
+ * stays "Share score", __shareCalls stays 0, clipboard untouched, no
+ * navigation, navigator.share still a function (instrumented diag runs).
+ * The product share path is proven sound (shareScore's navigator.share
+ * branch is byte-identical base→branch; calls reach 1 whenever the
+ * handler runs), so the loss is between dispatch and handler — a
+ * harness/browser-timing race, not a share defect. The retry cannot mask
+ * a broken share path: the exact assertions below (exactly 1 call, exact
+ * payload, "Shared ✓", clipboard sentinel intact) still gate the
+ * outcome, and two dead clicks still fail.
+ */
+async function clickShareScoreWithRetry(
+  dialog: import("playwright/test").Locator,
+  page: Page,
+): Promise<void> {
+  const shareButton = dialog.getByRole("button", { name: "Share score" });
+  await expect(shareButton).toBeVisible();
+  for (let attempt = 0; attempt < 2; attempt++) {
+    await shareButton.click();
+    const effected = await page
+      .waitForFunction(
+        () =>
+          (window as unknown as { __shareCalls: unknown[] }).__shareCalls?.length === 1 ||
+          [...document.querySelectorAll("button")].some(
+            (b) => b.textContent?.trim() === "Shared ✓",
+          ),
+        { timeout: 10_000 },
+      )
+      .then(
+        () => true,
+        () => false,
+      );
+    if (effected) return;
+  }
+  // Fall through to the exact assertions below, which fail honestly.
+}
+
 test("end-game share: mocked navigator.share is called once, clipboard untouched", async ({
   browser,
 }) => {
@@ -275,7 +317,7 @@ test("end-game share: mocked navigator.share is called once, clipboard untouched
     await page.evaluate((s) => navigator.clipboard.writeText(s), SENTINEL);
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(SENTINEL);
 
-    await dialog.getByRole("button", { name: "Share score" }).click();
+    await clickShareScoreWithRetry(dialog, page);
 
     const calls = await page.evaluate(
       () => (window as unknown as { __shareCalls: unknown[] }).__shareCalls,

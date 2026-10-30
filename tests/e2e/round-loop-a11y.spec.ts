@@ -254,6 +254,19 @@ async function commitHitObserved(
 test("3A-hit hit reveal announces exactly once to the screen reader", async ({ page }) => {
   await startGlobeRun(page);
   await awaitGlobeDiveDone(page);
+  // Test-only non-first profile: a first-ever win ALSO fires the
+  // first-win celebration overlay (game-app.tsx:2838, gated on
+  // localStorage "meridian.firstWinCelebrated"), a separate intentional
+  // announcement — not a reveal announcement. Seeding its flag makes
+  // this test about the reveal announcer only. The celebration itself
+  // is NOT weakened or changed: it still fires for genuine first wins.
+  await page.evaluate(() => {
+    try {
+      localStorage.setItem("meridian.firstWinCelebrated", "1");
+    } catch {
+      /* private mode — ignore */
+    }
+  });
   const obs = await installLiveObserver(page);
   const { announcements } = await commitHitObserved(page, obs);
   expect(
