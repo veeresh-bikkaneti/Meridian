@@ -815,6 +815,139 @@ test("1J Dismiss moves focus to home heading", async ({ page, context }) => {
     .toBe("home-heading");
 });
 
+// Fix round L2: a screen reader cannot observe real announcements, so
+// the test watches the live region itself — a MutationObserver records
+// every non-empty text the announcer region takes. One notice must
+// produce exactly one recorded announcement. The observer install is
+// deferred until documentElement exists: addInitScript runs at
+// document creation, when documentElement is still null and observe()
+// throws (probed 2026-10-30) — installing eagerly leaves the reloaded
+// page unobserved and the log empty even though the region fills.
+async function installAnnouncerObserver(context: BrowserContext): Promise<void> {
+  await context.addInitScript(() => {
+    const w = window as unknown as { __announcerLog?: string[] };
+    w.__announcerLog = [];
+    const push = () => {
+      const el = document.querySelector(
+        '[data-testid="discarded-notice-announcer"]',
+      );
+      const text = el ? (el.textContent ?? "") : "";
+      const log = w.__announcerLog!;
+      if (text && log[log.length - 1] !== text) log.push(text);
+    };
+    const install = () => {
+      const root = document.documentElement;
+      if (!root) {
+        setTimeout(install, 10);
+        return;
+      }
+      const obs = new MutationObserver(push);
+      obs.observe(root, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+      });
+    };
+    install();
+  });
+}
+
+async function readAnnouncerLog(page: Page): Promise<string[]> {
+  return page.evaluate(
+    () =>
+      (window as unknown as { __announcerLog?: string[] }).__announcerLog ??
+      [],
+  );
+}
+
+async function announcerText(page: Page): Promise<string> {
+  return page.evaluate(
+    () =>
+      document.querySelector('[data-testid="discarded-notice-announcer"]')
+        ?.textContent ?? "",
+  );
+}
+
+test("1K boot notice announces exactly once via the live region", async ({
+  page,
+  context,
+}) => {
+  await routeFriendChallenges(context, false);
+  await seedCleanExit(context);
+  await installAnnouncerObserver(context);
+  await page.goto(APP_NO_IDLE);
+  await expectHome(page);
+  await page.evaluate(
+    ({ key, json }) => {
+      sessionStorage.setItem(key, json);
+    },
+    { key: MC2_RUN_KEY, json: mc2RunJson() },
+  );
+  await page.reload();
+  await expectHome(page);
+  await expectNotice(page, "challenges", ["inactivity", "new day", "scoring"], {
+    totalScore: 150,
+    placesPlayed: 2,
+  });
+  // The region mounts empty and is filled after mount, so the fill is
+  // a real text change: exactly one announcement, carrying the
+  // challenges sentence. Pre-fix the notice mounted with its text
+  // already present (role="status" on the visible card) and this log
+  // stayed empty.
+  await expect
+    .poll(() => readAnnouncerLog(page), { timeout: 5000 })
+    .toEqual([
+      "Friend challenges are switched off, so your saved game could not be resumed. You played 2 places and scored 150 points.",
+    ]);
+});
+
+test("1K-repeat dismissed notice clears the announcer so the same notice announces again", async ({
+  page,
+  context,
+}) => {
+  await routeFriendChallenges(context, false);
+  await seedCleanExit(context);
+  await installAnnouncerObserver(context);
+  await page.goto(APP_NO_IDLE);
+  await expectHome(page);
+  await page.evaluate(
+    ({ key, json }) => {
+      sessionStorage.setItem(key, json);
+    },
+    { key: MC2_RUN_KEY, json: mc2RunJson() },
+  );
+  await page.reload();
+  await expectHome(page);
+  await expectNotice(page, "challenges", ["inactivity", "new day", "scoring"], {
+    totalScore: 150,
+    placesPlayed: 2,
+  });
+  await expect
+    .poll(() => readAnnouncerLog(page), { timeout: 5000 })
+    .toHaveLength(1);
+  // Boot 1: one announcement. Dismiss clears the region itself (not
+  // just the visible card), so an identical notice can announce again.
+  await notice(page).getByRole("button", { name: "Dismiss" }).click();
+  await expect.poll(() => announcerText(page), { timeout: 5000 }).toBe("");
+  // Reload wipes page JS state, so the boot-2 log is read fresh: one
+  // announcement here is the second announcement event overall.
+  await page.evaluate(
+    ({ key, json }) => {
+      sessionStorage.setItem(key, json);
+    },
+    { key: MC2_RUN_KEY, json: mc2RunJson() },
+  );
+  await page.reload();
+  await expectHome(page);
+  await expectNotice(page, "challenges", ["inactivity", "new day", "scoring"], {
+    totalScore: 150,
+    placesPlayed: 2,
+  });
+  await expect
+    .poll(() => readAnnouncerLog(page), { timeout: 5000 })
+    .toHaveLength(1);
+});
+
 test("1B GUARD context check: a fresh context sees no notice (record is context-local)", async ({
   browser,
 }) => {

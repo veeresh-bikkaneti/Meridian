@@ -932,3 +932,16 @@ Approvals needed (exact action + owner), checker, escalation:
   as summary-done), not <body>. Idle-notice Dismiss untouched (noted
   follow-up). Test 1J (RED pre-fix: activeElement BODY; GREEN post-fix
   in logs/l1-green.log).
+- L2 (this commit): visible discarded notice drops role="status"
+  (it mounted with text already present, so SRs could miss it); one
+  always-present sr-only region on home
+  (data-testid="discarded-notice-announcer", map-announcer pattern)
+  starts empty and is filled by a post-mount effect, cleared on
+  dismiss — so each notice is a real text change, announced exactly
+  once. Tests 1K (observer: exactly one announcement per notice) +
+  1K-repeat (dismiss clears the region; same notice announces again
+  next boot). Instrument note: the observer install defers until
+  documentElement exists — addInitScript runs when it is still null
+  and observe() throws (probed 2026-10-30); the first GREEN run
+  failed on the instrument, not the fix. Existing toHaveCount(0)
+  absence assertions unaffected (they key on data-testid).

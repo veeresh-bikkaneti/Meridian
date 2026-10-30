@@ -1542,6 +1542,20 @@ export function GameApp() {
   // keyword + the played score/places travel together, and each
   // cause's copy avoids the other causes' keywords.
   const [discardedNotice, setDiscardedNotice] = useState<DiscardedNotice | null>(null);
+  // Fix round L2: the visible notice must not carry role="status" — it
+  // mounts with its text already present, so screen readers may never
+  // announce it. Instead this always-present (on home) sr-only region
+  // starts empty and is FILLED by the effect below after mount, so the
+  // text change is what announces. Cleared when the notice goes null,
+  // so a later identical notice announces again instead of landing on
+  // an unchanged region.
+  const [discardedNoticeAnnouncement, setDiscardedNoticeAnnouncement] =
+    useState("");
+  useEffect(() => {
+    setDiscardedNoticeAnnouncement(
+      discardedNotice ? discardedNoticeText(discardedNotice) : "",
+    );
+  }, [discardedNotice]);
   // First-run tutorial: null when inactive, otherwise the current beat
   // (1 = aim coachmark, 2 = reveal feedback, 3 = completion hook). Owned
   // by GameApp so the menu invitation, the run, and the cleanup paths all
@@ -3198,7 +3212,6 @@ export function GameApp() {
   // suppressed while it stands — home shows one notice, never two.
   const discardedNoticeEl = discardedNotice ? (
     <div
-      role="status"
       data-testid="discarded-notice"
       className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg"
     >
@@ -3219,6 +3232,18 @@ export function GameApp() {
       </Button>
     </div>
   ) : null;
+
+  // Fix round L2: the discarded notice's sole live region. Always
+  // rendered on home (never conditional on the notice), mirroring the
+  // map-mode announcer: the effect near the discardedNotice state
+  // fills it after mount and clears it on dismiss, so each notice is
+  // a real text change. The visible notice carries no live role, so
+  // this text is announced exactly once per notice, never twice.
+  const discardedNoticeAnnouncer = (
+    <p className="sr-only" role="status" data-testid="discarded-notice-announcer">
+      {discardedNoticeAnnouncement}
+    </p>
+  );
 
   // Shown once on the home screen after the idle kill.
   const idleNotice = idleEndedNote && !discardedNotice ? (
@@ -3561,6 +3586,7 @@ export function GameApp() {
           {challengeBootNoticeEl}
           {mapSwitchedNotice}
           {autoScoutNotice}
+          {discardedNoticeAnnouncer}
           {discardedNoticeEl}
           {idleNotice}
           {loadNotice}
