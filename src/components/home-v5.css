@@ -1033,24 +1033,19 @@ body:has(.home-v5) {
     inset 0 0 0 2px #fdfbf3,
     inset 0 0 0 5px var(--hv5-brown-deep);
 }
-/* Review exception: .hv5-spot .hv5-txt is position:relative; z-index:1
-   (so text sits above the spot art), which would otherwise swallow taps
-   on the heading/paragraph before they reach the stretch layer. Review
-   has no inner controls besides the CTA, so its stretch layer may sit
-   above the text; the cue stays visible through the transparent layer
-   and remains click-through. */
-.home-v5 .hv5-review-due .hv5-stretch::after {
-  z-index: 2;
-}
-/* Review corner fix: .hv5-spot .hv5-txt is position:relative, which
-   would make the stretch ::after size to the text column (62% wide)
-   instead of the card — corner taps outside the column would hit the
-   section, not the button. In the due state the text column goes
-   static, so the ::after sizes to the card (the section). Scoped to
-   due only; empty/caught-up cards have no stretch layer. */
-.home-v5 .hv5-review-due .hv5-txt {
-  position: static;
-}
+/* Review card (action-model manifest 2026-10-29): the card no longer
+   uses Form S, so the two carve-outs that arbitrated its stretch layer
+   (the ::after z-index lift and the static text column) are deleted
+   with the mechanism. The text column keeps the shared .hv5-spot
+   rule (position:relative + z-index:1 + height:100%) — and the new
+   action stack RELIES on two parts of it: height:100% gives the flex
+   column the card's full height so the stack's margin-top:auto can
+   anchor it to the bottom, and z-index:1 keeps the column (and its
+   controls) painted above the absolutely-positioned .hv5-art — both
+   verified by the hit-test + anchoring assertions in
+   tests/e2e/review-card-actions.desktop.spec.ts. The shared
+   .hv5-stretch rules above are untouched — GeoDetective, Journal,
+   and Get Involved still stretch. */
 /* Journal ("What the land remembers") and Get Involved ("For grown-ups")
    cards also stretch their primary CTA across the full card while elevating
    nested links in .hv5-involved above the stretch overlay. */
@@ -1094,49 +1089,80 @@ body:has(.home-v5) {
   z-index: 1;
 }
 
-/* C — Review: due card gets the gold outline (mockup) and the REVIEW →
-   cue pill; the cue is decorative and click-through so taps still hit
-   the stretched CTA beneath it. Empty/caught-up cards render no button
-   and no cue, are not focusable, and mute the heading. */
+/* C — Review: the due card gets the gold outline (mockup) — a state
+   signal, kept by the action-model manifest 2026-10-29 even though
+   the card is no longer clickable (the outline marks "cards due",
+   not a hit area). The empty card renders no controls at all. The
+   caught-up card renders no primary, is not focusable as a card, and
+   mutes the heading — but the reset control still renders there: it
+   is a deck-level action, not a run action, so it lives in both
+   deck states. (The challenge control that used to sit beside it
+   was removed by the owner's redundancy ruling, addendum
+   2026-10-29 — comment corrected in the cure round's record commit;
+   the challenge door lives on the picker and the review-complete
+   screen, not on this card.) */
 .home-v5 .hv5-review-due {
   outline: 3px solid var(--hv5-brass);
   outline-offset: 0;
-}
-.home-v5 .hv5-review-cue {
-  position: absolute;
-  right: 14px;
-  /* Part 2 (manifest D9): the cue used to sit bottom-right, entirely
-     inside the spot illustration box (.hv5-art: right:6, bottom:2,
-     172px wide) at every width. The bottom-left is NOT free either —
-     the in-flow "Start review" CTA box lives there (measured at all
-     four contract widths). The top-right corner is the card's one
-     empty zone (head content is left-anchored, the art is
-     bottom-anchored), so the cue moves there, cue-only: the shared
-     .hv5-art rule and the sibling spot cards are untouched. */
-  top: 14px;
-  z-index: 1;
-  pointer-events: none;
-  background: var(--hv5-brown-deep);
-  color: #fbf7ea;
-  font-family: var(--hv5-body);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  padding: 8px 14px;
-  border-radius: 999px;
 }
 .home-v5 .hv5-review-empty h2 {
   color: var(--hv5-ink-soft);
 }
 
+/* Review action stack (action-model manifest 2026-10-29): the stack
+   anchors to the bottom of the text column (where the stretched CTA
+   used to sit); the actions column holds the primary and the
+   challenge pill at a >=8px gap; the danger footer owns its hairline
+   divider (present iff Start over is present, in both deck states
+   and both flag states). */
+.home-v5 .hv5-review-stack {
+  margin-top: auto;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+}
+.home-v5 .hv5-review-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+.home-v5 .hv5-review-actions .hv5-btn-brown {
+  min-height: 44px;
+}
+.home-v5 .hv5-review-danger {
+  margin-top: 12px;
+  border-top: 1px solid var(--hv5-line);
+  padding-top: 4px;
+}
+/* Danger treatment, Review-card-scoped ONLY (ReviewComplete's opener
+   keeps the base brown — the same component, a plain surface). The
+   colour is the FIXED hex #b3372a, never var(--atlas-stamp): the
+   token's night-theme value (#e86a5c) measures ~3:1 on this card's
+   parchment and fails the 4.5:1 text floor; the fixed hex measures
+   5.80:1 in every theme because the card surface is theme-invariant. */
+.home-v5 .hv5-review-danger .reset-history-open {
+  color: #b3372a;
+}
+.home-v5 .hv5-review-danger .reset-history-open:hover,
+.home-v5 .hv5-review-danger .reset-history-open:focus-visible {
+  color: #b3372a;
+}
+.home-v5 .hv5-review-danger .reset-history-open:focus-visible {
+  outline: 3px solid #b3372a;
+  outline-offset: 2px;
+}
+
 /* "Start over" reset opener (manifest 2026-10-28, Part 1): an in-flow
-   text button in the review card's text column. position:relative +
-   z-index:3 is the .hv5-involved p a precedent — the due card's CTA
-   stretches a click layer over the whole card at z-index:2, and the
-   opener must stay tappable above it without swallowing card taps
-   anywhere else. Not scoped to .home-v5: ReviewComplete (a plain
-   screen, no .home-v5 ancestor) renders the same control. The 44px
-   min-height is the accessibility tap-target floor. */
+   text button. position:relative + z-index:3 dates from the stretch-
+   layer era (the .hv5-involved p a precedent); the Review card no
+   longer stretches (action-model manifest 2026-10-29), but the rule
+   is shared with ReviewComplete and is kept verbatim — the danger
+   colour treatment lives in the Review-scoped override above, not
+   here. Not scoped to .home-v5: ReviewComplete renders the same
+   control in a different subtree of the app root (not inside a
+   .home-v5 card), so the base rule must live outside the .home-v5
+   scope. The 44px min-height is the accessibility tap-target floor. */
 .reset-history-open {
   position: relative;
   z-index: 3;
@@ -1160,47 +1186,18 @@ body:has(.home-v5) {
 .reset-history-open:focus-visible {
   color: var(--hv5-ink, #33302a);
 }
-
-/* The Review card's challenge opener (manifest §1(e), 2026-10-28): a
-   second, independent control sharing the card with the reset opener
-   above, so it carries the same geometry for the same reasons — in
-   normal flow inside the text column, above the card's stretched
-   start-review layer, 44px floor. It is a separate class on purpose:
-   the two controls must never drift into each other's styling or
-   behaviour by accident. Only the home card renders it —
-   ReviewComplete uses a standard button. */
-.review-challenge-open {
-  position: relative;
-  z-index: 3;
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 6px 10px;
-  margin-top: 2px;
-  background: none;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 700;
-  color: var(--hv5-brown-deep, #77591f);
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 3px;
-}
-.review-challenge-open:hover,
-.review-challenge-open:focus-visible {
-  color: var(--hv5-ink, #33302a);
-}
 .reset-history-open:focus-visible {
   outline: 3px solid var(--hv5-brown-deep, #77591f);
   outline-offset: 2px;
 }
 
-/* F7 — forced colors: the two-tone ring, the due outline, and the
-   REVIEW → cue all restate in system colors so none of them vanishes
-   or goes low-contrast when the UA overrides author colors. Static
-   verification only here; a live forced-colors pass is a later step. */
+/* F7 — forced colors: the two-tone ring and the due outline restate
+   in system colors so none of them vanishes or goes low-contrast
+   when the UA overrides author colors. The Review action stack's
+   distinctions are structural (filled vs outline border vs divider +
+   position), so they survive author-colour removal without a
+   restatement. Static verification only here; a live forced-colors
+   pass is a later step. */
 @media (forced-colors: active) {
   .home-v5 .hv5-stretch:focus-visible {
     outline-color: CanvasText;
@@ -1214,10 +1211,13 @@ body:has(.home-v5) {
   .home-v5 .hv5-review-due {
     outline-color: CanvasText;
   }
-  .home-v5 .hv5-review-cue {
-    background: ButtonText;
-    color: ButtonFace;
-    forced-color-adjust: none;
+  /* The primary's brown fill is forced away in this mode and the
+     button carries no border, so at rest it would read as plain
+     text (panel cure, UX Researcher B3): give it a structural
+     border. Forced-colors maps the colour to a system button
+     colour; the width/style are what must be authored. */
+  .home-v5 .hv5-review-actions .hv5-btn-brown {
+    border: 2px solid ButtonText;
   }
 }
 

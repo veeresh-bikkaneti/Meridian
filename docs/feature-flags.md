@@ -222,19 +222,20 @@ original mc1 format keep their original completion screen, unchanged.
 Turning the flag off removes every one of these entries; a challenge
 already in progress still finishes, it just can't be shared onwards.
 
-**Creating from your review deck (2026-10-29, Package C).** The last
-door: the Review card on Home and the screen you land on when a review
-finishes both offer "Challenge a friend — pick a map". It opens the
-same region picker as the Home door and deals a fresh five from
-whichever map you pick, through the same preview sheet. One rule is
-absolute here: the route is NEVER dealt from your review deck. A
-challenge link can be decoded by anyone who receives it, so a route
-built from your deck would publish exactly which places you missed.
-When this was designed, the council's ruling was never-the-deck, and
-a labelled "Beat my misses" opt-in was deferred to the owner as an
-open question (the council's recommendation: no) — still open. The deck
-only decides whether the Home card shows the door (it appears while
-the deck holds any card, due or caught up, just like "Start over");
-the finished-review screen shows it whenever the flag is on. Turning
-the flag off removes the door from both places, and the review itself
-is untouched either way.
+**Creating from your review deck (2026-10-29, Package C).** The
+screen you land on when a review finishes offers "Challenge a
+friend — pick a map". It opens the same region picker as the Home
+door and deals a fresh five from whichever map you pick, through
+the same preview sheet. One rule is absolute here: the route is
+NEVER dealt from your review deck. A challenge link can be decoded
+by anyone who receives it, so a route built from your deck would
+publish exactly which places you missed. When this was designed,
+the council's ruling was never-the-deck, and a labelled "Beat my
+misses" opt-in was deferred to the owner as an open question (the
+council's recommendation: no) — still open. The finished-review
+screen shows the door whenever the flag is on; turning the flag off
+removes it, and the review itself is untouched either way.
+(The Review card on Home carried the same door for a day: the
+owner's redundancy ruling removed it — it merely re-opened the
+generic picker, whose own "Challenge a friend" button is the one
+canonical door. The review-complete door stays.)
