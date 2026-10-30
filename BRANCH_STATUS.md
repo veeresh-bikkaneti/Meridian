@@ -21,6 +21,102 @@
   corrected in this record. Pushed as `6b3c17c` (see State); not
   merged.
 
+## Findings round 2 — review findings F2-F5 (2026-10-29, evening)
+
+Source: the independent review of head `c05ed57` (reviewer evidence in
+the reviewer workspace `/workspace/verify284/`, e.g.
+`scrub-expansion.log`, `red-ui-summary.log`). The assignment to fix
+these findings on this branch came through the orchestrating agent; no
+separate owner quote for it is claimed here. Owner words available
+this round (Veeresh, 2026-10-29, CT): "Build 1a: Option 1 plus the
+linear email regex. I approve the Chair-lift for the regex edit."; "A";
+"Yes, push 6b3c17c to fix/220-contact-wiring. Do not merge."; "fix
+blocker"; "Verify". At about 8:12 PM CT the owner showed the Cloudflare
+dashboard for the `meridian` Worker with a Production runtime secret
+whose name reads "CONTACT_DISCORD…" (name truncated in the UI, value
+encrypted). That is recorded as the owner's evidence that the
+production contact secret exists; the exact name is to be confirmed by
+the post-deploy probe (SPEC §3.4), not assumed.
+
+Consensus Manifest (Tier 2 surface: privacy logic in the contact
+handler). Recorded and committed BEFORE any source edit this round.
+Builder-drafted; there is no separate Chair or Councilor C signature —
+disclosed for the panel, which is the checker on the final tip.
+
+```text
+TASK / requested outcome:
+  F2  No uncited owner attribution in this PR's diff: source comments
+      describe the design neutrally or cite a verifiable record; this
+      file's wrong file reference is fixed; the deploy-sequencing text
+      reflects the owner's dashboard evidence (secret exists).
+  F3  A message the page accepts (<= 1000 chars after trim) is never
+      rejected by the server because scrubbing made it longer: the
+      length limit applies to the raw (control-stripped, trimmed) text;
+      the scrubbed text still fits Discord's 2000-char content limit.
+  F4  The linear-time regression test cannot flake on a loaded runner
+      and still fails with the old unanchored (quadratic) regex.
+  F5  The E2E honesty check (Part 4b) asserts "no thank-you" only after
+      the not-delivered response has arrived and rendered.
+Interpretations considered and selected reading:
+  F2: the privacy.tsx "path B, adopted by the owner 2026-10-21" line is
+      CITED (owner's words "Adopt B — start the cure round" are quoted in
+      docs/reviews/2026-10-21-p0-p2-remediation.md, decision 4); keep it
+      and add the pointer. "owner's precedence / owner's route
+      (2026-10-21)" in contact-handler.server.ts (2x), its test file
+      (1x) and wrangler.jsonc (1x) are UNCITED: reword to cite issue
+      #220 Step 3 (plan text) instead. Lines that only mention the owner
+      as an actor (e.g. "the owner switches /api/contact on") make no
+      attribution claim and are left alone; lines already on main
+      (rate-limiter "owner rule: free options only", retention.ts) are
+      outside this diff and out of scope.
+  F3: check length on the raw text, scrub only a valid-length message;
+      the Discord sink already cuts the fenced message to fit 2000
+      chars (DiscordWebhookSink.format), so no new cap is added there —
+      a unit test pins it for a worst-case placeholder-dense message.
+      Rejected: raising the server limit (client/server would drift);
+      shorter placeholders (copy change, not needed).
+  F4: time stripContactDetails (where the regex runs) on 32,000-char
+      inputs, take the MIN of 3 runs (load only adds time), bound
+      100 ms. Measured (Node 22, f4-probe.log): new regex <0.1 ms at
+      16k; old regex ~230-250 ms at 16k, ~4x per doubling, so ~1 s at
+      32k. Rejected: ratio test across sizes (sub-ms timings, noisy).
+      Note: after F3, validateContact no longer scrubs over-length
+      text, so timing validateContact on 4000-char input would stop
+      measuring the regex at all — hence the direct call.
+  F5: start page.waitForResponse before the click, await it, wait for
+      the not-delivered node, then a non-retrying count of the
+      thank-you == 0.
+Tier and rationale:
+  Tier 2 (security/privacy surface: the PII scrub). Records/comments
+  parts are Tier 0. Constitution rule 3: edits stay in validateContact
+  (F3), the two readContact* doc comments, one wrangler.jsonc comment,
+  the privacy.tsx header comment, and the named tests.
+Done condition / evidence (predicted RED signatures):
+  F3 RED: new unit test fails with problems
+      ["message must be ≤ 1000 characters"] for a 999-char message
+      ending " me@ex.io"; GREEN after.
+  F4 RED: with EMAIL_IN_TEXT temporarily set back to the old regex, the
+      new test fails with a min time ≥ 100 ms on the '@'-free shapes;
+      GREEN with the shipped regex.
+  F5 RED: with the honesty gate reverted in contact.tsx (thank-you on
+      any 200), the spec fails at the new "no thank-you after the
+      response" assertion (not later at the not-delivered check).
+  All AGENTS.md gates; logs in /workspace/v220/gates-findings2/.
+Files in scope:
+  src/lib/contact/contact-handler.server.ts (validateContact; 2 doc
+  comments), src/lib/contact/contact-handler.server.test.ts,
+  wrangler.jsonc (1 comment), src/routes/privacy.tsx (header comment),
+  tests/e2e/grownups-privacy-contact.desktop.spec.ts (Part 4b),
+  BRANCH_STATUS.md, PR #284 body. Out of scope: the 42px submit button
+  (pre-existing on main), the validation alert in contact.tsx, the
+  honeypot message, the Workers Builds dashboard failure, workers/,
+  package-lock.json, src/game/data/**.
+Approvals: commit + fast-forward push to fix/220-contact-wiring and the
+  PR #284 body edit (authorized for this round via the orchestrator).
+  No merge, no deploy, no force-push. Checker: the review panel on the
+  final tip (not the builder).
+```
+
 ## Blockers round — aria-live + owner citations + PR body (2026-10-29)
 
 Owner instruction (Veeresh, 2026-10-29 4:20 PM CT, chat message to the
