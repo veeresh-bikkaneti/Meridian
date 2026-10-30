@@ -756,11 +756,13 @@ Approvals needed (exact action + owner), checker, escalation:
 
 ## Pending
 
-- [ ] Footprint: integrated diff vs main is +2269/−40 including the +414
+- [x] Footprint: integrated diff vs main is +2269/−40 including the +414
       manifest (excluded from the cap); cap-relevant +1855/−40 vs the
-      +1200/−400 cap — Chair waiver owed before the excess lands (never
-      silent growth). Test files are the bulk of the overrun (discarded-notice
-      511 lines, round-loop-a11y 422 lines, idle-seam doc 160 lines).
+      +1200/−400 cap — Chair waiver GRANTED (recorded below, before push/PR).
+
+> **Chair footprint waiver (2026-10-29, Wave 1 P0, branch `fix/wave1-p0`):** Manifest §3 cap +1200/−400 is waived to a revised cap of **+1900/−400** (production + test diff, excluding the manifest and `BRANCH_STATUS.md`). Verified actual at integrated tip `f28e074`: **+1855/−40**. Reason: the overrun is test-driven, not production sprawl — production is ~442 lines across all four items; the excess is the manifest-mandated gating E2E bulk (15-test discarded-notice, round-loop-a11y, idle-seam live-check). No trim preserves the manifest's gating tests. This waiver covers the cap number only. Constitution rules 1 and 3 are NOT lifted; no gate, panel approval, or merge authority is waived.
+>
+> Coverage rule: the `BRANCH_STATUS.md` commit itself needs no waiver coverage (the manifest already excludes `BRANCH_STATUS.md` and the manifest from the footprint count). Panel-cure commits are covered only if (1) they cure panel findings on the four already-built items only — no new feature, no new scope, no protected file touched — and (2) cumulative additions stay at or under the revised +1900 cap (45 lines of headroom over the verified +1855). Any cure exceeding +1900 or adding scope must return to the Chair for a new ruling before it lands.
 - [ ] Full gates on the integrated tip (tsc, unit, worker, lint-cards,
       build:pages, changed-surface E2E + core journey regression, visual
       360×740 + 390×844).
