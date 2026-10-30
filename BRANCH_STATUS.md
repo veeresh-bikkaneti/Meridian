@@ -100,7 +100,12 @@ the pre-run path (no run exists, nothing is discarded).
   Spec: staged-commit assertions + a flip-then-decline test + a
   same-test play-context control for the toggle test. Evidence logs
   retained in ~/workspace/meridian-challenge-framing-evidence/.
-- [ ] Panel re-vote on the cured tip
+- [x] Panel re-vote on cure-1 tip 6db1ad9: 12/13 approve-family; the
+  Accessibility seat escalated its focus-ring point to a BLOCK (gold
+  ring ~1.65:1 on the LIGHT card surface).
+- [x] Cure round 2 (2276bdd): focus ring uses the fg token — ~14:1+
+  against the card surface in both schemes; one class, nothing else.
+  Targeted confirmation votes (Accessibility + Frontend) on the delta.
 - [ ] PR open — NO MERGE
 
 Coordination: see ~/workspace/orchestrate/meridian/COORDINATION.md —
