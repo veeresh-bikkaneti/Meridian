@@ -1,3 +1,149 @@
+# BRANCH_STATUS — fix/challenge-framing-and-map-mode
+
+- **Branch:** `fix/challenge-framing-and-map-mode`
+- **Base:** `origin/main` at `24f4d2a` (#286 merged; rebased 2026-10-30 as second in the merge queue per the coordination ledger — the only rebase conflict was this file, resolved by keeping ALL records: this branch record first, then the records carried on main, verbatim below).
+- **Prior record:** this file previously carried the `fix/220-contact-wiring`
+  branch record; that work merged as PR #284 and its full record lives in
+  that PR and in git history.
+
+## Task capsule
+
+TASK / requested outcome (owner reports, 2026-10-29, from the shipped
+build): two defects on the challenge-open surface.
+(1) A received State/Country challenge does not zoom to or outline its
+region — Play frames and gold-outlines the region, a challenge start
+does not. Must hold on the full map AND Scout.
+(2) A challenge receiver cannot switch map type: the in-run toggle
+forces home and kills the challenge. Owner-directed fix: map selection
+happens AT CHALLENGE OPEN (choose at open, or auto-select from the
+existing capability computation); the force-home must never fire inside
+a challenge run.
+
+Process: diagnosis → TDD (failing-first E2E with measured before/after
+values) → the 5 gates → 12-seat panel + DevEx on the final tip → PR.
+NO MERGE (owner's per-PR word only).
+
+Capsule fields: Tier 2 (multi-file feature behaviour on the challenge
+surface; council manifest lineage from the challenge packages).
+Ownership: coordinator + delegated workers, this workspace only.
+Verification contract: the 5 AGENTS.md gates + the framing spec and
+named neighbour suites, sequentially under the E2E flock. Budget:
+parent cap for a Tier-2 run; consumption was dominated by coordinator
+re-runs after two delegated E2E reports proved unsupported by their
+own logs (see the environment note in the PR body) — no meter exists
+in this repo, so no exact figure is claimed.
+
+## Diagnosis (code-proven; measured reproduction in the PR body)
+
+Defect 1: `challengeRunFields` (src/game/challenge.ts) sets the run's
+regionName to the DISPLAY string "<Region> challenge". PlayLoaded
+passes run.regionName to SatelliteMap as `regionName`; satellite-map
+resolves geometry BY NAME (`lookupRegion`) — "<Region> challenge" is
+not an atlas name, so it falls back to a DTO with an EMPTY polygon and
+`paintRegionHighlight` paints nothing. Bounds framing resolves via
+run.challengeRegionId and is unaffected in code — measured in repro.
+Scout uses the same map component + painter, so one seam fixes both;
+Scout's absent admin-1 BAND is a separate, owner-accepted trade and is
+not touched.
+
+Defect 2: PlayLoaded's MapModeToggle calls GameApp.handleManualMapMode,
+which writes the manual record, deletes sessionStorage RUN_KEY, nulls
+the run, and forces home. Inside an mc2 challenge that (a) kills the
+live challenge and (b) deletes the player's preserved NORMAL run under
+RUN_KEY. The welcome card offered no map display or choice, so the
+lethal toggle was the receiver's only switch.
+
+Fix: (1) PlayLoaded resolves the map's region name from the route's
+real region for challenge runs. (2) MapModeToggle gains a "challenge"
+context: reason copy, no switch. (3) handleManualMapMode refuses to
+run while a challenge run is active (choke point). (4) The welcome
+card shows the resolved map (stored manual record > capability
+auto-select — the existing boot qualification, no new probe) and lets
+the player flip it before Start; the flip only STAGES the pick and
+Start commits it as a manual record (cure round 1 — declining the
+card commits nothing; see the panel record below).
+
+## Status
+
+- [x] Diagnosis (code) — both defects
+- [x] Reproduction spec written (failing-first) + BEFORE values captured
+  (coordinator-verified runs against pre-fix main `4597669`, bundled
+  Chromium, 1440×900): challenge Nebraska full — announcement
+  "Nebraska challenge view", settle zoom 7, gold 131 px (noise floor —
+  no outline); challenge Nebraska Scout — same announcement, gold 131;
+  challenge UK full — "United Kingdom challenge view", zoom 4, gold
+  122. Controls: Play Nebraska full/Scout gold 13,152 / 13,150 with the
+  real "<Region> view" announcement. Zoom identical before/after —
+  framing survived; the border (and the view name) was the loss.
+- [x] Fix implemented (game-app.tsx, map-mode-toggle.tsx, scout-copy.ts)
+- [x] AFTER values captured (same reproduction, fixed build): challenge
+  Nebraska full "Nebraska view" z7 gold 12,969 (Play 12,974); Scout
+  gold 13,051 at rest (Play 13,151; an earlier run's 38,182 was a
+  flash-phase catch, superseded by the cure-run resting values); UK
+  "United Kingdom view" z4 gold 14,348
+- [x] All 5 gates + neighbouring specs — tsc exit 0, npm test exit 0,
+  test:worker PASS, lint-cards GATE PASSED, build:pages PASS; framing
+  spec 11/11; neighbours: mc2-receive 5/5, boot+isolation+frozen-mc1
+  18/18, scout suites 17/17 (all coordinator-run)
+- [x] Docs updated (feature-flags.md, scout-offer-policy.md)
+- [x] Panel (12 + DevEx) on tip ad9c11a: NOT READY — 4 BLOCKs on two
+  findings: (F1) welcome switch hit area ~24px tall, below the 44px
+  floor (Frontend, Accessibility); (F2) the welcome flip wrote a
+  permanent manual record immediately, breaking the card's
+  "declining commits nothing" contract and understating the pick's
+  permanence (Code Reviewer, UX Researcher; Game Designer + Security
+  concurring). 8 AWN / 1 APPROVE otherwise.
+- [x] Cure round 1 (this record's commit): F1 — switch hit area is
+  now min 44×44px with an explicit focus ring. F2 — the flip only
+  STAGES the pick (new welcomeMapPick state); Start commits it via
+  handleWelcomeMapMode beside C6's displacement commit; "Not now"
+  drops it unwritten; the card note and docs now state the pick
+  becomes the saved manual choice (manual records never decay).
+  Spec: staged-commit assertions + a flip-then-decline test + a
+  same-test play-context control for the toggle test. Evidence logs
+  retained in ~/workspace/meridian-challenge-framing-evidence/.
+- [x] Panel re-vote on cure-1 tip 6db1ad9: 12/13 approve-family; the
+  Accessibility seat escalated its focus-ring point to a BLOCK (gold
+  ring ~1.65:1 on the LIGHT card surface).
+- [x] Cure round 2 (2276bdd): focus ring uses the fg token — ~14:1+
+  against the card surface in both schemes; one class, nothing else.
+  Targeted confirmation votes (Accessibility + Frontend) on the delta.
+- [x] PR #288 open — NO MERGE (owner's per-PR word only). Panel
+  re-vote on the cured tip: READY 13/13 (record in the PR body).
+- [x] Rebase + retest (2026-10-30, owner-authorized "Rebase + retest
+  #288, then merge when green"): rebased onto main `24f4d2a` (#286
+  merged first, per the queue). New tip `0eda40c`; voted code tip
+  `2276bdd` is now `ef946b7`. The ONLY conflict was this file —
+  resolved keeping all four records (this record first, then main's
+  carried records verbatim below). game-app.tsx auto-merged.
+  CLEAN-rebase proof: range-diff — commits 2–5 identical (`=`),
+  commit 1 differs only in this file; the tree diff old-tip→new-tip
+  outside this file carries a change-line multiset IDENTICAL to
+  #286's own squash diff (1,127 lines) — both behaviours coexist,
+  nothing of either PR dropped. Per the #286 Senior Architect
+  precedent, a clean records-only rebase needs no panel re-vote.
+  Gates on `0eda40c`: tsc 0 · npm test exit 0 (src 1832/1832) ·
+  test:worker exit 0 · lint-cards GATE PASSED · build:pages exit 0.
+  E2E (flock, --workers=1, bundled chromium-1243): framing spec
+  12/12 · card-redesign 11/11 · mc2-review 2/3 · review-card-actions
+  5/6 · mobile-home-overlap 2/26. CONTROL RUN on unmodified main
+  `24f4d2a` (detached worktree, same env): mobile-home-overlap
+  0/26, danger test FAILED (30s visibility, earlier than the
+  branch's 240s helper timeout), mc2-review privacy FAILED (30s
+  visibility) — every local failure reproduces on main: this VM's
+  E2E environment, not the rebase. CI on this tip is the canonical
+  full-suite read. Logs:
+  ~/workspace/meridian-challenge-framing-evidence/.
+
+Coordination: see ~/workspace/orchestrate/meridian/COORDINATION.md —
+this branch is adjacent to PR #286 (Review card) in game-app.tsx;
+whichever PR rebases second retests. (Done: this branch rebased
+second, 2026-10-30.)
+
+---
+
+<!-- Records carried on origin/main (24f4d2a) kept verbatim below, per the coordination ledger: both operations' records are kept, never overwritten. -->
+
 # BRANCH_STATUS — feat/review-card-action-model
 
 - **Branch:** `feat/review-card-action-model`

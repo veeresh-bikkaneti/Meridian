@@ -94,6 +94,23 @@ downloading, but the game never starts, its record is never saved,
 and no "couldn't load" error appears for a start the player
 already cancelled.
 
+## Exception: inside a friend challenge, the toggle never sends you home (owner ruling, 2026-10-29)
+
+The force-home above applies to the player's own games. A friend
+challenge is different: the receiver did not start the game the
+toggle would discard — and the run record the toggle deletes is, at
+that moment, the player's own in-progress game that the challenge is
+keeping safe underneath. So inside a challenge run the toggle shows
+why the map can't change and offers no switch at all, and the
+force-home path itself refuses to run while a challenge is active.
+A challenge's map is chosen when the challenge OPENS instead: the
+welcome card shows the mode the boot resolved for this device (a
+stored manual choice stands, as always; otherwise the capability
+check above) and the receiver can flip it there, before Start builds
+the run's map. That pick is a manual choice like any other — flipping
+only stages it, Start writes it as a manual record (declining the
+card commits nothing), and it stands until the player changes it.
+
 Session end retires the notice too (#188, 2026-10-26). When the
 session itself ends — the idle timer runs out, or the player taps
 Done on the end-game summary — the notice is cleared with everything

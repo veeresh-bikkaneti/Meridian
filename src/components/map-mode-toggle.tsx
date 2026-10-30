@@ -21,6 +21,12 @@
  * Home there is no game to end, so the explainer talks about the next
  * game instead and there is no warning.
  *
+ * Third host context (owner ruling, 2026-10-29): inside a friend
+ * challenge (context "challenge") the popover shows the reason a
+ * challenge's map cannot change mid-challenge and renders NO switch
+ * at all — the map is picked on the challenge welcome card, at open,
+ * and the force-home flip must never fire inside a challenge run.
+ *
  * State contract: the mode state is owned by GameApp and threaded down
  * as a prop — this component only calls onSelect, and GameApp's handler
  * differs per host (force-home in Play; write-and-apply on Home).
@@ -43,10 +49,17 @@ import { SCOUT_COPY } from "./scout-copy.ts";
 export function MapModeToggle(props: {
   mapMode: MapMode;
   onSelect: (mode: MapMode) => void;
-  /** Host context: "play" (default) or "home" — see the header. */
-  context?: "play" | "home";
+  /**
+   * Host context: "play" (default), "home", or "challenge" — see the
+   * header. In a challenge run the popover carries the reason and NO
+   * switch: a challenge's map is picked when the challenge opens, and
+   * the force-home flip must never fire mid-challenge (owner ruling,
+   * 2026-10-29).
+   */
+  context?: "play" | "home" | "challenge";
 }): JSX.Element {
   const [open, setOpen] = useState(false);
+  const inChallenge = props.context === "challenge";
   // Home popover horizontal offset relative to the button, measured at
   // open time (and on resize) so the absolute popover stays anchored
   // 8px below the button while scrolling with the page.
@@ -165,7 +178,17 @@ export function MapModeToggle(props: {
           <p className="mt-1 text-xs leading-relaxed text-white/70">
             {atHome ? SCOUT_COPY.toggle.homeExplainer : SCOUT_COPY.toggle.explainer}
           </p>
-          {atHome ? null : (
+          {inChallenge ? (
+            // Challenge context: the reason, at reading size — and no
+            // switch below it. The map was picked at challenge open;
+            // nothing in this popover can end the challenge.
+            <p
+              data-testid="map-mode-challenge-note"
+              className="mt-2 text-xs leading-relaxed text-white/70"
+            >
+              {SCOUT_COPY.toggle.challengeNote}
+            </p>
+          ) : atHome ? null : (
             // Block B: the consequence prints ABOVE the switch, at the
             // explainer's size and contrast — never as fine print
             // below the control that ends the game.
@@ -173,6 +196,7 @@ export function MapModeToggle(props: {
               {SCOUT_COPY.toggle.warning}
             </p>
           )}
+          {inChallenge ? null : (
           <div
             role="switch"
             aria-checked={scout}
@@ -190,6 +214,7 @@ export function MapModeToggle(props: {
               <span className="h-5 w-5 rounded-full bg-white shadow" />
             </span>
           </div>
+          )}
         </div>
       ) : null}
     </div>
