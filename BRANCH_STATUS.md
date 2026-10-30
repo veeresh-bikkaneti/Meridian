@@ -724,9 +724,10 @@ Approvals needed (exact action + owner), checker, escalation:
 <!-- Rebase onto main 24f4d2a: HEAD Package C record kept above per the coordination ledger; Wave 1 record kept below. Neither record overwritten. -->
 
 - **Branch:** `fix/wave1-p0`
-- **Base:** main `3aa16b56` (verified live via `git ls-remote` before branching).
-- **State:** INTEGRATED — 4 builder patches applied (Item 2 → Item 4 → Item 3 →
-  Item 1); full gates + panel re-vote on this tip owed; PR not yet opened.
+- **Base:** main `45976699` (rebased tip; original base `3aa16b56` superseded — see rebase record below).
+- **State:** INTEGRATED — 3 shipped + Item 2 held out (see HELD-OUT record
+  in Done below); tip `ed2ff4b9` on base main `45976699`; full gates +
+  panel re-vote on this tip owed; PR not yet opened.
   NO MERGE without the owner's per-PR word.
 - **Governing manifest:** `.council/manifests/2026-10-29-wave1-p0.md` (Tier-2,
   Chair APPROVED, token `AUTH_RUN_TDD_IMPLEMENTATION`; first commit `1fb73a0`,
@@ -739,16 +740,21 @@ Approvals needed (exact action + owner), checker, escalation:
 
 - [x] Item 1 — discarded-run notice + durable shadow record
       (`meridian.discarded-notice`).
-- [x] Item 2 — `?idle-ms=` honoured only on loopback; 120,000 ms elsewhere.
-      SHIPMENT GATED: deployed-origin live check owed (both production hosts);
-      if it cannot run, this diff is held out of the merge-ready set.
+- [ ] Item 2 — HELD OUT, NOT SHIPPED: `?idle-ms=` honoured only on loopback;
+      120,000 ms elsewhere. This item's diff (commit `575e7e2`, skipped in
+      the rebase — see rebase record below) is NOT on this branch; its gate
+      (deployed-origin live check, both production hosts) did not run, so no
+      reader may conclude the loopback gate shipped. Held out of the
+      merge-ready set.
 - [x] Item 3 — round-loop a11y: one reveal announcer, Next-place focus,
       summary-dialog trap/Escape/return focus.
 - [x] Item 4 (UNCONDITIONAL only) — build-aware share URL + dead Search hidden.
-- [x] Footprint: raw diff vs main at `b1ca852` is +2332/−67; cap-relevant
-      +1855/−40 after excluding the +414 manifest and BRANCH_STATUS.md
-      itself (+63/−27) — vs the +1200/−400 cap, Chair waiver GRANTED
-      (recorded below, before push/PR).
+- [x] Footprint (rebased tip `ed2ff4b9` vs new base main `45976699`): raw
+      +2289/−65; cap-relevant +1770/−38 — vs the amended +2100/−400 cap,
+      headroom 330 (not 95). Old-base numbers (vs `3aa16b56`, integrated tip
+      `b1ca852`): raw +2332/−67, cap-relevant +1855/−40; amended-waiver
+      accounting at the panel-cure worktree was +2005/−62 (95 headroom at
+      the time — superseded by the rebase recount).
 
 ## Blocked (no code, owner decisions)
 
@@ -760,19 +766,21 @@ Approvals needed (exact action + owner), checker, escalation:
 
 ## Pending
 
-> **Chair footprint waiver (2026-10-29, Wave 1 P0, branch `fix/wave1-p0`):** Manifest §3 cap +1200/−400 is waived to a revised cap of **+1900/−400** (production + test diff, excluding the manifest and `BRANCH_STATUS.md`). Verified actual at integrated tip `f28e074`: **+1855/−40**. Reason: the overrun is test-driven, not production sprawl — production is ~442 lines across all four items; the excess is the manifest-mandated gating E2E bulk (15-test discarded-notice, round-loop-a11y, idle-seam live-check). No trim preserves the manifest's gating tests. This waiver covers the cap number only. Constitution rules 1 and 3 are NOT lifted; no gate, panel approval, or merge authority is waived.
+> **Chair footprint waiver (2026-10-29, Wave 1 P0, branch `fix/wave1-p0`):** Manifest §3 cap +1200/−400 is waived to a revised cap of **+1900/−400** (production + test diff, excluding the manifest and `BRANCH_STATUS.md`). Verified actual at integrated tip `f28e074`: **+1855/−40**. Reason: the overrun is test-driven, not production sprawl — production is ~442 lines across all four items (pre-rebase set; the rebased tip ships three — see HELD-OUT record); the excess is the manifest-mandated gating E2E bulk (15-test discarded-notice, round-loop-a11y, idle-seam live-check). No trim preserves the manifest's gating tests. This waiver covers the cap number only. Constitution rules 1 and 3 are NOT lifted; no gate, panel approval, or merge authority is waived.
 >
-> Coverage rule: the `BRANCH_STATUS.md` commit itself needs no waiver coverage (the manifest already excludes `BRANCH_STATUS.md` and the manifest from the footprint count). Panel-cure commits are covered only if (1) they cure panel findings on the four already-built items only — no new feature, no new scope, no protected file touched — and (2) cumulative additions stay at or under the revised +1900 cap (45 lines of headroom over the verified +1855). Any cure exceeding +1900 or adding scope must return to the Chair for a new ruling before it lands.
+> Coverage rule: the `BRANCH_STATUS.md` commit itself needs no waiver coverage (the manifest already excludes `BRANCH_STATUS.md` and the manifest from the footprint count). Panel-cure commits are covered only if (1) they cure panel findings on the four already-built items only — no new feature, no new scope, no protected file touched — and (2) cumulative additions stay at or under the revised +1900 cap (45 lines of headroom over the verified +1855 — old-base accounting). Any cure exceeding +1900 or adding scope must return to the Chair for a new ruling before it lands.
 >
 > **Chair footprint waiver, amended (2026-10-29, Wave 1 P0, branch `fix/wave1-p0`):** Manifest §3 cap +1200/−400, previously waived to +1900/−400, is amended to a revised cap of **+2100/−400** (production + test diff, excluding the manifest and `BRANCH_STATUS.md`). Verified actual at the panel-cure worktree vs base `3aa16b56`: **+2005/−62** (rename-adjusted; +2005/−114 without rename detection, still inside −400). Reason: the +105 overrun over +1900 is the panel-mandated round-1 cure set on the four already-built items only — a real wrong-numbers bug fix (killIdleSession whole-session totals fallback), two a11y correctness fixes (HUD score-span `role="status"` removal; summary-done focus return via `landHomeFocusRef`), and test-honesty fixes (gap-view fail-loudly on missing hook, denied-set test pins, source-pin rename at 0 net) — not scope growth. No cure was trimmed to fit. This waiver covers the cap number only. Constitution rules 1 and 3 are NOT lifted; no gate, panel approval, E2E result, or merge authority is waived.
 >
-> Amended coverage: this ruling expressly covers committing the worktree cure set as verified (stage the rename pair together so the 0-net accounting applies). Further cure commits are covered only if (i) they cure panel round-1 or re-vote findings on the four built items only, no new feature/scope/protected file/CONDITIONAL change/Item 2 gate change, and (ii) cumulative additions stay ≤ +2100 (95 lines headroom over +2005, for commit-time accounting variance only). Anything beyond +2100 or adding scope returns to the Chair for a new ruling before it lands. Not waived: the two new E2E tests (1I(2)-boot, 3A-hit) remain UNVERIFIED until VM recovery — E2E reruns, full gates on the final head, and the panel re-vote are still owed before merge-ready. Rename accounting: rename detection is the correct method (moved file byte-identical, sha256 verified, 52 lines, 0 net); without it the count would be +2005/−114, still inside −400, so the waiver holds either way.
+> Amended coverage: this ruling expressly covers committing the worktree cure set as verified (stage the rename pair together so the 0-net accounting applies). Further cure commits are covered only if (i) they cure panel round-1 or re-vote findings on the four built items only, no new feature/scope/protected file/CONDITIONAL change/Item 2 gate change, and (ii) cumulative additions stay ≤ +2100 (95 lines headroom over +2005, for commit-time accounting variance only — old-base accounting; on the rebased tip headroom is 330, see Footprint above). Anything beyond +2100 or adding scope returns to the Chair for a new ruling before it lands. Not waived: the two new E2E tests (1I(2)-boot, 3A-hit) remain UNVERIFIED until VM recovery — E2E reruns, full gates on the final head, and the panel re-vote are still owed before merge-ready. Rename accounting: rename detection is the correct method (moved file byte-identical, sha256 verified, 52 lines, 0 net); without it the count would be +2005/−114, still inside −400, so the waiver holds either way.
 - [ ] Full gates on the final tip (tsc, unit, worker, lint-cards,
       build:pages, changed-surface E2E + core journey regression, visual
       360×740 + 390×844). Non-E2E gates re-run per cure commit; E2E
-      reruns owed on VM recovery — see E2E environment caveats.
+      reruns owed on VM recovery — see E2E environment caveats
+      (integrated tip `b1ca852` scope; rebased-tip gates: see the new
+      paragraph below).
 - [ ] Panel re-vote on the final tip (a pre-integration sign-off never counts).
-- [ ] Item 2 deployed-origin live check (both hosts) or Item 2 held out.
+- [x] Item 2 disposition RESOLVED: HELD OUT (live check did not run; item not shipped — see HELD-OUT record in Done above).
 - [ ] Screen recording via parent browser delegation before any production claim.
 - [ ] PR (open only, owner merges; never merge from here).
 
@@ -790,24 +798,37 @@ Approvals needed (exact action + owner), checker, escalation:
   build:pages green). E2E reruns are OWED, meaning: they must run on VM
   recovery before the panel re-vote. OWED is not a waiver, not a pass,
   and not deferred past merge-ready.
+
+- Rebased-tip gates (tip `ed2ff4b9`, base `45976699`): tsc 0, unit 1822/0,
+  worker 85/0, lint PASS, scripts suite 766/84 EPERM-only, build:pages +
+  E2E blocked by EPERM on `ed2ff4b9`, 0 ran. So on the rebased tip: tsc,
+  unit, worker, lint DONE; build:pages and E2E OWED (VM EPERM fault, not a
+  code failure) before the panel re-vote.
 - Closed-tab limits: "Closed-tab notice covers inactivity/new-day only; a
   closed tab's stale-scoring or challenges-off run cannot be derived from
   the shadow, and a challenge-only closed tab leaves no shadow." The
   challenges-off limb is mc1 only (mc2 challenges-off clears silently —
   a follow-up, not this cure).
 - Item 1 demoted source-pin: not written. No such documentation file
-  exists; do not cite one.
+  exists; do not cite one. (Item 1's pin only — distinct from Item 3's
+  pin, which WAS written and renamed; see below. Do not conflate them.)
 - Panel round-1 cures (this commit): code delta +150/−22, taking
   cap-relevant cumulative additions to +2005 vs the +1900 cap — 105 lines
   over. AMENDED WAIVER GRANTED (Chair ruling, recorded verbatim below);
   the cure commit lands under the amended cap. The Item 3
-  demoted source-pin file is renamed, content-identical, from
+  demoted source-pin file (Item 3's pin, not Item 1's) is renamed,
+  content-identical, from
   `src/components/round-loop-a11y.test.ts` to
   `src/components/round-loop-a11y.documentation.ts` (out of the npm test
   glob; still non-gating documentation). Two new E2E tests are UNVERIFIED
   until VM recovery: the 1I(2)-boot test in
   `tests/e2e/discarded-notice.spec.ts` and the 3A-hit test in
   `tests/e2e/round-loop-a11y.spec.ts`.
+
+- Same-day fresh closed-tab shadow left alone (no change in this branch;
+  not a shipped behaviour change).
+- Session-score failure is pre-existing on the base (not introduced by
+  this branch).
 
 ## Integration notes
 
@@ -826,3 +847,18 @@ Approvals needed (exact action + owner), checker, escalation:
 - Panel question still carried to the re-vote: endgame-share spec fails
   only on VM-egress beacon console errors (functional assertions pass;
   rerun-when-quiet or panel call).
+
+## Rebase record (rebased tip `ed2ff4b9` on main `45976699`)
+
+- Rebased order: manifest → Item 4 → Item 3 → Item 1 → branch-record →
+  waiver → cure. Per-commit SHAs, old → rebased: manifest
+  `1fb73a01`→`033e9dc4`, Item 4 `f4b2a54`→`d6394cc6`, Item 3
+  `349a9ec`→`67c3972a`, Item 1 `2c9dcde`→`962852d3`, branch-record
+  `f28e074`→`36dd0aec`, waiver `b1ca852`→`c20dbce9`, cure→`ed2ff4b9`.
+  Item 2 commit `575e7e2` was SKIPPED (held out, not rebased).
+- The one resolved conflict: the cure's `session.test.ts` edits sat inside
+  Item 2's deleted block; deletion won.
+- Only `BRANCH_STATUS.md` overlapped main's 12-file move.
+- This commit itself: docs-only DevEx round-1 block fixes on `ed2ff4b9`;
+  its own SHA is the tip after this commit (verified post-push via the
+  ref check, not claimed here).
