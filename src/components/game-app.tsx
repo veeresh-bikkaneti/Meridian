@@ -4483,7 +4483,7 @@ function ChallengeWelcome({
               data-testid="challenge-welcome-map-switch"
               onClick={flipMap}
               onKeyDown={onMapSwitchKey}
-              className="flex min-h-[44px] min-w-[44px] shrink-0 cursor-pointer items-center justify-end gap-2 rounded-lg px-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#f2c14e]"
+              className="flex min-h-[44px] min-w-[44px] shrink-0 cursor-pointer items-center justify-end gap-2 rounded-lg px-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fg"
             >
               <span className="text-sm font-medium text-muted">{scout ? "On" : "Off"}</span>
               <span
