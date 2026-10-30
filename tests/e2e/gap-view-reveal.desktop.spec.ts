@@ -138,23 +138,24 @@ test("miss: a tap on the map skips the beat to the end state", async ({
   // up, the beat completed synchronously — a near miss — and there is
   // nothing to skip.
   const cardAlreadyUp = await nextPlaceButton(page).count();
-  const beat = await page.locator(".satellite-map").evaluate(async (el) => {
-    const hook = (
-      el as unknown as { __spotScreen?: () => { x: number; y: number } | null }
-    ).__spotScreen;
-    const a = hook?.();
-    await new Promise((r) => setTimeout(r, 300));
-    const b = hook?.();
-    return {
-      hookPresent: typeof hook === "function",
-      spotMoves: !!a && !!b && (a.x !== b.x || a.y !== b.y),
-    };
-  });
+  const spotPoint = () =>
+    page.locator(".satellite-map").evaluate((el) => {
+      const hook = (
+        el as unknown as { __spotScreen?: () => { x: number; y: number } | null }
+      ).__spotScreen;
+      return hook?.() ?? null;
+    });
   // A missing __spotScreen hook fails loudly, never passes vacuously:
   // without the hook there is no beat to skip and no evidence the camera
   // ran. Only an already-up card (synchronous beat) skips the test.
+  const hookPresent = await page.locator(".satellite-map").evaluate((el) => {
+    const hook = (
+      el as unknown as { __spotScreen?: () => { x: number; y: number } | null }
+    ).__spotScreen;
+    return typeof hook === "function";
+  });
   expect(
-    beat.hookPresent,
+    hookPresent,
     "gap-view camera must expose __spotScreen; a missing hook is a failure, not a skip",
   ).toBe(true);
   if (cardAlreadyUp > 0) {
@@ -162,6 +163,42 @@ test("miss: a tap on the map skips the beat to the end state", async ({
     // The main miss test covers the card content.
     return;
   }
+
+  // Fix round M2: the old single 300ms sample computed spotMoves but
+  // never asserted it, so the test passed vacuously even with the
+  // animation stubbed out. Poll every ~100ms until the spot moves:
+  // movement observed is the beat actually running, which the tap
+  // below then skips. If the card appears before any movement is
+  // observed, the beat completed first — skip, never fail (same rule
+  // as the at-entry gate above). If neither happens within 4000ms
+  // (below the 6000ms reveal watchdog), the assertion below fails:
+  // a frozen animation must fail this test, not pass it.
+  let prev = await spotPoint();
+  let spotMoves = false;
+  let cardUpDuringPoll = false;
+  const pollDeadline = Date.now() + 4000;
+  while (Date.now() < pollDeadline) {
+    if ((await nextPlaceButton(page).count()) > 0) {
+      cardUpDuringPoll = true;
+      break;
+    }
+    const cur = await spotPoint();
+    if (
+      prev &&
+      cur &&
+      (cur.x !== prev.x || cur.y !== prev.y)
+    ) {
+      spotMoves = true;
+      break;
+    }
+    prev = cur;
+    await page.waitForTimeout(100);
+  }
+  if (cardUpDuringPoll) {
+    // Beat completed before movement was observed: nothing to skip.
+    return;
+  }
+  expect(spotMoves).toBe(true);
 
   // Tap the canvas (not a button, not the question bubble) mid-beat to skip.
   // (1200, 450) is right-side canvas, clear of chrome.

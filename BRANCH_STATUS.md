@@ -917,3 +917,13 @@ Approvals needed (exact action + owner), checker, escalation:
   session clears a live shadow" unit test still passes, and a new unit
   test pins the no-stored-session case. Probe spec + all probe logs
   removed; the commit diff carries no probe trace.
+- M2 (this commit): vacuous gap-view test now asserts the beat really
+  runs. The single 300ms spot sample became a ~100ms poll: movement
+  observed → `expect(spotMoves).toBe(true)`; card appears first →
+  skip (same rule as the at-entry gate), never fail; neither within
+  4000ms (below the 6000ms reveal watchdog) → the assertion fails.
+  RED proof (temporary animation freeze in `src/map/zoom-space.ts`,
+  reverted before green, no trace in the diff): the skip test failed
+  at `expect(spotMoves).toBe(true)` with the ease frozen. Disclosed
+  residual (Chair-approved): a completes-but-motionless regression
+  would skip, not fail — recorded here and for the PR body.
