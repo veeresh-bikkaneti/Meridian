@@ -5,8 +5,9 @@
 - **Prior record:** this file previously carried the Package B branch
   record; that work merged as PR #283 and its full record lives in that
   PR and in git history.
-- **State:** **READY FOR PANEL** (2026-10-29, blockers round). All
-  build units landed and pushed; Option 1a pushed as `6b3c17c` on the
+- **State:** **READY FOR PANEL** (2026-10-29, findings round 2 — F2-F5
+  fixed on `bba11f9` plus this record; see "Findings round 2"). Earlier:
+  blockers round. All build units landed and pushed; Option 1a pushed as `6b3c17c` on the
   owner's words (Veeresh, 2026-10-29, chat): "Yes, push 6b3c17c to
   fix/220-contact-wiring. Do not merge." The contact E2E, once
   lock-blocked, has since run green (builder-run and CI; see Option 1a
@@ -117,6 +118,47 @@ Approvals: commit + fast-forward push to fix/220-contact-wiring and the
   final tip (not the builder).
 ```
 
+### Findings round 2 — results (builder-run, 2026-10-29; checker: the panel)
+
+Code commit `bba11f9`; this record is committed on top. Logs:
+`/workspace/v220/gates-findings2/`.
+
+- F2: `contact-handler.server.ts` readContactEnv / readContactRuntimeEnv
+  doc comments and the `wrangler.jsonc` env-route comment now cite
+  "issue #220 Step 3, plan text" instead of "owner's precedence / owner's
+  route (2026-10-21)"; the test comment likewise. `privacy.tsx` keeps
+  "adopted by the owner 2026-10-21" with a pointer to the doc that quotes
+  him (docs/reviews/2026-10-21-p0-p2-remediation.md, decision 4). Grep of
+  the PR diff vs main for "owner": the remaining hits are actor mentions
+  (README "reach the owner") and the cited privacy.tsx line. Erratum on
+  the wrong file reference and the secret text: see above.
+- F3: validateContact checks the 1000-char limit on the typed
+  (control-stripped, trimmed) text, then scrubs. RED (old order,
+  `f3-red.log`): a 999-char message ending " me@ex.io" rejected with
+  "message must be ≤ 1000 characters", as predicted. GREEN
+  (`f3-green.log`): 2/2; worst-case placeholder-dense message + 252-char
+  replyTo formats to ≤ 2000 chars with fences intact.
+- F4: the timing test calls stripContactDetails on 7 shapes of 32,000
+  chars, min of 3 runs < 100 ms. GREEN (`f4-green.log`) ~8 ms for the
+  whole test. RED with the old regex (`f4-red.log`): "'a' run: min
+  941.2 ms ≥ 100 ms at 32000 chars".
+- F5: Part 4b now awaits the POST /api/contact response and the
+  not-delivered OR thank-you node before a non-retrying count of the
+  thank-you. RED (honesty gate reverted in contact.tsx, variant C;
+  `f5-red.log`, mutation in `f5-red-mutation.diff`): 1 failed at
+  "no thank-you after a stored:false response — Expected: 0, Received:
+  1" (spec line 282), as predicted; contact.tsx restored (git clean).
+
+| Gate (`/workspace/v220/gates-findings2/`, on `bba11f9`) | Result |
+|---|---|
+| `npx tsc --noEmit` | exit 0, no output |
+| `npm test` | exit 0 — scripts 861: 850 pass / 0 fail / 11 skipped; src 1832/1832 |
+| `npm run test:worker` | exit 0 — 85/85 |
+| `node scripts/lint-cards.mjs` | GATE PASSED |
+| `npm run build` | exit 0 |
+| `npm run build:pages` | exit 0 |
+| E2E, 4 CI specs, `--workers=1`, under flock | 11 passed |
+
 ## Blockers round — aria-live + owner citations + PR body (2026-10-29)
 
 Owner instruction (Veeresh, 2026-10-29 4:20 PM CT, chat message to the
@@ -195,6 +237,10 @@ Blockers-round record (builder-run; not self-certified; checker = panel):
   say "owner's precedence (2026-10-21)" (contact-handler.server.ts) and
   "owner's route, 2026-10-21" (privacy.tsx) were NOT edited (source
   comments, outside this round's file scope) — open for the panel.
+  [ERRATUM, findings round 2: the "owner's route, 2026-10-21" comment was
+  in `wrangler.jsonc`, not `privacy.tsx`. Both it and the two handler
+  comments are now reworded to cite issue #220 Step 3 (plan text); see
+  "Findings round 2".]
 
 | Gate (`/workspace/v220/gates-blockers/`) | Result |
 |---|---|
@@ -389,12 +435,20 @@ Assumptions, risks, unknowns:
     this PR cannot prove it from code.
 
 Approvals needed (exact action + owner), checker, escalation:
-  - OWNER STEP after merge + deploy (SPEC §3.3): Veeresh re-sets
-    CONTACT_DISCORD_WEBHOOK_URL as an encrypted runtime secret on the
-    meridian worker, then §3.4 verification runs (probe -> stored:true,
-    message eyeballed in Discord, real-form submission, re-deploy
-    probe). Until then the form correctly shows the honest
-    not-delivered state instead of the old false thank-you.
+  - SECRET (SPEC §3.3) — [UPDATED, findings round 2]: at about 8:12 PM
+    CT on 2026-10-29 the owner showed the Cloudflare dashboard: the
+    meridian Worker already has a Production runtime secret whose name
+    reads "CONTACT_DISCORD…" (truncated in the UI, value encrypted). So
+    no re-set is planned before deploy; the exact name (expected
+    CONTACT_DISCORD_WEBHOOK_URL) is confirmed only by the post-deploy
+    §3.4 verification (probe -> stored:true, message eyeballed in
+    Discord, real-form submission, re-deploy probe). If the name
+    differs, the owner re-sets it under the exact name.
+    [ERRATUM: an earlier sentence here said "Until then the form
+    correctly shows the honest not-delivered state". That was wrong:
+    the form is already on in production (public/flags.json
+    contactEndpoint), and until this PR merges and deploys, production
+    runs main's code, which shows the old thank-you on any 200.]
   - Checker: the standing review panel on the final tip (not the
     builder).
 ```
