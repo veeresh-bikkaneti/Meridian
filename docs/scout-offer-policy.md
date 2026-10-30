@@ -107,8 +107,9 @@ A challenge's map is chosen when the challenge OPENS instead: the
 welcome card shows the mode the boot resolved for this device (a
 stored manual choice stands, as always; otherwise the capability
 check above) and the receiver can flip it there, before Start builds
-the run's map. That pick is a manual choice like any other — it is
-written as a manual record and stands until the player changes it.
+the run's map. That pick is a manual choice like any other — flipping
+only stages it, Start writes it as a manual record (declining the
+card commits nothing), and it stands until the player changes it.
 
 Session end retires the notice too (#188, 2026-10-26). When the
 session itself ends — the idle timer runs out, or the player taps

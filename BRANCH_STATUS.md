@@ -59,8 +59,9 @@ context: reason copy, no switch. (3) handleManualMapMode refuses to
 run while a challenge run is active (choke point). (4) The welcome
 card shows the resolved map (stored manual record > capability
 auto-select — the existing boot qualification, no new probe) and lets
-the player flip it before Start; the flip writes a manual record via
-the pre-run path (no run exists, nothing is discarded).
+the player flip it before Start; the flip only STAGES the pick and
+Start commits it as a manual record (cure round 1 — declining the
+card commits nothing; see the panel record below).
 
 ## Status
 
@@ -77,7 +78,8 @@ the pre-run path (no run exists, nothing is discarded).
 - [x] Fix implemented (game-app.tsx, map-mode-toggle.tsx, scout-copy.ts)
 - [x] AFTER values captured (same reproduction, fixed build): challenge
   Nebraska full "Nebraska view" z7 gold 12,969 (Play 12,974); Scout
-  gold 38,182 flash-phase catch, resting ≈ Play (Play 13,150); UK
+  gold 13,051 at rest (Play 13,151; an earlier run's 38,182 was a
+  flash-phase catch, superseded by the cure-run resting values); UK
   "United Kingdom view" z4 gold 14,348
 - [x] All 5 gates + neighbouring specs — tsc exit 0, npm test exit 0,
   test:worker PASS, lint-cards GATE PASSED, build:pages PASS; framing
