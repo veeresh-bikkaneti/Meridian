@@ -877,3 +877,43 @@ Approvals needed (exact action + owner), checker, escalation:
 - This commit itself: docs-only DevEx round-1 block fixes on `ed2ff4b9`;
   its own SHA is the tip after this commit (verified post-push via the
   ref check, not claimed here).
+
+## Fix round: PR #287 review findings (base main 5e5a440e, head c5d31d6)
+
+- Tier: T2 (Chair + C) per Dinesh's standing order. Council: Chair
+  APPROVED (rounds 1–2 + final decision), Councilor C challenged twice;
+  final Chair decision APPROVED + AUTH_RUN_TDD_IMPLEMENTATION. Manifest:
+  `~/workspace/meridian-wave1/fix-round-review/MANIFEST.md` (kept out of
+  the PR diff). Independent reviewer verifies afterwards; no merge word
+  is claimed here.
+- Scope: 2 Medium + 5 Low findings, one commit each, PR branch only.
+  Leave-alone (reported, not changed): endgame-share
+  `clickShareScoreWithRetry` (separate issue owed) + share-text origin
+  line (owner decision pending).
+- M1 (this commit): silent mc2 discard notices with the mc2 run's own
+  totals. Guard: `bootSavedRunBody(preserveNotice)` covers all 4 body
+  notice sites + `killIdleSession(skipNotice)` gates only its notice
+  set; shadow block skipped whole when preserving (defer, not consume).
+  Summary-phase mc2 clears silently in both branches. Out of scope by
+  Chair ruling: #c= mc1 displacement + unclean-shutdown breaker
+  (known limitation for the PR body). Tests: 1E-mc2, 1E-mc2-dual
+  (+boot-2 shadow pin), 1E-mc2-GUARD-aim, 1E-mc2-GUARD-mc1,
+  1E-mc2-summary-flagoff, 1E-mc2-summary-unresumable,
+  1E-mc2-unresumable. RED (pre-fix): basic/dual/unresumable failed
+  with predicted signatures; GUARDs + summary passed vacuously.
+  GUARD-mc1 note: mutating a played Nebraska run's regionId does NOT
+  resume (pool guard trips) — the test uses a real mc1 link instead.
+  GREEN-round root cause (found by probe, not by reading): the dual
+  test's boot 2 first failed because `clearSession()` unconditionally
+  cleared the shadow — the Dismiss click's pointerdown fired the idle
+  activity listener, which persisted a null session (no session ever
+  existed on that page), and `persist(null)` → `clearSession()` nuked
+  the preserved shadow before boot 2 read it. Fix (in this commit,
+  `src/game/session.ts`): `clearSession()` clears the shadow only when
+  a session was actually stored and removed; a no-op clear leaves an
+  unrelated preserved record alone. Scope note: session.ts entered
+  this commit because the Chair-required dual test (dismiss + reload
+  → shadow notice) cannot pass without it; the existing "clearing the
+  session clears a live shadow" unit test still passes, and a new unit
+  test pins the no-stored-session case. Probe spec + all probe logs
+  removed; the commit diff carries no probe trace.

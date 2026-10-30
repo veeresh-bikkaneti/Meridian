@@ -1747,8 +1747,11 @@ export function GameApp() {
     [difficultyChoice],
   );
 
-  /** Idle kill: end the session and return the player to the home screen. */
-  const killIdleSession = useCallback(() => {
+  /** Idle kill: end the session and return the player to the home screen.
+   * skipNotice (fix round M1) suppresses ONLY the inactivity notice set:
+   * the kill, the session clear, and the shadow clear always run. The
+   * body boot passes it when an mc2 notice is preserved. */
+  const killIdleSession = useCallback((skipNotice = false) => {
     setStartError(null);
     clearDrop();
     // Wave 1 P0 Item 1: capture what was played BEFORE dropping the
@@ -1771,7 +1774,9 @@ export function GameApp() {
     const totals = liveSummary
       ? { totalScore: liveSummary.totalScore, placesPlayed: liveSummary.placesPlayed }
       : runResultsTotals(killedRun);
-    setDiscardedNotice({ reason: "inactivity", ...totals });
+    if (!skipNotice) {
+      setDiscardedNotice({ reason: "inactivity", ...totals });
+    }
     // The kill is the show: no durable record may re-fire it on a
     // later boot (at most one notice per discarded game).
     clearDiscardedShadow();
@@ -2167,9 +2172,23 @@ export function GameApp() {
     const mc2Saved = readMc2Run();
     if (mc2Saved) {
       void loadFlags().then(async () => {
+        // Fix round M1: a dropped mc2 run notices instead of landing on
+        // silent home. The notice is set BEFORE the clear, and the body
+        // boot runs preserving it (see bootSavedRunBody's preserveNotice
+        // guard). A finished (summary-phase) challenge is not a lost
+        // game: it clears silently, matching the body's own summary
+        // exclusion. Challenge runs never bank into the session, so the
+        // summary is the mc2 run's own results — never another game's
+        // session totals.
+        const noticeMc2Discard = () => {
+          if (mc2Saved.phase !== "summary") {
+            setDiscardedNotice({ reason: "challenges", ...runResultsTotals(mc2Saved) });
+          }
+        };
         if (!isEnabled("friendChallenges")) {
+          noticeMc2Discard();
           clearMc2Run();
-          bootSavedRunBody();
+          bootSavedRunBody(true);
           return;
         }
         const today = {
@@ -2186,8 +2205,9 @@ export function GameApp() {
           setReady(true);
           return;
         }
+        noticeMc2Discard();
         clearMc2Run();
-        bootSavedRunBody();
+        bootSavedRunBody(true);
       });
       return;
     }
@@ -2243,7 +2263,13 @@ export function GameApp() {
       }
     }
 
-    function bootSavedRunBody() {
+    // preserveNotice: when an mc2 discard notice already stands, the
+    // body boot must not overwrite it with its own discard notice.
+    // Every notice site below is guarded; the shadow block is skipped
+    // whole, so a preserved shadow survives for a later boot instead of
+    // being silently consumed. A resumed run still retires the notice
+    // via commit() — that is the retire rule, not an overwrite.
+    function bootSavedRunBody(preserveNotice = false) {
     const saved = readRun();
     if (saved && saved.regionId === CHALLENGE_REGION_ID) {
       void loadFlags().then(async () => {
@@ -2254,7 +2280,9 @@ export function GameApp() {
           // — never another game's session totals.
           clearDrop();
           const challengeTotals = runResultsTotals(saved);
-          setDiscardedNotice({ reason: "challenges", ...challengeTotals });
+          if (!preserveNotice) {
+            setDiscardedNotice({ reason: "challenges", ...challengeTotals });
+          }
           try {
             sessionStorage.removeItem(RUN_KEY);
           } catch {
@@ -2311,8 +2339,10 @@ export function GameApp() {
     const savedSession = readSession();
     // A session that idled out while the tab was closed counts as expired:
     // kill it (and the run it banked) instead of silently resuming.
+    // The kill's own inactivity notice is skipped when an mc2 notice is
+    // preserved (skipNotice gates only that set, never the kill itself).
     if (savedSession && isSessionLive(savedSession, dateKey) && isIdleExpired(savedSession, now, idleTimeoutMs)) {
-      killIdleSession();
+      killIdleSession(preserveNotice);
       setReady(true);
       return;
     }
@@ -2394,7 +2424,9 @@ export function GameApp() {
           const totals = sessionSummary
             ? { totalScore: sessionSummary.totalScore, placesPlayed: sessionSummary.placesPlayed }
             : runResultsTotals(resumable);
-          setDiscardedNotice({ reason, ...totals });
+          if (!preserveNotice) {
+            setDiscardedNotice({ reason, ...totals });
+          }
           clearDrop();
           try {
             sessionStorage.removeItem(RUN_KEY);
@@ -2417,7 +2449,10 @@ export function GameApp() {
       // a later expired boot still notices. Showing consumes the
       // record at first show: dismiss and reload alike show nothing.
       const shadow = readDiscardedShadow();
-      if (shadow) {
+      // Fix round M1: when an mc2 notice is preserved, the shadow block
+      // is skipped whole — neither shown nor consumed — so the shadow
+      // survives for a later boot (defer, not silent loss).
+      if (shadow && !preserveNotice) {
         if (shadow.dateKey !== dateKey) {
           setDiscardedNotice({
             reason: "new-day",

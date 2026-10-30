@@ -6,9 +6,11 @@ import {
   readPhase,
   dismissTileOverlayIfPresent,
   NO_IDLE,
+  MC2_RUN_KEY,
 } from "./helpers";
 import { SCORING_VERSION } from "../../src/game/scoring.ts";
-import { CHALLENGE_REGION_ID } from "../../src/game/challenge.ts";
+import { CHALLENGE_REGION_ID, encodeChallenge } from "../../src/game/challenge.ts";
+import { DISCARDED_NOTICE_KEY } from "../../src/game/session.ts";
 
 /**
  * Discarded-run notice (Wave 1 P0 Item 1, manifest 2026-10-29 §2 Item 1).
@@ -532,6 +534,253 @@ test("visual notice at 360x740 and 390x844 does not overlap its neighbours", asy
       path: `tests/e2e/evidence/discarded-notice-${width}.png`,
     });
   }
+});
+
+/**
+ * Fix round, M1 (silent mc2 discard): a saved friend-challenge mc2 run
+ * dropped at boot (flag off, or unresumable) must notice with the mc2
+ * run's OWN totals — challenge runs never bank into the session.
+ * Synthetic mc2 seeds are minimal valid Run shapes per readRunFrom
+ * (edition/region/dateKey/index/hits/phase/results); the flag-off path
+ * checks the flag before resumability, so only readRunFrom validity
+ * matters there. The unresumable path is forced by a dateKey mismatch.
+ * cleanExit is seeded on every navigation (proven mc2-boot pattern) so
+ * these boots stay on the clean path, never the crash-loop breaker.
+ */
+function mc2RunJson(overrides: Record<string, unknown> = {}): string {
+  return JSON.stringify({
+    edition: "globe",
+    regionId: "globe",
+    regionName: "Globe",
+    dateKey: "2026-10-30",
+    index: 0,
+    hits: 0,
+    phase: "aim",
+    results: [
+      { distanceKm: 40, hit: true, score: 100 },
+      { distanceKm: 120, hit: true, score: 50 },
+    ],
+    ...overrides,
+  });
+}
+
+async function routeFriendChallenges(context: BrowserContext, on: boolean): Promise<void> {
+  await context.route("**/flags.json", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json; charset=utf-8",
+      body: JSON.stringify({
+        version: 1,
+        flags: { pwaUpdateToast: true, friendChallenges: on, learningOutcomes: true },
+      }),
+    });
+  });
+}
+
+async function seedCleanExit(context: BrowserContext): Promise<void> {
+  await context.addInitScript(() => {
+    try {
+      sessionStorage.setItem("meridian.cleanExit", "1");
+    } catch {
+      /* storage blocked */
+    }
+  });
+}
+
+async function expectHome(page: Page): Promise<void> {
+  await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
+    timeout: 20_000,
+  });
+}
+
+test("1E-mc2 flag-off mc2 discard shows a challenges notice with the mc2 run's own totals", async ({
+  page,
+  context,
+}) => {
+  await routeFriendChallenges(context, false);
+  await seedCleanExit(context);
+  await page.goto(APP_NO_IDLE);
+  await expectHome(page);
+  await page.evaluate(
+    ({ key, json }) => {
+      sessionStorage.setItem(key, json);
+    },
+    { key: MC2_RUN_KEY, json: mc2RunJson() },
+  );
+  await page.reload();
+  await expectHome(page);
+  await expectNotice(page, "challenges", ["inactivity", "new day", "scoring"], {
+    totalScore: 150,
+    placesPlayed: 2,
+  });
+});
+
+test("1E-mc2-dual mc2 notice wins over a stale shadow, which survives for the next boot", async ({
+  page,
+  context,
+}) => {
+  await routeFriendChallenges(context, false);
+  await seedCleanExit(context);
+  await page.goto(APP_NO_IDLE);
+  await expectHome(page);
+  // Stale-but-under-24h shadow: yesterday's dateKey (new-day branch
+  // would fire) with a 23h-old timestamp (survives the L3 24h expiry).
+  const shadowAgeMs = 23 * 3600 * 1000;
+  await page.evaluate(
+    ({ mc2Key, shadowKey, mc2, shadow }) => {
+      sessionStorage.setItem(mc2Key, mc2);
+      localStorage.setItem(shadowKey, shadow);
+    },
+    {
+      mc2Key: MC2_RUN_KEY,
+      shadowKey: DISCARDED_NOTICE_KEY,
+      mc2: mc2RunJson(),
+      shadow: JSON.stringify({
+        totalScore: 999,
+        placesPlayed: 9,
+        dateKey: "2000-01-01",
+        lastActivityAt: Date.now() - shadowAgeMs,
+      }),
+    },
+  );
+  await page.reload();
+  await expectHome(page);
+  // Boot 1: the mc2 notice wins; the shadow's text must not leak in.
+  await expectNotice(page, "challenges", ["inactivity", "new day", "scoring"], {
+    totalScore: 150,
+    placesPlayed: 2,
+  });
+  const elText = ((await notice(page).textContent()) ?? "").toLowerCase();
+  expect(elText, "shadow totals must not leak into the mc2 notice").not.toContain("999");
+  // DEFER (manifest choice): the preserved shadow survives boot 1 —
+  // skipped, never shown, therefore never consumed.
+  const shadowAfter = await page.evaluate(
+    (key) => localStorage.getItem(key),
+    DISCARDED_NOTICE_KEY,
+  );
+  expect(shadowAfter, "preserved shadow must survive boot 1").not.toBeNull();
+  // Boot 2: dismiss + reload shows the deferred shadow notice.
+  await notice(page).getByRole("button", { name: "Dismiss" }).click();
+  await page.reload();
+  await expectHome(page);
+  await expectNotice(page, "new day", ["inactivity", "challenges", "scoring"], {
+    totalScore: 999,
+    placesPlayed: 9,
+  });
+});
+
+test("1E-mc2-GUARD-aim resumable normal run restores and retires the mc2 notice", async ({
+  page,
+  context,
+}) => {
+  await routeFriendChallenges(context, false);
+  await seedCleanExit(context);
+  await startNebraskaRun(page, APP_NO_IDLE);
+  const totals = await playAtLeast(page, 1);
+  expect(totals.totalScore).toBeGreaterThan(0);
+  // Copy (don't move) the played run into the mc2 slot: the normal run
+  // stays resumable underneath.
+  await page.evaluate((mc2Key) => {
+    const raw = sessionStorage.getItem("meridian.run");
+    if (!raw) throw new Error("no saved run to copy to mc2");
+    sessionStorage.setItem(mc2Key, raw);
+  }, MC2_RUN_KEY);
+  await page.reload();
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  await expect(page.locator(".satellite-map")).toBeVisible();
+  await expect(notice(page)).toHaveCount(0);
+});
+
+test("1E-mc2-GUARD-mc1 resumable challenge run restores and retires the mc2 notice", async ({
+  page,
+  context,
+}) => {
+  await routeFriendChallenges(context, true);
+  await seedCleanExit(context);
+  // A REAL mc1 challenge run: an mc1 link boots straight into the game
+  // (mc1 boot commits at once), saving a genuine challenge-region run
+  // under the normal key. Mutating a played Nebraska run's regionId
+  // instead does NOT resume — its pool stays Nebraska while the
+  // challenge region deals globe, tripping the fail-closed pool guard.
+  // Golden fixture route (mc2-boot spec's cross-format test).
+  const GOLDEN_MC1_IDS = ["gn-1579635", "gn-13665104", "gn-2526780", "gn-3574116", "gn-160950"];
+  const mc1Hash = encodeChallenge(GOLDEN_MC1_IDS, SCORING_VERSION);
+  await page.goto(`${APP_NO_IDLE}${mc1Hash}`);
+  await waitForAim(page);
+  const savedRun = await page.evaluate(() => sessionStorage.getItem("meridian.run"));
+  expect(savedRun, "mc1 link must save a challenge run").toBeTruthy();
+  expect(JSON.parse(savedRun as string).regionId).toBe(CHALLENGE_REGION_ID);
+  // Unresumable mc2 save underneath (yesterday's dateKey), flag ON.
+  await page.evaluate(
+    ({ mc2Key, mc2 }) => {
+      sessionStorage.setItem(mc2Key, mc2);
+    },
+    { mc2Key: MC2_RUN_KEY, mc2: mc2RunJson({ dateKey: "2000-01-01" }) },
+  );
+  await page.reload();
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  await expect(page.locator(".satellite-map")).toBeVisible();
+  await expect(notice(page)).toHaveCount(0);
+});
+
+test("1E-mc2-summary-flagoff finished mc2 challenge clears silently with flag off", async ({
+  page,
+  context,
+}) => {
+  await routeFriendChallenges(context, false);
+  await seedCleanExit(context);
+  await page.goto(APP_NO_IDLE);
+  await expectHome(page);
+  await page.evaluate(
+    ({ key, json }) => {
+      sessionStorage.setItem(key, json);
+    },
+    { key: MC2_RUN_KEY, json: mc2RunJson({ phase: "summary" }) },
+  );
+  await page.reload();
+  await expectHome(page);
+  await expect(notice(page)).toHaveCount(0);
+});
+
+test("1E-mc2-summary-unresumable finished mc2 challenge clears silently when unresumable", async ({
+  page,
+  context,
+}) => {
+  await routeFriendChallenges(context, true);
+  await seedCleanExit(context);
+  await page.goto(APP_NO_IDLE);
+  await expectHome(page);
+  await page.evaluate(
+    ({ key, json }) => {
+      sessionStorage.setItem(key, json);
+    },
+    { key: MC2_RUN_KEY, json: mc2RunJson({ dateKey: "2000-01-01", phase: "summary" }) },
+  );
+  await page.reload();
+  await expectHome(page);
+  await expect(notice(page)).toHaveCount(0);
+});
+
+test("1E-mc2-unresumable unresumable mc2 save shows a challenges notice", async ({
+  page,
+  context,
+}) => {
+  await routeFriendChallenges(context, true);
+  await seedCleanExit(context);
+  await page.goto(APP_NO_IDLE);
+  await expectHome(page);
+  await page.evaluate(
+    ({ key, json }) => {
+      sessionStorage.setItem(key, json);
+    },
+    { key: MC2_RUN_KEY, json: mc2RunJson({ dateKey: "2000-01-01" }) },
+  );
+  await page.reload();
+  await expectHome(page);
+  await expectNotice(page, "challenges", ["inactivity", "new day", "scoring"], {
+    totalScore: 150,
+    placesPlayed: 2,
+  });
 });
 
 test("1B GUARD context check: a fresh context sees no notice (record is context-local)", async ({

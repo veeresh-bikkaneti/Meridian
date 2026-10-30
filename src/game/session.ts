@@ -618,6 +618,18 @@ export function clearSession(target?: SessionStorageLike): boolean {
     }
   }
   if (!s) return true; // No storage = nothing was ever persisted.
+  // Fix round M1: only a session that actually existed may take its
+  // shadow with it. A no-op clear (no stored session — e.g. the idle
+  // activity listener persisting a null session on any click) must
+  // never destroy an unrelated preserved record, such as a shadow
+  // deferred past an mc2 notice for a later boot.
+  let hadStoredSession = false;
+  try {
+    const raw = s.getItem(SESSION_KEY);
+    hadStoredSession = raw !== null && raw !== "";
+  } catch {
+    hadStoredSession = false;
+  }
   try {
     s.removeItem(SESSION_KEY);
   } catch {
@@ -632,7 +644,7 @@ export function clearSession(target?: SessionStorageLike): boolean {
     const cleared = raw === null || raw === "";
     // Removing the session removes its shadow too: a deliberately
     // reset session must never resurrect as a discarded-game notice.
-    if (cleared) clearDiscardedShadow();
+    if (cleared && hadStoredSession) clearDiscardedShadow();
     return cleared;
   } catch {
     return false;

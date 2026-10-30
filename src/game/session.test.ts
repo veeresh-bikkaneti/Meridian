@@ -19,6 +19,7 @@ import {
   successRate,
   summarizeSession,
   touchSession,
+  writeDiscardedShadow,
   writeSession,
 } from "./session.ts";
 import { startRun, dropPin } from "./run.ts";
@@ -444,6 +445,51 @@ test("discarded shadow: live writes shadow, ended clears it, garbage reads null"
     assert.ok(readDiscardedShadow());
     clearSession();
     assert.equal(readSession(), null);
+    assert.equal(readDiscardedShadow(), null);
+  } finally {
+    delete (globalThis as Record<string, unknown>).sessionStorage;
+    delete (globalThis as Record<string, unknown>).localStorage;
+  }
+});
+
+// Fix round M1: clearing a session that was never stored must not
+// destroy an unrelated preserved shadow. The dual-boot pin: an mc2
+// notice dismissed (any click persists a null session via the idle
+// activity listener) must leave the deferred shadow for the next boot.
+test("clearSession with no stored session leaves a preserved shadow intact", () => {
+  const sessionStore = new Map<string, string>();
+  const localStore = new Map<string, string>();
+  (globalThis as Record<string, unknown>).sessionStorage = {
+    getItem: (k: string) => (sessionStore.has(k) ? sessionStore.get(k)! : null),
+    setItem: (k: string, v: string) => void sessionStore.set(k, v),
+    removeItem: (k: string) => void sessionStore.delete(k),
+  };
+  (globalThis as Record<string, unknown>).localStorage = {
+    getItem: (k: string) => (localStore.has(k) ? localStore.get(k)! : null),
+    setItem: (k: string, v: string) => void localStore.set(k, v),
+    removeItem: (k: string) => void localStore.delete(k),
+  };
+  try {
+    writeDiscardedShadow({
+      totalScore: 999,
+      placesPlayed: 9,
+      dateKey: "2000-01-01",
+      lastActivityAt: NOW,
+    });
+    assert.equal(sessionStore.has("meridian.session"), false);
+    assert.equal(clearSession(), true);
+    assert.deepEqual(readDiscardedShadow(), {
+      totalScore: 999,
+      placesPlayed: 9,
+      dateKey: "2000-01-01",
+      lastActivityAt: NOW,
+    });
+    // And a session that DID exist still takes its shadow with it.
+    let s = startSession("2026-10-02", NOW);
+    s = bankPlace(s, { edition: "globe", score: 100, hit: true, distanceKm: 40, streakAfter: 1, difficultyChoice: "easy", regionId: "globe", regionName: "Globe" });
+    writeSession(s);
+    assert.ok(readDiscardedShadow());
+    assert.equal(clearSession(), true);
     assert.equal(readDiscardedShadow(), null);
   } finally {
     delete (globalThis as Record<string, unknown>).sessionStorage;
