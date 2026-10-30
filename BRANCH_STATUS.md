@@ -698,7 +698,7 @@ Approvals needed (exact action + owner), checker, escalation:
 
 <!-- Record from origin/main (3aa16b5) kept byte-identical below. -->
 
-# BRANCH_STATUS — feat/challenge-mc2-package-c
+# BRANCH_STATUS — fix/wave1-p0 (Wave 1 P0, council audit)
 
 - **Branch:** `feat/challenge-mc2-package-c`
 - **Base:** `origin/main` at `6abe3e6` (Package B, PR #283, merged + live). If the external End-game PR lands first, this branch rebases and this file resolves keeping both records accurate.
@@ -720,3 +720,65 @@ Approvals needed (exact action + owner), checker, escalation:
   - [x] Stage 0 — clone @ `6abe3e6`, branch created, npm ci, manifest + AGENTS.md read, surfaces mapped.
   - [x] Stage 1 — TDD: label test RED with the predicted signature (`does not provide an export named 'CHALLENGE_REVIEW_LABEL'`); privacy contract written as a construction pin (the behavioural proof is the E2E); E2E RED on the unmodified build (both entry tests fail on the missing entry; the flag-off guard passes; the seeded-Texas-deck review flow itself completes, proving the harness).
   - [x] Stage 2 — Build: `CHALLENGE_REVIEW_LABEL` in challenge.ts; home-card entry in both deck branches (`.review-challenge-open`, mirroring the reset opener's geometry); ReviewComplete secondary-button entry; `handleReviewChallenge` in GameApp (Editions exit + mini-picker in one state batch, flag re-read at tap) threaded GameApp → Play → PlayLoaded → ReviewComplete, gated on PlayLoaded's boot-authoritative flag read. tsc clean; challenge unit suite 37/37.
+
+<!-- Rebase onto main 24f4d2a: HEAD Package C record kept above per the coordination ledger; Wave 1 record kept below. Neither record overwritten. -->
+
+- **Branch:** `fix/wave1-p0`
+- **Base:** main `3aa16b56` (verified live via `git ls-remote` before branching).
+- **State:** INTEGRATED — 4 builder patches applied (Item 2 → Item 4 → Item 3 →
+  Item 1); full gates + panel re-vote on this tip owed; PR not yet opened.
+  NO MERGE without the owner's per-PR word.
+- **Governing manifest:** `.council/manifests/2026-10-29-wave1-p0.md` (Tier-2,
+  Chair APPROVED, token `AUTH_RUN_TDD_IMPLEMENTATION`; first commit `1fb73a0`,
+  pushed to origin SHA-identical via the Git Data API owner route).
+- **Prior record:** this file previously carried the Package C branch record
+  (feat/challenge-mc2-package-c); Package C merged as PR #285 at `3aa16b56`,
+  and its full record lives in that PR and in git history.
+
+## Done (integrated)
+
+- [x] Item 1 — discarded-run notice + durable shadow record
+      (`meridian.discarded-notice`).
+- [x] Item 2 — `?idle-ms=` honoured only on loopback; 120,000 ms elsewhere.
+      SHIPMENT GATED: deployed-origin live check owed (both production hosts);
+      if it cannot run, this diff is held out of the merge-ready set.
+- [x] Item 3 — round-loop a11y: one reveal announcer, Next-place focus,
+      summary-dialog trap/Escape/return focus.
+- [x] Item 4 (UNCONDITIONAL only) — build-aware share URL + dead Search hidden.
+
+## Blocked (no code, owner decisions)
+
+- [ ] Q2 idle-kill policy (keep kill vs "Continue your run?" card).
+- [ ] Q3 age-band pool gating (band limits pool vs never limits pool).
+- [ ] Q4 preview OAuth secret (remove/rotate vs move exchange server-side).
+- [ ] Share wording (CONDITIONAL): exact proposed strings in manifest §2
+      Item 4 await the owner's verbatim approval; no CONDITIONAL test written.
+
+## Pending
+
+- [ ] Footprint: integrated diff vs main is +2269/−40 including the +414
+      manifest (excluded from the cap); cap-relevant +1855/−40 vs the
+      +1200/−400 cap — Chair waiver owed before the excess lands (never
+      silent growth). Test files are the bulk of the overrun (discarded-notice
+      511 lines, round-loop-a11y 422 lines, idle-seam doc 160 lines).
+- [ ] Full gates on the integrated tip (tsc, unit, worker, lint-cards,
+      build:pages, changed-surface E2E + core journey regression, visual
+      360×740 + 390×844).
+- [ ] Panel re-vote on the final tip (a pre-integration sign-off never counts).
+- [ ] Item 2 deployed-origin live check (both hosts) or Item 2 held out.
+- [ ] Screen recording via parent browser delegation before any production claim.
+- [ ] PR (open only, owner merges; never merge from here).
+
+## Integration notes
+
+- Patches applied in order Item 2 → Item 4 → Item 3 → Item 1. One
+  `playwright.config.ts` merge conflict (Item 3 vs Item 4 project entries),
+  resolved by keeping all three new project entries: `search-hidden`,
+  `round-loop-a11y`, `discarded-notice`. All other files applied cleanly.
+- Panel questions carried to the re-vote: (1) 3C focus returns to the home
+  heading, not the End-game opener (opener unmounts with the game);
+  (2) GameApp live-paragraph edit (~6390) sits outside the manifest's
+  "continue handlers ~5632" scoping (builder: exactly-once unsatisfiable
+  without it); (3) 3D/3E are guards, not RED evidence, on tested paths;
+  (4) endgame-share spec fails only on VM-egress beacon console errors
+  (functional assertions pass; rerun-when-quiet or panel call).
