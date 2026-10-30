@@ -5,10 +5,13 @@ import { serveBuiltArtifact, commitHit, clickNextPlace, readPhase } from "./help
  * Review card action model (Tier-2 manifest 2026-10-29,
  * .council/manifests/2026-10-29-review-card-action-model.md §6).
  *
- * The home Review card leaves Form S: three explicit controls in
+ * The home Review card leaves Form S: explicit controls in
  * DOM = visual = tab order — [Start review (filled primary),
- * Challenge a friend — pick a map (outline pill), Start over (danger
- * footer)] — and the decorative REVIEW → cue is removed.
+ * Start over (danger footer)] — and the decorative REVIEW → cue is
+ * removed. (The outline Challenge pill that originally sat between
+ * them was removed by the owner's redundancy ruling, addendum
+ * 2026-10-29: it merely re-opened the generic picker, whose own
+ * "Challenge a friend" button is the canonical entry.)
  *
  * Contracts locked here:
  * - Hit-testing, not geometry (Councilor C F4): elementFromPoint at
@@ -21,14 +24,18 @@ import { serveBuiltArtifact, commitHit, clickNextPlace, readPhase } from "./help
  *   state/flag combination (RED pre-fix: [reset, challenge, primary]).
  * - Danger presentation (C F5): the home opener's computed colour is
  *   exactly rgb(179, 55, 42) (#b3372a) in BOTH colour schemes — the
- *   --atlas-stamp token is theme-variant and its night value fails
- *   the 4.5:1 floor on the parchment card (C F2) — with underline
- *   retained and a matching 3px focus outline. ReviewComplete's
- *   opener (same component, plain surface) stays rgb(119, 89, 31):
- *   the override is Review-card-scoped (leakage check).
+ *   dark leg genuinely emulates the dark scheme (cure round
+ *   2026-10-29: the original leg ran on the default light context,
+ *   so a var(--atlas-stamp) regression would have stayed green at
+ *   night; mutation-proven sensitive now) — the --atlas-stamp token
+ *   is theme-variant and its night value fails the 4.5:1 floor on
+ *   the parchment card (C F2) — with underline retained and a
+ *   matching 3px focus outline. ReviewComplete's opener (same
+ *   component, plain surface) stays rgb(119, 89, 31): the override
+ *   is Review-card-scoped (leakage check).
  * - State matrix as ORDERED IDENTITIES (bare counts can false-GREEN):
- *   due×on [primary, challenge, reset] · due×off [primary, reset] ·
- *   caught-up×on [challenge, reset] · caught-up×off [reset] ·
+ *   due×on [primary, reset] · due×off [primary, reset] ·
+ *   caught-up×on [reset] · caught-up×off [reset] ·
  *   empty []. The danger footer (with its divider) is present iff
  *   Start over is present, exactly once (C F7).
  *
@@ -123,7 +130,7 @@ async function gotoCard(page: Page) {
   return section;
 }
 
-type ControlKey = "primary" | "challenge" | "reset";
+type ControlKey = "primary" | "reset";
 
 /** The card's controls in DOM order, as ordered identities. */
 async function controlIdentities(page: Page): Promise<ControlKey[]> {
@@ -133,7 +140,6 @@ async function controlIdentities(page: Page): Promise<ControlKey[]> {
     const keys: string[] = [];
     for (const el of section.querySelectorAll("button")) {
       if (el.getAttribute("aria-label") === "Review my misses: Start review") keys.push("primary");
-      else if (el.getAttribute("data-testid") === "review-challenge-a-friend") keys.push("challenge");
       else if (el.getAttribute("data-testid") === "reset-history-open") keys.push("reset");
       else keys.push(`unknown:${el.textContent?.trim() ?? ""}`);
     }
@@ -160,12 +166,10 @@ test("hit-test: controls own their centres; heading/paragraph/corners hit no but
       const btn = el.closest("button");
       if (!btn) return `non-button:${el.tagName.toLowerCase()}`;
       if (btn.getAttribute("aria-label") === "Review my misses: Start review") return "primary";
-      if (btn.getAttribute("data-testid") === "review-challenge-a-friend") return "challenge";
       if (btn.getAttribute("data-testid") === "reset-history-open") return "reset";
       return "other-button";
     };
     const primary = sec.querySelector('button[aria-label="Review my misses: Start review"]')!;
-    const challenge = sec.querySelector('[data-testid="review-challenge-a-friend"]')!;
     const reset = sec.querySelector('[data-testid="reset-history-open"]')!;
     const heading = sec.querySelector("h2")!;
     const dueLine = sec.querySelector('[data-testid="deck-due-count"]')!;
@@ -173,7 +177,6 @@ test("hit-test: controls own their centres; heading/paragraph/corners hit no but
     const at = (p: { x: number; y: number }) => keyOf(document.elementFromPoint(p.x, p.y));
     return {
       primaryCentre: at(centre(primary)),
-      challengeCentre: at(centre(challenge)),
       resetCentre: at(centre(reset)),
       headingCentre: at(centre(heading)),
       dueLineCentre: at(centre(dueLine)),
@@ -184,8 +187,10 @@ test("hit-test: controls own their centres; heading/paragraph/corners hit no but
   });
 
   expect(probe.primaryCentre, "primary centre hits the primary").toBe("primary");
-  expect(probe.challengeCentre, "challenge centre hits the challenge control").toBe("challenge");
   expect(probe.resetCentre, "reset centre hits the reset opener").toBe("reset");
+  // The removed challenge entry must not haunt the card (redundancy
+  // addendum 2026-10-29): no element carries its testid here.
+  await expect(section.getByTestId("review-challenge-a-friend")).toHaveCount(0);
   for (const [name, hit] of [
     ["heading", probe.headingCentre],
     ["due-count paragraph", probe.dueLineCentre],
@@ -198,7 +203,7 @@ test("hit-test: controls own their centres; heading/paragraph/corners hit no but
   await expect(section.locator(".hv5-review-cue")).toHaveCount(0);
 });
 
-test("stack + tab order: focus walks primary → challenge → reset (due, flag on)", async ({
+test("stack + tab order: focus walks primary → reset (due, flag on)", async ({
   page,
   context,
 }) => {
@@ -206,7 +211,7 @@ test("stack + tab order: focus walks primary → challenge → reset (due, flag 
   await seedDeckOn(page, deckSeed(0));
   await gotoCard(page);
 
-  expect(await controlIdentities(page)).toEqual(["primary", "challenge", "reset"]);
+  expect(await controlIdentities(page)).toEqual(["primary", "reset"]);
 
   // Visual order = DOM order: each control sits below the previous.
   const ys = await page.evaluate(() => {
@@ -214,12 +219,10 @@ test("stack + tab order: focus walks primary → challenge → reset (due, flag 
     const y = (sel: string) => sec.querySelector(sel)!.getBoundingClientRect().y;
     return {
       primary: y('button[aria-label="Review my misses: Start review"]'),
-      challenge: y('[data-testid="review-challenge-a-friend"]'),
       reset: y('[data-testid="reset-history-open"]'),
     };
   });
-  expect(ys.primary).toBeLessThan(ys.challenge);
-  expect(ys.challenge).toBeLessThan(ys.reset);
+  expect(ys.primary).toBeLessThan(ys.reset);
 
   // Bottom anchoring (panel round-1 B1, disproven by probe — locked
   // here so it can never silently regress): the stack's margin-top:
@@ -250,7 +253,6 @@ test("stack + tab order: focus walks primary → challenge → reset (due, flag 
     });
   const keyOf = (sig: string): string | null => {
     if (sig.includes("Review my misses: Start review")) return "primary";
-    if (sig.includes("review-challenge-a-friend")) return "challenge";
     if (sig.includes("reset-history-open")) return "reset";
     return null;
   };
@@ -266,7 +268,7 @@ test("stack + tab order: focus walks primary → challenge → reset (due, flag 
     const key = keyOf(sig);
     if (key && walked[walked.length - 1] !== key) walked.push(key);
   }
-  expect(walked).toEqual(["primary", "challenge", "reset"]);
+  expect(walked).toEqual(["primary", "reset"]);
 });
 
 test("primary semantics: no stretch class, name unchanged, cue absent in both deck states", async ({
@@ -312,6 +314,16 @@ test("danger presentation: fixed red in both schemes; ReviewComplete opener stay
 
   const opener = page.getByTestId("reset-history-open");
   await expect(opener).toBeVisible();
+  // TRUE dark leg (cure round 2026-10-29, Senior Developer round-1
+  // BLOCK): emulate the dark scheme BEFORE the first colour read.
+  // The original leg read on Playwright's default context — which
+  // is light (playwright.config.ts sets no scheme) — so both legs
+  // ran light and a var(--atlas-stamp) regression (night value
+  // rgb(232, 106, 92)) stayed green. Mutation-proven: with the
+  // production colour temporarily reverted to var(--atlas-stamp),
+  // this leg fails on the dark read; restored, it passes.
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.waitForTimeout(300);
   const dark = await opener.evaluate((el) => {
     const cs = getComputedStyle(el);
     return { color: cs.color, decoration: cs.textDecorationLine };
@@ -366,9 +378,9 @@ test("state matrix: ordered identities + danger-footer ownership per state", asy
     want: ControlKey[];
     footer: number;
   }[] = [
-    { name: "due × on", seed: deckSeed(0), flag: true, want: ["primary", "challenge", "reset"], footer: 1 },
+    { name: "due × on", seed: deckSeed(0), flag: true, want: ["primary", "reset"], footer: 1 },
     { name: "due × off", seed: deckSeed(0), flag: false, want: ["primary", "reset"], footer: 1 },
-    { name: "caught-up × on", seed: deckSeed(CAUGHT_UP), flag: true, want: ["challenge", "reset"], footer: 1 },
+    { name: "caught-up × on", seed: deckSeed(CAUGHT_UP), flag: true, want: ["reset"], footer: 1 },
     { name: "caught-up × off", seed: deckSeed(CAUGHT_UP), flag: false, want: ["reset"], footer: 1 },
     { name: "empty", seed: { v: 1, entries: {} }, flag: true, want: [], footer: 0 },
   ];
@@ -400,4 +412,38 @@ test("state matrix: ordered identities + danger-footer ownership per state", asy
       await ctx.close();
     }
   }
+});
+
+test("forced colors: the primary keeps a structural border (B3 automated lock)", async ({
+  page,
+  context,
+}) => {
+  // Panel round-1 B3 (Frontend Developer + UI Designer BLOCKs) was
+  // cured with an authored `2px solid ButtonText` border inside
+  // @media (forced-colors: active) — the primary's brown fill is
+  // forced away in that mode and the button otherwise reads as
+  // plain text. Until this cure round that cure had NO automated
+  // lock; this leg pins the computed border under real forced-colors
+  // emulation. (Paired with the true-dark-leg cure, same round.)
+  await routeFlags(context, { friendChallenges: true });
+  await seedDeckOn(page, deckSeed(0));
+  await gotoCard(page);
+
+  const primary = page.getByRole("button", { name: "Review my misses: Start review" });
+  await expect(primary).toBeVisible();
+  const before = await primary.evaluate((el) => {
+    const cs = getComputedStyle(el);
+    return { width: cs.borderTopWidth, style: cs.borderTopStyle };
+  });
+  expect(before.width, "no authored border outside forced-colors").toBe("0px");
+
+  await page.emulateMedia({ forcedColors: "active" });
+  await page.waitForTimeout(300);
+  const forced = await primary.evaluate((el) => {
+    const cs = getComputedStyle(el);
+    return { width: cs.borderTopWidth, style: cs.borderTopStyle };
+  });
+  expect(forced.width, "primary border width under forced-colors").toBe("2px");
+  expect(forced.style, "primary border style under forced-colors").toBe("solid");
+  await page.emulateMedia({ forcedColors: null });
 });

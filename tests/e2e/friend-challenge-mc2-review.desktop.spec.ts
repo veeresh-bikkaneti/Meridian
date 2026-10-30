@@ -17,9 +17,13 @@ import { SCORING_VERSION } from "../../src/game/scoring.ts";
 /**
  * mc2 creation from the review surfaces (Package C, manifest
  * 2026-10-28 §1(e)):
- * - The home Review card and the review-complete screen both carry a
- *   deck-level entry, "Challenge a friend — pick a map" (never a
- *   per-card control), opening the shipped region mini-picker.
+ * - The review-complete screen carries a deck-level entry,
+ *   "Challenge a friend — pick a map" (never a per-card control),
+ *   opening the shipped region mini-picker. The home Review card
+ *   carried the same entry until the owner's redundancy ruling
+ *   (addendum 2026-10-29, PR #286 cure round) removed it as a
+ *   generic-picker duplicate; its absence is locked below, and the
+ *   picker's canonical entry is re-proven in its place.
  * - The route it deals is FRESH from the picked region's catalog. The
  *   privacy rail (manifest §1(e)/§3: never the deck) — deck ids
  *   are decodable from any link, so a deck-sourced deal would publish
@@ -225,18 +229,32 @@ test("privacy: review-complete entry deals a fresh Nebraska five, never the deck
   }
 });
 
-test("home Review card: the entry opens the same mini-picker and deals in-region", async ({
+test("home Review card: NO challenge entry (owner redundancy removal); the picker's entry still deals", async ({
   page,
   context,
 }) => {
+  // Redundancy addendum 2026-10-29 (PR #286 cure round): the home
+  // Review card's "pick a map" entry merely re-opened the generic
+  // picker — the owner's standing rule removes such duplicates
+  // rather than restyling them. The ReviewComplete entry above
+  // stays (the #286 record's disposition). This test locks the
+  // removal AND proves the feature itself is intact: the picker's
+  // canonical "Challenge a friend" button still opens the
+  // mini-picker and deals an in-region fresh five.
   await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
   await seedDeck(page);
   await page.goto(`${APP_URL}?idle-ms=3600000`);
 
-  const entry = page.getByTestId("review-challenge-a-friend");
-  await expect(entry).toBeVisible({ timeout: 30_000 });
-  await expect(entry).toHaveText("Challenge a friend — pick a map");
-  await entry.click();
+  // The card is alive (due count shows) but carries no entry.
+  await expect(page.getByTestId("deck-due-count")).toHaveText("2 cards due", {
+    timeout: 30_000,
+  });
+  await expect(page.getByTestId("review-challenge-a-friend")).toHaveCount(0);
+
+  // The canonical generic entry: the Expeditions picker's button.
+  const pickerEntry = page.getByTestId("challenge-a-friend");
+  await expect(pickerEntry).toBeVisible();
+  await pickerEntry.click();
 
   await expect(page.getByRole("heading", { name: "Challenge a friend" })).toBeVisible({
     timeout: 30_000,

@@ -1187,34 +1187,6 @@ body:has(.home-v5) {
   outline-offset: 2px;
 }
 
-/* The Review card's challenge opener (manifest §1(e), 2026-10-28),
-   restyled by the action-model manifest 2026-10-29: an OUTLINE pill —
-   a real button shape that is visibly NOT the filled primary and NOT
-   a text link, identical in the due and caught-up states (one
-   control, one look). Only the home Review card renders this class —
-   ReviewComplete uses a standard button. */
-.review-challenge-open {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 10px 18px;
-  background: transparent;
-  border: 2px solid var(--hv5-brown-deep, #77591f);
-  border-radius: 999px;
-  cursor: pointer;
-  font: inherit;
-  font-weight: 700;
-  color: var(--hv5-brown-deep, #77591f);
-  text-decoration: none;
-}
-.review-challenge-open:hover {
-  background: rgba(119, 89, 31, 0.1);
-}
-.review-challenge-open:focus-visible {
-  background: rgba(119, 89, 31, 0.1);
-  color: var(--hv5-brown-deep, #77591f);
-}
-
 /* F7 — forced colors: the two-tone ring and the due outline restate
    in system colors so none of them vanishes or goes low-contrast
    when the UA overrides author colors. The Review action stack's
