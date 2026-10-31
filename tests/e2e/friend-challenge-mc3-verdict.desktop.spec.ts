@@ -7,6 +7,7 @@ import {
 } from "playwright/test";
 import {
   serveBuiltArtifact,
+  commitHit,
   commitMiss,
   commitPin,
   clickNextPlace,
@@ -414,24 +415,31 @@ test("summary mint: a scored normal run's exact share carries a winner block (se
     )
     .not.toBeNull();
 
-  // Land one real hit across the five places (retrying on the next
-  // place if a pin misses), so the route score is > 0; miss the rest.
-  let hitLanded = false;
-  for (let i = 0; i < 5; i++) {
-    if (!hitLanded) {
-      hitLanded = await tryHit(page, RUN_KEY);
-    } else {
-      await commitMiss(page);
-      await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
-      await clickNextPlace(page);
-    }
-    if (i < 4) {
-      await expect
-        .poll(() => readPhase(page), { timeout: 30_000 })
-        .toBe("aim");
-    }
+  // Land one real hit with the shipped commitHit helper (it burns
+  // places whose spots aren't tappable and returns on the hit's
+  // reveal), so the route score is > 0; then miss whatever places
+  // remain. (A hand-rolled spot pin here proved intermittent on
+  // this VM — stale projections and unstable reveal clicks — while
+  // the shipped helpers are the suite's proven path.)
+  await commitHit(page);
+  await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
+  await clickNextPlace(page);
+  const playedCount = () =>
+    page.evaluate((key) => {
+      try {
+        const raw = sessionStorage.getItem(key);
+        const run = raw ? (JSON.parse(raw) as { results?: unknown[] }) : null;
+        return run?.results?.length ?? 0;
+      } catch {
+        return 0;
+      }
+    }, RUN_KEY);
+  await expect.poll(playedCount, { timeout: 15_000 }).toBeGreaterThan(0);
+  while ((await playedCount()) < 5) {
+    await commitMiss(page);
+    await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
+    await clickNextPlace(page);
   }
-  expect(hitLanded, "one of the five pins must land").toBe(true);
   await page.getByRole("button", { name: "End game" }).click();
   await expect.poll(() => readPhase(page), { timeout: 15_000 }).toBe("summary");
   const dialog = page.getByRole("dialog", { name: "Game summary" });
