@@ -85,12 +85,26 @@ is never guarded.
   fail/11 skipped; src 1867/1867); test:worker green; lint-cards
   GATE PASSED; build:pages exit 0; E2E under flock --workers=1 on
   the bundled chromium-1243 (the VM's meta-chromium currently
-  refuses startup — WebGL domain policy): all 9 shipped
-  friend-challenge specs green (exit 0, 4 skipped); the new verdict
-  spec passed 8/8 on the cured tip `d61be2f` and again on the
-  records tip `5783273` (exit 0). Flake note: in one earlier run at
-  `8ea02ed` the spec went 7/8 — the summary-mint test failed once
-  in four runs and passed in both subsequent runs; timing-class
+  refuses startup — WebGL domain policy): the shipped
+  friend-challenge sweep finished 52 passed / 2 failed / 1
+  skipped, both failures dispositioned with evidence (an earlier
+  draft of this record claimed the sweep all-green — that read
+  came from a piped tail's exit code and was wrong): (1) the
+  mc2-package-b (f) mc2-completion test asserted the decoded
+  pass-along's winner is `undefined` — a stale pin from Package
+  A's codec cure (decode reports `winner: null`, as A's golden
+  tests pin); a control run on A's unmodified tip fails the
+  identical test, so it is not a Package B regression; the
+  assertion is aligned test-only in `4baa336` and the file now
+  passes 6/6. (2) The mc2-review flag-off failure was a flake —
+  passed on re-run (3/3 in its file); an mc1 test in the
+  package-b file flaked once during diagnosis (aim-placement)
+  and passed in the sweep, the A control, and the cure
+  verification. The new verdict spec passed 8/8 on the cured tip
+  `d61be2f` and again on the records tip `5783273` (exit 0).
+  Flake note: in one earlier run at `8ea02ed` the verdict spec
+  went 7/8 — the summary-mint test failed once in four runs and
+  passed in both subsequent runs; timing-class
   (spot-projection path), cause unproven, recorded here rather
   than silently absorbed. Benchmark vs A's tip: JS gz +3,994 B
   (+0.070%), CSS gz +380 B (+1.022%).
