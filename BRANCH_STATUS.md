@@ -61,7 +61,10 @@ is never guarded.
   `max(⌊5% of T⌋, 25)` and NEAR-MISS shortfall ≤ 207, headlines,
   sub/margin/duel lines, attempts facts, aria sentence, 5 receipt
   forms, exact-target share text, `mintWinnerBlock` with the farming
-  guard, mask/streak/attainability helpers). 23/23 new unit tests.
+  guard, mask/streak/attainability helpers). 13 new unit test blocks
+  (5 attempts-store + 8 verdict), all passing. (An earlier draft of
+  this line said 23 — the Office Hours seat's byte-count corrected
+  it; the reset U-R1 sentinel was also extended, not added.)
 - [x] Surfaces (`09c6ec5`) — welcome Stakes goal card + disclosure
   (attempts nowhere on the card); verdict screen (headline + icon,
   target bar with gold TARGET tick + static ✓ PASSED on a win, duel

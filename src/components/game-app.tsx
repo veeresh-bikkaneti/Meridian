@@ -5112,7 +5112,6 @@ function ChallengeVerdict({
     ownCompletions: completion.attempts,
     farmingGuardBound: completion.minted.farmingGuardBound,
   });
-  const [settled, setSettled] = useState(false);
   const [announce, setAnnounce] = useState("");
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
@@ -5138,7 +5137,7 @@ function ChallengeVerdict({
   const fillPct = Math.min(100, (mine / ceiling) * 100);
   const tickPct = Math.min(100, (winner.bestScore / ceiling) * 100);
   return (
-    <div data-verdict-settled={settled} onClick={() => setSettled(true)}>
+    <div>
       <p className="sr-only" aria-live="polite">
         {announce}
       </p>
@@ -5171,14 +5170,22 @@ function ChallengeVerdict({
           />
           <span
             className="absolute -top-6 text-xs font-semibold whitespace-nowrap text-muted"
-            style={{ left: `calc(${tickPct}% - 2px)` }}
+            style={{
+              left: `calc(${tickPct}% - 2px)`,
+              // Near the right edge the label would run past the bar
+              // (and the phone): flip it to end at the tick instead.
+              transform: tickPct > 80 ? "translateX(-100%)" : undefined,
+            }}
           >
             TARGET {winner.bestScore.toLocaleString("en-US")}
           </span>
           {cls === "win" ? (
             <span
               className="verdict-pulse absolute top-4 rounded bg-[#f2c14e] px-1.5 py-0.5 text-xs font-bold whitespace-nowrap text-black"
-              style={{ left: `calc(${tickPct}% - 2px)` }}
+              style={{
+                left: `calc(${tickPct}% - 2px)`,
+                transform: tickPct > 80 ? "translateX(-100%)" : undefined,
+              }}
             >
               ✓ PASSED
             </span>
@@ -5307,6 +5314,12 @@ function ChallengeComplete({
   // produces no block (an all-miss chain start), the re-share is an
   // open route again — a zero target is never a chain state.
   const [completion] = useState(() => recordChallengeCompletion(run));
+  // Verdict tap-to-settle (§Q4): the settled flag lives HERE, on the
+  // completion screen's root, so the CSS snap reaches every animated
+  // element — the verdict block AND the pass-along share container
+  // (a sibling subtree, which a flag inside ChallengeVerdict could
+  // never cover). Any tap on the screen settles the choreography.
+  const [verdictSettled, setVerdictSettled] = useState(false);
   const incomingWinner = run.challengeWinner ?? null;
   const myScoreRaw = run.results.reduce((s, r) => s + r.score, 0);
   const mintedWinner = completion?.minted.winner ?? null;
@@ -5416,7 +5429,11 @@ function ChallengeComplete({
       })
     : "";
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+    <main
+      className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8"
+      data-verdict-settled={incomingWinner ? verdictSettled : undefined}
+      onClick={incomingWinner ? () => setVerdictSettled(true) : undefined}
+    >
       <p className="text-sm tracking-wide text-muted uppercase">
         {isMc2 ? run.regionName : CHALLENGE_REGION_NAME}
       </p>
@@ -5460,6 +5477,7 @@ function ChallengeComplete({
               text={challengeText}
               url={challengeUrl}
               label={isMc2 ? CHALLENGE_RESHARE_LABEL : CHALLENGE_SHARE_LABEL}
+              variant={verdictClass === "win" ? "primary" : "secondary"}
               className="w-full"
               failureFallback={
                 // If the share sheet and the clipboard both fail, the
@@ -6065,6 +6083,12 @@ function PlayLoaded({
   // arriving; the chip hides until ~700 ms after the last one.
   const [chipSettling, setChipSettling] = useState(false);
   const chipSettleTimer = useRef<number | null>(null);
+  useEffect(
+    () => () => {
+      if (chipSettleTimer.current !== null) window.clearTimeout(chipSettleTimer.current);
+    },
+    [],
+  );
   // A11y (WCAG 4.1.3): the sr-only live region announces aim transitions so
   // screen-reader users get feedback for place/move/clear. Cleared whenever
   // the phase changes, at which point phase messaging takes over.

@@ -245,8 +245,9 @@ also reserves a winner block — the sender's score, which stops they
 landed, how many times they have completed this route, and the
 route's best score so far — carried inside the link for the
 winner-declaration surfaces that land as Package B of the same delta;
-in Package A the block is decoded and carried, but no screen reads it
-yet, and no completion mints one. One failure line is new: when THIS
+in Package A the block was decoded and carried, but no screen read
+it yet, and no completion minted one (Package B, next paragraph,
+changed both). One failure line is new: when THIS
 build opens a link from a format newer than itself (a `#c=mc9.`-style
 prefix), or one naming a region this build's frozen list doesn't have
 yet, the notice headline is "This challenge needs the newest
@@ -287,7 +288,9 @@ reduced-motion settings nothing animates at all — the same
 information, standing still. Under the bar, a stop-by-stop strip
 compares your landings with the sender's ("Stop by stop — you landed
 {x}, they landed {y}."), names the stops you both missed as the hard
-stops, and repeats the honesty line, because the friend's row is
+stops (if any place's name can't be resolved, the strip honestly
+falls back to the counts alone, with no names and no hard-stops
+line), and repeats the honesty line, because the friend's row is
 their word too. Below that, the tries arrive as story: who set the
 mark and in how many goes, and how many times you yourself have
 finished this route. Passing the route along mints YOUR block —
@@ -297,9 +300,9 @@ your third completion of the same route, your score can still be
 the sender's score on the next link, but it can no longer raise the
 chain's best (when the guard is what held the target, the verdict
 says so: "The target only rises on a player's first two tries at a
-route."). "Share just the route" is always offered beside the
-pass-along: the same route with no winner block and no scores at
-all. Every non-win verdict offers a retry of the same route; a win
+route."). "Share just the route" rides beside the
+pass-along (one of the share offers the flag gates, like the rest):
+the same route with no winner block and no scores at all. Every non-win verdict offers a retry of the same route; a win
 leads with passing it along. The completion counts themselves live
 on the device in one small store (`meridian.challenge.attempts.v1`,
 keyed by the route's scoring version, edition, region and ordered

@@ -147,6 +147,8 @@ const KEPT_LOCAL: Record<string, string> = {
 const CLEARED_SESSION: Record<string, string> = {
   "meridian.session": '{"id":"s1","totalScore":500}',
   "meridian.run": '{"edition":"globe"}',
+  "meridian.run.mc2": '{"edition":"state"}',
+  "meridian.run.mc3": '{"edition":"state"}',
   "meridian.drop": '{"placeId":"lincoln"}',
 };
 
