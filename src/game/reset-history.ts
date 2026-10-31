@@ -3,7 +3,8 @@
  * from the per-store clears in their owner modules (manifest
  * 2026-10-28, §2/§6). This module owns no store of its own: it calls
  * clearReviewDeck / clearLearningStore / clearTrailHistory /
- * clearLoopStore / clearColdtrailStore / clearSession and reports an
+ * clearLoopStore / clearColdtrailStore / clearSession /
+ * clearDiscardedShadowFrom and reports an
  * honest partition — a store that could not be cleared lands in
  * `failed`, the rest still clear, and success is claimed only when
  * `failed` is empty (D4). The UI pairs this with the in-memory half:
@@ -24,7 +25,7 @@ import { clearLearningStore, readLearningStore } from "./learning.ts";
 import { clearTrailHistory } from "./trail.ts";
 import { clearLoopStore } from "./loop/store.ts";
 import { clearColdtrailStore } from "./coldtrail/store.ts";
-import { clearSession, SESSION_KEY } from "./session.ts";
+import { clearSession, clearDiscardedShadowFrom, SESSION_KEY } from "./session.ts";
 
 export type ResetStorage = {
   getItem(key: string): string | null;
@@ -101,6 +102,15 @@ export function resetHistory(
     { store: "geodetective", clear: () => clearLoopStore(local) },
     { store: "coldtrail", clear: () => clearColdtrailStore(local) },
     { store: "session", clear: () => clearSession(session) },
+    // Fix round 2: a Start-over reset with no stored session used to
+    // leave a preserved shadow behind (clearSession's hadStoredSession
+    // gate, correctly, does not touch it) — and that shadow would fire
+    // as a discarded-game notice on a later boot, resurrecting history
+    // the player just wiped. Clear it from the INJECTED local storage
+    // (never the globals — U-R6); the global clearDiscardedShadow()
+    // cannot serve reset, and a raw-key removal here would violate
+    // this module's documented no-raw-key rule (paused-run keys only).
+    { store: "discarded-shadow", clear: () => clearDiscardedShadowFrom(local) },
     { store: "paused-run", clear: () => clearPausedRun(session) },
   ];
   const cleared: string[] = [];

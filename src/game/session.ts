@@ -669,4 +669,36 @@ export function clearSession(target?: SessionStorageLike): boolean {
   }
 }
 
+/**
+ * Fix round 2: the injected-storage twin of clearDiscardedShadow, for
+ * the Start-over reset path (resetHistory). The global
+ * clearDiscardedShadow() cannot serve reset: resetHistory's contract
+ * is injected storage, and its U-R6 rule forbids touching the globals.
+ * Removal mirrors clearSession's precedent (on failure, overwrite with
+ * the empty value — "" reads back as no shadow, since the shadow read
+ * fails closed on an empty payload), and true is returned only when a
+ * re-read proves the key is gone or emptied. No storage means nothing
+ * was ever persisted, so the step reports success.
+ */
+export function clearDiscardedShadowFrom(
+  storage?: SessionStorageLike,
+): boolean {
+  if (!storage) return true;
+  try {
+    storage.removeItem(DISCARDED_NOTICE_KEY);
+  } catch {
+    try {
+      storage.setItem(DISCARDED_NOTICE_KEY, "");
+    } catch {
+      // Both paths blocked; the verification below reports it.
+    }
+  }
+  try {
+    const raw = storage.getItem(DISCARDED_NOTICE_KEY);
+    return raw === null || raw === "";
+  } catch {
+    return false;
+  }
+}
+
 export { isEdition };

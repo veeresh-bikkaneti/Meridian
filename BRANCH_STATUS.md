@@ -1069,3 +1069,33 @@ Approvals needed (exact action + owner), checker, escalation:
   endgame-share.spec.ts in node.js.yml + header comment records the
   exception (3D guards a product a11y behavior; file green locally
   first); YAML validated.
+- Item 5 (this commit): KEEP the clearSession hadStoredSession gate +
+  JUSTIFY it in the PR body + FIX the reset path. Decision evidence
+  (round-2 investigation + live experiment, recorded in the round-2
+  manifest appendix): the Dismiss pointerdown fires the idle-activity
+  listener, which persists a null session and therefore calls
+  clearSession(); the old code deleted the deferred shadow before boot
+  2, so the dual test's boot-2 `new day` 999/9 assertion failed
+  (revert experiment: 1 FAILED at spec:666, notice count 0; restore:
+  1 passed). Reverting alone is NOT an option — it breaks 1E-mc2-dual.
+  The narrower alternative (guard persist(null) in game-app) would be
+  a new change needing its own test, not a revert-alone. Fix: new
+  session.ts export clearDiscardedShadowFrom(storage) (remove +
+  verify, "" fallback mirroring clearSession, returns boolean, no
+  storage → true) and resetHistory gains step "discarded-shadow"
+  after "session", clearing from the INJECTED local storage, never
+  globals (global clearDiscardedShadow() cannot serve reset under
+  U-R6; raw-key removal in resetHistory would violate the module's
+  documented no-raw-key rule, exception: paused-run keys only).
+  U-R1's exact cleared list gains the entry (with justification
+  comment). New tests via injected FakeStorage: U-R9 shadow + no
+  session → shadow gone, "discarded-shadow" in cleared; U-R10 blocked
+  removal + blocked overwrite → in failed, value unchanged; U-R11
+  globally seeded shadow stays byte-identical (U-R6 respected).
+  clearSession and every existing session.ts function UNCHANGED. No
+  D4 re-read added for the shadow (the step's own boolean already
+  verifies by re-read; the D4 block exists for owner clears that do
+  not verify internally). GREEN: reset-history 13/13 + session suite
+  36/36 combined; dual E2E 1E-mc2-dual passes (10.7s) on the rebuilt
+  artifact. PR-body justification edit owed next (authorized only
+  for that justification; head unchanged by it).

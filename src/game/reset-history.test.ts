@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { resetHistory } from "./reset-history.ts";
+import { DISCARDED_NOTICE_KEY } from "./session.ts";
 import { readReviewDeck, deckCounts, REVIEW_DECK_STORE_KEY } from "./review-deck.ts";
 import { LEARNING_STORE_KEY } from "./learning.ts";
 import { seenStoreFor } from "./trail.ts";
@@ -114,6 +115,9 @@ const CLEARED_LOCAL: Record<string, string> = {
   "meridian.coldtrail.v1": COLDTRAIL_V1_JSON,
   "meridian.coldtrail.v2": COLDTRAIL_V2_JSON,
   "meridian.coldtrail.open": "1",
+  // Fix round 2: the discarded-notice shadow is a cleared local key.
+  [DISCARDED_NOTICE_KEY]:
+    '{"totalScore":999,"placesPlayed":9,"dateKey":"2026-10-30","lastActivityAt":1761772800000}',
 };
 
 /** Every KEPT localStorage key from manifest §2 plus near-miss foreign keys. */
@@ -187,7 +191,10 @@ test("U-R1 master sentinel: every cleared key gone, every kept key byte-identica
   assert.deepEqual(result.failed, []);
   assert.deepEqual(
     [...result.cleared].sort(),
-    ["coldtrail", "geodetective", "learning", "paused-run", "review-deck", "session", "trail"],
+    // Fix round 2: "discarded-shadow" joins the cleared list (the
+    // Start-over reset now wipes the preserved shadow from the
+    // injected local storage; see the "discarded-shadow" step).
+    ["coldtrail", "discarded-shadow", "geodetective", "learning", "paused-run", "review-deck", "session", "trail"],
   );
   assertCleared(local, session);
   assertKept(local, session);
@@ -366,5 +373,61 @@ test("resetHistory with no storage at all never throws", () => {
   } finally {
     if (prevLocal !== undefined) g.localStorage = prevLocal;
     if (prevSession !== undefined) g.sessionStorage = prevSession;
+  }
+});
+
+// Fix round 2: the "discarded-shadow" step, all via injected local
+// FakeStorage (never the globals).
+
+test("U-R9: reset with a shadow but no session clears the shadow", () => {
+  const local = new FakeStorage();
+  const session = new FakeStorage();
+  local.data.set(
+    DISCARDED_NOTICE_KEY,
+    '{"totalScore":999,"placesPlayed":9,"dateKey":"2026-10-30","lastActivityAt":1761772800000}',
+  );
+  // No session stored: this is the case clearSession's hadStoredSession
+  // gate leaves alone — the reset step must still wipe the shadow.
+  const result = resetHistory(local, session);
+  assert.deepEqual(result.failed, []);
+  assert.ok(result.cleared.includes("discarded-shadow"));
+  assert.equal(local.getItem(DISCARDED_NOTICE_KEY), null);
+});
+
+test("U-R10: blocked shadow removal (and blocked overwrite) fails only that step", () => {
+  const local = new FakeStorage();
+  const session = new FakeStorage();
+  const shadow =
+    '{"totalScore":999,"placesPlayed":9,"dateKey":"2026-10-30","lastActivityAt":1761772800000}';
+  local.data.set(DISCARDED_NOTICE_KEY, shadow);
+  local.failRemove.add(DISCARDED_NOTICE_KEY);
+  local.failSet.add(DISCARDED_NOTICE_KEY);
+  const result = resetHistory(local, session);
+  assert.deepEqual(result.failed, [{ store: "discarded-shadow" }]);
+  assert.ok(!result.cleared.includes("discarded-shadow"));
+  assert.equal(local.getItem(DISCARDED_NOTICE_KEY), shadow);
+});
+
+test("U-R11: a globally seeded shadow stays byte-identical (U-R6 respected)", () => {
+  const local = new FakeStorage();
+  const session = new FakeStorage();
+  const injectedShadow =
+    '{"totalScore":111,"placesPlayed":1,"dateKey":"2026-10-30","lastActivityAt":1761772800000}';
+  const globalShadow =
+    '{"totalScore":999,"placesPlayed":9,"dateKey":"2026-10-30","lastActivityAt":1761772800000}';
+  local.data.set(DISCARDED_NOTICE_KEY, injectedShadow);
+  const globalLocal = new FakeStorage();
+  globalLocal.data.set(DISCARDED_NOTICE_KEY, globalShadow);
+  const g = globalThis as Record<string, unknown>;
+  const prevLocal = g.localStorage;
+  g.localStorage = globalLocal;
+  try {
+    const result = resetHistory(local, session);
+    assert.deepEqual(result.failed, []);
+    assert.equal(local.getItem(DISCARDED_NOTICE_KEY), null);
+    assert.equal(globalLocal.getItem(DISCARDED_NOTICE_KEY), globalShadow);
+  } finally {
+    if (prevLocal === undefined) delete g.localStorage;
+    else g.localStorage = prevLocal;
   }
 });
