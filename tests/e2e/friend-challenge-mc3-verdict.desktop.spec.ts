@@ -144,8 +144,16 @@ async function playAllMisses(page: Page, count = 5): Promise<void> {
   await expect(page.getByTestId("challenge-complete")).toBeVisible({ timeout: 15_000 });
 }
 
-/** Pin the current question's exact spot (a real hit, key-aware). */
-async function playHit(page: Page, key: string = MC3_KEY): Promise<void> {
+/**
+ * Try to pin the current question's exact spot; returns whether the
+ * pin landed ("story" phase = a hit reveal; "done" = a miss). The
+ * caller decides what a miss means — early versions of this helper
+ * asserted the hit and flaked intermittently on the normal-run
+ * summary flow, where nothing waited for the map's framing settle
+ * before projecting the spot (the run then scored 0 and the
+ * summary mint — correctly, by the zero rule — sealed no block).
+ */
+async function tryHit(page: Page, key: string = MC3_KEY): Promise<boolean> {
   // The projection hook appears once the map has framed the region;
   // poll for it rather than racing the settle.
   let spot: { x: number; y: number } | null = null;
@@ -160,11 +168,15 @@ async function playHit(page: Page, key: string = MC3_KEY): Promise<void> {
     .toBe(true);
   await tapHitsMap(page, spot!.x, spot!.y);
   const { phase } = await commitPin(page, spot!.x, spot!.y, key);
-  // A landed hit moves the run to the reveal ("story"); a drop that
-  // somehow missed lands in "done". Either proves the pin committed.
   expect(["story", "done"]).toContain(phase);
   await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
   await clickNextPlace(page);
+  return phase === "story";
+}
+
+/** Pin the current question's exact spot (a real hit, key-aware). */
+async function playHit(page: Page, key: string = MC3_KEY): Promise<void> {
+  expect(await tryHit(page, key), "the pinned spot must land").toBe(true);
 }
 
 async function passAlongWinner(page: Page) {
@@ -385,17 +397,41 @@ test("summary mint: a scored normal run's exact share carries a winner block (se
   await expect
     .poll(() => readPhase(page), { timeout: 30_000 })
     .toBe("aim");
-
-  // One real hit (so the route score is > 0), then four misses.
-  await playHit(page, RUN_KEY);
+  // Wait for the framing settle (stable zoom) before projecting any
+  // spot — the challenge flow's waitForChallengeAim does this, and
+  // skipping it here is what made this test intermittent: the
+  // projected point went stale mid-flight and the "hit" missed.
+  const map = page.locator(".satellite-map");
   await expect
-    .poll(() => readPhase(page), { timeout: 30_000 })
-    .toBe("aim");
-  for (let i = 0; i < 4; i++) {
-    await commitMiss(page);
-    await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
-    await clickNextPlace(page);
+    .poll(
+      async () => {
+        const a = await map.getAttribute("data-zoom");
+        await page.waitForTimeout(800);
+        const b = await map.getAttribute("data-zoom");
+        return a === b ? a : null;
+      },
+      { timeout: 30_000 },
+    )
+    .not.toBeNull();
+
+  // Land one real hit across the five places (retrying on the next
+  // place if a pin misses), so the route score is > 0; miss the rest.
+  let hitLanded = false;
+  for (let i = 0; i < 5; i++) {
+    if (!hitLanded) {
+      hitLanded = await tryHit(page, RUN_KEY);
+    } else {
+      await commitMiss(page);
+      await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
+      await clickNextPlace(page);
+    }
+    if (i < 4) {
+      await expect
+        .poll(() => readPhase(page), { timeout: 30_000 })
+        .toBe("aim");
+    }
   }
+  expect(hitLanded, "one of the five pins must land").toBe(true);
   await page.getByRole("button", { name: "End game" }).click();
   await expect.poll(() => readPhase(page), { timeout: 15_000 }).toBe("summary");
   const dialog = page.getByRole("dialog", { name: "Game summary" });
