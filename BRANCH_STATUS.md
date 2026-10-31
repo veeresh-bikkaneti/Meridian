@@ -1,3 +1,58 @@
+# BRANCH_STATUS — feat/challenge-mc3-codec
+
+- **Branch:** `feat/challenge-mc3-codec`
+- **Base:** `origin/main` at `5e5a440` (#288 merged).
+- **Stack:** Package B (`feat/challenge-winner-verdict`) stacks on this branch when its build starts; this manifest ships first on both.
+
+## Task capsule
+
+TASK / requested outcome (owner orders, 2026-10-31): (1) the challenge
+link is too long and not human-readable (his specimen: 324-char URL,
+274-char mc2 payload) — make it compact, with readability in the share
+message + welcome card; (2) challenge completion must declare the winner
+— the second player sees challenger-vs-challenger (target vs own score),
+a verdict, and motion on the completion screen.
+
+Interpretations considered and selected reading: codec v3 ("mc3") as a
+packed binary sibling format (mc1 + mc2 frozen, decode-only after this
+ships); winner declaration = the owner's ADOPTED Design A (2026-10-29
+council) implemented on mc3, not re-litigated. Human-readable = the
+composed share text + welcome card, never the fragment (slug prefixes
+rejected in the manifest, §6.2).
+
+Tier and rationale: Tier 2 — new wire format + feature across 3+ files.
+Consensus Manifest (delta): `.council/manifests/2026-10-31-mc3-compact-links-and-winner-declaration.md`
+— committed FIRST on this branch; Chair-signed after a 4-seat council.
+
+Done condition / evidence: Package A (this branch) = mc3 codec + emission
+switched on every creation surface + unknown-version remedy; golden
+vectors incl. the owner's Nebraska link (52 payload chars open / 62 with
+winner block, vs 274); strict-decoder tamper/fuzz suites; mc1/mc2 golden
+suites byte-unmodified; all 5 AGENTS.md gates green; panel READY on the
+final tip. Package B (stacked branch) = winner declaration surfaces.
+
+Files and interfaces in scope (Package A): `src/game/challenge.ts`
+(mc3 section appended; mc1/mc2 paths untouched), its tests + fixtures,
+boot fragment dispatch in `src/components/game-app.tsx` (version remedy
+only), docs (Handbook + README).
+Protected: mc1 decoder + its test blocks, mc2 decoder + golden fixtures,
+`tests/e2e/friend-challenge.desktop.spec.ts`, `src/game/data/**`,
+GeoDetective / Cold Trail, `public/flags.json`, donation copy.
+
+Approvals: pushes to THIS branch are standing-authorized by the task
+assignment; PR opening is ordered by the assignment; MERGE is the
+owner's per-PR word only — not requested by this branch's work.
+
+## Status
+
+- [x] Phase 1 — council + manifest delta signed (2026-10-31)
+- [ ] Package A — mc3 codec (TDD) → gates → panel → PR
+- [ ] Package B — winner declaration (stacked branch)
+
+---
+
+## Carried record (main, from PR #288 — kept verbatim)
+
 # BRANCH_STATUS — fix/challenge-framing-and-map-mode
 
 - **Branch:** `fix/challenge-framing-and-map-mode`
