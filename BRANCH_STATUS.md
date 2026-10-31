@@ -1020,3 +1020,14 @@ Approvals needed (exact action + owner), checker, escalation:
   rejected by Chair ruling (it would make mounts-filled pass too).
   RED proof (old observer + new assertions, reverted): 1K failed with
   the empty entry missing. GREEN: 1K + 1K-repeat pass (8.8s / 11.8s).
+- Item 4 (this commit): home nav overlap check waits for layout to
+  settle before measuring (the task-stated CI flake cause). New
+  helper `waitForNavLayoutSettled` in
+  tests/e2e/grownups-privacy-contact.desktop.spec.ts: 2 rAFs + two
+  identical consecutive nav bounding-box reads + document.fonts.ready
+  (best-effort, 1s race timeout so it cannot hang the test).
+  Called after setViewportSize + scrollTo AND after scrollBy inside
+  the viewport loop; post-click popover reads stay guarded by
+  toBeVisible; sections outside the loop unchanged. Cause label is
+  task-stated (no local repro captured): if the flake persists, the
+  wait was not the cause. GREEN: home UX polish test passes (9.9s).
