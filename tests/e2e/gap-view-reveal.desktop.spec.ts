@@ -168,20 +168,22 @@ test("miss: a tap on the map skips the beat to the end state", async ({
   // never asserted it, so the test passed vacuously even with the
   // animation stubbed out. Poll every ~100ms until the spot moves:
   // movement observed is the beat actually running, which the tap
-  // below then skips. If the card appears before any movement is
-  // observed, the beat completed first — skip, never fail (same rule
-  // as the at-entry gate above). If neither happens within 4000ms
-  // (below the 6000ms reveal watchdog), the assertion below fails:
-  // a frozen animation must fail this test, not pass it.
+  // below then skips. If neither happens within 4000ms (below the
+  // 6000ms reveal watchdog), the assertion below fails.
+  // Fix round 2: assert spotMoves on EVERY path. The round-1
+  // poll-path return let the test pass when the card appeared before
+  // any movement was observed — with the camera frozen, the card
+  // still lands (~2.2 s beat timer) inside the 4000 ms poll, so the
+  // mutant passed vacuously (cardUpDuringPoll=true, spotMoves=false).
+  // The at-entry return above (card already up before polling) is
+  // kept: that is the legitimate synchronous near-miss beat. Once
+  // polling starts, a card appearing before any observed movement
+  // falls through to the assertion and FAILS — the beat did not
+  // demonstrably run, so there is nothing meaningful to skip.
   let prev = await spotPoint();
   let spotMoves = false;
-  let cardUpDuringPoll = false;
   const pollDeadline = Date.now() + 4000;
   while (Date.now() < pollDeadline) {
-    if ((await nextPlaceButton(page).count()) > 0) {
-      cardUpDuringPoll = true;
-      break;
-    }
     const cur = await spotPoint();
     if (
       prev &&
@@ -192,11 +194,12 @@ test("miss: a tap on the map skips the beat to the end state", async ({
       break;
     }
     prev = cur;
+    if ((await nextPlaceButton(page).count()) > 0) {
+      // Card appeared before movement was observed: fall through to
+      // the assertion below (fails) — never pass vacuously.
+      break;
+    }
     await page.waitForTimeout(100);
-  }
-  if (cardUpDuringPoll) {
-    // Beat completed before movement was observed: nothing to skip.
-    return;
   }
   expect(spotMoves).toBe(true);
 

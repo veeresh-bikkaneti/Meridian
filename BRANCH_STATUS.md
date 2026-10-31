@@ -982,3 +982,29 @@ Approvals needed (exact action + owner), checker, escalation:
   L4 beb33f8, L5 this commit). Step 4 leave-alone items + Step 5
   final gates + the report still owed at this commit; no merge word
   is claimed here.
+
+## Fix round 2: PR #287 review findings (base main 5e5a440e, head b2af90b)
+
+- Tier: T2 (Chair + C) per Dinesh's standing order. Council: Chair
+  APPROVED (rounds 1–2 + final decision), Councilor C challenged twice;
+  final Chair decision APPROVED + AUTH_RUN_TDD_IMPLEMENTATION. Manifest:
+  `~/workspace/meridian-wave1/fix-round-2/MANIFEST.md` (kept out of
+  the PR diff). Independent reviewer verifies afterwards; no merge word
+  is claimed here.
+- Scope: 5 findings, one commit each, PR branch only. Leave-alone
+  (reported, not changed): endgame-share `clickShareScoreWithRetry` +
+  share-text origin line (owner decision pending).
+- Item 1 (this commit): M2 gap-view skip test asserts spotMoves on
+  EVERY path. The round-1 poll-path return (card appears during poll
+  → skip) is deleted: with the camera frozen, the card still lands
+  inside the 4000ms poll, so the mutant passed vacuously. The
+  at-entry return (card already up before polling) is kept: that is
+  the legitimate synchronous near-miss beat. Sampling reordered:
+  sample first, then card check, so a card appearing in the same
+  iteration as observed movement still passes. Mutant proof
+  (temporary __spotScreen freeze + diagnostic logs, all reverted, no
+  trace in the diff): entry cardAlreadyUp=0 (poll ran), frozen-check
+  {100,100}, end spotMoves=false → test FAILED as required. Note:
+  entry timing races the card attach — early runs took the at-entry
+  return (cardAlreadyUp=1); the proof run caught the poll path.
+  Normal run green pre-commit (skip test 33.3s).
