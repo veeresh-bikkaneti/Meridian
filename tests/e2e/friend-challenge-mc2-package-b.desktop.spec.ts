@@ -233,7 +233,10 @@ test("(f) mc2 completion: pass-along forward-upgrades to mc3 + keeps pinned radi
 
   // Primary: the exact route, forward-upgraded to mc3 (delta §3.3 —
   // never a downgrade, and mc2 is emit-never now), still pinned at
-  // 87 km, and — in Package A — carrying no winner block yet.
+  // 87 km, and carrying no winner block: this play missed every
+  // stop, and an all-miss completion mints no block (Package B's
+  // zero rule), so the sealed link has no W flag and the decoder
+  // reports winner: null (the shape the mc3 golden tests pin).
   const primary = page.getByTestId("challenge-share-container");
   const primaryUrl = await primary.getAttribute("data-challenge-url");
   expect(primaryUrl).toBeTruthy();
@@ -243,7 +246,7 @@ test("(f) mc2 completion: pass-along forward-upgrades to mc3 + keeps pinned radi
   if (!decodedPrimary.ok) return;
   expect([...decodedPrimary.ids]).toEqual([...NEBRASKA_IDS]);
   expect(decodedPrimary.rad).toBe(87);
-  expect(decodedPrimary.winner).toBeUndefined();
+  expect(decodedPrimary.winner).toBeNull();
   // NB: data-testid="challenge-complete" is the heading element, not a
   // panel — scope button lookups by their share containers instead.
   await expect(
