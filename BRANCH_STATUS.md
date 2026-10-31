@@ -2,7 +2,7 @@
 
 - **Branch:** `feat/challenge-mc3-codec`
 - **Base:** `origin/main` at `5e5a440` (#288 merged).
-- **Stack:** Package B (`feat/challenge-winner-verdict`) stacks on this branch when its build starts; this manifest ships first on both.
+- **Stack:** Package B (`feat/challenge-winner-verdict`) stacks on this branch's panel-frozen tip; the governing manifest ships first on both.
 
 ## Task capsule
 
@@ -108,8 +108,31 @@ owner's per-PR word only — not requested by this branch's work.
   E2E (flock, --workers=1): mc3-receive 6/6 + mc2-boot/receive/
   isolation + frozen-mc1 desktop spec all green (exit 0, 1 skipped);
   create/framing/package-b/review specs run at close-out (see PR body).
-- [ ] Panel (full pipeline, 12 seats + DevEx) on the final tip —
-  convenes next; cures re-voted. Then PR. NO MERGE.
+- [x] Panel (full pipeline, 12 seats + DevEx, personas verbatim) on
+  tip `c0c54ef` — 7 APPROVE · 5 APPROVE-WITH-NITS · 1 BLOCK · DevEx
+  PASS-WITH-NITS. The BLOCK (Reality Checker, A7): two passages could
+  be misread as promising an old build the newest-Meridian headline
+  for an mc3 link. Byte-check split it: the challenge.ts half cited a
+  paraphrase (no old-build claim exists in the header — grep proof in
+  the PR record); the feature-flags.md half was substantively real
+  (the paragraph never stated what a pre-mc3 build shows). Cured in
+  the close-out commit below (explicit A7 sentences in both files);
+  the seat's confirmation vote is requested on the cured tip.
+  Three further nits were dismissed WITH EVIDENCE (seat citations did
+  not survive byte-checking): Economy's "61 not 62" (46 bytes →
+  ⌈46×8/6⌉ = 62 chars; the golden test asserts 62 and passes), Level
+  Architect's "positional" header line (no such text; challenge.ts:953
+  states the opposite), Game Developer's `assertNeverReachable`
+  dead-code claim (the symbol exists nowhere in src/), DevEx's
+  fresh-Globe-mints-mc1 claim (its cited functions don't exist; the
+  fresh branch at challenge.ts:899 encodes mc3 unconditionally).
+  Standing nits carried to Package B: the mc2-package-b E2E spec's
+  SHARE_SUFFIX helper name (correctly scoped to mc1/mc2 today);
+  `buildFreshChallengeShareText` parallels the frozen mc1 builder by
+  design (the mc1 surface is frozen, so no shared helper).
+  Benchmark (like-for-like same-env builds): see the PR body.
+- [ ] PR — opened after the Reality Checker's confirmation on the
+  cured tip. NO MERGE (owner's per-PR word only).
 - [ ] Package B — winner declaration (stacked branch
   `feat/challenge-winner-verdict` on this branch's panel-frozen tip)
 

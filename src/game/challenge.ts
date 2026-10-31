@@ -916,8 +916,11 @@ export const CHALLENGE_BROKEN_LINK_COPY = "Ask your friend to send the link agai
 // more (mc1 survives only as the sender-side exact-Globe share, the
 // shipped surface the delta expressly keeps). mc3 packs the same route
 // into raw bytes instead of JSON — the owner's 274-char Nebraska mc2
-// payload becomes 52 chars — and adds room for the winner block the
-// winner-declaration design (Package B) rides on:
+// payload becomes 52 chars (62 with a winner block) — and adds room
+// for the winner block the winner-declaration design (Package B)
+// rides on. A build older than mc3 can say none of this: it has never
+// heard of the format and shows only "Could not load this challenge."
+// for an mc3 link (§Q1-A7) — no doc or screen may promise it more:
 //
 //   #c=mc3.<base64url(canonical, unpadded) of the packed body>
 //   B0    flags: bits 7–6 edition (0 globe, 1 country, 2 state),
@@ -933,7 +936,9 @@ export const CHALLENGE_BROKEN_LINK_COPY = "Ask your friend to send the link agai
 //   winner (iff W): sender hit-mask uint16 BE, then the sender's
 //         score and the chain's best score as varints (≤3 bytes
 //         each), then the sender's attempts (≤2 bytes, 1–255)
-//   seal  FNV-1a-32 over ALL preceding bytes, uint32 big-endian
+//   seal  FNV-1a-32 (the Fowler–Noll–Vo hash) over ALL preceding
+//         bytes, uint32 big-endian — a typo-catcher that fails the
+//         decode on any copying damage, never a proof of anything
 //
 // The fragment is capped at 127 chars total. Decoding fails closed in
 // the manifest's gate order (§2.5): the seal is checked over raw bytes

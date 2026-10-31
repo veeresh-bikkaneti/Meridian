@@ -246,13 +246,18 @@ landed, how many times they have completed this route, and the
 route's best score so far — carried inside the link for the
 winner-declaration surfaces that land as Package B of the same delta;
 in Package A the block is decoded and carried, but no screen reads it
-yet, and no completion mints one. One failure line is new: a link
-from a format NEWER than this build (a `#c=mc9.`-style prefix), or
-one naming a region this build's frozen list doesn't have yet, now
-gets the headline "This challenge needs the newest Meridian.",
-because asking for a resend from the same newer game would fail again
-in exactly the same way; a broken link in a known format still asks
-for the resend, as before.
+yet, and no completion mints one. One failure line is new: when THIS
+build opens a link from a format newer than itself (a `#c=mc9.`-style
+prefix), or one naming a region this build's frozen list doesn't have
+yet, the notice headline is "This challenge needs the newest
+Meridian.", because asking for a resend from the same newer game
+would fail again in exactly the same way; a broken link in a known
+format still asks for the resend, as before. The reverse direction
+gets no such promise: a build OLDER than mc3, opening an mc3 link,
+shows only "Could not load this challenge." — it has never heard of
+the format, so it cannot point anyone at a newer version; the
+newest-Meridian headline exists only in builds new enough to
+recognise a newer format when they see one.
 
 **Creating mid-game (2026-10-29, Package B).** Three more doors into the
 same challenge, all behind the same flag. While a game is running, the
