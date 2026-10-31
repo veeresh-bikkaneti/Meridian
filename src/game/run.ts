@@ -1,3 +1,4 @@
+import type { ChallengeWinner } from "./challenge.ts";
 import { isHit } from "./radius.ts";
 import { SCORING_VERSION, type ScoredPlace } from "./scoring.ts";
 import { isPickerDifficulty, type PickerDifficulty } from "./tier-filter.ts";
@@ -134,6 +135,15 @@ export type Run = {
    * "mc1".
    */
   challengeOrigin?: "mc1" | "mc2" | "mc3";
+  /**
+   * Challenge runs only (mc3, when the link carried a winner block):
+   * the attested mark, stored verbatim so the run — and a completion
+   * re-share — carries it losslessly. Absent means the link carried
+   * no winner block (an open route). The save boundary validates it
+   * complete-or-discard (governing manifest §Q1-A4): a partial or
+   * implausible block discards the whole save, never just the block.
+   */
+  challengeWinner?: ChallengeWinner;
 };
 
 export function startRun(

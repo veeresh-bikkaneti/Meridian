@@ -322,6 +322,30 @@ const MC2_KEYS: readonly string[] = ["v", "e", "r", "rad", "s", "ids", "seed"];
 /** Locked fairness line (manifest C10) — shown on the welcome card and
  * the creation preview so both kids know the deal before anyone plays. */
 export const CHALLENGE_FAIRNESS_COPY = "Same places, same circle for everyone.";
+/** The version line every mc3-era CREATION text carries (governing
+ * manifest §Q3): it names the app and the requirement in plain words,
+ * and it is load-bearing — a pre-mc3 build gives a first-hop receiver
+ * no guidance at all (§Q1-A7), so the text a player pastes into a chat
+ * is the one place the warning reaches them. Receipts never carry it,
+ * and the retired "(Opens in the newest Meridian.)" appears nowhere. */
+export const CHALLENGE_VERSION_LINE = "(Link opens in the Meridian app — newest version.)";
+
+/**
+ * The fresh-route creation share text (governing manifest §Q3,
+ * byte-exact): hook and facts on the first line with the locked
+ * fairness line, then the version line, then the link alone on the
+ * last line. ONE builder for every fresh-creation surface (picker
+ * preview, mid-run/reveal preview, summary secondary, completion
+ * secondary) so the texts can never drift apart.
+ */
+export function buildFreshChallengeShareText(input: {
+  placeCount: number;
+  regionName: string;
+  radiusKm: number;
+  url: string;
+}): string {
+  return `Challenge a friend! 🎯 ${input.placeCount} places · ${input.regionName} · ${input.radiusKm} km circle. ${CHALLENGE_FAIRNESS_COPY}\n${CHALLENGE_VERSION_LINE}\n${input.url}`;
+}
 /** Welcome-card title for an mc2 receive (Package A, decision D1). */
 export const CHALLENGE_WELCOME_TITLE = "A challenge from a friend!";
 /** Failure class 3 (manifest C12): the link was fine but a region chunk
@@ -335,11 +359,13 @@ export const CHALLENGE_UNKNOWN_CONTENT_COPY =
  * unknown to this build. */
 export const CHALLENGE_UNKNOWN_REGION_COPY =
   "This challenge is for a part of the world this version of Meridian doesn't have yet.";
-/** Failure class 1, version arm (delta 2026-10-31 §3.6): the link is a
- * well-formed challenge link from a NEWER format this build does not
- * understand. The fix is not a resend — it is the newest Meridian — so
- * the remedy says exactly that. Fires only for an unknown-version
- * prefix, never for a broken link in a known format. */
+/** The version failure's heading (governing manifest §Q1-A6): the
+ * link is well-formed but from a NEWER Meridian than this build —
+ * an unknown version with a canonical body, or an mc3 region this
+ * build's registry predates. The fix is not a resend — it is the
+ * newest Meridian — so the heading says exactly that. It is a
+ * heading of its own, never a line under the broken-link title, and
+ * never fires for a broken link in a known format. */
 export const CHALLENGE_VERSION_COPY = "This challenge needs the newest Meridian.";
 
 /** Every way an mc2 (or dispatched) link can fail, in gate order. */

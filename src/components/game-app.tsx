@@ -337,12 +337,14 @@ declare global {
  */
 import {
   buildCreationSources,
+  buildFreshChallengeShareText,
   CHALLENGE_BROKEN_LINK_COPY,
   CHALLENGE_CHILD_COPY,
   CHALLENGE_FAIRNESS_COPY,
   CHALLENGE_GLOBE_RADIUS_KM,
   CHALLENGE_LOAD_FAILURE_COPY,
   CHALLENGE_MAX_PLACES,
+  CHALLENGE_MC3_PREFIX,
   CHALLENGE_MIN_PLACES,
   CHALLENGE_REGION_ID,
   CHALLENGE_REGION_NAME,
@@ -353,6 +355,7 @@ import {
   CHALLENGE_UNKNOWN_CONTENT_COPY,
   CHALLENGE_UNKNOWN_REGION_COPY,
   CHALLENGE_VERSION_COPY,
+  CHALLENGE_VERSION_LINE,
   CHALLENGE_WELCOME_TITLE,
   challengeFreshRouteLabel,
   challengeMidRunLabel,
@@ -364,10 +367,12 @@ import {
   decodeChallenge,
   decodeChallengeLink,
   encodeChallenge,
+  isLegalWinnerBlock,
   playOrder,
   resolveChallengeRoute,
   type ChallengeCreation,
   type ChallengeRoute,
+  type ChallengeWinner,
 } from "@/game/challenge";
 
 function isReviewRun(run: Run): boolean {
@@ -552,6 +557,15 @@ const RUN_KEY = "meridian.run";
  * exactly as the shipped build wrote them.
  */
 const RUN_MC2_KEY = "meridian.run.mc2";
+
+/**
+ * Saved mc3 challenge runs live under their OWN key again (governing
+ * manifest §Q1-A4): a build from before mc3 existed never reads this
+ * key, so an mc3 save — winner block included — can never be picked
+ * up by an mc2-era build and silently re-shared with the winner
+ * block dropped. mc3 builds read mc3 → mc2 → mc1 slots, in order.
+ */
+const RUN_MC3_KEY = "meridian.run.mc3";
 
 /**
  * Persisted pin-drop for the in-progress place. `drop`/`revealDone` are
@@ -798,6 +812,21 @@ function readRunFrom(key: string): Run | null {
     ) {
       return null;
     }
+    // The winner block at the save boundary (governing manifest
+    // §Q1-A4): on an mc3 save it is either ABSENT (an open route) or
+    // COMPLETE and plausible for the saved route. A partial or
+    // implausible block discards the whole save — the block is never
+    // silently dropped while the run resumes underneath it.
+    if (
+      record.challengeOrigin === "mc3" &&
+      record.challengeWinner !== undefined &&
+      !isLegalWinnerBlock(
+        record.challengeWinner,
+        Array.isArray(record.poolIds) ? record.poolIds.length : 0,
+      )
+    ) {
+      return null;
+    }
     return {
       edition: record.edition,
       regionId: record.regionId,
@@ -856,6 +885,12 @@ function readRunFrom(key: string): Run | null {
       record.challengeOrigin === "mc3"
         ? { challengeOrigin: record.challengeOrigin }
         : {}),
+      // The winner block, carried only off an mc3 save whose block
+      // the pre-check above already validated complete-or-discard.
+      ...(record.challengeOrigin === "mc3" &&
+      record.challengeWinner !== undefined
+        ? { challengeWinner: record.challengeWinner as ChallengeWinner }
+        : {}),
     };
   } catch {
     return null;
@@ -879,16 +914,58 @@ function clearMc2Run() {
   }
 }
 
+/** The saved mc3 challenge run, if one is in progress (see RUN_MC3_KEY).
+ * A save whose winner block read as partial or implausible was already
+ * discarded by readRunFrom (§Q1-A4); the slot itself is removed here
+ * when its raw contents name an mc3 save that no longer validates, so
+ * the discarded save is never re-read on the next boot. */
+function readMc3Run(): Run | null {
+  const run = readRunFrom(RUN_MC3_KEY);
+  if (run) return run;
+  try {
+    const raw = sessionStorage.getItem(RUN_MC3_KEY);
+    if (raw) {
+      const parsed: unknown = JSON.parse(raw);
+      if (
+        parsed &&
+        typeof parsed === "object" &&
+        (parsed as Record<string, unknown>).challengeOrigin === "mc3" &&
+        (parsed as Record<string, unknown>).challengeWinner !== undefined &&
+        !isLegalWinnerBlock(
+          (parsed as Record<string, unknown>).challengeWinner,
+          Array.isArray((parsed as Record<string, unknown>).poolIds)
+            ? ((parsed as Record<string, unknown>).poolIds as unknown[]).length
+            : 0,
+        )
+      ) {
+        sessionStorage.removeItem(RUN_MC3_KEY);
+      }
+    }
+  } catch {
+    // Unreadable slot: boot falls through; the stale save is inert.
+  }
+  return null;
+}
+
+function clearMc3Run() {
+  try {
+    sessionStorage.removeItem(RUN_MC3_KEY);
+  } catch {
+    // Storage blocked; the in-memory state is dropped regardless.
+  }
+}
+
 function writeRun(run: Run) {
   try {
-    // mc2 challenge runs persist to their own key (RUN_MC2_KEY) so old
-    // builds never see them; everything else keeps the shipped key.
-    // mc3 runs share that slot: it is the all-editions challenge slot,
-    // and an mc3 run is every bit as invisible to old builds as mc2.
+    // Each challenge format persists to its OWN key (RUN_MC2_KEY,
+    // RUN_MC3_KEY) so a build from before that format existed never
+    // sees its saves (§Q1-A4); everything else keeps the shipped key.
     const key =
-      run.challengeOrigin === "mc2" || run.challengeOrigin === "mc3"
-        ? RUN_MC2_KEY
-        : RUN_KEY;
+      run.challengeOrigin === "mc3"
+        ? RUN_MC3_KEY
+        : run.challengeOrigin === "mc2"
+          ? RUN_MC2_KEY
+          : RUN_KEY;
     sessionStorage.setItem(key, JSON.stringify(run));
     // Crash-loop breaker: this page now holds unsaved-crash state. If the
     // process is killed without unloading, the next boot must not
@@ -1277,8 +1354,22 @@ export function GameApp() {
    * a kid, and there is no auto-dismiss, so a slow screen reader (or a
    * grown-up helping) still sees it. Flag OFF never sets it: with the
    * feature off there is nothing to explain.
+   *
+   * The notice is a TITLE plus an optional DETAIL line, because the
+   * failure classes have different titles (governing manifest
+   * §Q1-A6): a broken or unknown link titles itself with
+   * CHALLENGE_CHILD_COPY and details the remedy, while the version
+   * class — a well-formed link from a newer Meridian, or an mc3
+   * region this build's registry predates — titles itself with
+   * CHALLENGE_VERSION_COPY and carries no resend remedy (a resend
+   * from the same newer build would fail identically). Screen-reader
+   * users identify failures by their heading, so the classes must
+   * not share one.
    */
-  const [challengeBootNotice, setChallengeBootNotice] = useState<string | null>(null);
+  const [challengeBootNotice, setChallengeBootNotice] = useState<{
+    title: string;
+    detail: string | null;
+  } | null>(null);
 
   /**
    * A validated mc2 challenge waiting on its welcome card (Package A):
@@ -1634,6 +1725,12 @@ export function GameApp() {
     setWelcomeMapPick(null);
     const fields = challengeRunFields(pendingChallenge.route);
     clearDrop();
+    // One challenge at a time across formats too: a saved challenge
+    // in the OTHER format's slot would shadow this run at the next
+    // boot (the read order is mc3 → mc2 → mc1), so starting here
+    // retires it — displacement, as ever, commits on Start.
+    if (fields.challengeOrigin === "mc3") clearMc2Run();
+    if (fields.challengeOrigin === "mc2") clearMc3Run();
     // Cross-format displacement (manifest §3 persistence): if the
     // normal slot holds a saved CHALLENGE (an mc1 run), starting this
     // mc2 challenge displaces it — one challenge at a time, and the
@@ -1659,6 +1756,12 @@ export function GameApp() {
       challengeRegionId: fields.challengeRegionId,
       challengeRadiusKm: fields.challengeRadiusKm,
       challengeOrigin: fields.challengeOrigin,
+      // The winner block rides the run verbatim (mc3 only; null on
+      // every other route): Package B's welcome goal and verdict read
+      // it, and a completion re-share carries it losslessly.
+      ...(pendingChallenge.route.winner
+        ? { challengeWinner: pendingChallenge.route.winner }
+        : {}),
     };
     commit(run);
     setPendingChallenge(null);
@@ -1690,8 +1793,8 @@ export function GameApp() {
   );
 
   /**
-   * An mc2 challenge's Done tap (manifest §2, contract 6): the
-   * challenge slot is cleared, and the normal run the challenge
+   * A challenge's Done tap (mc2/mc3; manifest §2, contract 6): the
+   * challenge slots are cleared, and the normal run the challenge
    * displaced is offered back — resumed in place when it is still
    * resumable today. Nothing here touches the player's history: the
    * challenge never wrote any.
@@ -1700,6 +1803,7 @@ export function GameApp() {
     setStartError(null);
     clearDrop();
     clearMc2Run();
+    clearMc3Run();
     setRun(null);
     setMenu(null);
     const saved = readRun();
@@ -1805,6 +1909,7 @@ export function GameApp() {
     try {
       sessionStorage.removeItem(RUN_KEY);
       clearMc2Run();
+      clearMc3Run();
     } catch {
       // Storage blocked; the in-memory run is dropped below regardless.
     }
@@ -2074,6 +2179,7 @@ export function GameApp() {
     if (isUncleanShutdown()) {
       clearRunAfterUncleanShutdown(RUN_KEY);
       clearRunAfterUncleanShutdown(RUN_MC2_KEY);
+      clearRunAfterUncleanShutdown(RUN_MC3_KEY);
       setReady(true);
       return;
     }
@@ -2127,7 +2233,7 @@ export function GameApp() {
           // different scoring version): tell the player on Home via
           // the boot notice, then fall through — a saved run, if one
           // exists, still resumes underneath the notice.
-          setChallengeBootNotice("");
+          setChallengeBootNotice({ title: CHALLENGE_CHILD_COPY, detail: null });
           bootSavedRun();
           return;
         }
@@ -2142,7 +2248,7 @@ export function GameApp() {
             // not have (an old link, or a hand-edited one). Same
             // child-facing failure as a corrupt link: notice + fall
             // through to the saved-run boot.
-            setChallengeBootNotice("");
+            setChallengeBootNotice({ title: CHALLENGE_CHILD_COPY, detail: null });
             bootSavedRun();
             return;
           }
@@ -2160,19 +2266,22 @@ export function GameApp() {
             null,
           );
           commit(challengeRun);
-          // The mc1 boot is its commit point: a saved mc2 challenge is
-          // displaced now (a saved challenge is displaceable only on a
-          // new challenge's start — manifest §3 persistence). The
+          // The mc1 boot is its commit point: a saved mc2/mc3
+          // challenge is displaced now (a saved challenge is
+          // displaceable only on a new challenge's start — manifest
+          // §3 persistence; one challenge at a time, so the newer
+          // slots must not shadow this run at the next boot). The
           // normal slot now holds THIS challenge; nothing else is
           // touched.
           clearMc2Run();
+          clearMc3Run();
           setMenu(null);
         } catch {
           // The Globe catalog could not load, so the challenge cannot
           // start. From the player's side this is the same failure as
           // a broken link — show the same notice and fall through to
           // the saved-run boot instead of stranding them on Home.
-          setChallengeBootNotice("");
+          setChallengeBootNotice({ title: CHALLENGE_CHILD_COPY, detail: null });
           bootSavedRun();
           return;
         }
@@ -2189,13 +2298,45 @@ export function GameApp() {
     // the pre-challenge boot, unchanged — if you are changing resume
     // behaviour, change it here so BOTH entry points get it.
     function bootSavedRun() {
-    // mc2 challenge saves live under their own key (RUN_MC2_KEY) and
-    // take precedence over the normal slot: a player who left a
-    // challenge mid-route comes back to the challenge. With the flag
-    // off the challenge is cleared and the ordinary boot continues
-    // underneath — a saved normal run is never collateral (manifest
-    // C7's guard table). An mc2 save also shadows a stale mc1 save in
-    // the normal slot until it completes or is cleared.
+    // Challenge saves take precedence over the normal slot, newest
+    // format first (governing manifest §Q1-A4 read order: mc3 → mc2
+    // → mc1): a player who left a challenge mid-route comes back to
+    // the challenge. With the flag off the challenge save is cleared
+    // and the ordinary boot continues underneath — a saved normal run
+    // is never collateral (manifest C7's guard table). A newer
+    // format's save also shadows the older slots (and a stale mc1
+    // save in the normal slot) until it completes or is cleared.
+    const mc3Saved = readMc3Run();
+    if (mc3Saved) {
+      void loadFlags().then(async () => {
+        if (!isEnabled("friendChallenges")) {
+          clearMc3Run();
+          bootMc2OrBody();
+          return;
+        }
+        const today = {
+          edition: mc3Saved.edition,
+          regionId: mc3Saved.regionId,
+          regionName: mc3Saved.regionName,
+          dateKey: trailDate(),
+          difficultyChoice: mc3Saved.difficultyChoice,
+        };
+        if (isResumable(mc3Saved, today)) {
+          const restored = resumeRun(mc3Saved, today);
+          await preloadTerritory();
+          commit(restored);
+          setReady(true);
+          return;
+        }
+        clearMc3Run();
+        bootMc2OrBody();
+      });
+      return;
+    }
+    bootMc2OrBody();
+    }
+
+    function bootMc2OrBody() {
     const mc2Saved = readMc2Run();
     if (mc2Saved) {
       void loadFlags().then(async () => {
@@ -2252,24 +2393,35 @@ export function GameApp() {
     async function receiveMc2Challenge(hash: string) {
       const link = decodeChallengeLink(hash, SCORING_VERSION);
       if (!link.ok) {
-        // Class 2 (region arm) when the region itself is unknown to
-        // this build; class 1 for every other decode failure — with
-        // one delta §3.6 exception: a fragment whose PREFIX names a
-        // version this build does not know (mc4, mc9, …) gets the
-        // newest-Meridian remedy, because a resend from the same
-        // newer build would fail identically. The exception is
-        // prefix-level only: a "version" raised from inside a known
-        // format (an mc2 payload with v ≠ 2, an mc3 with reserved
-        // bits set) keeps the ordinary resend line.
+        // The failure classes (governing manifest §Q1-A6), told apart
+        // by their TITLE line (see challengeBootNotice):
+        // - VERSION class: the link is well-formed but from a newer
+        //   Meridian than this build — either its prefix names an
+        //   unknown version (the dispatcher only raises "version" for
+        //   that shape, canonical body included), or it is an mc3
+        //   link whose REGION failure means registry skew: the seal
+        //   already passed, so the link is intact and simply names a
+        //   region this build's registry predates. Title is the
+        //   newest-Meridian line; no resend remedy, because a resend
+        //   from the same newer build fails identically.
+        // - REGION class: an mc1/mc2 link naming a region this build
+        //   does not have.
+        // - CORRUPT class: everything else, malformed mc3 included.
+        //   A "version" raised from INSIDE a known format (an mc2
+        //   payload with v ≠ 2, an mc3 with reserved bits set) lands
+        //   here and keeps the ordinary resend line.
         const prefixVersion = /^#c=mc(\d+)\./.exec(hash);
         const unknownVersionPrefix =
           prefixVersion !== null && ![1, 2, 3].includes(Number(prefixVersion[1]));
+        const versionClass =
+          (link.reason === "version" && unknownVersionPrefix) ||
+          (hash.startsWith(CHALLENGE_MC3_PREFIX) && link.reason === "region");
         setChallengeBootNotice(
-          link.reason === "region"
-            ? CHALLENGE_UNKNOWN_REGION_COPY
-            : link.reason === "version" && unknownVersionPrefix
-              ? CHALLENGE_VERSION_COPY
-              : CHALLENGE_BROKEN_LINK_COPY,
+          versionClass
+            ? { title: CHALLENGE_VERSION_COPY, detail: null }
+            : link.reason === "region"
+              ? { title: CHALLENGE_CHILD_COPY, detail: CHALLENGE_UNKNOWN_REGION_COPY }
+              : { title: CHALLENGE_CHILD_COPY, detail: CHALLENGE_BROKEN_LINK_COPY },
         );
         bootSavedRun();
         return;
@@ -2283,7 +2435,10 @@ export function GameApp() {
         if (!resolved.ok) {
           // Class 2 (place arm): a named place is not in this build's
           // catalog for the named region.
-          setChallengeBootNotice(CHALLENGE_UNKNOWN_CONTENT_COPY);
+          setChallengeBootNotice({
+            title: CHALLENGE_CHILD_COPY,
+            detail: CHALLENGE_UNKNOWN_CONTENT_COPY,
+          });
           bootSavedRun();
           return;
         }
@@ -2300,7 +2455,10 @@ export function GameApp() {
       } catch {
         // Class 3: the link may be perfect, but the region chunk did
         // not load, so membership could not be checked.
-        setChallengeBootNotice(CHALLENGE_LOAD_FAILURE_COPY);
+        setChallengeBootNotice({
+          title: CHALLENGE_CHILD_COPY,
+          detail: CHALLENGE_LOAD_FAILURE_COPY,
+        });
         bootSavedRun();
       }
     }
@@ -3341,8 +3499,10 @@ export function GameApp() {
       data-testid="challenge-boot-notice"
       className="mb-4 rounded-xl border border-line bg-surface p-4 text-base text-fg"
     >
-      <p>{CHALLENGE_CHILD_COPY}</p>
-      {challengeBootNotice ? <p className="mt-1">{challengeBootNotice}</p> : null}
+      <p>{challengeBootNotice.title}</p>
+      {challengeBootNotice.detail ? (
+        <p className="mt-1">{challengeBootNotice.detail}</p>
+      ) : null}
     </div>
   ) : null;
 
@@ -3367,7 +3527,12 @@ export function GameApp() {
   const challengePreviewEl = challengePreview ? (() => {
     const { creation } = challengePreview;
     const url = `${window.location.origin}${window.location.pathname}${creation.fragment}`;
-    const text = `Find ${creation.placeCount} places in ${creation.regionName}! Get inside the ${creation.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${url}`;
+    const text = buildFreshChallengeShareText({
+      placeCount: creation.placeCount,
+      regionName: creation.regionName,
+      radiusKm: creation.radiusKm,
+      url,
+    });
     return (
       <div
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
@@ -4724,11 +4889,16 @@ function ChallengeWelcome({
     >
       <div className="w-full max-w-sm rounded-2xl border border-line bg-surface p-6 shadow-2xl">
         <h2 className="font-display text-2xl text-fg">{CHALLENGE_WELCOME_TITLE}</h2>
-        <p className="mt-3 text-base text-fg">
+        {/* Grouped blocks (governing manifest §Q3): Context first —
+            title, then the locked fairness line, then the task. The
+            Stakes block (a goal card, when the link carries a winner
+            block) and the disclosure join in Package B; the Action
+            block (map row, then Start / Not now) follows below. */}
+        <p className="mt-3 text-base text-muted">{CHALLENGE_FAIRNESS_COPY}</p>
+        <p className="mt-2 text-base text-fg">
           Find {route.ids.length} places in {route.regionName}. Get inside the{" "}
           {route.radiusKm} km circle — closer is better!
         </p>
-        <p className="mt-2 text-base text-muted">{CHALLENGE_FAIRNESS_COPY}</p>
         {hasSavedRun ? (
           <p className="mt-2 text-base text-muted">
             Your game in progress is saved — it will be waiting when you finish.
@@ -4811,8 +4981,9 @@ function ChallengeComplete({
   // §3.3): a route re-shares without ever losing information — an mc1
   // route stays mc1 byte for byte; an mc2 route forward-upgrades to
   // mc3 with its own region named; an mc3 route stays mc3. Never a
-  // downgrade. (In Package A the mc3 re-share carries no winner block:
-  // winner minting is Package B.)
+  // downgrade. A received mc3 winner block is carried LOSSLESSLY
+  // (below): Package A mints no winner blocks of its own — minting,
+  // with the ratchet, is Package B — but it never strips one either.
   const isMc2 = run.challengeOrigin === "mc2" || run.challengeOrigin === "mc3";
   const mc2Creation = isMc2
     ? createChallengeRoute({
@@ -4827,6 +4998,9 @@ function ChallengeComplete({
         // re-share, never re-pins.
         originFormat: "mc3",
         radiusKmOverride: run.challengeRadiusKm,
+        // Lossless carry (above): the received winner block, verbatim.
+        // Absent on mc2-origin runs and open mc3 routes.
+        winner: run.challengeWinner,
       })
     : null;
   const challengeHash = isMc2
@@ -4839,13 +5013,15 @@ function ChallengeComplete({
       ? `${window.location.origin}${window.location.pathname}${challengeHash}`
       : "";
   // The re-share text, built once so the button and its failure fallback
-  // below can never drift apart. mc2 texts name the region and carry the
-  // newest-Meridian suffix, because an old build cannot open them.
+  // below can never drift apart. It is a RECEIPT (governing manifest
+  // §Q3): it names the region and carries no version line — receipts
+  // never do — and the retired "(Opens in the newest Meridian.)"
+  // suffix appears nowhere in mc3-era texts.
   const score = run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US");
   const challengeText = isMc2
     ? // The pre-written reply text (manifest §1(f)): the receiver sends
       // the route back along the chain with their score on it.
-      `I scored ${score} on your ${mc2Creation?.regionName ?? run.regionName} route — beat that! (Opens in the newest Meridian.)\n${challengeUrl}`
+      `I scored ${score} on your ${mc2Creation?.regionName ?? run.regionName} route — beat that!\n${challengeUrl}`
     : `Play the same ${total} places on the Globe! I scored ${score}.\n${challengeUrl}`;
   // The fresh secondary (manifest §1(f), Package B): a NEW route in the
   // completed route's region, dealt from the region catalog — the
@@ -4873,7 +5049,12 @@ function ChallengeComplete({
       ? `${window.location.origin}${window.location.pathname}${freshCreation.fragment}`
       : "";
   const freshText = freshCreation
-    ? `Find ${freshCreation.placeCount} places in ${freshCreation.regionName}! Get inside the ${freshCreation.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${freshUrl}`
+    ? buildFreshChallengeShareText({
+        placeCount: freshCreation.placeCount,
+        regionName: freshCreation.regionName,
+        radiusKm: freshCreation.radiusKm,
+        url: freshUrl,
+      })
     : "";
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
@@ -6273,7 +6454,12 @@ function PlayLoaded({
       ? {
           url: `${origin}${fresh.fragment}`,
           label: `New route in ${fresh.regionName} instead`,
-          text: `Find ${fresh.placeCount} places in ${fresh.regionName}! Get inside the ${fresh.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${origin}${fresh.fragment}`,
+          text: buildFreshChallengeShareText({
+            placeCount: fresh.placeCount,
+            regionName: fresh.regionName,
+            radiusKm: fresh.radiusKm,
+            url: `${origin}${fresh.fragment}`,
+          }),
         }
       : null;
     if (exact) {
@@ -6289,7 +6475,7 @@ function PlayLoaded({
           regionName: exact.regionName,
           text: exact.fragment.startsWith("#c=mc1.")
             ? `Play the same ${exact.placeCount} places on the Globe!\n${origin}${exact.fragment}`
-            : `Play the same ${exact.placeCount} places ${regionPhrase}! I scored ${sessionTotal.toLocaleString("en-US")}. (Opens in the newest Meridian.)\n${origin}${exact.fragment}`,
+            : `Play the same ${exact.placeCount} places ${regionPhrase}! I scored ${sessionTotal.toLocaleString("en-US")}.\n${CHALLENGE_VERSION_LINE}\n${origin}${exact.fragment}`,
         },
         secondary: freshSecondary,
       };
@@ -6449,7 +6635,12 @@ function PlayLoaded({
   const runChallengePreviewEl = runChallengePreview ? (() => {
     const creation = runChallengePreview;
     const url = `${window.location.origin}${window.location.pathname}${creation.fragment}`;
-    const text = `Find ${creation.placeCount} places in ${creation.regionName}! Get inside the ${creation.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${url}`;
+    const text = buildFreshChallengeShareText({
+      placeCount: creation.placeCount,
+      regionName: creation.regionName,
+      radiusKm: creation.radiusKm,
+      url,
+    });
     return (
       <div
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
