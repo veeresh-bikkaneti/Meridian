@@ -81,15 +81,46 @@ is never guarded.
   in-run target chip with the unreachable switch (hides while the aim
   pin moves — `onAim` is the drag signal available without new map
   plumbing).
-- [ ] Gates + E2E on the final tip (verdict spec + all
-  friend-challenge specs + the summary/desktop specs the mint
-  touches).
-- [ ] Docs — feature-flags.md Package B paragraph + README line.
-- [ ] Panel (full pipeline, 12 seats + DevEx, personas verbatim) on
-  the final tip, incl. the two owed rulings above; cures re-voted or
-  confirmed per the #288 precedent.
-- [ ] PR with `--base feat/challenge-mc3-codec`. NO MERGE (owner's
-  per-PR word only).
+- [x] Gates + E2E — on `8ea02ed` and re-verified on the cured tip
+  `d61be2f`: tsc clean; npm test (scripts 861: 850 pass/0 fail/11
+  skipped; src 1867/1867); test:worker green; lint-cards GATE
+  PASSED; build:pages exit 0; E2E under flock --workers=1 on the
+  bundled chromium-1243 (the VM's meta-chromium currently refuses
+  startup — WebGL domain policy): verdict spec 8/8, all 9 shipped
+  friend-challenge specs green (exit 0, 4 skipped). Benchmark vs
+  A's tip: JS gz +3,994 B (+0.070%), CSS gz +380 B (+1.022%).
+- [x] Docs — feature-flags.md Package B paragraph + README line
+  (`8908707`); Package A paragraph's present-tense mint claim cured
+  to past tense in the cure commit (DevEx N1).
+- [x] Panel (full pipeline, 12 seats + DevEx, personas verbatim) on
+  tip `8ea02ed` — 1 APPROVE · 8 APPROVE-WITH-NITS · 3 BLOCK cured ·
+  1 BLOCK split (below) · DevEx PASS-WITH-NITS → confirmation PASS.
+  Owed rulings: mask STAYS, unanimous 12/12 (Systems' DROP dissent
+  does not survive the built strip); practice off-ramp SHIPS
+  WITHOUT by majority (Level Architect dissent recorded in the PR
+  body; if built later, the Game Designer's bar applies: practice
+  never writes attempts, never mints). All six judged
+  interpretations endorsed or unobjected. Cure round 1 (`d61be2f`):
+  reset paused-run wipe now includes `meridian.run.mc3` (Senior
+  Developer block; the gap originated in Package A — flagged in
+  the PR body for #290); tap-to-settle flag lifted to the
+  ChallengeComplete root (Frontend block); WIN pass-along takes
+  `variant="primary"` (UX Designer block); riders — tick-label
+  flip past 80%, chip timer unmount cleanup, docs tense/caveats,
+  the 13-test count correction. Confirmations on `d61be2f`:
+  Senior Developer BLOCK LIFTED · Frontend BLOCK LIFTED · UX
+  Designer BLOCK LIFTED · DevEx PASS · Office Hours NITS CURED.
+  Dismissed with byte evidence: Senior Architect's summaryAttempts
+  divergence (the memo checks the marker; seat CONFIRMED the
+  rebuttal, nit withdrawn); Game Narrative's comment-typo
+  citation (the quoted text exists nowhere in `src/`).
+  UNRESOLVED, owner's call (in the PR body): Game Level Architect
+  BLOCK 1 — §Q4's tier-blind `routeCeiling` at the verdict/chip
+  surfaces (real tier-1 ceiling 650 vs the bound's 1,514 at n=5);
+  keep the manifest as written, or amend §Q4 to tier-aware
+  ceilings at the two surfaces (codec gate unchanged either way).
+- [x] PR with `--base feat/challenge-mc3-codec` — see the PR link in
+  REPORT.md. NO MERGE (owner's per-PR word only).
 
 ---
 
