@@ -1097,5 +1097,7 @@ Approvals needed (exact action + owner), checker, escalation:
   verifies by re-read; the D4 block exists for owner clears that do
   not verify internally). GREEN: reset-history 13/13 + session suite
   36/36 combined; dual E2E 1E-mc2-dual passes (10.7s) on the rebuilt
-  artifact. PR-body justification edit owed next (authorized only
-  for that justification; head unchanged by it).
+  artifact. PR-body justification edit DONE via API (justification +
+  item-2 CI note appended, re-read verified, body 6761 → 8064 chars;
+  verified against head 84e12ab, which the body edit itself did not
+  move).
