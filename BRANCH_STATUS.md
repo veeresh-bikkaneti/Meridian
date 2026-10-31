@@ -81,14 +81,19 @@ is never guarded.
   in-run target chip with the unreachable switch (hides while the aim
   pin moves — `onAim` is the drag signal available without new map
   plumbing).
-- [x] Gates + E2E — on `8ea02ed` and re-verified on the cured tip
-  `d61be2f`: tsc clean; npm test (scripts 861: 850 pass/0 fail/11
-  skipped; src 1867/1867); test:worker green; lint-cards GATE
-  PASSED; build:pages exit 0; E2E under flock --workers=1 on the
-  bundled chromium-1243 (the VM's meta-chromium currently refuses
-  startup — WebGL domain policy): verdict spec 8/8, all 9 shipped
-  friend-challenge specs green (exit 0, 4 skipped). Benchmark vs
-  A's tip: JS gz +3,994 B (+0.070%), CSS gz +380 B (+1.022%).
+- [x] Gates + E2E — tsc clean; npm test (scripts 861: 850 pass/0
+  fail/11 skipped; src 1867/1867); test:worker green; lint-cards
+  GATE PASSED; build:pages exit 0; E2E under flock --workers=1 on
+  the bundled chromium-1243 (the VM's meta-chromium currently
+  refuses startup — WebGL domain policy): all 9 shipped
+  friend-challenge specs green (exit 0, 4 skipped); the new verdict
+  spec passed 8/8 on the cured tip `d61be2f` and again on the
+  records tip `5783273` (exit 0). Flake note: in one earlier run at
+  `8ea02ed` the spec went 7/8 — the summary-mint test failed once
+  in four runs and passed in both subsequent runs; timing-class
+  (spot-projection path), cause unproven, recorded here rather
+  than silently absorbed. Benchmark vs A's tip: JS gz +3,994 B
+  (+0.070%), CSS gz +380 B (+1.022%).
 - [x] Docs — feature-flags.md Package B paragraph + README line
   (`8908707`); Package A paragraph's present-tense mint claim cured
   to past tense in the cure commit (DevEx N1).
