@@ -128,10 +128,12 @@ export type Run = {
   challengeRadiusKm?: number;
   /**
    * Challenge runs only: which link format created the run, so a
-   * completion re-share is encoded in the SAME format (mc1 stays mc1 —
-   * the frozen contract). Absent on a challenge run means "mc1".
+   * completion re-share follows the origin rule (mc1 stays mc1 — the
+   * frozen contract; mc2 forward-upgrades to mc3 and mc3 stays mc3,
+   * per the 2026-10-31 delta §3.3). Absent on a challenge run means
+   * "mc1".
    */
-  challengeOrigin?: "mc1" | "mc2";
+  challengeOrigin?: "mc1" | "mc2" | "mc3";
 };
 
 export function startRun(
