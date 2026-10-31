@@ -831,8 +831,20 @@ async function installAnnouncerObserver(context: BrowserContext): Promise<void> 
       const el = document.querySelector(
         '[data-testid="discarded-notice-announcer"]',
       );
-      const text = el ? (el.textContent ?? "") : "";
+      if (!el) return;
+      const text = el.textContent ?? "";
       const log = w.__announcerLog!;
+      // Fix round 2: the FIRST observed text is recorded even when
+      // empty — that is what distinguishes an announcer that mounts
+      // empty and then fills (["", sentence]) from one that mounts
+      // already filled ([sentence]). Later pushes record only
+      // non-empty text distinct from the last entry. (An unconditional
+      // [""] seed at install was rejected: it would make mounts-filled
+      // pass too.)
+      if (log.length === 0) {
+        log.push(text);
+        return;
+      }
       if (text && log[log.length - 1] !== text) log.push(text);
     };
     const install = () => {
@@ -891,12 +903,14 @@ test("1K boot notice announces exactly once via the live region", async ({
   });
   // The region mounts empty and is filled after mount, so the fill is
   // a real text change: exactly one announcement, carrying the
-  // challenges sentence. Pre-fix the notice mounted with its text
-  // already present (role="status" on the visible card) and this log
-  // stayed empty.
+  // challenges sentence. Fix round 2: the log must start with the
+  // empty first observation — an announcer that mounts already
+  // filled logs [sentence] (no empty first entry) and fails here,
+  // which the old non-empty-only log could not tell apart.
   await expect
     .poll(() => readAnnouncerLog(page), { timeout: 5000 })
     .toEqual([
+      "",
       "Friend challenges are switched off, so your saved game could not be resumed. You played 2 places and scored 150 points.",
     ]);
 });
@@ -924,8 +938,11 @@ test("1K-repeat dismissed notice clears the announcer so the same notice announc
   });
   await expect
     .poll(() => readAnnouncerLog(page), { timeout: 5000 })
-    .toHaveLength(1);
-  // Boot 1: one announcement. Dismiss clears the region itself (not
+    .toEqual([
+      "",
+      "Friend challenges are switched off, so your saved game could not be resumed. You played 2 places and scored 150 points.",
+    ]);
+  // Boot 1: empty first observation + one announcement. Dismiss clears the region itself (not
   // just the visible card), so an identical notice can announce again.
   await notice(page).getByRole("button", { name: "Dismiss" }).click();
   await expect.poll(() => announcerText(page), { timeout: 5000 }).toBe("");
@@ -945,7 +962,10 @@ test("1K-repeat dismissed notice clears the announcer so the same notice announc
   });
   await expect
     .poll(() => readAnnouncerLog(page), { timeout: 5000 })
-    .toHaveLength(1);
+    .toEqual([
+      "",
+      "Friend challenges are switched off, so your saved game could not be resumed. You played 2 places and scored 150 points.",
+    ]);
 });
 
 test("1B GUARD context check: a fresh context sees no notice (record is context-local)", async ({

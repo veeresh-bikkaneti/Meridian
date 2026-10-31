@@ -1008,3 +1008,15 @@ Approvals needed (exact action + owner), checker, escalation:
   entry timing races the card attach — early runs took the at-entry
   return (cardAlreadyUp=1); the proof run caught the poll path.
   Normal run green pre-commit (skip test 33.3s).
+- Item 3 (this commit): 1K now requires the FIRST observed announcer
+  text to be empty. The observer's push recorded only non-empty text,
+  so it could not tell an announcer that mounts already filled from
+  one that mounts empty and then fills. Push now records the first
+  observed text unconditionally (log-empty + region-exists → push,
+  even ""); later pushes record only non-empty text distinct from the
+  last entry. 1K asserts ["", sentence]; 1K-repeat's two
+  toHaveLength(1) assertions become toEqual(["", sentence]) (shared
+  observer contract). An unconditional [""] seed at install was
+  rejected by Chair ruling (it would make mounts-filled pass too).
+  RED proof (old observer + new assertions, reverted): 1K failed with
+  the empty entry missing. GREEN: 1K + 1K-repeat pass (8.8s / 11.8s).
