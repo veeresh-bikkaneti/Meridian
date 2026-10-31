@@ -1,3 +1,95 @@
+# BRANCH_STATUS — feat/challenge-winner-verdict
+
+- **Branch:** `feat/challenge-winner-verdict`
+- **Base:** `feat/challenge-mc3-codec` at its panel-frozen tip `4ec34bc`
+  (Package A, PR #290 — open, panel READY, NO MERGE). This branch
+  stacks on A per the governing manifest §Q5: B ships only on A's
+  frozen tip, and its PR states `feat/challenge-mc3-codec` as base.
+- **Governing:** `.council/manifests/2026-10-31-mc3-winner-council-verdict.md`
+  §Q2 (winner gates + attempts store + farming guard), §Q3 (welcome
+  Stakes + receipts), §Q4 (verdict screen + chip + motion). Owner's
+  "Build it" (2026-10-31), neither amendment struck.
+
+## Task capsule
+
+TASK / requested outcome: Package B — winner declaration on mc3.
+Target at start ("🎯 Beat {best}"), ratchet to best-so-far, the
+verdict completion screen (win / dead heat / so close / better luck
+next time / route-only share), veto-rewritten motion + reduced-motion
+version, farming guard on the 3rd+ completion of the same route,
+attempts-as-story after play only, "your friend's word" honesty
+labels on welcome + verdict.
+
+Tier and rationale: Tier 2 — feature across codec consumers, storage,
+and the completion surface (stacked on Package A's Tier 2 branch).
+
+Done condition / evidence: gates green on the final tip (tsc, npm
+test, test:worker, lint-cards, build:pages, E2E under flock
+--workers=1); the verdict taxonomy exercised end-to-end from crafted
+legal W links (WIN / HOLD at the exact band edge / NEAR-MISS at
+shortfall 100 / LOSS at 955, duel + facts, chip unreachable switch,
+reduced-motion WIN, summary mint); full-pipeline panel on the final
+tip with the two owed rulings (Systems mask-DROP dissent re-hearing;
+practice off-ramp with the built welcome card); PR opened with
+`--base feat/challenge-mc3-codec`. NO MERGE.
+
+Judged interpretations (flagged for the panel, none blocking):
+(1) margin lines use the copy deck's full sentences ("You won by
+{margin}." etc.) — the motion table's shorthand ("Won by {m}") read
+as layout notes, not copy; the aria sentence uses the same sentences.
+(2) Score numbers ≥ 1,000 render with `toLocaleString("en-US")` on
+the welcome goal card, chip, and verdict (the app's score convention;
+the deck is silent on grouping). (3) The own-history fact uses the
+deck's literal template "You've finished this route {j} times." for
+every j — the deck gives "one go" singulars for the sender facts but
+none here. (4) The retry button label is "Try this route again" —
+the deck mandates the offer, names no label. (5) The summary exact
+mint attests the ROUTE score (the first-10 results' sum), not the
+session total; the shipped non-target summary text is untouched.
+(6) The farming guard binds only against an incoming best (B4's own
+parenthetical: "sender′ still updates"); a chain-starting completion
+is never guarded.
+
+## Status
+
+- [x] Logic layer (`f00531c`) — `src/game/challenge-attempts.ts`
+  (store `meridian.challenge.attempts.v1`, canonical tuple
+  `s|edition|region|ordered ids`, cap 512 LRU, fail-closed; flag-off
+  does NOT clear it; Reset-my-history DOES — wired into
+  `reset-history.ts` with its U-R1 sentinel updated) and
+  `src/game/challenge-verdict.ts` (pure: taxonomy with HOLD band
+  `max(⌊5% of T⌋, 25)` and NEAR-MISS shortfall ≤ 207, headlines,
+  sub/margin/duel lines, attempts facts, aria sentence, 5 receipt
+  forms, exact-target share text, `mintWinnerBlock` with the farming
+  guard, mask/streak/attainability helpers). 23/23 new unit tests.
+- [x] Surfaces (`09c6ec5`) — welcome Stakes goal card + disclosure
+  (attempts nowhere on the card); verdict screen (headline + icon,
+  target bar with gold TARGET tick + static ✓ PASSED on a win, duel
+  strip with named dots + repeated disclosure, attempts facts,
+  tap-to-settle, aria-live sentence at the verdict point, immediate
+  under reduced motion); veto-spec CSS choreography in
+  `src/styles.css` (scores at frame 0, no count-up; reduced-motion =
+  all static); pass-along minting REPLACES Package A's lossless carry
+  (the completer becomes the sender; best ratchets; record-once per
+  run via a session marker keyed by run seed); governing receipts;
+  "Share just the route" (same route, no winner block); Retry via a
+  route override on `startPendingChallenge`, threaded GameApp → Play
+  → PlayLoaded; summary exact mint with the target share text; the
+  in-run target chip with the unreachable switch (hides while the aim
+  pin moves — `onAim` is the drag signal available without new map
+  plumbing).
+- [ ] Gates + E2E on the final tip (verdict spec + all
+  friend-challenge specs + the summary/desktop specs the mint
+  touches).
+- [ ] Docs — feature-flags.md Package B paragraph + README line.
+- [ ] Panel (full pipeline, 12 seats + DevEx, personas verbatim) on
+  the final tip, incl. the two owed rulings above; cures re-voted or
+  confirmed per the #288 precedent.
+- [ ] PR with `--base feat/challenge-mc3-codec`. NO MERGE (owner's
+  per-PR word only).
+
+---
+
 # BRANCH_STATUS — feat/challenge-mc3-codec
 
 - **Branch:** `feat/challenge-mc3-codec`
