@@ -1,0 +1,421 @@
+import {
+  test,
+  expect,
+  type Browser,
+  type BrowserContext,
+  type Page,
+} from "playwright/test";
+import {
+  serveBuiltArtifact,
+  commitMiss,
+  commitPin,
+  clickNextPlace,
+  readPhase,
+  resultCard,
+  spotViewportPoint,
+  tapHitsMap,
+  MC3_RUN_KEY,
+  RUN_KEY,
+} from "./helpers";
+import {
+  encodeChallenge3,
+  decodeChallengeLink,
+} from "../../src/game/challenge.ts";
+import { SCORING_VERSION } from "../../src/game/scoring.ts";
+
+/**
+ * mc3 verdict E2E (governing council manifest 2026-10-31, Package B —
+ * the §Q4 test-spec deltas):
+ * - Welcome: the Stakes goal card + disclosure render for a W link;
+ *   attempts appears NOWHERE on the card.
+ * - Chip: target form in-run; the unreachable switch drops the target
+ *   to "landed {x} of {n}" once the remaining stops can't pay it.
+ * - Verdict taxonomy from real play: LOSS (955 target, all misses),
+ *   HOLD (25 target, all misses — shortfall exactly at the band edge),
+ *   NEAR-MISS (100 target, all misses) with its both-missed line, and
+ *   WIN under reduced motion (final states, ✓ PASSED, the aria
+ *   sentence present immediately).
+ * - Pass-along minting: the completion re-share carries the
+ *   COMPLETER's block (sender updated, best ratcheted), while "Share
+ *   just the route" decodes with no winner block.
+ * - Duel line + attempts facts on a sender < best chain.
+ * - Retry restarts the same route.
+ * - Summary mint: a scored normal run's exact share carries a winner
+ *   block (sender = best, attempts 1).
+ */
+test.setTimeout(240_000);
+
+const APP_URL = "http://127.0.0.1:4123/Meridian/";
+const FLAGS_PATTERN = "**/flags.json";
+const MC3_KEY = MC3_RUN_KEY;
+
+const NEBRASKA_IDS = [
+  "gn-5072006", // Lincoln
+  "gn-5074472", // Omaha
+  "gn-5063805", // Bellevue
+  "gn-5068725", // Fremont
+  "gn-5069297", // Grand Island
+] as const;
+
+function wLink(winner: {
+  senderMask: number;
+  senderScore: number;
+  bestScore: number;
+  senderAttempts: number;
+}): string {
+  return encodeChallenge3(
+    { edition: "state", regionId: "nebraska", radiusKm: 87, ids: NEBRASKA_IDS, winner },
+    SCORING_VERSION,
+  );
+}
+
+// Sender == best chains (the sender set the mark).
+const LINK_LOSS = wLink({ senderMask: 0xf800, senderScore: 955, bestScore: 955, senderAttempts: 1 });
+const LINK_HOLD = wLink({ senderMask: 0x8000, senderScore: 25, bestScore: 25, senderAttempts: 1 });
+const LINK_NEARMISS = wLink({ senderMask: 0x8000, senderScore: 100, bestScore: 100, senderAttempts: 1 });
+const LINK_WIN = wLink({ senderMask: 0x8000, senderScore: 1, bestScore: 1, senderAttempts: 1 });
+// Sender < best: the duel chain.
+const LINK_DUEL = wLink({ senderMask: 0xf800, senderScore: 700, bestScore: 955, senderAttempts: 2 });
+
+test.beforeEach(async ({ context, page }) => {
+  await serveBuiltArtifact(context);
+  await page.addInitScript(() => {
+    try {
+      (navigator.serviceWorker as unknown as Record<string, unknown>).register = () =>
+        Promise.reject(new Error("service worker disabled for test"));
+    } catch {
+      /* ignore */
+    }
+  });
+});
+
+async function routeFlags(
+  context: BrowserContext,
+  flags: Record<string, boolean>,
+): Promise<void> {
+  await context.route(FLAGS_PATTERN, async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json; charset=utf-8",
+      body: JSON.stringify({
+        version: 1,
+        flags: { pwaUpdateToast: true, ...flags },
+      }),
+    });
+  });
+}
+
+async function waitForChallengeAim(page: Page): Promise<void> {
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
+  await expect(page.locator(".maplibregl-canvas")).toBeVisible({ timeout: 30_000 });
+  await expect.poll(() => readPhase(page, MC3_KEY), { timeout: 30_000 }).toBe("aim");
+  const map = page.locator(".satellite-map");
+  await expect
+    .poll(
+      async () => {
+        const a = await map.getAttribute("data-zoom");
+        await page.waitForTimeout(800);
+        const b = await map.getAttribute("data-zoom");
+        return a === b ? a : null;
+      },
+      { timeout: 30_000 },
+    )
+    .not.toBeNull();
+}
+
+async function startChallenge(page: Page, hash: string): Promise<void> {
+  await page.goto(`${APP_URL}?idle-ms=3600000${hash}`);
+  await expect(page.getByTestId("challenge-welcome")).toBeVisible({ timeout: 30_000 });
+  await page.getByTestId("challenge-start").click();
+  await waitForChallengeAim(page);
+}
+
+async function playMiss(page: Page): Promise<void> {
+  await commitMiss(page, MC3_KEY);
+  await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
+  await clickNextPlace(page);
+}
+
+async function playAllMisses(page: Page, count = 5): Promise<void> {
+  for (let i = 0; i < count; i++) {
+    await playMiss(page);
+    if (i < count - 1) await waitForChallengeAim(page);
+  }
+  await expect(page.getByTestId("challenge-complete")).toBeVisible({ timeout: 15_000 });
+}
+
+/** Pin the current question's exact spot (a real hit, key-aware). */
+async function playHit(page: Page, key: string = MC3_KEY): Promise<void> {
+  // The projection hook appears once the map has framed the region;
+  // poll for it rather than racing the settle.
+  let spot: { x: number; y: number } | null = null;
+  await expect
+    .poll(
+      async () => {
+        spot = await spotViewportPoint(page);
+        return spot !== null;
+      },
+      { timeout: 20_000 },
+    )
+    .toBe(true);
+  await tapHitsMap(page, spot!.x, spot!.y);
+  const { phase } = await commitPin(page, spot!.x, spot!.y, key);
+  // A landed hit moves the run to the reveal ("story"); a drop that
+  // somehow missed lands in "done". Either proves the pin committed.
+  expect(["story", "done"]).toContain(phase);
+  await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
+  await clickNextPlace(page);
+}
+
+async function passAlongWinner(page: Page) {
+  const container = page.getByTestId("challenge-share-container");
+  const url = await container.getAttribute("data-challenge-url");
+  expect(url).toBeTruthy();
+  const decoded = decodeChallengeLink(url!.slice(url!.indexOf("#")), SCORING_VERSION);
+  expect(decoded.ok).toBe(true);
+  if (!decoded.ok) throw new Error("pass-along must decode");
+  return decoded.route;
+}
+
+test("welcome: goal card + disclosure for a W link; attempts nowhere on the card", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  await page.goto(`${APP_URL}?idle-ms=3600000${LINK_LOSS}`);
+  const welcome = page.getByTestId("challenge-welcome");
+  await expect(welcome).toBeVisible({ timeout: 30_000 });
+  const goal = page.getByTestId("challenge-welcome-goal");
+  await expect(goal).toContainText("🎯 Beat 955 — the best score yet on this route.");
+  await expect(goal).toContainText("Your friend set it.");
+  await expect(page.getByTestId("challenge-welcome-disclosure")).toContainText(
+    "One honest note: this score is your friend's word — Meridian can't check scores sent in links.",
+  );
+  await expect(welcome).not.toContainText("tries");
+  await expect(welcome).not.toContainText("attempt");
+});
+
+test("chip: target form at start; unreachable switch after two misses vs 955", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  await startChallenge(page, LINK_LOSS);
+  const chip = page.getByTestId("challenge-target-chip");
+  await expect(chip).toContainText("🎯 955 · you 0");
+  await playMiss(page);
+  await waitForChallengeAim(page);
+  // One miss in, four stops remain worth at most 1,186 — still reachable.
+  await expect(chip).toContainText("🎯 955 · you 0");
+  await playMiss(page);
+  await waitForChallengeAim(page);
+  // Two misses in, three stops remain worth at most 871 < 955: the
+  // chip drops the target and counts landed stops instead.
+  await expect(chip).toContainText("landed 0 of 5");
+});
+
+test("verdict LOSS: headline, margin, strip, disclosure, minted pass-along, route-only share, retry", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  await startChallenge(page, LINK_LOSS);
+  await playAllMisses(page);
+
+  await expect(page.getByTestId("challenge-complete")).toContainText(
+    "Better luck next time! 🍀",
+  );
+  await expect(page.locator("main")).toContainText("The best to beat is 955.");
+  await expect(page.locator("main")).toContainText(
+    "You scored 0 of 1514 possible on this route.",
+  );
+  const strip = page.getByTestId("challenge-verdict-strip");
+  await expect(strip).toContainText("Stop by stop — you landed 0, they landed 5.");
+  await expect(page.getByTestId("challenge-verdict-disclosure")).toContainText(
+    "One honest note: this score is your friend's word",
+  );
+
+  // The pass-along mints the COMPLETER's block: sender is now me
+  // (0, no hits, first completion); the best ratchets — it stays 955.
+  const route = await passAlongWinner(page);
+  expect(route.originFormat).toBe("mc3");
+  expect(route.winner).toEqual({
+    senderMask: 0,
+    senderScore: 0,
+    bestScore: 955,
+    senderAttempts: 1,
+  });
+
+  // "Share just the route": same route, no winner block at all.
+  const routeOnly = page.getByTestId("challenge-route-only-container");
+  const routeOnlyUrl = await routeOnly.getAttribute("data-challenge-url");
+  const routeOnlyDecoded = decodeChallengeLink(
+    routeOnlyUrl!.slice(routeOnlyUrl!.indexOf("#")),
+    SCORING_VERSION,
+  );
+  expect(routeOnlyDecoded.ok).toBe(true);
+  if (routeOnlyDecoded.ok) {
+    expect(routeOnlyDecoded.route.winner).toBeNull();
+    expect(routeOnlyDecoded.route.ids).toEqual([...NEBRASKA_IDS]);
+  }
+
+  // Retry restarts the same route at once.
+  await page.getByTestId("challenge-retry").click();
+  await waitForChallengeAim(page);
+  await expect(page.getByTestId("challenge-progress")).toContainText("Place 1 of 5");
+  await expect(page.getByTestId("challenge-target-chip")).toContainText("🎯 955 · you 0");
+});
+
+test("verdict HOLD: an all-miss play at shortfall exactly 25 is a dead heat, never a loss", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  await startChallenge(page, LINK_HOLD);
+  await playAllMisses(page);
+  await expect(page.getByTestId("challenge-complete")).toContainText(
+    "Dead heat! You share the crown! 🤝",
+  );
+  await expect(page.locator("main")).toContainText(
+    "You were just 25 away from the best of 25.",
+  );
+  const route = await passAlongWinner(page);
+  expect(route.winner?.bestScore).toBe(25);
+  expect(route.winner?.senderScore).toBe(0);
+});
+
+test("verdict NEAR-MISS: so close, with the both-missed hard-stops line", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  await startChallenge(page, LINK_NEARMISS);
+  await playAllMisses(page);
+  await expect(page.getByTestId("challenge-complete")).toContainText("So close! 🎯");
+  await expect(page.locator("main")).toContainText(
+    "You were 100 away from the best of 100.",
+  );
+  // The sender's mask hit only stop 1 (Lincoln); I missed everything,
+  // so stops 2–5 are the shared hard stops, named.
+  await expect(page.getByTestId("challenge-verdict-strip")).toContainText(
+    "Both missed: Omaha, Bellevue, Fremont, Grand Island — the hard stops.",
+  );
+  // NEAR-MISS offers retry as a primary action.
+  await expect(page.getByTestId("challenge-retry")).toBeVisible();
+  const route = await passAlongWinner(page);
+  expect(route.winner?.bestScore).toBe(100);
+});
+
+test("verdict duel + facts: sender < best chain shows the duel line and the sender's tries as story", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  // The welcome goal card nests the sender's score under the best —
+  // asserted BEFORE Start, while the card is still on screen.
+  await page.goto(`${APP_URL}?idle-ms=3600000${LINK_DUEL}`);
+  await expect(page.getByTestId("challenge-welcome")).toBeVisible({ timeout: 30_000 });
+  const goal = page.getByTestId("challenge-welcome-goal");
+  await expect(goal).toContainText("🎯 Beat 955 — the best score yet on this route.");
+  await expect(goal).toContainText("Your friend scored 700 on this one.");
+  await page.getByTestId("challenge-start").click();
+  await waitForChallengeAim(page);
+  await playAllMisses(page);
+  await expect(page.locator("main")).toContainText(
+    "You didn't quite catch the friend who sent you this link (700).",
+  );
+  const facts = page.getByTestId("challenge-verdict-facts");
+  await expect(facts).toContainText("Your friend's score took them 2 tries.");
+  await expect(facts).toContainText("You've finished this route 1 times.");
+});
+
+test("verdict WIN under reduced motion: final states, ✓ PASSED, immediate aria sentence", async ({
+  browser,
+}: {
+  browser: Browser;
+}) => {
+  const context = await browser.newContext({ reducedMotion: "reduce" });
+  await serveBuiltArtifact(context);
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  const page = await context.newPage();
+  await page.addInitScript(() => {
+    try {
+      (navigator.serviceWorker as unknown as Record<string, unknown>).register = () =>
+        Promise.reject(new Error("service worker disabled for test"));
+    } catch {
+      /* ignore */
+    }
+  });
+  await startChallenge(page, LINK_WIN);
+  await playHit(page);
+  await waitForChallengeAim(page);
+  await playAllMisses(page, 4);
+
+  const headline = page.getByTestId("challenge-complete");
+  await expect(headline).toContainText("You beat it! 🏆");
+  await expect(page.locator("main")).toContainText("✓ PASSED");
+  // The aria sentence is present immediately (no 650 ms wait under
+  // reduced motion) — read the live region's text directly.
+  const liveText = await page
+    .locator("[aria-live='polite']")
+    .filter({ hasText: "You beat it!" })
+    .first()
+    .textContent();
+  expect(liveText).toContain("You scored");
+  expect(liveText).toContain("The best was 1.");
+  // The minted pass-along: my hit beat the 1-point mark, so best′ is
+  // my score and I am the sender now.
+  const route = await passAlongWinner(page);
+  expect(route.winner?.senderScore).toBeGreaterThan(1);
+  expect(route.winner?.bestScore).toBe(route.winner?.senderScore);
+  expect(route.winner?.senderAttempts).toBe(1);
+  await context.close();
+});
+
+test("summary mint: a scored normal run's exact share carries a winner block (sender = best, attempts 1)", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  await page.goto(`${APP_URL}?idle-ms=3600000`);
+  await page.getByRole("button", { name: "State" }).click();
+  await page.getByRole("button", { name: "United States" }).click();
+  await page.getByRole("button", { name: /Nebraska/ }).click();
+  await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 30_000 });
+  await expect
+    .poll(() => readPhase(page), { timeout: 30_000 })
+    .toBe("aim");
+
+  // One real hit (so the route score is > 0), then four misses.
+  await playHit(page, RUN_KEY);
+  await expect
+    .poll(() => readPhase(page), { timeout: 30_000 })
+    .toBe("aim");
+  for (let i = 0; i < 4; i++) {
+    await commitMiss(page);
+    await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
+    await clickNextPlace(page);
+  }
+  await page.getByRole("button", { name: "End game" }).click();
+  await expect.poll(() => readPhase(page), { timeout: 15_000 }).toBe("summary");
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  await expect(dialog).toBeVisible();
+  await dialog
+    .getByRole("button", { name: "Challenge a friend — play my route" })
+    .click();
+  const sheet = page.getByTestId("challenge-preview");
+  await expect(sheet).toBeVisible();
+  const primary = sheet.getByTestId("challenge-share-container");
+  const primaryUrl = await primary.getAttribute("data-challenge-url");
+  expect(primaryUrl).toContain("#c=mc3.");
+  const decoded = decodeChallengeLink(
+    primaryUrl!.slice(primaryUrl!.indexOf("#")),
+    SCORING_VERSION,
+  );
+  expect(decoded.ok).toBe(true);
+  if (!decoded.ok) return;
+  expect(decoded.route.winner).not.toBeNull();
+  expect(decoded.route.winner?.senderScore).toBeGreaterThan(0);
+  expect(decoded.route.winner?.bestScore).toBe(decoded.route.winner?.senderScore);
+  expect(decoded.route.winner?.senderAttempts).toBe(1);
+});
