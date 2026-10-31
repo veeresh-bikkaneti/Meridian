@@ -11,7 +11,7 @@ import {
   clickNextPlace,
   readPhase,
 } from "./helpers";
-import { decodeChallenge2 } from "../../src/game/challenge.ts";
+import { decodeChallenge3 } from "../../src/game/challenge.ts";
 import { SCORING_VERSION } from "../../src/game/scoring.ts";
 
 /**
@@ -216,7 +216,7 @@ test("privacy: review-complete entry deals a fresh Nebraska five, never the deck
   const container = preview.getByTestId("challenge-share-container");
   const url = await container.getAttribute("data-challenge-url");
   expect(url).toBeTruthy();
-  const decoded = decodeChallenge2(fragmentOf(url!), SCORING_VERSION);
+  const decoded = decodeChallenge3(fragmentOf(url!), SCORING_VERSION);
   expect(decoded.ok).toBe(true);
   if (!decoded.ok) return;
   expect(decoded.e).toBe("state");
@@ -265,7 +265,7 @@ test("home Review card: NO challenge entry (owner redundancy removal); the picke
   const container = preview.getByTestId("challenge-share-container");
   const url = await container.getAttribute("data-challenge-url");
   expect(url).toBeTruthy();
-  const decoded = decodeChallenge2(fragmentOf(url!), SCORING_VERSION);
+  const decoded = decodeChallenge3(fragmentOf(url!), SCORING_VERSION);
   expect(decoded.ok).toBe(true);
   if (!decoded.ok) return;
   expect(decoded.r).toBe("nebraska");

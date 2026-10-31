@@ -17,7 +17,7 @@ import {
 } from "./helpers";
 import {
   decodeChallenge,
-  decodeChallenge2,
+  decodeChallenge3,
   encodeChallenge2,
 } from "../../src/game/challenge.ts";
 import { SCORING_VERSION } from "../../src/game/scoring.ts";
@@ -29,9 +29,11 @@ import { SCORING_VERSION } from "../../src/game/scoring.ts";
  *   run, its phase and its question do not move.
  * - (c) reveal: the result-card footer carries the challenge text link
  *   plus the unlock hint; the link deals the same fresh five.
- * - (f) challenge-complete: the pass-along preserves the ORIGIN format
- *   and pinned radius for both mc2 and mc1 routes; mc2 completions add
- *   a fresh-route secondary dealt from the region catalog, while the
+ * - (f) challenge-complete: the pass-along follows the origin rule
+ *   and keeps the pinned radius for both mc2 and mc1 routes — mc1
+ *   stays mc1 byte-for-byte, while an mc2 route forward-upgrades to
+ *   mc3 (2026-10-31 delta §3.3); mc2-family completions add a
+ *   fresh-route secondary dealt from the region catalog, while the
  *   mc1 completion surface stays frozen (no secondary).
  * - Flag OFF: none of the Package B surfaces exist.
  */
@@ -134,8 +136,8 @@ async function startNebraskaRun(page: Page): Promise<void> {
 
 function expectFreshNebraskaFive(url: string | null): void {
   expect(url).toBeTruthy();
-  expect(url).toContain("#c=mc2.");
-  const decoded = decodeChallenge2(fragmentOf(url!), SCORING_VERSION);
+  expect(url).toContain("#c=mc3.");
+  const decoded = decodeChallenge3(fragmentOf(url!), SCORING_VERSION);
   expect(decoded.ok).toBe(true);
   if (!decoded.ok) return;
   expect(decoded.e).toBe("state");
@@ -204,7 +206,7 @@ test("(c) reveal: the footer link and unlock hint deal the same fresh five", asy
   );
 });
 
-test("(f) mc2 completion: pass-along keeps format + pinned radius; fresh secondary deals in-region", async ({
+test("(f) mc2 completion: pass-along forward-upgrades to mc3 + keeps pinned radius; fresh secondary deals in-region", async ({
   page,
   context,
 }) => {
@@ -229,23 +231,26 @@ test("(f) mc2 completion: pass-along keeps format + pinned radius; fresh seconda
   const complete = page.getByTestId("challenge-complete");
   await expect(complete).toBeVisible({ timeout: 15_000 });
 
-  // Primary: the exact route, still mc2, still pinned at 87 km.
+  // Primary: the exact route, forward-upgraded to mc3 (delta §3.3 —
+  // never a downgrade, and mc2 is emit-never now), still pinned at
+  // 87 km, and — in Package A — carrying no winner block yet.
   const primary = page.getByTestId("challenge-share-container");
   const primaryUrl = await primary.getAttribute("data-challenge-url");
   expect(primaryUrl).toBeTruthy();
-  expect(primaryUrl).toContain("#c=mc2.");
-  const decodedPrimary = decodeChallenge2(fragmentOf(primaryUrl!), SCORING_VERSION);
+  expect(primaryUrl).toContain("#c=mc3.");
+  const decodedPrimary = decodeChallenge3(fragmentOf(primaryUrl!), SCORING_VERSION);
   expect(decodedPrimary.ok).toBe(true);
   if (!decodedPrimary.ok) return;
   expect([...decodedPrimary.ids]).toEqual([...NEBRASKA_IDS]);
   expect(decodedPrimary.rad).toBe(87);
+  expect(decodedPrimary.winner).toBeUndefined();
   // NB: data-testid="challenge-complete" is the heading element, not a
   // panel — scope button lookups by their share containers instead.
   await expect(
     primary.getByRole("button", { name: "Pass this challenge to a friend" }),
   ).toBeVisible();
 
-  // Secondary: a fresh route in the completed route's region.
+  // Secondary: a fresh route in the completed route's region (mc3).
   const fresh = page.getByTestId("challenge-fresh-share-container");
   await expect(fresh).toBeVisible();
   await expect(

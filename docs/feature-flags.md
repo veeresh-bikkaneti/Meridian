@@ -217,6 +217,39 @@ flag off, a saved mc2 challenge is cleared on boot and the ordinary saved
 run — never collateral — boots as usual. GeoDetective and Cold Trail do
 not take part: their mysteries are solo investigations.
 
+**mc3 links (2026-10-31, Package A of the mc3 + winner delta).** The
+mc2 link carried its route as JSON text, and a shared link ran to
+300-plus characters — long enough to wrap, truncate, and look broken
+in a family chat. mc3 packs the same route into raw bytes instead:
+edition and flags in one byte, radius and scores as small
+variable-length numbers, places as 3-byte numbers, the region as a
+one-byte index into a frozen list, all of it closed by the same kind
+of integrity seal mc2 used. Why bytes and not cleverer text: the
+route itself is the payload, and no readable spelling of ten places
+is shorter than ten numbers. A 10-place Nebraska route is a
+52-character payload (62 with a winner score sealed inside, below),
+against mc2's 274. Nothing about fairness changes: the pinned radius
+is still honoured only within ±10% of the radius the receiving build
+computes for the region, the seal still fails closed on any edit, and
+the whole fragment is capped at 127 characters. mc1 and mc2 are now
+receive-only formats — every creation surface sends mc3, with one
+kept exception: a played Globe route still shares its exact route in
+the original mc1 form, the shipped surface. Finishing a challenge
+someone sent you passes the route along under one rule — never lose
+information: mc1 completions stay mc1, an mc2 completion moves UP to
+mc3 (the circle it was judged at rides along untouched), and an mc3
+completion stays mc3. The format also reserves a winner block — the
+sender's score, the route's best score so far, how many tries set it,
+and which stops they landed — sealed inside the link for the
+winner-declaration surfaces that land as Package B of the same delta;
+in Package A the block is decoded and carried, but no screen reads it
+yet, and no completion mints one. One failure line is new: a link
+from a format NEWER than this build (a `#c=mc9.`-style prefix) now
+says "This challenge needs the newest Meridian." under the usual
+headline, because asking for a resend from the same newer game would
+fail again in exactly the same way; a broken link in a known format
+still asks for the resend, as before.
+
 **Creating mid-game (2026-10-29, Package B).** Three more doors into the
 same challenge, all behind the same flag. While a game is running, the
 "⋯" menu in the top corner offers "Challenge a friend — new route in
@@ -229,10 +262,12 @@ that your own route — the one you are playing — unlocks when you
 finish. Both open the same preview sheet before anything is shared, so
 you always see the route and its circle first. And when you finish a
 challenge someone sent you, the completion screen passes that exact
-route along in its original format (an mc2 route stays mc2, circle and
-all) and — for mc2 routes — offers a brand-new route in the same region
-beside it ("Or send a new {Region} route"). Routes received in the
-original mc1 format keep their original completion screen, unchanged.
+route along under the origin rule (an mc2 route forward-upgrades to
+mc3, circle and all, since the 2026-10-31 delta; an mc3 route stays
+mc3) and — for mc2-family routes — offers a brand-new route in the
+same region beside it ("Or send a new {Region} route"). Routes
+received in the original mc1 format keep their original completion
+screen, unchanged.
 Turning the flag off removes every one of these entries; a challenge
 already in progress still finishes, it just can't be shared onwards.
 

@@ -46,7 +46,18 @@ owner's per-PR word only — not requested by this branch's work.
 ## Status
 
 - [x] Phase 1 — council + manifest delta signed (2026-10-31)
-- [ ] Package A — mc3 codec (TDD) → gates → panel → PR
+- [x] Package A — mc3 codec (TDD: RED link-error on the missing mc3
+  exports → GREEN 18/18 in `src/game/challenge-mc3.test.ts`) → emission
+  switched on every creation surface (fresh all editions, exact
+  non-globe, completion re-share mc2→mc3 forward-upgrade with the
+  radius freeze; exact Globe stays mc1) → unknown-version remedy
+  (prefix-level only; mc2 payload v≠2 keeps the resend line) → gates
+  (see the PR body for exit codes + counts) → PR open. NO MERGE —
+  owner's word + panel verdict pending; the panel convenes on the
+  final tip, not run by the builder.
+  Staging note: Package A mints NO winner blocks and changes NO share
+  text (§6 copy, receipts, welcome goal lines, verdict surfaces are
+  Package B, stacked on this branch).
 - [ ] Package B — winner declaration (stacked branch)
 
 ---

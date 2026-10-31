@@ -13,15 +13,16 @@ import {
   readQuestion,
   resultCard,
 } from "./helpers";
-import { decodeChallenge2, decodeChallenge } from "../../src/game/challenge.ts";
+import { decodeChallenge3, decodeChallenge } from "../../src/game/challenge.ts";
 import { SCORING_VERSION } from "../../src/game/scoring.ts";
 
 /**
  * mc2 creation E2E (Package A, manifest 2026-10-28 §3(a) + §3(d)):
  * - The picker entry ("Challenge a friend" on Home) deals a fresh five
  *   from the tapped region and previews it before anything is shared;
- *   the fragment decodes as mc2 with the region's own radius and only
- *   that region's catalog ids.
+ *   the fragment decodes as mc3 with the region's own radius and only
+ *   that region's catalog ids. (Emission moved mc2 → mc3 with the
+ *   2026-10-31 delta, Package A; mc2 survives as a receive format.)
  * - The end-of-run summary offers the sender's OWN route first (the
  *   places just played, in play order — proven against the questions
  *   the game actually asked) and a fresh route second. A globe
@@ -92,7 +93,7 @@ function fragmentOf(url: string): string {
   return url.slice(url.indexOf("#"));
 }
 
-test("picker: Challenge a friend deals a fresh Nebraska five and previews it as mc2", async ({
+test("picker: Challenge a friend deals a fresh Nebraska five and previews it as mc3", async ({
   page,
   context,
 }) => {
@@ -115,7 +116,7 @@ test("picker: Challenge a friend deals a fresh Nebraska five and previews it as 
   const url = await container.getAttribute("data-challenge-url");
   expect(url).toBeTruthy();
   expect(url!.length).toBeLessThan(2000);
-  const decoded = decodeChallenge2(fragmentOf(url!), SCORING_VERSION);
+  const decoded = decodeChallenge3(fragmentOf(url!), SCORING_VERSION);
   expect(decoded.ok).toBe(true);
   if (!decoded.ok) return;
   expect(decoded.e).toBe("state");
@@ -166,8 +167,8 @@ test("summary (state): primary is the sender's exact played route; secondary is 
   await expect(primary).toBeVisible();
   const primaryUrl = await primary.getAttribute("data-challenge-url");
   expect(primaryUrl).toBeTruthy();
-  expect(primaryUrl).toContain("#c=mc2.");
-  const decodedPrimary = decodeChallenge2(fragmentOf(primaryUrl!), SCORING_VERSION);
+  expect(primaryUrl).toContain("#c=mc3.");
+  const decodedPrimary = decodeChallenge3(fragmentOf(primaryUrl!), SCORING_VERSION);
   expect(decodedPrimary.ok).toBe(true);
   if (!decodedPrimary.ok) return;
   expect(decodedPrimary.r).toBe("nebraska");
@@ -181,7 +182,7 @@ test("summary (state): primary is the sender's exact played route; secondary is 
   await expect(secondary).toBeVisible();
   const secondaryUrl = await secondary.getAttribute("data-challenge-url");
   expect(secondaryUrl).toBeTruthy();
-  const decodedSecondary = decodeChallenge2(fragmentOf(secondaryUrl!), SCORING_VERSION);
+  const decodedSecondary = decodeChallenge3(fragmentOf(secondaryUrl!), SCORING_VERSION);
   expect(decodedSecondary.ok).toBe(true);
   if (!decodedSecondary.ok) return;
   expect(decodedSecondary.r).toBe("nebraska");
