@@ -21,20 +21,48 @@ composed share text + welcome card, never the fragment (slug prefixes
 rejected in the manifest, §6.2).
 
 Tier and rationale: Tier 2 — new wire format + feature across 3+ files.
-Consensus Manifest (delta): `.council/manifests/2026-10-31-mc3-compact-links-and-winner-declaration.md`
-— committed FIRST on this branch; Chair-signed after a 4-seat council.
+GOVERNING manifest: `.council/manifests/2026-10-31-mc3-winner-council-verdict.md`
+— the 16-seat expert council's signed verdict (owner's "Build it",
+2026-10-31, neither amendment struck); committed FIRST on this branch
+(`c2a79d8`). The candidate draft's internal delta
+(`2026-10-31-mc3-compact-links-and-winner-declaration.md`) also sits on
+this branch; where the two differ, the governing verdict wins — the
+candidate code was re-diffed line by line against it and cured
+(cycles 1–3 below); its seat attributions were proven unreliable
+mid-draft and are NOT relied on.
 
-Done condition / evidence: Package A (this branch) = mc3 codec + emission
-switched on every creation surface + unknown-version remedy; golden
-vectors incl. the owner's Nebraska link (52 payload chars open / 62 with
-winner block, vs 274); strict-decoder tamper/fuzz suites; mc1/mc2 golden
-suites byte-unmodified; all 5 AGENTS.md gates green; panel READY on the
-final tip. Package B (stacked branch) = winner declaration surfaces.
+Done condition / evidence: Package A (this branch) = mc3 codec per the
+governing layout (varint region registry with parent-pinned state
+resolution, sequential §Q2-B1 plausibility bound, zero-target gate,
+127-char cap) + save slot `meridian.run.mc3` (read order mc3 → mc2 →
+mc1, partial-winner saves discarded whole) + failure classes (§Q1-A6:
+well-formed unknown versions and mc3 registry skew get the heading
+"This challenge needs the newest Meridian.") + the Q3 readable layer
+(fresh share texts + welcome-card grouping; receipts lose the retired
+suffix) + winner fields carried losslessly (no surface reads them
+yet; minting is Package B); golden vectors incl. the owner's Nebraska
+link (52 payload chars open / 62 with winner block, vs 274);
+tamper/fuzz suites per the verdict's test-spec deltas; mc1/mc2 golden
+suites byte-unmodified; all 5 AGENTS.md gates green; panel READY on
+the final tip. Package B (stacked branch) = winner declaration
+surfaces (verdict screen, goal card, attempts store, farming guard).
+
+Emission matrix (JUDGED INTERPRETATION, flagged for the panel): the
+cured build keeps the candidate's emission matrix — sender-side exact
+Globe routes still mint mc1 (the frozen shipped surface), everything
+else new mints mc3; received mc1 → mc1, mc2/mc3 → mc3 on pass-along.
+The governing text "v3 is the only format new links use" can be read
+absolutely; the council reviewed the candidate (matrix included) as
+evidence and never flagged it, and the mc2 manifest froze the
+globe-exact surface deliberately. If the panel blocks, the cure is
+small: flip sender globe-exact to mc3.
 
 Files and interfaces in scope (Package A): `src/game/challenge.ts`
-(mc3 section appended; mc1/mc2 paths untouched), its tests + fixtures,
-boot fragment dispatch in `src/components/game-app.tsx` (version remedy
-only), docs (Handbook + README).
+(mc3 section appended; mc1/mc2 paths untouched), `src/game/run.ts`
+(winner field), `src/components/game-app.tsx` (challenge functions
+only: save slots, boot read order, failure-class titles, share texts,
+welcome grouping), tests + fixtures, docs (README,
+docs/feature-flags.md).
 Protected: mc1 decoder + its test blocks, mc2 decoder + golden fixtures,
 `tests/e2e/friend-challenge.desktop.spec.ts`, `src/game/data/**`,
 GeoDetective / Cold Trail, `public/flags.json`, donation copy.
@@ -45,20 +73,45 @@ owner's per-PR word only — not requested by this branch's work.
 
 ## Status
 
-- [x] Phase 1 — council + manifest delta signed (2026-10-31)
-- [x] Package A — mc3 codec (TDD: RED link-error on the missing mc3
-  exports → GREEN 18/18 in `src/game/challenge-mc3.test.ts`) → emission
-  switched on every creation surface (fresh all editions, exact
-  non-globe, completion re-share mc2→mc3 forward-upgrade with the
-  radius freeze; exact Globe stays mc1) → unknown-version remedy
-  (prefix-level only; mc2 payload v≠2 keeps the resend line) → gates
-  (see the PR body for exit codes + counts) → PR open. NO MERGE —
-  owner's word + panel verdict pending; the panel convenes on the
-  final tip, not run by the builder.
-  Staging note: Package A mints NO winner blocks and changes NO share
-  text (§6 copy, receipts, welcome goal lines, verdict surfaces are
-  Package B, stacked on this branch).
-- [ ] Package B — winner declaration (stacked branch)
+- [x] Phase 1 — governing council verdict signed (2026-10-31) and
+  committed first on this branch (`c2a79d8`).
+- [x] Candidate audit — two read-only audits (test suite; game-app/run
+  integration) + the coordinator's codec read found the candidate
+  materially off-verdict: positional 1-byte region table, flat 415n
+  plausibility bound, zero target allowed, mc3 saves routed into the
+  mc2 slot, version copy as a second line instead of the heading,
+  share texts untouched (retired suffix everywhere).
+- [x] Cure cycle 1 (`0670a38`, challenge.ts) — varint region registry
+  with parent pinning; sequential bound + exported routeCeiling;
+  zero-target gate; winner union type with actor-named fields;
+  canonical-base64url well-formedness gate on the version class;
+  exported isLegalWinnerBlock for the save boundary.
+- [x] Cure cycle 2 (`f06e570`, run.ts + game-app.tsx + challenge.ts) —
+  `meridian.run.mc3` slot + read order + complete-or-discard saves;
+  version-class notice TITLE (mc3 `region` failures join the class);
+  Q3 fresh share texts via buildFreshChallengeShareText (4 sites);
+  retired suffix removed (0 occurrences left in game-app.tsx);
+  welcome card regrouped (fairness line above the task line);
+  completion re-share carries the received winner block losslessly.
+- [x] Cure cycle 3 (`3a22ea5`, tests) — mc3 unit suite rewritten to the
+  verdict's test-spec deltas (22 tests: sequential bound, streak-shape
+  proof, zero-target, registry guards incl. findRegion + parent
+  containment, uint24 catalog tripwire, scorePlace route tripwire
+  = 3,340, varint dictionary in every slot, exhaustive
+  truncation/extension, base64 edges); the owner-link fixture corrected
+  to the verified specimen (gn-5695604 — the transcribed variant fails
+  the mc2 decoder's catalog check, as it should). E2E spec moved to
+  the mc3 slot + slot isolation, lossless winner carry, partial-winner
+  discard, mc3-first read order, region-skew heading.
+- [x] Gates on `3a22ea5` — tsc clean; npm test 861 tests 0 fail;
+  test:worker 85/85; lint-cards GATE PASSED; build:pages exit 0.
+  E2E (flock, --workers=1): mc3-receive 6/6 + mc2-boot/receive/
+  isolation + frozen-mc1 desktop spec all green (exit 0, 1 skipped);
+  create/framing/package-b/review specs run at close-out (see PR body).
+- [ ] Panel (full pipeline, 12 seats + DevEx) on the final tip —
+  convenes next; cures re-voted. Then PR. NO MERGE.
+- [ ] Package B — winner declaration (stacked branch
+  `feat/challenge-winner-verdict` on this branch's panel-frozen tip)
 
 ---
 

@@ -223,32 +223,36 @@ mc2 link carried its route as JSON text, and a shared link ran to
 in a family chat. mc3 packs the same route into raw bytes instead:
 edition and flags in one byte, radius and scores as small
 variable-length numbers, places as 3-byte numbers, the region as a
-one-byte index into a frozen list, all of it closed by the same kind
-of integrity seal mc2 used. Why bytes and not cleverer text: the
-route itself is the payload, and no readable spelling of ten places
-is shorter than ten numbers. A 10-place Nebraska route is a
-52-character payload (62 with a winner score sealed inside, below),
-against mc2's 274. Nothing about fairness changes: the pinned radius
-is still honoured only within ±10% of the radius the receiving build
-computes for the region, the seal still fails closed on any edit, and
-the whole fragment is capped at 127 characters. mc1 and mc2 are now
-receive-only formats — every creation surface sends mc3, with one
-kept exception: a played Globe route still shares its exact route in
-the original mc1 form, the shipped surface. Finishing a challenge
-someone sent you passes the route along under one rule — never lose
-information: mc1 completions stay mc1, an mc2 completion moves UP to
-mc3 (the circle it was judged at rides along untouched), and an mc3
-completion stays mc3. The format also reserves a winner block — the
-sender's score, the route's best score so far, how many tries set it,
-and which stops they landed — sealed inside the link for the
+number in a frozen list the format keeps for itself, all of it closed
+by a short checksum that catches copying damage (a scrambled link
+fails closed; the checksum is a typo-catcher, not a proof — scores in
+a link are the sender's word, and the game says so). Why bytes and
+not cleverer text: the route itself is the payload, and no readable
+spelling of ten places is shorter than ten numbers. A 10-place
+Nebraska route is a 52-character payload (62 with a winner block
+inside, below), against mc2's 274. Nothing about fairness changes:
+the pinned radius is still honoured only within ±10% of the radius
+the receiving build computes for the region, the checksum still fails
+closed on any edit, and the whole fragment is capped at 127
+characters. mc1 and mc2 are now receive-only formats — every creation
+surface sends mc3, with one kept exception: a played Globe route
+still shares its exact route in the original mc1 form, the shipped
+surface. Finishing a challenge someone sent you passes the route
+along under one rule — never lose information: mc1 completions stay
+mc1, an mc2 completion moves UP to mc3 (the circle it was judged at
+rides along untouched), and an mc3 completion stays mc3. The format
+also reserves a winner block — the sender's score, which stops they
+landed, how many times they have completed this route, and the
+route's best score so far — carried inside the link for the
 winner-declaration surfaces that land as Package B of the same delta;
 in Package A the block is decoded and carried, but no screen reads it
 yet, and no completion mints one. One failure line is new: a link
-from a format NEWER than this build (a `#c=mc9.`-style prefix) now
-says "This challenge needs the newest Meridian." under the usual
-headline, because asking for a resend from the same newer game would
-fail again in exactly the same way; a broken link in a known format
-still asks for the resend, as before.
+from a format NEWER than this build (a `#c=mc9.`-style prefix), or
+one naming a region this build's frozen list doesn't have yet, now
+gets the headline "This challenge needs the newest Meridian.",
+because asking for a resend from the same newer game would fail again
+in exactly the same way; a broken link in a known format still asks
+for the resend, as before.
 
 **Creating mid-game (2026-10-29, Package B).** Three more doors into the
 same challenge, all behind the same flag. While a game is running, the
