@@ -3,6 +3,7 @@ import test from "node:test";
 import {
   bankPlace,
   DIFFICULTY_LABELS,
+  DISCARDED_NOTICE_KEY,
   endSession,
   formatSuccessRate,
   IDLE_TIMEOUT_MS,
@@ -10,6 +11,7 @@ import {
   idleWarnMsFor,
   isIdleExpired,
   isSessionLive,
+  readDiscardedShadow,
   readSession,
   clearSession,
   seedSessionFromRun,
@@ -17,6 +19,7 @@ import {
   successRate,
   summarizeSession,
   touchSession,
+  writeDiscardedShadow,
   writeSession,
 } from "./session.ts";
 import { startRun, dropPin } from "./run.ts";
@@ -395,5 +398,180 @@ test("storage round-trip: session JSON preserves the new breakdown fields", () =
     ]);
   } finally {
     delete (globalThis as Record<string, unknown>).sessionStorage;
+  }
+});
+
+// Wave 1 P0 Item 1B durable record: the localStorage shadow of the live
+// session. sessionStorage and localStorage are SEPARATE fakes here, the
+// way a closed tab separates them (sessionStorage dies, localStorage
+// survives).
+test("discarded shadow: live writes shadow, ended clears it, garbage reads null", () => {
+  const sessionStore = new Map<string, string>();
+  const localStore = new Map<string, string>();
+  (globalThis as Record<string, unknown>).sessionStorage = {
+    getItem: (k: string) => (sessionStore.has(k) ? sessionStore.get(k)! : null),
+    setItem: (k: string, v: string) => void sessionStore.set(k, v),
+    removeItem: (k: string) => void sessionStore.delete(k),
+  };
+  (globalThis as Record<string, unknown>).localStorage = {
+    getItem: (k: string) => (localStore.has(k) ? localStore.get(k)! : null),
+    setItem: (k: string, v: string) => void localStore.set(k, v),
+    removeItem: (k: string) => void localStore.delete(k),
+  };
+  try {
+    assert.equal(readDiscardedShadow(), null);
+    // Fix round L3: time-anchored fixture. The shadow now expires
+    // after 24h, so the old fixed 2023 timestamp would read as
+    // expired. Anchor at run time with today's dateKey — NOT a bare
+    // NOW bump keeping "2026-10-02", which would be internally
+    // inconsistent (a fresh timestamp on an old day).
+    const anchoredNow = Date.now();
+    const todayKey = new Date(anchoredNow).toISOString().slice(0, 10);
+    let s = startSession(todayKey, anchoredNow);
+    s = bankPlace(s, { edition: "globe", score: 100, hit: true, distanceKm: 40, streakAfter: 1, difficultyChoice: "easy", regionId: "globe", regionName: "Globe" });
+    writeSession(s);
+    assert.deepEqual(readDiscardedShadow(), {
+      totalScore: 100,
+      placesPlayed: 1,
+      dateKey: todayKey,
+      lastActivityAt: anchoredNow,
+    });
+    // The session record itself is untouched by the shadow.
+    assert.equal(readSession()?.totalScore, 100);
+    // Ending the session clears the shadow: a deliberate end is never
+    // reported as a lost game on the next boot.
+    writeSession(endSession(s));
+    assert.equal(readDiscardedShadow(), null);
+    // Malformed shadows fail closed.
+    localStore.set(DISCARDED_NOTICE_KEY, "{not json");
+    assert.equal(readDiscardedShadow(), null);
+    localStore.set(DISCARDED_NOTICE_KEY, JSON.stringify({ totalScore: -1, placesPlayed: 0, dateKey: "2026-10-02", lastActivityAt: NOW }));
+    assert.equal(readDiscardedShadow(), null);
+    // Clearing the session clears a live shadow with it.
+    writeSession(s);
+    assert.ok(readDiscardedShadow());
+    clearSession();
+    assert.equal(readSession(), null);
+    assert.equal(readDiscardedShadow(), null);
+  } finally {
+    delete (globalThis as Record<string, unknown>).sessionStorage;
+    delete (globalThis as Record<string, unknown>).localStorage;
+  }
+});
+
+// Fix round M1: clearing a session that was never stored must not
+// destroy an unrelated preserved shadow. The dual-boot pin: an mc2
+// notice dismissed (any click persists a null session via the idle
+// activity listener) must leave the deferred shadow for the next boot.
+test("clearSession with no stored session leaves a preserved shadow intact", () => {
+  const sessionStore = new Map<string, string>();
+  const localStore = new Map<string, string>();
+  (globalThis as Record<string, unknown>).sessionStorage = {
+    getItem: (k: string) => (sessionStore.has(k) ? sessionStore.get(k)! : null),
+    setItem: (k: string, v: string) => void sessionStore.set(k, v),
+    removeItem: (k: string) => void sessionStore.delete(k),
+  };
+  (globalThis as Record<string, unknown>).localStorage = {
+    getItem: (k: string) => (localStore.has(k) ? localStore.get(k)! : null),
+    setItem: (k: string, v: string) => void localStore.set(k, v),
+    removeItem: (k: string) => void localStore.delete(k),
+  };
+  try {
+    // Fix round L3: the shadow's timestamp is anchored at run time —
+    // a fixed 2023 timestamp would read as expired under the 24h
+    // expiry. The dateKey stays old on purpose (a preserved record
+    // from a previous day); expiry measures age, not the day key.
+    const freshNow = Date.now();
+    writeDiscardedShadow({
+      totalScore: 999,
+      placesPlayed: 9,
+      dateKey: "2000-01-01",
+      lastActivityAt: freshNow,
+    });
+    assert.equal(sessionStore.has("meridian.session"), false);
+    assert.equal(clearSession(), true);
+    assert.deepEqual(readDiscardedShadow(), {
+      totalScore: 999,
+      placesPlayed: 9,
+      dateKey: "2000-01-01",
+      lastActivityAt: freshNow,
+    });
+    // And a session that DID exist still takes its shadow with it.
+    // (Same run-time anchor: a 2023 session timestamp would read as
+    // expired under the L3 24h expiry.)
+    const todayKey = new Date(freshNow).toISOString().slice(0, 10);
+    let s = startSession(todayKey, freshNow);
+    s = bankPlace(s, { edition: "globe", score: 100, hit: true, distanceKm: 40, streakAfter: 1, difficultyChoice: "easy", regionId: "globe", regionName: "Globe" });
+    writeSession(s);
+    assert.ok(readDiscardedShadow());
+    assert.equal(clearSession(), true);
+    assert.equal(readDiscardedShadow(), null);
+  } finally {
+    delete (globalThis as Record<string, unknown>).sessionStorage;
+    delete (globalThis as Record<string, unknown>).localStorage;
+  }
+});
+
+// Fix round L3: the 24h shadow expiry boundary. Policy: no notice
+// after 24h, even for a new-day discard — the stale record reads as
+// null AND clears the key, so it can never fire on a later boot.
+test("discarded shadow expiry: 24h boundary, future, malformed, 25h new-day", () => {
+  const sessionStore = new Map<string, string>();
+  const localStore = new Map<string, string>();
+  (globalThis as Record<string, unknown>).sessionStorage = {
+    getItem: (k: string) => (sessionStore.has(k) ? sessionStore.get(k)! : null),
+    setItem: (k: string, v: string) => void sessionStore.set(k, v),
+    removeItem: (k: string) => void sessionStore.delete(k),
+  };
+  (globalThis as Record<string, unknown>).localStorage = {
+    getItem: (k: string) => (localStore.has(k) ? localStore.get(k)! : null),
+    setItem: (k: string, v: string) => void localStore.set(k, v),
+    removeItem: (k: string) => void localStore.delete(k),
+  };
+  const HOUR = 3600 * 1000;
+  const seed = (ageMs: number, dateKey = "2026-10-02") => {
+    writeDiscardedShadow({
+      totalScore: 50,
+      placesPlayed: 1,
+      dateKey,
+      lastActivityAt: Date.now() - ageMs,
+    });
+  };
+  try {
+    // 23:59:59 old: kept.
+    seed(24 * HOUR - 1000);
+    assert.ok(readDiscardedShadow());
+    assert.ok(localStore.has(DISCARDED_NOTICE_KEY));
+    // Exactly 24h old: kept (strictly-older rule). Date.now() has 1ms
+    // resolution, so a millisecond tick between the seed and the read
+    // would push the age to 24h+1ms and read expired — retry the seed
+    // until one lands in the same millisecond (a >= implementation
+    // still fails every attempt, so this pins the strict rule without
+    // ms-tick flake).
+    let exactKept = false;
+    for (let attempt = 0; attempt < 50 && !exactKept; attempt++) {
+      seed(24 * HOUR);
+      exactKept = readDiscardedShadow() !== null;
+    }
+    assert.ok(exactKept, "exactly-24h shadow must read kept");
+    assert.ok(localStore.has(DISCARDED_NOTICE_KEY));
+    // 24:00:01 old: expired — reads null and clears the key.
+    seed(24 * HOUR + 1000);
+    assert.equal(readDiscardedShadow(), null);
+    assert.equal(localStore.has(DISCARDED_NOTICE_KEY), false);
+    // Future timestamp (clock skew): kept.
+    seed(-HOUR);
+    assert.ok(readDiscardedShadow());
+    // Malformed: still null, unchanged behaviour.
+    localStore.set(DISCARDED_NOTICE_KEY, "{not json");
+    assert.equal(readDiscardedShadow(), null);
+    // 25h old with a previous-day dateKey (the new-day case): silent
+    // and cleared — the stale record never reaches the dateKey branch.
+    seed(25 * HOUR, "2000-01-01");
+    assert.equal(readDiscardedShadow(), null);
+    assert.equal(localStore.has(DISCARDED_NOTICE_KEY), false);
+  } finally {
+    delete (globalThis as Record<string, unknown>).sessionStorage;
+    delete (globalThis as Record<string, unknown>).localStorage;
   }
 });

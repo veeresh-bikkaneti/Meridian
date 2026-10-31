@@ -506,11 +506,107 @@ export function readSession(): Session | null {
   }
 }
 
+/**
+ * Wave 1 P0 Item 1B durable record: a continuous shadow of the LIVE
+ * session in localStorage (key `meridian.discarded-notice`, manifest
+ * §2 Item 1B — rename only with a Chair nod, never silently). The run
+ * and session live in sessionStorage, which dies with the tab, so a
+ * tab closed mid-game would otherwise reopen to silent home: the
+ * shadow is what the next boot reads to notice the discarded game.
+ * It is a snapshot of a live session, NOT a discard record — the
+ * reason (inactivity / new day) is derived at boot from its fields.
+ * NEVER written for ended sessions; consumed (deleted) at first show.
+ */
+export const DISCARDED_NOTICE_KEY = "meridian.discarded-notice";
+
+export type DiscardedShadow = {
+  totalScore: number;
+  placesPlayed: number;
+  dateKey: string;
+  lastActivityAt: number;
+};
+
+function isDiscardedShadow(value: unknown): value is DiscardedShadow {
+  if (!value || typeof value !== "object") return false;
+  const r = value as Record<string, unknown>;
+  return (
+    typeof r.totalScore === "number" &&
+    Number.isFinite(r.totalScore) &&
+    r.totalScore >= 0 &&
+    typeof r.placesPlayed === "number" &&
+    Number.isInteger(r.placesPlayed) &&
+    r.placesPlayed >= 0 &&
+    typeof r.dateKey === "string" &&
+    typeof r.lastActivityAt === "number" &&
+    Number.isFinite(r.lastActivityAt)
+  );
+}
+
+/** Fix round L3: a discarded record older than this never notices — the
+ * next child on a shared device must not see the last child's score,
+ * even for a new-day discard. Policy: no notice after 24h. */
+export const SHADOW_MAX_AGE_MS = 24 * 3600 * 1000;
+
+/** Fail closed to null on anything malformed or tampered. */
+export function readDiscardedShadow(): DiscardedShadow | null {
+  try {
+    if (typeof localStorage === "undefined") return null;
+    const raw = localStorage.getItem(DISCARDED_NOTICE_KEY);
+    if (!raw) return null;
+    const parsed: unknown = JSON.parse(raw);
+    if (!isDiscardedShadow(parsed)) return null;
+    // Strictly older than 24h reads as expired AND clears the key, so
+    // the stale record cannot fire on any later boot. Exactly 24h
+    // still reads; a future timestamp reads (clock skew fails toward
+    // showing, never toward silently dropping a fresh record).
+    if (Date.now() - parsed.lastActivityAt > SHADOW_MAX_AGE_MS) {
+      try {
+        localStorage.removeItem(DISCARDED_NOTICE_KEY);
+      } catch {
+        // Best effort: the read still reports expired.
+      }
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+export function writeDiscardedShadow(shadow: DiscardedShadow): void {
+  try {
+    localStorage.setItem(DISCARDED_NOTICE_KEY, JSON.stringify(shadow));
+  } catch {
+    // Best effort: the in-memory session still lives when storage is blocked.
+  }
+}
+
+export function clearDiscardedShadow(): void {
+  try {
+    localStorage.removeItem(DISCARDED_NOTICE_KEY);
+  } catch {
+    // A stale shadow is fail-closed at read time (shape-checked).
+  }
+}
+
 export function writeSession(session: Session): void {
   try {
     sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
   } catch {
     // The session still lives in memory when storage is blocked.
+  }
+  // Continuous shadow on every session bank: an ended session never
+  // leaves a record (End game already ends the session — a later boot
+  // must show plain home, never a lost-game notice for it).
+  if (session.ended) {
+    clearDiscardedShadow();
+  } else {
+    writeDiscardedShadow({
+      totalScore: session.totalScore,
+      placesPlayed: session.placesPlayed,
+      dateKey: session.dateKey,
+      lastActivityAt: session.lastActivityAt,
+    });
   }
 }
 
@@ -540,6 +636,18 @@ export function clearSession(target?: SessionStorageLike): boolean {
     }
   }
   if (!s) return true; // No storage = nothing was ever persisted.
+  // Fix round M1: only a session that actually existed may take its
+  // shadow with it. A no-op clear (no stored session — e.g. the idle
+  // activity listener persisting a null session on any click) must
+  // never destroy an unrelated preserved record, such as a shadow
+  // deferred past an mc2 notice for a later boot.
+  let hadStoredSession = false;
+  try {
+    const raw = s.getItem(SESSION_KEY);
+    hadStoredSession = raw !== null && raw !== "";
+  } catch {
+    hadStoredSession = false;
+  }
   try {
     s.removeItem(SESSION_KEY);
   } catch {
@@ -551,7 +659,11 @@ export function clearSession(target?: SessionStorageLike): boolean {
   }
   try {
     const raw = s.getItem(SESSION_KEY);
-    return raw === null || raw === "";
+    const cleared = raw === null || raw === "";
+    // Removing the session removes its shadow too: a deliberately
+    // reset session must never resurrect as a discarded-game notice.
+    if (cleared && hadStoredSession) clearDiscardedShadow();
+    return cleared;
   } catch {
     return false;
   }

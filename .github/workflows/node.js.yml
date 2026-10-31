@@ -48,6 +48,11 @@ jobs:
   # and so are the Ko-fi specs (they need VITE_KOFI_URL at build time). Run
   # the full suite locally (see README).
   #
+  # endgame-share belongs here: its map tap is a DOM-level canvas click
+  # plus phase transitions (no WebGL-dependent assertion), it passed 2/2
+  # twice on headless Chromium, and its console gate needs real egress,
+  # which CI runners have.
+  #
   # playwright.config.ts uses Playwright's bundled Chromium when the dev
   # VM's /opt/meta-chromium/chrome is absent, which is the case here.
   e2e:
@@ -68,6 +73,7 @@ jobs:
         tests/e2e/grownups-privacy-contact.desktop.spec.ts
         tests/e2e/hydration-boot.desktop.spec.ts
         tests/e2e/observability.spec.ts
+        tests/e2e/endgame-share.spec.ts
         --workers=1 --reporter=line
     - name: Upload the Playwright report on failure
       if: failure()

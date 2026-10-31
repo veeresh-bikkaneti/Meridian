@@ -502,9 +502,11 @@ export function ResultCard({
                   </BoundedText>
                   <BoundedText variant="body" className="result-story">
                     {withSports}
-                    {/* Dedicated live element: only the new AI sentence is
-                        announced, never a full-paragraph re-read. */}
-                    <span aria-live="polite">
+                    {/* Visible text only, NOT a live region (Wave 1 P0
+                        Item 3): the GameApp sr-only paragraph is the one
+                        designated reveal announcer. Announcing this
+                        sentence too double-announces every reveal. */}
+                    <span>
                       {aiStory ? (
                         <>
                           {" "}{aiStory}
@@ -618,11 +620,12 @@ export function ResultCard({
                       {storyRest}
                     </BoundedText>
                   ) : null}
-                  {/* AI sentence as its own announced paragraph: the miss-card
-                      lede keeps the blurb's first sentence; the hook — often
-                      the only memorable fact on a blurb-only card — arrives
-                      here and is announced once via the polite live region. */}
-                  <div aria-live="polite">
+                  {/* AI sentence as its own visible paragraph (Wave 1 P0
+                      Item 3): the miss-card lede keeps the blurb's first
+                      sentence; the hook arrives here as text only, never
+                      as a second live announcement — the GameApp
+                      paragraph is the designated reveal announcer. */}
+                  <div>
                     {aiStory ? (
                       <BoundedText variant="body" className="result-story">
                         {aiStory}

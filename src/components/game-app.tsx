@@ -20,6 +20,7 @@ import { isPickerDifficulty, type PickerDifficulty } from "@/game/tier-filter";
 import { dealingPoolFor } from "@/game/easy-curation";
 import {
   bankPlace,
+  clearDiscardedShadow,
   clearSession,
   DIFFICULTY_LABELS,
   EDITION_LABELS,
@@ -30,6 +31,7 @@ import {
   idleWarnMsFor,
   isIdleExpired,
   isSessionLive,
+  readDiscardedShadow,
   readSession,
   seedSessionFromRun,
   startSession,
@@ -655,6 +657,43 @@ type LanguageModelGlobal = {
 
 function trailDate(): string {
   return new Date().toISOString().slice(0, 10);
+}
+
+/**
+ * Wave 1 P0 Item 1: what the shared discarded-run notice shows. Totals
+ * are always whole-session totals (summarizeSession) or the discarded
+ * run's own results — never recomputed, never invented. A 0-place
+ * discard carries no numbers at all: the honest "nothing scored yet".
+ */
+type DiscardedNotice = {
+  reason: "inactivity" | "new-day" | "scoring" | "challenges";
+  totalScore: number;
+  placesPlayed: number;
+};
+
+function discardedNoticeText(notice: DiscardedNotice): string {
+  const reason =
+    notice.reason === "inactivity"
+      ? "Your game ended after 2 minutes of inactivity."
+      : notice.reason === "new-day"
+        ? "A new day started, so your saved game could not be resumed."
+        : notice.reason === "scoring"
+          ? "The scoring changed, so your saved game could not be resumed."
+          : "Friend challenges are switched off, so your saved game could not be resumed.";
+  const summary =
+    notice.placesPlayed === 0
+      ? "You had not scored anything yet."
+      : `You played ${notice.placesPlayed} ${notice.placesPlayed === 1 ? "place" : "places"} and scored ${notice.totalScore.toLocaleString("en-US")} points.`;
+  return `${reason} ${summary}`;
+}
+
+/** Sum a run's own results — the fallback when no session survives. */
+function runResultsTotals(run: Run | null): { totalScore: number; placesPlayed: number } {
+  const results = run?.results ?? [];
+  return {
+    totalScore: results.reduce((sum, r) => sum + r.score, 0),
+    placesPlayed: results.length,
+  };
 }
 
 function boundsFor(run: Run): RegionBounds {
@@ -1494,6 +1533,29 @@ export function GameApp() {
   // on the home screen after the idle kill.
   const [idleWarn, setIdleWarn] = useState(false);
   const [idleEndedNote, setIdleEndedNote] = useState(false);
+  // Wave 1 P0 Item 1: the one shared discarded-run notice. Keyed to
+  // "live, non-ended run/session discarded at boot" — deliberate End
+  // game already ends the session and isResumable excludes phase
+  // "summary", so ended games never produce one (no clean-exit flag
+  // keying: a finished game killed without pagehide must not show a
+  // lost-game notice). One card for all four causes; the reason
+  // keyword + the played score/places travel together, and each
+  // cause's copy avoids the other causes' keywords.
+  const [discardedNotice, setDiscardedNotice] = useState<DiscardedNotice | null>(null);
+  // Fix round L2: the visible notice must not carry role="status" — it
+  // mounts with its text already present, so screen readers may never
+  // announce it. Instead this always-present (on home) sr-only region
+  // starts empty and is FILLED by the effect below after mount, so the
+  // text change is what announces. Cleared when the notice goes null,
+  // so a later identical notice announces again instead of landing on
+  // an unchanged region.
+  const [discardedNoticeAnnouncement, setDiscardedNoticeAnnouncement] =
+    useState("");
+  useEffect(() => {
+    setDiscardedNoticeAnnouncement(
+      discardedNotice ? discardedNoticeText(discardedNotice) : "",
+    );
+  }, [discardedNotice]);
   // First-run tutorial: null when inactive, otherwise the current beat
   // (1 = aim coachmark, 2 = reveal feedback, 3 = completion hook). Owned
   // by GameApp so the menu invitation, the run, and the cleanup paths all
@@ -1512,6 +1574,10 @@ export function GameApp() {
   const commit = useCallback((next: Run) => {
     writeRun(next);
     setRun(next);
+    // A new or continued run retires any boot discard notice: the
+    // notice describes a game that is gone, and returning home later
+    // (Editions) must not resurrect it beside the fresh game.
+    setDiscardedNotice(null);
   }, []);
 
   /**
@@ -1695,10 +1761,39 @@ export function GameApp() {
     [difficultyChoice],
   );
 
-  /** Idle kill: end the session and return the player to the home screen. */
-  const killIdleSession = useCallback(() => {
+  /** Idle kill: end the session and return the player to the home screen.
+   * skipNotice (fix round M1) suppresses ONLY the inactivity notice set:
+   * the kill, the session clear, and the shadow clear always run. The
+   * body boot passes it when an mc2 notice is preserved. */
+  const killIdleSession = useCallback((skipNotice = false) => {
     setStartError(null);
     clearDrop();
+    // Wave 1 P0 Item 1: capture what was played BEFORE dropping the
+    // session. Challenge runs never bank into the session (their score
+    // belongs to the shared route), so a challenge kill summarises the
+    // run itself; every other kill summarises the whole session, and
+    // only falls back to the run when no session survives.
+    const killedRun = readRun() ?? readMc2Run();
+    const killedIsChallenge =
+      !!killedRun &&
+      (killedRun.regionId === CHALLENGE_REGION_ID || killedRun.challengeOrigin === "mc2");
+    // Boot fallback: at boot the session ref is still null (useSessionState
+    // starts null with no hydration) while the persisted session survives
+    // in sessionStorage, so a reload-after-expiry kill must total the whole
+    // persisted session, not just the killed run. Challenge kills stay
+    // run-only (challenges never bank). Live play is unchanged: the ref
+    // is non-null during play, so the fallback never runs there.
+    const live = getSession() ?? (killedIsChallenge ? null : readSession());
+    const liveSummary = live && !killedIsChallenge ? summarizeSession(live) : null;
+    const totals = liveSummary
+      ? { totalScore: liveSummary.totalScore, placesPlayed: liveSummary.placesPlayed }
+      : runResultsTotals(killedRun);
+    if (!skipNotice) {
+      setDiscardedNotice({ reason: "inactivity", ...totals });
+    }
+    // The kill is the show: no durable record may re-fire it on a
+    // later boot (at most one notice per discarded game).
+    clearDiscardedShadow();
     try {
       sessionStorage.removeItem(RUN_KEY);
       clearMc2Run();
@@ -1717,7 +1812,7 @@ export function GameApp() {
     // the idle-ended notice above and read stale (the score it says
     // was kept has just been dropped with the session).
     setMapSwitchedNote(null);
-  }, [replaceSession]);
+  }, [replaceSession, getSession]);
 
   useEffect(() => {
     // Observability boot — MUST run before the crash-loop breaker effect
@@ -2091,9 +2186,23 @@ export function GameApp() {
     const mc2Saved = readMc2Run();
     if (mc2Saved) {
       void loadFlags().then(async () => {
+        // Fix round M1: a dropped mc2 run notices instead of landing on
+        // silent home. The notice is set BEFORE the clear, and the body
+        // boot runs preserving it (see bootSavedRunBody's preserveNotice
+        // guard). A finished (summary-phase) challenge is not a lost
+        // game: it clears silently, matching the body's own summary
+        // exclusion. Challenge runs never bank into the session, so the
+        // summary is the mc2 run's own results — never another game's
+        // session totals.
+        const noticeMc2Discard = () => {
+          if (mc2Saved.phase !== "summary") {
+            setDiscardedNotice({ reason: "challenges", ...runResultsTotals(mc2Saved) });
+          }
+        };
         if (!isEnabled("friendChallenges")) {
+          noticeMc2Discard();
           clearMc2Run();
-          bootSavedRunBody();
+          bootSavedRunBody(true);
           return;
         }
         const today = {
@@ -2110,8 +2219,9 @@ export function GameApp() {
           setReady(true);
           return;
         }
+        noticeMc2Discard();
         clearMc2Run();
-        bootSavedRunBody();
+        bootSavedRunBody(true);
       });
       return;
     }
@@ -2167,12 +2277,26 @@ export function GameApp() {
       }
     }
 
-    function bootSavedRunBody() {
+    // preserveNotice: when an mc2 discard notice already stands, the
+    // body boot must not overwrite it with its own discard notice.
+    // Every notice site below is guarded; the shadow block is skipped
+    // whole, so a preserved shadow survives for a later boot instead of
+    // being silently consumed. A resumed run still retires the notice
+    // via commit() — that is the retire rule, not an overwrite.
+    function bootSavedRunBody(preserveNotice = false) {
     const saved = readRun();
     if (saved && saved.regionId === CHALLENGE_REGION_ID) {
       void loadFlags().then(async () => {
         if (!isEnabled("friendChallenges")) {
+          // Wave 1 P0 Item 1E: the flag-off deletion notices instead of
+          // landing on silent home. Challenge runs never bank into the
+          // session, so the summary is the challenge run's own results
+          // — never another game's session totals.
           clearDrop();
+          const challengeTotals = runResultsTotals(saved);
+          if (!preserveNotice) {
+            setDiscardedNotice({ reason: "challenges", ...challengeTotals });
+          }
           try {
             sessionStorage.removeItem(RUN_KEY);
           } catch {
@@ -2229,8 +2353,10 @@ export function GameApp() {
     const savedSession = readSession();
     // A session that idled out while the tab was closed counts as expired:
     // kill it (and the run it banked) instead of silently resuming.
+    // The kill's own inactivity notice is skipped when an mc2 notice is
+    // preserved (skipNotice gates only that set, never the kill itself).
     if (savedSession && isSessionLive(savedSession, dateKey) && isIdleExpired(savedSession, now, idleTimeoutMs)) {
-      killIdleSession();
+      killIdleSession(preserveNotice);
       setReady(true);
       return;
     }
@@ -2249,7 +2375,17 @@ export function GameApp() {
       // restored. (The old `restored === saved` check could never pass:
       // resumeRun always returns a new object, so reloads silently dropped
       // to the menu instead of resuming.)
+      // The literal `if (isResumable(...))` shape is pinned by
+      // territory-lazy-boundary.test.ts (Core F-2); the discard block
+      // below keys off didRestore instead of an else branch (the
+      // predicate would narrow an else branch to never).
+      let didRestore = false;
       if (isResumable(resumable, today)) {
+        didRestore = true;
+        // Wave 1 P0 Item 1B: a successful resume consumes any pending
+        // discarded record, so it cannot fire later. (The resumed
+        // session's own persists below write a fresh live shadow.)
+        clearDiscardedShadow();
         const restored = resumeRun(resumable, today);
         if (restored.phase === "aim") {
           // Core F-2: an aim-phase restore resumes straight into
@@ -2278,6 +2414,74 @@ export function GameApp() {
         void preloadTerritory();
         commit(restored);
         ensureSession(restored);
+      }
+      if (!didRestore && resumable.phase !== "summary") {
+        // Wave 1 P0 Item 1: a live, non-ended run that cannot resume
+        // notices instead of landing on silent home. Only the two
+        // classifiable causes notice here — a new UTC day, or a retired
+        // scoring version (stored scores are never recomputed). The
+        // summary-phase run is deliberately excluded: End game already
+        // ended that session, and its reload must show plain home.
+        // Anything else unclassified (e.g. a band change) keeps today's
+        // silent fall-through.
+        const staleScoring =
+          resumable.results.length > 0 &&
+          resumable.results.some((r) => r.scoringVersion !== SCORING_VERSION);
+        const reason: DiscardedNotice["reason"] | null =
+          savedSession && savedSession.dateKey !== dateKey
+            ? "new-day"
+            : staleScoring
+              ? "scoring"
+              : null;
+        if (reason) {
+          const sessionSummary = savedSession ? summarizeSession(savedSession) : null;
+          const totals = sessionSummary
+            ? { totalScore: sessionSummary.totalScore, placesPlayed: sessionSummary.placesPlayed }
+            : runResultsTotals(resumable);
+          if (!preserveNotice) {
+            setDiscardedNotice({ reason, ...totals });
+          }
+          clearDrop();
+          try {
+            sessionStorage.removeItem(RUN_KEY);
+          } catch {
+            // Storage blocked; the in-memory run is dropped regardless.
+          }
+          replaceSession(null);
+          clearDiscardedShadow();
+          setReady(true);
+          return;
+        }
+      }
+    }
+    if (!saved) {
+      // Wave 1 P0 Item 1B: no sessionStorage run survived (a closed tab
+      // kills sessionStorage), but the localStorage shadow may have.
+      // A shadow from a previous UTC day is a new-day discard; an
+      // expired shadow is an inactivity discard. A fresh shadow is
+      // left alone — the game may still be open in another tab, and
+      // a later expired boot still notices. Showing consumes the
+      // record at first show: dismiss and reload alike show nothing.
+      const shadow = readDiscardedShadow();
+      // Fix round M1: when an mc2 notice is preserved, the shadow block
+      // is skipped whole — neither shown nor consumed — so the shadow
+      // survives for a later boot (defer, not silent loss).
+      if (shadow && !preserveNotice) {
+        if (shadow.dateKey !== dateKey) {
+          setDiscardedNotice({
+            reason: "new-day",
+            totalScore: shadow.totalScore,
+            placesPlayed: shadow.placesPlayed,
+          });
+          clearDiscardedShadow();
+        } else if (now - shadow.lastActivityAt > idleTimeoutMs) {
+          setDiscardedNotice({
+            reason: "inactivity",
+            totalScore: shadow.totalScore,
+            placesPlayed: shadow.placesPlayed,
+          });
+          clearDiscardedShadow();
+        }
       }
     }
       setReady(true);
@@ -2693,6 +2897,10 @@ export function GameApp() {
   // End game: the session's totals (not the run's) become the summary, and
   // the session ends — the next game starts a fresh one.
   const handleEndGame = useCallback((): SessionSummary | null => {
+    // Wave 1 P0 Item 1: a deliberate end never leaves a discarded-game
+    // record — the ended session is finished, not lost. (The ended
+    // write below clears the shadow too; this is belt-and-braces.)
+    clearDiscardedShadow();
     const dateKey = trailDate();
     const now = Date.now();
     let summary: SessionSummary | null = null;
@@ -2850,6 +3058,11 @@ export function GameApp() {
           onChallengeDone={handleChallengeDone}
           onSummaryDone={() => {
             // End game already ended the session; drop it and go home.
+            // 3C focus return rides the landHomeFocusRef effect: the flag
+            // below arms it, and the effect retries after every commit,
+            // clearing only once the home heading actually takes focus —
+            // so the return survives Choose mounting after this commit.
+            landHomeFocusRef.current = true;
             setStartError(null);
             clearDrop();
             setRun(null);
@@ -2993,8 +3206,47 @@ export function GameApp() {
     )
   ) : null;
 
+  // Wave 1 P0 Item 1: the one shared discarded-run notice. When it is
+  // present it IS the idle card too (the inactivity copy keeps the old
+  // sentence verbatim, plus the played summary), so the old card is
+  // suppressed while it stands — home shows one notice, never two.
+  const discardedNoticeEl = discardedNotice ? (
+    <div
+      data-testid="discarded-notice"
+      className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg"
+    >
+      <p>{discardedNoticeText(discardedNotice)}</p>
+      <Button
+        type="button"
+        variant="secondary"
+        onClick={() => {
+          setDiscardedNotice(null);
+          setIdleEndedNote(false);
+          // Fix round L1: dismissing the discarded notice lands focus
+          // on the home heading (the landHomeFocusRef target), not
+          // <body>. The idle notice's own Dismiss is untouched.
+          landHomeFocusRef.current = true;
+        }}
+      >
+        Dismiss
+      </Button>
+    </div>
+  ) : null;
+
+  // Fix round L2: the discarded notice's sole live region. Always
+  // rendered on home (never conditional on the notice), mirroring the
+  // map-mode announcer: the effect near the discardedNotice state
+  // fills it after mount and clears it on dismiss, so each notice is
+  // a real text change. The visible notice carries no live role, so
+  // this text is announced exactly once per notice, never twice.
+  const discardedNoticeAnnouncer = (
+    <p className="sr-only" role="status" data-testid="discarded-notice-announcer">
+      {discardedNoticeAnnouncement}
+    </p>
+  );
+
   // Shown once on the home screen after the idle kill.
-  const idleNotice = idleEndedNote ? (
+  const idleNotice = idleEndedNote && !discardedNotice ? (
     <div
       role="status"
       className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-line bg-surface p-4 text-sm text-fg"
@@ -3334,6 +3586,8 @@ export function GameApp() {
           {challengeBootNoticeEl}
           {mapSwitchedNotice}
           {autoScoutNotice}
+          {discardedNoticeAnnouncer}
+          {discardedNoticeEl}
           {idleNotice}
           {loadNotice}
         </>
@@ -3587,11 +3841,8 @@ function Choose({
       {notice}
       {tutorialInvite}
       {/* v5 top nav. ABOUT and JOURNAL jump to the sections at the bottom
-          of the home page. Search has no surface yet. */}
+          of the home page. */}
       <header className="hv5-nav home-rise" style={rise(0)}>
-        <span id="hv5-unmapped-note" className="sr-only">
-          Not yet available
-        </span>
         <button
           type="button"
           className="hv5-brand"
@@ -3623,9 +3874,6 @@ function Choose({
           >
             JOIN THE JOURNEY
             <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
-          </button>
-          <button type="button" className="hv5-icon-btn" aria-label="Search" aria-disabled="true" aria-describedby="hv5-unmapped-note">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#33302A" strokeWidth="2" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5L21 21" strokeLinecap="round" /></svg>
           </button>
         </div>
       </header>
@@ -5736,6 +5984,16 @@ function PlayLoaded({
     // cleared path above returns early, so the celebration never
     // double-sounds the applause; reload-restores advance silently.
     playCelebrationSound("nextPlace");
+    // Wave 1 P0 Item 3 (3B): the Next place button unmounts with the
+    // result card, so without this focus falls to body. After the new
+    // question commits, land on its map (tabIndex 0, role application):
+    // one Tab then reaches the new question's controls, and the live
+    // paragraph above announces the new question ("Find …").
+    window.setTimeout(() => {
+      document
+        .querySelector<HTMLElement>(".satellite-map")
+        ?.focus({ preventScroll: true });
+    }, 0);
   }
 
   function onEndGame() {
@@ -5755,6 +6013,14 @@ function PlayLoaded({
   function onSummaryDone() {
     setSummary(null);
     finishSummary();
+    // Wave 1 P0 Item 3 (3C): closing the summary unmounts Play — and the
+    // End-game opener with it — for home, so returning focus to the
+    // opener would land on body. Focus return rides GameApp's
+    // landHomeFocusRef flag (set by the summary-done handler that
+    // finishSummary runs): its effect retries after every commit and
+    // lands on the home heading once Choose has mounted — never body,
+    // never a hidden control. No setTimeout here: a single-shot timeout
+    // silently no-ops when Choose has not mounted yet.
   }
 
   function onSummaryPlayAgain() {
@@ -6405,7 +6671,7 @@ function PlayLoaded({
                 </div>
               ) : null}
             </div>
-            <span className="sr-only" role="status">
+            <span className="sr-only">
               Session score {sessionTotal.toLocaleString("en-US")}
             </span>
             <div className="flex items-center gap-1.5">
@@ -6493,7 +6759,12 @@ function PlayLoaded({
           : run.phase === "story" && place && revealDone
             ? `Pin dropped. ${drop ? formatLength(drop.distanceKm, unitForEdition(run.edition, run.regionId)) : "Hit"}. ${questionLabel}.${drop?.breakdown ? ` +${drop.breakdown.score} points.` : ""}`
             : run.phase === "story" && place
-              ? "Showing the answer."
+              // Wave 1 P0 Item 3: this paragraph is the ONE designated
+              // reveal announcer, and it must announce exactly once per
+              // reveal. The pre-card "Showing the answer." text was a
+              // second announcement in the same reveal window, so the
+              // beat stays silent here and speaks once at revealDone.
+              ? null
               : run.phase === "summary" && summary
                 ? `Game over. ${summary.placesPlayed} places, ${summary.hits} hits, total score ${summary.totalScore.toLocaleString("en-US")} — ${summary.byEdition
                     .map((b) => `${EDITION_LABELS[b.edition]} ${b.score.toLocaleString("en-US")}`)

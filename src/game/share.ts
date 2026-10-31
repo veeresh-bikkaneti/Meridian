@@ -1,6 +1,17 @@
 import { BRAND } from "./brand.ts";
+import { shareOrigin } from "../lib/og/share-meta.ts";
 import type { LoopGuess, LoopStatus } from "./loop/types.ts";
 import { LOOP_MAX_GUESSES } from "./loop/types.ts";
+
+/**
+ * Build base for the share URL line. Vite sets BASE_URL "/Meridian/" only
+ * for the GitHub Pages build, so the URL follows the build, not the
+ * serving hostname (Wave 1 P0 Item 4E/4F). Node (unit tests) has no
+ * import.meta.env, so the default base "/" (Workers origin) applies.
+ */
+function defaultBaseUrl(): string {
+  return (import.meta as unknown as { env?: { BASE_URL?: string } }).env?.BASE_URL ?? "/";
+}
 
 /**
  * Per-place grade for the share-text emoji strip (Wordle-style).
@@ -36,15 +47,18 @@ export function shareText(input: {
   /** Per-place scores in play order; renders the Wordle-style emoji strip. */
   scores?: number[];
   now?: Date;
+  /** Vite build base; defaults to the running build's BASE_URL. */
+  baseUrl?: string;
 }): string {
   const when = shareDateLabel(input.dateKey, input.now ?? new Date());
   const streak = input.bestStreak >= 2 ? ` · 🔥 ${input.bestStreak} best streak` : "";
   const strip = input.scores?.length ? input.scores.map(scoreMark).join("") + "\n" : "";
   // The site URL gets its own line: messaging apps auto-linkify bare URLs,
   // so the shared score carries a tappable link back to the game.
+  const origin = shareOrigin(input.baseUrl ?? defaultBaseUrl());
   return (
     `${BRAND.shareHost} ${when}\n` +
-    `${BRAND.siteUrl}\n` +
+    `${origin}\n` +
     strip +
     `${input.totalScore.toLocaleString("en-US")} over ${input.placesPlayed} places · ` +
     `${input.averagePerPlace} avg/place${streak} · ${input.regionName}`
@@ -88,6 +102,8 @@ export function shareLoopText(input: {
    * ` · 🔥 N best streak` when >= 2 (classic convention); hidden when
    * < 2 or unset. */
   bestStreak?: number;
+  /** Vite build base; defaults to the running build's BASE_URL. */
+  baseUrl?: string;
 }): string {
   const when = shareDateLabel(input.dateKey, input.now ?? new Date());
   const marks = input.guesses.map((guess, i) =>
@@ -101,5 +117,6 @@ export function shareLoopText(input: {
     typeof input.bestStreak === "number" && input.bestStreak >= 2
       ? ` · 🔥 ${input.bestStreak} best streak`
       : "";
-  return `${BRAND.shareHost} geodetective ${when}\n${BRAND.siteUrl}\n${marks.join("")} ${result}${bestStreakSegment}${streakLine}`;
+  const origin = shareOrigin(input.baseUrl ?? defaultBaseUrl());
+  return `${BRAND.shareHost} geodetective ${when}\n${origin}\n${marks.join("")} ${result}${bestStreakSegment}${streakLine}`;
 }

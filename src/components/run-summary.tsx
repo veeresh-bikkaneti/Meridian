@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { Suspense, lazy, useRef } from "react";
+import { Suspense, lazy, useEffect, useRef } from "react";
 
 // The Storyteller mascot stays out of the initial bundle (lazy chunk).
 const StorytellerNarration = lazy(() => import("./storyteller"));
@@ -81,6 +81,56 @@ export function RunSummaryCard(props: {
       ?.querySelector<HTMLElement>('[data-testid="play-again"]')
       ?.focus({ preventScroll: true });
   };
+  // Wave 1 P0 Item 3 (3C): the dialog traps focus, closes on Escape,
+  // and starts with focus inside. Focusables are computed live on every
+  // keydown (the narration caption mounts/unmounts its own buttons).
+  const dialogFocusables = (root: HTMLElement): HTMLElement[] => {
+    const out: HTMLElement[] = [];
+    root
+      .querySelectorAll<HTMLElement>(
+        'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      )
+      .forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.width > 0 && r.height > 0) out.push(el);
+      });
+    return out;
+  };
+  useEffect(() => {
+    const root = modalRef.current;
+    if (!root) return;
+    // Initial focus inside the dialog: first focusable control, else
+    // the dialog itself (tabIndex -1 below).
+    const first = dialogFocusables(root)[0];
+    (first ?? root).focus({ preventScroll: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const onDialogKeyDown = (e: React.KeyboardEvent) => {
+    const root = modalRef.current;
+    if (!root) return;
+    if (e.key === "Escape") {
+      e.stopPropagation();
+      onDone();
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const items = dialogFocusables(root);
+    if (items.length === 0) {
+      e.preventDefault();
+      return;
+    }
+    const current = document.activeElement as HTMLElement | null;
+    const idx = current ? items.indexOf(current) : -1;
+    if (e.shiftKey) {
+      if (idx <= 0) {
+        e.preventDefault();
+        items[items.length - 1]?.focus({ preventScroll: true });
+      }
+    } else if (idx === items.length - 1 || idx === -1) {
+      e.preventDefault();
+      items[0]?.focus({ preventScroll: true });
+    }
+  };
   // Session totals only — no per-place emoji strip; the session banks
   // totals, never per-place scores (see sessionShareText).
   const text = sessionShareText({ summary, regionName, dateKey });
@@ -107,6 +157,8 @@ export function RunSummaryCard(props: {
       role="dialog"
       aria-modal="true"
       aria-label="Game summary"
+      tabIndex={-1}
+      onKeyDown={onDialogKeyDown}
     >
       <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.95)] p-6 text-white shadow-2xl">
         {/* Storyteller narration (caption only — figure is banner-only per

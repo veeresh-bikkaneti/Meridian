@@ -150,6 +150,62 @@ test("geodetective share appends the best streak segment when bestStreak >= 2", 
   );
 });
 
+test("Pages build share carries the Pages link, never Workers", () => {
+  const text = shareText({
+    regionName: "Nebraska",
+    dateKey: "2026-09-28",
+    totalScore: 12480,
+    placesPlayed: 60,
+    averagePerPlace: 208,
+    bestStreak: 14,
+    baseUrl: "/Meridian/",
+    now,
+  });
+  assert.equal(
+    text,
+    "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
+  );
+  assert.equal(text.includes("workers.dev"), false);
+});
+
+test("Workers build share carries the Workers link, never Pages", () => {
+  const text = shareText({
+    regionName: "Nebraska",
+    dateKey: "2026-09-28",
+    totalScore: 12480,
+    placesPlayed: 60,
+    averagePerPlace: 208,
+    bestStreak: 14,
+    baseUrl: "/",
+    now,
+  });
+  assert.equal(
+    text,
+    "meridian September 28\nhttps://meridian.knowledgetest.workers.dev/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
+  );
+  assert.equal(text.includes("github.io"), false);
+});
+
+test("Pages build geodetective share carries the Pages link", () => {
+  const guesses: LoopGuess[] = [
+    { name: "Kota, India", placeId: "geonames:1266049", distKm: 2073, octant: "south", warmer: null },
+    { name: "Colombo, Sri Lanka", placeId: "geonames:1248991", distKm: 0, octant: "north", warmer: true },
+  ];
+  const text = shareLoopText({
+    guesses,
+    status: "won",
+    dateKey: "2026-10-06",
+    now,
+    streak: 7,
+    baseUrl: "/Meridian/",
+  });
+  assert.equal(
+    text,
+    "meridian geodetective October 6\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟥🟩⬜⬜⬜ solved in 2\n🔥 7",
+  );
+  assert.equal(text.includes("workers.dev"), false);
+});
+
 test("geodetective share hides the best streak segment when bestStreak < 2 or unset", () => {
   const guesses: LoopGuess[] = [
     { name: "Kota, India", placeId: "geonames:1266049", distKm: 2073, octant: "south", warmer: null },

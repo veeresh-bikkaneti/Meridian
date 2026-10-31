@@ -1,5 +1,5 @@
 import http from "node:http";
-import { test, expect } from "playwright/test";
+import { test, expect, type Page } from "playwright/test";
 import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
 import {
   handleContactRequest,
@@ -452,6 +452,49 @@ test("Begin exploring starts a Globe round", async ({ page }) => {
   await expect(page.locator(".satellite-map")).toBeVisible();
 });
 
+/**
+ * Fix round 2: after a viewport change (or scroll), layout may still be
+ * settling when measurements run — the task-stated CI flake cause.
+ * Wait 2 rAFs, then require the nav boxes to be identical on two
+ * consecutive reads, and let font swaps finish (document.fonts.ready,
+ * best-effort with a short timeout so it can never hang the test).
+ * If the flake persists after this fix, the wait was not the cause
+ * (rollback note for the report).
+ */
+async function waitForNavLayoutSettled(page: Page): Promise<void> {
+  const readNavBoxes = () =>
+    page
+      .locator("header.hv5-nav button, header.hv5-nav a")
+      .evaluateAll((els) =>
+        els
+          .map((el) => {
+            const b = el.getBoundingClientRect();
+            return `${b.x},${b.y},${b.width},${b.height}`;
+          })
+          .join(";"),
+      );
+  await page.evaluate(async () => {
+    await Promise.race([
+      document.fonts.ready.then(() => undefined),
+      new Promise<void>((resolve) => setTimeout(resolve, 1000)),
+    ]);
+  });
+  let prev = "";
+  const deadline = Date.now() + 5000;
+  while (Date.now() < deadline) {
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) => {
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+        }),
+    );
+    const cur = await readNavBoxes();
+    if (cur !== "" && cur === prev) return;
+    prev = cur;
+  }
+  throw new Error("nav boxes did not stabilize after viewport change");
+}
+
 test("home UX polish across 6 viewports: unified map-mode pill, whole-card journal & grownups click, inline links, and navbar CONTACT", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   const viewports = [
@@ -474,6 +517,9 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
   for (const [w, h] of viewports) {
     await page.setViewportSize({ width: w, height: h });
     await page.evaluate(() => window.scrollTo(0, 0));
+    // Fix round 2: never measure right after a viewport change —
+    // wait for layout to settle first (CI flake cause).
+    await waitForNavLayoutSettled(page);
 
     // Header nav items >=44px tall and 0 overlap
     const navItems = page.locator("header.hv5-nav button, header.hv5-nav a");
@@ -514,6 +560,8 @@ test("home UX polish across 6 viewports: unified map-mode pill, whole-card journ
     expect(popBefore.x + popBefore.width, `${w}x${h} popover right margin`).toBeLessThanOrEqual(w - 8);
 
     await page.evaluate(() => window.scrollBy(0, 200));
+    // Fix round 2: same settle wait before the post-scroll measurements.
+    await waitForNavLayoutSettled(page);
     const btnAfter = (await mapBtnVp.boundingBox())!;
     const popAfter = (await popVp.boundingBox())!;
     expect(
