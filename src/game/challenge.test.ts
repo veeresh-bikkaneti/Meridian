@@ -239,6 +239,7 @@ import {
   challengeRadiusOf,
   createChallengeRoute,
   decodeChallenge2,
+  decodeChallenge3,
   decodeChallengeLink,
   encodeChallenge2,
 } from "./challenge.ts";
@@ -401,7 +402,7 @@ const CREATION_CATALOG = [
   { id: "gn-107", difficulty: 2 }, { id: "gn-108", difficulty: 3 },
 ] as const;
 
-test("fresh creation deals the golden five, fame-tier ascending, as mc2", () => {
+test("fresh creation deals the golden five, fame-tier ascending, as mc3", () => {
   const created = createChallengeRoute({
     edition: "state", regionId: "nebraska", scoringVersion: 3,
     mode: "fresh", sources: [CREATION_CATALOG], dealSeed: 7,
@@ -412,8 +413,8 @@ test("fresh creation deals the golden five, fame-tier ascending, as mc2", () => 
   assert.equal(created.placeCount, 5);
   assert.equal(created.regionName, "Nebraska");
   assert.equal(created.radiusKm, 87);
-  assert.ok(created.fragment.startsWith("#c=mc2."));
-  const decoded = decodeChallenge2(created.fragment, 3);
+  assert.ok(created.fragment.startsWith("#c=mc3."));
+  const decoded = decodeChallenge3(created.fragment, 3);
   assert.equal(decoded.ok, true);
   if (decoded.ok) assert.deepEqual(decoded.ids, created.dealtIds);
   const second = createChallengeRoute({
@@ -462,12 +463,12 @@ test("exact creation for the globe stays mc1, byte-identical to the frozen encod
   assert.equal(created?.regionName, "Globe");
 });
 
-test("fresh creation for the globe encodes mc2, never mc1", () => {
+test("fresh creation for the globe encodes mc3, never mc1", () => {
   const created = createChallengeRoute({
     edition: "globe", regionId: "globe", scoringVersion: 3,
     mode: "fresh", sources: [CREATION_CATALOG], dealSeed: 7,
   });
-  assert.ok(created?.fragment.startsWith("#c=mc2."));
+  assert.ok(created?.fragment.startsWith("#c=mc3."));
   assert.equal(created?.radiusKm, 750);
 });
 
@@ -504,7 +505,9 @@ test("re-share preserves an off-golden in-tolerance radius (manifest §6, the sh
     radiusKmOverride: 90,
   });
   assert.ok(created);
-  assert.ok(created.fragment.startsWith("#c=mc2."));
+  // Delta §3.3: an mc2-origin re-share forward-upgrades to mc3 — the
+  // radius freeze is what this test pins, and it survives the upgrade.
+  assert.ok(created.fragment.startsWith("#c=mc3."));
   assert.equal(created.radiusKm, 90);
   const decoded = decodeChallengeLink(created.fragment, 3);
   assert.ok(decoded.ok);
@@ -518,7 +521,7 @@ test("re-share preserves an off-golden in-tolerance radius (manifest §6, the sh
   ]);
 });
 
-test("re-share preserves origin format: an mc2 Globe route stays mc2, an mc1 route stays mc1", () => {
+test("re-share origin rule (delta §3.3): an mc2 Globe route forward-upgrades to mc3, an mc1 route stays mc1", () => {
   const ids = ["gn-101", "gn-102", "gn-103", "gn-104", "gn-105"];
   const mc2Globe = createChallengeRoute({
     edition: "globe",
@@ -530,11 +533,11 @@ test("re-share preserves origin format: an mc2 Globe route stays mc2, an mc1 rou
     radiusKmOverride: 750,
   });
   assert.ok(mc2Globe);
-  assert.ok(mc2Globe.fragment.startsWith("#c=mc2."));
+  assert.ok(mc2Globe.fragment.startsWith("#c=mc3."));
   const decoded2 = decodeChallengeLink(mc2Globe.fragment, 3);
   assert.ok(decoded2.ok);
   assert.equal(decoded2.route.radiusKm, 750);
-  assert.equal(decoded2.route.originFormat, "mc2");
+  assert.equal(decoded2.route.originFormat, "mc3");
   const mc1Globe = createChallengeRoute({
     edition: "globe",
     regionId: "globe",
@@ -649,7 +652,7 @@ test("package C: review creation deals only from the picked region's catalog, ne
       assert.ok(catalogIds.has(id), `seed ${dealSeed}: ${id} must come from the region catalog`);
       assert.ok(!deckIds.includes(id), `seed ${dealSeed}: ${id} came from the deck — privacy breach`);
     }
-    const decoded = decodeChallenge2(created.fragment, 3);
+    const decoded = decodeChallenge3(created.fragment, 3);
     assert.equal(decoded.ok, true);
     if (decoded.ok) assert.deepEqual(decoded.ids, created.dealtIds);
   }
