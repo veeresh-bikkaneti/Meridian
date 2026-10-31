@@ -350,6 +350,7 @@ import {
   CHALLENGE_RESHARE_LABEL,
   CHALLENGE_UNKNOWN_CONTENT_COPY,
   CHALLENGE_UNKNOWN_REGION_COPY,
+  CHALLENGE_VERSION_COPY,
   CHALLENGE_WELCOME_TITLE,
   challengeFreshRouteLabel,
   challengeMidRunLabel,
@@ -811,7 +812,9 @@ function readRunFrom(key: string): Run | null {
           : (record.challengeRadiusKm as number) >= 40 && (record.challengeRadiusKm as number) <= 450)
         ? { challengeRadiusKm: record.challengeRadiusKm as number }
         : {}),
-      ...(record.challengeOrigin === "mc1" || record.challengeOrigin === "mc2"
+      ...(record.challengeOrigin === "mc1" ||
+      record.challengeOrigin === "mc2" ||
+      record.challengeOrigin === "mc3"
         ? { challengeOrigin: record.challengeOrigin }
         : {}),
     };
@@ -841,7 +844,12 @@ function writeRun(run: Run) {
   try {
     // mc2 challenge runs persist to their own key (RUN_MC2_KEY) so old
     // builds never see them; everything else keeps the shipped key.
-    const key = run.challengeOrigin === "mc2" ? RUN_MC2_KEY : RUN_KEY;
+    // mc3 runs share that slot: it is the all-editions challenge slot,
+    // and an mc3 run is every bit as invisible to old builds as mc2.
+    const key =
+      run.challengeOrigin === "mc2" || run.challengeOrigin === "mc3"
+        ? RUN_MC2_KEY
+        : RUN_KEY;
     sessionStorage.setItem(key, JSON.stringify(run));
     // Crash-loop breaker: this page now holds unsaved-crash state. If the
     // process is killed without unloading, the next boot must not
@@ -2006,10 +2014,15 @@ export function GameApp() {
           bootSavedRun();
           return;
         }
-        if (rawHash.startsWith("#c=mc2.")) {
-          // mc2 links take their own receive path (welcome card, no
-          // displacement until Start). Everything else in this branch
-          // is the frozen mc1 path, byte-identical to the shipped one.
+        const mcVersionPrefix = /^#c=mc(\d+)\./.exec(rawHash);
+        if (mcVersionPrefix && Number(mcVersionPrefix[1]) !== 1) {
+          // mc2 and mc3 links take their own receive path (welcome
+          // card, no displacement until Start). So does a link from a
+          // NEWER format this build does not know (delta §3.6): the
+          // receive path's dispatcher answers it with the version
+          // signal, and the failure mapping below turns that into the
+          // newest-Meridian remedy instead of a resend line. The mc1
+          // prefix itself stays on the frozen path below, untouched.
           void receiveMc2Challenge(rawHash);
           return;
         }
@@ -2119,19 +2132,34 @@ export function GameApp() {
     }
 
     /**
-     * The mc2 receive path (Package A): decode and bind the link, load
-     * the named region's catalog, check membership — fail-closed at
-     * every step with the manifest's three failure classes — and only
-     * then show the welcome card. The saved run is NOT touched here:
-     * displacement commits on the card's Start tap, never on arrival.
+     * The mc2/mc3 receive path (Package A; mc3 added by the 2026-10-31
+     * delta): decode and bind the link, load the named region's
+     * catalog, check membership — fail-closed at every step with the
+     * manifest's three failure classes — and only then show the
+     * welcome card. The saved run is NOT touched here: displacement
+     * commits on the card's Start tap, never on arrival.
      */
     async function receiveMc2Challenge(hash: string) {
       const link = decodeChallengeLink(hash, SCORING_VERSION);
       if (!link.ok) {
         // Class 2 (region arm) when the region itself is unknown to
-        // this build; class 1 for every other decode failure.
+        // this build; class 1 for every other decode failure — with
+        // one delta §3.6 exception: a fragment whose PREFIX names a
+        // version this build does not know (mc4, mc9, …) gets the
+        // newest-Meridian remedy, because a resend from the same
+        // newer build would fail identically. The exception is
+        // prefix-level only: a "version" raised from inside a known
+        // format (an mc2 payload with v ≠ 2, an mc3 with reserved
+        // bits set) keeps the ordinary resend line.
+        const prefixVersion = /^#c=mc(\d+)\./.exec(hash);
+        const unknownVersionPrefix =
+          prefixVersion !== null && ![1, 2, 3].includes(Number(prefixVersion[1]));
         setChallengeBootNotice(
-          link.reason === "region" ? CHALLENGE_UNKNOWN_REGION_COPY : CHALLENGE_BROKEN_LINK_COPY,
+          link.reason === "region"
+            ? CHALLENGE_UNKNOWN_REGION_COPY
+            : link.reason === "version" && unknownVersionPrefix
+              ? CHALLENGE_VERSION_COPY
+              : CHALLENGE_BROKEN_LINK_COPY,
         );
         bootSavedRun();
         return;
@@ -4531,10 +4559,13 @@ function ChallengeComplete({
    * completion surface is frozen and never shows the secondary). */
   regionCatalog?: readonly Starter[] | null;
 }) {
-  // Origin preservation (manifest §2, contract 3): a route re-shares in
-  // the format it arrived in — an mc1 route stays mc1 byte for byte, an
-  // mc2 route stays mc2 with its own region named. Never a downgrade.
-  const isMc2 = run.challengeOrigin === "mc2";
+  // Origin rule (manifest §2, contract 3, as amended by the mc3 delta
+  // §3.3): a route re-shares without ever losing information — an mc1
+  // route stays mc1 byte for byte; an mc2 route forward-upgrades to
+  // mc3 with its own region named; an mc3 route stays mc3. Never a
+  // downgrade. (In Package A the mc3 re-share carries no winner block:
+  // winner minting is Package B.)
+  const isMc2 = run.challengeOrigin === "mc2" || run.challengeOrigin === "mc3";
   const mc2Creation = isMc2
     ? createChallengeRoute({
         edition: run.edition,
@@ -4542,11 +4573,11 @@ function ChallengeComplete({
         scoringVersion: SCORING_VERSION,
         mode: "exact",
         exactIds: run.poolIds,
-        // Origin preservation in full (manifest §2.3 + §6): the route
-        // re-encodes in the format it ARRIVED in and at the radius it
-        // was JUDGED at — an in-tolerance pinned circle (rad 90 vs the
-        // computed 87) survives the re-share, never re-pins.
-        originFormat: "mc2",
+        // The radius freeze in full (manifest §2.3 + §6): the route
+        // re-encodes at the radius it was JUDGED at — an in-tolerance
+        // pinned circle (rad 90 vs the computed 87) survives the
+        // re-share, never re-pins.
+        originFormat: "mc3",
         radiusKmOverride: run.challengeRadiusKm,
       })
     : null;
@@ -5913,7 +5944,7 @@ function PlayLoaded({
    * has no exact route to share, so the fresh offer becomes the
    * primary and shares directly — on the Globe in its shipped mc1 form
    * byte for byte. A globe exact primary's TEXT also stays the shipped
-   * one; its fragment is mc1, every other exact fragment is mc2.
+   * one; its fragment is mc1, every other exact fragment is mc3.
    * Computed from the dealer: for a normal run the place at index i IS
    * dealer.at(i), so the played ids are exact — PlaceResult carries
    * scores, not ids.
@@ -6215,7 +6246,11 @@ function PlayLoaded({
       <ChallengeComplete
         run={run}
         total={pool.length}
-        onDone={run.challengeOrigin === "mc2" && onChallengeDone ? onChallengeDone : onEditions}
+        onDone={
+          (run.challengeOrigin === "mc2" || run.challengeOrigin === "mc3") && onChallengeDone
+            ? onChallengeDone
+            : onEditions
+        }
         shareEnabled={friendChallengesEnabled}
         regionCatalog={challengeCatalog}
       />
