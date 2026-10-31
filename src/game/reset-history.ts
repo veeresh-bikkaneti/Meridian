@@ -26,6 +26,7 @@ import { clearTrailHistory } from "./trail.ts";
 import { clearLoopStore } from "./loop/store.ts";
 import { clearColdtrailStore } from "./coldtrail/store.ts";
 import { clearSession, clearDiscardedShadowFrom, SESSION_KEY } from "./session.ts";
+import { clearChallengeAttempts } from "./challenge-attempts.ts";
 
 export type ResetStorage = {
   getItem(key: string): string | null;
@@ -101,6 +102,7 @@ export function resetHistory(
     { store: "trail", clear: () => clearTrailHistory(local) },
     { store: "geodetective", clear: () => clearLoopStore(local) },
     { store: "coldtrail", clear: () => clearColdtrailStore(local) },
+    { store: "challenge-attempts", clear: () => clearChallengeAttempts(local) },
     { store: "session", clear: () => clearSession(session) },
     // Fix round 2: a Start-over reset with no stored session used to
     // leave a preserved shadow behind (clearSession's hadStoredSession
