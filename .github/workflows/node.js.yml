@@ -48,6 +48,13 @@ jobs:
   # and so are the Ko-fi specs (they need VITE_KOFI_URL at build time). Run
   # the full suite locally (see README).
   #
+  # Exception (fix round 2, PR #287): round-loop-a11y belongs here even
+  # though it uses map clicks — its 3D test guards a product a11y
+  # behavior (Zoom in during the return beat) that failed 3/3 before the
+  # fix, and the full file passed 8/8 locally on headless Chromium
+  # before this listing. If it flakes in CI, that is a real signal
+  # about the beat, not a reason to silently drop the spec.
+  #
   # endgame-share belongs here: its map tap is a DOM-level canvas click
   # plus phase transitions (no WebGL-dependent assertion), it passed 2/2
   # twice on headless Chromium, and its console gate needs real egress,
@@ -74,6 +81,7 @@ jobs:
         tests/e2e/hydration-boot.desktop.spec.ts
         tests/e2e/observability.spec.ts
         tests/e2e/endgame-share.spec.ts
+        tests/e2e/round-loop-a11y.spec.ts
         --workers=1 --reporter=line
     - name: Upload the Playwright report on failure
       if: failure()

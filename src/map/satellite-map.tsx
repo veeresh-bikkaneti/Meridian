@@ -534,6 +534,14 @@ export function SatelliteMap(props: {
   const [ready, setReady] = useState(false);
   // The intro opens at zoom 1.0 (Earth from space); zoomend keeps this fresh.
   const [zoom, setZoom] = useState(1);
+  // Fix round 2 (PR #287): a +/- press during the return beat must not
+  // fight the in-flight ease. MapLibre's zoomIn reads the ANIMATED zoom
+  // (~2.2 mid-return) and its easeTo first stops the return ease, so the
+  // press settles BELOW the pre-return zoom (3 < 4) and the stop's
+  // zoomend announces the intermediate level. The return-beat branch in
+  // zoomStepDuringReturn stops the ease, skips that one zoomend for
+  // setZoom only, and zooms from the settled React zoom state instead.
+  const suppressNextZoomEndRef = useRef(false);
   // Map center mirror for the DOM contract (data-center-lng/lat). Written on
   // moveend — cheap, stable between gestures, and precise enough (4 decimals
   // ≈ 11 m) for E2E drag assertions. data-zoom stays rounded for the existing
@@ -678,10 +686,35 @@ export function SatelliteMap(props: {
   // prefers-reduced-motion (UX 4.6). MapLibre's own pinch/wheel zoom keeps
   // its default (also user-invoked) behavior; dblclick zoom is disabled —
   // double-tap / double-click commits the pin instead.
+  // Fix round 2: +/- during the return beat only. The gate is beatKind
+  // === "return" (beatActive alone is also true during spin/narrow/
+  // reveal/relock; reduced-motion return sets neither flag, so it takes
+  // the plain path below). Captures the React zoom state BEFORE touching
+  // the camera — that is the settled pre-return zoom (e.g. 4), not the
+  // animated mid-ease value (~2.2) and not the return target (1.5).
+  // map.stop() fires zoomend + moveend synchronously (vendored
+  // MapLibre _stop → _onEaseEnd → _afterEase); the zoomend is skipped
+  // for setZoom only (so the intermediate level is never announced),
+  // the moveend completes the return via the normal path, and the ref
+  // is cleared unconditionally after stop() so a stop firing no
+  // zoomend cannot swallow the zoomTo announcement.
+  const zoomStepDuringReturn = (dir: 1 | -1): boolean => {
+    const map = mapRef.current;
+    if (!map) return false;
+    if (controllerRef.current?.beatKind !== "return") return false;
+    const target = zoom + dir;
+    suppressNextZoomEndRef.current = true;
+    map.stop();
+    suppressNextZoomEndRef.current = false;
+    map.zoomTo(target, { essential: true });
+    return true;
+  };
   const handleZoomIn = () => {
+    if (zoomStepDuringReturn(1)) return;
     mapRef.current?.zoomIn({ essential: true });
   };
   const handleZoomOut = () => {
+    if (zoomStepDuringReturn(-1)) return;
     mapRef.current?.zoomOut({ essential: true });
   };
 
@@ -750,12 +783,12 @@ export function SatelliteMap(props: {
       case "+":
       case "=":
         e.preventDefault();
-        map?.zoomIn({ essential: true });
+        if (!zoomStepDuringReturn(1)) map?.zoomIn({ essential: true });
         break;
       case "-":
       case "_":
         e.preventDefault();
-        map?.zoomOut({ essential: true });
+        if (!zoomStepDuringReturn(-1)) map?.zoomOut({ essential: true });
         break;
     }
   };
@@ -1528,7 +1561,16 @@ export function SatelliteMap(props: {
     });
     map.on("zoomend", () => {
       // Track zoom for the +/- controls' aria-live announcements (M10).
-      setZoom(Math.round(map.getZoom()));
+      // Fix round 2: a zoomend from stopping the return beat (see
+      // zoomStepDuringReturn) carries the intermediate animated zoom —
+      // never let it overwrite the settled zoom state or consume the
+      // +/- announcement. Only setZoom is skipped; the boundary band
+      // and controller notification below still run.
+      if (suppressNextZoomEndRef.current) {
+        suppressNextZoomEndRef.current = false;
+      } else {
+        setZoom(Math.round(map.getZoom()));
+      }
       // Progressive boundary reveal (F2): update the admin-boundary band
       // for the new zoom. Static — no transitions (reduced-motion safe).
       // Scout Map never loads the admin-1 band: the ~1.6 MB of lazy

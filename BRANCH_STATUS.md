@@ -1031,3 +1031,41 @@ Approvals needed (exact action + owner), checker, escalation:
   toBeVisible; sections outside the loop unchanged. Cause label is
   task-stated (no local repro captured): if the flake persists, the
   wait was not the cause. GREEN: home UX polish test passes (9.9s).
+- Item 2 (this commit): PRODUCT bug, not test bug — a Zoom in press
+  during the 1200ms return beat settled BELOW the pre-return zoom
+  (3 < 4). Cause, traced in code: handleZoomIn called MapLibre zoomIn,
+  which reads the ANIMATED zoom (~2.2 mid-return) and its easeTo first
+  stops the return ease, so the press settled at ~3.2 → 3; the stop's
+  zoomend also announced the intermediate level (ZoomControls'
+  one-shot announceNext consumed by the 4 → 2 state change). Fix, in
+  src/map/satellite-map.tsx only (ZoomControls untouched — the
+  suppression fixes its announcement too): new zoomStepDuringReturn
+  helper, gated ONLY on controllerRef beatKind === "return"
+  (beatActive alone is also true during spin/narrow/reveal/relock;
+  reduced-motion return sets neither flag, so it takes the plain
+  path); captures the React zoom state BEFORE touching the camera
+  (settled 4, not animated ~2.2, not target 1.5); sets a
+  suppress-one-zoomend ref; map.stop() (vendored MapLibre _stop →
+  _onEaseEnd → _afterEase fires zoomend + moveend synchronously — the
+  moveend completes the return via the normal path); ref cleared
+  unconditionally after stop(); then map.zoomTo(captured ± 1). The
+  zoomend handler skips setZoom ONLY for the suppressed zoomend
+  (boundary band + controller notification still run). Keyboard +/-
+  call the same helper. Non-return zooming, uninterrupted return, and
+  reduced-motion jump-to untouched. Center omitted from zoomTo
+  (mid-return center kept; user zoom intent wins).
+  RED/GREEN proof (temporary diagnostic spec + page-clock auto-press
+  hook in beginReturn, both DELETED/reverted, no trace in the diff):
+  test-side timing cannot land inside the beat on this VM (click
+  1.7–4.5s, evaluate ~7s, beat 1200ms) — v1–v3 fixed-delay presses all
+  landed post-settle, so their "failures" were measurement artifacts,
+  not the bug (corrected here, not hidden). The v4 auto-press clicks
+  the real Zoom in button 600ms into the beat: GREEN 2/2 with the
+  fix (gate log beatKind=return zoom=4 → pass; zoom=3 → pass); RED
+  with the gate forced false (gate log beatKind=return zoom=4, the
+  press provably mid-beat) → FAIL before=4 after=3, the exact
+  reported signature. 3D passes 3/3 post-fix; full round-loop-a11y
+  file 8/8 (5.4m). CI: round-loop-a11y.spec.ts added after
+  endgame-share.spec.ts in node.js.yml + header comment records the
+  exception (3D guards a product a11y behavior; file green locally
+  first); YAML validated.
