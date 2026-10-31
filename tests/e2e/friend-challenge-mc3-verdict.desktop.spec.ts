@@ -423,7 +423,18 @@ test("summary mint: a scored normal run's exact share carries a winner block (se
   // the shipped helpers are the suite's proven path.)
   await commitHit(page);
   await expect(resultCard(page)).toBeVisible({ timeout: 15_000 });
-  await clickNextPlace(page);
+  // Advance past the HIT reveal with a DOM click: a correct answer
+  // triggers the dive-in camera flight, and under this VM's
+  // software GL that flight keeps the Next button's bounding box
+  // moving for minutes — Playwright's stability check never
+  // settles and a plain click burns the whole test timeout
+  // (observed three times; the all-miss shipped summary test,
+  // whose pull-back reveals settle, passes on the same VM). The
+  // button is verified visible first; the click itself is the
+  // same one a player makes.
+  const nextAfterHit = page.getByRole("button", { name: "Next place" });
+  await expect(nextAfterHit).toBeVisible({ timeout: 10_000 });
+  await nextAfterHit.evaluate((el) => (el as HTMLButtonElement).click());
   const playedCount = () =>
     page.evaluate((key) => {
       try {
