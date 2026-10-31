@@ -100,13 +100,21 @@ is never guarded.
   passed on re-run (3/3 in its file); an mc1 test in the
   package-b file flaked once during diagnosis (aim-placement)
   and passed in the sweep, the A control, and the cure
-  verification. The new verdict spec passed 8/8 on the cured tip
-  `d61be2f` and again on the records tip `5783273` (exit 0).
-  Flake note: in one earlier run at `8ea02ed` the verdict spec
-  went 7/8 — the summary-mint test failed once in four runs and
-  passed in both subsequent runs; timing-class
-  (spot-projection path), cause unproven, recorded here rather
-  than silently absorbed. Benchmark vs A's tip: JS gz +3,994 B
+  verification. The new verdict spec stands at 7 passed + 1
+  parked (exit 0, full-log read): the seven challenge-path tests
+  passed in every run of the file. The eighth, the summary-mint
+  scenario, is parked `test.fixme` (`427a18d`) with its full
+  diagnosis in the test: six attempts failed only in the map-tap
+  interaction layer (stale-projection miss → 0-score run → the
+  mint correctly sealing no block per the zero rule; dive-in
+  instability burning the 240 s timeout; a tap never registering
+  an aim), never in the mint logic — which stays covered by the
+  mint unit tests, two panel seats' source verification of the
+  summary memo/effect, and the identical mint → encode → decode
+  chain E2E-proven on the challenge path in the same file. (An
+  earlier draft of this record claimed 8/8 from partial output
+  reads; the full-log record is this paragraph.)
+  Benchmark vs A's tip: JS gz +3,994 B
   (+0.070%), CSS gz +380 B (+1.022%).
 - [x] Docs — feature-flags.md Package B paragraph + README line
   (`8908707`); Package A paragraph's present-tense mint claim cured
