@@ -55,6 +55,14 @@ import { SCORING_VERSION } from "../../src/game/scoring.ts";
  *   clip and the corner toggle pauses/plays it at any time (WCAG
  *   2.2.2 stop mechanisms); and the reduced-motion still branch is
  *   pinned — an IMG with the same reserved box, never a VIDEO.
+ * - Cure round 2 on PR #295 (2026-11-01): the settle signal is
+ *   split — a GESTURE settle (tap/keydown) still pauses the clip,
+ *   but the auto-settle timer does NOT (the timer settles the
+ *   choreography only; it carries no intent to stop motion). A new
+ *   test pins the timer behaviour: no gesture → the timer settles →
+ *   the clip is still playing; the toggle then stops it. The
+ *   toggle also gains a keyboard-driven test (Enter pauses, Space
+ *   plays — the stopPropagation path, previously source-only).
  */
 test.setTimeout(240_000);
 
@@ -582,7 +590,7 @@ test("verdict grandpa media (cure round): the 3:2 box is reserved before the cli
   expect(Math.abs(headlineAfter!.y - headlineBefore!.y)).toBeLessThanOrEqual(1);
 });
 
-test("verdict grandpa media (cure round): settling pauses the clip; the corner toggle pauses and plays it", async ({
+test("verdict grandpa media (cure round): a gesture settle pauses the clip; the corner toggle pauses and plays it", async ({
   page,
   context,
 }) => {
@@ -601,8 +609,9 @@ test("verdict grandpa media (cure round): settling pauses the clip; the corner t
       timeout: 5_000,
     })
     .toBe(false);
-  // A tap anywhere on the screen is the settle gesture — and it now
-  // stops the clip too (WCAG 2.2.2 cure (a): settle pauses).
+  // A tap anywhere on the screen is the settle gesture — and it
+  // stops the clip too (WCAG 2.2.2 cure (a): a GESTURE settle
+  // pauses; the auto-settle timer does not — next test).
   await page.getByTestId("challenge-complete").click();
   await expect(page.locator("main")).toHaveAttribute("data-verdict-settled", "true");
   await expect
@@ -621,6 +630,87 @@ test("verdict grandpa media (cure round): settling pauses the clip; the corner t
   await expect
     .poll(() => media.evaluate((el) => (el as HTMLVideoElement).paused))
     .toBe(true);
+});
+
+test("verdict grandpa media (cure round 2): the auto-settle timer does NOT pause the clip; the toggle still stops it", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  await startChallenge(page, LINK_LOSS);
+  await playAllMisses(page);
+
+  const media = page.getByTestId("challenge-verdict-grandpa");
+  const toggle = page.getByTestId("challenge-verdict-grandpa-toggle");
+  await expect(toggle).toBeVisible();
+  // Autoplay is running before anything settles.
+  await expect
+    .poll(() => media.evaluate((el) => (el as HTMLVideoElement).paused), {
+      timeout: 5_000,
+    })
+    .toBe(false);
+  // NO player gesture: the ~1.6 s auto-settle timer settles the
+  // choreography on its own — the settled attribute flips without
+  // a single tap or keypress.
+  await expect(page.locator("main")).toHaveAttribute(
+    "data-verdict-settled",
+    "true",
+    { timeout: 10_000 },
+  );
+  // The timer carries no intent to stop motion (cure round 2,
+  // panel option 1): past the settle moment plus a margin, the
+  // clip is still playing — unpaused, and its clock advancing.
+  // (A paused clip returns the identical currentTime double; a
+  // playing one never does, loop wrap included.)
+  await page.waitForTimeout(600);
+  await expect
+    .poll(() => media.evaluate((el) => (el as HTMLVideoElement).paused))
+    .toBe(false);
+  const t1 = await media.evaluate((el) => (el as HTMLVideoElement).currentTime);
+  await page.waitForTimeout(400);
+  const t2 = await media.evaluate((el) => (el as HTMLVideoElement).currentTime);
+  expect(t2).not.toBe(t1);
+  // The toggle remains the always-available stop.
+  await toggle.click();
+  await expect
+    .poll(() => media.evaluate((el) => (el as HTMLVideoElement).paused))
+    .toBe(true);
+});
+
+test("verdict grandpa media (cure round 2): the toggle answers the keyboard — Enter pauses, Space plays", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  await startChallenge(page, LINK_LOSS);
+  await playAllMisses(page);
+
+  const media = page.getByTestId("challenge-verdict-grandpa");
+  const toggle = page.getByTestId("challenge-verdict-grandpa-toggle");
+  await expect(toggle).toBeVisible();
+  await expect
+    .poll(() => media.evaluate((el) => (el as HTMLVideoElement).paused), {
+      timeout: 5_000,
+    })
+    .toBe(false);
+  // Keyboard alone: focus the toggle, then Enter. The toggle's own
+  // keydown handler keeps Space/Enter away from the screen's
+  // any-keydown settle (stopPropagation), so the press belongs to
+  // the control; the click the key produces is what toggles.
+  await toggle.focus();
+  await page.keyboard.press("Enter");
+  await expect
+    .poll(() => media.evaluate((el) => (el as HTMLVideoElement).paused))
+    .toBe(true);
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await expect(toggle).toHaveAttribute("aria-label", "Play the cartoon");
+  // Space plays it again — and nothing re-pauses behind the
+  // player's back once the gesture latch has already fired.
+  await page.keyboard.press(" ");
+  await expect
+    .poll(() => media.evaluate((el) => (el as HTMLVideoElement).paused))
+    .toBe(false);
+  await expect(toggle).toHaveAttribute("aria-pressed", "false");
 });
 
 test("verdict grandpa media under reduced motion (cure round): the still keyframe renders — never a video, never a toggle", async ({
