@@ -57,6 +57,11 @@ import patagoniaUrl from "@/assets/home-v5/patagonia.webp";
 import archiveToolsUrl from "@/assets/home-v5/archive-tools.webp";
 import journalTreeUrl from "@/assets/home-v5/journal-tree.webp";
 import binocularsHatUrl from "@/assets/home-v5/binoculars-hat.webp";
+import {
+  VERDICT_GRANDPA_POSTER_URL,
+  VERDICT_GRANDPA_VIDEO_URL,
+} from "@/assets/verdict/grandpa-media";
+import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
 import {
   initAudio,
@@ -5132,6 +5137,11 @@ function ChallengeVerdict({
     farmingGuardBound: completion.minted.farmingGuardBound,
   });
   const [announce, setAnnounce] = useState("");
+  // The Grandpa clip at the top of the screen is decoration, so it
+  // follows the same reduced-motion rule as the rest of the verdict
+  // choreography: reduced motion gets the still keyframe, never a
+  // moving picture (see the render below).
+  const reducedMotion = usePrefersReducedMotion();
   const headingRef = useRef<HTMLHeadingElement | null>(null);
   useEffect(() => {
     headingRef.current?.focus({ preventScroll: true });
@@ -5160,6 +5170,37 @@ function ChallengeVerdict({
       <p className="sr-only" aria-live="polite">
         {announce}
       </p>
+      {/* "Grandpa Was Already There" (owner's dispatch, 2026-11-01):
+          the animated keyframe sits at the top of every verdict —
+          win, hold, near-miss, and loss alike. Purely decorative
+          (aria-hidden, no controls, never focusable), so it cannot
+          disturb the aria-live announcement above, the focus order,
+          or the tap-to-settle choreography. The poster shows until
+          the clip can play, and under reduced motion the still
+          keyframe renders instead of the video. The asset itself is
+          swapped in grandpa-media.ts, never here. */}
+      {reducedMotion ? (
+        <img
+          src={VERDICT_GRANDPA_POSTER_URL}
+          alt=""
+          aria-hidden="true"
+          data-testid="challenge-verdict-grandpa"
+          className="mb-4 w-full max-w-md rounded-2xl"
+        />
+      ) : (
+        <video
+          src={VERDICT_GRANDPA_VIDEO_URL}
+          poster={VERDICT_GRANDPA_POSTER_URL}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          data-testid="challenge-verdict-grandpa"
+          className="mb-4 w-full max-w-md rounded-2xl"
+        />
+      )}
       <h1
         ref={headingRef}
         tabIndex={-1}
