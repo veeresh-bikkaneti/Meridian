@@ -407,29 +407,14 @@ const RETURN_BEAT_MS = 1200;
  *  pre-fix path (zoomIn from the live zoom) rounds back to pre + 1. */
 const IN_FLIGHT_MIN_DELTA = 0.6;
 
-test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return level and announces it", async ({
-  page,
-}) => {
-  const { preReturn } = await settleRevealZoomForReturn(page);
-  const expected = preReturn + 1;
-  // Node <-> browser round trips on this VM and on CI runners (click
-  // 1.7–4.5 s, evaluate up to ~7 s) are longer than the 1200 ms beat, so
-  // the Next place click and the Zoom in press both run in the page.
-  //
-  // Fix round 4: the in-beat condition is MEASURED. The test reads the
-  // live MapLibre camera and the beat controller through React's own
-  // fiber links on the .satellite-map element (test-side read only; no
-  // src hook): the SatelliteMap component's refs hold the Map
-  // (getZoom/stop/on) and the ZoomSpaceController (beatKind). A rAF loop
-  // started at the Next place click presses the REAL Zoom in button in
-  // the first frame where beatKind === "return" AND the live zoom is at
-  // least IN_FLIGHT_MIN_DELTA below both the settled pre-return level
-  // and the live zoom read at the Next click — truly mid-flight. A test-side zoomend listener (registered after the
-  // app's) records every zoomend with its live zoom, flagged when it
-  // fires synchronously inside the press: that is the beat's stop().
-  // If the condition is never met before the beat ends, the test fails
-  // loudly; it never presses on an assumed timer.
-  const press = await page.evaluate(
+/**
+ * One in-page attempt at the 3D(a) press: clicks Next place, then presses
+ * the real Zoom in button on the first animation frame that is provably
+ * mid-flight in the return beat (see the 3D(a) comment). Moved out of the
+ * test body unchanged so the test can retry it on a fresh round.
+ */
+function pressZoomInMidReturn(page: Page, preReturn: number) {
+  return page.evaluate(
     ({ minDelta, pre, beatMs }) => {
       type Log = {
         zoom: { t: number; z: string | null }[];
@@ -539,6 +524,10 @@ test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return le
           frames.push({ t: now(), z: Math.round(z * 1000) / 1000, bk });
           if (bk === "return") sawReturn = true;
           if (bk === "return" && pre - z >= minDelta && liveAtNext - z >= minDelta) {
+            // Retry support: a frame at or past the beat is a timing miss.
+            // Do not press, so the missed attempt leaves no Zoom in press
+            // (zoom step, pending announcement) to leak into the next one.
+            if (now() >= beatMs) return done(false, `first in-flight frame at ${now()} ms, past the ${beatMs} ms beat; not pressed`);
             const zoomAtPress = wrapper.getAttribute("data-zoom");
             const zoomChangesBeforePress = log.zoom.length;
             const zoomIn = findButton("Zoom in");
@@ -564,6 +553,112 @@ test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return le
     },
     { minDelta: IN_FLIGHT_MIN_DELTA, pre: preReturn, beatMs: RETURN_BEAT_MS },
   );
+}
+
+/**
+ * Why an attempt did not land inside the return beat, or null when it
+ * did. Only TIMING misses qualify (no in-flight frame seen, press at or
+ * after the 1200 ms beat, beat not "return", live zoom not yet
+ * IN_FLIGHT_MIN_DELTA below the settled level): on a slow runner the rAF
+ * loop gets a frame only every ~300-450 ms, so the first frame far enough
+ * into the beat can fall past 1200 ms. A missing Zoom in button is not a
+ * timing miss and fails at once. An in-beat attempt is never retried: it
+ * is judged by every assertion in the test.
+ */
+function returnBeatMiss(
+  press: Awaited<ReturnType<typeof pressZoomInMidReturn>>,
+  preReturn: number,
+): string | null {
+  if (!press.pressed) return press.reason === "no Zoom in button" ? null : `not pressed: ${press.reason}`;
+  if (press.offsetMs >= RETURN_BEAT_MS) return `press at ${press.offsetMs} ms, not < ${RETURN_BEAT_MS} ms`;
+  if (press.beatAtPress !== "return") return `beat at press was ${press.beatAtPress}`;
+  const live = press.liveAtPress ?? preReturn;
+  if (preReturn - live < IN_FLIGHT_MIN_DELTA || press.liveAtNext - live < IN_FLIGHT_MIN_DELTA)
+    return `live zoom ${live} not >= ${IN_FLIGHT_MIN_DELTA} below settled ${preReturn} / Next ${press.liveAtNext}`;
+  return null;
+}
+
+/** Attempts per 3D(a) run before a return-beat miss fails the test. */
+const MID_BEAT_MAX_ATTEMPTS = 3;
+
+/**
+ * After a missed 3D(a) attempt: wait for the new place's question, commit
+ * a fresh miss, and park the reveal camera in [3, max - 1] again — the
+ * same steps settleRevealZoomForReturn takes after its globe dive.
+ */
+async function nextRevealForReturn(page: Page, maxZoom: number): Promise<number> {
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  await expect
+    .poll(() => mapEl(page).getAttribute("aria-hidden"), { timeout: 30_000 })
+    .not.toBe("true");
+  await awaitZoomStable(page);
+  for (let i = 0; i < 10; i++) {
+    if ((await readZoom(page)) <= maxZoom - 2) break;
+    await page.getByRole("button", { name: "Zoom out" }).click();
+    await awaitZoomStable(page);
+  }
+  expect(await readZoom(page)).toBeLessThanOrEqual(maxZoom - 2);
+  await commitMissObserved(page, await installLiveObserver(page));
+  let preReturn = await awaitZoomStable(page);
+  for (let i = 0; i < 6 && (preReturn < 3 || preReturn > maxZoom - 1); i++) {
+    await page
+      .getByRole("button", { name: preReturn < 3 ? "Zoom in" : "Zoom out" })
+      .click();
+    preReturn = await awaitZoomStable(page);
+  }
+  expect(preReturn, "pre-return zoom must sit in [3, max - 1]").toBeGreaterThanOrEqual(3);
+  expect(preReturn, "pre-return zoom must sit in [3, max - 1]").toBeLessThanOrEqual(maxZoom - 1);
+  return preReturn;
+}
+
+test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return level and announces it", async ({
+  page,
+}) => {
+  const settled = await settleRevealZoomForReturn(page);
+  const { maxZoom } = settled;
+  let preReturn = settled.preReturn;
+  let expected = preReturn + 1;
+  // Node <-> browser round trips on this VM and on CI runners (click
+  // 1.7–4.5 s, evaluate up to ~7 s) are longer than the 1200 ms beat, so
+  // the Next place click and the Zoom in press both run in the page.
+  //
+  // Fix round 4: the in-beat condition is MEASURED. The test reads the
+  // live MapLibre camera and the beat controller through React's own
+  // fiber links on the .satellite-map element (test-side read only; no
+  // src hook): the SatelliteMap component's refs hold the Map
+  // (getZoom/stop/on) and the ZoomSpaceController (beatKind). A rAF loop
+  // started at the Next place click presses the REAL Zoom in button in
+  // the first frame where beatKind === "return" AND the live zoom is at
+  // least IN_FLIGHT_MIN_DELTA below both the settled pre-return level
+  // and the live zoom read at the Next click — truly mid-flight. A test-side zoomend listener (registered after the
+  // app's) records every zoomend with its live zoom, flagged when it
+  // fires synchronously inside the press: that is the beat's stop().
+  // If the condition is never met before the beat ends, the test fails
+  // loudly; it never presses on an assumed timer.
+  // Retry (slow runners): an attempt whose press missed the return
+  // beat (returnBeatMiss) proves nothing either way, so the test plays a
+  // fresh round and tries again, up to MID_BEAT_MAX_ATTEMPTS, and fails
+  // loudly if every attempt misses. The first in-beat attempt is then
+  // held to every assertion below, unchanged.
+  const attempts: string[] = [];
+  let press!: Awaited<ReturnType<typeof pressZoomInMidReturn>>;
+  for (let attempt = 1; ; attempt++) {
+    press = await pressZoomInMidReturn(page, preReturn);
+    const miss = returnBeatMiss(press, preReturn);
+    const firstReturn = press.frames.find((fr) => fr.bk === "return");
+    const line = `attempt ${attempt}/${MID_BEAT_MAX_ATTEMPTS}: offsetMs=${press.offsetMs} preReturn=${preReturn} frames=${press.frames.length} firstReturnFrameMs=${firstReturn?.t ?? "none"} ${miss ? `MISS (${miss})` : "in-beat"}`;
+    attempts.push(line);
+    console.log(`3D(a) ${line}`);
+    if (!miss) break;
+    if (attempt >= MID_BEAT_MAX_ATTEMPTS) {
+      throw new Error(
+        `3D(a): all ${MID_BEAT_MAX_ATTEMPTS} attempts missed the ${RETURN_BEAT_MS} ms return beat:\n${attempts.join("\n")}\nlast frames=${JSON.stringify(press.frames)}`,
+      );
+    }
+    preReturn = await nextRevealForReturn(page, maxZoom);
+    expected = preReturn + 1;
+  }
+  test.info().annotations.push({ type: "3D(a) attempts", description: attempts.join(" | ") });
   const { frames, ...pressCore } = press;
   const diag = `press=${JSON.stringify(pressCore)} preReturn=${preReturn}`;
   test.info().annotations.push({ type: "3D(a) mid-beat press", description: diag });
