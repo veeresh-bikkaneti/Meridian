@@ -641,16 +641,75 @@ export async function commitMiss(
   throw new Error("commitMiss: (500, 400) hit three places in a row");
 }
 
+/** How long the projected spot must hold still to count as settled. */
+const SPOT_SETTLE_MS = 600;
+
 /**
- * Commit a guaranteed hit: tap the true spot's exact screen point. When the
- * spot is on the far side of the globe (or under chrome), burn the place
- * with a miss and advance.
+ * Viewport coords of the current place's true spot, read only once the
+ * camera has come to rest: the intro beat is done (aria-hidden lifted)
+ * and the spot's live projection is unchanged on every animation frame
+ * for SPOT_SETTLE_MS. Fix round 4 (discarded-notice 1H(1) flake): reading
+ * the spot right after the phase flips to "aim" sampled a camera still in
+ * the previous place's return beat (data-zoom 8 → 7 at Nebraska), so the
+ * tap landed hundreds of px from the true spot, missed, and ten burned
+ * places exhausted commitHit. Null when the hook reports no spot.
+ */
+export async function settledSpotViewportPoint(
+  page: Page,
+): Promise<{ x: number; y: number } | null> {
+  await expect
+    .poll(() => page.locator(".satellite-map").getAttribute("aria-hidden"), {
+      timeout: 30_000,
+    })
+    .not.toBe("true");
+  const settled = await page.locator(".satellite-map").evaluate(
+    (el, settleMs) =>
+      new Promise<{ x: number; y: number } | null>((resolve, reject) => {
+        const hook = (
+          el as unknown as { __spotScreen?: () => { x: number; y: number } | null }
+        ).__spotScreen;
+        if (typeof hook !== "function") {
+          resolve(null);
+          return;
+        }
+        const t0 = performance.now();
+        let last: { x: number; y: number } | null = null;
+        let stillSince = t0;
+        const tick = () => {
+          const now = performance.now();
+          const s = hook();
+          const same =
+            !!s && !!last && Math.abs(s.x - last.x) < 0.5 && Math.abs(s.y - last.y) < 0.5;
+          if (!same) stillSince = now;
+          last = s;
+          if (s && now - stillSince >= settleMs) {
+            const r = el.getBoundingClientRect();
+            resolve({ x: Math.round(r.left + s.x), y: Math.round(r.top + s.y) });
+            return;
+          }
+          if (now - t0 > 20_000) {
+            reject(new Error(`spot never settled for ${settleMs} ms in 20 s; last=${JSON.stringify(s)}`));
+            return;
+          }
+          requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }),
+    SPOT_SETTLE_MS,
+  );
+  return settled;
+}
+
+/**
+ * Commit a guaranteed hit: tap the true spot's exact screen point, read
+ * once the camera has settled. When the spot is on the far side of the
+ * globe (or under chrome), burn the place with a miss and advance.
  */
 export async function commitHit(
   page: Page,
 ): Promise<{ committedAt: number }> {
   for (let attempt = 0; attempt < 10; attempt++) {
-    const spot = await spotViewportPoint(page);
+    const spot = await settledSpotViewportPoint(page);
     const inView =
       spot &&
       spot.x >= 0 &&
