@@ -605,6 +605,15 @@ export const nextPlaceButton = (page: Page) =>
 export async function clickNextPlace(page: Page): Promise<void> {
   const btn = nextPlaceButton(page);
   await expect(btn).toBeVisible({ timeout: 10_000 });
+  // A genuine first win (e.g. commitMiss's rare lucky hit) raises the
+  // first-win celebration overlay, which intercepts the Next place
+  // click until the player closes it (no auto-timer by design). Close
+  // it the way a player would; the celebration itself is unchanged.
+  const celebration = page.getByTestId("celebration-overlay");
+  if (await celebration.count()) {
+    await celebration.getByRole("button", { name: "Close celebration" }).click();
+    await expect(celebration).toHaveCount(0, { timeout: 10_000 });
+  }
   await btn.evaluate((el) =>
     el.scrollIntoView({ block: "nearest", behavior: "instant" as ScrollBehavior }),
   );
