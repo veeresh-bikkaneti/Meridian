@@ -10,6 +10,8 @@ import {
   maxAttainableRemaining,
   mintWinnerBlock,
   passAlongReceipt,
+  placeScoreBound,
+  routeTierCeiling,
   stopScoreBound,
   trailingStreak,
   verdictAriaSentence,
@@ -173,10 +175,39 @@ test("hit mask + chip attainability: wire bits, streak math, bounds", () => {
   // Per-stop bounds are the B1 family: streak 1 → 278, streak 4 → 315.
   assert.equal(stopScoreBound(1), 278);
   assert.equal(stopScoreBound(4), 315);
-  assert.equal(maxAttainableRemaining(0, 0), 0);
-  assert.equal(maxAttainableRemaining(2, 0), 278 + 290);
-  assert.equal(maxAttainableRemaining(1, 3), 315);
+  assert.equal(maxAttainableRemaining([], 0), 0);
+  assert.equal(maxAttainableRemaining([5, 5], 0), 278 + 290);
+  assert.equal(maxAttainableRemaining([5], 3), 315);
   // The chip's switch condition, worked end-to-end: after 2 misses of
-  // 5 (running 0, streak 0), 3 stops remain worth at most 871 < 955.
-  assert.ok(0 + maxAttainableRemaining(3, 0) < 955);
+  // 5 (running 0, streak 0), 3 tier-5 stops remain worth at most 871 < 955.
+  assert.ok(0 + maxAttainableRemaining([5, 5, 5], 0) < 955);
+});
+
+test("tier-aware ceilings (owner D2 amendment, 2026-11-01): surfaces quote the route's real max", () => {
+  // Per-place bounds carry the place's own tier multiplier.
+  assert.equal(placeScoreBound(1, 5), 278); // tier 5, streak 1 — the B1 stop-1 cap
+  assert.equal(placeScoreBound(1, 1), 120); // tier 1: round(100 × 1.0 × 1.05) + 15
+  assert.equal(placeScoreBound(3, 2), 159); // tier 2: round(100 × 1.25 × 1.15) + 15
+  // The D2 measurement table (pipeline record, from scoring.ts): an
+  // all-Famous route of 5 tops out at 650 — the tier-blind surface
+  // quoted 1,514, a "possible" no perfect run could reach.
+  assert.equal(routeTierCeiling([1, 1, 1, 1, 1]), 650);
+  assert.equal(routeTierCeiling([2, 2, 2, 2, 2]), 794);
+  assert.equal(routeTierCeiling([3, 3, 3, 3, 3]), 939);
+  assert.equal(routeTierCeiling([4, 4, 4, 4, 4]), 1225);
+  // All tier 5 == the codec's tier-blind ceiling (the gate's number —
+  // the surfaces and the gate agree exactly when the route IS hardest).
+  assert.equal(routeTierCeiling([5, 5, 5, 5, 5]), 1514);
+  assert.equal(routeTierCeiling([5, 5, 5, 5, 5, 5, 5, 5, 5, 5]), 3340);
+  // Mixed tiers sum per place, in play order (the verdict E2E route:
+  // Lincoln 1, Omaha 1, Bellevue 2, Fremont 2, Grand Island 2).
+  assert.equal(routeTierCeiling([1, 1, 2, 2, 2]), 120 + 125 + 159 + 165 + 171);
+  assert.equal(routeTierCeiling([1, 1, 2, 2, 2]), 740);
+  // Chip attainability at the remaining places' own tiers: on the
+  // E2E route a 500 target survives one miss (597 left) and leaves
+  // reach after two (458 left) — the tier-blind form (871) fired late.
+  assert.equal(maxAttainableRemaining([1, 2, 2, 2], 0), 597);
+  assert.equal(maxAttainableRemaining([2, 2, 2], 0), 458);
+  assert.ok(0 + maxAttainableRemaining([1, 2, 2, 2], 0) >= 500);
+  assert.ok(0 + maxAttainableRemaining([2, 2, 2], 0) < 500);
 });

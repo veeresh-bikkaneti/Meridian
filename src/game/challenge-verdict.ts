@@ -1,4 +1,10 @@
-import { PLACE_SCORE_CAP, REGION_BONUS, comboForStreak } from "./scoring.ts";
+import {
+  PLACE_SCORE_CAP,
+  REGION_BONUS,
+  comboForStreak,
+  difficultyTier,
+  type Difficulty,
+} from "./scoring.ts";
 import type { ChallengeWinner } from "./challenge.ts";
 
 /**
@@ -23,9 +29,12 @@ export const NEAR_MISS_MAX_SHORTFALL = Math.floor(
 
 /**
  * The taxonomy. T = bestScore (the target), shortfall = T − mine.
- * WIN: mine > T. HOLD: shortfall ≤ max(5% of T, 25) — a dead heat,
- * never a loss, never moves the ratchet. NEAR-MISS: shortfall ≤ 207.
- * LOSS: everything else.
+ * WIN: mine > T. HOLD: shortfall ≤ max(⌊5% of T⌋, 25) — a dead heat,
+ * never a loss, never moves the ratchet. The 5% is FLOORED before the
+ * max (owner D2 amendment, 2026-11-01: the floor is the law — at
+ * T = 955 the band is 47, not 48; the manifest §Q4 text pins this so
+ * the boundary cannot drift by interpretation). NEAR-MISS:
+ * shortfall ≤ 207. LOSS: everything else.
  */
 export function classifyVerdict(mine: number, best: number): VerdictClass {
   if (mine > best) return "win";
@@ -244,29 +253,63 @@ export function hitMaskFromResults(results: readonly { hit: boolean }[]): number
   return mask;
 }
 
-/** The per-stop score bound at a given streak — §Q2-B1's formula. */
-export function stopScoreBound(streak: number): number {
+/**
+ * The per-stop score bound at a given streak for a place of the
+ * given difficulty — §Q2-B1's formula with the place's OWN tier
+ * multiplier (tier 5 = 2.5, tier 1 = 1.0), every constant derived
+ * from scoring.ts. A perfect-distance hit at that tier scores
+ * min(PLACE_SCORE_CAP, round(100 × mult × combo)) plus the bonus.
+ */
+export function placeScoreBound(streak: number, difficulty: Difficulty): number {
   return (
-    Math.min(PLACE_SCORE_CAP, Math.round(100 * 2.5 * comboForStreak(streak))) +
-    REGION_BONUS
+    Math.min(
+      PLACE_SCORE_CAP,
+      Math.round(100 * difficultyTier(difficulty).multiplier * comboForStreak(streak)),
+    ) + REGION_BONUS
   );
 }
 
+/** The per-stop score bound at a given streak — §Q2-B1's formula in
+ * its tier-5 (hardest) form, the codec family's bound. */
+export function stopScoreBound(streak: number): number {
+  return placeScoreBound(streak, 5);
+}
+
 /**
- * The most a player can still add from the stops remaining, given the
- * streak they carry into the next stop (consecutive hits so far). The
- * in-run chip switches to its landed-count form once
- * `runningScore + maxAttainableRemaining(...) < best` — the target is
- * out of reach and a deficit counter must not ride the run (§Q4).
+ * The route's REAL ceiling (owner D2 amendment, 2026-11-01): the
+ * sequential bound summed over the route's own places in play order,
+ * each stop at its own tier — an all-tier-1 route of 5 tops out at
+ * 650, not the tier-blind 1,514. This is what the verdict sub-line,
+ * the target bar, and the aria sentence quote (§Q4 surfaces only).
+ * It is NOT the codec gate: challenge.ts `routeCeiling` stays
+ * tier-blind, because a link's plausibility gate must accept the
+ * hardest legal route.
+ */
+export function routeTierCeiling(difficulties: readonly Difficulty[]): number {
+  let total = 0;
+  difficulties.forEach((difficulty, i) => {
+    total += placeScoreBound(i + 1, difficulty);
+  });
+  return total;
+}
+
+/**
+ * The most a player can still add from the stops remaining, given
+ * the streak they carry into the next stop (consecutive hits so
+ * far) and the remaining places' OWN tiers (D2 amendment: the
+ * tier-blind form fired late or never on easy routes, so a deficit
+ * counter rode runs that could no longer be won). The in-run chip
+ * switches to its landed-count form once
+ * `runningScore + maxAttainableRemaining(...) < best` (§Q4).
  */
 export function maxAttainableRemaining(
-  stopsRemaining: number,
+  remainingDifficulties: readonly Difficulty[],
   streakCarriedIn: number,
 ): number {
   let total = 0;
-  for (let j = 1; j <= stopsRemaining; j++) {
-    total += stopScoreBound(streakCarriedIn + j);
-  }
+  remainingDifficulties.forEach((difficulty, j) => {
+    total += placeScoreBound(streakCarriedIn + j + 1, difficulty);
+  });
   return total;
 }
 
