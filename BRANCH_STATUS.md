@@ -1126,3 +1126,16 @@ Approvals needed (exact action + owner), checker, escalation:
   mutant in a separate worktree forcing the beatKind gate false fails
   3D(a) 3/3 at the final-zoom assertion (zoom ends at pre, announces
   pre-1); timing checks pass in all three.
+- Item 2 (this commit): `gap-view-reveal.desktop.spec.ts` skip test.
+  The Node-side `__spotScreen` poll (one evaluate per sample, ~2
+  samples before the card under a full-file run) is replaced by an
+  in-page requestAnimationFrame recorder. It starts at the Drop click
+  (capture phase; a retried commit restarts it), records the spot
+  point, card state and skip-tap time every frame, and is read once
+  after the card lands. spotMoves only counts frames before both the
+  card and the skip tap, so the skip's jump-to cannot supply it.
+  Proof: whole file 3x (9/9) green. A mutant freezing `__spotScreen`
+  at {x:100,y:100} fails 4/4 at the movement assertion. Noted, not
+  changed: in 1/3 head runs and 2/4 mutant runs, the Node-driven skip
+  tap landed after the card was already up, so those runs did not
+  exercise the skip itself.
