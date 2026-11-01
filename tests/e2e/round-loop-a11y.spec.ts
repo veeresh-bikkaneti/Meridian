@@ -342,59 +342,218 @@ test("3C Game summary dialog traps focus, closes on Escape, returns focus", asyn
   expect(afterEscape.visible, "focus after Escape must be on a visible control").toBe(true);
 });
 
-test("3D Zoom in announces the new level after Next place, and the map zoom actually increases", async ({
-  page,
-}) => {
+/**
+ * Shared 3D setup (fix round 3): globe dive done, zoom at least 2 below
+ * the cap, a committed miss, and the reveal's own camera settled. Then
+ * the settled reveal zoom is nudged with the real Zoom in/out buttons
+ * (outside any beat) into [3, max - 1]: the return beat flies out to the
+ * region framing, which settles at data-zoom 2, so a pre-return level of
+ * 3+ is what makes "zoomed from the settled level" distinguishable from
+ * "zoomed from the return target" — and +1 must stay under the cap.
+ * Returns the settled pre-return zoom.
+ */
+async function settleRevealZoomForReturn(
+  page: Page,
+): Promise<{ preReturn: number; maxZoom: number }> {
   await startGlobeRun(page);
   await awaitGlobeDiveDone(page);
-  // Start at least 2 levels below cap (data-max-zoom); Zoom out first
-  // until data-zoom <= data-max-zoom - 2, then re-read.
+  // Test-only non-first profile (as in 3A-hit): commitMissObserved's
+  // rare-hit retry would otherwise raise the first-win celebration
+  // overlay, which intercepts the Next place click until the test times
+  // out (observed once in round 3). The celebration is not changed.
+  await page.evaluate(() => {
+    try {
+      localStorage.setItem("meridian.firstWinCelebrated", "1");
+    } catch {
+      /* private mode — ignore */
+    }
+  });
   const maxZoom = await readMaxZoom(page);
   for (let i = 0; i < 10; i++) {
     if ((await readZoom(page)) <= maxZoom - 2) break;
     await page.getByRole("button", { name: "Zoom out" }).click();
     await awaitZoomStable(page);
   }
-  const beforeRevealZoom = await readZoom(page);
-  expect(beforeRevealZoom).toBeLessThanOrEqual(maxZoom - 2);
+  expect(await readZoom(page)).toBeLessThanOrEqual(maxZoom - 2);
   await commitMissObserved(page, await installLiveObserver(page));
+  let preReturn = await awaitZoomStable(page);
+  for (let i = 0; i < 6 && (preReturn < 3 || preReturn > maxZoom - 1); i++) {
+    await page
+      .getByRole("button", { name: preReturn < 3 ? "Zoom in" : "Zoom out" })
+      .click();
+    preReturn = await awaitZoomStable(page);
+  }
+  expect(preReturn, "pre-return zoom must sit in [3, max - 1]").toBeGreaterThanOrEqual(3);
+  expect(preReturn, "pre-return zoom must sit in [3, max - 1]").toBeLessThanOrEqual(maxZoom - 1);
+  return { preReturn, maxZoom };
+}
+
+/** Text of every polite live region currently reading "Zoom level N". */
+const zoomLiveText = (page: Page): Promise<string[]> =>
+  page.evaluate(() => {
+    const out: string[] = [];
+    document.querySelectorAll('[aria-live="polite"]').forEach((el) => {
+      const t = (el.textContent ?? "").trim().replace(/\s+/g, " ");
+      if (/^Zoom level \d+$/.test(t)) out.push(t);
+    });
+    return out;
+  });
+
+/** RETURN_DURATION_MS in src/map/zoom-space.ts (pinned by its unit test). */
+const RETURN_BEAT_MS = 1200;
+/** When the in-page timer presses Zoom in, measured from the Next place
+ *  click (the return beat's start). 450 ms, not later: the page timer
+ *  slips ~50–350 ms under load on this VM, keeping the press inside
+ *  ~400–850 ms and well clear of the 1200 ms beat end. */
+const MID_BEAT_PRESS_MS = 450;
+
+test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return level and announces it", async ({
+  page,
+}) => {
+  const { preReturn } = await settleRevealZoomForReturn(page);
+  const expected = preReturn + 1;
+  // Node <-> browser round trips on this VM and on CI runners (click
+  // 1.7–4.5 s, evaluate up to ~7 s) are longer than the 1200 ms beat, so
+  // a test-side click cannot be trusted to land inside it (CI run
+  // 41215473245 pressed after the beat: 2 -> 3). The Next place click,
+  // the timer, and the Zoom in press therefore all run in the page, on
+  // the page clock. The press clicks the REAL ZoomControls button, so
+  // React's onClick -> handleZoomIn path is the one under test. Every
+  // data-zoom change and "Zoom level N" announcement is time-stamped
+  // from the Next place click.
+  const press = await page.evaluate(
+    ({ pressAt }) => {
+      const w = window as unknown as {
+        __z3d: {
+          zoom: { t: number; z: string | null }[];
+          announce: { t: number; text: string }[];
+        };
+      };
+      const map = document.querySelector(".satellite-map")!;
+      const log = { zoom: [] as { t: number; z: string | null }[], announce: [] as { t: number; text: string }[] };
+      w.__z3d = log;
+      let t0 = 0;
+      const now = () => Math.round(performance.now() - t0);
+      new MutationObserver(() =>
+        log.zoom.push({ t: now(), z: map.getAttribute("data-zoom") }),
+      ).observe(map, { attributes: true, attributeFilter: ["data-zoom"] });
+      const lastByEl = new Map<Element, string>();
+      new MutationObserver(() => {
+        document.querySelectorAll('[aria-live="polite"]').forEach((el) => {
+          const s = (el.textContent ?? "").trim().replace(/\s+/g, " ");
+          if (/^Zoom level \d+$/.test(s) && s !== lastByEl.get(el)) {
+            log.announce.push({ t: now(), text: s });
+          }
+          lastByEl.set(el, s);
+        });
+      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+      // The result card's button reads "Next place" (pinned bar) or
+      // "Next place →" (full card); take the rendered one.
+      const findButton = (name: string) =>
+        [...document.querySelectorAll("button")].find((b) => {
+          const label = (b.getAttribute("aria-label") ?? b.textContent ?? "").trim();
+          const r = b.getBoundingClientRect();
+          return label.startsWith(name) && r.width > 0 && r.height > 0;
+        }) as HTMLButtonElement | undefined;
+      const next = findButton("Next place");
+      if (!next) throw new Error("3D(a): no Next place button");
+      const zoomAtNext = map.getAttribute("data-zoom");
+      t0 = performance.now();
+      next.click();
+      return new Promise<{
+        offsetMs: number;
+        zoomAtNext: string | null;
+        zoomAtPress: string | null;
+        zoomChangesBeforePress: number;
+        found: boolean;
+      }>((resolve) => {
+        setTimeout(() => {
+          const offsetMs = now();
+          const zoomAtPress = map.getAttribute("data-zoom");
+          const zoomChangesBeforePress = log.zoom.length;
+          const zoomIn = findButton("Zoom in");
+          zoomIn?.click();
+          resolve({ offsetMs, zoomAtNext, zoomAtPress, zoomChangesBeforePress, found: !!zoomIn });
+        }, pressAt);
+      });
+    },
+    { pressAt: MID_BEAT_PRESS_MS },
+  );
+  const diag = `press=${JSON.stringify(press)} preReturn=${preReturn}`;
+  test.info().annotations.push({ type: "3D(a) mid-beat press", description: diag });
+  console.log(`3D(a) ${diag}`);
+  // 1. The press provably landed INSIDE the return beat. If the timer
+  //    slipped past the beat, or the beat had already settled (its
+  //    zoomend writes data-zoom 2), this fails loudly instead of
+  //    silently testing the post-settle path.
+  expect(press.found, `the Zoom in button must exist mid-beat; ${diag}`).toBe(true);
+  expect(press.zoomAtNext, diag).toBe(String(preReturn));
+  expect(
+    press.offsetMs,
+    `Zoom in must be pressed inside the ${RETURN_BEAT_MS} ms return beat; ${diag}`,
+  ).toBeLessThan(RETURN_BEAT_MS);
+  expect(
+    press.zoomChangesBeforePress,
+    `data-zoom changed before the press — the return beat had already settled; ${diag}`,
+  ).toBe(0);
+  expect(
+    press.zoomAtPress,
+    `data-zoom at the press must still be the settled pre-return level; ${diag}`,
+  ).toBe(String(preReturn));
+  // 2. The final zoom is the settled pre-return level + 1 (not the
+  //    animated mid-return level + 1, not the return target + 1).
+  const finalZoom = await awaitZoomStable(page);
+  const log = await page.evaluate(
+    () => (window as unknown as { __z3d: unknown }).__z3d,
+  );
+  expect(
+    finalZoom,
+    `mid-beat Zoom in must land on pre-return ${preReturn} + 1; ${diag} log=${JSON.stringify(log)}`,
+  ).toBe(expected);
+  // 3. The live region announces the new level, and only that level
+  //    (the stopped return's intermediate zoomend is never announced).
+  await expect
+    .poll(() => zoomLiveText(page), { timeout: 10_000 })
+    .toContain(`Zoom level ${expected}`);
+  const announced = await page.evaluate(() =>
+    (window as unknown as { __z3d: { announce: { text: string }[] } }).__z3d.announce.map(
+      (a) => a.text,
+    ),
+  );
+  expect(
+    announced,
+    `the mid-beat press announces exactly once, the new level; log=${JSON.stringify(log)}`,
+  ).toEqual([`Zoom level ${expected}`]);
+  await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+});
+
+test("3D(b) Zoom in after the return beat settles steps +1 per press and announces each level", async ({
+  page,
+}) => {
+  const { maxZoom } = await settleRevealZoomForReturn(page);
   await clickNextPlace(page);
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
-  // Manifest-literal sequence: press Zoom in as soon as the new question
-  // is live — no settle wait. A fix that only works after the 1200 ms
-  // return beat has finished does not satisfy this test.
-  const zoomLiveText = async (): Promise<string[]> =>
-    page.evaluate(() => {
-      const out: string[] = [];
-      document.querySelectorAll('[aria-live="polite"]').forEach((el) => {
-        const t = (el.textContent ?? "").trim().replace(/\s+/g, " ");
-        if (/^Zoom level \d+$/.test(t)) out.push(t);
-      });
-      return out;
-    });
+  // Post-settle path: read `before` only once the return beat has
+  // finished moving data-zoom (stable across 800 ms).
+  const settled = await awaitZoomStable(page);
+  expect(settled, "two presses must fit under data-max-zoom").toBeLessThanOrEqual(maxZoom - 2);
 
   const pressZoomIn = async (): Promise<number> => {
-    const before = await readZoom(page);
+    const before = await awaitZoomStable(page);
     await page.getByRole("button", { name: "Zoom in" }).click();
-    let after = before;
+    await expect.poll(() => readZoom(page), { timeout: 15_000 }).toBe(before + 1);
+    const after = await awaitZoomStable(page);
+    expect(after, `Zoom in from settled ${before} must land on ${before + 1}`).toBe(before + 1);
     await expect
-      .poll(
-        async () => {
-          after = await readZoom(page);
-          return after;
-        },
-        { timeout: 15_000 },
-      )
-      .toBeGreaterThan(before);
-    await expect
-      .poll(() => zoomLiveText(), { timeout: 10_000 })
+      .poll(() => zoomLiveText(page), { timeout: 10_000 })
       .toContain(`Zoom level ${after}`);
     return after;
   };
 
   const z1 = await pressZoomIn();
+  expect(z1).toBe(settled + 1);
   const z2 = await pressZoomIn();
-  expect(z2).toBeGreaterThan(z1);
+  expect(z2).toBe(settled + 2);
 });
 
 test("3E new question never re-announces the previous reveal", async ({ page }) => {

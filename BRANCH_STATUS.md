@@ -1101,3 +1101,28 @@ Approvals needed (exact action + owner), checker, escalation:
   item-2 CI note appended, re-read verified, body 6761 → 8064 chars;
   verified against head 84e12ab, which the body edit itself did not
   move).
+
+## Fix round 3: PR #287 review findings (base main 5e5a440e, head 6c7917f)
+
+- Scope: tests only, two commits, zero `src/` changes. The return-beat
+  zoom gate in `src/map/satellite-map.tsx` is unchanged. Leave-alone:
+  endgame-share `clickShareScoreWithRetry` + share-text origin line.
+  Independent reviewer verifies afterwards; no merge word is claimed.
+- Item 1 (this commit): `round-loop-a11y.spec.ts` 3D is split in two.
+  3D(a) presses the real Zoom in button mid return beat from an
+  in-page timer (450 ms after the Next place click; the timer slips
+  under load). It records the press offset and fails loudly unless
+  the press landed inside the 1200 ms beat (offset < 1200, zero
+  data-zoom changes since Next, data-zoom still at the pre-return
+  level). It then asserts final zoom = pre-return + 1 and exactly one
+  "Zoom level N" announcement. The pre-return level is held in
+  [3, max-1] so a mis-step cannot hit pre+1 by chance. 3D(b) waits
+  for a stable zoom after the return settles, presses twice, and
+  asserts +1 and the announcement per press. The shared setup seeds
+  `meridian.firstWinCelebrated` (test-only, as in 3A-hit): one 3D(b)
+  run timed out when commitMissObserved's rare-hit retry raised the
+  first-win overlay over Next place.
+  Proof: 3D(a) 5/5 green (offsets 471–969 ms), 3D(b) 5/5 green. A
+  mutant in a separate worktree forcing the beatKind gate false fails
+  3D(a) 3/3 at the final-zoom assertion (zoom ends at pre, announces
+  pre-1); timing checks pass in all three.
