@@ -607,6 +607,10 @@ function returnBeatMiss(
   return null;
 }
 
+/** After the press's announcement appears, how long 3D(a) keeps
+ *  listening before asserting it was the only one. */
+const ANNOUNCE_QUIET_MS = 1500;
+
 /** Attempts per 3D(a) run before a return-beat miss fails the test. */
 const MID_BEAT_MAX_ATTEMPTS = 8;
 
@@ -748,6 +752,9 @@ test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return le
   await expect
     .poll(() => zoomLiveText(page), { timeout: 10_000 })
     .toContain(`Zoom level ${expected}`);
+  // "Exactly once" needs an observation window: a duplicate written a few
+  // hundred ms after the first one would otherwise land after the read.
+  await page.waitForTimeout(ANNOUNCE_QUIET_MS);
   // Only announcements made at or after the press are the press's own.
   // Any "Zoom level N" announcement logged between Next and the press is
   // not this test's subject, but it is surfaced (annotation + console),
