@@ -43,6 +43,12 @@ import { SCORING_VERSION } from "../../src/game/scoring.ts";
  * - Retry restarts the same route.
  * - Summary mint: a scored normal run's exact share carries a winner
  *   block (sender = best, attempts 1).
+ * - Cure round (2026-11-01): D2 tier-aware ceilings (this route's
+ *   real max is 740 — verdict sub-line + chip attainability), and
+ *   the accessibility cures F-291-1 (✓ glyph = text-bg), F-291-2
+ *   (theme-gold TARGET tick + page-colour ring), A-291-2 (44 px dot
+ *   hit area), A-291-3 (late elements inert until settled; keydown
+ *   and the settle timer settle like a tap).
  */
 test.setTimeout(240_000);
 
@@ -70,6 +76,13 @@ function wLink(winner: {
   );
 }
 
+/** "#8a6410" → "rgb(138, 100, 16)" — comparing a computed style
+ * against a CSS custom property's token value. */
+function hexToRgb(hex: string): string {
+  const n = parseInt(hex.replace("#", ""), 16);
+  return `rgb(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255})`;
+}
+
 // Sender == best chains (the sender set the mark).
 const LINK_LOSS = wLink({ senderMask: 0xf800, senderScore: 955, bestScore: 955, senderAttempts: 1 });
 const LINK_HOLD = wLink({ senderMask: 0x8000, senderScore: 25, bestScore: 25, senderAttempts: 1 });
@@ -77,6 +90,9 @@ const LINK_NEARMISS = wLink({ senderMask: 0x8000, senderScore: 100, bestScore: 1
 const LINK_WIN = wLink({ senderMask: 0x8000, senderScore: 1, bestScore: 1, senderAttempts: 1 });
 // Sender < best: the duel chain.
 const LINK_DUEL = wLink({ senderMask: 0xf800, senderScore: 700, bestScore: 955, senderAttempts: 2 });
+// A mid target for the chip test: 500 is inside this route's REAL
+// ceiling (740 at tiers 1,1,2,2,2) but leaves reach as stops burn.
+const LINK_CHIP = wLink({ senderMask: 0xf800, senderScore: 500, bestScore: 500, senderAttempts: 1 });
 
 test.beforeEach(async ({ context, page }) => {
   await serveBuiltArtifact(context);
@@ -208,22 +224,26 @@ test("welcome: goal card + disclosure for a W link; attempts nowhere on the card
   await expect(welcome).not.toContainText("attempt");
 });
 
-test("chip: target form at start; unreachable switch after two misses vs 955", async ({
+test("chip: target form while reachable; tier-aware unreachable switch (D2)", async ({
   page,
   context,
 }) => {
   await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
-  await startChallenge(page, LINK_LOSS);
+  await startChallenge(page, LINK_CHIP);
   const chip = page.getByTestId("challenge-target-chip");
-  await expect(chip).toContainText("🎯 955 · you 0");
+  // This route's real ceiling is 740 (tiers 1,1,2,2,2): 500 is in reach.
+  await expect(chip).toContainText("🎯 500 · you 0");
   await playMiss(page);
   await waitForChallengeAim(page);
-  // One miss in, four stops remain worth at most 1,186 — still reachable.
-  await expect(chip).toContainText("🎯 955 · you 0");
+  // One miss in: the four remaining stops can still pay 597 ≥ 500.
+  await expect(chip).toContainText("🎯 500 · you 0");
   await playMiss(page);
   await waitForChallengeAim(page);
-  // Two misses in, three stops remain worth at most 871 < 955: the
-  // chip drops the target and counts landed stops instead.
+  // Two misses in: three tier-2 stops remain, worth at most 458 < 500 —
+  // the chip drops the target and counts landed stops instead. (The
+  // tier-blind bound quoted 871 here and fired two stops later; on the
+  // 955 link below it never fired at all, though 955 > the route's
+  // real 740 from the outset.)
   await expect(chip).toContainText("landed 0 of 5");
 });
 
@@ -240,7 +260,9 @@ test("verdict LOSS: headline, margin, strip, disclosure, minted pass-along, rout
   );
   await expect(page.locator("main")).toContainText("The best to beat is 955.");
   await expect(page.locator("main")).toContainText(
-    "You scored 0 of 1514 possible on this route.",
+    // D2: the route's real ceiling — tiers 1,1,2,2,2 sum to 740, not
+    // the tier-blind 1,514 the surface quoted before the amendment.
+    "You scored 0 of 740 possible on this route.",
   );
   const strip = page.getByTestId("challenge-verdict-strip");
   await expect(strip).toContainText("Stop by stop — you landed 0, they landed 5.");
@@ -272,11 +294,14 @@ test("verdict LOSS: headline, margin, strip, disclosure, minted pass-along, rout
     expect(routeOnlyDecoded.route.ids).toEqual([...NEBRASKA_IDS]);
   }
 
-  // Retry restarts the same route at once.
+  // Retry restarts the same route at once. The 955 target exceeds
+  // this route's real ceiling (740) from the outset, so the chip is
+  // in its landed form from Place 1 (D2: it never shows a target the
+  // route cannot pay).
   await page.getByTestId("challenge-retry").click();
   await waitForChallengeAim(page);
   await expect(page.getByTestId("challenge-progress")).toContainText("Place 1 of 5");
-  await expect(page.getByTestId("challenge-target-chip")).toContainText("🎯 955 · you 0");
+  await expect(page.getByTestId("challenge-target-chip")).toContainText("landed 0 of 5");
 });
 
 test("verdict HOLD: an all-miss play at shortfall exactly 25 is a dead heat, never a loss", async ({
@@ -382,7 +407,89 @@ test("verdict WIN under reduced motion: final states, ✓ PASSED, immediate aria
   expect(route.winner?.senderScore).toBeGreaterThan(1);
   expect(route.winner?.bestScore).toBe(route.winner?.senderScore);
   expect(route.winner?.senderAttempts).toBe(1);
+  // A-291-3 under reduced motion: the settle timer is immediate, so
+  // the settled state matches the (unanimated) visuals at once.
+  await expect(page.locator("main")).toHaveAttribute("data-verdict-settled", "true");
+  // F-291-1: my row's first dot is the Lincoln HIT — its ✓ glyph is
+  // the page colour (--bg) on the fg disc (text-bg). A white glyph
+  // on the near-white disc measured 1.10:1 before the cure.
+  const glyph = await page
+    .getByTestId("challenge-verdict-strip")
+    .locator(".verdict-strip-dot")
+    .first()
+    .evaluate((el) => {
+      const cs = getComputedStyle(el);
+      const root = getComputedStyle(document.documentElement);
+      return {
+        color: cs.color,
+        background: cs.backgroundColor,
+        fg: root.getPropertyValue("--fg").trim(),
+        bg: root.getPropertyValue("--bg").trim(),
+      };
+    });
+  expect(glyph.color).toBe(hexToRgb(glyph.bg));
+  expect(glyph.background).toBe(hexToRgb(glyph.fg));
   await context.close();
+});
+
+test("verdict a11y cures (F-291-2 · A-291-2 · A-291-3): inert until settled, keydown settles, cured tick, 44px dot area", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  await startChallenge(page, LINK_LOSS);
+  await playAllMisses(page);
+
+  const strip = page.getByTestId("challenge-verdict-strip");
+  const share = page.getByTestId("challenge-share-container");
+  // A-291-3: read inert IMMEDIATELY — the choreography's late
+  // elements (dots from ~850 ms, the pass-along from ~1,400 ms)
+  // must not be focusable while invisible, and the auto-settle
+  // timer (1,600 ms) has not fired yet at this point.
+  const stripInert = await strip.evaluate((el) => (el as HTMLElement).inert);
+  const shareInert = await share.evaluate((el) => (el as HTMLElement).inert);
+  expect(stripInert).toBe(true);
+  expect(shareInert).toBe(true);
+  await expect(page.locator("main")).toHaveAttribute("data-verdict-settled", "false");
+  // The first keydown settles (it fires before any focus move), so
+  // keyboard users get the same snap-to-final as a tap.
+  await page.keyboard.press("Tab");
+  await expect(page.locator("main")).toHaveAttribute("data-verdict-settled", "true");
+  await expect
+    .poll(() => strip.evaluate((el) => (el as HTMLElement).inert))
+    .toBe(false);
+
+  // A-291-2: the dot's VISUAL disc is 20 px, but a point 10 px above
+  // its centre — inside the ::after hit area, outside the disc —
+  // still hits the dot (44 px tall × 26 px pitch, neighbours touch
+  // without overlapping).
+  const dot = strip.locator(".verdict-strip-dot").first();
+  const box = await dot.boundingBox();
+  expect(box).not.toBeNull();
+  const hitAbove = await page.evaluate(
+    ({ x, y }) => {
+      const el = document.elementFromPoint(x, y);
+      return el?.classList.contains("verdict-strip-dot") ?? false;
+    },
+    { x: box!.x + box!.width / 2, y: box!.y + box!.height / 2 - 10 },
+  );
+  expect(hitAbove).toBe(true);
+
+  // F-291-2: the TARGET tick wears the theme-aware gold (--gold-ink)
+  // with a page-colour (--bg) ring — raw #f2c14e with no separation
+  // measured 1.19:1 / 1.52:1 before the cure.
+  const tick = await page.locator(".verdict-bar-fill + div").evaluate((el) => {
+    const cs = getComputedStyle(el);
+    const root = getComputedStyle(document.documentElement);
+    return {
+      background: cs.backgroundColor,
+      shadow: cs.boxShadow,
+      goldInk: root.getPropertyValue("--gold-ink").trim(),
+      bg: root.getPropertyValue("--bg").trim(),
+    };
+  });
+  expect(tick.background).toBe(hexToRgb(tick.goldInk));
+  expect(tick.shadow).toContain(hexToRgb(tick.bg));
 });
 
 // PARKED (test.fixme) — the summary-mint scenario itself is sound
