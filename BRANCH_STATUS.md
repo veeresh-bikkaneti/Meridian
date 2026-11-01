@@ -1549,3 +1549,14 @@ Approvals needed (exact action + owner), checker, escalation:
   = environment class.
 - [ ] **Panel re-vote on the cured tip** — running.
 - [ ] Merge — owner's per-PR word only. NO MERGE from here.
+- [x] **Cure-2 (panel BLOCK, re-vote on `6b5c14d`):** the UX
+  Designer seat blocked — `--gold-ink` is undefined in the default
+  `:root` (its `#f2c14e` sits in the dormant `[data-theme="night"]`
+  block; nothing sets `data-theme`), so the F-291-2 tick rendered
+  transparent in default dark. The round's E2E ran in light scheme
+  and its audit read the night block as "dark" — both misses are
+  recorded in the evidence dir. Fix (`7e3776d`):
+  `background: var(--gold-ink, #f2c14e)` + a dark-scheme E2E
+  regression test (token proven empty; tick paints
+  rgb(242, 193, 78)). Verdict spec re-run: 9 passed + 1 parked
+  skip, exit 0. Re-vote on `7e3776d` follows.
