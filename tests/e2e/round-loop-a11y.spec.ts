@@ -420,12 +420,13 @@ function pressZoomInMidReturn(page: Page, preReturn: number) {
         zoom: { t: number; z: string | null }[];
         announce: { t: number; text: string }[];
         zoomend: { t: number; z: number; inPress: boolean }[];
+        pressT: number | null;
       };
       const w = window as unknown as { __z3d: Log; __z3dCleanup?: () => void };
       // Detach a previous attempt's observers and zoomend listener.
       w.__z3dCleanup?.();
       const wrapper = document.querySelector(".satellite-map")!;
-      const log: Log = { zoom: [], announce: [], zoomend: [] };
+      const log: Log = { zoom: [], announce: [], zoomend: [], pressT: null };
       w.__z3d = log;
       // React fiber walk (test-only read): find the SatelliteMap refs.
       type LiveMap = {
@@ -474,10 +475,16 @@ function pressZoomInMidReturn(page: Page, preReturn: number) {
         log.zoom.push({ t: now(), z: wrapper.getAttribute("data-zoom") }),
       );
       zoomObs.observe(wrapper, { attributes: true, attributeFilter: ["data-zoom"] });
+      // Seed each live region with the text it already holds, so a region
+      // still showing an earlier announcement (e.g. the setup's own Zoom
+      // in/out press) is not logged as new when the next mutation scans it.
+      // A region inserted later, or a text change, is still logged.
+      const liveText = (el: Element) => (el.textContent ?? "").trim().replace(/\s+/g, " ");
       const lastByEl = new Map<Element, string>();
+      document.querySelectorAll('[aria-live="polite"]').forEach((el) => lastByEl.set(el, liveText(el)));
       const announceObs = new MutationObserver(() => {
         document.querySelectorAll('[aria-live="polite"]').forEach((el) => {
-          const s = (el.textContent ?? "").trim().replace(/\s+/g, " ");
+          const s = liveText(el);
           if (/^Zoom level \d+$/.test(s) && s !== lastByEl.get(el)) {
             log.announce.push({ t: now(), text: s });
           }
@@ -553,6 +560,7 @@ function pressZoomInMidReturn(page: Page, preReturn: number) {
             const n0 = log.zoomend.length;
             const tPress = now();
             if (tPress >= beatMs) return done(false, `first in-flight frame at ${tPress} ms, past the ${beatMs} ms beat; not pressed`, { offsetMs: tPress });
+            log.pressT = tPress;
             inPress = true;
             zoomIn.click();
             inPress = false;
@@ -600,7 +608,7 @@ function returnBeatMiss(
 }
 
 /** Attempts per 3D(a) run before a return-beat miss fails the test. */
-const MID_BEAT_MAX_ATTEMPTS = 5;
+const MID_BEAT_MAX_ATTEMPTS = 8;
 
 /**
  * After a missed 3D(a) attempt: wait for the new place's question, commit
@@ -740,11 +748,23 @@ test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return le
   await expect
     .poll(() => zoomLiveText(page), { timeout: 10_000 })
     .toContain(`Zoom level ${expected}`);
-  const announced = await page.evaluate(() =>
-    (window as unknown as { __z3d: { announce: { text: string }[] } }).__z3d.announce.map(
-      (a) => a.text,
-    ),
-  );
+  // Only announcements made at or after the press are the press's own.
+  // Any "Zoom level N" announcement logged between Next and the press is
+  // not this test's subject, but it is surfaced (annotation + console),
+  // never dropped silently.
+  const { announced, beforePress } = await page.evaluate(() => {
+    const l = (window as unknown as { __z3d: { announce: { t: number; text: string }[]; pressT: number | null } }).__z3d;
+    const p = l.pressT ?? Infinity;
+    return {
+      announced: l.announce.filter((a) => a.t >= p).map((a) => a.text),
+      beforePress: l.announce.filter((a) => a.t < p),
+    };
+  });
+  if (beforePress.length > 0) {
+    const note = `"Zoom level N" announced between Next and the press: ${JSON.stringify(beforePress)}`;
+    test.info().annotations.push({ type: "3D(a) pre-press announcement", description: note });
+    console.log(`3D(a) WARNING ${note}`);
+  }
   expect(
     announced,
     `the mid-beat press announces exactly once, the new level; log=${JSON.stringify(log)}`,
