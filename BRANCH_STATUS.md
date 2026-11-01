@@ -67,12 +67,77 @@ that already exists. No duplicate path to any job. PASS.
   verdict spec is fully green, incl. the reduced-motion WIN test.
   The one failure — mc2-create:131 (240 s click timeout waiting for
   the summary "Challenge a friend — play my route" button) —
-  reproduces **byte-identically on unmodified main `242a7ef`** in a
-  solo control run (sealed: `e2e-maincheck-131.log`), so it is a
+  reproduces with an **identical failure signature on unmodified
+  main `242a7ef`** in a solo control run (sealed:
+  `e2e-maincheck-131.log`; the logs differ in scope/duration/paths —
+  the signature and the disposition are what match), so it is a
   pre-existing environment/main-state failure, not a regression of
   this branch; the test never renders the verdict screen. The 2
   skips are designed (the @old-build scripted-manual gate + the
   parked summary-mint fixme from #291).
 - [x] Docs: README feature table now describes the verdict cartoon
   and its reduced-motion still
-- [ ] PR opened (no merge) — review pipeline is a separate stage
+- [x] PR opened (no merge) — PR #295, opened 2026-11-01; the review
+  pipeline ran as a separate stage (verdict: NOT READY, 2 BLOCKs)
+
+## Cure round (2026-11-01, after the pipeline verdict on `4d79946`)
+
+Panel: 2 APPROVE · 8 APPROVE-WITH-NITS · 2 BLOCK · DevEx
+PASS-WITH-NITS. Cures, one commit each:
+
+- [x] **BLOCK 1 (CLS)** — `aspect-[3/2]` on BOTH media branches
+  (video + reduced-motion still): the 3:2 box is reserved before
+  the media loads, so the headline and score bar no longer shift
+  mid-choreography. Proven by a new E2E test that holds the clip
+  and poster at the network and measures the box + headline before
+  and after the assets land.
+- [x] **BLOCK 2 (WCAG 2.2.2, Level A)** — two stop mechanisms for
+  the looping clip: (a) settling the choreography (tap / keydown /
+  settle timer — the existing `settled` flag) pauses the clip and
+  holds its frame; (b) a ≥44 px pause/play toggle overlaid on the
+  clip's corner (aria-label "Pause the cartoon" / "Play the
+  cartoon", aria-pressed), available from the first frame.
+  Autoplay + loop are otherwise as shipped. Proven by a new E2E
+  test (settle → paused; toggle → play → pause).
+- [x] **Record** — the mc2-create:131 disposition above now reads
+  "identical failure signature" (was "byte-identically"; the three
+  :131 logs differ in scope/duration/paths).
+- [x] **Docs** — `grandpa-media.ts` now carries the full
+  asset-derivation recipe: source locations, the ffmpeg command
+  shape (960×640, CRF 28, audio stripped, faststart), the poster
+  webp resize recipe, "replacement takes must be silent", "a new
+  keyframe means replacing the .webp too", and the size/codec
+  constraints for a replacement (≤ ~400 KB, H.264 mp4, 3:2).
+- [x] **Tidy** — the dead `preload="metadata"` beside `autoPlay`
+  is removed.
+- [x] **Passenger** — the reduced-motion still branch of the
+  verdict media now has its first test guard (new E2E test: IMG
+  tag, no toggle, same reserved 3:2 box); before this round it had
+  zero test references.
+
+Redundancy audit, cure-round addendum (owner standing rule): the
+pause/play toggle is a media control for the clip — the WCAG 2.2.2
+stop mechanism the panel required — not a feature entry: it adds
+no new path to any game job and duplicates no existing control
+(the settle gesture is a choreography snap that now also pauses;
+the toggle is the always-available, labelled stop). PASS.
+
+Gates + E2E for the cured tip are sealed in
+`~/workspace/verdict-grandpa-video-evidence/cure-295/`: tsc 0 ·
+npm test 0 (scripts 850 pass / 11 skipped; src 1879/1879) ·
+test:worker 85/85 · lint-cards GATE PASSED · build:pages 0.
+Verdict spec: full run 9 passed / 1 designed skip / 3 renderer
+crashes in the map aim phase ("Target crashed", verdict not yet
+mounted); the 3 crashed tests re-run — the two new cure tests PASS
+(CLS 59.9 s; settle/toggle 50.3 s) and the reduced-motion guard
+passed in the main run. The third, the pre-existing LOSS test,
+kept failing in map-phase waits (2× renderer crash, 1× canvas
+never visible) — and fails the same way on the UNMODIFIED
+pre-cure tip `4d79946` in a control run (page crashed in the
+retry's map reload), so it is the VM environment class, not this
+cure; its verdict assertions passed in the cured solo run before
+the retry's map reload starved. Mutation proof: with the
+settle-pause line cut, the new settle/toggle test fails at the
+paused poll (15 s timeout, still playing); restored, it passes.
+Next: panel RE-VOTE on the cured tip (separate stage). NO MERGE
+without the owner's per-PR word.
