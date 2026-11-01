@@ -11,7 +11,7 @@
  * replaceSession(null) plus the epoch/event refresh (D6/D14/D15).
  *
  * The one exception to "no raw key removal here" is the paused-run keys
- * (`meridian.run` / `meridian.run.mc2` / `meridian.drop`, the "paused-run" step below): those
+ * (`meridian.run` / `meridian.run.mc2` / `meridian.run.mc3` / `meridian.drop`, the "paused-run" step below): those
  * keys have no owner module — they live in the UI layer
  * (game-app.tsx) — and a surviving run would re-seed the cleared
  * session via seedSessionFromRun when its edition is reopened (D13).
@@ -26,6 +26,7 @@ import { clearTrailHistory } from "./trail.ts";
 import { clearLoopStore } from "./loop/store.ts";
 import { clearColdtrailStore } from "./coldtrail/store.ts";
 import { clearSession, clearDiscardedShadowFrom, SESSION_KEY } from "./session.ts";
+import { clearChallengeAttempts } from "./challenge-attempts.ts";
 
 export type ResetStorage = {
   getItem(key: string): string | null;
@@ -44,6 +45,7 @@ export type ResetHistoryResult = {
 
 const RUN_KEY = "meridian.run";
 const RUN_MC2_KEY = "meridian.run.mc2";
+const RUN_MC3_KEY = "meridian.run.mc3";
 const DROP_KEY = "meridian.drop";
 
 function resolveLocal(explicit?: ResetStorage): ResetStorage | undefined {
@@ -74,7 +76,7 @@ function resolveSession(explicit?: ResetStorage): ResetStorage | undefined {
 function clearPausedRun(session: ResetStorage | undefined): boolean {
   if (!session) return true; // No storage = nothing was ever persisted.
   let ok = true;
-  for (const key of [RUN_KEY, RUN_MC2_KEY, DROP_KEY]) {
+  for (const key of [RUN_KEY, RUN_MC2_KEY, RUN_MC3_KEY, DROP_KEY]) {
     try {
       session.removeItem(key);
     } catch {
@@ -101,6 +103,7 @@ export function resetHistory(
     { store: "trail", clear: () => clearTrailHistory(local) },
     { store: "geodetective", clear: () => clearLoopStore(local) },
     { store: "coldtrail", clear: () => clearColdtrailStore(local) },
+    { store: "challenge-attempts", clear: () => clearChallengeAttempts(local) },
     { store: "session", clear: () => clearSession(session) },
     // Fix round 2: a Start-over reset with no stored session used to
     // leave a preserved shadow behind (clearSession's hadStoredSession

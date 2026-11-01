@@ -1,3 +1,4 @@
+import type { ChallengeWinner } from "./challenge.ts";
 import { isHit } from "./radius.ts";
 import { SCORING_VERSION, type ScoredPlace } from "./scoring.ts";
 import { isPickerDifficulty, type PickerDifficulty } from "./tier-filter.ts";
@@ -128,10 +129,21 @@ export type Run = {
   challengeRadiusKm?: number;
   /**
    * Challenge runs only: which link format created the run, so a
-   * completion re-share is encoded in the SAME format (mc1 stays mc1 —
-   * the frozen contract). Absent on a challenge run means "mc1".
+   * completion re-share follows the origin rule (mc1 stays mc1 — the
+   * frozen contract; mc2 forward-upgrades to mc3 and mc3 stays mc3,
+   * per the 2026-10-31 delta §3.3). Absent on a challenge run means
+   * "mc1".
    */
-  challengeOrigin?: "mc1" | "mc2";
+  challengeOrigin?: "mc1" | "mc2" | "mc3";
+  /**
+   * Challenge runs only (mc3, when the link carried a winner block):
+   * the attested mark, stored verbatim so the run — and a completion
+   * re-share — carries it losslessly. Absent means the link carried
+   * no winner block (an open route). The save boundary validates it
+   * complete-or-discard (governing manifest §Q1-A4): a partial or
+   * implausible block discards the whole save, never just the block.
+   */
+  challengeWinner?: ChallengeWinner;
 };
 
 export function startRun(

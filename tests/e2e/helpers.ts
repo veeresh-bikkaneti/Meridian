@@ -63,6 +63,7 @@ export const RUN_KEY = "meridian.run";
 /** mc2 challenge runs persist under their own key (manifest C8); the
  * phase-reading helpers below accept it via their optional key param. */
 export const MC2_RUN_KEY = "meridian.run.mc2";
+export const MC3_RUN_KEY = "meridian.run.mc3";
 
 // 1x1 fully-transparent PNG (base64) — tile stub, see the header comment.
 // (The previous bytes decoded to semi-transparent GREEN, not transparent;

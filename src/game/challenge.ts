@@ -311,7 +311,7 @@ export function dealChallenge(
 // the named region's own catalog), and only then the app boot.
 // ============================================================================
 
-import { findRegion } from "./regions.ts";
+import { ADMIN1_BY_COUNTRY, findRegion } from "./regions.ts";
 import { regionRadiusKm } from "./radius.ts";
 import { asFameTier, filterByTier, type PickerDifficulty } from "./tier-filter.ts";
 import type { Edition } from "./run.ts";
@@ -322,6 +322,30 @@ const MC2_KEYS: readonly string[] = ["v", "e", "r", "rad", "s", "ids", "seed"];
 /** Locked fairness line (manifest C10) — shown on the welcome card and
  * the creation preview so both kids know the deal before anyone plays. */
 export const CHALLENGE_FAIRNESS_COPY = "Same places, same circle for everyone.";
+/** The version line every mc3-era CREATION text carries (governing
+ * manifest §Q3): it names the app and the requirement in plain words,
+ * and it is load-bearing — a pre-mc3 build gives a first-hop receiver
+ * no guidance at all (§Q1-A7), so the text a player pastes into a chat
+ * is the one place the warning reaches them. Receipts never carry it,
+ * and the retired "(Opens in the newest Meridian.)" appears nowhere. */
+export const CHALLENGE_VERSION_LINE = "(Link opens in the Meridian app — newest version.)";
+
+/**
+ * The fresh-route creation share text (governing manifest §Q3,
+ * byte-exact): hook and facts on the first line with the locked
+ * fairness line, then the version line, then the link alone on the
+ * last line. ONE builder for every fresh-creation surface (picker
+ * preview, mid-run/reveal preview, summary secondary, completion
+ * secondary) so the texts can never drift apart.
+ */
+export function buildFreshChallengeShareText(input: {
+  placeCount: number;
+  regionName: string;
+  radiusKm: number;
+  url: string;
+}): string {
+  return `Challenge a friend! 🎯 ${input.placeCount} places · ${input.regionName} · ${input.radiusKm} km circle. ${CHALLENGE_FAIRNESS_COPY}\n${CHALLENGE_VERSION_LINE}\n${input.url}`;
+}
 /** Welcome-card title for an mc2 receive (Package A, decision D1). */
 export const CHALLENGE_WELCOME_TITLE = "A challenge from a friend!";
 /** Failure class 3 (manifest C12): the link was fine but a region chunk
@@ -335,6 +359,14 @@ export const CHALLENGE_UNKNOWN_CONTENT_COPY =
  * unknown to this build. */
 export const CHALLENGE_UNKNOWN_REGION_COPY =
   "This challenge is for a part of the world this version of Meridian doesn't have yet.";
+/** The version failure's heading (governing manifest §Q1-A6): the
+ * link is well-formed but from a NEWER Meridian than this build —
+ * an unknown version with a canonical body, or an mc3 region this
+ * build's registry predates. The fix is not a resend — it is the
+ * newest Meridian — so the heading says exactly that. It is a
+ * heading of its own, never a line under the broken-link title, and
+ * never fires for a broken link in a known format. */
+export const CHALLENGE_VERSION_COPY = "This challenge needs the newest Meridian.";
 
 /** Every way an mc2 (or dispatched) link can fail, in gate order. */
 export type ChallengeFailReason =
@@ -541,7 +573,14 @@ export interface ChallengeRoute {
   regionName: string;
   radiusKm: number;
   ids: string[];
-  originFormat: "mc1" | "mc2";
+  originFormat: "mc1" | "mc2" | "mc3";
+  /** The winner block, mc3 only: the attested mark the next player
+   * plays against, or null when the link carries none (every mc1/mc2
+   * link, and an open mc3 route). Never undefined — a caller reads a
+   * target only from a non-null block. Package A decodes and carries
+   * it losslessly; Package B's surfaces (welcome goal, verdict,
+   * pass-along) are its consumers. */
+  winner: ChallengeWinner | null;
 }
 
 export type ChallengeLinkResult =
@@ -549,17 +588,42 @@ export type ChallengeLinkResult =
   | { ok: false; reason: ChallengeFailReason };
 
 /**
- * The version dispatcher behind the shipped `#c=` catch-all: mc2
- * fragments go to the strict mc2 decoder; everything else goes to the
- * frozen mc1 decoder, whose failure reasons are a subset of
- * ChallengeFailReason. Unknown future versions fail closed as "format"
- * (the mc1 decoder rejects their prefix), never as a partial decode.
+ * The version dispatcher behind the shipped `#c=` catch-all: mc3 and
+ * mc2 fragments go to their strict decoders; everything else goes to
+ * the frozen mc1 decoder, whose failure reasons are a subset of
+ * ChallengeFailReason. A fragment whose prefix names a version this
+ * build does not know at all (`#c=mc<digits>.` with a number other
+ * than 1, 2, or 3) fails as "version" — the signal the boot turns
+ * into the newest-Meridian remedy (governing manifest §Q1-A6(i)).
+ * The signal is earned by shape only: the prefix must name an
+ * unknown version AND the body must be canonical base64url. A
+ * "version" raised from inside a known format (an mc2 payload whose
+ * inner `v` is not 2, an mc3 with reserved bits set) never takes
+ * this path, and a malformed mc3 keeps the ordinary broken-link path.
  */
 export function decodeChallengeLink(
   fragment: unknown,
   expectedScoringVersion: number,
 ): ChallengeLinkResult {
   if (typeof fragment !== "string") return { ok: false, reason: "format" };
+  if (fragment.startsWith(CHALLENGE_MC3_PREFIX)) {
+    const decoded = decodeChallenge3(fragment, expectedScoringVersion);
+    if (!decoded.ok) return decoded;
+    const region = findRegion(decoded.e, decoded.r);
+    if (!region) return { ok: false, reason: "region" };
+    return {
+      ok: true,
+      route: {
+        edition: decoded.e,
+        regionId: decoded.r,
+        regionName: region.name,
+        radiusKm: decoded.rad,
+        ids: [...decoded.ids],
+        originFormat: "mc3",
+        winner: decoded.winner,
+      },
+    };
+  }
   if (fragment.startsWith(CHALLENGE_MC2_PREFIX)) {
     const decoded = decodeChallenge2(fragment, expectedScoringVersion);
     if (!decoded.ok) return decoded;
@@ -574,8 +638,23 @@ export function decodeChallengeLink(
         radiusKm: decoded.rad,
         ids: [...decoded.ids],
         originFormat: "mc2",
+        winner: null,
       },
     };
+  }
+  // The version class (governing manifest §Q1-A6(i)) is earned only
+  // by a WELL-FORMED unknown-version fragment: an `#c=mc<digits>.`
+  // prefix naming a version this build does not know, followed by a
+  // canonical base64url body. A garbage body under a future-looking
+  // prefix is a broken link, not a version signal, and falls through
+  // to the mc1 decoder's `format` like any other corruption.
+  const unknownVersion = /^#c=mc(\d+)\.([A-Za-z0-9_-]+)$/.exec(fragment);
+  if (
+    unknownVersion &&
+    ![1, 2, 3].includes(Number(unknownVersion[1])) &&
+    isCanonicalBase64Url(unknownVersion[2]!)
+  ) {
+    return { ok: false, reason: "version" };
   }
   const decoded = decodeChallenge(fragment, expectedScoringVersion);
   if (!decoded.ok) return { ok: false, reason: decoded.reason };
@@ -588,6 +667,7 @@ export function decodeChallengeLink(
       radiusKm: CHALLENGE_GLOBE_RADIUS_KM,
       ids: [...decoded.ids],
       originFormat: "mc1",
+      winner: null,
     },
   };
 }
@@ -627,7 +707,7 @@ export function challengeRunFields(route: ChallengeRoute): {
   regionName: string;
   challengeRegionId: string;
   challengeRadiusKm: number;
-  challengeOrigin: "mc1" | "mc2";
+  challengeOrigin: "mc1" | "mc2" | "mc3";
 } {
   if (route.originFormat === "mc1") {
     return {
@@ -639,13 +719,17 @@ export function challengeRunFields(route: ChallengeRoute): {
       challengeOrigin: "mc1",
     };
   }
+  // mc2 and mc3 routes map identically (delta §2: real edition and
+  // region, the link's judged radius); only the origin tag differs,
+  // so a completion re-share can forward-upgrade an mc2 route to mc3
+  // while an mc3 route stays mc3.
   return {
     edition: route.edition,
     regionId: CHALLENGE_REGION_ID,
     regionName: `${route.regionName} challenge`,
     challengeRegionId: route.regionId,
     challengeRadiusKm: route.radiusKm,
-    challengeOrigin: "mc2",
+    challengeOrigin: route.originFormat,
   };
 }
 
@@ -712,11 +796,15 @@ export function buildCreationSources(input: {
  * minimum). Two modes:
  *   "exact" — the sender's played places, verbatim play order, first
  *     ten. A globe exact route encodes as mc1 (byte-identical shares
- *     for the shipped surface); any other edition encodes as mc2.
+ *     for the shipped surface); any other edition encodes as mc3.
  *   "fresh" — deal `count` (default 5) from the first widening source
  *     that can fill it, presented fame-tier ascending so a friend meets
- *     the famous places first. Fresh routes always encode as mc2 —
+ *     the famous places first. Fresh routes always encode as mc3 —
  *     except that nothing here ever re-encodes an mc1 route.
+ * Since the mc3 delta (2026-10-31) mc2 is decode-only: this helper
+ * never emits it. An mc2-origin re-share forward-upgrades to mc3
+ * (delta §3.3) — a re-share must never LOSE information, and mc3
+ * carries everything mc2 did.
  * The radius is THIS build's computed radius for the region, pinned
  * into the link.
  */
@@ -730,13 +818,22 @@ export function createChallengeRoute(input: {
   count?: number;
   dealSeed?: number;
   /**
-   * Completion re-share ONLY (manifest §2.3 + §6): the ORIGIN format of
-   * the route being re-encoded. A received mc2 route re-shares as mc2 —
-   * in every edition, Globe included — and a received mc1 route as mc1.
-   * Sender-side creations (summary, picker) omit it: there the format
-   * follows the edition (globe exact = the shipped mc1 surface).
+   * Completion re-share ONLY (manifest §2.3 + §6, as amended by the
+   * mc3 delta §3.3): the ORIGIN format of the route being re-encoded.
+   * A received mc1 route re-shares as mc1. A received mc2 route
+   * forward-upgrades to mc3 — in every edition, Globe included — and
+   * a received mc3 route stays mc3. Sender-side creations (summary,
+   * picker) omit it: there the format follows the edition (globe
+   * exact = the shipped mc1 surface).
    */
-  originFormat?: "mc1" | "mc2";
+  originFormat?: "mc1" | "mc2" | "mc3";
+  /**
+   * Exact mc3 emission ONLY: the winner block to seal into the link
+   * (delta §2.1). Package A mints none (winner minting is Package B);
+   * the field exists so the codec's one creation path can carry it.
+   * Ignored when the route encodes as mc1, which has no winner block.
+   */
+  winner?: ChallengeWinner;
   /**
    * Completion re-share ONLY: the radius the run was actually judged
    * at (its snapshotted challengeRadiusKm). A link may pin an
@@ -756,18 +853,24 @@ export function createChallengeRoute(input: {
     // Format: an explicit origin (a re-share) wins over the edition
     // default. Without one, an EXACT globe route encodes mc1 (the
     // frozen format — a played globe route shares as the link it
-    // always was) and any other edition encodes mc2. Never route a
-    // RECEIVED mc2 route through encodeChallenge: origin preservation
-    // forbids the downgrade (see ChallengeComplete).
-    const useMc2 =
-      input.originFormat === "mc2" ||
-      (input.originFormat === undefined && input.edition !== "globe");
-    const fragment = useMc2
-      ? encodeChallenge2(
-          { edition: input.edition, regionId: input.regionId, radiusKm: effectiveRadius, ids },
+    // always was) and any other edition encodes mc3. An explicit mc2
+    // or mc3 origin also encodes mc3 (the delta's forward-upgrade —
+    // never a downgrade to mc1, and mc2 is never emitted again).
+    const useMc1 =
+      input.originFormat === "mc1" ||
+      (input.originFormat === undefined && input.edition === "globe");
+    const fragment = useMc1
+      ? encodeChallenge(ids, input.scoringVersion)
+      : encodeChallenge3(
+          {
+            edition: input.edition,
+            regionId: input.regionId,
+            radiusKm: effectiveRadius,
+            ids,
+            winner: input.winner,
+          },
           input.scoringVersion,
-        )
-      : encodeChallenge(ids, input.scoringVersion);
+        );
     return { fragment, placeCount: ids.length, regionName: region.name, radiusKm: effectiveRadius, dealtIds: [...ids] };
   }
   const count = input.count ?? CHALLENGE_MIN_PLACES;
@@ -791,7 +894,7 @@ export function createChallengeRoute(input: {
       .map((id, index) => ({ id, index }))
       .sort((a, b) => (tierOf.get(a.id) ?? 3) - (tierOf.get(b.id) ?? 3) || a.index - b.index)
       .map((entry) => entry.id);
-    const fragment = encodeChallenge2(
+    const fragment = encodeChallenge3(
       { edition: input.edition, regionId: input.regionId, radiusKm: radius, ids: ordered },
       input.scoringVersion,
     );
@@ -804,3 +907,597 @@ export function createChallengeRoute(input: {
  * mistyped, truncated, tampered with, or minted under another scoring
  * version. The fix is a fresh link from the friend, so say exactly that. */
 export const CHALLENGE_BROKEN_LINK_COPY = "Ask your friend to send the link again.";
+
+// ============================================================================
+// mc3 — compact binary challenges (delta manifest 2026-10-31, Package A).
+//
+// mc1 and mc2 above are FROZEN as decoders: links already sitting in
+// family chats must decode forever, but neither format is emitted any
+// more (mc1 survives only as the sender-side exact-Globe share, the
+// shipped surface the delta expressly keeps). mc3 packs the same route
+// into raw bytes instead of JSON — the owner's 274-char Nebraska mc2
+// payload becomes 52 chars (62 with a winner block) — and adds room
+// for the winner block the winner-declaration design (Package B)
+// rides on. A build older than mc3 can say none of this: it has never
+// heard of the format and shows only "Could not load this challenge."
+// for an mc3 link (§Q1-A7) — no doc or screen may promise it more:
+//
+//   #c=mc3.<base64url(canonical, unpadded) of the packed body>
+//   B0    flags: bits 7–6 edition (0 globe, 1 country, 2 state),
+//         bit 5 = W (a winner block follows the ids), bits 4–0
+//         reserved, must be 0
+//   B1    scoring version `s`, a full byte
+//   rad   hit/miss radius, canonical LEB128 varint, at most 2 bytes
+//   region  the region registry index (below), canonical LEB128
+//         varint, at most 2 bytes — 1 byte for every index < 128,
+//         which is all of today's
+//   count   5–10
+//   ids   count × uint24 big-endian GeoNames numbers
+//   winner (iff W): sender hit-mask uint16 BE, then the sender's
+//         score and the chain's best score as varints (≤3 bytes
+//         each), then the sender's attempts (≤2 bytes, 1–255)
+//   seal  FNV-1a-32 (the Fowler–Noll–Vo hash) over ALL preceding
+//         bytes, uint32 big-endian — a typo-catcher that fails the
+//         decode on any copying damage, never a proof of anything
+//
+// The fragment is capped at 127 chars total. Decoding fails closed in
+// the manifest's gate order (§2.5): the seal is checked over raw bytes
+// before any field is trusted, and the body must end exactly where the
+// layout says — a winner block can never be silently truncated into
+// an open route, nor an open route grow a partial block.
+// ============================================================================
+
+import { PLACE_SCORE_CAP, REGION_BONUS, comboForStreak } from "./scoring.ts";
+
+export const CHALLENGE_MC3_PREFIX = "#c=mc3.";
+const MC3_FRAGMENT_MAX_CHARS = 127;
+/** 1 (B0) + 1 (s) + 1 (rad) + 1 (region) + 1 (count) + 15 (5 ids) + 4 (seal). */
+const MC3_MIN_BODY_BYTES = 24;
+
+/**
+ * The mc3 region registry (governing council manifest §Q1-A3). The
+ * region field in an mc3 link is a varint index into THESE lists, per
+ * edition — an index is a promise made to every link already shared,
+ * so the registry is frozen and append-only: an entry is never
+ * reassigned, removed, or reordered, and new regions APPEND. The
+ * registry is explicit on purpose: it does NOT derive from the order
+ * of regions.ts (which may re-sort freely); a guard test
+ * (challenge-mc3.test.ts) instead checks that every slug here still
+ * resolves via findRegion, plus a no-shrink/no-reorder snapshot of the
+ * lists themselves. State entries also record their parent-country
+ * slug, and decode resolves a state index only within its parent —
+ * the slug must be an admin-1 of that parent, not just any admin-1
+ * this build knows. An index past the end of the receiver's registry
+ * fails `region` (registry skew — the link was minted by a newer
+ * build; the receive path maps it to the version-remedy class).
+ */
+export const MC3_COUNTRY_REGION_IDS: readonly string[] = [
+  "united-states",
+  "canada",
+  "mexico",
+  "brazil",
+  "united-kingdom",
+  "france",
+  "germany",
+  "italy",
+  "egypt",
+  "india",
+  "china",
+  "japan",
+  "australia",
+];
+
+export interface Mc3StateRegionEntry {
+  slug: string;
+  /** Parent-country slug: decode resolves this index only within it. */
+  parent: string;
+}
+
+export const MC3_STATE_REGIONS: readonly Mc3StateRegionEntry[] = [
+  { slug: "alabama", parent: "united-states" },
+  { slug: "alaska", parent: "united-states" },
+  { slug: "arizona", parent: "united-states" },
+  { slug: "arkansas", parent: "united-states" },
+  { slug: "california", parent: "united-states" },
+  { slug: "colorado", parent: "united-states" },
+  { slug: "connecticut", parent: "united-states" },
+  { slug: "delaware", parent: "united-states" },
+  { slug: "florida", parent: "united-states" },
+  { slug: "georgia", parent: "united-states" },
+  { slug: "hawaii", parent: "united-states" },
+  { slug: "idaho", parent: "united-states" },
+  { slug: "illinois", parent: "united-states" },
+  { slug: "indiana", parent: "united-states" },
+  { slug: "iowa", parent: "united-states" },
+  { slug: "kansas", parent: "united-states" },
+  { slug: "kentucky", parent: "united-states" },
+  { slug: "louisiana", parent: "united-states" },
+  { slug: "maine", parent: "united-states" },
+  { slug: "maryland", parent: "united-states" },
+  { slug: "massachusetts", parent: "united-states" },
+  { slug: "michigan", parent: "united-states" },
+  { slug: "minnesota", parent: "united-states" },
+  { slug: "mississippi", parent: "united-states" },
+  { slug: "missouri", parent: "united-states" },
+  { slug: "montana", parent: "united-states" },
+  { slug: "nebraska", parent: "united-states" },
+  { slug: "nevada", parent: "united-states" },
+  { slug: "new-hampshire", parent: "united-states" },
+  { slug: "new-jersey", parent: "united-states" },
+  { slug: "new-mexico", parent: "united-states" },
+  { slug: "new-york", parent: "united-states" },
+  { slug: "north-carolina", parent: "united-states" },
+  { slug: "north-dakota", parent: "united-states" },
+  { slug: "ohio", parent: "united-states" },
+  { slug: "oklahoma", parent: "united-states" },
+  { slug: "oregon", parent: "united-states" },
+  { slug: "pennsylvania", parent: "united-states" },
+  { slug: "rhode-island", parent: "united-states" },
+  { slug: "south-carolina", parent: "united-states" },
+  { slug: "south-dakota", parent: "united-states" },
+  { slug: "tennessee", parent: "united-states" },
+  { slug: "texas", parent: "united-states" },
+  { slug: "utah", parent: "united-states" },
+  { slug: "vermont", parent: "united-states" },
+  { slug: "virginia", parent: "united-states" },
+  { slug: "washington", parent: "united-states" },
+  { slug: "west-virginia", parent: "united-states" },
+  { slug: "wisconsin", parent: "united-states" },
+  { slug: "wyoming", parent: "united-states" },
+];
+
+/** The state slugs in registry order (derived from MC3_STATE_REGIONS). */
+export const MC3_STATE_REGION_IDS: readonly string[] = MC3_STATE_REGIONS.map(
+  (entry) => entry.slug,
+);
+
+/** The winner block (governing manifest §Q2): an attested mark, never
+ * a verified one. The first three fields attest the MINTER of the
+ * link — `senderMask` is their hit pattern over the route in play
+ * order (bit (15−i) set ⟺ they landed inside the circle on stop i),
+ * `senderScore` their score, `senderAttempts` their completions of
+ * this route including the one that minted the link. `bestScore`
+ * alone attests the CHAIN: the best score yet on this route, whoever
+ * set it. No surface may attribute the sender's tries to the crown. */
+export interface ChallengeWinner {
+  senderMask: number;
+  senderScore: number;
+  bestScore: number;
+  senderAttempts: number;
+}
+
+export interface DecodedChallenge3 {
+  ok: true;
+  v: 3;
+  e: Edition;
+  r: string;
+  rad: number;
+  s: number;
+  ids: string[];
+  /** The decoded winner block, or null — a discriminated union, so
+   * no caller can read a target from an absent block by accident. */
+  winner: ChallengeWinner | null;
+}
+
+export type ChallengeDecode3 = DecodedChallenge3 | { ok: false; reason: ChallengeFailReason };
+
+function fail3(reason: ChallengeFailReason): { ok: false; reason: ChallengeFailReason } {
+  return { ok: false, reason };
+}
+
+/**
+ * FNV-1a over raw BYTES — the byte-wise sibling of fnv1aText. The text
+ * version hashes charCodes (the mc1/mc2 seals cover strings); an mc3
+ * body is bytes that are not text at all, so it needs its own walk.
+ * The existing helpers are untouched: their seals must not change.
+ */
+function fnv1aBytes(bytes: Uint8Array): number {
+  let h = 2166136261;
+  for (let i = 0; i < bytes.length; i++) {
+    h ^= bytes[i]!;
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+/** Canonical base64url of raw bytes (the toBase64Url discipline,
+ * applied to a byte array instead of a UTF-8 string). */
+function toBase64UrlBytes(bytes: Uint8Array): string {
+  let bin = "";
+  for (let i = 0; i < bytes.length; i++) {
+    bin += String.fromCharCode(bytes[i]!);
+  }
+  return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+
+/**
+ * Canonical base64url as a shape test only (no decoding): non-empty,
+ * alphabet-clean, a possible length (never % 4 === 1), and the final
+ * character's unused low bits zero. This is the one definition of
+ * "canonical" for the whole file — the strict decoders enforce it
+ * before decoding, and the dispatcher's well-formedness gate
+ * (§Q1-A6(i)) consults it, so the two can never disagree.
+ */
+function isCanonicalBase64Url(body: string): boolean {
+  if (body.length === 0 || body.length % 4 === 1 || /[^A-Za-z0-9_-]/.test(body)) {
+    return false;
+  }
+  const rem = body.length % 4;
+  if (rem === 2 || rem === 3) {
+    const lastVal = B64URL_ALPHABET.indexOf(body[body.length - 1]!);
+    const mask = rem === 2 ? 0x0f : 0x03;
+    if (lastVal < 0 || (lastVal & mask) !== 0) return false;
+  }
+  return true;
+}
+
+/**
+ * Canonical base64url decode to raw bytes. This mirrors fromBase64Url
+ * check for check — same alphabet, same length rule, same
+ * trailing-bits-must-be-zero rule — but returns the bytes themselves:
+ * fromBase64Url decodes through a UTF-8 TextDecoder, and a packed
+ * binary body is not required to be valid UTF-8, so reusing it
+ * literally would reject (or mangle) legal mc3 bodies.
+ */
+function fromBase64UrlBytes(body: string): Uint8Array | null {
+  if (!isCanonicalBase64Url(body)) return null;
+  const rem = body.length % 4;
+  const b64 =
+    body.replace(/-/g, "+").replace(/_/g, "/") + (rem === 0 ? "" : "=".repeat(4 - rem));
+  try {
+    const bin = atob(b64);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) {
+      bytes[i] = bin.charCodeAt(i);
+    }
+    return bytes;
+  } catch {
+    return null;
+  }
+}
+
+/** Canonical LEB128 encoding (shortest form by construction). */
+function encodeVarint(value: number): number[] {
+  const out: number[] = [];
+  let v = value;
+  do {
+    let byte = v & 0x7f;
+    v = Math.floor(v / 128);
+    if (v > 0) byte |= 0x80;
+    out.push(byte);
+  } while (v > 0);
+  return out;
+}
+
+/**
+ * Read one canonical LEB128 varint from `bytes` starting at `offset`,
+ * never reading at or past `limit` (the seal's first byte) and never
+ * consuming more than `maxBytes`. Returns null — a `format` failure —
+ * for an unterminated varint (the walk hits the limit or the cap with
+ * the continuation bit still set) or a non-canonical one. Canonical
+ * LEB128 is the SHORTEST form (governing manifest §Q1-A1): a non-final
+ * 0x80 group is normal (rad 128 encodes as 80 01); the overlong
+ * marker is a multi-byte varint whose final group is 0x00. The
+ * re-encode length check below enforces exactly that.
+ */
+function readVarint(
+  bytes: Uint8Array,
+  offset: number,
+  maxBytes: number,
+  limit: number,
+): { value: number; nextOffset: number } | null {
+  let value = 0;
+  let shift = 0;
+  let consumed = 0;
+  for (;;) {
+    if (consumed >= maxBytes || offset + consumed >= limit) return null;
+    const byte = bytes[offset + consumed]!;
+    consumed++;
+    value += (byte & 0x7f) * 2 ** shift;
+    shift += 7;
+    if ((byte & 0x80) === 0) break;
+  }
+  if (encodeVarint(value).length !== consumed) return null;
+  return { value, nextOffset: offset + consumed };
+}
+
+/** The mc3 region index for one (edition, region), or null when the
+ * registry does not name it — the encoder's side of the registry. */
+function mc3RegionIndex(edition: Edition, regionId: string): number | null {
+  if (edition === "globe") return regionId === "globe" ? 0 : null;
+  const table = edition === "country" ? MC3_COUNTRY_REGION_IDS : MC3_STATE_REGION_IDS;
+  const index = table.indexOf(regionId);
+  return index >= 0 ? index : null;
+}
+
+/**
+ * One stop's sequential score ceiling under a streak of `streak`
+ * consecutive hits INCLUDING this stop (governing manifest §Q2-B1):
+ * a perfect-distance, hardest-tier hit scores
+ * min(PLACE_SCORE_CAP, round(100 × 2.5 × combo)) plus the region
+ * bonus. Every constant comes from scoring.ts — never a literal —
+ * so a scoring change re-derives the bound in the same breath, and
+ * the tripwire test (a synthetic maximum route driven through
+ * scorePlace itself) notices if the two ever drift apart.
+ */
+function mc3StopBound(streak: number): number {
+  return (
+    Math.min(PLACE_SCORE_CAP, Math.round(100 * 2.5 * comboForStreak(streak))) +
+    REGION_BONUS
+  );
+}
+
+/** The most any player can score on a route of `placeCount` stops:
+ * the sequential bound summed over an all-hits route (n=10 → 3,340).
+ * A flat per-place bound (415 × n = 4,150) is sequentially
+ * unattainable — stop 1 caps at 278 — and would wave through
+ * impossible scores, so no gate may use it. */
+export function routeCeiling(placeCount: number): number {
+  let total = 0;
+  for (let streak = 1; streak <= placeCount; streak++) {
+    total += mc3StopBound(streak);
+  }
+  return total;
+}
+
+/** The most the SENDER can have scored, given their own hit mask:
+ * the sequential bound summed over the mask's hits in play order,
+ * each stop's streak read from the mask itself. */
+function mc3MaskBound(senderMask: number, placeCount: number): number {
+  let total = 0;
+  let streak = 0;
+  for (let i = 0; i < placeCount; i++) {
+    if ((senderMask & (1 << (15 - i))) !== 0) {
+      streak += 1;
+      total += mc3StopBound(streak);
+    } else {
+      streak = 0;
+    }
+  }
+  return total;
+}
+
+function mc3WinnerLegal(winner: ChallengeWinner, placeCount: number): boolean {
+  if (!Number.isInteger(winner.senderMask) || winner.senderMask < 0 || winner.senderMask > 0xffff) return false;
+  // Bits at or beyond the route's stops are not the sender's to claim.
+  if ((winner.senderMask & ((1 << (16 - placeCount)) - 1)) !== 0) return false;
+  if (!Number.isInteger(winner.senderScore) || winner.senderScore < 0) return false;
+  if (!Number.isInteger(winner.bestScore) || winner.bestScore < 0) return false;
+  if (!Number.isInteger(winner.senderAttempts) || winner.senderAttempts < 1 || winner.senderAttempts > 255) return false;
+  if (winner.bestScore < winner.senderScore) return false;
+  // A zero target is not a target (§Q2-B1(iv)): rejected at decode,
+  // and the encoder never mints one — an all-miss completion
+  // chain-starts as an open route instead.
+  if (winner.bestScore < 1) return false;
+  if (winner.senderScore > mc3MaskBound(winner.senderMask, placeCount)) return false;
+  if (winner.bestScore > routeCeiling(placeCount)) return false;
+  return true;
+}
+
+/**
+ * The save-boundary form of the same legality (governing manifest
+ * §Q1-A4): a stored winner block must be COMPLETE and plausible, or
+ * the save carrying it is discarded whole — never silently dropped
+ * while the save resumes. Structural check first (a save is JSON, so
+ * fields can be missing or mistyped — Number.isInteger rejects both),
+ * then the decode gates themselves.
+ */
+export function isLegalWinnerBlock(value: unknown, placeCount: number): value is ChallengeWinner {
+  if (!value || typeof value !== "object") return false;
+  const w = value as Record<string, unknown>;
+  const candidate: ChallengeWinner = {
+    senderMask: w.senderMask as number,
+    senderScore: w.senderScore as number,
+    bestScore: w.bestScore as number,
+    senderAttempts: w.senderAttempts as number,
+  };
+  return mc3WinnerLegal(candidate, placeCount);
+}
+
+/**
+ * Mint an mc3 challenge fragment. Throws on illegal input (mirroring
+ * encodeChallenge2's discipline): TypeError for bad ids, an unknown
+ * (edition, region) pair, an unpinnable radius, or an implausible
+ * winner block; RangeError for a scoring version a byte cannot carry.
+ * Attempts above 255 saturate at 255 (governing manifest §Q2-B2):
+ * the count is a plain fact about persistence, and the wire field
+ * is its ceiling.
+ */
+export function encodeChallenge3(
+  input: {
+    edition: Edition;
+    regionId: string;
+    radiusKm: number;
+    ids: readonly string[];
+    winner?: ChallengeWinner;
+  },
+  scoringVersion: number,
+): string {
+  if (!Number.isInteger(scoringVersion) || scoringVersion < 1 || scoringVersion > 255) {
+    throw new RangeError("encodeChallenge3: scoringVersion must be an integer in 1..255");
+  }
+  const regionIndex = mc3RegionIndex(input.edition, input.regionId);
+  if (regionIndex === null || !legalRegionPair(input.edition, input.regionId)) {
+    throw new TypeError(
+      `encodeChallenge3: unknown region ${input.edition}/${input.regionId}`,
+    );
+  }
+  if (!Number.isInteger(input.radiusKm) || input.radiusKm <= 0) {
+    throw new TypeError("encodeChallenge3: radiusKm must be a positive whole number of kilometres");
+  }
+  if (input.edition === "globe" && input.radiusKm !== CHALLENGE_GLOBE_RADIUS_KM) {
+    throw new TypeError("encodeChallenge3: the globe radius is always 750 km");
+  }
+  if (input.edition !== "globe") {
+    const envelope = MC2_RADIUS_ENVELOPE[input.edition];
+    if (input.radiusKm < envelope.minKm || input.radiusKm > envelope.maxKm) {
+      throw new TypeError("encodeChallenge3: radiusKm is outside the edition envelope");
+    }
+  }
+  if (!legalIds(input.ids)) {
+    throw new TypeError("encodeChallenge3: ids must be 5-10 unique gn-<number> ids");
+  }
+  const nums = input.ids.map((id) => Number(id.slice("gn-".length)));
+  for (let i = 0; i < nums.length; i++) {
+    // A uint24 carries exactly the canonical "gn-<number>" spelling:
+    // 0 is not a place, a leading zero would re-spell the id on
+    // decode, and anything past 0xffffff does not fit the field.
+    if (!Number.isInteger(nums[i]) || nums[i]! < 1 || nums[i]! > 0xffffff || `gn-${nums[i]}` !== input.ids[i]) {
+      throw new TypeError("encodeChallenge3: ids must be canonical gn-<number> ids in 1..16777215");
+    }
+  }
+  let winner: ChallengeWinner | undefined;
+  if (input.winner) {
+    // Attempts saturate at the field's ceiling (governing manifest
+    // §Q2-B2): the count is a plain fact about persistence, and the
+    // wire field tops at 255. Every other implausibility — including
+    // a best score of 0, which is never minted (§Q2-B1(iv)) — throws.
+    winner = {
+      ...input.winner,
+      senderAttempts: Math.min(input.winner.senderAttempts, 255),
+    };
+    if (!mc3WinnerLegal(winner, input.ids.length)) {
+      throw new TypeError("encodeChallenge3: winner block is implausible for this route");
+    }
+  }
+  const editionCode = input.edition === "globe" ? 0 : input.edition === "country" ? 1 : 2;
+  const body: number[] = [(editionCode << 6) | (winner ? 0x20 : 0), scoringVersion];
+  body.push(...encodeVarint(input.radiusKm));
+  body.push(...encodeVarint(regionIndex), input.ids.length);
+  for (const num of nums) {
+    body.push((num >> 16) & 0xff, (num >> 8) & 0xff, num & 0xff);
+  }
+  if (winner) {
+    body.push((winner.senderMask >> 8) & 0xff, winner.senderMask & 0xff);
+    body.push(...encodeVarint(winner.senderScore));
+    body.push(...encodeVarint(winner.bestScore));
+    body.push(...encodeVarint(winner.senderAttempts));
+  }
+  const seal = fnv1aBytes(Uint8Array.from(body));
+  const bytes = Uint8Array.from([
+    ...body,
+    (seal >> 24) & 0xff,
+    (seal >> 16) & 0xff,
+    (seal >> 8) & 0xff,
+    seal & 0xff,
+  ]);
+  return CHALLENGE_MC3_PREFIX + toBase64UrlBytes(bytes);
+}
+
+/**
+ * Strictly decode an mc3 fragment, in the manifest's gate order
+ * (§2.5): length → prefix → canonical base64 → minimum length → SEAL
+ * → B0 (reserved bits, edition) → scoring byte → varint walk → region
+ * → radius binding (the same envelopes and ±10% rule as mc2) → ids →
+ * winner plausibility → exact end of body. The seal gates before
+ * semantics because it needs no parsing — a tampered link dies there
+ * whichever field was touched.
+ */
+export function decodeChallenge3(
+  fragment: unknown,
+  expectedScoringVersion: number,
+): ChallengeDecode3 {
+  if (typeof fragment === "string" && fragment.length > MC3_FRAGMENT_MAX_CHARS) {
+    return fail3("tooBig");
+  }
+  if (typeof fragment !== "string" || !fragment.startsWith(CHALLENGE_MC3_PREFIX)) {
+    return fail3("format");
+  }
+  const bytes = fromBase64UrlBytes(fragment.slice(CHALLENGE_MC3_PREFIX.length));
+  if (bytes === null) return fail3("format");
+  if (bytes.length < MC3_MIN_BODY_BYTES) return fail3("format");
+  const sealOffset = bytes.length - 4;
+  const storedSeal =
+    ((bytes[sealOffset]! << 24) |
+      (bytes[sealOffset + 1]! << 16) |
+      (bytes[sealOffset + 2]! << 8) |
+      bytes[sealOffset + 3]!) >>>
+    0;
+  if (fnv1aBytes(bytes.subarray(0, sealOffset)) !== storedSeal) return fail3("format");
+  const b0 = bytes[0]!;
+  if ((b0 & 0x1f) !== 0) return fail3("version");
+  const editionCode = b0 >> 6;
+  if (editionCode === 3) return fail3("edition");
+  const edition: Edition = editionCode === 0 ? "globe" : editionCode === 1 ? "country" : "state";
+  const hasWinner = (b0 & 0x20) !== 0;
+  const s = bytes[1]!;
+  if (s !== expectedScoringVersion) return fail3("scoring");
+  let offset = 2;
+  const radRead = readVarint(bytes, offset, 2, sealOffset);
+  if (!radRead) return fail3("format");
+  const rad = radRead.value;
+  offset = radRead.nextOffset;
+  const regionRead = readVarint(bytes, offset, 2, sealOffset);
+  if (!regionRead) return fail3("format");
+  const regionIndex = regionRead.value;
+  offset = regionRead.nextOffset;
+  const regionId =
+    edition === "globe"
+      ? regionIndex === 0
+        ? "globe"
+        : null
+      : edition === "country"
+        ? (MC3_COUNTRY_REGION_IDS[regionIndex] ?? null)
+        : (MC3_STATE_REGIONS[regionIndex]?.slug ?? null);
+  if (regionId === null) return fail3("region");
+  if (edition === "state") {
+    // A state index resolves only within its recorded parent
+    // (§Q1-A3): the slug must be an admin-1 OF that parent in this
+    // build's atlas, not merely an admin-1 somewhere in it.
+    const entry = MC3_STATE_REGIONS[regionIndex]!;
+    const parentAdmin1 = ADMIN1_BY_COUNTRY[entry.parent] ?? [];
+    if (!parentAdmin1.some((r) => r.id === entry.slug)) return fail3("region");
+  }
+  if (!findRegion(edition, regionId)) return fail3("region");
+  const computed = regionRadiusKm(edition, regionId);
+  if (computed === null) return fail3("radius");
+  if (edition === "globe") {
+    if (rad !== CHALLENGE_GLOBE_RADIUS_KM) return fail3("radius");
+  } else {
+    const envelope = MC2_RADIUS_ENVELOPE[edition];
+    if (rad < envelope.minKm || rad > envelope.maxKm) return fail3("radius");
+    if (Math.abs(rad - computed) > computed * MC2_RADIUS_TOLERANCE) return fail3("radius");
+  }
+  if (offset >= sealOffset) return fail3("format");
+  const count = bytes[offset]!;
+  offset++;
+  if (count < CHALLENGE_MIN_PLACES || count > CHALLENGE_MAX_PLACES) return fail3("format");
+  if (offset + count * 3 > sealOffset) return fail3("format");
+  const ids: string[] = [];
+  const seenNums = new Set<number>();
+  for (let i = 0; i < count; i++) {
+    const num =
+      (bytes[offset]! << 16) | (bytes[offset + 1]! << 8) | bytes[offset + 2]!;
+    offset += 3;
+    if (num === 0 || seenNums.has(num)) return fail3("format");
+    seenNums.add(num);
+    ids.push(`gn-${num}`);
+  }
+  let winner: ChallengeWinner | undefined;
+  if (hasWinner) {
+    if (offset + 2 > sealOffset) return fail3("format");
+    const mask = (bytes[offset]! << 8) | bytes[offset + 1]!;
+    offset += 2;
+    const senderRead = readVarint(bytes, offset, 3, sealOffset);
+    if (!senderRead) return fail3("format");
+    offset = senderRead.nextOffset;
+    const bestRead = readVarint(bytes, offset, 3, sealOffset);
+    if (!bestRead) return fail3("format");
+    offset = bestRead.nextOffset;
+    const attemptsRead = readVarint(bytes, offset, 2, sealOffset);
+    if (!attemptsRead) return fail3("format");
+    offset = attemptsRead.nextOffset;
+    const candidate: ChallengeWinner = {
+      senderMask: mask,
+      senderScore: senderRead.value,
+      bestScore: bestRead.value,
+      senderAttempts: attemptsRead.value,
+    };
+    if (!mc3WinnerLegal(candidate, count)) {
+      return fail3("format");
+    }
+    winner = candidate;
+  }
+  if (offset !== sealOffset) return fail3("format");
+  return { ok: true, v: 3, e: edition, r: regionId, rad, s, ids, winner: winner ?? null };
+}
