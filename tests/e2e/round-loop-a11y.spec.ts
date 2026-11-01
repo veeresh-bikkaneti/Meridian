@@ -401,11 +401,11 @@ const zoomLiveText = (page: Page): Promise<string[]> =>
 
 /** RETURN_DURATION_MS in src/map/zoom-space.ts (pinned by its unit test). */
 const RETURN_BEAT_MS = 1200;
-/** When the in-page timer presses Zoom in, measured from the Next place
- *  click (the return beat's start). 450 ms, not later: the page timer
- *  slips ~50–350 ms under load on this VM, keeping the press inside
- *  ~400–850 ms and well clear of the 1200 ms beat end. */
-const MID_BEAT_PRESS_MS = 450;
+/** Fix round 4: the press fires only once the LIVE camera zoom has left
+ *  the settled pre-return level by at least this much (measured, not
+ *  assumed from a timer). 0.6, not 0.5: at exactly 0.5 below, the
+ *  pre-fix path (zoomIn from the live zoom) rounds back to pre + 1. */
+const IN_FLIGHT_MIN_DELTA = 0.6;
 
 test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return level and announces it", async ({
   page,
@@ -414,29 +414,72 @@ test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return le
   const expected = preReturn + 1;
   // Node <-> browser round trips on this VM and on CI runners (click
   // 1.7–4.5 s, evaluate up to ~7 s) are longer than the 1200 ms beat, so
-  // a test-side click cannot be trusted to land inside it (CI run
-  // 41215473245 pressed after the beat: 2 -> 3). The Next place click,
-  // the timer, and the Zoom in press therefore all run in the page, on
-  // the page clock. The press clicks the REAL ZoomControls button, so
-  // React's onClick -> handleZoomIn path is the one under test. Every
-  // data-zoom change and "Zoom level N" announcement is time-stamped
-  // from the Next place click.
+  // the Next place click and the Zoom in press both run in the page.
+  //
+  // Fix round 4: the in-beat condition is MEASURED. The test reads the
+  // live MapLibre camera and the beat controller through React's own
+  // fiber links on the .satellite-map element (test-side read only; no
+  // src hook): the SatelliteMap component's refs hold the Map
+  // (getZoom/stop/on) and the ZoomSpaceController (beatKind). A rAF loop
+  // started at the Next place click presses the REAL Zoom in button in
+  // the first frame where beatKind === "return" AND the live zoom is at
+  // least IN_FLIGHT_MIN_DELTA below both the settled pre-return level
+  // and the live zoom read at the Next click — truly mid-flight. A test-side zoomend listener (registered after the
+  // app's) records every zoomend with its live zoom, flagged when it
+  // fires synchronously inside the press: that is the beat's stop().
+  // If the condition is never met before the beat ends, the test fails
+  // loudly; it never presses on an assumed timer.
   const press = await page.evaluate(
-    ({ pressAt }) => {
-      const w = window as unknown as {
-        __z3d: {
-          zoom: { t: number; z: string | null }[];
-          announce: { t: number; text: string }[];
-        };
+    ({ minDelta, pre, beatMs }) => {
+      type Log = {
+        zoom: { t: number; z: string | null }[];
+        announce: { t: number; text: string }[];
+        zoomend: { t: number; z: number; inPress: boolean }[];
       };
-      const map = document.querySelector(".satellite-map")!;
-      const log = { zoom: [] as { t: number; z: string | null }[], announce: [] as { t: number; text: string }[] };
+      const w = window as unknown as { __z3d: Log };
+      const wrapper = document.querySelector(".satellite-map")!;
+      const log: Log = { zoom: [], announce: [], zoomend: [] };
       w.__z3d = log;
+      // React fiber walk (test-only read): find the SatelliteMap refs.
+      type LiveMap = { getZoom(): number; stop(): unknown; on(e: string, f: () => void): unknown };
+      type Ctrl = { beatKind: string | null; skipChoreography(): unknown };
+      const fiberKey = Object.keys(wrapper).find((k) => k.startsWith("__reactFiber$"));
+      let liveMap: LiveMap | null = null;
+      let ctrl: Ctrl | null = null;
+      type Hook = { memoizedState: unknown; next: Hook | null };
+      type Fiber = { type: unknown; memoizedState: unknown; return: Fiber | null };
+      let f = fiberKey
+        ? ((wrapper as unknown as Record<string, unknown>)[fiberKey] as Fiber)
+        : null;
+      while (f && !(liveMap && ctrl)) {
+        if (typeof f.type === "function") {
+          let h = f.memoizedState as Hook | null;
+          while (h && typeof h === "object" && "next" in h) {
+            const s = h.memoizedState as { current?: unknown } | null;
+            const c = s && typeof s === "object" && "current" in s ? s.current : null;
+            if (c && typeof c === "object") {
+              const o = c as Record<string, unknown>;
+              if (!liveMap && typeof o.getZoom === "function" && typeof o.stop === "function" && typeof o.on === "function")
+                liveMap = c as LiveMap;
+              if (!ctrl && typeof o.skipChoreography === "function") ctrl = c as Ctrl;
+            }
+            h = h.next;
+          }
+        }
+        f = f.return;
+      }
+      if (!liveMap || !ctrl) {
+        throw new Error(`3D(a): fiber walk found liveMap=${!!liveMap} ctrl=${!!ctrl}`);
+      }
+      const m = liveMap;
+      const cc = ctrl;
       let t0 = 0;
       const now = () => Math.round(performance.now() - t0);
+      let inPress = false;
+      m.on("zoomend", () => log.zoomend.push({ t: now(), z: m.getZoom(), inPress }));
       new MutationObserver(() =>
-        log.zoom.push({ t: now(), z: map.getAttribute("data-zoom") }),
-      ).observe(map, { attributes: true, attributeFilter: ["data-zoom"] });
+        log.zoom.push({ t: now(), z: wrapper.getAttribute("data-zoom") }),
+      ).observe(wrapper, { attributes: true, attributeFilter: ["data-zoom"] });
       const lastByEl = new Map<Element, string>();
       new MutationObserver(() => {
         document.querySelectorAll('[aria-live="polite"]').forEach((el) => {
@@ -457,49 +500,106 @@ test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return le
         }) as HTMLButtonElement | undefined;
       const next = findButton("Next place");
       if (!next) throw new Error("3D(a): no Next place button");
-      const zoomAtNext = map.getAttribute("data-zoom");
+      const zoomAtNext = wrapper.getAttribute("data-zoom");
+      const liveAtNext = m.getZoom();
+      const frames: { t: number; z: number; bk: string | null }[] = [];
       t0 = performance.now();
       next.click();
       return new Promise<{
+        pressed: boolean;
+        reason: string;
         offsetMs: number;
         zoomAtNext: string | null;
+        liveAtNext: number;
+        liveAtPress: number | null;
+        beatAtPress: string | null;
         zoomAtPress: string | null;
         zoomChangesBeforePress: number;
-        found: boolean;
+        pressZoomends: { t: number; z: number }[];
+        frames: { t: number; z: number; bk: string | null }[];
       }>((resolve) => {
-        setTimeout(() => {
-          const offsetMs = now();
-          const zoomAtPress = map.getAttribute("data-zoom");
-          const zoomChangesBeforePress = log.zoom.length;
-          const zoomIn = findButton("Zoom in");
-          zoomIn?.click();
-          resolve({ offsetMs, zoomAtNext, zoomAtPress, zoomChangesBeforePress, found: !!zoomIn });
-        }, pressAt);
+        let sawReturn = false;
+        const done = (pressed: boolean, reason: string, extra: Partial<{ liveAtPress: number; beatAtPress: string | null; zoomAtPress: string | null; zoomChangesBeforePress: number; pressZoomends: { t: number; z: number }[] }> = {}) =>
+          resolve({
+            pressed,
+            reason,
+            offsetMs: now(),
+            zoomAtNext,
+            liveAtNext,
+            liveAtPress: extra.liveAtPress ?? null,
+            beatAtPress: extra.beatAtPress ?? null,
+            zoomAtPress: extra.zoomAtPress ?? null,
+            zoomChangesBeforePress: extra.zoomChangesBeforePress ?? log.zoom.length,
+            pressZoomends: extra.pressZoomends ?? [],
+            frames,
+          });
+        const frame = () => {
+          const z = m.getZoom();
+          const bk = cc.beatKind;
+          frames.push({ t: now(), z: Math.round(z * 1000) / 1000, bk });
+          if (bk === "return") sawReturn = true;
+          if (bk === "return" && pre - z >= minDelta && liveAtNext - z >= minDelta) {
+            const zoomAtPress = wrapper.getAttribute("data-zoom");
+            const zoomChangesBeforePress = log.zoom.length;
+            const zoomIn = findButton("Zoom in");
+            if (!zoomIn) return done(false, "no Zoom in button");
+            const n0 = log.zoomend.length;
+            inPress = true;
+            zoomIn.click();
+            inPress = false;
+            return done(true, "in-flight", {
+              liveAtPress: z,
+              beatAtPress: bk,
+              zoomAtPress,
+              zoomChangesBeforePress,
+              pressZoomends: log.zoomend.slice(n0).filter((e) => e.inPress).map(({ t, z }) => ({ t, z })),
+            });
+          }
+          if (sawReturn && bk !== "return") return done(false, "return beat ended before the live zoom left the settled level");
+          if (now() > beatMs + 1000) return done(false, `no in-flight frame within ${beatMs + 1000} ms (sawReturn=${sawReturn})`);
+          requestAnimationFrame(frame);
+        };
+        requestAnimationFrame(frame);
       });
     },
-    { pressAt: MID_BEAT_PRESS_MS },
+    { minDelta: IN_FLIGHT_MIN_DELTA, pre: preReturn, beatMs: RETURN_BEAT_MS },
   );
-  const diag = `press=${JSON.stringify(press)} preReturn=${preReturn}`;
+  const { frames, ...pressCore } = press;
+  const diag = `press=${JSON.stringify(pressCore)} preReturn=${preReturn}`;
   test.info().annotations.push({ type: "3D(a) mid-beat press", description: diag });
   console.log(`3D(a) ${diag}`);
-  // 1. The press provably landed INSIDE the return beat. If the timer
-  //    slipped past the beat, or the beat had already settled (its
-  //    zoomend writes data-zoom 2), this fails loudly instead of
-  //    silently testing the post-settle path.
-  expect(press.found, `the Zoom in button must exist mid-beat; ${diag}`).toBe(true);
+  // 1. The press provably landed MID-FLIGHT inside the return beat —
+  //    measured on the live camera, never assumed — or the test fails.
+  expect(press.pressed, `no in-flight press: ${press.reason}; ${diag} frames=${JSON.stringify(frames)}`).toBe(true);
   expect(press.zoomAtNext, diag).toBe(String(preReturn));
+  // The settled reveal camera may sit at a fractional zoom (data-zoom
+  // is its rounding), so "left the settled level" is checked against
+  // both the integer level and the live zoom measured at Next.
+  expect(Math.abs(press.liveAtNext - preReturn), `the live camera at Next rounds to the pre-return level; ${diag}`).toBeLessThan(0.5);
+  expect(press.beatAtPress, diag).toBe("return");
   expect(
-    press.offsetMs,
-    `Zoom in must be pressed inside the ${RETURN_BEAT_MS} ms return beat; ${diag}`,
-  ).toBeLessThan(RETURN_BEAT_MS);
+    preReturn - (press.liveAtPress ?? preReturn),
+    `live zoom at the press must be >= ${IN_FLIGHT_MIN_DELTA} below the settled ${preReturn}; ${diag}`,
+  ).toBeGreaterThanOrEqual(IN_FLIGHT_MIN_DELTA);
+  expect(
+    press.liveAtNext - (press.liveAtPress ?? press.liveAtNext),
+    `live zoom at the press must be >= ${IN_FLIGHT_MIN_DELTA} below the live zoom at Next; ${diag}`,
+  ).toBeGreaterThanOrEqual(IN_FLIGHT_MIN_DELTA);
+  expect(press.offsetMs, `press must fall inside the ${RETURN_BEAT_MS} ms return beat; ${diag}`).toBeLessThan(RETURN_BEAT_MS);
   expect(
     press.zoomChangesBeforePress,
     `data-zoom changed before the press — the return beat had already settled; ${diag}`,
   ).toBe(0);
+  expect(press.zoomAtPress, `data-zoom at the press must still be the settled pre-return level; ${diag}`).toBe(
+    String(preReturn),
+  );
+  // The beat's stop() fired a zoomend synchronously inside the press,
+  // carrying the intermediate (mid-flight) zoom.
+  expect(press.pressZoomends.length, `the press must stop the beat (synchronous zoomend); ${diag}`).toBeGreaterThanOrEqual(1);
   expect(
-    press.zoomAtPress,
-    `data-zoom at the press must still be the settled pre-return level; ${diag}`,
-  ).toBe(String(preReturn));
+    Math.abs(press.pressZoomends[0]!.z - (press.liveAtPress ?? NaN)),
+    `the stop() zoomend carries the mid-flight zoom; ${diag}`,
+  ).toBeLessThan(0.1);
   // 2. The final zoom is the settled pre-return level + 1 (not the
   //    animated mid-return level + 1, not the return target + 1).
   const finalZoom = await awaitZoomStable(page);
@@ -510,6 +610,13 @@ test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return le
     finalZoom,
     `mid-beat Zoom in must land on pre-return ${preReturn} + 1; ${diag} log=${JSON.stringify(log)}`,
   ).toBe(expected);
+  // data-zoom goes straight from the settled level to the new one: the
+  // stop()'s intermediate zoomend never reaches the zoom state.
+  const zoomTrail = (log as { zoom: { z: string | null }[] }).zoom.map((e) => e.z);
+  expect(
+    zoomTrail,
+    `data-zoom must step ${preReturn} -> ${expected} with no intermediate level; log=${JSON.stringify(log)}`,
+  ).toEqual([String(expected)]);
   // 3. The live region announces the new level, and only that level
   //    (the stopped return's intermediate zoomend is never announced).
   await expect
