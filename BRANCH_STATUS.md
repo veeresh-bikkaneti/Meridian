@@ -139,5 +139,14 @@ cure; its verdict assertions passed in the cured solo run before
 the retry's map reload starved. Mutation proof: with the
 settle-pause line cut, the new settle/toggle test fails at the
 paused poll (15 s timeout, still playing); restored, it passes.
-Next: panel RE-VOTE on the cured tip (separate stage). NO MERGE
-without the owner's per-PR word.
+Friend-challenge set (the other 9 files): the local runner died
+mid-run at test 45 of ~65 (no summary, no exit file); the 16
+failures on the partial log are 16/16 renderer-crash class per
+their error contexts — zero app-logic assertions — and ~20 tests
+of the last file never ran locally (full census:
+`cure-295/E2E-NOTES.md`). CI on the cured tip `453180a` is the
+canonical read: build (22.x) SUCCESS · e2e SUCCESS (full suite,
+incl. the LOSS test and the whole friend-challenge set) ·
+GitGuardian SUCCESS · Workers Builds FAILURE (non-required,
+standing). Next: panel RE-VOTE on the cured tip (separate stage).
+NO MERGE without the owner's per-PR word.
