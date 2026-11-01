@@ -421,12 +421,19 @@ function pressZoomInMidReturn(page: Page, preReturn: number) {
         announce: { t: number; text: string }[];
         zoomend: { t: number; z: number; inPress: boolean }[];
       };
-      const w = window as unknown as { __z3d: Log };
+      const w = window as unknown as { __z3d: Log; __z3dCleanup?: () => void };
+      // Detach a previous attempt's observers and zoomend listener.
+      w.__z3dCleanup?.();
       const wrapper = document.querySelector(".satellite-map")!;
       const log: Log = { zoom: [], announce: [], zoomend: [] };
       w.__z3d = log;
       // React fiber walk (test-only read): find the SatelliteMap refs.
-      type LiveMap = { getZoom(): number; stop(): unknown; on(e: string, f: () => void): unknown };
+      type LiveMap = {
+        getZoom(): number;
+        stop(): unknown;
+        on(e: string, f: () => void): unknown;
+        off(e: string, f: () => void): unknown;
+      };
       type Ctrl = { beatKind: string | null; skipChoreography(): unknown };
       const fiberKey = Object.keys(wrapper).find((k) => k.startsWith("__reactFiber$"));
       let liveMap: LiveMap | null = null;
@@ -461,12 +468,14 @@ function pressZoomInMidReturn(page: Page, preReturn: number) {
       let t0 = 0;
       const now = () => Math.round(performance.now() - t0);
       let inPress = false;
-      m.on("zoomend", () => log.zoomend.push({ t: now(), z: m.getZoom(), inPress }));
-      new MutationObserver(() =>
+      const onZoomEnd = () => log.zoomend.push({ t: now(), z: m.getZoom(), inPress });
+      m.on("zoomend", onZoomEnd);
+      const zoomObs = new MutationObserver(() =>
         log.zoom.push({ t: now(), z: wrapper.getAttribute("data-zoom") }),
-      ).observe(wrapper, { attributes: true, attributeFilter: ["data-zoom"] });
+      );
+      zoomObs.observe(wrapper, { attributes: true, attributeFilter: ["data-zoom"] });
       const lastByEl = new Map<Element, string>();
-      new MutationObserver(() => {
+      const announceObs = new MutationObserver(() => {
         document.querySelectorAll('[aria-live="polite"]').forEach((el) => {
           const s = (el.textContent ?? "").trim().replace(/\s+/g, " ");
           if (/^Zoom level \d+$/.test(s) && s !== lastByEl.get(el)) {
@@ -474,7 +483,14 @@ function pressZoomInMidReturn(page: Page, preReturn: number) {
           }
           lastByEl.set(el, s);
         });
-      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+      });
+      announceObs.observe(document.body, { childList: true, subtree: true, characterData: true });
+      w.__z3dCleanup = () => {
+        zoomObs.disconnect();
+        announceObs.disconnect();
+        m.off("zoomend", onZoomEnd);
+        w.__z3dCleanup = undefined;
+      };
       // The result card's button reads "Next place" (pinned bar) or
       // "Next place →" (full card); take the rendered one.
       const findButton = (name: string) =>
@@ -504,11 +520,11 @@ function pressZoomInMidReturn(page: Page, preReturn: number) {
         frames: { t: number; z: number; bk: string | null }[];
       }>((resolve) => {
         let sawReturn = false;
-        const done = (pressed: boolean, reason: string, extra: Partial<{ liveAtPress: number; beatAtPress: string | null; zoomAtPress: string | null; zoomChangesBeforePress: number; pressZoomends: { t: number; z: number }[] }> = {}) =>
+        const done = (pressed: boolean, reason: string, extra: Partial<{ offsetMs: number; liveAtPress: number; beatAtPress: string | null; zoomAtPress: string | null; zoomChangesBeforePress: number; pressZoomends: { t: number; z: number }[] }> = {}) =>
           resolve({
             pressed,
             reason,
-            offsetMs: now(),
+            offsetMs: extra.offsetMs ?? now(),
             zoomAtNext,
             liveAtNext,
             liveAtPress: extra.liveAtPress ?? null,
@@ -527,16 +543,21 @@ function pressZoomInMidReturn(page: Page, preReturn: number) {
             // Retry support: a frame at or past the beat is a timing miss.
             // Do not press, so the missed attempt leaves no Zoom in press
             // (zoom step, pending announcement) to leak into the next one.
-            if (now() >= beatMs) return done(false, `first in-flight frame at ${now()} ms, past the ${beatMs} ms beat; not pressed`);
+            // tPress is read immediately before the click and is used
+            // for both this guard and offsetMs, so a press at ~1199 ms is
+            // never misclassed by time spent inside the click.
             const zoomAtPress = wrapper.getAttribute("data-zoom");
             const zoomChangesBeforePress = log.zoom.length;
             const zoomIn = findButton("Zoom in");
             if (!zoomIn) return done(false, "no Zoom in button");
             const n0 = log.zoomend.length;
+            const tPress = now();
+            if (tPress >= beatMs) return done(false, `first in-flight frame at ${tPress} ms, past the ${beatMs} ms beat; not pressed`, { offsetMs: tPress });
             inPress = true;
             zoomIn.click();
             inPress = false;
             return done(true, "in-flight", {
+              offsetMs: tPress,
               liveAtPress: z,
               beatAtPress: bk,
               zoomAtPress,
@@ -579,7 +600,7 @@ function returnBeatMiss(
 }
 
 /** Attempts per 3D(a) run before a return-beat miss fails the test. */
-const MID_BEAT_MAX_ATTEMPTS = 3;
+const MID_BEAT_MAX_ATTEMPTS = 5;
 
 /**
  * After a missed 3D(a) attempt: wait for the new place's question, commit
@@ -655,6 +676,8 @@ test("3D(a) Zoom in pressed mid return beat zooms from the settled pre-return le
         `3D(a): all ${MID_BEAT_MAX_ATTEMPTS} attempts missed the ${RETURN_BEAT_MS} ms return beat:\n${attempts.join("\n")}\nlast frames=${JSON.stringify(press.frames)}`,
       );
     }
+    // End of a missed attempt: detach its observers and zoomend listener.
+    await page.evaluate(() => (window as unknown as { __z3dCleanup?: () => void }).__z3dCleanup?.());
     preReturn = await nextRevealForReturn(page, maxZoom);
     expected = preReturn + 1;
   }
