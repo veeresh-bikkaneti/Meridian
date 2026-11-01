@@ -492,6 +492,51 @@ test("verdict a11y cures (F-291-2 · A-291-2 · A-291-3): inert until settled, k
   expect(tick.shadow).toContain(hexToRgb(tick.bg));
 });
 
+test("verdict tick in the DEFAULT DARK theme: the gold resolves (cure-2 regression)", async ({
+  browser,
+}: {
+  browser: Browser;
+}) => {
+  // The cure round's first tick fix read --gold-ink, which is NOT
+  // defined in the default :root (dark) — its #f2c14e value lives
+  // only in the dormant [data-theme="night"] block, and no code
+  // sets data-theme. In default dark the tick was transparent
+  // (panel BLOCK, UX Designer). The light-scheme tests above can
+  // never see that: the light media block DOES define the token.
+  // This test runs the verdict in a dark-scheme context and pins
+  // the resolved paint.
+  const context = await browser.newContext({ colorScheme: "dark" });
+  await serveBuiltArtifact(context);
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  const page = await context.newPage();
+  await page.addInitScript(() => {
+    try {
+      (navigator.serviceWorker as unknown as Record<string, unknown>).register = () =>
+        Promise.reject(new Error("service worker disabled for test"));
+    } catch {
+      /* ignore */
+    }
+  });
+  await startChallenge(page, LINK_LOSS);
+  await playAllMisses(page);
+  const tick = await page.locator(".verdict-bar-fill + div").evaluate((el) => {
+    const cs = getComputedStyle(el);
+    const root = getComputedStyle(document.documentElement);
+    return {
+      background: cs.backgroundColor,
+      goldInkToken: root.getPropertyValue("--gold-ink").trim(),
+      shadow: cs.boxShadow,
+    };
+  });
+  // The precondition, proven in-browser: the token is empty here.
+  expect(tick.goldInkToken).toBe("");
+  // …and the tick still paints, via its #f2c14e fallback, ringed
+  // by the dark page colour #101211.
+  expect(tick.background).toBe("rgb(242, 193, 78)");
+  expect(tick.shadow).toContain("rgb(16, 18, 17)");
+  await context.close();
+});
+
 // PARKED (test.fixme) — the summary-mint scenario itself is sound
 // and its product path is covered (mintWinnerBlock unit tests; the
 // summary memo/effect agreement source-verified by two panel seats;

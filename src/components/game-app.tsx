@@ -5189,10 +5189,18 @@ function ChallengeVerdict({
               // F-291-2 cure: raw gold measured 1.19:1 on the light
               // track and 1.52:1 on the dark theme's near-white fill.
               // The theme-aware gold (--gold-ink) carries ≥3:1 against
-              // track and page in both themes, and a 1px ring in the
-              // page colour separates the tick from the fg fill
-              // (≥13:1) where the fill reaches it.
-              background: "var(--gold-ink)",
+              // track and page where it is defined — the light media
+              // block and the paper theme. It is NOT defined in the
+              // default :root (dark) — the #f2c14e value lives only
+              // in the dormant [data-theme="night"] block and no code
+              // sets data-theme — so the fallback IS the default-dark
+              // colour (and the night colour, if that theme ever
+              // ships): #f2c14e, 11.2:1 on the dark page. A 1px ring
+              // in the page colour separates the tick from the fg
+              // fill (≥13:1) where the fill reaches it. (The fallback
+              // was added in the panel cure-2 round: without it the
+              // tick was transparent — invisible — in default dark.)
+              background: "var(--gold-ink, #f2c14e)",
               boxShadow: "0 0 0 1px var(--bg)",
             }}
             aria-hidden="true"
