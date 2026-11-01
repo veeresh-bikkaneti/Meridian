@@ -2097,7 +2097,9 @@
    word fades in as the bar lands; the duel strip dots stagger in after
    it (30 ms apart, ≤ 300 ms of stagger); the duel line follows; the
    pass-along share fades in last. Total choreography ≤ ~1,600 ms. A
-   tap on the verdict sets data-verdict-settled="true", snapping every
+   tap on the verdict — or any keydown, or the settle timer at
+   choreography end (A-291-3, 2026-11-01) — sets
+   data-verdict-settled="true", snapping every
    element to its final state. Under prefers-reduced-motion nothing
    animates at all — every element simply is at its final state, with
    the same information.
@@ -2127,6 +2129,21 @@
 .verdict-strip-dot {
   animation: verdict-fade-in 200ms ease-out both;
   animation-delay: calc(850ms + var(--verdict-i, 0) * 30ms);
+}
+/* A-291-2 (cure round, 2026-11-01): the dot's VISUAL stays 20 px —
+   ten dots must fit a phone — but its hit area grows to 44 px tall
+   × the 26 px dot pitch wide (20 px dot + 6 px gap), so adjacent
+   areas touch without overlapping (WCAG 2.5.8's spacing rule) and
+   the height meets the 44 px tap floor. The focus ring draws on
+   the visual disc itself. */
+.verdict-strip-dot::after {
+  content: "";
+  position: absolute;
+  inset: -12px -3px;
+}
+.verdict-strip-dot:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 1px;
 }
 .verdict-late {
   animation: verdict-fade-in 200ms ease-out 1200ms both;

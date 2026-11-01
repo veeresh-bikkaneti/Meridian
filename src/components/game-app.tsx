@@ -42,7 +42,7 @@ import {
   type SessionSummary,
 } from "@/game/session";
 import { scoreRingForEdition } from "@/game/score";
-import { SCORING_VERSION, scorePlace, type ScoredPlace } from "@/game/scoring";
+import { SCORING_VERSION, scorePlace, type Difficulty, type ScoredPlace } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
 import { resolveRunPool } from "@/game/pool";
 import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";
@@ -387,6 +387,7 @@ import {
   maxAttainableRemaining,
   mintWinnerBlock,
   passAlongReceipt,
+  routeTierCeiling,
   trailingStreak,
   verdictAriaSentence,
   verdictAttemptsFacts,
@@ -5066,7 +5067,9 @@ function ChallengeWelcome({
  * ChallengeComplete; this component renders them under the veto-
  * rewritten motion spec (final scores at frame 0, no count-up ever;
  * the bar sweeps by transform; the verdict word fades at ~650 ms;
- * reduced motion = every final state, static; tap anywhere settles;
+ * reduced motion = every final state, static; a tap, any keydown,
+ * or the settle timer settles — late interactive elements are inert
+ * until then, so nothing is focusable while invisible (A-291-3);
  * focus goes to the heading on mount and never moves again).
  */
 function ChallengeVerdict({
@@ -5074,15 +5077,31 @@ function ChallengeVerdict({
   winner,
   completion,
   regionCatalog,
+  settled,
 }: {
   run: Run;
   winner: ChallengeWinner;
   completion: { attempts: number; minted: ReturnType<typeof mintWinnerBlock> };
   regionCatalog?: readonly Starter[] | null;
+  /** Choreography settled (tap, any key, or the settle timer) —
+   * until then the late-arriving interactive elements are inert,
+   * so nothing is focusable while invisible (A-291-3). */
+  settled: boolean;
 }) {
   const mine = run.results.reduce((s, r) => s + r.score, 0);
   const n = run.poolIds.length;
-  const ceiling = routeCeiling(n);
+  // The quoted ceiling is the route's REAL max (owner D2 amendment,
+  // 2026-11-01): each stop at its own tier, summed in play order —
+  // the tier-blind codec bound (routeCeiling) would quote a
+  // "possible" no perfect run could reach on an easy route. When a
+  // place's tier can't be resolved from the catalog, the codec bound
+  // stands for the whole route (never a fabricated per-stop number).
+  const routeDifficulties = run.poolIds.map(
+    (id) => regionCatalog?.find((p) => p.id === id)?.difficulty ?? null,
+  );
+  const ceiling = routeDifficulties.every((d) => d !== null)
+    ? routeTierCeiling(routeDifficulties as Difficulty[])
+    : routeCeiling(n);
   const cls = classifyVerdict(mine, winner.bestScore);
   const myHits = run.results.filter((r) => r.hit).length;
   const theirHits = run.poolIds.reduce(
@@ -5164,8 +5183,18 @@ function ChallengeVerdict({
             style={{ width: `${fillPct}%` }}
           />
           <div
-            className="absolute -inset-y-0.5 w-1 rounded bg-[#f2c14e]"
-            style={{ left: `calc(${tickPct}% - 2px)` }}
+            className="absolute -inset-y-0.5 w-1 rounded"
+            style={{
+              left: `calc(${tickPct}% - 2px)`,
+              // F-291-2 cure: raw gold measured 1.19:1 on the light
+              // track and 1.52:1 on the dark theme's near-white fill.
+              // The theme-aware gold (--gold-ink) carries ≥3:1 against
+              // track and page in both themes, and a 1px ring in the
+              // page colour separates the tick from the fg fill
+              // (≥13:1) where the fill reaches it.
+              background: "var(--gold-ink)",
+              boxShadow: "0 0 0 1px var(--bg)",
+            }}
             aria-hidden="true"
           />
           <span
@@ -5198,7 +5227,10 @@ function ChallengeVerdict({
       {duelLine ? (
         <p className="verdict-late mt-2 text-base text-muted">{duelLine}</p>
       ) : null}
-      <div className="mt-5" data-testid="challenge-verdict-strip">
+      {/* A-291-3: the strip's dots fade in from ~850 ms — until the
+          choreography settles they are inert, so a keyboard user can
+          never tab onto an invisible dot. Visuals are untouched. */}
+      <div className="mt-5" data-testid="challenge-verdict-strip" inert={!settled}>
         <p className="text-base font-semibold text-fg">
           Stop by stop — you landed {myHits}, they landed {theirHits}.
         </p>
@@ -5214,7 +5246,10 @@ function ChallengeVerdict({
                     role="img"
                     aria-label={`Stop ${i + 1}: ${name} — ${hit ? "you landed it" : "you missed"}`}
                     className={`verdict-strip-dot group relative flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-bold ${
-                      hit ? "bg-fg text-white" : "border-2 border-current"
+                      // F-291-1 cure: text-bg, not text-white — the fg
+                      // disc is near-white in the default/dark themes,
+                      // so a white ✓ measured 1.10:1 (invisible).
+                      hit ? "bg-fg text-bg" : "border-2 border-current"
                     }`}
                     style={{ "--verdict-i": i } as CSSProperties}
                   >
@@ -5321,6 +5356,21 @@ function ChallengeComplete({
   // never cover). Any tap on the screen settles the choreography.
   const [verdictSettled, setVerdictSettled] = useState(false);
   const incomingWinner = run.challengeWinner ?? null;
+  // A-291-3: settling is not pointer-only. Any keydown settles (the
+  // keydown fires before the focus move, so the first Tab lands on
+  // already-visible elements — see onKeyDown on the root below), and
+  // a timer settles when the choreography completes (~1,600 ms;
+  // immediately under reduced motion, where every element is
+  // already at its final state).
+  useEffect(() => {
+    if (!incomingWinner) return;
+    const reduced =
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const t = setTimeout(() => setVerdictSettled(true), reduced ? 0 : 1600);
+    return () => clearTimeout(t);
+  }, [incomingWinner]);
   const myScoreRaw = run.results.reduce((s, r) => s + r.score, 0);
   const mintedWinner = completion?.minted.winner ?? null;
   const isMc2 = run.challengeOrigin === "mc2" || run.challengeOrigin === "mc3";
@@ -5433,6 +5483,7 @@ function ChallengeComplete({
       className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8"
       data-verdict-settled={incomingWinner ? verdictSettled : undefined}
       onClick={incomingWinner ? () => setVerdictSettled(true) : undefined}
+      onKeyDown={incomingWinner ? () => setVerdictSettled(true) : undefined}
     >
       <p className="text-sm tracking-wide text-muted uppercase">
         {isMc2 ? run.regionName : CHALLENGE_REGION_NAME}
@@ -5447,6 +5498,7 @@ function ChallengeComplete({
           winner={incomingWinner}
           completion={completion}
           regionCatalog={regionCatalog}
+          settled={verdictSettled}
         />
       ) : (
         <>
@@ -5471,6 +5523,10 @@ function ChallengeComplete({
             data-testid="challenge-share-container"
             data-challenge-url={challengeUrl}
             className={incomingWinner ? "verdict-last" : undefined}
+            // A-291-3: the pass-along fades in last (~1,400 ms) — it
+            // stays inert until settled so it is never focusable
+            // while invisible. Non-verdict completions never gate.
+            inert={incomingWinner ? !verdictSettled : undefined}
           >
             <ShareButton
               title="Meridian friend challenge"
@@ -7515,10 +7571,17 @@ function PlayLoaded({
         ? (() => {
             const best = run.challengeWinner.bestScore;
             const running = run.results.reduce((s, r) => s + r.score, 0);
+            // Attainability at the remaining places' OWN tiers
+            // (owner D2 amendment, 2026-11-01): the tier-blind bound
+            // fired late or never on easy routes, so the deficit
+            // counter rode runs that could no longer be won.
+            const remainingDifficulties = run.poolIds
+              .slice(run.results.length)
+              .map((id) => pool.find((p) => p.id === id)?.difficulty ?? 5);
             const unreachable =
               running +
                 maxAttainableRemaining(
-                  pool.length - run.results.length,
+                  remainingDifficulties,
                   trailingStreak(run.results),
                 ) <
               best;
