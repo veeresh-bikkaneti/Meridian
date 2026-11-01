@@ -49,6 +49,12 @@ import { SCORING_VERSION } from "../../src/game/scoring.ts";
  *   (theme-gold TARGET tick + page-colour ring), A-291-2 (44 px dot
  *   hit area), A-291-3 (late elements inert until settled; keydown
  *   and the settle timer settle like a tap).
+ * - Cure round on PR #295 (2026-11-01): the Grandpa media guards —
+ *   the 3:2 box is reserved before load on BOTH media branches, so
+ *   nothing shifts when the clip lands (CLS); settling pauses the
+ *   clip and the corner toggle pauses/plays it at any time (WCAG
+ *   2.2.2 stop mechanisms); and the reduced-motion still branch is
+ *   pinned — an IMG with the same reserved box, never a VIDEO.
  */
 test.setTimeout(240_000);
 
@@ -534,6 +540,120 @@ test("verdict tick in the DEFAULT DARK theme: the gold resolves (cure-2 regressi
   // by the dark page colour #101211.
   expect(tick.background).toBe("rgb(242, 193, 78)");
   expect(tick.shadow).toContain("rgb(16, 18, 17)");
+  await context.close();
+});
+
+test("verdict grandpa media (cure round): the 3:2 box is reserved before the clip loads — nothing shifts", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  // Hold the clip AND its poster at the network for 6 s: the verdict
+  // must lay out its final geometry with neither asset available.
+  // (fallback(), not continue(): serveBuiltArtifact IS the server —
+  // its catch-all handler, registered first, serves the file once
+  // this later-registered handler falls through to it.)
+  await context.route("**/*grandpa-was-already-there*", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 6_000));
+    await route.fallback();
+  });
+  await startChallenge(page, LINK_LOSS);
+  await playAllMisses(page);
+
+  const media = page.getByTestId("challenge-verdict-grandpa");
+  await expect(media).toBeVisible();
+  expect(await media.evaluate((el) => el.tagName)).toBe("VIDEO");
+  const boxBefore = await media.boundingBox();
+  expect(boxBefore).not.toBeNull();
+  // The reserved box is the full 3:2 frame, not a collapsed sliver
+  // (this is the BLOCK 1 cure: aspect-[3/2] on the video branch).
+  expect(Math.abs(boxBefore!.height - (boxBefore!.width * 2) / 3)).toBeLessThanOrEqual(3);
+  const headlineBefore = await page.getByTestId("challenge-complete").boundingBox();
+  expect(headlineBefore).not.toBeNull();
+  // Let the stalled assets land, then re-measure: nothing may move.
+  await expect
+    .poll(() => media.evaluate((el) => (el as HTMLVideoElement).readyState), {
+      timeout: 20_000,
+    })
+    .toBeGreaterThanOrEqual(1);
+  const boxAfter = await media.boundingBox();
+  const headlineAfter = await page.getByTestId("challenge-complete").boundingBox();
+  expect(Math.abs(boxAfter!.height - boxBefore!.height)).toBeLessThanOrEqual(1);
+  expect(Math.abs(headlineAfter!.y - headlineBefore!.y)).toBeLessThanOrEqual(1);
+});
+
+test("verdict grandpa media (cure round): settling pauses the clip; the corner toggle pauses and plays it", async ({
+  page,
+  context,
+}) => {
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  await startChallenge(page, LINK_LOSS);
+  await playAllMisses(page);
+
+  const media = page.getByTestId("challenge-verdict-grandpa");
+  const toggle = page.getByTestId("challenge-verdict-grandpa-toggle");
+  await expect(toggle).toBeVisible();
+  await expect(toggle).toHaveAttribute("aria-label", "Pause the cartoon");
+  await expect(toggle).toHaveAttribute("aria-pressed", "false");
+  // Autoplay is running before anything settles.
+  await expect
+    .poll(() => media.evaluate((el) => (el as HTMLVideoElement).paused), {
+      timeout: 5_000,
+    })
+    .toBe(false);
+  // A tap anywhere on the screen is the settle gesture — and it now
+  // stops the clip too (WCAG 2.2.2 cure (a): settle pauses).
+  await page.getByTestId("challenge-complete").click();
+  await expect(page.locator("main")).toHaveAttribute("data-verdict-settled", "true");
+  await expect
+    .poll(() => media.evaluate((el) => (el as HTMLVideoElement).paused))
+    .toBe(true);
+  await expect(toggle).toHaveAttribute("aria-label", "Play the cartoon");
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  // The toggle is the always-available stop (cure (b)): it plays the
+  // clip again, then pauses it — after settling, nothing re-pauses
+  // behind the player's back.
+  await toggle.click();
+  await expect
+    .poll(() => media.evaluate((el) => (el as HTMLVideoElement).paused))
+    .toBe(false);
+  await toggle.click();
+  await expect
+    .poll(() => media.evaluate((el) => (el as HTMLVideoElement).paused))
+    .toBe(true);
+});
+
+test("verdict grandpa media under reduced motion (cure round): the still keyframe renders — never a video, never a toggle", async ({
+  browser,
+}: {
+  browser: Browser;
+}) => {
+  const context = await browser.newContext({ reducedMotion: "reduce" });
+  await serveBuiltArtifact(context);
+  await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
+  const page = await context.newPage();
+  await page.addInitScript(() => {
+    try {
+      (navigator.serviceWorker as unknown as Record<string, unknown>).register = () =>
+        Promise.reject(new Error("service worker disabled for test"));
+    } catch {
+      /* ignore */
+    }
+  });
+  await startChallenge(page, LINK_LOSS);
+  await playAllMisses(page);
+
+  // The guard this branch never had: under reduced motion the media
+  // slot is the still keyframe (an IMG), not the clip — and there is
+  // no pause toggle, because nothing moves.
+  const media = page.getByTestId("challenge-verdict-grandpa");
+  await expect(media).toBeVisible();
+  expect(await media.evaluate((el) => el.tagName)).toBe("IMG");
+  await expect(page.getByTestId("challenge-verdict-grandpa-toggle")).toHaveCount(0);
+  // The still reserves the same 3:2 box (BLOCK 1 cure, both branches).
+  const box = await media.boundingBox();
+  expect(box).not.toBeNull();
+  expect(Math.abs(box!.height - (box!.width * 2) / 3)).toBeLessThanOrEqual(3);
   await context.close();
 });
 
