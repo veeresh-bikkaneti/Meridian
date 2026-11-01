@@ -1,10 +1,13 @@
 # BRANCH_STATUS — feat/challenge-winner-verdict
 
 - **Branch:** `feat/challenge-winner-verdict`
-- **Base:** `feat/challenge-mc3-codec` at its panel-frozen tip `4ec34bc`
-  (Package A, PR #290 — open, panel READY, NO MERGE). This branch
-  stacks on A per the governing manifest §Q5: B ships only on A's
-  frozen tip, and its PR states `feat/challenge-mc3-codec` as base.
+- **Base:** `main` — RETARGETED 2026-11-01 after #290 merged (squash
+  `f1baf18`). Original base was `feat/challenge-mc3-codec` at its
+  panel-frozen tip `4ec34bc` (Package A, PR #290), stacked per the
+  governing manifest §Q5. The rebase onto main replayed B's 14
+  commits with zero conflicts; range-diff 14/14 "=" and the composed
+  tree is byte-identical to the pre-retarget tip (see the cure-round
+  chapter at the end of this file).
 - **Governing:** `.council/manifests/2026-10-31-mc3-winner-council-verdict.md`
   §Q2 (winner gates + attempts store + farming guard), §Q3 (welcome
   Stakes + receipts), §Q4 (verdict screen + chip + motion). Owner's
@@ -1489,3 +1492,60 @@ Approvals needed (exact action + owner), checker, escalation:
   rewritten to fix/wave1-p0 in 2efcbb6, which no longer matched its
   Branch line. The heading is restored to feat/challenge-mc2-package-c,
   and the Wave 1 record below it gets its own fix/wave1-p0 heading.
+
+## 2026-11-01 — Retarget onto main + cure round (PR #291)
+
+- [x] **Retarget:** `git rebase --onto origin/main 0b4ed6b` — 14/14
+  B commits replayed, zero conflicts; range-diff 14/14 "="; tree
+  diff vs the pre-retarget tip `abcbea3` EMPTY; #290's squash tree
+  identical to `0b4ed6b`. Retargeted tip `eeb0eb9`, force-pushed
+  with lease (owner's retarget instruction); PR base = main.
+- [x] **D2 amendment (owner ruling "1&2", 2026-11-01)** — commits
+  `65749a5` + `25ffdf7` (wiring) + `bb21aed` (manifest): §Q4
+  ceilings are tier-aware at the verdict sub-line/bar/aria and the
+  in-run chip (`placeScoreBound` / `routeTierCeiling` in
+  `challenge-verdict.ts`; surfaces fall back to the tier-blind
+  bound if a place's tier cannot resolve). Codec gate in
+  `challenge.ts` UNCHANGED. HOLD band pinned as
+  `max(⌊0.05·T⌋, 25)` in code doc + manifest. Manifest gained a
+  dated Amendments entry; everything else byte-untouched.
+  Numbers: Nebraska route (tiers 1,1,2,2,2) verdict ceiling
+  1,514 → **740**; all-tier-1 ×5 = **650**; all-tier-5 unchanged.
+- [x] **F-291-1** — verdict strip hit glyph `text-white` →
+  `text-bg`. Measured: 1.10:1 → **17.05:1 dark / 14.08:1 light**
+  (static audit in the evidence dir; E2E glyph assertion in the
+  WIN reduced-motion test).
+- [x] **F-291-2** — TARGET tick: `background: var(--gold-ink)` +
+  `box-shadow: 0 0 0 1px var(--bg)`. Measured: body vs track
+  **11.38:1 dark / 3.81:1 light**; ring vs fill 17.05 / 14.08.
+  Disclosed edge: light tick-body vs fg fill is nominally 2.96:1
+  but never directly adjacent (the ring always interposes).
+- [x] **A-291-2** — `.verdict-strip-dot::after` hit area
+  `inset: -12px -3px` = 44 px tall × 26 px pitch wide (visual disc
+  unchanged at 20 px; WCAG 2.5.8 spacing — neighbours touch,
+  never overlap) + `:focus-visible` ring. Verified by an
+  elementFromPoint probe 10 px above the disc in the E2E
+  a11y-cures test.
+- [x] **A-291-3** — duel strip + pass-along share are `inert`
+  until the choreography settles; settle fires on tap, ANY
+  keydown (before the focus move), or a timer at 1,600 ms (0 ms
+  under reduced motion). Nothing is focusable while invisible;
+  visuals unchanged. Verified in the E2E a11y-cures test + the
+  WIN test's immediate settled state under reduced motion.
+- [x] **Gates on the cure tip** (sealed:
+  `~/workspace/meridian-link-winner/evidence-291-cure/`): tsc 0 ·
+  npm test 0 (scripts 850/0/11 skipped; src 1879/0) ·
+  test:worker 0 · lint-cards GATE PASSED · build:pages 0.
+  CI on the tip: build (22.x) SUCCESS · e2e SUCCESS ·
+  GitGuardian SUCCESS · Workers Builds FAILURE (non-required,
+  fails on every branch tip — standing).
+- [x] **E2E** (local, flock, --workers=1; full narrative in the
+  evidence dir's E2E-NOTES.md): touched-surface set — verdict
+  spec complete (8 passed + parked summary-mint fixme); a
+  renderer crash under VM memory pressure cascaded 37 post-crash
+  launch failures; fresh re-run of the 4 affected files =
+  43 passed / 2 failed, the 2 (endgame-share) reproducing
+  IDENTICALLY on unmodified main (ERR_TUNNEL console assertion)
+  = environment class.
+- [ ] **Panel re-vote on the cured tip** — running.
+- [ ] Merge — owner's per-PR word only. NO MERGE from here.
