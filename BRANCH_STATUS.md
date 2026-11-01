@@ -92,11 +92,14 @@ PASS-WITH-NITS. Cures, one commit each:
   and poster at the network and measures the box + headline before
   and after the assets land.
 - [x] **BLOCK 2 (WCAG 2.2.2, Level A)** — two stop mechanisms for
-  the looping clip: (a) settling the choreography (tap / keydown /
-  settle timer — the existing `settled` flag) pauses the clip and
-  holds its frame; (b) a ≥44 px pause/play toggle overlaid on the
-  clip's corner (aria-label "Pause the cartoon" / "Play the
-  cartoon", aria-pressed), available from the first frame.
+  the looping clip: (a) settling the choreography BY GESTURE
+  (tap / keydown) pauses the clip and holds its frame — as first
+  built in this round the pause also fired on the auto-settle
+  timer; cure round 2 (below) split the signal, so the timer
+  settles the choreography but never pauses the clip; (b) a ≥44 px
+  pause/play toggle overlaid on the clip's corner (aria-label
+  "Pause the cartoon" / "Play the cartoon", aria-pressed),
+  available from the first frame.
   Autoplay + loop are otherwise as shipped. Proven by a new E2E
   test (settle → paused; toggle → play → pause).
 - [x] **Record** — the mc2-create:131 disposition above now reads
@@ -150,3 +153,54 @@ incl. the LOSS test and the whole friend-challenge set) ·
 GitGuardian SUCCESS · Workers Builds FAILURE (non-required,
 standing). Next: panel RE-VOTE on the cured tip (separate stage).
 NO MERGE without the owner's per-PR word.
+
+## Cure round 2 (2026-11-01, after the panel RE-VOTE on `ad396fa`)
+
+Re-vote: NOT READY — 1 APPROVE · 5 APPROVE-WITH-NITS · 6 BLOCK ·
+DevEx PASS-WITH-NITS (record:
+`~/workspace/verdict-grandpa-video-evidence/cure-295/REVOTE-295-VERDICT.md`).
+Both round-1 BLOCKs were LIFTED by their owners and all six cure
+items verified from source. The six BLOCKs stood on ONE wire the
+cure added: the settle-pause subscribed to the undifferentiated
+`settled` latch, so the ~1.6 s auto-settle timer froze the clip on
+every default verdict, and the PR record never stated that
+consequence. Cures:
+
+- [x] **Timer excluded from the clip pause (panel option 1).**
+  `ChallengeComplete` now keeps a second latch,
+  `verdictSettledByGesture`, set only by the root's tap/keydown
+  handlers (`settleByGesture`, which also sets `verdictSettled`
+  exactly as before). The timer effect still sets `verdictSettled`
+  alone. The clip's pause effect in `ChallengeVerdict` subscribes
+  to the new `settledByGesture` prop only. Every other settle
+  behaviour — CSS snap, inert gates, `data-verdict-settled`, the
+  choreography — consumes `verdictSettled` unchanged. The pause
+  behaviour that ships: the clip autoplays and loops; a tap or
+  keydown settle pauses it; the auto-settle timer does NOT; the
+  44×44 corner toggle pauses/plays it at any moment and alone
+  satisfies WCAG 2.2.2.
+- [x] **Pinning E2E.** A new verdict-spec test: with NO player
+  gesture, the auto-settle timer fires (`data-verdict-settled`
+  flips on its own) and the clip is still playing afterwards
+  (unpaused, `currentTime` advancing); the toggle then stops it.
+  The round-1 gesture test stands (a tap settle still pauses).
+  Mutation proof: re-wiring the pause to the undifferentiated
+  latch makes the new test fail (clip paused after the timer);
+  restored, it passes.
+- [x] **Passengers.** A keyboard E2E for the toggle (focus, then
+  Enter pauses / Space plays — the stopPropagation path is now
+  driven, not just source-verified); the toggle's `clip.play()`
+  gained a `.catch(() => {})` guard so a rejected play() can never
+  surface as an unhandled rejection.
+- [x] **Record.** The PR body's main sections were brought true
+  for this tip (the toggle is a control and is focusable; the
+  removed preload's performance claim is gone; the redundancy
+  audit now states the one media control honestly), an explicit
+  behaviour note for the pause behaviour that ships was added,
+  and the test-evidence section names this tip as the revision
+  under vote.
+
+Gates + E2E for this round are sealed in
+`~/workspace/verdict-grandpa-video-evidence/cure2-295/`. Next:
+panel RE-VOTE on the new tip (separate stage). NO MERGE without
+the owner's per-PR word.
