@@ -698,7 +698,7 @@ Approvals needed (exact action + owner), checker, escalation:
 
 <!-- Record from origin/main (3aa16b5) kept byte-identical below. -->
 
-# BRANCH_STATUS — fix/wave1-p0 (Wave 1 P0, council audit)
+# BRANCH_STATUS — feat/challenge-mc2-package-c
 
 - **Branch:** `feat/challenge-mc2-package-c`
 - **Base:** `origin/main` at `6abe3e6` (Package B, PR #283, merged + live). If the external End-game PR lands first, this branch rebases and this file resolves keeping both records accurate.
@@ -722,6 +722,8 @@ Approvals needed (exact action + owner), checker, escalation:
   - [x] Stage 2 — Build: `CHALLENGE_REVIEW_LABEL` in challenge.ts; home-card entry in both deck branches (`.review-challenge-open`, mirroring the reset opener's geometry); ReviewComplete secondary-button entry; `handleReviewChallenge` in GameApp (Editions exit + mini-picker in one state batch, flag re-read at tap) threaded GameApp → Play → PlayLoaded → ReviewComplete, gated on PlayLoaded's boot-authoritative flag read. tsc clean; challenge unit suite 37/37.
 
 <!-- Rebase onto main 24f4d2a: HEAD Package C record kept above per the coordination ledger; Wave 1 record kept below. Neither record overwritten. -->
+
+# BRANCH_STATUS — fix/wave1-p0 (Wave 1 P0, council audit)
 
 - **Branch:** `fix/wave1-p0`
 - **Base:** main `24f4d2a` (rebased tip 2026-10-30; prior base `45976699` superseded — see rebase record below).
@@ -1139,3 +1141,56 @@ Approvals needed (exact action + owner), checker, escalation:
   changed: in 1/3 head runs and 2/4 mutant runs, the Node-driven skip
   tap landed after the card was already up, so those runs did not
   exercise the skip itself.
+
+## Fix round 4: PR #287 review findings (base main 5e5a440e, start head eee6ba04)
+
+- Scope: tests and this file only; zero `src/` changes. Mutants were
+  built and run in a separate worktree only and are not in this
+  branch. Leave-alone kept: endgame-share `clickShareScoreWithRetry`
+  and the share-text origin line. No assertion, console gate or band
+  gate was relaxed. Independent review pending; no merge word claimed.
+- Item 1 (`gap-view-reveal.desktop.spec.ts` skip test): the commit is
+  retried (max 3) until an in-page gate sees the spot move before the
+  card, and the skip tap is sent the moment it moves. The old early
+  return when the card was already up is gone. The test fails unless
+  tapAt < 1200 ms after Drop and cardAt − tapAt < 300 ms. Bound: tap→card
+  measured 107–152 ms (median 130) in probes and 83–102 ms in the
+  whole-file 5x run; the unskipped beat runs ~1.8–2.0 s.
+  `clickNextPlace` (helpers.ts) now closes the first-win celebration
+  overlay if it is up: in 1 of the first 15 whole-file runs it covered
+  Next place in the untouched "miss: the gap view frames…" test.
+  Proof: whole file 5x after that fix = 15/15 green (skip tapAt
+  446–586 ms, tap→card 83–102 ms). Skip-handler no-op mutant fails 5/5
+  (tap→card 1795–2024 ms vs < 300). Frozen `__spotScreen` mutant fails
+  5/5 (gate moved:false, card first at ~2.3–2.5 s). Not proven: the
+  celebration close path did not trigger in the green 15/15 run.
+- Item 2 (`round-loop-a11y.spec.ts` 3D(a)): the press is no longer a
+  fixed timer. An in-page rAF loop (reaching the MapLibre map and the
+  choreography controller via the React fiber; no src hook) presses
+  Zoom in only on a frame where beatKind is "return" and the live zoom
+  is ≥ 0.6 below both the settled pre-return level and the zoom at
+  Next. It asserts the press landed in flight (offset < 1200 ms), final
+  zoom = pre + 1, the zoom trail is exactly [pre + 1], and the only
+  announcement is "Zoom level pre+1". Proof: head 3D(a)+3D(b) 5x each =
+  10/10 green (press offsets 556–818 ms). Mutant A fails 3D(a) 5/5
+  (final zoom = pre). Mutant B fails 3D(a) 5/5 (an intermediate level
+  shows up in the zoom trail and announcements).
+- Item 3 (`helpers.ts` commitHit, discarded-notice 1H(1) flake
+  "commitHit: no tappable spot in 10 attempts"): root cause was a stale
+  spot read. Instrumented runs showed the spot read the moment the
+  phase flipped to aim, while the previous place's camera move was
+  still running; the point at tap time was hundreds of px away (e.g.
+  read 568,438 vs 1208,591), so every attempt missed. The new
+  `settledSpotViewportPoint` waits for aria-hidden to lift and for the
+  spot projection to stay unchanged for 600 ms of animation frames
+  before commitHit judges or taps it. 1H(1) assertions unchanged.
+  Proof: 1H(1) --repeat-each=10 = 10/10 green; whole discarded-notice
+  file = 26/26 green.
+- Item 4: the visual-notice screenshots now go to
+  `test.info().outputPath()` and no longer to `tests/e2e/evidence/`;
+  the two untracked PNGs were deleted, not committed. `git status` is
+  clean after a full discarded-notice run.
+- Item 5: the Package C record carried from main had its heading
+  rewritten to fix/wave1-p0 in 2efcbb6, which no longer matched its
+  Branch line. The heading is restored to feat/challenge-mc2-package-c,
+  and the Wave 1 record below it gets its own fix/wave1-p0 heading.

@@ -531,7 +531,7 @@ test("visual notice at 360x740 and 390x844 does not overlap its neighbours", asy
       boxes.note!.y + boxes.note!.height > boxes.globe!.y;
     expect(overlap).toBe(false);
     await page.screenshot({
-      path: `tests/e2e/evidence/discarded-notice-${width}.png`,
+      path: test.info().outputPath(`discarded-notice-${width}.png`),
     });
   }
 });
