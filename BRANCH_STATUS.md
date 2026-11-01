@@ -56,7 +56,23 @@ that already exists. No duplicate path to any job. PASS.
 - [x] Branch off current main; coordination ledger heartbeat posted
 - [x] Asset compressed (v2, 329,051 bytes) + poster still (65,336 bytes)
 - [x] Swap-point module + verdict-screen wiring (video / still / poster)
-- [ ] Gates: tsc · npm test · test:worker · lint-cards · build:pages
-- [ ] E2E: verdict/challenge specs under flock, sealed logs
-- [ ] Docs: README + verdict doc note
-- [ ] PR opened (no merge)
+- [x] Gates (tip `eded1bc` + docs): tsc 0 · npm test 0 (scripts
+  850 pass / 11 skipped; src 1879/1879) · test:worker 85/85 ·
+  lint-cards GATE PASSED · build:pages 0 — bundle emits
+  `grandpa-was-already-there-*.mp4` (329,051 bytes) + poster webp and
+  the routes chunk references them. Logs:
+  `~/workspace/verdict-grandpa-video-evidence/`
+- [x] E2E under flock (10 friend-challenge files, workers=1, bundled
+  chromium-1243): **62 passed / 1 failed / 2 skipped** (39.5m). The
+  verdict spec is fully green, incl. the reduced-motion WIN test.
+  The one failure — mc2-create:131 (240 s click timeout waiting for
+  the summary "Challenge a friend — play my route" button) —
+  reproduces **byte-identically on unmodified main `242a7ef`** in a
+  solo control run (sealed: `e2e-maincheck-131.log`), so it is a
+  pre-existing environment/main-state failure, not a regression of
+  this branch; the test never renders the verdict screen. The 2
+  skips are designed (the @old-build scripted-manual gate + the
+  parked summary-mint fixme from #291).
+- [x] Docs: README feature table now describes the verdict cartoon
+  and its reduced-motion still
+- [ ] PR opened (no merge) — review pipeline is a separate stage
