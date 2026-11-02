@@ -118,6 +118,10 @@ const CLEARED_LOCAL: Record<string, string> = {
   // Fix round 2: the discarded-notice shadow is a cleared local key.
   [DISCARDED_NOTICE_KEY]:
     '{"totalScore":999,"placesPlayed":9,"dateKey":"2026-10-30","lastActivityAt":1761772800000}',
+  // Challenge attempts (§Q2-B3): Reset-my-history clears them; the
+  // friendChallenges flag never does.
+  "meridian.challenge.attempts.v1":
+    '{"counts":{"3|state|nebraska|gn-1,gn-2,gn-3,gn-4,gn-5":2},"order":["3|state|nebraska|gn-1,gn-2,gn-3,gn-4,gn-5"]}',
 };
 
 /** Every KEPT localStorage key from manifest §2 plus near-miss foreign keys. */
@@ -143,6 +147,8 @@ const KEPT_LOCAL: Record<string, string> = {
 const CLEARED_SESSION: Record<string, string> = {
   "meridian.session": '{"id":"s1","totalScore":500}',
   "meridian.run": '{"edition":"globe"}',
+  "meridian.run.mc2": '{"edition":"state"}',
+  "meridian.run.mc3": '{"edition":"state"}',
   "meridian.drop": '{"placeId":"lincoln"}',
 };
 
@@ -191,10 +197,12 @@ test("U-R1 master sentinel: every cleared key gone, every kept key byte-identica
   assert.deepEqual(result.failed, []);
   assert.deepEqual(
     [...result.cleared].sort(),
-    // Fix round 2: "discarded-shadow" joins the cleared list (the
-    // Start-over reset now wipes the preserved shadow from the
-    // injected local storage; see the "discarded-shadow" step).
-    ["coldtrail", "discarded-shadow", "geodetective", "learning", "paused-run", "review-deck", "session", "trail"],
+    // Rebase composition (wave-1 × Package B): BOTH new stores join
+    // the cleared list — "discarded-shadow" (the Start-over reset
+    // wipes the preserved shadow from the injected local storage;
+    // see the "discarded-shadow" step) and "challenge-attempts"
+    // (§Q2-B3: reset clears the attempts store).
+    ["challenge-attempts", "coldtrail", "discarded-shadow", "geodetective", "learning", "paused-run", "review-deck", "session", "trail"],
   );
   assertCleared(local, session);
   assertKept(local, session);

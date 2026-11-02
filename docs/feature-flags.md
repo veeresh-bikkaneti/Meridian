@@ -217,6 +217,102 @@ flag off, a saved mc2 challenge is cleared on boot and the ordinary saved
 run — never collateral — boots as usual. GeoDetective and Cold Trail do
 not take part: their mysteries are solo investigations.
 
+**mc3 links (2026-10-31, Package A of the mc3 + winner delta).** The
+mc2 link carried its route as JSON text, and a shared link ran to
+300-plus characters — long enough to wrap, truncate, and look broken
+in a family chat. mc3 packs the same route into raw bytes instead:
+edition and flags in one byte, radius and scores as small
+variable-length numbers, places as 3-byte numbers, the region as a
+number in a frozen list the format keeps for itself, all of it closed
+by a short checksum that catches copying damage (a scrambled link
+fails closed; the checksum is a typo-catcher, not a proof — scores in
+a link are the sender's word, and the game says so). Why bytes and
+not cleverer text: the route itself is the payload, and no readable
+spelling of ten places is shorter than ten numbers. A 10-place
+Nebraska route is a 52-character payload (62 with a winner block
+inside, below), against mc2's 274. Nothing about fairness changes:
+the pinned radius is still honoured only within ±10% of the radius
+the receiving build computes for the region, the checksum still fails
+closed on any edit, and the whole fragment is capped at 127
+characters. mc1 and mc2 are now receive-only formats — every creation
+surface sends mc3, with one kept exception: a played Globe route
+still shares its exact route in the original mc1 form, the shipped
+surface. Finishing a challenge someone sent you passes the route
+along under one rule — never lose information: mc1 completions stay
+mc1, an mc2 completion moves UP to mc3 (the circle it was judged at
+rides along untouched), and an mc3 completion stays mc3. The format
+also reserves a winner block — the sender's score, which stops they
+landed, how many times they have completed this route, and the
+route's best score so far — carried inside the link for the
+winner-declaration surfaces that land as Package B of the same delta;
+in Package A the block was decoded and carried, but no screen read
+it yet, and no completion minted one (Package B, next paragraph,
+changed both). One failure line is new: when THIS
+build opens a link from a format newer than itself (a `#c=mc9.`-style
+prefix), or one naming a region this build's frozen list doesn't have
+yet, the notice headline is "This challenge needs the newest
+Meridian.", because asking for a resend from the same newer game
+would fail again in exactly the same way; a broken link in a known
+format still asks for the resend, as before. The reverse direction
+gets no such promise: a build OLDER than mc3, opening an mc3 link,
+shows only "Could not load this challenge." — it has never heard of
+the format, so it cannot point anyone at a newer version; the
+newest-Meridian headline exists only in builds new enough to
+recognise a newer format when they see one.
+
+**Winner declaration (2026-10-31, Package B of the mc3 + winner
+delta).** The winner block Package A carried silently now drives the
+game. A challenge link with a block opens on a welcome card with a
+Stakes section: "🎯 Beat {best} — the best score yet on this route.",
+with the sender's own score nested under it when someone earlier in
+the chain holds the best ("Your friend scored {sender} on this
+one."), and the honesty line the whole feature stands on — "One
+honest note: this score is your friend's word — Meridian can't check
+scores sent in links." How many tries anyone took appears nowhere on
+the card; tries are a story told after play, never a stake shown
+before it. During the run a small chip at the bottom of the map
+shows the target and your running score ("🎯 {best} · you
+{running}"); if the stops left can no longer pay the target, the
+chip stops quoting a number you cannot reach and counts landed
+stops instead ("landed {x} of {n}"). Finishing brings the verdict
+screen: one of four calls — a win ("You beat it! 🏆"), a dead heat
+inside the tie band ("Dead heat! You share the crown! 🤝" — close
+enough is never scored as a loss, and it never moves the best), a
+near miss within half of one perfect stop ("So close! 🎯"), or a
+loss ("Better luck next time! 🍀") — over a bar that sweeps to your
+score against the route's perfect score, with the target drawn on
+it from the first frame as a gold tick labelled "TARGET {best}" and,
+on a win, a "✓ PASSED" tag that stays put. Scores are never counted
+up: the numbers are final from the first frame, and under
+reduced-motion settings nothing animates at all — the same
+information, standing still. Under the bar, a stop-by-stop strip
+compares your landings with the sender's ("Stop by stop — you landed
+{x}, they landed {y}."), names the stops you both missed as the hard
+stops (if any place's name can't be resolved, the strip honestly
+falls back to the counts alone, with no names and no hard-stops
+line), and repeats the honesty line, because the friend's row is
+their word too. Below that, the tries arrive as story: who set the
+mark and in how many goes, and how many times you yourself have
+finished this route. Passing the route along mints YOUR block —
+your score, your stops, your completion count, and the best raised
+to yours if you beat it — under one guard against farming: from
+your third completion of the same route, your score can still be
+the sender's score on the next link, but it can no longer raise the
+chain's best (when the guard is what held the target, the verdict
+says so: "The target only rises on a player's first two tries at a
+route."). "Share just the route" rides beside the
+pass-along (one of the share offers the flag gates, like the rest):
+the same route with no winner block and no scores at all. Every non-win verdict offers a retry of the same route; a win
+leads with passing it along. The completion counts themselves live
+on the device in one small store (`meridian.challenge.attempts.v1`,
+keyed by the route's scoring version, edition, region and ordered
+places, capped at 512 routes): turning the friend-challenges flag
+off does not clear it, and "Reset my history" does. Sharing your
+exact played route from the end-of-run summary mints a block the
+same way (you are the sender; the best starts at your route score) —
+a played Globe route is the standing exception: it still shares in
+mc1, which has no room for a block, exactly as before.
+
 **Creating mid-game (2026-10-29, Package B).** Three more doors into the
 same challenge, all behind the same flag. While a game is running, the
 "⋯" menu in the top corner offers "Challenge a friend — new route in
@@ -229,10 +325,12 @@ that your own route — the one you are playing — unlocks when you
 finish. Both open the same preview sheet before anything is shared, so
 you always see the route and its circle first. And when you finish a
 challenge someone sent you, the completion screen passes that exact
-route along in its original format (an mc2 route stays mc2, circle and
-all) and — for mc2 routes — offers a brand-new route in the same region
-beside it ("Or send a new {Region} route"). Routes received in the
-original mc1 format keep their original completion screen, unchanged.
+route along under the origin rule (an mc2 route forward-upgrades to
+mc3, circle and all, since the 2026-10-31 delta; an mc3 route stays
+mc3) and — for mc2-family routes — offers a brand-new route in the
+same region beside it ("Or send a new {Region} route"). Routes
+received in the original mc1 format keep their original completion
+screen, unchanged.
 Turning the flag off removes every one of these entries; a challenge
 already in progress still finishes, it just can't be shared onwards.
 
