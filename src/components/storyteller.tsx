@@ -217,7 +217,15 @@ export function StorytellerNarration({
       matchMedia("(prefers-reduced-motion: reduce)").matches,
   ).current;
 
-  const wordsRef = useRef<string[]>([]);
+  // #289: seed the words at first render, not in the mount effect. The
+  // caption used to paint EMPTY (22px) and pop to full height (~61px)
+  // at the first reveal tick ~260ms later; inside the summary modal
+  // that pop moved the buttons below it mid-tap and could eat the
+  // player's first tap. The mount effect still re-seeds the same
+  // split; this only makes the first paint carry the full line, as
+  // the mount-once orchestration below already promises ("caption
+  // text appears instantly").
+  const wordsRef = useRef<string[]>(line.text.split(" "));
   const gestureDoneRef = useRef(false);
   const dismissedRef = useRef(false);
   const audioStartTimeRef = useRef(0);

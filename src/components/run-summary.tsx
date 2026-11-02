@@ -11,6 +11,7 @@ import {
   type SessionSummary,
 } from "@/game/session";
 import { SHARE_URL, sessionShareText } from "@/game/share-action";
+import { STORYTELLER_LINES } from "./storyteller-lines";
 import { LEARNING_COPY, type GrowthSummary } from "@/game/learning";
 import { REVIEW_DECK_COPY } from "@/game/review-deck";
 import { Button } from "@/components/ui/button";
@@ -164,7 +165,26 @@ export function RunSummaryCard(props: {
         {/* Storyteller narration (caption only — figure is banner-only per
             owner ruling 2026-10-10): the closing-chapter beat. One line,
             text-first + speaker. */}
-        <Suspense fallback={null}>
+        {/* #289: the fallback reserves the caption's box while the lazy
+            narration chunk loads. With fallback={null} the caption mounted
+            late ABOVE the action buttons and pushed them down mid-tap: a
+            tap whose pointerdown landed before the mount and pointerup
+            after it dispatched its click to the card, not the button, so
+            the first tap (e.g. on "Share score") was silently lost. The
+            placeholder renders the same line in the same box metrics —
+            caption max-width/padding/border and the banner text size,
+            line-height and balance wrap — invisible and aria-hidden, so
+            the real caption swaps into identical space at any viewport
+            and nothing below it moves. */}
+        <Suspense
+          fallback={
+            <div aria-hidden="true" className="mb-2 flex justify-center">
+              <div className="invisible max-w-[260px] border border-transparent px-3 py-2.5 text-[0.9375rem] leading-[1.3] [text-wrap:balance]">
+                {STORYTELLER_LINES.summary.text}
+              </div>
+            </div>
+          }
+        >
           <StorytellerNarration
             screen="summary"
             trigger="summary"
