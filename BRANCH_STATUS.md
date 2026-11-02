@@ -69,6 +69,20 @@ per-statement table.
   PR #284 record)
 - [x] Comments rewritten — comment-only diff; non-comment lines
   byte-identical to main
-- [ ] Gates sealed (tsc / npm test / lint-cards / build:pages +
-  built-output grep)
-- [ ] PR opened (no merge)
+- [x] Gates sealed (resume crew, 2026-11-02 — the first crew died in a
+  daemon restart after pushing `b10a636` with no gates run; this crew
+  reconciled the branch as sound — base still current main, diff
+  comment-only — re-verified every claim from source, and ran the
+  gates): tsc 0 · npm test 0 (scripts 850 pass / 11 skipped; src
+  1879/1879; 0 fail) · test:worker 0 (85/85, repo AGENTS.md gate) ·
+  lint-cards GATE PASSED · build:pages 0 ·
+  built-output grep: `dist/client/.well-known/security.txt` carries
+  "stored:true" + "held by Discord", no "parked" · extra pin:
+  `static-wellknown.test.mjs` 4/4, non-comment lines byte-identical to
+  main. Logs: `~/workspace/meridian-issue-wave/evidence/301/`
+  (first npm-test run's session was reaped before its exit file
+  wrote; its complete log is kept as `npm-test.attempt1.log` and the
+  gate was re-run clean for the sealed exit). E2E not run —
+  deliberate: comment-only change to a static text file, no
+  behaviour for E2E to exercise.
+- [x] PR opened (no merge) — see PR link in the finish heartbeat
