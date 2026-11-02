@@ -84,7 +84,7 @@ test("reload during reveal: result card re-renders with Next place", async ({
   // showed the broken "Pin dropped. ." with an empty distance).
   const distancePara = card.getByTestId("miss-headline");
   await expect(distancePara).toContainText(
-    /[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
+    /[\d,]+(\.\d+)? (km|mi|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
     { timeout: 5_000 },
   );
 
