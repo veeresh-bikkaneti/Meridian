@@ -28,6 +28,8 @@ import {
   thresholdConfig,
   tierOf,
   validateEvent,
+  EVENT_TYPES,
+  FUNNEL_CLASS_TYPES,
   MAX_BODY_BYTES,
   ALLOWED_ORIGINS,
   RATE_LIMIT_BINDING,
@@ -71,6 +73,63 @@ test("validateEvent: accepts a well-formed event", () => {
 
 test("validateEvent: accepts tile_failed", () => {
   assert.deepEqual(validateEvent(validEvent({ type: "tile_failed" })), []);
+});
+
+// --- #194 wave 2: the funnel types (storyteller / narration) -------------
+//
+// The client has emitted these six types since #108 through the same
+// transport as every crash event, but the worker's allowlist never
+// included them — every one was answered 400 and silently dropped.
+// The payloads below are copied from the real emission sites in
+// src/components/storyteller.tsx (COPPA-clean: screen/trigger/booleans
+// only, never place content).
+
+const FUNNEL_PAYLOADS: Record<string, Record<string, unknown>> = {
+  storyteller_shown: { screen: "story", sound_on: true, reduced_motion: false },
+  narration_started: { screen: "story", trigger: "first_gesture", sound_on: true, line_count: 1 },
+  narration_completed: { screen: "summary", duration_ms: 4200, trigger: "speaker" },
+  narration_replayed: { screen: "story", line_index: 0, trigger: "replay" },
+  narration_failed: { screen: "geodetective", error_name: "NotSupportedError", trigger: "summary" },
+  narration_dismissed: { screen: "story", at_line: 1, reason: "tap_caption" },
+};
+
+test("EVENT_TYPES: the accepted set is exactly the client's 14 types (#194)", () => {
+  // Pinned literally on purpose: this list is the contract with
+  // ObservabilityEventType in src/lib/observability.ts, and the drift
+  // test (scripts/observability-event-types.test.mjs) fails if the two
+  // ever disagree again. Changing one side MUST change both.
+  assert.deepEqual(
+    [...EVENT_TYPES].sort(),
+    [
+      "boot_failure",
+      "js_error",
+      "map_error",
+      "narration_completed",
+      "narration_dismissed",
+      "narration_failed",
+      "narration_replayed",
+      "narration_started",
+      "recovery_outcome",
+      "storyteller_shown",
+      "suspected_crash",
+      "tile_failed",
+      "unhandled_rejection",
+      "webgl_context_lost",
+    ],
+  );
+  assert.deepEqual([...FUNNEL_CLASS_TYPES].sort(), Object.keys(FUNNEL_PAYLOADS).sort());
+});
+
+test("validateEvent: accepts every funnel type with its real payload shape (#194)", () => {
+  for (const [type, params] of Object.entries(FUNNEL_PAYLOADS)) {
+    assert.deepEqual(validateEvent(validEvent({ type, ...params })), [], type);
+  }
+});
+
+test("validateEvent: still rejects unknown types, including funnel near-misses (#194)", () => {
+  for (const type of ["narration_ended", "storyteller_hidden", "narration", "crash"]) {
+    assert.ok(validateEvent(validEvent({ type })).length > 0, type);
+  }
 });
 
 test("validateEvent: rejects missing/unknown type", () => {
@@ -170,6 +229,12 @@ test("tierOf: crash-class vs hiccup-class classification", () => {
   }
   assert.equal(tierOf("tile_failed"), "hiccup");
   assert.equal(tierOf("webgl_context_lost"), "hiccup");
+});
+
+test("tierOf: funnel-class types are counted-only (hiccup tier) (#194)", () => {
+  for (const t of FUNNEL_CLASS_TYPES) {
+    assert.equal(tierOf(t), "hiccup", t);
+  }
 });
 
 test("thresholdConfig: env overrides and fallbacks", () => {
@@ -281,6 +346,28 @@ test("hiccup-class event: counted but NOT forwarded individually", async () => {
   assert.equal(json.forwarded, false);
   assert.equal(json.counted, true);
   assert.equal(fetchCalls.length, 0, "no individual forward for hiccup-class");
+});
+
+test("funnel-class event: accepted, counted, NOT forwarded individually (#194)", async () => {
+  const { map, store } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  // The exact shape storyteller.tsx posts for a finished narration.
+  const res = await handleRequest(
+    postEvent(validEvent({ type: "narration_completed", ...FUNNEL_PAYLOADS.narration_completed })),
+    env,
+  );
+  assert.equal(res.status, 200, "previously a 400 — the event was dropped");
+  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  assert.equal(json.forwarded, false);
+  assert.equal(json.counted, true);
+  assert.equal(fetchCalls.length, 0, "no individual forward for funnel-class");
+  const hour = hourLabelOf(Date.now());
+  const bucket = (await store.readBucket(bucketKey(hour, "narration_completed")))!;
+  assert.equal(bucket.total, 1, "counted into its own (hour × type) bucket");
 });
 
 test("threshold alert: fires exactly once per type+hour", async () => {
