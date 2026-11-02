@@ -11,20 +11,27 @@ Receives the events emitted by `src/lib/observability.ts` (schema:
   mobile OS reclaiming the GPU context on backgrounding): **counted,
   NOT forwarded individually.** They surface through a threshold alert
   and the hourly digest instead.
+- **conditional** — `recovery_outcome`: crash-class **only** when its
+  `recoveryOutcome` field is `repeat_failure`; every other value (and
+  a missing or invalid one) is counted only, never forwarded on its
+  own. See the Verdict section — this type is how the app reports
+  whether a self-recovery attempt worked.
 
 Every accepted event is also **counted** into per-hour buckets in a
-Workers KV namespace (`TELEMETRY_COUNTS`), keyed by UTC hour × type ×
-buildId × edition × region × os/form device bucket — **counts only**,
-no payloads, no identifiers.
+Workers KV namespace (`TELEMETRY_COUNTS`): one KV key per UTC
+hour × type, with buildId × edition × region × os/form device-bucket
+breakdowns inside the bucket value — **counts only**, no payloads,
+no identifiers.
 
 ## Relationship to `worker/observability/` (v1)
 
 The v1 worker is the older **logging-only** receiver: it validates events
 and writes one structured JSON log line per event (read via
 `wrangler tail`). This worker lives in a **new directory on purpose** —
-the old one is untouched. It accepts the same schema **plus
-`boot_failure` and `tile_failed`** and forwards alerts instead of
-logging the full event.
+the old one is untouched. It accepts the same schema and forwards
+alerts instead of logging the full event. Against v1's five types,
+this worker adds `boot_failure`, `tile_failed`, and
+`recovery_outcome`.
 
 Deploy **one** of them as the `observabilityEndpoint` target, not both.
 
@@ -33,6 +40,8 @@ Deploy **one** of them as the `observabilityEndpoint` target, not both.
 - `src/index.ts` — zero-runtime-dependency Worker. `handleRequest(request,
 env)` is exported pure for tests; the default export wires it as `fetch`
 plus a `scheduled` handler for the hourly digest.
+- `src/index.test.ts` — the unit suite (85 tests; run it with
+  `npm run test:worker` from the repo root — see Tests).
 - `src/dev-entry.ts` — local-dev wrapper for `wrangler dev` only:
   it re-exports just the default handler, because workerd rejects
   `index.ts`'s test-only named exports (plain constants) as handler
@@ -61,6 +70,22 @@ plus a `scheduled` handler for the hourly digest.
   `200 {"ok":true,"forwarded":true|false,"counted":true|false}`
   (`"forwarded":false` when no forwarding secrets are configured, or
   when the event is hiccup-class — both are normal modes, not errors).
+  When at least one forwarder is actually attempted (a crash-class
+  event with Discord and/or email configured), the response also
+  carries a per-channel `results` object, e.g.
+  `{"ok":true,"forwarded":true,"counted":true,"results":{"discord":true,"email":false}}`.
+  Read `forwarded:true` as "forwarding was attempted" — whether each
+  channel succeeded is in `results`, not in `forwarded`. The
+  no-attempt response has no `results` field at all.
+- Headers that matter: ingest POSTs and preflights must carry an
+  allow-listed `Origin` (below). The rate limiter keys on the
+  platform-set `CF-Connecting-IP` header (a missing one is treated
+  as the shared key `"unknown"`). A declared `Content-Length` over
+  the body cap is refused before the body is read. `Content-Type`
+  is **not** enforced — the body is read as text whatever it says,
+  which is what lets `navigator.sendBeacon` (`text/plain`) work.
+  JSON responses carry `content-type: application/json`; ingest
+  responses also carry `Vary: Origin` (and the CORS echo below).
 - Cron (`15 * * * *`, the `scheduled` handler) → posts the **hourly
   digest** to Discord: one compact message per hour summarizing the
   PREVIOUS UTC hour. Zero events → nothing posted (silence is the
@@ -84,42 +109,126 @@ plus a `scheduled` handler for the hourly digest.
 - Body cap: **8 KB**, enforced while streaming (a chunked upload is
   cancelled at the cap, never buffered whole) → `413`. The app's own
   events are capped at 4 KB, and the boot watchdog's at 8 KB.
-- Schema: the documented fields with type and length caps; `device` and
-  `breadcrumb.device` limited to the coarse bucket fields (`os`, `form`,
-  `screen`, `dpr`, `webgl1/2`, legacy `ua` ≤ 300); `breadcrumb.history`
-  ≤ 32 entries; any other top-level field must be a short primitive; at
-  most 24 fields; `ts` between 2020-01-01 and one day in the future.
+- Schema: the fields and caps in the Event schema section below.
 - Forwarding is fire-and-collect via `Promise.allSettled`: one forwarder
   failing never fails the request. Each forwarder has a 5 s timeout.
-- Log lines carry only type/buildId/edition — never PII, never the
-  forwarded secrets, never full payloads.
+- Log lines for an event carry only type/buildId/edition (operational
+  lines add things like a forwarder's HTTP status or per-channel
+  result booleans) — never PII, never the forwarded secrets, never
+  full payloads.
 - CORS: `OPTIONS` from an allow-listed origin → `204`, echoing that
-  origin in `access-control-allow-origin` with `Vary: Origin`. Any other
-  origin, or none, → `403` with no CORS headers, so the browser never sends
+  origin in `access-control-allow-origin` with `Vary: Origin`, plus
+  `access-control-allow-methods: POST, OPTIONS`,
+  `access-control-allow-headers: content-type`, and
+  `access-control-max-age: 86400`. Any other origin, or none, → `403`
+  with no CORS headers, so the browser never sends
   the POST. Responses to allowed POSTs echo the origin, never `*`.
   `/health` carries no CORS headers (it is for curl and monitors).
+
+### Responses and errors
+
+Every error body is JSON: `{"error": "<message>"}` — plus a
+`problems` list on a schema failure. The worker never returns a
+500 for a client error.
+
+| Status | When | Body |
+|---|---|---|
+| `200` | Event accepted (forwarded or not) | `{"ok":true,"forwarded":…,"counted":…}` (+ `results` when forwarding was attempted — see above) |
+| `200` | `GET /health` | `{"ok":true}` |
+| `204` | CORS preflight from an allowed origin | *(empty)* |
+| `400` | Body is not valid JSON | `{"error":"invalid JSON"}` |
+| `400` | Event fails the schema | `{"error":"invalid event","problems":["…", …]}` — one human-readable string per problem |
+| `403` | POST or preflight with a missing or non-allow-listed `Origin` | `{"error":"origin not allowed"}` (preflight: empty body, no CORS headers) |
+| `404` | Any path other than `/`, `/ingest`, `/health` | `{"error":"not found"}` |
+| `405` | Non-POST on `/` or `/ingest`; non-GET on `/health` | `{"error":"method not allowed"}` |
+| `413` | Body over 8 KB (declared or streamed) | `{"error":"body too large"}` |
+| `429` | Rate limit (10 / 60 s per client) | `{"error":"rate limit exceeded"}` + a `Retry-After` header (seconds) |
+
+### Event schema
+
+`validateEvent` in `src/index.ts` is the authority; this table is
+what it enforces today. Anything that breaks a rule below gets a
+`400` — it is never trimmed or guessed at.
+
+| Field | Required? | Rule |
+|---|---|---|
+| `type` | yes | One of the 8 accepted types (see Counting, below, for the canonical list) |
+| `ts` | yes | Finite number, epoch ms, between 2020-01-01 and one day in the future |
+| `buildId` | yes | Non-empty string, ≤ 64 chars |
+| `sessionId` | no | String ≤ 64 chars. Validated, but never forwarded, logged, or stored |
+| `edition`, `regionId`, `chunkId`, `lastMilestone` | no | Strings ≤ 128 chars each |
+| `error` | no | Object with `name` ≤ 80 chars and `message` ≤ 300 chars (both required if `error` is present) |
+| `device`, `breadcrumb.device` | no | Object, ≤ 16 fields: `os`/`form`/`screen` strings ≤ 24 chars, `dpr`/`screenW`/`screenH` finite numbers, `webgl1`/`webgl2` booleans, legacy `ua` string ≤ 300 chars; any other key must hold a short primitive and be ≤ 32 chars |
+| `breadcrumb` | no | Object; `breadcrumb.history` is an array of ≤ 32 entries |
+| `bgTerminal`, `buildReplaced`, `trailStuck` | no | Booleans — the verdict evidence stamps (see Verdict) |
+| `lcV` | no | String — the client's classifier logic version, stamped on every event |
+| `recoveryOutcome` | no | String — the outcome value for `recovery_outcome` events (see Verdict) |
+| anything else | no | Extra top-level fields are allowed only as short primitives: string ≤ 256 chars, finite number, boolean, or null, with a key ≤ 64 chars. At most 24 top-level fields in total |
+
+The client also stamps fields the worker deliberately does **not**
+act on: `mapMode`, `storageOk`, `afterRecovery`, and a provisional
+`verdict` / `whyKey`. They pass validation as extra primitives
+above; the worker re-derives the verdict itself and never reads
+the client's stamp (see Verdict).
 
 ## Severity tiers
 
 | Tier | Types | Behavior |
 |---|---|---|
-| crash-class | `suspected_crash`, `boot_failure`, `js_error`, `unhandled_rejection`, `map_error` | Forwarded to Discord/email **immediately** (unchanged format); also counted. |
+| crash-class | `suspected_crash`, `boot_failure`, `js_error`, `unhandled_rejection`, `map_error` | Forwarded to Discord/email **immediately**; also counted. |
 | hiccup-class | `tile_failed`, `webgl_context_lost` | **Counted only** — no individual forward. Surfaced via the threshold alert and the hourly digest. |
+| conditional | `recovery_outcome` | Crash-class **only** when `recoveryOutcome` is `repeat_failure`; every other value (or a missing/invalid one) is counted only. |
 
 Rationale: hiccup-class events are resource signals that are usually
 benign/transient in production (`tile_failed` fires on ordinary tile CDN
 hiccups; `webgl_context_lost` fires when a mobile OS reclaims the GPU
 context on backgrounding). Forwarding each one as a 🚨 trained readers
 to ignore the channel — the threshold alert and digest restore the
-signal-to-noise ratio. Crash-class events are unaffected: same
-immediate alert, same message format, same no-op mode when no
-forwarding secrets are configured.
+signal-to-noise ratio. Crash-class events are unaffected by the
+tiering: same immediate alert, same no-op mode when no forwarding
+secrets are configured. (The alert's format itself later gained
+the verdict line — see Verdict.)
+
+## Verdict (the first line of every forwarded alert)
+
+The worker does not just pass a crash report along — it classifies
+it. The client stamps the evidence facts onto the event
+(`bgTerminal`, `buildReplaced`, `trailStuck`, `lcV`, and for
+`recovery_outcome` events the `recoveryOutcome` value); the worker
+re-derives a verdict from those facts at ingest (`classifyCrashVerdict`
+in `src/index.ts`) and renders **its own** derivation. A verdict the
+client stamped is never read or trusted — it is only a cross-check.
+
+| Verdict | Headline on the alert | Means |
+|---|---|---|
+| `not_a_real_issue` | ✅ IGNORE — No action needed | The pattern matches a harmless background close: app backgrounded, phone closed it, no error captured |
+| `auto_fixed` | 🔧 IGNORE — Fixed itself (confirmed) | Only from `recovery_outcome` with `recoveryOutcome: confirmed` |
+| `developer_needed` | 🚨 FIX — Developer action needed | A real error was captured, a foreground session died mid-game on the current build, or a recovery was followed by a repeat failure |
+| `insufficient_evidence` | ❔ WAIT — Can't tell from this report | Anything else — including a report whose evidence stamps are missing (older builds). Missing evidence fails closed to here, never to "harmless" |
+
+Under the headline, the alert carries a one-line plain-language
+**why** (what the evidence shows, and its limit), an
+`action: Read the error below.` line for `developer_needed` only,
+then `type` · `build`, the coarse device bucket, `edition` ·
+`region`, the last step in plain words (e.g. `game_loaded` reads
+"playing — map on screen"), and the truncated error name/message.
+Discord content is capped at 1500 characters. The email version
+(subject `[Meridian] <headline> · <type> · build <buildId> ·
+<edition>`) uses the same lines in a labelled list and adds the
+event time (ISO). The `recovery_outcome` branch is classified
+**first**, before the captured-error rule: `confirmed` →
+`auto_fixed`; `repeat_failure` → `developer_needed`; `stood_down`,
+`unconfirmed_closed`, `unconfirmed_died`, `unconfirmed_expired`,
+and `marker_unreadable` → `insufficient_evidence` (each with its
+own why-line).
 
 ## Threshold alert
 
-When a hiccup-class event arrives and its count for the current UTC
+The threshold check runs on **every** accepted event's bucket (not
+just hiccup-class). When an event's count for the current UTC
 hour crosses a threshold, the worker posts **one** Discord alert for
-that type+hour — exactly one, even if the count keeps climbing:
+that type+hour — exactly one, even if the count keeps climbing
+(and only when a Discord webhook is configured):
 
 ```
 🚨 Meridian telemetry alert
@@ -132,7 +241,10 @@ Defaults: **20 events/hour of one type across all builds**, or
 **10/hour from a single buildId** — whichever trips first. Override
 with the (optional, non-secret) env vars `TELEMETRY_THRESHOLD_PER_HOUR`
 and `TELEMETRY_THRESHOLD_PER_BUILD` (positive ints; anything else falls
-back to the defaults). Exact-once holds per isolate via a flag stored
+back to the defaults). They are config, not secrets — but there is
+no `[vars]` block, so in production an override must ride as a
+plain-text binding in the version-upload metadata, like the other
+bindings in Deploy. Exact-once holds per isolate via a flag stored
 in the hour's bucket; under pathological cross-isolate concurrency the
 race window is near-zero at this traffic level (documented in the
 code), and a duplicate would be the identical message.
@@ -153,8 +265,9 @@ webgl_context_lost 3 · f331846 ×3 · state ×3 · android/mobile ×3
 alerts this hour: tile_failed threshold
 ```
 
-Each type line shows the count plus the top builds, editions, and
-device buckets. A line is flagged **⚠️** when its count exceeds
+Each type line shows the count plus the top 3 builds, top 2
+editions, and top 2 device buckets. (Regions are counted in the
+bucket but are not rendered in the digest.) A line is flagged **⚠️** when its count exceeds
 **3× the trailing 24-hour hourly average** for that type AND exceeds 3
 events absolute — a first-ever burst (avg 0) flags too, which is the
 point. **Zero events in the hour → nothing is posted** (silence is the
@@ -190,18 +303,23 @@ safe with the binding absent (counting is skipped) — add it when
 ready. Corrupt buckets are treated as absent and replaced on next
 write.
 
-Accepted `type` values: `suspected_crash`, `boot_failure`, `js_error`,
-`unhandled_rejection`, `map_error`, `tile_failed`, `webgl_context_lost`.
+Accepted `type` values (the canonical list — `EVENT_TYPES` in
+`src/index.ts`): `suspected_crash`, `boot_failure`, `js_error`,
+`unhandled_rejection`, `map_error`, `tile_failed`,
+`webgl_context_lost`, `recovery_outcome`.
 Required: `type`, `ts` (finite number, epoch ms), `buildId`
-(non-empty string). Optional fields pass through; the forwarded alert
-uses only type, buildId, edition/region, lastMilestone, and a
-truncated error name/message.
+(non-empty string). Optional fields pass through (full caps in the
+Event schema table above); the forwarded alert is built from type,
+buildId, edition/region, lastMilestone, the coarse device bucket,
+a truncated error name/message, and the verdict evidence stamps
+(see Verdict).
 
 ## Tests
 
 ```sh
-npm run test:worker        # 42 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
-                           #  S4: streamed cap, schema, binding; Phase 1: tiering, counting, threshold, digest, fail-open)
+npm run test:worker        # 85 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
+                           #  S4: streamed cap, schema, binding; Phase 1: tiering, counting, threshold, digest, fail-open;
+                           #  Slice 1/2: verdict classifier, recovery_outcome tiering and alert format)
 npm run typecheck:worker   # strict tsc on the worker sources
 ```
 
@@ -360,7 +478,10 @@ npx wrangler dev -c wrangler.toml
 curl -X POST localhost:8787/ingest -H 'content-type: application/json' \
   -H 'origin: https://meridian.knowledgetest.workers.dev' \
   -d '{"type":"suspected_crash","ts":1728300000000,"buildId":"test","edition":"globe","lastMilestone":"boot_ready"}'
-# → {"ok":true,"forwarded":false}  (no secrets in dev = no-op mode)
+# → {"ok":true,"forwarded":false,"counted":true}
+#   (no secrets in dev = nothing is forwarded; counted:true because
+#   wrangler.toml binds TELEMETRY_COUNTS locally — expect
+#   "counted":false instead if that binding is ever absent)
 ```
 
 ## Secrets
@@ -392,7 +513,8 @@ The bindings the upload metadata must carry:
 Optional, same form, if email forwarding is wanted:
 `RESEND_API_KEY` (https://resend.com/api-keys), `REPORT_EMAIL`
 (the recipient), and `REPORT_FROM` (a verified sender; the
-default is Resend's `onboarding@resend.dev` test domain).
+default is `Meridian Crash Reporter <onboarding@resend.dev>`,
+Resend's test-domain sender).
 `DISCORD_WEBHOOK_URL` itself comes from Discord: Server Settings
 → Integrations → Webhooks.
 
@@ -427,7 +549,8 @@ is what was run:
    `/ingest` (`"counted":true`). `/health` alone stays green on a
    blind version.
 2. Add the Worker URL as the **top-level** `observabilityEndpoint` in
-   `public/flags.json` (NOT inside `flags`) and redeploy the site:
+   `public/flags.json` (NOT inside `flags`) and redeploy the site.
+   The shape is:
 
 ```json
 {
@@ -436,6 +559,10 @@ is what was run:
   "observabilityEndpoint": "https://<your-worker-host>/ingest"
 }
 ```
+
+   That example shows the *shape* only — keep whatever flags and
+   other top-level fields the file already carries; add the one
+   field, change nothing else.
 
 The field is set in production (see above); without it, the client
 transport is a complete no-op (fail-closed). Do **not** commit the Worker URL into this repo's code —
@@ -467,13 +594,18 @@ foreign origins are refused outright (S4).
 
 ## Privacy
 
-- Alerts contain: type, buildId, edition/region, lastMilestone,
-  truncated error name/message. Nothing else.
+- Alerts contain: the verdict headline/label and its why-line,
+  type, buildId, edition/region, lastMilestone (in plain words),
+  the coarse os/form device bucket, and a truncated error
+  name/message. The email version also carries the event time.
+  Nothing else.
 - The Phase 1 counters contain: per-UTC-hour counts keyed by type,
   buildId, edition, region, and os/form device bucket. Counts only —
   no payloads, no identifiers, no session-level data.
-- Never forwarded, logged, or stored: sessionId, UA, device facts,
-  breadcrumb history, guess/place content, coordinates, stack traces,
+- Never forwarded, logged, or stored: sessionId, raw UA, precise
+  device facts (the coarse os/form bucket above is the only device
+  data that ever leaves), breadcrumb history, guess/place content,
+  coordinates, stack traces,
   IPs (the rate limiter keys by `CF-Connecting-IP` in memory only,
   never persisted).
 - The client (`src/lib/observability.ts`) never collects guess/place

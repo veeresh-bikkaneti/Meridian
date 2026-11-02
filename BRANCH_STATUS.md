@@ -204,3 +204,15 @@ Gates + E2E for this round are sealed in
 `~/workspace/verdict-grandpa-video-evidence/cure2-295/`. Next:
 panel RE-VOTE on the new tip (separate stage). NO MERGE without
 the owner's per-PR word.
+
+---
+
+# BRANCH_STATUS — docs/221-crash-readme-audit (Wave 2, #221)
+
+- **Branch:** `docs/221-crash-readme-audit` · **Base:** `main` @ `2a0527f`
+- **Task:** #221 REOPENED as PARTLY fixed — audit `workers/crash-report/README.md` line-by-line against the worker's current code, fix every documentation gap, open a small docs PR. STOP at PR-open (no Silo QA, no panel, no merge — separate dispatches).
+- **Tier:** 0 (docs-only). Worker code is FROZEN on this branch: a code-wrong finding is reported, never fixed here.
+- **Audit:** sealed at `~/workspace/meridian-issue-wave/evidence/221/AUDIT.md` — 24 gap rows fixed (incl. owner's `counted` at the dry-run example), 1 already-correct group, 2 out-of-scope, 1 code-wrong finding (C1: client emits `storyteller_*`/`narration_*` types the worker 400s — that is the #194 crew's event-acceptance surface).
+- **Biggest gaps fixed:** `recovery_outcome` (8th event type, conditional tier) undocumented everywhere; the entire verdict classifier undocumented; `results` response field missing; all error shapes missing; test count stale (42 → 85).
+- **Files changed:** `workers/crash-report/README.md`, this file. Nothing else.
+- **Done:** [x] audit sealed · [x] README fixed · [ ] gates sealed (test:worker, typecheck:worker, tsc, npm test, lint-cards, build:pages) · [ ] PR opened
