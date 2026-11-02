@@ -8,6 +8,6 @@
 # than a year out.
 Contact: https://meridian.knowledgetest.workers.dev/contact
 Contact: https://github.com/veeresh-bikkaneti/Meridian/security/advisories/new
-Expires: 2027-10-01T00:00:00.000Z
+Expires: 2027-11-01T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://meridian.knowledgetest.workers.dev/.well-known/security.txt
