@@ -640,7 +640,21 @@ export function StorytellerNarration({
     dismiss("tap_caption");
   };
 
-  if (celebrationActive || tourActive || !visible) return null;
+  if (celebrationActive || tourActive || !visible) {
+    // #306: the modal host lives in run-summary's fixed-height slot, which
+    // keeps the box. The empty state clears the caption (the role="status"
+    // node unmounts — nothing stale left to announce) and fills the slot
+    // with an aria-hidden, inert, untappable filler. Other variants keep
+    // unmounting to nothing, unchanged.
+    return variant === "modal" ? (
+      <div
+        aria-hidden="true"
+        inert
+        className="pointer-events-none h-full"
+        data-testid="storyteller-slot-empty"
+      />
+    ) : null;
+  }
 
   const words = wordsRef.current;
   const fullText = line.text;

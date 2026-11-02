@@ -160,11 +160,29 @@ test("replay replays the line", async ({ page }) => {
 
 test("tap on the caption dismisses the narration", async ({ page }) => {
   const errors = await reachSummaryScreen(page);
+  const dialog = page.getByRole("dialog", { name: "Game summary" });
+  const slot = page.getByTestId("storyteller-slot");
+  const slotBefore = await slot.boundingBox();
   await page.getByTestId("storyteller-caption").click();
-  // 150 ms leave animation, then unmounted.
+  // 150 ms leave animation, then the narration host and its caption
+  // (the role="status" live region) unmount — nothing stale is left to
+  // announce.
   await expect(page.getByTestId("storyteller-narration")).toHaveCount(0, {
     timeout: 5000,
   });
+  await expect(page.getByTestId("storyteller-caption")).toHaveCount(0);
+  await expect(dialog.getByRole("status")).toHaveCount(0);
+  // #306: the slot keeps its box; what fills it is an empty, aria-hidden,
+  // inert, untappable filler.
+  const empty = page.getByTestId("storyteller-slot-empty");
+  await expect(empty).toHaveCount(1);
+  await expect(empty).toBeEmpty();
+  await expect(empty).toHaveAttribute("aria-hidden", "true");
+  await expect(empty).toHaveAttribute("inert", "");
+  await expect(empty).toHaveCSS("pointer-events", "none");
+  expect(await slot.boundingBox()).toEqual(slotBefore);
+  // WCAG 2.4.3: the tap-dismiss still returns focus to Play again.
+  await expect(page.getByTestId("play-again")).toBeFocused();
   expectCleanConsole(errors);
 });
 
@@ -219,6 +237,117 @@ test("blocked audio degrades to the text-only fallback", async ({ page }) => {
   // The aborted request logs net::ERR_FAILED — that IS the forced failure,
   // not an app bug.
   expectCleanConsole(errors, ["net::ERR_FAILED"]);
+});
+
+/**
+ * #306: the summary buttons never move. Every frame from the dialog's
+ * first paint is sampled in-page (rAF), recording Share score's offset
+ * inside the dialog's scroll content plus which caption state is on
+ * screen. The run walks every state — open (lazy fallback, no caption),
+ * caption in, audio-failure line appended, auto-dismissed — and the
+ * offset must stay within 1px of the first frame's throughout.
+ */
+for (const viewport of [
+  { width: 320, height: 568 },
+  { width: 390, height: 844 },
+]) {
+  test.describe(`summary caption slot @${viewport.width}x${viewport.height}`, () => {
+    test.use({ viewport });
+
+    test("Share score keeps its y-offset at open, caption-in, audio-fail and dismissed", async ({
+      page,
+    }) => {
+      await page.addInitScript(() => {
+        type Sample = { y: number; caption: boolean; fallback: boolean; empty: boolean };
+        const w = window as unknown as { __slotSamples: Sample[] };
+        w.__slotSamples = [];
+        const tick = () => {
+          const dlg = document.querySelector<HTMLElement>(
+            '[role="dialog"][aria-label="Game summary"]',
+          );
+          const share = dlg
+            ? [...dlg.querySelectorAll("button")].find((b) =>
+                (b.textContent ?? "").includes("Share score"),
+              )
+            : undefined;
+          if (dlg && share) {
+            w.__slotSamples.push({
+              y: share.getBoundingClientRect().top + dlg.scrollTop,
+              caption: !!document.querySelector('[data-testid="storyteller-caption"]'),
+              fallback: !!document.querySelector('[data-testid="storyteller-fallback"]'),
+              empty: !!document.querySelector('[data-testid="storyteller-slot-empty"]'),
+            });
+          }
+          requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+      const errors = await reachSummaryScreen(page, { disableServiceWorker: true });
+      await page.route(MP3_PATTERN, (route) => route.abort("failed"));
+      // Audio fails → the fallback line is appended inside the caption.
+      await page.getByTestId("storyteller-speaker").click();
+      await expect(page.getByTestId("storyteller-fallback")).toHaveText(FALLBACK_TEXT);
+      // The tallest caption state (line + fallback) fits inside the slot.
+      const captionBox = await page.getByTestId("storyteller-caption").boundingBox();
+      const slotBox = await page.getByTestId("storyteller-slot").boundingBox();
+      expect(captionBox && slotBox).toBeTruthy();
+      expect(captionBox!.height).toBeLessThanOrEqual(slotBox!.height);
+      // Text-only hold (6 s after the failure), then the caption dismisses.
+      await expect(page.getByTestId("storyteller-caption")).toHaveCount(0, {
+        timeout: 15_000,
+      });
+      await expect(page.getByTestId("storyteller-slot-empty")).toHaveCount(1);
+      await page.waitForTimeout(500);
+      const samples = await page.evaluate(
+        () =>
+          (window as unknown as {
+            __slotSamples: { y: number; caption: boolean; fallback: boolean; empty: boolean }[];
+          }).__slotSamples,
+      );
+      const open = samples[0];
+      expect(open, "a frame was sampled at dialog open").toBeDefined();
+      expect(open.caption, "first frame is before the caption mounts").toBe(false);
+      const phases = {
+        open: [open],
+        captionIn: samples.filter((s) => s.caption && !s.fallback),
+        audioFail: samples.filter((s) => s.caption && s.fallback),
+        dismissed: samples.filter(
+          (s, i) => !s.caption && s.empty && samples.slice(0, i).some((p) => p.caption),
+        ),
+      };
+      for (const [phase, rows] of Object.entries(phases)) {
+        expect(rows.length, `phase ${phase} was observed`).toBeGreaterThan(0);
+        for (const r of rows) {
+          expect(
+            Math.abs(r.y - open.y),
+            `Share score moved during ${phase}: ${r.y} vs ${open.y}`,
+          ).toBeLessThanOrEqual(1);
+        }
+      }
+      expectCleanConsole(errors, ["net::ERR_FAILED"]);
+    });
+  });
+}
+
+test.describe("summary overlay scroll @320x568", () => {
+  test.use({ viewport: { width: 320, height: 568 } });
+
+  test("Done is reachable by scrolling at 320x568", async ({ page }) => {
+    const errors = await reachSummaryScreen(page);
+    const dialog = page.getByRole("dialog", { name: "Game summary" });
+    const done = dialog.getByRole("button", { name: "Done", exact: true });
+    // The card is taller than the viewport: Done starts below the fold,
+    // and the top of the card (the caption) is on screen, not clipped.
+    await expect(done).not.toBeInViewport();
+    await expect(page.getByTestId("storyteller-caption")).toBeInViewport({ ratio: 1 });
+    // Wheel over the card: the overlay (not the page) is the scroller.
+    await page.mouse.move(160, 300);
+    await page.mouse.wheel(0, 1500);
+    await expect(done).toBeInViewport({ ratio: 1 });
+    await done.click();
+    await expect(dialog).toHaveCount(0);
+    expectCleanConsole(errors);
+  });
 });
 
 test("figure tap pauses and resumes the narration", async ({ page }) => {
