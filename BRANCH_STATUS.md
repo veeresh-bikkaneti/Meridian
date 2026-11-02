@@ -38,18 +38,48 @@ Out of scope (FORBIDDEN): product code, PR #302's spec and branch
 
 ## What changed and why
 
-- (pending reproduction)
+- Both specs DID collide — reproduced solo on unmodified main, each
+  with #296's exact strict-mode signature (bare lookup resolves to 2
+  elements: the sr-only `discarded-notice-announcer` + the visible
+  `discarded-notice` card's paragraph). Both flows use the in-page
+  idle kill, which sets the discarded notice (reason "inactivity").
+- Fix, identical in form to PR #302's cure: scope each lookup into
+  the visible card —
+  `page.getByTestId("discarded-notice").getByText("Your game ended after 2 minutes of inactivity.")`
+  — plus the same in-spec comment recording why it is scoped.
+  No `.first()` band-aid, no assertion weakened, no timeout changed
+  (both specs keep their original default `toBeVisible()` wait).
 
 ## Evidence (sealed: `~/workspace/meridian-issue-wave/evidence/303/`)
 
-- (pending)
+- [x] Diagnosis on unmodified main: `build-pages-before` exit 0;
+  `e2e-before-scout-false-demotion` exit 1 and
+  `e2e-before-session-score` exit 1 — each idle-kill test fails with
+  the strict-mode signature above.
+- [x] Gates on the fix tip: `tsc` 0 · `npm-test` 0 (scripts 850 pass
+  / 11 skipped; src 1879/1879) · `test-worker` 0 (85/85) ·
+  `lint-cards` 0 (GATE PASSED) · `build-pages` 0.
+- [x] E2E after: scout-false-demotion full file **3 passed**, exit 0.
+  session-score full file **6 passed / 2 failed**, exit 1 — the cured
+  idle-timeout test passes; the 2 failures (`:77` HUD toggle —
+  celebration overlay intercepts the click; `:509` share text — the
+  spec's hardcoded Workers origin vs the Pages build's origin) are in
+  tests this diff does not touch and BOTH reproduce on unmodified
+  main with the same signatures (`e2e-control-main-session-score`,
+  exit 1; `:509` solo on this branch fails with the identical origin
+  mismatch, `e2e-after-session-score-share-solo`, exit 1) =
+  pre-existing, not regressions.
+- [x] Redundancy / other-instances grep: `redundancy-grep.log` — the
+  only other bare instance on main is #296's own spec (fixed on the
+  frozen PR #302 branch; untouched here).
 
 ## Status
 
 - [x] Branch off current main (`2a0527f`, re-read); coordination ledger heartbeat posted
-- [ ] Diagnosis reproduced solo on unmodified main (both specs)
-- [ ] Scoped locator fix, consistent with PR #302's cure
-- [ ] Gates sealed (tsc · unit · worker · lint-cards · build:pages)
-- [ ] E2E after-fix solo runs sealed (both full spec files)
-- [ ] PR opened against main (For #303)
-- [ ] Merge — owner's explicit per-PR word only (separate stage)
+- [x] Diagnosis reproduced solo on unmodified main (both specs)
+- [x] Scoped locator fix, consistent with PR #302's cure
+- [x] Gates sealed (tsc · unit · worker · lint-cards · build:pages)
+- [x] E2E after-fix solo runs sealed (both full spec files + main control)
+- [x] PR opened against main (For #303)
+- [ ] QA silo + panel — separate coordinator stages (not run here)
+- [ ] Merge — owner's explicit per-PR word only
