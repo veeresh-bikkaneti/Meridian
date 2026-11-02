@@ -43,7 +43,12 @@ Frozen / off-limits: PRs #297/#299/#302/#305 and all other open PRs;
 - [x] Issue #298 + sealed sibling log read; ledger claim posted
 - [x] Dataset proof gathered for India/Globe forced places (Easy
       "storied" curation excludes hook-less tier-1 places)
-- [ ] Solo repro of the six on unmodified main (sealed)
-- [ ] Per-spec diagnosis table sealed
-- [ ] Fixes landed + committed + pushed
+- [x] Solo repro of the six on unmodified main (sealed) — 6/6 failed,
+      evidence/298/repro-main.log
+- [x] Per-spec diagnosis table sealed — evidence/298/DIAGNOSIS.md
+      (5x class (a) stale expectation; gap-view:177 timing-premise,
+      disposition argued in PR body, spec left untouched)
+- [x] Fixes landed + committed + pushed — 5 of 6 specs fixed in the two
+      claimed files (pin-compare + your-pin-country-globe); gap-view
+      untouched pending its disposition call
 - [ ] Gates sealed; PR opened (stop)
