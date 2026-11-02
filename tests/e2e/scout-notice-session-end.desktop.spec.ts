@@ -86,6 +86,9 @@ test("idle-kill retires the switched notice (#188)", async ({ page }) => {
   // No further input: the watchdog kills the session (the flip was the
   // last activity). The idle-ended notice shows; the switched notice —
   // whose "score is kept" claim the kill just falsified — must not.
+  // Scope into the visible card: the same text lives in the sr-only
+  // announcer (discarded-notice-announcer, role=status, #287) — a bare
+  // getByText resolves to 2 elements and fails strict mode (#296).
   await expect(
     page
       .getByTestId("discarded-notice")

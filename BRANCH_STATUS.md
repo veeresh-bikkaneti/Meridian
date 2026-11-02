@@ -25,7 +25,7 @@ bare-text pattern in other specs (listed in the PR body, not fixed here).
 
 ## What changed and why
 
-- At spec:90 the idle-kill assertion used a bare
+- At spec:91 the idle-kill assertion used a bare
   `page.getByText("Your game ended after 2 minutes of inactivity.")`.
   Since PR #287 the same text also lives in the sr-only announcer
   (`data-testid="discarded-notice-announcer"`, `role=status`), so the
@@ -57,5 +57,11 @@ bare-text pattern in other specs (listed in the PR body, not fixed here).
 - [x] Scoped locator fix (visible card only)
 - [x] Solo E2E green (2/2), sealed
 - [x] PR opened against main (For #296, not closing it)
-- [ ] Panel review — separate stage, run by the coordinator
+- [x] Panel round 1 on `2341296`: 5 APPROVE / 7 AWN / 0 BLOCK, DevEx
+  PASS-WITH-NITS — cure applied for the DevEx MEDIUM (seconded by the
+  Senior Architect): a comment at the scoped locator records WHY it is
+  scoped, so a future "simplify this locator" edit cannot silently
+  reintroduce the strict-mode failure. Sibling specs tracked in #303.
+- [x] Cure re-verified solo: `e2e-cure.log` / `e2e-cure.exit` (=0) — 2 passed
+- [ ] Panel re-vote on the cured tip — coordinator
 - [ ] Merge — owner's explicit per-PR word only
