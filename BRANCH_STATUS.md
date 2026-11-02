@@ -48,9 +48,9 @@ express assignment (historically Rock's surface — noted for his round).
 ## Status
 
 - [x] Diagnosis sealed (evidence/194/DIAGNOSIS.md) — counts 14/8/7 confirmed; all 6 app-only types LEGITIMATE
-- [ ] Worker fix + tests
-- [ ] Drift-guard script test
-- [ ] Docs sync (4 files)
+- [x] Worker fix + tests (worker suite 85 → 90; commit 9f8635c)
+- [x] Drift-guard script test (mutation-proven; commit 9f8635c)
+- [x] Docs sync (4 files: docs/observability.md, handbook ch07, workers/crash-report/README.md, worker/observability/README.md cross-ref)
 - [ ] Gates sealed
 - [ ] PR open
 
