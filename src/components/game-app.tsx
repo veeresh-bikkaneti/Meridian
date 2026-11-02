@@ -42,7 +42,7 @@ import {
   type SessionSummary,
 } from "@/game/session";
 import { scoreRingForEdition } from "@/game/score";
-import { SCORING_VERSION, scorePlace, type ScoredPlace } from "@/game/scoring";
+import { SCORING_VERSION, scorePlace, type Difficulty, type ScoredPlace } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
 import { resolveRunPool } from "@/game/pool";
 import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";
@@ -57,6 +57,11 @@ import patagoniaUrl from "@/assets/home-v5/patagonia.webp";
 import archiveToolsUrl from "@/assets/home-v5/archive-tools.webp";
 import journalTreeUrl from "@/assets/home-v5/journal-tree.webp";
 import binocularsHatUrl from "@/assets/home-v5/binoculars-hat.webp";
+import {
+  VERDICT_GRANDPA_POSTER_URL,
+  VERDICT_GRANDPA_VIDEO_URL,
+} from "@/assets/verdict/grandpa-media";
+import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
 import {
   initAudio,
@@ -337,12 +342,14 @@ declare global {
  */
 import {
   buildCreationSources,
+  buildFreshChallengeShareText,
   CHALLENGE_BROKEN_LINK_COPY,
   CHALLENGE_CHILD_COPY,
   CHALLENGE_FAIRNESS_COPY,
   CHALLENGE_GLOBE_RADIUS_KM,
   CHALLENGE_LOAD_FAILURE_COPY,
   CHALLENGE_MAX_PLACES,
+  CHALLENGE_MC3_PREFIX,
   CHALLENGE_MIN_PLACES,
   CHALLENGE_REGION_ID,
   CHALLENGE_REGION_NAME,
@@ -352,6 +359,8 @@ import {
   CHALLENGE_RESHARE_LABEL,
   CHALLENGE_UNKNOWN_CONTENT_COPY,
   CHALLENGE_UNKNOWN_REGION_COPY,
+  CHALLENGE_VERSION_COPY,
+  CHALLENGE_VERSION_LINE,
   CHALLENGE_WELCOME_TITLE,
   challengeFreshRouteLabel,
   challengeMidRunLabel,
@@ -363,11 +372,37 @@ import {
   decodeChallenge,
   decodeChallengeLink,
   encodeChallenge,
+  isLegalWinnerBlock,
   playOrder,
   resolveChallengeRoute,
+  routeCeiling,
   type ChallengeCreation,
   type ChallengeRoute,
+  type ChallengeWinner,
 } from "@/game/challenge";
+import {
+  challengeRouteTuple,
+  readRouteAttempts,
+  recordRouteCompletion,
+} from "@/game/challenge-attempts";
+import {
+  classifyVerdict,
+  exactRouteTargetShareText,
+  hitMaskFromResults,
+  maxAttainableRemaining,
+  mintWinnerBlock,
+  passAlongReceipt,
+  routeTierCeiling,
+  trailingStreak,
+  verdictAriaSentence,
+  verdictAttemptsFacts,
+  verdictDuelLine,
+  verdictMarginSentence,
+  verdictSubLine,
+  VERDICT_HEADLINES,
+  VERDICT_ICONS,
+  type VerdictClass,
+} from "@/game/challenge-verdict";
 
 function isReviewRun(run: Run): boolean {
   return run.regionId === REVIEW_DECK_REGION_ID;
@@ -551,6 +586,15 @@ const RUN_KEY = "meridian.run";
  * exactly as the shipped build wrote them.
  */
 const RUN_MC2_KEY = "meridian.run.mc2";
+
+/**
+ * Saved mc3 challenge runs live under their OWN key again (governing
+ * manifest §Q1-A4): a build from before mc3 existed never reads this
+ * key, so an mc3 save — winner block included — can never be picked
+ * up by an mc2-era build and silently re-shared with the winner
+ * block dropped. mc3 builds read mc3 → mc2 → mc1 slots, in order.
+ */
+const RUN_MC3_KEY = "meridian.run.mc3";
 
 /**
  * Persisted pin-drop for the in-progress place. `drop`/`revealDone` are
@@ -797,6 +841,21 @@ function readRunFrom(key: string): Run | null {
     ) {
       return null;
     }
+    // The winner block at the save boundary (governing manifest
+    // §Q1-A4): on an mc3 save it is either ABSENT (an open route) or
+    // COMPLETE and plausible for the saved route. A partial or
+    // implausible block discards the whole save — the block is never
+    // silently dropped while the run resumes underneath it.
+    if (
+      record.challengeOrigin === "mc3" &&
+      record.challengeWinner !== undefined &&
+      !isLegalWinnerBlock(
+        record.challengeWinner,
+        Array.isArray(record.poolIds) ? record.poolIds.length : 0,
+      )
+    ) {
+      return null;
+    }
     return {
       edition: record.edition,
       regionId: record.regionId,
@@ -850,8 +909,16 @@ function readRunFrom(key: string): Run | null {
           : (record.challengeRadiusKm as number) >= 40 && (record.challengeRadiusKm as number) <= 450)
         ? { challengeRadiusKm: record.challengeRadiusKm as number }
         : {}),
-      ...(record.challengeOrigin === "mc1" || record.challengeOrigin === "mc2"
+      ...(record.challengeOrigin === "mc1" ||
+      record.challengeOrigin === "mc2" ||
+      record.challengeOrigin === "mc3"
         ? { challengeOrigin: record.challengeOrigin }
+        : {}),
+      // The winner block, carried only off an mc3 save whose block
+      // the pre-check above already validated complete-or-discard.
+      ...(record.challengeOrigin === "mc3" &&
+      record.challengeWinner !== undefined
+        ? { challengeWinner: record.challengeWinner as ChallengeWinner }
         : {}),
     };
   } catch {
@@ -876,11 +943,102 @@ function clearMc2Run() {
   }
 }
 
+/** The saved mc3 challenge run, if one is in progress (see RUN_MC3_KEY).
+ * A save whose winner block read as partial or implausible was already
+ * discarded by readRunFrom (§Q1-A4); the slot itself is removed here
+ * when its raw contents name an mc3 save that no longer validates, so
+ * the discarded save is never re-read on the next boot. */
+function readMc3Run(): Run | null {
+  const run = readRunFrom(RUN_MC3_KEY);
+  if (run) return run;
+  try {
+    const raw = sessionStorage.getItem(RUN_MC3_KEY);
+    if (raw) {
+      const parsed: unknown = JSON.parse(raw);
+      if (
+        parsed &&
+        typeof parsed === "object" &&
+        (parsed as Record<string, unknown>).challengeOrigin === "mc3" &&
+        (parsed as Record<string, unknown>).challengeWinner !== undefined &&
+        !isLegalWinnerBlock(
+          (parsed as Record<string, unknown>).challengeWinner,
+          Array.isArray((parsed as Record<string, unknown>).poolIds)
+            ? ((parsed as Record<string, unknown>).poolIds as unknown[]).length
+            : 0,
+        )
+      ) {
+        sessionStorage.removeItem(RUN_MC3_KEY);
+      }
+    }
+  } catch {
+    // Unreadable slot: boot falls through; the stale save is inert.
+  }
+  return null;
+}
+
+function clearMc3Run() {
+  try {
+    sessionStorage.removeItem(RUN_MC3_KEY);
+  } catch {
+    // Storage blocked; the in-memory state is dropped regardless.
+  }
+}
+
+/**
+ * Package B (§Q2-B3): record a challenge completion exactly once per
+ * run, however often the completion screen remounts or the tab
+ * reloads at it. The marker lives in sessionStorage — the same
+ * lifetime as the run slots themselves — keyed by the run's seed, so
+ * one play-through can never count twice and a retried route (a new
+ * run, a new seed) always counts again. Returns the player's
+ * completion count for the route INCLUDING this completion, and the
+ * winner block minted from their play (ratchet + farming guard live
+ * in challenge-verdict.ts). mc1 runs return null: that surface is
+ * frozen and carries no winner block.
+ */
+function recordChallengeCompletion(run: Run): {
+  attempts: number;
+  minted: ReturnType<typeof mintWinnerBlock>;
+} | null {
+  if (run.challengeOrigin !== "mc2" && run.challengeOrigin !== "mc3") return null;
+  const tuple = challengeRouteTuple({
+    scoringVersion: SCORING_VERSION,
+    edition: run.edition,
+    regionId: run.challengeRegionId ?? "globe",
+    ids: run.poolIds,
+  });
+  const markerKey = `meridian.challenge.recorded.${run.seed}`;
+  let attempts: number;
+  try {
+    if (sessionStorage.getItem(markerKey)) {
+      attempts = readRouteAttempts(tuple);
+    } else {
+      attempts = recordRouteCompletion(tuple);
+      sessionStorage.setItem(markerKey, tuple);
+    }
+  } catch {
+    attempts = readRouteAttempts(tuple) + 1;
+  }
+  const minted = mintWinnerBlock({
+    myScore: run.results.reduce((s, r) => s + r.score, 0),
+    myMask: hitMaskFromResults(run.results),
+    myAttempts: attempts,
+    incomingBest: run.challengeWinner?.bestScore ?? null,
+  });
+  return { attempts, minted };
+}
+
 function writeRun(run: Run) {
   try {
-    // mc2 challenge runs persist to their own key (RUN_MC2_KEY) so old
-    // builds never see them; everything else keeps the shipped key.
-    const key = run.challengeOrigin === "mc2" ? RUN_MC2_KEY : RUN_KEY;
+    // Each challenge format persists to its OWN key (RUN_MC2_KEY,
+    // RUN_MC3_KEY) so a build from before that format existed never
+    // sees its saves (§Q1-A4); everything else keeps the shipped key.
+    const key =
+      run.challengeOrigin === "mc3"
+        ? RUN_MC3_KEY
+        : run.challengeOrigin === "mc2"
+          ? RUN_MC2_KEY
+          : RUN_KEY;
     sessionStorage.setItem(key, JSON.stringify(run));
     // Crash-loop breaker: this page now holds unsaved-crash state. If the
     // process is killed without unloading, the next boot must not
@@ -1269,8 +1427,22 @@ export function GameApp() {
    * a kid, and there is no auto-dismiss, so a slow screen reader (or a
    * grown-up helping) still sees it. Flag OFF never sets it: with the
    * feature off there is nothing to explain.
+   *
+   * The notice is a TITLE plus an optional DETAIL line, because the
+   * failure classes have different titles (governing manifest
+   * §Q1-A6): a broken or unknown link titles itself with
+   * CHALLENGE_CHILD_COPY and details the remedy, while the version
+   * class — a well-formed link from a newer Meridian, or an mc3
+   * region this build's registry predates — titles itself with
+   * CHALLENGE_VERSION_COPY and carries no resend remedy (a resend
+   * from the same newer build would fail identically). Screen-reader
+   * users identify failures by their heading, so the classes must
+   * not share one.
    */
-  const [challengeBootNotice, setChallengeBootNotice] = useState<string | null>(null);
+  const [challengeBootNotice, setChallengeBootNotice] = useState<{
+    title: string;
+    detail: string | null;
+  } | null>(null);
 
   /**
    * A validated mc2 challenge waiting on its welcome card (Package A):
@@ -1615,8 +1787,12 @@ export function GameApp() {
     setMapSwitchedNote(null);
   }, []);
 
-  const startPendingChallenge = useCallback(() => {
-    if (!pendingChallenge) return;
+  const startPendingChallenge = useCallback((routeOverride?: ChallengeRoute) => {
+    // The welcome card's Start passes nothing (the pending route);
+    // the verdict screen's Retry passes the completed route to play
+    // it again at once — same commit path, no second welcome.
+    const route = routeOverride ?? pendingChallenge?.route;
+    if (!route) return;
     // Commit the welcome card's staged map pick NOW, on Start — the
     // moment the card's bargain binds. A flip followed by "Not now"
     // never reaches this line, so declining still commits nothing.
@@ -1624,8 +1800,14 @@ export function GameApp() {
       handleWelcomeMapMode(welcomeMapPick);
     }
     setWelcomeMapPick(null);
-    const fields = challengeRunFields(pendingChallenge.route);
+    const fields = challengeRunFields(route);
     clearDrop();
+    // One challenge at a time across formats too: a saved challenge
+    // in the OTHER format's slot would shadow this run at the next
+    // boot (the read order is mc3 → mc2 → mc1), so starting here
+    // retires it — displacement, as ever, commits on Start.
+    if (fields.challengeOrigin === "mc3") clearMc2Run();
+    if (fields.challengeOrigin === "mc2") clearMc3Run();
     // Cross-format displacement (manifest §3 persistence): if the
     // normal slot holds a saved CHALLENGE (an mc1 run), starting this
     // mc2 challenge displaces it — one challenge at a time, and the
@@ -1645,12 +1827,16 @@ export function GameApp() {
           dateKey: trailDate(),
           difficultyChoice,
         },
-        pendingChallenge.route.ids,
+        route.ids,
         null,
       ),
       challengeRegionId: fields.challengeRegionId,
       challengeRadiusKm: fields.challengeRadiusKm,
       challengeOrigin: fields.challengeOrigin,
+      // The winner block rides the run verbatim (mc3 only; null on
+      // every other route): Package B's welcome goal and verdict read
+      // it, and a completion re-share carries it losslessly.
+      ...(route.winner ? { challengeWinner: route.winner } : {}),
     };
     commit(run);
     setPendingChallenge(null);
@@ -1682,8 +1868,8 @@ export function GameApp() {
   );
 
   /**
-   * An mc2 challenge's Done tap (manifest §2, contract 6): the
-   * challenge slot is cleared, and the normal run the challenge
+   * A challenge's Done tap (mc2/mc3; manifest §2, contract 6): the
+   * challenge slots are cleared, and the normal run the challenge
    * displaced is offered back — resumed in place when it is still
    * resumable today. Nothing here touches the player's history: the
    * challenge never wrote any.
@@ -1692,6 +1878,7 @@ export function GameApp() {
     setStartError(null);
     clearDrop();
     clearMc2Run();
+    clearMc3Run();
     setRun(null);
     setMenu(null);
     const saved = readRun();
@@ -1797,6 +1984,7 @@ export function GameApp() {
     try {
       sessionStorage.removeItem(RUN_KEY);
       clearMc2Run();
+      clearMc3Run();
     } catch {
       // Storage blocked; the in-memory run is dropped below regardless.
     }
@@ -2066,6 +2254,7 @@ export function GameApp() {
     if (isUncleanShutdown()) {
       clearRunAfterUncleanShutdown(RUN_KEY);
       clearRunAfterUncleanShutdown(RUN_MC2_KEY);
+      clearRunAfterUncleanShutdown(RUN_MC3_KEY);
       setReady(true);
       return;
     }
@@ -2101,10 +2290,15 @@ export function GameApp() {
           bootSavedRun();
           return;
         }
-        if (rawHash.startsWith("#c=mc2.")) {
-          // mc2 links take their own receive path (welcome card, no
-          // displacement until Start). Everything else in this branch
-          // is the frozen mc1 path, byte-identical to the shipped one.
+        const mcVersionPrefix = /^#c=mc(\d+)\./.exec(rawHash);
+        if (mcVersionPrefix && Number(mcVersionPrefix[1]) !== 1) {
+          // mc2 and mc3 links take their own receive path (welcome
+          // card, no displacement until Start). So does a link from a
+          // NEWER format this build does not know (delta §3.6): the
+          // receive path's dispatcher answers it with the version
+          // signal, and the failure mapping below turns that into the
+          // newest-Meridian remedy instead of a resend line. The mc1
+          // prefix itself stays on the frozen path below, untouched.
           void receiveMc2Challenge(rawHash);
           return;
         }
@@ -2114,7 +2308,7 @@ export function GameApp() {
           // different scoring version): tell the player on Home via
           // the boot notice, then fall through — a saved run, if one
           // exists, still resumes underneath the notice.
-          setChallengeBootNotice("");
+          setChallengeBootNotice({ title: CHALLENGE_CHILD_COPY, detail: null });
           bootSavedRun();
           return;
         }
@@ -2129,7 +2323,7 @@ export function GameApp() {
             // not have (an old link, or a hand-edited one). Same
             // child-facing failure as a corrupt link: notice + fall
             // through to the saved-run boot.
-            setChallengeBootNotice("");
+            setChallengeBootNotice({ title: CHALLENGE_CHILD_COPY, detail: null });
             bootSavedRun();
             return;
           }
@@ -2147,19 +2341,22 @@ export function GameApp() {
             null,
           );
           commit(challengeRun);
-          // The mc1 boot is its commit point: a saved mc2 challenge is
-          // displaced now (a saved challenge is displaceable only on a
-          // new challenge's start — manifest §3 persistence). The
+          // The mc1 boot is its commit point: a saved mc2/mc3
+          // challenge is displaced now (a saved challenge is
+          // displaceable only on a new challenge's start — manifest
+          // §3 persistence; one challenge at a time, so the newer
+          // slots must not shadow this run at the next boot). The
           // normal slot now holds THIS challenge; nothing else is
           // touched.
           clearMc2Run();
+          clearMc3Run();
           setMenu(null);
         } catch {
           // The Globe catalog could not load, so the challenge cannot
           // start. From the player's side this is the same failure as
           // a broken link — show the same notice and fall through to
           // the saved-run boot instead of stranding them on Home.
-          setChallengeBootNotice("");
+          setChallengeBootNotice({ title: CHALLENGE_CHILD_COPY, detail: null });
           bootSavedRun();
           return;
         }
@@ -2176,13 +2373,45 @@ export function GameApp() {
     // the pre-challenge boot, unchanged — if you are changing resume
     // behaviour, change it here so BOTH entry points get it.
     function bootSavedRun() {
-    // mc2 challenge saves live under their own key (RUN_MC2_KEY) and
-    // take precedence over the normal slot: a player who left a
-    // challenge mid-route comes back to the challenge. With the flag
-    // off the challenge is cleared and the ordinary boot continues
-    // underneath — a saved normal run is never collateral (manifest
-    // C7's guard table). An mc2 save also shadows a stale mc1 save in
-    // the normal slot until it completes or is cleared.
+    // Challenge saves take precedence over the normal slot, newest
+    // format first (governing manifest §Q1-A4 read order: mc3 → mc2
+    // → mc1): a player who left a challenge mid-route comes back to
+    // the challenge. With the flag off the challenge save is cleared
+    // and the ordinary boot continues underneath — a saved normal run
+    // is never collateral (manifest C7's guard table). A newer
+    // format's save also shadows the older slots (and a stale mc1
+    // save in the normal slot) until it completes or is cleared.
+    const mc3Saved = readMc3Run();
+    if (mc3Saved) {
+      void loadFlags().then(async () => {
+        if (!isEnabled("friendChallenges")) {
+          clearMc3Run();
+          bootMc2OrBody();
+          return;
+        }
+        const today = {
+          edition: mc3Saved.edition,
+          regionId: mc3Saved.regionId,
+          regionName: mc3Saved.regionName,
+          dateKey: trailDate(),
+          difficultyChoice: mc3Saved.difficultyChoice,
+        };
+        if (isResumable(mc3Saved, today)) {
+          const restored = resumeRun(mc3Saved, today);
+          await preloadTerritory();
+          commit(restored);
+          setReady(true);
+          return;
+        }
+        clearMc3Run();
+        bootMc2OrBody();
+      });
+      return;
+    }
+    bootMc2OrBody();
+    }
+
+    function bootMc2OrBody() {
     const mc2Saved = readMc2Run();
     if (mc2Saved) {
       void loadFlags().then(async () => {
@@ -2229,19 +2458,45 @@ export function GameApp() {
     }
 
     /**
-     * The mc2 receive path (Package A): decode and bind the link, load
-     * the named region's catalog, check membership — fail-closed at
-     * every step with the manifest's three failure classes — and only
-     * then show the welcome card. The saved run is NOT touched here:
-     * displacement commits on the card's Start tap, never on arrival.
+     * The mc2/mc3 receive path (Package A; mc3 added by the 2026-10-31
+     * delta): decode and bind the link, load the named region's
+     * catalog, check membership — fail-closed at every step with the
+     * manifest's three failure classes — and only then show the
+     * welcome card. The saved run is NOT touched here: displacement
+     * commits on the card's Start tap, never on arrival.
      */
     async function receiveMc2Challenge(hash: string) {
       const link = decodeChallengeLink(hash, SCORING_VERSION);
       if (!link.ok) {
-        // Class 2 (region arm) when the region itself is unknown to
-        // this build; class 1 for every other decode failure.
+        // The failure classes (governing manifest §Q1-A6), told apart
+        // by their TITLE line (see challengeBootNotice):
+        // - VERSION class: the link is well-formed but from a newer
+        //   Meridian than this build — either its prefix names an
+        //   unknown version (the dispatcher only raises "version" for
+        //   that shape, canonical body included), or it is an mc3
+        //   link whose REGION failure means registry skew: the seal
+        //   already passed, so the link is intact and simply names a
+        //   region this build's registry predates. Title is the
+        //   newest-Meridian line; no resend remedy, because a resend
+        //   from the same newer build fails identically.
+        // - REGION class: an mc1/mc2 link naming a region this build
+        //   does not have.
+        // - CORRUPT class: everything else, malformed mc3 included.
+        //   A "version" raised from INSIDE a known format (an mc2
+        //   payload with v ≠ 2, an mc3 with reserved bits set) lands
+        //   here and keeps the ordinary resend line.
+        const prefixVersion = /^#c=mc(\d+)\./.exec(hash);
+        const unknownVersionPrefix =
+          prefixVersion !== null && ![1, 2, 3].includes(Number(prefixVersion[1]));
+        const versionClass =
+          (link.reason === "version" && unknownVersionPrefix) ||
+          (hash.startsWith(CHALLENGE_MC3_PREFIX) && link.reason === "region");
         setChallengeBootNotice(
-          link.reason === "region" ? CHALLENGE_UNKNOWN_REGION_COPY : CHALLENGE_BROKEN_LINK_COPY,
+          versionClass
+            ? { title: CHALLENGE_VERSION_COPY, detail: null }
+            : link.reason === "region"
+              ? { title: CHALLENGE_CHILD_COPY, detail: CHALLENGE_UNKNOWN_REGION_COPY }
+              : { title: CHALLENGE_CHILD_COPY, detail: CHALLENGE_BROKEN_LINK_COPY },
         );
         bootSavedRun();
         return;
@@ -2255,7 +2510,10 @@ export function GameApp() {
         if (!resolved.ok) {
           // Class 2 (place arm): a named place is not in this build's
           // catalog for the named region.
-          setChallengeBootNotice(CHALLENGE_UNKNOWN_CONTENT_COPY);
+          setChallengeBootNotice({
+            title: CHALLENGE_CHILD_COPY,
+            detail: CHALLENGE_UNKNOWN_CONTENT_COPY,
+          });
           bootSavedRun();
           return;
         }
@@ -2272,7 +2530,10 @@ export function GameApp() {
       } catch {
         // Class 3: the link may be perfect, but the region chunk did
         // not load, so membership could not be checked.
-        setChallengeBootNotice(CHALLENGE_LOAD_FAILURE_COPY);
+        setChallengeBootNotice({
+          title: CHALLENGE_CHILD_COPY,
+          detail: CHALLENGE_LOAD_FAILURE_COPY,
+        });
         bootSavedRun();
       }
     }
@@ -3056,6 +3317,7 @@ export function GameApp() {
             setMenu(null);
           }}
           onChallengeDone={handleChallengeDone}
+          onChallengeRetry={(route) => startPendingChallenge(route)}
           onSummaryDone={() => {
             // End game already ended the session; drop it and go home.
             // 3C focus return rides the landHomeFocusRef effect: the flag
@@ -3313,8 +3575,10 @@ export function GameApp() {
       data-testid="challenge-boot-notice"
       className="mb-4 rounded-xl border border-line bg-surface p-4 text-base text-fg"
     >
-      <p>{CHALLENGE_CHILD_COPY}</p>
-      {challengeBootNotice ? <p className="mt-1">{challengeBootNotice}</p> : null}
+      <p>{challengeBootNotice.title}</p>
+      {challengeBootNotice.detail ? (
+        <p className="mt-1">{challengeBootNotice.detail}</p>
+      ) : null}
     </div>
   ) : null;
 
@@ -3326,7 +3590,7 @@ export function GameApp() {
       hasSavedRun={pendingChallenge.hasSavedRun}
       mapMode={welcomeMapPick ?? mapMode}
       onMapModeSelect={setWelcomeMapPick}
-      onStart={startPendingChallenge}
+      onStart={() => startPendingChallenge()}
       onDismiss={() => {
         setWelcomeMapPick(null);
         setPendingChallenge(null);
@@ -3339,7 +3603,12 @@ export function GameApp() {
   const challengePreviewEl = challengePreview ? (() => {
     const { creation } = challengePreview;
     const url = `${window.location.origin}${window.location.pathname}${creation.fragment}`;
-    const text = `Find ${creation.placeCount} places in ${creation.regionName}! Get inside the ${creation.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${url}`;
+    const text = buildFreshChallengeShareText({
+      placeCount: creation.placeCount,
+      regionName: creation.regionName,
+      radiusKm: creation.radiusKm,
+      url,
+    });
     return (
       <div
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
@@ -4696,15 +4965,41 @@ function ChallengeWelcome({
     >
       <div className="w-full max-w-sm rounded-2xl border border-line bg-surface p-6 shadow-2xl">
         <h2 className="font-display text-2xl text-fg">{CHALLENGE_WELCOME_TITLE}</h2>
-        <p className="mt-3 text-base text-fg">
+        {/* Grouped blocks (governing manifest §Q3): Context first —
+            title, then the locked fairness line, then the task — then
+            the Stakes goal card (Package B, when the link carries a
+            winner block), then the Action block: map row, disclosure,
+            Start / Not now. */}
+        <p className="mt-3 text-base text-muted">{CHALLENGE_FAIRNESS_COPY}</p>
+        <p className="mt-2 text-base text-fg">
           Find {route.ids.length} places in {route.regionName}. Get inside the{" "}
           {route.radiusKm} km circle — closer is better!
         </p>
-        <p className="mt-2 text-base text-muted">{CHALLENGE_FAIRNESS_COPY}</p>
         {hasSavedRun ? (
           <p className="mt-2 text-base text-muted">
             Your game in progress is saved — it will be waiting when you finish.
           </p>
+        ) : null}
+        {/* Stakes (governing manifest §Q3, Package B): one goal card
+            when the link carries a winner block. The bar is always
+            bestScore; the sender's own score nests under it only when
+            someone else set the mark. Attempts appears NOWHERE on
+            this card (§Q4's display ruling). */}
+        {route.winner ? (
+          <div
+            className="mt-4 rounded-xl border border-line px-3 py-2.5"
+            data-testid="challenge-welcome-goal"
+          >
+            <p className="text-base font-semibold text-fg">
+              🎯 Beat {route.winner.bestScore.toLocaleString("en-US")} — the best score
+              yet on this route.
+            </p>
+            <p className="mt-1 text-sm text-muted">
+              {route.winner.senderScore < route.winner.bestScore
+                ? `Your friend scored ${route.winner.senderScore.toLocaleString("en-US")} on this one.`
+                : "Your friend set it."}
+            </p>
+          </div>
         ) : null}
         {/* The map pick (owner ruling, 2026-10-29): the mode the boot
             resolved for this device, shown before Start — and the one
@@ -4744,6 +5039,16 @@ function ChallengeWelcome({
           </div>
           <p className="mt-1.5 text-sm text-muted">{SCOUT_COPY.welcome.note}</p>
         </div>
+        {/* The honesty disclosure (§Q3): last before the buttons,
+            only when a score is being attested. The number in a link
+            is the sender's word — the game cannot check it, and says
+            so before the receiver commits to the chase. */}
+        {route.winner ? (
+          <p className="mt-3 text-sm text-muted" data-testid="challenge-welcome-disclosure">
+            One honest note: this score is your friend's word — Meridian can't check
+            scores sent in links.
+          </p>
+        ) : null}
         <Button className="mt-5 w-full" onClick={onStart} data-testid="challenge-start">
           Start
         </Button>
@@ -4760,16 +5065,391 @@ function ChallengeWelcome({
   );
 }
 
+/**
+ * The verdict (governing manifest §Q4, Package B) — shown when the
+ * completed route carried a winner block. Presentation only: the
+ * taxonomy, copy, and mint were decided by challenge-verdict.ts and
+ * ChallengeComplete; this component renders them under the veto-
+ * rewritten motion spec (final scores at frame 0, no count-up ever;
+ * the bar sweeps by transform; the verdict word fades at ~650 ms;
+ * reduced motion = every final state, static; a tap, any keydown,
+ * or the settle timer settles — late interactive elements are inert
+ * until then, so nothing is focusable while invisible (A-291-3);
+ * focus goes to the heading on mount and never moves again).
+ */
+function ChallengeVerdict({
+  run,
+  winner,
+  completion,
+  regionCatalog,
+  settled,
+  settledByGesture,
+}: {
+  run: Run;
+  winner: ChallengeWinner;
+  completion: { attempts: number; minted: ReturnType<typeof mintWinnerBlock> };
+  regionCatalog?: readonly Starter[] | null;
+  /** Choreography settled (tap, any key, or the settle timer) —
+   * until then the late-arriving interactive elements are inert,
+   * so nothing is focusable while invisible (A-291-3). */
+  settled: boolean;
+  /** Settled by a player gesture (tap or keydown) rather than the
+   * auto-settle timer. The Grandpa clip's pause subscribes to THIS
+   * flag only (PR #295 cure round 2 — the timer carries no intent
+   * to stop motion); nothing else consumes it. */
+  settledByGesture: boolean;
+}) {
+  const mine = run.results.reduce((s, r) => s + r.score, 0);
+  const n = run.poolIds.length;
+  // The quoted ceiling is the route's REAL max (owner D2 amendment,
+  // 2026-11-01): each stop at its own tier, summed in play order —
+  // the tier-blind codec bound (routeCeiling) would quote a
+  // "possible" no perfect run could reach on an easy route. When a
+  // place's tier can't be resolved from the catalog, the codec bound
+  // stands for the whole route (never a fabricated per-stop number).
+  const routeDifficulties = run.poolIds.map(
+    (id) => regionCatalog?.find((p) => p.id === id)?.difficulty ?? null,
+  );
+  const ceiling = routeDifficulties.every((d) => d !== null)
+    ? routeTierCeiling(routeDifficulties as Difficulty[])
+    : routeCeiling(n);
+  const cls = classifyVerdict(mine, winner.bestScore);
+  const myHits = run.results.filter((r) => r.hit).length;
+  const theirHits = run.poolIds.reduce(
+    (count, _id, i) => count + (((winner.senderMask >> (15 - i)) & 1) === 1 ? 1 : 0),
+    0,
+  );
+  // Place names for the strip: every dot carries its place's name
+  // (aria always; visible on tap/focus). If any name can't be
+  // resolved, the strip ships as header counts only — the manifest's
+  // own fallback — rather than naming some stops and not others.
+  const names = run.poolIds.map(
+    (id) => regionCatalog?.find((p) => p.id === id)?.name ?? null,
+  );
+  const stripNames = names.every((name) => name !== null) ? (names as string[]) : null;
+  const bothMissed = stripNames
+    ? run.poolIds
+        .map((_id, i) => ({ i, name: stripNames[i]! }))
+        .filter(
+          ({ i }) =>
+            !run.results[i]?.hit && ((winner.senderMask >> (15 - i)) & 1) === 0,
+        )
+        .map(({ name }) => name)
+    : [];
+  const duelLine = verdictDuelLine(mine, winner);
+  const facts = verdictAttemptsFacts({
+    winner,
+    ownCompletions: completion.attempts,
+    farmingGuardBound: completion.minted.farmingGuardBound,
+  });
+  const [announce, setAnnounce] = useState("");
+  // The Grandpa clip at the top of the screen is decoration, so it
+  // follows the same reduced-motion rule as the rest of the verdict
+  // choreography: reduced motion gets the still keyframe, never a
+  // moving picture (see the render below).
+  const reducedMotion = usePrefersReducedMotion();
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  // WCAG 2.2.2 cure (panel BLOCK 2 on PR #295): the looping clip
+  // needs a stop mechanism beside the text kids read. Two of them,
+  // complementary: (1) when the player settles the choreography
+  // with a gesture — a tap or a keydown — the clip pauses and holds
+  // its frame; (2) the overlay toggle rendered with the video
+  // pauses/plays it at any moment, and is on its own the
+  // always-available stop 2.2.2 asks for. The auto-settle timer
+  // does NOT pause the clip (cure round 2, panel re-vote on
+  // PR #295): the timer is not a gesture and carries no intent to
+  // stop motion, so the clip keeps playing through the default
+  // reading dwell — this effect subscribes to ChallengeComplete's
+  // gesture latch, never to the undifferentiated settled flag.
+  // clipPaused is driven by the element's own play/pause events,
+  // so the toggle's label always matches what the clip is doing.
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [clipPaused, setClipPaused] = useState(false);
+  useEffect(() => {
+    if (settledByGesture) videoRef.current?.pause();
+  }, [settledByGesture]);
+  const toggleClip = () => {
+    const clip = videoRef.current;
+    if (!clip) return;
+    if (clip.paused) {
+      // A rejected play() (autoplay policy, interrupted load) must
+      // not surface as an unhandled rejection — the clip simply
+      // stays paused, and the toggle's label already says so.
+      clip.play().catch(() => {});
+    } else {
+      clip.pause();
+    }
+  };
+  useEffect(() => {
+    headingRef.current?.focus({ preventScroll: true });
+    // The one aria-live sentence fires AT the verdict-word point
+    // (~650 ms in full motion; immediately under reduced motion).
+    const sentence = verdictAriaSentence({
+      cls, mine, best: winner.bestScore, myHits, placeCount: n, ceiling,
+    });
+    const reduced =
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      setAnnounce(sentence);
+      return;
+    }
+    const t = setTimeout(() => setAnnounce(sentence), 650);
+    return () => clearTimeout(t);
+    // Mount-only: the verdict is computed once, from the finished run.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const fillPct = Math.min(100, (mine / ceiling) * 100);
+  const tickPct = Math.min(100, (winner.bestScore / ceiling) * 100);
+  return (
+    <div>
+      <p className="sr-only" aria-live="polite">
+        {announce}
+      </p>
+      {/* "Grandpa Was Already There" (owner's dispatch, 2026-11-01):
+          the animated keyframe sits at the top of every verdict —
+          win, hold, near-miss, and loss alike. The clip itself is
+          decorative (aria-hidden, never focusable), so it cannot
+          disturb the aria-live announcement above or the focus
+          order. Two stop mechanisms keep the loop honest beside the
+          verdict text (WCAG 2.2.2, panel cure on PR #295): a tap or
+          keydown that settles the choreography pauses it (see the
+          effect above — the auto-settle timer deliberately does
+          not), and the corner toggle pauses/plays it at any time —
+          that toggle is a media control for this clip, not a
+          feature entry. Both
+          branches reserve the 3:2 box (aspect-[3/2]) so the headline
+          and score bar never shift when the media loads (CLS, panel
+          cure on PR #295). The poster shows until the clip can play,
+          and under reduced motion the still keyframe renders instead
+          of the video. The asset itself is swapped in
+          grandpa-media.ts, never here. */}
+      {reducedMotion ? (
+        <img
+          src={VERDICT_GRANDPA_POSTER_URL}
+          alt=""
+          aria-hidden="true"
+          data-testid="challenge-verdict-grandpa"
+          className="mb-4 aspect-[3/2] w-full max-w-md rounded-2xl"
+        />
+      ) : (
+        <div className="relative mb-4 w-full max-w-md">
+          <video
+            ref={videoRef}
+            src={VERDICT_GRANDPA_VIDEO_URL}
+            poster={VERDICT_GRANDPA_POSTER_URL}
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+            data-testid="challenge-verdict-grandpa"
+            className="block aspect-[3/2] w-full rounded-2xl"
+            onPlay={() => setClipPaused(false)}
+            onPause={() => setClipPaused(true)}
+          />
+          <button
+            type="button"
+            onClick={toggleClip}
+            onKeyDown={(e) => {
+              // The activation key belongs to this control: without
+              // this, the screen's any-keydown settle would pause the
+              // clip in the same gesture, and the click that follows
+              // would read "paused" and play it again — the opposite
+              // of the press. Other keys still settle as designed.
+              if (e.key === " " || e.key === "Enter") e.stopPropagation();
+            }}
+            aria-pressed={clipPaused}
+            aria-label={clipPaused ? "Play the cartoon" : "Pause the cartoon"}
+            data-testid="challenge-verdict-grandpa-toggle"
+            className="absolute top-2 right-2 flex h-11 w-11 items-center justify-center rounded-full bg-black/50 text-white hover:bg-black/65 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            {clipPaused ? (
+              <span
+                aria-hidden="true"
+                className="ml-0.5 h-0 w-0 border-y-[7px] border-l-[11px] border-y-transparent border-l-white"
+              />
+            ) : (
+              <span aria-hidden="true" className="flex gap-1">
+                <span className="h-4 w-1 rounded-sm bg-current" />
+                <span className="h-4 w-1 rounded-sm bg-current" />
+              </span>
+            )}
+          </button>
+        </div>
+      )}
+      <h1
+        ref={headingRef}
+        tabIndex={-1}
+        className="verdict-word mt-2 font-display text-4xl text-fg outline-none"
+        data-testid="challenge-complete"
+      >
+        <span aria-hidden="true" className="mr-2 inline-block min-w-6 text-center">
+          {VERDICT_ICONS[cls]}
+        </span>
+        {VERDICT_HEADLINES[cls]}
+      </h1>
+      <p className="mt-3 text-lg text-fg">{verdictSubLine(mine, ceiling)}</p>
+      <div className="relative mt-6 max-w-md pb-6">
+        <div
+          className="relative h-3 overflow-visible rounded-full bg-black/10"
+          role="img"
+          aria-label={`Your score ${mine} of ${ceiling} possible. The target was ${winner.bestScore}.`}
+        >
+          <div
+            className="verdict-bar-fill absolute inset-y-0 left-0 rounded-full bg-fg"
+            style={{ width: `${fillPct}%` }}
+          />
+          <div
+            className="absolute -inset-y-0.5 w-1 rounded"
+            style={{
+              left: `calc(${tickPct}% - 2px)`,
+              // F-291-2 cure: raw gold measured 1.19:1 on the light
+              // track and 1.52:1 on the dark theme's near-white fill.
+              // The theme-aware gold (--gold-ink) carries ≥3:1 against
+              // track and page where it is defined — the light media
+              // block and the paper theme. It is NOT defined in the
+              // default :root (dark) — the #f2c14e value lives only
+              // in the dormant [data-theme="night"] block and no code
+              // sets data-theme — so the fallback IS the default-dark
+              // colour (and the night colour, if that theme ever
+              // ships): #f2c14e, 11.2:1 on the dark page. A 1px ring
+              // in the page colour separates the tick from the fg
+              // fill (≥13:1) where the fill reaches it. (The fallback
+              // was added in the panel cure-2 round: without it the
+              // tick was transparent — invisible — in default dark.)
+              background: "var(--gold-ink, #f2c14e)",
+              boxShadow: "0 0 0 1px var(--bg)",
+            }}
+            aria-hidden="true"
+          />
+          <span
+            className="absolute -top-6 text-xs font-semibold whitespace-nowrap text-muted"
+            style={{
+              left: `calc(${tickPct}% - 2px)`,
+              // Near the right edge the label would run past the bar
+              // (and the phone): flip it to end at the tick instead.
+              transform: tickPct > 80 ? "translateX(-100%)" : undefined,
+            }}
+          >
+            TARGET {winner.bestScore.toLocaleString("en-US")}
+          </span>
+          {cls === "win" ? (
+            <span
+              className="verdict-pulse absolute top-4 rounded bg-[#f2c14e] px-1.5 py-0.5 text-xs font-bold whitespace-nowrap text-black"
+              style={{
+                left: `calc(${tickPct}% - 2px)`,
+                transform: tickPct > 80 ? "translateX(-100%)" : undefined,
+              }}
+            >
+              ✓ PASSED
+            </span>
+          ) : null}
+        </div>
+      </div>
+      <p className="text-xl font-semibold text-fg">
+        {verdictMarginSentence(cls, mine, winner.bestScore)}
+      </p>
+      {duelLine ? (
+        <p className="verdict-late mt-2 text-base text-muted">{duelLine}</p>
+      ) : null}
+      {/* A-291-3: the strip's dots fade in from ~850 ms — until the
+          choreography settles they are inert, so a keyboard user can
+          never tab onto an invisible dot. Visuals are untouched. */}
+      <div className="mt-5" data-testid="challenge-verdict-strip" inert={!settled}>
+        <p className="text-base font-semibold text-fg">
+          Stop by stop — you landed {myHits}, they landed {theirHits}.
+        </p>
+        {stripNames ? (
+          <>
+            <div className="mt-2 flex items-center gap-1.5" aria-label="Your stops">
+              {stripNames.map((name, i) => {
+                const hit = run.results[i]?.hit ?? false;
+                return (
+                  <span
+                    key={`mine-${i}`}
+                    tabIndex={0}
+                    role="img"
+                    aria-label={`Stop ${i + 1}: ${name} — ${hit ? "you landed it" : "you missed"}`}
+                    className={`verdict-strip-dot group relative flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-bold ${
+                      // F-291-1 cure: text-bg, not text-white — the fg
+                      // disc is near-white in the default/dark themes,
+                      // so a white ✓ measured 1.10:1 (invisible).
+                      hit ? "bg-fg text-bg" : "border-2 border-current"
+                    }`}
+                    style={{ "--verdict-i": i } as CSSProperties}
+                  >
+                    {hit ? "✓" : "✕"}
+                    <span className="pointer-events-none absolute -top-7 left-1/2 z-10 -translate-x-1/2 rounded bg-black/80 px-1.5 py-0.5 text-[11px] whitespace-nowrap text-white opacity-0 group-focus:opacity-100 group-hover:opacity-100">
+                      {name}
+                    </span>
+                  </span>
+                );
+              })}
+            </div>
+            <div className="mt-2 flex items-center gap-1.5" aria-label="Your friend's stops">
+              {stripNames.map((name, i) => {
+                const hit = ((winner.senderMask >> (15 - i)) & 1) === 1;
+                return (
+                  <span
+                    key={`theirs-${i}`}
+                    tabIndex={0}
+                    role="img"
+                    aria-label={`Stop ${i + 1}: ${name} — ${hit ? "your friend landed it (their word)" : "your friend missed (their word)"}`}
+                    className="verdict-strip-dot group relative flex h-5 w-5 items-center justify-center rounded-full border-2 border-dotted text-[11px] opacity-60"
+                    style={{ "--verdict-i": i } as CSSProperties}
+                  >
+                    {hit ? "✓" : ""}
+                    <span className="pointer-events-none absolute -top-7 left-1/2 z-10 -translate-x-1/2 rounded bg-black/80 px-1.5 py-0.5 text-[11px] whitespace-nowrap text-white opacity-0 group-focus:opacity-100 group-hover:opacity-100">
+                      {name}
+                    </span>
+                  </span>
+                );
+              })}
+            </div>
+            <p className="mt-1.5 text-sm text-muted">Your friend's stops — their word.</p>
+          </>
+        ) : null}
+        {bothMissed.length > 0 ? (
+          <p className="mt-2 text-base text-fg">
+            Both missed: {bothMissed.join(", ")} — the hard stops.
+          </p>
+        ) : null}
+      </div>
+      {/* The disclosure repeats here (§Q2 hardening): the attested
+          row must never wear measured-looking glyphs undisclosed. */}
+      <p className="verdict-late mt-4 text-sm text-muted" data-testid="challenge-verdict-disclosure">
+        One honest note: this score is your friend's word — Meridian can't check scores
+        sent in links.
+      </p>
+      {facts.length > 0 ? (
+        <div className="verdict-late mt-3" data-testid="challenge-verdict-facts">
+          {facts.map((fact) => (
+            <p key={fact} className="text-sm text-muted">
+              {fact}
+            </p>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 function ChallengeComplete({
   run,
   total,
   onDone,
+  onRetry,
   shareEnabled,
   regionCatalog,
 }: {
   run: Run;
   total: number;
   onDone: () => void;
+  /** Verdict-screen Retry (Package B): replay the received route at
+   * once. Only offered when the route carried a winner block. */
+  onRetry?: () => void;
   /** The completion re-share renders only while the flag is on: a flag
    * flipped off mid-challenge drops the share, never the run (§4). */
   shareEnabled: boolean;
@@ -4779,10 +5459,63 @@ function ChallengeComplete({
    * completion surface is frozen and never shows the secondary). */
   regionCatalog?: readonly Starter[] | null;
 }) {
-  // Origin preservation (manifest §2, contract 3): a route re-shares in
-  // the format it arrived in — an mc1 route stays mc1 byte for byte, an
-  // mc2 route stays mc2 with its own region named. Never a downgrade.
-  const isMc2 = run.challengeOrigin === "mc2";
+  // Origin rule (manifest §2, contract 3, as amended by the mc3 delta
+  // §3.3): a route re-shares without ever losing information — an mc1
+  // route stays mc1 byte for byte; an mc2 route forward-upgrades to
+  // mc3 with its own region named; an mc3 route stays mc3. Never a
+  // downgrade.
+  //
+  // Package B (§Q2-B2/B4): reaching this screen IS a completion. It is
+  // recorded exactly once per run (recordChallengeCompletion), and
+  // the pass-along mints a NEW winner block from THIS player's play —
+  // their score, their mask, their attempts — with best′ ratcheted
+  // against the received chain best under the farming guard. Package
+  // A carried the received block losslessly because nothing minted
+  // yet; re-issuing it now would attest the PREVIOUS player's mark
+  // under a new sender, so the mint replaces it. When the mint
+  // produces no block (an all-miss chain start), the re-share is an
+  // open route again — a zero target is never a chain state.
+  const [completion] = useState(() => recordChallengeCompletion(run));
+  // Verdict tap-to-settle (§Q4): the settled flag lives HERE, on the
+  // completion screen's root, so the CSS snap reaches every animated
+  // element — the verdict block AND the pass-along share container
+  // (a sibling subtree, which a flag inside ChallengeVerdict could
+  // never cover). Any tap on the screen settles the choreography.
+  const [verdictSettled, setVerdictSettled] = useState(false);
+  // Cure round 2 on PR #295: a second latch records whether the
+  // settle came from a player gesture — the root's tap/keydown
+  // handlers below — rather than the auto-settle timer effect.
+  // The Grandpa clip's pause consumes THIS flag (media reads the
+  // gesture flag, not verdictSettled): the timer settles the
+  // choreography but carries no intent to stop motion, so it must
+  // not freeze the clip. Everything else — the CSS snap, the inert
+  // gates, data-verdict-settled — keeps consuming verdictSettled
+  // exactly as before, whichever way it was set.
+  const [verdictSettledByGesture, setVerdictSettledByGesture] =
+    useState(false);
+  const settleByGesture = () => {
+    setVerdictSettled(true);
+    setVerdictSettledByGesture(true);
+  };
+  const incomingWinner = run.challengeWinner ?? null;
+  // A-291-3: settling is not pointer-only. Any keydown settles (the
+  // keydown fires before the focus move, so the first Tab lands on
+  // already-visible elements — see onKeyDown on the root below), and
+  // a timer settles when the choreography completes (~1,600 ms;
+  // immediately under reduced motion, where every element is
+  // already at its final state).
+  useEffect(() => {
+    if (!incomingWinner) return;
+    const reduced =
+      typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const t = setTimeout(() => setVerdictSettled(true), reduced ? 0 : 1600);
+    return () => clearTimeout(t);
+  }, [incomingWinner]);
+  const myScoreRaw = run.results.reduce((s, r) => s + r.score, 0);
+  const mintedWinner = completion?.minted.winner ?? null;
+  const isMc2 = run.challengeOrigin === "mc2" || run.challengeOrigin === "mc3";
   const mc2Creation = isMc2
     ? createChallengeRoute({
         edition: run.edition,
@@ -4790,14 +5523,43 @@ function ChallengeComplete({
         scoringVersion: SCORING_VERSION,
         mode: "exact",
         exactIds: run.poolIds,
-        // Origin preservation in full (manifest §2.3 + §6): the route
-        // re-encodes in the format it ARRIVED in and at the radius it
-        // was JUDGED at — an in-tolerance pinned circle (rad 90 vs the
-        // computed 87) survives the re-share, never re-pins.
-        originFormat: "mc2",
+        // The radius freeze in full (manifest §2.3 + §6): the route
+        // re-encodes at the radius it was JUDGED at — an in-tolerance
+        // pinned circle (rad 90 vs the computed 87) survives the
+        // re-share, never re-pins.
+        originFormat: "mc3",
+        radiusKmOverride: run.challengeRadiusKm,
+        // The block minted from this completion (above) — absent
+        // when the mint produced none.
+        winner: mintedWinner ?? undefined,
+      })
+    : null;
+  // "Share just the route" (§Q4): the same route with NO winner block
+  // — sharing never requires disclosing a result. Offered on every
+  // mc2-family completion, verdict or not.
+  const routeOnlyCreation = isMc2
+    ? createChallengeRoute({
+        edition: run.edition,
+        regionId: run.challengeRegionId ?? "globe",
+        scoringVersion: SCORING_VERSION,
+        mode: "exact",
+        exactIds: run.poolIds,
+        originFormat: "mc3",
         radiusKmOverride: run.challengeRadiusKm,
       })
     : null;
+  const routeOnlyUrl =
+    routeOnlyCreation && typeof window !== "undefined"
+      ? `${window.location.origin}${window.location.pathname}${routeOnlyCreation.fragment}`
+      : "";
+  const routeOnlyText = routeOnlyCreation
+    ? buildFreshChallengeShareText({
+        placeCount: routeOnlyCreation.placeCount,
+        regionName: routeOnlyCreation.regionName,
+        radiusKm: routeOnlyCreation.radiusKm,
+        url: routeOnlyUrl,
+      })
+    : "";
   const challengeHash = isMc2
     ? (mc2Creation?.fragment ?? null)
     : run.poolIds.length >= CHALLENGE_MIN_PLACES && run.poolIds.length <= CHALLENGE_MAX_PLACES
@@ -4808,13 +5570,22 @@ function ChallengeComplete({
       ? `${window.location.origin}${window.location.pathname}${challengeHash}`
       : "";
   // The re-share text, built once so the button and its failure fallback
-  // below can never drift apart. mc2 texts name the region and carry the
-  // newest-Meridian suffix, because an old build cannot open them.
-  const score = run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US");
+  // below can never drift apart. It is a RECEIPT (governing manifest
+  // §Q3): one of the five byte-exact forms — by verdict class when the
+  // route carried a target, the chain-start form when it didn't. No
+  // version line (receipts never carry one), no tries clause, and no
+  // margin number in a loss.
+  const score = myScoreRaw.toLocaleString("en-US");
+  const verdictClass: VerdictClass | null = incomingWinner
+    ? classifyVerdict(myScoreRaw, incomingWinner.bestScore)
+    : null;
   const challengeText = isMc2
-    ? // The pre-written reply text (manifest §1(f)): the receiver sends
-      // the route back along the chain with their score on it.
-      `I scored ${score} on your ${mc2Creation?.regionName ?? run.regionName} route — beat that! (Opens in the newest Meridian.)\n${challengeUrl}`
+    ? `${passAlongReceipt({
+        cls: verdictClass ?? "chain-start",
+        mine: myScoreRaw,
+        newBest: mintedWinner?.bestScore ?? incomingWinner?.bestScore ?? myScoreRaw,
+        regionName: mc2Creation?.regionName ?? run.regionName,
+      })}\n${challengeUrl}`
     : `Play the same ${total} places on the Globe! I scored ${score}.\n${challengeUrl}`;
   // The fresh secondary (manifest §1(f), Package B): a NEW route in the
   // completed route's region, dealt from the region catalog — the
@@ -4842,27 +5613,70 @@ function ChallengeComplete({
       ? `${window.location.origin}${window.location.pathname}${freshCreation.fragment}`
       : "";
   const freshText = freshCreation
-    ? `Find ${freshCreation.placeCount} places in ${freshCreation.regionName}! Get inside the ${freshCreation.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${freshUrl}`
+    ? buildFreshChallengeShareText({
+        placeCount: freshCreation.placeCount,
+        regionName: freshCreation.regionName,
+        radiusKm: freshCreation.radiusKm,
+        url: freshUrl,
+      })
     : "";
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8">
+    <main
+      className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col justify-center px-5 py-8"
+      data-verdict-settled={incomingWinner ? verdictSettled : undefined}
+      onClick={incomingWinner ? settleByGesture : undefined}
+      onKeyDown={incomingWinner ? settleByGesture : undefined}
+    >
       <p className="text-sm tracking-wide text-muted uppercase">
         {isMc2 ? run.regionName : CHALLENGE_REGION_NAME}
       </p>
-      <h1 className="mt-2 font-display text-4xl text-fg" data-testid="challenge-complete">
-        Route complete! You scored {run.results.reduce((s, r) => s + r.score, 0).toLocaleString("en-US")} across {total} places.
-      </h1>
-      <p className="mt-4 max-w-md text-lg text-muted">
-        You landed inside the {challengeRadiusOf(run)} km circle on {run.hits} of {total} stops.
-      </p>
+      {incomingWinner && completion ? (
+        // The verdict (§Q4) replaces the plain completion headline
+        // when the route carried a target: verdict word → score pair
+        // + target bar → margin → duel → strip. The "landed inside"
+        // sentence is cut here — the strip header carries the counts.
+        <ChallengeVerdict
+          run={run}
+          winner={incomingWinner}
+          completion={completion}
+          regionCatalog={regionCatalog}
+          settled={verdictSettled}
+          settledByGesture={verdictSettledByGesture}
+        />
+      ) : (
+        <>
+          <h1 className="mt-2 font-display text-4xl text-fg" data-testid="challenge-complete">
+            Route complete! You scored {score} across {total} places.
+          </h1>
+          <p className="mt-4 max-w-md text-lg text-muted">
+            You landed inside the {challengeRadiusOf(run)} km circle on {run.hits} of {total} stops.
+          </p>
+        </>
+      )}
       <div className="mt-6 flex max-w-xs flex-col gap-3">
+        {verdictClass === "near-miss" && onRetry ? (
+          // NEAR-MISS: retry is the primary action (§Q4) — the route
+          // is right there and the target nearly fell.
+          <Button onClick={onRetry} data-testid="challenge-retry">
+            Try this route again
+          </Button>
+        ) : null}
         {challengeUrl && shareEnabled ? (
-          <div data-testid="challenge-share-container" data-challenge-url={challengeUrl}>
+          <div
+            data-testid="challenge-share-container"
+            data-challenge-url={challengeUrl}
+            className={incomingWinner ? "verdict-last" : undefined}
+            // A-291-3: the pass-along fades in last (~1,400 ms) — it
+            // stays inert until settled so it is never focusable
+            // while invisible. Non-verdict completions never gate.
+            inert={incomingWinner ? !verdictSettled : undefined}
+          >
             <ShareButton
               title="Meridian friend challenge"
               text={challengeText}
               url={challengeUrl}
               label={isMc2 ? CHALLENGE_RESHARE_LABEL : CHALLENGE_SHARE_LABEL}
+              variant={verdictClass === "win" ? "primary" : "secondary"}
               className="w-full"
               failureFallback={
                 // If the share sheet and the clipboard both fail, the
@@ -4892,6 +5706,32 @@ function ChallengeComplete({
               }
             />
           </div>
+        ) : null}
+        {routeOnlyCreation && routeOnlyUrl && shareEnabled ? (
+          // "Share just the route" (§Q4): always offered on an
+          // mc2-family completion — the same route, no winner block,
+          // no result disclosed.
+          <div data-testid="challenge-route-only-container" data-challenge-url={routeOnlyUrl}>
+            <ShareButton
+              title="Meridian friend challenge"
+              text={routeOnlyText}
+              url={routeOnlyUrl}
+              label="Share just the route"
+              variant="secondary"
+              className="w-full"
+              failureFallback={
+                <pre className="max-h-40 overflow-y-auto whitespace-pre-wrap wrap-anywhere rounded-lg border border-line bg-bg px-4 py-3 font-sans text-sm leading-relaxed text-fg">
+                  {routeOnlyText}
+                </pre>
+              }
+            />
+          </div>
+        ) : null}
+        {(verdictClass === "hold" || verdictClass === "loss") && onRetry ? (
+          // HOLD/LOSS: retry rides quieter, under the shares (§Q4).
+          <Button variant="secondary" onClick={onRetry} data-testid="challenge-retry">
+            Try this route again
+          </Button>
         ) : null}
         <Button onClick={onDone} data-testid="challenge-done">
           {REVIEW_DECK_COPY.backToEditions}
@@ -4962,6 +5802,7 @@ function Play({
   onEndGame,
   onEditions,
   onChallengeDone,
+  onChallengeRetry,
   onSummaryDone,
   onReplayed,
   onReviewDeck,
@@ -4997,6 +5838,8 @@ function Play({
   onEndGame: () => SessionSummary | null;
   /** mc2 challenge Done: clear the challenge slot, offer the displaced run back. */
   onChallengeDone?: () => void;
+  /** Verdict Retry (Package B): start this route again at once. */
+  onChallengeRetry?: (route: ChallengeRoute) => void;
   /** Back to the edition picker mid-run; the session stays alive. */
   onEditions: () => void;
   /** Summary dismissed after End game; the session is already ended. */
@@ -5215,6 +6058,7 @@ function Play({
       onEndGame={onEndGame}
       onEditions={onEditions}
       onChallengeDone={onChallengeDone}
+      onChallengeRetry={onChallengeRetry}
       onSummaryDone={onSummaryDone}
       onReplayed={onReplayed}
       onReviewDeck={onReviewDeck}
@@ -5245,6 +6089,7 @@ function PlayLoaded({
   onEndGame: requestEndGame,
   onEditions,
   onChallengeDone,
+  onChallengeRetry,
   onSummaryDone: finishSummary,
   onReplayed,
   onReviewDeck,
@@ -5286,6 +6131,8 @@ function PlayLoaded({
   onEditions: () => void;
   /** mc2 challenge Done: clear the challenge slot, offer the displaced run back. */
   onChallengeDone?: () => void;
+  /** Verdict Retry (Package B): start this route again at once. */
+  onChallengeRetry?: (route: ChallengeRoute) => void;
   onSummaryDone: () => void;
   onReplayed: (run: Run) => void;
   /** A difficulty band was just cleared: show the celebration dialog. */
@@ -5431,6 +6278,16 @@ function PlayLoaded({
     if (tutorial === 1 && run.phase !== "aim") onTutorialAdvance(2);
   }, [tutorial, run.phase, onTutorialAdvance]);
   const [aim, setAim] = useState<{ lon: number; lat: number } | null>(null);
+  // Target-chip settle state (§Q4): true while aim movements are
+  // arriving; the chip hides until ~700 ms after the last one.
+  const [chipSettling, setChipSettling] = useState(false);
+  const chipSettleTimer = useRef<number | null>(null);
+  useEffect(
+    () => () => {
+      if (chipSettleTimer.current !== null) window.clearTimeout(chipSettleTimer.current);
+    },
+    [],
+  );
   // A11y (WCAG 4.1.3): the sr-only live region announces aim transitions so
   // screen-reader users get feedback for place/move/clear. Cleared whenever
   // the phase changes, at which point phase messaging takes over.
@@ -5764,6 +6621,11 @@ function PlayLoaded({
         : "Pin placed. Double-tap the map or press Drop pin to lock in your guess.",
     );
     setAim({ lon, lat });
+    // The target chip yields while the pin is in motion and settles
+    // back once aim movements stop (see the chip's comment).
+    setChipSettling(true);
+    if (chipSettleTimer.current !== null) window.clearTimeout(chipSettleTimer.current);
+    chipSettleTimer.current = window.setTimeout(() => setChipSettling(false), 700);
   }
 
   // M5: Escape with a pin clears it.
@@ -6179,7 +7041,7 @@ function PlayLoaded({
    * has no exact route to share, so the fresh offer becomes the
    * primary and shares directly — on the Globe in its shipped mc1 form
    * byte for byte. A globe exact primary's TEXT also stays the shipped
-   * one; its fragment is mc1, every other exact fragment is mc2.
+   * one; its fragment is mc1, every other exact fragment is mc3.
    * Computed from the dealer: for a normal run the place at index i IS
    * dealer.at(i), so the played ids are exact — PlaceResult carries
    * scores, not ids.
@@ -6209,6 +7071,42 @@ function PlayLoaded({
       const dealt = dealer.at(i);
       if (dealt) playedIds.push(dealt.id);
     }
+    // Package B (§Q2-B3): the summary exact mint carries the sender's
+    // winner block — their score ON THIS ROUTE (the first ten played
+    // places, the ones the route actually contains), their hit-mask
+    // over those places, and attempts = storedCount + 1. The
+    // recording itself happens in the effect under this memo, once
+    // per run; here we only read the store. Globe exact stays mc1
+    // and carries nothing (the frozen surface), and a zero route
+    // score mints no block — the share then keeps its shipped text.
+    const exactIds = playedIds.slice(0, CHALLENGE_MAX_PLACES);
+    const routeScore = run.results
+      .slice(0, CHALLENGE_MAX_PLACES)
+      .reduce((s, r) => s + r.score, 0);
+    const summaryTuple = challengeRouteTuple({
+      scoringVersion: SCORING_VERSION,
+      edition: run.edition,
+      regionId: run.regionId,
+      ids: exactIds,
+    });
+    let summaryAttempts = readRouteAttempts(summaryTuple) + 1;
+    try {
+      if (sessionStorage.getItem(`meridian.challenge.recorded.summary.${run.seed}`)) {
+        summaryAttempts = readRouteAttempts(summaryTuple);
+      }
+    } catch {
+      // Storage blocked: report stored+1 unstored (the effect's
+      // recording will have failed the same way).
+    }
+    const summaryWinner =
+      run.edition === "globe"
+        ? null
+        : mintWinnerBlock({
+            myScore: routeScore,
+            myMask: hitMaskFromResults(run.results.slice(0, CHALLENGE_MAX_PLACES)),
+            myAttempts: summaryAttempts,
+            incomingBest: null,
+          }).winner;
     const exact =
       run.results.length >= CHALLENGE_MIN_PLACES
         ? createChallengeRoute({
@@ -6217,6 +7115,7 @@ function PlayLoaded({
             scoringVersion: SCORING_VERSION,
             mode: "exact",
             exactIds: playedIds,
+            winner: summaryWinner ?? undefined,
           })
         : null;
     const seenIds = new Set(
@@ -6242,7 +7141,12 @@ function PlayLoaded({
       ? {
           url: `${origin}${fresh.fragment}`,
           label: `New route in ${fresh.regionName} instead`,
-          text: `Find ${fresh.placeCount} places in ${fresh.regionName}! Get inside the ${fresh.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${origin}${fresh.fragment}`,
+          text: buildFreshChallengeShareText({
+            placeCount: fresh.placeCount,
+            regionName: fresh.regionName,
+            radiusKm: fresh.radiusKm,
+            url: `${origin}${fresh.fragment}`,
+          }),
         }
       : null;
     if (exact) {
@@ -6258,7 +7162,18 @@ function PlayLoaded({
           regionName: exact.regionName,
           text: exact.fragment.startsWith("#c=mc1.")
             ? `Play the same ${exact.placeCount} places on the Globe!\n${origin}${exact.fragment}`
-            : `Play the same ${exact.placeCount} places ${regionPhrase}! I scored ${sessionTotal.toLocaleString("en-US")}. (Opens in the newest Meridian.)\n${origin}${exact.fragment}`,
+            : summaryWinner
+              ? // The exact-with-target form (§Q3): the score hook is
+                // the block's own attested number, so the words and
+                // the wire can never disagree.
+                exactRouteTargetShareText({
+                  senderScore: summaryWinner.senderScore,
+                  placeCount: exact.placeCount,
+                  regionName: exact.regionName,
+                  radiusKm: exact.radiusKm,
+                  url: `${origin}${exact.fragment}`,
+                })
+              : `Play the same ${exact.placeCount} places ${regionPhrase}! I scored ${sessionTotal.toLocaleString("en-US")}.\n${CHALLENGE_VERSION_LINE}\n${origin}${exact.fragment}`,
         },
         secondary: freshSecondary,
       };
@@ -6295,6 +7210,50 @@ function PlayLoaded({
       secondary: null,
     };
   }, [friendChallengesEnabled, challenge, review, run, dealer, pool, sessionTotal]);
+
+  // Package B (§Q2-B3): arriving at a normal run's summary records
+  // the completion that stands behind the exact-route mint — once
+  // per run, guarded by a sessionStorage marker with the run slots'
+  // own lifetime (a reload at the summary cannot count the same play
+  // twice; a genuinely replayed route is a new run and counts). Only
+  // where a mint can exist: non-Globe (Globe exact is the frozen mc1
+  // surface), at least five played, flag on.
+  useEffect(() => {
+    if (challenge || review || run.phase !== "summary") return;
+    if (!friendChallengesEnabled || run.edition === "globe") return;
+    if (run.results.length < CHALLENGE_MIN_PLACES) return;
+    const ids: string[] = [];
+    for (let i = 0; i < Math.min(run.results.length, CHALLENGE_MAX_PLACES); i++) {
+      const dealt = dealer.at(i);
+      if (dealt) ids.push(dealt.id);
+    }
+    if (ids.length < CHALLENGE_MIN_PLACES) return;
+    const markerKey = `meridian.challenge.recorded.summary.${run.seed}`;
+    try {
+      if (sessionStorage.getItem(markerKey)) return;
+      recordRouteCompletion(
+        challengeRouteTuple({
+          scoringVersion: SCORING_VERSION,
+          edition: run.edition,
+          regionId: run.regionId,
+          ids,
+        }),
+      );
+      sessionStorage.setItem(markerKey, "1");
+    } catch {
+      // Storage blocked: the mint simply reports stored+1 unstored.
+    }
+  }, [
+    challenge,
+    review,
+    run.phase,
+    run.seed,
+    run.edition,
+    run.regionId,
+    run.results.length,
+    friendChallengesEnabled,
+    dealer,
+  ]);
 
   // The exact-route preview sheet (manifest §1(d)): the primary's tap
   // opens it BEFORE any sharing — the disclosure line is the privacy
@@ -6418,7 +7377,12 @@ function PlayLoaded({
   const runChallengePreviewEl = runChallengePreview ? (() => {
     const creation = runChallengePreview;
     const url = `${window.location.origin}${window.location.pathname}${creation.fragment}`;
-    const text = `Find ${creation.placeCount} places in ${creation.regionName}! Get inside the ${creation.radiusKm} km circle — closer is better! ${CHALLENGE_FAIRNESS_COPY} (Opens in the newest Meridian.)\n${url}`;
+    const text = buildFreshChallengeShareText({
+      placeCount: creation.placeCount,
+      regionName: creation.regionName,
+      radiusKm: creation.radiusKm,
+      url,
+    });
     return (
       <div
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
@@ -6481,7 +7445,27 @@ function PlayLoaded({
       <ChallengeComplete
         run={run}
         total={pool.length}
-        onDone={run.challengeOrigin === "mc2" && onChallengeDone ? onChallengeDone : onEditions}
+        onDone={
+          (run.challengeOrigin === "mc2" || run.challengeOrigin === "mc3") && onChallengeDone
+            ? onChallengeDone
+            : onEditions
+        }
+        onRetry={
+          run.challengeWinner && onChallengeRetry
+            ? () =>
+                onChallengeRetry({
+                  edition: run.edition,
+                  regionId: run.challengeRegionId ?? "globe",
+                  regionName:
+                    findRegion(run.edition, run.challengeRegionId ?? "globe")?.name ??
+                    run.regionName,
+                  radiusKm: run.challengeRadiusKm ?? 750,
+                  ids: [...run.poolIds],
+                  originFormat: "mc3",
+                  winner: run.challengeWinner ?? null,
+                })
+            : undefined
+        }
         shareEnabled={friendChallengesEnabled}
         regionCatalog={challengeCatalog}
       />
@@ -6716,6 +7700,50 @@ function PlayLoaded({
           )}
         </div>
       </div>
+      {/* The target chip (§Q4, Package B): bottom-centre above the
+          aim controls, non-interactive and aria-hidden (the live
+          region owns announcements). It shows the chain's best and
+          the running score — until the target leaves reach: once
+          running + the most the remaining stops can still pay < the
+          best, the chip drops the target and counts landed stops
+          instead (a deficit counter must not ride a run that can no
+          longer be won). It hides while the aim pin is being moved:
+          onAim fires through a drag, so the chip yields and settles
+          back ~700 ms after the last aim movement. */}
+      {challenge && run.challengeWinner && (run.phase === "aim" || run.phase === "story") && !chipSettling
+        ? (() => {
+            const best = run.challengeWinner.bestScore;
+            const running = run.results.reduce((s, r) => s + r.score, 0);
+            // Attainability at the remaining places' OWN tiers
+            // (owner D2 amendment, 2026-11-01): the tier-blind bound
+            // fired late or never on easy routes, so the deficit
+            // counter rode runs that could no longer be won.
+            const remainingDifficulties = run.poolIds
+              .slice(run.results.length)
+              .map((id) => pool.find((p) => p.id === id)?.difficulty ?? 5);
+            const unreachable =
+              running +
+                maxAttainableRemaining(
+                  remainingDifficulties,
+                  trailingStreak(run.results),
+                ) <
+              best;
+            const hits = run.results.filter((r) => r.hit).length;
+            return (
+              <div
+                data-testid="challenge-target-chip"
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 bottom-[max(6.5rem,calc(env(safe-area-inset-bottom)+5.5rem))] z-30 flex justify-center"
+              >
+                <p className="game-chrome rounded-full px-3 py-1.5 text-sm font-semibold tabular-nums">
+                  {unreachable
+                    ? `landed ${hits} of ${pool.length}`
+                    : `🎯 ${best.toLocaleString("en-US")} · you ${running.toLocaleString("en-US")}`}
+                </p>
+              </div>
+            );
+          })()
+        : null}
       {/* Bottom-right dock (aim phase): the hint cluster rides ABOVE the
           End-game pill in a single flex column, so the two can never
           overlap (flex layout, no absolute offsets between them).

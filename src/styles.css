@@ -2088,3 +2088,87 @@
     scroll-margin-top: 8px;
   }
 }
+
+/* ==========================================================================
+   Challenge verdict motion (governing manifest 2026-10-31 §Q4, Package B).
+   CSS transforms + opacity only — no blur, no shadows, no scale on text,
+   no JS-driven animation. Final scores render at frame 0 (no count-up,
+   ever); the target bar sweeps by transform over 650 ms; the verdict
+   word fades in as the bar lands; the duel strip dots stagger in after
+   it (30 ms apart, ≤ 300 ms of stagger); the duel line follows; the
+   pass-along share fades in last. Total choreography ≤ ~1,600 ms. A
+   tap on the verdict — or any keydown, or the settle timer at
+   choreography end (A-291-3, 2026-11-01) — sets
+   data-verdict-settled="true", snapping every
+   element to its final state. Under prefers-reduced-motion nothing
+   animates at all — every element simply is at its final state, with
+   the same information.
+   ========================================================================== */
+@keyframes verdict-bar-sweep {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes verdict-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes verdict-passed-pulse {
+  50% {
+    opacity: 0.6;
+  }
+}
+.verdict-bar-fill {
+  transform-origin: left center;
+  animation: verdict-bar-sweep 650ms ease-out both;
+}
+.verdict-word {
+  animation: verdict-fade-in 200ms ease-out 650ms both;
+}
+.verdict-strip-dot {
+  animation: verdict-fade-in 200ms ease-out both;
+  animation-delay: calc(850ms + var(--verdict-i, 0) * 30ms);
+}
+/* A-291-2 (cure round, 2026-11-01): the dot's VISUAL stays 20 px —
+   ten dots must fit a phone — but its hit area grows to 44 px tall
+   × the 26 px dot pitch wide (20 px dot + 6 px gap), so adjacent
+   areas touch without overlapping (WCAG 2.5.8's spacing rule) and
+   the height meets the 44 px tap floor. The focus ring draws on
+   the visual disc itself. */
+.verdict-strip-dot::after {
+  content: "";
+  position: absolute;
+  inset: -12px -3px;
+}
+.verdict-strip-dot:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 1px;
+}
+.verdict-late {
+  animation: verdict-fade-in 200ms ease-out 1200ms both;
+}
+.verdict-last {
+  animation: verdict-fade-in 200ms ease-out 1400ms both;
+}
+.verdict-pulse {
+  animation: verdict-passed-pulse 300ms ease-in-out 700ms 1;
+}
+[data-verdict-settled="true"] .verdict-bar-fill,
+[data-verdict-settled="true"] .verdict-word,
+[data-verdict-settled="true"] .verdict-strip-dot,
+[data-verdict-settled="true"] .verdict-late,
+[data-verdict-settled="true"] .verdict-last,
+[data-verdict-settled="true"] .verdict-pulse {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .verdict-bar-fill,
+  .verdict-word,
+  .verdict-strip-dot,
+  .verdict-late,
+  .verdict-last,
+  .verdict-pulse {
+    animation: none;
+  }
+}

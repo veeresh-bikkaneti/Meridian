@@ -199,12 +199,22 @@ test("displacement: the saved run survives under the challenge and is offered ba
   // The eyebrow naming the route is the h1's sibling, not inside it.
   await expect(page.getByText("Nebraska challenge", { exact: true })).toBeVisible();
   await expect(page.getByText(/inside the 87 km circle/)).toBeVisible();
-  // The completion re-share preserves the origin format and the route.
+  // The completion re-share follows the origin rule (delta §3.3): an
+  // mc2 route forward-upgrades to mc3, same route, same radius.
   const shareContainer = page.getByTestId("challenge-share-container");
   await expect(shareContainer).toBeVisible();
   const reshared = await shareContainer.getAttribute("data-challenge-url");
-  expect(reshared).toContain("#c=mc2.");
-  expect(reshared).toContain(NEBRASKA_HASH.slice("#c=mc2.".length).split(".")[0] ?? "");
+  expect(reshared).toContain("#c=mc3.");
+  const resharedRoute = decodeChallengeLink(
+    reshared!.slice(reshared!.indexOf("#")),
+    SCORING_VERSION,
+  );
+  expect(resharedRoute.ok).toBe(true);
+  if (resharedRoute.ok) {
+    expect(resharedRoute.route.originFormat).toBe("mc3");
+    expect(resharedRoute.route.ids).toEqual([...NEBRASKA_IDS]);
+    expect(resharedRoute.route.radiusKm).toBe(87);
+  }
   await page.getByTestId("challenge-done").click();
 
   await waitForChallengeAim(page, RUN_KEY);
@@ -265,14 +275,15 @@ test("completion re-share preserves an off-golden pinned radius (rad 90, not the
   const container = page.getByTestId("challenge-share-container");
   const url = await container.getAttribute("data-challenge-url");
   expect(url).toBeTruthy();
-  expect(url).toContain("#c=mc2.");
+  expect(url).toContain("#c=mc3.");
   const decoded = decodeChallengeLink(url!.slice(url!.indexOf("#")), SCORING_VERSION);
   expect(decoded.ok).toBe(true);
   if (decoded.ok) {
     // The sharpest freeze test (manifest §6): the re-share carries the
-    // SAME circle the route was judged at.
+    // SAME circle the route was judged at — now on mc3, per the
+    // delta's forward-upgrade rule (§3.3).
     expect(decoded.route.radiusKm).toBe(90);
-    expect(decoded.route.originFormat).toBe("mc2");
+    expect(decoded.route.originFormat).toBe("mc3");
     expect(decoded.route.ids).toEqual([...NEBRASKA_IDS]);
   }
 });
