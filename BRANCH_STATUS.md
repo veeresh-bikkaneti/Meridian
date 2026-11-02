@@ -1,4 +1,62 @@
-# BRANCH_STATUS — feat/verdict-grandpa-video
+# BRANCH_STATUS — fix/194-event-type-mismatch (Wave 2, #194 REOPENED)
+
+- **Branch:** `fix/194-event-type-mismatch`
+- **Base:** `main` @ `2a0527f` (#295 merged tip at branch start).
+
+## Task capsule
+
+TASK / requested outcome: Fix the three-way observability event-type
+mismatch behind reopened issue #194. Owner's facts (verified from
+source, 2026-11-02): the app sends 14 event types, the crash-report
+worker accepts 8, the docs say 7 — the 6 storyteller/narration types
+the app emits are rejected (400) by the worker in production and
+silently dropped. Wave 1's docs-only closure in #251 was wrong: it
+claimed those 6 "stay client-side and are not sent", and its counts
+(13 client / 7 worker) were already stale the day it landed (Slice 2,
+#250, had added `recovery_outcome` the day before).
+
+Interpretations considered and selected reading: each app-only type is
+either LEGITIMATE (live emission, worker must accept) or DEAD (app
+must stop sending). Evidence verdict: **all 6 are legitimate** — built
+as COPPA-clean telemetry in #108, emitted on live Storyteller paths,
+sent through the same `emit()` transport to the live endpoint in
+`public/flags.json`, with no client-side consumer anywhere. Full
+per-type evidence: `~/workspace/meridian-issue-wave/evidence/194/DIAGNOSIS.md`.
+
+Tier and rationale: Tier 1 — one clear contract bug, diagnosed from
+source first; fix at the worker layer + a drift guard + docs sync.
+
+Done condition / evidence: worker accepts all 14 types; the 6 funnel
+types are counted-only (never forwarded individually, like
+hiccup-class); per-type acceptance tests + unknown-type rejection
+pinned; a drift test in `npm test` keeps the client union and the
+worker list equal; every doc list reads 14; gates sealed under
+`~/workspace/meridian-issue-wave/evidence/194/` (tsc · npm test ·
+test:worker · typecheck:worker · lint-cards · build:pages); PR open.
+STOP at PR-open — no Silo QA, no panel, no merge by this run.
+
+Files in scope: `workers/crash-report/src/index.ts` +
+`src/index.test.ts`, new `scripts/observability-event-types.test.mjs`,
+`docs/observability.md`, `docs/handbook/07-engineering-and-ops.md`,
+`workers/crash-report/README.md`, `worker/observability/README.md`
+(cross-reference count only), this file. App source: NO change (no
+dead types). Frozen PRs #297/#299/#302/#305 and #231/#265/#270/#292/#293
+untouched. Claim recorded in the coordination ledger 2026-11-02: Wave 2
+claims the crash-report worker surface for #194/#221 per the owner's
+express assignment (historically Rock's surface — noted for his round).
+
+## Status
+
+- [x] Diagnosis sealed (evidence/194/DIAGNOSIS.md) — counts 14/8/7 confirmed; all 6 app-only types LEGITIMATE
+- [ ] Worker fix + tests
+- [ ] Drift-guard script test
+- [ ] Docs sync (4 files)
+- [ ] Gates sealed
+- [ ] PR open
+
+---
+
+# BRANCH_STATUS — feat/verdict-grandpa-video (record from main, kept)
 
 - **Branch:** `feat/verdict-grandpa-video`
 - **Base:** `main` @ `242a7ef` (#291 winner declaration + #294 merged;
