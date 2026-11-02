@@ -87,7 +87,9 @@ test("idle-kill retires the switched notice (#188)", async ({ page }) => {
   // last activity). The idle-ended notice shows; the switched notice —
   // whose "score is kept" claim the kill just falsified — must not.
   await expect(
-    page.getByText("Your game ended after 2 minutes of inactivity."),
+    page
+      .getByTestId("discarded-notice")
+      .getByText("Your game ended after 2 minutes of inactivity."),
   ).toBeVisible({ timeout: 90_000 });
   await expect(page.getByTestId("map-switched-notice")).toHaveCount(0);
   await expect
