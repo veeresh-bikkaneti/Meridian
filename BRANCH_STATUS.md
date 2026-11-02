@@ -24,6 +24,16 @@ neighbour specs green; unit + typecheck + lint-cards green;
 BRANCH_STATUS + PR with the diagnosis story. NO MERGE — merging is the
 owner's step.
 
+DEVIATION (labelled on the panel's request, PR #305 round 1): the
+after-fix probe ran at N=5, not the same N=15 — the VM egress outage
+(ERR_TUNNEL_CONNECTION_FAILED on the spec's console check, reproduced
+identically on unmodified main) plus timebox cut the local runs. The
+6.7% baseline is an existence proof from the probe, not a population
+estimate, and 0/5 does not statistically exclude it; the verdict rests
+on the deterministic mechanism proof (captured mid-tap trace +
+constant-Y trajectory), the independent Silo QA reproduction, and CI
+e2e green on the tip — not on the 0/5 count.
+
 Files in scope: `src/components/run-summary.tsx`,
 `src/components/storyteller.tsx`, `tests/e2e/endgame-share.spec.ts`,
 this file. Out of scope: the share path itself (`share-action.ts`,
@@ -111,13 +121,24 @@ documented "caption text appears instantly" intent).
 - [x] Repeated runs sealed (probe 5/5; spec share assertions green in
   every run — see the environment caveat in Evidence)
 - [x] PR opened against main: **#305** (For #289)
-- [ ] Panel review — separate stage, run by the coordinator
+- [x] Silo QA (clean context, independent): PASS on `22a8d36`
+  (evidence/289/qa-silo/)
+- [x] Panel round 1 on `22a8d36`: 1 APPROVE / 11 AWN / 0 BLOCK, DevEx
+  PASS-WITH-NITS — cure applied for the convergent metric-drift nit
+  (Architect MEDIUM + 5 seats): a KEEP IN SYNC warning now sits in the
+  fallback comment in `run-summary.tsx`, and the probe-N deviation is
+  labelled above. Dismiss/failure-growth shifts tracked in #306.
+- [ ] Silo QA re-verification on the cured tip (a new commit voids the
+  `22a8d36` QA entry) — coordinator
+- [ ] Panel re-vote on the cured tip — coordinator
 - [ ] Merge — owner's explicit per-PR word only
 
-## Observed, not fixed (flagged for the owner/panel)
+## Observed, not fixed (tracked in #306)
 
 - The caption's designed auto-dismiss (after audio ends / text-only
   hold) still collapses its height seconds later, which moves the
   buttons then. That window opens only after a first gesture has
   started the narration, so it cannot eat the FIRST tap; changing the
-  dismiss visuals is a design call, not part of #289's fix.
+  dismiss visuals is a design call, not part of #289's fix. Filed as
+  issue #306 at the panel's request, together with the audio-failure
+  caption-growth facet the Level Architect seat found.

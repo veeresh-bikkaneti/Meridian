@@ -175,7 +175,14 @@ export function RunSummaryCard(props: {
             caption max-width/padding/border and the banner text size,
             line-height and balance wrap — invisible and aria-hidden, so
             the real caption swaps into identical space at any viewport
-            and nothing below it moves. */}
+            and nothing below it moves. KEEP IN SYNC: those box metrics
+            are hand-copied from the real caption (storyteller-mascot.css
+            + the BoundedText banner variant in storyteller.tsx) — if the
+            caption's width, padding, border, font size, line-height or
+            wrap ever changes, change them here too, or the reservation
+            silently desyncs and the #289 shift returns. (Panel note on
+            PR #305: extracting a shared constant/component for both is
+            the follow-up when the caption metrics next change.) */}
         <Suspense
           fallback={
             <div aria-hidden="true" className="mb-2 flex justify-center">
