@@ -51,8 +51,8 @@ express assignment (historically Rock's surface — noted for his round).
 - [x] Worker fix + tests (worker suite 85 → 90; commit 9f8635c)
 - [x] Drift-guard script test (mutation-proven; commit 9f8635c)
 - [x] Docs sync (4 files: docs/observability.md, handbook ch07, workers/crash-report/README.md, worker/observability/README.md cross-ref)
-- [ ] Gates sealed
-- [ ] PR open
+- [x] Gates sealed (evidence/194/gates/, on tip 3fb41de): tsc 0 · npm test 0 (scripts 852 pass / 11 skipped; src 1879/1879) · test:worker 0 (90/90) · typecheck:worker 0 · lint-cards GATE PASSED · build:pages 0. E2E not run — no client emission changed (app source untouched). Note: the resume run re-sealed npm test + build:pages after the first sealing attempts lost their exit files when their shell sessions were killed mid-run; the re-run logs are the sealed ones (identical pass counts).
+- [x] PR open — PR #311 (2026-11-02, resume run after the prior crew died in a daemon restart; reconciliation found this branch/worktree + sealed DIAGNOSIS.md sound and resumed from them, no restart). STOP at PR-open — no Silo QA, no panel, no merge by this run.
 
 ---
 
