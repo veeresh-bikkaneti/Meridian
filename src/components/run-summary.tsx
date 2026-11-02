@@ -20,14 +20,17 @@ import { ShareButton } from "./share-button";
  * #306: the ONE height of the summary caption slot. The slot holds this
  * box for the dialog's whole life — before the lazy chunk resolves, while
  * the caption shows, when the audio-failure line (+ retry hint) is
- * appended, and after the caption dismisses — so the buttons below never
- * move. Sized (rem, so it tracks the root font size) to the tallest
- * caption state: the line plus the longest failure text at the narrowest
+ * appended, and after the caption dismisses — so the score and stats
+ * below it never jump while being read. (The action buttons are pinned in
+ * the dialog footer, so they are independent of the caption either way;
+ * the slot is kept because it is cheap and stops the content jumping.)
+ * Sized (rem, so it tracks the root font size) to the tallest caption
+ * state: the line plus the longest failure text at the narrowest
  * 320px viewport (measured 123.5px with the play-rejected retry hint;
  * 8rem = 128px). tests/e2e/storyteller.spec.ts asserts the real caption
  * plus failure line fits inside this slot and that Share score never
  * moves, so a copy or metric change that outgrows it fails CI instead of
- * silently shifting the buttons again.
+ * silently shifting the content again.
  */
 const STORYTELLER_SUMMARY_SLOT_HEIGHT = "8rem";
 
@@ -168,18 +171,27 @@ export function RunSummaryCard(props: {
   return (
     <div
       ref={modalRef}
-      className="pointer-events-auto absolute inset-0 z-40 flex overflow-y-auto overscroll-contain bg-black/60 p-4 backdrop-blur-sm"
+      className="pointer-events-auto absolute inset-0 z-40 flex bg-black/60 p-4 pb-[max(1rem,env(safe-area-inset-bottom))] backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-label="Game summary"
       tabIndex={-1}
       onKeyDown={onDialogKeyDown}
     >
-      {/* #306: the card is taller than small viewports (~887px at 320x568).
-          Centring with items-center clipped its top and bottom (Done was
-          unreachable); m-auto inside a scrolling flex overlay centres it
-          when it fits and top-aligns + scrolls when it doesn't. */}
-      <div className="m-auto w-full max-w-sm rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.95)] p-6 text-white shadow-2xl">
+      {/* #306: the card is taller than most viewports (~1000px). It is
+          capped to the viewport (max-h-full) and split in two: the
+          score / stats / caption content scrolls (keyboard-reachable:
+          tabIndex 0, the focus trap includes it), and the action buttons
+          sit in a pinned footer that is always fully on screen, so their
+          position never depends on the caption or on scrolling. */}
+      <div className="m-auto flex max-h-full w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.95)] text-white shadow-2xl">
+        <div
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-6 pb-2 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-white"
+          data-testid="summary-content"
+          role="region"
+          aria-label="Summary details"
+          tabIndex={0}
+        >
         {/* Storyteller narration (caption only — figure is banner-only per
             owner ruling 2026-10-10): the closing-chapter beat. One line,
             text-first + speaker. */}
@@ -187,9 +199,10 @@ export function RunSummaryCard(props: {
             slot reserves the caption's box from the first frame to the
             last. The lazy fallback, the caption itself, the appended
             audio-failure line and the dismissed state all render INSIDE
-            it, so nothing below moves — the late mount (#289) and the
-            dismissal collapse / failure growth (#306) were the same
-            layout bug. Always reserved, whatever the caption is doing
+            it, so the content below never jumps — the late mount (#289)
+            and the dismissal collapse / failure growth (#306) were the
+            same layout bug. The action buttons live in the pinned footer
+            and never depend on this slot. Always reserved, whatever the caption is doing
             (sound off, narration yielded to a celebration or the tour,
             dismissed): the slot decides layout, never the caption. The
             slot itself is pointer-events-none (the caption re-enables its
@@ -372,7 +385,11 @@ export function RunSummaryCard(props: {
           </div>
         ) : null}
 
-        <div className="mt-6 flex flex-col gap-2">
+        </div>
+        <div
+          className="flex shrink-0 flex-col gap-2 border-t border-white/10 px-6 pt-4 pb-6"
+          data-testid="summary-actions"
+        >
           <ShareButton
             title="Meridian score"
             text={text}

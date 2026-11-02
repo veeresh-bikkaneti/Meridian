@@ -240,25 +240,34 @@ test("blocked audio degrades to the text-only fallback", async ({ page }) => {
 });
 
 /**
- * #306: the summary buttons never move. Every frame from the dialog's
- * first paint is sampled in-page (rAF), recording Share score's offset
- * inside the dialog's scroll content plus which caption state is on
- * screen. The run walks every state — open (lazy fallback, no caption),
- * caption in, audio-failure line appended, auto-dismissed — and the
- * offset must stay within 1px of the first frame's throughout.
+ * #306: the summary buttons are pinned on screen and never move. Every
+ * frame from the dialog's first paint is sampled in-page (rAF), recording
+ * Share score's viewport y, whether EVERY action button is fully inside
+ * the viewport, and which caption state is on screen. The run walks every
+ * state — open (lazy fallback, no caption), caption in, audio-failure
+ * line appended, auto-dismissed — and Share's y must stay within 1px of
+ * the first frame's while all buttons stay fully on screen, unscrolled.
  */
 for (const viewport of [
   { width: 320, height: 568 },
   { width: 390, height: 844 },
+  { width: 1280, height: 800 },
 ]) {
   test.describe(`summary caption slot @${viewport.width}x${viewport.height}`, () => {
     test.use({ viewport });
 
-    test("Share score keeps its y-offset at open, caption-in, audio-fail and dismissed", async ({
+    test("action buttons are on screen and Share keeps its y at open, caption-in, audio-fail and dismissed", async ({
       page,
     }) => {
       await page.addInitScript(() => {
-        type Sample = { y: number; caption: boolean; fallback: boolean; empty: boolean };
+        type Sample = {
+          y: number;
+          buttons: number;
+          allInView: boolean;
+          caption: boolean;
+          fallback: boolean;
+          empty: boolean;
+        };
         const w = window as unknown as { __slotSamples: Sample[] };
         w.__slotSamples = [];
         const tick = () => {
@@ -271,8 +280,24 @@ for (const viewport of [
               )
             : undefined;
           if (dlg && share) {
+            const actions = [
+              ...(dlg.querySelector('[data-testid="summary-actions"]') ?? dlg).querySelectorAll(
+                "button",
+              ),
+            ];
             w.__slotSamples.push({
-              y: share.getBoundingClientRect().top + dlg.scrollTop,
+              y: share.getBoundingClientRect().top,
+              buttons: actions.length,
+              allInView: actions.every((b) => {
+                const r = b.getBoundingClientRect();
+                return (
+                  r.height >= 44 &&
+                  r.top >= 0 &&
+                  r.left >= 0 &&
+                  r.bottom <= window.innerHeight &&
+                  r.right <= window.innerWidth
+                );
+              }),
               caption: !!document.querySelector('[data-testid="storyteller-caption"]'),
               fallback: !!document.querySelector('[data-testid="storyteller-fallback"]'),
               empty: !!document.querySelector('[data-testid="storyteller-slot-empty"]'),
@@ -301,12 +326,24 @@ for (const viewport of [
       const samples = await page.evaluate(
         () =>
           (window as unknown as {
-            __slotSamples: { y: number; caption: boolean; fallback: boolean; empty: boolean }[];
+            __slotSamples: {
+              y: number;
+              buttons: number;
+              allInView: boolean;
+              caption: boolean;
+              fallback: boolean;
+              empty: boolean;
+            }[];
           }).__slotSamples,
       );
       const open = samples[0];
       expect(open, "a frame was sampled at dialog open").toBeDefined();
       expect(open.caption, "first frame is before the caption mounts").toBe(false);
+      // Share score, Share route, Play again, Done (Challenge when present).
+      expect(open.buttons, "the pinned footer holds the actions").toBeGreaterThanOrEqual(4);
+      expect(open.allInView, "every action button fully on screen at open, no scroll").toBe(
+        true,
+      );
       const phases = {
         open: [open],
         captionIn: samples.filter((s) => s.caption && !s.fallback),
@@ -322,6 +359,7 @@ for (const viewport of [
             Math.abs(r.y - open.y),
             `Share score moved during ${phase}: ${r.y} vs ${open.y}`,
           ).toBeLessThanOrEqual(1);
+          expect(r.allInView, `an action button left the viewport during ${phase}`).toBe(true);
         }
       }
       expectCleanConsole(errors, ["net::ERR_FAILED"]);
@@ -329,22 +367,34 @@ for (const viewport of [
   });
 }
 
-test.describe("summary overlay scroll @320x568", () => {
+test.describe("summary pinned actions @320x568", () => {
   test.use({ viewport: { width: 320, height: 568 } });
 
-  test("Done is reachable by scrolling at 320x568", async ({ page }) => {
+  test("Done is visible without scrolling at 320x568; the content still scrolls by keyboard", async ({
+    page,
+  }) => {
     const errors = await reachSummaryScreen(page);
     const dialog = page.getByRole("dialog", { name: "Game summary" });
-    const done = dialog.getByRole("button", { name: "Done", exact: true });
-    // The card is taller than the viewport: Done starts below the fold,
-    // and the top of the card (the caption) is on screen, not clipped.
-    await expect(done).not.toBeInViewport();
-    await expect(page.getByTestId("storyteller-caption")).toBeInViewport({ ratio: 1 });
-    // Wheel over the card: the overlay (not the page) is the scroller.
-    await page.mouse.move(160, 300);
-    await page.mouse.wheel(0, 1500);
-    await expect(done).toBeInViewport({ ratio: 1 });
-    await done.click();
+    const content = page.getByTestId("summary-content");
+    for (const name of ["Share score", "Play again", "Done"]) {
+      await expect(dialog.getByRole("button", { name, exact: true })).toBeInViewport({
+        ratio: 1,
+      });
+    }
+    // Nothing was scrolled to get there.
+    expect(await content.evaluate((el) => el.scrollTop)).toBe(0);
+    expect(await page.evaluate(() => window.scrollY)).toBe(0);
+    // The stats overflow the content area, which stays keyboard-reachable
+    // and scrolls while the buttons stay put.
+    const shareY = (await dialog.getByRole("button", { name: "Share score", exact: true }).boundingBox())!.y;
+    await content.focus();
+    await expect(content).toBeFocused();
+    await page.keyboard.press("End");
+    await expect.poll(() => content.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+    expect(
+      (await dialog.getByRole("button", { name: "Share score", exact: true }).boundingBox())!.y,
+    ).toBe(shareY);
+    await dialog.getByRole("button", { name: "Done", exact: true }).click();
     await expect(dialog).toHaveCount(0);
     expectCleanConsole(errors);
   });
