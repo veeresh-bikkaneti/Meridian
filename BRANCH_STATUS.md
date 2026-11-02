@@ -110,7 +110,7 @@ documented "caption text appears instantly" intent).
 - [x] Retry helper replaced by a single click
 - [x] Repeated runs sealed (probe 5/5; spec share assertions green in
   every run — see the environment caveat in Evidence)
-- [ ] PR opened against main (For #289)
+- [x] PR opened against main: **#305** (For #289)
 - [ ] Panel review — separate stage, run by the coordinator
 - [ ] Merge — owner's explicit per-PR word only
 
