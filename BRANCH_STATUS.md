@@ -50,5 +50,10 @@ Frozen / off-limits: PRs #297/#299/#302/#305 and all other open PRs;
       disposition argued in PR body, spec left untouched)
 - [x] Fixes landed + committed + pushed — 5 of 6 specs fixed in the two
       claimed files (pin-compare + your-pin-country-globe); gap-view
-      untouched pending its disposition call
-- [ ] Gates sealed; PR opened (stop)
+      untouched, class-(c) disposition argued in the PR body
+- [x] Gates sealed (evidence/298/): tsc clean; npm test 850+1879 pass;
+      test:worker 85 pass; lint-cards PASSED; build:pages green;
+      E2E after-run (3 files, flock, workers=1, chromium-1243):
+      13 passed / 1 failed — the 1 is gap-view:177's 1200 ms tap
+      deadline only (tapAt=3387, cardAt=3538: the skip itself worked)
+- [ ] PR opened (stop)
