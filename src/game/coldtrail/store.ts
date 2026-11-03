@@ -30,6 +30,15 @@ export const COLDTRAIL_STORAGE_KEY = "meridian.coldtrail.v2";
  * each other. The pack store holds the same ColdTrailStore shape.
  */
 const COLDTRAIL_PACK_STORAGE_KEY = "meridian.coldtrail.pack.capitals.v1";
+/**
+ * Pack shelf selection key (owner: PACK_SHELF_SELECTION_KEY in
+ * src/components/pack-shelf-data.ts), restated for the same reason as
+ * the pack store key above. The blob's Cold Trail entry is this
+ * edition's deck pick; a reset that leaves it behind would resurrect
+ * the pack selection after "Start over", unlike the GeoDetective
+ * reset, whose selection dies with its loop store.
+ */
+const PACK_SHELF_SELECTION_KEY = "meridian.pack-shelf.v1";
 /** Previous-generation key: read once for migration, then deleted. */
 const LEGACY_STORAGE_KEY = "meridian.coldtrail.v1";
 /**
@@ -281,6 +290,15 @@ export function clearColdtrailStore(
     }
   }
   try {
+    s.removeItem(PACK_SHELF_SELECTION_KEY);
+  } catch {
+    try {
+      s.setItem(PACK_SHELF_SELECTION_KEY, JSON.stringify({ v: 1, decks: {} }));
+    } catch {
+      // The verification below reports it.
+    }
+  }
+  try {
     s.removeItem(COLDTRAIL_OPEN_KEY);
   } catch {
     try {
@@ -335,7 +353,18 @@ export function clearColdtrailStore(
           return false;
         }
       })();
-    return legacyGone && storeGone && packGone && s.getItem(COLDTRAIL_OPEN_KEY) !== "1";
+    const shelfRaw = s.getItem(PACK_SHELF_SELECTION_KEY);
+    const shelfGone =
+      shelfRaw === null ||
+      (() => {
+        try {
+          const parsed = JSON.parse(shelfRaw) as { decks?: Record<string, unknown> };
+          return parsed.decks?.coldtrail === undefined;
+        } catch {
+          return true; // Corrupt blob: readSelectedDeck fails closed to core too.
+        }
+      })();
+    return legacyGone && storeGone && packGone && shelfGone && s.getItem(COLDTRAIL_OPEN_KEY) !== "1";
   } catch {
     return false;
   }

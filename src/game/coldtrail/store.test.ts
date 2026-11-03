@@ -394,6 +394,7 @@ test("clearColdtrailStore removes v1 before v2, plus the open flag; load is fres
     [LEGACY_KEY]: JSON.stringify({ v: 1, caseIndex: 2, stars: 9, solved: 3 }),
     [COLDTRAIL_STORAGE_KEY]: JSON.stringify(baseStore()),
     [COLDTRAIL_OPEN_KEY]: "1",
+    "meridian.pack-shelf.v1": JSON.stringify({ v: 1, decks: { coldtrail: "capitals" } }),
     "meridian.palette": "standard",
   };
   const fake: FakeStorage = {
@@ -416,6 +417,9 @@ test("clearColdtrailStore removes v1 before v2, plus the open flag; load is fres
     assert.equal(data[LEGACY_KEY], undefined);
     assert.equal(data[COLDTRAIL_STORAGE_KEY], undefined);
     assert.equal(data[COLDTRAIL_OPEN_KEY], undefined);
+    // Reset symmetry: the shelf selection pick dies with the stores,
+    // so a pack pick cannot resurrect after "Start over".
+    assert.equal(data["meridian.pack-shelf.v1"], undefined);
     assert.equal(readColdTrailOpen(), false);
     // Kept keys byte-identical, and the loader sees a fresh wallet.
     assert.equal(data["meridian.palette"], "standard");
