@@ -72,10 +72,15 @@ Approvals: branch + PR are the assigned task. Merge: owner only.
 - [x] Panel on aa8c2ab — 3 APPROVE / 8 APPROVE-WITH-NITS /
       1 BLOCK (Office Hours, record-only) · DevEx PASS-WITH-NITS ·
       Benchmark PASS (worst delta +0.72% vs the 5% gate)
-- [ ] Record cure (PR body + this file: QA-measured MAD values,
+- [x] Record cure (PR body + this file: QA-measured MAD values,
       poster wording, WCAG wording, garbled comment edited in
-      place) + Office Hours re-confirmation on the corrected
-      record → READY. No code change in the cure.
+      place) + Office Hours re-confirmation — CONFIRM APPROVE on
+      the corrected record at `f467bb1`. Re-key check PASS; CI
+      green on `f467bb1` (build / GitGuardian / e2e).
+- [x] **READY — PR #328, verdict keyed to `f467bb1`** (this commit
+      is records-only, on top of the keyed tip). Verdict record:
+      `~/workspace/meridian-band-port-evidence/panel/VERDICT-RECORD.md`.
+      Merge waits for the owner's per-PR word.
 
 ## Sandbox media prep (no repo commits; PR #324 owns the card slots)
 
