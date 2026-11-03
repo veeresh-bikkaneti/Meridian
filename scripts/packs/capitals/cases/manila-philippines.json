@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "manila-philippines",
+  "target": {
+    "placeId": "gn-1701668",
+    "name": "Manila",
+    "aliases": [
+      "Maynila"
+    ],
+    "lat": 14.6042,
+    "lon": 120.9822,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Philippines",
+    "iso2": "PH",
+    "subdivision": "National Capital Region"
+  },
+  "subjectAnswer": {
+    "name": "Philippines",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Philippines",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits on the east shore of a wide bay, on a large island in the west Pacific. A river runs through its middle and splits it in two.",
+      "narrowing": "Puts the player on a bay shore on a big island in the west Pacific.",
+      "source": {
+        "article": "Manila",
+        "url": "https://en.wikipedia.org/wiki/Manila",
+        "quote": "Located on the eastern shore of Manila Bay on the island of Luzon"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This tropic city has a dry spell, then a long wet spell. In the wet months rain falls in short, heavy bursts, and typhoons come too.",
+      "narrowing": "Rules out steady climates; keeps tropics with hard bursts of rain and typhoons.",
+      "source": {
+        "article": "Manila",
+        "url": "https://en.wikipedia.org/wiki/Manila",
+        "quote": "Manila has a distinct dry season lasting from late December to early April. A relatively lengthy wet season that covers the remaining period, with slightly cooler daytime temperatures and slightly warmer nighttime temperatures. In the wet season, rain rarely falls all day, but rainfall is very heavy for short periods. Typhoons usually occur from June to September."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Spain's men took this shore in 1571 and built a walled fort town. The town then served as the capital for Spain's isles in the east.",
+      "narrowing": "Shrinks the list to capitals Spain founded as a walled port in 1571.",
+      "source": {
+        "article": "Manila",
+        "url": "https://en.wikipedia.org/wiki/Manila",
+        "quote": "Manila was used as the capital of the captaincy general of the Spanish East Indies"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A walled old town still stands by the bay in this city. Spanish builders raised its thick walls long ago, on the ruins of an older town.",
+      "narrowing": "Nearly decisive: a walled Spanish old town still stands by the bay.",
+      "source": {
+        "article": "Manila",
+        "url": "https://en.wikipedia.org/wiki/Manila",
+        "quote": "Spanish conquistador Miguel López de Legazpi began constructing the walled fortification of Intramuros"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This city is the heart of the Philippines. Its districts send members to Congress for the whole land.",
+      "narrowing": "Confirms it: the heart of the Philippines' capital region.",
+      "source": {
+        "article": "Manila",
+        "url": "https://en.wikipedia.org/wiki/Manila",
+        "quote": "Metro Manila, the officially defined metropolitan area, is the capital region of the Philippines"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A fort town stood here long ago, by the bay. In 1571 Spanish men took the shore, built a walled town, and made it the capital of their east isles. Ships from here once crossed the Pacific to link Asia with the Americas. Manila is the capital of the Philippines."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Manila"
+  },
+  "pointPolicy": "geonames-point"
+}

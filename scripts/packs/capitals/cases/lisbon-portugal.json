@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "lisbon-portugal",
+  "target": {
+    "placeId": "gn-2267057",
+    "name": "Lisbon",
+    "aliases": [
+      "Olisipo"
+    ],
+    "lat": 38.72509,
+    "lon": -9.1498,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Portugal",
+    "iso2": "PT",
+    "subdivision": "Lisbon"
+  },
+  "subjectAnswer": {
+    "name": "Portugal",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Portugal",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands on the north shore of the River Tagus, in the far west of Europe. The wide ocean waits just past the river mouth.",
+      "narrowing": "Rules out everything outside western Europe and puts the player on the River Tagus near the ocean.",
+      "source": {
+        "article": "Lisbon",
+        "url": "https://en.wikipedia.org/wiki/Lisbon",
+        "quote": "The city lies in the western part of the Iberian Peninsula, fronting the northern shore of the River Tagus."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are mild and rainy, while summers run warm and dry. The ocean near by and a high air mass keep the weather tame.",
+      "narrowing": "Rules out hard winters and wet summers; keeps a mild land with rainy winters and dry summers.",
+      "source": {
+        "article": "Lisbon",
+        "url": "https://en.wikipedia.org/wiki/Lisbon",
+        "quote": "characterised by mild, rainy winters and warm to hot, dry summers"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1255, this city took the top job from Coimbra. It has been the land's capital ever since that year.",
+      "narrowing": "Shrinks the list to capitals that took the job from another town in 1255 and kept it.",
+      "source": {
+        "article": "Lisbon",
+        "url": "https://en.wikipedia.org/wiki/Lisbon",
+        "quote": "in 1255, it became Portugal's capital, replacing Coimbra"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Old trams have rolled through this city since 1873, and most cars on the lines are old ones kept in service. Six lines still run today.",
+      "narrowing": "Nearly decisive: a tram network running since 1873, with old cars kept in service, marks this city.",
+      "source": {
+        "article": "Trams in Lisbon",
+        "url": "https://en.wikipedia.org/wiki/Trams_in_Lisbon",
+        "quote": "In operation since 1873, it presently comprises six lines."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Portugal's government sits in this city, and its top court sits here too. The head of state lives here as well.",
+      "narrowing": "Confirms it: the government, the top court, and the head of state are all based in this city.",
+      "source": {
+        "article": "Lisbon",
+        "url": "https://en.wikipedia.org/wiki/Lisbon",
+        "quote": "Lisbon hosts the government, Assembly of the Republic, Supreme Court of Justice, Armed Forces and residence of the head of state."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Sea traders set up a post by this harbour about 3,000 years ago, and the town grew by its wide river. In 1255 it became the capital, and it has been the land's centre of rule ever since. Today its old trams still roll on six lines through the streets. Lisbon is the capital of Portugal."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Lisbon"
+  },
+  "pointPolicy": "geonames-point"
+}

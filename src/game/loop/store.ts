@@ -1,4 +1,5 @@
 import {
+  LOOP_CORE_DECK_ID,
   LOOP_MAX_GUESSES,
   LOOP_OPEN_KEY,
   LOOP_STORAGE_KEY_V2,
@@ -80,6 +81,11 @@ function isLoopGuess(value: unknown): value is LoopGuess {
   );
 }
 
+/** A deck id is a non-empty string ("core" or a pack id like "capitals"). */
+function isDeckId(value: unknown): value is string {
+  return typeof value === "string" && value.length > 0;
+}
+
 function isLoopDeckState(value: unknown): value is LoopDeckState {
   if (!value || typeof value !== "object") return false;
   const d = value as Record<string, unknown>;
@@ -97,6 +103,9 @@ export function isLoopPuzzleState(value: unknown): value is LoopPuzzleState {
   const s = value as Record<string, unknown>;
   return (
     isNonNegativeInt(s.index) &&
+    // Deck id: absent on core mysteries (every pre-pack store), a pack id
+    // on pack mysteries.
+    (s.deckId === undefined || isDeckId(s.deckId)) &&
     Number.isInteger(s.cycle) &&
     (s.cycle as number) >= 1 &&
     Array.isArray(s.guesses) &&
@@ -137,6 +146,18 @@ export function isLoopUnlimitedStore(value: unknown): value is LoopUnlimitedStor
   const totals = s.totals as Record<string, unknown> | undefined;
   return (
     isLoopDeckState(s.deck) &&
+    // Pack decks: absent on pre-pack stores. When present, every key is a
+    // deck id and every value a valid deck state. Shape only: a pack id
+    // with no matching pack installed still validates, because the deck
+    // is inert data until the pack is dealt from again.
+    (s.packDecks === undefined ||
+      (typeof s.packDecks === "object" &&
+        s.packDecks !== null &&
+        !Array.isArray(s.packDecks) &&
+        Object.entries(s.packDecks as Record<string, unknown>).every(
+          ([id, deck]) => isDeckId(id) && isLoopDeckState(deck),
+        ))) &&
+    (s.activeDeckId === undefined || isDeckId(s.activeDeckId)) &&
     (s.current === null || isLoopPuzzleState(s.current)) &&
     isNonNegativeInt(s.streak) &&
     // bestStreak is strict here: old blobs missing the field are backfilled
@@ -189,6 +210,185 @@ export function freshLoopUnlimitedStore(poolSize: number): LoopUnlimitedStore {
   };
 }
 
+/** One pack case as the deck builder needs it: clue-file index + pack tier. */
+export interface PackDeckCase {
+  index: number;
+  /** Fame inside the pack, 1 (most famous) to 3. Design §6. */
+  packTier: number;
+}
+
+function cryptoRandInt(bound: number): number {
+  const buf = new Uint32Array(1);
+  crypto.getRandomValues(buf);
+  return buf[0]! % bound;
+}
+
+/** Fisher–Yates over arbitrary values, same RNG contract as shuffleIndexDeck. */
+function shuffleValues<T>(
+  values: readonly T[],
+  randInt: (bound: number) => number = cryptoRandInt,
+): T[] {
+  const out = [...values];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = randInt(i + 1);
+    const tmp = out[i]!;
+    out[i] = out[j]!;
+    out[j] = tmp;
+  }
+  return out;
+}
+
+/**
+ * Build a pack deck's deal order: tier bands in order (tier 1 first, then
+ * 2, then 3), shuffled inside each band. Famous-first is a property of
+ * how the deck is built, not of the deal (design §6, Systems Act-On 3):
+ * the deal itself stays a plain head pop for every deck.
+ */
+export function buildTierBandedDeck(
+  cases: readonly PackDeckCase[],
+  randInt: (bound: number) => number = cryptoRandInt,
+): number[] {
+  if (cases.length === 0) {
+    throw new Error("buildTierBandedDeck: cases must be a non-empty list");
+  }
+  const seen = new Set<number>();
+  for (const c of cases) {
+    if (!isNonNegativeInt(c.index)) {
+      throw new Error(`buildTierBandedDeck: bad clue index ${String(c.index)}`);
+    }
+    if (!Number.isInteger(c.packTier) || c.packTier < 1 || c.packTier > 3) {
+      throw new Error(`buildTierBandedDeck: packTier must be 1, 2, or 3, got ${String(c.packTier)}`);
+    }
+    if (seen.has(c.index)) {
+      throw new Error(`buildTierBandedDeck: duplicate clue index ${c.index}`);
+    }
+    seen.add(c.index);
+  }
+  const order: number[] = [];
+  for (const tier of [1, 2, 3]) {
+    order.push(
+      ...shuffleValues(
+        cases.filter((c) => c.packTier === tier).map((c) => c.index),
+        randInt,
+      ),
+    );
+  }
+  return order;
+}
+
+/** A fresh pack deck state: tier-banded order, cycle 1, nothing completed. */
+export function freshPackDeckState(
+  cases: readonly PackDeckCase[],
+  randInt: (bound: number) => number = cryptoRandInt,
+): LoopDeckState {
+  return { deck: buildTierBandedDeck(cases, randInt), cycle: 1, cycleCompleted: 0 };
+}
+
+/** The deck a puzzle was dealt from: its own deckId, core when absent. */
+export function deckIdOfPuzzle(puzzle: LoopPuzzleState): string {
+  return puzzle.deckId ?? LOOP_CORE_DECK_ID;
+}
+
+/** The deck the next deal comes from: the store's active deck, core when unset. */
+export function activeDeckIdOf(store: LoopUnlimitedStore): string {
+  return store.activeDeckId ?? LOOP_CORE_DECK_ID;
+}
+
+/** Read one deck's state. Returns null for a pack deck that was never built. */
+export function getDeckState(store: LoopUnlimitedStore, deckId: string): LoopDeckState | null {
+  if (deckId === LOOP_CORE_DECK_ID) return store.deck;
+  return store.packDecks?.[deckId] ?? null;
+}
+
+/** Write one deck's state back, leaving every other deck untouched. */
+export function setDeckState(
+  store: LoopUnlimitedStore,
+  deckId: string,
+  deck: LoopDeckState,
+): LoopUnlimitedStore {
+  if (deckId === LOOP_CORE_DECK_ID) return { ...store, deck };
+  return { ...store, packDecks: { ...store.packDecks, [deckId]: deck } };
+}
+
+/**
+ * Build a pack deck the first time the pack is dealt from. A deck that
+ * already exists is returned untouched: rebuilding it would reshuffle a
+ * pack the player has partly played and break exactly-once dealing.
+ */
+export function ensurePackDeck(
+  store: LoopUnlimitedStore,
+  packId: string,
+  cases: readonly PackDeckCase[],
+  randInt: (bound: number) => number = cryptoRandInt,
+): LoopUnlimitedStore {
+  if (packId === LOOP_CORE_DECK_ID) return store;
+  if (store.packDecks?.[packId]) return store;
+  return setDeckState(store, packId, freshPackDeckState(cases, randInt));
+}
+
+/**
+ * Point the next deal at another deck. The open mystery is not touched:
+ * it resumes and completes against the deck it was dealt from.
+ */
+export function setActiveDeck(
+  store: LoopUnlimitedStore,
+  deckId: string | undefined,
+): LoopUnlimitedStore {
+  if (deckId === undefined || deckId === LOOP_CORE_DECK_ID) {
+    if (store.activeDeckId === undefined) return store;
+    const next = { ...store };
+    delete next.activeDeckId;
+    return next;
+  }
+  return { ...store, activeDeckId: deckId };
+}
+
+/**
+ * Deal one index from a named deck. When the deck runs out, `rebuildOrder`
+ * supplies the next cycle's full deal order (core: a fresh shuffle of the
+ * pool; pack: a fresh tier-banded build) and the cycle increments. The
+ * caller builds the deck first (ensurePackDeck for packs): dealing from a
+ * deck that does not exist is a programming error, not a playable state.
+ */
+export function dealFromDeck(
+  store: LoopUnlimitedStore,
+  deckId: string,
+  rebuildOrder: () => number[],
+): { store: LoopUnlimitedStore; index: number; reshuffled: boolean } {
+  const deck = getDeckState(store, deckId);
+  if (!deck) throw new Error(`dealFromDeck: no deck named "${deckId}"`);
+  if (deck.deck.length === 0) {
+    const order = rebuildOrder();
+    if (order.length === 0) {
+      throw new Error(`dealFromDeck: rebuild for deck "${deckId}" is empty`);
+    }
+    const [index, ...rest] = order;
+    const nextDeck: LoopDeckState = { deck: rest, cycle: deck.cycle + 1, cycleCompleted: 0 };
+    return { store: setDeckState(store, deckId, nextDeck), index: index!, reshuffled: true };
+  }
+  const [index, ...rest] = deck.deck;
+  return {
+    store: setDeckState(store, deckId, { ...deck, deck: rest }),
+    index: index!,
+    reshuffled: false,
+  };
+}
+
+/**
+ * §7e rollback, deck-aware: a failed deal puts the popped index back on
+ * the head of the deck it came from. (returnIndexToDeckHead below stays
+ * for the core deck's existing callers.)
+ */
+export function returnPuzzleIndexToDeck(
+  store: LoopUnlimitedStore,
+  deckId: string,
+  index: number,
+): LoopUnlimitedStore {
+  const deck = getDeckState(store, deckId);
+  if (!deck) return store;
+  return setDeckState(store, deckId, returnIndexToDeckHead(deck, index));
+}
+
 /**
  * A mystery that was just dealt: the band's starting clues visible, no
  * guesses. `startClues`/`maxGuesses` are the deal-time config — persisted
@@ -206,10 +406,13 @@ export function freshLoopPuzzleState(
   cycle: number,
   startClues: number = 1,
   maxGuesses: number = LOOP_MAX_GUESSES,
+  deckId?: string,
 ): LoopPuzzleState {
   const dealtClues = Math.min(LOOP_MAX_GUESSES, Math.max(1, startClues));
   return {
     index,
+    // Core deals omit the field so core stores keep their pre-pack shape.
+    ...(deckId !== undefined && deckId !== LOOP_CORE_DECK_ID ? { deckId } : {}),
     cycle,
     guesses: [],
     status: "playing",
@@ -266,10 +469,42 @@ export function clampDeckToPoolSize(
   poolSize: number,
 ): LoopUnlimitedStore {
   const deck = store.deck.deck.filter((i) => i < poolSize);
+  // Deck-aware: a pack mystery's index lives above the core pool by
+  // design (pack cases start at the old pool size), so the core clamp
+  // must not discard it. Pack mysteries are clamped against their own
+  // pack's index list instead (clampPackDeckToIndexes).
   const current =
-    store.current && store.current.index < poolSize ? store.current : null;
+    store.current &&
+    (deckIdOfPuzzle(store.current) !== LOOP_CORE_DECK_ID || store.current.index < poolSize)
+      ? store.current
+      : null;
   if (deck.length === store.deck.deck.length && current === store.current) return store;
   return { ...store, deck: { ...store.deck, deck }, current };
+}
+
+/**
+ * The pack twin of clampDeckToPoolSize, run when a pack manifest loads:
+ * drop that pack deck's indexes the manifest no longer lists (a pack
+ * shrank between deploys), and discard the open mystery if it is that
+ * pack's and its case is gone. Other decks are untouched.
+ */
+export function clampPackDeckToIndexes(
+  store: LoopUnlimitedStore,
+  packId: string,
+  validIndexes: ReadonlySet<number>,
+): LoopUnlimitedStore {
+  const deck = getDeckState(store, packId);
+  if (!deck) return store;
+  const kept = deck.deck.filter((i) => validIndexes.has(i));
+  const current =
+    store.current &&
+    deckIdOfPuzzle(store.current) === packId &&
+    !validIndexes.has(store.current.index)
+      ? null
+      : store.current;
+  if (kept.length === deck.deck.length && current === store.current) return store;
+  const withDeck = setDeckState(store, packId, { ...deck, deck: kept });
+  return { ...withDeck, current };
 }
 
 /**
@@ -285,13 +520,24 @@ export function completePuzzle(
   completedAt: string,
 ): LoopUnlimitedStore {
   const won = finished.status === "won";
+  // The completion lands on the deck the mystery was dealt from, which is
+  // not necessarily the active deck (the player may have switched shelves
+  // mid-mystery). Streak and totals stay global: a pack miss breaks the
+  // streak like any miss (design §6).
+  const deckId = deckIdOfPuzzle(finished);
+  const deck = getDeckState(store, deckId);
   // The deck shrinks as indexes are dealt, so an empty deck here means this
-  // was the last undealt case of the cycle — the reveal celebrates exactly
-  // once per cycle. (Seam-pinned plays never pop the deck, so they can't
-  // trip this.)
-  const completedCycle = store.deck.deck.length === 0;
+  // was the last undealt case of that deck's cycle — the reveal celebrates
+  // exactly once per cycle per deck. (Seam-pinned plays never pop the deck,
+  // so they can't trip this. A missing deck cannot be produced by the deal
+  // path; it reads as not-cycle-complete and its counter is left alone.)
+  const completedCycle = deck !== null && deck.deck.length === 0;
+  const withDeck =
+    deck !== null
+      ? setDeckState(store, deckId, { ...deck, cycleCompleted: deck.cycleCompleted + 1 })
+      : store;
   return {
-    ...store,
+    ...withDeck,
     streak: won ? store.streak + 1 : 0,
     // bestStreak sees the NEW streak on a win (store.streak + 1) and the
     // ended streak on a loss (store.streak) — a record streak that ends in
@@ -301,7 +547,6 @@ export function completePuzzle(
       solved: store.totals.solved + (won ? 1 : 0),
       lost: store.totals.lost + (won ? 0 : 1),
     },
-    deck: { ...store.deck, cycleCompleted: store.deck.cycleCompleted + 1 },
     current: {
       ...finished,
       completedAt,
@@ -382,9 +627,11 @@ export function peekLoopProgress(): {
   streak: number;
   bestStreak: number;
   inProgress: boolean;
+  /** Deck the next deal comes from ("core" when no pack is selected). */
+  activeDeckId: string;
 } {
   const stored = readLoopStoreV2();
-  if (!stored) return { streak: 0, bestStreak: 0, inProgress: false };
+  if (!stored) return { streak: 0, bestStreak: 0, inProgress: false, activeDeckId: LOOP_CORE_DECK_ID };
   return {
     streak: stored.streak,
     // The load path backfills old blobs to 0, so bestStreak is always
@@ -393,6 +640,7 @@ export function peekLoopProgress(): {
     // the owner's open decision).
     bestStreak: stored.bestStreak ?? 0,
     inProgress: stored.current !== null && stored.current.status === "playing",
+    activeDeckId: activeDeckIdOf(stored),
   };
 }
 

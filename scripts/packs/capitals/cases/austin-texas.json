@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "austin-texas",
+  "target": {
+    "placeId": "gn-4671654",
+    "name": "Austin",
+    "aliases": [
+      "Waterloo"
+    ],
+    "lat": 30.26715,
+    "lon": -97.74306,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Texas",
+    "iso2": "US",
+    "subdivision": "Texas"
+  },
+  "subjectAnswer": {
+    "name": "Texas",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Texas",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits in hill country, where a river winds past lakes, springs, and falls. The land lifts and dips in low hills all through the town.",
+      "narrowing": "Rules out flat coast towns; puts the player in hill country on a river with springs.",
+      "source": {
+        "article": "Austin, Texas",
+        "url": "https://en.wikipedia.org/wiki/Austin%2C_Texas",
+        "quote": "it is home to numerous lakes, rivers, and waterways, including Lady Bird Lake and Lake Travis on the Colorado River"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are long and very hot, and winters are short and mild. Yet a sudden cold burst, called a Blue Norther, can strike fast.",
+      "narrowing": "Rules out steady climates; keeps long hot summers with sudden winter cold bursts.",
+      "source": {
+        "article": "Austin, Texas",
+        "url": "https://en.wikipedia.org/wiki/Austin%2C_Texas",
+        "quote": "This climate is typified by long, very hot summers, short, mild winters, and warm to hot spring and fall seasons in-between"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1839, the young republic sent a team to seek a site for a fresh capital. They chose this river spot, and a planned town was born.",
+      "narrowing": "Shrinks the list to capitals picked by a search team in 1839 for a young republic.",
+      "source": {
+        "article": "Austin, Texas — History",
+        "url": "https://en.wikipedia.org/wiki/Austin%2C_Texas#History",
+        "quote": "In 1839, the Texas Congress formed a commission to seek a site for the new capital of the Republic of Texas to replace Houston"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "The world's largest city bat colony lives under a bridge in this city. Mother bats raise their pups there from mid-summer to fall.",
+      "narrowing": "Nearly decisive: one city hosts the world's largest urban bat colony under a bridge.",
+      "source": {
+        "article": "Ann W. Richards Congress Avenue Bridge",
+        "url": "https://en.wikipedia.org/wiki/Ann_W._Richards_Congress_Avenue_Bridge",
+        "quote": "The bridge currently serves as a habitat for the world's largest urban bat colony"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Texas laws are made in the capitol in this city. The governor of the state works here too.",
+      "narrowing": "Confirms it: the state capitol building and seat of government are in this city.",
+      "source": {
+        "article": "Austin, Texas — History",
+        "url": "https://en.wikipedia.org/wiki/Austin%2C_Texas#History",
+        "quote": "became a center for government and education with the construction of the Texas State Capitol"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "In 1839, a site by the river was picked for a fresh capital, and the village first called Waterloo was laid out there. Today mother bats raise their pups under a bridge while lawmakers meet in the state capitol: the building is the capitol, and the city is the capital. Austin is the capital of Texas."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Austin%2C_Texas"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "little-rock-arkansas",
+  "target": {
+    "placeId": "gn-4119403",
+    "name": "Little Rock",
+    "aliases": [],
+    "lat": 34.74648,
+    "lon": -92.28959,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Arkansas",
+    "iso2": "US",
+    "subdivision": "Arkansas"
+  },
+  "subjectAnswer": {
+    "name": "Arkansas",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Arkansas",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits on the south bank of a big river in the South, close to the center of its state. Flat delta land gives way to low hills just west of here.",
+      "narrowing": "Points to a river city in the South, near the middle of its state.",
+      "source": {
+        "article": "Little Rock, Arkansas",
+        "url": "https://en.wikipedia.org/wiki/Little_Rock%2C_Arkansas",
+        "quote": "The city lies on the south bank of the Arkansas River close to the state's geographic center in central Arkansas."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are hot and sticky, and winters are cool with hardly any snow. Yet the heat has hit 114, and the cold has sunk to 12 below zero.",
+      "narrowing": "Rules out mild towns; keeps a southern city with sticky heat, cool winters, and wild swings.",
+      "source": {
+        "article": "Little Rock, Arkansas",
+        "url": "https://en.wikipedia.org/wiki/Little_Rock%2C_Arkansas",
+        "quote": "with hot, humid summers and cool winters with usually little snow"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "The seat of rule moved to this river town in 1821, from a post that kept flooding. It has stayed here ever since that move.",
+      "narrowing": "Cuts the list to a capital moved in 1821 from a flood prone post.",
+      "source": {
+        "article": "Little Rock, Arkansas — History",
+        "url": "https://en.wikipedia.org/wiki/Little_Rock%2C_Arkansas#History",
+        "quote": "The legislature moved the capital to Little Rock, where it has remained ever since."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A French explorer in 1722 named this place for a low stone ledge on the river bank. Boat crews used that ledge as a landmark as they passed.",
+      "narrowing": "Nearly decisive: one capital took its name from a low stone ledge by a river.",
+      "source": {
+        "article": "Little Rock, Arkansas — History",
+        "url": "https://en.wikipedia.org/wiki/Little_Rock%2C_Arkansas#History",
+        "quote": "Little Rock was named for a stone outcropping on the bank of the Arkansas River used by early travelers as a landmark"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Arkansas works in this city. State lawmakers meet here, at the seat of state rule.",
+      "narrowing": "Confirms it: the governor and state lawmakers of Arkansas work in this city.",
+      "source": {
+        "article": "Little Rock, Arkansas",
+        "url": "https://en.wikipedia.org/wiki/Little_Rock%2C_Arkansas",
+        "quote": "Little Rock is the capital and most populous city of the U.S. state of Arkansas."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This city was founded in 1821 as the territory capital, on a river bank marked by a famous stone ledge. In 1957, nine brave Black students walked into Central High here and changed the nation. Little Rock is the capital of Arkansas."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Little_Rock%2C_Arkansas"
+  },
+  "pointPolicy": "geonames-point"
+}

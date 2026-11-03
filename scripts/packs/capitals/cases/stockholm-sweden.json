@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "stockholm-sweden",
+  "target": {
+    "placeId": "gn-2673730",
+    "name": "Stockholm",
+    "aliases": [],
+    "lat": 59.32938,
+    "lon": 18.06871,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Sweden",
+    "iso2": "SE",
+    "subdivision": "Stockholm"
+  },
+  "subjectAnswer": {
+    "name": "Sweden",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Sweden",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city spreads across fourteen islands where a big lake flows out to the sea. It is the biggest city in the far north of Europe.",
+      "narrowing": "Rules out mainland cities; puts the player on fourteen islands where a lake meets the Baltic Sea.",
+      "source": {
+        "article": "Stockholm",
+        "url": "https://en.wikipedia.org/wiki/Stockholm",
+        "quote": "The city stretches across fourteen islands where Lake Mälaren flows into the Baltic Sea."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summer days here stretch past eighteen hours of light. In late December, days shrink to about six hours, and nights rule the city.",
+      "narrowing": "Rules out lands with even days; keeps a far north city with huge swings in day length.",
+      "source": {
+        "article": "Stockholm",
+        "url": "https://en.wikipedia.org/wiki/Stockholm",
+        "quote": "Due to the city's high northerly latitude, the length of the day varies widely from more than 18 hours around midsummer to only around 6 hours in late December."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1634, this city became the official capital of the empire. New trade rules gave it sole trade rights with foreign merchants.",
+      "narrowing": "Shrinks the list to cities made an official empire capital in 1634.",
+      "source": {
+        "article": "Stockholm — History",
+        "url": "https://en.wikipedia.org/wiki/Stockholm#History",
+        "quote": "In 1634, Stockholm became the official capital of the Swedish empire."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This island city hosts the Nobel Prize ceremonies each year. Winners then feast at a grand banquet in its city hall.",
+      "narrowing": "Nearly decisive: the Nobel Prize ceremonies and banquet point to one city.",
+      "source": {
+        "article": "Stockholm",
+        "url": "https://en.wikipedia.org/wiki/Stockholm",
+        "quote": "It hosts the annual Nobel Prize ceremonies and banquet at the Stockholm Concert Hall and Stockholm City Hall."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The leaders who run Sweden work here, in the Rosenbad building. Its parliament sits in the Parliament House too.",
+      "narrowing": "Confirms it: the government and parliament of Sweden sit in this city.",
+      "source": {
+        "article": "Stockholm",
+        "url": "https://en.wikipedia.org/wiki/Stockholm",
+        "quote": "The government has its seat in the Rosenbad building, the Riksdag (Swedish parliament) is seated in the Parliament House"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A statesman founded this city in 1252 to shield the land from sea raids. In 1634 it became the official capital of the empire, and ships and iron made it rich. Today its islands hold palaces, prizes, and busy tech firms. Stockholm is the capital of Sweden."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Stockholm"
+  },
+  "pointPolicy": "geonames-point"
+}

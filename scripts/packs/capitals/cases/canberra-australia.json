@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "canberra-australia",
+  "target": {
+    "placeId": "gn-2172517",
+    "name": "Canberra",
+    "aliases": [],
+    "lat": -35.28346,
+    "lon": 149.12807,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Australia",
+    "iso2": "AU",
+    "subdivision": "Australian Capital Territory"
+  },
+  "subjectAnswer": {
+    "name": "Australia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Australia",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This planned city sits far inland, well west of the sea coast. A range of hills stands to its south and west, the start of high ranges.",
+      "narrowing": "Rules out coastal places; keeps a planned inland city with a hill range to its south and west.",
+      "source": {
+        "article": "Canberra",
+        "url": "https://en.wikipedia.org/wiki/Canberra",
+        "quote": "The Brindabellas are located south and west of the city, and form the northern part of the Australian Alps, the country's highest mountain range"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Frost bites here on winter mornings, yet snow hardly ever settles in the city centre. The high hills nearby catch snow while the valleys stay in rain shadow.",
+      "narrowing": "Rules out snowy and mild coasts; keeps frost, rare snow in the centre, and a rain shadow.",
+      "source": {
+        "article": "Canberra",
+        "url": "https://en.wikipedia.org/wiki/Canberra",
+        "quote": "Snow is rare in the CBD (central business district) due to being on the leeward (eastern) side of the dividing range, but the surrounding areas get annual snowfall through winter and often the snow-capped Brindabella Range can be seen from the CBD"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "When the colonies joined as one nation in 1901, they needed a seat of their own. This city was founded and given its name in 1913 for that job.",
+      "narrowing": "Shrinks the list to the seat founded and named in 1913 after the colonies joined in 1901.",
+      "source": {
+        "article": "Canberra",
+        "url": "https://en.wikipedia.org/wiki/Canberra",
+        "quote": "The capital city was founded and formally named as Canberra in 1913"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Sydney and Melbourne both hoped to be the capital. Chiefs picked this fresh spot as a deal, so that neither city won.",
+      "narrowing": "Nearly decisive: this spot was picked as a compromise between two rival cities that both wanted the job.",
+      "source": {
+        "article": "Canberra",
+        "url": "https://en.wikipedia.org/wiki/Canberra",
+        "quote": "being a compromise between Sydney and Melbourne, Australia’s two largest cities"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Parliament meets in this city to make the laws of Australia. Its top court and the main offices of state stand here too.",
+      "narrowing": "Confirms it: Parliament House, the High Court, and the main offices of government stand here.",
+      "source": {
+        "article": "Canberra",
+        "url": "https://en.wikipedia.org/wiki/Canberra",
+        "quote": "These include Parliament House, Government House, the High Court building and the headquarters of numerous government agencies"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Sydney and Melbourne both wanted to be the capital when the colonies joined in 1901, so leaders picked a compromise site inland. They founded a planned city there and named it in 1913, and today a lake and hills frame its streets. Canberra is the capital of Australia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Canberra"
+  },
+  "pointPolicy": "geonames-point"
+}

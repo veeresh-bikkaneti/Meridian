@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "helena-montana",
+  "target": {
+    "placeId": "gn-5656882",
+    "name": "Helena",
+    "aliases": [],
+    "lat": 46.59271,
+    "lon": -112.03611,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Montana",
+    "iso2": "US",
+    "subdivision": "Montana"
+  },
+  "subjectAnswer": {
+    "name": "Montana",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Montana",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town sits in a broad valley in the mountain west of the United States. High peaks rise to the southeast, and a small creek cuts the valley floor.",
+      "narrowing": "Points to a valley town in the mountain west, with peaks to its southeast.",
+      "source": {
+        "article": "Helena, Montana — History",
+        "url": "https://en.wikipedia.org/wiki/Helena%2C_Montana#History",
+        "quote": "Evidence from the MacHaffie and Indian Creek sites on opposite sides of the Elkhorn Mountains southeast of the Helena Valley"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Snow has been seen here in every month of the year but one, high summer. Yet it falls light, and long dry spells pass with no snow at all.",
+      "narrowing": "Rules out mild towns; keeps cold high towns where snow can fall almost any month.",
+      "source": {
+        "article": "Helena, Montana",
+        "url": "https://en.wikipedia.org/wiki/Helena%2C_Montana",
+        "quote": "Snowfall has been observed in every month but July, but is usually absent from May to September, and normally accumulates in only light amounts"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This gold town was made the territory capital in 1875. Years later, voters picked it twice, in 1892 and 1894, to keep the seat.",
+      "narrowing": "Cuts the list to a gold town made capital in 1875 and kept by two votes.",
+      "source": {
+        "article": "Helena, Montana — History",
+        "url": "https://en.wikipedia.org/wiki/Helena%2C_Montana#History",
+        "quote": "Helena has been the capital of Montana Territory since 1875 and the state of Montana since 1889. Referendums were held in 1892 and 1894 to determine the state's capital; the result was to keep the capitol in Helena"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "In 1864, four gold seekers found gold in a gulch they named Last Chance. That one strike turned a rough mining camp into a rich town fast.",
+      "narrowing": "Nearly decisive: one 1864 gold find in Last Chance Gulch built this town.",
+      "source": {
+        "article": "Helena, Montana",
+        "url": "https://en.wikipedia.org/wiki/Helena%2C_Montana",
+        "quote": "Helena was founded as a gold camp during the Montana gold rush on July 14, 1864, following the discovery of gold at Last Chance Gulch by the Four Georgians."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Montana works in this city, in the seat of state rule. State lawmakers meet here to make the state's laws.",
+      "narrowing": "Confirms it: the governor and state lawmakers work in this city.",
+      "source": {
+        "article": "Helena, Montana",
+        "url": "https://en.wikipedia.org/wiki/Helena%2C_Montana",
+        "quote": "is the capital city of the U.S. state of Montana"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Four gold seekers found gold in Last Chance Gulch in 1864, and a rich camp grew up fast in the valley. The town became the territory capital in 1875, and voters chose in 1892 and 1894 to keep it that way. Helena is the capital of Montana."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Helena%2C_Montana"
+  },
+  "pointPolicy": "geonames-point"
+}

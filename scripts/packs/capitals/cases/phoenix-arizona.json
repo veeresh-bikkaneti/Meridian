@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "phoenix-arizona",
+  "target": {
+    "placeId": "gn-5308655",
+    "name": "Phoenix",
+    "aliases": [],
+    "lat": 33.44838,
+    "lon": -112.07404,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Arizona",
+    "iso2": "US",
+    "subdivision": "Arizona"
+  },
+  "subjectAnswer": {
+    "name": "Arizona",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Arizona",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city grew in a wide river valley, near where two rivers join. Old canals drew river water out to farm fields in the dry land.",
+      "narrowing": "Rules out hill and coast towns; puts the player in a river valley farmed by canals.",
+      "source": {
+        "article": "Phoenix, Arizona",
+        "url": "https://en.wikipedia.org/wiki/Phoenix%2C_Arizona",
+        "quote": "Phoenix was settled in 1867 as an agricultural community near the confluence of the Salt and Gila Rivers"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Night brings little relief from the heat in this city. Roads and walls soak up the sun all day, then let the heat out after dark.",
+      "narrowing": "Rules out places that cool at night; keeps stored heat radiating after dark.",
+      "source": {
+        "article": "Phoenix, Arizona",
+        "url": "https://en.wikipedia.org/wiki/Phoenix%2C_Arizona",
+        "quote": "Pavement, sidewalks, and buildings store the Sun's heat and radiate it at night"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1889, the capital of the land moved to this town. It kept that job in 1912, when the land became a state.",
+      "narrowing": "Shrinks the list to capitals moved to in 1889 and kept at statehood in 1912.",
+      "source": {
+        "article": "Phoenix, Arizona — History",
+        "url": "https://en.wikipedia.org/wiki/Phoenix%2C_Arizona#History",
+        "quote": "The territorial capital moved from Prescott to Phoenix in 1889, and the territorial offices were also in City Hall"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Summer heat here beats that of any other big city in the land. Its average summer highs are the hottest of all of them.",
+      "narrowing": "Nearly decisive: one big city has the hottest summer highs in the country.",
+      "source": {
+        "article": "Phoenix, Arizona",
+        "url": "https://en.wikipedia.org/wiki/Phoenix%2C_Arizona",
+        "quote": "Average high temperatures in summer are the hottest of any major city in the United States"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The laws of Arizona are made in this city. More folk live here than in any other state capital.",
+      "narrowing": "Confirms it: the state government sits in the most populous state capital.",
+      "source": {
+        "article": "Phoenix, Arizona",
+        "url": "https://en.wikipedia.org/wiki/Phoenix%2C_Arizona",
+        "quote": "Phoenix is the fifth-most populous city in the United States and the most populous state capital"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Settlers farmed by the Salt and Gila rivers here in 1867, using canals first dug long before them. The town became territorial capital in 1889 and a state capital in 1912. Phoenix is the capital of Arizona."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Phoenix%2C_Arizona"
+  },
+  "pointPolicy": "geonames-point"
+}

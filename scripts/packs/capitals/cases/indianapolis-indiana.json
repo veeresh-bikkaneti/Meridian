@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "indianapolis-indiana",
+  "target": {
+    "placeId": "gn-4259418",
+    "name": "Indianapolis",
+    "aliases": [],
+    "lat": 39.76838,
+    "lon": -86.15804,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Indiana",
+    "iso2": "US",
+    "subdivision": "Indiana"
+  },
+  "subjectAnswer": {
+    "name": "Indiana",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Indiana",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This place sits on flat farm land in the center of its state, by a river. Roads from all sides cross here, so folks call it a crossroads.",
+      "narrowing": "Puts the player on a flat river plain at the center of its state, where roads cross.",
+      "source": {
+        "article": "Indianapolis",
+        "url": "https://en.wikipedia.org/wiki/Indianapolis",
+        "quote": "Indianapolis is situated in the state's central till plain region along the west fork of the White River. The city's official slogan, \"Crossroads of America\", reflects its historic importance as a transportation hub"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Spring days here can trick you badly. A warm day in March or April can end with snow falling just a day or two later.",
+      "narrowing": "Rules out steady climates; keeps a place where warm days flip to snow fast.",
+      "source": {
+        "article": "Indianapolis",
+        "url": "https://en.wikipedia.org/wiki/Indianapolis",
+        "quote": "Midday temperature drops exceeding 30&#160;°F or 17&#160;°C are common during March and April, and instances of very warm days (80&#160;°F or 27&#160;°C) followed within 36 hours by snowfall are not unusual during these months"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This place was planned from scratch in 1821 to be the new seat of government. Its streets were laid out in a neat grid on one square mile.",
+      "narrowing": "Shrinks the list to towns planned from scratch as a seat of government in 1821.",
+      "source": {
+        "article": "Indianapolis",
+        "url": "https://en.wikipedia.org/wiki/Indianapolis",
+        "quote": "In 1821, Indianapolis was established as a planned city for the new seat of Indiana's state government. The city was platted by Alexander Ralston and Elias Pym Fordham on a one-square-mile (2.6 km2) grid"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Each year this place hosts a famed car race known all around the world. It is the largest one-day sports event in the whole world.",
+      "narrowing": "Nearly decisive: one famed car race, the largest one-day sports event on Earth.",
+      "source": {
+        "article": "Indianapolis",
+        "url": "https://en.wikipedia.org/wiki/Indianapolis",
+        "quote": "The city's international reputation rests primarily on the Indianapolis 500, the world's largest single-day sporting event"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This place is the seat of government for Indiana. Its governor and its state lawmakers both work here.",
+      "narrowing": "Confirms it: the governor and the state lawmakers are based here.",
+      "source": {
+        "article": "Indianapolis",
+        "url": "https://en.wikipedia.org/wiki/Indianapolis",
+        "quote": "is the capital and most populous city of the U.S. state of Indiana"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "In 1816, the year its state was born, Congress set aside land in the center for a new seat of government. Builders laid out a planned town there in 1821, and the government moved in by 1825. Race cars now roar around its famed track each year. Indianapolis is the capital of Indiana."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Indianapolis"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -71,6 +71,12 @@ https://meridian.knowledgetest.workers.dev/
 
 Solving all 387 mysteries earns the full-collection celebration.
 
+### Capitals — the first story pack
+
+New geography content arrives as **story packs**: extra case sets that plug into the editions above instead of standing alone. The first pack is **Capitals** — 72 cases (44 country capitals, 28 US state capitals), each written to the same standard as the core mysteries: a five-rung ladder whose history rung is the moment the place became a capital, one retellable hook, a giveaway that names the seat of government, and a reveal card that ends with the plain pairing ("Accra is the capital of Ghana."). Every clue traces to a verbatim Wikipedia quote in its authoring record — no invented facts.
+
+Both mystery editions grow a **deck shelf**. In GeoDetective, the Capitals deck deals all 72 cases through the same clue ladder (clue files 387–458, beside the 387 core files); finishing the cycle earns its own celebration — "All 72 Capitals case files closed." In Cold Trail, the pack becomes a 60-case triangulation deck whose witness cities are the pack's anchor capitals. Each edition keeps its own deck progress and its own store, switching decks never loses a case in progress, and reopening an edition resumes the deck you left mid-case. The design lives in `docs/story-packs.md`; the rebuild runbook is `scripts/packs/README.md`.
+
 ### The Journal
 
 The home page carries a Journal: 106 place notes rotating in 36 sets over 2-hour windows. Since 2026-10-17 every note is illustrated — each of the 106 places has its own storybook drawing (warm gouache-and-watercolor picture-book style, no text). Every note carries its source citation and a confidence label — **Verified** (government or university source) or **Cited** (named source recorded) — and the footer reads "Entry X of 36" with a countdown to the next set. Art integrates only through `scripts/journal-art-manifest.json` + the dataset generator (`scripts/build-journal-dataset.mjs`); the generated data file is never hand-edited.
@@ -78,6 +84,8 @@ The home page carries a Journal: 106 place notes rotating in 36 sets over 2-hour
 ### The storyteller and Grandpa's tasting tour
 
 The home page opens with a storyteller mascot who greets visitors with a spoken line (a new greeting each day) and reacts when tapped. Grandpa runs a tasting tour of the home screen — a sip-sized walkthrough of the difficulty picker, the edition cards, and GeoDetective for first-time visitors.
+
+The two game cards carry short animated pictures. The GeoDetective card plays a four-beat film — a map on a table, a magnifying glass, then the detective herself, alive at her desk — and the Cold Trail card shows Jolly, the cream plush mascot, walking the footprint trail toward a lit cabin while the young tracker follows with her flashlight. Each film plays once when its card scrolls into view, then holds its final frame; a small pause/play button in the picture's corner can stop it at any time or play it again. Players who prefer reduced motion, who are saving data, or whose device has little memory never download a film at all — they see the still picture instead. The films, their posters, and their stills all swap through one module (`src/assets/home-v5/card-media.ts`), so a future re-animation replaces files, not code.
 
 ### Supporting the game
 
