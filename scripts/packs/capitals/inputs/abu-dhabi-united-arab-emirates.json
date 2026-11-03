@@ -1,0 +1,62 @@
+{
+  "caseId": "abu-dhabi-united-arab-emirates",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "A vast white grand mosque built with marble, gold, and stone from lands around the world.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-292968",
+    "name": "Abu Dhabi",
+    "country": "United Arab Emirates",
+    "subdivision": "Abu Dhabi",
+    "lat": 24.45118,
+    "lon": 54.39696
+  },
+  "target": {
+    "placeId": "gn-292968",
+    "name": "Abu Dhabi",
+    "lat": 24.45118,
+    "lon": 54.39696,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "United Arab Emirates",
+    "iso2": "AE",
+    "subdivision": "Abu Dhabi"
+  },
+  "subjectAnswer": {
+    "name": "United Arab Emirates",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "AE",
+    "subdivision": "Abu Dhabi",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Abu Dhabi is the capital of the United Arab Emirates. It's one of the United Arab Emirates's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Abu Dhabi",
+      "url": "https://en.wikipedia.org/wiki/Abu_Dhabi",
+      "text": "Abu Dhabi is the capital city of the United Arab Emirates (UAE), and of the Emirate of Abu Dhabi, the seat of the Abu Dhabi Central Capital District and the UAE's second-most populous city, after Dubai. Situated on a T-shaped island, Abu Dhabi extends into the Persian Gulf from the central-western coast of the UAE. Abu Dhabi is located on an island in the Persian Gulf, off the Central West Coast. Abu Dhabi houses local and federal government offices and is the home of the United Arab Emirates Government and the Supreme Council for Financial and Economic Affairs. The city is home to the UAE's president, a member of the Al Nahyan family. Abu Dhabi has a hot desert climate (Köppen climate classification BWh). Sunny blue skies can be expected throughout the year. The months of May to September are generally extremely hot and humid."
+    },
+    {
+      "article": "Abu Dhabi — History",
+      "url": "https://en.wikipedia.org/wiki/Abu_Dhabi#History",
+      "text": "In 1761, the discovery of fresh water by a hunting party led by Sheikh Dhiyab bin Isa Al Nahyan near the coast saw a settlement established there. Originally consisting of a fort and twenty houses, within two years the town consisted of a settlement of some 400 houses. The fort remains at the centre of Abu Dhabi today, the Qasr Al Hosn. On December 2, 1971, Abu Dhabi, along with five other emirates, formed the United Arab Emirates (UAE). This union was marked by the establishment of a federal government and the appointment of Sheikh Zayed bin Sultan Al Nahyan as the first President of the UAE."
+    },
+    {
+      "article": "Sheikh Zayed Grand Mosque",
+      "url": "https://en.wikipedia.org/wiki/Abu_Dhabi",
+      "text": "The Sheikh Zayed Grand Mosque represents a key fixture of the city's architectural patrimony. The mosque was constructed with materials from countries around the world, including Italy, Germany, Morocco, Pakistan, India, Turkey, Iran, China, the United Kingdom, New Zealand, Greece, and the United Arab Emirates. More than 3,000 workers and 38 contracting companies took part in the construction of the mosque. These materials include marble, stone, gold, semi-precious stones, crystals, and ceramics."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}
