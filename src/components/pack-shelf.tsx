@@ -17,7 +17,7 @@ import {
 
 /**
  * The pack shelf: one row of deck chips inside an edition's entry
- * screen (DESIGN.md sections 6 and 7, placed in the entry flows by the
+ * screen (docs/story-packs.md sections 6 and 7, placed in the entry flows by the
  * swarm brief; the home cards belong to Track A).
  *
  * What a player can do here:

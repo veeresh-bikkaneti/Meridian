@@ -7,8 +7,8 @@ import { serveBuiltArtifact } from "./helpers";
  * Pack shelf (story packs): deck chips inside the two edition entry
  * screens, and deck-correct dealing on the integrated branch.
  *
- * The pack manifest is stubbed at the network layer with the DESIGN.md
- * section 1.2 shape so the specs control whether the pack exists;
+ * The pack manifest is stubbed at the network layer with the
+ * docs/story-packs.md section 1.2 shape so the specs control whether the pack exists;
  * a 404 stub stands in for an unshipped pack, and the shelf must then
  * show the core deck only. Selection has one store per edition: the
  * loop store's activeDeckId for GeoDetective, the shelf selection

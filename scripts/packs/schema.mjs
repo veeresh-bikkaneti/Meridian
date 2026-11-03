@@ -1,6 +1,6 @@
 /**
  * Story pack authoring schema (meridian.pack.case.v1) — design:
- * meridian-story-packs/DESIGN.md §1.1.
+ * docs/story-packs.md §1.1.
  *
  * A pack record is a superset of the clue-authoring record
  * (meridian.loop.clues.v1, scripts/clues/schema.mjs): the same 5-clue

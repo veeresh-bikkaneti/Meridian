@@ -6,8 +6,7 @@
  *
  * One pack case is an ordinary Cold Trail case (a difficulty-2 hideout
  * plus 3 witness sightings) whose witnesses are famous capitals. The
- * design of record (DESIGN.md section 2.2 in
- * ~/workspace/meridian-story-packs/) puts capitals in the witness
+ * design of record (docs/story-packs.md section 2.2) puts capitals in the witness
  * seats, never in the hideout seat: a famous capital as the hideout
  * would turn triangulation into recall, because a player who already
  * knows where Paris is does not need three rings. The hideout pool is

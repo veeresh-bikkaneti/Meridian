@@ -29,16 +29,16 @@ import { assetBase } from "./storyteller-lines.ts";
  *    deck id for the edition. TrailScreen reads the same blob when
  *    it deals the next case (its onPickDeck handler writes through
  *    writeSelectedDeck below). Cold Trail pack progress: the pack
- *    store key from DESIGN.md section 1.4
+ *    store key from docs/story-packs.md section 1.4
  *    (meridian.coldtrail.pack.capitals.v1, spelling owned by
  *    COLDTRAIL_PACK_CAPITALS_STORAGE_KEY in
  *    src/game/coldtrail/cases-pack.ts) holds the same ColdTrailStore
  *    shape as the core store, and its solved field is the
  *    cases-closed count.
  * 4. Pack availability comes from the pack manifest at
- *    public/packs/<packId>/manifest.json (DESIGN.md section 1.2). No
+ *    public/packs/<packId>/manifest.json (docs/story-packs.md section 1.2). No
  *    manifest, no chip: an unshipped pack never appears on a kid
- *    surface (DESIGN.md section 7).
+ *    surface (docs/story-packs.md section 7).
  *
  * Storage keys are restated here as literals, each with its owner
  * named, so this module adds no import edge into either engine's
@@ -51,7 +51,7 @@ export type PackEditionId = "geodetective" | "coldtrail";
 /** The core deck's id in selection and chip test ids. */
 export const CORE_DECK_ID = "all";
 
-/** The one pack that ships in v1 (DESIGN.md section 0, ruling 4). */
+/** The one pack that ships in v1 (docs/story-packs.md section 0, ruling 4). */
 export const FIRST_PACK_ID = "capitals";
 
 /** Selection storage: { v: 1, decks: { [edition]: deckId } }. */
@@ -77,7 +77,7 @@ export function toShelfDeckId(loopDeckId: string): string {
   return loopDeckId === LOOP_CORE_DECK_ID ? CORE_DECK_ID : loopDeckId;
 }
 
-/** The pack manifest shape from DESIGN.md section 1.2. */
+/** The pack manifest shape from docs/story-packs.md section 1.2. */
 export interface PackManifest {
   v: 1;
   packId: string;
@@ -119,7 +119,7 @@ export interface PackDeckView {
   id: string;
   label: string;
   glyph: string;
-  /** Pack decks carry the star from the DESIGN.md section 7 sketch. */
+  /** Pack decks carry the star from the docs/story-packs.md section 7 sketch. */
   star: boolean;
   closed: number | null;
   total: number | null;

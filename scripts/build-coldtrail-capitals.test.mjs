@@ -125,7 +125,7 @@ test("pack records contract: records win, malformed records fail closed", () => 
 });
 
 test("the core deck file is byte-stable under its own generator", () => {
-  // DESIGN.md section 1.4 gate: the pack pass is isolated, so the
+  // docs/story-packs.md section 1.4 gate: the pack pass is isolated, so the
   // core generator must still reproduce the checked-in core deck
   // byte for byte on this branch.
   const onDisk = readFileSync(join(ROOT, "src/game/coldtrail/cases.generated.json"), "utf8");

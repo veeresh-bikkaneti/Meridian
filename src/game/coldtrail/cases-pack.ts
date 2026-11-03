@@ -24,7 +24,7 @@ export const CAPITALS_PACK_ID = "capitals";
 
 /**
  * Progress store key for the capitals pack, per the pack design
- * (DESIGN.md section 1.4 in ~/workspace/meridian-story-packs/). The
+ * (docs/story-packs.md section 1.4). The
  * core store key meridian.coldtrail.v2 in store.ts is untouched, and
  * core progress can never be read or overwritten through this key.
  * The pack screen wiring that consumes it lands with the shelf work;

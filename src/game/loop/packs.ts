@@ -2,7 +2,7 @@ import type { PackDeckCase } from "./store.ts";
 
 /**
  * Runtime types for story packs in the GeoDetective (design:
- * meridian-story-packs/DESIGN.md §1.2). A pack adds cases to the edition
+ * docs/story-packs.md §1.2). A pack adds cases to the edition
  * without touching the core deck: its clue files are ordinary clue files
  * at new global indexes, and everything the published clue file cannot
  * carry (which country or state the case is about, the direction, the
