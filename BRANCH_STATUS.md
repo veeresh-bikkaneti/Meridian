@@ -48,12 +48,14 @@ Approvals: branch + PR are the assigned task. Merge: owner only.
       resolved by hand, both records kept in this file
 - [x] Component + CSS + media module
 - [x] Unit tests
-- [x] Gates (tsc / npm test / lint-cards / build:pages) — all
-      exit 0 on the pre-rebase tip (app code identical after the
-      rebase; the rebase touched only BRANCH_STATUS, security.txt,
-      and two E2E specs). npm test: 943 pass + 11 skip / 954 and
-      1978/1978. Region MAD (encoded film, vs frame 0): lamp
-      ≤ 0.13, window ≤ 0.04, torso peak 13.15, final second ≤ 0.02
+- [x] Gates (tsc / npm test / test:worker 85/85 / lint-cards /
+      build:pages) — all exit 0 on the pre-rebase tip (app code
+      identical after the rebase; the rebase touched only
+      BRANCH_STATUS, security.txt, and two E2E specs). npm test:
+      943 pass + 11 skip / 954 and 1978/1978. Region MAD (encoded
+      film, vs frame 0; Silo QA re-measured): lamp 0.134, window
+      0.043, torso peak 13.15, final second torso ≤ 0.02 /
+      window 0.044
 - [x] E2E home + age-band, branch vs main control — capture spec
       3/3 (row parity 561.16 px both bands, Δ 0.00; hover no-lift;
       reduced-motion still-only); age-profile-gate +
@@ -65,6 +67,15 @@ Approvals: branch + PR are the assigned task. Merge: owner only.
 - [x] Captures: film, settle still, band-switch geometry, side-by-side
       (sealed in `~/workspace/meridian-band-port-evidence/`)
 - [x] PR open (no merge) — PR #328, https://github.com/veeresh-bikkaneti/Meridian/pull/328
+- [x] Silo QA PASS — PR #328 + aa8c2ab, 10/10 items (evidence:
+      `~/workspace/meridian-band-port-evidence/qa-silo/`)
+- [x] Panel on aa8c2ab — 3 APPROVE / 8 APPROVE-WITH-NITS /
+      1 BLOCK (Office Hours, record-only) · DevEx PASS-WITH-NITS ·
+      Benchmark PASS (worst delta +0.72% vs the 5% gate)
+- [ ] Record cure (PR body + this file: QA-measured MAD values,
+      poster wording, WCAG wording, garbled comment edited in
+      place) + Office Hours re-confirmation on the corrected
+      record → READY. No code change in the cure.
 
 ## Sandbox media prep (no repo commits; PR #324 owns the card slots)
 
@@ -73,6 +84,8 @@ Approvals: branch + PR are the assigned task. Merge: owner only.
 - [x] Unit 3 — Trail Scout Review take in evidence/media-prep
       (attempt 1 held identity: settle MAD 20.67 vs the shipped
       still, zero invented text; no re-time fallback needed)
+      — prep-complete only: slot-size re-encode + its own QA/panel
+      still owed after PR #324 READY
 
 ---
 
