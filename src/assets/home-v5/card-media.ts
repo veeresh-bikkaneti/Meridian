@@ -70,7 +70,7 @@ import grownupsStillUrl from "./binoculars-hat.webp";
  *   Journal — wind moves through the tree, light warms over the
  *     hills. Take 1 of 1 shipped, retimed 10 s → 7.8 s. Disclosed
  *     drift: the canopy ends a little more wind-blown than the
- *     still (last frame vs still PSNR 16.5 dB at 360 px), the
+ *     still (last frame vs still PSNR 16.6 dB at 360 px), the
  *     light ends warmer, and a few tiny birds cross once mid-take.
  *     Nothing morphs and no text exists to garble.
  *   Grown-ups — the binoculars rise upright as if lifted to watch

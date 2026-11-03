@@ -493,8 +493,11 @@ test("C: Review due → card body is inert, the primary button opens review, cue
   await expect(page.getByRole("button", { name: "Review my misses: Start review" })).toBeVisible();
   // Focusable controls: the primary + the "Start over" reset opener
   // (this spec's flags route leaves friendChallenges off, so no
-  // challenge entry renders).
-  expect(await focusableCount(page, '[data-testid="tour-stop-review"]')).toBe(2);
+  // challenge entry renders) + the art film's pause/play toggle
+  // (feat/smooth-cards Part 2 redo: the Review illustration is a
+  // governed CardFilm now, and the toggle is its WCAG 2.2.2 stop —
+  // the same extra stop the two game cards already carry).
+  expect(await focusableCount(page, '[data-testid="tour-stop-review"]')).toBe(3);
 
   for (const point of ["heading", "paragraph", "corner"] as const) {
     const { context, page: fresh } = await freshHome(browser, 1280, deckSeed(0));
@@ -573,7 +576,10 @@ test("C: Review empty → not focusable, not clickable, no cue; caught-up → on
       await expect(section).toContainText("Miss a place and it'll land here for review.");
       await expect(fresh.getByRole("button", { name: "Review my misses: Start review" })).toHaveCount(0);
       await expect(section.locator(".hv5-review-cue")).toHaveCount(0);
-      expect(await focusableCount(fresh, '[data-testid="tour-stop-review"]')).toBe(0);
+      // One focusable remains even here: the art film's pause/play
+      // toggle (the film plays on this card in every deck state, so
+      // its stop must stay reachable). No card control renders.
+      expect(await focusableCount(fresh, '[data-testid="tour-stop-review"]')).toBe(1);
       const box = await section.boundingBox();
       await fresh.mouse.click(box!.x + box!.width / 2, box!.y + box!.height / 2);
       await expect(fresh.getByTestId("home-heading")).toBeVisible();
@@ -592,10 +598,12 @@ test("C: Review empty → not focusable, not clickable, no cue; caught-up → on
       await expect(section.locator(".hv5-review-cue")).toHaveCount(0);
       // Part 1 cure (manifest D10): the caught-up card DOES carry one
       // focusable element — the "Start over" reset opener, which
-      // renders whenever deck total > 0 (due OR caught-up). There is
-      // still no review CTA and no cue, and the card itself is not
-      // clickable (the click assertion above is the empty-deck half).
-      expect(await focusableCount(fresh, '[data-testid="tour-stop-review"]')).toBe(1);
+      // renders whenever deck total > 0 (due OR caught-up). The
+      // Part 2 redo adds a second: the art film's pause/play toggle.
+      // There is still no review CTA and no cue, and the card itself
+      // is not clickable (the click assertion above is the
+      // empty-deck half).
+      expect(await focusableCount(fresh, '[data-testid="tour-stop-review"]')).toBe(2);
     } finally {
       await context.close();
     }
