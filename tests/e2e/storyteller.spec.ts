@@ -1,5 +1,5 @@
 import { test, expect, type Page, type Route } from "playwright/test";
-import { serveBuiltArtifact, startGlobeRun } from "./helpers";
+import { isTelemetryHost, serveBuiltArtifact, startGlobeRun } from "./helpers";
 
 /**
  * Storyteller mascot E2E — the lazy narration host contract.
@@ -21,8 +21,22 @@ import { serveBuiltArtifact, startGlobeRun } from "./helpers";
  */
 test.setTimeout(180_000);
 
+// Guard: every crash-report request must be answered by serveBuiltArtifact's
+// 204 stub. A non-204 means a request reached the production worker.
+let unstubbedTelemetry: string[] = [];
+
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
+  unstubbedTelemetry = [];
+  context.on("response", (res) => {
+    if (isTelemetryHost(new URL(res.url()).hostname) && res.status() !== 204) {
+      unstubbedTelemetry.push(`${res.status()} ${res.url()}`);
+    }
+  });
+});
+
+test.afterEach(() => {
+  expect(unstubbedTelemetry, "crash-report requests reached the network").toEqual([]);
 });
 
 const SUMMARY_TEXT = "And so the tale ends! What. An. Adventure!";

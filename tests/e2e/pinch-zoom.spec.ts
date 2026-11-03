@@ -31,6 +31,7 @@
 import { test, expect } from "playwright/test";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { fulfillTelemetryStub, isTelemetryHost } from "./helpers";
 
 // Resolved from the repo root (Playwright's cwd) so the spec works on any
 // checkout, not just the worktree it was written in.
@@ -73,6 +74,7 @@ test.beforeEach(async ({ context }) => {
         contentType: "image/png",
       });
     }
+    if (isTelemetryHost(url.hostname)) return fulfillTelemetryStub(route);
     if (url.hostname !== "127.0.0.1" && url.hostname !== "localhost") {
       return route.continue();
     }

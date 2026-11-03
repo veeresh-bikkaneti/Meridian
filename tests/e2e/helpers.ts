@@ -1,7 +1,8 @@
-import { expect, type BrowserContext, type Page } from "playwright/test";
+import { expect, type BrowserContext, type Page, type Route } from "playwright/test";
 import { readFileSync } from "node:fs";
 import { mkdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import { OBSERVABILITY_INGEST_HOSTS } from "../../src/lib/flags.ts";
 
 /**
  * Shared E2E helpers for the P0-02/P0-03 suite.
@@ -185,6 +186,24 @@ export async function spoofLowMemoryDevice(context: BrowserContext): Promise<voi
  * serve with { spoofCapableDevice: false } unless the crash itself is
  * the subject under test.
  */
+/**
+ * The production crash-report worker. flags.json's `observabilityEndpoint`
+ * can only name a host on OBSERVABILITY_INGEST_HOSTS (src/lib/flags.ts), so
+ * stubbing that list covers whatever endpoint the served build configures.
+ * Without the stub, e2e runs post real telemetry to prod, and the worker
+ * answers the loopback test origin with 403 {"error":"origin not allowed"}
+ * (workers/crash-report/src/index.ts), a console error that fails
+ * clean-console checks. Specs that inspect telemetry register their own
+ * route for the endpoint after serveBuiltArtifact, which wins.
+ */
+export function isTelemetryHost(hostname: string): boolean {
+  return OBSERVABILITY_INGEST_HOSTS.includes(hostname);
+}
+
+export function fulfillTelemetryStub(route: Route): Promise<void> {
+  return route.fulfill({ status: 204, body: "" });
+}
+
 export async function serveBuiltArtifact(
   context: BrowserContext,
   opts: { spoofCapableDevice?: boolean } = {},
@@ -202,6 +221,7 @@ export async function serveBuiltArtifact(
         contentType: "image/png",
       });
     }
+    if (isTelemetryHost(url.hostname)) return fulfillTelemetryStub(route);
     if (url.hostname !== "127.0.0.1" && url.hostname !== "localhost") {
       return route.continue();
     }
