@@ -28,6 +28,7 @@ import {
 } from "@/game/audio/sfx";
 import {
   celebrationSpec,
+  deckCompleteCelebrationSpec,
   hasCelebratedFirstWin,
   markFirstWinCelebrated,
   type CelebrationSpec,
@@ -641,7 +642,9 @@ export function LoopScreen({
       const cycleDone = completedStore.current?.completedCycle === true;
       if (cycleDone) {
         markFirstWinCelebrated();
-        onCelebrate(celebrationSpec("game-complete", "deck-complete"));
+        // Deck-aware: a pack cycle celebrates the pack (its own count
+        // and copy); the core cycle keeps the shipped core copy.
+        onCelebrate(deckCompleteCelebrationSpec(deckIdOfPuzzle(progressed)));
       } else if (progressed.status === "won" && !hasCelebratedFirstWin()) {
         markFirstWinCelebrated();
         onCelebrate(celebrationSpec("mystery-solved", "first-win"));
