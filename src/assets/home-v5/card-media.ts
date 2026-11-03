@@ -48,8 +48,10 @@ import coldtrailStillUrl from "./coldtrail-still.webp";
  * Sources (outside the repo, in the workspace):
  *   - Film:   ~/workspace/meridian-card-arena/round-2-reshoot/
  *             geodetective-reshoot.mp4 (1092×614, 25 fps, 7.0 s)
- *   - Poster: ~/workspace/meridian-card-arena/round-2/assets/
- *             geo-table.webp (the film's opening beat, 1280×720)
+ *   - Poster: frame 0 of the shipped film itself (extracted
+ *             from geodetective-film.mp4 — the film opens on a
+ *             tight crop of the pinned map's centre, NOT the
+ *             wide desk plate; see the cure note below)
  *   - Still:  ~/workspace/meridian-card-arena/round-2/assets/
  *             geo-owner.webp (the owner's image, 1094×729)
  *
@@ -109,8 +111,12 @@ import coldtrailStillUrl from "./coldtrail-still.webp";
  * 1094×616, silent.
  *
  * The .webp files — poster and still, both at 1094×616:
- *   GeoDetective poster: geo-table.webp scaled (shipped 98,540
- *     bytes at quality 74).
+ *   GeoDetective poster: the shipped film's own first frame
+ *     (shipped 79,846 bytes at quality 82). CURE (panel BLOCK,
+ *     PR #321): the first shipped poster was the wide desk plate
+ *     from geo-table.webp — a different picture from frame 0
+ *     (poster↔frame-0 MAD 102.4/255), so playback popped hard.
+ *     Re-derived from frame 0 like Cold Trail's; MAD now 1.29/255.
  *   GeoDetective still: geo-owner.webp centre-cropped to 16:9 —
  *     crop=1094:616:0:56 — so it matches the film's landing frame
  *     geometry exactly (shipped 90,376 bytes at quality 82).

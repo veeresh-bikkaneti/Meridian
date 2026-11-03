@@ -44,9 +44,20 @@ byte-identical), all card copy, the frozen PRs
   on the owner's image; beat-4 ~1 s generation drift is
   OWNER-ACCEPTED, disclosed before his build-as-is pick).
   Encoded 1094×616, H.264, silent, faststart: **371,759 bytes**.
-  Poster = beat 1 (table map, from geo-table.webp): 98,540.
-  Still (reduced-motion/gated) = the owner's image,
-  centre-cropped to the slot: 90,376. Per-card total: 560,675.
+  Poster = the film's own first frame (frame 0 of the shipped
+  film): 79,846. Still (reduced-motion/gated) = the owner's
+  image, centre-cropped to the slot: 90,376. Per-card total:
+  541,981.
+- **Panel cure (PR #321, Frontend seat BLOCK):** the first
+  shipped GeoDetective poster was the wide top-down desk plate
+  (from geo-table.webp), but the film's frame 0 is a tight crop
+  of the pinned map's centre — poster↔frame-0 MAD 102.4/255, a
+  hard visible pop at playback start, against card-media.ts's
+  own hard rule. Cured by re-deriving geodetective-poster.webp
+  from frame 0 of the shipped film (WebP quality 82, 1094×616,
+  79,846 bytes); MAD after = 1.29/255 at 547×308 (Cold Trail's
+  league: 1.97). One asset only; no code change. Evidence:
+  ~/workspace/meridian-card-port-evidence/cure/
 - **Cold Trail film** — NEW image-to-video take 1 of 3 from the
   approved keyframe: Jolly steps up the footprint trail to the
   cabin (legs alternating, new prints under its feet, frost over
