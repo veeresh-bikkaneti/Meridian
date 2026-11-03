@@ -73,10 +73,29 @@ Approvals: branch + PR are the assigned task. Merge: owner only.
       selectors, executed against the shipped functions; byte caps;
       wiring pins); card-film + home-smooth-cards + locked-tile
       suites 55/55 after the synchronized pin updates
-- [ ] Gates (tsc / npm test / test:worker / lint-cards /
-      build:pages) — running
-- [ ] E2E per-band network proof + captures — pending build
-- [ ] PR open — pending
+- [x] Gates (true exit codes): `npx tsc --noEmit` 0 ·
+      `npm test` 0 (scripts 943 pass + 11 skip / 954; src 2016/2016) ·
+      `npm run test:worker` 0 (85/85) ·
+      `node scripts/lint-cards.mjs` 0 (GATE PASSED) ·
+      `npm run build:pages` 0
+- [x] E2E per-band network proof: new spec 4/4 (5-7 fetches the LE
+      Cold Trail film and never the standard; 8-10 fetches the TS
+      Review film and never the standard; 11-13 and unset fetch
+      neither variant). Neighbour specs (card-redesign,
+      loading-orbs, home-visual-layout, age-profile-gate) 33/33.
+      All runs `--workers=1` under `flock ~/workspace/.e2e.lock`
+      against the built artifact
+- [x] Captures in
+      `~/workspace/meridian-band-port-evidence/units23-captures/`:
+      both variant films recorded playing in the built app
+      (paused=false, readyState 4, correct variant src), card
+      screenshots, and slot geometry for 5-7 / 8-10 / 11-13 —
+      Cold Trail slot 591 × 332.44 px and Review slot
+      386 × 259.58 px in every band, Δ 0.00 px
+- [x] Protected surfaces verified untouched vs main: card-film.tsx,
+      home-v5.css, all five shipped films, locked-tile media +
+      components. Diff is exactly 13 files
+- [ ] PR open — this status commit is the tip the PR opens at
 
 ---
 
