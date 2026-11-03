@@ -315,13 +315,16 @@ Rework gates (tip before this status commit):
   (An early runtime summary of the standalone run reported
   one failure; the run's full output, delivered later, shows
   11 passed with test D green in 10.6 s. No flake is claimed.)
-- mobile-home-overlap: 20 passed / 6 failed, against the
-  recorded unmodified-main baseline in this VM of 6 passed /
-  20 failed (Part 2 redo round). The Review-card overlap tests
-  inside it pass. The six failures sit in the recorded
-  environment family (coffee-run strip on desktop and mobile,
-  the recorded main failure; narrow-scout sheets; two journal
-  section geometry checks at single widths).
+- mobile-home-overlap: 6 passed / 20 failed in the builder's
+  own corrected run (VITE_KOFI_URL set; the first attempt
+  omitted it and ran zero tests, and an early draft of this
+  section carried an inverted 20/6 figure from a misattributed
+  background delivery on this shared VM). 6/20 matches the
+  recorded unmodified-main baseline in this VM exactly (Part 2
+  redo round), and all 20 failures are the same family: the
+  coffee-run strip, banner-zone, and tap-target checks at
+  360px and 390px in both colour schemes, the strip failure
+  recorded on main too. No regression from the rework.
 - Grandpa tour: 24 passed / 1 failed, in a corrected run with
   VITE_KOFI_URL set in the run env (the spec throws at import
   without it; the builder's first attempt omitted it and ran
