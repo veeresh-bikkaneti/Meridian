@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "kathmandu-nepal",
+  "target": {
+    "placeId": "gn-1283240",
+    "name": "Kathmandu",
+    "aliases": [
+      "Kantipur"
+    ],
+    "lat": 27.70169,
+    "lon": 85.3206,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Nepal",
+    "iso2": "NP",
+    "subdivision": "Bagmati Province"
+  },
+  "subjectAnswer": {
+    "name": "Nepal",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Nepal",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits in a broad valley in the centre of its land, in the Himalaya lands of Asia. Old temples and palaces fill its streets.",
+      "narrowing": "Puts the player in a valley in the Himalaya lands, in the centre of one land.",
+      "source": {
+        "article": "Kathmandu",
+        "url": "https://en.wikipedia.org/wiki/Kathmandu",
+        "quote": "situated in the central part of the country within the Kathmandu Valley."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Most rain here rides in on the summer monsoon winds, from June to September. Warm days give way to cool nights, and winter cold can touch freezing.",
+      "narrowing": "Rules out dry lands and steady tropics; keeps a monsoon valley with cool nights.",
+      "source": {
+        "article": "Kathmandu",
+        "url": "https://en.wikipedia.org/wiki/Kathmandu",
+        "quote": "Rainfall is mostly monsoon-based (about 65% of the total concentrated during the monsoon months of June to September)"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "A Licchavi king merged two old towns to found this city. It later served for ages as the royal capital of the kingdom.",
+      "narrowing": "Shrinks the list to old royal capitals founded by merging two towns.",
+      "source": {
+        "article": "Kathmandu — History",
+        "url": "https://en.wikipedia.org/wiki/Kathmandu#History",
+        "quote": "Gunakamadeva merged Koligram and Dakshin Koligram, founding the city of Kathmandu."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Think of this city as the front door to the Himalayas. Trips to the high peaks start from its busy streets, and guests fill its lanes.",
+      "narrowing": "Nearly decisive: the gateway city for the Himalaya peaks.",
+      "source": {
+        "article": "Kathmandu",
+        "url": "https://en.wikipedia.org/wiki/Kathmandu",
+        "quote": "Tourism plays a vital role in the economy, with the city serving as a gateway to the Nepal Himalayas."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This city is the main seat of government for Nepal. The nation's rule, money, work, and culture all centre here.",
+      "narrowing": "Confirms it: Nepal's main seat of government is this city.",
+      "source": {
+        "article": "Kathmandu",
+        "url": "https://en.wikipedia.org/wiki/Kathmandu",
+        "quote": "Kathmandu is the main governmental, financial, industrial, and cultural centre of Nepal."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "People have lived in this valley since old, old times, and its kings ruled from this city. A Licchavi king founded it by joining two towns, and it grew as a royal capital. Today guests from all over the world pass through it on their way to the great peaks. Kathmandu is the capital of Nepal."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Kathmandu"
+  },
+  "pointPolicy": "geonames-point"
+}

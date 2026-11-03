@@ -3,11 +3,23 @@ import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
+import { PackShelf } from "@/components/pack-shelf";
+import {
+  FIRST_PACK_ID,
+  initialTrailDeck,
+  readSelectedDeck,
+  writeSelectedDeck,
+} from "@/components/pack-shelf-data";
 import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
 import { playCelebrationSound } from "@/game/audio/play-guards";
 import { resolveBand, type AgeBandId } from "@/game/age-profile";
 import { LoopMap } from "../loop/LoopMap";
 import { coldtrailCaseCount, getColdtrailCase } from "./cases";
+import {
+  capitalsPackCaseCount,
+  getCapitalsPackCase,
+  COLDTRAIL_PACK_CAPITALS_STORAGE_KEY,
+} from "./cases-pack";
 import {
   INFORMANT_COST,
   effectiveRadius,
@@ -65,7 +77,29 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   // a mid-case profile change never re-themes an open case.
   const [band, setBand] = useState<AgeBandId>(() => resolveBand());
   const theme = themeForBand(band);
-  const [store, setStore] = useState<ColdTrailStore>(loadColdtrail);
+  // Two decks, two progress stores: the core store and the capitals
+  // pack store (its own key, the same ColdTrailStore shape). openDeck
+  // names the deck the on-screen case came from. The player's pick
+  // for the next case lives in the shelf selection blob; onNextCase
+  // reads it at deal time, so the chips and the dealer read one store.
+  const [coreStore, setCoreStore] = useState<ColdTrailStore>(() => loadColdtrail());
+  const [packStore, setPackStore] = useState<ColdTrailStore>(() =>
+    loadColdtrail(COLDTRAIL_PACK_CAPITALS_STORAGE_KEY),
+  );
+  // Mount resume: a case mid-play in exactly one deck's store opens on
+  // that deck, even when the selection blob names the other deck (the
+  // player picked a deck mid-case, left, and came back — the open case
+  // is theirs and must not be yanked). Otherwise the stored selection
+  // decides, as before.
+  const [openDeck, setOpenDeck] = useState<string>(() =>
+    initialTrailDeck({
+      selected: readSelectedDeck("coldtrail"),
+      coreCurrent: coreStore.current,
+      packCurrent: packStore.current,
+    }),
+  );
+  const onPackDeck = openDeck === FIRST_PACK_ID;
+  const store = onPackDeck ? packStore : coreStore;
   const [pending, setPending] = useState<{ lon: number; lat: number } | null>(null);
   const [hint, setHint] = useState<string | null>(null);
   // Placement-mode state: ephemeral, NEVER persisted (a reload mid-placement
@@ -77,6 +111,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const resultHeadingRef = useRef<HTMLHeadingElement>(null);
   const prevRevealedRef = useRef(false);
   const prevCaseIndexRef = useRef<number | null>(null);
+  const prevDeckRef = useRef<string | null>(null);
   // Focus targets: each card's primary action button (place/cancel/confirm).
   const cardActionRefs = useRef<Array<HTMLButtonElement | null>>([]);
   // Coarse pointer (touch): placement mode gets a static reticle overlay —
@@ -88,10 +123,16 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
       window.matchMedia("(pointer: coarse)").matches,
   );
 
-  const commit = (next: ColdTrailStore) => {
-    saveColdtrail(next);
-    setStore(next);
+  const commitTo = (deckId: string, next: ColdTrailStore) => {
+    if (deckId === FIRST_PACK_ID) {
+      saveColdtrail(next, COLDTRAIL_PACK_CAPITALS_STORAGE_KEY);
+      setPackStore(next);
+    } else {
+      saveColdtrail(next);
+      setCoreStore(next);
+    }
   };
+  const commit = (next: ColdTrailStore) => commitTo(openDeck, next);
 
   // Keep keyboard/screen-reader focus on the action: result heading on
   // reveal, case heading when a new case is dealt. Reads store directly so
@@ -101,11 +142,15 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   useEffect(() => {
     if (revealedNow && !prevRevealedRef.current) resultHeadingRef.current?.focus();
     prevRevealedRef.current = revealedNow;
-    if (prevCaseIndexRef.current !== null && prevCaseIndexRef.current !== caseIndexNow) {
+    if (
+      prevCaseIndexRef.current !== null &&
+      (prevCaseIndexRef.current !== caseIndexNow || prevDeckRef.current !== openDeck)
+    ) {
       caseHeadingRef.current?.focus();
     }
     prevCaseIndexRef.current = caseIndexNow;
-  }, [revealedNow, caseIndexNow]);
+    prevDeckRef.current = openDeck;
+  }, [revealedNow, caseIndexNow, openDeck]);
 
   // Arrival focus (PR #203 panel): this screen mounts behind the lazy
   // boundary, announced by the session loading fallback — land focus on
@@ -124,8 +169,15 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     }
   }, []);
 
-  const deckSize = coldtrailCaseCount();
-  const caseData = deckSize > 0 ? getColdtrailCase(store.caseIndex) : null;
+  const coreDeckSize = coldtrailCaseCount();
+  const packDeckSize = capitalsPackCaseCount();
+  const caseData = onPackDeck
+    ? packDeckSize > 0
+      ? getCapitalsPackCase(store.caseIndex)
+      : null
+    : coreDeckSize > 0
+      ? getColdtrailCase(store.caseIndex)
+      : null;
   const progress = store.current ?? freshProgress();
 
   if (!caseData) {
@@ -415,6 +467,19 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     setHint(null);
     setPlacing(null);
     setDraft(null);
+    const pick = readSelectedDeck("coldtrail");
+    if (pick !== openDeck) {
+      // Deck switch: the picked deck's own store decides what shows.
+      // A finished case there advances; a case mid-play or untouched
+      // resumes as it stands. The case left behind keeps its progress
+      // in its own store.
+      const target = pick === FIRST_PACK_ID ? packStore : coreStore;
+      if (target.current && target.current.revealed) {
+        commitTo(pick, { ...target, caseIndex: target.caseIndex + 1, current: freshProgress() });
+      }
+      setOpenDeck(pick);
+      return;
+    }
     commit({ ...store, caseIndex: store.caseIndex + 1, current: freshProgress() });
   };
 
@@ -440,6 +505,20 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           {theme.intro}
         </p>
       </header>
+
+      {/* Pack shelf (story packs): deck chips under the header. A pick
+          is stored through onPickDeck before onStartNext runs, and
+          onNextCase reads that same selection when it deals.
+          activeDeckId names the deck the open case came from. */}
+      <PackShelf
+        edition="coldtrail"
+        activeDeckId={openDeck}
+        caseFinished={revealed}
+        onPickDeck={(deckId) => writeSelectedDeck("coldtrail", deckId)}
+        onStartNext={onNextCase}
+        coreTotal={coreDeckSize > 0 ? coreDeckSize : null}
+        packTotal={packDeckSize > 0 ? packDeckSize : null}
+      />
 
       <div className="ct-layout mt-6">
       <section aria-label="Sightings" className="ct-sightings flex flex-col gap-3">

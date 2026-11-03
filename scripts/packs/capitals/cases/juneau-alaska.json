@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "juneau-alaska",
+  "target": {
+    "placeId": "gn-5554072",
+    "name": "Juneau",
+    "aliases": [],
+    "lat": 58.30194,
+    "lon": -134.41972,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Alaska",
+    "iso2": "US",
+    "subdivision": "Alaska"
+  },
+  "subjectAnswer": {
+    "name": "Alaska",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Alaska",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This place hugs the sea at the foot of steep mountains in the far northwest. A huge ice field caps the peaks, and ice rivers flow down from it.",
+      "narrowing": "Puts the player on a mountain coast in the far northwest, under a big ice field.",
+      "source": {
+        "article": "Juneau, Alaska",
+        "url": "https://en.wikipedia.org/wiki/Juneau%2C_Alaska",
+        "quote": "Downtown Juneau sits at sea level with tides averaging 16 feet (5 m), below steep mountains about 3,500 to 4,000 feet (1,100 to 1,200 m) high. Atop the mountains is the Juneau Icefield, a large ice mass from which about 30 glaciers flow"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Warm ocean water flows past this place, and coast mountains block the sea air. The trapped air turns mild and wet, so rain forests grow here.",
+      "narrowing": "Rules out dry lands and hard frozen lands; keeps mild, wet coasts.",
+      "source": {
+        "article": "Juneau, Alaska",
+        "url": "https://en.wikipedia.org/wiki/Juneau%2C_Alaska",
+        "quote": "The city's climate is heavily influenced by the proximity of the Pacific Ocean , specifically the warm Alaska Current , and the Coast Mountains that form a natural orographic barrier for incoming air"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1906, this place took over as the seat of government from the old port of Sitka. Lawmakers had ordered the move six years before, in 1900.",
+      "narrowing": "Shrinks the list to seats of government moved by law in 1906.",
+      "source": {
+        "article": "Juneau, Alaska — History",
+        "url": "https://en.wikipedia.org/wiki/Juneau%2C_Alaska#History",
+        "quote": "Sitka which was the original capital of Alaska, had become less important and the territorial legislature moved the seat of government to Juneau in accordance with a 1900 federal law"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "No road links this place to the rest of its state or the rest of the land. Boats and planes are the only ways to get here.",
+      "narrowing": "Nearly decisive: a seat of government that no road reaches at all.",
+      "source": {
+        "article": "Juneau, Alaska",
+        "url": "https://en.wikipedia.org/wiki/Juneau%2C_Alaska",
+        "quote": "Juneau is one of only two U.S. state capitals without roads connecting it to the rest of the state or to the contiguous United States"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Alaska has an office in this place. The state lawmakers of Alaska meet here too.",
+      "narrowing": "Confirms it: the governor and the state lawmakers are based here.",
+      "source": {
+        "article": "Juneau, Alaska",
+        "url": "https://en.wikipedia.org/wiki/Juneau%2C_Alaska",
+        "quote": "Juneau is the home of the state legislature, the governor, and lieutenant governor"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Gold seekers built a mining camp here in 1880. The camp took its name from prospector Joe Juneau the next year. In 1906 it became the seat of government, moved from Sitka. Juneau is the capital of Alaska."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Juneau%2C_Alaska"
+  },
+  "pointPolicy": "geonames-point"
+}
