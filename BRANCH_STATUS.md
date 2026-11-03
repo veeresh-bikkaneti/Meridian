@@ -53,9 +53,9 @@ loop tests, `node --test` on the scripts tests, `npx tsc --noEmit`,
 ## Status
 
 - [x] Workspace inventoried; predecessor state verified (branch, deps, design read).
-- [ ] Deck machinery in types.ts and store.ts, with tests.
-- [ ] packs.ts manifest and sidecar types with validators, with tests.
-- [ ] Pack schema and composer under scripts/packs/, with tests.
-- [ ] Paris pilot record validated; pilot artifacts generated.
-- [ ] LoopScreen wiring: active-deck deal, pack manifest fetch, sidecar read.
-- [ ] Full gates green.
+- [x] Deck machinery in types.ts and store.ts, with tests.
+- [x] packs.ts manifest and sidecar types with validators, with tests.
+- [x] Pack schema and composer under scripts/packs/, with tests.
+- [x] Paris pilot record validated; pilot artifacts generated.
+- [x] LoopScreen wiring: active-deck deal, pack manifest fetch, sidecar read.
+- [x] Full gates green: tsc clean; npm test 862 pass / 0 fail (scripts, 11 pre-existing skips) + 1918 pass / 0 fail (src); test:worker 85/85; build:pages green.
