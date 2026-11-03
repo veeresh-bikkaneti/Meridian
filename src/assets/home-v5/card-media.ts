@@ -33,7 +33,8 @@ import coldtrailStillUrl from "./coldtrail-still.webp";
  * of the story (top-down table map vs the detective at her desk).
  * End axis: GeoDetective settles on the owner's image at the front
  * angle, and Cold Trail settles on the wide trail scene with Jolly
- * reached at the cabin end of the trail.
+ * mid-trail, still walking the footprint trail toward the lit
+ * cabin, which is still distant.
  *
  * ── GeoDetective ──
  *
@@ -135,6 +136,8 @@ import coldtrailStillUrl from "./coldtrail-still.webp";
  *   ffmpeg -i src/assets/home-v5/geodetective-film.mp4 \
  *     -vf "select=eq(n\,0)" -vframes 1 frame0.png
  *   ffmpeg -i frame0.png -c:v libwebp -q:v 82 geodetective-poster.webp
+ * For the other card, substitute its film and poster filenames and
+ * write the output beside this module.
  *
  * One hard rule, same as the verdict clip: replacement takes must
  * be silent. The audio track is stripped on purpose — the home
