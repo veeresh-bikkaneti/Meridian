@@ -49,7 +49,7 @@ stores the selection the deal path will read.
 - [x] Design and repo grounding (DESIGN sections 5 to 7, both screens,
   both stores, test patterns)
 - [x] Shelf data module and component
-- [ ] Unit tests (logic plus source pins)
-- [ ] Screen mounts (LoopScreen, TrailScreen)
-- [ ] E2E spec (both entry flows, late-manifest layout shift)
+- [x] Unit tests (logic plus source pins)
+- [x] Screen mounts (LoopScreen, TrailScreen)
+- [x] E2E spec (both entry flows, late-manifest layout shift)
 - [ ] Gates: typecheck, npm test, lint-cards, build:pages, E2E
