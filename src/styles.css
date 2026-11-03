@@ -700,6 +700,18 @@
   translate: 0 -3px;
 }
 
+/* The locked age-band tile (.agep-locked) is also an .atlas-dossier,
+   so the hover above lifted it like a clickable card — a locked
+   tile is not one. Scoped to the locked tile only: on hover it
+   keeps its resting border, shadow, and position. Real dossier
+   cards keep the lift. (Pre-existing inconsistency, fixed with
+   the locked tile's picture band.) */
+.atlas-dossier.agep-locked:hover {
+  border-color: var(--atlas-card-line);
+  box-shadow: none;
+  translate: none;
+}
+
 .atlas-dossier-title {
   margin-top: 0.65rem;
   font-family: var(--font-atlas-display);
