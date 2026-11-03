@@ -46,7 +46,10 @@ films (byte-identical), the banned mock take
 (`meridian-band-motion/videos/trail-scout-review.mp4`) never enters
 the repo.
 
-Approvals: branch + PR are the assigned task. Merge: owner only.
+Approvals: the owner approved the band mockups for production in
+his own words — "use them" (2026-11-03 10:25 CST) — and Units 2–3
+were dispatched once PR #324 merged (main `5b6dcac`). Merge: owner
+only, on his explicit per-PR word for the final tip.
 
 ## Status
 
@@ -95,7 +98,48 @@ Approvals: branch + PR are the assigned task. Merge: owner only.
 - [x] Protected surfaces verified untouched vs main: card-film.tsx,
       home-v5.css, all five shipped films, locked-tile media +
       components. Diff is exactly 13 files
-- [ ] PR open — this status commit is the tip the PR opens at
+- [x] PR open — PR #329, opened at tip `e972da9`
+- [x] Clean Silo QA on PR #329 + `e972da9`: PASS, no issues (gates
+      re-run unpiped: tsc 0; npm test scripts 943p/11s, src
+      2016/2016; worker 85/85; lint-cards GATE PASSED; build 0;
+      E2E 37/37 incl. the new band spec 4/4; protected surfaces
+      byte-identical; LE media sha256-identical to prep; TS film
+      800×538 / 24 fps / no audio / faststart / 241,829 B, poster
+      MAD 1.77 vs frame 0, frames clean of invented text; banned
+      take absent)
+- [x] 12-role panel on `e972da9`: 8 APPROVE / 4 APPROVE-WITH-NITS /
+      0 BLOCK. Named rulings, both unanimous: (a) TS Review stays
+      an 8–10-only VARIANT (12–0 over single-film); (b) the 5–7
+      Review slot staying on the standard film is ACCEPTABLE
+      (12–0). Five LOW nits, none blocking (see follow-ups)
+- [x] DevEx PASS-WITH-NITS (doc-reproducibility nits, follow-ups
+      below); Benchmark PASS (entry JS +0 B raw, entry CSS +0;
+      home chunk +481 B raw / +127 B gzip; per-band cost verified
+      from the built artifact: 5–7 pays −40,096 B vs the standard
+      film, 8–10 pays +62,008 B, 11–13/unset pays 0 variant bytes)
+- [x] CI on `e972da9`: build (22.x) PASS · e2e PASS · GitGuardian
+      PASS (Workers Builds fail — not required, as on every tip)
+- [x] **READY — verdict keyed to tip `e972da9`.** This status
+      commit is records-only (BRANCH_STATUS.md) on top of the
+      voted tip. NO MERGE — the owner's per-PR word is not given.
+
+## Follow-ups of record (none blocking)
+
+- card-media.ts variant-doc completion: LE ping-pong filter graph
+  + fps step, TS raw take filename (`trail-scout-review-take.mp4`
+  in the media-prep evidence), the exact MAD command for a
+  replacement take's identity check (DevEx nits).
+- CardFilm: the sticky `failed` state is never reset when the
+  media prop changes (`card-film.tsx:100,105`) — a film error
+  followed by a band switch holds the still until reload; fails
+  closed, safe direction. Add a mid-session band-switch test with
+  any fix (panel Seat 8).
+- Mobile geometry capture for the two variant slots (panel
+  Seat 9 — desktop captures only in this run; CSS untouched).
+- Selector-only path rests on source pins, not module privacy —
+  the variant records are exported from card-media.ts (Seat 2).
+- The LE Review mock port is a possible later unit on the owner's
+  call (panel ruling (b) records the asymmetry as acceptable).
 
 ---
 
