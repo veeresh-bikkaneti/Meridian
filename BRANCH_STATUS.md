@@ -256,7 +256,7 @@ evidence/takes/TAKE-NOTES.md, rework addendum):
   3.0/3.6/4.2/4.8/5.4 s inspected; 4.8 is the first clearly
   settled-wrong frame), 0.4 s freeze on W, the same frames
   reversed at 1.7x, 1.3 s freeze on frame 0. Last frame is
-  frame 0 by construction. 9.417 s, 800x538, CRF 34, 179,821
+  frame 0 by construction. 9.54 s, 800x538, CRF 34, 179,821
   bytes. Last vs first PSNR 33.49 dB; the source frame against
   each encoded frame measures 33.70 / 33.87 dB, so the gap is
   CRF 34 quantization noise between two encodes of one frame.
@@ -342,6 +342,164 @@ Rework gates (tip before this status commit):
   CardFilm elements and nothing else; LockedLoop, the verdict
   clip component, game screens, and pack code untouched.
 
+## Cure — banner aspect + gradient refinement (2026-11-03)
+
+Two defects cured on this tip after the rework measurements
+were read closely. Owner-facing copy is untouched: zero string
+changes in either cure.
+
+Cure 1, the spot banners did not render at native aspect
+(coordinator-measured; the builder re-measured before and after
+and the numbers below are the builder's own). At 1280px the
+three banners measured Review 386x185.56, Journal 386x241.34,
+Grown-ups 386x241.34, against native aspects of 386x259.6
+(400/269), 386x386 (1/1), and 386x386 (1/1). At 390px: Review
+348x142.25, Journal 348x221.14, Grown-ups 348x218.53, against
+348x234.1 / 348x348 / 348x348. The CardFilm media fills its box
+with position absolute + object-fit cover, so the squashed
+boxes cropped the films (Journal's circular medallion clipped
+top and bottom). Mechanism, verified by the cure: the base
+`.hv5-spot .hv5-txt` rule sets `height: 100%`, written for the
+old corner layout where the art was absolutely positioned and
+out of flow. Inside the flex-column `.hv5-card` the in-flow
+banner's aspect height plus a 100%-tall text column overflow
+the card, and flex shrink takes the overflow out of the
+banner. The fix lives in the appended art-film block, with the
+layout it serves: `.home-v5 .hv5-spot .hv5-txt { height: auto; }`
+plus a comment recording the mechanism. `flex: none` on the
+banner was evaluated and is NOT needed: with the text column
+at natural height there is no overflow left to shrink the
+banner, and the measured boxes below are the proof.
+- Slot boxes after the cure, 1280px: Review 386x259.58,
+  Journal 386x386, Grown-ups 386x386. At 390px: Review
+  348x234.02, Journal 348x348, Grown-ups 348x348. Every box is
+  within 0.1px of its native-aspect target.
+- Game-card slots byte-identical to the defective build:
+  590.98x332.42 (GeoDetective) and 591x332.44 (Cold Trail) at
+  1280px; 348x195.75 both at 390px. Game card heights
+  unchanged (561.16 at 1280px; 440.75 / 446.86 at 390px).
+- Card heights did not move at either width: the three spot
+  cards stay 676.66 at 1280px, and at 390px Review 396.34,
+  Journal 638.66, Grown-ups 619.86 — the height the banner
+  recovered came out of the text column's slack (the 100%
+  column was mostly empty space below the copy), not out of
+  the card.
+- Zero CLS re-measured on the cured build: poster box equals
+  playing box on all three spot slots (record:
+  evidence/cls-rework.json, refreshed; geometry record:
+  evidence/measure-rework-beforeafter.json, whose old-build
+  side is untouched and whose defective-tip numbers are
+  preserved under defectiveRework).
+
+Cure 2, the gradient refinement. Owner, 2026-11-03 10:25 CST,
+verbatim: "use gradient that belends into the bacground of
+the page, and it should be very small not too big since its
+covering up the actual txt and animation cartoon". Two
+changes in the `.hv5-pic` fade block of home-v5.css:
+- The mask feather shrinks from (full opacity to 84%, half at
+  93%, out at 100%) to a ~7% zone: full opacity to 93%, out at
+  100% — about 23px on the 332px box. The scene is untouched
+  above the last 7%. Both the -webkit- and standard mask-image
+  declarations carry the same stops.
+- The painted landing strip is deleted entirely: the
+  `.hv5-card-film::after` gradient rule (clear to 94%, 0.5
+  alpha at 97.5%, solid #fdfbf3 at 100%) is gone. The melt is
+  now a pure alpha feather with zero pigment painted anywhere.
+  The base rule served no other purpose (it only painted the
+  strip); the art slots' `content: none` guard on the
+  wrapper ::after stays in place.
+Ground reasoning (also recorded in the CSS comment): the page
+ground is --hv5-parchment #f6f1e3; the card ground is
+--hv5-card #fdfbf3. The two game-card pictures sit inside
+their cards, so the ground their bottom edge touches — and
+the ground the text zone sits on — is the card surface. A
+pure alpha feather reveals exactly that ground, so the melt
+is invisible against it. Painting the page's parchment across
+the pale card instead would draw a visible warm band on the
+card: a new hard edge, the opposite of the owner's ask. Per
+card: GeoDetective melts into its card ground; Cold Trail
+melts into its card ground; the three spot banners carry no
+fade at all (their edge is the crop, and cure 1 shows the
+full cartoon — no strip ever eats the cartoon).
+Comments brought up to date with the strip's deletion:
+home-v5.css (fade block + art-film block), card-film.tsx
+header, and card-media.ts (fade paragraph). card-media.ts is
+also where the Review film's duration is corrected below.
+
+Re-pins, each named (no assertion weakened; every changed pin
+still fails if the old behaviour returns):
+- home-smooth-cards.test.ts, mask-stop pin: "#000 84%" +
+  "rgba(0, 0, 0, 0.55) 93%" replaced by "#000 93%" +
+  "transparent 100%", with new absence pins for the 84% stop
+  and the mid stop (owner's very-small ruling, 2026-11-03
+  10:25 CST).
+- home-smooth-cards.test.ts, "the ::after landing strip hugs
+  the bottom edge only" replaced by "the painted landing strip
+  is deleted entirely (owner ruling, 2026-11-03 10:25 CST)":
+  removal pins — no `.home-v5 .hv5-card-film::after` rule, the
+  strip's three stops absent, the art slots' ::after guard
+  still present.
+- home-smooth-cards.test.ts, cream-ramp absence pin: re-based
+  from the deleted fadeRule slice to the whole stylesheet
+  (same two stops, same meaning).
+- home-smooth-cards.test.ts, "the strip can never be tapped
+  and never grows the box" replaced by "the feather is a mask
+  only": the mask rule sets no height, width, or position.
+- home-smooth-cards.test.ts, "the Part 1 fade is untouched by
+  the removal": re-based from the strip rule to the mask rule
+  (93% stop).
+- home-smooth-cards.test.ts, NEW pin: "the spot text column's
+  height: 100% is neutralized in the art-film block (aspect
+  cure)" — art block carries height: auto, and the base rule
+  still carries height: 100% (the cure is the override, not a
+  base edit).
+- card-film.test.ts, "art-film CSS: fade strip stays on the
+  pic slots; no toggle layer survives" renamed to "art-film
+  CSS: no fade overlay on the art slots; no toggle layer
+  survives" — its assertions (art ::after guard, content:
+  none, no toggle layer) are unchanged in substance; the name
+  no longer claims a strip that does not exist.
+- card-film.test.ts, banner-geometry pin: new assertion that
+  the art block carries height: auto (the aspect cure).
+
+Docs truth: the Review film's duration is corrected to
+9.54 s. ffprobe measures 9.541667 s on two independent reads
+(the source file src/assets/home-v5/review-film.mp4 and the
+built bundle's review-film asset). The WP4 record above now
+reads 9.54 s (it said 9.417 s), and card-media.ts's Review
+loop comment now reads 9.54 s (it said 9.4 s).
+
+Cure gates (this tip):
+- `npx tsc --noEmit`: clean.
+- `npm test`: exit 0; scripts 953 (942 pass, 11 skipped,
+  0 fail); src 1988/1988 pass (1987 at the rework tip; +1 for
+  the new aspect-cure pin, the gradient re-pins netting zero).
+- `npm run test:worker`: 85/85. lint-cards: GATE PASSED.
+- `npm run build:pages` (VITE_KOFI_URL set): PASS.
+- E2E (flock, --workers=1, Chromium 1243, VITE_KOFI_URL set in
+  the run env): the first combined run of the four briefed
+  files reported 25 passed / 6 failed in 12.6 min under heavy
+  shared-VM contention, and its file list carried the brief's
+  name home-visual.desktop.spec.ts, which matches no file in
+  the repo (the spec is home-visual-layout.desktop.spec.ts),
+  so that run's composition was partial and its failure list
+  did not survive in the run output. Every file was then
+  re-run standalone against the same cured build, same env:
+  review-card-actions 6/6, home-visual-layout 13/13, and
+  card-redesign + loading-orbs 19/19 — 38/38 across the four
+  files, a superset of the combined run's 31. Per this repo's
+  evidence rule (parallel-era failures that pass sequentially
+  are contention flake, not signal), the cure records the
+  standalone results as the gate result and the combined run
+  as a contention artifact, not a regression.
+- Recapture (evidence only): rework-{review,journal,grownups}-
+  loopcross.mp4 + frames re-shot cropped to the corrected
+  slot boxes (the defective-box versions are overwritten);
+  rework-{geo,cold}-fade-mid-{1280,390}.png re-shot on the
+  retuned build; captures/rework-fade-sidebyside.png rebuilt
+  with the cured build as the REDUCED panels (CURRENT panels
+  kept from the old build).
+
 ## Gates (tip before this status commit)
 
 - `npx tsc --noEmit`: clean.
@@ -418,5 +576,14 @@ were not touched, commented on, or rebased.
       Journal/Grown-ups loop xfades
 - [x] Rework unit re-pins + E2E re-pins (E2E specs committed
       with this status update)
+- [x] Cure: spot banners render at native aspect (height: auto
+      in the art-film block; measured at both widths, zero CLS
+      re-measured, loopcross captures re-shot at the corrected
+      boxes)
+- [x] Cure: gradient refinement (owner, 2026-11-03 10:25 CST) —
+      feather shrunk to the last 7%, painted landing strip
+      deleted, fade pins re-pinned and named
+- [x] Docs truth: Review film duration corrected to 9.54 s
+      (ffprobe 9.541667 s, source + built bundle)
 - [ ] QA silo verification of the rework tip
 - [ ] Panel re-vote on the final tip after QA
