@@ -322,17 +322,19 @@ Rework gates (tip before this status commit):
   environment family (coffee-run strip on desktop and mobile,
   the recorded main failure; narrow-scout sheets; two journal
   section geometry checks at single widths).
-- Grandpa tour: 5 passed / 20 failed in this VM. The standing
-  record for this spec in this VM is failure on unmodified main
-  too (4 passed / 21 failed in the Part 2 redo round, the tour
-  element never appearing). This run's pass count is one above
-  that baseline. Tooling caveat, recorded honestly: Playwright
-  test discovery in this VM proved unstable during this round
-  (repeated --list runs returned 1430, then 0, then 0 tests,
-  and one run's title list did not match the spec file on
-  disk), so the tour result is reported as UNVERIFIED here,
-  not as a pass and not as a branch regression. The QA silo
-  should re-run the tour in a clean environment.
+- Grandpa tour: 24 passed / 1 failed, in a corrected run with
+  VITE_KOFI_URL set in the run env (the spec throws at import
+  without it; the builder's first attempt omitted it and ran
+  zero tests, and an early draft of this section carried
+  figures from a misattributed background delivery on this
+  shared VM — the corrected run supersedes both). The one
+  failure is "walker stops at each option, looks, sips, walks
+  on": dwell y drift at stop 2 measured 15px against a <12px
+  tolerance. The spec's own comments record this same test
+  failing the same way on pristine main (2026-10-16 paired
+  runs). The tour completes end to end on this branch: all
+  trail-clearance, seated, skip, scroll, and reduced-motion
+  tests pass with the taller banner cards in place.
 - Zero copy changes in the rework: game-app.tsx moves three
   CardFilm elements and nothing else; LockedLoop, the verdict
   clip component, game screens, and pack code untouched.
@@ -413,7 +415,5 @@ were not touched, commented on, or rebased.
       Journal/Grown-ups loop xfades
 - [x] Rework unit re-pins + E2E re-pins (E2E specs committed
       with this status update)
-- [ ] QA silo verification of the rework tip (incl. a clean-
-      environment Grandpa tour run; see the tooling caveat in
-      the rework gates above)
+- [ ] QA silo verification of the rework tip
 - [ ] Panel re-vote on the final tip after QA
