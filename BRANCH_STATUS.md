@@ -492,6 +492,15 @@ Cure gates (this tip):
   are contention flake, not signal), the cure records the
   standalone results as the gate result and the combined run
   as a contention artifact, not a regression.
+  Correction (later the same day): the combined run's full
+  output, delivered after this entry was written, shows exit
+  code 0 with 25 passed / 0 failed — the 25 being exactly the
+  three correctly named files (card-redesign 11, loading-orbs
+  8, review-card-actions 6), the misnamed home-visual arg
+  having matched nothing. That full output supersedes the
+  early summary's 6-failure figure above: on the fuller record
+  the combined run passed everything it ran, and the
+  standalone 38/38 remains the gate record for all four files.
 - Recapture (evidence only): rework-{review,journal,grownups}-
   loopcross.mp4 + frames re-shot cropped to the corrected
   slot boxes (the defective-box versions are overwritten);
