@@ -38,6 +38,13 @@ import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
  * - Zero layout shift: the wrapper carries the slot's existing
  *   layout class (.hv5-pic), whose box geometry does not change;
  *   the media absolutely fills that box (see home-v5.css).
+ * - The picture dissolves into the text area: the wrapper's
+ *   ::after overlay in home-v5.css paints a gradient inside the
+ *   box, clear at 64% of its height and solid card colour at the
+ *   bottom edge. Because the overlay is on this shared wrapper,
+ *   it covers every state the slot renders (film, poster, still)
+ *   with no work in this component. The pause/play toggle sits
+ *   in the top corner above the overlay, so it is never faded.
  */
 export type CardFilmMedia = {
   videoUrl: string;

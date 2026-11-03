@@ -1309,6 +1309,41 @@ body:has(.home-v5) {
   height: 100%;
   object-fit: cover;
 }
+/* Smooth cards (feat/smooth-cards): the picture dissolves into the
+   text area instead of ending at a hard line. One overlay sits
+   inside the existing picture box, above the media and below the
+   pause/play toggle (z-index 2). Its gradient runs from clear at
+   64% of the box height to solid card colour at the bottom edge,
+   and the text area below the box is the same card colour
+   (var(--hv5-card), #fdfbf3), so the last pixels of the picture
+   and the first pixels below it are one colour and no edge is
+   left to see. The overlay is on the shared wrapper, not on the
+   media, so the same fade covers every state the slot can be in:
+   the film while it plays, the poster before it mounts, the
+   reduced-motion still, and the error still. Both cards share
+   these stops on purpose. The two scenes differ (a dark desk, a
+   bright snowfield) but they dissolve into the same card colour,
+   and one alpha ramp blends each scene into that colour in
+   proportion, so per-card stops would tune a difference the eye
+   cannot pick out. The box does not grow: the overlay is
+   positioned inside it and adds no size, so the card geometry
+   the Grandpa tour measures is unchanged. The toggle sits in
+   the top corner, far above the fade zone, and the overlay is
+   below it in any case, so the toggle is never faded. */
+.home-v5 .hv5-card-film::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(253, 251, 243, 0) 64%,
+    rgba(253, 251, 243, 0.45) 82%,
+    rgba(253, 251, 243, 0.88) 93%,
+    #fdfbf3 100%
+  );
+}
 .home-v5 .hv5-card-film-toggle {
   position: absolute;
   top: 8px;
@@ -1352,4 +1387,85 @@ body:has(.home-v5) {
   height: 16px;
   border-radius: 2px;
   background: #fff;
+}
+
+/* ---------- smooth art motion (feat/smooth-cards) ----------
+   The three spot-illustration cards (Review, Journal, Grown-ups)
+   get one calm pass of motion on their existing art, in the same
+   spirit as the film cards. The motion lives on the inner img,
+   never on the .hv5-art wrapper, so the wrapper box the layout
+   and the E2E specs measure does not move at all. Each pass is a
+   slow there-and-back: the picture drifts a few pixels under a
+   small zoom, the light dips a touch at the midpoint, and it
+   settles back onto the exact still it started from. One pass,
+   then still. Because the motion stops on its own in under a
+   dozen seconds and never loops, WCAG 2.2.2 asks for no pause
+   control here, and none is added. The hv5-art-live class is the
+   arming switch, and LazyHomeImage adds it only when the card is
+   near the viewport and none of the film gates apply
+   (reduced motion, Save-Data, deviceMemory at or below 2). With
+   the class absent the art is the plain still. Keyframes use
+   transform and opacity only, so nothing here can shift layout.
+   The zoom at the midpoint covers the drift: the picture never
+   shows an edge or a gap inside its masked wrapper. */
+.home-v5 .hv5-spot .hv5-art > img.hv5-art-live {
+  animation: hv5-art-drift 10s ease-in-out 1 both;
+}
+.home-v5 .hv5-journal .hv5-art > img.hv5-art-live {
+  animation-name: hv5-art-sway;
+  animation-duration: 11s;
+}
+.home-v5 .hv5-involved .hv5-art > img.hv5-art-live {
+  animation-name: hv5-art-float;
+  animation-duration: 9s;
+}
+@keyframes hv5-art-drift {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08) translate(-5px, -3px);
+    opacity: 0.97;
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+}
+@keyframes hv5-art-sway {
+  0% {
+    transform: scale(1) rotate(0deg) translate(0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.07) rotate(0.8deg) translate(-2px, -3px);
+    opacity: 0.97;
+  }
+  100% {
+    transform: scale(1) rotate(0deg) translate(0, 0);
+    opacity: 1;
+  }
+}
+@keyframes hv5-art-float {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.06) translateY(-4px);
+    opacity: 0.97;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+/* The JS gate already keeps the live class off under reduced
+   motion. This rule is the second line of defence: if the class
+   ever lands anyway, the art stays still. */
+@media (prefers-reduced-motion: reduce) {
+  .home-v5 .hv5-art > img.hv5-art-live {
+    animation: none;
+  }
 }

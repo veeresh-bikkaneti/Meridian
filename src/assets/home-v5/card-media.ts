@@ -15,6 +15,19 @@ import coldtrailStillUrl from "./coldtrail-still.webp";
  * take ships by replacing the files beside this module, never by
  * editing component code. Keep it that way.
  *
+ * Smooth blend (feat/smooth-cards): the slot's wrapper carries a
+ * gradient overlay in home-v5.css (.hv5-card-film::after) that
+ * dissolves the bottom of the picture into the card colour, so
+ * the picture meets the text area with no hard line. The overlay
+ * sits inside the existing box and covers the film, the poster,
+ * and the still alike. Both cards use the same stops, clear at
+ * 64% of the box height and solid #fdfbf3 at the bottom edge,
+ * because both pictures dissolve into the same card colour. The
+ * three spot illustrations on the cards below (Review, Journal,
+ * Grown-ups) have their own treatment, one settling pass of CSS
+ * motion armed by LazyHomeImage. That motion is not part of this
+ * module and no files here serve it.
+ *
  * ── Poster vs still — these are DIFFERENT pictures, on purpose ──
  *
  * The POSTER is the film's own opening frame. It is what the
