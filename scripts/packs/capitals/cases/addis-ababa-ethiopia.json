@@ -78,12 +78,12 @@
     {
       "tier": 5,
       "tier_name": "giveaway",
-      "text": "The African Union has its chief home in this city. Leaders from the whole continent come here to meet and work.",
-      "narrowing": "Confirms it: the African Union is based in this city.",
+      "text": "This city is where Ethiopia's leaders run the land. Its parliament meets here, and the prime minister works here too.",
+      "narrowing": "Confirms it: Ethiopia's parliament and its prime minister are based in this city.",
       "source": {
         "article": "Addis Ababa",
         "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
-        "quote": "Addis Ababa serves as the headquarters of major international organizations, such as the African Union and the United Nations Economic Commission for Africa."
+        "quote": "Addis Ababa is a highly developed and important cultural, artistic, financial and administrative center of Ethiopia."
       }
     }
   ],

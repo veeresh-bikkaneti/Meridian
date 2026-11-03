@@ -76,17 +76,17 @@
     {
       "tier": 5,
       "tier_name": "giveaway",
-      "text": "Tennessee's top court keeps a courthouse for its middle region in this city. That seat shows the city's key role in state government.",
-      "narrowing": "Confirms it: the state supreme court sits for its middle region in this city.",
+      "text": "The state capitol stands in this city, on a hill. The lawmakers meet in it, and the state governor works here too.",
+      "narrowing": "Confirms it: Tennessee's lawmakers and its governor work in this city, in and around its state capitol.",
       "source": {
         "article": "Nashville, Tennessee",
         "url": "https://en.wikipedia.org/wiki/Nashville%2C_Tennessee",
-        "quote": "Reflecting the city's position in state government, Nashville is home to the Tennessee Supreme Court's courthouse for Middle Tennessee"
+        "quote": "is the capital and most populous city in the U.S. state of Tennessee"
       }
     }
   ],
   "reveal": {
-    "blurb": "Founded in 1779 as a river port, Nashville was named the lasting state capital in 1843. Today its country songs earn it the name Music City around the world. Nashville is the capital of Tennessee."
+    "blurb": "Founded in 1779 as a river port, Nashville was named the lasting state capital in 1843. Today its country songs earn it the name Music City around the world. The building is the capitol; the city is the capital. Nashville is the capital of Tennessee."
   },
   "source": {
     "label": "Wikipedia",

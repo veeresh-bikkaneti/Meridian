@@ -65,8 +65,8 @@
     {
       "tier": 4,
       "tier_name": "hook",
-      "text": "Each year this place hosts a famed 500-mile car race. It is the largest one-day sports event in the whole world.",
-      "narrowing": "Nearly decisive: one famed 500-mile car race, the largest one-day sports event on Earth.",
+      "text": "Each year this place hosts a famed car race known all around the world. It is the largest one-day sports event in the whole world.",
+      "narrowing": "Nearly decisive: one famed car race, the largest one-day sports event on Earth.",
       "source": {
         "article": "Indianapolis",
         "url": "https://en.wikipedia.org/wiki/Indianapolis",
