@@ -67,7 +67,8 @@ Unlimited" / "Case file · Triangulation" / "🔎 Solve a mystery" /
   poster-derivation section; (2) ONE sentence stating the end
   axis per card (GeoDetective settles on the owner's image at the
   front angle; Cold Trail settles on the wide trail scene with
-  Jolly reached at the cabin end of the trail). No code lines
+  Jolly mid-trail, still walking the footprint trail toward the
+  lit cabin, which is still distant). No code lines
   changed; no asset bytes changed.
 
 ## Pin census (old copy + fragments, whole repo)
@@ -103,11 +104,17 @@ Unlimited" / "Case file · Triangulation" / "🔎 Solve a mystery" /
   bundled Chromium 1243 — the VM's /opt/meta-chromium is not used,
   same as the #321 runs):
   - card-redesign.desktop — **11/11 PASS**
-  - loading-orbs.desktop — **8/8 PASS** (incl. reduced-motion
-    still + film-error → Cold Trail still)
+  - loading-orbs.desktop — **8/8 PASS** (builder-run result;
+    incl. reduced-motion still + film-error → Cold Trail still)
   - home-visual-layout.desktop — **13/13 PASS** (copy is 13 chars
-    longer rendered; no layout movement)
-  - No failures, so no main control run was needed.
+    longer rendered; the card chain has no fixed height or clamp,
+    so a one-line text growth has no failure mode by construction
+    — absorbed by grid stretch + auto-margin CTAs)
+  - QA's combined E2E spot run had one infra flake
+    (card-redesign:278 setup timeout under VM load; branch rerun
+    1/1 PASS, unmodified-main control 11/11). The loading-orbs
+    8/8 result above is a builder-run result that QA did not
+    rerun.
 
 ## Flags for the owner / panel
 
