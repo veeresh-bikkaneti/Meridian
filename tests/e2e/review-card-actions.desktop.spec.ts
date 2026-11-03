@@ -130,7 +130,7 @@ async function gotoCard(page: Page) {
   return section;
 }
 
-type ControlKey = "primary" | "reset" | "film-toggle";
+type ControlKey = "primary" | "reset";
 
 /** The card's controls in DOM order, as ordered identities. */
 async function controlIdentities(page: Page): Promise<ControlKey[]> {
@@ -141,7 +141,6 @@ async function controlIdentities(page: Page): Promise<ControlKey[]> {
     for (const el of section.querySelectorAll("button")) {
       if (el.getAttribute("aria-label") === "Review my misses: Start review") keys.push("primary");
       else if (el.getAttribute("data-testid") === "reset-history-open") keys.push("reset");
-      else if (el.getAttribute("data-testid") === "card-film-review-toggle") keys.push("film-toggle");
       else keys.push(`unknown:${el.textContent?.trim() ?? ""}`);
     }
     return keys;
@@ -204,7 +203,7 @@ test("hit-test: controls own their centres; heading/paragraph/corners hit no but
   await expect(section.locator(".hv5-review-cue")).toHaveCount(0);
 });
 
-test("stack + tab order: focus walks primary → reset → film toggle (due, flag on)", async ({
+test("stack + tab order: focus walks primary → reset (due, flag on)", async ({
   page,
   context,
 }) => {
@@ -212,10 +211,12 @@ test("stack + tab order: focus walks primary → reset → film toggle (due, fla
   await seedDeckOn(page, deckSeed(0));
   await gotoCard(page);
 
-  // The art film's pause/play toggle is the card's third control
-  // (feat/smooth-cards Part 2 redo): it sits in the art slot after
-  // the text column in DOM order, so it tabs last.
-  expect(await controlIdentities(page)).toEqual(["primary", "reset", "film-toggle"]);
+  // The card's controls end at the reset opener. The art film's
+  // pause/play toggle was the third control during the Part 2
+  // redo round; the owner's autoloop order (2026-11-03) removed
+  // it, and the banner art now precedes the text column in DOM
+  // order while adding no control at all.
+  expect(await controlIdentities(page)).toEqual(["primary", "reset"]);
 
   // Visual order = DOM order: each control sits below the previous.
   const ys = await page.evaluate(() => {
@@ -258,12 +259,11 @@ test("stack + tab order: focus walks primary → reset → film toggle (due, fla
   const keyOf = (sig: string): string | null => {
     if (sig.includes("Review my misses: Start review")) return "primary";
     if (sig.includes("reset-history-open")) return "reset";
-    if (sig.includes("card-film-review-toggle")) return "film-toggle";
     return null;
   };
   const walked: string[] = [];
   let prev = await signature();
-  for (let i = 0; i < 48 && !walked.includes("film-toggle"); i++) {
+  for (let i = 0; i < 48 && !walked.includes("reset"); i++) {
     await page.keyboard.press("Tab");
     await expect
       .poll(async () => (await signature()) !== prev, { timeout: 15_000 })
@@ -273,7 +273,7 @@ test("stack + tab order: focus walks primary → reset → film toggle (due, fla
     const key = keyOf(sig);
     if (key && walked[walked.length - 1] !== key) walked.push(key);
   }
-  expect(walked).toEqual(["primary", "reset", "film-toggle"]);
+  expect(walked).toEqual(["primary", "reset"]);
 });
 
 test("primary semantics: no stretch class, name unchanged, cue absent in both deck states", async ({
@@ -383,11 +383,14 @@ test("state matrix: ordered identities + danger-footer ownership per state", asy
     want: ControlKey[];
     footer: number;
   }[] = [
-    { name: "due × on", seed: deckSeed(0), flag: true, want: ["primary", "reset", "film-toggle"], footer: 1 },
-    { name: "due × off", seed: deckSeed(0), flag: false, want: ["primary", "reset", "film-toggle"], footer: 1 },
-    { name: "caught-up × on", seed: deckSeed(CAUGHT_UP), flag: true, want: ["reset", "film-toggle"], footer: 1 },
-    { name: "caught-up × off", seed: deckSeed(CAUGHT_UP), flag: false, want: ["reset", "film-toggle"], footer: 1 },
-    { name: "empty", seed: { v: 1, entries: {} }, flag: true, want: ["film-toggle"], footer: 0 },
+    // The film-toggle entries left every row on the owner's
+    // autoloop order (2026-11-03): the Review film loops and
+    // renders no button in any deck state, including empty.
+    { name: "due × on", seed: deckSeed(0), flag: true, want: ["primary", "reset"], footer: 1 },
+    { name: "due × off", seed: deckSeed(0), flag: false, want: ["primary", "reset"], footer: 1 },
+    { name: "caught-up × on", seed: deckSeed(CAUGHT_UP), flag: true, want: ["reset"], footer: 1 },
+    { name: "caught-up × off", seed: deckSeed(CAUGHT_UP), flag: false, want: ["reset"], footer: 1 },
+    { name: "empty", seed: { v: 1, entries: {} }, flag: true, want: [], footer: 0 },
   ];
   const browser = context.browser()!;
   for (const c of cases) {

@@ -195,6 +195,140 @@ Environment note: the VM restarted mid-run (12:51 UTC) and the
 E2E lock carried three other crews' suites; waits were long but
 every run above completed against this branch's build.
 
+## Rework — owner redirect (2026-11-03, after the fade captures)
+
+Owner words, verbatim:
+- 06:18 CST, on the Part 1 fade: "Thats too harsh on eyes the
+  white clouds gradient."
+- 09:05 CST: "Nothing is visible with the heavy cloud and
+  playbutton, we dont need playbutton it should be in autoloop,
+  I need this bigger, review should be more like rewinding
+  something that went wrong so you need to rethink and
+  reinageune this."
+- 09:07 CST: "Remove playbutton set it on auto loop." (all card
+  films). On the fade variants: he cannot tell A/B/C apart at
+  capture size, the softer direction looks good, and he wants
+  the gradient reduced even further. No variant landed as
+  captured.
+
+Four work packages, all built on this branch:
+
+WP1, fade (thin bottom strip, game cards only). The cream ramp
+is deleted. A mask feather on the `.hv5-pic` media itself holds
+the scene at full opacity until 84% of the box, feathers to
+transparent at 100% (stops 84 / 93 at 0.55 alpha / 100). The
+wrapper ::after is now a landing strip only (clear to 94%,
+0.5 alpha at 97.5%, solid #fdfbf3 at 100%). Mechanism is the UX
+Designer memo's Variant C compressed from a 42% feather to a
+strip, without its backdrop-blur layer. No pigment is painted
+over the scene. `.hv5-art` slots keep ::after { content: none }.
+
+WP2, autoloop, no toggle (all five cards). CardFilm loses the
+toggle button, the paused state, and the play/pause/ended
+handlers. The video gains `loop`. A second IntersectionObserver
+(threshold 0) pauses films off screen and plays them on screen.
+Gates unchanged: reduced motion (live hook), Save-Data,
+deviceMemory at or below 2, or a video error land on the still
+and the .mp4 is never fetched. The component header records the
+governance change: the owner's autoloop order supersedes the
+#295/#321 play-once + toggle governance for card films only
+(the verdict clip keeps its stop), and the WCAG 2.2.2 tradeoff
+is stated in plain words (continuous looping decorative motion,
+no per-card stop; the gates are the stops that remain). Toggle
+CSS deleted from home-v5.css.
+
+WP3, bigger spot slots. Review, Journal, and Grown-ups art
+slots are full-bleed banners at the top of the card: CardFilm
+moves before `.hv5-txt` in game-app.tsx (no copy changes), and
+the appended art-film block sets width calc(100% + 56px),
+margin -26px -28px 18px, position relative, mask none,
+border-radius 0. Per-card aspect ratios unchanged (400/269,
+1/1, 1/1; nothing cropped). Spot text columns return to
+max-width 100%. The wrapper keeps pointer-events: none from the
+base rule. The z-index 3 lift and the toggle pointer-events
+rule are deleted with the toggle. The game cards' `.hv5-pic`
+geometry is untouched.
+
+WP4, films (no new generation calls; per-build record in
+evidence/takes/TAKE-NOTES.md, rework addendum):
+- Review, reimagined (editorial, from take 1 raw): the glass
+  sweeps, overshoots, and settles wrong at W = 4.8 s (frames at
+  3.0/3.6/4.2/4.8/5.4 s inspected; 4.8 is the first clearly
+  settled-wrong frame), 0.4 s freeze on W, the same frames
+  reversed at 1.7x, 1.3 s freeze on frame 0. Last frame is
+  frame 0 by construction. 9.417 s, 800x538, CRF 34, 179,821
+  bytes. Last vs first PSNR 33.49 dB; the source frame against
+  each encoded frame measures 33.70 / 33.87 dB, so the gap is
+  CRF 34 quantization noise between two encodes of one frame.
+  Poster unchanged: new frame 0 is pixel-identical to the
+  shipped film's frame 0 (MAD vs poster 2.08/255, as shipped).
+- Cold Trail, ping-pong from the original take: forward +
+  reversed, 12.0 s, 1094x616, CRF 40 (38 measured 506,132
+  bytes, over cap), 389,320 bytes. Both joins are the film's
+  own frames; last vs first PSNR 26.81 dB (falling snow is
+  per-frame noise at CRF 40; the scene and pose are the same
+  frame at both ends). Poster re-derived from the new frame 0
+  per the card-media standing rule (59,952 bytes, MAD 2.29;
+  the old poster measured 5.88 against the new grain).
+- Journal, seam polish only: 0.8 s xfade of the tail into the
+  head on the shipped film. 7.917 s, CRF 38, 105,838 bytes.
+  Last vs first PSNR 21.93 dB, up from the hard cut's 18.22.
+  Poster unchanged (frame 0 untouched; MAD 2.44).
+- Grown-ups, seam polish only: 0.4 s xfade. 6.042 s, CRF 34,
+  100,591 bytes. Last vs first 33.09 dB, up from 31.37. Poster
+  unchanged (MAD 1.99).
+- GeoDetective: file untouched (native loop).
+card-media.ts comments updated: fade paragraph, Review beat,
+and a loop-treatment paragraph per film plus the autoloop
+governance pointer to card-film.tsx.
+
+WP5, tests (re-pins, each naming the owner order):
+- card-film.test.ts: play-once + toggle describes re-pinned to
+  autoloop (loop present; no <button>; no aria-pressed; no
+  onEnded hold; off-screen observer pinned); toggle-CSS absence
+  pins; banner geometry + picture-first DOM pins; byte caps on
+  the new files' real sizes (all five at or under 400,000).
+- home-smooth-cards.test.ts: fade pins on the mask stops
+  (84/93/100) and strip stops (94/97.5/100); the 64% ramp is an
+  absence pin that fails if the ramp returns; toggle pins
+  replaced by absence pins; banner pins (calc width, banner
+  margin, mask none, txt 100%, pointer-events none survives).
+- E2E: card-redesign focus counts drop the film toggle (game
+  cards 2 to 1, badges 3 to 2, Review due 3 to 2, empty 1 to 0,
+  caught-up 2 to 1) and the Review illustration test now pins
+  banner width; review-card-actions walks end at
+  [primary, reset] in every deck state (empty is now []);
+  loading-orbs masked-blob test re-pinned to the banner (mask
+  none, banner spans the card width at its top).
+
+Rework gates (tip before this status commit):
+- `npx tsc --noEmit`: clean.
+- `npm test`: exit 0; src 1987/1987 pass (1980 before the
+  rework; the two re-pinned suites carry the net change).
+- `npm run test:worker`: 85/85. lint-cards: GATE PASSED.
+- `npm run build:pages` (VITE_KOFI_URL set): PASS.
+- E2E (flock, --workers=1, Chromium 1243, Ko-fi build):
+  review-card-actions 6/6, loading-orbs 8/8,
+  grownups-privacy-contact 5/5, home-visual-layout 13/13.
+  card-redesign: 10/11 in a contended full-file run (test D,
+  grid band, burned 5.1 min under VM load); D run alone right
+  after passed in 24.1 s, so the file reads green with a
+  contention flake recorded, per the repo's flake rule.
+- Grandpa tour: 5 passed / 20 failed in this VM. The standing
+  record for this spec in this VM is failure on unmodified main
+  too (4 passed / 21 failed in the Part 2 redo round, the tour
+  element never appearing). This run's pass count is one above
+  that baseline. Tooling caveat, recorded honestly: Playwright
+  test discovery in this VM proved unstable during this round
+  (repeated --list runs returned 1430, then 0, then 0 tests,
+  and one run's title list did not match the spec file on
+  disk), so the tour result is reported as UNVERIFIED here,
+  not as a pass and not as a branch regression. The QA silo
+  should re-run the tour in a clean environment.
+- Zero copy changes in the rework: game-app.tsx moves three
+  CardFilm elements and nothing else; LockedLoop, the verdict
+  clip component, game screens, and pack code untouched.
+
 ## Gates (tip before this status commit)
 
 - `npx tsc --noEmit`: clean.
@@ -265,5 +399,13 @@ were not touched, commented on, or rebased.
 - [x] Visual captures (videos + settle stills)
 - [x] Docs (README + card-media comments) and PR body
 - [x] PR opened: #324; stop at READY (no merge)
-- [ ] Fade cure (Part 1) lands after this redo, from the owner's variant pick
-- [ ] Panel re-vote on the final tip after the fade cure
+- [x] Rework (owner redirect 2026-11-03): thin-strip mask fade,
+      autoloop with no toggle on all five films, banner art
+      slots, Review rewind film + Cold Trail ping-pong +
+      Journal/Grown-ups loop xfades
+- [x] Rework unit re-pins + E2E re-pins (E2E specs committed
+      with this status update)
+- [ ] QA silo verification of the rework tip (incl. a clean-
+      environment Grandpa tour run; see the tooling caveat in
+      the rework gates above)
+- [ ] Panel re-vote on the final tip after QA

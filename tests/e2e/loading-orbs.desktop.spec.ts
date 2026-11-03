@@ -23,9 +23,11 @@ import { serveBuiltArtifact } from "./helpers";
  * 5. Film error path: aborting the Cold Trail .mp4 lands the card on
  *    its still, with NO new fallback UI invented.
  * 6. No orb on maps or in the storyteller/home story area.
- * 7. Masked-blob check: the masked .hv5-art blob shape now hosts
- *    the Journal film slot — poster first, film after the gate —
- *    and still never an orb.
+ * 7. Banner check: the Journal .hv5-art slot (a full-bleed banner
+ *    since the 2026-11-03 rework; the radial blob mask it carried
+ *    as a corner illustration is removed) hosts the Journal film
+ *    slot — poster first, film after the gate — and still never
+ *    an orb.
  *
  * No hard sleeps anywhere: every wait is an assertion on element state
  * (visible / detached / count) or a test-held route gate released by the
@@ -232,7 +234,7 @@ test("no orb on maps or in the storyteller/home story area", async ({ page, cont
   await expect(page.locator(".hv5-globe-orb, .hv5-lazy-orb")).toHaveCount(0);
 });
 
-test("masked blob: the masked .hv5-art shape hosts the Journal film, never an orb", async ({
+test("banner slot: the Journal .hv5-art banner hosts the Journal film, never an orb", async ({
   page,
   context,
 }) => {
@@ -243,14 +245,21 @@ test("masked blob: the masked .hv5-art shape hosts the Journal film, never an or
   const card = page.getByTestId("journal-card");
   const wrapper = card.locator(".hv5-art");
   await expect(wrapper).toHaveCount(1);
-  // The wrapper carries the radial blob mask (masked .hv5-art shape).
+  // Rework pin (2026-11-03): the wrapper is a full-bleed banner,
+  // so the radial blob mask the corner illustration carried is
+  // gone — the computed mask is none, and the banner spans the
+  // card's full width at its top.
   const mask = await wrapper.evaluate((el) => {
     const cs = getComputedStyle(el);
     return cs.maskImage || cs.webkitMaskImage || "";
   });
-  expect(mask).toContain("radial-gradient");
+  expect(mask).toBe("none");
+  const bannerBox = await wrapper.boundingBox();
+  const cardBox = await card.boundingBox();
+  expect(Math.abs(bannerBox!.width - (cardBox!.width - 2))).toBeLessThanOrEqual(1.5);
+  expect(Math.abs(bannerBox!.y - (cardBox!.y + 1))).toBeLessThanOrEqual(1.5);
   // Before the card nears the viewport, the film slot inside the
-  // masked wrapper shows the film's poster — and no orb exists in
+  // banner wrapper shows the film's poster — and no orb exists in
   // the wrapper at any point (the orb this test used to pin left
   // with LazyHomeImage in the Part 2 redo).
   const film = card.getByTestId("card-film-journal");
