@@ -48,16 +48,31 @@ Approvals: branch + PR are the assigned task. Merge: owner only.
       resolved by hand, both records kept in this file
 - [x] Component + CSS + media module
 - [x] Unit tests
-- [ ] Gates (tsc / npm test / lint-cards / build:pages)
-- [ ] E2E home + age-band, branch vs main control
+- [x] Gates (tsc / npm test / lint-cards / build:pages) — all
+      exit 0 on the pre-rebase tip (app code identical after the
+      rebase; the rebase touched only BRANCH_STATUS, security.txt,
+      and two E2E specs). npm test: 943 pass + 11 skip / 954 and
+      1978/1978. Region MAD (encoded film, vs frame 0): lamp
+      ≤ 0.13, window ≤ 0.04, torso peak 13.15, final second ≤ 0.02
+- [x] E2E home + age-band, branch vs main control — capture spec
+      3/3 (row parity 561.16 px both bands, Δ 0.00; hover no-lift;
+      reduced-motion still-only); age-profile-gate +
+      home-visual-layout pass; card-redesign split-order pair
+      passed on rerun after browser-crash failures under load
+      (the VM rebooted mid-run); globe-band-switch pair fails
+      identically on unmodified main — pre-existing, not this
+      branch
 - [x] Captures: film, settle still, band-switch geometry, side-by-side
       (sealed in `~/workspace/meridian-band-port-evidence/`)
-- [ ] PR open (no merge)
+- [ ] PR open (no merge) — opening with this status
 
 ## Sandbox media prep (no repo commits; PR #324 owns the card slots)
 
-- [ ] Unit 2 — LE Cold Trail ping-pong encode in evidence/media-prep
-- [ ] Unit 3 — Trail Scout Review take in evidence/media-prep
+- [x] Unit 2 — LE Cold Trail ping-pong encode in evidence/media-prep
+      (349,224 B, 12 s; seams: join 0.30, loop 4.05)
+- [x] Unit 3 — Trail Scout Review take in evidence/media-prep
+      (attempt 1 held identity: settle MAD 20.67 vs the shipped
+      still, zero invented text; no re-time fallback needed)
 
 ---
 
