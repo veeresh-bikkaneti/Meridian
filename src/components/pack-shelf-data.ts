@@ -4,24 +4,37 @@ import { assetBase } from "./storyteller-lines.ts";
  * Pack shelf data: the one adapter between the shelf UI and the deck
  * state the rest of the story-pack swarm builds.
  *
- * Slice 4 owns this file. Slice 1 (per-deck store plumbing) is built in
- * parallel, so every read here goes through a narrow, defensive peek at
- * the storage shapes DESIGN.md fixes, and the Stacker rewires these
- * functions to slice 1's final API at integration time. The assumed
- * interfaces are:
+ * Slice 4 owns this file. Slice 1 (per-deck store plumbing) was built
+ * in parallel; the Stacker wired these functions to the integrated
+ * stores. Each edition has exactly one selection store, owned by the
+ * engine that deals from it, and both the chips and the dealer read
+ * that same store:
  *
- * 1. Deck selection lives under PACK_SHELF_SELECTION_KEY, one deck id
- *    per edition. Slice 1's deal functions read it through
- *    readSelectedDeck() so a run deals from the deck the player picked.
+ * 1. GeoDetective selection lives in the loop store itself: the
+ *    activeDeckId field of the meridian.loop.v2 blob (owner:
+ *    src/game/loop/store.ts, written by setActiveDeck). Reads peek
+ *    the blob. Writes go through the loop screen's own store commit
+ *    (PackShelf's onPickDeck prop), because the screen owns the live
+ *    in-memory copy of the store; a storage write from here would be
+ *    overwritten by the screen's next commit. Shelf deck ids differ
+ *    from loop deck ids in one place: the shelf's core deck is "all",
+ *    the loop store's is "core" (LOOP_CORE_DECK_ID in
+ *    src/game/loop/types.ts, restated below and pinned by test).
+ *    toShelfDeckId maps between the two vocabularies.
  * 2. GeoDetective per-deck progress: a deck state's cycleCompleted
- *    count is its cases-closed number. The core deck reads the current
- *    loop store blob (meridian.loop.v2, owned by src/game/loop/types.ts
- *    as LOOP_STORAGE_KEY_V2). Pack decks have no store yet on this
- *    branch, so their closed count reads as unknown, never as zero.
- * 3. Cold Trail pack progress: the pack store key from DESIGN.md
- *    section 1.4 (meridian.coldtrail.pack.capitals.v1) holds the same
- *    ColdTrailStore shape as the core store, and its solved field is
- *    the cases-closed count.
+ *    count is its cases-closed number. The core deck's state is the
+ *    blob's deck field; a pack deck's state is blob.packDecks[<id>].
+ *    A deck that was never built reads as unknown, never as zero.
+ * 3. Cold Trail selection lives under PACK_SHELF_SELECTION_KEY, one
+ *    deck id for the edition. TrailScreen reads the same blob when
+ *    it deals the next case (its onPickDeck handler writes through
+ *    writeSelectedDeck below). Cold Trail pack progress: the pack
+ *    store key from DESIGN.md section 1.4
+ *    (meridian.coldtrail.pack.capitals.v1, spelling owned by
+ *    COLDTRAIL_PACK_CAPITALS_STORAGE_KEY in
+ *    src/game/coldtrail/cases-pack.ts) holds the same ColdTrailStore
+ *    shape as the core store, and its solved field is the
+ *    cases-closed count.
  * 4. Pack availability comes from the pack manifest at
  *    public/packs/<packId>/manifest.json (DESIGN.md section 1.2). No
  *    manifest, no chip: an unshipped pack never appears on a kid
@@ -47,11 +60,22 @@ export const PACK_SHELF_SELECTION_KEY = "meridian.pack-shelf.v1";
 /** Owner: LOOP_STORAGE_KEY_V2 in src/game/loop/types.ts. */
 const LOOP_STORE_KEY = "meridian.loop.v2";
 
+/** Owner: LOOP_CORE_DECK_ID in src/game/loop/types.ts. */
+const LOOP_CORE_DECK_ID = "core";
+
 /** Owner: COLDTRAIL_STORAGE_KEY in src/game/coldtrail/store.ts. */
 const COLDTRAIL_STORE_KEY = "meridian.coldtrail.v2";
 
-/** Owner: DESIGN.md section 1.4 (the Cold Trail pack store key). */
+/** Owner: COLDTRAIL_PACK_CAPITALS_STORAGE_KEY in src/game/coldtrail/cases-pack.ts. */
 const COLDTRAIL_PACK_STORE_KEY = "meridian.coldtrail.pack.capitals.v1";
+
+/**
+ * Map a loop-store deck id to the shelf's vocabulary: the loop
+ * store's core deck is the shelf's "all", and pack ids pass through.
+ */
+export function toShelfDeckId(loopDeckId: string): string {
+  return loopDeckId === LOOP_CORE_DECK_ID ? CORE_DECK_ID : loopDeckId;
+}
 
 /** The pack manifest shape from DESIGN.md section 1.2. */
 export interface PackManifest {
@@ -196,14 +220,22 @@ function isNonNegativeInt(value: unknown): value is number {
 const DECK_ID_RE = /^[a-z0-9-]+$/;
 
 /**
- * The deck the player picked for an edition. Defaults to the core deck
- * on any doubt: missing storage, a corrupt blob, or an id that is not
- * a plain deck token all fail closed to "all".
+ * The deck the player picked for an edition, read from the store
+ * that owns selection for that edition. Defaults to the core deck on
+ * any doubt: missing storage, a corrupt blob, or an id that is not a
+ * plain deck token all fail closed to "all".
  */
 export function readSelectedDeck(
   edition: PackEditionId,
   storage: StoragePeek | null = defaultStorage(),
 ): string {
+  if (edition === "geodetective") {
+    const blob = readJsonBlob(storage, LOOP_STORE_KEY);
+    const active = blob?.activeDeckId;
+    return typeof active === "string" && DECK_ID_RE.test(active) && active !== LOOP_CORE_DECK_ID
+      ? active
+      : CORE_DECK_ID;
+  }
   const blob = readJsonBlob(storage, PACK_SHELF_SELECTION_KEY);
   if (!blob || blob.v !== 1) return CORE_DECK_ID;
   const decks = blob.decks as Record<string, unknown> | undefined;
@@ -211,12 +243,19 @@ export function readSelectedDeck(
   return typeof value === "string" && DECK_ID_RE.test(value) ? value : CORE_DECK_ID;
 }
 
-/** Store the player's deck pick for an edition. Fail-silent, like the game stores. */
+/**
+ * Store the player's Cold Trail deck pick. Fail-silent, like the game
+ * stores. GeoDetective picks are not written here: that edition's
+ * selection lives in the loop store, and the loop screen writes it
+ * through its own store commit (PackShelf's onPickDeck prop), so this
+ * function is a documented no-op for "geodetective".
+ */
 export function writeSelectedDeck(
   edition: PackEditionId,
   deckId: string,
   storage: StorageWrite | null = defaultStorage(),
 ): void {
+  if (edition === "geodetective") return;
   if (!storage || !DECK_ID_RE.test(deckId)) return;
   const blob = readJsonBlob(storage, PACK_SHELF_SELECTION_KEY);
   const decks: Record<string, unknown> = {
@@ -231,13 +270,29 @@ export function writeSelectedDeck(
 }
 
 /**
- * GeoDetective core deck progress: cases closed in the current deck
- * cycle. Reads the loop store blob directly (a peek, never a write).
+ * GeoDetective cases closed in one deck's current cycle: the core
+ * deck ("all" in shelf vocabulary) or a pack deck by pack id. Reads
+ * the loop store blob directly (a peek, never a write). A pack deck
+ * that was never built reads as unknown, never zero.
  */
-export function readLoopCoreClosed(storage: StoragePeek | null = defaultStorage()): number | null {
+export function readLoopDeckClosed(
+  deckId: string,
+  storage: StoragePeek | null = defaultStorage(),
+): number | null {
   const blob = readJsonBlob(storage, LOOP_STORE_KEY);
-  const deck = blob?.deck as Record<string, unknown> | undefined;
+  if (!blob) return null;
+  if (deckId === CORE_DECK_ID || deckId === LOOP_CORE_DECK_ID) {
+    const deck = blob.deck as Record<string, unknown> | undefined;
+    return isNonNegativeInt(deck?.cycleCompleted) ? deck.cycleCompleted : null;
+  }
+  const packDecks = blob.packDecks as Record<string, unknown> | undefined;
+  const deck = packDecks?.[deckId] as Record<string, unknown> | undefined;
   return isNonNegativeInt(deck?.cycleCompleted) ? deck.cycleCompleted : null;
+}
+
+/** GeoDetective core deck progress: cases closed in the current cycle. */
+export function readLoopCoreClosed(storage: StoragePeek | null = defaultStorage()): number | null {
+  return readLoopDeckClosed(CORE_DECK_ID, storage);
 }
 
 /**

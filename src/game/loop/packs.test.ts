@@ -83,17 +83,37 @@ test("packManifestCases pairs indexes with tiers, defaulting to one band", () =>
   ]);
 });
 
-test("pilot end to end: the generated Paris case deals from the pack deck and briefs from the sidecar", () => {
+test("the published pack end to end: a tier-1 case deals first, and Paris briefs from the sidecar", () => {
   const manifest = readPublicJson("packs/capitals/manifest.json") as LoopPackManifest;
   assert.equal(isLoopPackManifest(manifest), true);
-  assert.deepEqual(manifest.loopIndexes, [387]);
+  assert.equal(manifest.size, 72);
+  assert.deepEqual(
+    manifest.loopIndexes,
+    Array.from({ length: 72 }, (_, i) => 387 + i),
+    "the pack's indexes continue after the core pool in caseId order",
+  );
 
   const cases = packManifestCases(manifest);
   const store = ensurePackDeck(freshLoopUnlimitedStore(387), "capitals", cases, (bound) => bound - 1);
   const dealt = dealFromDeck(store, "capitals", () => buildTierBandedDeck(cases, (bound) => bound - 1));
-  assert.equal(dealt.index, 387, "Paris, the pack's tier-1 case, deals first");
+  const tier1 = new Set(cases.filter((c) => c.packTier === 1).map((c) => c.index));
+  assert.ok(tier1.has(dealt.index), "a fresh tier-banded pack deck deals a tier-1 case first");
 
-  const clue = readPublicJson("loop/clues/387.json") as {
+  const meta = readPublicJson("packs/capitals/loop-meta.json");
+  assert.equal(isLoopPackMeta(meta), true);
+  assert.equal(Object.keys(meta).length, 72);
+
+  // Paris, the pack's pilot case, sits at its caseId-order index: its
+  // clue file is an ordinary clue file and its sidecar entry briefs
+  // and reveals the pairing.
+  const parisIndex = Number(
+    Object.keys(meta).find((key) => {
+      const e = (meta as Record<string, { subject: { name: string } }>)[key];
+      return e?.subject.name === "France";
+    }),
+  );
+  assert.ok(Number.isInteger(parisIndex), "the sidecar carries the France case");
+  const clue = readPublicJson(`loop/clues/${parisIndex}.json`) as {
     v: number;
     placeId: string;
     target: { lon: number; lat: number };
@@ -104,9 +124,7 @@ test("pilot end to end: the generated Paris case deals from the pack deck and br
   assert.deepEqual(clue.target, { lon: 2.3488, lat: 48.85341 });
   assert.equal(clue.clues.length, 5);
 
-  const meta = readPublicJson("packs/capitals/loop-meta.json");
-  assert.equal(isLoopPackMeta(meta), true);
-  const entry = loopMetaEntryFor(meta, dealt.index);
+  const entry = loopMetaEntryFor(meta, parisIndex);
   assert.ok(entry);
   assert.equal(packBriefingText(entry), "Your case: find the capital of France.");
   assert.ok(entry.blurb.endsWith("Paris is the capital of France."));

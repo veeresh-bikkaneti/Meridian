@@ -47,6 +47,7 @@ import {
   loadLoopStore,
   returnIndexToDeckHead,
   returnPuzzleIndexToDeck,
+  setActiveDeck,
   writeLoopStoreV2,
 } from "./store";
 import {
@@ -62,6 +63,7 @@ import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
 import { geodetectiveConfig, getBandConfig, canUseHint, resolveBand, type AgeBandId, type GeoDetectiveConfig } from "@/game/age-profile";
 import { HintPanel } from "@/components/hint-panel";
 import { PackShelf } from "@/components/pack-shelf";
+import { CORE_DECK_ID as SHELF_CORE_DECK_ID, toShelfDeckId } from "@/components/pack-shelf-data";
 import { directionalHint } from "@/components/hint-logic";
 import { awardCleanRoundBadge, type PassportBadge } from "@/game/passport/badges";
 import {
@@ -357,6 +359,17 @@ export function LoopScreen({
     storeRef.current = next;
     setStore(next);
     writeLoopStoreV2(next);
+  };
+
+  // Pack shelf pick: the loop store is this edition's one selection
+  // store, and this screen owns its live copy, so a pick is a store
+  // commit (setActiveDeck), never a side write the next commit would
+  // overwrite. The open mystery is untouched: it completes against
+  // the deck it was dealt from; the pick steers the next deal.
+  const onPickDeck = (shelfDeckId: string) => {
+    const s = storeRef.current;
+    if (!s) return;
+    commitStore(setActiveDeck(s, shelfDeckId === SHELF_CORE_DECK_ID ? undefined : shelfDeckId));
   };
 
   const [load, setLoad] = useState<LoadState>({
@@ -763,15 +776,18 @@ export function LoopScreen({
         </p>
       </header>
 
-      {/* Pack shelf (story packs, swarm slice 4): deck chips under the
-          header. The shelf stores the player's pick; the deal path
-          reads it once slice 1's deck-aware dealing lands.
-          activeDeckId names the deck the open case came from, which is
-          the core deck until then. */}
+      {/* Pack shelf (story packs): deck chips under the header. A pick
+          commits the loop store's active deck through onPickDeck, and
+          the deal path reads that same store. activeDeckId names the
+          deck the open case came from (the store's active deck while
+          no case is open), in shelf vocabulary. */}
       <PackShelf
         edition="geodetective"
-        activeDeckId="all"
+        activeDeckId={toShelfDeckId(
+          current ? deckIdOfPuzzle(current) : store ? activeDeckIdOf(store) : LOOP_CORE_DECK_ID,
+        )}
         caseFinished={!!current && current.status !== "playing"}
+        onPickDeck={onPickDeck}
         onStartNext={onNextMystery}
       />
 

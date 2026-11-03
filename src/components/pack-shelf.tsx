@@ -8,8 +8,8 @@ import {
   fetchPackManifest,
   readColdtrailClosed,
   readLoopCoreClosed,
+  readLoopDeckClosed,
   readSelectedDeck,
-  writeSelectedDeck,
   type PackDeckView,
   type PackEditionId,
   type PackManifest,
@@ -25,35 +25,38 @@ import {
  *   Capitals pack once its manifest ships. An unshipped pack never
  *   renders a chip.
  * - See cases closed per deck, read live from each deck's own store.
- * - Tap a chip to pick that deck. The pick is stored through
- *   pack-shelf-data.ts, and the deal path (slice 1) deals the next
- *   case from it. When a finished case is on screen, the tap also
- *   starts that next case at once, through the screen's own next-case
- *   handler. A case mid-play is never yanked: the pick applies to the
- *   next case, and the status line under the chips says so.
+ * - Tap a chip to pick that deck. The pick goes to the screen
+ *   through onPickDeck: the screen owns the store its dealer reads,
+ *   so the pick and the deal can never disagree. When a finished
+ *   case is on screen, the tap also starts that next case at once,
+ *   through the screen's own next-case handler. A case mid-play is
+ *   never yanked: the pick applies to the next case, and the status
+ *   line under the chips says so.
  *
  * Layout: the section reserves its height from first paint. The label,
  * the chip row, and the status line all carry fixed minimum heights,
  * so the pack chip arriving after its manifest fetch moves nothing
  * below the shelf.
  *
- * Integration points for the Stacker:
- * - activeDeckId is the deck the on-screen case was dealt from. Both
- *   screens pass the core deck on this branch because dealing is not
- *   deck-aware yet; slice 1 passes the open case's real deck id.
- * - GeoDetective pack progress reads as unknown until slice 1's
- *   per-deck store lands (see pack-shelf-data.ts, assumption 2).
+ * Wiring (integrated): activeDeckId is the deck the on-screen case
+ * was dealt from, in shelf vocabulary; both screens pass the open
+ * case's real deck. GeoDetective pack progress reads the pack deck's
+ * own cycle count in the loop store; Cold Trail pack progress reads
+ * the pack store's solved count.
  */
 export function PackShelf({
   edition,
   activeDeckId,
   caseFinished,
+  onPickDeck,
   onStartNext,
   coreTotal = null,
 }: {
   edition: PackEditionId;
   activeDeckId: string;
   caseFinished: boolean;
+  /** Store the pick in the store the screen's dealer reads. Runs before onStartNext. */
+  onPickDeck: (deckId: string) => void;
   onStartNext: () => void;
   /** Deck size when the screen already knows it (Cold Trail bundles its count). */
   coreTotal?: number | null;
@@ -89,7 +92,8 @@ export function PackShelf({
   // store commit, so the counts stay current without a subscription.
   const coreClosed =
     edition === "geodetective" ? readLoopCoreClosed() : readColdtrailClosed("core");
-  const packClosed = edition === "coldtrail" ? readColdtrailClosed("pack") : null;
+  const packClosed =
+    edition === "geodetective" ? readLoopDeckClosed(FIRST_PACK_ID) : readColdtrailClosed("pack");
   const decks = buildDeckList({
     edition,
     packManifest: manifest,
@@ -105,8 +109,8 @@ export function PackShelf({
   const selectedDeck: PackDeckView | undefined = decks.find((d) => d.id === shownSelected);
 
   const onPick = (deckId: string) => {
-    writeSelectedDeck(edition, deckId);
     setSelected(deckId);
+    onPickDeck(deckId);
     if (caseFinished) onStartNext();
   };
 

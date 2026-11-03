@@ -20,7 +20,9 @@ import {
   isPackManifest,
   readColdtrailClosed,
   readLoopCoreClosed,
+  readLoopDeckClosed,
   readSelectedDeck,
+  toShelfDeckId,
   writeSelectedDeck,
   type PackManifest,
 } from "./pack-shelf-data.ts";
@@ -126,37 +128,60 @@ describe("deckProgressLine", () => {
 });
 
 describe("deck selection storage", () => {
-  it("defaults to the core deck and round-trips a pick per edition", () => {
-    const s = fakeStorage();
-    assert.equal(readSelectedDeck("geodetective", s), CORE_DECK_ID);
-    writeSelectedDeck("geodetective", "capitals", s);
-    writeSelectedDeck("coldtrail", "capitals", s);
-    assert.equal(readSelectedDeck("geodetective", s), "capitals");
-    assert.equal(readSelectedDeck("coldtrail", s), "capitals");
-    writeSelectedDeck("geodetective", CORE_DECK_ID, s);
-    assert.equal(readSelectedDeck("geodetective", s), CORE_DECK_ID);
-    assert.equal(readSelectedDeck("coldtrail", s), "capitals");
-    const blob = JSON.parse(s.dump()[PACK_SHELF_SELECTION_KEY]!) as { v: number };
-    assert.equal(blob.v, 1);
-  });
-
-  it("fails closed to the core deck on corrupt or foreign blobs", () => {
-    const corrupt = fakeStorage({ [PACK_SHELF_SELECTION_KEY]: "{nope" });
-    assert.equal(readSelectedDeck("geodetective", corrupt), CORE_DECK_ID);
-    const foreign = fakeStorage({
-      [PACK_SHELF_SELECTION_KEY]: JSON.stringify({ v: 2, decks: { geodetective: "capitals" } }),
+  it("reads the GeoDetective pick from the loop store's active deck", () => {
+    const empty = fakeStorage();
+    assert.equal(readSelectedDeck("geodetective", empty), CORE_DECK_ID);
+    const core = fakeStorage({
+      "meridian.loop.v2": JSON.stringify({ deck: {}, activeDeckId: "core" }),
     });
-    assert.equal(readSelectedDeck("geodetective", foreign), CORE_DECK_ID);
+    assert.equal(readSelectedDeck("geodetective", core), CORE_DECK_ID);
+    const pack = fakeStorage({
+      "meridian.loop.v2": JSON.stringify({ deck: {}, activeDeckId: "capitals" }),
+    });
+    assert.equal(readSelectedDeck("geodetective", pack), "capitals");
+    const corrupt = fakeStorage({ "meridian.loop.v2": "{nope" });
+    assert.equal(readSelectedDeck("geodetective", corrupt), CORE_DECK_ID);
     const badId = fakeStorage({
-      [PACK_SHELF_SELECTION_KEY]: JSON.stringify({ v: 1, decks: { geodetective: "Bad Id!" } }),
+      "meridian.loop.v2": JSON.stringify({ deck: {}, activeDeckId: "Bad Id!" }),
     });
     assert.equal(readSelectedDeck("geodetective", badId), CORE_DECK_ID);
   });
 
+  it("round-trips a Cold Trail pick in the selection blob", () => {
+    const s = fakeStorage();
+    assert.equal(readSelectedDeck("coldtrail", s), CORE_DECK_ID);
+    writeSelectedDeck("coldtrail", "capitals", s);
+    assert.equal(readSelectedDeck("coldtrail", s), "capitals");
+    writeSelectedDeck("coldtrail", CORE_DECK_ID, s);
+    assert.equal(readSelectedDeck("coldtrail", s), CORE_DECK_ID);
+    const blob = JSON.parse(s.dump()[PACK_SHELF_SELECTION_KEY]!) as { v: number };
+    assert.equal(blob.v, 1);
+  });
+
+  it("fails closed to the core deck on corrupt or foreign selection blobs", () => {
+    const corrupt = fakeStorage({ [PACK_SHELF_SELECTION_KEY]: "{nope" });
+    assert.equal(readSelectedDeck("coldtrail", corrupt), CORE_DECK_ID);
+    const foreign = fakeStorage({
+      [PACK_SHELF_SELECTION_KEY]: JSON.stringify({ v: 2, decks: { coldtrail: "capitals" } }),
+    });
+    assert.equal(readSelectedDeck("coldtrail", foreign), CORE_DECK_ID);
+    const badId = fakeStorage({
+      [PACK_SHELF_SELECTION_KEY]: JSON.stringify({ v: 1, decks: { coldtrail: "Bad Id!" } }),
+    });
+    assert.equal(readSelectedDeck("coldtrail", badId), CORE_DECK_ID);
+  });
+
   it("refuses to store an id that is not a plain deck token", () => {
     const s = fakeStorage();
-    writeSelectedDeck("geodetective", "Bad Id!", s);
+    writeSelectedDeck("coldtrail", "Bad Id!", s);
     assert.equal(s.dump()[PACK_SHELF_SELECTION_KEY], undefined);
+    assert.equal(readSelectedDeck("coldtrail", s), CORE_DECK_ID);
+  });
+
+  it("never writes GeoDetective selection from here (the loop screen's commit owns it)", () => {
+    const s = fakeStorage();
+    writeSelectedDeck("geodetective", "capitals", s);
+    assert.deepEqual(s.dump(), {});
     assert.equal(readSelectedDeck("geodetective", s), CORE_DECK_ID);
   });
 });
@@ -173,6 +198,22 @@ describe("per-deck progress peeks", () => {
       }),
     });
     assert.equal(readLoopCoreClosed(s), 3);
+  });
+
+  it("reads GeoDetective pack progress from the pack deck's own cycle count", () => {
+    const s = fakeStorage({
+      "meridian.loop.v2": JSON.stringify({
+        deck: { deck: [], cycle: 1, cycleCompleted: 3 },
+        packDecks: { capitals: { deck: [], cycle: 2, cycleCompleted: 7 } },
+        current: null,
+      }),
+    });
+    assert.equal(readLoopDeckClosed("capitals", s), 7);
+    assert.equal(readLoopDeckClosed(CORE_DECK_ID, s), 3);
+    const unbuilt = fakeStorage({
+      "meridian.loop.v2": JSON.stringify({ deck: { deck: [], cycle: 1, cycleCompleted: 0 } }),
+    });
+    assert.equal(readLoopDeckClosed("capitals", unbuilt), null, "never built reads unknown, not zero");
   });
 
   it("reads Cold Trail cases closed from core and pack store keys", () => {
@@ -242,9 +283,21 @@ describe("storage key literals match their owner files", () => {
     assert.ok(dataSrc.includes('"meridian.loop.v2"'), "loop key restated");
     assert.ok(trailStore.includes('"meridian.coldtrail.v2"'), "coldtrail key owner");
     assert.ok(dataSrc.includes('"meridian.coldtrail.v2"'), "coldtrail key restated");
-    assert.ok(
-      dataSrc.includes('"meridian.coldtrail.pack.capitals.v1"'),
-      "pack key from DESIGN section 1.4",
-    );
+  });
+
+  it("the pack store key matches its owner in cases-pack.ts and its restatement in store.ts", () => {
+    const dataSrc = readSrc("pack-shelf-data.ts");
+    const casesPack = readSrc("../game/coldtrail/cases-pack.ts");
+    const trailStore = readSrc("../game/coldtrail/store.ts");
+    assert.ok(casesPack.includes('"meridian.coldtrail.pack.capitals.v1"'), "pack key owner");
+    assert.ok(trailStore.includes('"meridian.coldtrail.pack.capitals.v1"'), "pack key restated for the reset");
+    assert.ok(dataSrc.includes('"meridian.coldtrail.pack.capitals.v1"'), "pack key restated for peeks");
+  });
+
+  it("maps loop deck ids to shelf deck ids", () => {
+    const loopTypes = readSrc("../game/loop/types.ts");
+    assert.ok(loopTypes.includes('LOOP_CORE_DECK_ID = "core"'), "loop core id owner");
+    assert.equal(toShelfDeckId("core"), CORE_DECK_ID);
+    assert.equal(toShelfDeckId("capitals"), "capitals");
   });
 });

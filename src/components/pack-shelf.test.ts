@@ -50,7 +50,7 @@ describe("PackShelf chips are real, labelled buttons", () => {
 
 describe("PackShelf tap contract", () => {
   it("stores the pick before starting the next case", () => {
-    const storeAt = shelf.indexOf("writeSelectedDeck(edition, deckId)");
+    const storeAt = shelf.indexOf("onPickDeck(deckId)");
     const startAt = shelf.indexOf("if (caseFinished) onStartNext()");
     assert.ok(storeAt >= 0 && startAt >= 0, "both halves of the tap handler exist");
     assert.ok(storeAt < startAt, "selection is stored before the deal reads it");
