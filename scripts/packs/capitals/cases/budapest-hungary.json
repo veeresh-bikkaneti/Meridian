@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "budapest-hungary",
+  "target": {
+    "placeId": "gn-3054643",
+    "name": "Budapest",
+    "aliases": [
+      "Aquincum"
+    ],
+    "lat": 47.49835,
+    "lon": 19.04045,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Hungary",
+    "iso2": "HU",
+    "subdivision": "Budapest"
+  },
+  "subjectAnswer": {
+    "name": "Hungary",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Hungary",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands on a wide river in the heart of Europe. Hills rise on one bank, and a broad plain spreads out from the other.",
+      "narrowing": "Rules out coasts and mountains; puts the player on a great river between hills and plain.",
+      "source": {
+        "article": "Budapest",
+        "url": "https://en.wikipedia.org/wiki/Budapest",
+        "quote": "Budapest stands on the River Danube and is strategically located at the center of the Pannonian Basin, lying on ancient trade routes linking the hills of Transdanubia with the Great Plain."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winter here can be cold and dim, with snow in most years. Night cold can drop far below freezing from mid December to mid February.",
+      "narrowing": "Rules out mild winters; keeps a cold, snowy heart-of-Europe winter.",
+      "source": {
+        "article": "Budapest",
+        "url": "https://en.wikipedia.org/wiki/Budapest",
+        "quote": "Winter (November until early March) can be cold and the city receives little sunshine. Snowfall is fairly frequent in most years, and nighttime temperatures of −10&#160;°C (14&#160;°F) are not uncommon between mid-December and mid-February."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "A hill town on the river became the land's capital in 1361. Kings then ruled from its castle for a long time.",
+      "narrowing": "Shrinks the list to old royal capitals made in 1361.",
+      "source": {
+        "article": "Budapest — History",
+        "url": "https://en.wikipedia.org/wiki/Budapest#History",
+        "quote": "In 1361 it became the capital of Hungary."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Two old towns face each other across the river, Buda and Pest. In 1873 they joined with a third town to form one city.",
+      "narrowing": "Nearly decisive: two towns, Buda and Pest, joined into one city in 1873.",
+      "source": {
+        "article": "Budapest — History",
+        "url": "https://en.wikipedia.org/wiki/Budapest#History",
+        "quote": "in 1873 Buda and Pest were officially merged with the third part, Óbuda (Old Buda), thus creating the new metropolis of Budapest."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The parliament of Hungary sits in this city, in a grand building by the river. The nation's leaders do their work here too.",
+      "narrowing": "Confirms it: Hungary's parliament sits by the river in this city.",
+      "source": {
+        "article": "Budapest",
+        "url": "https://en.wikipedia.org/wiki/Budapest",
+        "quote": "19th-century landmarks such as the Hungarian Parliament, the State Opera House"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Roman soldiers built a town here, and kings later ruled from the hill town of Buda. In 1873 Buda and Pest joined across the river to form one city. Its hot springs and grand halls draw crowds today. Budapest is the capital of Hungary."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Budapest"
+  },
+  "pointPolicy": "geonames-point"
+}

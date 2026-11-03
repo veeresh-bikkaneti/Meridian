@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "annapolis-maryland",
+  "target": {
+    "placeId": "gn-4347242",
+    "name": "Annapolis",
+    "aliases": [],
+    "lat": 38.97859,
+    "lon": -76.49184,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Maryland",
+    "iso2": "US",
+    "subdivision": "Maryland"
+  },
+  "subjectAnswer": {
+    "name": "Maryland",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Maryland",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This place sits where a river meets a big bay, on flat land by the sea. The nation's capital, Washington, lies just a short drive west of here.",
+      "narrowing": "Puts the player on a flat bay shore, a short drive from Washington.",
+      "source": {
+        "article": "Annapolis, Maryland",
+        "url": "https://en.wikipedia.org/wiki/Annapolis%2C_Maryland",
+        "quote": "Situated on the Chesapeake Bay at the mouth of the Severn River, Annapolis is a historic city with a strong maritime culture. It is 25 miles (40 km) south of Baltimore and about 30 miles (50 km) east of Washington, D.C."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The wide bay beside this place softens its weather all year. Summers stay less hot than inland towns, and winter cold bites less hard here.",
+      "narrowing": "Rules out harsh inland weather; keeps a mild shore softened by a big bay.",
+      "source": {
+        "article": "Annapolis, Maryland",
+        "url": "https://en.wikipedia.org/wiki/Annapolis%2C_Maryland",
+        "quote": "Low elevation and proximity to the Chesapeake Bay give the area more moderate spring and summertime temperatures and slightly less extreme winter lows than locations further inland, such as Washington, D.C."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1694 a royal governor moved the seat of rule to this small port town. He gave the town a new name then, one it still keeps.",
+      "narrowing": "Shrinks the list to ports made a seat of rule by a royal governor in 1694.",
+      "source": {
+        "article": "Annapolis, Maryland — History",
+        "url": "https://en.wikipedia.org/wiki/Annapolis%2C_Maryland#History",
+        "quote": "moved the capital of the royal colony, the Province of Maryland , to Anne Arundel's Towne and renamed the town \"Annapolis\""
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Sailboats fill the harbor of this place, home to a famed school for sea officers. Each year it hosts the world's largest boat show held on the water.",
+      "narrowing": "Nearly decisive: a famed school for sea officers and the largest boat show on water.",
+      "source": {
+        "article": "Annapolis, Maryland",
+        "url": "https://en.wikipedia.org/wiki/Annapolis%2C_Maryland",
+        "quote": "The U.S. Naval Academy, established 1845, is adjacent to the city limits. Known as \"America's Sailing Capital\", Annapolis is a major hub of recreational boating and hosts the world's largest in-water sailboat show each year"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Maryland's lawmakers and governor do the work of the state in this place. Its old State House stands at the heart of town.",
+      "narrowing": "Confirms it: the state lawmakers and the governor are based here.",
+      "source": {
+        "article": "Annapolis, Maryland",
+        "url": "https://en.wikipedia.org/wiki/Annapolis%2C_Maryland",
+        "quote": "is the capital of the U.S. state of Maryland"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Puritan settlers founded a small port on the bay here in 1649. In 1694 the royal governor moved the colony capital to this town and gave it a new name. George Washington gave up his army command in its State House in 1783, and sailboats crowd its harbor today. Annapolis is the capital of Maryland."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Annapolis%2C_Maryland"
+  },
+  "pointPolicy": "geonames-point"
+}

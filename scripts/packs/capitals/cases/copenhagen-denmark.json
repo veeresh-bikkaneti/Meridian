@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "copenhagen-denmark",
+  "target": {
+    "placeId": "gn-2618425",
+    "name": "Copenhagen",
+    "aliases": [
+      "København"
+    ],
+    "lat": 55.67594,
+    "lon": 12.56553,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Denmark",
+    "iso2": "DK",
+    "subdivision": "Capital Region"
+  },
+  "subjectAnswer": {
+    "name": "Denmark",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Denmark",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "Most of this city sits on a big island, and a small part sits on a small island near it. A strait parts it from a city in Sweden.",
+      "narrowing": "Rules out mainland cities; keeps island cities by a strait in the north.",
+      "source": {
+        "article": "Copenhagen",
+        "url": "https://en.wikipedia.org/wiki/Copenhagen",
+        "quote": "The city is situated mainly on the island of Zealand (Sjælland), with a smaller part on the island of Amager. Copenhagen is separated from Malmö, Sweden, by the Øresund strait."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "A warm stream in the sea flows past this far north city and makes it warmer than its place on the map would suggest. The lift is about five degrees in all.",
+      "narrowing": "Rules out truly harsh far-north ports; keeps mild sea-stream coasts.",
+      "source": {
+        "article": "Copenhagen",
+        "url": "https://en.wikipedia.org/wiki/Copenhagen",
+        "quote": "The city is located in a climate zone characterized by the influence of the warm Gulf Stream. This means that Copenhagen is approximately 5&#160;°C warmer than the city's latitude would otherwise dictate."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In about 1416, a king named Eric moved his seat to the castle in this town. From then on, this town was the capital of the whole land.",
+      "narrowing": "Shrinks the list to towns raised to a capital by a king's move in the 1400s.",
+      "source": {
+        "article": "Copenhagen — History",
+        "url": "https://en.wikipedia.org/wiki/Copenhagen#History",
+        "quote": "by about 1416 Copenhagen had emerged as the capital of Denmark when Eric of Pomerania moved his seat to Copenhagen Castle."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A small statue shows the Little Mermaid from a famed tale of the sea. She counts as one of the best known sights in this whole city.",
+      "narrowing": "Nearly decisive: one famed mermaid statue marks this city.",
+      "source": {
+        "article": "Copenhagen",
+        "url": "https://en.wikipedia.org/wiki/Copenhagen",
+        "quote": "Copenhagen's landmarks, such as Tivoli Gardens, The Little Mermaid statue"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The government of Denmark runs from this city. It is the hub for the rule, trade, and arts of the whole land.",
+      "narrowing": "Confirms it: the seat of government and the hub of the land.",
+      "source": {
+        "article": "Copenhagen",
+        "url": "https://en.wikipedia.org/wiki/Copenhagen",
+        "quote": "The city is the cultural, economic, and governmental centre of Denmark"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Viking fishers settled on this shore long ago, and in about 1416 a king moved his seat here and made it the capital. Traders, palaces, and a famed mermaid statue shaped the city in the years since. Copenhagen is the capital of Denmark."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Copenhagen"
+  },
+  "pointPolicy": "geonames-point"
+}

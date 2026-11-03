@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "columbus-ohio",
+  "target": {
+    "placeId": "gn-4509177",
+    "name": "Columbus",
+    "aliases": [],
+    "lat": 39.96118,
+    "lon": -82.99879,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Ohio",
+    "iso2": "US",
+    "subdivision": "Ohio"
+  },
+  "subjectAnswer": {
+    "name": "Ohio",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Ohio",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits where two rivers join, near the middle of its state. It grew where the two streams meet and flow on as one.",
+      "narrowing": "Rules out coasts and border towns; puts the player where two rivers join, near the state's centre.",
+      "source": {
+        "article": "Columbus, Ohio",
+        "url": "https://en.wikipedia.org/wiki/Columbus%2C_Ohio",
+        "quote": "Columbus was founded in 1812 at the confluence of the Scioto and Olentangy rivers."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Snow stays light here, since this city sits too far from the great lakes for their big lake snows. Yet those lakes still send long grey cloudy spells in winter.",
+      "narrowing": "Rules out deep snow lake towns; snow is light here, but grey cloudy spells drag on in winter.",
+      "source": {
+        "article": "Columbus, Ohio",
+        "url": "https://en.wikipedia.org/wiki/Columbus%2C_Ohio",
+        "quote": "It is also too far south and west for lake-effect snow from Lake Erie to have much effect, although the lakes to the north contribute to long stretches of cloudy spells in winter."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "The state's chiefs kept moving the capital from town to town. So in 1812 they built a new city in the centre and made it the capital in 1816.",
+      "narrowing": "Shrinks the list to a brand new city built in 1812 to end the moving of a state capital.",
+      "source": {
+        "article": "Columbus, Ohio",
+        "url": "https://en.wikipedia.org/wiki/Columbus%2C_Ohio",
+        "quote": "It was planned as the state capital due to its central location and officially became the capital in 1816."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Just north of town, a zoo on the river banks is famed round the world, thanks to its director Jack Hanna. A top guide once named it the best zoo in the land.",
+      "narrowing": "Nearly decisive: a world famed zoo by the river, led by Jack Hanna, marks this city.",
+      "source": {
+        "article": "Columbus Zoo and Aquarium",
+        "url": "https://en.wikipedia.org/wiki/Columbus_Zoo_and_Aquarium",
+        "quote": "It has a worldwide reputation, largely attributable to the efforts and promotion of director emeritus Jack Hanna."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The lawmakers of Ohio meet in this city, in the statehouse built on a square set aside for it. From here they run the whole state.",
+      "narrowing": "Confirms it: the state's lawmakers meet in the statehouse in this city.",
+      "source": {
+        "article": "Columbus, Ohio — History",
+        "url": "https://en.wikipedia.org/wiki/Columbus%2C_Ohio#History",
+        "quote": "The two spaces were set to become Capitol Square , including for the Ohio Statehouse"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Lawmakers founded a brand new city at the meeting of two rivers in 1812 and made it their capital in 1816. It grew into the state's largest city, with a zoo known round the world. Columbus is the capital of Ohio."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Columbus%2C_Ohio"
+  },
+  "pointPolicy": "geonames-point"
+}

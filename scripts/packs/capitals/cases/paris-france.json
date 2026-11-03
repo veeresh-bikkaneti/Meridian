@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "paris-france",
+  "target": {
+    "placeId": "gn-2988507",
+    "name": "Paris",
+    "aliases": [
+      "Lutetia"
+    ],
+    "lat": 48.85341,
+    "lon": 2.3488,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "France",
+    "iso2": "FR",
+    "subdivision": "Île-de-France"
+  },
+  "subjectAnswer": {
+    "name": "France",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "France",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands on the River Seine in the west of Europe. Its old streets by the river are a World Heritage Site.",
+      "narrowing": "Rules out everything outside western Europe and puts the player on the River Seine.",
+      "source": {
+        "article": "Paris",
+        "url": "https://en.wikipedia.org/wiki/Paris",
+        "quote": "Parts of the city along the Seine have been designated a UNESCO World Heritage Site since 1991."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are cool and grey, with rain in all months of the year. Hard frost is rare, since the sea air keeps the cold mild.",
+      "narrowing": "Rules out hard-winter lands and dry lands; keeps the mild, wet west.",
+      "source": {
+        "article": "Paris",
+        "url": "https://en.wikipedia.org/wiki/Paris",
+        "quote": "In winter, sunshine is scarce, days are cool, and nights are cold but generally above freezing"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Clovis, a Frankish king, made this city his capital in the year 508. The city stayed the seat of kings for a long time after that.",
+      "narrowing": "Shrinks the list to old royal capitals raised as a king's seat in the early Middle Ages.",
+      "source": {
+        "article": "Paris — History",
+        "url": "https://en.wikipedia.org/wiki/Paris#History",
+        "quote": "Clovis the Frank , the first king of the Merovingian dynasty , made the city his capital from 508."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A tall iron tower went up for a great fair here in 1889. Top artists of the day panned its design, but now the world loves it.",
+      "narrowing": "Nearly decisive: one famous iron tower, built for the 1889 fair, marks this city.",
+      "source": {
+        "article": "Eiffel Tower",
+        "url": "https://en.wikipedia.org/wiki/Eiffel_Tower",
+        "quote": "it was constructed as the centrepiece of the 1889 World's Fair"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The president of France sits in this city. Both houses of its parliament sit here too.",
+      "narrowing": "Confirms it: the president and both houses of parliament sit in this city.",
+      "source": {
+        "article": "Paris",
+        "url": "https://en.wikipedia.org/wiki/Paris",
+        "quote": "The president of France and both houses of the French Parliament sit in Paris."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "River traders built a town on an island here more than 2,000 years ago, and in 508 King Clovis made it his capital. Kings, artists, and crowds at a great fair shaped the streets you see today. That iron tower from 1889 still stands over the city. Paris is the capital of France."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Paris"
+  },
+  "pointPolicy": "geonames-point"
+}

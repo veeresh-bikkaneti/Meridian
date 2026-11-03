@@ -89,16 +89,17 @@ describe("LazyHomeImage — shared card-image orb", () => {
   });
 });
 
-describe("home page wiring — exactly the six lazy sites, nothing else", () => {
+describe("home page wiring — exactly the four lazy sites, nothing else", () => {
+  // feat/home-card-films: the two .hv5-pic sites left this wrapper —
+  // they are governed films now (CardFilm, pinned in
+  // card-film.test.ts). The four remaining stills keep the orb.
   const sites = [
-    '<LazyHomeImage className="hv5-pic" src={desertRuinsUrl} alt="" ariaHidden />',
-    '<LazyHomeImage className="hv5-pic" src={patagoniaUrl} alt="" ariaHidden />',
     '<LazyHomeImage className="hv5-art" src={archiveToolsUrl} alt="" ariaHidden />',
     '<LazyHomeImage className="hv5-art" src={journalTreeUrl} alt="" ariaHidden />',
     '<LazyHomeImage className="hv5-art" src={binocularsHatUrl} alt="" ariaHidden />',
     "<LazyHomeImage src={journalImageUrl(note.image)} alt={note.imageAlt} />",
   ];
-  it("all six home lazy images use the shared wrapper with exact attrs", () => {
+  it("all four home lazy images use the shared wrapper with exact attrs", () => {
     for (const site of sites) {
       assert.ok(gameApp.includes(site), `missing home site: ${site}`);
     }
@@ -120,7 +121,7 @@ describe("home page wiring — exactly the six lazy sites, nothing else", () => 
 
   it("no other wait is touched: edition maps, stories, BootSplash unchanged", () => {
     const lazyUses = (gameApp.match(/<LazyHomeImage/g) || []).length;
-    assert.equal(lazyUses, 6, "exactly six wrapper uses — no orbs anywhere else");
+    assert.equal(lazyUses, 4, "exactly four wrapper uses — no orbs anywhere else");
   });
 });
 

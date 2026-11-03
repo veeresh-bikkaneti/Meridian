@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "richmond-virginia",
+  "target": {
+    "placeId": "gn-4781708",
+    "name": "Richmond",
+    "aliases": [],
+    "lat": 37.55376,
+    "lon": -77.46026,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Virginia",
+    "iso2": "US",
+    "subdivision": "Virginia"
+  },
+  "subjectAnswer": {
+    "name": "Virginia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Virginia",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This place stands where a wide river drops over rocks in rapids. Boats from the sea can sail up no farther than this spot.",
+      "narrowing": "Puts the player at the falls of a wide river, where sea boats must stop.",
+      "source": {
+        "article": "Richmond, Virginia",
+        "url": "https://en.wikipedia.org/wiki/Richmond%2C_Virginia",
+        "quote": "Richmond is located at the James River's fall line"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "High hills to the west slow down blasts of cold air from the far north. The cold air warms up as it sinks down toward this place.",
+      "narrowing": "Rules out flat open plains; keeps a place shielded by hills to the west.",
+      "source": {
+        "article": "Richmond, Virginia",
+        "url": "https://en.wikipedia.org/wiki/Richmond%2C_Virginia",
+        "quote": "Arctic air is delayed long enough to be modified and further warmed as it subsides in its approach to Richmond"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1780 the seat of government moved here from the old port town of Williamsburg. The new spot sat more in the center, safe from sea attack.",
+      "narrowing": "Shrinks the list to seats of government moved inland in 1780 for safety.",
+      "source": {
+        "article": "Richmond, Virginia — History",
+        "url": "https://en.wikipedia.org/wiki/Richmond%2C_Virginia#History",
+        "quote": "On April 18, 1780, the state capital was moved from Williamsburg to Richmond, providing a more centralized location for Virginia's increasing western population and theoretically isolating the capital from a British attack from the coast"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "In 1775, in a small church here, Patrick Henry cried out for freedom. His words, give me liberty or give me death, still ring out today.",
+      "narrowing": "Nearly decisive: one famed cry for liberty was spoken in a church here in 1775.",
+      "source": {
+        "article": "Richmond, Virginia",
+        "url": "https://en.wikipedia.org/wiki/Richmond%2C_Virginia",
+        "quote": "Patrick Henry's \"Give me liberty or give me death!\" speech in 1775 at St. John's Church"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Virginia state government runs from this place. Its lawmakers and its governor do their work here.",
+      "narrowing": "Confirms it: the state government, its lawmakers and its governor are based here.",
+      "source": {
+        "article": "Richmond, Virginia — History",
+        "url": "https://en.wikipedia.org/wiki/Richmond%2C_Virginia#History",
+        "quote": "The Confederate States Congress shared quarters in the Jefferson-designed Virginia State Capitol with the Virginia General Assembly"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Traders and boatmen built a town by the river falls here in 1737. In 1775 Patrick Henry cried, give me liberty or give me death, in its church. Five years later it became the state capital, and lawmakers still meet here today. Richmond is the capital of Virginia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Richmond%2C_Virginia"
+  },
+  "pointPolicy": "geonames-point"
+}

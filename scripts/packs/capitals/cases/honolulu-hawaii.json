@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "honolulu-hawaii",
+  "target": {
+    "placeId": "gn-5856195",
+    "name": "Honolulu",
+    "aliases": [],
+    "lat": 21.30694,
+    "lon": -157.85833,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Hawaii",
+    "iso2": "US",
+    "subdivision": "Hawaii"
+  },
+  "subjectAnswer": {
+    "name": "Hawaii",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Hawaii",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city hugs the south-east shore of an island in the vast Pacific. It is one port in a long chain of islands across that sea.",
+      "narrowing": "Rules out mainland towns; puts the player on the south-east shore of a Pacific island.",
+      "source": {
+        "article": "Honolulu",
+        "url": "https://en.wikipedia.org/wiki/Honolulu",
+        "quote": "situated along the southeast coast of the island of Oʻahu"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This island town stays warm all year, yet its summer is mostly dry. A rain shadow steals much of the rain that should fall here.",
+      "narrowing": "Rules out wet tropics; keeps a warm island city kept dry by a rain shadow.",
+      "source": {
+        "article": "Honolulu",
+        "url": "https://en.wikipedia.org/wiki/Honolulu",
+        "quote": "with a mostly dry summer season, due to a rain shadow effect"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1845, a king moved his realm's capital to this port town. Later kings built it up with palaces and a great church.",
+      "narrowing": "Shrinks the list to capitals moved to by a king in 1845 for his island kingdom.",
+      "source": {
+        "article": "Honolulu — History",
+        "url": "https://en.wikipedia.org/wiki/Honolulu#History",
+        "quote": "In 1845, Kamehameha III moved the permanent capital of the Hawaiian Kingdom from Lahaina on Maui to Honolulu"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Waikiki, the famed beach strip by this town, draws crowds from far away. Its hotels, in rows by the sand, form the heart of the isles' tourist trade.",
+      "narrowing": "Nearly decisive: one island capital has the famed Waikiki beach strip and its hotels.",
+      "source": {
+        "article": "Honolulu — History",
+        "url": "https://en.wikipedia.org/wiki/Honolulu#History",
+        "quote": "Today, Honolulu is a modern city with numerous high-rise buildings, and Waikiki is the center of the tourism industry in Hawaii, with thousands of hotel rooms"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Hawaii's governor and lawmakers do the state's work in this city. It has been the seat of rule for these islands since 1845.",
+      "narrowing": "Confirms it: the state government sits in this island capital, as it has since 1845.",
+      "source": {
+        "article": "Honolulu",
+        "url": "https://en.wikipedia.org/wiki/Honolulu",
+        "quote": "Honolulu has been the capital of Hawaii since 1845, first as seat of the independent Hawaiian Kingdom"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Kamehameha III moved his kingdom's capital to Honolulu in 1845, and kings built palaces and churches in the port town. Today Waikiki's hotels line the beach by the old harbor. Honolulu is the capital of Hawaii."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Honolulu"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "warsaw-poland",
+  "target": {
+    "placeId": "gn-756135",
+    "name": "Warsaw",
+    "aliases": [],
+    "lat": 52.22977,
+    "lon": 21.01178,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Poland",
+    "iso2": "PL",
+    "subdivision": "Mazovia"
+  },
+  "subjectAnswer": {
+    "name": "Poland",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Poland",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands on the River Vistula in the east of central Europe. A full quarter of its land is parks and green space.",
+      "narrowing": "Rules out the rest of Europe and puts the player on the Vistula, in the east of the centre.",
+      "source": {
+        "article": "Warsaw",
+        "url": "https://en.wikipedia.org/wiki/Warsaw",
+        "quote": "The metropolis stands on the river Vistula in east-central Poland."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are cold, cloudy, and at times snowy. Summers are warm and bright, but short, sharp storms roll in often.",
+      "narrowing": "Rules out mild-coast and dry lands; keeps cold winters with stormy summers.",
+      "source": {
+        "article": "Warsaw",
+        "url": "https://en.wikipedia.org/wiki/Warsaw",
+        "quote": "The city has cold, sometimes snowy, cloudy winters, and warm, relatively sunny but frequently stormy summers."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "King Sigismund the Third moved his court here in 1596. He made this city the capital in place of an older royal city.",
+      "narrowing": "Shrinks the list to capitals a king moved his court to in 1596.",
+      "source": {
+        "article": "Warsaw",
+        "url": "https://en.wikipedia.org/wiki/Warsaw",
+        "quote": "The city rose to prominence after 1596, when Sigismund III decided to move the Polish capital and his royal court from Kraków."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "War in the 1940s left the old town in ruins. Its people built it back, brick by brick, just as it had stood.",
+      "narrowing": "Nearly decisive: a whole old town rebuilt after the war marks this city.",
+      "source": {
+        "article": "Warsaw",
+        "url": "https://en.wikipedia.org/wiki/Warsaw",
+        "quote": "The reconstructed Old Town, which represents a variety of European architectural styles, was listed as a World Heritage Site by UNESCO in 1980."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The government of Poland sits in this city. It is the seat of rule for the whole land and its biggest city.",
+      "narrowing": "Confirms it: the seat of government and the biggest city of Poland.",
+      "source": {
+        "article": "Warsaw",
+        "url": "https://en.wikipedia.org/wiki/Warsaw",
+        "quote": "Warsaw is classified as an alpha global city, a major political, economic and cultural hub, and the country's seat of government."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A small fishing town stood here first, by the river. In 1596 a king moved his court here and made it the capital. War smashed the old town in the 1940s, and its people built it back stone by stone. Warsaw is the capital of Poland."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Warsaw"
+  },
+  "pointPolicy": "geonames-point"
+}

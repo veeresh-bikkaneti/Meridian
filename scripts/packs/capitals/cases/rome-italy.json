@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "rome-italy",
+  "target": {
+    "placeId": "gn-3169070",
+    "name": "Rome",
+    "aliases": [
+      "Eternal City"
+    ],
+    "lat": 41.89193,
+    "lon": 12.51133,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Italy",
+    "iso2": "IT",
+    "subdivision": "Lazio"
+  },
+  "subjectAnswer": {
+    "name": "Italy",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Italy",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands along a river in the west of a long thin land in south Europe. Its old town spreads over seven hills by the water.",
+      "narrowing": "Rules out the east and north; puts the player on a river town of seven hills in the south west.",
+      "source": {
+        "article": "Rome",
+        "url": "https://en.wikipedia.org/wiki/Rome",
+        "quote": "Rome is located in the central-western portion of the Italian Peninsula, within Lazio (Latium), along the shores of the Tiber Valley."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are hot and dry, with long bright days and little rain. Winters turn mild and wet, the flip side of those dry months.",
+      "narrowing": "Rules out wet summers and harsh winters; keeps the hot dry summer, mild wet winter pattern.",
+      "source": {
+        "article": "Rome",
+        "url": "https://en.wikipedia.org/wiki/Rome",
+        "quote": "with hot, dry summers and mild, humid winters"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Long ago this city ruled a vast empire as the seat of its rulers. In 1871 it became the capital of a newly united land, and it still is.",
+      "narrowing": "Shrinks the list to an old empire's seat made capital of a newly united land in 1871.",
+      "source": {
+        "article": "Rome",
+        "url": "https://en.wikipedia.org/wiki/Rome",
+        "quote": "In 1871, Rome became the capital of the Kingdom of Italy, which, in 1946, became the Italian Republic."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Gladiators once fought wild beasts in a huge stone ring here, the largest old arena still standing. It went up nearly 2,000 years ago and still draws crowds.",
+      "narrowing": "Nearly decisive: one huge old stone arena for gladiator fights still stands here.",
+      "source": {
+        "article": "Colosseum",
+        "url": "https://en.wikipedia.org/wiki/Colosseum",
+        "quote": "it was used for gladiatorial contests and public spectacles including animal hunts"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The chiefs of Italy rule the land from this city. A whole tiny land, the Pope's own, sits inside its bounds, a land in a city.",
+      "narrowing": "Confirms it: Italy is governed here, and a whole tiny country sits inside the city.",
+      "source": {
+        "article": "Rome",
+        "url": "https://en.wikipedia.org/wiki/Rome",
+        "quote": "Vatican City—the smallest country in the world and headquarters of the worldwide Catholic Church under the governance of the Holy See—is an independent country within Rome's municipal boundaries"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Old tales say a she-wolf raised the twin boys who founded this city in 753 BC, and it grew to rule a vast empire. Its huge stone arena, old ruins, and seven hills still draw crowds from all over the world. Rome is the capital of Italy."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Rome"
+  },
+  "pointPolicy": "geonames-point"
+}
