@@ -247,16 +247,25 @@ test("blocked audio degrades to the text-only fallback", async ({ page }) => {
  * state — open (lazy fallback, no caption), caption in, audio-failure
  * line appended, auto-dismissed — and Share's y must stay within 1px of
  * the first frame's while all buttons stay fully on screen, unscrolled.
+ * While the caption shows, its box must not overlap Share, any other
+ * action button or the footer, and must sit fully inside the visible
+ * scroll region (not clipped). The landscape phone sizes are the
+ * regression for the stacked card at short heights: at 568x320 the
+ * ~240px footer left the scroll region ~45px, so the caption was clipped
+ * and its box ran under Share (Engineering Lead review on PR #310).
  */
 for (const viewport of [
   { width: 320, height: 568 },
   { width: 390, height: 844 },
   { width: 1280, height: 800 },
+  { width: 568, height: 320 },
+  { width: 667, height: 375 },
+  { width: 844, height: 390 },
 ]) {
   test.describe(`summary caption slot @${viewport.width}x${viewport.height}`, () => {
     test.use({ viewport });
 
-    test("action buttons are on screen and Share keeps its y at open, caption-in, audio-fail and dismissed", async ({
+    test("action buttons are on screen, the caption never overlaps them, and Share keeps its y at open, caption-in, audio-fail and dismissed", async ({
       page,
     }) => {
       await page.addInitScript(() => {
@@ -267,6 +276,8 @@ for (const viewport of [
           caption: boolean;
           fallback: boolean;
           empty: boolean;
+          overlap: boolean;
+          clipped: boolean;
         };
         const w = window as unknown as { __slotSamples: Sample[] };
         w.__slotSamples = [];
@@ -280,11 +291,17 @@ for (const viewport of [
               )
             : undefined;
           if (dlg && share) {
-            const actions = [
-              ...(dlg.querySelector('[data-testid="summary-actions"]') ?? dlg).querySelectorAll(
-                "button",
-              ),
-            ];
+            const footer = dlg.querySelector('[data-testid="summary-actions"]');
+            const actions = [...(footer ?? dlg).querySelectorAll("button")];
+            const cap = document.querySelector('[data-testid="storyteller-caption"]');
+            const content = dlg.querySelector('[data-testid="summary-content"]');
+            const c = cap?.getBoundingClientRect();
+            // Strict box intersection (shared edges do not count).
+            const hits = (r: DOMRect) =>
+              !!c &&
+              Math.min(c.right, r.right) - Math.max(c.left, r.left) > 0.5 &&
+              Math.min(c.bottom, r.bottom) - Math.max(c.top, r.top) > 0.5;
+            const v = content?.getBoundingClientRect();
             w.__slotSamples.push({
               y: share.getBoundingClientRect().top,
               buttons: actions.length,
@@ -301,6 +318,17 @@ for (const viewport of [
               caption: !!document.querySelector('[data-testid="storyteller-caption"]'),
               fallback: !!document.querySelector('[data-testid="storyteller-fallback"]'),
               empty: !!document.querySelector('[data-testid="storyteller-slot-empty"]'),
+              overlap:
+                !!c &&
+                (actions.some((b) => hits(b.getBoundingClientRect())) ||
+                  (!!footer && hits(footer.getBoundingClientRect()))),
+              clipped:
+                !!c &&
+                (!v ||
+                  c.top < v.top - 0.5 ||
+                  c.bottom > v.bottom + 0.5 ||
+                  c.left < v.left - 0.5 ||
+                  c.right > v.right + 0.5),
             });
           }
           requestAnimationFrame(tick);
@@ -333,6 +361,8 @@ for (const viewport of [
               caption: boolean;
               fallback: boolean;
               empty: boolean;
+              overlap: boolean;
+              clipped: boolean;
             }[];
           }).__slotSamples,
       );
@@ -360,6 +390,12 @@ for (const viewport of [
             `Share score moved during ${phase}: ${r.y} vs ${open.y}`,
           ).toBeLessThanOrEqual(1);
           expect(r.allInView, `an action button left the viewport during ${phase}`).toBe(true);
+          expect(r.overlap, `the caption overlaps Share / the actions during ${phase}`).toBe(
+            false,
+          );
+          expect(r.clipped, `the caption is clipped by the scroll region during ${phase}`).toBe(
+            false,
+          );
         }
       }
       expectCleanConsole(errors, ["net::ERR_FAILED"]);

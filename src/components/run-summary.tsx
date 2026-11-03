@@ -183,10 +183,17 @@ export function RunSummaryCard(props: {
           score / stats / caption content scrolls (keyboard-reachable:
           tabIndex 0, the focus trap includes it), and the action buttons
           sit in a pinned footer that is always fully on screen, so their
-          position never depends on the caption or on scrolling. */}
-      <div className="m-auto flex max-h-full w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.95)] text-white shadow-2xl">
+          position never depends on the caption or on scrolling.
+          short-landscape (landscape, height <= 500px — phones on their
+          side): stacked, the ~240px footer left the scroll region ~45px at
+          568x320, so the caption was clipped and its box ran under Share.
+          There the card goes side by side instead: content (with the
+          caption slot) scrolls in the left column at the card's full
+          height, the actions sit in a fixed-width right column. Share
+          still never depends on the caption, and the two never overlap. */}
+      <div className="m-auto flex max-h-full w-full max-w-sm flex-col overflow-hidden rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.95)] text-white shadow-2xl short-landscape:max-w-2xl short-landscape:flex-row">
         <div
-          className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-6 pb-2 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-white"
+          className="min-h-0 min-w-0 flex-1 overflow-y-auto overscroll-contain p-6 pb-2 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-white short-landscape:pb-6"
           data-testid="summary-content"
           role="region"
           aria-label="Summary details"
@@ -387,7 +394,7 @@ export function RunSummaryCard(props: {
 
         </div>
         <div
-          className="flex shrink-0 flex-col gap-2 border-t border-white/10 px-6 pt-4 pb-6"
+          className="flex shrink-0 flex-col gap-2 border-t border-white/10 px-6 pt-4 pb-6 short-landscape:w-56 short-landscape:overflow-y-auto short-landscape:overscroll-contain short-landscape:border-t-0 short-landscape:border-l short-landscape:p-4"
           data-testid="summary-actions"
         >
           <ShareButton
