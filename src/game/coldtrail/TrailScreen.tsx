@@ -3,6 +3,7 @@ import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
+import { PackShelf } from "@/components/pack-shelf";
 import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
 import { playCelebrationSound } from "@/game/audio/play-guards";
 import { resolveBand, type AgeBandId } from "@/game/age-profile";
@@ -440,6 +441,19 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           {theme.intro}
         </p>
       </header>
+
+      {/* Pack shelf (story packs, swarm slice 4): deck chips under the
+          header. The shelf stores the player's pick; the deal path
+          reads it once slice 1's deck-aware dealing lands.
+          activeDeckId names the deck the open case came from, which is
+          the core deck until then. */}
+      <PackShelf
+        edition="coldtrail"
+        activeDeckId="all"
+        caseFinished={revealed}
+        onStartNext={onNextCase}
+        coreTotal={deckSize > 0 ? deckSize : null}
+      />
 
       <div className="ct-layout mt-6">
       <section aria-label="Sightings" className="ct-sightings flex flex-col gap-3">
