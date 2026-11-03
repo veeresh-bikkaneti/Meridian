@@ -79,6 +79,8 @@ The home page carries a Journal: 106 place notes rotating in 36 sets over 2-hour
 
 The home page opens with a storyteller mascot who greets visitors with a spoken line (a new greeting each day) and reacts when tapped. Grandpa runs a tasting tour of the home screen — a sip-sized walkthrough of the difficulty picker, the edition cards, and GeoDetective for first-time visitors.
 
+The two game cards carry short animated pictures. The GeoDetective card plays a four-beat film — a map on a table, a magnifying glass, then the detective herself, alive at her desk — and the Cold Trail card shows Jolly, the cream plush mascot, walking the footprint trail toward a lit cabin while the young tracker follows with her flashlight. Each film plays once when its card scrolls into view, then holds its final frame; a small pause/play button in the picture's corner can stop it at any time or play it again. Players who prefer reduced motion, who are saving data, or whose device has little memory never download a film at all — they see the still picture instead. The films, their posters, and their stills all swap through one module (`src/assets/home-v5/card-media.ts`), so a future re-animation replaces files, not code.
+
 ### Supporting the game
 
 Meridian is free for kids — no paywalls, no accounts. Grown-ups can buy the builder a coffee: **"Grown-ups — buy me a coffee? ☕"** — "Your support keeps Meridian free for kids". That copy is locked verbatim.

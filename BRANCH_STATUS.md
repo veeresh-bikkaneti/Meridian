@@ -1,206 +1,156 @@
-# BRANCH_STATUS — feat/verdict-grandpa-video
+# BRANCH_STATUS — feat/home-card-films
 
-- **Branch:** `feat/verdict-grandpa-video`
-- **Base:** `main` @ `242a7ef` (#291 winner declaration + #294 merged;
-  branched after the #291 merge, so no rebase was needed).
+- **Branch:** `feat/home-card-films`
+- **Base:** `main` @ `2a0527f` (#295 verdict Grandpa clip)
 
 ## Task capsule
 
-TASK / requested outcome: Wire the animated "Grandpa Was Already
-There" clip into the challenge verdict screen (shipped in PR #291) so
-it plays at the top of the screen, above the headline, on ALL verdict
-classes (win / hold / near-miss / loss). Owner's dispatch, 2026-11-01:
-"Ship it — wire the clip into the verdict screen (both win and lose)",
-running in parallel with the finger-gun regeneration track; the
-regenerated take (v2) landed during the build and is the ship asset.
+TASK / requested outcome: Port the two owner-approved home-card
+designs into production: the GeoDetective card's `.hv5-pic` slot
+plays the round-2 reshoot FILM as-is, and the Cold Trail card's
+slot plays a NEW walking animation (owner correction, verbatim:
+"I want the avatar chasing the clue like walking not the zoom in
+and out of card" — the round-2 pull-back is superseded and was
+never shipped). One shared component + one swap-point media
+module govern both cards. Stop at PR-open; QA + panel are
+separate silos. NO MERGE without the owner's per-PR word.
 
-Interpretations considered and selected reading: "both win and lose"
-= every verdict class, since all four render through the one
-ChallengeVerdict screen; the clip is placed inside that component.
+Tier and rationale: Tier 1 execution of owner-decided designs
+(the films, casting, and motions were all decided 2026-11-02;
+the governance mirrors the shipped home-globe gates and the
+#295 verdict clip's stop semantics). No new design decisions.
 
-Tier and rationale: Tier 1 execution of an owner-decided design (the
-concept, screen, and placement were all decided before the build:
-council Concept #2, owner pick 2026-10-29; verdict screen design
-#291). No new design decisions are taken on this branch.
-
-Done condition / evidence: verdict screen shows the clip (video under
-full motion, still keyframe under prefers-reduced-motion, poster
-before play); aria-live ~650 ms announcement, focus order, and
-tap-to-settle choreography untouched; repo gates green (tsc, npm
-test, test:worker, lint-cards, build:pages); verdict/challenge E2E
-under the flock with sealed logs; production bundle references the
-emitted asset; PR opened. NO MERGE — the review pipeline is a
-separate stage.
+Done condition / evidence: both cards render their film in the
+slot at desktop + mobile geometry with zero layout shift;
+locked band still renders LockedLoop; reduced motion shows the
+still with zero video fetch (proven by E2E + a headless probe
+with a request log); per-card media ≤ ~400 KB per film; repo
+gates green; PR opened with the full record. Evidence dir:
+~/workspace/meridian-card-port-evidence/
 
 Files and interfaces in scope: `src/components/game-app.tsx`
-(ChallengeVerdict render + imports only), new `src/assets/verdict/`
-(grandpa-media.ts swap point + compressed .mp4 + poster .webp),
-README + docs for the verdict surface, this file. Out of scope
-(FORBIDDEN): the mc3 codec, duel dots, verdict copy/classes,
-branch protection, any backend/network call.
+(the two `.hv5-pic` sites + imports only), `src/components/
+home-v5.css` (film fill rules only — `.hv5-pic` box geometry
+untouched), NEW `src/components/card-film.tsx`, NEW
+`src/assets/home-v5/card-media.ts` + 6 media files, tests that
+pinned the old stills, README + this file. Out of scope
+(FORBIDDEN): the locked GeoDetective tile (LockedLoop branch —
+byte-identical), all card copy, the frozen PRs
+#297/#299/#302/#305/#307/#308/#309/#311/#312.
 
-Asset: source `grandpa-verdict-v2.mp4` (1,712,053 bytes, 1152×768,
-finger-gun take v2 — AI-animated from the owner-approved keyframe)
-compressed to 960×640, audio stripped, CRF 28 → 329,051 bytes.
-Poster/reduced-motion still: the approved keyframe webp resized to
-960 wide → 65,336 bytes. Swap point: `src/assets/verdict/grandpa-media.ts`
-exports both URLs; game-app.tsx is the only import site — a future
-re-cut replaces the .mp4 file only.
+## What shipped
 
-Redundancy audit (owner standing rule): the clip adds no control,
-button, link, or entry point — it is a decorative picture on a screen
-that already exists. No duplicate path to any job. PASS.
+- **GeoDetective film** — the reshoot, as-is (four beats, lands
+  on the owner's image; beat-4 ~1 s generation drift is
+  OWNER-ACCEPTED, disclosed before his build-as-is pick).
+  Encoded 1094×616, H.264, silent, faststart: **371,759 bytes**.
+  Poster = beat 1 (table map, from geo-table.webp): 98,540.
+  Still (reduced-motion/gated) = the owner's image,
+  centre-cropped to the slot: 90,376. Per-card total: 560,675.
+- **Cold Trail film** — NEW image-to-video take 1 of 3 from the
+  approved keyframe: Jolly steps up the footprint trail to the
+  cabin (legs alternating, new prints under its feet, frost over
+  the oldest print), the child tracker follows with her
+  flashlight, camera locked. Encoded 1094×616: **326,786
+  bytes**. Poster = the film's first frame: 58,354. Still =
+  the keyframe: 76,010. Per-card total: 461,150.
+- **Encode deviation, recorded honestly:** the brief's CRF
+  28–32 range cannot meet its own ~400 KB hard cap on these
+  sources (dark rainy grain / falling snow = per-frame noise):
+  CRF 32 veryslow measured 505,840 (Geo) / ~500 KB (Cold). Same
+  technique (H.264 CRF, -an, +faststart), CRF tuned past the
+  range — Geo CRF 35 (SSIM 0.932 vs CRF-10 reference; legible
+  and near-identical at the 547 px display size), Cold CRF 36.
+  Full sweep: evidence `logs/media-encode.txt`, and the record
+  lives in `card-media.ts` for the next re-cut.
+- **CardFilm component** — gates to the still (video never
+  fetched): prefers-reduced-motion (shared hook, live),
+  Save-Data, deviceMemory ≤ 2, video error. Lazy: video mounts
+  only near the viewport (IntersectionObserver, rootMargin
+  200px, preload="none"); poster fills the slot until then.
+  Plays once, muted, playsInline, no loop; holds the last
+  frame. WCAG 2.2.2: 44×44 pause/play toggle above the
+  stretched CTA, labels "Pause the cartoon" / "Play the
+  cartoon" driven by the video's own events; after the end the
+  toggle replays (gesture only). Video is decoration
+  (aria-hidden, tabIndex −1). Media absolutely fills the
+  existing `.hv5-pic` box — geometry untouched, zero CLS
+  (probe: card box identical at film start and after settle).
+- **Deleted:** `desert-ruins.webp` + `patagonia.webp` (the old
+  stills; no remaining references — grep-verified across src,
+  scripts, public, index.html).
 
-## Status
+## Gates (code head 3659f23; build stamp 3659f23)
 
-- [x] Branch off current main; coordination ledger heartbeat posted
-- [x] Asset compressed (v2, 329,051 bytes) + poster still (65,336 bytes)
-- [x] Swap-point module + verdict-screen wiring (video / still / poster)
-- [x] Gates (tip `eded1bc` + docs): tsc 0 · npm test 0 (scripts
-  850 pass / 11 skipped; src 1879/1879) · test:worker 85/85 ·
-  lint-cards GATE PASSED · build:pages 0 — bundle emits
-  `grandpa-was-already-there-*.mp4` (329,051 bytes) + poster webp and
-  the routes chunk references them. Logs:
-  `~/workspace/verdict-grandpa-video-evidence/`
-- [x] E2E under flock (10 friend-challenge files, workers=1, bundled
-  chromium-1243): **62 passed / 1 failed / 2 skipped** (39.5m). The
-  verdict spec is fully green, incl. the reduced-motion WIN test.
-  The one failure — mc2-create:131 (240 s click timeout waiting for
-  the summary "Challenge a friend — play my route" button) —
-  reproduces with an **identical failure signature on unmodified
-  main `242a7ef`** in a solo control run (sealed:
-  `e2e-maincheck-131.log`; the logs differ in scope/duration/paths —
-  the signature and the disposition are what match), so it is a
-  pre-existing environment/main-state failure, not a regression of
-  this branch; the test never renders the verdict screen. The 2
-  skips are designed (the @old-build scripted-manual gate + the
-  parked summary-mint fixme from #291).
-- [x] Docs: README feature table now describes the verdict cartoon
-  and its reduced-motion still
-- [x] PR opened (no merge) — PR #295, opened 2026-11-01; the review
-  pipeline ran as a separate stage (verdict: NOT READY, 2 BLOCKs)
+- `npm run typecheck` — PASS (0 errors)
+- `npm test` — PASS: scripts 850 pass / 11 skipped; src
+  1896/1896 (incl. new card-film.test.ts)
+- `npm run test:worker` — PASS 85/85 (untouched surface, run
+  per repo gate list)
+- `node scripts/lint-cards.mjs` — GATE PASSED
+- `npm run build:pages` — PASS
+- `npm run perf:bundle` — entry JS 979,123 raw / 305,248 gzip
+  vs main's 977,196 / 304,649 (**+1,927 raw / +599 gzip** — the
+  component code only; films are separate URL assets, zero
+  media bytes in the entry chunk)
 
-## Cure round (2026-11-01, after the pipeline verdict on `4d79946`)
+## E2E (flock, --workers=1, Playwright-bundled Chromium)
 
-Panel: 2 APPROVE · 8 APPROVE-WITH-NITS · 2 BLOCK · DevEx
-PASS-WITH-NITS. Cures, one commit each:
+The VM's /opt/meta-chromium currently refuses every launch
+("Hatch WebGL domain policy is required") on branch AND main,
+so runs used the Playwright-bundled Chromium
+(PLAYWRIGHT_CHROMIUM_EXECUTABLE=~/.cache/ms-playwright/
+chromium-1243) — same browser for branch and controls.
 
-- [x] **BLOCK 1 (CLS)** — `aspect-[3/2]` on BOTH media branches
-  (video + reduced-motion still): the 3:2 box is reserved before
-  the media loads, so the headline and score bar no longer shift
-  mid-choreography. Proven by a new E2E test that holds the clip
-  and poster at the network and measures the box + headline before
-  and after the assets land.
-- [x] **BLOCK 2 (WCAG 2.2.2, Level A)** — two stop mechanisms for
-  the looping clip: (a) settling the choreography BY GESTURE
-  (tap / keydown) pauses the clip and holds its frame — as first
-  built in this round the pause also fired on the auto-settle
-  timer; cure round 2 (below) split the signal, so the timer
-  settles the choreography but never pauses the clip; (b) a ≥44 px
-  pause/play toggle overlaid on the clip's corner (aria-label
-  "Pause the cartoon" / "Play the cartoon", aria-pressed),
-  available from the first frame.
-  Autoplay + loop are otherwise as shipped. Proven by a new E2E
-  test (settle → paused; toggle → play → pause).
-- [x] **Record** — the mc2-create:131 disposition above now reads
-  "identical failure signature" (was "byte-identically"; the three
-  :131 logs differ in scope/duration/paths).
-- [x] **Docs** — `grandpa-media.ts` now carries the full
-  asset-derivation recipe: source locations, the ffmpeg command
-  shape (960×640, CRF 28, audio stripped, faststart), the poster
-  webp resize recipe, "replacement takes must be silent", "a new
-  keyframe means replacing the .webp too", and the size/codec
-  constraints for a replacement (≤ ~400 KB, H.264 mp4, 3:2).
-- [x] **Tidy** — the dead `preload="metadata"` beside `autoPlay`
-  is removed.
-- [x] **Passenger** — the reduced-motion still branch of the
-  verdict media now has its first test guard (new E2E test: IMG
-  tag, no toggle, same reserved 3:2 box); before this round it had
-  zero test references.
+- loading-orbs.desktop — **8/8 PASS** (incl. the rewritten
+  reduced-motion test: still shown, zero .mp4 requests; and
+  the film-error test: aborted .mp4 → Cold Trail still)
+- card-redesign.desktop — **11/11 PASS** (whole-card clicks,
+  focus stops incl. the new toggle stop, rings, badges)
+- home-visual-layout.desktop — **13/13 PASS**
+- home-badges-readaloud — **8/8 PASS**; badge-journey — **6/6 PASS**
+- grandpa-tasting-tour — 4 pass / 21 fail on branch; **control
+  on unmodified main fails identically from test #1** (tour
+  stuck at stage "compass", never reaches "walk" within 20 s):
+  environment class on this VM+browser, NOT a regression.
+  First-run card-redesign crashes ("Target crashed") had the
+  same disposition and a found cause: /tmp is a 512 MB tmpfs
+  that filled (ENOSPC in a main-control log); after cleanup
+  the full spec passes 11/11.
+- mobile-home-overlap — 6 pass / 20 fail on branch; failures
+  are storyteller-greeting elements never appearing within
+  20 s (same timing class as the tour); spot control on main
+  recorded in evidence logs.
+- Headless probe (temporary spec, deleted after the run):
+  toggle labels flip via the video's own events; both films
+  `ended` and hold; replay-by-toggle restarts Cold Trail
+  (currentTime 0.67 s and playing); reduced-motion slots have
+  NO video element and the request log shows **zero .mp4
+  requests**; locked band (seeded 5-7 profile): GeoDetective
+  card + film absent, LockedLoop renders, Cold Trail film
+  present. Screenshots: evidence `screenshots/` (desktop film
+  start / settled / reduced-motion / locked band, mobile
+  settled).
 
-Redundancy audit, cure-round addendum (owner standing rule): the
-pause/play toggle is a media control for the clip — the WCAG 2.2.2
-stop mechanism the panel required — not a feature entry: it adds
-no new path to any game job and duplicates no existing control
-(the settle gesture is a choreography snap that now also pauses;
-the toggle is the always-available, labelled stop). PASS.
+## Redundancy audit (owner standing rule)
 
-Gates + E2E for the cured tip are sealed in
-`~/workspace/verdict-grandpa-video-evidence/cure-295/`: tsc 0 ·
-npm test 0 (scripts 850 pass / 11 skipped; src 1879/1879) ·
-test:worker 85/85 · lint-cards GATE PASSED · build:pages 0.
-Verdict spec: full run 9 passed / 1 designed skip / 3 renderer
-crashes in the map aim phase ("Target crashed", verdict not yet
-mounted); the 3 crashed tests re-run — the two new cure tests PASS
-(CLS 59.9 s; settle/toggle 50.3 s) and the reduced-motion guard
-passed in the main run. The third, the pre-existing LOSS test,
-kept failing in map-phase waits (2× renderer crash, 1× canvas
-never visible) — and fails the same way on the UNMODIFIED
-pre-cure tip `4d79946` in a control run (page crashed in the
-retry's map reload), so it is the VM environment class, not this
-cure; its verdict assertions passed in the cured solo run before
-the retry's map reload starved. Mutation proof: with the
-settle-pause line cut, the new settle/toggle test fails at the
-paused poll (15 s timeout, still playing); restored, it passes.
-Friend-challenge set (the other 9 files): the local runner died
-mid-run at test 45 of ~65 (no summary, no exit file); the 16
-failures on the partial log are 16/16 renderer-crash class per
-their error contexts — zero app-logic assertions — and ~20 tests
-of the last file never ran locally (full census:
-`cure-295/E2E-NOTES.md`). CI on the cured tip `453180a` is the
-canonical read: build (22.x) SUCCESS · e2e SUCCESS (full suite,
-incl. the LOSS test and the whole friend-challenge set) ·
-GitGuardian SUCCESS · Workers Builds FAILURE (non-required,
-standing). Next: panel RE-VOTE on the cured tip (separate stage).
-NO MERGE without the owner's per-PR word.
+| Surface | Keep / remove | Reason |
+| :--- | :--- | :--- |
+| `LazyHomeImage` (component) | **Keep** | Still owns the four remaining home stills (`.hv5-art` ×3 + journal entries); only the two `.hv5-pic` sites left it. Removing it would orphan working surfaces. |
+| `desert-ruins.webp` | **Remove** (deleted) | The GeoDetective slot's old still; superseded by the film's poster+still pair; zero remaining references. |
+| `patagonia.webp` | **Remove** (deleted) | Same: Cold Trail's old still, superseded; zero remaining references. |
+| Layered-plates DOM approach (reshoot CONCEPT) | **Not ported** | The owner approved a FILM for GeoDetective ("Build this in production" on the reshoot video), not the layered-plates web build; a second rendering path for the same picture would duplicate the slot's job. |
+| Round-2 CSS-mirror prototype | **Not ported** | Prototype only; the production port is the film behind CardFilm, per the owner's build word. |
+| CardFilm toggle vs the cards' badge buttons | **Keep both** | Not a duplicate: badges toggle a blurb (GeoDetective only); the film toggle is the WCAG 2.2.2 stop for moving content, one per film, dealing from its own context (the #295 verdict toggle is the same pattern on a different screen). |
 
-## Cure round 2 (2026-11-01, after the panel RE-VOTE on `ad396fa`)
+## Flags for the owner / panel
 
-Re-vote: NOT READY — 1 APPROVE · 5 APPROVE-WITH-NITS · 6 BLOCK ·
-DevEx PASS-WITH-NITS (record:
-`~/workspace/verdict-grandpa-video-evidence/cure-295/REVOTE-295-VERDICT.md`).
-Both round-1 BLOCKs were LIFTED by their owners and all six cure
-items verified from source. The six BLOCKs stood on ONE wire the
-cure added: the settle-pause subscribed to the undifferentiated
-`settled` latch, so the ~1.6 s auto-settle timer froze the clip on
-every default verdict, and the PR record never stated that
-consequence. Cures:
-
-- [x] **Timer excluded from the clip pause (panel option 1).**
-  `ChallengeComplete` now keeps a second latch,
-  `verdictSettledByGesture`, set only by the root's tap/keydown
-  handlers (`settleByGesture`, which also sets `verdictSettled`
-  exactly as before). The timer effect still sets `verdictSettled`
-  alone. The clip's pause effect in `ChallengeVerdict` subscribes
-  to the new `settledByGesture` prop only. Every other settle
-  behaviour — CSS snap, inert gates, `data-verdict-settled`, the
-  choreography — consumes `verdictSettled` unchanged. The pause
-  behaviour that ships: the clip autoplays and loops; a tap or
-  keydown settle pauses it; the auto-settle timer does NOT; the
-  44×44 corner toggle pauses/plays it at any moment and alone
-  satisfies WCAG 2.2.2.
-- [x] **Pinning E2E.** A new verdict-spec test: with NO player
-  gesture, the auto-settle timer fires (`data-verdict-settled`
-  flips on its own) and the clip is still playing afterwards
-  (unpaused, `currentTime` advancing); the toggle then stops it.
-  The round-1 gesture test stands (a tap settle still pauses).
-  Mutation proof: re-wiring the pause to the undifferentiated
-  latch makes the new test fail (clip paused after the timer);
-  restored, it passes.
-- [x] **Passengers.** A keyboard E2E for the toggle (focus, then
-  Enter pauses / Space plays — the stopPropagation path is now
-  driven, not just source-verified); the toggle's `clip.play()`
-  gained a `.catch(() => {})` guard so a rejected play() can never
-  surface as an unhandled rejection.
-- [x] **Record.** The PR body's main sections were brought true
-  for this tip (the toggle is a control and is focusable; the
-  removed preload's performance claim is gone; the redundancy
-  audit now states the one media control honestly), an explicit
-  behaviour note for the pause behaviour that ships was added,
-  and the test-evidence section names this tip as the revision
-  under vote.
-
-Gates + E2E for this round are sealed in
-`~/workspace/verdict-grandpa-video-evidence/cure2-295/`. Next:
-panel RE-VOTE on the new tip (separate stage). NO MERGE without
-the owner's per-PR word.
+- Cold Trail copy mismatch: the card still reads "A smuggler
+  moves between cities…" under a picture of Jolly and the
+  tracker. The copy is byte-locked for this diff; the mismatch
+  is the owner's open call — code does not decide it.
+- GeoDetective beat-4 drift (~1 s, robots morph / sign
+  garbles, then hands back to the owner's exact image):
+  owner-accepted as-is, 2026-11-02.
+- Panel approves the final tip; merge only on the owner's
+  per-PR word.
