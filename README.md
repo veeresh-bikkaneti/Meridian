@@ -87,6 +87,8 @@ The home page opens with a storyteller mascot who greets visitors with a spoken 
 
 The two game cards carry short animated pictures. The GeoDetective card plays a four-beat film — a map on a table, a magnifying glass, then the detective herself, alive at her desk — and the Cold Trail card shows Jolly, the cream plush mascot, walking the footprint trail toward a lit cabin while the young tracker follows with her flashlight. Each film plays once when its card scrolls into view, then holds its final frame; a small pause/play button in the picture's corner can stop it at any time or play it again. Players who prefer reduced motion, who are saving data, or whose device has little memory never download a film at all — they see the still picture instead. The films, their posters, and their stills all swap through one module (`src/assets/home-v5/card-media.ts`), so a future re-animation replaces files, not code.
 
+For the youngest players (Little Explorer, ages 5–7), GeoDetective is locked, and its tile carries a picture of its own: the detective asleep on her map, magnifying glass set down. She breathes twice, slowly, then the picture rests. The tile stays locked in every way that matters — no play button, no pause button, nothing in the picture to tap — and the same reduced-motion, Save-Data, and low-memory rules apply: those players see the resting still, and the film is never downloaded. Its media swaps through its own module (`src/assets/home-v5/locked-tile-media.ts`).
+
 ### Supporting the game
 
 Meridian is free for kids — no paywalls, no accounts. Grown-ups can buy the builder a coffee: **"Grown-ups — buy me a coffee? ☕"** — "Your support keeps Meridian free for kids". That copy is locked verbatim.

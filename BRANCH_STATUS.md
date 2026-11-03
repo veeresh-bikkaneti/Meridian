@@ -1,3 +1,72 @@
+# BRANCH_STATUS — feat/band-motion-locked-tile
+
+- **Branch:** `feat/band-motion-locked-tile`
+- **Base:** `main` @ `5dc21b9` (rebased 2026-11-03 onto #307 + #299;
+  originally cut at `5e77827` (#304); tile-relevant files verified
+  unchanged since `685a94f`, see PR body)
+
+## Task capsule
+
+TASK / requested outcome: Little Explorer (5–7) GeoDetective locked
+tile gains the sleeping-detective film the owner approved as mocked
+(2026-11-03, "use them"): a picture band on top of the tile, two slow
+breaths, then the picture rests on the resting still. Plus the
+pre-existing hover-lift fix for the locked tile. Stop at PR open.
+NO MERGE without the owner's per-PR word.
+
+Tier and rationale: Tier 2 shape (new component + new media + CSS in
+three files), run as a builder silo under the coordinator's brief;
+independent Silo QA and the 12-role panel follow as separate silos.
+
+Done condition / evidence: film encoded ≤ ~400 KB with region-motion
+numbers (lamp ≈ 0, torso > 0 at breath peaks, ≈ 0 in the final
+second, first frame == resting frame == last frame); gates green
+(tsc, npm test, lint-cards, build:pages); home/age-band E2E run
+sequentially under the shared lock, with the same specs run on
+unmodified main as control; band-switch row-height parity measured;
+captures in `~/workspace/meridian-band-port-evidence/`.
+
+Files in scope: `src/components/age-profile/LockedLoop.tsx`,
+`src/components/age-profile/LockedTileFilm.tsx` (new),
+`src/components/age-profile/age-profile.css`, `src/styles.css`
+(hover fix only), `src/assets/home-v5/geodetective-locked-{film,poster,still}`
+(new), `src/assets/home-v5/locked-tile-media.ts` (new),
+`src/components/age-profile/locked-tile-film.test.ts` (new),
+README home-cards paragraph, this file.
+Protected / untouched: `card-film.tsx`, `card-media.ts`,
+`home-v5.css`, `game-app.tsx` (LockedLoop mounts the film itself;
+the locked branch in game-app.tsx stays byte-identical).
+
+Approvals: branch + PR are the assigned task. Merge: owner only.
+
+## Status
+
+- [x] Clone at `5e77827`, branch cut, tile-file drift vs `685a94f` checked
+- [x] Film built (region-frozen composite from the resting still,
+      mock grade baked in) — final encode 355,210 B
+- [x] Rebased onto `main` @ `5dc21b9` — BRANCH_STATUS conflict
+      resolved by hand, both records kept in this file
+- [x] Component + CSS + media module
+- [x] Unit tests
+- [ ] Gates (tsc / npm test / lint-cards / build:pages)
+- [ ] E2E home + age-band, branch vs main control
+- [x] Captures: film, settle still, band-switch geometry, side-by-side
+      (sealed in `~/workspace/meridian-band-port-evidence/`)
+- [ ] PR open (no merge)
+
+## Sandbox media prep (no repo commits; PR #324 owns the card slots)
+
+- [ ] Unit 2 — LE Cold Trail ping-pong encode in evidence/media-prep
+- [ ] Unit 3 — Trail Scout Review take in evidence/media-prep
+
+---
+
+# Prior records preserved on rebase: main @ 5dc21b9
+
+> Everything below this line is main's BRANCH_STATUS content at
+> `5dc21b9`, kept verbatim on the rebase so no prior branch record
+> is lost. The active record for this branch is above.
+
 # BRANCH_STATUS — fix/coldtrail-card-copy
 
 - **Branch:** `fix/coldtrail-card-copy`
