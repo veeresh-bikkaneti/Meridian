@@ -243,6 +243,10 @@ test("Cold Trail shelf: progress shows and a chip tap on the reveal starts the n
   await expect(core).toContainText("1 of 60 cases closed");
   const pack = page.getByTestId("pack-chip-capitals");
   await expect(pack).toBeVisible({ timeout: 15_000 });
+  // The pack chip's progress line is denominated in the Cold Trail
+  // deck's own case count (60), never the GeoDetective pack size (72).
+  await expect(pack).toContainText("60 cases");
+  await expect(pack).not.toContainText("72");
 
   await pack.click();
   // The next case is a pack case: the sighting cards name the pack
@@ -269,6 +273,59 @@ test("Cold Trail shelf: progress shows and a chip tap on the reveal starts the n
   expect(store.caseIndex).toBe(0);
   expect(store.solved).toBe(1);
   expect((await shelfSelection(page)).coldtrail).toBe("capitals");
+});
+
+test("Cold Trail shelf: an unrevealed pack case resumes ahead of the stored selection", async ({
+  page,
+}) => {
+  await stubPackManifest(page);
+  await page.addInitScript(() => {
+    // The shelf blob says "core deck", but the pack store holds a
+    // case mid-play (one ring placed, not revealed). On mount the
+    // unrevealed case wins over the stored selection: the screen
+    // opens on the pack deck, mid-case.
+    localStorage.setItem(
+      "meridian.pack-shelf.v1",
+      JSON.stringify({ v: 1, decks: { coldtrail: "all" } }),
+    );
+    localStorage.setItem(
+      "meridian.coldtrail.pack.capitals.v1",
+      JSON.stringify({
+        v: 2,
+        caseIndex: 0,
+        stars: 20,
+        solved: 0,
+        current: {
+          ringsPlaced: [true, false, false],
+          informantOn: [false, false, false],
+          ringCenters: [{ lon: 1, lat: 1 }, null, null],
+          guess: null,
+          revealed: false,
+          scoreKm: null,
+        },
+      }),
+    );
+  });
+  await openColdTrail(page);
+  const pack = page.getByTestId("pack-chip-capitals");
+  // The pack chip's progress line carries the pack store's own count
+  // against the Cold Trail deck total: 0 of 60, never 72.
+  await expect(pack).toContainText("0 of 60 cases closed", { timeout: 15_000 });
+  // The case on screen is the pack deck's first case, mid-play — the
+  // resume won over the stored selection. (The chips still show the
+  // stored pick for the NEXT case; the status line says so.)
+  const packDeck = JSON.parse(
+    readFileSync(path.resolve("src/game/coldtrail/cases.capitals.generated.json"), "utf8"),
+  ) as { cases: Array<{ sightings: Array<{ cityName: string }> }> };
+  const anchorNames = packDeck.cases[0]!.sightings.map((s) => s.cityName);
+  const cards = page.getByTestId("sighting-card");
+  await expect(cards).toHaveCount(3, { timeout: 30_000 });
+  for (let i = 0; i < 3; i++) {
+    await expect(cards.nth(i)).toHaveAttribute(
+      "aria-label",
+      `Sighting ${i + 1}: ${anchorNames[i]}`,
+    );
+  }
 });
 
 test("Cold Trail shelf: no pack chip without a manifest", async ({ page }) => {
