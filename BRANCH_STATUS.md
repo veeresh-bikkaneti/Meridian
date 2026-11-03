@@ -39,7 +39,7 @@ the owner's separate call, per the wave brief for #267).
 - [x] Diagnosis on unmodified main: `build-pages-diagnosis.log` /
   `.exit` (=0); `e2e-before.log` / `e2e-before.exit` (=1) —
   **1 failed, 2 passed**; the single failure is the headline regex
-  (`Expected pattern: /(km|m)/`, received `"110 mi northwest of your pin"`).
+  (`Expected pattern: /(km|m)/`, received `"Result: 110 mi northwest of your pin"`).
 - [x] After the fix: `e2e-after.log` / `e2e-after.exit` (=0) — **3 passed**.
 - [x] Mutation proof: `mutation-unit.log` / `mutation-unit.exit` (=0) —
   unit-level regex check against the actual received headline string from
@@ -60,3 +60,12 @@ the owner's separate call, per the wave brief for #267).
 - [x] PR opened against main (linked to #267, not closing it)
 - [ ] Panel review — separate stage, run by the coordinator
 - [ ] Merge — owner's explicit per-PR word only
+
+## Cure — 2026-11-03
+
+- Owner order: "Cure 297 and merge. Obviously we dont want messy code going into main" (Veeresh, 2026-11-03 16:10 CST).
+- Spec cure (two changes in `tests/e2e/reload-reveal.desktop.spec.ts`):
+  - Why-comment added above the headline assertion: the unit follows the player's region (US players see miles, since PR #138), so the pattern accepts every unit the headline can print; this spec proves the headline re-renders after a reload — not the unit.
+  - Canonical pattern: the regex alternation is now `(km|mi|m|ft)`, the canonical form from `reveal-bearing.desktop.spec.ts`. `ft` is consistency only — it is unreachable for a miss headline (ft prints only under 1 mi; a miss is beyond the hit radius) — adopting it is not a behaviour fix.
+- Records fix: the diagnosis evidence bullet above now quotes the full headline with its "Result: " prefix — received `"Result: 110 mi northwest of your pin"`.
+- The cured tip goes back for a panel re-vote before merging (standing rule).
