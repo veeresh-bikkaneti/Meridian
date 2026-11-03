@@ -307,13 +307,14 @@ Rework gates (tip before this status commit):
   rework; the two re-pinned suites carry the net change).
 - `npm run test:worker`: 85/85. lint-cards: GATE PASSED.
 - `npm run build:pages` (VITE_KOFI_URL set): PASS.
-- E2E (flock, --workers=1, Chromium 1243, Ko-fi build):
-  review-card-actions 6/6, loading-orbs 8/8,
-  grownups-privacy-contact 5/5, home-visual-layout 13/13.
-  card-redesign: 10/11 in a contended full-file run (test D,
-  grid band, burned 5.1 min under VM load); D run alone right
-  after passed in 24.1 s, so the file reads green with a
-  contention flake recorded, per the repo's flake rule.
+- E2E (flock, --workers=1, Chromium 1243, Ko-fi build): the
+  five affected files in one combined run passed 43/43
+  (card-redesign 11, review-card-actions 6, loading-orbs 8,
+  grownups-privacy-contact 5, home-visual-layout 13).
+  card-redesign also passed 11/11 in a standalone re-run.
+  (An early runtime summary of the standalone run reported
+  one failure; the run's full output, delivered later, shows
+  11 passed with test D green in 10.6 s. No flake is claimed.)
 - mobile-home-overlap: 20 passed / 6 failed, against the
   recorded unmodified-main baseline in this VM of 6 passed /
   20 failed (Part 2 redo round). The Review-card overlap tests
