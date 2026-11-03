@@ -71,12 +71,12 @@
     {
       "tier": 4,
       "tier_name": "hook",
-      "text": "Live music spills from clubs and halls all over this town. Its own slogan bills it as the live music capital of the world.",
-      "narrowing": "Nearly decisive: one town bills itself as the live music capital of the world.",
+      "text": "The world's largest city bat colony lives under a bridge in this city. Mother bats raise their pups there from mid-summer to fall.",
+      "narrowing": "Nearly decisive: one city hosts the world's largest urban bat colony under a bridge.",
       "source": {
-        "article": "Austin, Texas",
-        "url": "https://en.wikipedia.org/wiki/Austin%2C_Texas",
-        "quote": "The city's official slogan promotes Austin as \"The Live Music Capital of the World\", a reference to the city's many musicians and live music venues"
+        "article": "Ann W. Richards Congress Avenue Bridge",
+        "url": "https://en.wikipedia.org/wiki/Ann_W._Richards_Congress_Avenue_Bridge",
+        "quote": "The bridge currently serves as a habitat for the world's largest urban bat colony"
       }
     },
     {
@@ -92,7 +92,7 @@
     }
   ],
   "reveal": {
-    "blurb": "In 1839, a site by the river was picked for a fresh capital, and the village first called Waterloo was laid out there. Today live music fills its streets while lawmakers meet in the state capitol: the building is the capitol, and the city is the capital. Austin is the capital of Texas."
+    "blurb": "In 1839, a site by the river was picked for a fresh capital, and the village first called Waterloo was laid out there. Today mother bats raise their pups under a bridge while lawmakers meet in the state capitol: the building is the capitol, and the city is the capital. Austin is the capital of Texas."
   },
   "source": {
     "label": "Wikipedia",

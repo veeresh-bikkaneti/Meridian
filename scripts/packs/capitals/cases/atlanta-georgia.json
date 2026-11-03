@@ -69,12 +69,12 @@
     {
       "tier": 4,
       "tier_name": "hook",
-      "text": "This city was a chief base of the civil rights movement years ago. Martin Luther King, one of its own, led the fight for fair laws.",
-      "narrowing": "Nearly decisive: one capital was a chief base of the civil rights movement under King.",
+      "text": "Martin Luther King preached in this city for years. He served as co-pastor of a church here with his dad from 1960 to 1968.",
+      "narrowing": "Nearly decisive: one capital is where Martin Luther King preached as co-pastor with his father.",
       "source": {
-        "article": "Atlanta",
-        "url": "https://en.wikipedia.org/wiki/Atlanta",
-        "quote": "it became a major organizing center of the American civil rights movement, with Martin Luther King Jr., Ralph Abernathy, and many other locals serving as prominent leaders"
+        "article": "Ebenezer Baptist Church",
+        "url": "https://en.wikipedia.org/wiki/Ebenezer_Baptist_Church",
+        "quote": "It was the church where Dr. Martin Luther King Sr. was pastor from the 1930s and co-pastor together with his sons Dr. Martin Luther King Jr. from 1960 until his assassination in 1968"
       }
     },
     {

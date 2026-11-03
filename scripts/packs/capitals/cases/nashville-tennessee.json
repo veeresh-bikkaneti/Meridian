@@ -69,12 +69,12 @@
     {
       "tier": 4,
       "tier_name": "hook",
-      "text": "Folks far and wide call this place Music City, and the name fits. It is a great center for country music and the whole music trade.",
-      "narrowing": "Nearly decisive: one capital is famed far and wide as Music City for country music.",
+      "text": "The Grand Ole Opry, a live country music radio show, comes from this city. It is the longest running radio broadcast in the land.",
+      "narrowing": "Nearly decisive: one capital is home to the Grand Ole Opry, the longest running radio broadcast.",
       "source": {
-        "article": "Nashville, Tennessee",
-        "url": "https://en.wikipedia.org/wiki/Nashville%2C_Tennessee",
-        "quote": "It is a major center for the music industry, especially country music, and is commonly referred to as Music City"
+        "article": "Grand Ole Opry",
+        "url": "https://en.wikipedia.org/wiki/Grand_Ole_Opry",
+        "quote": "it is the longest-running radio broadcast in U.S. history"
       }
     },
     {
