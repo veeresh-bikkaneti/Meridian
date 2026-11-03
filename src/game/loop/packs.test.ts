@@ -130,6 +130,27 @@ test("the published pack end to end: a tier-1 case deals first, and Paris briefs
   assert.ok(entry.blurb.endsWith("Paris is the capital of France."));
 });
 
+test("missing sidecar entry: the case plays, with no briefing and no blurb (screen-level)", () => {
+  // Behaviour: an index the sidecar does not carry resolves to no
+  // entry, so the screen derives no briefing and no pairing blurb —
+  // while the clue file itself is an ordinary clue file that plays
+  // without the sidecar (the deal and clue fetch never consult it).
+  const meta = { "387": PARIS_META };
+  const entry = loopMetaEntryFor(meta, 400);
+  assert.equal(entry, null);
+  assert.equal(entry ? packBriefingText(entry) : null, null, "no entry, no briefing");
+  // Screen wiring pin: LoopScreen passes the entry's blurb (or null)
+  // and a briefing derived only from a present entry, and a failed or
+  // empty sidecar load leaves packMeta null instead of blocking play.
+  const screen = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "LoopScreen.tsx"), "utf8");
+  assert.ok(screen.includes("packBlurb={packEntry?.blurb ?? null}"), "blurb falls back to null");
+  assert.ok(
+    screen.includes("const packBriefing = packEntry ? packBriefingText(packEntry) : null"),
+    "briefing exists only when an entry exists",
+  );
+  assert.ok(screen.includes("if (!cancelled) setPackMeta(null)"), "sidecar failure never blocks the case");
+});
+
 test("packBriefingText states only what the direction gives", () => {
   assert.equal(packBriefingText(PARIS_META), "Your case: find the capital of France.");
   const drill: LoopPackMetaEntry = {
