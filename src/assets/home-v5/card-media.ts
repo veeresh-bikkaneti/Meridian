@@ -4,9 +4,14 @@ import geodetectiveStillUrl from "./geodetective-still.webp";
 import coldtrailVideoUrl from "./coldtrail-film.mp4";
 import coldtrailPosterUrl from "./coldtrail-poster.webp";
 import coldtrailStillUrl from "./coldtrail-still.webp";
+import coldtrailLittleExplorerVideoUrl from "./coldtrail-film-little-explorer.mp4";
+import coldtrailLittleExplorerPosterUrl from "./coldtrail-poster-little-explorer.webp";
+import coldtrailLittleExplorerStillUrl from "./coldtrail-still-little-explorer.webp";
 import reviewVideoUrl from "./review-film.mp4";
 import reviewPosterUrl from "./review-poster.webp";
 import reviewStillUrl from "./archive-tools.webp";
+import reviewTrailScoutVideoUrl from "./review-film-trail-scout.mp4";
+import reviewTrailScoutPosterUrl from "./review-poster-trail-scout.webp";
 import journalVideoUrl from "./journal-film.mp4";
 import journalPosterUrl from "./journal-poster.webp";
 import journalStillUrl from "./journal-tree.webp";
@@ -251,6 +256,84 @@ import grownupsStillUrl from "./binoculars-hat.webp";
  * be silent. The audio track is stripped on purpose — the home
  * page is a reading surface, the films are decoration, and they
  * play muted in the browser anyway.
+ *
+ * ── Band variants (band-motion port, Units 2–3) ──
+ *
+ * Two cards carry a second film, chosen by the player's age band
+ * through the two pure selectors at the bottom of this module.
+ * The selectors are the ONLY band→media path on the home page:
+ * game-app.tsx passes each affected slot's media through its
+ * selector, and every other slot keeps its plain record. A
+ * selector matches its band exactly and fails closed — the
+ * standard record comes back for every other value, including
+ * "11-13", null, undefined, and any string that is not the one
+ * band id. CardFilm itself does not change: it receives whichever
+ * record the selector returned, with the same gates, the same
+ * lazy mount, and the same slot box, so a variant costs its band
+ * one film download and costs every other band nothing.
+ *
+ * Little Explorer Cold Trail (band "5-7" only) —
+ * COLDTRAIL_FILM_LITTLE_EXPLORER. The softer-tone take of the
+ * same walk: Jolly on the footprint trail, at the mock's slower
+ * pacing. Provenance: generated for the age-band motion mockups
+ * (raw take ~/workspace/meridian-band-motion/videos/
+ * little-explorer-coldtrail.mp4, 1264×704, 10 s, 24 fps) and
+ * prepared in ~/workspace/meridian-band-port-evidence/media-prep/
+ * (README there carries the full prep record). The walk never
+ * returns to its start inside the take, so the shipped film is a
+ * ping-pong build in the same shape as the standard Cold Trail
+ * film: the first 6 s forward, then the same 6 s reversed — walk
+ * out, walk back, 12.0 s total. Encode: scale with
+ * force_original_aspect_ratio=increase + crop to 1094×616 (the
+ * recipe above), H.264, silent, faststart, 12 fps, CRF 38 →
+ * 349,224 bytes. Seams, greyscale MAD (0–255) against the
+ * neighbouring frame: the forward/reverse join is 0.30 (the
+ * reverse starts from the forward's own last frame); the loop
+ * join (last frame vs first frame) is 4.05 — the content frame
+ * is identical by construction, and the number is encoder drift
+ * accumulated over 12 s of falling snow, not a content jump.
+ * Poster and still are one picture, frame 0 of the encode, WebP
+ * quality 82, 50,100 bytes each: the ping-pong returns to its
+ * start, so the settle frame IS frame 0. They stay two files —
+ * the poster/still distinction above still holds, and a future
+ * take whose first and resting frames differ swaps each on its
+ * own (the locked tile's media module made the same call).
+ *
+ * Trail Scout Review (band "8-10" only) — REVIEW_FILM_TRAIL_SCOUT.
+ * A regenerated take of the Review card's sweep beat, made as
+ * this band's tone: the magnifying glass sweeps out and back
+ * over the satchel, then the picture settles on the shipped
+ * still's composition. Provenance: generated from the shipped
+ * still (archive-tools.webp) with the Little Explorer Review
+ * take's beat; prep record in the same media-prep README. The
+ * take invents nothing — frames checked at start, middle, and
+ * end hold the same glass, compass, and satchel, with no
+ * documents and no text anywhere. (An earlier mock take of this
+ * card invented case-file documents with pseudo-text; that file
+ * is banned and must never enter the repo.) Identity, greyscale
+ * MAD (0–255) against the shipped still, each frame resized to
+ * the take's 1200×768: first frame 19.77, settle (last) frame
+ * 20.67, first vs last 2.93 (it comes back to its own start),
+ * first vs mid 15.49 (the sweep really moves). Calibration, same
+ * method: the accepted Little Explorer Review take scores 22.24
+ * settle against the same still, so this take's settle frame
+ * sits closer to the shipped still than the accepted take's
+ * does; the numbers run high for every take because the shipped
+ * still is a 400×269 corner-art file compared at 1200×768.
+ * Encode: the raw take (1200×768, 10 s, 24 fps, 2,548,929 bytes)
+ * re-encoded at the Review slot size with the recipe shape above
+ * — scale=800:538:force_original_aspect_ratio=increase +
+ * crop=800:538, H.264, silent (-an), faststart, preset veryslow,
+ * 24 fps kept. CRF sweep on this take: 24 → 431,622 bytes (over
+ * the cap), 26 → 322,998, 28 → 241,829, 32 → 142,643,
+ * 34 → 112,678, 36 → 92,347, 38 → 75,093, 40 → 62,426. The
+ * shipped encode is CRF 28 → 241,829 bytes, SSIM 0.978 against
+ * a CRF-10 reference at the same geometry — flat illustration
+ * compresses cleanly, so this take meets the cap inside the
+ * brief's original CRF range instead of past it. The poster is
+ * frame 0 of this encode, WebP quality 82, 31,792 bytes. The
+ * still is the existing archive-tools.webp import — the same
+ * file the standard Review record uses; it is not duplicated.
  */
 export const GEODETECTIVE_FILM = {
   videoUrl: geodetectiveVideoUrl,
@@ -281,3 +364,44 @@ export const GROWNUPS_FILM = {
   posterUrl: grownupsPosterUrl,
   stillUrl: grownupsStillUrl,
 } as const;
+
+/**
+ * Band variants — see the "Band variants" section of the module
+ * doc above for provenance, seam/identity numbers, and the encode
+ * recipes. These two records are reachable only through the
+ * selectors below.
+ */
+export const COLDTRAIL_FILM_LITTLE_EXPLORER = {
+  videoUrl: coldtrailLittleExplorerVideoUrl,
+  posterUrl: coldtrailLittleExplorerPosterUrl,
+  stillUrl: coldtrailLittleExplorerStillUrl,
+} as const;
+
+export const REVIEW_FILM_TRAIL_SCOUT = {
+  videoUrl: reviewTrailScoutVideoUrl,
+  posterUrl: reviewTrailScoutPosterUrl,
+  // The settle composition IS the shipped illustration — the same
+  // import the standard REVIEW_FILM uses, never a copy.
+  stillUrl: reviewStillUrl,
+} as const;
+
+/**
+ * The only band→media path for the Cold Trail card: the Little
+ * Explorer ("5-7") band gets the softer film; every other value —
+ * "8-10", "11-13", null, undefined, any other string — gets the
+ * standard film. Exact match, fail closed on every doubt.
+ */
+export function coldtrailMediaForBand(band: string | null | undefined) {
+  return band === "5-7" ? COLDTRAIL_FILM_LITTLE_EXPLORER : COLDTRAIL_FILM;
+}
+
+/**
+ * The only band→media path for the Review card: the Trail Scout
+ * ("8-10") band gets the regenerated sweep film; every other
+ * value — "5-7", "11-13", null, undefined, any other string —
+ * gets the standard film. Exact match, fail closed on every
+ * doubt.
+ */
+export function reviewMediaForBand(band: string | null | undefined) {
+  return band === "8-10" ? REVIEW_FILM_TRAIL_SCOUT : REVIEW_FILM;
+}

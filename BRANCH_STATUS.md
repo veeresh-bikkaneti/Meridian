@@ -1,3 +1,87 @@
+# BRANCH_STATUS — feat/band-motion-variants
+
+- **Branch:** `feat/band-motion-variants`
+- **Base:** `main` @ `5b6dcac` (#324 smooth cards + #328 locked tile, merged)
+
+## Task capsule
+
+TASK / requested outcome: Band-motion port, Units 2–3. Wire two
+band-selected film variants through the existing card-media.ts swap
+point: Little Explorer ("5-7") Cold Trail gets the softer prep film;
+Trail Scout ("8-10") Review gets the regenerated prep take,
+re-encoded at slot size. Every other band keeps the shipped films.
+Builder silo: build, open the PR, stop. NO MERGE without the
+owner's per-PR word; Silo QA and the panel follow as separate silos.
+
+Tier and rationale: Tier 2 shape (new media + selector logic + wiring
+in three surfaces), run as a builder silo under the coordinator's
+brief; independent Silo QA and the 12-role panel follow separately.
+
+Done condition / evidence: selectors pure and exact-match, fail
+closed (full unit matrix); per-band lazy loading proven by E2E
+network watch (variant fetched for its band only, the film it
+replaces never fetched); gates green (tsc, npm test, lint-cards,
+build:pages); captures of both variants playing in the built app;
+geometry of the two affected cards unchanged vs main, the other
+three cards and the locked tile byte-stable in the diff.
+
+Files in scope: `src/assets/home-v5/card-media.ts` (two variant
+records + two selectors + module doc),
+`src/assets/home-v5/coldtrail-{film,poster,still}-little-explorer.*`
+(new, byte-identical copies of the prep production files),
+`src/assets/home-v5/review-{film,poster}-trail-scout.*` (new; film
+encoded here from the prep take, poster = frame 0 of that encode),
+`src/components/game-app.tsx` (the import line + exactly the two
+CardFilm render sites, Cold Trail and Review, pass through the
+selectors), `src/assets/home-v5/card-media-band-variants.test.ts`
+(new), `tests/e2e/band-media-variants.desktop.spec.ts` (new),
+README home-cards paragraph, this file.
+Synchronized test pins: `src/components/card-film.test.ts` and
+`src/components/home-smooth-cards.test.ts` asserted the two render
+sites' literal media props; both pins now assert the selector form
+(same strength — the exact rendered expression is still pinned).
+Protected / untouched: `card-film.tsx`, `home-v5.css`,
+LockedLoop / LockedTileFilm, all copy strings, the shipped standard
+films (byte-identical), the banned mock take
+(`meridian-band-motion/videos/trail-scout-review.mp4`) never enters
+the repo.
+
+Approvals: branch + PR are the assigned task. Merge: owner only.
+
+## Status
+
+- [x] Fresh clone at `~/workspace/meridian-band-port-23`, branch cut
+      at `5b6dcac`
+- [x] LE Cold Trail media copied from media-prep (sha256-verified
+      byte-identical): film 349,224 B (1094×616, 12 fps, 12.0 s),
+      poster/still 50,100 B each
+- [x] TS Review encode sweep (800×538, 24 fps, veryslow, faststart):
+      CRF 24 → 431,622 (over cap), 26 → 322,998, **28 → 241,829
+      (shipped; SSIM 0.978 vs a CRF-10 reference)**, 32 → 142,643,
+      34 → 112,678, 36 → 92,347, 38 → 75,093, 40 → 62,426.
+      Poster from frame 0 of the shipped encode, WebP q82, 31,792 B
+- [x] card-media.ts: COLDTRAIL_FILM_LITTLE_EXPLORER +
+      REVIEW_FILM_TRAIL_SCOUT records, coldtrailMediaForBand /
+      reviewMediaForBand selectors, module-doc paragraphs
+      (provenance, seam/identity numbers, encode recipe). The TS
+      record's stillUrl reuses the existing archive-tools.webp
+      import — no still file duplicated
+- [x] game-app.tsx: Cold Trail + Review sites pass
+      `coldtrailMediaForBand(ageBand)` / `reviewMediaForBand(ageBand)`;
+      diff is the import line + those two lines, nothing else
+- [x] Unit tests: new selector suite 14/14 (full matrix for both
+      selectors, executed against the shipped functions; byte caps;
+      wiring pins); card-film + home-smooth-cards + locked-tile
+      suites 55/55 after the synchronized pin updates
+- [ ] Gates (tsc / npm test / test:worker / lint-cards /
+      build:pages) — running
+- [ ] E2E per-band network proof + captures — pending build
+- [ ] PR open — pending
+
+---
+
+# Prior records preserved from main @ 5b6dcac (2026-11-03)
+
 # BRANCH_STATUS — feat/smooth-cards
 
 - **Branch:** `feat/smooth-cards`

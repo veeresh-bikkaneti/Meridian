@@ -56,7 +56,7 @@ import {
   VERDICT_GRANDPA_POSTER_URL,
   VERDICT_GRANDPA_VIDEO_URL,
 } from "@/assets/verdict/grandpa-media";
-import { COLDTRAIL_FILM, GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, REVIEW_FILM } from "@/assets/home-v5/card-media";
+import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand } from "@/assets/home-v5/card-media";
 import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
@@ -4401,7 +4401,7 @@ function Choose({
               walks the footprint trail (character motion, not a camera
               move — the owner's 2026-11-02 correction). Media:
               card-media.ts. */}
-          <CardFilm className="hv5-pic" media={COLDTRAIL_FILM} testId="card-film-coldtrail" />
+          <CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4441,7 +4441,7 @@ function Choose({
             data-testid="tour-stop-review"
             id="home-review"
           >
-            <CardFilm className="hv5-art" media={REVIEW_FILM} testId="card-film-review" />
+            <CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" />
             <div className="hv5-txt">
               <div className="hv5-head">
                 <span className="hv5-badge">
