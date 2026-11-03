@@ -52,8 +52,6 @@ import { BootSplash } from "./boot-splash";
 import "./home-v5.css";
 import heroMountainUrl from "@/assets/home-v5/hero-mountain.webp";
 import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
-import desertRuinsUrl from "@/assets/home-v5/desert-ruins.webp";
-import patagoniaUrl from "@/assets/home-v5/patagonia.webp";
 import archiveToolsUrl from "@/assets/home-v5/archive-tools.webp";
 import journalTreeUrl from "@/assets/home-v5/journal-tree.webp";
 import binocularsHatUrl from "@/assets/home-v5/binoculars-hat.webp";
@@ -61,6 +59,8 @@ import {
   VERDICT_GRANDPA_POSTER_URL,
   VERDICT_GRANDPA_VIDEO_URL,
 } from "@/assets/verdict/grandpa-media";
+import { COLDTRAIL_FILM, GEODETECTIVE_FILM } from "@/assets/home-v5/card-media";
+import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
 import {
@@ -4348,7 +4348,11 @@ function Choose({
               with the image. The card action is the stretched CTA below
               (Form S): the card itself cannot be the <button> because
               EarnedBadgeRow renders real badge <button>s inside it. */}
-          <LazyHomeImage className="hv5-pic" src={desertRuinsUrl} alt="" ariaHidden />
+          {/* Card film (feat/home-card-films): the slot now plays the
+              GeoDetective reshoot film once, governed by CardFilm
+              (reduced-motion / Save-Data / low-memory / error all land
+              on the owner's still image). Media: card-media.ts. */}
+          <CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4396,7 +4400,11 @@ function Choose({
           {/* Variant A, same as GeoDetective: image first in DOM order;
               whole-card action via the stretched CTA (Form S, shared form
               so both game cards behave identically). */}
-          <LazyHomeImage className="hv5-pic" src={patagoniaUrl} alt="" ariaHidden />
+          {/* Card film, same shared component as GeoDetective: Jolly
+              walks the footprint trail (character motion, not a camera
+              move — the owner's 2026-11-02 correction). Media:
+              card-media.ts. */}
+          <CardFilm className="hv5-pic" media={COLDTRAIL_FILM} testId="card-film-coldtrail" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
