@@ -30,19 +30,25 @@ import grownupsStillUrl from "./binoculars-hat.webp";
  *
  * Smooth blend (feat/smooth-cards): on the `.hv5-pic` slots the
  * picture feathers into the text area. A mask on the media in
- * home-v5.css holds the scene at full opacity until 84% of the
- * box height and fades its own alpha out by the bottom edge. No
- * pigment is painted over the scene. A thin strip on the
- * wrapper's ::after lands the last rows on the exact card colour
- * (#fdfbf3). The first build painted a cream ramp over the scene
- * instead, clear at 64% and solid at 100%. The owner rejected it
- * on 2026-11-03 as too harsh on the eyes. Three softer variants
- * were captured for his pick. He could not tell them apart at
- * capture size and asked for the gradient reduced even further.
- * The mask feather plus strip is that reduction. The fade
- * belongs to the `.hv5-pic` slots only. The `.hv5-art` slots are
- * full-bleed banners now, and home-v5.css keeps the strip off
- * them.
+ * home-v5.css holds the scene at full opacity until 93% of the
+ * box height and fades its own alpha out by the bottom edge —
+ * a melt zone of about 7% of the box. No pigment is painted
+ * over the scene anywhere: the melt is a pure alpha feather,
+ * so the picture dissolves into the card surface it sits on
+ * (--hv5-card, #fdfbf3 — the ground the text zone sits on too;
+ * the full ground reasoning is in home-v5.css). The first build
+ * painted a cream ramp over the scene instead, clear at 64% and
+ * solid at 100%. The owner rejected it on 2026-11-03 as too
+ * harsh on the eyes. Three softer variants were captured for
+ * his pick. He could not tell them apart at capture size and
+ * asked for the gradient reduced even further, and on
+ * 2026-11-03 (10:25 CST) he ruled it very small and free of
+ * anything covering the text or the cartoon: the feather
+ * shrank from 84% to the last 7%, and the thin painted landing
+ * strip the rework had put on the wrapper's ::after was
+ * deleted entirely. The fade belongs to the `.hv5-pic` slots
+ * only. The `.hv5-art` slots are full-bleed banners now and
+ * carry no fade at all.
  *
  * ── The three spot illustrations (Review, Journal, Grown-ups) ──
  *
@@ -103,7 +109,7 @@ import grownupsStillUrl from "./binoculars-hat.webp";
  *     0.4 s freeze holds that wrong beat. The film then rewinds
  *     at 1.7 times speed back to frame 0, and a 1.3 s freeze
  *     holds frame 0 as the rethink pause. The last frame is
- *     frame 0, so the loop has no seam. 9.4 s, CRF 34, 179,821
+ *     frame 0, so the loop has no seam. 9.54 s, CRF 34, 179,821
  *     bytes.
  *   Journal — the shipped film with its last 0.8 s crossfaded
  *     into its first 0.8 s (an xfade build). Duration stays

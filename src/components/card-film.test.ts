@@ -203,10 +203,18 @@ describe("home wiring — five cards, one component, nothing else moves", () => 
     assert.ok(artBlock.includes("mask-image: none"), "corner radial mask removed from the banner");
     assert.ok(artBlock.includes(".home-v5 .hv5-spot .hv5-txt"), "spot text column rule present");
     assert.ok(artBlock.includes("max-width: 100%"), "spot text returns to full width");
+    assert.ok(artBlock.includes("height: auto"),
+      "aspect cure: the base spot rule's height: 100% is neutralized in the art block, so the banner keeps its native aspect");
   });
 
-  it("art-film CSS: fade strip stays on the pic slots; no toggle layer survives", () => {
-    assert.ok(css.includes(".home-v5 .hv5-card-film.hv5-art::after {"), "art slots switch the pic fade off");
+  it("art-film CSS: no fade overlay on the art slots; no toggle layer survives", () => {
+    // Renamed in the gradient cure (owner ruling, 2026-11-03
+    // 10:25 CST): the pic slots' painted landing strip this test
+    // once named is deleted entirely — the melt is a pure mask
+    // feather now (pinned in home-smooth-cards.test.ts). The art
+    // slots' ::after guard stays: no gradient overlay reaches
+    // the banners either way.
+    assert.ok(css.includes(".home-v5 .hv5-card-film.hv5-art::after {"), "art slots guard the wrapper ::after off");
     const artBlock = css.slice(css.indexOf("art films (feat/smooth-cards"));
     assert.ok(artBlock.includes("content: none"), "no gradient overlay on the art slots");
     assert.ok(!artBlock.includes("z-index: 3"), "the toggle's z-index lift is gone with the toggle");

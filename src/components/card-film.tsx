@@ -57,13 +57,15 @@ import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
  *   not change; the media absolutely fills that box (see
  *   home-v5.css).
  * - On the `.hv5-pic` slots the picture feathers into the text
- *   area: a mask on the media itself plus a thin landing strip
- *   on the wrapper's ::after, both in home-v5.css. Because the
- *   mask sits on the media elements, it covers every state the
- *   slot renders (film, poster, still) with no work here. The
- *   `.hv5-art` slots are full-bleed banners and keep the fade
- *   off; CSS keeps the strip off them too (home-v5.css, art-film
- *   block).
+ *   area: a mask on the media itself (home-v5.css) fades the
+ *   scene's own alpha out over the box's last 7%, and no pigment
+ *   is painted over the scene — the painted landing strip the
+ *   rework first shipped was deleted on the owner's ruling
+ *   (2026-11-03 10:25 CST; the ground reasoning is recorded in
+ *   home-v5.css). Because the mask sits on the media elements,
+ *   it covers every state the slot renders (film, poster,
+ *   still) with no work here. The `.hv5-art` slots are
+ *   full-bleed banners and carry no fade at all.
  */
 export type CardFilmMedia = {
   videoUrl: string;

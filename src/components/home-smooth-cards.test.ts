@@ -14,9 +14,16 @@
  * The owner rejected it on 2026-11-03 as too harsh on the eyes,
  * and the three softer variants captured for his pick still read
  * too heavy, so he asked for the gradient reduced even further.
- * The shipped fade is a mask feather on the media plus a thin
- * landing strip, pinned below; the 64% ramp pins are replaced by
- * absence pins, so the ramp fails this suite if it returns.
+ * The rework shipped a mask feather (84% to 100%) plus a thin
+ * painted landing strip on the wrapper's ::after. The owner
+ * then ruled on 2026-11-03 (10:25 CST, verbatim): "use gradient
+ * that belends into the bacground of the page, and it should be
+ * very small not too big since its covering up the actual txt
+ * and animation cartoon". The shipped fade is now a pure mask
+ * feather on the media over the box's last 7% (93% to 100%)
+ * with zero pigment painted anywhere; the strip is deleted and
+ * pinned below by absence pins, like the 64% ramp before it, so
+ * either fails this suite if it returns.
  *
  * Part 2 history: the Review, Journal, and Grown-ups illustrations
  * first got CSS settling passes (hv5-art-drift / hv5-art-sway /
@@ -45,13 +52,10 @@ const lazy = read("lazy-home-image.tsx");
 const film = read("card-film.tsx");
 const gameApp = read("game-app.tsx");
 
-const fadeRule = css.slice(
-  css.indexOf(".hv5-card-film::after {"),
-  css.indexOf(".hv5-card-film::after {") + 700,
-);
+const maskRuleStart = css.indexOf(".home-v5 .hv5-card-film.hv5-pic > img,");
 const maskRule = css.slice(
-  css.indexOf(".hv5-card-film.hv5-pic > img,"),
-  css.indexOf(".hv5-card-film::after {"),
+  maskRuleStart,
+  css.indexOf("}", maskRuleStart) + 1,
 );
 
 describe("film fade — mask feather on the media covers every state", () => {
@@ -75,24 +79,33 @@ describe("film fade — mask feather on the media covers every state", () => {
     assert.ok(film.includes("media.posterUrl"), "pre-mount branch renders the poster in the wrapper");
   });
 
-  it("the mask holds full opacity to 84% and feathers out by 100%", () => {
+  it("the mask holds full opacity to 93% and feathers out by 100%", () => {
+    // Owner, 2026-11-03 10:25 CST: the gradient "should be very
+    // small not too big" — a melt zone of about 7% of the box
+    // (~23px on the 332px desktop box), down from the rework's
+    // 84%-to-100% feather.
     assert.ok(maskRule.includes("-webkit-mask-image: linear-gradient("), "webkit mask gradient");
     assert.ok(maskRule.includes("mask-image: linear-gradient("), "standard mask gradient");
-    assert.ok(maskRule.includes("#000 84%"), "scene at full opacity until 84% of the box");
-    assert.ok(maskRule.includes("rgba(0, 0, 0, 0.55) 93%"), "half gone at 93%");
+    assert.ok(maskRule.includes("#000 93%"), "scene at full opacity until 93% of the box");
     assert.ok(maskRule.includes("transparent 100%"), "fully feathered at the bottom edge");
+    assert.ok(!maskRule.includes("#000 84%"), "the rework's wider 84% feather is gone");
+    assert.ok(!maskRule.includes("rgba(0, 0, 0, 0.55)"), "no mid stop: the melt is one clean ramp");
   });
 
-  it("the ::after landing strip hugs the bottom edge only", () => {
-    assert.ok(css.includes(".hv5-card-film::after {"), "strip rule exists on the shared wrapper");
-    assert.ok(fadeRule.includes("linear-gradient("), "gradient fill");
-    assert.ok(fadeRule.includes("to bottom"), "lands at the bottom of the picture");
-    assert.ok(fadeRule.includes("rgba(253, 251, 243, 0) 94%"), "clear until 94% of the box");
-    assert.ok(fadeRule.includes("rgba(253, 251, 243, 0.5) 97.5%"), "half card colour at 97.5%");
-    assert.ok(fadeRule.includes("#fdfbf3 100%"), "solid card colour at the bottom edge");
+  it("the painted landing strip is deleted entirely (owner ruling, 2026-11-03 10:25 CST)", () => {
+    // The rework's ::after strip painted card colour over the
+    // scene's last rows. The owner's ruling deletes it: the melt
+    // is a pure alpha feather with zero pigment, so the picture
+    // dissolves into the card ground it actually sits on and no
+    // cloud can form. Removal pins, like the art-slot ones: the
+    // strip fails this suite if it returns.
+    assert.ok(!css.includes(".home-v5 .hv5-card-film::after {"), "no ::after rule on the shared wrapper");
+    assert.ok(!css.includes("rgba(253, 251, 243, 0) 94%"), "strip's clear stop gone");
+    assert.ok(!css.includes("rgba(253, 251, 243, 0.5) 97.5%"), "strip's half-colour stop gone");
+    assert.ok(!css.includes("#fdfbf3 100%"), "strip's solid card-colour stop gone");
     assert.ok(
-      css.includes("--hv5-card: #fdfbf3"),
-      "the solid stop is the card colour token's value, so picture and text area meet in one colour",
+      css.includes(".home-v5 .hv5-card-film.hv5-art::after {"),
+      "the art slots' content: none guard on the wrapper ::after stays",
     );
   });
 
@@ -101,17 +114,15 @@ describe("film fade — mask feather on the media covers every state", () => {
     // 64%) was too harsh on the eyes, and the softer captures
     // were still too heavy. Neither the ramp stops nor the solid
     // band may come back.
-    assert.ok(!fadeRule.includes("64%"), "no 64% stop in the strip");
-    assert.ok(!fadeRule.includes("rgba(253, 251, 243, 0.45)"), "old 82% ramp stop gone");
-    assert.ok(!fadeRule.includes("rgba(253, 251, 243, 0.88)"), "old 93% ramp stop gone");
+    assert.ok(!css.includes("rgba(253, 251, 243, 0.45)"), "old 82% ramp stop gone");
+    assert.ok(!css.includes("rgba(253, 251, 243, 0.88)"), "old 93% ramp stop gone");
     assert.ok(!maskRule.includes("253, 251, 243"), "the mask paints no cream over the scene");
   });
 
-  it("the strip can never be tapped and never grows the box", () => {
-    assert.ok(fadeRule.includes("pointer-events: none"), "strip takes no taps");
-    assert.ok(fadeRule.includes("position: absolute"), "strip is positioned inside the box");
-    assert.ok(fadeRule.includes("inset: 0"), "strip fills the existing box, adding no size");
-    assert.ok(!fadeRule.includes("height:"), "strip sets no height of its own");
+  it("the feather is a mask only: it can never be tapped and never grows the box", () => {
+    assert.ok(!maskRule.includes("height:"), "the mask rule sets no height of its own");
+    assert.ok(!maskRule.includes("width:"), "the mask rule sets no width of its own");
+    assert.ok(!maskRule.includes("position:"), "the mask rule positions nothing");
   });
 
   it("no toggle survives for the fade to clear (owner autoloop order, 2026-11-03)", () => {
@@ -155,8 +166,8 @@ describe("CSS art passes — removed in full (owner ruling, 2026-11-03)", () => 
   });
 
   it("the Part 1 fade is untouched by the removal", () => {
-    assert.ok(css.includes(".hv5-card-film::after {"), "fade rule still present");
-    assert.ok(fadeRule.includes("#fdfbf3 100%"), "fade stops unchanged");
+    assert.ok(css.includes(".hv5-card-film.hv5-pic > img,"), "fade mask rule still present");
+    assert.ok(maskRule.includes("#000 93%"), "fade stops unchanged (93% feather, strip deleted)");
   });
 });
 
@@ -194,6 +205,27 @@ describe("art films — the three spot cards joined the CardFilm system", () => 
     assert.ok(artBlock.includes(".home-v5 .hv5-spot .hv5-txt { max-width: 100%; }") ||
       (artBlock.includes(".home-v5 .hv5-spot .hv5-txt") && artBlock.includes("max-width: 100%")),
       "spot text column returns to full width");
+  });
+
+  it("the spot text column's height: 100% is neutralized in the art-film block (aspect cure)", () => {
+    // Cure, PR #324 rework: the base .hv5-spot .hv5-txt rule sets
+    // height: 100%, written for the old corner layout where the
+    // art was absolutely positioned. Inside the flex-column card
+    // the in-flow banner plus a 100%-tall text column overflow
+    // the card, and flex shrink took the overflow out of the
+    // banner, cropping the films (measured at 1280px: Review
+    // 386x185.56, Journal and Grown-ups 386x241.34, against the
+    // native 386x259.6 / 386x386 / 386x386). The cure lives in
+    // the appended art-film block, with the layout it serves.
+    const artBlock = css.slice(css.indexOf("art films (feat/smooth-cards"));
+    assert.ok(artBlock.includes(".home-v5 .hv5-spot .hv5-txt"), "spot text rule present in the art block");
+    assert.ok(artBlock.includes("height: auto"), "height: 100% neutralized where the banner layout lives");
+    const baseTxt = css.slice(
+      css.indexOf(".home-v5 .hv5-spot .hv5-txt {"),
+      css.indexOf(".home-v5 .hv5-journal .hv5-art {"),
+    );
+    assert.ok(baseTxt.includes("height: 100%"),
+      "the base rule itself is untouched — the cure is the art block's override, not a base edit");
   });
 
   it("the banner wrapper stays decorative: pointer-events none survives on the base rule", () => {
