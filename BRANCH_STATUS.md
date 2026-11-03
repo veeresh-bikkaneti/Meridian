@@ -64,7 +64,7 @@ Approvals: branch + PR are the assigned task. Merge: owner only.
       branch
 - [x] Captures: film, settle still, band-switch geometry, side-by-side
       (sealed in `~/workspace/meridian-band-port-evidence/`)
-- [ ] PR open (no merge) — opening with this status
+- [x] PR open (no merge) — PR #328, https://github.com/veeresh-bikkaneti/Meridian/pull/328
 
 ## Sandbox media prep (no repo commits; PR #324 owns the card slots)
 
