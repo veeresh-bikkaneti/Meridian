@@ -1,5 +1,8 @@
 import { strict as assert } from "node:assert";
+import { readFileSync } from "node:fs";
 import { test } from "node:test";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   isLoopPackManifest,
   isLoopPackMeta,
@@ -9,6 +12,10 @@ import {
   type LoopPackManifest,
   type LoopPackMetaEntry,
 } from "./packs.ts";
+import { buildTierBandedDeck, dealFromDeck, ensurePackDeck, freshLoopUnlimitedStore } from "./store.ts";
+
+const PUBLIC_DIR = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "public");
+const readPublicJson = (path: string) => JSON.parse(readFileSync(join(PUBLIC_DIR, path), "utf8"));
 
 const MANIFEST: LoopPackManifest = {
   v: 1,
@@ -74,6 +81,35 @@ test("packManifestCases pairs indexes with tiers, defaulting to one band", () =>
     { index: 387, packTier: 2 },
     { index: 388, packTier: 2 },
   ]);
+});
+
+test("pilot end to end: the generated Paris case deals from the pack deck and briefs from the sidecar", () => {
+  const manifest = readPublicJson("packs/capitals/manifest.json") as LoopPackManifest;
+  assert.equal(isLoopPackManifest(manifest), true);
+  assert.deepEqual(manifest.loopIndexes, [387]);
+
+  const cases = packManifestCases(manifest);
+  const store = ensurePackDeck(freshLoopUnlimitedStore(387), "capitals", cases, (bound) => bound - 1);
+  const dealt = dealFromDeck(store, "capitals", () => buildTierBandedDeck(cases, (bound) => bound - 1));
+  assert.equal(dealt.index, 387, "Paris, the pack's tier-1 case, deals first");
+
+  const clue = readPublicJson("loop/clues/387.json") as {
+    v: number;
+    placeId: string;
+    target: { lon: number; lat: number };
+    clues: string[];
+  };
+  assert.equal(clue.v, 1);
+  assert.equal(clue.placeId, "geonames:2988507");
+  assert.deepEqual(clue.target, { lon: 2.3488, lat: 48.85341 });
+  assert.equal(clue.clues.length, 5);
+
+  const meta = readPublicJson("packs/capitals/loop-meta.json");
+  assert.equal(isLoopPackMeta(meta), true);
+  const entry = loopMetaEntryFor(meta, dealt.index);
+  assert.ok(entry);
+  assert.equal(packBriefingText(entry), "Your case: find the capital of France.");
+  assert.ok(entry.blurb.endsWith("Paris is the capital of France."));
 });
 
 test("packBriefingText states only what the direction gives", () => {
