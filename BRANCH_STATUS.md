@@ -314,6 +314,13 @@ Rework gates (tip before this status commit):
   grid band, burned 5.1 min under VM load); D run alone right
   after passed in 24.1 s, so the file reads green with a
   contention flake recorded, per the repo's flake rule.
+- mobile-home-overlap: 20 passed / 6 failed, against the
+  recorded unmodified-main baseline in this VM of 6 passed /
+  20 failed (Part 2 redo round). The Review-card overlap tests
+  inside it pass. The six failures sit in the recorded
+  environment family (coffee-run strip on desktop and mobile,
+  the recorded main failure; narrow-scout sheets; two journal
+  section geometry checks at single widths).
 - Grandpa tour: 5 passed / 20 failed in this VM. The standing
   record for this spec in this VM is failure on unmodified main
   too (4 passed / 21 failed in the Part 2 redo round, the tour
