@@ -61,6 +61,7 @@ import {
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
 import { geodetectiveConfig, getBandConfig, canUseHint, resolveBand, type AgeBandId, type GeoDetectiveConfig } from "@/game/age-profile";
 import { HintPanel } from "@/components/hint-panel";
+import { PackShelf } from "@/components/pack-shelf";
 import { directionalHint } from "@/components/hint-logic";
 import { awardCleanRoundBadge, type PassportBadge } from "@/game/passport/badges";
 import {
@@ -761,6 +762,18 @@ export function LoopScreen({
           far off you were, and in which direction.
         </p>
       </header>
+
+      {/* Pack shelf (story packs, swarm slice 4): deck chips under the
+          header. The shelf stores the player's pick; the deal path
+          reads it once slice 1's deck-aware dealing lands.
+          activeDeckId names the deck the open case came from, which is
+          the core deck until then. */}
+      <PackShelf
+        edition="geodetective"
+        activeDeckId="all"
+        caseFinished={!!current && current.status !== "playing"}
+        onStartNext={onNextMystery}
+      />
 
       {load.phase === "loading" ? (
         <p className="mt-10 text-lg text-fg" role="status">
