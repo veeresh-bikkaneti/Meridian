@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "havana-cuba",
+  "target": {
+    "placeId": "gn-3553478",
+    "name": "Havana",
+    "aliases": [
+      "La Habana"
+    ],
+    "lat": 23.13302,
+    "lon": -82.38304,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Cuba",
+    "iso2": "CU",
+    "subdivision": "Havana"
+  },
+  "subjectAnswer": {
+    "name": "Cuba",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Cuba",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits by a deep bay on the north coast of a big island in a warm sea. Ships reach its safe port through a slim gap in the coast.",
+      "narrowing": "Rules out inland and cold-coast cities; puts the player on a big warm island's north coast, by a bay.",
+      "source": {
+        "article": "Havana",
+        "url": "https://en.wikipedia.org/wiki/Havana",
+        "quote": "which is entered through a narrow inlet and which divides into three main harbors"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Steady trade winds and warm sea flows keep the heat mild here. Great storms hit the island at times, but they strike the south coast most, not this north shore.",
+      "narrowing": "Rules out still, cold lands; keeps a warm island city softened by trade winds, away from the storm coast.",
+      "source": {
+        "article": "Havana",
+        "url": "https://en.wikipedia.org/wiki/Havana",
+        "quote": "Havana has a tropical climate that is tempered by the island's position in the belt of the trade winds and by the warm offshore currents."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Its fine harbour won this city the capital job in 1552. It took the role from Santiago, which had held it before.",
+      "narrowing": "Shrinks the list to island capitals that won the job through a fine harbour in 1552.",
+      "source": {
+        "article": "Havana",
+        "url": "https://en.wikipedia.org/wiki/Havana",
+        "quote": "Havana overtook Santiago in the mid-16th century due to the geostrategic advantages of its harbor, becoming the capital of the island in 1552."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Old cars from the 1950s still cruise the Malecón, the long sea wall road. With no fresh parts for years, clever hands keep them running with bits from home.",
+      "narrowing": "Nearly decisive: classic 1950s cars, kept running by home-made fixes, cruise this city's sea wall road.",
+      "source": {
+        "article": "Yank tank — Classic American cars in Cuba",
+        "url": "https://en.wikipedia.org/wiki/Yank_tank#Classic_American_cars_in_Cuba",
+        "quote": "Currently, the only way to keep these cars on the road today is by using Cuban ingenuity to adapt household products and Soviet technology into these vehicles."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Cuba's government sits in this city, and its ministries work here too. More than 100 foreign offices are based in its streets too.",
+      "narrowing": "Confirms it: the government and its ministries sit here, with over 100 foreign offices in the city.",
+      "source": {
+        "article": "Havana",
+        "url": "https://en.wikipedia.org/wiki/Havana",
+        "quote": "Havana is the seat of the Cuban government and ministries, the headquarters of various businesses and home to more than 100 diplomatic offices."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Ships from Spain founded a port town here in 1519, drawn by the fine harbour, and by 1552 it was the island's capital. Walls and forts rose to guard it from pirate raids at sea. Today old 1950s cars still roll past the long Malecón sea wall. Havana is the capital of Cuba."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Havana"
+  },
+  "pointPolicy": "geonames-point"
+}

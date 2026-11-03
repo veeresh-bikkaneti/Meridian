@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "salt-lake-city-utah",
+  "target": {
+    "placeId": "gn-5780993",
+    "name": "Salt Lake City",
+    "aliases": [],
+    "lat": 40.76078,
+    "lon": -111.89105,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Utah",
+    "iso2": "US",
+    "subdivision": "Utah"
+  },
+  "subjectAnswer": {
+    "name": "Utah",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Utah",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This place sits in a dry valley in the west, with a tall mountain wall on one side. A huge inland sea, full of brine, spreads out on the other side.",
+      "narrowing": "Puts the player in a dry western valley, between a mountain wall and a huge inland sea.",
+      "source": {
+        "article": "Salt Lake City",
+        "url": "https://en.wikipedia.org/wiki/Salt_Lake_City",
+        "quote": "entered a semi-arid valley and immediately began building an extensive irrigation network"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The big sea nearby feeds extra snow into winter storms here. Snow can start in autumn and linger into late spring, piling deep in the valley.",
+      "narrowing": "Rules out dry snow-free valleys; keeps a place where a nearby sea feeds extra snow.",
+      "source": {
+        "article": "Salt Lake City",
+        "url": "https://en.wikipedia.org/wiki/Salt_Lake_City",
+        "quote": "produces lake-effect snow approximately 6 to 8 times per year, some of which can produce prodigious snowfall amounts"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This place did not start out as the seat of government for its land. In 1856 it took that job from a town named Fillmore.",
+      "narrowing": "Shrinks the list to seats of government that took the job from another town in 1856.",
+      "source": {
+        "article": "Salt Lake City — History",
+        "url": "https://en.wikipedia.org/wiki/Salt_Lake_City#History",
+        "quote": "Great Salt Lake City replaced Fillmore as the territorial capital in 1856"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "In 1847, pioneers who had fled hard times back east founded this place by a great inland sea. They at once dug ditches to water the dry land.",
+      "narrowing": "Nearly decisive: pioneers founded this place in 1847 and dug ditches to water dry land.",
+      "source": {
+        "article": "Salt Lake City",
+        "url": "https://en.wikipedia.org/wiki/Salt_Lake_City",
+        "quote": "Salt Lake City was founded in 1847 by settlers led by Brigham Young who were seeking to escape persecution they had experienced while living farther east"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Utah works in this place, and Utah lawmakers meet here. This town is where the laws of the whole state get made.",
+      "narrowing": "Confirms it: the governor and the state lawmakers are based here.",
+      "source": {
+        "article": "Salt Lake City",
+        "url": "https://en.wikipedia.org/wiki/Salt_Lake_City",
+        "quote": "Salt Lake City, often shortened to Salt Lake or SLC, is the capital and most populous city of the U.S. state of Utah"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Pioneers led by Brigham Young founded Salt Lake City in 1847 beside the Great Salt Lake and dug canals to water the dry valley. It replaced Fillmore as territorial capital in 1856 and grew into the state's main city. Salt Lake City is the capital of Utah."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Salt_Lake_City"
+  },
+  "pointPolicy": "geonames-point"
+}

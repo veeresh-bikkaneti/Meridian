@@ -3,6 +3,12 @@
 @import "./styles/motion-tokens.css";
 @import "./components/bounded-text.css";
 
+/* #306: phone-landscape / short windows. The summary card's pinned action
+ * footer (~240px) leaves too little height for the scroll region there, so
+ * the card goes side by side instead (run-summary.tsx). 500px: below it the
+ * stacked card cannot show the 8rem caption slot above a 4–5 button footer. */
+@custom-variant short-landscape (@media (orientation: landscape) and (max-height: 500px));
+
 /* Self-hosted Atlas type system (latin subsets, vendored from Google Fonts;
  * no runtime CDN dependency, so the app — and its "clean console" E2E gate —
  * never depends on a font fetch succeeding). */

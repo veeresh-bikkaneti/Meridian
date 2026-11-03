@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "santiago-chile",
+  "target": {
+    "placeId": "gn-3871336",
+    "name": "Santiago",
+    "aliases": [
+      "Santiago de Chile"
+    ],
+    "lat": -33.45694,
+    "lon": -70.64827,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Chile",
+    "iso2": "CL",
+    "subdivision": "Santiago Metropolitan"
+  },
+  "subjectAnswer": {
+    "name": "Chile",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Chile",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city lies in a wide basin in South America, on the banks of the Mapocho River. The high Andes rise to its east, and a coast range lies to its west.",
+      "narrowing": "Rules out all but basin cities in South America between two ranges.",
+      "source": {
+        "article": "Santiago",
+        "url": "https://en.wikipedia.org/wiki/Santiago",
+        "quote": "Located in the Chilean Central Valley within the Santiago Basin, between the Andes to the east and the Chilean Coastal Range to the west"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are warm and dry, with long bright days and next to no rain. Winters are cool and wet, and they bring most of the rain of the year.",
+      "narrowing": "Rules out wet-summer lands; keeps the dry summer and wet winter swing.",
+      "source": {
+        "article": "Santiago",
+        "url": "https://en.wikipedia.org/wiki/Santiago",
+        "quote": "The city has a cool semi-arid climate with Mediterranean characteristics, warm, dry summers and cool, wetter winters"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1541, Pedro de Valdivia founded this city to be the seat of his new realm. He laid out its streets in a neat grid round one main square.",
+      "narrowing": "Shrinks the list to cities founded as a seat of rule in 1541.",
+      "source": {
+        "article": "Santiago — History",
+        "url": "https://en.wikipedia.org/wiki/Santiago#History",
+        "quote": "The city would serve as the capital of his governorship of Nueva Extremadura . On 12 February 1541, Valdivia officially founded the city of Santiago del Nuevo Extremo"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "From this city, the high Andes fill the east sky like a great wall of rock. On clear days, their snowy tops seem to tower right over the streets.",
+      "narrowing": "Nearly decisive: a wall of high snowy peaks fills the east sky.",
+      "source": {
+        "article": "Santiago",
+        "url": "https://en.wikipedia.org/wiki/Santiago",
+        "quote": "its location in an enclosed valley contributes both to its scenic views of the high Andes"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The president of Chile has his palace in this city. The top courts and the chief state offices work here too.",
+      "narrowing": "Confirms it: the president's palace and the top courts sit here.",
+      "source": {
+        "article": "Santiago",
+        "url": "https://en.wikipedia.org/wiki/Santiago",
+        "quote": "it houses the presidential palace and the main organs of the executive and judiciary"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Pedro de Valdivia founded this city in 1541 as the seat of his new realm, with a grid of streets round a main square. Quakes and floods hit it hard over the years, yet it grew into a vast city under the high Andes. Santiago is the capital of Chile."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Santiago"
+  },
+  "pointPolicy": "geonames-point"
+}

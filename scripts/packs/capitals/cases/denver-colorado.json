@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "denver-colorado",
+  "target": {
+    "placeId": "gn-5419384",
+    "name": "Denver",
+    "aliases": [],
+    "lat": 39.73915,
+    "lon": -104.9847,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Colorado",
+    "iso2": "US",
+    "subdivision": "Colorado"
+  },
+  "subjectAnswer": {
+    "name": "Colorado",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Colorado",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands where a river valley cuts the edge of the high plains. A great wall of rocky peaks rises just west of its streets.",
+      "narrowing": "Rules out lowland towns; puts the player on high plains just east of rocky peaks.",
+      "source": {
+        "article": "Denver",
+        "url": "https://en.wikipedia.org/wiki/Denver",
+        "quote": "located in the South Platte River valley on the western edge of the High Plains, and is just east of the Front Range of the Rocky Mountains (Rockies)"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winter here swings between deep snow with bitter cold and mild, soft days. Warm winds, called Chinooks, slide in and break the cold spell.",
+      "narrowing": "Rules out steady winters; keeps wild swings warmed by Chinook winds.",
+      "source": {
+        "article": "Denver",
+        "url": "https://en.wikipedia.org/wiki/Denver",
+        "quote": "Winters consist of periods of snow and very low temperatures alternating with periods of milder weather due to the warming effect of Chinook winds"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This gold town won the chief job for its territory in 1867. In 1881, a vote of the whole state made it the state capital for good.",
+      "narrowing": "Shrinks the list to capitals confirmed by a statewide vote in 1881.",
+      "source": {
+        "article": "Denver — History",
+        "url": "https://en.wikipedia.org/wiki/Denver#History",
+        "quote": "Denver was made the permanent state capital in a 1881 Colorado state capital referendum"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Outside the west door of the capitol, the fifteenth step is carved with words that name its height. Stand on that step and you stand one full mile high.",
+      "narrowing": "Nearly decisive: just one capitol has a fifteenth step that marks a full mile high.",
+      "source": {
+        "article": "Colorado State Capitol",
+        "url": "https://en.wikipedia.org/wiki/Colorado_State_Capitol",
+        "quote": "outside the west entrance to the building, where the fifteenth step is engraved with the words \"One Mile Above Sea Level\""
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The laws of Colorado are made in this city. It is the state capital, and the state's largest city too.",
+      "narrowing": "Confirms it: the governor and lawmakers of the state work in this city.",
+      "source": {
+        "article": "Denver",
+        "url": "https://en.wikipedia.org/wiki/Denver",
+        "quote": "is the capital and most populous city of the U.S. state of Colorado"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Gold seekers founded Denver where two streams meet in 1858, and a vote in 1881 made it the lasting state capital. One mile up, its capitol building serves the state: the building is the capitol, and the city is the capital. Denver is the capital of Colorado."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Denver"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "london-united-kingdom",
+  "target": {
+    "placeId": "gn-2643743",
+    "name": "London",
+    "aliases": [
+      "Londinium"
+    ],
+    "lat": 51.50853,
+    "lon": -0.12574,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "United Kingdom",
+    "iso2": "GB",
+    "subdivision": "England"
+  },
+  "subjectAnswer": {
+    "name": "United Kingdom",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "United Kingdom",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands on the River Thames, a wide river that flows to the North Sea. It sits in the south east of a big island in the west of Europe.",
+      "narrowing": "Rules out lands off the west of Europe and puts the player on the Thames, flowing to the North Sea.",
+      "source": {
+        "article": "London",
+        "url": "https://en.wikipedia.org/wiki/London",
+        "quote": "London stands on the River Thames in southeast England, at the head of a 50-mile (80 km) tidal estuary down to the North Sea"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The streets and crowds of this huge city trap heat in its dense centre. It can feel far warmer there than in the suburbs, an island of heat.",
+      "narrowing": "Rules out mild even lands; the city makes its own heat, so the centre runs warmer than its edge.",
+      "source": {
+        "article": "London",
+        "url": "https://en.wikipedia.org/wiki/London",
+        "quote": "London has a considerable urban heat island effect"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Royal clerks once rode from town to town with the king and his court. In the 1100s they settled for good here, and rule stayed put.",
+      "narrowing": "Shrinks the list to old seats where a travelling royal court settled for good in the 1100s.",
+      "source": {
+        "article": "London — History",
+        "url": "https://en.wikipedia.org/wiki/London#History",
+        "quote": "the institutions of central government , which had followed the royal English court around the country, grew in size and sophistication and became increasingly fixed, for most purposes at Westminster"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Bright red buses roll over the bridges here, past black taxis with lit signs on their roofs. The red bus has grown into a loved sign of this city.",
+      "narrowing": "Nearly decisive: red buses and black taxis with roof signs mark this city alone.",
+      "source": {
+        "article": "Buses in London",
+        "url": "https://en.wikipedia.org/wiki/Buses_in_London",
+        "quote": "In the decades since their introduction, the red London bus has become a symbol of the city."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The United Kingdom is ruled from this city, by its parliament and its chiefs. Both have sat in the west end for hundreds of years.",
+      "narrowing": "Confirms it: parliament and the national government sit in this city's west end.",
+      "source": {
+        "article": "London",
+        "url": "https://en.wikipedia.org/wiki/London",
+        "quote": "The City of Westminster, to the west of the City of London, has been the site of the national government and parliament for centuries."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Roman traders founded a town by the river here near the year 47, and it grew into a great port. In time the king's government settled here for good, and red buses and black taxis now fill its streets. London is the capital of the United Kingdom."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/London"
+  },
+  "pointPolicy": "geonames-point"
+}

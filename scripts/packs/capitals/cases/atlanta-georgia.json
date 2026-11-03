@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "atlanta-georgia",
+  "target": {
+    "placeId": "gn-4180439",
+    "name": "Atlanta",
+    "aliases": [],
+    "lat": 33.749,
+    "lon": -84.38798,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Georgia",
+    "iso2": "US",
+    "subdivision": "Georgia"
+  },
+  "subjectAnswer": {
+    "name": "Georgia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Georgia",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city spreads across rolling hills at the foot of a mountain chain. More trees shade its streets than in any other big city in the land.",
+      "narrowing": "Rules out flat towns; puts the player in rolling hills with the densest city tree cover.",
+      "source": {
+        "article": "Atlanta",
+        "url": "https://en.wikipedia.org/wiki/Atlanta",
+        "quote": "Atlanta features a unique topography that includes rolling hills, lush greenery, and the densest urban tree coverage of any major city in the United States"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Weather here can swing fast in the cold months. Warm gulf air brings spring-like highs, then Arctic air drops the nights into the teens.",
+      "narrowing": "Rules out steady southern warmth; keeps swings between gulf air and Arctic air.",
+      "source": {
+        "article": "Atlanta",
+        "url": "https://en.wikipedia.org/wiki/Atlanta",
+        "quote": "Warm air from the Gulf of Mexico can bring spring-like highs while strong Arctic air masses can push lows into the teens"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Trains built this town, and trains won it the big job in 1868. That year, the state capital moved here for its fine rail links.",
+      "narrowing": "Shrinks the list to capitals that won the seat in 1868 through rail links.",
+      "source": {
+        "article": "Atlanta — History",
+        "url": "https://en.wikipedia.org/wiki/Atlanta#History",
+        "quote": "Due to the city's superior rail transportation network, the state capital was moved from Milledgeville to Atlanta in 1868"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Martin Luther King preached in this city for years. He served as co-pastor of a church here with his dad from 1960 to 1968.",
+      "narrowing": "Nearly decisive: one capital is where Martin Luther King preached as co-pastor with his father.",
+      "source": {
+        "article": "Ebenezer Baptist Church",
+        "url": "https://en.wikipedia.org/wiki/Ebenezer_Baptist_Church",
+        "quote": "It was the church where Dr. Martin Luther King Sr. was pastor from the 1930s and co-pastor together with his sons Dr. Martin Luther King Jr. from 1960 until his assassination in 1968"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The laws of Georgia are made in this city. It is the state capital, and the state's largest city too.",
+      "narrowing": "Confirms it: the state governor and lawmakers work in this capital city.",
+      "source": {
+        "article": "Atlanta",
+        "url": "https://en.wikipedia.org/wiki/Atlanta",
+        "quote": "Atlanta is the capital and most populous city of the U.S. state of Georgia"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Atlanta began as the end stop of a state railroad, and its strong rail lines won it the state capital in 1868. Martin Luther King Jr. led the civil rights fight from here in the years that followed. Atlanta is the capital of Georgia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Atlanta"
+  },
+  "pointPolicy": "geonames-point"
+}

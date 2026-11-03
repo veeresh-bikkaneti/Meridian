@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "prague-czechia",
+  "target": {
+    "placeId": "gn-3067696",
+    "name": "Prague",
+    "aliases": [
+      "Praha"
+    ],
+    "lat": 50.08804,
+    "lon": 14.42076,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Czechia",
+    "iso2": "CZ",
+    "subdivision": "Prague"
+  },
+  "subjectAnswer": {
+    "name": "Czechia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Czechia",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands on both banks of the Vltava River, in the middle of Europe. Stone bridges cross the river and link its old town parts.",
+      "narrowing": "Rules out all but river cities in the middle of Europe with old stone bridges.",
+      "source": {
+        "article": "Prague",
+        "url": "https://en.wikipedia.org/wiki/Prague",
+        "quote": "Located on the Vltava River"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This city sits in the rain shadow of high hills, so less rain falls here than in most of its land. In cold months, fog can hang low for days.",
+      "narrowing": "Rules out wet hill lands; keeps the dry bowl in the rain shadow.",
+      "source": {
+        "article": "Prague",
+        "url": "https://en.wikipedia.org/wiki/Prague",
+        "quote": "Precipitation in Prague is low by Czech standards (about 500 mm per year) since it is located in the rain shadow of the Sudetes and other mountain ranges."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Charles the Fourth was king of Bohemia and a great emperor in the 1300s. He made this city the chief seat of his vast empire.",
+      "narrowing": "Shrinks the list to cities raised to an imperial seat in the 1300s.",
+      "source": {
+        "article": "Prague — History",
+        "url": "https://en.wikipedia.org/wiki/Prague#History",
+        "quote": "As King of Bohemia and Holy Roman Emperor, he transformed Prague into an imperial capital."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "The famed Charles Bridge, built of stone, crosses the river in this city. It links the old town bank to the bank below the great castle.",
+      "narrowing": "Nearly decisive: one famed stone bridge to the castle marks this city.",
+      "source": {
+        "article": "Prague — History",
+        "url": "https://en.wikipedia.org/wiki/Prague#History",
+        "quote": "The Charles Bridge, replacing the Judith Bridge destroyed in the flood just before his reign, was erected to connect the east bank districts to the Malá Strana and castle area."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The state work of Czechia is run from this city. Its great castle was the home of emperors who ruled a wide realm.",
+      "narrowing": "Confirms it: the seat of state work, with the old emperors' castle.",
+      "source": {
+        "article": "Prague",
+        "url": "https://en.wikipedia.org/wiki/Prague",
+        "quote": "It was the capital of the Kingdom of Bohemia and residence of several Holy Roman Emperors"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Dukes and kings of Bohemia held their seat here in old times, and Charles the Fourth later made the city an imperial capital. Its castle, old square, and famed stone bridge draw crowds from all over the world today. Prague is the capital of Czechia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Prague"
+  },
+  "pointPolicy": "geonames-point"
+}
