@@ -9,14 +9,16 @@ import { serveBuiltArtifact } from "./helpers";
  * 1. Globe orb shows, then crossfades once the texture lands (1280 and
  *    390 — at 390 the globe zone sits below the fold behind the
  *    IntersectionObserver gate, so the zone is scrolled into view first).
- * 2. Reduced motion: the globe path renders the static disc with NO orb,
- *    and a card-image overlay renders a STATIC ring (no running
- *    animation) until load, then clears.
+ * 2. Reduced motion: the globe path renders the static disc with NO orb.
+ *    The GeoDetective card (a governed film since feat/home-card-films)
+ *    renders its still directly with NO orb and NO video fetch.
  * 3. Card-image orb shows, then clears on load (response delayed through
- *    a test-held gate so the orb is observable, then released).
+ *    a test-held gate so the orb is observable, then released) — on the
+ *    For grown-ups card, a remaining LazyHomeImage still.
  * 4. Journal-entry image orb shows, then clears on load (the dynamic
  *    journalImageUrl site, not only the static card images).
- * 5. Orb clears on image error, with NO new fallback UI invented.
+ * 5. Film error path: aborting the Cold Trail .mp4 lands the card on
+ *    its still, with NO new fallback UI invented.
  * 6. No orb on maps or in the storyteller/home story area.
  * 7. Masked-blob check: a screenshot of a card-image orb rendering
  *    inside the masked .hv5-art blob shape.
@@ -102,39 +104,39 @@ test("globe orb shows then crossfades on textured ready (390, scrolled into view
   await expect(mount.locator("canvas")).toBeVisible();
 });
 
-test("reduced motion: static disc with no orb; card overlay is a static ring, then clears", async ({
+test("reduced motion: static disc with no orb; GeoDetective film card shows its still, no video fetch", async ({
   browser,
 }: {
   browser: Browser;
 }) => {
   const context = await browser.newContext({ reducedMotion: "reduce" });
   try {
-    const gate = makeGate();
     await setupContext(context);
-    await delayRoute(context, (url) => url.href.includes("desert-ruins") && url.pathname.endsWith(".webp"), gate);
+    const mp4Requests: string[] = [];
+    context.on("request", (req) => {
+      if (req.url().endsWith(".mp4")) mp4Requests.push(req.url());
+    });
     const page = await context.newPage();
     await gotoHome(page, 1280);
     // Globe path: static disc, never an orb.
     await expect(page.locator(".hv5-globe-fallback")).toBeVisible({ timeout: 20_000 });
     await expect(page.locator(".hv5-globe-orb")).toHaveCount(0);
-    // Card path: GeoDetective image held — the overlay renders a STATIC ring.
+    // Film card path: the still renders directly — no video element,
+    // no loading orb (the film component has no orb), and the still
+    // actually decodes.
     const card = page.getByTestId("tour-stop-geodetective");
     await card.scrollIntoViewIfNeeded();
-    const orb = card.locator(".hv5-lazy-orb");
-    await expect(orb).toBeVisible();
-    const spinner = orb.locator(".meridian-spinner");
-    await expect(spinner).toBeVisible();
-    const anim = await spinner.evaluate((el) => {
-      const cs = getComputedStyle(el);
-      return { name: cs.animationName, running: el.getAnimations().length };
-    });
-    expect(anim.name).toBe("none");
-    expect(anim.running).toBe(0);
-    gate.release();
-    await expect(card.locator(".hv5-lazy-orb")).toHaveCount(0, { timeout: 20_000 });
-    const img = card.locator(".hv5-lazy-img img");
+    await expect(card.locator("video")).toHaveCount(0);
+    await expect(card.locator(".hv5-lazy-orb")).toHaveCount(0);
+    const film = card.getByTestId("card-film-geodetective");
+    await expect(film).toBeVisible();
+    const img = film.locator("img");
     await expect(img).toBeVisible();
     expect(await img.evaluate((el) => (el as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+    const src = (await img.getAttribute("src")) ?? "";
+    expect(src).toContain("geodetective-still");
+    // Zero video fetch under reduced motion: no .mp4 was requested.
+    expect(mp4Requests).toEqual([]);
   } finally {
     await context.close();
   }
@@ -143,9 +145,9 @@ test("reduced motion: static disc with no orb; card overlay is a static ring, th
 test("card-image orb shows then clears on load", async ({ page, context }) => {
   const gate = makeGate();
   await setupContext(context);
-  await delayRoute(context, (url) => url.href.includes("desert-ruins") && url.pathname.endsWith(".webp"), gate);
+  await delayRoute(context, (url) => url.href.includes("binoculars-hat") && url.pathname.endsWith(".webp"), gate);
   await gotoHome(page, 1280);
-  const card = page.getByTestId("tour-stop-geodetective");
+  const card = page.getByTestId("grownups-card");
   await card.scrollIntoViewIfNeeded();
   const orb = card.locator(".hv5-lazy-orb");
   await expect(orb).toBeVisible();
@@ -179,12 +181,13 @@ test("journal-entry image orb shows then clears on load", async ({ page, context
   }
 });
 
-test("orb clears on image error and no fallback UI appears", async ({ page, context }) => {
+test("film error lands Cold Trail on its still and no fallback UI appears", async ({ page, context }) => {
   await setupContext(context);
-  // Abort the Cold Trail art: the error path must clear the orb and
-  // invent nothing (no alert, no error copy, no replacement element).
+  // Abort the Cold Trail film: the error path must swap the card to
+  // its still and invent nothing (no alert, no error copy, no
+  // replacement element beyond the still itself).
   await context.route(
-    (url) => url.href.includes("patagonia") && url.pathname.endsWith(".webp"),
+    (url) => url.href.includes("coldtrail-film") && url.pathname.endsWith(".mp4"),
     async (route) => {
       await route.abort();
     },
@@ -192,11 +195,15 @@ test("orb clears on image error and no fallback UI appears", async ({ page, cont
   await gotoHome(page, 1280);
   const card = page.locator(".hv5-dispatch");
   await card.scrollIntoViewIfNeeded();
-  await expect(card.locator(".hv5-lazy-orb")).toHaveCount(0, { timeout: 20_000 });
+  // The film gives up and the still takes the slot.
+  const film = card.getByTestId("card-film-coldtrail");
+  const img = film.locator("img");
+  await expect(img).toBeVisible({ timeout: 20_000 });
+  expect(((await img.getAttribute("src")) ?? "")).toContain("coldtrail-still");
   await expect(card.locator('[role="alert"]')).toHaveCount(0);
   const cardText = (await card.textContent()) ?? "";
   expect(cardText).not.toMatch(/couldn.t load|failed to load|image unavailable/i);
-  // The card itself survives the dead image; its CTA is still present.
+  // The card itself survives the dead film; its CTA is still present.
   await expect(card.locator("button.hv5-go")).toBeVisible();
 });
 

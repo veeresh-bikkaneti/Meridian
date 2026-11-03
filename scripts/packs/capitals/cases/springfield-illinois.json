@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "springfield-illinois",
+  "target": {
+    "placeId": "gn-4250542",
+    "name": "Springfield",
+    "aliases": [],
+    "lat": 39.80172,
+    "lon": -89.64371,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Illinois",
+    "iso2": "US",
+    "subdivision": "Illinois"
+  },
+  "subjectAnswer": {
+    "name": "Illinois",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Illinois",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This place lies on flat land near a river in the middle of the country. An old famed road, Route 66, runs right through it.",
+      "narrowing": "Puts the player on a flat river plain in the middle of the country, on Route 66.",
+      "source": {
+        "article": "Springfield, Illinois",
+        "url": "https://en.wikipedia.org/wiki/Springfield%2C_Illinois",
+        "quote": "The city lies in a plain near the Sangamon River north of Lake Springfield and is located along historic Route 66"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Hot, wet summers and cold, snowy winters both hit this place. It sits at the far edge of Tornado Alley, so strong storms roll through in the warm months.",
+      "narrowing": "Rules out mild coasts; keeps the stormy middle of the country.",
+      "source": {
+        "article": "Springfield, Illinois",
+        "url": "https://en.wikipedia.org/wiki/Springfield%2C_Illinois",
+        "quote": "Hot, humid summers and cold, rather snowy winters are the norm. Springfield is located on the farthest reaches of Tornado Alley , and as such, thunderstorms are a common occurrence throughout the spring and summer"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "The seat of government moved here in 1839, drawn by its spot at the center of the state. Local lawmakers worked hard to win the move here.",
+      "narrowing": "Shrinks the list to seats of government won by a move to the center in 1839.",
+      "source": {
+        "article": "Springfield, Illinois",
+        "url": "https://en.wikipedia.org/wiki/Springfield%2C_Illinois",
+        "quote": "Largely on the efforts of Lincoln and other area lawmakers, as well as its central location, Springfield was made the state capital in 1839"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Abraham Lincoln lived in this town for 24 years. In 1861 he left it to be President.",
+      "narrowing": "Nearly decisive: one famed president lived here for 24 years first.",
+      "source": {
+        "article": "Springfield, Illinois",
+        "url": "https://en.wikipedia.org/wiki/Springfield%2C_Illinois",
+        "quote": "The most famous historic resident was Abraham Lincoln, who lived in Springfield from 1837 until 1861, when he became President of the United States"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The lawmakers of Illinois meet in this place to make state laws. The governor of Illinois keeps an office here too.",
+      "narrowing": "Confirms it: the state lawmakers and the governor are based here.",
+      "source": {
+        "article": "Springfield, Illinois",
+        "url": "https://en.wikipedia.org/wiki/Springfield%2C_Illinois",
+        "quote": "State government institutions include the Illinois General Assembly, the Illinois Supreme Court, the office of the Governor of Illinois"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Settlers built the first cabin here in 1820, by a creek full of deer and game. Abraham Lincoln moved here in 1837, worked as a lawyer, and helped win it the capital in 1839. His old home and tomb still draw crowds today. Springfield is the capital of Illinois."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Springfield%2C_Illinois"
+  },
+  "pointPolicy": "geonames-point"
+}

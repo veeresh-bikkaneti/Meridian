@@ -10,7 +10,13 @@ import type { ColdTrailCase, ColdTrailSighting } from "./types.ts";
  * yields null instead of a broken case, and the screen refuses to start.
  */
 
-function isSighting(value: unknown): value is ColdTrailSighting {
+/**
+ * The two shape guards are exported because the pack deck loader
+ * (cases-pack.ts) validates pack cases with the same rules. One
+ * validator for both decks means a pack file cannot drift into a
+ * shape the core deck would reject.
+ */
+export function isSighting(value: unknown): value is ColdTrailSighting {
   if (!value || typeof value !== "object") return false;
   const s = value as Record<string, unknown>;
   const region = s.region as Record<string, unknown> | undefined;
@@ -34,7 +40,7 @@ function isSighting(value: unknown): value is ColdTrailSighting {
   );
 }
 
-function isCase(value: unknown): value is ColdTrailCase {
+export function isCase(value: unknown): value is ColdTrailCase {
   if (!value || typeof value !== "object") return false;
   const c = value as Record<string, unknown>;
   const hideout = c.hideout as Record<string, unknown> | undefined;

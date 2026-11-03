@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "seoul-south-korea",
+  "target": {
+    "placeId": "gn-1835848",
+    "name": "Seoul",
+    "aliases": [
+      "Hanyang"
+    ],
+    "lat": 37.566,
+    "lon": 126.9784,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "South Korea",
+    "iso2": "KR",
+    "subdivision": "Seoul"
+  },
+  "subjectAnswer": {
+    "name": "South Korea",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "South Korea",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This huge city sits among hills and steep peaks. The steep peak Bukhansan rises at its north edge.",
+      "narrowing": "Rules out flat coastal cities; puts the player among steep hills under a peak called Bukhansan.",
+      "source": {
+        "article": "Seoul",
+        "url": "https://en.wikipedia.org/wiki/Seoul",
+        "quote": "Seoul is geographically set in a mountainous and hilly terrain, with Bukhansan positioned on its northern edge."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Monsoon rains soak this city in summer, and typhoons can strike too. Winters flip to cold, dry air with days of snow.",
+      "narrowing": "Rules out even climates; keeps a monsoon city with wet summers and cold, dry winters.",
+      "source": {
+        "article": "Seoul",
+        "url": "https://en.wikipedia.org/wiki/Seoul",
+        "quote": "Summers are hot and humid, with the East Asian monsoon taking place from June until July and typhoons taking place any time between July and September."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1394, a new king chose this place and planned it as his dynasty's capital. Work crews soon raised palaces and a fortress wall.",
+      "narrowing": "Shrinks the list to capitals planned from scratch by a new dynasty in 1394.",
+      "source": {
+        "article": "Seoul — History",
+        "url": "https://en.wikipedia.org/wiki/Seoul#History",
+        "quote": "Seoul became the planned capital of Korea by Yi Seong-gye , the founding father of the Joseon dynasty."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Old royal palaces stand among tall glass towers in this city. The wide Han River winds along beside them all.",
+      "narrowing": "Nearly decisive: old royal palaces among glass towers, by the Han River.",
+      "source": {
+        "article": "Seoul — History",
+        "url": "https://en.wikipedia.org/wiki/Seoul#History",
+        "quote": "some major palaces, including Gyeongbokgung , were finished in 1395."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This city is the capital of South Korea. Its top court ruled it must stay the capital of the land.",
+      "narrowing": "Confirms it: the top court ruled this city must remain the national capital.",
+      "source": {
+        "article": "Seoul",
+        "url": "https://en.wikipedia.org/wiki/Seoul",
+        "quote": "the Constitutional Court of Korea declared in 2004 that Seoul must remain the national capital"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "People of the Baekje kingdom first founded a town here long ago. In 1394 a new dynasty planned it as the capital, with palaces and a great wall. War later left it in ruins, but it rebuilt fast and hosted the Olympics in 1988. Seoul is the capital of South Korea."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Seoul"
+  },
+  "pointPolicy": "geonames-point"
+}
