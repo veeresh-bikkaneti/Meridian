@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "accra-ghana",
+  "target": {
+    "placeId": "gn-2306104",
+    "name": "Accra",
+    "aliases": [],
+    "lat": 5.55602,
+    "lon": -0.1969,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Ghana",
+    "iso2": "GH",
+    "subdivision": "Greater Accra"
+  },
+  "subjectAnswer": {
+    "name": "Ghana",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Ghana",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits on the south coast of its land, where the shore meets a wide gulf of the Atlantic Ocean. Sandy beaches line its edge.",
+      "narrowing": "Puts the player on a south coast, on a gulf of the Atlantic Ocean.",
+      "source": {
+        "article": "Accra",
+        "url": "https://en.wikipedia.org/wiki/Accra",
+        "quote": "is the capital and largest city of Ghana, located on the southern coast at the Gulf of Guinea, which is part of the Atlantic Ocean"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The air here stays warm all year, and the rains come and go with the seasons. Its climate is drier than the wet coast towns near it.",
+      "narrowing": "Rules out cold and ever-wet coasts; keeps a warm coast city with a drier climate.",
+      "source": {
+        "article": "Accra — History",
+        "url": "https://en.wikipedia.org/wiki/Accra#History",
+        "quote": "This decision was made because Accra had a drier climate relative to Cape Coast."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1877, this city took the capital job from an older coast town. It has held the job of capital ever since that year.",
+      "narrowing": "Shrinks the list to coast capitals that took the job in 1877 and kept it.",
+      "source": {
+        "article": "Accra — History",
+        "url": "https://en.wikipedia.org/wiki/Accra#History",
+        "quote": "in 1877, at the end of the second Anglo-Asante War, Accra replaced Cape Coast as the capital of the British Gold Coast"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This city's name grew from an old word for ants. Tall red anthills dotted the land round about, full of busy soldier ants on the move.",
+      "narrowing": "Nearly decisive: one capital's name grew from a word for ants.",
+      "source": {
+        "article": "Accra",
+        "url": "https://en.wikipedia.org/wiki/Accra",
+        "quote": "The word Accra is derived from the Akan word Nkran meaning \"ants\", a reference to anthills seen in the countryside around Accra."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The parliament of Ghana meets in this city. Its top court sits here too, and the land is run from here.",
+      "narrowing": "Confirms it: Ghana's parliament and its top court are based in this city.",
+      "source": {
+        "article": "Accra",
+        "url": "https://en.wikipedia.org/wiki/Accra",
+        "quote": "The Parliament, Supreme Court of Ghana, Black Star Square and the Bank of Ghana are located in Accra."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This coastal city became the capital of the British Gold Coast in 1877, and it kept the job when Ghana won its freedom. Its name grew from a word for ants, after the anthills round about it. Accra is the capital of Ghana."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Accra"
+  },
+  "pointPolicy": "geonames-point"
+}

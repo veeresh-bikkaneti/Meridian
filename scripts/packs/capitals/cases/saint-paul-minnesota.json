@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "saint-paul-minnesota",
+  "target": {
+    "placeId": "gn-5045360",
+    "name": "Saint Paul",
+    "aliases": [],
+    "lat": 44.94441,
+    "lon": -93.09327,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Minnesota",
+    "iso2": "US",
+    "subdivision": "Minnesota"
+  },
+  "subjectAnswer": {
+    "name": "Minnesota",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Minnesota",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands on a bend of a great river, the last good spot where boats from down south could land. A twin city faces it across the water.",
+      "narrowing": "Rules out lands far from the great river; puts the player at its last good boat landing, facing a twin city.",
+      "source": {
+        "article": "Saint Paul, Minnesota — History",
+        "url": "https://en.wikipedia.org/wiki/Saint_Paul%2C_Minnesota#History",
+        "quote": "The location was the last good point to land riverboats coming upriver due to the river valley's topography."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Far north, with no large lakes near to soften the air, this place takes Arctic cold blasts head on. It is the coldest big city area in the whole land.",
+      "narrowing": "Rules out milder north lands; no lakes soften the air, so Arctic cold hits head on.",
+      "source": {
+        "article": "Saint Paul, Minnesota",
+        "url": "https://en.wikipedia.org/wiki/Saint_Paul%2C_Minnesota",
+        "quote": "Due to its northerly location and lack of large bodies of water to moderate the air, Saint Paul is sometimes subjected to cold Arctic air masses"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1849 a new territory was formed here, and this small river town was made its capital. It has kept that job ever since.",
+      "narrowing": "Shrinks the list to a river town picked as a new territory's capital in 1849.",
+      "source": {
+        "article": "Saint Paul, Minnesota — History",
+        "url": "https://en.wikipedia.org/wiki/Saint_Paul%2C_Minnesota#History",
+        "quote": "The Minnesota Territory was created in 1849 with Saint Paul as the capital."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "On a hill over the river bend stands the state capitol, a grand hall clad in bright marble. Lawmakers have met in its rooms since the year 1905.",
+      "narrowing": "Nearly decisive: a grand marble capitol on a hill over the river bend marks this city.",
+      "source": {
+        "article": "Minnesota State Capitol",
+        "url": "https://en.wikipedia.org/wiki/Minnesota_State_Capitol",
+        "quote": "replacing or repairing tens of thousands of pieces of marble on the exterior"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The leaders of Minnesota make its laws in this city, in the capitol on the hill. The state chief and the top court work there too.",
+      "narrowing": "Confirms it: the state's lawmakers and governor work in the capitol in this city.",
+      "source": {
+        "article": "Minnesota State Capitol",
+        "url": "https://en.wikipedia.org/wiki/Minnesota_State_Capitol",
+        "quote": "It houses the Minnesota Senate, Minnesota House of Representatives, the office of the attorney general and the office of the governor."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "River traders and Dakota towns came first, and in 1849 a new territory made this river town its capital. Steamboats crowded its landing, and in 1905 a grand marble capitol rose on the hill. Mind the words: the building is the capitol, and the city is the capital. Saint Paul is the capital of Minnesota."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Saint_Paul%2C_Minnesota"
+  },
+  "pointPolicy": "geonames-point"
+}

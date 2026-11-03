@@ -6,6 +6,9 @@ import {
   CELEBRATION_SFX,
   CELEBRATION_VARIANT_LABEL,
   CHARACTER_CATCHPHRASES,
+  PACK_DECK_COMPLETE_COPY,
+  celebrationSpec,
+  deckCompleteCelebrationSpec,
   type CelebrationMomentKey,
   type CelebrationVariant,
 } from "./celebration-copy.ts";
@@ -81,6 +84,32 @@ describe("CELEBRATION_SFX — variant to sfx.ts recipe mapping", () => {
       variants.filter((v) => CELEBRATION_SFX[v] === null),
       ["mystery-solved"],
     );
+  });
+});
+
+describe("deckCompleteCelebrationSpec — deck-aware cycle celebration", () => {
+  it("keeps the core deck's copy byte-identical to the shipped deck-complete spec", () => {
+    const core = celebrationSpec("game-complete", "deck-complete");
+    assert.deepEqual(deckCompleteCelebrationSpec("core"), core);
+    assert.deepEqual(deckCompleteCelebrationSpec(undefined), core);
+    assert.deepEqual(deckCompleteCelebrationSpec(null), core);
+    assert.ok(core.body.includes("All 387 case files closed"));
+  });
+
+  it("celebrates a Capitals pack cycle with pack-denominated copy", () => {
+    const spec = deckCompleteCelebrationSpec("capitals");
+    assert.equal(spec.variant, "game-complete");
+    assert.ok(spec.body.includes("72"), "names the pack's own count");
+    assert.ok(spec.body.includes("Capitals"), "names the pack");
+    assert.ok(!spec.body.includes("387"), "never claims the core count");
+    assert.equal(spec.title, PACK_DECK_COMPLETE_COPY.capitals!.headline);
+    assert.ok(words(spec.title) <= 8, "headline within the spec §5 word cap");
+    assert.ok(
+      words(PACK_DECK_COMPLETE_COPY.capitals!.line) <= 20,
+      "line within the spec §5 word cap",
+    );
+    const stem = CHARACTER_CATCHPHRASES[spec.character].replace(/!$/, "");
+    assert.ok(spec.body.includes(stem), "greeting embeds the character's catchphrase");
   });
 });
 

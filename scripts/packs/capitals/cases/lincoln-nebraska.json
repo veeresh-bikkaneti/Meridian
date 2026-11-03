@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "lincoln-nebraska",
+  "target": {
+    "placeId": "gn-5072006",
+    "name": "Lincoln",
+    "aliases": [
+      "Lancaster"
+    ],
+    "lat": 40.8,
+    "lon": -96.66696,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Nebraska",
+    "iso2": "US",
+    "subdivision": "Nebraska"
+  },
+  "subjectAnswer": {
+    "name": "Nebraska",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Nebraska",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city began as a small village on the east bank of a creek. Wild salt marshes spread around it on the flat plains.",
+      "narrowing": "Points to a plains village site by a creek, ringed by salt marshes.",
+      "source": {
+        "article": "Lincoln, Nebraska — History",
+        "url": "https://en.wikipedia.org/wiki/Lincoln%2C_Nebraska#History",
+        "quote": "The village was sited on the east bank of Salt Creek"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "No sea or high land sits near to soften the weather here. So winters bite with hard cold, and summers hit with waves of heat.",
+      "narrowing": "Rules out mild coasts; keeps plains towns with hard swings of cold and heat.",
+      "source": {
+        "article": "Lincoln, Nebraska",
+        "url": "https://en.wikipedia.org/wiki/Lincoln%2C_Nebraska",
+        "quote": "far from the moderating influences of mountains and large bodies of water, Lincoln has a highly variable four season humid continental climate"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1867, a state team toured new sites for the capital, far from the old seat. They picked this tiny salt marsh village to take the job.",
+      "narrowing": "Cuts the list to a tiny village picked as the new capital in 1867.",
+      "source": {
+        "article": "Lincoln, Nebraska — History",
+        "url": "https://en.wikipedia.org/wiki/Lincoln%2C_Nebraska#History",
+        "quote": "The village of Lancaster was chosen, in part due to its salt flats and marshes."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This town took a new name for President Abraham, who had just been shot dead. Some hoped that name would stop the move here, but it did not work.",
+      "narrowing": "Nearly decisive: one capital took the name of a slain president in 1867.",
+      "source": {
+        "article": "Lincoln, Nebraska — History",
+        "url": "https://en.wikipedia.org/wiki/Lincoln%2C_Nebraska#History",
+        "quote": "Omaha Senator J. N. H. Patrick made a last-ditch effort to derail the move by having the future capital named after recently assassinated President Abraham Lincoln"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Nebraska works in this city. All the state lawmakers meet here to make laws.",
+      "narrowing": "Confirms it: the governor and all state lawmakers work in this city.",
+      "source": {
+        "article": "Lincoln, Nebraska",
+        "url": "https://en.wikipedia.org/wiki/Lincoln%2C_Nebraska",
+        "quote": "state capitol building was completed in 1932 and is the nation's second-tallest capitol"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Founded in 1856 as a salt marsh village, this town was picked as the new capital in 1867 and renamed for a slain president. Its tall tower was done in 1932; the building is the capitol, and the city is the capital. Lincoln is the capital of Nebraska."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Lincoln%2C_Nebraska"
+  },
+  "pointPolicy": "geonames-point"
+}

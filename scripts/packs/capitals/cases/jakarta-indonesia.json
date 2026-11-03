@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "jakarta-indonesia",
+  "target": {
+    "placeId": "gn-1642911",
+    "name": "Jakarta",
+    "aliases": [
+      "Batavia"
+    ],
+    "lat": -6.21462,
+    "lon": 106.84513,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Indonesia",
+    "iso2": "ID",
+    "subdivision": "Jakarta"
+  },
+  "subjectAnswer": {
+    "name": "Indonesia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Indonesia",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This vast city lies on the north west coast of Java, a big island in south east Asia. Its shore faces a sea of the same name, the Java Sea.",
+      "narrowing": "Puts the player on the north west coast of Java, by the Java Sea.",
+      "source": {
+        "article": "Jakarta",
+        "url": "https://en.wikipedia.org/wiki/Jakarta",
+        "quote": "It lies on the northwestern coast of Java, bordering West Java and Banten and facing the Java Sea."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Rain falls hard here from December to March, and floods are common in that wet time. From June to September the days stay warm and much drier.",
+      "narrowing": "Rules out steady climates; keeps tropics with a hard wet time and floods.",
+      "source": {
+        "article": "Jakarta",
+        "url": "https://en.wikipedia.org/wiki/Jakarta",
+        "quote": "Flooding is common during the rainy season. Heavy rain and upstream runoff can overwhelm rivers and drains"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "The nation's freedom was read out in this city in 1945. In 1950 it became the capital of the new republic, and it holds the job still.",
+      "narrowing": "Shrinks the list to capitals where freedom was read out in 1945.",
+      "source": {
+        "article": "Jakarta",
+        "url": "https://en.wikipedia.org/wiki/Jakarta",
+        "quote": "Indonesian independence was proclaimed there in 1945 and after the Indonesian National Revolution, Jakarta became the capital of the unitary republic in 1950."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This city sprawls far past its own borders into four more towns. Each day great crowds ride in and out, tying the whole sprawl into one vast whole.",
+      "narrowing": "Nearly decisive: a capital so vast it sprawls into four more towns.",
+      "source": {
+        "article": "Jakarta",
+        "url": "https://en.wikipedia.org/wiki/Jakarta",
+        "quote": "Urban growth has spread into Bogor, Depok, Tangerang and Bekasi, which creates a metropolitan region tied together by large, daily commuter flows."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This city runs the land of Indonesia. It is the capital now, and stays so till a signed order moves the job on.",
+      "narrowing": "Confirms it: Indonesia's seat of rule, capital until a signed order moves it.",
+      "source": {
+        "article": "Jakarta",
+        "url": "https://en.wikipedia.org/wiki/Jakarta",
+        "quote": "Jakarta remains the capital until the transfer is formalised by a presidential decree."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Dutch traders seized a port town here in 1619 and rebuilt it as Batavia, their chief town in Asia. Freedom was read out here in 1945, and the city became the capital in 1950. It is now a vast, warm city of traffic and trade by the sea. Jakarta is the capital of Indonesia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Jakarta"
+  },
+  "pointPolicy": "geonames-point"
+}
