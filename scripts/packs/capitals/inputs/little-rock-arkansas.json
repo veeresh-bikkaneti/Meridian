@@ -1,0 +1,57 @@
+{
+  "caseId": "little-rock-arkansas",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Named for a small rock formation on the Arkansas River — \"la petite roche.\"",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-4119403",
+    "name": "Little Rock",
+    "country": "United States",
+    "subdivision": "Arkansas",
+    "lat": 34.74648,
+    "lon": -92.28959
+  },
+  "target": {
+    "placeId": "gn-4119403",
+    "name": "Little Rock",
+    "lat": 34.74648,
+    "lon": -92.28959,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Arkansas",
+    "iso2": "US",
+    "subdivision": "Arkansas"
+  },
+  "subjectAnswer": {
+    "name": "Arkansas",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "US",
+    "subdivision": "Arkansas",
+    "difficulty": 1,
+    "regionId": "arkansas",
+    "edition": "state",
+    "blurb": "Little Rock is the capital of Arkansas, the United States. It's one of Arkansas's biggest places.",
+    "history": "Central High School here was the 1957 desegregation battleground, where the Little Rock Nine braved mobs under federal guard."
+  },
+  "extracts": [
+    {
+      "article": "Little Rock, Arkansas",
+      "url": "https://en.wikipedia.org/wiki/Little_Rock%2C_Arkansas",
+      "text": "Little Rock is the capital and most populous city of the U.S. state of Arkansas. The population was 202,591 at the 2020 census, while the Little Rock metropolitan area with an estimated 770,000 residents is the 81st-most populous metropolitan area in the United States. The city lies on the south bank of the Arkansas River close to the state's geographic center in central Arkansas. It is the county seat of Pulaski County.\nLittle Rock was founded in 1821 as the capital of the Arkansas Territory. It is named for a rock formation along the Arkansas River named the \"Little Rock\" by the French explorer Jean-Baptiste Bénard de la Harpe in 1722. The city played a notable role in U.S. history during the 1957 desegregation of Little Rock Central High School, a key event in the Civil Rights movement. Little Rock is a cultural, economic, government, and transportation center within Arkansas and the American South.\nEconomically, Little Rock is supported by a mix of sectors including healthcare, banking, transportation, and retail. Companies such as Dillard's and Windstream Holdings are headquartered in the city, and the University of Arkansas for Medical Sciences contributes to its healthcare industry and academic research. Its cultural sites include the Arkansas Museum of Fine Arts, Clinton Presidential Center, and Quapaw Quarter. Outdoor spaces such as the Arkansas River Trail and Pinnacle Mountain State Park provide recreational opportunities within and near the city.\n\nClimate .mw-parser-output .hatnote{font-style:italic}.mw-parser-output div.hatnote{padding-left:1.6em;margin-bottom:0.5em}.mw-parser-output .hatnote i{font-style:normal}.mw-parser-output .hatnote+.mw-empty-elt+.hatnote{margin-top:-0.5em}@media print{body.ns-0 .mw-parser-output .hatnote{display:none!important}} Main article: Climate of Little Rock, Arkansas Little Rock lies in the humid subtropical climate zone ( Cfa ), with hot, humid summers and cool winters with usually little snow. It has experienced temperatures as low as −12&#160;°F (−24&#160;°C), which was recorded on February 12, 1899 , and as high as 114&#160;°F (46&#160;°C), which was recorded on August 3, 2011. &#91; 1 &#93;"
+    },
+    {
+      "article": "Little Rock, Arkansas — History",
+      "url": "https://en.wikipedia.org/wiki/Little_Rock%2C_Arkansas#History",
+      "text": "History .mw-parser-output .hatnote{font-style:italic}.mw-parser-output div.hatnote{padding-left:1.6em;margin-bottom:0.5em}.mw-parser-output .hatnote i{font-style:normal}.mw-parser-output .hatnote+.mw-empty-elt+.hatnote{margin-top:-0.5em}@media print{body.ns-0 .mw-parser-output .hatnote{display:none!important}} See also: History of Arkansas For a chronological guide, see Timeline of Little Rock, Arkansas . Pre-Columbian and European exploration Perspective map of the city of Little Rock, 1887 Little Rock was named for a stone outcropping on the bank of the Arkansas River used by early travelers as a landmark, which marked the transition from the flat Mississippi Delta region to the Ouachita Mountain foothills. &#91; 1 &#93; It was named in 1722 by French explorer and trader, Jean-Baptiste Bénard de la Harpe . &#91; 2 &#93; Travelers referred to the area as the \"Little Rock\". Though there was an effort to officially name the city \"Arkopolis\" upon its founding in the 1820s, and that name did appear on a few maps made by the US Geological Survey , the name Little Rock is eventually what stuck. &#91; 3 &#93; &#91; 4 &#93; &#91; 5 &#93; The territorial capitol had been located at Arkansas Post in Southeast Arkansas since 1819, but the site had proven unsuitable as a settlement due to frequent flooding of the Arkansas River . Over the years, the \"little rock\" was known as a waypoint along the river, but remained unsettled. A land speculator from St. Louis, Missouri who had acquired many acres around the \"little rock\" began pressuring the Arkansas territorial legislature in February 1820 to move the capital to the site, but the representatives could not decide between Little Rock or Cadron (now Conway ), which was the preferred site of Territorial Governor James Miller . The issue was tabled until October 1820, by which time most of the legislators and other influential men had purchased lots around Little Rock. &#91; 6 &#93; The legislature moved the capital to Little Rock, where it has remained ever since. Desegregation Downtown Little Rock pictured in 1958 The Little Rock Nine were nine African American students who desegregated Little Rock Central High School in 1957 after the Little Rock School Board voted to begin the area's desegregation, in compliance with Brown v. Board of Education . On September 4, 1957, the first day of school at Central High, a mob of white segregationist protesters physically blocked the nine black students from entering the school. Minnijean Brown , Terrence Roberts , Elizabeth Eckford , Ernest Green , Thelma Mothershed , Melba Patillo , Gloria Ray , Jefferson Thomas , and Carlotta Walls , who had been recruited by Daisy Bates and the NAACP , attempted to integrate Central High School, but Governor Orval Faubus deployed the Arkansas National Guard to support the segregationists , and only backed down after federal district court judge Ronald Davies issued an injunction compelling Faubus to withdraw the Guard. &#91; 7 &#93; &#91; 8 &#93; Angry white mobs began rioting when the nine black students began attending Central High School. President Dwight D. Eisenhower , on the request of Woodrow Wilson Mann , Little Rock's mayor, deployed the 101st Airborne Division to the city and federalized the Arkansas National Guard to protect the students and ensure their safe passage to the school. Little Rock's four public high schools were closed in September 1958, and reopened a year later. Integration across all grades was not fully achieved until the fall of 1972. The Little Rock school episode drew international attention to the treatment of African Americans in the United States. &#91; 9 &#93; ^ .mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:\"\\\"\"\"\\\"\"\"'\"\"'\"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url(\"//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url(\"//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url(\"//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url(\"//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg\")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}} \"Colorful Names\" . Arkansas Department of Parks & Tourism. Archived from the original on November 24, 2013 . Retrieved July 14, 2014 . ^ \"History\" (2002) , p.&#160;96. ^ \"The Hyde Park Historical Record\" . Hyde Park Historical Society. December 29, 2017. Archived from the original on May 9, 2021 . Retrieved November 15, 2020 &#8211; via Google Books. ^ Williams, C. Fred (December 29, 2017). Historic Little Rock: An Illustrated History . HPN Books. ISBN &#160; 9781893619821 . Archived from the original on May 9, 2021 . Retrieved November 15, 2020 &#8211; via Google Books. ^ Herndon, Dallas Tabor (1922). The High Lights of Arkansas History . Arkansas History commission. p.&#160; 37 &#8211; via Internet Archive. arkopolis little rock. ^ Arnold, Morris S.; DeBlack, Thomas A.; Sabo III, George; Whayne, Jeannie M. (2002). Arkansas: A narrative history (1st&#160;ed.). Fayetteville, Arkansas: The University of Arkansas Press. pp.&#160; 96– 97. ISBN &#160; 1-55728-724-4 . OCLC &#160; 49029558 . ^ Graeme Cope, \"'A Thorn in the Side'? The Mothers' League of Central High School and the Little Rock Desegregation Crisis of 1957\", Arkansas Historical Quarterly (1998) 57#2 pp: 160–190 in JSTOR Archived October 4, 2023, at the Wayback Machine ^ Pierce, Michael (2011). \"Historians of the Central High Crisis and Little Rock's Working-Class Whites: A Review Essay\". Arkansas Historical Quarterly . 70 (4): 468– 483. JSTOR &#160; 23188020 . ^ Mary L. Dudziak, \"The Little Rock Crisis and Foreign Affairs: Race, Resistance, and the Image of American Democracy\", Southern California Law Review 70 (1996) pp: 1641–1716."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

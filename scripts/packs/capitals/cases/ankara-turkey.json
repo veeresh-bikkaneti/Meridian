@@ -1,0 +1,103 @@
+{
+  "caseId": "ankara-turkey",
+  "category": "capitals",
+  "clues": [
+    {
+      "narrowing": "Puts the player inland in the central part of Anatolia, on a rocky hill with castle ruins.",
+      "source": {
+        "article": "Ankara",
+        "quote": "The historical center of Ankara is a rocky hill rising 150 m (500 ft) over the left bank of the Ankara River",
+        "url": "https://en.wikipedia.org/wiki/Ankara"
+      },
+      "text": "This city stands on a rocky hill in the central part of Anatolia. Old castle ruins still crown the hill in the city's old center.",
+      "tier": 1,
+      "tier_name": "geography"
+    },
+    {
+      "narrowing": "Rules out coastal and mild lands; keeps inland places with hot dry summers and cold snowy winters.",
+      "source": {
+        "article": "Ankara",
+        "quote": "Due to its elevation and inland location, Ankara has cold and snowy winters, and hot and dry summers.",
+        "url": "https://en.wikipedia.org/wiki/Ankara"
+      },
+      "text": "Far from the sea, this city gets hot dry summers and cold snowy winters. Rain is low and falls mostly in spring and fall, not in summer.",
+      "tier": 2,
+      "tier_name": "climate"
+    },
+    {
+      "narrowing": "Shrinks the list to capitals chosen when a new republic was founded in 1923, replacing an old imperial seat.",
+      "source": {
+        "article": "Ankara",
+        "quote": "Ankara became the new Turkish capital upon the establishment of the Republic on 29 October 1923, succeeding the former Ottoman capital Istanbul",
+        "url": "https://en.wikipedia.org/wiki/Ankara"
+      },
+      "text": "In 1923 a new republic picked this inland city as its capital. It took that role from the old empire's long-time seat of power.",
+      "tier": 3,
+      "tier_name": "history"
+    },
+    {
+      "narrowing": "Nearly decisive: the republic's founder rests in one named memorial tomb here.",
+      "source": {
+        "article": "Anıtkabir",
+        "quote": "that contains the mausoleum of Mustafa Kemal Atatürk",
+        "url": "https://en.wikipedia.org/wiki/An%C4%B1tkabir"
+      },
+      "text": "Atatürk founded the new republic and now rests at Anıtkabir, a grand tomb shrine. Each year, crowds mark the day he died at this shrine.",
+      "tier": 4,
+      "tier_name": "hook"
+    },
+    {
+      "narrowing": "Confirms it: the capital of Turkey, where the Grand National Assembly sits.",
+      "source": {
+        "article": "Ankara",
+        "quote": "On 23 April 1920, the Grand National Assembly of Turkey was established in Ankara",
+        "url": "https://en.wikipedia.org/wiki/Ankara"
+      },
+      "text": "This city is the capital of Turkey, and its top law-making group has its home here. That group is the Grand National Assembly of the land.",
+      "tier": 5,
+      "tier_name": "giveaway"
+    }
+  ],
+  "direction": "A",
+  "directions": [
+    "A",
+    "B1",
+    "B2"
+  ],
+  "packId": "capitals",
+  "packTier": 3,
+  "pointPolicy": "geonames-point",
+  "prompt": {
+    "givenKind": "country",
+    "givenName": "Turkey"
+  },
+  "reveal": {
+    "blurb": "Hattic and Hittite peoples lived here in the Bronze Age, and many great powers ruled it after them. In 1923 the new republic made it the capital, and Atatürk now rests in his grand tomb shrine. Ankara is the capital of Turkey."
+  },
+  "schema": "meridian.pack.case.v1",
+  "source": {
+    "href": "https://en.wikipedia.org/wiki/Ankara",
+    "label": "Wikipedia"
+  },
+  "subject": {
+    "iso2": "TR",
+    "kind": "country",
+    "name": "Turkey",
+    "subdivision": "Ankara"
+  },
+  "subjectAnswer": {
+    "aliases": [],
+    "name": "Turkey"
+  },
+  "target": {
+    "aliases": [
+      "Ancyra",
+      "Angora"
+    ],
+    "featureCode": "PPLC",
+    "lat": 39.91987,
+    "lon": 32.85427,
+    "name": "Ankara",
+    "placeId": "gn-323786"
+  }
+}
