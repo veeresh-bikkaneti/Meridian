@@ -1,14 +1,23 @@
 /**
- * Smooth cards (feat/smooth-cards) — the film cards' gradient fade
- * and the spot illustrations' settling motion.
+ * Smooth cards (feat/smooth-cards) — the film cards' gradient fade,
+ * plus the removal record for the spot illustrations' CSS motion.
  *
  * Same source-pinning style as card-film.test.ts and
  * home-loading-orbs.test.ts (this repo has no React-render harness):
- * the fade's coverage of every film state, the toggle's safety, the
- * motion gates, the settle governance, and the zero-CLS shape are
- * pinned by reading the source. The visual result is covered by the
- * capture set in ~/workspace/meridian-smooth-cards-evidence and by
- * the home E2E specs against the built app.
+ * the fade's coverage of every film state and the toggle's safety
+ * are pinned by reading the source. The visual result is covered by
+ * the capture set in ~/workspace/meridian-smooth-cards-evidence and
+ * by the home E2E specs against the built app.
+ *
+ * Part 2 history: the Review, Journal, and Grown-ups illustrations
+ * first got CSS settling passes (hv5-art-drift / hv5-art-sway /
+ * hv5-art-float, armed by LazyHomeImage with an hv5-art-live
+ * class). The owner rejected that class of motion on 2026-11-03
+ * and ruled the three cards get animated cartoon films instead,
+ * through the one CardFilm system. The CSS passes, their keyframes,
+ * and the LazyHomeImage arming were removed in full; the pins below
+ * keep them removed. The films themselves are pinned with the rest
+ * of the CardFilm governance in card-film.test.ts.
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
@@ -28,7 +37,6 @@ const fadeRule = css.slice(
   css.indexOf(".hv5-card-film::after {"),
   css.indexOf(".hv5-card-film-toggle {"),
 );
-const artSection = css.slice(css.indexOf("smooth art motion (feat/smooth-cards)"));
 
 describe("film fade — one overlay on the shared wrapper covers every state", () => {
   it("the fade is a ::after on .hv5-card-film, the wrapper every state renders", () => {
@@ -82,84 +90,29 @@ describe("film fade — one overlay on the shared wrapper covers every state", (
   });
 });
 
-describe("art motion — gates mirror CardFilm, arming is near-viewport only", () => {
-  it("gates: reduced motion (shared hook), Save-Data, deviceMemory at or below 2", () => {
-    assert.ok(lazy.includes("usePrefersReducedMotion()"), "reduced motion via the shared hook");
-    assert.ok(lazy.includes("nav.connection?.saveData"), "Save-Data gate");
-    assert.ok(lazy.includes("mem > 0 && mem <= 2"), "deviceMemory gate, the film threshold");
-    assert.ok(
-      lazy.includes("const artLive = isArt && near && !reducedMotion && !staticGate"),
-      "all gates compose into the one arming flag",
-    );
+describe("CSS art passes — removed in full (owner ruling, 2026-11-03)", () => {
+  it("no hv5-art-live arming survives in the CSS or in LazyHomeImage", () => {
+    assert.ok(!css.includes("hv5-art-live"), "live class gone from the CSS");
+    assert.ok(!lazy.includes("hv5-art-live"), "live class gone from LazyHomeImage");
+    assert.ok(!lazy.includes("artLive"), "arming flag gone from LazyHomeImage");
+    assert.ok(!lazy.includes("artStaticGateAtMount"), "art gate copy gone from LazyHomeImage");
   });
 
-  it("only .hv5-art wrappers arm, and only near the viewport", () => {
-    assert.ok(lazy.includes('className?.includes("hv5-art")'), "art detection is the .hv5-art class");
-    assert.ok(lazy.includes("new IntersectionObserver"), "near-viewport observer");
-    assert.ok(lazy.includes('{ rootMargin: "200px" }'), "200px rootMargin, the film margin");
-    assert.ok(
-      lazy.includes('className={artLive ? "hv5-art-live" : undefined}'),
-      "the live class lands on the img only when armed",
-    );
-  });
-
-  it("no timers: nothing replays, polls, or re-arms on a schedule", () => {
-    const section = lazy.slice(lazy.indexOf("Smooth art motion"));
-    assert.ok(!section.includes("setTimeout"), "no timer chains");
-    assert.ok(!section.includes("setInterval"), "no polling timers");
-  });
-
-  it("the three art sites in game-app are unchanged and still decorative", () => {
-    for (const site of [
-      '<LazyHomeImage className="hv5-art" src={archiveToolsUrl} alt="" ariaHidden />',
-      '<LazyHomeImage className="hv5-art" src={journalTreeUrl} alt="" ariaHidden />',
-      '<LazyHomeImage className="hv5-art" src={binocularsHatUrl} alt="" ariaHidden />',
-    ]) {
-      assert.ok(gameApp.includes(site), `art site unchanged: ${site}`);
+  it("the three keyframe passes are gone", () => {
+    for (const name of ["hv5-art-drift", "hv5-art-sway", "hv5-art-float"]) {
+      assert.ok(!css.includes(name), `keyframe pass removed: ${name}`);
     }
-    assert.equal((gameApp.match(/className="hv5-art"/g) || []).length, 3,
-      "exactly three .hv5-art cards exist (Review, Journal, Grown-ups)");
-  });
-});
-
-describe("art motion — the CSS pass settles, never loops, never moves layout", () => {
-  it("each card gets its own named pass, all with one iteration", () => {
-    assert.ok(artSection.includes("animation: hv5-art-drift 10s ease-in-out 1 both"),
-      "Review drift, one pass");
-    assert.ok(artSection.includes("animation-name: hv5-art-sway"), "Journal sway");
-    assert.ok(artSection.includes("animation-duration: 11s"), "Journal duration");
-    assert.ok(artSection.includes("animation-name: hv5-art-float"), "Grown-ups float");
-    assert.ok(artSection.includes("animation-duration: 9s"), "Grown-ups duration");
-    assert.ok(!artSection.includes("infinite"), "no loop anywhere in the art section");
+    assert.ok(!css.includes("smooth art motion"), "art-motion CSS section gone");
   });
 
-  it("keyframes use transform and opacity only, and end where they start", () => {
-    const keyframes = [...artSection.matchAll(/@keyframes hv5-art-[^{]+\{([\s\S]*?)\n\}/g)]
-      .map((m) => m[1]);
-    assert.equal(keyframes.length, 3, "three keyframe sets, one per card");
-    for (const body of keyframes) {
-      const props = [...body.matchAll(/([a-z-]+):/g)].map((m) => m[1]);
-      for (const prop of props) {
-        assert.ok(prop === "transform" || prop === "opacity",
-          `keyframe property must be transform or opacity, got: ${prop}`);
-      }
-      assert.ok(body.includes("0%") && body.includes("100%"), "pass has a start and a settle");
-    }
+  it("LazyHomeImage is back to one job: the loading orb", () => {
+    assert.ok(!lazy.includes("usePrefersReducedMotion"), "no motion hook in the lazy wrapper");
+    assert.ok(!lazy.includes("IntersectionObserver"), "no near-viewport observer in the lazy wrapper");
+    assert.ok(lazy.includes("hv5-lazy-orb"), "the orb behaviour itself is untouched");
   });
 
-  it("the motion is on the inner img, never on the measured wrapper box", () => {
-    assert.ok(artSection.includes(".hv5-spot .hv5-art > img.hv5-art-live"),
-      "live rule targets the img inside the wrapper");
-    const liveRules = [...artSection.matchAll(/\.hv5-art-live \{[^}]*\}/g)].map((m) => m[0]);
-    for (const rule of liveRules) {
-      assert.ok(!rule.includes("width") && !rule.includes("height"),
-        "live rules set no box size");
-    }
-  });
-
-  it("reduced motion kills the pass in CSS as a second line of defence", () => {
-    const rm = artSection.slice(artSection.indexOf("@media (prefers-reduced-motion: reduce)"));
-    assert.ok(rm.includes(".hv5-art > img.hv5-art-live"), "reduced-motion rule targets the live img");
-    assert.ok(rm.includes("animation: none"), "reduced motion means no animation");
+  it("the Part 1 fade is untouched by the removal", () => {
+    assert.ok(css.includes(".hv5-card-film::after {"), "fade rule still present");
+    assert.ok(fadeRule.includes("#fdfbf3 100%"), "fade stops unchanged");
   });
 });
