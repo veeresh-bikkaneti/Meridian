@@ -206,6 +206,26 @@ export function deckProgressLine(deck: { closed: number | null; total: number | 
   return "";
 }
 
+/**
+ * Which Cold Trail deck the screen opens on at mount. Resume wins over
+ * the selection blob (mirroring LoopScreen, where an in-progress
+ * mystery is never clobbered): when exactly one deck's store holds an
+ * unrevealed current case, that deck opens, whatever the blob says.
+ * When both or neither deck has a case mid-play, the stored selection
+ * decides.
+ */
+export function initialTrailDeck(input: {
+  selected: string;
+  coreCurrent: { revealed: boolean } | null | undefined;
+  packCurrent: { revealed: boolean } | null | undefined;
+}): string {
+  const coreOpen = !!input.coreCurrent && !input.coreCurrent.revealed;
+  const packOpen = !!input.packCurrent && !input.packCurrent.revealed;
+  if (coreOpen && !packOpen) return CORE_DECK_ID;
+  if (packOpen && !coreOpen) return FIRST_PACK_ID;
+  return input.selected;
+}
+
 type StoragePeek = Pick<Storage, "getItem">;
 type StorageWrite = Pick<Storage, "getItem" | "setItem">;
 

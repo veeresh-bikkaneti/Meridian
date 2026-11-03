@@ -4,7 +4,12 @@ import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
 import { PackShelf } from "@/components/pack-shelf";
-import { FIRST_PACK_ID, readSelectedDeck, writeSelectedDeck } from "@/components/pack-shelf-data";
+import {
+  FIRST_PACK_ID,
+  initialTrailDeck,
+  readSelectedDeck,
+  writeSelectedDeck,
+} from "@/components/pack-shelf-data";
 import { playConfirmGuess, playLose, playWin } from "@/game/audio/sfx";
 import { playCelebrationSound } from "@/game/audio/play-guards";
 import { resolveBand, type AgeBandId } from "@/game/age-profile";
@@ -81,7 +86,18 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
   const [packStore, setPackStore] = useState<ColdTrailStore>(() =>
     loadColdtrail(COLDTRAIL_PACK_CAPITALS_STORAGE_KEY),
   );
-  const [openDeck, setOpenDeck] = useState<string>(() => readSelectedDeck("coldtrail"));
+  // Mount resume: a case mid-play in exactly one deck's store opens on
+  // that deck, even when the selection blob names the other deck (the
+  // player picked a deck mid-case, left, and came back — the open case
+  // is theirs and must not be yanked). Otherwise the stored selection
+  // decides, as before.
+  const [openDeck, setOpenDeck] = useState<string>(() =>
+    initialTrailDeck({
+      selected: readSelectedDeck("coldtrail"),
+      coreCurrent: coreStore.current,
+      packCurrent: packStore.current,
+    }),
+  );
   const onPackDeck = openDeck === FIRST_PACK_ID;
   const store = onPackDeck ? packStore : coreStore;
   const [pending, setPending] = useState<{ lon: number; lat: number } | null>(null);

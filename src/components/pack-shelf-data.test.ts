@@ -17,6 +17,7 @@ import {
   deckProgressLine,
   fetchLoopDeckSize,
   fetchPackManifest,
+  initialTrailDeck,
   isPackManifest,
   readColdtrailClosed,
   readLoopCoreClosed,
@@ -129,6 +130,39 @@ describe("buildDeckList", () => {
     // Without a bundled count, Cold Trail falls back to the manifest size.
     const fallback = buildDeckList({ ...base, edition: "coldtrail", packManifest: MANIFEST });
     assert.equal(fallback[1]!.total, 72);
+  });
+});
+
+describe("initialTrailDeck (Cold Trail mount resume)", () => {
+  const open = { revealed: false };
+  const done = { revealed: true };
+  it("resumes the one deck with an unrevealed case, over the selection blob", () => {
+    assert.equal(
+      initialTrailDeck({ selected: "capitals", coreCurrent: open, packCurrent: null }),
+      CORE_DECK_ID,
+    );
+    assert.equal(
+      initialTrailDeck({ selected: "all", coreCurrent: null, packCurrent: open }),
+      "capitals",
+    );
+    assert.equal(
+      initialTrailDeck({ selected: "all", coreCurrent: done, packCurrent: open }),
+      "capitals",
+    );
+  });
+  it("falls back to the stored selection when both or neither deck is mid-case", () => {
+    assert.equal(
+      initialTrailDeck({ selected: "capitals", coreCurrent: open, packCurrent: open }),
+      "capitals",
+    );
+    assert.equal(
+      initialTrailDeck({ selected: "capitals", coreCurrent: done, packCurrent: done }),
+      "capitals",
+    );
+    assert.equal(
+      initialTrailDeck({ selected: "all", coreCurrent: null, packCurrent: null }),
+      "all",
+    );
   });
 });
 
