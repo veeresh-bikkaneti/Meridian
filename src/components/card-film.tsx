@@ -2,11 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 
 /**
- * CardFilm — the one shared picture slot for the two home game
- * cards (GeoDetective + Cold Trail). Both cards used to show a
- * still photo here; now each shows a short governed film, and this
- * component is the governance. The media itself (film / poster /
- * still per card) lives in src/assets/home-v5/card-media.ts — this
+ * CardFilm — the one shared picture slot for the five home cards
+ * that carry a film: GeoDetective + Cold Trail (the `.hv5-pic`
+ * slots) and Review, Journal, and Grown-ups (the `.hv5-art` slots,
+ * added 2026-11-03 on the owner's ruling — one motion system for
+ * every illustrated card). Each card used to show a still picture
+ * here; now each shows a short governed film, and this component
+ * is the governance. The media itself (film / poster / still per
+ * card) lives in src/assets/home-v5/card-media.ts — this
  * component never names a file.
  *
  * The rules, mirroring the home globe's gates (home-globe.tsx) and
@@ -36,8 +39,9 @@ import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
  * - The film itself is decoration: aria-hidden, never focusable.
  *   The toggle is the only interactive element this component adds.
  * - Zero layout shift: the wrapper carries the slot's existing
- *   layout class (.hv5-pic), whose box geometry does not change;
- *   the media absolutely fills that box (see home-v5.css).
+ *   layout class (.hv5-pic or .hv5-art), whose box geometry does
+ *   not change; the media absolutely fills that box (see
+ *   home-v5.css).
  * - The picture dissolves into the text area: the wrapper's
  *   ::after overlay in home-v5.css paints a gradient inside the
  *   box, clear at 64% of its height and solid card colour at the
@@ -45,6 +49,9 @@ import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
  *   it covers every state the slot renders (film, poster, still)
  *   with no work in this component. The pause/play toggle sits
  *   in the top corner above the overlay, so it is never faded.
+ *   The overlay belongs to the `.hv5-pic` slots only — the
+ *   `.hv5-art` slots keep their own radial mask edge, and CSS
+ *   keeps the overlay off them (home-v5.css, art-film block).
  */
 export type CardFilmMedia = {
   videoUrl: string;

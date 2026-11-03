@@ -52,14 +52,11 @@ import { BootSplash } from "./boot-splash";
 import "./home-v5.css";
 import heroMountainUrl from "@/assets/home-v5/hero-mountain.webp";
 import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
-import archiveToolsUrl from "@/assets/home-v5/archive-tools.webp";
-import journalTreeUrl from "@/assets/home-v5/journal-tree.webp";
-import binocularsHatUrl from "@/assets/home-v5/binoculars-hat.webp";
 import {
   VERDICT_GRANDPA_POSTER_URL,
   VERDICT_GRANDPA_VIDEO_URL,
 } from "@/assets/verdict/grandpa-media";
-import { COLDTRAIL_FILM, GEODETECTIVE_FILM } from "@/assets/home-v5/card-media";
+import { COLDTRAIL_FILM, GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, REVIEW_FILM } from "@/assets/home-v5/card-media";
 import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
@@ -4505,7 +4502,7 @@ function Choose({
                 <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
               )}
             </div>
-            <LazyHomeImage className="hv5-art" src={archiveToolsUrl} alt="" ariaHidden />
+            <CardFilm className="hv5-art" media={REVIEW_FILM} testId="card-film-review" />
           </section>
         ) : (
           <div aria-hidden="true" />
@@ -4535,7 +4532,7 @@ function Choose({
               READ THE ENTRY
             </button>
           </div>
-          <LazyHomeImage className="hv5-art" src={journalTreeUrl} alt="" ariaHidden />
+          <CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" />
         </article>
         <article id="home-grownups" tabIndex={-1} className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)} data-testid="grownups-card">
           <div className="hv5-txt">
@@ -4556,7 +4553,7 @@ function Choose({
               <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
             </button>
           </div>
-          <LazyHomeImage className="hv5-art" src={binocularsHatUrl} alt="" ariaHidden />
+          <CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" />
         </article>
       </div>
 

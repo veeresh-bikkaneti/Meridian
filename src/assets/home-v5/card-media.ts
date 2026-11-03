@@ -4,16 +4,29 @@ import geodetectiveStillUrl from "./geodetective-still.webp";
 import coldtrailVideoUrl from "./coldtrail-film.mp4";
 import coldtrailPosterUrl from "./coldtrail-poster.webp";
 import coldtrailStillUrl from "./coldtrail-still.webp";
+import reviewVideoUrl from "./review-film.mp4";
+import reviewPosterUrl from "./review-poster.webp";
+import reviewStillUrl from "./archive-tools.webp";
+import journalVideoUrl from "./journal-film.mp4";
+import journalPosterUrl from "./journal-poster.webp";
+import journalStillUrl from "./journal-tree.webp";
+import grownupsVideoUrl from "./grownups-film.mp4";
+import grownupsPosterUrl from "./grownups-poster.webp";
+import grownupsStillUrl from "./binoculars-hat.webp";
 
 /**
- * THE swap point for the two home game cards' animated pictures
- * (GeoDetective + Cold Trail, the `.hv5-pic` slots in game-app.tsx).
+ * THE swap point for the five home cards' animated pictures:
+ * GeoDetective + Cold Trail (the `.hv5-pic` slots in game-app.tsx)
+ * and Review, Journal, and Grown-ups (the `.hv5-art` slots).
  *
- * Both cards render through the one shared CardFilm component
+ * All five cards render through the one shared CardFilm component
  * (src/components/card-film.tsx), which imports each card's film,
  * poster, and still from here and nowhere else — so a re-animated
  * take ships by replacing the files beside this module, never by
- * editing component code. Keep it that way.
+ * editing component code. Keep it that way. There is one motion
+ * system on the home page, CardFilm; the CSS settling passes the
+ * three `.hv5-art` cards carried for one round were removed on the
+ * owner's ruling (2026-11-03) and must not come back.
  *
  * Smooth blend (feat/smooth-cards): the slot's wrapper carries a
  * gradient overlay in home-v5.css (.hv5-card-film::after) that
@@ -23,6 +36,47 @@ import coldtrailStillUrl from "./coldtrail-still.webp";
  * and the still alike. Both cards use the same stops, clear at
  * 64% of the box height and solid #fdfbf3 at the bottom edge,
  * because both pictures dissolve into the same card colour.
+ * The fade belongs to the `.hv5-pic` slots only: the `.hv5-art`
+ * slots keep their own radial mask edge, and home-v5.css keeps
+ * the fade overlay off them.
+ *
+ * ── The three spot illustrations (Review, Journal, Grown-ups) ──
+ *
+ * Added 2026-11-03 on the owner's ruling: the same film treatment
+ * as the game cards, by the same method. Each card's existing
+ * illustration is the animation's source image, the film's settle
+ * frame, and the still this module exports for it — the stillUrl
+ * imports above point at the original illustration files
+ * (archive-tools / journal-tree / binoculars-hat), not at copies.
+ * Slots are small, so the films encode at twice the still's own
+ * size: Review 800×538 (slot 172 CSS px wide, 400/269), Journal
+ * 720×720 (slot 148 px, square), Grown-ups 800×800 (slot 178 px,
+ * square). Posters are each film's own first frame, as above.
+ *
+ * Beats, as generated (per-take notes with prompts, attempts, and
+ * frame evidence: ~/workspace/meridian-smooth-cards-evidence/
+ * takes/TAKE-NOTES.md):
+ *   Review — the magnifying glass sweeps over the satchel as if
+ *     checking the misses over, then returns and rests. Three raw
+ *     takes failed the identity/settle checks (no settle; layout
+ *     redrawn; the lens vanishing in the last frame), so the
+ *     shipped film is take 1 edited there-and-back at its apex
+ *     (2.6 s): forward sweep, then the same frames reversed, so it
+ *     settles on its own opening frame exactly. Disclosed here and
+ *     in the PR body for the owner's call. The brief's "one card
+ *     tips up under the glass" beat has no card to act on — the
+ *     illustration holds a satchel, a compass, and the glass — so
+ *     the sweep itself carries the checking verb.
+ *   Journal — wind moves through the tree, light warms over the
+ *     hills. Take 1 of 1 shipped, retimed 10 s → 7.8 s. Disclosed
+ *     drift: the canopy ends a little more wind-blown than the
+ *     still (last frame vs still PSNR 16.5 dB at 360 px), the
+ *     light ends warmer, and a few tiny birds cross once mid-take.
+ *     Nothing morphs and no text exists to garble.
+ *   Grown-ups — the binoculars rise upright as if lifted to watch
+ *     over the kids, and the hat tips once. Take 2 of 2 shipped
+ *     (take 1 ended with the binoculars lying on their side).
+ *     Minor redraw drift at settle, disclosed in the take notes.
  *
  * ── Poster vs still — these are DIFFERENT pictures, on purpose ──
  *
@@ -163,4 +217,22 @@ export const COLDTRAIL_FILM = {
   videoUrl: coldtrailVideoUrl,
   posterUrl: coldtrailPosterUrl,
   stillUrl: coldtrailStillUrl,
+} as const;
+
+export const REVIEW_FILM = {
+  videoUrl: reviewVideoUrl,
+  posterUrl: reviewPosterUrl,
+  stillUrl: reviewStillUrl,
+} as const;
+
+export const JOURNAL_FILM = {
+  videoUrl: journalVideoUrl,
+  posterUrl: journalPosterUrl,
+  stillUrl: journalStillUrl,
+} as const;
+
+export const GROWNUPS_FILM = {
+  videoUrl: grownupsVideoUrl,
+  posterUrl: grownupsPosterUrl,
+  stillUrl: grownupsStillUrl,
 } as const;

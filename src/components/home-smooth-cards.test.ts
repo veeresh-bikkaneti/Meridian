@@ -116,3 +116,23 @@ describe("CSS art passes — removed in full (owner ruling, 2026-11-03)", () => 
     assert.ok(fadeRule.includes("#fdfbf3 100%"), "fade stops unchanged");
   });
 });
+
+describe("art films — the three spot cards joined the CardFilm system", () => {
+  it("all three .hv5-art slots render CardFilm, none renders LazyHomeImage", () => {
+    for (const site of [
+      '<CardFilm className="hv5-art" media={REVIEW_FILM} testId="card-film-review" />',
+      '<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" />',
+      '<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" />',
+    ]) {
+      assert.ok(gameApp.includes(site), `art film site: ${site}`);
+    }
+    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 5,
+      "five film slots total — one motion system for every illustrated card");
+  });
+
+  it("the art stills are the original illustrations, imported by card-media only", () => {
+    assert.ok(!gameApp.includes("archiveToolsUrl"), "game-app no longer imports the Review still directly");
+    assert.ok(!gameApp.includes("journalTreeUrl"), "game-app no longer imports the Journal still directly");
+    assert.ok(!gameApp.includes("binocularsHatUrl"), "game-app no longer imports the Grown-ups still directly");
+  });
+});

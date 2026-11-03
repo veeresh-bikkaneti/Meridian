@@ -1388,3 +1388,34 @@ body:has(.home-v5) {
   border-radius: 2px;
   background: #fff;
 }
+
+/* ---------- art films (feat/smooth-cards, Part 2 redo) ----------
+   The three spot-illustration cards (Review, Journal, Grown-ups)
+   render through CardFilm too, on the owner's ruling (2026-11-03):
+   one motion system for all five illustrated cards. The wrapper
+   keeps the .hv5-art box exactly as the layout rules above set it
+   (size, aspect ratio, radial mask, position) — only the three
+   adjustments a film slot needs are made here:
+   - The Part 1 gradient fade stays on the .hv5-pic slots alone.
+     The art slots keep their radial mask edge, so the shared
+     wrapper's ::after overlay is switched off for them.
+   - The .hv5-art wrapper is pointer-events: none (it is
+     decoration over the card), but the film's pause/play toggle
+     is a real control: it takes its own pointer events back.
+   - The Journal and Grown-ups cards stretch their CTA across the
+     whole card at z-index 2, and the masked art wrapper would
+     trap the toggle underneath it. The art-film wrapper rides at
+     z-index 3 — the same height the Grown-ups card's own links
+     use to clear the stretch layer — so the toggle stays
+     tappable. The art itself is masked and sits in the corner
+     the text column leaves clear, so the higher layer changes
+     no reading order and covers no text. */
+.home-v5 .hv5-card-film.hv5-art::after {
+  content: none;
+}
+.home-v5 .hv5-card-film.hv5-art {
+  z-index: 3;
+}
+.home-v5 .hv5-card-film.hv5-art .hv5-card-film-toggle {
+  pointer-events: auto;
+}

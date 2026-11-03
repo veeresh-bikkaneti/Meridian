@@ -1,6 +1,8 @@
 /**
- * Card films (feat/home-card-films) — the two home game cards'
- * .hv5-pic slots as governed films behind one shared component.
+ * Card films (feat/home-card-films) — the home cards' film slots
+ * as governed films behind one shared component: the two game
+ * cards' .hv5-pic slots first, then the three spot illustrations'
+ * .hv5-art slots (feat/smooth-cards Part 2 redo, 2026-11-03).
  *
  * Same source-pinning style as home-loading-orbs.test.ts (this
  * repo has no React-render harness): the gates, the lazy mount,
@@ -114,7 +116,7 @@ describe("CardFilm — zero CLS: media fills the existing .hv5-pic box", () => {
   });
 });
 
-describe("home wiring — both cards, one component, nothing else moves", () => {
+describe("home wiring — five cards, one component, nothing else moves", () => {
   it("both .hv5-pic slots render CardFilm with their card-media entries", () => {
     assert.ok(
       gameApp.includes('<CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" />'),
@@ -124,7 +126,38 @@ describe("home wiring — both cards, one component, nothing else moves", () => 
       gameApp.includes('<CardFilm className="hv5-pic" media={COLDTRAIL_FILM} testId="card-film-coldtrail" />'),
       "Cold Trail slot",
     );
-    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 2, "exactly two film slots");
+  });
+
+  it("all three .hv5-art slots render CardFilm with their card-media entries", () => {
+    assert.ok(
+      gameApp.includes('<CardFilm className="hv5-art" media={REVIEW_FILM} testId="card-film-review" />'),
+      "Review slot",
+    );
+    assert.ok(
+      gameApp.includes('<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" />'),
+      "Journal slot",
+    );
+    assert.ok(
+      gameApp.includes('<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" />'),
+      "Grown-ups slot",
+    );
+    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 5, "exactly five film slots — one motion system");
+    assert.ok(!gameApp.includes('className="hv5-art" src='), "no .hv5-art slot renders a bare still anymore");
+  });
+
+  it("the art slots keep their wrapper geometry: no .hv5-art box rule changed", () => {
+    assert.ok(css.includes(".home-v5 .hv5-spot .hv5-art {"), "spot art box rule still present");
+    assert.ok(css.includes("aspect-ratio: 400 / 269"), "Review art ratio unchanged");
+    assert.ok(css.includes(".home-v5 .hv5-journal .hv5-art {"), "Journal art box rule still present");
+    assert.ok(css.includes(".home-v5 .hv5-involved .hv5-art {"), "Grown-ups art box rule still present");
+  });
+
+  it("art-film CSS: fade stays on the pic slots, the toggle stays tappable", () => {
+    assert.ok(css.includes(".home-v5 .hv5-card-film.hv5-art::after {"), "art slots switch the pic fade off");
+    const artBlock = css.slice(css.indexOf("art films (feat/smooth-cards"));
+    assert.ok(artBlock.includes("content: none"), "no gradient overlay on the art slots");
+    assert.ok(artBlock.includes("pointer-events: auto"), "toggle takes pointer events back from the decorative wrapper");
+    assert.ok(artBlock.includes("z-index: 3"), "art-film wrapper clears the stretched CTA layer");
   });
 
   it("the locked band still renders LockedLoop, byte-identical branch", () => {
@@ -160,6 +193,9 @@ describe("card-media — the swap point", () => {
   it("exports one entry per card, each with video + poster + still", () => {
     assert.ok(media.includes("export const GEODETECTIVE_FILM"), "GeoDetective entry");
     assert.ok(media.includes("export const COLDTRAIL_FILM"), "Cold Trail entry");
+    assert.ok(media.includes("export const REVIEW_FILM"), "Review entry");
+    assert.ok(media.includes("export const JOURNAL_FILM"), "Journal entry");
+    assert.ok(media.includes("export const GROWNUPS_FILM"), "Grown-ups entry");
     for (const field of ["videoUrl", "posterUrl", "stillUrl"]) {
       assert.ok(media.includes(field), `field ${field}`);
     }
@@ -183,6 +219,32 @@ describe("card-media — byte caps (measured on the real files)", () => {
       `geodetective film: ${assetBytes("geodetective-film.mp4")}`);
     assert.ok(assetBytes("coldtrail-film.mp4") <= 400_000,
       `coldtrail film: ${assetBytes("coldtrail-film.mp4")}`);
+    assert.ok(assetBytes("review-film.mp4") <= 400_000,
+      `review film: ${assetBytes("review-film.mp4")}`);
+    assert.ok(assetBytes("journal-film.mp4") <= 400_000,
+      `journal film: ${assetBytes("journal-film.mp4")}`);
+    assert.ok(assetBytes("grownups-film.mp4") <= 400_000,
+      `grownups film: ${assetBytes("grownups-film.mp4")}`);
+  });
+
+  it("the art posters stay small (the slots are small)", () => {
+    for (const name of ["review-poster.webp", "journal-poster.webp", "grownups-poster.webp"]) {
+      const bytes = assetBytes(name);
+      assert.ok(bytes >= 5_000 && bytes <= 60_000, `${name}: ${bytes}`);
+    }
+  });
+
+  it("the art cards' stills ARE the original illustrations (no copies)", () => {
+    assert.ok(media.includes('reviewStillUrl from "./archive-tools.webp"') ||
+      media.includes('from "./archive-tools.webp"'), "Review still is archive-tools.webp");
+    assert.ok(media.includes('from "./journal-tree.webp"'), "Journal still is journal-tree.webp");
+    assert.ok(media.includes('from "./binoculars-hat.webp"'), "Grown-ups still is binoculars-hat.webp");
+    assert.ok(media.includes('from "./review-poster.webp"') && media.includes('from "./review-film.mp4"'),
+      "Review poster + film files");
+    assert.ok(media.includes('from "./journal-poster.webp"') && media.includes('from "./journal-film.mp4"'),
+      "Journal poster + film files");
+    assert.ok(media.includes('from "./grownups-poster.webp"') && media.includes('from "./grownups-film.mp4"'),
+      "Grown-ups poster + film files");
   });
 
   it("posters and stills are in the verdict league (~65-135 KB)", () => {
