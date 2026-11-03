@@ -144,7 +144,7 @@ describe("home wiring — both cards, one component, nothing else moves", () => 
       "Case file · Triangulation",
       "Solve a mystery",
       "Start the trail",
-      "A smuggler moves between cities. Three sightings, three rings — tap where",
+      "Jolly was spotted in the snow. Three sightings, three rings — tap where",
     ]) {
       assert.ok(gameApp.includes(locked), `copy lock missing: ${locked}`);
     }

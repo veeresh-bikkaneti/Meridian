@@ -4416,8 +4416,8 @@ function Choose({
               Cold Trail<span className="hv5-chip">New</span>
             </h2>
             <p>
-              A smuggler moves between cities. Three sightings, three rings — tap where
-              they cross to make the interception.
+              Jolly was spotted in the snow. Three sightings, three rings — tap where
+              they cross to reach Jolly before the trail freezes.
             </p>
             <button
               type="button"
