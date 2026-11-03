@@ -1292,10 +1292,9 @@ body:has(.home-v5) {
    the .hv5-pic rules above and must not change here; the Grandpa
    tour measures these cards. The wrapper is position:relative so
    the media can absolutely fill the box (zero layout shift, the
-   box exists before any bytes arrive) and so the pause/play
-   toggle can sit in the slot's corner. The toggle rides above the
-   card's stretched CTA (z-index 2, the badge-row precedent) and
-   keeps the repo's 44px tap-target floor. */
+   box exists before any bytes arrive). The films loop on the
+   owner's autoloop order (2026-11-03) and render no control of
+   their own, so no rule here styles one. */
 .home-v5 .hv5-card-film {
   position: relative;
   overflow: hidden;
@@ -1309,27 +1308,51 @@ body:has(.home-v5) {
   height: 100%;
   object-fit: cover;
 }
-/* Smooth cards (feat/smooth-cards): the picture dissolves into the
-   text area instead of ending at a hard line. One overlay sits
-   inside the existing picture box, above the media and below the
-   pause/play toggle (z-index 2). Its gradient runs from clear at
-   64% of the box height to solid card colour at the bottom edge,
-   and the text area below the box is the same card colour
-   (var(--hv5-card), #fdfbf3), so the last pixels of the picture
-   and the first pixels below it are one colour and no edge is
-   left to see. The overlay is on the shared wrapper, not on the
-   media, so the same fade covers every state the slot can be in:
-   the film while it plays, the poster before it mounts, the
-   reduced-motion still, and the error still. Both cards share
-   these stops on purpose. The two scenes differ (a dark desk, a
-   bright snowfield) but they dissolve into the same card colour,
-   and one alpha ramp blends each scene into that colour in
-   proportion, so per-card stops would tune a difference the eye
-   cannot pick out. The box does not grow: the overlay is
-   positioned inside it and adds no size, so the card geometry
-   the Grandpa tour measures is unchanged. The toggle sits in
-   the top corner, far above the fade zone, and the overlay is
-   below it in any case, so the toggle is never faded. */
+/* Smooth cards (feat/smooth-cards): the picture feathers into
+   the text area instead of ending at a hard line. The mechanism
+   is a mask feather on the media itself plus a thin landing
+   strip on the wrapper. The mask holds the scene at full opacity
+   until 84% of the box height, then fades the scene's own alpha
+   out by the bottom edge, so no pigment is painted over the
+   scene and the card colour below shows through. The ::after
+   strip hugs the bottom edge only. Its one job is to land the
+   box's last rows on the exact card colour (#fdfbf3,
+   var(--hv5-card)) under the feather. Because the mask sits on
+   the media elements, the same feather covers every state the
+   slot can be in: the film while it plays, the poster before it
+   mounts, the reduced-motion still, and the error still. The
+   box does not grow, so the card geometry the Grandpa tour
+   measures is unchanged.
+   History: the first build painted a cream ramp over the scene
+   (clear at 64%, solid at 100%) and the owner rejected it on
+   2026-11-03 as too harsh on the eyes, a white clouds gradient.
+   Three softer variants (long eased cream, scene-tinted bridge,
+   mask feather) were captured for his pick. He could not tell
+   them apart at capture size, the softer direction looked good,
+   and he asked for the gradient reduced even further. This
+   strip is that reduction: the mask feather mechanism from the
+   variant set, compressed from a 42% feather to a thin strip,
+   with no backdrop-blur layer (a thin strip does not need one,
+   and blur over live video risks jank on weak devices). The
+   research memos with the measurements live in the evidence
+   dir: ~/workspace/meridian-smooth-cards-evidence/research/. */
+.home-v5 .hv5-card-film.hv5-pic > img,
+.home-v5 .hv5-card-film.hv5-pic > video {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 84%,
+    rgba(0, 0, 0, 0.55) 93%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 84%,
+    rgba(0, 0, 0, 0.55) 93%,
+    transparent 100%
+  );
+}
 .home-v5 .hv5-card-film::after {
   content: "";
   position: absolute;
@@ -1338,84 +1361,53 @@ body:has(.home-v5) {
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba(253, 251, 243, 0) 64%,
-    rgba(253, 251, 243, 0.45) 82%,
-    rgba(253, 251, 243, 0.88) 93%,
+    rgba(253, 251, 243, 0) 94%,
+    rgba(253, 251, 243, 0.5) 97.5%,
     #fdfbf3 100%
   );
-}
-.home-v5 .hv5-card-film-toggle {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 2;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  cursor: pointer;
-}
-.home-v5 .hv5-card-film-toggle:hover {
-  background: rgba(0, 0, 0, 0.65);
-}
-/* The shared .home-v5 focus ring is deep brown, which can vanish
-   on a dark photo pixel; on the photo the toggle takes a cream
-   ring instead (the verdict toggle's treatment, PR #295). */
-.home-v5 .hv5-card-film-toggle:focus-visible {
-  outline: 2px solid #fbf7ea;
-  outline-offset: 2px;
-}
-.home-v5 .hv5-film-icon-play {
-  margin-left: 2px;
-  width: 0;
-  height: 0;
-  border-top: 7px solid transparent;
-  border-bottom: 7px solid transparent;
-  border-left: 11px solid #fff;
-}
-.home-v5 .hv5-film-icon-pause {
-  display: flex;
-  gap: 4px;
-}
-.home-v5 .hv5-film-icon-pause > span {
-  width: 4px;
-  height: 16px;
-  border-radius: 2px;
-  background: #fff;
 }
 
 /* ---------- art films (feat/smooth-cards, Part 2 redo) ----------
    The three spot-illustration cards (Review, Journal, Grown-ups)
    render through CardFilm too, on the owner's ruling (2026-11-03):
-   one motion system for all five illustrated cards. The wrapper
-   keeps the .hv5-art box exactly as the layout rules above set it
-   (size, aspect ratio, radial mask, position) — only the three
-   adjustments a film slot needs are made here:
-   - The Part 1 gradient fade stays on the .hv5-pic slots alone.
-     The art slots keep their radial mask edge, so the shared
-     wrapper's ::after overlay is switched off for them.
-   - The .hv5-art wrapper is pointer-events: none (it is
-     decoration over the card), but the film's pause/play toggle
-     is a real control: it takes its own pointer events back.
-   - The Journal and Grown-ups cards stretch their CTA across the
-     whole card at z-index 2, and the masked art wrapper would
-     trap the toggle underneath it. The art-film wrapper rides at
-     z-index 3 — the same height the Grown-ups card's own links
-     use to clear the stretch layer — so the toggle stays
-     tappable. The art itself is masked and sits in the corner
-     the text column leaves clear, so the higher layer changes
-     no reading order and covers no text. */
+   one motion system for all five illustrated cards.
+   Rework (2026-11-03, the owner's autoloop + bigger orders): the
+   art slot is no longer a small corner illustration. It is a
+   full-bleed picture banner at the top of the card, built the
+   same way as the game cards' .hv5-pic banner (negative margins
+   that cancel the card padding, picture first in the DOM in
+   game-app.tsx). The owner found the corner slot too small to
+   read under the old cloud fade and play button. The films loop
+   now and carry no button, so the banner needs no control layer.
+   - The Part 1 fade stays on the .hv5-pic slots alone. The
+     banner's edge is its crop, so the shared wrapper's ::after
+     strip is switched off for the art slots, and the radial mask
+     the corner slot used is removed: the banner's aspect ratio
+     is each film's native ratio (Review 400/269, Journal 1/1,
+     Grown-ups 1/1, set by the per-card rules above), so nothing
+     is cropped and no edge treatment is needed.
+   - The wrapper keeps pointer-events: none from the base
+     .hv5-spot .hv5-art rule. The banner is decoration over the
+     card, and the cards' stretched CTAs keep working as before.
+   - The text column returns to full width. The narrow columns
+     (62% / 56% / 57%) existed only to clear the corner
+     illustration, and the banner sits above the text now.
+   This block is appended last so its rules win the ties against
+   the .hv5-art layout rules above. */
 .home-v5 .hv5-card-film.hv5-art::after {
   content: none;
 }
 .home-v5 .hv5-card-film.hv5-art {
-  z-index: 3;
+  position: relative;
+  width: calc(100% + 56px);
+  max-width: none;
+  margin: -26px -28px 18px;
+  right: auto;
+  bottom: auto;
+  border-radius: 0;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
-.home-v5 .hv5-card-film.hv5-art .hv5-card-film-toggle {
-  pointer-events: auto;
+.home-v5 .hv5-spot .hv5-txt {
+  max-width: 100%;
 }
