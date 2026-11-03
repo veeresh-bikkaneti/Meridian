@@ -25,11 +25,7 @@
     "aliases": []
   },
   "direction": "A",
-  "directions": [
-    "A",
-    "B1",
-    "B2"
-  ],
+  "directions": ["A"],
   "prompt": {
     "givenName": "Austria",
     "givenKind": "country"

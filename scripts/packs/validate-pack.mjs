@@ -1,31 +1,35 @@
 /**
  * Capitals pack validator — the authoring gates for `meridian.pack.case.v1`
- * records (DESIGN.md section 1.1), built from the repo's existing gates.
- * Nothing here re-implements a check the repo already owns:
+ * records (docs/story-packs.md section 1.1).
  *
- * - Clue ladder, leak ban, reading level, verbatim quotes: the production
- *   clue validator (`scripts/clues/validate-clues.mjs`), run on a
- *   `meridian.loop.clues.v1` view of the pack record against the case's
- *   authoring input (place, curated aliases, Wikipedia extracts).
- * - Hyderabad gate: `validateGeneratedPlace` from
- *   `src/game/validate-places.ts`, fed the same boxes
- *   `scripts/check-generated-places.mjs` uses — the per-country box from
- *   `src/game/data/geonames/country-boxes.json` (with its antimeridian
- *   normalisation) for country capitals, the STATES bounds plus 0.15
- *   degrees for US state capitals.
- * - Dataset identity: the record's target must match the shipped chunk
- *   record for the same GeoNames id exactly (name, latitude, longitude).
+ * What this file actually does, honestly split in two:
  *
- * Pack-specific checks (DESIGN.md sections 2.1 and 4):
- * - Direction B2's second secret: the subject's name and aliases are
- *   banned from rungs 1-4 (the rung-4 country confirmation is the game's
- *   job; rung 5 may state the pairing). The subject's demonym is not a
- *   term — DESIGN section 9's own Paris ladder uses "French" at rung 3.
- * - The reveal blurb's last sentence states the pairing plainly (rule 7):
- *   it names the capital and the subject.
- * - Capital versus capitol (rule 8): if any clue or the blurb mentions
- *   the capitol building, the blurb must carry the distinction sentence
- *   ("the building is the capitol", "the city is the capital").
+ * - Shared record checks are NOT re-implemented here. This file calls
+ *   `validatePackRecord` from `scripts/packs/schema.mjs`, which owns the
+ *   pack shape, the feature-code gate, the direction/prompt invariants,
+ *   the input cross-check, and — through the production clue validator
+ *   (`scripts/clues/validate-clues.mjs`) — the clue ladder, the target
+ *   leak ban, reading level, and verbatim quote tracing.
+ * - The capitals-specific layer below is this file's own: the pack's
+ *   identity (packId/category "capitals", the case's curated tier and
+ *   source article), the v1 direction truth, dataset identity against
+ *   the shipped chunks, the Hyderabad gate through the real wiring
+ *   (`validateGeneratedPlace` from `src/game/validate-places.ts`, fed
+ *   the same boxes `scripts/check-generated-places.mjs` uses), and the
+ *   reveal blurb rules (plain pairing, capital versus capitol).
+ *
+ * Directions in v1: v1 ships Direction A only. Every record's
+ * `direction` is "A" and its `directions` list is ["A"]; B1/B2
+ * reverse-direction play is a follow-up, not shipped behaviour.
+ *
+ * The B2 subject rule — one rule, stated with the same words in
+ * schema.mjs, and implemented there (this file reaches it only through
+ * validatePackRecord): Direction B2 (neither name given): the subject
+ * is a second secret. Its name and aliases are banned from every clue
+ * except rung 4 (clue index 3, the hook rung), where the country is
+ * confirmed by design (design §2.1). The target stays banned
+ * from all five clues, and the giveaway (index 4) bans the subject
+ * again.
  *
  * Run like the gate it mirrors (check-generated-places.mjs is invoked
  * the same way from prebuild):
@@ -37,8 +41,8 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { validateRecord, buildLeakTerms, findLeaks } from "../clues/validate-clues.mjs";
 import { foldText } from "../clues/schema.mjs";
+import { validatePackRecord } from "./schema.mjs";
 import { validateGeneratedPlace } from "../../src/game/validate-places.ts";
 import { STATES } from "../../src/game/regions.ts";
 
@@ -100,76 +104,35 @@ export function validatePackCase(record, input) {
   if (!record || typeof record !== "object") return { ok: false, reasons: ["record is not an object"] };
   if (!input || typeof input !== "object") return { ok: false, reasons: ["input is not an object"] };
 
-  // -- pack shape (DESIGN.md section 1.1) --------------------------------
-  if (record.schema !== "meridian.pack.case.v1") bad(`schema must be "meridian.pack.case.v1", got ${JSON.stringify(record.schema)}`);
+  // -- shared record checks, owned by schema.mjs ---------------------------
+  // Pack shape, feature-code gate, direction/prompt invariants, input
+  // cross-check, the clue ladder and both leak bans (target, and the
+  // B2 subject rule stated in the header) all live in
+  // validatePackRecord; this file adds only the capitals layer below.
+  const shared = validatePackRecord(record, { input });
+  for (const r of shared.reasons)
+    bad(`shared: ${r.code}${r.tier ? ` (tier ${r.tier})` : ""}: ${r.detail}`);
+
+  // -- capitals identity: this pack, this curated set ----------------------
   if (record.packId !== "capitals" || record.category !== "capitals") bad("packId and category must be \"capitals\"");
   if (record.caseId !== input.caseId) bad(`caseId ${JSON.stringify(record.caseId)} != input ${JSON.stringify(input.caseId)}`);
   if (record.packTier !== input.packTier) bad(`packTier ${JSON.stringify(record.packTier)} != curated tier ${input.packTier}`);
-  if (record.pointPolicy !== "geonames-point") bad(`pointPolicy must be "geonames-point", got ${JSON.stringify(record.pointPolicy)}`);
-  if (record.direction !== "A") bad(`direction must be "A" (the primary form), got ${JSON.stringify(record.direction)}`);
+  if (record.direction !== "A") bad(`direction must be "A" (v1 ships Direction A only), got ${JSON.stringify(record.direction)}`);
   if (
     !Array.isArray(record.directions) ||
-    !["A", "B1", "B2"].every((d) => record.directions.includes(d))
+    record.directions.length !== 1 ||
+    record.directions[0] !== "A"
   )
-    bad("directions must list the supported GeoDetective forms A, B1, B2");
+    bad("directions must be [\"A\"] — v1 ships Direction A only; B1/B2 reverse-direction play is a follow-up");
   const t = record.target ?? {};
-  if (t.placeId !== input.place.place_id) bad(`target.placeId ${JSON.stringify(t.placeId)} != ${input.place.place_id}`);
-  if (t.name !== input.place.name) bad(`target.name ${JSON.stringify(t.name)} != input name ${JSON.stringify(input.place.name)}`);
-  if (t.lat !== input.place.lat || t.lon !== input.place.lon)
-    bad(`target coords ${t.lat},${t.lon} != GeoNames row ${input.place.lat},${input.place.lon}`);
-  const wantFeature = input.subject.kind === "country" ? "PPLC" : "PPLA";
-  if (t.featureCode !== wantFeature) bad(`target.featureCode must be "${wantFeature}", got ${JSON.stringify(t.featureCode)}`);
-  if (!Array.isArray(t.aliases) || !t.aliases.every((a) => typeof a === "string"))
-    bad("target.aliases must be an array of strings");
   const s = record.subject ?? {};
   if (s.kind !== input.subject.kind || s.name !== input.subject.name || s.iso2 !== input.subject.iso2)
     bad("subject must match the input subject (kind, name, iso2)");
   const sa = record.subjectAnswer ?? {};
   if (sa.name !== input.subject.name) bad("subjectAnswer.name must be the subject name");
-  if (!Array.isArray(sa.aliases) || !sa.aliases.every((a) => typeof a === "string"))
-    bad("subjectAnswer.aliases must be an array of strings");
-  const prompt = record.prompt ?? {};
-  if (prompt.givenName !== input.subject.name || prompt.givenKind !== input.subject.kind)
-    bad("prompt must give the subject (givenName = subject name, givenKind = subject kind) for Direction A");
   const src = record.source ?? {};
   if (src.label !== "Wikipedia" || src.href !== input.extracts[0]?.url)
     bad("record source must be {label: \"Wikipedia\", href: the case article URL}");
-
-  // -- the repo clue validator, on a clues.v1 view ------------------------
-  const view = {
-    schema: "meridian.loop.clues.v1",
-    status: "accepted",
-    place_id: input.place.place_id,
-    answer: {
-      name: input.place.name,
-      aliases: Array.isArray(t.aliases) ? t.aliases : [],
-      country: input.place.country,
-      subdivision: input.place.subdivision,
-      lat: input.place.lat,
-      lon: input.place.lon,
-      difficulty: input.chunk.difficulty,
-    },
-    clues: record.clues,
-  };
-  const v1 = validateRecord(view, {
-    input: {
-      place: input.place,
-      curated_aliases: input.curated_aliases ?? [],
-      extracts: input.extracts ?? [],
-    },
-  });
-  for (const r of v1.reasons) bad(`clues: ${r.code}${r.tier ? ` (tier ${r.tier})` : ""}: ${r.detail}`);
-
-  // -- B2 second secret: subject terms banned from rungs 1-4 --------------
-  if (Array.isArray(record.clues)) {
-    const subjectTerms = buildLeakTerms({ name: sa.name, aliases: sa.aliases ?? [] });
-    record.clues.slice(0, 4).forEach((clue, i) => {
-      if (!clue || typeof clue.text !== "string") return;
-      for (const hit of findLeaks(clue.text, subjectTerms)) {
-        bad(`subject leak at rung ${i + 1}: "${hit.term}" (${hit.source}) — the subject stays secret until the rung-4 confirmation`);
-      }
-    });
-  }
 
   // -- reveal: plain pairing at the end, capital/capitol rule -------------
   const blurb = record.reveal?.blurb;
@@ -199,7 +162,7 @@ export function validatePackCase(record, input) {
   } else {
     if (chunk.name !== t.name || chunk.lat !== t.lat || chunk.lon !== t.lon)
       bad(`target does not match the shipped chunk record (${chunk.name} ${chunk.lat},${chunk.lon})`);
-    if (!Number.isInteger(chunk.difficulty)) bad("chunk difficulty missing (needed for the clues.v1 view)");
+    if (!Number.isInteger(chunk.difficulty)) bad("chunk difficulty missing (needed by the shared validator)");
   }
 
   // -- Hyderabad gate, through the real wiring ----------------------------

@@ -59,11 +59,7 @@
     }
   ],
   "direction": "A",
-  "directions": [
-    "A",
-    "B1",
-    "B2"
-  ],
+  "directions": ["A"],
   "packId": "capitals",
   "packTier": 3,
   "pointPolicy": "geonames-point",
