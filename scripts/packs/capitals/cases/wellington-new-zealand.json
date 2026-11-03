@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "wellington-new-zealand",
+  "target": {
+    "placeId": "gn-2179537",
+    "name": "Wellington",
+    "aliases": [],
+    "lat": -41.28664,
+    "lon": 174.77557,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "New Zealand",
+    "iso2": "NZ",
+    "subdivision": "Wellington Region"
+  },
+  "subjectAnswer": {
+    "name": "New Zealand",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "New Zealand",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits at the south west tip of the North Island, by Cook Strait. Hills of the Remutaka Range rise just behind it.",
+      "narrowing": "Rules out most of the world and puts the player at an island tip, by a strait, with a range behind.",
+      "source": {
+        "article": "Wellington",
+        "url": "https://en.wikipedia.org/wiki/Wellington",
+        "quote": "It is located at the southwestern tip of the North Island, between Cook Strait and the Remutaka Range."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This is the windiest city on Earth, by mean wind speed. Cold south blasts in winter can make the air feel far colder than it is.",
+      "narrowing": "Rules out calm lands; keeps a windy harbour city hit by cold southerly blasts.",
+      "source": {
+        "article": "Wellington",
+        "url": "https://en.wikipedia.org/wiki/Wellington",
+        "quote": "Wellington features a temperate maritime climate, and is the world's windiest city by average wind speed."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "The capital moved to this city in 1865, taking the job from Auckland. Law makers had first met here three years before that.",
+      "narrowing": "Shrinks the list to capitals that took the job from another city in 1865.",
+      "source": {
+        "article": "Wellington — History",
+        "url": "https://en.wikipedia.org/wiki/Wellington#History",
+        "quote": "Wellington became the capital city in place of Auckland , which William Hobson had made the capital in 1841."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A cable car climbs from the main shopping street to a hill suburb high over the harbour. The ride takes just five minutes, end to end.",
+      "narrowing": "Nearly decisive: one cable car ride from the main shops to a hill suburb marks this city.",
+      "source": {
+        "article": "Wellington Cable Car",
+        "url": "https://en.wikipedia.org/wiki/Wellington_Cable_Car",
+        "quote": "The route is between Lambton Quay, the main shopping street in the central city, and Kelburn, a suburb in the hills overlooking the central city and Wellington Harbour."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The parliament of New Zealand meets in this city, and its top court sits here too. Most state services are based in its streets.",
+      "narrowing": "Confirms it: parliament, the top court, and most state services are based in this city.",
+      "source": {
+        "article": "Wellington",
+        "url": "https://en.wikipedia.org/wiki/Wellington",
+        "quote": "the New Zealand Government and Parliament, the Supreme Court and most of the public services are based in the city."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Settlers built a town by this harbour in 1840, on land where Māori tribes had lived for ages. In 1865 the capital moved here from Auckland, and law makers have sat here since. Today a cable car climbs from the main streets to the hill suburbs over the harbour. Wellington is the capital of New Zealand."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Wellington"
+  },
+  "pointPolicy": "geonames-point"
+}

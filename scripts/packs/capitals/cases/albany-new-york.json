@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "albany-new-york",
+  "target": {
+    "placeId": "gn-5106834",
+    "name": "Albany",
+    "aliases": [],
+    "lat": 42.65258,
+    "lon": -73.75623,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "New York",
+    "iso2": "US",
+    "subdivision": "New York"
+  },
+  "subjectAnswer": {
+    "name": "New York",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "New York",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits on the west bank of a wide river, close to where a smaller river joins it. Ships can sail up this river from the sea.",
+      "narrowing": "Rules out inland towns; puts the player on the west bank of a navigable river.",
+      "source": {
+        "article": "Albany, New York",
+        "url": "https://en.wikipedia.org/wiki/Albany%2C_New_York",
+        "quote": "Albany is located on the west bank of the Hudson River, approximately ten miles (16 km) south of its confluence with the Mohawk River"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are cold, and snow can pile deep in a storm. Great storms off the Atlantic can dump heavy snow on the town at once.",
+      "narrowing": "Rules out mild winters; keeps cold winters with heavy snow from Atlantic storms.",
+      "source": {
+        "article": "Albany, New York",
+        "url": "https://en.wikipedia.org/wiki/Albany%2C_New_York",
+        "quote": "Albany is close enough to the Atlantic coast to receive heavy snow from Nor'easters"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1797, the state capital was shifted to this river town for good. Lawmakers had moved it from place to place for years before that.",
+      "narrowing": "Shrinks the list to capitals moved permanently in 1797 after years of shifting.",
+      "source": {
+        "article": "Albany, New York — History",
+        "url": "https://en.wikipedia.org/wiki/Albany%2C_New_York#History",
+        "quote": "In 1797, the state capital was moved permanently to Albany"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This river town was chartered in 1686, and it still holds that charter today. It is the longest-held city charter in the whole land.",
+      "narrowing": "Nearly decisive: one capital still holds a city charter from 1686, the longest held.",
+      "source": {
+        "article": "Albany, New York — History",
+        "url": "https://en.wikipedia.org/wiki/Albany%2C_New_York#History",
+        "quote": "Albany is one of the oldest surviving European settlements from the original Thirteen Colonies &#91; 14 &#93; and the longest continuously chartered city in the United States"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "New York's lawmakers meet in this city, and the state governor works here too. It speaks and acts for the whole state as its capital.",
+      "narrowing": "Confirms it: the state lawmakers and governor work in this capital city.",
+      "source": {
+        "article": "Albany, New York",
+        "url": "https://en.wikipedia.org/wiki/Albany%2C_New_York",
+        "quote": "is the capital city of the U.S. state of New York"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Dutch traders built forts on the Hudson here in the 1600s, and the town won its charter in 1686. In 1797 it became the state capital for good, and lawmakers have met here since. Albany is the capital of New York."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Albany%2C_New_York"
+  },
+  "pointPolicy": "geonames-point"
+}

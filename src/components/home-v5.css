@@ -1283,3 +1283,73 @@ body:has(.home-v5) {
   border: 3px solid var(--hv5-line);
   border-top-color: var(--hv5-brown-deep);
 }
+
+/* ---------- card films (feat/home-card-films) ----------
+   The two game cards' .hv5-pic slots now host a governed film
+   (CardFilm, card-film.tsx) instead of a still photo. These rules
+   only fill the EXISTING .hv5-pic box: the box geometry (width,
+   margins, aspect ratio — including the ≤680px override) is set by
+   the .hv5-pic rules above and must not change here; the Grandpa
+   tour measures these cards. The wrapper is position:relative so
+   the media can absolutely fill the box (zero layout shift, the
+   box exists before any bytes arrive) and so the pause/play
+   toggle can sit in the slot's corner. The toggle rides above the
+   card's stretched CTA (z-index 2, the badge-row precedent) and
+   keeps the repo's 44px tap-target floor. */
+.home-v5 .hv5-card-film {
+  position: relative;
+  overflow: hidden;
+}
+.home-v5 .hv5-card-film > img,
+.home-v5 .hv5-card-film > video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.home-v5 .hv5-card-film-toggle {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  cursor: pointer;
+}
+.home-v5 .hv5-card-film-toggle:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+/* The shared .home-v5 focus ring is deep brown, which can vanish
+   on a dark photo pixel; on the photo the toggle takes a cream
+   ring instead (the verdict toggle's treatment, PR #295). */
+.home-v5 .hv5-card-film-toggle:focus-visible {
+  outline: 2px solid #fbf7ea;
+  outline-offset: 2px;
+}
+.home-v5 .hv5-film-icon-play {
+  margin-left: 2px;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 11px solid #fff;
+}
+.home-v5 .hv5-film-icon-pause {
+  display: flex;
+  gap: 4px;
+}
+.home-v5 .hv5-film-icon-pause > span {
+  width: 4px;
+  height: 16px;
+  border-radius: 2px;
+  background: #fff;
+}
