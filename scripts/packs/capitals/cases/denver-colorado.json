@@ -69,12 +69,12 @@
     {
       "tier": 4,
       "tier_name": "hook",
-      "text": "Folks call this the Mile High City, and the name tells a true fact. The town sits one full mile up, high above the distant sea.",
-      "narrowing": "Nearly decisive: one capital city sits a full mile high and says so in its nickname.",
+      "text": "Outside the west door of the capitol, the fifteenth step is carved with words that name its height. Stand on that step and you stand one full mile high.",
+      "narrowing": "Nearly decisive: just one capitol has a fifteenth step that marks a full mile high.",
       "source": {
-        "article": "Denver",
-        "url": "https://en.wikipedia.org/wiki/Denver",
-        "quote": "Nicknamed the \"Mile High City\" because its official elevation is exactly one mile"
+        "article": "Colorado State Capitol",
+        "url": "https://en.wikipedia.org/wiki/Colorado_State_Capitol",
+        "quote": "outside the west entrance to the building, where the fifteenth step is engraved with the words \"One Mile Above Sea Level\""
       }
     },
     {
