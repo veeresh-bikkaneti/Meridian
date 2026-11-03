@@ -10,7 +10,10 @@ import { serveBuiltArtifact } from "./helpers";
  * B. GeoDetective + Cold Trail Variant A split (image first in DOM) with
  *    whole-card action via the stretched CTA (Form S): clicks on the
  *    image, heading, paragraph, and corner inset each open the game;
- *    one focus stop per card; focus ring around the whole card.
+ *    focus ring around the whole card. Focus stops per card: the CTA
+ *    plus, since feat/home-card-films, the film's 44px pause/play
+ *    toggle (the WCAG 2.2.2 stop for the card film) — two stops, or
+ *    three on GeoDetective when badge chips are present.
  * C. Review my misses: due → explicit controls only (action-model
  *    manifest 2026-10-29 — the card left Form S: body taps are inert,
  *    the primary button opens review, the REVIEW → cue is removed);
@@ -192,7 +195,7 @@ async function ringWhileFocused(page: Page, cardSelector: string) {
     const after = getComputedStyle(btn, "::after");
     const btnStyle = getComputedStyle(btn);
     const cardBox = card.getBoundingClientRect();
-    const img = card.querySelector(".hv5-pic img") as HTMLElement | null;
+    const img = card.querySelector(".hv5-pic :is(img, video)") as HTMLElement | null;
     const imgBox = img ? img.getBoundingClientRect() : null;
     return {
       focused: document.activeElement === btn,
@@ -224,7 +227,7 @@ async function cardPoints(page: Page, cardSelector: string) {
   const box = await card.boundingBox();
   const head = await card.locator("h2").boundingBox();
   const para = await card.locator("p").first().boundingBox();
-  const img = await card.locator(".hv5-pic img").boundingBox();
+  const img = await card.locator(".hv5-pic :is(img, video)").boundingBox();
   return {
     image: { x: img!.x + img!.width / 2, y: img!.y + img!.height / 2 },
     heading: { x: head!.x + head!.width / 2, y: head!.y + head!.height / 2 },
@@ -252,7 +255,7 @@ test("B: GeoDetective split order + whole-card clicks open the game", async ({ p
   // Image before text in DOM order (not CSS order).
   const firstChildClass = await card.evaluate((el) => el.firstElementChild?.className ?? "");
   expect(firstChildClass).toContain("hv5-pic");
-  const imgBox = await card.locator(".hv5-pic img").boundingBox();
+  const imgBox = await card.locator(".hv5-pic :is(img, video)").boundingBox();
   const txtBox = await card.locator(".hv5-txt").boundingBox();
   expect(imgBox!.y).toBeLessThan(txtBox!.y);
 
@@ -278,7 +281,7 @@ test("B: Cold Trail split order + whole-card clicks open the game", async ({ pag
   await expect(card).toBeVisible();
   const firstChildClass = await card.evaluate((el) => el.firstElementChild?.className ?? "");
   expect(firstChildClass).toContain("hv5-pic");
-  const imgBox = await card.locator(".hv5-pic img").boundingBox();
+  const imgBox = await card.locator(".hv5-pic :is(img, video)").boundingBox();
   const txtBox = await card.locator(".hv5-txt").boundingBox();
   expect(imgBox!.y).toBeLessThan(txtBox!.y);
 
@@ -297,11 +300,13 @@ test("B: Cold Trail split order + whole-card clicks open the game", async ({ pag
   }
 });
 
-test("B: one focus stop per game card, ring around the whole card", async ({ page }) => {
+test("B: film toggle + CTA focus stops per game card, ring around the whole card", async ({ page }) => {
   await gotoHome(page, 1280);
-  // Clean state: no earned badges, so GeoDetective has exactly one stop.
-  expect(await focusableCount(page, '[data-testid="tour-stop-geodetective"]')).toBe(1);
-  expect(await focusableCount(page, ".hv5-dispatch")).toBe(1);
+  // Clean state: no earned badges. Each game card has exactly two
+  // stops: the card film's pause/play toggle (in the picture, first
+  // in DOM order) and the stretched CTA.
+  expect(await focusableCount(page, '[data-testid="tour-stop-geodetective"]')).toBe(2);
+  expect(await focusableCount(page, ".hv5-dispatch")).toBe(2);
 
   const gdHandle = await page.getByTestId("tour-stop-geodetective").locator("button.hv5-go").elementHandle();
   expect(await tabTo(page, gdHandle)).toBe(true);
@@ -348,8 +353,9 @@ test("B: seeded badge chip toggles its blurb and never opens the game; card taps
     const chip = badged.getByTestId("badge-chip-clean-round");
     await expect(chip).toBeVisible();
     await expect(chip).toContainText("Clean Round");
-    // With badges present the card has exactly two stops: chip + CTA.
-    expect(await focusableCount(badged, '[data-testid="tour-stop-geodetective"]')).toBe(2);
+    // With badges present the card has exactly three stops: the film
+    // toggle (picture, first in DOM order), the chip, and the CTA.
+    expect(await focusableCount(badged, '[data-testid="tour-stop-geodetective"]')).toBe(3);
     await expect(badged.getByTestId("badge-blurb-clean-round")).toHaveCount(0);
     await chip.click();
     await expect(badged.getByTestId("badge-blurb-clean-round")).toBeVisible();
@@ -392,7 +398,7 @@ test("B: seeded badges — chip stop precedes the CTA stop, CTA stays one stop",
   try {
     const card = badged.getByTestId("tour-stop-geodetective");
     await expect(card.getByTestId("earned-badges")).toBeVisible();
-    expect(await focusableCount(badged, '[data-testid="tour-stop-geodetective"]')).toBe(2);
+    expect(await focusableCount(badged, '[data-testid="tour-stop-geodetective"]')).toBe(3);
 
     const chipHandle = await badged.getByTestId("badge-chip-clean-round").elementHandle();
     expect(await tabTo(badged, chipHandle)).toBe(true);

@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "mexico-city-mexico",
+  "target": {
+    "placeId": "gn-3530597",
+    "name": "Mexico City",
+    "aliases": [],
+    "lat": 19.42847,
+    "lon": -99.12766,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Mexico",
+    "iso2": "MX",
+    "subdivision": "Mexico City"
+  },
+  "subjectAnswer": {
+    "name": "Mexico",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Mexico",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This place sits in a high valley on a broad plateau in the middle of its land. A great lake once filled much of that valley floor.",
+      "narrowing": "Rules out coastal and low land places; keeps a high valley on a broad plateau where a lake once spread.",
+      "source": {
+        "article": "Mexico City",
+        "url": "https://en.wikipedia.org/wiki/Mexico_City",
+        "quote": "Located in the Valley of Mexico on the high Mexican Central Plateau"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Rain here falls most in the summer months, much of it in hard bursts with dense hail. Snow is so rare that it may not fall for many years.",
+      "narrowing": "Rules out wet winter lands; keeps rain packed into summer, with hail and almost no snow.",
+      "source": {
+        "article": "Mexico City",
+        "url": "https://en.wikipedia.org/wiki/Mexico_City",
+        "quote": "Overall precipitation is heavily concentrated in the summer months, and includes dense hail"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This place was the seat of the Aztec Empire, and later it held the same role for a colony ruled from Spain. The king's man ruled from a palace on its main square.",
+      "narrowing": "Shrinks the list to a seat that served first an Aztec empire and then a colony ruled from Spain.",
+      "source": {
+        "article": "Mexico City — History",
+        "url": "https://en.wikipedia.org/wiki/Mexico_City#History",
+        "quote": "The city had been the capital of the Aztec Empire and in the colonial era, \"Mexico\" became the capital of New Spain"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "An eagle sign told one people where to raise their island town on a lake in 1325. That island town, the Aztec capital, lies beneath the streets here today.",
+      "narrowing": "Nearly decisive: an island capital raised on a lake in 1325 lies beneath this place.",
+      "source": {
+        "article": "Mexico City — History",
+        "url": "https://en.wikipedia.org/wiki/Mexico_City#History",
+        "quote": "The old Mexica city that is now referred to as Tenochtitlan was built on an island in the center of the inland lake system of the Valley of Mexico"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This place is the seat of the federal government, where the president and the lawmakers do their work. No other place in the land holds that role.",
+      "narrowing": "Confirms it: the seat of the federal government, where the president and lawmakers work.",
+      "source": {
+        "article": "Mexico City",
+        "url": "https://en.wikipedia.org/wiki/Mexico_City",
+        "quote": "a constitutional clause still prevents it from becoming a state while it remains Mexico's capital"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Mexica builders founded Tenochtitlan on a lake island in 1325, and Spanish rulers later razed it and rebuilt their own capital on the same ground. The lake is gone, but the main square still marks the old ceremonial heart. Mexico City is the capital of Mexico."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Mexico_City"
+  },
+  "pointPolicy": "geonames-point"
+}

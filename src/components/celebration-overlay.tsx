@@ -28,6 +28,7 @@ export {
   celebrationFromSearch,
   celebrationSeamSpec,
   celebrationSpec,
+  deckCompleteCelebrationSpec,
   hasCelebratedFirstWin,
   markFirstWinCelebrated,
 } from "./celebration-copy";

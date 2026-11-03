@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "raleigh-north-carolina",
+  "target": {
+    "placeId": "gn-4487042",
+    "name": "Raleigh",
+    "aliases": [],
+    "lat": 35.7721,
+    "lon": -78.63861,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "North Carolina",
+    "iso2": "US",
+    "subdivision": "North Carolina"
+  },
+  "subjectAnswer": {
+    "name": "North Carolina",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "North Carolina",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This place sits near the middle of its state, well inland from the sea. Leaders picked the spot so sea raids could not reach it fast.",
+      "narrowing": "Puts the player inland, near the middle of its state, away from the coast.",
+      "source": {
+        "article": "Raleigh, North Carolina — History",
+        "url": "https://en.wikipedia.org/wiki/Raleigh%2C_North_Carolina#History",
+        "quote": "Raleigh was chosen as the site of the new capital in 1788, as its central location protected it from attacks from the coast"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Warm sea storms can crawl inland in late summer and dump days of heavy rain. In one month in 1999, rain here topped 21 inches.",
+      "narrowing": "Rules out dry inland towns; keeps a place drenched by warm sea storms.",
+      "source": {
+        "article": "Raleigh, North Carolina",
+        "url": "https://en.wikipedia.org/wiki/Raleigh%2C_North_Carolina",
+        "quote": "In September 1999, Raleigh recorded its wettest month ever, with over 530&#160;mm or 21&#160;in of rain, due to torrential rainfall from tropical weather systems"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This place was planned and built for one job: to be the seat of state government. Leaders picked the empty site in 1788, and the town was set up in 1792.",
+      "narrowing": "Shrinks the list to towns planned and built just to be a seat of government.",
+      "source": {
+        "article": "Raleigh, North Carolina — History",
+        "url": "https://en.wikipedia.org/wiki/Raleigh%2C_North_Carolina#History",
+        "quote": "Raleigh is one of the few cities in the United States that was planned and built specifically to serve as a state capital"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This place took its name from Sir Walter, a courtier of old England. He set up a colony on an island shore, and that colony was lost.",
+      "narrowing": "Nearly decisive: one lost colony of old England gave this place its name.",
+      "source": {
+        "article": "Raleigh, North Carolina",
+        "url": "https://en.wikipedia.org/wiki/Raleigh%2C_North_Carolina",
+        "quote": "is named after Sir Walter Raleigh, who founded the lost Roanoke Colony"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "North Carolina state lawmakers meet in this place to pass laws. The governor of the state works here too.",
+      "narrowing": "Confirms it: the state lawmakers and the governor are based here.",
+      "source": {
+        "article": "Raleigh, North Carolina",
+        "url": "https://en.wikipedia.org/wiki/Raleigh%2C_North_Carolina",
+        "quote": "The city was originally laid out in a grid pattern with the North Carolina State Capitol at the center, in Union Square"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Leaders picked a fresh site near the middle of the state in 1788 and built a planned town there. They named it for Sir Walter Raleigh, the man behind the lost Roanoke Colony. Oak trees line its streets today, and research labs fill its edge. Raleigh is the capital of North Carolina."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Raleigh%2C_North_Carolina"
+  },
+  "pointPolicy": "geonames-point"
+}

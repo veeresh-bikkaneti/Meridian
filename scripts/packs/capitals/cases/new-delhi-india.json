@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "new-delhi-india",
+  "target": {
+    "placeId": "gn-1261481",
+    "name": "New Delhi",
+    "aliases": [],
+    "lat": 28.62137,
+    "lon": 77.2148,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "India",
+    "iso2": "IN",
+    "subdivision": "Delhi"
+  },
+  "subjectAnswer": {
+    "name": "India",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "India",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This planned city sits in the centre of the north of its land, just south of a far older city. A wide river flows near it.",
+      "narrowing": "Rules out coastal and southern places; keeps a planned city in the centre of the north, south of an older one.",
+      "source": {
+        "article": "New Delhi — History",
+        "url": "https://en.wikipedia.org/wiki/New_Delhi#History",
+        "quote": "which is in the centre of northern India"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers are long and hot, and monsoon rains arrive in late June and last to mid September. Winters are cool, with thick fog on many mornings.",
+      "narrowing": "Rules out mild summer lands; keeps the late monsoon and the cool, foggy winter.",
+      "source": {
+        "article": "New Delhi",
+        "url": "https://en.wikipedia.org/wiki/New_Delhi",
+        "quote": "with hot summers accompanied by frequent thunderstorms locally known as andhi, and cool winters that are characterised by dense fog"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1911, King George V laid the first stone for a fresh capital south of the old city. Two men drew the plans, and the seat opened in 1931.",
+      "narrowing": "Shrinks the list to the fresh capital first stoned in 1911 and opened in 1931.",
+      "source": {
+        "article": "New Delhi",
+        "url": "https://en.wikipedia.org/wiki/New_Delhi",
+        "quote": "The foundation stone of New Delhi, south of central Delhi, was laid by George V during the Delhi Durbar of 1911"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Until 1911, the capital sat in Calcutta, a port far to the east. Then the rulers packed up and moved the whole seat to this planned city.",
+      "narrowing": "Nearly decisive: the seat moved here from Calcutta in 1911 to a city built for the job.",
+      "source": {
+        "article": "New Delhi — History",
+        "url": "https://en.wikipedia.org/wiki/New_Delhi#History",
+        "quote": "which forced the colonial government to reunite Bengal and immediately shift the capital to New Delhi"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "All three branches of the government of India sit in this city. The president's palace and the parliament house both stand here.",
+      "narrowing": "Confirms it: all three branches of government, the palace, and the parliament house sit here.",
+      "source": {
+        "article": "New Delhi",
+        "url": "https://en.wikipedia.org/wiki/New_Delhi",
+        "quote": "New Delhi is the seat of all three branches of the Government of India, hosting the Rashtrapati Bhavan (Presidential Palace), Sansad Bhavan (Parliament House), and the Supreme Court"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "For a long time Calcutta was the capital, until the rulers chose a fresh seat in 1911 and built it south of old Delhi. Architects planned wide roads and grand halls, and the seat opened in 1931. New Delhi is the capital of India."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/New_Delhi"
+  },
+  "pointPolicy": "geonames-point"
+}

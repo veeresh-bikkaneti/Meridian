@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "hanoi-vietnam",
+  "target": {
+    "placeId": "gn-1581130",
+    "name": "Hanoi",
+    "aliases": [
+      "Thăng Long"
+    ],
+    "lat": 21.0245,
+    "lon": 105.84117,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Vietnam",
+    "iso2": "VN",
+    "subdivision": "Hanoi"
+  },
+  "subjectAnswer": {
+    "name": "Vietnam",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Vietnam",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands in the north of a long land in the south east of Asia. Lakes rest in its heart, and a flat river delta spreads around it.",
+      "narrowing": "Puts the player in the north of a long south-east Asian land, on a river delta.",
+      "source": {
+        "article": "Hanoi",
+        "url": "https://en.wikipedia.org/wiki/Hanoi",
+        "quote": "It hosts the Imperial Citadel of Thăng Long, Ho Chi Minh Mausoleum, Hoàn Kiếm Lake, West Lake"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This city has four clear seasons in the year. Winter winds from the north east bring cool, dry air, while summers are hot, wet, and humid.",
+      "narrowing": "Rules out the steady tropics; keeps a four-season city ruled by monsoon winds.",
+      "source": {
+        "article": "Hanoi",
+        "url": "https://en.wikipedia.org/wiki/Hanoi",
+        "quote": "Winters, from December to February, are characterized as being cool by the northeast monsoon, giving Hanoi a dry winter."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In the year 1010 an emperor made this place his capital. He named the city for a dragon he said he saw rise from the river.",
+      "narrowing": "Shrinks the list to capitals founded in 1010 and named for a rising dragon.",
+      "source": {
+        "article": "Hanoi",
+        "url": "https://en.wikipedia.org/wiki/Hanoi",
+        "quote": "emperor Lý Thái Tổ established the capital of the imperial nation Đại Việt in what would later become central Hanoi, naming the city Thăng Long ([tʰɐŋ loŋ], 'ascending dragon')."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This northern city holds the top job in its land. It rules the nation, even though a larger city stands far to the south.",
+      "narrowing": "Nearly decisive: the capital is the second city, not the biggest, which lies far south.",
+      "source": {
+        "article": "Hanoi",
+        "url": "https://en.wikipedia.org/wiki/Hanoi",
+        "quote": "is the capital and second-most populous centrally-governed city of Vietnam."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This city hosts the embassies of many lands and the chief office of the army of Vietnam. The nation's government sits here.",
+      "narrowing": "Confirms it: Vietnam's government and army chiefs sit in this city.",
+      "source": {
+        "article": "Hanoi",
+        "url": "https://en.wikipedia.org/wiki/Hanoi",
+        "quote": "It hosts 83 foreign embassies, the headquarters of the Vietnam People's Army (VPA)"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "An emperor made this place his capital in 1010 and named it for a rising dragon. The capital later moved away, then came back, and in 1976 the city led a land made whole again. Its lakes and old citadel still draw crowds today. Hanoi is the capital of Vietnam."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Hanoi"
+  },
+  "pointPolicy": "geonames-point"
+}

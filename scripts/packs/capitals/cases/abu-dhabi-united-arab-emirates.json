@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "abu-dhabi-united-arab-emirates",
+  "target": {
+    "placeId": "gn-292968",
+    "name": "Abu Dhabi",
+    "aliases": [],
+    "lat": 24.45118,
+    "lon": 54.39696,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "United Arab Emirates",
+    "iso2": "AE",
+    "subdivision": "Abu Dhabi"
+  },
+  "subjectAnswer": {
+    "name": "United Arab Emirates",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "United Arab Emirates",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits on a T-shaped island in a warm gulf, just off the coast of its land. Bridges join the island to the shore.",
+      "narrowing": "Puts the player on a T-shaped island in a gulf, joined to the shore by bridges.",
+      "source": {
+        "article": "Abu Dhabi",
+        "url": "https://en.wikipedia.org/wiki/Abu_Dhabi",
+        "quote": "Situated on a T-shaped island, Abu Dhabi extends into the Persian Gulf from the central-western coast of the UAE."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This city has a hot desert climate, with sunny blue skies near all year. Its summer months turn extremely hot and damp for months on end.",
+      "narrowing": "Rules out mild coasts; keeps a desert city with extremely hot, damp summers.",
+      "source": {
+        "article": "Abu Dhabi",
+        "url": "https://en.wikipedia.org/wiki/Abu_Dhabi",
+        "quote": "Abu Dhabi has a hot desert climate (Köppen climate classification BWh). Sunny blue skies can be expected throughout the year."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1971, this city and five neighbours joined to form one new land. The new land's first president then ruled from this city.",
+      "narrowing": "Shrinks the list to capitals of lands formed by a union in 1971.",
+      "source": {
+        "article": "Abu Dhabi — History",
+        "url": "https://en.wikipedia.org/wiki/Abu_Dhabi#History",
+        "quote": "On December 2, 1971, Abu Dhabi, along with five other emirates, formed the United Arab Emirates (UAE)."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A vast white mosque in this city was built with marble, stone, and gold from lands around the world. Thousands of workers helped to build it.",
+      "narrowing": "Nearly decisive: one capital holds a vast white grand mosque built from the world's materials.",
+      "source": {
+        "article": "Sheikh Zayed Grand Mosque",
+        "url": "https://en.wikipedia.org/wiki/Abu_Dhabi",
+        "quote": "The mosque was constructed with materials from countries around the world, including Italy, Germany, Morocco, Pakistan, India, Turkey, Iran, China, the United Kingdom, New Zealand, Greece, and the United Arab Emirates."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The government of its land works from this city. The president of the land lives and works here too, in its palaces.",
+      "narrowing": "Confirms it: the land's government and its president are based in this city.",
+      "source": {
+        "article": "Abu Dhabi",
+        "url": "https://en.wikipedia.org/wiki/Abu_Dhabi",
+        "quote": "Abu Dhabi houses local and federal government offices and is the home of the United Arab Emirates Government and the Supreme Council for Financial and Economic Affairs."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A hunting party found fresh water on this island in 1761, and a small fort town grew up there. In 1971 it joined its neighbours to form a new land and became its capital. A vast white grand mosque, built from stone and gold sent by lands around the world, shines in its sun. Abu Dhabi is the capital of the United Arab Emirates."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Abu_Dhabi"
+  },
+  "pointPolicy": "geonames-point"
+}

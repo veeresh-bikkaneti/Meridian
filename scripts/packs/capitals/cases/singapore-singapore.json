@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "singapore-singapore",
+  "target": {
+    "placeId": "gn-1880252",
+    "name": "Singapore",
+    "aliases": [
+      "Temasek"
+    ],
+    "lat": 1.28967,
+    "lon": 103.85007,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Singapore",
+    "iso2": "SG",
+    "subdivision": null
+  },
+  "subjectAnswer": {
+    "name": "Singapore",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Singapore",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city fills a main island just north of the equator, in the south east of Asia. More than sixty small isles sit around it in warm seas.",
+      "narrowing": "Puts the player on an island city just north of the equator in south-east Asia.",
+      "source": {
+        "article": "Singapore",
+        "url": "https://en.wikipedia.org/wiki/Singapore",
+        "quote": "Its territory comprises a main island, over 60 satellite islands and islets, and one outlying islet."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This place has no true seasons at all. Heat, damp air, and rain stay much the same all year, with a wetter monsoon time in winter months.",
+      "narrowing": "Rules out lands with seasons; keeps a hot, wet island with no seasons.",
+      "source": {
+        "article": "Singapore",
+        "url": "https://en.wikipedia.org/wiki/Singapore",
+        "quote": "Singapore has a tropical rainforest climate ( Köppen : Af ) with no distinctive seasons, uniform temperature and pressure, high humidity, and abundant rainfall."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This island was cast out of a joint land in 1965. It then stood on its own as a free land, with this city at its heart.",
+      "narrowing": "Shrinks the list to a place cast out in 1965 that stood alone as its own land.",
+      "source": {
+        "article": "Singapore",
+        "url": "https://en.wikipedia.org/wiki/Singapore",
+        "quote": "Ideological differences led to Singapore's expulsion from the federation two years later; it became an independent sovereign country in 1965."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This one city is a whole country by itself. It stands free on its island, with no far towns or farm lands ruled from afar.",
+      "narrowing": "Nearly decisive: one city that is a whole country by itself.",
+      "source": {
+        "article": "Singapore",
+        "url": "https://en.wikipedia.org/wiki/Singapore",
+        "quote": "Singapore, officially the Republic of Singapore, is an island country and city-state in Southeast Asia."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Its own parliament sits in this city and makes the laws for the whole land. That is so because the city and the land are one.",
+      "narrowing": "Confirms it: one parliament in this city rules the whole city-land.",
+      "source": {
+        "article": "Singapore",
+        "url": "https://en.wikipedia.org/wiki/Singapore",
+        "quote": "Singapore is a parliamentary republic"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Sailors traded at this island port long ago, when it was a sea town of kings. In 1819 a British man set up a trading post here, and in 1965 the island stood free as its own land. Its port and banks now rank with the best in the world. Singapore is the capital of Singapore."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Singapore"
+  },
+  "pointPolicy": "geonames-point"
+}
