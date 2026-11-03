@@ -155,4 +155,4 @@ were not touched, commented on, or rebased.
       on main; see Gates)
 - [x] Visual captures (videos + settle stills)
 - [x] Docs (README + card-media comments) and PR body
-- [ ] PR opened; stop at READY (no merge)
+- [x] PR opened: #324; stop at READY (no merge)
