@@ -65,9 +65,51 @@ integration point.
 ## Status
 
 - [x] Workspace cloned, branch cut at 193b57c, ledger claim posted
-- [ ] Witness eligibility re-measured from the names index
-- [ ] Generator written; pack deck generated
-- [ ] Pack loader + packId type + guard exports
-- [ ] Tests (generator, loader, core byte-stability)
-- [ ] Gates: tsc, npm test, lint-cards, build:pages
-- [ ] Pushed; slice report to the swarm parent
+- [x] Witness eligibility re-measured from the names index:
+  55 of 72 qualify (population at least 300,000, difficulty 1 or 2).
+  The 17 that cannot anchor are 16 state capitals plus Reykjavik
+  (118,918). The design's counts match exactly on the population
+  rule. One nuance the design did not measure: the core generator's
+  blurb isCity test would also drop Washington (population 689,545)
+  because its blurb names the District of Columbia. The pack pass
+  does not apply that test to the curated list; the decision and the
+  reasoning are in the generator header, and a test pins Washington
+  as eligible.
+- [x] Generator written; pack deck generated: 60 cases, 51 distinct
+  capital anchors used, every case stamped packId "capitals"
+- [x] Pack loader + packId type + guard exports
+- [x] Tests: generator 4/4, loader 4/4 (core cases tests 4/4
+  alongside), core deck byte-stability proven against buildDeck()
+- [x] Gates on tip d1a42a9: npx tsc --noEmit clean; npm test scripts
+  854 pass / 0 fail / 11 skipped, src 1900/1900 pass; lint-cards
+  GATE PASSED; npm run build:pages exit 0 (buildId d1a42a9), and
+  exactly 1 built chunk contains the pack data
+- [x] Pushed; slice report to the swarm parent
+
+## Commits
+
+- 7d83174 branch status and task capsule
+- 2518090 generator + generated pack deck
+- 35b44ff pack loader, packId type, shared case guards
+- d1a42a9 tests (plus the measureWitnessPool export they use)
+
+## Integration notes for the Stacker
+
+- Regenerate the pack deck after Slice 2 lands: run
+  node --experimental-strip-types scripts/build-coldtrail-capitals.mjs.
+  When scripts/packs/capitals/cases/*.json exists, the generator
+  reads target.placeId from the records and ignores the embedded
+  fallback list. Deterministic seed, so identical id sets give a
+  byte-identical file.
+- The pack store key meridian.coldtrail.pack.capitals.v1 is exported
+  as COLDTRAIL_PACK_CAPITALS_STORAGE_KEY from
+  src/game/coldtrail/cases-pack.ts. No screen reads the pack deck
+  yet; shelf wiring (Slice 4) connects getCapitalsPackCase and
+  capitalsPackCaseCount from the same module.
+- The pack manifest (public/packs/capitals/manifest.json with its
+  coldtrailFile field, DESIGN section 1.2) is not created here. It
+  belongs with the GeoDetective-side manifest work.
+- Sighting text uses the core generator's witness-report templates
+  unchanged (DESIGN section 2.2: templates need no change). The
+  stamp data the SightingCard needs (capital name plus country)
+  already rides on each sighting as cityName and region.country.
