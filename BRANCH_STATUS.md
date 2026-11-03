@@ -24,19 +24,27 @@ no merge from this slice. The Stacker integrates.
   (`scripts/packs/capitals/inputs/`). Each input joins the pack doc row, the
   GeoNames extract row (exact id, name, coordinates), the shipped chunk
   record, and the Wikipedia lead plus climate section.
-- [ ] Pack test written (`scripts/packs/validate-pack.mjs`,
+- [x] Pack test written (`scripts/packs/validate-pack.mjs`,
   `scripts/packs/pack-records.test.mjs`).
-- [ ] Pilot case (Paris) authored and sealed through every gate.
+- [x] Pilot case (Paris) authored and sealed through every gate: validator
+  PASS, all five rungs under the reading cap (FK 1.7 to 4.4), all quotes
+  verbatim. One hook adjustment: the pack doc's "meant to be temporary"
+  wording for the Eiffel Tower appears in no supplied extract, so it was
+  dropped, not invented. The pilot input gained a third extract (the
+  landmark's own article lead); batch inputs gain the same when a hook
+  needs it.
 - [ ] Remaining 71 cases authored in tier batches.
 - [ ] Final sweep: pack test green on all 72, completeness count checked.
 
 ## Record shape decisions (integration notes for the Stacker)
 
-- Records follow DESIGN.md section 1.1 field for field. Two additions, both
+- Records follow DESIGN.md section 1.1 field for field. Three additions, all
   flagged for Slice 1: a `schema` field set to `meridian.pack.case.v1`
-  (mirrors the `meridian.loop.clues.v1` convention), and a `directions` array
+  (mirrors the `meridian.loop.clues.v1` convention); a `directions` array
   listing the GeoDetective forms the case supports (`A`, `B1`, `B2`), with
-  `direction` holding the primary form.
+  `direction` holding the primary form; and `target.aliases` (the target's
+  sourced former or alternate names, attested in the case extracts and
+  enforced by the validator's alias sourcing rule).
 - `subject.subdivision` is the capital's first-order region for country cases
   (from the chunk record) and the state name for US state cases.
 - Inputs are committed with their extracts. The original clue pipeline kept
