@@ -18,6 +18,8 @@ CSS on the existing art (the owner has not approved generated film
 for these cards). The motion settles after one pass instead of
 looping, so no new pause control is needed (WCAG 2.2.2: content
 that stops on its own within seconds needs no stop control).
+SUPERSEDED the same day by the owner's ruling below (Part 2 redo):
+the CSS reading was the parent brief's miss, not the owner's ask.
 
 Tier and rationale: Tier 2 shape (home surface, several files) run
 as a builder silo. QA and the 12-role panel are separate silos and
@@ -88,6 +90,111 @@ hv5-art-float (9s, a 4px rise). Keyframes use transform and
 opacity only, and the motion is on the inner img, never on the
 wrapper box the layout and E2E specs measure.
 
+
+## Part 2 redo — cartoon films (owner ruling, 2026-11-03 06:19 CST)
+
+Owner, verbatim: "What about the other 3 card where we wanted to
+add similar contextual motion animated cartoon." The CSS passes
+were the wrong class. They are removed in full, and Review,
+Journal, and Grown-ups get animated cartoon films through the one
+CardFilm system, by the #321 method: each card's existing
+illustration is the animation source, the settle frame, and the
+shipped still.
+
+Removal (commit b11fbe8): the hv5-art-drift / hv5-art-sway /
+hv5-art-float keyframes and live rules leave home-v5.css (81
+lines); the hv5-art-live arming leaves LazyHomeImage (the file is
+byte-back to its loading-orb-only job); the smooth-cards test's
+art-motion pins become removal pins. The Part 1 fade is untouched
+by the removal — a fade cure lands on this branch after this redo,
+from the owner's variant pick.
+
+Films (commit a7bf428; per-take notes in the evidence folder,
+takes/TAKE-NOTES.md):
+
+| Card | Film | Bytes | Slot (CSS px) | Encode |
+| :--- | :--- | :--- | :--- | :--- |
+| Review | review-film.mp4 | 66,023 | 172 wide, 400/269 | 800x538, 5.25 s |
+| Journal | journal-film.mp4 | 110,320 | 148 square | 720x720, 7.875 s |
+| Grown-ups | grownups-film.mp4 | 106,806 | 178 square | 800x800, 6.0 s |
+
+- Review: the magnifying glass sweeps over the satchel as if
+  checking the misses, then returns and rests. Three raw takes
+  failed the identity/settle standard (no settle; layout redrawn;
+  the lens vanishing in the last frame). The shipped film is
+  take 1 edited there-and-back at its 2.6 s apex: forward sweep,
+  then the same frames reversed. Shipped last frame vs first
+  frame PSNR 38.0 dB — it settles on its own opening frame. The
+  edit is disclosed here and in the PR body for the owner's call.
+  The brief's "one card tips up" beat has no card to act on; the
+  illustration holds a satchel, a compass, and the glass.
+- Journal: wind through the tree, light warming over the hills.
+  Take 1 of 1, retimed 10 s to 7.875 s. Disclosed drift: canopy
+  ends more wind-blown than the still (last frame vs still PSNR
+  16.6 dB), light ends warmer, a few tiny birds cross once.
+- Grown-ups: the binoculars rise upright, the hat tips once.
+  Take 2 of 2 (take 1 ended with the binoculars on their side).
+  Settle: last frame vs own first frame PSNR 31.0 dB; vs the
+  still 20.4 dB, the generator's repaint distance, present from
+  frame 0 (first frame vs still 20.8 dB).
+
+Wiring: all three slots render CardFilm (extended, not forked)
+with REVIEW_FILM / JOURNAL_FILM / GROWNUPS_FILM entries in
+card-media.ts; the stillUrls point at the original illustration
+files. CSS adds three rules only: the pic fade stays off the art
+slots, the toggle takes pointer events back from the decorative
+wrapper, and the art-film wrapper rides at z-index 3 so the
+toggle clears the stretched CTA (the Grown-ups links' own
+precedent). Zero string changes; game-app.tsx swaps three
+component lines and their imports, nothing else.
+
+Redo gates (tip ee3487b; media and runtime identical at a7bf428,
+which the E2E and captures ran against — ee3487b changes tests
+and one comment digit only):
+
+- `npx tsc --noEmit`: clean.
+- `npm test`: scripts 953 (942 pass, 11 skipped, 0 fail); src
+  1980/1980 pass (1977 at e6ecd1d; net +3 from the reworked
+  CardFilm and smooth-cards pins).
+- `npm run test:worker`: 85/85. lint-cards: GATE PASSED.
+- `npm run build:pages` (VITE_KOFI_URL set): PASS. Byte deltas
+  vs main 685a94f, same env, same shell-chunk method (the main
+  numbers reproduce the round-1 record exactly): entry JS
+  1,004,241 to 1,004,688 raw (+447 for the whole PR), entry CSS
+  130,790 to 131,137 (+347). The three films add zero entry
+  bytes; they are separate lazy assets (283,149 B of film +
+  80,770 B of posters), fetched only near the viewport and never
+  under the gates.
+- Zero CLS: the three art wrapper boxes measured on the built
+  app at 1280px and 390px match unmodified main exactly (1280:
+  172x115.66, 148x148, 178x178; 390: 172x74.19, 148x104.77,
+  178x120.64 — the 390 heights are viewport-clipped boxes,
+  reproduced identically). Record:
+  evidence/measure-artfilms-branch.json.
+- E2E home set (flock, --workers=1, Chromium 1243): first run
+  44 passed / 7 failed. Six failures were spec pins for the
+  removed behaviour (art orbs; Review focus counts without the
+  film toggle) — reworked honestly in ee3487b — and one
+  storyteller visibility failure under peak VM contention.
+  Rerun of the four affected files: 38/38 passed, storyteller
+  included. The two files not rerun (home-badges-readaloud,
+  grownups-privacy-contact) passed in full in run 1.
+- Live governance proof (capture run): reduced-motion context
+  shows the still in all three slots, no video element, and zero
+  art .mp4 requests. On the capable context, each slot's toggle
+  passes an elementFromPoint hit test at 44x44 and cycles
+  Play -> Pause -> Play by click.
+- Captures: captures/review-cartoon.mp4 (7.5 s),
+  journal-cartoon.mp4 (8 s), grownups-cartoon.mp4 (7.9 s), frame
+  strips for each, and settle-slot screenshots; settle screenshot
+  vs still PSNR 16.9 / 16.5 / 20.0, matching the film-level
+  settle numbers. The superseded CSS captures moved to
+  captures/superseded-css/.
+
+Environment note: the VM restarted mid-run (12:51 UTC) and the
+E2E lock carried three other crews' suites; waits were long but
+every run above completed against this branch's build.
+
 ## Gates (tip before this status commit)
 
 - `npx tsc --noEmit`: clean.
@@ -148,7 +255,9 @@ were not touched, commented on, or rebased.
 
 - [x] Clone created; branch cut at `685a94f`
 - [x] Part 1: gradient fade on both film cards
-- [x] Part 2: settling motion on the three `.hv5-art` cards
+- [x] Part 2: settling motion on the three `.hv5-art` cards (superseded by the redo below)
+- [x] Part 2 redo: CSS passes removed; cartoon films on all three `.hv5-art` cards via CardFilm
+- [x] Part 2 redo: E2E spec re-pins (orbs, Review focus stops) and rerun green
 - [x] Unit tests, typecheck, lint-cards, production build
 - [x] Byte deltas and zero-CLS measurements vs main
 - [x] E2E home set under the flock (two specs fail identically
@@ -156,3 +265,5 @@ were not touched, commented on, or rebased.
 - [x] Visual captures (videos + settle stills)
 - [x] Docs (README + card-media comments) and PR body
 - [x] PR opened: #324; stop at READY (no merge)
+- [ ] Fade cure (Part 1) lands after this redo, from the owner's variant pick
+- [ ] Panel re-vote on the final tip after the fade cure
