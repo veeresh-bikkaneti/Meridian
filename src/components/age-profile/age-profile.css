@@ -261,8 +261,46 @@
 
 /* --- Locked loop tile (Phase 2 §1e) --- */
 
-.agep-locked {
+/* The grayscale(0.85) grade was written when this tile was text
+   only, so it sat on the whole tile. The tile now carries a
+   picture, and the picture brings its own grade baked into the
+   media (desaturate 0.45 + brightness 0.94, the owner's approved
+   mock grade — at 0.85 the photo drained to near-monochrome).
+   The 0.85 grade therefore scopes to the text elements only, so
+   the two grades never stack on the picture; the words keep the
+   exact treatment they have always had. */
+.agep-locked .atlas-eyebrow,
+.agep-locked .atlas-dossier-title,
+.agep-locked-body,
+.agep-locked-link {
   filter: grayscale(0.85);
+}
+
+/* --- Locked tile picture band ---
+   Full-bleed at the top of the tile, like the live cards'
+   .hv5-pic band: the negative margins pull it over the dossier
+   padding, and the tile's own overflow + radius clip its top
+   corners. The box reserves its 16/9 space before any media
+   loads (zero layout shift); the media absolutely fills it.
+   Decoration only: pointer-events none, so a tap anywhere on
+   the picture lands on the tile exactly as it did before the
+   picture existed. */
+.agep-locked-pic {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  margin: calc(-1 * clamp(1.25rem, 4vw, 2rem)) calc(-1 * clamp(1.25rem, 4vw, 2rem)) 1rem;
+  pointer-events: none;
+}
+
+.agep-locked-pic > img,
+.agep-locked-pic > video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .agep-locked .atlas-dossier-title,

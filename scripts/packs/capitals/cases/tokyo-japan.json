@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "tokyo-japan",
+  "target": {
+    "placeId": "gn-1850147",
+    "name": "Tokyo",
+    "aliases": [
+      "Edo"
+    ],
+    "lat": 35.6895,
+    "lon": 139.69171,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Japan",
+    "iso2": "JP",
+    "subdivision": "Tokyo"
+  },
+  "subjectAnswer": {
+    "name": "Japan",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Japan",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city lies at the head of a bay on the central coast of Honshu. Honshu is the largest island in this island nation.",
+      "narrowing": "Rules out inland and small island places; puts the player on the central coast of the largest island.",
+      "source": {
+        "article": "Tokyo",
+        "url": "https://en.wikipedia.org/wiki/Tokyo",
+        "quote": "Lying at the head of Tokyo Bay, Tokyo is part of the Kantō region, on the central coast of Honshu, Japan's largest island"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are hot and damp, and winters are cool with cold spells at times. Sea storms called typhoons reach this coast in most years.",
+      "narrowing": "Rules out dry and mild coast lands; keeps a hot, damp summer coast hit by sea storms.",
+      "source": {
+        "article": "Tokyo",
+        "url": "https://en.wikipedia.org/wiki/Tokyo",
+        "quote": "with hot, humid summers and cool winters with occasional cold spells"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1603, the Tokugawa rulers made this city their seat of power. It grew from a small fishing village into a vast city.",
+      "narrowing": "Shrinks the list to the seat chosen by the Tokugawa rulers in 1603.",
+      "source": {
+        "article": "Tokyo",
+        "url": "https://en.wikipedia.org/wiki/Tokyo",
+        "quote": "rose to political prominence in 1603 when it became the seat of the Tokugawa shogunate"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "An old castle stands at the heart of this city, and the emperor lives in its grounds today. It became his palace when the court moved here in 1868.",
+      "narrowing": "Nearly decisive: one old castle at the city heart is now the home of an emperor.",
+      "source": {
+        "article": "Tokyo — History",
+        "url": "https://en.wikipedia.org/wiki/Tokyo#History",
+        "quote": "The former Edo Castle became the new Imperial Palace"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The emperor and the government of Japan sit in this city. Its law makers meet here in the Diet hall.",
+      "narrowing": "Confirms it: the emperor, the government, and the lawmakers all sit in this city.",
+      "source": {
+        "article": "Tokyo",
+        "url": "https://en.wikipedia.org/wiki/Tokyo",
+        "quote": "the seat of the Japanese government and the Emperor of Japan"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Edo was a small fishing village until the Tokugawa rulers made it their seat in 1603, and in 1868 the emperor moved his capital here and gave it a fresh name. Its old castle became the Imperial Palace, and the city grew into a vast port of trains and towers. Tokyo is the capital of Japan."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Tokyo"
+  },
+  "pointPolicy": "geonames-point"
+}

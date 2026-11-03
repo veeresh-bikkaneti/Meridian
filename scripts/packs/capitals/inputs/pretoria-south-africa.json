@@ -1,0 +1,57 @@
+{
+  "caseId": "pretoria-south-africa",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Jacaranda trees turn the streets purple in spring — and it is only one of three capitals (see §E).",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-964137",
+    "name": "Pretoria",
+    "country": "South Africa",
+    "subdivision": "Gauteng",
+    "lat": -25.74486,
+    "lon": 28.18783
+  },
+  "target": {
+    "placeId": "gn-964137",
+    "name": "Pretoria",
+    "lat": -25.74486,
+    "lon": 28.18783,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "South Africa",
+    "iso2": "ZA",
+    "subdivision": "Gauteng"
+  },
+  "subjectAnswer": {
+    "name": "South Africa",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "ZA",
+    "subdivision": "Gauteng",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Pretoria is the capital of South Africa. It's one of South Africa's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Pretoria",
+      "url": "https://en.wikipedia.org/wiki/Pretoria",
+      "text": "Pretoria ( prih-TOR-ee-ə, pree-; Afrikaans: [prəˈtʉəria] ) is the executive capital of South Africa, serving as the seat of the executive branch of government, and as the host to all foreign embassies to the country.\nPretoria straddles the Apies River and extends westward into the foothills of the Magaliesberg mountains. It has a reputation as an academic city and centre of research, being home to the Tshwane University of Technology (TUT), the University of Pretoria (UP), the University of South Africa (UNISA), the Council for Scientific and Industrial Research (CSIR), and the Human Sciences Research Council. It also hosts the National Research Foundation and the South African Bureau of Standards. Pretoria was one of the host cities of the 2010 FIFA World Cup.\nAs the administrative capital of the country, Pretoria hosts the headquarters of all national government departments and agencies. The city is also a major global diplomatic hub; it is home to 134 foreign embassies and high commissions, representing the second-largest concentration of diplomatic missions in the world, surpassed only by Washington, D.C.\nPretoria is the central part of the City of Tshwane Metropolitan Municipality which was formed by the amalgamation of several former local authorities, including Bronkhorstspruit, Centurion, Cullinan, Hammanskraal and Soshanguve. Some have proposed changing the official name from Pretoria to Tshwane, which has caused some public controversy.\nPretoria is named after the Voortrekker leader Andries Pretorius, and South Africans sometimes call it the \"Jacaranda City\", because of the thousands of jacaranda trees planted along its streets and in its parks and gardens.\n\nClimate Pretoria has a monsoon-influenced humid subtropical climate ( Köppen : Cwa ) with long hot, rainy summers, and short, dry and mild winters. The city experiences the typical winters of South Africa, with cold, clear nights and mild to moderately warm days. Although the average lows during winter are mild, it can get cold due to the clear skies, with night time low temperatures in recent years in the range of 2 to −5&#160;°C (36 to 23&#160;°F). The average annual temperature is 18.7&#160;°C (65.7&#160;°F). &#91; 1 &#93; This is rather high, considering the city's relatively high altitude of about 1,339 metres (4,393 feet), and is due mainly to its sheltered valley position, which acts as a heat trap and cuts it off from cool southerly and south-easterly air masses for much of the year. &#91; citation needed &#93; Rain is chiefly concentrated in the summer months, with drought conditions prevailing over the winter months, when frosts may be sharp. Snowfall is an extremely rare event; snowflakes were spotted in 1959, 1968 and 2012 in the city, but the city has never experienced an accumulation in its history. During a nationwide heat wave in November 2011, Pretoria experienced temperatures that reached 39&#160;°C (102&#160;°F), unusual for that time of the year. Similar record-breaking extreme heat events also occurred in January 2013, when Pretoria experienced temperatures exceeding 37&#160;°C (99&#160;°F) on several days. The year 2014 was one of the wettest on record for the city. A total of 914&#160;mm (36&#160;in) fell up to the end of December, with 220&#160;mm (9&#160;in) recorded in this month alone. In 2015, Pretoria saw its worst drought since 1982; the month of November 2015 saw new records broken for high temperatures, with 43&#160;°C (109&#160;°F) recorded on 11 November after three weeks of temperatures between 35&#160;°C (95&#160;°F) and 43&#160;°C (109&#160;°F). Pretoria reached a new record high of 42.7&#160;°C (108.9&#160;°F) on 7 January 2016. &#91; 2 &#93;"
+    },
+    {
+      "article": "Pretoria — History",
+      "url": "https://en.wikipedia.org/wiki/Pretoria#History",
+      "text": "History .mw-parser-output .hatnote{font-style:italic}.mw-parser-output div.hatnote{padding-left:1.6em;margin-bottom:0.5em}.mw-parser-output .hatnote i{font-style:normal}.mw-parser-output .hatnote+.mw-empty-elt+.hatnote{margin-top:-0.5em}@media print{body.ns-0 .mw-parser-output .hatnote{display:none!important}} See also: Timeline of Pretoria Pretoria was founded in 1855 by Marthinus Pretorius , a leader of the Voortrekkers , who named it after his father Andries Pretorius and chose a spot on the banks of the Apies rivier ( Afrikaans for \"Monkeys river\") to be the new capital of the South African Republic ( Dutch : Zuid Afrikaansche Republiek ; ZAR). The elder Pretorius had become a national hero of the Voortrekkers after his victory over Dingane and the Zulus in the Battle of Blood River in 1838. The elder Pretorius also negotiated the Sand River Convention (1852), in which the United Kingdom acknowledged the independence of the Transvaal . It became the capital of the South African Republic on 1 May 1860. The founding of Pretoria as the capital of the South African Republic can be seen as marking the end of the Boers' settlement movements of the Great Trek . Boer Wars Main article: Boer Wars During the First Boer War , the city was besieged by Republican forces in December 1880 and March 1881. The peace treaty that ended the war was signed in Pretoria on 3 August 1881 at the Pretoria Convention . The Second Boer War resulted in the end of the Transvaal Republic and start of British hegemony in South Africa. The city surrendered to British forces under Frederick Roberts on 5 June 1900 and the conflict was ended in Pretoria with the signing of the Peace of Vereeniging on 31 May 1902 at Melrose House . The Pretoria Forts were built for the defence of the city just prior to the Second Boer War. Though some of these forts are today in ruins, a number of them have been preserved as national monuments. Union of South Africa Main article: Union of South Africa The Boer Republics of the ZAR and the Orange River Colony were united with the Cape Colony and Natal Colony in 1910 to become the Union of South Africa . Pretoria then became the administrative capital of the whole of South Africa, with Cape Town serving as the legislative capital and Bloemfontein as the judicial capital. Between 1910 and 1994, the city was also the capital of the province of Transvaal . (As the capital of the ZAR, Pretoria had superseded Potchefstroom in that role.) On 14 October 1931, Pretoria achieved official city status. &#91; 1 &#93; When South Africa became a republic in 1961, Pretoria remained its administrative capital. &#91; 2 &#93; ^ South African History Online, [1] Archived 16 February 2015 at the Wayback Machine , (2011) ^ Roman Adrian Cybriwsky, Capital Cities around the World: An Encyclopedia of Geography, History, and Culture , ABC-CLIO, USA, 2013, p. 54"
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

@@ -1,13 +1,17 @@
 # Meridian security contact (RFC 9116). Review item R7, 2026-10-21.
-# There is no email address on purpose: the owner publishes none. Security
-# reports go through GitHub's private advisory channel (the /contact form is
-# parked and delivers nothing until contact activation lands — owner call
-# 2026-10-21, PR #222 §A). General contact stays the grown-ups form, which
-# keeps nothing server-side (see /privacy). Renew "Expires" before it passes;
-# scripts/static-wellknown.test.mjs fails once it is in the past or more
-# than a year out.
+# There is no email address on purpose: the owner publishes none. For
+# security reports, use GitHub's private advisory channel below — that
+# channel works now. The /contact form listed first is the grown-ups
+# general-contact form: its wiring is on main (issue #220, PR #284), but
+# it delivers nothing until the owner completes activation, and the page
+# shows a thank-you only when the worker confirms delivery (stored:true).
+# Meridian's own server keeps no copy of a contact message (see /privacy);
+# a delivered message is held by Discord — including an optional reply-to
+# address — until it is deleted once resolved, within 90 days. Renew
+# "Expires" before it passes; scripts/static-wellknown.test.mjs fails
+# once it is in the past or more than a year out.
 Contact: https://meridian.knowledgetest.workers.dev/contact
 Contact: https://github.com/veeresh-bikkaneti/Meridian/security/advisories/new
-Expires: 2027-10-01T00:00:00.000Z
+Expires: 2027-11-01T00:00:00.000Z
 Preferred-Languages: en
 Canonical: https://meridian.knowledgetest.workers.dev/.well-known/security.txt

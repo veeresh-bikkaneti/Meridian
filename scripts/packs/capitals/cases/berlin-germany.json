@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "berlin-germany",
+  "target": {
+    "placeId": "gn-2950159",
+    "name": "Berlin",
+    "aliases": [],
+    "lat": 52.52437,
+    "lon": 13.41053,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Germany",
+    "iso2": "DE",
+    "subdivision": "State of Berlin"
+  },
+  "subjectAnswer": {
+    "name": "Germany",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Germany",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city grew along the banks of a calm river in the north east of Europe. Woods, lakes, and canals fill a full third of its land.",
+      "narrowing": "Rules out dry and sea side lands; puts the player by a river amid woods and lakes in the north east.",
+      "source": {
+        "article": "Berlin",
+        "url": "https://en.wikipedia.org/wiki/Berlin",
+        "quote": "Berlin was built along the banks of the Spree river, which flows into the Havel in the western borough of Spandau."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here bite with frost, yet summers turn warm, a bigger swing than most sea side lands. Stone streets store heat, so nights stay warmer in town.",
+      "narrowing": "Rules out even sea climates; the swing is wide, and the stone streets hold heat at night.",
+      "source": {
+        "article": "Berlin",
+        "url": "https://en.wikipedia.org/wiki/Berlin",
+        "quote": "Berlin's built-up area creates a microclimate, with heat stored by the city's buildings and pavement"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "A wall split this city in two after a great war, and each half had its own rulers. In 1990 the halves joined, and it was a capital once more.",
+      "narrowing": "Shrinks the list to a city split by a wall, then made whole and a capital again in 1990.",
+      "source": {
+        "article": "Berlin",
+        "url": "https://en.wikipedia.org/wiki/Berlin",
+        "quote": "Following German reunification in 1990, Berlin once again became the capital of all of Germany."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "In 1990, artists from 21 lands painted bright murals on a long stretch of the old wall. That painted wall still stands, and crowds come to walk beside it.",
+      "narrowing": "Nearly decisive: a long stretch of the old wall still stands, covered in bright murals.",
+      "source": {
+        "article": "East Side Gallery",
+        "url": "https://en.wikipedia.org/wiki/East_Side_Gallery",
+        "quote": "In the spring of 1990, after the opening of the Berlin Wall, this section was painted by 118 artists from 21 countries."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "All of Germany is governed from this city, the seat of its national parliament. That role came back in 1990, when the split land joined as one.",
+      "narrowing": "Confirms it: the national parliament sits here and the whole land is governed from here.",
+      "source": {
+        "article": "Berlin",
+        "url": "https://en.wikipedia.org/wiki/Berlin",
+        "quote": "Berlin is the capital and largest city of Germany."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Traders founded this city by a river crossing in the 1200s, and kings and emperors later ruled from it. After a war a wall split it in two, until the halves joined again in 1990. Artists then painted the wall that still stands. Berlin is the capital of Germany."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Berlin"
+  },
+  "pointPolicy": "geonames-point"
+}

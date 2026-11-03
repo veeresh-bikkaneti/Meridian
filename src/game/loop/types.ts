@@ -41,10 +41,25 @@ export interface LoopPuzzleProgress {
   cluesRevealed: number;
 }
 
+/**
+ * Deck id of the built-in deck (the 387 core cases). A puzzle or store
+ * with no deck id set belongs to this deck. Pack decks use their pack id
+ * ("capitals") as the deck id. The id is a plain string, not a union, so
+ * a future pack needs no type change here.
+ */
+export const LOOP_CORE_DECK_ID = "core";
+
 /** One mystery in the unlimited deck model. */
 export interface LoopPuzzleState extends LoopPuzzleProgress {
   /** Clue-file index (public/loop/clues/{index}.json). */
   index: number;
+  /**
+   * Deck this mystery was dealt from: absent means the core deck, a pack
+   * id (e.g. "capitals") means that pack's deck. Persisted so a resumed
+   * mystery completes against its own deck (cycle counter, celebration),
+   * never against the core deck. Absent on every pre-pack store.
+   */
+  deckId?: string;
   /** Deck cycle this mystery was dealt from (1-based). */
   cycle: number;
   /** UTC "YYYY-MM-DD" of completion; null while playing. The share text
@@ -103,6 +118,22 @@ export interface LoopDeckState {
 /** The whole unlimited-mode blob, persisted as one JSON value. */
 export interface LoopUnlimitedStore {
   deck: LoopDeckState;
+  /**
+   * Pack decks, keyed by pack id ("capitals"). Each pack deals from its
+   * own deck so pack play never consumes core progress and core play
+   * never consumes pack progress (design §6). Absent on pre-pack stores:
+   * absence means no pack deck has been built yet, and the pack deck is
+   * created the first time the pack is dealt from.
+   */
+  packDecks?: Record<string, LoopDeckState>;
+  /**
+   * The deck the next deal comes from: absent means the core deck, a
+   * pack id means that pack's deck. The shelf chips (a later slice) set
+   * this; the store only carries it. The open mystery is unaffected by a
+   * switch: it resumes and completes against its own deck (see
+   * LoopPuzzleState.deckId).
+   */
+  activeDeckId?: string;
   /**
    * The open mystery. Set when a mystery is dealt; cleared only after
    * "Next mystery" deals the next one. An abandoned in-progress mystery

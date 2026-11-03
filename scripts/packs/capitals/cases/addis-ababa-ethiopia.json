@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "addis-ababa-ethiopia",
+  "target": {
+    "placeId": "gn-344979",
+    "name": "Addis Ababa",
+    "aliases": [
+      "Finfinnee"
+    ],
+    "lat": 9.02497,
+    "lon": 38.74689,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Ethiopia",
+    "iso2": "ET",
+    "subdivision": "Addis Ababa"
+  },
+  "subjectAnswer": {
+    "name": "Ethiopia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Ethiopia",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city lies just west of a great crack that splits its land in two. Hot springs bubble in the high hills around its streets.",
+      "narrowing": "Puts the player in East Africa, just west of the great Rift crack.",
+      "source": {
+        "article": "Addis Ababa",
+        "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
+        "quote": "The city lies a few kilometres west of the East African Rift, which splits Ethiopia into two, between the Nubian plate and the Somali plate."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The long wet time here comes in summer, yet it is the coldest time of year. Rain, hail, and thick cloud make the days dark and chilly.",
+      "narrowing": "Rules out hot wet summers; keeps a summer that is wet, dark, and cold.",
+      "source": {
+        "article": "Addis Ababa",
+        "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
+        "quote": "The long wet season is from June to mid-September; it is the coldest time of the year. This period coincides with summer, but the temperatures are much lower than at other times of year because of the frequent rain and hail and the abundance of cloud cover and fewer hours of sunshine. This time of the year is characterised by dark, chilly and wet days and nights."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "A king made this town by the hot springs in 1886 and built his palace here. In 1889 it became the capital of his empire.",
+      "narrowing": "Shrinks the list to young capitals a king founded by hot springs in the 1880s.",
+      "source": {
+        "article": "Addis Ababa",
+        "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
+        "quote": "Menelik II then formed his imperial palace in 1887. Addis Ababa became the empire's capital in 1889, and subsequently international embassies were opened."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This city's name means new flower in the Amharic tongue. It is a bright, fresh name for a city founded in 1886.",
+      "narrowing": "Nearly decisive: one capital's name means new flower.",
+      "source": {
+        "article": "Addis Ababa",
+        "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
+        "quote": "Amharic: አዲስ አበባ [adˈdis ˈaβəβa] , lit. 'new flower'"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This city is where Ethiopia's leaders run the land. Its parliament meets here, and the prime minister works here too.",
+      "narrowing": "Confirms it: Ethiopia's parliament and its prime minister are based in this city.",
+      "source": {
+        "article": "Addis Ababa",
+        "url": "https://en.wikipedia.org/wiki/Addis_Ababa",
+        "quote": "Addis Ababa is a highly developed and important cultural, artistic, financial and administrative center of Ethiopia."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "King Menelik founded this city by the hot springs in 1886. Three years later it became the capital of his empire. Today it is a great hub of rule and talks for the whole continent, home to the African Union. Addis Ababa is the capital of Ethiopia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Addis_Ababa"
+  },
+  "pointPolicy": "geonames-point"
+}

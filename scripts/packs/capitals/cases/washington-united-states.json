@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "washington-united-states",
+  "target": {
+    "placeId": "gn-4140963",
+    "name": "Washington",
+    "aliases": [],
+    "lat": 38.89511,
+    "lon": -77.03637,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "United States",
+    "iso2": "US",
+    "subdivision": "District of Columbia"
+  },
+  "subjectAnswer": {
+    "name": "United States",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "United States",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands on the bank of the Potomac River. Maryland wraps it on the north, east, and south.",
+      "narrowing": "Rules out most places; puts the player on the northeast bank of the Potomac, wrapped by Maryland.",
+      "source": {
+        "article": "Washington, D.C.",
+        "url": "https://en.wikipedia.org/wiki/Washington%2C_D.C.",
+        "quote": "The city stands on the northeast bank of the Potomac River, across from the state of Virginia, surrounded by Maryland to its north, east, and south"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers are hot and damp, and heat with damp air brings storms again and again. Winters are chilly, and a big blizzard can strike every few years.",
+      "narrowing": "Rules out dry summer lands; keeps hot damp summers with storms and chilly winters with blizzards.",
+      "source": {
+        "article": "Washington, D.C.",
+        "url": "https://en.wikipedia.org/wiki/Washington%2C_D.C.",
+        "quote": "The combination of heat and humidity in the summer brings very frequent thunderstorms, some of which occasionally produce tornadoes in the area"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1790, a law chose a site by the Potomac for a capital district of its own. In 1800, Congress moved here from Philadelphia and took its seat.",
+      "narrowing": "Shrinks the list to the district chosen by law in 1790, filled by Congress in 1800.",
+      "source": {
+        "article": "Washington, D.C.",
+        "url": "https://en.wikipedia.org/wiki/Washington%2C_D.C.",
+        "quote": "The Residence Act, adopted on July 16, 1790, approved the creation of the capital district along the Potomac River"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A designer drew this whole capital on paper in 1791 before its streets were built. The White House, home of the president, has stood here since 1800.",
+      "narrowing": "Nearly decisive: a capital drawn on paper in 1791, with the home of a president from 1800.",
+      "source": {
+        "article": "Washington, D.C.",
+        "url": "https://en.wikipedia.org/wiki/Washington%2C_D.C.",
+        "quote": "Designed in 1791 by Pierre Charles L'Enfant, the city is split into quadrants"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This city is the seat of rule for the United States. The Supreme Court and the main offices of the land are here too.",
+      "narrowing": "Confirms it: the seat of the federal government, with the Supreme Court and top departments.",
+      "source": {
+        "article": "Washington, D.C.",
+        "url": "https://en.wikipedia.org/wiki/Washington%2C_D.C.",
+        "quote": "As the seat of the U.S. federal government, the city is an important world political capital"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Leaders chose a fresh home for their young government by the Potomac in 1790, and a designer planned its streets from scratch. Congress moved here in 1800, and the White House became the home of the president. Washington is the capital of the United States."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Washington%2C_D.C."
+  },
+  "pointPolicy": "geonames-point"
+}

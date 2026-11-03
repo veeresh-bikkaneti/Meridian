@@ -9,17 +9,25 @@ import { serveBuiltArtifact } from "./helpers";
  * 1. Globe orb shows, then crossfades once the texture lands (1280 and
  *    390 — at 390 the globe zone sits below the fold behind the
  *    IntersectionObserver gate, so the zone is scrolled into view first).
- * 2. Reduced motion: the globe path renders the static disc with NO orb,
- *    and a card-image overlay renders a STATIC ring (no running
- *    animation) until load, then clears.
- * 3. Card-image orb shows, then clears on load (response delayed through
- *    a test-held gate so the orb is observable, then released).
+ * 2. Reduced motion: the globe path renders the static disc with NO orb.
+ *    The GeoDetective card (a governed film since feat/home-card-films)
+ *    renders its still directly with NO orb and NO video fetch.
+ * 3. Grown-ups art film (feat/smooth-cards Part 2 redo, 2026-11-03):
+ *    the .hv5-art slots left LazyHomeImage for the CardFilm system,
+ *    so no orb exists there anymore. With the film held at a gate,
+ *    the poster fills the slot and no orb appears; on release the
+ *    film mounts. (The orb-on-card-image test this replaces covered
+ *    the grown-ups LazyHomeImage still, removed by that redo.)
  * 4. Journal-entry image orb shows, then clears on load (the dynamic
  *    journalImageUrl site, not only the static card images).
- * 5. Orb clears on image error, with NO new fallback UI invented.
+ * 5. Film error path: aborting the Cold Trail .mp4 lands the card on
+ *    its still, with NO new fallback UI invented.
  * 6. No orb on maps or in the storyteller/home story area.
- * 7. Masked-blob check: a screenshot of a card-image orb rendering
- *    inside the masked .hv5-art blob shape.
+ * 7. Banner check: the Journal .hv5-art slot (a full-bleed banner
+ *    since the 2026-11-03 rework; the radial blob mask it carried
+ *    as a corner illustration is removed) hosts the Journal film
+ *    slot — poster first, film after the gate — and still never
+ *    an orb.
  *
  * No hard sleeps anywhere: every wait is an assertion on element state
  * (visible / detached / count) or a test-held route gate released by the
@@ -29,7 +37,7 @@ import { serveBuiltArtifact } from "./helpers";
 test.setTimeout(240_000);
 
 const APP_URL = "http://127.0.0.1:4123/Meridian/";
-const EVIDENCE = "review-orb-evidence/test-auto/masked-blob-journal-card-orb.png";
+const EVIDENCE = "review-orb-evidence/test-auto/masked-blob-journal-card-film.png";
 
 /** A gate the test holds closed, then releases once the held state is asserted. */
 function makeGate() {
@@ -102,58 +110,64 @@ test("globe orb shows then crossfades on textured ready (390, scrolled into view
   await expect(mount.locator("canvas")).toBeVisible();
 });
 
-test("reduced motion: static disc with no orb; card overlay is a static ring, then clears", async ({
+test("reduced motion: static disc with no orb; GeoDetective film card shows its still, no video fetch", async ({
   browser,
 }: {
   browser: Browser;
 }) => {
   const context = await browser.newContext({ reducedMotion: "reduce" });
   try {
-    const gate = makeGate();
     await setupContext(context);
-    await delayRoute(context, (url) => url.href.includes("desert-ruins") && url.pathname.endsWith(".webp"), gate);
+    const mp4Requests: string[] = [];
+    context.on("request", (req) => {
+      if (req.url().endsWith(".mp4")) mp4Requests.push(req.url());
+    });
     const page = await context.newPage();
     await gotoHome(page, 1280);
     // Globe path: static disc, never an orb.
     await expect(page.locator(".hv5-globe-fallback")).toBeVisible({ timeout: 20_000 });
     await expect(page.locator(".hv5-globe-orb")).toHaveCount(0);
-    // Card path: GeoDetective image held — the overlay renders a STATIC ring.
+    // Film card path: the still renders directly — no video element,
+    // no loading orb (the film component has no orb), and the still
+    // actually decodes.
     const card = page.getByTestId("tour-stop-geodetective");
     await card.scrollIntoViewIfNeeded();
-    const orb = card.locator(".hv5-lazy-orb");
-    await expect(orb).toBeVisible();
-    const spinner = orb.locator(".meridian-spinner");
-    await expect(spinner).toBeVisible();
-    const anim = await spinner.evaluate((el) => {
-      const cs = getComputedStyle(el);
-      return { name: cs.animationName, running: el.getAnimations().length };
-    });
-    expect(anim.name).toBe("none");
-    expect(anim.running).toBe(0);
-    gate.release();
-    await expect(card.locator(".hv5-lazy-orb")).toHaveCount(0, { timeout: 20_000 });
-    const img = card.locator(".hv5-lazy-img img");
+    await expect(card.locator("video")).toHaveCount(0);
+    await expect(card.locator(".hv5-lazy-orb")).toHaveCount(0);
+    const film = card.getByTestId("card-film-geodetective");
+    await expect(film).toBeVisible();
+    const img = film.locator("img");
     await expect(img).toBeVisible();
     expect(await img.evaluate((el) => (el as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+    const src = (await img.getAttribute("src")) ?? "";
+    expect(src).toContain("geodetective-still");
+    // Zero video fetch under reduced motion: no .mp4 was requested.
+    expect(mp4Requests).toEqual([]);
   } finally {
     await context.close();
   }
 });
 
-test("card-image orb shows then clears on load", async ({ page, context }) => {
+test("grown-ups art film: poster fills the slot, no orb, film follows on release", async ({ page, context }) => {
   const gate = makeGate();
   await setupContext(context);
-  await delayRoute(context, (url) => url.href.includes("desert-ruins") && url.pathname.endsWith(".webp"), gate);
+  await delayRoute(context, (url) => url.href.includes("grownups-film") && url.pathname.endsWith(".mp4"), gate);
   await gotoHome(page, 1280);
-  const card = page.getByTestId("tour-stop-geodetective");
+  const card = page.getByTestId("grownups-card");
   await card.scrollIntoViewIfNeeded();
-  const orb = card.locator(".hv5-lazy-orb");
-  await expect(orb).toBeVisible();
+  // The art slot is a governed film now (CardFilm): there is no
+  // loading orb on it at any point — the poster fills the slot
+  // while the film is held, exactly as on the two game cards.
+  await expect(card.locator(".hv5-lazy-orb")).toHaveCount(0);
+  const film = card.getByTestId("card-film-grownups");
+  await expect(film).toBeVisible();
   gate.release();
-  await expect(card.locator(".hv5-lazy-orb")).toHaveCount(0, { timeout: 20_000 });
-  const img = card.locator(".hv5-lazy-img img");
-  await expect(img).toBeVisible();
-  expect(await img.evaluate((el) => (el as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
+  const video = film.locator("video");
+  await expect(video).toBeVisible({ timeout: 20_000 });
+  await expect
+    .poll(() => video.evaluate((el) => (el as HTMLVideoElement).readyState), { timeout: 20_000 })
+    .toBeGreaterThanOrEqual(2);
+  await expect(card.locator(".hv5-lazy-orb")).toHaveCount(0);
 });
 
 test("journal-entry image orb shows then clears on load", async ({ page, context }) => {
@@ -179,12 +193,13 @@ test("journal-entry image orb shows then clears on load", async ({ page, context
   }
 });
 
-test("orb clears on image error and no fallback UI appears", async ({ page, context }) => {
+test("film error lands Cold Trail on its still and no fallback UI appears", async ({ page, context }) => {
   await setupContext(context);
-  // Abort the Cold Trail art: the error path must clear the orb and
-  // invent nothing (no alert, no error copy, no replacement element).
+  // Abort the Cold Trail film: the error path must swap the card to
+  // its still and invent nothing (no alert, no error copy, no
+  // replacement element beyond the still itself).
   await context.route(
-    (url) => url.href.includes("patagonia") && url.pathname.endsWith(".webp"),
+    (url) => url.href.includes("coldtrail-film") && url.pathname.endsWith(".mp4"),
     async (route) => {
       await route.abort();
     },
@@ -192,11 +207,15 @@ test("orb clears on image error and no fallback UI appears", async ({ page, cont
   await gotoHome(page, 1280);
   const card = page.locator(".hv5-dispatch");
   await card.scrollIntoViewIfNeeded();
-  await expect(card.locator(".hv5-lazy-orb")).toHaveCount(0, { timeout: 20_000 });
+  // The film gives up and the still takes the slot.
+  const film = card.getByTestId("card-film-coldtrail");
+  const img = film.locator("img");
+  await expect(img).toBeVisible({ timeout: 20_000 });
+  expect(((await img.getAttribute("src")) ?? "")).toContain("coldtrail-still");
   await expect(card.locator('[role="alert"]')).toHaveCount(0);
   const cardText = (await card.textContent()) ?? "";
   expect(cardText).not.toMatch(/couldn.t load|failed to load|image unavailable/i);
-  // The card itself survives the dead image; its CTA is still present.
+  // The card itself survives the dead film; its CTA is still present.
   await expect(card.locator("button.hv5-go")).toBeVisible();
 });
 
@@ -215,30 +234,42 @@ test("no orb on maps or in the storyteller/home story area", async ({ page, cont
   await expect(page.locator(".hv5-globe-orb, .hv5-lazy-orb")).toHaveCount(0);
 });
 
-test("masked blob: card-image orb renders inside the masked .hv5-art shape", async ({
+test("banner slot: the Journal .hv5-art banner hosts the Journal film, never an orb", async ({
   page,
   context,
 }) => {
   const gate = makeGate();
   await setupContext(context);
-  await delayRoute(context, (url) => url.href.includes("journal-tree") && url.pathname.endsWith(".webp"), gate);
+  await delayRoute(context, (url) => url.href.includes("journal-film") && url.pathname.endsWith(".mp4"), gate);
   await gotoHome(page, 1280);
   const card = page.getByTestId("journal-card");
-  await card.scrollIntoViewIfNeeded();
   const wrapper = card.locator(".hv5-art");
   await expect(wrapper).toHaveCount(1);
-  // The wrapper carries the radial blob mask (masked .hv5-art shape).
+  // Rework pin (2026-11-03): the wrapper is a full-bleed banner,
+  // so the radial blob mask the corner illustration carried is
+  // gone — the computed mask is none, and the banner spans the
+  // card's full width at its top.
   const mask = await wrapper.evaluate((el) => {
     const cs = getComputedStyle(el);
     return cs.maskImage || cs.webkitMaskImage || "";
   });
-  expect(mask).toContain("radial-gradient");
-  // Screenshot the held state FIRST so the evidence exists: the wrapper
-  // now has a pre-load box (aspect-ratio fix, bf4f8d7), so the held orb
-  // paints inside the masked shape and the assertion below passes.
+  expect(mask).toBe("none");
+  const bannerBox = await wrapper.boundingBox();
+  const cardBox = await card.boundingBox();
+  expect(Math.abs(bannerBox!.width - (cardBox!.width - 2))).toBeLessThanOrEqual(1.5);
+  expect(Math.abs(bannerBox!.y - (cardBox!.y + 1))).toBeLessThanOrEqual(1.5);
+  // Before the card nears the viewport, the film slot inside the
+  // banner wrapper shows the film's poster — and no orb exists in
+  // the wrapper at any point (the orb this test used to pin left
+  // with LazyHomeImage in the Part 2 redo).
+  const film = card.getByTestId("card-film-journal");
+  const poster = film.locator("img");
+  await expect(poster).toHaveCount(1);
+  expect(((await poster.getAttribute("src")) ?? "")).toContain("journal-poster");
+  await expect(wrapper.locator(".hv5-lazy-orb")).toHaveCount(0);
+  await card.scrollIntoViewIfNeeded();
   await card.screenshot({ path: EVIDENCE });
-  // With the art held, the orb is visible inside that masked wrapper.
-  await expect(wrapper.locator(".hv5-lazy-orb")).toBeVisible();
   gate.release();
-  await expect(card.locator(".hv5-lazy-orb")).toHaveCount(0, { timeout: 20_000 });
+  await expect(film.locator("video")).toBeVisible({ timeout: 20_000 });
+  await expect(wrapper.locator(".hv5-lazy-orb")).toHaveCount(0);
 });

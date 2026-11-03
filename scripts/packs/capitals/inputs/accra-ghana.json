@@ -1,0 +1,57 @@
+{
+  "caseId": "accra-ghana",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Its name grew from a word for ants, after the anthills around it.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-2306104",
+    "name": "Accra",
+    "country": "Ghana",
+    "subdivision": "Greater Accra",
+    "lat": 5.55602,
+    "lon": -0.1969
+  },
+  "target": {
+    "placeId": "gn-2306104",
+    "name": "Accra",
+    "lat": 5.55602,
+    "lon": -0.1969,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Ghana",
+    "iso2": "GH",
+    "subdivision": "Greater Accra"
+  },
+  "subjectAnswer": {
+    "name": "Ghana",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "GH",
+    "subdivision": "Greater Accra",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Accra is the capital of Ghana. It's one of Ghana's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Accra",
+      "url": "https://en.wikipedia.org/wiki/Accra",
+      "text": "Accra is the capital and largest city of Ghana, located on the southern coast at the Gulf of Guinea, which is part of the Atlantic Ocean. The Parliament, Supreme Court of Ghana, Black Star Square and the Bank of Ghana are located in Accra. The word Accra is derived from the Akan word Nkran meaning \"ants\", a reference to anthills seen in the countryside around Accra. The name specifically refers to soldier ants, and was applied to the town and people by the Twi speakers."
+    },
+    {
+      "article": "Accra — History",
+      "url": "https://en.wikipedia.org/wiki/Accra#History",
+      "text": "Formed from the merger of separate settlements around British Fort James, Dutch Fort Crêvecoeur (Ussher Fort), and Danish Fort Christiansborg as Jamestown, Usshertown, and Christiansborg, respectively, Accra served as the capital of the British Gold Coast between 1877 and 1957 and has since transitioned into a more modern metropolis. The British then captured Accra in 1874, and in 1877, at the end of the second Anglo-Asante War, Accra replaced Cape Coast as the capital of the British Gold Coast. This decision was made because Accra had a drier climate relative to Cape Coast. After Kwame Nkrumah became Ghana's first Prime Minister in 1957, he created his own plan for Accra's development."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

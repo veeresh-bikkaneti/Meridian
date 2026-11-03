@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "moscow-russia",
+  "target": {
+    "placeId": "gn-524901",
+    "name": "Moscow",
+    "aliases": [],
+    "lat": 55.75204,
+    "lon": 37.61781,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Russia",
+    "iso2": "RU",
+    "subdivision": "Moscow"
+  },
+  "subjectAnswer": {
+    "name": "Russia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Russia",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This huge city sits on a river in the east of Europe. It is the most crowded city that lies wholly on that continent.",
+      "narrowing": "Rules out places off Europe; keeps a huge river city in the east of that continent.",
+      "source": {
+        "article": "Moscow",
+        "url": "https://en.wikipedia.org/wiki/Moscow",
+        "quote": "Moscow is among the world's largest cities: the most populous city entirely in Europe"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are long and cold, lasting from the middle of fall to the end of March. Snow lies on the ground for about five months each year.",
+      "narrowing": "Rules out mild winter lands; keeps a long cold winter with snow for about five months.",
+      "source": {
+        "article": "Moscow",
+        "url": "https://en.wikipedia.org/wiki/Moscow",
+        "quote": "with long, cold winters usually lasting from mid-November to the end of March, along with warm summers"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "The capital left this city for a fresh city in 1712, then came back here in 1918. It has stayed the seat of power ever since that return.",
+      "narrowing": "Shrinks the list to the capital that left in 1712 and came back in 1918.",
+      "source": {
+        "article": "Moscow",
+        "url": "https://en.wikipedia.org/wiki/Moscow",
+        "quote": "the capital was moved back to Moscow in 1918"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Saint Basil's Cathedral was built in 1561 by the great square at the heart of this city. It is a famed showpiece of the old building style here.",
+      "narrowing": "Nearly decisive: a famed cathedral from 1561 stands by the great square at the city heart.",
+      "source": {
+        "article": "Moscow — History",
+        "url": "https://en.wikipedia.org/wiki/Moscow#History",
+        "quote": "Saint Basil's Cathedral , built in 1561"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The Kremlin is an old walled fort in this city. It is the seat of power for the rulers of Russia.",
+      "narrowing": "Confirms it: the old walled fortress here is the seat of power for the government.",
+      "source": {
+        "article": "Moscow",
+        "url": "https://en.wikipedia.org/wiki/Moscow",
+        "quote": "the Moscow Kremlin, which serves as the seat of power of the Government of Russia"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This city was first written about in 1147 and grew into the heart of a united land, until the capital moved away in 1712. In 1918 the capital came back, and the old fortress became the seat of power once more. Moscow is the capital of Russia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Moscow"
+  },
+  "pointPolicy": "geonames-point"
+}

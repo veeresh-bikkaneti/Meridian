@@ -153,6 +153,39 @@ export function celebrationSpec(
   };
 }
 
+/**
+ * Pack deck-complete copy, keyed by pack id. A pack cycle is a
+ * different achievement from the core cycle, so it gets its own
+ * words in the same voice (Rusty, the atlas logger) with the pack's
+ * own count — the core entry above stays byte-identical for the
+ * core deck, and a pack completion must never claim "all 387".
+ */
+export const PACK_DECK_COMPLETE_COPY: Record<string, CelebrationMoment> = {
+  capitals: {
+    headline: "Every capital found! Master detective!",
+    line: "All 72 Capitals case files closed. Countries and states — you found every single capital.",
+    character: "rusty",
+    greeting:
+      "Logged in the great atlas, all 72 capitals! Blip says bingo! Steady course, explorer — zoom-zoom, way to go!",
+  },
+};
+
+/**
+ * The deck-complete celebration for the deck that actually finished.
+ * Core (or any deck without pack copy) keeps the shipped core spec;
+ * a known pack deck gets its pack-denominated spec.
+ */
+export function deckCompleteCelebrationSpec(deckId: string | null | undefined): CelebrationSpec {
+  const pack = deckId ? PACK_DECK_COMPLETE_COPY[deckId] : undefined;
+  if (!pack) return celebrationSpec("game-complete", "deck-complete");
+  return {
+    variant: "game-complete",
+    character: pack.character,
+    title: pack.headline,
+    body: `${pack.line} ${pack.greeting}`,
+  };
+}
+
 const CELEBRATION_PARAM = "celebration";
 
 const CELEBRATION_VARIANTS: readonly CelebrationVariant[] = [

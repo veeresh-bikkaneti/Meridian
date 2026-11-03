@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "boston-massachusetts",
+  "target": {
+    "placeId": "gn-4930956",
+    "name": "Boston",
+    "aliases": [],
+    "lat": 42.35843,
+    "lon": -71.05977,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Massachusetts",
+    "iso2": "US",
+    "subdivision": "Massachusetts"
+  },
+  "subjectAnswer": {
+    "name": "Massachusetts",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Massachusetts",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands on a thumb of land that juts into a broad harbor. The sea wraps it on most sides, past bays and inlets.",
+      "narrowing": "Rules out inland towns; puts the player on a harbor peninsula on the Atlantic coast.",
+      "source": {
+        "article": "Boston",
+        "url": "https://en.wikipedia.org/wiki/Boston",
+        "quote": "Boston was founded on Shawmut Peninsula in 1630"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Cold sea storms, called nor'easters, can bury this coast town in snow. Winters are cold and stormy, with spells of heavy snow and rain.",
+      "narrowing": "Rules out mild coasts; keeps a stormy coast where sea storms dump snow and rain.",
+      "source": {
+        "article": "Boston",
+        "url": "https://en.wikipedia.org/wiki/Boston",
+        "quote": "Boston's coastal location on the North Atlantic makes the city very prone to nor'easters , which can produce large amounts of snow and rain"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Puritan settlers crossed to this shore in 1630 and founded the town. A pact one year before had set up their bay colony, led by its first governor.",
+      "narrowing": "Shrinks the list to towns founded in 1630 as the seat of a Puritan bay colony.",
+      "source": {
+        "article": "Boston — History",
+        "url": "https://en.wikipedia.org/wiki/Boston#History",
+        "quote": "which created the Massachusetts Bay Colony and was signed by the colony's first governor, John Winthrop"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "In 1773, angry townsfolk threw a whole shipment of tea into the harbor. They fought a tax they hated, and the act fired up a revolution.",
+      "narrowing": "Nearly decisive: one harbor, one tea shipment, dumped in 1773 to fight a tax.",
+      "source": {
+        "article": "Boston — History",
+        "url": "https://en.wikipedia.org/wiki/Boston#History",
+        "quote": "In 1773, a group of angered Bostonian citizens threw a shipment of tea by the East India Company into Boston Harbor in protest of the Tea Act"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The laws of Massachusetts are made in this city. It is the state capital, and the state's largest city too.",
+      "narrowing": "Confirms it: the state capital, and biggest city of the state, is this one.",
+      "source": {
+        "article": "Boston",
+        "url": "https://en.wikipedia.org/wiki/Boston",
+        "quote": "is the capital and most populous city of the U.S. state of Massachusetts"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Puritan settlers founded Boston on a peninsula in 1630, and in 1773 its people dumped tea in the harbor to fight a tax. Today it stands as a great port and learning center on the Atlantic coast. Boston is the capital of Massachusetts."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Boston"
+  },
+  "pointPolicy": "geonames-point"
+}
