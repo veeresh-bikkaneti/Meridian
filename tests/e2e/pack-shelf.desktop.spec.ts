@@ -4,16 +4,20 @@ import path from "node:path";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * Pack shelf (story packs, swarm slice 4): deck chips inside the two
- * edition entry screens.
+ * Pack shelf (story packs): deck chips inside the two edition entry
+ * screens, and deck-correct dealing on the integrated branch.
  *
- * The Capitals pack has not shipped on this branch, so the pack
- * manifest is stubbed at the network layer with the DESIGN.md section
- * 1.2 shape. Without the stub the manifest request 404s against the
- * built artifact and the shelf must show the core deck only. Dealing
- * itself is slice 1's work: these specs prove the shelf renders honest
- * per-deck progress, stores the player's pick, and starts the next
- * case through each screen's own next-case handler.
+ * The pack manifest is stubbed at the network layer with the DESIGN.md
+ * section 1.2 shape so the specs control whether the pack exists;
+ * a 404 stub stands in for an unshipped pack, and the shelf must then
+ * show the core deck only. Selection has one store per edition: the
+ * loop store's activeDeckId for GeoDetective, the shelf selection
+ * blob for Cold Trail. The dealing specs prove the deal path reads
+ * the same store the chips write: pick Capitals on a finished case
+ * and the next GeoDetective case comes from the pack deck (index
+ * 387 or later, with its sidecar briefing), and the next Cold Trail
+ * case is a pack case whose sightings are capital anchors, with the
+ * core store left untouched.
  */
 
 const BASE = "http://127.0.0.1:4123/Meridian/";
@@ -32,7 +36,7 @@ test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
-/** Serve the pack manifest (optionally slowly) instead of the on-disk 404. */
+/** Serve the pack manifest (optionally slowly) instead of the built one. */
 async function stubPackManifest(
   page: import("playwright/test").Page,
   delayMs = 0,
@@ -44,6 +48,15 @@ async function stubPackManifest(
       contentType: "application/json",
       body: JSON.stringify(PACK_MANIFEST),
     });
+  });
+}
+
+/** Stand in for an unshipped pack: the manifest request 404s. */
+async function stubPackManifestMissing(
+  page: import("playwright/test").Page,
+): Promise<void> {
+  await page.route("**/packs/capitals/manifest.json", async (route) => {
+    await route.fulfill({ status: 404, body: "not found" });
   });
 }
 
@@ -75,6 +88,7 @@ async function shelfSelection(
 test("GeoDetective shelf: core progress shows, no pack chip before the pack ships", async ({
   page,
 }) => {
+  await stubPackManifestMissing(page);
   await page.addInitScript(() => {
     localStorage.setItem(
       "meridian.loop.v2",
@@ -115,7 +129,13 @@ test("GeoDetective shelf: pack chip arrives from the manifest and stores the pic
   await expect(page.getByTestId("pack-shelf-status")).toHaveText(
     "Your next case comes from Capitals.",
   );
-  expect((await shelfSelection(page)).geodetective).toBe("capitals");
+  // GeoDetective selection lives in the loop store itself, the store
+  // the dealer reads; the shelf blob never carries this edition.
+  const loopStore = await page.evaluate(() =>
+    JSON.parse(localStorage.getItem("meridian.loop.v2")!),
+  );
+  expect(loopStore.activeDeckId).toBe("capitals");
+  expect((await shelfSelection(page)).geodetective).toBeUndefined();
 });
 
 test("GeoDetective shelf: tapping a chip on a finished case starts the next case", async ({
@@ -160,16 +180,20 @@ test("GeoDetective shelf: tapping a chip on a finished case starts the next case
   );
 
   await page.getByTestId("pack-chip-capitals").click();
-  // A fresh case deals (the deck head, index 100) and the pick is stored.
+  // The next case deals from the pack deck, not the core deck: its
+  // index is a pack index (387 or later), it is stamped with the pack
+  // deck id, and its sidecar briefing renders above the clues.
   await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible({
     timeout: 30_000,
   });
+  await expect(page.getByText(/Your (case|drill):/)).toBeVisible({ timeout: 30_000 });
   const store = await page.evaluate(() =>
     JSON.parse(localStorage.getItem("meridian.loop.v2")!),
   );
-  expect(store.current.index).toBe(100);
+  expect(store.current.index).toBeGreaterThanOrEqual(387);
+  expect(store.current.deckId).toBe("capitals");
   expect(store.current.status).toBe("playing");
-  expect((await shelfSelection(page)).geodetective).toBe("capitals");
+  expect(store.activeDeckId).toBe("capitals");
 });
 
 test("GeoDetective shelf: a late pack manifest shifts nothing below the shelf", async ({
@@ -221,17 +245,34 @@ test("Cold Trail shelf: progress shows and a chip tap on the reveal starts the n
   await expect(pack).toBeVisible({ timeout: 15_000 });
 
   await pack.click();
-  // The next case starts: sighting cards are back and the reveal is gone.
-  await expect(page.getByTestId("sighting-card")).toHaveCount(3, { timeout: 30_000 });
+  // The next case is a pack case: the sighting cards name the pack
+  // deck's first case's capital anchors (read from the generated pack
+  // file itself), and the reveal is gone.
+  const packDeck = JSON.parse(
+    readFileSync(path.resolve("src/game/coldtrail/cases.capitals.generated.json"), "utf8"),
+  ) as { cases: Array<{ sightings: Array<{ cityName: string }> }> };
+  const anchorNames = packDeck.cases[0]!.sightings.map((s) => s.cityName);
+  const cards = page.getByTestId("sighting-card");
+  await expect(cards).toHaveCount(3, { timeout: 30_000 });
+  for (let i = 0; i < 3; i++) {
+    await expect(cards.nth(i)).toHaveAttribute(
+      "aria-label",
+      `Sighting ${i + 1}: ${anchorNames[i]}`,
+    );
+  }
   await expect(page.getByTestId("coldtrail-reveal")).toHaveCount(0);
+  // The core store is untouched by the switch: the finished core case
+  // keeps its own progress under its own key.
   const store = await page.evaluate(() =>
     JSON.parse(localStorage.getItem("meridian.coldtrail.v2")!),
   );
-  expect(store.caseIndex).toBe(1);
+  expect(store.caseIndex).toBe(0);
+  expect(store.solved).toBe(1);
   expect((await shelfSelection(page)).coldtrail).toBe("capitals");
 });
 
 test("Cold Trail shelf: no pack chip without a manifest", async ({ page }) => {
+  await stubPackManifestMissing(page);
   await openColdTrail(page);
   await expect(page.getByTestId("sighting-card")).toHaveCount(3, { timeout: 30_000 });
   await expect(page.getByTestId("pack-chip-all")).toBeVisible();
