@@ -235,6 +235,18 @@ export function splitWitnessPool(places, capitalIds) {
   return { anchors, nonAnchors };
 }
 
+/**
+ * The witness split for the resolved capital set, measured from the
+ * real chunks and the real names index. Exported so the tests assert
+ * against the production path instead of a second implementation.
+ */
+export function measureWitnessPool() {
+  const places = loadPlaces();
+  const capitalIds = resolvePackCapitalIds();
+  const { anchors, nonAnchors } = splitWitnessPool(places, capitalIds);
+  return { capitalIds, anchors, nonAnchors };
+}
+
 /** The hideout pool, filtered exactly as the core generator filters it. */
 export function hideoutPool(places) {
   return places.filter(
