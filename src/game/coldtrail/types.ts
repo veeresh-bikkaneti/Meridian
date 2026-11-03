@@ -50,6 +50,13 @@ export interface ColdTrailCase {
   caseNo: number;
   hideout: ColdTrailHideout;
   sightings: [ColdTrailSighting, ColdTrailSighting, ColdTrailSighting];
+  /**
+   * Pack this case belongs to (for example "capitals"), stamped by a
+   * pack generation pass. Core deck cases omit it. Pack decks live in
+   * their own generated files with their own store keys, and load
+   * through cases-pack.ts, never through the core deck in cases.ts.
+   */
+  packId?: string;
 }
 
 /** A player-chosen ring center (lon/lat in WGS84, never pixels). */
