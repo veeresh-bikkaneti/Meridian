@@ -8,8 +8,8 @@ import { loopMetaEntry, toLoopRecord, validatePackRecord } from "./schema.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const readJson = (path) => JSON.parse(readFileSync(path, "utf8"));
-const parisRecord = () => readJson(join(HERE, "capitals", "cases", "paris.json"));
-const parisInput = () => readJson(join(HERE, "capitals", "inputs", "paris.json"));
+const parisRecord = () => readJson(join(HERE, "capitals", "cases", "paris-france.json"));
+const parisInput = () => readJson(join(HERE, "capitals", "inputs", "paris-france.json"));
 const clone = (value) => JSON.parse(JSON.stringify(value));
 
 test("the Paris pilot record validates clean against its authoring input", () => {
@@ -98,7 +98,7 @@ test("toLoopRecord projects the pack record onto the shipped clue shape", () => 
   assert.equal(loop.place_id, "gn-2988507");
   assert.deepEqual(loop.answer, {
     name: "Paris",
-    aliases: [],
+    aliases: ["Lutetia"],
     country: "France",
     subdivision: "Île-de-France",
     lat: 48.85341,

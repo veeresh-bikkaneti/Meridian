@@ -3,6 +3,7 @@ import {
   cpSync,
   existsSync,
   mkdtempSync,
+  readdirSync,
   readFileSync,
   writeFileSync,
 } from "node:fs";
@@ -28,7 +29,15 @@ function fixture() {
   return { root, packDir, publicDir, coreManifestPath };
 }
 
-test("the pilot composes: clue file 387, pack manifest, sidecar", () => {
+/** Case ids in the composer's order (caseId sort), read from the fixture source. */
+function caseIdsInOrder() {
+  return readdirSync(join(HERE, "capitals", "cases"))
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => f.slice(0, -".json".length))
+    .sort();
+}
+
+test("the full pack composes: 72 clue files after the core pool, manifest, sidecar", () => {
   const { packDir, publicDir, coreManifestPath } = fixture();
   const result = composePack({
     packDir,
@@ -36,10 +45,17 @@ test("the pilot composes: clue file 387, pack manifest, sidecar", () => {
     coreManifestPath,
     generatedAt: new Date("2026-11-03T00:00:00.000Z"),
   });
-  assert.equal(result.ok, true);
-  assert.deepEqual(result.loopIndexes, [387], "the first pack case continues after the core pool");
+  assert.equal(result.ok, true, JSON.stringify(result.reasons ?? []));
+  const caseIds = caseIdsInOrder();
+  assert.equal(caseIds.length, 72);
+  const expectedIndexes = caseIds.map((_, i) => 387 + i);
+  assert.deepEqual(result.loopIndexes, expectedIndexes, "pack indexes continue after the core pool in caseId order");
+  assert.equal(result.size, 72);
 
-  const clue = readJson(join(publicDir, "loop", "clues", "387.json"));
+  // Paris sits at its caseId-order position; its clue file is an
+  // ordinary clue file that never names the target.
+  const parisIndex = 387 + caseIds.indexOf("paris-france");
+  const clue = readJson(join(publicDir, "loop", "clues", `${parisIndex}.json`));
   assert.equal(clue.v, 1);
   assert.equal(clue.placeId, "geonames:2988507");
   assert.deepEqual(clue.target, { lon: 2.3488, lat: 48.85341 });
@@ -52,15 +68,16 @@ test("the pilot composes: clue file 387, pack manifest, sidecar", () => {
 
   const manifest = readJson(join(publicDir, "packs", "capitals", "manifest.json"));
   assert.equal(isLoopPackManifest(manifest), true, "the runtime validator accepts the manifest");
-  assert.equal(manifest.size, 1);
-  assert.deepEqual(manifest.loopIndexes, [387]);
-  assert.deepEqual(manifest.loopTiers, [1]);
-  assert.equal(manifest.coldtrailFile, null);
+  assert.equal(manifest.size, 72);
+  assert.deepEqual(manifest.loopIndexes, expectedIndexes);
+  assert.equal(manifest.loopTiers.length, 72);
+  assert.equal(manifest.coldtrailFile, "cases.capitals.generated.json");
 
   const meta = readJson(join(publicDir, "packs", "capitals", "loop-meta.json"));
   assert.equal(isLoopPackMeta(meta), true, "the runtime validator accepts the sidecar");
-  assert.equal(meta["387"].subject.name, "France");
-  assert.equal(meta["387"].direction, "A");
+  assert.equal(Object.keys(meta).length, 72);
+  assert.equal(meta[String(parisIndex)].subject.name, "France");
+  assert.equal(meta[String(parisIndex)].direction, "A");
 
   assert.equal(
     readFileSync(coreManifestPath, "utf8"),
@@ -71,13 +88,13 @@ test("the pilot composes: clue file 387, pack manifest, sidecar", () => {
 
 test("a record that fails validation writes nothing", () => {
   const { packDir, publicDir, coreManifestPath } = fixture();
-  const casePath = join(packDir, "cases", "paris.json");
+  const casePath = join(packDir, "cases", "paris-france.json");
   const record = readJson(casePath);
   record.clues[0].text = `${record.clues[0].text} The city is Paris.`;
   writeFileSync(casePath, JSON.stringify(record));
   const result = composePack({ packDir, publicDir, coreManifestPath });
   assert.equal(result.ok, false);
-  assert.ok(result.reasons.some((r) => r.caseId === "paris"));
+  assert.ok(result.reasons.some((r) => r.caseId === "paris-france"));
   assert.equal(existsSync(join(publicDir, "loop", "clues", "387.json")), false);
   assert.equal(existsSync(join(publicDir, "packs", "capitals", "manifest.json")), false);
 });

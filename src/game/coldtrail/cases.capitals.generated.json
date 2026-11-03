@@ -31,32 +31,32 @@
     {
      "id": "s2",
      "timestamp": "Mon 13:20",
-     "cityId": "gn-3435910",
-     "cityName": "Buenos Aires",
-     "cityLon": -58.37723,
-     "cityLat": -34.61315,
-     "radiusKm": 1500,
-     "octant": "north",
-     "text": "Last seen asking a gas attendant for directions 1,500 km north of Buenos Aires.",
-     "region": {
-      "continent": "South America",
-      "country": "Argentina",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Tue 09:28",
      "cityId": "gn-3936456",
      "cityName": "Lima",
      "cityLon": -77.02824,
      "cityLat": -12.04318,
      "radiusKm": 1800,
      "octant": "south-east",
-     "text": "Last seen buying supplies at a truck stop 1,800 km southeast of Lima.",
+     "text": "Last seen asking a gas attendant for directions 1,800 km southeast of Lima.",
      "region": {
       "continent": "South America",
       "country": "Peru",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 09:28",
+     "cityId": "gn-3871336",
+     "cityName": "Santiago",
+     "cityLon": -70.64827,
+     "cityLat": -33.45694,
+     "radiusKm": 1450,
+     "octant": "north-east",
+     "text": "Last seen buying supplies at a truck stop 1,450 km northeast of Santiago.",
+     "region": {
+      "continent": "South America",
+      "country": "Chile",
       "subdivision": null
      }
     }
@@ -77,49 +77,49 @@
     {
      "id": "s1",
      "timestamp": "Sat 20:18",
-     "cityId": "gn-4487042",
-     "cityName": "Raleigh",
-     "cityLon": -78.63861,
-     "cityLat": 35.7721,
-     "radiusKm": 2350,
+     "cityId": "gn-4671654",
+     "cityName": "Austin",
+     "cityLon": -97.74306,
+     "cityLat": 30.26715,
+     "radiusKm": 575,
      "octant": "south-west",
-     "text": "Last seen sleeping in a parked car 2,350 km southwest of Raleigh.",
+     "text": "Last seen sleeping in a parked car 575 km southwest of Austin.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "North Carolina"
+      "subdivision": "Texas"
      }
     },
     {
      "id": "s2",
      "timestamp": "Sat 08:03",
+     "cityId": "gn-5419384",
+     "cityName": "Denver",
+     "cityLon": -104.9847,
+     "cityLat": 39.73915,
+     "radiusKm": 1650,
+     "octant": "south",
+     "text": "Last seen buying a burner phone 1,650 km south of Denver.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Colorado"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 20:51",
      "cityId": "gn-3553478",
      "cityName": "Havana",
      "cityLon": -82.38304,
      "cityLat": 23.13302,
      "radiusKm": 1825,
      "octant": "west",
-     "text": "Last seen buying a burner phone 1,825 km west of Havana.",
+     "text": "Last seen refueling a dusty pickup 1,825 km west of Havana.",
      "region": {
       "continent": "North America",
       "country": "Cuba",
       "subdivision": null
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Sun 20:51",
-     "cityId": "gn-5389489",
-     "cityName": "Sacramento",
-     "cityLon": -121.4944,
-     "cityLat": 38.58157,
-     "radiusKm": 2475,
-     "octant": "south-east",
-     "text": "Last seen refueling a dusty pickup 2,475 km southeast of Sacramento.",
-     "region": {
-      "continent": "North America",
-      "country": "United States",
-      "subdivision": "California"
      }
     }
    ],
@@ -139,16 +139,16 @@
     {
      "id": "s1",
      "timestamp": "Mon 10:23",
-     "cityId": "gn-1609350",
-     "cityName": "Bangkok",
-     "cityLon": 100.50144,
-     "cityLat": 13.75398,
-     "radiusKm": 2625,
-     "octant": "south-east",
-     "text": "Last seen eating at a drive-through 2,625 km southeast of Bangkok.",
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 425,
+     "octant": "east",
+     "text": "Last seen eating at a drive-through 425 km east of Jakarta.",
      "region": {
       "continent": "Asia",
-      "country": "Thailand",
+      "country": "Indonesia",
       "subdivision": null
      }
     },
@@ -171,16 +171,16 @@
     {
      "id": "s3",
      "timestamp": "Tue 14:50",
-     "cityId": "gn-1642911",
-     "cityName": "Jakarta",
-     "cityLon": 106.84513,
-     "cityLat": -6.21462,
-     "radiusKm": 425,
-     "octant": "east",
-     "text": "Last seen buying supplies at a truck stop 425 km east of Jakarta.",
+     "cityId": "gn-1609350",
+     "cityName": "Bangkok",
+     "cityLon": 100.50144,
+     "cityLat": 13.75398,
+     "radiusKm": 2625,
+     "octant": "south-east",
+     "text": "Last seen buying supplies at a truck stop 2,625 km southeast of Bangkok.",
      "region": {
       "continent": "Asia",
-      "country": "Indonesia",
+      "country": "Thailand",
       "subdivision": null
      }
     }
@@ -217,33 +217,33 @@
     {
      "id": "s2",
      "timestamp": "Sat 20:06",
-     "cityId": "gn-3117735",
-     "cityName": "Madrid",
-     "cityLon": -3.70256,
-     "cityLat": 40.4165,
-     "radiusKm": 1675,
-     "octant": "north-east",
-     "text": "Last spotted at a roadside diner 1,675 km northeast of Madrid.",
+     "cityId": "gn-756135",
+     "cityName": "Warsaw",
+     "cityLon": 21.01178,
+     "cityLat": 52.22977,
+     "radiusKm": 950,
+     "octant": "west",
+     "text": "Last spotted at a roadside diner 950 km west of Warsaw.",
      "region": {
       "continent": "Europe",
-      "country": "Spain",
+      "country": "Poland",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Sun 12:57",
-     "cityId": "gn-524901",
-     "cityName": "Moscow",
-     "cityLon": 37.61781,
-     "cityLat": 55.75204,
-     "radiusKm": 1975,
-     "octant": "west",
-     "text": "Last seen filling jerrycans 1,975 km west of Moscow.",
+     "cityId": "gn-2964574",
+     "cityName": "Dublin",
+     "cityLon": -6.24889,
+     "cityLat": 53.33306,
+     "radiusKm": 900,
+     "octant": "east",
+     "text": "Last seen filling jerrycans 900 km east of Dublin.",
      "region": {
       "continent": "Europe",
-      "country": "Russia",
-      "subdivision": "Moscow"
+      "country": "Ireland",
+      "subdivision": null
      }
     }
    ],
@@ -263,22 +263,6 @@
     {
      "id": "s1",
      "timestamp": "Mon 22:22",
-     "cityId": "gn-1880252",
-     "cityName": "Singapore",
-     "cityLon": 103.85007,
-     "cityLat": 1.28967,
-     "radiusKm": 3400,
-     "octant": "north-west",
-     "text": "Last seen refueling a dusty pickup 3,400 km northwest of Singapore.",
-     "region": {
-      "continent": "Asia",
-      "country": "Singapore",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Mon 19:18",
      "cityId": "gn-1261481",
      "cityName": "New Delhi",
      "cityLon": 77.2148,
@@ -290,6 +274,22 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 19:18",
+     "cityId": "gn-1880252",
+     "cityName": "Singapore",
+     "cityLon": 103.85007,
+     "cityLat": 1.28967,
+     "radiusKm": 3400,
+     "octant": "north-west",
+     "text": "Last seen refueling a dusty pickup 3,400 km northwest of Singapore.",
+     "region": {
+      "continent": "Asia",
+      "country": "Singapore",
+      "subdivision": null
      }
     },
     {
@@ -325,32 +325,32 @@
     {
      "id": "s1",
      "timestamp": "Thu 14:04",
-     "cityId": "gn-1816670",
-     "cityName": "Beijing",
-     "cityLon": 116.39723,
-     "cityLat": 39.9075,
-     "radiusKm": 3675,
-     "octant": "west",
-     "text": "Last seen buying a burner phone 3,675 km west of Beijing.",
-     "region": {
-      "continent": "Asia",
-      "country": "China",
-      "subdivision": "Beijing"
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Thu 08:16",
      "cityId": "gn-1609350",
      "cityName": "Bangkok",
      "cityLon": 100.50144,
      "cityLat": 13.75398,
      "radiusKm": 2650,
      "octant": "north-west",
-     "text": "Last seen buying supplies at a truck stop 2,650 km northwest of Bangkok.",
+     "text": "Last seen buying a burner phone 2,650 km northwest of Bangkok.",
      "region": {
       "continent": "Asia",
       "country": "Thailand",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 08:16",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 2775,
+     "octant": "west",
+     "text": "Last seen buying supplies at a truck stop 2,775 km west of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
       "subdivision": null
      }
     },
@@ -387,6 +387,38 @@
     {
      "id": "s1",
      "timestamp": "Tue 13:11",
+     "cityId": "gn-1880252",
+     "cityName": "Singapore",
+     "cityLon": 103.85007,
+     "cityLat": 1.28967,
+     "radiusKm": 3550,
+     "octant": "north",
+     "text": "Last seen hitching a ride from a trucker 3,550 km north of Singapore.",
+     "region": {
+      "continent": "Asia",
+      "country": "Singapore",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 10:28",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 2750,
+     "octant": "east",
+     "text": "Last seen buying supplies at a truck stop 2,750 km east of Kathmandu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 17:04",
      "cityId": "gn-1850147",
      "cityName": "Tokyo",
      "cityLon": 139.69171,
@@ -397,38 +429,6 @@
      "region": {
       "continent": "Asia",
       "country": "Japan",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Tue 10:28",
-     "cityId": "gn-1701668",
-     "cityName": "Manila",
-     "cityLon": 120.9822,
-     "cityLat": 14.6042,
-     "radiusKm": 2050,
-     "octant": "north",
-     "text": "Last seen buying supplies at a truck stop 2,050 km north of Manila.",
-     "region": {
-      "continent": "Asia",
-      "country": "Philippines",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Wed 17:04",
-     "cityId": "gn-1283240",
-     "cityName": "Kathmandu",
-     "cityLon": 85.3206,
-     "cityLat": 27.70169,
-     "radiusKm": 2750,
-     "octant": "east",
-     "text": "Last seen hitching a ride from a trucker 2,750 km east of Kathmandu.",
-     "region": {
-      "continent": "Asia",
-      "country": "Nepal",
       "subdivision": null
      }
     }
@@ -449,48 +449,48 @@
     {
      "id": "s1",
      "timestamp": "Fri 11:10",
-     "cityId": "gn-2618425",
-     "cityName": "Copenhagen",
-     "cityLon": 12.56553,
-     "cityLat": 55.67594,
-     "radiusKm": 1475,
-     "octant": "south-west",
-     "text": "Last spotted at a roadside diner 1,475 km southwest of Copenhagen.",
+     "cityId": "gn-2643743",
+     "cityName": "London",
+     "cityLon": -0.12574,
+     "cityLat": 51.50853,
+     "radiusKm": 1025,
+     "octant": "south-east",
+     "text": "Last spotted at a roadside diner 1,025 km southeast of London.",
      "region": {
       "continent": "Europe",
-      "country": "Denmark",
+      "country": "United Kingdom",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Fri 13:25",
-     "cityId": "gn-2267057",
-     "cityName": "Lisbon",
-     "cityLon": -9.1498,
-     "cityLat": 38.72509,
-     "radiusKm": 1325,
-     "octant": "north-east",
-     "text": "Last seen withdrawing cash from an ATM 1,325 km northeast of Lisbon.",
+     "cityId": "gn-360630",
+     "cityName": "Cairo",
+     "cityLon": 31.24967,
+     "cityLat": 30.06263,
+     "radiusKm": 2725,
+     "octant": "north-west",
+     "text": "Last seen withdrawing cash from an ATM 2,725 km northwest of Cairo.",
      "region": {
-      "continent": "Europe",
-      "country": "Portugal",
+      "continent": "Africa",
+      "country": "Egypt",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Sat 05:58",
-     "cityId": "gn-3054643",
-     "cityName": "Budapest",
-     "cityLon": 19.04045,
-     "cityLat": 47.49835,
-     "radiusKm": 1175,
+     "cityId": "gn-3169070",
+     "cityName": "Rome",
+     "cityLon": 12.51133,
+     "cityLat": 41.89193,
+     "radiusKm": 625,
      "octant": "west",
-     "text": "Last spotted at a roadside diner 1,175 km west of Budapest.",
+     "text": "Last spotted at a roadside diner 625 km west of Rome.",
      "region": {
       "continent": "Europe",
-      "country": "Hungary",
+      "country": "Italy",
       "subdivision": null
      }
     }
@@ -511,48 +511,48 @@
     {
      "id": "s1",
      "timestamp": "Fri 18:37",
-     "cityId": "gn-703448",
-     "cityName": "Kyiv",
-     "cityLon": 30.5238,
-     "cityLat": 50.45466,
-     "radiusKm": 1500,
-     "octant": "south-west",
-     "text": "Last seen eating at a drive-through 1,500 km southwest of Kyiv.",
+     "cityId": "gn-2761369",
+     "cityName": "Vienna",
+     "cityLon": 16.37208,
+     "cityLat": 48.20849,
+     "radiusKm": 1300,
+     "octant": "south-east",
+     "text": "Last seen eating at a drive-through 1,300 km southeast of Vienna.",
      "region": {
       "continent": "Europe",
-      "country": "Ukraine",
+      "country": "Austria",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Fri 19:10",
-     "cityId": "gn-3169070",
-     "cityName": "Rome",
-     "cityLon": 12.51133,
-     "cityLat": 41.89193,
-     "radiusKm": 1075,
-     "octant": "east",
-     "text": "Last seen hitching a ride from a trucker 1,075 km east of Rome.",
+     "cityId": "gn-323786",
+     "cityName": "Ankara",
+     "cityLon": 32.85427,
+     "cityLat": 39.91987,
+     "radiusKm": 825,
+     "octant": "west",
+     "text": "Last seen hitching a ride from a trucker 825 km west of Ankara.",
      "region": {
-      "continent": "Europe",
-      "country": "Italy",
+      "continent": "Asia",
+      "country": "Türkiye",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Sat 10:22",
-     "cityId": "gn-3067696",
-     "cityName": "Prague",
-     "cityLon": 14.42076,
-     "cityLat": 50.08804,
-     "radiusKm": 1550,
-     "octant": "south-east",
-     "text": "Last seen at a bus depot 1,550 km southeast of Prague.",
+     "cityId": "gn-703448",
+     "cityName": "Kyiv",
+     "cityLon": 30.5238,
+     "cityLat": 50.45466,
+     "radiusKm": 1500,
+     "octant": "south-west",
+     "text": "Last seen at a bus depot 1,500 km southwest of Kyiv.",
      "region": {
       "continent": "Europe",
-      "country": "Czechia",
+      "country": "Ukraine",
       "subdivision": null
      }
     }
@@ -573,49 +573,49 @@
     {
      "id": "s1",
      "timestamp": "Tue 08:18",
-     "cityId": "gn-1609350",
-     "cityName": "Bangkok",
-     "cityLon": 100.50144,
-     "cityLat": 13.75398,
-     "radiusKm": 1450,
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 3675,
      "octant": "north-west",
-     "text": "Last seen asking a gas attendant for directions 1,450 km northwest of Bangkok.",
+     "text": "Last seen asking a gas attendant for directions 3,675 km northwest of Jakarta.",
      "region": {
       "continent": "Asia",
-      "country": "Thailand",
+      "country": "Indonesia",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Tue 15:30",
-     "cityId": "gn-1581130",
-     "cityName": "Hanoi",
-     "cityLon": 105.84117,
-     "cityLat": 21.0245,
-     "radiusKm": 1600,
+     "cityId": "gn-1701668",
+     "cityName": "Manila",
+     "cityLon": 120.9822,
+     "cityLat": 14.6042,
+     "radiusKm": 3325,
      "octant": "west",
-     "text": "Last seen sleeping in a parked car 1,600 km west of Hanoi.",
+     "text": "Last seen sleeping in a parked car 3,325 km west of Manila.",
      "region": {
       "continent": "Asia",
-      "country": "Vietnam",
+      "country": "Philippines",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Wed 15:38",
-     "cityId": "gn-1261481",
-     "cityName": "New Delhi",
-     "cityLon": 77.2148,
-     "cityLat": 28.62137,
-     "radiusKm": 1500,
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 775,
      "octant": "south-east",
-     "text": "Last seen filling jerrycans 1,500 km southeast of New Delhi.",
+     "text": "Last seen filling jerrycans 775 km southeast of Kathmandu.",
      "region": {
       "continent": "Asia",
-      "country": "India",
-      "subdivision": "Delhi"
+      "country": "Nepal",
+      "subdivision": null
      }
     }
    ],
@@ -635,48 +635,48 @@
     {
      "id": "s1",
      "timestamp": "Fri 07:32",
-     "cityId": "gn-2759794",
-     "cityName": "Amsterdam",
-     "cityLon": 4.88969,
-     "cityLat": 52.37403,
-     "radiusKm": 3250,
+     "cityId": "gn-2618425",
+     "cityName": "Copenhagen",
+     "cityLon": 12.56553,
+     "cityLat": 55.67594,
+     "radiusKm": 3175,
      "octant": "south-east",
-     "text": "Last spotted at a roadside diner 3,250 km southeast of Amsterdam.",
+     "text": "Last spotted at a roadside diner 3,175 km southeast of Copenhagen.",
      "region": {
       "continent": "Europe",
-      "country": "Netherlands",
+      "country": "Denmark",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Fri 11:52",
-     "cityId": "gn-3117735",
-     "cityName": "Madrid",
-     "cityLon": -3.70256,
-     "cityLat": 40.4165,
-     "radiusKm": 3325,
-     "octant": "east",
-     "text": "Last seen withdrawing cash from an ATM 3,325 km east of Madrid.",
+     "cityId": "gn-524901",
+     "cityName": "Moscow",
+     "cityLon": 37.61781,
+     "cityLat": 55.75204,
+     "radiusKm": 2875,
+     "octant": "south",
+     "text": "Last seen withdrawing cash from an ATM 2,875 km south of Moscow.",
      "region": {
       "continent": "Europe",
-      "country": "Spain",
-      "subdivision": null
+      "country": "Russia",
+      "subdivision": "Moscow"
      }
     },
     {
      "id": "s3",
      "timestamp": "Sat 07:41",
-     "cityId": "gn-703448",
-     "cityName": "Kyiv",
-     "cityLon": 30.5238,
-     "cityLat": 50.45466,
-     "radiusKm": 2250,
-     "octant": "south",
-     "text": "Last seen refueling a dusty pickup 2,250 km south of Kyiv.",
+     "cityId": "gn-344979",
+     "cityName": "Addis Ababa",
+     "cityLon": 38.74689,
+     "cityLat": 9.02497,
+     "radiusKm": 2525,
+     "octant": "north",
+     "text": "Last seen refueling a dusty pickup 2,525 km north of Addis Ababa.",
      "region": {
-      "continent": "Europe",
-      "country": "Ukraine",
+      "continent": "Africa",
+      "country": "Ethiopia",
       "subdivision": null
      }
     }
@@ -697,48 +697,48 @@
     {
      "id": "s1",
      "timestamp": "Wed 16:55",
-     "cityId": "gn-2267057",
-     "cityName": "Lisbon",
-     "cityLon": -9.1498,
-     "cityLat": 38.72509,
-     "radiusKm": 525,
-     "octant": "north-east",
-     "text": "Last seen buying supplies at a truck stop 525 km northeast of Lisbon.",
+     "cityId": "gn-3054643",
+     "cityName": "Budapest",
+     "cityLon": 19.04045,
+     "cityLat": 47.49835,
+     "radiusKm": 1975,
+     "octant": "west",
+     "text": "Last seen buying supplies at a truck stop 1,975 km west of Budapest.",
      "region": {
       "continent": "Europe",
-      "country": "Portugal",
+      "country": "Hungary",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Wed 11:42",
-     "cityId": "gn-360630",
-     "cityName": "Cairo",
-     "cityLon": 31.24967,
-     "cityLat": 30.06263,
-     "radiusKm": 3350,
-     "octant": "north-west",
-     "text": "Last seen sleeping in a parked car 3,350 km northwest of Cairo.",
+     "cityId": "gn-2950159",
+     "cityName": "Berlin",
+     "cityLon": 13.41053,
+     "cityLat": 52.52437,
+     "radiusKm": 1875,
+     "octant": "south-west",
+     "text": "Last seen sleeping in a parked car 1,875 km southwest of Berlin.",
      "region": {
-      "continent": "Africa",
-      "country": "Egypt",
+      "continent": "Europe",
+      "country": "Germany",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Thu 17:01",
-     "cityId": "gn-264371",
-     "cityName": "Athens",
-     "cityLon": 23.72784,
-     "cityLat": 37.98376,
-     "radiusKm": 2375,
-     "octant": "west",
-     "text": "Last seen boarding a night bus 2,375 km west of Athens.",
+     "cityId": "gn-2643743",
+     "cityName": "London",
+     "cityLon": -0.12574,
+     "cityLat": 51.50853,
+     "radiusKm": 1275,
+     "octant": "south",
+     "text": "Last seen boarding a night bus 1,275 km south of London.",
      "region": {
       "continent": "Europe",
-      "country": "Greece",
+      "country": "United Kingdom",
       "subdivision": null
      }
     }
@@ -759,48 +759,48 @@
     {
      "id": "s1",
      "timestamp": "Sat 10:29",
-     "cityId": "gn-2761369",
-     "cityName": "Vienna",
-     "cityLon": 16.37208,
-     "cityLat": 48.20849,
-     "radiusKm": 950,
-     "octant": "north-west",
-     "text": "Last seen at a bus depot 950 km northwest of Vienna.",
+     "cityId": "gn-658225",
+     "cityName": "Helsinki",
+     "cityLon": 24.93545,
+     "cityLat": 60.16952,
+     "radiusKm": 1575,
+     "octant": "south-west",
+     "text": "Last seen at a bus depot 1,575 km southwest of Helsinki.",
      "region": {
       "continent": "Europe",
-      "country": "Austria",
+      "country": "Finland",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Sat 08:32",
-     "cityId": "gn-703448",
-     "cityName": "Kyiv",
-     "cityLon": 30.5238,
-     "cityLat": 50.45466,
-     "radiusKm": 1825,
-     "octant": "west",
-     "text": "Last seen sleeping in a parked car 1,825 km west of Kyiv.",
+     "cityId": "gn-3169070",
+     "cityName": "Rome",
+     "cityLon": 12.51133,
+     "cityLat": 41.89193,
+     "radiusKm": 1275,
+     "octant": "north-west",
+     "text": "Last seen sleeping in a parked car 1,275 km northwest of Rome.",
      "region": {
       "continent": "Europe",
-      "country": "Ukraine",
+      "country": "Italy",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Sun 05:19",
-     "cityId": "gn-3117735",
-     "cityName": "Madrid",
-     "cityLon": -3.70256,
-     "cityLat": 40.4165,
-     "radiusKm": 1425,
-     "octant": "north-east",
-     "text": "Last seen refueling a dusty pickup 1,425 km northeast of Madrid.",
+     "cityId": "gn-756135",
+     "cityName": "Warsaw",
+     "cityLon": 21.01178,
+     "cityLat": 52.22977,
+     "radiusKm": 1150,
+     "octant": "west",
+     "text": "Last seen refueling a dusty pickup 1,150 km west of Warsaw.",
      "region": {
       "continent": "Europe",
-      "country": "Spain",
+      "country": "Poland",
       "subdivision": null
      }
     }
@@ -821,49 +821,49 @@
     {
      "id": "s1",
      "timestamp": "Sat 05:12",
-     "cityId": "gn-3530597",
-     "cityName": "Mexico City",
-     "cityLon": -99.12766,
-     "cityLat": 19.42847,
-     "radiusKm": 3050,
+     "cityId": "gn-4644585",
+     "cityName": "Nashville",
+     "cityLon": -86.78444,
+     "cityLat": 36.16589,
+     "radiusKm": 925,
      "octant": "north-east",
-     "text": "Last seen eating at a drive-through 3,050 km northeast of Mexico City.",
+     "text": "Last seen eating at a drive-through 925 km northeast of Nashville.",
      "region": {
       "continent": "North America",
-      "country": "Mexico",
-      "subdivision": null
+      "country": "United States",
+      "subdivision": "Tennessee"
      }
     },
     {
      "id": "s2",
      "timestamp": "Sat 08:41",
-     "cityId": "gn-5308655",
-     "cityName": "Phoenix",
-     "cityLon": -112.07404,
-     "cityLat": 33.44838,
-     "radiusKm": 3175,
-     "octant": "east",
-     "text": "Last seen asking a gas attendant for directions 3,175 km east of Phoenix.",
+     "cityId": "gn-4487042",
+     "cityName": "Raleigh",
+     "cityLon": -78.63861,
+     "cityLat": 35.7721,
+     "radiusKm": 400,
+     "octant": "north",
+     "text": "Last seen asking a gas attendant for directions 400 km north of Raleigh.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Arizona"
+      "subdivision": "North Carolina"
      }
     },
     {
      "id": "s3",
      "timestamp": "Sun 11:42",
-     "cityId": "gn-3553478",
-     "cityName": "Havana",
-     "cityLon": -82.38304,
-     "cityLat": 23.13302,
-     "radiusKm": 1850,
-     "octant": "north",
-     "text": "Last seen at a bus depot 1,850 km north of Havana.",
+     "cityId": "gn-4930956",
+     "cityName": "Boston",
+     "cityLon": -71.05977,
+     "cityLat": 42.35843,
+     "radiusKm": 650,
+     "octant": "south-west",
+     "text": "Last seen at a bus depot 650 km southwest of Boston.",
      "region": {
       "continent": "North America",
-      "country": "Cuba",
-      "subdivision": null
+      "country": "United States",
+      "subdivision": "Massachusetts"
      }
     }
    ],
@@ -883,17 +883,17 @@
     {
      "id": "s1",
      "timestamp": "Thu 12:40",
-     "cityId": "gn-1283240",
-     "cityName": "Kathmandu",
-     "cityLon": 85.3206,
-     "cityLat": 27.70169,
-     "radiusKm": 3525,
-     "octant": "east",
-     "text": "Last seen boarding a night bus 3,525 km east of Kathmandu.",
+     "cityId": "gn-1816670",
+     "cityName": "Beijing",
+     "cityLon": 116.39723,
+     "cityLat": 39.9075,
+     "radiusKm": 1275,
+     "octant": "south-east",
+     "text": "Last seen boarding a night bus 1,275 km southeast of Beijing.",
      "region": {
       "continent": "Asia",
-      "country": "Nepal",
-      "subdivision": null
+      "country": "China",
+      "subdivision": "Beijing"
      }
     },
     {
@@ -915,17 +915,17 @@
     {
      "id": "s3",
      "timestamp": "Fri 16:28",
-     "cityId": "gn-1816670",
-     "cityName": "Beijing",
-     "cityLon": 116.39723,
-     "cityLat": 39.9075,
-     "radiusKm": 1275,
-     "octant": "south-east",
-     "text": "Last seen boarding a night bus 1,275 km southeast of Beijing.",
+     "cityId": "gn-1609350",
+     "cityName": "Bangkok",
+     "cityLon": 100.50144,
+     "cityLat": 13.75398,
+     "radiusKm": 2775,
+     "octant": "north-east",
+     "text": "Last seen boarding a night bus 2,775 km northeast of Bangkok.",
      "region": {
       "continent": "Asia",
-      "country": "China",
-      "subdivision": "Beijing"
+      "country": "Thailand",
+      "subdivision": null
      }
     }
    ],
@@ -945,13 +945,29 @@
     {
      "id": "s1",
      "timestamp": "Sun 11:34",
+     "cityId": "gn-4930956",
+     "cityName": "Boston",
+     "cityLon": -71.05977,
+     "cityLat": 42.35843,
+     "radiusKm": 450,
+     "octant": "south-west",
+     "text": "Last seen hitching a ride from a trucker 450 km southwest of Boston.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Massachusetts"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 14:31",
      "cityId": "gn-4509177",
      "cityName": "Columbus",
      "cityLon": -82.99879,
      "cityLat": 39.96118,
      "radiusKm": 675,
      "octant": "east",
-     "text": "Last seen hitching a ride from a trucker 675 km east of Columbus.",
+     "text": "Last seen eating at a drive-through 675 km east of Columbus.",
      "region": {
       "continent": "North America",
       "country": "United States",
@@ -959,35 +975,19 @@
      }
     },
     {
-     "id": "s2",
-     "timestamp": "Sun 14:31",
-     "cityId": "gn-3530597",
-     "cityName": "Mexico City",
-     "cityLon": -99.12766,
-     "cityLat": 19.42847,
-     "radiusKm": 3250,
-     "octant": "north-east",
-     "text": "Last seen eating at a drive-through 3,250 km northeast of Mexico City.",
-     "region": {
-      "continent": "North America",
-      "country": "Mexico",
-      "subdivision": null
-     }
-    },
-    {
      "id": "s3",
      "timestamp": "Mon 15:52",
-     "cityId": "gn-4930956",
-     "cityName": "Boston",
-     "cityLon": -71.05977,
-     "cityLat": 42.35843,
-     "radiusKm": 450,
-     "octant": "south-west",
-     "text": "Last seen filling jerrycans 450 km southwest of Boston.",
+     "cityId": "gn-4644585",
+     "cityName": "Nashville",
+     "cityLon": -86.78444,
+     "cityLat": 36.16589,
+     "radiusKm": 1125,
+     "octant": "north-east",
+     "text": "Last seen filling jerrycans 1,125 km northeast of Nashville.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Massachusetts"
+      "subdivision": "Tennessee"
      }
     }
    ],
@@ -1007,13 +1007,29 @@
     {
      "id": "s1",
      "timestamp": "Fri 07:40",
+     "cityId": "gn-4930956",
+     "cityName": "Boston",
+     "cityLon": -71.05977,
+     "cityLat": 42.35843,
+     "radiusKm": 3925,
+     "octant": "south",
+     "text": "Last seen asking a gas attendant for directions 3,925 km south of Boston.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Massachusetts"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 09:16",
      "cityId": "gn-3530597",
      "cityName": "Mexico City",
      "cityLon": -99.12766,
      "cityLat": 19.42847,
      "radiusKm": 3375,
      "octant": "east",
-     "text": "Last seen asking a gas attendant for directions 3,375 km east of Mexico City.",
+     "text": "Last seen filling jerrycans 3,375 km east of Mexico City.",
      "region": {
       "continent": "North America",
       "country": "Mexico",
@@ -1021,35 +1037,19 @@
      }
     },
     {
-     "id": "s2",
-     "timestamp": "Fri 09:16",
-     "cityId": "gn-3936456",
-     "cityName": "Lima",
-     "cityLon": -77.02824,
-     "cityLat": -12.04318,
-     "radiusKm": 2275,
-     "octant": "north",
-     "text": "Last seen filling jerrycans 2,275 km north of Lima.",
-     "region": {
-      "continent": "South America",
-      "country": "Peru",
-      "subdivision": null
-     }
-    },
-    {
      "id": "s3",
      "timestamp": "Sat 05:04",
-     "cityId": "gn-4487042",
-     "cityName": "Raleigh",
-     "cityLon": -78.63861,
-     "cityLat": 35.7721,
-     "radiusKm": 3275,
-     "octant": "south",
-     "text": "Last seen refueling a dusty pickup 3,275 km south of Raleigh.",
+     "cityId": "gn-4644585",
+     "cityName": "Nashville",
+     "cityLon": -86.78444,
+     "cityLat": 36.16589,
+     "radiusKm": 3625,
+     "octant": "south-east",
+     "text": "Last seen refueling a dusty pickup 3,625 km southeast of Nashville.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "North Carolina"
+      "subdivision": "Tennessee"
      }
     }
    ],
@@ -1069,49 +1069,49 @@
     {
      "id": "s1",
      "timestamp": "Sun 12:57",
-     "cityId": "gn-3530597",
-     "cityName": "Mexico City",
-     "cityLon": -99.12766,
-     "cityLat": 19.42847,
-     "radiusKm": 2800,
+     "cityId": "gn-4180439",
+     "cityName": "Atlanta",
+     "cityLon": -84.38798,
+     "cityLat": 33.749,
+     "radiusKm": 625,
      "octant": "north-east",
-     "text": "Last seen hitching a ride from a trucker 2,800 km northeast of Mexico City.",
+     "text": "Last seen hitching a ride from a trucker 625 km northeast of Atlanta.",
      "region": {
       "continent": "North America",
-      "country": "Mexico",
-      "subdivision": null
+      "country": "United States",
+      "subdivision": "Georgia"
      }
     },
     {
      "id": "s2",
      "timestamp": "Sun 22:22",
-     "cityId": "gn-4644585",
-     "cityName": "Nashville",
-     "cityLon": -86.78444,
-     "cityLat": 36.16589,
-     "radiusKm": 700,
-     "octant": "east",
-     "text": "Last seen buying supplies at a truck stop 700 km east of Nashville.",
+     "cityId": "gn-4930956",
+     "cityName": "Boston",
+     "cityLon": -71.05977,
+     "cityLat": 42.35843,
+     "radiusKm": 900,
+     "octant": "south-west",
+     "text": "Last seen buying supplies at a truck stop 900 km southwest of Boston.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Tennessee"
+      "subdivision": "Massachusetts"
      }
     },
     {
      "id": "s3",
      "timestamp": "Mon 19:25",
-     "cityId": "gn-5045360",
-     "cityName": "Saint Paul",
-     "cityLon": -93.09327,
-     "cityLat": 44.94441,
-     "radiusKm": 1450,
-     "octant": "south-east",
-     "text": "Last seen buying supplies at a truck stop 1,450 km southeast of Saint Paul.",
+     "cityId": "gn-5419384",
+     "cityName": "Denver",
+     "cityLon": -104.9847,
+     "cityLat": 39.73915,
+     "radiusKm": 2275,
+     "octant": "east",
+     "text": "Last seen buying supplies at a truck stop 2,275 km east of Denver.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Minnesota"
+      "subdivision": "Colorado"
      }
     }
    ],
@@ -1131,32 +1131,32 @@
     {
      "id": "s1",
      "timestamp": "Fri 22:07",
-     "cityId": "gn-524901",
-     "cityName": "Moscow",
-     "cityLon": 37.61781,
-     "cityLat": 55.75204,
-     "radiusKm": 2275,
-     "octant": "south-east",
-     "text": "Last seen asking a gas attendant for directions 2,275 km southeast of Moscow.",
+     "cityId": "gn-264371",
+     "cityName": "Athens",
+     "cityLon": 23.72784,
+     "cityLat": 37.98376,
+     "radiusKm": 3150,
+     "octant": "east",
+     "text": "Last seen asking a gas attendant for directions 3,150 km east of Athens.",
      "region": {
       "continent": "Europe",
-      "country": "Russia",
-      "subdivision": "Moscow"
+      "country": "Greece",
+      "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Fri 18:25",
-     "cityId": "gn-2950159",
-     "cityName": "Berlin",
-     "cityLon": 13.41053,
-     "cityLat": 52.52437,
-     "radiusKm": 3675,
-     "octant": "east",
-     "text": "Last spotted at a roadside diner 3,675 km east of Berlin.",
+     "cityId": "gn-360630",
+     "cityName": "Cairo",
+     "cityLon": 31.24967,
+     "cityLat": 30.06263,
+     "radiusKm": 2925,
+     "octant": "north-east",
+     "text": "Last spotted at a roadside diner 2,925 km northeast of Cairo.",
      "region": {
-      "continent": "Europe",
-      "country": "Germany",
+      "continent": "Africa",
+      "country": "Egypt",
       "subdivision": null
      }
     },
@@ -1193,33 +1193,33 @@
     {
      "id": "s1",
      "timestamp": "Mon 15:19",
-     "cityId": "gn-3530597",
-     "cityName": "Mexico City",
-     "cityLon": -99.12766,
-     "cityLat": 19.42847,
-     "radiusKm": 3675,
-     "octant": "north-east",
-     "text": "Last spotted at a roadside diner 3,675 km northeast of Mexico City.",
+     "cityId": "gn-5419384",
+     "cityName": "Denver",
+     "cityLon": -104.9847,
+     "cityLat": 39.73915,
+     "radiusKm": 2850,
+     "octant": "east",
+     "text": "Last spotted at a roadside diner 2,850 km east of Denver.",
      "region": {
       "continent": "North America",
-      "country": "Mexico",
-      "subdivision": null
+      "country": "United States",
+      "subdivision": "Colorado"
      }
     },
     {
      "id": "s2",
      "timestamp": "Mon 15:28",
-     "cityId": "gn-4509177",
-     "cityName": "Columbus",
-     "cityLon": -82.99879,
-     "cityLat": 39.96118,
-     "radiusKm": 1050,
-     "octant": "east",
-     "text": "Last seen withdrawing cash from an ATM 1,050 km east of Columbus.",
+     "cityId": "gn-5308655",
+     "cityName": "Phoenix",
+     "cityLon": -112.07404,
+     "cityLat": 33.44838,
+     "radiusKm": 3700,
+     "octant": "north-east",
+     "text": "Last seen withdrawing cash from an ATM 3,700 km northeast of Phoenix.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Ohio"
+      "subdivision": "Arizona"
      }
     },
     {
@@ -1255,48 +1255,48 @@
     {
      "id": "s1",
      "timestamp": "Tue 20:39",
-     "cityId": "gn-2673730",
-     "cityName": "Stockholm",
-     "cityLon": 18.06871,
-     "cityLat": 59.32938,
-     "radiusKm": 2925,
-     "octant": "south-west",
-     "text": "Last seen buying supplies at a truck stop 2,925 km southwest of Stockholm.",
+     "cityId": "gn-3169070",
+     "cityName": "Rome",
+     "cityLon": 12.51133,
+     "cityLat": 41.89193,
+     "radiusKm": 1450,
+     "octant": "west",
+     "text": "Last seen buying supplies at a truck stop 1,450 km west of Rome.",
      "region": {
       "continent": "Europe",
-      "country": "Sweden",
+      "country": "Italy",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Tue 05:59",
-     "cityId": "gn-2643743",
-     "cityName": "London",
-     "cityLon": -0.12574,
-     "cityLat": 51.50853,
-     "radiusKm": 1675,
-     "octant": "south",
-     "text": "Last seen sleeping in a parked car 1,675 km south of London.",
+     "cityId": "gn-3067696",
+     "cityName": "Prague",
+     "cityLon": 14.42076,
+     "cityLat": 50.08804,
+     "radiusKm": 2025,
+     "octant": "south-west",
+     "text": "Last seen sleeping in a parked car 2,025 km southwest of Prague.",
      "region": {
       "continent": "Europe",
-      "country": "United Kingdom",
+      "country": "Czechia",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Wed 08:07",
-     "cityId": "gn-323786",
-     "cityName": "Ankara",
-     "cityLon": 32.85427,
-     "cityLat": 39.91987,
-     "radiusKm": 3125,
-     "octant": "west",
-     "text": "Last seen eating at a drive-through 3,125 km west of Ankara.",
+     "cityId": "gn-2759794",
+     "cityName": "Amsterdam",
+     "cityLon": 4.88969,
+     "cityLat": 52.37403,
+     "radiusKm": 1850,
+     "octant": "south",
+     "text": "Last seen eating at a drive-through 1,850 km south of Amsterdam.",
      "region": {
-      "continent": "Asia",
-      "country": "Türkiye",
+      "continent": "Europe",
+      "country": "Netherlands",
       "subdivision": null
      }
     }
@@ -1317,33 +1317,33 @@
     {
      "id": "s1",
      "timestamp": "Wed 11:51",
-     "cityId": "gn-1609350",
-     "cityName": "Bangkok",
-     "cityLon": 100.50144,
-     "cityLat": 13.75398,
-     "radiusKm": 1825,
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 1775,
      "octant": "north-west",
-     "text": "Last seen at a bus depot 1,825 km northwest of Bangkok.",
+     "text": "Last seen at a bus depot 1,775 km northwest of Hanoi.",
      "region": {
       "continent": "Asia",
-      "country": "Thailand",
+      "country": "Vietnam",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Wed 06:44",
-     "cityId": "gn-1283240",
-     "cityName": "Kathmandu",
-     "cityLon": 85.3206,
-     "cityLat": 27.70169,
-     "radiusKm": 450,
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 1250,
      "octant": "east",
-     "text": "Last seen buying a burner phone 450 km east of Kathmandu.",
+     "text": "Last seen buying a burner phone 1,250 km east of New Delhi.",
      "region": {
       "continent": "Asia",
-      "country": "Nepal",
-      "subdivision": null
+      "country": "India",
+      "subdivision": "Delhi"
      }
     },
     {
@@ -1379,49 +1379,49 @@
     {
      "id": "s1",
      "timestamp": "Fri 10:30",
-     "cityId": "gn-2761369",
-     "cityName": "Vienna",
-     "cityLon": 16.37208,
-     "cityLat": 48.20849,
-     "radiusKm": 3800,
+     "cityId": "gn-360630",
+     "cityName": "Cairo",
+     "cityLon": 31.24967,
+     "cityLat": 30.06263,
+     "radiusKm": 1450,
      "octant": "south-east",
-     "text": "Last seen sleeping in a parked car 3,800 km southeast of Vienna.",
+     "text": "Last seen sleeping in a parked car 1,450 km southeast of Cairo.",
      "region": {
-      "continent": "Europe",
-      "country": "Austria",
+      "continent": "Africa",
+      "country": "Egypt",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Fri 10:11",
-     "cityId": "gn-184745",
-     "cityName": "Nairobi",
-     "cityLon": 36.81667,
-     "cityLat": -1.28333,
-     "radiusKm": 2425,
-     "octant": "north",
-     "text": "Last seen eating at a drive-through 2,425 km north of Nairobi.",
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 3850,
+     "octant": "west",
+     "text": "Last seen eating at a drive-through 3,850 km west of New Delhi.",
      "region": {
-      "continent": "Africa",
-      "country": "Kenya",
-      "subdivision": null
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Delhi"
      }
     },
     {
      "id": "s3",
      "timestamp": "Sat 14:57",
-     "cityId": "gn-703448",
-     "cityName": "Kyiv",
-     "cityLon": 30.5238,
-     "cityLat": 50.45466,
-     "radiusKm": 3500,
+     "cityId": "gn-524901",
+     "cityName": "Moscow",
+     "cityLon": 37.61781,
+     "cityLat": 55.75204,
+     "radiusKm": 3975,
      "octant": "south",
-     "text": "Last seen withdrawing cash from an ATM 3,500 km south of Kyiv.",
+     "text": "Last seen withdrawing cash from an ATM 3,975 km south of Moscow.",
      "region": {
       "continent": "Europe",
-      "country": "Ukraine",
-      "subdivision": null
+      "country": "Russia",
+      "subdivision": "Moscow"
      }
     }
    ],
@@ -1441,49 +1441,49 @@
     {
      "id": "s1",
      "timestamp": "Thu 15:44",
-     "cityId": "gn-4509177",
-     "cityName": "Columbus",
-     "cityLon": -82.99879,
-     "cityLat": 39.96118,
-     "radiusKm": 1600,
-     "octant": "south",
-     "text": "Last seen refueling a dusty pickup 1,600 km south of Columbus.",
+     "cityId": "gn-3530597",
+     "cityName": "Mexico City",
+     "cityLon": -99.12766,
+     "cityLat": 19.42847,
+     "radiusKm": 2075,
+     "octant": "north-east",
+     "text": "Last seen refueling a dusty pickup 2,075 km northeast of Mexico City.",
      "region": {
       "continent": "North America",
-      "country": "United States",
-      "subdivision": "Ohio"
+      "country": "Mexico",
+      "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Thu 07:09",
-     "cityId": "gn-4180439",
-     "cityName": "Atlanta",
-     "cityLon": -84.38798,
-     "cityLat": 33.749,
-     "radiusKm": 975,
-     "octant": "south-east",
-     "text": "Last seen filling jerrycans 975 km southeast of Atlanta.",
+     "cityId": "gn-6094817",
+     "cityName": "Ottawa",
+     "cityLon": -75.69812,
+     "cityLat": 45.41117,
+     "radiusKm": 2225,
+     "octant": "south",
+     "text": "Last seen filling jerrycans 2,225 km south of Ottawa.",
      "region": {
       "continent": "North America",
-      "country": "United States",
-      "subdivision": "Georgia"
+      "country": "Canada",
+      "subdivision": "Ontario"
      }
     },
     {
      "id": "s3",
      "timestamp": "Fri 09:48",
-     "cityId": "gn-4930956",
-     "cityName": "Boston",
-     "cityLon": -71.05977,
-     "cityLat": 42.35843,
-     "radiusKm": 2050,
-     "octant": "south-west",
-     "text": "Last seen eating at a drive-through 2,050 km southwest of Boston.",
+     "cityId": "gn-5419384",
+     "cityName": "Denver",
+     "cityLon": -104.9847,
+     "cityLat": 39.73915,
+     "radiusKm": 2775,
+     "octant": "south-east",
+     "text": "Last seen eating at a drive-through 2,775 km southeast of Denver.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Massachusetts"
+      "subdivision": "Colorado"
      }
     }
    ],
@@ -1535,17 +1535,17 @@
     {
      "id": "s3",
      "timestamp": "Sat 20:57",
-     "cityId": "gn-1283240",
-     "cityName": "Kathmandu",
-     "cityLon": 85.3206,
-     "cityLat": 27.70169,
-     "radiusKm": 1175,
-     "octant": "south-west",
-     "text": "Last seen sleeping in a parked car 1,175 km southwest of Kathmandu.",
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 975,
+     "octant": "south",
+     "text": "Last seen sleeping in a parked car 975 km south of New Delhi.",
      "region": {
       "continent": "Asia",
-      "country": "Nepal",
-      "subdivision": null
+      "country": "India",
+      "subdivision": "Delhi"
      }
     }
    ],
@@ -1565,48 +1565,48 @@
     {
      "id": "s1",
      "timestamp": "Wed 15:09",
-     "cityId": "gn-3117735",
-     "cityName": "Madrid",
-     "cityLon": -3.70256,
-     "cityLat": 40.4165,
-     "radiusKm": 3425,
-     "octant": "east",
-     "text": "Last seen at a bus depot 3,425 km east of Madrid.",
+     "cityId": "gn-2673730",
+     "cityName": "Stockholm",
+     "cityLon": 18.06871,
+     "cityLat": 59.32938,
+     "radiusKm": 3575,
+     "octant": "south",
+     "text": "Last seen at a bus depot 3,575 km south of Stockholm.",
      "region": {
       "continent": "Europe",
-      "country": "Spain",
+      "country": "Sweden",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Wed 08:27",
-     "cityId": "gn-658225",
-     "cityName": "Helsinki",
-     "cityLon": 24.93545,
-     "cityLat": 60.16952,
-     "radiusKm": 3575,
-     "octant": "south",
-     "text": "Last seen boarding a night bus 3,575 km south of Helsinki.",
+     "cityId": "gn-184745",
+     "cityName": "Nairobi",
+     "cityLon": 36.81667,
+     "cityLat": -1.28333,
+     "radiusKm": 3375,
+     "octant": "north",
+     "text": "Last seen boarding a night bus 3,375 km north of Nairobi.",
      "region": {
-      "continent": "Europe",
-      "country": "Finland",
+      "continent": "Africa",
+      "country": "Kenya",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Thu 15:23",
-     "cityId": "gn-2618425",
-     "cityName": "Copenhagen",
-     "cityLon": 12.56553,
-     "cityLat": 55.67594,
-     "radiusKm": 3375,
+     "cityId": "gn-3054643",
+     "cityName": "Budapest",
+     "cityLon": 19.04045,
+     "cityLat": 47.49835,
+     "radiusKm": 2375,
      "octant": "south-east",
-     "text": "Last seen boarding a night bus 3,375 km southeast of Copenhagen.",
+     "text": "Last seen boarding a night bus 2,375 km southeast of Budapest.",
      "region": {
       "continent": "Europe",
-      "country": "Denmark",
+      "country": "Hungary",
       "subdivision": null
      }
     }
@@ -1643,32 +1643,32 @@
     {
      "id": "s2",
      "timestamp": "Fri 05:43",
-     "cityId": "gn-1261481",
-     "cityName": "New Delhi",
-     "cityLon": 77.2148,
-     "cityLat": 28.62137,
-     "radiusKm": 2800,
-     "octant": "west",
-     "text": "Last seen hitching a ride from a trucker 2,800 km west of New Delhi.",
+     "cityId": "gn-2618425",
+     "cityName": "Copenhagen",
+     "cityLon": 12.56553,
+     "cityLat": 55.67594,
+     "radiusKm": 3650,
+     "octant": "south-east",
+     "text": "Last seen hitching a ride from a trucker 3,650 km southeast of Copenhagen.",
      "region": {
-      "continent": "Asia",
-      "country": "India",
-      "subdivision": "Delhi"
+      "continent": "Europe",
+      "country": "Denmark",
+      "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Sat 14:49",
-     "cityId": "gn-703448",
-     "cityName": "Kyiv",
-     "cityLon": 30.5238,
-     "cityLat": 50.45466,
-     "radiusKm": 2325,
-     "octant": "south-east",
-     "text": "Last seen at a bus depot 2,325 km southeast of Kyiv.",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 3600,
+     "octant": "west",
+     "text": "Last seen at a bus depot 3,600 km west of Kathmandu.",
      "region": {
-      "continent": "Europe",
-      "country": "Ukraine",
+      "continent": "Asia",
+      "country": "Nepal",
       "subdivision": null
      }
     }
@@ -1689,48 +1689,48 @@
     {
      "id": "s1",
      "timestamp": "Mon 15:00",
-     "cityId": "gn-1701668",
-     "cityName": "Manila",
-     "cityLon": 120.9822,
-     "cityLat": 14.6042,
-     "radiusKm": 2825,
-     "octant": "south-west",
-     "text": "Last seen filling jerrycans 2,825 km southwest of Manila.",
-     "region": {
-      "continent": "Asia",
-      "country": "Philippines",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Mon 05:07",
-     "cityId": "gn-1581130",
-     "cityName": "Hanoi",
-     "cityLon": 105.84117,
-     "cityLat": 21.0245,
-     "radiusKm": 3175,
-     "octant": "south",
-     "text": "Last seen withdrawing cash from an ATM 3,175 km south of Hanoi.",
-     "region": {
-      "continent": "Asia",
-      "country": "Vietnam",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Tue 06:30",
      "cityId": "gn-1880252",
      "cityName": "Singapore",
      "cityLon": 103.85007,
      "cityLat": 1.28967,
      "radiusKm": 1100,
      "octant": "south-east",
-     "text": "Last seen asking a gas attendant for directions 1,100 km southeast of Singapore.",
+     "text": "Last seen filling jerrycans 1,100 km southeast of Singapore.",
      "region": {
       "continent": "Asia",
       "country": "Singapore",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 05:07",
+     "cityId": "gn-1609350",
+     "cityName": "Bangkok",
+     "cityLon": 100.50144,
+     "cityLat": 13.75398,
+     "radiusKm": 2500,
+     "octant": "south",
+     "text": "Last seen withdrawing cash from an ATM 2,500 km south of Bangkok.",
+     "region": {
+      "continent": "Asia",
+      "country": "Thailand",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 06:30",
+     "cityId": "gn-1701668",
+     "cityName": "Manila",
+     "cityLon": 120.9822,
+     "cityLat": 14.6042,
+     "radiusKm": 2825,
+     "octant": "south-west",
+     "text": "Last seen asking a gas attendant for directions 2,825 km southwest of Manila.",
+     "region": {
+      "continent": "Asia",
+      "country": "Philippines",
       "subdivision": null
      }
     }
@@ -1751,29 +1751,13 @@
     {
      "id": "s1",
      "timestamp": "Tue 11:03",
-     "cityId": "gn-360630",
-     "cityName": "Cairo",
-     "cityLon": 31.24967,
-     "cityLat": 30.06263,
-     "radiusKm": 3650,
-     "octant": "south-west",
-     "text": "Last seen eating at a drive-through 3,650 km southwest of Cairo.",
-     "region": {
-      "continent": "Africa",
-      "country": "Egypt",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Tue 21:48",
      "cityId": "gn-964137",
      "cityName": "Pretoria",
      "cityLon": 28.18783,
      "cityLat": -25.74486,
      "radiusKm": 3650,
      "octant": "north-west",
-     "text": "Last seen boarding a night bus 3,650 km northwest of Pretoria.",
+     "text": "Last seen eating at a drive-through 3,650 km northwest of Pretoria.",
      "region": {
       "continent": "Africa",
       "country": "South Africa",
@@ -1781,18 +1765,34 @@
      }
     },
     {
-     "id": "s3",
-     "timestamp": "Wed 07:02",
+     "id": "s2",
+     "timestamp": "Tue 21:48",
      "cityId": "gn-184745",
      "cityName": "Nairobi",
      "cityLon": 36.81667,
      "cityLat": -1.28333,
      "radiusKm": 2800,
      "octant": "west",
-     "text": "Last seen buying supplies at a truck stop 2,800 km west of Nairobi.",
+     "text": "Last seen boarding a night bus 2,800 km west of Nairobi.",
      "region": {
       "continent": "Africa",
       "country": "Kenya",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 07:02",
+     "cityId": "gn-360630",
+     "cityName": "Cairo",
+     "cityLon": 31.24967,
+     "cityLat": 30.06263,
+     "radiusKm": 3650,
+     "octant": "south-west",
+     "text": "Last seen buying supplies at a truck stop 3,650 km southwest of Cairo.",
+     "region": {
+      "continent": "Africa",
+      "country": "Egypt",
       "subdivision": null
      }
     }
@@ -1829,32 +1829,32 @@
     {
      "id": "s2",
      "timestamp": "Mon 19:55",
-     "cityId": "gn-1609350",
-     "cityName": "Bangkok",
-     "cityLon": 100.50144,
-     "cityLat": 13.75398,
-     "radiusKm": 3750,
-     "octant": "north-east",
-     "text": "Last seen buying a burner phone 3,750 km northeast of Bangkok.",
-     "region": {
-      "continent": "Asia",
-      "country": "Thailand",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Tue 11:06",
      "cityId": "gn-1850147",
      "cityName": "Tokyo",
      "cityLon": 139.69171,
      "cityLat": 35.6895,
      "radiusKm": 1125,
      "octant": "west",
-     "text": "Last seen at a bus depot 1,125 km west of Tokyo.",
+     "text": "Last seen buying a burner phone 1,125 km west of Tokyo.",
      "region": {
       "continent": "Asia",
       "country": "Japan",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 11:06",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 2775,
+     "octant": "north-east",
+     "text": "Last seen at a bus depot 2,775 km northeast of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
       "subdivision": null
      }
     }
@@ -1875,48 +1875,48 @@
     {
      "id": "s1",
      "timestamp": "Thu 22:26",
-     "cityId": "gn-2759794",
-     "cityName": "Amsterdam",
-     "cityLon": 4.88969,
-     "cityLat": 52.37403,
-     "radiusKm": 2775,
-     "octant": "east",
-     "text": "Last seen eating at a drive-through 2,775 km east of Amsterdam.",
+     "cityId": "gn-2618425",
+     "cityName": "Copenhagen",
+     "cityLon": 12.56553,
+     "cityLat": 55.67594,
+     "radiusKm": 2525,
+     "octant": "south-east",
+     "text": "Last seen eating at a drive-through 2,525 km southeast of Copenhagen.",
      "region": {
       "continent": "Europe",
-      "country": "Netherlands",
+      "country": "Denmark",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Thu 21:28",
-     "cityId": "gn-344979",
-     "cityName": "Addis Ababa",
-     "cityLon": 38.74689,
-     "cityLat": 9.02497,
-     "radiusKm": 3325,
-     "octant": "north",
-     "text": "Last seen hitching a ride from a trucker 3,325 km north of Addis Ababa.",
+     "cityId": "gn-524901",
+     "cityName": "Moscow",
+     "cityLon": 37.61781,
+     "cityLat": 55.75204,
+     "radiusKm": 1925,
+     "octant": "south",
+     "text": "Last seen hitching a ride from a trucker 1,925 km south of Moscow.",
      "region": {
-      "continent": "Africa",
-      "country": "Ethiopia",
-      "subdivision": null
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Moscow"
      }
     },
     {
      "id": "s3",
      "timestamp": "Fri 09:04",
-     "cityId": "gn-3067696",
-     "cityName": "Prague",
-     "cityLon": 14.42076,
-     "cityLat": 50.08804,
-     "radiusKm": 2050,
-     "octant": "south-east",
-     "text": "Last seen boarding a night bus 2,050 km southeast of Prague.",
+     "cityId": "gn-2643743",
+     "cityName": "London",
+     "cityLon": -0.12574,
+     "cityLat": 51.50853,
+     "radiusKm": 3050,
+     "octant": "east",
+     "text": "Last seen boarding a night bus 3,050 km east of London.",
      "region": {
       "continent": "Europe",
-      "country": "Czechia",
+      "country": "United Kingdom",
       "subdivision": null
      }
     }
@@ -1937,33 +1937,33 @@
     {
      "id": "s1",
      "timestamp": "Mon 20:12",
+     "cityId": "gn-3936456",
+     "cityName": "Lima",
+     "cityLon": -77.02824,
+     "cityLat": -12.04318,
+     "radiusKm": 3800,
+     "octant": "north-west",
+     "text": "Last seen filling jerrycans 3,800 km northwest of Lima.",
+     "region": {
+      "continent": "South America",
+      "country": "Peru",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 15:09",
      "cityId": "gn-5419384",
      "cityName": "Denver",
      "cityLon": -104.9847,
      "cityLat": 39.73915,
      "radiusKm": 2675,
      "octant": "south-east",
-     "text": "Last seen filling jerrycans 2,675 km southeast of Denver.",
+     "text": "Last spotted at a roadside diner 2,675 km southeast of Denver.",
      "region": {
       "continent": "North America",
       "country": "United States",
       "subdivision": "Colorado"
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Mon 15:09",
-     "cityId": "gn-4180439",
-     "cityName": "Atlanta",
-     "cityLon": -84.38798,
-     "cityLat": 33.749,
-     "radiusKm": 1975,
-     "octant": "south-west",
-     "text": "Last spotted at a roadside diner 1,975 km southwest of Atlanta.",
-     "region": {
-      "continent": "North America",
-      "country": "United States",
-      "subdivision": "Georgia"
      }
     },
     {
@@ -1999,29 +1999,13 @@
     {
      "id": "s1",
      "timestamp": "Thu 09:53",
-     "cityId": "gn-1850147",
-     "cityName": "Tokyo",
-     "cityLon": 139.69171,
-     "cityLat": 35.6895,
-     "radiusKm": 3675,
-     "octant": "west",
-     "text": "Last seen withdrawing cash from an ATM 3,675 km west of Tokyo.",
-     "region": {
-      "continent": "Asia",
-      "country": "Japan",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Thu 18:37",
      "cityId": "gn-1642911",
      "cityName": "Jakarta",
      "cityLon": 106.84513,
      "cityLat": -6.21462,
      "radiusKm": 3050,
      "octant": "north",
-     "text": "Last seen hitching a ride from a trucker 3,050 km north of Jakarta.",
+     "text": "Last seen withdrawing cash from an ATM 3,050 km north of Jakarta.",
      "region": {
       "continent": "Asia",
       "country": "Indonesia",
@@ -2029,19 +2013,35 @@
      }
     },
     {
-     "id": "s3",
-     "timestamp": "Fri 14:34",
-     "cityId": "gn-1261481",
-     "cityName": "New Delhi",
-     "cityLon": 77.2148,
-     "cityLat": 28.62137,
-     "radiusKm": 3025,
-     "octant": "east",
-     "text": "Last seen filling jerrycans 3,025 km east of New Delhi.",
+     "id": "s2",
+     "timestamp": "Thu 18:37",
+     "cityId": "gn-1835848",
+     "cityName": "Seoul",
+     "cityLon": 126.9784,
+     "cityLat": 37.566,
+     "radiusKm": 2750,
+     "octant": "south-west",
+     "text": "Last seen hitching a ride from a trucker 2,750 km southwest of Seoul.",
      "region": {
       "continent": "Asia",
-      "country": "India",
-      "subdivision": "Delhi"
+      "country": "South Korea",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 14:34",
+     "cityId": "gn-1850147",
+     "cityName": "Tokyo",
+     "cityLon": 139.69171,
+     "cityLat": 35.6895,
+     "radiusKm": 3675,
+     "octant": "west",
+     "text": "Last seen filling jerrycans 3,675 km west of Tokyo.",
+     "region": {
+      "continent": "Asia",
+      "country": "Japan",
+      "subdivision": null
      }
     }
    ],
@@ -2061,48 +2061,48 @@
     {
      "id": "s1",
      "timestamp": "Thu 06:47",
-     "cityId": "gn-360630",
-     "cityName": "Cairo",
-     "cityLon": 31.24967,
-     "cityLat": 30.06263,
-     "radiusKm": 3550,
-     "octant": "west",
-     "text": "Last seen filling jerrycans 3,550 km west of Cairo.",
+     "cityId": "gn-3054643",
+     "cityName": "Budapest",
+     "cityLon": 19.04045,
+     "cityLat": 47.49835,
+     "radiusKm": 2600,
+     "octant": "south-west",
+     "text": "Last seen filling jerrycans 2,600 km southwest of Budapest.",
      "region": {
-      "continent": "Africa",
-      "country": "Egypt",
+      "continent": "Europe",
+      "country": "Hungary",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Thu 13:25",
-     "cityId": "gn-2267057",
-     "cityName": "Lisbon",
-     "cityLon": -9.1498,
-     "cityLat": 38.72509,
-     "radiusKm": 600,
-     "octant": "south-east",
-     "text": "Last seen buying supplies at a truck stop 600 km southeast of Lisbon.",
-     "region": {
-      "continent": "Europe",
-      "country": "Portugal",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Fri 22:45",
      "cityId": "gn-2964574",
      "cityName": "Dublin",
      "cityLon": -6.24889,
      "cityLat": 53.33306,
      "radiusKm": 2175,
      "octant": "south",
-     "text": "Last seen asking a gas attendant for directions 2,175 km south of Dublin.",
+     "text": "Last seen buying supplies at a truck stop 2,175 km south of Dublin.",
      "region": {
       "continent": "Europe",
       "country": "Ireland",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 22:45",
+     "cityId": "gn-3169070",
+     "cityName": "Rome",
+     "cityLon": 12.51133,
+     "cityLat": 41.89193,
+     "radiusKm": 1875,
+     "octant": "west",
+     "text": "Last seen asking a gas attendant for directions 1,875 km west of Rome.",
+     "region": {
+      "continent": "Europe",
+      "country": "Italy",
       "subdivision": null
      }
     }
@@ -2123,48 +2123,48 @@
     {
      "id": "s1",
      "timestamp": "Sun 14:22",
-     "cityId": "gn-2988507",
-     "cityName": "Paris",
-     "cityLon": 2.3488,
-     "cityLat": 48.85341,
-     "radiusKm": 650,
-     "octant": "north-east",
-     "text": "Last seen filling jerrycans 650 km northeast of Paris.",
+     "cityId": "gn-2673730",
+     "cityName": "Stockholm",
+     "cityLon": 18.06871,
+     "cityLat": 59.32938,
+     "radiusKm": 950,
+     "octant": "south-west",
+     "text": "Last seen filling jerrycans 950 km southwest of Stockholm.",
      "region": {
       "continent": "Europe",
-      "country": "France",
+      "country": "Sweden",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Sun 13:17",
-     "cityId": "gn-2759794",
-     "cityName": "Amsterdam",
-     "cityLon": 4.88969,
-     "cityLat": 52.37403,
-     "radiusKm": 325,
-     "octant": "east",
-     "text": "Last seen boarding a night bus 325 km east of Amsterdam.",
+     "cityId": "gn-3067696",
+     "cityName": "Prague",
+     "cityLon": 14.42076,
+     "cityLat": 50.08804,
+     "radiusKm": 425,
+     "octant": "north-west",
+     "text": "Last seen boarding a night bus 425 km northwest of Prague.",
      "region": {
       "continent": "Europe",
-      "country": "Netherlands",
+      "country": "Czechia",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Mon 11:28",
-     "cityId": "gn-2618425",
-     "cityName": "Copenhagen",
-     "cityLon": 12.56553,
-     "cityLat": 55.67594,
-     "radiusKm": 425,
-     "octant": "south-west",
-     "text": "Last seen withdrawing cash from an ATM 425 km southwest of Copenhagen.",
+     "cityId": "gn-703448",
+     "cityName": "Kyiv",
+     "cityLon": 30.5238,
+     "cityLat": 50.45466,
+     "radiusKm": 1475,
+     "octant": "west",
+     "text": "Last seen withdrawing cash from an ATM 1,475 km west of Kyiv.",
      "region": {
       "continent": "Europe",
-      "country": "Denmark",
+      "country": "Ukraine",
       "subdivision": null
      }
     }
@@ -2185,49 +2185,49 @@
     {
      "id": "s1",
      "timestamp": "Sun 15:07",
-     "cityId": "gn-4259418",
-     "cityName": "Indianapolis",
-     "cityLon": -86.15804,
-     "cityLat": 39.76838,
-     "radiusKm": 425,
-     "octant": "north-east",
-     "text": "Last seen hitching a ride from a trucker 425 km northeast of Indianapolis.",
+     "cityId": "gn-4487042",
+     "cityName": "Raleigh",
+     "cityLon": -78.63861,
+     "cityLat": 35.7721,
+     "radiusKm": 875,
+     "octant": "north-west",
+     "text": "Last seen hitching a ride from a trucker 875 km northwest of Raleigh.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Indiana"
+      "subdivision": "North Carolina"
      }
     },
     {
      "id": "s2",
      "timestamp": "Sun 22:10",
-     "cityId": "gn-4180439",
-     "cityName": "Atlanta",
-     "cityLon": -84.38798,
-     "cityLat": 33.749,
-     "radiusKm": 1000,
+     "cityId": "gn-4509177",
+     "cityName": "Columbus",
+     "cityLon": -82.99879,
+     "cityLat": 39.96118,
+     "radiusKm": 325,
      "octant": "north",
-     "text": "Last seen hitching a ride from a trucker 1,000 km north of Atlanta.",
+     "text": "Last seen hitching a ride from a trucker 325 km north of Columbus.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Georgia"
+      "subdivision": "Ohio"
      }
     },
     {
      "id": "s3",
      "timestamp": "Mon 18:17",
-     "cityId": "gn-4140963",
-     "cityName": "Washington",
-     "cityLon": -77.03637,
-     "cityLat": 38.89511,
-     "radiusKm": 675,
-     "octant": "north-west",
-     "text": "Last seen boarding a night bus 675 km northwest of Washington.",
+     "cityId": "gn-5308655",
+     "cityName": "Phoenix",
+     "cityLon": -112.07404,
+     "cityLat": 33.44838,
+     "radiusKm": 2725,
+     "octant": "north-east",
+     "text": "Last seen boarding a night bus 2,725 km northeast of Phoenix.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "District of Columbia"
+      "subdivision": "Arizona"
      }
     }
    ],
@@ -2247,29 +2247,13 @@
     {
      "id": "s1",
      "timestamp": "Mon 08:59",
-     "cityId": "gn-3067696",
-     "cityName": "Prague",
-     "cityLon": 14.42076,
-     "cityLat": 50.08804,
-     "radiusKm": 2075,
-     "octant": "south-west",
-     "text": "Last seen buying supplies at a truck stop 2,075 km southwest of Prague.",
-     "region": {
-      "continent": "Europe",
-      "country": "Czechia",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Mon 22:24",
      "cityId": "gn-703448",
      "cityName": "Kyiv",
      "cityLon": 30.5238,
      "cityLat": 50.45466,
      "radiusKm": 3150,
      "octant": "west",
-     "text": "Last seen buying a burner phone 3,150 km west of Kyiv.",
+     "text": "Last seen buying supplies at a truck stop 3,150 km west of Kyiv.",
      "region": {
       "continent": "Europe",
       "country": "Ukraine",
@@ -2277,18 +2261,34 @@
      }
     },
     {
-     "id": "s3",
-     "timestamp": "Tue 14:42",
+     "id": "s2",
+     "timestamp": "Mon 22:24",
      "cityId": "gn-2643743",
      "cityName": "London",
      "cityLon": -0.12574,
      "cityLat": 51.50853,
      "radiusKm": 1500,
      "octant": "south",
-     "text": "Last seen eating at a drive-through 1,500 km south of London.",
+     "text": "Last seen buying a burner phone 1,500 km south of London.",
      "region": {
       "continent": "Europe",
       "country": "United Kingdom",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 14:42",
+     "cityId": "gn-2618425",
+     "cityName": "Copenhagen",
+     "cityLon": 12.56553,
+     "cityLat": 55.67594,
+     "radiusKm": 2350,
+     "octant": "south-west",
+     "text": "Last seen eating at a drive-through 2,350 km southwest of Copenhagen.",
+     "region": {
+      "continent": "Europe",
+      "country": "Denmark",
       "subdivision": null
      }
     }
@@ -2309,48 +2309,48 @@
     {
      "id": "s1",
      "timestamp": "Wed 19:06",
-     "cityId": "gn-323786",
-     "cityName": "Ankara",
-     "cityLon": 32.85427,
-     "cityLat": 39.91987,
-     "radiusKm": 1025,
-     "octant": "north",
-     "text": "Last seen asking a gas attendant for directions 1,025 km north of Ankara.",
-     "region": {
-      "continent": "Asia",
-      "country": "Türkiye",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Wed 11:38",
-     "cityId": "gn-2267057",
-     "cityName": "Lisbon",
-     "cityLon": -9.1498,
-     "cityLat": 38.72509,
-     "radiusKm": 3325,
-     "octant": "north-east",
-     "text": "Last seen withdrawing cash from an ATM 3,325 km northeast of Lisbon.",
-     "region": {
-      "continent": "Europe",
-      "country": "Portugal",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Thu 10:58",
      "cityId": "gn-2964574",
      "cityName": "Dublin",
      "cityLon": -6.24889,
      "cityLat": 53.33306,
      "radiusKm": 2575,
      "octant": "east",
-     "text": "Last seen filling jerrycans 2,575 km east of Dublin.",
+     "text": "Last seen asking a gas attendant for directions 2,575 km east of Dublin.",
      "region": {
       "continent": "Europe",
       "country": "Ireland",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 11:38",
+     "cityId": "gn-756135",
+     "cityName": "Warsaw",
+     "cityLon": 21.01178,
+     "cityLat": 52.22977,
+     "radiusKm": 775,
+     "octant": "south-east",
+     "text": "Last seen withdrawing cash from an ATM 775 km southeast of Warsaw.",
+     "region": {
+      "continent": "Europe",
+      "country": "Poland",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 10:58",
+     "cityId": "gn-3169070",
+     "cityName": "Rome",
+     "cityLon": 12.51133,
+     "cityLat": 41.89193,
+     "radiusKm": 1600,
+     "octant": "north-east",
+     "text": "Last seen filling jerrycans 1,600 km northeast of Rome.",
+     "region": {
+      "continent": "Europe",
+      "country": "Italy",
       "subdivision": null
      }
     }
@@ -2371,17 +2371,17 @@
     {
      "id": "s1",
      "timestamp": "Sun 22:56",
-     "cityId": "gn-1261481",
-     "cityName": "New Delhi",
-     "cityLon": 77.2148,
-     "cityLat": 28.62137,
-     "radiusKm": 2450,
-     "octant": "south",
-     "text": "Last seen withdrawing cash from an ATM 2,450 km south of New Delhi.",
+     "cityId": "gn-1880252",
+     "cityName": "Singapore",
+     "cityLon": 103.85007,
+     "cityLat": 1.28967,
+     "radiusKm": 2750,
+     "octant": "west",
+     "text": "Last seen withdrawing cash from an ATM 2,750 km west of Singapore.",
      "region": {
       "continent": "Asia",
-      "country": "India",
-      "subdivision": "Delhi"
+      "country": "Singapore",
+      "subdivision": null
      }
     },
     {
@@ -2403,17 +2403,17 @@
     {
      "id": "s3",
      "timestamp": "Mon 17:12",
-     "cityId": "gn-1609350",
-     "cityName": "Bangkok",
-     "cityLon": 100.50144,
-     "cityLat": 13.75398,
-     "radiusKm": 2400,
-     "octant": "west",
-     "text": "Last seen eating at a drive-through 2,400 km west of Bangkok.",
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 2450,
+     "octant": "south",
+     "text": "Last seen eating at a drive-through 2,450 km south of New Delhi.",
      "region": {
       "continent": "Asia",
-      "country": "Thailand",
-      "subdivision": null
+      "country": "India",
+      "subdivision": "Delhi"
      }
     }
    ],
@@ -2433,17 +2433,17 @@
     {
      "id": "s1",
      "timestamp": "Thu 09:45",
-     "cityId": "gn-1283240",
-     "cityName": "Kathmandu",
-     "cityLon": 85.3206,
-     "cityLat": 27.70169,
-     "radiusKm": 2100,
-     "octant": "north-west",
-     "text": "Last seen buying supplies at a truck stop 2,100 km northwest of Kathmandu.",
+     "cityId": "gn-524901",
+     "cityName": "Moscow",
+     "cityLon": 37.61781,
+     "cityLat": 55.75204,
+     "radiusKm": 2825,
+     "octant": "east",
+     "text": "Last seen buying supplies at a truck stop 2,825 km east of Moscow.",
      "region": {
-      "continent": "Asia",
-      "country": "Nepal",
-      "subdivision": null
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Moscow"
      }
     },
     {
@@ -2465,17 +2465,17 @@
     {
      "id": "s3",
      "timestamp": "Fri 06:52",
-     "cityId": "gn-703448",
-     "cityName": "Kyiv",
-     "cityLon": 30.5238,
-     "cityLat": 50.45466,
-     "radiusKm": 3150,
-     "octant": "east",
-     "text": "Last seen hitching a ride from a trucker 3,150 km east of Kyiv.",
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 1575,
+     "octant": "north-west",
+     "text": "Last seen hitching a ride from a trucker 1,575 km northwest of New Delhi.",
      "region": {
-      "continent": "Europe",
-      "country": "Ukraine",
-      "subdivision": null
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Delhi"
      }
     }
    ],
@@ -2495,32 +2495,32 @@
     {
      "id": "s1",
      "timestamp": "Thu 11:25",
-     "cityId": "gn-360630",
-     "cityName": "Cairo",
-     "cityLon": 31.24967,
-     "cityLat": 30.06263,
-     "radiusKm": 2150,
+     "cityId": "gn-264371",
+     "cityName": "Athens",
+     "cityLon": 23.72784,
+     "cityLat": 37.98376,
+     "radiusKm": 3250,
      "octant": "south-east",
-     "text": "Last seen filling jerrycans 2,150 km southeast of Cairo.",
+     "text": "Last seen filling jerrycans 3,250 km southeast of Athens.",
      "region": {
-      "continent": "Africa",
-      "country": "Egypt",
+      "continent": "Europe",
+      "country": "Greece",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Thu 14:15",
-     "cityId": "gn-184745",
-     "cityName": "Nairobi",
-     "cityLon": 36.81667,
-     "cityLat": -1.28333,
-     "radiusKm": 2025,
+     "cityId": "gn-344979",
+     "cityName": "Addis Ababa",
+     "cityLon": 38.74689,
+     "cityLat": 9.02497,
+     "radiusKm": 925,
      "octant": "north-east",
-     "text": "Last seen hitching a ride from a trucker 2,025 km northeast of Nairobi.",
+     "text": "Last seen hitching a ride from a trucker 925 km northeast of Addis Ababa.",
      "region": {
       "continent": "Africa",
-      "country": "Kenya",
+      "country": "Ethiopia",
       "subdivision": null
      }
     },
@@ -2557,48 +2557,48 @@
     {
      "id": "s1",
      "timestamp": "Tue 20:27",
-     "cityId": "gn-3054643",
-     "cityName": "Budapest",
-     "cityLon": 19.04045,
-     "cityLat": 47.49835,
-     "radiusKm": 1500,
+     "cityId": "gn-360630",
+     "cityName": "Cairo",
+     "cityLon": 31.24967,
+     "cityLat": 30.06263,
+     "radiusKm": 3550,
      "octant": "north-west",
-     "text": "Last seen buying supplies at a truck stop 1,500 km northwest of Budapest.",
+     "text": "Last seen buying supplies at a truck stop 3,550 km northwest of Cairo.",
      "region": {
-      "continent": "Europe",
-      "country": "Hungary",
+      "continent": "Africa",
+      "country": "Egypt",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Tue 13:40",
-     "cityId": "gn-3117735",
-     "cityName": "Madrid",
-     "cityLon": -3.70256,
-     "cityLat": 40.4165,
-     "radiusKm": 1300,
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 1600,
      "octant": "north",
-     "text": "Last seen at a bus depot 1,300 km north of Madrid.",
+     "text": "Last seen at a bus depot 1,600 km north of Lisbon.",
      "region": {
       "continent": "Europe",
-      "country": "Spain",
+      "country": "Portugal",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Wed 15:12",
-     "cityId": "gn-2964574",
-     "cityName": "Dublin",
-     "cityLon": -6.24889,
-     "cityLat": 53.33306,
-     "radiusKm": 450,
-     "octant": "east",
-     "text": "Last seen sleeping in a parked car 450 km east of Dublin.",
+     "cityId": "gn-2673730",
+     "cityName": "Stockholm",
+     "cityLon": 18.06871,
+     "cityLat": 59.32938,
+     "radiusKm": 1450,
+     "octant": "south-west",
+     "text": "Last seen sleeping in a parked car 1,450 km southwest of Stockholm.",
      "region": {
       "continent": "Europe",
-      "country": "Ireland",
+      "country": "Sweden",
       "subdivision": null
      }
     }
@@ -2681,49 +2681,49 @@
     {
      "id": "s1",
      "timestamp": "Wed 20:25",
-     "cityId": "gn-703448",
-     "cityName": "Kyiv",
-     "cityLon": 30.5238,
-     "cityLat": 50.45466,
-     "radiusKm": 3725,
-     "octant": "south-east",
-     "text": "Last seen hitching a ride from a trucker 3,725 km southeast of Kyiv.",
+     "cityId": "gn-360630",
+     "cityName": "Cairo",
+     "cityLon": 31.24967,
+     "cityLat": 30.06263,
+     "radiusKm": 3050,
+     "octant": "east",
+     "text": "Last seen hitching a ride from a trucker 3,050 km east of Cairo.",
      "region": {
-      "continent": "Europe",
-      "country": "Ukraine",
+      "continent": "Africa",
+      "country": "Egypt",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Wed 19:42",
-     "cityId": "gn-264371",
-     "cityName": "Athens",
-     "cityLon": 23.72784,
-     "cityLat": 37.98376,
-     "radiusKm": 3775,
-     "octant": "east",
-     "text": "Last seen refueling a dusty pickup 3,775 km east of Athens.",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 2275,
+     "octant": "west",
+     "text": "Last seen refueling a dusty pickup 2,275 km west of Kathmandu.",
      "region": {
-      "continent": "Europe",
-      "country": "Greece",
+      "continent": "Asia",
+      "country": "Nepal",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Thu 08:00",
-     "cityId": "gn-1261481",
-     "cityName": "New Delhi",
-     "cityLon": 77.2148,
-     "cityLat": 28.62137,
-     "radiusKm": 1475,
-     "octant": "west",
-     "text": "Last seen at a bus depot 1,475 km west of New Delhi.",
+     "cityId": "gn-344979",
+     "cityName": "Addis Ababa",
+     "cityLon": 38.74689,
+     "cityLat": 9.02497,
+     "radiusKm": 3225,
+     "octant": "north-east",
+     "text": "Last seen at a bus depot 3,225 km northeast of Addis Ababa.",
      "region": {
-      "continent": "Asia",
-      "country": "India",
-      "subdivision": "Delhi"
+      "continent": "Africa",
+      "country": "Ethiopia",
+      "subdivision": null
      }
     }
    ],
@@ -2743,33 +2743,33 @@
     {
      "id": "s1",
      "timestamp": "Sun 11:50",
-     "cityId": "gn-6094817",
-     "cityName": "Ottawa",
-     "cityLon": -75.69812,
-     "cityLat": 45.41117,
-     "radiusKm": 3800,
+     "cityId": "gn-4644585",
+     "cityName": "Nashville",
+     "cityLon": -86.78444,
+     "cityLat": 36.16589,
+     "radiusKm": 3075,
      "octant": "west",
-     "text": "Last seen hitching a ride from a trucker 3,800 km west of Ottawa.",
+     "text": "Last seen hitching a ride from a trucker 3,075 km west of Nashville.",
      "region": {
       "continent": "North America",
-      "country": "Canada",
-      "subdivision": "Ontario"
+      "country": "United States",
+      "subdivision": "Tennessee"
      }
     },
     {
      "id": "s2",
      "timestamp": "Sun 08:25",
-     "cityId": "gn-5308655",
-     "cityName": "Phoenix",
-     "cityLon": -112.07404,
-     "cityLat": 33.44838,
-     "radiusKm": 1025,
+     "cityId": "gn-3530597",
+     "cityName": "Mexico City",
+     "cityLon": -99.12766,
+     "cityLat": 19.42847,
+     "radiusKm": 3025,
      "octant": "north-west",
-     "text": "Last seen filling jerrycans 1,025 km northwest of Phoenix.",
+     "text": "Last seen filling jerrycans 3,025 km northwest of Mexico City.",
      "region": {
       "continent": "North America",
-      "country": "United States",
-      "subdivision": "Arizona"
+      "country": "Mexico",
+      "subdivision": null
      }
     },
     {
@@ -2805,32 +2805,32 @@
     {
      "id": "s1",
      "timestamp": "Thu 06:44",
-     "cityId": "gn-756135",
-     "cityName": "Warsaw",
-     "cityLon": 21.01178,
-     "cityLat": 52.22977,
-     "radiusKm": 1125,
-     "octant": "north",
-     "text": "Last seen asking a gas attendant for directions 1,125 km north of Warsaw.",
+     "cityId": "gn-3067696",
+     "cityName": "Prague",
+     "cityLon": 14.42076,
+     "cityLat": 50.08804,
+     "radiusKm": 1525,
+     "octant": "north-east",
+     "text": "Last seen asking a gas attendant for directions 1,525 km northeast of Prague.",
      "region": {
       "continent": "Europe",
-      "country": "Poland",
+      "country": "Czechia",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Thu 10:17",
-     "cityId": "gn-2964574",
-     "cityName": "Dublin",
-     "cityLon": -6.24889,
-     "cityLat": 53.33306,
-     "radiusKm": 2200,
-     "octant": "north-east",
-     "text": "Last seen sleeping in a parked car 2,200 km northeast of Dublin.",
+     "cityId": "gn-756135",
+     "cityName": "Warsaw",
+     "cityLon": 21.01178,
+     "cityLat": 52.22977,
+     "radiusKm": 1125,
+     "octant": "north",
+     "text": "Last seen sleeping in a parked car 1,125 km north of Warsaw.",
      "region": {
       "continent": "Europe",
-      "country": "Ireland",
+      "country": "Poland",
       "subdivision": null
      }
     },
@@ -2867,17 +2867,17 @@
     {
      "id": "s1",
      "timestamp": "Mon 06:20",
-     "cityId": "gn-4509177",
-     "cityName": "Columbus",
-     "cityLon": -82.99879,
-     "cityLat": 39.96118,
-     "radiusKm": 500,
-     "octant": "north-west",
-     "text": "Last seen hitching a ride from a trucker 500 km northwest of Columbus.",
+     "cityId": "gn-4671654",
+     "cityName": "Austin",
+     "cityLon": -97.74306,
+     "cityLat": 30.26715,
+     "radiusKm": 1650,
+     "octant": "north-east",
+     "text": "Last seen hitching a ride from a trucker 1,650 km northeast of Austin.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Ohio"
+      "subdivision": "Texas"
      }
     },
     {
@@ -2899,17 +2899,17 @@
     {
      "id": "s3",
      "timestamp": "Tue 17:00",
-     "cityId": "gn-3553478",
-     "cityName": "Havana",
-     "cityLon": -82.38304,
-     "cityLat": 23.13302,
-     "radiusKm": 2225,
-     "octant": "north",
-     "text": "Last seen at a bus depot 2,225 km north of Havana.",
+     "cityId": "gn-4487042",
+     "cityName": "Raleigh",
+     "cityLon": -78.63861,
+     "cityLat": 35.7721,
+     "radiusKm": 1100,
+     "octant": "north-west",
+     "text": "Last seen at a bus depot 1,100 km northwest of Raleigh.",
      "region": {
       "continent": "North America",
-      "country": "Cuba",
-      "subdivision": null
+      "country": "United States",
+      "subdivision": "North Carolina"
      }
     }
    ],
@@ -2929,48 +2929,48 @@
     {
      "id": "s1",
      "timestamp": "Mon 09:50",
-     "cityId": "gn-3169070",
-     "cityName": "Rome",
-     "cityLon": 12.51133,
-     "cityLat": 41.89193,
-     "radiusKm": 325,
-     "octant": "east",
-     "text": "Last seen hitching a ride from a trucker 325 km east of Rome.",
+     "cityId": "gn-323786",
+     "cityName": "Ankara",
+     "cityLon": 32.85427,
+     "cityLat": 39.91987,
+     "radiusKm": 1425,
+     "octant": "west",
+     "text": "Last seen hitching a ride from a trucker 1,425 km west of Ankara.",
      "region": {
-      "continent": "Europe",
-      "country": "Italy",
+      "continent": "Asia",
+      "country": "Türkiye",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Mon 18:05",
-     "cityId": "gn-2964574",
-     "cityName": "Dublin",
-     "cityLon": -6.24889,
-     "cityLat": 53.33306,
-     "radiusKm": 2150,
+     "cityId": "gn-2643743",
+     "cityName": "London",
+     "cityLon": -0.12574,
+     "cityLat": 51.50853,
+     "radiusKm": 1700,
      "octant": "south-east",
-     "text": "Last seen buying a burner phone 2,150 km southeast of Dublin.",
+     "text": "Last seen buying a burner phone 1,700 km southeast of London.",
      "region": {
       "continent": "Europe",
-      "country": "Ireland",
+      "country": "United Kingdom",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Tue 07:15",
-     "cityId": "gn-2618425",
-     "cityName": "Copenhagen",
-     "cityLon": 12.56553,
-     "cityLat": 55.67594,
-     "radiusKm": 1625,
+     "cityId": "gn-2673730",
+     "cityName": "Stockholm",
+     "cityLon": 18.06871,
+     "cityLat": 59.32938,
+     "radiusKm": 2025,
      "octant": "south",
-     "text": "Last seen buying a burner phone 1,625 km south of Copenhagen.",
+     "text": "Last seen buying a burner phone 2,025 km south of Stockholm.",
      "region": {
       "continent": "Europe",
-      "country": "Denmark",
+      "country": "Sweden",
       "subdivision": null
      }
     }
@@ -2991,17 +2991,17 @@
     {
      "id": "s1",
      "timestamp": "Thu 13:14",
-     "cityId": "gn-4259418",
-     "cityName": "Indianapolis",
-     "cityLon": -86.15804,
-     "cityLat": 39.76838,
-     "radiusKm": 1700,
-     "octant": "south",
-     "text": "Last seen hitching a ride from a trucker 1,700 km south of Indianapolis.",
+     "cityId": "gn-5308655",
+     "cityName": "Phoenix",
+     "cityLon": -112.07404,
+     "cityLat": 33.44838,
+     "radiusKm": 3175,
+     "octant": "east",
+     "text": "Last seen hitching a ride from a trucker 3,175 km east of Phoenix.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Indiana"
+      "subdivision": "Arizona"
      }
     },
     {
@@ -3023,17 +3023,17 @@
     {
      "id": "s3",
      "timestamp": "Fri 13:03",
-     "cityId": "gn-5308655",
-     "cityName": "Phoenix",
-     "cityLon": -112.07404,
-     "cityLat": 33.44838,
-     "radiusKm": 3175,
-     "octant": "east",
-     "text": "Last seen buying a burner phone 3,175 km east of Phoenix.",
+     "cityId": "gn-4509177",
+     "cityName": "Columbus",
+     "cityLon": -82.99879,
+     "cityLat": 39.96118,
+     "radiusKm": 1650,
+     "octant": "south",
+     "text": "Last seen buying a burner phone 1,650 km south of Columbus.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Arizona"
+      "subdivision": "Ohio"
      }
     }
    ],
@@ -3069,33 +3069,33 @@
     {
      "id": "s2",
      "timestamp": "Fri 07:06",
-     "cityId": "gn-1816670",
-     "cityName": "Beijing",
-     "cityLon": 116.39723,
-     "cityLat": 39.9075,
-     "radiusKm": 1525,
-     "octant": "south-east",
-     "text": "Last seen asking a gas attendant for directions 1,525 km southeast of Beijing.",
-     "region": {
-      "continent": "Asia",
-      "country": "China",
-      "subdivision": "Beijing"
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Sat 10:59",
      "cityId": "gn-1609350",
      "cityName": "Bangkok",
      "cityLon": 100.50144,
      "cityLat": 13.75398,
      "radiusKm": 3725,
      "octant": "north-east",
-     "text": "Last seen eating at a drive-through 3,725 km northeast of Bangkok.",
+     "text": "Last seen asking a gas attendant for directions 3,725 km northeast of Bangkok.",
      "region": {
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 10:59",
+     "cityId": "gn-1816670",
+     "cityName": "Beijing",
+     "cityLon": 116.39723,
+     "cityLat": 39.9075,
+     "radiusKm": 1525,
+     "octant": "south-east",
+     "text": "Last seen eating at a drive-through 1,525 km southeast of Beijing.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Beijing"
      }
     }
    ],
@@ -3115,49 +3115,49 @@
     {
      "id": "s1",
      "timestamp": "Mon 17:57",
-     "cityId": "gn-1642911",
-     "cityName": "Jakarta",
-     "cityLon": 106.84513,
-     "cityLat": -6.21462,
-     "radiusKm": 4000,
-     "octant": "north-west",
-     "text": "Last seen sleeping in a parked car 4,000 km northwest of Jakarta.",
-     "region": {
-      "continent": "Asia",
-      "country": "Indonesia",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Mon 21:42",
-     "cityId": "gn-1581130",
-     "cityName": "Hanoi",
-     "cityLon": 105.84117,
-     "cityLat": 21.0245,
-     "radiusKm": 3400,
-     "octant": "west",
-     "text": "Last seen buying a burner phone 3,400 km west of Hanoi.",
-     "region": {
-      "continent": "Asia",
-      "country": "Vietnam",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Tue 20:53",
      "cityId": "gn-1261481",
      "cityName": "New Delhi",
      "cityLon": 77.2148,
      "cityLat": 28.62137,
      "radiusKm": 1925,
      "octant": "south",
-     "text": "Last seen buying supplies at a truck stop 1,925 km south of New Delhi.",
+     "text": "Last seen sleeping in a parked car 1,925 km south of New Delhi.",
      "region": {
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 21:42",
+     "cityId": "gn-1880252",
+     "cityName": "Singapore",
+     "cityLon": 103.85007,
+     "cityLat": 1.28967,
+     "radiusKm": 3325,
+     "octant": "west",
+     "text": "Last seen buying a burner phone 3,325 km west of Singapore.",
+     "region": {
+      "continent": "Asia",
+      "country": "Singapore",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 20:53",
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 4000,
+     "octant": "north-west",
+     "text": "Last seen buying supplies at a truck stop 4,000 km northwest of Jakarta.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
      }
     }
    ],
@@ -3177,33 +3177,33 @@
     {
      "id": "s1",
      "timestamp": "Sun 08:35",
-     "cityId": "gn-2950159",
-     "cityName": "Berlin",
-     "cityLon": 13.41053,
-     "cityLat": 52.52437,
-     "radiusKm": 1875,
-     "octant": "south-west",
-     "text": "Last seen refueling a dusty pickup 1,875 km southwest of Berlin.",
-     "region": {
-      "continent": "Europe",
-      "country": "Germany",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Sun 18:34",
      "cityId": "gn-524901",
      "cityName": "Moscow",
      "cityLon": 37.61781,
      "cityLat": 55.75204,
      "radiusKm": 3475,
      "octant": "west",
-     "text": "Last seen hitching a ride from a trucker 3,475 km west of Moscow.",
+     "text": "Last seen refueling a dusty pickup 3,475 km west of Moscow.",
      "region": {
       "continent": "Europe",
       "country": "Russia",
       "subdivision": "Moscow"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 18:34",
+     "cityId": "gn-2673730",
+     "cityName": "Stockholm",
+     "cityLon": 18.06871,
+     "cityLat": 59.32938,
+     "radiusKm": 2525,
+     "octant": "south-west",
+     "text": "Last seen hitching a ride from a trucker 2,525 km southwest of Stockholm.",
+     "region": {
+      "continent": "Europe",
+      "country": "Sweden",
+      "subdivision": null
      }
     },
     {
@@ -3239,49 +3239,49 @@
     {
      "id": "s1",
      "timestamp": "Tue 20:03",
-     "cityId": "gn-1880252",
-     "cityName": "Singapore",
-     "cityLon": 103.85007,
-     "cityLat": 1.28967,
-     "radiusKm": 3275,
-     "octant": "west",
-     "text": "Last seen boarding a night bus 3,275 km west of Singapore.",
-     "region": {
-      "continent": "Asia",
-      "country": "Singapore",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Tue 13:53",
-     "cityId": "gn-1642911",
-     "cityName": "Jakarta",
-     "cityLon": 106.84513,
-     "cityLat": -6.21462,
-     "radiusKm": 3950,
-     "octant": "north-west",
-     "text": "Last spotted at a roadside diner 3,950 km northwest of Jakarta.",
-     "region": {
-      "continent": "Asia",
-      "country": "Indonesia",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Wed 06:52",
      "cityId": "gn-1261481",
      "cityName": "New Delhi",
      "cityLon": 77.2148,
      "cityLat": 28.62137,
      "radiusKm": 1975,
      "octant": "south",
-     "text": "Last seen refueling a dusty pickup 1,975 km south of New Delhi.",
+     "text": "Last seen boarding a night bus 1,975 km south of New Delhi.",
      "region": {
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 13:53",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 2100,
+     "octant": "south-west",
+     "text": "Last spotted at a roadside diner 2,100 km southwest of Kathmandu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 06:52",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 3400,
+     "octant": "west",
+     "text": "Last seen refueling a dusty pickup 3,400 km west of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
      }
     }
    ],
@@ -3363,48 +3363,48 @@
     {
      "id": "s1",
      "timestamp": "Thu 09:32",
-     "cityId": "gn-1581130",
-     "cityName": "Hanoi",
-     "cityLon": 105.84117,
-     "cityLat": 21.0245,
-     "radiusKm": 3250,
-     "octant": "south",
-     "text": "Last seen withdrawing cash from an ATM 3,250 km south of Hanoi.",
-     "region": {
-      "continent": "Asia",
-      "country": "Vietnam",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Thu 14:35",
-     "cityId": "gn-1880252",
-     "cityName": "Singapore",
-     "cityLon": 103.85007,
-     "cityLat": 1.28967,
-     "radiusKm": 1275,
-     "octant": "south-east",
-     "text": "Last seen buying a burner phone 1,275 km southeast of Singapore.",
-     "region": {
-      "continent": "Asia",
-      "country": "Singapore",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Fri 15:13",
      "cityId": "gn-1642911",
      "cityName": "Jakarta",
      "cityLon": 106.84513,
      "cityLat": -6.21462,
      "radiusKm": 475,
      "octant": "east",
-     "text": "Last seen eating at a drive-through 475 km east of Jakarta.",
+     "text": "Last seen withdrawing cash from an ATM 475 km east of Jakarta.",
      "region": {
       "continent": "Asia",
       "country": "Indonesia",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 14:35",
+     "cityId": "gn-1609350",
+     "cityName": "Bangkok",
+     "cityLon": 100.50144,
+     "cityLat": 13.75398,
+     "radiusKm": 2650,
+     "octant": "south-east",
+     "text": "Last seen buying a burner phone 2,650 km southeast of Bangkok.",
+     "region": {
+      "continent": "Asia",
+      "country": "Thailand",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 15:13",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 3250,
+     "octant": "south",
+     "text": "Last seen eating at a drive-through 3,250 km south of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
       "subdivision": null
      }
     }
@@ -3425,49 +3425,49 @@
     {
      "id": "s1",
      "timestamp": "Thu 08:32",
-     "cityId": "gn-1835848",
-     "cityName": "Seoul",
-     "cityLon": 126.9784,
-     "cityLat": 37.566,
-     "radiusKm": 500,
-     "octant": "west",
-     "text": "Last seen withdrawing cash from an ATM 500 km west of Seoul.",
-     "region": {
-      "continent": "Asia",
-      "country": "South Korea",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s2",
-     "timestamp": "Thu 17:20",
-     "cityId": "gn-1609350",
-     "cityName": "Bangkok",
-     "cityLon": 100.50144,
-     "cityLat": 13.75398,
-     "radiusKm": 3500,
-     "octant": "north-east",
-     "text": "Last seen sleeping in a parked car 3,500 km northeast of Bangkok.",
-     "region": {
-      "continent": "Asia",
-      "country": "Thailand",
-      "subdivision": null
-     }
-    },
-    {
-     "id": "s3",
-     "timestamp": "Fri 08:10",
      "cityId": "gn-1701668",
      "cityName": "Manila",
      "cityLon": 120.9822,
      "cityLat": 14.6042,
      "radiusKm": 2725,
      "octant": "north",
-     "text": "Last seen buying supplies at a truck stop 2,725 km north of Manila.",
+     "text": "Last seen withdrawing cash from an ATM 2,725 km north of Manila.",
      "region": {
       "continent": "Asia",
       "country": "Philippines",
       "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 17:20",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 2525,
+     "octant": "north-east",
+     "text": "Last seen sleeping in a parked car 2,525 km northeast of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 08:10",
+     "cityId": "gn-1816670",
+     "cityName": "Beijing",
+     "cityLon": 116.39723,
+     "cityLat": 39.9075,
+     "radiusKm": 475,
+     "octant": "east",
+     "text": "Last seen buying supplies at a truck stop 475 km east of Beijing.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Beijing"
      }
     }
    ],
@@ -3487,48 +3487,48 @@
     {
      "id": "s1",
      "timestamp": "Sun 12:29",
-     "cityId": "gn-323786",
-     "cityName": "Ankara",
-     "cityLon": 32.85427,
-     "cityLat": 39.91987,
-     "radiusKm": 3100,
-     "octant": "west",
-     "text": "Last seen boarding a night bus 3,100 km west of Ankara.",
+     "cityId": "gn-2988507",
+     "cityName": "Paris",
+     "cityLon": 2.3488,
+     "cityLat": 48.85341,
+     "radiusKm": 1075,
+     "octant": "south-west",
+     "text": "Last seen boarding a night bus 1,075 km southwest of Paris.",
      "region": {
-      "continent": "Asia",
-      "country": "Türkiye",
+      "continent": "Europe",
+      "country": "France",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Sun 19:54",
-     "cityId": "gn-756135",
-     "cityName": "Warsaw",
-     "cityLon": 21.01178,
-     "cityLat": 52.22977,
-     "radiusKm": 2300,
-     "octant": "south-west",
-     "text": "Last seen hitching a ride from a trucker 2,300 km southwest of Warsaw.",
+     "cityId": "gn-2643743",
+     "cityName": "London",
+     "cityLon": -0.12574,
+     "cityLat": 51.50853,
+     "radiusKm": 1275,
+     "octant": "south",
+     "text": "Last seen hitching a ride from a trucker 1,275 km south of London.",
      "region": {
       "continent": "Europe",
-      "country": "Poland",
+      "country": "United Kingdom",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Mon 21:51",
-     "cityId": "gn-2964574",
-     "cityName": "Dublin",
-     "cityLon": -6.24889,
-     "cityLat": 53.33306,
-     "radiusKm": 1450,
-     "octant": "south",
-     "text": "Last seen withdrawing cash from an ATM 1,450 km south of Dublin.",
+     "cityId": "gn-3169070",
+     "cityName": "Rome",
+     "cityLon": 12.51133,
+     "cityLat": 41.89193,
+     "radiusKm": 1400,
+     "octant": "west",
+     "text": "Last seen withdrawing cash from an ATM 1,400 km west of Rome.",
      "region": {
       "continent": "Europe",
-      "country": "Ireland",
+      "country": "Italy",
       "subdivision": null
      }
     }
@@ -3549,49 +3549,49 @@
     {
      "id": "s1",
      "timestamp": "Fri 15:42",
-     "cityId": "gn-4259418",
-     "cityName": "Indianapolis",
-     "cityLon": -86.15804,
-     "cityLat": 39.76838,
-     "radiusKm": 1100,
-     "octant": "east",
-     "text": "Last seen at a bus depot 1,100 km east of Indianapolis.",
+     "cityId": "gn-4180439",
+     "cityName": "Atlanta",
+     "cityLon": -84.38798,
+     "cityLat": 33.749,
+     "radiusKm": 1300,
+     "octant": "north-east",
+     "text": "Last seen at a bus depot 1,300 km northeast of Atlanta.",
      "region": {
       "continent": "North America",
       "country": "United States",
-      "subdivision": "Indiana"
+      "subdivision": "Georgia"
      }
     },
     {
      "id": "s2",
      "timestamp": "Fri 07:28",
-     "cityId": "gn-3530597",
-     "cityName": "Mexico City",
-     "cityLon": -99.12766,
-     "cityLat": 19.42847,
-     "radiusKm": 3450,
-     "octant": "north-east",
-     "text": "Last seen withdrawing cash from an ATM 3,450 km northeast of Mexico City.",
+     "cityId": "gn-4509177",
+     "cityName": "Columbus",
+     "cityLon": -82.99879,
+     "cityLat": 39.96118,
+     "radiusKm": 825,
+     "octant": "east",
+     "text": "Last seen withdrawing cash from an ATM 825 km east of Columbus.",
      "region": {
       "continent": "North America",
-      "country": "Mexico",
-      "subdivision": null
+      "country": "United States",
+      "subdivision": "Ohio"
      }
     },
     {
      "id": "s3",
      "timestamp": "Sat 13:21",
-     "cityId": "gn-6094817",
-     "cityName": "Ottawa",
-     "cityLon": -75.69812,
-     "cityLat": 45.41117,
-     "radiusKm": 500,
-     "octant": "south-east",
-     "text": "Last seen buying a burner phone 500 km southeast of Ottawa.",
+     "cityId": "gn-3553478",
+     "cityName": "Havana",
+     "cityLon": -82.38304,
+     "cityLat": 23.13302,
+     "radiusKm": 2200,
+     "octant": "north",
+     "text": "Last seen buying a burner phone 2,200 km north of Havana.",
      "region": {
       "continent": "North America",
-      "country": "Canada",
-      "subdivision": "Ontario"
+      "country": "Cuba",
+      "subdivision": null
      }
     }
    ],
@@ -3611,49 +3611,49 @@
     {
      "id": "s1",
      "timestamp": "Sat 10:54",
-     "cityId": "gn-3169070",
-     "cityName": "Rome",
-     "cityLon": 12.51133,
-     "cityLat": 41.89193,
-     "radiusKm": 350,
-     "octant": "north-east",
-     "text": "Last seen sleeping in a parked car 350 km northeast of Rome.",
+     "cityId": "gn-323786",
+     "cityName": "Ankara",
+     "cityLon": 32.85427,
+     "cityLat": 39.91987,
+     "radiusKm": 1550,
+     "octant": "north-west",
+     "text": "Last seen sleeping in a parked car 1,550 km northwest of Ankara.",
      "region": {
-      "continent": "Europe",
-      "country": "Italy",
+      "continent": "Asia",
+      "country": "Türkiye",
       "subdivision": null
      }
     },
     {
      "id": "s2",
      "timestamp": "Sat 06:02",
-     "cityId": "gn-2618425",
-     "cityName": "Copenhagen",
-     "cityLon": 12.56553,
-     "cityLat": 55.67594,
-     "radiusKm": 1300,
-     "octant": "south",
-     "text": "Last seen withdrawing cash from an ATM 1,300 km south of Copenhagen.",
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 2125,
+     "octant": "north-east",
+     "text": "Last seen withdrawing cash from an ATM 2,125 km northeast of Lisbon.",
      "region": {
       "continent": "Europe",
-      "country": "Denmark",
+      "country": "Portugal",
       "subdivision": null
      }
     },
     {
      "id": "s3",
      "timestamp": "Sun 07:00",
-     "cityId": "gn-524901",
-     "cityName": "Moscow",
-     "cityLon": 37.61781,
-     "cityLat": 55.75204,
-     "radiusKm": 2050,
+     "cityId": "gn-703448",
+     "cityName": "Kyiv",
+     "cityLon": 30.5238,
+     "cityLat": 50.45466,
+     "radiusKm": 1350,
      "octant": "south-west",
-     "text": "Last seen hitching a ride from a trucker 2,050 km southwest of Moscow.",
+     "text": "Last seen hitching a ride from a trucker 1,350 km southwest of Kyiv.",
      "region": {
       "continent": "Europe",
-      "country": "Russia",
-      "subdivision": "Moscow"
+      "country": "Ukraine",
+      "subdivision": null
      }
     }
    ],
@@ -3673,16 +3673,16 @@
     {
      "id": "s1",
      "timestamp": "Fri 20:59",
-     "cityId": "gn-1609350",
-     "cityName": "Bangkok",
-     "cityLon": 100.50144,
-     "cityLat": 13.75398,
-     "radiusKm": 1000,
-     "octant": "north-west",
-     "text": "Last seen withdrawing cash from an ATM 1,000 km northwest of Bangkok.",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 1025,
+     "octant": "west",
+     "text": "Last seen withdrawing cash from an ATM 1,025 km west of Hanoi.",
      "region": {
       "continent": "Asia",
-      "country": "Thailand",
+      "country": "Vietnam",
       "subdivision": null
      }
     },
@@ -3705,17 +3705,17 @@
     {
      "id": "s3",
      "timestamp": "Sat 19:01",
-     "cityId": "gn-1283240",
-     "cityName": "Kathmandu",
-     "cityLon": 85.3206,
-     "cityLat": 27.70169,
-     "radiusKm": 1300,
-     "octant": "south-east",
-     "text": "Last seen refueling a dusty pickup 1,300 km southeast of Kathmandu.",
+     "cityId": "gn-1816670",
+     "cityName": "Beijing",
+     "cityLon": 116.39723,
+     "cityLat": 39.9075,
+     "radiusKm": 2800,
+     "octant": "south-west",
+     "text": "Last seen refueling a dusty pickup 2,800 km southwest of Beijing.",
      "region": {
       "continent": "Asia",
-      "country": "Nepal",
-      "subdivision": null
+      "country": "China",
+      "subdivision": "Beijing"
      }
     }
    ],

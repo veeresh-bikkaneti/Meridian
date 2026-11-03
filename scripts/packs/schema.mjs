@@ -21,6 +21,14 @@
  * PPLA for a state capital, matched to the subject kind), the direction
  * invariants for what the briefing may state, and the subject leak ban.
  *
+ * Two fields the loop authoring schema carries stay off the pack record,
+ * per design §1.1: the record has no status (every record under cases/
+ * is the pack's content; the projection below supplies the loop
+ * schema's "accepted"), and it has no difficulty of its own (the design
+ * keeps the dataset difficulty untouched, so the projection takes the
+ * place's dataset difficulty from the authoring input's chunk mirror,
+ * the same value the pack validator pins against the shipped chunk).
+ *
  * The subject leak ban is direction-aware (design §2.1):
  * - Direction A (find the capital of a named subject): clues may use the
  *   subject freely; only the target's name is banned, by validateRecord.
@@ -71,7 +79,7 @@ export function toLoopRecord(record, input) {
       subdivision: input.place.subdivision,
       lat: record.target.lat,
       lon: record.target.lon,
-      difficulty: record.difficulty,
+      difficulty: input.chunk?.difficulty ?? record.difficulty,
     },
     clues: record.clues,
   };
@@ -126,9 +134,6 @@ export function validatePackRecord(record, ctx = {}) {
   }
   if (record.schema !== PACK_SCHEMA_ID) {
     push("PACK_SCHEMA", `schema must be "${PACK_SCHEMA_ID}", got ${JSON.stringify(record.schema)}`);
-  }
-  if (record.status !== "accepted") {
-    push("PACK_STATUS", `only status "accepted" composes, got ${JSON.stringify(record.status)}`);
   }
   if (!isNonEmptyString(record.packId)) push("PACK_FIELD", "packId must be a non-empty string");
   if (!isNonEmptyString(record.category)) push("PACK_FIELD", "category must be a non-empty string");
@@ -235,8 +240,12 @@ export function validatePackRecord(record, ctx = {}) {
   if (!Number.isInteger(record.packTier) || record.packTier < 1 || record.packTier > 3) {
     push("PACK_TIER", `packTier must be an integer 1-3, got ${JSON.stringify(record.packTier)}`);
   }
-  if (!Number.isInteger(record.difficulty) || record.difficulty < 1 || record.difficulty > 5) {
-    push("PACK_FIELD", `difficulty must be an integer 1-5, got ${JSON.stringify(record.difficulty)}`);
+  const effectiveDifficulty = input?.chunk?.difficulty ?? record.difficulty;
+  if (!Number.isInteger(effectiveDifficulty) || effectiveDifficulty < 1 || effectiveDifficulty > 5) {
+    push(
+      "PACK_FIELD",
+      `the dataset difficulty (authoring input's chunk mirror) must be an integer 1-5, got ${JSON.stringify(effectiveDifficulty)}`,
+    );
   }
   if (record.pointPolicy !== "geonames-point") {
     push("PACK_FIELD", `pointPolicy must be "geonames-point" for capitals, got ${JSON.stringify(record.pointPolicy)}`);
