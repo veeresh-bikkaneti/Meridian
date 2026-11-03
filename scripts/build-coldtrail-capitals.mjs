@@ -52,11 +52,13 @@
  * at scripts/packs/capitals/cases/*.json (one
  * meridian.pack.case.v1 record per case, target.placeId is the
  * capital). When that directory exists and is non-empty, this pass
- * reads the ids from the records and nothing else. Until the records
- * land, it falls back to CURATED_CAPITAL_IDS below, the 72 ids listed
- * in CAPITALS-PACK.md sections B and C. Generation is deterministic,
- * so re-running this pass at integration time against the records
- * produces byte-identical output when the id sets match.
+ * reads the ids from the records and nothing else. The records have
+ * landed (72 files ship in that directory), so on the shipped tree
+ * the records always win and the fallback below never triggers. The
+ * fallback — CURATED_CAPITAL_IDS, the same 72 ids — is retained for
+ * a tree whose records directory is missing or empty (for example a
+ * fresh content branch before its records are authored); it can
+ * trigger only then.
  *
  * The place and population loaders below repeat the ones in
  * build-coldtrail.mjs because those are module-private there.
@@ -108,8 +110,8 @@ export const CURATED_CAPITAL_IDS = [
   "gn-2761369", "gn-2759794", "gn-2673730", "gn-1835848", "gn-1609350",
   "gn-6094817", "gn-3435910", "gn-2964574", "gn-2267057", "gn-2618425",
   "gn-658225", "gn-3067696", "gn-2179537", "gn-3553478", "gn-3871336",
-  "gn-756135", "gn-3054643", "gn-184745", "gn-344979", "gn-1283240",
-  "gn-1581130", "gn-1701668", "gn-1880252", "gn-323786", "gn-703448",
+  "gn-756135", "gn-3054643", "gn-2306104", "gn-344979", "gn-1283240",
+  "gn-1581130", "gn-1701668", "gn-1880252", "gn-292968", "gn-703448",
   "gn-1642911", "gn-964137", "gn-3936456", "gn-3413829",
   // US states (CAPITALS-PACK.md section C)
   "gn-5389489", "gn-4671654", "gn-4930956", "gn-5419384", "gn-4180439",
