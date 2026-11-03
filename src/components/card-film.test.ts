@@ -6,11 +6,20 @@
  *
  * Same source-pinning style as home-loading-orbs.test.ts (this
  * repo has no React-render harness): the gates, the lazy mount,
- * the once-only playback, and the WCAG 2.2.2 toggle are pinned by
- * reading the component; the byte caps are pinned against the
- * real asset files; the visual behaviour is covered by the E2E
- * specs (card-redesign + loading-orbs updates) against the built
- * app.
+ * and the playback governance are pinned by reading the
+ * component; the byte caps are pinned against the real asset
+ * files; the visual behaviour is covered by the E2E specs
+ * (card-redesign + loading-orbs updates) against the built app.
+ *
+ * Governance history: the component shipped with play-once
+ * playback plus a 44x44 pause/play toggle (the WCAG 2.2.2 stop,
+ * PR #295/#321 governance). The owner removed that governance
+ * for card films on 2026-11-03 (09:05 and 09:07 CST: "we dont
+ * need playbutton it should be in autoloop" / "Remove playbutton
+ * set it on auto loop"). The play-once and toggle pins below are
+ * therefore re-pinned to autoloop: loop on, no button rendered,
+ * no end hold. The verdict clip is a different component and
+ * keeps its stop; nothing here governs it.
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
@@ -54,7 +63,7 @@ describe("CardFilm — gates land on the still, video never fetched", () => {
   });
 });
 
-describe("CardFilm — lazy mount + play once + settle", () => {
+describe("CardFilm — lazy mount + autoloop (owner order, 2026-11-03)", () => {
   it("video mounts only near the viewport (IntersectionObserver, 200px, the globe's pattern)", () => {
     assert.ok(film.includes("new IntersectionObserver"), "observer gate");
     assert.ok(film.includes('{ rootMargin: "200px" }'), "200px rootMargin");
@@ -66,42 +75,64 @@ describe("CardFilm — lazy mount + play once + settle", () => {
     assert.ok(film.includes("media.posterUrl"), "poster fills the slot before the film");
   });
 
-  it("plays once: autoPlay + muted + playsInline, and NO loop anywhere", () => {
-    assert.ok(film.includes("autoPlay"), "plays when mounted");
-    assert.ok(film.includes("muted"), "muted (autoplay policy + silent by design)");
-    assert.ok(film.includes("playsInline"), "inline on phones");
+  it("loops: autoPlay + loop + muted + playsInline on the video element", () => {
+    // Owner order 2026-11-03 (09:07 CST): "Remove playbutton set
+    // it on auto loop." This pin replaces the play-once pin
+    // (no-loop + onEnded hold) that governed the component under
+    // PR #295/#321.
     const videoTag = film.slice(film.indexOf("<video"), film.indexOf("<video") + 700);
-    assert.ok(!videoTag.includes("loop"), "no loop attribute — it plays once and holds the last frame");
-    assert.ok(film.includes("onEnded"), "the end is handled (label returns to Play)");
+    assert.ok(videoTag.includes("autoPlay"), "plays when mounted");
+    assert.ok(videoTag.includes("loop"), "loop attribute — the film repeats");
+    assert.ok(videoTag.includes("muted"), "muted (autoplay policy + silent by design)");
+    assert.ok(videoTag.includes("playsInline"), "inline on phones");
   });
 
-  it("no timers: nothing auto-replays, pauses on a schedule, or polls", () => {
+  it("no end hold: no onEnded, no paused state, no toggle handler", () => {
+    // The play-once build held its last frame and let the toggle
+    // replay it. Both behaviours died with the owner's autoloop
+    // order; these absence pins keep them dead.
+    assert.ok(!film.includes("onEnded"), "no end handler — the loop never holds");
+    assert.ok(!film.includes("setPaused"), "no paused state");
+    assert.ok(!film.includes("onPlay"), "no play event handler");
+    assert.ok(!film.includes("onPause"), "no pause event handler");
+    assert.ok(!film.includes("card-film-toggle"), "no toggle class or testid suffix");
+    assert.ok(!film.includes("onClick"), "no click handler — the component adds no control");
+  });
+
+  it("off-screen pause: a threshold-0 observer plays on screen, pauses off screen", () => {
+    assert.ok(film.includes("{ threshold: 0 }"), "visibility observer at threshold 0");
+    assert.ok(film.includes("film.play().catch(() => {})"), "rejected play() never surfaces");
+    assert.ok(film.includes("film.pause()"), "off-screen films pause instead of decoding");
+  });
+
+  it("no timers: nothing replays, pauses on a schedule, or polls", () => {
     assert.ok(!film.includes("setTimeout"), "no timer chains");
     assert.ok(!film.includes("setInterval"), "no polling timers");
   });
 });
 
-describe("CardFilm — WCAG 2.2.2 stop (the toggle)", () => {
-  it("labels are the #295 wording, driven by the video's own events", () => {
-    assert.ok(film.includes('"Play the cartoon"') && film.includes('"Pause the cartoon"'));
-    assert.ok(film.includes("onPlay={() => setPaused(false)}"), "play event drives the label");
-    assert.ok(film.includes("onPause={() => setPaused(true)}"), "pause event drives the label");
-    assert.ok(film.includes("aria-pressed={paused}"), "toggle state is exposed");
+describe("CardFilm — no stop control on card films (owner autoloop order)", () => {
+  it("the component renders no button and no pressed state", () => {
+    // Owner order 2026-11-03: the play/pause toggle is removed
+    // from every card film. The WCAG 2.2.2 tradeoff is recorded
+    // in the component header; the gates above are the stops
+    // that remain.
+    assert.ok(!film.includes("<button"), "no <button> in the component output");
+    assert.ok(!film.includes("aria-pressed"), "no toggle state is exposed");
+    assert.ok(!film.includes("Pause the cartoon"), "old pause label gone");
+    assert.ok(!film.includes("Play the cartoon"), "old play label gone");
   });
 
-  it("after the film ends, the toggle replays it — by gesture only", () => {
-    assert.ok(film.includes("if (film.ended) film.currentTime = 0"), "replay rewinds first");
-    assert.ok(film.includes("film.play().catch(() => {})"), "rejected play() never surfaces");
+  it("the toggle CSS is deleted from home-v5.css", () => {
+    assert.ok(!css.includes(".hv5-card-film-toggle"), "toggle rule gone");
+    assert.ok(!css.includes(".hv5-film-icon-play"), "play icon rule gone");
+    assert.ok(!css.includes(".hv5-film-icon-pause"), "pause icon rule gone");
   });
 
-  it("the film itself is decoration; the toggle is 44x44 in the CSS", () => {
+  it("the film itself is decoration and never focusable", () => {
     const videoTag = film.slice(film.indexOf("<video"), film.indexOf("<video") + 700);
     assert.ok(videoTag.includes('aria-hidden="true"'), "video is aria-hidden");
     assert.ok(videoTag.includes("tabIndex={-1}"), "video is never focusable");
-    const toggleRule = css.slice(css.indexOf(".hv5-card-film-toggle {"));
-    assert.ok(toggleRule.includes("width: 44px") && toggleRule.includes("height: 44px"),
-      "toggle keeps the 44px tap-target floor");
-    assert.ok(toggleRule.includes("z-index: 2"), "toggle rides above the stretched CTA");
   });
 });
 
@@ -145,19 +176,42 @@ describe("home wiring — five cards, one component, nothing else moves", () => 
     assert.ok(!gameApp.includes('className="hv5-art" src='), "no .hv5-art slot renders a bare still anymore");
   });
 
-  it("the art slots keep their wrapper geometry: no .hv5-art box rule changed", () => {
+  it("the art slots render picture-first: CardFilm before .hv5-txt in each spot card", () => {
+    // WP3 of the rework: the banner sits at the top of the card,
+    // so the film element precedes the text column in the DOM,
+    // as the film cards' .hv5-pic slots already did.
+    for (const filmTestId of ["card-film-review", "card-film-journal", "card-film-grownups"]) {
+      const filmAt = gameApp.indexOf(`testId="${filmTestId}"`);
+      const txtAt = gameApp.indexOf('<div className="hv5-txt">', filmAt);
+      assert.ok(filmAt >= 0 && txtAt > filmAt, `${filmTestId}: a text column follows the film`);
+      const between = gameApp.slice(filmAt, txtAt);
+      assert.ok(
+        between.length < 200 && !between.includes("</"),
+        `${filmTestId}: film sits immediately before its text column (picture first)`,
+      );
+    }
+  });
+
+  it("banner geometry lives in the appended art-film block; base art ratios survive", () => {
     assert.ok(css.includes(".home-v5 .hv5-spot .hv5-art {"), "spot art box rule still present");
     assert.ok(css.includes("aspect-ratio: 400 / 269"), "Review art ratio unchanged");
     assert.ok(css.includes(".home-v5 .hv5-journal .hv5-art {"), "Journal art box rule still present");
     assert.ok(css.includes(".home-v5 .hv5-involved .hv5-art {"), "Grown-ups art box rule still present");
+    const artBlock = css.slice(css.indexOf("art films (feat/smooth-cards"));
+    assert.ok(artBlock.includes("width: calc(100% + 56px)"), "banner spans the full card width");
+    assert.ok(artBlock.includes("margin: -26px -28px 18px"), "banner cancels the card padding like .hv5-pic");
+    assert.ok(artBlock.includes("mask-image: none"), "corner radial mask removed from the banner");
+    assert.ok(artBlock.includes(".home-v5 .hv5-spot .hv5-txt"), "spot text column rule present");
+    assert.ok(artBlock.includes("max-width: 100%"), "spot text returns to full width");
   });
 
-  it("art-film CSS: fade stays on the pic slots, the toggle stays tappable", () => {
+  it("art-film CSS: fade strip stays on the pic slots; no toggle layer survives", () => {
     assert.ok(css.includes(".home-v5 .hv5-card-film.hv5-art::after {"), "art slots switch the pic fade off");
     const artBlock = css.slice(css.indexOf("art films (feat/smooth-cards"));
     assert.ok(artBlock.includes("content: none"), "no gradient overlay on the art slots");
-    assert.ok(artBlock.includes("pointer-events: auto"), "toggle takes pointer events back from the decorative wrapper");
-    assert.ok(artBlock.includes("z-index: 3"), "art-film wrapper clears the stretched CTA layer");
+    assert.ok(!artBlock.includes("z-index: 3"), "the toggle's z-index lift is gone with the toggle");
+    assert.ok(!artBlock.includes("hv5-card-film-toggle"), "no toggle rule in the art block");
+    assert.ok(!artBlock.includes("pointer-events: auto"), "no pointer-events hand-back for a deleted control");
   });
 
   it("the locked band still renders LockedLoop, byte-identical branch", () => {
@@ -227,7 +281,7 @@ describe("card-media — byte caps (measured on the real files)", () => {
       `grownups film: ${assetBytes("grownups-film.mp4")}`);
   });
 
-  it("the art posters stay small (the slots are small)", () => {
+  it("the art posters stay small (poster files, measured)", () => {
     for (const name of ["review-poster.webp", "journal-poster.webp", "grownups-poster.webp"]) {
       const bytes = assetBytes(name);
       assert.ok(bytes >= 5_000 && bytes <= 60_000, `${name}: ${bytes}`);
