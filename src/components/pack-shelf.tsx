@@ -51,6 +51,7 @@ export function PackShelf({
   onPickDeck,
   onStartNext,
   coreTotal = null,
+  packTotal = null,
 }: {
   edition: PackEditionId;
   activeDeckId: string;
@@ -60,6 +61,8 @@ export function PackShelf({
   onStartNext: () => void;
   /** Deck size when the screen already knows it (Cold Trail bundles its count). */
   coreTotal?: number | null;
+  /** Pack deck size in this edition when the screen bundles it (Cold Trail: 60, not the manifest's 72). */
+  packTotal?: number | null;
 }): JSX.Element {
   const [manifest, setManifest] = useState<PackManifest | null>(null);
   const [loopSize, setLoopSize] = useState<number | null>(null);
@@ -100,6 +103,7 @@ export function PackShelf({
     coreClosed,
     coreTotal: coreTotal ?? loopSize,
     packClosed,
+    packTotal,
   });
 
   // A stored pick can name a pack that is not on this shelf (not
@@ -124,7 +128,12 @@ export function PackShelf({
   return (
     <section aria-label="Case decks" data-testid="pack-shelf" className="mt-6">
       <h2 className="text-sm font-semibold tracking-wide text-muted uppercase">Case decks</h2>
-      <div className="mt-2 flex min-h-[58px] flex-wrap gap-2">
+      {/* At widths where the two chips cannot fit one row (around
+          340px and below, e.g. the 320px reflow width) the row wraps,
+          so it reserves the second row's height there too: 58 + 8 gap
+          + 58 = 124px. Wider viewports keep the one-row reservation,
+          so 390px and desktop layout are unchanged. */}
+      <div className="mt-2 flex min-h-[58px] flex-wrap gap-2 max-[340px]:min-h-[124px]">
         {decks.map((deck) => {
           const isSelected = deck.id === shownSelected;
           const line = deckProgressLine(deck);
@@ -157,7 +166,7 @@ export function PackShelf({
           );
         })}
       </div>
-      <p className="mt-2 min-h-[20px] text-sm text-muted" data-testid="pack-shelf-status">
+      <p role="status" className="mt-2 min-h-[20px] text-sm text-muted" data-testid="pack-shelf-status">
         {statusLine}
       </p>
     </section>

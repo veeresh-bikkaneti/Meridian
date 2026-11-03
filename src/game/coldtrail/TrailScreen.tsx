@@ -501,6 +501,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
         onPickDeck={(deckId) => writeSelectedDeck("coldtrail", deckId)}
         onStartNext={onNextCase}
         coreTotal={coreDeckSize > 0 ? coreDeckSize : null}
+        packTotal={packDeckSize > 0 ? packDeckSize : null}
       />
 
       <div className="ct-layout mt-6">

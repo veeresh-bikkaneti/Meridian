@@ -91,6 +91,8 @@ export interface PackManifest {
 export function isPackManifest(value: unknown): value is PackManifest {
   if (!value || typeof value !== "object") return false;
   const m = value as Record<string, unknown>;
+  if (!Array.isArray(m.loopIndexes)) return false;
+  const indexes = m.loopIndexes as unknown[];
   return (
     m.v === 1 &&
     typeof m.packId === "string" &&
@@ -99,11 +101,14 @@ export function isPackManifest(value: unknown): value is PackManifest {
     m.category.length > 0 &&
     Number.isInteger(m.size) &&
     (m.size as number) > 0 &&
+    // The size is the GeoDetective deck size: it must equal the loop
+    // index count, and indexes must be unique — the same pins the
+    // loop validator (isLoopPackManifest in src/game/loop/packs.ts)
+    // applies, so the two validators cannot diverge on a manifest.
+    m.size === indexes.length &&
+    new Set(indexes).size === indexes.length &&
     typeof m.generatedAt === "string" &&
-    Array.isArray(m.loopIndexes) &&
-    (m.loopIndexes as unknown[]).every(
-      (i) => Number.isInteger(i) && (i as number) >= 0,
-    ) &&
+    indexes.every((i) => Number.isInteger(i) && (i as number) >= 0) &&
     (m.coldtrailFile === null ||
       (typeof m.coldtrailFile === "string" && m.coldtrailFile.length > 0))
   );
@@ -142,6 +147,15 @@ export function buildDeckList(input: {
   coreClosed: number | null;
   coreTotal: number | null;
   packClosed: number | null;
+  /**
+   * The pack deck's real case count in THIS edition, when the screen
+   * bundles it (Cold Trail passes capitalsPackCaseCount()). The
+   * manifest's size is the GeoDetective count (72); Cold Trail's deck
+   * is a different, smaller deck (60) built from the same records, so
+   * its chip must never show the manifest size — per-deck progress
+   * could never complete against a total the deck does not have.
+   */
+  packTotal?: number | null;
 }): PackDeckView[] {
   const decks: PackDeckView[] = [
     {
@@ -167,7 +181,10 @@ export function buildDeckList(input: {
     glyph,
     star: true,
     closed: input.packClosed,
-    total: m.size,
+    total:
+      input.edition === "coldtrail" && input.packTotal != null
+        ? input.packTotal
+        : m.size,
   });
   return decks;
 }

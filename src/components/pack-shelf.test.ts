@@ -44,7 +44,12 @@ describe("PackShelf chips are real, labelled buttons", () => {
 
   it("reserves its height so a late pack chip shifts nothing", () => {
     assert.ok(shelf.includes("min-h-[58px] flex-wrap"), "chip row reserves one row of height");
+    assert.ok(shelf.includes("max-[340px]:min-h-[124px]"), "chip row reserves the wrapped second row at narrow widths");
     assert.ok(shelf.includes("min-h-[20px]"), "status line reserves one line of height");
+  });
+
+  it("announces the pick consequence to screen readers", () => {
+    assert.ok(shelf.includes('role="status"'), "status line is a live region");
   });
 });
 

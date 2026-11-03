@@ -36,7 +36,7 @@ const MANIFEST: PackManifest = {
   category: "capitals",
   size: 72,
   generatedAt: "2026-11-03T00:00:00.000Z",
-  loopIndexes: [387, 388, 389],
+  loopIndexes: Array.from({ length: 72 }, (_, i) => 387 + i),
   coldtrailFile: "cases.capitals.generated.json",
 };
 
@@ -66,6 +66,14 @@ describe("isPackManifest", () => {
     assert.equal(isPackManifest({ ...MANIFEST, loopIndexes: "387" }), false);
     assert.equal(isPackManifest({ ...MANIFEST, coldtrailFile: "" }), false);
     assert.equal(isPackManifest({ ...MANIFEST, packId: "" }), false);
+  });
+
+  it("rejects size drift and duplicate indexes (parity with the loop validator)", () => {
+    assert.equal(isPackManifest({ ...MANIFEST, size: 71 }), false);
+    assert.equal(isPackManifest({ ...MANIFEST, size: 3, loopIndexes: [387, 388, 389] }), true);
+    const dup = Array.from({ length: 72 }, (_, i) => 387 + i);
+    dup[71] = 387;
+    assert.equal(isPackManifest({ ...MANIFEST, loopIndexes: dup }), false);
   });
 });
 
@@ -105,6 +113,22 @@ describe("buildDeckList", () => {
     assert.equal(noTrail.length, 1);
     const trail = buildDeckList({ ...base, edition: "coldtrail", packManifest: MANIFEST });
     assert.equal(trail.length, 2);
+  });
+
+  it("uses the edition-true pack total: 72 for GeoDetective, 60 for Cold Trail", () => {
+    const geo = buildDeckList({ ...base, edition: "geodetective", packManifest: MANIFEST });
+    assert.equal(geo[1]!.total, 72);
+    const trail = buildDeckList({
+      ...base,
+      edition: "coldtrail",
+      packManifest: MANIFEST,
+      packTotal: 60,
+    });
+    assert.equal(trail[1]!.total, 60);
+    assert.equal(deckProgressLine(trail[1]!), "60 cases");
+    // Without a bundled count, Cold Trail falls back to the manifest size.
+    const fallback = buildDeckList({ ...base, edition: "coldtrail", packManifest: MANIFEST });
+    assert.equal(fallback[1]!.total, 72);
   });
 });
 
