@@ -33,8 +33,21 @@ no merge from this slice. The Stacker integrates.
   dropped, not invented. The pilot input gained a third extract (the
   landmark's own article lead); batch inputs gain the same when a hook
   needs it.
-- [ ] Remaining 71 cases authored in tier batches.
-- [ ] Final sweep: pack test green on all 72, completeness count checked.
+- [x] Remaining 71 cases authored in tier batches. Final tally from the case
+  files: 44 countries (tiers 14 / 16 / 14) and 28 US states (tiers 10 / 10 /
+  8). No case dropped; no case exists without a GeoNames row.
+- [x] Final sweep (2026-11-03): `validate-pack.mjs --all` reports 72 checked,
+  0 failed. The pack test reports 73 pass, 0 fail under both invocations:
+  plain `node --test` (the `npm test` scripts glob; Node 24 strips types by
+  default, so no flag is needed) and with `--experimental-strip-types`.
+- [x] Hook sourcing: every hook traces to a verbatim quote in the case input.
+  Where a hook's subject was missing from the city article extracts, the
+  input gained the subject's own article extract and the hook was written
+  or restored from it (Eiffel Tower, Book of Kells, Colosseum, Anıtkabir,
+  Grand Ole Opry, Rideau Canal Skateway, the Colorado capitol step, and
+  others). Where an attribute stays unattested even then (a tram's colour,
+  a bat count at sunset, a birth city), the text omits it instead of
+  inventing it; the case files and the slice report carry the details.
 
 ## Record shape decisions (integration notes for the Stacker)
 
