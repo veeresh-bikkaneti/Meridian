@@ -1,0 +1,51 @@
+{
+  "caseId": "salem-oregon",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Oregon's capital in the Willamette Valley, where Oregon Trail pioneers settled.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-5750162",
+    "name": "Salem",
+    "country": "United States",
+    "subdivision": "Oregon",
+    "lat": 44.9429,
+    "lon": -123.0351
+  },
+  "target": {
+    "placeId": "gn-5750162",
+    "name": "Salem",
+    "lat": 44.9429,
+    "lon": -123.0351,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Oregon",
+    "iso2": "US",
+    "subdivision": "Oregon"
+  },
+  "subjectAnswer": {
+    "name": "Oregon",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "US",
+    "subdivision": "Oregon",
+    "difficulty": 1,
+    "regionId": "oregon",
+    "edition": "state",
+    "blurb": "Salem is the capital of Oregon, the United States. It's one of Oregon's biggest places.",
+    "history": "Named for the Hebrew word for peace. It grew rich on Willamette Valley hops and cherries."
+  },
+  "extracts": [
+    {
+      "article": "Salem, Oregon",
+      "url": "https://en.wikipedia.org/wiki/Salem%2C_Oregon",
+      "text": "Salem ( , SAY-ləm) is the capital city of the U.S. state of Oregon, and the county seat of Marion County. Founded in 1842, it is located in the center of the Willamette Valley alongside the Willamette River, which runs north through the city. The river forms the boundary between Marion and Polk counties, and the city neighborhood of West Salem is in Polk County.\nThe population was 175,535 at the 2020 census, and was estimated to be 180,406 in 2024, making it the second-most populous city in the state after Portland and before Eugene.\nSalem is the principal city of the Salem metropolitan area that covers Marion and Polk counties and had a combined population of 433,353 at the 2020 census and was estimated to have a population of 443,416 in 2024. This area is, in turn, part of the Portland–Vancouver–Salem Combined Statistical Area.\nThe city is home to Willamette University, Corban University, and Chemeketa Community College. The State of Oregon is the largest public employer in the city, and Salem Health is the largest private employer. Transportation includes public transit from Cherriots (legally known as Salem Area Mass Transit District), Amtrak service, as well as limited commercial and non-commercial air travel at McNary Field. Major roads include Interstate 5, Oregon Route 99E, and Oregon Route 22, which connects West Salem across the Willamette River via the Marion Street and Center Street bridges."
+    }
+  ],
+  "climateSectionFetched": false
+}

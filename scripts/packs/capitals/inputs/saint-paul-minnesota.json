@@ -1,0 +1,51 @@
+{
+  "caseId": "saint-paul-minnesota",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 2,
+  "hookAngle": "One of the Twin Cities on the Mississippi River, under a gleaming white marble capitol dome.",
+  "hookRewrittenInReview": true,
+  "place": {
+    "place_id": "gn-5045360",
+    "name": "Saint Paul",
+    "country": "United States",
+    "subdivision": "Minnesota",
+    "lat": 44.94441,
+    "lon": -93.09327
+  },
+  "target": {
+    "placeId": "gn-5045360",
+    "name": "Saint Paul",
+    "lat": 44.94441,
+    "lon": -93.09327,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Minnesota",
+    "iso2": "US",
+    "subdivision": "Minnesota"
+  },
+  "subjectAnswer": {
+    "name": "Minnesota",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "US",
+    "subdivision": "Minnesota",
+    "difficulty": 1,
+    "regionId": "minnesota",
+    "edition": "state",
+    "blurb": "Saint Paul is the capital of Minnesota, the United States. It's one of Minnesota's biggest places.",
+    "history": "The head of Mississippi River navigation made it a fur-trade hub. F. Scott Fitzgerald was born here."
+  },
+  "extracts": [
+    {
+      "article": "Saint Paul, Minnesota",
+      "url": "https://en.wikipedia.org/wiki/Saint_Paul%2C_Minnesota",
+      "text": "Saint Paul (often abbreviated to St. Paul) is the capital city of the U.S. state of Minnesota and the county seat of Ramsey County. As of the 2020 census, the city had a population of 311,527, making it Minnesota's second-most populous city and the 69th-most populous in the United States. Saint Paul and neighboring Minneapolis form the core of the Twin Cities metropolitan area, the third most populous in the Midwest with around 3.7 million residents.\nThe Minnesota State Capitol and the state government offices sit on a hill next to downtown Saint Paul overlooking a bend in the Mississippi River. Local cultural offerings include the Science Museum of Minnesota, the Ordway Center for the Performing Arts, and the Minnesota History Center. Three of the region's professional sports teams play in Saint Paul: the Minnesota Wild and Frost (at the Grand Casino Arena) and Minnesota United FC (at Allianz Field). The minor-league baseball team the St. Paul Saints play at CHS Field, 10 miles (16 km) from their major-league affiliate the Minnesota Twins in downtown Minneapolis.\nThe Legislative Assembly of the Minnesota Territory established the Town of Saint Paul as its capital near existing Dakota Sioux settlements in November 1849. Named after a log chapel established by Lucien Galtier, it remained a town until 1854. The city rose to prominence as the headquarters of 19th-century industrialist James J. Hill's railroad empire, with his transcontinental Great Northern Railway then one of the nation's most dominant. Saint Paul has a mayor–council government. The mayor is Kaohly Her, who took office in 2026.\n\nClimate .mw-parser-output .hatnote{font-style:italic}.mw-parser-output div.hatnote{padding-left:1.6em;margin-bottom:0.5em}.mw-parser-output .hatnote i{font-style:normal}.mw-parser-output .hatnote+.mw-empty-elt+.hatnote{margin-top:-0.5em}@media print{body.ns-0 .mw-parser-output .hatnote{display:none!important}} See also: Climate of the Twin Cities and Climate of Minnesota The city skyline from the southwest in the winter Saint Paul has a humid continental climate typical of the Upper Midwestern United States . Winters are frigid and snowy, while summers are warm to hot and humid. On the Köppen climate classification , Saint Paul falls in the hot summer humid continental climate zone ( Dfa bordering on Dwa ). The city experiences a full range of precipitation and related weather events, including snow, sleet , ice, rain, thunderstorms , tornadoes , and fog . &#91; 1 &#93; Due to its northerly location and lack of large bodies of water to moderate the air, Saint Paul is sometimes subjected to cold Arctic air masses , especially during late December, January, and February. The average annual temperature of 46.5&#160;°F (8.1&#160;°C) gives the Minneapolis−Saint Paul metropolitan area the coldest annual mean temperature of any major metropolitan area in the continental U.S. &#91; 2 &#93; Saint Paul is expected to be affected by climate change. More extreme heat waves are expected, as is increased precipitation in the spring and summer, which could cause river and flash flooding. Vector-borne transmission of such diseases as West Nile virus , Lyme disease , and human anaplasmosis may increase due to changes in temperature and precipitation patterns. &#91; 3 &#93; Climate data for St. Paul Downtown Airport , Minnesota (1991–2020 normals, extremes 1872–present) Month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Year Record high °F (°C) 58 (14) 64 (18) 83 (28) 93 (34) 99 (37) 101 (38) 104 (40) 104 (40) 101 (38) 90 (32) 78 (26) 63 (17) 104 (40) Mean daily maximum °F (°C) 23.9 (−4.5) 28.7 (−1.8) 41.7 (5.4) 56.8 (13.8) 68.9 (20.5) 78.5 (25.8) 82.6 (28.1) 80.4 (26.9) 72.4 (22.4) 58.0 (14.4) 42.1 (5.6) 28.6 (−1.9) 55.2 (12.9) Daily mean °F (°C) 16.3 (−8.7) 20.8 (−6.2) 33.1 (0.6) 47.0 (8.3) 58.9 (14.9) 68.8 (20.4) 73.3 (22.9) 71.1 (21.7) 62.9 (17.2) 49.0 (9.4) 34.6 (1.4) 21.7 (−5.7) 46.5 (8.1) Mean daily minimum °F (°C) 8.6 (−13.0) 12.9 (−10.6) 24.6 (−4.1) 37.2 (2.9) 48.9 (9.4) 59.2 (15.1) 64.0 (17.8) 61.7 (16.5) 53.4 (11.9) 40.0 (4.4) 27.1 (−2.7) 14.8 (−9.6) 37.7 (3.2) Record low °F (°C) −41 (−41) −33 (−36) −26 (−32) 6 (−14) 23 (−5) 34 (1) 45 (7) 39 (4) 28 (−2) 8 (−13) −25 (−32) −39 (−39) −41 (−41) Average precipitation inches (mm) 0.48 (12) 0.52 (13) 1.43 (36) 2.58 (66) 3.97 (101) 4.63 (118) 3.97 (101) 4.10 (104) 3.08 (78) 2.47 (63) 1.32 (34) 0.65 (17) 29.20 (742) Average precipitation days (≥ 0.01 in) 4.0 4.3 7.1 10.6 12.7 13.0 9.9 10.0 9.6 9.2 6.2 4.9 101.5 Source 1: NOAA &#91; 4 &#93; &#91; 5 &#93; Source 2: The Weather Channel &#91; 6 &#93; ^ .mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:\"\\\"\"\"\\\"\"\"'\"\"'\"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url(\"//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url(\"//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url(\"//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url(\"//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg\")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}} Kottek, Markus; Grieser, Jürgen; Beck, Christoph; Rudolf, Bruno; Rubel, Franz (June 2006). \"World Map of the Köppen-Geiger climate classification updated\" . Meteorologische Zeitschrift . 15 (3): 259– 263. Bibcode : 2006MetZe..15..259K . doi : 10.1127/0941-2948/2006/0130 . Archived from the original on May 4, 2022 . Retrieved December 15, 2010 . ^ 45.4&#160;°F for 1971 through 2000 per U.S. Census Archived January 3, 2007, at the Wayback Machine who cites \"Normals 1971–2000\" . National Climatic Data Center. Archived from the original on April 1, 2007 . Retrieved March 25, 2007 . or 44.6&#160;°F (7.0&#160;°C) per Fisk, Charles (March 3, 2007). \"Minneapolis-Saint Paul Area Daily Climatological History of Temperature, Precipitation, and Snowfall, A Year-by-Year Graphical Portrayal (1820–present)\" . Archived from the original on May 18, 2007 . Retrieved March 25, 2007 . ^ \"Saint Paul Climate Action & Resilience Plan\" (PDF) . stpaul.gov . December 2019 . Retrieved February 27, 2024 . ^ \"NowData – NOAA Online Weather Data\" . National Oceanic and Atmospheric Administration. Archived from the original on August 17, 2021 . Retrieved June 22, 2021 . ^ \"Station: St Paul Downtown AP, MN\" . U.S. Climate Normals 2020: U.S. Monthly Climate Normals (1991-2020) . National Oceanic and Atmospheric Administration. Archived from the original on June 24, 2021 . Retrieved June 22, 2021 . ^ \"Seasonal Temperature and Precipitation Information\" . The Weather Channel. August 2011. Archived from the original on May 10, 2008 . Retrieved July 28, 2008 ."
+    }
+  ],
+  "climateSectionFetched": true
+}

@@ -1,0 +1,51 @@
+{
+  "caseId": "olympia-washington",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Washington's capital sits at the southern end of Puget Sound.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-5805687",
+    "name": "Olympia",
+    "country": "United States",
+    "subdivision": "Washington",
+    "lat": 47.04491,
+    "lon": -122.90169
+  },
+  "target": {
+    "placeId": "gn-5805687",
+    "name": "Olympia",
+    "lat": 47.04491,
+    "lon": -122.90169,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Washington",
+    "iso2": "US",
+    "subdivision": "Washington"
+  },
+  "subjectAnswer": {
+    "name": "Washington",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "US",
+    "subdivision": "Washington",
+    "difficulty": 2,
+    "regionId": "washington",
+    "edition": "state",
+    "blurb": "Olympia is the capital of Washington, the United States.",
+    "history": "Named for the Olympic Mountains across Puget Sound. Its downtown artesian well still flows with free spring water."
+  },
+  "extracts": [
+    {
+      "article": "Olympia, Washington",
+      "url": "https://en.wikipedia.org/wiki/Olympia%2C_Washington",
+      "text": "Olympia is the capital city of the U.S. state of Washington. The population was 55,605 at the 2020 census, while the Olympia metropolitan statistical area has an estimated 300,000 residents. Olympia is the county seat of Thurston County and anchors the South Puget Sound region of western Washington, 50 miles (80 km) southwest of Seattle.\nThe Squaxin and other Coast Salish peoples inhabited the southern Puget Sound region prior to the arrival of European and American settlers in the 19th century. The Treaty of Medicine Creek was signed in 1854 and followed by the Treaty of Olympia in 1856; these two treaties forced the Squaxin to relocate to an Indian reservation. Olympia was declared the capital of the Washington Territory in 1853 and incorporated as a town on January 28, 1859. It became a city in 1881.\nAside from its role in the state government, Olympia is also recognized as a countercultural hub in the Pacific Northwest. The city's music scene gained prominence in the 1990s for its role in the emergence of punk rock movements such as riot grrrl and grunge. The Olympia area is also home to The Evergreen State College, a public liberal arts institution known for its non-traditional curriculum. Intercity Transit provides fare-free bus service throughout the Olympia area, which has high per-capita use of public transportation relative to other cities of its size.\n\nClimate Olympia has a warm-summer Mediterranean climate ( Köppen : Csb ). The local microclimate has dry summers in July and mildly humid summers in early June and late August, with cool July and August overnight lows. It is part of USDA Hardiness zone 8a, with isolated pockets around Puget Sound in zone 8b. &#91; 1 &#93; Most of western Washington's weather is brought in by weather systems that form near the Aleutian Islands in Alaska . It contains cold moist air, which brings western Washington cold rain, cloudiness, and fog. November through January are Olympia's rainiest months. City streets, creeks, and rivers can flood from November to February. The monthly mean temperature ranges from 38.4&#160;°F (3.6&#160;°C) in December to 64.1&#160;°F (17.8&#160;°C) in August. Seasonal snowfall for 1981–2010 averaged 10.8 inches (27.4&#160;cm) &#91; 2 &#93; but has historically ranged from trace amounts in 1991–92 to 81.5&#160;in (207&#160;cm) in 1968–69. &#91; 2 &#93; Climate chart for Olympia Olympia averages 50 inches (1,270&#160;mm) of precipitation annually and has a year-round average of 75% cloud cover. Annual precipitation has ranged from 29.92&#160;in (760&#160;mm) in 1952 to 66.71&#160;in (1,694&#160;mm) in 1950; for water year (October 1 – September 30) precipitation, the range is 32.71&#160;in (831&#160;mm) in 2000–01 to 72.57&#160;in (1,843&#160;mm) in 1998–99. &#91; 2 &#93; With a period of record dating back to 1948, extreme temperatures have ranged from −8&#160;°F (−22&#160;°C) on January 1, 1979, up to 110&#160;°F (43&#160;°C), on June 28, 2021; the record cold daily maximum is 18&#160;°F (−8&#160;°C) on January 31, 1950, while, conversely, the record warm daily minimum is 69&#160;°F (21&#160;°C) on July 22, 2006. &#91; 2 &#93; Between 1991 and 2020 the mean coldest daily maximum was right on the freezing point at 32&#160;°F (0&#160;°C) and the warmest night of the year averaged a very mild 60&#160;°F (16&#160;°C). &#91; 2 &#93; On average, 6.3 days annually reach 90&#160;°F (32&#160;°C), 1.8 days stay at or below freezing all day, and 78 nights reach the freezing mark. &#91; 2 &#93; The average window for freezing temperatures is October 8 through May 3, allowing a growing season of 157 days, nearly 100 days shorter than in Seattle. &#91; 2 &#93; Climate data for Olympia Regional Airport , Washington (1991−2020 normals, extremes 1948−present) Month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Year Record high °F (°C) 64 (18) 73 (23) 79 (26) 88 (31) 96 (36) 110 (43) 104 (40) 104 (40) 98 (37) 90 (32) 74 (23) 64 (18) 110 (43) Mean maximum °F (°C) 56.3 (13.5) 59.4 (15.2) 67.9 (19.9) 76.2 (24.6) 83.9 (28.8) 87.9 (31.1) 93.6 (34.2) 92.2 (33.4) 86.3 (30.2) 73.7 (23.2) 61.5 (16.4) 55.5 (13.1) 96.0 (35.6) Mean daily maximum °F (°C) 46.0 (7.8) 49.1 (9.5) 53.7 (12.1) 58.9 (14.9) 66.1 (18.9) 70.8 (21.6) 77.6 (25.3) 78.0 (25.6) 72.1 (22.3) 60.2 (15.7) 50.6 (10.3) 44.9 (7.2) 60.7 (15.9) Daily mean °F (°C) 39.6 (4.2) 40.7 (4.8) 44.1 (6.7) 48.2 (9.0) 54.5 (12.5) 59.1 (15.1) 64.2 (17.9) 64.2 (17.9) 59.1 (15.1) 50.3 (10.2) 43.2 (6.2) 38.9 (3.8) 50.5 (10.3) Mean daily minimum °F (°C) 33.2 (0.7) 32.3 (0.2) 34.5 (1.4) 37.5 (3.1) 43.0 (6.1) 47.4 (8.6) 50.7 (10.4) 50.5 (10.3) 46.2 (7.9) 40.5 (4.7) 35.8 (2.1) 32.8 (0.4) 40.4 (4.7) Mean minimum °F (°C) 18.8 (−7.3) 19.0 (−7.2) 23.9 (−4.5) 27.5 (−2.5) 32.3 (0.2) 38.4 (3.6) 42.7 (5.9) 41.9 (5.5) 35.9 (2.2) 27.9 (−2.3) 21.6 (−5.8) 18.4 (−7.6) 12.6 (−10.8) Record low °F (°C) −8 (−22) −1 (−18) 9 (−13) 23 (−5) 25 (−4) 30 (−1) 35 (2) 33 (1) 25 (−4) 14 (−10) −1 (−18) −7 (−22) −8 (−22) Average precipitation inches (mm) 7.80 (198) 5.09 (129) 5.68 (144) 3.67 (93) 2.26 (57) 1.46 (37) 0.53 (13) 0.96 (24) 2.04 (52) 5.07 (129) 8.21 (209) 7.85 (199) 50.62 (1,286) Average snowfall inches (cm) 2.0 (5.1) 0.6 (1.5) 0.1 (0.25) 0.0 (0.0) 0.0 (0.0) 0.0 (0.0) 0.0 (0.0) 0.0 (0.0) 0.0 (0.0) 0.0 (0.0) 0.0 (0.0) 1.2 (3.0) 3.9 (9.9) Average precipitation days (≥ 0.01 in) 20.3 16.4 18.8 16.3 11.4 8.5 4.0 4.8 8.1 15.1 19.5 20.2 163.4 Average snowy days (≥ 0.1 in) 0.5 0.7 0.1 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.1 0.8 2.2 Average relative humidity (%) 87.5 84.5 80.0 75.6 72.9 72.4 70.8 72.1 77.6 85.1 88.4 89.1 79.7 Average dew point °F (°C) 34.5 (1.4) 36.0 (2.2) 36.9 (2.7) 39.2 (4.0) 43.9 (6.6) 48.9 (9.4) 52.0 (11.1) 52.7 (11.5) 49.6 (9.8) 44.8 (7.1) 39.6 (4.2) 35.4 (1.9) 42.8 (6.0) Source 1: NOAA (dew points and relative humidity 1961–1990) &#91; 3 &#93; &#91; 4 &#93; Source 2: National Weather Service &#91; 5 &#93; ^ .mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:\"\\\"\"\"\\\"\"\"'\"\"'\"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url(\"//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url(\"//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url(\"//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url(\"//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg\")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}} \"USDA Plant Hardiness Zone Map\" . United States Department of Agriculture. Archived from the original on February 27, 2014 . Retrieved June 1, 2014 . ^ a b c d e f g \"NOWData - NOAA Online Weather Data\" . National Oceanic and Atmospheric Administration . Archived from the original on May 14, 2021 . Retrieved September 5, 2016 . ^ \"U.S. Climate Normals Quick Access\" . National Oceanic and Atmospheric Administration. Archived from the original on July 5, 2023 . Retrieved September 14, 2022 . ^ \"WMO Climate Normals for OLYMPIA, WA 1961–1990\" . National Oceanic and Atmospheric Administration . Archived from the original on July 5, 2023 . Retrieved July 5, 2023 . ^ \"NowData - NOAA Online Weather Data\" . National Oceanic and Atmospheric Administration . Retrieved June 27, 2021 ."
+    }
+  ],
+  "climateSectionFetched": true
+}

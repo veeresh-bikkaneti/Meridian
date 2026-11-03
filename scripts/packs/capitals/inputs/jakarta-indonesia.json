@@ -1,0 +1,51 @@
+{
+  "caseId": "jakarta-indonesia",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "A vast capital city on the island of Java (capital-transition status — see §E).",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-1642911",
+    "name": "Jakarta",
+    "country": "Indonesia",
+    "subdivision": "Jakarta",
+    "lat": -6.21462,
+    "lon": 106.84513
+  },
+  "target": {
+    "placeId": "gn-1642911",
+    "name": "Jakarta",
+    "lat": -6.21462,
+    "lon": 106.84513,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Indonesia",
+    "iso2": "ID",
+    "subdivision": "Jakarta"
+  },
+  "subjectAnswer": {
+    "name": "Indonesia",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "ID",
+    "subdivision": "Jakarta",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Jakarta is the capital of Indonesia. It's one of Indonesia's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Jakarta",
+      "url": "https://en.wikipedia.org/wiki/Jakarta",
+      "text": "Jakarta, officially the Special Capital Region of Jakarta, is the capital and largest city of Indonesia, with administrative status equivalent to a province. It lies on the northwestern coast of Java, bordering West Java and Banten and facing the Java Sea. Jakarta covers about 664 square kilometres (256 square miles) and had 11 million registered residents in 2025. Its urban area extends well beyond the provincial boundary into the wider Jakarta metropolitan area (locally known as Jabodetabek), which had a population of nearly 42 million in 2025 according to the United Nations.\nThe area around present-day Jakarta was long associated with Sunda Kelapa, the port of the Sunda Kingdom. Islamic forces captured Kalapa in 1527, after which the settlement became known as Jayakarta and came under the Banten Sultanate. The Dutch East India Company (VOC) seized Jayakarta in 1619 and rebuilt it as Batavia, its main administrative centre in Asia and an important trading port. During the Japanese occupation in World War II, the authorities renamed Batavia to Jakarta. Indonesian independence was proclaimed there in 1945 and after the Indonesian National Revolution, Jakarta became the capital of the unitary republic in 1950.\nJakarta grew rapidly after Indonesian independence. Migration from across Indonesia has shaped its population and culture. Urban growth has spread into Bogor, Depok, Tangerang and Bekasi, which creates a metropolitan region tied together by large, daily commuter flows. Jakarta is Indonesia's financial and trade centre and the centre of national administration. It is also home to many corporate headquarters, media organisations, universities and the secretariat of the Association of Southeast Asian Nations (ASEAN).\nJakarta has no ethnic majority. The largest groups include Javanese, Betawi, Sundanese and Chinese Indonesians. Indonesian is the official language and the main language of public life, while Betawi culture developed from interaction among people of varying origins in colonial Batavia. Jakarta faces persistent issues  including traffic congestion, flooding, land subsidence, air pollution, and pressure on water and waste services. In 2022, the Indonesian government began the legal process of moving the country's capital to Nusantara in East Kalimantan, but Jakarta remains the capital until the transfer is formalised by a presidential decree.\n\nClimate Drizzle in Jakarta Jakarta has a tropical monsoon climate with distinct wet and dry seasons. &#91; 1 &#93; Rainfall is much heavier from December to March, while June to September is relatively dry. &#91; 2 &#93; Flooding is common during the rainy season. Heavy rain and upstream runoff can overwhelm rivers and drains, while high tides, land subsidence and urban development can further increase flood risk. &#91; 3 &#93; &#91; 4 &#93; &#91; 5 &#93; Jakarta is generally warm throughout the year. At Kemayoran, monthly mean temperatures during 1991–2020 ranged from 27.3&#160;°C (81.1&#160;°F) in February to 28.8&#160;°C (83.8&#160;°F) in October, with an annual mean of 28.2&#160;°C (82.8&#160;°F). The annual averages of daily maximum and minimum temperatures were 32.5&#160;°C (90.5&#160;°F) and 25.5&#160;°C (77.9&#160;°F), respectively. &#91; 6 &#93; Over the long term, Jakarta has also become warmer, with its annual mean temperature rising by about 1.6&#160;°C (2.9&#160;°F) per century between 1866 and 2012. &#91; 7 &#93; Climate data for Jakarta, 1991–2020 normals Month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Year Mean daily maximum °C (°F) 31.0 (87.8) 30.8 (87.4) 32.1 (89.8) 32.8 (91.0) 33.2 (91.8) 32.9 (91.2) 32.7 (90.9) 33.0 (91.4) 33.4 (92.1) 33.4 (92.1) 32.8 (91.0) 32.0 (89.6) 32.5 (90.5) Daily mean °C (°F) 27.5 (81.5) 27.3 (81.1) 28.0 (82.4) 28.4 (83.1) 28.7 (83.7) 28.4 (83.1) 28.2 (82.8) 28.3 (82.9) 28.6 (83.5) 28.8 (83.8) 28.4 (83.1) 28.0 (82.4) 28.2 (82.8) Mean daily minimum °C (°F) 25.2 (77.4) 25.2 (77.4) 25.5 (77.9) 25.6 (78.1) 25.8 (78.4) 25.5 (77.9) 25.3 (77.5) 25.3 (77.5) 25.5 (77.9) 25.6 (78.1) 25.6 (78.1) 25.5 (77.9) 25.5 (77.9) Average precipitation mm (inches) 373.3 (14.70) 381.4 (15.02) 210.4 (8.28) 164.1 (6.46) 103.2 (4.06) 80.4 (3.17) 77.7 (3.06) 51.5 (2.03) 61.0 (2.40) 112.2 (4.42) 134.8 (5.31) 183.3 (7.22) 1,933.3 (76.11) Average precipitation days (≥ 1.0 mm) 17.5 17.9 14.1 11.5 8.2 6.2 4.8 3.3 4.0 7.4 10.4 12.8 118.1 Mean monthly sunshine hours 84.6 78.9 119.6 129.7 130.4 120.4 148.5 172.3 176.9 153.4 103.0 83.6 1,501.3 Source: World Meteorological Organization / National Oceanic and Atmospheric Administration (1991–2020 climatological normals) &#91; 6 &#93; ^ Siswanto et al. 2016 , pp.&#160;3215–3216. ^ Siswanto et al. 2016 , p.&#160;3216. ^ Priyambodoho et al. 2021 , p.&#160;3. ^ Padawangi & Douglass 2015 , p.&#160;523. ^ UNFCCC 2023 , pp.&#160;3–4. ^ a b \"World Meteorological Organization Climate Normals for 1991–2020\". National Oceanic and Atmospheric Administration . ^ Siswanto et al. 2016 , p.&#160;3214."
+    }
+  ],
+  "climateSectionFetched": true
+}

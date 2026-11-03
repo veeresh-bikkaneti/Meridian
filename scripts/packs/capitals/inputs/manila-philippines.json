@@ -1,0 +1,51 @@
+{
+  "caseId": "manila-philippines",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Intramuros, a walled old city, still stands on Manila Bay.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-1701668",
+    "name": "Manila",
+    "country": "Philippines",
+    "subdivision": "National Capital Region",
+    "lat": 14.6042,
+    "lon": 120.9822
+  },
+  "target": {
+    "placeId": "gn-1701668",
+    "name": "Manila",
+    "lat": 14.6042,
+    "lon": 120.9822,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Philippines",
+    "iso2": "PH",
+    "subdivision": "National Capital Region"
+  },
+  "subjectAnswer": {
+    "name": "Philippines",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "PH",
+    "subdivision": "National Capital Region",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Manila is the capital of the Philippines. It's one of the Philippines's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Manila",
+      "url": "https://en.wikipedia.org/wiki/Manila",
+      "text": "Manila, officially the City of Manila, is the capital and second-most populous city of the Philippines after Quezon City. According to the 2024 census, it has a population of 1,902,590 people. Located on the eastern shore of Manila Bay on the island of Luzon, it is classified as a highly urbanized city. With 44,935 inhabitants per square kilometer (116,380/sq mi), Manila is one of the world's most densely populated cities proper.\nBy 1258, a Tagalog-fortified polity called Maynila existed on the site of modern Manila. On June 24, 1571, after the defeat of the polity's last indigenous ruler, Rajah Sulayman, in the Battle of Bangkusay, Spanish conquistador Miguel López de Legazpi began constructing the walled fortification of Intramuros on the ruins of an older settlement from whose name the Spanish and English name Manila derives. Manila was used as the capital of the captaincy general of the Spanish East Indies, which included the Marianas, Guam, and other islands, and was controlled and administered for the Spanish crown by Mexico City in the Viceroyalty of New Spain. Manila is considered to be part of the world's original set of global cities because its commercial networks were the first to extend across the Pacific Ocean and connect Asia with the Spanish Americas through the galleon trade. This marked the first time an uninterrupted chain of trade routes circling the planet had been established.\nUnder the American occupation, Manila became the first chartered city in the country, designated by Philippine Commission Act No. 183 on July 31, 1901. It became autonomous with the passage of Republic Act No. 409, \"The Revised Charter of the City of Manila\", on June 18, 1949.\nIn modern times, the name \"Manila\" is commonly used to refer to the entire metropolitan area, the greater metropolitan area, and the city proper. Metro Manila, the officially defined metropolitan area, is the capital region of the Philippines, and includes the much larger Quezon City and the Makati Central Business District.\nThe Pasig River flows through the middle of Manila, dividing it into northern and southern sections. The city comprises 16 administrative districts and is divided into six political districts for the purposes of representation in the Congress of the Philippines and the election of city council members. In 2018, the Globalization and World Cities Research Network listed Manila as an \"Alpha-\" global city, and ranked it seventh in economic performance globally and second regionally, while the Global Financial Centres Index ranks Manila 79th in the world. Manila is also the world's second most natural disaster-exposed capital city after Tokyo. Furthermore, land subsidence and sea-level rise driven by climate change are challenges that the city will face in the future.\n\nClimate Manila's annual temperature and rainfall Under the Köppen climate classification system, Manila has a tropical monsoon climate (Köppen Am ), closely bordering on a tropical savanna climate (Köppen Aw ). Together with the rest of the Philippines, Manila lies entirely within the tropics. Its proximity to the equator means temperatures are high year-round especially during the daytime, rarely going below 19&#160;°C (66.2&#160;°F) or above 38&#160;°C (100.4&#160;°F). Temperature extremes have ranged from 14.5&#160;°C (58.1&#160;°F) on January 11, 1914, &#91; 1 &#93; to 38.6&#160;°C (101.5&#160;°F) on May 7, 1915. &#91; 2 &#93; Humidity levels are usually very high all year round, making the air feel hotter than its actual temperature. Manila has a distinct dry season lasting from late December to early April. A relatively lengthy wet season that covers the remaining period, with slightly cooler daytime temperatures and slightly warmer nighttime temperatures. In the wet season, rain rarely falls all day, but rainfall is very heavy for short periods. Typhoons usually occur from June to September. &#91; 3 &#93; Climate data for Port Area, Manila (1991–2020 normals, extremes 1885–2024) Month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Year Record high °C (°F) 36.5 (97.7) 35.6 (96.1) 36.8 (98.2) 38.8 (101.8) 38.6 (101.5) 37.6 (99.7) 37.0 (98.6) 36.2 (97.2) 35.3 (95.5) 35.8 (96.4) 35.6 (96.1) 34.6 (94.3) 38.8 (101.8) Mean daily maximum °C (°F) 29.9 (85.8) 30.7 (87.3) 32.1 (89.8) 33.8 (92.8) 33.6 (92.5) 32.8 (91.0) 31.5 (88.7) 31.0 (87.8) 31.2 (88.2) 31.4 (88.5) 31.3 (88.3) 30.3 (86.5) 31.6 (88.9) Daily mean °C (°F) 26.9 (80.4) 27.5 (81.5) 28.7 (83.7) 30.3 (86.5) 30.3 (86.5) 29.7 (85.5) 28.7 (83.7) 28.5 (83.3) 28.4 (83.1) 28.6 (83.5) 28.3 (82.9) 27.4 (81.3) 28.6 (83.5) Mean daily minimum °C (°F) 23.9 (75.0) 24.3 (75.7) 25.3 (77.5) 26.7 (80.1) 27.0 (80.6) 26.5 (79.7) 25.9 (78.6) 25.9 (78.6) 25.7 (78.3) 25.7 (78.3) 25.3 (77.5) 24.6 (76.3) 25.6 (78.1) Record low °C (°F) 14.5 (58.1) 15.6 (60.1) 16.2 (61.2) 17.2 (63.0) 20.0 (68.0) 20.1 (68.2) 19.4 (66.9) 18.0 (64.4) 20.2 (68.4) 19.5 (67.1) 16.8 (62.2) 15.7 (60.3) 14.5 (58.1) Average rainfall mm (inches) 19.4 (0.76) 21.9 (0.86) 21.8 (0.86) 23.4 (0.92) 159.1 (6.26) 253.3 (9.97) 432.3 (17.02) 476.1 (18.74) 396.4 (15.61) 220.6 (8.69) 119.9 (4.72) 98.5 (3.88) 2,242.7 (88.30) Average rainy days (≥ 1.0 mm) 4 3 3 3 9 14 19 19 18 14 10 8 124 Average relative humidity (%) 72 70 67 66 72 76 80 82 81 77 75 75 74 Mean monthly sunshine hours 177 198 226 258 223 162 133 133 132 158 153 152 2,105 Source 1: PAGASA &#91; 4 &#93; &#91; 5 &#93; Source 2: Danish Meteorological Institute (sun, 1931–1960) &#91; 6 &#93; ^ .mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:\"\\\"\"\"\\\"\"\"'\"\"'\"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url(\"//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url(\"//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url(\"//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url(\"//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg\")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}} \"Temperatures drop further in Baguio, MM\" . The Philippine Star . Archived from the original on October 25, 2014 . Retrieved October 12, 2014 . ^ \"Metro Manila temperature soars to 36.2C\" . ABS-CBN News . Archived from the original on December 26, 2014 . Retrieved October 12, 2014 . ^ \"Manila\" . Jeepneyguide. Archived from the original on August 22, 2016 . Retrieved March 4, 2014 . ^ \"Port Area Manila (MCO) Climatological Normal Values 1991–2020\" (PDF) . Philippine Atmospheric, Geophysical and Astronomical Services Administration. Archived from the original (PDF) on March 2, 2022 . Retrieved May 3, 2022 . ^ \"Port Area (MCO) Manila Climatological Extremes\" (PDF) . Philippine Atmospheric, Geophysical and Astronomical Services Administration. Archived from the original (PDF) on March 7, 2022 . Retrieved May 3, 2022 . ^ Cappelen, John; Jensen, Jens. \"Filippinerne – Manila, Luzon\" (PDF) . Climate Data for Selected Stations (1931–1960) (in Danish). Danish Meteorological Institute. Archived from the original (PDF) on April 27, 2013 . Retrieved December 17, 2019 ."
+    }
+  ],
+  "climateSectionFetched": true
+}

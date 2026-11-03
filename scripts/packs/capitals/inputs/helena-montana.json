@@ -1,0 +1,51 @@
+{
+  "caseId": "helena-montana",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "A gold-rush town: gold was found in Last Chance Gulch in 1864.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-5656882",
+    "name": "Helena",
+    "country": "United States",
+    "subdivision": "Montana",
+    "lat": 46.59271,
+    "lon": -112.03611
+  },
+  "target": {
+    "placeId": "gn-5656882",
+    "name": "Helena",
+    "lat": 46.59271,
+    "lon": -112.03611,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Montana",
+    "iso2": "US",
+    "subdivision": "Montana"
+  },
+  "subjectAnswer": {
+    "name": "Montana",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "US",
+    "subdivision": "Montana",
+    "difficulty": 2,
+    "regionId": "montana",
+    "edition": "state",
+    "blurb": "Helena is the capital of Montana, the United States.",
+    "history": "Born as 'Last Chance Gulch' in the 1864 gold rush. Its grand Capitol rose on copper-boom money."
+  },
+  "extracts": [
+    {
+      "article": "Helena, Montana",
+      "url": "https://en.wikipedia.org/wiki/Helena%2C_Montana",
+      "text": "Helena (; ) is the capital city of the U.S. state of Montana and the county seat of Lewis and Clark County. Its population was 32,091 at the 2020 census, making it the sixth-most populous city in Montana, but the fifth-least populous state capital in the U.S. It is the principal city of the Helena, Montana metropolitan area, which includes all of Lewis and Clark, and Jefferson counties; the MSA's population was 83,058 at the 2020 census.\nHelena was founded as a gold camp during the Montana gold rush on July 14, 1864, following the discovery of gold at Last Chance Gulch by the Four Georgians. It was formally established on October 30, 1864. Due to the gold rush, Helena became a wealthy city, with approximately 50 millionaires inhabiting the area by 1888. The concentration of wealth contributed to the city's prominent, elaborate Victorian architecture. The local daily newspaper is the Independent Record. The city is served by Helena Regional Airport (HLN).\n\nClimate Climate chart for Helena Helena has a semi-arid climate ( Köppen BSk ), with long, cold and moderately snowy winters, hot and dry summers, and short springs and autumns in between. &#91; 1 &#93; Snowfall has been observed in every month but July, but is usually absent from May to September, and normally accumulates in only light amounts. &#91; 2 &#93; Winters have periods of moderation, partly due to warming influence from chinooks . &#91; 3 &#93; Precipitation mostly falls in the spring and is generally sparse, averaging only 11.4 inches (290&#160;mm) annually. &#91; 4 &#93; The hottest temperature recorded in Helena was 105&#160;°F (41&#160;°C) on August 24, 1969, and July 15, 2002, while the coldest temperature recorded was −42&#160;°F (−41&#160;°C) on January 31, 1893, January 25, 1957, and February 2, 1996. &#91; 5 &#93; Climate data for Helena, Montana, 1991–2020 normals, extremes 1880–present Month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Year Record high °F (°C) 63 (17) 69 (21) 78 (26) 86 (30) 95 (35) 104 (40) 105 (41) 105 (41) 102 (39) 89 (32) 76 (24) 70 (21) 105 (41) Mean maximum °F (°C) 53.2 (11.8) 55.6 (13.1) 66.7 (19.3) 76.6 (24.8) 84.3 (29.1) 91.9 (33.3) 98.0 (36.7) 97.1 (36.2) 91.0 (32.8) 79.0 (26.1) 63.5 (17.5) 53.0 (11.7) 99.3 (37.4) Mean daily maximum °F (°C) 32.4 (0.2) 37.2 (2.9) 47.5 (8.6) 56.7 (13.7) 66.4 (19.1) 74.7 (23.7) 86.1 (30.1) 84.6 (29.2) 73.3 (22.9) 57.6 (14.2) 42.8 (6.0) 32.6 (0.3) 57.7 (14.3) Daily mean °F (°C) 23.0 (−5.0) 27.2 (−2.7) 36.1 (2.3) 44.5 (6.9) 53.9 (12.2) 61.7 (16.5) 70.6 (21.4) 68.8 (20.4) 58.9 (14.9) 45.5 (7.5) 32.8 (0.4) 23.4 (−4.8) 45.5 (7.5) Mean daily minimum °F (°C) 13.5 (−10.3) 17.2 (−8.2) 24.6 (−4.1) 32.4 (0.2) 41.5 (5.3) 48.7 (9.3) 55.1 (12.8) 52.9 (11.6) 44.6 (7.0) 33.5 (0.8) 22.8 (−5.1) 14.2 (−9.9) 33.4 (0.8) Mean minimum °F (°C) −12.6 (−24.8) −5.3 (−20.7) 4.0 (−15.6) 18.4 (−7.6) 28.0 (−2.2) 37.2 (2.9) 45.7 (7.6) 42.0 (5.6) 31.0 (−0.6) 15.3 (−9.3) 1.1 (−17.2) −8.8 (−22.7) −19.9 (−28.8) Record low °F (°C) −42 (−41) −42 (−41) −30 (−34) −10 (−23) 17 (−8) 30 (−1) 36 (2) 28 (−2) 6 (−14) −8 (−22) −39 (−39) −40 (−40) −42 (−41) Average precipitation inches (mm) 0.39 (9.9) 0.42 (11) 0.52 (13) 1.02 (26) 1.95 (50) 2.21 (56) 1.06 (27) 1.04 (26) 0.96 (24) 0.78 (20) 0.59 (15) 0.46 (12) 11.40 (290) Average snowfall inches (cm) 6.6 (17) 6.6 (17) 4.6 (12) 2.9 (7.4) 0.1 (0.25) 0.0 (0.0) 0.0 (0.0) 0.3 (0.76) 0.2 (0.51) 2.8 (7.1) 5.4 (14) 7.7 (20) 37.2 (94) Average precipitation days (≥ 0.01 in) 6.5 6.5 6.9 8.8 11.2 11.5 7.5 6.3 5.8 7.0 6.5 6.6 91.1 Average snowy days (≥ 0.1 in) 5.6 5.6 3.7 2.1 0.2 0.1 0.0 0.1 0.0 1.5 4.0 5.2 28.1 Average relative humidity (%) 66.0 64.1 60.1 53.9 53.5 52.1 46.4 47.5 54.5 58.3 64.8 68.1 57.4 Average dew point °F (°C) 9.5 (−12.5) 15.1 (−9.4) 19.0 (−7.2) 25.3 (−3.7) 33.6 (0.9) 40.8 (4.9) 43.7 (6.5) 42.6 (5.9) 36.5 (2.5) 28.8 (−1.8) 20.3 (−6.5) 12.0 (−11.1) 27.3 (−2.6) Mean monthly sunshine hours 119.4 149.0 225.8 243.0 282.0 308.7 370.3 324.1 254.6 202.9 118.6 99.9 2,698.3 Percentage possible sunshine 43 52 61 60 61 65 77 74 68 60 42 37 60 Source 1: NOAA (relative humidity, dew points and sun 1961–1990) &#91; 4 &#93; &#91; 6 &#93; Source 2: National Weather Service &#91; 5 &#93; .mw-parser-output .ambox{border:1px solid var(--border-color-base,#a2a9b1);border-left:10px solid #36c;background-color:var(--background-color-neutral-subtle,#f8f9fa);box-sizing:border-box}.mw-parser-output .ambox+.mw-empty-elt+.ambox,.mw-parser-output .ambox+.mw-empty-elt+.mw-empty-elt+.ambox,.mw-parser-output .ambox+.mw-empty-elt+.mw-empty-elt+.mw-empty-elt+.ambox{margin-top:-1px}html body.mediawiki .mw-parser-output .ambox.mbox-small-left{margin:4px 1em 4px 0;overflow:hidden;width:238px;border-collapse:collapse;font-size:88%;line-height:1.25em}.mw-parser-output .ambox-speedy{border-left-color:#b32424;background-color:#fee7e6}.mw-parser-output .ambox-delete{border-left-color:#b32424}.mw-parser-output .ambox-content{border-left-color:#f28500}.mw-parser-output .ambox-style{border-left-color:#fc3}.mw-parser-output .ambox-move{border-left-color:#9932cc}.mw-parser-output .ambox-protection{border-left-color:var(--border-color-base,#a2a9b1)}.mw-parser-output .ambox .mbox-text{border:none;padding:0.25em 0.5em;width:100%}.mw-parser-output .ambox .mbox-image{border:none;padding:2px 0 2px 0.5em;text-align:center}.mw-parser-output .ambox .mbox-imageright{border:none;padding:2px 0.5em 2px 0;text-align:center}.mw-parser-output .ambox .mbox-empty-cell{border:none;padding:0;width:1px}.mw-parser-output .ambox .mbox-image-div{width:52px}@media(min-width:720px){.mw-parser-output .ambox{margin:0 10%}}@media print{body.ns-0 .mw-parser-output .ambox{display:none!important}}@media screen{html.skin-theme-clientpref-night .mw-parser-output .ambox-speedy{background-color:#310402}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .ambox-speedy{background-color:#310402}} This graph was using the legacy Graph extension , which is no longer supported. It needs to be converted to the new Chart extension . See or edit raw graph data . ^ .mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:\"\\\"\"\"\\\"\"\"'\"\"'\"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url(\"//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url(\"//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url(\"//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url(\"//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg\")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}} \"Helena, Mt Climate Helena, Mt Temperatures Helena, Mt Weather Averages\" . Climatemps.com . Archived from the original on July 18, 2020 . Retrieved July 18, 2020 . ^ \"Total of Snowfall (Inches)\" . wrcc.dri.edu . October 7, 2018. Archived from the original on October 8, 2018 . Retrieved July 20, 2018 . ^ \"Montana Earth Science Picture of the Week\" . formontana.net . Archived from the original on December 16, 2019 . Retrieved July 20, 2020 . ^ a b \"U.S. Climate Normals Quick Access\" . National Oceanic and Atmospheric Administration . Retrieved August 22, 2022 . ^ a b \"NOAA Online Weather Data\" . National Weather Service . Retrieved August 22, 2022 . ^ \"WMO climate normals for HELENA/COUNTY-CITY, MT 1961–1990\" . National Oceanic and Atmospheric Administration. Archived from the original on October 31, 2020 . Retrieved August 2, 2023 ."
+    }
+  ],
+  "climateSectionFetched": true
+}

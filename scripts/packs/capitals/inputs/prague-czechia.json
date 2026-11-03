@@ -1,0 +1,51 @@
+{
+  "caseId": "prague-czechia",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 2,
+  "hookAngle": "The stone Charles Bridge crosses the Vltava in the \"City of a Hundred Spires.\"",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-3067696",
+    "name": "Prague",
+    "country": "Czechia",
+    "subdivision": "Prague",
+    "lat": 50.08804,
+    "lon": 14.42076
+  },
+  "target": {
+    "placeId": "gn-3067696",
+    "name": "Prague",
+    "lat": 50.08804,
+    "lon": 14.42076,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Czechia",
+    "iso2": "CZ",
+    "subdivision": "Prague"
+  },
+  "subjectAnswer": {
+    "name": "Czechia",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "CZ",
+    "subdivision": "Prague",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Prague is the capital of Czechia. It's one of Czechia's biggest places.",
+    "history": "Capital of the Kingdom of Bohemia and residence of Holy Roman Emperors, it flourished under Charles IV, who founded Charles University — the oldest in Central Europe — in 1347. Its historic centre is a UNESCO World Heritage Site, and its 1410 astronomical clock still works."
+  },
+  "extracts": [
+    {
+      "article": "Prague",
+      "url": "https://en.wikipedia.org/wiki/Prague",
+      "text": "Prague ( PRAHG  ; Czech: Praha [ˈpraɦa] ) is the capital and largest city of the Czech Republic and the historical capital of Bohemia. Located on the Vltava River, the city has a population of about 1.4 million, making it the twelfth-largest city in the European Union. Its metropolitan area is home to approximately 2.3 million people.\nPrague is a historical city with Romanesque, Gothic, Renaissance, and Baroque architecture. It was the capital of the Kingdom of Bohemia and residence of several Holy Roman Emperors, most notably Charles IV (r. 1346–1378) and Rudolf II (r. 1575–1611). It was an important city to the Habsburg monarchy and Austria-Hungary. The city played major roles in the Bohemian and Protestant Reformations, the Thirty Years' War, and in 20th-century history as the capital of Czechoslovakia during the interwar period and the post-World War II Communist era.\nPrague is home to a number of cultural attractions including Prague Castle, Charles Bridge, Old Town Square with the Prague astronomical clock, the Jewish Quarter, Petřín hill, and Vyšehrad. Since 1992, the historic centre of Prague has been included in the UNESCO list of World Heritage Sites. The city has more than ten major museums, along with numerous theatres, galleries, cinemas, and other historical exhibits. An extensive modern public transportation system connects the city. It is home to a wide range of public and private schools, including Charles University, the oldest university in Central Europe.\nPrague is classified as a \"Beta+\" global city according to GaWC studies. Its rich history makes it a popular tourist destination, and as of 2017, the city receives more than 8.5 million international visitors annually. In 2017, Prague was listed as the fifth most visited European city after London, Paris, Rome, and Istanbul.\n\nClimate Prague seen from satellite Prague has an oceanic climate ( Köppen : Cfb ; Trewartha : Dobk ) &#91; 1 &#93; &#91; 2 &#93; bordering on a humid continental climate ( Dfb ), defined as such by the 0&#160;°C (32&#160;°F) isotherm. &#91; 3 &#93; The winters are relatively cold with average temperatures at about freezing point (0&#160;°C), and with very little sunshine. Snow cover can be common between mid-November and late March, although snow accumulations of more than 200&#160;mm (8&#160;in) are infrequent. There are also a few periods of mild temperatures in winter. Summers usually bring plenty of sunshine and temperatures around 25&#160;°C (77&#160;°F), but there has been a considerable increase in days with over 30&#160;°C (86&#160;°F) in later years. Nights can be quite cool even in summer, though. Precipitation in Prague is low by Czech standards (about 500 mm per year) since it is located in the rain shadow of the Sudetes and other mountain ranges. The driest season is usually winter, while late spring and summer can bring quite heavy rain, especially in the form of thundershowers. The number of hours of average sunshine has increased over time. Temperature inversions are relatively common between mid-October and mid-March, bringing foggy, cold days and sometimes moderate air pollution. Prague is also a windy city with common sustained western winds and an average wind speed of 16&#160;km/h (10&#160;mph) that often helps break temperature inversions and clear the air in cold months. Climate data for Clementinum , Prague WMO ID : 11515; 1991–2020 normals, extremes 1775–present Month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Year Record high °C (°F) 17.4 (63.3) 18.5 (65.3) 22.9 (73.2) 30.7 (87.3) 32.8 (91.0) 39.0 (102.2) 37.8 (100.0) 36.8 (98.2) 33.1 (91.6) 27.8 (82.0) 19.5 (67.1) 17.7 (63.9) 39.0 (102.2) Mean daily maximum °C (°F) 3.9 (39.0) 5.6 (42.1) 10.0 (50.0) 16.1 (61.0) 20.9 (69.6) 24.4 (75.9) 26.5 (79.7) 25.9 (78.6) 20.4 (68.7) 14.4 (57.9) 8.5 (47.3) 4.8 (40.6) 15.1 (59.2) Daily mean °C (°F) 1.8 (35.2) 2.9 (37.2) 6.5 (43.7) 11.7 (53.1) 16.2 (61.2) 19.7 (67.5) 21.6 (70.9) 21.1 (70.0) 16.2 (61.2) 11.0 (51.8) 6.3 (43.3) 2.8 (37.0) 11.5 (52.7) Mean daily minimum °C (°F) −0.5 (31.1) 0.0 (32.0) 2.9 (37.2) 6.9 (44.4) 11.3 (52.3) 14.8 (58.6) 16.6 (61.9) 16.3 (61.3) 12.2 (54.0) 7.9 (46.2) 3.9 (39.0) 0.6 (33.1) 7.7 (45.9) Record low °C (°F) −27.5 (−17.5) −27.1 (−16.8) −27.6 (−17.7) −8.0 (17.6) −1.6 (29.1) 3.6 (38.5) 7.8 (46.0) 6.4 (43.5) 0.7 (33.3) −7.5 (18.5) −16.9 (1.6) −24.8 (−12.6) −27.6 (−17.7) Average precipitation mm (inches) 18.1 (0.71) 16.2 (0.64) 26.3 (1.04) 24.7 (0.97) 58.1 (2.29) 68.6 (2.70) 67.4 (2.65) 61.9 (2.44) 33.9 (1.33) 29.8 (1.17) 26.2 (1.03) 22.6 (0.89) 453.9 (17.87) Average snowfall cm (inches) 5.8 (2.3) 4.2 (1.7) 1.6 (0.6) 0.0 (0.0) 0.0 (0.0) 0.0 (0.0) 0.0 (0.0) 0.0 (0.0) 0.0 (0.0) 0.0 (0.0) 0.8 (0.3) 3.6 (1.4) 16.1 (6.3) Average relative humidity (%) 76.2 71.2 65.9 58.7 58.9 59.3 58.7 60.5 67.7 73.5 77.4 76.7 67.1 Mean monthly sunshine hours 52.4 81.9 129.3 187.8 216.3 218.4 229.1 224.1 168.2 110.8 52.5 46.2 1,716.9 Source: Czech Hydrometeorological Institute &#91; 4 &#93; &#91; 5 &#93; &#91; 6 &#93; &#91; 7 &#93; &#91; 8 &#93; &#91; 9 &#93; ^ .mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:\"\\\"\"\"\\\"\"\"'\"\"'\"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url(\"//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url(\"//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url(\"//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url(\"//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg\")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}} \"Prague, Czech Republic Köppen Climate Classification (Weatherbase)\" . Weatherbase . Archived from the original on 18 December 2019 . Retrieved 3 October 2025 . ^ Praga . Archived from the original on 26 January 2021. ^ Kadıoğlu, Muhsin (8 May 2019). Prag Gezi Rehberi: Prag Travel Guide (in Turkish). Muhsin Kadıoğlu. Archived from the original on 7 April 2022 . Retrieved 28 October 2020 . ^ \"Praha Klementinum\" (in Italian). Czech Hydrometeorological Institute. Archived from the original on 7 September 2024 . Retrieved 7 September 2024 . ^ \"Průměrná teplota vzduchu v jednotlivé měsíce v jednotlivé roky\" (in Czech). Czech Hydrometeorological Institute. Archived from the original on 9 September 2024 . Retrieved 9 September 2024 . ^ \"Srážkové úhrny v jednotlivé měsíce v jednotlivé roky\" (in Czech). Czech Hydrometeorological Institute. Archived from the original on 9 September 2024 . Retrieved 9 September 2024 . ^ \"Množství nového sněhu v jednotlivé měsíce v jednotlivé roky\" (in Czech). Czech Hydrometeorological Institute. Archived from the original on 9 September 2024 . Retrieved 9 September 2024 . ^ \"Průměrná relativní vlhkost vzduchu v jednotlivé měsíce v jednotlivé roky\" (in Czech). Czech Hydrometeorological Institute. Archived from the original on 9 September 2024 . Retrieved 9 September 2024 . ^ \"Délka slunečního svitu v jednotlivé měsíce v jednotlivé roky (Sunshine)\" (in Czech). Czech Hydrometeorological Institute. Archived from the original on 9 September 2024 . Retrieved 9 September 2024 ."
+    }
+  ],
+  "climateSectionFetched": true
+}

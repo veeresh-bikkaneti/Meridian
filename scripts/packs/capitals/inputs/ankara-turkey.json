@@ -1,0 +1,51 @@
+{
+  "caseId": "ankara-turkey",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Atatürk, founder of modern Turkey, chose this city as his capital in 1923 — his memorial tomb watches over it.",
+  "hookRewrittenInReview": true,
+  "place": {
+    "place_id": "gn-323786",
+    "name": "Ankara",
+    "country": "Turkey",
+    "subdivision": "Ankara",
+    "lat": 39.91987,
+    "lon": 32.85427
+  },
+  "target": {
+    "placeId": "gn-323786",
+    "name": "Ankara",
+    "lat": 39.91987,
+    "lon": 32.85427,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Turkey",
+    "iso2": "TR",
+    "subdivision": "Ankara"
+  },
+  "subjectAnswer": {
+    "name": "Turkey",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "TR",
+    "subdivision": "Ankara",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Ankara is the capital of Turkey. It's one of Turkey's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Ankara",
+      "url": "https://en.wikipedia.org/wiki/Ankara",
+      "text": "Ankara is the capital city of Turkey. Located in the central part of Anatolia, the city has a population of over 5.3 million residents in its urban center, out of 6 million residents in Ankara Province. Ankara is Turkey's second-largest city by population after Istanbul.\nAnkara was historically known as Ancyra and Angora. Serving as the capital of the ancient Celtic state of Galatia (280–64 BC), and later of the Roman province with the same name (25 BC–7th century), Ankara has various Hattian, Hittite, Lydian, Phrygian, Galatian, Greek, Persian, Roman, Byzantine, and Ottoman archaeological sites. The Ottomans made the city the capital of the Anatolia Eyalet (1393 – late 15th century), the Angora Eyalet (1827–1864), and the Angora Vilayet (1867–1922). On 23 April 1920, the Grand National Assembly of Turkey was established in Ankara, which became the headquarters of the Turkish National Movement during the Turkish War of Independence. Ankara became the new Turkish capital upon the establishment of the Republic on 29 October 1923, succeeding the former Ottoman capital Istanbul following the fall of the Ottoman Empire.\nThe historical center of Ankara is a rocky hill rising 150 m (500 ft) over the left bank of the Ankara River, a tributary of the Sakarya River. The hill remains crowned by the ruins of Ankara Castle. Few of its outworks have survived, but there are well-preserved examples of Roman and Ottoman architecture throughout the city.\nThe government is a prominent employer, but Ankara is also an important commercial and industrial city located at the center of Turkey's road and railway networks. The city gave its name to the Angora wool shorn from Angora rabbits, the long-haired Angora goat (the source of mohair), and the Angora cat. The area is also known for its pears, honey and Muscat grapes. Although situated in one of the driest regions of Turkey and surrounded mostly by steppe vegetation (except for the forested areas on the southern periphery), Ankara can be considered a green city in terms of green areas per inhabitant, at 72 square meters (775 square feet) per head. Home to numerous universities, Ankara is among the top 100 science and technology clusters in the world.\n\nClimate Ankara has a cold semi-arid climate under the Köppen climate classification ( BSk ), while under the Trewartha climate classification , the city is classified as humid continental ( Dc ). Due to its elevation and inland location, Ankara has cold and snowy winters, and hot and dry summers. Rainfall occurs mostly during the spring and autumn. The city lies in USDA Hardiness zone 7b, and its annual average precipitation is fairly low at 414 millimeters (16&#160;in), nevertheless precipitation can be observed throughout the year. Monthly mean temperatures range from 0.9&#160;°C (33.6&#160;°F) in January to 24.3&#160;°C (75.7&#160;°F) in July, with an annual mean of 12.6&#160;°C (54.7&#160;°F). &#91; 1 &#93; Ankara's overall temperature regime is very similar to New York City . Climate data for Ankara (Turkish State Meteorological Service Compound, Keçiören), 1991–2020, extremes 1927–2023 Month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Year Mean daily maximum °C (°F) 4.7 (40.5) 7.4 (45.3) 12.2 (54.0) 17.5 (63.5) 22.8 (73.0) 27.3 (81.1) 31.0 (87.8) 31.0 (87.8) 26.5 (79.7) 20.3 (68.5) 13.0 (55.4) 6.7 (44.1) 18.4 (65.1) Daily mean °C (°F) 0.9 (33.6) 2.7 (36.9) 6.7 (44.1) 11.5 (52.7) 16.5 (61.7) 20.6 (69.1) 24.2 (75.6) 24.3 (75.7) 19.6 (67.3) 13.9 (57.0) 7.3 (45.1) 2.8 (37.0) 12.6 (54.7) Mean daily minimum °C (°F) −2.2 (28.0) −1.2 (29.8) 1.9 (35.4) 6.0 (42.8) 10.5 (50.9) 14.1 (57.4) 17.2 (63.0) 17.4 (63.3) 13.1 (55.6) 8.4 (47.1) 2.7 (36.9) −0.3 (31.5) 7.3 (45.1) Average precipitation mm (inches) 38.6 (1.52) 36.6 (1.44) 46.9 (1.85) 44.5 (1.75) 51.0 (2.01) 40.2 (1.58) 14.8 (0.58) 14.6 (0.57) 17.9 (0.70) 33.4 (1.31) 31.9 (1.26) 43.2 (1.70) 413.6 (16.28) Average precipitation days 11.67 10.9 10.47 11.63 12 9.27 3.37 3.67 4.17 7.63 7.67 11.27 103.72 Average relative humidity (%) 76.7 70.7 63.2 58.4 56.3 53.1 45.5 45.3 48.8 60.2 68.6 76.7 60.2 Mean monthly sunshine hours 69.6 100.9 147.3 187.9 239.2 279.5 327.8 308.7 261.9 190.6 125.0 72.4 2,287.2 Mean daily sunshine hours 2.2 3.6 4.8 6.3 7.7 9.3 10.6 10.0 8.7 6.2 4.3 2.4 6.3 Percentage possible sunshine 26 34 42 47 56 67 76 75 69 53 37 24 51 Source 1: Turkish State Meteorological Service &#91; 1 &#93; Source 2: NOAA (humidity, sun 1991–2020) &#91; 2 &#93; &#91; 3 &#93; ^ a b .mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:\"\\\"\"\"\\\"\"\"'\"\"'\"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url(\"//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url(\"//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url(\"//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url(\"//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg\")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}} \"Resmi İstatistikler: İllerimize Ait Genel İstatistik Verileri\" (in Turkish). Turkish State Meteorological Service. Archived from the original on 12 January 2019 . Retrieved 26 June 2021 . ^ {{cite web | archive-url = https://web.archive.org/web/20210717012832/https://www.nodc.noaa.gov/archive/arc0216/0253808/2.2/data/0-data/Region-6-WMO-Normals-9120/Turkiye/CSV/Ankara_Bolge_17130.csv |archive-format=CSV |format=CSV | archive-date = 17 July 2021 | url = https://www.nodc.noaa.gov/archive/arc0216/0253808/2.2/data/0-data/Region-6-WMO-Normals-9120/Turkiye/CSV/Ankara_Bolge_17130.csv | title = World Meteorological Organization Climate Normals for 1991–2020: Ankara-Bolge | publisher = National Centers for Environmental Information | access-date = 2 August 2023 ^ TSMS \"Resmi İklim İstatistikleri: Ankara Normalleri\" . Meteoroloji Genel Müdürlüğü . Retrieved 30 August 2026 ."
+    }
+  ],
+  "climateSectionFetched": true
+}

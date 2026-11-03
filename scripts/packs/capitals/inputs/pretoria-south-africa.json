@@ -1,0 +1,51 @@
+{
+  "caseId": "pretoria-south-africa",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Jacaranda trees turn the streets purple in spring — and it is only one of three capitals (see §E).",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-964137",
+    "name": "Pretoria",
+    "country": "South Africa",
+    "subdivision": "Gauteng",
+    "lat": -25.74486,
+    "lon": 28.18783
+  },
+  "target": {
+    "placeId": "gn-964137",
+    "name": "Pretoria",
+    "lat": -25.74486,
+    "lon": 28.18783,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "South Africa",
+    "iso2": "ZA",
+    "subdivision": "Gauteng"
+  },
+  "subjectAnswer": {
+    "name": "South Africa",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "ZA",
+    "subdivision": "Gauteng",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Pretoria is the capital of South Africa. It's one of South Africa's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Pretoria",
+      "url": "https://en.wikipedia.org/wiki/Pretoria",
+      "text": "Pretoria ( prih-TOR-ee-ə, pree-; Afrikaans: [prəˈtʉəria] ) is the executive capital of South Africa, serving as the seat of the executive branch of government, and as the host to all foreign embassies to the country.\nPretoria straddles the Apies River and extends westward into the foothills of the Magaliesberg mountains. It has a reputation as an academic city and centre of research, being home to the Tshwane University of Technology (TUT), the University of Pretoria (UP), the University of South Africa (UNISA), the Council for Scientific and Industrial Research (CSIR), and the Human Sciences Research Council. It also hosts the National Research Foundation and the South African Bureau of Standards. Pretoria was one of the host cities of the 2010 FIFA World Cup.\nAs the administrative capital of the country, Pretoria hosts the headquarters of all national government departments and agencies. The city is also a major global diplomatic hub; it is home to 134 foreign embassies and high commissions, representing the second-largest concentration of diplomatic missions in the world, surpassed only by Washington, D.C.\nPretoria is the central part of the City of Tshwane Metropolitan Municipality which was formed by the amalgamation of several former local authorities, including Bronkhorstspruit, Centurion, Cullinan, Hammanskraal and Soshanguve. Some have proposed changing the official name from Pretoria to Tshwane, which has caused some public controversy.\nPretoria is named after the Voortrekker leader Andries Pretorius, and South Africans sometimes call it the \"Jacaranda City\", because of the thousands of jacaranda trees planted along its streets and in its parks and gardens.\n\nClimate Pretoria has a monsoon-influenced humid subtropical climate ( Köppen : Cwa ) with long hot, rainy summers, and short, dry and mild winters. The city experiences the typical winters of South Africa, with cold, clear nights and mild to moderately warm days. Although the average lows during winter are mild, it can get cold due to the clear skies, with night time low temperatures in recent years in the range of 2 to −5&#160;°C (36 to 23&#160;°F). The average annual temperature is 18.7&#160;°C (65.7&#160;°F). &#91; 1 &#93; This is rather high, considering the city's relatively high altitude of about 1,339 metres (4,393 feet), and is due mainly to its sheltered valley position, which acts as a heat trap and cuts it off from cool southerly and south-easterly air masses for much of the year. &#91; citation needed &#93; Rain is chiefly concentrated in the summer months, with drought conditions prevailing over the winter months, when frosts may be sharp. Snowfall is an extremely rare event; snowflakes were spotted in 1959, 1968 and 2012 in the city, but the city has never experienced an accumulation in its history. During a nationwide heat wave in November 2011, Pretoria experienced temperatures that reached 39&#160;°C (102&#160;°F), unusual for that time of the year. Similar record-breaking extreme heat events also occurred in January 2013, when Pretoria experienced temperatures exceeding 37&#160;°C (99&#160;°F) on several days. The year 2014 was one of the wettest on record for the city. A total of 914&#160;mm (36&#160;in) fell up to the end of December, with 220&#160;mm (9&#160;in) recorded in this month alone. In 2015, Pretoria saw its worst drought since 1982; the month of November 2015 saw new records broken for high temperatures, with 43&#160;°C (109&#160;°F) recorded on 11 November after three weeks of temperatures between 35&#160;°C (95&#160;°F) and 43&#160;°C (109&#160;°F). Pretoria reached a new record high of 42.7&#160;°C (108.9&#160;°F) on 7 January 2016. &#91; 2 &#93; Climate data for Pretoria, elevation 1,308&#160;m (4,291&#160;ft), (1991–2020 normals, extremes 1951–1990) Month Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec Year Record high °C (°F) 36.2 (97.2) 36.3 (97.3) 35.0 (95.0) 32.5 (90.5) 30.3 (86.5) 26.0 (78.8) 26.0 (78.8) 30.0 (86.0) 34.0 (93.2) 36.0 (96.8) 35.7 (96.3) 36.0 (96.8) 36.3 (97.3) Mean daily maximum °C (°F) 29.0 (84.2) 29.1 (84.4) 27.7 (81.9) 25.0 (77.0) 22.7 (72.9) 20.7 (69.3) 20.5 (68.9) 23.6 (74.5) 27.2 (81.0) 28.6 (83.5) 28.7 (83.7) 28.8 (83.8) 26.0 (78.8) Daily mean °C (°F) 23.2 (73.8) 23.2 (73.8) 21.8 (71.2) 18.7 (65.7) 15.2 (59.4) 12.2 (54.0) 11.9 (53.4) 15.4 (59.7) 19.7 (67.5) 21.4 (70.5) 22.1 (71.8) 22.7 (72.9) 19.0 (66.1) Mean daily minimum °C (°F) 18.0 (64.4) 17.9 (64.2) 16.5 (61.7) 13.0 (55.4) 8.0 (46.4) 5.0 (41.0) 4.6 (40.3) 8.0 (46.4) 12.0 (53.6) 15.0 (59.0) 16.5 (61.7) 17.3 (63.1) 12.3 (54.1) Record low °C (°F) 7.5 (45.5) 10.4 (50.7) 5.5 (41.9) 3.3 (37.9) −1.5 (29.3) −4.5 (23.9) −4.5 (23.9) −4.0 (24.8) −0.5 (31.1) 3.0 (37.4) 6.6 (43.9) 6.5 (43.7) −4.5 (23.9) Average precipitation mm (inches) 118.5 (4.67) 109.5 (4.31) 81.4 (3.20) 32.5 (1.28) 15.4 (0.61) 5.8 (0.23) 0.6 (0.02) 4.2 (0.17) 17.1 (0.67) 63.9 (2.52) 98.0 (3.86) 115.2 (4.54) 662.1 (26.08) Average precipitation days (≥ 1.0 mm) 10.2 8.3 6.8 4.0 1.7 1.1 0.2 0.7 1.8 6.2 9.2 10.6 60.8 Average relative humidity (%) 62 63 63 63 56 54 50 45 44 52 59 61 56 Mean monthly sunshine hours 260.8 235.3 253.9 245.8 282.6 270.8 289.1 295.5 284.3 275.2 253.6 271.9 3,218.8 Source 1: NOAA (sun and humidity 1961−1990) &#91; 3 &#93; Deutscher Wetterdienst (extremes) &#91; 4 &#93; Starlings Roost Weather &#91; 5 &#93; Source 2: South African Weather Service &#91; 6 &#93; ^ GHCN climate data, 30-year climate average 1979–2008, Goddard Institute of Space Studies ^ .mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:\"\\\"\"\"\\\"\"\"'\"\"'\"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url(\"//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url(\"//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url(\"//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg\")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url(\"//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg\")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#bf3c2c)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}} \"South African Weather Service - Regional Weather and Climate of South Africa: Gauteng\" (PDF) . Archived (PDF) from the original on 22 January 2022 . Retrieved 20 January 2022 . ^ \"Pretoria Climate Normals 1961−1990\" . National Oceanic and Atmospheric Administration . Retrieved 8 October 2016 . ^ \"Klimatafel von Pretoria (Wetteramt), Transvaal / Südafrika\" (PDF) . Baseline climate means (1961-1990) from stations all over the world (in German). Deutscher Wetterdienst . Retrieved 8 October 2016 . ^ \"Pretoria Eendracht Climate: 1991–2020\" . Starlings Roost Weather . Retrieved 27 December 2024 . ^ \"Climate data for Pretoria\" . South African Weather Service. June 2011. Archived from the original on 8 March 2010 . Retrieved 6 March 2010 ."
+    }
+  ],
+  "climateSectionFetched": true
+}
