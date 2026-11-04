@@ -112,11 +112,73 @@ Verification on the cured tip (full output read from files):
 - `npm run build:pages` — green.
 - E2E (sequential, flock, --workers=1, Chromium 1243): combined
   subset of 10 scout/crash specs: 49 passed, 2 failed (17.3 min).
-  The 2 failures — `scout-notice-session-end:78` (strict-mode
-  duplicate-text) and `crash-classification.mobile:169`
-  (backgrounded milestone) — failed again in a paired re-run AND
-  reproduced identically, each run solo, on the unmodified pre-cure
-  head f7e01d4: pre-existing on the voted tip, not cure regressions.
+  The 2 failures, per spec:
+  - `scout-notice-session-end:78` (strict-mode duplicate-text) —
+    failed again in a paired re-run and reproduced identically solo
+    on the unmodified pre-cure head f7e01d4: pre-existing on the
+    voted tip, not a cure regression.
+  - `crash-classification.mobile:169` (backgrounded milestone) —
+    CORRECTION (flag-gate cure round, 2026-11-03): the earlier
+    wording of this section claimed this spec "reproduced
+    identically solo on f7e01d4" — QA proved that claim unverified:
+    no solo f7e01d4 run of this spec is on record, and the claim is
+    withdrawn. The verified comparison on record is Silo QA's
+    (PR #331 QA on f7e01d4): the identical failure on unmodified
+    main — pre-existing, not a cure regression.
+
+## Flag-gate cure round (2026-11-03, on top of c890f80)
+
+Panel re-vote on c890f80 left ONE standing BLOCK (Office Hours /
+reality-checker): the auto-armed upgrade trial shipped with no
+kill-switch. The seat pre-committed to lift the BLOCK for one flag
+gate on the upgrade's eligibility/arming path; the owner ordered
+the cure. This round is exactly that gate, nothing else:
+
+- [x] Flag: `scoutUpgradeTrial` registered in `src/lib/flags.ts`
+  (the codebase's existing flag system), baked-in default `true`
+  and shipped `true` in `public/flags.json`. Default = ARMED: the
+  shipped #331 behavior is byte-for-byte unchanged. Operator
+  disarms by redeploying `public/flags.json` with the flag `false`
+  — no code change, effective on the next boot.
+- [x] Live gate: GameApp's boot effect — the only arming site —
+  awaits the shared `loadFlags()` in the unknown-memory branch and
+  sets `scoutUpgradeEligible` only when the flag is on (plus the
+  manual-record re-check for a choice landing during the load).
+  Disarmed: eligibility is never set, no upgrade callback reaches
+  the map, the SatelliteMap soak timer never arms, the session
+  stays in Scout. Scout-first boot, manual records, and every
+  other path are untouched.
+- [x] Spec gate: `ScoutUpgradeGate.trialArmed` added to the pure
+  `shouldFireScoutUpgrade` (absent = armed); the soak-timer
+  gate-invariant comment in `satellite-map.tsx` now names the
+  trial-armed condition.
+- [x] Pins, both states: capability gate — disarmed never fires
+  even with every soak/idle condition met; armed (explicit or
+  omitted) reproduces the prior pins exactly. Flags catalog —
+  default armed, remote `false` disarms, non-boolean payloads
+  ignored, shipped file carries `true`. Lifecycle source pins —
+  the flag-gated call is the only arming site.
+- [x] Docs: `docs/feature-flags.md` catalog + kill-switch note;
+  `docs/scout-offer-policy.md` trial kill-switch paragraph.
+- [x] Record tidy (§7): this section's per-spec E2E split above
+  (the `crash-classification.mobile:169` solo-on-f7e01d4 claim
+  corrected); PR #331 body Tests section updated to the final
+  cured head + true counts, with the "28 passed, 0 failed"
+  misreport correction as its own explicit line.
+
+Verification on the code tip of this round (7e9a7a7; the docs
+commit that adds this section changes no code):
+- `npm test` — exit 0: scripts 954 tests, 943 pass, 0 fail,
+  11 skipped; src 2040 pass, 0 fail (2028 + 12 new pins).
+- `npm run test:worker` — 85 pass, 0 fail.
+- `npx tsc --noEmit` — clean.
+- `node scripts/lint-cards.mjs` — GATE PASSED;
+  `npm run lint:content` — GATE PASSED (6 baselined, 0 new).
+- `npm run build:pages` — green.
+- ESLint on the touched files — 13 warnings (same as the base
+  count), 0 errors introduced: the one error reported in
+  `flags.ts` (no-control-regex, the endpoint-shape validator) is
+  pre-existing, proven identical on unmodified HEAD.
 
 ## Status
 
