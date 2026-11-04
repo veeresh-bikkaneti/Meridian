@@ -93,6 +93,8 @@ The three illustrated cards below (Review, Journal, and For grown-ups) carry fil
 
 For the youngest players (Little Explorer, ages 5–7), GeoDetective is locked, and its tile carries a picture of its own: the detective asleep on her map, magnifying glass set down. She breathes twice, slowly, then the picture rests. The tile stays locked in every way that matters — no play button, no pause button, nothing in the picture to tap — and the same reduced-motion, Save-Data, and low-memory rules apply: those players see the resting still, and the film is never downloaded. Its media swaps through its own module (`src/assets/home-v5/locked-tile-media.ts`).
 
+Two of the card films come in a second version, picked by the player's age band through two small selector functions in the same `card-media.ts` module. Little Explorer players (ages 5–7) see a softer Cold Trail film: the same walk out along the footprint trail and back, at a slower, gentler pace. Trail Scout players (ages 8–10) see a different Review film: the magnifying glass sweeps out and back over the satchel and settles on the usual picture, where the standard Review film overshoots, rewinds, and pauses to rethink. Every other player — including anyone who has not set a band, who gets the standard films — sees the films described above. The choice is exact and fails safe: only the one band named for each variant ever downloads it, the card boxes and the component never change, and the same reduced-motion, Save-Data, and low-memory rules apply to the variants too.
+
 ### Supporting the game
 
 Meridian is free for kids — no paywalls, no accounts. Grown-ups can buy the builder a coffee: **"Grown-ups — buy me a coffee? ☕"** — "Your support keeps Meridian free for kids". That copy is locked verbatim.

@@ -56,7 +56,7 @@ import {
   VERDICT_GRANDPA_POSTER_URL,
   VERDICT_GRANDPA_VIDEO_URL,
 } from "@/assets/verdict/grandpa-media";
-import { COLDTRAIL_FILM, GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, REVIEW_FILM } from "@/assets/home-v5/card-media";
+import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand } from "@/assets/home-v5/card-media";
 import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
@@ -1417,11 +1417,14 @@ export function GameApp() {
   const [autoScoutNote, setAutoScoutNote] = useState(false);
   /**
    * Issue #330: true only when this boot started in Scout SOLELY under
-   * the unknown-memory trial (capability source "unknown-memory"). The
-   * first Scout map mount may then upgrade the session to full after
-   * its stability soak. Session-only state: it is never persisted, and
-   * firing the upgrade clears it, so a later runtime fallback to Scout
-   * (tile failure, context loss) can never re-arm it.
+   * the unknown-memory trial (capability source "unknown-memory") AND
+   * the `scoutUpgradeTrial` flag is on (the trial's kill-switch — the
+   * boot effect awaits the flags load before setting this; flag off =
+   * never set, so the upgrade never arms). The first Scout map mount
+   * may then upgrade the session to full after its stability soak.
+   * Session-only state: it is never persisted, and firing the upgrade
+   * clears it, so a later runtime fallback to Scout (tile failure,
+   * context loss) can never re-arm it.
    */
   const [scoutUpgradeEligible, setScoutUpgradeEligible] = useState(false);
   /**
@@ -2072,7 +2075,10 @@ export function GameApp() {
     // no deviceMemory; coarse pointer) is a trial, not a verdict — it
     // persists NOTHING and instead arms the in-session Scout → full
     // upgrade (applyScoutUpgrade), so no stored artifact can ever stand
-    // in front of a later prior-crash check.
+    // in front of a later prior-crash check. The arming itself is gated
+    // by the `scoutUpgradeTrial` flag (see the unknown-memory branch
+    // below): flag off, the boot still starts in Scout and the upgrade
+    // simply never arms.
     // There is deliberately NO test bypass here (issue #154 item 1):
     // the E2E harness used to set a window flag to suppress this
     // auto-switch on its SwiftShader VM, which reads as a weak device.
@@ -2101,7 +2107,21 @@ export function GameApp() {
             // Issue #330 trial: nothing was persisted above (the plan's
             // persistSource is null for this source) — arm the in-session
             // upgrade the first Scout map may fire after its soak.
-            setScoutUpgradeEligible(true);
+            // Flag gate (PR #331 panel cure — the trial's kill-switch):
+            // eligibility is set only when the `scoutUpgradeTrial` flag
+            // is on. Kill-switches await the shared flags load before
+            // checking (src/lib/flags.ts), so a remote `false` in
+            // flags.json wins the boot-time race deterministically and
+            // the upgrade never arms; the baked-in default is true, so
+            // an unreachable flags.json keeps the shipped behavior.
+            // The manual re-check mirrors Play's fire-time guard: a
+            // manual choice that landed while the load was in flight
+            // stands over the trial and must not be re-armed over.
+            void loadFlags().then(() => {
+              if (!isEnabled("scoutUpgradeTrial")) return;
+              if (readStoredMapMode()?.source === "manual") return;
+              setScoutUpgradeEligible(true);
+            });
           }
           setReportMapMode("scout");
           setMapMode("scout");
@@ -4451,7 +4471,7 @@ function Choose({
               walks the footprint trail (character motion, not a camera
               move — the owner's 2026-11-02 correction). Media:
               card-media.ts. */}
-          <CardFilm className="hv5-pic" media={COLDTRAIL_FILM} testId="card-film-coldtrail" />
+          <CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4491,7 +4511,7 @@ function Choose({
             data-testid="tour-stop-review"
             id="home-review"
           >
-            <CardFilm className="hv5-art" media={REVIEW_FILM} testId="card-film-review" />
+            <CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" />
             <div className="hv5-txt">
               <div className="hv5-head">
                 <span className="hv5-badge">
