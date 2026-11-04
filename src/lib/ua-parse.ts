@@ -70,8 +70,11 @@ function parseBrowser(ua: string): BrowserHit {
   if ((m = /SamsungBrowser\/([0-9]+(?:\.[0-9]+)*)/.exec(ua))) {
     return { browser: "samsung", version: majorMinor(m[1]) };
   }
-  // B2 — Edge, desktop (Edg/) and iOS (EdgiOS/) spellings.
-  if ((m = /(?:Edg|EdgiOS)\/([0-9]+(?:\.[0-9]+)*)/.exec(ua))) {
+  // B2 — Edge: desktop (Edg/), Android (EdgA/) and iOS (EdgiOS/)
+  // spellings. EdgA/ must be in this alternation: an Edge-on-Android
+  // UA otherwise falls through to its Chrome/ token (B6) and stamps
+  // the wrong browser.
+  if ((m = /(?:EdgA|EdgiOS|Edg)\/([0-9]+(?:\.[0-9]+)*)/.exec(ua))) {
     return { browser: "edge", version: majorMinor(m[1]) };
   }
   // B3 — Chrome on iOS.
@@ -89,6 +92,15 @@ function parseBrowser(ua: string): BrowserHit {
   // B6 — Chrome: the minor is the frozen 0 (§2.3); majorMinor of a
   // "120.0.0.0" token yields exactly "120.0".
   if ((m = /Chrome\/([0-9]+(?:\.[0-9]+)*)/.exec(ua))) {
+    return { browser: "chrome", version: majorMinor(m[1]) };
+  }
+  // B6b — Chromium builds (e.g. Linux distro Chromium) carry a
+  // Chromium/ token and no Chrome/ token, plus the Safari/ compat
+  // token: without this rule they fall through to B8 and mislabel
+  // as safari/webkit. Chromium is the Chrome family: chrome/blink.
+  // This rule sits after B6 and before the Safari rules; no other
+  // rule order changes.
+  if ((m = /Chromium\/([0-9]+(?:\.[0-9]+)*)/.exec(ua))) {
     return { browser: "chrome", version: majorMinor(m[1]) };
   }
   // B7 — Safari: the version is the Version/ token, NEVER the Safari/
@@ -153,7 +165,10 @@ function applyDenylist(ua: string, hit: OsHit): string {
     // Android 10 is the UA-Reduction freeze value. The CONDITION is
     // the tell, not the value: a pre-reduction UA with a real Android
     // 10 and a non-frozen Chrome token still stamps "10".
-    if (osVersion === "10") {
+    // The parser can preserve the minor ("Android 10.0; K" parses to
+    // "10.0"), so the comparison treats "10" and "10.0" as the same
+    // frozen shape — either one is fiction when a witness is present.
+    if (osVersion === "10" || osVersion === "10.0") {
       const chromeFrozen = /Chrome\/[0-9]+\.0\.0\.0/.test(ua);
       const modelPlaceholder = /;\s*K\)/.test(ua);
       const samsungFrozen = /SamsungBrowser\//.test(ua) && chromeFrozen;
