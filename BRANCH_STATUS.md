@@ -25,7 +25,7 @@ panel, not built here):
 2. FALLBACK NOTICE — when a deal actually falls back (a pack was
    picked AND the deal came from the core deck; detected at both
    deal sites: mount effect and onNextMystery), show a plain
-   role="status" notice for that case: "Capitals couldn't load just
+   role="status" notice for that case: "Capitals couldn’t load just
    now, so this case is from All cases. Your next case will try
    Capitals again." Cleared on the next deal and on a deck pick.
    No notice for resumed/revealed cases, healthy pack deals, or
@@ -80,9 +80,29 @@ stay; redundancy audit in the PR body.
 
 - [x] Fresh clone at `~/workspace/meridian-deck-fix`, branch cut at `775d8b4`
 - [x] `deckLabelForId` helper + unit pins in pack-shelf-data
-- [ ] LoopScreen: case-deck label in the header block
-- [ ] LoopScreen: fallback detection at both deal sites + notice
-- [ ] Regression spec ported + converted to the locked expectation
-- [ ] docs/story-packs.md clarifying sentence
-- [ ] Gates: tsc / npm test / lint-cards / build:pages / targeted E2E
+- [x] LoopScreen: case-deck label in the header block
+- [x] LoopScreen: fallback detection at both deal sites + notice
+- [x] Regression spec ported + converted to the locked expectation
+- [x] docs/story-packs.md clarifying sentence
+- [x] Gates: tsc / npm test / lint-cards / build:pages / targeted E2E
 - [ ] PR opened against main (NO MERGE)
+
+## Verification record (builder, on the tip)
+
+- `npx tsc --noEmit` — exit 0 (run before and after the spec landed).
+- `npm test` — exit 0; src suite 2019 pass / 0 fail (includes the 3
+  new `deckLabelForId` pins; pack-shelf-data file alone: 29/29).
+- `node scripts/lint-cards.mjs` — exit 0, GATE PASSED.
+- `npm run build:pages` — exit 0.
+- Targeted E2E under `flock ~/workspace/.e2e.lock`,
+  PLAYWRIGHT_CHROMIUM_EXECUTABLE=~/.cache/ms-playwright/
+  chromium-1243/chrome-linux64/chrome, --workers=1, against the
+  build:pages artifact: pack-deal-fallback (3) + pack-shelf (7) +
+  geodetective (18) = 28 tests, 27 passed / 1 failed. The one
+  failure — geodetective win-path share assertion expecting the
+  Workers origin while the Pages artifact's share line carries the
+  Pages origin — reproduces IDENTICALLY on unmodified main
+  `775d8b4` (verified by a worktree build + single-test run, same
+  expected/received strings): a pre-existing spec/artifact
+  mismatch, not a regression from this change. All 3 new tests and
+  all 7 pack-shelf tests pass.
