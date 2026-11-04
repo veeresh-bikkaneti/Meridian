@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "beijing-china",
+  "target": {
+    "placeId": "gn-1816670",
+    "name": "Beijing",
+    "aliases": [],
+    "lat": 39.9075,
+    "lon": 116.39723,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "China",
+    "iso2": "CN",
+    "subdivision": "Beijing"
+  },
+  "subjectAnswer": {
+    "name": "China",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "China",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "Mountains wrap around this inland city on three sides, in the north of its vast land. Old walls and gates once guarded its palaces and temples.",
+      "narrowing": "Rules out coastal and flat land places; keeps a walled inland city ringed by mountains on three sides.",
+      "source": {
+        "article": "Beijing",
+        "url": "https://en.wikipedia.org/wiki/Beijing",
+        "quote": "With mountains surrounding the inland city on three sides"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Hot, damp summers come with the great monsoon winds, but winters are brief, cold, and dry. In spring, sand storms can blow in from a vast desert.",
+      "narrowing": "Rules out lands with wet winters or no desert edge; keeps the monsoon and sand storm pattern.",
+      "source": {
+        "article": "Beijing",
+        "url": "https://en.wikipedia.org/wiki/Beijing",
+        "quote": "Spring can bear witness to sandstorms blowing in from the Gobi Desert across the Mongolian steppe"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1420, this city was named the chief capital of the Ming rulers. Its great palace, built over 14 years, was finished that same year.",
+      "narrowing": "Shrinks the list to the Ming chief capital named in 1420 as its palace was finished.",
+      "source": {
+        "article": "Beijing — History",
+        "url": "https://en.wikipedia.org/wiki/Beijing#History",
+        "quote": "the city was officially designated the capital of the Ming dynasty in the same year that the Forbidden City was completed"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "From 1406 to 1420, builders raised a vast palace here as the fresh home for the emperors of this land. Hall after hall and yard after yard fill its grounds.",
+      "narrowing": "Nearly decisive: one vast palace, built from 1406 to 1420 as the home of emperors.",
+      "source": {
+        "article": "Beijing — History",
+        "url": "https://en.wikipedia.org/wiki/Beijing#History",
+        "quote": "The construction of the new imperial residence, the Forbidden City , took from 1406 to 1420"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "China is ruled from this city today. Lands far away keep 176 embassies here too.",
+      "narrowing": "Confirms it: the leaders govern here and foreign lands keep their embassies here.",
+      "source": {
+        "article": "Beijing",
+        "url": "https://en.wikipedia.org/wiki/Beijing",
+        "quote": "Beijing hosts 176 foreign embassies"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This city has been a political centre for most of eight centuries, and in 1420 the Ming rulers made it their chief capital as their fresh palace was finished. Emperors lived and ruled from that palace, and today crowds visit its halls and yards. Beijing is the capital of China."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Beijing"
+  },
+  "pointPolicy": "geonames-point"
+}

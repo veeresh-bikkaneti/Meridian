@@ -51,8 +51,10 @@ import {
  * and the test asserts the line names both regions with the "near"
  * qualifier (the exact pin town is regex-relaxed: the integer-rounded tap
  * point can resolve to a neighboring town). No fixed screen coordinates are
- * hardcoded for land pins; the only fixed point is the probed ocean point
- * (1360, 780), verified unresolvable (no line) at the Italy camera.
+ * hardcoded for land pins; the ocean pin is a named sea coordinate
+ * (Tyrrhenian Sea) projected through the app's __project seam at the
+ * Italy camera and verified unresolvable (no line) — #298 replaced the
+ * old fixed pixel (1360, 780) after game chrome grew over it.
  *
  * Camera: waitForSpotSettle waits until the truth's screen point stops
  * moving (covers the globe intro dive) before recording or tapping, so a
@@ -69,16 +71,69 @@ test.beforeEach(async ({ context }) => {
 const SASSARI_ID = "gn-3167096"; // Sassari, Sardinia — medium (2)
 const CATANZARO_ID = "gn-2525059"; // Catanzaro, Calabria — medium (2)
 const MUMBAI_ID = "gn-1275339"; // Mumbai, Maharashtra — easy (1)
-const BENGALURU_ID = "gn-1277333"; // Bengaluru, Karnataka — easy (1)
-const SEVILLA_ID = "gn-2510911"; // Sevilla, Andalusia, ES — easy (1)
+// #298: the India truth was Bengaluru (gn-1277333) until the GeoNames
+// dataset + Easy "storied" curation (easy-curation.ts, P1-6) made it
+// undealable at Easy: Bengaluru is tier-1 with hookMissing and no
+// history, so it is not "storied" and seedSeenExcept cannot force it —
+// the seen-pool empties, the cycle resets, and an arbitrary storied
+// place is dealt instead (observed: Srikakulam, Ashoknagar Kalyangarh).
+// Yelahanka is the storied stand-in with the same geometry: tier-1 WITH
+// a verified history, in Karnataka, and — per its own history text —
+// the oldest part of present-day Bengaluru city. Mumbai -> Yelahanka
+// is ~833 km (Bengaluru: ~845 km), far outside the country hit radius.
+const YELAHANKA_ID = "gn-1252758"; // Yelahanka, Karnataka — easy (1)
+// #298: same drift for the globe pin — Sevilla (gn-2510911) is tier-1
+// with hookMissing and no history, so it is excluded from the Globe
+// Easy storied rung and can no longer be forced. Jerez de la Frontera
+// is tier-1 WITH a verified history, in Andalusia like Sevilla, and
+// ~2,569 km from Debrecen (Sevilla: ~1,900 km) — a guaranteed miss.
+const JEREZ_ID = "gn-2516326"; // Jerez de la Frontera, Andalusia, ES — easy (1)
 const DEBRECEN_ID = "gn-721472"; // Debrecen, Hajdú-Bihar, HU — easy (1)
 
 /**
- * Probed mid-ocean point at the Italy country camera: commitPin there lands
- * phase "done" and renders NO pin-compare line (fail-closed), verified
- * against the Catanzaro truth during development.
+ * Mid-ocean point at the Italy country camera, derived from the app's
+ * own projection instead of a fixed pixel: the Tyrrhenian Sea
+ * (12.0°E, 40.5°N) is projected through the .satellite-map __project
+ * seam (satellite-map.tsx) once the camera settles, and the test
+ * asserts the projected point really lands on the map canvas before
+ * tapping. #298: the old fixed point (1360, 780) rotted — the
+ * bottom-right game chrome (a .game-chrome button stack) grew over
+ * that pixel, so the tap hit chrome, placed no pin, and Drop never
+ * enabled. Projecting a named sea coordinate cannot rot that way:
+ * the point moves with the camera framing, and territoryAt() is null
+ * there, so the commit lands phase "done" and renders NO pin-compare
+ * line (fail-closed) — verified against the Catanzaro truth in #298's
+ * probe (evidence/298/probe2.log: projected (696, 490), hitsMap,
+ * phase done, line count 0).
  */
-const ITALY_OCEAN_PT = { x: 1360, y: 780 };
+const ITALY_OCEAN_LONLAT = { lon: 12.0, lat: 40.5 };
+
+/** Project a lon/lat to a viewport point via the app's __project seam. */
+async function projectLonLat(
+  page: Page,
+  lon: number,
+  lat: number,
+): Promise<{ x: number; y: number }> {
+  const pt = await page.locator(".satellite-map").evaluate(
+    (el, [lo, la]) => {
+      const hook = (
+        el as unknown as {
+          __project?: (
+            lon: number,
+            lat: number,
+          ) => { x: number; y: number } | null;
+        }
+      ).__project;
+      const s = hook?.(lo, la);
+      if (!s) return null;
+      const r = el.getBoundingClientRect();
+      return { x: Math.round(r.left + s.x), y: Math.round(r.top + s.y) };
+    },
+    [lon, lat] as const,
+  );
+  expect(pt, "__project must resolve the ocean point").not.toBeNull();
+  return pt!;
+}
 
 test("country (Italy): Sardinia pin, Calabria truth — the card names both regions", async ({
   page,
@@ -180,15 +235,15 @@ test("country (India): Maharashtra pin, Karnataka truth — never dropped", asyn
   expect(await readQuestion(page)).toBe("Find Mumbai, Maharashtra.");
   const mhPin = await waitForSpotSettle(page);
 
-  // Run B: force Bengaluru (Karnataka) first; drop the pin on Mumbai.
-  // Mumbai -> Bengaluru is ~845 km, far outside the ~360 km country hit
+  // Run B: force Yelahanka (Karnataka) first; drop the pin on Mumbai.
+  // Mumbai -> Yelahanka is ~833 km, far outside the ~360 km country hit
   // radius: a guaranteed miss. This is Veeresh's working reference for the
   // bug: the line must name both locations, never be silently dropped.
   await freshBoot(page);
-  await seedSeenExcept(page, "country", "india", BENGALURU_ID, allIds, "easy");
+  await seedSeenExcept(page, "country", "india", YELAHANKA_ID, allIds, "easy");
   await pickBand(page, "Easy");
   await startCountryRun(page, "India");
-  expect(await readQuestion(page)).toBe("Find Bengaluru, Karnataka.");
+  expect(await readQuestion(page)).toBe("Find Yelahanka, Karnataka.");
   await waitForSpotSettle(page);
 
   const { phase } = await commitPin(page, mhPin.x, mhPin.y);
@@ -203,7 +258,7 @@ test("country (India): Maharashtra pin, Karnataka truth — never dropped", asyn
   // screen point); the regions and the "near" qualifier are the assertions.
   const dds3 = line.locator("dd");
   await expect(dds3.nth(0)).toHaveText(/near .+, Maharashtra/);
-  await expect(dds3.nth(1)).toHaveText(/Bengaluru, Karnataka/);
+  await expect(dds3.nth(1)).toHaveText(/Yelahanka, Karnataka/);
 });
 
 test("globe: pin and truth in two different countries — suffixes on both sides", async ({
@@ -211,17 +266,19 @@ test("globe: pin and truth in two different countries — suffixes on both sides
 }) => {
   const allIds = poolIds("globe", "globe");
 
-  // Run A: force Sevilla (Spain) first; record its settled screen point
-  // (settle covers the globe intro dive).
+  // Run A: force Jerez de la Frontera (Spain) first; record its settled
+  // screen point (settle covers the globe intro dive).
   await freshBoot(page);
-  await seedSeenExcept(page, "globe", "globe", SEVILLA_ID, allIds, "easy");
+  await seedSeenExcept(page, "globe", "globe", JEREZ_ID, allIds, "easy");
   await pickBand(page, "Easy");
   await startGlobeRun(page);
-  expect(await readQuestion(page)).toBe("Find Sevilla, Andalusia, Spain.");
+  expect(await readQuestion(page)).toBe(
+    "Find Jerez de la Frontera, Andalusia, Spain.",
+  );
   const esPin = await waitForSpotSettle(page);
 
-  // Run B: force Debrecen (Hungary) first; drop the pin on Sevilla.
-  // Sevilla -> Debrecen is ~1900 km, far outside the 750 km globe hit
+  // Run B: force Debrecen (Hungary) first; drop the pin on Jerez.
+  // Jerez -> Debrecen is ~2569 km, far outside the 750 km globe hit
   // radius: a guaranteed miss. Both countries have no vendored admin-1,
   // and the globe line is symmetric country-level (the detail path is
   // country-edition only).
@@ -253,8 +310,19 @@ test("country (Italy): ocean pin — no line, fail closed", async ({ page }) => 
   await seedSeenExcept(page, "country", "italy", CATANZARO_ID, allIds, "medium");
   await startCountryRun(page, "Italy");
   expect(await readQuestion(page)).toBe("Find Catanzaro, Calabria.");
+  await waitForSpotSettle(page);
 
-  const { phase } = await commitPin(page, ITALY_OCEAN_PT.x, ITALY_OCEAN_PT.y);
+  const oceanPt = await projectLonLat(
+    page,
+    ITALY_OCEAN_LONLAT.lon,
+    ITALY_OCEAN_LONLAT.lat,
+  );
+  expect(
+    await tapHitsMap(page, oceanPt.x, oceanPt.y),
+    "projected ocean point must land on the map canvas, not chrome",
+  ).toBe(true);
+
+  const { phase } = await commitPin(page, oceanPt.x, oceanPt.y);
   expect(phase).toBe("done");
 
   const card = resultCard(page);

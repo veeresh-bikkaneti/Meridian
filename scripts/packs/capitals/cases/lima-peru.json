@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "lima-peru",
+  "target": {
+    "placeId": "gn-3936456",
+    "name": "Lima",
+    "aliases": [
+      "Limaq"
+    ],
+    "lat": -12.04318,
+    "lon": -77.02824,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Peru",
+    "iso2": "PE",
+    "subdivision": "Lima Province"
+  },
+  "subjectAnswer": {
+    "name": "Peru",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Peru",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits in the valleys of three rivers, in a desert on the central coast of its land. It looks out over the Pacific Ocean.",
+      "narrowing": "Puts the player on a desert coast by the Pacific, in three river valleys.",
+      "source": {
+        "article": "Lima",
+        "url": "https://en.wikipedia.org/wiki/Lima",
+        "quote": "located in the valleys of the Chillón, Rímac and Lurín Rivers, in the desert zone of the central coastal part of the country, overlooking the Pacific Ocean."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This desert city stays mild, though it lies in the hot tropics. Cold sea water close by cools the air, and rain is very rare here.",
+      "narrowing": "Rules out hot deserts and wet tropics; keeps a mild desert cooled by a cold sea.",
+      "source": {
+        "article": "Lima",
+        "url": "https://en.wikipedia.org/wiki/Lima",
+        "quote": "Lima has a mild climate, despite its location in the tropics and in a desert"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "A Spanish captain picked this river valley for his new capital and founded the city in 1535. It soon ruled a vast realm for Spain.",
+      "narrowing": "Shrinks the list to capitals a Spanish captain founded in a river valley in 1535.",
+      "source": {
+        "article": "Lima — History",
+        "url": "https://en.wikipedia.org/wiki/Lima#History",
+        "quote": "Pizarro decided to found the capital in the Rímac river valley"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This city was founded in 1535 with a grand name: City of the Kings. The name marked a feast day in early January, when the city was founded.",
+      "narrowing": "Nearly decisive: one capital was founded as the City of the Kings.",
+      "source": {
+        "article": "Lima — History",
+        "url": "https://en.wikipedia.org/wiki/Lima#History",
+        "quote": "Lima was founded with the name \"City of the Kings\", named in this way in honor of the Epiphany"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This city is the political and trade heart of Peru. The Government Palace, first built by its founder, stands here still.",
+      "narrowing": "Confirms it: Peru's political heart, with the Government Palace.",
+      "source": {
+        "article": "Lima",
+        "url": "https://en.wikipedia.org/wiki/Lima",
+        "quote": "The city is considered the political, cultural, financial and commercial center of Peru."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Spanish men under Pizarro founded this city in 1535 and named it City of the Kings. It became the capital of a vast Spanish realm, then kept the job when the land won its freedom. Today it is a huge desert city by the cold Pacific, mild all year. Lima is the capital of Peru."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Lima"
+  },
+  "pointPolicy": "geonames-point"
+}

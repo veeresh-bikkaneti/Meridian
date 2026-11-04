@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "boise-idaho",
+  "target": {
+    "placeId": "gn-5586437",
+    "name": "Boise",
+    "aliases": [],
+    "lat": 43.6135,
+    "lon": -116.20345,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Idaho",
+    "iso2": "US",
+    "subdivision": "Idaho"
+  },
+  "subjectAnswer": {
+    "name": "Idaho",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Idaho",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands in the southwest of its state, where a tree lined river cuts through dry high desert. Green banks stand out in the brown, dry land.",
+      "narrowing": "Points to the dry southwest of one mountain state, on a green river valley.",
+      "source": {
+        "article": "Boise, Idaho — History",
+        "url": "https://en.wikipedia.org/wiki/Boise%2C_Idaho#History",
+        "quote": "Set in a high-desert area, the tree-lined valley of the Boise River became a distinct landmark"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Days here can bake past 100 in the dry summer heat. Then the nights drop fast, often more than 30 degrees cooler by dawn.",
+      "narrowing": "Rules out mild coasts; keeps hot, dry towns with cold desert nights.",
+      "source": {
+        "article": "Boise, Idaho",
+        "url": "https://en.wikipedia.org/wiki/Boise%2C_Idaho",
+        "quote": "Boise experiences hot and dry summers with highs reaching 100&#160;°F (38&#160;°C) nine days in a typical year"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This town won the territory capital job in a court fight in 1866. A top court kept the seat here by a single vote.",
+      "narrowing": "Cuts the list to a capital kept by a one vote court call in 1866.",
+      "source": {
+        "article": "Boise, Idaho — History",
+        "url": "https://en.wikipedia.org/wiki/Boise%2C_Idaho#History",
+        "quote": "Boise was made the territorial capital of a much reduced Idaho in a controversial decision that overturned a district court ruling by a one-vote majority in the territorial supreme court along geographic lines in 1866."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "French trappers came on a green, tree lined river in dry country and cried out for the woods. This city's name grew from their French word for wooded land.",
+      "narrowing": "Nearly decisive: one capital took its name from a French word for wooded land.",
+      "source": {
+        "article": "Boise, Idaho — History",
+        "url": "https://en.wikipedia.org/wiki/Boise%2C_Idaho#History",
+        "quote": "This led the French trappers to call the area \" la rivière boisée \" (\"the wooded river\")"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Idaho has his office in this city. State lawmakers meet here each year to run the state.",
+      "narrowing": "Confirms it: the governor and state lawmakers work in this city.",
+      "source": {
+        "article": "Boise, Idaho",
+        "url": "https://en.wikipedia.org/wiki/Boise%2C_Idaho",
+        "quote": "is the capital and most populous city in the U.S. state of Idaho"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Gold finds in 1863 brought a new fort and a rush of miners to this river valley. A court fight then made the young town the territory capital, and it kept the job at statehood. Boise is the capital of Idaho."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Boise%2C_Idaho"
+  },
+  "pointPolicy": "geonames-point"
+}

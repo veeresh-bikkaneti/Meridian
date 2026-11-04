@@ -211,6 +211,11 @@ test("stack + tab order: focus walks primary → reset (due, flag on)", async ({
   await seedDeckOn(page, deckSeed(0));
   await gotoCard(page);
 
+  // The card's controls end at the reset opener. The art film's
+  // pause/play toggle was the third control during the Part 2
+  // redo round; the owner's autoloop order (2026-11-03) removed
+  // it, and the banner art now precedes the text column in DOM
+  // order while adding no control at all.
   expect(await controlIdentities(page)).toEqual(["primary", "reset"]);
 
   // Visual order = DOM order: each control sits below the previous.
@@ -378,6 +383,9 @@ test("state matrix: ordered identities + danger-footer ownership per state", asy
     want: ControlKey[];
     footer: number;
   }[] = [
+    // The film-toggle entries left every row on the owner's
+    // autoloop order (2026-11-03): the Review film loops and
+    // renders no button in any deck state, including empty.
     { name: "due × on", seed: deckSeed(0), flag: true, want: ["primary", "reset"], footer: 1 },
     { name: "due × off", seed: deckSeed(0), flag: false, want: ["primary", "reset"], footer: 1 },
     { name: "caught-up × on", seed: deckSeed(CAUGHT_UP), flag: true, want: ["reset"], footer: 1 },
