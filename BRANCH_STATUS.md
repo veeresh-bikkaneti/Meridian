@@ -1,3 +1,51 @@
+# Branch status — feat/crash-telemetry-stamps (combined crash-telemetry PR)
+
+- **Branch:** `feat/crash-telemetry-stamps`
+- **Base:** `fix/330-ios-unknown-memory-scout-first` @ `c890f80` (PR #331 merges first; this PR merges immediately after, with a merge-up and fresh CI)
+- **PR:** #339 — https://github.com/veeresh-bikkaneti/Meridian/pull/339
+- **Spec of record:** `~/workspace/meridian-crash-telemetry-evidence/DESIGN-FINAL.md` (arena Candidate B + 10 grafts)
+
+## Finisher record (integrator, 2026-11-03)
+
+- [x] Merged `unit/crash-telemetry-client` (tip `0361e02`, U1–U3) — clean merge.
+- [x] Merged `unit/crash-telemetry-worker` (tip `fd83292`, U4) — the only
+  conflict was this file; resolved by keeping BOTH unit records (below).
+- [x] Gated decision taken as its own commit (`4098735`): watchdog byte
+  budget 5120 → 6144 per DESIGN-FINAL §7.5 — the ladder was exhausted
+  (subset parser → browserVersion major-only → engine dropped →
+  deviceClass dropped) and the rendered watchdog measures 6,104 bytes
+  worst case, ≤ 6,144. Cost: +1 KB inline per page load. The owner
+  rules on it with this PR's merge word; it is a decision item in the
+  PR body. Watchdog suite after the raise: 47/47.
+- [x] Parity guard green on the combined tree (1/1). Integrator edit:
+  the guard's extractor did not match the worker's
+  `Object.freeze([...])` allowlist declaration ("list declaration not
+  found"); the extractor now allows the freeze wrapper. The field
+  lists themselves matched exactly — 17 keys each, `webgl1`/`webgl2`
+  included on both sides — so no field exception was encoded.
+- [x] U5 docs: `docs/observability.md` (honest counts — client emits
+  14 types, the worker on main accepts 8, the 6 engagement types land
+  with PR #311; manifest field table; formats as built; the v1
+  log-tail section marked superseded; "How to read a crash alert"
+  walkthrough; privacy statement updated), `workers/crash-report/README.md`
+  (bucket v2 shape, reachable fire-time threshold example),
+  `AGENTS.md` (the §6.3 safeguard sentence only).
+- [x] Follow-up filed: issue #338 — crash-report KV buckets have no
+  retention (no `expirationTtl`); deliberately not bundled into this PR.
+- [x] Combined gates on the combined tree:
+  - `npx tsc --noEmit` — clean (exit 0)
+  - `npm test` — scripts: 960 tests, 949 pass, 0 fail, 11 skipped;
+    src: 2,075 tests, 2,075 pass, 0 fail
+  - `npm run test:worker` — 106/106 pass
+  - `npm run typecheck:worker` — clean (exit 0)
+  - Watchdog suite — 47/47; parity guard — 1/1
+- [ ] Merge — owner's word only, after the panel approves the final
+  tip. Post-merge owner step: manual crash-worker version upload.
+
+The two unit records follow, kept whole.
+
+---
+
 # Branch status — unit/crash-telemetry-client
 
 - **Branch:** `unit/crash-telemetry-client`
