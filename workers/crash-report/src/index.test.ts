@@ -1304,7 +1304,9 @@ test("normaliseEvent: strips device.ua and breadcrumb.device.ua and every non-al
       breadcrumb: { device: { os: "ios", ua: "SECRET-BC-UA", gpu: "SECRET-GPU" }, history: [] },
     }),
   ) as Record<string, unknown>;
-  assert.deepEqual(out.device, { os: "ios", form: "mobile" });
+  // boot_failure (the helper's type): the stripped device also gains
+  // the E-rule engine fill (os ios → webkit, §7.5 ladder step 2 cure).
+  assert.deepEqual(out.device, { os: "ios", form: "mobile", engine: "webkit" });
   assert.deepEqual((out.breadcrumb as Record<string, unknown>).device, { os: "ios" });
   assert.ok(!JSON.stringify(out).includes("SECRET"));
 });
@@ -1353,6 +1355,9 @@ test("normaliseEvent: coerces wrong-typed and out-of-enum manifest fields to unk
     osVersion: "16.4.1",
     browserVersion: "16.4",
     locale: "en-US",
+    // boot_failure with no os/browser to derive from: the engine
+    // fill lands on its honest "unknown" (§7.5 ladder step 2 cure).
+    engine: "unknown",
   });
 });
 
@@ -1411,6 +1416,81 @@ test("normaliseEvent: caps unchanged — a device carrying all 17 allowlist keys
   device.os = "ios";
   const out = normaliseEvent(validEvent({ device }));
   assert.ok(validateEvent(out).some((p) => p.includes("too many fields")), "device cap stays 16");
+});
+
+test("normaliseEvent: watchdog-shaped boot_failure (no engine) gains the E-rule engine in counting + alert", async () => {
+  // The watchdog drops engine (§7.5 ladder step 2); deviceClass is
+  // dropped too and is NOT recovered — it stays "unknown".
+  const watchdog = validEvent({
+    type: "boot_failure",
+    device: {
+      browser: "safari",
+      browserVersion: "16",
+      os: "ios",
+      osVersion: "16.4.1",
+      form: "mobile",
+      webgl1: true,
+      webgl2: true,
+    },
+    error: { name: "Error", message: "boot timeout" },
+  });
+  const out = normaliseEvent(structuredClone(watchdog)) as Record<string, unknown>;
+  const dev = out.device as Record<string, unknown>;
+  assert.equal(dev.engine, "webkit", "os ios → webkit (E1)");
+  assert.equal(dev.deviceClass, undefined, "deviceClass is not filled — stays unknown downstream");
+  // Counting + alert both consume the normalised event.
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 5, 0);
+  const normalised = { ...out, ts: t0 } as unknown as CrashReportEvent;
+  const counted = await recordTelemetry(store, normalised, t0, cfg);
+  assert.equal(counted.counted, true);
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "boot_failure")))!;
+  assert.equal(bucket.total, 1);
+  const alert = buildAlert(normalised);
+  assert.ok(alert.discord.includes("WebKit"), "alert renders the filled engine");
+  assert.ok(alert.emailBody.includes("WebKit"), "email renders the filled engine");
+  // The E-rule table over the parsed fields (boot_failure only).
+  const cases: Array<[Record<string, unknown>, string]> = [
+    [{ browser: "chrome", os: "android" }, "blink"],
+    [{ browser: "edge", os: "windows" }, "blink"],
+    [{ browser: "samsung", os: "android" }, "blink"],
+    [{ browser: "firefox", os: "linux" }, "gecko"],
+    [{ browser: "safari", os: "mac" }, "webkit"],
+    [{ browser: "chrome", os: "ios" }, "webkit"],
+    [{ browser: "unknown", os: "other" }, "unknown"],
+  ];
+  for (const [device, want] of cases) {
+    const filled = normaliseEvent(validEvent({ type: "boot_failure", device })) as Record<string, unknown>;
+    assert.equal((filled.device as Record<string, unknown>).engine, want, JSON.stringify(device));
+  }
+});
+
+test("normaliseEvent: a boot_failure WITH an engine keeps it (never overwritten)", () => {
+  const out = normaliseEvent(
+    validEvent({
+      type: "boot_failure",
+      device: { browser: "chrome", os: "android", engine: "gecko" },
+    }),
+  ) as Record<string, unknown>;
+  assert.equal((out.device as Record<string, unknown>).engine, "gecko");
+});
+
+test("normaliseEvent: a js_error without engine is NOT filled", () => {
+  const out = normaliseEvent(
+    validEvent({
+      type: "js_error",
+      device: { browser: "chrome", os: "android" },
+    }),
+  ) as Record<string, unknown>;
+  assert.equal((out.device as Record<string, unknown>).engine, undefined, "fill is boot_failure only");
+  const unknown = normaliseEvent(
+    validEvent({
+      type: "js_error",
+      device: { browser: "safari", os: "ios", engine: "unknown" },
+    }),
+  ) as Record<string, unknown>;
+  assert.equal((unknown.device as Record<string, unknown>).engine, "unknown", "unknown stays unknown on other types");
 });
 
 test("funnel-gap pin: a funnel type still returns 400 on this base (this PR does not close #311's gap)", async () => {

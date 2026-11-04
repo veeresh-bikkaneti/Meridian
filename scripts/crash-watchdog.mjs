@@ -246,14 +246,17 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
       try {
         // COPPA: parsed/coarse facts only (never the UA or GPU
         // string), DPR clamped to 1-4, short-side screen bucket.
-        // §4.4 parity: the device carries every manifest key. The
-        // subset parser below (rule IDs mirror src/lib/ua-parse.ts:
-        // O1/O2/O3/O4 osVersion, B7/B8 Safari name/version, P2/P3
-        // class, the §2.3 frozen-token denylist) computes what it
-        // can; every other new key stamps the literal "unknown"
-        // (§2.1: unknown is a value). Memory and cores are never
-        // READ here — the host may expose numbers, they still stamp
-        // "unknown" on this path.
+        // §4.4 parity, as cut by the §7.5 ladder: the device
+        // carries the manifest keys this path can stamp. The subset
+        // parser below (rule IDs mirror src/lib/ua-parse.ts:
+        // O1/O2/O3/O4 osVersion, B7/B8 Safari name/version, the
+        // §2.3 frozen-token denylist) computes what it can; every
+        // other stamped new key is the literal "unknown" (§2.1:
+        // unknown is a value). engine and deviceClass are dropped
+        // entirely (ladder steps 2–3, below): engine is filled
+        // worker-side for boot_failure, deviceClass stays
+        // "unknown". Memory and cores are never READ here — the
+        // host may expose numbers, they still stamp "unknown".
         var r,
           n = win.navigator || {},
           w = win.screen || {},
@@ -298,17 +301,19 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
         }
         // §2.3: iOS 18_6/18_7 freeze only with the Version/ >= 26 witness.
         if (os === "ios" && (ov === "18.6" || ov === "18.7") && vm && +vm[1] >= 26) ov = un;
-        // §7.5 ladder step 3: deviceClass is NOT stamped on this path —
-        // the worker derives the legacy bucket from os for boot_failure.
-        // (The P2/P3 subset rules live in src/lib/ua-parse.ts; the
-        // watchdog's byte budget cannot carry them — see BRANCH_STATUS.)
+        // §7.5 ladder step 3: deviceClass is NOT stamped on this path
+        // and is NOT recovered worker-side — it stays "unknown" on
+        // watchdog boot_failure events. (The P2/P3 subset rules live
+        // in src/lib/ua-parse.ts; the watchdog's byte budget cannot
+        // carry them — see BRANCH_STATUS.)
         // msSinceBootStart from the recovered trail only (§4.4).
         var ms = un,
           hh = prev && prev.history,
           la = hh && hh[hh.length - 1];
         if (la && typeof la.at === "number" && la.at >= prev.startedAt) ms = la.at - prev.startedAt;
-        // §7.5 ladder step 2: engine is NOT stamped on this path — the
-        // worker fills it from the parsed fields via the §3.4 E-rules.
+        // §7.5 ladder step 2: engine is NOT stamped on this path —
+        // for boot_failure events only, the worker fills it from the
+        // event's parsed fields via the §3.4 E-rules.
         var dv = {
           browser: br,
           browserVersion: bv,
@@ -349,10 +354,12 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
             ev.sessionId = prev.sessionId;
             if (prev.lastMilestone) ev.lastMilestone = prev.lastMilestone;
             if (unclean) {
-              // Strip the breadcrumb's device sub-object: the app bundle
-              // writes the raw UA string there (device.ua) and this
-              // watchdog never sends UA — the coarse facts already ride
-              // on ev.device. Mutating prev is safe: sessionId /
+              // Strip the breadcrumb's device sub-object: legacy
+              // trails may carry the raw UA string there (device.ua);
+              // current builds store the parsed snapshot only, not
+              // the raw UA. This watchdog never sends UA either way —
+              // the coarse facts already ride on ev.device.
+              // Mutating prev is safe: sessionId /
               // lastMilestone were extracted above, prev is never written
               // back to storage and never read again below.
               delete prev.device;
@@ -518,10 +525,12 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
 const RENAME = {
   // #223: crashWatchdogMain and CSS are renamed too — production build
   // ids are 12 chars (14 for the timestamp fallback), which pushed the
-  // rendered script 2–4 bytes over the 5120 budget while the 10-char
-  // test fixture still passed. These two renames free 20 bytes, so the
-  // worst real case (14 chars) renders at 5104 bytes. Neither name is
-  // an object-literal key or a property, so the rename is safe here.
+  // rendered script 2–4 bytes over its then budget while the 10-char
+  // test fixture still passed. These two renames free 20 bytes.
+  // Current figures (§7.5 gated decision): the budget is 6,144 bytes
+  // and the worst case (14-char build id) measures 6,104 bytes.
+  // Neither name is an object-literal key or a property, so the
+  // rename is safe here.
   crashWatchdogMain: "M",
   CSS: "G",
   isValidEndpointFn: "ok",

@@ -397,6 +397,32 @@ function normaliseDevice(device: Record<string, unknown>): Record<string, unknow
 }
 
 /**
+ * The §3.4 E-rule engine fill for watchdog-shaped boot_failure events
+ * (cure round, §7.5 ladder step 2): the watchdog drops `engine` to fit
+ * its byte budget, and the worker recovers it here from the event's
+ * own parsed fields — never from a UA string. E1 first (iOS is a
+ * WebKit shell), then E2/E3/E4 by browser. Anything else stays
+ * "unknown". deviceClass has NO equivalent fill: it is not honestly
+ * recoverable from the parsed fields, so watchdog events keep
+ * "unknown" for it.
+ */
+function derivedEngineForBootFailure(device: Record<string, unknown>): string {
+  if (device.os === "ios") return "webkit";
+  switch (device.browser) {
+    case "chrome":
+    case "edge":
+    case "samsung":
+      return "blink";
+    case "firefox":
+      return "gecko";
+    case "safari":
+      return "webkit";
+    default:
+      return "unknown";
+  }
+}
+
+/**
  * Strip-and-continue intake (design §5.1). Returns a normalised copy;
  * the caller's object is never mutated. Caps are unchanged: body 8192,
  * top-level keys 24, device keys 16 — over-cap strings are truncated to
@@ -422,6 +448,17 @@ export function normaliseEvent(raw: unknown): unknown {
     event.error = error;
   }
   if (isPlainObject(event.device)) event.device = normaliseDevice(event.device);
+  // §7.5 ladder step 2, boot_failure ONLY: a watchdog event arrives
+  // with engine dropped (absent, or coerced to "unknown" above). Fill
+  // it from the parsed fields via the E-rules. A present engine is
+  // never overwritten, and no other event type is filled — the app
+  // path stamps its own engine and its absence stays "unknown".
+  if (event.type === "boot_failure" && isPlainObject(event.device)) {
+    const dev = event.device as Record<string, unknown>;
+    if (dev.engine === undefined || dev.engine === "unknown") {
+      dev.engine = derivedEngineForBootFailure(dev);
+    }
+  }
   if (isPlainObject(event.breadcrumb)) {
     const breadcrumb = { ...event.breadcrumb };
     if (isPlainObject(breadcrumb.device)) {
