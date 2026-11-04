@@ -1,3 +1,48 @@
+# Branch status — chore/remove-dead-auth (Remove dead auth)
+
+- **Branch:** `chore/remove-dead-auth`
+- **Base:** `main` @ `68ff2c70013746cee55204f5248ffa612270a21f`
+- **Authority:** Owner, 2026-11-04: "remove auth"
+
+## Task capsule
+
+- TASK: remove Meridian's dead auth code and open a READY-for-review PR (no merge). Sign-in (better-auth/OAuth under `src/lib/auth/`) is leftover template code from the first commit (`abb9748`); the live site 404s `/api/auth/*` and nobody will ever be asked to log in. This PR unblocks closing #326/#327 — those PRs are not touched by this work.
+- Tier: 2 (security-adjacent removal across 3+ files, dependency change). Rationale: the deletion surface touches the root route, the Vite config, the smoke tooling and the lockfile, so it carries the full gate contract below even though every edit is a removal.
+- Done condition: the exact removal scope below is complete; the tree-wide grep gate is clean (see the migrations note under Coupling findings); every gate in the verification contract passes; test-count deltas against the pre-removal baseline are accounted for test-by-test; a local runtime smoke on the `build:pages` output passes.
+- Files in scope: `src/lib/auth/**` (delete, except the isolation move), `src/lib/isolation.server.ts` (moved file), `src/lib/app-data/client.server.ts` (one import line), `src/routes/__root.tsx`, `src/lib/credits.ts`, `package.json` + `package-lock.json`, `vite.config.ts`, `scripts/check-auth-invariant.mjs` + test (delete), `scripts/sign-out-plan.mjs` + test (delete), `scripts/browser-smoke.mjs`, `scripts/app-env-plugin.mjs` (one comment), `BRANCH_STATUS.md`.
+- Protected / out of scope (NOT touched): the embedded-DB stack — `src/lib/db.ts`, `migrations/`, `scripts/migrate.mjs`, `db:migrate`, `pgliteBootstrapPlugin`, the `VITE_AUTH_ENABLED`/app-env flag machinery (`with-app-env.mjs` etc.), and `src/lib/app-data/` beyond the one import line. No other dependency is removed.
+- Verification contract: tree-wide grep = 0 for `better-auth`, `lib/auth`, `AuthProvider`, `check-auth-invariant`, `sign-out-plan`, `auth/popup`, `popup.server` (excluding `.git`, `node_modules`, this record — and `migrations/`, see below); `npm ci`; `npx tsc --noEmit`; `npm run typecheck:worker`; `npm run build`; `npm test`; `npm run test:worker`; `node scripts/lint-cards.mjs` (GATE PASSED); `npm run build:pages`; local Playwright smoke on the built artifact.
+
+## Coupling findings
+
+- **browser-smoke coupling:** `scripts/browser-smoke.mjs` imported the auth-invariant check and published an `authWarnings` verdict field. Removed: the import block, the `authWarnings` computation, the verdict field and the warnings spread. Brand warnings, viewports and baseline behaviour unchanged. (`browser-smoke-verdict.mjs` and its test carry no auth references — re-verified.)
+- **authPopupPlugin coupling:** `vite.config.ts` carried a dev-only plugin that `ssrLoadModule`'d the deleted `src/lib/auth/popup.server.ts` to serve `/auth/popup`. Removed: the function, its registration, and the ordering comment above the registration. The neighbouring registration comment also named the deleted `check-auth-invariant` script, so it was cured in the same pass (the grep gate requires zero references). Every other plugin is untouched — `pgliteBootstrapPlugin` and `appEnvPlugin` stay.
+- **isolation move (the one judgement joint):** `src/lib/auth/isolation.server.ts` is a generic Fetch-Metadata same-site guard — it exports `CrossSiteRequestError` + `assertSameSiteRequest`, imports only `@tanstack/react-start/server`, and has no better-auth dependency — with one live outside importer. It moved to `src/lib/isolation.server.ts` (`git mv`); the import in `src/lib/app-data/client.server.ts` was updated. Its header comment no longer claims enforcement at the deleted `authMiddleware` chokepoint or alongside Better Auth's `trustedOrigins`; it now says the guard serves the app-data server path. The `.server`-suffix warning is intact.
+- **migrations note:** `migrations/auth/0001_auth.sql` is a dormant, never-applied Better Auth schema (the migration appliers do not descend into subdirectories) whose comments name the deleted code. It sits inside the protected embedded-DB stack this task must not touch, so it is the one place the removed names still appear; it is listed as a follow-up below instead of being edited here.
+- **Docs sweep:** README.md + `docs/` were grepped for sign-in/auth presented as a live feature — none found, nothing to cure. Historical/review docs that merely record the past are not stale and were left alone.
+
+## Follow-ups (orphaned by this removal — NOT done here)
+
+- `jose` — zero code usage anywhere on the post-removal tree; only its `src/lib/credits.ts` listing remains. Candidate for a follow-up dependency removal.
+- `kysely` — zero code usage; only its credits listing remains. Its only consumer was the deleted auth pglite dialect. Candidate for a follow-up dependency removal.
+- `@electric-sql/pglite` — still used by the protected `src/lib/db.ts`; only the credits listing appears outside the DB stack. Not orphaned as a package.
+- `pg` — still used by `scripts/migrate.mjs` and by `src/lib/db.ts`; credits listing besides. Not orphaned.
+- `migrations/auth/0001_auth.sql` — dormant Better Auth schema + stale comments (incl. one in protected `src/lib/db.ts`); a follow-up decision, inside the DB stack this PR must not touch.
+- `VITE_AUTH_ENABLED` / app-env machinery — the flag now has no consumer in `src/`; the machinery stays per this task's scope and is a follow-up decision.
+
+## Status
+
+- [x] Baseline on unmodified main recorded (scripts + src + worker suites, tsc).
+- [x] Auth folder deleted (18 files) + isolation guard moved; `__root.tsx` AuthProvider wrap removed.
+- [x] Auth scripts deleted; browser-smoke unhooked; app-env comment cured.
+- [x] `better-auth` dependency + `check:auth` script removed; lockfile regenerated (better-auth gone); credits line removed.
+- [x] `authPopupPlugin` removed from `vite.config.ts`.
+- [x] Full gate run on the branch tip + test-count accounting — grep gate clean (only this record + protected `migrations/` retain the names); `npm ci` clean; tsc clean; `typecheck:worker` clean; `npm run build` green; lint-cards GATE PASSED; `build:pages` green (first attempt was killed at exit 137 during prerender under VM contention; the no-change retry passed). Counts: scripts 1014 → 985 tests (1003 → 974 pass, 11 skipped unchanged), src 2119 → 2092 (all pass), worker 109 → 109 (all pass). Every delta test is accounted for by the deleted suites: scripts −29 = check-auth-invariant (11) + sign-out-plan (18); src −27 = gate-identity (24) + sign-in-gate (3). No other delta.
+- [x] Runtime smoke on the `build:pages` output — PASSED 7/7: home 200 + renders, GeoDetective card visible, Cold Trail card visible, zero console/page errors, `GET /api/auth/session` → 404. Evidence under `.smoke-evidence/` (not committed). Environment notes: port 4124 (4123 held by a sibling crew's server), `TMPDIR` on workspace disk (shared `/tmp` tmpfs was 94% full and crashed Chromium profiles — a control run against an unmodified main build crashed identically), `--disable-dev-shm-usage` as in `playwright.config.ts`.
+- [ ] PR opened READY for review — no merge. (Opened at the end of this run; number in the PR itself.)
+
+---
+
 # Branch status — feat/capitals-flags-phase1 (Capitals & Flags, Phase 1)
 
 - **Branch:** `feat/capitals-flags-phase1`
