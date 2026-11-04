@@ -12,7 +12,9 @@ Owner: **"Auto-switch silently on weak devices (my decision stands)"** —
 "check the device capability and auto switch; also allow user to manually switch."
 
 At boot, if no stored record stands, the device is qualified in order:
-prior map-attributed crash → WebGL probe → low memory.
+prior map-attributed crash → WebGL probe → low memory → unknown-memory
+Scout trial (touch devices only: Scout first, then the timed in-session
+upgrade described below).
 
 **Low-memory relaxed (2026-10-21, review finding P1-7 — prefer the Full
 map).** `deviceMemory ≤ 1 GB` still demotes on its own. A `2 GB` reading
@@ -52,6 +54,12 @@ now: when memory is **unknown** and the primary pointer is **coarse**
 unknown-memory`). Nothing is stored. Once the Scout map has loaded,
 rendered, and stayed stable for 3 seconds, the session upgrades to the
 full map — in memory only, still nothing stored.
+
+One exclusion: challenge runs never upgrade mid-run. A friend
+challenge's map is picked when the challenge opens and is never
+re-mapped, so a trial boot stays in Scout for that challenge; the
+trial's upgrade eligibility survives, and a later normal run in the
+same boot can still upgrade.
 
 Two guards keep the trial safe:
 

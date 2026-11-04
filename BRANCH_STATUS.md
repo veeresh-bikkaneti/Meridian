@@ -17,10 +17,14 @@ run as a single builder under the parent orchestrator; QA and panel are
 separate agents after this branch.
 
 Done condition / evidence: unit suite + typecheck + lint + card gate
-green; home/boot/map E2E subset green sequentially; Chromium emulation
+green; home/boot/map E2E subset: 40 passed / 3 failed in the combined
+sequential run, and the 3 failures re-ran solo and passed 3/3
+(contention-class flakes — see the Status checklist and PR body; no
+single combined "all green" number is claimed); Chromium emulation
 of an iPhone-class client shows Scout first, the upgrade after the
 soak, and the starfield at the capped size, on both the base and fixed
-builds. No real iOS hardware is available — see the PR body.
+builds. No real iOS hardware is available — see the PR body and the
+Caveats section below.
 
 Files in scope: `src/map/capability.ts` (+ test), `src/map/starfield.ts`
 (+ test), `src/lib/observability.ts` (+ test),
@@ -45,6 +49,26 @@ conversion (diagnosis follow-up), copy, place data, worker code.
   `wasMapAttributedCrash()` consults it when the session trail is gone.
   `suspected_crash` reporting is unchanged.
 - `probeWebGL()` releases its context via `WEBGL_lose_context`.
+
+## Caveats (panel cure round, 2026-11-03)
+
+- **The upgrade wiring has no automated test.** The timer arming in
+  `satellite-map.tsx`, its teardown / context-loss cancellation, and
+  the challenge-run exclusion are covered by the pure gate tests in
+  `capability.test.ts` plus Chromium emulation and code inspection
+  only. The cure round's new source pins
+  (`scout-upgrade-lifecycle.test.ts`) cover the GameApp-side wiring
+  (note retirement, manual-choice disarm, fire-time re-check) — not
+  the timer itself.
+- **The repro rig cannot validate the actual failure.** The rig is
+  Chromium/Blink: no WebKit, no A13, no real iOS 16.4.1 on this VM.
+  It proves the app-level behavior; it CANNOT prove the iOS jetsam
+  kill is gone. Only a real iPhone 11 in the field can.
+- **Peak memory is NOT reduced.** The fixed build's session peak RSS
+  in Blink measured HIGHER than baseline (two map mounts, ~1,605 MB
+  vs ~1,478 MB). The honest claim is "crash-loop broken + graceful
+  degradation to Scout" — never "peak memory reduced", and never
+  "field-proven".
 
 ## Status
 
