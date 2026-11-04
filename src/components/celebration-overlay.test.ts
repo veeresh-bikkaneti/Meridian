@@ -99,7 +99,7 @@ describe("deckCompleteCelebrationSpec — deck-aware cycle celebration", () => {
   it("celebrates a Capitals pack cycle with pack-denominated copy", () => {
     const spec = deckCompleteCelebrationSpec("capitals");
     assert.equal(spec.variant, "game-complete");
-    assert.ok(spec.body.includes("72"), "names the pack's own count");
+    assert.ok(spec.body.includes("110"), "names the pack's own count");
     assert.ok(spec.body.includes("Capitals"), "names the pack");
     assert.ok(!spec.body.includes("387"), "never claims the core count");
     assert.equal(spec.title, PACK_DECK_COMPLETE_COPY.capitals!.headline);

@@ -17,6 +17,7 @@ import {
   CURATED_CAPITAL_IDS,
   MIN_PACK_CASES,
   PACK_CASE_TARGET,
+  PACK_CASE_TARGET_WAVE2,
   buildPackDeck,
   loadPackCapitalIds,
   measureWitnessPool,
@@ -51,13 +52,19 @@ const NON_ANCHOR_IDS = new Set([
   "gn-4119403", // Little Rock
 ]);
 
-test("witness eligibility: 55 of the 72 curated capitals can anchor", () => {
+test("witness eligibility: 72 of the grown 110 capitals can anchor", () => {
   const { capitalIds, anchors, nonAnchors } = measureWitnessPool();
-  assert.equal(capitalIds.length, 72, "the pack set is the curated 72");
-  assert.equal(anchors.length, 55, `measured anchors: ${anchors.length}`);
-  assert.equal(nonAnchors.length, 17, `measured non-anchors: ${nonAnchors.length}`);
+  assert.equal(capitalIds.length, 110, "the pack set is the grown 110");
+  assert.equal(anchors.length, 72, `measured anchors: ${anchors.length}`);
+  assert.equal(nonAnchors.length, 38, `measured non-anchors: ${nonAnchors.length}`);
+  // The original wave-1 non-anchor 17 (below) are still non-anchors;
+  // wave 2 added 21 more small capitals under the same rule.
+  const nonAnchorIds = new Set(nonAnchors.map((p) => p.id));
+  for (const id of NON_ANCHOR_IDS) {
+    assert.ok(nonAnchorIds.has(id), `original non-anchor ${id} still cannot anchor`);
+  }
   assert.deepEqual(
-    new Set(nonAnchors.map((p) => p.id)),
+    new Set([...nonAnchors.map((p) => p.id)].filter((id) => NON_ANCHOR_IDS.has(id))),
     NON_ANCHOR_IDS,
     "the non-anchor set is exactly the measured 17",
   );
@@ -82,10 +89,21 @@ test("buildPackDeck is deterministic and every case is a valid triangulation", (
   const a = buildPackDeck();
   const b = buildPackDeck();
   assert.deepEqual(a, b, "same seed, same deck");
-  assert.equal(a.length, PACK_CASE_TARGET, `pack deck has ${a.length} cases`);
+  assert.equal(
+    a.length,
+    PACK_CASE_TARGET + PACK_CASE_TARGET_WAVE2,
+    `pack deck has ${a.length} cases`,
+  );
   assert.ok(a.length >= MIN_PACK_CASES, "pack deck clears the fail-closed floor");
   const { anchors } = measureWitnessPool();
   const anchorIds = new Set(anchors.map((p) => p.id));
+  // Append-only generation (issue #344): the shipped first
+  // PACK_CASE_TARGET cases draw witnesses only from the ORIGINAL 72
+  // capitals' anchors, so their composition can never re-roll when
+  // the pack grows; appended cases may use the grown pool.
+  const wave1AnchorIds = new Set(
+    anchors.filter((p) => CURATED_CAPITAL_IDS.includes(p.id)).map((p) => p.id),
+  );
   const hideouts = new Set();
   for (const c of a) {
     assert.equal(c.packId, "capitals", `case ${c.caseNo}: stamped with the pack id`);
@@ -98,6 +116,12 @@ test("buildPackDeck is deterministic and every case is a valid triangulation", (
     assert.equal(witnessIds.size, 3, `case ${c.caseNo}: distinct witnesses`);
     for (const s of c.sightings) {
       assert.ok(anchorIds.has(s.cityId), `case ${c.caseNo}: witness ${s.cityName} is an eligible capital anchor`);
+      if (c.caseNo <= PACK_CASE_TARGET) {
+        assert.ok(
+          wave1AnchorIds.has(s.cityId),
+          `case ${c.caseNo}: shipped-wave witness ${s.cityName} comes from the original anchor pool`,
+        );
+      }
       assert.notEqual(s.cityId, c.hideout.placeId, `case ${c.caseNo}: witness is not the hideout`);
       const trueKm = distanceKm([s.cityLon, s.cityLat], [c.hideout.lon, c.hideout.lat]);
       assert.ok(trueKm >= 250 && trueKm <= 4000, `case ${c.caseNo}: witness distance ${trueKm} km is inside the core band`);
