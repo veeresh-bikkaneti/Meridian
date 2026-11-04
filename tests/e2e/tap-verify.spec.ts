@@ -2,6 +2,7 @@ import { test, expect, type BrowserContext, type Page } from "playwright/test";
 import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { createTelemetryLedger, handleTelemetry, watchTelemetryEscapes } from "./helpers";
 
 /**
  * F5: tap preview / lock-in verification (touch, mobile viewport).
@@ -12,11 +13,12 @@ import path from "node:path";
  * the committed pin is solid ("Your pin") so draft vs locked-in is
  * unmistakable.
  *
- * Self-contained by design: the shared tests/e2e/helpers.ts is untracked
- * (absent from origin/main), so this spec inlines the small subset it needs
- * (artifact serving, tile stub, session-storage reads) instead of importing
- * it. DIST is resolved relative to this file so the spec works from any
- * checkout or worktree.
+ * Serving stays inlined (artifact serving, tile stub, session-storage
+ * reads are this spec's own small subset, and DIST is resolved relative
+ * to this file so the spec works from any checkout), but telemetry goes
+ * through the shared helpers policy — ledger, handleTelemetry,
+ * watchTelemetryEscapes — so crash-report posts are stubbed, recorded,
+ * and escape-watched exactly as in every other spec.
  */
 
 const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "dist", "client");
@@ -38,11 +40,14 @@ const MIME: Record<string, string> = {
 };
 
 async function serveBuiltArtifact(context: BrowserContext): Promise<void> {
+  const tel = createTelemetryLedger();
+  watchTelemetryEscapes(context, tel);
   await context.route("**/*", async (route) => {
     const url = new URL(route.request().url());
     if (url.hostname === "server.arcgisonline.com") {
       return route.fulfill({ status: 200, body: TILE_STUB, contentType: "image/png" });
     }
+    if (await handleTelemetry(route, tel)) return;
     if (url.hostname !== "127.0.0.1" && url.hostname !== "localhost") {
       return route.continue();
     }

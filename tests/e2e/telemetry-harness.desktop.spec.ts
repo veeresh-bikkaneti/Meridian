@@ -39,6 +39,12 @@ test("A: forced js_error is recorded by the stub, and nothing escapes", async ({
   await expect
     .poll(() => tel.count("js_error"), { timeout: 20_000 })
     .toBeGreaterThanOrEqual(1);
+  // The recorded event must be THIS test's probe error (β-F8): any
+  // js_error-shaped post would satisfy the count alone, so pin the
+  // payload's error message to the exact error forceJsError throws.
+  const probe = tel.first("js_error");
+  const probeError = probe?.payload.error as { message?: unknown } | undefined;
+  expect(probeError?.message).toBe("telemetry-harness-probe");
   tel.assertNoEscape();
 });
 

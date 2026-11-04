@@ -214,6 +214,9 @@ export interface TelemetryEvent {
   payload: Record<string, unknown>;
   /** True when the body was not a JSON object; the event is kept, never dropped. */
   parseError?: boolean;
+  /** Raw body text on parse failure (truncated at 2048 chars), so the
+   *  evidence of what was posted survives even when it has no type. */
+  raw?: string;
   url: string;
   method: string;
   via: "stub" | "collector";
@@ -255,16 +258,22 @@ const ledgerStates = new WeakMap<TelemetryLedger, LedgerState>();
 
 export function createTelemetryLedger(): TelemetryLedger {
   const state: LedgerState = { events: [], escapes: [], seq: 0 };
+  // Read APIs deep-copy (β-F4): mutating a returned event/payload must
+  // never rewrite the record that count()/ofType() read back.
+  const cloneEvent = (e: TelemetryEvent): TelemetryEvent => structuredClone(e);
   const ledger: TelemetryLedger = {
-    all: () => [...state.events],
-    payloads: () => state.events.map((e) => e.payload),
-    ofType: (type) => state.events.filter((e) => e.type === type),
-    first: (type) => state.events.find((e) => e.type === type),
+    all: () => state.events.map(cloneEvent),
+    payloads: () => state.events.map((e) => structuredClone(e.payload)),
+    ofType: (type) => state.events.filter((e) => e.type === type).map(cloneEvent),
+    first: (type) => {
+      const found = state.events.find((e) => e.type === type);
+      return found ? cloneEvent(found) : undefined;
+    },
     count: (type) =>
       type === undefined
         ? state.events.length
         : state.events.filter((e) => e.type === type).length,
-    escapes: () => [...state.escapes],
+    escapes: () => state.escapes.map((e) => ({ ...e })),
     assertSilent: () => {
       if (state.events.length > 0) {
         throw new Error(
@@ -312,28 +321,38 @@ function recordTelemetryRequest(
   const state = ledgerState(ledger);
   let payload: Record<string, unknown> = {};
   let parseError = false;
+  let rawText: string | null = null;
+  const captureRaw = (): void => {
+    // postData() may return null for binary bodies — store what exists.
+    try {
+      rawText = request.postData();
+    } catch {
+      rawText = null;
+    }
+  };
   try {
     const parsed: unknown = request.postDataJSON();
     if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
       payload = parsed as Record<string, unknown>;
     } else {
       parseError = true;
+      captureRaw();
     }
   } catch {
     // Non-JSON body (e.g. the watchdog's XHR): try the raw text once
     // before keeping the event as an explicit parse error.
     parseError = true;
-    try {
-      const raw = request.postData();
-      if (raw) {
-        const parsed: unknown = JSON.parse(raw);
+    captureRaw();
+    if (rawText) {
+      try {
+        const parsed: unknown = JSON.parse(rawText);
         if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
           payload = parsed as Record<string, unknown>;
           parseError = false;
         }
+      } catch {
+        /* stays a parseError event */
       }
-    } catch {
-      /* stays a parseError event */
     }
   }
   const type = typeof payload.type === "string" ? payload.type : null;
@@ -341,26 +360,44 @@ function recordTelemetryRequest(
     seq: ++state.seq,
     type,
     payload,
-    ...(parseError ? { parseError: true } : {}),
+    ...(parseError
+      ? { parseError: true, ...(rawText ? { raw: rawText.slice(0, 2048) } : {}) }
+      : {}),
     url: request.url(),
     method: request.method(),
     via,
   });
 }
 
+/**
+ * Run-level backstop: one JSON line per escape to the spill file the
+ * global teardown fails on (see telemetry-spill-setup/-teardown.ts).
+ * A failed append is never silent (β-F2): it is logged, then retried
+ * against the fallback path the setup exported; the teardown reads
+ * both files. Still never throws into a test.
+ */
+function appendSpill(escape: TelemetryEscape): void {
+  const line = `${JSON.stringify(escape)}\n`;
+  const spill = process.env.MERIDIAN_E2E_TELEMETRY_SPILL;
+  if (!spill) return;
+  try {
+    appendFileSync(spill, line);
+    return;
+  } catch (err) {
+    console.error(`telemetry spill append failed for ${spill}: ${String(err)}`);
+  }
+  const fallback = process.env.MERIDIAN_E2E_TELEMETRY_SPILL_FALLBACK;
+  if (!fallback) return;
+  try {
+    appendFileSync(fallback, line);
+  } catch (err) {
+    console.error(`telemetry spill fallback append failed for ${fallback}: ${String(err)}`);
+  }
+}
+
 function recordTelemetryEscape(ledger: TelemetryLedger, escape: TelemetryEscape): void {
   ledgerState(ledger).escapes.push(escape);
-  // Run-level backstop: one JSON line per escape to the spill file the
-  // global teardown fails on (see telemetry-spill-setup/-teardown.ts).
-  // Best-effort only — a listener must never throw into a test.
-  const spill = process.env.MERIDIAN_E2E_TELEMETRY_SPILL;
-  if (spill) {
-    try {
-      appendFileSync(spill, `${JSON.stringify(escape)}\n`);
-    } catch {
-      /* never throw into a test */
-    }
-  }
+  appendSpill(escape);
 }
 
 /**
@@ -382,7 +419,97 @@ export async function handleTelemetry(route: Route, ledger: TelemetryLedger): Pr
   return true;
 }
 
+const watchedPairs = new WeakMap<BrowserContext, WeakSet<TelemetryLedger>>();
+
+/**
+ * Escape detection for one context+ledger pair: any telemetry-host
+ * response that is not the stub's 204 — or a telemetry request that
+ * fails outright — reached (or tried to reach) the real worker.
+ * Listeners never throw into a test; escapes land on the ledger and in
+ * the spill file. Idempotent per context+ledger pair: registering the
+ * same pair twice adds no second listener set. `serveBuiltArtifact`
+ * calls this for its ledger; hand-rolled handlers (pinch-zoom,
+ * tap-verify) call it on their own contexts.
+ */
+export function watchTelemetryEscapes(context: BrowserContext, ledger: TelemetryLedger): void {
+  let ledgers = watchedPairs.get(context);
+  if (!ledgers) {
+    ledgers = new WeakSet();
+    watchedPairs.set(context, ledgers);
+  }
+  if (ledgers.has(ledger)) return;
+  ledgers.add(ledger);
+
+  // Per-context request correlation (β-F1): a correctly stubbed fetch
+  // post gets its 204 response and THEN a spurious requestfailed
+  // (net::ERR_ABORTED) for the same Request object. A request that
+  // received a response is answered, not escaped; a request records
+  // at most one escape either way.
+  const answered = new WeakSet<object>();
+  const escapeByRequest = new Map<object, TelemetryEscape>();
+  const spillTimers = new Map<TelemetryEscape, ReturnType<typeof setTimeout>>();
+
+  const retract = (escape: TelemetryEscape): void => {
+    const state = ledgerState(ledger);
+    const idx = state.escapes.indexOf(escape);
+    if (idx >= 0) state.escapes.splice(idx, 1);
+    const timer = spillTimers.get(escape);
+    if (timer) {
+      clearTimeout(timer);
+      spillTimers.delete(escape);
+    }
+  };
+
+  context.on("response", (res) => {
+    try {
+      if (!isTelemetryHost(new URL(res.url()).hostname)) return;
+      const req = res.request();
+      answered.add(req);
+      if (res.status() === 204) {
+        // Reverse-order phantom: the requestfailed landed first, then
+        // the stub's 204 — retract the escape before assertions run.
+        const prior = escapeByRequest.get(req);
+        if (prior && prior.kind === "requestfailed" && prior.status === null) {
+          retract(prior);
+          escapeByRequest.delete(req);
+        }
+        return;
+      }
+      if (escapeByRequest.has(req)) return;
+      const escape: TelemetryEscape = { url: res.url(), status: res.status(), kind: "response" };
+      escapeByRequest.set(req, escape);
+      recordTelemetryEscape(ledger, escape);
+    } catch {
+      /* never throw into a test */
+    }
+  });
+  context.on("requestfailed", (req) => {
+    try {
+      if (!isTelemetryHost(new URL(req.url()).hostname)) return;
+      if (answered.has(req)) return;
+      if (escapeByRequest.has(req)) return;
+      const escape: TelemetryEscape = { url: req.url(), status: null, kind: "requestfailed" };
+      escapeByRequest.set(req, escape);
+      ledgerState(ledger).escapes.push(escape);
+      // Defer the spill write one macrotask (β-F1): a 204 response
+      // landing just after this event retracts the phantom above, and
+      // the retraction cancels this write before it reaches the file.
+      const timer = setTimeout(() => {
+        spillTimers.delete(escape);
+        if (ledgerState(ledger).escapes.includes(escape)) appendSpill(escape);
+      }, 0);
+      spillTimers.set(escape, timer);
+    } catch {
+      /* never throw into a test */
+    }
+  });
+}
+
 const ledgersByContext = new WeakMap<BrowserContext, TelemetryLedger>();
+/** Effective `spoofCapableDevice` each context was served with (β-F5). */
+const serveOptsByContext = new WeakMap<BrowserContext, boolean>();
+/** Endpoint each context's collector pinned, if any (β-F6). */
+const collectEndpointByContext = new WeakMap<BrowserContext, string>();
 
 /**
  * Telemetry contract — stated once, here:
@@ -403,36 +530,29 @@ export async function serveBuiltArtifact(
   context: BrowserContext,
   opts: { spoofCapableDevice?: boolean } = {},
 ): Promise<TelemetryLedger> {
-  // Idempotent per context (G3): a second call returns the existing
-  // ledger and registers nothing twice.
+  // Idempotent per context (G3) for the SAME effective opts: a second
+  // call returns the existing ledger and registers nothing twice. A
+  // second call with a DIFFERENT effective spoofCapableDevice throws
+  // (β-F5) — silently ignoring it would test the opposite device.
+  const effectiveSpoof = opts.spoofCapableDevice !== false;
   const existing = ledgersByContext.get(context);
-  if (existing) return existing;
+  if (existing) {
+    const servedSpoof = serveOptsByContext.get(context);
+    if (servedSpoof !== effectiveSpoof) {
+      throw new Error(
+        `serveBuiltArtifact: context already served with spoofCapableDevice=${servedSpoof} — cannot re-serve with spoofCapableDevice=${effectiveSpoof}; the second call's device spoof would be silently ignored`,
+      );
+    }
+    return existing;
+  }
   const ledger = createTelemetryLedger();
   ledgersByContext.set(context, ledger);
-  if (opts.spoofCapableDevice !== false) {
+  serveOptsByContext.set(context, effectiveSpoof);
+  if (effectiveSpoof) {
     await spoofCapableDevice(context);
   }
-  // Escape detection, once per context: any telemetry-host response that
-  // is not the stub's 204 — or a telemetry request that fails outright —
-  // reached (or tried to reach) the real worker. Listeners never throw
-  // into a test; escapes land on the ledger and in the spill file.
-  context.on("response", (res) => {
-    try {
-      if (!isTelemetryHost(new URL(res.url()).hostname)) return;
-      if (res.status() === 204) return;
-      recordTelemetryEscape(ledger, { url: res.url(), status: res.status(), kind: "response" });
-    } catch {
-      /* never throw into a test */
-    }
-  });
-  context.on("requestfailed", (req) => {
-    try {
-      if (!isTelemetryHost(new URL(req.url()).hostname)) return;
-      recordTelemetryEscape(ledger, { url: req.url(), status: null, kind: "requestfailed" });
-    } catch {
-      /* never throw into a test */
-    }
-  });
+  // Escape detection, once per context (see watchTelemetryEscapes).
+  watchTelemetryEscapes(context, ledger);
   await context.route("**/*", async (route) => {
     const url = new URL(route.request().url());
     if (url.hostname === "server.arcgisonline.com") {
@@ -491,6 +611,17 @@ export async function collectTelemetry(
     );
   }
   const endpoint = opts.endpoint ?? TELEMETRY_ENDPOINT;
+  // Idempotent per context per endpoint (β-F6): a same-endpoint second
+  // call is a no-op; a different endpoint throws instead of layering a
+  // second live collector under the first one's label.
+  const collected = collectEndpointByContext.get(context);
+  if (collected !== undefined) {
+    if (collected === endpoint) return ledger;
+    throw new Error(
+      `collectTelemetry: context already collects ${collected} — cannot also collect ${endpoint}; the first collector would keep recording under the second's configuration`,
+    );
+  }
+  collectEndpointByContext.set(context, endpoint);
   await context.route("**/flags.json*", async (route) => {
     return route.fulfill({
       status: 200,
@@ -517,6 +648,10 @@ export async function collectTelemetry(
  *   let tel: TelemetryLedger;
  *   test.beforeEach(async ({ context }) => { tel = await serveBuiltArtifact(context); });
  *   test.afterEach(telemetryGuard(() => tel));
+ *
+ * Advanced/unbound: the getter is not tied to any context, so a wrong
+ * ledger passes vacuously (β-F7). Prefer `telemetryGuardFor(context)`,
+ * which resolves the context's own ledger.
  */
 export function telemetryGuard(
   getLedger: () => TelemetryLedger,
@@ -527,6 +662,27 @@ export function telemetryGuard(
     ledger.assertNoEscape();
     if (opts.silent) ledger.assertSilent();
   };
+}
+
+/**
+ * Context-bound guard (β-F7): resolves the context's own ledger from
+ * the serve registry and returns the `test.afterEach` callback for it.
+ * Throws when the context was never served — there is no ledger to
+ * assert on, and a silent pass would be a false proof.
+ *
+ *   test.afterEach(async ({ context }) => telemetryGuardFor(context)());
+ */
+export function telemetryGuardFor(
+  context: BrowserContext,
+  opts: { silent?: boolean } = {},
+): () => void {
+  const ledger = ledgersByContext.get(context);
+  if (!ledger) {
+    throw new Error(
+      "telemetryGuardFor: context was never served — call serveBuiltArtifact(context) first",
+    );
+  }
+  return telemetryGuard(() => ledger, opts);
 }
 
 /** Effectively disables the idle watchdog for tests that cover other behavior. */

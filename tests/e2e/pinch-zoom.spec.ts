@@ -31,14 +31,20 @@
 import { test, expect } from "playwright/test";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { createTelemetryLedger, handleTelemetry } from "./helpers";
+import {
+  createTelemetryLedger,
+  handleTelemetry,
+  watchTelemetryEscapes,
+  type TelemetryLedger,
+} from "./helpers";
 
 // This spec hand-rolls its serving handler (it must not install the
 // capable-device spoof serveBuiltArtifact adds), so it keeps its own
 // ledger and routes telemetry through the shared handleTelemetry policy.
-// One module-scope ledger is fine: the spec uses the default per-test
-// fixture context only and never asserts on the ledger.
-const tel = createTelemetryLedger();
+// The ledger is per-test (γ-F2): created in beforeEach against that
+// test's fresh fixture context, with the shared escape watcher on it,
+// so one test's posts can never pile into another test's record.
+let tel: TelemetryLedger;
 
 // Resolved from the repo root (Playwright's cwd) so the spec works on any
 // checkout, not just the worktree it was written in.
@@ -72,6 +78,8 @@ const MIME: Record<string, string> = {
 };
 
 test.beforeEach(async ({ context }) => {
+  tel = createTelemetryLedger();
+  watchTelemetryEscapes(context, tel);
   await context.route("**/*", async (route) => {
     const url = new URL(route.request().url());
     if (url.hostname === "server.arcgisonline.com") {

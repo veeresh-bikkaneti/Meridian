@@ -1,10 +1,5 @@
 import { test, expect, type Page, type Route } from "playwright/test";
-import {
-  serveBuiltArtifact,
-  startGlobeRun,
-  telemetryGuard,
-  type TelemetryLedger,
-} from "./helpers";
+import { serveBuiltArtifact, startGlobeRun, telemetryGuardFor } from "./helpers";
 
 /**
  * Storyteller mascot E2E — the lazy narration host contract.
@@ -29,14 +24,14 @@ test.setTimeout(180_000);
 // Guard: every crash-report request must be answered by serveBuiltArtifact's
 // 204 stub. A non-204 means a request reached the production worker — the
 // shared ledger's escape record (plus the run-level spill teardown) now
-// carries that assertion for every spec, this one included.
-let tel: TelemetryLedger;
-
+// carries that assertion for every spec, this one included. The guard is
+// context-bound (telemetryGuardFor): it asserts on the ledger of the
+// context the test actually ran in, never a detached one.
 test.beforeEach(async ({ context }) => {
-  tel = await serveBuiltArtifact(context);
+  await serveBuiltArtifact(context);
 });
 
-test.afterEach(telemetryGuard(() => tel));
+test.afterEach(async ({ context }) => telemetryGuardFor(context)());
 
 const SUMMARY_TEXT = "And so the tale ends! What. An. Adventure!";
 const FALLBACK_TEXT = "The words are right here — read along with me.";
