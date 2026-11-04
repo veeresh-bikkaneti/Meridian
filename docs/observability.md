@@ -392,7 +392,9 @@ Reading notes:
 Hiccup-class events are not forwarded one by one. When one type
 crosses a threshold inside an hour (default: 20 in the hour across
 all builds, or 10 from a single build), the worker posts one alert
-for that type and hour:
+for that type and hour. Routine funnel-class types never trip this
+alert — they surface via the hourly digest only (`narration_failed`
+keeps the threshold alert; see the crash-report README):
 
 ```text
 🚨 Meridian telemetry alert

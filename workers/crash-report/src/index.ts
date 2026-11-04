@@ -18,8 +18,10 @@
  *                         events forward a compact alert immediately and
  *                         are counted; hiccup-class and funnel-class
  *                         events are counted but NOT forwarded individually
- *                         (they surface via the threshold alert + hourly
- *                         digest). → 200 { ok, forwarded, counted }.
+ *                         (hiccup-class surfaces via the threshold alert +
+ *                         hourly digest; routine funnel-class types via the
+ *                         hourly digest only — `narration_failed` keeps the
+ *                         threshold alert; see the funnel-class comment).
  * - Non-POST on an ingest path → 405. Unknown paths → 404.
  * - POST without an allow-listed Origin → 403 (review S4; see CORS).
  * - Bodies over 8 KB → 413, enforced while streaming (a chunked body is
@@ -1346,9 +1348,10 @@ async function forwardToEmail(
  *   (`storyteller_shown`, `narration_*`) — engagement telemetry, not a
  *   failure signal. Same counted-only handling as hiccup-class: never
  *   forwarded individually (a 🚨 per narration would train readers to
- *   ignore the channel), surfaced via the threshold alert (a spike in
- *   `narration_failed` is exactly what that alert exists for) and the
- *   hourly digest. The tier name stays "hiccup" — it means counted-only.
+ *   ignore the channel). Routine funnel types surface via the hourly
+ *   digest only — they never trip the threshold alert (#311); the one
+ *   exception is `narration_failed`, whose spikes keep the threshold
+ *   alert. The tier name stays "hiccup" — it means counted-only.
  */
 export const CRASH_CLASS_TYPES = [
   "suspected_crash",
@@ -1994,7 +1997,8 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
       }
     }
     // Hiccup-class: counted above; individual forwards are replaced by
-    // the threshold alert + hourly digest (no per-event pings).
+    // the threshold alert + hourly digest (no per-event pings) — except
+    // routine funnel types, which never trip the threshold alert (#311).
 
     if (attempts.length === 0) {
       // No-op mode: safe to deploy before secrets exist.
