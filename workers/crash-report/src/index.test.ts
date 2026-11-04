@@ -23,6 +23,7 @@ import {
   MAX_GROUP_KEYS,
   missingStampNames,
   normaliseEvent,
+  verdictFactsOf,
   handleRequest,
   hourLabelOf,
   HOUR_MS,
@@ -471,7 +472,13 @@ test("digest: renders counts, flags the anomaly, posts once", async () => {
   assert.equal(fetchCalls.length, 1, "exactly one digest post");
   const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
   assert.ok(sent.startsWith("📊 Meridian telemetry — hourly digest"), "digest header");
-  assert.ok(sent.includes("hour: 2026-10-18 02:00–02:59 UTC") || sent.includes("02:00"), "hour line");
+  // Exact hour line (the old assertion accepted any string containing
+  // "02:00" — Slice 3 found it vacuous; the digest now labels the hour
+  // as the receipt hour, §5.2/§5.3).
+  assert.ok(
+    sent.split("\n")[1] === "hour: 2026-10-18 02:00–03:00 UTC (receipt hour) (36 events)",
+    `hour line: ${sent.split("\n")[1]}`,
+  );
   assert.ok(sent.includes("js_error 11"), "js_error count line");
   assert.ok(sent.includes("⚠️"), "anomaly flagged");
   assert.ok(sent.includes("tile_failed 22"), "tile_failed count line");
@@ -1538,4 +1545,281 @@ test("telemetry: hostile event with secrets planted in the new fields leaks noth
   assert.equal(bucket.groups["f331846|ios|unknown|unknown"], 1);
   assert.equal(bucket.verdicts["developer_needed/fg_kill_current"], 1, "the settled verdict is counted");
   assert.ok(sent.includes("verdict: developer action needed"), "and rendered");
+});
+
+// --- Crash-telemetry §5.3/§8.3: surfaces, goldens, parity, iff ------------
+
+/** The #330-shaped event as the enriched build stamps it (DESIGN-FINAL §5.5). */
+function incident330Event(overrides: Record<string, unknown> = {}): CrashReportEvent {
+  return {
+    type: "suspected_crash",
+    ts: Date.UTC(2026, 10, 3, 17, 42, 0),
+    buildId: "c6853be",
+    edition: "state",
+    regionId: "nebraska",
+    lastMilestone: "map_init_start",
+    device: {
+      os: "ios",
+      form: "mobile",
+      browser: "safari",
+      browserVersion: "16.4",
+      engine: "webkit",
+      osVersion: "16.4.1",
+      deviceClass: "phone",
+      hardwareConcurrency: 6,
+      deviceMemory: "unknown",
+      screen: "md",
+      dpr: 2,
+      touchPoints: "2-5",
+      displayMode: "unknown",
+      connection: "unknown",
+      locale: "en-US",
+    },
+    mapMode: "scout",
+    msSinceBootStart: 4210,
+    unfinishedBoots: 3,
+    bgTerminal: false,
+    buildReplaced: false,
+    trailStuck: false,
+    lcV: "2",
+    deviceSource: "crashed_session",
+    ...overrides,
+  } as CrashReportEvent;
+}
+
+test("#330 fixture: the enriched shape settles to developer_needed/fg_kill_current", () => {
+  assert.deepEqual(deriveVerdict(incident330Event()), {
+    verdict: "developer_needed",
+    whyKey: "fg_kill_current",
+  });
+  assert.deepEqual(missingStampNames(verdictFactsOf(incident330Event())), []);
+});
+
+test("golden: buildAlert Discord for the #330 event equals DESIGN-FINAL §5.5 verbatim", () => {
+  const alert = buildAlert(incident330Event());
+  assert.equal(
+    alert.discord,
+    [
+      "🚨 FIX — Developer action needed",
+      "Meridian crash report",
+      "priority: P1 — current build, foreground kill at map loading, phone-class iOS 16",
+      "verdict: developer action needed",
+      "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown.",
+      "why-code: fg_kill_current",
+      "action: Read the error below.",
+      "type: suspected_crash · build: c6853be",
+      "time: 2026-11-03T17:42:00.000Z",
+      "device: ios/mobile · phone · Safari 16.4 · WebKit · iOS 16.4.1 (UA-parsed)",
+      "runtime: mem unknown · cores 6 (as reported) · screen md · dpr 2 · touch 2-5 · standalone unknown · net unknown · locale en-US",
+      "edition: state · region: nebraska",
+      "mode: scout · last step: map loading · 4,210 ms after boot start",
+      "boots: 3 unfinished in a row",
+      "error: none captured",
+    ].join("\n"),
+  );
+});
+
+test("golden: buildAlert email body for the #330 event (full string)", () => {
+  const alert = buildAlert(incident330Event());
+  assert.equal(alert.emailSubject, "[Meridian] 🚨 FIX — Developer action needed · suspected_crash · build c6853be · state");
+  assert.equal(
+    alert.emailBody,
+    [
+      "Meridian crash report",
+      "",
+      "verdict: developer action needed",
+      "priority: P1 — current build, foreground kill at map loading, phone-class iOS 16",
+      "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown.",
+      "why-code: fg_kill_current",
+      "action: Read the error below.",
+      "type:            suspected_crash",
+      "build:           c6853be",
+      "event time:      2026-11-03T17:42:00.000Z",
+      "device:          ios/mobile · phone · Safari 16.4 · WebKit · iOS 16.4.1 (UA-parsed)",
+      "runtime:         mem unknown · cores 6 (as reported) · screen md · dpr 2 · touch 2-5 · standalone unknown · net unknown · locale en-US",
+      "edition:         state",
+      "region:          nebraska",
+      "mode:            scout",
+      "last step:       map loading · 4,210 ms after boot start",
+      "boots:           3 unfinished in a row",
+      "error:           none captured",
+      "",
+      "(Compact alert — full event payloads are never forwarded.)",
+    ].join("\n"),
+  );
+});
+
+test("alert/email parity: every manifest field's rendered value appears in BOTH bodies", () => {
+  const alert = buildAlert(incident330Event());
+  const renderedValues = [
+    "P1 — current build, foreground kill at map loading, phone-class iOS 16",
+    "fg_kill_current",
+    "2026-11-03T17:42:00.000Z",
+    "ios/mobile · phone · Safari 16.4 · WebKit · iOS 16.4.1 (UA-parsed)",
+    "mem unknown · cores 6 (as reported) · screen md · dpr 2 · touch 2-5 · standalone unknown · net unknown · locale en-US",
+    "scout",
+    "map loading · 4,210 ms after boot start",
+    "3 unfinished in a row",
+    "state",
+    "nebraska",
+    "c6853be",
+  ];
+  for (const value of renderedValues) {
+    assert.ok(alert.discord.includes(value), `discord missing: ${value}`);
+    assert.ok(alert.emailBody.includes(value), `email missing: ${value}`);
+  }
+  // The two lines the email body dropped before §5.3, named explicitly.
+  assert.ok(alert.emailBody.includes("device:"), "email carries the device line");
+  assert.ok(alert.emailBody.includes("runtime:"), "email carries the runtime line");
+});
+
+test("legacy shape: missing bgTerminal still classifies missing_fields, and the evidence line names it", () => {
+  const legacy = incident330Event();
+  delete (legacy as Record<string, unknown>).bgTerminal;
+  assert.deepEqual(deriveVerdict(legacy), {
+    verdict: "insufficient_evidence",
+    whyKey: "missing_fields",
+  });
+  const alert = buildAlert(legacy);
+  const lines = alert.discord.split("\n");
+  assert.equal(lines[0], "❔ WAIT — Can't tell from this report");
+  assert.equal(lines[2], "priority: P3 — current build, evidence incomplete, phone-class iOS 16");
+  assert.ok(
+    alert.discord.includes("evidence: bgTerminal ✗ · buildReplaced ✓ · trailStuck ✓ · lcV ✓"),
+    "evidence line names the missing stamp",
+  );
+  assert.ok(alert.emailBody.includes("evidence: bgTerminal ✗"), "email carries it too");
+  // A different missing set renders a different line.
+  const legacy2 = incident330Event();
+  delete (legacy2 as Record<string, unknown>).lcV;
+  assert.ok(
+    buildAlert(legacy2).discord.includes("evidence: bgTerminal ✓ · buildReplaced ✓ · trailStuck ✓ · lcV ✗"),
+  );
+});
+
+test("missingStampNames iff-property: failing set non-empty iff classifier returns missing_fields (suspected_crash / recovery_outcome shapes)", () => {
+  const tables: CrashVerdictFacts[] = [
+    ...CLASSIFIER_TABLE.map((r) => r.facts),
+    ...RECOVERY_CLASSIFIER_TABLE.map((r) => r.facts),
+    { type: "suspected_crash", lastMilestone: "backgrounded" },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, trailStuck: false },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, lcV: "1" },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, trailStuck: false, lcV: "1" },
+  ];
+  for (const facts of tables) {
+    if (facts.type !== "suspected_crash" && facts.type !== "recovery_outcome") continue;
+    const isMissing = classifyCrashVerdict(facts).whyKey === "missing_fields";
+    assert.equal(
+      missingStampNames(facts).length > 0,
+      isMissing,
+      `${JSON.stringify(facts)} → missing=${JSON.stringify(missingStampNames(facts))}`,
+    );
+  }
+});
+
+test("golden: buildThresholdAlert carries the fire-time caveat (full string)", () => {
+  const bucket = emptyBucket();
+  bucket.total = 20;
+  bucket.builds = { f331846: 12, other: 8 };
+  assert.equal(
+    buildThresholdAlert("tile_failed", "2026-11-03T17", bucket, thresholdConfig({}), 12),
+    [
+      "🚨 Meridian telemetry alert",
+      "type: tile_failed crossed the hiccup threshold (single build crossed 10/hour)",
+      "hour: 2026-11-03T17 UTC · counts: 20 total (f331846 ×12, other ×8)",
+      "one alert per type+hour — further events this hour only raise the counts",
+      "counts are at fire time; the hourly digest carries the final total",
+    ].join("\n"),
+  );
+});
+
+test("golden: renderDigest for the §5.3 two-event hour (full string)", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const hourStart = Date.UTC(2026, 10, 3, 17, 0, 0);
+  await recordTelemetry(store, incident330Event(), hourStart + 42 * 60_000, cfg);
+  await recordTelemetry(
+    store,
+    {
+      type: "js_error",
+      ts: hourStart + 5 * 60_000,
+      buildId: "2a0527f",
+      edition: "state",
+      regionId: "nebraska",
+      lastMilestone: "game_loaded",
+      error: { name: "TypeError", message: "boom" },
+      device: { os: "android", form: "mobile", deviceClass: "phone" },
+      mapMode: "full",
+    } as unknown as CrashReportEvent,
+    hourStart + 5 * 60_000,
+    cfg,
+  );
+  const digest = await renderDigest(store, hourStart + HOUR_MS + 30 * 60_000);
+  assert.equal(
+    digest,
+    [
+      "📊 Meridian telemetry — hourly digest",
+      "hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)",
+      "priority: P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone",
+      "",
+      "suspected_crash 1 · first 17:42 · last 17:42",
+      "  builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1",
+      "  groups: c6853be|ios|16|phone ×1",
+      "  verdicts: developer_needed/fg_kill_current ×1 · modes: scout ×1 · steps: map_init_start ×1",
+      "js_error 1 · first 17:05 · last 17:05",
+      "  builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1",
+      "  groups: 2a0527f|android|unknown|phone ×1",
+      "  verdicts: developer_needed/captured_error ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1",
+      "",
+      "alerts this hour: none",
+    ].join("\n"),
+  );
+});
+
+test("digest: caps are labelled with (+N more) remainders and ties break key-asc", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 1, 0);
+  for (const buildId of ["b-build", "a-build", "d-build", "c-build", "e-build"]) {
+    await recordTelemetry(
+      store,
+      validEvent({ type: "tile_failed", buildId }) as unknown as CrashReportEvent,
+      t0,
+      cfg,
+    );
+  }
+  const digest = await renderDigest(store, t0 + HOUR_MS);
+  assert.ok(digest, "digest produced");
+  const buildsLine = digest.split("\n").find((l) => l.includes("builds:"))!;
+  assert.ok(
+    buildsLine.startsWith("  builds: a-build ×1 · b-build ×1 · c-build ×1 (+2 more)"),
+    `labelled cap with remainder, key-asc ties: ${buildsLine}`,
+  );
+});
+
+test("digest: a counted event outside the receipt hour labels its type line as late", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
+  await recordTelemetry(
+    store,
+    validEvent({ type: "tile_failed", ts: t0 - 2 * HOUR_MS }) as unknown as CrashReportEvent,
+    t0,
+    cfg,
+  );
+  const digest = await renderDigest(store, t0 + HOUR_MS);
+  assert.ok(digest?.includes("tile_failed 1 · first 17:10 · last 17:10 (some reports arrived late)"));
+});
+
+test("classifier freeze: the fixture tables still classify exactly as pinned (byte-identical behaviour)", () => {
+  // classifyCrashVerdict / GAMEPLAY_MILESTONES / precedence are frozen
+  // by §5.4; the two fixture tables above are the assertion surface.
+  for (const row of [...CLASSIFIER_TABLE, ...RECOVERY_CLASSIFIER_TABLE]) {
+    assert.deepEqual(
+      classifyCrashVerdict(row.facts),
+      { verdict: row.verdict, whyKey: row.whyKey },
+      row.name,
+    );
+  }
 });

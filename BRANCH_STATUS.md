@@ -149,7 +149,17 @@ Verification on the cured tip (full output read from files):
   from the hoisted shared re-derivation, milestones, modes, errorNames,
   receipt firstAt/lastAt, late counter, old-bucket read tolerance).
   Gates: test:worker 95/95, typecheck:worker clean.
-- [ ] Commit B — surfaces (§5.3): priorityRead, enriched alert (Discord +
-  email parity), evidence line for missing_fields, digest v2, threshold
-  fire-time caveat; full-string goldens (§8.3).
-- [ ] Final gates re-run + branch pushed. No PR, no merge (owner's word).
+- [x] Commit B — surfaces (§5.3): priorityRead (P1 requires
+  buildReplaced === false + gameplay last step), enriched alert
+  (priority line 3, why-code, time, collective (UA-parsed) device line,
+  runtime/mode/boots lines; email gains the same lines incl. device:),
+  evidence line for missing_fields from missingStampNames (§5.4,
+  presentation-only), digest v2 (per-type blocks, labelled caps with
+  (+N more), count-desc/key-asc, receipt first/last, late-arrival
+  label, "receipt hour" header), threshold fire-time caveat.
+  Full-string goldens for buildAlert (Discord + email),
+  buildThresholdAlert, renderDigest; alert/email parity test;
+  missingStampNames iff-property test; classifier fixture tables
+  re-asserted (classifier region byte-identical to base, verified by
+  diff). Gates: test:worker 106/106, typecheck:worker clean.
+- [x] Final gates re-run + branch pushed. No PR, no merge (owner's word).
