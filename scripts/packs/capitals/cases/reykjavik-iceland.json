@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "reykjavik-iceland",
+  "target": {
+    "placeId": "gn-3413829",
+    "name": "Reykjavík",
+    "aliases": [],
+    "lat": 64.13548,
+    "lon": -21.89541,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Iceland",
+    "iso2": "IS",
+    "subdivision": "Capital Region"
+  },
+  "subjectAnswer": {
+    "name": "Iceland",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Iceland",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits on the south shore of a wide bay, in the south west of a far north island. Steam rises from hot springs in the land around it.",
+      "narrowing": "Puts the player on a bay in the south west of a far north island.",
+      "source": {
+        "article": "Reykjavík",
+        "url": "https://en.wikipedia.org/wiki/Reykjav%C3%ADk",
+        "quote": "It is located on the southern shore of the Faxaflói bay in southwest Iceland"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "In summer the sun here hardly sets for weeks on end. In mid winter the whole day lasts less than five hours.",
+      "narrowing": "Rules out most of the world; keeps a far north city of endless summer days and tiny winter days.",
+      "source": {
+        "article": "Reykjavík",
+        "url": "https://en.wikipedia.org/wiki/Reykjav%C3%ADk",
+        "quote": "From 20 May to 24 July, daylight is essentially permanent as the sun never gets more than 5° below the horizon. Day length drops to less than five hours between 2 December and 10 January."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1845 the nation's old assembly came back to this town and set up there. That move in effect made the town the capital of the island.",
+      "narrowing": "Shrinks the list to capitals made when an old assembly moved in, in 1845.",
+      "source": {
+        "article": "Reykjavík — History",
+        "url": "https://en.wikipedia.org/wiki/Reykjav%C3%ADk#History",
+        "quote": "The location of Alþingi in Reykjavík effectively established the city as the capital of Iceland."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "No capital city of a free land sits farther north than this one. It is the topmost capital in the whole world.",
+      "narrowing": "Decisive: the world's northernmost capital of a sovereign land.",
+      "source": {
+        "article": "Reykjavík",
+        "url": "https://en.wikipedia.org/wiki/Reykjav%C3%ADk",
+        "quote": "making it the world's northernmost capital of a sovereign state."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The president of Iceland works from this city. His office was set here in 1944, when the land first had a president.",
+      "narrowing": "Confirms it: Iceland's president has an office in this city.",
+      "source": {
+        "article": "Reykjavík — History",
+        "url": "https://en.wikipedia.org/wiki/Reykjav%C3%ADk#History",
+        "quote": "In 1944, the Republic of Iceland was founded and a president , elected by the people, replaced the king; the office of the president was placed in Reykjavík."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Norse settlers reached this bay in the year 874 and farmed here for ages. The town was founded as a trading town in 1786, and the nation's assembly moved here in 1845. Today it is a clean, bright port, famed for its long summer days. Reykjavík is the capital of Iceland."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Reykjav%C3%ADk"
+  },
+  "pointPolicy": "geonames-point"
+}

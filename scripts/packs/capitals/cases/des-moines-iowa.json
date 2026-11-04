@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "des-moines-iowa",
+  "target": {
+    "placeId": "gn-4853828",
+    "name": "Des Moines",
+    "aliases": [
+      "Fort Des Moines"
+    ],
+    "lat": 41.60054,
+    "lon": -93.60911,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Iowa",
+    "iso2": "US",
+    "subdivision": "Iowa"
+  },
+  "subjectAnswer": {
+    "name": "Iowa",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Iowa",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "Two rivers meet in this city, in the heart of North America. Flat prairie land rolls out all around it, far from any sea.",
+      "narrowing": "Puts you where two rivers join, on flat prairie in the middle of the continent.",
+      "source": {
+        "article": "Des Moines, Iowa — History",
+        "url": "https://en.wikipedia.org/wiki/Des_Moines%2C_Iowa#History",
+        "quote": "This town is at the juncture of the Des Moines and Raccoon Rivers."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are hot and sticky, with storms on many afternoons. Winters turn cold and dry, and lows often fall below zero.",
+      "narrowing": "Rules out mild shore towns; keeps hot, stormy summers and cold, dry winters.",
+      "source": {
+        "article": "Des Moines, Iowa",
+        "url": "https://en.wikipedia.org/wiki/Des_Moines%2C_Iowa",
+        "quote": "Humidity can be high in spring and summer, with frequent afternoon thunderstorms"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "A fort rose here in 1843, where the two rivers join. In 1857, this town was picked as the state capital, the second one in its history.",
+      "narrowing": "Cuts the list to a fort town that took the capital job in 1857.",
+      "source": {
+        "article": "Des Moines, Iowa — History",
+        "url": "https://en.wikipedia.org/wiki/Des_Moines%2C_Iowa#History",
+        "quote": "In 1857, the name \"Fort Des Moines\" was shortened to \"Des Moines\", and it was designated as the second state capital, previously at Iowa City"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This city is the biggest city in its whole state, and it has held that spot for a long time. It grew up right where its two rivers meet.",
+      "narrowing": "Nearly a giveaway on size: the state capital is also the state's biggest city.",
+      "source": {
+        "article": "Des Moines, Iowa — History",
+        "url": "https://en.wikipedia.org/wiki/Des_Moines%2C_Iowa#History",
+        "quote": "Des Moines has remained Iowa's most populous city."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Iowa works in this city. State lawmakers meet here to make laws for all of Iowa.",
+      "narrowing": "Confirms it: Iowa's governor and state lawmakers work in this city.",
+      "source": {
+        "article": "Des Moines, Iowa",
+        "url": "https://en.wikipedia.org/wiki/Des_Moines%2C_Iowa",
+        "quote": "Des Moines is the capital and most populous city in the U.S. state of Iowa."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A fort rose where two rivers meet in 1843, and the young town took the capital job in 1857. It grew into the biggest city in the state, a hub for farms, banks, and the first big votes for president. Des Moines is the capital of Iowa."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Des_Moines%2C_Iowa"
+  },
+  "pointPolicy": "geonames-point"
+}

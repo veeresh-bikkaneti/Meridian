@@ -4,7 +4,8 @@
   "sideEffects": false,
   "type": "module",
   "overrides": {
-    "nf3": "0.3.17"
+    "nf3": "0.3.17",
+    "undici": "^7.30.1"
   },
   "scripts": {
     "dev": "node scripts/with-app-env.mjs vite dev --host 0.0.0.0 --port 8080",
@@ -19,6 +20,9 @@
     "check:auth": "node scripts/check-auth-invariant.mjs",
     "check:contact": "node --experimental-strip-types scripts/contact-readiness.mjs",
     "lint:content": "node --experimental-strip-types scripts/lint-content.mjs",
+    "packs:validate": "node --experimental-strip-types scripts/packs/validate-pack.mjs --all",
+    "packs:compose": "node scripts/packs/compose-packs.mjs capitals",
+    "packs:coldtrail": "node --experimental-strip-types scripts/build-coldtrail-capitals.mjs",
     "test": "node --test 'scripts/**/*.test.mjs'; S1=$?; node --experimental-strip-types --test 'src/**/*.test.ts'; S2=$?; test $S1 -eq 0 -a $S2 -eq 0",
     "format": "prettier --write .",
     "prebuild": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs",
@@ -69,7 +73,7 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.64.0",
+    "@cloudflare/vite-plugin": "1.66.0",
     "@eslint/js": "^9.20.0",
     "@types/node": "^22.16.5",
     "@types/pg": "^8.11.10",

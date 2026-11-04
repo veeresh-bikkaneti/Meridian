@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "brasilia-brazil",
+  "target": {
+    "placeId": "gn-3469058",
+    "name": "Brasília",
+    "aliases": [],
+    "lat": -15.77972,
+    "lon": -47.92972,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Brazil",
+    "iso2": "BR",
+    "subdivision": "Federal District"
+  },
+  "subjectAnswer": {
+    "name": "Brazil",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Brazil",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This planned place sits in the high lands of the middle west of its vast country. It stands far inland, far from the busy sea coast.",
+      "narrowing": "Rules out coastal places; keeps a planned place in high lands in the middle west, far inland.",
+      "source": {
+        "article": "Brasília",
+        "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia",
+        "quote": "Located in the Brazilian Highlands in the country's Central-West region"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The year here splits into two clear seasons, one rainy and one dry. In the dry season, the air can hold almost no damp at all.",
+      "narrowing": "Rules out lands with rain all year; keeps two clear seasons and a very dry season.",
+      "source": {
+        "article": "Brasília",
+        "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia",
+        "quote": "with two distinct seasons: the rainy season , from October to April, and the dry season , from May to September"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "For a long time the capital sat in Rio de Janeiro, far to the south east. In 1956 a president kept his pledge and set out to build a fresh capital inland.",
+      "narrowing": "Shrinks the list to the fresh inland capital set in motion by a president in 1956.",
+      "source": {
+        "article": "Brasília — History",
+        "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia#History",
+        "quote": "Upon taking office in January 1956, in fulfilment of his campaign pledge, he initiated the planning and construction of the new capital"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Workers built this whole capital from bare ground and opened it in 1960. From the air, its wide main road and curved wings look like a plane.",
+      "narrowing": "Nearly decisive: a whole capital built from bare ground, opened in 1960, shaped like a plane.",
+      "source": {
+        "article": "Brasília",
+        "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia",
+        "quote": "it was founded by President Juscelino Kubitschek on 21 April 1960, to replace Rio de Janeiro as the national capital"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "All three branches of the government of Brazil are based in this place. A square named for the three powers holds their main buildings side by side.",
+      "narrowing": "Confirms it: all three branches of government sit here around one square.",
+      "source": {
+        "article": "Brasília",
+        "url": "https://en.wikipedia.org/wiki/Bras%C3%ADlia",
+        "quote": "All three branches of Brazil's federal government are located in the city: executive, legislative and judiciary"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Brazil kept its capital in Rio de Janeiro for nearly 200 years, but its leaders wanted a seat near the centre of the land. President Kubitschek had a whole fresh city built on the high plains, and it opened in 1960. Brasília is the capital of Brazil."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Bras%C3%ADlia"
+  },
+  "pointPolicy": "geonames-point"
+}

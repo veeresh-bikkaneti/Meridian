@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "dublin-ireland",
+  "target": {
+    "placeId": "gn-2964574",
+    "name": "Dublin",
+    "aliases": [],
+    "lat": 53.33306,
+    "lon": -6.24889,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Ireland",
+    "iso2": "IE",
+    "subdivision": "Leinster"
+  },
+  "subjectAnswer": {
+    "name": "Ireland",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Ireland",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits where the River Liffey meets a wide bay in the west of Europe. Mountains rise to the south of its streets.",
+      "narrowing": "Rules out everything outside western Europe and puts the player on the River Liffey by a bay.",
+      "source": {
+        "article": "Dublin",
+        "url": "https://en.wikipedia.org/wiki/Dublin",
+        "quote": "Situated on Dublin Bay at the mouth of the River Liffey, it is in the province of Leinster, and is bordered on the south by the Dublin Mountains, part of the Wicklow Mountains range."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Rain falls far less here than on the wet west coast. The city's sheltered east coast spot makes it the driest place in the whole land.",
+      "narrowing": "Rules out the wet west and hard-winter lands; keeps a mild, sheltered east coast.",
+      "source": {
+        "article": "Dublin",
+        "url": "https://en.wikipedia.org/wiki/Dublin",
+        "quote": "Dublin's sheltered location on the east coast makes it the driest place in Ireland, receiving only about half the rainfall of the west coast."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "When the land won its freedom in 1922, this city became its capital. It took the top job for the free state that year.",
+      "narrowing": "Shrinks the list to capitals created when a land won its freedom in 1922.",
+      "source": {
+        "article": "Dublin",
+        "url": "https://en.wikipedia.org/wiki/Dublin",
+        "quote": "Following independence in 1922, Dublin became the capital of the Irish Free State, renamed Ireland in 1937."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "The Book of Kells, a hand painted Gospel book from about the year 800, is on show here. Its pages burst with bright beasts, knots, and swirls.",
+      "narrowing": "Nearly decisive: one famous hand-painted Gospel book, on show at a college library, marks this city.",
+      "source": {
+        "article": "Book of Kells",
+        "url": "https://en.wikipedia.org/wiki/Book_of_Kells",
+        "quote": "The manuscript is on display to visitors in Trinity College Library, Dublin, and shows two pages at any one time, rotated every 6-8 weeks."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Ireland is ruled from this city. It is the land's capital, and its largest city too.",
+      "narrowing": "Confirms it: the government works in this city, the country's capital and largest city.",
+      "source": {
+        "article": "Dublin",
+        "url": "https://en.wikipedia.org/wiki/Dublin",
+        "quote": "Dublin is the capital and largest city of Ireland."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Viking raiders built a strong base here in 841, and the town grew to be the island's main town by the 1100s. In 1922, after the land won its freedom, this city became the capital of the free state. Today guests at its great college library can see two pages of a hand painted book from about the year 800. Dublin is the capital of Ireland."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Dublin"
+  },
+  "pointPolicy": "geonames-point"
+}

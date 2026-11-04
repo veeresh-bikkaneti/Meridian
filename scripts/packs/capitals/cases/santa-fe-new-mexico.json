@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "santa-fe-new-mexico",
+  "target": {
+    "placeId": "gn-5490263",
+    "name": "Santa Fe",
+    "aliases": [],
+    "lat": 35.68698,
+    "lon": -105.9378,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "New Mexico",
+    "iso2": "US",
+    "subdivision": "New Mexico"
+  },
+  "subjectAnswer": {
+    "name": "New Mexico",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "New Mexico",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town sits at the foot of a tall range of peaks, in dry south-west land. A small river runs through it, past old adobe streets.",
+      "narrowing": "Rules out lowland towns; puts the player at the foot of a mountain range in dry land.",
+      "source": {
+        "article": "Santa Fe, New Mexico",
+        "url": "https://en.wikipedia.org/wiki/Santa_Fe%2C_New_Mexico",
+        "quote": "Santa Fe is situated at the foothills of the Sangre de Cristo Mountains"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Most months here are dry, with cool winters and hot summers. Then the monsoon comes, and July and August bring the year's heaviest rains.",
+      "narrowing": "Rules out even rainfall; keeps a dry land whose heaviest rain comes with the monsoon.",
+      "source": {
+        "article": "Santa Fe, New Mexico",
+        "url": "https://en.wikipedia.org/wiki/Santa_Fe%2C_New_Mexico",
+        "quote": "The heaviest rainfall occurs in July and August, with the arrival of the North American Monsoon"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1610, the Spanish governor named this town the capital of his province. It has kept that role, with short breaks, ever since that year.",
+      "narrowing": "Shrinks the list to capitals designated in 1610 by a Spanish governor.",
+      "source": {
+        "article": "Santa Fe, New Mexico — History",
+        "url": "https://en.wikipedia.org/wiki/Santa_Fe%2C_New_Mexico#History",
+        "quote": "In 1610, he designated it as the capital of the province, which it has almost constantly remained"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This town is the oldest state capital in the whole country. It is also the earliest town built by Europeans west of the great river.",
+      "narrowing": "Nearly decisive: one capital is the oldest state capital and earliest European town in its region.",
+      "source": {
+        "article": "Santa Fe, New Mexico",
+        "url": "https://en.wikipedia.org/wiki/Santa_Fe%2C_New_Mexico",
+        "quote": "Santa Fe is the oldest state capital in the United States and the earliest European settlement west of the Mississippi River"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Rulers of old ran New Mexico from a palace in this city. Now its laws are made here, in the state capital.",
+      "narrowing": "Confirms it: governors ruled from a palace here, and lawmakers meet here now.",
+      "source": {
+        "article": "Santa Fe, New Mexico — History",
+        "url": "https://en.wikipedia.org/wiki/Santa_Fe%2C_New_Mexico#History",
+        "quote": "The Pueblo people continued running New Mexico from the Palace of the Governors in Santa Fe from 1680 to 1692"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A Spanish governor founded Santa Fe in 1610 and made it his province's capital, the oldest state capital in the land. Adobe streets and the old Palace of the Governors still mark its plaza today. Santa Fe is the capital of New Mexico."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Santa_Fe%2C_New_Mexico"
+  },
+  "pointPolicy": "geonames-point"
+}
