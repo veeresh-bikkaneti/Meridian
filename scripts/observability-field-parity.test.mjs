@@ -40,7 +40,13 @@ test("field parity: client manifest device keys == worker DEVICE_FIELD_ALLOWLIST
   );
   const workerKeys = extractList(
     workerSrc,
-    /DEVICE_FIELD_ALLOWLIST[^=]*=\s*\[([\s\S]*?)\]/,
+    // The worker declares its list as Object.freeze([...]); the client
+    // manifest declares a plain array. Integrator fix on the combined
+    // tree: allow the freeze wrapper so the extractor reads the list
+    // the worker actually ships. The lists themselves matched exactly
+    // (17 keys each, webgl1/webgl2 included on both sides), so no
+    // field exception was needed.
+    /DEVICE_FIELD_ALLOWLIST[^=]*=\s*(?:Object\.freeze\()?\s*\[([\s\S]*?)\]/,
     "worker (DEVICE_FIELD_ALLOWLIST)",
   );
   assert.deepEqual(
