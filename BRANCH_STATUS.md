@@ -122,6 +122,32 @@ word.
   fixed in this record: the flagless split is 40 size-cap + 1
   licence = 41 (registry count), not "39 size-cap".
 
+## Panel re-vote — 2026-11-04 (on cured tip `b3fc61c`): READY-WITH-NITS, 0 BLOCKs
+
+The 12-role panel + DevEx re-voted the cured tip: 10
+APPROVE-WITH-NITS / 2 APPROVE, 0 BLOCKs; DevEx PASS-WITH-NITS
+(the round-1 docs BLOCK is cured); benchmark PASS vs main
+`3bc57e8` (client total +0.32%, JS +0.34%, entry chunk
+unchanged, 0 flags precached — gate ≤5%). Both round-1 BLOCKs
+verified cured first-hand: Senior Developer APPROVE — its
+reproduction re-run on both tips (finished won/lost currents
+dropped case 459 on `d7ae3b7`; on `b3fc61c` they yield
+`[389, 388, 460, 461, 459]` with `cycleCompleted` intact, and
+the new regression test fails pre-cure, passes cured); DevEx
+re-checked every docs item against sources (§6 quote byte-equal
+to `src/components/celebration-copy.ts:166`; the 40 size + 1
+licence flagless split proven against the registry). QA notes
+(a) curation-sentence copies and (b) probe G hand-crafted state
+both ACCEPTED unanimously (12/12 + DevEx). Verdict comment:
+https://github.com/veeresh-bikkaneti/Meridian/pull/346#issuecomment-6637312564
+This entry is applied in the merge-up commit over main
+`3bc57e8`: it was deliberately not committed on the voted tip,
+since committing would have moved it. Remaining nits are
+recorded follow-ups (FlagImg transient flash on reused Cold
+Trail sighting slots, the "100–644 KB" range in the curation
+docs, the doorway tagline — owner's call); none block. Merge
+follows on the owner's per-PR word.
+
 ---
 
 # BRANCH_STATUS — fix/336-deck-identity
@@ -624,3 +650,17 @@ Cured, per the three adversary reports + coordinator synthesis:
 
 **tap-verify EXEMPT removal:** the guard's EXEMPT mechanism stays, its list is now empty — tap-verify satisfies rule (a) by importing and calling `handleTelemetry` from `./helpers` (see α-F1 above).
 - 2026-11-04: merge-up onto main `ddc0709` (#331) at the owner's merge word. Sole conflict BRANCH_STATUS.md, resolved keeping both records; the PR's harness code is unchanged from the interrogated tip `11a7764`. Checks re-read on the new tip before merging.
+
+---
+
+# Prior record preserved on merge: crash-report README audit (PR #308, docs/221-crash-readme-audit)
+
+# BRANCH_STATUS — docs/221-crash-readme-audit (Wave 2, #221)
+
+- **Branch:** `docs/221-crash-readme-audit` · **Base:** `main` @ `2a0527f`
+- **Task:** #221 REOPENED as PARTLY fixed — audit `workers/crash-report/README.md` line-by-line against the worker's current code, fix every documentation gap, open a small docs PR. STOP at PR-open (no Silo QA, no panel, no merge — separate dispatches).
+- **Tier:** 0 (docs-only). Worker code is FROZEN on this branch: a code-wrong finding is reported, never fixed here.
+- **Audit:** sealed at `~/workspace/meridian-issue-wave/evidence/221/AUDIT.md` — 24 gap rows fixed (incl. owner's `counted` at the dry-run example), 1 already-correct group, 2 out-of-scope, 1 code-wrong finding (C1: client emits `storyteller_*`/`narration_*` types the worker 400s — that is the #194 crew's event-acceptance surface).
+- **Biggest gaps fixed:** `recovery_outcome` (8th event type, conditional tier) undocumented everywhere; the entire verdict classifier undocumented; `results` response field missing; all error shapes missing; test count stale (42 → 85).
+- **Files changed:** `workers/crash-report/README.md`, this file. Nothing else.
+- **Done:** [x] audit sealed · [x] README fixed · [x] gates sealed at `~/workspace/meridian-issue-wave/evidence/221/` (test:worker 0 · typecheck:worker 0 · tsc 0 · lint-cards 0 · build:pages 0 · npm test: src suite 1879/1879 pass; scripts suite 851 pass / 1 fail / 9 skip — the 1 fail is `ssr-build-shape` configPath pointing at the sibling `repo/` clone because this worktree's `node_modules` is a symlink to `repo/node_modules`; the same test passes 2/2 on unmodified main in the `repo/` clone, sealed as `ssr-shape-main-control.log`, so it is a worktree-environment artifact, not this docs change) · [ ] PR opened (filled in by the PR-open commit's successor record in the PR body)

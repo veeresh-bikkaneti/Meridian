@@ -17,17 +17,18 @@ Receives the events emitted by `src/lib/observability.ts` (schema:
   (hiccup-class behaviour), never forwarded individually.
 
 Every accepted event is also **counted** into per-hour buckets in a
-Workers KV namespace (`TELEMETRY_COUNTS`), keyed by UTC hour × type ×
-buildId × edition × region × os/form device bucket — **counts only**,
-no payloads, no identifiers.
+Workers KV namespace (`TELEMETRY_COUNTS`), keyed by UTC hour × type
+(the bucket also carries per-build, per-edition, per-region, and
+per-device-bucket breakdowns) — **counts only**, no payloads, no
+identifiers.
 
 ## Relationship to `worker/observability/` (v1)
 
 The v1 worker is the older **logging-only** receiver: it validates events
 and writes one structured JSON log line per event (read via
 `wrangler tail`). This worker lives in a **new directory on purpose** —
-the old one is untouched. It accepts the same schema **plus
-`boot_failure` and `tile_failed`** and forwards alerts instead of
+the old one is untouched. This worker accepts the same schema **plus
+`boot_failure`, `tile_failed`, and `recovery_outcome`** and forwards alerts instead of
 logging the full event.
 
 Deploy **one** of them as the `observabilityEndpoint` target, not both.
@@ -37,6 +38,8 @@ Deploy **one** of them as the `observabilityEndpoint` target, not both.
 - `src/index.ts` — zero-runtime-dependency Worker. `handleRequest(request,
 env)` is exported pure for tests; the default export wires it as `fetch`
 plus a `scheduled` handler for the hourly digest.
+- `src/index.test.ts` — the worker unit suite; run it with
+  `npm run test:worker` from the repo root (see Tests).
 - `src/dev-entry.ts` — local-dev wrapper for `wrangler dev` only:
   it re-exports just the default handler, because workerd rejects
   `index.ts`'s test-only named exports (plain constants) as handler
@@ -65,6 +68,10 @@ plus a `scheduled` handler for the hourly digest.
   `200 {"ok":true,"forwarded":true|false,"counted":true|false}`
   (`"forwarded":false` when no forwarding secrets are configured, or
   when the event is hiccup-class — both are normal modes, not errors).
+  When a crash-class event is forwarded, the response also carries
+  `results: {discord?: boolean, email?: boolean}` — per-channel
+  attempted truth; `"forwarded":true` means attempted, and a channel
+  whose forwarder failed still reports its own `false`.
 - Cron (`15 * * * *`, the `scheduled` handler) → posts the **hourly
   digest** to Discord: one compact message per hour summarizing the
   PREVIOUS UTC hour. Zero events → nothing posted (silence is the
@@ -86,7 +93,9 @@ plus a `scheduled` handler for the hourly digest.
     is missing, malformed, or throws, it fails open and the in-memory layer
     still applies.
 - Body cap: **8 KB**, enforced while streaming (a chunked upload is
-  cancelled at the cap, never buffered whole) → `413`. The app's own
+  cancelled at the cap, never buffered whole) → `413`. A declared
+  `Content-Length` over the cap is rejected with `413` before the
+  body is read. The app's own
   events are capped at 4 KB, and the boot watchdog's at 8 KB.
 - Schema: the documented fields with type and length caps; `device` and
   `breadcrumb.device` are limited to the 17 keys in the telemetry field
@@ -97,16 +106,28 @@ plus a `scheduled` handler for the hourly digest.
   key and deletes the raw user-agent string on arrival;
   `breadcrumb.history` ≤ 32 entries; any other top-level field must be
   a short primitive; at most 24 fields; `ts` between 2020-01-01 and
-  one day in the future.
+  one day in the future. Error `name`/`message` are truncated to
+  80/300 chars; `screenW`/`screenH` are non-manifest keys, stripped
+  at intake — only the `screen` bucket survives.
 - Forwarding is fire-and-collect via `Promise.allSettled`: one forwarder
   failing never fails the request. Each forwarder has a 5 s timeout.
-- Log lines carry only type/buildId/edition — never PII, never the
-  forwarded secrets, never full payloads.
+- Event log lines carry type/buildId/edition (plus per-channel forward
+  booleans on the forwarded line) — never PII, never the forwarded
+  secrets, never full payloads. Operational lines (forwarder failures,
+  rate-limit/binding faults, digest faults) also carry HTTP statuses
+  and the worker's own error names.
 - CORS: `OPTIONS` from an allow-listed origin → `204`, echoing that
   origin in `access-control-allow-origin` with `Vary: Origin`. Any other
   origin, or none, → `403` with no CORS headers, so the browser never sends
   the POST. Responses to allowed POSTs echo the origin, never `*`.
   `/health` carries no CORS headers (it is for curl and monitors).
+- Responses and errors: `400` invalid JSON or invalid event, with a
+  `problems[]` list; `403` wrong or missing Origin; `404` unknown path;
+  `405` non-POST on an ingest path, or non-GET on `/health`; `413` over
+  the body cap; `429` over the rate limit. The body is read as text
+  whatever its `Content-Type`, so the content type is not enforced.
+  Preflight replies allow methods `POST, OPTIONS`, header
+  `content-type`, max-age `86400` (the `204` preflight — see CORS above).
 
 ## Severity tiers
 
@@ -127,11 +148,27 @@ immediately, in the v2 message format (the verdict lines, plus
 `runtime:` lines, and the `mode:` / `boots:` lines), and the same
 no-op mode applies when no forwarding secrets are configured.
 
+## Verdict (the first line of every forwarded alert)
+
+The worker re-derives the verdict from the evidence on every event
+(`classifyCrashVerdict`); a client-stamped `verdict` is never read.
+Four verdicts, fail-closed — missing evidence can only land on
+`insufficient_evidence`, never on a benign verdict:
+`not_a_real_issue`, `auto_fixed`, `developer_needed`,
+`insufficient_evidence` (with `whyKey` reasons such as
+`captured_error`, `recovery_confirmed`, `recovery_failed`,
+`missing_fields`). The `recovery_outcome` branch is evaluated first:
+`confirmed` → `auto_fixed`, `repeat_failure` → `developer_needed`,
+anything else (including missing or invalid) →
+`insufficient_evidence`.
+
 ## Threshold alert
 
-When a hiccup-class event arrives and its count for the current UTC
+When any accepted event type's count for the current UTC
 hour crosses a threshold, the worker posts **one** Discord alert for
-that type+hour — exactly one, even if the count keeps climbing. The
+that type+hour — exactly one, even if the count keeps climbing, and
+only when the Discord webhook is configured (the counts still
+accumulate without one). The
 counts in the message are the counts at the moment the alert fires,
 so a reachable example is one where the totals are exactly the
 threshold being crossed — here a single build reaching 10 in the
@@ -144,6 +181,9 @@ hour: 2026-11-03T17 UTC · counts: 20 total (f331846 ×12, other ×8)
 one alert per type+hour — further events this hour only raise the counts
 counts are at fire time; the hourly digest carries the final total
 ```
+
+(Message text is verbatim from the worker — it says 'hiccup' for every
+type.)
 
 The last line is part of the message: a threshold alert's counts are
 fire-time counts, not the hour's final total — the hourly digest
@@ -195,7 +235,9 @@ top **builds**, **editions**, and **regions**; the top **groups**
 **modes**, and **steps** (last milestones), plus **errors** (error
 names only) when the bucket counted any. Every list shows only its
 top few entries, and a truncated list is **labelled, never silent**:
-it ends with the true remainder, like `(+2 more)`. A type block's
+it ends with the true remainder, like `(+2 more)`. Caps: top 3 builds,
+top 2 editions, top 2 regions, top 3 groups, top 3 verdicts, top 2
+modes, top 2 steps, top 2 error names. A type block's
 first line is flagged **⚠️** when its count exceeds **3× the
 trailing 24-hour hourly average** for that type AND exceeds 3 events
 absolute — a first-ever burst (avg 0) flags too, which is the point.
@@ -229,6 +271,11 @@ it a burst or a steady rate" without storing any event payloads:
   bad hour cannot grow the value without bound.
 - `verdicts` keys are `"<verdict>/<whyKey>"`, from the worker's own
   re-derived verdict (the client's stamp is never trusted for this).
+  Client stamps the classifier never reads (`verdict`, `whyKey`,
+  `storageOk`, `afterRecovery`) arrive as extra short primitives (a
+  nested stamp fails validation instead) and are ignored for
+  classification; `mapMode` is a manifest field, normalized to a
+  known value or `unknown`.
 - `firstAt` / `lastAt` are the first and last **receipt** times in
   the bucket (the worker's clock, not the phone's). `late` counts
   events whose own timestamp fell outside the receipt hour.
@@ -261,8 +308,10 @@ types, `storyteller_shown` and the `narration_*` set; this worker
 does not accept those yet — that acceptance is PR #311's scope.)
 Required: `type`, `ts` (finite number, epoch ms), `buildId`
 (non-empty string). Optional fields pass through; the forwarded alert
-uses only type, buildId, edition/region, lastMilestone, and a
-truncated error name/message.
+uses type, buildId, edition/region, lastMilestone, a truncated error
+name/message, the parsed device fields, and the verdict evidence
+fields (`bgTerminal`, `buildReplaced`, `trailStuck`, `lcV`,
+`recoveryOutcome`).
 
 ## Tests
 
@@ -459,7 +508,7 @@ The bindings the upload metadata must carry:
 Optional, same form, if email forwarding is wanted:
 `RESEND_API_KEY` (https://resend.com/api-keys), `REPORT_EMAIL`
 (the recipient), and `REPORT_FROM` (a verified sender; the
-default is Resend's `onboarding@resend.dev` test domain).
+default is `Meridian Crash Reporter <onboarding@resend.dev>`).
 `DISCORD_WEBHOOK_URL` itself comes from Discord: Server Settings
 → Integrations → Webhooks.
 
@@ -472,6 +521,13 @@ Discord and email are independent: configure either or both. With
 neither set, the worker accepts and acknowledges events without
 forwarding (`"forwarded":false`), so it is safe to deploy **before**
 secrets exist.
+
+Privacy: the forwarded alert and counts carry only the fixed coarse
+manifest device fields plus the event's own identity and session-shape
+fields (type, buildId, edition/region, lastMilestone, truncated error,
+verdict, time, mode, boots, ms after boot start). Precise device facts the client sends (`screenW`/`screenH`)
+are stripped on arrival, and the raw user-agent string never leaves
+the device.
 
 ## Go-live — DONE (worker live by API upload; pipeline verified 2026-10-10)
 
@@ -534,8 +590,9 @@ foreign origins are refused outright (S4).
 
 ## Privacy
 
-- Alerts contain: type, buildId, edition/region, lastMilestone,
-  truncated error name/message. Nothing else.
+- Alerts contain: the verdict headline and why, type, buildId,
+  edition/region, lastMilestone, a truncated error name/message,
+  the coarse device bucket, and the event time.
 - The Phase 1 counters contain: per-UTC-hour counts keyed by type,
   buildId, edition, region, and os/form device bucket. Counts only —
   no payloads, no identifiers, no session-level data.
