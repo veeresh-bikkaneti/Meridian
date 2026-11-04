@@ -2,7 +2,9 @@
  * Dev-only `/__app-env` endpoint: the client env the running Vite server
  * resolved, as JSON.
  *
- * Dev tooling reads it to see the app env the live dev server resolved.
+ * The endpoint is retained for external dev tooling; its in-tree reader was
+ * removed with the dead auth code — see the `VITE_AUTH_ENABLED` follow-up in
+ * `BRANCH_STATUS.md`.
  * The config is loaded even when Vite is started outside
  * `scripts/with-app-env.mjs`. These are the same values Vite inlines
  * into the client bundle, and `apply: "serve"` keeps the route out of deployed
