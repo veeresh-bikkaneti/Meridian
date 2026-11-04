@@ -70,6 +70,54 @@ conversion (diagnosis follow-up), copy, place data, worker code.
   degradation to Scout" — never "peak memory reduced", and never
   "field-proven".
 
+## Panel cure round (2026-11-03, on top of f7e01d4)
+
+Panel on f7e01d4: 3 BLOCK / 8 APPROVE-WITH-NITS / 1 APPROVE /
+2 PASS-WITH-NITS. This round cures exactly the briefed items:
+
+- [x] Item 1 (BLOCK): `applyScoutUpgrade` retires the auto-Scout note
+  (`setAutoScoutNote(false)`); the false "never standing" invariant
+  comment on `applySessionMapMode` corrected. Pin:
+  `scout-upgrade-lifecycle.test.ts` — red 4/5 on pre-cure code
+  (1 control pass), green 5/5 cured.
+- [x] Item 2: both manual handlers clear `scoutUpgradeEligible`;
+  Play's `handleScoutUpgrade` re-checks that no stored manual record
+  stands before firing. Same pin file (manual Scout after trial boot
+  → no upgrade fires).
+- [x] Item 3 (comment-only + hygiene): soak timer comment names it as
+  the live implementation of `shouldFireScoutUpgrade`'s soak half and
+  why the other gate conditions hold by construction; cross-reference
+  at the timer declaration; `webglcontextlost` resets the timer to
+  undefined; the Scout map "error" → static-fallback handler clears
+  the soak timer. No wiring change (filed follow-up).
+- [x] Item 4: `docs/scout-offer-policy.md` — challenge-run exclusion
+  added to the trial description; the boot-order sentence now
+  includes the trial step.
+- [x] Item 5: Caveats section above; capsule E2E wording aligned.
+- [x] Item 6 (paperwork): PR #331 retitled to "iOS Safari crash-loop
+  mitigation: scout-first for unknown-memory devices (#330)"; body
+  corrected to name the satellite-map timer + boot-eligibility path
+  as the live mechanism (the pure gate is the specification, called
+  by no runtime code) and to state the mitigation-honest claim
+  (field confirmation on a real iPhone 11 still pending).
+
+Verification on the cured tip (full output read from files):
+- `npm test` — scripts: 954 tests, 943 pass, 0 fail, 11 skipped;
+  src: 2028 pass, 0 fail (2023 + 5 new pins).
+- `npm run test:worker` — 85 pass, 0 fail.
+- `npx tsc --noEmit` — clean. ESLint on the touched files — 0 errors,
+  13 warnings (same as the base count of 13).
+- `node scripts/lint-cards.mjs` — GATE PASSED;
+  `npm run lint:content` — GATE PASSED (6 baselined, 0 new).
+- `npm run build:pages` — green.
+- E2E (sequential, flock, --workers=1, Chromium 1243): combined
+  subset of 10 scout/crash specs: 49 passed, 2 failed (17.3 min).
+  The 2 failures — `scout-notice-session-end:78` (strict-mode
+  duplicate-text) and `crash-classification.mobile:169`
+  (backgrounded milestone) — failed again in a paired re-run AND
+  reproduced identically, each run solo, on the unmodified pre-cure
+  head f7e01d4: pre-existing on the voted tip, not cure regressions.
+
 ## Status
 
 - [x] Capability rule + upgrade gate + marker helpers + probe release
