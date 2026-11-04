@@ -64,7 +64,7 @@ import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
 import { geodetectiveConfig, getBandConfig, canUseHint, resolveBand, type AgeBandId, type GeoDetectiveConfig } from "@/game/age-profile";
 import { HintPanel } from "@/components/hint-panel";
 import { PackShelf } from "@/components/pack-shelf";
-import { CORE_DECK_ID as SHELF_CORE_DECK_ID, toShelfDeckId } from "@/components/pack-shelf-data";
+import { CORE_DECK_ID as SHELF_CORE_DECK_ID, deckLabelForId, toShelfDeckId } from "@/components/pack-shelf-data";
 import { directionalHint } from "@/components/hint-logic";
 import { awardCleanRoundBadge, type PassportBadge } from "@/game/passport/badges";
 import {
@@ -301,6 +301,29 @@ function dealActiveDeck(
   };
 }
 
+/**
+ * The plain notice shown for a case that was dealt as a FALLBACK
+ * (#336): the player picked a pack, the pack could not be resolved at
+ * deal time, and the deal came from the core deck instead (the §0
+ * fallback in docs/story-packs.md — the fallback stays, the silence
+ * goes). The pick is untouched, so the next deal tries the pack
+ * again, and the notice says exactly that.
+ */
+function deckFallbackNoticeText(pickedDeckId: string): string {
+  const packLabel = deckLabelForId(pickedDeckId);
+  return `${packLabel} couldn’t load just now, so this case is from All cases. Your next case will try ${packLabel} again.`;
+}
+
+/**
+ * Did this deal fall back? A pack was picked (the store's active deck
+ * is not the core deck) but the dealt case came from the core deck.
+ * Keyed on the dealt result, so it fires exactly when resolution
+ * returned no pack — at either deal site.
+ */
+function dealFellBack(store: LoopUnlimitedStore, dealtDeckId: string): boolean {
+  return activeDeckIdOf(store) !== LOOP_CORE_DECK_ID && dealtDeckId === LOOP_CORE_DECK_ID;
+}
+
 /** §7e rollback for either deck: the failed index returns to its own deck's head. */
 function rollbackDeal(
   store: LoopUnlimitedStore,
@@ -370,6 +393,11 @@ export function LoopScreen({
   const onPickDeck = (shelfDeckId: string) => {
     const s = storeRef.current;
     if (!s) return;
+    // A fresh pick supersedes any fallback notice from the last deal:
+    // the notice described that deal, not the player's new pick. (When
+    // the tap also starts the next case, the deal that follows sets a
+    // fresh notice if it falls back again.)
+    setDeckFallbackNotice(null);
     commitStore(setActiveDeck(s, shelfDeckId === SHELF_CORE_DECK_ID ? undefined : shelfDeckId));
   };
 
@@ -397,6 +425,12 @@ export function LoopScreen({
   // the badge needs a visible surface). Set only on the winning guess that
   // earns it; cleared when the next mystery deals.
   const [cleanRoundBadge, setCleanRoundBadge] = useState<PassportBadge | null>(null);
+  // Deck fallback notice (#336): set only when a deal actually fell
+  // back — a pack was picked but the case came from the core deck.
+  // It belongs to that case: it stays up while the case plays and on
+  // its reveal, and it is cleared by the next deal and by a deck
+  // pick. Resumed/revealed cases and healthy deals never set it.
+  const [deckFallbackNotice, setDeckFallbackNotice] = useState<string | null>(null);
   // "Next mystery" idempotence: the button deals once and unmounts with
   // the reveal; a second tap during the deal is a no-op.
   const dealingRef = useRef(false);
@@ -481,6 +515,10 @@ export function LoopScreen({
       let dealIndex: number;
       let popped = false;
       let poppedDeckId = LOOP_CORE_DECK_ID;
+      // #336: the fallback notice for a FRESH deal on this mount, if it
+      // falls back. Resume/reveal/seam paths never deal, so they leave
+      // the notice alone (it starts null and those cases get none).
+      let dealNotice: string | null = null;
       if (next.current && next.current.status === "playing") {
         // Resume first: neither the seam nor a fresh deal ever clobbers an
         // in-progress mystery (the seam param survives reloads in the URL —
@@ -501,6 +539,9 @@ export function LoopScreen({
         dealIndex = dealt.index;
         popped = true;
         poppedDeckId = dealt.deckId;
+        dealNotice = dealFellBack(next, dealt.deckId)
+          ? deckFallbackNoticeText(activeDeckIdOf(next))
+          : null;
         const dealtConfig = captureDealConfig();
         next = {
           ...dealt.store,
@@ -514,7 +555,12 @@ export function LoopScreen({
           `${base}loop/clues/${dealIndex}.json`,
           isLoopClueFile,
         );
-        if (!cancelled) setLoad({ phase: "ready", clue, index: dealIndex });
+        if (!cancelled) {
+          // The fresh deal is the open case now: its fallback notice
+          // (or none) replaces any previous case's.
+          if (popped) setDeckFallbackNotice(dealNotice);
+          setLoad({ phase: "ready", clue, index: dealIndex });
+        }
       } catch (err: unknown) {
         if (cancelled) return;
         if (popped) {
@@ -526,6 +572,8 @@ export function LoopScreen({
             manifest.size,
           );
           commitStore(rolled);
+          // The deal was rolled back — no case opened, no notice.
+          setDeckFallbackNotice(null);
         }
         setLoad(await toErrorState(err, !onlineRef.current));
       }
@@ -681,6 +729,11 @@ export function LoopScreen({
       const resolved = await resolveActivePack(next, base);
       next = resolved.store;
       const dealt = dealActiveDeck(next, manifest.size, resolved.pack);
+      // #336: a fallback on this deal gets its notice; a healthy deal
+      // (or a core pick) clears any previous case's notice.
+      const dealNotice = dealFellBack(next, dealt.deckId)
+        ? deckFallbackNoticeText(activeDeckIdOf(next))
+        : null;
       const dealtConfig = captureDealConfig();
       next = {
         ...dealt.store,
@@ -692,6 +745,7 @@ export function LoopScreen({
           `${base}loop/clues/${dealt.index}.json`,
           isLoopClueFile,
         );
+        setDeckFallbackNotice(dealNotice);
         setLoad({ phase: "ready", clue, index: dealt.index });
         // SFX audio spec §2.5: the "case file snapped open" fires when the
         // next mystery deals — only on this explicit user tap, and only on
@@ -705,6 +759,8 @@ export function LoopScreen({
           manifest.size,
         );
         commitStore(rolled);
+        // The deal was rolled back — no case opened, no notice.
+        setDeckFallbackNotice(null);
         setLoad(await toErrorState(err, !onlineRef.current));
       }
     })()
@@ -769,7 +825,21 @@ export function LoopScreen({
         <Button variant="ghost" className="self-start" onClick={onLeave}>
           Editions
         </Button>
-        <p className="text-sm text-fg">Case #{caseNo}</p>
+        <div className="text-right">
+          <p className="text-sm text-fg">Case #{caseNo}</p>
+          {/* Deck identity (#336): the OPEN case's deck, named in shelf
+              vocabulary and derived from the case itself
+              (deckIdOfPuzzle) — never from the player's pick, which
+              steers the NEXT deal and can disagree after a fallback.
+              This header renders in every phase, so the name is there
+              while playing and on the reveal alike. Before the first
+              deal there is no open case, so there is nothing to name. */}
+          {current ? (
+            <p className="text-sm text-muted" data-testid="case-deck-label">
+              Deck: {deckLabelForId(deckIdOfPuzzle(current))}
+            </p>
+          ) : null}
+        </div>
       </div>
       <header className="mt-4">
         <h1 ref={headingRef} tabIndex={-1} className="mode-title text-4xl text-fg sm:text-5xl">GeoDetective</h1>
@@ -793,6 +863,14 @@ export function LoopScreen({
         onPickDeck={onPickDeck}
         onStartNext={onNextMystery}
       />
+
+      {/* Fallback notice (#336): spoken (role="status") and shown for
+          the case the fallback dealt — see deckFallbackNotice. */}
+      {deckFallbackNotice ? (
+        <p role="status" data-testid="deck-fallback-notice" className="mt-4 text-sm text-fg">
+          {deckFallbackNotice}
+        </p>
+      ) : null}
 
       {load.phase === "loading" ? (
         <p className="mt-10 text-lg text-fg" role="status">
