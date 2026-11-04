@@ -53,8 +53,9 @@ conversion (diagnosis follow-up), copy, place data, worker code.
 - [x] Observability durable marker
 - [x] Game-app / satellite-map upgrade wiring
 - [x] Docs (`docs/scout-offer-policy.md`)
-- [x] E2E subset: 28 passed, 0 failed (8 Scout/crash/boot spec files,
-  sequential under the VM lock — exact list in the PR body)
+- [x] E2E subset: 40 passed / 3 failed in the combined sequential run;
+  the 3 failures re-ran solo and passed 3/3 (contention flake —
+  exact list and timings in the PR body)
 - [x] Emulation: base vs fixed builds measured (see PR body)
 - [x] PR opened: #331 — https://github.com/veeresh-bikkaneti/Meridian/pull/331
 - [ ] Merge — owner's word only, after QA + panel
