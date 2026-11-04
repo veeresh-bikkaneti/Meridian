@@ -23,6 +23,7 @@ import {
   readLoopCoreClosed,
   readLoopDeckClosed,
   readSelectedDeck,
+  deckLabelForId,
   toShelfDeckId,
   writeSelectedDeck,
   type PackManifest,
@@ -329,6 +330,31 @@ describe("manifest fetches", () => {
       }),
       null,
     );
+  });
+});
+
+describe("deckLabelForId (the open case's deck name, issue #336)", () => {
+  it("names the core deck in shelf vocabulary, in either id vocabulary", () => {
+    assert.equal(deckLabelForId("core"), "All cases");
+    assert.equal(deckLabelForId(CORE_DECK_ID), "All cases");
+  });
+
+  it("names a pack deck with the chip's label", () => {
+    assert.equal(deckLabelForId("capitals"), "Capitals");
+    // The label agrees with the chip buildDeckList renders for the pack.
+    const decks = buildDeckList({
+      edition: "geodetective",
+      packManifest: MANIFEST,
+      coreClosed: null,
+      coreTotal: null,
+      packClosed: null,
+    });
+    assert.equal(deckLabelForId("capitals"), decks[1]!.label);
+    assert.equal(deckLabelForId("core"), decks[0]!.label);
+  });
+
+  it("falls back to the capitalized pack id for an unknown pack", () => {
+    assert.equal(deckLabelForId("rivers"), "Rivers");
   });
 });
 

@@ -137,6 +137,20 @@ function categoryLabel(category: string, packId: string): { label: string; glyph
 }
 
 /**
+ * The shelf-vocabulary label for one deck, by deck id. Accepts either
+ * vocabulary: the loop store's core id ("core") and the shelf's
+ * ("all") both read "All cases"; a pack id reads through the same
+ * category-label logic the chips use, so a deck is called the same
+ * thing wherever it is named. The case screen uses this to name the
+ * OPEN case's deck (issue #336): the caller derives the id from the
+ * open case itself, never from the player's pick.
+ */
+export function deckLabelForId(deckId: string): string {
+  if (deckId === CORE_DECK_ID || deckId === LOOP_CORE_DECK_ID) return "All cases";
+  return categoryLabel(deckId, deckId).label;
+}
+
+/**
  * Build the chip list for one edition. The core deck always leads. The
  * pack chip joins only when the manifest says this edition can deal it:
  * GeoDetective needs loop indexes, Cold Trail needs its pack case file.
