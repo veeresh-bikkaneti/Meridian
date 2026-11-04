@@ -12,7 +12,7 @@
  */
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
-import { readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -228,9 +228,27 @@ test("production loop targets are guessable by their own names", () => {
   assert.ok(byId.has("geonames:2058304"), "Williamstown missing from names.v2.json");
 
   // B1 build gate: EVERY production clue target must be present in the
-  // index — pin-through-dedupe, not hand-patching.
+  // index — pin-through-dedupe, not hand-patching. The expected count is
+  // the core manifest size plus every pack's size: pack composers add
+  // clue files past the core pool (public/packs/<id>/manifest.json), and
+  // those targets must be guessable too. Deriving the count from the
+  // manifests keeps the tripwire exact — an unaccounted clue file, core
+  // or pack, still fails here.
+  const packsDir = join(ROOT, "public/packs");
+  const packSizes = existsSync(packsDir)
+    ? readdirSync(packsDir).map(
+        (id) => readJson(join(packsDir, id, "manifest.json")).size ?? 0,
+      )
+    : [];
+  const expectedTargets =
+    readJson(join(OUT_DIR, "manifest.json")).size +
+    packSizes.reduce((sum, n) => sum + n, 0);
   const targetIds = [...loadLoopTargetIds(join(OUT_DIR, "clues"))].sort();
-  assert.equal(targetIds.length, 387, `expected 387 clue targets, got ${targetIds.length}`);
+  assert.equal(
+    targetIds.length,
+    expectedTargets,
+    `expected ${expectedTargets} clue targets (core + packs), got ${targetIds.length}`,
+  );
   const absent = targetIds.filter((id) => !byId.has(id));
   assert.deepEqual(absent, [], `${absent.length} clue targets missing from names.v2.json`);
 });

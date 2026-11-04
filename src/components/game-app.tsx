@@ -52,15 +52,12 @@ import { BootSplash } from "./boot-splash";
 import "./home-v5.css";
 import heroMountainUrl from "@/assets/home-v5/hero-mountain.webp";
 import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
-import desertRuinsUrl from "@/assets/home-v5/desert-ruins.webp";
-import patagoniaUrl from "@/assets/home-v5/patagonia.webp";
-import archiveToolsUrl from "@/assets/home-v5/archive-tools.webp";
-import journalTreeUrl from "@/assets/home-v5/journal-tree.webp";
-import binocularsHatUrl from "@/assets/home-v5/binoculars-hat.webp";
 import {
   VERDICT_GRANDPA_POSTER_URL,
   VERDICT_GRANDPA_VIDEO_URL,
 } from "@/assets/verdict/grandpa-media";
+import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand } from "@/assets/home-v5/card-media";
+import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
 import {
@@ -4348,7 +4345,11 @@ function Choose({
               with the image. The card action is the stretched CTA below
               (Form S): the card itself cannot be the <button> because
               EarnedBadgeRow renders real badge <button>s inside it. */}
-          <LazyHomeImage className="hv5-pic" src={desertRuinsUrl} alt="" ariaHidden />
+          {/* Card film (feat/home-card-films): the slot now plays the
+              GeoDetective reshoot film once, governed by CardFilm
+              (reduced-motion / Save-Data / low-memory / error all land
+              on the owner's still image). Media: card-media.ts. */}
+          <CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4396,7 +4397,11 @@ function Choose({
           {/* Variant A, same as GeoDetective: image first in DOM order;
               whole-card action via the stretched CTA (Form S, shared form
               so both game cards behave identically). */}
-          <LazyHomeImage className="hv5-pic" src={patagoniaUrl} alt="" ariaHidden />
+          {/* Card film, same shared component as GeoDetective: Jolly
+              walks the footprint trail (character motion, not a camera
+              move — the owner's 2026-11-02 correction). Media:
+              card-media.ts. */}
+          <CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4408,8 +4413,8 @@ function Choose({
               Cold Trail<span className="hv5-chip">New</span>
             </h2>
             <p>
-              A smuggler moves between cities. Three sightings, three rings — tap where
-              they cross to make the interception.
+              Jolly was spotted in the snow. Three sightings, three rings — tap where
+              they cross to reach Jolly before the trail freezes.
             </p>
             <button
               type="button"
@@ -4436,6 +4441,7 @@ function Choose({
             data-testid="tour-stop-review"
             id="home-review"
           >
+            <CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" />
             <div className="hv5-txt">
               <div className="hv5-head">
                 <span className="hv5-badge">
@@ -4497,7 +4503,6 @@ function Choose({
                 <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
               )}
             </div>
-            <LazyHomeImage className="hv5-art" src={archiveToolsUrl} alt="" ariaHidden />
           </section>
         ) : (
           <div aria-hidden="true" />
@@ -4507,6 +4512,7 @@ function Choose({
             deferred while focus is inside this card or the journal
             section (spec §6). */}
         <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)} data-testid="journal-card">
+          <CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4527,9 +4533,9 @@ function Choose({
               READ THE ENTRY
             </button>
           </div>
-          <LazyHomeImage className="hv5-art" src={journalTreeUrl} alt="" ariaHidden />
         </article>
         <article id="home-grownups" tabIndex={-1} className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)} data-testid="grownups-card">
+          <CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4548,7 +4554,6 @@ function Choose({
               <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
             </button>
           </div>
-          <LazyHomeImage className="hv5-art" src={binocularsHatUrl} alt="" ariaHidden />
         </article>
       </div>
 

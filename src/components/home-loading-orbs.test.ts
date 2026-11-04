@@ -89,19 +89,22 @@ describe("LazyHomeImage — shared card-image orb", () => {
   });
 });
 
-describe("home page wiring — exactly the six lazy sites, nothing else", () => {
+describe("home page wiring — one lazy site left, nothing else", () => {
+  // feat/home-card-films: the two .hv5-pic sites left this wrapper —
+  // they are governed films now (CardFilm, pinned in
+  // card-film.test.ts). feat/smooth-cards (Part 2 redo, 2026-11-03):
+  // the three .hv5-art sites left too, for the same CardFilm system.
+  // The journal entry figures are the one lazy site that remains:
+  // they are content pictures, not card art, and keep the orb.
   const sites = [
-    '<LazyHomeImage className="hv5-pic" src={desertRuinsUrl} alt="" ariaHidden />',
-    '<LazyHomeImage className="hv5-pic" src={patagoniaUrl} alt="" ariaHidden />',
-    '<LazyHomeImage className="hv5-art" src={archiveToolsUrl} alt="" ariaHidden />',
-    '<LazyHomeImage className="hv5-art" src={journalTreeUrl} alt="" ariaHidden />',
-    '<LazyHomeImage className="hv5-art" src={binocularsHatUrl} alt="" ariaHidden />',
     "<LazyHomeImage src={journalImageUrl(note.image)} alt={note.imageAlt} />",
   ];
-  it("all six home lazy images use the shared wrapper with exact attrs", () => {
+  it("the remaining home lazy image uses the shared wrapper with exact attrs", () => {
     for (const site of sites) {
       assert.ok(gameApp.includes(site), `missing home site: ${site}`);
     }
+    assert.equal((gameApp.match(/<LazyHomeImage/g) || []).length, 1,
+      "exactly one LazyHomeImage site remains (the journal entry figures)");
   });
 
   it("no bare lazy <img> remains on the home page", () => {
@@ -120,7 +123,7 @@ describe("home page wiring — exactly the six lazy sites, nothing else", () => 
 
   it("no other wait is touched: edition maps, stories, BootSplash unchanged", () => {
     const lazyUses = (gameApp.match(/<LazyHomeImage/g) || []).length;
-    assert.equal(lazyUses, 6, "exactly six wrapper uses — no orbs anywhere else");
+    assert.equal(lazyUses, 1, "exactly one wrapper use — no orbs anywhere else");
   });
 });
 

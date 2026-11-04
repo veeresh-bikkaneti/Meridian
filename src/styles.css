@@ -3,6 +3,12 @@
 @import "./styles/motion-tokens.css";
 @import "./components/bounded-text.css";
 
+/* #306: phone-landscape / short windows. The summary card's pinned action
+ * footer (~240px) leaves too little height for the scroll region there, so
+ * the card goes side by side instead (run-summary.tsx). 500px: below it the
+ * stacked card cannot show the 8rem caption slot above a 4–5 button footer. */
+@custom-variant short-landscape (@media (orientation: landscape) and (max-height: 500px));
+
 /* Self-hosted Atlas type system (latin subsets, vendored from Google Fonts;
  * no runtime CDN dependency, so the app — and its "clean console" E2E gate —
  * never depends on a font fetch succeeding). */
@@ -692,6 +698,18 @@
   border-color: var(--atlas-brass);
   box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.5);
   translate: 0 -3px;
+}
+
+/* The locked age-band tile (.agep-locked) is also an .atlas-dossier,
+   so the hover above lifted it like a clickable card — a locked
+   tile is not one. Scoped to the locked tile only: on hover it
+   keeps its resting border, shadow, and position. Real dossier
+   cards keep the lift. (Pre-existing inconsistency, fixed with
+   the locked tile's picture band.) */
+.atlas-dossier.agep-locked:hover {
+  border-color: var(--atlas-card-line);
+  box-shadow: none;
+  translate: none;
 }
 
 .atlas-dossier-title {

@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "sacramento-california",
+  "target": {
+    "placeId": "gn-5389489",
+    "name": "Sacramento",
+    "aliases": [],
+    "lat": 38.58157,
+    "lon": -121.4944,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "California",
+    "iso2": "US",
+    "subdivision": "California"
+  },
+  "subjectAnswer": {
+    "name": "California",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "California",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits in a wide valley where two rivers flow together into one. Low, flat land spreads out from the banks on each side.",
+      "narrowing": "Rules out coast and hill towns; puts the player where two rivers meet in a wide valley.",
+      "source": {
+        "article": "Sacramento, California",
+        "url": "https://en.wikipedia.org/wiki/Sacramento%2C_California",
+        "quote": "located at the confluence of the Sacramento and American Rivers in the Sacramento Valley"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summer heat here can be fierce, but a sea breeze can cool the night fast. Folks call that cool wind the delta breeze.",
+      "narrowing": "Rules out places with no sea breeze; keeps hot, dry summers cooled at night.",
+      "source": {
+        "article": "Sacramento, California",
+        "url": "https://en.wikipedia.org/wiki/Sacramento%2C_California",
+        "quote": "Summer heat is sometimes moderated by a sea breeze known as the \"delta breeze\" which comes through the Sacramento–San Joaquin River Delta from the San Francisco Bay"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1852, this city lent its court house to the state lawmakers for their work. Two years later, it was made the state capital for good.",
+      "narrowing": "Shrinks the list to capitals made permanent in 1854 after housing the lawmakers.",
+      "source": {
+        "article": "Sacramento, California",
+        "url": "https://en.wikipedia.org/wiki/Sacramento%2C_California",
+        "quote": "In 1852, the city offered its county courthouse to the state of California to house the state legislature, resulting in the city becoming the permanent state capital in 1854"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "In 1848, a man struck gold at a mill on a stream near here. Thousands of gold hunters rushed in, and the small town boomed.",
+      "narrowing": "Nearly decisive: a town boomed by the 1848 gold find at a nearby mill.",
+      "source": {
+        "article": "Sacramento, California — History",
+        "url": "https://en.wikipedia.org/wiki/Sacramento%2C_California#History",
+        "quote": "In 1848, when James W. Marshall discovered gold at Sutter's Mill in Coloma"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The laws of the state are made in this city, in its capitol. The governor of California works here too.",
+      "narrowing": "Confirms it: the legislature and the governor sit in this city.",
+      "source": {
+        "article": "Sacramento, California",
+        "url": "https://en.wikipedia.org/wiki/Sacramento%2C_California",
+        "quote": "Sacramento is the seat of the California Legislature and the governor of California"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Gold seekers flooded this river town after gold was found near by in 1848, and in 1854 it became the state capital for good. Its state capitol was finished in 1874: the building is the capitol, and the city is the capital. Sacramento is the capital of California."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Sacramento%2C_California"
+  },
+  "pointPolicy": "geonames-point"
+}

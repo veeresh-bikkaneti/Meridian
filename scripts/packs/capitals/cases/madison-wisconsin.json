@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "madison-wisconsin",
+  "target": {
+    "placeId": "gn-5261457",
+    "name": "Madison",
+    "aliases": [],
+    "lat": 43.07305,
+    "lon": -89.40123,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Wisconsin",
+    "iso2": "US",
+    "subdivision": "Wisconsin"
+  },
+  "subjectAnswer": {
+    "name": "Wisconsin",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Wisconsin",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This place stands in a region of four lakes, with two big lakes close by its downtown. Woods and wet swamp once covered the ground here.",
+      "narrowing": "Puts the player in a four-lake region, on ground that was once woods and swamp.",
+      "source": {
+        "article": "Madison, Wisconsin — History",
+        "url": "https://en.wikipedia.org/wiki/Madison%2C_Wisconsin#History",
+        "quote": "swamp and forest land on the isthmus between Lakes Mendota and Monona for $1,500, with the intention of building a city in the Four Lakes region"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here plunge far below freezing, with snow that can pile deep. Summers then swing back to warm days, a huge change in one year.",
+      "narrowing": "Rules out mild coasts; keeps a place with a huge swing from deep cold to warm summers.",
+      "source": {
+        "article": "Madison, Wisconsin",
+        "url": "https://en.wikipedia.org/wiki/Madison%2C_Wisconsin",
+        "quote": "a large seasonal temperature variance: winter temperatures can be well below freezing, with moderate to occasionally heavy snowfall"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1836, lawmakers met to pick a lasting home for their government. One man won them over with warm buffalo robes and cheap lots in his new town.",
+      "narrowing": "Shrinks the list to seats of government won in 1836 with gifts of robes and cheap lots.",
+      "source": {
+        "article": "Madison, Wisconsin — History",
+        "url": "https://en.wikipedia.org/wiki/Madison%2C_Wisconsin#History",
+        "quote": "Doty lobbied aggressively for Madison as the new capital, offering buffalo robes to the freezing legislators and choice lots in Madison at discount prices to undecided voters"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Downtown here sits on a thin strip of land with a lake on each side. You can stand in the middle and see water both ways.",
+      "narrowing": "Nearly decisive: a downtown on a thin strip of land between two lakes.",
+      "source": {
+        "article": "Madison, Wisconsin",
+        "url": "https://en.wikipedia.org/wiki/Madison%2C_Wisconsin",
+        "quote": "With a downtown centrally located on an isthmus between Lakes Mendota and Monona, the city also encompasses Lake Wingra"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The lawmakers of Wisconsin meet in this place to make state laws. They gather in the state capitol, the house of state government.",
+      "narrowing": "Confirms it: the state lawmakers meet here, in the state capitol.",
+      "source": {
+        "article": "Madison, Wisconsin",
+        "url": "https://en.wikipedia.org/wiki/Madison%2C_Wisconsin",
+        "quote": "As the state capital, Madison is home to government chambers, including the Wisconsin State Capitol"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A judge bought swamp and woods here in 1829 and dreamed up a city on the strip between two lakes. Gifts of buffalo robes and cheap lots from that founder won it the capital in 1836. The domed building is the capitol, and the city is the capital. Madison is the capital of Wisconsin."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Madison%2C_Wisconsin"
+  },
+  "pointPolicy": "geonames-point"
+}

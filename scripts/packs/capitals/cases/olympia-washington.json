@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "olympia-washington",
+  "target": {
+    "placeId": "gn-5805687",
+    "name": "Olympia",
+    "aliases": [],
+    "lat": 47.04491,
+    "lon": -122.90169,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Washington",
+    "iso2": "US",
+    "subdivision": "Washington"
+  },
+  "subjectAnswer": {
+    "name": "Washington",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Washington",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits in the far northwest of the United States, southwest of Seattle. Long arms of the sea reach deep into the land all around it.",
+      "narrowing": "Rules out most of the country; keeps the wet northwest coast near Seattle.",
+      "source": {
+        "article": "Olympia, Washington",
+        "url": "https://en.wikipedia.org/wiki/Olympia%2C_Washington",
+        "quote": "Olympia is the county seat of Thurston County and anchors the South Puget Sound region of western Washington, 50 miles (80 km) southwest of Seattle."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Most storms here roll in off cold northern seas, loaded with wet air. They bring long spells of rain, low cloud, and thick fog.",
+      "narrowing": "Rules out dry inland towns and sunny coasts; keeps rainy, foggy shores.",
+      "source": {
+        "article": "Olympia, Washington",
+        "url": "https://en.wikipedia.org/wiki/Olympia%2C_Washington",
+        "quote": "It contains cold moist air, which brings western Washington cold rain, cloudiness, and fog."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In November 1853, this town was named the capital of the whole territory. It has held that job ever since, the first and only one.",
+      "narrowing": "Cuts the list to towns made a territory capital in 1853 and never replaced.",
+      "source": {
+        "article": "Olympia, Washington — History",
+        "url": "https://en.wikipedia.org/wiki/Olympia%2C_Washington#History",
+        "quote": "It was declared the capital of the Washington Territories by Governor Isaac I. Stevens in November 1853."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This city hugs the head of a small inlet at the far south end of Puget Sound. That south tip is the end of the sound's long reach inland.",
+      "narrowing": "Nearly decisive: only one capital sits at the south end of Puget Sound.",
+      "source": {
+        "article": "Olympia, Washington — History",
+        "url": "https://en.wikipedia.org/wiki/Olympia%2C_Washington#History",
+        "quote": "Other Native Americans regularly visited the head of Budd Inlet"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Washington works in this city. State lawmakers meet here to pass laws for the whole state.",
+      "narrowing": "Confirms it: the governor and state lawmakers work in this city.",
+      "source": {
+        "article": "Olympia, Washington",
+        "url": "https://en.wikipedia.org/wiki/Olympia%2C_Washington",
+        "quote": "Olympia is the capital city of the U.S. state of Washington."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This townsite on the inlet was claimed in 1846, and in 1853 it was declared the territory capital. It has stayed the capital through statehood and two big quakes that shook its old streets. Olympia is the capital of Washington."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Olympia%2C_Washington"
+  },
+  "pointPolicy": "geonames-point"
+}

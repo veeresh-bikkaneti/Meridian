@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "madrid-spain",
+  "target": {
+    "placeId": "gn-3117735",
+    "name": "Madrid",
+    "aliases": [],
+    "lat": 40.4165,
+    "lon": -3.70256,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Spain",
+    "iso2": "ES",
+    "subdivision": "Madrid"
+  },
+  "subjectAnswer": {
+    "name": "Spain",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Spain",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city lies on a river in the very centre of a broad peninsula in south west Europe. Dry plains stretch out around it on all sides.",
+      "narrowing": "Rules out coasts and border lands; puts the player on a river in the dry centre of a wide peninsula.",
+      "source": {
+        "article": "Madrid",
+        "url": "https://en.wikipedia.org/wiki/Madrid",
+        "quote": "Madrid lies on the River Manzanares in the central part of the Iberian Peninsula"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This high city far from the sea gets the least rain of any capital on its continent. Yet its winters still bring frost, and now and then snow.",
+      "narrowing": "Rules out wet capitals; the driest capital on its continent still gets frost and some snow.",
+      "source": {
+        "article": "Madrid",
+        "url": "https://en.wikipedia.org/wiki/Madrid",
+        "quote": "Madrid is the European capital with the least amount of annual precipitation."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "A walled fort town stood here for ages before kings took much note of it. In 1561 the king moved his court here for good, and rule stayed.",
+      "narrowing": "Shrinks the list to a small fort town made a lasting royal seat in 1561.",
+      "source": {
+        "article": "Madrid",
+        "url": "https://en.wikipedia.org/wiki/Madrid",
+        "quote": "The development of Madrid as an administrative centre was fostered after 1561, as it became the permanent seat of the court of the Hispanic Monarchy."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A statue of a bear by a strawberry tree stands on the east side of the Puerta del Sol. That pair is the coat of arms of this city, its proud badge.",
+      "narrowing": "Nearly decisive: a bear by a strawberry tree, the city's own badge, stands in its great square.",
+      "source": {
+        "article": "Statue of the Bear and the Strawberry Tree",
+        "url": "https://en.wikipedia.org/wiki/Statue_of_the_Bear_and_the_Strawberry_Tree",
+        "quote": "It represents the coat of arms of Madrid and is found on the east side of the Puerta del Sol, between Calle de Alcalá and Carrera de San Jerónimo, in the historical centre of the capital."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Spain's king has his great palace in this city, and the national government runs the land from here. It is the political heart of the whole country.",
+      "narrowing": "Confirms it: the king's palace and the national government are both in this city.",
+      "source": {
+        "article": "Madrid",
+        "url": "https://en.wikipedia.org/wiki/Madrid",
+        "quote": "it is the political, economic and cultural centre of the country"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A walled fort rose by the river here in the 800s, guarding a border land. In 1561 the king set his court here for good, and the town grew into a great city. Its bear and tree statue still greets crowds in the old centre. Madrid is the capital of Spain."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Madrid"
+  },
+  "pointPolicy": "geonames-point"
+}
