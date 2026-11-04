@@ -1533,13 +1533,16 @@ export function GameApp() {
    * - The switched notice RETIRES (here and in applyMapMode): its
    *   text names the mode the next game uses, and this switch just
    *   changed that mode.
-   * - The boot auto-switch note does NOT retire here: it can only be
-   *   standing when this boot itself auto-switched to Scout, and in
-   *   that state both runtime paths early-return (they fire only
-   *   from full) — so it is never standing when a runtime switch
-   *   runs. Its text would also remain TRUE after a switch to Scout.
-   *   (Manual flips clear it for a different reason: the player's own
-   *   choice supersedes the "picked for this device" framing.)
+   * - The boot auto-switch note does NOT retire here. The tile-
+   *   fallback path (the other runtime caller) fires only from full,
+   *   and its switch lands on Scout, where the note's text would
+   *   remain TRUE. The one path that DOES falsify the note is the
+   *   #330 trial upgrade: a trial boot leaves the note standing in
+   *   Scout, and the upgrade then moves the session to full — so
+   *   applyScoutUpgrade retires the note itself before delegating
+   *   here. (Manual flips clear it for a different reason: the
+   *   player's own choice supersedes the "picked for this device"
+   *   framing.)
    * - Nothing is ANNOUNCED: device-driven switches are silent (owner
    *   ruling, 2026-10-20), the announcer's texts are manual-switch
    *   wording ("back home; your next game…") that would be false
@@ -1562,6 +1565,10 @@ export function GameApp() {
   const applyScoutUpgrade = useCallback(() => {
     setScoutUpgradeEligible(false);
     setReportMapMode("full");
+    // The trial boot left the auto-Scout note standing; this upgrade
+    // falsifies it (the session is no longer on Scout), so retire it
+    // here, mirroring the manual and home toggle paths.
+    setAutoScoutNote(false);
     applySessionMapMode("full");
   }, [applySessionMapMode]);
   // GeoDetective mounts its own screen outside the endless-run state
@@ -2186,6 +2193,9 @@ export function GameApp() {
     // BLOCK-1: retire this boot's auto-switch note — the switched
     // notice set above supersedes it (see the docstring).
     setAutoScoutNote(false);
+    // #330 cure: an explicit manual choice disarms any pending trial
+    // upgrade — the upgrade must never override the player's pick.
+    setScoutUpgradeEligible(false);
     // BLOCK-4: close every other full-screen state so the render
     // precedence below cannot hand the landing to a lurking flag
     // (see the docstring). writeLoopOpen mirrors LoopScreen's own
@@ -2222,6 +2232,9 @@ export function GameApp() {
       mode === "scout" ? SCOUT_COPY.homeAnnounceOn : SCOUT_COPY.homeAnnounceOff,
     );
     setAutoScoutNote(false);
+    // #330 cure: an explicit manual choice disarms any pending trial
+    // upgrade — the upgrade must never override the player's pick.
+    setScoutUpgradeEligible(false);
     // BLOCK-2: this flip supersedes any earlier switched notice.
     setMapSwitchedNote(null);
   }, []);
@@ -6447,6 +6460,11 @@ function PlayLoaded({
     (view: ScoutRestoreView) => {
       if (mapModeRef.current !== "scout") return;
       if (challenge) return;
+      // #330 cure: re-check at fire time — a stored manual record
+      // written after boot (a manual choice that did not pass through
+      // the handlers that clear eligibility) stands over the trial,
+      // and the upgrade must never override it.
+      if (readStoredMapMode()?.source === "manual") return;
       onScoutUpgrade();
       setScoutSwitchView(view);
       setMapRemountNonce((n) => n + 1);
