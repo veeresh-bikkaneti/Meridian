@@ -253,8 +253,10 @@ procedure that was run:
 
 Crash-class events are forwarded to Discord (and email, when set up)
 as soon as they arrive. Here is one real alert shape, for a phone
-that died while its map was loading — the issue #330 shape — with
-each line explained in plain words:
+that died while its map was loading — the issue #330 shape, with
+`cores 6` in the worked example taken from a worker test fixture,
+not a handset measurement — with each line explained in plain
+words:
 
 ```text
 🚨 FIX — Developer action needed
