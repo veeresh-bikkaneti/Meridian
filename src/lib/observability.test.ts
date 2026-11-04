@@ -1344,3 +1344,81 @@ test("Slice 2 queue eviction: a queued recovery_outcome survives a burst of live
   assert.equal(flushed[0].type, "recovery_outcome", "protected from eviction like suspected_crash");
   assert.equal(flushed.filter((e) => e.type === "recovery_outcome").length, 1);
 });
+
+// ---------------------------------------------------------------------------
+// Issue #330 — durable map-crash marker: the prior-crash signal survives
+// sessionStorage loss. Reporting (suspected_crash) is unchanged: it still
+// requires the session trail. Only wasMapAttributedCrash() lasts longer.
+// ---------------------------------------------------------------------------
+
+const MAP_CRASH_MARKER_KEY_FOR_TEST = "meridian:map-crash";
+const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+
+test("#330: a session-detected map crash stamps the durable marker", () => {
+  const session = makeStorage({
+    [BREADCRUMB_KEY]: prevBreadcrumbJson({ lastMilestone: "map_init_start" }),
+  });
+  const durable = makeStorage();
+  const { transport } = makeTransport(true);
+  const obs = createObservability({
+    storage: session, durableStorage: durable, transport,
+    endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "s2", device: DEVICE, buildId: "b2", isUnclean: () => true,
+  });
+  obs.init();
+  assert.equal(obs.wasMapAttributedCrash(), true);
+  assert.deepEqual(JSON.parse(durable.getItem(MAP_CRASH_MARKER_KEY_FOR_TEST) as string), { at: 9000 });
+});
+
+test("#330: fresh durable marker alone (session trail lost) → wasMapAttributedCrash, but NO suspected_crash beacon", async () => {
+  const session = makeStorage(); // fresh visit: no breadcrumb, clean-exit state gone
+  const durable = makeStorage({
+    [MAP_CRASH_MARKER_KEY_FOR_TEST]: JSON.stringify({ at: 8000 }),
+  });
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: session, durableStorage: durable, transport,
+    endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "s3", device: DEVICE, buildId: "b2", isUnclean: () => false,
+  });
+  obs.init();
+  assert.equal(obs.wasMapAttributedCrash(), true, "durable marker still demotes");
+  await Promise.resolve();
+  assert.equal(
+    beacons.filter((b) => (JSON.parse(b.body) as ObservabilityEvent).type === "suspected_crash").length,
+    0,
+    "reporting unchanged: no session trail, no suspected_crash",
+  );
+  // A marker-only read must not refresh the stamp (no sliding decay).
+  assert.deepEqual(JSON.parse(durable.getItem(MAP_CRASH_MARKER_KEY_FOR_TEST) as string), { at: 8000 });
+});
+
+test("#330: stale durable marker (past the 7-day decay) → no demotion", () => {
+  const session = makeStorage();
+  const durable = makeStorage({
+    [MAP_CRASH_MARKER_KEY_FOR_TEST]: JSON.stringify({ at: 9000 - SEVEN_DAYS_MS - 1 }),
+  });
+  const { transport } = makeTransport(true);
+  const obs = createObservability({
+    storage: session, durableStorage: durable, transport,
+    now: () => 9000, randomId: () => "s4", device: DEVICE, buildId: "b2", isUnclean: () => false,
+  });
+  obs.init();
+  assert.equal(obs.wasMapAttributedCrash(), false);
+});
+
+test("#330: an unclean exit at a non-map milestone does not stamp the marker", () => {
+  const session = makeStorage({
+    [BREADCRUMB_KEY]: prevBreadcrumbJson({ lastMilestone: "data_loaded" }),
+  });
+  const durable = makeStorage();
+  const { transport } = makeTransport(true);
+  const obs = createObservability({
+    storage: session, durableStorage: durable, transport,
+    endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "s5", device: DEVICE, buildId: "b2", isUnclean: () => true,
+  });
+  obs.init();
+  assert.equal(obs.wasMapAttributedCrash(), false);
+  assert.equal(durable.getItem(MAP_CRASH_MARKER_KEY_FOR_TEST), null);
+});
