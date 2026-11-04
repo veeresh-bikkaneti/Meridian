@@ -18,9 +18,9 @@
 - [x] Wave 1 — licence research pass (72 lands): **72/72 licence-verified** on Commons (all Public domain per-file), identity cross-checked vs Wikidata P41 (historical-value traps caught for FR/GR/US). **55 ship** (68,366 bytes total); **17 are flagless on the design's ≤10 KB/file hard cap** — detailed seal/arms path data (100–644 KB) with no faithful simplified rendition published (Egypt + Portugal rescued via design-named flag-icons renditions, MIT). Flagless lands are recorded with reasons in the registry + `docs/flags-curation.md`; they ship the day an SVG optimisation step is approved (owner decision queued in the PR body).
 - [x] Wave 1 — schema/composer flagKey derivation (build-time, unmapped subdivision throws), sidecar flagKey for verified lands only, registry + resolver (`src/lib/flag-registry.ts`, lazy glob, 0 bytes precached — verified in dist), surfaces: GeoDetective briefing + Giveaway rung + reveal identity card (flag + sourced story), Cold Trail sighting stamps (163/180; composition byte-stable vs HEAD after stripping stamps) + reveal country line, doorway strip under the Expeditions Map card (with the design's three swatches), relabel "Capitals & Flags" (shelf chips; deck id unchanged).
 - [x] Wave 1 — deck top-up in `ensurePackDeck` (built-from size = undealt + completed + open mystery; new cases tier-banded into the remainder) + tests; existing "never rebuilds" pin intact.
-- [ ] Wave 2 — +38 authored cases (inputs + records), Hyderabad audit 100%
-- [ ] Wave 2 — flags for the 38 new lands, celebration target → 110
-- [ ] Gates + screenshots + PR to READY (panel runs after; no merge)
+- [x] Wave 2 — +38 authored cases (22 state capitals → 50, 16 country capitals → 60), append-only at indexes 459–496; `packs:validate` 110/110 (Hyderabad 100%); published 387–458 clue files + sidecar entries byte-identical to Wave 1 (append-only composer guard enforced; a removal test pins it). **Curation correction:** 5 first-pick country capitals (Islamabad, Amman, Montevideo, Riga, Kuala Lumpur) duplicated core-deck targets by GeoNames placeId — swapped pre-ship for Dhaka, Algiers, Quito, Tunis (+22 states unchanged); all 38 new targets verified distinct across core + pack (497 distinct targets, build-loop gate). The 16 original country cases needed a validator cure round (59 clues rewritten as plain-words paraphrases inside their verbatim quotes; zero quotes changed, zero facts invented; 5 over-quoted facts dropped).
+- [x] Wave 2 — flags for the 38 new lands through the same Flagstaff gate: **69 shipped pack-wide (80,552 bytes)**, 41 flagless recorded (39 size-cap — seal/arms path data, incl. Ecuador at 279,145 B; Mississippi licence-only: "Copyrighted free use" ∉ allowlist; Spain/Mexico + 15 Wave-1 states unchanged). Celebration copy 72 → 110. Cold Trail deck 60 → 85 cases (first-60 composition byte-stable vs Wave 1 after stripping stamps; 61 of 110 pack capitals taught as witness anchors).
+- [x] Gates + screenshots + PR to READY (panel runs after; no merge) — scripts 1003/1003, src 2109/2109, worker 109/109, tsc clean, lint-cards PASSED, build:pages green; bundle: 69/69 flags verified in dist as lazy chunks, 0 in the SW precache; E2E (flock, workers=1): capitals-flags 3/3 + pack-shelf mobile/desktop 11/11 combined incl. the two deck-count expectations updated 60 → 85. Eye gate passed on the 20 Wave-2 shipped flags (contact sheets, checker ≠ builders). Shots: `~/workspace/meridian-capitals-flags/build-shots/w2-1-abuja-briefing-flag.png`, `w2-2-tunis-briefing-flag.png` (+ the 6 Wave-1 shots).
 
 ## Flagstaff gate
 
@@ -28,7 +28,9 @@
 (SHA-256, bytes, licence class, SVG sanity, aspect), registry ⇔ pack
 subjects both ways, the composed sidecar, and the Cold Trail stamps.
 Contact-sheet eye gate (checker ≠ builder) passed on the 55 shipped
-flags, 2026-11-04.
+flags, 2026-11-04, and on the 20 Wave-2 additions (15 + bd/dz/my/tn
+minus the swapped-out lands), 2026-11-04. Final registry: 69 shipped
+(80,552 bytes), 41 flagless with recorded reasons, 110 lands.
 
 ---
 

@@ -185,12 +185,13 @@ sight of its subject land. Each subject is *witnessed* by a
 core-deck city (its anchor) the player has already met, so when the
 pack case arrives, the land is familiar ground.
 
-**v1 truth:** Cold Trail stamps are not built, so a capital that is
-not itself a witness anchor does not appear in Cold Trail v1. The
-generated Cold Trail Capitals deck holds 60 cases and teaches **51
-anchor capitals** across them (recounted on the shipped tree after
-the §1.1 cure swap). Every other capital plays in GeoDetective
-only, until stamps land.
+**Capitals & Flags (issue #344):** pack stamps ARE built — every
+capital witness carries its land's flagKey (§8), and a capital that
+is not itself a witness anchor still reaches Cold Trail players as
+a GeoDetective case. The generated Cold Trail Capitals deck holds
+85 cases — the shipped 60 plus 25 appended by wave 2 under
+append-only generation (§8) — and teaches **61 anchor capitals**
+across them. Every capital plays in GeoDetective.
 
 ### 2.3 What "both directions" honestly means
 
@@ -228,9 +229,9 @@ as chips the player can switch between.
   editions from the manifest data, so the two shelves cannot drift
   apart.
 - **Per-edition totals.** A chip's progress line uses the total for
-  the edition showing it: 72 for the Capitals pack in GeoDetective,
-  60 (the Cold Trail deck's real case count) in Cold Trail. The core
-  chip always shows the core total.
+  the edition showing it: 110 for the Capitals & Flags pack in
+  GeoDetective, 85 (the Cold Trail deck's real case count) in Cold
+  Trail. The core chip always shows the core total.
 - **The status line speaks.** The line under the chips says out loud
   what switching does ("Your current case stays saved — switching
   decks never loses it") and carries `role="status"`, so screen

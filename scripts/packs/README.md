@@ -22,9 +22,10 @@ its authoring input in `scripts/packs/capitals/inputs/`:
    restore that one field rather than committing a new timestamp.
 3. **Regenerate the Cold Trail deck.**
    `npm run packs:coldtrail` — rebuilds the Cold Trail pack deck
-   from the records. The Capitals deck is 60 cases; a different
-   count means the records or the generator changed, not a rounding
-   error.
+   from the records. The Capitals & Flags deck is 85 cases (the
+   shipped 60, composition-frozen, plus 25 appended by wave 2); a
+   different count means the records or the generator changed, not
+   a rounding error.
 4. **Flags (Capitals & Flags).** If the curation record
    (`scripts/packs/capitals/flags/registry.json`) or any file in
    `src/assets/flags/` changed: `npm run flags:build` regenerates
