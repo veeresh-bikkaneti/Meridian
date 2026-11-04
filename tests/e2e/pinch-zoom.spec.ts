@@ -31,7 +31,14 @@
 import { test, expect } from "playwright/test";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
-import { fulfillTelemetryStub, isTelemetryHost } from "./helpers";
+import { createTelemetryLedger, handleTelemetry } from "./helpers";
+
+// This spec hand-rolls its serving handler (it must not install the
+// capable-device spoof serveBuiltArtifact adds), so it keeps its own
+// ledger and routes telemetry through the shared handleTelemetry policy.
+// One module-scope ledger is fine: the spec uses the default per-test
+// fixture context only and never asserts on the ledger.
+const tel = createTelemetryLedger();
 
 // Resolved from the repo root (Playwright's cwd) so the spec works on any
 // checkout, not just the worktree it was written in.
@@ -74,7 +81,7 @@ test.beforeEach(async ({ context }) => {
         contentType: "image/png",
       });
     }
-    if (isTelemetryHost(url.hostname)) return fulfillTelemetryStub(route);
+    if (await handleTelemetry(route, tel)) return;
     if (url.hostname !== "127.0.0.1" && url.hostname !== "localhost") {
       return route.continue();
     }

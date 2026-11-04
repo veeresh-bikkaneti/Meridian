@@ -1,5 +1,10 @@
 import { test, expect, type Page, type Route } from "playwright/test";
-import { isTelemetryHost, serveBuiltArtifact, startGlobeRun } from "./helpers";
+import {
+  serveBuiltArtifact,
+  startGlobeRun,
+  telemetryGuard,
+  type TelemetryLedger,
+} from "./helpers";
 
 /**
  * Storyteller mascot E2E — the lazy narration host contract.
@@ -22,22 +27,16 @@ import { isTelemetryHost, serveBuiltArtifact, startGlobeRun } from "./helpers";
 test.setTimeout(180_000);
 
 // Guard: every crash-report request must be answered by serveBuiltArtifact's
-// 204 stub. A non-204 means a request reached the production worker.
-let unstubbedTelemetry: string[] = [];
+// 204 stub. A non-204 means a request reached the production worker — the
+// shared ledger's escape record (plus the run-level spill teardown) now
+// carries that assertion for every spec, this one included.
+let tel: TelemetryLedger;
 
 test.beforeEach(async ({ context }) => {
-  await serveBuiltArtifact(context);
-  unstubbedTelemetry = [];
-  context.on("response", (res) => {
-    if (isTelemetryHost(new URL(res.url()).hostname) && res.status() !== 204) {
-      unstubbedTelemetry.push(`${res.status()} ${res.url()}`);
-    }
-  });
+  tel = await serveBuiltArtifact(context);
 });
 
-test.afterEach(() => {
-  expect(unstubbedTelemetry, "crash-report requests reached the network").toEqual([]);
-});
+test.afterEach(telemetryGuard(() => tel));
 
 const SUMMARY_TEXT = "And so the tale ends! What. An. Adventure!";
 const FALLBACK_TEXT = "The words are right here — read along with me.";
