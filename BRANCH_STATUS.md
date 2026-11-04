@@ -23,7 +23,7 @@ Done condition: unit suites for the claimed files green, `tsc --noEmit` clean, w
 ## Status
 
 - [x] U1 — parser (§3 B/E/O/P rules + §2.3 denylist), corpus (30 rows incl. incident, denylist, tripwire), manifest (§8.1). Suite: 36/36 pass.
-- [ ] U2 — observability session truth (§§2.1–2.2, 4.1–4.3 as grafted, §7.4 trim).
+- [x] U2 — observability session truth (§§2.1–2.2, 4.1–4.3 as grafted, §7.4 trim). Suite: 92/92 pass. [measured] worst-case enriched suspected_crash = 2,164 bytes raw vs the 4,096 cap — fits untrimmed, all 15 device keys + mapMode + msSinceBootStart survive.
 - [ ] U3 — watchdog parity (§4.4) + second-canvas WebGL1 fix + §7.5 byte ladder.
 - [ ] Parity guard — written; EXPECTED TO FAIL on this branch (see below).
 - [ ] Gates — tsc, unit suites, measured sizes recorded at the end.
