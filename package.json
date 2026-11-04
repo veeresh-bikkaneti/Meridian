@@ -25,8 +25,8 @@
     "packs:coldtrail": "node --experimental-strip-types scripts/build-coldtrail-capitals.mjs",
     "test": "node --test 'scripts/**/*.test.mjs'; S1=$?; node --experimental-strip-types --test 'src/**/*.test.ts'; S2=$?; test $S1 -eq 0 -a $S2 -eq 0",
     "format": "prettier --write .",
-    "prebuild": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs",
-    "prebuild:pages": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs",
+    "prebuild": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs && node scripts/packs/check-flags.mjs",
+    "prebuild:pages": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs && node scripts/packs/check-flags.mjs",
     "prebuild:dev": "node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs",
     "postbuild:pages": "node scripts/fingerprint-sw.mjs",
     "postbuild": "node scripts/fingerprint-sw.mjs",
@@ -36,7 +36,9 @@
     "smoke:prod": "node scripts/prod-smoke.mjs",
     "verify:build-stamp": "node scripts/verify-build-stamp.mjs",
     "perf:bundle": "node scripts/bundle-report.mjs",
-    "perf:globe-easy": "node scripts/perf-globe-easy.mjs"
+    "perf:globe-easy": "node scripts/perf-globe-easy.mjs",
+    "flags:build": "node scripts/packs/build-flags.mjs",
+    "check:flags": "node scripts/packs/check-flags.mjs"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.4",
