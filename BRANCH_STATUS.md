@@ -5,6 +5,54 @@
 - **PR:** #339 — https://github.com/veeresh-bikkaneti/Meridian/pull/339
 - **Spec of record:** `~/workspace/meridian-crash-telemetry-evidence/DESIGN-FINAL.md` (arena Candidate B + 10 grafts)
 
+## Cure round 2 (DevEx FAIL F1 + factual nits, 2026-11-03)
+
+Docs/comments only — no behaviour changes anywhere. Each item is its
+own atomic commit, pushed as it landed:
+
+- [x] F1 (the FAIL) — worker README hourly digest, `0e870ee`: the
+  worked example now renders the **v2 digest**, taken verbatim from
+  the `renderDigest` full-string golden in
+  `workers/crash-report/src/index.test.ts` (checked
+  character-for-character against the golden, and against the same
+  example in `docs/observability.md`): `(receipt hour)` header,
+  `priority:` line, per-type blocks. The prose now names what a type
+  block carries — regions, groups, verdicts, modes, steps, errors,
+  first/last receipt times, and labelled caps (`(+N more)`).
+- [x] Worker README factual nits, `f9a67c8`: (a) the
+  `recovery_outcome` tier rule is now stated in the intro and in the
+  Severity tiers table — crash-class **only** for `repeat_failure`,
+  counted-only otherwise (matching `tierOf` in
+  `workers/crash-report/src/index.ts`); (b) the dry-run example
+  response now carries `counted`, the real ingest shape:
+  `{"ok":true,"forwarded":false,"counted":true}`.
+- [x] `docs/observability.md`, `d845077`: (a) the "add a field"
+  recipe now lists the fourth edit site — the literal
+  `DEVICE_FIELD_KEYS` array in `src/lib/telemetry-manifest.ts`;
+  (b) the manifest table rows for `screen` and `touchPoints` now
+  include the `"unknown"` form the code stamps.
+- [x] Comment corrections (comments only, no code tokens changed),
+  `d2eba98`: (a) `workers/crash-report/src/index.ts` parity-guard
+  comment now names the shipped
+  `scripts/observability-field-parity.test.mjs`; (b) that guard's
+  header now states the present truth — it runs on the combined
+  branch and must pass — with its history (written on the client
+  unit, where the worker side did not exist yet); (c) the
+  `src/lib/telemetry-manifest.ts` header recipe gains the same
+  fourth edit site (`DEVICE_FIELD_KEYS`).
+- [x] This file, in the final cure-round-2 commit: this section,
+  plus the finisher record's gate figures below labelled as
+  PRE-CURE round-1 numbers with the current totals beside them.
+- [x] Gates after all items (unpiped):
+  - `npx tsc --noEmit` — clean (exit 0)
+  - `npm run test:worker` — 109/109 pass; `typecheck:worker` —
+    clean (the worker `tsc -p` run is clean; the comment-only change
+    in that file kept the suite at 109/109)
+  - Parity guard (`scripts/observability-field-parity.test.mjs`) — 1/1
+  - `npm test` — scripts: 949 pass, 0 fail, 11 skipped;
+    src: 2,078 tests, 2,078 pass, 0 fail
+  - Watchdog suite (`scripts/crash-watchdog.test.mjs`) — 47/47
+
 ## Cure round (panel verdict on PR #339, 2026-11-03)
 
 Panel tally that caused this round: **11 APPROVE-WITH-NITS + 1 BLOCK**
@@ -69,11 +117,17 @@ Each item is its own atomic commit, pushed as it landed:
   `AGENTS.md` (the §6.3 safeguard sentence only).
 - [x] Follow-up filed: issue #338 — crash-report KV buckets have no
   retention (no `expirationTtl`); deliberately not bundled into this PR.
-- [x] Combined gates on the combined tree:
+- [x] Combined gates on the combined tree — **PRE-CURE round-1
+  numbers** (recorded before cure rounds 1–2; current totals after
+  Cure Round 2 are beside them, and in the Cure Round 2 section at
+  the top of this file):
   - `npx tsc --noEmit` — clean (exit 0)
-  - `npm test` — scripts: 960 tests, 949 pass, 0 fail, 11 skipped;
-    src: 2,075 tests, 2,075 pass, 0 fail
-  - `npm run test:worker` — 106/106 pass
+  - `npm test` — scripts: 960 tests, 949 pass, 0 fail, 11 skipped
+    (unchanged in Cure Round 2: 949 pass, 0 fail, 11 skipped);
+    src: 2,075 tests, 2,075 pass, 0 fail — PRE-CURE round-1;
+    current total: **src 2,078 tests, 2,078 pass, 0 fail**
+  - `npm run test:worker` — 106/106 pass — PRE-CURE round-1;
+    current total: **worker 109/109 pass**
   - `npm run typecheck:worker` — clean (exit 0)
   - Watchdog suite — 47/47; parity guard — 1/1
 - [ ] Merge — owner's word only, after the panel approves the final
