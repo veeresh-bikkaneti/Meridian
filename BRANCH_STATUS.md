@@ -174,7 +174,13 @@ commit that adds this section changes no code):
 - `npx tsc --noEmit` — clean.
 - `node scripts/lint-cards.mjs` — GATE PASSED;
   `npm run lint:content` — GATE PASSED (6 baselined, 0 new).
-- `npm run build:pages` — green.
+- `npm run build:pages` — NOT VERIFIED locally (corrected
+  2026-11-03): four attempts on this VM were all killed by the
+  environment under multi-tenant contention (exit 137 OOM in the
+  render/SSR phase; one attempt lost to a runtime restart after
+  the client bundle built clean). tsc is clean and the client
+  bundle transforms and builds; the PR's CI build is the build
+  gate for this tip.
 - ESLint on the touched files — 13 warnings (same as the base
   count), 0 errors introduced: the one error reported in
   `flags.ts` (no-control-regex, the endpoint-shape validator) is
