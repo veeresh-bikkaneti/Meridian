@@ -119,14 +119,23 @@ forwarding secrets are configured.
 
 When a hiccup-class event arrives and its count for the current UTC
 hour crosses a threshold, the worker posts **one** Discord alert for
-that type+hour — exactly one, even if the count keeps climbing:
+that type+hour — exactly one, even if the count keeps climbing. The
+counts in the message are the counts at the moment the alert fires,
+so a reachable example is one where the totals are exactly the
+threshold being crossed — here a single build reaching 10 in the
+hour, in an hour whose total at fire time is 20:
 
 ```
 🚨 Meridian telemetry alert
-type: tile_failed crossed the hiccup threshold (20/hour across builds)
-hour: 2026-10-18T02 UTC · counts: 22 total (f331846 ×20, 50122c6 ×2)
+type: tile_failed crossed the hiccup threshold (single build crossed 10/hour)
+hour: 2026-11-03T17 UTC · counts: 20 total (f331846 ×12, other ×8)
 one alert per type+hour — further events this hour only raise the counts
+counts are at fire time; the hourly digest carries the final total
 ```
+
+The last line is part of the message: a threshold alert's counts are
+fire-time counts, not the hour's final total — the hourly digest
+carries the final total.
 
 Defaults: **20 events/hour of one type across all builds**, or
 **10/hour from a single buildId** — whichever trips first. Override
@@ -164,13 +173,34 @@ it renders but stays silent.
 ## Counting store (why KV)
 
 One key per (UTC hour × type), e.g. `tel:counts:2026-10-18T02:tile_failed`,
-holding a small JSON bucket:
+holding a small JSON bucket. The bucket shape is now v2 — the first
+six fields are the original ones; the rest were added so the digest
+can answer "which build, which kind of device, what verdict, and is
+it a burst or a steady rate" without storing any event payloads:
 
 ```json
 { "total": 22, "builds": {"f331846": 20}, "editions": {"country": 22},
   "regions": {"united-states": 22}, "devices": {"linux/desktop": 22},
+  "groups": {"f331846|linux|unknown|desktop": 22},
+  "verdicts": {"developer_needed/captured_error": 22},
+  "milestones": {"game_loaded": 22}, "modes": {"full": 22},
+  "errorNames": {"TypeError": 3},
+  "firstAt": 1792288800000, "lastAt": 1792289100000, "late": 0,
   "alerts": ["threshold:tile_failed:2026-10-18T02"] }
 ```
+
+- `groups` keys are `"<buildId>|<os>|<osMajor>|<deviceClass>"` —
+  OS grouped by major version only. Hard cap: 32 distinct group keys
+  per bucket; a 33rd distinct group tallies under `"other"`, so one
+  bad hour cannot grow the value without bound.
+- `verdicts` keys are `"<verdict>/<whyKey>"`, from the worker's own
+  re-derived verdict (the client's stamp is never trusted for this).
+- `firstAt` / `lastAt` are the first and last **receipt** times in
+  the bucket (the worker's clock, not the phone's). `late` counts
+  events whose own timestamp fell outside the receipt hour.
+- Buckets written by the older code (without the v2 fields) are read
+  with the missing fields defaulted — no migration, old and new
+  buckets interoperate.
 
 **KV, not Analytics Engine:** the threshold check must read the
 current hour's count *during* the ingest request, and the digest reads
@@ -191,7 +221,10 @@ ready. Corrupt buckets are treated as absent and replaced on next
 write.
 
 Accepted `type` values: `suspected_crash`, `boot_failure`, `js_error`,
-`unhandled_rejection`, `map_error`, `tile_failed`, `webgl_context_lost`.
+`unhandled_rejection`, `map_error`, `tile_failed`, `webgl_context_lost`,
+`recovery_outcome` — 8 types. (The client also emits 6 engagement
+types, `storyteller_shown` and the `narration_*` set; this worker
+does not accept those yet — that acceptance is PR #311's scope.)
 Required: `type`, `ts` (finite number, epoch ms), `buildId`
 (non-empty string). Optional fields pass through; the forwarded alert
 uses only type, buildId, edition/region, lastMilestone, and a
