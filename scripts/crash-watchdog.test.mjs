@@ -5,7 +5,7 @@
  * orchestration (crashWatchdogMain) is driven against fake browser globals
  * so the exact code that ships inline in _shell.html is what gets
  * exercised. renderCrashWatchdogScript() is checked for the marker, the
- * 6144-byte budget, ES5-only output, and a no-drift assertion that the
+ * 6200-byte budget, ES5-only output, and a no-drift assertion that the
  * shipped script still embeds the tested functions' logic.
  */
 import assert from "node:assert/strict";
@@ -252,15 +252,20 @@ test("renderCrashWatchdogScript emits a single self-contained inline script", ()
   assert.ok(script.includes('"test-build"'));
 });
 
-test("rendered script stays within the 6144-byte budget", () => {
+test("rendered script stays within the 6200-byte budget", () => {
   // #223: check the build-id shapes production actually uses, not just
   // the old 10-char fixture — a 12-char CI id (GITHUB_SHA slice) and the
   // 14-char timestamp fallback rendered 5122/5124 bytes and silently
   // broke the budget while this test still passed at exactly 5120.
+  // Budget history: 5120 → 6144 (§7.5 ladder, worst case 6,104) →
+  // 6200: the chunk-recovery stand-down proof in onTimer (a fresh
+  // meridian.chunkReloadNotice) measures 6,155 bytes worst case
+  // (14-char build id), so 6,200 is the smallest round budget that
+  // fits it with margin.
   for (const buildId of ["abcdef0", "test-build", "abcdef012345", "local-mvpr1hgb"]) {
     const script = renderCrashWatchdogScript(buildId);
     const bytes = Buffer.byteLength(script, "utf8");
-    assert.ok(bytes <= 6144, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
+    assert.ok(bytes <= 6200, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
   }
 });
 
@@ -395,6 +400,59 @@ test("no UI when the app signalled ready before the timer fires", () => {
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
   assert.equal(veilOf({ body }), undefined);
+});
+
+test("no UI and no boot_failure when a fresh chunk-reload notice survives (stalled recovery reload)", () => {
+  // The notice key is written ONLY just before a chunk-recovery reload
+  // (chunk-recovery's auto-reload, or MapErrorBoundary's manual
+  // "Try again") — both inside an app that already booted. A fresh
+  // notice at timer-fire time with ready unset therefore means this
+  // page load is a stalled recovery reload, not a fresh boot failure:
+  // the watchdog stands down (no overlay, no boot_failure POST).
+  const { host, calls, body, xhr } = fakeHost({
+    store: { "meridian.chunkReloadNotice": String(Date.now()) },
+    xhrOpts: {
+      flagsText: JSON.stringify({
+        observabilityEndpoint: INGEST,
+      }),
+    },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  fireTimer(calls);
+  assert.equal(veilOf({ body }), undefined, "no fallback overlay on a stalled recovery reload");
+  assert.equal(xhr.posts.length, 0, "no boot_failure POST on a stalled recovery reload");
+});
+
+test("stale chunk-reload notice does not stand the watchdog down (control)", () => {
+  const { host, calls, body, xhr } = fakeHost({
+    store: { "meridian.chunkReloadNotice": String(Date.now() - 900_001) },
+    xhrOpts: {
+      flagsText: JSON.stringify({
+        observabilityEndpoint: INGEST,
+      }),
+    },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  fireTimer(calls);
+  assert.ok(veilOf({ body }), "fallback UI still appears for a stale notice");
+  assert.equal(xhr.posts.length, 1, "boot_failure still sends for a stale notice");
+  assert.equal(JSON.parse(xhr.posts[0].body).type, "boot_failure");
+});
+
+test("malformed chunk-reload notice does not stand the watchdog down (control)", () => {
+  const { host, calls, body, xhr } = fakeHost({
+    store: { "meridian.chunkReloadNotice": "not-a-timestamp" },
+    xhrOpts: {
+      flagsText: JSON.stringify({
+        observabilityEndpoint: INGEST,
+      }),
+    },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  fireTimer(calls);
+  assert.ok(veilOf({ body }), "fallback UI still appears for a malformed notice");
+  assert.equal(xhr.posts.length, 1, "boot_failure still sends for a malformed notice");
+  assert.equal(JSON.parse(xhr.posts[0].body).type, "boot_failure");
 });
 
 test("no UI when the document is hidden", () => {

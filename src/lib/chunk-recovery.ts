@@ -144,7 +144,14 @@ export const CHUNK_ANNOUNCE_DWELL_MS = 10_000;
 /** sessionStorage key holding the post-reload notice timestamp. */
 export const CHUNK_RELOAD_NOTICE_KEY = "meridian.chunkReloadNotice";
 
-/** A notice flag older than this at consume time is stale: cleared, never shown. */
+/**
+ * A notice flag older than this at consume time is stale: cleared, never shown.
+ * The inline crash watchdog (scripts/crash-watchdog.mjs) also reads the
+ * notice key as a stand-down proof: a fresh notice surviving to its
+ * 28 s timer means the load is a stalled chunk-recovery reload, not a
+ * fresh boot failure, so it shows no fallback and files no
+ * boot_failure. Its 9e5 ms cutoff mirrors this value — keep them in sync.
+ */
 export const CHUNK_RELOAD_NOTICE_MAX_AGE_MS = 900_000;
 
 /**
