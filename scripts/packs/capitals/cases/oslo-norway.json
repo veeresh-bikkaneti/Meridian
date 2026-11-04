@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "oslo-norway",
+  "target": {
+    "placeId": "gn-3143244",
+    "name": "Oslo",
+    "aliases": [],
+    "lat": 59.91273,
+    "lon": 10.74609,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Norway",
+    "iso2": "NO",
+    "subdivision": "Oslo"
+  },
+  "subjectAnswer": {
+    "name": "Norway",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Norway",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits in an arc of land at the far top end of a long fjord. Green hills and mountains surround it on every other side.",
+      "narrowing": "Puts the player at the head of a fjord in northern Europe, ringed by hills.",
+      "source": {
+        "article": "Oslo",
+        "url": "https://en.wikipedia.org/wiki/Oslo",
+        "quote": "Oslo occupies an arc of land at the northernmost end of the Oslofjord. The fjord, which is nearly bisected by the Nesodden peninsula opposite Oslo, lies to the south; in all other directions Oslo is surrounded by green hills and mountains."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Because this city sits so far north, summer days stretch past 18 hours and it never gets fully dark at night. In midwinter, daylight shrinks to about 6 hours.",
+      "narrowing": "Only far-northern capitals swing between near-endless summer days and tiny winter ones.",
+      "source": {
+        "article": "Oslo",
+        "url": "https://en.wikipedia.org/wiki/Oslo",
+        "quote": "Because of the city's northern latitude, daylight varies greatly, from more than 18 hours in midsummer, when it never gets completely dark at night (no darker than nautical twilight), to around 6 hours in midwinter."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "King Haakon V was the first king to live in this city for good, around the year 1300. It has been counted as the land's capital ever since his reign.",
+      "narrowing": "Shrinks the list to capitals a king first settled in around 1300.",
+      "source": {
+        "article": "Oslo — History",
+        "url": "https://en.wikipedia.org/wiki/Oslo#History",
+        "quote": "He was the first king to reside permanently in the city, and it has been regarded as the capital city of Norway since his reign."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Each year, this town hands out the Nobel Peace Prize. Folk all through the world know that prize as a great prize for peace.",
+      "narrowing": "Nearly decisive: only one capital hosts the Nobel Peace Prize ceremony.",
+      "source": {
+        "article": "Oslo",
+        "url": "https://en.wikipedia.org/wiki/Oslo",
+        "quote": "Oslo is also known for giving out the Nobel Peace Prize every year."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Norway is run from this town, and its work of state is done here. More folk live in its streets than in any town in the land.",
+      "narrowing": "Confirms it: capital and largest city of Norway.",
+      "source": {
+        "article": "Oslo",
+        "url": "https://en.wikipedia.org/wiki/Oslo",
+        "quote": "Oslo is the capital and largest city of Norway."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Viking traders first built a town at the top of this fjord more than 1,000 years ago. King Haakon V made it his home around 1300, and it has been the capital ever since. Every December, the Nobel Peace Prize is handed out in its City Hall. Oslo is the capital of Norway."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Oslo"
+  },
+  "pointPolicy": "geonames-point"
+}

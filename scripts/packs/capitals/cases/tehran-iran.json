@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "tehran-iran",
+  "target": {
+    "placeId": "gn-112931",
+    "name": "Tehran",
+    "aliases": [],
+    "lat": 35.69439,
+    "lon": 51.42151,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Iran",
+    "iso2": "IR",
+    "subdivision": "Tehran"
+  },
+  "subjectAnswer": {
+    "name": "Iran",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Iran",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This big town lies at the south foot of the Alborz range, where the hills meet a high flat plain. That plain fills the heart of the land to the south.",
+      "narrowing": "Puts the player at the foot of the Alborz range in West Asia.",
+      "source": {
+        "article": "Tehran",
+        "url": "https://en.wikipedia.org/wiki/Tehran",
+        "quote": "Tehran lies at the southern foot of the Alborz Mountains and the northern edge of the Iranian Central Plateau, giving the city a complex climate."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Rain here falls mostly from late autumn to spring. The summer months are extremely dry and often pass with no rain at all.",
+      "narrowing": "Keeps a dry-summer city where rain belongs to the winter half of the year.",
+      "source": {
+        "article": "Tehran",
+        "url": "https://en.wikipedia.org/wiki/Tehran",
+        "quote": "The wet season spans from late autumn through early spring (roughly November to May), while the summer months (June to September) are extremely dry and often see no measurable rainfall."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1786 a king of the Qajar line picked this town as his chief town. His pick made the town the seat of rule for the whole land.",
+      "narrowing": "Shrinks the list to capitals chosen by a Qajar king in 1786.",
+      "source": {
+        "article": "Tehran — History",
+        "url": "https://en.wikipedia.org/wiki/Tehran#History",
+        "quote": "Eventually, Qajar king Agha Mohammad Khan chose Tehran as the capital of Iran in 1786."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "The Azadi Tower stands tall in this town as a mark of the past. It went up in 1971, for 2,500 years since the Persian realm began.",
+      "narrowing": "Nearly decisive: one capital's landmark tower marks 2,500 years of the Persian Empire.",
+      "source": {
+        "article": "Tehran",
+        "url": "https://en.wikipedia.org/wiki/Tehran",
+        "quote": "Landmarks include the Azadi Tower, a memorial built in 1971 to mark the 2,500th anniversary of the Persian Empire"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Iran is run from this town, and the work of state is done here each day. More folk live here than in any town in the whole land.",
+      "narrowing": "Confirms it: capital and largest city of Iran.",
+      "source": {
+        "article": "Tehran",
+        "url": "https://en.wikipedia.org/wiki/Tehran",
+        "quote": "Tehran is the capital and largest city of Iran."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A Qajar king picked this city as his capital in 1786, after the land had already had fifty capitals before it. Today it is a giant city at the foot of the snowy Alborz Mountains, home to the white Azadi Tower. Tehran is the capital of Iran."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Tehran"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "baghdad-iraq",
+  "target": {
+    "placeId": "gn-98182",
+    "name": "Baghdad",
+    "aliases": [],
+    "lat": 33.34058,
+    "lon": 44.40088,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Iraq",
+    "iso2": "IQ",
+    "subdivision": "Baghdad"
+  },
+  "subjectAnswer": {
+    "name": "Iraq",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Iraq",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town stands on a wide flat plain in the heart of its land. The great Tigris flows through it and cuts the plain in two.",
+      "narrowing": "Puts the player on the Tigris, on a flat plain in the heart of the Middle East.",
+      "source": {
+        "article": "Baghdad",
+        "url": "https://en.wikipedia.org/wiki/Baghdad",
+        "quote": "The city is located on a vast plain bisected by the Tigris river."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are extremely hot, long, and dry. Winters are short and mild, with just a little rain.",
+      "narrowing": "Keeps a hot-desert capital: scorching dry summers, short mild winters.",
+      "source": {
+        "article": "Baghdad",
+        "url": "https://en.wikipedia.org/wiki/Baghdad",
+        "quote": "Baghdad has a hot desert climate (Köppen BWh), featuring extremely hot, prolonged, dry summers and mild to cool, slightly wet, short winters."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In the year 762, the caliph al-Mansur founded this city to be his capital. It grew into one of the largest cities in the whole world.",
+      "narrowing": "Shrinks the list to capitals founded as a caliph's new seat in 762.",
+      "source": {
+        "article": "Baghdad",
+        "url": "https://en.wikipedia.org/wiki/Baghdad",
+        "quote": "Founded in 762 AD by al-Mansur on a site with settlement dating back to at least the Neo-Babylonian period, Baghdad became the capital of the Abbasid Caliphate and its most notable development project."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Many tales in a famed book of one thousand and one nights are set in this town. The tales show the town in its grand age of gold.",
+      "narrowing": "Nearly decisive: one capital is the home city of the Arabian Nights tales.",
+      "source": {
+        "article": "Baghdad — History",
+        "url": "https://en.wikipedia.org/wiki/Baghdad#History",
+        "quote": "Many of the One Thousand and One Nights tales, widely known as the Arabian Nights, are set in Baghdad during this period."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Iraq is run from this town, where the men and women in charge sit and work. More folk live here than in any other town in the land.",
+      "narrowing": "Confirms it: Iraq's largest city and seat of government.",
+      "source": {
+        "article": "Baghdad",
+        "url": "https://en.wikipedia.org/wiki/Baghdad",
+        "quote": "Iraq's largest city, Baghdad is the seat of government."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "The caliph al-Mansur built this city in 762 as a round city on the Tigris river. In its golden age it was famed across the world for learning, and storytellers set the Arabian Nights tales in its streets. Baghdad is the capital of Iraq."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Baghdad"
+  },
+  "pointPolicy": "geonames-point"
+}

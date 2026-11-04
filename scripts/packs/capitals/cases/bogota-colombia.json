@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "bogota-colombia",
+  "target": {
+    "placeId": "gn-3688689",
+    "name": "Bogotá",
+    "aliases": [],
+    "lat": 4.60971,
+    "lon": -74.08175,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Colombia",
+    "iso2": "CO",
+    "subdivision": "Bogota D.C."
+  },
+  "subjectAnswer": {
+    "name": "Colombia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Colombia",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town sits in the heart of its land, high up in the Andes. It stands on a high flat plain in the east part of the range.",
+      "narrowing": "Puts the player on a high Andean plateau in northern South America.",
+      "source": {
+        "article": "Bogotá",
+        "url": "https://en.wikipedia.org/wiki/Bogotá",
+        "quote": "The city is located in the center of Colombia, on a high plateau known as the Bogotá savanna, part of the Altiplano Cundiboyacense located in the Eastern Cordillera of the Andes."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "High in the mountains, the climate stays cool and even all year. Dry seasons and rainy seasons take turns.",
+      "narrowing": "Keeps a cool highland city where the weather barely changes with the seasons.",
+      "source": {
+        "article": "Bogotá",
+        "url": "https://en.wikipedia.org/wiki/Bogotá",
+        "quote": "Bogotá features a subtropical highland climate with uniform precipitation (Köppen: Cfb, Trewartha: Cfll)."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "On 6 Aug 1538, a man from Spain set up this town as the chief town of a new realm. He had marched through the Andes and won the land in hard fights.",
+      "narrowing": "Shrinks the list to capitals founded by a conquistador in 1538.",
+      "source": {
+        "article": "Bogotá",
+        "url": "https://en.wikipedia.org/wiki/Bogotá",
+        "quote": "Bogotá was founded as the capital of the New Kingdom of Granada on 6 August 1538 by Spanish conquistador Gonzalo Jiménez de Quesada after a harsh expedition into the Andes conquering the Muisca, the indigenous inhabitants of the Altiplano."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A hall in this town holds more old gold than any place on earth. It guards 35,000 bits of gold, and 30,000 more works in stone, clay, and cloth.",
+      "narrowing": "Nearly decisive: one capital's Gold Museum holds the world's largest pre-Columbian gold collection.",
+      "source": {
+        "article": "Bogotá",
+        "url": "https://en.wikipedia.org/wiki/Bogotá",
+        "quote": "The Gold Museum, with 35,000 pieces of tumbaga gold, along with 30,000 objects in ceramic, stone and textiles, represents the largest collection of pre-Columbian gold in the world."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Colombia is run from this town, the seat of rule for the whole land. More folk live here than in any other town in the land by far.",
+      "narrowing": "Confirms it: capital and largest city of Colombia.",
+      "source": {
+        "article": "Bogotá",
+        "url": "https://en.wikipedia.org/wiki/Bogotá",
+        "quote": "Bogotá is the capital and largest city of Colombia."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This city was founded high in the Andes in 1538, after a harsh trek into the mountains. Its Gold Museum guards the world's biggest collection of ancient gold — tens of thousands of shining pieces. Bogotá is the capital of Colombia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Bogotá"
+  },
+  "pointPolicy": "geonames-point"
+}

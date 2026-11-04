@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "baton-rouge-louisiana",
+  "target": {
+    "placeId": "gn-4315588",
+    "name": "Baton Rouge",
+    "aliases": [],
+    "lat": 30.44332,
+    "lon": -91.18747,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Louisiana",
+    "iso2": "US",
+    "subdivision": "Louisiana"
+  },
+  "subjectAnswer": {
+    "name": "Louisiana",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Louisiana",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city lies on the banks of the greatest river in the land, in the southeast of its state. Low bluffs lift it just above the wide water.",
+      "narrowing": "Points to a city on the Mississippi River in the southeast of its state.",
+      "source": {
+        "article": "Baton Rouge, Louisiana",
+        "url": "https://en.wikipedia.org/wiki/Baton_Rouge%2C_Louisiana",
+        "quote": "The city of Baton Rouge lies on the banks of the Mississippi River in southeastern Louisiana's Florida Parishes region."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are mild and summers are hot and humid, with heavy rain through the year. Damaging winds and tornadoes can strike in any season.",
+      "narrowing": "Keeps wet, storm-prone Gulf South river cities.",
+      "source": {
+        "article": "Baton Rouge, Louisiana",
+        "url": "https://en.wikipedia.org/wiki/Baton_Rouge%2C_Louisiana",
+        "quote": "It has mild winters, hot and humid summers, moderate to heavy rainfall, and the possibility of damaging winds and tornadoes yearlong."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1846, state lawmakers picked this river town as the new capital. It took the place of a great port town down the river.",
+      "narrowing": "Cuts the list to the city designated in 1846 to replace New Orleans.",
+      "source": {
+        "article": "Baton Rouge, Louisiana — History",
+        "url": "https://en.wikipedia.org/wiki/Baton_Rouge%2C_Louisiana#History",
+        "quote": "In 1846, the state legislature designated Baton Rouge as Louisiana's new capital to replace New Orleans."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Long ago, explorers found a red pole standing here. It marked the boundary between the hunting grounds of two tribes.",
+      "narrowing": "Nearly decisive: one capital's name comes from a red boundary pole.",
+      "source": {
+        "article": "Baton Rouge, Louisiana — History",
+        "url": "https://en.wikipedia.org/wiki/Baton_Rouge%2C_Louisiana#History",
+        "quote": "The explorers saw a red pole marking the boundary between the Houma and Bayagoula tribal hunting grounds."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Louisiana works in this town by the river. The men and women who make state laws meet in the tall capitol here.",
+      "narrowing": "Confirms it: the governor and lawmakers of Louisiana work in this city.",
+      "source": {
+        "article": "Baton Rouge, Louisiana",
+        "url": "https://en.wikipedia.org/wiki/Baton_Rouge%2C_Louisiana",
+        "quote": "is the capital city of the U.S. state of Louisiana"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "French explorers named this river city for the red pole that marked a tribal boundary in 1699. It became the state capital in 1846, and its 34-story capitol is the tallest state capitol in America. The building is the capitol, and the city is the capital. Baton Rouge is the capital of Louisiana."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Baton_Rouge%2C_Louisiana"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "bucharest-romania",
+  "target": {
+    "placeId": "gn-683506",
+    "name": "Bucharest",
+    "aliases": [],
+    "lat": 44.43225,
+    "lon": 26.10626,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Romania",
+    "iso2": "RO",
+    "subdivision": "Bucharest"
+  },
+  "subjectAnswer": {
+    "name": "Romania",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Romania",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "Folk say this town stands on seven hills, just like the town of Rome. The tale links this town to that great town of the past.",
+      "narrowing": "Puts the player on a plain in south-eastern Europe, on a 'seven hills' city.",
+      "source": {
+        "article": "Bucharest",
+        "url": "https://en.wikipedia.org/wiki/Bucharest",
+        "quote": "As with many cities, Bucharest is traditionally considered to be built upon seven hills, similar to the seven hills of Rome."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The summers here are hot and damp, with warm wet air for months. The winters here are cold, with snow that falls and stays for weeks.",
+      "narrowing": "Keeps a continental city: steamy summers, snowy winters.",
+      "source": {
+        "article": "Bucharest",
+        "url": "https://en.wikipedia.org/wiki/Bucharest",
+        "quote": "Bucharest has a humid continental climate (Dfa), with hot, humid summers and cold, snowy winters."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1862, the lands of Wallachia and Moldavia joined as one new land. This town then took the top job as chief town of the whole land.",
+      "narrowing": "Shrinks the list to capitals created by an 1862 union of two lands.",
+      "source": {
+        "article": "Bucharest — History",
+        "url": "https://en.wikipedia.org/wiki/Bucharest#History",
+        "quote": "In 1862, after Wallachia and Moldavia were united to form the Principality of Romania, Bucharest became the new nation's capital city."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "The law house in this town is the most big one of its kind in the world. Both groups of law men meet in its halls, and a great art hall sits there too.",
+      "narrowing": "Nearly decisive: one capital holds the world's largest parliament building.",
+      "source": {
+        "article": "Bucharest",
+        "url": "https://en.wikipedia.org/wiki/Bucharest",
+        "quote": "The largest Parliament building in the world, the palace houses the Romanian Parliament (the Chamber of Deputies, and the Senate), as well as the National Museum of Contemporary Art."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Romania is run from this town, where the work of state is done each day. More folk live here than in any other town in the land.",
+      "narrowing": "Confirms it: capital and largest city of Romania.",
+      "source": {
+        "article": "Bucharest",
+        "url": "https://en.wikipedia.org/wiki/Bucharest",
+        "quote": "Bucharest (Romanian: București) is the capital and largest city of Romania."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A prince's citadel stood here in 1459, and in 1862 the city became the capital of a newly united country. Its Palace of the Parliament is the largest parliament building on Earth. Bucharest is the capital of Romania."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Bucharest"
+  },
+  "pointPolicy": "geonames-point"
+}

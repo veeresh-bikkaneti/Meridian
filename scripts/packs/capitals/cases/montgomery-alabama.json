@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "montgomery-alabama",
+  "target": {
+    "placeId": "gn-4076784",
+    "name": "Montgomery",
+    "aliases": [],
+    "lat": 32.36681,
+    "lon": -86.29997,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Alabama",
+    "iso2": "US",
+    "subdivision": "Alabama"
+  },
+  "subjectAnswer": {
+    "name": "Alabama",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Alabama",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town sits on the south bank of a big river. Two small rivers join just upstream to form it.",
+      "narrowing": "Points to a river city just below the meeting of two rivers.",
+      "source": {
+        "article": "Montgomery, Alabama",
+        "url": "https://en.wikipedia.org/wiki/Montgomery%2C_Alabama",
+        "quote": "Downtown Montgomery lies along the southern bank of the Alabama River, about 6 miles (10 km) downstream from the confluence of the Coosa and Tallapoosa rivers."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are short and mild, but summers stretch on long, hot, and humid. On most summer days the heat climbs past 90 degrees.",
+      "narrowing": "Rules out northern capitals; keeps hot, humid southern river cities.",
+      "source": {
+        "article": "Montgomery, Alabama",
+        "url": "https://en.wikipedia.org/wiki/Montgomery%2C_Alabama",
+        "quote": "Montgomery has a humid subtropical climate (Köppen Cfa), with short, mild winters, warm springs and autumns, and long, hot, humid summers."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1846, the state moved its capital here from an old town. Cotton farms had grown rich, and power had moved south.",
+      "narrowing": "Cuts the list to the city that took the capital from Tuscaloosa in 1846.",
+      "source": {
+        "article": "Montgomery, Alabama — History",
+        "url": "https://en.wikipedia.org/wiki/Montgomery%2C_Alabama#History",
+        "quote": "The state capital was moved from Tuscaloosa to Montgomery, on January 28, 1846."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "In 1955, Rosa Parks would not give up her bus seat to a white man. She was put in jail, and a bus boycott that changed the land began.",
+      "narrowing": "Nearly decisive: the Rosa Parks bus boycott began in one southern capital.",
+      "source": {
+        "article": "Montgomery, Alabama — History",
+        "url": "https://en.wikipedia.org/wiki/Montgomery%2C_Alabama#History",
+        "quote": "On December 1, 1955, Rosa Parks was arrested for refusing to give up her bus seat to a white man, sparking the Montgomery bus boycott."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Alabama works in this town. Its lawmakers meet here in the capitol, on a hill.",
+      "narrowing": "Confirms it: the governor and lawmakers of Alabama work in this city.",
+      "source": {
+        "article": "Montgomery, Alabama",
+        "url": "https://en.wikipedia.org/wiki/Montgomery%2C_Alabama",
+        "quote": "is the capital city of the U.S. state of Alabama"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This river city became the state capital in 1846, and for a short time in 1861 it was even the first capital of the Confederacy. A century later, Rosa Parks' bus arrest here sparked a boycott that changed the country. The building is the capitol, and the city is the capital. Montgomery is the capital of Alabama."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Montgomery%2C_Alabama"
+  },
+  "pointPolicy": "geonames-point"
+}

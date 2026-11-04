@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "frankfort-kentucky",
+  "target": {
+    "placeId": "gn-4292188",
+    "name": "Frankfort",
+    "aliases": [],
+    "lat": 38.20091,
+    "lon": -84.87328,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Kentucky",
+    "iso2": "US",
+    "subdivision": "Kentucky"
+  },
+  "subjectAnswer": {
+    "name": "Kentucky",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Kentucky",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "A river cuts right through the middle of this city, bending in a big S as it goes. Two parts of town face each other across the water.",
+      "narrowing": "Points to a small city split by an S-bend river.",
+      "source": {
+        "article": "Frankfort, Kentucky",
+        "url": "https://en.wikipedia.org/wiki/Frankfort%2C_Kentucky",
+        "quote": "The city is bisected by the Kentucky River, which makes an s-turn as it passes through the center of town."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Spring and fall here are mild and warm, with plenty of rain. Thunderstorms rumble through often in those seasons.",
+      "narrowing": "Keeps mild four-season river towns with stormy springs.",
+      "source": {
+        "article": "Frankfort, Kentucky",
+        "url": "https://en.wikipedia.org/wiki/Frankfort%2C_Kentucky",
+        "quote": "Spring and fall are both mild and relatively warm, with ample precipitation and thunderstorm activity."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1792, when the state joined the Union, this small town was picked. Five men from five parts of the state made the pick.",
+      "narrowing": "Cuts the list to the town chosen as capital at statehood in 1792.",
+      "source": {
+        "article": "Frankfort, Kentucky",
+        "url": "https://en.wikipedia.org/wiki/Frankfort%2C_Kentucky",
+        "quote": "In 1786, the Virginia legislature designated 100 acres (40 hectares) as the town of Frankfort and, after Kentucky became a state in 1792, it was chosen as capital."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This city got its name from a river crossing. In 1780, a pioneer was killed in a fight at the ford, and people named the crossing for him.",
+      "narrowing": "Nearly decisive: one capital is named for a pioneer killed at its ford.",
+      "source": {
+        "article": "Frankfort, Kentucky",
+        "url": "https://en.wikipedia.org/wiki/Frankfort%2C_Kentucky",
+        "quote": "The site evidently received its name after an incident in 1780, when pioneer Stephen Frank was killed in a skirmish with Native Americans; the crossing was named \"Frank's Ford\" in his memory."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Kentucky works in this town by the river. The men and women who make state laws meet in the capitol here.",
+      "narrowing": "Confirms it: the governor and lawmakers of Kentucky work in this city.",
+      "source": {
+        "article": "Frankfort, Kentucky",
+        "url": "https://en.wikipedia.org/wiki/Frankfort%2C_Kentucky",
+        "quote": "is the capital city of the U.S. state of Kentucky"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This river town began as a crossing on a great buffalo trail, in the heart of bluegrass country. It took its name from a pioneer killed at the ford in 1780, and it became the state capital in 1792. The building is the capitol, and the city is the capital. Frankfort is the capital of Kentucky."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Frankfort%2C_Kentucky"
+  },
+  "pointPolicy": "geonames-point"
+}

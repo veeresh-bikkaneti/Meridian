@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "tallinn-estonia",
+  "target": {
+    "placeId": "gn-588409",
+    "name": "Tallinn",
+    "aliases": [],
+    "lat": 59.43696,
+    "lon": 24.75353,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Estonia",
+    "iso2": "EE",
+    "subdivision": "Harjumaa"
+  },
+  "subjectAnswer": {
+    "name": "Estonia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Estonia",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This port town sits on a bay on the north shore of its land. Its shore looks out on a wide gulf of the Baltic Sea.",
+      "narrowing": "Puts the player on the northern Baltic coast.",
+      "source": {
+        "article": "Tallinn",
+        "url": "https://en.wikipedia.org/wiki/Tallinn",
+        "quote": "Located on a bay in northern Estonia, on the shore of the Gulf of Finland of the Baltic Sea"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are warm and wet, and rain falls through the warm months. Winters here are cold, and snow lies deep on the ground.",
+      "narrowing": "Keeps a far-northern coastal capital with snowy winters and tiny winter days.",
+      "source": {
+        "article": "Tallinn",
+        "url": "https://en.wikipedia.org/wiki/Tallinn",
+        "quote": "Tallinn has a humid continental climate (Köppen climate classification Dfb) with warm, rainy summers and cold, snowy winters."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "That note of freedom was read out loud in this town on 24 Feb 1918. The new free land then made this town its chief town.",
+      "narrowing": "Shrinks the list to capitals born with a 1918 independence proclamation.",
+      "source": {
+        "article": "Tallinn — History",
+        "url": "https://en.wikipedia.org/wiki/Tallinn#History",
+        "quote": "On 24 February 1918, the Estonian Declaration of Independence was proclaimed in Tallinn."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This town's old core has kept its look from the days of knights more than most in Europe. It sits on the world list of great sites that must be kept safe.",
+      "narrowing": "Nearly decisive: one capital's old town is a UNESCO medieval treasure.",
+      "source": {
+        "article": "Tallinn",
+        "url": "https://en.wikipedia.org/wiki/Tallinn",
+        "quote": "Tallinn Old Town is one of the best-preserved medieval cities in Europe and is listed as a UNESCO World Heritage Site."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Estonia is run from this town, and the work of state is done here. More folk live in this port town than in any town in the land.",
+      "narrowing": "Confirms it: capital and largest city of Estonia.",
+      "source": {
+        "article": "Tallinn",
+        "url": "https://en.wikipedia.org/wiki/Tallinn",
+        "quote": "Tallinn is the capital and largest city of Estonia."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Danes, knights and merchants ruled this sea port over the centuries, and its medieval old town survives almost perfectly today. Independence was proclaimed here in 1918. Tallinn is the capital of Estonia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Tallinn"
+  },
+  "pointPolicy": "geonames-point"
+}

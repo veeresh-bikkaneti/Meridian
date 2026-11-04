@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "harrisburg-pennsylvania",
+  "target": {
+    "placeId": "gn-5192726",
+    "name": "Harrisburg",
+    "aliases": [],
+    "lat": 40.2737,
+    "lon": -76.88442,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Pennsylvania",
+    "iso2": "US",
+    "subdivision": "Pennsylvania"
+  },
+  "subjectAnswer": {
+    "name": "Pennsylvania",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Pennsylvania",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town sits on the east bank of a wide river. It lies a long way northwest of a great port town.",
+      "narrowing": "Points to a city on the east bank of a wide river in the mid-Atlantic.",
+      "source": {
+        "article": "Harrisburg, Pennsylvania",
+        "url": "https://en.wikipedia.org/wiki/Harrisburg%2C_Pennsylvania",
+        "quote": "Harrisburg is situated on the east bank of the Susquehanna River 83 miles (134 km) southwest of Allentown and 108 miles (174 km) northwest of Philadelphia."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summer here is usually hot and humid, and heat waves can roll in for days.",
+      "narrowing": "Keeps mid-Atlantic river capitals with hot, humid summers.",
+      "source": {
+        "article": "Harrisburg, Pennsylvania",
+        "url": "https://en.wikipedia.org/wiki/Harrisburg%2C_Pennsylvania",
+        "quote": "Summer is usually hot and humid and occasional heat waves can occur."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In October 1812, this small river town was named the state capital. It has kept the job ever since.",
+      "narrowing": "Cuts the list to the town named capital in October 1812.",
+      "source": {
+        "article": "Harrisburg, Pennsylvania — History",
+        "url": "https://en.wikipedia.org/wiki/Harrisburg%2C_Pennsylvania#History",
+        "quote": "In October 1812 Harrisburg was named the Pennsylvania state capital, which it has remained ever since."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "On the Underground Railroad, folks who fled slavery stopped here. They found food and help in this river town, then went north.",
+      "narrowing": "Nearly decisive: one capital was a famed Underground Railroad stop on its river.",
+      "source": {
+        "article": "Harrisburg, Pennsylvania — History",
+        "url": "https://en.wikipedia.org/wiki/Harrisburg%2C_Pennsylvania#History",
+        "quote": "During the first part of the 19th century, Harrisburg was a notable stopping place along the Underground Railroad, as persons escaping slavery used the Susquehanna River to access food and supplies before heading north towards Canada."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Pennsylvania works in this town by the river. The men and women who make the state laws meet in the capitol here.",
+      "narrowing": "Confirms it: the governor and lawmakers of Pennsylvania work in this city.",
+      "source": {
+        "article": "Harrisburg, Pennsylvania",
+        "url": "https://en.wikipedia.org/wiki/Harrisburg%2C_Pennsylvania",
+        "quote": "is the capital city of the U.S. commonwealth of Pennsylvania"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This river town became the state capital in 1812 and helped people escaping slavery on the Underground Railroad. In 1979, the Three Mile Island accident happened just downstream, and the whole world watched. The building is the capitol, and the city is the capital. Harrisburg is the capital of Pennsylvania."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Harrisburg%2C_Pennsylvania"
+  },
+  "pointPolicy": "geonames-point"
+}

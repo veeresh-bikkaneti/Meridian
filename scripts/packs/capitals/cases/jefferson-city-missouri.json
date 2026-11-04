@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "jefferson-city-missouri",
+  "target": {
+    "placeId": "gn-4392388",
+    "name": "Jefferson City",
+    "aliases": [],
+    "lat": 38.5767,
+    "lon": -92.17352,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Missouri",
+    "iso2": "US",
+    "subdivision": "Missouri"
+  },
+  "subjectAnswer": {
+    "name": "Missouri",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Missouri",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town stands on the south bank of a great river. Low hills of rock rise just south of its streets.",
+      "narrowing": "Points to a city on a big river's south bank at a plateau's edge.",
+      "source": {
+        "article": "Jefferson City, Missouri",
+        "url": "https://en.wikipedia.org/wiki/Jefferson_City%2C_Missouri",
+        "quote": "Jefferson City is located on the northern edge of the Ozark Plateau on the southern side of the Missouri River in a region known as Mid-Missouri"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The summers here are hot, with lots of rain. The winters are cold, with some snow and ice.",
+      "narrowing": "Keeps mid-continent river capitals with hot summers and cold winters.",
+      "source": {
+        "article": "Jefferson City, Missouri",
+        "url": "https://en.wikipedia.org/wiki/Jefferson_City%2C_Missouri",
+        "quote": "Jefferson City has a humid continental climate (Köppen Dfa) with hot, rainy summers and cold winters."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This river town was chosen as the new state capital in 1821. That was the same year its state joined the Union as the 24th state.",
+      "narrowing": "Cuts the list to the town chosen as capital in 1821 at statehood.",
+      "source": {
+        "article": "Jefferson City, Missouri — History",
+        "url": "https://en.wikipedia.org/wiki/Jefferson_City%2C_Missouri#History",
+        "quote": "Jefferson City was chosen as the new state capital in 1821, after Missouri was admitted to the Union as the 24th State."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This town bears the name of the third chief of the land. He was the main hand who wrote the great paper that set the land free.",
+      "narrowing": "Nearly decisive: one capital is named for the third president.",
+      "source": {
+        "article": "Jefferson City, Missouri",
+        "url": "https://en.wikipedia.org/wiki/Jefferson_City%2C_Missouri",
+        "quote": "Jefferson City is named for Thomas Jefferson (1743–1826), the third President of the United States, 1801–1809, and earlier major author of the Declaration of Independence of the United States on July 4, 1776."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Missouri works in this town by the river. The men and women who make the laws meet in the domed capitol here.",
+      "narrowing": "Confirms it: the governor and lawmakers of Missouri work in this city.",
+      "source": {
+        "article": "Jefferson City, Missouri",
+        "url": "https://en.wikipedia.org/wiki/Jefferson_City%2C_Missouri",
+        "quote": "is the capital of the U.S. state of Missouri"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Lawmakers first wanted to call this river town Missouriopolis, then settled on naming it for a president who was still alive. It became the state capital in 1821, and its domed capitol still watches over the river. The building is the capitol, and the city is the capital. Jefferson City is the capital of Missouri."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Jefferson_City%2C_Missouri"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -1,0 +1,57 @@
+{
+  "caseId": "bogota-colombia",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 2,
+  "hookAngle": "The Gold Museum holds the world's largest collection of pre-Columbian gold.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-3688689",
+    "name": "Bogotá",
+    "country": "Colombia",
+    "subdivision": "Bogota D.C.",
+    "lat": 4.60971,
+    "lon": -74.08175
+  },
+  "target": {
+    "placeId": "gn-3688689",
+    "name": "Bogotá",
+    "lat": 4.60971,
+    "lon": -74.08175,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Colombia",
+    "iso2": "CO",
+    "subdivision": "Bogota D.C."
+  },
+  "subjectAnswer": {
+    "name": "Colombia",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "CO",
+    "subdivision": "Bogota D.C.",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Bogotá is the capital of Colombia. It's one of Colombia's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Bogotá",
+      "url": "https://en.wikipedia.org/wiki/Bogotá",
+      "text": "Bogotá is the capital and largest city of Colombia. The city is administered as the Capital District, as well as the capital of, though not politically part of, the surrounding department of Cundinamarca. Bogotá is a territorial entity of the first order, with the same administrative status as the departments of Colombia. It is the main political, economic, administrative, industrial, cultural, aeronautical, technological, scientific, medical, educational and airport center of the country and northern South America.\nBogotá was founded as the capital of the New Kingdom of Granada on 6 August 1538 by Spanish conquistador Gonzalo Jiménez de Quesada after a harsh expedition into the Andes conquering the Muisca, the indigenous inhabitants of the Altiplano. Santafé (its name after 1540) became the seat of the government of the Spanish Royal Audiencia of the New Kingdom of Granada (created in 1550), and then after 1717 it was the capital of the Viceroyalty of New Granada. After the Battle of Boyacá on 7 August 1819, Bogotá became the capital of the independent nation of Gran Colombia. It was Simón Bolívar who rebaptized the city with the name of Bogotá, as a way of honoring the Muisca people and as an emancipation act towards the Spanish crown. Hence, since the Viceroyalty of New Granada's independence from the Spanish Empire and during the formation of present-day Colombia, Bogotá has remained the capital of this territory.\nThe city is located in the center of Colombia, on a high plateau known as the Bogotá savanna, part of the Altiplano Cundiboyacense located in the Eastern Cordillera of the Andes. Its altitude averages 2,640 meters (8,660 ft) above sea level, making it the third highest capital city in the world. Subdivided into 20 localities, Bogotá covers an area of 1,587 square kilometers (613 square miles) and enjoys a consistently cool climate throughout the year.\nThe city is home to central offices of the executive branch (Office of the President), the legislative branch (Congress of Colombia) and the judicial branch (Supreme Court of Justice, Constitutional Court, Council of State and the Superior Council of Judicature) of the Colombian government. Bogotá stands out for its economic strength and associated financial maturity, its attractiveness to global companies and the quality of human capital. It is the financial and commercial heart of Colombia, with the most business activity of any city in the country.\n\nGeography\nBogotá is located in the southeastern part of the Bogotá savanna (Sabana de Bogotá) at an average altitude of 2,640 meters (8,660 ft) above sea level. The Bogotá savanna is popularly called \"savannah\" (sabana), but constitutes actually a high plateau in the Andes mountains, part of an extended region known as the Altiplano Cundiboyacense, which literally means \"high plateau of Cundinamarca and Boyacá\". Bogotá is the largest city in the world at its elevation; there is no urban area that is both higher and more populous than Bogotá.\nThe sabana is bordered to the east by the Eastern Cordillera of the Andes mountain range. The Eastern Hills, which limit city growth, run from south to north, forming east of the downtown the Guadalupe and Monserrate mountains. The western city limit is Bogotá River. The Sumapaz Paramo (moorland) borders the south and to the north Bogotá extends over the plateau up to the towns of Chía and Sopó.\n\nClimate\nBogotá features a subtropical highland climate with uniform precipitation (Köppen: Cfb, Trewartha: Cfll). The average temperature is 14.5 °C (58 °F), varying from 6 to 19 °C (43 to 66 °F) on sunny days to 10 to 18 °C (50 to 64 °F) on rainy days. Dry and rainy seasons alternate throughout the year. The driest months are December, January, July and August. The warmest month is March, bringing a maximum of 19.7 °C (67.5 °F). The coolest nights occur in January, with an average of 7.6 °C (45.7 °F) in the city; fog is very usual in early morning, 220 days per year, whilst clear sky sunny full days are quite unusual.\nHailstorms occur sporadically, averaging three times per year—between 1939 and 2008, 231 events were recorded. They occur in the afternoon during the rainy season, when cumulonimbus cloud cells develop rapidly.\n\nCulture\nAs of 2009, the city had 58 museums and 62 art galleries. The National Museum of Colombia has acquisitions divided into four collections: art, history, archeology and ethnography. The Gold Museum, with 35,000 pieces of tumbaga gold, along with 30,000 objects in ceramic, stone and textiles, represents the largest collection of pre-Columbian gold in the world."
+    },
+    {
+      "article": "Bogotá — History",
+      "url": "https://en.wikipedia.org/wiki/Bogotá#History",
+      "text": "History\nThe area of modern Bogotá was first populated by groups of indigenous people who migrated south based on the relation with the other Chibcha languages; the Bogotá savanna was the southernmost Chibcha-speaking group that exists from Nicaragua to the Andes in Colombia. The civilization built by the Muisca, who settled in the valleys and fertile highlands of and surrounding the Altiplano Cundiboyacense (modern-day departments of Cundinamarca and Boyacá and small parts of Santander), was one of the great civilizations in the Americas. The name Muisca Confederation has been given to a loose egalitarian society of various chiefs (caciques) who lived in small settlements of maximum 100 bohíos. The agriculture and salt-based society of the people was rich in goldworking, trade and mummification.\nPre-Columbian era\nThe first populations inhabiting the present-day Metropolitan Area of Bogotá were hunter-gatherers in the late Pleistocene. Dating to around 12,500 BP, the oldest evidence of human activity was discovered in El Abra, north of Zipaquirá. Other excavations in a rock shelter southwest of the city in Soacha provided ages of ~11,000 BP; Tequendama. Since roughly 0 AD, the local Muisca people domesticated guinea pigs as a source of dietary meat. The people inhabiting the Bogotá savanna in the late 15th century were the Muisca, speaking Muysccubun, a member of the Chibcha language family. Muisca means \"people\" or \"person\", making \"Muisca people\", how they are called, a tautology. At the arrival of the Spanish conquistadores, the Muisca population was estimated to be half a million indigenous people on the Bogotá savanna, and up to two million in the Muisca Confederation.\nTrade was the most important activity of the Muisca with other Chibcha-speaking neighbours, such as the Guane, Lache and U'wa and with Cariban-speaking groups such as the Muzo or \"Emerald People\". Their knowledge of salt production from brines, a task devoted exclusively to Muisca women, gave them the name of \"Salt People\". Tropical fruits that did not grow on the cool highlands, as well as coca, cotton and gold were all traded at markets that took place every Muisca week; every four days.\nGonzalo Jiménez de Quesada expedition and Spanish conquest\nFrom 1533, a belief persisted that the Río Grande de la Magdalena was the trail to the South Sea, to Peru, legendary El Dorado. Such was the target of Gonzalo Jiménez de Quesada, the Granadanian conquistador who left Santa Marta on 6 April 1536 with 800 soldiers, heading towards the interior of current Colombia.\nThe zipa at the moment of Spanish conquest was Tisquesusa. His main bohío was in a small village called Bacatá with others in Funza and Cajicá, giving name to the present day capital of Colombia. Bacatá was actually located near to the modern location of the city of Funza.\nJiménez de Quesada decided to establish a military campament in the area in 1538, in the site today known as the Chorro de Quevedo square. The foundation was performed by the construction of 12 houses of reed, referring to the Twelve Apostles, and the construction of a preliminary church, also of reed. With the celebration of the first mass in the campament, celebrated by Dominican friar Domingo de las Casas the city was founded with the name of Nuestra Señora de la Esperanza (Our Lady of Hope) on 6 August 1538. Quesada placed his right foot on the bare earth and said simply, \"I take possession of this land in the name of the most sovereign emperor, Charles V.\"\nThis founding, however, was irregular as no town council was formed nor were town officials appointed, as well as lacking some other juridical requirements for an official founding. As a consequence, the official founding only occurred about eight months later, on 27 April 1539, in a site close to one of the recreational lands of the zipa, called Theusa or Theusaquillo. While this was the official date of founding, traditionally it is 6 August 1538 that is considered the date of the actual foundation.\nThe village obtained the title of City by way of a decree from Charles V on 27 July 1540, which changed the name of the city from Our Lady of Hope to Santa Fe (Holy Faith), after the name of a town nearby Granada where Jiménez de Quesada grew up. Jiménez de Quesada and conquerors De Belalcázar and Federmann left for Spain in April 1539, founding Guataquí together on 6 April 1539. The rule over the newly created New Kingdom of Granada was left to Jiménez de Quesada's brother, Hernán Pérez de Quesada. Bogotá, then called Santa Fe, later became the capital of the later Viceroyalty of New Granada.\nSpanish colonization\nThe city mayor and the chapter formed by two councilmen, assisted by the constable and the police chief, governed the city. For better administration of these domains, in April 1550, the Audiencia of Santafé was organized. Santa Fe (or Santafé) became the seat of the government of the New Kingdom of Granada. Fourteen years later in 1564, the Spanish Crown designated the first Royal Audiencia chairman, Andrés Díaz Venero de Leyva. After 1717 Santafé became the capital of the Viceroyalty of New Granada."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

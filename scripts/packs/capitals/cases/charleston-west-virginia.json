@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "charleston-west-virginia",
+  "target": {
+    "placeId": "gn-4801859",
+    "name": "Charleston",
+    "aliases": [],
+    "lat": 38.34982,
+    "lon": -81.63262,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "West Virginia",
+    "iso2": "US",
+    "subdivision": "West Virginia"
+  },
+  "subjectAnswer": {
+    "name": "West Virginia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "West Virginia",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town stands where two rivers meet and join as one. The joined stream flows on past farms and hills.",
+      "narrowing": "Points to a city at a two-river confluence in a mountain state.",
+      "source": {
+        "article": "Charleston, West Virginia",
+        "url": "https://en.wikipedia.org/wiki/Charleston%2C_West_Virginia",
+        "quote": "Located at the confluence of the Elk and Kanawha rivers, it is the county seat of Kanawha County."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are warmer than in the rest of the state, because this city sits west of the high land. It has four clear seasons.",
+      "narrowing": "Keeps mountain-state capitals with winters warmed by shelter from high land.",
+      "source": {
+        "article": "Charleston, West Virginia",
+        "url": "https://en.wikipedia.org/wiki/Charleston%2C_West_Virginia",
+        "quote": "Especially in winter, Charleston's average temperatures are warmer than the rest of the state, due to the city being west of the higher elevations."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "A new state split off from an old one in war time. For years the top job bounced from town to town, till it stayed here in 1885.",
+      "narrowing": "Cuts the list to the city made permanent capital in 1885 after years of moves.",
+      "source": {
+        "article": "Charleston, West Virginia",
+        "url": "https://en.wikipedia.org/wiki/Charleston%2C_West_Virginia",
+        "quote": "After West Virginia separated from Virginia, Charleston became the permanent state capital in 1885."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Salt made this city rich in its early days. The first salt well here was drilled in 1806, after rich salt brines were found along the river.",
+      "narrowing": "Nearly decisive: one capital grew rich on the river's first salt wells.",
+      "source": {
+        "article": "Charleston, West Virginia — History",
+        "url": "https://en.wikipedia.org/wiki/Charleston%2C_West_Virginia#History",
+        "quote": "By the early 19th century, salt brines were discovered along the Kanawha River, and the first salt well was drilled in 1806."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of West Virginia works in this town, the biggest in the whole state. Its lawmakers meet in the state house, right by the river.",
+      "narrowing": "Confirms it: the governor and lawmakers of West Virginia work in this city.",
+      "source": {
+        "article": "Charleston, West Virginia",
+        "url": "https://en.wikipedia.org/wiki/Charleston%2C_West_Virginia",
+        "quote": "is the capital and most populous city of the U.S. state of West Virginia"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Salt wells drilled from 1806 made this two-river city an industry town, and coal and gas booms followed. After years of the capital bouncing between cities, it settled here for good in 1885. Charleston is the capital of West Virginia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Charleston%2C_West_Virginia"
+  },
+  "pointPolicy": "geonames-point"
+}

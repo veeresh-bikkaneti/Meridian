@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "dhaka-bangladesh",
+  "target": {
+    "placeId": "gn-1185241",
+    "name": "Dhaka",
+    "aliases": [],
+    "lat": 23.7104,
+    "lon": 90.40744,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Bangladesh",
+    "iso2": "BD",
+    "subdivision": "Dhaka Division"
+  },
+  "subjectAnswer": {
+    "name": "Bangladesh",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Bangladesh",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city lies on a great river delta, ringed by rivers on all sides. One wide river, the Buriganga, runs past its edge.",
+      "narrowing": "Puts the player on the Ganges Delta, ringed by four named rivers.",
+      "source": {
+        "article": "Dhaka",
+        "url": "https://en.wikipedia.org/wiki/Dhaka",
+        "quote": "Lying on the Ganges Delta, it is bounded by the Buriganga, Turag, Dhaleshwari and Shitalakshya rivers."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This city has a clear monsoon time of year. Most of its rain falls from May to the fall, in the wet months.",
+      "narrowing": "Keeps a tropical city where most rain falls between May and October.",
+      "source": {
+        "article": "Dhaka",
+        "url": "https://en.wikipedia.org/wiki/Dhaka",
+        "quote": "The city has a distinct monsoonal season, with an annual average temperature of 26 °C (79 °F) and monthly means varying between 19 °C (66 °F) in January and 29 °C (84 °F) in May. Approximately 87% of the average annual rainfall of 2,123 millimetres (83.6 inches) occurs between May and October."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Long ago, this city was the chief town of Mughal Bengal. Its fine muslin cloth was traded far and wide from here.",
+      "narrowing": "Shrinks the list to the old Mughal capital famed for muslin cloth.",
+      "source": {
+        "article": "Dhaka",
+        "url": "https://en.wikipedia.org/wiki/Dhaka",
+        "quote": "Dhaka was the capital of a proto-industrialized Mughal Bengal for 75 years (1608–39 and 1660–1704). It was the hub of the muslin trade in Bengal and one of the most prosperous cities in the world."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Rickshaws with bright art are a famed part of this city's ways. UNESCO counts that rickshaw art as a gem for all mankind.",
+      "narrowing": "Nearly decisive: one capital is famed for its painted rickshaw art, honoured by UNESCO.",
+      "source": {
+        "article": "Dhaka",
+        "url": "https://en.wikipedia.org/wiki/Dhaka",
+        "quote": "Dhaka's annual Bengali New Year parade, its Jamdani sari, and its rickshaw art have been recognized by UNESCO as the intangible cultural heritage of humanity."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This is the biggest city in all of Bangladesh, and its seat of rule. The land's top chiefs do their work of state here.",
+      "narrowing": "Confirms it: the capital and largest city of Bangladesh.",
+      "source": {
+        "article": "Dhaka",
+        "url": "https://en.wikipedia.org/wiki/Dhaka",
+        "quote": "is the capital and largest city of Bangladesh"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This river city was once a Mughal trading hub, famed far and wide for its fine muslin cloth. Today its bright rickshaw art is honoured by UNESCO as a treasure for all. Dhaka is the capital of Bangladesh."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Dhaka"
+  },
+  "pointPolicy": "geonames-point"
+}

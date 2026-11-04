@@ -69,7 +69,7 @@ export function inspectSvg(text) {
   // Aspect from the viewBox when present; many Commons flags carry
   // only width/height on the root element — that canvas ratio is the
   // same measurement, so fall back to it.
-  const viewBox = /viewBox\s*=\s*["']\s*([\d.]+)[ ,]+([\d.]+)[ ,]+([\d.]+)[ ,]+([\d.]+)\s*["']/.exec(text);
+  const viewBox = /viewBox\s*=\s*["']\s*(-?[\d.]+)[ ,]+(-?[\d.]+)[ ,]+(-?[\d.]+)[ ,]+(-?[\d.]+)\s*["']/.exec(text);
   if (viewBox) {
     const width = Number(viewBox[3]);
     const height = Number(viewBox[4]);

@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "pierre-south-dakota",
+  "target": {
+    "placeId": "gn-5767918",
+    "name": "Pierre",
+    "aliases": [],
+    "lat": 44.36832,
+    "lon": -100.35097,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "South Dakota",
+    "iso2": "US",
+    "subdivision": "South Dakota"
+  },
+  "subjectAnswer": {
+    "name": "South Dakota",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "South Dakota",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This small town sits on steep bluffs by a great river. It looks out on the wide water from the east bank.",
+      "narrowing": "Points to a small city on bluffs above a big river, near a giant lake.",
+      "source": {
+        "article": "Pierre, South Dakota",
+        "url": "https://en.wikipedia.org/wiki/Pierre%2C_South_Dakota",
+        "quote": "Pierre is sited on rough river bluffs above the east bank of the Missouri River, overlooking its expanse."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are long, dry, and cold, and summers are hot. Spring and fall hurry past in brief swings.",
+      "narrowing": "Keeps dry northern-plains capitals with long cold winters.",
+      "source": {
+        "article": "Pierre, South Dakota",
+        "url": "https://en.wikipedia.org/wiki/Pierre%2C_South_Dakota",
+        "quote": "with long, dry, cold winters, hot summers, and brief spring and autumnal transitions"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Founded in 1880 on the river, this town was selected as the state capital when its state joined the Union in 1889. Rival towns fought hard for the honor.",
+      "narrowing": "Cuts the list to the town selected as capital at statehood in 1889.",
+      "source": {
+        "article": "Pierre, South Dakota",
+        "url": "https://en.wikipedia.org/wiki/Pierre%2C_South_Dakota",
+        "quote": "Founded in 1880 on the Missouri River, the city was selected to be the state capital when South Dakota was admitted as a state in 1889."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Just one state capital in the land has fewer folks than this small town. Yet it holds the top job for the whole wide state.",
+      "narrowing": "Nearly decisive: only one capital is the second-least populous in the nation.",
+      "source": {
+        "article": "Pierre, South Dakota",
+        "url": "https://en.wikipedia.org/wiki/Pierre%2C_South_Dakota",
+        "quote": "Pierre is the eleventh-most populous city of South Dakota, and the second-least populous U.S. state capital (after only Montpelier, Vermont)."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of South Dakota works in this city. Lawmakers travel here from across the wide plains to make the state's laws.",
+      "narrowing": "Confirms it: the governor and lawmakers of South Dakota work in this city.",
+      "source": {
+        "article": "Pierre, South Dakota",
+        "url": "https://en.wikipedia.org/wiki/Pierre%2C_South_Dakota",
+        "quote": "is the capital city of the U.S. state of South Dakota"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Founded in 1880 across the river from an old trading post, this tiny city won the capital prize in 1889 for its spot at the center of the state. It is the second-smallest state capital in America. Pierre is the capital of South Dakota."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Pierre%2C_South_Dakota"
+  },
+  "pointPolicy": "geonames-point"
+}

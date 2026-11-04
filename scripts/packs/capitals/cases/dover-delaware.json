@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "dover-delaware",
+  "target": {
+    "placeId": "gn-4142290",
+    "name": "Dover",
+    "aliases": [],
+    "lat": 39.15817,
+    "lon": -75.52437,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Delaware",
+    "iso2": "US",
+    "subdivision": "Delaware"
+  },
+  "subjectAnswer": {
+    "name": "Delaware",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Delaware",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This small town sits on a small river in a flat plain by the sea. The land is low, and a big river is near.",
+      "narrowing": "Points to a small city on a coastal-plain river.",
+      "source": {
+        "article": "Dover, Delaware",
+        "url": "https://en.wikipedia.org/wiki/Dover%2C_Delaware",
+        "quote": "It is located on the St. Jones River in the Delaware River coastal plain."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are hot and humid, with about 25 days a year topping 90 degrees. Quick, heavy thunderstorms roll through in summer.",
+      "narrowing": "Keeps humid mid-Atlantic towns with hot summers.",
+      "source": {
+        "article": "Dover, Delaware",
+        "url": "https://en.wikipedia.org/wiki/Dover%2C_Delaware",
+        "quote": "Summers are hot and humid, with 25 days per year reaching or surpassing 90 °F (32 °C). Brief, but heavy summer thunderstorms are common."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1777, the state moved its seat here from an old port town. It sat in the heart of the state, safe from British raids.",
+      "narrowing": "Cuts the list to the town that took the capital in 1777 for safety from raiders.",
+      "source": {
+        "article": "Dover, Delaware — History",
+        "url": "https://en.wikipedia.org/wiki/Dover%2C_Delaware#History",
+        "quote": "The capital of the state of Delaware was moved here from New Castle in 1777 because of its central location and relative safety from British raiders on the Delaware River."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "The fire crew in this town is made up of volunteers. It is the one state capital in the land with such a crew.",
+      "narrowing": "Nearly decisive: only one state capital has a volunteer fire department.",
+      "source": {
+        "article": "Dover, Delaware",
+        "url": "https://en.wikipedia.org/wiki/Dover%2C_Delaware",
+        "quote": "Dover is the only state capital in the United States with a volunteer fire department."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Delaware works in this city. The state's lawmakers meet here to make its laws.",
+      "narrowing": "Confirms it: the governor and lawmakers of Delaware work in this city.",
+      "source": {
+        "article": "Dover, Delaware",
+        "url": "https://en.wikipedia.org/wiki/Dover%2C_Delaware",
+        "quote": "is the capital and the second-most populous city of the U.S. state of Delaware"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "William Penn founded this court town in 1683 and named it for a town in Kent, England. It became the state capital in 1777, moved inland for safety from British raiders, and its firefighters are still all volunteers. Dover is the capital of Delaware."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Dover%2C_Delaware"
+  },
+  "pointPolicy": "geonames-point"
+}

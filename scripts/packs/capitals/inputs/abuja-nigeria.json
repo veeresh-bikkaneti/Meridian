@@ -1,0 +1,57 @@
+{
+  "caseId": "abuja-nigeria",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "A single giant rock — Aso Rock, carved by water — defines this purpose-built capital.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-2352778",
+    "name": "Abuja",
+    "country": "Nigeria",
+    "subdivision": "FCT",
+    "lat": 9.05785,
+    "lon": 7.49508
+  },
+  "target": {
+    "placeId": "gn-2352778",
+    "name": "Abuja",
+    "lat": 9.05785,
+    "lon": 7.49508,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Nigeria",
+    "iso2": "NG",
+    "subdivision": "FCT"
+  },
+  "subjectAnswer": {
+    "name": "Nigeria",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "NG",
+    "subdivision": "FCT",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Abuja is the capital of Nigeria. It's one of Nigeria's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Abuja",
+      "url": "https://en.wikipedia.org/wiki/Abuja",
+      "text": "Abuja is the capital city of Nigeria, strategically situated at the geographic midpoint of the country within the Federal Capital Territory (FCT). As the seat of the Federal Government of Nigeria, it hosts key national institutions, landmarks, and buildings spread across its over 50 districts. It replaced Lagos (the most populous city in Nigeria) as the capital on 12 December 1991.\nAbuja's geography is defined by Aso Rock, a 400-metre (1,300 ft) monolith left by water erosion. The Presidential Complex, National Assembly, Supreme Court, and much of the city extends to the south of the rock. Zuma Rock, a 725-metre (2,379 ft) monolith, lies just north of the city on the expressway to Kaduna.\nAt the 2006 census, the city of Abuja had a population of 776,298 and 179,674 households, making it one of the ten most populous cities in Nigeria (eighth place in 2006). According to the United Nations, Abuja grew by 139.7% between 2000 and 2010, making it the fastest-growing city in the world. As of 2015, the city is experiencing an annual growth of at least 35%, retaining its position as the fastest-growing city on the African continent and one of the fastest-growing in the world.\nMajor religious sites include the Nigerian National Mosque and the Nigerian National Christian Centre. The city is served by the Nnamdi Azikiwe International Airport. Abuja is known for being one of the few purpose-built capital cities in Africa, as well as being one of the wealthiest.\nAbuja is Nigeria's administrative and political capital. It is also a key capital on the African continent due to Nigeria's geopolitical influence in regional affairs. Abuja is also a conference centre and hosts various meetings annually, such as the 2003 Commonwealth Heads of Government meeting and the 2014 World Economic Forum (Africa) meetings. Abuja joined the UNESCO Global Network of Learning Cities in 2016.\n\nGeography\nClimate\nAbuja under Köppen climate classification features a tropical wet and dry climate (Köppen: Aw). The FCT experiences three weather conditions annually. This includes a warm, humid rainy season and a blistering dry season. In between the two, there is a brief interlude of harmattan occasioned by the northeast trade wind, with the main feature of dust haze and cloudless skies.\nThe rainy season begins from April and ends in October, when daytime temperatures reach 28 °C (82.4 °F) to 30 °C (86.0 °F) and nighttime lows hover around 22 °C (71.6 °F) to 23 °C (73.4 °F). In the dry season, daytime temperatures can soar as high as 40 °C (104.0 °F) and overnight temperatures can dip to 20 °C (68.0 °F). Even the coolest nights can be followed by daytime temperatures well above 30 °C (86.0 °F). The medium altitude and undulating terrain of the FCT act as a moderating influence on the weather of the territory. The city's inland location causes the diurnal temperature variation to be much larger than coastal cities with similar climates such as Lagos.\nRainfall in the FCT reflects the territory's location on the windward side of the Jos Plateau and the zone of rising air masses with the city receiving frequent rainfall during the rainy season from April to October every year.\nVegetation\nThe FCT falls within the Guinean forest-savanna mosaic zone of the West African sub-region. Patches of rain forest, however, occur in the Gwagwa plains, especially in the rugged terrain to the southeastern parts of the territory, where a landscape of gullies and rough terrain is found. These areas of the Federal Capital Territory (FCT) form one of the few surviving occurrences of the mature forest vegetation in Nigeria."
+    },
+    {
+      "article": "Abuja — History",
+      "url": "https://en.wikipedia.org/wiki/Abuja#History",
+      "text": "History\nAbuja was in the early 20th century the name of the nearby town now called Suleja.\nThe indigenous inhabitants of Abuja are the Abawa (Ganagana), Basa, Gwandara, Gbagyi (Gwari) having the majority population in the region. Other groups in the area include Egburra, Nupe and Koro.\nIn light of the ethnic and religious divisions of Nigeria, plans had been devised since Nigeria's independence to have its capital in a place deemed neutral to all major ethnic parties, and also near all the regions of Nigeria. The location was eventually designated in the centre of the country in the early 1970s as it signified neutrality and national unity.\nAnother impetus for Abuja came because of Lagos' population boom that made that city overcrowded and conditions squalid. As Lagos was already undergoing rapid economic development, the Nigerian government felt the need to expand the economy towards the inner part of the country, and hence decided to move its capital to Abuja. The logic used was similar to the way Brazil planned its capital, Brasília.\nThe Federal Military Government of Nigeria promulgated Decree No. 6 on 4 February 1976, which initiated the removal of the Federal Capital from Lagos to Abuja. The initial work for Abuja's planning and implementation was carried out by the Military Government of Generals Murtala Mohammed and Olusegun Obasanjo. However, the foundation of Abuja was under the Administration of Shehu Shagari in 1979. Construction started in 1979 but, due to economic and political instability, the initial stages of the city were not complete until the late 1980s.\nAbuja is a planned city built mainly in the 1980s based on a master plan by International Planning Associates (IPA), a consortium of three Wallace, Roberts, McHarg & Todd (WRMT – a group of architects) as the lead, Archi systems International (a subsidiary of the Howard Hughes Corporation), and Planning Research Corporation. The International Planning Associates (IPA) was commissioned in June 1977, by the Federal Capital Development Authority (FCDA) to produce the Abuja Master Plan and its regional grid.\nMost countries relocated their embassies to Abuja, and many maintain their former embassies as consulates in Lagos, the commercial capital of Nigeria. Abuja is the headquarters of the Economic Community of West African States (ECOWAS) and the regional headquarters of OPEC. Abuja and the FCT have experienced huge population growth; it has been reported that some areas around Abuja have been growing at 20% to 30% per year."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

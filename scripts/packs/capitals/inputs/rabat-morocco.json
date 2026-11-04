@@ -1,0 +1,57 @@
+{
+  "caseId": "rabat-morocco",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "The Hassan Tower is the unfinished minaret of a mosque that was never completed.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-2538475",
+    "name": "Rabat",
+    "country": "Morocco",
+    "subdivision": "Rabat-Salé-Kénitra",
+    "lat": 34.01325,
+    "lon": -6.83255
+  },
+  "target": {
+    "placeId": "gn-2538475",
+    "name": "Rabat",
+    "lat": 34.01325,
+    "lon": -6.83255,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Morocco",
+    "iso2": "MA",
+    "subdivision": "Rabat-Salé-Kénitra"
+  },
+  "subjectAnswer": {
+    "name": "Morocco",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "MA",
+    "subdivision": "Rabat-Salé-Kénitra",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Rabat is the capital of Morocco. It's one of Morocco's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Rabat",
+      "url": "https://en.wikipedia.org/wiki/Rabat",
+      "text": "Rabat is the capital city of Morocco, located on the northwestern coasts of the Atlantic Ocean. Rabat is the country's seventh-largest city with a population of 515,619 (2024) and the second largest metropolitan area after Casablanca, with a population of approximately 2.1 million (2025). It is also the capital city of the Rabat-Salé-Kénitra administrative region. Rabat is located on the Atlantic Ocean at the mouth of the river Bou Regreg, opposite Salé, the city's main commuter town.\nRabat was founded in the 12th century, by the Almohads. After a period of growth, the city fell into a period of decline. In the 17th century, Rabat became a haven for the Barbary corsairs. When the French established a protectorate over Morocco in 1912, Rabat became its administrative center. When Morocco achieved independence in 1956, Rabat became its capital.\nRabat is one of the four imperial cities of Morocco, and its medina is listed as a World Heritage Site. It is accessible by train through the ONCF system and by plane through the nearby Rabat–Salé Airport.\n\nClimate\nRabat features a hot-summer Mediterranean climate (Csa) with warm to hot, dry summers and mild, damp winters. Located along the Atlantic Ocean, Rabat has a mild, temperate climate, shifting from cool in winter to warm days in the summer months.\nThe nights are always cool (or cold in winter, it can reach sub 0 °C (32 °F) sometimes), with daytime temperatures generally rising about 7–8 °C (13–14 °F).\nThe winter highs typically reach only 17.2 °C (63.0 °F) in December–February. Summer daytime highs usually hover around 27 °C (80.6 °F), but may occasionally exceed 40 °C (104.0 °F) during heat waves.\nSummer nights are usually pleasant and cool, ranging between 11 and 19 °C (51.8 and 66.2 °F) and rarely exceeding 20 °C (68.0 °F). Rabat belongs to the sub-humid bioclimatic zone with an average annual precipitation of 560 mm (22 in).\n\nHistoric monuments\nThe Kasbah of the Udayas (also spelled \"Kasbah of the Oudaias\") is the oldest part of the present-day city, built by the Almohads in the 12th century. It was later refortified and expanded by the corsairs and the 'Alawi dynasty in the 17th and 18th centuries. The kasbah is now a residential district with traditional houses painted white and blue on the outside. Its southern section includes the \"Andalusian Garden\", landscaped in the 20th century.\nOverlooking the shores of the river is the Hassan Tower, a monumental unfinished minaret constructed by Ya'qub al-Mansur in the late 12th century. It was built for an enormous mosque planned as part of the larger city al-Mansur was constructing."
+    },
+    {
+      "article": "Rabat — History",
+      "url": "https://en.wikipedia.org/wiki/Rabat#History",
+      "text": "History\nAncient Sala\nIn the first millennium BC the Phoenicians founded several trading colonies along the Atlantic coast of what is now Morocco, but the existence of a Phoenician settlement in the area, called Sala or Shallat, has been debated by archeologists. By the first century BC the local inhabitants were still writing in the neo-Punic language, but the region came under the influence of Rome. It was controlled by the ancient Berber Mauretanian Kingdom until it was formally annexed by Rome in the first century BC. On the site now known as Chellah, just south of the walled city today, the Romans built a city named Sala Colonia. Excavations have revealed that older Mauretanian structures existed on the site before Roman structures were built over them. Along with Lixus, Sala Colonia was one of the two main naval outposts held by the Romans on the Atlantic coast of the Mauretania Tingitana province.\nMedieval Islamic period\nIn the 10th century the Umayyads of Cordoba, or their Zenata Berber allies in the region, founded a ribat or fortified monastery/outpost in this area, to defend against the Barghawata Berbers who had established a Kharijite state to the south. This ribat was most likely on the same site as the current Kasbah of the Udayas, but its location has not been confirmed by historians. Around 1030, a new town called Salā (the present Salé) was founded on the opposite side of the river (the north side) by the Banu 'Ashara family.\nOne of the last Almoravid emirs, Tashfin ibn Ali (r. 1143–1145) built a new ribat on the site of the current kasbah as part of his efforts to hold back the Almohads. Almohads nonetheless defeated the Almoravids and destroyed the ribat shortly after. In 1150 or 1151 the Almohad caliph Abd al-Mu'min built a new kasbah (citadel) to replace the former ribat, within which he included a palace and a mosque. This Almohad kasbah corresponds to the current Kasbah of the Udayas (which was expanded in later periods). Abd al-Mu'min also had an underground canal dug to divert a water source to this location, allowing for future settlement and urbanization in the area. The site became a military staging ground for Almohad armies setting out on campaigns to Al-Andalus.\nThe Almohad caliph Abu Yusuf Ya'qub al-Mansur (r. 1184–1199) embarked on an ambitious project to construct a new fortified imperial capital, called al-Mahdiyya or Ribat al-Fath, on the site of what is now the medina (old city) of Rabat, with new walls extending over a vast area beyond the kasbah. This project also included the construction of an enormous mosque (the remains of which include the Hassan Tower) and of new grand gateways such as Bab er-Rouah and the main gate of the kasbah, now known as Bab Udaya or Bab al-Kbir. After al-Mansur's death in 1199 the mosque and the capital remained unfinished and his successors lacked the resources or the will to finish it. The new city was never fully inhabited and the site was practically abandoned.\nCorsair republic\nIn 1609, Philip III decreed the expulsion of all Moriscos (people of Muslim or Moorish descent) from Spain. About 2000 of these refugees, originally from the town of Hornachos near Badajoz, Spain, settled around Salé and occupied the kasbah, attracting between 5000 and 14,000 other Moriscos to join them. Rabat and neighboring Salé united to form the Republic of Bou Regreg in 1627. This autonomous republic became a base for corsairs: pirates, also known as the \"Salé Rovers\", who preyed on merchant ships around the shores of Western Europe."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

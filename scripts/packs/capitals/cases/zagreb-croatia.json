@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "zagreb-croatia",
+  "target": {
+    "placeId": "gn-3186886",
+    "name": "Zagreb",
+    "aliases": [],
+    "lat": 45.81444,
+    "lon": 15.97798,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Croatia",
+    "iso2": "HR",
+    "subdivision": "Zagreb"
+  },
+  "subjectAnswer": {
+    "name": "Croatia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Croatia",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town lies in the north of the land, on the banks of the Sava. It rests at the south foot of a great hill slope just by the town.",
+      "narrowing": "Puts the player on the Sava in northern south-eastern Europe.",
+      "source": {
+        "article": "Zagreb",
+        "url": "https://en.wikipedia.org/wiki/Zagreb",
+        "quote": "It is in the north of the country, along the Sava River, at the southern slopes of the Medvednica mountain."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This town has four clear times of year, each one set far from the rest. Spring, summer, fall, and winter all come in turn here each year.",
+      "narrowing": "Keeps a four-season inland city with snowy winters.",
+      "source": {
+        "article": "Zagreb",
+        "url": "https://en.wikipedia.org/wiki/Zagreb",
+        "quote": "Zagreb has four distinct seasons."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1991 this land broke free and stood on its own as a state. The men who made its laws then named this town its chief town.",
+      "narrowing": "Shrinks the list to capitals proclaimed in 1991.",
+      "source": {
+        "article": "Zagreb — History",
+        "url": "https://en.wikipedia.org/wiki/Zagreb#History",
+        "quote": "After Croatia declared independence from Yugoslavia in 1991, the Parliament of the Republic of Croatia proclaimed Zagreb as the capital of the Republic of Croatia."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Every day at noon — and it has happened since 1877! — a cannon fires from a tower in the old town to mark midday.",
+      "narrowing": "Nearly decisive: one capital marks noon with a daily cannon shot.",
+      "source": {
+        "article": "Zagreb — History",
+        "url": "https://en.wikipedia.org/wiki/Zagreb#History",
+        "quote": "Since 1 January 1877, the Grič cannon fires daily from the Lotrščak Tower on Grič to mark midday."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Croatia is run from this town, where the work of state is done each day. More folk live here than in any other town in the land.",
+      "narrowing": "Confirms it: capital and largest city of Croatia.",
+      "source": {
+        "article": "Zagreb",
+        "url": "https://en.wikipedia.org/wiki/Zagreb",
+        "quote": "Zagreb is the capital and largest city of Croatia."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Two rival towns — one of priests, one of merchants — grew side by side here for centuries before joining into one city. Every day since 1877, a cannon has fired at noon from its old tower. Zagreb is the capital of Croatia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Zagreb"
+  },
+  "pointPolicy": "geonames-point"
+}

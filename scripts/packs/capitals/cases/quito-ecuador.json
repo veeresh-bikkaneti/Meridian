@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "quito-ecuador",
+  "target": {
+    "placeId": "gn-3652462",
+    "name": "Quito",
+    "aliases": [],
+    "lat": -0.22985,
+    "lon": -78.52495,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Ecuador",
+    "iso2": "EC",
+    "subdivision": "Pichincha"
+  },
+  "subjectAnswer": {
+    "name": "Ecuador",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Ecuador",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits in a long valley on the slopes of a live volcano. That great peak stands in the high Andes range.",
+      "narrowing": "Puts the player in an Andes valley on the slopes of the Pichincha volcano.",
+      "source": {
+        "article": "Quito",
+        "url": "https://en.wikipedia.org/wiki/Quito",
+        "quote": "Quito is in a valley on the eastern slopes of Pichincha, an active stratovolcano in the Andes."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This city feels cool and fair all through the year. It has no big swing from hot months to cold months at all.",
+      "narrowing": "Keeps a city with a steady, cool climate all year round.",
+      "source": {
+        "article": "Quito",
+        "url": "https://en.wikipedia.org/wiki/Quito",
+        "quote": "Because of its altitude and location on the equator, Quito has a fairly constant cool but comfortable climate."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "The Inca made this town the chief town of their north lands. Then Spain took it in 1534 and set it up anew.",
+      "narrowing": "Shrinks the list to the Inca Empire's northern capital, taken by Spain in 1534.",
+      "source": {
+        "article": "Quito",
+        "url": "https://en.wikipedia.org/wiki/Quito",
+        "quote": "In the late fifteenth century, the Inca Emperor Huayna Capac defeated the Quitu, the region's original inhabitants, and incorporated Quito into the Inca Empire, designating it the capital of the Inca Empire's northern region. The Spanish conquest of the city in 1534 is the date most frequently cited as the city's official founding, making Quito the oldest capital in South America."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This city is the world's chief town that sits closest to the equator. That famed line of Earth runs through its north part.",
+      "narrowing": "Nearly decisive: the capital closest to the Equator, which cuts its north edge.",
+      "source": {
+        "article": "Quito",
+        "url": "https://en.wikipedia.org/wiki/Quito",
+        "quote": "Quito is the capital city closest to the Equator, which runs through the northern part of the metropolitan area in the parish of San Antonio."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This land, Ecuador, is run from this city, its heart of rule. All its chief state offices and top teams are based here.",
+      "narrowing": "Confirms it: Ecuador's political centre, where its main state institutions sit.",
+      "source": {
+        "article": "Quito",
+        "url": "https://en.wikipedia.org/wiki/Quito",
+        "quote": "Quito is the political and cultural center of Ecuador as the country's major governmental, administrative, and cultural institutions are within the city."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This city sits high in the Andes by a live volcano, close to the equator line. Its old town was one of the first world heritage sites, listed in 1978. Quito is the capital of Ecuador."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Quito"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -163,10 +163,10 @@ export function celebrationSpec(
 export const PACK_DECK_COMPLETE_COPY: Record<string, CelebrationMoment> = {
   capitals: {
     headline: "Every capital found! Master detective!",
-    line: "All 72 Capitals case files closed. Countries and states — you found every single capital.",
+    line: "All 110 Capitals & Flags case files closed. Countries and states — you found every single capital.",
     character: "rusty",
     greeting:
-      "Logged in the great atlas, all 72 capitals! Blip says bingo! Steady course, explorer — zoom-zoom, way to go!",
+      "Logged in the great atlas, all 110 capitals! Blip says bingo! Steady course, explorer — zoom-zoom, way to go!",
   },
 };
 

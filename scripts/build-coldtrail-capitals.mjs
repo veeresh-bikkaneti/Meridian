@@ -86,8 +86,19 @@ export const CAPITALS_PACK_ID = "capitals";
 /** Own stream. Never the core COLDTRAIL_SEED. */
 export const COLDTRAIL_CAPITALS_SEED = 20261103;
 export const PACK_CASE_TARGET = 60;
+/**
+ * Wave 2 (Capitals & Flags, issue #344): cases appended AFTER the
+ * shipped 60, built with the grown anchor pool. Generation is
+ * append-only — the first PACK_CASE_TARGET cases are built with the
+ * original 72-capital anchor pool on the same stream, so their
+ * composition cannot re-roll; only then does the loop continue down
+ * the same shuffled hideout list with all 110 capitals eligible.
+ */
+export const PACK_CASE_TARGET_WAVE2 = 25;
 /** A thinner pack than this is a broken pack. Fail closed. */
 export const MIN_PACK_CASES = 40;
+/** Wave 2 must land substantially or the growth failed. Fail closed. */
+export const MIN_PACK_CASES_WAVE2 = 75;
 
 /** Same values as in build-coldtrail.mjs; kept in step by the tests. */
 const MIN_WITNESS_POP = 300_000;
@@ -323,12 +334,19 @@ export function hideoutPool(places) {
 export function buildPackDeck() {
   const places = loadPlaces();
   const capitalIds = resolvePackCapitalIds();
+  // Phase A pool: the original 72 capitals only, in the records'
+  // order — exactly the pool the shipped deck was built from, so the
+  // first 60 cases reproduce byte-for-byte (composition-wise).
+  const originalIds = capitalIds.filter((id) => CURATED_CAPITAL_IDS.includes(id));
+  const { anchors: anchorsWave1 } = splitWitnessPool(places, originalIds);
   const { anchors } = splitWitnessPool(places, capitalIds);
-  if (anchors.length < 3) {
+  if (anchorsWave1.length < 3 || anchors.length < 3) {
     throw new Error(
       `build-coldtrail-capitals: only ${anchors.length} capitals can anchor — refusing to generate a pack that cannot triangulate`,
     );
   }
+  const grown = capitalIds.length > originalIds.length;
+  const target = grown ? PACK_CASE_TARGET + PACK_CASE_TARGET_WAVE2 : PACK_CASE_TARGET;
   const hideouts = hideoutPool(places);
   const random = mulberry32(COLDTRAIL_CAPITALS_SEED);
   // Shuffle hideout candidates on the pack stream; no hideout repeats.
@@ -340,12 +358,20 @@ export function buildPackDeck() {
   const cases = [];
   const usedHideouts = new Set();
   for (const h of shuffled) {
-    if (cases.length >= PACK_CASE_TARGET) break;
+    if (cases.length >= target) break;
     if (usedHideouts.has(h.id)) continue;
-    const built = buildCase(cases.length + 1, h, anchors, random);
+    // Append-only: cases up to the shipped target draw witnesses from
+    // the original pool; appended cases may draw from the grown pool.
+    const pool = cases.length < PACK_CASE_TARGET ? anchorsWave1 : anchors;
+    const built = buildCase(cases.length + 1, h, pool, random);
     if (!built) continue; // fewer than 3 capitals in range: skip, never deal a thin case
     usedHideouts.add(h.id);
     cases.push({ ...built, packId: CAPITALS_PACK_ID });
+  }
+  if (grown && cases.length < MIN_PACK_CASES_WAVE2) {
+    throw new Error(
+      `build-coldtrail-capitals: grown pack built only ${cases.length} cases, below the ${MIN_PACK_CASES_WAVE2} wave-2 floor — refusing to emit a short wave`,
+    );
   }
   return stampPackFlags(cases, {
     subjectsByPlaceId: loadPackRecordSubjects(),

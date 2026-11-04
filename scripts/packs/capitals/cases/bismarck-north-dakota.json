@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "bismarck-north-dakota",
+  "target": {
+    "placeId": "gn-5688025",
+    "name": "Bismarck",
+    "aliases": [],
+    "lat": 46.80833,
+    "lon": -100.78374,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "North Dakota",
+    "iso2": "US",
+    "subdivision": "North Dakota"
+  },
+  "subjectAnswer": {
+    "name": "North Dakota",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "North Dakota",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city was founded in 1872 on the east bank of a great river, in the middle of the northern plains. It began as a railroad town.",
+      "narrowing": "Points to a plains city founded on a big river's east bank.",
+      "source": {
+        "article": "Bismarck, North Dakota",
+        "url": "https://en.wikipedia.org/wiki/Bismarck%2C_North_Dakota",
+        "quote": "Bismarck was founded by European-Americans in 1872 on the east bank of the Missouri River."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are cold, dry, snowy, and windy. Summers are warm, with storms in the spring and summer months.",
+      "narrowing": "Keeps far-northern plains capitals with cold, windy winters.",
+      "source": {
+        "article": "Bismarck, North Dakota",
+        "url": "https://en.wikipedia.org/wiki/Bismarck%2C_North_Dakota",
+        "quote": "Bismarck's climate is characterized by cold, somewhat dry, snowy, and windy winters and warm, humid summers."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1883, this rail town was made the capital of a vast new land. Six years on, it kept the job when that land became a state.",
+      "narrowing": "Cuts the list to the town made territory capital in 1883 and state capital in 1889.",
+      "source": {
+        "article": "Bismarck, North Dakota — History",
+        "url": "https://en.wikipedia.org/wiki/Bismarck%2C_North_Dakota#History",
+        "quote": "In 1883, Bismarck was designated as the capital of the Dakota Territory in place of Yankton, South Dakota, and in 1889, as the state capital of the new state of North Dakota."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "The capitol here is a tall tower of 19 floors, the tallest in the state. Folks call it the skyscraper of the flat plains.",
+      "narrowing": "Nearly decisive: one capital's capitol is a 19-story state-tallest tower.",
+      "source": {
+        "article": "Bismarck, North Dakota",
+        "url": "https://en.wikipedia.org/wiki/Bismarck%2C_North_Dakota",
+        "quote": "The 19-story Art Deco capitol is the tallest building in the state, at a height of 241.75 feet (73.69 m)."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "North Dakota's governor works in this town. Its lawmakers meet in the tall capitol on the plains.",
+      "narrowing": "Confirms it: the governor and lawmakers of North Dakota work in this city.",
+      "source": {
+        "article": "Bismarck, North Dakota",
+        "url": "https://en.wikipedia.org/wiki/Bismarck%2C_North_Dakota",
+        "quote": "is the capital city of the U.S. state of North Dakota"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Railroad men renamed this river town in 1873 for a German leader, hoping to lure railroad money. It became the state capital in 1889, and its 19-story capitol still towers over the plains. The building is the capitol, and the city is the capital. Bismarck is the capital of North Dakota."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Bismarck%2C_North_Dakota"
+  },
+  "pointPolicy": "geonames-point"
+}

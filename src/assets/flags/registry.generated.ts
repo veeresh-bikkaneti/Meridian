@@ -51,6 +51,22 @@ export const FLAG_ENTRIES: Record<string, FlagEntry> = {
     "attribution": "Public domain — Unknown  (Vector graphics image by Ian Fieggen) (only minor code changes by uploader.) (via Wikimedia Commons, File:Flag of Australia (converted).svg)",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Australia_(converted).svg"
   },
+  "bd": {
+    "land": "Bangladesh",
+    "story": "Adopted on 17 January 1972: green for Bangladesh's lush land and a red disc, like the rising sun, for the sacrifice of the Liberation War.",
+    "altText": "Dark green flag with a large red circle slightly left of centre.",
+    "license": "Public domain",
+    "attribution": "Public domain — See File history below for details. (via Wikimedia Commons, File:Flag of Bangladesh.svg)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Bangladesh.svg"
+  },
+  "bg": {
+    "land": "Bulgaria",
+    "story": "Bulgaria's white-green-red flag was first adopted after the 1877-78 war for independence and was restored by the 1991 constitution.",
+    "altText": "Three equal horizontal stripes: white, green, red.",
+    "license": "Public domain",
+    "attribution": "Public domain; SVG by SKopp via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Bulgaria.svg"
+  },
   "br": {
     "land": "Brazil",
     "story": "Adopted on 19 November 1889: a blue globe of stars and the motto Ordem e Progresso inside a yellow diamond on a green field.",
@@ -83,6 +99,14 @@ export const FLAG_ENTRIES: Record<string, FlagEntry> = {
     "attribution": "Public domain — Zeng Liansong (via Wikimedia Commons, File:Flag of the People's Republic of China.svg)",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_the_People's_Republic_of_China.svg"
   },
+  "co": {
+    "land": "Colombia",
+    "story": "Colombia's wide yellow band takes up half the flag; its yellow-blue-red stripes took today's arrangement in 1861.",
+    "altText": "A wide yellow top stripe over thinner blue and red horizontal stripes.",
+    "license": "Public domain",
+    "attribution": "Public domain; SVG via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Colombia.svg"
+  },
   "cu": {
     "land": "Cuba",
     "story": "Designed in 1849 and adopted on 20 May 1902: the Lone Star flag's red triangle holds one white star beside blue-white stripes.",
@@ -114,6 +138,22 @@ export const FLAG_ENTRIES: Record<string, FlagEntry> = {
     "license": "Public domain",
     "attribution": "Public domain — Madden and others (via Wikimedia Commons, File:Flag of Denmark.svg)",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Denmark.svg"
+  },
+  "dz": {
+    "land": "Algeria",
+    "story": "Adopted on 3 July 1962: green and white bands with a red star and crescent in the centre, a symbol of Islam.",
+    "altText": "Green and white vertical halves with a red crescent and a red star in the centre.",
+    "license": "Public domain",
+    "attribution": "Public domain — Original: National Liberation Front of Algeria Vector: SKopp (via Wikimedia Commons, File:Flag of Algeria.svg)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Algeria.svg"
+  },
+  "ee": {
+    "land": "Estonia",
+    "story": "Estonia's blue-black-white flag became the national flag in 1918, was banned under Soviet rule, and flew freely again from 1988.",
+    "altText": "Three equal horizontal stripes: blue, black, white.",
+    "license": "Public domain",
+    "attribution": "Public domain; SVG by Original: Unknown author Vector: SKopp , PeepP and ‍others via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Estonia.svg"
   },
   "eg": {
     "land": "Egypt",
@@ -203,6 +243,22 @@ export const FLAG_ENTRIES: Record<string, FlagEntry> = {
     "attribution": "Public domain — Government of India (via Wikimedia Commons, File:Flag of India.svg)",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_India.svg"
   },
+  "iq": {
+    "land": "Iraq",
+    "story": "Iraq's red-white-black flag, in its current form since 2008, carries the takbir - 'God is greatest' - in green Kufic script.",
+    "altText": "Red, white and black horizontal stripes with green Arabic writing across the white stripe.",
+    "license": "Public domain",
+    "attribution": "Public domain; SVG via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Iraq.svg"
+  },
+  "ir": {
+    "land": "Iran",
+    "story": "Iran's green-white-red flag took its current form in 1980; its centre emblem builds the word 'Allah' from four crescents and a sword.",
+    "altText": "Green, white and red horizontal stripes with a red emblem in the centre and white script along the inner stripe edges.",
+    "license": "Public domain",
+    "attribution": "Public domain; SVG by SVG file: SiBr 4 Designer: Hamid Nadimi Construction: ISIRI via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Iran.svg"
+  },
   "is": {
     "land": "Iceland",
     "story": "Set by law on 17 June 1944, the day Iceland became a republic: a white cross on sky blue with a fiery-red cross inside it.",
@@ -235,6 +291,22 @@ export const FLAG_ENTRIES: Record<string, FlagEntry> = {
     "attribution": "Public domain — Original: Government of the Republic of Korea Vector:  Great Brightstar and others (via Wikimedia Commons, File:Flag of South Korea.svg)",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_South_Korea.svg"
   },
+  "ma": {
+    "land": "Morocco",
+    "story": "Morocco's flag has flown since 1915: a green five-pointed star, standing for the five pillars of Islam, centred on a red field.",
+    "altText": "Plain red flag with a green five-pointed star outline in the centre.",
+    "license": "Public domain",
+    "attribution": "Public domain; SVG by Denelson83 , Zscout370 via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Morocco.svg"
+  },
+  "ng": {
+    "land": "Nigeria",
+    "story": "Designed by Taiwo Akinkunmi, Nigeria's flag flew first at independence in 1960; green is for farming, white for peace and unity.",
+    "altText": "Three equal vertical stripes: green, white, green.",
+    "license": "Public domain",
+    "attribution": "Public domain; SVG by Jon Harald Søby . via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Nigeria.svg"
+  },
   "nl": {
     "land": "Netherlands",
     "story": "The world's oldest tricolour still in use: red, white and blue that grew from the 1500s orange-white-blue Prince's Flag.",
@@ -242,6 +314,14 @@ export const FLAG_ENTRIES: Record<string, FlagEntry> = {
     "license": "Public domain",
     "attribution": "Public domain — Zscout370 (via Wikimedia Commons, File:Flag of the Netherlands.svg)",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_the_Netherlands.svg"
+  },
+  "no": {
+    "land": "Norway",
+    "story": "Norway's red flag has a blue cross outlined in white; crosses reaching the edges are a tradition shared by its Nordic neighbours.",
+    "altText": "Red flag with a white-outlined navy blue cross reaching the edges, shifted toward the pole.",
+    "license": "Public domain",
+    "attribution": "Public domain; SVG by Original: Fredrik Meltzer Vector: Gutten på Hemsen via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Norway.svg"
   },
   "np": {
     "land": "Nepal",
@@ -291,6 +371,14 @@ export const FLAG_ENTRIES: Record<string, FlagEntry> = {
     "attribution": "Public domain — via Wikimedia Commons (File:Flag of Portugal.svg)",
     "sourceUrl": "https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/pt.svg"
   },
+  "ro": {
+    "land": "Romania",
+    "story": "Romania's blue-yellow-red vertical stripes took their current form in 1989, in the wake of the Romanian Revolution.",
+    "altText": "Three equal vertical stripes: blue, yellow, red.",
+    "license": "Public domain",
+    "attribution": "Public domain; SVG by AdiJapan via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Romania.svg"
+  },
   "ru": {
     "land": "Russia",
     "story": "Three equal horizontal bands — white on top, blue in the middle and red at the bottom — make up Russia's tricolour.",
@@ -323,6 +411,14 @@ export const FLAG_ENTRIES: Record<string, FlagEntry> = {
     "attribution": "Public domain — Zscout370 (via Wikimedia Commons, File:Flag of Thailand.svg)",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Thailand.svg"
   },
+  "tn": {
+    "land": "Tunisia",
+    "story": "Created after the Battle of Navarino on 20 October 1827 by Hussein II: a red flag with a white disc holding a red crescent and star, clarified by law in 1999.",
+    "altText": "Red flag with a white circle in the centre holding a red crescent and a red five-pointed star.",
+    "license": "Public domain",
+    "attribution": "Public domain — Various Wikimedia Commons' contributors (via Wikimedia Commons, File:Flag of Tunisia.svg)",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Tunisia.svg"
+  },
   "ua": {
     "land": "Ukraine",
     "story": "Two equally sized horizontal bands — blue on top and yellow below — make up Ukraine's national flag.",
@@ -346,6 +442,14 @@ export const FLAG_ENTRIES: Record<string, FlagEntry> = {
     "license": "Public domain",
     "attribution": "Benny Benson — It is an edited form of a file from openclipart.org , specifically usa_alaska.svg .",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Alaska.svg"
+  },
+  "us-al": {
+    "land": "Alabama",
+    "story": "Alabama's flag, adopted in 1895, is a crimson diagonal cross of St Andrew on white, designed by lawmaker John W. A. Sanford Jr.",
+    "altText": "White flag with a crimson red diagonal cross running from corner to corner.",
+    "license": "Public domain",
+    "attribution": "Public domain; SVG by Steve Hall via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Alabama.svg"
   },
   "us-ar": {
     "land": "Arkansas",
@@ -418,6 +522,14 @@ export const FLAG_ENTRIES: Record<string, FlagEntry> = {
     "license": "Public domain",
     "attribution": "John Eisenmann — Own work based on: The Ohio State Flag (design).jpg and US D34810 S.pdf and http://www.sos.state.oh.us/sos/upload/publications/agency/flag-110.pdf",
     "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Ohio.svg"
+  },
+  "us-ri": {
+    "land": "Rhode Island",
+    "story": "Rhode Island's white flag rings a gold anchor - a symbol of hope - with 13 gold stars for the original Thirteen Colonies.",
+    "altText": "White flag with a gold anchor in the centre, ringed by 13 gold stars, above a blue ribbon reading HOPE.",
+    "license": "Public domain",
+    "attribution": "Public domain; SVG by Xrmap flag collection 2.7 via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Flag_of_Rhode_Island.svg"
   },
   "us-tn": {
     "land": "Tennessee",

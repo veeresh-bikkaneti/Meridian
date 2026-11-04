@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "montpelier-vermont",
+  "target": {
+    "placeId": "gn-5238685",
+    "name": "Montpelier",
+    "aliases": [],
+    "lat": 44.26006,
+    "lon": -72.57539,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Vermont",
+    "iso2": "US",
+    "subdivision": "Vermont"
+  },
+  "subjectAnswer": {
+    "name": "Vermont",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Vermont",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This tiny town has a flat heart, ringed by hills and hard rock. It sits in the north mid part of a green hill state.",
+      "narrowing": "Points to a tiny city in a flat pocket ringed by hills in a mountain state.",
+      "source": {
+        "article": "Montpelier, Vermont",
+        "url": "https://en.wikipedia.org/wiki/Montpelier%2C_Vermont",
+        "quote": "The city center is a flat clay zone (elevation 520 ft; 160 m), surrounded by hills and granite ledges."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are long, cold, and snowy, with snow staying on the ground for long stretches. Summers are warm and humid.",
+      "narrowing": "Keeps mountain-state capitals with long, snowy winters.",
+      "source": {
+        "article": "Montpelier, Vermont",
+        "url": "https://en.wikipedia.org/wiki/Montpelier%2C_Vermont",
+        "quote": "Montpelier features a humid continental climate (Köppen Dfb), with long, cold, and snowy winters, short springs and autumns, and warm, humid summers."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This town was selected as the state capital in 1805. Its own citizens donated money to build the first state house.",
+      "narrowing": "Cuts the list to the town selected as capital in 1805, whose citizens funded the state house.",
+      "source": {
+        "article": "Montpelier, Vermont",
+        "url": "https://en.wikipedia.org/wiki/Montpelier%2C_Vermont",
+        "quote": "Montpelier was selected as state capital in 1805, and citizens of the town donated funds to build the first state house."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This is the least populous state capital in the United States. It is so small that it has no McDonald's restaurant at all.",
+      "narrowing": "Nearly decisive: only one capital is the nation's least populous.",
+      "source": {
+        "article": "Montpelier, Vermont",
+        "url": "https://en.wikipedia.org/wiki/Montpelier%2C_Vermont",
+        "quote": "The site of Vermont's state government, it is the least populous state capital in the United States."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Vermont works in this tiny city. Lawmakers meet in its state house, a short walk from the river.",
+      "narrowing": "Confirms it: the governor and lawmakers of Vermont work in this city.",
+      "source": {
+        "article": "Montpelier, Vermont",
+        "url": "https://en.wikipedia.org/wiki/Montpelier%2C_Vermont",
+        "quote": "is the capital city of the U.S. state of Vermont"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Picked as the capital in 1805 for its spot near the center of the state, this little river town has fewer people than any other state capital. Its gold-domed state house faces the river, and red hearts cover its shop windows every Valentine's Day. Montpelier is the capital of Vermont."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Montpelier%2C_Vermont"
+  },
+  "pointPolicy": "geonames-point"
+}
