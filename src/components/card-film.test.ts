@@ -154,15 +154,15 @@ describe("home wiring — five cards, one component, nothing else moves", () => 
       "GeoDetective slot",
     );
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-pic" media={COLDTRAIL_FILM} testId="card-film-coldtrail" />'),
-      "Cold Trail slot",
+      gameApp.includes('<CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" />'),
+      "Cold Trail slot (band-variant selector, Units 2–3 — the selector returns the standard entry for every band but 5-7)",
     );
   });
 
   it("all three .hv5-art slots render CardFilm with their card-media entries", () => {
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-art" media={REVIEW_FILM} testId="card-film-review" />'),
-      "Review slot",
+      gameApp.includes('<CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" />'),
+      "Review slot (band-variant selector, Units 2–3 — the selector returns the standard entry for every band but 8-10)",
     );
     assert.ok(
       gameApp.includes('<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" />'),
