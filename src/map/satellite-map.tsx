@@ -959,15 +959,25 @@ export function SatelliteMap(props: {
     maxBoundsRef.current = initialMaxBounds ?? null;
     mapRef.current = map;
     // Issue #330: the unknown-memory trial's soak timer (armed in the
-    // load handler below). Cleared on teardown and on context loss —
-    // a Scout map that lost its context has not proved stable.
+    // load handler below; see its comment there for how the timer
+    // relates to shouldFireScoutUpgrade in src/map/capability.ts).
+    // Cleared on teardown and on context loss — a Scout map that lost
+    // its context has not proved stable.
     let scoutUpgradeTimer: number | undefined;
 
     if (mapMode === "scout") {
       // PBI-4: the outline style has no external resources — any map error
       // is a real render failure, so drop to the static SVG fallback and
       // keep the game playable instead of stranding it on a dead canvas.
-      map.on("error", () => setScoutFallback(true));
+      map.on("error", () => {
+        // Issue #330: a failed Scout render has not proved stable —
+        // cancel the upgrade soak so it cannot fire from this mount.
+        if (scoutUpgradeTimer !== undefined) {
+          window.clearTimeout(scoutUpgradeTimer);
+          scoutUpgradeTimer = undefined;
+        }
+        setScoutFallback(true);
+      });
     }
 
     // Observability: a lost WebGL context is a field signal for GPU /
@@ -980,7 +990,10 @@ export function SatelliteMap(props: {
     const onWebglContextLost = () => {
       emitWebglContextLost();
       // Issue #330: a context loss during the soak cancels the upgrade.
-      if (scoutUpgradeTimer !== undefined) window.clearTimeout(scoutUpgradeTimer);
+      if (scoutUpgradeTimer !== undefined) {
+        window.clearTimeout(scoutUpgradeTimer);
+        scoutUpgradeTimer = undefined;
+      }
       try {
         if (mapModeRef.current !== "full") return;
         const owner = onWebglContextLostPropRef.current;
@@ -1632,6 +1645,12 @@ export function SatelliteMap(props: {
       // The soak starts at the first idle (Scout has no tiles, so idle
       // is the first completed render) and fires once with the LIVE
       // viewport, mirroring the context-lost switch's view capture.
+      // This timer implements the soak half of shouldFireScoutUpgrade
+      // (src/map/capability.ts); the gate's other conditions (no stored
+      // record, no prior crash, unknown-memory source) hold by
+      // construction, because boot eligibility is only ever set for the
+      // unknown-memory branch of planBootMapMode, after qualifyMapMode's
+      // precedence order has already ruled the other conditions out.
       if (mapMode === "scout" && onScoutUpgradePropRef.current) {
         map.once("idle", () => {
           scoutUpgradeTimer = window.setTimeout(() => {
