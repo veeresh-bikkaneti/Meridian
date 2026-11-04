@@ -36,6 +36,7 @@
 
 import { CURRENT_BUILD_ID } from "../game/build-staleness.ts";
 import { isUncleanShutdown, type CleanExitStorage } from "../game/clean-exit.ts";
+import { hasDurableMapCrashMarker, writeDurableMapCrashMarker } from "../map/capability.ts";
 
 export const BREADCRUMB_KEY = "meridian.breadcrumb";
 export const MAX_HISTORY = 12;
@@ -168,6 +169,13 @@ export interface ObsTransport {
 
 export interface ObservabilityDeps {
   storage?: ObsStorage | null;
+  /**
+   * Issue #330: localStorage-backed store for the durable map-crash
+   * marker. Separate from `storage` (sessionStorage) on purpose — the
+   * marker exists to survive the session store's loss. Defaults to the
+   * real localStorage; tests inject a fake.
+   */
+  durableStorage?: ObsStorage | null;
   transport?: ObsTransport;
   endpoint?: string | null;
   now?: () => number;
@@ -190,6 +198,15 @@ function defaultStorage(): ObsStorage | null {
   try {
     if (typeof sessionStorage === "undefined") return null;
     return sessionStorage;
+  } catch {
+    return null;
+  }
+}
+
+function defaultDurableStorage(): ObsStorage | null {
+  try {
+    if (typeof localStorage === "undefined") return null;
+    return localStorage;
   } catch {
     return null;
   }
@@ -675,7 +692,9 @@ export interface Observability {
    * PBI-6: true when the previous boot's trail says the page was killed
    * while the map was mounted (last milestone map_init_start/map_ready).
    * Set once during init(); drives the Scout Map boot offer (offer, not
-   * force — see capability.ts Q1).
+   * force — see capability.ts Q1). Issue #330: also true when the
+   * durable localStorage map-crash marker is inside its decay window,
+   * even if the session trail is gone.
    */
   wasMapAttributedCrash: () => boolean;
   /** PBI-8: record the current map mount's tile-failure count on the trail. */
@@ -708,6 +727,8 @@ export function setReportMapMode(mode: "full" | "scout"): void {
 
 export function createObservability(deps: ObservabilityDeps = {}): Observability {
   const storage: ObsStorage | null = deps.storage !== undefined ? deps.storage : defaultStorage();
+  const durableStorage: ObsStorage | null =
+    deps.durableStorage !== undefined ? deps.durableStorage : defaultDurableStorage();
   const transport: ObsTransport = deps.transport ?? defaultTransport();
   const now = deps.now ?? (() => Date.now());
   const randomId = deps.randomId ?? defaultRandomId;
@@ -1144,8 +1165,30 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       // PBI-6: map-attributed crash detection — the previous page was
       // killed AND its trail ends at a map-mounted milestone. This is the
       // signal behind the Scout Map boot offer (offer, not force).
-      mapAttributedCrash =
+      const sessionMapCrash =
         unclean && !!prev && MAP_ATTRIBUTED_MILESTONES.has(prev.lastMilestone);
+      // Issue #330: make that signal durable. A session-detected crash
+      // also stamps the localStorage marker; later boots whose session
+      // trail is gone (tab discarded, fresh visit) still read the crash
+      // from the marker inside its 7-day decay window. The marker is
+      // written ONLY on a session detection — never refreshed by a
+      // marker-only read, or weekly boots would slide the decay forever.
+      // This changes only the wasMapAttributedCrash() input's lifetime;
+      // the suspected_crash emit below still requires the session trail.
+      let durableMapCrash = false;
+      try {
+        durableMapCrash = hasDurableMapCrashMarker(durableStorage, now());
+      } catch {
+        durableMapCrash = false;
+      }
+      if (sessionMapCrash) {
+        try {
+          writeDurableMapCrashMarker(durableStorage, now());
+        } catch {
+          // Best-effort: the session signal already drives this boot.
+        }
+      }
+      mapAttributedCrash = sessionMapCrash || durableMapCrash;
       if (unclean && prev) {
         // COPPA: the stored trail's device sub-object carries the raw UA
         // string (device.ua) — it must never leave the phone. Mirror the
