@@ -1,3 +1,28 @@
+# Branch status — feat/345-crash-severity (issue #345: crash-report severity grades + watchdog stamp)
+
+- **Branch:** `feat/345-crash-severity`
+- **Base:** `main` @ `68ff2c7`
+- **Authority:** issue #345 + the owner-adopted swarm design (2026-11-04, Slice B): grades S1/S2a/S2b/S3, threshold ≥3 (owner's pick over the draft's ≥2), ungraded absolutes, and the watchdog-stamp client fix commissioned in the same decision.
+- **State:** READY PR — no merge (panel + owner's word follow).
+
+## Task capsule
+
+- TASK: worker-side `severityOf` (inputs: the re-derived verdict + the stamped `unfinishedBoots` streak only; first-match, fail-closed); the alert's priority line leads with the grade and its why line gains one `Severity: …` clause; the digest gains one counted `severities` dimension and severity-led headers; the boot watchdog stamps the durable boot-health streak read-only onto `boot_failure` so those reports can grade S1.
+- Tier: 2-shaped (worker + client telemetry surfaces, 3+ files). The owner-adopted design is the manifest of record for this task; the panel reviews the final tip after this PR opens.
+- Protected/out of scope: the verdict derivation itself (severity consumes it, never alters it), the P1–P4 mapping, other PRs, branch protection.
+- Model-vs-code note: the inline watchdog's byte budget could not absorb the stamp (worst case was 6,104 of 6,144 bytes) — the budget rose to 6,656 (new worst case 6,441), documented in `scripts/crash-watchdog.mjs` and its test. No telemetry-manifest change was needed: `unfinishedBoots` was already a manifest field, so client + worker + parity stayed in lockstep with no field added.
+
+## Record
+
+- [x] Worker (`workers/crash-report/src/index.ts`): `severityOf` + `SEVERITY_STREAK_THRESHOLD = 3`; `buildAlert` severity lead + clause in Discord and email; `CountBucket.severities` (read-tolerant for pre-#345 buckets), counted in `recordTelemetry`, rendered in type blocks, worst-grade lead in the digest priority line. Tests 109 → 127 (+18: every grade boundary incl. exactly 3, absent-streak fallback wording, stamped-zero wording, ungraded absoluteness at streak 99 for both ungraded verdicts, alert rendering, severities counting, old-bucket tolerance, ungraded-only digest).
+- [x] Watchdog stamp (`scripts/crash-watchdog.mjs`): read-only `ds()` localStorage reader; send-time parse of `meridian:boot-health` (v:1 shape required, floor, 0..99 clamp — mirrors `readBootHealth`); stamps only when a value was read; never writes the record (the §4.4 invariant stands). Inline budget 6,144 → 6,656 with the reason recorded in the module. Tests +8 stamp cases (watchdog file 55/55).
+- [x] Docs: worker README gains a Severity grades section, the updated digest example, the bucket field, and the test count; `docs/observability.md` alert/digest examples and reading notes updated to the new rendering.
+- [x] Gates: worker 127/127 + `typecheck:worker` clean; `npm test` — scripts 1011 pass / 0 fail, src 2119/2119; `tsc` clean; lint-cards GATE PASSED; `build:pages` green. Redundancy audit: one severity derivation (`severityOf`; counting routes through `severityKeyOf` → `severityOf`), one watchdog stamp path.
+- [x] E2E (flock, workers=1, chromium-1243): crash-watchdog + crash-classification + crash-loop-breaker + observability — 12 passed, 2 failed on the pre-existing `storyteller_ready` milestone race: `crash-watchdog:164` fails identically on unmodified main in a clean sequential run, `crash-classification:169` passes in an isolated A/B on both builds, and the two production dists are byte-identical except `_shell.html`. Not a #345 regression.
+- [x] Visuals (owner addition, 2026-11-04): production build at 6 viewports (360×740, 390×844, 430×932, 768×1024, 1440×900, 1920×1080) — boot path exercised, first paint complete 6/6, no watchdog veil; home byte-identical to main at 360/390 and visually identical at 430; the real WebGL globe renders at 360/390/430/1440. Globe captures at 768/1920 are blocked by renderer crashes that hit unmodified main identically (VM SwiftShader + /tmp at 93%) — environment, not a regression. Satellite imagery tiles do not load from sandbox Chromium (no external network); the globe renders its boundary/starfield state with Esri attribution. Evidence: `evidence/visuals-345/` in this worktree (untracked) + Discord samples rendered by both worker versions; links in the PR body.
+
+---
+
 # Branch status — feat/capitals-flags-phase1 (Capitals & Flags, Phase 1)
 
 - **Branch:** `feat/capitals-flags-phase1`

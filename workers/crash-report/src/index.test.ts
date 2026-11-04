@@ -23,6 +23,8 @@ import {
   MAX_GROUP_KEYS,
   missingStampNames,
   normaliseEvent,
+  severityKeyOf,
+  severityOf,
   verdictFactsOf,
   handleRequest,
   hourLabelOf,
@@ -1675,16 +1677,16 @@ test("#330 fixture: the enriched shape settles to developer_needed/fg_kill_curre
   assert.deepEqual(missingStampNames(verdictFactsOf(incident330Event())), []);
 });
 
-test("golden: buildAlert Discord for the #330 event equals DESIGN-FINAL §5.5 verbatim", () => {
+test("golden: buildAlert Discord for the #330 event (§5.5 shape, #345 severity lead)", () => {
   const alert = buildAlert(incident330Event());
   assert.equal(
     alert.discord,
     [
       "🚨 FIX — Developer action needed",
       "Meridian crash report",
-      "priority: P1 — current build, foreground kill at map loading, phone-class iOS 16",
+      "priority: S1 · P1 — current build, foreground kill at map loading, phone-class iOS 16",
       "verdict: developer action needed",
-      "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown.",
+      "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown. Severity: S1 — 3 unfinished boots in a row with no clean boot since; the player most likely left and never got back in (player-left is INFERRED from the missing clean boot, not observed).",
       "why-code: fg_kill_current",
       "action: Read the error below.",
       "type: suspected_crash · build: c6853be",
@@ -1708,8 +1710,8 @@ test("golden: buildAlert email body for the #330 event (full string)", () => {
       "Meridian crash report",
       "",
       "verdict: developer action needed",
-      "priority: P1 — current build, foreground kill at map loading, phone-class iOS 16",
-      "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown.",
+      "priority: S1 · P1 — current build, foreground kill at map loading, phone-class iOS 16",
+      "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown. Severity: S1 — 3 unfinished boots in a row with no clean boot since; the player most likely left and never got back in (player-left is INFERRED from the missing clean boot, not observed).",
       "why-code: fg_kill_current",
       "action: Read the error below.",
       "type:            suspected_crash",
@@ -1732,7 +1734,7 @@ test("golden: buildAlert email body for the #330 event (full string)", () => {
 test("alert/email parity: every manifest field's rendered value appears in BOTH bodies", () => {
   const alert = buildAlert(incident330Event());
   const renderedValues = [
-    "P1 — current build, foreground kill at map loading, phone-class iOS 16",
+    "S1 · P1 — current build, foreground kill at map loading, phone-class iOS 16",
     "fg_kill_current",
     "2026-11-03T17:42:00.000Z",
     "ios/mobile · phone · Safari 16.4 · WebKit · iOS 16.4.1 (UA-parsed)",
@@ -1763,7 +1765,7 @@ test("legacy shape: missing bgTerminal still classifies missing_fields, and the 
   const alert = buildAlert(legacy);
   const lines = alert.discord.split("\n");
   assert.equal(lines[0], "❔ WAIT — Can't tell from this report");
-  assert.equal(lines[2], "priority: P3 — current build, evidence incomplete, phone-class iOS 16");
+  assert.equal(lines[2], "priority: ungraded · P3 — current build, evidence incomplete, phone-class iOS 16");
   assert.ok(
     alert.discord.includes("evidence: bgTerminal ✗ · buildReplaced ✓ · trailStuck ✓ · lcV ✓"),
     "evidence line names the missing stamp",
@@ -1841,16 +1843,16 @@ test("golden: renderDigest for the §5.3 two-event hour (full string)", async ()
     [
       "📊 Meridian telemetry — hourly digest",
       "hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)",
-      "priority: P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone",
+      "priority: S1 · P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone",
       "",
       "suspected_crash 1 · first 17:42 · last 17:42",
       "  builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1",
       "  groups: c6853be|ios|16|phone ×1",
-      "  verdicts: developer_needed/fg_kill_current ×1 · modes: scout ×1 · steps: map_init_start ×1",
+      "  verdicts: developer_needed/fg_kill_current ×1 · severities: S1 ×1 · modes: scout ×1 · steps: map_init_start ×1",
       "js_error 1 · first 17:05 · last 17:05",
       "  builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1",
       "  groups: 2a0527f|android|unknown|phone ×1",
-      "  verdicts: developer_needed/captured_error ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1",
+      "  verdicts: developer_needed/captured_error ×1 · severities: S2b ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1",
       "",
       "alerts this hour: none",
     ].join("\n"),
@@ -1890,6 +1892,169 @@ test("digest: a counted event outside the receipt hour labels its type line as l
   );
   const digest = await renderDigest(store, t0 + HOUR_MS);
   assert.ok(digest?.includes("tile_failed 1 · first 17:10 · last 17:10 (some reports arrived late)"));
+});
+
+// --- Issue #345: severity grades -----------------------------------------
+//
+// The grade derives ONLY from the re-derived verdict + the stamped
+// unfinished-boot streak. Boundaries pinned: threshold exactly 3,
+// absent-streak fallback wording, and the ungraded absoluteness of
+// insufficient_evidence / not_a_real_issue at any streak.
+
+function bootFailureEvent(overrides: Record<string, unknown> = {}): CrashReportEvent {
+  return {
+    type: "boot_failure",
+    ts: Date.UTC(2026, 10, 3, 17, 42, 0),
+    buildId: "c6853be",
+    error: { name: "Error", message: "boot timeout" },
+    ...overrides,
+  } as CrashReportEvent;
+}
+
+function recoveryEvent(overrides: Record<string, unknown> = {}): CrashReportEvent {
+  return {
+    type: "recovery_outcome",
+    ts: Date.UTC(2026, 10, 3, 17, 42, 0),
+    buildId: "c6853be",
+    recoveryOutcome: "confirmed",
+    ...overrides,
+  } as unknown as CrashReportEvent;
+}
+
+test("severity: developer_needed at exactly the threshold streak (3) grades S1", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: 3 }));
+  assert.equal(read?.grade, "S1");
+  assert.equal(read?.streak, 3);
+  assert.ok(read?.clause.includes("INFERRED"), "player-left is labelled inferred, never observed");
+});
+
+test("severity: developer_needed just below the threshold (2) grades S2b", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: 2 }));
+  assert.equal(read?.grade, "S2b");
+  assert.ok(read?.clause.includes("boot streak is 2"), "clause carries the stamped streak");
+});
+
+test("severity: developer_needed at streak 99 still grades S1 (no upper edge)", () => {
+  assert.equal(severityOf(bootFailureEvent({ unfinishedBoots: 99 }))?.grade, "S1");
+});
+
+test("severity: developer_needed with NO stamped streak grades S2b and says it was not stamped", () => {
+  const read = severityOf(bootFailureEvent());
+  assert.equal(read?.grade, "S2b");
+  assert.equal(read?.streak, null);
+  assert.ok(read?.clause.includes("was not stamped"), "the fallback grade names its missing evidence");
+  assert.ok(!read?.clause.includes("boot streak is"), "no invented streak number");
+});
+
+test("severity: developer_needed at streak 0 grades S2b without the not-stamped wording", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: 0 }));
+  assert.equal(read?.grade, "S2b");
+  assert.ok(read?.clause.includes("boot streak is 0"));
+  assert.ok(!read?.clause.includes("was not stamped"), "a stamped zero is evidence, not absence");
+});
+
+test("severity: auto_fixed at the threshold streak (3) grades S2a", () => {
+  const read = severityOf(recoveryEvent({ unfinishedBoots: 3 }));
+  assert.equal(read?.grade, "S2a");
+  assert.ok(read?.clause.includes("only after 3 unfinished boots"));
+});
+
+test("severity: auto_fixed above the threshold (7) grades S2a", () => {
+  assert.equal(severityOf(recoveryEvent({ unfinishedBoots: 7 }))?.grade, "S2a");
+});
+
+test("severity: auto_fixed below the threshold (2) grades S3", () => {
+  const read = severityOf(recoveryEvent({ unfinishedBoots: 2 }));
+  assert.equal(read?.grade, "S3");
+  assert.ok(read?.clause.includes("fixed itself"));
+});
+
+test("severity: auto_fixed with NO stamped streak grades S3 and says so", () => {
+  const read = severityOf(recoveryEvent());
+  assert.equal(read?.grade, "S3");
+  assert.equal(read?.streak, null);
+  assert.ok(read?.clause.includes("no boot streak was stamped"));
+});
+
+test("severity: auto_fixed at streak 0 grades S3", () => {
+  assert.equal(severityOf(recoveryEvent({ unfinishedBoots: 0 }))?.grade, "S3");
+});
+
+test("severity: insufficient_evidence is NEVER graded, even at streak 99", () => {
+  const event = incident330Event({ unfinishedBoots: 99 });
+  delete (event as Record<string, unknown>).bgTerminal;
+  assert.equal(deriveVerdict(event).verdict, "insufficient_evidence");
+  assert.equal(severityOf(event), null);
+  assert.equal(severityKeyOf(event), "ungraded");
+});
+
+test("severity: not_a_real_issue is NEVER graded, even at streak 99", () => {
+  const event = incident330Event({ unfinishedBoots: 99, bgTerminal: true, trailStuck: false });
+  assert.equal(deriveVerdict(event).verdict, "not_a_real_issue");
+  assert.equal(severityOf(event), null);
+  assert.equal(severityKeyOf(event), "ungraded");
+});
+
+test("severity: hiccup-class events (tile_failed) stay ungraded", () => {
+  const event = bootFailureEvent({ type: "tile_failed", unfinishedBoots: 50 });
+  delete (event as Record<string, unknown>).error;
+  assert.equal(severityOf(event), null);
+});
+
+test("severity: the alert leads priority with the grade and appends the clause to why", () => {
+  const alert = buildAlert(incident330Event());
+  assert.ok(alert.discord.includes("priority: S1 · P1 — "), "discord priority is severity-led");
+  assert.ok(alert.emailBody.includes("priority: S1 · P1 — "), "email parity");
+  assert.ok(alert.discord.includes("Severity: S1 — 3 unfinished boots in a row"), "why gains the clause");
+  assert.ok(alert.emailBody.includes("Severity: S1 — 3 unfinished boots in a row"), "email parity");
+});
+
+test("severity: an ungraded alert renders 'ungraded' and gains NO Severity clause", () => {
+  const event = incident330Event();
+  delete (event as Record<string, unknown>).bgTerminal;
+  const alert = buildAlert(event);
+  assert.ok(alert.discord.includes("priority: ungraded · P3 — "));
+  assert.ok(!alert.discord.includes("Severity:"), "no clause is invented for an ungraded verdict");
+  assert.ok(!alert.emailBody.includes("Severity:"));
+});
+
+test("severity counting: recordTelemetry tallies grades per bucket, ungraded included", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 3 }), t0, cfg);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 4 }), t0, cfg);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 1 }), t0, cfg);
+  await recordTelemetry(store, bootFailureEvent(), t0, cfg);
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "boot_failure")))!;
+  assert.deepEqual(bucket.severities, { S1: 2, S2b: 2 });
+});
+
+test("severity counting: a pre-#345 bucket JSON without severities reads back as an empty map", async () => {
+  const legacy = JSON.stringify({ total: 3, builds: { abc123: 3 } });
+  const store = kvTelemetryStore({
+    get: async () => legacy,
+    put: async () => {},
+  });
+  const bucket = await store.readBucket(bucketKey("2026-11-03T17", "boot_failure"));
+  assert.deepEqual(bucket?.severities, {});
+});
+
+test("severity digest: an hour of only ungraded events keeps the plain priority line", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
+  await recordTelemetry(
+    store,
+    validEvent({ type: "tile_failed" }) as unknown as CrashReportEvent,
+    t0,
+    cfg,
+  );
+  const digest = await renderDigest(store, t0 + HOUR_MS);
+  assert.ok(digest, "digest produced");
+  const priorityLine = digest.split("\n").find((l) => l.startsWith("priority:"))!;
+  assert.ok(priorityLine.startsWith("priority: P3 — "), `no severity lead without a graded event: ${priorityLine}`);
+  assert.ok(digest.includes("severities: ungraded ×1"), "the counted dimension still renders");
 });
 
 test("classifier freeze: the fixture tables still classify exactly as pinned (byte-identical behaviour)", () => {
