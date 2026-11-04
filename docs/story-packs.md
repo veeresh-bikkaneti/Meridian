@@ -47,10 +47,10 @@ Recorded from the owner's voice call of 2026-11-02 (no transcript):
 
 A fallback deal is always labeled as what it is. The case screen
 says, in one plain sentence, where the open case came from — "This
-case is from your Capitals deck." or "This case is from All
+case is from your Capitals & Flags deck." or "This case is from All
 cases." When a pack could not load and the deal fell back, that
-same sentence spot carries the explanation instead ("Capitals
-couldn't load just now — this case is from All cases instead…"),
+same sentence spot carries the explanation instead ("Capitals &
+Flags couldn't load just now — this case is from All cases instead…"),
 and the shelf's next-case line stays quiet while it is up, so only
 one message speaks at a time. A core case is never presented as a
 pack case.

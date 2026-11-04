@@ -49,8 +49,8 @@ const REAL_PACK_MANIFEST = readFileSync(
   "utf8",
 );
 const FALLBACK_NOTICE =
-  "Capitals couldn’t load just now — this case is from All cases instead. Your next case will try Capitals again.";
-const PACK_SOURCE_LINE = "This case is from your Capitals deck.";
+  "Capitals & Flags couldn’t load just now — this case is from All cases instead. Your next case will try Capitals & Flags again.";
+const PACK_SOURCE_LINE = "This case is from your Capitals & Flags deck.";
 const CORE_SOURCE_LINE = "This case is from All cases.";
 
 test.beforeEach(async ({ context }) => {

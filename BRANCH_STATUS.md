@@ -38,6 +38,40 @@ minus the swapped-out lands), 2026-11-04. Final registry: 69 shipped
 - Sole conflict: this file. Resolved both-records: this branch's record above, main's #341 record appended below it; the accumulated records from main follow verbatim after it.
 - Code files auto-merged with no conflicts; the merged tree carries both #341's case-source sentence behaviour and this branch's flag layer (delta audit in the PR body merge-up note).
 
+## Composition cure — 2026-11-04 (owner word: "cure it")
+
+The merge-up's delta audit caught a semantic composition conflict —
+auto-merge was textually clean, but #341's fallback spec went red on
+the merged tree for two linked reasons. The merge-up stopped unpushed
+and the owner approved this cure:
+
+- **Ratified relabel vs #341's pins.** #341's case-source sentences
+  derive the deck name dynamically (`deckLabelForId`), so the
+  ratified "Capitals & Flags" relabel correctly flows into them;
+  #341's pinned expectations still said "Capitals". Cured by updating
+  the pins only (unit literal in `pack-shelf-data.test.ts`, the two
+  sentence constants in `pack-deal-fallback.desktop.spec.ts`, and the
+  §0 quotes in `docs/story-packs.md`). Production strings stay
+  dynamic; nothing was hardcoded.
+- **Two UI consumers, one manifest URL.** The Home doorway (#346)
+  and the pack shelf (#341's surface) each fetched the pack manifest
+  with no sharing, so under a first-request-succeeds/rest-fail
+  network the doorway consumed the good response and the shelf's
+  chip never rendered in the fallback state. Cured in
+  `fetchPackManifest` (`pack-shelf-data.ts`): UI callers on the
+  default path share one session-level load per pack (in-flight +
+  settled success cached); a load that settles to null is evicted so
+  the next mount retries. A caller passing its own fetcher always
+  gets a fresh uncached load, and the deal path is untouched — it
+  resolves the manifest with its own fetch in LoopScreen
+  (`resolveActivePack`), fresh at each deal, so a deal-time failure
+  still falls back to core with #341's notice.
+- **Proof:** the fallback spec passes 3/3 under its ORIGINAL
+  choreography (first manifest request fulfilled, every later one
+  aborted) — only its two string constants changed. Four new unit
+  tests pin the dedupe: shared in-flight load, settled-success reuse,
+  failure eviction + retry, injected-fetcher bypass both ways.
+
 ---
 
 # BRANCH_STATUS — fix/336-deck-identity
