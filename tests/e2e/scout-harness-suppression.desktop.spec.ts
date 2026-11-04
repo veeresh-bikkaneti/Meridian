@@ -32,7 +32,7 @@ import {
 
 test.setTimeout(120_000);
 
-test("default serve: weak VM boots full — no record, no note, full map mounts", async ({
+test("default serve: weak VM boots full — no record, no note, full map mounts @local-only", async ({
   context,
 }) => {
   // Default serve installs the capable-device spoof. The test itself
