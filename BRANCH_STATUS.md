@@ -1,4 +1,30 @@
-# Branch status — feat/crash-telemetry-stamps (combined crash-telemetry PR)
+# Branch status — feat/capitals-flags-phase1 (Capitals & Flags, Phase 1)
+
+- **Branch:** `feat/capitals-flags-phase1`
+- **Base:** `main` @ `7a35cbf`
+- **Authority:** issue #344 + owner decisions comment (2026-11-04, Veeresh: "All as recommended by the council chair")
+- **Design of record:** `~/workspace/meridian-capitals-flags/DESIGN.md` (arena C2 pack-grown, 16/18) + SYNTHESIS.md + SOURCES.md
+
+## Task capsule
+
+- TASK: grow the shipped Capitals pack in place — Wave 1: licence-verified flag layer on the existing 72 cases (relabel "Capitals & Flags", doorway strip on Home, flags only where the land's name is already on screen in text); Wave 2: +38 cases append-only at loop indexes 459–496 (22 state capitals → 50, 16 country capitals → 60), deck top-up migration, celebration target 72 → 110.
+- Tier: 2 (new feature, data + schema). The signed design package (#344 swarm → arena → owner ratification) is the Consensus Manifest for this task.
+- Ratified lines NOT to cross: no standalone edition; no flag as a hunt target; no manufactured flags or facts (per-file licence gate, unsourceable = flagless); challenges + shared session score stay OUT of v1; Cold Trail generation follows DESIGN.md §7 default (append-only; no silent reset).
+- Adjacency: PR #341 touches LoopScreen/pack-shelf on its own branch — this branch builds on current main and does not wait for it; a merge-up will reconcile.
+- Verification: packs:validate (Hyderabad gate), check-flags gate (Flagstaff), full unit suites, targeted + neighbour E2E (flock, workers=1), tsc, lint-cards, build:pages, bundle check on flag assets.
+
+## Wave record
+
+- [ ] Wave 1 — licence research pass (72 lands), flag registry + assets
+- [ ] Wave 1 — schema/composer/sidecar flagKey + flagStory, resolver, surfaces (briefing, Giveaway, both reveals, Cold Trail sightings), doorway strip, relabel
+- [ ] Wave 1 — deck top-up migration + tests
+- [ ] Wave 2 — +38 authored cases (inputs + records), Hyderabad audit 100%
+- [ ] Wave 2 — flags for the 38 new lands, celebration target → 110
+- [ ] Gates + screenshots + PR to READY (panel runs after; no merge)
+
+---
+
+# Previous record (as merged to main) — feat/crash-telemetry-stamps (combined crash-telemetry PR)
 
 - **Branch:** `feat/crash-telemetry-stamps`
 - **Base:** `fix/330-ios-unknown-memory-scout-first` @ `c890f80` (PR #331 merges first; this PR merges immediately after, with a merge-up and fresh CI)
