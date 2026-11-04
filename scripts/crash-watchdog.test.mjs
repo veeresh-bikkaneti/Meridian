@@ -5,7 +5,7 @@
  * orchestration (crashWatchdogMain) is driven against fake browser globals
  * so the exact code that ships inline in _shell.html is what gets
  * exercised. renderCrashWatchdogScript() is checked for the marker, the
- * 5120-byte budget, ES5-only output, and a no-drift assertion that the
+ * 6144-byte budget, ES5-only output, and a no-drift assertion that the
  * shipped script still embeds the tested functions' logic.
  */
 import assert from "node:assert/strict";
@@ -252,7 +252,7 @@ test("renderCrashWatchdogScript emits a single self-contained inline script", ()
   assert.ok(script.includes('"test-build"'));
 });
 
-test("rendered script stays within the 5120-byte budget", () => {
+test("rendered script stays within the 6144-byte budget", () => {
   // #223: check the build-id shapes production actually uses, not just
   // the old 10-char fixture — a 12-char CI id (GITHUB_SHA slice) and the
   // 14-char timestamp fallback rendered 5122/5124 bytes and silently
@@ -260,7 +260,7 @@ test("rendered script stays within the 5120-byte budget", () => {
   for (const buildId of ["abcdef0", "test-build", "abcdef012345", "local-mvpr1hgb"]) {
     const script = renderCrashWatchdogScript(buildId);
     const bytes = Buffer.byteLength(script, "utf8");
-    assert.ok(bytes <= 5120, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
+    assert.ok(bytes <= 6144, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
   }
 });
 

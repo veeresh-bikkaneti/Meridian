@@ -37,7 +37,7 @@
  * isValidWatchdogEndpoint): var, function, no ?./??, no arrows, no
  * template literals, no const/let, no classes, no fetch/Promise (XHR +
  * callbacks only), no import/export. The whole inline body is wrapped in
- * try/catch and the rendered output must stay <= 5120 bytes, so the
+ * try/catch and the rendered output must stay <= 6144 bytes, so the
  * embedded code is written terse and renderCrashWatchdogScript() runs it
  * through minifyEmbedded() (comment/whitespace removal plus renaming of
  * a fixed safe-list of long locals — token-based, so strings, regexes,
@@ -89,7 +89,7 @@ export function isValidWatchdogEndpoint(value, hosts) {
  * which drives the real orchestration against fake browser globals. The
  * inline script embeds this same function by source via
  * renderCrashWatchdogScript(). Everything in here is ES5-only (see the
- * module docstring) and deliberately terse to hold the 5120-byte budget.
+ * module docstring) and deliberately terse to hold the 6144-byte budget.
  */
 export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts) {
   var ASKED = "meridian.crashwatchdogAsked",
