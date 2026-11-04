@@ -17,16 +17,17 @@ Receives the events emitted by `src/lib/observability.ts` (schema:
   (hiccup-class behaviour), never forwarded individually.
 
 Every accepted event is also **counted** into per-hour buckets in a
-Workers KV namespace (`TELEMETRY_COUNTS`), keyed by UTC hour × type ×
-buildId × edition × region × os/form device bucket — **counts only**,
-no payloads, no identifiers.
+Workers KV namespace (`TELEMETRY_COUNTS`), keyed by UTC hour × type
+(the bucket also carries per-build, per-edition, per-region, and
+per-device-bucket breakdowns) — **counts only**, no payloads, no
+identifiers.
 
 ## Relationship to `worker/observability/` (v1)
 
 The v1 worker is the older **logging-only** receiver: it validates events
 and writes one structured JSON log line per event (read via
 `wrangler tail`). This worker lives in a **new directory on purpose** —
-the old one is untouched. It accepts the same schema **plus
+the old one is untouched. This worker accepts the same schema **plus
 `boot_failure`, `tile_failed`, and `recovery_outcome`** and forwards alerts instead of
 logging the full event.
 
@@ -92,7 +93,9 @@ plus a `scheduled` handler for the hourly digest.
     is missing, malformed, or throws, it fails open and the in-memory layer
     still applies.
 - Body cap: **8 KB**, enforced while streaming (a chunked upload is
-  cancelled at the cap, never buffered whole) → `413`. The app's own
+  cancelled at the cap, never buffered whole) → `413`. A declared
+  `Content-Length` over the cap is rejected with `413` before the
+  body is read. The app's own
   events are capped at 4 KB, and the boot watchdog's at 8 KB.
 - Schema: the documented fields with type and length caps; `device` and
   `breadcrumb.device` are limited to the 17 keys in the telemetry field
@@ -104,13 +107,15 @@ plus a `scheduled` handler for the hourly digest.
   `breadcrumb.history` ≤ 32 entries; any other top-level field must be
   a short primitive; at most 24 fields; `ts` between 2020-01-01 and
   one day in the future. Error `name`/`message` are truncated to
-  80/300 chars; `screenW`/`screenH` must be finite numbers.
+  80/300 chars; `screenW`/`screenH` are non-manifest keys, stripped
+  at intake — only the `screen` bucket survives.
 - Forwarding is fire-and-collect via `Promise.allSettled`: one forwarder
   failing never fails the request. Each forwarder has a 5 s timeout.
-- Event log lines carry only type/buildId/edition — never PII, never the
-  forwarded secrets, never full payloads. Operational lines (forwarder
-  failures, rate-limit/binding faults, digest faults) also carry HTTP
-  statuses and the worker's own error names.
+- Event log lines carry type/buildId/edition (plus per-channel forward
+  booleans on the forwarded line) — never PII, never the forwarded
+  secrets, never full payloads. Operational lines (forwarder failures,
+  rate-limit/binding faults, digest faults) also carry HTTP statuses
+  and the worker's own error names.
 - CORS: `OPTIONS` from an allow-listed origin → `204`, echoing that
   origin in `access-control-allow-origin` with `Vary: Origin`. Any other
   origin, or none, → `403` with no CORS headers, so the browser never sends
@@ -122,7 +127,7 @@ plus a `scheduled` handler for the hourly digest.
   the body cap; `429` over the rate limit. The body is read as text
   whatever its `Content-Type`, so the content type is not enforced.
   Preflight replies allow methods `POST, OPTIONS`, header
-  `content-type`, max-age `86400`.
+  `content-type`, max-age `86400` (the `204` preflight — see CORS above).
 
 ## Severity tiers
 
@@ -176,6 +181,9 @@ hour: 2026-11-03T17 UTC · counts: 20 total (f331846 ×12, other ×8)
 one alert per type+hour — further events this hour only raise the counts
 counts are at fire time; the hourly digest carries the final total
 ```
+
+(Message text is verbatim from the worker — it says 'hiccup' for every
+type.)
 
 The last line is part of the message: a threshold alert's counts are
 fire-time counts, not the hour's final total — the hourly digest
@@ -264,9 +272,10 @@ it a burst or a steady rate" without storing any event payloads:
 - `verdicts` keys are `"<verdict>/<whyKey>"`, from the worker's own
   re-derived verdict (the client's stamp is never trusted for this).
   Client stamps the classifier never reads (`verdict`, `whyKey`,
-  `storageOk`, `afterRecovery`) arrive as extra short primitives and
-  are ignored for classification; `mapMode` is a known field,
-  normalized to a known value or `unknown`.
+  `storageOk`, `afterRecovery`) arrive as extra short primitives (a
+  nested stamp fails validation instead) and are ignored for
+  classification; `mapMode` is a manifest field, normalized to a
+  known value or `unknown`.
 - `firstAt` / `lastAt` are the first and last **receipt** times in
   the bucket (the worker's clock, not the phone's). `late` counts
   events whose own timestamp fell outside the receipt hour.
@@ -513,11 +522,12 @@ neither set, the worker accepts and acknowledges events without
 forwarding (`"forwarded":false`), so it is safe to deploy **before**
 secrets exist.
 
-Privacy: forwarded alerts carry the verdict headline and why, the
-coarse device bucket, and the event time. Only the fixed coarse
-manifest fields leave the device; precise device facts and the raw
-user-agent string never do — intake strips non-manifest device keys
-and deletes the raw user-agent string on arrival.
+Privacy: the forwarded alert and counts carry only the fixed coarse
+manifest device fields plus the event's own identity fields (type,
+buildId, edition/region, lastMilestone, truncated error, verdict,
+time). Precise device facts the client sends (`screenW`/`screenH`)
+are stripped on arrival, and the raw user-agent string never leaves
+the device.
 
 ## Go-live — DONE (worker live by API upload; pipeline verified 2026-10-10)
 
@@ -580,8 +590,9 @@ foreign origins are refused outright (S4).
 
 ## Privacy
 
-- Alerts contain: type, buildId, edition/region, lastMilestone,
-  truncated error name/message. Nothing else.
+- Alerts contain: the verdict headline and why, type, buildId,
+  edition/region, lastMilestone, a truncated error name/message,
+  the coarse device bucket, and the event time.
 - The Phase 1 counters contain: per-UTC-hour counts keyed by type,
   buildId, edition, region, and os/form device bucket. Counts only —
   no payloads, no identifiers, no session-level data.
