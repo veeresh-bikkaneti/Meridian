@@ -85,7 +85,7 @@ stay; redundancy audit in the PR body.
 - [x] Regression spec ported + converted to the locked expectation
 - [x] docs/story-packs.md clarifying sentence
 - [x] Gates: tsc / npm test / lint-cards / build:pages / targeted E2E
-- [ ] PR opened against main (NO MERGE)
+- [x] PR opened against main: #341 https://github.com/veeresh-bikkaneti/Meridian/pull/341 (NO MERGE — Silo QA + panel follow)
 
 ## Verification record (builder, on the tip)
 
