@@ -160,20 +160,42 @@ for the **previous** completed UTC hour. One compact Discord message:
 
 ```
 📊 Meridian telemetry — hourly digest
-hour: 2026-10-18 02:00–03:00 UTC (27 events)
+hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)
+priority: P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone
 
-js_error 2 · f331846 ×2 · country ×2 · linux/desktop ×2
-tile_failed 22 · f331846 ×20, 50122c6 ×2 · country ×22 · linux/desktop ×22 ⚠️ >3× 24h avg (0.0)
-webgl_context_lost 3 · f331846 ×3 · state ×3 · android/mobile ×3
+suspected_crash 1 · first 17:42 · last 17:42
+  builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1
+  groups: c6853be|ios|16|phone ×1
+  verdicts: developer_needed/fg_kill_current ×1 · modes: scout ×1 · steps: map_init_start ×1
+js_error 1 · first 17:05 · last 17:05
+  builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1
+  groups: 2a0527f|android|unknown|phone ×1
+  verdicts: developer_needed/captured_error ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1
 
-alerts this hour: tile_failed threshold
+alerts this hour: none
 ```
 
-Each type line shows the count plus the top builds, editions, and
-device buckets. A line is flagged **⚠️** when its count exceeds
-**3× the trailing 24-hour hourly average** for that type AND exceeds 3
-events absolute — a first-ever burst (avg 0) flags too, which is the
-point. **Zero events in the hour → nothing is posted** (silence is the
+The header names the **receipt hour** (when reports arrived at the
+worker, not when they happened on the phone) and the total event
+count, followed by a `priority:` line for the highest-priority
+verdict in the hour, with its top group. Each type then gets its own
+block. The block's first line shows the count plus the **first** and
+**last** receipt times in the hour — so a burst (first ≈ last) reads
+differently from a steady rate — and ends with
+`(some reports arrived late)` when any event's own timestamp fell
+outside the receipt hour. The lines under it carry, in order: the
+top **builds**, **editions**, and **regions**; the top **groups**
+(`<buildId>|<os>|<osMajor>|<deviceClass>` cross-tabs); and the top
+**verdicts** (the worker's re-derived `<verdict>/<whyKey>` pairs),
+**modes**, and **steps** (last milestones), plus **errors** (error
+names only) when the bucket counted any. Every list shows only its
+top few entries, and a truncated list is **labelled, never silent**:
+it ends with the true remainder, like `(+2 more)`. A type block's
+first line is flagged **⚠️** when its count exceeds **3× the
+trailing 24-hour hourly average** for that type AND exceeds 3 events
+absolute — a first-ever burst (avg 0) flags too, which is the point.
+The message ends with the alerts that fired this hour.
+**Zero events in the hour → nothing is posted** (silence is the
 healthy signal). The digest needs the Discord webhook; with no webhook
 it renders but stays silent.
 
