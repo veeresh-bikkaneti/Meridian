@@ -430,6 +430,115 @@ test("threshold alert: per-build threshold (10/hour from one build)", async () =
   assert.ok(sent.includes("single build crossed"), "per-build reason in the alert");
 });
 
+test("threshold alert: routine funnel types never alert, even past both thresholds (#311)", async () => {
+  const cfg = thresholdConfig({});
+  const now = 1_729_000_000_000;
+  // Per-build leg (the spec's exact case): 10 storyteller_shown from one build.
+  const { store } = memoryStore();
+  for (let i = 0; i < 10; i++) {
+    const r = await recordTelemetry(
+      store,
+      tileEvent({ type: "storyteller_shown" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `storyteller_shown #${i + 1} must not alert`);
+  }
+  // Per-hour leg: 20 storyteller_shown across 20 builds (total >= perHour).
+  const { store: store2 } = memoryStore();
+  for (let i = 0; i < 20; i++) {
+    const r = await recordTelemetry(
+      store2,
+      tileEvent({ type: "storyteller_shown", buildId: `build-${i}` }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `cross-build storyteller_shown #${i + 1} must not alert`);
+  }
+  // A second routine type: the exemption is set-wide, not storyteller-only.
+  const { store: store3 } = memoryStore();
+  for (let i = 0; i < 10; i++) {
+    const r = await recordTelemetry(
+      store3,
+      tileEvent({ type: "narration_started" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `narration_started #${i + 1} must not alert`);
+  }
+});
+
+test("threshold alert: 10 storyteller_shown via ingest post no Discord alert (#311)", async () => {
+  const { map, store } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const now = Date.now();
+  const cfg = thresholdConfig({});
+  for (let i = 0; i < 9; i++) {
+    await recordTelemetry(
+      store,
+      tileEvent({ type: "storyteller_shown" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+  }
+  const res = await handleRequest(
+    postEvent(validEvent({ type: "storyteller_shown", buildId: "f331846", ...FUNNEL_PAYLOADS.storyteller_shown })),
+    env,
+  );
+  assert.equal(res.status, 200);
+  assert.equal(fetchCalls.length, 0, "no Discord post for 10 routine funnel events");
+});
+
+test("threshold alert: narration_failed still alerts at the per-build threshold (#311)", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const now = 1_729_000_000_000;
+  for (let i = 0; i < 9; i++) {
+    const r = await recordTelemetry(
+      store,
+      tileEvent({ type: "narration_failed" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `narration_failed #${i + 1} below threshold`);
+  }
+  const r10 = await recordTelemetry(
+    store,
+    tileEvent({ type: "narration_failed" }) as CrashReportEvent,
+    now,
+    cfg,
+  );
+  assert.equal(r10.alerted, true, "narration_failed trips at 10 from one build");
+  assert.ok(r10.alertText?.includes("narration_failed"), "alert names the type");
+});
+
+test("threshold alert: suspected_crash still alerts at the per-build threshold (#311)", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const now = 1_729_000_000_000;
+  for (let i = 0; i < 9; i++) {
+    const r = await recordTelemetry(
+      store,
+      tileEvent({ type: "suspected_crash" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `suspected_crash #${i + 1} below threshold`);
+  }
+  const r10 = await recordTelemetry(
+    store,
+    tileEvent({ type: "suspected_crash" }) as CrashReportEvent,
+    now,
+    cfg,
+  );
+  assert.equal(r10.alerted, true, "suspected_crash trips at 10 from one build");
+  assert.ok(r10.alertText?.includes("suspected_crash"), "alert names the type");
+});
+
 test("threshold: env override lowers the trip point", async () => {
   const { map } = memoryStore();
   globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {

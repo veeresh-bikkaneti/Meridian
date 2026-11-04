@@ -14,7 +14,9 @@ Receives the events emitted by `src/lib/observability.ts` (schema:
 - **funnel-class** — `storyteller_shown` and the five `narration_*`
   types (the storyteller/narration funnel: shown → started →
   completed / failed / dismissed / replayed): **counted, NOT forwarded
-  individually,** exactly like hiccup-class. Accepted in #194 wave 2
+  individually,** like hiccup-class for individual forwarding
+  (routine funnel types also never threshold-alert — see the tier
+  table below). Accepted in #194 wave 2
   (PR #311) — before that the worker rejected them with a 400 and
   the telemetry was silently lost.
 - **`recovery_outcome`** (Slice 2) — the chunk-recovery outcome report:
@@ -142,18 +144,22 @@ plus a `scheduled` handler for the hourly digest.
 |---|---|---|
 | crash-class | `suspected_crash`, `boot_failure`, `js_error`, `unhandled_rejection`, `map_error` | Forwarded to Discord/email **immediately** (v2 format); also counted. |
 | hiccup-class | `tile_failed`, `webgl_context_lost` | **Counted only** — no individual forward. Surfaced via the threshold alert and the hourly digest. |
-| funnel-class | `storyteller_shown`, `narration_started`, `narration_completed`, `narration_replayed`, `narration_failed`, `narration_dismissed` | **Counted only** — no individual forward. Surfaced via the threshold alert and the hourly digest. |
+| funnel-class | `storyteller_shown`, `narration_started`, `narration_completed`, `narration_replayed`, `narration_failed`, `narration_dismissed` | **Counted only** — no individual forward. Routine funnel types surface via the hourly digest only (no threshold alert); `narration_failed` keeps the threshold alert (see Rationale). |
 | `recovery_outcome` | `recovery_outcome` | Counted always; forwarded immediately **only** when the outcome is `repeat_failure`. |
 
 Rationale: hiccup-class events are resource signals that are usually
 benign/transient in production (`tile_failed` fires on ordinary tile CDN
 hiccups; `webgl_context_lost` fires when a mobile OS reclaims the GPU
 context on backgrounding). Funnel-class events are engagement telemetry,
-not failures at all — but a spike in `narration_failed` (the storyteller
-audio is not playing in the field) is real signal, and the threshold
-alert is how it surfaces. Forwarding each one as a 🚨 trained readers
-to ignore the channel — the threshold alert and digest restore the
-signal-to-noise ratio. Crash-class events are still forwarded
+not failures at all. Routine funnel types (`storyteller_shown`,
+`narration_started`, `narration_completed`, `narration_replayed`,
+`narration_dismissed`) never trip the threshold alert — they surface
+via the hourly digest only — because forwarding each one as a 🚨
+trained readers to ignore the channel. The one exception is
+`narration_failed`: a spike in it (the storyteller audio is not
+playing in the field) is real signal, and the threshold alert is how
+it surfaces, so `narration_failed` keeps the threshold alert.
+Crash-class events are still forwarded
 immediately, in the v2 message format (the verdict lines, plus
 `priority:`, `why-code:`, `time:`, the enriched `device:` and
 `runtime:` lines, and the `mode:` / `boots:` lines), and the same
@@ -176,7 +182,8 @@ anything else (including missing or invalid) →
 ## Threshold alert
 
 When any accepted event type's count for the current UTC
-hour crosses a threshold, the worker posts **one** Discord alert for
+hour crosses a threshold — except routine funnel types, which never
+trip it — the worker posts **one** Discord alert for
 that type+hour — exactly one, even if the count keeps climbing, and
 only when the Discord webhook is configured (the counts still
 accumulate without one). The

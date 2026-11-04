@@ -1370,6 +1370,19 @@ export const FUNNEL_CLASS_TYPES = [
   "narration_dismissed",
 ] as const;
 
+/**
+ * Routine funnel types exempt from the threshold alert (#311). They are
+ * engagement volume, not failures: paging Discord for them trained
+ * readers to ignore the channel. `narration_failed` is DELIBERATELY
+ * excluded — a spike in it is real signal, and the threshold alert is
+ * how it surfaces (see the funnel-class comment above and the README
+ * rationale). Exempt types are still counted and still appear in the
+ * hourly digest; only the threshold alert is suppressed.
+ */
+const THRESHOLD_EXEMPT_FUNNEL_TYPES = FUNNEL_CLASS_TYPES.filter(
+  (type) => type !== "narration_failed",
+);
+
 export type TelemetryTier = "crash" | "hiccup";
 
 /**
@@ -1617,6 +1630,7 @@ export async function recordTelemetry(
     const alertId = `threshold:${event.type}:${hour}`;
     const perBuild = bucket.builds[event.buildId] ?? 0;
     if (
+      !(THRESHOLD_EXEMPT_FUNNEL_TYPES as readonly string[]).includes(event.type) &&
       !bucket.alerts.includes(alertId) &&
       (bucket.total >= cfg.perHour || perBuild >= cfg.perBuild)
     ) {
