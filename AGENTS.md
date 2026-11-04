@@ -121,11 +121,9 @@ block as a caveat.
   gates, or conditions access to any game, map, mystery, clue, hint, or
   progression, and gives no in-game currency, item, or advantage in
   return. COPPA-safe, scoped to what leaves the device: no PII in
-  analytics or telemetry. A raw user-agent string may exist on-device
-  only, inside the locally stored session crash breadcrumb; it never
-  leaves the device. Outbound telemetry carries coarse buckets only —
-  OS, form factor, device-pixel-ratio, and screen size — never the raw
-  user-agent string. One carve-out: the contact form is the only place
+  analytics or telemetry. The telemetry code does not store the raw
+  user-agent string; it is read in page memory only to derive the
+  parsed fields, and never leaves the device. Outbound telemetry carries a fixed, coarse field set only — the fields named in the telemetry field manifest (`src/lib/telemetry-manifest.ts`): OS family and OS version as parsed from the user-agent string, browser name and version as parsed, engine, device class (phone/tablet/desktop, never a model), form factor, device-pixel-ratio bucket, screen-size bucket, touch-point bucket, display mode, connection effective type where the browser exposes it, primary locale tag, and — as whole-session values, never combined with any stored or per-device record — `navigator.deviceMemory` as read (or the literal `unknown` where the browser does not expose it) and `navigator.hardwareConcurrency` as read (or `unknown`). The raw user-agent string itself never leaves the device, is no longer stored on the device by the telemetry code, and is deleted on arrival by the receiving worker. No identifiers, no exact screen size, no GPU strings, and no location finer than edition/region are ever carried. One carve-out: the contact form is the only place
   user-entered PII exists — what someone types there goes only to the
   contact endpoint, to handle their message, and never into analytics
   or telemetry.

@@ -10,6 +10,7 @@ import {
   createStarPRNG,
   generateStars,
   mountStarfield,
+  starfieldPixelRatio,
   STAR_COUNT,
   STARFIELD_SEED,
   TWINKLE_KEYFRAMES_ID,
@@ -306,4 +307,69 @@ test("destroy removes the wrapper and the resize listener", () => {
   handle.destroy();
   assert.equal(container.children.length, 0);
   assert.equal((windowListeners["resize"] ?? []).length, 0);
+});
+
+// ---- issue #330: shared pixel-ratio policy --------------------------------
+
+test("#330 starfieldPixelRatio: coarse pointers share the map's 1.5 cap; fine pointers unchanged", () => {
+  assert.equal(starfieldPixelRatio(2, true), 1.5);
+  assert.equal(starfieldPixelRatio(3, true), 1.5);
+  assert.equal(starfieldPixelRatio(1.5, true), 1.5);
+  assert.equal(starfieldPixelRatio(1, true), 1);
+  assert.equal(starfieldPixelRatio(2, false), 2);
+  assert.equal(starfieldPixelRatio(3, false), 2);
+  assert.equal(starfieldPixelRatio(1, false), 1);
+  assert.equal(starfieldPixelRatio(Number.NaN, true), 1);
+});
+
+function withPointer(coarse: boolean, dpr: number, fn: () => void): void {
+  const w = (globalThis as any).window;
+  const prevMatchMedia = w.matchMedia;
+  const prevDpr = w.devicePixelRatio;
+  w.matchMedia = (query: string) => ({
+    matches: query.includes("pointer: coarse") ? coarse : reduceMotionMatches,
+  });
+  w.devicePixelRatio = dpr;
+  try {
+    fn();
+  } finally {
+    w.matchMedia = prevMatchMedia;
+    w.devicePixelRatio = prevDpr;
+  }
+}
+
+function makePhoneContainer(): any {
+  const container = makeContainer();
+  container.clientWidth = 414; // iPhone 11 CSS viewport
+  container.clientHeight = 896;
+  return container;
+}
+
+test("#330 mount: coarse DPR 2 (iPhone 11) sizes both canvases at the 1.5 cap — 6,676,992 B total", () => {
+  resetStubs();
+  withPointer(true, 2, () => {
+    mountStarfield(makePhoneContainer());
+  });
+  assert.equal(createdCanvases.length, 2);
+  for (const canvas of createdCanvases) {
+    assert.equal(canvas.width, 621); // floor(414 × 1.5)
+    assert.equal(canvas.height, 1344); // floor(896 × 1.5)
+  }
+  const totalBytes = createdCanvases.reduce((n: number, c: any) => n + c.width * c.height * 4, 0);
+  assert.equal(totalBytes, 6_676_992);
+  // The pre-fix size at DPR 2 — the number this fix removes from the
+  // map_init_start → map_ready window.
+  assert.equal(2 * 828 * 1792 * 4, 11_870_208);
+  assert.ok(totalBytes < 11_870_208);
+});
+
+test("#330 mount: fine pointer at DPR 2 keeps the old full-size canvases (desktop unchanged)", () => {
+  resetStubs();
+  withPointer(false, 2, () => {
+    mountStarfield(makePhoneContainer());
+  });
+  for (const canvas of createdCanvases) {
+    assert.equal(canvas.width, 828);
+    assert.equal(canvas.height, 1792);
+  }
 });

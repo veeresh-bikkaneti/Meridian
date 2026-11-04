@@ -8,10 +8,19 @@
  *      failure or a known-weak (software) renderer means scout.
  *   4. Low-memory signal — `navigator.deviceMemory <= 1` always; `<= 2` only
  *      when the WebGL probe did NOT come back clean (see qualifyMapMode).
+ *   5. Unknown memory on a coarse-pointer device (issue #330): Safari has
+ *      no `navigator.deviceMemory`, so check 4 can never fire there and a
+ *      4 GB phone qualified as "strong". When memory is unknown AND the
+ *      primary pointer is coarse, the session starts in Scout as a trial
+ *      (source "unknown-memory") and may upgrade to full in-session once
+ *      the Scout map proves stable — see shouldFireScoutUpgrade. Fine
+ *      pointers (desktops) keep the old default.
  *
  * Hard rule: full mode is the default; scout only activates through one of
  * the checks above. A signal that is unavailable is ignored (fail-closed:
- * assume capable). No UA string is read anywhere in this module.
+ * assume capable) — the one exception is check 5, where the *combination*
+ * of unknown memory + a coarse pointer is itself the signal. No UA string
+ * is read anywhere in this module.
  *
  * Reset/decay: an auto-assigned mode decays after 7 days — a stale
  * auto-assignment never demotes a capable device twice in a row without a
@@ -43,7 +52,14 @@ export const LOW_MEMORY_GB = 2;
  */
 export const VERY_LOW_MEMORY_GB = 1;
 
-export type MapModeSource = "manual" | "prior-crash" | "probe" | "low-memory" | "contextlost" | "default";
+export type MapModeSource =
+  | "manual"
+  | "prior-crash"
+  | "probe"
+  | "low-memory"
+  | "unknown-memory"
+  | "contextlost"
+  | "default";
 
 export interface StoredMapMode {
   mode: MapMode;
@@ -95,6 +111,13 @@ export interface CapabilitySignals {
    * unavailable (ignored, assume capable).
    */
   deviceMemoryGB?: number | null;
+  /**
+   * True when the primary pointer is coarse (touch). Only consulted by
+   * the unknown-memory rule (check 5): unknown memory demotes to a Scout
+   * trial on coarse pointers only, so desktops — which also often lack
+   * `deviceMemory` (Firefox, Safari) — behave exactly as before.
+   */
+  coarsePointer?: boolean;
 }
 
 /**
@@ -132,6 +155,16 @@ export function qualifyMapMode(signals: CapabilitySignals = {}): MapModeDecision
       return { mode: "scout", source: "low-memory" };
     }
   }
+  // Issue #330, check 5: memory unknown (Safari has no deviceMemory) on a
+  // coarse-pointer device. This is a Scout *trial*, not a weak-device
+  // verdict: it sits after prior-crash / probe / low-memory so any real
+  // weak signal keeps its own source (and weak devices never upgrade —
+  // see shouldFireScoutUpgrade), and it never fires for fine pointers or
+  // for devices that reported a memory size.
+  const memUnknown = typeof mem !== "number" || !Number.isFinite(mem);
+  if (memUnknown && signals.coarsePointer === true) {
+    return { mode: "scout", source: "unknown-memory" };
+  }
   return { mode: "full", source: "default" };
 }
 
@@ -157,7 +190,11 @@ export function readStoredMapMode(
     const source: MapModeSource =
       parsed.source === "manual"
         ? "manual"
-        : parsed.source === "prior-crash" || parsed.source === "probe" || parsed.source === "low-memory" || parsed.source === "contextlost"
+        : parsed.source === "prior-crash" ||
+            parsed.source === "probe" ||
+            parsed.source === "low-memory" ||
+            parsed.source === "unknown-memory" ||
+            parsed.source === "contextlost"
           ? parsed.source
           : "default";
     const accepted = parsed.accepted === true;
@@ -234,6 +271,10 @@ export function probeWebGL(): boolean | null {
       | WebGLRenderingContext
       | null;
     if (!gl) return false;
+    // Issue #330: the probe context is dead weight after this function —
+    // release it on every path out so the real map's context is not
+    // competing with a retained probe context in the same jetsam budget.
+    // Result semantics are unchanged.
     try {
       const ext = gl.getExtension("WEBGL_debug_renderer_info");
       const key = ext?.UNMASKED_RENDERER_WEBGL;
@@ -252,6 +293,12 @@ export function probeWebGL(): boolean | null {
     } catch {
       // Renderer string unavailable — context creation under
       // failIfMajorPerformanceCaveat is itself the capability signal.
+    } finally {
+      try {
+        gl.getExtension("WEBGL_lose_context")?.loseContext();
+      } catch {
+        // Releasing is best-effort; a stuck probe context changes nothing.
+      }
     }
     return true;
   } catch {
@@ -273,9 +320,147 @@ export function readDeviceMemoryGB(): number | null {
   }
 }
 
+/**
+ * Coarse-pointer signal (the primary pointer is touch). Guarded for
+ * SSR / tests. Mirrors `isCoarsePointer` in map-options.ts; it lives
+ * here too because map-options imports this module, not the reverse.
+ */
+export function readCoarsePointer(): boolean {
+  try {
+    return typeof window !== "undefined" && typeof window.matchMedia === "function"
+      ? window.matchMedia("(pointer: coarse)").matches
+      : false;
+  } catch {
+    return false;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Durable map-crash marker (issue #330, fix item 3)
+//
+// The session-scoped prior-crash signal (sessionStorage breadcrumb +
+// clean-exit flag) dies with the tab, so a crash loop could restart from
+// a clean slate on a fresh visit. When a boot *detects* a map-attributed
+// crash through that session signal, observability also writes this
+// timestamped marker to localStorage. Later boots consult it under the
+// same 7-day decay as auto map-mode records. It is an auto signal: a
+// manual record still outranks it, and it never changes what the
+// suspected_crash beacon reports — only how long the demotion input lasts.
+// ---------------------------------------------------------------------------
+
+/** localStorage key for the durable map-crash marker. */
+export const MAP_CRASH_MARKER_KEY = "meridian:map-crash";
+
+/** Persist the durable marker at `now` (epoch ms). Never throws. */
+export function writeDurableMapCrashMarker(
+  storage?: Pick<Storage, "setItem"> | null,
+  now: number = Date.now(),
+): void {
+  try {
+    const store = storage ?? defaultLocalStorage();
+    if (!store) return;
+    store.setItem(MAP_CRASH_MARKER_KEY, JSON.stringify({ at: now }));
+  } catch {
+    // Storage blocked/full — the session signal still works for this tab.
+  }
+}
+
+/**
+ * True when a durable marker exists inside the decay window
+ * (MAP_MODE_DECAY_MS). Garbage and stale markers read as absent.
+ * Never throws.
+ */
+export function hasDurableMapCrashMarker(
+  storage?: Pick<Storage, "getItem"> | null,
+  now: number = Date.now(),
+): boolean {
+  try {
+    const store = storage ?? defaultLocalStorage();
+    if (!store) return false;
+    const raw = store.getItem(MAP_CRASH_MARKER_KEY);
+    if (!raw) return false;
+    const parsed = JSON.parse(raw) as { at?: unknown };
+    if (typeof parsed.at !== "number" || !Number.isFinite(parsed.at)) return false;
+    return now - parsed.at <= MAP_MODE_DECAY_MS;
+  } catch {
+    return false;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Scout → full in-session upgrade (issue #330, fix item 1)
+//
+// Only a session that started in Scout *solely* because of the
+// unknown-memory rule may upgrade. The gate is a pure function so the
+// state machine is unit-testable without a map:
+//
+//   boot (unknown memory + coarse) → Scout, source "unknown-memory",
+//   nothing persisted → Scout map reaches map_ready, first idle render
+//   completes → soak of SCOUT_UPGRADE_SOAK_MS with no crash → upgrade
+//   fires → session-only switch to full, nothing persisted.
+//
+// If the upgraded full map kills the process, the next boot's
+// prior-crash signal (session, or the durable marker above) qualifies
+// the device as prior-crash Scout, whose source is not "unknown-memory"
+// — so the upgrade never fires again for that crash. Nothing about the
+// trial or the upgrade is ever written to the map-mode record, so no
+// stored artifact can suppress the prior-crash check on a later boot.
+//
+// Kill-switch (PR #331 panel cure): the trial is gated by the
+// `scoutUpgradeTrial` feature flag (src/lib/flags.ts, baked-in default
+// true = armed). GameApp's boot effect awaits the shared flags load and
+// only sets upgrade eligibility when the flag is on, so redeploying
+// flags.json with the flag false disarms the trial — Scout-first boot
+// still happens, the upgrade simply never arms — with no code change.
+// ---------------------------------------------------------------------------
+
+/**
+ * How long the Scout map must stay stable after its first completed
+ * render before the session upgrades to full. 3 s past `map_ready` +
+ * first idle: the crash window in #330 is map construction itself
+ * (map_init_start → map_ready), so a Scout map that loaded, rendered,
+ * and then survived 3 more seconds has cleared the window the trial
+ * exists to probe — and 3 s is short enough that a capable phone
+ * reaches the full map inside its first game.
+ */
+export const SCOUT_UPGRADE_SOAK_MS = 3000;
+
+export interface ScoutUpgradeGate {
+  /** The boot decision source that put this session in Scout. */
+  initialSource: MapModeSource;
+  /** A prior map crash is known (session signal or durable marker). */
+  priorMapCrash?: boolean;
+  /** A live stored record (manual or auto) decided this boot's mode. */
+  storedRecordPresent?: boolean;
+  /**
+   * The `scoutUpgradeTrial` feature flag (src/lib/flags.ts), read by the
+   * caller at boot: false = the trial is disarmed by remote config and
+   * the upgrade must never fire, however stable Scout proves. Absent =
+   * armed — the flag's baked-in default is true, so an omitted value
+   * keeps the shipped #331 behavior byte-for-byte.
+   */
+  trialArmed?: boolean;
+  /** Epoch ms when the Scout map finished its first render; null = not yet. */
+  scoutReadyAtMs: number | null;
+  /** Epoch ms to evaluate at. */
+  nowMs: number;
+}
+
+/** Pure upgrade gate: true only for the armed unknown-memory trial, post-soak. */
+export function shouldFireScoutUpgrade(gate: ScoutUpgradeGate): boolean {
+  if (gate.trialArmed === false) return false;
+  if (gate.initialSource !== "unknown-memory") return false;
+  if (gate.priorMapCrash === true) return false;
+  if (gate.storedRecordPresent === true) return false;
+  if (gate.scoutReadyAtMs === null) return false;
+  return gate.nowMs - gate.scoutReadyAtMs >= SCOUT_UPGRADE_SOAK_MS;
+}
+
 export interface ResolveMapModeOptions {
   /** Set by the crash pipeline when a previous session crashed with the map mounted. */
   priorMapCrash?: boolean;
+  /** Override for the coarse-pointer signal (tests); defaults to readCoarsePointer(). */
+  coarsePointer?: boolean;
 }
 
 export interface BootMapModePlan {
@@ -287,7 +472,11 @@ export interface BootMapModePlan {
    * MAP_MODE_DECAY_MS and the device is re-qualified on fresh signals —
    * the same persistence semantics the webglcontextlost record has always
    * had. Only a scout decision persists; a full ("default") decision
-   * writes nothing.
+   * writes nothing. An "unknown-memory" scout decision also writes
+   * nothing: it is a trial, not a verdict, and any record written for it
+   * could later stand in front of the prior-crash check — if the
+   * in-session upgrade to full is what kills the process, the next boot
+   * must meet the prior-crash signal with nothing in its way.
    */
   persistSource: "prior-crash" | "probe" | "low-memory" | null;
 }
@@ -328,6 +517,11 @@ export function planBootMapMode(decision: MapModeDecision): BootMapModePlan {
   ) {
     return { mode: "scout", persistSource: decision.source };
   }
+  if (decision.mode === "scout" && decision.source === "unknown-memory") {
+    // Issue #330 trial: start in Scout, persist nothing, and let the
+    // session upgrade after the soak (shouldFireScoutUpgrade).
+    return { mode: "scout", persistSource: null };
+  }
   return { mode: "full", persistSource: null };
 }
 
@@ -349,6 +543,7 @@ export function resolveMapMode(options: ResolveMapModeOptions = {}): MapModeDeci
       priorMapCrash: options.priorMapCrash === true,
       webglProbeOk: probeWebGL(),
       deviceMemoryGB: readDeviceMemoryGB(),
+      coarsePointer: options.coarsePointer ?? readCoarsePointer(),
     });
   } catch {
     return { mode: "full", source: "default" };

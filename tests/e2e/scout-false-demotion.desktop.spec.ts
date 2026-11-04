@@ -136,8 +136,14 @@ test("idle-kill return: capable device never demotes", async ({ context }) => {
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible({
     timeout: 60_000,
   });
+  // Scope into the visible card: the same text lives in the sr-only
+  // announcer (discarded-notice-announcer, role=status, #287) — a bare
+  // getByText resolves to 2 elements and fails strict mode (#303,
+  // same defect as #296).
   await expect(
-    page.getByText("Your game ended after 2 minutes of inactivity."),
+    page
+      .getByTestId("discarded-notice")
+      .getByText("Your game ended after 2 minutes of inactivity."),
   ).toBeVisible();
 
   // Return: the kill already happened in this context (no crash flag was

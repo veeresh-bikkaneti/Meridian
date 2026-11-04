@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "cairo-egypt",
+  "target": {
+    "placeId": "gn-360630",
+    "name": "Cairo",
+    "aliases": [],
+    "lat": 30.06263,
+    "lon": 31.24967,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Egypt",
+    "iso2": "EG",
+    "subdivision": "Cairo"
+  },
+  "subjectAnswer": {
+    "name": "Egypt",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Egypt",
+    "givenKind": "country"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands by a great river where the green delta fans out to the sea. Stone pyramids built by kings of old rise at its edge.",
+      "narrowing": "Rules out lands far from the great river; puts the player by its delta, with pyramids at the city's edge.",
+      "source": {
+        "article": "Cairo — History",
+        "url": "https://en.wikipedia.org/wiki/Cairo#History",
+        "quote": "its strategic location at the junction of the Nile Valley and the Nile Delta regions"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This desert city sees rain so rarely that it falls only in the cool months. Yet one sudden shower can flood the streets in a rush.",
+      "narrowing": "Rules out rainy lands; rain is rare here, yet one hard shower can flood the streets.",
+      "source": {
+        "article": "Cairo",
+        "url": "https://en.wikipedia.org/wiki/Cairo",
+        "quote": "Rainfall is sparse and only happens in the colder months, but sudden showers can cause severe flooding."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "New rulers built this city from scratch in the year 969 as their royal seat. Four years later it was the proud capital of their wide realm.",
+      "narrowing": "Shrinks the list to a city built from scratch in 969 to be a ruling realm's capital.",
+      "source": {
+        "article": "Cairo",
+        "url": "https://en.wikipedia.org/wiki/Cairo",
+        "quote": "Cairo was founded in 969, and became the official seat and capital of the Fatimid Caliphate in 973."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A famed bazaar in the old town here has drawn traders since the days of the Mamluks, hundreds of years past. Craft workers still make fine goods in its busy lanes.",
+      "narrowing": "Nearly decisive: one famed old bazaar, trading for hundreds of years, fills the old town here.",
+      "source": {
+        "article": "Khan el-Khalili",
+        "url": "https://en.wikipedia.org/wiki/Khan_el-Khalili",
+        "quote": "Established as a center of trade in the Mamluk era and named for one of its several historic caravanserais, the bazaar district has since become one of Cairo's main attractions for tourists and Egyptians alike."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Egypt's rulers govern the land from this city, its capital and largest town. The Arab League keeps its head office here too, by the great river.",
+      "narrowing": "Confirms it: the land is governed here, and a league of many lands keeps its head office here.",
+      "source": {
+        "article": "Cairo",
+        "url": "https://en.wikipedia.org/wiki/Cairo",
+        "quote": "Many international media, businesses, and organizations have regional headquarters in Cairo, such as the headquarters of the Arab League"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Rulers founded this city in 969 and made it the capital of their caliphate four years later. Its mosques earned it the name city of a thousand minarets, and its old bazaar still trades today. Cairo is the capital of Egypt."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Cairo"
+  },
+  "pointPolicy": "geonames-point"
+}

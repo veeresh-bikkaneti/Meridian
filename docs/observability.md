@@ -47,23 +47,103 @@ constructing the map.
 ## Event schema
 
 Every event is one JSON object, hard-capped at **4096 bytes** on the
-client (cap sequence: serialize → trim the breadcrumb history to its
-last 4 entries → drop the history entirely → drop breadcrumb + device
-→ progressively truncate string fields, limits 120/60/24 with the
-error name/message also cut → core-only fallback of type/ts/buildId)
-and rejected by the receiver above 8 KB.
+client. When an event is too big, the client trims it in a fixed
+order that keeps the fields crash triage needs most: breadcrumb
+history shrinks to its last 4 entries, then drops entirely; the
+nested breadcrumb then shrinks to a small stub (session id, build id,
+start time, last milestone, map mode); the error message is cut to
+140, then 60 chars; the stub drops; long strings are cut at 120/60/24;
+the lowest-value device fields (`locale`, then `connection`, then
+`browserVersion`) drop last; and the final fallback is a core-only
+event of type/ts/buildId. The receiver rejects bodies above 8 KB.
 
 | Field | Type | Notes |
 |---|---|---|
 | `type` | enum | See event types below. Required. |
 | `ts` | number | Epoch ms when the emitting boot/code ran. Required. |
 | `buildId` | string ≤64 | Bundle build (`CURRENT_BUILD_ID`). Required. |
-| `sessionId` | string ≤64 | Anonymous random id per tab session. For `suspected_crash`: the **previous** session's id. |
+| `sessionId` | string ≤64 | Anonymous random id per tab session. For `suspected_crash`: the **previous** session's id. Never counted, rendered, or stored by the worker. |
 | `edition` / `regionId` / `chunkId` | string ≤128 | Where known. For `suspected_crash`: the previous session's. |
-| `lastMilestone` | string ≤128 | Last milestone of the relevant trail. |
-| `device` | object | Outbound reports: `os` bucket, `form` (mobile/desktop), `dpr` (rounded 1–4), `screen` (short-side bucket `sm`/`md`/`lg`/`xl`). Never the UA string, exact screen size, `deviceMemory`, or `hardwareConcurrency` (removed 2026-10-21, COPPA coarsening). The in-tab breadcrumb may hold the raw UA locally; it is stripped before any send. |
-| `breadcrumb` | object | `suspected_crash` only: the full previous trail (sessionId, buildId, startedAt, lastMilestone, history ≤12, edition/regionId/chunkId, device). |
+| `breadcrumb` | object | `suspected_crash` only: the previous trail (sessionId, buildId, startedAt, lastMilestone, history ≤12, edition/regionId/chunkId, and the parsed runtime snapshot — never a raw UA string). |
 | `error` | object | Live error events only: `name` (≤80) + `message` (≤300, truncated). **No stack traces.** |
+
+### The device field set — the manifest
+
+The `device` object and the extra top-level fields on crash-class
+events are a **fixed set**, named in one place:
+`src/lib/telemetry-manifest.ts`. The worker carries the mirror list
+(`DEVICE_FIELD_ALLOWLIST` in `workers/crash-report/src/index.ts`) and
+strips any device key that is not on it. A test
+(`scripts/observability-field-parity.test.mjs`) fails if the two lists
+drift apart. Adding a field means adding one manifest row, one
+allowlist row, one test-fixture row, and — for a device field — one
+entry in the literal `DEVICE_FIELD_KEYS` array in
+`src/lib/telemetry-manifest.ts` — nothing else may sneak in.
+
+**"Unknown is a value."** Every field below is present on every
+crash-class event. If the browser does not expose a value, or the
+user-agent string cannot be parsed, the field carries the literal
+`"unknown"` — the key is never simply missing. That matters because
+`"unknown"` is itself information: for example, memory reads as
+`"unknown"` on every WebKit browser, so an `"unknown"` memory value
+identifies exactly the population of devices that can die from the
+browser's own memory limits.
+
+**Provenance** says where a value came from: `parsed` = read out of
+the user-agent string by a fixed set of rules · `read` = read
+directly from a browser API · `inferred` = worked out by a rule, with
+`"unknown"` as the escape when the rule cannot fire · `heuristic` = a
+best guess from several signals, never presented as fact · `state` =
+recorded by the session itself while it was alive · `derived` =
+worked out from other stamped fields.
+
+| Field | Where it rides | Values | Provenance |
+|---|---|---|---|
+| `browser` | `device` | `safari` \| `chrome` \| `edge` \| `firefox` \| `samsung` \| `unknown` | parsed |
+| `browserVersion` | `device` | `"<major>.<minor>"` or `"unknown"` | parsed |
+| `engine` | `device` | `webkit` \| `blink` \| `gecko` \| `unknown` | inferred |
+| `os` | `device` | `ios` \| `android` \| `windows` \| `mac` \| `linux` \| `other` | parsed |
+| `osVersion` | `device` | dotted version, `"10.0"` for Windows, or `"unknown"` | parsed |
+| `deviceClass` | `device` | `phone` \| `tablet` \| `desktop` \| `unknown` — the class only, never a model name | heuristic |
+| `hardwareConcurrency` | `device` | integer 1–64 or `"unknown"`, as the browser reports it | read |
+| `deviceMemory` | `device` | memory in GB as the browser reports it, or `"unknown"` | read |
+| `screen` | `device` | `sm` \| `md` \| `lg` \| `xl` \| `unknown` — a size bucket, never exact pixels | read |
+| `dpr` | `device` | integer 1–4 — a rounded density bucket | read |
+| `touchPoints` | `device` | `"0"` \| `"1"` \| `"2-5"` \| `"6+"` \| `"unknown"` | read |
+| `displayMode` | `device` | `standalone` \| `browser` \| `unknown` | read |
+| `connection` | `device` | `slow-2g` \| `2g` \| `3g` \| `4g` \| `unknown` | read |
+| `locale` | `device` | the primary language tag (e.g. `"en-US"`, at most 12 chars) or `"unknown"` | read |
+| `form` | `device` | `mobile` \| `desktop` — kept because older counts and alerts use it; now derived from `deviceClass` | derived |
+| `webgl1` / `webgl2` | `device` | true/false — sent by the boot watchdog only, never by the app | read |
+| `mapMode` | top-level | `full` \| `scout` \| `unknown` — the mode the crashed session was actually running | state |
+| `lastMilestone` | top-level | the last step the session reached (see the funnel below) | state |
+| `msSinceBootStart` | top-level | milliseconds from boot start to the last recorded step, or `"unknown"` | derived |
+| `unfinishedBoots` | top-level | integer 0–99: how many boots in a row ended without a clean exit | state |
+| `deviceSource` | top-level | `crashed_session` \| `detecting_boot` \| `live` — whose device facts these are | state |
+
+Two honesty notes that go with the table:
+
+- **Frozen version tokens are never stamped as if they were real.**
+  Browsers deliberately freeze some version numbers in the
+  user-agent string (every modern Mac reports the same old macOS
+  version; reduced Android strings report a frozen Android "10").
+  When the parser sees a frozen token it stamps `"unknown"` instead
+  of printing a number that looks precise and means nothing. On
+  Chromium browsers the minor part of `browserVersion` is always the
+  frozen `0`; only the major number is real, and grouping never uses
+  the minor.
+- **Core counts are stamped as reported.** WebKit limits the
+  `hardwareConcurrency` value it reports, so core counts are only
+  ever compared within one engine — never ranked across engines.
+  The alert prints them with the words "(as reported)".
+
+Crash-class events (`suspected_crash`, `boot_failure`,
+`recovery_outcome`, `js_error`, `unhandled_rejection`, `map_error`)
+carry the full device object. Hiccup events (`tile_failed`,
+`webgl_context_lost`) carry it too. The engagement types
+(`storyteller_shown`, `narration_*`) stamp only the older coarse
+fields (`os`/`form`/`dpr`/`screen`) — they are not crash triage, so
+their device surface does not grow.
 
 ### Event types
 
@@ -71,30 +151,44 @@ and rejected by the receiver above 8 KB.
 |---|---|
 | `suspected_crash` | Next boot after an unclean shutdown with a previous breadcrumb (above). |
 | `boot_failure` | The crash watchdog's fallback fired: the app never signalled ready, so the boot is treated as failed. |
+| `recovery_outcome` | A chunk-recovery attempt from a previous session resolved, one way or the other. |
 | `js_error` | `window` error event (installed once, guarded). |
 | `unhandled_rejection` | `unhandledrejection` event. |
 | `map_error` | `MapErrorBoundary.componentDidCatch`. |
 | `tile_failed` | A map tile failed to load (hiccup-class: counted, not forwarded on its own). |
 | `webgl_context_lost` | `webglcontextlost` on the MapLibre canvas. |
 
-These 7 are the types the crash-report worker accepts. The client
-event type (`ObservabilityEventType` in `src/lib/observability.ts`)
-lists 13: it adds `storyteller_shown` and the five `narration_*`
-types, which are client-side only and are not sent to the worker.
+The numbers, stated plainly because they have been wrong in this doc
+before: **the client emits 14 types** (`ObservabilityEventType` in
+`src/lib/observability.ts`) — the 8 above plus `storyteller_shown`
+and the five `narration_*` engagement types. **The worker on `main`
+accepts 8** — the 8 in the table. The other 6 types are currently
+refused by the worker; their acceptance is a separate change (PR
+#311) and does **not** land with the telemetry work described here.
+No version of this doc should ever say "14 accepted" — that is not
+true on any branch yet.
 
 ## Privacy statement
 
 Events contain **no PII, no precise location, no guess/place content, no
 coordinates, no stack traces, no user identifiers** — the session id is a
-random per-tab value that dies with the tab. Error payloads are name +
-message truncated to 300 chars. Device facts are coarse buckets only:
-the operating-system family and phone/desktop form, a short-side
-screen-size bucket, and pixel density rounded to a whole number (see
-the `device` row in the schema table above). No memory or core counts
-and no exact screen size ever leave the device. The raw browser (UA)
-string exists only in the in-tab `sessionStorage` breadcrumb and is
-stripped before anything is emitted. Nothing is sent at all until an
-endpoint is explicitly configured (below).
+random per-tab value that dies with the tab, and the worker never
+counts, prints, or stores it. Error payloads are name +
+message truncated to 300 chars. Device facts are the fixed, coarse
+field set in the manifest table above — nothing outside that list is
+collected, and the worker deletes any device key that is not on the
+list when an event arrives. Two values in that set are reported as the
+browser gives them: memory (`deviceMemory`) and core count
+(`hardwareConcurrency`), each as a whole-session value on the event
+that carries it, never combined with any stored or per-device record —
+the worker stores counts only, so there is no per-device record to
+combine them with. Where a browser does not expose them, they read
+`"unknown"`. The raw browser (UA) string never leaves the device, is
+no longer stored on the device by the telemetry code at all, and is
+deleted on arrival by the receiving worker if an older client still
+sends one. No exact screen size, no GPU strings, and no location
+finer than edition/region are ever carried. Nothing is sent at all
+until an endpoint is explicitly configured (below).
 
 ## Transport & configuration
 
@@ -157,14 +251,161 @@ procedure that was run:
 > 2026-10-21: the live version carries the webhook as a secret binding
 > in the upload, plus the KV binding.
 
-## How to read counts / the funnel
+## How to read a crash alert
 
-The receiver (v1) logs one structured JSON line per event (`wrangler
-tail` / dashboard logs), enriched with a UA-derived `iosVersion`. Count
-by buildId × edition × iOS version, and read the `suspected_crash`
-funnel by `lastMilestone` — full commands in
-`worker/observability/README.md`. The upgrade path (D1 / KV /
-Analytics Engine) is documented there too.
+Crash-class events are forwarded to Discord (and email, when set up)
+as soon as they arrive. Here is one real alert shape, for a phone
+that died while its map was loading — the issue #330 shape, with
+`cores 6` in the worked example taken from a worker test fixture,
+not a handset measurement — with each line explained in plain
+words:
+
+```text
+🚨 FIX — Developer action needed
+Meridian crash report
+priority: P1 — current build, foreground kill at map loading, phone-class iOS 16
+verdict: developer action needed
+why: App stopped mid-game on the current build; no error was captured, so the cause is unknown.
+why-code: fg_kill_current
+action: Read the error below.
+type: suspected_crash · build: c6853be
+time: 2026-11-03T17:42:00.000Z
+device: ios/mobile · phone · Safari 16.4 · WebKit · iOS 16.4.1 (UA-parsed)
+runtime: mem unknown · cores 6 (as reported) · screen md · dpr 2 · touch 2-5 · standalone unknown · net unknown · locale en-US
+edition: state · region: nebraska
+mode: scout · last step: map loading · 4,210 ms after boot start
+boots: 3 unfinished in a row
+error: none captured
+```
+
+How to read it, top to bottom:
+
+1. **The first line is the headline.** 🚨 FIX means a person needs
+   to act. ❔ WAIT means the report itself is missing evidence, so
+   nobody can tell yet whether it matters.
+2. **`priority:` is the sort order.** P1 is the most urgent: the
+   current build, a real crash, during gameplay. P2 is a developer
+   problem of any other shape, or a failed recovery. P3 means the
+   evidence was incomplete — a reporting problem, not proof that
+   players are affected. P4 means the report turned out to be
+   harmless or already fixed. The words after the code say which
+   facts earned that priority.
+3. **`verdict:` and `why:` say what the worker concluded, in plain
+   words.** `why-code:` is the same conclusion as a short code
+   (`fg_kill_current` = the app was killed in the foreground on the
+   current build). Keep the code when filing a follow-up; it is how
+   the next person finds this exact case again.
+4. **If the verdict is "can't tell", one extra line appears:**
+   `evidence: bgTerminal ✗ · buildReplaced ✓ · trailStuck ✓ · lcV ✓`.
+   It names, one by one, the four facts the classifier needed and
+   which ones were missing (✗) or present (✓). Different missing
+   facts print a different line, so the gap is never a guess.
+5. **`device:` is the phone, in one line:** the old `ios/mobile`
+   bucket, then the device class (`phone`), the browser and its
+   version, the engine, and the OS version. "(UA-parsed)" is a
+   reminder that these were read out of the browser's self-reported
+   string — honest values, not measurements. It never names a phone
+   model; no alert does.
+6. **`runtime:` is the rest of the device facts:** memory (`unknown`
+   here — this browser does not expose it, and that fact alone says
+   "WebKit device"), cores as reported, screen-size bucket, pixel
+   density, touch bucket, whether the game was installed
+   (`standalone`) or in a browser tab, connection type, and locale.
+7. **`mode:` says which map the crashed session was running** —
+   `scout` (the light map) or `full`. Before this work, a crash
+   report always claimed `full`, even when the session had been
+   running Scout; now it reports the mode the session actually used.
+   Next to it: the last step reached, and how long after boot start
+   the session got (`4,210 ms after boot start` = it died about four
+   seconds in, while loading the map — a very different bug from
+   dying after twenty minutes of play).
+8. **`boots:` counts repeat trouble.** `3 unfinished in a row` means
+   this is the third boot in a row that ended without a clean exit —
+   a crash loop, not a one-off.
+9. **`error: none captured`** means no JavaScript error was seen.
+   Together with a settled verdict, that points at the browser or
+   the operating system killing the page, not at a bug in a line of
+   game code.
+
+The email version carries the same lines in a padded block, including
+the `device:` and `runtime:` lines; the subject line is unchanged.
+
+## The hourly digest
+
+Once an hour, the worker posts a summary of the previous hour to
+Discord. Nothing is posted for an empty hour. The shape, as built:
+
+```text
+📊 Meridian telemetry — hourly digest
+hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)
+priority: P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone
+
+suspected_crash 1 · first 17:42 · last 17:42
+  builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1
+  groups: c6853be|ios|16|phone ×1
+  verdicts: developer_needed/fg_kill_current ×1 · modes: scout ×1 · steps: map_init_start ×1
+js_error 1 · first 17:05 · last 17:05
+  builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1
+  groups: 2a0527f|android|unknown|phone ×1
+  verdicts: developer_needed/captured_error ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1
+
+alerts this hour: none
+```
+
+Reading notes:
+
+- **"(receipt hour)"** means the hour is when reports *arrived at
+  the worker*, not when the events happened on the phone. A report
+  that arrived late is counted in its arrival hour, and the type's
+  line then ends with `(some reports arrived late)` so the shift is
+  visible instead of silent.
+- **`first` / `last`** are the first and last arrival times inside
+  the hour. A total of 20 with first ≈ last is a burst; the same 20
+  spread across the hour is a steady rate. Different problems.
+- **`groups:`** is the cross-tab that answers "is this one kind of
+  device?": build | OS | OS major version | device class. Groups are
+  capped at 32 distinct keys per hour-bucket; anything beyond that
+  tallies under `other`.
+- **Caps are labelled, never silent.** Each list shows its top few
+  entries; when entries are cut, the line ends with the true
+  remainder, like `(+2 more)`. Ties sort by count, then by name, so
+  the same hour always renders the same way.
+- A type whose count is more than 3× its trailing 24-hour average
+  (and more than 3 events) gets `⚠️ >3× 24h avg` on its first line.
+
+## The threshold alert
+
+Hiccup-class events are not forwarded one by one. When one type
+crosses a threshold inside an hour (default: 20 in the hour across
+all builds, or 10 from a single build), the worker posts one alert
+for that type and hour:
+
+```text
+🚨 Meridian telemetry alert
+type: tile_failed crossed the hiccup threshold (single build crossed 10/hour)
+hour: 2026-11-03T17 UTC · counts: 20 total (f331846 ×12, other ×8)
+one alert per type+hour — further events this hour only raise the counts
+counts are at fire time; the hourly digest carries the final total
+```
+
+The last line matters: the counts in a threshold alert are the
+counts **at the moment the alert fired**, not the hour's final
+total. The hourly digest carries the final total.
+
+## How to read counts / the funnel — superseded
+
+> **Superseded.** The v1 receiver logged one structured JSON line
+> per event (`wrangler tail` / dashboard logs), enriched with a
+> UA-derived `iosVersion`, and counts were read from those log lines
+> by buildId × edition × iOS version, with the `suspected_crash`
+> funnel read by `lastMilestone` — full commands in
+> `worker/observability/README.md`. The v1 worker is undeployed and
+> that reading method no longer applies: counts now live in the
+> worker's KV buckets and are read through the hourly digest above.
+> The funnel question itself has not changed — trails stopping at
+> `data_chunk_load_start` die loading data; trails stopping at
+> `map_init_start` die building the map — but the digest's `steps:`
+> counts are where you read it now.
 
 ## Secondary mitigation in the same branch
 

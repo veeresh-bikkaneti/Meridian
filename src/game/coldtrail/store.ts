@@ -22,6 +22,23 @@ import type {
  */
 
 export const COLDTRAIL_STORAGE_KEY = "meridian.coldtrail.v2";
+/**
+ * Capitals pack progress key (DESIGN section 1.4). The spelling is
+ * owned by COLDTRAIL_PACK_CAPITALS_STORAGE_KEY in cases-pack.ts and
+ * restated here so this module takes no import edge into the pack
+ * data module; pack-shelf-data.test.ts pins the literals against
+ * each other. The pack store holds the same ColdTrailStore shape.
+ */
+const COLDTRAIL_PACK_STORAGE_KEY = "meridian.coldtrail.pack.capitals.v1";
+/**
+ * Pack shelf selection key (owner: PACK_SHELF_SELECTION_KEY in
+ * src/components/pack-shelf-data.ts), restated for the same reason as
+ * the pack store key above. The blob's Cold Trail entry is this
+ * edition's deck pick; a reset that leaves it behind would resurrect
+ * the pack selection after "Start over", unlike the GeoDetective
+ * reset, whose selection dies with its loop store.
+ */
+const PACK_SHELF_SELECTION_KEY = "meridian.pack-shelf.v1";
 /** Previous-generation key: read once for migration, then deleted. */
 const LEGACY_STORAGE_KEY = "meridian.coldtrail.v1";
 /**
@@ -150,11 +167,16 @@ function migrateV1(legacy: Record<string, unknown>): ColdTrailStore {
   };
 }
 
-/** Read the store; fresh wallet when storage is missing or corrupt. */
-export function loadColdtrail(): ColdTrailStore {
+/**
+ * Read the store at a key; fresh wallet when storage is missing or
+ * corrupt. The default key is the core store. The pack key reads the
+ * same shape under its own key and never runs the legacy migration:
+ * a v1 core save belongs to the core store, not to a pack.
+ */
+export function loadColdtrail(key: string = COLDTRAIL_STORAGE_KEY): ColdTrailStore {
   try {
     if (typeof localStorage === "undefined") return freshStore();
-    const raw = localStorage.getItem(COLDTRAIL_STORAGE_KEY);
+    const raw = localStorage.getItem(key);
     if (raw) {
       let parsed: Partial<ColdTrailStore>;
       try {
@@ -177,7 +199,9 @@ export function loadColdtrail(): ColdTrailStore {
               : null,
       };
     }
-    // No v2 save: one-time migration from the v1 key.
+    // No save at this key: the core key runs the one-time migration
+    // from the v1 key. Other keys (the pack store) just start fresh.
+    if (key !== COLDTRAIL_STORAGE_KEY) return freshStore();
     const legacyRaw = localStorage.getItem(LEGACY_STORAGE_KEY);
     if (legacyRaw) {
       try {
@@ -204,11 +228,11 @@ export function loadColdtrail(): ColdTrailStore {
   }
 }
 
-/** Write the store; storage failures are swallowed (game continues in memory). */
-export function saveColdtrail(store: ColdTrailStore): void {
+/** Write the store at a key; storage failures are swallowed (game continues in memory). */
+export function saveColdtrail(store: ColdTrailStore, key: string = COLDTRAIL_STORAGE_KEY): void {
   try {
     if (typeof localStorage === "undefined") return;
-    localStorage.setItem(COLDTRAIL_STORAGE_KEY, JSON.stringify(store));
+    localStorage.setItem(key, JSON.stringify(store));
   } catch {
     // Quota or blocked storage: the game continues in memory.
   }
@@ -217,7 +241,7 @@ export function saveColdtrail(store: ColdTrailStore): void {
 /**
  * Remove the whole Cold Trail history (the "Start over" reset, manifest
  * 2026-10-28 §2): the legacy v1 key FIRST, then the v2 store, then the
- * open flag. The order is the contract — loadColdtrail() migrates a
+ * capitals pack store, then the open flag. The order is the contract — loadColdtrail() migrates a
  * surviving v1 blob into v2 whenever v2 is absent, so removing v2 first
  * would leave a window where the whole store resurrects on next load.
  * Follows resetProfile()'s precedent: where removal fails, overwrite
@@ -252,6 +276,24 @@ export function clearColdtrailStore(
   } catch {
     try {
       s.setItem(COLDTRAIL_STORAGE_KEY, JSON.stringify(freshStore()));
+    } catch {
+      // The verification below reports it.
+    }
+  }
+  try {
+    s.removeItem(COLDTRAIL_PACK_STORAGE_KEY);
+  } catch {
+    try {
+      s.setItem(COLDTRAIL_PACK_STORAGE_KEY, JSON.stringify(freshStore()));
+    } catch {
+      // The verification below reports it.
+    }
+  }
+  try {
+    s.removeItem(PACK_SHELF_SELECTION_KEY);
+  } catch {
+    try {
+      s.setItem(PACK_SHELF_SELECTION_KEY, JSON.stringify({ v: 1, decks: {} }));
     } catch {
       // The verification below reports it.
     }
@@ -294,7 +336,35 @@ export function clearColdtrailStore(
           return false;
         }
       })();
-    return legacyGone && storeGone && s.getItem(COLDTRAIL_OPEN_KEY) !== "1";
+    const packRaw = s.getItem(COLDTRAIL_PACK_STORAGE_KEY);
+    const packGone =
+      packRaw === null ||
+      (() => {
+        try {
+          const parsed = JSON.parse(packRaw) as Partial<ColdTrailStore>;
+          return (
+            parsed.v === 2 &&
+            (parsed.caseIndex ?? 0) === 0 &&
+            (parsed.stars ?? STARTING_STARS) === STARTING_STARS &&
+            (parsed.solved ?? 0) === 0 &&
+            (parsed.current ?? null) === null
+          );
+        } catch {
+          return false;
+        }
+      })();
+    const shelfRaw = s.getItem(PACK_SHELF_SELECTION_KEY);
+    const shelfGone =
+      shelfRaw === null ||
+      (() => {
+        try {
+          const parsed = JSON.parse(shelfRaw) as { decks?: Record<string, unknown> };
+          return parsed.decks?.coldtrail === undefined;
+        } catch {
+          return true; // Corrupt blob: readSelectedDeck fails closed to core too.
+        }
+      })();
+    return legacyGone && storeGone && packGone && shelfGone && s.getItem(COLDTRAIL_OPEN_KEY) !== "1";
   } catch {
     return false;
   }

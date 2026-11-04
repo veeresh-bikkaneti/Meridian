@@ -82,9 +82,12 @@ test("reload during reveal: result card re-renders with Next place", async ({
 
   // …and the rehydrated drop must carry the real distance + bearing (the bug
   // showed the broken "Pin dropped. ." with an empty distance).
+  // The unit follows the player's region (US players see miles, since
+  // PR #138), so the pattern accepts every unit the headline can print.
+  // This spec proves the headline re-renders after a reload — not the unit.
   const distancePara = card.getByTestId("miss-headline");
   await expect(distancePara).toContainText(
-    /[\d,]+(\.\d+)? (km|m) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
+    /[\d,]+(\.\d+)? (km|mi|m|ft) (north|northeast|east|southeast|south|southwest|west|northwest) of your pin/,
     { timeout: 5_000 },
   );
 

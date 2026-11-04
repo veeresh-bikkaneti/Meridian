@@ -250,13 +250,268 @@ function validateDevice(device: unknown, label: string): string[] {
     const ok =
       k === "ua" ? isCappedString(v, 300)
       : k === "os" || k === "form" || k === "screen" ? isCappedString(v, 24)
-      : k === "dpr" || k === "screenW" || k === "screenH" ? typeof v === "number" && Number.isFinite(v)
+      : k === "dpr" ? (typeof v === "number" && Number.isFinite(v)) || v === "unknown"
+      : k === "screenW" || k === "screenH" ? typeof v === "number" && Number.isFinite(v)
       : k === "webgl1" || k === "webgl2" ? typeof v === "boolean"
       : isSmallPrimitive(v) && k.length <= 32;
     if (!ok) problems.push(`${label}.${k.slice(0, 32)} has an invalid value`);
   }
   if (Object.keys(device).length > 16) problems.push(`${label} has too many fields`);
   return problems;
+}
+
+// --- Intake normalisation (crash-telemetry design §5.1) ------------------
+//
+// normaliseEvent runs BEFORE validateEvent in handleRequest. It strips
+// and coerces; it never adds a 400. After normalisation the only 400s
+// left are validateEvent's required-field checks (type, ts window,
+// buildId) — exactly the checks a legacy event already passes today.
+//
+// The device allowlist below is the worker mirror of the client field
+// manifest (src/lib/telemetry-manifest.ts). The parity guard
+// (scripts/observability-field-parity.test.mjs) extracts it by this exact
+// name, so the name DEVICE_FIELD_ALLOWLIST must not change.
+
+export const DEVICE_FIELD_ALLOWLIST: readonly string[] = Object.freeze([
+  "browser",
+  "browserVersion",
+  "connection",
+  "deviceClass",
+  "deviceMemory",
+  "displayMode",
+  "dpr",
+  "engine",
+  "form",
+  "hardwareConcurrency",
+  "locale",
+  "os",
+  "osVersion",
+  "screen",
+  "touchPoints",
+  "webgl1",
+  "webgl2",
+]);
+
+const DEVICE_OS_VALUES = ["ios", "android", "windows", "mac", "linux", "other"];
+const DEVICE_FORM_VALUES = ["mobile", "desktop"];
+const DEVICE_BROWSER_VALUES = ["safari", "chrome", "edge", "firefox", "samsung", "unknown"];
+const DEVICE_ENGINE_VALUES = ["webkit", "blink", "gecko", "unknown"];
+const DEVICE_CLASS_VALUES = ["phone", "tablet", "desktop", "unknown"];
+const DEVICE_SCREEN_VALUES = ["sm", "md", "lg", "xl"];
+const DEVICE_TOUCH_VALUES = ["0", "1", "2-5", "6+"];
+const DEVICE_DISPLAY_VALUES = ["standalone", "browser", "unknown"];
+const DEVICE_CONNECTION_VALUES = ["slow-2g", "2g", "3g", "4g", "unknown"];
+const DEVICE_SOURCE_VALUES = ["crashed_session", "detecting_boot", "live"];
+const MAP_MODE_VALUES = ["full", "scout", "unknown"];
+
+/** An out-of-enum manifest value becomes the field's unknown form. */
+function enumOrUnknown(value: unknown, values: readonly string[]): string {
+  return typeof value === "string" && values.includes(value) ? value : "unknown";
+}
+
+/** Versions stamp as "<major>[.<minor>[.<patch>]]" or "unknown" — nothing else. */
+function versionOrUnknown(value: unknown): string {
+  return typeof value === "string" && /^\d+(\.\d+){0,2}$/.test(value) ? value : "unknown";
+}
+
+/** Primary BCP-47 tag only (≤12 chars); anything else is not a locale. */
+function localeOrUnknown(value: unknown): string {
+  return typeof value === "string" &&
+    value.length <= 12 &&
+    /^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8}){0,2}$/.test(value)
+    ? value
+    : "unknown";
+}
+
+/**
+ * Rebuild one device object from the allowlist only, coercing each
+ * manifest field to its honest form. The raw UA and any non-manifest
+ * key are deleted here, so "no UA past intake" is structural.
+ */
+function normaliseDevice(device: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = {};
+  for (const key of DEVICE_FIELD_ALLOWLIST) {
+    const v = device[key];
+    if (v === undefined) continue;
+    switch (key) {
+      case "os":
+        out.os = enumOrUnknown(v, DEVICE_OS_VALUES);
+        break;
+      case "form":
+        out.form = enumOrUnknown(v, DEVICE_FORM_VALUES);
+        break;
+      case "browser":
+        out.browser = enumOrUnknown(v, DEVICE_BROWSER_VALUES);
+        break;
+      case "engine":
+        out.engine = enumOrUnknown(v, DEVICE_ENGINE_VALUES);
+        break;
+      case "deviceClass":
+        out.deviceClass = enumOrUnknown(v, DEVICE_CLASS_VALUES);
+        break;
+      case "screen":
+        out.screen = enumOrUnknown(v, DEVICE_SCREEN_VALUES);
+        break;
+      case "touchPoints":
+        out.touchPoints = enumOrUnknown(v, DEVICE_TOUCH_VALUES);
+        break;
+      case "displayMode":
+        out.displayMode = enumOrUnknown(v, DEVICE_DISPLAY_VALUES);
+        break;
+      case "connection":
+        out.connection = enumOrUnknown(v, DEVICE_CONNECTION_VALUES);
+        break;
+      case "browserVersion":
+      case "osVersion":
+        out[key] = versionOrUnknown(v);
+        break;
+      case "locale":
+        out.locale = localeOrUnknown(v);
+        break;
+      case "dpr":
+        out.dpr =
+          typeof v === "number" && Number.isFinite(v) && v >= 1 && v <= 4 ? v : "unknown";
+        break;
+      case "deviceMemory":
+        // Range rule, not a whitelist (Slice 4 I-8): any plausible
+        // as-read value in 0.25–64 GB passes; the rest is "unknown".
+        out.deviceMemory =
+          typeof v === "number" && Number.isFinite(v) && v >= 0.25 && v <= 64
+            ? v
+            : "unknown";
+        break;
+      case "hardwareConcurrency":
+        out.hardwareConcurrency =
+          typeof v === "number" && Number.isInteger(v) && v >= 1 && v <= 64
+            ? v
+            : "unknown";
+        break;
+      case "webgl1":
+      case "webgl2":
+        // Booleans have no unknown form; a non-boolean is dropped.
+        if (typeof v === "boolean") out[key] = v;
+        break;
+    }
+  }
+  return out;
+}
+
+/**
+ * The §3.4 E-rule engine fill for watchdog-shaped boot_failure events
+ * (cure round, §7.5 ladder step 2): the watchdog drops `engine` to fit
+ * its byte budget, and the worker recovers it here from the event's
+ * own parsed fields — never from a UA string. E1 first (iOS is a
+ * WebKit shell), then E2/E3/E4 by browser. Anything else stays
+ * "unknown". deviceClass has NO equivalent fill: it is not honestly
+ * recoverable from the parsed fields, so watchdog events keep
+ * "unknown" for it.
+ */
+function derivedEngineForBootFailure(device: Record<string, unknown>): string {
+  if (device.os === "ios") return "webkit";
+  switch (device.browser) {
+    case "chrome":
+    case "edge":
+    case "samsung":
+      return "blink";
+    case "firefox":
+      return "gecko";
+    case "safari":
+      return "webkit";
+    default:
+      return "unknown";
+  }
+}
+
+/**
+ * Strip-and-continue intake (design §5.1). Returns a normalised copy;
+ * the caller's object is never mutated. Caps are unchanged: body 8192,
+ * top-level keys 24, device keys 16 — over-cap strings are truncated to
+ * the existing caps instead of rejected, and non-primitive top-level
+ * extras are deleted instead of failing the event.
+ */
+export function normaliseEvent(raw: unknown): unknown {
+  if (!isPlainObject(raw)) return raw;
+  const event: Record<string, unknown> = { ...raw };
+
+  for (const [key, cap] of Object.entries(STRING_CAPS)) {
+    const v = event[key];
+    if (typeof v === "string" && v.length > cap) event[key] = v.slice(0, cap);
+  }
+  if (isPlainObject(event.error)) {
+    const error = { ...event.error };
+    if (typeof error.name === "string" && error.name.length > 80) {
+      error.name = error.name.slice(0, 80);
+    }
+    if (typeof error.message === "string" && error.message.length > 300) {
+      error.message = error.message.slice(0, 300);
+    }
+    event.error = error;
+  }
+  if (isPlainObject(event.device)) event.device = normaliseDevice(event.device);
+  // §7.5 ladder step 2, boot_failure ONLY: a watchdog event arrives
+  // with engine dropped (absent, or coerced to "unknown" above). Fill
+  // it from the parsed fields via the E-rules. A present engine is
+  // never overwritten, and no other event type is filled — the app
+  // path stamps its own engine and its absence stays "unknown".
+  if (event.type === "boot_failure" && isPlainObject(event.device)) {
+    const dev = event.device as Record<string, unknown>;
+    if (dev.engine === undefined || dev.engine === "unknown") {
+      dev.engine = derivedEngineForBootFailure(dev);
+    }
+  }
+  if (isPlainObject(event.breadcrumb)) {
+    const breadcrumb = { ...event.breadcrumb };
+    if (isPlainObject(breadcrumb.device)) {
+      // The nested trail device is never read by the worker; strip its
+      // UA and every non-manifest key so nothing planted there survives.
+      const nested = { ...breadcrumb.device };
+      delete nested.ua;
+      for (const key of Object.keys(nested)) {
+        if (!DEVICE_FIELD_ALLOWLIST.includes(key)) delete nested[key];
+      }
+      breadcrumb.device = nested;
+    }
+    event.breadcrumb = breadcrumb;
+  }
+
+  if (event.mapMode !== undefined) {
+    event.mapMode = enumOrUnknown(event.mapMode, MAP_MODE_VALUES);
+  }
+  if (
+    event.deviceSource !== undefined &&
+    !(
+      typeof event.deviceSource === "string" &&
+      DEVICE_SOURCE_VALUES.includes(event.deviceSource)
+    )
+  ) {
+    delete event.deviceSource;
+  }
+  if (event.msSinceBootStart !== undefined) {
+    const v = event.msSinceBootStart;
+    event.msSinceBootStart =
+      typeof v === "number" && Number.isFinite(v) && v >= 0 ? Math.floor(v) : "unknown";
+  }
+  if (event.unfinishedBoots !== undefined) {
+    const v = event.unfinishedBoots;
+    if (typeof v === "number" && Number.isFinite(v)) {
+      event.unfinishedBoots = Math.min(999, Math.max(0, Math.floor(v)));
+    } else {
+      delete event.unfinishedBoots;
+    }
+  }
+
+  const objectValued = new Set(["error", "device", "breadcrumb"]);
+  for (const key of Object.keys(event)) {
+    if (key.length > 64) {
+      delete event[key];
+      continue;
+    }
+    if (objectValued.has(key)) continue;
+    const v = event[key];
+    if (v !== null && typeof v === "object") delete event[key];
+    else if (typeof v === "string" && v.length > 256) event[key] = v.slice(0, 256);
+  }
+  return event;
 }
 
 // --- Rate limiting (review S4) -------------------------------------------
@@ -659,6 +914,232 @@ function truncate(value: string | undefined, max: number): string {
   return s.length > max ? `${s.slice(0, max - 1)}…` : s;
 }
 
+/**
+ * The stamped facts the classifier reads, pulled off one event. Shared
+ * by the alert builder and the counters (§5.2): one derivation per
+ * request, and the client-stamped verdict is never among the facts.
+ */
+export function verdictFactsOf(event: CrashReportEvent): CrashVerdictFacts {
+  return {
+    type: event.type,
+    error: event.error,
+    lastMilestone: event.lastMilestone,
+    bgTerminal: typeof event.bgTerminal === "boolean" ? event.bgTerminal : undefined,
+    buildReplaced: typeof event.buildReplaced === "boolean" ? event.buildReplaced : undefined,
+    trailStuck: typeof event.trailStuck === "boolean" ? event.trailStuck : undefined,
+    lcV: typeof event.lcV === "string" ? event.lcV : undefined,
+    recoveryOutcome: typeof event.recoveryOutcome === "string" ? event.recoveryOutcome : undefined,
+  };
+}
+
+/** The worker's own re-derived verdict for one event (§5.2/§5.4). */
+export function deriveVerdict(event: CrashReportEvent): { verdict: CrashVerdict; whyKey: CrashWhyKey } {
+  return classifyCrashVerdict(verdictFactsOf(event));
+}
+
+const VALID_RECOVERY_OUTCOMES = new Set([
+  "confirmed",
+  "repeat_failure",
+  "stood_down",
+  "unconfirmed_closed",
+  "unconfirmed_died",
+  "unconfirmed_expired",
+  "marker_unreadable",
+]);
+
+/**
+ * Presentation-only helper (§5.4): the names of the classifier stamps
+ * whose rule-4 predicate fails for this event, in stamp order. It never
+ * feeds the classifier. For the two shapes the classifier can return
+ * missing_fields on stamp grounds (suspected_crash, recovery_outcome),
+ * the returned set is non-empty exactly when the classifier returns
+ * missing_fields — a property the tests pin over the fixture tables.
+ */
+export function missingStampNames(facts: CrashVerdictFacts): string[] {
+  if (facts.type === "recovery_outcome") {
+    return typeof facts.recoveryOutcome === "string" &&
+      VALID_RECOVERY_OUTCOMES.has(facts.recoveryOutcome)
+      ? []
+      : ["recoveryOutcome"];
+  }
+  if (facts.type !== "suspected_crash") return [];
+  const missing: string[] = [];
+  if (typeof facts.bgTerminal !== "boolean") missing.push("bgTerminal");
+  if (typeof facts.buildReplaced !== "boolean") missing.push("buildReplaced");
+  if (typeof facts.trailStuck !== "boolean") missing.push("trailStuck");
+  if (typeof facts.lcV !== "string" || facts.lcV.length === 0) missing.push("lcV");
+  return missing;
+}
+
+// --- Alert surfaces (§5.3) ----------------------------------------------
+//
+// The headline/verdict/why/action wording above is owner-approved and
+// stays verbatim. This section adds the lines that make an alert
+// triageable in one read: priority, why-code, event time, the enriched
+// (UA-parsed, collective label) device line, the runtime line, and the
+// mode/boots lines.
+
+const BROWSER_LABELS: Record<string, string> = {
+  safari: "Safari",
+  chrome: "Chrome",
+  edge: "Edge",
+  firefox: "Firefox",
+  samsung: "Samsung",
+  unknown: "unknown",
+};
+
+const ENGINE_LABELS: Record<string, string> = {
+  webkit: "WebKit",
+  blink: "Blink",
+  gecko: "Gecko",
+  unknown: "unknown",
+};
+
+const OS_LABELS: Record<string, string> = {
+  ios: "iOS",
+  android: "Android",
+  windows: "Windows",
+  mac: "macOS",
+  linux: "Linux",
+  other: "other",
+  unknown: "unknown",
+};
+
+function deviceRecord(event: CrashReportEvent): Record<string, unknown> {
+  return isPlainObject(event.device) ? event.device : {};
+}
+
+function deviceString(dev: Record<string, unknown>, key: string): string {
+  const v = dev[key];
+  return typeof v === "string" && v ? v : "unknown";
+}
+
+/**
+ * The enriched device line: the legacy os/form bucket first (existing
+ * surfaces key on it), then class, browser, engine, and OS version —
+ * all parsed values under one collective (UA-parsed) label (§1.3).
+ */
+export function enrichedDeviceLine(event: CrashReportEvent): string {
+  const dev = deviceRecord(event);
+  const browser = BROWSER_LABELS[deviceString(dev, "browser")] ?? "unknown";
+  const engine = ENGINE_LABELS[deviceString(dev, "engine")] ?? "unknown";
+  const os = OS_LABELS[deviceString(dev, "os")] ?? "unknown";
+  return (
+    `${deviceBucketOf(event)} · ${deviceString(dev, "deviceClass")} · ` +
+    `${browser} ${deviceString(dev, "browserVersion")} · ${engine} · ` +
+    `${os} ${deviceString(dev, "osVersion")} (UA-parsed)`
+  );
+}
+
+/** The runtime line: as-read session values, never grouped or ranked. */
+export function runtimeLine(event: CrashReportEvent): string {
+  const dev = deviceRecord(event);
+  const mem = typeof dev.deviceMemory === "number" ? String(dev.deviceMemory) : "unknown";
+  const cores =
+    typeof dev.hardwareConcurrency === "number"
+      ? `${dev.hardwareConcurrency} (as reported)`
+      : "unknown";
+  const dpr = typeof dev.dpr === "number" ? String(dev.dpr) : deviceString(dev, "dpr");
+  return (
+    `mem ${mem} · cores ${cores} · screen ${deviceString(dev, "screen")} · ` +
+    `dpr ${dpr} · touch ${deviceString(dev, "touchPoints")} · ` +
+    `standalone ${deviceString(dev, "displayMode")} · net ${deviceString(dev, "connection")} · ` +
+    `locale ${deviceString(dev, "locale")}`
+  );
+}
+
+export type PriorityCode = "P1" | "P2" | "P3" | "P4";
+
+export interface PriorityRead {
+  code: PriorityCode;
+  text: string;
+}
+
+/**
+ * The priority read (§5.3 table, first match wins). P1 requires the
+ * current build (buildReplaced === false) AND a gameplay last step.
+ * The text is assembled from stamped facts only.
+ */
+export function priorityRead(event: CrashReportEvent): PriorityRead {
+  const { verdict, whyKey } = deriveVerdict(event);
+  const facts = verdictFactsOf(event);
+  const code: PriorityCode =
+    verdict === "developer_needed" &&
+    facts.buildReplaced === false &&
+    typeof event.lastMilestone === "string" &&
+    GAMEPLAY_MILESTONES.has(event.lastMilestone)
+      ? "P1"
+      : verdict === "developer_needed" || whyKey === "recovery_failed"
+        ? "P2"
+        : verdict === "insufficient_evidence"
+          ? "P3"
+          : "P4";
+  const parts: string[] = [];
+  if (facts.buildReplaced === false) parts.push("current build");
+  else if (facts.buildReplaced === true) parts.push("replaced build");
+  switch (whyKey) {
+    case "fg_kill_current":
+    case "fg_kill_replaced":
+      parts.push(`foreground kill at ${lastStepWords(event.lastMilestone)}`);
+      break;
+    case "captured_error":
+      parts.push(
+        event.error
+          ? `captured error at ${lastStepWords(event.lastMilestone)}`
+          : "app failed to start",
+      );
+      break;
+    case "recovery_failed":
+      parts.push("recovery failed after a reload");
+      break;
+    case "recovery_confirmed":
+      parts.push("recovery confirmed");
+      break;
+    case "bg_close":
+      parts.push("closed from the background");
+      break;
+    case "bg_stuck":
+      parts.push("backgrounded while stuck");
+      break;
+    case "missing_fields":
+      parts.push("evidence incomplete");
+      break;
+    default:
+      parts.push(`ended at ${lastStepWords(event.lastMilestone)}`);
+  }
+  const dev = deviceRecord(event);
+  const deviceClass = deviceString(dev, "deviceClass");
+  const os = deviceString(dev, "os");
+  if (deviceClass !== "unknown" && os !== "unknown") {
+    const osVersion = deviceString(dev, "osVersion");
+    const major = osVersion === "unknown" ? "" : ` ${osVersion.split(".")[0]}`;
+    parts.push(`${deviceClass}-class ${OS_LABELS[os] ?? os}${major}`);
+  }
+  return { code, text: parts.join(", ") };
+}
+
+/**
+ * The evidence line (§5.3 graft): one ✓/✗ per classifier stamp, as
+ * received, using the same predicates rule 4 checks. Rendered only
+ * for missing_fields, so different missing sets read differently.
+ */
+export function evidenceText(event: CrashReportEvent): string {
+  const facts = verdictFactsOf(event);
+  if (event.type === "recovery_outcome") {
+    const ok =
+      typeof facts.recoveryOutcome === "string" &&
+      VALID_RECOVERY_OUTCOMES.has(facts.recoveryOutcome);
+    return `recoveryOutcome ${ok ? "✓" : "✗"}`;
+  }
+  const stamps: Array<[string, boolean]> = [
+    ["bgTerminal", typeof facts.bgTerminal === "boolean"],
+    ["buildReplaced", typeof facts.buildReplaced === "boolean"],
+    ["trailStuck", typeof facts.trailStuck === "boolean"],
+    ["lcV", typeof facts.lcV === "string" && facts.lcV.length > 0],
+  ];
+  return stamps.map(([name, ok]) => `${name} ${ok ? "✓" : "✗"}`).join(" · ");
+}
+
 export interface CrashAlert {
   discord: string;
   emailSubject: string;
@@ -680,23 +1161,14 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   const errorLine = event.error
     ? `${truncate(event.error.name, 60)} — ${truncate(event.error.message, 140)}`
     : "none captured";
-  // Coarse device bucket only (COPPA): os/form, never raw UA or precise facts.
-  // Derivation is shared with the Phase 1 counters (deviceBucketOf).
-  const deviceLine = deviceBucketOf(event);
+  // The device line starts from the coarse os/form bucket (COPPA) and
+  // adds the parsed manifest facts — never raw UA or precise facts.
+  // The bucket derivation is shared with the Phase 1 counters.
 
   // Slice 1: the authoritative verdict, re-derived here from the
   // event's stamped facts. A verdict/whyKey stamped by the client is an
   // untrusted cross-check and is never rendered (design §2.5/F9).
-  const { verdict, whyKey } = classifyCrashVerdict({
-    type,
-    error: event.error,
-    lastMilestone: event.lastMilestone,
-    bgTerminal: typeof event.bgTerminal === "boolean" ? event.bgTerminal : undefined,
-    buildReplaced: typeof event.buildReplaced === "boolean" ? event.buildReplaced : undefined,
-    trailStuck: typeof event.trailStuck === "boolean" ? event.trailStuck : undefined,
-    lcV: typeof event.lcV === "string" ? event.lcV : undefined,
-    recoveryOutcome: typeof event.recoveryOutcome === "string" ? event.recoveryOutcome : undefined,
-  });
+  const { verdict, whyKey } = deriveVerdict(event);
   const presentation = VERDICT_PRESENTATION[verdict];
   const why = whyLineFor(whyKey, event);
   const actionLine = verdict === "developer_needed" ? "action: Read the error below.\n" : "";
@@ -704,16 +1176,41 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   // the verdict line above it carries the real signal.
   const title = verdict === "not_a_real_issue" ? "🚨 Meridian crash report" : "Meridian crash report";
 
+  // §5.3 lines. priority: is always line 3 of the Discord alert; the
+  // evidence: line appears only for missing_fields, right after why:.
+  const priority = priorityRead(event);
+  const priorityText = `${priority.code} — ${priority.text}`;
+  const evidenceLine = whyKey === "missing_fields" ? `evidence: ${evidenceText(event)}\n` : "";
+  const eventTime = new Date(event.ts).toISOString();
+  const modeText =
+    typeof event.mapMode === "string" && event.mapMode ? event.mapMode : "unknown";
+  const msText =
+    typeof event.msSinceBootStart === "number"
+      ? ` · ${event.msSinceBootStart.toLocaleString("en-US")} ms after boot start`
+      : "";
+  const bootsText =
+    typeof event.unfinishedBoots === "number"
+      ? `${event.unfinishedBoots} unfinished in a row`
+      : "—";
+  const deviceText = enrichedDeviceLine(event);
+  const runtimeText = runtimeLine(event);
+
   const discord =
     `${presentation.headline}\n` +
     `${title}\n` +
+    `priority: ${priorityText}\n` +
     `verdict: ${presentation.label}\n` +
     `why: ${why}\n` +
+    evidenceLine +
+    `why-code: ${whyKey}\n` +
     actionLine +
     `type: ${type} · build: ${buildId}\n` +
-    `device: ${deviceLine}\n` +
+    `time: ${eventTime}\n` +
+    `device: ${deviceText}\n` +
+    `runtime: ${runtimeText}\n` +
     `edition: ${edition} · region: ${region}\n` +
-    `last step: ${lastStep}\n` +
+    `mode: ${modeText} · last step: ${lastStep}${msText}\n` +
+    `boots: ${bootsText}\n` +
     `error: ${errorLine}`;
   const discordContent = discord.length > 1500 ? `${discord.slice(0, 1499)}…` : discord;
 
@@ -721,15 +1218,22 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   const emailBody =
     `Meridian crash report\n\n` +
     `verdict: ${presentation.label}\n` +
+    `priority: ${priorityText}\n` +
     `why: ${why}\n` +
+    evidenceLine +
+    `why-code: ${whyKey}\n` +
     actionLine +
     `type:            ${type}\n` +
     `build:           ${buildId}\n` +
+    `event time:      ${eventTime}\n` +
+    `device:          ${deviceText}\n` +
+    `runtime:         ${runtimeText}\n` +
     `edition:         ${edition}\n` +
     `region:          ${region}\n` +
-    `last step:       ${lastStep}\n` +
-    `error:           ${errorLine}\n` +
-    `event time:      ${new Date(event.ts).toISOString()}\n\n` +
+    `mode:            ${modeText}\n` +
+    `last step:       ${lastStep}${msText}\n` +
+    `boots:           ${bootsText}\n` +
+    `error:           ${errorLine}\n\n` +
     `(Compact alert — full event payloads are never forwarded.)`;
 
   return { discord: discordContent, emailSubject, emailBody };
@@ -874,12 +1378,43 @@ export interface CountBucket {
   editions: Record<string, number>;
   regions: Record<string, number>;
   devices: Record<string, number>;
+  /** "<buildId>|<os>|<osMajor>|<deviceClass>" — hard-capped (§5.2). */
+  groups: Record<string, number>;
+  /** "<verdict>/<whyKey>" from the worker's re-derived verdict. */
+  verdicts: Record<string, number>;
+  milestones: Record<string, number>;
+  modes: Record<string, number>;
+  /** Error names only — never messages. */
+  errorNames: Record<string, number>;
+  /** Min/max RECEIPT time in the bucket (0 = none recorded). */
+  firstAt: number;
+  lastAt: number;
+  /** Events whose client ts fell outside the receipt hour. */
+  late: number;
   /** Alert ids already fired for this bucket (exact-once per type+hour). */
   alerts: string[];
 }
 
+/** Hard cap on distinct group keys per bucket; the next tallies "other". */
+export const MAX_GROUP_KEYS = 32;
+
 export function emptyBucket(): CountBucket {
-  return { total: 0, builds: {}, editions: {}, regions: {}, devices: {}, alerts: [] };
+  return {
+    total: 0,
+    builds: {},
+    editions: {},
+    regions: {},
+    devices: {},
+    groups: {},
+    verdicts: {},
+    milestones: {},
+    modes: {},
+    errorNames: {},
+    firstAt: 0,
+    lastAt: 0,
+    late: 0,
+    alerts: [],
+  };
 }
 
 /** Minimal KV surface — structurally satisfied by the real KVNamespace. */
@@ -923,12 +1458,22 @@ export function kvTelemetryStore(kv: KvLike): TelemetryStore {
       try {
         const parsed = JSON.parse(raw) as Partial<CountBucket>;
         if (parsed && typeof parsed.total === "number") {
+          // Read-tolerant (§5.2): buckets written by older code lack
+          // the v2 fields and default to empty maps / zero times.
           return {
             total: parsed.total,
             builds: parsed.builds ?? {},
             editions: parsed.editions ?? {},
             regions: parsed.regions ?? {},
             devices: parsed.devices ?? {},
+            groups: parsed.groups ?? {},
+            verdicts: parsed.verdicts ?? {},
+            milestones: parsed.milestones ?? {},
+            modes: parsed.modes ?? {},
+            errorNames: parsed.errorNames ?? {},
+            firstAt: typeof parsed.firstAt === "number" ? parsed.firstAt : 0,
+            lastAt: typeof parsed.lastAt === "number" ? parsed.lastAt : 0,
+            late: typeof parsed.late === "number" ? parsed.late : 0,
             alerts: Array.isArray(parsed.alerts) ? parsed.alerts : [],
           };
         }
@@ -965,6 +1510,25 @@ function bump(map: Record<string, number>, key: string): void {
   map[key] = (map[key] ?? 0) + 1;
 }
 
+/** Group key (§5.2): build × OS × OS major × device class. */
+export function groupKeyOf(event: CrashReportEvent): string {
+  const dev = (event.device ?? {}) as { os?: unknown; osVersion?: unknown; deviceClass?: unknown };
+  const os = typeof dev.os === "string" && dev.os ? dev.os : "unknown";
+  const osMajor =
+    typeof dev.osVersion === "string" && dev.osVersion && dev.osVersion !== "unknown"
+      ? dev.osVersion.split(".")[0]
+      : "unknown";
+  const deviceClass =
+    typeof dev.deviceClass === "string" && dev.deviceClass ? dev.deviceClass : "unknown";
+  return `${event.buildId}|${os}|${osMajor}|${deviceClass}`;
+}
+
+/** Bump a group key under the hard cap: a 33rd distinct key is "other". */
+function bumpGroup(groups: Record<string, number>, key: string): void {
+  if (key in groups || Object.keys(groups).length < MAX_GROUP_KEYS) bump(groups, key);
+  else bump(groups, "other");
+}
+
 export interface TelemetryRecordResult {
   counted: boolean;
   alerted: boolean;
@@ -992,6 +1556,23 @@ export async function recordTelemetry(
     bump(bucket.editions, event.edition ?? "—");
     bump(bucket.regions, event.regionId ?? "—");
     bump(bucket.devices, deviceBucketOf(event));
+    // Counting v2 (§5.2): groups, the shared re-derived verdict,
+    // milestones, modes, error names, and receipt-time first/last.
+    bumpGroup(bucket.groups, groupKeyOf(event));
+    const { verdict, whyKey } = deriveVerdict(event);
+    bump(bucket.verdicts, `${verdict}/${whyKey}`);
+    bump(bucket.milestones, event.lastMilestone ?? "—");
+    bump(bucket.modes, typeof event.mapMode === "string" && event.mapMode ? event.mapMode : "unknown");
+    bump(bucket.errorNames, event.error ? truncate(event.error.name, 80) : "none");
+    bucket.firstAt = bucket.firstAt === 0 ? now : Math.min(bucket.firstAt, now);
+    bucket.lastAt = Math.max(bucket.lastAt, now);
+    const hourStart = hourBucketStart(now);
+    if (
+      typeof event.ts === "number" &&
+      (event.ts < hourStart || event.ts >= hourStart + HOUR_MS)
+    ) {
+      bucket.late += 1;
+    }
 
     let alerted = false;
     let alertText: string | undefined;
@@ -1034,37 +1615,124 @@ export function buildThresholdAlert(
     `🚨 Meridian telemetry alert\n` +
     `type: ${type} crossed the hiccup threshold (${reason})\n` +
     `hour: ${hourLabel} UTC · counts: ${bucket.total} total (${topBuilds})\n` +
-    `one alert per type+hour — further events this hour only raise the counts`
+    `one alert per type+hour — further events this hour only raise the counts\n` +
+    `counts are at fire time; the hourly digest carries the final total`
   );
 }
 
 // --- Hourly digest -------------------------------------------------------
 
-function topEntries(map: Record<string, number>, limit: number): string {
-  return Object.entries(map)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, limit)
-    .map(([k, n]) => `${k} ×${n}`)
-    .join(", ");
+/** Count-desc, then key-asc: the same order in every hour (§5.3). */
+function sortedEntries(map: Record<string, number>): Array<[string, number]> {
+  return Object.entries(map).sort(
+    (a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0),
+  );
 }
 
-function renderTypeLine(
+/**
+ * Top-N of one counted dimension with its label applied by the caller.
+ * A truncated dimension appends "(+N more)" with the true remainder —
+ * N counts the hidden distinct keys. No silent caps anywhere (§5.3).
+ */
+function labelledTop(map: Record<string, number>, limit: number): string {
+  const entries = sortedEntries(map);
+  if (entries.length === 0) return "—";
+  const shown = entries
+    .slice(0, limit)
+    .map(([k, n]) => `${k} ×${n}`)
+    .join(" · ");
+  const rest = entries.length - Math.min(limit, entries.length);
+  return rest > 0 ? `${shown} (+${rest} more)` : shown;
+}
+
+function hhmmOf(ts: number): string {
+  return ts > 0 ? new Date(ts).toISOString().slice(11, 16) : "—";
+}
+
+function renderTypeBlock(
   type: string,
   bucket: CountBucket,
   trailingAvg: number,
   anomalous: boolean,
 ): string {
-  const dims = [
-    topEntries(bucket.builds, 3),
-    topEntries(bucket.editions, 2),
-    topEntries(bucket.devices, 2),
-  ]
-    .filter(Boolean)
-    .join(" · ");
   const flag = anomalous
     ? ` ⚠️ >${ANOMALY_RATIO}× 24h avg (${trailingAvg.toFixed(1)})`
     : "";
-  return `${type} ${bucket.total}${dims ? ` · ${dims}` : ""}${flag}`;
+  // §5.3 graft: the receipt-vs-event hour displacement is labelled,
+  // not silent.
+  const late = bucket.late > 0 ? " (some reports arrived late)" : "";
+  const errorMap = Object.fromEntries(
+    Object.entries(bucket.errorNames).filter(([k]) => k !== "none"),
+  );
+  const errorsPart =
+    Object.keys(errorMap).length > 0 ? ` · errors: ${labelledTop(errorMap, 2)}` : "";
+  return (
+    `${type} ${bucket.total} · first ${hhmmOf(bucket.firstAt)} · last ${hhmmOf(bucket.lastAt)}${late}${flag}\n` +
+    `  builds: ${labelledTop(bucket.builds, 3)} · editions: ${labelledTop(bucket.editions, 2)} · regions: ${labelledTop(bucket.regions, 2)}\n` +
+    `  groups: ${labelledTop(bucket.groups, 3)}\n` +
+    `  verdicts: ${labelledTop(bucket.verdicts, 3)} · modes: ${labelledTop(bucket.modes, 2)} · steps: ${labelledTop(bucket.milestones, 2)}${errorsPart}`
+  );
+}
+
+/**
+ * The digest's priority line (§5.3): the highest-priority verdict in
+ * the hour, with its top group. P1 needs a developer_needed verdict in
+ * a bucket that also counted a gameplay last step.
+ */
+function digestPriorityLine(
+  rows: Array<{ type: string; bucket: CountBucket }>,
+): string | null {
+  const topVerdict = (
+    bucket: CountBucket,
+    pred: (key: string) => boolean,
+  ): [string, number] | undefined => sortedEntries(bucket.verdicts).find(([k]) => pred(k));
+  let chosen: { code: PriorityCode; key: string; count: number; bucket: CountBucket } | null =
+    null;
+  // First pass: P1 — a developer_needed verdict in a bucket that also
+  // counted a gameplay last step.
+  for (const { bucket } of rows) {
+    const dev = topVerdict(bucket, (k) => k.startsWith("developer_needed/"));
+    if (dev && Object.keys(bucket.milestones).some((m) => GAMEPLAY_MILESTONES.has(m))) {
+      chosen = { code: "P1", key: dev[0], count: dev[1], bucket };
+      break;
+    }
+  }
+  // Second pass: P2 — any other developer_needed verdict.
+  if (!chosen) {
+    for (const { bucket } of rows) {
+      const dev = topVerdict(bucket, (k) => k.startsWith("developer_needed/"));
+      if (dev) {
+        chosen = { code: "P2", key: dev[0], count: dev[1], bucket };
+        break;
+      }
+    }
+  }
+  if (!chosen) {
+    for (const { bucket } of rows) {
+      const ins = topVerdict(bucket, (k) => k.startsWith("insufficient_evidence/"));
+      if (ins) {
+        chosen = { code: "P3", key: ins[0], count: ins[1], bucket };
+        break;
+      }
+    }
+  }
+  if (!chosen) {
+    for (const { bucket } of rows) {
+      const any = sortedEntries(bucket.verdicts)[0];
+      if (any) {
+        chosen = { code: "P4", key: any[0], count: any[1], bucket };
+        break;
+      }
+    }
+  }
+  if (!chosen) return null;
+  const group = sortedEntries(chosen.bucket.groups).find(([k]) => k !== "other");
+  let suffix = "";
+  if (group) {
+    const [build, os, osMajor, deviceClass] = group[0].split("|");
+    suffix = ` on ${build} · ${os} ${osMajor} · ${deviceClass}`;
+  }
+  return `priority: ${chosen.code} — ${chosen.count}× ${chosen.key}${suffix}`;
 }
 
 /**
@@ -1104,7 +1772,7 @@ export async function renderDigest(
       const avg = trailing / TRAILING_BASELINE_HOURS;
       const anomalous =
         bucket.total > Math.max(ANOMALY_RATIO * avg, ANOMALY_MIN_COUNT);
-      lines.push(renderTypeLine(type, bucket, avg, anomalous));
+      lines.push(renderTypeBlock(type, bucket, avg, anomalous));
       for (const alertId of bucket.alerts) {
         const m = /^threshold:(.+):/.exec(alertId);
         if (m && !firedAlerts.includes(m[1])) firedAlerts.push(m[1]);
@@ -1113,9 +1781,12 @@ export async function renderDigest(
 
     const from = new Date(prevStart).toISOString().slice(0, 16).replace("T", " ");
     const to = new Date(prevStart + HOUR_MS).toISOString().slice(11, 16);
+    const priority = digestPriorityLine(rows);
     return (
       `📊 Meridian telemetry — hourly digest\n` +
-      `hour: ${from}–${to} UTC (${grandTotal} events)\n\n` +
+      `hour: ${from}–${to} UTC (receipt hour) (${grandTotal} events)\n` +
+      (priority ? `${priority}\n` : "") +
+      `\n` +
       lines.join("\n") +
       `\n\nalerts this hour: ${firedAlerts.length > 0 ? firedAlerts.map((t) => `${t} threshold`).join(", ") : "none"}`
     );
@@ -1230,11 +1901,15 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
     } catch {
       return jsonResponse(400, { error: "invalid JSON" }, cors);
     }
-    const problems = validateEvent(event);
+    // Intake normalisation (§5.1) runs before validation: it strips
+    // and coerces, never rejects, so the 400s below are only the
+    // required-field checks a legacy event already passes.
+    const normalised = normaliseEvent(event);
+    const problems = validateEvent(normalised);
     if (problems.length > 0) {
       return jsonResponse(400, { error: "invalid event", problems }, cors);
     }
-    const valid = event as CrashReportEvent;
+    const valid = normalised as CrashReportEvent;
 
     const discordUrl = env.DISCORD_WEBHOOK_URL?.trim();
     const resendKey = env.RESEND_API_KEY?.trim();

@@ -52,15 +52,12 @@ import { BootSplash } from "./boot-splash";
 import "./home-v5.css";
 import heroMountainUrl from "@/assets/home-v5/hero-mountain.webp";
 import globeFallbackUrl from "@/assets/home-v5/globe-fallback.webp";
-import desertRuinsUrl from "@/assets/home-v5/desert-ruins.webp";
-import patagoniaUrl from "@/assets/home-v5/patagonia.webp";
-import archiveToolsUrl from "@/assets/home-v5/archive-tools.webp";
-import journalTreeUrl from "@/assets/home-v5/journal-tree.webp";
-import binocularsHatUrl from "@/assets/home-v5/binoculars-hat.webp";
 import {
   VERDICT_GRANDPA_POSTER_URL,
   VERDICT_GRANDPA_VIDEO_URL,
 } from "@/assets/verdict/grandpa-media";
+import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand } from "@/assets/home-v5/card-media";
+import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
 import {
@@ -202,6 +199,7 @@ import {
   writeStoredMapMode,
 } from "@/map/capability";
 import type { ScoutRestoreView } from "@/map/satellite-map";
+import { isCoarsePointer } from "@/map/map-options";
 import { SCOUT_COPY } from "./scout-copy.ts";
 import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy.ts";
 import { MapModeToggle } from "./map-mode-toggle.tsx";
@@ -1418,6 +1416,18 @@ export function GameApp() {
    */
   const [autoScoutNote, setAutoScoutNote] = useState(false);
   /**
+   * Issue #330: true only when this boot started in Scout SOLELY under
+   * the unknown-memory trial (capability source "unknown-memory") AND
+   * the `scoutUpgradeTrial` flag is on (the trial's kill-switch — the
+   * boot effect awaits the flags load before setting this; flag off =
+   * never set, so the upgrade never arms). The first Scout map mount
+   * may then upgrade the session to full after its stability soak.
+   * Session-only state: it is never persisted, and firing the upgrade
+   * clears it, so a later runtime fallback to Scout (tile failure,
+   * context loss) can never re-arm it.
+   */
+  const [scoutUpgradeEligible, setScoutUpgradeEligible] = useState(false);
+  /**
    * Friend-challenge boot notice (cure round for PR #274): set by the
    * boot effect when a `#c=` link was tapped with the friendChallenges
    * flag ON but the challenge could not be loaded (broken link, unknown
@@ -1526,13 +1536,16 @@ export function GameApp() {
    * - The switched notice RETIRES (here and in applyMapMode): its
    *   text names the mode the next game uses, and this switch just
    *   changed that mode.
-   * - The boot auto-switch note does NOT retire here: it can only be
-   *   standing when this boot itself auto-switched to Scout, and in
-   *   that state both runtime paths early-return (they fire only
-   *   from full) — so it is never standing when a runtime switch
-   *   runs. Its text would also remain TRUE after a switch to Scout.
-   *   (Manual flips clear it for a different reason: the player's own
-   *   choice supersedes the "picked for this device" framing.)
+   * - The boot auto-switch note does NOT retire here. The tile-
+   *   fallback path (the other runtime caller) fires only from full,
+   *   and its switch lands on Scout, where the note's text would
+   *   remain TRUE. The one path that DOES falsify the note is the
+   *   #330 trial upgrade: a trial boot leaves the note standing in
+   *   Scout, and the upgrade then moves the session to full — so
+   *   applyScoutUpgrade retires the note itself before delegating
+   *   here. (Manual flips clear it for a different reason: the
+   *   player's own choice supersedes the "picked for this device"
+   *   framing.)
    * - Nothing is ANNOUNCED: device-driven switches are silent (owner
    *   ruling, 2026-10-20), the announcer's texts are manual-switch
    *   wording ("back home; your next game…") that would be false
@@ -1543,6 +1556,24 @@ export function GameApp() {
     setMapMode(mode);
     setMapSwitchedNote(null);
   }, []);
+  /**
+   * Issue #330: the unknown-memory trial's upgrade. Session-only, like
+   * the tile fallback: no record is written, so if the upgraded full
+   * map kills the process, the next boot meets the prior-crash signal
+   * (session or durable marker) with no stored artifact in front of it
+   * and stays in Scout with no further upgrade. Silent, per the
+   * 2026-10-20 auto-switch ruling. Clears eligibility first so the
+   * upgrade fires at most once per boot.
+   */
+  const applyScoutUpgrade = useCallback(() => {
+    setScoutUpgradeEligible(false);
+    setReportMapMode("full");
+    // The trial boot left the auto-Scout note standing; this upgrade
+    // falsifies it (the session is no longer on Scout), so retire it
+    // here, mirroring the manual and home toggle paths.
+    setAutoScoutNote(false);
+    applySessionMapMode("full");
+  }, [applySessionMapMode]);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
   // run/drop keys. The open flag (meridian.loop.open) restores the screen
@@ -2040,6 +2071,14 @@ export function GameApp() {
     // probes clean returns to full. (This replaced the boot choice
     // dialog; see planBootMapMode's docstring for the superseded
     // directive.)
+    // Issue #330 exception: an "unknown-memory" decision (Safari reports
+    // no deviceMemory; coarse pointer) is a trial, not a verdict — it
+    // persists NOTHING and instead arms the in-session Scout → full
+    // upgrade (applyScoutUpgrade), so no stored artifact can ever stand
+    // in front of a later prior-crash check. The arming itself is gated
+    // by the `scoutUpgradeTrial` flag (see the unknown-memory branch
+    // below): flag off, the boot still starts in Scout and the upgrade
+    // simply never arms.
     // There is deliberately NO test bypass here (issue #154 item 1):
     // the E2E harness used to set a window flag to suppress this
     // auto-switch on its SwiftShader VM, which reads as a weak device.
@@ -2053,16 +2092,36 @@ export function GameApp() {
         setReportMapMode(stored.mode);
         setMapMode(stored.mode);
       } else {
-        const plan = planBootMapMode(
-          qualifyMapMode({
-            priorMapCrash: wasMapAttributedCrash(),
-            webglProbeOk: probeWebGL(),
-            deviceMemoryGB: readDeviceMemoryGB(),
-          }),
-        );
+        const decision = qualifyMapMode({
+          priorMapCrash: wasMapAttributedCrash(),
+          webglProbeOk: probeWebGL(),
+          deviceMemoryGB: readDeviceMemoryGB(),
+          coarsePointer: isCoarsePointer(),
+        });
+        const plan = planBootMapMode(decision);
         if (plan.mode === "scout") {
           if (plan.persistSource !== null) {
             writeStoredMapMode("scout", plan.persistSource);
+          }
+          if (decision.source === "unknown-memory") {
+            // Issue #330 trial: nothing was persisted above (the plan's
+            // persistSource is null for this source) — arm the in-session
+            // upgrade the first Scout map may fire after its soak.
+            // Flag gate (PR #331 panel cure — the trial's kill-switch):
+            // eligibility is set only when the `scoutUpgradeTrial` flag
+            // is on. Kill-switches await the shared flags load before
+            // checking (src/lib/flags.ts), so a remote `false` in
+            // flags.json wins the boot-time race deterministically and
+            // the upgrade never arms; the baked-in default is true, so
+            // an unreachable flags.json keeps the shipped behavior.
+            // The manual re-check mirrors Play's fire-time guard: a
+            // manual choice that landed while the load was in flight
+            // stands over the trial and must not be re-armed over.
+            void loadFlags().then(() => {
+              if (!isEnabled("scoutUpgradeTrial")) return;
+              if (readStoredMapMode()?.source === "manual") return;
+              setScoutUpgradeEligible(true);
+            });
           }
           setReportMapMode("scout");
           setMapMode("scout");
@@ -2154,6 +2213,9 @@ export function GameApp() {
     // BLOCK-1: retire this boot's auto-switch note — the switched
     // notice set above supersedes it (see the docstring).
     setAutoScoutNote(false);
+    // #330 cure: an explicit manual choice disarms any pending trial
+    // upgrade — the upgrade must never override the player's pick.
+    setScoutUpgradeEligible(false);
     // BLOCK-4: close every other full-screen state so the render
     // precedence below cannot hand the landing to a lurking flag
     // (see the docstring). writeLoopOpen mirrors LoopScreen's own
@@ -2190,6 +2252,9 @@ export function GameApp() {
       mode === "scout" ? SCOUT_COPY.homeAnnounceOn : SCOUT_COPY.homeAnnounceOff,
     );
     setAutoScoutNote(false);
+    // #330 cure: an explicit manual choice disarms any pending trial
+    // upgrade — the upgrade must never override the player's pick.
+    setScoutUpgradeEligible(false);
     // BLOCK-2: this flip supersedes any earlier switched notice.
     setMapSwitchedNote(null);
   }, []);
@@ -3351,6 +3416,8 @@ export function GameApp() {
           onManualMapMode={handleManualMapMode}
           applyMapMode={applyMapMode}
           applySessionMapMode={applySessionMapMode}
+          scoutUpgradeEligible={scoutUpgradeEligible}
+          onScoutUpgrade={applyScoutUpgrade}
           celebrationOpen={cleared !== null}
           ageBand={ageBand}
         />
@@ -4348,7 +4415,11 @@ function Choose({
               with the image. The card action is the stretched CTA below
               (Form S): the card itself cannot be the <button> because
               EarnedBadgeRow renders real badge <button>s inside it. */}
-          <LazyHomeImage className="hv5-pic" src={desertRuinsUrl} alt="" ariaHidden />
+          {/* Card film (feat/home-card-films): the slot now plays the
+              GeoDetective reshoot film once, governed by CardFilm
+              (reduced-motion / Save-Data / low-memory / error all land
+              on the owner's still image). Media: card-media.ts. */}
+          <CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4396,7 +4467,11 @@ function Choose({
           {/* Variant A, same as GeoDetective: image first in DOM order;
               whole-card action via the stretched CTA (Form S, shared form
               so both game cards behave identically). */}
-          <LazyHomeImage className="hv5-pic" src={patagoniaUrl} alt="" ariaHidden />
+          {/* Card film, same shared component as GeoDetective: Jolly
+              walks the footprint trail (character motion, not a camera
+              move — the owner's 2026-11-02 correction). Media:
+              card-media.ts. */}
+          <CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4408,8 +4483,8 @@ function Choose({
               Cold Trail<span className="hv5-chip">New</span>
             </h2>
             <p>
-              A smuggler moves between cities. Three sightings, three rings — tap where
-              they cross to make the interception.
+              Jolly was spotted in the snow. Three sightings, three rings — tap where
+              they cross to reach Jolly before the trail freezes.
             </p>
             <button
               type="button"
@@ -4436,6 +4511,7 @@ function Choose({
             data-testid="tour-stop-review"
             id="home-review"
           >
+            <CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" />
             <div className="hv5-txt">
               <div className="hv5-head">
                 <span className="hv5-badge">
@@ -4497,7 +4573,6 @@ function Choose({
                 <p>{REVIEW_DECK_COPY.pickerEmpty}</p>
               )}
             </div>
-            <LazyHomeImage className="hv5-art" src={archiveToolsUrl} alt="" ariaHidden />
           </section>
         ) : (
           <div aria-hidden="true" />
@@ -4507,6 +4582,7 @@ function Choose({
             deferred while focus is inside this card or the journal
             section (spec §6). */}
         <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)} data-testid="journal-card">
+          <CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4527,9 +4603,9 @@ function Choose({
               READ THE ENTRY
             </button>
           </div>
-          <LazyHomeImage className="hv5-art" src={journalTreeUrl} alt="" ariaHidden />
         </article>
         <article id="home-grownups" tabIndex={-1} className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)} data-testid="grownups-card">
+          <CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4548,7 +4624,6 @@ function Choose({
               <svg width="14" height="10" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
             </button>
           </div>
-          <LazyHomeImage className="hv5-art" src={binocularsHatUrl} alt="" ariaHidden />
         </article>
       </div>
 
@@ -5818,6 +5893,8 @@ function Play({
   onManualMapMode,
   applyMapMode,
   applySessionMapMode,
+  scoutUpgradeEligible,
+  onScoutUpgrade,
 }: {
   run: Run;
   session: Session | null;
@@ -5886,6 +5963,10 @@ function Play({
    * setter (BLOCK-B).
    */
   applySessionMapMode: (mode: MapMode) => void;
+  /** Issue #330: this boot is an unknown-memory Scout trial. */
+  scoutUpgradeEligible: boolean;
+  /** Issue #330: apply the trial's session-only upgrade to full. */
+  onScoutUpgrade: () => void;
 }) {
   // The catalog is stored WITH the key it was loaded for and only used while
   // that key is the current run's key. Play stays mounted across run changes
@@ -6075,6 +6156,8 @@ function Play({
       onManualMapMode={onManualMapMode}
       applyMapMode={applyMapMode}
       applySessionMapMode={applySessionMapMode}
+      scoutUpgradeEligible={scoutUpgradeEligible}
+      onScoutUpgrade={onScoutUpgrade}
     />
   );
 }
@@ -6106,6 +6189,8 @@ function PlayLoaded({
   onManualMapMode,
   applyMapMode,
   applySessionMapMode,
+  scoutUpgradeEligible,
+  onScoutUpgrade,
 }: {
   run: Run;
   places: Starter[];
@@ -6181,6 +6266,10 @@ function PlayLoaded({
    * setter (BLOCK-B).
    */
   applySessionMapMode: (mode: MapMode) => void;
+  /** Issue #330: this boot is an unknown-memory Scout trial. */
+  scoutUpgradeEligible: boolean;
+  /** Issue #330: apply the trial's session-only upgrade to full. */
+  onScoutUpgrade: () => void;
 }) {
   // Review-deck session: a synthetic Run reusing this game loop. The deck
   // queue (due order) is the pool; review answers never bank into the
@@ -6376,6 +6465,31 @@ function PlayLoaded({
       if (place) setTileSwitchNote({ placeId: place.id });
     },
     [applySessionMapMode, place],
+  );
+
+  /**
+   * Issue #330: the unknown-memory trial's Scout map stayed stable past
+   * its soak — upgrade the session to the full map. Mirrors the tile
+   * fallback's remount (live viewport carried over, nothing stored),
+   * in reverse. No switch note: the player did not lose anything, the
+   * map simply got richer, and device-driven switches are silent.
+   * Challenge runs are excluded: a challenge's map is picked at its
+   * welcome card, and a challenge is never re-mapped mid-run.
+   */
+  const handleScoutUpgrade = useCallback(
+    (view: ScoutRestoreView) => {
+      if (mapModeRef.current !== "scout") return;
+      if (challenge) return;
+      // #330 cure: re-check at fire time — a stored manual record
+      // written after boot (a manual choice that did not pass through
+      // the handlers that clear eligibility) stands over the trial,
+      // and the upgrade must never override it.
+      if (readStoredMapMode()?.source === "manual") return;
+      onScoutUpgrade();
+      setScoutSwitchView(view);
+      setMapRemountNonce((n) => n + 1);
+    },
+    [onScoutUpgrade, challenge],
   );
 
   // The switch viewport is consumed by the remount it triggers; clear it
@@ -7482,6 +7596,7 @@ function PlayLoaded({
               tileRetriesUsed={tileRetriesUsed}
               onTileRetry={handleTileRetry}
               onTileFallback={handleTileFallback}
+              onScoutUpgrade={scoutUpgradeEligible ? handleScoutUpgrade : undefined}
               mode={mode}
               mapMode={mapMode}
               initialView={scoutSwitchView}
