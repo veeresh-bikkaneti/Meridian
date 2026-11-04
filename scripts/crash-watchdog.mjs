@@ -37,7 +37,7 @@
  * isValidWatchdogEndpoint): var, function, no ?./??, no arrows, no
  * template literals, no const/let, no classes, no fetch/Promise (XHR +
  * callbacks only), no import/export. The whole inline body is wrapped in
- * try/catch and the rendered output must stay <= 5120 bytes, so the
+ * try/catch and the rendered output must stay <= 6144 bytes, so the
  * embedded code is written terse and renderCrashWatchdogScript() runs it
  * through minifyEmbedded() (comment/whitespace removal plus renaming of
  * a fixed safe-list of long locals — token-based, so strings, regexes,
@@ -89,7 +89,7 @@ export function isValidWatchdogEndpoint(value, hosts) {
  * which drives the real orchestration against fake browser globals. The
  * inline script embeds this same function by source via
  * renderCrashWatchdogScript(). Everything in here is ES5-only (see the
- * module docstring) and deliberately terse to hold the 5120-byte budget.
+ * module docstring) and deliberately terse to hold the 6144-byte budget.
  */
 export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts) {
   var ASKED = "meridian.crashwatchdogAsked",
@@ -100,6 +100,9 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
     CAP = 8192;
   var win = host,
     doc = win.document;
+  // §4.4 parity: false iff any guarded storage access threw during
+  // this run — stamped on the boot_failure event as storageOk.
+  var sok = true;
   // sessionStorage is resolved lazily: on old Safari even touching it can
   // throw, and every access is guarded here anyway.
   function ss(k, v) {
@@ -107,6 +110,7 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
       var st = win.sessionStorage;
       return v === void 0 ? st.getItem(k) : st.setItem(k, v);
     } catch (e) {
+      sok = false;
       return null;
     }
   }
@@ -145,16 +149,23 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
   } catch (e) {
     /* best-effort */
   }
-  // WebGL probe: webgl2, else webgl, on one canvas. A device with WebGL2
-  // also does WebGL1, so g1 covers both for diagnostics. Booleans only —
-  // the GPU renderer string (UNMASKED_RENDERER_WEBGL) is deliberately
-  // never read: it fingerprints the individual device (COPPA).
+  // WebGL probe: webgl2 on one canvas, webgl1 on a SECOND canvas —
+  // a canvas that has produced (or attempted) one context mode can
+  // refuse the other, so reusing the webgl2 canvas made webgl1 read
+  // false on devices that have it (DESIGN-FINAL §1.2 row 20). A
+  // device with WebGL2 also does WebGL1, so g2 implies g1. Booleans
+  // only — the GPU renderer string (UNMASKED_RENDERER_WEBGL) is
+  // deliberately never read: it fingerprints the device (COPPA).
   var g1 = false,
     g2 = false;
   try {
     var cv = doc.createElement("canvas");
     g2 = !!cv.getContext("webgl2");
-    g1 = g2 || !!cv.getContext("webgl");
+    if (g2) g1 = true;
+    else {
+      var cv2 = doc.createElement("canvas");
+      g1 = !!cv2.getContext("webgl");
+    }
   } catch (e) {
     /* best-effort */
   }
@@ -233,9 +244,19 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
     getEndpoint(function (ep) {
       if (!ep) return;
       try {
-        // COPPA: OS/form buckets from the UA (never the UA or GPU
-        // string), DPR clamped to 1-4, short-side screen bucket; no memory or
-        // cores (2026-10-21). undefined fields are dropped by JSON.
+        // COPPA: parsed/coarse facts only (never the UA or GPU
+        // string), DPR clamped to 1-4, short-side screen bucket.
+        // §4.4 parity, as cut by the §7.5 ladder: the device
+        // carries the manifest keys this path can stamp. The subset
+        // parser below (rule IDs mirror src/lib/ua-parse.ts:
+        // O1/O2/O3/O4 osVersion, B7/B8 Safari name/version, the
+        // §2.3 frozen-token denylist) computes what it can; every
+        // other stamped new key is the literal "unknown" (§2.1:
+        // unknown is a value). engine and deviceClass are dropped
+        // entirely (ladder steps 2–3, below): engine is filled
+        // worker-side for boot_failure, deviceClass stays
+        // "unknown". Memory and cores are never READ here — the
+        // host may expose numbers, they still stamp "unknown".
         var r,
           n = win.navigator || {},
           w = win.screen || {},
@@ -251,15 +272,65 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
                   : /linux/.test(uaS)
                     ? "linux"
                     : "other",
-          ss = Math.min(w.width, w.height);
+          ss = Math.min(w.width, w.height),
+          un = "unknown",
+          vm = /version\/([0-9]+)\.([0-9]+)/.exec(uaS),
+          br = un,
+          bv = un,
+          ov = un,
+          im,
+          am;
+        // B7/B8 subset, order-guarded: Chromium UAs also carry a
+        // Safari/ compat token, so Safari is claimed only when no
+        // Chrome/ token is present (B6 outranks B7 in the full rules).
+        if (/safari\//.test(uaS) && !/chrome\//.test(uaS)) {
+          br = "safari";
+          // §7.5 ladder step 1: watchdog browserVersion is MAJOR ONLY.
+          if (vm) bv = vm[1];
+        }
+        if ((im = /(?:cpu(?: iphone)? os|mac os x) ([0-9_]+)/.exec(uaS))) {
+          ov = im[1].replace(/_/g, ".");
+          // §2.3: the Mac token is frozen — never stamped as a version.
+          if (ov === "10.15.7" || ov === "10.15") ov = un;
+        } else if (os === "android" && (am = /android ([0-9]+(?:\.[0-9]+)?)/.exec(uaS))) {
+          ov = am[1];
+          // §2.3: Android 10 + a UA-Reduction tell = frozen, not real.
+          if (ov === "10" && (/chrome\/[0-9]+\.0\.0\.0/.test(uaS) || /; k\)/.test(uaS))) ov = un;
+        } else if (os === "windows" && (am = /windows nt ([0-9.]+)/.exec(uaS))) {
+          ov = am[1];
+        }
+        // §2.3: iOS 18_6/18_7 freeze only with the Version/ >= 26 witness.
+        if (os === "ios" && (ov === "18.6" || ov === "18.7") && vm && +vm[1] >= 26) ov = un;
+        // §7.5 ladder step 3: deviceClass is NOT stamped on this path
+        // and is NOT recovered worker-side — it stays "unknown" on
+        // watchdog boot_failure events. (The P2/P3 subset rules live
+        // in src/lib/ua-parse.ts; the watchdog's byte budget cannot
+        // carry them — see BRANCH_STATUS.)
+        // msSinceBootStart from the recovered trail only (§4.4).
+        var ms = un,
+          hh = prev && prev.history,
+          la = hh && hh[hh.length - 1];
+        if (la && typeof la.at === "number" && la.at >= prev.startedAt) ms = la.at - prev.startedAt;
+        // §7.5 ladder step 2: engine is NOT stamped on this path —
+        // for boot_failure events only, the worker fills it from the
+        // event's parsed fields via the §3.4 E-rules.
         var dv = {
+          browser: br,
+          browserVersion: bv,
           os: os,
+          osVersion: ov,
+          hardwareConcurrency: un,
+          deviceMemory: un,
           form: os === "android" || os === "ios" ? "mobile" : "desktop",
           // Same bucket as dprBucket() in src/lib/observability.ts: an
           // integer clamped to 1-4, or undefined when the value is missing
           // or bogus. Rounding alone let odd zoom values such as 7 through.
           dpr: (r = win.devicePixelRatio) > 0 ? Math.min(4, Math.round(r)) || 1 : void 0,
           screen: ss < 480 ? "sm" : ss < 768 ? "md" : ss < 1080 ? "lg" : ss ? "xl" : void 0,
+          touchPoints: un,
+          displayMode: un,
+          connection: un,
+          locale: un,
           webgl1: g1,
           // (No device.buildId: the top-level event already carries it,
           // and dropping the copy keeps the script within its byte budget.)
@@ -270,16 +341,25 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
             ts: Date.now(),
             buildId: buildId,
             device: dv,
+            // §4.4 parity: same envelope stamps as the app path.
+            // unfinishedBoots is deliberately ABSENT — the watchdog
+            // must never become a second writer of meridian:boot-health.
+            lcV: "2",
+            storageOk: sok,
+            mapMode: prev && (prev.mapMode === "full" || prev.mapMode === "scout") ? prev.mapMode : un,
+            msSinceBootStart: ms,
             error: err0 || { name: "Error", message: "boot timeout" }
           };
           if (prev) {
             ev.sessionId = prev.sessionId;
             if (prev.lastMilestone) ev.lastMilestone = prev.lastMilestone;
             if (unclean) {
-              // Strip the breadcrumb's device sub-object: the app bundle
-              // writes the raw UA string there (device.ua) and this
-              // watchdog never sends UA — the coarse facts already ride
-              // on ev.device. Mutating prev is safe: sessionId /
+              // Strip the breadcrumb's device sub-object: legacy
+              // trails may carry the raw UA string there (device.ua);
+              // current builds store the parsed snapshot only, not
+              // the raw UA. This watchdog never sends UA either way —
+              // the coarse facts already ride on ev.device.
+              // Mutating prev is safe: sessionId /
               // lastMilestone were extracted above, prev is never written
               // back to storage and never read again below.
               delete prev.device;
@@ -445,10 +525,12 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
 const RENAME = {
   // #223: crashWatchdogMain and CSS are renamed too — production build
   // ids are 12 chars (14 for the timestamp fallback), which pushed the
-  // rendered script 2–4 bytes over the 5120 budget while the 10-char
-  // test fixture still passed. These two renames free 20 bytes, so the
-  // worst real case (14 chars) renders at 5104 bytes. Neither name is
-  // an object-literal key or a property, so the rename is safe here.
+  // rendered script 2–4 bytes over its then budget while the 10-char
+  // test fixture still passed. These two renames free 20 bytes.
+  // Current figures (§7.5 gated decision): the budget is 6,144 bytes
+  // and the worst case (14-char build id) measures 6,104 bytes.
+  // Neither name is an object-literal key or a property, so the
+  // rename is safe here.
   crashWatchdogMain: "M",
   CSS: "G",
   isValidEndpointFn: "ok",
