@@ -1,3 +1,33 @@
+# Branch status — dependabot/npm_and_yarn/multi-51863f6672 (PR #327: better-auth → 1.7.17, carrier for the 1.7 auth migration)
+
+- **Branch:** `dependabot/npm_and_yarn/multi-51863f6672` (PR #327)
+- **Base:** `main` @ `68ff2c7` — the branch is main + the dependabot bump + the cure commits below; no merge-up needed or pending.
+- **Authority:** owner decision 2026-11-04 (Veeresh): carrier = #327 cherry-pick; the 3 doc lines cured in the same pass; fresh Silo QA + panel re-vote next; **no merge and no closing #326 without his further word**.
+- **What this branch carries:** dependabot bump `28cf1ce` (better-auth ~1.7.15 → ~1.7.17, lock resolves exactly 1.7.17) + cherry-pick `c8e7bcd` of #326's proven fix `c42156a` (only the two src files — `src/lib/auth/client.ts`, `src/lib/auth/popup.server.ts`; applied cleanly, no package hunks) + the doc cure commit (this record's commit).
+
+## Why 1.7.17 (security premise)
+
+- Panel on #326 BLOCKED its 1.7.15 target: better-auth **v1.7.16 (2026-11-03) is a dedicated security release fixing 12 advisories** (vendor: better-auth.com/blog/security-release-2026-11-03 — "Update `better-auth` … to 1.7.16" on the v1.7.x line). This branch's 1.7.17 (npm, 2026-11-04) is above that line.
+- The two advisories matching this app's config are covered by the ≥1.7.16 line: *"OAuth sign-in can treat an unverified provider email as verified"* (genericOAuth is this app's sign-in path, `src/lib/auth/server.ts`) and *"Revoked sessions can stay valid with secondary storage or the cookie cache"* (this app runs `session.cookieCache: { enabled: true, maxAge: 300 }`).
+
+## Cure verification (coordinator, on the cured tree)
+
+- **Installed-package check (better-auth 1.7.17, from the lockfile):** `genericOAuthClient` and `signInWithOAuth2` are absent from the package dist; `signInSocial` exists at `dist/api/routes/sign-in.d.mts` (`/sign-in/social`, body takes `provider:` — no `providerId`); the `genericOAuth` **server** plugin is still present (server.ts registration untouched).
+- **Runtime smoke** (repo's real genericOAuth config — GROK_PROVIDERS + preview client + static broker endpoints, same construction as `server.ts`): `auth.api.signInSocial` for `grok-google` → **200 `{url, redirect: true}`**; the authorize URL's `redirect_uri` is `<origin>/api/auth/callback/grok-google` (empirically the new callback path), PKCE S256 present, `idp=google`, `prompt=login`; unknown provider → **404 PROVIDER_NOT_FOUND**.
+- **Doc cure:** `src/lib/auth/preview.ts:7`, `preview.ts:30`, `src/lib/auth/providers.ts:16` now read `/api/auth/callback/…`; tree-wide grep for `oauth2/callback` after the cure: **zero hits** (all three were documentation comments; no code occurrence existed).
+- **Gates:** `npx tsc --noEmit` clean · `npm test` green (scripts 1003 pass / 0 fail / 11 skipped; src 2119/2119; auth test files 27/27) · `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green.
+
+## Open preconditions before any merge (owner-owned, unchanged from the #326 verdict)
+
+1. Broker confirms in writing it accepts `/api/auth/callback/*` redirect URIs + PKCE S256 (1.7 forces PKCE on; the old callback path cannot be pinned).
+2. The owner does the live-preview sign-in click himself before any merge (the preview does real sign-in with the baked-in shared preview client).
+
+## Next steps
+
+Fresh independent Silo QA on the cured tip → 12-role panel re-vote on the cured tip → owner's merge word. #326 stays open and untouched; on the owner's word it closes as **superseded**, not duplicate.
+
+---
+
 # Branch status — feat/capitals-flags-phase1 (Capitals & Flags, Phase 1)
 
 - **Branch:** `feat/capitals-flags-phase1`
