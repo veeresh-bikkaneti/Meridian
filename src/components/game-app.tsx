@@ -199,6 +199,7 @@ import {
   writeStoredMapMode,
 } from "@/map/capability";
 import type { ScoutRestoreView } from "@/map/satellite-map";
+import { isCoarsePointer } from "@/map/map-options";
 import { SCOUT_COPY } from "./scout-copy.ts";
 import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy.ts";
 import { MapModeToggle } from "./map-mode-toggle.tsx";
@@ -1415,6 +1416,15 @@ export function GameApp() {
    */
   const [autoScoutNote, setAutoScoutNote] = useState(false);
   /**
+   * Issue #330: true only when this boot started in Scout SOLELY under
+   * the unknown-memory trial (capability source "unknown-memory"). The
+   * first Scout map mount may then upgrade the session to full after
+   * its stability soak. Session-only state: it is never persisted, and
+   * firing the upgrade clears it, so a later runtime fallback to Scout
+   * (tile failure, context loss) can never re-arm it.
+   */
+  const [scoutUpgradeEligible, setScoutUpgradeEligible] = useState(false);
+  /**
    * Friend-challenge boot notice (cure round for PR #274): set by the
    * boot effect when a `#c=` link was tapped with the friendChallenges
    * flag ON but the challenge could not be loaded (broken link, unknown
@@ -1540,6 +1550,20 @@ export function GameApp() {
     setMapMode(mode);
     setMapSwitchedNote(null);
   }, []);
+  /**
+   * Issue #330: the unknown-memory trial's upgrade. Session-only, like
+   * the tile fallback: no record is written, so if the upgraded full
+   * map kills the process, the next boot meets the prior-crash signal
+   * (session or durable marker) with no stored artifact in front of it
+   * and stays in Scout with no further upgrade. Silent, per the
+   * 2026-10-20 auto-switch ruling. Clears eligibility first so the
+   * upgrade fires at most once per boot.
+   */
+  const applyScoutUpgrade = useCallback(() => {
+    setScoutUpgradeEligible(false);
+    setReportMapMode("full");
+    applySessionMapMode("full");
+  }, [applySessionMapMode]);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
   // run/drop keys. The open flag (meridian.loop.open) restores the screen
@@ -2037,6 +2061,11 @@ export function GameApp() {
     // probes clean returns to full. (This replaced the boot choice
     // dialog; see planBootMapMode's docstring for the superseded
     // directive.)
+    // Issue #330 exception: an "unknown-memory" decision (Safari reports
+    // no deviceMemory; coarse pointer) is a trial, not a verdict — it
+    // persists NOTHING and instead arms the in-session Scout → full
+    // upgrade (applyScoutUpgrade), so no stored artifact can ever stand
+    // in front of a later prior-crash check.
     // There is deliberately NO test bypass here (issue #154 item 1):
     // the E2E harness used to set a window flag to suppress this
     // auto-switch on its SwiftShader VM, which reads as a weak device.
@@ -2050,16 +2079,22 @@ export function GameApp() {
         setReportMapMode(stored.mode);
         setMapMode(stored.mode);
       } else {
-        const plan = planBootMapMode(
-          qualifyMapMode({
-            priorMapCrash: wasMapAttributedCrash(),
-            webglProbeOk: probeWebGL(),
-            deviceMemoryGB: readDeviceMemoryGB(),
-          }),
-        );
+        const decision = qualifyMapMode({
+          priorMapCrash: wasMapAttributedCrash(),
+          webglProbeOk: probeWebGL(),
+          deviceMemoryGB: readDeviceMemoryGB(),
+          coarsePointer: isCoarsePointer(),
+        });
+        const plan = planBootMapMode(decision);
         if (plan.mode === "scout") {
           if (plan.persistSource !== null) {
             writeStoredMapMode("scout", plan.persistSource);
+          }
+          if (decision.source === "unknown-memory") {
+            // Issue #330 trial: nothing was persisted above (the plan's
+            // persistSource is null for this source) — arm the in-session
+            // upgrade the first Scout map may fire after its soak.
+            setScoutUpgradeEligible(true);
           }
           setReportMapMode("scout");
           setMapMode("scout");
@@ -3348,6 +3383,8 @@ export function GameApp() {
           onManualMapMode={handleManualMapMode}
           applyMapMode={applyMapMode}
           applySessionMapMode={applySessionMapMode}
+          scoutUpgradeEligible={scoutUpgradeEligible}
+          onScoutUpgrade={applyScoutUpgrade}
           celebrationOpen={cleared !== null}
           ageBand={ageBand}
         />
@@ -5823,6 +5860,8 @@ function Play({
   onManualMapMode,
   applyMapMode,
   applySessionMapMode,
+  scoutUpgradeEligible,
+  onScoutUpgrade,
 }: {
   run: Run;
   session: Session | null;
@@ -5891,6 +5930,10 @@ function Play({
    * setter (BLOCK-B).
    */
   applySessionMapMode: (mode: MapMode) => void;
+  /** Issue #330: this boot is an unknown-memory Scout trial. */
+  scoutUpgradeEligible: boolean;
+  /** Issue #330: apply the trial's session-only upgrade to full. */
+  onScoutUpgrade: () => void;
 }) {
   // The catalog is stored WITH the key it was loaded for and only used while
   // that key is the current run's key. Play stays mounted across run changes
@@ -6080,6 +6123,8 @@ function Play({
       onManualMapMode={onManualMapMode}
       applyMapMode={applyMapMode}
       applySessionMapMode={applySessionMapMode}
+      scoutUpgradeEligible={scoutUpgradeEligible}
+      onScoutUpgrade={onScoutUpgrade}
     />
   );
 }
@@ -6111,6 +6156,8 @@ function PlayLoaded({
   onManualMapMode,
   applyMapMode,
   applySessionMapMode,
+  scoutUpgradeEligible,
+  onScoutUpgrade,
 }: {
   run: Run;
   places: Starter[];
@@ -6186,6 +6233,10 @@ function PlayLoaded({
    * setter (BLOCK-B).
    */
   applySessionMapMode: (mode: MapMode) => void;
+  /** Issue #330: this boot is an unknown-memory Scout trial. */
+  scoutUpgradeEligible: boolean;
+  /** Issue #330: apply the trial's session-only upgrade to full. */
+  onScoutUpgrade: () => void;
 }) {
   // Review-deck session: a synthetic Run reusing this game loop. The deck
   // queue (due order) is the pool; review answers never bank into the
@@ -6381,6 +6432,26 @@ function PlayLoaded({
       if (place) setTileSwitchNote({ placeId: place.id });
     },
     [applySessionMapMode, place],
+  );
+
+  /**
+   * Issue #330: the unknown-memory trial's Scout map stayed stable past
+   * its soak — upgrade the session to the full map. Mirrors the tile
+   * fallback's remount (live viewport carried over, nothing stored),
+   * in reverse. No switch note: the player did not lose anything, the
+   * map simply got richer, and device-driven switches are silent.
+   * Challenge runs are excluded: a challenge's map is picked at its
+   * welcome card, and a challenge is never re-mapped mid-run.
+   */
+  const handleScoutUpgrade = useCallback(
+    (view: ScoutRestoreView) => {
+      if (mapModeRef.current !== "scout") return;
+      if (challenge) return;
+      onScoutUpgrade();
+      setScoutSwitchView(view);
+      setMapRemountNonce((n) => n + 1);
+    },
+    [onScoutUpgrade, challenge],
   );
 
   // The switch viewport is consumed by the remount it triggers; clear it
@@ -7487,6 +7558,7 @@ function PlayLoaded({
               tileRetriesUsed={tileRetriesUsed}
               onTileRetry={handleTileRetry}
               onTileFallback={handleTileFallback}
+              onScoutUpgrade={scoutUpgradeEligible ? handleScoutUpgrade : undefined}
               mode={mode}
               mapMode={mapMode}
               initialView={scoutSwitchView}
