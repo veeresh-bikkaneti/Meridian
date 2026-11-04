@@ -523,9 +523,9 @@ forwarding (`"forwarded":false`), so it is safe to deploy **before**
 secrets exist.
 
 Privacy: the forwarded alert and counts carry only the fixed coarse
-manifest device fields plus the event's own identity fields (type,
-buildId, edition/region, lastMilestone, truncated error, verdict,
-time). Precise device facts the client sends (`screenW`/`screenH`)
+manifest device fields plus the event's own identity and session-shape
+fields (type, buildId, edition/region, lastMilestone, truncated error,
+verdict, time, mode, boots, ms after boot start). Precise device facts the client sends (`screenW`/`screenH`)
 are stripped on arrival, and the raw user-agent string never leaves
 the device.
 
