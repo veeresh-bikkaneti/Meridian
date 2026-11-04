@@ -9,10 +9,12 @@
  * lists from source (no imports across the client/worker boundary),
  * assert both non-empty, no duplicates, sorted deepEqual.
  *
- * EXPECTED TO FAIL on the client unit branch: the worker side is
- * still main's code, which has no DEVICE_FIELD_ALLOWLIST export. The
- * guard turns green when the worker unit (U4) lands its allowlist.
- * It must not be weakened to pass early.
+ * The guard runs on the combined branch and must pass there.
+ * History: it was written on the client unit branch, where the
+ * worker side did not exist yet (main's code had no
+ * DEVICE_FIELD_ALLOWLIST export), so it failed there by design
+ * until the worker unit (U4) landed its allowlist. It was not
+ * weakened to pass early, and it must not be weakened now.
  */
 import assert from "node:assert/strict";
 import test from "node:test";

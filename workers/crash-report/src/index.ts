@@ -269,7 +269,7 @@ function validateDevice(device: unknown, label: string): string[] {
 //
 // The device allowlist below is the worker mirror of the client field
 // manifest (src/lib/telemetry-manifest.ts). The parity guard
-// (scripts/telemetry-field-parity.test.mjs) extracts it by this exact
+// (scripts/observability-field-parity.test.mjs) extracts it by this exact
 // name, so the name DEVICE_FIELD_ALLOWLIST must not change.
 
 export const DEVICE_FIELD_ALLOWLIST: readonly string[] = Object.freeze([

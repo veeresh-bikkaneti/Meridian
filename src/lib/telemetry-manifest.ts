@@ -11,7 +11,8 @@
  * (scripts/observability-field-parity.test.mjs) extracts
  * `DEVICE_FIELD_KEYS` below and the worker list and fails until they
  * agree. Adding a field = one manifest row + one allowlist row + one
- * corpus/fixture row.
+ * corpus/fixture row + (for a device field) one entry in the literal
+ * `DEVICE_FIELD_KEYS` array below.
  *
  * `provenance` vocabulary (design §1.2): parsed = deterministic
  * extraction from the UA string; read = direct synchronous API read;
