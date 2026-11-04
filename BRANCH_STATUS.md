@@ -40,3 +40,35 @@ The ladder is exhausted and the budget was NOT raised: the raise to 6,144 is an 
 ## Parity guard — expected failure
 
 `scripts/observability-field-parity.test.mjs` extracts the client manifest's device keys vs the worker's `DEVICE_FIELD_ALLOWLIST` from `workers/crash-report/src/index.ts`. On this branch the worker side is still main's code, which has no `DEVICE_FIELD_ALLOWLIST` export, so the guard FAILS by design until the worker unit (U4) lands. It is not weakened to pass.
+
+---
+
+# Branch status — unit/crash-telemetry-worker (crash-telemetry U4, worker)
+
+- **Branch:** `unit/crash-telemetry-worker`
+- **Base:** `fix/330-ios-unknown-memory-scout-first` @ `c890f809fe48efb5da3519c636861372f633f0db`
+- **Spec of record:** `~/workspace/meridian-crash-telemetry-evidence/DESIGN-FINAL.md` §5 (worker unit U4)
+- **Files claimed (exclusive):** `workers/crash-report/src/index.ts`, `workers/crash-report/src/index.test.ts`, `BRANCH_STATUS.md`
+
+## Status checklist
+
+- [x] Commit A — intake + counting: `normaliseEvent` before `validateEvent`
+  (§5.1 strip-and-continue, `DEVICE_FIELD_ALLOWLIST` export, caps
+  unchanged), counting v2 (§5.2: groups with 32-key hard cap, verdicts
+  from the hoisted shared re-derivation, milestones, modes, errorNames,
+  receipt firstAt/lastAt, late counter, old-bucket read tolerance).
+  Gates: test:worker 95/95, typecheck:worker clean.
+- [x] Commit B — surfaces (§5.3): priorityRead (P1 requires
+  buildReplaced === false + gameplay last step), enriched alert
+  (priority line 3, why-code, time, collective (UA-parsed) device line,
+  runtime/mode/boots lines; email gains the same lines incl. device:),
+  evidence line for missing_fields from missingStampNames (§5.4,
+  presentation-only), digest v2 (per-type blocks, labelled caps with
+  (+N more), count-desc/key-asc, receipt first/last, late-arrival
+  label, "receipt hour" header), threshold fire-time caveat.
+  Full-string goldens for buildAlert (Discord + email),
+  buildThresholdAlert, renderDigest; alert/email parity test;
+  missingStampNames iff-property test; classifier fixture tables
+  re-asserted (classifier region byte-identical to base, verified by
+  diff). Gates: test:worker 106/106, typecheck:worker clean.
+- [x] Final gates re-run + branch pushed. No PR, no merge (owner's word).
