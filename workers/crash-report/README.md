@@ -85,10 +85,15 @@ plus a `scheduled` handler for the hourly digest.
   cancelled at the cap, never buffered whole) → `413`. The app's own
   events are capped at 4 KB, and the boot watchdog's at 8 KB.
 - Schema: the documented fields with type and length caps; `device` and
-  `breadcrumb.device` limited to the coarse bucket fields (`os`, `form`,
-  `screen`, `dpr`, `webgl1/2`, legacy `ua` ≤ 300); `breadcrumb.history`
-  ≤ 32 entries; any other top-level field must be a short primitive; at
-  most 24 fields; `ts` between 2020-01-01 and one day in the future.
+  `breadcrumb.device` are limited to the 17 keys in the telemetry field
+  manifest (`browser`, `browserVersion`, `connection`, `deviceClass`,
+  `deviceMemory`, `displayMode`, `dpr`, `engine`, `form`,
+  `hardwareConcurrency`, `locale`, `os`, `osVersion`, `screen`,
+  `touchPoints`, `webgl1`, `webgl2`) — intake strips every other device
+  key and deletes the raw user-agent string on arrival;
+  `breadcrumb.history` ≤ 32 entries; any other top-level field must be
+  a short primitive; at most 24 fields; `ts` between 2020-01-01 and
+  one day in the future.
 - Forwarding is fire-and-collect via `Promise.allSettled`: one forwarder
   failing never fails the request. Each forwarder has a 5 s timeout.
 - Log lines carry only type/buildId/edition — never PII, never the
@@ -103,7 +108,7 @@ plus a `scheduled` handler for the hourly digest.
 
 | Tier | Types | Behavior |
 |---|---|---|
-| crash-class | `suspected_crash`, `boot_failure`, `js_error`, `unhandled_rejection`, `map_error` | Forwarded to Discord/email **immediately** (unchanged format); also counted. |
+| crash-class | `suspected_crash`, `boot_failure`, `js_error`, `unhandled_rejection`, `map_error` | Forwarded to Discord/email **immediately** (v2 format); also counted. |
 | hiccup-class | `tile_failed`, `webgl_context_lost` | **Counted only** — no individual forward. Surfaced via the threshold alert and the hourly digest. |
 
 Rationale: hiccup-class events are resource signals that are usually
@@ -111,9 +116,11 @@ benign/transient in production (`tile_failed` fires on ordinary tile CDN
 hiccups; `webgl_context_lost` fires when a mobile OS reclaims the GPU
 context on backgrounding). Forwarding each one as a 🚨 trained readers
 to ignore the channel — the threshold alert and digest restore the
-signal-to-noise ratio. Crash-class events are unaffected: same
-immediate alert, same message format, same no-op mode when no
-forwarding secrets are configured.
+signal-to-noise ratio. Crash-class events are still forwarded
+immediately, in the v2 message format (the verdict lines, plus
+`priority:`, `why-code:`, `time:`, the enriched `device:` and
+`runtime:` lines, and the `mode:` / `boots:` lines), and the same
+no-op mode applies when no forwarding secrets are configured.
 
 ## Threshold alert
 
@@ -233,7 +240,7 @@ truncated error name/message.
 ## Tests
 
 ```sh
-npm run test:worker        # 42 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
+npm run test:worker        # 109 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
                            #  S4: streamed cap, schema, binding; Phase 1: tiering, counting, threshold, digest, fail-open)
 npm run typecheck:worker   # strict tsc on the worker sources
 ```
@@ -505,9 +512,13 @@ foreign origins are refused outright (S4).
 - The Phase 1 counters contain: per-UTC-hour counts keyed by type,
   buildId, edition, region, and os/form device bucket. Counts only —
   no payloads, no identifiers, no session-level data.
-- Never forwarded, logged, or stored: sessionId, UA, device facts,
-  breadcrumb history, guess/place content, coordinates, stack traces,
-  IPs (the rate limiter keys by `CF-Connecting-IP` in memory only,
-  never persisted).
+- Never forwarded, logged, or stored: sessionId and the raw
+  user-agent string. (The parsed, coarse device facts from the field
+  manifest ARE forwarded in the alert by design — that is how a
+  crash report can be triaged — and they are counted, never stored
+  per device.) Also never forwarded, logged, or stored: breadcrumb
+  history, guess/place content, coordinates, stack traces, IPs (the
+  rate limiter keys by `CF-Connecting-IP` in memory only, never
+  persisted).
 - The client (`src/lib/observability.ts`) never collects guess/place
   content or coordinates in the first place.
