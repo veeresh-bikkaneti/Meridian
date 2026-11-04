@@ -16,7 +16,13 @@ import {
   classifyCrashVerdict,
   type CrashVerdictFacts,
   bucketKey,
+  DEVICE_FIELD_ALLOWLIST,
+  deriveVerdict,
   emptyBucket,
+  groupKeyOf,
+  MAX_GROUP_KEYS,
+  missingStampNames,
+  normaliseEvent,
   handleRequest,
   hourLabelOf,
   HOUR_MS,
@@ -1280,4 +1286,256 @@ test("handleRequest (Slice 2): repeat_failure forwards immediately (crash tier);
   void store;
   const bucket = JSON.parse(map.get(bucketKey(hour, "recovery_outcome")) as string) as { total: number };
   assert.equal(bucket.total, 2, "both outcomes counted under the new type");
+});
+
+// --- Crash-telemetry §5.1: intake normalisation (strip-and-continue) -----
+
+test("normaliseEvent: strips device.ua and breadcrumb.device.ua and every non-allowlist device key", () => {
+  const out = normaliseEvent(
+    validEvent({
+      device: { os: "ios", form: "mobile", ua: "SECRET-UA", gpu: "SECRET-GPU", screenW: 390 },
+      breadcrumb: { device: { os: "ios", ua: "SECRET-BC-UA", gpu: "SECRET-GPU" }, history: [] },
+    }),
+  ) as Record<string, unknown>;
+  assert.deepEqual(out.device, { os: "ios", form: "mobile" });
+  assert.deepEqual((out.breadcrumb as Record<string, unknown>).device, { os: "ios" });
+  assert.ok(!JSON.stringify(out).includes("SECRET"));
+});
+
+test("normaliseEvent: coerces wrong-typed and out-of-enum manifest fields to unknown, clamps unfinishedBoots", () => {
+  const out = normaliseEvent(
+    validEvent({
+      device: {
+        browser: "netscape",
+        browserVersion: "SECRET-VER",
+        engine: 42,
+        osVersion: "sixteen",
+        deviceClass: "phablet",
+        deviceMemory: 999,
+        hardwareConcurrency: 3.5,
+        touchPoints: "many",
+        displayMode: "floating",
+        connection: "5g",
+        locale: "SECRET!!LOCALE",
+        dpr: 99,
+        screen: "huge",
+      },
+      unfinishedBoots: 12345,
+      msSinceBootStart: -5,
+      mapMode: "sideways",
+    }),
+  ) as Record<string, unknown>;
+  const dev = out.device as Record<string, unknown>;
+  for (const key of [
+    "browser", "browserVersion", "engine", "osVersion", "deviceClass",
+    "deviceMemory", "hardwareConcurrency", "touchPoints", "displayMode",
+    "connection", "locale", "dpr", "screen",
+  ]) {
+    assert.equal(dev[key], "unknown", key);
+  }
+  assert.equal(out.unfinishedBoots, 999, "clamped to 0..999");
+  assert.equal(out.msSinceBootStart, "unknown");
+  assert.equal(out.mapMode, "unknown");
+  // Valid as-read values pass through untouched (range rule, Slice 4 I-8).
+  const ok = normaliseEvent(
+    validEvent({ device: { deviceMemory: 0.5, hardwareConcurrency: 6, osVersion: "16.4.1", browserVersion: "16.4", locale: "en-US" } }),
+  ) as Record<string, unknown>;
+  assert.deepEqual(ok.device, {
+    deviceMemory: 0.5,
+    hardwareConcurrency: 6,
+    osVersion: "16.4.1",
+    browserVersion: "16.4",
+    locale: "en-US",
+  });
+});
+
+test("normaliseEvent: deletes non-primitive top-level extras and truncates over-cap strings instead of rejecting", () => {
+  const out = normaliseEvent(
+    validEvent({ extra: { nested: true }, list: [1, 2], edition: "e".repeat(200) }),
+  ) as Record<string, unknown>;
+  assert.equal("extra" in out, false);
+  assert.equal("list" in out, false);
+  assert.equal((out.edition as string).length, 128);
+  assert.deepEqual(validateEvent(out), []);
+});
+
+test("normaliseEvent: legacy superset — every event valid today stays valid, read-fields byte-identical", () => {
+  const fixtures: Record<string, unknown>[] = [
+    validEvent(),
+    validEvent({ type: "tile_failed", device: { os: "linux", form: "desktop" } }),
+    tileEvent(),
+    shapeAEvent() as unknown as Record<string, unknown>,
+    outcomeEvent() as unknown as Record<string, unknown>,
+    validEvent({
+      type: "suspected_crash",
+      sessionId: "s-1",
+      edition: "state",
+      regionId: "nebraska",
+      lastMilestone: "backgrounded",
+      device: { os: "android", form: "mobile", dpr: 2, screen: "sm", webgl1: true, webgl2: false },
+      breadcrumb: { history: [{ name: "backgrounded", at: 1 }] },
+      mapMode: "full",
+      bgTerminal: true,
+      buildReplaced: false,
+      trailStuck: false,
+      storageOk: true,
+      lcV: "1",
+    }),
+  ];
+  for (const fixture of fixtures) {
+    assert.deepEqual(validateEvent(fixture), [], "fixture is valid under the old rules");
+    const out = normaliseEvent(structuredClone(fixture));
+    assert.deepEqual(out, fixture, "normalisation leaves a valid legacy event untouched");
+    assert.deepEqual(validateEvent(out), [], "and it stays valid");
+  }
+});
+
+test("normaliseEvent: caps unchanged — a device carrying all 17 allowlist keys still trips the 16-key cap", () => {
+  const device = Object.fromEntries(
+    DEVICE_FIELD_ALLOWLIST.map((k) => [
+      k,
+      k === "dpr" || k === "deviceMemory" || k === "hardwareConcurrency"
+        ? 2
+        : k === "webgl1" || k === "webgl2"
+          ? true
+          : "unknown",
+    ]),
+  );
+  device.os = "ios";
+  const out = normaliseEvent(validEvent({ device }));
+  assert.ok(validateEvent(out).some((p) => p.includes("too many fields")), "device cap stays 16");
+});
+
+test("funnel-gap pin: a funnel type still returns 400 on this base (this PR does not close #311's gap)", async () => {
+  for (const type of ["storyteller_shown", "narration_started"]) {
+    const res = await handleRequest(postEvent(validEvent({ type })), {});
+    assert.equal(res.status, 400, type);
+  }
+});
+
+// --- Crash-telemetry §5.2: counting v2 ------------------------------------
+
+test("counting v2: groups, verdicts, milestones, modes, errorNames, first/last receipt times, late flag", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 5, 0);
+  const ev = (over: Record<string, unknown> = {}) =>
+    ({
+      type: "suspected_crash",
+      ts: t0,
+      buildId: "c6853be",
+      edition: "state",
+      regionId: "nebraska",
+      lastMilestone: "map_init_start",
+      device: { os: "ios", form: "mobile", osVersion: "16.4.1", deviceClass: "phone" },
+      mapMode: "scout",
+      bgTerminal: false,
+      buildReplaced: false,
+      trailStuck: false,
+      lcV: "2",
+      ...over,
+    }) as unknown as CrashReportEvent;
+  await recordTelemetry(store, ev(), t0, cfg);
+  await recordTelemetry(store, ev(), t0 + 37 * 60_000, cfg);
+  // A late arrival: receipt in the 17:00 hour, client ts in the 15:00 hour.
+  await recordTelemetry(store, ev({ ts: t0 - 2 * HOUR_MS }), t0 + 40 * 60_000, cfg);
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "suspected_crash")))!;
+  assert.equal(bucket.total, 3);
+  assert.equal(bucket.groups["c6853be|ios|16|phone"], 3);
+  assert.equal(bucket.verdicts["developer_needed/fg_kill_current"], 3);
+  assert.equal(bucket.milestones["map_init_start"], 3);
+  assert.equal(bucket.modes["scout"], 3);
+  assert.equal(bucket.errorNames["none"], 3);
+  assert.equal(bucket.firstAt, t0);
+  assert.equal(bucket.lastAt, t0 + 40 * 60_000);
+  assert.equal(bucket.late, 1);
+  assert.equal(groupKeyOf(ev()), "c6853be|ios|16|phone");
+});
+
+test("counting v2: the 33rd distinct group tallies under other (hard cap 32)", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 5, 0);
+  for (let i = 0; i < MAX_GROUP_KEYS + 1; i++) {
+    await recordTelemetry(
+      store,
+      validEvent({ type: "tile_failed", buildId: `build-${i}` }) as unknown as CrashReportEvent,
+      t0,
+      cfg,
+    );
+  }
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "tile_failed")))!;
+  assert.equal(Object.keys(bucket.groups).length, MAX_GROUP_KEYS + 1, "32 real keys + other");
+  assert.equal(bucket.groups["other"], 1);
+});
+
+test("counting v2: an old-shape bucket in KV reads back with v2 defaults", async () => {
+  const { kv, store } = memoryStore();
+  const key = bucketKey("2026-11-03T17", "js_error");
+  await kv.put(key, JSON.stringify({ total: 2, builds: { a: 2 }, alerts: [] }));
+  const bucket = (await store.readBucket(key))!;
+  assert.equal(bucket.total, 2);
+  assert.deepEqual(bucket.groups, {});
+  assert.deepEqual(bucket.verdicts, {});
+  assert.equal(bucket.firstAt, 0);
+  assert.equal(bucket.lastAt, 0);
+  assert.equal(bucket.late, 0);
+});
+
+test("telemetry: hostile event with secrets planted in the new fields leaks nothing anywhere", async () => {
+  const { map, store } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const hostile = {
+    type: "suspected_crash",
+    ts: Date.now(),
+    buildId: "f331846",
+    edition: "state",
+    regionId: "nebraska",
+    lastMilestone: "map_init_start",
+    sessionId: "SECRET-SESSION",
+    device: {
+      os: "ios",
+      form: "mobile",
+      ua: "SECRET-UA",
+      browser: "SECRET!!BROWSER",
+      browserVersion: "SECRET-VER",
+      osVersion: "SECRET-OSVER",
+      locale: "SECRET!!LOCALE",
+      deviceMemory: "SECRET-MEM",
+      hardwareConcurrency: "SECRET-CORES",
+    },
+    breadcrumb: { device: { ua: "SECRET-BC-UA" }, history: [] },
+    unfinishedBoots: "SECRET-BOOTS",
+    msSinceBootStart: "SECRET-MS",
+    bgTerminal: false,
+    buildReplaced: false,
+    trailStuck: false,
+    lcV: "2",
+  };
+  const res = await handleRequest(postEvent(hostile), env);
+  assert.equal(res.status, 200, "hostile event is stripped and continued, not rejected");
+  assert.equal(fetchCalls.length, 1, "crash-class alert forwarded");
+  const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
+  const rawBucket = [...map.values()].join("\n");
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(Date.now()), "suspected_crash")))!;
+  const threshold = buildThresholdAlert("suspected_crash", hourLabelOf(Date.now()), bucket, thresholdConfig({}), 1);
+  const digest = await renderDigest(store, Date.now() + HOUR_MS);
+  const secrets = [
+    "SECRET-SESSION", "SECRET-UA", "SECRET-BC-UA", "SECRET!!BROWSER", "SECRET-VER",
+    "SECRET-OSVER", "SECRET!!LOCALE", "SECRET-MEM", "SECRET-CORES", "SECRET-BOOTS", "SECRET-MS",
+  ];
+  for (const secret of secrets) {
+    assert.ok(!sent.includes(secret), `alert leaked: ${secret}`);
+    assert.ok(!rawBucket.includes(secret), `bucket leaked: ${secret}`);
+    assert.ok(!threshold.includes(secret), `threshold leaked: ${secret}`);
+    assert.ok(!(digest ?? "").includes(secret), `digest leaked: ${secret}`);
+  }
+  // The planted dimensions were counted under their unknown forms.
+  assert.equal(bucket.groups["f331846|ios|unknown|unknown"], 1);
+  assert.equal(bucket.verdicts["developer_needed/fg_kill_current"], 1, "the settled verdict is counted");
+  assert.ok(sent.includes("verdict: developer action needed"), "and rendered");
 });

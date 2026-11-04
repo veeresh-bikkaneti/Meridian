@@ -250,13 +250,231 @@ function validateDevice(device: unknown, label: string): string[] {
     const ok =
       k === "ua" ? isCappedString(v, 300)
       : k === "os" || k === "form" || k === "screen" ? isCappedString(v, 24)
-      : k === "dpr" || k === "screenW" || k === "screenH" ? typeof v === "number" && Number.isFinite(v)
+      : k === "dpr" ? (typeof v === "number" && Number.isFinite(v)) || v === "unknown"
+      : k === "screenW" || k === "screenH" ? typeof v === "number" && Number.isFinite(v)
       : k === "webgl1" || k === "webgl2" ? typeof v === "boolean"
       : isSmallPrimitive(v) && k.length <= 32;
     if (!ok) problems.push(`${label}.${k.slice(0, 32)} has an invalid value`);
   }
   if (Object.keys(device).length > 16) problems.push(`${label} has too many fields`);
   return problems;
+}
+
+// --- Intake normalisation (crash-telemetry design §5.1) ------------------
+//
+// normaliseEvent runs BEFORE validateEvent in handleRequest. It strips
+// and coerces; it never adds a 400. After normalisation the only 400s
+// left are validateEvent's required-field checks (type, ts window,
+// buildId) — exactly the checks a legacy event already passes today.
+//
+// The device allowlist below is the worker mirror of the client field
+// manifest (src/lib/telemetry-manifest.ts). The parity guard
+// (scripts/telemetry-field-parity.test.mjs) extracts it by this exact
+// name, so the name DEVICE_FIELD_ALLOWLIST must not change.
+
+export const DEVICE_FIELD_ALLOWLIST: readonly string[] = Object.freeze([
+  "browser",
+  "browserVersion",
+  "connection",
+  "deviceClass",
+  "deviceMemory",
+  "displayMode",
+  "dpr",
+  "engine",
+  "form",
+  "hardwareConcurrency",
+  "locale",
+  "os",
+  "osVersion",
+  "screen",
+  "touchPoints",
+  "webgl1",
+  "webgl2",
+]);
+
+const DEVICE_OS_VALUES = ["ios", "android", "windows", "mac", "linux", "other"];
+const DEVICE_FORM_VALUES = ["mobile", "desktop"];
+const DEVICE_BROWSER_VALUES = ["safari", "chrome", "edge", "firefox", "samsung", "unknown"];
+const DEVICE_ENGINE_VALUES = ["webkit", "blink", "gecko", "unknown"];
+const DEVICE_CLASS_VALUES = ["phone", "tablet", "desktop", "unknown"];
+const DEVICE_SCREEN_VALUES = ["sm", "md", "lg", "xl"];
+const DEVICE_TOUCH_VALUES = ["0", "1", "2-5", "6+"];
+const DEVICE_DISPLAY_VALUES = ["standalone", "browser", "unknown"];
+const DEVICE_CONNECTION_VALUES = ["slow-2g", "2g", "3g", "4g", "unknown"];
+const DEVICE_SOURCE_VALUES = ["crashed_session", "detecting_boot", "live"];
+const MAP_MODE_VALUES = ["full", "scout", "unknown"];
+
+/** An out-of-enum manifest value becomes the field's unknown form. */
+function enumOrUnknown(value: unknown, values: readonly string[]): string {
+  return typeof value === "string" && values.includes(value) ? value : "unknown";
+}
+
+/** Versions stamp as "<major>[.<minor>[.<patch>]]" or "unknown" — nothing else. */
+function versionOrUnknown(value: unknown): string {
+  return typeof value === "string" && /^\d+(\.\d+){0,2}$/.test(value) ? value : "unknown";
+}
+
+/** Primary BCP-47 tag only (≤12 chars); anything else is not a locale. */
+function localeOrUnknown(value: unknown): string {
+  return typeof value === "string" &&
+    value.length <= 12 &&
+    /^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8}){0,2}$/.test(value)
+    ? value
+    : "unknown";
+}
+
+/**
+ * Rebuild one device object from the allowlist only, coercing each
+ * manifest field to its honest form. The raw UA and any non-manifest
+ * key are deleted here, so "no UA past intake" is structural.
+ */
+function normaliseDevice(device: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = {};
+  for (const key of DEVICE_FIELD_ALLOWLIST) {
+    const v = device[key];
+    if (v === undefined) continue;
+    switch (key) {
+      case "os":
+        out.os = enumOrUnknown(v, DEVICE_OS_VALUES);
+        break;
+      case "form":
+        out.form = enumOrUnknown(v, DEVICE_FORM_VALUES);
+        break;
+      case "browser":
+        out.browser = enumOrUnknown(v, DEVICE_BROWSER_VALUES);
+        break;
+      case "engine":
+        out.engine = enumOrUnknown(v, DEVICE_ENGINE_VALUES);
+        break;
+      case "deviceClass":
+        out.deviceClass = enumOrUnknown(v, DEVICE_CLASS_VALUES);
+        break;
+      case "screen":
+        out.screen = enumOrUnknown(v, DEVICE_SCREEN_VALUES);
+        break;
+      case "touchPoints":
+        out.touchPoints = enumOrUnknown(v, DEVICE_TOUCH_VALUES);
+        break;
+      case "displayMode":
+        out.displayMode = enumOrUnknown(v, DEVICE_DISPLAY_VALUES);
+        break;
+      case "connection":
+        out.connection = enumOrUnknown(v, DEVICE_CONNECTION_VALUES);
+        break;
+      case "browserVersion":
+      case "osVersion":
+        out[key] = versionOrUnknown(v);
+        break;
+      case "locale":
+        out.locale = localeOrUnknown(v);
+        break;
+      case "dpr":
+        out.dpr =
+          typeof v === "number" && Number.isFinite(v) && v >= 1 && v <= 4 ? v : "unknown";
+        break;
+      case "deviceMemory":
+        // Range rule, not a whitelist (Slice 4 I-8): any plausible
+        // as-read value in 0.25–64 GB passes; the rest is "unknown".
+        out.deviceMemory =
+          typeof v === "number" && Number.isFinite(v) && v >= 0.25 && v <= 64
+            ? v
+            : "unknown";
+        break;
+      case "hardwareConcurrency":
+        out.hardwareConcurrency =
+          typeof v === "number" && Number.isInteger(v) && v >= 1 && v <= 64
+            ? v
+            : "unknown";
+        break;
+      case "webgl1":
+      case "webgl2":
+        // Booleans have no unknown form; a non-boolean is dropped.
+        if (typeof v === "boolean") out[key] = v;
+        break;
+    }
+  }
+  return out;
+}
+
+/**
+ * Strip-and-continue intake (design §5.1). Returns a normalised copy;
+ * the caller's object is never mutated. Caps are unchanged: body 8192,
+ * top-level keys 24, device keys 16 — over-cap strings are truncated to
+ * the existing caps instead of rejected, and non-primitive top-level
+ * extras are deleted instead of failing the event.
+ */
+export function normaliseEvent(raw: unknown): unknown {
+  if (!isPlainObject(raw)) return raw;
+  const event: Record<string, unknown> = { ...raw };
+
+  for (const [key, cap] of Object.entries(STRING_CAPS)) {
+    const v = event[key];
+    if (typeof v === "string" && v.length > cap) event[key] = v.slice(0, cap);
+  }
+  if (isPlainObject(event.error)) {
+    const error = { ...event.error };
+    if (typeof error.name === "string" && error.name.length > 80) {
+      error.name = error.name.slice(0, 80);
+    }
+    if (typeof error.message === "string" && error.message.length > 300) {
+      error.message = error.message.slice(0, 300);
+    }
+    event.error = error;
+  }
+  if (isPlainObject(event.device)) event.device = normaliseDevice(event.device);
+  if (isPlainObject(event.breadcrumb)) {
+    const breadcrumb = { ...event.breadcrumb };
+    if (isPlainObject(breadcrumb.device)) {
+      // The nested trail device is never read by the worker; strip its
+      // UA and every non-manifest key so nothing planted there survives.
+      const nested = { ...breadcrumb.device };
+      delete nested.ua;
+      for (const key of Object.keys(nested)) {
+        if (!DEVICE_FIELD_ALLOWLIST.includes(key)) delete nested[key];
+      }
+      breadcrumb.device = nested;
+    }
+    event.breadcrumb = breadcrumb;
+  }
+
+  if (event.mapMode !== undefined) {
+    event.mapMode = enumOrUnknown(event.mapMode, MAP_MODE_VALUES);
+  }
+  if (
+    event.deviceSource !== undefined &&
+    !(
+      typeof event.deviceSource === "string" &&
+      DEVICE_SOURCE_VALUES.includes(event.deviceSource)
+    )
+  ) {
+    delete event.deviceSource;
+  }
+  if (event.msSinceBootStart !== undefined) {
+    const v = event.msSinceBootStart;
+    event.msSinceBootStart =
+      typeof v === "number" && Number.isFinite(v) && v >= 0 ? Math.floor(v) : "unknown";
+  }
+  if (event.unfinishedBoots !== undefined) {
+    const v = event.unfinishedBoots;
+    if (typeof v === "number" && Number.isFinite(v)) {
+      event.unfinishedBoots = Math.min(999, Math.max(0, Math.floor(v)));
+    } else {
+      delete event.unfinishedBoots;
+    }
+  }
+
+  const objectValued = new Set(["error", "device", "breadcrumb"]);
+  for (const key of Object.keys(event)) {
+    if (key.length > 64) {
+      delete event[key];
+      continue;
+    }
+    if (objectValued.has(key)) continue;
+    const v = event[key];
+    if (v !== null && typeof v === "object") delete event[key];
+    else if (typeof v === "string" && v.length > 256) event[key] = v.slice(0, 256);
+  }
+  return event;
 }
 
 // --- Rate limiting (review S4) -------------------------------------------
@@ -659,6 +877,63 @@ function truncate(value: string | undefined, max: number): string {
   return s.length > max ? `${s.slice(0, max - 1)}…` : s;
 }
 
+/**
+ * The stamped facts the classifier reads, pulled off one event. Shared
+ * by the alert builder and the counters (§5.2): one derivation per
+ * request, and the client-stamped verdict is never among the facts.
+ */
+export function verdictFactsOf(event: CrashReportEvent): CrashVerdictFacts {
+  return {
+    type: event.type,
+    error: event.error,
+    lastMilestone: event.lastMilestone,
+    bgTerminal: typeof event.bgTerminal === "boolean" ? event.bgTerminal : undefined,
+    buildReplaced: typeof event.buildReplaced === "boolean" ? event.buildReplaced : undefined,
+    trailStuck: typeof event.trailStuck === "boolean" ? event.trailStuck : undefined,
+    lcV: typeof event.lcV === "string" ? event.lcV : undefined,
+    recoveryOutcome: typeof event.recoveryOutcome === "string" ? event.recoveryOutcome : undefined,
+  };
+}
+
+/** The worker's own re-derived verdict for one event (§5.2/§5.4). */
+export function deriveVerdict(event: CrashReportEvent): { verdict: CrashVerdict; whyKey: CrashWhyKey } {
+  return classifyCrashVerdict(verdictFactsOf(event));
+}
+
+const VALID_RECOVERY_OUTCOMES = new Set([
+  "confirmed",
+  "repeat_failure",
+  "stood_down",
+  "unconfirmed_closed",
+  "unconfirmed_died",
+  "unconfirmed_expired",
+  "marker_unreadable",
+]);
+
+/**
+ * Presentation-only helper (§5.4): the names of the classifier stamps
+ * whose rule-4 predicate fails for this event, in stamp order. It never
+ * feeds the classifier. For the two shapes the classifier can return
+ * missing_fields on stamp grounds (suspected_crash, recovery_outcome),
+ * the returned set is non-empty exactly when the classifier returns
+ * missing_fields — a property the tests pin over the fixture tables.
+ */
+export function missingStampNames(facts: CrashVerdictFacts): string[] {
+  if (facts.type === "recovery_outcome") {
+    return typeof facts.recoveryOutcome === "string" &&
+      VALID_RECOVERY_OUTCOMES.has(facts.recoveryOutcome)
+      ? []
+      : ["recoveryOutcome"];
+  }
+  if (facts.type !== "suspected_crash") return [];
+  const missing: string[] = [];
+  if (typeof facts.bgTerminal !== "boolean") missing.push("bgTerminal");
+  if (typeof facts.buildReplaced !== "boolean") missing.push("buildReplaced");
+  if (typeof facts.trailStuck !== "boolean") missing.push("trailStuck");
+  if (typeof facts.lcV !== "string" || facts.lcV.length === 0) missing.push("lcV");
+  return missing;
+}
+
 export interface CrashAlert {
   discord: string;
   emailSubject: string;
@@ -687,16 +962,7 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   // Slice 1: the authoritative verdict, re-derived here from the
   // event's stamped facts. A verdict/whyKey stamped by the client is an
   // untrusted cross-check and is never rendered (design §2.5/F9).
-  const { verdict, whyKey } = classifyCrashVerdict({
-    type,
-    error: event.error,
-    lastMilestone: event.lastMilestone,
-    bgTerminal: typeof event.bgTerminal === "boolean" ? event.bgTerminal : undefined,
-    buildReplaced: typeof event.buildReplaced === "boolean" ? event.buildReplaced : undefined,
-    trailStuck: typeof event.trailStuck === "boolean" ? event.trailStuck : undefined,
-    lcV: typeof event.lcV === "string" ? event.lcV : undefined,
-    recoveryOutcome: typeof event.recoveryOutcome === "string" ? event.recoveryOutcome : undefined,
-  });
+  const { verdict, whyKey } = deriveVerdict(event);
   const presentation = VERDICT_PRESENTATION[verdict];
   const why = whyLineFor(whyKey, event);
   const actionLine = verdict === "developer_needed" ? "action: Read the error below.\n" : "";
@@ -874,12 +1140,43 @@ export interface CountBucket {
   editions: Record<string, number>;
   regions: Record<string, number>;
   devices: Record<string, number>;
+  /** "<buildId>|<os>|<osMajor>|<deviceClass>" — hard-capped (§5.2). */
+  groups: Record<string, number>;
+  /** "<verdict>/<whyKey>" from the worker's re-derived verdict. */
+  verdicts: Record<string, number>;
+  milestones: Record<string, number>;
+  modes: Record<string, number>;
+  /** Error names only — never messages. */
+  errorNames: Record<string, number>;
+  /** Min/max RECEIPT time in the bucket (0 = none recorded). */
+  firstAt: number;
+  lastAt: number;
+  /** Events whose client ts fell outside the receipt hour. */
+  late: number;
   /** Alert ids already fired for this bucket (exact-once per type+hour). */
   alerts: string[];
 }
 
+/** Hard cap on distinct group keys per bucket; the next tallies "other". */
+export const MAX_GROUP_KEYS = 32;
+
 export function emptyBucket(): CountBucket {
-  return { total: 0, builds: {}, editions: {}, regions: {}, devices: {}, alerts: [] };
+  return {
+    total: 0,
+    builds: {},
+    editions: {},
+    regions: {},
+    devices: {},
+    groups: {},
+    verdicts: {},
+    milestones: {},
+    modes: {},
+    errorNames: {},
+    firstAt: 0,
+    lastAt: 0,
+    late: 0,
+    alerts: [],
+  };
 }
 
 /** Minimal KV surface — structurally satisfied by the real KVNamespace. */
@@ -923,12 +1220,22 @@ export function kvTelemetryStore(kv: KvLike): TelemetryStore {
       try {
         const parsed = JSON.parse(raw) as Partial<CountBucket>;
         if (parsed && typeof parsed.total === "number") {
+          // Read-tolerant (§5.2): buckets written by older code lack
+          // the v2 fields and default to empty maps / zero times.
           return {
             total: parsed.total,
             builds: parsed.builds ?? {},
             editions: parsed.editions ?? {},
             regions: parsed.regions ?? {},
             devices: parsed.devices ?? {},
+            groups: parsed.groups ?? {},
+            verdicts: parsed.verdicts ?? {},
+            milestones: parsed.milestones ?? {},
+            modes: parsed.modes ?? {},
+            errorNames: parsed.errorNames ?? {},
+            firstAt: typeof parsed.firstAt === "number" ? parsed.firstAt : 0,
+            lastAt: typeof parsed.lastAt === "number" ? parsed.lastAt : 0,
+            late: typeof parsed.late === "number" ? parsed.late : 0,
             alerts: Array.isArray(parsed.alerts) ? parsed.alerts : [],
           };
         }
@@ -965,6 +1272,25 @@ function bump(map: Record<string, number>, key: string): void {
   map[key] = (map[key] ?? 0) + 1;
 }
 
+/** Group key (§5.2): build × OS × OS major × device class. */
+export function groupKeyOf(event: CrashReportEvent): string {
+  const dev = (event.device ?? {}) as { os?: unknown; osVersion?: unknown; deviceClass?: unknown };
+  const os = typeof dev.os === "string" && dev.os ? dev.os : "unknown";
+  const osMajor =
+    typeof dev.osVersion === "string" && dev.osVersion && dev.osVersion !== "unknown"
+      ? dev.osVersion.split(".")[0]
+      : "unknown";
+  const deviceClass =
+    typeof dev.deviceClass === "string" && dev.deviceClass ? dev.deviceClass : "unknown";
+  return `${event.buildId}|${os}|${osMajor}|${deviceClass}`;
+}
+
+/** Bump a group key under the hard cap: a 33rd distinct key is "other". */
+function bumpGroup(groups: Record<string, number>, key: string): void {
+  if (key in groups || Object.keys(groups).length < MAX_GROUP_KEYS) bump(groups, key);
+  else bump(groups, "other");
+}
+
 export interface TelemetryRecordResult {
   counted: boolean;
   alerted: boolean;
@@ -992,6 +1318,23 @@ export async function recordTelemetry(
     bump(bucket.editions, event.edition ?? "—");
     bump(bucket.regions, event.regionId ?? "—");
     bump(bucket.devices, deviceBucketOf(event));
+    // Counting v2 (§5.2): groups, the shared re-derived verdict,
+    // milestones, modes, error names, and receipt-time first/last.
+    bumpGroup(bucket.groups, groupKeyOf(event));
+    const { verdict, whyKey } = deriveVerdict(event);
+    bump(bucket.verdicts, `${verdict}/${whyKey}`);
+    bump(bucket.milestones, event.lastMilestone ?? "—");
+    bump(bucket.modes, typeof event.mapMode === "string" && event.mapMode ? event.mapMode : "unknown");
+    bump(bucket.errorNames, event.error ? truncate(event.error.name, 80) : "none");
+    bucket.firstAt = bucket.firstAt === 0 ? now : Math.min(bucket.firstAt, now);
+    bucket.lastAt = Math.max(bucket.lastAt, now);
+    const hourStart = hourBucketStart(now);
+    if (
+      typeof event.ts === "number" &&
+      (event.ts < hourStart || event.ts >= hourStart + HOUR_MS)
+    ) {
+      bucket.late += 1;
+    }
 
     let alerted = false;
     let alertText: string | undefined;
@@ -1230,11 +1573,15 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
     } catch {
       return jsonResponse(400, { error: "invalid JSON" }, cors);
     }
-    const problems = validateEvent(event);
+    // Intake normalisation (§5.1) runs before validation: it strips
+    // and coerces, never rejects, so the 400s below are only the
+    // required-field checks a legacy event already passes.
+    const normalised = normaliseEvent(event);
+    const problems = validateEvent(normalised);
     if (problems.length > 0) {
       return jsonResponse(400, { error: "invalid event", problems }, cors);
     }
-    const valid = event as CrashReportEvent;
+    const valid = normalised as CrashReportEvent;
 
     const discordUrl = env.DISCORD_WEBHOOK_URL?.trim();
     const resendKey = env.RESEND_API_KEY?.trim();

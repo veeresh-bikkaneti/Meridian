@@ -131,3 +131,25 @@ Verification on the cured tip (full output read from files):
 - [x] Emulation: base vs fixed builds measured (see PR body)
 - [x] PR opened: #331 — https://github.com/veeresh-bikkaneti/Meridian/pull/331
 - [ ] Merge — owner's word only, after QA + panel
+
+---
+
+# Branch status — unit/crash-telemetry-worker (crash-telemetry U4, worker)
+
+- **Branch:** `unit/crash-telemetry-worker`
+- **Base:** `fix/330-ios-unknown-memory-scout-first` @ `c890f809fe48efb5da3519c636861372f633f0db`
+- **Spec of record:** `~/workspace/meridian-crash-telemetry-evidence/DESIGN-FINAL.md` §5 (worker unit U4)
+- **Files claimed (exclusive):** `workers/crash-report/src/index.ts`, `workers/crash-report/src/index.test.ts`, `BRANCH_STATUS.md`
+
+## Status checklist
+
+- [x] Commit A — intake + counting: `normaliseEvent` before `validateEvent`
+  (§5.1 strip-and-continue, `DEVICE_FIELD_ALLOWLIST` export, caps
+  unchanged), counting v2 (§5.2: groups with 32-key hard cap, verdicts
+  from the hoisted shared re-derivation, milestones, modes, errorNames,
+  receipt firstAt/lastAt, late counter, old-bucket read tolerance).
+  Gates: test:worker 95/95, typecheck:worker clean.
+- [ ] Commit B — surfaces (§5.3): priorityRead, enriched alert (Discord +
+  email parity), evidence line for missing_fields, digest v2, threshold
+  fire-time caveat; full-string goldens (§8.3).
+- [ ] Final gates re-run + branch pushed. No PR, no merge (owner's word).
