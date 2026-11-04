@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "oklahoma-city-oklahoma",
+  "target": {
+    "placeId": "gn-4544349",
+    "name": "Oklahoma City",
+    "aliases": [],
+    "lat": 35.46756,
+    "lon": -97.51643,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Oklahoma",
+    "iso2": "US",
+    "subdivision": "Oklahoma"
+  },
+  "subjectAnswer": {
+    "name": "Oklahoma",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Oklahoma",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "A river cuts this big town in two as it flows from west to east. The town spreads wide in the heart of its state.",
+      "narrowing": "Points to a very large city bisected by a river at its state's center.",
+      "source": {
+        "article": "Oklahoma City",
+        "url": "https://en.wikipedia.org/wiki/Oklahoma_City",
+        "quote": "The city is roughly bisected by the North Canadian River (renamed in 2004 to the Oklahoma River inside city limits)."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are hot and humid, and winters are cool. Droughts can drag on, then heavy rain can flood the streets.",
+      "narrowing": "Keeps south-plains capitals with hot summers and flood-and-drought swings.",
+      "source": {
+        "article": "Oklahoma City",
+        "url": "https://en.wikipedia.org/wiki/Oklahoma_City",
+        "quote": "The city features hot, humid summers and cool winters."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "By 1907, this fast town had grown past the old seat of the land. Soon after, the capital was moved here for good.",
+      "narrowing": "Cuts the list to the city that took the capital from Guthrie soon after 1907.",
+      "source": {
+        "article": "Oklahoma City — History",
+        "url": "https://en.wikipedia.org/wiki/Oklahoma_City#History",
+        "quote": "By the time Oklahoma was admitted to the Union in 1907, Oklahoma City had surpassed Guthrie, the territorial capital, as the new state's population center and commercial hub. Soon after, the capital was moved from Guthrie to Oklahoma City."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This town was born in just one day, the Land Run of 1889. Folks raced in to claim land, and a town rose in hours.",
+      "narrowing": "Nearly decisive: one capital was founded in a single day's Land Run.",
+      "source": {
+        "article": "Oklahoma City — History",
+        "url": "https://en.wikipedia.org/wiki/Oklahoma_City#History",
+        "quote": "Oklahoma City was settled on April 22, 1889, when the area known as the \"Unassigned Lands\" was opened for settlement in an event known as \"The Land Run\"."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The state governor works in this place, the largest in the state. Lawmakers meet here in the state capitol.",
+      "narrowing": "Confirms it: the governor and lawmakers of Oklahoma work in this city.",
+      "source": {
+        "article": "Oklahoma City",
+        "url": "https://en.wikipedia.org/wiki/Oklahoma_City",
+        "quote": "is the capital and most populous city in the U.S. state of Oklahoma"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This city was born in a single day, the Land Run of April 22, 1889, and passed the old territory capital within a generation. Soon after statehood in 1907, the capital moved here for good. The building is the capitol, and the city is the capital. Oklahoma City is the capital of Oklahoma."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Oklahoma_City"
+  },
+  "pointPolicy": "geonames-point"
+}

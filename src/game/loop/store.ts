@@ -312,8 +312,22 @@ export function setDeckState(
 
 /**
  * Build a pack deck the first time the pack is dealt from. A deck that
- * already exists is returned untouched: rebuilding it would reshuffle a
- * pack the player has partly played and break exactly-once dealing.
+ * already exists is never rebuilt: rebuilding would reshuffle a pack
+ * the player has partly played and break exactly-once dealing.
+ *
+ * Grown packs top up instead (Capitals & Flags design §7): when the
+ * manifest now lists MORE cases than the deck was built from, the new
+ * cases — tier-banded and shuffled among themselves — are appended to
+ * the undealt remainder. Dealt history is untouched: within a cycle,
+ * every dealt case is either completed (cycleCompleted), the open
+ * mystery, or still in the deck, so the built-from size is exactly
+ * deck.length + cycleCompleted + (open mystery from this deck ? 1 : 0).
+ * The cases list is the manifest's append-only order (loopIndexes), so
+ * the new cases are precisely the tail past that size. Topping up an
+ * exhausted deck (cycle complete, nothing open) still works: the new
+ * cases deal first, cycleCompleted keeps counting toward the grown
+ * pack's celebration, and the next reshuffle rebuilds from the full
+ * manifest anyway.
  */
 export function ensurePackDeck(
   store: LoopUnlimitedStore,
@@ -322,8 +336,29 @@ export function ensurePackDeck(
   randInt: (bound: number) => number = cryptoRandInt,
 ): LoopUnlimitedStore {
   if (packId === LOOP_CORE_DECK_ID) return store;
-  if (store.packDecks?.[packId]) return store;
-  return setDeckState(store, packId, freshPackDeckState(cases, randInt));
+  const existing = store.packDecks?.[packId];
+  if (!existing) {
+    return setDeckState(store, packId, freshPackDeckState(cases, randInt));
+  }
+  // Only a still-playing mystery counts as open. A finished one (won or
+  // lost) stays in `current` until the player deals on, but completePuzzle
+  // already counted it in cycleCompleted — counting it here too would
+  // skip the first appended case when the pack grows.
+  const openFromThisDeck =
+    store.current &&
+    store.current.status === "playing" &&
+    deckIdOfPuzzle(store.current) === packId
+      ? 1
+      : 0;
+  const builtFromSize =
+    existing.deck.length + existing.cycleCompleted + openFromThisDeck;
+  if (cases.length <= builtFromSize) return store;
+  const freshCases = cases.slice(builtFromSize);
+  const addition = buildTierBandedDeck(freshCases, randInt);
+  return setDeckState(store, packId, {
+    ...existing,
+    deck: [...existing.deck, ...addition],
+  });
 }
 
 /**

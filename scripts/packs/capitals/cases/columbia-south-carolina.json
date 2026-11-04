@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "columbia-south-carolina",
+  "target": {
+    "placeId": "gn-4575352",
+    "name": "Columbia",
+    "aliases": [],
+    "lat": 34.00071,
+    "lon": -81.03481,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "South Carolina",
+    "iso2": "US",
+    "subdivision": "South Carolina"
+  },
+  "subjectAnswer": {
+    "name": "South Carolina",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "South Carolina",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city grew where two rivers join to form a third, near the center of its state. It stands where rocky hills meet the flat coastal plain.",
+      "narrowing": "Points to a city at a river confluence near its state's center.",
+      "source": {
+        "article": "Columbia, South Carolina",
+        "url": "https://en.wikipedia.org/wiki/Columbia%2C_South_Carolina",
+        "quote": "Columbia is located near the geographic center of South Carolina at the fall line, where the Piedmont meets the Atlantic Coastal Plain. The city developed at the confluence of the Broad and Saluda rivers, which join to form the Congaree River"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The summers here are hot and sticky, with sun that beats down hard. The winters are mild, with just a touch of cold.",
+      "narrowing": "Keeps inland southern capitals with scorching, humid summers.",
+      "source": {
+        "article": "Columbia, South Carolina",
+        "url": "https://en.wikipedia.org/wiki/Columbia%2C_South_Carolina",
+        "quote": "Columbia has a humid subtropical climate (Köppen Cfa), characterized by hot, humid summers and generally mild winters."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "On March 22, 1786, the state passed a law to build a new capital. One man's plan won, and a new town rose on the site.",
+      "narrowing": "Cuts the list to the new capital approved by law on March 22, 1786.",
+      "source": {
+        "article": "Columbia, South Carolina — History",
+        "url": "https://en.wikipedia.org/wiki/Columbia%2C_South_Carolina#History",
+        "quote": "State Senator John Lewis Gervais of Ninety Six introduced legislation establishing a new state capital, which was approved by the General Assembly on March 22, 1786."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This city was drawn on paper before it was built. Its planned streets came five years before the famous plan for the nation's capital city.",
+      "narrowing": "Nearly decisive: one capital was a planned city laid out before Washington, D.C.",
+      "source": {
+        "article": "Columbia, South Carolina — History",
+        "url": "https://en.wikipedia.org/wiki/Columbia%2C_South_Carolina#History",
+        "quote": "Surveyor John Guignard laid out Columbia as one of the first planned cities in the United States, five years before Pierre Charles L'Enfant's plan for Washington, D.C."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of South Carolina works in this city. All three branches of state government sit here, beside the State House.",
+      "narrowing": "Confirms it: the governor and lawmakers of South Carolina work in this city.",
+      "source": {
+        "article": "Columbia, South Carolina",
+        "url": "https://en.wikipedia.org/wiki/Columbia%2C_South_Carolina",
+        "quote": "is the capital of the U.S. state of South Carolina"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Lawmakers created this city in 1786 as a planned capital near the center of the state, one of the first planned cities in the young nation. Union troops captured it in 1865, and a fire that night destroyed much of the city. Columbia is the capital of South Carolina."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Columbia%2C_South_Carolina"
+  },
+  "pointPolicy": "geonames-point"
+}

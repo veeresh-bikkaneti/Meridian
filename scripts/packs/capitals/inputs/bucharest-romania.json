@@ -1,0 +1,57 @@
+{
+  "caseId": "bucharest-romania",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "The Palace of the Parliament is the largest parliament building in the world.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-683506",
+    "name": "Bucharest",
+    "country": "Romania",
+    "subdivision": "Bucharest",
+    "lat": 44.43225,
+    "lon": 26.10626
+  },
+  "target": {
+    "placeId": "gn-683506",
+    "name": "Bucharest",
+    "lat": 44.43225,
+    "lon": 26.10626,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Romania",
+    "iso2": "RO",
+    "subdivision": "Bucharest"
+  },
+  "subjectAnswer": {
+    "name": "Romania",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "RO",
+    "subdivision": "Bucharest",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Bucharest is the capital of Romania. It's one of Romania's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Bucharest",
+      "url": "https://en.wikipedia.org/wiki/Bucharest",
+      "text": "Bucharest (Romanian: București) is the capital and largest city of Romania. The metropolis stands on the River Dâmbovița in south-eastern Romania. Its population is officially estimated at 1.71 million residents within a greater metropolitan area of 2.33 million residents, which makes Bucharest the fifteenth-largest city in Europe. The city has an area of 239 km2 (92 sq mi), while the metropolitan area covers 1,803 km2 (696 sq mi). The city proper is administratively known as the \"Municipality of Bucharest\" (Romanian: Municipiul București), and has the same administrative level as that of a national county, being further subdivided into six sectors, each governed by a local mayor. Bucharest is a major cultural, political and economic hub, it is the country's seat of government, and it is an enclave completely surrounded by Ilfov County.\nBucharest was first mentioned in 1459, and became a centre of Wallachian commerce and governance in the 16th and 17th centuries. The city became the capital of the Romanian United Principalities in 1862, and boomed after the 1881 founding of the Romanian Kingdom. In the following decades, the city became known for its cosmopolitanism and eclectic architecture, being nicknamed \"Paris of the East\".\nBucharest has landmark buildings and monuments. Perhaps the most prominent of these is the Palace of the Parliament, built in the 1980s during the rule of Communist dictator Nicolae Ceaușescu. The largest Parliament building in the world, the palace houses the Romanian Parliament (the Chamber of Deputies, and the Senate), as well as the National Museum of Contemporary Art. The building boasts one of the largest convention centres in the world.\n\nGeography\nBucharest is situated in the centre of the Romanian Plain, in an area once covered by the Vlăsiei Forest, which after it was cleared, gave way for a fertile flatland. As with many cities, Bucharest is traditionally considered to be built upon seven hills, similar to the seven hills of Rome. Bucharest's seven hills are: Mihai Vodă, Dealul Mitropoliei, Radu Vodă, Cotroceni, Dealul Spirii, Văcărești, and Sfântu Gheorghe Nou.\nThe city has an area of 226 km2 (87 sq mi). The altitude varies from 55.8 m (183.1 ft) at the Dâmbovița bridge in Cățelu, southeastern Bucharest and 91.5 m (300.2 ft) at the Militari church. The city has a roughly round shape, with the centre situated in the cross-way of the main north–south/east-west axes at University Square.\n\nClimate\nBucharest has a humid continental climate (Dfa), with hot, humid summers and cold, snowy winters. Owing to its position on the Romanian Plain, the city's winters can get windy, though some of the winds are mitigated due to urbanization. Winter temperatures often dip below 0 °C (32 °F), sometimes even to −10 °C (14 °F). In summer, the average high temperature is 29.8 °C (85.6 °F) (the average for July and August). Temperatures frequently reach 35 to 40 °C (95 to 104 °F) in midsummer in the city centre. Although average precipitation in summer is moderate, occasional heavy storms occur. During spring and autumn, daytime temperatures vary between 17 and 22 °C (63 and 72 °F), and precipitation during spring tends to be higher than in summer, with more frequent yet milder periods of rain."
+    },
+    {
+      "article": "Bucharest — History",
+      "url": "https://en.wikipedia.org/wiki/Bucharest#History",
+      "text": "History\nBucharest's history alternated periods of development and decline from the early settlements in antiquity until its consolidation as the national capital of Romania late in the 19th century. First mentioned as the 'Citadel of București' in 1459, it became the residence of the ruler of Wallachia, Voivode Vlad the Impaler.\nThe Old Princely Court (Curtea Veche) was erected by Mircea Ciobanul in the mid-16th century. Under subsequent rulers, Bucharest was established as the summer residence of the royal court. During the years to come, it competed with Târgoviște on the status of capital city after an increase in the importance of Southern Muntenia brought about by demands of the suzerain power – the Ottoman Empire.\nBucharest finally became the permanent location of the Wallachian court after 1698, starting with the reign of Constantin Brâncoveanu. The city was partly destroyed by natural disasters and rebuilt several times, in the following 200 years.\nIn 1862, after Wallachia and Moldavia were united to form the Principality of Romania, Bucharest became the new nation's capital city. In 1881, it became the political centre of the newly proclaimed Kingdom of Romania under King Carol I. During the second half of the 19th century, the city's population increased dramatically, and a new period of urban development began. During this period, gas lighting, horse-drawn trams, and limited electrification were introduced. The Dâmbovița River was also massively channelled in 1883, thus putting a stop to previously endemic floods like the 1865 flooding of Bucharest. The extravagant architecture and cosmopolitan high culture of this period won Bucharest the nickname of \"Paris of the East\" (Parisul Estului), with the Calea Victoriei as its Champs-Élysées.\nAfter World War I, Bucharest became the capital of Greater Romania. In the interwar years, Bucharest's urban development continued, with the city gaining an average of 30,000 new residents each year."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

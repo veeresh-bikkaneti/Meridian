@@ -1,0 +1,57 @@
+{
+  "caseId": "tehran-iran",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 1,
+  "hookAngle": "The white Azadi Tower was built in 1971 to mark 2,500 years of the Persian Empire.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-112931",
+    "name": "Tehran",
+    "country": "Iran",
+    "subdivision": "Tehran",
+    "lat": 35.69439,
+    "lon": 51.42151
+  },
+  "target": {
+    "placeId": "gn-112931",
+    "name": "Tehran",
+    "lat": 35.69439,
+    "lon": 51.42151,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Iran",
+    "iso2": "IR",
+    "subdivision": "Tehran"
+  },
+  "subjectAnswer": {
+    "name": "Iran",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "IR",
+    "subdivision": "Tehran",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Tehran is the capital of Iran. It's one of Iran's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Tehran",
+      "url": "https://en.wikipedia.org/wiki/Tehran",
+      "text": "Tehran is the capital and largest city of Iran. It is also the capital of Tehran province and the administrative center for Tehran County and its Central District. With a population of around 9 million in the city, and 16.8 million in the metropolitan area, Tehran is the most populous city in Iran and West Asia, the largest metropolitan area in the Middle East and the 24th-most-populous metropolitan area in the world. Greater Tehran includes several municipalities, including Eslamshahr, Shahriar, Qods, Malard, Golestan, Varamin, Pakdasht, Qarchak, Nasimshahr, Parand, Pardis, Andisheh, Fardis, Tajrish, and Rey.\nIn classical antiquity, part of the territory of present-day Tehran was occupied by Rhages, a prominent Iranian city that was not destroyed in the medieval Arab and Mongol invasions. Rey is absorbed into the metropolitan area of Greater Tehran. Tehran was first chosen as the capital of Iran in 1786 by Agha Mohammad Khan of the Qajar dynasty, because of its proximity to Iran's territories in the Caucasus—which were contested in the Russo-Iranian Wars—and to avoid the vying factions of prior ruling Iranian dynasties; the capital of Iran had been moved several times throughout its long history, with Tehran becoming the 51st. Under Reza Shah, Tehran witnessed Iran's first institute of higher learning, bank, railway line, and museum. Large-scale construction works began in the 1920s, and Tehran became a destination for mass migrations from all over Iran, especially in the 20th century.\nTehran is home to many historical sites, including the World Heritage Site Golestan Palace of the Qajar dynasty and the Masoudieh, Sa'dabad, Niavaran and Marmar palace complexes of both the Qajar and Pahlavi dynasties. Landmarks include the Azadi Tower, a memorial built in 1971 to mark the 2,500th anniversary of the Persian Empire; the Milad Tower, the world's sixth-tallest self-supporting tower, completed in 2007; and the Tabiat Bridge, completed in 2014.\n\nGeography\nTopography\nNorthern Tehran is at the foot of Alborz, starting at an elevation of 1,800 meters (5,900 ft), with many houses and streets on steep slopes and hills. There is a stretch of hills in the middle of the city (which historically divided Tehran and Shemiran) with its highest point at 1,500 metres (4,900 ft). Southwards and westwards of those hills, Tehran is less steep. On the east, there are numerous hills, with the highest point at 1,950 metres (6,400 ft). The southern end of Tehran (Rey) is at 1,100 metres (3,600 ft), next to a single mountain (Raga) at 1,500 metres (4,900 ft).\n\nClimate\nTehran lies at the southern foot of the Alborz Mountains and the northern edge of the Iranian Central Plateau, giving the city a complex climate. According to the Köppen climate classification system, the bulk of metropolitan Tehran is classified as a cold semi-arid (BSk), while lower elevation suburbs and plains (near Mehrābād Airport) verge on a hot semi-arid (BSh) classification. At the same time, the elevated northern districts (such as Shemiran) approach a Mediterranean climate (Csa) type.\nNorthern parts of Tehran tend to be cooler, receive slightly more precipitation (including more snow), and retain more greenery. In contrast, the more open, lower-lying southern sections of the city experience stronger daytime heating, less relief through breezes, and larger temperature differences between day and night.\nSummers in Tehran are long and dry. Daytime highs often soar to over 35 °C, and during peak heat waves they may approach or even exceed 40 °C. Nighttime minima during midsummer typically hover around 20–25 °C, though cooler nights are common in the northern districts. Winters are cool in central areas but are notably colder in the higher elevations north of the city: daytime highs in January average around 7–9 °C, while overnight lows in the city centre fall to near 0–2°C or slightly below and routinely dip below zero in the suburbs and mountain-adjacent zones.\nAnnual total rainfall for central Tehran averages roughly 230–300 mm. The wet season spans from late autumn through early spring (roughly November to May), while the summer months (June to September) are extremely dry and often see no measurable rainfall. Most precipitation falls from frontal systems moving in from the northwest and through the Alborz range, with occasional convective storms. Snowfall occurs almost every winter, though accumulation in central Tehran is usually brief, while the northern districts and Alborz foothills receive heavier and longer-lasting snow."
+    },
+    {
+      "article": "Tehran — History",
+      "url": "https://en.wikipedia.org/wiki/Tehran#History",
+      "text": "History\nArchaeological remains from the ancient city of Ray suggest that settlement in Tehran dates back over 6,000 years.\nClassical era\nTehran is in the historical Media region (Old Persian: Māda) in northwestern Iran. By the time of the Median Empire, part of present-day Tehran was a suburb of the prominent Median city of Rhages (Old Persian: Ragā). In the Avesta's Videvdat (i, 15), Rhages is mentioned as the 12th sacred place created by Ohrmazd. In Old Persian inscriptions, Rhages appears as a province (Bistun 2, 10–18). From Rhages, Darius I sent reinforcements to his father Hystaspes, who was putting down a rebellion in Parthia (Bistun 3, 1–10). Some Middle Persian texts give Rhages as the birthplace of Zoroaster, although modern historians generally place the birthplace of Zoroaster in Khorasan province.\nMount Damavand, the highest peak of Iran, which is located near Tehran, is an important location in Ferdowsi's Šāhnāme, an Iranian epic poem based on the ancient legends of Iran.\nMedieval period\nIn 641, during the reign of the Sasanian Empire, Yazdgerd III issued his last appeal to the nation from Rhages, before fleeing to Khorasan. Rhages was dominated by the Parthian House of Mihran, and Siyavakhsh—the son of Mehran, the son of Bahram Chobin—who resisted the seventh-century Muslim invasion of Iran. Because of this resistance, when the Arabs captured Rhages, they ordered the town destroyed and rebuilt anew by the aristocrat Farrukhzad.\nIn the ninth century, Tehran was a well-known village, but less so than Rhages, flourishing nearby. Rhages was described in detail by tenth-century Muslim geographers. Despite the interest that Arabian Baghdad displayed in Rhages, the number of Arabs in the city remained insignificant and the population mainly consisted of Iranians of all classes.\nThe Oghuz Turks invaded Rhages in 1035 and again in 1042, but the city was recovered under the Seljuks and the Khwarezmians. Medieval writer Najm od Din Razi declared the population of Rhages about 500,000 before the Mongol invasion. In the 13th century, the Mongols invaded Rhages, laid the city to ruins, and massacred many of its inhabitants. Others escaped to Tehran. In July 1404, Castilian ambassador Ruy González de Clavijo visited Tehran on a journey to Samarkand, the capital of Turco-Mongol conqueror Timur, the ruler of Iran at the time. He described it in his diary as an unwalled region.\nEarly modern era\nItalian traveler Pietro della Valle passed through Tehran overnight in 1618, and in his memoirs called the city Taheran. English traveler Thomas Herbert entered Tehran in 1627, and mentioned it as Tyroan. Herbert states that the city had about 3,000 houses.\nIn the early 18th century, Karim Khan of the Zand dynasty ordered a palace and a government office built in Tehran, possibly to declare the city his capital; but he later moved his government to Shiraz. Eventually, Qajar king Agha Mohammad Khan chose Tehran as the capital of Iran in 1786. Khan's choice of his capital was based on a similar concern for the control of both northern and southern Iran. He was aware of the loyalties of the inhabitants of former capitals Isfahan and Shiraz to the Safavid and Zand dynasties respectively, and was wary of the power of the local notables in these cities. Thus, he probably viewed Tehran's lack of a substantial urban structure as a blessing, because it minimized the chances of resistance to his rule by the notables and by the general public."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

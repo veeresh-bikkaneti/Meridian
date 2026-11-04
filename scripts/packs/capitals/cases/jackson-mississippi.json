@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "jackson-mississippi",
+  "target": {
+    "placeId": "gn-4431410",
+    "name": "Jackson",
+    "aliases": [],
+    "lat": 32.29876,
+    "lon": -90.18481,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Mississippi",
+    "iso2": "US",
+    "subdivision": "Mississippi"
+  },
+  "subjectAnswer": {
+    "name": "Mississippi",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Mississippi",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town sits on a big river in the flat grass lands of its state. Farms and fields spread out on all sides.",
+      "narrowing": "Points to a prairie-region city on a river in the deep south.",
+      "source": {
+        "article": "Jackson, Mississippi",
+        "url": "https://en.wikipedia.org/wiki/Jackson%2C_Mississippi",
+        "quote": "The city sits on the Pearl River and is located in the greater Jackson Prairie region of Mississippi."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Bad storms hit this town a lot, with big hail, wild winds, and twisters. Snow is rare and soon melts.",
+      "narrowing": "Keeps storm-prone southern capitals where snow almost never lasts.",
+      "source": {
+        "article": "Jackson, Mississippi",
+        "url": "https://en.wikipedia.org/wiki/Jackson%2C_Mississippi",
+        "quote": "Jackson lies in a region prone to severe thunderstorms which can produce large hail, damaging winds, and tornadoes."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Long ago, a trade post stood on a bluff by the river. The state picked that bluff as the site for its new capital town.",
+      "narrowing": "Cuts the list to the bluff chosen as the new state's capital site in 1821.",
+      "source": {
+        "article": "Jackson, Mississippi — History",
+        "url": "https://en.wikipedia.org/wiki/Jackson%2C_Mississippi#History",
+        "quote": "LeFleur's Bluff was developed when it was chosen as the site for the new state's capital city."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Deep down under this town sleeps a dead volcano. Its peak lies far below the streets, right under a sports hall.",
+      "narrowing": "Nearly decisive: only one capital city sits atop a buried volcano.",
+      "source": {
+        "article": "Jackson, Mississippi",
+        "url": "https://en.wikipedia.org/wiki/Jackson%2C_Mississippi",
+        "quote": "Jackson sits atop the extinct Jackson Volcano, located 2,900 feet (880 m) underground."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Mississippi works in this city, the largest in the state. Lawmakers meet here to make the state's laws.",
+      "narrowing": "Confirms it: the governor and lawmakers of Mississippi work in this city.",
+      "source": {
+        "article": "Jackson, Mississippi",
+        "url": "https://en.wikipedia.org/wiki/Jackson%2C_Mississippi",
+        "quote": "is the capital and most populous city of the U.S. state of Mississippi"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Founded in 1821 as the new state capital, this river city was named for a general who later became president. Union troops burned it three times in the Civil War, leaving only chimneys standing. Jackson is the capital of Mississippi."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Jackson%2C_Mississippi"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -1,0 +1,57 @@
+{
+  "caseId": "riyadh-saudi-arabia",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 2,
+  "hookAngle": "The Kingdom Centre tower splits near the top and is joined by a sky-bridge.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-108410",
+    "name": "Riyadh",
+    "country": "Saudi Arabia",
+    "subdivision": "Riyadh Region",
+    "lat": 24.68773,
+    "lon": 46.72185
+  },
+  "target": {
+    "placeId": "gn-108410",
+    "name": "Riyadh",
+    "lat": 24.68773,
+    "lon": 46.72185,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Saudi Arabia",
+    "iso2": "SA",
+    "subdivision": "Riyadh Region"
+  },
+  "subjectAnswer": {
+    "name": "Saudi Arabia",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "SA",
+    "subdivision": "Riyadh Region",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Riyadh is the capital of Saudi Arabia. It's one of Saudi Arabia's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Riyadh",
+      "url": "https://en.wikipedia.org/wiki/Riyadh",
+      "text": "Riyadh is the capital and largest city of Saudi Arabia, as well as the largest city on the Arabian Peninsula. It serves as the administrative capital of both the Riyadh Province and the Riyadh Emirate. It has been the Saudi capital since 1824, when it was designated as the seat of the Second Saudi State, the current form of the metropolis largely emerged in the 1950s as an expansion of the 18th-century walled town, following the dismantling of its defensive fortifications.\n\nOverview\nIt is the largest city on the Arabian Peninsula and is situated in the eastern part of the Najd plateau. The city sits at an average elevation of 600 meters (2,000 ft) above sea level, and receives around 5 million tourists each year, making it the forty-ninth most visited city in the world and the sixth in the Middle East. Riyadh had a population of 7 million people in 2022, making it the most populous city in Saudi Arabia, the fifth most populous in the Middle East, and the 38th most populous in Asia.\nThe first mention of the city by the name Riyadh was in 1590, by an Arab chronicler. In 1745, Dahham ibn Dawwas, who was from the neighboring Manfuhah, seized control of the town. Dahham built a mudbrick palace and a wall around the town, and the best-known source of the name Riyadh is from this period, thought to be referring to the earlier oasis towns that predated the wall built by Ibn Dawwas. In 1744, Muhammad ibn Abd al-Wahhab formed an alliance with the Emir of Diriyah, Muhammad bin Saud, and they took Riyadh from Dahham. However their state, now known as the First Saudi state, collapsed in 1818. Turki ibn Abdullah founded the Second Saudi state in the early 19th century and made Riyadh his capital in 1825. However, his reign over the city was disrupted by a joint Ottoman–Rashidi alliance. Finally, in the early 20th century, Ibn Saud retrieved his ancestral rule in 1902 with the Emirate of Riyadh and consolidated his rule by 1926 with the final Saudi conquest of Hejaz, subsequently naming his kingdom 'Saudi Arabia' in September 1932 with Riyadh as the capital. The town was the administrative center of the government until 1938, when Ibn Saud moved to the Murabba Palace. In the 1950s, the walls were dismantled and the Riyadh metropolis expanded as an offshoot of the walled town.\nRiyadh is the political and administrative center of Saudi Arabia. The Consultative Assembly, the Council of Ministers, the king and the Supreme Judicial Council are all situated in the city. Alongside these four bodies that form the core of the legal system of Saudi Arabia, the headquarters of other major and minor governmental bodies are also located in Riyadh. Out of the 24 ministries of the Saudi government, 23 are headquartered in Riyadh, further reinforcing its status as the nation's administrative capital. The city hosts 114 foreign embassies, most of which are located in the Diplomatic Quarter in the western reaches of the city.\n\nGeography\nClimate\nRiyadh has a continental desert climate or hot desert climate (Köppen Climate Classification BWh), with long, extremely hot summers and short, cold winters due to cold continental air flowing in from Siberia during winter. The average high temperature in August is 43.6 °C (110.5 °F), and the average low temperature in January is 7.2 °C (45.0 °F). The city experiences very little precipitation, especially during the summer, but receives a fair amount of rain in March and April. It is also known to have dust storms during which the dust can be so thick that visibility is under 10 m (33 ft). On 1 and 2 April 2015, a massive dust storm hit Riyadh, causing the suspension of classes in many schools in the area and the cancellation of hundreds of flights, both domestic and international.\n\nLandmarks\nKingdom Centre\nDesigned by the team of Ellerbe Becket and Omrania, the tower is built on 94,230 square meters of land. The Kingdom Centre is owned by a group of companies including Kingdom Holding Company, headed by Al-Waleed bin Talal, a prince of the Saudi royal family, and is the headquarters of the holding company. The project cost 2 billion Saudi Arabian Riyals and the contract was undertaken by El-Seif. The Kingdom Centre is the winner of the 2002 Emporis Skyscraper Award, selected as the \"best new skyscraper of the year for design and functionality\". A three-level shopping center, which also won a major design award, fills the east and west portions of the lower levels of the structure.\nThe Kingdom Centre has 99 stories and is the fifth tallest structure in the country, rising to 300m. A special aspect of the tower is that it is divided into two parts in the last one-third of its height and is linked by a sky-bridge walkway, which provides extensive views of Riyadh."
+    },
+    {
+      "article": "Riyadh — History",
+      "url": "https://en.wikipedia.org/wiki/Riyadh#History",
+      "text": "History\nEarly history\nDuring the Pre-Islamic era, the city at the site of modern Riyadh was called Hajr (Arabic: حجر), and was reportedly founded by the tribe of Banu Hanifa. Hajr served as the capital of the province of Al-Yamama, whose governors were responsible for most of central and eastern Arabia during the Umayyad Caliphate and Abbasid Caliphate eras. Al-Yamama broke away from the Abbasid in 866 and the area fell under the rule of the Banu Ukhaidhir, who moved the capital from Hajr to nearby Al-Kharj. The city then went into a long period of decline. In the 14th century, North African traveler Ibn Battuta wrote of his visit to Hajr, describing it as \"the main city of Al-Yamama, and its name is Hajr\". Ibn Battuta goes on to describe it as a city of canals and trees with most of its inhabitants belonging to the Banu Hanifa, and reports that he continued on with their leader to Mecca to perform the Hajj.\nLater on, Hajr broke up into several separate settlements and estates. The most notable of these were Migrin (or Muqrin) and Mi'kal, though the name Hajr continued to appear in local folk poetry. The earliest known reference to the area by the name Riyadh comes from a 17th-century chronicler reporting on an event from the year 1590. In 1737, Dahham ibn Dawwas, a refugee from neighboring Manfuhah, took control of Riyadh. Ibn Dawwas built a single wall to encircle the various oasis towns in the area, making them effectively a single fortress city. The name \"Riyadh\", meaning \"gardens,\" refers to these earlier oasis towns.\nFirst Saudi State\nIn 1744, Muhammad ibn Abd al-Wahhab formed an alliance with Muhammad bin Saud, the ruler of the nearby town of Diriyah. Ibn Saud then set out to conquer the surrounding region with the goal of bringing it under the rule of a single Islamic state. Ibn Dawwas of Riyadh led the most determined resistance, allied with forces from Al-Kharj, Al-Ahsa, and the Banu Yam clan of Najran. However, Ibn Dawwas fled and Riyadh capitulated to the Saudis in 1774, ending long years of wars, and leading to the declaration of the First Saudi state, with Diriyah as its capital.\nThe First Saudi State was ended by forces sent by Muhammad Ali of Egypt, acting on behalf of the Ottoman Empire. Ottoman forces razed the Saudi capital Diriyah in 1818. They had maintained a garrison at Najd. This marked the decline of the House of Saud for a short time. Turki bin Abdullah became the first ruler of the Second Saudi state; the cousin of Saud bin Saud, he ruled for 19 years till 1834, leading to the consolidation of the area though they were notionally under the control of Muhammad Ali, the Viceroy of Egypt. In 1823, Turki ibn Abdallah chose Riyadh as the new capital. Following the assassination of Turki in 1834, his eldest son Faisal killed the assassin, took control of the capital, and refused to be controlled by the Viceroy of Egypt. Najd was then invaded, and Faisal was taken captive and held in Cairo. However, as Egypt became independent of the Ottoman Empire, Faisal escaped after five years of incarceration, returned to Najd, and resumed his reign, ruling until 1865 and consolidating the reign of the House of Saud."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

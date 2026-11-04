@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "hartford-connecticut",
+  "target": {
+    "placeId": "gn-4835797",
+    "name": "Hartford",
+    "aliases": [],
+    "lat": 41.76371,
+    "lon": -72.68509,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Connecticut",
+    "iso2": "US",
+    "subdivision": "Connecticut"
+  },
+  "subjectAnswer": {
+    "name": "Connecticut",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Connecticut",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "A broad river runs down the east side of this town. It marks the line with the town on the far bank.",
+      "narrowing": "Points to a city on the east bank of a large New England river.",
+      "source": {
+        "article": "Hartford, Connecticut",
+        "url": "https://en.wikipedia.org/wiki/Hartford%2C_Connecticut",
+        "quote": "The Connecticut River forms the boundary between Hartford and East Hartford, and is located on the east side of the city."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are cold with spells of snow, while summers turn hot and humid. Spring and fall sit in between, swinging from warm to cool.",
+      "narrowing": "Keeps cold-winter, hot-summer river cities of the northeast.",
+      "source": {
+        "article": "Hartford, Connecticut",
+        "url": "https://en.wikipedia.org/wiki/Hartford%2C_Connecticut",
+        "quote": "Winters are moderately cold, with periods of snow, while summers are hot and humid."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "For more than 200 years, two towns took turns as the state capital. Since 1875, this town has held the job on its own.",
+      "narrowing": "Cuts the list to the city that shared a dual capital until 1875.",
+      "source": {
+        "article": "Hartford, Connecticut",
+        "url": "https://en.wikipedia.org/wiki/Hartford%2C_Connecticut",
+        "quote": "Hartford alternated with New Haven as dual capitals of Connecticut from 1664, and Hartford has been the sole capital since 1875."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "The writer Mark Twain lived in this city and wrote his most famous books in his house here. He called it the chief of all the beautiful towns he had seen.",
+      "narrowing": "Nearly decisive: Mark Twain's famous house stands in one capital.",
+      "source": {
+        "article": "Hartford, Connecticut",
+        "url": "https://en.wikipedia.org/wiki/Hartford%2C_Connecticut",
+        "quote": "It is the location of the Mark Twain House, in which the author Mark Twain wrote his most famous works and raised his family."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Connecticut works in this town. Its lawmakers meet here to run the state.",
+      "narrowing": "Confirms it: the governor and lawmakers of Connecticut work in this city.",
+      "source": {
+        "article": "Hartford, Connecticut",
+        "url": "https://en.wikipedia.org/wiki/Hartford%2C_Connecticut",
+        "quote": "is the capital city of the U.S. state of Connecticut"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Founded in 1635, this river city shared the capital job with another town for over 200 years before winning it alone in 1875. Mark Twain wrote his best-loved books in his home here, and giant insurance companies later filled its offices. Hartford is the capital of Connecticut."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Hartford%2C_Connecticut"
+  },
+  "pointPolicy": "geonames-point"
+}

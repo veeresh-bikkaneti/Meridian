@@ -1,0 +1,57 @@
+{
+  "caseId": "sofia-bulgaria",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "A church, a mosque and a synagogue stand close together in a 'triangle of religious tolerance'.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-727011",
+    "name": "Sofia",
+    "country": "Bulgaria",
+    "subdivision": "Sofia-Capital",
+    "lat": 42.69751,
+    "lon": 23.32415
+  },
+  "target": {
+    "placeId": "gn-727011",
+    "name": "Sofia",
+    "lat": 42.69751,
+    "lon": 23.32415,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Bulgaria",
+    "iso2": "BG",
+    "subdivision": "Sofia-Capital"
+  },
+  "subjectAnswer": {
+    "name": "Bulgaria",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "BG",
+    "subdivision": "Sofia-Capital",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Sofia is the capital of Bulgaria. It's one of Bulgaria's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Sofia",
+      "url": "https://en.wikipedia.org/wiki/Sofia",
+      "text": "Sofia is the capital and largest city of Bulgaria. It is situated in the Sofia Valley at the foot of the Vitosha mountain, in the western part of the country. The city is built west of the Iskar river and has many mineral springs, such as the Sofia Central Mineral Baths. It has a humid continental climate.\nKnown as Serdica in antiquity, Sofia has been an area of human habitation since at least 7000 BC. The recorded history of the city begins with the attestation of the conquest of Serdica by the Roman Republic in 29 BC from the Celtic tribe Serdi. During the decline of the Roman Empire, the city was raided by Huns, Visigoths, Avars, and Slavs. In 809, Serdica was incorporated into the First Bulgarian Empire by Khan Krum and became known as Sredets. In 1018, the Byzantines ended Bulgarian rule until 1194, when it was reincorporated by the Second Bulgarian Empire. Sredets became a major administrative, economic, cultural and literary hub until its conquest by the Ottomans in 1382. From 1530 to 1836, Sofia was the regional capital of Rumelia Eyalet, the Ottoman Empire's largest and most important province. Bulgarian rule was restored in 1878. Sofia was selected as the capital of the Third Bulgarian State in the next year, ushering a period of intense demographic and economic growth.\nSofia is the 14th-largest city in the European Union. It is surrounded by mountains including Vitosha to the south, Lyulin to the west, and the Balkan Mountains to the north. It is the fourth highest European capital after Andorra la Vella, San Marino and Madrid. Sofia is home to several universities, cultural institutions and commercial companies. The city has been described as the \"triangle of religious tolerance\". This is because three temples of three major world religions—Christianity, Islam and Judaism—are situated close together: Sveta Nedelya Church, Banya Bashi Mosque and Sofia Synagogue. This triangle was recently expanded to a \"square\" and includes the Catholic Cathedral of St Joseph.\n\nGeography\nSofia City Province has an area of 1,344 km2, while the surrounding and much bigger Sofia Province is 7,059 km2. Sofia's development as a significant settlement owes much to its central position in the Balkans. It is situated in western Bulgaria, at the northern foot of the Vitosha mountain, in the Sofia Valley that is surrounded by the Balkan Mountains to the north. The valley has an average altitude of 550 metres (1,800 ft). Sofia is the second highest capital of the European Union (after Madrid) and the third highest capital of Europe (after Andorra la Vella and Madrid). Unlike most European capitals, Sofia does not straddle any large river, but is surrounded by comparatively high mountains on all sides. Three mountain passes lead to the city, which have been key roads since antiquity, Vitosha being the watershed between Black and Aegean Seas.\nA number of shallow rivers cross the city, including the Boyanska, Vladayska and Perlovska. The Iskar River in its upper course flows near eastern Sofia. It takes its source in Rila, Bulgaria's highest mountain, and enters Sofia Valley near the village of German.\nThe city is known for its 49 mineral and thermal springs. Artificial and dam lakes were built in the twentieth century.\n\nClimate\nSofia has a humid continental climate (Köppen climate classification Dfb; Cfb if with −3 °C isotherm) with an average annual temperature of 10.9 °C (51.6 °F).\nWinters are relatively cold and snowy. In the coldest days temperatures can drop below −15 °C (5 °F), most notably in January. The lowest recorded temperature is −31.2 °C (−24 °F) (16 January 1893). On average, Sofia receives a total snowfall of 98 cm (38.6 in) and 56 days with snow cover.\nSummers are quite warm and sunny. In summer, the city generally remains slightly cooler than other parts of Bulgaria, due to its higher altitude."
+    },
+    {
+      "article": "Sofia — History",
+      "url": "https://en.wikipedia.org/wiki/Sofia#History",
+      "text": "History\n(From the article lead and Names section.)\nKnown as Serdica in antiquity, Sofia has been an area of human habitation since at least 7000 BC. The recorded history of the city begins with the attestation of the conquest of Serdica by the Roman Republic in 29 BC from the Celtic tribe Serdi. During the decline of the Roman Empire, the city was raided by Huns, Visigoths, Avars, and Slavs. In 809, Serdica was incorporated into the First Bulgarian Empire by Khan Krum and became known as Sredets. In 1018, the Byzantines ended Bulgarian rule until 1194, when it was reincorporated by the Second Bulgarian Empire. Sredets became a major administrative, economic, cultural and literary hub until its conquest by the Ottomans in 1382. From 1530 to 1836, Sofia was the regional capital of Rumelia Eyalet, the Ottoman Empire's largest and most important province. Bulgarian rule was restored in 1878. Sofia was selected as the capital of the Third Bulgarian State in the next year, ushering a period of intense demographic and economic growth.\nThe name Sofia comes from the Saint Sofia Church, as opposed to the prevailing Slavic origin of Bulgarian cities and towns. The origin is in the Greek word sophía (σοφία, \"wisdom\"). In 1879, there was a dispute about what the name of the new Bulgarian capital should be, when the citizens created a committee of famous people, insisting for the Slavic name. Gradually, a compromise arose, officialisation of Sofia for the nationwide institutions, while legitimating the title Sredets for the administrative and church institutions, before the latter was abandoned through the years."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

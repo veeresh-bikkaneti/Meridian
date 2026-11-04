@@ -1,0 +1,57 @@
+{
+  "caseId": "augusta-maine",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "The easternmost state capital in the United States, on the Kennebec River.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-4957003",
+    "name": "Augusta",
+    "country": "United States",
+    "subdivision": "Maine",
+    "lat": 44.31062,
+    "lon": -69.77949
+  },
+  "target": {
+    "placeId": "gn-4957003",
+    "name": "Augusta",
+    "lat": 44.31062,
+    "lon": -69.77949,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Maine",
+    "iso2": "US",
+    "subdivision": "Maine"
+  },
+  "subjectAnswer": {
+    "name": "Maine",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "US",
+    "subdivision": "Maine",
+    "difficulty": 2,
+    "regionId": "maine",
+    "edition": "state",
+    "blurb": "Augusta is the capital of Maine, the United States.",
+    "history": "Named for the daughter of Revolutionary War general Henry Dearborn. It is one of America's smallest capitals."
+  },
+  "extracts": [
+    {
+      "article": "Augusta, Maine",
+      "url": "https://en.wikipedia.org/wiki/Augusta%2C_Maine",
+      "text": "Augusta is the capital city of the U.S. state of Maine. The city's population was 18,899 at the 2020 United States census, making it the 12th-most populous city in Maine, and third-least populous state capital in the United States. Augusta is the seat of and most populous city in Kennebec County.\nEnglish settlers from the Popham Colony at the mouth of the Kennebec River explored the area in 1607. Before European settlement, Algonquian-speaking Indians lived in the area. In 1625, representatives of Plymouth Colony chose the east shore of the Kennebec for a trading post, which was likely built in 1628 and became known as \"Cushnoc\". The Kennebec Proprietors, successors to the Plymouth Company, built Fort Western near the site of the abandoned trading post in 1754 and began settlement efforts. The new village was incorporated as Hallowell in 1771, and the upriver part of town separated in 1797 to form the town of Harrington. On June 9, 1797, Harrington changed its name to Augusta and, in 1827, it was designated capital of Maine.\nAugusta is the easternmost state capital in the United States. Located on the Kennebec River at the head of tide, it is the principal city in the Augusta–Waterville micropolitan statistical area and home to the University of Maine at Augusta. Because of the city's position on the Kennebec, downtown Augusta is vulnerable to floods in spring. The Maine flood of 1987, known as the \"Great Flood\", affected the city. Bond Brook runs from northwest to southeast through the city center, and has been called the \"Home of wild Atlantic Salmon\".\nThe city has five different residential areas, including the \"west side\", a historic neighborhood north of the state capitol complex, and the \"east side\", which is situated on the opposite side of the Kennebec. The city's northwest quadrant includes both a retail center and neighborhoods. Augusta State Airport serves the city, offering both commercial service and general aviation. Although the airport is owned by the State of Maine, it is managed and operated by the city. Interstate 95 passes by the western outskirts of Augusta, and both U.S. 202 and U.S. 201 run through the city.\nGeography Augusta is the easternmost state capital in the United States. According to the United States Census Bureau, the city has a total area of 58.03 sq mi (150.30 km2), of which 55.13 sq mi (142.79 km2) is land and 2.90 sq mi (7.51 km2) is water. Augusta is drained by Bond's Brook, Woromontogus Stream and the Kennebec River.\n\n\n=== Roads ===\nThe city is crossed by Interstate 95, U.S. Route 201, State Route 11, U.S. Route 202, State Route 9, State Route 3, State Route 100, State Route 27, State Route 8, State Route 104, and State Route 105.\n\n\n=== Bordering ===\nAugusta borders the towns of Manchester to its west, Sidney and Vassalboro to its north, Windsor to its east, Chelsea to its south, and the city of Hallowell to its southwest.\n\n\n=== Climate ===\nAugusta's climate is classified as a humid continental climate (Köppen: Dfb). Summers are typically warm, rainy, and occasionally humid. Winters are bitterly cold, windy, and snowy. The spring season is almost non-existent, while fall is usually mild and drier. Conditions can vary, depending on wind direction and jet stream positioning.\nThe hottest month is July, with an average high temperature of 80 °F (26.7 °C). The coldest month is January, with an average low of 10 °F (−12.2 °C). Most snowfall occurs from December through March. Snowfall is not uncommon in April and November, though snow is rare in May and October.\n\nSee or edit raw graph data.\nClimate Augusta's climate is classified as a humid continental climate (Köppen: Dfb). Summers are typically warm, rainy, and occasionally humid. Winters are bitterly cold, windy, and snowy. The spring season is almost non-existent, while fall is usually mild and drier. Conditions can vary, depending on wind direction and jet stream positioning.\nThe hottest month is July, with an average high temperature of 80 °F (26.7 °C). The coldest month is January, with an average low of 10 °F (−12.2 °C). Most snowfall occurs from December through March. Snowfall is not uncommon in April and November, though snow is rare in May and October.\n\nSee or edit raw graph data."
+    },
+    {
+      "article": "Augusta, Maine — History",
+      "url": "https://en.wikipedia.org/wiki/Augusta%2C_Maine#History",
+      "text": "History The area was first explored by the English of the short-lived Popham Colony in September 1607. Twenty-one years later, English settlers from the Plymouth Colony settled in the area in 1628 as part of a trading post on the Kennebec River. The settlement was known by its Native American name Cushnoc (or Coussinoc or Koussinoc), meaning \"head of the tide\". Fur trading was at first profitable, but because of Native uprisings and declining revenues, Plymouth Colony sold the Kennebec Patent in 1661. Cushnoc would remain unoccupied for the next 75 years.\nThe area around Cushnoc was inhabited by the Kennebec, a band of the larger Abenaki nation. During the 17th century, they were on friendly terms with the English settlers in the region.\nA hotbed of Abenaki hostility toward British settlements was located further up the Kennebec at Norridgewock. In 1722, the tribe and its allies attacked Fort Richmond (now Richmond) and destroyed Brunswick. In response, English forces sacked Norridgewock in 1724 during Dummer's War, when the English gained tentative control of the Kennebec.\nDuring the height of the French and Indian War, in 1754, the English colonists built a blockhouse named Fort Western at Cushnoc on the eastern bank of the Kennebec River. It was intended as a supply depot for Fort Halifax upriver, as well as a regional defense from French attack. Later, during the American Revolutionary War, Benedict Arnold and his 1,100 troops would use Fort Western as a staging area before continuing their journey up the Kennebec to the Battle of Quebec.\n\nCushnoc was incorporated as part of Hallowell in 1771. Known as \"the Fort\", it was set off and incorporated by the Massachusetts General Court in February 1797 as Harrington. In August, however, the name was changed to Augusta after Pamela Augusta Dearborn, daughter of Henry Dearborn. In 1799, it was designated as the county seat for the newly created Kennebec County.\nMaine became a state in 1820 as a result of the Missouri Compromise. Augusta was designated as its capital in 1827, over Portland, and rival communities Brunswick and Hallowell. The Maine State Legislature continued meeting in Portland, however, until the completion of the Maine State House in 1832, designed by Charles Bulfinch. Augusta was incorporated as a city in 1849. After being named the state capital and the introduction of new industry, the city flourished. In 1840 and 1850, the city ranked among the 100 largest urban populations in the country. During the next decade, however, the city was quickly bypassed by rapidly growing metropolises in the Midwest.\nExcellent soil provided for agriculture, and water power from streams provided for the industry. In 1837, a dam was built across the Kennebec where the falls drop 15  feet at the head of a tide. By 1838, 10 sawmills were contracted. With the arrival of the Kennebec & Portland Railroad in 1851, Augusta became an even more productive mill town. In 1883, the property of A. & W. Sprague Company was purchased by the Edwards Manufacturing Company, which erected extensive brick mills for manufacturing cotton textiles. They imported cotton from the South for processing and export to Europe. In the late 19th century, a paper and pulp plant was constructed.\nOther Augusta firms produced lumber, sash, doors, window shutters, broom handles, stone cutters' tools, shoes, headstones, ice and furniture. The city developed as a publishing and shipping center. As of 2024, health care, education, retail, and public administration contributed the majority of employment.\nSince the mid-eighteenth century, there has been a military presence in Augusta. Fort Western has not had troops garrisoned there since the 1790s, but in 1828, the U.S. Government built an arsenal to protect their interests from Britain. During the Civil War, Augusta was a rendezvous point for Union soldiers traveling to the front. Many of the soldiers camped on the green in front of the capitol building. In 1862, Camp E.D. Keyes was established in the northwestern portion of the city.\nDuring World War I, Camp Keyes was used as a mobilization and training camp for soldiers. The camp eventually became a headquarters for the Maine National Guard. In 1929, the state legislature approved the placement of the Augusta State Airport next to the camp. As the airport grew, the use of the camp as a training facility was no longer possible. Today, it is still used for administrative and logistical purposes by the National Guard.\nIn the 19th century, Augusta got a regular steamboat service and the railroad. The city installed gas lights in 1859. A telephone service was available in 1880 and a local hospital in 1898. In the early 20th century, Augusta built two movie houses and a film production studio."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

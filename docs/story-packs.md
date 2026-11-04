@@ -1,9 +1,9 @@
 # Story packs
 
 A story pack is a set of extra cases that plug into the games Meridian
-already has. The first pack is **Capitals**: 72 cases (44 country
-capitals and 28 US state capitals) that play inside GeoDetective and
-Cold Trail. No pack is a game of its own.
+already has. The first pack is **Capitals & Flags**: 110 cases (60
+country capitals and 50 US state capitals) that play inside
+GeoDetective and Cold Trail. No pack is a game of its own.
 
 This file is the vendored copy of the pack design (issue #319). The
 code cites its section numbers, so the numbers below match the
@@ -17,7 +17,7 @@ How a pack flows from a written record to a case on screen:
 ```mermaid
 flowchart LR
     A["Case records<br/>scripts/packs/&lt;pack&gt;/cases/*.json<br/>(validated by validate-pack.mjs)"] --> B["Composer<br/>compose-packs.mjs"]
-    B --> C["Loop clue files<br/>public/loop/clues/387–458.json"]
+    B --> C["Loop clue files<br/>public/loop/clues/387–496.json"]
     B --> D["Manifest<br/>public/packs/capitals/manifest.json"]
     B --> E["Sidecar<br/>public/packs/capitals/loop-meta.json"]
     F["Cold Trail generator<br/>build-coldtrail-capitals.mjs"] --> G["Cold Trail deck<br/>cases.capitals.generated.json"]
@@ -47,10 +47,10 @@ Recorded from the owner's voice call of 2026-11-02 (no transcript):
 
 A fallback deal is always labeled as what it is. The case screen
 says, in one plain sentence, where the open case came from — "This
-case is from your Capitals deck." or "This case is from All
+case is from your Capitals & Flags deck." or "This case is from All
 cases." When a pack could not load and the deal fell back, that
-same sentence spot carries the explanation instead ("Capitals
-couldn't load just now — this case is from All cases instead…"),
+same sentence spot carries the explanation instead ("Capitals &
+Flags couldn't load just now — this case is from All cases instead…"),
 and the shelf's next-case line stays quiet while it is up, so only
 one message speaks at a time. A core case is never presented as a
 pack case.
@@ -60,7 +60,8 @@ pack case.
 A pack ships as data next to the game, never inside the core clue
 files: a manifest, a metadata sidecar, and one core-format clue file
 per case at indexes the pack owns. The core deck owns loop indexes
-0–386; the Capitals pack owns 387–458.
+0–386; the Capitals & Flags pack owns 387–496 — its first 72 cases
+at 387–458, and every case added since appended after them (§8).
 
 ### 1.1 Authoring record — `meridian.pack.case.v1`
 
@@ -195,12 +196,13 @@ sight of its subject land. Each subject is *witnessed* by a
 core-deck city (its anchor) the player has already met, so when the
 pack case arrives, the land is familiar ground.
 
-**v1 truth:** Cold Trail stamps are not built, so a capital that is
-not itself a witness anchor does not appear in Cold Trail v1. The
-generated Cold Trail Capitals deck holds 60 cases and teaches **51
-anchor capitals** across them (recounted on the shipped tree after
-the §1.1 cure swap). Every other capital plays in GeoDetective
-only, until stamps land.
+**Capitals & Flags (issue #344):** pack stamps ARE built — every
+capital witness carries its land's flagKey (§8), and a capital that
+is not itself a witness anchor still reaches Cold Trail players as
+a GeoDetective case. The generated Cold Trail Capitals deck holds
+85 cases — the shipped 60 plus 25 appended by wave 2 under
+append-only generation (§8) — and teaches **61 anchor capitals**
+across them. Every capital plays in GeoDetective.
 
 ### 2.3 What "both directions" honestly means
 
@@ -224,10 +226,11 @@ renders, or scores a reverse case.
   holds an unrevealed current case, ahead of any stored shelf
   selection. A pick made mid-case survives leaving and coming back.
 - **Deck completion.** Finishing a pack cycle celebrates the pack,
-  in the pack's own numbers: the Capitals cycle closes "All 72
-  Capitals case files". The core cycle's celebration copy is
-  unchanged. Rusty, the trail companion, greets a completed pack
-  cycle by name.
+  in the pack's own numbers: the Capitals & Flags cycle closes "All
+  110 Capitals & Flags case files closed. Countries and states —
+  you found every single capital." The core cycle's celebration
+  copy is unchanged. Rusty, the trail companion, greets a completed
+  pack cycle by name.
 
 ## 7. Selection UX — the shelf
 
@@ -237,10 +240,16 @@ as chips the player can switch between.
 - **One shared list.** `buildDeckList` builds the chip list for both
   editions from the manifest data, so the two shelves cannot drift
   apart.
+- **One manifest load per session.** The shelf and the home doorway
+  share a single manifest load: a manifest that loads fine is kept
+  for the rest of the session, a failed load is thrown away so the
+  next screen tries again, and dealing a case always fetches fresh —
+  so a pack that cannot load at deal time still falls back to the
+  core deck honestly (§0).
 - **Per-edition totals.** A chip's progress line uses the total for
-  the edition showing it: 72 for the Capitals pack in GeoDetective,
-  60 (the Cold Trail deck's real case count) in Cold Trail. The core
-  chip always shows the core total.
+  the edition showing it: 110 for the Capitals & Flags pack in
+  GeoDetective, 85 (the Cold Trail deck's real case count) in Cold
+  Trail. The core chip always shows the core total.
 - **The status line speaks.** The line under the chips says out loud
   what switching does ("Your current case stays saved — switching
   decks never loses it") and carries `role="status"`, so screen
@@ -249,3 +258,45 @@ as chips the player can switch between.
   a second row, so a pack chip that loads late wraps into space
   that is already there instead of pushing the case below it down.
   At 390px and on desktop the row is unchanged.
+
+## 8. Capitals & Flags — the pack grows a flag layer (issue #344)
+
+The Capitals pack is also the flags pack. The owner-ratified design
+(arena C2 "pack-grown") grows the shipped pack in place — no new
+edition — and adds a flag layer under one rule:
+
+- **The one flag rule.** A flag renders only where its land's name is
+  already on screen in text: beside the given name in a GeoDetective
+  briefing, at the Giveaway rung, beside a Cold Trail witness's region
+  line, and on both reveals (the GeoDetective reveal pairs the flag
+  with the pairing blurb and one sourced flag-story line; the Cold
+  Trail reveal prints the hideout's country in text beside its flag).
+  A flag is never a hunt target and never stands alone.
+- **Identity is derived, never authored.** The composer derives each
+  case's `flagKey` from its subject (country → lowercase ISO alpha-2;
+  US state → `us-` + postal code, inverted from the state name at
+  build time; an unmapped subdivision fails the build). The sidecar
+  carries `flagKey` only when the land's flag is licence-verified in
+  the curation registry (`scripts/packs/capitals/flags/registry.json`);
+  flagless is a data state, recorded with its reason.
+- **Assets.** SVGs live in `src/assets/flags/`, one hashed lazy chunk
+  per flag via `import.meta.glob` — 0 bytes in the install precache,
+  loaded only when a case names them. `src/lib/flag-registry.ts` is
+  the one resolver; `FlagImg` is the one component.
+- **The Flagstaff gate.** `npm run check:flags` (in `prebuild`) pins
+  every file's SHA-256, bytes (≤10,240/file hard cap), licence class,
+  SVG sanity and aspect against the curation record, checks registry
+  ⇔ subjects both ways, the sidecar, and the Cold Trail stamps.
+  `docs/flags-curation.md` is the human-readable record.
+- **Growth is append-only.** New cases take loop indexes after the
+  published pack (387–458 stay frozen); the composer refuses to
+  renumber or drop a published case. Existing players' decks top up:
+  `ensurePackDeck` appends the new cases — tier-banded among
+  themselves — to the undealt remainder, leaving dealt history, the
+  open mystery and the cycle count untouched. Cold Trail generation
+  stays composition-stable the same way: new cases append after the
+  shipped ones, and flag stamps are additive metadata only.
+- **The doorway.** Home carries a "Capitals & Flags" strip directly
+  under the Expeditions Map card with a door into each mode; each
+  door selects the pack before opening, so the player lands in the
+  pack, not on the shelf.

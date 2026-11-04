@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "concord-new-hampshire",
+  "target": {
+    "placeId": "gn-5084868",
+    "name": "Concord",
+    "aliases": [],
+    "lat": 43.20814,
+    "lon": -71.53757,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "New Hampshire",
+    "iso2": "US",
+    "subdivision": "New Hampshire"
+  },
+  "subjectAnswer": {
+    "name": "New Hampshire",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "New Hampshire",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city is centered on a river, in the south-central part of its small northern state. Fish once thronged the river's rapids in spring.",
+      "narrowing": "Points to a river-centered city in a small New England state.",
+      "source": {
+        "article": "Concord, New Hampshire",
+        "url": "https://en.wikipedia.org/wiki/Concord%2C_New_Hampshire",
+        "quote": "Concord is entirely within the Merrimack River watershed and the city is centered on the river."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are long, cold, and snowy, and spring and fall pass quickly. Summers are warm, and at times humid.",
+      "narrowing": "Keeps northern capitals with long snowy winters and brief springs.",
+      "source": {
+        "article": "Concord, New Hampshire",
+        "url": "https://en.wikipedia.org/wiki/Concord%2C_New_Hampshire",
+        "quote": "with long, cold, snowy winters, warm (and at times humid) summers, and relatively brief autumns and springs"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1808, this town was named the seat of state rule. Its state house, built in 1819, is still used by lawmakers in the same rooms.",
+      "narrowing": "Cuts the list to the city named seat of government in 1808.",
+      "source": {
+        "article": "Concord, New Hampshire",
+        "url": "https://en.wikipedia.org/wiki/Concord%2C_New_Hampshire",
+        "quote": "In 1808, Concord was named the official seat of state government, and the State House was completed in 1819; it remains the oldest U.S. state capitol wherein the legislature meets in its original chambers."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A schoolteacher from this city flew into space in 1986. She was picked to teach lessons from orbit, and the whole nation mourned when her shuttle was lost.",
+      "narrowing": "Nearly decisive: the Challenger teacher taught in one capital city.",
+      "source": {
+        "article": "Concord, New Hampshire — History",
+        "url": "https://en.wikipedia.org/wiki/Concord%2C_New_Hampshire#History",
+        "quote": "The city also developed an identity within the emerging space industry, with the McAuliffe-Shepard Discovery Center opening in 1990 to commemorate Alan Shepard, the first American in space from nearby Derry, and Christa McAuliffe, a teacher at Concord High School who died in the 1986 Space Shuttle Challenger disaster."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "New Hampshire's governor works in this town. Its lawmakers meet in the old state house by the river.",
+      "narrowing": "Confirms it: the governor and lawmakers of New Hampshire work in this city.",
+      "source": {
+        "article": "Concord, New Hampshire",
+        "url": "https://en.wikipedia.org/wiki/Concord%2C_New_Hampshire",
+        "quote": "is the capital city of the U.S. state of New Hampshire"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This river city got its name in 1765 to mark the harmony after a bitter boundary fight. It became the seat of government in 1808, and its 1819 State House is the oldest capitol where lawmakers still meet in their original chambers. The building is the capitol, and the city is the capital. Concord is the capital of New Hampshire."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Concord%2C_New_Hampshire"
+  },
+  "pointPolicy": "geonames-point"
+}

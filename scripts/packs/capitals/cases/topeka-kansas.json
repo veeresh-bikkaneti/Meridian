@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "topeka-kansas",
+  "target": {
+    "placeId": "gn-4280539",
+    "name": "Topeka",
+    "aliases": [],
+    "lat": 39.04833,
+    "lon": -95.67804,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Kansas",
+    "iso2": "US",
+    "subdivision": "Kansas"
+  },
+  "subjectAnswer": {
+    "name": "Kansas",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Kansas",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands on a wide river in the northeastern part of its plains state.",
+      "narrowing": "Points to a river city in the northeast of a plains state.",
+      "source": {
+        "article": "Topeka, Kansas",
+        "url": "https://en.wikipedia.org/wiki/Topeka%2C_Kansas",
+        "quote": "It is along the Kansas River in the central part of Shawnee County, within northeastern Kansas and the Central United States."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are hot and a bit humid, with about 50 afternoons a year over 90 degrees. Winters are cool to cold and fairly dry.",
+      "narrowing": "Keeps plains capitals with hot summers and dry, cold winters.",
+      "source": {
+        "article": "Topeka, Kansas",
+        "url": "https://en.wikipedia.org/wiki/Topeka%2C_Kansas",
+        "quote": "with hot, somewhat humid summers and cool to cold, fairly dry winters"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This town was picked as the capital when the land was not yet a state. Charles Robinson was its first governor.",
+      "narrowing": "Cuts the list to the free-state town chosen as capital with Robinson as governor.",
+      "source": {
+        "article": "Topeka, Kansas — History",
+        "url": "https://en.wikipedia.org/wiki/Topeka%2C_Kansas#History",
+        "quote": "Topeka was chosen as the capital, with Charles Robinson as the first governor."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "The Brown court case bears this town's name in its title. It struck down school rules that split kids by race.",
+      "narrowing": "Nearly decisive: Brown v. Board of Education is named for this city's schools.",
+      "source": {
+        "article": "Topeka, Kansas",
+        "url": "https://en.wikipedia.org/wiki/Topeka%2C_Kansas",
+        "quote": "It is well known for the landmark U.S. Supreme Court case Brown v. Board of Education of Topeka, which overturned Plessy v. Ferguson and declared racial segregation in public schools to be unconstitutional."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Kansas works in this city. State lawmakers meet here in the state capitol.",
+      "narrowing": "Confirms it: the governor and lawmakers of Kansas work in this city.",
+      "source": {
+        "article": "Topeka, Kansas",
+        "url": "https://en.wikipedia.org/wiki/Topeka%2C_Kansas",
+        "quote": "is the capital city of the U.S. state of Kansas"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Laid out in 1854 by antislavery settlers, this river town was chosen as the capital in territory days. In the 1950s, its name went on the Supreme Court case that ended school segregation across America. The building is the capitol, and the city is the capital. Topeka is the capital of Kansas."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Topeka%2C_Kansas"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -99,24 +99,83 @@ export function composePack({
     }
     prepared.push({ record, input });
   }
-  // Indexes follow caseId order, never file-system order.
-  prepared.sort((a, b) => (a.record.caseId < b.record.caseId ? -1 : 1));
+  // Indexes are APPEND-ONLY (Capitals & Flags design §7): a case that
+  // already has a published index keeps it — saved decks and completion
+  // state point at indexes, so renumbering would silently re-deal
+  // history. New cases (sorted by caseId among themselves, never
+  // file-system order) take the next free indexes after the published
+  // pack. A published case whose record vanished fails closed:
+  // shrinking the pack would renumber everything after it.
+  const existingManifestPath = join(publicDir, "packs", packId, "manifest.json");
+  const keptIndexByPlaceId = new Map();
+  if (existsSync(existingManifestPath)) {
+    const existing = readJson(existingManifestPath);
+    for (const index of existing.loopIndexes ?? []) {
+      const cluePath = join(publicDir, "loop", "clues", `${index}.json`);
+      if (!existsSync(cluePath)) {
+        reasons.push({
+          code: "PACK_APPEND_ONLY",
+          detail: `published manifest lists index ${index} but ${cluePath} is missing — refusing to compose`,
+        });
+        continue;
+      }
+      const published = readJson(cluePath);
+      const numericId = String(published.placeId ?? "").replace(/^geonames:/, "");
+      if (numericId) keptIndexByPlaceId.set(`gn-${numericId}`, index);
+    }
+  }
   if (reasons.length > 0) return { ok: false, reasons };
+
+  const byCaseId = (a, b) => (a.record.caseId < b.record.caseId ? -1 : 1);
+  const kept = prepared
+    .filter(({ record }) => keptIndexByPlaceId.has(record.target.placeId))
+    .sort((a, b) => keptIndexByPlaceId.get(a.record.target.placeId) - keptIndexByPlaceId.get(b.record.target.placeId));
+  const fresh = prepared
+    .filter(({ record }) => !keptIndexByPlaceId.has(record.target.placeId))
+    .sort(byCaseId);
+  const recordPlaceIds = new Set(prepared.map(({ record }) => record.target.placeId));
+  for (const placeId of keptIndexByPlaceId.keys()) {
+    if (!recordPlaceIds.has(placeId)) {
+      reasons.push({
+        code: "PACK_APPEND_ONLY",
+        detail: `published case ${placeId} has no record any more — removing a case renumbers the pack; refusing to compose`,
+      });
+    }
+  }
+  if (reasons.length > 0) return { ok: false, reasons };
+
+  // The licence-verified flag registry (Capitals & Flags, Flagstaff
+  // gate): when the pack carries one, only subjects whose derived
+  // flagKey is verified get the flagKey sidecar field. No registry yet
+  // (Wave 0 packs) composes exactly as before.
+  let verifiedFlagKeys;
+  const registryPath = join(packDir, "flags", "registry.json");
+  if (existsSync(registryPath)) {
+    const registry = readJson(registryPath);
+    verifiedFlagKeys = new Set(Object.keys(registry.flags ?? {}));
+  }
 
   const loopIndexes = [];
   const loopTiers = [];
   const meta = {};
   const clueFiles = [];
-  prepared.forEach(({ record, input }, i) => {
-    const index = base + i;
+  let nextIndex =
+    kept.length > 0
+      ? Math.max(
+          base + kept.length,
+          Math.max(...kept.map(({ record }) => keptIndexByPlaceId.get(record.target.placeId))) + 1,
+        )
+      : base;
+  for (const { record, input } of [...kept, ...fresh]) {
+    const index = keptIndexByPlaceId.get(record.target.placeId) ?? nextIndex++;
     loopIndexes.push(index);
     loopTiers.push(record.packTier);
-    meta[String(index)] = loopMetaEntry(record);
+    meta[String(index)] = loopMetaEntry(record, verifiedFlagKeys);
     clueFiles.push({
       path: join(publicDir, "loop", "clues", `${index}.json`),
       value: assemblePublishedFile(toLoopRecord(record, input)),
     });
-  });
+  }
 
   const packManifest = {
     v: 1,

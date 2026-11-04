@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "riyadh-saudi-arabia",
+  "target": {
+    "placeId": "gn-108410",
+    "name": "Riyadh",
+    "aliases": [],
+    "lat": 24.68773,
+    "lon": 46.72185,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Saudi Arabia",
+    "iso2": "SA",
+    "subdivision": "Riyadh Region"
+  },
+  "subjectAnswer": {
+    "name": "Saudi Arabia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Saudi Arabia",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town is the most big town on the great Arab land tongue that juts in the sea. It lies on the high flat Najd plain, in the east part of that tongue.",
+      "narrowing": "Puts the player on the Najd plateau, in the Arabian Peninsula.",
+      "source": {
+        "article": "Riyadh",
+        "url": "https://en.wikipedia.org/wiki/Riyadh",
+        "quote": "It is the largest city on the Arabian Peninsula and is situated in the eastern part of the Najd plateau."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This desert city has long, extremely hot summers and short, cold winters. Rain is rare, and dust storms can turn the sky thick.",
+      "narrowing": "Keeps a hot-desert capital with scorching summers and dusty winds.",
+      "source": {
+        "article": "Riyadh",
+        "url": "https://en.wikipedia.org/wiki/Riyadh",
+        "quote": "Riyadh has a continental desert climate or hot desert climate (Köppen Climate Classification BWh), with long, extremely hot summers and short, cold winters due to cold continental air flowing in from Siberia during winter."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1823, a ruler named Turki chose this oasis town as his new capital. His family, the House of Saud, rules the country to this day.",
+      "narrowing": "Shrinks the list to capitals chosen by Turki ibn Abdallah in 1823.",
+      "source": {
+        "article": "Riyadh — History",
+        "url": "https://en.wikipedia.org/wiki/Riyadh#History",
+        "quote": "In 1823, Turki ibn Abdallah chose Riyadh as the new capital."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "One skyscraper here splits into two near its top. A sky-bridge joins the two sides, high above the city streets.",
+      "narrowing": "Nearly decisive: one capital's tower is split at the top and joined by a sky-bridge.",
+      "source": {
+        "article": "Riyadh — Kingdom Centre",
+        "url": "https://en.wikipedia.org/wiki/Riyadh",
+        "quote": "A special aspect of the tower is that it is divided into two parts in the last one-third of its height and is linked by a sky-bridge walkway, which provides extensive views of Riyadh."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The men and women who run Saudi Arabia do their work in this town. It is the chief base of rule for the whole wide land.",
+      "narrowing": "Confirms it: Saudi Arabia's political and administrative center.",
+      "source": {
+        "article": "Riyadh",
+        "url": "https://en.wikipedia.org/wiki/Riyadh",
+        "quote": "Riyadh is the political and administrative center of Saudi Arabia."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This city's name means 'gardens', after the green oasis towns that once stood here. A ruler chose it as his capital in 1823, and today giant towers rise from the desert plateau — one is even joined at the top by a sky-bridge. Riyadh is the capital of Saudi Arabia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Riyadh"
+  },
+  "pointPolicy": "geonames-point"
+}

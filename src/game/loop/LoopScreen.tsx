@@ -6,6 +6,8 @@ import { formatLength, loopGradeBand, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
+import { FlagImg } from "@/components/flag-img";
+import { flagEntry } from "@/lib/flag-registry";
 import { GradeChip } from "@/components/grade-chip";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
 import { BRAND } from "@/game/brand";
@@ -941,6 +943,7 @@ export function LoopScreen({
           }
           packBriefing={packBriefing}
           packBlurb={packEntry?.blurb ?? null}
+          packFlagKey={packEntry?.flagKey ?? null}
           reduced={reduced}
           notice={pickNotice}
           revealAnnouncement={revealAnnouncement}
@@ -1000,6 +1003,7 @@ function LoopGame({
   cycleCompleted,
   packBriefing,
   packBlurb,
+  packFlagKey,
   reduced,
   notice,
   revealAnnouncement,
@@ -1021,6 +1025,13 @@ function LoopGame({
   packBriefing: string | null;
   /** Pack pairing blurb for the reveal; null for core cases. */
   packBlurb: string | null;
+  /**
+   * Capitals & Flags: the subject land's flag identity, or null when
+   * the land is flagless (no licence-verified flag). The flag renders
+   * only beside the land's name: in this briefing, at the Giveaway
+   * rung, and on the reveal's identity card.
+   */
+  packFlagKey: string | null;
   reduced: boolean;
   notice: string | null;
   revealAnnouncement: string | null;
@@ -1303,7 +1314,13 @@ function LoopGame({
       ) : null}
 
       {packBriefing && !finished ? (
-        <p className="text-base font-medium text-fg">{packBriefing}</p>
+        <p className="flex items-center gap-2 text-base font-medium text-fg">
+          {/* The flag sits beside the given name the briefing itself
+              states — the design's one flag rule. Flagless lands and
+              core cases render the plain line. */}
+          <FlagImg flagKey={packFlagKey ?? undefined} className="h-6" />
+          <span>{packBriefing}</span>
+        </p>
       ) : null}
 
       <section aria-label="Clues" className="flex flex-col gap-3">
@@ -1318,6 +1335,12 @@ function LoopGame({
               revealed={finished || i < puzzle.cluesRevealed}
               reduced={reduced}
             />
+            {i === CLUE_TIERS.length - 1 && packFlagKey && (finished || i < puzzle.cluesRevealed) ? (
+              <p className="flex items-center gap-2 pl-1 text-xs text-muted" data-testid="loop-giveaway-flag">
+                <FlagImg flagKey={packFlagKey} className="h-6" />
+                <span>The flag of {flagEntry(packFlagKey)?.land ?? "this land"}</span>
+              </p>
+            ) : null}
             {i === HOOK_TIER_INDEX && hookVisible ? (
               <Suspense fallback={null}>
                 <StorytellerNarration
@@ -1406,6 +1429,7 @@ function LoopGame({
           caseNo={caseNo}
           cycleCompleted={cycleCompleted}
           packBlurb={packBlurb}
+          packFlagKey={packFlagKey}
           reduced={reduced}
           revealAnnouncement={revealAnnouncement}
           onNextMystery={onNextMystery}
@@ -1597,6 +1621,7 @@ function LoopReveal({
   caseNo,
   cycleCompleted,
   packBlurb,
+  packFlagKey,
   reduced,
   revealAnnouncement,
   onNextMystery,
@@ -1616,6 +1641,8 @@ function LoopReveal({
    * plainly (design §4 rule 7). Null for core cases.
    */
   packBlurb: string | null;
+  /** Capitals & Flags: subject land's flag identity; null = flagless. */
+  packFlagKey: string | null;
   reduced: boolean;
   revealAnnouncement: string | null;
   onNextMystery: () => void;
@@ -1740,6 +1767,20 @@ function LoopReveal({
             </>
           )}
           {packBlurb ? <p className="mt-3 text-sm text-fg">{packBlurb}</p> : null}
+          {packFlagKey && flagEntry(packFlagKey) ? (
+            <div
+              className="mt-3 flex items-center gap-3 rounded-xl border border-line bg-bg p-3"
+              data-testid="loop-reveal-flag"
+            >
+              <FlagImg flagKey={packFlagKey} className="h-10" />
+              <p className="text-sm text-fg">
+                <span className="font-medium">
+                  The flag of {flagEntry(packFlagKey)!.land}.
+                </span>{" "}
+                {flagEntry(packFlagKey)!.story}
+              </p>
+            </div>
+          ) : null}
         </div>
         {/* ---- Zone 2: the single scrolling body — case file + share +
             source. Named region + tabindex="0" per spec §8.1. ---- */}

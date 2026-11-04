@@ -1,3 +1,155 @@
+# Branch status — feat/capitals-flags-phase1 (Capitals & Flags, Phase 1)
+
+- **Branch:** `feat/capitals-flags-phase1`
+- **Base:** `main` @ `7a35cbf`
+- **Authority:** issue #344 + owner decisions comment (2026-11-04, Veeresh: "All as recommended by the council chair")
+- **Design of record:** `~/workspace/meridian-capitals-flags/DESIGN.md` (arena C2 pack-grown, 16/18) + SYNTHESIS.md + SOURCES.md
+
+## Task capsule
+
+- TASK: grow the shipped Capitals pack in place — Wave 1: licence-verified flag layer on the existing 72 cases (relabel "Capitals & Flags", doorway strip on Home, flags only where the land's name is already on screen in text); Wave 2: +38 cases append-only at loop indexes 459–496 (22 state capitals → 50, 16 country capitals → 60), deck top-up migration, celebration target 72 → 110.
+- Tier: 2 (new feature, data + schema). The signed design package (#344 swarm → arena → owner ratification) is the Consensus Manifest for this task.
+- Ratified lines NOT to cross: no standalone edition; no flag as a hunt target; no manufactured flags or facts (per-file licence gate, unsourceable = flagless); challenges + shared session score stay OUT of v1; Cold Trail generation follows DESIGN.md §7 default (append-only; no silent reset).
+- Adjacency: PR #341 touches LoopScreen/pack-shelf on its own branch — this branch builds on current main and does not wait for it; a merge-up will reconcile.
+- Verification: packs:validate (Hyderabad gate), check-flags gate (Flagstaff), full unit suites, targeted + neighbour E2E (flock, workers=1), tsc, lint-cards, build:pages, bundle check on flag assets.
+
+## Wave record
+
+- [x] Wave 1 — licence research pass (72 lands): **72/72 licence-verified** on Commons (all Public domain per-file), identity cross-checked vs Wikidata P41 (historical-value traps caught for FR/GR/US). **55 ship** (68,366 bytes total); **17 are flagless on the design's ≤10 KB/file hard cap** — detailed seal/arms path data (100–644 KB) with no faithful simplified rendition published (Egypt + Portugal rescued via design-named flag-icons renditions, MIT). Flagless lands are recorded with reasons in the registry + `docs/flags-curation.md`; they ship the day an SVG optimisation step is approved (owner decision queued in the PR body).
+- [x] Wave 1 — schema/composer flagKey derivation (build-time, unmapped subdivision throws), sidecar flagKey for verified lands only, registry + resolver (`src/lib/flag-registry.ts`, lazy glob, 0 bytes precached — verified in dist), surfaces: GeoDetective briefing + Giveaway rung + reveal identity card (flag + sourced story), Cold Trail sighting stamps (163/180; composition byte-stable vs HEAD after stripping stamps) + reveal country line, doorway strip under the Expeditions Map card (with the design's three swatches), relabel "Capitals & Flags" (shelf chips; deck id unchanged).
+- [x] Wave 1 — deck top-up in `ensurePackDeck` (built-from size = undealt + completed + open mystery; new cases tier-banded into the remainder) + tests; existing "never rebuilds" pin intact.
+- [x] Wave 2 — +38 authored cases (22 state capitals → 50, 16 country capitals → 60), append-only at indexes 459–496; `packs:validate` 110/110 (Hyderabad 100%); published 387–458 clue files + sidecar entries byte-identical to Wave 1 (append-only composer guard enforced; a removal test pins it). **Curation correction:** five picked capitals were dropped for duplicating core-deck targets by GeoNames placeId — Islamabad, Amman, Montevideo and Riga from the authored batch, plus Kuala Lumpur, picked in the first swap round and dropped in a second round for the same reason — and the four replacements that shipped are Dhaka, Algiers, Quito and Tunis, Tunis taking Kuala Lumpur's slot, so all 16 country cases are accounted for (+22 states unchanged); all 38 new targets verified distinct across core + pack (497 distinct targets, build-loop gate). The 16 original country cases needed a validator cure round (59 clues rewritten as plain-words paraphrases inside their verbatim quotes; zero quotes changed, zero facts invented; 5 over-quoted facts dropped).
+- [x] Wave 2 — flags for the 38 new lands through the same Flagstaff gate: **69 shipped pack-wide (80,552 bytes)**, 41 flagless recorded (40 size-cap — seal/arms path data, incl. Ecuador at 279,145 B; Mississippi licence-only: "Copyrighted free use" ∉ allowlist; Spain/Mexico + 15 Wave-1 states unchanged). Celebration copy 72 → 110. Cold Trail deck 60 → 85 cases (first-60 composition byte-stable vs Wave 1 after stripping stamps; 61 of 110 pack capitals taught as witness anchors).
+- [x] Gates + screenshots + PR to READY (panel runs after; no merge) — scripts 1003/1003, src 2109/2109, worker 109/109, tsc clean, lint-cards PASSED, build:pages green; bundle: 69/69 flags verified in dist as lazy chunks, 0 in the SW precache; E2E (flock, workers=1): capitals-flags 3/3 + pack-shelf mobile/desktop 11/11 combined incl. the two deck-count expectations updated 60 → 85. Eye gate passed on the 20 Wave-2 shipped flags (contact sheets, checker ≠ builders). Shots: `~/workspace/meridian-capitals-flags/build-shots/w2-1-abuja-briefing-flag.png`, `w2-2-tunis-briefing-flag.png` (+ the 6 Wave-1 shots).
+
+## Flagstaff gate
+
+`npm run check:flags` (wired into prebuild) pins registry ⇔ files
+(SHA-256, bytes, licence class, SVG sanity, aspect), registry ⇔ pack
+subjects both ways, the composed sidecar, and the Cold Trail stamps.
+Contact-sheet eye gate (checker ≠ builder) passed on the 55 shipped
+flags, 2026-11-04, and on the 20 Wave-2 additions (15 + bd/dz/my/tn
+minus the swapped-out lands), 2026-11-04. Final registry: 69 shipped
+(80,552 bytes), 41 flagless with recorded reasons, 110 lands.
+
+
+## Merge-up — 2026-11-04 (main `06dddb1` merged in)
+
+- Sole conflict: this file. Resolved both-records: this branch's record above, main's #341 record appended below it; the accumulated records from main follow verbatim after it.
+- Code files auto-merged with no conflicts; the merged tree carries both #341's case-source sentence behaviour and this branch's flag layer (delta audit in the PR body merge-up note).
+
+## Composition cure — 2026-11-04 (owner word: "cure it")
+
+The merge-up's delta audit caught a semantic composition conflict —
+auto-merge was textually clean, but #341's fallback spec went red on
+the merged tree for two linked reasons. The merge-up stopped unpushed
+and the owner approved this cure:
+
+- **Ratified relabel vs #341's pins.** #341's case-source sentences
+  derive the deck name dynamically (`deckLabelForId`), so the
+  ratified "Capitals & Flags" relabel correctly flows into them;
+  #341's pinned expectations still said "Capitals". Cured by updating
+  the pins only (unit literal in `pack-shelf-data.test.ts`, the two
+  sentence constants in `pack-deal-fallback.desktop.spec.ts`, and the
+  §0 quotes in `docs/story-packs.md`). Production strings stay
+  dynamic; nothing was hardcoded.
+- **Two UI consumers, one manifest URL.** The Home doorway (#346)
+  and the pack shelf (#341's surface) each fetched the pack manifest
+  with no sharing, so under a first-request-succeeds/rest-fail
+  network the doorway consumed the good response and the shelf's
+  chip never rendered in the fallback state. Cured in
+  `fetchPackManifest` (`pack-shelf-data.ts`): UI callers on the
+  default path share one session-level load per pack (in-flight +
+  settled success cached); a load that settles to null is evicted so
+  the next mount retries. A caller passing its own fetcher always
+  gets a fresh uncached load, and the deal path is untouched — it
+  resolves the manifest with its own fetch in LoopScreen
+  (`resolveActivePack`), fresh at each deal, so a deal-time failure
+  still falls back to core with #341's notice.
+- **Proof:** the fallback spec passes 3/3 under its ORIGINAL
+  choreography (first manifest request fulfilled, every later one
+  aborted) — only its two string constants changed. Four new unit
+  tests pin the dedupe: shared in-flight load, settled-success reuse,
+  failure eviction + retry, injected-fetcher bypass both ways.
+
+## Panel round-1 cure — 2026-11-04 (verdict on `d7ae3b7`: BLOCKED)
+
+The 12-role panel + DevEx voted on the composition-cured tip:
+11/12 seats APPROVE / APPROVE-WITH-NITS, Senior Developer BLOCK
+(code), DevEx FAIL (docs only), benchmark PASS. Both blocks cured
+here; the cured tip returns for a panel re-vote before any merge
+word.
+
+- **Block 1 (code) — top-up double-counted a finished mystery.**
+  `completePuzzle` counts a finished case in `cycleCompleted` and
+  keeps it in `store.current`; `ensurePackDeck`'s
+  `openFromThisDeck` counted that same case again as open, so the
+  top-up slice skipped exactly one appended case (index 459, the
+  first Wave-2 case) for a player who exited on a pack reveal
+  screen when the pack grew. Cured: `openFromThisDeck` counts
+  `current` only when its status is "playing" (`store.ts`); no
+  other accounting changed. Regression test added in
+  `store-topup.test.ts` (finished won AND lost currents preserve
+  every appended case incl. 459); the panel's repro pair now
+  agrees — finished-current and playing-current top-ups both yield
+  `[389, 388, 460, 461, 459]` (finished-current yielded
+  `[389, 388, 460, 461]` before the cure, reproduced first-hand).
+- **Block 2 (docs) — story-packs stated pre-Wave-2 truth.**
+  `docs/story-packs.md`: intro now 110 cases (60 country + 50
+  state), pack named Capitals & Flags; flowchart + §1 pack range
+  387–496 (§8's "387–458 stay frozen" untouched — that is the
+  original range the growth appends after); §6 quotes the shipped
+  celebration string verbatim (`celebration-copy.ts:166`); §7
+  gains one sentence on the session-cached UI manifest (QA note 1
+  disposition). `scripts/packs/README.md`: generated clue range
+  now ends at 496.
+- **QA note 3 (MAJOR) — the swap sentence, corrected.** The old
+  "5 swapped out / 4 replacements in" phrasing could not be
+  reconciled (16−5+4=15≠16). Derived from the curation data (the
+  panel's slate count: 39 candidates → 38 shipped; the
+  one-candidate gap is Kuala Lumpur, which sits on both sides of
+  the old sentence): five picked capitals were dropped for
+  duplicating core-deck targets by GeoNames placeId (Islamabad,
+  Amman, Montevideo and Riga from the authored batch, plus Kuala
+  Lumpur, picked in the first swap round and dropped in a second
+  round for the same reason — all five placeIds verified present
+  in the core clue files, none in the shipped pack), and the four
+  replacements that shipped are Dhaka, Algiers, Quito and Tunis,
+  Tunis taking Kuala Lumpur's slot, so all 16 country cases are
+  accounted for. The corrected
+  sentence now reads the same in `docs/flags-curation.md`, this
+  record, and a correction note appended to the PR body. Also
+  fixed in this record: the flagless split is 40 size-cap + 1
+  licence = 41 (registry count), not "39 size-cap".
+
+## Panel re-vote — 2026-11-04 (on cured tip `b3fc61c`): READY-WITH-NITS, 0 BLOCKs
+
+The 12-role panel + DevEx re-voted the cured tip: 10
+APPROVE-WITH-NITS / 2 APPROVE, 0 BLOCKs; DevEx PASS-WITH-NITS
+(the round-1 docs BLOCK is cured); benchmark PASS vs main
+`3bc57e8` (client total +0.32%, JS +0.34%, entry chunk
+unchanged, 0 flags precached — gate ≤5%). Both round-1 BLOCKs
+verified cured first-hand: Senior Developer APPROVE — its
+reproduction re-run on both tips (finished won/lost currents
+dropped case 459 on `d7ae3b7`; on `b3fc61c` they yield
+`[389, 388, 460, 461, 459]` with `cycleCompleted` intact, and
+the new regression test fails pre-cure, passes cured); DevEx
+re-checked every docs item against sources (§6 quote byte-equal
+to `src/components/celebration-copy.ts:166`; the 40 size + 1
+licence flagless split proven against the registry). QA notes
+(a) curation-sentence copies and (b) probe G hand-crafted state
+both ACCEPTED unanimously (12/12 + DevEx). Verdict comment:
+https://github.com/veeresh-bikkaneti/Meridian/pull/346#issuecomment-6637312564
+This entry is applied in the merge-up commit over main
+`3bc57e8`: it was deliberately not committed on the voted tip,
+since committing would have moved it. Remaining nits are
+recorded follow-ups (FlagImg transient flash on reused Cold
+Trail sighting slots, the "100–644 KB" range in the curation
+docs, the doorway tagline — owner's call); none block. Merge
+follows on the owner's per-PR word.
+
+---
+
 # BRANCH_STATUS — fix/336-deck-identity
 
 - **Branch:** `fix/336-deck-identity`

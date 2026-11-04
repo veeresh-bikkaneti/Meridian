@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "lansing-michigan",
+  "target": {
+    "placeId": "gn-4998830",
+    "name": "Lansing",
+    "aliases": [],
+    "lat": 42.73253,
+    "lon": -84.55553,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Michigan",
+    "iso2": "US",
+    "subdivision": "Michigan"
+  },
+  "subjectAnswer": {
+    "name": "Michigan",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Michigan",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town sits in the south part of a state split by great lakes. It stands where a big river and a small river meet.",
+      "narrowing": "Points to a city where two rivers meet in a peninsula's center.",
+      "source": {
+        "article": "Lansing, Michigan",
+        "url": "https://en.wikipedia.org/wiki/Lansing%2C_Michigan",
+        "quote": "Lansing is located in the south-central part of the Lower Peninsula of Michigan, where the Grand River meets the Red Cedar River."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are cold, with moderate to heavy snow. Summers turn very warm and humid, and snow can fall from November to April.",
+      "narrowing": "Keeps Great Lakes capitals with snowy winters and humid summers.",
+      "source": {
+        "article": "Lansing, Michigan",
+        "url": "https://en.wikipedia.org/wiki/Lansing%2C_Michigan",
+        "quote": "Winters are cold with moderate to heavy snowfall, while summers are very warm and humid."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1847, the state moved its capital to this small new town. The old port town sat too close to a foe's land, so they chose a safe spot inland.",
+      "narrowing": "Cuts the list to the inland town made capital in 1847 over Detroit's border risk.",
+      "source": {
+        "article": "Lansing, Michigan",
+        "url": "https://en.wikipedia.org/wiki/Lansing%2C_Michigan",
+        "quote": "Founded in 1835 and designated as Michigan's state capital in 1847, Lansing was selected for its more central location after concerns about Detroit's vulnerability to British attack in the War of 1812."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Cars put this town on the map of the world. Its shops built cars by the thousands, year after year.",
+      "narrowing": "Nearly decisive: one inland capital became a famous car-making center.",
+      "source": {
+        "article": "Lansing, Michigan",
+        "url": "https://en.wikipedia.org/wiki/Lansing%2C_Michigan",
+        "quote": "Lansing's history is closely tied to the rise of industry in Michigan; it became a prominent center in the automobile industry in the late 19th and early 20th centuries."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Michigan works in this city. State lawmakers meet here, in the middle of the state.",
+      "narrowing": "Confirms it: the governor and lawmakers of Michigan work in this city.",
+      "source": {
+        "article": "Lansing, Michigan",
+        "url": "https://en.wikipedia.org/wiki/Lansing%2C_Michigan",
+        "quote": "is the capital city of the U.S. state of Michigan"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This river town was such a tiny settlement in 1847 that lawmakers laughed when it was picked as the capital, moved inland for safety. Then car factories, including Oldsmobile, turned it into an industry giant. Lansing is the capital of Michigan."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Lansing%2C_Michigan"
+  },
+  "pointPolicy": "geonames-point"
+}

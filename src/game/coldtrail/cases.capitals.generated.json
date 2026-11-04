@@ -9,7 +9,8 @@
     "name": "Yacuiba",
     "lon": -63.67753,
     "lat": -22.01643,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Bolivia"
    },
    "sightings": [
     {
@@ -26,7 +27,8 @@
       "continent": "South America",
       "country": "Peru",
       "subdivision": null
-     }
+     },
+     "flagKey": "pe"
     },
     {
      "id": "s2",
@@ -42,7 +44,8 @@
       "continent": "South America",
       "country": "Argentina",
       "subdivision": null
-     }
+     },
+     "flagKey": "ar"
     },
     {
      "id": "s3",
@@ -58,7 +61,8 @@
       "continent": "South America",
       "country": "Chile",
       "subdivision": null
-     }
+     },
+     "flagKey": "cl"
     }
    ],
    "packId": "capitals"
@@ -71,7 +75,8 @@
     "name": "Jardines de la Silla",
     "lon": -100.18778,
     "lat": 25.62944,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Mexico"
    },
    "sightings": [
     {
@@ -88,7 +93,8 @@
       "continent": "North America",
       "country": "Cuba",
       "subdivision": null
-     }
+     },
+     "flagKey": "cu"
     },
     {
      "id": "s2",
@@ -120,7 +126,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Minnesota"
-     }
+     },
+     "flagKey": "us-mn"
     }
    ],
    "packId": "capitals"
@@ -133,7 +140,9 @@
     "name": "Muntilan",
     "lon": 110.29278,
     "lat": -7.58111,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Indonesia",
+    "flagKey": "id"
    },
    "sightings": [
     {
@@ -150,7 +159,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s2",
@@ -166,7 +176,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     },
     {
      "id": "s3",
@@ -182,7 +193,8 @@
       "continent": "Asia",
       "country": "Philippines",
       "subdivision": null
-     }
+     },
+     "flagKey": "ph"
     }
    ],
    "packId": "capitals"
@@ -195,7 +207,9 @@
     "name": "Emden",
     "lon": 7.20846,
     "lat": 53.36592,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Germany",
+    "flagKey": "de"
    },
    "sightings": [
     {
@@ -228,7 +242,8 @@
       "continent": "Europe",
       "country": "Greece",
       "subdivision": null
-     }
+     },
+     "flagKey": "gr"
     },
     {
      "id": "s3",
@@ -244,7 +259,8 @@
       "continent": "Europe",
       "country": "Poland",
       "subdivision": null
-     }
+     },
+     "flagKey": "pl"
     }
    ],
    "packId": "capitals"
@@ -257,7 +273,9 @@
     "name": "Sindhnūr",
     "lon": 76.75581,
     "lat": 15.76983,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -274,7 +292,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s2",
@@ -290,7 +309,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     },
     {
      "id": "s3",
@@ -306,7 +326,8 @@
       "continent": "Asia",
       "country": "Singapore",
       "subdivision": null
-     }
+     },
+     "flagKey": "sg"
     }
    ],
    "packId": "capitals"
@@ -319,7 +340,9 @@
     "name": "Chhibrāmau",
     "lon": 79.50078,
     "lat": 27.14872,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -336,7 +359,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     },
     {
      "id": "s2",
@@ -352,7 +376,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s3",
@@ -368,7 +393,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     }
    ],
    "packId": "capitals"
@@ -381,7 +407,9 @@
     "name": "Gohāna",
     "lon": 76.70247,
     "lat": 29.13777,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -398,7 +426,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     },
     {
      "id": "s2",
@@ -414,7 +443,8 @@
       "continent": "Asia",
       "country": "Nepal",
       "subdivision": null
-     }
+     },
+     "flagKey": "np"
     },
     {
      "id": "s3",
@@ -430,7 +460,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     }
    ],
    "packId": "capitals"
@@ -443,7 +474,9 @@
     "name": "Xihe",
     "lon": 113.46585,
     "lat": 31.68635,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "China",
+    "flagKey": "cn"
    },
    "sightings": [
     {
@@ -460,7 +493,8 @@
       "continent": "Asia",
       "country": "Japan",
       "subdivision": null
-     }
+     },
+     "flagKey": "jp"
     },
     {
      "id": "s2",
@@ -476,7 +510,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     },
     {
      "id": "s3",
@@ -492,7 +527,8 @@
       "continent": "Asia",
       "country": "South Korea",
       "subdivision": null
-     }
+     },
+     "flagKey": "kr"
     }
    ],
    "packId": "capitals"
@@ -505,7 +541,9 @@
     "name": "Marseille 09",
     "lon": 5.4057,
     "lat": 43.25433,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "France",
+    "flagKey": "fr"
    },
    "sightings": [
     {
@@ -538,7 +576,8 @@
       "continent": "Europe",
       "country": "Ukraine",
       "subdivision": null
-     }
+     },
+     "flagKey": "ua"
     },
     {
      "id": "s3",
@@ -554,7 +593,8 @@
       "continent": "Europe",
       "country": "Finland",
       "subdivision": null
-     }
+     },
+     "flagKey": "fi"
     }
    ],
    "packId": "capitals"
@@ -567,7 +607,9 @@
     "name": "Khalándrion",
     "lon": 23.80068,
     "lat": 38.02369,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Greece",
+    "flagKey": "gr"
    },
    "sightings": [
     {
@@ -584,7 +626,8 @@
       "continent": "Europe",
       "country": "Netherlands",
       "subdivision": null
-     }
+     },
+     "flagKey": "nl"
     },
     {
      "id": "s2",
@@ -600,7 +643,8 @@
       "continent": "Africa",
       "country": "Egypt",
       "subdivision": null
-     }
+     },
+     "flagKey": "eg"
     },
     {
      "id": "s3",
@@ -616,7 +660,8 @@
       "continent": "Europe",
       "country": "Hungary",
       "subdivision": null
-     }
+     },
+     "flagKey": "hu"
     }
    ],
    "packId": "capitals"
@@ -629,7 +674,9 @@
     "name": "Bhola",
     "lon": 90.64403,
     "lat": 22.68759,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Bangladesh",
+    "flagKey": "bd"
    },
    "sightings": [
     {
@@ -646,7 +693,8 @@
       "continent": "Asia",
       "country": "South Korea",
       "subdivision": null
-     }
+     },
+     "flagKey": "kr"
     },
     {
      "id": "s2",
@@ -662,7 +710,8 @@
       "continent": "Asia",
       "country": "Singapore",
       "subdivision": null
-     }
+     },
+     "flagKey": "sg"
     },
     {
      "id": "s3",
@@ -678,7 +727,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     }
    ],
    "packId": "capitals"
@@ -691,7 +741,9 @@
     "name": "Sirs al Layyānah",
     "lon": 30.96975,
     "lat": 30.4428,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Egypt",
+    "flagKey": "eg"
    },
    "sightings": [
     {
@@ -708,7 +760,8 @@
       "continent": "Europe",
       "country": "Netherlands",
       "subdivision": null
-     }
+     },
+     "flagKey": "nl"
     },
     {
      "id": "s2",
@@ -724,7 +777,8 @@
       "continent": "Europe",
       "country": "Russia",
       "subdivision": "Moscow"
-     }
+     },
+     "flagKey": "ru"
     },
     {
      "id": "s3",
@@ -740,7 +794,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     }
    ],
    "packId": "capitals"
@@ -753,7 +808,8 @@
     "name": "Coslada",
     "lon": -3.56129,
     "lat": 40.42378,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Spain"
    },
    "sightings": [
     {
@@ -770,7 +826,8 @@
       "continent": "Europe",
       "country": "Italy",
       "subdivision": null
-     }
+     },
+     "flagKey": "it"
     },
     {
      "id": "s2",
@@ -786,7 +843,8 @@
       "continent": "Europe",
       "country": "Czechia",
       "subdivision": null
-     }
+     },
+     "flagKey": "cz"
     },
     {
      "id": "s3",
@@ -802,7 +860,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     }
    ],
    "packId": "capitals"
@@ -815,7 +874,9 @@
     "name": "Spijkenisse",
     "lon": 4.32917,
     "lat": 51.845,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Netherlands",
+    "flagKey": "nl"
    },
    "sightings": [
     {
@@ -832,7 +893,8 @@
       "continent": "Europe",
       "country": "Greece",
       "subdivision": null
-     }
+     },
+     "flagKey": "gr"
     },
     {
      "id": "s2",
@@ -848,7 +910,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     },
     {
      "id": "s3",
@@ -864,7 +927,8 @@
       "continent": "Europe",
       "country": "France",
       "subdivision": null
-     }
+     },
+     "flagKey": "fr"
     }
    ],
    "packId": "capitals"
@@ -877,7 +941,9 @@
     "name": "Gaithersburg",
     "lon": -77.20137,
     "lat": 39.14344,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -910,7 +976,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Indiana"
-     }
+     },
+     "flagKey": "us-in"
     },
     {
      "id": "s3",
@@ -926,7 +993,8 @@
       "continent": "North America",
       "country": "Cuba",
       "subdivision": null
-     }
+     },
+     "flagKey": "cu"
     }
    ],
    "packId": "capitals"
@@ -939,7 +1007,8 @@
     "name": "Manono",
     "lon": 27.39894,
     "lat": -7.29862,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Congo - Kinshasa"
    },
    "sightings": [
     {
@@ -956,7 +1025,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     },
     {
      "id": "s2",
@@ -972,7 +1042,8 @@
       "continent": "Africa",
       "country": "South Africa",
       "subdivision": null
-     }
+     },
+     "flagKey": "za"
     },
     {
      "id": "s3",
@@ -988,7 +1059,8 @@
       "continent": "Africa",
       "country": "Ghana",
       "subdivision": null
-     }
+     },
+     "flagKey": "gh"
     }
    ],
    "packId": "capitals"
@@ -1001,7 +1073,8 @@
     "name": "Kiffa",
     "lon": -11.40208,
     "lat": 16.62073,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Mauritania"
    },
    "sightings": [
     {
@@ -1018,7 +1091,8 @@
       "continent": "Europe",
       "country": "France",
       "subdivision": null
-     }
+     },
+     "flagKey": "fr"
     },
     {
      "id": "s2",
@@ -1034,7 +1108,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     },
     {
      "id": "s3",
@@ -1050,7 +1125,8 @@
       "continent": "Africa",
       "country": "Ghana",
       "subdivision": null
-     }
+     },
+     "flagKey": "gh"
     }
    ],
    "packId": "capitals"
@@ -1063,7 +1139,9 @@
     "name": "Ninghai",
     "lon": 121.42472,
     "lat": 29.28917,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "China",
+    "flagKey": "cn"
    },
    "sightings": [
     {
@@ -1080,7 +1158,8 @@
       "continent": "Asia",
       "country": "Nepal",
       "subdivision": null
-     }
+     },
+     "flagKey": "np"
     },
     {
      "id": "s2",
@@ -1096,7 +1175,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s3",
@@ -1112,7 +1192,8 @@
       "continent": "Asia",
       "country": "Philippines",
       "subdivision": null
-     }
+     },
+     "flagKey": "ph"
     }
    ],
    "packId": "capitals"
@@ -1125,7 +1206,9 @@
     "name": "Camden",
     "lon": -75.11962,
     "lat": 39.92595,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -1142,7 +1225,8 @@
       "continent": "North America",
       "country": "Cuba",
       "subdivision": null
-     }
+     },
+     "flagKey": "cu"
     },
     {
      "id": "s2",
@@ -1158,7 +1242,8 @@
       "continent": "North America",
       "country": "Canada",
       "subdivision": "Ontario"
-     }
+     },
+     "flagKey": "ca"
     },
     {
      "id": "s3",
@@ -1174,7 +1259,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Tennessee"
-     }
+     },
+     "flagKey": "us-tn"
     }
    ],
    "packId": "capitals"
@@ -1187,7 +1273,8 @@
     "name": "Guasdualito",
     "lon": -70.73235,
     "lat": 7.24241,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Venezuela"
    },
    "sightings": [
     {
@@ -1220,7 +1307,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Indiana"
-     }
+     },
+     "flagKey": "us-in"
     },
     {
      "id": "s3",
@@ -1249,7 +1337,9 @@
     "name": "West Lynchburg",
     "lon": -79.17808,
     "lat": 37.4032,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -1266,7 +1356,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Ohio"
-     }
+     },
+     "flagKey": "us-oh"
     },
     {
      "id": "s2",
@@ -1282,7 +1373,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Tennessee"
-     }
+     },
+     "flagKey": "us-tn"
     },
     {
      "id": "s3",
@@ -1298,7 +1390,8 @@
       "continent": "North America",
       "country": "Canada",
       "subdivision": "Ontario"
-     }
+     },
+     "flagKey": "ca"
     }
    ],
    "packId": "capitals"
@@ -1311,7 +1404,8 @@
     "name": "Gurlan",
     "lon": 60.39268,
     "lat": 41.84123,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Uzbekistan"
    },
    "sightings": [
     {
@@ -1328,7 +1422,8 @@
       "continent": "Europe",
       "country": "Ukraine",
       "subdivision": null
-     }
+     },
+     "flagKey": "ua"
     },
     {
      "id": "s2",
@@ -1344,7 +1439,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s3",
@@ -1360,7 +1456,8 @@
       "continent": "Africa",
       "country": "Egypt",
       "subdivision": null
-     }
+     },
+     "flagKey": "eg"
     }
    ],
    "packId": "capitals"
@@ -1373,7 +1470,9 @@
     "name": "Dorchester",
     "lon": -71.0745,
     "lat": 42.29732,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -1390,7 +1489,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Ohio"
-     }
+     },
+     "flagKey": "us-oh"
     },
     {
      "id": "s2",
@@ -1422,7 +1522,8 @@
       "continent": "North America",
       "country": "Canada",
       "subdivision": "Ontario"
-     }
+     },
+     "flagKey": "ca"
     }
    ],
    "packId": "capitals"
@@ -1435,7 +1536,8 @@
     "name": "El Ejido",
     "lon": -2.81456,
     "lat": 36.77629,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Spain"
    },
    "sightings": [
     {
@@ -1452,7 +1554,8 @@
       "continent": "Africa",
       "country": "Ghana",
       "subdivision": null
-     }
+     },
+     "flagKey": "gh"
     },
     {
      "id": "s2",
@@ -1468,7 +1571,8 @@
       "continent": "Europe",
       "country": "Denmark",
       "subdivision": null
-     }
+     },
+     "flagKey": "dk"
     },
     {
      "id": "s3",
@@ -1484,7 +1588,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     }
    ],
    "packId": "capitals"
@@ -1497,7 +1602,9 @@
     "name": "Alīpur Duār",
     "lon": 89.52286,
     "lat": 26.4835,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -1514,7 +1621,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s2",
@@ -1530,7 +1638,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s3",
@@ -1546,7 +1655,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     }
    ],
    "packId": "capitals"
@@ -1559,7 +1669,8 @@
     "name": "Al Līth",
     "lon": 40.27224,
     "lat": 20.14804,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Saudi Arabia"
    },
    "sightings": [
     {
@@ -1576,7 +1687,8 @@
       "continent": "Europe",
       "country": "Poland",
       "subdivision": null
-     }
+     },
+     "flagKey": "pl"
     },
     {
      "id": "s2",
@@ -1592,7 +1704,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     },
     {
      "id": "s3",
@@ -1608,7 +1721,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     }
    ],
    "packId": "capitals"
@@ -1621,7 +1735,9 @@
     "name": "Flagami",
     "lon": -80.31616,
     "lat": 25.76232,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -1638,7 +1754,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Indiana"
-     }
+     },
+     "flagKey": "us-in"
     },
     {
      "id": "s2",
@@ -1683,7 +1800,9 @@
     "name": "Pusad",
     "lon": 77.57838,
     "lat": 19.91274,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -1700,7 +1819,8 @@
       "continent": "Asia",
       "country": "Singapore",
       "subdivision": null
-     }
+     },
+     "flagKey": "sg"
     },
     {
      "id": "s2",
@@ -1716,7 +1836,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     },
     {
      "id": "s3",
@@ -1732,7 +1853,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     }
    ],
    "packId": "capitals"
@@ -1745,7 +1867,9 @@
     "name": "Maţāy",
     "lon": 30.77861,
     "lat": 28.41866,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Egypt",
+    "flagKey": "eg"
    },
    "sightings": [
     {
@@ -1778,7 +1902,8 @@
       "continent": "Europe",
       "country": "United Kingdom",
       "subdivision": null
-     }
+     },
+     "flagKey": "gb"
     },
     {
      "id": "s3",
@@ -1794,7 +1919,8 @@
       "continent": "Europe",
       "country": "Poland",
       "subdivision": null
-     }
+     },
+     "flagKey": "pl"
     }
    ],
    "packId": "capitals"
@@ -1807,7 +1933,9 @@
     "name": "Nahāvand",
     "lon": 48.37446,
     "lat": 34.19088,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Iran",
+    "flagKey": "ir"
    },
    "sightings": [
     {
@@ -1824,7 +1952,8 @@
       "continent": "Asia",
       "country": "Nepal",
       "subdivision": null
-     }
+     },
+     "flagKey": "np"
     },
     {
      "id": "s2",
@@ -1840,7 +1969,8 @@
       "continent": "Europe",
       "country": "Austria",
       "subdivision": null
-     }
+     },
+     "flagKey": "at"
     },
     {
      "id": "s3",
@@ -1856,7 +1986,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     }
    ],
    "packId": "capitals"
@@ -1869,7 +2000,9 @@
     "name": "Kawalu",
     "lon": 108.2082,
     "lat": -7.3817,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Indonesia",
+    "flagKey": "id"
    },
    "sightings": [
     {
@@ -1886,7 +2019,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s2",
@@ -1902,7 +2036,8 @@
       "continent": "Asia",
       "country": "Singapore",
       "subdivision": null
-     }
+     },
+     "flagKey": "sg"
     },
     {
      "id": "s3",
@@ -1918,7 +2053,8 @@
       "continent": "Asia",
       "country": "Philippines",
       "subdivision": null
-     }
+     },
+     "flagKey": "ph"
     }
    ],
    "packId": "capitals"
@@ -1931,7 +2067,8 @@
     "name": "Sangmélima",
     "lon": 11.98333,
     "lat": 2.93333,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Cameroon"
    },
    "sightings": [
     {
@@ -1948,7 +2085,8 @@
       "continent": "Africa",
       "country": "Egypt",
       "subdivision": null
-     }
+     },
+     "flagKey": "eg"
     },
     {
      "id": "s2",
@@ -1964,7 +2102,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     },
     {
      "id": "s3",
@@ -1980,7 +2119,8 @@
       "continent": "Africa",
       "country": "South Africa",
       "subdivision": null
-     }
+     },
+     "flagKey": "za"
     }
    ],
    "packId": "capitals"
@@ -1993,7 +2133,9 @@
     "name": "Pubal",
     "lon": 127.50778,
     "lat": 37.29167,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "South Korea",
+    "flagKey": "kr"
    },
    "sightings": [
     {
@@ -2010,7 +2152,8 @@
       "continent": "Asia",
       "country": "Philippines",
       "subdivision": null
-     }
+     },
+     "flagKey": "ph"
     },
     {
      "id": "s2",
@@ -2026,7 +2169,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     },
     {
      "id": "s3",
@@ -2042,7 +2186,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     }
    ],
    "packId": "capitals"
@@ -2055,7 +2200,8 @@
     "name": "Nevşehir",
     "lon": 34.71222,
     "lat": 38.625,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Türkiye"
    },
    "sightings": [
     {
@@ -2072,7 +2218,8 @@
       "continent": "Europe",
       "country": "Greece",
       "subdivision": null
-     }
+     },
+     "flagKey": "gr"
     },
     {
      "id": "s2",
@@ -2088,7 +2235,8 @@
       "continent": "Europe",
       "country": "Russia",
       "subdivision": "Moscow"
-     }
+     },
+     "flagKey": "ru"
     },
     {
      "id": "s3",
@@ -2104,7 +2252,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     }
    ],
    "packId": "capitals"
@@ -2117,7 +2266,8 @@
     "name": "Cárdenas",
     "lon": -93.37559,
     "lat": 18.00135,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Mexico"
    },
    "sightings": [
     {
@@ -2134,7 +2284,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Ohio"
-     }
+     },
+     "flagKey": "us-oh"
     },
     {
      "id": "s2",
@@ -2150,7 +2301,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Colorado"
-     }
+     },
+     "flagKey": "us-co"
     },
     {
      "id": "s3",
@@ -2166,7 +2318,8 @@
       "continent": "South America",
       "country": "Peru",
       "subdivision": null
-     }
+     },
+     "flagKey": "pe"
     }
    ],
    "packId": "capitals"
@@ -2179,7 +2332,9 @@
     "name": "Định Công",
     "lon": 105.82694,
     "lat": 20.98389,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Vietnam",
+    "flagKey": "vn"
    },
    "sightings": [
     {
@@ -2196,7 +2351,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     },
     {
      "id": "s2",
@@ -2212,7 +2368,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     },
     {
      "id": "s3",
@@ -2228,7 +2385,8 @@
       "continent": "Asia",
       "country": "Nepal",
       "subdivision": null
-     }
+     },
+     "flagKey": "np"
     }
    ],
    "packId": "capitals"
@@ -2241,7 +2399,9 @@
     "name": "Tiflet",
     "lon": -6.30649,
     "lat": 33.89469,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Morocco",
+    "flagKey": "ma"
    },
    "sightings": [
     {
@@ -2258,7 +2418,8 @@
       "continent": "Europe",
       "country": "Ireland",
       "subdivision": null
-     }
+     },
+     "flagKey": "ie"
     },
     {
      "id": "s2",
@@ -2274,7 +2435,8 @@
       "continent": "Europe",
       "country": "Netherlands",
       "subdivision": null
-     }
+     },
+     "flagKey": "nl"
     },
     {
      "id": "s3",
@@ -2290,7 +2452,8 @@
       "continent": "Africa",
       "country": "Ghana",
       "subdivision": null
-     }
+     },
+     "flagKey": "gh"
     }
    ],
    "packId": "capitals"
@@ -2303,7 +2466,9 @@
     "name": "Garbsen",
     "lon": 9.6033,
     "lat": 52.41961,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Germany",
+    "flagKey": "de"
    },
    "sightings": [
     {
@@ -2320,7 +2485,8 @@
       "continent": "Europe",
       "country": "Netherlands",
       "subdivision": null
-     }
+     },
+     "flagKey": "nl"
     },
     {
      "id": "s2",
@@ -2336,7 +2502,8 @@
       "continent": "Europe",
       "country": "Hungary",
       "subdivision": null
-     }
+     },
+     "flagKey": "hu"
     },
     {
      "id": "s3",
@@ -2352,7 +2519,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     }
    ],
    "packId": "capitals"
@@ -2365,7 +2533,9 @@
     "name": "Shelby",
     "lon": -83.03298,
     "lat": 42.67087,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -2427,7 +2597,8 @@
     "name": "Mérida",
     "lon": -6.34292,
     "lat": 38.91802,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Spain"
    },
    "sightings": [
     {
@@ -2444,7 +2615,8 @@
       "continent": "Europe",
       "country": "Ireland",
       "subdivision": null
-     }
+     },
+     "flagKey": "ie"
     },
     {
      "id": "s2",
@@ -2460,7 +2632,8 @@
       "continent": "Europe",
       "country": "Russia",
       "subdivision": "Moscow"
-     }
+     },
+     "flagKey": "ru"
     },
     {
      "id": "s3",
@@ -2476,7 +2649,8 @@
       "continent": "Europe",
       "country": "Germany",
       "subdivision": null
-     }
+     },
+     "flagKey": "de"
     }
    ],
    "packId": "capitals"
@@ -2489,7 +2663,9 @@
     "name": "Uman",
     "lon": 30.21944,
     "lat": 48.7501,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Ukraine",
+    "flagKey": "ua"
    },
    "sightings": [
     {
@@ -2506,7 +2682,8 @@
       "continent": "Europe",
       "country": "Germany",
       "subdivision": null
-     }
+     },
+     "flagKey": "de"
     },
     {
      "id": "s2",
@@ -2522,7 +2699,8 @@
       "continent": "Europe",
       "country": "Greece",
       "subdivision": null
-     }
+     },
+     "flagKey": "gr"
     },
     {
      "id": "s3",
@@ -2538,7 +2716,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     }
    ],
    "packId": "capitals"
@@ -2551,7 +2730,8 @@
     "name": "Nyunzu",
     "lon": 28.01649,
     "lat": -5.95609,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Congo - Kinshasa"
    },
    "sightings": [
     {
@@ -2568,7 +2748,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     },
     {
      "id": "s2",
@@ -2584,7 +2765,8 @@
       "continent": "Africa",
       "country": "Ghana",
       "subdivision": null
-     }
+     },
+     "flagKey": "gh"
     },
     {
      "id": "s3",
@@ -2600,7 +2782,8 @@
       "continent": "Africa",
       "country": "South Africa",
       "subdivision": null
-     }
+     },
+     "flagKey": "za"
     }
    ],
    "packId": "capitals"
@@ -2613,7 +2796,8 @@
     "name": "Kotikawatta",
     "lon": 79.9095,
     "lat": 6.9269,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Sri Lanka"
    },
    "sightings": [
     {
@@ -2630,7 +2814,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s2",
@@ -2646,7 +2831,8 @@
       "continent": "Asia",
       "country": "Indonesia",
       "subdivision": null
-     }
+     },
+     "flagKey": "id"
     },
     {
      "id": "s3",
@@ -2662,7 +2848,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     }
    ],
    "packId": "capitals"
@@ -2675,7 +2862,8 @@
     "name": "Tŭytepa",
     "lon": 69.36253,
     "lat": 41.0321,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Uzbekistan"
    },
    "sightings": [
     {
@@ -2692,7 +2880,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     },
     {
      "id": "s2",
@@ -2708,7 +2897,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s3",
@@ -2724,7 +2914,8 @@
       "continent": "Europe",
       "country": "Poland",
       "subdivision": null
-     }
+     },
+     "flagKey": "pl"
     }
    ],
    "packId": "capitals"
@@ -2737,7 +2928,8 @@
     "name": "Sayyān",
     "lon": 44.32442,
     "lat": 15.17177,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Yemen"
    },
    "sightings": [
     {
@@ -2754,7 +2946,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     },
     {
      "id": "s2",
@@ -2770,7 +2963,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     },
     {
      "id": "s3",
@@ -2786,7 +2980,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     }
    ],
    "packId": "capitals"
@@ -2799,7 +2994,9 @@
     "name": "Hemel Hempstead",
     "lon": -0.44975,
     "lat": 51.75368,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United Kingdom",
+    "flagKey": "gb"
    },
    "sightings": [
     {
@@ -2816,7 +3013,8 @@
       "continent": "Europe",
       "country": "Ireland",
       "subdivision": null
-     }
+     },
+     "flagKey": "ie"
     },
     {
      "id": "s2",
@@ -2832,7 +3030,8 @@
       "continent": "Europe",
       "country": "Netherlands",
       "subdivision": null
-     }
+     },
+     "flagKey": "nl"
     },
     {
      "id": "s3",
@@ -2848,7 +3047,8 @@
       "continent": "Europe",
       "country": "Sweden",
       "subdivision": null
-     }
+     },
+     "flagKey": "se"
     }
    ],
    "packId": "capitals"
@@ -2861,7 +3061,9 @@
     "name": "Chiguayante",
     "lon": -73.02841,
     "lat": -36.9256,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Chile",
+    "flagKey": "cl"
    },
    "sightings": [
     {
@@ -2878,7 +3080,8 @@
       "continent": "South America",
       "country": "Chile",
       "subdivision": null
-     }
+     },
+     "flagKey": "cl"
     },
     {
      "id": "s2",
@@ -2894,7 +3097,8 @@
       "continent": "South America",
       "country": "Argentina",
       "subdivision": null
-     }
+     },
+     "flagKey": "ar"
     },
     {
      "id": "s3",
@@ -2910,7 +3114,8 @@
       "continent": "South America",
       "country": "Peru",
       "subdivision": null
-     }
+     },
+     "flagKey": "pe"
     }
    ],
    "packId": "capitals"
@@ -2923,7 +3128,9 @@
     "name": "Sarāvān",
     "lon": 62.33096,
     "lat": 27.37089,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Iran",
+    "flagKey": "ir"
    },
    "sightings": [
     {
@@ -2940,7 +3147,8 @@
       "continent": "Africa",
       "country": "Egypt",
       "subdivision": null
-     }
+     },
+     "flagKey": "eg"
     },
     {
      "id": "s2",
@@ -2956,7 +3164,8 @@
       "continent": "Asia",
       "country": "Nepal",
       "subdivision": null
-     }
+     },
+     "flagKey": "np"
     },
     {
      "id": "s3",
@@ -2972,7 +3181,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     }
    ],
    "packId": "capitals"
@@ -2985,7 +3195,9 @@
     "name": "Arden-Arcade",
     "lon": -121.37854,
     "lat": 38.6025,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -3002,7 +3214,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Tennessee"
-     }
+     },
+     "flagKey": "us-tn"
     },
     {
      "id": "s2",
@@ -3018,7 +3231,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Hawaii"
-     }
+     },
+     "flagKey": "us-hi"
     },
     {
      "id": "s3",
@@ -3034,7 +3248,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Arizona"
-     }
+     },
+     "flagKey": "us-az"
     }
    ],
    "packId": "capitals"
@@ -3047,7 +3262,9 @@
     "name": "Mikkeli",
     "lon": 27.27227,
     "lat": 61.68857,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Finland",
+    "flagKey": "fi"
    },
    "sightings": [
     {
@@ -3064,7 +3281,8 @@
       "continent": "Europe",
       "country": "Poland",
       "subdivision": null
-     }
+     },
+     "flagKey": "pl"
     },
     {
      "id": "s2",
@@ -3080,7 +3298,8 @@
       "continent": "Europe",
       "country": "France",
       "subdivision": null
-     }
+     },
+     "flagKey": "fr"
     },
     {
      "id": "s3",
@@ -3096,7 +3315,8 @@
       "continent": "Europe",
       "country": "Russia",
       "subdivision": "Moscow"
-     }
+     },
+     "flagKey": "ru"
     }
    ],
    "packId": "capitals"
@@ -3109,7 +3329,9 @@
     "name": "Kenosha",
     "lon": -87.82119,
     "lat": 42.58474,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -3142,7 +3364,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Texas"
-     }
+     },
+     "flagKey": "us-tx"
     },
     {
      "id": "s3",
@@ -3171,7 +3394,9 @@
     "name": "Barletta",
     "lon": 16.28165,
     "lat": 41.31429,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Italy",
+    "flagKey": "it"
    },
    "sightings": [
     {
@@ -3188,7 +3413,8 @@
       "continent": "Europe",
       "country": "Sweden",
       "subdivision": null
-     }
+     },
+     "flagKey": "se"
     },
     {
      "id": "s2",
@@ -3204,7 +3430,8 @@
       "continent": "Europe",
       "country": "France",
       "subdivision": null
-     }
+     },
+     "flagKey": "fr"
     },
     {
      "id": "s3",
@@ -3220,7 +3447,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     }
    ],
    "packId": "capitals"
@@ -3233,7 +3461,9 @@
     "name": "Homestead",
     "lon": -80.47756,
     "lat": 25.46872,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -3266,7 +3496,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Ohio"
-     }
+     },
+     "flagKey": "us-oh"
     },
     {
      "id": "s3",
@@ -3282,7 +3513,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Arizona"
-     }
+     },
+     "flagKey": "us-az"
     }
    ],
    "packId": "capitals"
@@ -3295,7 +3527,9 @@
     "name": "Uki",
     "lon": 130.66177,
     "lat": 32.62217,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Japan",
+    "flagKey": "jp"
    },
    "sightings": [
     {
@@ -3312,7 +3546,8 @@
       "continent": "Asia",
       "country": "Japan",
       "subdivision": null
-     }
+     },
+     "flagKey": "jp"
     },
     {
      "id": "s2",
@@ -3328,7 +3563,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     },
     {
      "id": "s3",
@@ -3344,7 +3580,8 @@
       "continent": "Asia",
       "country": "South Korea",
       "subdivision": null
-     }
+     },
+     "flagKey": "kr"
     }
    ],
    "packId": "capitals"
@@ -3357,7 +3594,9 @@
     "name": "Badagara",
     "lon": 75.58142,
     "lat": 11.59776,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -3374,7 +3613,8 @@
       "continent": "Asia",
       "country": "Singapore",
       "subdivision": null
-     }
+     },
+     "flagKey": "sg"
     },
     {
      "id": "s2",
@@ -3390,7 +3630,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s3",
@@ -3406,7 +3647,8 @@
       "continent": "Asia",
       "country": "Indonesia",
       "subdivision": null
-     }
+     },
+     "flagKey": "id"
     }
    ],
    "packId": "capitals"
@@ -3419,7 +3661,8 @@
     "name": "Ponferrada",
     "lon": -6.59619,
     "lat": 42.54664,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Spain"
    },
    "sightings": [
     {
@@ -3436,7 +3679,8 @@
       "continent": "Europe",
       "country": "Greece",
       "subdivision": null
-     }
+     },
+     "flagKey": "gr"
     },
     {
      "id": "s2",
@@ -3452,7 +3696,8 @@
       "continent": "Europe",
       "country": "Germany",
       "subdivision": null
-     }
+     },
+     "flagKey": "de"
     },
     {
      "id": "s3",
@@ -3481,7 +3726,9 @@
     "name": "Moonniyur",
     "lon": 75.90311,
     "lat": 11.05972,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -3498,7 +3745,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s2",
@@ -3514,7 +3762,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     },
     {
      "id": "s3",
@@ -3530,7 +3779,8 @@
       "continent": "Asia",
       "country": "Indonesia",
       "subdivision": null
-     }
+     },
+     "flagKey": "id"
     }
    ],
    "packId": "capitals"
@@ -3543,7 +3793,9 @@
     "name": "Guaxupé",
     "lon": -46.71278,
     "lat": -21.30528,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Brazil",
+    "flagKey": "br"
    },
    "sightings": [
     {
@@ -3560,7 +3812,8 @@
       "continent": "South America",
       "country": "Chile",
       "subdivision": null
-     }
+     },
+     "flagKey": "cl"
     },
     {
      "id": "s2",
@@ -3576,7 +3829,8 @@
       "continent": "South America",
       "country": "Peru",
       "subdivision": null
-     }
+     },
+     "flagKey": "pe"
     },
     {
      "id": "s3",
@@ -3592,7 +3846,8 @@
       "continent": "South America",
       "country": "Brazil",
       "subdivision": "Federal District"
-     }
+     },
+     "flagKey": "br"
     }
    ],
    "packId": "capitals"
@@ -3605,7 +3860,9 @@
     "name": "Baki",
     "lon": 110.78389,
     "lat": -7.61278,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Indonesia",
+    "flagKey": "id"
    },
    "sightings": [
     {
@@ -3622,7 +3879,8 @@
       "continent": "Asia",
       "country": "Indonesia",
       "subdivision": null
-     }
+     },
+     "flagKey": "id"
     },
     {
      "id": "s2",
@@ -3638,7 +3896,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     },
     {
      "id": "s3",
@@ -3654,7 +3913,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     }
    ],
    "packId": "capitals"
@@ -3667,7 +3927,9 @@
     "name": "Dalianwan",
     "lon": 121.695,
     "lat": 39.02861,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "China",
+    "flagKey": "cn"
    },
    "sightings": [
     {
@@ -3684,7 +3946,8 @@
       "continent": "Asia",
       "country": "Philippines",
       "subdivision": null
-     }
+     },
+     "flagKey": "ph"
     },
     {
      "id": "s2",
@@ -3700,7 +3963,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s3",
@@ -3716,7 +3980,1666 @@
       "continent": "Asia",
       "country": "South Korea",
       "subdivision": null
+     },
+     "flagKey": "kr"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 61,
+   "hideout": {
+    "placeId": "gn-3118848",
+    "name": "Las Rozas de Madrid",
+    "lon": -3.87371,
+    "lat": 40.49292,
+    "difficulty": 2,
+    "countryName": "Spain"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 13:56",
+     "cityId": "gn-703448",
+     "cityName": "Kyiv",
+     "cityLon": 30.5238,
+     "cityLat": 50.45466,
+     "radiusKm": 2875,
+     "octant": "west",
+     "text": "Last seen buying supplies at a truck stop 2,875 km west of Kyiv.",
+     "region": {
+      "continent": "Europe",
+      "country": "Ukraine",
+      "subdivision": null
+     },
+     "flagKey": "ua"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 15:18",
+     "cityId": "gn-2538475",
+     "cityName": "Rabat",
+     "cityLon": -6.83255,
+     "cityLat": 34.01325,
+     "radiusKm": 775,
+     "octant": "north",
+     "text": "Last seen filling jerrycans 775 km north of Rabat.",
+     "region": {
+      "continent": "Africa",
+      "country": "Morocco",
+      "subdivision": null
+     },
+     "flagKey": "ma"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 12:59",
+     "cityId": "gn-2759794",
+     "cityName": "Amsterdam",
+     "cityLon": 4.88969,
+     "cityLat": 52.37403,
+     "radiusKm": 1500,
+     "octant": "south-west",
+     "text": "Last seen filling jerrycans 1,500 km southwest of Amsterdam.",
+     "region": {
+      "continent": "Europe",
+      "country": "Netherlands",
+      "subdivision": null
+     },
+     "flagKey": "nl"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 62,
+   "hideout": {
+    "placeId": "gn-4832353",
+    "name": "Danbury",
+    "lon": -73.45401,
+    "lat": 41.39482,
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 09:45",
+     "cityId": "gn-5308655",
+     "cityName": "Phoenix",
+     "cityLon": -112.07404,
+     "cityLat": 33.44838,
+     "radiusKm": 3500,
+     "octant": "north-east",
+     "text": "Last seen refueling a dusty pickup 3,500 km northeast of Phoenix.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Arizona"
+     },
+     "flagKey": "us-az"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 12:00",
+     "cityId": "gn-5045360",
+     "cityName": "Saint Paul",
+     "cityLon": -93.09327,
+     "cityLat": 44.94441,
+     "radiusKm": 1650,
+     "octant": "east",
+     "text": "Last seen buying supplies at a truck stop 1,650 km east of Saint Paul.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Minnesota"
+     },
+     "flagKey": "us-mn"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 12:34",
+     "cityId": "gn-6094817",
+     "cityName": "Ottawa",
+     "cityLon": -75.69812,
+     "cityLat": 45.41117,
+     "radiusKm": 500,
+     "octant": "south-east",
+     "text": "Last spotted at a roadside diner 500 km southeast of Ottawa.",
+     "region": {
+      "continent": "North America",
+      "country": "Canada",
+      "subdivision": "Ontario"
+     },
+     "flagKey": "ca"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 63,
+   "hideout": {
+    "placeId": "gn-3186952",
+    "name": "Zadar",
+    "lon": 15.22514,
+    "lat": 44.11578,
+    "difficulty": 2,
+    "countryName": "Croatia"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 08:15",
+     "cityId": "gn-2761369",
+     "cityName": "Vienna",
+     "cityLon": 16.37208,
+     "cityLat": 48.20849,
+     "radiusKm": 475,
+     "octant": "south",
+     "text": "Last seen filling jerrycans 475 km south of Vienna.",
+     "region": {
+      "continent": "Europe",
+      "country": "Austria",
+      "subdivision": null
+     },
+     "flagKey": "at"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 16:55",
+     "cityId": "gn-2759794",
+     "cityName": "Amsterdam",
+     "cityLon": 4.88969,
+     "cityLat": 52.37403,
+     "radiusKm": 1200,
+     "octant": "south-east",
+     "text": "Last seen withdrawing cash from an ATM 1,200 km southeast of Amsterdam.",
+     "region": {
+      "continent": "Europe",
+      "country": "Netherlands",
+      "subdivision": null
+     },
+     "flagKey": "nl"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 14:21",
+     "cityId": "gn-683506",
+     "cityName": "Bucharest",
+     "cityLon": 26.10626,
+     "cityLat": 44.43225,
+     "radiusKm": 875,
+     "octant": "west",
+     "text": "Last seen withdrawing cash from an ATM 875 km west of Bucharest.",
+     "region": {
+      "continent": "Europe",
+      "country": "Romania",
+      "subdivision": null
+     },
+     "flagKey": "ro"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 64,
+   "hideout": {
+    "placeId": "gn-1316703",
+    "name": "Kyaukse",
+    "lon": 96.13508,
+    "lat": 21.6056,
+    "difficulty": 2,
+    "countryName": "Myanmar (Burma)"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 18:25",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 1300,
+     "octant": "south-east",
+     "text": "Last seen eating at a drive-through 1,300 km southeast of Kathmandu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     },
+     "flagKey": "np"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 15:26",
+     "cityId": "gn-1835848",
+     "cityName": "Seoul",
+     "cityLon": 126.9784,
+     "cityLat": 37.566,
+     "radiusKm": 3450,
+     "octant": "west",
+     "text": "Last seen buying supplies at a truck stop 3,450 km west of Seoul.",
+     "region": {
+      "continent": "Asia",
+      "country": "South Korea",
+      "subdivision": null
+     },
+     "flagKey": "kr"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 10:48",
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 3325,
+     "octant": "north",
+     "text": "Last seen hitching a ride from a trucker 3,325 km north of Jakarta.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     },
+     "flagKey": "id"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 65,
+   "hideout": {
+    "placeId": "gn-4915734",
+    "name": "Waukegan",
+    "lon": -87.84479,
+    "lat": 42.36363,
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 13:58",
+     "cityId": "gn-4544349",
+     "cityName": "Oklahoma City",
+     "cityLon": -97.51643,
+     "cityLat": 35.46756,
+     "radiusKm": 1150,
+     "octant": "north-east",
+     "text": "Last seen boarding a night bus 1,150 km northeast of Oklahoma City.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Oklahoma"
      }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 14:20",
+     "cityId": "gn-5419384",
+     "cityName": "Denver",
+     "cityLon": -104.9847,
+     "cityLat": 39.73915,
+     "radiusKm": 1475,
+     "octant": "east",
+     "text": "Last seen refueling a dusty pickup 1,475 km east of Denver.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Colorado"
+     },
+     "flagKey": "us-co"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 15:14",
+     "cityId": "gn-6094817",
+     "cityName": "Ottawa",
+     "cityLon": -75.69812,
+     "cityLat": 45.41117,
+     "radiusKm": 1050,
+     "octant": "west",
+     "text": "Last seen filling jerrycans 1,050 km west of Ottawa.",
+     "region": {
+      "continent": "North America",
+      "country": "Canada",
+      "subdivision": "Ontario"
+     },
+     "flagKey": "ca"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 66,
+   "hideout": {
+    "placeId": "gn-1176233",
+    "name": "Jamrud",
+    "lon": 71.38007,
+    "lat": 34.00152,
+    "difficulty": 2,
+    "countryName": "Pakistan"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 08:34",
+     "cityId": "gn-360630",
+     "cityName": "Cairo",
+     "cityLon": 31.24967,
+     "cityLat": 30.06263,
+     "radiusKm": 3800,
+     "octant": "east",
+     "text": "Last seen buying a burner phone 3,800 km east of Cairo.",
+     "region": {
+      "continent": "Africa",
+      "country": "Egypt",
+      "subdivision": null
+     },
+     "flagKey": "eg"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 12:39",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 1525,
+     "octant": "north-west",
+     "text": "Last seen at a bus depot 1,525 km northwest of Kathmandu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     },
+     "flagKey": "np"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 14:49",
+     "cityId": "gn-524901",
+     "cityName": "Moscow",
+     "cityLon": 37.61781,
+     "cityLat": 55.75204,
+     "radiusKm": 3550,
+     "octant": "south-east",
+     "text": "Last seen buying supplies at a truck stop 3,550 km southeast of Moscow.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Moscow"
+     },
+     "flagKey": "ru"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 67,
+   "hideout": {
+    "placeId": "gn-4535961",
+    "name": "Enid",
+    "lon": -97.87839,
+    "lat": 36.39559,
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 07:38",
+     "cityId": "gn-5308655",
+     "cityName": "Phoenix",
+     "cityLon": -112.07404,
+     "cityLat": 33.44838,
+     "radiusKm": 1350,
+     "octant": "east",
+     "text": "Last seen buying a burner phone 1,350 km east of Phoenix.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Arizona"
+     },
+     "flagKey": "us-az"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 06:00",
+     "cityId": "gn-4930956",
+     "cityName": "Boston",
+     "cityLon": -71.05977,
+     "cityLat": 42.35843,
+     "radiusKm": 2400,
+     "octant": "west",
+     "text": "Last seen refueling a dusty pickup 2,400 km west of Boston.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Massachusetts"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 13:11",
+     "cityId": "gn-3530597",
+     "cityName": "Mexico City",
+     "cityLon": -99.12766,
+     "cityLat": 19.42847,
+     "radiusKm": 1900,
+     "octant": "north",
+     "text": "Last seen boarding a night bus 1,900 km north of Mexico City.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 68,
+   "hideout": {
+    "placeId": "gn-5363990",
+    "name": "La Mesa",
+    "lon": -117.02308,
+    "lat": 32.76783,
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 21:14",
+     "cityId": "gn-3530597",
+     "cityName": "Mexico City",
+     "cityLon": -99.12766,
+     "cityLat": 19.42847,
+     "radiusKm": 2325,
+     "octant": "north-west",
+     "text": "Last spotted at a roadside diner 2,325 km northwest of Mexico City.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 07:52",
+     "cityId": "gn-4180439",
+     "cityName": "Atlanta",
+     "cityLon": -84.38798,
+     "cityLat": 33.749,
+     "radiusKm": 3025,
+     "octant": "west",
+     "text": "Last seen refueling a dusty pickup 3,025 km west of Atlanta.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Georgia"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 14:37",
+     "cityId": "gn-5419384",
+     "cityName": "Denver",
+     "cityLon": -104.9847,
+     "cityLat": 39.73915,
+     "radiusKm": 1350,
+     "octant": "south-west",
+     "text": "Last seen buying supplies at a truck stop 1,350 km southwest of Denver.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Colorado"
+     },
+     "flagKey": "us-co"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 69,
+   "hideout": {
+    "placeId": "gn-2252132",
+    "name": "Dougnane",
+    "lon": -16.86999,
+    "lat": 14.95856,
+    "difficulty": 2,
+    "countryName": "Senegal"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 12:03",
+     "cityId": "gn-3117735",
+     "cityName": "Madrid",
+     "cityLon": -3.70256,
+     "cityLat": 40.4165,
+     "radiusKm": 3125,
+     "octant": "south-west",
+     "text": "Last seen withdrawing cash from an ATM 3,125 km southwest of Madrid.",
+     "region": {
+      "continent": "Europe",
+      "country": "Spain",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 18:54",
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 2750,
+     "octant": "south",
+     "text": "Last seen withdrawing cash from an ATM 2,750 km south of Lisbon.",
+     "region": {
+      "continent": "Europe",
+      "country": "Portugal",
+      "subdivision": null
+     },
+     "flagKey": "pt"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 11:36",
+     "cityId": "gn-2306104",
+     "cityName": "Accra",
+     "cityLon": -0.1969,
+     "cityLat": 5.55602,
+     "radiusKm": 2125,
+     "octant": "north-west",
+     "text": "Last seen eating at a drive-through 2,125 km northwest of Accra.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ghana",
+      "subdivision": null
+     },
+     "flagKey": "gh"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 70,
+   "hideout": {
+    "placeId": "gn-2820860",
+    "name": "Tübingen",
+    "lon": 9.05222,
+    "lat": 48.52266,
+    "difficulty": 2,
+    "countryName": "Germany",
+    "flagKey": "de"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 10:18",
+     "cityId": "gn-98182",
+     "cityName": "Baghdad",
+     "cityLon": 44.40088,
+     "cityLat": 33.34058,
+     "radiusKm": 3375,
+     "octant": "north-west",
+     "text": "Last seen refueling a dusty pickup 3,375 km northwest of Baghdad.",
+     "region": {
+      "continent": "Asia",
+      "country": "Iraq",
+      "subdivision": null
+     },
+     "flagKey": "iq"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 05:06",
+     "cityId": "gn-2759794",
+     "cityName": "Amsterdam",
+     "cityLon": 4.88969,
+     "cityLat": 52.37403,
+     "radiusKm": 525,
+     "octant": "south-east",
+     "text": "Last seen eating at a drive-through 525 km southeast of Amsterdam.",
+     "region": {
+      "continent": "Europe",
+      "country": "Netherlands",
+      "subdivision": null
+     },
+     "flagKey": "nl"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 07:49",
+     "cityId": "gn-2538475",
+     "cityName": "Rabat",
+     "cityLon": -6.83255,
+     "cityLat": 34.01325,
+     "radiusKm": 2100,
+     "octant": "north-east",
+     "text": "Last seen withdrawing cash from an ATM 2,100 km northeast of Rabat.",
+     "region": {
+      "continent": "Africa",
+      "country": "Morocco",
+      "subdivision": null
+     },
+     "flagKey": "ma"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 71,
+   "hideout": {
+    "placeId": "gn-1794947",
+    "name": "Shiwan",
+    "lon": 113.077,
+    "lat": 23.00107,
+    "difficulty": 2,
+    "countryName": "China",
+    "flagKey": "cn"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 12:44",
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 3325,
+     "octant": "north",
+     "text": "Last spotted at a roadside diner 3,325 km north of Jakarta.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     },
+     "flagKey": "id"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 11:47",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 800,
+     "octant": "east",
+     "text": "Last seen asking a gas attendant for directions 800 km east of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     },
+     "flagKey": "vn"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 13:53",
+     "cityId": "gn-1850147",
+     "cityName": "Tokyo",
+     "cityLon": 139.69171,
+     "cityLat": 35.6895,
+     "radiusKm": 2950,
+     "octant": "west",
+     "text": "Last seen refueling a dusty pickup 2,950 km west of Tokyo.",
+     "region": {
+      "continent": "Asia",
+      "country": "Japan",
+      "subdivision": null
+     },
+     "flagKey": "jp"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 72,
+   "hideout": {
+    "placeId": "gn-4067994",
+    "name": "Hoover",
+    "lon": -86.81138,
+    "lat": 33.40539,
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 22:15",
+     "cityId": "gn-4671654",
+     "cityName": "Austin",
+     "cityLon": -97.74306,
+     "cityLat": 30.26715,
+     "radiusKm": 1100,
+     "octant": "east",
+     "text": "Last spotted at a roadside diner 1,100 km east of Austin.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Texas"
+     },
+     "flagKey": "us-tx"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 10:35",
+     "cityId": "gn-5045360",
+     "cityName": "Saint Paul",
+     "cityLon": -93.09327,
+     "cityLat": 44.94441,
+     "radiusKm": 1400,
+     "octant": "south-east",
+     "text": "Last seen asking a gas attendant for directions 1,400 km southeast of Saint Paul.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Minnesota"
+     },
+     "flagKey": "us-mn"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 15:49",
+     "cityId": "gn-4487042",
+     "cityName": "Raleigh",
+     "cityLon": -78.63861,
+     "cityLat": 35.7721,
+     "radiusKm": 800,
+     "octant": "west",
+     "text": "Last seen sleeping in a parked car 800 km west of Raleigh.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "North Carolina"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 73,
+   "hideout": {
+    "placeId": "gn-4677008",
+    "name": "Bryan",
+    "lon": -96.36996,
+    "lat": 30.67436,
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 05:59",
+     "cityId": "gn-4180439",
+     "cityName": "Atlanta",
+     "cityLon": -84.38798,
+     "cityLat": 33.749,
+     "radiusKm": 1200,
+     "octant": "west",
+     "text": "Last seen eating at a drive-through 1,200 km west of Atlanta.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Georgia"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 07:01",
+     "cityId": "gn-4644585",
+     "cityName": "Nashville",
+     "cityLon": -86.78444,
+     "cityLat": 36.16589,
+     "radiusKm": 1100,
+     "octant": "south-west",
+     "text": "Last seen refueling a dusty pickup 1,100 km southwest of Nashville.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Tennessee"
+     },
+     "flagKey": "us-tn"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 08:00",
+     "cityId": "gn-5419384",
+     "cityName": "Denver",
+     "cityLon": -104.9847,
+     "cityLat": 39.73915,
+     "radiusKm": 1275,
+     "octant": "south-east",
+     "text": "Last seen sleeping in a parked car 1,275 km southeast of Denver.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Colorado"
+     },
+     "flagKey": "us-co"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 74,
+   "hideout": {
+    "placeId": "gn-1320944",
+    "name": "Kanbe",
+    "lon": 96.00168,
+    "lat": 16.70728,
+    "difficulty": 2,
+    "countryName": "Myanmar (Burma)"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 13:16",
+     "cityId": "gn-1185241",
+     "cityName": "Dhaka",
+     "cityLon": 90.40744,
+     "cityLat": 23.7104,
+     "radiusKm": 975,
+     "octant": "south-east",
+     "text": "Last seen buying a burner phone 975 km southeast of Dhaka.",
+     "region": {
+      "continent": "Asia",
+      "country": "Bangladesh",
+      "subdivision": null
+     },
+     "flagKey": "bd"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 06:06",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 1150,
+     "octant": "south-west",
+     "text": "Last seen asking a gas attendant for directions 1,150 km southwest of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     },
+     "flagKey": "vn"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 14:40",
+     "cityId": "gn-1609350",
+     "cityName": "Bangkok",
+     "cityLon": 100.50144,
+     "cityLat": 13.75398,
+     "radiusKm": 600,
+     "octant": "north-west",
+     "text": "Last seen filling jerrycans 600 km northwest of Bangkok.",
+     "region": {
+      "continent": "Asia",
+      "country": "Thailand",
+      "subdivision": null
+     },
+     "flagKey": "th"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 75,
+   "hideout": {
+    "placeId": "gn-1253944",
+    "name": "Udumalaippettai",
+    "lon": 77.24779,
+    "lat": 10.58806,
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 12:09",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 2875,
+     "octant": "south-east",
+     "text": "Last seen at a bus depot 2,875 km southeast of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     },
+     "flagKey": "ae"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 13:54",
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 3775,
+     "octant": "north-west",
+     "text": "Last seen eating at a drive-through 3,775 km northwest of Jakarta.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     },
+     "flagKey": "id"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 19:22",
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 2025,
+     "octant": "south",
+     "text": "Last seen at a bus depot 2,025 km south of New Delhi.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Delhi"
+     },
+     "flagKey": "in"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 76,
+   "hideout": {
+    "placeId": "gn-4992982",
+    "name": "Flint",
+    "lon": -83.68746,
+    "lat": 43.01253,
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 16:54",
+     "cityId": "gn-4259418",
+     "cityName": "Indianapolis",
+     "cityLon": -86.15804,
+     "cityLat": 39.76838,
+     "radiusKm": 425,
+     "octant": "north-east",
+     "text": "Last seen hitching a ride from a trucker 425 km northeast of Indianapolis.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Indiana"
+     },
+     "flagKey": "us-in"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 17:52",
+     "cityId": "gn-4509177",
+     "cityName": "Columbus",
+     "cityLon": -82.99879,
+     "cityLat": 39.96118,
+     "radiusKm": 350,
+     "octant": "north",
+     "text": "Last seen withdrawing cash from an ATM 350 km north of Columbus.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Ohio"
+     },
+     "flagKey": "us-oh"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 11:28",
+     "cityId": "gn-4140963",
+     "cityName": "Washington",
+     "cityLon": -77.03637,
+     "cityLat": 38.89511,
+     "radiusKm": 725,
+     "octant": "north-west",
+     "text": "Last spotted at a roadside diner 725 km northwest of Washington.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "District of Columbia"
+     },
+     "flagKey": "us"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 77,
+   "hideout": {
+    "placeId": "gn-1675281",
+    "name": "Xihu",
+    "lon": 120.47918,
+    "lat": 23.95683,
+    "difficulty": 2,
+    "countryName": "Taiwan"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 12:59",
+     "cityId": "gn-1816670",
+     "cityName": "Beijing",
+     "cityLon": 116.39723,
+     "cityLat": 39.9075,
+     "radiusKm": 1825,
+     "octant": "south",
+     "text": "Last spotted at a roadside diner 1,825 km south of Beijing.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Beijing"
+     },
+     "flagKey": "cn"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 07:36",
+     "cityId": "gn-1701668",
+     "cityName": "Manila",
+     "cityLon": 120.9822,
+     "cityLat": 14.6042,
+     "radiusKm": 1050,
+     "octant": "north",
+     "text": "Last seen buying supplies at a truck stop 1,050 km north of Manila.",
+     "region": {
+      "continent": "Asia",
+      "country": "Philippines",
+      "subdivision": null
+     },
+     "flagKey": "ph"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 09:13",
+     "cityId": "gn-1880252",
+     "cityName": "Singapore",
+     "cityLon": 103.85007,
+     "cityLat": 1.28967,
+     "radiusKm": 3100,
+     "octant": "north-east",
+     "text": "Last seen at a bus depot 3,100 km northeast of Singapore.",
+     "region": {
+      "continent": "Asia",
+      "country": "Singapore",
+      "subdivision": null
+     },
+     "flagKey": "sg"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 78,
+   "hideout": {
+    "placeId": "gn-2325733",
+    "name": "Orita-Eruwa",
+    "lon": 3.44107,
+    "lat": 7.55632,
+    "difficulty": 2,
+    "countryName": "Nigeria",
+    "flagKey": "ng"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 19:41",
+     "cityId": "gn-2538475",
+     "cityName": "Rabat",
+     "cityLon": -6.83255,
+     "cityLat": 34.01325,
+     "radiusKm": 3150,
+     "octant": "south",
+     "text": "Last seen boarding a night bus 3,150 km south of Rabat.",
+     "region": {
+      "continent": "Africa",
+      "country": "Morocco",
+      "subdivision": null
+     },
+     "flagKey": "ma"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 14:55",
+     "cityId": "gn-2352778",
+     "cityName": "Abuja",
+     "cityLon": 7.49508,
+     "cityLat": 9.05785,
+     "radiusKm": 500,
+     "octant": "west",
+     "text": "Last seen buying supplies at a truck stop 500 km west of Abuja.",
+     "region": {
+      "continent": "Africa",
+      "country": "Nigeria",
+      "subdivision": null
+     },
+     "flagKey": "ng"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 09:05",
+     "cityId": "gn-264371",
+     "cityName": "Athens",
+     "cityLon": 23.72784,
+     "cityLat": 37.98376,
+     "radiusKm": 3975,
+     "octant": "south-west",
+     "text": "Last seen buying supplies at a truck stop 3,975 km southwest of Athens.",
+     "region": {
+      "continent": "Europe",
+      "country": "Greece",
+      "subdivision": null
+     },
+     "flagKey": "gr"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 79,
+   "hideout": {
+    "placeId": "gn-2633373",
+    "name": "Yeovil",
+    "lon": -2.63211,
+    "lat": 50.94159,
+    "difficulty": 2,
+    "countryName": "United Kingdom",
+    "flagKey": "gb"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 10:27",
+     "cityId": "gn-524901",
+     "cityName": "Moscow",
+     "cityLon": 37.61781,
+     "cityLat": 55.75204,
+     "radiusKm": 2700,
+     "octant": "west",
+     "text": "Last seen at a bus depot 2,700 km west of Moscow.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Moscow"
+     },
+     "flagKey": "ru"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 20:42",
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 1475,
+     "octant": "north",
+     "text": "Last spotted at a roadside diner 1,475 km north of Lisbon.",
+     "region": {
+      "continent": "Europe",
+      "country": "Portugal",
+      "subdivision": null
+     },
+     "flagKey": "pt"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 19:02",
+     "cityId": "gn-2464470",
+     "cityName": "Tunis",
+     "cityLon": 10.16579,
+     "cityLat": 36.81897,
+     "radiusKm": 1875,
+     "octant": "north-west",
+     "text": "Last seen eating at a drive-through 1,875 km northwest of Tunis.",
+     "region": {
+      "continent": "Africa",
+      "country": "Tunisia",
+      "subdivision": null
+     },
+     "flagKey": "tn"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 80,
+   "hideout": {
+    "placeId": "gn-3468570",
+    "name": "Caçador",
+    "lon": -51.015,
+    "lat": -26.77528,
+    "difficulty": 2,
+    "countryName": "Brazil",
+    "flagKey": "br"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 06:59",
+     "cityId": "gn-3871336",
+     "cityName": "Santiago",
+     "cityLon": -70.64827,
+     "cityLat": -33.45694,
+     "radiusKm": 2050,
+     "octant": "east",
+     "text": "Last seen refueling a dusty pickup 2,050 km east of Santiago.",
+     "region": {
+      "continent": "South America",
+      "country": "Chile",
+      "subdivision": null
+     },
+     "flagKey": "cl"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 11:35",
+     "cityId": "gn-3936456",
+     "cityName": "Lima",
+     "cityLon": -77.02824,
+     "cityLat": -12.04318,
+     "radiusKm": 3175,
+     "octant": "south-east",
+     "text": "Last seen hitching a ride from a trucker 3,175 km southeast of Lima.",
+     "region": {
+      "continent": "South America",
+      "country": "Peru",
+      "subdivision": null
+     },
+     "flagKey": "pe"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 07:27",
+     "cityId": "gn-3469058",
+     "cityName": "Brasília",
+     "cityLon": -47.92972,
+     "cityLat": -15.77972,
+     "radiusKm": 1275,
+     "octant": "south",
+     "text": "Last seen hitching a ride from a trucker 1,275 km south of Brasília.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Federal District"
+     },
+     "flagKey": "br"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 81,
+   "hideout": {
+    "placeId": "gn-1264647",
+    "name": "Mācherla",
+    "lon": 79.43533,
+    "lat": 16.47635,
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 20:05",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 1400,
+     "octant": "south-west",
+     "text": "Last seen buying supplies at a truck stop 1,400 km southwest of Kathmandu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     },
+     "flagKey": "np"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 13:23",
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 3950,
+     "octant": "north-west",
+     "text": "Last seen asking a gas attendant for directions 3,950 km northwest of Jakarta.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     },
+     "flagKey": "id"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 13:47",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 2825,
+     "octant": "west",
+     "text": "Last seen buying a burner phone 2,825 km west of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     },
+     "flagKey": "vn"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 82,
+   "hideout": {
+    "placeId": "gn-2639545",
+    "name": "Redhill",
+    "lon": -0.17044,
+    "lat": 51.24048,
+    "difficulty": 2,
+    "countryName": "United Kingdom",
+    "flagKey": "gb"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 06:51",
+     "cityId": "gn-3117735",
+     "cityName": "Madrid",
+     "cityLon": -3.70256,
+     "cityLat": 40.4165,
+     "radiusKm": 1250,
+     "octant": "north",
+     "text": "Last seen boarding a night bus 1,250 km north of Madrid.",
+     "region": {
+      "continent": "Europe",
+      "country": "Spain",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 20:22",
+     "cityId": "gn-2950159",
+     "cityName": "Berlin",
+     "cityLon": 13.41053,
+     "cityLat": 52.52437,
+     "radiusKm": 950,
+     "octant": "west",
+     "text": "Last seen boarding a night bus 950 km west of Berlin.",
+     "region": {
+      "continent": "Europe",
+      "country": "Germany",
+      "subdivision": null
+     },
+     "flagKey": "de"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 12:49",
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 1575,
+     "octant": "north-east",
+     "text": "Last seen refueling a dusty pickup 1,575 km northeast of Lisbon.",
+     "region": {
+      "continent": "Europe",
+      "country": "Portugal",
+      "subdivision": null
+     },
+     "flagKey": "pt"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 83,
+   "hideout": {
+    "placeId": "gn-3451704",
+    "name": "Registro",
+    "lon": -47.84361,
+    "lat": -24.4875,
+    "difficulty": 2,
+    "countryName": "Brazil",
+    "flagKey": "br"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 11:55",
+     "cityId": "gn-3435910",
+     "cityName": "Buenos Aires",
+     "cityLon": -58.37723,
+     "cityLat": -34.61315,
+     "radiusKm": 1525,
+     "octant": "north-east",
+     "text": "Last seen sleeping in a parked car 1,525 km northeast of Buenos Aires.",
+     "region": {
+      "continent": "South America",
+      "country": "Argentina",
+      "subdivision": null
+     },
+     "flagKey": "ar"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 10:31",
+     "cityId": "gn-3936456",
+     "cityName": "Lima",
+     "cityLon": -77.02824,
+     "cityLat": -12.04318,
+     "radiusKm": 3375,
+     "octant": "south-east",
+     "text": "Last seen buying a burner phone 3,375 km southeast of Lima.",
+     "region": {
+      "continent": "South America",
+      "country": "Peru",
+      "subdivision": null
+     },
+     "flagKey": "pe"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 06:04",
+     "cityId": "gn-3469058",
+     "cityName": "Brasília",
+     "cityLon": -47.92972,
+     "cityLat": -15.77972,
+     "radiusKm": 975,
+     "octant": "south",
+     "text": "Last spotted at a roadside diner 975 km south of Brasília.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Federal District"
+     },
+     "flagKey": "br"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 84,
+   "hideout": {
+    "placeId": "gn-1633375",
+    "name": "Padangpanjang",
+    "lon": 100.40521,
+    "lat": -0.45602,
+    "difficulty": 2,
+    "countryName": "Indonesia",
+    "flagKey": "id"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 12:28",
+     "cityId": "gn-1185241",
+     "cityName": "Dhaka",
+     "cityLon": 90.40744,
+     "cityLat": 23.7104,
+     "radiusKm": 2900,
+     "octant": "south-east",
+     "text": "Last seen refueling a dusty pickup 2,900 km southeast of Dhaka.",
+     "region": {
+      "continent": "Asia",
+      "country": "Bangladesh",
+      "subdivision": null
+     },
+     "flagKey": "bd"
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 12:45",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 2475,
+     "octant": "south",
+     "text": "Last seen buying a burner phone 2,475 km south of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     },
+     "flagKey": "vn"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 22:44",
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 975,
+     "octant": "north-west",
+     "text": "Last spotted at a roadside diner 975 km northwest of Jakarta.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     },
+     "flagKey": "id"
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 85,
+   "hideout": {
+    "placeId": "gn-3662342",
+    "name": "São Gabriel da Cachoeira",
+    "lon": -67.08527,
+    "lat": -0.1181,
+    "difficulty": 2,
+    "countryName": "Brazil",
+    "flagKey": "br"
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 10:11",
+     "cityId": "gn-3652462",
+     "cityName": "Quito",
+     "cityLon": -78.52495,
+     "cityLat": -0.22985,
+     "radiusKm": 1275,
+     "octant": "east",
+     "text": "Last seen eating at a drive-through 1,275 km east of Quito.",
+     "region": {
+      "continent": "South America",
+      "country": "Ecuador",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 07:08",
+     "cityId": "gn-3469058",
+     "cityName": "Brasília",
+     "cityLon": -47.92972,
+     "cityLat": -15.77972,
+     "radiusKm": 2750,
+     "octant": "north-west",
+     "text": "Last seen eating at a drive-through 2,750 km northwest of Brasília.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Federal District"
+     },
+     "flagKey": "br"
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 19:18",
+     "cityId": "gn-3871336",
+     "cityName": "Santiago",
+     "cityLon": -70.64827,
+     "cityLat": -33.45694,
+     "radiusKm": 3750,
+     "octant": "north",
+     "text": "Last seen buying a burner phone 3,750 km north of Santiago.",
+     "region": {
+      "continent": "South America",
+      "country": "Chile",
+      "subdivision": null
+     },
+     "flagKey": "cl"
     }
    ],
    "packId": "capitals"

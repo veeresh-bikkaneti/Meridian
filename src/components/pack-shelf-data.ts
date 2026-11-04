@@ -126,7 +126,10 @@ export interface PackDeckView {
 }
 
 const CATEGORY_LABELS: Record<string, { label: string; glyph: string }> = {
-  capitals: { label: "Capitals", glyph: "🏛️" },
+  // Owner-ratified relabel (issue #344): the pack is "Capitals & Flags"
+  // everywhere a player reads its name. The category key stays
+  // "capitals" — it is data, not copy.
+  capitals: { label: "Capitals & Flags", glyph: "🏛️" },
 };
 
 function categoryLabel(category: string, packId: string): { label: string; glyph: string } {
@@ -376,13 +379,56 @@ async function fetchJsonOrNull(url: string, fetcher?: Fetcher): Promise<unknown>
   }
 }
 
+/**
+ * Session-level cache of UI manifest loads, keyed by pack id.
+ *
+ * The shelf and the Home doorway both read the manifest for display.
+ * Without sharing, each makes its own request for the same URL, so
+ * on a flaky connection the two UI consumers compete: the doorway's
+ * fetch can consume the one good response and leave the shelf's
+ * fetch to fail, and then the pack chip never renders — including
+ * in the fallback state the chip exists to explain (PR #346
+ * merge-up finding, issue #336's regression surface). One shared
+ * load per pack removes the competition.
+ *
+ * Only the default path is cached. A caller that passes its own
+ * fetcher always gets a fresh, uncached load — and the GeoDetective
+ * deal path never calls this function at all: LoopScreen resolves
+ * the manifest with its own fetch (`resolveActivePack`), fresh at
+ * each deal, so a deal-time failure still falls back to the core
+ * deck exactly as before.
+ *
+ * Only successes are kept. A load that settles to null (offline,
+ * 404, invalid payload) is evicted as soon as it settles, so the
+ * next mount retries instead of pinning the failure all session.
+ */
+const sharedManifestLoads = new Map<string, Promise<PackManifest | null>>();
+
 /** The pack manifest for a pack id, or null when the pack has not shipped. */
-export async function fetchPackManifest(
+export function fetchPackManifest(
   packId: string,
   fetcher?: Fetcher,
 ): Promise<PackManifest | null> {
-  const raw = await fetchJsonOrNull(`${assetBase()}packs/${packId}/manifest.json`, fetcher);
-  return isPackManifest(raw) ? raw : null;
+  const url = `${assetBase()}packs/${packId}/manifest.json`;
+  if (fetcher) {
+    return (async () => {
+      const raw = await fetchJsonOrNull(url, fetcher);
+      return isPackManifest(raw) ? raw : null;
+    })();
+  }
+  const shared = sharedManifestLoads.get(packId);
+  if (shared) return shared;
+  const load = (async (): Promise<PackManifest | null> => {
+    const raw = await fetchJsonOrNull(url);
+    return isPackManifest(raw) ? raw : null;
+  })();
+  sharedManifestLoads.set(packId, load);
+  void load.then((manifest) => {
+    if (manifest === null && sharedManifestLoads.get(packId) === load) {
+      sharedManifestLoads.delete(packId);
+    }
+  });
+  return load;
 }
 
 /** The GeoDetective core deck size from the loop manifest, or null. */

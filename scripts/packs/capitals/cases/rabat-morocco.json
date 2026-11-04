@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "rabat-morocco",
+  "target": {
+    "placeId": "gn-2538475",
+    "name": "Rabat",
+    "aliases": [],
+    "lat": 34.01325,
+    "lon": -6.83255,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Morocco",
+    "iso2": "MA",
+    "subdivision": "Rabat-Salé-Kénitra"
+  },
+  "subjectAnswer": {
+    "name": "Morocco",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Morocco",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town stands by the sea where a stream runs out to meet it. A town named Sale sits on the far bank, right across the stream.",
+      "narrowing": "Puts the player on an Atlantic river mouth in northwest Africa.",
+      "source": {
+        "article": "Rabat",
+        "url": "https://en.wikipedia.org/wiki/Rabat",
+        "quote": "Rabat is located on the Atlantic Ocean at the mouth of the river Bou Regreg, opposite Salé, the city's main commuter town."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "By the sea, this town has hot, dry days in the warm months of the year. The cold months stay mild, with damp air and soft rain at times.",
+      "narrowing": "Keeps a mild Atlantic-coast capital with dry summers and damp winters.",
+      "source": {
+        "article": "Rabat",
+        "url": "https://en.wikipedia.org/wiki/Rabat",
+        "quote": "Rabat features a hot-summer Mediterranean climate (Csa) with warm to hot, dry summers and mild, damp winters."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1956 this land won its freedom and stood on its own. This town was then made the chief town of the free land.",
+      "narrowing": "Shrinks the list to capitals confirmed at independence in 1956.",
+      "source": {
+        "article": "Rabat",
+        "url": "https://en.wikipedia.org/wiki/Rabat",
+        "quote": "When Morocco achieved independence in 1956, Rabat became its capital."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A huge tower here is the minaret of a mosque that was never finished. It has stood watch over the river shore for more than 800 years.",
+      "narrowing": "Nearly decisive: one capital's landmark is an unfinished minaret by a river.",
+      "source": {
+        "article": "Rabat",
+        "url": "https://en.wikipedia.org/wiki/Rabat",
+        "quote": "Overlooking the shores of the river is the Hassan Tower, a monumental unfinished minaret constructed by Ya'qub al-Mansur in the late 12th century."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The men and women who lead Morocco work in this town, by the sea shore. It is the seat of rule for the whole wide land.",
+      "narrowing": "Confirms it: the capital city of Morocco.",
+      "source": {
+        "article": "Rabat",
+        "url": "https://en.wikipedia.org/wiki/Rabat",
+        "quote": "Rabat is the capital city of Morocco, located on the northwestern coasts of the Atlantic Ocean."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Sultans built a fortress city here in the 1100s, and pirates later sailed from its river. Its great Hassan Tower was meant for a giant mosque that was never finished. Rabat is the capital of Morocco."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Rabat"
+  },
+  "pointPolicy": "geonames-point"
+}

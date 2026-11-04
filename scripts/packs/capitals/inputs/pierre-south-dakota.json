@@ -1,0 +1,57 @@
+{
+  "caseId": "pierre-south-dakota",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "One of America's smallest capitals, chosen for its spot at the state's center.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-5767918",
+    "name": "Pierre",
+    "country": "United States",
+    "subdivision": "South Dakota",
+    "lat": 44.36832,
+    "lon": -100.35097
+  },
+  "target": {
+    "placeId": "gn-5767918",
+    "name": "Pierre",
+    "lat": 44.36832,
+    "lon": -100.35097,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "South Dakota",
+    "iso2": "US",
+    "subdivision": "South Dakota"
+  },
+  "subjectAnswer": {
+    "name": "South Dakota",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "US",
+    "subdivision": "South Dakota",
+    "difficulty": 2,
+    "regionId": "south-dakota",
+    "edition": "state",
+    "blurb": "Pierre is the capital of South Dakota, the United States.",
+    "history": "One of America's smallest capitals, on the Missouri River. It took the title at statehood in 1889."
+  },
+  "extracts": [
+    {
+      "article": "Pierre, South Dakota",
+      "url": "https://en.wikipedia.org/wiki/Pierre%2C_South_Dakota",
+      "text": "Pierre ( PEER) is the capital city of the U.S. state of South Dakota and the county seat of Hughes County.  As of the 2020 census, its population was 14,091. Pierre is the eleventh-most populous city of South Dakota, and the second-least populous U.S. state capital (after only Montpelier, Vermont).\nFounded in 1880 on the Missouri River, the city was selected to be the state capital when South Dakota was admitted as a state in 1889. Near the center of the state, the then-new settlement was across the river from the settlement of Fort Pierre, and near what became an important railroad crossing of the river.\nGeography According to the United States Census Bureau, the city has an area of 13.07 square miles (33.85 km2), of which 13.06 square miles (33.83 km2) is land and 0.01 square miles (0.03 km2) is water.\nPierre is sited on rough river bluffs above the east bank of the Missouri River, overlooking its expanse. It is a few miles away from Lake Oahe, one of the world's largest man-made lakes. Developed for flood control and irrigation, the lake has become a popular fishing destination.\n\n\n=== Climate ===\nPierre has a relatively dry, four-season, humid continental climate (Köppen: Dfa, Trewartha: Dcao), with long, dry, cold winters, hot summers, and brief spring and autumnal transitions; like much of the southern half of the state, it lies in USDA Plant Hardiness zone 5. According to weather maps and their data, Pierre can be considered a cool semi-arid climate (Köppen: BSk) aided by its precipitation near the threshold that reaches even northeast of the city in South Dakota. As such, it is the only capital of the Midwest states with a non-humid climate. The monthly daily average temperature ranges from 19.1 °F (−7.2 °C) in January to 74.9 °F (23.8 °C), though the diurnal temperature variation is significantly greater during summer than in winter. Snow primarily falls in light amounts, with the snowiest months being February and March, while the average seasonal total is 37.2 inches (0.94 m). In addition, there are an average 20.9 nights per year with lows below 0 °F (−17.8 °C), and cold conditions are often intensified by the Great Plains' high winds. Summers often see spikes in temperature, with 6.6 days of highs above 100 °F (37.8 °C) and 37–38 days with highs above 90 °F (32.2 °C).\n\nOn July 23, 1973, an F3 tornado struck Pierre and caused 10 injuries. It was the strongest tornado ever recorded in Hughes County.\nThe beginnings of May and October see the last and first freezing nights, respectively, of the cooler season. Precipitation is much lighter in the winter than in late spring and summer, and totals about 20 inches (508 mm) annually. Extremes have ranged from −35 °F (−37 °C) on February 9, 1994, to 117 °F (47 °C) on July 15, 2006.\n\nSee or edit raw graph data.\nClimate Pierre has a relatively dry, four-season, humid continental climate (Köppen: Dfa, Trewartha: Dcao), with long, dry, cold winters, hot summers, and brief spring and autumnal transitions; like much of the southern half of the state, it lies in USDA Plant Hardiness zone 5. According to weather maps and their data, Pierre can be considered a cool semi-arid climate (Köppen: BSk) aided by its precipitation near the threshold that reaches even northeast of the city in South Dakota. As such, it is the only capital of the Midwest states with a non-humid climate. The monthly daily average temperature ranges from 19.1 °F (−7.2 °C) in January to 74.9 °F (23.8 °C), though the diurnal temperature variation is significantly greater during summer than in winter. Snow primarily falls in light amounts, with the snowiest months being February and March, while the average seasonal total is 37.2 inches (0.94 m). In addition, there are an average 20.9 nights per year with lows below 0 °F (−17.8 °C), and cold conditions are often intensified by the Great Plains' high winds. Summers often see spikes in temperature, with 6.6 days of highs above 100 °F (37.8 °C) and 37–38 days with highs above 90 °F (32.2 °C).\n\nOn July 23, 1973, an F3 tornado struck Pierre and caused 10 injuries. It was the strongest tornado ever recorded in Hughes County.\nThe beginnings of May and October see the last and first freezing nights, respectively, of the cooler season. Precipitation is much lighter in the winter than in late spring and summer, and totals about 20 inches (508 mm) annually. Extremes have ranged from −35 °F (−37 °C) on February 9, 1994, to 117 °F (47 °C) on July 15, 2006.\n\nSee or edit raw graph data."
+    },
+    {
+      "article": "Pierre, South Dakota — History",
+      "url": "https://en.wikipedia.org/wiki/Pierre%2C_South_Dakota#History",
+      "text": "History Pierre was founded in 1880 on the east bank of the Missouri River opposite Fort Pierre, a former trading post that developed as a community. It was designated as the state capital when South Dakota gained statehood on November 2, 1889.\nNumerous cities, namely Huron, Sioux Falls, Mitchell, and Watertown, challenged the city to be selected as the capital, but Pierre was selected for its geographic centrality in the state. Fort Pierre had developed earlier, with a permanent settlement since c. 1817 around a fur trading post. Fort Pierre Chouteau, preceding the city, was named after Pierre Chouteau, Jr., an American fur trader from St. Louis, Missouri, who was of colonial French origin.\nPierre's development was also influenced by construction of the Rapid City, Pierre and Eastern Railroad, which runs east–west through the city. It increased access to markets for regional products and improved transportation for passengers. The railroad crosses the Missouri River on the Chicago and North Western Railroad Bridge.\nThe capital city became relatively isolated in the post-World War II era of federally subsidized highway construction, as travelers and freight companies began to use automobiles and trucking. It is one of four state capitals not served by the Interstate Highway System."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

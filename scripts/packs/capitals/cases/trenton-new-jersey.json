@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "trenton-new-jersey",
+  "target": {
+    "placeId": "gn-5105496",
+    "name": "Trenton",
+    "aliases": [],
+    "lat": 40.21705,
+    "lon": -74.74294,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "New Jersey",
+    "iso2": "US",
+    "subdivision": "New Jersey"
+  },
+  "subjectAnswer": {
+    "name": "New Jersey",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "New Jersey",
+    "givenKind": "state"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This small city sits on a big river near the geographic center of its state. Across the river lies another state.",
+      "narrowing": "Points to a small river city near its state's center, on a state border.",
+      "source": {
+        "article": "Trenton, New Jersey",
+        "url": "https://en.wikipedia.org/wiki/Trenton%2C_New_Jersey",
+        "quote": "Trenton is located near the geographic center of the state, which is located 5 miles (8.0 km) southeast of the city."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are hot and humid, with more than 20 days a year topping 90 degrees. Rain falls fairly evenly through the year.",
+      "narrowing": "Keeps humid mid-Atlantic river cities with hot summers.",
+      "source": {
+        "article": "Trenton, New Jersey",
+        "url": "https://en.wikipedia.org/wiki/Trenton%2C_New_Jersey",
+        "quote": "Summers are hot and humid, with a July daily average of 76.3 °F (24.6 °C); temperatures reaching or exceeding 90 °F (32 °C) occur on 21.8 days."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "On November 25, 1790, this town took the state capital job. A few years prior, it had been the capital of the whole young land.",
+      "narrowing": "Cuts the list to the city made state capital on November 25, 1790.",
+      "source": {
+        "article": "Trenton, New Jersey",
+        "url": "https://en.wikipedia.org/wiki/Trenton%2C_New_Jersey",
+        "quote": "On November 25, 1790, Trenton became New Jersey's capital, and by November 13, 1792, the City of Trenton was formed within Trenton Township."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "On the night of Christmas in 1776, George Washington crossed the icy river by boat. His men then beat the foe troops in this town.",
+      "narrowing": "Nearly decisive: Washington's famous river crossing led to one capital.",
+      "source": {
+        "article": "Trenton, New Jersey — History",
+        "url": "https://en.wikipedia.org/wiki/Trenton%2C_New_Jersey#History",
+        "quote": "On December 25–26, 1776, George Washington and his army crossed the icy Delaware River to Trenton, where they defeated Hessian troops garrisoned there."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of New Jersey works in this city. State lawmakers meet here, a short walk from the river.",
+      "narrowing": "Confirms it: the governor and lawmakers of New Jersey work in this city.",
+      "source": {
+        "article": "Trenton, New Jersey",
+        "url": "https://en.wikipedia.org/wiki/Trenton%2C_New_Jersey",
+        "quote": "is the capital city of the U.S. state of New Jersey"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Washington's daring Christmas-night crossing in 1776 won a battle in this river city and turned the Revolution around. It became the state capital in 1790, and its bridge still boasts that what this city makes, the world takes. Trenton is the capital of New Jersey."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Trenton%2C_New_Jersey"
+  },
+  "pointPolicy": "geonames-point"
+}

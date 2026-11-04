@@ -1,0 +1,52 @@
+{
+  "caseId": "dhaka-bangladesh",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Its rickshaw art is so prized that UNESCO counts it as a treasure of humanity.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-1185241",
+    "name": "Dhaka",
+    "country": "Bangladesh",
+    "subdivision": "Dhaka Division",
+    "lat": 23.7104,
+    "lon": 90.40744
+  },
+  "target": {
+    "placeId": "gn-1185241",
+    "name": "Dhaka",
+    "lat": 23.7104,
+    "lon": 90.40744,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Bangladesh",
+    "iso2": "BD",
+    "subdivision": "Dhaka Division"
+  },
+  "subjectAnswer": {
+    "name": "Bangladesh",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "BD",
+    "subdivision": "Dhaka Division",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Dhaka is the capital of Bangladesh. It's one of Bangladesh's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Dhaka",
+      "url": "https://en.wikipedia.org/wiki/Dhaka",
+      "text": "Dhaka (  DAH-kə or   DAK-ə; Bengali: ঢাকা, romanized: Ḍhākā, pronounced [ˈɖʱaka] ), formerly spelled as Dacca, is the capital and largest city of Bangladesh. With an estimated population of 36.6 million, Dhaka is the second largest city by population in the world, and is widely considered to be the most densely populated built-up urban area in the world. Dhaka is an important cultural, economic, and scientific hub of Eastern South Asia. Dhaka ranks fourth in South Asia and 55th in the world in terms of GDP. Lying on the Ganges Delta, it is bounded by the Buriganga, Turag, Dhaleshwari and Shitalakshya rivers. It is also the largest Bengali-speaking city in the world.\nUnder the Köppen climate classification, Dhaka has a tropical savanna climate (Köppen Aw). The city has a distinct monsoonal season, with an annual average temperature of 26 °C (79 °F) and monthly means varying between 19 °C (66 °F) in January and 29 °C (84 °F) in May. Approximately 87% of the average annual rainfall of 2,123 millimetres (83.6 inches) occurs between May and October.\nThe area of Dhaka has been inhabited since the first millennium. An early modern city developed from the 17th century as a provincial capital and commercial centre of the Mughal Empire. Dhaka was the capital of a proto-industrialized Mughal Bengal for 75 years (1608–39 and 1660–1704). It was the hub of the muslin trade in Bengal and one of the most prosperous cities in the world. The Mughal city was named Jahangirnagar (The City of Jahangir) in honour of the erstwhile ruling emperor Jahangir. The city's wealthy Mughal elite included princes and the sons of Mughal emperors. The pre-colonial city's glory peaked in the 17th and 18th centuries, when it was home to merchants from across Eurasia. The Port of Dhaka was a major trading hub for both riverine and maritime commerce. The Mughals decorated the city with well-laid gardens, tombs, mosques, palaces, and forts. The city was once called the Venice of the East.\nA gamma+ global city, Dhaka is the centre of political, economic and cultural life in Bangladesh. It is the seat of the Government of Bangladesh, many Bangladeshi companies, and leading Bangladeshi educational, scientific, research, and cultural organizations. Since its establishment as a modern capital city, the population, area, and social and economic diversity of Dhaka have grown tremendously. The city is now one of the most densely industrialized regions in the country. The city accounts for 35% of Bangladesh's economy. The Dhaka Stock Exchange has over 750 listed companies. Dhaka hosts over 50 diplomatic missions, as well as the headquarters of BIMSTEC, CIRDAP, and the International Jute Study Group. Dhaka has a renowned culinary heritage. The city's culture is known for its rickshaws, Kacchi Biryani, art festivals, street food, and religious diversity. While it has a heritage of 2000 buildings from the Mughal and British periods, Dhaka's most prominent architectural landmark is the modernist Jatiya Sangsad Bhaban. The city is associated with two Nobel laureates. Dhaka's annual Bengali New Year parade, its Jamdani sari, and its rickshaw art have been recognized by UNESCO as the intangible cultural heritage of humanity. The city has produced many writers and poets in several languages, especially in Bengali and English."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}
