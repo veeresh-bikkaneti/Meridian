@@ -5,6 +5,43 @@
 - **PR:** #339 — https://github.com/veeresh-bikkaneti/Meridian/pull/339
 - **Spec of record:** `~/workspace/meridian-crash-telemetry-evidence/DESIGN-FINAL.md` (arena Candidate B + 10 grafts)
 
+## Cure round (panel verdict on PR #339, 2026-11-03)
+
+Panel tally that caused this round: **11 APPROVE-WITH-NITS + 1 BLOCK**
+(the BLOCK from the Office Hours seat, over an AGENTS.md tension).
+Each item is its own atomic commit, pushed as it landed:
+
+- [x] Item 1 — BLOCK cure, `4aabcb0`: `AGENTS.md` Player-facing locks
+  harmonised — the preceding raw-UA sentence now states the code-true
+  posture (the telemetry code does not store the raw UA; it is read
+  in page memory only to derive the parsed fields, and never leaves
+  the device). Diff vs `c890f80` verified: exactly that paragraph's
+  two sentences, nothing else.
+- [x] Item 2 — watchdog-recovery shortfall, `628ebec`: the worker now
+  fills a dropped `engine` for `boot_failure` only, via the E-rule
+  table over the event's parsed fields (never overwriting a present
+  engine, never for other types); `deviceClass` is NOT recovered and
+  stays "unknown" on watchdog events. Watchdog comments corrected to
+  that truth (comments only; rendered size unchanged at 6,104 bytes,
+  suite 47/47). Worker suite grew to 109.
+- [x] Item 3 — UA-parser traps, `e2cefa3`: `EdgA/` added to B2;
+  a `Chromium/` rule (chrome/blink) added before the Safari rules;
+  the Android frozen-token denylist now treats "10" and "10.0" as
+  the frozen shape when a witness is present. One corpus row per
+  fix. ua-parse suite 39/39, observability suite 92/92.
+- [x] Item 4 — worker README stale cluster, `f02ff0b`: schema
+  sentence now states the 17-key manifest allowlist; crash-class
+  alerts described in the v2 format; test count re-measured
+  (42 → 109); privacy line now states sessionId and the raw UA are
+  never forwarded/logged/stored, while the parsed coarse device
+  facts ARE forwarded in the alert by design.
+- [x] Item 6 — docs label, `b6927a3`: `docs/observability.md`
+  walkthrough now labels the worked example's `cores 6` as a worker
+  test-fixture value, not a handset measurement.
+- [x] Item 5 — this file: the client unit's STOP section below is
+  rewritten as the resolved record (see "Resolved — watchdog byte
+  budget" under the client unit record).
+
 ## Finisher record (integrator, 2026-11-03)
 
 - [x] Merged `unit/crash-telemetry-client` (tip `0361e02`, U1–U3) — clean merge.
@@ -72,22 +109,34 @@ Done condition: unit suites for the claimed files green, `tsc --noEmit` clean, w
 
 - [x] U1 — parser (§3 B/E/O/P rules + §2.3 denylist), corpus (30 rows incl. incident, denylist, tripwire), manifest (§8.1). Suite: 36/36 pass.
 - [x] U2 — observability session truth (§§2.1–2.2, 4.1–4.3 as grafted, §7.4 trim). Suite: 92/92 pass. [measured] worst-case enriched suspected_crash = 2,164 bytes raw vs the 4,096 cap — fits untrimmed, all 15 device keys + mapMode + msSinceBootStart survive.
-- [x] U3 — watchdog parity (§4.4: lcV "2", storageOk, mapMode, msSinceBootStart, subset parser, other new keys literal "unknown", unfinishedBoots absent) + second-canvas WebGL1 fix. Suite: 46/47 pass — the single failure is the byte-budget test, the STOP item below.
-- [x] Parity guard — written and run; FAILS as expected on this branch (worker allowlist not found — see below).
+- [x] U3 — watchdog parity (§4.4: lcV "2", storageOk, mapMode, msSinceBootStart, subset parser, other new keys literal "unknown", unfinishedBoots absent) + second-canvas WebGL1 fix. Suite at the time: 46/47 pass — the single failure was the byte-budget test, the STOP item below (since resolved; see the resolved record below).
+- [x] Parity guard — written and run; at the time it FAILED as expected on this branch (worker allowlist not found — see below). Since resolved on the combined branch (see the resolved record below).
 - [ ] Gates — tsc + claimed suites run at the tip; recorded in the builder report.
 
-## ⚠️ STOP — watchdog byte budget (§7.5 gated decision, NOT taken)
+## Resolved — watchdog byte budget (§7.5 gated decision, taken)
 
-[measured] Rendered watchdog size, worst-case 14-char build id:
+Historical record, in past tense: at the client-unit stage this was
+a STOP item. [measured] Rendered watchdog size, worst-case 14-char
+build id, as measured then:
 - Base (before U3): 5,104 bytes (16 bytes of headroom under 5,120).
 - With §4.4 parity + subset parser, before the ladder: 6,210 bytes.
-- After the FULL §7.5 ladder (step 1 browserVersion major-only, step 2 engine dropped, step 3 deviceClass dropped): **6,104 bytes** — still 984 bytes over the held 5,120 budget.
+- After the FULL §7.5 ladder (step 1 browserVersion major-only, step 2 engine dropped, step 3 deviceClass dropped): **6,104 bytes** — still 984 bytes over the then-held 5,120 budget.
 
-The ladder is exhausted and the budget was NOT raised: the raise to 6,144 is an explicit owner-visible decision (DESIGN-FINAL §7.5) and is not the builder's to take. Note for that decision: 6,104 ≤ 6,144, so the gated raise passes with the ladder applied (+~1 KB of inline HTML per page load). The byte-budget test in scripts/crash-watchdog.test.mjs is left at 5,120 and failing on purpose — it is the stop signal, not a bug to weaken.
+The ladder was exhausted and the builder did not raise the budget:
+the raise to 6,144 was an explicit owner-visible decision
+(DESIGN-FINAL §7.5), not the builder's to take, and the byte-budget
+test was left at 5,120 and failing on purpose as the stop signal.
 
-## Parity guard — expected failure
+Resolution: the gated decision was taken on the combined branch as
+its own commit (`4098735`): the budget was raised 5120 → 6144, the
+byte-budget test was updated to 6,144, and the watchdog suite went
+green (47/47; rendered size 6,104 ≤ 6,144). The owner rules on the
+raise with this PR's merge word; it is a decision item in the PR
+body.
 
-`scripts/observability-field-parity.test.mjs` extracts the client manifest's device keys vs the worker's `DEVICE_FIELD_ALLOWLIST` from `workers/crash-report/src/index.ts`. On this branch the worker side is still main's code, which has no `DEVICE_FIELD_ALLOWLIST` export, so the guard FAILS by design until the worker unit (U4) lands. It is not weakened to pass.
+## Parity guard — resolved
+
+`scripts/observability-field-parity.test.mjs` extracts the client manifest's device keys vs the worker's `DEVICE_FIELD_ALLOWLIST` from `workers/crash-report/src/index.ts`. On the client unit branch the worker side was still main's code, which had no `DEVICE_FIELD_ALLOWLIST` export, so the guard failed by design until the worker unit (U4) landed; it was not weakened to pass. Resolution: on the combined branch the guard went green after commit `a13b035` (the guard's extractor now reads the worker's frozen allowlist declaration; the field lists themselves matched exactly — 17 keys each).
 
 ---
 
