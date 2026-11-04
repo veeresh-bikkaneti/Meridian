@@ -311,7 +311,23 @@ function dealActiveDeck(
  */
 function deckFallbackNoticeText(pickedDeckId: string): string {
   const packLabel = deckLabelForId(pickedDeckId);
-  return `${packLabel} couldn’t load just now, so this case is from All cases. Your next case will try ${packLabel} again.`;
+  return `${packLabel} couldn’t load just now — this case is from All cases instead. Your next case will try ${packLabel} again.`;
+}
+
+/**
+ * The one plain sentence that names where the OPEN case came from
+ * (#336, owner wording cure 2026-11-04). The owner found the first
+ * version confusing: a "Deck: X" header label, the shelf's next-case
+ * line, and the fallback notice could all speak at once and seem to
+ * disagree. So now there is exactly one sentence, in one place: a
+ * healthy case gets this line, and a fallback case gets the fallback
+ * notice (deckFallbackNoticeText) in the same spot instead — never
+ * both. The deck comes from the case itself (deckIdOfPuzzle), never
+ * from the player's pick, which steers the NEXT deal.
+ */
+function caseSourceText(openCaseDeckId: string): string {
+  if (openCaseDeckId === LOOP_CORE_DECK_ID) return "This case is from All cases.";
+  return `This case is from your ${deckLabelForId(openCaseDeckId)} deck.`;
 }
 
 /**
@@ -825,21 +841,7 @@ export function LoopScreen({
         <Button variant="ghost" className="self-start" onClick={onLeave}>
           Editions
         </Button>
-        <div className="text-right">
-          <p className="text-sm text-fg">Case #{caseNo}</p>
-          {/* Deck identity (#336): the OPEN case's deck, named in shelf
-              vocabulary and derived from the case itself
-              (deckIdOfPuzzle) — never from the player's pick, which
-              steers the NEXT deal and can disagree after a fallback.
-              This header renders in every phase, so the name is there
-              while playing and on the reveal alike. Before the first
-              deal there is no open case, so there is nothing to name. */}
-          {current ? (
-            <p className="text-sm text-muted" data-testid="case-deck-label">
-              Deck: {deckLabelForId(deckIdOfPuzzle(current))}
-            </p>
-          ) : null}
-        </div>
+        <p className="text-sm text-fg">Case #{caseNo}</p>
       </div>
       <header className="mt-4">
         <h1 ref={headingRef} tabIndex={-1} className="mode-title text-4xl text-fg sm:text-5xl">GeoDetective</h1>
@@ -862,13 +864,23 @@ export function LoopScreen({
         caseFinished={!!current && current.status !== "playing"}
         onPickDeck={onPickDeck}
         onStartNext={onNextMystery}
+        statusLineSuppressed={deckFallbackNotice !== null}
       />
 
-      {/* Fallback notice (#336): spoken (role="status") and shown for
-          the case the fallback dealt — see deckFallbackNotice. */}
-      {deckFallbackNotice ? (
-        <p role="status" data-testid="deck-fallback-notice" className="mt-4 text-sm text-fg">
-          {deckFallbackNotice}
+      {/* The ONE deck signal (#336, owner wording cure): a single
+          plain sentence naming where the open case came from. A
+          healthy case gets caseSourceText; a fallback case gets the
+          fallback notice in this same spot instead — and while that
+          notice is up, the shelf's own status line is suppressed
+          (statusLineSuppressed above) so only one message speaks.
+          Shown only once the case's clues are on screen (phase
+          "ready"): during a deal the store already points at the new
+          case while its notice is not settled yet, and a half-dealt
+          case must not speak early. Before the first deal there is
+          no open case, so there is nothing to name. */}
+      {current && load.phase === "ready" ? (
+        <p role="status" data-testid="case-source-line" className="mt-4 text-sm text-fg">
+          {deckFallbackNotice ?? caseSourceText(deckIdOfPuzzle(current))}
         </p>
       ) : null}
 

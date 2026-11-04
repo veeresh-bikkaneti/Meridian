@@ -45,10 +45,15 @@ Recorded from the owner's voice call of 2026-11-02 (no transcript):
   or wiping one edition never touches the other edition's pack
   progress.
 
-A fallback deal is always labeled as what it is: the case screen
-names the open case's deck, so a case dealt from the core deck
-under a pack pick reads as a core case ("All cases") with a plain
-notice that the picked pack could not load — never as a pack case.
+A fallback deal is always labeled as what it is. The case screen
+says, in one plain sentence, where the open case came from — "This
+case is from your Capitals deck." or "This case is from All
+cases." When a pack could not load and the deal fell back, that
+same sentence spot carries the explanation instead ("Capitals
+couldn't load just now — this case is from All cases instead…"),
+and the shelf's next-case line stays quiet while it is up, so only
+one message speaks at a time. A core case is never presented as a
+pack case.
 
 ## 1. Pack data format
 

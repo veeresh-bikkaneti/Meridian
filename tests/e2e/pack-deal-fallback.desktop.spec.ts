@@ -16,17 +16,26 @@ import { serveBuiltArtifact } from "./helpers";
  *
  * The invariant pinned here: a core case is never PRESENTED as a
  * Capitals case.
+ *
+ * Presentation (owner wording cure, 2026-11-04 — the first version's
+ * "Deck: X" header label + shelf line + fallback notice spoke over
+ * each other and confused the owner): exactly ONE plain sentence,
+ * in one place (data-testid "case-source-line"), names where the
+ * open case came from. A healthy case gets "This case is from …";
+ * a fallback case gets the fallback notice in the same spot, and
+ * while it is up the shelf's own status line stays empty so only
+ * one message speaks. There is no "Deck:" header label any more.
  * (a) control — manifest healthy: the chip tap deals the pack head
- *     (431), stamped "capitals", and the case screen's deck label
- *     reads Capitals, with no fallback notice.
+ *     (431), stamped "capitals", and the source sentence names the
+ *     Capitals deck.
  * (b) fallback — the deal path's manifest fetch dies after the
  *     shelf's own fetch (the two are separate fetches of the same
- *     URL): core 186 IS dealt (§0), BUT the label reads "All cases"
- *     and the fallback notice is visible.
+ *     URL): core 186 IS dealt (§0), BUT the one sentence is the
+ *     fallback notice and the shelf line is silent.
  * (c) the pick remains "capitals" after a fallback deal, so the
  *     next deal retries the pack — and once the manifest recovers,
- *     that next deal deals the pack case, labeled Capitals, with
- *     the notice gone.
+ *     that next deal deals the pack case, the source sentence names
+ *     the Capitals deck again.
  *
  * Scenario mirrors the live screenshot: the loop store holds a
  * FINISHED case, the player's stored pick is the Capitals pack
@@ -40,7 +49,9 @@ const REAL_PACK_MANIFEST = readFileSync(
   "utf8",
 );
 const FALLBACK_NOTICE =
-  "Capitals couldn’t load just now, so this case is from All cases. Your next case will try Capitals again.";
+  "Capitals couldn’t load just now — this case is from All cases instead. Your next case will try Capitals again.";
+const PACK_SOURCE_LINE = "This case is from your Capitals deck.";
+const CORE_SOURCE_LINE = "This case is from All cases.";
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
@@ -154,7 +165,7 @@ async function waitForPlaying(page: import("playwright/test").Page): Promise<voi
   );
 }
 
-test("control: pack manifest healthy -> chip tap deals the pack head (431), labeled Capitals", async ({
+test("control: pack manifest healthy -> chip tap deals the pack head (431), source sentence names Capitals", async ({
   page,
 }) => {
   await stubPackManifestAlways(page);
@@ -167,14 +178,14 @@ test("control: pack manifest healthy -> chip tap deals the pack head (431), labe
   expect(store.current.index).toBe(431);
   expect(store.current.deckId).toBe("capitals");
   expect(store.activeDeckId).toBe("capitals");
-  // The case screen names the open case's deck — Capitals, because
-  // this case really is a Capitals case.
-  await expect(page.getByTestId("case-deck-label")).toHaveText("Deck: Capitals");
-  // A healthy pack deal is not a fallback: no notice.
-  await expect(page.getByTestId("deck-fallback-notice")).toHaveCount(0);
+  // The one deck signal: a plain sentence naming where this case
+  // came from — the Capitals deck, because it really is one.
+  await expect(page.getByTestId("case-source-line")).toHaveText(PACK_SOURCE_LINE);
+  // The old multi-signal header label is gone entirely.
+  await expect(page.getByTestId("case-deck-label")).toHaveCount(0);
 });
 
-test("fallback: deal-path manifest fetch dies -> core 186 dealt, labeled All cases, with the fallback notice", async ({
+test("fallback: deal-path manifest fetch dies -> core 186 dealt, the one sentence is the fallback notice, shelf line silent", async ({
   page,
 }) => {
   await stubPackManifestDiesAfterFirstFetch(page);
@@ -190,13 +201,16 @@ test("fallback: deal-path manifest fetch dies -> core 186 dealt, labeled All cas
   expect(store.current.deckId).toBeUndefined();
   expect(store.activeDeckId).toBe("capitals");
   // The fix: the screen never presents this core case as a Capitals
-  // case — the open case's deck is named honestly, and the fallback
-  // is announced in plain words.
-  await expect(page.getByTestId("case-deck-label")).toHaveText("Deck: All cases");
-  const notice = page.getByTestId("deck-fallback-notice");
+  // case — the ONE deck signal is the fallback notice, in plain
+  // words, spoken via role="status".
+  const notice = page.getByTestId("case-source-line");
   await expect(notice).toBeVisible();
   await expect(notice).toHaveText(FALLBACK_NOTICE);
   await expect(notice).toHaveAttribute("role", "status");
+  // No second signal competes with it: no "Deck:" header label, and
+  // the shelf's next-case line is suppressed while the notice is up.
+  await expect(page.getByTestId("case-deck-label")).toHaveCount(0);
+  await expect(page.getByTestId("pack-shelf-status")).toHaveText("");
 });
 
 test("pick survives a fallback deal: the next deal retries the pack and deals it once it recovers", async ({
@@ -218,7 +232,7 @@ test("pick survives a fallback deal: the next deal retries the pack and deals it
     "aria-pressed",
     "true",
   );
-  await expect(page.getByTestId("case-deck-label")).toHaveText("Deck: All cases");
+  await expect(page.getByTestId("case-source-line")).toHaveText(FALLBACK_NOTICE);
 
   // Finish the fallback case on the desk (same minimized shape the
   // seed uses for a won case) and let the pack manifest recover.
@@ -241,8 +255,10 @@ test("pick survives a fallback deal: the next deal retries the pack and deals it
   manifestState.recovered = true;
   await page.reload();
   await expect(page.getByText("🎯 You found it!")).toBeVisible({ timeout: 30_000 });
-  // The reveal of the fallback case still names its real deck.
-  await expect(page.getByTestId("case-deck-label")).toHaveText("Deck: All cases");
+  // The reveal of the fallback case still names its real source:
+  // the plain core sentence (the deal-time notice itself belongs to
+  // the session that dealt it and does not survive the reload).
+  await expect(page.getByTestId("case-source-line")).toHaveText(CORE_SOURCE_LINE);
 
   // The next deal retries the pack — and now deals it.
   await page.getByTestId("pack-chip-capitals").click();
@@ -251,6 +267,5 @@ test("pick survives a fallback deal: the next deal retries the pack and deals it
   expect(store.current.index).toBe(431);
   expect(store.current.deckId).toBe("capitals");
   expect(store.activeDeckId).toBe("capitals");
-  await expect(page.getByTestId("case-deck-label")).toHaveText("Deck: Capitals");
-  await expect(page.getByTestId("deck-fallback-notice")).toHaveCount(0);
+  await expect(page.getByTestId("case-source-line")).toHaveText(PACK_SOURCE_LINE);
 });
