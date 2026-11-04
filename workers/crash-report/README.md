@@ -11,6 +11,10 @@ Receives the events emitted by `src/lib/observability.ts` (schema:
   mobile OS reclaiming the GPU context on backgrounding): **counted,
   NOT forwarded individually.** They surface through a threshold alert
   and the hourly digest instead.
+- **conditional** — `recovery_outcome` is **crash-class only** when
+  its `recoveryOutcome` is `repeat_failure`; every other outcome
+  value — and a missing or invalid one — is **counted only**
+  (hiccup-class behaviour), never forwarded individually.
 
 Every accepted event is also **counted** into per-hour buckets in a
 Workers KV namespace (`TELEMETRY_COUNTS`), keyed by UTC hour × type ×
@@ -110,6 +114,7 @@ plus a `scheduled` handler for the hourly digest.
 |---|---|---|
 | crash-class | `suspected_crash`, `boot_failure`, `js_error`, `unhandled_rejection`, `map_error` | Forwarded to Discord/email **immediately** (v2 format); also counted. |
 | hiccup-class | `tile_failed`, `webgl_context_lost` | **Counted only** — no individual forward. Surfaced via the threshold alert and the hourly digest. |
+| conditional | `recovery_outcome` | **Crash-class only** when `recoveryOutcome` is `repeat_failure` (forwarded immediately; also counted). Every other outcome value — and a missing or invalid one — is **counted only**, like hiccup-class. |
 
 Rationale: hiccup-class events are resource signals that are usually
 benign/transient in production (`tile_failed` fires on ordinary tile CDN
@@ -422,7 +427,7 @@ npx wrangler dev -c wrangler.toml
 curl -X POST localhost:8787/ingest -H 'content-type: application/json' \
   -H 'origin: https://meridian.knowledgetest.workers.dev' \
   -d '{"type":"suspected_crash","ts":1728300000000,"buildId":"test","edition":"globe","lastMilestone":"boot_ready"}'
-# → {"ok":true,"forwarded":false}  (no secrets in dev = no-op mode)
+# → {"ok":true,"forwarded":false,"counted":true}  (no secrets in dev = no-op forwarding mode)
 ```
 
 ## Secrets
