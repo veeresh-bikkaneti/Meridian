@@ -15,12 +15,20 @@
 
 ## Wave record
 
-- [ ] Wave 1 — licence research pass (72 lands), flag registry + assets
-- [ ] Wave 1 — schema/composer/sidecar flagKey + flagStory, resolver, surfaces (briefing, Giveaway, both reveals, Cold Trail sightings), doorway strip, relabel
-- [ ] Wave 1 — deck top-up migration + tests
+- [x] Wave 1 — licence research pass (72 lands): **72/72 licence-verified** on Commons (all Public domain per-file), identity cross-checked vs Wikidata P41 (historical-value traps caught for FR/GR/US). **55 ship** (68,366 bytes total); **17 are flagless on the design's ≤10 KB/file hard cap** — detailed seal/arms path data (100–644 KB) with no faithful simplified rendition published (Egypt + Portugal rescued via design-named flag-icons renditions, MIT). Flagless lands are recorded with reasons in the registry + `docs/flags-curation.md`; they ship the day an SVG optimisation step is approved (owner decision queued in the PR body).
+- [x] Wave 1 — schema/composer flagKey derivation (build-time, unmapped subdivision throws), sidecar flagKey for verified lands only, registry + resolver (`src/lib/flag-registry.ts`, lazy glob, 0 bytes precached — verified in dist), surfaces: GeoDetective briefing + Giveaway rung + reveal identity card (flag + sourced story), Cold Trail sighting stamps (163/180; composition byte-stable vs HEAD after stripping stamps) + reveal country line, doorway strip under the Expeditions Map card (with the design's three swatches), relabel "Capitals & Flags" (shelf chips; deck id unchanged).
+- [x] Wave 1 — deck top-up in `ensurePackDeck` (built-from size = undealt + completed + open mystery; new cases tier-banded into the remainder) + tests; existing "never rebuilds" pin intact.
 - [ ] Wave 2 — +38 authored cases (inputs + records), Hyderabad audit 100%
 - [ ] Wave 2 — flags for the 38 new lands, celebration target → 110
 - [ ] Gates + screenshots + PR to READY (panel runs after; no merge)
+
+## Flagstaff gate
+
+`npm run check:flags` (wired into prebuild) pins registry ⇔ files
+(SHA-256, bytes, licence class, SVG sanity, aspect), registry ⇔ pack
+subjects both ways, the composed sidecar, and the Cold Trail stamps.
+Contact-sheet eye gate (checker ≠ builder) passed on the 55 shipped
+flags, 2026-11-04.
 
 ---
 

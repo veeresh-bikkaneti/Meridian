@@ -239,3 +239,45 @@ as chips the player can switch between.
   a second row, so a pack chip that loads late wraps into space
   that is already there instead of pushing the case below it down.
   At 390px and on desktop the row is unchanged.
+
+## 8. Capitals & Flags — the pack grows a flag layer (issue #344)
+
+The Capitals pack is also the flags pack. The owner-ratified design
+(arena C2 "pack-grown") grows the shipped pack in place — no new
+edition — and adds a flag layer under one rule:
+
+- **The one flag rule.** A flag renders only where its land's name is
+  already on screen in text: beside the given name in a GeoDetective
+  briefing, at the Giveaway rung, beside a Cold Trail witness's region
+  line, and on both reveals (the GeoDetective reveal pairs the flag
+  with the pairing blurb and one sourced flag-story line; the Cold
+  Trail reveal prints the hideout's country in text beside its flag).
+  A flag is never a hunt target and never stands alone.
+- **Identity is derived, never authored.** The composer derives each
+  case's `flagKey` from its subject (country → lowercase ISO alpha-2;
+  US state → `us-` + postal code, inverted from the state name at
+  build time; an unmapped subdivision fails the build). The sidecar
+  carries `flagKey` only when the land's flag is licence-verified in
+  the curation registry (`scripts/packs/capitals/flags/registry.json`);
+  flagless is a data state, recorded with its reason.
+- **Assets.** SVGs live in `src/assets/flags/`, one hashed lazy chunk
+  per flag via `import.meta.glob` — 0 bytes in the install precache,
+  loaded only when a case names them. `src/lib/flag-registry.ts` is
+  the one resolver; `FlagImg` is the one component.
+- **The Flagstaff gate.** `npm run check:flags` (in `prebuild`) pins
+  every file's SHA-256, bytes (≤10,240/file hard cap), licence class,
+  SVG sanity and aspect against the curation record, checks registry
+  ⇔ subjects both ways, the sidecar, and the Cold Trail stamps.
+  `docs/flags-curation.md` is the human-readable record.
+- **Growth is append-only.** New cases take loop indexes after the
+  published pack (387–458 stay frozen); the composer refuses to
+  renumber or drop a published case. Existing players' decks top up:
+  `ensurePackDeck` appends the new cases — tier-banded among
+  themselves — to the undealt remainder, leaving dealt history, the
+  open mystery and the cycle count untouched. Cold Trail generation
+  stays composition-stable the same way: new cases append after the
+  shipped ones, and flag stamps are additive metadata only.
+- **The doorway.** Home carries a "Capitals & Flags" strip directly
+  under the Expeditions Map card with a door into each mode; each
+  door selects the pack before opening, so the player lands in the
+  pack, not on the shelf.

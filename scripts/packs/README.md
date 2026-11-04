@@ -25,11 +25,19 @@ its authoring input in `scripts/packs/capitals/inputs/`:
    from the records. The Capitals deck is 60 cases; a different
    count means the records or the generator changed, not a rounding
    error.
-4. **Run the repo gates.** `npm test`, `npm run test:worker`,
+4. **Flags (Capitals & Flags).** If the curation record
+   (`scripts/packs/capitals/flags/registry.json`) or any file in
+   `src/assets/flags/` changed: `npm run flags:build` regenerates
+   the runtime registry module, then `npm run check:flags` runs the
+   Flagstaff gate (licences, SHA-256 pins, size cap, sidecar and
+   Cold Trail stamp consistency). Compose (step 2) reads the
+   registry, so flag changes land in the sidecar on the next
+   compose; the Cold Trail stamps land on the next step-3 run.
+5. **Run the repo gates.** `npm test`, `npm run test:worker`,
    `npx tsc --noEmit`, `node scripts/lint-cards.mjs`,
    `npm run build:pages`. The build's own content gates
-   (`check-generated-places`, `lint-content` via prebuild) run as
-   part of `build:pages`.
+   (`check-generated-places`, `lint-content` via prebuild — which
+   now includes `check-flags`) run as part of `build:pages`.
 
 ## Generated files — never hand-edit
 
