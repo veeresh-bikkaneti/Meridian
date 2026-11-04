@@ -33,6 +33,11 @@ const chromiumExecutable =
  */
 export default defineConfig({
   testDir: "./tests/e2e",
+  // Telemetry spill: setup truncates the run-scoped escape log; teardown
+  // fails the run if any spec let a crash-report request escape the stub
+  // (see tests/e2e/helpers.ts recordTelemetryEscape).
+  globalSetup: "./tests/e2e/telemetry-spill-setup.ts",
+  globalTeardown: "./tests/e2e/telemetry-spill-teardown.ts",
   timeout: 90_000,
   expect: { timeout: 15_000 },
   retries: 0,
