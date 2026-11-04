@@ -76,7 +76,9 @@ events are a **fixed set**, named in one place:
 strips any device key that is not on it. A test
 (`scripts/observability-field-parity.test.mjs`) fails if the two lists
 drift apart. Adding a field means adding one manifest row, one
-allowlist row, and one test-fixture row — nothing else may sneak in.
+allowlist row, one test-fixture row, and — for a device field — one
+entry in the literal `DEVICE_FIELD_KEYS` array in
+`src/lib/telemetry-manifest.ts` — nothing else may sneak in.
 
 **"Unknown is a value."** Every field below is present on every
 crash-class event. If the browser does not expose a value, or the
@@ -105,9 +107,9 @@ worked out from other stamped fields.
 | `deviceClass` | `device` | `phone` \| `tablet` \| `desktop` \| `unknown` — the class only, never a model name | heuristic |
 | `hardwareConcurrency` | `device` | integer 1–64 or `"unknown"`, as the browser reports it | read |
 | `deviceMemory` | `device` | memory in GB as the browser reports it, or `"unknown"` | read |
-| `screen` | `device` | `sm` \| `md` \| `lg` \| `xl` — a size bucket, never exact pixels | read |
+| `screen` | `device` | `sm` \| `md` \| `lg` \| `xl` \| `unknown` — a size bucket, never exact pixels | read |
 | `dpr` | `device` | integer 1–4 — a rounded density bucket | read |
-| `touchPoints` | `device` | `"0"` \| `"1"` \| `"2-5"` \| `"6+"` | read |
+| `touchPoints` | `device` | `"0"` \| `"1"` \| `"2-5"` \| `"6+"` \| `"unknown"` | read |
 | `displayMode` | `device` | `standalone` \| `browser` \| `unknown` | read |
 | `connection` | `device` | `slow-2g` \| `2g` \| `3g` \| `4g` \| `unknown` | read |
 | `locale` | `device` | the primary language tag (e.g. `"en-US"`, at most 12 chars) or `"unknown"` | read |
