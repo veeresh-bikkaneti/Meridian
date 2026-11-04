@@ -56,5 +56,5 @@ conversion (diagnosis follow-up), copy, place data, worker code.
 - [x] E2E subset: 28 passed, 0 failed (8 Scout/crash/boot spec files,
   sequential under the VM lock — exact list in the PR body)
 - [x] Emulation: base vs fixed builds measured (see PR body)
-- [ ] PR opened (see PR body)
+- [x] PR opened: #331 — https://github.com/veeresh-bikkaneti/Meridian/pull/331
 - [ ] Merge — owner's word only, after QA + panel
