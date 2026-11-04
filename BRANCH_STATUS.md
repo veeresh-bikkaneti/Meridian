@@ -1,3 +1,130 @@
+# Branch status — fix/chunk-failure-cascade (watchdog stand-down on stalled recovery reloads)
+
+- **Branch:** `fix/chunk-failure-cascade`
+- **Base:** `main` @ `e1cf6fe`
+- **Authority:** owner, 2026-11-04, in the meridian side chat: "Fix the chunk-failure cascade"
+- **Diagnosis of record:** `~/workspace/meridian-geodetective-diag/diagnostic-evidence/results*.json` (2026-11-04)
+
+## Task capsule
+
+- TASK / defect: on the GeoDetective open path, a screen chunk (or its
+  CSS preload) fails at tap time → MapErrorBoundary shows its
+  recoverable card (correct) → `src/lib/chunk-recovery.ts` auto-reloads
+  once (owner-approved, PR #245) → if that recovery reload's boot
+  stalls past the crash watchdog's 28 s timer, the watchdog showed
+  "The game couldn't start on this phone." and POSTed a `boot_failure`
+  — the wrong surface (a boot-failure screen for a mid-session chunk
+  failure) and false telemetry, for a session that had already reached
+  home and set `window.__meridian_ready` on the previous page. The
+  mechanism is shared (TrailScreen, SatelliteMap, HomeGlobe ride the
+  same lazy + withChunkTimeout + MapErrorBoundary + chunk-recovery
+  path; the watchdog is global), so the fix lands once, in the watchdog.
+- FIX: in `scripts/crash-watchdog.mjs`, `crashWatchdogMain`'s
+  `onTimer()` stands down (no `show()`, no `send()`) when
+  sessionStorage key `meridian.chunkReloadNotice` holds a numeric
+  timestamp whose age at timer-fire time is ≤ 900_000 ms (mirrors
+  `CHUNK_RELOAD_NOTICE_MAX_AGE_MS` in `src/lib/chunk-recovery.ts`;
+  keep-in-sync comments on both sides). Why it proves the case: the
+  key is written ONLY immediately before a chunk-recovery reload — by
+  chunk-recovery's `decide()` (`writeNotice`) before an auto-reload,
+  and by MapErrorBoundary's manual "Try again"
+  (`markChunkReloadNotice`) — and both writers run only inside an app
+  that already booted and reached home (verified by grep before
+  building: those are the only two writers; the only consumer is
+  `consumeChunkReloadNotice` at app init in `game-app.tsx`). If the
+  recovery reload boots, the app consumes the notice and
+  `__meridian_ready` stands the watchdog down anyway; a fresh notice
+  SURVIVING to timer-fire with ready unset can therefore only be a
+  stalled chunk-recovery reload. Malformed / stale / absent notice →
+  today's behaviour, unchanged (fail closed toward the fallback).
+- Path division (nothing else moves):
+  - version skew → the app's stale offer + Refresh, as today;
+  - plain chunk failure → recoverable card + one bounded auto-reload, as today;
+  - stalled recovery reload → watchdog stands down on the fresh chunk-reload notice, no `boot_failure`;
+  - fresh-boot stall → watchdog unchanged.
+- Redundancy audit: no parallel recovery surface was created — the
+  fix reuses the existing notice key and the watchdog's existing
+  guarded storage helper; no new key, no new pipeline.
+- Byte budget: the ES5 check is folded into onTimer's existing guard
+  (`+ss("meridian.chunkReloadNotice") >= Date.now() - 9e5`), +51
+  rendered bytes: worst case (14-char build id) 6,104 → 6,155. That
+  exceeds the old 6,144 budget by 11, so the budget constant (module
+  docstring + `scripts/crash-watchdog.test.mjs`) rises to 6,200 —
+  the smallest round number that fits with margin (~45 bytes, like
+  the ~40 bytes of headroom 6,144 carried). No unrelated watchdog
+  code was shaved.
+
+## Files touched
+
+- `scripts/crash-watchdog.mjs` — the stand-down in `onTimer()`, module
+  docstring, budget figures (commit `ff43bbc`).
+- `scripts/crash-watchdog.test.mjs` — 3 new unit cases (fresh notice
+  stands down; stale and malformed are controls) + the budget raise
+  (commit `ff43bbc`).
+- `src/lib/chunk-recovery.ts` — comment only: the watchdog reads the
+  notice key as a stand-down proof; keep the 900_000 ms values in
+  sync (commit `ff43bbc`).
+- `tests/e2e/crash-watchdog.spec.ts` — one new case driving the real
+  two-page cascade (commit `ac6c24d`).
+- `docs/observability.md` — `boot_failure` row note + a new
+  "When the boot watchdog stands down" section with the path-division
+  table (docs commit, this record's commit).
+- `BRANCH_STATUS.md` — this section, prepended; the records below are
+  main's accumulated records, kept intact.
+
+## Fail-first evidence
+
+- Unit: the 3 new tests against the UNMODIFIED module — 50 tests,
+  49 pass / 1 fail: the fresh-notice case failed because the overlay
+  WAS inserted (veil object vs expected undefined); the stale and
+  malformed controls passed, pinning today's behaviour. With the fix:
+  50/50 pass.
+- E2E: the new spec against a build of unmodified `e1cf6fe` — failed
+  at the intended assertion, `page.locator("#mv")` resolved to 1
+  element after the watchdog timer (the overlay appeared on the
+  stalled recovery reload), with every anti-vacuity pin green first
+  (card shown, reload's time-origin move observed, reloaded page
+  stalled with no app UI, fresh notice surviving unconsumed). Two
+  earlier attempts died in Chromium itself ("Target crashed" /
+  browser-closed at context creation) under VM load shared with
+  parallel crews — environment class, dispositioned by the later
+  clean runs, not counted as evidence either way. With the fixed
+  build: the case passes (in the full-file run below).
+
+## Gates (final tip; actuals)
+
+- `npm ci` — 384 packages, exit 0.
+- `npx tsc --noEmit` — clean, exit 0.
+- `npm run typecheck:worker` — clean, exit 0.
+- `npm test` — exit 0: scripts 1,019 tests (1,008 pass / 0 fail /
+  11 skipped); src 2,119 / 2,119 pass.
+- `npm run test:worker` — 117 / 117 pass.
+- `node scripts/lint-cards.mjs` — GATE PASSED.
+- `npm run build:pages` — exit 0; the shipped `_shell.html` inline
+  watchdog carries the stand-down check (verified in the artifact).
+- E2E spot (flock `~/workspace/.e2e.lock`, `--workers=1`,
+  chromium-1243): `crash-watchdog.spec.ts` full file 4 passed /
+  1 failed — the new stalled-reload case PASSES; the failure is the
+  pre-existing "stale build" case (breadcrumb `lastMilestone`
+  expected `data_chunk_load_start`, received `storyteller_ready`),
+  which fails IDENTICALLY on a control build of unmodified
+  `e1cf6fe` (watchdog file restored from base, rebuilt, same
+  expected/received) — pre-existing on main in this environment,
+  not a regression; the watchdog never writes the breadcrumb.
+  `chunk-boundary-copy.desktop.spec.ts` + `card-redesign.desktop.spec.ts`
+  — 13 / 13 passed.
+- Rendered watchdog size: 6,104 bytes worst case before → 6,155
+  after (14-char build id); budget 6,144 → 6,200.
+
+## Status
+
+- [x] Fix + unit tests (`ff43bbc`), pushed
+- [x] E2E case (`ac6c24d`), pushed
+- [x] Docs + this record (docs commit), pushed
+- [x] PR opened — NO MERGE (pipeline continues: Silo QA + panel; merge only on the owner's per-PR word)
+
+---
+
 # Branch status — feat/capitals-flags-phase1 (Capitals & Flags, Phase 1)
 
 - **Branch:** `feat/capitals-flags-phase1`

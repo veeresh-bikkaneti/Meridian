@@ -150,7 +150,7 @@ their device surface does not grow.
 | Type | When |
 |---|---|
 | `suspected_crash` | Next boot after an unclean shutdown with a previous breadcrumb (above). |
-| `boot_failure` | The crash watchdog's fallback fired: the app never signalled ready, so the boot is treated as failed. |
+| `boot_failure` | The crash watchdog's fallback fired: the app never signalled ready, so the boot is treated as failed. (One exception: a stalled chunk-recovery reload never files this — see "When the boot watchdog stands down" below.) |
 | `recovery_outcome` | A chunk-recovery attempt from a previous session resolved, one way or the other. |
 | `js_error` | `window` error event (installed once, guarded). |
 | `unhandled_rejection` | `unhandledrejection` event. |
@@ -231,6 +231,42 @@ until an endpoint is explicitly configured (below).
   crash-report worker
   (`https://meridian-crash-report.knowledgetest.workers.dev/ingest`), so
   production sends events today.
+
+## When the boot watchdog stands down
+
+The inline boot watchdog (`scripts/crash-watchdog.mjs`) exists for one
+job: a page whose app bundle never runs. It arms a single 28-second
+timer, and if the app has not signalled readiness
+(`window.__meridian_ready`) when the timer fires, it shows its fallback
+card and files one `boot_failure`. Four situations can look alike from
+the timer's seat; they are handled differently, on purpose:
+
+| What happened | What the player sees | What is filed |
+|---|---|---|
+| A deploy replaced the assets mid-session (version skew) | The app's own "A new version of Meridian is available." offer with a Refresh button | No `boot_failure` — the watchdog treats that offer's text as a stand-down signal, and readiness is set anyway |
+| A chunk fails mid-session, nothing else wrong | The error boundary's recoverable card ("Couldn't load GeoDetective." and friends), then chunk-recovery's one bounded auto-reload | No `boot_failure` — the session already booted |
+| That auto-reload itself stalls (assets still failing, network still down) | Nothing from the watchdog — no second, wrong recovery screen on top of a session that had already reached home | No `boot_failure` — see the proof below |
+| A fresh boot stalls (the bundle never loads on a first visit) | The watchdog's fallback card ("The game couldn't start on this phone.") | One `boot_failure` — this is the case the watchdog exists for |
+
+The third row is the subtle one. How does the watchdog know a stalled
+page is a *recovery reload* and not a fresh boot? Before any
+chunk-recovery reload — the automatic one, and the error card's manual
+"Try again" — the app writes a timestamp to session storage under the
+key `meridian.chunkReloadNotice`. Only code inside an app that already
+booted and reached home can write that key. A healthy reload consumes
+(removes) the notice as it boots; so if a *fresh* notice (at most
+15 minutes old — `CHUNK_RELOAD_NOTICE_MAX_AGE_MS` in
+`src/lib/chunk-recovery.ts`, mirrored by the watchdog) is still there
+when the 28-second timer fires and readiness was never signalled, this
+page load can only be the recovery reload, stalled. The watchdog
+stands down: no card, no report. A notice that is missing, unreadable,
+or older than 15 minutes proves nothing, and the watchdog behaves
+exactly as it always did — when in doubt, it shows the fallback.
+
+Pinned by `scripts/crash-watchdog.test.mjs` (fresh notice stands down;
+stale and malformed notices do not) and by the "stalled chunk-recovery
+reload" case in `tests/e2e/crash-watchdog.spec.ts`, which drives the
+real two-page sequence end to end.
 
 ## How to enable — already live in production (2026-10)
 
