@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "pretoria-south-africa",
+  "target": {
+    "placeId": "gn-964137",
+    "name": "Pretoria",
+    "aliases": [],
+    "lat": -25.74486,
+    "lon": 28.18783,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "South Africa",
+    "iso2": "ZA",
+    "subdivision": "Gauteng"
+  },
+  "subjectAnswer": {
+    "name": "South Africa",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "South Africa",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city spreads along the Apies River, west into the low foothills of the Magaliesberg mountains. It sits in the north east of its land.",
+      "narrowing": "Puts the player in the north east of one land, on a river below low mountains.",
+      "source": {
+        "article": "Pretoria",
+        "url": "https://en.wikipedia.org/wiki/Pretoria",
+        "quote": "Pretoria straddles the Apies River and extends westward into the foothills of the Magaliesberg mountains."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This city sits high, yet its sheltered valley traps heat and keeps it warm. Rain comes most in summer, while winters stay dry, with rare sharp frost.",
+      "narrowing": "Rules out cold high lands; keeps a high valley that traps heat, with dry winters.",
+      "source": {
+        "article": "Pretoria",
+        "url": "https://en.wikipedia.org/wiki/Pretoria",
+        "quote": "its sheltered valley position, which acts as a heat trap and cuts it off from cool southerly and south-easterly air masses for much of the year. &#91; citation needed &#93; Rain is chiefly concentrated in the summer months, with drought conditions prevailing over the winter months, when frosts may be sharp."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "A trek leader founded this city in 1855 on the banks of the Apies River. He chose the spot to be the new capital of his republic.",
+      "narrowing": "Shrinks the list to capitals a trek leader founded for his republic in 1855.",
+      "source": {
+        "article": "Pretoria — History",
+        "url": "https://en.wikipedia.org/wiki/Pretoria#History",
+        "quote": "who named it after his father Andries Pretorius and chose a spot on the banks of the Apies rivier ( Afrikaans for \"Monkeys river\") to be the new capital of the South African Republic"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Thousands of jacaranda trees line the streets and parks of this city. Its own people call it Jacaranda City for them.",
+      "narrowing": "Nearly decisive: one capital is called Jacaranda City for its trees.",
+      "source": {
+        "article": "Pretoria",
+        "url": "https://en.wikipedia.org/wiki/Pretoria",
+        "quote": "because of the thousands of jacaranda trees planted along its streets and in its parks and gardens."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The top branch of rule for South Africa sits in this city. So do the embassies of all other lands.",
+      "narrowing": "Confirms it: South Africa's executive capital, home to all embassies.",
+      "source": {
+        "article": "Pretoria",
+        "url": "https://en.wikipedia.org/wiki/Pretoria",
+        "quote": "is the executive capital of South Africa, serving as the seat of the executive branch of government, and as the host to all foreign embassies to the country."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A trek leader founded this city in 1855 and made it the capital of his republic. The land now shares the capital job three ways: this city runs the government, while two other cities hold the laws and the courts. Thousands of jacaranda trees line its streets and parks. Pretoria is the capital of South Africa."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Pretoria"
+  },
+  "pointPolicy": "geonames-point"
+}

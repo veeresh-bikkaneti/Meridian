@@ -127,6 +127,12 @@ flowchart LR
 
 Notice what the pipeline does **not** contain: no LLM drafting place facts. The "no fabrication" rule (§2) is architectural, not aspirational.
 
+### Story packs — new content rides the existing engines (owner ruling, 2026-11-02)
+
+**Ruling (Veeresh, 2026-11-02, voice — no transcript):** new geography content lands as **case packs inside the existing engines** (GeoDetective, Cold Trail), never as standalone quiz modes or new editions. Coverage per category is a curated greatest-hits set — capitals (countries + states), rivers, oceans, mountain ranges + famous peaks, national parks, deserts, flags — never exhaustive globe coverage; completeness is a non-goal.
+
+The pack pipeline extends the one above rather than replacing it: an authoring record per case (`meridian.pack.case.v1`, with its Wikipedia extracts kept beside it) → `validate-pack.mjs` (the pack gate: ladder rules, verbatim-quote tracing, the Hyderabad wiring, the subject-leak rule) → the composer writes the pack's clue files, manifest, and briefing sidecar → the Cold Trail generator builds that edition's pack deck from the same records. Generated files are never hand-edited. The first pack is Capitals (72 cases; design of record: `docs/story-packs.md`; runbook: `scripts/packs/README.md`).
+
 ---
 
 ## 7. The provenance lesson (learned the hard way)

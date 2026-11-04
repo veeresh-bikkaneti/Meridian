@@ -1,0 +1,3725 @@
+{
+ "v": 1,
+ "cases": [
+  {
+   "v": 1,
+   "caseNo": 1,
+   "hideout": {
+    "placeId": "gn-3901178",
+    "name": "Yacuiba",
+    "lon": -63.67753,
+    "lat": -22.01643,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 19:59",
+     "cityId": "gn-3936456",
+     "cityName": "Lima",
+     "cityLon": -77.02824,
+     "cityLat": -12.04318,
+     "radiusKm": 1800,
+     "octant": "south-east",
+     "text": "Last seen filling jerrycans 1,800 km southeast of Lima.",
+     "region": {
+      "continent": "South America",
+      "country": "Peru",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 13:20",
+     "cityId": "gn-3435910",
+     "cityName": "Buenos Aires",
+     "cityLon": -58.37723,
+     "cityLat": -34.61315,
+     "radiusKm": 1500,
+     "octant": "north",
+     "text": "Last seen asking a gas attendant for directions 1,500 km north of Buenos Aires.",
+     "region": {
+      "continent": "South America",
+      "country": "Argentina",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 09:28",
+     "cityId": "gn-3871336",
+     "cityName": "Santiago",
+     "cityLon": -70.64827,
+     "cityLat": -33.45694,
+     "radiusKm": 1450,
+     "octant": "north-east",
+     "text": "Last seen buying supplies at a truck stop 1,450 km northeast of Santiago.",
+     "region": {
+      "continent": "South America",
+      "country": "Chile",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 2,
+   "hideout": {
+    "placeId": "gn-8858088",
+    "name": "Jardines de la Silla",
+    "lon": -100.18778,
+    "lat": 25.62944,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 20:18",
+     "cityId": "gn-3553478",
+     "cityName": "Havana",
+     "cityLon": -82.38304,
+     "cityLat": 23.13302,
+     "radiusKm": 1825,
+     "octant": "west",
+     "text": "Last seen sleeping in a parked car 1,825 km west of Havana.",
+     "region": {
+      "continent": "North America",
+      "country": "Cuba",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 08:03",
+     "cityId": "gn-4180439",
+     "cityName": "Atlanta",
+     "cityLon": -84.38798,
+     "cityLat": 33.749,
+     "radiusKm": 1775,
+     "octant": "south-west",
+     "text": "Last seen buying a burner phone 1,775 km southwest of Atlanta.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Georgia"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 20:51",
+     "cityId": "gn-5045360",
+     "cityName": "Saint Paul",
+     "cityLon": -93.09327,
+     "cityLat": 44.94441,
+     "radiusKm": 2250,
+     "octant": "south",
+     "text": "Last seen refueling a dusty pickup 2,250 km south of Saint Paul.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Minnesota"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 3,
+   "hideout": {
+    "placeId": "gn-1634680",
+    "name": "Muntilan",
+    "lon": 110.29278,
+    "lat": -7.58111,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 10:23",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 3225,
+     "octant": "south",
+     "text": "Last seen eating at a drive-through 3,225 km south of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 22:32",
+     "cityId": "gn-1609350",
+     "cityName": "Bangkok",
+     "cityLon": 100.50144,
+     "cityLat": 13.75398,
+     "radiusKm": 2625,
+     "octant": "south-east",
+     "text": "Last seen boarding a night bus 2,625 km southeast of Bangkok.",
+     "region": {
+      "continent": "Asia",
+      "country": "Thailand",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 14:50",
+     "cityId": "gn-1701668",
+     "cityName": "Manila",
+     "cityLon": 120.9822,
+     "cityLat": 14.6042,
+     "radiusKm": 2750,
+     "octant": "south-west",
+     "text": "Last seen buying supplies at a truck stop 2,750 km southwest of Manila.",
+     "region": {
+      "continent": "Asia",
+      "country": "Philippines",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 4,
+   "hideout": {
+    "placeId": "gn-2930596",
+    "name": "Emden",
+    "lon": 7.20846,
+    "lat": 53.36592,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 09:11",
+     "cityId": "gn-3117735",
+     "cityName": "Madrid",
+     "cityLon": -3.70256,
+     "cityLat": 40.4165,
+     "radiusKm": 1675,
+     "octant": "north-east",
+     "text": "Last seen asking a gas attendant for directions 1,675 km northeast of Madrid.",
+     "region": {
+      "continent": "Europe",
+      "country": "Spain",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 20:06",
+     "cityId": "gn-264371",
+     "cityName": "Athens",
+     "cityLon": 23.72784,
+     "cityLat": 37.98376,
+     "radiusKm": 2150,
+     "octant": "north-west",
+     "text": "Last spotted at a roadside diner 2,150 km northwest of Athens.",
+     "region": {
+      "continent": "Europe",
+      "country": "Greece",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 12:57",
+     "cityId": "gn-756135",
+     "cityName": "Warsaw",
+     "cityLon": 21.01178,
+     "cityLat": 52.22977,
+     "radiusKm": 950,
+     "octant": "west",
+     "text": "Last seen filling jerrycans 950 km west of Warsaw.",
+     "region": {
+      "continent": "Europe",
+      "country": "Poland",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 5,
+   "hideout": {
+    "placeId": "gn-1256207",
+    "name": "Sindhnūr",
+    "lon": 76.75581,
+    "lat": 15.76983,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 22:22",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 3125,
+     "octant": "west",
+     "text": "Last seen refueling a dusty pickup 3,125 km west of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 19:18",
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 1450,
+     "octant": "south",
+     "text": "Last seen refueling a dusty pickup 1,450 km south of New Delhi.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Delhi"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 08:37",
+     "cityId": "gn-1880252",
+     "cityName": "Singapore",
+     "cityLon": 103.85007,
+     "cityLat": 1.28967,
+     "radiusKm": 3400,
+     "octant": "north-west",
+     "text": "Last seen refueling a dusty pickup 3,400 km northwest of Singapore.",
+     "region": {
+      "continent": "Asia",
+      "country": "Singapore",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 6,
+   "hideout": {
+    "placeId": "gn-1274315",
+    "name": "Chhibrāmau",
+    "lon": 79.50078,
+    "lat": 27.14872,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 14:04",
+     "cityId": "gn-1816670",
+     "cityName": "Beijing",
+     "cityLon": 116.39723,
+     "cityLat": 39.9075,
+     "radiusKm": 3675,
+     "octant": "west",
+     "text": "Last seen buying a burner phone 3,675 km west of Beijing.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Beijing"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 08:16",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 2550,
+     "octant": "east",
+     "text": "Last seen buying supplies at a truck stop 2,550 km east of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 10:27",
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 300,
+     "octant": "south-east",
+     "text": "Last seen refueling a dusty pickup 300 km southeast of New Delhi.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Delhi"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 7,
+   "hideout": {
+    "placeId": "gn-1271079",
+    "name": "Gohāna",
+    "lon": 76.70247,
+    "lat": 29.13777,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 17:48",
+     "cityId": "gn-1609350",
+     "cityName": "Bangkok",
+     "cityLon": 100.50144,
+     "cityLat": 13.75398,
+     "radiusKm": 3000,
+     "octant": "north-west",
+     "text": "Last seen withdrawing cash from an ATM 3,000 km northwest of Bangkok.",
+     "region": {
+      "continent": "Asia",
+      "country": "Thailand",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 09:23",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 875,
+     "octant": "west",
+     "text": "Last seen buying a burner phone 875 km west of Kathmandu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 06:05",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 2275,
+     "octant": "east",
+     "text": "Last seen buying supplies at a truck stop 2,275 km east of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 8,
+   "hideout": {
+    "placeId": "gn-1789462",
+    "name": "Xihe",
+    "lon": 113.46585,
+    "lat": 31.68635,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 19:01",
+     "cityId": "gn-1850147",
+     "cityName": "Tokyo",
+     "cityLon": 139.69171,
+     "cityLat": 35.6895,
+     "radiusKm": 2475,
+     "octant": "west",
+     "text": "Last seen at a bus depot 2,475 km west of Tokyo.",
+     "region": {
+      "continent": "Asia",
+      "country": "Japan",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 19:59",
+     "cityId": "gn-1816670",
+     "cityName": "Beijing",
+     "cityLon": 116.39723,
+     "cityLat": 39.9075,
+     "radiusKm": 975,
+     "octant": "south",
+     "text": "Last seen filling jerrycans 975 km south of Beijing.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Beijing"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 10:51",
+     "cityId": "gn-1835848",
+     "cityName": "Seoul",
+     "cityLon": 126.9784,
+     "cityLat": 37.566,
+     "radiusKm": 1400,
+     "octant": "south-west",
+     "text": "Last seen eating at a drive-through 1,400 km southwest of Seoul.",
+     "region": {
+      "continent": "Asia",
+      "country": "South Korea",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 9,
+   "hideout": {
+    "placeId": "gn-7284891",
+    "name": "Marseille 09",
+    "lon": 5.4057,
+    "lat": 43.25433,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 09:25",
+     "cityId": "gn-3117735",
+     "cityName": "Madrid",
+     "cityLon": -3.70256,
+     "cityLat": 40.4165,
+     "radiusKm": 825,
+     "octant": "north-east",
+     "text": "Last seen eating at a drive-through 825 km northeast of Madrid.",
+     "region": {
+      "continent": "Europe",
+      "country": "Spain",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 21:00",
+     "cityId": "gn-703448",
+     "cityName": "Kyiv",
+     "cityLon": 30.5238,
+     "cityLat": 50.45466,
+     "radiusKm": 2075,
+     "octant": "west",
+     "text": "Last seen eating at a drive-through 2,075 km west of Kyiv.",
+     "region": {
+      "continent": "Europe",
+      "country": "Ukraine",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 06:26",
+     "cityId": "gn-658225",
+     "cityName": "Helsinki",
+     "cityLon": 24.93545,
+     "cityLat": 60.16952,
+     "radiusKm": 2300,
+     "octant": "south-west",
+     "text": "Last seen sleeping in a parked car 2,300 km southwest of Helsinki.",
+     "region": {
+      "continent": "Europe",
+      "country": "Finland",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 10,
+   "hideout": {
+    "placeId": "gn-260172",
+    "name": "Khalándrion",
+    "lon": 23.80068,
+    "lat": 38.02369,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 06:09",
+     "cityId": "gn-2759794",
+     "cityName": "Amsterdam",
+     "cityLon": 4.88969,
+     "cityLat": 52.37403,
+     "radiusKm": 2175,
+     "octant": "south-east",
+     "text": "Last seen buying a burner phone 2,175 km southeast of Amsterdam.",
+     "region": {
+      "continent": "Europe",
+      "country": "Netherlands",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 17:06",
+     "cityId": "gn-360630",
+     "cityName": "Cairo",
+     "cityLon": 31.24967,
+     "cityLat": 30.06263,
+     "radiusKm": 1125,
+     "octant": "north-west",
+     "text": "Last seen withdrawing cash from an ATM 1,125 km northwest of Cairo.",
+     "region": {
+      "continent": "Africa",
+      "country": "Egypt",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 14:26",
+     "cityId": "gn-3054643",
+     "cityName": "Budapest",
+     "cityLon": 19.04045,
+     "cityLat": 47.49835,
+     "radiusKm": 1125,
+     "octant": "south",
+     "text": "Last seen buying a burner phone 1,125 km south of Budapest.",
+     "region": {
+      "continent": "Europe",
+      "country": "Hungary",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 11,
+   "hideout": {
+    "placeId": "gn-1336136",
+    "name": "Bhola",
+    "lon": 90.64403,
+    "lat": 22.68759,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 19:55",
+     "cityId": "gn-1835848",
+     "cityName": "Seoul",
+     "cityLon": 126.9784,
+     "cityLat": 37.566,
+     "radiusKm": 3850,
+     "octant": "west",
+     "text": "Last seen hitching a ride from a trucker 3,850 km west of Seoul.",
+     "region": {
+      "continent": "Asia",
+      "country": "South Korea",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 12:18",
+     "cityId": "gn-1880252",
+     "cityName": "Singapore",
+     "cityLon": 103.85007,
+     "cityLat": 1.28967,
+     "radiusKm": 2775,
+     "octant": "north-west",
+     "text": "Last seen refueling a dusty pickup 2,775 km northwest of Singapore.",
+     "region": {
+      "continent": "Asia",
+      "country": "Singapore",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 18:13",
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 1500,
+     "octant": "south-east",
+     "text": "Last seen boarding a night bus 1,500 km southeast of New Delhi.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Delhi"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 12,
+   "hideout": {
+    "placeId": "gn-347883",
+    "name": "Sirs al Layyānah",
+    "lon": 30.96975,
+    "lat": 30.4428,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 06:38",
+     "cityId": "gn-2759794",
+     "cityName": "Amsterdam",
+     "cityLon": 4.88969,
+     "cityLat": 52.37403,
+     "radiusKm": 3250,
+     "octant": "south-east",
+     "text": "Last seen buying a burner phone 3,250 km southeast of Amsterdam.",
+     "region": {
+      "continent": "Europe",
+      "country": "Netherlands",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 08:29",
+     "cityId": "gn-524901",
+     "cityName": "Moscow",
+     "cityLon": 37.61781,
+     "cityLat": 55.75204,
+     "radiusKm": 2875,
+     "octant": "south",
+     "text": "Last seen asking a gas attendant for directions 2,875 km south of Moscow.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Moscow"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 12:41",
+     "cityId": "gn-344979",
+     "cityName": "Addis Ababa",
+     "cityLon": 38.74689,
+     "cityLat": 9.02497,
+     "radiusKm": 2525,
+     "octant": "north",
+     "text": "Last seen buying supplies at a truck stop 2,525 km north of Addis Ababa.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ethiopia",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 13,
+   "hideout": {
+    "placeId": "gn-3124408",
+    "name": "Coslada",
+    "lon": -3.56129,
+    "lat": 40.42378,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 08:14",
+     "cityId": "gn-3169070",
+     "cityName": "Rome",
+     "cityLon": 12.51133,
+     "cityLat": 41.89193,
+     "radiusKm": 1375,
+     "octant": "west",
+     "text": "Last seen asking a gas attendant for directions 1,375 km west of Rome.",
+     "region": {
+      "continent": "Europe",
+      "country": "Italy",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 05:38",
+     "cityId": "gn-3067696",
+     "cityName": "Prague",
+     "cityLon": 14.42076,
+     "cityLat": 50.08804,
+     "radiusKm": 1775,
+     "octant": "south-west",
+     "text": "Last seen asking a gas attendant for directions 1,775 km southwest of Prague.",
+     "region": {
+      "continent": "Europe",
+      "country": "Czechia",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 12:24",
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 525,
+     "octant": "north-east",
+     "text": "Last seen buying supplies at a truck stop 525 km northeast of Lisbon.",
+     "region": {
+      "continent": "Europe",
+      "country": "Portugal",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 14,
+   "hideout": {
+    "placeId": "gn-2746932",
+    "name": "Spijkenisse",
+    "lon": 4.32917,
+    "lat": 51.845,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 15:42",
+     "cityId": "gn-264371",
+     "cityName": "Athens",
+     "cityLon": 23.72784,
+     "cityLat": 37.98376,
+     "radiusKm": 2175,
+     "octant": "north-west",
+     "text": "Last seen filling jerrycans 2,175 km northwest of Athens.",
+     "region": {
+      "continent": "Europe",
+      "country": "Greece",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 12:36",
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 1800,
+     "octant": "north-east",
+     "text": "Last seen sleeping in a parked car 1,800 km northeast of Lisbon.",
+     "region": {
+      "continent": "Europe",
+      "country": "Portugal",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 05:31",
+     "cityId": "gn-2988507",
+     "cityName": "Paris",
+     "cityLon": 2.3488,
+     "cityLat": 48.85341,
+     "radiusKm": 375,
+     "octant": "north",
+     "text": "Last seen sleeping in a parked car 375 km north of Paris.",
+     "region": {
+      "continent": "Europe",
+      "country": "France",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 15,
+   "hideout": {
+    "placeId": "gn-4355843",
+    "name": "Gaithersburg",
+    "lon": -77.20137,
+    "lat": 39.14344,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 08:44",
+     "cityId": "gn-3530597",
+     "cityName": "Mexico City",
+     "cityLon": -99.12766,
+     "cityLat": 19.42847,
+     "radiusKm": 3050,
+     "octant": "north-east",
+     "text": "Last seen filling jerrycans 3,050 km northeast of Mexico City.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 09:28",
+     "cityId": "gn-4259418",
+     "cityName": "Indianapolis",
+     "cityLon": -86.15804,
+     "cityLat": 39.76838,
+     "radiusKm": 775,
+     "octant": "east",
+     "text": "Last seen boarding a night bus 775 km east of Indianapolis.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Indiana"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 20:32",
+     "cityId": "gn-3553478",
+     "cityName": "Havana",
+     "cityLon": -82.38304,
+     "cityLat": 23.13302,
+     "radiusKm": 1850,
+     "octant": "north",
+     "text": "Last seen withdrawing cash from an ATM 1,850 km north of Havana.",
+     "region": {
+      "continent": "North America",
+      "country": "Cuba",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 16,
+   "hideout": {
+    "placeId": "gn-209598",
+    "name": "Manono",
+    "lon": 27.39894,
+    "lat": -7.29862,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 09:39",
+     "cityId": "gn-344979",
+     "cityName": "Addis Ababa",
+     "cityLon": 38.74689,
+     "cityLat": 9.02497,
+     "radiusKm": 2225,
+     "octant": "south-west",
+     "text": "Last seen buying supplies at a truck stop 2,225 km southwest of Addis Ababa.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ethiopia",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 20:51",
+     "cityId": "gn-964137",
+     "cityName": "Pretoria",
+     "cityLon": 28.18783,
+     "cityLat": -25.74486,
+     "radiusKm": 2075,
+     "octant": "north",
+     "text": "Last seen asking a gas attendant for directions 2,075 km north of Pretoria.",
+     "region": {
+      "continent": "Africa",
+      "country": "South Africa",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 08:58",
+     "cityId": "gn-2306104",
+     "cityName": "Accra",
+     "cityLon": -0.1969,
+     "cityLat": 5.55602,
+     "radiusKm": 3400,
+     "octant": "south-east",
+     "text": "Last seen buying a burner phone 3,400 km southeast of Accra.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ghana",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 17,
+   "hideout": {
+    "placeId": "gn-2378538",
+    "name": "Kiffa",
+    "lon": -11.40208,
+    "lat": 16.62073,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 11:45",
+     "cityId": "gn-2988507",
+     "cityName": "Paris",
+     "cityLon": 2.3488,
+     "cityLat": 48.85341,
+     "radiusKm": 3800,
+     "octant": "south-west",
+     "text": "Last seen at a bus depot 3,800 km southwest of Paris.",
+     "region": {
+      "continent": "Europe",
+      "country": "France",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 18:36",
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 2475,
+     "octant": "south",
+     "text": "Last seen sleeping in a parked car 2,475 km south of Lisbon.",
+     "region": {
+      "continent": "Europe",
+      "country": "Portugal",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 22:19",
+     "cityId": "gn-2306104",
+     "cityName": "Accra",
+     "cityLon": -0.1969,
+     "cityLat": 5.55602,
+     "radiusKm": 1750,
+     "octant": "north-west",
+     "text": "Last seen sleeping in a parked car 1,750 km northwest of Accra.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ghana",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 18,
+   "hideout": {
+    "placeId": "gn-1799384",
+    "name": "Ninghai",
+    "lon": 121.42472,
+    "lat": 29.28917,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 09:15",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 3525,
+     "octant": "east",
+     "text": "Last seen buying a burner phone 3,525 km east of Kathmandu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 21:26",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 1825,
+     "octant": "north-east",
+     "text": "Last seen hitching a ride from a trucker 1,825 km northeast of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 18:14",
+     "cityId": "gn-1701668",
+     "cityName": "Manila",
+     "cityLon": 120.9822,
+     "cityLat": 14.6042,
+     "radiusKm": 1650,
+     "octant": "north",
+     "text": "Last seen buying supplies at a truck stop 1,650 km north of Manila.",
+     "region": {
+      "continent": "Asia",
+      "country": "Philippines",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 19,
+   "hideout": {
+    "placeId": "gn-4501018",
+    "name": "Camden",
+    "lon": -75.11962,
+    "lat": 39.92595,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 06:51",
+     "cityId": "gn-3553478",
+     "cityName": "Havana",
+     "cityLon": -82.38304,
+     "cityLat": 23.13302,
+     "radiusKm": 2000,
+     "octant": "north",
+     "text": "Last seen at a bus depot 2,000 km north of Havana.",
+     "region": {
+      "continent": "North America",
+      "country": "Cuba",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 16:14",
+     "cityId": "gn-6094817",
+     "cityName": "Ottawa",
+     "cityLon": -75.69812,
+     "cityLat": 45.41117,
+     "radiusKm": 625,
+     "octant": "south",
+     "text": "Last seen hitching a ride from a trucker 625 km south of Ottawa.",
+     "region": {
+      "continent": "North America",
+      "country": "Canada",
+      "subdivision": "Ontario"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 13:23",
+     "cityId": "gn-4644585",
+     "cityName": "Nashville",
+     "cityLon": -86.78444,
+     "cityLat": 36.16589,
+     "radiusKm": 1125,
+     "octant": "north-east",
+     "text": "Last seen refueling a dusty pickup 1,125 km northeast of Nashville.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Tennessee"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 20,
+   "hideout": {
+    "placeId": "gn-3804949",
+    "name": "Guasdualito",
+    "lon": -70.73235,
+    "lat": 7.24241,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 05:13",
+     "cityId": "gn-3530597",
+     "cityName": "Mexico City",
+     "cityLon": -99.12766,
+     "cityLat": 19.42847,
+     "radiusKm": 3375,
+     "octant": "east",
+     "text": "Last seen filling jerrycans 3,375 km east of Mexico City.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 14:58",
+     "cityId": "gn-4259418",
+     "cityName": "Indianapolis",
+     "cityLon": -86.15804,
+     "cityLat": 39.76838,
+     "radiusKm": 3950,
+     "octant": "south-east",
+     "text": "Last seen eating at a drive-through 3,950 km southeast of Indianapolis.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Indiana"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 06:04",
+     "cityId": "gn-4487042",
+     "cityName": "Raleigh",
+     "cityLon": -78.63861,
+     "cityLat": 35.7721,
+     "radiusKm": 3275,
+     "octant": "south",
+     "text": "Last seen boarding a night bus 3,275 km south of Raleigh.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "North Carolina"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 21,
+   "hideout": {
+    "placeId": "gn-4792867",
+    "name": "West Lynchburg",
+    "lon": -79.17808,
+    "lat": 37.4032,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 07:40",
+     "cityId": "gn-4509177",
+     "cityName": "Columbus",
+     "cityLon": -82.99879,
+     "cityLat": 39.96118,
+     "radiusKm": 450,
+     "octant": "south-east",
+     "text": "Last seen sleeping in a parked car 450 km southeast of Columbus.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Ohio"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 22:47",
+     "cityId": "gn-4644585",
+     "cityName": "Nashville",
+     "cityLon": -86.78444,
+     "cityLat": 36.16589,
+     "radiusKm": 700,
+     "octant": "east",
+     "text": "Last spotted at a roadside diner 700 km east of Nashville.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Tennessee"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 13:09",
+     "cityId": "gn-6094817",
+     "cityName": "Ottawa",
+     "cityLon": -75.69812,
+     "cityLat": 45.41117,
+     "radiusKm": 950,
+     "octant": "south",
+     "text": "Last seen refueling a dusty pickup 950 km south of Ottawa.",
+     "region": {
+      "continent": "North America",
+      "country": "Canada",
+      "subdivision": "Ontario"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 22,
+   "hideout": {
+    "placeId": "gn-1513962",
+    "name": "Gurlan",
+    "lon": 60.39268,
+    "lat": 41.84123,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 19:28",
+     "cityId": "gn-703448",
+     "cityName": "Kyiv",
+     "cityLon": 30.5238,
+     "cityLat": 50.45466,
+     "radiusKm": 2475,
+     "octant": "east",
+     "text": "Last seen refueling a dusty pickup 2,475 km east of Kyiv.",
+     "region": {
+      "continent": "Europe",
+      "country": "Ukraine",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 10:53",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 2025,
+     "octant": "north",
+     "text": "Last seen eating at a drive-through 2,025 km north of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 07:29",
+     "cityId": "gn-360630",
+     "cityName": "Cairo",
+     "cityLon": 31.24967,
+     "cityLat": 30.06263,
+     "radiusKm": 2925,
+     "octant": "north-east",
+     "text": "Last seen filling jerrycans 2,925 km northeast of Cairo.",
+     "region": {
+      "continent": "Africa",
+      "country": "Egypt",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 23,
+   "hideout": {
+    "placeId": "gn-4934964",
+    "name": "Dorchester",
+    "lon": -71.0745,
+    "lat": 42.29732,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 09:37",
+     "cityId": "gn-4509177",
+     "cityName": "Columbus",
+     "cityLon": -82.99879,
+     "cityLat": 39.96118,
+     "radiusKm": 1050,
+     "octant": "east",
+     "text": "Last seen hitching a ride from a trucker 1,050 km east of Columbus.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Ohio"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 09:28",
+     "cityId": "gn-3530597",
+     "cityName": "Mexico City",
+     "cityLon": -99.12766,
+     "cityLat": 19.42847,
+     "radiusKm": 3675,
+     "octant": "north-east",
+     "text": "Last seen withdrawing cash from an ATM 3,675 km northeast of Mexico City.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 20:12",
+     "cityId": "gn-6094817",
+     "cityName": "Ottawa",
+     "cityLon": -75.69812,
+     "cityLat": 45.41117,
+     "radiusKm": 525,
+     "octant": "south-east",
+     "text": "Last seen buying supplies at a truck stop 525 km southeast of Ottawa.",
+     "region": {
+      "continent": "North America",
+      "country": "Canada",
+      "subdivision": "Ontario"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 24,
+   "hideout": {
+    "placeId": "gn-2518494",
+    "name": "El Ejido",
+    "lon": -2.81456,
+    "lat": 36.77629,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 06:01",
+     "cityId": "gn-2306104",
+     "cityName": "Accra",
+     "cityLon": -0.1969,
+     "cityLat": 5.55602,
+     "radiusKm": 3500,
+     "octant": "north",
+     "text": "Last seen at a bus depot 3,500 km north of Accra.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ghana",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 05:51",
+     "cityId": "gn-2618425",
+     "cityName": "Copenhagen",
+     "cityLon": 12.56553,
+     "cityLat": 55.67594,
+     "radiusKm": 2400,
+     "octant": "south-west",
+     "text": "Last seen asking a gas attendant for directions 2,400 km southwest of Copenhagen.",
+     "region": {
+      "continent": "Europe",
+      "country": "Denmark",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 13:56",
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 600,
+     "octant": "east",
+     "text": "Last seen boarding a night bus 600 km east of Lisbon.",
+     "region": {
+      "continent": "Europe",
+      "country": "Portugal",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 25,
+   "hideout": {
+    "placeId": "gn-1279003",
+    "name": "Alīpur Duār",
+    "lon": 89.52286,
+    "lat": 26.4835,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 12:44",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 1775,
+     "octant": "north-west",
+     "text": "Last seen hitching a ride from a trucker 1,775 km northwest of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 19:25",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 3525,
+     "octant": "east",
+     "text": "Last seen withdrawing cash from an ATM 3,525 km east of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 05:16",
+     "cityId": "gn-1816670",
+     "cityName": "Beijing",
+     "cityLon": 116.39723,
+     "cityLat": 39.9075,
+     "radiusKm": 2900,
+     "octant": "south-west",
+     "text": "Last seen boarding a night bus 2,900 km southwest of Beijing.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Beijing"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 26,
+   "hideout": {
+    "placeId": "gn-109253",
+    "name": "Al Līth",
+    "lon": 40.27224,
+    "lat": 20.14804,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 21:45",
+     "cityId": "gn-756135",
+     "cityName": "Warsaw",
+     "cityLon": 21.01178,
+     "cityLat": 52.22977,
+     "radiusKm": 3950,
+     "octant": "south-east",
+     "text": "Last seen asking a gas attendant for directions 3,950 km southeast of Warsaw.",
+     "region": {
+      "continent": "Europe",
+      "country": "Poland",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 11:30",
+     "cityId": "gn-344979",
+     "cityName": "Addis Ababa",
+     "cityLon": 38.74689,
+     "cityLat": 9.02497,
+     "radiusKm": 1250,
+     "octant": "north",
+     "text": "Last seen asking a gas attendant for directions 1,250 km north of Addis Ababa.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ethiopia",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 13:15",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 1550,
+     "octant": "west",
+     "text": "Last seen withdrawing cash from an ATM 1,550 km west of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 27,
+   "hideout": {
+    "placeId": "gn-4155529",
+    "name": "Flagami",
+    "lon": -80.31616,
+    "lat": 25.76232,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 08:07",
+     "cityId": "gn-4259418",
+     "cityName": "Indianapolis",
+     "cityLon": -86.15804,
+     "cityLat": 39.76838,
+     "radiusKm": 1650,
+     "octant": "south",
+     "text": "Last seen eating at a drive-through 1,650 km south of Indianapolis.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Indiana"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 10:12",
+     "cityId": "gn-4180439",
+     "cityName": "Atlanta",
+     "cityLon": -84.38798,
+     "cityLat": 33.749,
+     "radiusKm": 975,
+     "octant": "south-east",
+     "text": "Last seen buying supplies at a truck stop 975 km southeast of Atlanta.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Georgia"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 16:32",
+     "cityId": "gn-3530597",
+     "cityName": "Mexico City",
+     "cityLon": -99.12766,
+     "cityLat": 19.42847,
+     "radiusKm": 2075,
+     "octant": "north-east",
+     "text": "Last spotted at a roadside diner 2,075 km northeast of Mexico City.",
+     "region": {
+      "continent": "North America",
+      "country": "Mexico",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 28,
+   "hideout": {
+    "placeId": "gn-1259154",
+    "name": "Pusad",
+    "lon": 77.57838,
+    "lat": 19.91274,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 12:30",
+     "cityId": "gn-1880252",
+     "cityName": "Singapore",
+     "cityLon": 103.85007,
+     "cityLat": 1.28967,
+     "radiusKm": 3550,
+     "octant": "north-west",
+     "text": "Last spotted at a roadside diner 3,550 km northwest of Singapore.",
+     "region": {
+      "continent": "Asia",
+      "country": "Singapore",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 05:14",
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 975,
+     "octant": "south",
+     "text": "Last seen boarding a night bus 975 km south of New Delhi.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Delhi"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 09:37",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 2450,
+     "octant": "east",
+     "text": "Last seen buying a burner phone 2,450 km east of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 29,
+   "hideout": {
+    "placeId": "gn-352628",
+    "name": "Maţāy",
+    "lon": 30.77861,
+    "lat": 28.41866,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 15:12",
+     "cityId": "gn-3117735",
+     "cityName": "Madrid",
+     "cityLon": -3.70256,
+     "cityLat": 40.4165,
+     "radiusKm": 3425,
+     "octant": "east",
+     "text": "Last seen buying supplies at a truck stop 3,425 km east of Madrid.",
+     "region": {
+      "continent": "Europe",
+      "country": "Spain",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 05:44",
+     "cityId": "gn-2643743",
+     "cityName": "London",
+     "cityLon": -0.12574,
+     "cityLat": 51.50853,
+     "radiusKm": 3650,
+     "octant": "south-east",
+     "text": "Last seen eating at a drive-through 3,650 km southeast of London.",
+     "region": {
+      "continent": "Europe",
+      "country": "United Kingdom",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 15:47",
+     "cityId": "gn-756135",
+     "cityName": "Warsaw",
+     "cityLon": 21.01178,
+     "cityLat": 52.22977,
+     "radiusKm": 2775,
+     "octant": "south",
+     "text": "Last seen hitching a ride from a trucker 2,775 km south of Warsaw.",
+     "region": {
+      "continent": "Europe",
+      "country": "Poland",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 30,
+   "hideout": {
+    "placeId": "gn-122915",
+    "name": "Nahāvand",
+    "lon": 48.37446,
+    "lat": 34.19088,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 11:56",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 3600,
+     "octant": "west",
+     "text": "Last seen at a bus depot 3,600 km west of Kathmandu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 21:03",
+     "cityId": "gn-2761369",
+     "cityName": "Vienna",
+     "cityLon": 16.37208,
+     "cityLat": 48.20849,
+     "radiusKm": 3075,
+     "octant": "east",
+     "text": "Last seen withdrawing cash from an ATM 3,075 km east of Vienna.",
+     "region": {
+      "continent": "Europe",
+      "country": "Austria",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 07:56",
+     "cityId": "gn-344979",
+     "cityName": "Addis Ababa",
+     "cityLon": 38.74689,
+     "cityLat": 9.02497,
+     "radiusKm": 2975,
+     "octant": "north",
+     "text": "Last seen sleeping in a parked car 2,975 km north of Addis Ababa.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ethiopia",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 31,
+   "hideout": {
+    "placeId": "gn-1640902",
+    "name": "Kawalu",
+    "lon": 108.2082,
+    "lat": -7.3817,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 21:02",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 3175,
+     "octant": "south",
+     "text": "Last spotted at a roadside diner 3,175 km south of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 11:29",
+     "cityId": "gn-1880252",
+     "cityName": "Singapore",
+     "cityLon": 103.85007,
+     "cityLat": 1.28967,
+     "radiusKm": 1100,
+     "octant": "south-east",
+     "text": "Last seen boarding a night bus 1,100 km southeast of Singapore.",
+     "region": {
+      "continent": "Asia",
+      "country": "Singapore",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 06:41",
+     "cityId": "gn-1701668",
+     "cityName": "Manila",
+     "cityLon": 120.9822,
+     "cityLat": 14.6042,
+     "radiusKm": 2825,
+     "octant": "south-west",
+     "text": "Last seen buying a burner phone 2,825 km southwest of Manila.",
+     "region": {
+      "continent": "Asia",
+      "country": "Philippines",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 32,
+   "hideout": {
+    "placeId": "gn-2222230",
+    "name": "Sangmélima",
+    "lon": 11.98333,
+    "lat": 2.93333,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 16:35",
+     "cityId": "gn-360630",
+     "cityName": "Cairo",
+     "cityLon": 31.24967,
+     "cityLat": 30.06263,
+     "radiusKm": 3650,
+     "octant": "south-west",
+     "text": "Last seen eating at a drive-through 3,650 km southwest of Cairo.",
+     "region": {
+      "continent": "Africa",
+      "country": "Egypt",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 09:20",
+     "cityId": "gn-344979",
+     "cityName": "Addis Ababa",
+     "cityLon": 38.74689,
+     "cityLat": 9.02497,
+     "radiusKm": 3050,
+     "octant": "west",
+     "text": "Last seen sleeping in a parked car 3,050 km west of Addis Ababa.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ethiopia",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 19:53",
+     "cityId": "gn-964137",
+     "cityName": "Pretoria",
+     "cityLon": 28.18783,
+     "cityLat": -25.74486,
+     "radiusKm": 3650,
+     "octant": "north-west",
+     "text": "Last seen boarding a night bus 3,650 km northwest of Pretoria.",
+     "region": {
+      "continent": "Africa",
+      "country": "South Africa",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 33,
+   "hideout": {
+    "placeId": "gn-1896953",
+    "name": "Pubal",
+    "lon": 127.50778,
+    "lat": 37.29167,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 06:36",
+     "cityId": "gn-1701668",
+     "cityName": "Manila",
+     "cityLon": 120.9822,
+     "cityLat": 14.6042,
+     "radiusKm": 2625,
+     "octant": "north",
+     "text": "Last seen boarding a night bus 2,625 km north of Manila.",
+     "region": {
+      "continent": "Asia",
+      "country": "Philippines",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 11:41",
+     "cityId": "gn-1816670",
+     "cityName": "Beijing",
+     "cityLon": 116.39723,
+     "cityLat": 39.9075,
+     "radiusKm": 1025,
+     "octant": "east",
+     "text": "Last seen filling jerrycans 1,025 km east of Beijing.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Beijing"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 15:56",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 2775,
+     "octant": "north-east",
+     "text": "Last seen hitching a ride from a trucker 2,775 km northeast of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 34,
+   "hideout": {
+    "placeId": "gn-303831",
+    "name": "Nevşehir",
+    "lon": 34.71222,
+    "lat": 38.625,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 17:03",
+     "cityId": "gn-264371",
+     "cityName": "Athens",
+     "cityLon": 23.72784,
+     "cityLat": 37.98376,
+     "radiusKm": 975,
+     "octant": "east",
+     "text": "Last seen buying a burner phone 975 km east of Athens.",
+     "region": {
+      "continent": "Europe",
+      "country": "Greece",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 05:57",
+     "cityId": "gn-524901",
+     "cityName": "Moscow",
+     "cityLon": 37.61781,
+     "cityLat": 55.75204,
+     "radiusKm": 1925,
+     "octant": "south",
+     "text": "Last spotted at a roadside diner 1,925 km south of Moscow.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Moscow"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 18:55",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 2450,
+     "octant": "north-west",
+     "text": "Last spotted at a roadside diner 2,450 km northwest of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 35,
+   "hideout": {
+    "placeId": "gn-3531576",
+    "name": "Cárdenas",
+    "lon": -93.37559,
+    "lat": 18.00135,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 17:35",
+     "cityId": "gn-4509177",
+     "cityName": "Columbus",
+     "cityLon": -82.99879,
+     "cityLat": 39.96118,
+     "radiusKm": 2650,
+     "octant": "south-west",
+     "text": "Last seen hitching a ride from a trucker 2,650 km southwest of Columbus.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Ohio"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 13:52",
+     "cityId": "gn-5419384",
+     "cityName": "Denver",
+     "cityLon": -104.9847,
+     "cityLat": 39.73915,
+     "radiusKm": 2675,
+     "octant": "south-east",
+     "text": "Last seen buying a burner phone 2,675 km southeast of Denver.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Colorado"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 16:01",
+     "cityId": "gn-3936456",
+     "cityName": "Lima",
+     "cityLon": -77.02824,
+     "cityLat": -12.04318,
+     "radiusKm": 3800,
+     "octant": "north-west",
+     "text": "Last seen hitching a ride from a trucker 3,800 km northwest of Lima.",
+     "region": {
+      "continent": "South America",
+      "country": "Peru",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 36,
+   "hideout": {
+    "placeId": "gn-13680014",
+    "name": "Định Công",
+    "lon": 105.82694,
+    "lat": 20.98389,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 12:48",
+     "cityId": "gn-1609350",
+     "cityName": "Bangkok",
+     "cityLon": 100.50144,
+     "cityLat": 13.75398,
+     "radiusKm": 1000,
+     "octant": "north-east",
+     "text": "Last seen buying supplies at a truck stop 1,000 km northeast of Bangkok.",
+     "region": {
+      "continent": "Asia",
+      "country": "Thailand",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 21:12",
+     "cityId": "gn-1816670",
+     "cityName": "Beijing",
+     "cityLon": 116.39723,
+     "cityLat": 39.9075,
+     "radiusKm": 2350,
+     "octant": "south-west",
+     "text": "Last seen buying supplies at a truck stop 2,350 km southwest of Beijing.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Beijing"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 16:05",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 2225,
+     "octant": "east",
+     "text": "Last seen buying a burner phone 2,225 km east of Kathmandu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 37,
+   "hideout": {
+    "placeId": "gn-2528659",
+    "name": "Tiflet",
+    "lon": -6.30649,
+    "lat": 33.89469,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 20:11",
+     "cityId": "gn-2964574",
+     "cityName": "Dublin",
+     "cityLon": -6.24889,
+     "cityLat": 53.33306,
+     "radiusKm": 2175,
+     "octant": "south",
+     "text": "Last seen sleeping in a parked car 2,175 km south of Dublin.",
+     "region": {
+      "continent": "Europe",
+      "country": "Ireland",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 12:28",
+     "cityId": "gn-2759794",
+     "cityName": "Amsterdam",
+     "cityLon": 4.88969,
+     "cityLat": 52.37403,
+     "radiusKm": 2250,
+     "octant": "south-west",
+     "text": "Last seen at a bus depot 2,250 km southwest of Amsterdam.",
+     "region": {
+      "continent": "Europe",
+      "country": "Netherlands",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 22:01",
+     "cityId": "gn-2306104",
+     "cityName": "Accra",
+     "cityLon": -0.1969,
+     "cityLat": 5.55602,
+     "radiusKm": 3225,
+     "octant": "north",
+     "text": "Last spotted at a roadside diner 3,225 km north of Accra.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ghana",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 38,
+   "hideout": {
+    "placeId": "gn-2922586",
+    "name": "Garbsen",
+    "lon": 9.6033,
+    "lat": 52.41961,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 13:52",
+     "cityId": "gn-2759794",
+     "cityName": "Amsterdam",
+     "cityLon": 4.88969,
+     "cityLat": 52.37403,
+     "radiusKm": 325,
+     "octant": "east",
+     "text": "Last seen withdrawing cash from an ATM 325 km east of Amsterdam.",
+     "region": {
+      "continent": "Europe",
+      "country": "Netherlands",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 06:52",
+     "cityId": "gn-3054643",
+     "cityName": "Budapest",
+     "cityLon": 19.04045,
+     "cityLat": 47.49835,
+     "radiusKm": 875,
+     "octant": "north-west",
+     "text": "Last seen eating at a drive-through 875 km northwest of Budapest.",
+     "region": {
+      "continent": "Europe",
+      "country": "Hungary",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 11:04",
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 2100,
+     "octant": "north-east",
+     "text": "Last seen boarding a night bus 2,100 km northeast of Lisbon.",
+     "region": {
+      "continent": "Europe",
+      "country": "Portugal",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 39,
+   "hideout": {
+    "placeId": "gn-5009586",
+    "name": "Shelby",
+    "lon": -83.03298,
+    "lat": 42.67087,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 16:24",
+     "cityId": "gn-4180439",
+     "cityName": "Atlanta",
+     "cityLon": -84.38798,
+     "cityLat": 33.749,
+     "radiusKm": 1000,
+     "octant": "north",
+     "text": "Last spotted at a roadside diner 1,000 km north of Atlanta.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Georgia"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 06:44",
+     "cityId": "gn-5389489",
+     "cityName": "Sacramento",
+     "cityLon": -121.4944,
+     "cityLat": 38.58157,
+     "radiusKm": 3250,
+     "octant": "east",
+     "text": "Last seen eating at a drive-through 3,250 km east of Sacramento.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "California"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 13:46",
+     "cityId": "gn-4487042",
+     "cityName": "Raleigh",
+     "cityLon": -78.63861,
+     "cityLat": 35.7721,
+     "radiusKm": 875,
+     "octant": "north-west",
+     "text": "Last seen buying a burner phone 875 km northwest of Raleigh.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "North Carolina"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 40,
+   "hideout": {
+    "placeId": "gn-2513917",
+    "name": "Mérida",
+    "lon": -6.34292,
+    "lat": 38.91802,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 06:07",
+     "cityId": "gn-2964574",
+     "cityName": "Dublin",
+     "cityLon": -6.24889,
+     "cityLat": 53.33306,
+     "radiusKm": 1625,
+     "octant": "south",
+     "text": "Last seen boarding a night bus 1,625 km south of Dublin.",
+     "region": {
+      "continent": "Europe",
+      "country": "Ireland",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 07:22",
+     "cityId": "gn-524901",
+     "cityName": "Moscow",
+     "cityLon": 37.61781,
+     "cityLat": 55.75204,
+     "radiusKm": 3725,
+     "octant": "west",
+     "text": "Last seen buying supplies at a truck stop 3,725 km west of Moscow.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Moscow"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 16:19",
+     "cityId": "gn-2950159",
+     "cityName": "Berlin",
+     "cityLon": 13.41053,
+     "cityLat": 52.52437,
+     "radiusKm": 2150,
+     "octant": "south-west",
+     "text": "Last seen buying a burner phone 2,150 km southwest of Berlin.",
+     "region": {
+      "continent": "Europe",
+      "country": "Germany",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 41,
+   "hideout": {
+    "placeId": "gn-690688",
+    "name": "Uman",
+    "lon": 30.21944,
+    "lat": 48.7501,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 20:42",
+     "cityId": "gn-2950159",
+     "cityName": "Berlin",
+     "cityLon": 13.41053,
+     "cityLat": 52.52437,
+     "radiusKm": 1275,
+     "octant": "east",
+     "text": "Last seen withdrawing cash from an ATM 1,275 km east of Berlin.",
+     "region": {
+      "continent": "Europe",
+      "country": "Germany",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 18:02",
+     "cityId": "gn-264371",
+     "cityName": "Athens",
+     "cityLon": 23.72784,
+     "cityLat": 37.98376,
+     "radiusKm": 1325,
+     "octant": "north",
+     "text": "Last seen boarding a night bus 1,325 km north of Athens.",
+     "region": {
+      "continent": "Europe",
+      "country": "Greece",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 10:40",
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 3325,
+     "octant": "north-east",
+     "text": "Last seen asking a gas attendant for directions 3,325 km northeast of Lisbon.",
+     "region": {
+      "continent": "Europe",
+      "country": "Portugal",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 42,
+   "hideout": {
+    "placeId": "gn-206847",
+    "name": "Nyunzu",
+    "lon": 28.01649,
+    "lat": -5.95609,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 07:10",
+     "cityId": "gn-344979",
+     "cityName": "Addis Ababa",
+     "cityLon": 38.74689,
+     "cityLat": 9.02497,
+     "radiusKm": 2050,
+     "octant": "south-west",
+     "text": "Last seen eating at a drive-through 2,050 km southwest of Addis Ababa.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ethiopia",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 10:27",
+     "cityId": "gn-2306104",
+     "cityName": "Accra",
+     "cityLon": -0.1969,
+     "cityLat": 5.55602,
+     "radiusKm": 3400,
+     "octant": "east",
+     "text": "Last spotted at a roadside diner 3,400 km east of Accra.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ghana",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 09:43",
+     "cityId": "gn-964137",
+     "cityName": "Pretoria",
+     "cityLon": 28.18783,
+     "cityLat": -25.74486,
+     "radiusKm": 2225,
+     "octant": "north",
+     "text": "Last seen withdrawing cash from an ATM 2,225 km north of Pretoria.",
+     "region": {
+      "continent": "Africa",
+      "country": "South Africa",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 43,
+   "hideout": {
+    "placeId": "gn-1239047",
+    "name": "Kotikawatta",
+    "lon": 79.9095,
+    "lat": 6.9269,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 16:54",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 3350,
+     "octant": "south-east",
+     "text": "Last seen buying a burner phone 3,350 km southeast of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 13:58",
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 3350,
+     "octant": "north-west",
+     "text": "Last seen withdrawing cash from an ATM 3,350 km northwest of Jakarta.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 21:06",
+     "cityId": "gn-1609350",
+     "cityName": "Bangkok",
+     "cityLon": 100.50144,
+     "cityLat": 13.75398,
+     "radiusKm": 2400,
+     "octant": "west",
+     "text": "Last seen at a bus depot 2,400 km west of Bangkok.",
+     "region": {
+      "continent": "Asia",
+      "country": "Thailand",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 44,
+   "hideout": {
+    "placeId": "gn-1512524",
+    "name": "Tŭytepa",
+    "lon": 69.36253,
+    "lat": 41.0321,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 10:32",
+     "cityId": "gn-1816670",
+     "cityName": "Beijing",
+     "cityLon": 116.39723,
+     "cityLat": 39.9075,
+     "radiusKm": 3950,
+     "octant": "west",
+     "text": "Last seen at a bus depot 3,950 km west of Beijing.",
+     "region": {
+      "continent": "Asia",
+      "country": "China",
+      "subdivision": "Beijing"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 17:53",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 2325,
+     "octant": "north-east",
+     "text": "Last seen buying supplies at a truck stop 2,325 km northeast of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 16:47",
+     "cityId": "gn-756135",
+     "cityName": "Warsaw",
+     "cityLon": 21.01178,
+     "cityLat": 52.22977,
+     "radiusKm": 3825,
+     "octant": "east",
+     "text": "Last seen eating at a drive-through 3,825 km east of Warsaw.",
+     "region": {
+      "continent": "Europe",
+      "country": "Poland",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 45,
+   "hideout": {
+    "placeId": "gn-70979",
+    "name": "Sayyān",
+    "lon": 44.32442,
+    "lat": 15.17177,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 16:09",
+     "cityId": "gn-344979",
+     "cityName": "Addis Ababa",
+     "cityLon": 38.74689,
+     "cityLat": 9.02497,
+     "radiusKm": 925,
+     "octant": "north-east",
+     "text": "Last spotted at a roadside diner 925 km northeast of Addis Ababa.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ethiopia",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 05:06",
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 3700,
+     "octant": "west",
+     "text": "Last seen sleeping in a parked car 3,700 km west of New Delhi.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Delhi"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 08:48",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 1475,
+     "octant": "south-west",
+     "text": "Last seen refueling a dusty pickup 1,475 km southwest of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 46,
+   "hideout": {
+    "placeId": "gn-2647138",
+    "name": "Hemel Hempstead",
+    "lon": -0.44975,
+    "lat": 51.75368,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 11:57",
+     "cityId": "gn-2964574",
+     "cityName": "Dublin",
+     "cityLon": -6.24889,
+     "cityLat": 53.33306,
+     "radiusKm": 450,
+     "octant": "east",
+     "text": "Last seen at a bus depot 450 km east of Dublin.",
+     "region": {
+      "continent": "Europe",
+      "country": "Ireland",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 12:47",
+     "cityId": "gn-2759794",
+     "cityName": "Amsterdam",
+     "cityLon": 4.88969,
+     "cityLat": 52.37403,
+     "radiusKm": 375,
+     "octant": "west",
+     "text": "Last seen buying supplies at a truck stop 375 km west of Amsterdam.",
+     "region": {
+      "continent": "Europe",
+      "country": "Netherlands",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 09:51",
+     "cityId": "gn-2673730",
+     "cityName": "Stockholm",
+     "cityLon": 18.06871,
+     "cityLat": 59.32938,
+     "radiusKm": 1450,
+     "octant": "south-west",
+     "text": "Last seen refueling a dusty pickup 1,450 km southwest of Stockholm.",
+     "region": {
+      "continent": "Europe",
+      "country": "Sweden",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 47,
+   "hideout": {
+    "placeId": "gn-3895138",
+    "name": "Chiguayante",
+    "lon": -73.02841,
+    "lat": -36.9256,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 06:54",
+     "cityId": "gn-3871336",
+     "cityName": "Santiago",
+     "cityLon": -70.64827,
+     "cityLat": -33.45694,
+     "radiusKm": 450,
+     "octant": "south-west",
+     "text": "Last seen sleeping in a parked car 450 km southwest of Santiago.",
+     "region": {
+      "continent": "South America",
+      "country": "Chile",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 13:30",
+     "cityId": "gn-3435910",
+     "cityName": "Buenos Aires",
+     "cityLon": -58.37723,
+     "cityLat": -34.61315,
+     "radiusKm": 1350,
+     "octant": "west",
+     "text": "Last seen boarding a night bus 1,350 km west of Buenos Aires.",
+     "region": {
+      "continent": "South America",
+      "country": "Argentina",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 15:43",
+     "cityId": "gn-3936456",
+     "cityName": "Lima",
+     "cityLon": -77.02824,
+     "cityLat": -12.04318,
+     "radiusKm": 2800,
+     "octant": "south",
+     "text": "Last seen hitching a ride from a trucker 2,800 km south of Lima.",
+     "region": {
+      "continent": "South America",
+      "country": "Peru",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 48,
+   "hideout": {
+    "placeId": "gn-1159713",
+    "name": "Sarāvān",
+    "lon": 62.33096,
+    "lat": 27.37089,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 22:57",
+     "cityId": "gn-360630",
+     "cityName": "Cairo",
+     "cityLon": 31.24967,
+     "cityLat": 30.06263,
+     "radiusKm": 3050,
+     "octant": "east",
+     "text": "Last seen sleeping in a parked car 3,050 km east of Cairo.",
+     "region": {
+      "continent": "Africa",
+      "country": "Egypt",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 09:46",
+     "cityId": "gn-1283240",
+     "cityName": "Kathmandu",
+     "cityLon": 85.3206,
+     "cityLat": 27.70169,
+     "radiusKm": 2275,
+     "octant": "west",
+     "text": "Last seen refueling a dusty pickup 2,275 km west of Kathmandu.",
+     "region": {
+      "continent": "Asia",
+      "country": "Nepal",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 15:35",
+     "cityId": "gn-344979",
+     "cityName": "Addis Ababa",
+     "cityLon": 38.74689,
+     "cityLat": 9.02497,
+     "radiusKm": 3225,
+     "octant": "north-east",
+     "text": "Last seen eating at a drive-through 3,225 km northeast of Addis Ababa.",
+     "region": {
+      "continent": "Africa",
+      "country": "Ethiopia",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 49,
+   "hideout": {
+    "placeId": "gn-7260806",
+    "name": "Arden-Arcade",
+    "lon": -121.37854,
+    "lat": 38.6025,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 13:28",
+     "cityId": "gn-4644585",
+     "cityName": "Nashville",
+     "cityLon": -86.78444,
+     "cityLat": 36.16589,
+     "radiusKm": 3075,
+     "octant": "west",
+     "text": "Last seen boarding a night bus 3,075 km west of Nashville.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Tennessee"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 13:55",
+     "cityId": "gn-5856195",
+     "cityName": "Honolulu",
+     "cityLon": -157.85833,
+     "cityLat": 21.30694,
+     "radiusKm": 3975,
+     "octant": "north-east",
+     "text": "Last seen asking a gas attendant for directions 3,975 km northeast of Honolulu.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Hawaii"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 09:07",
+     "cityId": "gn-5308655",
+     "cityName": "Phoenix",
+     "cityLon": -112.07404,
+     "cityLat": 33.44838,
+     "radiusKm": 1025,
+     "octant": "north-west",
+     "text": "Last seen refueling a dusty pickup 1,025 km northwest of Phoenix.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Arizona"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 50,
+   "hideout": {
+    "placeId": "gn-646005",
+    "name": "Mikkeli",
+    "lon": 27.27227,
+    "lat": 61.68857,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 22:35",
+     "cityId": "gn-756135",
+     "cityName": "Warsaw",
+     "cityLon": 21.01178,
+     "cityLat": 52.22977,
+     "radiusKm": 1125,
+     "octant": "north",
+     "text": "Last seen buying a burner phone 1,125 km north of Warsaw.",
+     "region": {
+      "continent": "Europe",
+      "country": "Poland",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 12:37",
+     "cityId": "gn-2988507",
+     "cityName": "Paris",
+     "cityLon": 2.3488,
+     "cityLat": 48.85341,
+     "radiusKm": 2125,
+     "octant": "north-east",
+     "text": "Last seen at a bus depot 2,125 km northeast of Paris.",
+     "region": {
+      "continent": "Europe",
+      "country": "France",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 16:23",
+     "cityId": "gn-524901",
+     "cityName": "Moscow",
+     "cityLon": 37.61781,
+     "cityLat": 55.75204,
+     "radiusKm": 900,
+     "octant": "north-west",
+     "text": "Last seen filling jerrycans 900 km northwest of Moscow.",
+     "region": {
+      "continent": "Europe",
+      "country": "Russia",
+      "subdivision": "Moscow"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 51,
+   "hideout": {
+    "placeId": "gn-5258393",
+    "name": "Kenosha",
+    "lon": -87.82119,
+    "lat": 42.58474,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 14:35",
+     "cityId": "gn-5389489",
+     "cityName": "Sacramento",
+     "cityLon": -121.4944,
+     "cityLat": 38.58157,
+     "radiusKm": 2875,
+     "octant": "east",
+     "text": "Last seen filling jerrycans 2,875 km east of Sacramento.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "California"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 08:21",
+     "cityId": "gn-4671654",
+     "cityName": "Austin",
+     "cityLon": -97.74306,
+     "cityLat": 30.26715,
+     "radiusKm": 1650,
+     "octant": "north-east",
+     "text": "Last seen buying a burner phone 1,650 km northeast of Austin.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Texas"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 18:47",
+     "cityId": "gn-4487042",
+     "cityName": "Raleigh",
+     "cityLon": -78.63861,
+     "cityLat": 35.7721,
+     "radiusKm": 1100,
+     "octant": "north-west",
+     "text": "Last seen sleeping in a parked car 1,100 km northwest of Raleigh.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "North Carolina"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 52,
+   "hideout": {
+    "placeId": "gn-3182340",
+    "name": "Barletta",
+    "lon": 16.28165,
+    "lat": 41.31429,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Mon 22:04",
+     "cityId": "gn-2673730",
+     "cityName": "Stockholm",
+     "cityLon": 18.06871,
+     "cityLat": 59.32938,
+     "radiusKm": 2025,
+     "octant": "south",
+     "text": "Last spotted at a roadside diner 2,025 km south of Stockholm.",
+     "region": {
+      "continent": "Europe",
+      "country": "Sweden",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Mon 10:15",
+     "cityId": "gn-2988507",
+     "cityName": "Paris",
+     "cityLon": 2.3488,
+     "cityLat": 48.85341,
+     "radiusKm": 1375,
+     "octant": "south-east",
+     "text": "Last seen sleeping in a parked car 1,375 km southeast of Paris.",
+     "region": {
+      "continent": "Europe",
+      "country": "France",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Tue 11:40",
+     "cityId": "gn-2267057",
+     "cityName": "Lisbon",
+     "cityLon": -9.1498,
+     "cityLat": 38.72509,
+     "radiusKm": 2200,
+     "octant": "east",
+     "text": "Last seen buying a burner phone 2,200 km east of Lisbon.",
+     "region": {
+      "continent": "Europe",
+      "country": "Portugal",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 53,
+   "hideout": {
+    "placeId": "gn-4159050",
+    "name": "Homestead",
+    "lon": -80.47756,
+    "lat": 25.46872,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 06:23",
+     "cityId": "gn-4180439",
+     "cityName": "Atlanta",
+     "cityLon": -84.38798,
+     "cityLat": 33.749,
+     "radiusKm": 1000,
+     "octant": "south-east",
+     "text": "Last seen boarding a night bus 1,000 km southeast of Atlanta.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Georgia"
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 14:44",
+     "cityId": "gn-4509177",
+     "cityName": "Columbus",
+     "cityLon": -82.99879,
+     "cityLat": 39.96118,
+     "radiusKm": 1650,
+     "octant": "south",
+     "text": "Last seen boarding a night bus 1,650 km south of Columbus.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Ohio"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 09:43",
+     "cityId": "gn-5308655",
+     "cityName": "Phoenix",
+     "cityLon": -112.07404,
+     "cityLat": 33.44838,
+     "radiusKm": 3175,
+     "octant": "east",
+     "text": "Last seen eating at a drive-through 3,175 km east of Phoenix.",
+     "region": {
+      "continent": "North America",
+      "country": "United States",
+      "subdivision": "Arizona"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 54,
+   "hideout": {
+    "placeId": "gn-11612554",
+    "name": "Uki",
+    "lon": 130.66177,
+    "lat": 32.62217,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Fri 17:22",
+     "cityId": "gn-1850147",
+     "cityName": "Tokyo",
+     "cityLon": 139.69171,
+     "cityLat": 35.6895,
+     "radiusKm": 900,
+     "octant": "west",
+     "text": "Last seen asking a gas attendant for directions 900 km west of Tokyo.",
+     "region": {
+      "continent": "Asia",
+      "country": "Japan",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Fri 08:36",
+     "cityId": "gn-1609350",
+     "cityName": "Bangkok",
+     "cityLon": 100.50144,
+     "cityLat": 13.75398,
+     "radiusKm": 3725,
+     "octant": "north-east",
+     "text": "Last seen at a bus depot 3,725 km northeast of Bangkok.",
+     "region": {
+      "continent": "Asia",
+      "country": "Thailand",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sat 07:50",
+     "cityId": "gn-1835848",
+     "cityName": "Seoul",
+     "cityLon": 126.9784,
+     "cityLat": 37.566,
+     "radiusKm": 650,
+     "octant": "south-east",
+     "text": "Last seen withdrawing cash from an ATM 650 km southeast of Seoul.",
+     "region": {
+      "continent": "Asia",
+      "country": "South Korea",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 55,
+   "hideout": {
+    "placeId": "gn-1278023",
+    "name": "Badagara",
+    "lon": 75.58142,
+    "lat": 11.59776,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sun 18:16",
+     "cityId": "gn-1880252",
+     "cityName": "Singapore",
+     "cityLon": 103.85007,
+     "cityLat": 1.28967,
+     "radiusKm": 3325,
+     "octant": "west",
+     "text": "Last seen boarding a night bus 3,325 km west of Singapore.",
+     "region": {
+      "continent": "Asia",
+      "country": "Singapore",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sun 22:55",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 2675,
+     "octant": "south-east",
+     "text": "Last seen filling jerrycans 2,675 km southeast of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Mon 21:07",
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 4000,
+     "octant": "north-west",
+     "text": "Last seen buying supplies at a truck stop 4,000 km northwest of Jakarta.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 56,
+   "hideout": {
+    "placeId": "gn-3113236",
+    "name": "Ponferrada",
+    "lon": -6.59619,
+    "lat": 42.54664,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 08:15",
+     "cityId": "gn-264371",
+     "cityName": "Athens",
+     "cityLon": 23.72784,
+     "cityLat": 37.98376,
+     "radiusKm": 2625,
+     "octant": "west",
+     "text": "Last seen hitching a ride from a trucker 2,625 km west of Athens.",
+     "region": {
+      "continent": "Europe",
+      "country": "Greece",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 13:20",
+     "cityId": "gn-2950159",
+     "cityName": "Berlin",
+     "cityLon": 13.41053,
+     "cityLat": 52.52437,
+     "radiusKm": 1875,
+     "octant": "south-west",
+     "text": "Last seen boarding a night bus 1,875 km southwest of Berlin.",
+     "region": {
+      "continent": "Europe",
+      "country": "Germany",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 07:38",
+     "cityId": "gn-3117735",
+     "cityName": "Madrid",
+     "cityLon": -3.70256,
+     "cityLat": 40.4165,
+     "radiusKm": 350,
+     "octant": "north-west",
+     "text": "Last seen at a bus depot 350 km northwest of Madrid.",
+     "region": {
+      "continent": "Europe",
+      "country": "Spain",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 57,
+   "hideout": {
+    "placeId": "gn-13353584",
+    "name": "Moonniyur",
+    "lon": 75.90311,
+    "lat": 11.05972,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Wed 21:41",
+     "cityId": "gn-292968",
+     "cityName": "Abu Dhabi",
+     "cityLon": 54.39696,
+     "cityLat": 24.45118,
+     "radiusKm": 2725,
+     "octant": "south-east",
+     "text": "Last spotted at a roadside diner 2,725 km southeast of Abu Dhabi.",
+     "region": {
+      "continent": "Asia",
+      "country": "United Arab Emirates",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Wed 09:24",
+     "cityId": "gn-1261481",
+     "cityName": "New Delhi",
+     "cityLon": 77.2148,
+     "cityLat": 28.62137,
+     "radiusKm": 1975,
+     "octant": "south",
+     "text": "Last seen sleeping in a parked car 1,975 km south of New Delhi.",
+     "region": {
+      "continent": "Asia",
+      "country": "India",
+      "subdivision": "Delhi"
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Thu 10:56",
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 3950,
+     "octant": "north-west",
+     "text": "Last spotted at a roadside diner 3,950 km northwest of Jakarta.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 58,
+   "hideout": {
+    "placeId": "gn-3461763",
+    "name": "Guaxupé",
+    "lon": -46.71278,
+    "lat": -21.30528,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Tue 10:00",
+     "cityId": "gn-3871336",
+     "cityName": "Santiago",
+     "cityLon": -70.64827,
+     "cityLat": -33.45694,
+     "radiusKm": 2725,
+     "octant": "north-east",
+     "text": "Last seen boarding a night bus 2,725 km northeast of Santiago.",
+     "region": {
+      "continent": "South America",
+      "country": "Chile",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Tue 09:52",
+     "cityId": "gn-3936456",
+     "cityName": "Lima",
+     "cityLon": -77.02824,
+     "cityLat": -12.04318,
+     "radiusKm": 3400,
+     "octant": "east",
+     "text": "Last seen hitching a ride from a trucker 3,400 km east of Lima.",
+     "region": {
+      "continent": "South America",
+      "country": "Peru",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Wed 06:40",
+     "cityId": "gn-3469058",
+     "cityName": "Brasília",
+     "cityLon": -47.92972,
+     "cityLat": -15.77972,
+     "radiusKm": 650,
+     "octant": "south",
+     "text": "Last seen sleeping in a parked car 650 km south of Brasília.",
+     "region": {
+      "continent": "South America",
+      "country": "Brazil",
+      "subdivision": "Federal District"
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 59,
+   "hideout": {
+    "placeId": "gn-1650670",
+    "name": "Baki",
+    "lon": 110.78389,
+    "lat": -7.61278,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Sat 20:46",
+     "cityId": "gn-1642911",
+     "cityName": "Jakarta",
+     "cityLon": 106.84513,
+     "cityLat": -6.21462,
+     "radiusKm": 475,
+     "octant": "east",
+     "text": "Last seen refueling a dusty pickup 475 km east of Jakarta.",
+     "region": {
+      "continent": "Asia",
+      "country": "Indonesia",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Sat 19:42",
+     "cityId": "gn-1609350",
+     "cityName": "Bangkok",
+     "cityLon": 100.50144,
+     "cityLat": 13.75398,
+     "radiusKm": 2650,
+     "octant": "south-east",
+     "text": "Last seen asking a gas attendant for directions 2,650 km southeast of Bangkok.",
+     "region": {
+      "continent": "Asia",
+      "country": "Thailand",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Sun 12:30",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 3250,
+     "octant": "south",
+     "text": "Last seen buying a burner phone 3,250 km south of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  },
+  {
+   "v": 1,
+   "caseNo": 60,
+   "hideout": {
+    "placeId": "gn-1921372",
+    "name": "Dalianwan",
+    "lon": 121.695,
+    "lat": 39.02861,
+    "difficulty": 2
+   },
+   "sightings": [
+    {
+     "id": "s1",
+     "timestamp": "Thu 18:46",
+     "cityId": "gn-1701668",
+     "cityName": "Manila",
+     "cityLon": 120.9822,
+     "cityLat": 14.6042,
+     "radiusKm": 2725,
+     "octant": "north",
+     "text": "Last seen withdrawing cash from an ATM 2,725 km north of Manila.",
+     "region": {
+      "continent": "Asia",
+      "country": "Philippines",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s2",
+     "timestamp": "Thu 17:38",
+     "cityId": "gn-1581130",
+     "cityName": "Hanoi",
+     "cityLon": 105.84117,
+     "cityLat": 21.0245,
+     "radiusKm": 2525,
+     "octant": "north-east",
+     "text": "Last seen withdrawing cash from an ATM 2,525 km northeast of Hanoi.",
+     "region": {
+      "continent": "Asia",
+      "country": "Vietnam",
+      "subdivision": null
+     }
+    },
+    {
+     "id": "s3",
+     "timestamp": "Fri 05:00",
+     "cityId": "gn-1835848",
+     "cityName": "Seoul",
+     "cityLon": 126.9784,
+     "cityLat": 37.566,
+     "radiusKm": 500,
+     "octant": "west",
+     "text": "Last seen asking a gas attendant for directions 500 km west of Seoul.",
+     "region": {
+      "continent": "Asia",
+      "country": "South Korea",
+      "subdivision": null
+     }
+    }
+   ],
+   "packId": "capitals"
+  }
+ ]
+}

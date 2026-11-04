@@ -14,8 +14,8 @@ Receives the events emitted by `src/lib/observability.ts` (schema:
 - **funnel-class** — `storyteller_shown` and the five `narration_*`
   types (the storyteller/narration funnel: shown → started →
   completed / failed / dismissed / replayed): **counted, NOT forwarded
-  individually,** exactly like hiccup-class. Accepted since #194 wave 2
-  (2026-11-02) — before that the worker rejected them with a 400 and
+  individually,** exactly like hiccup-class. Accepted in #194 wave 2
+  (PR #311) — before that the worker rejected them with a 400 and
   the telemetry was silently lost.
 - **`recovery_outcome`** (Slice 2) — the chunk-recovery outcome report:
   counted always; forwarded immediately **only** when its outcome is
@@ -23,9 +23,10 @@ Receives the events emitted by `src/lib/observability.ts` (schema:
   counted only.
 
 Every accepted event is also **counted** into per-hour buckets in a
-Workers KV namespace (`TELEMETRY_COUNTS`), keyed by UTC hour × type ×
-buildId × edition × region × os/form device bucket — **counts only**,
-no payloads, no identifiers.
+Workers KV namespace (`TELEMETRY_COUNTS`), keyed by UTC hour × type
+(the bucket also carries per-build, per-edition, per-region, and
+per-device-bucket breakdowns) — **counts only**, no payloads, no
+identifiers.
 
 ## Relationship to `worker/observability/` (v1)
 
@@ -43,6 +44,8 @@ Deploy **one** of them as the `observabilityEndpoint` target, not both.
 - `src/index.ts` — zero-runtime-dependency Worker. `handleRequest(request,
 env)` is exported pure for tests; the default export wires it as `fetch`
 plus a `scheduled` handler for the hourly digest.
+- `src/index.test.ts` — the worker unit suite; run it with
+  `npm run test:worker` from the repo root (see Tests).
 - `src/dev-entry.ts` — local-dev wrapper for `wrangler dev` only:
   it re-exports just the default handler, because workerd rejects
   `index.ts`'s test-only named exports (plain constants) as handler
@@ -72,6 +75,10 @@ plus a `scheduled` handler for the hourly digest.
   (`"forwarded":false` when no forwarding secrets are configured, or
   when the event is hiccup-class or funnel-class — all are normal
   modes, not errors).
+  When a crash-class event is forwarded, the response also carries
+  `results: {discord?: boolean, email?: boolean}` — per-channel
+  attempted truth; `"forwarded":true` means attempted, and a channel
+  whose forwarder failed still reports its own `false`.
 - Cron (`15 * * * *`, the `scheduled` handler) → posts the **hourly
   digest** to Discord: one compact message per hour summarizing the
   PREVIOUS UTC hour. Zero events → nothing posted (silence is the
@@ -93,28 +100,47 @@ plus a `scheduled` handler for the hourly digest.
     is missing, malformed, or throws, it fails open and the in-memory layer
     still applies.
 - Body cap: **8 KB**, enforced while streaming (a chunked upload is
-  cancelled at the cap, never buffered whole) → `413`. The app's own
+  cancelled at the cap, never buffered whole) → `413`. A declared
+  `Content-Length` over the cap is rejected with `413` before the
+  body is read. The app's own
   events are capped at 4 KB, and the boot watchdog's at 8 KB.
 - Schema: the documented fields with type and length caps; `device` and
-  `breadcrumb.device` limited to the coarse bucket fields (`os`, `form`,
-  `screen`, `dpr`, `webgl1/2`, legacy `ua` ≤ 300); `breadcrumb.history`
-  ≤ 32 entries; any other top-level field must be a short primitive; at
-  most 24 fields; `ts` between 2020-01-01 and one day in the future.
+  `breadcrumb.device` are limited to the 17 keys in the telemetry field
+  manifest (`browser`, `browserVersion`, `connection`, `deviceClass`,
+  `deviceMemory`, `displayMode`, `dpr`, `engine`, `form`,
+  `hardwareConcurrency`, `locale`, `os`, `osVersion`, `screen`,
+  `touchPoints`, `webgl1`, `webgl2`) — intake strips every other device
+  key and deletes the raw user-agent string on arrival;
+  `breadcrumb.history` ≤ 32 entries; any other top-level field must be
+  a short primitive; at most 24 fields; `ts` between 2020-01-01 and
+  one day in the future. Error `name`/`message` are truncated to
+  80/300 chars; `screenW`/`screenH` are non-manifest keys, stripped
+  at intake — only the `screen` bucket survives.
 - Forwarding is fire-and-collect via `Promise.allSettled`: one forwarder
   failing never fails the request. Each forwarder has a 5 s timeout.
-- Log lines carry only type/buildId/edition — never PII, never the
-  forwarded secrets, never full payloads.
+- Event log lines carry type/buildId/edition (plus per-channel forward
+  booleans on the forwarded line) — never PII, never the forwarded
+  secrets, never full payloads. Operational lines (forwarder failures,
+  rate-limit/binding faults, digest faults) also carry HTTP statuses
+  and the worker's own error names.
 - CORS: `OPTIONS` from an allow-listed origin → `204`, echoing that
   origin in `access-control-allow-origin` with `Vary: Origin`. Any other
   origin, or none, → `403` with no CORS headers, so the browser never sends
   the POST. Responses to allowed POSTs echo the origin, never `*`.
   `/health` carries no CORS headers (it is for curl and monitors).
+- Responses and errors: `400` invalid JSON or invalid event, with a
+  `problems[]` list; `403` wrong or missing Origin; `404` unknown path;
+  `405` non-POST on an ingest path, or non-GET on `/health`; `413` over
+  the body cap; `429` over the rate limit. The body is read as text
+  whatever its `Content-Type`, so the content type is not enforced.
+  Preflight replies allow methods `POST, OPTIONS`, header
+  `content-type`, max-age `86400` (the `204` preflight — see CORS above).
 
 ## Severity tiers
 
 | Tier | Types | Behavior |
 |---|---|---|
-| crash-class | `suspected_crash`, `boot_failure`, `js_error`, `unhandled_rejection`, `map_error` | Forwarded to Discord/email **immediately** (unchanged format); also counted. |
+| crash-class | `suspected_crash`, `boot_failure`, `js_error`, `unhandled_rejection`, `map_error` | Forwarded to Discord/email **immediately** (v2 format); also counted. |
 | hiccup-class | `tile_failed`, `webgl_context_lost` | **Counted only** — no individual forward. Surfaced via the threshold alert and the hourly digest. |
 | funnel-class | `storyteller_shown`, `narration_started`, `narration_completed`, `narration_replayed`, `narration_failed`, `narration_dismissed` | **Counted only** — no individual forward. Surfaced via the threshold alert and the hourly digest. |
 | `recovery_outcome` | `recovery_outcome` | Counted always; forwarded immediately **only** when the outcome is `repeat_failure`. |
@@ -125,24 +151,54 @@ hiccups; `webgl_context_lost` fires when a mobile OS reclaims the GPU
 context on backgrounding). Funnel-class events are engagement telemetry,
 not failures at all — but a spike in `narration_failed` (the storyteller
 audio is not playing in the field) is real signal, and the threshold
-alert is how it surfaces. Forwarding each counted-only event as a 🚨
-trained readers to ignore the channel — the threshold alert and digest
-restore the signal-to-noise ratio. Crash-class events are unaffected:
-same immediate alert, same message format, same no-op mode when no
-forwarding secrets are configured.
+alert is how it surfaces. Forwarding each one as a 🚨 trained readers
+to ignore the channel — the threshold alert and digest restore the
+signal-to-noise ratio. Crash-class events are still forwarded
+immediately, in the v2 message format (the verdict lines, plus
+`priority:`, `why-code:`, `time:`, the enriched `device:` and
+`runtime:` lines, and the `mode:` / `boots:` lines), and the same
+no-op mode applies when no forwarding secrets are configured.
+
+## Verdict (the first line of every forwarded alert)
+
+The worker re-derives the verdict from the evidence on every event
+(`classifyCrashVerdict`); a client-stamped `verdict` is never read.
+Four verdicts, fail-closed — missing evidence can only land on
+`insufficient_evidence`, never on a benign verdict:
+`not_a_real_issue`, `auto_fixed`, `developer_needed`,
+`insufficient_evidence` (with `whyKey` reasons such as
+`captured_error`, `recovery_confirmed`, `recovery_failed`,
+`missing_fields`). The `recovery_outcome` branch is evaluated first:
+`confirmed` → `auto_fixed`, `repeat_failure` → `developer_needed`,
+anything else (including missing or invalid) →
+`insufficient_evidence`.
 
 ## Threshold alert
 
-When a hiccup-class event arrives and its count for the current UTC
+When any accepted event type's count for the current UTC
 hour crosses a threshold, the worker posts **one** Discord alert for
-that type+hour — exactly one, even if the count keeps climbing:
+that type+hour — exactly one, even if the count keeps climbing, and
+only when the Discord webhook is configured (the counts still
+accumulate without one). The
+counts in the message are the counts at the moment the alert fires,
+so a reachable example is one where the totals are exactly the
+threshold being crossed — here a single build reaching 10 in the
+hour, in an hour whose total at fire time is 20:
 
 ```
 🚨 Meridian telemetry alert
-type: tile_failed crossed the hiccup threshold (20/hour across builds)
-hour: 2026-10-18T02 UTC · counts: 22 total (f331846 ×20, 50122c6 ×2)
+type: tile_failed crossed the hiccup threshold (single build crossed 10/hour)
+hour: 2026-11-03T17 UTC · counts: 20 total (f331846 ×12, other ×8)
 one alert per type+hour — further events this hour only raise the counts
+counts are at fire time; the hourly digest carries the final total
 ```
+
+(Message text is verbatim from the worker — it says 'hiccup' for every
+type.)
+
+The last line is part of the message: a threshold alert's counts are
+fire-time counts, not the hour's final total — the hourly digest
+carries the final total.
 
 Defaults: **20 events/hour of one type across all builds**, or
 **10/hour from a single buildId** — whichever trips first. Override
@@ -160,33 +216,83 @@ for the **previous** completed UTC hour. One compact Discord message:
 
 ```
 📊 Meridian telemetry — hourly digest
-hour: 2026-10-18 02:00–03:00 UTC (27 events)
+hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)
+priority: P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone
 
-js_error 2 · f331846 ×2 · country ×2 · linux/desktop ×2
-tile_failed 22 · f331846 ×20, 50122c6 ×2 · country ×22 · linux/desktop ×22 ⚠️ >3× 24h avg (0.0)
-webgl_context_lost 3 · f331846 ×3 · state ×3 · android/mobile ×3
+suspected_crash 1 · first 17:42 · last 17:42
+  builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1
+  groups: c6853be|ios|16|phone ×1
+  verdicts: developer_needed/fg_kill_current ×1 · modes: scout ×1 · steps: map_init_start ×1
+js_error 1 · first 17:05 · last 17:05
+  builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1
+  groups: 2a0527f|android|unknown|phone ×1
+  verdicts: developer_needed/captured_error ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1
 
-alerts this hour: tile_failed threshold
+alerts this hour: none
 ```
 
-Each type line shows the count plus the top builds, editions, and
-device buckets. A line is flagged **⚠️** when its count exceeds
-**3× the trailing 24-hour hourly average** for that type AND exceeds 3
-events absolute — a first-ever burst (avg 0) flags too, which is the
-point. **Zero events in the hour → nothing is posted** (silence is the
+The header names the **receipt hour** (when reports arrived at the
+worker, not when they happened on the phone) and the total event
+count, followed by a `priority:` line for the highest-priority
+verdict in the hour, with its top group. Each type then gets its own
+block. The block's first line shows the count plus the **first** and
+**last** receipt times in the hour — so a burst (first ≈ last) reads
+differently from a steady rate — and ends with
+`(some reports arrived late)` when any event's own timestamp fell
+outside the receipt hour. The lines under it carry, in order: the
+top **builds**, **editions**, and **regions**; the top **groups**
+(`<buildId>|<os>|<osMajor>|<deviceClass>` cross-tabs); and the top
+**verdicts** (the worker's re-derived `<verdict>/<whyKey>` pairs),
+**modes**, and **steps** (last milestones), plus **errors** (error
+names only) when the bucket counted any. Every list shows only its
+top few entries, and a truncated list is **labelled, never silent**:
+it ends with the true remainder, like `(+2 more)`. Caps: top 3 builds,
+top 2 editions, top 2 regions, top 3 groups, top 3 verdicts, top 2
+modes, top 2 steps, top 2 error names. A type block's
+first line is flagged **⚠️** when its count exceeds **3× the
+trailing 24-hour hourly average** for that type AND exceeds 3 events
+absolute — a first-ever burst (avg 0) flags too, which is the point.
+The message ends with the alerts that fired this hour.
+**Zero events in the hour → nothing is posted** (silence is the
 healthy signal). The digest needs the Discord webhook; with no webhook
 it renders but stays silent.
 
 ## Counting store (why KV)
 
 One key per (UTC hour × type), e.g. `tel:counts:2026-10-18T02:tile_failed`,
-holding a small JSON bucket:
+holding a small JSON bucket. The bucket shape is now v2 — the first
+six fields are the original ones; the rest were added so the digest
+can answer "which build, which kind of device, what verdict, and is
+it a burst or a steady rate" without storing any event payloads:
 
 ```json
 { "total": 22, "builds": {"f331846": 20}, "editions": {"country": 22},
   "regions": {"united-states": 22}, "devices": {"linux/desktop": 22},
+  "groups": {"f331846|linux|unknown|desktop": 22},
+  "verdicts": {"developer_needed/captured_error": 22},
+  "milestones": {"game_loaded": 22}, "modes": {"full": 22},
+  "errorNames": {"TypeError": 3},
+  "firstAt": 1792288800000, "lastAt": 1792289100000, "late": 0,
   "alerts": ["threshold:tile_failed:2026-10-18T02"] }
 ```
+
+- `groups` keys are `"<buildId>|<os>|<osMajor>|<deviceClass>"` —
+  OS grouped by major version only. Hard cap: 32 distinct group keys
+  per bucket; a 33rd distinct group tallies under `"other"`, so one
+  bad hour cannot grow the value without bound.
+- `verdicts` keys are `"<verdict>/<whyKey>"`, from the worker's own
+  re-derived verdict (the client's stamp is never trusted for this).
+  Client stamps the classifier never reads (`verdict`, `whyKey`,
+  `storageOk`, `afterRecovery`) arrive as extra short primitives (a
+  nested stamp fails validation instead) and are ignored for
+  classification; `mapMode` is a manifest field, normalized to a
+  known value or `unknown`.
+- `firstAt` / `lastAt` are the first and last **receipt** times in
+  the bucket (the worker's clock, not the phone's). `late` counts
+  events whose own timestamp fell outside the receipt hour.
+- Buckets written by the older code (without the v2 fields) are read
+  with the missing fields defaulted — no migration, old and new
+  buckets interoperate.
 
 **KV, not Analytics Engine:** the threshold check must read the
 current hour's count *during* the ingest request, and the digest reads
@@ -215,13 +321,15 @@ Accepted `type` values — all 14, the full set the client can emit
 `narration_replayed`, `narration_failed`, `narration_dismissed`.
 Required: `type`, `ts` (finite number, epoch ms), `buildId`
 (non-empty string). Optional fields pass through; the forwarded alert
-uses only type, buildId, edition/region, lastMilestone, and a
-truncated error name/message.
+uses type, buildId, edition/region, lastMilestone, a truncated error
+name/message, the parsed device fields, and the verdict evidence
+fields (`bgTerminal`, `buildReplaced`, `trailStuck`, `lcV`,
+`recoveryOutcome`).
 
 ## Tests
 
 ```sh
-npm run test:worker        # 90 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
+npm run test:worker        # 113 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
                            #  S4: streamed cap, schema, binding; Phase 1: tiering, counting, threshold, digest, fail-open;
                            #  Slice 1/2 verdicts + recovery outcomes; #194: funnel-type acceptance, tiering, counting)
 npm run typecheck:worker   # strict tsc on the worker sources
@@ -382,7 +490,7 @@ npx wrangler dev -c wrangler.toml
 curl -X POST localhost:8787/ingest -H 'content-type: application/json' \
   -H 'origin: https://meridian.knowledgetest.workers.dev' \
   -d '{"type":"suspected_crash","ts":1728300000000,"buildId":"test","edition":"globe","lastMilestone":"boot_ready"}'
-# → {"ok":true,"forwarded":false}  (no secrets in dev = no-op mode)
+# → {"ok":true,"forwarded":false,"counted":true}  (no secrets in dev = no-op forwarding mode)
 ```
 
 ## Secrets
@@ -414,7 +522,7 @@ The bindings the upload metadata must carry:
 Optional, same form, if email forwarding is wanted:
 `RESEND_API_KEY` (https://resend.com/api-keys), `REPORT_EMAIL`
 (the recipient), and `REPORT_FROM` (a verified sender; the
-default is Resend's `onboarding@resend.dev` test domain).
+default is `Meridian Crash Reporter <onboarding@resend.dev>`).
 `DISCORD_WEBHOOK_URL` itself comes from Discord: Server Settings
 → Integrations → Webhooks.
 
@@ -427,6 +535,13 @@ Discord and email are independent: configure either or both. With
 neither set, the worker accepts and acknowledges events without
 forwarding (`"forwarded":false`), so it is safe to deploy **before**
 secrets exist.
+
+Privacy: the forwarded alert and counts carry only the fixed coarse
+manifest device fields plus the event's own identity and session-shape
+fields (type, buildId, edition/region, lastMilestone, truncated error,
+verdict, time, mode, boots, ms after boot start). Precise device facts the client sends (`screenW`/`screenH`)
+are stripped on arrival, and the raw user-agent string never leaves
+the device.
 
 ## Go-live — DONE (worker live by API upload; pipeline verified 2026-10-10)
 
@@ -489,14 +604,19 @@ foreign origins are refused outright (S4).
 
 ## Privacy
 
-- Alerts contain: type, buildId, edition/region, lastMilestone,
-  truncated error name/message. Nothing else.
+- Alerts contain: the verdict headline and why, type, buildId,
+  edition/region, lastMilestone, a truncated error name/message,
+  the coarse device bucket, and the event time.
 - The Phase 1 counters contain: per-UTC-hour counts keyed by type,
   buildId, edition, region, and os/form device bucket. Counts only —
   no payloads, no identifiers, no session-level data.
-- Never forwarded, logged, or stored: sessionId, UA, device facts,
-  breadcrumb history, guess/place content, coordinates, stack traces,
-  IPs (the rate limiter keys by `CF-Connecting-IP` in memory only,
-  never persisted).
+- Never forwarded, logged, or stored: sessionId and the raw
+  user-agent string. (The parsed, coarse device facts from the field
+  manifest ARE forwarded in the alert by design — that is how a
+  crash report can be triaged — and they are counted, never stored
+  per device.) Also never forwarded, logged, or stored: breadcrumb
+  history, guess/place content, coordinates, stack traces, IPs (the
+  rate limiter keys by `CF-Connecting-IP` in memory only, never
+  persisted).
 - The client (`src/lib/observability.ts`) never collects guess/place
   content or coordinates in the first place.

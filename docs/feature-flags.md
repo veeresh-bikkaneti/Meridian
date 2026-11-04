@@ -126,6 +126,7 @@ killed feature by a stale flags.json.
 | `learningOutcomes` | `false` | No learning records, no growth UI (disabling removes them) |
 | `globeTierSplit`   | `false` | Globe loads all five fame-tier files and deals the full canonical pool; on = Easy t1+t2, Medium t2-t4, Hard t4+t5 only |
 | `friendChallenges` | `false` | No challenge entry points: a `#c=` link is stripped from the URL and ignored, the run-summary share button is hidden, and a saved challenge run is dropped instead of resumed |
+| `scoutUpgradeTrial` | `true`  | The issue #330 Scout trial never arms: an unknown-memory touch device still boots Scout first, but the in-session upgrade to the full map never fires — Scout-first boot, manual records, and every other path are untouched |
 
 **`globeTierSplit` and offline play.** With the flag on, the Globe fetches only
 the fame-tier files of the learning path being played, and the service worker
@@ -312,6 +313,8 @@ exact played route from the end-of-run summary mints a block the
 same way (you are the sender; the best starts at your route score) —
 a played Globe route is the standing exception: it still shares in
 mc1, which has no room for a block, exactly as before.
+
+**`scoutUpgradeTrial` and the #330 trial (2026-11-03, PR #331 cure).** This flag is the kill-switch for the unknown-memory Scout trial's in-session upgrade (see `docs/scout-offer-policy.md`): a touch device whose browser reports no memory size boots the light Scout map first and, once Scout proves stable, upgrades to the full map for the rest of the session. The baked-in default is `true` — the shipped behavior — and `public/flags.json` ships it `true`. An operator disarms the trial by redeploying `public/flags.json` with `"scoutUpgradeTrial": false`: GameApp's boot effect awaits the shared flags load before arming eligibility, so on the next boot the device still starts in Scout but no upgrade callback is ever passed to the map — the soak timer never arms and the session stays in Scout. Nothing else changes: Scout-first boot, stored manual records, and the weak-device demotions are all outside this gate. Turning it back to `true` restores the trial on the next boot, no client release required.
 
 **Creating mid-game (2026-10-29, Package B).** Three more doors into the
 same challenge, all behind the same flag. While a game is running, the

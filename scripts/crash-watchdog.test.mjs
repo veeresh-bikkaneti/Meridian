@@ -5,7 +5,7 @@
  * orchestration (crashWatchdogMain) is driven against fake browser globals
  * so the exact code that ships inline in _shell.html is what gets
  * exercised. renderCrashWatchdogScript() is checked for the marker, the
- * 5120-byte budget, ES5-only output, and a no-drift assertion that the
+ * 6144-byte budget, ES5-only output, and a no-drift assertion that the
  * shipped script still embeds the tested functions' logic.
  */
 import assert from "node:assert/strict";
@@ -183,7 +183,7 @@ function fakeXhr({ flagsStatus = 200, flagsText = "{}", postStatus = 200, deferG
   };
 }
 
-function fakeHost({ docOpts = {}, xhrOpts = {}, store: presetStore = {}, ready = false } = {}) {
+function fakeHost({ docOpts = {}, xhrOpts = {}, store: presetStore = {}, ready = false, ua = null } = {}) {
   const { doc, nodes, body } = fakeDocument(docOpts);
   const xhr = fakeXhr(xhrOpts);
   const store = { ...presetStore };
@@ -193,6 +193,7 @@ function fakeHost({ docOpts = {}, xhrOpts = {}, store: presetStore = {}, ready =
     document: doc,
     navigator: {
       userAgent:
+        ua ??
         "Mozilla/5.0 (Linux; Android 13; Test Phone) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Mobile Safari/537.36",
       deviceMemory: 4,
       hardwareConcurrency: 8,
@@ -251,7 +252,7 @@ test("renderCrashWatchdogScript emits a single self-contained inline script", ()
   assert.ok(script.includes('"test-build"'));
 });
 
-test("rendered script stays within the 5120-byte budget", () => {
+test("rendered script stays within the 6144-byte budget", () => {
   // #223: check the build-id shapes production actually uses, not just
   // the old 10-char fixture — a 12-char CI id (GITHUB_SHA slice) and the
   // 14-char timestamp fallback rendered 5122/5124 bytes and silently
@@ -259,7 +260,7 @@ test("rendered script stays within the 5120-byte budget", () => {
   for (const buildId of ["abcdef0", "test-build", "abcdef012345", "local-mvpr1hgb"]) {
     const script = renderCrashWatchdogScript(buildId);
     const bytes = Buffer.byteLength(script, "utf8");
-    assert.ok(bytes <= 5120, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
+    assert.ok(bytes <= 6144, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
   }
 });
 
@@ -628,9 +629,12 @@ test("send flow: flags.json fetched with cache-bust, event POSTed", () => {
   assert.equal(body.device.form, "mobile");
   assert.ok(!("ua" in body.device), "full UA string is never sent (COPPA)");
   assert.ok(!("gpu" in body.device), "GPU renderer string is never sent (COPPA)");
-  // 2026-10-21 COPPA coarsening: memory/cores never sent, screen bucketed.
-  assert.ok(!("deviceMemory" in body.device), "deviceMemory is never sent");
-  assert.ok(!("hardwareConcurrency" in body.device), "hardwareConcurrency is never sent");
+  // §4.4 parity (supersedes the 2026-10-21 absence assertion): the
+  // keys are present but stamp the literal "unknown" — this path never
+  // READs memory/cores, even though the fake host's navigator exposes
+  // numbers for both (deviceMemory 4, hardwareConcurrency 8 above).
+  assert.equal(body.device.deviceMemory, "unknown", "deviceMemory stamps unknown, never a read value");
+  assert.equal(body.device.hardwareConcurrency, "unknown", "hardwareConcurrency stamps unknown, never a read value");
   assert.ok(!("screenW" in body.device) && !("screenH" in body.device), "exact screen size is never sent");
   assert.equal(body.device.screen, "sm");
   assert.equal(body.device.dpr, 3);
@@ -912,4 +916,144 @@ test("S3: an off-allowlist endpoint in flags.json sends nothing (fail closed)", 
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   calls.timers[0].fn();
   assert.equal(xhr.posts.length, 0, "no report leaves for a host that is not pinned");
+});
+
+// ---------------------------------------------------------------------------
+// §4.4 parity (DESIGN-FINAL): lcV / storageOk / mapMode /
+// msSinceBootStart, the ES5 subset parser, the second-canvas WebGL1
+// fix, and the §7.5 ladder state (steps 1-3 applied: browserVersion
+// major-only, engine dropped, deviceClass dropped — the worker fills
+// both from the parsed fields / os for this type).
+// ---------------------------------------------------------------------------
+
+test("parity: boot_failure carries lcV, storageOk, the trail's mapMode + span, and NO unfinishedBoots", () => {
+  const crumb = {
+    sessionId: "prev-session-wd",
+    buildId: "b0",
+    startedAt: 1000,
+    lastMilestone: "map_ready",
+    mapMode: "scout",
+    history: [
+      { name: "boot_start", at: 1000 },
+      { name: "map_ready", at: 4210 },
+    ],
+  };
+  const { host, calls, xhr } = fakeHost({
+    store: {
+      "meridian.breadcrumb": JSON.stringify(crumb),
+      "meridian.cleanExit": "0",
+    },
+    xhrOpts: { flagsText: JSON.stringify({ observabilityEndpoint: INGEST }) },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  fireTimer(calls);
+  assert.equal(xhr.posts.length, 1);
+  const body = JSON.parse(xhr.posts[0].body);
+  assert.equal(body.lcV, "2");
+  assert.equal(body.storageOk, true);
+  assert.equal(body.mapMode, "scout", "the crashed session's persisted mode, not a default");
+  assert.equal(body.msSinceBootStart, 3210, "last history entry (4210) minus startedAt (1000)");
+  assert.ok(!("unfinishedBoots" in body), "the watchdog never writes the boot-health counter (§4.4)");
+  // Subset parser on the default fake UA (Android 13 Chrome): the
+  // subset covers Safari only for browser, so both stamp "unknown";
+  // osVersion comes from the O1 token.
+  assert.equal(body.device.browser, "unknown");
+  assert.equal(body.device.browserVersion, "unknown");
+  assert.equal(body.device.osVersion, "13");
+  assert.equal(body.device.os, "android");
+  // All remaining new keys stamp the literal "unknown" (§4.4).
+  for (const k of ["hardwareConcurrency", "deviceMemory", "touchPoints", "displayMode", "connection", "locale"]) {
+    assert.equal(body.device[k], "unknown", `${k} stamps literal unknown`);
+  }
+  // §7.5 ladder steps 2+3: engine and deviceClass are absent on this
+  // path (the worker derives them), NOT stamped.
+  assert.ok(!("engine" in body.device), "ladder step 2: engine dropped");
+  assert.ok(!("deviceClass" in body.device), "ladder step 3: deviceClass dropped");
+});
+
+test("parity: no previous trail → mapMode and msSinceBootStart stamp unknown", () => {
+  const { host, calls, xhr } = fakeHost({
+    xhrOpts: { flagsText: JSON.stringify({ observabilityEndpoint: INGEST }) },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  fireTimer(calls);
+  const body = JSON.parse(xhr.posts[0].body);
+  assert.equal(body.mapMode, "unknown");
+  assert.equal(body.msSinceBootStart, "unknown");
+  assert.equal(body.storageOk, true);
+});
+
+test("parity: storageOk=false when sessionStorage access throws", () => {
+  const { host, calls, xhr } = fakeHost({
+    xhrOpts: { flagsText: JSON.stringify({ observabilityEndpoint: INGEST }) },
+  });
+  host.sessionStorage = {
+    getItem() {
+      throw new Error("blocked");
+    },
+    setItem() {
+      throw new Error("blocked");
+    },
+    removeItem() {
+      throw new Error("blocked");
+    },
+  };
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  fireTimer(calls);
+  assert.equal(xhr.posts.length, 1, "report still sends — storage failure is stamped, not fatal");
+  const body = JSON.parse(xhr.posts[0].body);
+  assert.equal(body.storageOk, false, "any guarded storage throw flips storageOk (§4.4)");
+});
+
+test("webgl: the WebGL1 probe uses a SECOND canvas (a mode-locked first canvas cannot refuse it)", () => {
+  const { host, calls, xhr } = fakeHost({
+    xhrOpts: { flagsText: JSON.stringify({ observabilityEndpoint: INGEST }) },
+  });
+  const origCreate = host.document.createElement.bind(host.document);
+  let canvasCount = 0;
+  host.document.createElement = (tag) => {
+    if (tag !== "canvas") return origCreate(tag);
+    canvasCount += 1;
+    const mine = canvasCount;
+    return {
+      getContext: (kind) => {
+        if (kind === "webgl2") return null;
+        // First canvas is mode-locked by the failed webgl2 attempt;
+        // only a fresh canvas can produce a webgl1 context.
+        if (kind === "webgl") return mine >= 2 ? { getExtension: () => null } : null;
+        return null;
+      },
+    };
+  };
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  fireTimer(calls);
+  assert.ok(canvasCount >= 2, "two canvases created for the two probes");
+  const body = JSON.parse(xhr.posts[0].body);
+  assert.equal(body.device.webgl2, false);
+  assert.equal(body.device.webgl1, true, "webgl1 read from the second canvas");
+});
+
+test("corpus: watchdog subset parser agrees with ua-corpus.json on every watchdog row", () => {
+  const corpus = JSON.parse(
+    readFileSync(new URL("../src/lib/ua-corpus.json", import.meta.url), "utf8"),
+  );
+  const rows = corpus.filter((r) => r.watchdog);
+  assert.ok(rows.length >= 4, `expected several watchdog corpus rows, got ${rows.length}`);
+  for (const row of rows) {
+    const { host, calls, xhr } = fakeHost({
+      ua: row.ua,
+      xhrOpts: { flagsText: JSON.stringify({ observabilityEndpoint: INGEST }) },
+    });
+    crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+    fireTimer(calls);
+    assert.equal(xhr.posts.length, 1, `${row.id}: one report`);
+    const body = JSON.parse(xhr.posts[0].body);
+    assert.equal(body.device.browser, row.expect.browser, `${row.id}: browser`);
+    assert.equal(body.device.osVersion, row.expect.osVersion, `${row.id}: osVersion`);
+    // §7.5 ladder step 1: the watchdog stamps browserVersion major-only.
+    const wantMajor =
+      row.expect.browserVersion === "unknown" ? "unknown" : row.expect.browserVersion.split(".")[0];
+    assert.equal(body.device.browserVersion, wantMajor, `${row.id}: browserVersion (major-only, ladder step 1)`);
+    assert.equal(body.device.os, row.expect.os, `${row.id}: os`);
+  }
 });

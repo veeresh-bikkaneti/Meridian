@@ -250,7 +250,7 @@ test("blocked storage: everything degrades to in-memory, nothing throws", () => 
 
 test("peekLoopProgress: streak + resume flag for the edition card", () => {
   installStorage();
-  assert.deepEqual(peekLoopProgress(), { streak: 0, bestStreak: 0, inProgress: false });
+  assert.deepEqual(peekLoopProgress(), { streak: 0, bestStreak: 0, inProgress: false, activeDeckId: "core" });
   const store: LoopUnlimitedStore = {
     ...freshLoopUnlimitedStore(10),
     streak: 3,
@@ -258,13 +258,13 @@ test("peekLoopProgress: streak + resume flag for the edition card", () => {
     current: freshLoopPuzzleState(2, 1),
   };
   writeLoopStoreV2(store);
-  assert.deepEqual(peekLoopProgress(), { streak: 3, bestStreak: 5, inProgress: true });
+  assert.deepEqual(peekLoopProgress(), { streak: 3, bestStreak: 5, inProgress: true, activeDeckId: "core" });
   const done: LoopUnlimitedStore = {
     ...store,
     current: { ...store.current!, status: "won", completedAt: "2026-10-06", streakEndedAt: null },
   };
   writeLoopStoreV2(done);
-  assert.deepEqual(peekLoopProgress(), { streak: 3, bestStreak: 5, inProgress: false });
+  assert.deepEqual(peekLoopProgress(), { streak: 3, bestStreak: 5, inProgress: false, activeDeckId: "core" });
 });
 
 test("v1 archive is never read, written, or deleted", () => {
@@ -707,7 +707,7 @@ test("loadLoopStore: an old blob without bestStreak backfills 0 and keeps streak
 test("blocked storage: read/write paths never throw with bestStreak in play", () => {
   installBlockedStorage();
   assert.equal(readLoopStoreV2(), null);
-  assert.deepEqual(peekLoopProgress(), { streak: 0, bestStreak: 0, inProgress: false });
+  assert.deepEqual(peekLoopProgress(), { streak: 0, bestStreak: 0, inProgress: false, activeDeckId: "core" });
   // A full win/loss session in memory: nothing throws, best tracks.
   assert.doesNotThrow(() => writeLoopStoreV2(freshLoopUnlimitedStore(10)));
   let store = loadLoopStore(5);
@@ -731,7 +731,7 @@ test("clearLoopStore removes the v2 store and the open flag, never the v1 archiv
   assert.equal(data.has(LOOP_STORAGE_KEY_V2), false);
   assert.equal(data.has("meridian.loop.open"), false);
   assert.equal(readLoopStoreV2(), null);
-  assert.deepEqual(peekLoopProgress(), { streak: 0, bestStreak: 0, inProgress: false });
+  assert.deepEqual(peekLoopProgress(), { streak: 0, bestStreak: 0, inProgress: false, activeDeckId: "core" });
   // Kept keys are byte-identical: the inert v1 archive is never touched.
   assert.equal(data.get("meridian.loop.v1"), '{"archive":true}');
   assert.equal(data.get("meridian.palette"), "standard");

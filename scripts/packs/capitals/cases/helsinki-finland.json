@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "helsinki-finland",
+  "target": {
+    "placeId": "gn-658225",
+    "name": "Helsinki",
+    "aliases": [
+      "Helsingfors"
+    ],
+    "lat": 60.16952,
+    "lon": 24.93545,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Finland",
+    "iso2": "FI",
+    "subdivision": "Uusimaa"
+  },
+  "subjectAnswer": {
+    "name": "Finland",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Finland",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city is the far north capital of a land in the north of Europe. It stands on the shore of a wide gulf, with the cold sea to its south.",
+      "narrowing": "Rules out all but the far-north capitals on a gulf shore.",
+      "source": {
+        "article": "Helsinki",
+        "url": "https://en.wikipedia.org/wiki/Helsinki",
+        "quote": "Additionally, it is the northernmost capital of an EU member state."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "In deep winter, the day here lasts less than six hours, and the sun stays very low. In summer, the day stretches to near nineteen hours of light.",
+      "narrowing": "Rules out lands with even days; keeps the far north with its swing of light.",
+      "source": {
+        "article": "Helsinki",
+        "url": "https://en.wikipedia.org/wiki/Helsinki",
+        "quote": "However, due to the latitude, the days around the winter solstice are 5 hours and 48 minutes long, with the sun very low (at noon the sun is just over 6 degrees in the sky), and the cloudy weather at this time of year exacerbates the darkness. Conversely, Helsinki enjoys long days in summer, with 18 hours and 57 minutes of daylight around the summer solstice ."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1812, an emperor moved the seat of rule to this town from an older town in the west. He wanted less sway from Sweden and a seat closer to his own capital.",
+      "narrowing": "Shrinks the list to capitals moved by an emperor in 1812.",
+      "source": {
+        "article": "Helsinki — History",
+        "url": "https://en.wikipedia.org/wiki/Helsinki#History",
+        "quote": "Emperor Alexander I of Russia moved the capital of Finland from Turku to Helsinki on 8 April 1812 to reduce Swedish influence in Finland and bring the capital closer to St Petersburg ."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Work began in 1748 on a great sea fort near this city, the largest sea fort in Europe in its day. The fort raised the standing of the whole town.",
+      "narrowing": "Nearly decisive: the largest sea fort of its age guards this port.",
+      "source": {
+        "article": "Helsinki — History",
+        "url": "https://en.wikipedia.org/wiki/Helsinki#History",
+        "quote": "Construction of Suomenlinna , the largest European sea fortress of its era, began in 1748."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The work of state for Finland runs from this city. It is the chief hub of the land for rule, schools, banks, and arts.",
+      "narrowing": "Confirms it: the chief hub of the land for rule and state work.",
+      "source": {
+        "article": "Helsinki",
+        "url": "https://en.wikipedia.org/wiki/Helsinki",
+        "quote": "it is the country's most significant centre for politics, education, finance, culture, and research."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A king of Sweden founded this trading town in 1550 to rival a port across the gulf. In 1812 an emperor moved the seat of rule here, and the town grew into a great city. Helsinki is the capital of Finland."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Helsinki"
+  },
+  "pointPolicy": "geonames-point"
+}

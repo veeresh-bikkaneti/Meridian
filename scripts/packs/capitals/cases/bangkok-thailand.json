@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "bangkok-thailand",
+  "target": {
+    "placeId": "gn-1609350",
+    "name": "Bangkok",
+    "aliases": [
+      "Krung Thep"
+    ],
+    "lat": 13.75398,
+    "lon": 100.50144,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Thailand",
+    "iso2": "TH",
+    "subdivision": "Bangkok"
+  },
+  "subjectAnswer": {
+    "name": "Thailand",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Thailand",
+    "givenKind": "country"
+  },
+  "packTier": 2,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city spreads across the flat delta of the Chao Phraya River. Its low streets sit near the river mouth, close to the sea.",
+      "narrowing": "Rules out highland and inland cities; puts the player on the Chao Phraya delta near the sea.",
+      "source": {
+        "article": "Bangkok",
+        "url": "https://en.wikipedia.org/wiki/Bangkok",
+        "quote": "in the Chao Phraya River delta in central Thailand"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This city has three seasons: hot, rainy, and cool. Monsoon rains start in May, and September soaks the streets the most.",
+      "narrowing": "Rules out four season lands; keeps a hot city with a long monsoon rainy season.",
+      "source": {
+        "article": "Bangkok",
+        "url": "https://en.wikipedia.org/wiki/Bangkok",
+        "quote": "The city experiences three seasons: hot, rainy, and cool, although temperatures are fairly hot year-round"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1782, a new king moved his capital across the river to an island. He set a city pillar there to mark the new start.",
+      "narrowing": "Shrinks the list to capitals founded by a king's move across a river in 1782.",
+      "source": {
+        "article": "Bangkok — History",
+        "url": "https://en.wikipedia.org/wiki/Bangkok#History",
+        "quote": "In 1782, King Phutthayotfa Chulalok (Rama I) succeeded Taksin, moved the capital to the eastern bank's Rattanakosin Island"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "A grand palace stands by the river in this city. Bright temple roofs, like those of Wat Arun, shine close by.",
+      "narrowing": "Nearly decisive: a grand palace with famed temples like Wat Arun marks this city.",
+      "source": {
+        "article": "Bangkok",
+        "url": "https://en.wikipedia.org/wiki/Bangkok",
+        "quote": "The Grand Palace and Buddhist temples, including Wat Arun and Wat Pho"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This city is the capital of Thailand, and its Grand Palace still stands at its heart. The whole country's politics runs through its streets.",
+      "narrowing": "Confirms it: the capital of Thailand, with the Grand Palace at its heart.",
+      "source": {
+        "article": "Bangkok",
+        "url": "https://en.wikipedia.org/wiki/Bangkok",
+        "quote": "Bangkok, known in Thai as Krung Thep Maha Nakhon and colloquially as Krung Thep, is the capital and largest city of Thailand."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "A small trading post grew here by the river long ago. In 1782 King Rama I moved the capital across the river and founded the city in earnest. Traders from far lands then helped it grow into a great port and royal city. Bangkok is the capital of Thailand."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Bangkok"
+  },
+  "pointPolicy": "geonames-point"
+}

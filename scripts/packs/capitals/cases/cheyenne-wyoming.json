@@ -1,0 +1,96 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "cheyenne-wyoming",
+  "target": {
+    "placeId": "gn-5821086",
+    "name": "Cheyenne",
+    "aliases": [],
+    "lat": 41.13998,
+    "lon": -104.82025,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Wyoming",
+    "iso2": "US",
+    "subdivision": "Wyoming"
+  },
+  "subjectAnswer": {
+    "name": "Wyoming",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": ["A"],
+  "prompt": {
+    "givenName": "Wyoming",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city stands where the plains run up to the Rocky Mountains. Two small creeks flow through it, at the north end of a long mountain front.",
+      "narrowing": "Points to the north end of the Rocky Mountain front, on the high plains.",
+      "source": {
+        "article": "Cheyenne, Wyoming",
+        "url": "https://en.wikipedia.org/wiki/Cheyenne%2C_Wyoming",
+        "quote": "Cheyenne is the northern terminus of the extensive Southern Rocky Mountain Front."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winter cold here keeps breaking in a warm rush of wind. Chinook winds pour down from the peaks and lift some winter days past 50 degrees.",
+      "narrowing": "Rules out steady cold towns; keeps windy plains towns warmed by chinook winds.",
+      "source": {
+        "article": "Cheyenne, Wyoming",
+        "url": "https://en.wikipedia.org/wiki/Cheyenne%2C_Wyoming",
+        "quote": "the cold is often interrupted, with chinook winds blowing downslope from the Rockies that can bring warm conditions"
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "A railroad crew laid out this town in 1867, and the first train rolled in that same year. In 1869, a new governor named it the territory capital.",
+      "narrowing": "Cuts the list to a railroad town named territory capital in 1869.",
+      "source": {
+        "article": "Cheyenne, Wyoming — History",
+        "url": "https://en.wikipedia.org/wiki/Cheyenne%2C_Wyoming#History",
+        "quote": "Territorial Governor John Allen Campbell arrived in Cheyenne on May 7, 1869, and named Cheyenne the temporary territorial capital."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Each summer, this city throws Frontier Days, a huge rodeo and Old West party. It is the best known show in town, and crowds pack in for it.",
+      "narrowing": "Nearly decisive: one capital hosts a famed Frontier Days rodeo each year.",
+      "source": {
+        "article": "Cheyenne, Wyoming",
+        "url": "https://en.wikipedia.org/wiki/Cheyenne%2C_Wyoming",
+        "quote": "is known for the annual Cheyenne Frontier Days, a longstanding rodeo and cultural event"
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Wyoming works in this city. State lawmakers meet here, in the seat of state rule.",
+      "narrowing": "Confirms it: the governor and state lawmakers work in this city.",
+      "source": {
+        "article": "Cheyenne, Wyoming",
+        "url": "https://en.wikipedia.org/wiki/Cheyenne%2C_Wyoming",
+        "quote": "is the capital and most populous city of the U.S. state of Wyoming"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "The railroad laid out this town in 1867 beside a fort built to guard the tracks. Two years later it was named the territory capital, and it has held the seat ever since. Cheyenne is the capital of Wyoming."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Cheyenne%2C_Wyoming"
+  },
+  "pointPolicy": "geonames-point"
+}

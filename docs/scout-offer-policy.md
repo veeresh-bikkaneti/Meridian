@@ -12,7 +12,9 @@ Owner: **"Auto-switch silently on weak devices (my decision stands)"** —
 "check the device capability and auto switch; also allow user to manually switch."
 
 At boot, if no stored record stands, the device is qualified in order:
-prior map-attributed crash → WebGL probe → low memory.
+prior map-attributed crash → WebGL probe → low memory → unknown-memory
+Scout trial (touch devices only: Scout first, then the timed in-session
+upgrade described below).
 
 **Low-memory relaxed (2026-10-21, review finding P1-7 — prefer the Full
 map).** `deviceMemory ≤ 1 GB` still demotes on its own. A `2 GB` reading
@@ -37,9 +39,50 @@ in-game toggle keeps the force-home behavior below.
 | Event | Stored as | Decays? |
 | --- | --- | --- |
 | Boot auto-switch (prior-crash / probe / low-memory) | `mode: scout`, `source: <signal>` | **yes, 7 days** — then the device is re-qualified; a clean probe returns it to full |
+| Boot Scout trial (unknown memory on a touch device, issue #330) | nothing: in memory only | n/a — every boot re-qualifies; see below |
 | `webglcontextlost` auto-switch (mid-game) | `mode: scout`, `source: contextlost` | yes, 7 days |
 | Settings toggle (manual) | `source: manual` | never |
 | Tile-failure switch (WS-4, after one failed retry) | nothing: in memory only | n/a — the next visit tries the full map again |
+
+## Unknown memory on touch devices: the Scout trial (issue #330)
+
+Safari does not report `navigator.deviceMemory`, so the low-memory check
+can never fire there — and an iPhone 11 (4 GB) qualified as a strong
+device, booted the full map, and was killed by iOS in a loop. The rule
+now: when memory is **unknown** and the primary pointer is **coarse**
+(touch), the session starts in Scout as a trial (`source:
+unknown-memory`). Nothing is stored. Once the Scout map has loaded,
+rendered, and stayed stable for 3 seconds, the session upgrades to the
+full map — in memory only, still nothing stored.
+
+Kill-switch (PR #331 panel cure): the upgrade is gated by the
+`scoutUpgradeTrial` feature flag (`src/lib/flags.ts`; default on, and
+shipped on in `public/flags.json`). Redeploying `flags.json` with the
+flag off disarms the trial with no code change: the session still
+boots Scout first, but eligibility is never set, so the upgrade never
+arms or fires and the session stays in Scout. Scout-first boot,
+manual records, and every other path are untouched.
+
+One exclusion: challenge runs never upgrade mid-run. A friend
+challenge's map is picked when the challenge opens and is never
+re-mapped, so a trial boot stays in Scout for that challenge; the
+trial's upgrade eligibility survives, and a later normal run in the
+same boot can still upgrade.
+
+Two guards keep the trial safe:
+
+- Real weak signals keep their own source and never upgrade: a device
+  demoted by a prior crash, a failed probe, or low memory is not a
+  trial device.
+- If the upgraded full map is what kills the process, the next boot
+  sees the prior-crash signal and stays in Scout with no upgrade. The
+  prior-crash signal is now durable: a boot that detects a map crash
+  also stamps a marker in `localStorage` (`meridian:map-crash`), which
+  counts for the same 7 days even if the session data is gone.
+
+Desktops keep the old behavior exactly: unknown memory with a fine
+pointer still boots the full map. A stored manual record still wins
+over every signal above, including the durable crash marker.
 
 A stored record always stands over fresh signals: a manual choice is
 never overridden by a probe, and boot never rewrites a standing record
