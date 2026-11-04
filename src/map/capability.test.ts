@@ -715,6 +715,59 @@ test("#330 gate: fires only for the trial, only after the full soak", () => {
   );
 });
 
+test("#330 gate flag: disarmed trial never fires, even with every soak condition met", () => {
+  const ready = NOW;
+  // The kill-switch position (scoutUpgradeTrial: false): the pure gate
+  // must stay shut at and past the full soak, however stable Scout was.
+  assert.equal(
+    shouldFireScoutUpgrade({
+      initialSource: "unknown-memory",
+      trialArmed: false,
+      scoutReadyAtMs: ready,
+      nowMs: ready + SCOUT_UPGRADE_SOAK_MS,
+    }),
+    false,
+  );
+  assert.equal(
+    shouldFireScoutUpgrade({
+      initialSource: "unknown-memory",
+      trialArmed: false,
+      scoutReadyAtMs: ready,
+      nowMs: ready + 60_000,
+    }),
+    false,
+  );
+});
+
+test("#330 gate flag: armed trial fires exactly as before (explicit true and omitted)", () => {
+  const ready = NOW;
+  // Explicit armed = the flag's shipped position; omitted = the baked-in
+  // default — both must reproduce the pre-flag behavior byte-for-byte:
+  // shut before the soak, open at it.
+  for (const trialArmed of [true, undefined] as const) {
+    assert.equal(
+      shouldFireScoutUpgrade({
+        initialSource: "unknown-memory",
+        trialArmed,
+        scoutReadyAtMs: ready,
+        nowMs: ready + SCOUT_UPGRADE_SOAK_MS - 1,
+      }),
+      false,
+      `trialArmed=${trialArmed} must stay shut before the soak`,
+    );
+    assert.equal(
+      shouldFireScoutUpgrade({
+        initialSource: "unknown-memory",
+        trialArmed,
+        scoutReadyAtMs: ready,
+        nowMs: ready + SCOUT_UPGRADE_SOAK_MS,
+      }),
+      true,
+      `trialArmed=${trialArmed} must fire at the soak`,
+    );
+  }
+});
+
 test("#330 gate: weak-device sources, prior crash, and stored records never upgrade", () => {
   const ready = NOW;
   for (const initialSource of ["prior-crash", "probe", "low-memory", "manual", "contextlost", "default"] as const) {

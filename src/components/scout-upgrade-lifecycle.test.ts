@@ -15,6 +15,13 @@
  *    and Play's upgrade handler re-checks that no stored manual
  *    record stands before it fires.
  *
+ * 3. The flag gate (PR #331 panel re-vote cure). The trial's
+ *    kill-switch is the `scoutUpgradeTrial` flag: GameApp's boot
+ *    effect must await the shared flags load and set eligibility only
+ *    when the flag is on — that gated call is the only arming site in
+ *    the file — and a manual record landing during the load must
+ *    block the arming, mirroring the fire-time guard in (2).
+ *
  * This is React state wiring inside GameApp/Play that needs a browser
  * to render end-to-end, so — in the repo's established source-pin
  * style (cf. map-switched-notice-lifecycle.test.ts) — this file pins
@@ -65,6 +72,39 @@ describe("#330 cure: the upgrade retires the auto-Scout note", () => {
       upgrade.includes('applySessionMapMode("full");'),
       "control: the upgrade still applies the full map, session-only",
     );
+  });
+});
+
+describe("#331 flag-gate cure: the trial arms only when scoutUpgradeTrial is on", () => {
+  it("boot eligibility is set inside the flag-gated loadFlags callback", () => {
+    const boot = segment(
+      gameAppSource,
+      'if (decision.source === "unknown-memory")',
+      "setAutoScoutNote(true);",
+    );
+    const loadAt = boot.indexOf("loadFlags()");
+    assert.ok(loadAt >= 0, "the arming must await the shared flags load (kill-switch ordering)");
+    const flagAt = boot.indexOf('isEnabled("scoutUpgradeTrial")');
+    assert.ok(flagAt > loadAt, "the flag check must run after the load resolves");
+    const armAt = boot.indexOf("setScoutUpgradeEligible(true);");
+    assert.ok(armAt > flagAt, "eligibility may only be set after the flag check passes");
+  });
+
+  it("the flag-gated call is the ONLY place eligibility is armed", () => {
+    const arms = gameAppSource.split("setScoutUpgradeEligible(true);").length - 1;
+    assert.equal(arms, 1, "exactly one arming site may exist, and it is the flag-gated one");
+  });
+
+  it("a manual record landing during the flags load blocks the arming", () => {
+    const boot = segment(
+      gameAppSource,
+      'if (decision.source === "unknown-memory")',
+      "setAutoScoutNote(true);",
+    );
+    const guardAt = boot.indexOf("readStoredMapMode()");
+    const armAt = boot.indexOf("setScoutUpgradeEligible(true);");
+    assert.ok(guardAt >= 0 && guardAt < armAt, "the manual re-check must run before arming");
+    assert.ok(boot.includes('"manual"'), "the re-check must look for a manual record specifically");
   });
 });
 

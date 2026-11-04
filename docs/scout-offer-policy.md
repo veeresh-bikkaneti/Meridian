@@ -55,6 +55,14 @@ unknown-memory`). Nothing is stored. Once the Scout map has loaded,
 rendered, and stayed stable for 3 seconds, the session upgrades to the
 full map — in memory only, still nothing stored.
 
+Kill-switch (PR #331 panel cure): the upgrade is gated by the
+`scoutUpgradeTrial` feature flag (`src/lib/flags.ts`; default on, and
+shipped on in `public/flags.json`). Redeploying `flags.json` with the
+flag off disarms the trial with no code change: the session still
+boots Scout first, but eligibility is never set, so the upgrade never
+arms or fires and the session stays in Scout. Scout-first boot,
+manual records, and every other path are untouched.
+
 One exclusion: challenge runs never upgrade mid-run. A friend
 challenge's map is picked when the challenge opens and is never
 re-mapped, so a trial boot stays in Scout for that challenge; the

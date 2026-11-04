@@ -1647,10 +1647,14 @@ export function SatelliteMap(props: {
       // viewport, mirroring the context-lost switch's view capture.
       // This timer implements the soak half of shouldFireScoutUpgrade
       // (src/map/capability.ts); the gate's other conditions (no stored
-      // record, no prior crash, unknown-memory source) hold by
-      // construction, because boot eligibility is only ever set for the
-      // unknown-memory branch of planBootMapMode, after qualifyMapMode's
-      // precedence order has already ruled the other conditions out.
+      // record, no prior crash, unknown-memory source, trial armed) hold
+      // by construction, because boot eligibility is only ever set for
+      // the unknown-memory branch of planBootMapMode — after
+      // qualifyMapMode's precedence order has already ruled the other
+      // conditions out, and only when the `scoutUpgradeTrial` flag is on
+      // (GameApp's boot effect awaits the flags load before arming). A
+      // disarmed trial never passes an upgrade callback, so this timer
+      // never arms.
       if (mapMode === "scout" && onScoutUpgradePropRef.current) {
         map.once("idle", () => {
           scoutUpgradeTimer = window.setTimeout(() => {

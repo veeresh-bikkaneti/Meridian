@@ -405,6 +405,13 @@ export function hasDurableMapCrashMarker(
 // — so the upgrade never fires again for that crash. Nothing about the
 // trial or the upgrade is ever written to the map-mode record, so no
 // stored artifact can suppress the prior-crash check on a later boot.
+//
+// Kill-switch (PR #331 panel cure): the trial is gated by the
+// `scoutUpgradeTrial` feature flag (src/lib/flags.ts, baked-in default
+// true = armed). GameApp's boot effect awaits the shared flags load and
+// only sets upgrade eligibility when the flag is on, so redeploying
+// flags.json with the flag false disarms the trial — Scout-first boot
+// still happens, the upgrade simply never arms — with no code change.
 // ---------------------------------------------------------------------------
 
 /**
@@ -425,14 +432,23 @@ export interface ScoutUpgradeGate {
   priorMapCrash?: boolean;
   /** A live stored record (manual or auto) decided this boot's mode. */
   storedRecordPresent?: boolean;
+  /**
+   * The `scoutUpgradeTrial` feature flag (src/lib/flags.ts), read by the
+   * caller at boot: false = the trial is disarmed by remote config and
+   * the upgrade must never fire, however stable Scout proves. Absent =
+   * armed — the flag's baked-in default is true, so an omitted value
+   * keeps the shipped #331 behavior byte-for-byte.
+   */
+  trialArmed?: boolean;
   /** Epoch ms when the Scout map finished its first render; null = not yet. */
   scoutReadyAtMs: number | null;
   /** Epoch ms to evaluate at. */
   nowMs: number;
 }
 
-/** Pure upgrade gate: true only for the unknown-memory trial, post-soak. */
+/** Pure upgrade gate: true only for the armed unknown-memory trial, post-soak. */
 export function shouldFireScoutUpgrade(gate: ScoutUpgradeGate): boolean {
+  if (gate.trialArmed === false) return false;
   if (gate.initialSource !== "unknown-memory") return false;
   if (gate.priorMapCrash === true) return false;
   if (gate.storedRecordPresent === true) return false;
