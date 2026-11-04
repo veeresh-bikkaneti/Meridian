@@ -9,7 +9,8 @@
     "name": "Yacuiba",
     "lon": -63.67753,
     "lat": -22.01643,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Bolivia"
    },
    "sightings": [
     {
@@ -26,7 +27,8 @@
       "continent": "South America",
       "country": "Peru",
       "subdivision": null
-     }
+     },
+     "flagKey": "pe"
     },
     {
      "id": "s2",
@@ -42,7 +44,8 @@
       "continent": "South America",
       "country": "Argentina",
       "subdivision": null
-     }
+     },
+     "flagKey": "ar"
     },
     {
      "id": "s3",
@@ -58,7 +61,8 @@
       "continent": "South America",
       "country": "Chile",
       "subdivision": null
-     }
+     },
+     "flagKey": "cl"
     }
    ],
    "packId": "capitals"
@@ -71,7 +75,8 @@
     "name": "Jardines de la Silla",
     "lon": -100.18778,
     "lat": 25.62944,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Mexico"
    },
    "sightings": [
     {
@@ -88,7 +93,8 @@
       "continent": "North America",
       "country": "Cuba",
       "subdivision": null
-     }
+     },
+     "flagKey": "cu"
     },
     {
      "id": "s2",
@@ -120,7 +126,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Minnesota"
-     }
+     },
+     "flagKey": "us-mn"
     }
    ],
    "packId": "capitals"
@@ -133,7 +140,9 @@
     "name": "Muntilan",
     "lon": 110.29278,
     "lat": -7.58111,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Indonesia",
+    "flagKey": "id"
    },
    "sightings": [
     {
@@ -150,7 +159,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s2",
@@ -166,7 +176,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     },
     {
      "id": "s3",
@@ -182,7 +193,8 @@
       "continent": "Asia",
       "country": "Philippines",
       "subdivision": null
-     }
+     },
+     "flagKey": "ph"
     }
    ],
    "packId": "capitals"
@@ -195,7 +207,9 @@
     "name": "Emden",
     "lon": 7.20846,
     "lat": 53.36592,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Germany",
+    "flagKey": "de"
    },
    "sightings": [
     {
@@ -228,7 +242,8 @@
       "continent": "Europe",
       "country": "Greece",
       "subdivision": null
-     }
+     },
+     "flagKey": "gr"
     },
     {
      "id": "s3",
@@ -244,7 +259,8 @@
       "continent": "Europe",
       "country": "Poland",
       "subdivision": null
-     }
+     },
+     "flagKey": "pl"
     }
    ],
    "packId": "capitals"
@@ -257,7 +273,9 @@
     "name": "Sindhnūr",
     "lon": 76.75581,
     "lat": 15.76983,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -274,7 +292,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s2",
@@ -290,7 +309,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     },
     {
      "id": "s3",
@@ -306,7 +326,8 @@
       "continent": "Asia",
       "country": "Singapore",
       "subdivision": null
-     }
+     },
+     "flagKey": "sg"
     }
    ],
    "packId": "capitals"
@@ -319,7 +340,9 @@
     "name": "Chhibrāmau",
     "lon": 79.50078,
     "lat": 27.14872,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -336,7 +359,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     },
     {
      "id": "s2",
@@ -352,7 +376,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s3",
@@ -368,7 +393,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     }
    ],
    "packId": "capitals"
@@ -381,7 +407,9 @@
     "name": "Gohāna",
     "lon": 76.70247,
     "lat": 29.13777,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -398,7 +426,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     },
     {
      "id": "s2",
@@ -414,7 +443,8 @@
       "continent": "Asia",
       "country": "Nepal",
       "subdivision": null
-     }
+     },
+     "flagKey": "np"
     },
     {
      "id": "s3",
@@ -430,7 +460,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     }
    ],
    "packId": "capitals"
@@ -443,7 +474,9 @@
     "name": "Xihe",
     "lon": 113.46585,
     "lat": 31.68635,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "China",
+    "flagKey": "cn"
    },
    "sightings": [
     {
@@ -460,7 +493,8 @@
       "continent": "Asia",
       "country": "Japan",
       "subdivision": null
-     }
+     },
+     "flagKey": "jp"
     },
     {
      "id": "s2",
@@ -476,7 +510,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     },
     {
      "id": "s3",
@@ -492,7 +527,8 @@
       "continent": "Asia",
       "country": "South Korea",
       "subdivision": null
-     }
+     },
+     "flagKey": "kr"
     }
    ],
    "packId": "capitals"
@@ -505,7 +541,9 @@
     "name": "Marseille 09",
     "lon": 5.4057,
     "lat": 43.25433,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "France",
+    "flagKey": "fr"
    },
    "sightings": [
     {
@@ -538,7 +576,8 @@
       "continent": "Europe",
       "country": "Ukraine",
       "subdivision": null
-     }
+     },
+     "flagKey": "ua"
     },
     {
      "id": "s3",
@@ -554,7 +593,8 @@
       "continent": "Europe",
       "country": "Finland",
       "subdivision": null
-     }
+     },
+     "flagKey": "fi"
     }
    ],
    "packId": "capitals"
@@ -567,7 +607,9 @@
     "name": "Khalándrion",
     "lon": 23.80068,
     "lat": 38.02369,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Greece",
+    "flagKey": "gr"
    },
    "sightings": [
     {
@@ -584,7 +626,8 @@
       "continent": "Europe",
       "country": "Netherlands",
       "subdivision": null
-     }
+     },
+     "flagKey": "nl"
     },
     {
      "id": "s2",
@@ -600,7 +643,8 @@
       "continent": "Africa",
       "country": "Egypt",
       "subdivision": null
-     }
+     },
+     "flagKey": "eg"
     },
     {
      "id": "s3",
@@ -616,7 +660,8 @@
       "continent": "Europe",
       "country": "Hungary",
       "subdivision": null
-     }
+     },
+     "flagKey": "hu"
     }
    ],
    "packId": "capitals"
@@ -629,7 +674,8 @@
     "name": "Bhola",
     "lon": 90.64403,
     "lat": 22.68759,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Bangladesh"
    },
    "sightings": [
     {
@@ -646,7 +692,8 @@
       "continent": "Asia",
       "country": "South Korea",
       "subdivision": null
-     }
+     },
+     "flagKey": "kr"
     },
     {
      "id": "s2",
@@ -662,7 +709,8 @@
       "continent": "Asia",
       "country": "Singapore",
       "subdivision": null
-     }
+     },
+     "flagKey": "sg"
     },
     {
      "id": "s3",
@@ -678,7 +726,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     }
    ],
    "packId": "capitals"
@@ -691,7 +740,9 @@
     "name": "Sirs al Layyānah",
     "lon": 30.96975,
     "lat": 30.4428,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Egypt",
+    "flagKey": "eg"
    },
    "sightings": [
     {
@@ -708,7 +759,8 @@
       "continent": "Europe",
       "country": "Netherlands",
       "subdivision": null
-     }
+     },
+     "flagKey": "nl"
     },
     {
      "id": "s2",
@@ -724,7 +776,8 @@
       "continent": "Europe",
       "country": "Russia",
       "subdivision": "Moscow"
-     }
+     },
+     "flagKey": "ru"
     },
     {
      "id": "s3",
@@ -740,7 +793,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     }
    ],
    "packId": "capitals"
@@ -753,7 +807,8 @@
     "name": "Coslada",
     "lon": -3.56129,
     "lat": 40.42378,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Spain"
    },
    "sightings": [
     {
@@ -770,7 +825,8 @@
       "continent": "Europe",
       "country": "Italy",
       "subdivision": null
-     }
+     },
+     "flagKey": "it"
     },
     {
      "id": "s2",
@@ -786,7 +842,8 @@
       "continent": "Europe",
       "country": "Czechia",
       "subdivision": null
-     }
+     },
+     "flagKey": "cz"
     },
     {
      "id": "s3",
@@ -802,7 +859,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     }
    ],
    "packId": "capitals"
@@ -815,7 +873,9 @@
     "name": "Spijkenisse",
     "lon": 4.32917,
     "lat": 51.845,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Netherlands",
+    "flagKey": "nl"
    },
    "sightings": [
     {
@@ -832,7 +892,8 @@
       "continent": "Europe",
       "country": "Greece",
       "subdivision": null
-     }
+     },
+     "flagKey": "gr"
     },
     {
      "id": "s2",
@@ -848,7 +909,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     },
     {
      "id": "s3",
@@ -864,7 +926,8 @@
       "continent": "Europe",
       "country": "France",
       "subdivision": null
-     }
+     },
+     "flagKey": "fr"
     }
    ],
    "packId": "capitals"
@@ -877,7 +940,9 @@
     "name": "Gaithersburg",
     "lon": -77.20137,
     "lat": 39.14344,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -910,7 +975,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Indiana"
-     }
+     },
+     "flagKey": "us-in"
     },
     {
      "id": "s3",
@@ -926,7 +992,8 @@
       "continent": "North America",
       "country": "Cuba",
       "subdivision": null
-     }
+     },
+     "flagKey": "cu"
     }
    ],
    "packId": "capitals"
@@ -939,7 +1006,8 @@
     "name": "Manono",
     "lon": 27.39894,
     "lat": -7.29862,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Congo - Kinshasa"
    },
    "sightings": [
     {
@@ -956,7 +1024,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     },
     {
      "id": "s2",
@@ -972,7 +1041,8 @@
       "continent": "Africa",
       "country": "South Africa",
       "subdivision": null
-     }
+     },
+     "flagKey": "za"
     },
     {
      "id": "s3",
@@ -988,7 +1058,8 @@
       "continent": "Africa",
       "country": "Ghana",
       "subdivision": null
-     }
+     },
+     "flagKey": "gh"
     }
    ],
    "packId": "capitals"
@@ -1001,7 +1072,8 @@
     "name": "Kiffa",
     "lon": -11.40208,
     "lat": 16.62073,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Mauritania"
    },
    "sightings": [
     {
@@ -1018,7 +1090,8 @@
       "continent": "Europe",
       "country": "France",
       "subdivision": null
-     }
+     },
+     "flagKey": "fr"
     },
     {
      "id": "s2",
@@ -1034,7 +1107,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     },
     {
      "id": "s3",
@@ -1050,7 +1124,8 @@
       "continent": "Africa",
       "country": "Ghana",
       "subdivision": null
-     }
+     },
+     "flagKey": "gh"
     }
    ],
    "packId": "capitals"
@@ -1063,7 +1138,9 @@
     "name": "Ninghai",
     "lon": 121.42472,
     "lat": 29.28917,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "China",
+    "flagKey": "cn"
    },
    "sightings": [
     {
@@ -1080,7 +1157,8 @@
       "continent": "Asia",
       "country": "Nepal",
       "subdivision": null
-     }
+     },
+     "flagKey": "np"
     },
     {
      "id": "s2",
@@ -1096,7 +1174,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s3",
@@ -1112,7 +1191,8 @@
       "continent": "Asia",
       "country": "Philippines",
       "subdivision": null
-     }
+     },
+     "flagKey": "ph"
     }
    ],
    "packId": "capitals"
@@ -1125,7 +1205,9 @@
     "name": "Camden",
     "lon": -75.11962,
     "lat": 39.92595,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -1142,7 +1224,8 @@
       "continent": "North America",
       "country": "Cuba",
       "subdivision": null
-     }
+     },
+     "flagKey": "cu"
     },
     {
      "id": "s2",
@@ -1158,7 +1241,8 @@
       "continent": "North America",
       "country": "Canada",
       "subdivision": "Ontario"
-     }
+     },
+     "flagKey": "ca"
     },
     {
      "id": "s3",
@@ -1174,7 +1258,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Tennessee"
-     }
+     },
+     "flagKey": "us-tn"
     }
    ],
    "packId": "capitals"
@@ -1187,7 +1272,8 @@
     "name": "Guasdualito",
     "lon": -70.73235,
     "lat": 7.24241,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Venezuela"
    },
    "sightings": [
     {
@@ -1220,7 +1306,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Indiana"
-     }
+     },
+     "flagKey": "us-in"
     },
     {
      "id": "s3",
@@ -1249,7 +1336,9 @@
     "name": "West Lynchburg",
     "lon": -79.17808,
     "lat": 37.4032,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -1266,7 +1355,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Ohio"
-     }
+     },
+     "flagKey": "us-oh"
     },
     {
      "id": "s2",
@@ -1282,7 +1372,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Tennessee"
-     }
+     },
+     "flagKey": "us-tn"
     },
     {
      "id": "s3",
@@ -1298,7 +1389,8 @@
       "continent": "North America",
       "country": "Canada",
       "subdivision": "Ontario"
-     }
+     },
+     "flagKey": "ca"
     }
    ],
    "packId": "capitals"
@@ -1311,7 +1403,8 @@
     "name": "Gurlan",
     "lon": 60.39268,
     "lat": 41.84123,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Uzbekistan"
    },
    "sightings": [
     {
@@ -1328,7 +1421,8 @@
       "continent": "Europe",
       "country": "Ukraine",
       "subdivision": null
-     }
+     },
+     "flagKey": "ua"
     },
     {
      "id": "s2",
@@ -1344,7 +1438,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s3",
@@ -1360,7 +1455,8 @@
       "continent": "Africa",
       "country": "Egypt",
       "subdivision": null
-     }
+     },
+     "flagKey": "eg"
     }
    ],
    "packId": "capitals"
@@ -1373,7 +1469,9 @@
     "name": "Dorchester",
     "lon": -71.0745,
     "lat": 42.29732,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -1390,7 +1488,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Ohio"
-     }
+     },
+     "flagKey": "us-oh"
     },
     {
      "id": "s2",
@@ -1422,7 +1521,8 @@
       "continent": "North America",
       "country": "Canada",
       "subdivision": "Ontario"
-     }
+     },
+     "flagKey": "ca"
     }
    ],
    "packId": "capitals"
@@ -1435,7 +1535,8 @@
     "name": "El Ejido",
     "lon": -2.81456,
     "lat": 36.77629,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Spain"
    },
    "sightings": [
     {
@@ -1452,7 +1553,8 @@
       "continent": "Africa",
       "country": "Ghana",
       "subdivision": null
-     }
+     },
+     "flagKey": "gh"
     },
     {
      "id": "s2",
@@ -1468,7 +1570,8 @@
       "continent": "Europe",
       "country": "Denmark",
       "subdivision": null
-     }
+     },
+     "flagKey": "dk"
     },
     {
      "id": "s3",
@@ -1484,7 +1587,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     }
    ],
    "packId": "capitals"
@@ -1497,7 +1601,9 @@
     "name": "Alīpur Duār",
     "lon": 89.52286,
     "lat": 26.4835,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -1514,7 +1620,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s2",
@@ -1530,7 +1637,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s3",
@@ -1546,7 +1654,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     }
    ],
    "packId": "capitals"
@@ -1559,7 +1668,8 @@
     "name": "Al Līth",
     "lon": 40.27224,
     "lat": 20.14804,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Saudi Arabia"
    },
    "sightings": [
     {
@@ -1576,7 +1686,8 @@
       "continent": "Europe",
       "country": "Poland",
       "subdivision": null
-     }
+     },
+     "flagKey": "pl"
     },
     {
      "id": "s2",
@@ -1592,7 +1703,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     },
     {
      "id": "s3",
@@ -1608,7 +1720,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     }
    ],
    "packId": "capitals"
@@ -1621,7 +1734,9 @@
     "name": "Flagami",
     "lon": -80.31616,
     "lat": 25.76232,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -1638,7 +1753,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Indiana"
-     }
+     },
+     "flagKey": "us-in"
     },
     {
      "id": "s2",
@@ -1683,7 +1799,9 @@
     "name": "Pusad",
     "lon": 77.57838,
     "lat": 19.91274,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -1700,7 +1818,8 @@
       "continent": "Asia",
       "country": "Singapore",
       "subdivision": null
-     }
+     },
+     "flagKey": "sg"
     },
     {
      "id": "s2",
@@ -1716,7 +1835,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     },
     {
      "id": "s3",
@@ -1732,7 +1852,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     }
    ],
    "packId": "capitals"
@@ -1745,7 +1866,9 @@
     "name": "Maţāy",
     "lon": 30.77861,
     "lat": 28.41866,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Egypt",
+    "flagKey": "eg"
    },
    "sightings": [
     {
@@ -1778,7 +1901,8 @@
       "continent": "Europe",
       "country": "United Kingdom",
       "subdivision": null
-     }
+     },
+     "flagKey": "gb"
     },
     {
      "id": "s3",
@@ -1794,7 +1918,8 @@
       "continent": "Europe",
       "country": "Poland",
       "subdivision": null
-     }
+     },
+     "flagKey": "pl"
     }
    ],
    "packId": "capitals"
@@ -1807,7 +1932,8 @@
     "name": "Nahāvand",
     "lon": 48.37446,
     "lat": 34.19088,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Iran"
    },
    "sightings": [
     {
@@ -1824,7 +1950,8 @@
       "continent": "Asia",
       "country": "Nepal",
       "subdivision": null
-     }
+     },
+     "flagKey": "np"
     },
     {
      "id": "s2",
@@ -1840,7 +1967,8 @@
       "continent": "Europe",
       "country": "Austria",
       "subdivision": null
-     }
+     },
+     "flagKey": "at"
     },
     {
      "id": "s3",
@@ -1856,7 +1984,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     }
    ],
    "packId": "capitals"
@@ -1869,7 +1998,9 @@
     "name": "Kawalu",
     "lon": 108.2082,
     "lat": -7.3817,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Indonesia",
+    "flagKey": "id"
    },
    "sightings": [
     {
@@ -1886,7 +2017,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s2",
@@ -1902,7 +2034,8 @@
       "continent": "Asia",
       "country": "Singapore",
       "subdivision": null
-     }
+     },
+     "flagKey": "sg"
     },
     {
      "id": "s3",
@@ -1918,7 +2051,8 @@
       "continent": "Asia",
       "country": "Philippines",
       "subdivision": null
-     }
+     },
+     "flagKey": "ph"
     }
    ],
    "packId": "capitals"
@@ -1931,7 +2065,8 @@
     "name": "Sangmélima",
     "lon": 11.98333,
     "lat": 2.93333,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Cameroon"
    },
    "sightings": [
     {
@@ -1948,7 +2083,8 @@
       "continent": "Africa",
       "country": "Egypt",
       "subdivision": null
-     }
+     },
+     "flagKey": "eg"
     },
     {
      "id": "s2",
@@ -1964,7 +2100,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     },
     {
      "id": "s3",
@@ -1980,7 +2117,8 @@
       "continent": "Africa",
       "country": "South Africa",
       "subdivision": null
-     }
+     },
+     "flagKey": "za"
     }
    ],
    "packId": "capitals"
@@ -1993,7 +2131,9 @@
     "name": "Pubal",
     "lon": 127.50778,
     "lat": 37.29167,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "South Korea",
+    "flagKey": "kr"
    },
    "sightings": [
     {
@@ -2010,7 +2150,8 @@
       "continent": "Asia",
       "country": "Philippines",
       "subdivision": null
-     }
+     },
+     "flagKey": "ph"
     },
     {
      "id": "s2",
@@ -2026,7 +2167,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     },
     {
      "id": "s3",
@@ -2042,7 +2184,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     }
    ],
    "packId": "capitals"
@@ -2055,7 +2198,8 @@
     "name": "Nevşehir",
     "lon": 34.71222,
     "lat": 38.625,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Türkiye"
    },
    "sightings": [
     {
@@ -2072,7 +2216,8 @@
       "continent": "Europe",
       "country": "Greece",
       "subdivision": null
-     }
+     },
+     "flagKey": "gr"
     },
     {
      "id": "s2",
@@ -2088,7 +2233,8 @@
       "continent": "Europe",
       "country": "Russia",
       "subdivision": "Moscow"
-     }
+     },
+     "flagKey": "ru"
     },
     {
      "id": "s3",
@@ -2104,7 +2250,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     }
    ],
    "packId": "capitals"
@@ -2117,7 +2264,8 @@
     "name": "Cárdenas",
     "lon": -93.37559,
     "lat": 18.00135,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Mexico"
    },
    "sightings": [
     {
@@ -2134,7 +2282,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Ohio"
-     }
+     },
+     "flagKey": "us-oh"
     },
     {
      "id": "s2",
@@ -2150,7 +2299,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Colorado"
-     }
+     },
+     "flagKey": "us-co"
     },
     {
      "id": "s3",
@@ -2166,7 +2316,8 @@
       "continent": "South America",
       "country": "Peru",
       "subdivision": null
-     }
+     },
+     "flagKey": "pe"
     }
    ],
    "packId": "capitals"
@@ -2179,7 +2330,9 @@
     "name": "Định Công",
     "lon": 105.82694,
     "lat": 20.98389,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Vietnam",
+    "flagKey": "vn"
    },
    "sightings": [
     {
@@ -2196,7 +2349,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     },
     {
      "id": "s2",
@@ -2212,7 +2366,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     },
     {
      "id": "s3",
@@ -2228,7 +2383,8 @@
       "continent": "Asia",
       "country": "Nepal",
       "subdivision": null
-     }
+     },
+     "flagKey": "np"
     }
    ],
    "packId": "capitals"
@@ -2241,7 +2397,8 @@
     "name": "Tiflet",
     "lon": -6.30649,
     "lat": 33.89469,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Morocco"
    },
    "sightings": [
     {
@@ -2258,7 +2415,8 @@
       "continent": "Europe",
       "country": "Ireland",
       "subdivision": null
-     }
+     },
+     "flagKey": "ie"
     },
     {
      "id": "s2",
@@ -2274,7 +2432,8 @@
       "continent": "Europe",
       "country": "Netherlands",
       "subdivision": null
-     }
+     },
+     "flagKey": "nl"
     },
     {
      "id": "s3",
@@ -2290,7 +2449,8 @@
       "continent": "Africa",
       "country": "Ghana",
       "subdivision": null
-     }
+     },
+     "flagKey": "gh"
     }
    ],
    "packId": "capitals"
@@ -2303,7 +2463,9 @@
     "name": "Garbsen",
     "lon": 9.6033,
     "lat": 52.41961,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Germany",
+    "flagKey": "de"
    },
    "sightings": [
     {
@@ -2320,7 +2482,8 @@
       "continent": "Europe",
       "country": "Netherlands",
       "subdivision": null
-     }
+     },
+     "flagKey": "nl"
     },
     {
      "id": "s2",
@@ -2336,7 +2499,8 @@
       "continent": "Europe",
       "country": "Hungary",
       "subdivision": null
-     }
+     },
+     "flagKey": "hu"
     },
     {
      "id": "s3",
@@ -2352,7 +2516,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     }
    ],
    "packId": "capitals"
@@ -2365,7 +2530,9 @@
     "name": "Shelby",
     "lon": -83.03298,
     "lat": 42.67087,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -2427,7 +2594,8 @@
     "name": "Mérida",
     "lon": -6.34292,
     "lat": 38.91802,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Spain"
    },
    "sightings": [
     {
@@ -2444,7 +2612,8 @@
       "continent": "Europe",
       "country": "Ireland",
       "subdivision": null
-     }
+     },
+     "flagKey": "ie"
     },
     {
      "id": "s2",
@@ -2460,7 +2629,8 @@
       "continent": "Europe",
       "country": "Russia",
       "subdivision": "Moscow"
-     }
+     },
+     "flagKey": "ru"
     },
     {
      "id": "s3",
@@ -2476,7 +2646,8 @@
       "continent": "Europe",
       "country": "Germany",
       "subdivision": null
-     }
+     },
+     "flagKey": "de"
     }
    ],
    "packId": "capitals"
@@ -2489,7 +2660,9 @@
     "name": "Uman",
     "lon": 30.21944,
     "lat": 48.7501,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Ukraine",
+    "flagKey": "ua"
    },
    "sightings": [
     {
@@ -2506,7 +2679,8 @@
       "continent": "Europe",
       "country": "Germany",
       "subdivision": null
-     }
+     },
+     "flagKey": "de"
     },
     {
      "id": "s2",
@@ -2522,7 +2696,8 @@
       "continent": "Europe",
       "country": "Greece",
       "subdivision": null
-     }
+     },
+     "flagKey": "gr"
     },
     {
      "id": "s3",
@@ -2538,7 +2713,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     }
    ],
    "packId": "capitals"
@@ -2551,7 +2727,8 @@
     "name": "Nyunzu",
     "lon": 28.01649,
     "lat": -5.95609,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Congo - Kinshasa"
    },
    "sightings": [
     {
@@ -2568,7 +2745,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     },
     {
      "id": "s2",
@@ -2584,7 +2762,8 @@
       "continent": "Africa",
       "country": "Ghana",
       "subdivision": null
-     }
+     },
+     "flagKey": "gh"
     },
     {
      "id": "s3",
@@ -2600,7 +2779,8 @@
       "continent": "Africa",
       "country": "South Africa",
       "subdivision": null
-     }
+     },
+     "flagKey": "za"
     }
    ],
    "packId": "capitals"
@@ -2613,7 +2793,8 @@
     "name": "Kotikawatta",
     "lon": 79.9095,
     "lat": 6.9269,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Sri Lanka"
    },
    "sightings": [
     {
@@ -2630,7 +2811,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s2",
@@ -2646,7 +2828,8 @@
       "continent": "Asia",
       "country": "Indonesia",
       "subdivision": null
-     }
+     },
+     "flagKey": "id"
     },
     {
      "id": "s3",
@@ -2662,7 +2845,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     }
    ],
    "packId": "capitals"
@@ -2675,7 +2859,8 @@
     "name": "Tŭytepa",
     "lon": 69.36253,
     "lat": 41.0321,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Uzbekistan"
    },
    "sightings": [
     {
@@ -2692,7 +2877,8 @@
       "continent": "Asia",
       "country": "China",
       "subdivision": "Beijing"
-     }
+     },
+     "flagKey": "cn"
     },
     {
      "id": "s2",
@@ -2708,7 +2894,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s3",
@@ -2724,7 +2911,8 @@
       "continent": "Europe",
       "country": "Poland",
       "subdivision": null
-     }
+     },
+     "flagKey": "pl"
     }
    ],
    "packId": "capitals"
@@ -2737,7 +2925,8 @@
     "name": "Sayyān",
     "lon": 44.32442,
     "lat": 15.17177,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Yemen"
    },
    "sightings": [
     {
@@ -2754,7 +2943,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     },
     {
      "id": "s2",
@@ -2770,7 +2960,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     },
     {
      "id": "s3",
@@ -2786,7 +2977,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     }
    ],
    "packId": "capitals"
@@ -2799,7 +2991,9 @@
     "name": "Hemel Hempstead",
     "lon": -0.44975,
     "lat": 51.75368,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United Kingdom",
+    "flagKey": "gb"
    },
    "sightings": [
     {
@@ -2816,7 +3010,8 @@
       "continent": "Europe",
       "country": "Ireland",
       "subdivision": null
-     }
+     },
+     "flagKey": "ie"
     },
     {
      "id": "s2",
@@ -2832,7 +3027,8 @@
       "continent": "Europe",
       "country": "Netherlands",
       "subdivision": null
-     }
+     },
+     "flagKey": "nl"
     },
     {
      "id": "s3",
@@ -2848,7 +3044,8 @@
       "continent": "Europe",
       "country": "Sweden",
       "subdivision": null
-     }
+     },
+     "flagKey": "se"
     }
    ],
    "packId": "capitals"
@@ -2861,7 +3058,9 @@
     "name": "Chiguayante",
     "lon": -73.02841,
     "lat": -36.9256,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Chile",
+    "flagKey": "cl"
    },
    "sightings": [
     {
@@ -2878,7 +3077,8 @@
       "continent": "South America",
       "country": "Chile",
       "subdivision": null
-     }
+     },
+     "flagKey": "cl"
     },
     {
      "id": "s2",
@@ -2894,7 +3094,8 @@
       "continent": "South America",
       "country": "Argentina",
       "subdivision": null
-     }
+     },
+     "flagKey": "ar"
     },
     {
      "id": "s3",
@@ -2910,7 +3111,8 @@
       "continent": "South America",
       "country": "Peru",
       "subdivision": null
-     }
+     },
+     "flagKey": "pe"
     }
    ],
    "packId": "capitals"
@@ -2923,7 +3125,8 @@
     "name": "Sarāvān",
     "lon": 62.33096,
     "lat": 27.37089,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Iran"
    },
    "sightings": [
     {
@@ -2940,7 +3143,8 @@
       "continent": "Africa",
       "country": "Egypt",
       "subdivision": null
-     }
+     },
+     "flagKey": "eg"
     },
     {
      "id": "s2",
@@ -2956,7 +3160,8 @@
       "continent": "Asia",
       "country": "Nepal",
       "subdivision": null
-     }
+     },
+     "flagKey": "np"
     },
     {
      "id": "s3",
@@ -2972,7 +3177,8 @@
       "continent": "Africa",
       "country": "Ethiopia",
       "subdivision": null
-     }
+     },
+     "flagKey": "et"
     }
    ],
    "packId": "capitals"
@@ -2985,7 +3191,9 @@
     "name": "Arden-Arcade",
     "lon": -121.37854,
     "lat": 38.6025,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -3002,7 +3210,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Tennessee"
-     }
+     },
+     "flagKey": "us-tn"
     },
     {
      "id": "s2",
@@ -3018,7 +3227,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Hawaii"
-     }
+     },
+     "flagKey": "us-hi"
     },
     {
      "id": "s3",
@@ -3034,7 +3244,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Arizona"
-     }
+     },
+     "flagKey": "us-az"
     }
    ],
    "packId": "capitals"
@@ -3047,7 +3258,9 @@
     "name": "Mikkeli",
     "lon": 27.27227,
     "lat": 61.68857,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Finland",
+    "flagKey": "fi"
    },
    "sightings": [
     {
@@ -3064,7 +3277,8 @@
       "continent": "Europe",
       "country": "Poland",
       "subdivision": null
-     }
+     },
+     "flagKey": "pl"
     },
     {
      "id": "s2",
@@ -3080,7 +3294,8 @@
       "continent": "Europe",
       "country": "France",
       "subdivision": null
-     }
+     },
+     "flagKey": "fr"
     },
     {
      "id": "s3",
@@ -3096,7 +3311,8 @@
       "continent": "Europe",
       "country": "Russia",
       "subdivision": "Moscow"
-     }
+     },
+     "flagKey": "ru"
     }
    ],
    "packId": "capitals"
@@ -3109,7 +3325,9 @@
     "name": "Kenosha",
     "lon": -87.82119,
     "lat": 42.58474,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -3142,7 +3360,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Texas"
-     }
+     },
+     "flagKey": "us-tx"
     },
     {
      "id": "s3",
@@ -3171,7 +3390,9 @@
     "name": "Barletta",
     "lon": 16.28165,
     "lat": 41.31429,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Italy",
+    "flagKey": "it"
    },
    "sightings": [
     {
@@ -3188,7 +3409,8 @@
       "continent": "Europe",
       "country": "Sweden",
       "subdivision": null
-     }
+     },
+     "flagKey": "se"
     },
     {
      "id": "s2",
@@ -3204,7 +3426,8 @@
       "continent": "Europe",
       "country": "France",
       "subdivision": null
-     }
+     },
+     "flagKey": "fr"
     },
     {
      "id": "s3",
@@ -3220,7 +3443,8 @@
       "continent": "Europe",
       "country": "Portugal",
       "subdivision": null
-     }
+     },
+     "flagKey": "pt"
     }
    ],
    "packId": "capitals"
@@ -3233,7 +3457,9 @@
     "name": "Homestead",
     "lon": -80.47756,
     "lat": 25.46872,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "United States",
+    "flagKey": "us"
    },
    "sightings": [
     {
@@ -3266,7 +3492,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Ohio"
-     }
+     },
+     "flagKey": "us-oh"
     },
     {
      "id": "s3",
@@ -3282,7 +3509,8 @@
       "continent": "North America",
       "country": "United States",
       "subdivision": "Arizona"
-     }
+     },
+     "flagKey": "us-az"
     }
    ],
    "packId": "capitals"
@@ -3295,7 +3523,9 @@
     "name": "Uki",
     "lon": 130.66177,
     "lat": 32.62217,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Japan",
+    "flagKey": "jp"
    },
    "sightings": [
     {
@@ -3312,7 +3542,8 @@
       "continent": "Asia",
       "country": "Japan",
       "subdivision": null
-     }
+     },
+     "flagKey": "jp"
     },
     {
      "id": "s2",
@@ -3328,7 +3559,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     },
     {
      "id": "s3",
@@ -3344,7 +3576,8 @@
       "continent": "Asia",
       "country": "South Korea",
       "subdivision": null
-     }
+     },
+     "flagKey": "kr"
     }
    ],
    "packId": "capitals"
@@ -3357,7 +3590,9 @@
     "name": "Badagara",
     "lon": 75.58142,
     "lat": 11.59776,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -3374,7 +3609,8 @@
       "continent": "Asia",
       "country": "Singapore",
       "subdivision": null
-     }
+     },
+     "flagKey": "sg"
     },
     {
      "id": "s2",
@@ -3390,7 +3626,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s3",
@@ -3406,7 +3643,8 @@
       "continent": "Asia",
       "country": "Indonesia",
       "subdivision": null
-     }
+     },
+     "flagKey": "id"
     }
    ],
    "packId": "capitals"
@@ -3419,7 +3657,8 @@
     "name": "Ponferrada",
     "lon": -6.59619,
     "lat": 42.54664,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Spain"
    },
    "sightings": [
     {
@@ -3436,7 +3675,8 @@
       "continent": "Europe",
       "country": "Greece",
       "subdivision": null
-     }
+     },
+     "flagKey": "gr"
     },
     {
      "id": "s2",
@@ -3452,7 +3692,8 @@
       "continent": "Europe",
       "country": "Germany",
       "subdivision": null
-     }
+     },
+     "flagKey": "de"
     },
     {
      "id": "s3",
@@ -3481,7 +3722,9 @@
     "name": "Moonniyur",
     "lon": 75.90311,
     "lat": 11.05972,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "India",
+    "flagKey": "in"
    },
    "sightings": [
     {
@@ -3498,7 +3741,8 @@
       "continent": "Asia",
       "country": "United Arab Emirates",
       "subdivision": null
-     }
+     },
+     "flagKey": "ae"
     },
     {
      "id": "s2",
@@ -3514,7 +3758,8 @@
       "continent": "Asia",
       "country": "India",
       "subdivision": "Delhi"
-     }
+     },
+     "flagKey": "in"
     },
     {
      "id": "s3",
@@ -3530,7 +3775,8 @@
       "continent": "Asia",
       "country": "Indonesia",
       "subdivision": null
-     }
+     },
+     "flagKey": "id"
     }
    ],
    "packId": "capitals"
@@ -3543,7 +3789,9 @@
     "name": "Guaxupé",
     "lon": -46.71278,
     "lat": -21.30528,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Brazil",
+    "flagKey": "br"
    },
    "sightings": [
     {
@@ -3560,7 +3808,8 @@
       "continent": "South America",
       "country": "Chile",
       "subdivision": null
-     }
+     },
+     "flagKey": "cl"
     },
     {
      "id": "s2",
@@ -3576,7 +3825,8 @@
       "continent": "South America",
       "country": "Peru",
       "subdivision": null
-     }
+     },
+     "flagKey": "pe"
     },
     {
      "id": "s3",
@@ -3592,7 +3842,8 @@
       "continent": "South America",
       "country": "Brazil",
       "subdivision": "Federal District"
-     }
+     },
+     "flagKey": "br"
     }
    ],
    "packId": "capitals"
@@ -3605,7 +3856,9 @@
     "name": "Baki",
     "lon": 110.78389,
     "lat": -7.61278,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "Indonesia",
+    "flagKey": "id"
    },
    "sightings": [
     {
@@ -3622,7 +3875,8 @@
       "continent": "Asia",
       "country": "Indonesia",
       "subdivision": null
-     }
+     },
+     "flagKey": "id"
     },
     {
      "id": "s2",
@@ -3638,7 +3892,8 @@
       "continent": "Asia",
       "country": "Thailand",
       "subdivision": null
-     }
+     },
+     "flagKey": "th"
     },
     {
      "id": "s3",
@@ -3654,7 +3909,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     }
    ],
    "packId": "capitals"
@@ -3667,7 +3923,9 @@
     "name": "Dalianwan",
     "lon": 121.695,
     "lat": 39.02861,
-    "difficulty": 2
+    "difficulty": 2,
+    "countryName": "China",
+    "flagKey": "cn"
    },
    "sightings": [
     {
@@ -3684,7 +3942,8 @@
       "continent": "Asia",
       "country": "Philippines",
       "subdivision": null
-     }
+     },
+     "flagKey": "ph"
     },
     {
      "id": "s2",
@@ -3700,7 +3959,8 @@
       "continent": "Asia",
       "country": "Vietnam",
       "subdivision": null
-     }
+     },
+     "flagKey": "vn"
     },
     {
      "id": "s3",
@@ -3716,7 +3976,8 @@
       "continent": "Asia",
       "country": "South Korea",
       "subdivision": null
-     }
+     },
+     "flagKey": "kr"
     }
    ],
    "packId": "capitals"

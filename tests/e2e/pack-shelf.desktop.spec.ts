@@ -127,7 +127,7 @@ test("GeoDetective shelf: pack chip arrives from the manifest and stores the pic
   // The case on screen is mid-play: the pick applies to the next case,
   // and the shelf says so instead of changing the open case.
   await expect(page.getByTestId("pack-shelf-status")).toHaveText(
-    "Your next case comes from Capitals.",
+    "Your next case comes from Capitals & Flags.",
   );
   // GeoDetective selection lives in the loop store itself, the store
   // the dealer reads; the shelf blob never carries this edition.

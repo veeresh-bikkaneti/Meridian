@@ -224,7 +224,21 @@ import {
   writeLearningStore,
   type LearningStore,
 } from "@/game/learning";
-import { readLoopOpen, writeLoopOpen, peekLoopProgress } from "@/game/loop/store";
+import {
+  readLoopOpen,
+  writeLoopOpen,
+  peekLoopProgress,
+  readLoopStoreV2,
+  loadLoopStore,
+  setActiveDeck,
+  writeLoopStoreV2,
+} from "@/game/loop/store";
+import { PackDoorway } from "./pack-doorway";
+import {
+  FIRST_PACK_ID,
+  fetchLoopDeckSize,
+  writeSelectedDeck,
+} from "./pack-shelf-data";
 import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
 // screens — they render only when the player opens them (or when a saved
@@ -3865,6 +3879,42 @@ export function GameApp() {
   // menu only. It never blocks play — every edition button stays one tap
   // away — and it appears at most once ever (the seen-flag persists).
   const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
+
+  // Capitals & Flags doorway (issue #344): each door opens its mode
+  // with the pack already selected, so the strip is a real entrance,
+  // not a signpost to the shelf. GeoDetective's selection lives in the
+  // loop store's active deck; Cold Trail reads the shared shelf
+  // selection at deal time. If the GeoDetective store cannot be
+  // prepared (no store yet and the manifest is unreachable), the door
+  // still opens GeoDetective — the shelf inside offers the pack.
+  const openLoopWithCapitalsPack = async () => {
+    if (isLoopLocked(ageBand, "geodetective")) return;
+    try {
+      const stored = readLoopStoreV2();
+      if (stored) {
+        writeLoopStoreV2(setActiveDeck(stored, FIRST_PACK_ID));
+      } else {
+        const size = await fetchLoopDeckSize();
+        if (size !== null) {
+          writeLoopStoreV2(setActiveDeck(loadLoopStore(size), FIRST_PACK_ID));
+        }
+      }
+    } catch {
+      // Selection is a convenience; opening the mode never waits on it.
+    }
+    window.dispatchEvent(
+      new CustomEvent("meridian:storyteller-sendoff", {
+        detail: { loop: "geodetective" },
+      }),
+    );
+    writeLoopOpen(true);
+    setLoopOpen(true);
+  };
+  const openTrailWithCapitalsPack = () => {
+    writeSelectedDeck("coldtrail", FIRST_PACK_ID);
+    writeColdTrailOpen(true);
+    setColdTrailOpen(true);
+  };
   return (
     <>
     {mapModeAnnouncer}
@@ -3896,6 +3946,14 @@ export function GameApp() {
         setLoopOpen(true);
       })}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
+      doorway={
+        isLoopLocked(ageBand, "geodetective") ? null : (
+          <PackDoorway
+            onGeoDetective={() => void openLoopWithCapitalsPack()}
+            onColdTrail={openTrailWithCapitalsPack}
+          />
+        )
+      }
       challengeEnabled={friendChallengesOn}
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
@@ -4023,6 +4081,7 @@ function Choose({
   onGrownUpOpen,
   headingRef,
   mapModeControl,
+  doorway,
 }: {
   onState: (e: ReactMouseEvent) => void;
   onCountry: (e: ReactMouseEvent) => void;
@@ -4066,7 +4125,11 @@ function Choose({
   /** The map-mode toggle + current-mode indicator, hosted in the
    * hero's top row (Block C cure). GameApp owns the mode state and
    * the handlers; Choose only places the control. */
-  mapModeControl?: ReactNode;}) {
+  mapModeControl?: ReactNode;
+  /** Capitals & Flags doorway strip, rendered directly under the
+   * Expeditions Map card (issue #344). Null for bands where
+   * GeoDetective is locked. */
+  doorway?: ReactNode;}) {
   // GeoDetective progress for the edition card: the resume variant and the
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
@@ -4395,6 +4458,9 @@ function Choose({
             </Button>
           ) : null}
         </div>
+        {/* Capitals & Flags doorway: directly under the Expeditions
+            Map card, per the ratified design (issue #344). */}
+        {doorway}
         </div>
 
       <div className="hv5-grid2" id="home-cases" tabIndex={-1}>

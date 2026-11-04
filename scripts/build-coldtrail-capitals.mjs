@@ -71,7 +71,8 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { unpackNameIndex } from "../src/game/loop/names-codec.ts";
-import { buildCase } from "./build-coldtrail.mjs";
+import { buildCase, regionForCity } from "./build-coldtrail.mjs";
+import { flagKeyForSubject } from "./packs/schema.mjs";
 
 const SCRIPTS_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = dirname(SCRIPTS_DIR);
@@ -157,6 +158,66 @@ export function loadPackCapitalIds(recordsDir = RECORDS_DIR) {
 /** Records win when present; the curated list is the fallback. */
 export function resolvePackCapitalIds(recordsDir = RECORDS_DIR) {
   return loadPackCapitalIds(recordsDir) ?? [...CURATED_CAPITAL_IDS];
+}
+
+const FLAG_REGISTRY_PATH = join(ROOT, "scripts/packs/capitals/flags/registry.json");
+
+/** Pack records by target place id (subjects drive the flag stamps). */
+export function loadPackRecordSubjects(recordsDir = RECORDS_DIR) {
+  const byPlaceId = new Map();
+  if (!existsSync(recordsDir)) return byPlaceId;
+  for (const file of readdirSync(recordsDir).filter((f) => f.endsWith(".json")).sort()) {
+    const record = JSON.parse(readFileSync(join(recordsDir, file), "utf8"));
+    if (record?.target?.placeId && record?.subject) {
+      byPlaceId.set(record.target.placeId, record.subject);
+    }
+  }
+  return byPlaceId;
+}
+
+/** Licence-verified flagKeys from the curation registry (empty = no stamps). */
+export function loadVerifiedFlagKeys(registryPath = FLAG_REGISTRY_PATH) {
+  if (!existsSync(registryPath)) return new Set();
+  const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+  return new Set(Object.keys(registry.flags ?? {}));
+}
+
+/**
+ * Capitals & Flags stamps (design §3): additive metadata only — case
+ * composition (hideouts, witnesses, radii) is never touched, so the
+ * first 60 cases stay byte-stable apart from these fields.
+ * - A sighting whose witness is a pack capital gets the flagKey of the
+ *   land that capital belongs to, when that flag is licence-verified.
+ * - Every pack hideout gets its country name (the reveal prints it in
+ *   text beside the flag — the one flag rule) plus the country's
+ *   flagKey when verified.
+ */
+export function stampPackFlags(cases, { subjectsByPlaceId, verifiedFlagKeys, hideoutPlacesById }) {
+  return cases.map((packCase) => {
+    const sightings = packCase.sightings.map((sighting) => {
+      const subject = subjectsByPlaceId.get(sighting.cityId);
+      if (!subject) return sighting;
+      const flagKey = flagKeyForSubject(subject);
+      return flagKey && verifiedFlagKeys.has(flagKey)
+        ? { ...sighting, flagKey }
+        : sighting;
+    });
+    const hideoutPlace = hideoutPlacesById.get(packCase.hideout.placeId);
+    let hideout = packCase.hideout;
+    if (hideoutPlace) {
+      const { country } = regionForCity(hideoutPlace);
+      const flagKey =
+        typeof hideoutPlace.iso2 === "string"
+          ? hideoutPlace.iso2.toLowerCase()
+          : null;
+      hideout = {
+        ...hideout,
+        countryName: country,
+        ...(flagKey && verifiedFlagKeys.has(flagKey) ? { flagKey } : {}),
+      };
+    }
+    return { ...packCase, sightings, hideout };
+  });
 }
 
 function mulberry32(seed) {
@@ -286,7 +347,11 @@ export function buildPackDeck() {
     usedHideouts.add(h.id);
     cases.push({ ...built, packId: CAPITALS_PACK_ID });
   }
-  return cases;
+  return stampPackFlags(cases, {
+    subjectsByPlaceId: loadPackRecordSubjects(),
+    verifiedFlagKeys: loadVerifiedFlagKeys(),
+    hideoutPlacesById: new Map(places.map((p) => [p.id, p])),
+  });
 }
 
 function main() {

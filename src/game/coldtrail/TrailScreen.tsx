@@ -3,6 +3,8 @@ import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
+import { FlagImg } from "@/components/flag-img";
+import { flagEntry } from "@/lib/flag-registry";
 import { PackShelf } from "@/components/pack-shelf";
 import {
   FIRST_PACK_ID,
@@ -661,6 +663,19 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           <p className="mt-2 text-fg">
             {theme.reveal.targetLine(caseData.hideout.name)}
           </p>
+          {caseData.hideout.countryName ? (
+            <div className="mt-2" data-testid="coldtrail-reveal-flag">
+              <p className="flex items-center gap-2 text-fg">
+                <span>The trail ended in {caseData.hideout.countryName}.</span>
+                <FlagImg flagKey={caseData.hideout.flagKey} className="h-6" />
+              </p>
+              {caseData.hideout.flagKey && flagEntry(caseData.hideout.flagKey) ? (
+                <p className="mt-1 text-sm text-muted">
+                  {flagEntry(caseData.hideout.flagKey)!.story}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
           <p className="mt-1 text-muted">
             {theme.reveal.missLine(formatLength(progress.scoreKm, hideoutUnit))} {verdict.line}
           </p>

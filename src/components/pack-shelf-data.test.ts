@@ -90,11 +90,13 @@ describe("buildDeckList", () => {
     assert.equal(decks[0]!.label, "All cases");
   });
 
-  it("adds the Capitals chip in GeoDetective when loop indexes exist", () => {
+  it("adds the Capitals & Flags chip in GeoDetective when loop indexes exist", () => {
     const decks = buildDeckList({ ...base, edition: "geodetective", packManifest: MANIFEST });
     assert.equal(decks.length, 2);
     assert.equal(decks[1]!.id, "capitals");
-    assert.equal(decks[1]!.label, "Capitals");
+    // Owner-ratified relabel (issue #344): the pack's player-facing
+    // name is "Capitals & Flags"; the deck id stays "capitals".
+    assert.equal(decks[1]!.label, "Capitals & Flags");
     assert.equal(decks[1]!.star, true);
     assert.equal(decks[1]!.total, 72);
   });

@@ -126,7 +126,10 @@ export interface PackDeckView {
 }
 
 const CATEGORY_LABELS: Record<string, { label: string; glyph: string }> = {
-  capitals: { label: "Capitals", glyph: "🏛️" },
+  // Owner-ratified relabel (issue #344): the pack is "Capitals & Flags"
+  // everywhere a player reads its name. The category key stays
+  // "capitals" — it is data, not copy.
+  capitals: { label: "Capitals & Flags", glyph: "🏛️" },
 };
 
 function categoryLabel(category: string, packId: string): { label: string; glyph: string } {
