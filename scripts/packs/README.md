@@ -45,7 +45,7 @@ its authoring input in `scripts/packs/capitals/inputs/`:
 These files are outputs. Fix the record or the tool, then re-run
 the sequence above:
 
-- `public/loop/clues/387.json` … `public/loop/clues/458.json`
+- `public/loop/clues/387.json` … `public/loop/clues/496.json`
   (the Capitals pack's clue files; indexes 0–386 are core-owned and
   are not pack outputs)
 - `public/packs/capitals/manifest.json`

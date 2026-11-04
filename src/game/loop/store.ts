@@ -340,8 +340,16 @@ export function ensurePackDeck(
   if (!existing) {
     return setDeckState(store, packId, freshPackDeckState(cases, randInt));
   }
+  // Only a still-playing mystery counts as open. A finished one (won or
+  // lost) stays in `current` until the player deals on, but completePuzzle
+  // already counted it in cycleCompleted — counting it here too would
+  // skip the first appended case when the pack grows.
   const openFromThisDeck =
-    store.current && deckIdOfPuzzle(store.current) === packId ? 1 : 0;
+    store.current &&
+    store.current.status === "playing" &&
+    deckIdOfPuzzle(store.current) === packId
+      ? 1
+      : 0;
   const builtFromSize =
     existing.deck.length + existing.cycleCompleted + openFromThisDeck;
   if (cases.length <= builtFromSize) return store;

@@ -78,6 +78,34 @@ test("top-up counts the open mystery toward the built-from size", () => {
   assert.deepEqual(deck?.deck, [389, 388, 460, 461, 459]);
 });
 
+test("top-up does not double-count a finished mystery still in current", () => {
+  // The player finished case 387 and exited on its reveal screen:
+  // completePuzzle already counted it in cycleCompleted, and the finished
+  // puzzle is still sitting in `current`. It is not an open mystery, so
+  // it must not be counted a second time — a double count would skip the
+  // first appended case (459) when the pack grows. Won and lost finishes
+  // both stay in `current`, so both are checked.
+  for (const status of ["won", "lost"] as const) {
+    const base = storeWithDeck({ deck: [389, 388], cycle: 1, cycleCompleted: 1 });
+    const withFinished: typeof base = {
+      ...base,
+      current: {
+        index: 387,
+        deckId: "capitals",
+        status,
+        guesses: [],
+        cluesRevealed: 5,
+        startedAt: 0,
+      } as never,
+    };
+    const next = ensurePackDeck(withFinished, "capitals", V2, noSwap);
+    const deck = getDeckState(next, "capitals");
+    // Same result as the playing-current top-up: every appended case lands.
+    assert.deepEqual(deck?.deck, [389, 388, 460, 461, 459], `status=${status}`);
+    assert.equal(deck?.cycleCompleted, 1);
+  }
+});
+
 test("an up-to-date deck is returned untouched (same reference)", () => {
   const store = ensurePackDeck(freshLoopUnlimitedStore(387), "capitals", V2, noSwap);
   const again = ensurePackDeck(store, "capitals", V2, noSwap);

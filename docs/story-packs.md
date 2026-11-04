@@ -1,9 +1,9 @@
 # Story packs
 
 A story pack is a set of extra cases that plug into the games Meridian
-already has. The first pack is **Capitals**: 72 cases (44 country
-capitals and 28 US state capitals) that play inside GeoDetective and
-Cold Trail. No pack is a game of its own.
+already has. The first pack is **Capitals & Flags**: 110 cases (60
+country capitals and 50 US state capitals) that play inside
+GeoDetective and Cold Trail. No pack is a game of its own.
 
 This file is the vendored copy of the pack design (issue #319). The
 code cites its section numbers, so the numbers below match the
@@ -17,7 +17,7 @@ How a pack flows from a written record to a case on screen:
 ```mermaid
 flowchart LR
     A["Case records<br/>scripts/packs/&lt;pack&gt;/cases/*.json<br/>(validated by validate-pack.mjs)"] --> B["Composer<br/>compose-packs.mjs"]
-    B --> C["Loop clue files<br/>public/loop/clues/387–458.json"]
+    B --> C["Loop clue files<br/>public/loop/clues/387–496.json"]
     B --> D["Manifest<br/>public/packs/capitals/manifest.json"]
     B --> E["Sidecar<br/>public/packs/capitals/loop-meta.json"]
     F["Cold Trail generator<br/>build-coldtrail-capitals.mjs"] --> G["Cold Trail deck<br/>cases.capitals.generated.json"]
@@ -60,7 +60,8 @@ pack case.
 A pack ships as data next to the game, never inside the core clue
 files: a manifest, a metadata sidecar, and one core-format clue file
 per case at indexes the pack owns. The core deck owns loop indexes
-0–386; the Capitals pack owns 387–458.
+0–386; the Capitals & Flags pack owns 387–496 — its first 72 cases
+at 387–458, and every case added since appended after them (§8).
 
 ### 1.1 Authoring record — `meridian.pack.case.v1`
 
@@ -225,10 +226,11 @@ renders, or scores a reverse case.
   holds an unrevealed current case, ahead of any stored shelf
   selection. A pick made mid-case survives leaving and coming back.
 - **Deck completion.** Finishing a pack cycle celebrates the pack,
-  in the pack's own numbers: the Capitals cycle closes "All 72
-  Capitals case files". The core cycle's celebration copy is
-  unchanged. Rusty, the trail companion, greets a completed pack
-  cycle by name.
+  in the pack's own numbers: the Capitals & Flags cycle closes "All
+  110 Capitals & Flags case files closed. Countries and states —
+  you found every single capital." The core cycle's celebration
+  copy is unchanged. Rusty, the trail companion, greets a completed
+  pack cycle by name.
 
 ## 7. Selection UX — the shelf
 
@@ -238,6 +240,12 @@ as chips the player can switch between.
 - **One shared list.** `buildDeckList` builds the chip list for both
   editions from the manifest data, so the two shelves cannot drift
   apart.
+- **One manifest load per session.** The shelf and the home doorway
+  share a single manifest load: a manifest that loads fine is kept
+  for the rest of the session, a failed load is thrown away so the
+  next screen tries again, and dealing a case always fetches fresh —
+  so a pack that cannot load at deal time still falls back to the
+  core deck honestly (§0).
 - **Per-edition totals.** A chip's progress line uses the total for
   the edition showing it: 110 for the Capitals & Flags pack in
   GeoDetective, 85 (the Cold Trail deck's real case count) in Cold

@@ -33,11 +33,14 @@ Policies recorded at curation:
 - **Currency traps checked:** Minnesota (2024 redesign), Utah (2024),
   Mississippi (2021), Georgia-the-state vs Georgia-the-country file
   ambiguity.
-- **Wave-2 curation correction:** five initially picked capitals
-  (Islamabad, Amman, Montevideo, Riga, Kuala Lumpur) turned out to
-  duplicate GeoDetective core-deck targets by GeoNames placeId — the
-  pack's unique-target gate forbids re-entry — and were swapped
-  before the wave shipped for Dhaka, Algiers, Quito and Tunis.
+- **Wave-2 curation correction:** the pack's unique-target gate
+  forbids re-entry. Five picked capitals were dropped for
+  duplicating core-deck targets by GeoNames placeId — Islamabad,
+  Amman, Montevideo and Riga from the authored batch, plus Kuala
+  Lumpur, picked in the first swap round and dropped in a second
+  round for the same reason — and the four replacements that
+  shipped are Dhaka, Algiers, Quito and Tunis, Tunis taking Kuala
+  Lumpur's slot, so all 16 country cases are accounted for.
   Ecuador's verified flag is 279,145 bytes (coat of arms), so
   Ecuador is flagless on size (table 2).
 
