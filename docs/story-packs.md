@@ -45,6 +45,11 @@ Recorded from the owner's voice call of 2026-11-02 (no transcript):
   or wiping one edition never touches the other edition's pack
   progress.
 
+A fallback deal is always labeled as what it is: the case screen
+names the open case's deck, so a case dealt from the core deck
+under a pack pick reads as a core case ("All cases") with a plain
+notice that the picked pack could not load — never as a pack case.
+
 ## 1. Pack data format
 
 A pack ships as data next to the game, never inside the core clue
