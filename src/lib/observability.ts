@@ -14,9 +14,13 @@
  * the trail, so the event fires exactly once even if transport fails.
  *
  * Privacy: events carry build id, milestone names, edition/region ids,
- * coarse device facts (OS/form buckets, a rounded DPR, and a screen-size
- * BUCKET — never the raw UA string, exact screen size, memory, or core
- * count; see coarseDeviceFacts) and truncated error name/message only.
+ * the fixed coarse device field set named in the telemetry field
+ * manifest (src/lib/telemetry-manifest.ts — OS/browser/engine as parsed
+ * from the UA, class/form/DPR/screen/touch buckets, and, under the
+ * §6.3 safeguard amendment recorded in DESIGN-FINAL, deviceMemory and
+ * hardwareConcurrency as read or "unknown"; see runtimeFacts) and
+ * truncated error name/message only. The raw UA string never leaves
+ * the device and is no longer stored on it (§4.1).
  * NO guess/place content, NO coordinates, NO PII, NO stack traces.
  *
  * Transport is a complete no-op until an endpoint is configured (via the
@@ -37,6 +41,7 @@
 import { CURRENT_BUILD_ID } from "../game/build-staleness.ts";
 import { isUncleanShutdown, type CleanExitStorage } from "../game/clean-exit.ts";
 import { hasDurableMapCrashMarker, writeDurableMapCrashMarker } from "../map/capability.ts";
+import { parseRuntimeUA } from "./ua-parse.ts";
 
 export const BREADCRUMB_KEY = "meridian.breadcrumb";
 export const MAX_HISTORY = 12;
@@ -83,19 +88,54 @@ export type ObservabilityEventType =
   | "narration_dismissed";
 
 export interface DeviceInfo {
+  /**
+   * Legacy raw-UA slot. runtimeFacts() NEVER sets it and
+   * collectDeviceInfo() no longer stores it (§4.1: the raw UA exists
+   * nowhere in telemetry storage). The field survives in the type only
+   * so legacy stored trails still parse; both the client (before send)
+   * and the worker (on arrival) strip it.
+   */
   ua?: string;
-  /** Coarse OS bucket (COPPA) derived from the UA — never the raw UA string. */
+  /** Parsed browser name (§3 rules B1-B9) or "unknown". */
+  browser?: string;
+  /** "<major>.<minor>" or "unknown"; Chromium minor is frozen (§2.3). */
+  browserVersion?: string;
+  /** Inferred engine (§3 rules E1-E5) or "unknown". */
+  engine?: string;
+  /** Coarse OS bucket derived from the UA — never the raw UA string. */
   os?: string;
+  /** Parsed OS version or "unknown" (frozen tokens denied, §2.3). */
+  osVersion?: string;
+  /** Device class only — phone|tablet|desktop|unknown, never a model. */
+  deviceClass?: string;
+  /** As read (1..64) or "unknown"; WebKit clamps it (§2.4). */
+  hardwareConcurrency?: number | "unknown";
+  /** GB as read or "unknown" — unknown on WebKit IS the signal (§1.2). */
+  deviceMemory?: number | "unknown";
   /** Coarse form-factor bucket: "mobile" | "desktop". */
   form?: string;
-  dpr?: number;
+  dpr?: number | "unknown";
+  /** Exact pixels — internal read surface only, never stamped by runtimeFacts(). */
   screenW?: number;
+  /** Exact pixels — internal read surface only, never stamped by runtimeFacts(). */
   screenH?: number;
   /**
    * Screen-size bucket sent in reports instead of exact pixels:
    * "sm" (short side < 480), "md" (< 768), "lg" (< 1080), "xl".
    */
-  screen?: ScreenBucket;
+  screen?: ScreenBucket | "unknown";
+  /** Bucketed maxTouchPoints: "0" | "1" | "2-5" | "6+" | "unknown". */
+  touchPoints?: string;
+  /** "standalone" | "browser" | "unknown" (§2.5 honesty rule). */
+  displayMode?: string;
+  /** navigator.connection effectiveType, validated, or "unknown". */
+  connection?: string;
+  /** Primary BCP-47 tag (navigator.language only) or "unknown". */
+  locale?: string;
+  /** Watchdog path only: WebGL1 availability. */
+  webgl1?: boolean;
+  /** Watchdog path only: WebGL2 availability. */
+  webgl2?: boolean;
 }
 
 export type ScreenBucket = "sm" | "md" | "lg" | "xl";
@@ -139,6 +179,28 @@ export interface Breadcrumb {
    * trail so the Phase 0 measurement gate sees tile_failed counts.
    */
   tileErrors?: number;
+  /** #335 (§4.2): the session's as-run map mode, persisted at the switch. */
+  mapMode?: "full" | "scout";
+  /**
+   * §4.1: this session's parsed runtime snapshot (runtimeFacts() at
+   * trail creation). Parsed-only — it may leave the device, unlike the
+   * raw-UA `device` slot it replaces.
+   */
+  runtime?: DeviceInfo;
+  /**
+   * §2.2: persisted terminal-visibility state, written by the
+   * visibility listener AT the transition (init false) — classifier
+   * stamps read this state instead of re-deriving from history.
+   */
+  bgTerminal?: boolean;
+  /** §2.2: persisted stuck state, evaluated at backgrounding time. */
+  trailStuck?: boolean;
+  /**
+   * [GRAFT] Set at trail creation by builds that install visibility
+   * tracking in the same init() — a marker-carrying trail provably had
+   * tracking its whole life, so silent history means never-backgrounded.
+   */
+  vis?: true;
 }
 
 export interface ObservabilityEvent {
@@ -150,6 +212,8 @@ export interface ObservabilityEvent {
   regionId?: string;
   chunkId?: string;
   lastMilestone?: string;
+  /** §4.2: widens to include "unknown" for crashed-session reports. */
+  mapMode?: "full" | "scout" | "unknown";
   device?: DeviceInfo;
   breadcrumb?: Breadcrumb;
   error?: { name: string; message: string };
@@ -235,10 +299,12 @@ export function collectDeviceInfo(): DeviceInfo {
   const d: DeviceInfo = {};
   try {
     if (typeof navigator !== "undefined") {
-      if (typeof navigator.userAgent === "string") d.ua = navigator.userAgent.slice(0, MAX_ERROR_CHARS);
-      // deviceMemory / hardwareConcurrency are deliberately NOT collected
-      // (2026-10-21, COPPA coarsening): they add fingerprint entropy and
-      // crash triage never needed them.
+      // §4.1: the raw UA is NO LONGER stored here — it exists nowhere in
+      // telemetry storage now. (The pre-amendment 2026-10-21 note that
+      // deviceMemory/hardwareConcurrency were deliberately not collected
+      // is superseded for OUTBOUND facts by the §6.3 safeguard
+      // amendment: runtimeFacts() below stamps both as read or
+      // "unknown", gated by COLLECT_MEMORY_CORES.)
     }
     if (typeof window !== "undefined") {
       if (typeof window.devicePixelRatio === "number") d.dpr = window.devicePixelRatio;
@@ -261,40 +327,205 @@ function defaultRandomId(): string {
 }
 
 /**
- * Coarse device facts for outbound crash reports — mirrors the watchdog's
- * COPPA posture (scripts/crash-watchdog.mjs): OS + form-factor buckets
- * derived from the UA, never the UA string itself. DPR is rounded and the
- * screen is reduced to a size bucket; memory and core counts are never
- * sent (2026-10-21 COPPA coarsening). Reads only live globals, never
- * stored state, so a tainted stored UA cannot leak through this path.
+ * §6.4 de-scope switch: when true (the shipped default, under the §6.3
+ * safeguard amendment), runtimeFacts() stamps deviceMemory and
+ * hardwareConcurrency as read. Flipping this one constant to false
+ * stamps both "unknown" unconditionally — the always-stamp rule (§2.1)
+ * means no wire shape, validator, or template changes with it.
  */
-export function coarseDeviceFacts(): DeviceInfo {
-  let uaS = "";
+export const COLLECT_MEMORY_CORES = true;
+
+/** Bucketed maxTouchPoints (§1.2 row 11): exact counts never stamp. */
+function touchPointsBucket(v: unknown): string {
+  if (typeof v !== "number" || !Number.isFinite(v) || v < 0) return "unknown";
+  const n = Math.floor(v);
+  return n === 0 ? "0" : n === 1 ? "1" : n <= 5 ? "2-5" : "6+";
+}
+
+/**
+ * Display mode (§1.2 row 16, §2.5 honesty rule): "browser" is emitted
+ * only where the display-mode media feature is known-supported —
+ * Chromium engines, and iOS (whose Safari has supported the query for
+ * the incident-era floor, decided via the standalone/fullscreen
+ * OR-path). Desktop WebKit/Gecko non-matches stay "unknown": claiming
+ * "browser" on an engine that cannot evaluate the query would be a
+ * guess dressed as a read.
+ */
+function readDisplayMode(engine: string, os: string): string {
+  try {
+    const nav = typeof navigator !== "undefined" ? (navigator as unknown as Record<string, unknown>) : {};
+    let standaloneMatch = false;
+    let fullscreenMatch = false;
+    let hasMatchMedia = false;
+    if (typeof window !== "undefined" && typeof window.matchMedia === "function") {
+      hasMatchMedia = true;
+      standaloneMatch = !!window.matchMedia("(display-mode: standalone)").matches;
+      fullscreenMatch = !!window.matchMedia("(display-mode: fullscreen)").matches;
+    }
+    if (standaloneMatch) return "standalone";
+    if (os === "ios") {
+      if (nav.standalone === true) return "standalone";
+      if (fullscreenMatch) return "standalone";
+      // iOS Safari evaluates the query; a non-match there is a read.
+      return hasMatchMedia ? "browser" : "unknown";
+    }
+    if (!hasMatchMedia) return "unknown";
+    if (engine === "blink") return "browser";
+    return "unknown";
+  } catch {
+    return "unknown";
+  }
+}
+
+/**
+ * The session's runtime facts (§§2.1, 3.3): the parsed UA snapshot
+ * merged with the per-session API reads. EVERY manifest device key
+ * (except the watchdog-only webgl pair) is present on every return —
+ * an absent API or unparseable input stamps the field's "unknown"
+ * form, never a missing key (§2.1: unknown is a value). Every read is
+ * individually guarded: a throwing read stamps its own field
+ * "unknown" and affects no other field. Reads only live globals,
+ * never stored state, so a tainted stored UA cannot leak through here.
+ * Shape is driven by src/lib/telemetry-manifest.ts and pinned by the
+ * presence test in observability.test.ts.
+ */
+export function runtimeFacts(): DeviceInfo {
+  let ua = "";
+  let maxTouchPoints: number | undefined;
+  let hasClientHints = false;
   try {
     if (typeof navigator !== "undefined" && typeof navigator.userAgent === "string") {
-      uaS = navigator.userAgent.toLowerCase();
+      ua = navigator.userAgent;
     }
   } catch {
-    uaS = "";
+    ua = "";
   }
-  const os = /android/.test(uaS)
-    ? "android"
-    : /iphone|ipad|ipod/.test(uaS)
-      ? "ios"
-      : /windows/.test(uaS)
-        ? "windows"
-        : /mac/.test(uaS)
-          ? "mac"
-          : /linux/.test(uaS)
-            ? "linux"
-            : "other";
+  try {
+    if (typeof navigator !== "undefined" && typeof navigator.maxTouchPoints === "number") {
+      maxTouchPoints = navigator.maxTouchPoints;
+    }
+  } catch {
+    maxTouchPoints = undefined;
+  }
+  try {
+    hasClientHints =
+      typeof navigator !== "undefined" &&
+      typeof (navigator as unknown as Record<string, unknown>).userAgentData !== "undefined";
+  } catch {
+    hasClientHints = false;
+  }
+  const parsed = parseRuntimeUA(ua, { maxTouchPoints, hasClientHints });
+
+  // Form (§1.2 row 19): derived from deviceClass; the unknown class
+  // falls back to today's os-derived rule (keeps the legacy vocabulary
+  // — and the iPad-as-Mac trail now reports mobile via its class).
+  const form =
+    parsed.deviceClass === "phone" || parsed.deviceClass === "tablet"
+      ? "mobile"
+      : parsed.deviceClass === "desktop"
+        ? "desktop"
+        : parsed.os === "android" || parsed.os === "ios"
+          ? "mobile"
+          : "desktop";
+
+  const raw = collectDeviceInfo();
+
+  let hardwareConcurrency: number | "unknown" = "unknown";
+  if (COLLECT_MEMORY_CORES) {
+    try {
+      const v = typeof navigator !== "undefined" ? navigator.hardwareConcurrency : undefined;
+      if (typeof v === "number" && Number.isInteger(v) && v >= 1 && v <= 64) {
+        hardwareConcurrency = v;
+      }
+    } catch {
+      hardwareConcurrency = "unknown";
+    }
+  }
+  let deviceMemory: number | "unknown" = "unknown";
+  if (COLLECT_MEMORY_CORES) {
+    try {
+      const v =
+        typeof navigator !== "undefined"
+          ? (navigator as unknown as Record<string, unknown>).deviceMemory
+          : undefined;
+      if (typeof v === "number" && Number.isFinite(v) && v > 0) deviceMemory = v;
+    } catch {
+      deviceMemory = "unknown";
+    }
+  }
+  let connection = "unknown";
+  try {
+    const eff = (navigator as unknown as Record<string, unknown> | undefined)?.connection as
+      | { effectiveType?: unknown }
+      | undefined;
+    const et = eff?.effectiveType;
+    if (et === "slow-2g" || et === "2g" || et === "3g" || et === "4g") connection = et;
+  } catch {
+    connection = "unknown";
+  }
+  let locale = "unknown";
+  try {
+    const lang = typeof navigator !== "undefined" ? navigator.language : undefined;
+    if (typeof lang === "string" && lang.length > 0 && lang.length <= 12 && /^[A-Za-z-]+$/.test(lang)) {
+      locale = lang;
+    }
+  } catch {
+    locale = "unknown";
+  }
+
+  return {
+    browser: parsed.browser,
+    browserVersion: parsed.browserVersion,
+    engine: parsed.engine,
+    os: parsed.os,
+    osVersion: parsed.osVersion,
+    deviceClass: parsed.deviceClass,
+    hardwareConcurrency,
+    deviceMemory,
+    form,
+    dpr: dprBucket(raw.dpr) ?? "unknown",
+    screen: screenBucket(raw.screenW, raw.screenH) ?? "unknown",
+    touchPoints: touchPointsBucket(maxTouchPoints),
+    displayMode: readDisplayMode(parsed.engine, parsed.os),
+    connection,
+    locale,
+  };
+}
+
+/**
+ * The LEGACY coarse device (pre-enrichment shape: os/form/dpr/screen
+ * only). [GRAFT §1.1] Funnel events (storyteller_shown, narration_*)
+ * stamp this and nothing more — they are engagement telemetry, not
+ * crash triage, and their device surface does not grow.
+ */
+function legacyCoarseFacts(): DeviceInfo {
+  const parsed = (() => {
+    try {
+      const ua =
+        typeof navigator !== "undefined" && typeof navigator.userAgent === "string"
+          ? navigator.userAgent
+          : "";
+      return parseRuntimeUA(ua, {});
+    } catch {
+      return parseRuntimeUA("", {});
+    }
+  })();
   const d = collectDeviceInfo();
   return {
-    os,
-    form: os === "android" || os === "ios" ? "mobile" : "desktop",
+    os: parsed.os,
+    form: parsed.os === "android" || parsed.os === "ios" ? "mobile" : "desktop",
     dpr: dprBucket(d.dpr),
     screen: screenBucket(d.screenW, d.screenH),
   };
+}
+
+/**
+ * @deprecated Kept as a re-export of runtimeFacts() for one release so
+ * no other call site changes (DESIGN-FINAL §3.3). New code calls
+ * runtimeFacts().
+ */
+export function coarseDeviceFacts(): DeviceInfo {
+  return runtimeFacts();
 }
 
 export function sanitizeError(err: unknown): { name: string; message: string } {
@@ -339,12 +570,15 @@ export function isBenignBrowserNoise(message: string): boolean {
 //
 // Evidence stamps (design §4 A1, Consensus Manifest 2026-10-25):
 // - `bgTerminal` / `buildReplaced` / `trailStuck`: booleans stamped on
-//   `suspected_crash` only, derived at init() from the STORED trail
-//   before any payload trimming (a raw last-milestone test is wrong: a
-//   non-visibility milestone can be recorded while the tab is still
-//   backgrounded, so bgTerminal comes from the last VISIBILITY entry —
-//   and is OMITTED when the trail records no visibility transition at
-//   all, so the classifier fails closed instead of guessing).
+//   `suspected_crash` only, resolved at init() from the STORED trail
+//   before any payload trimming. Since the telemetry enrichment
+//   (DESIGN-FINAL §2.2), bgTerminal/trailStuck are persisted STATE
+//   written by the visibility listener at each transition; init()
+//   resolves them by the pinned precedence state field → history scan
+//   (last VISIBILITY entry — a raw last-milestone test is wrong) →
+//   vis-gated false, and OMITS bgTerminal only for a marker-less
+//   legacy trail whose history is also silent, so the classifier
+//   fails closed instead of guessing.
 // - `storageOk`: boolean stamped on every event at the emit() choke
 //   point. It records whether this session's storage reads/writes have
 //   succeeded so far. It cannot size the storage-blocked blind spot: a
@@ -627,11 +861,22 @@ function byteLength(s: string): number {
 }
 
 /**
- * Enforce the payload hard cap. Actual sequence: serialize; if over
- * `cap` bytes — trim the breadcrumb milestone history to its last 4
- * entries → drop the history entirely → drop breadcrumb + device →
- * progressively truncate string fields (limits 120/60/24; the error
- * name/message are also cut) → core-only fallback (type/ts/buildId).
+ * Enforce the payload hard cap — the §7.4 trim order, reordered so the
+ * fields triage needs die last (each step re-serialises and stops as
+ * soon as the event fits):
+ *  1. Trim breadcrumb.history to its last 4 entries.
+ *  2. Drop breadcrumb.history entirely.
+ *  3. Reduce the nested breadcrumb to a stub {sessionId, buildId,
+ *     startedAt, lastMilestone, mapMode} — the #335-critical mode and
+ *     the msSinceBootStart inputs survive for ~90 bytes. The top-level
+ *     device object is NOT dropped here (a deliberate inversion of the
+ *     old order, which dropped device wholesale at this point).
+ *  4. Truncate error.message to 140, then 60.
+ *  5. Drop the breadcrumb stub.
+ *  6. Truncate remaining long strings at 120/60/24.
+ *  7. Drop device.locale, then device.connection, then
+ *     device.browserVersion (lowest triage value first, named order).
+ *  8. Core-only fallback {type, ts, buildId}.
  * Always returns valid JSON of at most `cap` bytes for any well-formed
  * event input.
  */
@@ -642,24 +887,44 @@ export function truncateEventToCap(event: ObservabilityEvent, cap = MAX_PAYLOAD_
   } catch {
     clone = { type: event.type, ts: event.ts, buildId: event.buildId };
   }
+  const fits = () => byteLength(JSON.stringify(clone)) <= cap;
   let out = JSON.stringify(clone);
   if (byteLength(out) <= cap) return out;
 
+  // Steps 1-2: history first.
   if (clone.breadcrumb?.history?.length) {
     clone.breadcrumb = { ...clone.breadcrumb, history: clone.breadcrumb.history.slice(-4) };
-    out = JSON.stringify(clone);
-    if (byteLength(out) <= cap) return out;
+    if (fits()) return JSON.stringify(clone);
     clone.breadcrumb = { ...clone.breadcrumb, history: [] };
-    out = JSON.stringify(clone);
-    if (byteLength(out) <= cap) return out;
+    if (fits()) return JSON.stringify(clone);
   }
-  // Drop the heaviest optional context.
-  delete clone.breadcrumb;
-  delete clone.device;
-  out = JSON.stringify(clone);
-  if (byteLength(out) <= cap) return out;
-
-  // Truncate every long string field progressively.
+  // Step 3: breadcrumb → stub (device survives).
+  if (clone.breadcrumb) {
+    const b = clone.breadcrumb;
+    const stub: Breadcrumb = {
+      sessionId: b.sessionId,
+      buildId: b.buildId,
+      startedAt: b.startedAt,
+      lastMilestone: b.lastMilestone,
+      history: [],
+    };
+    if (b.mapMode) stub.mapMode = b.mapMode;
+    clone.breadcrumb = stub;
+    if (fits()) return JSON.stringify(clone);
+  }
+  // Step 4: error message before anything else string-shaped.
+  if (clone.error) {
+    for (const limit of [140, 60]) {
+      clone.error = { name: clone.error.name, message: clone.error.message.slice(0, limit) };
+      if (fits()) return JSON.stringify(clone);
+    }
+  }
+  // Step 5: drop the stub.
+  if (clone.breadcrumb) {
+    delete clone.breadcrumb;
+    if (fits()) return JSON.stringify(clone);
+  }
+  // Step 6: truncate every long string field progressively.
   for (const limit of [120, 60, 24]) {
     for (const key of Object.keys(clone)) {
       const v = clone[key];
@@ -668,10 +933,18 @@ export function truncateEventToCap(event: ObservabilityEvent, cap = MAX_PAYLOAD_
     if (clone.error) {
       clone.error = { name: clone.error.name.slice(0, 40), message: clone.error.message.slice(0, limit) };
     }
-    out = JSON.stringify(clone);
-    if (byteLength(out) <= cap) return out;
+    if (fits()) return JSON.stringify(clone);
   }
-  // Last resort: keep only the identifying core.
+  // Step 7: the three lowest-triage-value device fields, named order.
+  if (clone.device) {
+    for (const key of ["locale", "connection", "browserVersion"] as const) {
+      const dev: DeviceInfo = { ...clone.device };
+      delete dev[key];
+      clone.device = dev;
+      if (fits()) return JSON.stringify(clone);
+    }
+  }
+  // Step 8: last resort — keep only the identifying core.
   const core: ObservabilityEvent = { type: clone.type, ts: clone.ts, buildId: String(clone.buildId).slice(0, 40) };
   return JSON.stringify(core);
 }
@@ -700,6 +973,12 @@ export interface Observability {
   /** PBI-8: record the current map mount's tile-failure count on the trail. */
   setTileErrorCount: (count: number) => void;
   /**
+   * #335 (§4.2): the setReportMapMode choke point, instance side —
+   * updates the stamped mode AND persists it onto the live breadcrumb
+   * so the next boot reports the crashed session's as-run mode.
+   */
+  setReportMapMode: (mode: "full" | "scout") => void;
+  /**
    * Slice 2: a recovery signal from chunk-recovery (wired by GameApp).
    * Resolves the claimed outcome marker at most once — see the Slice 2
    * Consensus Manifest for the per-signal rules.
@@ -720,10 +999,45 @@ const MAP_ATTRIBUTED_MILESTONES = new Set(["map_init_start", "map_ready"]);
  */
 let reportMapMode: "full" | "scout" = "full";
 
+/**
+ * Bridge from the module-level setReportMapMode() to the live
+ * observability instance's breadcrumb (§4.2): createObservability
+ * registers its persist hook here so the choke point can write
+ * breadcrumb.mapMode without a GameApp change. Null when no instance
+ * exists yet — the mode still lands on the module variable, and trail
+ * creation / the map_init_start pin pick it up from there.
+ */
+let liveMapModeSink: ((mode: "full" | "scout") => void) | null = null;
+
 /** PBI-8: set the map mode stamped on outbound observability events. */
 export function setReportMapMode(mode: "full" | "scout"): void {
   reportMapMode = mode === "scout" ? "scout" : "full";
+  try {
+    liveMapModeSink?.(reportMapMode);
+  } catch {
+    // Mode persistence must never break gameplay.
+  }
 }
+
+/**
+ * §1.1 [GRAFT]: the funnel types stamp the LEGACY coarse device only.
+ * Hiccup types (tile_failed, webgl_context_lost) are NOT in this set —
+ * tile/WebGL triage is browser × OS work and keeps the full device.
+ */
+const FUNNEL_TYPES = new Set([
+  "storyteller_shown",
+  "narration_started",
+  "narration_completed",
+  "narration_replayed",
+  "narration_failed",
+  "narration_dismissed",
+]);
+
+/** Crash-class types for the §1.1 top-level stamps (incl. recovery). */
+const STAMPED_TYPES = new Set([...CRASH_CLASS_TYPES, "recovery_outcome"]);
+
+/** localStorage key for the §4.3 durable unfinished-boot counter. */
+export const BOOT_HEALTH_KEY = "meridian:boot-health";
 
 export function createObservability(deps: ObservabilityDeps = {}): Observability {
   const storage: ObsStorage | null = deps.storage !== undefined ? deps.storage : defaultStorage();
@@ -744,6 +1058,13 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
   let mapAttributedCrash = false;
   /** Slice 1: false once any storage read/write in this session throws. */
   let storageOk = true;
+  /**
+   * §4.3: the current unfinished-boot streak. init() is the SOLE
+   * reader/writer of the durable counter (via the durableStorage dep
+   * #331 added); this closure value is what emit() stamps on live
+   * crash-class events without incrementing.
+   */
+  let unfinishedBoots = 0;
   /**
    * Slice 2: the claimed recovery attempt held by init(). The two
    * confirmation legs are LATCHED BOOLEANS here in the closure — never
@@ -789,6 +1110,78 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
     }
   }
 
+  /**
+   * §4.2 (#335): apply a map-mode switch — update the module stamp AND
+   * persist the as-run mode onto the live breadcrumb, so the next
+   * boot's suspected_crash reports THIS session's mode, not the
+   * detecting boot's default. Registered as the module choke point's
+   * sink so every existing setReportMapMode() call site (all seven in
+   * GameApp) gains persistence with no GameApp change.
+   */
+  function applyReportMapMode(mode: "full" | "scout"): void {
+    reportMapMode = mode === "scout" ? "scout" : "full";
+    try {
+      if (breadcrumb && breadcrumb.mapMode !== reportMapMode) {
+        breadcrumb.mapMode = reportMapMode;
+        persist();
+      }
+    } catch {
+      // Trail bookkeeping never breaks gameplay.
+    }
+  }
+  liveMapModeSink = (mode) => {
+    try {
+      if (breadcrumb && breadcrumb.mapMode !== mode) {
+        breadcrumb.mapMode = mode;
+        persist();
+      }
+    } catch {
+      // Trail bookkeeping never breaks gameplay.
+    }
+  };
+
+  /**
+   * §4.3: read the durable boot-health counter. A malformed record
+   * reads as a zero streak; a throwing store reads as zero AND flips
+   * storageOk (the blindness is reported, never hidden). This counter
+   * NEVER touches #331's meridian:map-crash marker — different key,
+   * different shape, different consumer; Scout qualification never
+   * reads it (a telemetry counter must not become a gameplay input).
+   */
+  function readBootHealth(): { unfinished: number; lastUnfinishedAt: number } {
+    try {
+      const raw = durableStorage?.getItem(BOOT_HEALTH_KEY) ?? null;
+      if (!raw) return { unfinished: 0, lastUnfinishedAt: 0 };
+      const p = JSON.parse(raw) as { v?: unknown; unfinished?: unknown; lastUnfinishedAt?: unknown };
+      if (!p || p.v !== 1) return { unfinished: 0, lastUnfinishedAt: 0 };
+      return {
+        unfinished:
+          typeof p.unfinished === "number" && Number.isFinite(p.unfinished)
+            ? Math.max(0, Math.floor(p.unfinished))
+            : 0,
+        lastUnfinishedAt:
+          typeof p.lastUnfinishedAt === "number" && Number.isFinite(p.lastUnfinishedAt)
+            ? p.lastUnfinishedAt
+            : 0,
+      };
+    } catch {
+      storageOk = false;
+      return { unfinished: 0, lastUnfinishedAt: 0 };
+    }
+  }
+
+  /** §4.3: write the durable boot-health counter (init() only). */
+  function writeBootHealth(v: { unfinished: number; lastUnfinishedAt: number }): void {
+    try {
+      durableStorage?.setItem(
+        BOOT_HEALTH_KEY,
+        JSON.stringify({ v: 1, unfinished: v.unfinished, lastUnfinishedAt: v.lastUnfinishedAt }),
+      );
+    } catch {
+      storageOk = false;
+    }
+  }
+
   /** Slice 2: best-effort marker deletion (init claim + resolve). */
   function deleteRecoveryMarker(): void {
     try {
@@ -815,6 +1208,10 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       regionId?: string;
       chunkId?: string;
       lastMilestone?: string;
+      /** §4.1/§4.2: init-time calls pass the crashed session's facts. */
+      device?: DeviceInfo;
+      deviceSource?: string;
+      mapMode?: "full" | "scout" | "unknown";
     },
   ): void {
     emit({
@@ -827,6 +1224,9 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       edition: ctx?.edition ?? breadcrumb?.edition,
       regionId: ctx?.regionId ?? breadcrumb?.regionId,
       chunkId: ctx?.chunkId ?? breadcrumb?.chunkId,
+      ...(ctx?.device ? { device: ctx.device } : {}),
+      ...(ctx?.deviceSource ? { deviceSource: ctx.deviceSource } : {}),
+      ...(ctx?.mapMode ? { mapMode: ctx.mapMode } : {}),
     });
   }
 
@@ -918,22 +1318,52 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
 
   function emit(event: ObservabilityEvent): boolean {
     try {
+      const isFunnel = FUNNEL_TYPES.has(event.type);
+      const isStamped = STAMPED_TYPES.has(event.type);
       const enriched: ObservabilityEvent = {
         ...event,
         ts: typeof event.ts === "number" ? event.ts : now(),
         buildId: event.buildId || buildId,
         sessionId: event.sessionId ?? breadcrumb?.sessionId,
-        // Coarse device bucket on every event (COPPA-safe: os/form only,
-        // never raw UA) so alerts can say "ios/mobile" vs "desktop".
-        device: event.device ?? coarseDeviceFacts(),
+        // Two-level device (§1.1 [GRAFT]): funnel types stamp the
+        // LEGACY coarse device only (engagement telemetry — its device
+        // surface does not grow); every other type stamps the full
+        // parsed runtimeFacts(). An explicitly supplied device (the
+        // crashed session's persisted snapshot on suspected_crash)
+        // always wins over both levels.
+        device: event.device ?? (isFunnel ? legacyCoarseFacts() : runtimeFacts()),
         // PBI-8: every event (including crash reports) carries the game
-        // map mode — the Scout adoption / crash-delta signal.
+        // map mode — the Scout adoption / crash-delta signal. An
+        // explicit value (incl. "unknown" on crashed-session reports,
+        // §4.2) is never overwritten by the detecting boot's default.
         mapMode: event.mapMode ?? reportMapMode,
         // Slice 1 evidence stamps, at this single choke point so every
         // event carries them (design §4 A1): whether this session's
         // storage has worked so far, and the classifier logic version.
         storageOk,
         lcV: CLASSIFIER_VERSION,
+        // §1.1: the new top-level stamps ride crash-class events only.
+        // deviceSource [GRAFT]: "live" unless the constructor stamped
+        // the crashed session / detecting boot provenance (§4.1).
+        // msSinceBootStart (§1.2 row 14): live events derive it from
+        // the live trail at this choke point. unfinishedBoots (§4.3):
+        // the current streak, stamped without incrementing.
+        ...(isStamped
+          ? {
+              deviceSource:
+                typeof event.deviceSource === "string" ? event.deviceSource : "live",
+              msSinceBootStart:
+                event.msSinceBootStart !== undefined
+                  ? event.msSinceBootStart
+                  : breadcrumb
+                    ? Math.max(0, now() - breadcrumb.startedAt)
+                    : "unknown",
+              unfinishedBoots:
+                typeof event.unfinishedBoots === "number"
+                  ? event.unfinishedBoots
+                  : unfinishedBoots,
+            }
+          : {}),
       };
       // Slice 2 afterRecovery choke point (Manifest A1): while a
       // claimed outcome is pending and unresolved, captured-error
@@ -1027,12 +1457,24 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
           startedAt: now(),
           lastMilestone: name,
           history: [],
-          device: deps.device ?? collectDeviceInfo(),
+          // §4.1: the parsed snapshot replaces the raw-UA device slot.
+          runtime: runtimeFacts(),
+          // §2.2: classifier state starts false; the visibility
+          // listener updates it at each transition from here on.
+          bgTerminal: false,
+          trailStuck: false,
+          vis: true,
         };
       }
       const at = now();
       breadcrumb.lastMilestone = name;
       breadcrumb.history = [...breadcrumb.history, { name, at }].slice(-MAX_HISTORY);
+      // §4.2 pin: at map_init_start, a mode resolved before the trail
+      // existed (so no setReportMapMode call could persist it) lands
+      // on the trail if mapMode is still unset.
+      if (name === "map_init_start" && breadcrumb.mapMode === undefined) {
+        breadcrumb.mapMode = reportMapMode;
+      }
       if (context?.edition) breadcrumb.edition = context.edition;
       if (context?.regionId) breadcrumb.regionId = context.regionId;
       if (context?.chunkId) breadcrumb.chunkId = context.chunkId;
@@ -1069,6 +1511,27 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       } catch {
         unclean = false;
       }
+      // §4.3 durable unfinished-boot counter — init() is the sole
+      // reader/writer, through the durableStorage dep (#331's seam).
+      // Increment when this boot found the previous session unfinished;
+      // reset only on a POSITIVELY clean previous trail [GRAFT — C
+      // §5.5]: no prev trail does NOT reset, because a missing trail
+      // also means storage was blocked or cleared, which is not
+      // evidence a crash loop ended.
+      try {
+        const storedHealth = readBootHealth();
+        if (unclean && prev) {
+          unfinishedBoots = Math.min(99, storedHealth.unfinished + 1);
+          writeBootHealth({ unfinished: unfinishedBoots, lastUnfinishedAt: now() });
+        } else if (!unclean && prev && storedHealth.unfinished > 0) {
+          unfinishedBoots = 0;
+          writeBootHealth({ unfinished: 0, lastUnfinishedAt: storedHealth.lastUnfinishedAt });
+        } else {
+          unfinishedBoots = storedHealth.unfinished;
+        }
+      } catch {
+        unfinishedBoots = 0;
+      }
       // Slice 2: recovery-marker handling — after the `unclean`
       // computation, before the suspected_crash construction, on this
       // module's own storage handle, in the Consensus Manifest's exact
@@ -1076,12 +1539,28 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       // context (the current breadcrumb does not exist yet).
       let suspectedAfterRecovery = false;
       try {
-        const prevCtx = {
+        const prevCtx: {
+          sessionId?: string;
+          edition?: string;
+          regionId?: string;
+          chunkId?: string;
+          lastMilestone?: string;
+          device?: DeviceInfo;
+          deviceSource?: string;
+          mapMode?: "full" | "scout" | "unknown";
+        } = {
           sessionId: prev?.sessionId,
           edition: prev?.edition,
           regionId: prev?.regionId,
           chunkId: prev?.chunkId,
           lastMilestone: prev?.lastMilestone,
+          // §4.1/§4.2: init-time outcomes carry the crashed session's
+          // persisted snapshot + as-run mode when they exist, else the
+          // detecting boot's fresh facts — labelled either way via
+          // deviceSource [GRAFT], never silently conflated.
+          device: prev?.runtime ?? runtimeFacts(),
+          deviceSource: prev?.runtime ? "crashed_session" : "detecting_boot",
+          mapMode: prev?.mapMode ?? "unknown",
         };
         let rawMarker: string | null = null;
         try {
@@ -1190,18 +1669,48 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       }
       mapAttributedCrash = sessionMapCrash || durableMapCrash;
       if (unclean && prev) {
-        // COPPA: the stored trail's device sub-object carries the raw UA
-        // string (device.ua) — it must never leave the phone. Mirror the
-        // watchdog (scripts/crash-watchdog.mjs): attach fresh coarse facts
-        // (os/form buckets + numerics, no raw UA) and strip device from
-        // the breadcrumb copy. The tainted stored copy is rotated below
-        // regardless, so it never persists past this boot.
+        // §4.1: the nested breadcrumb now carries the crashed session's
+        // parsed runtime snapshot (parsed-only — it may leave the
+        // device) instead of the old device slot. The delete is kept as
+        // belt-and-braces for legacy trails: a stored device.ua must
+        // never leave the phone, and the tainted stored copy is rotated
+        // below regardless, so it never persists past this boot.
         const prevCopy: Breadcrumb = { ...prev };
         delete prevCopy.device;
-        // bgTerminal is stamped only when the stored history actually
-        // records a visibility transition — absent means unknown, and
-        // the classifier fails closed on it (never benign).
-        const bgTerminal = terminalBackgrounded(prev);
+        // §2.2 evidence stamps, stamped HERE from the stored trail —
+        // the only moment the full, untrimmed history is in hand.
+        // Precedence for bgTerminal is pinned and must never silently
+        // invert: persisted state field → history scan → vis-gated
+        // false. The final false fires only for a marker-carrying
+        // trail (provably tracked its whole life, so silent history
+        // means never-backgrounded); a marker-less legacy trail with
+        // silent history keeps the stamp OMITTED and the classifier
+        // fails closed on it [GRAFT — A §2.3].
+        const scannedBg = terminalBackgrounded(prev);
+        const bgTerminal: boolean | undefined =
+          typeof prev.bgTerminal === "boolean"
+            ? prev.bgTerminal
+            : scannedBg !== undefined
+              ? scannedBg
+              : prev.vis === true
+                ? false
+                : undefined;
+        const trailStuck =
+          typeof prev.trailStuck === "boolean" ? prev.trailStuck : trailWasStuck(prev);
+        // §1.2 row 14, from the crashed trail itself: its last history
+        // entry's timestamp minus its start. No usable history stamps
+        // "unknown" — never a number invented from the detecting boot.
+        const lastEntry =
+          Array.isArray(prev.history) && prev.history.length
+            ? prev.history[prev.history.length - 1]
+            : undefined;
+        const msSinceBootStart: number | "unknown" =
+          lastEntry &&
+          typeof lastEntry.at === "number" &&
+          typeof prev.startedAt === "number" &&
+          lastEntry.at >= prev.startedAt
+            ? lastEntry.at - prev.startedAt
+            : "unknown";
         const event: ObservabilityEvent = {
           type: "suspected_crash",
           ts: now(),
@@ -1211,15 +1720,25 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
           regionId: prev.regionId,
           chunkId: prev.chunkId,
           lastMilestone: prev.lastMilestone,
-          device: coarseDeviceFacts(),
+          // §4.1: the CRASHED session's facts — its persisted snapshot,
+          // or (legacy trail, no snapshot) the detecting boot's fresh
+          // facts, labelled by deviceSource [GRAFT] either way. Today
+          // this stamps the detecting boot's facts unlabelled, which
+          // misattributes the crash whenever the two sessions differ.
+          device: prev.runtime ?? runtimeFacts(),
+          deviceSource: prev.runtime ? "crashed_session" : "detecting_boot",
+          // §4.2: explicit, including "unknown" — emit()'s
+          // `?? reportMapMode` must never overwrite it with the
+          // detecting boot's module default. This is the #335 fix.
+          mapMode: prev.mapMode ?? "unknown",
+          msSinceBootStart,
+          // §4.3: the post-increment streak — the crashed session is
+          // included in its own count.
+          unfinishedBoots,
           breadcrumb: prevCopy,
-          // Slice 1 evidence stamps, derived HERE from the stored trail
-          // — the only moment the full, untrimmed history is in hand
-          // (design §4 A1/F7). emit() adds storageOk/lcV and the
-          // provisional verdict computed from these same facts.
           ...(bgTerminal !== undefined ? { bgTerminal } : {}),
           buildReplaced: (prev.buildId || buildId) !== buildId,
-          trailStuck: trailWasStuck(prev),
+          trailStuck,
           // Slice 2: the one suspected_crash afterRecovery case — the
           // same-init leftover link (a claimed marker resolved as
           // unconfirmed_died directly above, §3.3.4).
@@ -1244,7 +1763,17 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       startedAt: now(),
       lastMilestone: "boot_start",
       history: [{ name: "boot_start", at: now() }],
-      device: deps.device ?? collectDeviceInfo(),
+      // §4.1: this session's parsed snapshot, taken once at creation.
+      // The raw-UA device slot is gone from the trail (§4.1).
+      runtime: runtimeFacts(),
+      // §2.2: state stamps start false; the listener installed below
+      // (same init) updates them at every transition from here on.
+      bgTerminal: false,
+      trailStuck: false,
+      // [GRAFT] This build installs visibility tracking in this same
+      // init() — the marker is what licenses the vis-gated false in
+      // the next boot's bgTerminal precedence.
+      vis: true,
     };
     persist();
     installVisibilityTracking();
@@ -1269,7 +1798,35 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
       if (!doc || typeof doc.addEventListener !== "function") return;
       doc.addEventListener("visibilitychange", () => {
         try {
-          recordMilestone(doc.visibilityState === "hidden" ? "backgrounded" : "foregrounded");
+          const hidden = doc.visibilityState === "hidden";
+          // §2.2: this listener is the single writer of the persisted
+          // classifier STATE. bgTerminal is the trail's CURRENT
+          // terminal state, set at the transition; trailStuck is
+          // evaluated at backgrounding time, while its input (the last
+          // non-visibility milestone) is complete — later, the
+          // MAX_HISTORY cap could evict it and the derivation would
+          // lie. recordMilestone()'s persist() right below carries
+          // both fields out with the milestone, same write.
+          if (breadcrumb) {
+            if (hidden) {
+              let lastNonVis: string | undefined;
+              const hist = Array.isArray(breadcrumb.history) ? breadcrumb.history : [];
+              for (let i = hist.length - 1; i >= 0; i--) {
+                const n = hist[i]?.name;
+                if (n === "backgrounded" || n === "foregrounded") continue;
+                lastNonVis = n;
+                break;
+              }
+              if (lastNonVis === undefined) lastNonVis = breadcrumb.lastMilestone;
+              breadcrumb.trailStuck =
+                lastNonVis !== undefined && START_MILESTONES.has(lastNonVis);
+              breadcrumb.bgTerminal = true;
+            } else {
+              breadcrumb.bgTerminal = false;
+              breadcrumb.trailStuck = false;
+            }
+          }
+          recordMilestone(hidden ? "backgrounded" : "foregrounded");
         } catch {
           // Trail bookkeeping never breaks gameplay.
         }
@@ -1341,6 +1898,7 @@ export function createObservability(deps: ObservabilityDeps = {}): Observability
     installGlobalHandlers,
     wasMapAttributedCrash: () => mapAttributedCrash,
     setTileErrorCount,
+    setReportMapMode: applyReportMapMode,
     noteRecoverySignal,
   };
 }
