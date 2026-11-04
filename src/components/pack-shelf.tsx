@@ -52,6 +52,7 @@ export function PackShelf({
   onStartNext,
   coreTotal = null,
   packTotal = null,
+  statusLineSuppressed = false,
 }: {
   edition: PackEditionId;
   activeDeckId: string;
@@ -63,6 +64,15 @@ export function PackShelf({
   coreTotal?: number | null;
   /** Pack deck size in this edition when the screen bundles it (Cold Trail: 60, not the manifest's 72). */
   packTotal?: number | null;
+  /**
+   * Keep the status line under the chips empty while the screen is
+   * showing a message of its own in the same spot (#336 owner cure:
+   * during a GeoDetective fallback case, the fallback notice is the
+   * one voice — the shelf's "Your next case comes from…" line saying
+   * a second thing at the same time is what confused the owner).
+   * The line's reserved height stays, so nothing below shifts.
+   */
+  statusLineSuppressed?: boolean;
 }): JSX.Element {
   const [manifest, setManifest] = useState<PackManifest | null>(null);
   const [loopSize, setLoopSize] = useState<number | null>(null);
@@ -119,7 +129,9 @@ export function PackShelf({
   };
 
   let statusLine = "";
-  if (caseFinished) {
+  if (statusLineSuppressed) {
+    statusLine = "";
+  } else if (caseFinished) {
     statusLine = "Tap a deck chip to start your next case.";
   } else if (shownSelected !== activeDeckId && selectedDeck) {
     statusLine = `Your next case comes from ${selectedDeck.label}.`;
