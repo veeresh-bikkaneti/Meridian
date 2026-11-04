@@ -93,6 +93,36 @@ describe("screen mounts", () => {
   });
 });
 
+describe("one deck signal on the GeoDetective case screen (#336 owner cure)", () => {
+  it("LoopScreen speaks in one plain sentence, not a Deck: header", () => {
+    assert.ok(
+      loopScreen.includes("This case is from your"),
+      "healthy pack case: the sentence names the player's pack deck",
+    );
+    assert.ok(
+      loopScreen.includes('"This case is from All cases."'),
+      "healthy core case: the sentence names All cases",
+    );
+    assert.ok(
+      loopScreen.includes("couldn’t load just now — this case is from All cases instead."),
+      "fallback case: the same spot carries the fallback notice instead",
+    );
+    assert.ok(!loopScreen.includes("Deck: {"), "the old Deck: header label is gone");
+    assert.ok(
+      loopScreen.includes('data-testid="case-source-line"'),
+      "the sentence has one stable home on the screen",
+    );
+  });
+
+  it("the shelf line stays quiet while the fallback notice speaks", () => {
+    assert.ok(shelf.includes("statusLineSuppressed"), "shelf accepts the suppression prop");
+    assert.ok(
+      loopScreen.includes("statusLineSuppressed={deckFallbackNotice !== null}"),
+      "LoopScreen suppresses the shelf line exactly while a fallback notice is up",
+    );
+  });
+});
+
 describe("surfaces that must stay pack-free", () => {
   it("LockedLoop gains no pack surface", () => {
     assert.ok(!lockedLoop.includes("PackShelf"), "locked tile has no shelf");
