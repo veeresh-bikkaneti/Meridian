@@ -1470,25 +1470,34 @@ body:has(.home-v5) {
   gap: 22px;
   align-items: start;
 }
-/* The 290px floor in the template below bounds how far About's
-   column can be squeezed; it does not size the doorway, which
-   shrink-wraps to its own content under the doorway rule below. */
+/* The 290px floor in the template below bounds the doorway's
+   column track: it is the narrowest the doorway's column is
+   allowed to get, so About's reading column is never squeezed
+   past that point. The doorway itself fills that track — see
+   the doorway rule below. */
 .home-v5 .hv5-about-row:has(> .hv5-doorway) {
   grid-template-columns: minmax(0, 1.45fr) minmax(290px, 1fr);
 }
 .home-v5 .hv5-about-row > .hv5-doorway {
   margin-top: 0;
-  /* Sized by its own content, never by the row (owner defect,
-     2026-11-05: the signpost "sizes to match"). A grid item
-     stretches to its column track by default, which made the
-     signpost 484px wide for 276px of content at desktop — the
-     row dictated the card's size. justify-self:start shrink-wraps
-     the card to its content plus its own padding at every width,
-     so the row's tracks no longer size it (its height was already
-     content-sized via the row's align-items: start). Pinned by
-     the "signpost card is sized by its own content" test in
+  /* A matched pair (owner correction, 2026-11-05: "I was clear
+     the card heights dont match"). The two cards in this row —
+     About ("How a round works") and this Capitals & Flags
+     signpost — are meant to read as a matched set, like the
+     Journal / Grown-ups pair in the row above: the signpost
+     stretches to the About card's height and fills its column.
+     The row keeps align-items: start, so About keeps its own
+     height; align-self: stretch here lets only the signpost
+     grow to the row height the About card sets. No
+     justify-self is set, so the card fills its column track
+     again (the grid default). An earlier fix on 2026-11-05
+     (commit d7f0be6) read "sizes to match" as a width problem
+     and made the card hug its content width with
+     justify-self: start — that was a misread of the owner's
+     words, and this rule supersedes it. Pinned by the
+     "signpost card matches the About card's height" test in
      tests/e2e/home-hero-trekker.desktop.spec.ts. */
-  justify-self: start;
+  align-self: stretch;
 }
 @media (max-width: 680px) {
   .home-v5 .hv5-about-row,
