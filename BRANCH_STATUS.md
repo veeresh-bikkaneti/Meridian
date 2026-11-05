@@ -123,6 +123,79 @@
 - [x] Docs + this record (docs commit), pushed
 - [x] PR opened — NO MERGE (pipeline continues: Silo QA + panel; merge only on the owner's per-PR word)
 
+## Panel round 1 + cure — 2026-11-04 (verdict on `417a5ab`)
+
+Panel tally: **2 APPROVE / 8 APPROVE-WITH-NITS / 2 BLOCK**; DevEx
+PASS-WITH-NITS. The two BLOCKs (UX Designer + UX Researcher lenses)
+share one finding: suppressing the `boot_failure` POST was right,
+but suppressing the ONLY recovery surface was not — on a stalled
+recovery reload the player (a child, possibly in the standalone PWA,
+which has no browser reload button) was left on a blank shell: no
+text, no button, no `role=alert` announcement, no exit. The round-1
+E2E pinned exactly that state.
+
+Cure (this round, commits `5a61551` + `b6a72ab` + the docs commit):
+
+- `scripts/crash-watchdog.mjs` — `onTimer()` now sets a short flag
+  (`rcv`) when the fresh-notice condition holds instead of returning;
+  `show()` reads it: the SAME overlay (role=alert, heading focus,
+  Try again, Reload + ?nosw=1 links, ASKED latch) with the recovery
+  heading **"The reload didn't finish loading."** (the existing body
+  line "The game didn't finish loading." is shared — true for both
+  cards, zero extra body cost; the WebGL-less heading variant does
+  not apply) and **no `send()`** — no `boot_failure` POST, no "Crash
+  note sent" line. Telemetry suppression from round 1 is unchanged;
+  stale/malformed notices keep the generic card + report.
+- Honesty wording (Office Hours nit): the notice proof is stated as
+  "in practice" in the watchdog docstring + `onTimer` comment,
+  `src/lib/chunk-recovery.ts`, and `docs/observability.md` — the
+  flag's removal at consume time is best-effort (the 13-Uf
+  surviving-flag case) and the check is one-sided on future
+  timestamps; both are accepted residuals, now worded honestly.
+- Tests: unit fresh-notice case updated (overlay IS inserted,
+  recovery heading present, generic + WebGL headings absent, zero
+  POSTs, no "Crash note sent") + a new Try-again case (reloads once,
+  still no report) — 51 tests. E2E cascade case retitled ("the
+  watchdog shows the reload card and files no boot_failure") and now
+  asserts #mv present + recovery heading visible + generic heading
+  absent + zero `boot_failure`; all anti-vacuity pins kept.
+- Fail-first: updated unit cases vs the `417a5ab` module — 51 tests,
+  48 pass / 3 fail (fresh-notice case: no overlay; Try-again case: no
+  veil; no-drift needle: heading string absent). Updated E2E vs the
+  `417a5ab` build — failed at `expect(#mv).toHaveCount(1)`: the old
+  tip shows nothing. With the cure both are green (below).
+- Docs: `docs/observability.md` row 3 rewritten (player sees the
+  reload card + Try again; no `boot_failure`), row 2's quote fixed
+  to the curly apostrophe the boundary actually renders
+  (`Couldn’t`, U+2019 from `&rsquo;`, byte-checked), proof paragraph
+  softened to "in practice" with the best-effort-removal residual
+  stated.
+- Byte budget: the cure adds 58 rendered bytes — worst case (14-char
+  build id) 6,155 → **6,213** — over the 6,200 budget, so the budget
+  rises to **6,250** (smallest round fit keeping the established
+  ~40-byte headroom pattern: 37 bytes margin; rationale recorded in
+  the test comment, the RENAME comment, and the module figures).
+
+Cured-tip gates:
+
+- `node --test scripts/crash-watchdog.test.mjs` — 51 / 51.
+- `npm test` — exit 0: scripts 1,020 tests (1,009 pass / 0 fail /
+  11 skipped); src 2,119 / 2,119.
+- `npx tsc --noEmit` — clean. `npm run typecheck:worker` — clean.
+- `npm run test:worker` — 117 / 117.
+- `node scripts/lint-cards.mjs` — GATE PASSED.
+- `npm run build:pages` — exit 0; the recovery heading verified
+  present in the shipped `_shell.html` watchdog block.
+- E2E (flock, `--workers=1`, chromium-1243): `crash-watchdog.spec.ts`
+  full file — 4 passed / 1 failed. The cured cascade case PASSES.
+  The one failure is the pre-existing "stale build" case with its
+  signature unchanged (expected `data_chunk_load_start`, received
+  `storyteller_ready`; control-proven pre-existing on unmodified
+  `e1cf6fe` in round 1) — not chased, per the cure brief.
+- Recorded follow-ups NOT built (panel's list): the
+  future-timestamp upper bound, an S3-style drift-guard test for the
+  mirrored key/age, an exact-boundary 900,000 ms unit pin.
+
 ---
 
 # Branch status — feat/capitals-flags-phase1 (Capitals & Flags, Phase 1)

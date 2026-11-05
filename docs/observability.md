@@ -244,27 +244,38 @@ the timer's seat; they are handled differently, on purpose:
 | What happened | What the player sees | What is filed |
 |---|---|---|
 | A deploy replaced the assets mid-session (version skew) | The app's own "A new version of Meridian is available." offer with a Refresh button | No `boot_failure` — the watchdog treats that offer's text as a stand-down signal, and readiness is set anyway |
-| A chunk fails mid-session, nothing else wrong | The error boundary's recoverable card ("Couldn't load GeoDetective." and friends), then chunk-recovery's one bounded auto-reload | No `boot_failure` — the session already booted |
-| That auto-reload itself stalls (assets still failing, network still down) | Nothing from the watchdog — no second, wrong recovery screen on top of a session that had already reached home | No `boot_failure` — see the proof below |
+| A chunk fails mid-session, nothing else wrong | The error boundary's recoverable card ("Couldn’t load GeoDetective." and friends), then chunk-recovery's one bounded auto-reload | No `boot_failure` — the session already booted |
+| That auto-reload itself stalls (assets still failing, network still down) | The watchdog's recovery card — "The reload didn't finish loading." with the same Try again button — never a blank screen, and never the "couldn't start" claim (the game *did* start; this session reached home before the reload) | No `boot_failure` — the report stands down, the player does not; see the proof below |
 | A fresh boot stalls (the bundle never loads on a first visit) | The watchdog's fallback card ("The game couldn't start on this phone.") | One `boot_failure` — this is the case the watchdog exists for |
 
 The third row is the subtle one. How does the watchdog know a stalled
 page is a *recovery reload* and not a fresh boot? Before any
 chunk-recovery reload — the automatic one, and the error card's manual
 "Try again" — the app writes a timestamp to session storage under the
-key `meridian.chunkReloadNotice`. Only code inside an app that already
-booted and reached home can write that key. A healthy reload consumes
-(removes) the notice as it boots; so if a *fresh* notice (at most
-15 minutes old — `CHUNK_RELOAD_NOTICE_MAX_AGE_MS` in
+key `meridian.chunkReloadNotice`. In practice, only code inside an app
+that already booted and reached home writes that key. A healthy reload
+consumes (removes) the notice as it boots; so if a *fresh* notice (at
+most 15 minutes old — `CHUNK_RELOAD_NOTICE_MAX_AGE_MS` in
 `src/lib/chunk-recovery.ts`, mirrored by the watchdog) is still there
 when the 28-second timer fires and readiness was never signalled, this
-page load can only be the recovery reload, stalled. The watchdog
-stands down: no card, no report. A notice that is missing, unreadable,
+page load is, in practice, the recovery reload, stalled. "In practice"
+is the honest phrase: the notice's removal at consume time is
+best-effort, so a flag can survive a healthy boot in rare cases — a
+surviving fresh flag is strong evidence, not proof. That residual is
+accepted: the worst it costs is one recovery card shown (with no
+report) on a page that might have been a fresh stall. The report
+stands down; the player never does — the watchdog shows its recovery
+card instead of the generic boot-failure card, because leaving a
+child on a blank shell (possibly in the standalone PWA, which has no
+browser reload button) is worse than showing a card that says, truly,
+that the reload didn't finish. A notice that is missing, unreadable,
 or older than 15 minutes proves nothing, and the watchdog behaves
-exactly as it always did — when in doubt, it shows the fallback.
+exactly as it always did — when in doubt, it shows the generic
+fallback and files the report.
 
-Pinned by `scripts/crash-watchdog.test.mjs` (fresh notice stands down;
-stale and malformed notices do not) and by the "stalled chunk-recovery
+Pinned by `scripts/crash-watchdog.test.mjs` (a fresh notice gets the
+recovery card and no report; stale and malformed notices keep the
+generic card and the report) and by the "stalled chunk-recovery
 reload" case in `tests/e2e/crash-watchdog.spec.ts`, which drives the
 real two-page sequence end to end.
 
