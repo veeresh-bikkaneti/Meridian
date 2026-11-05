@@ -14,15 +14,20 @@
  * answers (or if it never does), the line runs without a count.
  *
  * THEME RESTYLE (designed on branch design/home-rework-variants,
- * composed into production 2026-11-04; owner findings 2026-11-04:
- * "doesnt follow the theme" + placement beside the About card): the
- * insides are rebuilt in the home-v5 card
- * language — hv5-head badge + eyebrow label, display-type title, the
- * theme's pill CTAs — so the strip reads as a sibling of the
- * GeoDetective / Cold Trail cards instead of a generic banner. Copy is
- * unchanged word-for-word. `density="compact"` is the anti-crowding
- * cut for the beside-About placement: same words, same doors, tighter
- * footprint.
+ * composed into production 2026-11-04): the restyle started from the
+ * owner's finding "doesnt follow the theme" — Veeresh, 2026-11-04,
+ * with screenshots of the then-current doorway — plus his placement
+ * call (beside the About card). The insides are rebuilt in the
+ * home-v5 card language — hv5-head badge + eyebrow label,
+ * display-type title, the theme's pill CTAs — so the strip reads as
+ * a sibling of the GeoDetective / Cold Trail cards instead of a
+ * generic banner. Copy scoping, stated precisely: the locked lines
+ * (heading, count sub-line, both door labels) are unchanged
+ * word-for-word versus main; one label is new versus main — the
+ * eyebrow "Story pack · Capitals", added in this theme restyle
+ * (design branch commit 266c00c) and flagged in the PR body for the
+ * owner's word at merge. `density="compact"` is the anti-crowding
+ * cut for the beside-About placement: same doors, tighter footprint.
  */
 import { useEffect, useState } from "react";
 
@@ -91,7 +96,7 @@ export function PackDoorway({
           onClick={onGeoDetective}
           className="hv5-btn hv5-btn-brown"
         >
-          🔎 Play in GeoDetective
+          <span aria-hidden="true">🔎</span> Play in GeoDetective
         </button>
         <button
           type="button"
@@ -99,7 +104,7 @@ export function PackDoorway({
           onClick={onColdTrail}
           className="hv5-btn hv5-btn-ghost"
         >
-          ❄️ Play in Cold Trail
+          <span aria-hidden="true">❄️</span> Play in Cold Trail
         </button>
       </div>
     </section>

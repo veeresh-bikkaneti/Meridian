@@ -1443,6 +1443,17 @@ body:has(.home-v5) {
 .home-v5 .hv5-btn-ghost:hover {
   background: #f1ead3;
 }
+/* Doorway-scoped ghost border (panel round-1 UXR nit): the shared
+   --hv5-line-warm token (#d8cbae) sits at ≈1.55:1 against the card
+   ground #fdfbf3 — too weak to read as the Cold Trail door's
+   boundary. The token itself is shared (pill dot, difficulty
+   picker, badge), so it stays; only the doorway's ghost door gets
+   the deeper sand-brown #97835a: relative luminance 0.2355 vs the
+   ground's 0.9635 → (0.9635+0.05)/(0.2355+0.05) ≈ 3.55:1, clearing
+   the 3:1 component-boundary bar. */
+.home-v5 .hv5-doorway .hv5-btn-ghost {
+  border-color: #97835a;
+}
 /* Compact density — the anti-crowding cut for beside-About. Same
    words, same doors, tighter footprint; tap targets stay ≥44px. */
 .home-v5 .hv5-doorway-compact {
@@ -1526,6 +1537,12 @@ body:has(.home-v5) {
   -webkit-mask-image: linear-gradient(to top, #000 72%, transparent);
   mask-image: linear-gradient(to top, #000 72%, transparent);
 }
+/* The sliced mountain art itself. It must never gain a transform
+   or an animation: the trail + trekker overlays slice the exact
+   same box, and any movement of the img would drift it out from
+   under them and break the overlay alignment. (The old bare-img
+   path that carried the Ken Burns zoom was removed by this PR —
+   see the trail comment below.) */
 .home-v5 .hv5-mtn-img {
   width: 100%;
   height: 100%;

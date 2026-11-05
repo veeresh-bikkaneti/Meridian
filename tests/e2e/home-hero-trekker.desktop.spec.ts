@@ -72,6 +72,7 @@ test("production home composes trail + trekker + clouds and one doorway beside A
   browser,
 }) => {
   const page = await openHome(browser);
+  try {
 
   // All three hero layers mounted on the sliced mountain wrap.
   await expect(page.locator(".hv5-trail")).toBeAttached();
@@ -104,13 +105,16 @@ test("production home composes trail + trekker + clouds and one doorway beside A
   await expect(page.getByTestId("pack-doorway-geodetective")).toBeVisible();
   await expect(page.getByTestId("pack-doorway-coldtrail")).toBeVisible();
 
-  await page.context().close();
+  } finally {
+    await page.context().close();
+  }
 });
 
 test("hero motion runs: trekker clock advances and the pulse travels", async ({
   browser,
 }) => {
   const page = await openHome(browser);
+  try {
 
   // Bring the hero on screen first: Chromium does not tick
   // animation frames for off-viewport content, so sampling from
@@ -141,13 +145,16 @@ test("hero motion runs: trekker clock advances and the pulse travels", async ({
     "pulse should travel along the trail",
   ).toBeGreaterThan(2);
 
-  await page.context().close();
+  } finally {
+    await page.context().close();
+  }
 });
 
 test("reduced motion: hero shows the still — no clouds or pulse, trekker clock paused mid-climb", async ({
   browser,
 }) => {
   const page = await openHome(browser, { reducedMotion: "reduce" });
+  try {
 
   // Trail still: static dots + flag only; the animated layers are
   // never rendered under the gate.
@@ -161,8 +168,22 @@ test("reduced motion: hero shows the still — no clouds or pulse, trekker clock
   expect(dotsAnimation).toBe("none");
 
   // Trekker still: the figure is visible (mid-climb frame) and the
-  // SMIL clock is paused — sampled twice, it does not advance.
+  // SMIL clock is paused — polled until the still settles (a
+  // boot-time remount restarts the svg, and its still effect needs
+  // a beat to re-pause the fresh clock at 7.25s), then sampled
+  // twice to prove it does not advance.
   await expect(page.locator(".hv5-trekker")).toBeAttached();
+  await expect
+    .poll(
+      async () =>
+        page.evaluate(() => {
+          const svg = document.querySelector(".hv5-trekker") as unknown as SVGSVGElement;
+          const t = svg.getCurrentTime();
+          return svg.animationsPaused() && t > 7 && t < 7.5;
+        }),
+      { timeout: 15_000 },
+    )
+    .toBe(true);
   const still1 = await page.evaluate(() => {
     const svg = document.querySelector(".hv5-trekker") as unknown as SVGSVGElement;
     return { t: svg.getCurrentTime(), paused: svg.animationsPaused() };
@@ -189,7 +210,9 @@ test("reduced motion: hero shows the still — no clouds or pulse, trekker clock
       { timeout: 15_000 },
     )
     .toBeGreaterThan(0.9);
-  await page.context().close();
+  } finally {
+    await page.context().close();
+  }
 });
 
 test("save-data cohort: hero shows the still — no clouds or pulse, march + wave killed, trekker paused", async ({
@@ -198,8 +221,12 @@ test("save-data cohort: hero shows the still — no clouds or pulse, march + wav
   // No OS reduced-motion here: the still must come from the
   // Save-Data / low-memory mount gate alone, and the CSS dot march
   // + flag wave (which no media query reaches in this cohort) must
-  // be killed by the JS-reflected .hv5-trail-still class.
+  // be killed by the JS-reflected .hv5-trail-still class. This case
+  // MUST fail on the pre-cure code: before the cure the trail SVG
+  // carried no still class and the dots + flag computed
+  // animation-name was the live march/wave, not "none".
   const page = await openHome(browser, { saveData: true });
+  try {
 
   await expect(page.locator(".hv5-trail")).toBeAttached();
   await expect(page.locator(".hv5-trail")).toHaveClass(/hv5-trail-still/);
@@ -229,13 +256,16 @@ test("save-data cohort: hero shows the still — no clouds or pulse, march + wav
   expect(still1.t).toBeGreaterThan(7);
   expect(still1.t).toBeLessThan(7.5);
 
-  await page.context().close();
+  } finally {
+    await page.context().close();
+  }
 });
 
 test("motion gate flips mid-session: trekker clock resumes when reduced motion lifts", async ({
   browser,
 }) => {
   const page = await openHome(browser, { reducedMotion: "reduce" });
+  try {
 
   // Settle on the still first (polled, for the same boot-remount
   // reason the reduced-motion test polls rig opacity): paused on
@@ -264,6 +294,7 @@ test("motion gate flips mid-session: trekker clock resumes when reduced motion l
   // SMIL clock, not leave it frozen at 7.25 forever.
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await expect(page.locator(".hv5-clouds")).toBeAttached({ timeout: 15_000 });
+  await expect(page.locator(".hv5-trail-pulse")).toBeAttached({ timeout: 15_000 });
   await expect(page.locator(".hv5-trail")).not.toHaveClass(/hv5-trail-still/);
 
   await page.locator(".hv5-mtn-wrap").scrollIntoViewIfNeeded();
@@ -281,5 +312,7 @@ test("motion gate flips mid-session: trekker clock resumes when reduced motion l
     0.8,
   );
 
-  await page.context().close();
+  } finally {
+    await page.context().close();
+  }
 });
