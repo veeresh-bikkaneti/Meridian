@@ -1056,6 +1056,24 @@ test("stamp: a future record version (v:2) stamps nothing — the v:1 shape is r
   assert.ok(!("unfinishedBoots" in body));
 });
 
+test("stamp: a string record version (v:\"1\") stamps nothing — the v:1 shape check is strict", () => {
+  // Regression (#347 cure): the shape check must mirror readBootHealth's
+  // strict `p.v !== 1` discard. A loose check stamped this record's
+  // streak 5 even though the app reads the same record as streak 0,
+  // inflating the worker's grade to a false S1.
+  const { body } = bootFailureBody({
+    durable: { "meridian:boot-health": JSON.stringify({ v: "1", unfinished: 5 }) },
+  });
+  assert.ok(!("unfinishedBoots" in body));
+});
+
+test("stamp: a boolean record version (v:true) stamps nothing — the v:1 shape check is strict", () => {
+  const { body } = bootFailureBody({
+    durable: { "meridian:boot-health": JSON.stringify({ v: true, unfinished: 5 }) },
+  });
+  assert.ok(!("unfinishedBoots" in body));
+});
+
 test("stamp: a non-number streak stamps nothing", () => {
   const { body } = bootFailureBody({
     durable: { "meridian:boot-health": JSON.stringify({ v: 1, unfinished: "3" }) },

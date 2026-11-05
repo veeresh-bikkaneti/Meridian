@@ -340,7 +340,11 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
         var ub = null;
         try {
           var hp = JSON.parse(ds(BHK) || "");
-          if (hp && hp.v == 1 && typeof hp.unfinished == "number" && isFinite(hp.unfinished))
+          // Strict === on purpose: hp.v comes from parsed JSON, so it
+          // can be a string ("1") or boolean (true) that loose == would
+          // accept — readBootHealth discards those records, and so do
+          // we, or the stamp would inflate the worker's severity grade.
+          if (hp && hp.v === 1 && typeof hp.unfinished == "number" && isFinite(hp.unfinished))
             ub = Math.min(99, Math.max(0, Math.floor(hp.unfinished)));
         } catch (e) {
           /* absent-safe: ub stays null, nothing is stamped */
@@ -566,7 +570,8 @@ const RENAME = {
   // rendered script 2–4 bytes over its then budget while the 10-char
   // test fixture still passed. These two renames free 20 bytes.
   // Current figures (§7.5 gated decision): the budget is 6,656 bytes
-  // and the worst case (14-char build id) measures 6,441 bytes. The
+  // and the worst case (14-char build id) measures 6,442 bytes (the
+  // #347 strict-`===` shape check added the last byte). The
   // budget rose from 6,144 with issue #345: the read-only boot-health
   // stamp (the ds() reader, the send-time parse, the BHK rename)
   // costs 337 bytes at the worst case and does not fit in the old
