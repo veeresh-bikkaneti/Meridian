@@ -4,10 +4,16 @@
  *
  * Same source-pinning style as card-film.test.ts (this repo has
  * no React-render harness): the no-toggle rule, the gates, the
- * lazy mount, the bounded play, and the copy lock are pinned by
- * reading the components and CSS; the byte caps are pinned
+ * lazy mount, the loop governance, and the copy lock are pinned
+ * by reading the components and CSS; the byte caps are pinned
  * against the real asset files; the visual behaviour is covered
  * by E2E against the built app.
+ *
+ * Governance history: the film originally played once and rested
+ * (bounded play, R2) so the tile would need no stop control. The
+ * owner superseded R2 on 2026-11-04 — the film now loops under
+ * CardFilm's exact governance. R1 (no control of any kind on the
+ * tile) is unchanged and its pins below still stand.
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
@@ -50,7 +56,7 @@ describe("LockedTileFilm — gates land on the still, video never fetched", () =
     assert.ok(film.includes("usePrefersReducedMotion()"), "reduced motion via the shared hook");
     assert.ok(film.includes("nav.connection?.saveData"), "Save-Data gate");
     assert.ok(film.includes("mem > 0 && mem <= 2"), "deviceMemory <= 2 gate");
-    assert.ok(film.includes("onError={() => setFailed(true)}"), "video error falls back");
+    assert.ok(film.includes("onError={handleError}"), "video error falls back (via the bounded-retry handler)");
     assert.ok(
       film.includes("const gated = reducedMotion || staticGate || failed"),
       "all gates compose into the one still branch",
@@ -64,7 +70,7 @@ describe("LockedTileFilm — gates land on the still, video never fetched", () =
   });
 });
 
-describe("LockedTileFilm — lazy mount + bounded play (R2)", () => {
+describe("LockedTileFilm — lazy mount + loop governance (owner ruling, 2026-11-04)", () => {
   it("video mounts only near the viewport (IntersectionObserver, 200px)", () => {
     assert.ok(film.includes("new IntersectionObserver"), "observer gate");
     assert.ok(film.includes('{ rootMargin: "200px" }'), "200px rootMargin");
@@ -73,14 +79,100 @@ describe("LockedTileFilm — lazy mount + bounded play (R2)", () => {
     assert.ok(film.includes("posterUrl"), "poster fills the box before the film");
   });
 
-  it("plays once and rests: autoPlay + muted + playsInline, NO loop, no replay path", () => {
+  it("loops like the card films: autoPlay + loop + muted + playsInline", () => {
+    // This pin replaces the bounded-play pin (no loop, plays once
+    // and rests) that governed the component under R2 — the
+    // owner's 2026-11-04 ruling superseded R2.
     assert.ok(film.includes("autoPlay"), "plays when mounted");
     assert.ok(film.includes("muted"), "muted");
     assert.ok(film.includes("playsInline"), "inline on phones");
-    const videoTag = film.slice(film.indexOf("<video"), film.indexOf("<video") + 400);
-    assert.ok(!videoTag.includes("loop"), "no loop attribute — bounded, then it rests");
-    assert.ok(!film.includes("currentTime = 0"), "nothing rewinds it for a replay");
+    const videoTag = film.slice(film.indexOf("<video"), film.indexOf("<video") + 500);
+    assert.ok(videoTag.includes("loop"), "loop attribute — the film repeats like the card films");
     assert.ok(!film.includes("setTimeout") && !film.includes("setInterval"), "no timers");
+  });
+
+  it("off-screen pause: a threshold-0 observer plays on screen, pauses off screen", () => {
+    assert.ok(film.includes("{ threshold: 0 }"), "visibility observer at threshold 0");
+    assert.ok(film.includes("film.play().catch(() => {})"), "rejected play() never surfaces");
+    assert.ok(film.includes("film.pause()"), "off-screen film pauses instead of decoding");
+    assert.ok(film.includes("videoRef"), "the observer drives the mounted video element");
+  });
+
+  it("off-screen pause: the observer resolves the CURRENT element inside its callback (panel B1)", () => {
+    // Same orphaning defect as CardFilm: round 1 captured
+    // `videoRef.current` once when the effect ran, and the retry
+    // key remounts the <video> node — the live observer kept
+    // driving the detached old element. The cure resolves the
+    // element at event time, inside the callback.
+    const effectStart = film.indexOf("// Off-screen pause, CardFilm's exact governance:");
+    const callbackAt = film.indexOf("(entries) => {", effectStart);
+    const beforeCallback = film.slice(effectStart, callbackAt);
+    assert.ok(
+      !beforeCallback.includes("videoRef.current"),
+      "no element is captured before the observer callback (a captured element goes stale on remount)",
+    );
+    const callbackBody = film.slice(callbackAt, film.indexOf("{ threshold: 0 }", callbackAt));
+    assert.ok(
+      callbackBody.includes("const film = videoRef.current;"),
+      "the callback resolves videoRef.current at event time",
+    );
+    assert.equal(
+      (film.match(/videoRef\.current/g) || []).length,
+      1,
+      "exactly one videoRef.current resolution in the component — inside the callback",
+    );
+  });
+
+  it("off-screen pause: the effect re-observes when the retry remounts the element (panel round-2 BLOCK)", () => {
+    // Same round-2 shape as CardFilm: deps [gated, near] never
+    // re-ran the effect for the remounted element, and a slot
+    // that has not intersected yet gets no threshold crossing —
+    // the remounted film would loop off-screen indefinitely.
+    // The deps must carry `attempt` so the effect re-observes
+    // and the fresh observer's initial delivery reaches the new
+    // element. (This component's media is constant, so there is
+    // no videoUrl term — CardFilm's pin carries one.)
+    const effect = film.slice(film.indexOf("// Off-screen pause, CardFilm's exact governance:"));
+    assert.ok(
+      effect.includes("}, [gated, near, attempt]);"),
+      "pause effect deps include attempt, so a remount re-observes",
+    );
+    assert.equal(
+      (film.match(/\}, \[gated, near\]\);/g) || []).length,
+      1,
+      "only the lazy-mount effect keeps the bare [gated, near] deps",
+    );
+  });
+
+  it("error latch: one bounded retry per scope, derived (parallel to CardFilm)", () => {
+    // The media is a constant, so the scope is just its URL; the
+    // states remember WHICH scope spent/latched and attempt +
+    // failed are derived — no state reset, no stale charge.
+    assert.ok(
+      film.includes("const scope = LOCKED_GEODETECTIVE_FILM.videoUrl;"),
+      "the scope is the constant film's URL",
+    );
+    assert.ok(
+      film.includes("const [spentScope, setSpentScope] = useState<string | null>(null);"),
+      "the spent-retry state remembers WHICH scope spent it",
+    );
+    assert.ok(
+      film.includes("const [failedScope, setFailedScope] = useState<string | null>(null);"),
+      "the latch state remembers WHICH scope latched",
+    );
+    assert.ok(film.includes("const attempt = spentScope === scope ? 1 : 0;"), "attempt is derived");
+    assert.ok(film.includes("const failed = failedScope === scope;"), "failed is derived");
+    assert.ok(!film.includes("const [attempt, setAttempt]"), "no attempt state to reset");
+    assert.ok(!film.includes("const [failed, setFailed]"), "no failed state to reset");
+    assert.ok(
+      film.includes("if (spentScope !== scope) setSpentScope(scope);"),
+      "first error on a scope spends its single retry",
+    );
+    assert.ok(film.includes("else setFailedScope(scope);"), "second error on the same scope latches");
+    assert.ok(
+      film.includes("key={`locked#${attempt}`}"),
+      "the attempt count is in the video key, so spending the retry remounts the video once",
+    );
   });
 });
 

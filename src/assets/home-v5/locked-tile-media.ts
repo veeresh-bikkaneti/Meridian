@@ -23,14 +23,20 @@ import lockedStillUrl from "./geodetective-locked-still.webp";
  * stay two files: one file doing both jobs is the shortcut
  * card-media.ts warns against, and a future take whose first and
  * resting frames differ must be able to swap each on its own.
+ * That first-frame-equals-last-frame build is also what makes
+ * the film loop seamlessly: LockedTileFilm loops it under
+ * CardFilm's governance (owner ruling, 2026-11-04, superseding
+ * the original play-once-and-rest design).
  *
  * ── The picture ──
  *
  * The detective asleep at her desk: head resting on the map,
  * magnifying glass set down on the map away from her hand, eyes
  * closed. She breathes twice, slowly (two 4-second breaths), then
- * the picture rests. The film is a region-frozen composite built
- * from the resting still (PIL, script + measurements in
+ * the picture rests — and, since the 2026-11-04 loop ruling, the
+ * film loops from that resting frame and she breathes again. The
+ * film is a region-frozen composite built from the resting still
+ * (PIL, script + measurements in
  * ~/workspace/meridian-band-port-evidence/): only the head-and-torso
  * region moves; the lamp and the window are the still's own pixels
  * in every frame. That fixes the mock take, which also breathed

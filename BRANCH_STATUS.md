@@ -24,6 +24,201 @@
 - [x] PR opened: #352. Panel verdict pending — merge only on the owner's word.
 - [x] Merge-up over main `d3202a9` (#349 crash-watchdog + chunk-recovery), merge commit `bfb1ccd`: sole conflict this file — resolved both-records (this record on top, #349's record below it, main's stack intact). All #349 code files (`scripts/crash-watchdog.mjs`, `src/lib/chunk-recovery.ts`, `docs/observability.md`, tests) auto-merged with no overlap into the home delta. Gates re-run on the merged tree: `npx tsc --noEmit` clean; `npm test` — scripts 990 pass / 0 fail / 11 skipped (1001 tests; +4 watchdog tests from #349), src 2092/2092; `npm run test:worker` 145/145; `node scripts/lint-cards.mjs` GATE PASSED; `npm run build:pages` green (first attempt killed at exit 137 under VM contention; the no-change retry passed). Delta audit: branch-vs-main diff is exactly the 7 home-scope files (`src/components/game-app.tsx`, `src/components/home-v5.css`, `src/components/pack-doorway.tsx`, `BRANCH_STATUS.md`, `README.md`, `scripts/e2e-telemetry-guard.test.mjs`, `tests/e2e/home-hero-trekker.desktop.spec.ts`).
 
+
+---
+
+# Branch status — fix/band-cluster-films-toast (band-cluster fix set)
+
+- **Branch:** `fix/band-cluster-films-toast`
+- **Base:** `main` @ `e1cf6fe`
+- **Authority:** Veeresh, 2026-11-04: "Commission all: latch fix + locked-film loop + band toast + E2E"
+
+## Task capsule
+
+- TASK: four commissioned fixes from the 2026-11-04 band-cluster diagnosis — (1) CardFilm/LockedTileFilm video-error latch: reset on media change + one bounded retry before latching; (2) LockedTileFilm loops under CardFilm's exact governance (R1 still holds: no control of any kind on the tile); (3) the age-profile confirm-change toast names the band (built from `getBand`, no hardcoded names/ranges), both run states; (4) a new in-session band-switch E2E driving the real UI flow with no seeded band.
+- Tier: 1 shape (clear repro + locked fix shapes) run as a builder silo; independent Silo QA + the 12-role panel review the final tip separately. Builder stops at PR open — NO MERGE.
+- Files in scope: `src/components/card-film.tsx` + `src/components/card-film.test.ts`, `src/components/age-profile/LockedTileFilm.tsx` + `locked-tile-film.test.ts`, `src/components/age-profile/AgeProfileSettings.tsx`, `tests/e2e/age-profile-gate.desktop.spec.ts` (one pin), `tests/e2e/band-switch-in-session.desktop.spec.ts` (new), docs the changes make stale (README locked-tile paragraph, `locked-tile-media.ts` header), this file.
+- Protected / out of scope: band locks, the band table's data, which loops each band gets; copy beyond item 3's two confirmChange toasts (first-save + reset toasts stay byte-identical); CardFilm/Review/Journal/Grown-ups behaviour beyond item 1.
+- Verification: pins fail on pre-fix code (stash check per item); full gates on the tip (`npm ci`, tsc, typecheck:worker, `npm test`, test:worker, lint-cards, build:pages); targeted E2E under `flock ~/workspace/.e2e.lock`, `--workers=1`, chromium-1243; the new spec also run against an unmodified-main build to prove it bites.
+
+## Status
+
+- [x] Unit 1 — CardFilm latch fix + pins (27/27 with fix; 24/27 with the src change stashed — the 2 new pins + the updated gate pin fail pre-fix)
+- [x] Unit 2 — LockedTileFilm: latch retry + loop governance (loop attr, threshold-0 off-screen pause observer, play() rejections dropped) + header rewrite (R1 holds: no control added; stop story = the gates + off-screen pause; stale CardFilm-toggle claim removed). Tests re-pinned: 16/16 with fix, 12/16 pre-fix (loop/off-screen/retry/gate pins fail); R1 describe passes both ways. Docs cured in-unit: README locked-tile paragraph + `locked-tile-media.ts` header now record the loop ruling (play-once marked superseded, not deleted)
+- [x] Unit 3 — Band-naming confirm toast: `Saved — {label} (ages {ageMin}–{ageMax}) ✅` / in-progress `Saved — {label} (ages {ageMin}–{ageMax}); takes effect on the next card. ✅`, built from `getBand(confirmTarget)`; first-save + reset toasts byte-identical; stale band-invisibility comment replaced with the 2026-11-04 ruling. Gate spec pin updated to its switch (8-10 → 11-13): `Saved — GeoDetective (ages 11–13) ✅`
+- [x] Unit 4 — New in-session switch E2E (`band-switch-in-session.desktop.spec.ts`, 1 test): real UI flow, no seeded band (unset → UI first-set 11–13 → Trail Scout → Little Explorer → back to 11–13); passes on the branch build (1/1). Bite proof against an unmodified-main build (scratch worktree @ e1cf6fe, removed after): the committed spec fails at the Trail Scout toast (expected `Saved — Trail Scout (ages 8–10) ✅`, main shows `Saved ✅`); a scratch variant with main's toast text substituted (evidence only, never committed) proceeds and fails at `locked film loop attribute — Expected: true, Received: false`
+- [x] Docs cured (README, locked-tile-media header — in Unit 2) — docs grep found no other play-once/band-invisible text: the ws-4 spec named in the brief does not mention LockedTileFilm, and the Handbook carries no locked-film or band-toast description
+- [x] Full gates on the final tip: `npm ci` ✓ · `npx tsc --noEmit` clean · `npm run typecheck:worker` clean · `npm test` — scripts 1016 (1005 pass, 11 skipped, 0 fail, unchanged from baseline), src 2123/2123 (baseline 2119 + exactly the 4 new pins) · `npm run test:worker` 117/117 (no worker code touched) · `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green (one prerender attempt OOM-died under VM contention with another agent's build; the sealed re-run completed, exit 0)
+- [x] PR opened (NO MERGE — Silo QA + 12-role panel approve the final tip, then the owner's per-PR word is the merge gate)
+
+## Verification record (builder, on the tip)
+
+- Baseline (unmodified `e1cf6fe`): `npm test` — scripts 1016 tests (1005 pass, 11 skipped, 0 fail); src 2119/2119 pass.
+- Unit pins: card-film.test.ts 27/27 with fix, 24/27 pre-fix (stash check); locked-tile-film.test.ts 16/16 with fix, 12/16 pre-fix, R1 pins pass both ways.
+- Targeted E2E (flock, --workers=1, chromium-1243, branch build): band-switch-in-session 1/1; age-profile-gate 1/1 (new toast pin); band-media-variants 4/4. card-redesign full file: 3 whole-test 240 s timeouts under VM contention (no assertion failures); the 3 tests + 1 name-matched neighbour passed 4/4 on a clean sequential re-run — contention flake, dispositioned.
+- Full gate numbers recorded in the PR body.
+
+## Panel round-1 cure — 2026-11-04 (verdict on `2b2410b`: 2 APPROVE / 6 AWN / 4 BLOCK)
+
+Cure builder (not the round-1 builder). Both BLOCKs cured; the cured
+tip returns for fresh Silo QA + a full panel re-vote before any
+merge word. NO MERGE.
+
+- **B1 — off-screen-pause observer orphaned by the retry remount
+  (4 seats).** In `card-film.tsx` + `LockedTileFilm.tsx` the
+  threshold-0 observer now resolves `videoRef.current` inside its
+  callback (event time), immune to every remount path. Folded nit:
+  the retry/latch state is now URL+band-scoped DERIVED state
+  (`spentScope`/`failedScope` hold the scope string; `attempt`/
+  `failed` derived) — no post-render reset effect, no double fetch
+  start on a swap, no stale error charged to a new film.
+- **B2 — latch reset keyed only on URL (Office Hours).**
+  `CardFilm` takes a `band` prop (wired at all five game-app call
+  sites, all with `ageBand` in scope); the scope is band + videoUrl,
+  so ANY band change revives a latched slot in its first render —
+  including the constant-media slots (GeoDetective/Journal/
+  Grown-ups) and fail-closed variant slots. LockedTileFilm needs
+  no band prop (5–7 only, constant media).
+- **Proof.** New behavioural E2E `band-film-error-path.desktop.spec.ts`
+  (page.route aborts the GeoDetective film request): fail-once →
+  retry succeeds → film plays; fail-always → latch → band switch
+  11–13 → 8–10 → the same constant-media slot revives and plays;
+  after a successful retry, scrolling off-screen pauses the CURRENT
+  element. Bite vs the round-1 tip (scratch builds): the revival
+  case fails there (no video mounts after the switch); the unit
+  pins fail 8/51 there (observer-resolution + scope-derivation +
+  wiring pins), 51/51 on the cured tip. In-progress toast: proven
+  unreachable behaviourally (AgeProfileSettings renders only in
+  game-app's Home branch, reached only when run === null &&
+  !loopOpen, so runInProgress is never true at its only render
+  site) — covered instead by the new source/behaviour pin file
+  `age-profile-settings-toast.test.ts` (exact templates + composed
+  strings from the real band table, all three bands).
+- **Docs cures (all six).** AgeProfileSettings post-gate comment
+  deleted (toast renders ~3.5 s on home; owner ruled it names the
+  band anyway, 2026-11-04); types.ts band `label` gloss gains the
+  toast exception; AgePicker header scoped to durable surfaces +
+  the same exception; LockedTileFilm header gains the explicit
+  WCAG 2.2.2 sentence (no stop exists; owner accepted the gates);
+  locked-tile-media.ts ~105-char line rewrapped; card-film header
+  states the cured retry budget (one retry per media+band scope).
+- **Pin re-points (shape genuinely changed, nothing weakened).**
+  The exact CardFilm call-string pins in card-film.test.ts (5),
+  `card-media-band-variants.test.ts` (5) and
+  `home-smooth-cards.test.ts` (3) now include `band={ageBand}`.
+- **Merge-ups.** main `0b4e270` (#348) merged, then main `70e1be6`
+  (#347) merged when it landed mid-cure; sole conflict both times:
+  this file (both-records stack). Final diff vs main: this PR's
+  17 files only.
+- **Environment.** ~/workspace hit its btrfs quota (EDQUOT) during
+  the cure; builds + the final gate run were executed in a roomy
+  overlay-fs clone of the same tip. VM renderer crashes ("Target
+  crashed") hit the heavy E2E specs repeatedly in this window on
+  BOTH the cured build and a round-1-tip control build
+  (band-media-variants 0/4 and band-switch 0/1 there) — environment
+  class, dispositioned with sequential/control runs; the new
+  error-path spec passed 2/2 on the cured build in a quiet window.
+  Fresh Silo QA should re-run the two heavy specs in its own pass.
+
+## Merge-up — 2026-11-04 (main `0b4e270` merged in, PR #350 panel-cure round)
+
+- Sole conflict: this file. Resolved both-records: this branch's record above, main's #348 record below it; the accumulated records from main follow after.
+- Code files auto-merged with no conflicts (#348 removed dead auth only; no overlap with this branch's scope).
+
+## Merge-up — 2026-11-04 (main `70e1be6` merged in, PR #350 panel-cure round)
+
+- Sole conflict: this file. Resolved both-records: this branch's accumulated record above, main's #347 record below it; earlier accumulated records follow after.
+- Code files auto-merged with no conflicts (#347 touched only crash-watchdog scripts + the crash-report worker + observability docs; no overlap with this branch's scope).
+
+## Panel round-2 cure — 2026-11-04 (verdict on `7139160`: 5 APPROVE / 6 AWN / 1 BLOCK)
+
+Cure builder (not the round-1 cure builder). The cured tip returns
+for fresh Silo QA + a full panel re-vote before any merge word.
+NO MERGE.
+
+- **BLOCK (Game Developer; root shared with Senior Developer
+  NIT-4) — a remount never re-observes.** The round-1 B1 cure
+  resolved the video element inside the pause observer's
+  callback, but the effect's deps stayed `[gated, near]`: a film
+  that errors and remounts (retry key change) while its slot is
+  NON-intersecting is never re-observed — the deps don't change
+  on remount and IntersectionObserver fires no callback without
+  a threshold crossing — so the remounted film is never paused
+  and (in a browser that starts off-screen films) autoplays and
+  loops off-screen indefinitely, falsifying the headers' "never
+  decode off-screen" invariant. Same shape in both components,
+  and for a non-latched media swap below the fold. **Cure (the
+  seat's minimal cure, verbatim):** CardFilm pause-effect deps
+  → `[gated, near, attempt, media.videoUrl]`; LockedTileFilm →
+  `[gated, near, attempt]`. A remount now re-runs the effect,
+  and the fresh observer's initial delivery pauses/plays the
+  new element correctly. Header/code comments in both files
+  record why the deps carry the remount signals.
+- **Folded MAJOR nit (Office Hours; parent decision: fold in,
+  same mechanism) — band round-trip re-latch.** Derivation alone
+  revives a slot only while a different scope is showing: latch
+  in band A → switch to B (revives) → back to A in the same home
+  session rendered latched immediately, because `failedScope`
+  still equalled A's scope. **Cure:** leaving a scope clears
+  its record — CardFilm now tracks the last-rendered scope and,
+  on an actual scope transition (during render, React's
+  adjust-state pattern; still no reset effect), clears
+  `spentScope`/`failedScope`, so every arrival at a scope starts
+  fresh. LockedTileFilm needs no clearing: its scope can never
+  change while mounted, and leaving 5–7 unmounts it — now stated
+  in its scope comment. The PR body's "any band change revives"
+  wording is corrected to these real semantics.
+- **Proof.** Unit pins (source-pinning style): the deps pin in
+  each film test file + the round-trip pin in
+  `card-film.test.ts`. Bite (scratch worktree @ `7139160`, the
+  new test files over the voted components): exactly the 3 new
+  pins fail, 46/49 pass; on the cured tree 49/49. E2E: two new
+  variants in `band-film-error-path.desktop.spec.ts` — the error
+  fires BEFORE the slot first intersects (slot parked below the
+  fold, inside the lazy margin), CardFilm (Journal slot) and
+  LockedTileFilm. Witness design, recorded honestly: this
+  Chromium defers off-screen autoplay (probe-verified: a
+  below-fold film sits paused at t=0 with no observer at all),
+  so a paused-state assertion cannot separate the tips here;
+  the variants witness the DELIVERY — a `pause()` call landing
+  on the remounted element, recorded via an init script — which
+  is exactly the mechanism the BLOCK names, plus the final
+  paused-state assertions as the user-facing invariant. The
+  first failure is delayed 2.5 s so the original observer's
+  initial delivery is spent on the first element (an instant
+  abort can let that delivery land on the new element and mask
+  the bug — measured in this run: the first version of the
+  variant passed on the voted build for exactly that reason).
+- **PR-body record correction (QA nit).** The round-1 cure's
+  bite figures were overstated: under the stated scratch method
+  it is 6 pins fail / 45 pass across all 3 test files (40 pass
+  films-only), not "8 fail / 43 pass" — the 51 total only arises
+  including the 5 toast tests. The body is corrected.
+- **Gates (cure tree):** tsc clean · `npm test` — scripts 986
+  pass / 0 fail / 11 skipped, src 2107/2107 (2104 + the 3 new
+  pins: card-film 29 → 31, locked-tile 17 → 18) · lint-cards
+  GATE PASSED · build:pages green. E2E on the cured build:
+  band-film-error-path 4/4 (both new variants included, earlier
+  paused-state-only version — re-run with the delivery witness
+  sealed in the PR body). NOT in this cure: the dead
+  `runInProgress` deferral branch (owner decision owed outside
+  the PR — untouched), any other refactor.
+
+## Merge-up — 2026-11-04 (main `d3202a9` merged in, PR #350 round-2 cure round)
+
+- Main moved during the cure (#349, chunk-failure cascade,
+  merged live). Sole conflict: this file. Resolved both-records:
+  this branch's accumulated record above, main's #349 record
+  below it; earlier accumulated records follow after.
+- Code files auto-merged with no conflicts (#349 touched only
+  crash-watchdog scripts, `src/lib/chunk-recovery.ts`,
+  observability docs and its E2E spec; no overlap with this
+  branch's scope). Delta audit: after this merge-up the
+  branch-vs-main diff is exactly this PR's scope plus the
+  round-2 cure commit `6c5fb9f`, which the merge-up does not
+  change.
+
+---
 # Branch status — fix/chunk-failure-cascade (watchdog stand-down on stalled recovery reloads)
 
 - **Branch:** `fix/chunk-failure-cascade`
