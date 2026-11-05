@@ -241,7 +241,8 @@ as chips the player can switch between.
   editions from the manifest data, so the two shelves cannot drift
   apart.
 - **One manifest load per session.** The shelf and the home doorway
-  share a single manifest load: a manifest that loads fine is kept
+  (which reads the manifest only for its display count) share a
+  single manifest load: a manifest that loads fine is kept
   for the rest of the session, a failed load is thrown away so the
   next screen tries again, and dealing a case always fetches fresh —
   so a pack that cannot load at deal time still falls back to the
@@ -296,7 +297,14 @@ edition — and adds a flag layer under one rule:
   open mystery and the cycle count untouched. Cold Trail generation
   stays composition-stable the same way: new cases append after the
   shipped ones, and flag stamps are additive metadata only.
-- **The doorway.** Home carries a "Capitals & Flags" strip beside
-  the About card with a door into each mode; each
-  door selects the pack before opening, so the player lands in the
-  pack, not on the shelf.
+- **The doorway — a signpost only.** Home carries a "Capitals &
+  Flags" strip beside the About card: flag swatches, the pack's
+  name, and its manifest count line. The strip has no doors and no
+  buttons — it advertises the pack, and the pack's only entry
+  point is the deck shelf inside each mode, where the player
+  picks the Capitals deck on the shelf chip. (Superseded record:
+  the #344 design gave the strip a door into each mode, each door
+  selecting the pack before opening; the owner replaced that
+  design with his pick — Veeresh, 2026-11-05: "Option C —
+  signpost only, no buttons" — after flagging the two Play
+  buttons as redundant to the mode cards below.)
