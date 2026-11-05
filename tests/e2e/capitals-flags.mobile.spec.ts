@@ -1,18 +1,30 @@
 import { test, expect } from "playwright/test";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
  * Capitals & Flags (issue #344): the home doorway strip, the pack
  * relabel, and the flag layer's GeoDetective + Cold Trail surfaces.
  *
+ * The doorway is a SIGNPOST only (owner's pick, Veeresh, 2026-11-05:
+ * "Option C — signpost only, no buttons" — superseding the #344
+ * one-door-per-mode design): the strip advertises the pack and
+ * carries no buttons, so the flag tests below enter each mode via
+ * its card and pick the pack on the in-mode deck shelf
+ * (`pack-chip-capitals`), the pack's only entry point. The shelf
+ * entry patterns mirror pack-shelf.desktop.spec.ts: a chip tap on a
+ * finished case starts the next case from the picked deck.
+ *
  * The GeoDetective test stubs the pack manifest down to a single case
  * (Abu Dhabi, index 387 — its land, the United Arab Emirates, has a
  * licence-verified flag) so the dealt case is deterministic; the clue
  * file and sidecar are the real shipped ones. The Cold Trail test
- * uses the real pack deck: a fresh profile deals case 1 first, whose
- * three witnesses (Lima, Buenos Aires, Santiago) all carry verified
- * flags and whose hideout (Yacuiba, Bolivia) carries a country name
- * but no flag — Bolivia is not a pack land.
+ * uses the real pack deck: the pack store is fresh, so its first
+ * case deals first, whose three witnesses (Lima, Buenos Aires,
+ * Santiago) all carry verified flags and whose hideout (Yacuiba,
+ * Bolivia) carries a country name but no flag — Bolivia is not a
+ * pack land.
  */
 
 const BASE = "http://127.0.0.1:4123/Meridian/";
@@ -40,11 +52,14 @@ test("home doorway: strip, swatches and the Capitals & Flags name", async ({ pag
   await expect(doorway).toContainText("lands · Find the capital, learn its flag");
   // The design's three swatches render once their lazy chunks arrive.
   await expect(doorway.getByTestId("flag-img").first()).toBeVisible({ timeout: 15_000 });
-  await expect(page.getByTestId("pack-doorway-geodetective")).toBeVisible();
-  await expect(page.getByTestId("pack-doorway-coldtrail")).toBeVisible();
+  // Signpost only: the strip renders NO buttons — both former door
+  // testids are absent and no button role exists inside the doorway.
+  await expect(page.getByTestId("pack-doorway-geodetective")).toHaveCount(0);
+  await expect(page.getByTestId("pack-doorway-coldtrail")).toHaveCount(0);
+  await expect(doorway.getByRole("button")).toHaveCount(0);
 });
 
-test("doorway into GeoDetective deals the pack with the briefing flag", async ({ page }) => {
+test("shelf into GeoDetective deals the pack with the briefing flag", async ({ page }) => {
   await page.route("**/packs/capitals/manifest.json", async (route) => {
     await route.fulfill({
       status: 200,
@@ -52,8 +67,46 @@ test("doorway into GeoDetective deals the pack with the briefing flag", async ({
       body: JSON.stringify(SINGLE_CASE_MANIFEST),
     });
   });
+  // Seed a finished core case (the pack-shelf pattern): the reveal's
+  // shelf is where a chip tap starts the next case at once, so the
+  // pack pick deals the pack's single stubbed case deterministically.
+  const clue218 = JSON.parse(
+    readFileSync(path.resolve("dist/client/loop/clues/218.json"), "utf8"),
+  ) as { placeId: string };
+  await page.addInitScript(
+    (placeId) => {
+      localStorage.setItem(
+        "meridian.loop.v2",
+        JSON.stringify({
+          deck: { deck: [100], cycle: 1, cycleCompleted: 3 },
+          current: {
+            index: 218,
+            cycle: 1,
+            guesses: [
+              { name: "Ankara", placeId, distKm: 0, octant: "north", warmer: null },
+            ],
+            status: "won",
+            cluesRevealed: 1,
+            completedAt: "2026-11-03",
+            streakEndedAt: null,
+            completedCycle: false,
+          },
+          streak: 1,
+          bestStreak: 1,
+          totals: { solved: 3, lost: 0 },
+        }),
+      );
+    },
+    clue218.placeId,
+  );
   await page.goto(BASE);
-  await page.getByTestId("pack-doorway-geodetective").click();
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
+  // The finished case restores as its reveal, with the shelf above it.
+  await expect(page.getByText("🎯 You found it!")).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("pack-shelf-status")).toHaveText(
+    "Tap a deck chip to start your next case.",
+  );
+  await page.getByTestId("pack-chip-capitals").click();
   // The briefing names the land and its flag sits beside the name.
   await expect(
     page.getByText("Your case: find the capital of United Arab Emirates."),
@@ -65,9 +118,38 @@ test("doorway into GeoDetective deals the pack with the briefing flag", async ({
   await expect(page.getByTestId("pack-chip-capitals")).toContainText("Capitals & Flags");
 });
 
-test("doorway into Cold Trail deals the pack; witness flags render", async ({ page }) => {
+test("shelf into Cold Trail deals the pack; witness flags render", async ({ page }) => {
+  // Seed a revealed core case (the pack-shelf pattern): on the
+  // reveal, a chip tap starts the next case from the picked deck —
+  // here the fresh pack store's first case.
+  await page.addInitScript(() => {
+    localStorage.setItem(
+      "meridian.coldtrail.v2",
+      JSON.stringify({
+        v: 2,
+        caseIndex: 0,
+        stars: 10,
+        solved: 1,
+        current: {
+          ringsPlaced: [true, true, true],
+          informantOn: [false, false, false],
+          ringCenters: [
+            { lon: 0, lat: 0 },
+            { lon: 1, lat: 1 },
+            { lon: 2, lat: 2 },
+          ],
+          guess: { lon: 0, lat: 0 },
+          revealed: true,
+          scoreKm: 120,
+        },
+      }),
+    );
+  });
   await page.goto(BASE);
-  await page.getByTestId("pack-doorway-coldtrail").click();
+  await page.getByRole("button", { name: "Cold Trail: Start the trail" }).click();
+  await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("coldtrail-reveal")).toBeVisible({ timeout: 30_000 });
+  await page.getByTestId("pack-chip-capitals").click();
   await expect(page.getByTestId("sighting-card")).toHaveCount(3, { timeout: 30_000 });
   const flags = page.getByTestId("sighting-flag");
   await expect(flags).toHaveCount(3);

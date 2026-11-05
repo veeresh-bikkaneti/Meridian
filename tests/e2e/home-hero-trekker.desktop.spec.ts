@@ -102,8 +102,12 @@ test("production home composes trail + trekker + clouds and one doorway beside A
       { timeout: 20_000 },
     )
     .toBe("110 lands · Find the capital, learn its flag");
-  await expect(page.getByTestId("pack-doorway-geodetective")).toBeVisible();
-  await expect(page.getByTestId("pack-doorway-coldtrail")).toBeVisible();
+  // Signpost only (owner's pick, Veeresh, 2026-11-05: "Option C —
+  // signpost only, no buttons"): the doorway renders NO buttons —
+  // both former door testids are absent.
+  await expect(page.getByTestId("pack-doorway-geodetective")).toHaveCount(0);
+  await expect(page.getByTestId("pack-doorway-coldtrail")).toHaveCount(0);
+  await expect(doorway.getByRole("button")).toHaveCount(0);
 
   } finally {
     await page.context().close();

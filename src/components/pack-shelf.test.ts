@@ -132,8 +132,11 @@ describe("surfaces that must stay pack-free", () => {
   it("game-app.tsx renders no shelf (the doorway is not a shelf)", () => {
     // The original slice kept every pack surface out of game-app.
     // Issue #344 ratified ONE home surface — the Capitals & Flags
-    // doorway strip — which imports shelf DATA helpers (selection +
-    // manifest) from pack-shelf-data. What this guard still protects:
+    // doorway strip, a signpost only since the owner's pick
+    // (Veeresh, 2026-11-05: "Option C — signpost only, no buttons"):
+    // game-app renders the strip and no longer imports any
+    // pack-shelf-data helper (the strip owns its own manifest read
+    // for its display-only count). What this guard still protects:
     // the PackShelf component itself never renders on Home; deck
     // switching stays inside the two mode screens.
     assert.ok(!gameApp.includes("<PackShelf"), "no shelf component on the home cards");

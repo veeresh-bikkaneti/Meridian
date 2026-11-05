@@ -228,17 +228,8 @@ import {
   readLoopOpen,
   writeLoopOpen,
   peekLoopProgress,
-  readLoopStoreV2,
-  loadLoopStore,
-  setActiveDeck,
-  writeLoopStoreV2,
 } from "@/game/loop/store";
 import { PackDoorway } from "./pack-doorway";
-import {
-  FIRST_PACK_ID,
-  fetchLoopDeckSize,
-  writeSelectedDeck,
-} from "./pack-shelf-data";
 import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
 // screens — they render only when the player opens them (or when a saved
@@ -3880,41 +3871,6 @@ export function GameApp() {
   // away — and it appears at most once ever (the seen-flag persists).
   const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
 
-  // Capitals & Flags doorway (issue #344): each door opens its mode
-  // with the pack already selected, so the strip is a real entrance,
-  // not a signpost to the shelf. GeoDetective's selection lives in the
-  // loop store's active deck; Cold Trail reads the shared shelf
-  // selection at deal time. If the GeoDetective store cannot be
-  // prepared (no store yet and the manifest is unreachable), the door
-  // still opens GeoDetective — the shelf inside offers the pack.
-  const openLoopWithCapitalsPack = async () => {
-    if (isLoopLocked(ageBand, "geodetective")) return;
-    try {
-      const stored = readLoopStoreV2();
-      if (stored) {
-        writeLoopStoreV2(setActiveDeck(stored, FIRST_PACK_ID));
-      } else {
-        const size = await fetchLoopDeckSize();
-        if (size !== null) {
-          writeLoopStoreV2(setActiveDeck(loadLoopStore(size), FIRST_PACK_ID));
-        }
-      }
-    } catch {
-      // Selection is a convenience; opening the mode never waits on it.
-    }
-    window.dispatchEvent(
-      new CustomEvent("meridian:storyteller-sendoff", {
-        detail: { loop: "geodetective" },
-      }),
-    );
-    writeLoopOpen(true);
-    setLoopOpen(true);
-  };
-  const openTrailWithCapitalsPack = () => {
-    writeSelectedDeck("coldtrail", FIRST_PACK_ID);
-    writeColdTrailOpen(true);
-    setColdTrailOpen(true);
-  };
   return (
     <>
     {mapModeAnnouncer}
@@ -3948,11 +3904,7 @@ export function GameApp() {
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       doorway={
         isLoopLocked(ageBand, "geodetective") ? null : (
-          <PackDoorway
-            onGeoDetective={() => void openLoopWithCapitalsPack()}
-            onColdTrail={openTrailWithCapitalsPack}
-            density="compact"
-          />
+          <PackDoorway density="compact" />
         )
       }
       challengeEnabled={friendChallengesOn}
