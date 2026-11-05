@@ -204,7 +204,7 @@ changes the verdict or the P1–P4 triage mapping; it only leads them:
 
 - **Alert:** the priority line becomes `priority: S1 · P1 — <the
   existing P-line text>` (an ungraded verdict renders
-  `priority: ungraded · P3 — …`), and the `why:` line gains one
+  `priority: ungraded · P3 or P4 — …`), and the `why:` line gains one
   `Severity: …` clause carrying the grade's evidence — the streak,
   or the fact that it was not stamped.
 - **Digest:** each type block counts a `severities:` dimension

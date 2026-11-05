@@ -1,7 +1,7 @@
 # Branch status — feat/345-crash-severity (issue #345: crash-report severity grades + watchdog stamp)
 
 - **Branch:** `feat/345-crash-severity`
-- **Base:** `main` @ `68ff2c7`
+- **Base:** `main` @ `0b4e270`
 - **Authority:** issue #345 + the owner-adopted swarm design (2026-11-04, Slice B): grades S1/S2a/S2b/S3, threshold ≥3 (owner's pick over the draft's ≥2), ungraded absolutes, and the watchdog-stamp client fix commissioned in the same decision.
 - **State:** CURED + MERGED UP over main `0b4e270` (via `e1cf6fe`) — panel re-vote on the cured tip pending; no merge (owner's word follows the re-vote).
 
@@ -27,7 +27,7 @@
 - [x] BLOCK 2 (UX Researcher) — the hourly digest now carries exactly one gloss line directly under the priority line when the hour counted any S1: `S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.` Absent in any hour with no S1; both directions pinned, golden digest updated.
 - [x] Doc riders — grade precedence (S1 > S2a > S2b > S3) documented in the worker README severity section and in `docs/observability.md`'s digest reading notes; the observability alert walkthrough's S1 paraphrase again carries the INFERRED label matching the alert/email wording; the `severities:` note now also states the priority lead's worst grade is counted across all types in the hour and that counts inside one type block sort by count, not grade.
 - [x] Merge-up over main `e1cf6fe` (#311): exactly one content conflict — `workers/crash-report/README.md` (the Tests count line) — resolved keeping both intents: #311's audit corrections and funnel content stay, #347's severity section stays accurate against the cured code, test count re-measured on the merged tree (145). `docs/observability.md` and this file auto-merged; both records kept (this #347 record on top, main's stack below intact). Delta audit: branch-vs-main diff is exactly the #345 scope + this cure — no #311 content in the branch's own delta beyond the merge itself.
-- [x] Gates on the cured, merged-up tip: fresh `npm ci`; worker 145/145 + `typecheck:worker` clean; `npm test` — scripts 1011 pass / 0 fail / 11 skipped, src 2127/2127; `npx tsc --noEmit` clean; `lint-cards` GATE PASSED; `build:pages` green; watchdog budget worst case 6,442 ≤ 6,656 B. E2E not re-run locally in this pass (Silo QA + CI cover the cured tip).
+- [x] Gates on the cured, merged-up tip (the `87a49ff` merge tree): fresh `npm ci`; worker 145/145 + `typecheck:worker` clean; `npm test` — scripts 1015 pass / 0 fail / 11 skipped, src 2119/2119; `npx tsc --noEmit` clean; `lint-cards` GATE PASSED; `build:pages` green; watchdog budget worst case 6,442 ≤ 6,656 B. E2E not re-run locally in this pass (Silo QA + CI cover the cured tip). Records correction: the sealed gate logs for the `87a49ff` merge tree show scripts 1015 / src 2119 — those figures supersede the scripts 1011 / src 2127 figures stated in that merge commit's message.
 - [x] Second merge-up over main `0b4e270` (#348 auth removal landed while the first merged tip was gating): sole conflict this file — resolved both-records (this #347 record on top, #348's record below it, main's stack intact). #348's code auto-merged with no overlap into the #347 delta; gates re-run on the new merged tree (figures in the PR body merge-up note).
 - [ ] Panel re-vote on the cured tip, then the owner's merge word. NO MERGE in this pass.
 
