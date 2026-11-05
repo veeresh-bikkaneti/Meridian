@@ -179,7 +179,10 @@ verdict and the event's stamped unfinished-boot streak
 | S3 | `auto_fixed`, streak 0–2 or not stamped | It fixed itself, without a repeat streak. |
 | *(ungraded)* | `insufficient_evidence` or `not_a_real_issue`, at any streak | Never graded — absolutely. Missing evidence must not be inflated into an impact claim, and a benign report needs no grade. |
 
-The threshold is exactly 3 (owner pick, 2026-11-04). Severity never
+The threshold is exactly 3 (owner pick, 2026-11-04). Grade
+precedence, worst first, is **S1 > S2a > S2b > S3** — that order
+decides which grade leads the digest's priority line for an hour.
+Severity never
 changes the verdict or the P1–P4 triage mapping; it only leads them:
 
 - **Alert:** the priority line becomes `priority: S1 · P1 — <the
@@ -190,7 +193,12 @@ changes the verdict or the P1–P4 triage mapping; it only leads them:
 - **Digest:** each type block counts a `severities:` dimension
   (the four grades plus `ungraded`), and the digest's priority line
   leads with the hour's worst grade when the hour counted any
-  graded event. Type order and everything else are unchanged.
+  graded event. When the hour counted any S1, the digest also
+  carries exactly one gloss line directly under the priority line —
+  `S1 = player-left INFERRED from ≥3 unfinished boots with no
+  clean boot — not observed.` — so the INFERRED label that the
+  alert and email carry reaches the digest too (#347 cure).
+  Type order and everything else are unchanged.
 
 One client change rides along: the boot watchdog now stamps
 `unfinishedBoots` onto its `boot_failure` reports, read-only, from
@@ -247,6 +255,7 @@ for the **previous** completed UTC hour. One compact Discord message:
 📊 Meridian telemetry — hourly digest
 hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)
 priority: S1 · P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone
+S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.
 
 suspected_crash 1 · first 17:42 · last 17:42
   builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1
@@ -364,9 +373,10 @@ fields (`bgTerminal`, `buildReplaced`, `trailStuck`, `lcV`,
 ## Tests
 
 ```sh
-npm run test:worker        # 127 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
+npm run test:worker        # 137 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
                            #  S4: streamed cap, schema, binding; Phase 1: tiering, counting, threshold, digest, fail-open;
-                           #  #345: severity grade boundaries, alert/digest severity rendering, severities counting)
+                           #  #345: severity grade boundaries, alert/digest severity rendering, severities counting;
+                           #  #347 cure: severityOf direct-caller edge pins, ungraded-P4 pin, digest S1 gloss pins)
 npm run typecheck:worker   # strict tsc on the worker sources
 ```
 

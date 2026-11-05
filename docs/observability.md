@@ -287,7 +287,8 @@ How to read it, top to bottom:
    (issue #345).** The first code is the grade — **S1** is the
    worst: a developer problem after 3 or more unfinished boots in a
    row, which most likely means the player left and never got back
-   in. **S2a** means it recovered, but only after such a streak;
+   in (player-left is INFERRED from the missing clean boot, not
+   observed). **S2a** means it recovered, but only after such a streak;
    **S2b** is a developer problem without the repeat evidence;
    **S3** fixed itself. Reports whose verdict is "can't tell" or
    "not a real problem" carry no grade — the line starts
@@ -353,6 +354,7 @@ Discord. Nothing is posted for an empty hour. The shape, as built:
 📊 Meridian telemetry — hourly digest
 hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)
 priority: S1 · P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone
+S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.
 
 suspected_crash 1 · first 17:42 · last 17:42
   builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1
@@ -382,8 +384,16 @@ Reading notes:
   tallies under `other`.
 - **`severities:`** counts the hour's severity grades per type
   (issue #345), including `ungraded` for reports whose verdict
-  carries no grade. The digest's `priority:` line leads with the
-  hour's worst grade when any graded report arrived.
+  carries no grade. Grade precedence, worst first, is
+  **S1 > S2a > S2b > S3**: the digest's `priority:` line leads with
+  the hour's worst grade — counted across all types in the hour,
+  so it can come from a different type than the verdict the line
+  names — when any graded report arrived. Inside one type block
+  the counts sort by count, not by grade, so a lower grade can
+  list first there when it happened more often. When the hour
+  counted any S1, exactly one gloss line follows the priority
+  line: `S1 = player-left INFERRED from ≥3 unfinished boots with
+  no clean boot — not observed.`
 - **Caps are labelled, never silent.** Each list shows its top few
   entries; when entries are cut, the line ends with the true
   remainder, like `(+2 more)`. Ties sort by count, then by name, so
