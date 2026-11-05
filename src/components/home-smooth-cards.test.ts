@@ -174,9 +174,9 @@ describe("CSS art passes — removed in full (owner ruling, 2026-11-03)", () => 
 describe("art films — the three spot cards joined the CardFilm system", () => {
   it("all three .hv5-art slots render CardFilm, none renders LazyHomeImage", () => {
     for (const site of [
-      '<CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" />',
-      '<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" />',
-      '<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" />',
+      '<CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />',
+      '<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />',
+      '<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" band={ageBand} />',
     ]) {
       assert.ok(gameApp.includes(site), `art film site: ${site}`);
     }

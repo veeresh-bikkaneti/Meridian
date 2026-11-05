@@ -147,11 +147,11 @@ describe("band variants — byte caps on the real files", () => {
 describe("game-app wiring — the selectors are the only band→media path", () => {
   it("Cold Trail and Review pass through their selectors with the in-scope ageBand", () => {
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" />'),
+      gameApp.includes('<CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" band={ageBand} />'),
       "Cold Trail slot goes through coldtrailMediaForBand(ageBand)",
     );
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" />'),
+      gameApp.includes('<CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />'),
       "Review slot goes through reviewMediaForBand(ageBand)",
     );
   });
@@ -164,9 +164,9 @@ describe("game-app wiring — the selectors are the only band→media path", () 
   });
 
   it("the other three cards keep their plain records", () => {
-    assert.ok(gameApp.includes('<CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" />'));
-    assert.ok(gameApp.includes('<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" />'));
-    assert.ok(gameApp.includes('<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" />'));
+    assert.ok(gameApp.includes('<CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" band={ageBand} />'));
+    assert.ok(gameApp.includes('<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />'));
+    assert.ok(gameApp.includes('<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" band={ageBand} />'));
     assert.equal((gameApp.match(/<CardFilm/g) || []).length, 5, "still exactly five film slots");
   });
 
