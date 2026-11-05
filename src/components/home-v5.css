@@ -1429,3 +1429,234 @@ body:has(.home-v5) {
 .home-v5 .hv5-spot .hv5-txt {
   height: auto;
 }
+
+/* ---------- home rework variants (design/home-rework-variants) ----------
+   Owner findings, 2026-11-04: (1) the hero reads as motionless — the
+   shipped Ken Burns is 26s at scale 1.055 (imperceptible) and the art
+   is display:none at ≤1080px; (2) the Capitals & Flags doorway did
+   not speak the hv5 card language; (3) its placement moves beside the
+   About card, without crowding the page. Everything below is inert
+   unless the variant harness (?ui=1&hero=…&doorway=…) asks for it,
+   except the doorway restyle itself, which is the proposed new look
+   in every placement. */
+
+/* Doorway in the hv5 card language (theme restyle, all placements). */
+.home-v5 .hv5-doorway {
+  margin-top: 16px;
+}
+.home-v5 .hv5-doorway-flags {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 6px;
+}
+.home-v5 .hv5-doorway-flag {
+  height: 26px;
+  width: auto;
+  border-radius: 4px;
+  border: 1px solid var(--hv5-line);
+  box-shadow: 0 2px 6px -2px rgba(94, 76, 32, 0.35);
+}
+.home-v5 .hv5-doorway-doors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.home-v5 .hv5-btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--hv5-line-warm);
+  color: var(--hv5-ink);
+  font-size: 12.5px;
+  padding: 14px 24px;
+  min-height: 44px;
+}
+.home-v5 .hv5-btn-ghost:hover {
+  background: #f1ead3;
+}
+/* Compact density — the anti-crowding cut for beside-About. Same
+   words, same doors, tighter footprint; tap targets stay ≥44px. */
+.home-v5 .hv5-doorway-compact {
+  padding: 18px 20px;
+}
+.home-v5 .hv5-doorway-compact .hv5-head {
+  margin-bottom: 8px;
+}
+.home-v5 .hv5-doorway-compact h2 {
+  font-size: 21px;
+}
+.home-v5 .hv5-doorway-compact p {
+  font-size: 13px;
+  margin-top: 4px;
+}
+.home-v5 .hv5-doorway-compact .hv5-doorway-flag {
+  height: 20px;
+}
+.home-v5 .hv5-doorway-compact .hv5-doorway-doors {
+  margin-top: 10px;
+}
+.home-v5 .hv5-doorway-compact .hv5-btn {
+  padding: 10px 16px;
+  font-size: 11.5px;
+  min-height: 44px;
+}
+
+/* Beside-About placement: a two-column row inside the About band of
+   .hv5-pages (About keeps the reading column, the doorway rides
+   beside it); the Journal band stays full-width below. Stacks on
+   phones. */
+.home-v5 .hv5-about-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(290px, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+.home-v5 .hv5-about-row > .hv5-doorway {
+  margin-top: 0;
+}
+@media (max-width: 680px) {
+  .home-v5 .hv5-about-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hero motion variants. The wrap takes over the shipped img's box
+   (flex, margins, top-fade mask) so the overlay can sit on the art. */
+.home-v5 .hv5-mtn-wrap {
+  position: relative;
+  flex: 1 1 180px;
+  min-height: 180px;
+  margin: 20px -40px -40px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to top, #000 72%, transparent);
+  mask-image: linear-gradient(to top, #000 72%, transparent);
+}
+.home-v5 .hv5-mtn-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: right bottom;
+}
+/* V2 — the drift, made perceptible: same Ken Burns idea as shipped,
+   retuned from 26s / 1.055 to 18s / 1.09 with a sideways drift. */
+.home-v5 .hv5-mtn-v2 {
+  animation: hv5-kenburns2 18s ease-in-out infinite alternate;
+}
+@keyframes hv5-kenburns2 {
+  from {
+    transform: scale(1.01) translate(0, 0);
+  }
+  to {
+    transform: scale(1.09) translate(-7px, -8px);
+  }
+}
+/* V1 — the trail overlay (SVG in game-app.tsx, sliced like the art). */
+.home-v5 .hv5-trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.home-v5 .hv5-trail-dots {
+  animation: hv5-trailmarch 3s linear infinite;
+}
+@keyframes hv5-trailmarch {
+  to {
+    stroke-dashoffset: -111;
+  }
+}
+/* V1b clouds (owner's pick, 2026-11-04): two banks of blurred
+   watercolor cloud forms drifting in front of the upper slopes.
+   Each bank is 1600 units wide — the viewBox pattern doubled — and
+   translates ±800, so the 28s / 40s loops are seamless. The pulse
+   trail runs later in the SVG, so the climber stays in front of the
+   weather. Periods are long but the travel is a full scene width,
+   which keeps the drift clearly perceptible at capture size. */
+.home-v5 .hv5-cloud-drift-a {
+  animation: hv5-clouddrift-a 28s linear infinite;
+}
+.home-v5 .hv5-cloud-drift-b {
+  animation: hv5-clouddrift-b 40s linear infinite;
+}
+@keyframes hv5-clouddrift-a {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-800px);
+  }
+}
+@keyframes hv5-clouddrift-b {
+  from {
+    transform: translateX(-800px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.home-v5 .hv5-trail-flag {
+  transform-box: view-box;
+  transform-origin: 523px 116px;
+  animation: hv5-flagwave 2.2s ease-in-out infinite alternate;
+}
+@keyframes hv5-flagwave {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(8deg);
+  }
+}
+@media (max-width: 1080px) {
+  /* Mirrors the shipped rule for the bare img: no mountain art at
+     these widths, in any variant. */
+  .home-v5 .hv5-mtn-wrap {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-v5 .hv5-mtn-v2,
+  .home-v5 .hv5-trail-dots,
+  .home-v5 .hv5-trail-flag,
+  .home-v5 .hv5-cloud-drift-a,
+  .home-v5 .hv5-cloud-drift-b {
+    animation: none;
+  }
+}
+
+/* Variant switcher (test harness only — renders with ?ui=1). */
+.home-v5 .hv5-variant-bar {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  z-index: 60;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  max-width: 94vw;
+  background: #2e2410;
+  color: #fbf7ea;
+  border-radius: 12px;
+  padding: 8px 10px;
+  font-size: 11px;
+  box-shadow: 0 12px 28px -10px rgba(46, 36, 16, 0.6);
+}
+.home-v5 .hv5-variant-bar span {
+  opacity: 0.75;
+  padding: 5px 2px;
+}
+.home-v5 .hv5-variant-bar a {
+  color: #fbf7ea;
+  text-decoration: none;
+  padding: 6px 9px;
+  border-radius: 8px;
+  border: 1px solid rgba(251, 247, 234, 0.35);
+}
+.home-v5 .hv5-variant-bar a[aria-current="true"] {
+  background: #b8932f;
+  color: #241a05;
+  font-weight: 700;
+}

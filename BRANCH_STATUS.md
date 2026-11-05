@@ -1,3 +1,28 @@
+# Branch status — feat/home-rework-hero-trekker (home rework: animated hero + trekking kid + doorway beside About)
+
+- **Branch:** `feat/home-rework-hero-trekker`
+- **Base:** `main` @ `70e1be6`
+- **Authority:** owner words — ship word, Veeresh, widget tap + typed, 2026-11-04 21:15 CST: "Ship it — fold the simple trekker into the home build"; trekker simplification, Veeresh, 2026-11-04 20:29 CST: "Reduce the size of the animated cartoon guy, this is supposed be a child walking the trail and let just keep it to that. No more complexities, but while trekking you need sticks and make it realistic trekking please and wind blowing, climbing slowly"; doorway placement, Veeresh, 2026-11-04 16:05 CST: placement beside the About section + "we dont want to make the UI over crowded"; hero V1 strengthen, Veeresh, 2026-11-04 18:54 CST: "The motion in this one is very subtle. I would appreciate adding a little more."; clouds, Veeresh, 2026-11-04 18:54 CST: "Since the mountains are in the cloud, I believe adding that clouds are moving would make it more sense."
+
+## Task capsule
+
+- TASK: compose the three owner-approved home designs into ONE production build — Hero V1b (trail march + pulse + flag + moving clouds, from `design/home-rework-variants` @ `e85fb41`), the simplified child trekker v2 (from `design/hero-trekker-prototype` @ `5ec0fdf`, minus its own ambient peak clouds — V1b's cloud layer is the one cloud layer; the trekker's valley mist stays), and the Capitals & Flags doorway beside About at compact (slim) density. The variant harness (`?ui=` params, switcher bar) is removed: production renders the composed design unconditionally.
+- Tier: 2-shaped (3+ files, home surface). The owner-approved designs are the manifest of record; independent QA + the 12-role panel review the final tip after this PR opens. NO MERGE in this pass — merge only on the owner's word.
+- Protected/out of scope: donation copy (byte-locked), telemetry, `workers/`, `src/game/data/`, the two design worktrees (read-only sources). No new player-facing copy; doorway copy byte-identical to the shipped variant, count read from the live pack manifest.
+- Verification contract: `npx tsc --noEmit`; `npm test`; `npm run test:worker`; `node scripts/lint-cards.mjs` (GATE PASSED); `npm run build:pages`; Playwright E2E sequentially under `flock ~/workspace/.e2e.lock`, `--workers=1`, against the built artifact — new spec `tests/e2e/home-hero-trekker.desktop.spec.ts` + the existing home specs.
+
+## Record
+
+- [x] Port: the three code files (`src/components/game-app.tsx`, `src/components/home-v5.css`, `src/components/pack-doorway.tsx`) checked out from `e85fb41` — verified lossless: main's copies are byte-identical to the shared base `68ff2c7` (empty diff).
+- [ ] Harness removal: no `homeVariantParam` reads, no `uiVariants` flag, no switcher bar; composed design renders unconditionally; doorway beside About at `density="compact"`; dead V2 hero path removed if unreferenced.
+- [ ] Trekker graft: `HeroTrekkerOverlay` from `5ec0fdf` minus its tk-cloud ambient groups; tk-mist valley mist kept; CardFilm-pattern gates (reduced-motion hook + Save-Data / deviceMemory ≤ 2 mount read) on both overlays.
+- [ ] Hero framing: summit + flag and the whole trekker climb leg readable at 1440×900, overlay↔art alignment pixel-exact (SVG viewBox 800×533, `xMaxYMax slice`).
+- [ ] E2E: new spec + existing home specs; fail-on-main evidence for the new spec's selectors.
+- [ ] Docs: README / handbook staleness check for home layout, hero, doorway.
+- [ ] Gates + PR opened. Panel verdict pending — merge only on the owner's word.
+
+---
+
 # Branch status — feat/345-crash-severity (issue #345: crash-report severity grades + watchdog stamp)
 
 - **Branch:** `feat/345-crash-severity`
