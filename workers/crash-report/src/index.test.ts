@@ -35,6 +35,8 @@ import {
   thresholdConfig,
   tierOf,
   validateEvent,
+  EVENT_TYPES,
+  FUNNEL_CLASS_TYPES,
   MAX_BODY_BYTES,
   ALLOWED_ORIGINS,
   RATE_LIMIT_BINDING,
@@ -78,6 +80,63 @@ test("validateEvent: accepts a well-formed event", () => {
 
 test("validateEvent: accepts tile_failed", () => {
   assert.deepEqual(validateEvent(validEvent({ type: "tile_failed" })), []);
+});
+
+// --- #194 wave 2: the funnel types (storyteller / narration) -------------
+//
+// The client has emitted these six types since #108 through the same
+// transport as every crash event, but the worker's allowlist never
+// included them — every one was answered 400 and silently dropped.
+// The payloads below are copied from the real emission sites in
+// src/components/storyteller.tsx (COPPA-clean: screen/trigger/booleans
+// only, never place content).
+
+const FUNNEL_PAYLOADS: Record<string, Record<string, unknown>> = {
+  storyteller_shown: { screen: "story", sound_on: true, reduced_motion: false },
+  narration_started: { screen: "story", trigger: "first_gesture", sound_on: true, line_count: 1 },
+  narration_completed: { screen: "summary", duration_ms: 4200, trigger: "speaker" },
+  narration_replayed: { screen: "story", line_index: 0, trigger: "replay" },
+  narration_failed: { screen: "geodetective", error_name: "NotSupportedError", trigger: "summary" },
+  narration_dismissed: { screen: "story", at_line: 1, reason: "tap_caption" },
+};
+
+test("EVENT_TYPES: the accepted set is exactly the client's 14 types (#194)", () => {
+  // Pinned literally on purpose: this list is the contract with
+  // ObservabilityEventType in src/lib/observability.ts, and the drift
+  // test (scripts/observability-event-types.test.mjs) fails if the two
+  // ever disagree again. Changing one side MUST change both.
+  assert.deepEqual(
+    [...EVENT_TYPES].sort(),
+    [
+      "boot_failure",
+      "js_error",
+      "map_error",
+      "narration_completed",
+      "narration_dismissed",
+      "narration_failed",
+      "narration_replayed",
+      "narration_started",
+      "recovery_outcome",
+      "storyteller_shown",
+      "suspected_crash",
+      "tile_failed",
+      "unhandled_rejection",
+      "webgl_context_lost",
+    ],
+  );
+  assert.deepEqual([...FUNNEL_CLASS_TYPES].sort(), Object.keys(FUNNEL_PAYLOADS).sort());
+});
+
+test("validateEvent: accepts every funnel type with its real payload shape (#194)", () => {
+  for (const [type, params] of Object.entries(FUNNEL_PAYLOADS)) {
+    assert.deepEqual(validateEvent(validEvent({ type, ...params })), [], type);
+  }
+});
+
+test("validateEvent: still rejects unknown types, including funnel near-misses (#194)", () => {
+  for (const type of ["narration_ended", "storyteller_hidden", "narration", "crash"]) {
+    assert.ok(validateEvent(validEvent({ type })).length > 0, type);
+  }
 });
 
 test("validateEvent: rejects missing/unknown type", () => {
@@ -177,6 +236,12 @@ test("tierOf: crash-class vs hiccup-class classification", () => {
   }
   assert.equal(tierOf("tile_failed"), "hiccup");
   assert.equal(tierOf("webgl_context_lost"), "hiccup");
+});
+
+test("tierOf: funnel-class types are counted-only (hiccup tier) (#194)", () => {
+  for (const t of FUNNEL_CLASS_TYPES) {
+    assert.equal(tierOf(t), "hiccup", t);
+  }
 });
 
 test("thresholdConfig: env overrides and fallbacks", () => {
@@ -290,6 +355,28 @@ test("hiccup-class event: counted but NOT forwarded individually", async () => {
   assert.equal(fetchCalls.length, 0, "no individual forward for hiccup-class");
 });
 
+test("funnel-class event: accepted, counted, NOT forwarded individually (#194)", async () => {
+  const { map, store } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  // The exact shape storyteller.tsx posts for a finished narration.
+  const res = await handleRequest(
+    postEvent(validEvent({ type: "narration_completed", ...FUNNEL_PAYLOADS.narration_completed })),
+    env,
+  );
+  assert.equal(res.status, 200, "previously a 400 — the event was dropped");
+  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  assert.equal(json.forwarded, false);
+  assert.equal(json.counted, true);
+  assert.equal(fetchCalls.length, 0, "no individual forward for funnel-class");
+  const hour = hourLabelOf(Date.now());
+  const bucket = (await store.readBucket(bucketKey(hour, "narration_completed")))!;
+  assert.equal(bucket.total, 1, "counted into its own (hour × type) bucket");
+});
+
 test("threshold alert: fires exactly once per type+hour", async () => {
   const { map, store } = memoryStore();
   globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
@@ -341,6 +428,115 @@ test("threshold alert: per-build threshold (10/hour from one build)", async () =
   assert.equal(fetchCalls.length, 1, "alert fires on the 10th event from one build");
   const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
   assert.ok(sent.includes("single build crossed"), "per-build reason in the alert");
+});
+
+test("threshold alert: routine funnel types never alert, even past both thresholds (#311)", async () => {
+  const cfg = thresholdConfig({});
+  const now = 1_729_000_000_000;
+  // Per-build leg (the spec's exact case): 10 storyteller_shown from one build.
+  const { store } = memoryStore();
+  for (let i = 0; i < 10; i++) {
+    const r = await recordTelemetry(
+      store,
+      tileEvent({ type: "storyteller_shown" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `storyteller_shown #${i + 1} must not alert`);
+  }
+  // Per-hour leg: 20 storyteller_shown across 20 builds (total >= perHour).
+  const { store: store2 } = memoryStore();
+  for (let i = 0; i < 20; i++) {
+    const r = await recordTelemetry(
+      store2,
+      tileEvent({ type: "storyteller_shown", buildId: `build-${i}` }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `cross-build storyteller_shown #${i + 1} must not alert`);
+  }
+  // A second routine type: the exemption is set-wide, not storyteller-only.
+  const { store: store3 } = memoryStore();
+  for (let i = 0; i < 10; i++) {
+    const r = await recordTelemetry(
+      store3,
+      tileEvent({ type: "narration_started" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `narration_started #${i + 1} must not alert`);
+  }
+});
+
+test("threshold alert: 10 storyteller_shown via ingest post no Discord alert (#311)", async () => {
+  const { map, store } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const now = Date.now();
+  const cfg = thresholdConfig({});
+  for (let i = 0; i < 9; i++) {
+    await recordTelemetry(
+      store,
+      tileEvent({ type: "storyteller_shown" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+  }
+  const res = await handleRequest(
+    postEvent(validEvent({ type: "storyteller_shown", buildId: "f331846", ...FUNNEL_PAYLOADS.storyteller_shown })),
+    env,
+  );
+  assert.equal(res.status, 200);
+  assert.equal(fetchCalls.length, 0, "no Discord post for 10 routine funnel events");
+});
+
+test("threshold alert: narration_failed still alerts at the per-build threshold (#311)", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const now = 1_729_000_000_000;
+  for (let i = 0; i < 9; i++) {
+    const r = await recordTelemetry(
+      store,
+      tileEvent({ type: "narration_failed" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `narration_failed #${i + 1} below threshold`);
+  }
+  const r10 = await recordTelemetry(
+    store,
+    tileEvent({ type: "narration_failed" }) as CrashReportEvent,
+    now,
+    cfg,
+  );
+  assert.equal(r10.alerted, true, "narration_failed trips at 10 from one build");
+  assert.ok(r10.alertText?.includes("narration_failed"), "alert names the type");
+});
+
+test("threshold alert: suspected_crash still alerts at the per-build threshold (#311)", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const now = 1_729_000_000_000;
+  for (let i = 0; i < 9; i++) {
+    const r = await recordTelemetry(
+      store,
+      tileEvent({ type: "suspected_crash" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `suspected_crash #${i + 1} below threshold`);
+  }
+  const r10 = await recordTelemetry(
+    store,
+    tileEvent({ type: "suspected_crash" }) as CrashReportEvent,
+    now,
+    cfg,
+  );
+  assert.equal(r10.alerted, true, "suspected_crash trips at 10 from one build");
+  assert.ok(r10.alertText?.includes("suspected_crash"), "alert names the type");
 });
 
 test("threshold: env override lowers the trip point", async () => {
@@ -1493,12 +1689,9 @@ test("normaliseEvent: a js_error without engine is NOT filled", () => {
   assert.equal((unknown.device as Record<string, unknown>).engine, "unknown", "unknown stays unknown on other types");
 });
 
-test("funnel-gap pin: a funnel type still returns 400 on this base (this PR does not close #311's gap)", async () => {
-  for (const type of ["storyteller_shown", "narration_started"]) {
-    const res = await handleRequest(postEvent(validEvent({ type })), {});
-    assert.equal(res.status, 400, type);
-  }
-});
+// (The #339 funnel-gap pin lived here: it asserted a funnel type still
+// returns 400 on the pre-#311 base. This PR closes that gap, so the pin
+// is removed — funnel acceptance is pinned by the #194 tests below.)
 
 // --- Crash-telemetry §5.2: counting v2 ------------------------------------
 

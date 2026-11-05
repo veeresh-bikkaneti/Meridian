@@ -5,8 +5,8 @@
  * logging-only receiver — it validates events and writes one structured
  * JSON log line per event (read via `wrangler tail`). THIS worker is a
  * separate, forwarding sibling in a NEW directory on purpose (the old
- * directory is untouched): it accepts the same event schema (plus
- * `boot_failure`) and forwards a compact, PII-free alert to Discord
+ * directory is untouched): it accepts the full client event schema
+ * (see EVENT_TYPES below) and forwards a compact, PII-free alert to Discord
  * and/or email instead of logging the full event. Deploy ONE of them as
  * the `observabilityEndpoint` target; this one is the recommended
  * production choice because it pages a human instead of relying on
@@ -16,10 +16,12 @@
  * - GET  /health        → 200 { ok: true }
  * - POST /  or /ingest  → validate one observability event; crash-class
  *                         events forward a compact alert immediately and
- *                         are counted; hiccup-class events are counted but
- *                         NOT forwarded individually (they surface via the
- *                         threshold alert + hourly digest). → 200
- *                         { ok, forwarded, counted }.
+ *                         are counted; hiccup-class and funnel-class
+ *                         events are counted but NOT forwarded individually
+ *                         (hiccup-class surfaces via the threshold alert +
+ *                         hourly digest; routine funnel-class types via the
+ *                         hourly digest only — `narration_failed` keeps the
+ *                         threshold alert; see the funnel-class comment).
  * - Non-POST on an ingest path → 405. Unknown paths → 404.
  * - POST without an allow-listed Origin → 403 (review S4; see CORS).
  * - Bodies over 8 KB → 413, enforced while streaming (a chunked body is
@@ -70,7 +72,20 @@
  * see README.md).
  */
 
-/** Event types this worker accepts: the v1 set plus `boot_failure`, `tile_failed`, and (Slice 2) `recovery_outcome`. */
+/**
+ * Event types this worker accepts — the full client set, no more and no
+ * less. This list MUST stay equal to `ObservabilityEventType` in
+ * src/lib/observability.ts: the client posts every type it can emit to
+ * this worker, so any type missing here is telemetry silently dropped
+ * with a 400 (that is exactly how the six storyteller/narration types
+ * were lost until #194 wave 2). A drift test in `npm test`
+ * (scripts/observability-event-types.test.mjs) pins the two lists equal.
+ *
+ * History: the v1 set plus `boot_failure` and `tile_failed`, then
+ * (Slice 2) `recovery_outcome`, then (#194 wave 2, 2026-11-02) the six
+ * funnel types `storyteller_shown` + `narration_*` — real telemetry the
+ * app had emitted since #108 through the same transport.
+ */
 export const EVENT_TYPES = [
   "suspected_crash",
   "boot_failure",
@@ -80,6 +95,12 @@ export const EVENT_TYPES = [
   "tile_failed",
   "webgl_context_lost",
   "recovery_outcome",
+  "storyteller_shown",
+  "narration_started",
+  "narration_completed",
+  "narration_replayed",
+  "narration_failed",
+  "narration_dismissed",
 ] as const;
 
 export type CrashReportEventType = (typeof EVENT_TYPES)[number];
@@ -1323,6 +1344,14 @@ async function forwardToEmail(
  *   a mobile OS reclaims the GPU context on backgrounding — both are
  *   usually benign/transient). Counted, NOT forwarded individually;
  *   they surface through the threshold alert and the hourly digest.
+ * - funnel-class (#194 wave 2): the storyteller/narration funnel
+ *   (`storyteller_shown`, `narration_*`) — engagement telemetry, not a
+ *   failure signal. Same counted-only handling as hiccup-class: never
+ *   forwarded individually (a 🚨 per narration would train readers to
+ *   ignore the channel). Routine funnel types surface via the hourly
+ *   digest only — they never trip the threshold alert (#311); the one
+ *   exception is `narration_failed`, whose spikes keep the threshold
+ *   alert. The tier name stays "hiccup" — it means counted-only.
  */
 export const CRASH_CLASS_TYPES = [
   "suspected_crash",
@@ -1334,18 +1363,43 @@ export const CRASH_CLASS_TYPES = [
 
 export const HICCUP_CLASS_TYPES = ["tile_failed", "webgl_context_lost"] as const;
 
+/** Funnel-class types (#194 wave 2): counted only, via the hiccup tier. */
+export const FUNNEL_CLASS_TYPES = [
+  "storyteller_shown",
+  "narration_started",
+  "narration_completed",
+  "narration_replayed",
+  "narration_failed",
+  "narration_dismissed",
+] as const;
+
+/**
+ * Routine funnel types exempt from the threshold alert (#311). They are
+ * engagement volume, not failures: paging Discord for them trained
+ * readers to ignore the channel. `narration_failed` is DELIBERATELY
+ * excluded — a spike in it is real signal, and the threshold alert is
+ * how it surfaces (see the funnel-class comment above and the README
+ * rationale). Exempt types are still counted and still appear in the
+ * hourly digest; only the threshold alert is suppressed.
+ */
+const THRESHOLD_EXEMPT_FUNNEL_TYPES = FUNNEL_CLASS_TYPES.filter(
+  (type) => type !== "narration_failed",
+);
+
 export type TelemetryTier = "crash" | "hiccup";
 
 /**
  * Classify an event type into its severity tier. Slice 2:
  * `recovery_outcome` is crash-class ONLY for `repeat_failure`; every
  * other outcome value — and a missing/invalid one — is counted-only
- * (fail closed, Manifest A6/F8). Non-outcome types are unchanged.
+ * (fail closed, Manifest A6/F8). Funnel-class types (#194 wave 2) are
+ * counted-only like hiccup-class. All other types are crash-class.
  */
 export function tierOf(type: CrashReportEventType, recoveryOutcome?: string): TelemetryTier {
   if (type === "recovery_outcome") {
     return recoveryOutcome === "repeat_failure" ? "crash" : "hiccup";
   }
+  if ((FUNNEL_CLASS_TYPES as readonly string[]).includes(type)) return "hiccup";
   return (HICCUP_CLASS_TYPES as readonly string[]).includes(type) ? "hiccup" : "crash";
 }
 
@@ -1579,6 +1633,7 @@ export async function recordTelemetry(
     const alertId = `threshold:${event.type}:${hour}`;
     const perBuild = bucket.builds[event.buildId] ?? 0;
     if (
+      !(THRESHOLD_EXEMPT_FUNNEL_TYPES as readonly string[]).includes(event.type) &&
       !bucket.alerts.includes(alertId) &&
       (bucket.total >= cfg.perHour || perBuild >= cfg.perBuild)
     ) {
@@ -1942,7 +1997,8 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
       }
     }
     // Hiccup-class: counted above; individual forwards are replaced by
-    // the threshold alert + hourly digest (no per-event pings).
+    // the threshold alert + hourly digest (no per-event pings) — except
+    // routine funnel types, which never trip the threshold alert (#311).
 
     if (attempts.length === 0) {
       // No-op mode: safe to deploy before secrets exist.

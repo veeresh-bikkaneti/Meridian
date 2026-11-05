@@ -157,16 +157,30 @@ their device surface does not grow.
 | `map_error` | `MapErrorBoundary.componentDidCatch`. |
 | `tile_failed` | A map tile failed to load (hiccup-class: counted, not forwarded on its own). |
 | `webgl_context_lost` | `webglcontextlost` on the MapLibre canvas. |
+| `recovery_outcome` | A chunk-recovery attempt resolved (Slice 2): the app reports whether the self-reload worked (`confirmed`), failed again (`repeat_failure` — the only outcome forwarded on its own), stood down, or was never confirmed. |
+| `storyteller_shown` | The storyteller caption appeared (funnel-class: counted, not forwarded on its own). |
+| `narration_started` | Narration audio started playing. |
+| `narration_completed` | Narration audio played to the end. |
+| `narration_replayed` | The player tapped the replay button. |
+| `narration_failed` | Narration audio failed to play (the card falls back to silent text). A spike here is the field signal that storyteller audio is broken. |
+| `narration_dismissed` | The caption was dismissed — tapped away, or the screen exited mid-play. |
 
-The numbers, stated plainly because they have been wrong in this doc
-before: **the client emits 14 types** (`ObservabilityEventType` in
-`src/lib/observability.ts`) — the 8 above plus `storyteller_shown`
-and the five `narration_*` engagement types. **The worker on `main`
-accepts 8** — the 8 in the table. The other 6 types are currently
-refused by the worker; their acceptance is a separate change (PR
-#311) and does **not** land with the telemetry work described here.
-No version of this doc should ever say "14 accepted" — that is not
-true on any branch yet.
+These 14 are the full set: the client event type
+(`ObservabilityEventType` in `src/lib/observability.ts`) and the
+crash-report worker's accepted list (`EVENT_TYPES` in
+`workers/crash-report/src/index.ts`) are the same 14, and a drift test
+(`scripts/observability-event-types.test.mjs`, in `npm test`) fails if
+they ever disagree again. Every type is sent to the worker when an
+endpoint is configured — there are no client-side-only types.
+
+> **History — read this before trusting an older copy of this page:**
+> the six storyteller/narration types were emitted from #108 (Oct
+> 2026) on, but the worker did not accept them until #194 wave 2
+> (this PR, #311), so every one was answered 400 and silently dropped.
+> An earlier version of this page called them "client-side only and
+> not sent to the worker" — that was wrong; they were always sent.
+> They are funnel telemetry, so the worker counts them like
+> hiccup-class events instead of forwarding each one as an alert.
 
 ## Privacy statement
 
@@ -378,7 +392,9 @@ Reading notes:
 Hiccup-class events are not forwarded one by one. When one type
 crosses a threshold inside an hour (default: 20 in the hour across
 all builds, or 10 from a single build), the worker posts one alert
-for that type and hour:
+for that type and hour. Routine funnel-class types never trip this
+alert — they surface via the hourly digest only (`narration_failed`
+keeps the threshold alert; see the crash-report README):
 
 ```text
 🚨 Meridian telemetry alert

@@ -13,7 +13,8 @@ is a separate, explicit step for the owner (Veeresh).
 
 The client event types the pipeline carries today include `tile_failed`
 (see `EVENT_TYPES` in `workers/crash-report/src/index.ts` for the full
-list of 7).
+list of 14 — that worker's accepted set, not this v1 receiver's own
+5-type list).
 
 ## Files
 

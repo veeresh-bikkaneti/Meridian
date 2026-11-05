@@ -11,10 +11,18 @@ Receives the events emitted by `src/lib/observability.ts` (schema:
   mobile OS reclaiming the GPU context on backgrounding): **counted,
   NOT forwarded individually.** They surface through a threshold alert
   and the hourly digest instead.
-- **conditional** — `recovery_outcome` is **crash-class only** when
-  its `recoveryOutcome` is `repeat_failure`; every other outcome
-  value — and a missing or invalid one — is **counted only**
-  (hiccup-class behaviour), never forwarded individually.
+- **funnel-class** — `storyteller_shown` and the five `narration_*`
+  types (the storyteller/narration funnel: shown → started →
+  completed / failed / dismissed / replayed): **counted, NOT forwarded
+  individually,** like hiccup-class for individual forwarding
+  (routine funnel types also never threshold-alert — see the tier
+  table below). Accepted in #194 wave 2
+  (PR #311) — before that the worker rejected them with a 400 and
+  the telemetry was silently lost.
+- **`recovery_outcome`** (Slice 2) — the chunk-recovery outcome report:
+  counted always; forwarded immediately **only** when its outcome is
+  `repeat_failure` (the recovery did not work). Every other outcome is
+  counted only.
 
 Every accepted event is also **counted** into per-hour buckets in a
 Workers KV namespace (`TELEMETRY_COUNTS`), keyed by UTC hour × type
@@ -27,9 +35,9 @@ identifiers.
 The v1 worker is the older **logging-only** receiver: it validates events
 and writes one structured JSON log line per event (read via
 `wrangler tail`). This worker lives in a **new directory on purpose** —
-the old one is untouched. This worker accepts the same schema **plus
-`boot_failure`, `tile_failed`, and `recovery_outcome`** and forwards alerts instead of
-logging the full event.
+the old one is untouched. It accepts the **full client event schema**
+(all 14 types in `EVENT_TYPES` in `src/index.ts` — the same set the
+client can emit) and forwards alerts instead of logging the full event.
 
 Deploy **one** of them as the `observabilityEndpoint` target, not both.
 
@@ -67,7 +75,8 @@ plus a `scheduled` handler for the hourly digest.
   immediately **only if it is crash-class**. Response:
   `200 {"ok":true,"forwarded":true|false,"counted":true|false}`
   (`"forwarded":false` when no forwarding secrets are configured, or
-  when the event is hiccup-class — both are normal modes, not errors).
+  when the event is hiccup-class or funnel-class — all are normal
+  modes, not errors).
   When a crash-class event is forwarded, the response also carries
   `results: {discord?: boolean, email?: boolean}` — per-channel
   attempted truth; `"forwarded":true` means attempted, and a channel
@@ -135,14 +144,22 @@ plus a `scheduled` handler for the hourly digest.
 |---|---|---|
 | crash-class | `suspected_crash`, `boot_failure`, `js_error`, `unhandled_rejection`, `map_error` | Forwarded to Discord/email **immediately** (v2 format); also counted. |
 | hiccup-class | `tile_failed`, `webgl_context_lost` | **Counted only** — no individual forward. Surfaced via the threshold alert and the hourly digest. |
-| conditional | `recovery_outcome` | **Crash-class only** when `recoveryOutcome` is `repeat_failure` (forwarded immediately; also counted). Every other outcome value — and a missing or invalid one — is **counted only**, like hiccup-class. |
+| funnel-class | `storyteller_shown`, `narration_started`, `narration_completed`, `narration_replayed`, `narration_failed`, `narration_dismissed` | **Counted only** — no individual forward. Routine funnel types surface via the hourly digest only (no threshold alert); `narration_failed` keeps the threshold alert (see Rationale). |
+| `recovery_outcome` | `recovery_outcome` | Counted always; forwarded immediately **only** when the outcome is `repeat_failure`. |
 
 Rationale: hiccup-class events are resource signals that are usually
 benign/transient in production (`tile_failed` fires on ordinary tile CDN
 hiccups; `webgl_context_lost` fires when a mobile OS reclaims the GPU
-context on backgrounding). Forwarding each one as a 🚨 trained readers
-to ignore the channel — the threshold alert and digest restore the
-signal-to-noise ratio. Crash-class events are still forwarded
+context on backgrounding). Funnel-class events are engagement telemetry,
+not failures at all. Routine funnel types (`storyteller_shown`,
+`narration_started`, `narration_completed`, `narration_replayed`,
+`narration_dismissed`) never trip the threshold alert — they surface
+via the hourly digest only — because forwarding each one as a 🚨
+trained readers to ignore the channel. The one exception is
+`narration_failed`: a spike in it (the storyteller audio is not
+playing in the field) is real signal, and the threshold alert is how
+it surfaces, so `narration_failed` keeps the threshold alert.
+Crash-class events are still forwarded
 immediately, in the v2 message format (the verdict lines, plus
 `priority:`, `why-code:`, `time:`, the enriched `device:` and
 `runtime:` lines, and the `mode:` / `boots:` lines), and the same
@@ -165,7 +182,8 @@ anything else (including missing or invalid) →
 ## Threshold alert
 
 When any accepted event type's count for the current UTC
-hour crosses a threshold, the worker posts **one** Discord alert for
+hour crosses a threshold — except routine funnel types, which never
+trip it — the worker posts **one** Discord alert for
 that type+hour — exactly one, even if the count keeps climbing, and
 only when the Discord webhook is configured (the counts still
 accumulate without one). The
@@ -301,11 +319,13 @@ safe with the binding absent (counting is skipped) — add it when
 ready. Corrupt buckets are treated as absent and replaced on next
 write.
 
-Accepted `type` values: `suspected_crash`, `boot_failure`, `js_error`,
-`unhandled_rejection`, `map_error`, `tile_failed`, `webgl_context_lost`,
-`recovery_outcome` — 8 types. (The client also emits 6 engagement
-types, `storyteller_shown` and the `narration_*` set; this worker
-does not accept those yet — that acceptance is PR #311's scope.)
+Accepted `type` values — all 14, the full set the client can emit
+(`EVENT_TYPES` in `src/index.ts`, kept equal to the client's
+`ObservabilityEventType` by a drift test in `npm test`):
+`suspected_crash`, `boot_failure`, `js_error`, `unhandled_rejection`,
+`map_error`, `tile_failed`, `webgl_context_lost`, `recovery_outcome`,
+`storyteller_shown`, `narration_started`, `narration_completed`,
+`narration_replayed`, `narration_failed`, `narration_dismissed`.
 Required: `type`, `ts` (finite number, epoch ms), `buildId`
 (non-empty string). Optional fields pass through; the forwarded alert
 uses type, buildId, edition/region, lastMilestone, a truncated error
@@ -316,8 +336,9 @@ fields (`bgTerminal`, `buildReplaced`, `trailStuck`, `lcV`,
 ## Tests
 
 ```sh
-npm run test:worker        # 109 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
-                           #  S4: streamed cap, schema, binding; Phase 1: tiering, counting, threshold, digest, fail-open)
+npm run test:worker        # 113 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
+                           #  S4: streamed cap, schema, binding; Phase 1: tiering, counting, threshold, digest, fail-open;
+                           #  Slice 1/2 verdicts + recovery outcomes; #194: funnel-type acceptance, tiering, counting)
 npm run typecheck:worker   # strict tsc on the worker sources
 ```
 
