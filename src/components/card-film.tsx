@@ -39,6 +39,12 @@ import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
  *   prefers-reduced-motion, Save-Data, deviceMemory ≤ 2, or a
  *   video error. Reduced motion is read through the shared hook,
  *   so an OS setting flipped mid-session swaps to the still too.
+ *   A video error gets ONE bounded retry (a single remount)
+ *   before it latches to the still, and the latch resets when
+ *   the slot's media changes — a band switch swaps the media via
+ *   the card-media band variants — so one flaky load cannot park
+ *   the slot on the still for the whole home session
+ *   (owner commission, 2026-11-04).
  * - Lazy: the video element (and with it the .mp4 request) only
  *   mounts when the slot nears the viewport — IntersectionObserver,
  *   rootMargin 200px, the globe's pattern. Before that, the poster
@@ -98,11 +104,32 @@ export function CardFilm({
   // them the same way); reduced motion stays live via the hook.
   const [staticGate] = useState<boolean>(staticGateAtMount);
   const [failed, setFailed] = useState(false);
+  // Which load attempt the mounted video is on: 0 is the first
+  // try, 1 is the one bounded retry (see handleError below).
+  const [attempt, setAttempt] = useState(0);
   const [near, setNear] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const gated = reducedMotion || staticGate || failed;
+
+  // A single flaky load must not park this slot on the still for
+  // the whole home session (owner commission, 2026-11-04): a band
+  // switch swaps media via the card-media band variants, so when
+  // the film itself changes the failure latch and the retry both
+  // reset — the new film gets its own fresh chance.
+  useEffect(() => {
+    setFailed(false);
+    setAttempt(0);
+  }, [media.videoUrl]);
+
+  const handleError = () => {
+    // One bounded retry before latching: remount the video once
+    // (its key carries the attempt count). A second error latches
+    // to the still. No retry loop, no timers.
+    if (attempt === 0) setAttempt(1);
+    else setFailed(true);
+  };
 
   useEffect(() => {
     if (gated || near) return;
@@ -161,6 +188,7 @@ export function CardFilm({
     <div ref={rootRef} className={boxClass} data-testid={testId}>
       {near ? (
         <video
+          key={`${media.videoUrl}#${attempt}`}
           ref={videoRef}
           src={media.videoUrl}
           poster={media.posterUrl}
@@ -171,7 +199,7 @@ export function CardFilm({
           preload="none"
           aria-hidden="true"
           tabIndex={-1}
-          onError={() => setFailed(true)}
+          onError={handleError}
         />
       ) : (
         <img src={media.posterUrl} alt="" aria-hidden="true" />

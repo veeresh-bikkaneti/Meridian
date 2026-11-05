@@ -45,7 +45,7 @@ describe("CardFilm — gates land on the still, video never fetched", () => {
       film.includes("mem > 0 && mem <= 2"),
       "deviceMemory <= 2 gate (globe's threshold)",
     );
-    assert.ok(film.includes('onError={() => setFailed(true)}'), "video error falls back");
+    assert.ok(film.includes("onError={handleError}"), "video error falls back (via the bounded-retry handler)");
     assert.ok(
       film.includes("const gated = reducedMotion || staticGate || failed"),
       "all gates compose into the one still branch",
@@ -108,6 +108,32 @@ describe("CardFilm — lazy mount + autoloop (owner order, 2026-11-03)", () => {
   it("no timers: nothing replays, pauses on a schedule, or polls", () => {
     assert.ok(!film.includes("setTimeout"), "no timer chains");
     assert.ok(!film.includes("setInterval"), "no polling timers");
+  });
+});
+
+describe("CardFilm — error latch: reset on media change + one bounded retry (2026-11-04)", () => {
+  it("the failure latch resets when media.videoUrl changes (band switches swap media)", () => {
+    // Pre-fix, `failed` latched on any single error and never
+    // reset — including across a media prop change — so one
+    // flaky load parked the slot on the still for the whole
+    // home session. The reset effect is keyed on the film URL.
+    const reset = film.slice(film.indexOf("setFailed(false)"), film.indexOf("const handleError"));
+    assert.ok(reset.includes("setAttempt(0)"), "the retry count resets with the latch");
+    assert.ok(reset.includes("}, [media.videoUrl]);"), "the reset runs when the film changes");
+  });
+
+  it("one bounded retry before latching: first error remounts once, second error latches", () => {
+    assert.ok(film.includes("const [attempt, setAttempt] = useState(0)"), "attempt state exists");
+    assert.ok(
+      film.includes("if (attempt === 0) setAttempt(1);"),
+      "first error spends the single retry",
+    );
+    assert.ok(film.includes("else setFailed(true);"), "second error latches to the still");
+    assert.ok(
+      film.includes("key={`${media.videoUrl}#${attempt}`}"),
+      "the attempt count is in the video key, so spending the retry remounts the video once",
+    );
+    assert.ok(!film.includes("setTimeout") && !film.includes("setInterval"), "no timer-driven retry loop");
   });
 });
 

@@ -1,3 +1,27 @@
+# Branch status — fix/band-cluster-films-toast (band-cluster fix set)
+
+- **Branch:** `fix/band-cluster-films-toast`
+- **Base:** `main` @ `e1cf6fe`
+- **Authority:** Veeresh, 2026-11-04: "Commission all: latch fix + locked-film loop + band toast + E2E"
+
+## Task capsule
+
+- TASK: four commissioned fixes from the 2026-11-04 band-cluster diagnosis — (1) CardFilm/LockedTileFilm video-error latch: reset on media change + one bounded retry before latching; (2) LockedTileFilm loops under CardFilm's exact governance (R1 still holds: no control of any kind on the tile); (3) the age-profile confirm-change toast names the band (built from `getBand`, no hardcoded names/ranges), both run states; (4) a new in-session band-switch E2E driving the real UI flow with no seeded band.
+- Tier: 1 shape (clear repro + locked fix shapes) run as a builder silo; independent Silo QA + the 12-role panel review the final tip separately. Builder stops at PR open — NO MERGE.
+- Files in scope: `src/components/card-film.tsx` + `src/components/card-film.test.ts`, `src/components/age-profile/LockedTileFilm.tsx` + `locked-tile-film.test.ts`, `src/components/age-profile/AgeProfileSettings.tsx`, `tests/e2e/age-profile-gate.desktop.spec.ts` (one pin), `tests/e2e/band-switch-in-session.desktop.spec.ts` (new), docs the changes make stale (README locked-tile paragraph, `locked-tile-media.ts` header), this file.
+- Protected / out of scope: band locks, the band table's data, which loops each band gets; copy beyond item 3's two confirmChange toasts (first-save + reset toasts stay byte-identical); CardFilm/Review/Journal/Grown-ups behaviour beyond item 1.
+- Verification: pins fail on pre-fix code (stash check per item); full gates on the tip (`npm ci`, tsc, typecheck:worker, `npm test`, test:worker, lint-cards, build:pages); targeted E2E under `flock ~/workspace/.e2e.lock`, `--workers=1`, chromium-1243; the new spec also run against an unmodified-main build to prove it bites.
+
+## Status
+
+- [x] Unit 1 — CardFilm latch fix + pins (27/27 with fix; 24/27 with the src change stashed — the 2 new pins + the updated gate pin fail pre-fix)
+- [ ] Unit 2 — LockedTileFilm: latch retry + loop governance + header rewrite; tests re-pinned (R1 describe still passes)
+- [ ] Unit 3 — Band-naming confirm toast + age-profile-gate E2E pin update
+- [ ] Unit 4 — New in-session switch E2E + against-main bite run
+- [ ] Docs cured (README, locked-tile-media header) + full gates + PR opened (NO MERGE — panel + owner's word are the merge gate)
+
+---
+
 # Branch status — feat/capitals-flags-phase1 (Capitals & Flags, Phase 1)
 
 - **Branch:** `feat/capitals-flags-phase1`
