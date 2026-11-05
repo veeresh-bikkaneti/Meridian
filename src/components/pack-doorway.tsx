@@ -13,9 +13,10 @@
  * so it can never promise cases that do not exist; until the manifest
  * answers (or if it never does), the line runs without a count.
  *
- * DESIGN VARIANT (branch design/home-rework-variants, owner findings
- * 2026-11-04: "doesnt follow the theme" + placement reimagined beside
- * the About card): the insides are rebuilt in the home-v5 card
+ * THEME RESTYLE (designed on branch design/home-rework-variants,
+ * composed into production 2026-11-04; owner findings 2026-11-04:
+ * "doesnt follow the theme" + placement beside the About card): the
+ * insides are rebuilt in the home-v5 card
  * language — hv5-head badge + eyebrow label, display-type title, the
  * theme's pill CTAs — so the strip reads as a sibling of the
  * GeoDetective / Cold Trail cards instead of a generic banner. Copy is

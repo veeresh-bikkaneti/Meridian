@@ -1430,15 +1430,15 @@ body:has(.home-v5) {
   height: auto;
 }
 
-/* ---------- home rework variants (design/home-rework-variants) ----------
+/* ---------- home rework (owner-approved designs, composed) ----------
    Owner findings, 2026-11-04: (1) the hero reads as motionless — the
    shipped Ken Burns is 26s at scale 1.055 (imperceptible) and the art
    is display:none at ≤1080px; (2) the Capitals & Flags doorway did
    not speak the hv5 card language; (3) its placement moves beside the
-   About card, without crowding the page. Everything below is inert
-   unless the variant harness (?ui=1&hero=…&doorway=…) asks for it,
-   except the doorway restyle itself, which is the proposed new look
-   in every placement. */
+   About card, without crowding the page. The designs were prototyped
+   behind a ?ui= variant harness on design branches; this section is
+   the production composition — the harness is gone and everything
+   below applies unconditionally. */
 
 /* Doorway in the hv5 card language (theme restyle, all placements). */
 .home-v5 .hv5-doorway {
@@ -1520,8 +1520,8 @@ body:has(.home-v5) {
   }
 }
 
-/* Hero motion variants. The wrap takes over the shipped img's box
-   (flex, margins, top-fade mask) so the overlay can sit on the art. */
+/* Hero mountain wrap. The wrap takes over the shipped img's box
+   (flex, margins, top-fade mask) so the overlays can sit on the art. */
 .home-v5 .hv5-mtn-wrap {
   position: relative;
   flex: 1 1 180px;
@@ -1538,20 +1538,12 @@ body:has(.home-v5) {
   object-fit: cover;
   object-position: right bottom;
 }
-/* V2 — the drift, made perceptible: same Ken Burns idea as shipped,
-   retuned from 26s / 1.055 to 18s / 1.09 with a sideways drift. */
-.home-v5 .hv5-mtn-v2 {
-  animation: hv5-kenburns2 18s ease-in-out infinite alternate;
-}
-@keyframes hv5-kenburns2 {
-  from {
-    transform: scale(1.01) translate(0, 0);
-  }
-  to {
-    transform: scale(1.09) translate(-7px, -8px);
-  }
-}
-/* V1 — the trail overlay (SVG in game-app.tsx, sliced like the art). */
+/* The trail overlay (SVG in game-app.tsx, sliced like the art).
+   The wrapped art carries no Ken Burns: a transform on the img
+   would drift it under the sliced overlays and break their
+   pixel-exact alignment with the painting. The old bare-img
+   .hv5-mountain rule above keeps its Ken Burns but no longer has
+   a rendered element to animate. */
 .home-v5 .hv5-trail {
   position: absolute;
   inset: 0;
@@ -1609,54 +1601,31 @@ body:has(.home-v5) {
     transform: rotate(8deg);
   }
 }
+/* Trekker overlay (SVG in game-app.tsx): a second SVG stacked over
+   the trail overlay, sliced identically. All of its motion is SMIL
+   on one 18s master clock inside the component; its still gate
+   pauses that clock on the mid-climb frame, so no CSS animation
+   needs to reach it here. */
+.home-v5 .hv5-trekker {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 @media (max-width: 1080px) {
   /* Mirrors the shipped rule for the bare img: no mountain art at
-     these widths, in any variant. */
+     these widths — the wrap is display:none, so neither overlay
+     inside it can render or leak there either. */
   .home-v5 .hv5-mtn-wrap {
     display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .home-v5 .hv5-mtn-v2,
   .home-v5 .hv5-trail-dots,
   .home-v5 .hv5-trail-flag,
   .home-v5 .hv5-cloud-drift-a,
   .home-v5 .hv5-cloud-drift-b {
     animation: none;
   }
-}
-
-/* Variant switcher (test harness only — renders with ?ui=1). */
-.home-v5 .hv5-variant-bar {
-  position: fixed;
-  left: 12px;
-  bottom: 12px;
-  z-index: 60;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  max-width: 94vw;
-  background: #2e2410;
-  color: #fbf7ea;
-  border-radius: 12px;
-  padding: 8px 10px;
-  font-size: 11px;
-  box-shadow: 0 12px 28px -10px rgba(46, 36, 16, 0.6);
-}
-.home-v5 .hv5-variant-bar span {
-  opacity: 0.75;
-  padding: 5px 2px;
-}
-.home-v5 .hv5-variant-bar a {
-  color: #fbf7ea;
-  text-decoration: none;
-  padding: 6px 9px;
-  border-radius: 8px;
-  border: 1px solid rgba(251, 247, 234, 0.35);
-}
-.home-v5 .hv5-variant-bar a[aria-current="true"] {
-  background: #b8932f;
-  color: #241a05;
-  font-weight: 700;
 }
