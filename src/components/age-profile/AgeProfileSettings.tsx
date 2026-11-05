@@ -70,11 +70,18 @@ export default function AgeProfileSettings({
     if (confirmTarget === null) return;
     saveBand(confirmTarget, { runInProgress });
     setProfile(loadProfile());
+    // This flow is post-gate (a parent-only surface), and the
+    // owner ruled on 2026-11-04 that the confirmation toast names
+    // the band — superseding the earlier band-invisible toast
+    // design ("Saved ✅"). The label and age range come from the
+    // band table via getBand (the single source), formatted the
+    // way AgePicker displays ranges: "ages {ageMin}–{ageMax}".
+    const band = getBand(confirmTarget);
+    const bandName = `${band.label} (ages ${band.ageMin}–${band.ageMax})`;
     if (runInProgress) {
-      onToast("Saved — takes effect on the next card. ✅");
+      onToast(`Saved — ${bandName}; takes effect on the next card. ✅`);
     } else {
-      // Child-visible: never names the band (band-invisible design pillar).
-      onToast("Saved ✅");
+      onToast(`Saved — ${bandName} ✅`);
     }
     onClose();
   };
