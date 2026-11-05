@@ -239,7 +239,7 @@ test("stale build: the app's refresh UI wins, the watchdog stands down, and the 
   await page.close();
 });
 
-test("stalled chunk-recovery reload: the watchdog stands down on the fresh chunk-reload notice", async ({
+test("stalled chunk-recovery reload: the watchdog shows the reload card and files no boot_failure", async ({
   context,
 }) => {
   await serveBuiltArtifact(context);
@@ -308,10 +308,19 @@ test("stalled chunk-recovery reload: the watchdog stands down on the fresh chunk
 
   // Wait out the 28 s watchdog timer on the reloaded page. The
   // session already reached home once, so this stalled reload is a
-  // mid-session chunk failure, not a boot failure: no overlay, and
-  // no boot_failure report.
+  // mid-session chunk failure, not a boot failure: the watchdog
+  // files no boot_failure — but it does NOT leave the player on a
+  // blank shell either (panel round 1 on PR #349: suppressing the
+  // only recovery surface strands a child, possibly in the
+  // standalone PWA with no browser reload button). The overlay
+  // shows with the recovery heading, and the generic boot-failure
+  // heading never appears.
   await waitOutWatchdogTimer(page);
-  await expect(page.locator("#mv")).toHaveCount(0);
+  await expect(page.locator("#mv")).toHaveCount(1);
+  await expect(
+    page.getByRole("heading", { name: "The reload didn't finish loading." }),
+  ).toBeVisible();
+  await expect(page.getByText(GENERIC_HEADING, { exact: true })).toHaveCount(0);
   expect(ingested.filter((e) => e.type === "boot_failure")).toHaveLength(0);
 
   await page.close();
