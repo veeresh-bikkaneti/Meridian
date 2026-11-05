@@ -1524,8 +1524,25 @@ body:has(.home-v5) {
    (flex, margins, top-fade mask) so the overlays can sit on the art. */
 .home-v5 .hv5-mtn-wrap {
   position: relative;
-  flex: 1 1 180px;
+  /* flex-basis must stay auto: a definite basis (the shipped
+     180px) overrides aspect-ratio below and the wrap collapses
+     back to the foothills crop. */
+  flex: 1 1 auto;
   min-height: 180px;
+  /* Framing (production composition): the wrap keeps the painted
+     art's own 800/533 ratio, so the sliced overlays show the WHOLE
+     painting — summit + flag at the top, the trekker's full climb
+     leg and the trail's foot at the bottom — exactly as framed in
+     the owner's approved V1 capture. Letting flex shrink the wrap
+     to its 180px floor instead crops the slice to the foothills
+     (visible viewBox y from ~359 of 533): the summit, the flag and
+     most of the climb leg fall outside the crop. Flex may still
+     GROW the wrap when the rail runs taller; growing only widens
+     the visible slice, never misaligns it (both overlays and the
+     img slice from the same box). Cost: the hero card runs ~300px
+     taller at desktop widths and the rows below start lower — the
+     trade the approved capture already makes. */
+  aspect-ratio: 800 / 533;
   margin: 20px -40px -40px;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(to top, #000 72%, transparent);
