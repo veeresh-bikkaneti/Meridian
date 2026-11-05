@@ -25,7 +25,6 @@ export const BUNDLED_CREDITS: BundledCredit[] = [
   { name: "TanStack Router Plugin", packageName: "@tanstack/router-plugin", license: "MIT" },
   { name: "Vite React Plugin", packageName: "@vitejs/plugin-react", license: "MIT" },
   { name: "WebGPU Types", packageName: "@webgpu/types", license: "BSD-3-Clause" },
-  { name: "Better Auth", packageName: "better-auth", license: "MIT" },
   { name: "Class Variance Authority", packageName: "class-variance-authority", license: "Apache-2.0" },
   { name: "clsx", packageName: "clsx", license: "MIT" },
   { name: "D3 Geo", packageName: "d3-geo", license: "ISC" },
