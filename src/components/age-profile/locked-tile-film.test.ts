@@ -123,6 +123,27 @@ describe("LockedTileFilm — lazy mount + loop governance (owner ruling, 2026-11
     );
   });
 
+  it("off-screen pause: the effect re-observes when the retry remounts the element (panel round-2 BLOCK)", () => {
+    // Same round-2 shape as CardFilm: deps [gated, near] never
+    // re-ran the effect for the remounted element, and a slot
+    // that has not intersected yet gets no threshold crossing —
+    // the remounted film would loop off-screen indefinitely.
+    // The deps must carry `attempt` so the effect re-observes
+    // and the fresh observer's initial delivery reaches the new
+    // element. (This component's media is constant, so there is
+    // no videoUrl term — CardFilm's pin carries one.)
+    const effect = film.slice(film.indexOf("// Off-screen pause, CardFilm's exact governance:"));
+    assert.ok(
+      effect.includes("}, [gated, near, attempt]);"),
+      "pause effect deps include attempt, so a remount re-observes",
+    );
+    assert.equal(
+      (film.match(/\}, \[gated, near\]\);/g) || []).length,
+      1,
+      "only the lazy-mount effect keeps the bare [gated, near] deps",
+    );
+  });
+
   it("error latch: one bounded retry per scope, derived (parallel to CardFilm)", () => {
     // The media is a constant, so the scope is just its URL; the
     // states remember WHICH scope spent/latched and attempt +

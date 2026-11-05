@@ -130,6 +130,29 @@ describe("CardFilm — lazy mount + autoloop (owner order, 2026-11-03)", () => {
     );
   });
 
+  it("off-screen pause: the effect re-observes when a remount replaces the element (panel round-2 BLOCK)", () => {
+    // The B1 cure resolved the element inside the callback, but
+    // the effect's deps were still [gated, near]: a retry remount
+    // (key change) — or a non-latched media swap — while the slot
+    // is NOT intersecting never re-ran the effect, and
+    // IntersectionObserver fires no callback without a threshold
+    // crossing, so the new element's initial delivery never
+    // happened and the remounted film autoplayed and looped
+    // off-screen indefinitely. The deps must carry the remount
+    // signals so the effect re-observes and the fresh observer's
+    // initial delivery pauses/plays the new element.
+    const effect = film.slice(film.indexOf("// Off-screen pause:"));
+    assert.ok(
+      effect.includes("}, [gated, near, attempt, media.videoUrl]);"),
+      "pause effect deps include attempt + media.videoUrl, so a remount re-observes",
+    );
+    assert.equal(
+      (film.match(/\}, \[gated, near\]\);/g) || []).length,
+      1,
+      "only the lazy-mount effect keeps the bare [gated, near] deps",
+    );
+  });
+
   it("no timers: nothing replays, pauses on a schedule, or polls", () => {
     assert.ok(!film.includes("setTimeout"), "no timer chains");
     assert.ok(!film.includes("setInterval"), "no polling timers");
@@ -183,6 +206,24 @@ describe("CardFilm — error latch: URL+band scope, derived (2026-11-04; panel c
       "the attempt count is in the video key, so spending the retry remounts the video once",
     );
     assert.ok(!film.includes("setTimeout") && !film.includes("setInterval"), "no timer-driven retry loop");
+  });
+
+  it("leaving a scope clears its record — a band round trip back revives (panel round-2, Office Hours)", () => {
+    // Derivation alone revives the slot only while a DIFFERENT
+    // scope is showing: latch in band A, switch to B (revived),
+    // switch back to A in the same session — the stored record
+    // still equals A's scope, so the slot rendered latched on
+    // arrival. The cure clears spent/failed when the scope
+    // actually transitions, during render (no effect), so every
+    // arrival at a scope starts fresh.
+    assert.ok(
+      film.includes("const [seenScope, setSeenScope] = useState(scope);"),
+      "the component remembers the scope it last rendered",
+    );
+    assert.ok(film.includes("if (seenScope !== scope) {"), "the clearing is keyed on an actual scope transition");
+    assert.ok(film.includes("setSeenScope(scope);"), "the transition is recorded");
+    assert.ok(film.includes("setSpentScope(null);"), "leaving a scope clears its spent-retry record");
+    assert.ok(film.includes("setFailedScope(null);"), "leaving a scope clears its latch record");
   });
 });
 

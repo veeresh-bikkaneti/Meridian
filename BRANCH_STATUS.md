@@ -101,6 +101,80 @@ merge word. NO MERGE.
 - Sole conflict: this file. Resolved both-records: this branch's accumulated record above, main's #347 record below it; earlier accumulated records follow after.
 - Code files auto-merged with no conflicts (#347 touched only crash-watchdog scripts + the crash-report worker + observability docs; no overlap with this branch's scope).
 
+## Panel round-2 cure — 2026-11-04 (verdict on `7139160`: 5 APPROVE / 6 AWN / 1 BLOCK)
+
+Cure builder (not the round-1 cure builder). The cured tip returns
+for fresh Silo QA + a full panel re-vote before any merge word.
+NO MERGE.
+
+- **BLOCK (Game Developer; root shared with Senior Developer
+  NIT-4) — a remount never re-observes.** The round-1 B1 cure
+  resolved the video element inside the pause observer's
+  callback, but the effect's deps stayed `[gated, near]`: a film
+  that errors and remounts (retry key change) while its slot is
+  NON-intersecting is never re-observed — the deps don't change
+  on remount and IntersectionObserver fires no callback without
+  a threshold crossing — so the remounted film is never paused
+  and (in a browser that starts off-screen films) autoplays and
+  loops off-screen indefinitely, falsifying the headers' "never
+  decode off-screen" invariant. Same shape in both components,
+  and for a non-latched media swap below the fold. **Cure (the
+  seat's minimal cure, verbatim):** CardFilm pause-effect deps
+  → `[gated, near, attempt, media.videoUrl]`; LockedTileFilm →
+  `[gated, near, attempt]`. A remount now re-runs the effect,
+  and the fresh observer's initial delivery pauses/plays the
+  new element correctly. Header/code comments in both files
+  record why the deps carry the remount signals.
+- **Folded MAJOR nit (Office Hours; parent decision: fold in,
+  same mechanism) — band round-trip re-latch.** Derivation alone
+  revives a slot only while a different scope is showing: latch
+  in band A → switch to B (revives) → back to A in the same home
+  session rendered latched immediately, because `failedScope`
+  still equalled A's scope. **Cure:** leaving a scope clears
+  its record — CardFilm now tracks the last-rendered scope and,
+  on an actual scope transition (during render, React's
+  adjust-state pattern; still no reset effect), clears
+  `spentScope`/`failedScope`, so every arrival at a scope starts
+  fresh. LockedTileFilm needs no clearing: its scope can never
+  change while mounted, and leaving 5–7 unmounts it — now stated
+  in its scope comment. The PR body's "any band change revives"
+  wording is corrected to these real semantics.
+- **Proof.** Unit pins (source-pinning style): the deps pin in
+  each film test file + the round-trip pin in
+  `card-film.test.ts`. Bite (scratch worktree @ `7139160`, the
+  new test files over the voted components): exactly the 3 new
+  pins fail, 46/49 pass; on the cured tree 49/49. E2E: two new
+  variants in `band-film-error-path.desktop.spec.ts` — the error
+  fires BEFORE the slot first intersects (slot parked below the
+  fold, inside the lazy margin), CardFilm (Journal slot) and
+  LockedTileFilm. Witness design, recorded honestly: this
+  Chromium defers off-screen autoplay (probe-verified: a
+  below-fold film sits paused at t=0 with no observer at all),
+  so a paused-state assertion cannot separate the tips here;
+  the variants witness the DELIVERY — a `pause()` call landing
+  on the remounted element, recorded via an init script — which
+  is exactly the mechanism the BLOCK names, plus the final
+  paused-state assertions as the user-facing invariant. The
+  first failure is delayed 2.5 s so the original observer's
+  initial delivery is spent on the first element (an instant
+  abort can let that delivery land on the new element and mask
+  the bug — measured in this run: the first version of the
+  variant passed on the voted build for exactly that reason).
+- **PR-body record correction (QA nit).** The round-1 cure's
+  bite figures were overstated: under the stated scratch method
+  it is 6 pins fail / 45 pass across all 3 test files (40 pass
+  films-only), not "8 fail / 43 pass" — the 51 total only arises
+  including the 5 toast tests. The body is corrected.
+- **Gates (cure tree):** tsc clean · `npm test` — scripts 986
+  pass / 0 fail / 11 skipped, src 2107/2107 (2104 + the 3 new
+  pins: card-film 29 → 31, locked-tile 17 → 18) · lint-cards
+  GATE PASSED · build:pages green. E2E on the cured build:
+  band-film-error-path 4/4 (both new variants included, earlier
+  paused-state-only version — re-run with the delivery witness
+  sealed in the PR body). NOT in this cure: the dead
+  `runInProgress` deferral branch (owner decision owed outside
+  the PR — untouched), any other refactor.
+
 ---
 
 # Branch status — feat/345-crash-severity (issue #345: crash-report severity grades + watchdog stamp)

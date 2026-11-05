@@ -82,6 +82,11 @@ export function LockedTileFilm() {
   // states only remember WHICH scope spent its retry / latched;
   // `attempt` and `failed` are DERIVED by comparing them to the
   // current scope (no effect reset, no stale charge).
+  // No scope-transition clearing is needed here (CardFilm carries
+  // one, panel round-2): this scope can never change while the
+  // component is mounted, and leaving the 5–7 band unmounts it —
+  // LockedLoop renders only for that band — so no stored record
+  // can survive a band round trip.
   const scope = LOCKED_GEODETECTIVE_FILM.videoUrl;
   const [spentScope, setSpentScope] = useState<string | null>(null);
   const [failedScope, setFailedScope] = useState<string | null>(null);
@@ -124,7 +129,12 @@ export function LockedTileFilm() {
   // Off-screen pause, CardFilm's exact governance: once the film
   // is mounted, a second observer plays it while the slot is on
   // screen and pauses it when the slot leaves, so the loop never
-  // decodes off-screen.
+  // decodes off-screen. The deps carry `attempt` for the same
+  // reason CardFilm's do (panel round-2 BLOCK): the retry key
+  // replaces the video element, so the effect must re-run and
+  // re-observe for the new element — otherwise a remount that
+  // happens before the slot first intersects is never paused
+  // and loops off-screen indefinitely.
   useEffect(() => {
     if (gated || !near) return;
     const root = rootRef.current;
@@ -149,7 +159,7 @@ export function LockedTileFilm() {
     );
     io.observe(root);
     return () => io.disconnect();
-  }, [gated, near]);
+  }, [gated, near, attempt]);
 
   if (gated) {
     // The resting still IS the design here — no video element

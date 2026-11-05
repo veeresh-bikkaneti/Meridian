@@ -49,7 +49,11 @@ import type { AgeBandId } from "@/game/age-profile";
  *   slot on the still for the whole home session (owner
  *   commission, 2026-11-04; scope cured on the panel's
  *   re-vote round — most slots' media never changes, so a
- *   media-only reset left them latched).
+ *   media-only reset left them latched). Leaving a scope
+ *   clears its record entirely, so returning to an earlier
+ *   band later in the same session also arrives fresh —
+ *   revival is not used up by having visited a scope before
+ *   (panel round-2 cure).
  * - Lazy: the video element (and with it the .mp4 request) only
  *   mounts when the slot nears the viewport — IntersectionObserver,
  *   rootMargin 200px, the globe's pattern. Before that, the poster
@@ -132,6 +136,23 @@ export function CardFilm({
   // try, 1 is the one bounded retry (see handleError below).
   const attempt = spentScope === scope ? 1 : 0;
   const failed = failedScope === scope;
+  // Leaving a scope clears its record (panel round-2, Office
+  // Hours): derivation alone revives the slot only while a
+  // DIFFERENT scope is showing — if the player latches in band A,
+  // switches to B (revived), then switches back to A in the same
+  // home session, the stored record still equals A's scope and
+  // the slot renders latched on arrival. Clearing on the actual
+  // transition makes every arrival at a scope start fresh. The
+  // adjustment runs during render (React's adjust-state-when-a-
+  // prop-changes pattern), so the arriving scope's first committed
+  // render is already fresh — there is still no reset effect, and
+  // the derivation above is untouched.
+  const [seenScope, setSeenScope] = useState(scope);
+  if (seenScope !== scope) {
+    setSeenScope(scope);
+    setSpentScope(null);
+    setFailedScope(null);
+  }
   const [near, setNear] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -165,7 +186,16 @@ export function CardFilm({
 
   // Off-screen pause: once the film is mounted, a second observer
   // plays it while the slot is on screen and pauses it when the
-  // slot leaves, so looping films never decode off-screen.
+  // slot leaves, so looping films never decode off-screen. The
+  // deps carry `attempt` and `media.videoUrl` on purpose (panel
+  // round-2 BLOCK): the retry key — and every media swap —
+  // replaces the video element, and if this effect does not
+  // re-run for the new element, the observer's initial delivery
+  // never reaches it; a slot that has not intersected yet gets no
+  // threshold crossing either, so the remounted film would
+  // autoplay and loop off-screen indefinitely. Re-running the
+  // effect re-observes, and the new observer's initial delivery
+  // pauses or plays the CURRENT element correctly.
   useEffect(() => {
     if (gated || !near) return;
     const root = rootRef.current;
@@ -191,7 +221,7 @@ export function CardFilm({
     );
     io.observe(root);
     return () => io.disconnect();
-  }, [gated, near]);
+  }, [gated, near, attempt, media.videoUrl]);
 
   const boxClass = className ? `hv5-card-film ${className}` : "hv5-card-film";
 
