@@ -1,0 +1,171 @@
+import { test, expect, type Browser, type Page } from "playwright/test";
+import { serveBuiltArtifact } from "./helpers";
+
+/**
+ * Home hero + trekker + doorway — production composition pins
+ * (feat/home-rework-hero-trekker, owner ship word 2026-11-04).
+ *
+ * The home page used to render a static mountain picture, with the
+ * animated designs reachable only behind a ?ui= test harness on
+ * design branches. The harness is gone; production (no query
+ * params) renders the composed design unconditionally:
+ *
+ * (a) the hero carries the V1b trail overlay (marching dots,
+ *     climbing pulse, summit flag, drifting clouds) AND the
+ *     trekking-kid overlay (simplified child, two poles, slow
+ *     climb), and the Capitals & Flags doorway appears exactly
+ *     once — beside the About card, at compact density, with the
+ *     shipped copy and its manifest-driven land count;
+ * (b) the motion actually runs — the trekker's SMIL master clock
+ *     advances and the pulse travels the trail;
+ * (c) with prefers-reduced-motion emulated, the hero lands on its
+ *     still state: no clouds, no pulse, the trekker's clock paused
+ *     on the mid-climb frame with the figure visible.
+ *
+ * Fail-on-main: unmodified main's game-app.tsx contains none of
+ * the .hv5-trail / .hv5-trekker / .hv5-clouds / .hv5-about-row
+ * selectors these tests query (grep-verified when this spec was
+ * written), so every test here fails there.
+ */
+test.setTimeout(240_000);
+
+const APP = "http://127.0.0.1:4123/Meridian/";
+
+async function openHome(
+  browser: Browser,
+  opts: { reducedMotion?: "reduce" | "no-preference" } = {},
+): Promise<Page> {
+  const context = await browser.newContext({
+    viewport: { width: 1440, height: 900 },
+    reducedMotion: opts.reducedMotion ?? "no-preference",
+  });
+  await serveBuiltArtifact(context);
+  const page = await context.newPage();
+  await page.goto(APP);
+  await expect(page.locator(".hv5-mtn-wrap")).toBeVisible({ timeout: 30_000 });
+  return page;
+}
+
+test("production home composes trail + trekker + clouds and one doorway beside About", async ({
+  browser,
+}) => {
+  const page = await openHome(browser);
+
+  // All three hero layers mounted on the sliced mountain wrap.
+  await expect(page.locator(".hv5-trail")).toBeAttached();
+  await expect(page.locator(".hv5-trekker")).toBeAttached();
+  await expect(page.locator(".hv5-clouds")).toBeAttached();
+  await expect(page.locator(".hv5-trail-pulse")).toBeAttached();
+  await expect(page.locator(".hv5-trail-flag")).toBeAttached();
+
+  // Exactly one doorway on the page, riding beside the About card
+  // in the about row (the under-map instance is gone).
+  await expect(page.locator(".hv5-doorway")).toHaveCount(1);
+  await expect(page.locator(".hv5-about-row > .hv5-doorway")).toHaveCount(1);
+  await expect(page.locator(".hv5-about-row > #home-about")).toHaveCount(1);
+  await expect(page.locator(".hv5-rail .hv5-doorway")).toHaveCount(0);
+
+  // Compact (slim) density + the shipped copy, word for word, with
+  // the land count read from the live pack manifest (110 lands).
+  const doorway = page.locator(".hv5-doorway");
+  await expect(doorway).toHaveClass(/hv5-doorway-compact/);
+  await expect(doorway.locator("h2")).toHaveText("Capitals & Flags");
+  await expect
+    .poll(
+      async () =>
+        doorway.evaluate((el) =>
+          (el.querySelector("p")?.textContent ?? "").replace(/\s+/g, " ").trim(),
+        ),
+      { timeout: 20_000 },
+    )
+    .toBe("110 lands · Find the capital, learn its flag");
+  await expect(page.getByTestId("pack-doorway-geodetective")).toBeVisible();
+  await expect(page.getByTestId("pack-doorway-coldtrail")).toBeVisible();
+
+  await page.context().close();
+});
+
+test("hero motion runs: trekker clock advances and the pulse travels", async ({
+  browser,
+}) => {
+  const page = await openHome(browser);
+
+  // Bring the hero on screen first: Chromium does not tick
+  // animation frames for off-viewport content, so sampling from
+  // the top of the page would read frozen values even though the
+  // layers animate.
+  await page.locator(".hv5-mtn-wrap").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(600);
+
+  const clock1 = await page.evaluate(
+    () => (document.querySelector(".hv5-trekker") as unknown as SVGSVGElement).getCurrentTime(),
+  );
+  const pulse1 = await page.evaluate(() => {
+    const r = document.querySelector(".hv5-pulse-core")!.getBoundingClientRect();
+    return { x: r.x, y: r.y };
+  });
+  await page.waitForTimeout(1500);
+  const clock2 = await page.evaluate(
+    () => (document.querySelector(".hv5-trekker") as unknown as SVGSVGElement).getCurrentTime(),
+  );
+  const pulse2 = await page.evaluate(() => {
+    const r = document.querySelector(".hv5-pulse-core")!.getBoundingClientRect();
+    return { x: r.x, y: r.y };
+  });
+
+  expect(clock2 - clock1, "trekker SMIL clock should advance").toBeGreaterThan(0.8);
+  expect(
+    Math.abs(pulse2.x - pulse1.x) + Math.abs(pulse2.y - pulse1.y),
+    "pulse should travel along the trail",
+  ).toBeGreaterThan(2);
+
+  await page.context().close();
+});
+
+test("reduced motion: hero shows the still — no clouds or pulse, trekker clock paused mid-climb", async ({
+  browser,
+}) => {
+  const page = await openHome(browser, { reducedMotion: "reduce" });
+
+  // Trail still: static dots + flag only; the animated layers are
+  // never rendered under the gate.
+  await expect(page.locator(".hv5-trail")).toBeAttached();
+  await expect(page.locator(".hv5-trail-dots")).toBeAttached();
+  await expect(page.locator(".hv5-clouds")).toHaveCount(0);
+  await expect(page.locator(".hv5-trail-pulse")).toHaveCount(0);
+  const dotsAnimation = await page.evaluate(
+    () => getComputedStyle(document.querySelector(".hv5-trail-dots")!).animationName,
+  );
+  expect(dotsAnimation).toBe("none");
+
+  // Trekker still: the figure is visible (mid-climb frame) and the
+  // SMIL clock is paused — sampled twice, it does not advance.
+  await expect(page.locator(".hv5-trekker")).toBeAttached();
+  const still1 = await page.evaluate(() => {
+    const svg = document.querySelector(".hv5-trekker") as unknown as SVGSVGElement;
+    return { t: svg.getCurrentTime(), paused: svg.animationsPaused() };
+  });
+  await page.waitForTimeout(1200);
+  const still2 = await page.evaluate(
+    () => (document.querySelector(".hv5-trekker") as unknown as SVGSVGElement).getCurrentTime(),
+  );
+  expect(still1.paused).toBe(true);
+  expect(still2).toBe(still1.t);
+  expect(still1.t).toBeGreaterThan(7);
+  expect(still1.t).toBeLessThan(7.5);
+  // The rig (the trekker svg's first group) sits at SMIL opacity 1
+  // on the 7.25s frame — the child is fully faded in, poles planted.
+  // Polled: a boot-time remount restarts the svg, and its still
+  // effect needs a beat to re-pause the fresh clock at 7.25s.
+  await expect
+    .poll(
+      async () =>
+        page.evaluate(() => {
+          const rig = document.querySelector(".hv5-trekker")!.querySelector("g")!;
+          return Number(getComputedStyle(rig).opacity);
+        }),
+      { timeout: 15_000 },
+    )
+    .toBeGreaterThan(0.9);
+  await page.context().close();
+});
