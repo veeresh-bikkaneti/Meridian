@@ -61,7 +61,10 @@
  * isValidWatchdogEndpoint): var, function, no ?./??, no arrows, no
  * template literals, no const/let, no classes, no fetch/Promise (XHR +
  * callbacks only), no import/export. The whole inline body is wrapped in
- * try/catch and the rendered output must stay <= 6250 bytes, so the
+ * try/catch and the rendered output must stay <= 6,600 bytes
+ * (6,144 until issue #345 added the read-only boot-health stamp
+ * and PR #349 added the chunk-recovery stand-down + recovery card;
+ * see the RENAME comment for the measured figures), so the
  * embedded code is written terse and renderCrashWatchdogScript() runs it
  * through minifyEmbedded() (comment/whitespace removal plus renaming of
  * a fixed safe-list of long locals — token-based, so strings, regexes,
@@ -113,12 +116,13 @@ export function isValidWatchdogEndpoint(value, hosts) {
  * which drives the real orchestration against fake browser globals. The
  * inline script embeds this same function by source via
  * renderCrashWatchdogScript(). Everything in here is ES5-only (see the
- * module docstring) and deliberately terse to hold the 6250-byte budget.
+ * module docstring) and deliberately terse to hold the 6600-byte budget.
  */
 export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts) {
   var ASKED = "meridian.crashwatchdogAsked",
     CRUMB = "meridian.breadcrumb",
     CLEAN = "meridian.cleanExit",
+    BHK = "meridian:boot-health",
     READY = "__meridian_ready",
     STALE = "A new version of Meridian is available.",
     CAP = 8192;
@@ -133,6 +137,19 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
     try {
       var st = win.sessionStorage;
       return v === void 0 ? st.getItem(k) : st.setItem(k, v);
+    } catch (e) {
+      sok = false;
+      return null;
+    }
+  }
+  // §4.3: guarded READ-ONLY access to the durable store (localStorage),
+  // where init() keeps the boot-health counter. The watchdog only ever
+  // reads it — never a second writer (§4.4). A missing store reads as
+  // absent; a throwing one flips storageOk, same as sessionStorage.
+  function ds(k) {
+    try {
+      var d = win.localStorage;
+      return d ? d.getItem(k) : null;
     } catch (e) {
       sok = false;
       return null;
@@ -339,6 +356,27 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
           hh = prev && prev.history,
           la = hh && hh[hh.length - 1];
         if (la && typeof la.at === "number" && la.at >= prev.startedAt) ms = la.at - prev.startedAt;
+        // §4.3 watchdog stamp (#345): borrow the durable unfinished
+        // streak so a boot_failure grades on the same count the app
+        // path stamps. Read at send time (freshest — a late-loading
+        // bundle's init() may have updated the record since parse).
+        // Absent, malformed, or blocked → no stamp: the worker then
+        // grades its fallback and says the streak was not stamped.
+        // The v:1 shape check mirrors readBootHealth in
+        // src/lib/observability.ts; the 0..99 clamp is the manifest's
+        // declared range for unfinishedBoots.
+        var ub = null;
+        try {
+          var hp = JSON.parse(ds(BHK) || "");
+          // Strict === on purpose: hp.v comes from parsed JSON, so it
+          // can be a string ("1") or boolean (true) that loose == would
+          // accept — readBootHealth discards those records, and so do
+          // we, or the stamp would inflate the worker's severity grade.
+          if (hp && hp.v === 1 && typeof hp.unfinished == "number" && isFinite(hp.unfinished))
+            ub = Math.min(99, Math.max(0, Math.floor(hp.unfinished)));
+        } catch (e) {
+          /* absent-safe: ub stays null, nothing is stamped */
+        }
         // §7.5 ladder step 2: engine is NOT stamped on this path —
         // for boot_failure events only, the worker fills it from the
         // event's parsed fields via the §3.4 E-rules.
@@ -370,14 +408,18 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
             buildId: buildId,
             device: dv,
             // §4.4 parity: same envelope stamps as the app path.
-            // unfinishedBoots is deliberately ABSENT — the watchdog
-            // must never become a second writer of meridian:boot-health.
+            // unfinishedBoots is stamped below, read-only, when the
+            // durable record was readable — the watchdog borrows the
+            // streak; it never writes meridian:boot-health.
             lcV: "2",
             storageOk: sok,
             mapMode: prev && (prev.mapMode === "full" || prev.mapMode === "scout") ? prev.mapMode : un,
             msSinceBootStart: ms,
             error: err0 || { name: "Error", message: "boot timeout" }
           };
+          // §4.3: stamp the borrowed streak only when one was read —
+          // an absent stamp is the honest "not stamped" signal.
+          if (ub !== null) ev.unfinishedBoots = ub;
           if (prev) {
             ev.sessionId = prev.sessionId;
             if (prev.lastMilestone) ev.lastMilestone = prev.lastMilestone;
@@ -586,20 +628,23 @@ const RENAME = {
   // ids are 12 chars (14 for the timestamp fallback), which pushed the
   // rendered script 2–4 bytes over its then budget while the 10-char
   // test fixture still passed. These two renames free 20 bytes.
-  // Current figures (§7.5 gated decision): the budget was 6,144 bytes
-  // with the worst case (14-char build id) at 6,104 bytes. The
-  // chunk-recovery stand-down in onTimer (a fresh
-  // meridian.chunkReloadNotice marks this load as, in practice, a
-  // stalled recovery reload, not a fresh boot failure) added 51
-  // bytes, measuring 6,155 worst case — over 6,144 — so the budget
-  // rose to 6,200. The recovery card (PR #349 panel round 1: the
-  // report stands down, the player does not — recovery heading +
-  // rcv flag + the send() skip) added 58 more, measuring 6,213
-  // worst case, so the budget is now 6,250 bytes: the smallest round
-  // fit that keeps the established ~40-byte headroom pattern (37
-  // bytes; the next hundred, 6,300, would nearly double it).
-  // Neither name is an object-literal key or a property, so the
-  // rename is safe here.
+  // Current figures (§7.5 gated decision): the budget was 6,144
+  // bytes with the worst case (14-char build id) at 6,104 bytes.
+  // Two features then landed on parallel branches. Issue #345
+  // (PR #347) added the read-only boot-health stamp (the ds()
+  // reader, the send-time parse, the BHK rename): +338 bytes at
+  // the worst case including the strict-`===` shape-check cure,
+  // measuring 6,442, budget 6,656 on that branch. PR #349 added
+  // the chunk-recovery stand-down in onTimer (+51 bytes, 6,155)
+  // and then the recovery card (panel round 1: the report stands
+  // down, the player does not — recovery heading + rcv flag + the
+  // send() skip; +58 more, 6,213), budget 6,250 on that branch.
+  // Merged (PR #349 merge-up over main 70e1be6): both features
+  // survive; the rendered worst case MEASURES 6,551 bytes on the
+  // merged tree, so the budget is now 6,600 bytes — the smallest
+  // round fit keeping the established ~40-byte headroom pattern
+  // (49 bytes of margin). Neither name is an
+  // object-literal key or a property, so the rename is safe here.
   crashWatchdogMain: "M",
   CSS: "G",
   isValidEndpointFn: "ok",
@@ -614,6 +659,7 @@ const RENAME = {
   ASKED: "A",
   CRUMB: "B",
   CLEAN: "C",
+  BHK: "J",
   READY: "D",
   STALE: "E",
   CAP: "F",

@@ -5,7 +5,7 @@
  * orchestration (crashWatchdogMain) is driven against fake browser globals
  * so the exact code that ships inline in _shell.html is what gets
  * exercised. renderCrashWatchdogScript() is checked for the marker, the
- * 6250-byte budget, ES5-only output, and a no-drift assertion that the
+ * 6600-byte budget, ES5-only output, and a no-drift assertion that the
  * shipped script still embeds the tested functions' logic.
  */
 import assert from "node:assert/strict";
@@ -183,10 +183,24 @@ function fakeXhr({ flagsStatus = 200, flagsText = "{}", postStatus = 200, deferG
   };
 }
 
-function fakeHost({ docOpts = {}, xhrOpts = {}, store: presetStore = {}, ready = false, ua = null } = {}) {
+function fakeHost({
+  docOpts = {},
+  xhrOpts = {},
+  store: presetStore = {},
+  durable: presetDurable = {},
+  durableThrows = false,
+  ready = false,
+  ua = null,
+} = {}) {
   const { doc, nodes, body } = fakeDocument(docOpts);
   const xhr = fakeXhr(xhrOpts);
   const store = { ...presetStore };
+  // The durable store (localStorage) is a SEPARATE store from the
+  // session store, exactly as in a real browser — the boot-health
+  // record lives there (§4.3). Writes are counted so tests can prove
+  // the watchdog never writes it.
+  const durableStore = { ...presetDurable };
+  const durableWrites = { set: 0, remove: 0 };
   const listeners = {};
   const calls = { timers: [], reloads: 0 };
   const host = {
@@ -215,6 +229,20 @@ function fakeHost({ docOpts = {}, xhrOpts = {}, store: presetStore = {}, ready =
         delete store[k];
       },
     },
+    localStorage: {
+      getItem: (k) => {
+        if (durableThrows) throw new Error("localStorage blocked");
+        return k in durableStore ? durableStore[k] : null;
+      },
+      setItem: (k, v) => {
+        durableWrites.set += 1;
+        durableStore[k] = String(v);
+      },
+      removeItem: (k) => {
+        durableWrites.remove += 1;
+        delete durableStore[k];
+      },
+    },
     setTimeout: (fn, ms) => {
       calls.timers.push({ fn, ms });
       return calls.timers.length;
@@ -225,7 +253,7 @@ function fakeHost({ docOpts = {}, xhrOpts = {}, store: presetStore = {}, ready =
     XMLHttpRequest: xhr.XMLHttpRequest,
     __meridian_ready: ready,
   };
-  return { host, calls, store, listeners, xhr, doc, nodes, body };
+  return { host, calls, store, durableStore, durableWrites, listeners, xhr, doc, nodes, body };
 }
 
 function veilOf(h) {
@@ -252,22 +280,25 @@ test("renderCrashWatchdogScript emits a single self-contained inline script", ()
   assert.ok(script.includes('"test-build"'));
 });
 
-test("rendered script stays within the 6250-byte budget", () => {
+test("rendered script stays within the 6600-byte budget", () => {
   // #223: check the build-id shapes production actually uses, not just
   // the old 10-char fixture — a 12-char CI id (GITHUB_SHA slice) and the
   // 14-char timestamp fallback rendered 5122/5124 bytes and silently
   // broke the budget while this test still passed at exactly 5120.
   // Budget history: 5120 → 6144 (§7.5 ladder, worst case 6,104) →
-  // 6200 (the chunk-recovery stand-down in onTimer: a fresh
-  // meridian.chunkReloadNotice; worst case 6,155) → 6250: the
-  // recovery card (PR #349 panel round 1 — report stands down, player
-  // does not) measures 6,213 bytes worst case (14-char build id), so
-  // 6,250 is the smallest round budget that fits it while keeping the
-  // established ~40-byte headroom pattern.
+  // two parallel branches: 6656 via #345/#347 (the read-only
+  // boot-health stamp, +338 at the worst case incl. the strict
+  // shape-check cure; worst case 6,442) and 6250 via PR #349 (the
+  // chunk-recovery stand-down, worst case 6,155 → the recovery
+  // card, worst case 6,213). Merged on the PR #349 merge-up over
+  // main 70e1be6, both features survive and the worst case
+  // (14-char build id) measures 6,551 bytes, so the budget is
+  // 6,600 — the smallest round fit keeping the established
+  // ~40-byte headroom pattern (49 bytes of margin).
   for (const buildId of ["abcdef0", "test-build", "abcdef012345", "local-mvpr1hgb"]) {
     const script = renderCrashWatchdogScript(buildId);
     const bytes = Buffer.byteLength(script, "utf8");
-    assert.ok(bytes <= 6250, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
+    assert.ok(bytes <= 6600, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
   }
 });
 
@@ -1029,7 +1060,7 @@ test("S3: an off-allowlist endpoint in flags.json sends nothing (fail closed)", 
 // both from the parsed fields / os for this type).
 // ---------------------------------------------------------------------------
 
-test("parity: boot_failure carries lcV, storageOk, the trail's mapMode + span, and NO unfinishedBoots", () => {
+test("parity: boot_failure carries lcV, storageOk, the trail's mapMode + span, and NO unfinishedBoots when no boot-health record exists", () => {
   const crumb = {
     sessionId: "prev-session-wd",
     buildId: "b0",
@@ -1056,7 +1087,10 @@ test("parity: boot_failure carries lcV, storageOk, the trail's mapMode + span, a
   assert.equal(body.storageOk, true);
   assert.equal(body.mapMode, "scout", "the crashed session's persisted mode, not a default");
   assert.equal(body.msSinceBootStart, 3210, "last history entry (4210) minus startedAt (1000)");
-  assert.ok(!("unfinishedBoots" in body), "the watchdog never writes the boot-health counter (§4.4)");
+  assert.ok(
+    !("unfinishedBoots" in body),
+    "no durable boot-health record → no stamp; the worker grades its fallback (§4.4/#345)",
+  );
   // Subset parser on the default fake UA (Android 13 Chrome): the
   // subset covers Safari only for browser, so both stamp "unknown";
   // osVersion comes from the O1 token.
@@ -1072,6 +1106,103 @@ test("parity: boot_failure carries lcV, storageOk, the trail's mapMode + span, a
   // path (the worker derives them), NOT stamped.
   assert.ok(!("engine" in body.device), "ladder step 2: engine dropped");
   assert.ok(!("deviceClass" in body.device), "ladder step 3: deviceClass dropped");
+});
+
+// ---------------------------------------------------------------------------
+// §4.3 watchdog stamp (#345): the boot_failure event borrows the durable
+// unfinished-boot streak (meridian:boot-health) READ-ONLY, so the worker
+// can grade the report S1 when it qualifies. Absent, malformed, or
+// blocked storage stamps nothing — the honest "not stamped" signal.
+// ---------------------------------------------------------------------------
+
+function bootFailureBody({ durable, durableThrows = false } = {}) {
+  const h = fakeHost({
+    durable,
+    durableThrows,
+    xhrOpts: { flagsText: JSON.stringify({ observabilityEndpoint: INGEST }) },
+  });
+  crashWatchdogMain(h.host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  fireTimer(h.calls);
+  assert.equal(h.xhr.posts.length, 1, "exactly one report leaves");
+  // NB: the parsed event goes LAST — fakeHost's own `body` is the fake
+  // DOM body element and must not overwrite it.
+  return { ...h, body: JSON.parse(h.xhr.posts[0].body) };
+}
+
+test("stamp: a readable boot-health record stamps its streak, and the store is never written", () => {
+  const record = JSON.stringify({ v: 1, unfinished: 5, lastUnfinishedAt: 123456 });
+  const { body, durableStore, durableWrites } = bootFailureBody({
+    durable: { "meridian:boot-health": record },
+  });
+  assert.equal(body.unfinishedBoots, 5, "the durable streak rides the report");
+  assert.equal(durableWrites.set, 0, "the watchdog never writes the durable store");
+  assert.equal(durableWrites.remove, 0, "the watchdog never removes from the durable store");
+  assert.equal(durableStore["meridian:boot-health"], record, "the record is byte-identical afterwards");
+});
+
+test("stamp: a zero streak is a real stamp (field present, value 0)", () => {
+  const { body } = bootFailureBody({
+    durable: { "meridian:boot-health": JSON.stringify({ v: 1, unfinished: 0 }) },
+  });
+  assert.ok("unfinishedBoots" in body, "stamped zero is evidence, not absence");
+  assert.equal(body.unfinishedBoots, 0);
+});
+
+test("stamp: malformed JSON in the durable record stamps nothing", () => {
+  const { body } = bootFailureBody({ durable: { "meridian:boot-health": "not json{" } });
+  assert.ok(!("unfinishedBoots" in body));
+});
+
+test("stamp: a future record version (v:2) stamps nothing — the v:1 shape is required", () => {
+  const { body } = bootFailureBody({
+    durable: { "meridian:boot-health": JSON.stringify({ v: 2, unfinished: 9 }) },
+  });
+  assert.ok(!("unfinishedBoots" in body));
+});
+
+test("stamp: a string record version (v:\"1\") stamps nothing — the v:1 shape check is strict", () => {
+  // Regression (#347 cure): the shape check must mirror readBootHealth's
+  // strict `p.v !== 1` discard. A loose check stamped this record's
+  // streak 5 even though the app reads the same record as streak 0,
+  // inflating the worker's grade to a false S1.
+  const { body } = bootFailureBody({
+    durable: { "meridian:boot-health": JSON.stringify({ v: "1", unfinished: 5 }) },
+  });
+  assert.ok(!("unfinishedBoots" in body));
+});
+
+test("stamp: a boolean record version (v:true) stamps nothing — the v:1 shape check is strict", () => {
+  const { body } = bootFailureBody({
+    durable: { "meridian:boot-health": JSON.stringify({ v: true, unfinished: 5 }) },
+  });
+  assert.ok(!("unfinishedBoots" in body));
+});
+
+test("stamp: a non-number streak stamps nothing", () => {
+  const { body } = bootFailureBody({
+    durable: { "meridian:boot-health": JSON.stringify({ v: 1, unfinished: "3" }) },
+  });
+  assert.ok(!("unfinishedBoots" in body));
+});
+
+test("stamp: a fractional streak floors to the manifest's integer", () => {
+  const { body } = bootFailureBody({
+    durable: { "meridian:boot-health": JSON.stringify({ v: 1, unfinished: 3.9 }) },
+  });
+  assert.equal(body.unfinishedBoots, 3);
+});
+
+test("stamp: an out-of-range streak clamps to the manifest's 0..99 range", () => {
+  const { body } = bootFailureBody({
+    durable: { "meridian:boot-health": JSON.stringify({ v: 1, unfinished: 250 }) },
+  });
+  assert.equal(body.unfinishedBoots, 99);
+});
+
+test("stamp: blocked durable storage stamps nothing and reports storageOk false", () => {
+  const { body } = bootFailureBody({ durableThrows: true });
+  assert.ok(!("unfinishedBoots" in body), "a throwing store reads as absent");
+  assert.equal(body.storageOk, false, "the throw is honestly reported, same as sessionStorage");
 });
 
 test("parity: no previous trail → mapMode and msSinceBootStart stamp unknown", () => {

@@ -196,6 +196,104 @@ Cured-tip gates:
   future-timestamp upper bound, an S3-style drift-guard test for the
   mirrored key/age, an exact-boundary 900,000 ms unit pin.
 
+## Merge-up — 2026-11-04 (Silo QA, main `70e1be6` merged in)
+
+- Conflicts: this file (both-records: this #349 record on top,
+  main's #347/#348 records and the accumulated stack intact
+  below), `docs/observability.md` (auto-merged clean — #347's
+  severity/INFERRED content AND this branch's stand-down section
+  both present, verified), `scripts/crash-watchdog.mjs` + its
+  test (budget figures only — the code itself auto-merged).
+- Watchdog budget reconciliation: both features survive in the
+  merged module (the #347 read-only boot-health stamp AND the
+  #349 stand-down + recovery card). The rendered worst case
+  MEASURES 6,551 bytes (14-char build id) on the merged tree —
+  exactly 6,104 base + 338 (stamp) + 109 (stand-down + card) —
+  so the budget is 6,600 bytes (smallest round fit, 49 bytes of
+  margin, the established ~40-byte headroom pattern), recorded
+  in the module docstring, the RENAME comment, and the test.
+  Watchdog suite on the merged tree: 61/61.
+- Gates + E2E on the merged tip: see the Silo QA report on PR #349.
+
+---
+
+# Branch status — feat/345-crash-severity (issue #345: crash-report severity grades + watchdog stamp)
+
+- **Branch:** `feat/345-crash-severity`
+- **Base:** `main` @ `0b4e270`
+- **Authority:** issue #345 + the owner-adopted swarm design (2026-11-04, Slice B): grades S1/S2a/S2b/S3, threshold ≥3 (owner's pick over the draft's ≥2), ungraded absolutes, and the watchdog-stamp client fix commissioned in the same decision.
+- **State:** CURED + MERGED UP over main `0b4e270` (via `e1cf6fe`) — panel re-vote on the cured tip pending; no merge (owner's word follows the re-vote).
+
+## Task capsule
+
+- TASK: worker-side `severityOf` (inputs: the re-derived verdict + the stamped `unfinishedBoots` streak only; first-match, fail-closed); the alert's priority line leads with the grade and its why line gains one `Severity: …` clause; the digest gains one counted `severities` dimension and severity-led headers; the boot watchdog stamps the durable boot-health streak read-only onto `boot_failure` so those reports can grade S1.
+- Tier: 2-shaped (worker + client telemetry surfaces, 3+ files). The owner-adopted design is the manifest of record for this task; the panel reviews the final tip after this PR opens.
+- Protected/out of scope: the verdict derivation itself (severity consumes it, never alters it), the P1–P4 mapping, other PRs, branch protection.
+- Model-vs-code note: the inline watchdog's byte budget could not absorb the stamp (worst case was 6,104 of 6,144 bytes) — the budget rose to 6,656 (new worst case 6,441), documented in `scripts/crash-watchdog.mjs` and its test. No telemetry-manifest change was needed: `unfinishedBoots` was already a manifest field, so client + worker + parity stayed in lockstep with no field added.
+
+## Record
+
+- [x] Worker (`workers/crash-report/src/index.ts`): `severityOf` + `SEVERITY_STREAK_THRESHOLD = 3`; `buildAlert` severity lead + clause in Discord and email; `CountBucket.severities` (read-tolerant for pre-#345 buckets), counted in `recordTelemetry`, rendered in type blocks, worst-grade lead in the digest priority line. Tests 109 → 127 (+18: every grade boundary incl. exactly 3, absent-streak fallback wording, stamped-zero wording, ungraded absoluteness at streak 99 for both ungraded verdicts, alert rendering, severities counting, old-bucket tolerance, ungraded-only digest).
+- [x] Watchdog stamp (`scripts/crash-watchdog.mjs`): read-only `ds()` localStorage reader; send-time parse of `meridian:boot-health` (v:1 shape required, floor, 0..99 clamp — mirrors `readBootHealth`); stamps only when a value was read; never writes the record (the §4.4 invariant stands). Inline budget 6,144 → 6,656 with the reason recorded in the module. Tests +8 stamp cases (watchdog file 55/55).
+- [x] Docs: worker README gains a Severity grades section, the updated digest example, the bucket field, and the test count; `docs/observability.md` alert/digest examples and reading notes updated to the new rendering.
+- [x] Gates: worker 127/127 + `typecheck:worker` clean; `npm test` — scripts 1011 pass / 0 fail, src 2119/2119; `tsc` clean; lint-cards GATE PASSED; `build:pages` green. Redundancy audit: one severity derivation (`severityOf`; counting routes through `severityKeyOf` → `severityOf`), one watchdog stamp path.
+- [x] E2E (flock, workers=1, chromium-1243): crash-watchdog + crash-classification + crash-loop-breaker + observability — 12 passed, 2 failed on the pre-existing `storyteller_ready` milestone race: `crash-watchdog:164` fails identically on unmodified main in a clean sequential run, `crash-classification:169` passes in an isolated A/B on both builds, and the two production dists are byte-identical except `_shell.html`. Not a #345 regression.
+- [x] Visuals (owner addition, 2026-11-04): production build at 6 viewports (360×740, 390×844, 430×932, 768×1024, 1440×900, 1920×1080) — boot path exercised, first paint complete 6/6, no watchdog veil; home byte-identical to main at 360/390 and visually identical at 430; the real WebGL globe renders at 360/390/430/1440. Globe captures at 768/1920 are blocked by renderer crashes that hit unmodified main identically (VM SwiftShader + /tmp at 93%) — environment, not a regression. Satellite imagery tiles do not load from sandbox Chromium (no external network); the globe renders its boundary/starfield state with Esri attribution. Evidence: `evidence/visuals-345/` in this worktree (untracked) + Discord samples rendered by both worker versions; links in the PR body.
+
+## Panel cure + merge-up — 2026-11-04 (PR #347, verdict on `0a7f182`: 2 BLOCKs)
+
+- [x] BLOCK 1 (Senior Developer) — watchdog stamp shape check is now strict (`hp.v === 1`, was loose `==`): a record like `{"v":"1","unfinished":5}` or `v:true` is streak 0 to the app (`readBootHealth` discards it) but stamped 5 by the old watchdog, inflating the grade to a false S1. Regression tests pin string `"1"` and boolean `true` versions stamping nothing (they fail on the pre-cure code, pass cured); valid v:1 and v:2 behaviour stay pinned. Worst-case rendered size 6,441 → 6,442 B, within the 6,656 B budget. Riders: `severityOf` direct-caller edge pins (negative streak clamps to 0, non-integer floors, string/non-finite reads as not stamped) + the ungraded-P4 alert pin — no grading behaviour changed.
+- [x] BLOCK 2 (UX Researcher) — the hourly digest now carries exactly one gloss line directly under the priority line when the hour counted any S1: `S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.` Absent in any hour with no S1; both directions pinned, golden digest updated.
+- [x] Doc riders — grade precedence (S1 > S2a > S2b > S3) documented in the worker README severity section and in `docs/observability.md`'s digest reading notes; the observability alert walkthrough's S1 paraphrase again carries the INFERRED label matching the alert/email wording; the `severities:` note now also states the priority lead's worst grade is counted across all types in the hour and that counts inside one type block sort by count, not grade.
+- [x] Merge-up over main `e1cf6fe` (#311): exactly one content conflict — `workers/crash-report/README.md` (the Tests count line) — resolved keeping both intents: #311's audit corrections and funnel content stay, #347's severity section stays accurate against the cured code, test count re-measured on the merged tree (145). `docs/observability.md` and this file auto-merged; both records kept (this #347 record on top, main's stack below intact). Delta audit: branch-vs-main diff is exactly the #345 scope + this cure — no #311 content in the branch's own delta beyond the merge itself.
+- [x] Gates on the cured, merged-up tip (the `87a49ff` merge tree): fresh `npm ci`; worker 145/145 + `typecheck:worker` clean; `npm test` — scripts 1015 pass / 0 fail / 11 skipped, src 2119/2119; `npx tsc --noEmit` clean; `lint-cards` GATE PASSED; `build:pages` green; watchdog budget worst case 6,442 ≤ 6,656 B. E2E not re-run locally in this pass (Silo QA + CI cover the cured tip). Records correction: the sealed gate logs for the `87a49ff` merge tree show scripts 1015 / src 2119 — those figures supersede the scripts 1011 / src 2127 figures stated in that merge commit's message.
+- [x] Second merge-up over main `0b4e270` (#348 auth removal landed while the first merged tip was gating): sole conflict this file — resolved both-records (this #347 record on top, #348's record below it, main's stack intact). #348's code auto-merged with no overlap into the #347 delta; gates re-run on the new merged tree (figures in the PR body merge-up note).
+- [ ] Panel re-vote on the cured tip, then the owner's merge word. NO MERGE in this pass.
+
+---
+
+# Branch status — chore/remove-dead-auth (Remove dead auth)
+
+- **Branch:** `chore/remove-dead-auth`
+- **Base:** `main` @ `68ff2c70013746cee55204f5248ffa612270a21f`
+- **Authority:** Owner, 2026-11-04: "remove auth"
+
+## Task capsule
+
+- TASK: remove Meridian's dead auth code and open a READY-for-review PR (no merge). Sign-in (better-auth/OAuth under `src/lib/auth/`) is leftover template code from the first commit (`abb9748`); the live site 404s `/api/auth/*` and nobody will ever be asked to log in. This PR unblocks closing #326/#327 — those PRs are not touched by this work.
+- Tier: 2 (security-adjacent removal across 3+ files, dependency change). Rationale: the deletion surface touches the root route, the Vite config, the smoke tooling and the lockfile, so it carries the full gate contract below even though every edit is a removal.
+- Done condition: the exact removal scope below is complete; the tree-wide grep gate is clean (see the migrations note under Coupling findings); every gate in the verification contract passes; test-count deltas against the pre-removal baseline are accounted for test-by-test; a local runtime smoke on the `build:pages` output passes.
+- Files in scope: `src/lib/auth/**` (delete, except the isolation move), `src/lib/isolation.server.ts` (moved file), `src/lib/app-data/client.server.ts` (one import line), `src/routes/__root.tsx`, `src/lib/credits.ts`, `package.json` + `package-lock.json`, `vite.config.ts`, `scripts/check-auth-invariant.mjs` + test (delete), `scripts/sign-out-plan.mjs` + test (delete), `scripts/browser-smoke.mjs`, `scripts/app-env-plugin.mjs` (one comment), `BRANCH_STATUS.md`.
+- Protected / out of scope (NOT touched): the embedded-DB stack — `src/lib/db.ts`, `migrations/`, `scripts/migrate.mjs`, `db:migrate`, `pgliteBootstrapPlugin`, the `VITE_AUTH_ENABLED`/app-env flag machinery (`with-app-env.mjs` etc.), and `src/lib/app-data/` beyond the one import line. No other dependency is removed.
+- Verification contract: tree-wide grep = 0 for `better-auth`, `lib/auth`, `AuthProvider`, `check-auth-invariant`, `sign-out-plan`, `auth/popup`, `popup.server` (excluding `.git`, `node_modules`, this record — and `migrations/`, see below); `npm ci`; `npx tsc --noEmit`; `npm run typecheck:worker`; `npm run build`; `npm test`; `npm run test:worker`; `node scripts/lint-cards.mjs` (GATE PASSED); `npm run build:pages`; local Playwright smoke on the built artifact.
+
+## Coupling findings
+
+- **browser-smoke coupling:** `scripts/browser-smoke.mjs` imported the auth-invariant check and published an `authWarnings` verdict field. Removed: the import block, the `authWarnings` computation, the verdict field and the warnings spread. Brand warnings, viewports and baseline behaviour unchanged. (`browser-smoke-verdict.mjs` and its test carry no auth references — re-verified.)
+- **authPopupPlugin coupling:** `vite.config.ts` carried a dev-only plugin that `ssrLoadModule`'d the deleted `src/lib/auth/popup.server.ts` to serve `/auth/popup`. Removed: the function, its registration, and the ordering comment above the registration. The neighbouring registration comment also named the deleted `check-auth-invariant` script, so it was cured in the same pass (the grep gate requires zero references). Every other plugin is untouched — `pgliteBootstrapPlugin` and `appEnvPlugin` stay.
+- **isolation move (the one judgement joint):** `src/lib/auth/isolation.server.ts` is a generic Fetch-Metadata same-site guard — it exports `CrossSiteRequestError` + `assertSameSiteRequest`, imports only `@tanstack/react-start/server`, and has no better-auth dependency — with one live outside importer. It moved to `src/lib/isolation.server.ts` (`git mv`); the import in `src/lib/app-data/client.server.ts` was updated. Its header comment no longer claims enforcement at the deleted `authMiddleware` chokepoint or alongside Better Auth's `trustedOrigins`; it now says the guard serves the app-data server path. The `.server`-suffix warning is intact.
+- **migrations note:** `migrations/auth/0001_auth.sql` is a dormant, never-applied Better Auth schema (the migration appliers do not descend into subdirectories) whose comments name the deleted code. It sits inside the protected embedded-DB stack this task must not touch, so it is the one place the removed names still appear; it is listed as a follow-up below instead of being edited here.
+- **Docs sweep:** README.md + `docs/` were grepped for sign-in/auth presented as a live feature — none found, nothing to cure. Historical/review docs that merely record the past are not stale and were left alone.
+
+## Follow-ups (orphaned by this removal — NOT done here)
+
+- `jose` — zero code usage anywhere on the post-removal tree; only its `src/lib/credits.ts` listing remains. Candidate for a follow-up dependency removal.
+- `kysely` — zero code usage; only its credits listing remains. Its only consumer was the deleted auth pglite dialect. Candidate for a follow-up dependency removal.
+- `@electric-sql/pglite` — still used by the protected `src/lib/db.ts`; only the credits listing appears outside the DB stack. Not orphaned as a package.
+- `pg` — still used by `scripts/migrate.mjs` and by `src/lib/db.ts`; credits listing besides. Not orphaned.
+- `migrations/auth/0001_auth.sql` — dormant Better Auth schema + stale comments (incl. one in protected `src/lib/db.ts`); a follow-up decision, inside the DB stack this PR must not touch.
+- `VITE_AUTH_ENABLED` / app-env machinery — the flag now has no consumer in `src/`; the machinery stays per this task's scope and is a follow-up decision.
+
+## Status
+
+- [x] Baseline on unmodified main recorded (scripts + src + worker suites, tsc).
+- [x] Auth folder deleted (18 files) + isolation guard moved; `__root.tsx` AuthProvider wrap removed.
+- [x] Auth scripts deleted; browser-smoke unhooked; app-env comment cured.
+- [x] `better-auth` dependency + `check:auth` script removed; lockfile regenerated (better-auth gone); credits line removed.
+- [x] `authPopupPlugin` removed from `vite.config.ts`.
+- [x] Full gate run on the branch tip + test-count accounting — grep gate clean (only this record + protected `migrations/` retain the names); `npm ci` clean; tsc clean; `typecheck:worker` clean; `npm run build` green; lint-cards GATE PASSED; `build:pages` green (first attempt was killed at exit 137 during prerender under VM contention; the no-change retry passed). Counts: scripts 985 tests / 976 pass / 9 skipped / 0 fail, src 2119 → 2092 (all pass), worker 109 → 109 (all pass). Two tests in `scripts/ssr-build-shape.test.mjs` skip until a production build exists, so the post-build run (976 pass / 9 skipped) is the canonical count. Every delta test is accounted for by the deleted suites: scripts −29 = check-auth-invariant (11) + sign-out-plan (18); src −27 = gate-identity (24) + sign-in-gate (3). No other delta.
+- [x] Runtime smoke on the `build:pages` output — PASSED 7/7: home 200 + renders, GeoDetective card visible, Cold Trail card visible, zero console/page errors, `GET /api/auth/session` → 404. Evidence under `.smoke-evidence/` (not committed). Environment notes: port 4124 (4123 held by a sibling crew's server), `TMPDIR` on workspace disk (shared `/tmp` tmpfs was 94% full and crashed Chromium profiles — a control run against an unmodified main build crashed identically), `--disable-dev-shm-usage` as in `playwright.config.ts`.
+- [x] PR opened READY for review — PR #348 — no merge.
 ---
 
 # Branch status — feat/capitals-flags-phase1 (Capitals & Flags, Phase 1)

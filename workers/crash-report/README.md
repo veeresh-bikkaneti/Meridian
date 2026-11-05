@@ -179,6 +179,54 @@ Four verdicts, fail-closed — missing evidence can only land on
 anything else (including missing or invalid) →
 `insufficient_evidence`.
 
+## Severity grades (S1–S3, issue #345)
+
+Not the forwarding tiers above — those decide whether an event is
+forwarded at all. The severity grade answers a different question:
+**how bad is it for the player?** It is derived worker-side by
+`severityOf`, from two inputs only — the worker's own re-derived
+verdict and the event's stamped unfinished-boot streak
+(`unfinishedBoots`) — first match wins:
+
+| Grade | Rule | Meaning |
+|---|---|---|
+| S1 | `developer_needed` and streak ≥ 3 | The player most likely left and never got back in. **Inferred**, never observed: under the counts-only privacy model a literal no-return cannot be seen, so the grade derives from the missing clean boot and the alert's wording says so. |
+| S2a | `auto_fixed` and streak ≥ 3 | It recovered — but only after a repeated-failure streak. |
+| S2b | `developer_needed`, streak 0–2 or not stamped | A developer is needed; the repeat evidence for S1 is not there. When the streak was not stamped, the why line says exactly that. |
+| S3 | `auto_fixed`, streak 0–2 or not stamped | It fixed itself, without a repeat streak. |
+| *(ungraded)* | `insufficient_evidence` or `not_a_real_issue`, at any streak | Never graded — absolutely. Missing evidence must not be inflated into an impact claim, and a benign report needs no grade. |
+
+The threshold is exactly 3 (owner pick, 2026-11-04). Grade
+precedence, worst first, is **S1 > S2a > S2b > S3** — that order
+decides which grade leads the digest's priority line for an hour.
+Severity never
+changes the verdict or the P1–P4 triage mapping; it only leads them:
+
+- **Alert:** the priority line becomes `priority: S1 · P1 — <the
+  existing P-line text>` (an ungraded verdict renders
+  `priority: ungraded · P3 or P4 — …`), and the `why:` line gains one
+  `Severity: …` clause carrying the grade's evidence — the streak,
+  or the fact that it was not stamped.
+- **Digest:** each type block counts a `severities:` dimension
+  (the four grades plus `ungraded`), and the digest's priority line
+  leads with the hour's worst grade when the hour counted any
+  graded event. When the hour counted any S1, the digest also
+  carries exactly one gloss line directly under the priority line —
+  `S1 = player-left INFERRED from ≥3 unfinished boots with no
+  clean boot — not observed.` — so the INFERRED label that the
+  alert and email carry reaches the digest too (#347 cure).
+  Type order and everything else are unchanged.
+
+One client change rides along: the boot watchdog now stamps
+`unfinishedBoots` onto its `boot_failure` reports, read-only, from
+the durable `meridian:boot-health` record the app already
+maintains — the same field the app path stamps — so watchdog
+reports can grade S1 when they qualify. The watchdog still never
+writes that record; an absent, malformed, or blocked record stamps
+nothing, and the worker grades the S2b fallback and says the
+streak was not stamped. No field was added anywhere:
+`unfinishedBoots` was already in the telemetry manifest.
+
 ## Threshold alert
 
 When any accepted event type's count for the current UTC
@@ -224,16 +272,17 @@ for the **previous** completed UTC hour. One compact Discord message:
 ```
 📊 Meridian telemetry — hourly digest
 hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)
-priority: P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone
+priority: S1 · P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone
+S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.
 
 suspected_crash 1 · first 17:42 · last 17:42
   builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1
   groups: c6853be|ios|16|phone ×1
-  verdicts: developer_needed/fg_kill_current ×1 · modes: scout ×1 · steps: map_init_start ×1
+  verdicts: developer_needed/fg_kill_current ×1 · severities: S1 ×1 · modes: scout ×1 · steps: map_init_start ×1
 js_error 1 · first 17:05 · last 17:05
   builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1
   groups: 2a0527f|android|unknown|phone ×1
-  verdicts: developer_needed/captured_error ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1
+  verdicts: developer_needed/captured_error ×1 · severities: S2b ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1
 
 alerts this hour: none
 ```
@@ -241,7 +290,9 @@ alerts this hour: none
 The header names the **receipt hour** (when reports arrived at the
 worker, not when they happened on the phone) and the total event
 count, followed by a `priority:` line for the highest-priority
-verdict in the hour, with its top group. Each type then gets its own
+verdict in the hour, with its top group — led by the hour's worst
+severity grade when the hour counted any graded event (see
+Severity grades above). Each type then gets its own
 block. The block's first line shows the count plus the **first** and
 **last** receipt times in the hour — so a burst (first ≈ last) reads
 differently from a steady rate — and ends with
@@ -250,12 +301,13 @@ outside the receipt hour. The lines under it carry, in order: the
 top **builds**, **editions**, and **regions**; the top **groups**
 (`<buildId>|<os>|<osMajor>|<deviceClass>` cross-tabs); and the top
 **verdicts** (the worker's re-derived `<verdict>/<whyKey>` pairs),
-**modes**, and **steps** (last milestones), plus **errors** (error
+**severities** (the #345 grades plus `ungraded`), **modes**, and
+**steps** (last milestones), plus **errors** (error
 names only) when the bucket counted any. Every list shows only its
 top few entries, and a truncated list is **labelled, never silent**:
 it ends with the true remainder, like `(+2 more)`. Caps: top 3 builds,
-top 2 editions, top 2 regions, top 3 groups, top 3 verdicts, top 2
-modes, top 2 steps, top 2 error names. A type block's
+top 2 editions, top 2 regions, top 3 groups, top 3 verdicts, top 5
+severities, top 2 modes, top 2 steps, top 2 error names. A type block's
 first line is flagged **⚠️** when its count exceeds **3× the
 trailing 24-hour hourly average** for that type AND exceeds 3 events
 absolute — a first-ever burst (avg 0) flags too, which is the point.
@@ -277,6 +329,7 @@ it a burst or a steady rate" without storing any event payloads:
   "regions": {"united-states": 22}, "devices": {"linux/desktop": 22},
   "groups": {"f331846|linux|unknown|desktop": 22},
   "verdicts": {"developer_needed/captured_error": 22},
+  "severities": {"S2b": 22},
   "milestones": {"game_loaded": 22}, "modes": {"full": 22},
   "errorNames": {"TypeError": 3},
   "firstAt": 1792288800000, "lastAt": 1792289100000, "late": 0,
@@ -289,6 +342,10 @@ it a burst or a steady rate" without storing any event payloads:
   bad hour cannot grow the value without bound.
 - `verdicts` keys are `"<verdict>/<whyKey>"`, from the worker's own
   re-derived verdict (the client's stamp is never trusted for this).
+- `severities` keys are the #345 grades (`S1`, `S2a`, `S2b`, `S3`)
+  plus `ungraded`, counted from the same derivation (see Severity
+  grades above). Buckets written before #345 have no `severities`
+  field and read back with it defaulted to an empty map.
   Client stamps the classifier never reads (`verdict`, `whyKey`,
   `storageOk`, `afterRecovery`) arrive as extra short primitives (a
   nested stamp fails validation instead) and are ignored for
@@ -336,9 +393,11 @@ fields (`bgTerminal`, `buildReplaced`, `trailStuck`, `lcV`,
 ## Tests
 
 ```sh
-npm run test:worker        # 113 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
+npm run test:worker        # 145 unit tests (validation, alert builder, rate limiter, CORS + Origin allowlist,
                            #  S4: streamed cap, schema, binding; Phase 1: tiering, counting, threshold, digest, fail-open;
-                           #  Slice 1/2 verdicts + recovery outcomes; #194: funnel-type acceptance, tiering, counting)
+                           #  Slice 1/2 verdicts + recovery outcomes; #194: funnel-type acceptance, tiering, counting;
+                           #  #345: severity grade boundaries, alert/digest severity rendering, severities counting;
+                           #  #347 cure: severityOf direct-caller edge pins, ungraded-P4 pin, digest S1 gloss pins)
 npm run typecheck:worker   # strict tsc on the worker sources
 ```
 
