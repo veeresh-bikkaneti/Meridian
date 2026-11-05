@@ -29,6 +29,68 @@
 - Targeted E2E (flock, --workers=1, chromium-1243, branch build): band-switch-in-session 1/1; age-profile-gate 1/1 (new toast pin); band-media-variants 4/4. card-redesign full file: 3 whole-test 240 s timeouts under VM contention (no assertion failures); the 3 tests + 1 name-matched neighbour passed 4/4 on a clean sequential re-run — contention flake, dispositioned.
 - Full gate numbers recorded in the PR body.
 
+## Panel round-1 cure — 2026-11-04 (verdict on `2b2410b`: 2 APPROVE / 6 AWN / 4 BLOCK)
+
+Cure builder (not the round-1 builder). Both BLOCKs cured; the cured
+tip returns for fresh Silo QA + a full panel re-vote before any
+merge word. NO MERGE.
+
+- **B1 — off-screen-pause observer orphaned by the retry remount
+  (4 seats).** In `card-film.tsx` + `LockedTileFilm.tsx` the
+  threshold-0 observer now resolves `videoRef.current` inside its
+  callback (event time), immune to every remount path. Folded nit:
+  the retry/latch state is now URL+band-scoped DERIVED state
+  (`spentScope`/`failedScope` hold the scope string; `attempt`/
+  `failed` derived) — no post-render reset effect, no double fetch
+  start on a swap, no stale error charged to a new film.
+- **B2 — latch reset keyed only on URL (Office Hours).**
+  `CardFilm` takes a `band` prop (wired at all five game-app call
+  sites, all with `ageBand` in scope); the scope is band + videoUrl,
+  so ANY band change revives a latched slot in its first render —
+  including the constant-media slots (GeoDetective/Journal/
+  Grown-ups) and fail-closed variant slots. LockedTileFilm needs
+  no band prop (5–7 only, constant media).
+- **Proof.** New behavioural E2E `band-film-error-path.desktop.spec.ts`
+  (page.route aborts the GeoDetective film request): fail-once →
+  retry succeeds → film plays; fail-always → latch → band switch
+  11–13 → 8–10 → the same constant-media slot revives and plays;
+  after a successful retry, scrolling off-screen pauses the CURRENT
+  element. Bite vs the round-1 tip (scratch builds): the revival
+  case fails there (no video mounts after the switch); the unit
+  pins fail 8/51 there (observer-resolution + scope-derivation +
+  wiring pins), 51/51 on the cured tip. In-progress toast: proven
+  unreachable behaviourally (AgeProfileSettings renders only in
+  game-app's Home branch, reached only when run === null &&
+  !loopOpen, so runInProgress is never true at its only render
+  site) — covered instead by the new source/behaviour pin file
+  `age-profile-settings-toast.test.ts` (exact templates + composed
+  strings from the real band table, all three bands).
+- **Docs cures (all six).** AgeProfileSettings post-gate comment
+  deleted (toast renders ~3.5 s on home; owner ruled it names the
+  band anyway, 2026-11-04); types.ts band `label` gloss gains the
+  toast exception; AgePicker header scoped to durable surfaces +
+  the same exception; LockedTileFilm header gains the explicit
+  WCAG 2.2.2 sentence (no stop exists; owner accepted the gates);
+  locked-tile-media.ts ~105-char line rewrapped; card-film header
+  states the cured retry budget (one retry per media+band scope).
+- **Pin re-points (shape genuinely changed, nothing weakened).**
+  The exact CardFilm call-string pins in card-film.test.ts (5),
+  `card-media-band-variants.test.ts` (5) and
+  `home-smooth-cards.test.ts` (3) now include `band={ageBand}`.
+- **Merge-ups.** main `0b4e270` (#348) merged, then main `70e1be6`
+  (#347) merged when it landed mid-cure; sole conflict both times:
+  this file (both-records stack). Final diff vs main: this PR's
+  17 files only.
+- **Environment.** ~/workspace hit its btrfs quota (EDQUOT) during
+  the cure; builds + the final gate run were executed in a roomy
+  overlay-fs clone of the same tip. VM renderer crashes ("Target
+  crashed") hit the heavy E2E specs repeatedly in this window on
+  BOTH the cured build and a round-1-tip control build
+  (band-media-variants 0/4 and band-switch 0/1 there) — environment
+  class, dispositioned with sequential/control runs; the new
+  error-path spec passed 2/2 on the cured build in a quiet window.
+  Fresh Silo QA should re-run the two heavy specs in its own pass.
+
 ## Merge-up — 2026-11-04 (main `0b4e270` merged in, PR #350 panel-cure round)
 
 - Sole conflict: this file. Resolved both-records: this branch's record above, main's #348 record below it; the accumulated records from main follow after.
