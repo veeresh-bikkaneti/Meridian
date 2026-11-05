@@ -3,7 +3,7 @@
 - **Branch:** `feat/345-crash-severity`
 - **Base:** `main` @ `68ff2c7`
 - **Authority:** issue #345 + the owner-adopted swarm design (2026-11-04, Slice B): grades S1/S2a/S2b/S3, threshold ≥3 (owner's pick over the draft's ≥2), ungraded absolutes, and the watchdog-stamp client fix commissioned in the same decision.
-- **State:** READY PR — no merge (panel + owner's word follow).
+- **State:** CURED + MERGED UP over main `e1cf6fe` — panel re-vote on the cured tip pending; no merge (owner's word follows the re-vote).
 
 ## Task capsule
 
@@ -20,6 +20,15 @@
 - [x] Gates: worker 127/127 + `typecheck:worker` clean; `npm test` — scripts 1011 pass / 0 fail, src 2119/2119; `tsc` clean; lint-cards GATE PASSED; `build:pages` green. Redundancy audit: one severity derivation (`severityOf`; counting routes through `severityKeyOf` → `severityOf`), one watchdog stamp path.
 - [x] E2E (flock, workers=1, chromium-1243): crash-watchdog + crash-classification + crash-loop-breaker + observability — 12 passed, 2 failed on the pre-existing `storyteller_ready` milestone race: `crash-watchdog:164` fails identically on unmodified main in a clean sequential run, `crash-classification:169` passes in an isolated A/B on both builds, and the two production dists are byte-identical except `_shell.html`. Not a #345 regression.
 - [x] Visuals (owner addition, 2026-11-04): production build at 6 viewports (360×740, 390×844, 430×932, 768×1024, 1440×900, 1920×1080) — boot path exercised, first paint complete 6/6, no watchdog veil; home byte-identical to main at 360/390 and visually identical at 430; the real WebGL globe renders at 360/390/430/1440. Globe captures at 768/1920 are blocked by renderer crashes that hit unmodified main identically (VM SwiftShader + /tmp at 93%) — environment, not a regression. Satellite imagery tiles do not load from sandbox Chromium (no external network); the globe renders its boundary/starfield state with Esri attribution. Evidence: `evidence/visuals-345/` in this worktree (untracked) + Discord samples rendered by both worker versions; links in the PR body.
+
+## Panel cure + merge-up — 2026-11-04 (PR #347, verdict on `0a7f182`: 2 BLOCKs)
+
+- [x] BLOCK 1 (Senior Developer) — watchdog stamp shape check is now strict (`hp.v === 1`, was loose `==`): a record like `{"v":"1","unfinished":5}` or `v:true` is streak 0 to the app (`readBootHealth` discards it) but stamped 5 by the old watchdog, inflating the grade to a false S1. Regression tests pin string `"1"` and boolean `true` versions stamping nothing (they fail on the pre-cure code, pass cured); valid v:1 and v:2 behaviour stay pinned. Worst-case rendered size 6,441 → 6,442 B, within the 6,656 B budget. Riders: `severityOf` direct-caller edge pins (negative streak clamps to 0, non-integer floors, string/non-finite reads as not stamped) + the ungraded-P4 alert pin — no grading behaviour changed.
+- [x] BLOCK 2 (UX Researcher) — the hourly digest now carries exactly one gloss line directly under the priority line when the hour counted any S1: `S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.` Absent in any hour with no S1; both directions pinned, golden digest updated.
+- [x] Doc riders — grade precedence (S1 > S2a > S2b > S3) documented in the worker README severity section and in `docs/observability.md`'s digest reading notes; the observability alert walkthrough's S1 paraphrase again carries the INFERRED label matching the alert/email wording; the `severities:` note now also states the priority lead's worst grade is counted across all types in the hour and that counts inside one type block sort by count, not grade.
+- [x] Merge-up over main `e1cf6fe` (#311): exactly one content conflict — `workers/crash-report/README.md` (the Tests count line) — resolved keeping both intents: #311's audit corrections and funnel content stay, #347's severity section stays accurate against the cured code, test count re-measured on the merged tree (145). `docs/observability.md` and this file auto-merged; both records kept (this #347 record on top, main's stack below intact). Delta audit: branch-vs-main diff is exactly the #345 scope + this cure — no #311 content in the branch's own delta beyond the merge itself.
+- [x] Gates on the cured, merged-up tip: fresh `npm ci`; worker 145/145 + `typecheck:worker` clean; `npm test` — scripts 1011 pass / 0 fail / 11 skipped, src 2127/2127; `npx tsc --noEmit` clean; `lint-cards` GATE PASSED; `build:pages` green; watchdog budget worst case 6,442 ≤ 6,656 B. E2E not re-run locally in this pass (Silo QA + CI cover the cured tip).
+- [ ] Panel re-vote on the cured tip, then the owner's merge word. NO MERGE in this pass.
 
 ---
 
@@ -689,3 +698,64 @@ Cured, per the three adversary reports + coordinator synthesis:
 - **Biggest gaps fixed:** `recovery_outcome` (8th event type, conditional tier) undocumented everywhere; the entire verdict classifier undocumented; `results` response field missing; all error shapes missing; test count stale (42 → 85).
 - **Files changed:** `workers/crash-report/README.md`, this file. Nothing else.
 - **Done:** [x] audit sealed · [x] README fixed · [x] gates sealed at `~/workspace/meridian-issue-wave/evidence/221/` (test:worker 0 · typecheck:worker 0 · tsc 0 · lint-cards 0 · build:pages 0 · npm test: src suite 1879/1879 pass; scripts suite 851 pass / 1 fail / 9 skip — the 1 fail is `ssr-build-shape` configPath pointing at the sibling `repo/` clone because this worktree's `node_modules` is a symlink to `repo/node_modules`; the same test passes 2/2 on unmodified main in the `repo/` clone, sealed as `ssr-shape-main-control.log`, so it is a worktree-environment artifact, not this docs change) · [ ] PR opened (filled in by the PR-open commit's successor record in the PR body)
+
+---
+
+# Prior record preserved on merge: crash-report worker accepts all 14 event types (PR #311, fix/194-event-type-mismatch)
+
+# BRANCH_STATUS — fix/194-event-type-mismatch (Wave 2, #194 REOPENED)
+
+- **Branch:** `fix/194-event-type-mismatch`
+- **Base:** `main` @ `2a0527f` (#295 merged tip at branch start).
+
+## Task capsule
+
+TASK / requested outcome: Fix the three-way observability event-type
+mismatch behind reopened issue #194. Owner's facts (verified from
+source, 2026-11-02): the app sends 14 event types, the crash-report
+worker accepts 8, the docs say 7 — the 6 storyteller/narration types
+the app emits are rejected (400) by the worker in production and
+silently dropped. Wave 1's docs-only closure in #251 was wrong: it
+claimed those 6 "stay client-side and are not sent", and its counts
+(13 client / 7 worker) were already stale the day it landed (Slice 2,
+#250, had added `recovery_outcome` the day before).
+
+Interpretations considered and selected reading: each app-only type is
+either LEGITIMATE (live emission, worker must accept) or DEAD (app
+must stop sending). Evidence verdict: **all 6 are legitimate** — built
+as COPPA-clean telemetry in #108, emitted on live Storyteller paths,
+sent through the same `emit()` transport to the live endpoint in
+`public/flags.json`, with no client-side consumer anywhere. Full
+per-type evidence: `~/workspace/meridian-issue-wave/evidence/194/DIAGNOSIS.md`.
+
+Tier and rationale: Tier 1 — one clear contract bug, diagnosed from
+source first; fix at the worker layer + a drift guard + docs sync.
+
+Done condition / evidence: worker accepts all 14 types; the 6 funnel
+types are counted-only (never forwarded individually, like
+hiccup-class); per-type acceptance tests + unknown-type rejection
+pinned; a drift test in `npm test` keeps the client union and the
+worker list equal; every doc list reads 14; gates sealed under
+`~/workspace/meridian-issue-wave/evidence/194/` (tsc · npm test ·
+test:worker · typecheck:worker · lint-cards · build:pages); PR open.
+STOP at PR-open — no Silo QA, no panel, no merge by this run.
+
+Files in scope: `workers/crash-report/src/index.ts` +
+`src/index.test.ts`, new `scripts/observability-event-types.test.mjs`,
+`docs/observability.md`, `docs/handbook/07-engineering-and-ops.md`,
+`workers/crash-report/README.md`, `worker/observability/README.md`
+(cross-reference count only), this file. App source: NO change (no
+dead types). Frozen PRs #297/#299/#302/#305 and #231/#265/#270/#292/#293
+untouched. Claim recorded in the coordination ledger 2026-11-02: Wave 2
+claims the crash-report worker surface for #194/#221 per the owner's
+express assignment (historically Rock's surface — noted for his round).
+
+## Status
+
+- [x] Diagnosis sealed (evidence/194/DIAGNOSIS.md) — counts 14/8/7 confirmed; all 6 app-only types LEGITIMATE
+- [x] Worker fix + tests (worker suite 85 → 90; commit 9f8635c)
+- [x] Drift-guard script test (mutation-proven; commit 9f8635c)
+- [x] Docs sync (4 files: docs/observability.md, handbook ch07, workers/crash-report/README.md, worker/observability/README.md cross-ref)
+- [x] Gates sealed (evidence/194/gates/, on tip 3fb41de): tsc 0 · npm test 0 (scripts 852 pass / 11 skipped; src 1879/1879) · test:worker 0 (90/90) · typecheck:worker 0 · lint-cards GATE PASSED · build:pages 0. E2E not run — no client emission changed (app source untouched). Note: the resume run re-sealed npm test + build:pages after the first sealing attempts lost their exit files when their shell sessions were killed mid-run; the re-run logs are the sealed ones (identical pass counts).
+- [x] PR open — PR #311 (2026-11-02, resume run after the prior crew died in a daemon restart; reconciliation found this branch/worktree + sealed DIAGNOSIS.md sound and resumed from them, no restart). STOP at PR-open — no Silo QA, no panel, no merge by this run.
+
