@@ -17,8 +17,16 @@
 - [x] Unit 1 — CardFilm latch fix + pins (27/27 with fix; 24/27 with the src change stashed — the 2 new pins + the updated gate pin fail pre-fix)
 - [x] Unit 2 — LockedTileFilm: latch retry + loop governance (loop attr, threshold-0 off-screen pause observer, play() rejections dropped) + header rewrite (R1 holds: no control added; stop story = the gates + off-screen pause; stale CardFilm-toggle claim removed). Tests re-pinned: 16/16 with fix, 12/16 pre-fix (loop/off-screen/retry/gate pins fail); R1 describe passes both ways. Docs cured in-unit: README locked-tile paragraph + `locked-tile-media.ts` header now record the loop ruling (play-once marked superseded, not deleted)
 - [x] Unit 3 — Band-naming confirm toast: `Saved — {label} (ages {ageMin}–{ageMax}) ✅` / in-progress `Saved — {label} (ages {ageMin}–{ageMax}); takes effect on the next card. ✅`, built from `getBand(confirmTarget)`; first-save + reset toasts byte-identical; stale band-invisibility comment replaced with the 2026-11-04 ruling. Gate spec pin updated to its switch (8-10 → 11-13): `Saved — GeoDetective (ages 11–13) ✅`
-- [ ] Unit 4 — New in-session switch E2E + against-main bite run
-- [ ] Docs cured (README, locked-tile-media header) + full gates + PR opened (NO MERGE — panel + owner's word are the merge gate)
+- [x] Unit 4 — New in-session switch E2E (`band-switch-in-session.desktop.spec.ts`, 1 test): real UI flow, no seeded band (unset → UI first-set 11–13 → Trail Scout → Little Explorer → back to 11–13); passes on the branch build (1/1). Bite proof against an unmodified-main build (scratch worktree @ e1cf6fe, removed after): the committed spec fails at the Trail Scout toast (expected `Saved — Trail Scout (ages 8–10) ✅`, main shows `Saved ✅`); a scratch variant with main's toast text substituted (evidence only, never committed) proceeds and fails at `locked film loop attribute — Expected: true, Received: false`
+- [x] Docs cured (README, locked-tile-media header — in Unit 2) — docs grep found no other play-once/band-invisible text: the ws-4 spec named in the brief does not mention LockedTileFilm, and the Handbook carries no locked-film or band-toast description
+- [ ] Full gates on the final tip + PR opened (NO MERGE — panel + owner's word are the merge gate)
+
+## Verification record (builder, on the tip)
+
+- Baseline (unmodified `e1cf6fe`): `npm test` — scripts 1016 tests (1005 pass, 11 skipped, 0 fail); src 2119/2119 pass.
+- Unit pins: card-film.test.ts 27/27 with fix, 24/27 pre-fix (stash check); locked-tile-film.test.ts 16/16 with fix, 12/16 pre-fix, R1 pins pass both ways.
+- Targeted E2E (flock, --workers=1, chromium-1243, branch build): band-switch-in-session 1/1; age-profile-gate 1/1 (new toast pin); band-media-variants 4/4. card-redesign full file: 3 whole-test 240 s timeouts under VM contention (no assertion failures); the 3 tests + 1 name-matched neighbour passed 4/4 on a clean sequential re-run — contention flake, dispositioned.
+- Full gate numbers recorded in the PR body.
 
 ---
 
