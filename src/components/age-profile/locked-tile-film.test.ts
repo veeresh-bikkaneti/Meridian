@@ -98,13 +98,56 @@ describe("LockedTileFilm — lazy mount + loop governance (owner ruling, 2026-11
     assert.ok(film.includes("videoRef"), "the observer drives the mounted video element");
   });
 
-  it("error latch: one bounded retry before latching (parallel to CardFilm)", () => {
-    assert.ok(film.includes("const [attempt, setAttempt] = useState(0)"), "attempt state exists");
+  it("off-screen pause: the observer resolves the CURRENT element inside its callback (panel B1)", () => {
+    // Same orphaning defect as CardFilm: round 1 captured
+    // `videoRef.current` once when the effect ran, and the retry
+    // key remounts the <video> node — the live observer kept
+    // driving the detached old element. The cure resolves the
+    // element at event time, inside the callback.
+    const effectStart = film.indexOf("// Off-screen pause, CardFilm's exact governance:");
+    const callbackAt = film.indexOf("(entries) => {", effectStart);
+    const beforeCallback = film.slice(effectStart, callbackAt);
     assert.ok(
-      film.includes("if (attempt === 0) setAttempt(1);"),
-      "first error spends the single retry",
+      !beforeCallback.includes("videoRef.current"),
+      "no element is captured before the observer callback (a captured element goes stale on remount)",
     );
-    assert.ok(film.includes("else setFailed(true);"), "second error latches to the still");
+    const callbackBody = film.slice(callbackAt, film.indexOf("{ threshold: 0 }", callbackAt));
+    assert.ok(
+      callbackBody.includes("const film = videoRef.current;"),
+      "the callback resolves videoRef.current at event time",
+    );
+    assert.equal(
+      (film.match(/videoRef\.current/g) || []).length,
+      1,
+      "exactly one videoRef.current resolution in the component — inside the callback",
+    );
+  });
+
+  it("error latch: one bounded retry per scope, derived (parallel to CardFilm)", () => {
+    // The media is a constant, so the scope is just its URL; the
+    // states remember WHICH scope spent/latched and attempt +
+    // failed are derived — no state reset, no stale charge.
+    assert.ok(
+      film.includes("const scope = LOCKED_GEODETECTIVE_FILM.videoUrl;"),
+      "the scope is the constant film's URL",
+    );
+    assert.ok(
+      film.includes("const [spentScope, setSpentScope] = useState<string | null>(null);"),
+      "the spent-retry state remembers WHICH scope spent it",
+    );
+    assert.ok(
+      film.includes("const [failedScope, setFailedScope] = useState<string | null>(null);"),
+      "the latch state remembers WHICH scope latched",
+    );
+    assert.ok(film.includes("const attempt = spentScope === scope ? 1 : 0;"), "attempt is derived");
+    assert.ok(film.includes("const failed = failedScope === scope;"), "failed is derived");
+    assert.ok(!film.includes("const [attempt, setAttempt]"), "no attempt state to reset");
+    assert.ok(!film.includes("const [failed, setFailed]"), "no failed state to reset");
+    assert.ok(
+      film.includes("if (spentScope !== scope) setSpentScope(scope);"),
+      "first error on a scope spends its single retry",
+    );
+    assert.ok(film.includes("else setFailedScope(scope);"), "second error on the same scope latches");
     assert.ok(
       film.includes("key={`locked#${attempt}`}"),
       "the attempt count is in the video key, so spending the retry remounts the video once",

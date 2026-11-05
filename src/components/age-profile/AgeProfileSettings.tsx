@@ -70,9 +70,10 @@ export default function AgeProfileSettings({
     if (confirmTarget === null) return;
     saveBand(confirmTarget, { runInProgress });
     setProfile(loadProfile());
-    // This flow is post-gate (a parent-only surface), and the
-    // owner ruled on 2026-11-04 that the confirmation toast names
-    // the band — superseding the earlier band-invisible toast
+    // The settings flow is post-gate, but this toast itself
+    // renders briefly on home (~3.5 s) once the flow closes —
+    // and the owner ruled on 2026-11-04 that it names the band
+    // anyway, superseding the earlier band-invisible toast
     // design ("Saved ✅"). The label and age range come from the
     // band table via getBand (the single source), formatted the
     // way AgePicker displays ranges: "ages {ageMin}–{ageMax}".

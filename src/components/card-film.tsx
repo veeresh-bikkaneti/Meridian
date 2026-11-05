@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
+import type { AgeBandId } from "@/game/age-profile";
 
 /**
  * CardFilm — the one shared picture slot for the five home cards
@@ -40,11 +41,15 @@ import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
  *   video error. Reduced motion is read through the shared hook,
  *   so an OS setting flipped mid-session swaps to the still too.
  *   A video error gets ONE bounded retry (a single remount)
- *   before it latches to the still, and the latch resets when
- *   the slot's media changes — a band switch swaps the media via
- *   the card-media band variants — so one flaky load cannot park
- *   the slot on the still for the whole home session
- *   (owner commission, 2026-11-04).
+ *   before it latches to the still. Retry budget: exactly one
+ *   retry per media+band scope — the retry and the latch are
+ *   spent for that scope until the media or the band changes,
+ *   so a band switch revives even a slot whose media is the
+ *   same in every band, and one flaky load cannot park the
+ *   slot on the still for the whole home session (owner
+ *   commission, 2026-11-04; scope cured on the panel's
+ *   re-vote round — most slots' media never changes, so a
+ *   media-only reset left them latched).
  * - Lazy: the video element (and with it the .mp4 request) only
  *   mounts when the slot nears the viewport — IntersectionObserver,
  *   rootMargin 200px, the globe's pattern. Before that, the poster
@@ -54,8 +59,10 @@ import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
  * - It loops, muted and inline. A second IntersectionObserver
  *   (threshold 0) pauses the film when the slot leaves the screen
  *   and plays it again when the slot comes back, so five loops
- *   never decode off-screen. play() rejections are caught and
- *   dropped, as before.
+ *   never decode off-screen. The observer resolves the CURRENT
+ *   video element inside its callback, so a remount (the retry,
+ *   a media swap) never leaves it play()/pause()-ing a detached
+ *   element. play() rejections are caught and dropped, as before.
  * - The film is decoration: aria-hidden, never focusable. This
  *   component adds no interactive element to any card.
  * - Zero layout shift: the wrapper carries the slot's existing
@@ -94,41 +101,49 @@ export function CardFilm({
   className,
   media,
   testId,
+  band,
 }: {
   className?: string;
   media: CardFilmMedia;
   testId?: string;
+  /**
+   * The current age band. Part of the retry/latch scope below:
+   * a band switch revives a latched slot even when its media is
+   * the same in every band (most slots) — the panel's B2 cure.
+   */
+  band?: AgeBandId;
 }) {
   const reducedMotion = usePrefersReducedMotion();
   // Save-Data / low-memory are read once at mount (the globe reads
   // them the same way); reduced motion stays live via the hook.
   const [staticGate] = useState<boolean>(staticGateAtMount);
-  const [failed, setFailed] = useState(false);
+  // The retry/latch scope: this film in this band. The two states
+  // below only remember WHICH scope spent its retry / latched;
+  // `attempt` and `failed` are DERIVED by comparing them to the
+  // current scope, so a media or band change resets both in the
+  // same render — no post-render reset effect, no first render at
+  // the stale attempt, and no stale error charged to a new film.
+  // A single flaky load must not park this slot on the still for
+  // the whole home session (owner commission, 2026-11-04).
+  const scope = `${band ?? ""}|${media.videoUrl}`;
+  const [spentScope, setSpentScope] = useState<string | null>(null);
+  const [failedScope, setFailedScope] = useState<string | null>(null);
   // Which load attempt the mounted video is on: 0 is the first
   // try, 1 is the one bounded retry (see handleError below).
-  const [attempt, setAttempt] = useState(0);
+  const attempt = spentScope === scope ? 1 : 0;
+  const failed = failedScope === scope;
   const [near, setNear] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const gated = reducedMotion || staticGate || failed;
 
-  // A single flaky load must not park this slot on the still for
-  // the whole home session (owner commission, 2026-11-04): a band
-  // switch swaps media via the card-media band variants, so when
-  // the film itself changes the failure latch and the retry both
-  // reset — the new film gets its own fresh chance.
-  useEffect(() => {
-    setFailed(false);
-    setAttempt(0);
-  }, [media.videoUrl]);
-
   const handleError = () => {
     // One bounded retry before latching: remount the video once
-    // (its key carries the attempt count). A second error latches
-    // to the still. No retry loop, no timers.
-    if (attempt === 0) setAttempt(1);
-    else setFailed(true);
+    // (its key carries the attempt count). A second error on the
+    // SAME scope latches to the still. No retry loop, no timers.
+    if (spentScope !== scope) setSpentScope(scope);
+    else setFailedScope(scope);
   };
 
   useEffect(() => {
@@ -154,10 +169,16 @@ export function CardFilm({
   useEffect(() => {
     if (gated || !near) return;
     const root = rootRef.current;
-    const film = videoRef.current;
-    if (!root || !film) return;
+    if (!root) return;
     const io = new IntersectionObserver(
       (entries) => {
+        // Resolve the CURRENT element at event time: the retry
+        // key remounts the video node (and every media swap
+        // does too), so an element captured when this effect ran
+        // would be the detached old node — the mounted film would
+        // autoplay and decode off-screen forever (panel B1).
+        const film = videoRef.current;
+        if (!film) return;
         for (const entry of entries) {
           if (entry.isIntersecting) {
             film.play().catch(() => {});

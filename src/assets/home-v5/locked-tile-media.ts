@@ -34,8 +34,9 @@ import lockedStillUrl from "./geodetective-locked-still.webp";
  * magnifying glass set down on the map away from her hand, eyes
  * closed. She breathes twice, slowly (two 4-second breaths), then
  * the picture rests — and, since the 2026-11-04 loop ruling, the
- * film loops from that resting frame and she breathes again. The film is a region-frozen composite built
- * from the resting still (PIL, script + measurements in
+ * film loops from that resting frame and she breathes again. The
+ * film is a region-frozen composite built from the resting still
+ * (PIL, script + measurements in
  * ~/workspace/meridian-band-port-evidence/): only the head-and-torso
  * region moves; the lamp and the window are the still's own pixels
  * in every frame. That fixes the mock take, which also breathed

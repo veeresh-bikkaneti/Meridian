@@ -4,7 +4,10 @@
  * A real `radiogroup`: arrow-key navigation, screen-reader announces
  * position ("1 of 3"). Age eyebrows are parent-safe here because the whole
  * screen sits behind the grown-up gate. No age numbers, badges, or
- * "easy/hard" language appear on any child-visible surface.
+ * "easy/hard" language appear on any durable child-visible surface —
+ * the one exception is the post-save confirmation toast, which names
+ * the band briefly (~3.5 s) on home (owner ruling, 2026-11-04; see
+ * AgeProfileSettings.confirmChange).
  */
 
 import { AGE_BANDS, AGE_BAND_IDS } from "@/game/age-profile";

@@ -105,30 +105,79 @@ describe("CardFilm — lazy mount + autoloop (owner order, 2026-11-03)", () => {
     assert.ok(film.includes("film.pause()"), "off-screen films pause instead of decoding");
   });
 
+  it("off-screen pause: the observer resolves the CURRENT element inside its callback (panel B1)", () => {
+    // Round 1 captured `videoRef.current` once when the effect
+    // ran; the retry key remounts the <video> node, so the live
+    // observer kept driving the DETACHED old element and the
+    // mounted film decoded off-screen forever. The cure resolves
+    // the element at event time, inside the callback.
+    const effectStart = film.indexOf("// Off-screen pause:");
+    const callbackAt = film.indexOf("(entries) => {", effectStart);
+    const beforeCallback = film.slice(effectStart, callbackAt);
+    assert.ok(
+      !beforeCallback.includes("videoRef.current"),
+      "no element is captured before the observer callback (a captured element goes stale on remount)",
+    );
+    const callbackBody = film.slice(callbackAt, film.indexOf("{ threshold: 0 }", callbackAt));
+    assert.ok(
+      callbackBody.includes("const film = videoRef.current;"),
+      "the callback resolves videoRef.current at event time",
+    );
+    assert.equal(
+      (film.match(/videoRef\.current/g) || []).length,
+      1,
+      "exactly one videoRef.current resolution in the component — inside the callback",
+    );
+  });
+
   it("no timers: nothing replays, pauses on a schedule, or polls", () => {
     assert.ok(!film.includes("setTimeout"), "no timer chains");
     assert.ok(!film.includes("setInterval"), "no polling timers");
   });
 });
 
-describe("CardFilm — error latch: reset on media change + one bounded retry (2026-11-04)", () => {
-  it("the failure latch resets when media.videoUrl changes (band switches swap media)", () => {
-    // Pre-fix, `failed` latched on any single error and never
-    // reset — including across a media prop change — so one
-    // flaky load parked the slot on the still for the whole
-    // home session. The reset effect is keyed on the film URL.
-    const reset = film.slice(film.indexOf("setFailed(false)"), film.indexOf("const handleError"));
-    assert.ok(reset.includes("setAttempt(0)"), "the retry count resets with the latch");
-    assert.ok(reset.includes("}, [media.videoUrl]);"), "the reset runs when the film changes");
+describe("CardFilm — error latch: URL+band scope, derived (2026-11-04; panel cure)", () => {
+  it("the retry/latch scope is band + videoUrl, held as scope strings", () => {
+    // Panel B2: a media-only reset left most slots latched for
+    // the whole home session — only Review/Cold Trail have
+    // band-variant media, and variant selectors fail closed to
+    // the standard record. The scope therefore includes the
+    // band itself: any band change OR url change is a new scope.
+    assert.ok(film.includes("band?: AgeBandId"), "CardFilm takes the current band as a prop");
+    assert.ok(
+      film.includes('const scope = `${band ?? ""}|${media.videoUrl}`;'),
+      "the scope is band + videoUrl",
+    );
+    assert.ok(
+      film.includes("const [spentScope, setSpentScope] = useState<string | null>(null);"),
+      "the spent-retry state remembers WHICH scope spent it",
+    );
+    assert.ok(
+      film.includes("const [failedScope, setFailedScope] = useState<string | null>(null);"),
+      "the latch state remembers WHICH scope latched",
+    );
   });
 
-  it("one bounded retry before latching: first error remounts once, second error latches", () => {
-    assert.ok(film.includes("const [attempt, setAttempt] = useState(0)"), "attempt state exists");
+  it("attempt and failed are DERIVED from the scope — no reset effect, first-render reset", () => {
+    // Derivation resets in the same render: a media/band change
+    // starts the new film at attempt 0 in its FIRST render (a
+    // post-render effect reset first rendered the new film at
+    // the stale attempt — a double fetch start — and could
+    // charge a stale error to the new film).
+    assert.ok(film.includes("const attempt = spentScope === scope ? 1 : 0;"), "attempt is derived");
+    assert.ok(film.includes("const failed = failedScope === scope;"), "failed is derived");
+    assert.ok(!film.includes("const [attempt, setAttempt]"), "no attempt state to reset");
+    assert.ok(!film.includes("const [failed, setFailed]"), "no failed state to reset");
+    assert.ok(!film.includes("setFailed(false)"), "no effect resets the latch");
+    assert.ok(!film.includes("}, [media.videoUrl]);"), "no media-keyed reset effect survives");
+  });
+
+  it("one bounded retry per scope: first error spends it, second error on the same scope latches", () => {
     assert.ok(
-      film.includes("if (attempt === 0) setAttempt(1);"),
-      "first error spends the single retry",
+      film.includes("if (spentScope !== scope) setSpentScope(scope);"),
+      "first error on a scope spends its single retry",
     );
-    assert.ok(film.includes("else setFailed(true);"), "second error latches to the still");
+    assert.ok(film.includes("else setFailedScope(scope);"), "second error on the same scope latches");
     assert.ok(
       film.includes("key={`${media.videoUrl}#${attempt}`}"),
       "the attempt count is in the video key, so spending the retry remounts the video once",
@@ -176,26 +225,26 @@ describe("CardFilm — zero CLS: media fills the existing .hv5-pic box", () => {
 describe("home wiring — five cards, one component, nothing else moves", () => {
   it("both .hv5-pic slots render CardFilm with their card-media entries", () => {
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" />'),
+      gameApp.includes('<CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" band={ageBand} />'),
       "GeoDetective slot",
     );
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" />'),
+      gameApp.includes('<CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" band={ageBand} />'),
       "Cold Trail slot (band-variant selector, Units 2–3 — the selector returns the standard entry for every band but 5-7)",
     );
   });
 
   it("all three .hv5-art slots render CardFilm with their card-media entries", () => {
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" />'),
+      gameApp.includes('<CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />'),
       "Review slot (band-variant selector, Units 2–3 — the selector returns the standard entry for every band but 8-10)",
     );
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" />'),
+      gameApp.includes('<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />'),
       "Journal slot",
     );
     assert.ok(
-      gameApp.includes('<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" />'),
+      gameApp.includes('<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" band={ageBand} />'),
       "Grown-ups slot",
     );
     assert.equal((gameApp.match(/<CardFilm/g) || []).length, 5, "exactly five film slots — one motion system");

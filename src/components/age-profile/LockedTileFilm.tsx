@@ -30,13 +30,25 @@ import { LOCKED_GEODETECTIVE_FILM } from "../../assets/home-v5/locked-tile-media
  * was already stale when written — CardFilm has had no toggle
  * since the owner's 2026-11-03 autoloop order.)
  *
+ * The tradeoff, stated plainly (mirroring CardFilm's header):
+ * WCAG 2.2.2 asks for a stop on moving content that lasts more
+ * than five seconds. This film is continuous looping decorative
+ * motion and carries no stop of its own, so the stop story
+ * above must not be read as 2.2.2 compliance — the owner
+ * accepted the gates below in place of a stop (2026-11-04
+ * ruling). Do not add a control back without a new owner order.
+ *
  * The gates match CardFilm's, and each one lands on the resting
  * still with the video file never fetched: prefers-reduced-motion
  * (the shared hook, live mid-session), Save-Data, deviceMemory
  * ≤ 2, or a video error. A video error gets ONE bounded retry (a
  * single remount) before it latches to the still — the same
  * latch cure CardFilm carries (2026-11-04); this component's
- * media is a constant, so there is no media-change reset here.
+ * media is a constant, so its retry/latch scope is just the
+ * film's URL and there is no media-change reset here. Like
+ * CardFilm, the off-screen observer resolves the CURRENT video
+ * element inside its callback, so the retry remount never
+ * leaves it driving a detached element.
  * The mount is lazy the same way too: IntersectionObserver with
  * a 200px margin, preload="none", the poster (the film's own
  * first frame) in the box until the film mounts. Only the 5–7
@@ -65,10 +77,18 @@ export function LockedTileFilm() {
   // Save-Data / low-memory are read once at mount, the same way
   // CardFilm and the home globe read them.
   const [staticGate] = useState<boolean>(staticGateAtMount);
-  const [failed, setFailed] = useState(false);
+  // The retry/latch scope, parallel to CardFilm: this component's
+  // media is a constant, so the scope is just the film's URL. The
+  // states only remember WHICH scope spent its retry / latched;
+  // `attempt` and `failed` are DERIVED by comparing them to the
+  // current scope (no effect reset, no stale charge).
+  const scope = LOCKED_GEODETECTIVE_FILM.videoUrl;
+  const [spentScope, setSpentScope] = useState<string | null>(null);
+  const [failedScope, setFailedScope] = useState<string | null>(null);
   // Which load attempt the mounted video is on: 0 is the first
   // try, 1 is the one bounded retry (see handleError below).
-  const [attempt, setAttempt] = useState(0);
+  const attempt = spentScope === scope ? 1 : 0;
+  const failed = failedScope === scope;
   const [near, setNear] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -78,9 +98,10 @@ export function LockedTileFilm() {
   const handleError = () => {
     // One bounded retry before latching, parallel to CardFilm:
     // remount the video once (its key carries the attempt count).
-    // A second error latches to the still. No loop, no timers.
-    if (attempt === 0) setAttempt(1);
-    else setFailed(true);
+    // A second error on the SAME scope latches to the still.
+    // No loop, no timers.
+    if (spentScope !== scope) setSpentScope(scope);
+    else setFailedScope(scope);
   };
 
   useEffect(() => {
@@ -107,10 +128,15 @@ export function LockedTileFilm() {
   useEffect(() => {
     if (gated || !near) return;
     const root = rootRef.current;
-    const film = videoRef.current;
-    if (!root || !film) return;
+    if (!root) return;
     const io = new IntersectionObserver(
       (entries) => {
+        // Resolve the CURRENT element at event time, as in
+        // CardFilm: the retry key remounts the video node, so
+        // an element captured when this effect ran would be the
+        // detached old node (panel B1).
+        const film = videoRef.current;
+        if (!film) return;
         for (const entry of entries) {
           if (entry.isIntersecting) {
             film.play().catch(() => {});

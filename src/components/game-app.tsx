@@ -4485,7 +4485,7 @@ function Choose({
               GeoDetective reshoot film once, governed by CardFilm
               (reduced-motion / Save-Data / low-memory / error all land
               on the owner's still image). Media: card-media.ts. */}
-          <CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" />
+          <CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" band={ageBand} />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4537,7 +4537,7 @@ function Choose({
               walks the footprint trail (character motion, not a camera
               move — the owner's 2026-11-02 correction). Media:
               card-media.ts. */}
-          <CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" />
+          <CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" band={ageBand} />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4577,7 +4577,7 @@ function Choose({
             data-testid="tour-stop-review"
             id="home-review"
           >
-            <CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" />
+            <CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />
             <div className="hv5-txt">
               <div className="hv5-head">
                 <span className="hv5-badge">
@@ -4648,7 +4648,7 @@ function Choose({
             deferred while focus is inside this card or the journal
             section (spec §6). */}
         <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)} data-testid="journal-card">
-          <CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" />
+          <CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4671,7 +4671,7 @@ function Choose({
           </div>
         </article>
         <article id="home-grownups" tabIndex={-1} className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)} data-testid="grownups-card">
-          <CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" />
+          <CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" band={ageBand} />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
