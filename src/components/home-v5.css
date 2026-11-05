@@ -1470,11 +1470,13 @@ body:has(.home-v5) {
   gap: 22px;
   align-items: start;
 }
-/* The 290px floor in the template below bounds the doorway's
-   column track: it is the narrowest the doorway's column is
-   allowed to get, so About's reading column is never squeezed
-   past that point. The doorway itself fills that track — see
-   the doorway rule below. */
+/* The 290px floor in the template below is the doorway's
+   minimum: it is the narrowest the doorway's column is
+   allowed to get — when the floor binds, About's reading
+   column is the one that gives (at 768px the track sits
+   exactly on the floor and About takes what's left). The
+   doorway itself fills that track — see the doorway rule
+   below. */
 .home-v5 .hv5-about-row:has(> .hv5-doorway) {
   grid-template-columns: minmax(0, 1.45fr) minmax(290px, 1fr);
 }
