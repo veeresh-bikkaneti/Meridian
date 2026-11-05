@@ -4067,9 +4067,24 @@ function startNoticeTarget(
  * the trekker overlay below uses: prefers-reduced-motion (the
  * shared hook, so an OS flip mid-session lands on the still too),
  * Save-Data, or deviceMemory ≤ 2 — any of them means the pulse and
- * clouds are never rendered and the CSS kills the march + wave,
+ * clouds are never rendered, and the CSS kills the march + wave:
+ * the JS `reduced` state is reflected onto this SVG as the
+ * `hv5-trail-still` class, and home-v5.css sets `animation: none`
+ * on the dots + flag under that class (mirroring its
+ * prefers-reduced-motion rules, which only cover the OS gate),
  * leaving a static dotted trail. The loops otherwise run
  * continuously; no timer ever stops them.
+ *
+ * The tradeoff, stated plainly (the same one CardFilm records):
+ * WCAG 2.2.2 asks for a stop on moving content that lasts more
+ * than five seconds. These hero loops are continuous looping
+ * decorative motion with no pause button — the hero has no pause
+ * button by the owner's autoloop order (2026-11-03: "we dont need
+ * playbutton it should be in autoloop"). The stops that remain
+ * are the gates above: a player who prefers reduced motion, or
+ * is saving data, or is on a low-memory device never gets the
+ * motion at all, only the still. Do not add a button back
+ * without a new owner order.
  */
 function HeroTrailOverlay() {
   const reducedMotion = usePrefersReducedMotion();
@@ -4079,7 +4094,7 @@ function HeroTrailOverlay() {
     "M322 528 C 305 500, 345 480, 350 460 C 355 438, 300 432, 292 408 C 284 384, 312 362, 340 350 C 375 336, 415 340, 408 318 C 402 298, 380 285, 402 268 C 428 248, 486 240, 512 226 C 532 215, 500 200, 492 182 C 486 166, 498 148, 503 134";
   return (
     <svg
-      className="hv5-trail"
+      className={reduced ? "hv5-trail hv5-trail-still" : "hv5-trail"}
       viewBox="0 0 800 533"
       preserveAspectRatio="xMaxYMax slice"
       aria-hidden="true"
@@ -4107,11 +4122,26 @@ function HeroTrailOverlay() {
             <ellipse cx="-80" cy="108" rx="70" ry="12" opacity="0.22" />
             <ellipse cx="560" cy="238" rx="130" ry="15" opacity="0.2" />
             <ellipse cx="645" cy="228" rx="75" ry="11" opacity="0.16" />
+            {/* The same bank again, +800: the drift translates one
+                full pattern width, so this copy lands exactly where
+                the first sat at loop reset — no empty bank, no pop. */}
+            <g transform="translate(800 0)">
+              <ellipse cx="0" cy="118" rx="120" ry="17" opacity="0.32" />
+              <ellipse cx="85" cy="106" rx="80" ry="13" opacity="0.26" />
+              <ellipse cx="-80" cy="108" rx="70" ry="12" opacity="0.22" />
+              <ellipse cx="560" cy="238" rx="130" ry="15" opacity="0.2" />
+              <ellipse cx="645" cy="228" rx="75" ry="11" opacity="0.16" />
+            </g>
           </g>
           <g className="hv5-cloud-drift-b" filter="url(#hv5-cloud-soft)" fill="#fdfbf3">
             <ellipse cx="330" cy="168" rx="105" ry="14" opacity="0.24" />
             <ellipse cx="405" cy="158" rx="65" ry="10" opacity="0.19" />
             <ellipse cx="60" cy="268" rx="95" ry="12" opacity="0.15" />
+            <g transform="translate(800 0)">
+              <ellipse cx="330" cy="168" rx="105" ry="14" opacity="0.24" />
+              <ellipse cx="405" cy="158" rx="65" ry="10" opacity="0.19" />
+              <ellipse cx="60" cy="268" rx="95" ry="12" opacity="0.15" />
+            </g>
           </g>
         </g>
       ) : null}
@@ -4189,7 +4219,7 @@ function HeroTrailOverlay() {
  * ruling, 2026-11-04 20:29, on
  * the v1 "Catch It, Pin It" prototype: "Reduce the size of the
  * animated cartoon guy, this is supposed be a child walking the
- * trail and let just keep it to that. No more compleities, but
+ * trail and let just keep it to that. No more complexities, but
  * while trekking you need sticks and make it realistic trekking
  * please and wind blowing, climbing slowly."
  *
@@ -4231,6 +4261,20 @@ function HeroTrailOverlay() {
  * (t = 7.25s: both poles on the ground, front planted, rear at
  * push-off, headwrap streaming). The loop itself never stops on a
  * timer; like the V1 overlay it is ambient, aria-hidden art.
+ * When the gate lifts mid-session (the shared hook is live, so an
+ * OS flip lands here), the effect below un-pauses the clock and
+ * the climb resumes from the still frame.
+ *
+ * The tradeoff, stated plainly (the same one CardFilm records):
+ * WCAG 2.2.2 asks for a stop on moving content that lasts more
+ * than five seconds. This loop is continuous looping decorative
+ * motion with no pause button — the hero has no pause button by
+ * the owner's autoloop order (2026-11-03: "we dont need
+ * playbutton it should be in autoloop"). The stops that remain
+ * are the gates above: a player who prefers reduced motion, or
+ * is saving data, or is on a low-memory device never gets the
+ * motion at all, only the still. Do not add a button back
+ * without a new owner order.
  */
 const TREKKER_CLIMB_PATH =
   "M294 406 C 288 386, 315 362, 342 351 C 368 340, 398 336, 402 321";
@@ -4254,9 +4298,15 @@ function HeroTrekkerOverlay() {
   const still = reducedMotion || staticGate;
   const svgRef = useRef<SVGSVGElement | null>(null);
   useEffect(() => {
-    if (!still) return;
     const svg = svgRef.current;
     if (!svg) return;
+    if (!still) {
+      // The gate lifted mid-session: resume the master clock from
+      // wherever the still froze it — without this the clock stays
+      // paused at 7.25 forever even though `still` is false again.
+      svg.unpauseAnimations();
+      return;
+    }
     // The still IS the mid-climb frame: freeze the master clock on it.
     svg.pauseAnimations();
     svg.setCurrentTime(7.25);

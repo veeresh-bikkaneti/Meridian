@@ -296,7 +296,7 @@ edition — and adds a flag layer under one rule:
   open mystery and the cycle count untouched. Cold Trail generation
   stays composition-stable the same way: new cases append after the
   shipped ones, and flag stamps are additive metadata only.
-- **The doorway.** Home carries a "Capitals & Flags" strip directly
-  under the Expeditions Map card with a door into each mode; each
+- **The doorway.** Home carries a "Capitals & Flags" strip beside
+  the About card with a door into each mode; each
   door selects the pack before opening, so the player lands in the
   pack, not on the shelf.

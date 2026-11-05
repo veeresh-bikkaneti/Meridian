@@ -6,8 +6,8 @@ import { serveBuiltArtifact } from "./helpers";
  * (feat/home-rework-hero-trekker, owner ship word 2026-11-04).
  *
  * The home page used to render a static mountain picture, with the
- * animated designs reachable only behind a ?ui= test harness on
- * design branches. The harness is gone; production (no query
+ * animated designs reachable only behind a variant test harness
+ * on design branches. The harness is gone; production (no query
  * params) renders the composed design unconditionally:
  *
  * (a) the hero carries the V1b trail overlay (marching dots,
@@ -20,7 +20,14 @@ import { serveBuiltArtifact } from "./helpers";
  *     advances and the pulse travels the trail;
  * (c) with prefers-reduced-motion emulated, the hero lands on its
  *     still state: no clouds, no pulse, the trekker's clock paused
- *     on the mid-climb frame with the figure visible.
+ *     on the mid-climb frame with the figure visible;
+ * (d) the Save-Data / low-memory cohort (no OS reduced-motion)
+ *     lands on the same still: no clouds, no pulse, the trail's
+ *     dot march and flag wave killed by the JS-reflected still
+ *     class, the trekker's clock paused;
+ * (e) a mid-session flip from reduced-motion to no-preference
+ *     lifts the gate and the trekker's clock resumes advancing
+ *     instead of staying paused on the still frame.
  *
  * Fail-on-main: unmodified main's game-app.tsx contains none of
  * the .hv5-trail / .hv5-trekker / .hv5-clouds / .hv5-about-row
@@ -33,12 +40,27 @@ const APP = "http://127.0.0.1:4123/Meridian/";
 
 async function openHome(
   browser: Browser,
-  opts: { reducedMotion?: "reduce" | "no-preference" } = {},
+  opts: { reducedMotion?: "reduce" | "no-preference"; saveData?: boolean } = {},
 ): Promise<Page> {
   const context = await browser.newContext({
     viewport: { width: 1440, height: 900 },
     reducedMotion: opts.reducedMotion ?? "no-preference",
   });
+  if (opts.saveData) {
+    // Save-Data cohort, forced before any app code runs: the hero's
+    // mount gate reads navigator.connection.saveData (deviceMemory
+    // pinned low as the second signal, the helpers.ts pattern).
+    await context.addInitScript(() => {
+      Object.defineProperty(Navigator.prototype, "connection", {
+        get: () => ({ saveData: true }),
+        configurable: true,
+      });
+      Object.defineProperty(Navigator.prototype, "deviceMemory", {
+        get: () => 1,
+        configurable: true,
+      });
+    });
+  }
   await serveBuiltArtifact(context);
   const page = await context.newPage();
   await page.goto(APP);
@@ -167,5 +189,97 @@ test("reduced motion: hero shows the still — no clouds or pulse, trekker clock
       { timeout: 15_000 },
     )
     .toBeGreaterThan(0.9);
+  await page.context().close();
+});
+
+test("save-data cohort: hero shows the still — no clouds or pulse, march + wave killed, trekker paused", async ({
+  browser,
+}) => {
+  // No OS reduced-motion here: the still must come from the
+  // Save-Data / low-memory mount gate alone, and the CSS dot march
+  // + flag wave (which no media query reaches in this cohort) must
+  // be killed by the JS-reflected .hv5-trail-still class.
+  const page = await openHome(browser, { saveData: true });
+
+  await expect(page.locator(".hv5-trail")).toBeAttached();
+  await expect(page.locator(".hv5-trail")).toHaveClass(/hv5-trail-still/);
+  await expect(page.locator(".hv5-trail-dots")).toBeAttached();
+  await expect(page.locator(".hv5-clouds")).toHaveCount(0);
+  await expect(page.locator(".hv5-trail-pulse")).toHaveCount(0);
+  const trailAnimations = await page.evaluate(() => ({
+    dots: getComputedStyle(document.querySelector(".hv5-trail-dots")!).animationName,
+    flag: getComputedStyle(document.querySelector(".hv5-trail-flag")!).animationName,
+  }));
+  expect(trailAnimations.dots).toBe("none");
+  expect(trailAnimations.flag).toBe("none");
+
+  // Trekker still, same as the reduced-motion case: clock paused
+  // on the mid-climb frame, sampled twice, it does not advance.
+  await expect(page.locator(".hv5-trekker")).toBeAttached();
+  const still1 = await page.evaluate(() => {
+    const svg = document.querySelector(".hv5-trekker") as unknown as SVGSVGElement;
+    return { t: svg.getCurrentTime(), paused: svg.animationsPaused() };
+  });
+  await page.waitForTimeout(1200);
+  const still2 = await page.evaluate(
+    () => (document.querySelector(".hv5-trekker") as unknown as SVGSVGElement).getCurrentTime(),
+  );
+  expect(still1.paused).toBe(true);
+  expect(still2).toBe(still1.t);
+  expect(still1.t).toBeGreaterThan(7);
+  expect(still1.t).toBeLessThan(7.5);
+
+  await page.context().close();
+});
+
+test("motion gate flips mid-session: trekker clock resumes when reduced motion lifts", async ({
+  browser,
+}) => {
+  const page = await openHome(browser, { reducedMotion: "reduce" });
+
+  // Settle on the still first (polled, for the same boot-remount
+  // reason the reduced-motion test polls rig opacity): paused on
+  // the mid-climb frame, and it stays there.
+  await expect
+    .poll(
+      async () =>
+        page.evaluate(() => {
+          const svg = document.querySelector(".hv5-trekker") as unknown as SVGSVGElement;
+          return svg.animationsPaused() && svg.getCurrentTime() > 7 && svg.getCurrentTime() < 7.5;
+        }),
+      { timeout: 15_000 },
+    )
+    .toBe(true);
+  const frozen = await page.evaluate(
+    () => (document.querySelector(".hv5-trekker") as unknown as SVGSVGElement).getCurrentTime(),
+  );
+  await page.waitForTimeout(800);
+  const frozen2 = await page.evaluate(
+    () => (document.querySelector(".hv5-trekker") as unknown as SVGSVGElement).getCurrentTime(),
+  );
+  expect(frozen2).toBe(frozen);
+
+  // Lift the gate mid-session: the shared hook is live, so the
+  // still flips false — and the trekker effect must un-pause the
+  // SMIL clock, not leave it frozen at 7.25 forever.
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await expect(page.locator(".hv5-clouds")).toBeAttached({ timeout: 15_000 });
+  await expect(page.locator(".hv5-trail")).not.toHaveClass(/hv5-trail-still/);
+
+  await page.locator(".hv5-mtn-wrap").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(600);
+  const resumed = await page.evaluate(() => {
+    const svg = document.querySelector(".hv5-trekker") as unknown as SVGSVGElement;
+    return { t: svg.getCurrentTime(), paused: svg.animationsPaused() };
+  });
+  await page.waitForTimeout(1500);
+  const later = await page.evaluate(
+    () => (document.querySelector(".hv5-trekker") as unknown as SVGSVGElement).getCurrentTime(),
+  );
+  expect(resumed.paused).toBe(false);
+  expect(later - resumed.t, "trekker SMIL clock should advance again after the flip").toBeGreaterThan(
+    0.8,
+  );
+
   await page.context().close();
 });
