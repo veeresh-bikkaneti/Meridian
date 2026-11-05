@@ -20,7 +20,7 @@
   same lazy + withChunkTimeout + MapErrorBoundary + chunk-recovery
   path; the watchdog is global), so the fix lands once, in the watchdog.
 - FIX: in `scripts/crash-watchdog.mjs`, `crashWatchdogMain`'s
-  `onTimer()` stands down (no `show()`, no `send()`) when
+  `onTimer()` sets a recovery flag when
   sessionStorage key `meridian.chunkReloadNotice` holds a numeric
   timestamp whose age at timer-fire time is ≤ 900_000 ms (mirrors
   `CHUNK_RELOAD_NOTICE_MAX_AGE_MS` in `src/lib/chunk-recovery.ts`;
@@ -40,7 +40,7 @@
 - Path division (nothing else moves):
   - version skew → the app's stale offer + Refresh, as today;
   - plain chunk failure → recoverable card + one bounded auto-reload, as today;
-  - stalled recovery reload → watchdog stands down on the fresh chunk-reload notice, no `boot_failure`;
+  - stalled recovery reload → the `boot_failure` report stands down on the fresh chunk-reload notice, and the player gets the recovery card ("The reload didn't finish loading.", panel round-1 cure — the report stands down, the player does not);
   - fresh-boot stall → watchdog unchanged.
 - Redundancy audit: no parallel recovery surface was created — the
   fix reuses the existing notice key and the watchdog's existing
@@ -52,7 +52,10 @@
   docstring + `scripts/crash-watchdog.test.mjs`) rises to 6,200 —
   the smallest round number that fits with margin (~45 bytes, like
   the ~40 bytes of headroom 6,144 carried). No unrelated watchdog
-  code was shaved.
+  code was shaved. (These are the pre-cure round-1 figures; the
+  cure and the merge-up moved the budget again — final merged
+  figures: measured worst case 6,551, budget 6,600; see the
+  Merge-up section below.)
 
 ## Files touched
 
@@ -213,7 +216,24 @@ Cured-tip gates:
   margin, the established ~40-byte headroom pattern), recorded
   in the module docstring, the RENAME comment, and the test.
   Watchdog suite on the merged tree: 61/61.
-- Gates + E2E on the merged tip: see the Silo QA report on PR #349.
+- Gates + E2E on the merged tip `0190262` (Silo QA, fresh clone):
+  npm test exit 0 — scripts 990 pass / 0 fail / 11 skipped, src
+  2,092/2,092, worker 145/145, watchdog file 61/61; tsc +
+  typecheck:worker clean; lint-cards GATE PASSED; build:pages
+  green. E2E crash-watchdog.spec.ts 4 passed / 1 failed — the
+  failure is the pre-existing "stale build" storyteller_ready
+  race, control-proven identical on unmodified main; the cascade
+  case PASSES here and FAILS on unmodified main at the
+  recovery-heading assertion (pre-fix bite, first-hand).
+- Panel re-vote on `0190262` (2026-11-04): READY-WITH-NITS —
+  3 APPROVE / 9 APPROVE-WITH-NITS / 0 BLOCK (both round-1 UX
+  BLOCKs verified cured first-hand); Silo QA PASS-WITH-NOTES;
+  DevEx PASS-WITH-NITS; benchmark PASS (largest delta +1.71%,
+  the watchdog bytes). Recorded follow-ups (not built): the
+  future-timestamp upper bound, an S3-style drift-guard test for
+  the mirrored key/age, an exact-boundary 900,000 ms pin, and
+  the ASKED-latch second-stall note. No merge — the owner's
+  per-PR word follows this verdict.
 
 ---
 
