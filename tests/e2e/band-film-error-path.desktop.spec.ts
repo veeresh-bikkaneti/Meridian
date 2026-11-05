@@ -24,9 +24,8 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  *
  * Test 2 — a latched constant-media slot revives on band switch:
  *   (b) the film request fails ALWAYS → the slot latches to the
- *       still (2 requests: try + retry) → switch band 11–13 →
- *       8–10 with the route now allowing → the SAME slot revives
- *       and plays. On the round-1 tip the latch reset was keyed
+ *       still → switch band 11–13 → 8–10 with the route now
+ *       allowing → the SAME slot revives and plays. On the round-1 tip the latch reset was keyed
  *       only on media change, so the slot stays latched and this
  *       test fails at the revival (panel B2); on unmodified main
  *       it fails too (the latch never reset there at all — and
@@ -171,12 +170,21 @@ test("film error path: a latched constant-media slot revives on band switch", as
   // the film keeps failing.
   await firstSetGeoDetective(page);
 
-  // The slot latches to the still: try + one retry, then no video.
+  // The slot latches to the still: the film was attempted (at
+  // least one intercepted request), then the slot settles on the
+  // STILL image with no video element. (Request COUNT is not the
+  // latch witness: a same-URL retry re-request can be cache-served
+  // without hitting route interception — the slot's settled state
+  // is. The still's URL is what distinguishes latched from the
+  // pre-mount poster phase.)
   const slot = page.getByTestId("card-film-geodetective");
   await slot.scrollIntoViewIfNeeded();
-  await expect.poll(() => geoRequests, { timeout: 20_000 }).toBeGreaterThanOrEqual(2);
-  await expect(slot.locator("video")).toHaveCount(0);
+  await expect.poll(() => geoRequests, { timeout: 20_000 }).toBeGreaterThanOrEqual(1);
+  await expect(slot.locator("video")).toHaveCount(0, { timeout: 20_000 });
   await expect(slot.locator("img")).toBeVisible();
+  await expect
+    .poll(() => slot.locator("img").getAttribute("src"), { timeout: 20_000 })
+    .toContain("geodetective-still");
 
   // Allow the film again and switch band 11–13 → 8–10. The media
   // does NOT change (GeoDetective is constant across bands) — the
