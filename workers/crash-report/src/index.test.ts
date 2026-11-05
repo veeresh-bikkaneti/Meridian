@@ -1844,6 +1844,7 @@ test("golden: renderDigest for the §5.3 two-event hour (full string)", async ()
       "📊 Meridian telemetry — hourly digest",
       "hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)",
       "priority: S1 · P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone",
+      "S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.",
       "",
       "suspected_crash 1 · first 17:42 · last 17:42",
       "  builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1",
@@ -1980,6 +1981,55 @@ test("severity: auto_fixed at streak 0 grades S3", () => {
   assert.equal(severityOf(recoveryEvent({ unfinishedBoots: 0 }))?.grade, "S3");
 });
 
+// Direct-caller edge pins (#347 cure riders): severityOf is exported, so
+// a caller can bypass normaliseEvent's clamping. The function re-checks
+// the stamp itself — these tests pin that defensive behaviour without
+// changing the adopted grading rules.
+test("severity: a negative streak clamps to 0 (developer_needed grades S2b, streak 0)", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: -5 }));
+  assert.equal(read?.grade, "S2b");
+  assert.equal(read?.streak, 0);
+  assert.ok(read?.clause.includes("boot streak is 0"));
+});
+
+test("severity: a negative streak clamps to 0 (auto_fixed grades S3, streak 0)", () => {
+  const read = severityOf(recoveryEvent({ unfinishedBoots: -1 }));
+  assert.equal(read?.grade, "S3");
+  assert.equal(read?.streak, 0);
+});
+
+test("severity: a non-integer streak floors before grading (3.9 grades S1 as streak 3)", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: 3.9 }));
+  assert.equal(read?.grade, "S1");
+  assert.equal(read?.streak, 3);
+});
+
+test("severity: a non-integer streak below the threshold floors down (2.9 grades S3 as streak 2)", () => {
+  const read = severityOf(recoveryEvent({ unfinishedBoots: 2.9 }));
+  assert.equal(read?.grade, "S3");
+  assert.equal(read?.streak, 2);
+});
+
+test("severity: a string streak reads as not stamped (developer_needed grades S2b, streak null)", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: "5" }));
+  assert.equal(read?.grade, "S2b");
+  assert.equal(read?.streak, null);
+  assert.ok(read?.clause.includes("was not stamped"));
+});
+
+test("severity: a string streak reads as not stamped (auto_fixed grades S3, streak null)", () => {
+  const read = severityOf(recoveryEvent({ unfinishedBoots: "5" }));
+  assert.equal(read?.grade, "S3");
+  assert.equal(read?.streak, null);
+  assert.ok(read?.clause.includes("no boot streak was stamped"));
+});
+
+test("severity: a non-finite streak reads as not stamped", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: Number.NaN }));
+  assert.equal(read?.grade, "S2b");
+  assert.equal(read?.streak, null);
+});
+
 test("severity: insufficient_evidence is NEVER graded, even at streak 99", () => {
   const event = incident330Event({ unfinishedBoots: 99 });
   delete (event as Record<string, unknown>).bgTerminal;
@@ -2018,6 +2068,15 @@ test("severity: an ungraded alert renders 'ungraded' and gains NO Severity claus
   assert.ok(!alert.emailBody.includes("Severity:"));
 });
 
+test("severity: an ungraded not_a_real_issue alert renders 'ungraded · P4' and gains NO Severity clause", () => {
+  const event = incident330Event({ unfinishedBoots: 99, bgTerminal: true, trailStuck: false });
+  assert.equal(deriveVerdict(event).verdict, "not_a_real_issue");
+  const alert = buildAlert(event);
+  assert.ok(alert.discord.includes("priority: ungraded · P4 — "));
+  assert.ok(!alert.discord.includes("Severity:"), "a benign verdict gains no grade, even at streak 99");
+  assert.ok(!alert.emailBody.includes("Severity:"));
+});
+
 test("severity counting: recordTelemetry tallies grades per bucket, ungraded included", async () => {
   const { store } = memoryStore();
   const cfg = thresholdConfig({});
@@ -2038,6 +2097,38 @@ test("severity counting: a pre-#345 bucket JSON without severities reads back as
   });
   const bucket = await store.readBucket(bucketKey("2026-11-03T17", "boot_failure"));
   assert.deepEqual(bucket?.severities, {});
+});
+
+test("severity digest: an S1 hour carries the INFERRED gloss exactly once", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 3 }), t0, cfg);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 4 }), t0, cfg);
+  const digest = await renderDigest(store, t0 + HOUR_MS);
+  assert.ok(digest, "digest produced");
+  const gloss =
+    "S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.";
+  assert.ok(digest.includes(gloss), "the S1 gloss line is present");
+  assert.equal(
+    digest.split("\n").filter((l) => l === gloss).length,
+    1,
+    "the gloss appears exactly once, however many S1 events the hour counted",
+  );
+});
+
+test("severity digest: an hour with NO S1 carries no INFERRED gloss", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
+  // S2b (developer_needed, no streak) + S3 (auto_fixed, low streak):
+  // graded, but neither is S1, so no gloss may appear.
+  await recordTelemetry(store, bootFailureEvent(), t0, cfg);
+  await recordTelemetry(store, recoveryEvent({ unfinishedBoots: 1 }), t0, cfg);
+  const digest = await renderDigest(store, t0 + HOUR_MS);
+  assert.ok(digest, "digest produced");
+  assert.ok(!digest.includes("INFERRED"), "no S1 in the hour → no player-left gloss");
+  assert.ok(!digest.includes("player-left"), "no S1 in the hour → no player-left wording at all");
 });
 
 test("severity digest: an hour of only ungraded events keeps the plain priority line", async () => {

@@ -1784,6 +1784,20 @@ function renderTypeBlock(
   );
 }
 
+/**
+ * The digest's one-line S1 gloss (#347 cure): the alert and email label
+ * player-left INFERRED in the same sentence as the grade, but a digest
+ * hour can carry bare `S1 ×N` counts with no such sentence — so when
+ * the hour counted any S1, the digest gains this line, exactly once.
+ */
+export const S1_DIGEST_GLOSS =
+  "S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.";
+
+/** Whether any type in the hour counted at least one S1 event. */
+function hourCountsS1(rows: Array<{ type: string; bucket: CountBucket }>): boolean {
+  return rows.some(({ bucket }) => (bucket.severities?.S1 ?? 0) > 0);
+}
+
 /** Severity rank for the digest lead (#345): worst grade first. */
 const SEVERITY_RANK: Record<string, number> = { S1: 0, S2a: 1, S2b: 2, S3: 3 };
 
@@ -1923,6 +1937,9 @@ export async function renderDigest(
       `📊 Meridian telemetry — hourly digest\n` +
       `hour: ${from}–${to} UTC (receipt hour) (${grandTotal} events)\n` +
       (priority ? `${priority}\n` : "") +
+      // The S1 gloss rides directly under the priority lead — the
+      // first place S1 appears — and only in an hour that counted S1.
+      (hourCountsS1(rows) ? `${S1_DIGEST_GLOSS}\n` : "") +
       `\n` +
       lines.join("\n") +
       `\n\nalerts this hour: ${firedAlerts.length > 0 ? firedAlerts.map((t) => `${t} threshold`).join(", ") : "none"}`
