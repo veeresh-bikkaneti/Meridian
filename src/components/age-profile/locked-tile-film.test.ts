@@ -4,10 +4,16 @@
  *
  * Same source-pinning style as card-film.test.ts (this repo has
  * no React-render harness): the no-toggle rule, the gates, the
- * lazy mount, the bounded play, and the copy lock are pinned by
- * reading the components and CSS; the byte caps are pinned
+ * lazy mount, the loop governance, and the copy lock are pinned
+ * by reading the components and CSS; the byte caps are pinned
  * against the real asset files; the visual behaviour is covered
  * by E2E against the built app.
+ *
+ * Governance history: the film originally played once and rested
+ * (bounded play, R2) so the tile would need no stop control. The
+ * owner superseded R2 on 2026-11-04 — the film now loops under
+ * CardFilm's exact governance. R1 (no control of any kind on the
+ * tile) is unchanged and its pins below still stand.
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
@@ -50,7 +56,7 @@ describe("LockedTileFilm — gates land on the still, video never fetched", () =
     assert.ok(film.includes("usePrefersReducedMotion()"), "reduced motion via the shared hook");
     assert.ok(film.includes("nav.connection?.saveData"), "Save-Data gate");
     assert.ok(film.includes("mem > 0 && mem <= 2"), "deviceMemory <= 2 gate");
-    assert.ok(film.includes("onError={() => setFailed(true)}"), "video error falls back");
+    assert.ok(film.includes("onError={handleError}"), "video error falls back (via the bounded-retry handler)");
     assert.ok(
       film.includes("const gated = reducedMotion || staticGate || failed"),
       "all gates compose into the one still branch",
@@ -64,7 +70,7 @@ describe("LockedTileFilm — gates land on the still, video never fetched", () =
   });
 });
 
-describe("LockedTileFilm — lazy mount + bounded play (R2)", () => {
+describe("LockedTileFilm — lazy mount + loop governance (owner ruling, 2026-11-04)", () => {
   it("video mounts only near the viewport (IntersectionObserver, 200px)", () => {
     assert.ok(film.includes("new IntersectionObserver"), "observer gate");
     assert.ok(film.includes('{ rootMargin: "200px" }'), "200px rootMargin");
@@ -73,14 +79,36 @@ describe("LockedTileFilm — lazy mount + bounded play (R2)", () => {
     assert.ok(film.includes("posterUrl"), "poster fills the box before the film");
   });
 
-  it("plays once and rests: autoPlay + muted + playsInline, NO loop, no replay path", () => {
+  it("loops like the card films: autoPlay + loop + muted + playsInline", () => {
+    // This pin replaces the bounded-play pin (no loop, plays once
+    // and rests) that governed the component under R2 — the
+    // owner's 2026-11-04 ruling superseded R2.
     assert.ok(film.includes("autoPlay"), "plays when mounted");
     assert.ok(film.includes("muted"), "muted");
     assert.ok(film.includes("playsInline"), "inline on phones");
-    const videoTag = film.slice(film.indexOf("<video"), film.indexOf("<video") + 400);
-    assert.ok(!videoTag.includes("loop"), "no loop attribute — bounded, then it rests");
-    assert.ok(!film.includes("currentTime = 0"), "nothing rewinds it for a replay");
+    const videoTag = film.slice(film.indexOf("<video"), film.indexOf("<video") + 500);
+    assert.ok(videoTag.includes("loop"), "loop attribute — the film repeats like the card films");
     assert.ok(!film.includes("setTimeout") && !film.includes("setInterval"), "no timers");
+  });
+
+  it("off-screen pause: a threshold-0 observer plays on screen, pauses off screen", () => {
+    assert.ok(film.includes("{ threshold: 0 }"), "visibility observer at threshold 0");
+    assert.ok(film.includes("film.play().catch(() => {})"), "rejected play() never surfaces");
+    assert.ok(film.includes("film.pause()"), "off-screen film pauses instead of decoding");
+    assert.ok(film.includes("videoRef"), "the observer drives the mounted video element");
+  });
+
+  it("error latch: one bounded retry before latching (parallel to CardFilm)", () => {
+    assert.ok(film.includes("const [attempt, setAttempt] = useState(0)"), "attempt state exists");
+    assert.ok(
+      film.includes("if (attempt === 0) setAttempt(1);"),
+      "first error spends the single retry",
+    );
+    assert.ok(film.includes("else setFailed(true);"), "second error latches to the still");
+    assert.ok(
+      film.includes("key={`locked#${attempt}`}"),
+      "the attempt count is in the video key, so spending the retry remounts the video once",
+    );
   });
 });
 

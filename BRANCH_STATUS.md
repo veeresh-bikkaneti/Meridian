@@ -15,7 +15,7 @@
 ## Status
 
 - [x] Unit 1 — CardFilm latch fix + pins (27/27 with fix; 24/27 with the src change stashed — the 2 new pins + the updated gate pin fail pre-fix)
-- [ ] Unit 2 — LockedTileFilm: latch retry + loop governance + header rewrite; tests re-pinned (R1 describe still passes)
+- [x] Unit 2 — LockedTileFilm: latch retry + loop governance (loop attr, threshold-0 off-screen pause observer, play() rejections dropped) + header rewrite (R1 holds: no control added; stop story = the gates + off-screen pause; stale CardFilm-toggle claim removed). Tests re-pinned: 16/16 with fix, 12/16 pre-fix (loop/off-screen/retry/gate pins fail); R1 describe passes both ways. Docs cured in-unit: README locked-tile paragraph + `locked-tile-media.ts` header now record the loop ruling (play-once marked superseded, not deleted)
 - [ ] Unit 3 — Band-naming confirm toast + age-profile-gate E2E pin update
 - [ ] Unit 4 — New in-session switch E2E + against-main bite run
 - [ ] Docs cured (README, locked-tile-media header) + full gates + PR opened (NO MERGE — panel + owner's word are the merge gate)
