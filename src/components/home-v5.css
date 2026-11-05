@@ -1475,6 +1475,16 @@ body:has(.home-v5) {
 }
 .home-v5 .hv5-about-row > .hv5-doorway {
   margin-top: 0;
+  /* Sized by its own content, never by the row (owner defect,
+     2026-11-05: the signpost "sizes to match"). A grid item
+     stretches to its column track by default, which made the
+     signpost 484px wide for 276px of content at desktop — the
+     row dictated the card's size. justify-self:start shrink-wraps
+     the card to its content plus its own padding at every width,
+     so neither the About card's height nor the row's tracks can
+     move it. Pinned by the "signpost card is sized by its own
+     content" test in tests/e2e/home-hero-trekker.desktop.spec.ts. */
+  justify-self: start;
 }
 @media (max-width: 680px) {
   .home-v5 .hv5-about-row,

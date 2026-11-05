@@ -28,6 +28,12 @@ import { serveBuiltArtifact } from "./helpers";
  * (e) a mid-session flip from reduced-motion to no-preference
  *     lifts the gate and the trekker's clock resumes advancing
  *     instead of staying paused on the still frame.
+ * (f) the signpost card is sized by its own content, never by its
+ *     row partner: its box equals its max-content box at desktop,
+ *     tablet and phone widths, and growing or shrinking the About
+ *     card's height leaves the signpost's box untouched (owner
+ *     defect, 2026-11-05: the card "sizes to match" its grid
+ *     track — 484px wide for 276px of content at desktop).
  *
  * Fail-on-main: unmodified main's game-app.tsx contains none of
  * the .hv5-trail / .hv5-trekker / .hv5-clouds / .hv5-about-row
@@ -318,5 +324,128 @@ test("motion gate flips mid-session: trekker clock resumes when reduced motion l
 
   } finally {
     await page.context().close();
+  }
+});
+
+test("signpost card is sized by its own content, never by its row partner", async ({
+  browser,
+}) => {
+  // Owner defect (2026-11-05): the Capitals & Flags signpost beside
+  // About "sizes to match" — as a grid item it stretched to its
+  // about-row column track (484px at desktop) instead of hugging
+  // its own content (276px), so the row, not the card's content,
+  // dictated the card's size. Pins, at 1440 / 768 / 390 widths:
+  //  (1) the card's rendered box equals the box it takes at
+  //      width:max-content — its own content plus its own padding;
+  //  (2) growing the About card's content, then shrinking the
+  //      About card hard, leaves the signpost's width and height
+  //      untouched (in the stacked phone layout its y position
+  //      naturally follows the About card; its size must not);
+  //  (3) the desktop height stays the signpost's measured ~160px.
+  // Fail-on-bb05d17: (1) fails at every width — the card rendered
+  // 484.09 / 290 / 350 wide against 276.11 of content (measured).
+  const WIDTHS = [
+    { width: 1440, height: 900 },
+    { width: 768, height: 1024 },
+    { width: 390, height: 844 },
+  ];
+  const doorBox = (page: Page) =>
+    page.evaluate(() => {
+      const el = document.querySelector('[data-testid="pack-doorway"]');
+      if (!el) return null;
+      const b = el.getBoundingClientRect();
+      return { w: Math.round(b.width * 100) / 100, h: Math.round(b.height * 100) / 100 };
+    });
+  const stableDoorBox = async (page: Page) => {
+    let prev = "";
+    let box = await doorBox(page);
+    for (let i = 0; i < 24; i++) {
+      const cur = JSON.stringify(box);
+      if (cur === prev) return box;
+      prev = cur;
+      await page.waitForTimeout(200);
+      box = await doorBox(page);
+    }
+    return box;
+  };
+
+  for (const v of WIDTHS) {
+    const context = await browser.newContext({ viewport: { width: v.width, height: v.height } });
+    await serveBuiltArtifact(context);
+    const page = await context.newPage();
+    try {
+      await page.goto(APP);
+      const doorway = page.locator('[data-testid="pack-doorway"]');
+      await expect(doorway).toBeVisible({ timeout: 30_000 });
+      await expect(doorway).toContainText("lands", { timeout: 15_000 });
+      await page.locator(".hv5-about-row").scrollIntoViewIfNeeded();
+
+      const base = await stableDoorBox(page);
+      expect(base, `doorway box at ${v.width}px`).not.toBeNull();
+
+      // (1) Content-sized: same box the card takes at max-content.
+      await page.evaluate(() => {
+        const door = document.querySelector(
+          '[data-testid="pack-doorway"]',
+        ) as HTMLElement | null;
+        if (door) door.style.width = "max-content";
+      });
+      const contentBox = await stableDoorBox(page);
+      await page.evaluate(() => {
+        const door = document.querySelector(
+          '[data-testid="pack-doorway"]',
+        ) as HTMLElement | null;
+        if (door) door.style.width = "";
+      });
+      await stableDoorBox(page);
+      expect(
+        Math.abs((base?.w ?? 0) - (contentBox?.w ?? 0)),
+        `signpost width at ${v.width}px should be its content width ${contentBox?.w}, not its row track`,
+      ).toBeLessThanOrEqual(1.5);
+      expect(Math.abs((base?.h ?? 0) - (contentBox?.h ?? 0))).toBeLessThanOrEqual(1.5);
+
+      // (2a) Grow the About card: the signpost's size must not move.
+      await page.evaluate(() => {
+        const about = document.querySelector("#home-about");
+        if (!about) return;
+        for (let i = 0; i < 5; i++) {
+          const p = document.createElement("p");
+          p.textContent =
+            "Probe paragraph: extra About copy added only to test whether the signpost card's box is coupled to its row partner's height.";
+          p.setAttribute("data-probe", "grow");
+          about.appendChild(p);
+        }
+      });
+      const grown = await stableDoorBox(page);
+      expect(Math.abs((grown?.w ?? 0) - (base?.w ?? 0))).toBeLessThanOrEqual(0.75);
+      expect(Math.abs((grown?.h ?? 0) - (base?.h ?? 0))).toBeLessThanOrEqual(0.75);
+
+      // (2b) Shrink the About card hard: same expectation.
+      await page.evaluate(() => {
+        const about = document.querySelector("#home-about") as HTMLElement | null;
+        if (!about) return;
+        about.querySelectorAll("[data-probe]").forEach((n) => n.remove());
+        about.style.height = "140px";
+        about.style.overflow = "hidden";
+      });
+      const shrunk = await stableDoorBox(page);
+      expect(Math.abs((shrunk?.w ?? 0) - (base?.w ?? 0))).toBeLessThanOrEqual(0.75);
+      expect(Math.abs((shrunk?.h ?? 0) - (base?.h ?? 0))).toBeLessThanOrEqual(0.75);
+      await page.evaluate(() => {
+        const about = document.querySelector("#home-about") as HTMLElement | null;
+        if (about) {
+          about.style.height = "";
+          about.style.overflow = "";
+        }
+      });
+
+      // (3) The desktop signpost height is the measured ~160px.
+      if (v.width === 1440) {
+        expect(base?.h ?? 0).toBeGreaterThanOrEqual(155);
+        expect(base?.h ?? 0).toBeLessThanOrEqual(166);
+      }
+    } finally {
+      await context.close();
+    }
   }
 });
