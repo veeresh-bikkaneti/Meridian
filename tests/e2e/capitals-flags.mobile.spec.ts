@@ -4,17 +4,23 @@ import path from "node:path";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * Capitals & Flags (issue #344): the home doorway strip, the pack
- * relabel, and the flag layer's GeoDetective + Cold Trail surfaces.
+ * Capitals & Flags (issue #344): the pack relabel and the flag
+ * layer's GeoDetective + Cold Trail surfaces.
  *
- * The doorway is a SIGNPOST only (owner's pick, Veeresh, 2026-11-05:
- * "Option C — signpost only, no buttons" — superseding the #344
- * one-door-per-mode design): the strip advertises the pack and
- * carries no buttons, so the flag tests below enter each mode via
- * its card and pick the pack on the in-mode deck shelf
- * (`pack-chip-capitals`), the pack's only entry point. The shelf
- * entry patterns mirror pack-shelf.desktop.spec.ts: a chip tap on a
- * finished case starts the next case from the picked deck.
+ * The pack's only entry point is the in-mode deck shelf
+ * (`pack-chip-capitals`): the flag tests below enter each mode via
+ * its card and pick the pack on the shelf. The shelf entry patterns
+ * mirror pack-shelf.desktop.spec.ts: a chip tap on a finished case
+ * starts the next case from the picked deck.
+ *
+ * Home once carried a Capitals & Flags strip (issue #344 shipped it
+ * with a door into each mode; the owner's pick — Veeresh, 2026-11-05:
+ * "Option C — signpost only, no buttons" — then made it a pure
+ * signpost beside the About card). The owner removed it from Home
+ * entirely the same day (Veeresh, 2026-11-05: "card is not
+ * clickable. if its not clickable then there is no point of putting
+ * it on home page."), so no home-surface test remains here: there
+ * is no doorway left to assert.
  *
  * The GeoDetective test stubs the pack manifest down to a single case
  * (Abu Dhabi, index 387 — its land, the United Arab Emirates, has a
@@ -42,21 +48,6 @@ const SINGLE_CASE_MANIFEST = {
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
-});
-
-test("home doorway: strip, swatches and the Capitals & Flags name", async ({ page }) => {
-  await page.goto(BASE);
-  const doorway = page.getByTestId("pack-doorway");
-  await expect(doorway).toBeVisible({ timeout: 30_000 });
-  await expect(doorway.getByRole("heading", { name: "Capitals & Flags" })).toBeVisible();
-  await expect(doorway).toContainText("lands · Find the capital, learn its flag");
-  // The design's three swatches render once their lazy chunks arrive.
-  await expect(doorway.getByTestId("flag-img").first()).toBeVisible({ timeout: 15_000 });
-  // Signpost only: the strip renders NO buttons — both former door
-  // testids are absent and no button role exists inside the doorway.
-  await expect(page.getByTestId("pack-doorway-geodetective")).toHaveCount(0);
-  await expect(page.getByTestId("pack-doorway-coldtrail")).toHaveCount(0);
-  await expect(doorway.getByRole("button")).toHaveCount(0);
 });
 
 test("shelf into GeoDetective deals the pack with the briefing flag", async ({ page }) => {

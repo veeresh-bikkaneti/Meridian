@@ -229,7 +229,6 @@ import {
   writeLoopOpen,
   peekLoopProgress,
 } from "@/game/loop/store";
-import { PackDoorway } from "./pack-doorway";
 import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
 // screens — they render only when the player opens them (or when a saved
@@ -3902,11 +3901,6 @@ export function GameApp() {
         setLoopOpen(true);
       })}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
-      doorway={
-        isLoopLocked(ageBand, "geodetective") ? null : (
-          <PackDoorway density="compact" />
-        )
-      }
       challengeEnabled={friendChallengesOn}
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
@@ -4437,7 +4431,6 @@ function Choose({
   onGrownUpOpen,
   headingRef,
   mapModeControl,
-  doorway,
 }: {
   onState: (e: ReactMouseEvent) => void;
   onCountry: (e: ReactMouseEvent) => void;
@@ -4482,11 +4475,7 @@ function Choose({
    * hero's top row (Block C cure). GameApp owns the mode state and
    * the handlers; Choose only places the control. */
   mapModeControl?: ReactNode;
-  /** Capitals & Flags doorway strip, rendered beside the About
-   * card (owner pick, 2026-11-04; it sat under the Expeditions Map
-   * card in the issue #344 design). Null for bands where
-   * GeoDetective is locked. */
-  doorway?: ReactNode;}) {
+}) {
   // GeoDetective progress for the edition card: the resume variant and the
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
@@ -4581,9 +4570,12 @@ function Choose({
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   };
-  // The About card, extracted so the Capitals & Flags doorway can
-  // sit beside it (owner pick, 2026-11-04) without duplicating the
-  // card's markup.
+  // The About card. It stands alone in the pages band at full
+  // width: the Capitals & Flags doorway that rode beside it was
+  // removed from Home entirely (owner's word, Veeresh, 2026-11-05:
+  // "card is not clickable. if its not clickable then there is no
+  // point of putting it on home page."). The pack's only entry is
+  // the deck shelf inside each mode.
   const aboutSection = (
     <section id="home-about" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="about-title">
       <span className="hv5-label">About</span>
@@ -4842,9 +4834,13 @@ function Choose({
             </Button>
           ) : null}
         </div>
-        {/* The Capitals & Flags doorway no longer renders here: it
-            sits beside the About card below (owner pick, 2026-11-04,
-            superseding the under-map placement from issue #344). */}
+        {/* The Capitals & Flags doorway no longer renders anywhere
+            on Home: it began under this map card (issue #344), moved
+            beside the About card below (2026-11-04), became a
+            signpost (2026-11-05), and was then removed entirely on
+            the owner's word (Veeresh, 2026-11-05: "card is not
+            clickable. if its not clickable then there is no point
+            of putting it on home page."). */}
         </div>
 
       <div className="hv5-grid2" id="home-cases" tabIndex={-1}>
@@ -5078,10 +5074,7 @@ function Choose({
       </div>
 
       <div className="hv5-pages">
-        <div className="hv5-about-row">
-          {aboutSection}
-          {doorway}
-        </div>
+        {aboutSection}
         <section id="home-journal" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="journal-title" data-testid="journal-section">
           <span className="hv5-label">Journal</span>
           <h2 id="journal-title">What the land remembers</h2>

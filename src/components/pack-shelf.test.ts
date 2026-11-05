@@ -129,20 +129,25 @@ describe("surfaces that must stay pack-free", () => {
     assert.ok(!lockedLoop.includes("pack-shelf"), "locked tile has no shelf import");
   });
 
-  it("game-app.tsx renders no shelf (the doorway is not a shelf)", () => {
+  it("game-app.tsx renders no shelf and no doorway", () => {
     // The original slice kept every pack surface out of game-app.
     // Issue #344 ratified ONE home surface — the Capitals & Flags
-    // doorway strip, a signpost only since the owner's pick
-    // (Veeresh, 2026-11-05: "Option C — signpost only, no buttons"):
-    // game-app renders the strip and no longer imports any
-    // pack-shelf-data helper (the strip owns its own manifest read
-    // for its display-only count). What this guard still protects:
-    // the PackShelf component itself never renders on Home; deck
-    // switching stays inside the two mode screens.
+    // doorway strip (a signpost only from the owner's pick,
+    // Veeresh, 2026-11-05: "Option C — signpost only, no buttons")
+    // — and the owner then removed even that (Veeresh, 2026-11-05:
+    // "card is not clickable. if its not clickable then there is
+    // no point of putting it on home page."). Home is pack-free
+    // again: game-app renders neither the shelf nor the doorway,
+    // and deck switching stays inside the two mode screens.
     assert.ok(!gameApp.includes("<PackShelf"), "no shelf component on the home cards");
     assert.ok(
       !gameApp.includes('from "./pack-shelf"'),
       "no shelf component import in game-app",
+    );
+    assert.ok(!gameApp.includes("<PackDoorway"), "no doorway component on the home cards");
+    assert.ok(
+      !gameApp.includes('from "./pack-doorway"'),
+      "no doorway component import in game-app",
     );
   });
 });

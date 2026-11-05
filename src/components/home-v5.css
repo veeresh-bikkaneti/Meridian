@@ -1408,105 +1408,15 @@ body:has(.home-v5) {
    About card, without crowding the page. The designs were prototyped
    behind a variant harness on design branches; this section is
    the production composition — the harness is gone and everything
-   below applies unconditionally. */
-
-/* Doorway in the hv5 card language (theme restyle, all placements). */
-.home-v5 .hv5-doorway {
-  margin-top: 16px;
-}
-.home-v5 .hv5-doorway-flags {
-  display: flex;
-  gap: 8px;
-  margin: 0 0 6px;
-}
-.home-v5 .hv5-doorway-flag {
-  height: 26px;
-  width: auto;
-  border-radius: 4px;
-  border: 1px solid var(--hv5-line);
-  box-shadow: 0 2px 6px -2px rgba(94, 76, 32, 0.35);
-}
-.home-v5 .hv5-btn-ghost {
-  background: transparent;
-  border: 1.5px solid var(--hv5-line-warm);
-  color: var(--hv5-ink);
-  font-size: 12.5px;
-  padding: 14px 24px;
-  min-height: 44px;
-}
-.home-v5 .hv5-btn-ghost:hover {
-  background: #f1ead3;
-}
-/* Compact density — the anti-crowding cut for beside-About. Same
-   words, tighter footprint. */
-.home-v5 .hv5-doorway-compact {
-  padding: 18px 20px;
-}
-.home-v5 .hv5-doorway-compact .hv5-head {
-  margin-bottom: 8px;
-}
-.home-v5 .hv5-doorway-compact h2 {
-  font-size: 21px;
-}
-.home-v5 .hv5-doorway-compact p {
-  font-size: 13px;
-  margin-top: 4px;
-}
-.home-v5 .hv5-doorway-compact .hv5-doorway-flag {
-  height: 20px;
-}
-
-/* Beside-About placement: a two-column row inside the About band of
-   .hv5-pages (About keeps the reading column, the doorway rides
-   beside it); the Journal band stays full-width below. Stacks on
-   phones. The two-column template is scoped to when a doorway is
-   actually present: when the doorway is null (GeoDetective locked
-   for the youngest band) About spans the full width instead of
-   sitting beside an empty 290px track. */
-.home-v5 .hv5-about-row {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 22px;
-  align-items: start;
-}
-/* The 290px floor in the template below is the doorway's
-   minimum: it is the narrowest the doorway's column is
-   allowed to get — when the floor binds, About's reading
-   column is the one that gives (at 768px the track sits
-   exactly on the floor and About takes what's left). The
-   doorway itself fills that track — see the doorway rule
-   below. */
-.home-v5 .hv5-about-row:has(> .hv5-doorway) {
-  grid-template-columns: minmax(0, 1.45fr) minmax(290px, 1fr);
-}
-.home-v5 .hv5-about-row > .hv5-doorway {
-  margin-top: 0;
-  /* A matched pair (owner correction, 2026-11-05: "I was clear
-     the card heights dont match"). The two cards in this row —
-     About ("How a round works") and this Capitals & Flags
-     signpost — are meant to read as a matched set, like the
-     Journal / Grown-ups pair in the row above: the signpost
-     stretches to the About card's height and fills its column.
-     The row keeps align-items: start, so About keeps its own
-     height; align-self: stretch here lets only the signpost
-     grow to the row height the About card sets. No
-     justify-self is set, so the card fills its column track
-     again (the grid default). An earlier fix on 2026-11-05
-     (commit d7f0be6) read "sizes to match" as a width problem
-     and made the card hug its content width with
-     justify-self: start — that was a misread of the owner's
-     words, and this rule supersedes it. Pinned by the
-     "signpost card matches the About card's height" test in
-     tests/e2e/home-hero-trekker.desktop.spec.ts. */
-  align-self: stretch;
-}
-@media (max-width: 680px) {
-  .home-v5 .hv5-about-row,
-  .home-v5 .hv5-about-row:has(> .hv5-doorway) {
-    grid-template-columns: 1fr;
-  }
-}
+   below applies unconditionally.
+   Doorway removal, 2026-11-05: the doorway composed here in #352
+   (theme restyle, beside-About placement, then signpost-only) was
+   removed from Home entirely on the owner's word (Veeresh,
+   2026-11-05: "card is not clickable. if its not clickable then
+   there is no point of putting it on home page."). Every
+   .hv5-doorway* rule, the .hv5-about-row two-column placement, and
+   the consumer-less .hv5-btn-ghost rules went with it; the About
+   card stands alone in .hv5-pages at full width again. */
 
 /* Hero mountain wrap. The wrap takes over the shipped img's box
    (flex, margins, top-fade mask) so the overlays can sit on the art. */

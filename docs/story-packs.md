@@ -240,9 +240,8 @@ as chips the player can switch between.
 - **One shared list.** `buildDeckList` builds the chip list for both
   editions from the manifest data, so the two shelves cannot drift
   apart.
-- **One manifest load per session.** The shelf and the home doorway
-  (which reads the manifest only for its display count) share a
-  single manifest load: a manifest that loads fine is kept
+- **One manifest load per session.** The shelf mounts in both
+  editions share a single manifest load: a manifest that loads fine is kept
   for the rest of the session, a failed load is thrown away so the
   next screen tries again, and dealing a case always fetches fresh —
   so a pack that cannot load at deal time still falls back to the
@@ -297,14 +296,15 @@ edition — and adds a flag layer under one rule:
   open mystery and the cycle count untouched. Cold Trail generation
   stays composition-stable the same way: new cases append after the
   shipped ones, and flag stamps are additive metadata only.
-- **The doorway — a signpost only.** Home carries a "Capitals &
-  Flags" strip beside the About card: flag swatches, the pack's
-  name, and its manifest count line. The strip has no doors and no
-  buttons — it advertises the pack, and the pack's only entry
-  point is the deck shelf inside each mode, where the player
-  picks the Capitals deck on the shelf chip. (Superseded record:
-  the #344 design gave the strip a door into each mode, each door
-  selecting the pack before opening; the owner replaced that
-  design with his pick — Veeresh, 2026-11-05: "Option C —
-  signpost only, no buttons" — after flagging the two Play
-  buttons as redundant to the mode cards below.)
+- **The doorway — removed from Home.** The pack has no home-page
+  surface at all: its only entry point is the deck shelf inside
+  each mode, where the player picks the Capitals deck on the
+  shelf chip. (Superseded record: issue #344 shipped a "Capitals &
+  Flags" strip on Home with a door into each mode, each door
+  selecting the pack before opening; the owner then replaced the
+  doors with a pure signpost beside the About card — Veeresh,
+  2026-11-05: "Option C — signpost only, no buttons" — after
+  flagging the two Play buttons as redundant to the mode cards
+  below; and later the same day he removed the strip outright —
+  Veeresh, 2026-11-05: "card is not clickable. if its not
+  clickable then there is no point of putting it on home page.")

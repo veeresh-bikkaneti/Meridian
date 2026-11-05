@@ -2,8 +2,9 @@ import { test, expect, type Browser, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * Home hero + trekker + doorway — production composition pins
- * (feat/home-rework-hero-trekker, owner ship word 2026-11-04).
+ * Home hero + trekker — production composition pins
+ * (feat/home-rework-hero-trekker, owner ship word 2026-11-04;
+ * doorway removed 2026-11-05, see (f) below).
  *
  * The home page used to render a static mountain picture, with the
  * animated designs reachable only behind a variant test harness
@@ -13,9 +14,7 @@ import { serveBuiltArtifact } from "./helpers";
  * (a) the hero carries the V1b trail overlay (marching dots,
  *     climbing pulse, summit flag, drifting clouds) AND the
  *     trekking-kid overlay (simplified child, two poles, slow
- *     climb), and the Capitals & Flags doorway appears exactly
- *     once — beside the About card, at compact density, with the
- *     shipped copy and its manifest-driven land count;
+ *     climb);
  * (b) the motion actually runs — the trekker's SMIL master clock
  *     advances and the pulse travels the trail;
  * (c) with prefers-reduced-motion emulated, the hero lands on its
@@ -28,19 +27,19 @@ import { serveBuiltArtifact } from "./helpers";
  * (e) a mid-session flip from reduced-motion to no-preference
  *     lifts the gate and the trekker's clock resumes advancing
  *     instead of staying paused on the still frame.
- * (f) the signpost card matches the About card's height and
- *     fills its column: in the two-column About row its height
- *     equals the About card's height, its top aligns with the
- *     About card's top, and its width fills its column track;
- *     stacked on phones it is full-width with its natural height
- *     (owner correction, 2026-11-05: "I was clear the card
- *     heights dont match" — the pair must read as a matched set,
- *     like the Journal / Grown-ups pair above).
+ * (f) RETIRED 2026-11-05: this spec also pinned the Capitals &
+ *     Flags doorway beside About (presence, copy, and finally the
+ *     heights-match pin). The owner removed the card from Home
+ *     entirely (Veeresh, 2026-11-05: "card is not clickable. if
+ *     its not clickable then there is no point of putting it on
+ *     home page."), so the doorway pins are gone with their
+ *     subject; the composition test now pins the doorway's
+ *     ABSENCE instead.
  *
  * Fail-on-main: unmodified main's game-app.tsx contains none of
- * the .hv5-trail / .hv5-trekker / .hv5-clouds / .hv5-about-row
- * selectors these tests query (grep-verified when this spec was
- * written), so every test here fails there.
+ * the .hv5-trail / .hv5-trekker / .hv5-clouds selectors these
+ * tests query (grep-verified when this spec was written), so
+ * every test here fails there.
  */
 test.setTimeout(240_000);
 
@@ -76,7 +75,7 @@ async function openHome(
   return page;
 }
 
-test("production home composes trail + trekker + clouds and one doorway beside About", async ({
+test("production home composes trail + trekker + clouds and no doorway", async ({
   browser,
 }) => {
   const page = await openHome(browser);
@@ -89,33 +88,16 @@ test("production home composes trail + trekker + clouds and one doorway beside A
   await expect(page.locator(".hv5-trail-pulse")).toBeAttached();
   await expect(page.locator(".hv5-trail-flag")).toBeAttached();
 
-  // Exactly one doorway on the page, riding beside the About card
-  // in the about row (the under-map instance is gone).
-  await expect(page.locator(".hv5-doorway")).toHaveCount(1);
-  await expect(page.locator(".hv5-about-row > .hv5-doorway")).toHaveCount(1);
-  await expect(page.locator(".hv5-about-row > #home-about")).toHaveCount(1);
-  await expect(page.locator(".hv5-rail .hv5-doorway")).toHaveCount(0);
-
-  // Compact (slim) density + the shipped copy, word for word, with
-  // the land count read from the live pack manifest (110 lands).
-  const doorway = page.locator(".hv5-doorway");
-  await expect(doorway).toHaveClass(/hv5-doorway-compact/);
-  await expect(doorway.locator("h2")).toHaveText("Capitals & Flags");
-  await expect
-    .poll(
-      async () =>
-        doorway.evaluate((el) =>
-          (el.querySelector("p")?.textContent ?? "").replace(/\s+/g, " ").trim(),
-        ),
-      { timeout: 20_000 },
-    )
-    .toBe("110 lands · Find the capital, learn its flag");
-  // Signpost only (owner's pick, Veeresh, 2026-11-05: "Option C —
-  // signpost only, no buttons"): the doorway renders NO buttons —
-  // both former door testids are absent.
-  await expect(page.getByTestId("pack-doorway-geodetective")).toHaveCount(0);
-  await expect(page.getByTestId("pack-doorway-coldtrail")).toHaveCount(0);
-  await expect(doorway.getByRole("button")).toHaveCount(0);
+  // The Capitals & Flags doorway is gone from Home entirely
+  // (owner's word, Veeresh, 2026-11-05: "card is not clickable.
+  // if its not clickable then there is no point of putting it on
+  // home page."): no doorway element, no about-row wrapper, and
+  // the About card stands in the pages band on its own.
+  await expect(page.locator(".hv5-doorway")).toHaveCount(0);
+  await expect(page.getByTestId("pack-doorway")).toHaveCount(0);
+  await expect(page.locator(".hv5-about-row")).toHaveCount(0);
+  await expect(page.locator(".hv5-pages > #home-about")).toHaveCount(1);
+  await expect(page.locator("#home-about")).toBeVisible();
 
   } finally {
     await page.context().close();
@@ -326,115 +308,5 @@ test("motion gate flips mid-session: trekker clock resumes when reduced motion l
 
   } finally {
     await page.context().close();
-  }
-});
-
-test("signpost card matches the About card's height and fills its column", async ({
-  browser,
-}) => {
-  // Owner correction (2026-11-05): "I was clear the card heights
-  // dont match" — in the About row, About ("How a round works")
-  // is tall and the Capitals & Flags signpost was short; the pair
-  // must read as a matched set, like the Journal / Grown-ups pair
-  // in the row above. The signpost therefore stretches to the
-  // About card's height and fills its column track again. An
-  // earlier fix (d7f0be6) misread this as a width problem and made
-  // the card hug its content width — that pin is replaced here.
-  // Pins, at 1440 / 768 / 390 widths:
-  //  (1) two-column (1440/768): doorway height == About height
-  //      (±1.5px), doorway top == About top, and doorway width ==
-  //      its column track (row width − About width − 22px gap,
-  //      ±1.5px);
-  //  (2) stacked (390): doorway is full-width (== row width) with
-  //      its natural height — no height coupling to About.
-  // Fail-on-18a6a39: (1) fails at 1440 — the doorway rendered
-  // 160.41px tall against About's 251.39px (delta ≈91px) and
-  // 276.11px wide against a 484.09px track.
-  const WIDTHS = [
-    { width: 1440, height: 900 },
-    { width: 768, height: 1024 },
-    { width: 390, height: 844 },
-  ];
-  const boxes = (page: Page) =>
-    page.evaluate(() => {
-      const box = (sel: string) => {
-        const el = document.querySelector(sel);
-        if (!el) return null;
-        const b = el.getBoundingClientRect();
-        return {
-          w: Math.round(b.width * 100) / 100,
-          h: Math.round(b.height * 100) / 100,
-          top: Math.round(b.top * 100) / 100,
-        };
-      };
-      return {
-        doorway: box('[data-testid="pack-doorway"]'),
-        about: box("#home-about"),
-        row: box(".hv5-about-row"),
-      };
-    });
-  const stableBoxes = async (page: Page) => {
-    let prev = "";
-    let cur = await boxes(page);
-    for (let i = 0; i < 24; i++) {
-      const s = JSON.stringify(cur);
-      if (s === prev) return cur;
-      prev = s;
-      await page.waitForTimeout(200);
-      cur = await boxes(page);
-    }
-    return cur;
-  };
-
-  for (const v of WIDTHS) {
-    const context = await browser.newContext({ viewport: { width: v.width, height: v.height } });
-    await serveBuiltArtifact(context);
-    const page = await context.newPage();
-    try {
-      await page.goto(APP);
-      const doorway = page.locator('[data-testid="pack-doorway"]');
-      await expect(doorway).toBeVisible({ timeout: 30_000 });
-      // Wait for the async land count to settle before measuring —
-      // the count landing widens the content once.
-      await expect(doorway).toContainText("lands", { timeout: 15_000 });
-      await page.locator(".hv5-about-row").scrollIntoViewIfNeeded();
-
-      const base = await stableBoxes(page);
-      expect(base.doorway, `doorway box at ${v.width}px`).not.toBeNull();
-      expect(base.about, `About box at ${v.width}px`).not.toBeNull();
-      expect(base.row, `about-row box at ${v.width}px`).not.toBeNull();
-
-      if (v.width === 390) {
-        // Stacked: full width, natural height, no height coupling.
-        expect(
-          Math.abs((base.doorway?.w ?? 0) - (base.row?.w ?? 0)),
-          `signpost at 390px should be full-width (row ${base.row?.w}), got ${base.doorway?.w}`,
-        ).toBeLessThanOrEqual(1.5);
-        expect(base.doorway?.h ?? 0).toBeGreaterThanOrEqual(155);
-        expect(base.doorway?.h ?? 0).toBeLessThanOrEqual(166);
-        expect(
-          Math.abs((base.doorway?.h ?? 0) - (base.about?.h ?? 0)),
-          "stacked signpost must not be height-coupled to About",
-        ).toBeGreaterThan(10);
-      } else {
-        // Two-column matched pair: heights match, tops align,
-        // width fills the column track.
-        expect(
-          Math.abs((base.doorway?.h ?? 0) - (base.about?.h ?? 0)),
-          `signpost height at ${v.width}px should match About height ${base.about?.h}, got ${base.doorway?.h}`,
-        ).toBeLessThanOrEqual(1.5);
-        expect(
-          Math.abs((base.doorway?.top ?? 0) - (base.about?.top ?? 0)),
-          `signpost top at ${v.width}px should align with About top`,
-        ).toBeLessThanOrEqual(1.5);
-        const track = (base.row?.w ?? 0) - (base.about?.w ?? 0) - 22;
-        expect(
-          Math.abs((base.doorway?.w ?? 0) - track),
-          `signpost width at ${v.width}px should fill its column track ${track}, got ${base.doorway?.w}`,
-        ).toBeLessThanOrEqual(1.5);
-      }
-    } finally {
-      await context.close();
-    }
   }
 });
