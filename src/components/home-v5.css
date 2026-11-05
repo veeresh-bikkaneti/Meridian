@@ -1470,6 +1470,9 @@ body:has(.home-v5) {
   gap: 22px;
   align-items: start;
 }
+/* The 290px floor in the template below bounds how far About's
+   column can be squeezed; it does not size the doorway, which
+   shrink-wraps to its own content under the doorway rule below. */
 .home-v5 .hv5-about-row:has(> .hv5-doorway) {
   grid-template-columns: minmax(0, 1.45fr) minmax(290px, 1fr);
 }
@@ -1481,9 +1484,10 @@ body:has(.home-v5) {
      signpost 484px wide for 276px of content at desktop — the
      row dictated the card's size. justify-self:start shrink-wraps
      the card to its content plus its own padding at every width,
-     so neither the About card's height nor the row's tracks can
-     move it. Pinned by the "signpost card is sized by its own
-     content" test in tests/e2e/home-hero-trekker.desktop.spec.ts. */
+     so the row's tracks no longer size it (its height was already
+     content-sized via the row's align-items: start). Pinned by
+     the "signpost card is sized by its own content" test in
+     tests/e2e/home-hero-trekker.desktop.spec.ts. */
   justify-self: start;
 }
 @media (max-width: 680px) {
