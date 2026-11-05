@@ -5,7 +5,7 @@
  * orchestration (crashWatchdogMain) is driven against fake browser globals
  * so the exact code that ships inline in _shell.html is what gets
  * exercised. renderCrashWatchdogScript() is checked for the marker, the
- * 6200-byte budget, ES5-only output, and a no-drift assertion that the
+ * 6250-byte budget, ES5-only output, and a no-drift assertion that the
  * shipped script still embeds the tested functions' logic.
  */
 import assert from "node:assert/strict";
@@ -252,20 +252,22 @@ test("renderCrashWatchdogScript emits a single self-contained inline script", ()
   assert.ok(script.includes('"test-build"'));
 });
 
-test("rendered script stays within the 6200-byte budget", () => {
+test("rendered script stays within the 6250-byte budget", () => {
   // #223: check the build-id shapes production actually uses, not just
   // the old 10-char fixture — a 12-char CI id (GITHUB_SHA slice) and the
   // 14-char timestamp fallback rendered 5122/5124 bytes and silently
   // broke the budget while this test still passed at exactly 5120.
   // Budget history: 5120 → 6144 (§7.5 ladder, worst case 6,104) →
-  // 6200: the chunk-recovery stand-down proof in onTimer (a fresh
-  // meridian.chunkReloadNotice) measures 6,155 bytes worst case
-  // (14-char build id), so 6,200 is the smallest round budget that
-  // fits it with margin.
+  // 6200 (the chunk-recovery stand-down in onTimer: a fresh
+  // meridian.chunkReloadNotice; worst case 6,155) → 6250: the
+  // recovery card (PR #349 panel round 1 — report stands down, player
+  // does not) measures 6,213 bytes worst case (14-char build id), so
+  // 6,250 is the smallest round budget that fits it while keeping the
+  // established ~40-byte headroom pattern.
   for (const buildId of ["abcdef0", "test-build", "abcdef012345", "local-mvpr1hgb"]) {
     const script = renderCrashWatchdogScript(buildId);
     const bytes = Buffer.byteLength(script, "utf8");
-    assert.ok(bytes <= 6200, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
+    assert.ok(bytes <= 6250, `rendered script for a ${buildId.length}-char build id is ${bytes} bytes, over budget`);
   }
 });
 
@@ -293,6 +295,7 @@ test("rendered script embeds the tested logic (no-drift)", () => {
     "boot_failure",
     "flags.json",
     "A new version of Meridian is available.",
+    "The reload didn't finish loading.",
     "Try again",
     "Crash note sent, no personal info - helps fix this.",
     "device:",
@@ -402,13 +405,18 @@ test("no UI when the app signalled ready before the timer fires", () => {
   assert.equal(veilOf({ body }), undefined);
 });
 
-test("no UI and no boot_failure when a fresh chunk-reload notice survives (stalled recovery reload)", () => {
+test("fresh chunk-reload notice: recovery card shows, no boot_failure POST (stalled recovery reload)", () => {
   // The notice key is written ONLY just before a chunk-recovery reload
   // (chunk-recovery's auto-reload, or MapErrorBoundary's manual
-  // "Try again") — both inside an app that already booted. A fresh
-  // notice at timer-fire time with ready unset therefore means this
-  // page load is a stalled recovery reload, not a fresh boot failure:
-  // the watchdog stands down (no overlay, no boot_failure POST).
+  // "Try again") — in practice, both inside an app that already
+  // booted. A fresh notice at timer-fire time with ready unset
+  // therefore means this page load is a stalled recovery reload, not
+  // a fresh boot failure. The report stands down (no boot_failure
+  // POST, no "Crash note sent" line), but the player is NOT left on a
+  // blank shell: the overlay still shows, with recovery-true copy —
+  // panel round 1 on PR #349 (UX BLOCK): suppressing the only
+  // recovery surface strands a child, possibly in the standalone PWA
+  // with no browser reload button.
   const { host, calls, body, xhr } = fakeHost({
     store: { "meridian.chunkReloadNotice": String(Date.now()) },
     xhrOpts: {
@@ -419,8 +427,45 @@ test("no UI and no boot_failure when a fresh chunk-reload notice survives (stall
   });
   crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
   fireTimer(calls);
-  assert.equal(veilOf({ body }), undefined, "no fallback overlay on a stalled recovery reload");
+  const veil = veilOf({ body });
+  assert.ok(veil, "the recovery overlay IS inserted on a stalled recovery reload");
+  assert.equal(veil.attrs.role, "alert");
+  assert.ok(
+    veil.innerHTML.includes("The reload didn't finish loading."),
+    "recovery heading, not a boot-failure claim",
+  );
+  assert.ok(
+    !veil.innerHTML.includes("The game couldn't start on this phone."),
+    "the generic boot-failure heading must NOT appear",
+  );
+  assert.ok(
+    !veil.innerHTML.includes("This phone can't run the 3D map."),
+    "the WebGL-less heading variant does not apply to the recovery card",
+  );
   assert.equal(xhr.posts.length, 0, "no boot_failure POST on a stalled recovery reload");
+  const ma = host.document.getElementById("ma");
+  assert.ok(
+    !ma.innerHTML.includes("Crash note sent, no personal info - helps fix this."),
+    "no 'Crash note sent' line when nothing was sent",
+  );
+});
+
+test("recovery card: Try again reloads the page, still no report", () => {
+  const { host, calls, xhr } = fakeHost({
+    store: { "meridian.chunkReloadNotice": String(Date.now()) },
+    xhrOpts: {
+      flagsText: JSON.stringify({
+        observabilityEndpoint: INGEST,
+      }),
+    },
+  });
+  crashWatchdogMain(host, "b1", isValidWatchdogEndpoint, OBSERVABILITY_INGEST_HOSTS);
+  fireTimer(calls);
+  const veil = veilOf(host);
+  assert.ok(veil, "recovery overlay inserted");
+  veil.onclick({ target: { id: "ag" } });
+  assert.equal(calls.reloads, 1, "Try again reloads, exactly like the generic card");
+  assert.equal(xhr.posts.length, 0, "the tap sends no boot_failure either");
 });
 
 test("stale chunk-reload notice does not stand the watchdog down (control)", () => {
