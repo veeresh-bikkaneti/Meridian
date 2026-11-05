@@ -1,7 +1,7 @@
 # Branch status — feat/home-rework-hero-trekker (home rework: animated hero + trekking kid + doorway beside About)
 
 - **Branch:** `feat/home-rework-hero-trekker`
-- **Base:** `main` @ `70e1be6`
+- **Base:** `main` @ `d3202a9` (merged up 2026-11-05; built on `70e1be6`)
 - **Authority:** owner words — ship word, Veeresh, widget tap + typed, 2026-11-04 21:15 CST: "Ship it — fold the simple trekker into the home build"; trekker simplification, Veeresh, 2026-11-04 20:29 CST: "Reduce the size of the animated cartoon guy, this is supposed be a child walking the trail and let just keep it to that. No more complexities, but while trekking you need sticks and make it realistic trekking please and wind blowing, climbing slowly"; doorway placement, Veeresh, 2026-11-04 16:05 CST: placement beside the About section + "we dont want to make the UI over crowded"; hero V1 strengthen, Veeresh, 2026-11-04 18:54 CST: "The motion in this one is very subtle. I would appreciate adding a little more."; clouds, Veeresh, 2026-11-04 18:54 CST: "Since the mountains are in the cloud, I believe adding that clouds are moving would make it more sense."
 
 ## Task capsule
@@ -22,6 +22,7 @@
 - [x] Docs: README's Capitals & Flags line said the strip sits "under the Expeditions Map card" — updated to "beside the About card" (the one stale line; handbook mentions of the hero/doorway are generic and stay accurate — grep: `doorway|hero` over README.md + docs/handbook).
 - [x] Gates on the final tree: `npx tsc --noEmit` clean; `npm test` — scripts 986 pass / 0 fail / 11 skipped, src 2092/2092; `npm run test:worker` 145/145; `node scripts/lint-cards.mjs` GATE PASSED; `npm run build:pages` green (entry chunk `index-*.js` 457,641 B without the Ko-fi env, 457,803 B with it inlined; `dist/client` 66 MB either way). Environment note: this VM's chromium-1243 crashes renderers on its default GL stack (unmodified main crashes identically) — E2E here ran with a temporary local config adding `--use-gl=angle --use-angle=swiftshader` (untracked, deleted after the runs; no repo config change).
 - [x] PR opened: #352. Panel verdict pending — merge only on the owner's word.
+- [x] Merge-up over main `d3202a9` (#349 crash-watchdog + chunk-recovery), merge commit `bfb1ccd`: sole conflict this file — resolved both-records (this record on top, #349's record below it, main's stack intact). All #349 code files (`scripts/crash-watchdog.mjs`, `src/lib/chunk-recovery.ts`, `docs/observability.md`, tests) auto-merged with no overlap into the home delta. Gates re-run on the merged tree: `npx tsc --noEmit` clean; `npm test` — scripts 990 pass / 0 fail / 11 skipped (1001 tests; +4 watchdog tests from #349), src 2092/2092; `npm run test:worker` 145/145; `node scripts/lint-cards.mjs` GATE PASSED; `npm run build:pages` green (first attempt killed at exit 137 under VM contention; the no-change retry passed). Delta audit: branch-vs-main diff is exactly the 7 home-scope files (`src/components/game-app.tsx`, `src/components/home-v5.css`, `src/components/pack-doorway.tsx`, `BRANCH_STATUS.md`, `README.md`, `scripts/e2e-telemetry-guard.test.mjs`, `tests/e2e/home-hero-trekker.desktop.spec.ts`).
 
 # Branch status — fix/chunk-failure-cascade (watchdog stand-down on stalled recovery reloads)
 
