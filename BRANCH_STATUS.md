@@ -34,6 +34,46 @@
 - Sole conflict: this file. Resolved both-records: this branch's record above, main's #348 record below it; the accumulated records from main follow after.
 - Code files auto-merged with no conflicts (#348 removed dead auth only; no overlap with this branch's scope).
 
+## Merge-up — 2026-11-04 (main `70e1be6` merged in, PR #350 panel-cure round)
+
+- Sole conflict: this file. Resolved both-records: this branch's accumulated record above, main's #347 record below it; earlier accumulated records follow after.
+- Code files auto-merged with no conflicts (#347 touched only crash-watchdog scripts + the crash-report worker + observability docs; no overlap with this branch's scope).
+
+---
+
+# Branch status — feat/345-crash-severity (issue #345: crash-report severity grades + watchdog stamp)
+
+- **Branch:** `feat/345-crash-severity`
+- **Base:** `main` @ `0b4e270`
+- **Authority:** issue #345 + the owner-adopted swarm design (2026-11-04, Slice B): grades S1/S2a/S2b/S3, threshold ≥3 (owner's pick over the draft's ≥2), ungraded absolutes, and the watchdog-stamp client fix commissioned in the same decision.
+- **State:** CURED + MERGED UP over main `0b4e270` (via `e1cf6fe`) — panel re-vote on the cured tip pending; no merge (owner's word follows the re-vote).
+
+## Task capsule
+
+- TASK: worker-side `severityOf` (inputs: the re-derived verdict + the stamped `unfinishedBoots` streak only; first-match, fail-closed); the alert's priority line leads with the grade and its why line gains one `Severity: …` clause; the digest gains one counted `severities` dimension and severity-led headers; the boot watchdog stamps the durable boot-health streak read-only onto `boot_failure` so those reports can grade S1.
+- Tier: 2-shaped (worker + client telemetry surfaces, 3+ files). The owner-adopted design is the manifest of record for this task; the panel reviews the final tip after this PR opens.
+- Protected/out of scope: the verdict derivation itself (severity consumes it, never alters it), the P1–P4 mapping, other PRs, branch protection.
+- Model-vs-code note: the inline watchdog's byte budget could not absorb the stamp (worst case was 6,104 of 6,144 bytes) — the budget rose to 6,656 (new worst case 6,441), documented in `scripts/crash-watchdog.mjs` and its test. No telemetry-manifest change was needed: `unfinishedBoots` was already a manifest field, so client + worker + parity stayed in lockstep with no field added.
+
+## Record
+
+- [x] Worker (`workers/crash-report/src/index.ts`): `severityOf` + `SEVERITY_STREAK_THRESHOLD = 3`; `buildAlert` severity lead + clause in Discord and email; `CountBucket.severities` (read-tolerant for pre-#345 buckets), counted in `recordTelemetry`, rendered in type blocks, worst-grade lead in the digest priority line. Tests 109 → 127 (+18: every grade boundary incl. exactly 3, absent-streak fallback wording, stamped-zero wording, ungraded absoluteness at streak 99 for both ungraded verdicts, alert rendering, severities counting, old-bucket tolerance, ungraded-only digest).
+- [x] Watchdog stamp (`scripts/crash-watchdog.mjs`): read-only `ds()` localStorage reader; send-time parse of `meridian:boot-health` (v:1 shape required, floor, 0..99 clamp — mirrors `readBootHealth`); stamps only when a value was read; never writes the record (the §4.4 invariant stands). Inline budget 6,144 → 6,656 with the reason recorded in the module. Tests +8 stamp cases (watchdog file 55/55).
+- [x] Docs: worker README gains a Severity grades section, the updated digest example, the bucket field, and the test count; `docs/observability.md` alert/digest examples and reading notes updated to the new rendering.
+- [x] Gates: worker 127/127 + `typecheck:worker` clean; `npm test` — scripts 1011 pass / 0 fail, src 2119/2119; `tsc` clean; lint-cards GATE PASSED; `build:pages` green. Redundancy audit: one severity derivation (`severityOf`; counting routes through `severityKeyOf` → `severityOf`), one watchdog stamp path.
+- [x] E2E (flock, workers=1, chromium-1243): crash-watchdog + crash-classification + crash-loop-breaker + observability — 12 passed, 2 failed on the pre-existing `storyteller_ready` milestone race: `crash-watchdog:164` fails identically on unmodified main in a clean sequential run, `crash-classification:169` passes in an isolated A/B on both builds, and the two production dists are byte-identical except `_shell.html`. Not a #345 regression.
+- [x] Visuals (owner addition, 2026-11-04): production build at 6 viewports (360×740, 390×844, 430×932, 768×1024, 1440×900, 1920×1080) — boot path exercised, first paint complete 6/6, no watchdog veil; home byte-identical to main at 360/390 and visually identical at 430; the real WebGL globe renders at 360/390/430/1440. Globe captures at 768/1920 are blocked by renderer crashes that hit unmodified main identically (VM SwiftShader + /tmp at 93%) — environment, not a regression. Satellite imagery tiles do not load from sandbox Chromium (no external network); the globe renders its boundary/starfield state with Esri attribution. Evidence: `evidence/visuals-345/` in this worktree (untracked) + Discord samples rendered by both worker versions; links in the PR body.
+
+## Panel cure + merge-up — 2026-11-04 (PR #347, verdict on `0a7f182`: 2 BLOCKs)
+
+- [x] BLOCK 1 (Senior Developer) — watchdog stamp shape check is now strict (`hp.v === 1`, was loose `==`): a record like `{"v":"1","unfinished":5}` or `v:true` is streak 0 to the app (`readBootHealth` discards it) but stamped 5 by the old watchdog, inflating the grade to a false S1. Regression tests pin string `"1"` and boolean `true` versions stamping nothing (they fail on the pre-cure code, pass cured); valid v:1 and v:2 behaviour stay pinned. Worst-case rendered size 6,441 → 6,442 B, within the 6,656 B budget. Riders: `severityOf` direct-caller edge pins (negative streak clamps to 0, non-integer floors, string/non-finite reads as not stamped) + the ungraded-P4 alert pin — no grading behaviour changed.
+- [x] BLOCK 2 (UX Researcher) — the hourly digest now carries exactly one gloss line directly under the priority line when the hour counted any S1: `S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.` Absent in any hour with no S1; both directions pinned, golden digest updated.
+- [x] Doc riders — grade precedence (S1 > S2a > S2b > S3) documented in the worker README severity section and in `docs/observability.md`'s digest reading notes; the observability alert walkthrough's S1 paraphrase again carries the INFERRED label matching the alert/email wording; the `severities:` note now also states the priority lead's worst grade is counted across all types in the hour and that counts inside one type block sort by count, not grade.
+- [x] Merge-up over main `e1cf6fe` (#311): exactly one content conflict — `workers/crash-report/README.md` (the Tests count line) — resolved keeping both intents: #311's audit corrections and funnel content stay, #347's severity section stays accurate against the cured code, test count re-measured on the merged tree (145). `docs/observability.md` and this file auto-merged; both records kept (this #347 record on top, main's stack below intact). Delta audit: branch-vs-main diff is exactly the #345 scope + this cure — no #311 content in the branch's own delta beyond the merge itself.
+- [x] Gates on the cured, merged-up tip (the `87a49ff` merge tree): fresh `npm ci`; worker 145/145 + `typecheck:worker` clean; `npm test` — scripts 1015 pass / 0 fail / 11 skipped, src 2119/2119; `npx tsc --noEmit` clean; `lint-cards` GATE PASSED; `build:pages` green; watchdog budget worst case 6,442 ≤ 6,656 B. E2E not re-run locally in this pass (Silo QA + CI cover the cured tip). Records correction: the sealed gate logs for the `87a49ff` merge tree show scripts 1015 / src 2119 — those figures supersede the scripts 1011 / src 2127 figures stated in that merge commit's message.
+- [x] Second merge-up over main `0b4e270` (#348 auth removal landed while the first merged tip was gating): sole conflict this file — resolved both-records (this #347 record on top, #348's record below it, main's stack intact). #348's code auto-merged with no overlap into the #347 delta; gates re-run on the new merged tree (figures in the PR body merge-up note).
+- [ ] Panel re-vote on the cured tip, then the owner's merge word. NO MERGE in this pass.
+
 ---
 
 # Branch status — chore/remove-dead-auth (Remove dead auth)
@@ -78,7 +118,6 @@
 - [x] Full gate run on the branch tip + test-count accounting — grep gate clean (only this record + protected `migrations/` retain the names); `npm ci` clean; tsc clean; `typecheck:worker` clean; `npm run build` green; lint-cards GATE PASSED; `build:pages` green (first attempt was killed at exit 137 during prerender under VM contention; the no-change retry passed). Counts: scripts 985 tests / 976 pass / 9 skipped / 0 fail, src 2119 → 2092 (all pass), worker 109 → 109 (all pass). Two tests in `scripts/ssr-build-shape.test.mjs` skip until a production build exists, so the post-build run (976 pass / 9 skipped) is the canonical count. Every delta test is accounted for by the deleted suites: scripts −29 = check-auth-invariant (11) + sign-out-plan (18); src −27 = gate-identity (24) + sign-in-gate (3). No other delta.
 - [x] Runtime smoke on the `build:pages` output — PASSED 7/7: home 200 + renders, GeoDetective card visible, Cold Trail card visible, zero console/page errors, `GET /api/auth/session` → 404. Evidence under `.smoke-evidence/` (not committed). Environment notes: port 4124 (4123 held by a sibling crew's server), `TMPDIR` on workspace disk (shared `/tmp` tmpfs was 94% full and crashed Chromium profiles — a control run against an unmodified main build crashed identically), `--disable-dev-shm-usage` as in `playwright.config.ts`.
 - [x] PR opened READY for review — PR #348 — no merge.
-
 ---
 
 # Branch status — feat/capitals-flags-phase1 (Capitals & Flags, Phase 1)

@@ -277,9 +277,9 @@ words:
 ```text
 🚨 FIX — Developer action needed
 Meridian crash report
-priority: P1 — current build, foreground kill at map loading, phone-class iOS 16
+priority: S1 · P1 — current build, foreground kill at map loading, phone-class iOS 16
 verdict: developer action needed
-why: App stopped mid-game on the current build; no error was captured, so the cause is unknown.
+why: App stopped mid-game on the current build; no error was captured, so the cause is unknown. Severity: S1 — 3 unfinished boots in a row with no clean boot since; the player most likely left and never got back in (player-left is INFERRED from the missing clean boot, not observed).
 why-code: fg_kill_current
 action: Read the error below.
 type: suspected_crash · build: c6853be
@@ -297,18 +297,33 @@ How to read it, top to bottom:
 1. **The first line is the headline.** 🚨 FIX means a person needs
    to act. ❔ WAIT means the report itself is missing evidence, so
    nobody can tell yet whether it matters.
-2. **`priority:` is the sort order.** P1 is the most urgent: the
-   current build, a real crash, during gameplay. P2 is a developer
-   problem of any other shape, or a failed recovery. P3 means the
-   evidence was incomplete — a reporting problem, not proof that
-   players are affected. P4 means the report turned out to be
-   harmless or already fixed. The words after the code say which
-   facts earned that priority.
+2. **`priority:` is the sort order, led by the severity grade
+   (issue #345).** The first code is the grade — **S1** is the
+   worst: a developer problem after 3 or more unfinished boots in a
+   row, which most likely means the player left and never got back
+   in (player-left is INFERRED from the missing clean boot, not
+   observed). **S2a** means it recovered, but only after such a streak;
+   **S2b** is a developer problem without the repeat evidence;
+   **S3** fixed itself. Reports whose verdict is "can't tell" or
+   "not a real problem" carry no grade — the line starts
+   `ungraded ·` instead. After the grade comes the P-code: P1 is
+   the most urgent — the current build, a real crash, during
+   gameplay. P2 is a developer problem of any other shape, or a
+   failed recovery. P3 means the evidence was incomplete — a
+   reporting problem, not proof that players are affected. P4
+   means the report turned out to be harmless or already fixed.
+   The words after the codes say which facts earned them.
 3. **`verdict:` and `why:` say what the worker concluded, in plain
    words.** `why-code:` is the same conclusion as a short code
    (`fg_kill_current` = the app was killed in the foreground on the
    current build). Keep the code when filing a follow-up; it is how
-   the next person finds this exact case again.
+   the next person finds this exact case again. When the report is
+   graded, the `why:` line ends with one `Severity: …` sentence
+   carrying the grade's evidence — the boot streak, or the fact
+   that no streak was stamped. The S1 sentence labels the
+   player-left reading **INFERRED**: nobody saw the player leave;
+   the missing clean boot is the evidence, and the sentence says
+   exactly that.
 4. **If the verdict is "can't tell", one extra line appears:**
    `evidence: bgTerminal ✗ · buildReplaced ✓ · trailStuck ✓ · lcV ✓`.
    It names, one by one, the four facts the classifier needed and
@@ -352,16 +367,17 @@ Discord. Nothing is posted for an empty hour. The shape, as built:
 ```text
 📊 Meridian telemetry — hourly digest
 hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)
-priority: P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone
+priority: S1 · P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone
+S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.
 
 suspected_crash 1 · first 17:42 · last 17:42
   builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1
   groups: c6853be|ios|16|phone ×1
-  verdicts: developer_needed/fg_kill_current ×1 · modes: scout ×1 · steps: map_init_start ×1
+  verdicts: developer_needed/fg_kill_current ×1 · severities: S1 ×1 · modes: scout ×1 · steps: map_init_start ×1
 js_error 1 · first 17:05 · last 17:05
   builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1
   groups: 2a0527f|android|unknown|phone ×1
-  verdicts: developer_needed/captured_error ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1
+  verdicts: developer_needed/captured_error ×1 · severities: S2b ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1
 
 alerts this hour: none
 ```
@@ -380,6 +396,18 @@ Reading notes:
   device?": build | OS | OS major version | device class. Groups are
   capped at 32 distinct keys per hour-bucket; anything beyond that
   tallies under `other`.
+- **`severities:`** counts the hour's severity grades per type
+  (issue #345), including `ungraded` for reports whose verdict
+  carries no grade. Grade precedence, worst first, is
+  **S1 > S2a > S2b > S3**: the digest's `priority:` line leads with
+  the hour's worst grade — counted across all types in the hour,
+  so it can come from a different type than the verdict the line
+  names — when any graded report arrived. Inside one type block
+  the counts sort by count, not by grade, so a lower grade can
+  list first there when it happened more often. When the hour
+  counted any S1, exactly one gloss line follows the priority
+  line: `S1 = player-left INFERRED from ≥3 unfinished boots with
+  no clean boot — not observed.`
 - **Caps are labelled, never silent.** Each list shows its top few
   entries; when entries are cut, the line ends with the true
   remainder, like `(+2 more)`. Ties sort by count, then by name, so

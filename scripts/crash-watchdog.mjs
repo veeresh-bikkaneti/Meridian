@@ -37,7 +37,10 @@
  * isValidWatchdogEndpoint): var, function, no ?./??, no arrows, no
  * template literals, no const/let, no classes, no fetch/Promise (XHR +
  * callbacks only), no import/export. The whole inline body is wrapped in
- * try/catch and the rendered output must stay <= 6144 bytes, so the
+ * try/catch and the rendered output must stay <= 6656 bytes (6,144
+ * until issue #345 added the read-only boot-health stamp; the stamp
+ * cost 337 bytes at the worst-case build id — see the RENAME comment
+ * for the measured figures), so the
  * embedded code is written terse and renderCrashWatchdogScript() runs it
  * through minifyEmbedded() (comment/whitespace removal plus renaming of
  * a fixed safe-list of long locals — token-based, so strings, regexes,
@@ -89,12 +92,13 @@ export function isValidWatchdogEndpoint(value, hosts) {
  * which drives the real orchestration against fake browser globals. The
  * inline script embeds this same function by source via
  * renderCrashWatchdogScript(). Everything in here is ES5-only (see the
- * module docstring) and deliberately terse to hold the 6144-byte budget.
+ * module docstring) and deliberately terse to hold the 6656-byte budget.
  */
 export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts) {
   var ASKED = "meridian.crashwatchdogAsked",
     CRUMB = "meridian.breadcrumb",
     CLEAN = "meridian.cleanExit",
+    BHK = "meridian:boot-health",
     READY = "__meridian_ready",
     STALE = "A new version of Meridian is available.",
     CAP = 8192;
@@ -109,6 +113,19 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
     try {
       var st = win.sessionStorage;
       return v === void 0 ? st.getItem(k) : st.setItem(k, v);
+    } catch (e) {
+      sok = false;
+      return null;
+    }
+  }
+  // §4.3: guarded READ-ONLY access to the durable store (localStorage),
+  // where init() keeps the boot-health counter. The watchdog only ever
+  // reads it — never a second writer (§4.4). A missing store reads as
+  // absent; a throwing one flips storageOk, same as sessionStorage.
+  function ds(k) {
+    try {
+      var d = win.localStorage;
+      return d ? d.getItem(k) : null;
     } catch (e) {
       sok = false;
       return null;
@@ -311,6 +328,27 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
           hh = prev && prev.history,
           la = hh && hh[hh.length - 1];
         if (la && typeof la.at === "number" && la.at >= prev.startedAt) ms = la.at - prev.startedAt;
+        // §4.3 watchdog stamp (#345): borrow the durable unfinished
+        // streak so a boot_failure grades on the same count the app
+        // path stamps. Read at send time (freshest — a late-loading
+        // bundle's init() may have updated the record since parse).
+        // Absent, malformed, or blocked → no stamp: the worker then
+        // grades its fallback and says the streak was not stamped.
+        // The v:1 shape check mirrors readBootHealth in
+        // src/lib/observability.ts; the 0..99 clamp is the manifest's
+        // declared range for unfinishedBoots.
+        var ub = null;
+        try {
+          var hp = JSON.parse(ds(BHK) || "");
+          // Strict === on purpose: hp.v comes from parsed JSON, so it
+          // can be a string ("1") or boolean (true) that loose == would
+          // accept — readBootHealth discards those records, and so do
+          // we, or the stamp would inflate the worker's severity grade.
+          if (hp && hp.v === 1 && typeof hp.unfinished == "number" && isFinite(hp.unfinished))
+            ub = Math.min(99, Math.max(0, Math.floor(hp.unfinished)));
+        } catch (e) {
+          /* absent-safe: ub stays null, nothing is stamped */
+        }
         // §7.5 ladder step 2: engine is NOT stamped on this path —
         // for boot_failure events only, the worker fills it from the
         // event's parsed fields via the §3.4 E-rules.
@@ -342,14 +380,18 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
             buildId: buildId,
             device: dv,
             // §4.4 parity: same envelope stamps as the app path.
-            // unfinishedBoots is deliberately ABSENT — the watchdog
-            // must never become a second writer of meridian:boot-health.
+            // unfinishedBoots is stamped below, read-only, when the
+            // durable record was readable — the watchdog borrows the
+            // streak; it never writes meridian:boot-health.
             lcV: "2",
             storageOk: sok,
             mapMode: prev && (prev.mapMode === "full" || prev.mapMode === "scout") ? prev.mapMode : un,
             msSinceBootStart: ms,
             error: err0 || { name: "Error", message: "boot timeout" }
           };
+          // §4.3: stamp the borrowed streak only when one was read —
+          // an absent stamp is the honest "not stamped" signal.
+          if (ub !== null) ev.unfinishedBoots = ub;
           if (prev) {
             ev.sessionId = prev.sessionId;
             if (prev.lastMilestone) ev.lastMilestone = prev.lastMilestone;
@@ -527,10 +569,14 @@ const RENAME = {
   // ids are 12 chars (14 for the timestamp fallback), which pushed the
   // rendered script 2–4 bytes over its then budget while the 10-char
   // test fixture still passed. These two renames free 20 bytes.
-  // Current figures (§7.5 gated decision): the budget is 6,144 bytes
-  // and the worst case (14-char build id) measures 6,104 bytes.
-  // Neither name is an object-literal key or a property, so the
-  // rename is safe here.
+  // Current figures (§7.5 gated decision): the budget is 6,656 bytes
+  // and the worst case (14-char build id) measures 6,442 bytes (the
+  // #347 strict-`===` shape check added the last byte). The
+  // budget rose from 6,144 with issue #345: the read-only boot-health
+  // stamp (the ds() reader, the send-time parse, the BHK rename)
+  // costs 337 bytes at the worst case and does not fit in the old
+  // 40 bytes of headroom; ~215 bytes remain. Neither name is an
+  // object-literal key or a property, so the rename is safe here.
   crashWatchdogMain: "M",
   CSS: "G",
   isValidEndpointFn: "ok",
@@ -545,6 +591,7 @@ const RENAME = {
   ASKED: "A",
   CRUMB: "B",
   CLEAN: "C",
+  BHK: "J",
   READY: "D",
   STALE: "E",
   CAP: "F",
