@@ -590,6 +590,19 @@
   z-index: 6;
 }
 
+/* Dock separation (PR C): at the dock the shipped staging paints
+   Holmes's 70 px box OVER the left of Watson's 100 px replay box —
+   the figures overlap, so two full-size hitboxes cannot both own
+   their centres there. The dock alias therefore claims only a 44 px
+   strip on Holmes's painted side (the accessibility floor), leaving
+   Watson's replay an unobstructed ≥44 px effective strip on his
+   side; the two tap centres can never collide. At a berth Holmes
+   stands alone and the alias keeps his full 70 px box. Separation is
+   proven in tests/e2e/detective-sound.spec.ts (c)+(d). */
+.detective-holmes-mute-dock {
+  width: 44px;
+}
+
 .detective-holmes-mute:focus-visible {
   outline: 3px solid #14213d;
   outline-offset: 2px;

@@ -200,6 +200,15 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // PR C (Sound Everywhere): in-screen toggles in GeoDetective +
+      // Cold Trail, tap-Holmes instant mute + badge, tap-Watson replay
+      // separation, pair speaker chip — one project, shared fixture
+      // context (no CONTEXT_FILES entry, the Unit A/B convention).
+      name: "detective-sound",
+      testMatch: /detective-sound\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },

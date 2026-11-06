@@ -982,13 +982,16 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    *    while muted, so the state reads at a glance. The figures
    *    themselves are never greyed or altered (Brand ruling, Q6).
    * 3. Tap-HOLMES alias: Holmes's figure body is a transparent button
-   *    over his rendered box (station, celebrate, dock, and berth —
-   *    the map one rides his transform wrapper's exact geometry),
-   *    wired to the same toggle. Watson's replay button is a separate
-   *    element over a separate figure; both handlers stop propagation,
-   *    so a Holmes tap can never fire a replay and a Watson tap can
-   *    never mute. Muting stops the speaking clip in the same event
-   *    via the onSoundChanged subscription above. */
+   *    over his rendered box (station, celebrate, and berth — the map
+   *    one rides his transform wrapper's exact geometry; at the dock,
+   *    where the shipped staging paints him over Watson's left side,
+   *    it narrows to a 44 px strip so the two centres stay separate —
+   *    see detective.css), wired to the same toggle. Watson's replay
+   *    button is a separate element over a separate figure; both
+   *    handlers stop propagation, so a Holmes tap can never fire a
+   *    replay and a Watson tap can never mute. Muting stops the
+   *    speaking clip in the same event via the onSoundChanged
+   *    subscription above. */
   const toggleSoundFromHolmes = (e: { stopPropagation(): void }) => {
     e.stopPropagation();
     try {
@@ -1077,7 +1080,11 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     holmesOnMap && !berthHidden ? (
       <button
         type="button"
-        className="detective-holmes-mute detective-holmes-mute-map"
+        className={
+          berthed
+            ? "detective-holmes-mute detective-holmes-mute-map"
+            : "detective-holmes-mute detective-holmes-mute-map detective-holmes-mute-dock"
+        }
         data-testid="detective-holmes-mute"
         aria-label={soundOn ? "Mute sound" : "Unmute sound"}
         aria-pressed={!soundOn}
