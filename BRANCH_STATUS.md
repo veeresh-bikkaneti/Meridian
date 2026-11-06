@@ -1,3 +1,44 @@
+## PROD PAIR VISIBILITY FIX — fix/prod-pair-visibility (2026-11-06)
+
+- **TASK / outcome:** Cure the live defect "Holmes and Watson is not in prod"
+  (owner report 2026-11-06 13:51 CST; detectivePair ON, main `1b38cb3`).
+  Diagnosis with measured proof:
+  `~/workspace/meridian-detective-evidence/DIAGNOSIS-prod-pair.md`.
+- **Root causes (proven on a byte-copy mirror of the prod build):**
+  RC1 — Holmes's dock position and Watson's dock cluster share the same
+  bottom-left map origin (host `dockXY()` x = DOCK_INSET 12; CSS dock
+  `left:12/bottom:12`); Watson's ~100 px figure box fully covers Holmes's
+  70 px box, and `.detective-host-dock` (z-index 5) paints over
+  `.detective-host-holmes` (z-index auto) → Holmes invisible in every dock
+  phase and on every "remote" berth (pause >320 px from the dock).
+  RC2 — station + dock start below the viewport fold at 390/768/1280/1440
+  (header + map push the clue cards below the fold; the case-open duet
+  plays off-screen). RC3 — station anchor goes stale during slow loads.
+- **Tier:** 1 (one bug, clear repro) run under the standing full review
+  pipeline; merge on READY / READY-WITH-NITS (owner's ship-when-ready).
+- **Cure:** C1 Holmes's dock moves beside Watson (x = 12 + 100 + 8 = 120;
+  berth solver's dock reference moves with it). C2 on entering a clue
+  phase (case open, each read) the active clue card scrolls into view
+  once — the station rides above it into the viewport. C3 one deferred
+  anchor re-measure after each phase/clue change.
+- **Done condition:** new E2E `tests/e2e/detective-visibility.spec.ts`
+  green (pair in-viewport + zero figure-vs-figure overlap; station AND
+  dock; 1280 AND 390; core AND Capitals); shipped detective gates green;
+  pipeline verdict on the tip; merged; both hosts live-verified.
+
+### Status
+- [x] Diagnosis proven + filed
+- [x] Visibility E2E written — RED on unmodified build with the intended
+  signature (overlap 7,151 px² ≈ Holmes's whole box; both figures
+  ~0.32 in view at the fold)
+- [x] C1/C2/C3 implemented (DetectiveHost.tsx only) · spec registered in
+  playwright.config.ts + the telemetry guard's CONTEXT_FILES
+- [x] Gates so far: tsc clean · npm test 3,240 pass / 0 fail ·
+  lint-cards GATE PASSED · build green · visibility spec 4/4
+- [ ] Detective E2E family regression (running)
+- [ ] Pipeline (panel · Silo QA · DevEx · benchmark) on the tip
+- [ ] PR merged · live verification both hosts · tip in deleted-branches ledger
+
 ## FLIP — chore/flip-detective-pair (2026-11-06)
 
 - **The word:** Veeresh, 2026-11-06 09:54 CST: "flip" — the owner-gated

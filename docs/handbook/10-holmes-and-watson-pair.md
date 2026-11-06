@@ -195,6 +195,47 @@ the re-run panel and the flip owner can check them off one by one.
 - **Kill-switch:** reverting is the same one-line redeploy with
   `false`; clients pick it up on next boot, no client release.
 
+### INCIDENT — "Holmes and Watson is not in prod" (2026-11-06, cured same day)
+
+- **Report:** Veeresh, playing the flipped build, 2026-11-06 13:51
+  CST: Watson alone at the map's bottom-left corner, Holmes nowhere
+  — on a core case, at desktop width. A fresh-player live test on
+  both hosts showed the same picture.
+- **Diagnosis (measured on a byte-copy mirror of the prod build;
+  full record `DIAGNOSIS-prod-pair.md` in the evidence folder):**
+  the pair rendered correctly — placement and paint hid it.
+  **RC1:** Holmes's dock position and Watson's dock cluster shared
+  one origin (both at the 12 px inset); Watson's ~100 px figure box
+  fully covers Holmes's 70 px box, and the dock's z-index (5) paints
+  over Holmes's wrapper (auto) — Holmes was invisible in every dock
+  phase, and on every "remote" berth (a pause >320 px from the
+  dock — nearly every desktop pause). **RC2:** on the shipped
+  layout (tall header, map, then cards), the station and the dock
+  both start BELOW the viewport fold at 390–1440 px widths, so the
+  case-open duet and the clue reads played off-screen. **RC3:** the
+  station anchor went stale during slow first loads (measured
+  flicker between two card positions ≈440 px apart). The auto-kill
+  (FG-5) and the core-case silent-speech path (FG-3) were both
+  investigated and **refuted** as causes.
+- **Why the gates missed it:** every shipped assertion checked DOM
+  presence and bounding boxes. An off-screen or fully occluded
+  figure passes both. No gate ever asserted viewport intersection
+  or figure-vs-figure overlap.
+- **The cure (branch `fix/prod-pair-visibility`):** (1) Holmes's
+  dock moves BESIDE Watson — x = inset 12 + Watson 100 + gap 8 =
+  120 — and the berth solver's dock reference moves with it.
+  (2) On entering a clue phase (case open, each read), the active
+  clue card scrolls into view once; the station rides above it into
+  the viewport. Search phases never scroll. (3) One deferred anchor
+  re-measure (350 ms) after each phase/clue change. New E2E gate
+  `detective-visibility.spec.ts` asserts both figures in-viewport
+  and zero mutual overlap — station AND dock, 1280 px AND 390 px,
+  core AND Capitals — and is registered in the Playwright config
+  and the telemetry guard's context list so CI runs it.
+- **Standing lesson:** for anything a player must SEE, presence is
+  not evidence. Visibility gates assert viewport intersection and
+  occlusion, or they assert nothing.
+
 ## Audio: pre-rendered, with honest coverage
 
 - Runtime speech synthesis was rejected for this pair (BUILD-SCOPE

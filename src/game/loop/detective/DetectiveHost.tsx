@@ -90,6 +90,21 @@ const RING_ABSENCE_MS = 2000;
 const HOLMES_BOX = { w: 70, h: 104 };
 /** Dock inset from the map's bottom-left corner (Q2 §9). */
 const DOCK_INSET = 12;
+/** Watson's rendered box width at the shared 104 px figure height:
+ * his rig is 134×140 viewBox, so 104 · 134/140 ≈ 99.5 — the
+ * tap-Watson replay button is sized 100 px wide over his figure for
+ * the same reason (detective.css). */
+const WATSON_DOCK_W = 100;
+/** Clear air between the two figures at the dock. */
+const DOCK_GAP = 8;
+/** Holmes's dock spot: BESIDE Watson, never behind him. The two used
+ * to share one origin (both at DOCK_INSET), and Watson's wider box —
+ * painted above Holmes's wrapper (dock z-index 5 vs auto) — hid
+ * Holmes completely in every dock phase: the 2026-11-06 prod defect
+ * ("Holmes and Watson is not in prod"). The berth solver receives
+ * this same spot as its dock reference, so remote distances and
+ * dock returns stay honest. */
+const HOLMES_DOCK_X = DOCK_INSET + WATSON_DOCK_W + DOCK_GAP;
 /** Walk speed: ~260 px/s, duration clamped 240–700 ms (Q2 §3). */
 const WALK_PX_PER_S = 260;
 const WALK_MIN_MS = 240;
@@ -359,13 +374,50 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       }
     };
     measure();
+    /* One deferred re-measure (prod-pair fix, RC3): on a slow first
+     * load the page is still settling — fonts, the tile canvas — when
+     * a phase-driven measure runs, and the anchor it captures can be
+     * a mid-shift rect, parking the station hundreds of px from the
+     * card until the next phase change. A single 350 ms pass catches
+     * the common shift window; scroll/resize keep tracking after. */
+    const settleTimer = setTimeout(measure, 350);
     window.addEventListener("resize", measure);
     window.addEventListener("scroll", measure, { passive: true });
     return () => {
+      clearTimeout(settleTimer);
       window.removeEventListener("resize", measure);
       window.removeEventListener("scroll", measure);
     };
   }, [cluesRevealed, phase, status]);
+
+  /* -- the reading moment comes to the player (prod-pair fix, RC2) --
+   * On the shipped layout the clue cards render BELOW the map, past a
+   * tall header: at phone and desktop widths alike, the station (and
+   * the dock) start below the viewport fold, so the case-open duet
+   * and every clue read played off-screen — the pair read as "not in
+   * prod" until the player happened to scroll. On entering a clue
+   * phase (case open, and each clue's read) bring the ACTIVE card
+   * into view once: the station is glued above it, so the pair comes
+   * on screen together with the words being read. One scroll per
+   * phase entry (keyed, so re-renders never repeat it); search
+   * phases never scroll — the map is the player's own ground there. */
+  const readingScrollKeyRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (phase !== "CASE_OPEN" && phase !== "READING") return;
+    const key = `${caseIndex}:${cluesRevealed}:${phase}`;
+    if (readingScrollKeyRef.current === key) return;
+    readingScrollKeyRef.current = key;
+    const card = document.querySelector(
+      `article[aria-label^="Clue ${cluesRevealed}:"]`,
+    );
+    card?.scrollIntoView({
+      block: "nearest",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+        .matches
+        ? "auto"
+        : "smooth",
+    });
+  }, [phase, cluesRevealed, caseIndex]);
 
   /* -- waypoint companion (U6) -----------------------------------------
    * Performance shape (council Q2 §10): ONE passive listener set on
@@ -399,7 +451,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     );
   }, [degradation.companionMode]);
   /** Holmes's wrapper position, map-relative px (top-left). */
-  const [holmesXY, setHolmesXY] = useState({ x: DOCK_INSET, y: 0 });
+  const [holmesXY, setHolmesXY] = useState({ x: HOLMES_DOCK_X, y: 0 });
   const holmesXYRef = useRef(holmesXY);
   holmesXYRef.current = holmesXY;
   const [holmesTransition, setHolmesTransition] = useState({
@@ -416,7 +468,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   const dockXY = () => {
     const r = mapRectRef.current;
     return {
-      x: DOCK_INSET,
+      x: HOLMES_DOCK_X,
       y: r ? r.height - DOCK_INSET - HOLMES_BOX.h : 0,
     };
   };
@@ -551,7 +603,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         holmesBox: HOLMES_BOX,
         viewport: { w: window.innerWidth, h: window.innerHeight },
         dock: {
-          x: rect.left + DOCK_INSET,
+          x: rect.left + HOLMES_DOCK_X,
           y: rect.top + rect.height - DOCK_INSET - HOLMES_BOX.h,
         },
         exclusions: measureExclusions(),

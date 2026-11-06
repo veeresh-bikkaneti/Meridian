@@ -200,6 +200,16 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // Prod-pair visibility fix (2026-11-06): the pair must be
+      // VISIBLE — inside the player's viewport and never painted over
+      // each other. Presence-only assertions are how the live dock
+      // occlusion shipped. The spec drives its own 1280 px and 390 px
+      // contexts; the project viewport is only a default.
+      name: "detective-visibility",
+      testMatch: /detective-visibility\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },
