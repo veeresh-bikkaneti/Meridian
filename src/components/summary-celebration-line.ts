@@ -19,7 +19,10 @@
  *   settles the play promise (a muted line is finished), so the
  *   component's choreography driver completes sanely instead of
  *   waiting out a silenced clip.
- * - dispose() unsubscribes — the component calls it on unmount.
+ * - dispose() unsubscribes AND pauses the held element through that
+ *   same pause→settle path — the component calls it on unmount, and
+ *   a detached Audio element would otherwise keep playing over
+ *   whatever screen replaces the summary.
  *
  * Resolves when the clip ends, errors, is paused by a mute, or is
  * gated off — a silent celebration is a valid celebration. Mirrors
@@ -73,7 +76,8 @@ export interface CelebrationLinePlayer {
     isCancelled: () => boolean,
     onSpeaking: (speaking: boolean) => void,
   ): Promise<void>;
-  /** Unsubscribe from the sound channel (component unmount). */
+  /** Unsubscribe from the sound channel and pause any line still
+   * playing (component unmount). Idempotent. */
   dispose(): void;
 }
 
@@ -159,8 +163,17 @@ export function createCelebrationLinePlayer(
       });
     },
     dispose() {
+      if (disposed) return;
       disposed = true;
       unsubscribe();
+      const audio = currentAudio;
+      if (audio) {
+        try {
+          audio.pause();
+        } catch {
+          /* element already gone — the line settles via its own path */
+        }
+      }
     },
   };
 }

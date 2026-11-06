@@ -167,6 +167,38 @@ test("celebration line: a mid-line sound-off pauses the held element and settles
   player.dispose();
 });
 
+test("celebration line: dispose mid-line pauses the held element exactly once and settles the play", async () => {
+  const { player, audios, speaking } = harness();
+  let settled = false;
+  const done = player
+    .play(
+      () => false,
+      (s) => speaking.push(s),
+    )
+    .then(() => {
+      settled = true;
+    });
+  await tick();
+  assert.equal(audios.length, 1);
+  assert.equal(audios[0]!.paused, false);
+  assert.deepEqual(speaking, [true]);
+  player.dispose(); // unmount while the line is still playing
+  await done;
+  assert.equal(audios[0]!.pauseCalls, 1);
+  assert.equal(settled, true); // the driver is not left waiting
+  assert.deepEqual(speaking, [true, false]);
+  player.dispose(); // idempotent — no second pause
+  assert.equal(audios[0]!.pauseCalls, 1);
+});
+
+test("celebration line: dispose with no playback does not throw and does not pause", async () => {
+  const { player, channel, audios } = harness();
+  assert.doesNotThrow(() => player.dispose());
+  assert.deepEqual(audios, []);
+  assert.equal(channel.count(), 0);
+  assert.doesNotThrow(() => player.dispose());
+});
+
 test("celebration line: dispose unsubscribes from the sound channel", async () => {
   const { player, channel } = harness();
   assert.equal(channel.count(), 1);
