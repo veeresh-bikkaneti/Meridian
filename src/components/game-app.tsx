@@ -6942,6 +6942,10 @@ function PlayLoaded({
   // no reads, no writes, no traces — dealing/scoring/session byte-identical.
   const [learningEnabled, setLearningEnabled] = useState(false);
   const [friendChallengesEnabled, setFriendChallengesEnabled] = useState(false);
+  // Unit B: the detectivePair flag also gates the pair's game-end
+  // celebration on the run summary (every edition). Boot-time value,
+  // like the other flag reads here; off = the summary is today's.
+  const [detectivePairEnabled, setDetectivePairEnabled] = useState(false);
   const [learningStore, setLearningStore] = useState<LearningStore | null>(null);
   useEffect(() => {
     let active = true;
@@ -6955,6 +6959,7 @@ function PlayLoaded({
       setLearningEnabled(on);
       if (on) setLearningStore(readLearningStore() ?? emptyLearningStore());
       setFriendChallengesEnabled(isEnabled("friendChallenges"));
+      setDetectivePairEnabled(isEnabled("detectivePair"));
     });
     return () => {
       active = false;
@@ -8497,6 +8502,7 @@ function PlayLoaded({
               ? growthSummary(learningStore ?? emptyLearningStore(), Date.now())
               : null
           }
+          detectiveCelebration={detectivePairEnabled}
           onDone={onSummaryDone}
           onPlayAgain={onSummaryPlayAgain}
           onReview={onReviewDeck}

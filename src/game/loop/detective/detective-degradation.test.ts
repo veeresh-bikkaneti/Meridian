@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   formatDegradation,
   resolveDetectiveDegradation,
+  resolveSummaryCelebrationMode,
   watsonReplayCueVisible,
   WATSON_REPLAY_PHASES,
   type DegradationInputs,
@@ -184,4 +185,33 @@ test("Unit A cue: absent outside the clue/guessing phases, even with Watson at t
   ]) {
     assert.equal(cue({ phase }), false, phase);
   }
+});
+
+/* -- Unit B: summary celebration mode -------------------------------- */
+
+const summaryMode = (patch: Partial<{ reducedMotion: boolean; saveData: boolean; deviceMemory: number | null }>) =>
+  resolveSummaryCelebrationMode({
+    reducedMotion: false,
+    saveData: false,
+    deviceMemory: 8,
+    ...patch,
+  });
+
+test("Unit B summary mode: healthy signals → animated", () => {
+  assert.equal(summaryMode({}), "animated");
+  assert.equal(summaryMode({ deviceMemory: null }), "animated");
+});
+
+test("Unit B summary mode: reduced motion → static (no motion, no audio)", () => {
+  assert.equal(summaryMode({ reducedMotion: true }), "static");
+});
+
+test("Unit B summary mode: Save-Data → static", () => {
+  assert.equal(summaryMode({ saveData: true }), "static");
+});
+
+test("Unit B summary mode: low memory (≤ 4 GB) → static; above → animated", () => {
+  assert.equal(summaryMode({ deviceMemory: 4 }), "static");
+  assert.equal(summaryMode({ deviceMemory: 2 }), "static");
+  assert.equal(summaryMode({ deviceMemory: 8 }), "animated");
 });

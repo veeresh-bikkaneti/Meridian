@@ -96,6 +96,42 @@ export function resolveDetectiveDegradation(
   };
 }
 
+/* ------------------------------------------------------------------ */
+/* Game-end summary celebration mode (Unit B)                          */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The run-summary celebration's mode (Unit B): "animated" runs the
+ * full jump → high-five → clap → settle choreography and Holmes's
+ * fixed celebration line (speech still gated at play time by the
+ * sound toggle + read-aloud preference — decision 6); "static" shows
+ * the pair frozen at the high-five with the score in frame — NO
+ * motion and NO audio at all. Static is chosen by the same signals
+ * as the U9 matrix's resource rows: reduced motion, Save-Data, or
+ * low memory (deviceMemory ≤ 4 GB, via resourceConstrained). The
+ * battery signal is not read on the summary surface (the card is a
+ * resting screen, not a walk), so it never forces static here.
+ */
+export type SummaryCelebrationMode = "animated" | "static";
+
+export function resolveSummaryCelebrationMode(input: {
+  reducedMotion: boolean;
+  saveData: boolean;
+  deviceMemory: number | null;
+}): SummaryCelebrationMode {
+  if (input.reducedMotion) return "static";
+  if (
+    resourceConstrained({
+      saveData: input.saveData,
+      deviceMemory: input.deviceMemory,
+      batterySaver: null,
+    })
+  ) {
+    return "static";
+  }
+  return "animated";
+}
+
 /** The host-root summary attribute (U10's spec surface), e.g.
  * "companion:full,walk:animated,speech:auto". */
 export function formatDegradation(d: DetectiveDegradation): string {
