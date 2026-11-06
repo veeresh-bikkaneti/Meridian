@@ -54,9 +54,19 @@ import {
 } from "./detective-state";
 import {
   createDetectiveSpeech,
+  detectiveCanAutoPlay,
   type DetectiveSpeaker,
   type DetectiveSpeechPlayer,
 } from "./detective-audio";
+import {
+  formatDegradation,
+  readBatterySaver,
+  readConnectionSignals,
+  resolveDetectiveDegradation,
+  REDUCED_MOTION_PAUSE_MS,
+  type DetectiveDegradation,
+} from "./detective-degradation";
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { isSoundEnabled } from "@/game/audio/sfx";
 import type { DetectiveHostProps } from "./detective-host-props";
 import {
@@ -90,25 +100,18 @@ const EASE_IN = "cubic-bezier(0.55, 0.06, 0.68, 0.19)";
 /** A move further than this from the pause point cancels a berth. */
 const GESTURE_CANCEL_PX = 12;
 
-/** Dock-only degradation gates (Q2 §11): Save-Data or low memory.
- * Probed once — these do not change mid-session. */
-function dockOnlyGate(): boolean {
-  try {
-    const nav = navigator as Navigator & {
-      connection?: { saveData?: boolean };
-      deviceMemory?: number;
-    };
-    if (nav.connection?.saveData) return true;
-    if (typeof nav.deviceMemory === "number" && nav.deviceMemory <= 4) {
-      return true;
-    }
-  } catch {
-    /* no probe available — companion stays full */
-  }
-  return false;
-}
-
 type CompanionMode = "full" | "dock" | "killed";
+
+/** Phases where the Listen button may show in tap speech mode (U9):
+ * the clue phases (Watson reading / the thinking beat) and the
+ * guessing phases that follow them. Endings, the case-open duet, and
+ * the selection read itself never carry it. */
+const LISTEN_PHASES: ReadonlySet<string> = new Set([
+  "READING",
+  "THINKING_BEAT",
+  "SEARCH_IDLE",
+  "SEARCH_AREA",
+]);
 
 interface StationAnchor {
   left: number;
@@ -123,6 +126,40 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   const [view, setView] = useState<DetectiveView>(() => viewForState(machineRef.current));
   const viewRef = useRef(view);
   viewRef.current = view;
+
+  /* -- degradation (U9, §2.5): signals in, pure matrix decides --------
+   * Reduced motion comes from the shared hook; Save-Data / memory are
+   * probed once in the card-film pattern; the battery verdict arrives
+   * async where getBattery exists (null = no signal); sound and the
+   * player's autoplay verdict are re-read as they change (the 1 Hz
+   * sound poll below keeps soundOn current). The matrix itself is
+   * detective-degradation.ts — this block only gathers its inputs. */
+  const reducedMotion = usePrefersReducedMotion();
+  const [connSignals] = useState(readConnectionSignals);
+  const [batterySaver, setBatterySaver] = useState<boolean | null>(null);
+  const [soundOn, setSoundOn] = useState<boolean>(() => isSoundEnabled());
+  useEffect(() => {
+    let live = true;
+    void readBatterySaver((saver) => {
+      if (live) setBatterySaver(saver);
+    }).then((saver) => {
+      if (live) setBatterySaver(saver);
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
+  const degradation: DetectiveDegradation = resolveDetectiveDegradation({
+    reducedMotion,
+    saveData: connSignals.saveData,
+    deviceMemory: connSignals.deviceMemory,
+    batterySaver,
+    soundOn,
+    autoSpeechAllowed: detectiveCanAutoPlay(),
+  });
+  const degradationRef = useRef(degradation);
+  degradationRef.current = degradation;
+  const degradationAttr = formatDegradation(degradation);
 
   /* -- speech player -------------------------------------------------- */
   const [speakingWho, setSpeakingWho] = useState<DetectiveSpeaker | null>(null);
@@ -173,16 +210,26 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
 
   // Sound toggle-off stops speech immediately (spec: the toggle cancels
   // speech). Polled cheaply at 1 Hz — there is no sound-change event bus
-  // in the codebase, and 1 Hz is not per-frame work.
+  // in the codebase, and 1 Hz is not per-frame work. The same poll keeps
+  // the degradation's soundOn input current (U9).
   useEffect(() => {
     let wasOn = isSoundEnabled();
+    setSoundOn(wasOn);
     const id = setInterval(() => {
       const on = isSoundEnabled();
       if (wasOn && !on) playerRef.current?.stopAll();
       wasOn = on;
+      setSoundOn(on);
     }, 1000);
     return () => clearInterval(id);
   }, []);
+
+  // The player's speech mode follows the degradation (U9): in "tap"
+  // mode its queue drains silently while holding the clue sequence;
+  // in "off" it holds nothing; "auto" is the U5 behaviour.
+  useEffect(() => {
+    playerRef.current?.setSpeechMode(degradation.speechMode);
+  }, [degradation.speechMode]);
 
   // Unmount: timers die with the host.
   useEffect(() => {
@@ -333,11 +380,23 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   if (!detectorRef.current) detectorRef.current = createPauseDetector();
   const killRef = useRef<AutoKillTracker | null>(null);
   if (!killRef.current) killRef.current = createAutoKillTracker();
-  const [companionMode, setCompanionMode] = useState<CompanionMode>(() =>
-    dockOnlyGate() ? "dock" : "full",
-  );
+  const [companionMode, setCompanionMode] = useState<CompanionMode>("full");
   const companionModeRef = useRef(companionMode);
   companionModeRef.current = companionMode;
+  /** Auto-kill is latched for the session: once killed, a degradation
+   * change must never resurrect the companion (U6). */
+  const companionKilledRef = useRef(false);
+  /* Degradation → companion (U9): dock-only means berth resolutions
+   * are ignored and Holmes stays at the dock in SEARCH phases (the
+   * berth path below already gates on companionModeRef). A resource
+   * signal clearing returns him to full — unless the auto-kill
+   * latched. */
+  useEffect(() => {
+    if (companionKilledRef.current) return;
+    setCompanionMode(
+      degradation.companionMode === "dock-only" ? "dock" : "full",
+    );
+  }, [degradation.companionMode]);
   /** Holmes's wrapper position, map-relative px (top-left). */
   const [holmesXY, setHolmesXY] = useState({ x: DOCK_INSET, y: 0 });
   const holmesXYRef = useRef(holmesXY);
@@ -397,6 +456,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     const onKill = () => {
       if (stopped) return;
       stopped = true;
+      companionKilledRef.current = true;
       cancelAnimationFrame(raf);
       // eslint-disable-next-line no-console
       console.info(
@@ -510,12 +570,13 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         target.x - holmesXYRef.current.x,
         target.y - holmesXYRef.current.y,
       );
-      const reduced = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      ).matches;
-      const durationMs = reduced
-        ? 0 // instant cut in the think pose (Q2 §11)
-        : Math.min(
+      // Walk mode (U9): "cut" (reduced motion) applies the placement
+      // with NO walk transition — an instant cut in the think pose
+      // (Q2 §11); "animated" walks at the U6 speed/clamps.
+      const durationMs =
+        degradationRef.current.walkMode === "cut"
+          ? 0
+          : Math.min(
             WALK_MAX_MS,
             Math.max(WALK_MIN_MS, (dist / WALK_PX_PER_S) * 1000),
           );
@@ -552,7 +613,15 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     };
     const scheduleConfirm = () => {
       clearPauseTimer();
-      pauseTimerRef.current = setTimeout(() => attemptConfirm(12), 460);
+      // Pause-confirm threshold (U9): 460 ms in animated mode (the
+      // detector's own 350/450 ms rule confirms inside the retries);
+      // 600 ms when walks are cut — reduced-motion berthing happens
+      // after a 600 ms pause, same offsets (council Q2 §11).
+      const delayMs =
+        degradationRef.current.walkMode === "cut"
+          ? REDUCED_MOTION_PAUSE_MS
+          : 460;
+      pauseTimerRef.current = setTimeout(() => attemptConfirm(12), delayMs);
     };
 
     const startGesture = () => {
@@ -772,6 +841,8 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           ? "detective-host-holmes detective-host-holmes-hidden"
           : "detective-host-holmes"
       }
+      data-testid="detective-holmes-wrapper"
+      data-walk-mode={degradation.walkMode}
       style={{
         transform: `translate3d(${holmesXY.x}px, ${holmesXY.y}px, 0)`,
         transition:
@@ -790,8 +861,42 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     </div>
   ) : null;
 
+  /* Listen button (U9): tap speech mode only, clue/guessing phases
+   * only. It lives OUTSIDE the aria-hidden station cluster — a button
+   * inside aria-hidden could never be reached — but is positioned in
+   * the cluster, beside the pair at the active clue card. Tapping it
+   * replays the player's held clue sequence; the sound gate is
+   * re-checked inside the player at play time. */
+  const showListen =
+    degradation.speechMode === "tap" &&
+    !view.hidden &&
+    LISTEN_PHASES.has(view.phase);
+  const listenEl = showListen ? (
+    <div
+      className="detective-host-listen"
+      data-testid="detective-listen"
+      style={
+        anchor
+          ? { left: anchor.left + 152, top: anchor.top }
+          : { left: 164, bottom: 96, top: "auto", transform: "none" }
+      }
+    >
+      <button
+        type="button"
+        className="detective-listen-button"
+        aria-label="Listen to this clue"
+        onClick={() => {
+          void playerRef.current?.playHeldSequence();
+        }}
+      >
+        <span aria-hidden="true">🔊</span> Listen
+      </button>
+    </div>
+  ) : null;
+
   return (
     <>
+      {listenEl}
       {stationFigures.length > 0 || celebrateEl ? (
         <div
           className="detective-host-station"
@@ -799,6 +904,9 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           data-companion={companionMode}
           data-holmes-placement={effectivePlacement}
           data-phase={view.phase}
+          data-degradation={degradationAttr}
+          data-walk-mode={degradation.walkMode}
+          data-speech-mode={degradation.speechMode}
           aria-hidden="true"
           style={
             anchor
@@ -817,6 +925,9 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
               data-companion={companionMode}
               data-holmes-placement={effectivePlacement}
               data-phase={view.phase}
+              data-degradation={degradationAttr}
+              data-walk-mode={degradation.walkMode}
+              data-speech-mode={degradation.speechMode}
               aria-hidden="true"
             >
               {watsonOnMap && watsonEl ? (

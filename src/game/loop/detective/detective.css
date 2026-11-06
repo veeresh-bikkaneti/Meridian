@@ -382,3 +382,38 @@
     animation: none;
   }
 }
+
+/* --- listen button (U9, tap speech mode) ----------------------------- */
+/* The one interactive element the pair owns: a real button, so it
+   carries pointer events and a visible label, sized past the
+   44x44 px floor, dark text on white (contrast well over 4.5:1).
+   Its fixed wrapper mirrors the station cluster's anchor so the
+   button sits beside the pair at the active clue card. */
+.detective-host-listen {
+  position: fixed;
+  z-index: 31;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.detective-listen-button {
+  pointer-events: auto;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border: 2px solid #14213d;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #14213d;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.detective-listen-button:focus-visible {
+  outline: 3px solid #14213d;
+  outline-offset: 2px;
+}
