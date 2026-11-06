@@ -344,7 +344,18 @@ export function createDetectiveSpeech(
   /* -- default clip playback: one HTMLAudioElement chain ------------- */
   let currentStop: (() => void) | null = null;
   async function defaultPlayClip(clip: ResolvedClip): Promise<void> {
+    // Gesture-wait resurrection guard (cure, panel round 1): while
+    // this awaits the first gesture, currentStop does not exist yet,
+    // so a stopAll in that window cannot reach the clip — and a
+    // keyboard mute/unmute cycle in the same window leaves the sound
+    // gate reading ON again by the time the wait resolves, so the
+    // parked clip would play on the next tap even though it was
+    // stopped. Re-check after the wait: a generation bump (stopAll /
+    // dispose / a superseding replay) or a closed sound gate aborts
+    // the clip silently, exactly like a dropped queue item.
+    const genAtWait = generation;
     await waitForGesture();
+    if (disposed || genAtWait !== generation || !isSoundOn()) return;
     await new Promise<void>((resolve) => {
       let settled = false;
       const done = () => {
