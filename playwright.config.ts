@@ -156,6 +156,13 @@ export default defineConfig({
       testMatch: /pwa\.spec\.ts/,
     },
     {
+      // U9: the detectivePair flag gate (host absent at the committed
+      // false, mounted when an intercepted flags.json flips it true).
+      name: "detective-flag",
+      testMatch: /detective-flag\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },
