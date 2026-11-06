@@ -4,6 +4,8 @@ import test from "node:test";
 import {
   formatDegradation,
   resolveDetectiveDegradation,
+  watsonReplayCueVisible,
+  WATSON_REPLAY_PHASES,
   type DegradationInputs,
 } from "./detective-degradation.ts";
 
@@ -119,4 +121,67 @@ test("format: the host-root summary attribute", () => {
     ),
     "companion:dock-only,walk:cut,speech:off",
   );
+});
+
+/* ------------------------------------------------------------------ */
+/* Unit A — tap-Watson replay cue visibility                           */
+/* ------------------------------------------------------------------ */
+
+const cue = (patch: Partial<Parameters<typeof watsonReplayCueVisible>[0]> = {}) =>
+  watsonReplayCueVisible({
+    phase: "READING",
+    watsonPlacement: "station",
+    hidden: false,
+    speechMode: "auto",
+    ...patch,
+  });
+
+test("Unit A cue: the phase set is exactly the Listen button's phases", () => {
+  assert.deepEqual(
+    [...WATSON_REPLAY_PHASES].sort(),
+    ["READING", "SEARCH_AREA", "SEARCH_IDLE", "THINKING_BEAT"],
+  );
+});
+
+test("Unit A cue: present at the station in clue phases, in auto and tap modes", () => {
+  for (const phase of ["READING", "THINKING_BEAT"]) {
+    for (const speechMode of ["auto", "tap"] as const) {
+      assert.equal(cue({ phase, speechMode }), true, `${phase}/${speechMode}`);
+    }
+  }
+});
+
+test("Unit A cue: present at the dock in guessing phases", () => {
+  for (const phase of ["SEARCH_IDLE", "SEARCH_AREA"]) {
+    assert.equal(cue({ phase, watsonPlacement: "dock" }), true, phase);
+  }
+});
+
+test("Unit A cue: absent whenever Watson is absent — hidden view or hidden placement", () => {
+  // Sheet / rings / external speech own the screen (the view's hidden
+  // flag): no Watson, no cue, no replay surface.
+  assert.equal(cue({ hidden: true }), false);
+  assert.equal(cue({ phase: "SEARCH_IDLE", watsonPlacement: "dock", hidden: true }), false);
+  assert.equal(cue({ watsonPlacement: "hidden" }), false);
+});
+
+test("Unit A cue: absent in off speech mode (nothing is held to replay)", () => {
+  assert.equal(cue({ speechMode: "off" }), false);
+  assert.equal(cue({ phase: "SEARCH_IDLE", watsonPlacement: "dock", speechMode: "off" }), false);
+});
+
+test("Unit A cue: absent outside the clue/guessing phases, even with Watson at the station", () => {
+  for (const phase of [
+    "CASE_OPEN",
+    "SELECTION_READ",
+    "NOTE_MARK",
+    "ASK_NEXT",
+    "CELEBRATE",
+    "FAIL_READ",
+    "POUT",
+    "DEBRIEF",
+    "OFF",
+  ]) {
+    assert.equal(cue({ phase }), false, phase);
+  }
 });

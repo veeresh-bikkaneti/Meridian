@@ -63,6 +63,7 @@ import {
   readBatterySaver,
   readConnectionSignals,
   resolveDetectiveDegradation,
+  watsonReplayCueVisible,
   REDUCED_MOTION_PAUSE_MS,
   type DetectiveDegradation,
 } from "./detective-degradation";
@@ -894,9 +895,75 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     </div>
   ) : null;
 
+  /* Tap-Watson replay (Unit A): tapping Watson himself asks him to
+   * repeat the current clue. The control is a REAL button sized over
+   * Watson's figure (≥44×44 px, keyboard-operable), rendered OUTSIDE
+   * the aria-hidden station/map clusters — same placement pattern as
+   * the Listen button — in whichever spot Watson currently occupies:
+   * fixed over his figure at the clue-card station, or absolute over
+   * his figure at the map dock. It carries the discoverability cue
+   * (the ↻ badge; detective.css pulses it gently, static under
+   * reduced motion). Visibility is the pure U9-matrix rule
+   * (watsonReplayCueVisible): clue/guessing phases only, Watson
+   * present, pair not absent, speech mode "auto" or "tap" — in
+   * "off" mode nothing is held, so no cue is offered. Absence law is
+   * untouched: while the sheet / rings own the screen the view is
+   * hidden and, like Watson himself, the control is simply not there.
+   * Pointer tap and keyboard activation run the same path: the
+   * player's replay, which restarts the held sequence from item 1
+   * and re-checks the sound gate at play time. */
+  const showWatsonReplay = watsonReplayCueVisible({
+    phase: view.phase,
+    watsonPlacement: view.watson.placement,
+    hidden: view.hidden,
+    speechMode: degradation.speechMode,
+  });
+  const onWatsonReplay = () => {
+    void playerRef.current?.playHeldSequence();
+  };
+  const watsonReplayBadge = (
+    <span className="detective-watson-replay-badge" aria-hidden="true">
+      ↻
+    </span>
+  );
+  const watsonReplayStationEl =
+    showWatsonReplay && view.watson.placement === "station" ? (
+      <div
+        className="detective-host-watson-replay"
+        style={
+          anchor
+            ? { left: anchor.left, top: anchor.top }
+            : { left: 12, bottom: 96, top: "auto", transform: "none" }
+        }
+      >
+        <button
+          type="button"
+          className="detective-watson-replay detective-watson-replay-station"
+          data-testid="detective-watson-replay"
+          aria-label="Ask Watson to repeat this clue"
+          onClick={onWatsonReplay}
+        >
+          {watsonReplayBadge}
+        </button>
+      </div>
+    ) : null;
+  const watsonReplayDockEl =
+    showWatsonReplay && view.watson.placement === "dock" ? (
+      <button
+        type="button"
+        className="detective-watson-replay detective-watson-replay-dock"
+        data-testid="detective-watson-replay"
+        aria-label="Ask Watson to repeat this clue"
+        onClick={onWatsonReplay}
+      >
+        {watsonReplayBadge}
+      </button>
+    ) : null;
+
   return (
     <>
       {listenEl}
+      {watsonReplayStationEl}
       {stationFigures.length > 0 || celebrateEl ? (
         <div
           className="detective-host-station"
@@ -919,24 +986,30 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       ) : null}
       {(holmesOnMap || watsonOnMap) && mapEl
         ? createPortal(
-            <div
-              className="detective-host-map"
-              data-testid="detective-host"
-              data-companion={companionMode}
-              data-holmes-placement={effectivePlacement}
-              data-phase={view.phase}
-              data-degradation={degradationAttr}
-              data-walk-mode={degradation.walkMode}
-              data-speech-mode={degradation.speechMode}
-              aria-hidden="true"
-            >
-              {watsonOnMap && watsonEl ? (
-                <div className="detective-host-dock" data-testid="detective-dock">
-                  {watsonEl}
-                </div>
-              ) : null}
-              {holmesMapEl}
-            </div>,
+            <>
+              <div
+                className="detective-host-map"
+                data-testid="detective-host"
+                data-companion={companionMode}
+                data-holmes-placement={effectivePlacement}
+                data-phase={view.phase}
+                data-degradation={degradationAttr}
+                data-walk-mode={degradation.walkMode}
+                data-speech-mode={degradation.speechMode}
+                aria-hidden="true"
+              >
+                {watsonOnMap && watsonEl ? (
+                  <div className="detective-host-dock" data-testid="detective-dock">
+                    {watsonEl}
+                  </div>
+                ) : null}
+                {holmesMapEl}
+              </div>
+              {/* Unit A: the tap-Watson control rides the same portal
+                  but OUTSIDE the aria-hidden map root, over Watson's
+                  dock figure (see the station element above). */}
+              {watsonReplayDockEl}
+            </>,
             mapEl,
           )
         : null}

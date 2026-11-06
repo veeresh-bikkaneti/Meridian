@@ -103,6 +103,47 @@ export function formatDegradation(d: DetectiveDegradation): string {
 }
 
 /* ------------------------------------------------------------------ */
+/* Tap-Watson replay cue (Unit A)                                      */
+/* ------------------------------------------------------------------ */
+
+/** Phases where the tap-Watson replay control may show: the clue
+ * phases (Watson reading / the thinking beat) and the guessing phases
+ * that follow them — the same set the Listen button uses (the host's
+ * LISTEN_PHASES). Endings, the case-open duet, and the selection read
+ * itself never carry it. */
+export const WATSON_REPLAY_PHASES: ReadonlySet<string> = new Set([
+  "READING",
+  "THINKING_BEAT",
+  "SEARCH_IDLE",
+  "SEARCH_AREA",
+]);
+
+/**
+ * Pure visibility rule for the tap-Watson replay control + its cue
+ * (Unit A). The control lives and dies with Watson's presence:
+ * - Watson must be on screen (placement "station" at the clue card or
+ *   "dock" on the map) and the pair must not be absent (sheet / rings
+ *   / external speech — the view's `hidden` flag);
+ * - speech must be replayable: "auto" and "tap" modes retain the
+ *   clue sequence, "off" holds nothing, so no cue is offered.
+ * Reduced motion does NOT hide the cue — it only makes it static
+ * (the CSS owns that); walk/companion modes do not affect it.
+ */
+export function watsonReplayCueVisible(input: {
+  phase: string;
+  watsonPlacement: string;
+  hidden: boolean;
+  speechMode: SpeechMode;
+}): boolean {
+  if (input.hidden) return false;
+  if (input.speechMode === "off") return false;
+  if (input.watsonPlacement !== "station" && input.watsonPlacement !== "dock") {
+    return false;
+  }
+  return WATSON_REPLAY_PHASES.has(input.phase);
+}
+
+/* ------------------------------------------------------------------ */
 /* Environment reads (host-side helpers — NOT part of the pure matrix) */
 /* ------------------------------------------------------------------ */
 

@@ -417,3 +417,82 @@
   outline: 3px solid #14213d;
   outline-offset: 2px;
 }
+
+/* --- tap-Watson replay (Unit A) -------------------------------------- */
+/* The replay control is a transparent button laid over Watson's whole
+   figure, so a tap anywhere on Watson asks him to repeat the clue —
+   at the station it covers his rendered box (104 px tall, ≈100 px
+   wide), at the map dock the same box over the dock cluster. Only the
+   ↻ badge is visible: a small white disc at his lower edge, gently
+   pulsing (transform/opacity only) so a first-time player notices
+   Watson is tappable. The station wrapper mirrors the station
+   cluster's anchor (fixed, translated up by its full height); the
+   button itself carries the pointer events, like the Listen button. */
+.detective-host-watson-replay {
+  position: fixed;
+  z-index: 31;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.detective-watson-replay {
+  pointer-events: auto;
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 104px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.detective-watson-replay-dock {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 6;
+}
+
+.detective-watson-replay-badge {
+  position: absolute;
+  right: 2px;
+  bottom: 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #14213d;
+  background: #ffffff;
+  color: #14213d;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  animation: detective-replay-cue 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes detective-replay-cue {
+  from {
+    opacity: 0.72;
+    scale: 0.92;
+  }
+  to {
+    opacity: 1;
+    scale: 1.08;
+  }
+}
+
+.detective-watson-replay:focus-visible {
+  outline: 3px solid #14213d;
+  outline-offset: 2px;
+}
+
+/* Reduced motion: the cue is static — present, but never animated. */
+@media (prefers-reduced-motion: reduce) {
+  .detective-watson-replay-badge {
+    animation: none;
+  }
+}

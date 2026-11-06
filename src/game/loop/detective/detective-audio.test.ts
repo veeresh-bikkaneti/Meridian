@@ -415,7 +415,7 @@ test("U9 off mode: items resolve skipped, nothing is held, replay is a no-op", a
   player.dispose();
 });
 
-test("U9 setSpeechMode: leaving tap drops the hold; auto mode holds nothing", async () => {
+test("U9 setSpeechMode: leaving tap for off drops the hold (Unit A: auto retains — see below)", async () => {
   const { player, played } = modeHarness("tap");
   player.enqueue({ kind: "clue", clueIndex: 1 });
   await tick();
@@ -427,6 +427,192 @@ test("U9 setSpeechMode: leaving tap drops the hold; auto mode holds nothing", as
   player.enqueue({ kind: "clue", clueIndex: 1 });
   await tick();
   assert.deepEqual(played, ["/audio/detective/case-387/clue-1.mp3"]); // auto behaviour restored
+  // Unit A supersedes this test's title claim: auto mode DOES retain
+  // the chain now (the assertion below was [] before Unit A) — the
+  // mode-switch behaviour this test was written for (off drops the
+  // hold, auto plays again) is unchanged.
+  assert.deepEqual(player.heldRefs(), [{ kind: "clue", clueIndex: 1 }]);
+  player.dispose();
+});
+
+/* ------------------------------------------------------------------ */
+/* Unit A — tap-Watson replay: retention + replay in auto mode         */
+/* ------------------------------------------------------------------ */
+
+test("Unit A auto mode: the clue chain is retained while it plays", async () => {
+  const { player, played } = modeHarness("auto");
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/ack-1.mp3",
+  ]);
+  assert.deepEqual(player.heldRefs(), [
+    { kind: "clue", clueIndex: 1 },
+    { kind: "fixed", id: "ack-1" },
+  ]);
+  player.dispose();
+});
+
+test("Unit A auto mode: replay after the chain drained plays it again, in order", async () => {
+  const { player, played, speaking } = modeHarness("auto");
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  await player.playHeldSequence();
+  assert.deepEqual(played, [
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/ack-1.mp3",
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/ack-1.mp3",
+  ]);
+  assert.equal(speaking[speaking.length - 1], null);
+  player.dispose();
+});
+
+test("Unit A auto mode: an autoplay-vetoed chain is still retained, and a tap replays it", async () => {
+  const { player, played } = modeHarness("auto", { canAutoPlay: () => false });
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  assert.deepEqual(played, []); // the veto still drops auto playback
+  assert.deepEqual(player.heldRefs(), [
+    { kind: "clue", clueIndex: 1 },
+    { kind: "fixed", id: "ack-1" },
+  ]);
+  await player.playHeldSequence(); // a tap is explicit — the veto does not govern it
+  assert.deepEqual(played, [
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/ack-1.mp3",
+  ]);
+  player.dispose();
+});
+
+test("Unit A auto mode: replay mid-play restarts the held sequence from item 1", async () => {
+  const played: string[] = [];
+  const speaking: Array<DetectiveSpeaker | null> = [];
+  let calls = 0;
+  let releaseFirst: (() => void) | null = null;
+  const player = createDetectiveSpeech({
+    caseIndex: 387,
+    speechMode: "auto",
+    loadManifest: async () => MANIFEST,
+    playClip: (clip) => {
+      calls += 1;
+      played.push(clip.url);
+      if (calls === 1) {
+        return new Promise<void>((r) => {
+          releaseFirst = r;
+        });
+      }
+      return Promise.resolve();
+    },
+    isSoundOn: () => true,
+    canAutoPlay: () => true,
+    onSpeakingChange: (who) => speaking.push(who),
+  });
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  // The first clip is in flight; the FULL chain is already held
+  // (retention is at enqueue time, not play time).
+  assert.deepEqual(played, ["/audio/detective/case-387/clue-1.mp3"]);
+  assert.deepEqual(player.heldRefs(), [
+    { kind: "clue", clueIndex: 1 },
+    { kind: "fixed", id: "ack-1" },
+  ]);
+  const replay = player.playHeldSequence();
+  await tick();
+  // Restarted from item 1: clue again, then the ack — the interrupted
+  // queue's pending ack never plays a second time.
+  assert.deepEqual(played, [
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/ack-1.mp3",
+  ]);
+  releaseFirst!();
+  await replay;
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/ack-1.mp3",
+  ]);
+  // Exactly one drain, from the replay — the interrupted queue's drain
+  // is suppressed, so the ladder advances once, not twice.
+  assert.deepEqual(speaking, ["watson", "watson", "holmes", null]);
+  player.dispose();
+});
+
+test("Unit A: a second replay tap during a replay restarts it from item 1", async () => {
+  const played: string[] = [];
+  let calls = 0;
+  let releaseFirst: (() => void) | null = null;
+  const player = createDetectiveSpeech({
+    caseIndex: 387,
+    speechMode: "tap",
+    loadManifest: async () => MANIFEST,
+    playClip: (clip) => {
+      calls += 1;
+      played.push(clip.url);
+      if (calls === 1) {
+        return new Promise<void>((r) => {
+          releaseFirst = r;
+        });
+      }
+      return Promise.resolve();
+    },
+    isSoundOn: () => true,
+    canAutoPlay: () => true,
+    onSpeakingChange: () => {},
+  });
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  const first = player.playHeldSequence();
+  await tick();
+  assert.deepEqual(played, ["/audio/detective/case-387/clue-1.mp3"]); // first replay in flight
+  const second = player.playHeldSequence();
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/ack-1.mp3",
+  ]);
+  releaseFirst!();
+  await Promise.all([first, second]);
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/ack-1.mp3",
+  ]);
+  player.dispose();
+});
+
+test("Unit A setSpeechMode: auto ↔ tap keeps the hold; entering off drops it", async () => {
+  const { player } = modeHarness("auto");
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  assert.equal(player.heldRefs().length, 1);
+  player.setSpeechMode("tap");
+  assert.equal(player.heldRefs().length, 1);
+  player.setSpeechMode("auto");
+  assert.equal(player.heldRefs().length, 1);
+  player.setSpeechMode("off");
   assert.deepEqual(player.heldRefs(), []);
+  player.dispose();
+});
+
+test("Unit A auto mode: sound off at replay time still drops the replay", async () => {
+  let sound = true;
+  const { player, played } = modeHarness("auto", { isSoundOn: () => sound });
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  assert.deepEqual(played, ["/audio/detective/case-387/clue-1.mp3"]);
+  sound = false;
+  await player.playHeldSequence();
+  assert.deepEqual(played, ["/audio/detective/case-387/clue-1.mp3"]); // unchanged — silence
   player.dispose();
 });

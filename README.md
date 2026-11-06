@@ -113,6 +113,8 @@ Each render is measured (pitch and words-per-minute) and recorded in `public/aud
 
 When the pair is switched on, two companions join GeoDetective. Watson stands by the clue card and reads each clue aloud. Holmes acknowledges, adds a short decode, then waits on the map: when a player pauses to think, he walks over and thinks beside the pause — never pointing, never hinting, because he never sees the answer, any guess score, or even which case is being played. A chosen place gets its name read back with one and the same suspicion line for every pick. A solve ends in a jump, a high-five with real hand contact, and a short deduction speech; a loss ends with Holmes reading the answer the game itself just revealed, and both of them pouting.
 
+A player can also ask Watson to say the current clue again: while Watson is on screen for a clue or during the guessing that follows it, his figure carries a small ↻ badge, and tapping him — or focusing his "Ask Watson to repeat this clue" button and pressing it — replays that clue's read, acknowledgement, and decode from the start, even mid-read. This works whether clues play by themselves or only on tap; with sound off there is nothing held to replay, and the badge steps away with the speech.
+
 The pair ships **behind the `detectivePair` feature flag, which is off by default** (`public/flags.json` carries it as `false`). With the flag off, none of their code mounts and the game is exactly the game described above. Turning them on later is a flags change, not a new release.
 
 On smaller or quieter setups the pair steps back instead of getting in the way:

@@ -185,6 +185,13 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // Unit A (fold-in): tap-Watson replay — auto-mode retention,
+      // elsewhere-tap negative, mid-read restart.
+      name: "detective-replay",
+      testMatch: /detective-replay\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },

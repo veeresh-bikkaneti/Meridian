@@ -29,15 +29,23 @@
  *
  * Speech modes (U9, degradation matrix §2.5 — the mode itself is
  * decided by detective-degradation.ts and set by the host):
- * - "auto": the U5 behaviour above, unchanged.
+ * - "auto": the U5 behaviour above, unchanged — plus retention: the
+ *   player ALSO remembers the most recent clue sequence (Unit A), so
+ *   a tap on Watson can replay it (see "tap").
  * - "tap": an enqueued item resolves immediately as skipped — the
  *   ladder advances silently, exactly like a dropped item — BUT the
  *   player remembers the most recent clue sequence (the current
- *   clue's read + ack + decode chain). The host's Listen button calls
- *   playHeldSequence() to play those held refs for real; the sound
- *   gate still applies at that play time, the read-aloud autoplay
- *   veto does NOT (a tap is the kid choosing to listen).
+ *   clue's read + ack + decode chain). The host's Listen button and
+ *   the tap-Watson control both call playHeldSequence() to play
+ *   those held refs for real; the sound gate still applies at that
+ *   play time, the read-aloud autoplay veto does NOT (a tap is the
+ *   kid choosing to listen).
  * - "off": items resolve skipped and nothing is held.
+ *
+ * Retention happens at ENQUEUE time (Unit A), not play time: a clue
+ * chain is enqueued as one synchronous burst while its first clip is
+ * still playing, so play-time recording would hold only the clip in
+ * flight and a mid-play replay could not restart the full chain.
  *
  * The manifest loads lazily, once, on first use (module-level promise);
  * a failed load degrades to empty coverage. It never blocks case play.
@@ -211,17 +219,22 @@ export interface DetectiveSpeechPlayer {
   stopAll(): void;
   dispose(): void;
   setCaseIndex(caseIndex: number): void;
-  /** U9: set the speech mode ("auto" | "tap" | "off"). Leaving "tap"
-   * drops the held sequence — in "off" nothing is held, and in "auto"
-   * nothing needs to be. */
+  /** U9: set the speech mode ("auto" | "tap" | "off"). Entering
+   * "off" drops the held sequence (in "off" nothing is held);
+   * switching between "auto" and "tap" keeps it — both modes retain
+   * the current clue's chain for replay (Unit A). */
   setSpeechMode(mode: SpeechMode): void;
   getSpeechMode(): SpeechMode;
-  /** The held clue sequence in "tap" mode (read + ack + decode of the
-   * most recent clue), oldest first. Empty in every other mode. */
+  /** The held clue sequence (read + ack + decode of the most recent
+   * clue), oldest first, retained in "auto" and "tap" modes. Empty
+   * in "off" mode. */
   heldRefs(): readonly SpeakRef[];
-  /** Play the held sequence for real (the Listen button). Sound gates
-   * still apply at play time; a no-op outside "tap" mode or when
-   * nothing is held. */
+  /** Play the held sequence for real (the Listen button in tap mode;
+   * the tap-Watson control in auto and tap modes). Sound gates still
+   * apply at play time; a no-op in "off" mode or when nothing is
+   * held. Calling it while speech is playing RESTARTS the held
+   * sequence from its first item (Unit A: an explicit repeat request
+   * interrupts whatever is in flight). */
   playHeldSequence(): Promise<void>;
 }
 
@@ -256,14 +269,19 @@ export function createDetectiveSpeech(
   let caseIndex = opts.caseIndex ?? 0;
   let queue: SpeakRef[] = [];
   let processing = false;
-  /* -- U9 speech mode + tap-mode hold -------------------------------- */
+  /* -- U9 speech mode + clue-sequence hold (Unit A: auto too) ------- */
   let speechMode: SpeechMode = opts.speechMode ?? "auto";
-  /** The most recent clue sequence, remembered in "tap" mode while
-   * its items resolve as skipped. A new clue read starts a new hold;
-   * its ack + decode append. Cleared on leaving "tap" and on a new
-   * case (setCaseIndex to a different case). */
+  /** The most recent clue sequence, remembered in "tap" and "auto"
+   * modes (in "tap" while its items resolve as skipped; in "auto"
+   * while they play). A new clue read starts a new hold; its ack +
+   * decode append. Cleared on entering "off" and on a new case
+   * (setCaseIndex to a different case). */
   let held: SpeakRef[] = [];
-  let heldPlaying = false;
+  /** Replay generation (Unit A): every playHeldSequence() call bumps
+   * this, so a superseded replay loop — one a second tap replaced —
+   * abandons ship without clearing the new loop's state or firing a
+   * second drain signal. */
+  let heldPlaySeq = 0;
 
   function recordHeld(ref: SpeakRef): void {
     if (!isClueSequenceRef(ref)) return;
@@ -375,9 +393,11 @@ export function createDetectiveSpeech(
         hadItems = true;
         const ref = queue.shift()!;
         // U9 speech modes: in "tap" mode the item resolves as skipped
-        // (the ladder advances silently, exactly like a dropped item)
-        // but a clue-sequence ref is remembered for the Listen button;
-        // in "off" mode it resolves skipped and nothing is held.
+        // (the ladder advances silently, exactly like a dropped item);
+        // in "off" mode it resolves skipped and nothing is held. The
+        // clue-sequence hold itself is recorded at enqueue time (see
+        // enqueue below) — recordHeld here is the idempotent backstop
+        // for a mode that flipped to "tap" mid-burst.
         if (speechMode !== "auto") {
           if (speechMode === "tap") recordHeld(ref);
           continue;
@@ -430,27 +450,47 @@ export function createDetectiveSpeech(
     });
   }
 
-  /* -- held-sequence replay (the Listen button) ------------------------
+  /* -- held-sequence replay (Listen button / tap-Watson, Unit A) -----
    * Plays the held refs through the same manifest/clip pipeline, in
    * order. The autoplay verdict is NOT consulted — a tap is the kid
-   * choosing to listen, and "never"/"sometimes" keep the button
+   * choosing to listen, and "never"/"sometimes" keep the control
    * tappable by design — but the sound gate IS: sound off at play
-   * time means silence. A stopAll (generation bump) abandons the
-   * replay between clips. The drain signal fires only when at least
-   * one clip actually played, clearing the host's speaking indicator. */
+   * time means silence. Available in "auto" and "tap" modes; in
+   * "off" mode nothing is held and this is a no-op.
+   *
+   * RESTART semantics (Unit A): a replay request is explicit, so it
+   * interrupts whatever is in flight — the normal queue or an
+   * earlier replay — and starts the held sequence again from item 1.
+   * Interruption = a generation bump (in-flight loops abandon ship
+   * without a drain signal) + clearing the pending queue + stopping
+   * the current clip. A stopAll (generation bump) likewise abandons
+   * a replay between clips. The drain signal fires only when at
+   * least one clip actually played, clearing the host's speaking
+   * indicator — and only from the LATEST replay: a superseded loop
+   * never drains, so the ladder advances exactly once. */
   async function playHeldSequence(): Promise<void> {
-    if (disposed || heldPlaying || speechMode !== "tap") return;
+    if (disposed || speechMode === "off") return;
     const refs = [...held];
     if (refs.length === 0) return;
-    heldPlaying = true;
+    const mySeq = ++heldPlaySeq;
+    generation += 1;
     const gen = generation;
+    queue = [];
+    if (currentStop) {
+      try {
+        currentStop();
+      } catch {
+        /* stopping must never throw into game flow */
+      }
+      currentStop = null;
+    }
     let playedAny = false;
     try {
       for (const ref of refs) {
-        if (gen !== generation || disposed) return;
+        if (mySeq !== heldPlaySeq || gen !== generation || disposed) return;
         if (!isSoundOn()) break;
         const manifest = await loadManifest();
-        if (gen !== generation || disposed) return;
+        if (mySeq !== heldPlaySeq || gen !== generation || disposed) return;
         const clip = resolveDetectiveClip(manifest, ref, caseIndex);
         if (!clip) continue; // uncovered → silent skip, as ever
         onSpeakingChange(clip.who);
@@ -462,8 +502,9 @@ export function createDetectiveSpeech(
         }
       }
     } finally {
-      heldPlaying = false;
-      if (playedAny && gen === generation && !disposed) {
+      // Only the latest replay owns the drain: a loop a newer tap
+      // superseded leaves it to its replacement.
+      if (mySeq === heldPlaySeq && playedAny && gen === generation && !disposed) {
         onSpeakingChange(null);
       }
     }
@@ -472,13 +513,18 @@ export function createDetectiveSpeech(
   return {
     enqueue(ref: SpeakRef): void {
       if (disposed) return;
+      // Retention at enqueue time (Unit A — see the header): the full
+      // burst is held before its first clip starts, so a mid-play
+      // replay restarts the complete chain, not just the clip in
+      // flight. "off" mode holds nothing.
+      if (speechMode !== "off") recordHeld(ref);
       queue.push(ref);
       kick();
     },
     setSpeechMode(mode: SpeechMode): void {
       if (mode === speechMode) return;
       speechMode = mode;
-      if (mode !== "tap") held = [];
+      if (mode === "off") held = [];
     },
     getSpeechMode(): SpeechMode {
       return speechMode;
