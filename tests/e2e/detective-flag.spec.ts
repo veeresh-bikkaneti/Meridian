@@ -12,8 +12,8 @@ import { serveBuiltArtifact } from "./helpers";
  *   → the host mounts on the case.
  *
  * The interception follows the feature-flags.spec.ts pattern: the
- * route is registered AFTER serveBuiltArtifact, so it wins for
- * **/flags.json.
+ * route is registered AFTER serveBuiltArtifact, so it wins for the
+ * flags.json request.
  */
 
 const APP = "http://127.0.0.1:4123/Meridian/?loop-puzzle=137";

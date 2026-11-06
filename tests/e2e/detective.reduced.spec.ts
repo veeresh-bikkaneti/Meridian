@@ -135,16 +135,22 @@ test("reduced motion: pair present, berth by cut, audio still fires", async ({
     .toBe("berth");
 
   // …and he arrived by CUT: no walk transition on his wrapper, and
-  // the host still reports the cut walk mode.
+  // the host still reports the cut walk mode. (The computed duration
+  // is asserted as ≈0, not the literal "0s": under reduced-motion
+  // emulation Chromium clamps it to ~1e-05s — the same clamp the
+  // geodetective.reduced spec documents. The inline style is the
+  // value the app itself controls: "none".)
   const cut = await wrapper.evaluate((el) => {
     const cs = getComputedStyle(el);
     return {
-      transitionDuration: cs.transitionDuration,
+      inlineTransition: (el as HTMLElement).style.transition,
+      durationS: parseFloat(cs.transitionDuration) || 0,
       transform: cs.transform,
       walkMode: el.getAttribute("data-walk-mode"),
     };
   });
   expect(cut.walkMode).toBe("cut");
-  expect(cut.transitionDuration).toBe("0s");
+  expect(cut.inlineTransition).toBe("none");
+  expect(cut.durationS).toBeLessThan(0.01);
   expect(cut.transform).not.toBe(dockTransform);
 });
