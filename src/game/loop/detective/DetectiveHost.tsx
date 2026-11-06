@@ -368,10 +368,17 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
 
   /* Auto-kill: rAF deltas + long-task observer feed the pure tracker;
    * on kill the companion is off for the session (Holmes dock-only).
-   * The rAF loop exists only while the companion is live, and does
+   * The feed runs only while the companion is LIVE (the SEARCH
+   * phases): the kill criterion guards the companion's own operation
+   * (council Q2 §10; K4 measures it during pan+companion), and page-
+   * load jank — tile loads, the 11 MB name index — is not companion
+   * performance. Measured on the U6 smoke rig: load runs 3–34 FPS for
+   * ~7 s, then a clean 60 FPS; feeding load frames would kill a
+   * companion that would have run perfectly. The rAF loop does
    * nothing per frame but push one timestamp into the tracker. */
   useEffect(() => {
     if (companionMode !== "full") return;
+    if (phase !== "SEARCH_IDLE" && phase !== "SEARCH_AREA") return;
     let raf = 0;
     let last = performance.now();
     let stopped = false;
@@ -417,7 +424,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       cancelAnimationFrame(raf);
       observer?.disconnect();
     };
-  }, [companionMode]);
+  }, [companionMode, phase]);
 
   /* Pointer wiring: attached to the map container element itself. */
   useEffect(() => {
