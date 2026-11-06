@@ -958,6 +958,120 @@ export function deriveVerdict(event: CrashReportEvent): { verdict: CrashVerdict;
   return classifyCrashVerdict(verdictFactsOf(event));
 }
 
+// --- Provenance corroboration gate (2026-11-05) ---------------------------
+//
+// Provenance is an orthogonal axis to the verdict: it asks whether the
+// payload corroborates itself as a real client session's report — right
+// build shape, right stamps, a session trail (or a recognised boot /
+// watchdog shape) consistent inside the single event. It never feeds
+// the classifier. The gate is stateless: a pure function of the single
+// normalised event, no KV reads, so a KV outage cannot reopen paging.
+
+export type Provenance = "corroborated" | "uncorroborated";
+
+/** Every named device field is a present, non-empty string. */
+function hasFields(dev: Record<string, unknown>, fields: readonly string[]): boolean {
+  return fields.every((f) => typeof dev[f] === "string" && (dev[f] as string).length > 0);
+}
+
+/**
+ * Corroboration checks, in order (the first failure decides):
+ * P1′ build shape — the real generator's output union; P2 stamps —
+ * lcV present (never version-pinned), storageOk boolean either value;
+ * P3′ device floor — per class (client / watchdog / funnel); P4a′/P4b′
+ * session linkage for suspected_crash and the live error types.
+ * Total by construction: every read is narrowed before use, so a
+ * malformed shape returns "uncorroborated" instead of throwing.
+ */
+export function provenanceOf(event: CrashReportEvent): Provenance {
+  if (!isPlainObject(event)) return "uncorroborated";
+  if (!(EVENT_TYPES as readonly string[]).includes(event.type)) return "uncorroborated";
+
+  // P1′ build shape.
+  if (typeof event.buildId !== "string") return "uncorroborated";
+  if (
+    !(
+      /^[0-9a-f]{7,40}$/.test(event.buildId) ||
+      /^local-[0-9a-z]{6,12}$/.test(event.buildId) ||
+      event.buildId === "dev"
+    )
+  ) {
+    return "uncorroborated";
+  }
+
+  // P2 stamps.
+  if (typeof event.lcV !== "string" || event.lcV.length === 0) return "uncorroborated";
+  if (typeof event.storageOk !== "boolean") return "uncorroborated";
+
+  // P3′ device floor (the watchdog floor binds ALL boot_failure).
+  const dev = event.device;
+  if (!isPlainObject(dev)) return "uncorroborated";
+  if ((FUNNEL_CLASS_TYPES as readonly string[]).includes(event.type)) {
+    if (!hasFields(dev, ["os", "form"])) return "uncorroborated";
+  } else if (event.type === "boot_failure") {
+    if (!hasFields(dev, ["browser", "os", "form"])) return "uncorroborated";
+    if (Object.keys(dev).length < 10) return "uncorroborated";
+  } else {
+    if (!hasFields(dev, ["browser", "os", "osVersion", "deviceClass", "form"])) {
+      return "uncorroborated";
+    }
+    if (Object.keys(dev).length < 8) return "uncorroborated";
+  }
+
+  // P4a′ — suspected_crash: full trail or the payload-cap truncation stub.
+  if (event.type === "suspected_crash") {
+    if (typeof event.sessionId !== "string" || event.sessionId.length === 0) {
+      return "uncorroborated";
+    }
+    const bc = event.breadcrumb;
+    if (!isPlainObject(bc)) return "uncorroborated";
+    const fullTrail =
+      bc.sessionId === event.sessionId &&
+      bc.buildId === event.buildId &&
+      Array.isArray(bc.history) &&
+      bc.history.length >= 1;
+    const truncationStub =
+      bc.sessionId === event.sessionId &&
+      bc.buildId === event.buildId &&
+      bc.lastMilestone === event.lastMilestone &&
+      typeof bc.startedAt === "number" &&
+      (bc.history === undefined || (Array.isArray(bc.history) && bc.history.length === 0));
+    if (!fullTrail && !truncationStub) return "uncorroborated";
+  } else if (
+    // P4b′ — live errors: session linkage, or the exact pre-init shape.
+    event.type === "js_error" ||
+    event.type === "unhandled_rejection" ||
+    event.type === "map_error"
+  ) {
+    // Linked: a sessionId plus either a lastMilestone or the numeric
+    // msSinceBootStart that emit() derives from the SAME live breadcrumb
+    // that supplies the sessionId. lastMilestone alone is not enough to
+    // require: the route error boundary and the region-chunk load
+    // failure emit js_error post-init with no lastMilestone (#353 fix).
+    const linked =
+      typeof event.sessionId === "string" &&
+      event.sessionId.length > 0 &&
+      ((typeof event.lastMilestone === "string" && event.lastMilestone.length > 0) ||
+        typeof event.msSinceBootStart === "number");
+    // Exact pre-init wire signature: emit() couples a sessionId and a
+    // numeric msSinceBootStart through the same breadcrumb, so a hybrid
+    // (sessionId present ∧ msSinceBootStart "unknown") is unproducible
+    // by the real client and does not pass.
+    const preInit =
+      (typeof event.sessionId !== "string" || event.sessionId.length === 0) &&
+      event.lastMilestone === undefined &&
+      event.deviceSource === "live" &&
+      event.msSinceBootStart === "unknown" &&
+      isPlainObject(event.error);
+    if (!linked && !preInit) return "uncorroborated";
+  }
+
+  // No P4 leg for the remaining types: recovery_outcome's P4d is
+  // P1′∧P2∧P3′-client (tierOf still decides that only repeat_failure
+  // pages); boot_failure, hiccup and funnel types are P1′∧P2∧P3′ only.
+  return "corroborated";
+}
+
 const VALID_RECOVERY_OUTCOMES = new Set([
   "confirmed",
   "repeat_failure",
@@ -1550,6 +1664,12 @@ export interface CountBucket {
   late: number;
   /** Alert ids already fired for this bucket (exact-once per type+hour). */
   alerts: string[];
+  /** Provenance dim: keys are exactly "corroborated" | "uncorroborated". */
+  provenance: Record<string, number>;
+  /** Builds map, corroborated events only — the threshold predicate's input. */
+  corrBuilds: Record<string, number>;
+  /** Candidate-only group counts (pattern counts for the can't-tell legs). */
+  cantTellGroups: Record<string, number>;
 }
 
 /** Hard cap on distinct group keys per bucket; the next tallies "other". */
@@ -1572,6 +1692,9 @@ export function emptyBucket(): CountBucket {
     lastAt: 0,
     late: 0,
     alerts: [],
+    provenance: {},
+    corrBuilds: {},
+    cantTellGroups: {},
   };
 }
 
@@ -1608,6 +1731,16 @@ export function deviceBucketOf(event: CrashReportEvent): string {
   return dev ? `${truncate(dev.os ?? "?", 24)}/${truncate(dev.form ?? "?", 24)}` : "—";
 }
 
+/** Per-key numeric guard for a stored count map (provenance dim). */
+function numericRecord(value: unknown): Record<string, number> {
+  if (!isPlainObject(value)) return {};
+  const out: Record<string, number> = {};
+  for (const [k, v] of Object.entries(value)) {
+    if (typeof v === "number" && Number.isFinite(v)) out[k] = v;
+  }
+  return out;
+}
+
 export function kvTelemetryStore(kv: KvLike): TelemetryStore {
   return {
     async readBucket(key: string): Promise<CountBucket | null> {
@@ -1634,6 +1767,9 @@ export function kvTelemetryStore(kv: KvLike): TelemetryStore {
             lastAt: typeof parsed.lastAt === "number" ? parsed.lastAt : 0,
             late: typeof parsed.late === "number" ? parsed.late : 0,
             alerts: Array.isArray(parsed.alerts) ? parsed.alerts : [],
+            provenance: numericRecord(parsed.provenance),
+            corrBuilds: parsed.corrBuilds ?? {},
+            cantTellGroups: parsed.cantTellGroups ?? {},
           };
         }
       } catch {
@@ -1682,16 +1818,24 @@ export function groupKeyOf(event: CrashReportEvent): string {
   return `${event.buildId}|${os}|${osMajor}|${deviceClass}`;
 }
 
-/** Bump a group key under the hard cap: a 33rd distinct key is "other". */
-function bumpGroup(groups: Record<string, number>, key: string): void {
-  if (key in groups || Object.keys(groups).length < MAX_GROUP_KEYS) bump(groups, key);
-  else bump(groups, "other");
+/**
+ * Bump a group key under the hard cap: a 33rd distinct key is "other".
+ * Returns the key actually tallied ("other" included) so the caller
+ * reads the cap decision from its one owner.
+ */
+function bumpGroup(groups: Record<string, number>, key: string): string {
+  if (key in groups || Object.keys(groups).length < MAX_GROUP_KEYS) {
+    bump(groups, key);
+    return key;
+  }
+  bump(groups, "other");
+  return "other";
 }
 
 export interface TelemetryRecordResult {
   counted: boolean;
   alerted: boolean;
-  alertText?: string;
+  alertTexts: string[];
 }
 
 /**
@@ -1704,8 +1848,11 @@ export async function recordTelemetry(
   event: CrashReportEvent,
   now: number,
   cfg: ThresholdConfig,
+  provenance: Provenance,
 ): Promise<TelemetryRecordResult> {
-  if (!store) return { counted: false, alerted: false };
+  // Fail-closed (R1): an invalid/missing provenance counts uncorroborated.
+  const prov: Provenance = provenance === "corroborated" ? "corroborated" : "uncorroborated";
+  if (!store) return { counted: false, alerted: false, alertTexts: [] };
   try {
     const hour = hourLabelOf(now);
     const key = bucketKey(hour, event.type);
@@ -1717,8 +1864,25 @@ export async function recordTelemetry(
     bump(bucket.devices, deviceBucketOf(event));
     // Counting v2 (§5.2): groups, the shared re-derived verdict,
     // milestones, modes, error names, and receipt-time first/last.
-    bumpGroup(bucket.groups, groupKeyOf(event));
+    const groupKey = groupKeyOf(event);
+    bumpGroup(bucket.groups, groupKey);
+    // Provenance dims: every event counts under its provenance; only
+    // corroborated events count toward the threshold predicate's builds.
+    bump(bucket.provenance, prov);
+    if (prov === "corroborated") bump(bucket.corrBuilds, event.buildId);
     const { verdict, whyKey } = deriveVerdict(event);
+    // Can't-tell candidates: crash-tier events that are uncorroborated,
+    // or corroborated with an insufficient_evidence verdict. Their group
+    // counts feed the escalation legs — and nothing else reads them.
+    const isCandidate =
+      tierOf(event.type, typeof event.recoveryOutcome === "string" ? event.recoveryOutcome : undefined) === "crash" &&
+      (prov === "uncorroborated" || verdict === "insufficient_evidence");
+    let pattern: string | undefined;
+    let candidateTotal = 0;
+    if (isCandidate) {
+      pattern = bumpGroup(bucket.cantTellGroups, groupKey);
+      candidateTotal = Object.values(bucket.cantTellGroups).reduce((a, b) => a + b, 0);
+    }
     bump(bucket.verdicts, `${verdict}/${whyKey}`);
     // Counting (#345): the severity grade rides the same one
     // derivation per request — severityOf re-derives the verdict
@@ -1738,24 +1902,56 @@ export async function recordTelemetry(
       bucket.late += 1;
     }
 
-    let alerted = false;
-    let alertText: string | undefined;
+    const alertTexts: string[] = [];
     const alertId = `threshold:${event.type}:${hour}`;
-    const perBuild = bucket.builds[event.buildId] ?? 0;
+    // Threshold predicate reads corroborated counts only (R2):
+    // uncorroborated events can neither trip it nor burn its slot.
+    const corrPerBuild = bucket.corrBuilds[event.buildId] ?? 0;
     if (
       !(THRESHOLD_EXEMPT_FUNNEL_TYPES as readonly string[]).includes(event.type) &&
       !bucket.alerts.includes(alertId) &&
-      (bucket.total >= cfg.perHour || perBuild >= cfg.perBuild)
+      ((bucket.provenance.corroborated ?? 0) >= cfg.perHour || corrPerBuild >= cfg.perBuild)
     ) {
       bucket.alerts.push(alertId);
-      alerted = true;
-      alertText = buildThresholdAlert(event.type, hour, bucket, cfg, perBuild);
+      alertTexts.push(buildThresholdAlert(event.type, hour, bucket, cfg, corrPerBuild));
+    }
+
+    // Can't-tell escalation leg — cheapest legs first, in this order:
+    // "other" never escalates · pattern count ≥3 · candidate total ≥5 ·
+    // once per pattern+hour · trailing leg (>3× the pattern's trailing
+    // 24h average). The 24 trailing reads are spent ONLY after the
+    // cheap legs pass (read economy: ≤25 reads on an evaluating event).
+    if (isCandidate && pattern !== undefined && pattern !== "other") {
+      const patternCount = bucket.cantTellGroups[pattern] ?? 0;
+      const cantTellId = `canttell:${event.type}:${hour}:${pattern}`;
+      if (patternCount >= 3 && candidateTotal >= 5 && !bucket.alerts.includes(cantTellId)) {
+        try {
+          let trailing = 0;
+          for (let h = 1; h <= TRAILING_BASELINE_HOURS; h++) {
+            const older = await store.readBucket(
+              bucketKey(hourLabelOf(now - h * HOUR_MS), event.type),
+            );
+            trailing += older?.cantTellGroups?.[pattern] ?? 0;
+          }
+          const trailingAvg = trailing / TRAILING_BASELINE_HOURS;
+          if (patternCount > ANOMALY_RATIO * trailingAvg) {
+            bucket.alerts.push(cantTellId);
+            alertTexts.push(
+              buildCantTellAlert(event.type, hour, pattern, patternCount, candidateTotal, trailingAvg),
+            );
+          }
+        } catch {
+          // A trailing-read failure skips the escalation for this event
+          // only — it must not discard the count via the outer fail-open
+          // catch (which would also flip counted and ungate the event).
+        }
+      }
     }
     await store.writeBucket(key, bucket);
-    return { counted: true, alerted, alertText };
+    return { counted: true, alerted: alertTexts.length > 0, alertTexts };
   } catch (err) {
     logLine("telemetry count failed (fail-open)", event.type, err instanceof Error ? err.name : "unknown");
-    return { counted: false, alerted: false };
+    return { counted: false, alerted: false, alertTexts: [] };
   }
 }
 
@@ -1782,6 +1978,27 @@ export function buildThresholdAlert(
     `hour: ${hourLabel} UTC · counts: ${bucket.total} total (${topBuilds})\n` +
     `one alert per type+hour — further events this hour only raise the counts\n` +
     `counts are at fire time; the hourly digest carries the final total`
+  );
+}
+
+/**
+ * Discord text for the can't-tell escalation. ❔ dress, Discord only,
+ * never email. Carries no sessionId by construction — no such input.
+ */
+export function buildCantTellAlert(
+  type: string,
+  hourLabel: string,
+  pattern: string,
+  patternCount: number,
+  candidateTotal: number,
+  trailingAvg: number,
+): string {
+  return (
+    `❔ Meridian can't-tell escalation\n` +
+    `type: ${type} · pattern: ${pattern}\n` +
+    `hour: ${hourLabel} UTC · pattern count: ${patternCount} · can't-tell candidates this hour: ${candidateTotal}\n` +
+    `trailing 24h average for this pattern: ${trailingAvg.toFixed(1)} — this pattern is now more than ${ANOMALY_RATIO}× that\n` +
+    `these reports could not be corroborated as real client sessions, so they were counted, not paged individually`
   );
 }
 
@@ -2125,12 +2342,17 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
     const reportEmail = env.REPORT_EMAIL?.trim();
 
     // Phase 1: count every accepted event, best-effort (fail-open).
+    // Provenance is computed once, here: the counted dim and the
+    // forwarding gate below can never disagree.
     const store = env.TELEMETRY_COUNTS ? kvTelemetryStore(env.TELEMETRY_COUNTS) : null;
-    const tele = await recordTelemetry(store, valid, Date.now(), thresholdConfig(env));
-    if (tele.alerted && tele.alertText && discordUrl) {
-      // Threshold alert: exactly one per type+hour. Fire-and-forget —
+    const provenance = provenanceOf(valid);
+    const tele = await recordTelemetry(store, valid, Date.now(), thresholdConfig(env), provenance);
+    if (discordUrl) {
+      // Threshold + can't-tell alerts: Discord only, fire-and-forget —
       // a failed alert post must never fail the client request.
-      forwardToDiscord(discordUrl, tele.alertText).catch(() => {});
+      for (const text of tele.alertTexts) {
+        forwardToDiscord(discordUrl, text).catch(() => {});
+      }
     }
 
     const tier = tierOf(
@@ -2139,7 +2361,11 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
     );
     const alert = buildAlert(valid);
     const attempts: Array<{ channel: "discord" | "email"; promise: Promise<boolean> }> = [];
-    if (tier === "crash") {
+    // Provenance gate: a counted, uncorroborated crash is counted-only.
+    // KV-down (!tele.counted) fails open to forwarding, and a gated
+    // event lands in the no-forwarders branch below, so its response
+    // body is identical to no-secrets mode (no prober oracle).
+    if (tier === "crash" && (provenance === "corroborated" || !tele.counted)) {
       // Crash-class: immediate individual forward, unchanged from before.
       if (discordUrl)
         attempts.push({ channel: "discord", promise: forwardToDiscord(discordUrl, alert.discord) });
