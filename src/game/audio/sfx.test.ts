@@ -231,6 +231,42 @@ test("onSoundChanged: unsubscribe stops delivery and the count hatch tracks it",
   setSoundEnabled(true);
 });
 
+test("onSoundChanged: in-process listeners run BEFORE the window meridian:sound-change listener", () => {
+  // Ordering pin (Senior Architect, PR C cure round): onSoundChanged
+  // is the canonical channel for instant reactors — the speech stop
+  // must land before any legacy window-event consumer hears about
+  // the flip. The window stub records dispatch order; the
+  // meridian:sound-change dispatch is what a window listener would
+  // observe.
+  stubStorage();
+  const order: string[] = [];
+  const origWindow = (globalThis as Record<string, unknown>).window;
+  (globalThis as Record<string, unknown>).window = {
+    dispatchEvent: (e: Event) => {
+      if (e.type === "meridian:sound-change") order.push("window");
+      return true;
+    },
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  };
+  const off = onSoundChanged(() => order.push("in-process"));
+  try {
+    setSoundEnabled(false);
+    setSoundEnabled(true);
+    // Each flip: the in-process listener is notified before the
+    // window event is dispatched for that same flip.
+    assert.deepEqual(order, ["in-process", "window", "in-process", "window"]);
+  } finally {
+    off();
+    if (origWindow === undefined) {
+      delete (globalThis as Record<string, unknown>).window;
+    } else {
+      (globalThis as Record<string, unknown>).window = origWindow;
+    }
+    setSoundEnabled(true);
+  }
+});
+
 test("onSoundChanged: a throwing listener never breaks the toggle or other listeners", () => {
   stubStorage();
   const seen: boolean[] = [];

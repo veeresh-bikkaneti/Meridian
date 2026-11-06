@@ -76,6 +76,15 @@ export function isSoundEnabled(): boolean {
 // cross-component channel other surfaces already listen to. The pattern
 // follows src/game/age-profile/events.ts: listener errors are isolated,
 // and callers MUST unsubscribe on unmount.
+//
+// Canonical channel (Senior Architect, PR C cure round): this listener
+// set is THE channel for new code — new instant reactors MUST subscribe
+// via onSoundChanged, never via the window events. The window
+// CustomEvents ("meridian:sound-off" / "meridian:sound-change") remain
+// only for the legacy consumers that already listen to them, and they
+// are dispatched AFTER the in-process listeners run (the ordering is
+// pinned in sfx.test.ts), so a window consumer can never act before
+// an instant reactor has stopped the sound.
 
 export type SoundChangeListener = (on: boolean) => void;
 
