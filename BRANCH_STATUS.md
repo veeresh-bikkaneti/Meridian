@@ -6,7 +6,7 @@
 - **Base:** `main` @ `cbe9140` (moved from 7b04f28 by #354, the doorway removal — home surface only, no overlap with this feature's files).
 - **Locked decisions:** (1) audio phased — Phase A = Capitals 110 cases only; core 387 is U11, not here. (2) selection names = population ≥500k tier (1,201 names) + ALL 497 case-answer reads; an uncovered pick plays the suspicion line with the name silent — never improvised audio. (3) Cold Trail: later phase, out entirely. (4) post-solve debrief IN v1 — Holmes's one real deduction speech after a solve; synthesis lives only there. (5) flag `detectivePair` ships default **false**; the flip is a later owner-gated step (K1/K6 child panel gates the flip, not this PR). (6) speech follows the player's existing read-aloud preference.
 - **Done condition:** PR open; per-unit acceptance verified with evidence; CI read fresh; U10 gate results reported; flag-ON real-page capture (Capitals case end-to-end, with audio) in `~/workspace/meridian-detective-evidence/`.
-- **Protected:** clue text, game balance, scoring, the existing storyteller/grandpa audio systems, player-facing locks. The word "whisper" never appears in this feature's code or docs — the register is "hushed".
+- **Protected:** clue text, game balance, scoring, the existing storyteller/grandpa audio systems, player-facing locks. The banned hushed-register word never appears in this feature's code or docs — the register is "hushed".
 - **Answer-blindness is structural:** the pair receives whitelisted props only (`phase, clueIndex, pointerKinematics, sheetOpen, speechPlaying`) — never the puzzle, target, or any evaluation; a props-shape unit test ships in this PR.
 
 ### Units
