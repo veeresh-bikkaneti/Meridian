@@ -1,3 +1,33 @@
+## Holmes & Watson for GeoDetective, Phase A — feat/detective-pair (2026-11-05)
+
+- **Authority:** Veeresh, 2026-11-05 — build ordered on the approved full-loop mockup ("I guess its ok let's build it"), then all six scope decisions answered "All recommended." Design of record: `BUILD-SCOPE.md` + `COUNCIL-holmes-watson.md` (evidence folder; scope also at `prototype/BUILD-SCOPE.md` on `design/detective-moments-prototype`).
+- **TASK / outcome:** Build units U1–U10 of the scope and open the PR. Merging is NOT part of this task; the full review pipeline is a separate later dispatch.
+- **Tier:** 2 (new feature/module, 3+ files) — the design was settled by the owner's council and scope; this branch implements that record, it does not redesign it.
+- **Base:** `main` @ `cbe9140` (moved from 7b04f28 by #354, the doorway removal — home surface only, no overlap with this feature's files).
+- **Locked decisions:** (1) audio phased — Phase A = Capitals 110 cases only; core 387 is U11, not here. (2) selection names = population ≥500k tier (1,201 names) + ALL 497 case-answer reads; an uncovered pick plays the suspicion line with the name silent — never improvised audio. (3) Cold Trail: later phase, out entirely. (4) post-solve debrief IN v1 — Holmes's one real deduction speech after a solve; synthesis lives only there. (5) flag `detectivePair` ships default **false**; the flip is a later owner-gated step (K1/K6 child panel gates the flip, not this PR). (6) speech follows the player's existing read-aloud preference.
+- **Done condition:** PR open; per-unit acceptance verified with evidence; CI read fresh; U10 gate results reported; flag-ON real-page capture (Capitals case end-to-end, with audio) in `~/workspace/meridian-detective-evidence/`.
+- **Protected:** clue text, game balance, scoring, the existing storyteller/grandpa audio systems, player-facing locks. The word "whisper" never appears in this feature's code or docs — the register is "hushed".
+- **Answer-blindness is structural:** the pair receives whitelisted props only (`phase, clueIndex, pointerKinematics, sheetOpen, speechPlaying`) — never the puzzle, target, or any evaluation; a props-shape unit test ships in this PR.
+
+### Units
+
+| Unit | Status |
+| :--- | :--- |
+| U1 Render pipeline + hash manifest + staleness CI gate | pending |
+| U2 Fixed lines + 5 decode templates, pitch-gated | pending |
+| U3 Phase A renders (550 Capitals reads + 497 answers + name tier) | pending |
+| U4 Production character rig (approved colours, no pipe) | pending |
+| U5 Stations + state machine + sequential speech player | pending |
+| U6 Waypoint companion (pause, berth solver, absence, auto-kill) | pending |
+| U7 Selection handoff (name coverage, suspicion asset, ask-next) | pending |
+| U8 Endings (celebration · fail answer + pout · debrief) | pending |
+| U9 Degradation matrix + flag wiring | pending |
+| U10 Gates pack (swap test, clearance E2E, K2/K3/K5, K4 protocol) | pending |
+
+U11 (core 387 renders) is Phase B — NOT in this branch.
+
+---
+
 ## Remove the home doorway — feat/remove-home-doorway (2026-11-05)
 
 - **Authority:** Veeresh, 2026-11-05: "card is not clickable. if its not clickable then there is no point of putting it on home page." Decision chain: issue #344 shipped the Capitals & Flags strip on Home with one door per mode → the owner's Option C pick (2026-11-05) made it a signpost (buttons removed as apparent duplicates of the mode cards) → PR #352 matched its height to the About card → the owner now removes the card outright: a non-clickable card earns no place on Home. The pack itself is untouched — the Capitals deck remains on the shelf inside GeoDetective / Cold Trail, its sole entry since Option C.
