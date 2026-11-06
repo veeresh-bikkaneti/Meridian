@@ -249,6 +249,2077 @@
   }
  },
  "cases": {
+  "0": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ubon Ratchathani, Thailand.",
+    "textHash": "0c93595700d62a199df24395401a5c6e51efe2d988e86f13abe00ec78e807e31",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-0/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 95,
+    "durationSec": 5.71,
+    "status": "ok"
+   }
+  },
+  "1": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Zhuhai, China.",
+    "textHash": "9e2bfe5059d63a106e43b6501275f2433e80cadea92e81fb634c21b33d71b85b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-1/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok"
+   }
+  },
+  "2": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Santa Cruz De La Sierra, Bolivia.",
+    "textHash": "3f03ec259e4adceaa654829e559e9607f8d6bdd911056590250e63960804c9a2",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-2/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 149,
+    "durationSec": 4.82,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "3": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Manacapuru, Brazil.",
+    "textHash": "4b847591b4f81ae0b5d9bb964402b2f8c29c1587f7a02f3ed6066c81c144707b",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-3/answer.mp3",
+    "measuredHz": 135,
+    "measuredWpm": 108,
+    "durationSec": 4.46,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "4": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Vila Velha, Brazil.",
+    "textHash": "70094a03275ca233f67f682761f278318e9eeabe42dc211a849d384a711a4ad6",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-4/answer.mp3",
+    "measuredHz": 140.4,
+    "measuredWpm": 150,
+    "durationSec": 3.6,
+    "status": "ok"
+   }
+  },
+  "5": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Beersheba, Israel.",
+    "textHash": "cfecd154e9b35cc827c4fef354ab12fbf43066157a269fc224450dab292b3b15",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-5/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 106,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "6": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cordoba, Argentina.",
+    "textHash": "f61b5e23a4fb5d5c38ba47dc62ec169f119bcb0a472ddf22980db082380c3e52",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-6/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 106,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "7": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Huntington Beach, California, United States.",
+    "textHash": "9322c057ca295cc5bd22c7706588c94fc21c04b2bcbc8b6d4c2044de6f643106",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-7/answer.mp3",
+    "measuredHz": 140.4,
+    "measuredWpm": 131,
+    "durationSec": 5.04,
+    "status": "ok"
+   }
+  },
+  "8": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Syracuse, New York, United States.",
+    "textHash": "f8cbfb8e4f53dc9b7a53f5c7dccbe3033013e7668d4113d854c991370d0c9898",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-8/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 117,
+    "durationSec": 5.64,
+    "status": "ok"
+   }
+  },
+  "9": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was La Rioja, Argentina.",
+    "textHash": "72288556d97a2aa3158eda1480376c5b22414e10428e63c9e50d33f553a06027",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-9/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 114,
+    "durationSec": 4.73,
+    "status": "ok"
+   }
+  },
+  "10": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Laredo, Texas, United States.",
+    "textHash": "96f44d9f4ef21d2c8e5a2d47d220e337606998a69bcb15d83e40bc1b4d44de23",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-10/answer.mp3",
+    "measuredHz": 121.2,
+    "measuredWpm": 121,
+    "durationSec": 4.94,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "11": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Fresno, California, United States.",
+    "textHash": "42dce486d0acb3a185e00d2237b07098f340693c72a2ef5feb552d7e81569f83",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-11/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 116,
+    "durationSec": 5.16,
+    "status": "ok"
+   }
+  },
+  "12": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Salerno, Italy.",
+    "textHash": "94b860dfe0337bbab9b89b27a9292459126612c6adcd60186107b09fc4ecf009",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-12/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok"
+   }
+  },
+  "13": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Geneva, Switzerland.",
+    "textHash": "539c5ee48f99e35e9562a14581b6c677100c15f27b0bbd01527a7322994969a0",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-13/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 116,
+    "durationSec": 4.13,
+    "status": "ok"
+   }
+  },
+  "14": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Belem, Brazil.",
+    "textHash": "a6efc26c5107eb1fc06c5e3fed778928dc624ba6b85d7bfe2e08c26d5ec83137",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-14/answer.mp3",
+    "measuredHz": 131.7,
+    "measuredWpm": 148,
+    "durationSec": 3.24,
+    "status": "ok"
+   }
+  },
+  "15": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Split, Croatia.",
+    "textHash": "1a31f1cb88b5d766afeec91bed81caa08359406978b4a929b958aeac3a46137e",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-15/answer.mp3",
+    "measuredHz": 141,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "16": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Guadalajara, Mexico.",
+    "textHash": "4f4c34a9e2f7f78a81318ab09e2be9ba72051490f6e8c401a243afbd3bcec99a",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-16/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 104,
+    "durationSec": 4.63,
+    "status": "ok"
+   }
+  },
+  "17": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Coro, Venezuela.",
+    "textHash": "0b6c9ecceba23cfe0a33d248aafb1e3cd439072f6f18f6c6144e61475dcf9f26",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-17/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 111,
+    "durationSec": 4.32,
+    "status": "ok"
+   }
+  },
+  "18": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Brussels, Belgium.",
+    "textHash": "b339385b17159a0c51125c13798a1434cefce84591c7466b1208839ae21cbefb",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-18/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 116,
+    "durationSec": 4.15,
+    "status": "ok"
+   }
+  },
+  "19": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sao Paulo, Brazil.",
+    "textHash": "d8a0d6063cb3808b1ffd808952f65872259383f007e6962e159e71bec036d5ad",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-19/answer.mp3",
+    "measuredHz": 117.6,
+    "measuredWpm": 117,
+    "durationSec": 4.61,
+    "status": "flagged",
+    "note": "pitch 117.6 Hz outside target 120-145 Hz — inside the wider family band 110-160 Hz, accepted as flagged"
+   }
+  },
+  "20": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Karaj, Iran.",
+    "textHash": "2a6c5c0610d7b0f6a86fd42b70c1e87cae0705bcfff05e64b32302f6d2deffb7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-20/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 120,
+    "durationSec": 4.01,
+    "status": "ok"
+   }
+  },
+  "21": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Yekaterinburg, Russia.",
+    "textHash": "d0e27f0cfe3fbc1d5999a7c016269314ded898180870393a988bcdcf5a56ea3d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-21/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 113,
+    "durationSec": 4.25,
+    "status": "ok"
+   }
+  },
+  "22": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Spokane, Washington, United States.",
+    "textHash": "cf7d79acd9a0b51313ad61cd29e1f5c81587813ee68b1c0c93a75b8c61fb9626",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-22/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 116,
+    "durationSec": 5.16,
+    "status": "ok"
+   }
+  },
+  "23": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kigali, Rwanda.",
+    "textHash": "238c6a21e6577cf1dc01f936a955966d88808baf1176e79d7c3b363e4c5030d1",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-23/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 120,
+    "durationSec": 4.01,
+    "status": "ok"
+   }
+  },
+  "24": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sydney, Canada.",
+    "textHash": "f8876f4604337fb52197051bcc896e5c646c9fa9770d701ad3101d3e1332cb9f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-24/answer.mp3",
+    "measuredHz": 123.1,
+    "measuredWpm": 125,
+    "durationSec": 3.84,
+    "status": "ok"
+   }
+  },
+  "25": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Jerez De La Frontera, Spain.",
+    "textHash": "32d65423296a7545cb28baac21d776d5b1b28d984c93a9376737ae238ac94adf",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-25/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 147,
+    "durationSec": 4.49,
+    "status": "ok"
+   }
+  },
+  "26": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was San Diego, California, United States.",
+    "textHash": "b9df86c631e8bd1250f230cee0dcc61eb4933033747acf826d1c60a70553e9bc",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-26/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 112,
+    "durationSec": 5.88,
+    "status": "ok"
+   }
+  },
+  "27": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Popayan, Colombia.",
+    "textHash": "e79a68031570525207d9ebc89afc6216bec188b96f279bb1e0d6c49fec1f5817",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-27/answer.mp3",
+    "measuredHz": 142.2,
+    "measuredWpm": 114,
+    "durationSec": 4.2,
+    "status": "ok"
+   }
+  },
+  "28": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Virginia Beach, Virginia, United States.",
+    "textHash": "80ad3c42026ad6303cc79f576685760c3aa3e6224bc0cdcb9f27c315f2bad77f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-28/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 110,
+    "durationSec": 6,
+    "status": "ok"
+   }
+  },
+  "29": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Monza, Italy.",
+    "textHash": "39a77081b2989552f0e6832da0bb423448a26b0c291d851d60889c3a7005291c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-29/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 125,
+    "durationSec": 3.84,
+    "status": "ok"
+   }
+  },
+  "30": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Johannesburg, South Africa.",
+    "textHash": "f0e16fb1aa28474ce51c962bf2517e2957bb703e9e5c01f80b034824c965f623",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-30/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 133,
+    "durationSec": 4.06,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "31": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Honiara, Solomon Islands.",
+    "textHash": "35f5ad9d822e288e70d0a521fa2b9f9d7ed64120db61dc80f4f14ea99085342f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-31/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 120,
+    "durationSec": 4.49,
+    "status": "ok"
+   }
+  },
+  "32": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Enschede, Netherlands.",
+    "textHash": "0a49ca16078fe1649798668ba258e8179d5827870a297f07355892edaac8f418",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-32/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "33": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Port Of Spain, Trinidad & Tobago.",
+    "textHash": "27fe1764d10f8d2f16c5b65839c3c1eb4eaac1489516f32701d9d4202b7b8d62",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-33/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 132,
+    "durationSec": 5.45,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "34": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Norman, Oklahoma, United States.",
+    "textHash": "4d61b60df20de2c09c1acc55067c1b721c3792be281b38f0adce5166e4bad487",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-34/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 122,
+    "durationSec": 4.92,
+    "status": "ok"
+   }
+  },
+  "35": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Haldwani, India.",
+    "textHash": "360d5fa0850bfd0fabb73f54f163d80a8775944cab88f4ea1b69893b251e011b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-35/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 132,
+    "durationSec": 3.65,
+    "status": "ok"
+   }
+  },
+  "36": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Guatemala City, Guatemala.",
+    "textHash": "fd89c46c04d98667651817c1f8ea89caee493ccaf5f70368e772d3de2f71c176",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-36/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 120,
+    "durationSec": 4.49,
+    "status": "ok"
+   }
+  },
+  "37": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Mangaluru, India.",
+    "textHash": "7f520ae71b2b7a34823a59c5876496854f0cea33d1b9e20637e7ee13cc3959c6",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-37/answer.mp3",
+    "measuredHz": 130.6,
+    "measuredWpm": 127,
+    "durationSec": 3.77,
+    "status": "ok"
+   }
+  },
+  "38": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Stockton, California, United States.",
+    "textHash": "468c114ffb11611d3d88d1cdca6126dc9bf67ffe794be26464823dd8506a9e98",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-38/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 112,
+    "durationSec": 5.35,
+    "status": "ok"
+   }
+  },
+  "39": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Gujranwala, Pakistan.",
+    "textHash": "8b7c9e61b73225c6de0d87cc03c172b9fc834c002eb3160a29bb5848a59cc86d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-39/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 104,
+    "durationSec": 4.61,
+    "status": "ok"
+   }
+  },
+  "40": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Yancheng, China.",
+    "textHash": "bb4857c8cfcd0e40135ccf6f1f0a21f8a25c48994a2bdf3a2e6006ccda5aa8d3",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-40/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 133,
+    "durationSec": 3.6,
+    "status": "ok"
+   }
+  },
+  "41": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Leganes, Spain.",
+    "textHash": "8f66c9d5366dc20a88f4616e7cbec65220ab610551285f41445c23a4eb1cf559",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-41/answer.mp3",
+    "measuredHz": 140.4,
+    "measuredWpm": 114,
+    "durationSec": 4.2,
+    "status": "ok"
+   }
+  },
+  "42": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Santos, Brazil.",
+    "textHash": "5ff04a54e5fc61073c70e9b75ef0957130a825c14658cde72ef0cd6b7a1cc3e1",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-42/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 114,
+    "durationSec": 4.2,
+    "status": "ok"
+   }
+  },
+  "43": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Nanchang, China.",
+    "textHash": "33daadb5d8229a230b0c52311d1a9cb1b0526406920b78e14d66f46b92a1f815",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-43/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 118,
+    "durationSec": 4.08,
+    "status": "ok"
+   }
+  },
+  "44": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Denton, Texas, United States.",
+    "textHash": "3c46194b73e62cc6bcc363e2e177be4dfc652860311b868817c511101edf132d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-44/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 110,
+    "durationSec": 5.47,
+    "status": "ok"
+   }
+  },
+  "45": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Brantford, Canada.",
+    "textHash": "aa11b541d0e3be99177e47fa28811b17742dee52619bf44c7cc1b3991647a5ff",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-45/answer.mp3",
+    "measuredHz": 141,
+    "measuredWpm": 116,
+    "durationSec": 4.13,
+    "status": "ok"
+   }
+  },
+  "46": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Victoria, Canada.",
+    "textHash": "de96485fe546543783a47fa1af13e20457e6a2de2cc2e5dd9cf6e69f8ecd4f2f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-46/answer.mp3",
+    "measuredHz": 123.1,
+    "measuredWpm": 127,
+    "durationSec": 3.79,
+    "status": "ok"
+   }
+  },
+  "47": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Detroit, Michigan, United States.",
+    "textHash": "b1c978918e5c77c9dec748dd7913b51906c9abdc4bd3e31d3a15da08b34c16ee",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-47/answer.mp3",
+    "measuredHz": 128.5,
+    "measuredWpm": 117,
+    "durationSec": 5.11,
+    "status": "ok"
+   }
+  },
+  "48": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Imphal, India.",
+    "textHash": "85464205163ea42a8e4cc7bac378a32b19f7086499c8797fe9131f17ba906b58",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-48/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "49": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Quezon City, Philippines.",
+    "textHash": "93495584f579b7948b2981159cbe32234f2301cdd013832c076b9637f3f64451",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-49/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 141,
+    "durationSec": 3.84,
+    "status": "ok"
+   }
+  },
+  "50": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Dusseldorf, Germany.",
+    "textHash": "32cba265021e626537553bac5719ff2d83ab6405212e6ed57c733d8551fd167f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-50/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "51": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bonn, Germany.",
+    "textHash": "b885b3dd2e04b1c79764ed7a4e008cd2873a82fcd3091a48b10d255a04bd6b48",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-51/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 119,
+    "durationSec": 4.03,
+    "status": "ok"
+   }
+  },
+  "52": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Doncaster, United Kingdom.",
+    "textHash": "6766e16201099a345113ab0c2376e583dc2110a51a5a8539bce303fca59993e7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-52/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 120,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "53": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bologna, Italy.",
+    "textHash": "3e994d073025d801e9471a1bcafb8d42cefc520a3ed137fd99b345481e1035e4",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-53/answer.mp3",
+    "measuredHz": 127.5,
+    "measuredWpm": 114,
+    "durationSec": 4.2,
+    "status": "ok"
+   }
+  },
+  "54": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Recife, Brazil.",
+    "textHash": "bbf5e2ee4d34bd62f101b53d68f6f99ab186ab8bd370ce16432e8188328b368c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-54/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 109,
+    "durationSec": 4.39,
+    "status": "ok"
+   }
+  },
+  "55": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Banja Luka, Bosnia & Herzegovina.",
+    "textHash": "ea911e145ac203a6d1d8bee2fd34ff99cf5fc1860622f0860de74e1329f9951c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-55/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 121,
+    "durationSec": 5.47,
+    "status": "ok"
+   }
+  },
+  "56": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Islamabad, Pakistan.",
+    "textHash": "bb97d960164bf4c40ed1ca1f9235f2cda42675462a056b09c27dbbf7b823d5e2",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-56/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 116,
+    "durationSec": 4.15,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "57": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Malolos, Philippines.",
+    "textHash": "d9ae6228fbeb0dd1a37fc2f597a3922a095e5b76f91f1d3605d3072c234efa39",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-57/answer.mp3",
+    "measuredHz": 128.5,
+    "measuredWpm": 100,
+    "durationSec": 4.8,
+    "status": "ok"
+   }
+  },
+  "58": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Baguio, Philippines.",
+    "textHash": "2d7f0525c6f305bd4c473020b0b8290479c6802671c4e0635509ecda2f78d431",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-58/answer.mp3",
+    "measuredHz": 122.1,
+    "measuredWpm": 108,
+    "durationSec": 4.44,
+    "status": "ok"
+   }
+  },
+  "59": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Guyuan, China.",
+    "textHash": "55411961121783b959f65ab26bb46142ff24ceeb3055c4b64e91a1eb01e4a09d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-59/answer.mp3",
+    "measuredHz": 139.7,
+    "measuredWpm": 138,
+    "durationSec": 3.48,
+    "status": "ok"
+   }
+  },
+  "60": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Concord, California, United States.",
+    "textHash": "746ff55db73ca266d4641606dfda9319d3371a8da4f433fea851df989fe35c3c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-60/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 130,
+    "durationSec": 4.61,
+    "status": "ok"
+   }
+  },
+  "61": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Vijayawada, India.",
+    "textHash": "1b2b25c59950df0e5b4d7d660b23e80990417b51b796437e9be0d6753c8e6271",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-61/answer.mp3",
+    "measuredHz": 130.6,
+    "measuredWpm": 104,
+    "durationSec": 4.61,
+    "status": "ok"
+   }
+  },
+  "62": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Dunhuang, China.",
+    "textHash": "d41cac218bddb2cb0e31f50ba21ef604967bda9deb8481276a894c7302515fe1",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-62/answer.mp3",
+    "measuredHz": 136.2,
+    "measuredWpm": 127,
+    "durationSec": 3.77,
+    "status": "ok"
+   }
+  },
+  "63": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Anqing, China.",
+    "textHash": "167d7c45fd937b9d96767431598af4f5032c67f2b7a34d8794aead0afeef4c03",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-63/answer.mp3",
+    "measuredHz": 137.3,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "64": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Arezzo, Italy.",
+    "textHash": "398eb1eb9369505e71032729a46d542655fc9dec693173364cb729271433d295",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-64/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 104,
+    "durationSec": 4.61,
+    "status": "ok"
+   }
+  },
+  "65": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Antakya, Türkiye.",
+    "textHash": "2f7d94ec0bf1dbbf167fe273f4724fac76973385b16c07d048681ee110251f43",
+    "voice": "avocado_v2:atlas",
+    "speed": 94,
+    "gainDb": 0,
+    "file": "case-65/answer.mp3",
+    "measuredHz": 137.3,
+    "measuredWpm": 124,
+    "durationSec": 3.86,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 94"
+   }
+  },
+  "66": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sochi, Russia.",
+    "textHash": "3bcd8d0820649cc81e14405cf90c1f554e1f4b734e2c6abfaa453e50f8903323",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-66/answer.mp3",
+    "measuredHz": 133.9,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "67": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Huelva, Spain.",
+    "textHash": "50345040e104020a9cc42c4fce95dc96d99464cd6376c383bf78c89f048fc3f1",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-67/answer.mp3",
+    "measuredHz": 133.9,
+    "measuredWpm": 127,
+    "durationSec": 3.79,
+    "status": "ok"
+   }
+  },
+  "68": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ontario, California, United States.",
+    "textHash": "021d40f473fada16055bdc8f22f3a5a675f1b657362b8bccb1f413bcc570e6f2",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-68/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 100,
+    "durationSec": 6,
+    "status": "ok"
+   }
+  },
+  "69": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Vallejo, California, United States.",
+    "textHash": "6adc05831db2675867ecf31c7b94e65f2cc7d6c786d2e4473a1ca2682c96e2cb",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-69/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 116,
+    "durationSec": 5.16,
+    "status": "ok"
+   }
+  },
+  "70": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Warangal, India.",
+    "textHash": "316b67780af2bcda7d846a6bbab1feaa85d3c45f15f39e98cbea5dc015a59039",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-70/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok"
+   }
+  },
+  "71": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Montevideo, Uruguay.",
+    "textHash": "34768561d26aa8a2149c6197b4192e30e08e7d8d3b1292c9be2dcb569221a094",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-71/answer.mp3",
+    "measuredHz": 122.6,
+    "measuredWpm": 101,
+    "durationSec": 4.73,
+    "status": "ok"
+   }
+  },
+  "72": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Brest, Belarus.",
+    "textHash": "e6d8a6f7064f046b3e6af9e003c7ffd1e9d58f0449404a3c4ecef1144bf66bae",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-72/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "73": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Savannah, Georgia, United States.",
+    "textHash": "6cae2f9f61c829ff0ed268a0376be6fa035f3191f540b6bade64ad6a9a3186dd",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-73/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 120,
+    "durationSec": 4.99,
+    "status": "ok"
+   }
+  },
+  "74": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Nairobi, Kenya.",
+    "textHash": "5332b13432a1a9129f10e573af5717f7fcf9715351ad8c21d91f111a369fe8ef",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-74/answer.mp3",
+    "measuredHz": 121.7,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "75": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Santa Clara, California, United States.",
+    "textHash": "0dfbbda3666b0a622567db06cf446d363185fa338a2c25ef43a0fcb60789c4a9",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-75/answer.mp3",
+    "measuredHz": 124,
+    "measuredWpm": 116,
+    "durationSec": 5.69,
+    "status": "ok"
+   }
+  },
+  "76": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Haifa, Israel.",
+    "textHash": "021fe0f04fce6cec9ef70efc73cb3fd7727aa1d0596fb43a66dae7850abe830a",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-76/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "77": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Nuuk, Greenland.",
+    "textHash": "1a79139ef1f25cba52012191574c7c53fc4024781c0460c62a54e82624ff68d4",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-77/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "78": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Trujillo, Peru.",
+    "textHash": "04e6f7b552f0b32b3cd67167dce45ef8d62e4ee7992f749125688486125c58f9",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-78/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 131,
+    "durationSec": 3.67,
+    "status": "ok"
+   }
+  },
+  "79": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Tel Aviv, Israel.",
+    "textHash": "7c0f0e6445f00623525f355b8d67498e2faf59fc079d3f36a814164026b3791e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-79/answer.mp3",
+    "measuredHz": 124,
+    "measuredWpm": 126,
+    "durationSec": 4.27,
+    "status": "ok"
+   }
+  },
+  "80": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cua, Venezuela.",
+    "textHash": "9e5c7a8af6deddf5723b9712b60ea38cd6f43d5a44b6a361f276d6748f0f47bc",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-80/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 104,
+    "durationSec": 4.63,
+    "status": "ok"
+   }
+  },
+  "81": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Santiago Del Estero, Argentina.",
+    "textHash": "4e67c40bb804d55a7b178a74bb9cf181583ed5a1b39623d9f100c4329ca59a92",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-81/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 98,
+    "durationSec": 6.12,
+    "status": "ok"
+   }
+  },
+  "82": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Springfield, Massachusetts, United States.",
+    "textHash": "5cd3a7b1bb59da2aaa374d25d6fd9dbf45469882dfcb9415918332d66f7469ed",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-82/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 105,
+    "durationSec": 5.69,
+    "status": "ok"
+   }
+  },
+  "83": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Gwalior, India.",
+    "textHash": "930ed11b33416eb3bd2be642dccec824e45e47587e6795baf8ac34f0d096c655",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-83/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 127,
+    "durationSec": 3.79,
+    "status": "ok"
+   }
+  },
+  "84": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kanpur, India.",
+    "textHash": "6cb817444bf4f7edc6e632388669072e8bfd9373389508a02f8791d748ae97d6",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-84/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 119,
+    "durationSec": 4.03,
+    "status": "ok"
+   }
+  },
+  "85": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Alor Setar, Malaysia.",
+    "textHash": "9c867e52230a32d0f882aed13b193ec94dd0729c31603f692b69178924e5879c",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-85/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 120,
+    "durationSec": 4.49,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "86": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cheltenham, United Kingdom.",
+    "textHash": "2ce923af14f37b4af0b3e74a90bdc801b73b4cdf9beea1e6dbf51e4446e465ff",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-86/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 117,
+    "durationSec": 4.63,
+    "status": "ok"
+   }
+  },
+  "87": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Reims, France.",
+    "textHash": "8374456d63f60d84c0ca9e96faa3460f603abfb9479f726aeaca843117504860",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-87/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 118,
+    "durationSec": 4.08,
+    "status": "ok"
+   }
+  },
+  "88": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ambato, Ecuador.",
+    "textHash": "5f395645317710e79e32ff7483ce202b567b7b6fe2cc099498eb9ca8122420cb",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-88/answer.mp3",
+    "measuredHz": 144.8,
+    "measuredWpm": 101,
+    "durationSec": 4.75,
+    "status": "ok"
+   }
+  },
+  "89": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Khartoum, Sudan.",
+    "textHash": "93f6f552bceae18bb2053f68f0c7a322d433500fd8f40e89bb4b10c59d3e36a1",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-89/answer.mp3",
+    "measuredHz": 135,
+    "measuredWpm": 116,
+    "durationSec": 4.13,
+    "status": "ok"
+   }
+  },
+  "90": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Noida, India.",
+    "textHash": "5e3cd50a5fda0ab7baf99fe0d73cb98b9f1c61e0b1a0c19eedb637324bee5380",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-90/answer.mp3",
+    "measuredHz": 121.2,
+    "measuredWpm": 129,
+    "durationSec": 3.72,
+    "status": "ok"
+   }
+  },
+  "91": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Udaipur, India.",
+    "textHash": "0c670093874d673a57a945c3117bbfe1822fe31297b1fb27bb389b7d7ccd3805",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-91/answer.mp3",
+    "measuredHz": 121.2,
+    "measuredWpm": 97,
+    "durationSec": 4.97,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "92": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Da Nang, Vietnam.",
+    "textHash": "d19199c5009ce615a87da90c621614525dc8450f5dcc398ef58bf7b38a4ae5c0",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-92/answer.mp3",
+    "measuredHz": 140.4,
+    "measuredWpm": 141,
+    "durationSec": 3.84,
+    "status": "ok"
+   }
+  },
+  "93": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Uppsala, Sweden.",
+    "textHash": "fc9921aff20f8f32a8850bcf3e689310e4e666a898a08ad93865233c501454e7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-93/answer.mp3",
+    "measuredHz": 144.1,
+    "measuredWpm": 136,
+    "durationSec": 3.53,
+    "status": "ok"
+   }
+  },
+  "94": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Rosario, Argentina.",
+    "textHash": "c9ff408394f9b28a82cfc806bb10e8801dd6d4d8e11ea3e70ecd6c18def03f1b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-94/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "95": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Nagasaki, Japan.",
+    "textHash": "7cc3b19a8d0ed288fcd2156a61ee9756a3c9a030a4ae84770b4bbab513f8c00e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-95/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 120,
+    "durationSec": 4.01,
+    "status": "ok"
+   }
+  },
+  "96": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Valletta, Malta.",
+    "textHash": "d3fcd8cafe9034971f7d75c21e8155035b3eb7b1c46f0063725ffbbec5ec07ab",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-96/answer.mp3",
+    "measuredHz": 141,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "97": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Tirana, Albania.",
+    "textHash": "e59e3061279c0cd5b441375f5310fd1da13a9dd7ccbab1c2c284982f7fbc5fa8",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-97/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok"
+   }
+  },
+  "98": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Merida, Venezuela.",
+    "textHash": "02a722d9b325af7c9b4c5b6e4488db0d4619dd0f7440cd75f973fbb2a3df5995",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-98/answer.mp3",
+    "measuredHz": 137.9,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "99": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ensenada, Mexico.",
+    "textHash": "b5c5b160cc3fc9cadb3eae742267190a886a7d029d52791c146c06e71455f89c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-99/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 104,
+    "durationSec": 4.61,
+    "status": "ok"
+   }
+  },
+  "100": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kashipur, India.",
+    "textHash": "b9f84b7344ae777362793ebe64de8de417d9c3eaaecab69481cad641d068656c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-100/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "101": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Paulinia, Brazil.",
+    "textHash": "484b9bf242f76cba65c7f79a866f4b9ad0fdabc57889b7995eab25cdd93d8768",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-101/answer.mp3",
+    "measuredHz": 140.4,
+    "measuredWpm": 129,
+    "durationSec": 3.72,
+    "status": "ok"
+   }
+  },
+  "102": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Fremont, California, United States.",
+    "textHash": "328f97e4c78bb74e370365e7dc50c7e1b0d699a46c1a8e760d4a6d8461c1b19c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-102/answer.mp3",
+    "measuredHz": 136.2,
+    "measuredWpm": 115,
+    "durationSec": 5.23,
+    "status": "ok"
+   }
+  },
+  "103": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Suzhou, China.",
+    "textHash": "c858749e06aaf511d193d5869de5f7840adfc268a36c7d59db9061c11c7dc037",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-103/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 138,
+    "durationSec": 3.48,
+    "status": "ok"
+   }
+  },
+  "104": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Pisa, Italy.",
+    "textHash": "df299ff3d70a701551fd2cff96fef0ff60a6fc17ad23115d369aaed7f8a10bd1",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-104/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "105": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Newark, New Jersey, United States.",
+    "textHash": "7128a8713248f3aa5b6fdcb53fbc8ffebcc9ca42378028a40a50a7517cd684a0",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-105/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 129,
+    "durationSec": 5.11,
+    "status": "ok"
+   }
+  },
+  "106": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kremenchuk, Ukraine.",
+    "textHash": "c74dc643973bb4a245ac4739c9f56d9788ca3f983cdd8ca374fdb9a026b74a8c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-106/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 113,
+    "durationSec": 4.25,
+    "status": "ok"
+   }
+  },
+  "107": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Yangon, Myanmar (Burma).",
+    "textHash": "709e9b3098abc1010704838dacd3ef76a500f10e9b9c5037e02fe3b0b7cc5af7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-107/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 97,
+    "durationSec": 5.59,
+    "status": "ok"
+   }
+  },
+  "108": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kokshetau, Kazakhstan.",
+    "textHash": "07886f45fe4c626aa1799e8fdbce18d50757cd30e21d070885fb53b35381b17e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-108/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 101,
+    "durationSec": 4.73,
+    "status": "ok"
+   }
+  },
+  "109": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sendai, Japan.",
+    "textHash": "efa6421cd171ca1927729a88354c2120d4eac7fc85b4f0ddd7ae52dba9415a84",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-109/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 132,
+    "durationSec": 3.65,
+    "status": "ok"
+   }
+  },
+  "110": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Karbala, Iraq.",
+    "textHash": "0873e1cf963565f5d679caf155f0d1ab5a14984d6d8a8d2a30f2514be419a584",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-110/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "111": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cuddalore, India.",
+    "textHash": "91303c17032dc33f14295de547f1c7f12fda17542d4e2f311e23417e5092fbed",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-111/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 106,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "112": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ashgabat, Turkmenistan.",
+    "textHash": "81436784c5de8d57ae7d848f03a9202f14941812fbcd6981db438b427cef181e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-112/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 103,
+    "durationSec": 4.68,
+    "status": "ok"
+   }
+  },
+  "113": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kuala Lumpur, Malaysia.",
+    "textHash": "2286699ded264ed88f5ad88201a7b10697490a09316a3dc3e212358ca42cf761",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-113/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 120,
+    "durationSec": 4.49,
+    "status": "ok"
+   }
+  },
+  "114": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Tangshan, China.",
+    "textHash": "f622cc7a3418523e2defd2f9ae8358d51a446fde35e7d7dc12e57c6c9216f238",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-114/answer.mp3",
+    "measuredHz": 140.4,
+    "measuredWpm": 127,
+    "durationSec": 3.77,
+    "status": "ok"
+   }
+  },
+  "115": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Amman, Jordan.",
+    "textHash": "63a52d0e1b06dfa0fb836f189c7088f1d07bd47e7b7f4b03e27c77b960c84b66",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-115/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "116": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Mostar, Bosnia & Herzegovina.",
+    "textHash": "aefe340abce402214245434438e6bc502c69777abb06b5859a866b78a686dcee",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-116/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 117,
+    "durationSec": 5.11,
+    "status": "ok"
+   }
+  },
+  "117": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Guarapuava, Brazil.",
+    "textHash": "4ea6b5d37090a5bf6396763ed16bbec4e722a372205755d46578a00690068556",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-117/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 119,
+    "durationSec": 4.03,
+    "status": "ok"
+   }
+  },
+  "118": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Vilnius, Lithuania.",
+    "textHash": "324f11ded26a9d4e0ca7c49b1f32409b4b62c33ea16734c34c0f6d50bb84dcab",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-118/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 109,
+    "durationSec": 4.39,
+    "status": "ok"
+   }
+  },
+  "119": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cuiaba, Brazil.",
+    "textHash": "c5b70552e899cdc82eb8a1654a331059cd3580170589fd007ccb0641c628368d",
+    "voice": "avocado_v2:atlas",
+    "speed": 94,
+    "gainDb": 0,
+    "file": "case-119/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 105,
+    "durationSec": 4.56,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 94"
+   }
+  },
+  "120": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Rawalpindi, Pakistan.",
+    "textHash": "27ac642945b230d66b4c7e4401b14152a4f0eb963e90ee25dd727cc175950b87",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-120/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 106,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "121": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Chennai, India.",
+    "textHash": "498945cee7ab1ae232090b84eb408a41dfba5eb9a0cecf06b49af64fd263fc34",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-121/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 109,
+    "durationSec": 4.42,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "122": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bishkek, Kyrgyzstan.",
+    "textHash": "a222288924bcd0a74c97162efb5efb50b4f84bb2d09ce60724735770cbf5c94b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-122/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 104,
+    "durationSec": 4.63,
+    "status": "ok"
+   }
+  },
+  "123": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Agadir, Morocco.",
+    "textHash": "9abe5b588aff2d465b630e2c1aff2dfab1e2ecbd7f3d7cf09780e22365c5a9e2",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-123/answer.mp3",
+    "measuredHz": 127.5,
+    "measuredWpm": 116,
+    "durationSec": 4.13,
+    "status": "ok"
+   }
+  },
+  "124": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Port Said, Egypt.",
+    "textHash": "38ca61bc7a74e640cd32dafeae2393b2ebcfeeca99e40be812be720db679cc6e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-124/answer.mp3",
+    "measuredHz": 142.9,
+    "measuredWpm": 143,
+    "durationSec": 3.77,
+    "status": "ok"
+   }
+  },
+  "125": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Gaziantep, Türkiye.",
+    "textHash": "362b16e42f07d98ab899b5942c64f52d71e957231011c036db1e8e98f0260265",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-125/answer.mp3",
+    "measuredHz": 137.9,
+    "measuredWpm": 125,
+    "durationSec": 3.84,
+    "status": "ok"
+   }
+  },
+  "126": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Magnitogorsk, Russia.",
+    "textHash": "86139057ac2f15c350bbb80fee0e24d4a12c6c13f052e82de91a1236f3d11808",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-126/answer.mp3",
+    "measuredHz": 138.5,
+    "measuredWpm": 131,
+    "durationSec": 3.67,
+    "status": "ok"
+   }
+  },
+  "127": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Jodhpur, India.",
+    "textHash": "f40e365eefeecbe3473f4a14e67cd9cae1e76588f4fcb13f0d2ecd1f22ac07cc",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-127/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 107,
+    "durationSec": 4.49,
+    "status": "ok"
+   }
+  },
+  "128": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Longyearbyen, Svalbard & Jan Mayen.",
+    "textHash": "0eda95eaf63abff66d505732a8fce355f70b4c491f4e597b843d9fd6542e2246",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-128/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 117,
+    "durationSec": 5.64,
+    "status": "ok"
+   }
+  },
+  "129": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Curitiba, Brazil.",
+    "textHash": "53401bcb67c3fb025b112a0393209d20da3966d97b06ba9a7cb47d1711699ede",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-129/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 119,
+    "durationSec": 4.03,
+    "status": "ok"
+   }
+  },
+  "130": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was La Ceiba, Honduras.",
+    "textHash": "b792e26849cff9ea555776f9a4673ad739ceee267df1c723f924680c5c1dd795",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-130/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 117,
+    "durationSec": 4.61,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "131": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Barrie, Canada.",
+    "textHash": "d77b29802a184d1ffcaed4b303b44a30e93ec718c79ac13096c4630710202c8d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-131/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 145,
+    "durationSec": 3.31,
+    "status": "ok"
+   }
+  },
+  "132": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was La Ceiba, Honduras.",
+    "textHash": "48eb76d5c43b0b00baae763e4d503979dbb6de4305f76f11e0399887f5b33892",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-132/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 117,
+    "durationSec": 4.63,
+    "status": "ok"
+   }
+  },
+  "133": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Harare, Zimbabwe.",
+    "textHash": "fb75144b756b4267cc061350ae323396918d325d089a2b999536cc3eb6cf3b7b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-133/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 104,
+    "durationSec": 4.61,
+    "status": "ok"
+   }
+  },
+  "134": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Lahore, Pakistan.",
+    "textHash": "92917f204eea2eaba5d35413bd4b26b622e89ece208b92088f74964ecce340d3",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-134/answer.mp3",
+    "measuredHz": 140.4,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "135": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Manaus, Brazil.",
+    "textHash": "5f60a8ff6d726fa3e6102afc71fba449e4e68243265b5129db56a08c0dde09f3",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-135/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok"
+   }
+  },
+  "136": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was El Obeid, Sudan.",
+    "textHash": "639bb78eb6ece1f3ceebbb99356f9ae39d882a22fae622e066e4b16a526eba1e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-136/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 114,
+    "durationSec": 4.73,
+    "status": "ok"
+   }
+  },
   "137": {
    "clues": [
     {
@@ -324,6 +2395,3771 @@
     "measuredWpm": 116,
     "durationSec": 5.16,
     "status": "ok"
+   }
+  },
+  "138": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Mohali, India.",
+    "textHash": "83dd23e588f0596731773da0712317157e828f8a0071dbfc7a860247779b59f7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-138/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 119,
+    "durationSec": 4.03,
+    "status": "ok"
+   }
+  },
+  "139": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ahvaz, Iran.",
+    "textHash": "aafb1f204f6d1e4016ca173f03a0d063685e07880e300c82a0e95bdbe2683f58",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-139/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 133,
+    "durationSec": 3.6,
+    "status": "ok"
+   }
+  },
+  "140": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cavite City, Philippines.",
+    "textHash": "99bde591304c7666250e41f52852d0011501272e5d468e5af3a9120f4fdb92bc",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-140/answer.mp3",
+    "measuredHz": 124,
+    "measuredWpm": 122,
+    "durationSec": 4.44,
+    "status": "ok"
+   }
+  },
+  "141": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sacaba, Bolivia.",
+    "textHash": "c3d9364f06754cf5affb63acfd4ad6dfb6d8e33bcebcdbd90f0422718f0eae51",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-141/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "142": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ann Arbor, Michigan, United States.",
+    "textHash": "e4587be612b68ba92d982bd6e5dc2b149e0fc6e96f6b8eabce7095352d839dc3",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-142/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 116,
+    "durationSec": 5.71,
+    "status": "ok"
+   }
+  },
+  "143": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Srinagar, India.",
+    "textHash": "4a70c7124a0f773f6a097169be48cb0bcee3c2218b010e3b2b03aec8234f17de",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-143/answer.mp3",
+    "measuredHz": 132.8,
+    "measuredWpm": 118,
+    "durationSec": 4.08,
+    "status": "ok"
+   }
+  },
+  "144": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Aizawl, India.",
+    "textHash": "2eab66a6fb55a443f39ddd368ee8ec646f1c8d40cbbae2ca387ce2da8e9ec5c9",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-144/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 129,
+    "durationSec": 3.72,
+    "status": "ok"
+   }
+  },
+  "145": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Nijmegen, Netherlands.",
+    "textHash": "6b8c637c9d26e29a8d3b223a65ef7345ad6d73e6f62051bdabcba180ac050186",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-145/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 111,
+    "durationSec": 4.32,
+    "status": "ok"
+   }
+  },
+  "146": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was El Fasher, Sudan.",
+    "textHash": "897aa0947a39d5269073c02e15edbbdc4798c5a26215eae0c4219076aca50ada",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-146/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 120,
+    "durationSec": 4.49,
+    "status": "ok"
+   }
+  },
+  "147": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ufa, Russia.",
+    "textHash": "891f71d423c25ea20d113eecc36ebf139512bfb96ce8634536da4fe262be0957",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-147/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 131,
+    "durationSec": 3.67,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "148": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Minneapolis, Minnesota, United States.",
+    "textHash": "69448fd564820586478c6e22cbca1eeaca449aa27efdc50abee94ea34aa8a9dd",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-148/answer.mp3",
+    "measuredHz": 142.9,
+    "measuredWpm": 114,
+    "durationSec": 5.28,
+    "status": "ok"
+   }
+  },
+  "149": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bremerhaven, Germany.",
+    "textHash": "c024727d62b3a37a67bc51aaa3942362972981d101a41d966fbba0a40b558ee0",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-149/answer.mp3",
+    "measuredHz": 125.5,
+    "measuredWpm": 91,
+    "durationSec": 5.28,
+    "status": "ok"
+   }
+  },
+  "150": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Windhoek, Namibia.",
+    "textHash": "fdea91f57d9b24d397573d80bd4aec07e83dc4b021249298c845b5810662a012",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-150/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 131,
+    "durationSec": 3.67,
+    "status": "ok"
+   }
+  },
+  "151": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Birmingham, Alabama, United States.",
+    "textHash": "545d5de17142e0f5dbecd7367a2945cf08d85c4361d5665fc4354ad54c6e2b45",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-151/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 108,
+    "durationSec": 5.57,
+    "status": "ok"
+   }
+  },
+  "152": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Lakeland, Florida, United States.",
+    "textHash": "5660175985d9b13cd47d60f3d0ea1c83d6857ed2ba4a0f30b525381dfd2fb7f6",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-152/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 110,
+    "durationSec": 5.47,
+    "status": "ok"
+   }
+  },
+  "153": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Riga, Latvia.",
+    "textHash": "e344f45ab7938b57e393c090c13acc01175b4d7c4a894cba276abf1af9e4a955",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-153/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 119,
+    "durationSec": 4.03,
+    "status": "ok"
+   }
+  },
+  "154": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Brownsville, Texas, United States.",
+    "textHash": "911a89f52960355cd754bb71ef2873c9cbb5046c99030384a34018b5bc2e74d2",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-154/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 123,
+    "durationSec": 4.87,
+    "status": "ok"
+   }
+  },
+  "155": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Lowell, Massachusetts, United States.",
+    "textHash": "f112b81ad2bc19b4a5e11a579ba467287ce5a2b199e0c279439c35c736e65461",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-155/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 119,
+    "durationSec": 5.04,
+    "status": "ok"
+   }
+  },
+  "156": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Livingstone, Zambia.",
+    "textHash": "af5de7b4c95fc25fb1ad6268fa7c7eabf182c72d55f88d7e0882c80b20992774",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-156/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 100,
+    "durationSec": 4.78,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "157": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Gqeberha, South Africa.",
+    "textHash": "1f27df89172eb4b955b02b2c38e271b06433f8584ff92382ab526191d49bf8d3",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-157/answer.mp3",
+    "measuredHz": 142.9,
+    "measuredWpm": 120,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "158": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Malmo, Sweden.",
+    "textHash": "9703699ee041382fb202e686b596fea6f512c13465a0fa824362d09736676ffe",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-158/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "159": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Tours, France.",
+    "textHash": "870ad808ea6a20ed540febb8611a639c5f62efca75b521e8dcfdd44cbbccdb6f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-159/answer.mp3",
+    "measuredHz": 126.5,
+    "measuredWpm": 94,
+    "durationSec": 5.11,
+    "status": "ok"
+   }
+  },
+  "160": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Malabo, Equatorial Guinea.",
+    "textHash": "29772cab2ff53c5792d6e72c61f5b4e7321138d363c4afe7296d281ad3dd8833",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-160/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 118,
+    "durationSec": 4.56,
+    "status": "ok"
+   }
+  },
+  "161": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Southend On Sea, United Kingdom.",
+    "textHash": "2c74b6b84c014b516435e795133bba4189ac173c6d60877a19fe81b14bc73a51",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-161/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 138,
+    "durationSec": 4.8,
+    "status": "ok"
+   }
+  },
+  "162": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cholula, Mexico.",
+    "textHash": "6c01c3b8b08f43a10bb9dc8c220e0132dafc5fda70d8515f7be1fcbccc67d22a",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-162/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "163": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Rimini, Italy.",
+    "textHash": "b32aaaf4e6143253a8be7b2405c2ce1df614b2566dcc6e3368d69b1c5d8fc1ea",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-163/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 133,
+    "durationSec": 3.6,
+    "status": "ok"
+   }
+  },
+  "164": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Palmas, Brazil.",
+    "textHash": "29ce2bd114d13837473ba837dab01052adb5b59c0f54fcbc223c2d3d2ff388a6",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-164/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "165": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was London, Canada.",
+    "textHash": "c9b5bdef1b84ac920cb95bf8c1df9b9a9ca43b73ee14010cb0a0ef6d55703db6",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-165/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "166": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Qom, Iran.",
+    "textHash": "2a12b8a0c3099e61bb1ba3e3ec726b3b282efb11bacf520cd37009af60a74995",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-166/answer.mp3",
+    "measuredHz": 142.9,
+    "measuredWpm": 132,
+    "durationSec": 3.65,
+    "status": "ok"
+   }
+  },
+  "167": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Silchar, India.",
+    "textHash": "2b3790f7fcd8dd6d760b358737af70745a7c2114c05ae052089b3d3675d6d205",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-167/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 136,
+    "durationSec": 3.53,
+    "status": "ok"
+   }
+  },
+  "168": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Pingliang, China.",
+    "textHash": "4a47610e8d7f45175a2620fc31245d30f3f691617788414ea20221ea20a1f853",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-168/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 108,
+    "durationSec": 4.44,
+    "status": "ok"
+   }
+  },
+  "169": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Pyeongtaek, South Korea.",
+    "textHash": "d2cdc287716611c85bed66342d83d3519b0ce70d4c774d8f1075ec5bcab73ee6",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-169/answer.mp3",
+    "measuredHz": 144.8,
+    "measuredWpm": 136,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "170": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Chittorgarh, India.",
+    "textHash": "496701433e4f11a4aa55551a4e6f3fcc8afbe6ccd29c5a18b55034379a49346f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-170/answer.mp3",
+    "measuredHz": 122.1,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok"
+   }
+  },
+  "171": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Wenchang, China.",
+    "textHash": "e9ab33865b08b0259c5022937ffa9bde2b111e776303f356542b2f17c0f1b3b3",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-171/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 129,
+    "durationSec": 3.72,
+    "status": "ok"
+   }
+  },
+  "172": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Roanoke, Virginia, United States.",
+    "textHash": "0be24a1907d437825cb8879e451233b008c8ee5e1966f6239dd611724ad3ecf0",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-172/answer.mp3",
+    "measuredHz": 124,
+    "measuredWpm": 115,
+    "durationSec": 5.23,
+    "status": "ok"
+   }
+  },
+  "173": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Padang, Indonesia.",
+    "textHash": "53e44eeba86725c94d7cc43f3addb897d06f9baeaba079a3b950b985a3813a7f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-173/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 118,
+    "durationSec": 4.08,
+    "status": "ok"
+   }
+  },
+  "174": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Laghouat, Algeria.",
+    "textHash": "1d1ad2e43e6a45707b435ef988ef8800385918357b943ad3ca2c5b1e50376de7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-174/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 108,
+    "durationSec": 4.44,
+    "status": "ok"
+   }
+  },
+  "175": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was N Djamena, Chad.",
+    "textHash": "61b8bba0ac8d3c39e04ca3cf40a9be8d3dea45d0a60c2209bb0161550156e345",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-175/answer.mp3",
+    "measuredHz": 137.9,
+    "measuredWpm": 118,
+    "durationSec": 4.56,
+    "status": "ok"
+   }
+  },
+  "176": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Niamey, Niger.",
+    "textHash": "6ad99fc65bfb4d36e92f58885e3be99aa17a82010ca011449c3ea9b914ef662d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-176/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 125,
+    "durationSec": 3.84,
+    "status": "ok"
+   }
+  },
+  "177": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bandung, Indonesia.",
+    "textHash": "0c0fb5d5040d863064a69d0cf2fee663c27f076268485c61baaa64b79bb95c1c",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-177/answer.mp3",
+    "measuredHz": 143.5,
+    "measuredWpm": 115,
+    "durationSec": 4.18,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "178": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kochi, India.",
+    "textHash": "7465d256c3f9d99b2c9ad3722035e9e83f0802bc68f43a242a28dcd5fa767696",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-178/answer.mp3",
+    "measuredHz": 142.2,
+    "measuredWpm": 129,
+    "durationSec": 3.72,
+    "status": "ok"
+   }
+  },
+  "179": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Pamplona, Spain.",
+    "textHash": "84c463d1f3cf25446d31266e627c4137ddb70b753c13bd45e917da5b8daf7afc",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-179/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 127,
+    "durationSec": 3.79,
+    "status": "ok"
+   }
+  },
+  "180": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Daejeon, South Korea.",
+    "textHash": "71007af27c273f5f9d84ced0a0006410ed59bfd349923a2f473dfd01e1bb51ab",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-180/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 115,
+    "durationSec": 4.68,
+    "status": "ok"
+   }
+  },
+  "181": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Anchorage, Alaska, United States.",
+    "textHash": "bf8b955120f92149279d745b028aa8c55a79aac446a22a4974cc20a851cbeeff",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-181/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 126,
+    "durationSec": 4.75,
+    "status": "ok"
+   }
+  },
+  "182": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Hermosillo, Mexico.",
+    "textHash": "0e8bef58cb7f2aa3fa10430b068d8de211f0e65eed3c5df66221a56abf633064",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-182/answer.mp3",
+    "measuredHz": 120.8,
+    "measuredWpm": 93,
+    "durationSec": 5.14,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "183": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Barranquilla, Colombia.",
+    "textHash": "acc61d5291bd9bedeeb5c259de125928632b610a1e6598c924d666db523d5316",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-183/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "184": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Nice, France.",
+    "textHash": "8371f63d2624d8d3c5019d8adb9dff021b8bfc0cfaa84c3bcb99aabff9037352",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-184/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 116,
+    "durationSec": 4.13,
+    "status": "ok"
+   }
+  },
+  "185": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Potosi, Bolivia.",
+    "textHash": "1abaaab2b6d532f3be2838a77970248b5c00797c8ad10c564d0f858dc884afe7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-185/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 104,
+    "durationSec": 4.61,
+    "status": "ok"
+   }
+  },
+  "186": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Vladivostok, Russia.",
+    "textHash": "15efb0dc45793d8482cdc5bc9fdca2833d5a6e3c9c8c181fc8a734477509ce39",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-186/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 109,
+    "durationSec": 4.39,
+    "status": "ok"
+   }
+  },
+  "187": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bogor, Indonesia.",
+    "textHash": "5d084134d35e262426d5257fc4468c25a8c01e0d225417db1e388f2f3899aa07",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-187/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 116,
+    "durationSec": 4.15,
+    "status": "ok"
+   }
+  },
+  "188": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Xining, China.",
+    "textHash": "2ec3bf3d8dc0d31ee517aa37c597cfc936fe26c4d860054b92c3a78313bb7b32",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-188/answer.mp3",
+    "measuredHz": 133.9,
+    "measuredWpm": 120,
+    "durationSec": 4.01,
+    "status": "ok"
+   }
+  },
+  "189": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Mannheim, Germany.",
+    "textHash": "b7ff8b4c4839d73adc2c7945ae72e95ab864fc55e1ac22b60f66a39f7c51cc69",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-189/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 101,
+    "durationSec": 4.73,
+    "status": "ok"
+   }
+  },
+  "190": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Punta Arenas, Chile.",
+    "textHash": "f6af50ad72df6f1bbf660621125688784342b14dbed48ed18a0abcd2eb257d36",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-190/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 117,
+    "durationSec": 4.61,
+    "status": "ok"
+   }
+  },
+  "191": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Wuhai, China.",
+    "textHash": "a5e6fbd2c06d77f84ace0b67486a706b6d5972f2d17a0fd3ba83914e0271de81",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-191/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 125,
+    "durationSec": 3.84,
+    "status": "ok"
+   }
+  },
+  "192": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Wolfsburg, Germany.",
+    "textHash": "79c1b00773edaff4b233aee24908cbf56f3ae0e68df97b3b54806b9bf374dba2",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-192/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "193": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Harbin, China.",
+    "textHash": "06372b124830ed4618fef268e661b2d2067a4883b4aa157dd89fa2cc8b48a31c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-193/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 116,
+    "durationSec": 4.13,
+    "status": "ok"
+   }
+  },
+  "194": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was La Paz, Bolivia.",
+    "textHash": "c0c746892e57a31a2f16da33e7c8da1d65ac70a426ec274567a6db8090da2f32",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-194/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 122,
+    "durationSec": 4.44,
+    "status": "ok"
+   }
+  },
+  "195": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Wiesbaden, Germany.",
+    "textHash": "8c6f50b51313155916c42a8c0b9a8b771ced720c63ce865e9fee61186b4baf6e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-195/answer.mp3",
+    "measuredHz": 137.9,
+    "measuredWpm": 116,
+    "durationSec": 4.15,
+    "status": "ok"
+   }
+  },
+  "196": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Denizli, Türkiye.",
+    "textHash": "92d95a4d679a3ee41e03d6764d40df99ca43c4dc1e9b3eb2ff60e15117cd4821",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-196/answer.mp3",
+    "measuredHz": 144.1,
+    "measuredWpm": 129,
+    "durationSec": 3.72,
+    "status": "ok"
+   }
+  },
+  "197": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sucre, Bolivia.",
+    "textHash": "b3b1bd0e8e835f3e96b125d8edb5d523d1dd09c09489c73078a6fd5cdabac43b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-197/answer.mp3",
+    "measuredHz": 132.8,
+    "measuredWpm": 120,
+    "durationSec": 4.01,
+    "status": "ok"
+   }
+  },
+  "198": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Pune, India.",
+    "textHash": "260c5a20d7e7fb090c127239af0412905fe6d8e138ea680f49841f0d74f4986a",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-198/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 114,
+    "durationSec": 4.2,
+    "status": "ok"
+   }
+  },
+  "199": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Brisbane, Australia.",
+    "textHash": "e866a9041070bf846107fe7081163e80e5a90e1116869bd1092c859fc24d63d2",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-199/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 106,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "200": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cordoba, Spain.",
+    "textHash": "fa27bb6569cbc64d29335db9219738a30a6071ad643232cd8f4ae82576b4a08b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-200/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 113,
+    "durationSec": 4.25,
+    "status": "ok"
+   }
+  },
+  "201": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Probolinggo, Indonesia.",
+    "textHash": "f7519da8d0df250d6c1a5ff58dfa5885b95eac7c29f7af3fd2a0d53a143f1eb5",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-201/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 106,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "202": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Antalya, Türkiye.",
+    "textHash": "7eca219742df637427b8989ce1d5da21802634761f1c631acda687486078d416",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-202/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 114,
+    "durationSec": 4.2,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "203": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Richmond, California, United States.",
+    "textHash": "49491ff759c224b194b253b56236378c69acb40b493b2985a6b357a52890e2eb",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-203/answer.mp3",
+    "measuredHz": 126.5,
+    "measuredWpm": 115,
+    "durationSec": 5.23,
+    "status": "ok"
+   }
+  },
+  "204": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Stavanger, Norway.",
+    "textHash": "28ea8d6cf407109645a219f3b707f629f963beefc54859371670b4bde946882b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-204/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "205": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Pueblo, Colorado, United States.",
+    "textHash": "4ffbe860b1cc25f389fb844c92f8a0a5093afdf8b90e367a88169a6379575c22",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-205/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 114,
+    "durationSec": 5.28,
+    "status": "ok"
+   }
+  },
+  "206": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Rasht, Iran.",
+    "textHash": "813751f500cd8b6355d9bfeb8deab93d558c9a609846f3062eb6bc9beeff9770",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-206/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 129,
+    "durationSec": 3.72,
+    "status": "ok"
+   }
+  },
+  "207": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Stanley, Falkland Islands.",
+    "textHash": "243e911c665ca840de7c25041e569e29e7225c0648240ad8910354acb3c2976e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-207/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 114,
+    "durationSec": 4.75,
+    "status": "ok"
+   }
+  },
+  "208": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Punta Cana, Dominican Republic.",
+    "textHash": "ee00934f6f2e7c8d4460911379a5715b6224fa28172e274da48ace372efb3f49",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-208/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 113,
+    "durationSec": 5.33,
+    "status": "ok"
+   }
+  },
+  "209": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bilbao, Spain.",
+    "textHash": "da928a755ef50dd3c1ab39e7683480e0f927772a8b86deb475836c5fe1579967",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-209/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 134,
+    "durationSec": 3.58,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "210": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Shillong, India.",
+    "textHash": "3f6f87a8c2cf32870956e69c3001ceb402691e863614d87fa5b54c01390e319e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-210/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "211": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Dehradun, India.",
+    "textHash": "efa42775151179d1cbb5bb68b3c383232ce283a8cc9fa147d4d71eebcc289137",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-211/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 133,
+    "durationSec": 3.6,
+    "status": "ok"
+   }
+  },
+  "212": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Slough, United Kingdom.",
+    "textHash": "bf83980eabb116310cf8fae50f9b24bd3457f0589755ad45b674f8570c54c881",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-212/answer.mp3",
+    "measuredHz": 123.1,
+    "measuredWpm": 125,
+    "durationSec": 4.32,
+    "status": "ok"
+   }
+  },
+  "213": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Long Beach, California, United States.",
+    "textHash": "29eb02eec9053803832a1d09db2405a62fb96bcc8be6cb1b7a10f9bdcc172230",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-213/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 130,
+    "durationSec": 5.09,
+    "status": "ok"
+   }
+  },
+  "214": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Keelung, Taiwan.",
+    "textHash": "96c394f355ef25c21cb8d9d69c62de7e5a15e5390f53537c4f8b0932092e4408",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-214/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok"
+   }
+  },
+  "215": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ocumare Del Tuy, Venezuela.",
+    "textHash": "32191d0dda64d12760d6ea1f6c470748229fdfe64d27203238e857261ecfc2a2",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-215/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 123,
+    "durationSec": 4.87,
+    "status": "ok"
+   }
+  },
+  "216": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Shivpuri, India.",
+    "textHash": "d9f595a9a936d44c3b9dc02c9e09a2fa82fed0103ba06d57ca9be64aa62eff97",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-216/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 120,
+    "durationSec": 4.01,
+    "status": "ok"
+   }
+  },
+  "217": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Norilsk, Russia.",
+    "textHash": "c4b7c675e0e6e18343901aaff7e14d90a6ed779c331f588b0c053bb0dc527dd9",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-217/answer.mp3",
+    "measuredHz": 137.3,
+    "measuredWpm": 122,
+    "durationSec": 3.94,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "218": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ankara, Türkiye.",
+    "textHash": "c65dd1d8ecf06ed54fffb2735bfde53c45ad7b84da69dca6305bcae3fb78b8d1",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-218/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "219": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Tarija, Bolivia.",
+    "textHash": "d3b6c1f121578b5f864f0e7a11078ca9c461737c2d8a368443c2a3c61398d1d2",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-219/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 116,
+    "durationSec": 4.15,
+    "status": "ok"
+   }
+  },
+  "220": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Lethbridge, Canada.",
+    "textHash": "1c2345c4f75f5de38e310e63b47cf77289ae102ed6336c64ef8f9ff6fec39d8d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-220/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 127,
+    "durationSec": 3.79,
+    "status": "ok"
+   }
+  },
+  "221": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Colombo, Sri Lanka.",
+    "textHash": "d0b19a7df36a28212dd1d8108bbc74cf0436deeb2454de5a1c6a40738387d38a",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-221/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 125,
+    "durationSec": 4.32,
+    "status": "ok"
+   }
+  },
+  "222": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Khabarovsk, Russia.",
+    "textHash": "187af94d85e0377652a256ed565960e9ec7e59e7f972d9d257e83ad4e2577078",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-222/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 109,
+    "durationSec": 4.39,
+    "status": "ok"
+   }
+  },
+  "223": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Mpanda, Tanzania.",
+    "textHash": "c5a552fafbe9501cc8766e7f9639b8682a4a63ed849b09091d4ff655b8e18bc7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-223/answer.mp3",
+    "measuredHz": 124,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "224": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Saint Louis, Senegal.",
+    "textHash": "5b4b22a900ba8215859d13d1715e32c39d745e3a6ed7ba2bdec6e0c4572886c0",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-224/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 114,
+    "durationSec": 4.73,
+    "status": "ok"
+   }
+  },
+  "225": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Hsinchu, Taiwan.",
+    "textHash": "5ede8033f5cd2a4439fb8cf11ea3920ecb229259af1ee746af475b69b98ca351",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-225/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 111,
+    "durationSec": 4.34,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "226": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sulaymaniyah, Iraq.",
+    "textHash": "90b040ca7fd143b1e21f79f269ca305f74b65014fe479d7afb544f5083f7a008",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-226/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 119,
+    "durationSec": 4.03,
+    "status": "ok"
+   }
+  },
+  "227": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Uruapan, Mexico.",
+    "textHash": "ae2417a3a80fcae23b6c4e51fa4dad4fa51d980a0d57141484a26398b65b5f7b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-227/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 99,
+    "durationSec": 4.85,
+    "status": "ok"
+   }
+  },
+  "228": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bialystok, Poland.",
+    "textHash": "527e405945f24bef6d45c752389a4d1b6f419559f63a2f4790cb0388540643e2",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-228/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "229": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Dili, Timor-Leste.",
+    "textHash": "b1c29a43acae5a3281d68add64124294ae640e29246a021f34b928354bde9edf",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-229/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 106,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "230": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Taiping, Malaysia.",
+    "textHash": "f2d5dbf943ebd48796a09771f50d10306ebf3f6f2c55e1aae81a6dd2bdcdf160",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-230/answer.mp3",
+    "measuredHz": 123.1,
+    "measuredWpm": 125,
+    "durationSec": 3.84,
+    "status": "ok"
+   }
+  },
+  "231": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Myingyan, Myanmar (Burma).",
+    "textHash": "46c89278e3803045e9f344c113719df1bad1360c80b32880fcd0c73b9b398c98",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-231/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 96,
+    "durationSec": 5.64,
+    "status": "ok"
+   }
+  },
+  "232": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Villavicencio, Colombia.",
+    "textHash": "f61daff3ed88ac01f5805b5af938bf8a89ae27f87d5d347802c85d3428cfde68",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-232/answer.mp3",
+    "measuredHz": 137.9,
+    "measuredWpm": 99,
+    "durationSec": 4.87,
+    "status": "ok"
+   }
+  },
+  "233": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Tver, Russia.",
+    "textHash": "8f816b2d296d30f7441b5af1ffccdbac5eb1035e7d2eb7032a7a724ee6840867",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-233/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 111,
+    "durationSec": 4.32,
+    "status": "ok"
+   }
+  },
+  "234": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bintulu, Malaysia.",
+    "textHash": "1f480bac0bcf8c06c22ab60e2f4a95871dcc79c2d78fdc2c889b1609a860b992",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-234/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 118,
+    "durationSec": 4.08,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "235": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Trondheim, Norway.",
+    "textHash": "48ea0628ce5e6c1f2d78731e8a49f0a473de759b251485f23942d064efc4045a",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-235/answer.mp3",
+    "measuredHz": 137.9,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "236": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Latacunga, Ecuador.",
+    "textHash": "c230175a539fc0f12fcc1e339a366b583e889bed5d1a69a2d6b8b7537e10a4f3",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-236/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 118,
+    "durationSec": 4.08,
+    "status": "ok"
+   }
+  },
+  "237": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Limassol, Cyprus.",
+    "textHash": "9050c4a4c0b2b1cd9183be465e411bee0db7634b791c68cae65a9f2635c673ab",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-237/answer.mp3",
+    "measuredHz": 128.5,
+    "measuredWpm": 109,
+    "durationSec": 4.39,
+    "status": "ok"
+   }
+  },
+  "238": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kunming, China.",
+    "textHash": "8fa7f193d97bd22c05b4c90009d3fa35927b05a8ff0ebaf3fb3e63a008c7ce17",
+    "voice": "avocado_v2:atlas",
+    "speed": 94,
+    "gainDb": 0,
+    "file": "case-238/answer.mp3",
+    "measuredHz": 145.5,
+    "measuredWpm": 125,
+    "durationSec": 3.84,
+    "status": "flagged",
+    "note": "pitch 145.5 Hz outside target 120-145 Hz — inside the wider family band 110-160 Hz, accepted as flagged; pitch retry ladder moved speed 100 -> 94"
+   }
+  },
+  "239": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Amasya, Türkiye.",
+    "textHash": "eb4c6c47bf55b157c8a14c52bce7f8efd21a84582e97398e39f38c5ad9422c92",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-239/answer.mp3",
+    "measuredHz": 125.5,
+    "measuredWpm": 103,
+    "durationSec": 4.68,
+    "status": "ok"
+   }
+  },
+  "240": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Almeria, Spain.",
+    "textHash": "eac52506db9d2391b7c8c94f9d77c6b65dbfcf05f3888d04fb8729932dfced64",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-240/answer.mp3",
+    "measuredHz": 140.4,
+    "measuredWpm": 127,
+    "durationSec": 3.79,
+    "status": "ok"
+   }
+  },
+  "241": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Copiapo, Chile.",
+    "textHash": "713e8d6b42e29c1692204941af0c9a6eac9cf9ec03a5c5a404561ceafcbf4b63",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-241/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok"
+   }
+  },
+  "242": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Torremolinos, Spain.",
+    "textHash": "fd1e390808b4853fdd845509cbb5f8fe83d1aee21dc9b0653284c1017a72dce6",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-242/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 119,
+    "durationSec": 4.03,
+    "status": "ok"
+   }
+  },
+  "243": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was La Esperanza, Honduras.",
+    "textHash": "4bef557c1a83222acf77e721e0d888d1862db318ac72e4695b7fb8986abdd148",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-243/answer.mp3",
+    "measuredHz": 124,
+    "measuredWpm": 106,
+    "durationSec": 5.09,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "244": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Canosa Di Puglia, Italy.",
+    "textHash": "96b01f7238b746fd93828562659dbd5bfafbb61fef4fdf594e6f97aab4084d83",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-244/answer.mp3",
+    "measuredHz": 136.2,
+    "measuredWpm": 141,
+    "durationSec": 4.27,
+    "status": "ok"
+   }
+  },
+  "245": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Gavle, Sweden.",
+    "textHash": "d68ed7fec987098b8c0ff63f9b0090ddaa08848f0c5c223ce2ed4cf8e8d9a2a5",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-245/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 143,
+    "durationSec": 3.36,
+    "status": "ok"
+   }
+  },
+  "246": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Actopan, Mexico.",
+    "textHash": "471a5c7a86f97f3e5766bfb070aa7d1f6a7692a6f3bb472ff85c7a104083c52d",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-246/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 105,
+    "durationSec": 4.56,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "247": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Upington, South Africa.",
+    "textHash": "8acbac32835a72b765eed186f399750c471453915a779a17f8e011d735b9dff7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-247/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 120,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "248": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sandomierz, Poland.",
+    "textHash": "5ab08329c51914507282a58aa9233020bb28de9e2b868d7cffbb54711194a703",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-248/answer.mp3",
+    "measuredHz": 123.6,
+    "measuredWpm": 108,
+    "durationSec": 4.44,
+    "status": "ok"
+   }
+  },
+  "249": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Blenheim, New Zealand.",
+    "textHash": "8d2af57b9f299a69c362c3ddfe93ce4d07044d32004b8d4c7a4548291895bd32",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-249/answer.mp3",
+    "measuredHz": 122.6,
+    "measuredWpm": 145,
+    "durationSec": 3.72,
+    "status": "ok"
+   }
+  },
+  "250": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ifrane, Morocco.",
+    "textHash": "26f65cdb7b67af54fa91f1e829dbc45cf8e3e4254bc56a6c00f35cde84f35853",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-250/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 120,
+    "durationSec": 4.01,
+    "status": "ok"
+   }
+  },
+  "251": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sandanski, Bulgaria.",
+    "textHash": "41905d67ef513a034be49f1c20f9064600d9bf3b79b48f477771bb2935ef80f7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-251/answer.mp3",
+    "measuredHz": 132.8,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "252": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Greenville, Liberia.",
+    "textHash": "d45439142aecb37407c290fde6fd53b06896832cb3fd062f9f38425e7249149b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-252/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "253": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Segovia, Spain.",
+    "textHash": "d7663949ba088de730f389de4e1c12b45e2b8281b8294c1ae100c7336907e2be",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-253/answer.mp3",
+    "measuredHz": 139.7,
+    "measuredWpm": 125,
+    "durationSec": 3.84,
+    "status": "ok"
+   }
+  },
+  "254": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Whitehorse, Canada.",
+    "textHash": "01df6275521c15f13f38964fff7176d59965c5fcc1d4b9ce30940e8d1b421cd7",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-254/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "255": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Malmesbury, South Africa.",
+    "textHash": "f6fc5a6815dbbf9bbba3bba71aed02a9318d3762ca9e1d0def6fe47ec1f0b10b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-255/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 110,
+    "durationSec": 4.92,
+    "status": "ok"
+   }
+  },
+  "256": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Magadan, Russia.",
+    "textHash": "80b8272c2cf97d576a3c84b67a4a256e3c706fa33e4dd5ac824f8c905a93754b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-256/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok"
+   }
+  },
+  "257": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Joensuu, Finland.",
+    "textHash": "aa6b9f7b343249dc3299808adb554dabd3a96d6f80983e2e246a00494d0ffd9e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-257/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "258": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Altoona, Pennsylvania, United States.",
+    "textHash": "4c56e1c31495b5c47c17a9ed5b7dee093f15b9a700056a613f6617f9d2635706",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-258/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 96,
+    "durationSec": 6.24,
+    "status": "ok"
+   }
+  },
+  "259": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Karlovo, Bulgaria.",
+    "textHash": "f8c70a534b4a83022419bb4ec960f1a04fd026d193d3280f5cad00d98bf83865",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-259/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 132,
+    "durationSec": 3.65,
+    "status": "ok"
+   }
+  },
+  "260": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Teruel, Spain.",
+    "textHash": "d937087f63223e66097b7011814e3744e8537433ac623ef91bc85686c397398c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-260/answer.mp3",
+    "measuredHz": 124,
+    "measuredWpm": 125,
+    "durationSec": 3.84,
+    "status": "ok"
+   }
+  },
+  "261": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kawambwa, Zambia.",
+    "textHash": "1e613924e3166fa0238d0f069c5b841ff2cb0859e7ff3e4ae3cab47429432c89",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-261/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 106,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "262": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Pagar Alam, Indonesia.",
+    "textHash": "7f74222a5051fd14a1b79003332109cbf3d8f3d48015547963c4d76d63c22e0c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-262/answer.mp3",
+    "measuredHz": 124,
+    "measuredWpm": 127,
+    "durationSec": 4.25,
+    "status": "ok"
+   }
+  },
+  "263": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Fier, Albania.",
+    "textHash": "c5d593e1605f9c77a3efe5a6795b9c844152f23cfd5f0f50feecdc7b6599f44c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-263/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 103,
+    "durationSec": 4.68,
+    "status": "ok"
+   }
+  },
+  "264": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Eureka, California, United States.",
+    "textHash": "b138d908a96c23a352961b231c6f0948c5538802abe28e60deaacadfe9d74dab",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-264/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 116,
+    "durationSec": 5.16,
+    "status": "ok"
+   }
+  },
+  "265": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Viareggio, Italy.",
+    "textHash": "8b900b2b5a372c1ebd3b0f3f8afce4123e3b79f8c7ff0ac98907fbb0bc40b2b5",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-265/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 116,
+    "durationSec": 4.15,
+    "status": "ok"
+   }
+  },
+  "266": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sisimiut, Greenland.",
+    "textHash": "8d54d9ef1ee0e3f3bf6668b8f50c05e8b4a951ba74c2bb4efcd6e60e2829d360",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-266/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 99,
+    "durationSec": 4.87,
+    "status": "ok"
+   }
+  },
+  "267": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Rota, Spain.",
+    "textHash": "719fed4af7ddad64d12306bb0ea632a044527412bb90a48ce265e5cb4fefd5b8",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-267/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 136,
+    "durationSec": 3.53,
+    "status": "ok"
+   }
+  },
+  "268": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Vercelli, Italy.",
+    "textHash": "5bbf81f1945d4ce1bfcab2ec2fd766dc87796e445e9ca9ba01da7c1ead169944",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-268/answer.mp3",
+    "measuredHz": 140.4,
+    "measuredWpm": 108,
+    "durationSec": 4.46,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "269": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Mollendo, Peru.",
+    "textHash": "93600c6133cd4155973784b5d7c154435518e765f2d92b8a6b0b07ad80563d3b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-269/answer.mp3",
+    "measuredHz": 128.5,
+    "measuredWpm": 114,
+    "durationSec": 4.2,
+    "status": "ok"
+   }
+  },
+  "270": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Fairbanks, Alaska, United States.",
+    "textHash": "2fbdc13f1518c757c0c6ab41b54af7e46331c04cdfc3c72d658beefd8c9caa48",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-270/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 112,
+    "durationSec": 5.35,
+    "status": "ok"
+   }
+  },
+  "271": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Joao Monlevade, Brazil.",
+    "textHash": "3acba33bde6df1d655bbc35edbc8c693cdd5ad95aeecf81352da02bd0661de42",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-271/answer.mp3",
+    "measuredHz": 142.9,
+    "measuredWpm": 115,
+    "durationSec": 4.68,
+    "status": "ok"
+   }
+  },
+  "272": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Akureyri, Iceland.",
+    "textHash": "61d685d01237e1a94ea72842e30d954ba4bd3d8217f8ee4c32c0a8b658a4e190",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-272/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 109,
+    "durationSec": 4.39,
+    "status": "ok"
+   }
+  },
+  "273": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Usulutan, El Salvador.",
+    "textHash": "e4a3685654fa5e85254a365fac3b9e6c9eac919af9a0ca4b40eeaadaca20895a",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-273/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 120,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "274": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Erie, Pennsylvania, United States.",
+    "textHash": "6ae5b00a23fceeefe0b3df05aa58d690735a7c4e3ef8afae1a873f05aed44a98",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-274/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 122,
+    "durationSec": 4.92,
+    "status": "ok"
+   }
+  },
+  "275": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Guarda, Portugal.",
+    "textHash": "ae25c09c13fbd3dfdc6e4105b7b823aa5731bc3d744ab654a749db9a768e130d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-275/answer.mp3",
+    "measuredHz": 136.8,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "276": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Lalibela, Ethiopia.",
+    "textHash": "a60929917d78302c7603be39b8afb52a23acc9b290c03b6c8be5f6ed7d72413d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-276/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 119,
+    "durationSec": 4.03,
+    "status": "ok"
+   }
+  },
+  "277": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Paphos, Cyprus.",
+    "textHash": "dc1fb4c6b33b0335465bc51acfee56c9fb9f86a88526fa5761b5b4788a4e90ce",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-277/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 100,
+    "durationSec": 4.78,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "278": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Alushta, Ukraine.",
+    "textHash": "d66d64cba00ae8010db9c6f9c7a512459ed9cee02cacdabfe3443ef718af550c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-278/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 129,
+    "durationSec": 3.72,
+    "status": "ok"
+   }
+  },
+  "279": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Arakkonam, India.",
+    "textHash": "1fcb53bbbc8102d3b6dd9e0fd5e4a00b09fcebefa787a680180764b95044197b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-279/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok"
+   }
+  },
+  "280": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Torquay, United Kingdom.",
+    "textHash": "176d826b24f4bcc7efbae6841ce6f941c99664acaa9dd7ed711f8f42654f4950",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-280/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 122,
+    "durationSec": 4.44,
+    "status": "ok"
+   }
+  },
+  "281": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Safed, Israel.",
+    "textHash": "dd3af91b639cc5d4c3803153b105824e2595ea610d763106c0b52d7200c6b4b4",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-281/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 104,
+    "durationSec": 4.63,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "282": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Vorkuta, Russia.",
+    "textHash": "c68ca4b9664d6975eb0f948b64be8711a9a22ff12f18ff6edd8c58b354131d8a",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-282/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "283": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Wenling, China.",
+    "textHash": "6929b597ae44873bffb3aef40c968205232ffaa6bd3ab7ff8d1c07df685572f0",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-283/answer.mp3",
+    "measuredHz": 142.9,
+    "measuredWpm": 125,
+    "durationSec": 3.84,
+    "status": "ok"
+   }
+  },
+  "284": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Tukuyu, Tanzania.",
+    "textHash": "fa853c4ff0569f476de4cc1f152ac1972c1a4821cebe02cf195f126545145d23",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-284/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 116,
+    "durationSec": 4.15,
+    "status": "ok"
+   }
+  },
+  "285": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Evora, Portugal.",
+    "textHash": "aa802f1a2297d49582138fb3f749faaeab52dca783491357358fd832dad61c90",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-285/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 114,
+    "durationSec": 4.2,
+    "status": "ok"
+   }
+  },
+  "286": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Puerto Penasco, Mexico.",
+    "textHash": "cfa63208020ba145050cd8f5100a283f1713d638332a506e518d19912f6d5a6d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-286/answer.mp3",
+    "measuredHz": 131.7,
+    "measuredWpm": 109,
+    "durationSec": 4.97,
+    "status": "ok"
+   }
+  },
+  "287": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Skelleftea, Sweden.",
+    "textHash": "e18c6b53d5a2c8900629b87eee8c8c61430f2db96952735ce54651c27ca11dc9",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-287/answer.mp3",
+    "measuredHz": 125.5,
+    "measuredWpm": 111,
+    "durationSec": 4.32,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "288": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Alice Springs, Australia.",
+    "textHash": "8cfa3771f54997a95edeeb8ffc466ab64e3deecb8a897a2f0642296f567d822d",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-288/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 130,
+    "durationSec": 4.15,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "289": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Estepona, Spain.",
+    "textHash": "d59abad6f1ad565beba41eae9646153eda3bc9de7b8f0b27d75cc47c5438e078",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-289/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 94,
+    "durationSec": 5.11,
+    "status": "ok"
+   }
+  },
+  "290": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cocieri, Moldova.",
+    "textHash": "ff948e88197f664d8da209fd093489357967badc0f13dabae34bc22385af91bf",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-290/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 113,
+    "durationSec": 4.25,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "291": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Murree, Pakistan.",
+    "textHash": "4695e9b2fcbee607364099abc33c1fef90a6aa372211bcf5d71dd28f576ebfd2",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-291/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 108,
+    "durationSec": 4.44,
+    "status": "ok"
+   }
+  },
+  "292": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cleethorpes, United Kingdom.",
+    "textHash": "60f1779dc7654d0c95141b41d62689caebfaba8179f99098ee8b7a9b66f6f212",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-292/answer.mp3",
+    "measuredHz": 123.1,
+    "measuredWpm": 109,
+    "durationSec": 4.97,
+    "status": "ok"
+   }
+  },
+  "293": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Pato Branco, Brazil.",
+    "textHash": "eb113fad6e502e15207809c4fbab29e7c570548bbab74a5036d52ae29cb06ec8",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-293/answer.mp3",
+    "measuredHz": 142.9,
+    "measuredWpm": 123,
+    "durationSec": 4.39,
+    "status": "ok"
+   }
+  },
+  "294": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Guimaraes, Portugal.",
+    "textHash": "748cd8227271e1dd5e3aaafd1d0d1edd81a96c081e4828c8a6068869b76ab56c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-294/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "295": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Santiago De Compostela, Spain.",
+    "textHash": "4aba39f9d6a725caf9071521bcd21a0266429b6d8d5c86680d0bc46afd07c0e1",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-295/answer.mp3",
+    "measuredHz": 142.9,
+    "measuredWpm": 121,
+    "durationSec": 4.97,
+    "status": "ok"
+   }
+  },
+  "296": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kongoussi, Burkina Faso.",
+    "textHash": "c60cabb697e769f3a9893694b862f26ac61154d92462a7aebfd901d78e345612",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-296/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 122,
+    "durationSec": 4.44,
+    "status": "ok"
+   }
+  },
+  "297": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Pomasqui, Ecuador.",
+    "textHash": "556aae5209a2503a26bd1de9eb7b2a977219652ca17f9cda2fd8673669be39e9",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-297/answer.mp3",
+    "measuredHz": 121.7,
+    "measuredWpm": 100,
+    "durationSec": 4.78,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "298": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Hinis, Türkiye.",
+    "textHash": "45b84489d6a53642e6f3d720d196116b81d2daa965bc247b940c187191693e6f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-298/answer.mp3",
+    "measuredHz": 142.2,
+    "measuredWpm": 113,
+    "durationSec": 4.25,
+    "status": "ok"
+   }
+  },
+  "299": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Machachi, Ecuador.",
+    "textHash": "760fb096cc774fbd7a008b313c9094503efed5576adcbf7484c2dd59d192984e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-299/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 119,
+    "durationSec": 4.03,
+    "status": "ok"
+   }
+  },
+  "300": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Palenque, Mexico.",
+    "textHash": "07cea65bbc53d73cd694ab97c0debcef4fbb7bc0d6ab695f1c13e21b72fc3408",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-300/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 114,
+    "durationSec": 4.2,
+    "status": "ok"
+   }
+  },
+  "301": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Puyo, Ecuador.",
+    "textHash": "1e1443dd0d8f90ebf963fbe495242cbef10fac87c6ebae504ff90426d0984778",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-301/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 104,
+    "durationSec": 4.61,
+    "status": "ok"
+   }
+  },
+  "302": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Launceston, Australia.",
+    "textHash": "87a54a10a55386499e55203a16a204dfe20e6d7704f773bd9b204949bc96b4dd",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-302/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 97,
+    "durationSec": 4.97,
+    "status": "ok"
+   }
+  },
+  "303": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Gwadar, Pakistan.",
+    "textHash": "42fb9546f912c2e4deeac13ec6aae833463809d2ec84b13e46fb6299949b2f2d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-303/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "304": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Am Timan, Chad.",
+    "textHash": "e92da2c0f6003b6c79d82e18bb3b135a544bdd9a2a0b1567f560e1fa6359fb46",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-304/answer.mp3",
+    "measuredHz": 122.1,
+    "measuredWpm": 93,
+    "durationSec": 5.81,
+    "status": "ok"
+   }
+  },
+  "305": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Iqaluit, Canada.",
+    "textHash": "4883af845722fba9009dacd39df4fbb1af26b04e64c71a9d36e4ae52de27b3cb",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-305/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 120,
+    "durationSec": 4.01,
+    "status": "ok"
+   }
+  },
+  "306": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Techiman, Ghana.",
+    "textHash": "f469d9b0da85686f0d9d5ecf87a3c98e26990243c0a5be9bf680f9b28e1cab9a",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-306/answer.mp3",
+    "measuredHz": 139.7,
+    "measuredWpm": 118,
+    "durationSec": 4.08,
+    "status": "ok"
+   }
+  },
+  "307": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Nykoping, Sweden.",
+    "textHash": "266d8b63c8d8ea0915eafb5bcf1fb09505da8c6fca4a204847f3281626ae81da",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-307/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "308": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Iriba, Chad.",
+    "textHash": "ef03e385331755fa9cc272156c4318c8b664951297e54c5e9db714a1e73b4f93",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-308/answer.mp3",
+    "measuredHz": 139.1,
+    "measuredWpm": 105,
+    "durationSec": 4.56,
+    "status": "ok"
+   }
+  },
+  "309": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Huancavelica, Peru.",
+    "textHash": "6cdfbe08800986ada187286931589f01f4abfb8076ab49cabad5292bbf18beb4",
+    "voice": "avocado_v2:atlas",
+    "speed": 94,
+    "gainDb": 0,
+    "file": "case-309/answer.mp3",
+    "measuredHz": 121.2,
+    "measuredWpm": 99,
+    "durationSec": 4.85,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 94"
+   }
+  },
+  "310": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Tiquipaya, Bolivia.",
+    "textHash": "b4f018b050f379d004db6276d24e4aa1dc2b3588b179f8736b203fbb94bdb5e5",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-310/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 92,
+    "durationSec": 5.23,
+    "status": "ok"
+   }
+  },
+  "311": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Comox, Canada.",
+    "textHash": "06685abdb125160d737c32cf7886a5ee587c401d805ecd5aa2afa06d9828d11f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-311/answer.mp3",
+    "measuredHz": 131.2,
+    "measuredWpm": 120,
+    "durationSec": 4.01,
+    "status": "ok"
+   }
+  },
+  "312": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Villiersdorp, South Africa.",
+    "textHash": "31f3dfa6eff5975db2483a39ec74ac2572c422a5858d0feb0e5cd836736b76d5",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-312/answer.mp3",
+    "measuredHz": 122.6,
+    "measuredWpm": 134,
+    "durationSec": 4.03,
+    "status": "ok"
+   }
+  },
+  "313": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Alexandria, South Africa.",
+    "textHash": "920ff9c6f894cbb25e9498c463358b9f6f8081a8d7715f95c317d1655d3c1870",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-313/answer.mp3",
+    "measuredHz": 140.4,
+    "measuredWpm": 132,
+    "durationSec": 4.08,
+    "status": "ok"
+   }
+  },
+  "314": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Chamical, Argentina.",
+    "textHash": "b7233f416d281ba7c851169d82dd5d3f8daccdc4a1ebc459433e12dab0b42313",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-314/answer.mp3",
+    "measuredHz": 123.1,
+    "measuredWpm": 111,
+    "durationSec": 4.32,
+    "status": "ok"
+   }
+  },
+  "315": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bsharri, Lebanon.",
+    "textHash": "7ef721d213fac7c9559e7d84f894de75107a805d766b2298c153a636fcb17c65",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-315/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 132,
+    "durationSec": 3.65,
+    "status": "ok"
+   }
+  },
+  "316": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Brocklehurst, Canada.",
+    "textHash": "2f478cd1b34cdd56c48070663fa7c8d2e380115375b3dac957f733efc4261801",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-316/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 111,
+    "durationSec": 4.32,
+    "status": "ok"
+   }
+  },
+  "317": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Newport, Rhode Island, United States.",
+    "textHash": "aa383151508c3c17572722e46e9073fa9ed78da653276ee99e3b9be70813cab4",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-317/answer.mp3",
+    "measuredHz": 126.5,
+    "measuredWpm": 131,
+    "durationSec": 5.04,
+    "status": "ok"
+   }
+  },
+  "318": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bartow, Florida, United States.",
+    "textHash": "b36701955cb4e02f7365c539e37d3fb42a1c5f95f52966320a2e2a69f857150d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-318/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 118,
+    "durationSec": 5.09,
+    "status": "ok"
+   }
+  },
+  "319": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was San Antonio Oeste, Argentina.",
+    "textHash": "b0487c52679487577cf08344a40db2569c19d4629dffbede433f2438327fe16e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-319/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 112,
+    "durationSec": 5.35,
+    "status": "ok"
+   }
+  },
+  "320": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Catriel, Argentina.",
+    "textHash": "e11be1111378832a47b0598f34d6694be6450e4caab50de035bc4932dad2e331",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-320/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 105,
+    "durationSec": 4.56,
+    "status": "ok"
+   }
+  },
+  "321": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sabie, South Africa.",
+    "textHash": "2c131a2e9c35735bcfae74768c126647bbb3bed89ca0420c65dde6ede934aa6c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-321/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 122,
+    "durationSec": 4.44,
+    "status": "ok"
+   }
+  },
+  "322": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Port Angeles, Washington, United States.",
+    "textHash": "062a02e54520d6b1d33c361d426ed7f198cd8a14f45da649f7875d0bd75715cf",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-322/answer.mp3",
+    "measuredHz": 125.5,
+    "measuredWpm": 117,
+    "durationSec": 5.64,
+    "status": "ok"
+   }
+  },
+  "323": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Sarande, Albania.",
+    "textHash": "c53edef6a06e9bc8b214b3603c36429b918d67cba1cd976d392f45c1403835fd",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-323/answer.mp3",
+    "measuredHz": 123.1,
+    "measuredWpm": 100,
+    "durationSec": 4.8,
+    "status": "ok"
+   }
+  },
+  "324": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cootamundra, Australia.",
+    "textHash": "3bc171a374cd4000e6ba2141b0c317ee7e1f9bd5a156964891f21e16c572c93e",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-324/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 90,
+    "durationSec": 5.33,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "325": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kuruman, South Africa.",
+    "textHash": "bda1c98248214ee2c68803c0caf411c9d5bd17dcc87aa5929c5725ee65c33038",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-325/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 136,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "326": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Fruita, Colorado, United States.",
+    "textHash": "59de69dbab70c7637d40f1853efa0146ce21f19f862b9308406b89835f7b52c4",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-326/answer.mp3",
+    "measuredHz": 137.9,
+    "measuredWpm": 104,
+    "durationSec": 5.76,
+    "status": "ok"
+   }
+  },
+  "327": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Mejillones, Chile.",
+    "textHash": "bfdca989b36ac1266bb946eaf88850e4a31689b2bf68550adeaa711ccb9422db",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-327/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "328": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Pica, Chile.",
+    "textHash": "44f421bf4aae34866e78b6e2a80819e0869514edf140f8fa6a9d872c9dd83205",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-328/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 140,
+    "durationSec": 3.43,
+    "status": "ok"
+   }
+  },
+  "329": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Campbellton, Canada.",
+    "textHash": "7136f579d14776b725222a8deb8ef8bf929fa3f5b829488cae2582f47e3a662c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-329/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 106,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "330": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Uxbridge, Massachusetts, United States.",
+    "textHash": "d9eeea87bfe010320731b63d8e183e10a6fa40fe4d7c72242b9018e73493b714",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-330/answer.mp3",
+    "measuredHz": 124,
+    "measuredWpm": 102,
+    "durationSec": 5.88,
+    "status": "ok"
+   }
+  },
+  "331": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Los Alcazares, Spain.",
+    "textHash": "6004cd752d7936b2d70351e4f093509a71a8066c7af600596344af01bb36a042",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-331/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 111,
+    "durationSec": 4.85,
+    "status": "ok"
+   }
+  },
+  "332": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Monte Hermoso, Argentina.",
+    "textHash": "28cd6deed3ac533bd9c3f9a21ce2c8991114be7e1753e3ae6c748a80fe57542e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-332/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 109,
+    "durationSec": 4.97,
+    "status": "ok"
+   }
+  },
+  "333": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was El Bolson, Argentina.",
+    "textHash": "e4abb38fd1411fe2d07e04c28d7ec472a0e8e3ef2208df4a8c861545b65cdada",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-333/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 102,
+    "durationSec": 5.28,
+    "status": "ok"
+   }
+  },
+  "334": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Jalostotitlan, Mexico.",
+    "textHash": "180c6990d755578f0f39c9b75c85d733853ef7e7ec2e206cd60f83cf0d427a47",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-334/answer.mp3",
+    "measuredHz": 135.6,
+    "measuredWpm": 101,
+    "durationSec": 4.73,
+    "status": "ok"
+   }
+  },
+  "335": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Angleur, Belgium.",
+    "textHash": "245681cba3e21a64867f2635788d45baac5914d108c8c80c1542294935c85e55",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-335/answer.mp3",
+    "measuredHz": 137.3,
+    "measuredWpm": 106,
+    "durationSec": 4.51,
+    "status": "ok"
+   }
+  },
+  "336": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ilha De Itamaraca, Brazil.",
+    "textHash": "4d457df2e62c3667dfd8e51c6a4db2e2bfdbef68f237b5efdb8c251dd410b8ca",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-336/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 122,
+    "durationSec": 4.92,
+    "status": "ok"
+   }
+  },
+  "337": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Dolores, Spain.",
+    "textHash": "748097eb175cce1f5143669cf0d326d07172355eed53aeff8fea3db00b157dd6",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-337/answer.mp3",
+    "measuredHz": 142.2,
+    "measuredWpm": 116,
+    "durationSec": 4.13,
+    "status": "ok"
+   }
+  },
+  "338": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Juan Rodriguez Clara, Mexico.",
+    "textHash": "82d0f4e515c785ad30daa2c3e1cbe0ccc6085ef98ee6bae6d7fc8d68b7c6d275",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-338/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 110,
+    "durationSec": 5.47,
+    "status": "ok"
+   }
+  },
+  "339": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Darzciems, Latvia.",
+    "textHash": "7f9fb400cbae483f3316f83ca98dbb0ba330b9f2e634549020cad427e88c4b65",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-339/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 101,
+    "durationSec": 4.73,
+    "status": "ok"
+   }
+  },
+  "340": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Dulag, Philippines.",
+    "textHash": "c5c4e5e4db09d92f64e8678354f2d0e17933d1bdea76aad3158852892e23f386",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-340/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 104,
+    "durationSec": 4.63,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "341": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Kittila, Finland.",
+    "textHash": "96cd552a42864aa3582f644a73aed534b271a32651d505bbee47dbe7e91fc8b7",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-341/answer.mp3",
+    "measuredHz": 122.1,
+    "measuredWpm": 113,
+    "durationSec": 4.25,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
+   }
+  },
+  "342": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Vredendal, South Africa.",
+    "textHash": "a55e49a8b40e892f25069c49ed1a2f78834517f19a0445a472d196bdb0531db7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-342/answer.mp3",
+    "measuredHz": 137.9,
+    "measuredWpm": 131,
+    "durationSec": 4.13,
+    "status": "ok"
+   }
+  },
+  "343": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Peace River, Canada.",
+    "textHash": "dc2ad9ccdd8ab565292282d55a1c3fc3a78ad4372e810bdccf104ad1f258dace",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-343/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 145,
+    "durationSec": 3.72,
+    "status": "ok"
+   }
+  },
+  "344": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Port Townsend, Washington, United States.",
+    "textHash": "c1194464c1963de9df6ee3a50edec707d894b04fc0092ee1e211914cbbb43bd8",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-344/answer.mp3",
+    "measuredHz": 121.2,
+    "measuredWpm": 116,
+    "durationSec": 5.69,
+    "status": "ok"
+   }
+  },
+  "345": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Guadarrama, Spain.",
+    "textHash": "bbc628978e5f06cd34283ad1112cfb3555a775c472120355b3fcbd622751e9a3",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-345/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 116,
+    "durationSec": 4.15,
+    "status": "ok"
+   }
+  },
+  "346": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Motueka, New Zealand.",
+    "textHash": "59eb4135ab3ce56d9956d282c7bb856c1e6342fa34e3bb135c3d3efad116830c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-346/answer.mp3",
+    "measuredHz": 126,
+    "measuredWpm": 118,
+    "durationSec": 4.56,
+    "status": "ok"
+   }
+  },
+  "347": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Tewkesbury, United Kingdom.",
+    "textHash": "3064731acd5341e1219e2e8801a9a2e3c8bc748601fb436d4723b0f54ba089c8",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-347/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 117,
+    "durationSec": 4.63,
+    "status": "ok"
+   }
+  },
+  "348": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Buarcos, Portugal.",
+    "textHash": "9dfe13aab8dd5458dbe7dee0423b4e00670af170170f60b1ff6a32a2e815afff",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-348/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "349": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Portage La Prairie, Canada.",
+    "textHash": "17b11b20adc1c688ec7882880974661b27adfd88db2e25265c026a7305c28a95",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-349/answer.mp3",
+    "measuredHz": 141.6,
+    "measuredWpm": 139,
+    "durationSec": 4.32,
+    "status": "ok"
+   }
+  },
+  "350": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Jindabyne, Australia.",
+    "textHash": "09ad655d962e3873551b64c1942d728fd5cb9a0c42e2890c052e812b220c0486",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-350/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 110,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "351": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Ixtlan Del Rio, Mexico.",
+    "textHash": "c86490f91cfba357eeed45cddd04e20dd7d7141cd4dad252f2d7c9de72f43182",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-351/answer.mp3",
+    "measuredHz": 136.2,
+    "measuredWpm": 98,
+    "durationSec": 6.12,
+    "status": "ok"
+   }
+  },
+  "352": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Alto Garcas, Brazil.",
+    "textHash": "99d001cfa0e1ffc9f8becd1859bce27ff8ddfae3062ddfa469617737e817f3ba",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-352/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 125,
+    "durationSec": 4.32,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "353": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Warmbad, Namibia.",
+    "textHash": "146c92fd9be0149b8c7f6dfd1c11b71153076c2e88648291b15ebf434d8a2e0b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-353/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 114,
+    "durationSec": 4.2,
+    "status": "ok"
+   }
+  },
+  "354": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Park City, Utah, United States.",
+    "textHash": "c116988fed73b4d484d14459b94de8bff05c0ee7904eeec79d21b4911c632831",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-354/answer.mp3",
+    "measuredHz": 131.1,
+    "measuredWpm": 121,
+    "durationSec": 5.47,
+    "status": "ok"
+   }
+  },
+  "355": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Tombel, Cameroon.",
+    "textHash": "27e82cbd52eb82dd68ed1a70c69ca1b310446796c5118cca065a0b2d61fc713e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-355/answer.mp3",
+    "measuredHz": 123.1,
+    "measuredWpm": 104,
+    "durationSec": 4.61,
+    "status": "ok"
+   }
+  },
+  "356": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Avanos, Türkiye.",
+    "textHash": "4a705f533a76b6e1de3faf1d8d21995f914ae0efd811ce2dbeff7642d66a21d1",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-356/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 113,
+    "durationSec": 4.25,
+    "status": "ok"
+   }
+  },
+  "357": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Hakuba, Japan.",
+    "textHash": "1f6216b185e9ae68de790bfc17eacfe3db1cf02482433bc9381cce73d656685b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-357/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 127,
+    "durationSec": 3.77,
+    "status": "ok"
+   }
+  },
+  "358": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Calcoene, Brazil.",
+    "textHash": "bd26a48ac0c3e5c5813b7a581c2a72823c0b427cddc7be57035717b7efbc13f7",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-358/answer.mp3",
+    "measuredHz": 125,
+    "measuredWpm": 118,
+    "durationSec": 4.08,
+    "status": "ok"
+   }
+  },
+  "359": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Wepion, Belgium.",
+    "textHash": "1e09c2b10ac32513490d0814f1143be09653c934079a4260b4a010f36d4dd301",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-359/answer.mp3",
+    "measuredHz": 133.9,
+    "measuredWpm": 121,
+    "durationSec": 3.96,
+    "status": "ok"
+   }
+  },
+  "360": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Las Cumbres, Panama.",
+    "textHash": "92d1c4b72b175a2eb636e0401fab41a4a70629913fdf00360996ba303c399ae2",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-360/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 111,
+    "durationSec": 4.87,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "361": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Puerto San Jose, Guatemala.",
+    "textHash": "c47cee2b950f9377ead5a791e599425505bcd8a2d4b17e7deb85ee2260061df8",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-361/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 115,
+    "durationSec": 5.23,
+    "status": "ok"
+   }
+  },
+  "362": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was San Sebastiano Al Vesuvio, Italy.",
+    "textHash": "dae8f01b939df54a97fe94a157a244ec0656f40f3acc5bd9282874d71923b187",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-362/answer.mp3",
+    "measuredHz": 137.9,
+    "measuredWpm": 118,
+    "durationSec": 5.57,
+    "status": "ok"
+   }
+  },
+  "363": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Bom Jardim De Minas, Brazil.",
+    "textHash": "1f7449be8f5d41a3dd8518d24a8833870d01ccf298947f8bc2e5295eb060f89f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-363/answer.mp3",
+    "measuredHz": 122.1,
+    "measuredWpm": 129,
+    "durationSec": 5.11,
+    "status": "ok"
+   }
+  },
+  "364": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Chhachhrauli, India.",
+    "textHash": "3528cb54757b7dcad112948d7350d3627abf1e91a931b76f4b786f77fe6e5367",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-364/answer.mp3",
+    "measuredHz": 132.2,
+    "measuredWpm": 116,
+    "durationSec": 4.15,
+    "status": "ok"
+   }
+  },
+  "365": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Port Royal, Jamaica.",
+    "textHash": "e0308d6bca76c1669ce55662b79a654bbd3d9acf31d6fa9c86b366b9366aef52",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-365/answer.mp3",
+    "measuredHz": 136.2,
+    "measuredWpm": 125,
+    "durationSec": 4.32,
+    "status": "ok"
+   }
+  },
+  "366": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Rosendal, South Africa.",
+    "textHash": "045cbae0f9a9f519b83717543a877eef6fc52950a0b17ceced914de8e73ef845",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-366/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 124,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "367": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Starocherkasskaya, Russia.",
+    "textHash": "933dc72359fe5b702b163cd5f0c2a6eb2d0e1ff22ef66c4196e3a08e61168e86",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-367/answer.mp3",
+    "measuredHz": 122.1,
+    "measuredWpm": 87,
+    "durationSec": 5.52,
+    "status": "ok"
+   }
+  },
+  "368": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Medkovets, Bulgaria.",
+    "textHash": "ac2fe7e45515837457a55814cf4a581e2716be3a4f7b16def39eebf49538910d",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-368/answer.mp3",
+    "measuredHz": 125.5,
+    "measuredWpm": 113,
+    "durationSec": 4.25,
+    "status": "ok"
+   }
+  },
+  "369": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Lloro, Colombia.",
+    "textHash": "971db57a7e6b3e4fdb9127a107fa61e6e51d7159f03ba69b2ab31ebdd3fb571b",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-369/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 116,
+    "durationSec": 4.13,
+    "status": "ok"
+   }
+  },
+  "370": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Williamstown, Australia.",
+    "textHash": "f634bfd3169dcf0516226c32f021e0dbe51a9ca2fab837e1134705e8a60fa394",
+    "voice": "avocado_v2:atlas",
+    "speed": 103,
+    "gainDb": 0,
+    "file": "case-370/answer.mp3",
+    "measuredHz": 121.2,
+    "measuredWpm": 127,
+    "durationSec": 3.77,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 103"
+   }
+  },
+  "371": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Falfurrias, Texas, United States.",
+    "textHash": "cc884e549ae55da559146e5b4d2b8acc6eff8809ce1cbd1abc95ab3dace322d2",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-371/answer.mp3",
+    "measuredHz": 144.1,
+    "measuredWpm": 115,
+    "durationSec": 5.23,
+    "status": "ok"
+   }
+  },
+  "372": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Costa Calma, Spain.",
+    "textHash": "810a5887e4304cb8108ecc1f18433ea9dd055df31d437c79591934e95d338a91",
+    "voice": "avocado_v2:atlas",
+    "speed": 106,
+    "gainDb": 0,
+    "file": "case-372/answer.mp3",
+    "measuredHz": 124,
+    "measuredWpm": 117,
+    "durationSec": 4.61,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 106"
+   }
+  },
+  "373": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Fauresmith, South Africa.",
+    "textHash": "922a3c44148cde697635a5040b47ed817cba777454fb12a1695e8fe6bf786c09",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-373/answer.mp3",
+    "measuredHz": 137.9,
+    "measuredWpm": 131,
+    "durationSec": 4.13,
+    "status": "ok"
+   }
+  },
+  "374": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Lismore, Australia.",
+    "textHash": "89b3362f88229d5f27b33aae36f185ff6d68b0542d3f95c80df9aad001ba4e35",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-374/answer.mp3",
+    "measuredHz": 134.5,
+    "measuredWpm": 118,
+    "durationSec": 4.08,
+    "status": "ok"
+   }
+  },
+  "375": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Los Silos, Spain.",
+    "textHash": "198e5f989a2b5f2a9ca0369528d96c0a4dee549723d2499e87c40cb60ea1b82c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-375/answer.mp3",
+    "measuredHz": 127,
+    "measuredWpm": 143,
+    "durationSec": 3.77,
+    "status": "ok"
+   }
+  },
+  "376": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Seefeld In Tirol, Austria.",
+    "textHash": "d106d47cb8afdeb1baa871850d853cad80c6c9b60d5f56d0502ebb886f903574",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-376/answer.mp3",
+    "measuredHz": 142.9,
+    "measuredWpm": 130,
+    "durationSec": 4.61,
+    "status": "ok"
+   }
+  },
+  "377": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Seward, Alaska, United States.",
+    "textHash": "4b01a48f888a90b004ada62aca53a50e16cc6d0cbd495dbcd04bfcb8bbac79b0",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-377/answer.mp3",
+    "measuredHz": 140.4,
+    "measuredWpm": 106,
+    "durationSec": 5.64,
+    "status": "ok"
+   }
+  },
+  "378": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Cortina D Ampezzo, Italy.",
+    "textHash": "d31d972439e3e69bb87e2421bd9329c131464323bf4c7a75e55b6ee964c62b2f",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-378/answer.mp3",
+    "measuredHz": 129,
+    "measuredWpm": 127,
+    "durationSec": 4.73,
+    "status": "ok"
+   }
+  },
+  "379": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Fermont, Canada.",
+    "textHash": "fe31022f7c926bfa244eede01287b3748723e33ecd9ab6fe2773f2193a217ba3",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-379/answer.mp3",
+    "measuredHz": 128,
+    "measuredWpm": 118,
+    "durationSec": 4.08,
+    "status": "ok"
+   }
+  },
+  "380": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Dosrius, Spain.",
+    "textHash": "53b6464fe244d6bf8043bbab00ccfc39ccd09357bb4e0f701ce636e67049ee75",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-380/answer.mp3",
+    "measuredHz": 133.3,
+    "measuredWpm": 127,
+    "durationSec": 3.77,
+    "status": "ok"
+   }
+  },
+  "381": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Degelis, Canada.",
+    "textHash": "a1f9e2a9144c2449bdcb0b19198a04d12984b36f1721e1a7ade054683ad0288e",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-381/answer.mp3",
+    "measuredHz": 122.6,
+    "measuredWpm": 138,
+    "durationSec": 3.48,
+    "status": "ok"
+   }
+  },
+  "382": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Molina De Aragon, Spain.",
+    "textHash": "52baa105daa0538d0512c3f8a9eaa0d0899dfcfb78dad7f1779f523b5d7a9400",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-382/answer.mp3",
+    "measuredHz": 124,
+    "measuredWpm": 125,
+    "durationSec": 4.8,
+    "status": "ok"
+   }
+  },
+  "383": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Brandvlei, South Africa.",
+    "textHash": "c51e635af5dd8f6499939cd975cecaa18680d8cd7b593de66c4aff7903a58b8c",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-383/answer.mp3",
+    "measuredHz": 130.1,
+    "measuredWpm": 132,
+    "durationSec": 4.08,
+    "status": "ok"
+   }
+  },
+  "384": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Tignes, France.",
+    "textHash": "7ed76351b93e77564ece322580360b59f70629edcf9da340b676a396dfae98da",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-384/answer.mp3",
+    "measuredHz": 142.9,
+    "measuredWpm": 123,
+    "durationSec": 3.89,
+    "status": "ok"
+   }
+  },
+  "385": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Coober Pedy, Australia.",
+    "textHash": "f7039ba8fed0ac7d47e4cfc3114701c053fa368f0f1cecbff9cb840b7cb8a206",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-385/answer.mp3",
+    "measuredHz": 124.5,
+    "measuredWpm": 124,
+    "durationSec": 4.37,
+    "status": "ok"
+   }
+  },
+  "386": {
+   "clues": [],
+   "answer": {
+    "text": "Out of guesses. The answer was Risan, Montenegro.",
+    "textHash": "6a74302ff6c2df0733270b81e510e6614cc48c24fe25c0406083bb098ae822f4",
+    "voice": "avocado_v2:atlas",
+    "speed": 97,
+    "gainDb": 0,
+    "file": "case-386/answer.mp3",
+    "measuredHz": 120.3,
+    "measuredWpm": 109,
+    "durationSec": 4.42,
+    "status": "ok",
+    "note": "pitch retry ladder moved speed 100 -> 97"
    }
   },
   "387": {
