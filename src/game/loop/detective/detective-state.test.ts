@@ -7,8 +7,11 @@ import {
   initialDetectiveState,
   transition,
   viewForState,
+  CELEBRATE_JUMP_MS,
+  CLAP_HOLD_MS,
+  HIGH_FIVE_HOLD_MS,
   HOOK_BEAT_MS,
-  POUT_BEAT_MS,
+  NOTE_MARK_MS,
   THINKING_BEAT_MS,
   type DetectiveEffect,
   type DetectiveEvent,
@@ -183,7 +186,8 @@ test("full ladder: open → 5 clues with selection reads → solve → debrief",
       { type: "guessConfirmed", placeId: `geonames:${100 + n}` },
       { type: "ringAnimationEnded" },
       { type: "clueUnlocked", clueIndex: n }, // arrives mid-selection-read
-      { type: "speechEnded" }, // selection read drains → ASK_NEXT
+      { type: "speechEnded" }, // selection read drains → NOTE_MARK (U8)
+      { type: "beatElapsed" }, // miss beat over → ASK_NEXT
       { type: "speechEnded" }, // ask drained → next clue starts
       { type: "speechEnded" }, // read → thinking beat
       { type: "beatElapsed" },
@@ -195,7 +199,8 @@ test("full ladder: open → 5 clues with selection reads → solve → debrief",
     { type: "guessConfirmed", placeId: "geonames:104" },
     { type: "ringAnimationEnded" },
     { type: "clueUnlocked", clueIndex: 4 },
-    { type: "speechEnded" }, // → ASK_NEXT
+    { type: "speechEnded" }, // → NOTE_MARK
+    { type: "beatElapsed" }, // → ASK_NEXT
     { type: "speechEnded" }, // → hook THINKING_BEAT
     { type: "beatElapsed" },
     { type: "speechEnded" }, // announce → read
@@ -207,23 +212,27 @@ test("full ladder: open → 5 clues with selection reads → solve → debrief",
     { type: "guessConfirmed", placeId: "geonames:105" },
     { type: "ringAnimationEnded" },
     { type: "clueUnlocked", clueIndex: 5 },
-    { type: "speechEnded" },
-    { type: "speechEnded" },
-    { type: "speechEnded" },
+    { type: "speechEnded" }, // → NOTE_MARK
+    { type: "beatElapsed" }, // → ASK_NEXT
+    { type: "speechEnded" }, // → clue 5 read
+    { type: "speechEnded" }, // read → thinking beat
     { type: "beatElapsed" },
-    { type: "speechEnded" },
+    { type: "speechEnded" }, // ack/decode → search
   );
   // Winning pick: selection read, then the solve lands mid-read.
   events.push(
     { type: "guessConfirmed", placeId: "geonames:999" },
     { type: "caseSolved" },
-    { type: "speechEnded" }, // selection drains → CELEBRATE
-    { type: "speechEnded" }, // win lines drain → DEBRIEF
+    { type: "speechEnded" }, // selection drains → CELEBRATE (jump)
+    { type: "speechEnded" }, // win lines drain mid-choreography (remembered)
+    { type: "beatElapsed" }, // jump → high-five
+    { type: "beatElapsed" }, // high-five → clap
+    { type: "beatElapsed" }, // clap → settle; speech done → DEBRIEF
   );
   const steps = run(events);
   const phases = steps.map((s) => s.phase);
   // Every phase of the ladder was visited in order-bearing positions.
-  for (const p of ["READING", "THINKING_BEAT", "SEARCH_IDLE", "SELECTION_READ", "ASK_NEXT", "CELEBRATE", "DEBRIEF"]) {
+  for (const p of ["READING", "THINKING_BEAT", "SEARCH_IDLE", "SELECTION_READ", "NOTE_MARK", "ASK_NEXT", "CELEBRATE", "DEBRIEF"]) {
     assert.ok(phases.includes(p), `ladder visits ${p}`);
   }
   // Selection reads spoke the player's own pick + the suspicion line.
@@ -244,9 +253,11 @@ test("full ladder: open → 5 clues with selection reads → solve → debrief",
   const celebrateView = viewForState(celebrate.state);
   assert.equal(celebrateView.holmes.pose, "celebrate-jump");
   assert.equal(celebrateView.watson.pose, "celebrate-jump");
-  // Debrief: entered on the win lines' speechEnded, poses only (U8 TODO).
+  // Debrief (U8): this script's caseSolved carried no answerPlaceId, so
+  // the sequence is frame → close (the name line joins when an id is
+  // present — covered by the dedicated U8 debrief tests below).
   assert.equal(last(steps).phase, "DEBRIEF");
-  assert.deepEqual(speakIds(last(steps).effects), []);
+  assert.deepEqual(speakIds(last(steps).effects), ["fixed:debrief-frame", "fixed:debrief-close"]);
 });
 
 test("selection read: guessConfirmed speaks name + suspicion; rings hide the pair", () => {
@@ -263,26 +274,28 @@ test("selection read: guessConfirmed speaks name + suspicion; rings hide the pai
   assert.equal(last(after).phase, "SELECTION_READ");
 });
 
-test("sheetClosed after a drained selection read fires ASK_NEXT exactly once", () => {
+test("sheetClosed after a drained selection read fires ASK_NEXT exactly once (via NOTE_MARK, U8)", () => {
   const steps = run([
     ...normalClue(1),
     { type: "guessConfirmed", placeId: "geonames:42" },
     { type: "ringAnimationEnded" },
     { type: "speechEnded" }, // selection drains → SEARCH_IDLE (marker set)
     { type: "sheetOpened" },
-    { type: "sheetClosed" }, // → ASK_NEXT
+    { type: "sheetClosed" }, // → NOTE_MARK (the miss beat)
+    { type: "beatElapsed" }, // beat over → ASK_NEXT
     { type: "speechEnded" }, // ask drained → SEARCH_IDLE (ask spoken)
     { type: "clueUnlocked", clueIndex: 2 }, // straight to the read, no 2nd ask
   ]);
   // Steps: 0–3 clue 1, 4 guess, 5 ring end, 6 selection drain, 7 sheet
-  // open, 8 sheet close, 9 ask drain, 10 next clue.
+  // open, 8 sheet close, 9 beat, 10 ask drain, 11 next clue.
   assert.equal(steps[6]!.phase, "SEARCH_IDLE");
   assert.equal(viewForState(steps[7]!.state).hidden, true); // sheet open
-  assert.equal(steps[8]!.phase, "ASK_NEXT");
-  assert.deepEqual(speakIds(steps[8]!.effects), ["fixed:ask-next"]);
-  assert.equal(steps[9]!.phase, "SEARCH_IDLE");
-  assert.equal(steps[10]!.phase, "READING");
-  assert.deepEqual(speakIds(steps[10]!.effects), ["clue:2"]);
+  assert.equal(steps[8]!.phase, "NOTE_MARK");
+  assert.equal(steps[9]!.phase, "ASK_NEXT");
+  assert.deepEqual(speakIds(steps[9]!.effects), ["fixed:ask-next"]);
+  assert.equal(steps[10]!.phase, "SEARCH_IDLE");
+  assert.equal(steps[11]!.phase, "READING");
+  assert.deepEqual(speakIds(steps[11]!.effects), ["clue:2"]);
 });
 
 test("a sheet cycle during ordinary searching never fires ask-next", () => {
@@ -307,24 +320,29 @@ test("external speech hides the pair without changing phase", () => {
   assert.equal(viewForState(last(steps).state).hidden, false);
 });
 
-test("fail path: answer read → pout (timed dwell) → case-open idle", () => {
+test("fail path: answer read → pout, STICKY (U8 — no dwell, no auto-advance)", () => {
   const steps = run([
     ...normalClue(1),
     { type: "guessConfirmed", placeId: "geonames:42" },
     { type: "caseFailed" }, // lands mid-selection-read → deferred
     { type: "speechEnded" }, // selection drains → FAIL_READ
     { type: "speechEnded" }, // answer drains → POUT
-    { type: "beatElapsed" }, // pout held → idle
+    { type: "beatElapsed" }, // U5's 1500 ms exit is gone: no-op now
+    { type: "speechEnded" }, // stray drains are no-ops too
+    { type: "beatElapsed" },
   ]);
-  assert.equal(steps[steps.length - 3]!.phase, "FAIL_READ");
-  assert.deepEqual(speakIds(steps[steps.length - 3]!.effects), ["answer"]);
-  const pout = steps[steps.length - 2]!;
+  assert.equal(steps[steps.length - 5]!.phase, "FAIL_READ");
+  assert.deepEqual(speakIds(steps[steps.length - 5]!.effects), ["answer"]);
+  const pout = steps[steps.length - 4]!;
   assert.equal(pout.phase, "POUT");
-  assert.deepEqual(dwells(pout.effects), [POUT_BEAT_MS]);
+  assert.deepEqual(dwells(pout.effects), []); // no dwell is ever armed
+  assert.deepEqual(pout.effects, []);
   const poutView = viewForState(pout.state);
   assert.equal(poutView.holmes.pose, "pout");
   assert.equal(poutView.watson.pose, "pout");
-  assert.equal(last(steps).phase, "CASE_OPEN");
+  // Still pouting after every later beat/speech event.
+  assert.equal(last(steps).phase, "POUT");
+  assert.equal(viewForState(last(steps).state).holmes.pose, "pout");
 });
 
 test("caseFailed from SEARCH goes straight to FAIL_READ", () => {
@@ -483,7 +501,8 @@ test("U7: ask-next fires exactly once per unlock across a full 5-guess game — 
       { type: "guessConfirmed", placeId: `geonames:${800 + n}` },
       { type: "ringAnimationEnded" },
       { type: "clueUnlocked", clueIndex: n }, // mid-selection-read
-      { type: "speechEnded" }, // selection drains → ASK_NEXT
+      { type: "speechEnded" }, // selection drains → NOTE_MARK (U8)
+      { type: "beatElapsed" }, // miss beat over → ASK_NEXT
       { type: "speechEnded" }, // ask drains → clue n starts
     );
     if (n === 4) {
@@ -506,7 +525,8 @@ test("U7: ask-next fires exactly once per unlock across a full 5-guess game — 
     { type: "guessConfirmed", placeId: "geonames:805" },
     { type: "ringAnimationEnded" },
     { type: "clueUnlocked", clueIndex: 5 },
-    { type: "speechEnded" }, // → ASK_NEXT (4th and last)
+    { type: "speechEnded" }, // → NOTE_MARK
+    { type: "beatElapsed" }, // → ASK_NEXT (4th and last)
     { type: "speechEnded" }, // → clue 5 read
     { type: "speechEnded" }, // read → thinking beat
     { type: "beatElapsed" }, // → ack + decode
@@ -533,7 +553,8 @@ test("U7: sheet churn never duplicates ask-next (open/close/open after the ask w
     { type: "ringAnimationEnded" },
     { type: "speechEnded" }, // selection drains → SEARCH_IDLE (marker set)
     { type: "sheetOpened" },
-    { type: "sheetClosed" }, // → ASK_NEXT (the one ask)
+    { type: "sheetClosed" }, // → NOTE_MARK (U8 miss beat)
+    { type: "beatElapsed" }, // beat over → ASK_NEXT (the one ask)
     { type: "speechEnded" }, // ask drains → SEARCH_IDLE, askNextSpoken
     { type: "sheetOpened" }, // churn: reopen + close twice more
     { type: "sheetClosed" },
@@ -568,4 +589,254 @@ test("U7: no ask-next on the final clue — the sheetClosed path is clue-gated",
     ),
   );
   assert.equal(asks.length, 0);
+});
+
+/* ------------------------------------------------------------------ */
+/* U8 — case open, miss beat, endings, debrief                         */
+/* ------------------------------------------------------------------ */
+
+test("U8 case open: a FRESH deal plays instructions-holmes → instructions-watson before clue 1", () => {
+  const steps = run([
+    { type: "caseOpened", freshDeal: true },
+    { type: "clueUnlocked", clueIndex: 1 }, // arrives mid-duet → pends
+    { type: "speechEnded" }, // Holmes's line drains → Watson's line
+    { type: "speechEnded" }, // duet done → the pended clue starts
+  ]);
+  assert.equal(steps[0]!.phase, "CASE_OPEN");
+  assert.deepEqual(speakIds(steps[0]!.effects), ["fixed:instructions-holmes"]);
+  const holmesView = viewForState(steps[0]!.state);
+  assert.equal(holmesView.holmes.pose, "ack"); // council Q4: Holmes, "ack", at station
+  assert.equal(holmesView.holmes.placement, "station");
+  assert.equal(holmesView.holmes.speaking, true);
+  // The mid-duet unlock produced no effects and no phase change.
+  assert.equal(steps[1]!.phase, "CASE_OPEN");
+  assert.deepEqual(steps[1]!.effects, []);
+  assert.equal(steps[1]!.state.pendingClue, 1);
+  assert.deepEqual(speakIds(steps[2]!.effects), ["fixed:instructions-watson"]);
+  const watsonView = viewForState(steps[2]!.state);
+  assert.equal(watsonView.watson.speaking, true);
+  assert.equal(watsonView.watson.placement, "station");
+  assert.equal(steps[3]!.phase, "READING");
+  assert.deepEqual(speakIds(steps[3]!.effects), ["clue:1"]);
+});
+
+test("U8 case open: a RESUMED case skips instructions entirely", () => {
+  const steps = run([
+    { type: "caseOpened", freshDeal: false },
+    { type: "clueUnlocked", clueIndex: 3 }, // resumed mid-ladder
+  ]);
+  assert.deepEqual(steps[0]!.effects, []);
+  assert.equal(steps[0]!.state.instructionsStep, "skipped");
+  assert.equal(steps[1]!.phase, "READING");
+  assert.deepEqual(speakIds(steps[1]!.effects), ["clue:3"]);
+  // No caseOpened at all keeps the U5 behaviour (every older test's path).
+  const legacy = run([{ type: "clueUnlocked", clueIndex: 1 }]);
+  assert.equal(last(legacy).phase, "READING");
+});
+
+test("U8 case open: the duet can finish before clue 1 arrives — the ladder waits, then starts", () => {
+  const steps = run([
+    { type: "caseOpened", freshDeal: true },
+    { type: "speechEnded" },
+    { type: "speechEnded" }, // duet done, no clue yet
+    { type: "clueUnlocked", clueIndex: 1 },
+  ]);
+  assert.equal(steps[2]!.phase, "CASE_OPEN");
+  assert.equal(steps[2]!.state.instructionsStep, "done");
+  assert.equal(steps[3]!.phase, "READING");
+  assert.deepEqual(speakIds(steps[3]!.effects), ["clue:1"]);
+});
+
+test("U8 miss beat: NOTE_MARK — Watson marks at the station, Holmes searches at the dock, voiceless ~900 ms", () => {
+  const steps = run([
+    ...normalClue(1),
+    { type: "guessConfirmed", placeId: "geonames:42" },
+    { type: "ringAnimationEnded" },
+    { type: "clueUnlocked", clueIndex: 2 }, // mid-selection-read
+    { type: "speechEnded" }, // selection drains → NOTE_MARK
+    { type: "beatElapsed" }, // beat over → ASK_NEXT
+  ]);
+  const mark = steps[steps.length - 2]!;
+  assert.equal(mark.phase, "NOTE_MARK");
+  assert.deepEqual(dwells(mark.effects), [NOTE_MARK_MS]);
+  assert.equal(NOTE_MARK_MS, 900);
+  assert.deepEqual(speakIds(mark.effects), []); // NO speech in the beat
+  const markView = viewForState(mark.state);
+  assert.equal(markView.watson.pose, "notebook-mark");
+  assert.equal(markView.watson.placement, "station");
+  assert.equal(markView.holmes.pose, "search");
+  assert.equal(markView.holmes.placement, "dock");
+  assert.equal(last(steps).phase, "ASK_NEXT");
+  assert.deepEqual(speakIds(last(steps).effects), ["fixed:ask-next"]);
+});
+
+/** Drive a solve (from SEARCH_IDLE on clue 1) into CELEBRATE. */
+function solveSteps(answerPlaceId?: string | null): Step[] {
+  return run([
+    ...normalClue(1),
+    { type: "caseSolved", answerPlaceId },
+  ]);
+}
+
+test("U8 celebrate: dwell-chained jump → high-five → clap → settle; speech-last opens DEBRIEF from the settle", () => {
+  const steps = run([
+    ...normalClue(1),
+    { type: "caseSolved", answerPlaceId: "geonames:5505411" },
+    { type: "beatElapsed" }, // jump dwell over → high-five
+    { type: "beatElapsed" }, // high-five hold over → clap
+    { type: "beatElapsed" }, // clap hold over → settle (speech still playing)
+    { type: "speechEnded" }, // win lines drain → DEBRIEF
+  ]);
+  const enter = steps[steps.length - 5]!;
+  assert.equal(enter.phase, "CELEBRATE");
+  assert.deepEqual(speakIds(enter.effects), ["fixed:win-holmes", "fixed:win-watson"]);
+  assert.deepEqual(dwells(enter.effects), [CELEBRATE_JUMP_MS]);
+  assert.equal(viewForState(enter.state).holmes.pose, "celebrate-jump");
+  assert.equal(viewForState(enter.state).watson.pose, "celebrate-jump");
+
+  const hiFive = steps[steps.length - 4]!;
+  assert.equal(viewForState(hiFive.state).holmes.pose, "high-five");
+  assert.equal(viewForState(hiFive.state).watson.pose, "high-five");
+  assert.equal(viewForState(hiFive.state).holmes.placement, "station");
+  assert.deepEqual(dwells(hiFive.effects), [HIGH_FIVE_HOLD_MS]);
+
+  const clap = steps[steps.length - 3]!;
+  assert.equal(viewForState(clap.state).holmes.pose, "clap");
+  assert.equal(viewForState(clap.state).watson.pose, "clap");
+  assert.deepEqual(dwells(clap.effects), [CLAP_HOLD_MS]);
+  assert.equal(CLAP_HOLD_MS, 800);
+
+  const settle = steps[steps.length - 2]!;
+  assert.equal(settle.phase, "CELEBRATE"); // speech has not drained yet
+  assert.equal(viewForState(settle.state).holmes.pose, "dock");
+  assert.equal(viewForState(settle.state).watson.pose, "station-idle");
+
+  const debrief = last(steps);
+  assert.equal(debrief.phase, "DEBRIEF");
+  assert.deepEqual(speakIds(debrief.effects), [
+    "fixed:debrief-frame",
+    "name:geonames:5505411",
+    "fixed:debrief-close",
+  ]);
+});
+
+test("U8 celebrate: speech-first — the win lines drain mid-choreography and DEBRIEF opens on the final beat", () => {
+  const steps = run([
+    ...normalClue(1),
+    { type: "caseSolved", answerPlaceId: "geonames:5505411" },
+    { type: "speechEnded" }, // drains during the jump → remembered, no phase change
+    { type: "beatElapsed" }, // → high-five
+    { type: "beatElapsed" }, // → clap
+    { type: "beatElapsed" }, // clap over; speech done → DEBRIEF
+  ]);
+  assert.equal(steps[steps.length - 4]!.phase, "CELEBRATE");
+  assert.equal(last(steps).phase, "DEBRIEF");
+  assert.deepEqual(speakIds(last(steps).effects), [
+    "fixed:debrief-frame",
+    "name:geonames:5505411",
+    "fixed:debrief-close",
+  ]);
+});
+
+test("U8 debrief: frame → answer name → close; a missing id leaves frame → close; the drain settles to idle", () => {
+  const withId = solveSteps("geonames:5505411");
+  assert.equal(last(withId).state.answerPlaceId, "geonames:5505411"); // stored, unconsumed
+  const noId = run([
+    ...normalClue(1),
+    { type: "caseSolved" },
+    { type: "speechEnded" },
+    { type: "beatElapsed" },
+    { type: "beatElapsed" },
+    { type: "beatElapsed" },
+  ]);
+  assert.equal(last(noId).phase, "DEBRIEF");
+  assert.deepEqual(speakIds(last(noId).effects), ["fixed:debrief-frame", "fixed:debrief-close"]);
+  // The debrief view: Holmes speaks at the station, Watson listens.
+  const debriefView = viewForState(last(noId).state);
+  assert.equal(debriefView.holmes.pose, "ack");
+  assert.equal(debriefView.holmes.speaking, true);
+  // Consumed on entry: the id never lingers past the debrief.
+  assert.equal(last(noId).state.answerPlaceId, null);
+  const settled = run([{ type: "speechEnded" }], last(noId).state);
+  assert.equal(last(settled).phase, "CASE_OPEN");
+});
+
+test("U8 debrief: the answer id survives a mid-selection-read solve (pending path)", () => {
+  const steps = run([
+    ...normalClue(1),
+    { type: "guessConfirmed", placeId: "geonames:5505411" },
+    { type: "caseSolved", answerPlaceId: "geonames:5505411" }, // lands mid-read
+    { type: "speechEnded" }, // selection drains → CELEBRATE
+    { type: "speechEnded" }, // win lines drain (remembered)
+    { type: "beatElapsed" },
+    { type: "beatElapsed" },
+    { type: "beatElapsed" }, // → DEBRIEF
+  ]);
+  assert.equal(last(steps).phase, "DEBRIEF");
+  assert.deepEqual(speakIds(last(steps).effects), [
+    "fixed:debrief-frame",
+    "name:geonames:5505411",
+    "fixed:debrief-close",
+  ]);
+});
+
+test("U8 answer-blindness extension: answerPlaceId is IGNORED outside DEBRIEF — pre-solve streams are identical for any value", () => {
+  const script = (answerPlaceId: string | null): Step[] =>
+    run([
+      ...normalClue(1),
+      { type: "guessConfirmed", placeId: "geonames:5505411" },
+      { type: "caseSolved", answerPlaceId },
+      { type: "speechEnded" }, // → CELEBRATE
+      { type: "beatElapsed" }, // → high-five
+      { type: "beatElapsed" }, // → clap
+      { type: "speechEnded" }, // (already drained — no-op guard)
+    ]);
+  const a = script("geonames:5505411");
+  const b = script("geonames:323786"); // a different case's answer entirely
+  const c = script(null);
+  for (const [x, y] of [[a, b], [a, c]] as const) {
+    assert.equal(x.length, y.length);
+    for (let i = 0; i < x.length; i++) {
+      assert.equal(x[i]!.phase, y[i]!.phase, `step ${i} phase identical`);
+      assert.deepEqual(viewForState(x[i]!.state), viewForState(y[i]!.state), `step ${i} view identical`);
+      assert.deepEqual(x[i]!.effects, y[i]!.effects, `step ${i} effects identical`);
+    }
+  }
+  // The one permitted divergence appears only AT the debrief entry:
+  // the clap beat (the win lines already drained in-script, so the
+  // drain was recorded) opens DEBRIEF, and only its NAME ref differs.
+  const fa = run([{ type: "beatElapsed" }], last(a).state);
+  const fb = run([{ type: "beatElapsed" }], last(b).state);
+  assert.equal(last(fa).phase, "DEBRIEF");
+  assert.equal(last(fb).phase, "DEBRIEF");
+  assert.deepEqual(speakIds(last(fa).effects), [
+    "fixed:debrief-frame",
+    "name:geonames:5505411",
+    "fixed:debrief-close",
+  ]);
+  assert.deepEqual(speakIds(last(fb).effects), [
+    "fixed:debrief-frame",
+    "name:geonames:323786",
+    "fixed:debrief-close",
+  ]);
+});
+
+test("U8 pout exits: only a new case — clueUnlocked of a new case, or caseOpened — never a timer", () => {
+  const lost = run([
+    ...normalClue(1),
+    { type: "caseFailed" },
+    { type: "speechEnded" }, // → POUT
+  ]);
+  assert.equal(last(lost).phase, "POUT");
+  // A new case's first clue restarts the ladder straight from POUT.
+  const viaClue = run([{ type: "clueUnlocked", clueIndex: 1 }], last(lost).state);
+  assert.equal(last(viaClue).phase, "READING");
+  // A fresh caseOpened resets the pout and starts the duet.
+  const viaOpen = run([{ type: "caseOpened", freshDeal: true }], last(lost).state);
+  assert.equal(last(viaOpen).phase, "CASE_OPEN");
+  assert.deepEqual(speakIds(last(viaOpen).effects), ["fixed:instructions-holmes"]);
+  // A resumed caseOpened also clears the pout, silently.
+  const viaResume = run([{ type: "caseOpened", freshDeal: false }], last(lost).state);
+  assert.equal(last(viaResume).phase, "CASE_OPEN");
+  assert.deepEqual(last(viaResume).effects, []);
 });

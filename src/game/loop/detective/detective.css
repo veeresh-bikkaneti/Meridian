@@ -329,3 +329,56 @@
   height: 104px;
   width: auto;
 }
+
+/* --- celebrate cluster (U8) ------------------------------------------ */
+/* A fixed stage inside the station cluster: Holmes at the origin,
+   Watson offset by CELEBRATE_LAYOUT (DetectivePair.tsx) so the two
+   raised hands meet palm-to-palm in the high-five step. Positions are
+   set once — the choreography changes poses, never layout. Size: the
+   offset Watson (46.7 px) + his rendered width (134 × 104/140 ≈ 99.5 px)
+   ≈ 146 px wide, one rig tall. */
+.detective-host-celebrate {
+  position: relative;
+  width: 147px;
+  height: 104px;
+  flex: none;
+}
+
+.detective-celebrate-holmes,
+.detective-celebrate-watson {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+/* The spark crowns the high-five: its box is translated so its BOTTOM
+   edge sits 8 px ABOVE the contact point — it can never mask the hands
+   it celebrates. A gentle pulse, transform/opacity only. */
+.detective-celebrate-spark {
+  position: absolute;
+  z-index: 2;
+  transform: translate(-50%, -100%) translateY(-8px);
+  color: #f5c542;
+  font-size: 18px;
+  line-height: 1;
+  pointer-events: none;
+  animation: detective-spark-pulse 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes detective-spark-pulse {
+  from {
+    opacity: 0.65;
+    scale: 0.85;
+  }
+  to {
+    opacity: 1;
+    scale: 1.1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detective-celebrate-spark {
+    animation: none;
+  }
+}

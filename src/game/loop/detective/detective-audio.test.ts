@@ -16,6 +16,7 @@ const MANIFEST: DetectiveManifest = {
     "ack-1": { file: "fixed/ack-1.mp3", voice: "avocado_v2:atlas" },
     suspicion: { file: "fixed/suspicion.mp3", voice: "avocado_v2:atlas" },
     "debrief-frame": { file: "fixed/debrief-frame.mp3", voice: "avocado_v2:atlas" },
+    "debrief-close": { file: "fixed/debrief-close.mp3", voice: "avocado_v2:atlas" },
   },
   cases: {
     "387": {
@@ -283,4 +284,22 @@ test("U7 manifest (real, on disk): exactly ONE suspicion asset; names present 1,
     resolveDetectiveClip(real, { kind: "fixed", id: "suspicion" }, 137, BASE),
     { url: "/audio/detective/fixed/suspicion.mp3", who: "holmes" },
   );
+});
+
+test("U8 debrief at player level: a missing answer-name entry (the Tallinn case) leaves frame → close, coherent", async () => {
+  const { player, played, speaking } = harness();
+  // The machine's DEBRIEF sequence for an answer whose placeId has NO
+  // names entry in the manifest: the name ref resolves null and is
+  // skipped silently — frame and close still play, in order, and the
+  // queue drains (the ladder never stalls on a debrief).
+  player.enqueue({ kind: "fixed", id: "debrief-frame" });
+  player.enqueue({ kind: "name", placeId: "geonames:588409" }); // absent from this manifest
+  player.enqueue({ kind: "fixed", id: "debrief-close" });
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/fixed/debrief-frame.mp3",
+    "/audio/detective/fixed/debrief-close.mp3",
+  ]);
+  assert.equal(speaking[speaking.length - 1], null);
+  player.dispose();
 });

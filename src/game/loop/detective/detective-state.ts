@@ -40,6 +40,7 @@ export const DETECTIVE_PHASES = [
   "SEARCH_IDLE",
   "SEARCH_AREA",
   "SELECTION_READ",
+  "NOTE_MARK",
   "ASK_NEXT",
   "CELEBRATE",
   "FAIL_READ",
@@ -61,7 +62,13 @@ export type WatsonPlacement = "station" | "dock" | "hidden";
  *            the game itself has already revealed the answer on screen).
  * - name:    Holmes reads the player's OWN picked place name; `placeId`
  *            is the pick's id, echoed from the guessConfirmed event.
- * - debrief: Holmes's post-solve deduction speech (U8 fills the content). */
+ *            In DEBRIEF the same kind carries the ANSWER's placeId — the
+ *            one place the answer's id may appear (the case is solved;
+ *            the game has already revealed it on screen).
+ * - debrief: legacy single-ref form (the player resolves it to the
+ *            debrief frame line). The machine no longer emits it: U8
+ *            sequences DEBRIEF explicitly as fixed frame → name → fixed
+ *            close, so each line is independently skippable. */
 export type SpeakRef =
   | { kind: "clue"; clueIndex: number }
   | { kind: "fixed"; id: string }
@@ -75,8 +82,14 @@ export type DetectiveEffect =
   | { type: "speak"; ref: SpeakRef }
   | { type: "dwell"; beatMs: number };
 
-/** The ONLY inputs. Payloads are answer-blind by construction (header). */
+/** The ONLY inputs. Payloads are answer-blind by construction (header).
+ * The two U8 exceptions are fenced: `freshDeal` says only whether this
+ * deal is new (never anything about the case), and `answerPlaceId` —
+ * the answer's id, known to the game only AFTER a solve — is stored
+ * untouched and consumed solely by the DEBRIEF effect (see the state
+ * field); it cannot influence any pre-solve transition. */
 export type DetectiveEvent =
+  | { type: "caseOpened"; freshDeal: boolean }
   | { type: "clueUnlocked"; clueIndex: number }
   | { type: "speechEnded" }
   | { type: "beatElapsed" }
@@ -86,7 +99,7 @@ export type DetectiveEvent =
   | { type: "sheetOpened" }
   | { type: "sheetClosed" }
   | { type: "guessConfirmed"; placeId: string }
-  | { type: "caseSolved" }
+  | { type: "caseSolved"; answerPlaceId?: string | null }
   | { type: "caseFailed" }
   | { type: "externalSpeechStarted" }
   | { type: "externalSpeechEnded" }
@@ -116,11 +129,34 @@ export interface DetectiveView {
  * distinguish Watson's read from Holmes's ack+decode). */
 export type ReadingStep = "announce" | "watson-read" | "ack-decode";
 
+/** CASE_OPEN's instruction duet (U8, council Q4): played on a FRESH deal
+ * only, before clue 1. "awaiting" = the host has not yet reported
+ * fresh-vs-resumed; "skipped" = resumed case (no instructions);
+ * "done" = the duet drained and the ladder may proceed. */
+export type InstructionsStep = "awaiting" | "holmes" | "watson" | "done" | "skipped";
+
+/** CELEBRATE's choreography sub-steps (U8, council Q4): the phase stays
+ * CELEBRATE; the view's poses follow the step. Dwell-chained by the
+ * host's beatElapsed; the win lines run in parallel on the speech queue
+ * and whichever finishes LAST gates DEBRIEF (see celebrateSpeechDone). */
+export type CelebrateStep = "jump" | "high-five" | "clap" | "settle";
+
 export interface DetectiveState {
   phase: DetectivePhase;
   /** Current clue, 1-based (0 = no clue yet). */
   clueIndex: number;
   readingStep: ReadingStep | null;
+  instructionsStep: InstructionsStep;
+  celebrateStep: CelebrateStep | null;
+  /** The win lines have drained while the choreography still runs:
+   * DEBRIEF then starts on the final beatElapsed instead of speechEnded. */
+  celebrateSpeechDone: boolean;
+  /** The ANSWER's placeId, carried ONLY from the caseSolved event to
+   * the DEBRIEF effect that names it. Set nowhere else, read nowhere
+   * else — pre-solve behaviour is provably independent of its value
+   * (the pick-swap test's U8 extension pins this). Cleared on entry to
+   * DEBRIEF, once the effect has captured it. */
+  answerPlaceId: string | null;
   /** A clue the game unlocked while a selection read was in flight; the
    * ladder visits it via ASK_NEXT once the read drains. */
   pendingClue: number | null;
@@ -150,6 +186,10 @@ export function initialDetectiveState(
     phase: opts.enabled === false ? "OFF" : "CASE_OPEN",
     clueIndex: 0,
     readingStep: null,
+    instructionsStep: "awaiting",
+    celebrateStep: null,
+    celebrateSpeechDone: false,
+    answerPlaceId: null,
     pendingClue: null,
     pendingEnd: null,
     askNextSpoken: false,
@@ -169,8 +209,16 @@ export function initialDetectiveState(
 export const THINKING_BEAT_MS = 600;
 /** The Hook's pre-announcement silence: 800–1200 ms (Q4) — mid value. */
 export const HOOK_BEAT_MS = 1000;
-/** How long the pout holds before the pair settles back to idle. */
-export const POUT_BEAT_MS = 1500;
+/** The miss beat (U8, council Q4): Watson marks his notebook, Holmes
+ * watches the map — voiceless, ~900 ms, before Holmes asks for the
+ * next question. */
+export const NOTE_MARK_MS = 900;
+/** CELEBRATE choreography dwells (U8): the jump matches the rigs' CSS
+ * jump (1.15 s); the high-five is held so the hand contact reads; the
+ * clap hold is the Q4 sheet's ~0.8 s. */
+export const CELEBRATE_JUMP_MS = 1150;
+export const HIGH_FIVE_HOLD_MS = 900;
+export const CLAP_HOLD_MS = 800;
 
 /** Clue types by position (1-based): the decode template per clue. */
 export const CLUE_TYPE_BY_INDEX: Record<number, string> = {
@@ -209,6 +257,22 @@ export function viewForState(state: DetectiveState): DetectiveView {
         watson: { pose: "station-idle", placement: "hidden", speaking: false },
       };
     case "CASE_OPEN":
+      // The fresh-deal instruction duet (U8): Holmes speaks his line in
+      // the "ack" pose at the station, then Watson speaks his.
+      if (state.instructionsStep === "holmes") {
+        return {
+          ...base,
+          holmes: { pose: "ack", placement: "station", speaking: true },
+          watson: { pose: "station-idle", placement: "station", speaking: false },
+        };
+      }
+      if (state.instructionsStep === "watson") {
+        return {
+          ...base,
+          holmes: { pose: "dock", placement: "station", speaking: false },
+          watson: { pose: "read", placement: "station", speaking: true },
+        };
+      }
       return {
         ...base,
         holmes: { pose: "dock", placement: "station", speaking: false },
@@ -270,18 +334,54 @@ export function viewForState(state: DetectiveState): DetectiveView {
         holmes: { pose: "ack", placement: "dock", speaking: true },
         watson: { pose: "notebook-mark", placement: "dock", speaking: false },
       };
+    case "NOTE_MARK":
+      // The miss beat (U8): Watson marks his notebook AT THE STATION
+      // (beside the clue card), Holmes stays at the map dock in the
+      // search pose, facing the map. Nobody speaks.
+      return {
+        ...base,
+        holmes: { pose: "search", placement: "dock", speaking: false },
+        watson: { pose: "notebook-mark", placement: "station", speaking: false },
+      };
     case "ASK_NEXT":
       return {
         ...base,
         holmes: { pose: "ack", placement: "dock", speaking: true },
         watson: { pose: "station-idle", placement: "dock", speaking: false },
       };
-    case "CELEBRATE":
+    case "CELEBRATE": {
+      // Choreography poses follow celebrateStep (U8); the host lays the
+      // pair side-by-side so the HIGH_FIVE_CONTACT anchors coincide in
+      // the high-five step. Speech (win lines) runs in parallel — the
+      // speaking flags follow Holmes until the settle.
+      const step = state.celebrateStep ?? "jump";
+      if (step === "high-five") {
+        return {
+          ...base,
+          holmes: { pose: "high-five", placement: "station", speaking: false },
+          watson: { pose: "high-five", placement: "station", speaking: false },
+        };
+      }
+      if (step === "clap") {
+        return {
+          ...base,
+          holmes: { pose: "clap", placement: "station", speaking: false },
+          watson: { pose: "clap", placement: "station", speaking: false },
+        };
+      }
+      if (step === "settle") {
+        return {
+          ...base,
+          holmes: { pose: "dock", placement: "station", speaking: false },
+          watson: { pose: "station-idle", placement: "station", speaking: false },
+        };
+      }
       return {
         ...base,
         holmes: { pose: "celebrate-jump", placement: "station", speaking: true },
         watson: { pose: "celebrate-jump", placement: "station", speaking: false },
       };
+    }
     case "FAIL_READ":
       return {
         ...base,
@@ -295,12 +395,12 @@ export function viewForState(state: DetectiveState): DetectiveView {
         watson: { pose: "pout", placement: "station", speaking: false },
       };
     case "DEBRIEF":
-      // TODO(U8): debrief choreography (glass hand-off aftermath, the
-      // deduction speech effects: debrief-frame → name → debrief-close)
-      // lands with the endings unit. U5 keeps the poses only.
+      // Holmes delivers the deduction (frame → the answer's name →
+      // close — the effects are emitted on entry, see enterDebrief);
+      // Watson listens at the station.
       return {
         ...base,
-        holmes: { pose: "ack", placement: "station", speaking: false },
+        holmes: { pose: "ack", placement: "station", speaking: true },
         watson: { pose: "station-idle", placement: "station", speaking: false },
       };
   }
@@ -336,6 +436,8 @@ function startClue(state: DetectiveState, clueIndex: number): Step & { view: Det
     pendingClue: null,
     askNextSpoken: false,
     selectionReadDone: false,
+    celebrateStep: null,
+    celebrateSpeechDone: false,
   };
   if (clueIndex === 4) {
     return result(
@@ -350,9 +452,57 @@ function startClue(state: DetectiveState, clueIndex: number): Step & { view: Det
 }
 
 function enterCelebrate(state: DetectiveState): Step & { view: DetectiveView } {
+  // The win lines queue on the speech player while the choreography
+  // dwell chain runs in parallel (jump first); DEBRIEF waits for BOTH
+  // to finish — see the CELEBRATE speechEnded / beatElapsed handlers.
   return result(
-    { ...state, phase: "CELEBRATE", readingStep: null, pendingEnd: null, pendingClue: null, selectionReadDone: false },
-    [speak({ kind: "fixed", id: "win-holmes" }), speak({ kind: "fixed", id: "win-watson" })],
+    {
+      ...state,
+      phase: "CELEBRATE",
+      readingStep: null,
+      pendingEnd: null,
+      pendingClue: null,
+      selectionReadDone: false,
+      celebrateStep: "jump",
+      celebrateSpeechDone: false,
+    },
+    [
+      speak({ kind: "fixed", id: "win-holmes" }),
+      speak({ kind: "fixed", id: "win-watson" }),
+      dwell(CELEBRATE_JUMP_MS),
+    ],
+  );
+}
+
+/** The post-solve debrief (U8, owner decision 4): the ONE place
+ * synthesis lives. Holmes speaks the fixed frame, then the ANSWER's
+ * name read, then the fixed close. The answer's id is consumed here
+ * and only here; a missing id (or a name entry the manifest lacks —
+ * the player skips it silently) still leaves a coherent frame → close. */
+function enterDebrief(state: DetectiveState): Step & { view: DetectiveView } {
+  const effects: DetectiveEffect[] = [speak({ kind: "fixed", id: "debrief-frame" })];
+  if (state.answerPlaceId) {
+    effects.push(speak({ kind: "name", placeId: state.answerPlaceId }));
+  }
+  effects.push(speak({ kind: "fixed", id: "debrief-close" }));
+  return result(
+    {
+      ...state,
+      phase: "DEBRIEF",
+      celebrateStep: null,
+      celebrateSpeechDone: false,
+      answerPlaceId: null, // consumed — never carried past the debrief
+    },
+    effects,
+  );
+}
+
+/** The miss beat (U8): a silent dwell before ASK_NEXT, entered from
+ * both ask-next paths so the beat can never be skipped by one of them. */
+function enterNoteMark(state: DetectiveState): Step & { view: DetectiveView } {
+  return result(
+    { ...state, phase: "NOTE_MARK", selectionReadDone: false },
+    [dwell(NOTE_MARK_MS)],
   );
 }
 
@@ -369,10 +519,9 @@ function afterSelectionRead(state: DetectiveState): Step & { view: DetectiveView
   if (state.pendingEnd === "solved") return enterCelebrate(state);
   if (state.pendingEnd === "failed") return enterFailRead(state);
   if (state.pendingClue !== null && state.pendingClue > state.clueIndex) {
-    return result(
-      { ...state, phase: "ASK_NEXT", selectionReadDone: false },
-      [speak({ kind: "fixed", id: "ask-next" })],
-    );
+    // A next clue is pending: the voiceless miss beat comes first,
+    // then ASK_NEXT bridges to it (NOTE_MARK's beatElapsed handler).
+    return enterNoteMark(state);
   }
   return result({ ...state, phase: "SEARCH_IDLE", selectionReadDone: true });
 }
@@ -409,10 +558,9 @@ export function transition(
         closed.pendingClue === null &&
         closed.pendingEnd === null
       ) {
-        return result(
-          { ...closed, phase: "ASK_NEXT", selectionReadDone: false },
-          [speak({ kind: "fixed", id: "ask-next" })],
-        );
+        // The miss beat first (U8), then ASK_NEXT — same bridge as the
+        // pending-clue path, so the beat exists on every non-final miss.
+        return enterNoteMark(closed);
       }
       return result(closed);
     }
@@ -429,9 +577,41 @@ export function transition(
   if (state.phase === "OFF") return noOp(state);
 
   switch (event.type) {
+    case "caseOpened": {
+      // A new case while POUTing is one of POUT's only exits (U8): the
+      // lost case is over — reset to a fresh case-open, then let the
+      // fresh/resumed decision below run on the clean state.
+      const base =
+        state.phase === "POUT"
+          ? { ...initialDetectiveState(), sheetOpen: state.sheetOpen }
+          : state;
+      if (base.phase !== "CASE_OPEN" || base.instructionsStep !== "awaiting") {
+        return base === state ? noOp(state) : result(base);
+      }
+      if (!event.freshDeal) {
+        // Resumed case: instructions are skipped, the ladder proceeds
+        // as U5 whenever its clue arrives.
+        return result({ ...base, instructionsStep: "skipped" });
+      }
+      // Fresh deal: Holmes's instruction line first (Q4 case open).
+      return result({ ...base, instructionsStep: "holmes" }, [
+        speak({ kind: "fixed", id: "instructions-holmes" }),
+      ]);
+    }
+
     case "clueUnlocked": {
       const n = event.clueIndex;
       if (!Number.isInteger(n) || n < 1 || n > 5) return noOp(state);
+      // An unlock that lands while the case-open instructions are still
+      // playing is remembered, not acted on (the pending pattern, same
+      // as the selection read below): the duet finishes, then the
+      // ladder starts this clue.
+      if (
+        state.phase === "CASE_OPEN" &&
+        (state.instructionsStep === "holmes" || state.instructionsStep === "watson")
+      ) {
+        return result({ ...state, pendingClue: n });
+      }
       // Mid-selection-read unlocks are remembered, not acted on: Holmes
       // finishes the selection line, then ASK_NEXT bridges to the clue.
       if (state.phase === "SELECTION_READ") {
@@ -463,12 +643,19 @@ export function transition(
       );
     }
 
-    case "caseSolved":
+    case "caseSolved": {
+      // The answer's id rides along, stored verbatim for DEBRIEF and
+      // read by nothing else (see the state field's fence).
+      const withAnswer: DetectiveState = {
+        ...state,
+        answerPlaceId: event.answerPlaceId ?? null,
+      };
       if (state.phase === "SELECTION_READ") {
-        return result({ ...state, pendingEnd: "solved" });
+        return result({ ...withAnswer, pendingEnd: "solved" });
       }
       if (state.phase === "CELEBRATE" || state.phase === "DEBRIEF") return noOp(state);
-      return enterCelebrate(state);
+      return enterCelebrate(withAnswer);
+    }
 
     case "caseFailed":
       if (state.phase === "SELECTION_READ") {
@@ -525,18 +712,69 @@ export function transition(
           // that the next clueUnlocked needs no second ask).
           return result({ ...state, phase: "SEARCH_IDLE", askNextSpoken: true });
         }
+        case "CASE_OPEN":
+          // The instruction duet drains one line at a time (U8).
+          if (state.instructionsStep === "holmes") {
+            return result({ ...state, instructionsStep: "watson" }, [
+              speak({ kind: "fixed", id: "instructions-watson" }),
+            ]);
+          }
+          if (state.instructionsStep === "watson") {
+            const done: DetectiveState = { ...state, instructionsStep: "done" };
+            // A clue that unlocked mid-duet starts now (pending pattern).
+            if (done.pendingClue !== null) return startClue(done, done.pendingClue);
+            return result(done);
+          }
+          return noOp(state);
         case "CELEBRATE":
-          // Win lines drained → DEBRIEF (poses only in U5; U8 fills its
-          // speech effects — see the TODO in viewForState).
-          return result({ ...state, phase: "DEBRIEF" });
+          // Win lines drained. If the choreography already settled,
+          // DEBRIEF starts now; otherwise remember the drain and let
+          // the final beatElapsed open it — DEBRIEF waits for both.
+          if (state.celebrateStep === "settle") return enterDebrief(state);
+          return result({ ...state, celebrateSpeechDone: true });
+        case "DEBRIEF":
+          // The deduction drained → settle back to the station idle
+          // (the host resets the machine wholesale on the next case).
+          return result({ ...state, phase: "CASE_OPEN", instructionsStep: "done" });
         case "FAIL_READ":
-          return result({ ...state, phase: "POUT" }, [dwell(POUT_BEAT_MS)]);
+          // POUT is sticky (U8): no dwell, no auto-advance — the pair
+          // stays pouting while the case stays lost. Exits are only a
+          // new case (caseOpened / clueUnlocked / the host's reset).
+          return result({ ...state, phase: "POUT" });
         default:
           return noOp(state);
       }
     }
 
     case "beatElapsed": {
+      if (state.phase === "NOTE_MARK") {
+        // Miss beat over → Holmes asks for the next question. A pending
+        // clue then starts on the ask's speechEnded; without one the
+        // ASK_NEXT handler waits in SEARCH_IDLE (sheetClosed path).
+        return result({ ...state, phase: "ASK_NEXT" }, [
+          speak({ kind: "fixed", id: "ask-next" }),
+        ]);
+      }
+      if (state.phase === "CELEBRATE") {
+        // The choreography chain: jump → high-five (held) → clap
+        // (held ~0.8 s) → settle. DEBRIEF opens from the settle only
+        // if the win lines already drained (see speechEnded).
+        switch (state.celebrateStep) {
+          case "jump":
+            return result({ ...state, celebrateStep: "high-five" }, [
+              dwell(HIGH_FIVE_HOLD_MS),
+            ]);
+          case "high-five":
+            return result({ ...state, celebrateStep: "clap" }, [dwell(CLAP_HOLD_MS)]);
+          case "clap": {
+            const settled: DetectiveState = { ...state, celebrateStep: "settle" };
+            if (state.celebrateSpeechDone) return enterDebrief(settled);
+            return result(settled);
+          }
+          default:
+            return noOp(state);
+        }
+      }
       if (state.phase === "THINKING_BEAT") {
         if (state.readingStep === "announce") {
           // Hook silence over → Holmes announces, solo and hushed.
@@ -555,10 +793,8 @@ export function transition(
           ],
         );
       }
-      if (state.phase === "POUT") {
-        // Pout held → settle back to the case-open idle.
-        return result({ ...state, phase: "CASE_OPEN" });
-      }
+      // POUT has no beatElapsed exit (sticky, U8) — it falls through
+      // to the no-op like every other phase without a dwell.
       return noOp(state);
     }
 

@@ -18,6 +18,8 @@ const BENIGN = {
   status: "playing" as const,
   sheetOpen: false,
   lastGuessPlaceId: null,
+  freshDeal: false,
+  answerPlaceId: null,
 };
 
 test("builder returns exactly the whitelisted keys, in order", () => {
@@ -51,6 +53,8 @@ test("values pass through untouched (status, pick id, sheet flag)", () => {
     status: "won",
     sheetOpen: true,
     lastGuessPlaceId: "geonames:323786",
+    freshDeal: true,
+    answerPlaceId: "geonames:323786",
   });
   assert.equal(props.caseIndex, 42);
   assert.equal(props.cluesRevealed, 5);
@@ -58,4 +62,41 @@ test("values pass through untouched (status, pick id, sheet flag)", () => {
   assert.equal(props.sheetOpen, true);
   // The pick id is the player's OWN input, echoed for the selection read.
   assert.equal(props.lastGuessPlaceId, "geonames:323786");
+  assert.equal(props.freshDeal, true);
+});
+
+test("U8 whitelist: answerPlaceId crosses ONLY on the post-solve reveal — null while playing or lost, whatever the caller passes", () => {
+  // Playing: even a caller that (wrongly) supplies the answer's id
+  // cannot smuggle it across — the builder derives from status.
+  const playing = buildDetectiveHostProps({
+    ...BENIGN,
+    status: "playing",
+    answerPlaceId: "geonames:5505411",
+  });
+  assert.equal(playing.answerPlaceId, null);
+  // Lost: the debrief is solve-only, so the id stays home here too.
+  const lost = buildDetectiveHostProps({
+    ...BENIGN,
+    status: "lost",
+    answerPlaceId: "geonames:5505411",
+  });
+  assert.equal(lost.answerPlaceId, null);
+  // Won: the game has revealed the answer on screen; the id may cross
+  // for the debrief's name read, and only then.
+  const won = buildDetectiveHostProps({
+    ...BENIGN,
+    status: "won",
+    answerPlaceId: "geonames:5505411",
+  });
+  assert.equal(won.answerPlaceId, "geonames:5505411");
+  // The whitelist grew by exactly the two U8 fields, nothing else.
+  assert.deepEqual(Object.keys(won), [
+    "caseIndex",
+    "cluesRevealed",
+    "status",
+    "sheetOpen",
+    "lastGuessPlaceId",
+    "freshDeal",
+    "answerPlaceId",
+  ]);
 });

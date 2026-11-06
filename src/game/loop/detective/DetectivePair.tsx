@@ -83,6 +83,43 @@ export const HIGH_FIVE_CONTACT = {
   watson: { x: 15, y: 21 },
 } as const;
 
+/** The host's rendered rig height (detective.css pins the figure SVGs
+ * to this height); both viewBoxes scale from it. */
+export const DETECTIVE_RIG_HEIGHT_PX = 104;
+
+/**
+ * Celebrate layout (U8): where Watson's figure must sit, relative to
+ * Holmes's figure at the origin, so the two HIGH_FIVE_CONTACT anchors
+ * COINCIDE in the high-five pose — palm really meets palm.
+ *
+ * Facing math: in the celebrate cluster Holmes faces "right" (his art
+ * unflipped: contact at viewBox x=99) and Watson faces "left" (his art
+ * also unflipped — it profiles left natively: contact at x=15, beside
+ * Holmes when Watson stands to his right). Each contact is scaled by
+ * its own rig's rendered scale (height ÷ viewBox height), and Watson's
+ * offset is exactly the difference of the two rendered contacts.
+ */
+const holmesScale = DETECTIVE_RIG_HEIGHT_PX / 178; // viewBox 120×178
+const watsonScale = DETECTIVE_RIG_HEIGHT_PX / 140; // viewBox 134×140
+export const CELEBRATE_LAYOUT = {
+  rigHeightPx: DETECTIVE_RIG_HEIGHT_PX,
+  /** Holmes's contact point in rendered px, from his figure's origin. */
+  holmesContactPx: {
+    x: HIGH_FIVE_CONTACT.holmes.x * holmesScale,
+    y: HIGH_FIVE_CONTACT.holmes.y * holmesScale,
+  },
+  /** Watson's contact point in rendered px, from his figure's origin. */
+  watsonContactPx: {
+    x: HIGH_FIVE_CONTACT.watson.x * watsonScale,
+    y: HIGH_FIVE_CONTACT.watson.y * watsonScale,
+  },
+  /** Watson's figure offset from Holmes's origin for coincident anchors. */
+  watsonOffsetPx: {
+    x: HIGH_FIVE_CONTACT.holmes.x * holmesScale - HIGH_FIVE_CONTACT.watson.x * watsonScale,
+    y: HIGH_FIVE_CONTACT.holmes.y * holmesScale - HIGH_FIVE_CONTACT.watson.y * watsonScale,
+  },
+} as const;
+
 /* ------------------------------------------------------------------ */
 /* Faces — one expression set per pose, rendered alone (never stacked) */
 /* ------------------------------------------------------------------ */

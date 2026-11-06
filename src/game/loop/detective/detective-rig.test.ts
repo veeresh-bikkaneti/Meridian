@@ -46,7 +46,7 @@ const HOOKS_SOURCE = [
 
 register("data:text/javascript," + encodeURIComponent(HOOKS_SOURCE));
 
-const { HolmesRig, WatsonRig, HOLMES_POSES, WATSON_POSES, HIGH_FIVE_CONTACT } =
+const { HolmesRig, WatsonRig, HOLMES_POSES, WATSON_POSES, HIGH_FIVE_CONTACT, CELEBRATE_LAYOUT } =
   (await import("./DetectivePair.tsx")) as typeof import("./DetectivePair.tsx");
 
 function renderHolmes(pose: (typeof HOLMES_POSES)[number], facing: "left" | "right", speaking = false) {
@@ -176,4 +176,21 @@ test("size budget: both rigs' SVG markup is at most 15 KB gz combined", () => {
     renderHolmes("dock", "right") + renderWatson("station-idle", "right");
   const gz = gzipSync(combined).length;
   assert.ok(gz <= 15 * 1024, `combined gz ${gz} B exceeds the 15 KB budget`);
+});
+
+test("U8 celebrate layout: CELEBRATE_LAYOUT offset makes the two contact anchors coincide exactly", () => {
+  const { holmesContactPx, watsonContactPx, watsonOffsetPx } = CELEBRATE_LAYOUT;
+  // Watson placed at watsonOffsetPx: his contact lands on Holmes's.
+  const placedWatson = {
+    x: watsonOffsetPx.x + watsonContactPx.x,
+    y: watsonOffsetPx.y + watsonContactPx.y,
+  };
+  assert.ok(Math.abs(placedWatson.x - holmesContactPx.x) < 1e-9, "anchors coincide on x");
+  assert.ok(Math.abs(placedWatson.y - holmesContactPx.y) < 1e-9, "anchors coincide on y");
+  // And the rendered numbers are the hand-computed ones (104 px rigs):
+  // Holmes 99×104/178 ≈ 57.8, 25×104/178 ≈ 14.6; Watson 15×104/140 ≈ 11.1, 21×104/140 = 15.6.
+  assert.ok(Math.abs(holmesContactPx.x - 57.84) < 0.05);
+  assert.ok(Math.abs(holmesContactPx.y - 14.61) < 0.05);
+  assert.ok(Math.abs(watsonOffsetPx.x - 46.7) < 0.05);
+  assert.ok(Math.abs(watsonOffsetPx.y - -0.99) < 0.05);
 });

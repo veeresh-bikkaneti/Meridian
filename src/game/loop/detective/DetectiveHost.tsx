@@ -42,7 +42,7 @@ import {
   type ReactElement,
 } from "react";
 import { createPortal } from "react-dom";
-import { HolmesRig, WatsonRig } from "./DetectivePair";
+import { CELEBRATE_LAYOUT, HolmesRig, WatsonRig } from "./DetectivePair";
 import {
   initialDetectiveState,
   transition,
@@ -116,7 +116,7 @@ interface StationAnchor {
 }
 
 export default function DetectiveHost(props: DetectiveHostProps): ReactElement | null {
-  const { caseIndex, cluesRevealed, status, sheetOpen, lastGuessPlaceId } = props;
+  const { caseIndex, cluesRevealed, status, sheetOpen, lastGuessPlaceId, freshDeal, answerPlaceId } = props;
 
   /* -- machine instance: ref-held state, React state only for the view */
   const machineRef = useRef<DetectiveState>(initialDetectiveState());
@@ -211,13 +211,20 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     setView(fresh);
     playerRef.current?.stopAll();
     playerRef.current?.setCaseIndex(caseIndex);
+    // Case open FIRST (U8): on a fresh deal the machine starts the
+    // instruction duet; the clue below then pends behind it (the
+    // machine's pending pattern) instead of racing it. A resumed case
+    // skips the duet. freshDeal flips false after the first guess, but
+    // the seenCase guard above makes this effect once-per-case, so the
+    // value read here is the one from the case's first render.
+    dispatch({ type: "caseOpened", freshDeal });
     if (cluesRevealed >= 1) {
       dispatch({ type: "clueUnlocked", clueIndex: cluesRevealed });
     }
     // cluesRevealed at case-open time is the starting rung; later
     // increments arrive through the clue effect below.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [caseIndex]);
+  }, [caseIndex, freshDeal]);
 
   // The player's own latest pick → selection read. Ring absence timed
   // here. ORDER MATTERS: a guess commit changes lastGuessPlaceId and
@@ -254,9 +261,14 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   useEffect(() => {
     if (seenStatusRef.current === status) return;
     seenStatusRef.current = status;
-    if (status === "won") dispatch({ type: "caseSolved" });
+    // The answer's id (U8) crosses only here, on the solve, and only
+    // because the props builder already gated it to the post-solve
+    // reveal (it is null unless status is "won" — the same commit that
+    // flips status supplies it). The machine stores it for DEBRIEF
+    // and reads it nowhere else.
+    if (status === "won") dispatch({ type: "caseSolved", answerPlaceId });
     else if (status === "lost") dispatch({ type: "caseFailed" });
-  }, [status, dispatch]);
+  }, [status, dispatch, answerPlaceId]);
 
   // Bottom sheet overlay flag.
   const seenSheetRef = useRef(sheetOpen);
@@ -696,6 +708,51 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   if (view.watson.placement === "station" && watsonEl) stationFigures.push(<span key="w">{watsonEl}</span>);
   if (view.holmes.placement === "station" && holmesEl) stationFigures.push(<span key="h">{holmesEl}</span>);
 
+  /* CELEBRATE layout (U8): the pair stands side-by-side in a fixed
+   * cluster — Holmes at the origin, Watson offset by exactly
+   * CELEBRATE_LAYOUT.watsonOffsetPx, so in the high-five step the two
+   * HIGH_FIVE_CONTACT anchors coincide (palm meets palm; the rig test
+   * pins the arithmetic). The positions never change between steps —
+   * only the poses do — so the choreography reads as one held frame.
+   * The spark sits ABOVE the contact point (its box ends 8 px over the
+   * hands): it crowns the contact, it never masks it. */
+  const celebrating =
+    view.phase === "CELEBRATE" &&
+    view.holmes.placement === "station" &&
+    view.watson.placement === "station" &&
+    holmesEl !== null &&
+    watsonEl !== null;
+  const celebrateEl = celebrating ? (
+    <div
+      className="detective-host-celebrate"
+      data-testid="detective-celebrate"
+      data-celebrate-step={view.holmes.pose}
+    >
+      <div className="detective-celebrate-holmes">{holmesEl}</div>
+      <div
+        className="detective-celebrate-watson"
+        style={{
+          transform: `translate(${CELEBRATE_LAYOUT.watsonOffsetPx.x}px, ${CELEBRATE_LAYOUT.watsonOffsetPx.y}px)`,
+        }}
+      >
+        {watsonEl}
+      </div>
+      {view.holmes.pose === "high-five" ? (
+        <span
+          className="detective-celebrate-spark"
+          data-testid="detective-spark"
+          style={{
+            left: CELEBRATE_LAYOUT.holmesContactPx.x,
+            top: CELEBRATE_LAYOUT.holmesContactPx.y,
+          }}
+          aria-hidden="true"
+        >
+          ✦
+        </span>
+      ) : null}
+    </div>
+  ) : null;
+
   /* Map-side rendering (U6): Watson keeps the U5 dock cluster; Holmes
    * rides his own transform wrapper so the companion can walk him
    * between the dock and a berth without touching Watson or the map.
@@ -735,12 +792,13 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
 
   return (
     <>
-      {stationFigures.length > 0 ? (
+      {stationFigures.length > 0 || celebrateEl ? (
         <div
           className="detective-host-station"
           data-testid="detective-station"
           data-companion={companionMode}
           data-holmes-placement={effectivePlacement}
+          data-phase={view.phase}
           aria-hidden="true"
           style={
             anchor
@@ -748,7 +806,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
               : { left: 12, bottom: 96, top: "auto", transform: "none" }
           }
         >
-          {stationFigures}
+          {celebrateEl ?? stationFigures}
         </div>
       ) : null}
       {(holmesOnMap || watsonOnMap) && mapEl
@@ -758,6 +816,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
               data-testid="detective-host"
               data-companion={companionMode}
               data-holmes-placement={effectivePlacement}
+              data-phase={view.phase}
               aria-hidden="true"
             >
               {watsonOnMap && watsonEl ? (

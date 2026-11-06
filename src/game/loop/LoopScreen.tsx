@@ -1247,6 +1247,8 @@ function LoopGame({
               sheetOpen: selected !== null,
               lastGuessPlaceId:
                 puzzle.guesses[puzzle.guesses.length - 1]?.placeId ?? null,
+              freshDeal: puzzle.guesses.length === 0 && puzzle.cluesRevealed <= dealConfig.startingClues,
+              answerPlaceId: clue.placeId, // U8: the props builder gates this to the post-solve reveal only
             })}
           />
         </Suspense>
