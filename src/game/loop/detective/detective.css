@@ -262,3 +262,40 @@
     animation: none !important;
   }
 }
+
+/* --- host layout (U5): stations + dock ------------------------------- */
+/* The host is pointer-transparent: the pair never intercepts a tap meant
+   for the clue card or the map. Motion stays in the rig rules above;
+   these classes are placement only (transform on the station wrapper is
+   a static offset, not an animation). */
+
+.detective-host-station {
+  position: fixed;
+  z-index: 30;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  pointer-events: none;
+  transform: translateY(-100%);
+}
+
+.detective-host-dock {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.detective-host-figure {
+  pointer-events: none;
+}
+
+.detective-host-figure svg {
+  display: block;
+  height: 104px;
+  width: auto;
+}

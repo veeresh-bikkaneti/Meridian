@@ -36,7 +36,8 @@ export type FlagName =
   | "learningOutcomes"
   | "globeTierSplit"
   | "friendChallenges"
-  | "scoutUpgradeTrial";
+  | "scoutUpgradeTrial"
+  | "detectivePair";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -66,6 +67,11 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // and every other path are untouched. Disarm by redeploying
   // public/flags.json with this flag false; no code change needed.
   scoutUpgradeTrial: true,
+  // Holmes & Watson detective pair in GeoDetective (BUILD-SCOPE §2.6).
+  // false = today's behavior: the pair is never mounted and the game is
+  // byte-identical. true = the pair mounts in LoopScreen. Ships dark;
+  // the flip is a separate owner-gated flags.json redeploy (U9).
+  detectivePair: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;

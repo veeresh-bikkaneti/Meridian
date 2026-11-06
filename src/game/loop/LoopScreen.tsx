@@ -8,6 +8,8 @@ import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
 import { FlagImg } from "@/components/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
+import { isEnabled } from "@/lib/flags";
+import { buildDetectiveHostProps } from "./detective/detective-host-props";
 import { GradeChip } from "@/components/grade-chip";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
 import { BRAND } from "@/game/brand";
@@ -98,6 +100,11 @@ const HOOK_TIER_INDEX = 3;
 
 // The Storyteller mascot stays out of the initial bundle (lazy chunk).
 const StorytellerNarration = lazy(() => import("@/components/storyteller"));
+
+// Holmes & Watson (U5): same lazy-chunk discipline — and the host is
+// only ever mounted behind the detectivePair flag (default off), so a
+// flag-off session never even fetches the chunk.
+const DetectiveHost = lazy(() => import("./detective/DetectiveHost"));
 
 /** Puzzles whose hook narration already played this session (auto once per puzzle). */
 const hookNarratedPuzzles = new Set<string>();
@@ -1226,6 +1233,24 @@ function LoopGame({
       data-testid="loop-screen"
       className="mt-8 flex flex-col gap-6"
     >
+      {/* Holmes & Watson (U5, flag-gated, default off = not mounted at
+          all). Props come from the whitelist builder ONLY
+          (detective-host-props.ts): the pair never receives the puzzle,
+          the clue file, a target, or any evaluation. */}
+      {isEnabled("detectivePair") ? (
+        <Suspense fallback={null}>
+          <DetectiveHost
+            {...buildDetectiveHostProps({
+              caseIndex: puzzle.index,
+              cluesRevealed: puzzle.cluesRevealed,
+              status: puzzle.status,
+              sheetOpen: selected !== null,
+              lastGuessPlaceId:
+                puzzle.guesses[puzzle.guesses.length - 1]?.placeId ?? null,
+            })}
+          />
+        </Suspense>
+      ) : null}
       <section
         ref={mapSectionAnimateRef}
         aria-label="Detective's map"
