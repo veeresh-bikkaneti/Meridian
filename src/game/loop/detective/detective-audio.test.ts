@@ -303,3 +303,130 @@ test("U8 debrief at player level: a missing answer-name entry (the Tallinn case)
   assert.equal(speaking[speaking.length - 1], null);
   player.dispose();
 });
+
+/* ------------------------------------------------------------------ */
+/* U9 — speech modes: tap-mode hold + replay, off mode                 */
+/* ------------------------------------------------------------------ */
+
+function modeHarness(
+  mode: "auto" | "tap" | "off",
+  overrides: {
+    isSoundOn?: () => boolean;
+    canAutoPlay?: () => boolean;
+  } = {},
+) {
+  const played: string[] = [];
+  const speaking: Array<DetectiveSpeaker | null> = [];
+  const player = createDetectiveSpeech({
+    caseIndex: 387,
+    speechMode: mode,
+    loadManifest: async () => MANIFEST,
+    playClip: async (clip) => {
+      played.push(clip.url);
+    },
+    isSoundOn: overrides.isSoundOn ?? (() => true),
+    canAutoPlay: overrides.canAutoPlay ?? (() => true),
+    onSpeakingChange: (who) => speaking.push(who),
+  });
+  return { player, played, speaking };
+}
+
+test("U9 tap mode: clue chain resolves skipped (drains) but is held — read + ack, in order", async () => {
+  const { player, played, speaking } = modeHarness("tap");
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  assert.deepEqual(played, []); // nothing auto-plays
+  assert.deepEqual(speaking, [null]); // drain still fires — ladder advances silently
+  assert.deepEqual(player.heldRefs(), [
+    { kind: "clue", clueIndex: 1 },
+    { kind: "fixed", id: "ack-1" },
+  ]);
+  player.dispose();
+});
+
+test("U9 tap mode: selection / ask-next / instruction refs are NOT held", async () => {
+  const { player } = modeHarness("tap");
+  player.enqueue({ kind: "clue", clueIndex: 2 });
+  player.enqueue({ kind: "name", placeId: "geonames:323786" });
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  player.enqueue({ kind: "fixed", id: "ask-next" });
+  player.enqueue({ kind: "fixed", id: "instructions-holmes" });
+  await tick();
+  assert.deepEqual(player.heldRefs(), [{ kind: "clue", clueIndex: 2 }]);
+  player.dispose();
+});
+
+test("U9 tap mode: a new clue replaces the held chain", async () => {
+  const { player } = modeHarness("tap");
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  player.enqueue({ kind: "clue", clueIndex: 2 });
+  await tick();
+  assert.deepEqual(player.heldRefs(), [{ kind: "clue", clueIndex: 2 }]);
+  player.dispose();
+});
+
+test("U9 playHeldSequence: plays the held chain for real, in order, then drains", async () => {
+  const { player, played, speaking } = modeHarness("tap");
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  assert.deepEqual(played, []);
+  await player.playHeldSequence();
+  assert.deepEqual(played, [
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/ack-1.mp3",
+  ]);
+  assert.equal(speaking[speaking.length - 1], null);
+  player.dispose();
+});
+
+test("U9 playHeldSequence: the autoplay veto does NOT block a tap, the sound gate DOES", async () => {
+  // canAutoPlay false (pref "never") — a tap still plays.
+  const vetoed = modeHarness("tap", { canAutoPlay: () => false });
+  vetoed.player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  await vetoed.player.playHeldSequence();
+  assert.deepEqual(vetoed.played, ["/audio/detective/case-387/clue-1.mp3"]);
+  vetoed.player.dispose();
+  // Sound off at play time — silence.
+  let sound = true;
+  const muted = modeHarness("tap", { isSoundOn: () => sound });
+  muted.player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  sound = false;
+  await muted.player.playHeldSequence();
+  assert.deepEqual(muted.played, []);
+  muted.player.dispose();
+});
+
+test("U9 off mode: items resolve skipped, nothing is held, replay is a no-op", async () => {
+  const { player, played, speaking } = modeHarness("off");
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  assert.deepEqual(played, []);
+  assert.deepEqual(speaking, [null]); // drain — the ladder never stalls
+  assert.deepEqual(player.heldRefs(), []);
+  await player.playHeldSequence();
+  assert.deepEqual(played, []);
+  player.dispose();
+});
+
+test("U9 setSpeechMode: leaving tap drops the hold; auto mode holds nothing", async () => {
+  const { player, played } = modeHarness("tap");
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  assert.equal(player.heldRefs().length, 1);
+  player.setSpeechMode("off");
+  assert.deepEqual(player.heldRefs(), []);
+  assert.equal(player.getSpeechMode(), "off");
+  player.setSpeechMode("auto");
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  assert.deepEqual(played, ["/audio/detective/case-387/clue-1.mp3"]); // auto behaviour restored
+  assert.deepEqual(player.heldRefs(), []);
+  player.dispose();
+});
