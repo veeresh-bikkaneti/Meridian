@@ -13,7 +13,7 @@
 
 | Unit | Status |
 | :--- | :--- |
-| U1 Render pipeline + hash manifest + staleness CI gate | pending |
+| U1 Render pipeline + hash manifest + staleness CI gate | done — pipeline + manifest + gate shipped; case 137 rendered (5 Watson clues 82.3–99.1 Hz + Holmes answer 121.2 Hz, all ok); gate demo: clean tree exit 0, one tampered clue word in a copied tree exit 2 naming `cases.137.clues.0`; scripts/detective tests 15/15 |
 | U2 Fixed lines + 5 decode templates, pitch-gated | pending |
 | U3 Phase A renders (550 Capitals reads + 497 answers + name tier) | pending |
 | U4 Production character rig (approved colours, no pipe) | pending |

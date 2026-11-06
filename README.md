@@ -97,6 +97,18 @@ For the youngest players (Little Explorer, ages 5–7), GeoDetective is locked, 
 
 Two of the card films come in a second version, picked by the player's age band through two small selector functions in the same `card-media.ts` module. Little Explorer players (ages 5–7) see a softer Cold Trail film: the same walk out along the footprint trail and back, at a slower, gentler pace. Trail Scout players (ages 8–10) see a different Review film: the magnifying glass sweeps out and back over the satchel and settles on the usual picture, where the standard Review film overshoots, rewinds, and pauses to rethink. Every other player — including anyone who has not set a band, who gets the standard films — sees the films described above. The choice is exact and fails safe: only the one band named for each variant ever downloads it, the card boxes and the component never change, and the same reduced-motion, Save-Data, and low-memory rules apply to the variants too.
 
+### Detective audio (Holmes & Watson, in build)
+
+GeoDetective is gaining two spoken companions — Holmes on the map, Watson at the clue card — behind the `detectivePair` feature flag, which ships off. Their voices are **pre-rendered on purpose**: every line is recorded ahead of time with the two pinned voices, because a live text-to-speech voice on the player's device cannot hold the characters' measured pitch or pace. Lines live as plain MP3 files under `public/audio/detective/`, fetched only when a case plays — never bundled, never precached.
+
+The render pipeline lives in `scripts/detective/`. One command re-renders a case end to end (five clue reads plus the answer read):
+
+```bash
+node scripts/detective/render-audio.mjs --case 137
+```
+
+Each render is measured (pitch and words-per-minute) and recorded in `public/audio/detective/manifest.json` with a hash of its exact words, voice, speed and gain. If a clue's words change later, that line's hash no longer matches, and the staleness gate — `npm run check:detective-audio`, also wired into every build — fails and names the stale line until it is re-rendered. Case 137 ships with its renders as the development/test case; the Capitals & Flags cases are the first claimed coverage.
+
 ### Supporting the game
 
 Meridian is free for kids — no paywalls, no accounts. Grown-ups can buy the builder a coffee: **"Grown-ups — buy me a coffee? ☕"** — "Your support keeps Meridian free for kids". That copy is locked verbatim.

@@ -1,0 +1,95 @@
+{
+ "v": 1,
+ "voices": {
+  "holmes": "avocado_v2:atlas",
+  "watson": "avocado_v2:pb1_music_02"
+ },
+ "coverage": {
+  "capitals": [],
+  "answers": [],
+  "fixed": false,
+  "namesMinPopulation": 500000,
+  "namesTierComplete": false
+ },
+ "fixed": {},
+ "cases": {
+  "137": {
+   "clues": [
+    {
+     "text": "This Nevada city sits just south east of Las Vegas. It fills a broad, dry valley in the hot south of the state.",
+     "textHash": "1b10ad7d23d11c999b16d934e86d336878dacc2b256133ca617e5518a4abff2a",
+     "voice": "avocado_v2:pb1_music_02",
+     "speed": 100,
+     "gainDb": 0,
+     "file": "case-137/clue-1.mp3",
+     "measuredHz": 82.3,
+     "measuredWpm": 154,
+     "durationSec": 8.95,
+     "status": "ok"
+    },
+    {
+     "text": "This is a hot desert city, yet snow can fall in winter. Summer storms can also strike fast and flood the dry streets.",
+     "textHash": "1bf22cf1c83d77533eb1e3d77a1fde5c131dece87fadec3ca20c9a961ea95e17",
+     "voice": "avocado_v2:pb1_music_02",
+     "speed": 97,
+     "gainDb": 0,
+     "file": "case-137/clue-2.mp3",
+     "measuredHz": 99.1,
+     "measuredWpm": 140,
+     "durationSec": 9.89,
+     "status": "ok"
+    },
+    {
+     "text": "It was set up as a city in 1953. In the war just before, its plants made magnesium for the war push.",
+     "textHash": "ff51f5cd8f2828ab1c64a8a40584b712ed187afd0afa6fb9a1364b1b43792ffe",
+     "voice": "avocado_v2:pb1_music_02",
+     "speed": 95,
+     "gainDb": 0,
+     "file": "case-137/clue-3.mp3",
+     "measuredHz": 87.4,
+     "measuredWpm": 148,
+     "durationSec": 8.93,
+     "status": "ok"
+    },
+    {
+     "text": "After the PEPCON disaster, this city built back strong. It grew fast with planned new towns, starting with Green Valley.",
+     "textHash": "538cb218501e16b089ea8e8e975daf0333194ff6c034b1a5649f89a6b233cbd3",
+     "voice": "avocado_v2:pb1_music_02",
+     "speed": 89,
+     "gainDb": 0,
+     "file": "case-137/clue-4.mp3",
+     "measuredHz": 90.4,
+     "measuredWpm": 99,
+     "durationSec": 12.07,
+     "status": "ok",
+     "note": "pitch retry ladder moved speed 92 -> 89"
+    },
+    {
+     "text": "A web of long trails links its many parks, mile after mile. That green web is a proud mark of this desert city.",
+     "textHash": "09d110a0b88cb2f2a78ed4b18b5bbe0cfe009c8332f354beed77032542d8d632",
+     "voice": "avocado_v2:pb1_music_02",
+     "speed": 105,
+     "gainDb": 0,
+     "file": "case-137/clue-5.mp3",
+     "measuredHz": 89.9,
+     "measuredWpm": 140,
+     "durationSec": 9.84,
+     "status": "ok"
+    }
+   ],
+   "answer": {
+    "text": "Out of guesses. The answer was Henderson, Nevada, United States.",
+    "textHash": "5f4a7c5c62dbb01339339c479763cbb8007e66831016f39b1f532ecc23ae8a3a",
+    "voice": "avocado_v2:atlas",
+    "speed": 100,
+    "gainDb": 0,
+    "file": "case-137/answer.mp3",
+    "measuredHz": 121.2,
+    "measuredWpm": 116,
+    "durationSec": 5.16,
+    "status": "ok"
+   }
+  }
+ },
+ "names": {}
+}
