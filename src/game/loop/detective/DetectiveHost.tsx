@@ -68,7 +68,13 @@ import {
   type DetectiveDegradation,
 } from "./detective-degradation";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-import { isSoundEnabled } from "@/game/audio/sfx";
+import { VolumeX } from "lucide-react";
+import { SoundToggle } from "@/components/SoundToggle";
+import {
+  isSoundEnabled,
+  onSoundChanged,
+  setSoundEnabled,
+} from "@/game/audio/sfx";
 import type { DetectiveHostProps } from "./detective-host-props";
 import {
   berthFor,
@@ -209,20 +215,23 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Sound toggle-off stops speech immediately (spec: the toggle cancels
-  // speech). Polled cheaply at 1 Hz — there is no sound-change event bus
-  // in the codebase, and 1 Hz is not per-frame work. The same poll keeps
-  // the degradation's soundOn input current (U9).
+  // Sound toggle-off stops speech immediately (PR C, council Q6): the
+  // host SUBSCRIBES to the sound module's change listeners —
+  // setSoundEnabled notifies synchronously, so a mute from any surface
+  // (the screen's SoundToggle, the pair chip below, or a tap on
+  // Holmes) stops the current clip and flushes the queued pair lines
+  // in the SAME event, through the player's stopAll (its currentStop
+  // path). This replaces the old 1 Hz poll, which leaked up to a
+  // second of speech after a mute tap. Unmute never resumes a stopped
+  // line: stopAll cleared the queue and nothing re-enqueues it. The
+  // same subscription keeps the degradation's soundOn input current
+  // (U9) and drives the muted badge below.
   useEffect(() => {
-    let wasOn = isSoundEnabled();
-    setSoundOn(wasOn);
-    const id = setInterval(() => {
-      const on = isSoundEnabled();
-      if (wasOn && !on) playerRef.current?.stopAll();
-      wasOn = on;
+    setSoundOn(isSoundEnabled());
+    return onSoundChanged((on) => {
       setSoundOn(on);
-    }, 1000);
-    return () => clearInterval(id);
+      if (!on) playerRef.current?.stopAll();
+    });
   }, []);
 
   // The player's speech mode follows the degradation (U9): in "tap"
@@ -960,10 +969,135 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       </button>
     ) : null;
 
+  /* Sound Everywhere (PR C, council Q6) — three surfaces, ONE action:
+   * every one of them flips the same persisted master toggle
+   * (meridian.sound via setSoundEnabled / SoundToggle); there is no
+   * second key and no pair-only mute.
+   *
+   * 1. The speaker CHIP: a real SoundToggle instance (≥44 px) riding
+   *    the pair cluster — beside the figures at the clue-card station,
+   *    above the dock cluster on the map. Its Volume2/VolumeX icon is
+   *    the toggle's own muted display.
+   * 2. The muted BADGE: a slashed-speaker disc latched on the cluster
+   *    while muted, so the state reads at a glance. The figures
+   *    themselves are never greyed or altered (Brand ruling, Q6).
+   * 3. Tap-HOLMES alias: Holmes's figure body is a transparent button
+   *    over his rendered box (station, celebrate, dock, and berth —
+   *    the map one rides his transform wrapper's exact geometry),
+   *    wired to the same toggle. Watson's replay button is a separate
+   *    element over a separate figure; both handlers stop propagation,
+   *    so a Holmes tap can never fire a replay and a Watson tap can
+   *    never mute. Muting stops the speaking clip in the same event
+   *    via the onSoundChanged subscription above. */
+  const toggleSoundFromHolmes = (e: { stopPropagation(): void }) => {
+    e.stopPropagation();
+    try {
+      setSoundEnabled(!isSoundEnabled());
+    } catch {
+      // Sound is enhancement-only; the alias never throws into play.
+    }
+  };
+  const mutedBadge = !soundOn ? (
+    <span
+      className="detective-muted-badge"
+      data-testid="detective-muted-badge"
+      aria-hidden="true"
+    >
+      <VolumeX className="size-4" aria-hidden="true" />
+    </span>
+  ) : null;
+  const soundChip = (
+    <SoundToggle testId="detective-sound-chip" className="detective-sound-chip" />
+  );
+  const watsonAtStation = view.watson.placement === "station";
+  const holmesAtStation = view.holmes.placement === "station";
+  // Station geometry (rendered boxes at 104 px tall): Watson ≈100 px
+  // wide, Holmes 70 px, cluster gap 4 px. Holmes stands right of
+  // Watson in the plain station cluster; in the celebrate cluster he
+  // is at the origin (CELEBRATE_LAYOUT) and the cluster is 147 px wide.
+  const holmesStationOffset = celebrating ? 0 : watsonAtStation ? 104 : 0;
+  const chipStationOffset = celebrating
+    ? 155
+    : watsonAtStation && holmesAtStation
+      ? 182
+      : watsonAtStation
+        ? 108
+        : 78;
+  const stationSoundEl =
+    stationFigures.length > 0 || celebrateEl ? (
+      <div
+        className="detective-host-sound"
+        style={
+          anchor
+            ? { left: anchor.left + chipStationOffset, top: anchor.top }
+            : {
+                left: 12 + chipStationOffset,
+                bottom: 96,
+                top: "auto",
+                transform: "none",
+              }
+        }
+      >
+        {soundChip}
+        {mutedBadge}
+      </div>
+    ) : null;
+  const stationHolmesMuteEl = holmesAtStation ? (
+    <div
+      className="detective-host-holmes-mute"
+      style={
+        anchor
+          ? { left: anchor.left + holmesStationOffset, top: anchor.top }
+          : {
+              left: 12 + holmesStationOffset,
+              bottom: 96,
+              top: "auto",
+              transform: "none",
+            }
+      }
+    >
+      <button
+        type="button"
+        className="detective-holmes-mute"
+        data-testid="detective-holmes-mute"
+        aria-label={soundOn ? "Mute sound" : "Unmute sound"}
+        aria-pressed={!soundOn}
+        onClick={toggleSoundFromHolmes}
+      />
+    </div>
+  ) : null;
+  const mapSoundEl =
+    holmesOnMap || watsonOnMap ? (
+      <div className="detective-host-sound-map">
+        {soundChip}
+        {mutedBadge}
+      </div>
+    ) : null;
+  const mapHolmesMuteEl =
+    holmesOnMap && !berthHidden ? (
+      <button
+        type="button"
+        className="detective-holmes-mute detective-holmes-mute-map"
+        data-testid="detective-holmes-mute"
+        aria-label={soundOn ? "Mute sound" : "Unmute sound"}
+        aria-pressed={!soundOn}
+        onClick={toggleSoundFromHolmes}
+        style={{
+          transform: `translate3d(${holmesXY.x}px, ${holmesXY.y}px, 0)`,
+          transition:
+            holmesTransition.durationMs > 0
+              ? `transform ${holmesTransition.durationMs}ms ${holmesTransition.easing}`
+              : "none",
+        }}
+      />
+    ) : null;
+
   return (
     <>
       {listenEl}
       {watsonReplayStationEl}
+      {stationSoundEl}
+      {stationHolmesMuteEl}
       {stationFigures.length > 0 || celebrateEl ? (
         <div
           className="detective-host-station"
@@ -1009,6 +1143,11 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
                   but OUTSIDE the aria-hidden map root, over Watson's
                   dock figure (see the station element above). */}
               {watsonReplayDockEl}
+              {/* PR C: the pair's sound chip + tap-Holmes alias ride
+                  the same portal, likewise OUTSIDE the aria-hidden
+                  map root — real buttons must stay reachable. */}
+              {mapSoundEl}
+              {mapHolmesMuteEl}
             </>,
             mapEl,
           )
