@@ -177,6 +177,11 @@ export interface DetectiveState {
   ringAnimating: boolean;
   /** Last pointer-pause point (kinematics only — U6's berth solver input). */
   lastPausePoint: { x: number; y: number } | null;
+  /** How many acknowledgements have actually played in this case. The
+   * ack rotation is driven by THIS count, never by the clue index:
+   * the Hook (clue 4) plays no ack, so an index-keyed rotation repeated
+   * ack-1 on the Giveaway and never played ack-4 (cure pass, item 7). */
+  acksPlayed: number;
 }
 
 export function initialDetectiveState(
@@ -198,6 +203,7 @@ export function initialDetectiveState(
     externalSpeech: false,
     ringAnimating: false,
     lastPausePoint: null,
+    acksPlayed: 0,
   };
 }
 
@@ -229,9 +235,13 @@ export const CLUE_TYPE_BY_INDEX: Record<number, string> = {
   5: "giveaway",
 };
 
-/** Holmes's rotating acknowledgement for clue n: ack-1..ack-4. */
-export function ackIdForClue(clueIndex: number): string {
-  return `ack-${(((clueIndex - 1) % 4) + 4) % 4 + 1}`;
+/** Holmes's rotating acknowledgement, by ACK COUNT (acks actually
+ * played so far in the case, 0-based): the first ack of a case is
+ * ack-1, then ack-2, ack-3, ack-4, then the rotation wraps to ack-1.
+ * Keying by count — not clue index — is what guarantees no repeat
+ * before all four have played even though the Hook plays no ack. */
+export function ackIdForAckCount(acksPlayed: number): string {
+  return `ack-${(((acksPlayed % 4) + 4) % 4) + 1}`;
 }
 
 export function decodeIdForClue(clueIndex: number): string {
@@ -677,15 +687,16 @@ export function transition(
           if (state.readingStep === "watson-read") {
             if (state.clueIndex === 4) {
               // Hook: the decode follows the read directly (the long
-              // silence already happened before the announcement), then
-              // Watson's one amazement fragment. No ack on the Hook —
-              // the announcement spent that beat.
+              // silence already happened before the announcement).
+              // No ack on the Hook — the announcement spent that beat.
+              // (The amazement fragment that once followed the decode
+              // was CUT in the cure pass: it measured 49 wpm against
+              // the ≥165 wpm breathless spec and could not reach the
+              // floor even at the renderer's maximum speed — see
+              // BRANCH_STATUS's cure-pass entry.)
               return result(
                 { ...state, readingStep: "ack-decode" },
-                [
-                  speak({ kind: "fixed", id: decodeIdForClue(4) }),
-                  speak({ kind: "fixed", id: "amazement" }),
-                ],
+                [speak({ kind: "fixed", id: decodeIdForClue(4) })],
               );
             }
             // Every other clue: the 0.6 s silent thinking beat sits
@@ -783,12 +794,14 @@ export function transition(
             [speak({ kind: "fixed", id: "hook-announcement" })],
           );
         }
-        // Thinking beat over → Holmes acknowledges (rotating ack) and
-        // delivers the clue-type decode; both queue sequentially.
+        // Thinking beat over → Holmes acknowledges (next ack in the
+        // count rotation) and delivers the clue-type decode; both
+        // queue sequentially. The count advances here, at the one
+        // place an ack is actually spoken.
         return result(
-          { ...state, phase: "READING" },
+          { ...state, phase: "READING", acksPlayed: state.acksPlayed + 1 },
           [
-            speak({ kind: "fixed", id: ackIdForClue(state.clueIndex) }),
+            speak({ kind: "fixed", id: ackIdForAckCount(state.acksPlayed) }),
             speak({ kind: "fixed", id: decodeIdForClue(state.clueIndex) }),
           ],
         );

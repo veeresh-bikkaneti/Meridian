@@ -4,6 +4,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { test } from "node:test";
 import {
+  CLUES_ONLY_BUDGET_BYTES,
+  checkClueBudgets,
   createManifest,
   entryFromSpec,
   readManifest,
@@ -135,4 +137,31 @@ test("real tree: the committed manifest verifies against current sources", () =>
   const manifest = readManifest(ROOT);
   const result = verifyManifest(ROOT, manifest);
   assert.equal(result.ok, true, JSON.stringify(result.problems));
+});
+
+test("budget: a case whose clue files stay under the clues-only budget passes", () => {
+  const { root, clue } = fakeTree("A fine first clue.");
+  const manifest = manifestFor(root, clue);
+  assert.equal(CLUES_ONLY_BUDGET_BYTES, 500_000);
+  assert.deepEqual(checkClueBudgets(root, manifest), []);
+});
+
+test("budget: clue bytes over 500,000 fail, and the answer read does not count", () => {
+  const { root, clue } = fakeTree("A fine first clue.");
+  const manifest = manifestFor(root, clue);
+  const plan = casePlan(clue, "Testville, Nevada, United States", 7);
+  // A huge ANSWER file alone must not trip the clues-only budget.
+  writeFileSync(join(root, "public/audio/detective", plan.answer.file), Buffer.alloc(600_000));
+  assert.deepEqual(checkClueBudgets(root, manifest), [], "answer bytes are excluded by definition");
+  // One oversized CLUE file pushes the clues-only total over budget.
+  writeFileSync(join(root, "public/audio/detective", plan.clues[0].file), Buffer.alloc(500_001));
+  const problems = checkClueBudgets(root, manifest);
+  assert.equal(problems.length, 1);
+  assert.equal(problems[0].kind, "over-budget");
+  assert.equal(problems[0].key, "cases.7.clues");
+});
+
+test("real tree: every shipped case is inside the clues-only budget", () => {
+  const manifest = readManifest(ROOT);
+  assert.deepEqual(checkClueBudgets(ROOT, manifest), []);
 });

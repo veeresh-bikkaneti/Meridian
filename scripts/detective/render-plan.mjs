@@ -13,8 +13,10 @@
  * Clue text is always VERBATIM from the case's clue file. Fixed lines are
  * the owner-approved prototype lines (evidence: REPORT-animated.md,
  * REPORT loop run) or the game's own on-screen copy — never new writing,
- * except the two decode templates and the amazement fragment the council
- * left as drafts; those are flagged DRAFT in their manifest notes.
+ * except the two decode templates the council left as drafts; those
+ * are flagged DRAFT in their manifest notes. (A third draft, Watson's
+ * amazement fragment, was cut in the cure pass — it could not reach
+ * its ≥165 wpm breathless pace inside Watson's pitch family.)
  */
 
 export const VOICES = Object.freeze({
@@ -121,15 +123,12 @@ export const FIXED_LINES = Object.freeze([
   // Endings — the game's own solve copy.
   spec({ id: "win-holmes", kind: "win", text: "You found it!", voice: VOICES.holmes, speed: 108, file: "fixed/win-holmes.mp3" }),
   spec({ id: "win-watson", kind: "win", text: "Case closed — the gold star marks the answer.", voice: VOICES.watson, speed: 100, file: "fixed/win-watson.mp3" }),
-  // Watson's single Hook amazement fragment. No approved wording exists
-  // in the prototype evidence, so this text is a DRAFT for panel review.
-  spec({ id: "amazement", kind: "amazement", text: "Extraordinary... truly extraordinary.", voice: VOICES.watson, speed: 106, file: "fixed/amazement.mp3", note: "DRAFT wording — no approved prototype wording exists; panel review required" }),
   // Clue-local decode templates (never per-case, never combining clues).
   spec({ id: "decode-geography", kind: "decode", clueKind: "geography", text: "Borders first. The rest follows.", voice: VOICES.holmes, speed: 100, file: "fixed/decode-geography.mp3" }),
   spec({ id: "decode-climate", kind: "decode", clueKind: "climate", text: "Weather narrows the world.", voice: VOICES.holmes, speed: 100, file: "fixed/decode-climate.mp3" }),
   spec({ id: "decode-history", kind: "decode", clueKind: "history", text: "Old stories leave addresses.", voice: VOICES.holmes, speed: 100, file: "fixed/decode-history.mp3" }),
-  spec({ id: "decode-hook", kind: "decode", clueKind: "hook", text: "One detail... and the whole map tilts. Everything before it was a path to this.", voice: VOICES.holmes, speed: 104, file: "fixed/decode-hook.mp3", note: "DRAFT wording — template decode, panel review required" }),
-  spec({ id: "decode-giveaway", kind: "decode", clueKind: "giveaway", text: "That settles it. Trust your pin.", voice: VOICES.holmes, speed: 104, file: "fixed/decode-giveaway.mp3", note: "DRAFT wording — template decode, panel review required" }),
+  spec({ id: "decode-hook", kind: "decode", clueKind: "hook", text: "This is the clue to weigh most carefully.", voice: VOICES.holmes, speed: 104, file: "fixed/decode-hook.mp3", note: "DRAFT wording — template decode, panel review required" }),
+  spec({ id: "decode-giveaway", kind: "decode", clueKind: "giveaway", text: "That settles it — with the giveaway in hand, you can trust your pin.", voice: VOICES.holmes, speed: 104, file: "fixed/decode-giveaway.mp3", note: "DRAFT wording — template decode, panel review required" }),
   // Post-solve debrief frame: the answer's name read slots between these
   // two lines at runtime; the frame itself names no place.
   spec({ id: "debrief-frame", kind: "debrief", text: "The land. The weather. The story. The hook. The giveaway.", voice: VOICES.holmes, speed: 104, file: "fixed/debrief-frame.mp3" }),

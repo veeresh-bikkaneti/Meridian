@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
-  ackIdForClue,
+  ackIdForAckCount,
   decodeIdForClue,
   initialDetectiveState,
   transition,
@@ -77,7 +77,7 @@ function hookClue(): DetectiveEvent[] {
     { type: "clueUnlocked", clueIndex: 4 },
     { type: "beatElapsed" }, // long silence over → announcement
     { type: "speechEnded" }, // announcement → Watson reads
-    { type: "speechEnded" }, // read → decode-hook + amazement
+    { type: "speechEnded" }, // read → decode-hook
     { type: "speechEnded" }, // drained → search
   ];
 }
@@ -129,30 +129,55 @@ test("clue 1: read → 600ms thinking beat → ack-1 + decode-geography → dock
   assert.equal(searchView.watson.placement, "dock");
 });
 
-test("ack rotation and decode types by clue position", () => {
-  assert.equal(ackIdForClue(1), "ack-1");
-  assert.equal(ackIdForClue(2), "ack-2");
-  assert.equal(ackIdForClue(3), "ack-3");
-  assert.equal(ackIdForClue(4), "ack-4");
-  assert.equal(ackIdForClue(5), "ack-1"); // rotation wraps: (5-1) % 4 = 0
+test("ack rotation is by ack count, and decode types by clue position", () => {
+  // Count-based selector (cure pass item 7): the first ack played in a
+  // case is ack-1; the rotation then walks 2, 3, 4 and wraps to 1.
+  // The old clue-index pin (clue 4 → ack-4, clue 5 → ack-1) encoded
+  // the flaw: the Hook plays no ack, so ack-4 never played and ack-1
+  // repeated on the Giveaway.
+  assert.equal(ackIdForAckCount(0), "ack-1");
+  assert.equal(ackIdForAckCount(1), "ack-2");
+  assert.equal(ackIdForAckCount(2), "ack-3");
+  assert.equal(ackIdForAckCount(3), "ack-4");
+  assert.equal(ackIdForAckCount(4), "ack-1"); // rotation wraps after all four
   assert.equal(decodeIdForClue(1), "decode-geography");
   assert.equal(decodeIdForClue(2), "decode-climate");
   assert.equal(decodeIdForClue(3), "decode-history");
   assert.equal(decodeIdForClue(4), "decode-hook");
   assert.equal(decodeIdForClue(5), "decode-giveaway");
 
-  // In-machine: clues 2, 3, 5 ack + decode pairs.
-  for (const [n, ack, decode] of [
-    [2, "ack-2", "decode-climate"],
-    [3, "ack-3", "decode-history"],
-    [5, "ack-1", "decode-giveaway"],
+  // In-machine, from a FRESH case each time: the first ack is always
+  // ack-1 (the E2E pins rely on this), whatever clue it follows.
+  for (const [n, decode] of [
+    [2, "decode-climate"],
+    [3, "decode-history"],
+    [5, "decode-giveaway"],
   ] as const) {
     const steps = run(normalClue(n));
-    assert.deepEqual(speakIds(steps[2]!.effects), [`fixed:${ack}`, `fixed:${decode}`]);
+    assert.deepEqual(speakIds(steps[2]!.effects), ["fixed:ack-1", `fixed:${decode}`]);
   }
 });
 
-test("Hook (clue 4): long beat → announce → read → decode-hook → amazement → search", () => {
+test("full 5-clue case: acks rotate 1→2→3→4 with no repeat, ack-4 plays", () => {
+  // One continuous case: clues 1–3 and 5 ack through the thinking
+  // beat; the Hook (clue 4) plays no ack. Count rotation therefore
+  // deals ack-1, ack-2, ack-3 and — on the Giveaway — ack-4.
+  const steps = run([
+    ...normalClue(1),
+    ...normalClue(2),
+    ...normalClue(3),
+    ...hookClue(),
+    ...normalClue(5),
+  ]);
+  const acks = steps
+    .flatMap((s) => speakIds(s.effects))
+    .filter((id) => id.startsWith("fixed:ack-"));
+  assert.deepEqual(acks, ["fixed:ack-1", "fixed:ack-2", "fixed:ack-3", "fixed:ack-4"]);
+  assert.equal(new Set(acks).size, acks.length, "no ack repeats before all four have played");
+  assert.ok(acks.includes("fixed:ack-4"), "ack-4 plays at least once per full case");
+});
+
+test("Hook (clue 4): long beat → announce → read → decode-hook → search", () => {
   const steps = run(hookClue());
   // Silence BEFORE the announcement (800–1200ms), no speech yet.
   assert.equal(steps[0]!.phase, "THINKING_BEAT");
@@ -170,9 +195,9 @@ test("Hook (clue 4): long beat → announce → read → decode-hook → amazeme
   // Then Watson reads.
   assert.deepEqual(speakIds(steps[2]!.effects), ["clue:4"]);
   assert.equal(viewForState(steps[2]!.state).watson.pose, "read");
-  // Decode follows the read directly — no ack on the Hook — plus the
-  // one amazement fragment, in that order.
-  assert.deepEqual(speakIds(steps[3]!.effects), ["fixed:decode-hook", "fixed:amazement"]);
+  // Decode follows the read directly — no ack on the Hook, and no
+  // amazement fragment (cut in the cure pass: unreachable pace spec).
+  assert.deepEqual(speakIds(steps[3]!.effects), ["fixed:decode-hook"]);
   assert.equal(steps[4]!.phase, "SEARCH_IDLE");
   assert.equal(viewForState(steps[4]!.state).holmes.placement, "dock");
 });
@@ -204,7 +229,7 @@ test("full ladder: open → 5 clues with selection reads → solve → debrief",
     { type: "speechEnded" }, // → hook THINKING_BEAT
     { type: "beatElapsed" },
     { type: "speechEnded" }, // announce → read
-    { type: "speechEnded" }, // read → decode + amazement
+    { type: "speechEnded" }, // read → decode
     { type: "speechEnded" }, // → search
   );
   // Giveaway.
@@ -509,7 +534,7 @@ test("U7: ask-next fires exactly once per unlock across a full 5-guess game — 
       events.push(
         { type: "beatElapsed" }, // hook silence → announcement
         { type: "speechEnded" }, // announcement → read
-        { type: "speechEnded" }, // read → decode + amazement
+        { type: "speechEnded" }, // read → decode
         { type: "speechEnded" }, // → search
       );
     } else {

@@ -31,7 +31,7 @@ test("pace floors: Watson clues 100, Holmes lines 90, names and Watson fragments
   assert.equal(paceFloorFor(fixedLine("ack-1")), 90, "a Holmes fixed line is gated at 90 wpm");
   assert.equal(paceFloorFor(fixedLine("win-holmes")), 90);
   assert.equal(paceFloorFor(fixedLine("instructions-watson")), null, "Watson fixed lines are not clue reads");
-  assert.equal(paceFloorFor(fixedLine("amazement")), null, "the amazement fragment lingers on purpose");
+  assert.equal(paceFloorFor(fixedLine("win-watson")), null, "Watson fixed lines carry no pace floor");
   const name = selectionNamePlan({ id: "geonames:5856195", n: "honolulu", r: "Hawaii, United States", p: 345064 });
   assert.equal(name.voice, VOICES.holmes);
   assert.equal(paceFloorFor(name), null, "a 1–3 word name read has no meaningful wpm");

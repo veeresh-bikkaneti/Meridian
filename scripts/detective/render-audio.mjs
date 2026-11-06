@@ -59,9 +59,7 @@ function bandFor(spec) {
   if (spec.id === "hook-announcement" || spec.id === "suspicion")
     return { target: [100, 135], family: [90, 160] };
   if (spec.voice === VOICES.watson)
-    return spec.id === "amazement"
-      ? { target: [92, 127], family: [78, 127] }
-      : { target: [82, 100], family: [78, 127] };
+    return { target: [82, 100], family: [78, 127] };
   return { target: [120, 145], family: [110, 160] };
 }
 

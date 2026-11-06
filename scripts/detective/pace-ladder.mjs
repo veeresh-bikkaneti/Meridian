@@ -32,9 +32,12 @@ export const MAX_PACE_RETRIES = 2;
 /**
  * The pace floor for a render spec, or null when pace is not gated.
  *
- * Watson is gated on clue reads only — his fixed fragments are paced
- * by their wording on purpose (the amazement fragment lingers over
- * its pauses). Holmes is gated on his lines (answers, fixed lines).
+ * Watson is gated on clue reads only — his fixed fragments carry no
+ * pace floor. (The cure pass superseded the old note here, which held
+ * that the amazement fragment "lingered" by design: the fragment was
+ * in fact under its ≥165 wpm breathless spec at 49 wpm, could not be
+ * rendered up to the floor, and was cut.) Holmes is gated on his
+ * lines (answers, fixed lines).
  * Selection-name reads carry no floor: a name is one to three words,
  * so its "wpm" measures the pauses around it, not a speaking pace —
  * 1,366 of the 1,460 name reads accepted in U3 sit under 90 wpm.

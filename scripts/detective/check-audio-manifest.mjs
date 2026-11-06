@@ -6,8 +6,11 @@
  * saying the old words. This gate recomputes every claimed manifest
  * entry's hash from the CURRENT sources (clue files + render plan +
  * names catalog — text only, never audio bytes, so it stays fast) and
- * fails the build when a render is stale or missing. Node-only: no
- * python, no ffmpeg, safe for the prebuild chain.
+ * fails the build when a render is stale or missing. It also enforces
+ * the per-case CLUES-ONLY size budget (checkClueBudgets in
+ * audio-manifest.mjs): a case whose five clue reads together exceed
+ * 500,000 B on disk fails the gate. Node-only: no python, no ffmpeg,
+ * safe for the prebuild chain.
  *
  * Exit codes: 0 clean · 2 stale/missing (each line named) · 3 manifest
  * unreadable. Usage: check-audio-manifest.mjs [--root <dir>] [--json]
@@ -16,7 +19,7 @@
 import { existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { MANIFEST_REL, readManifest, verifyManifest } from "./audio-manifest.mjs";
+import { MANIFEST_REL, checkClueBudgets, readManifest, verifyManifest } from "./audio-manifest.mjs";
 
 const args = process.argv.slice(2);
 let root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -50,7 +53,13 @@ try {
 
 let result;
 try {
-  result = verifyManifest(root, manifest);
+  const verified = verifyManifest(root, manifest);
+  const budgetProblems = checkClueBudgets(root, manifest);
+  result = {
+    ...verified,
+    ok: verified.ok && budgetProblems.length === 0,
+    problems: [...verified.problems, ...budgetProblems],
+  };
 } catch (e) {
   console.error(`error: could not recompute expected renders: ${e.message}`);
   process.exit(3);

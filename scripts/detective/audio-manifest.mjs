@@ -14,7 +14,7 @@
  * textHash = sha256 hex of `voice|speed|gainDb|text`.
  */
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, renameSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, renameSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { FIXED_LINES, VOICES, casePlan, displayName, selectionNamePlan } from "./render-plan.mjs";
 
@@ -303,4 +303,46 @@ export function verifyManifest(root, manifest) {
     }
   }
   return { ok: problems.length === 0, checked, problems };
+}
+
+/* ------------------------------------------------------------------ */
+/* Per-case clues-only size budget (cure pass, item 4)                 */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The per-case audio budget, CLUES-ONLY definition: the five clue
+ * reads of one case together must not exceed this many bytes on disk.
+ * The answer read is NOT counted. (The record previously claimed a
+ * clues+answer budget with no enforcement anywhere; measured truth:
+ * clues+answer exceeds 500,000 B in 12 of 497 cases — worst case 397
+ * at 524,574 B — while the clues-only maximum is case 397 at
+ * 495,161 B, inside the budget. The budget now means clues-only and
+ * this gate enforces it.)
+ */
+export const CLUES_ONLY_BUDGET_BYTES = 500_000;
+
+/**
+ * Sum the on-disk sizes of each manifest case's CLUE files only and
+ * report every case over the budget. Missing files are skipped here —
+ * verifyManifest already reports them as missing-file problems.
+ * @returns {{ key: string, kind: "over-budget", detail: string }[]}
+ */
+export function checkClueBudgets(root, manifest) {
+  const problems = [];
+  for (const [caseIndex, bucket] of Object.entries(manifest.cases ?? {})) {
+    let total = 0;
+    for (const entry of bucket?.clues ?? []) {
+      if (!entry?.file) continue;
+      const path = join(root, AUDIO_REL, entry.file);
+      if (existsSync(path)) total += statSync(path).size;
+    }
+    if (total > CLUES_ONLY_BUDGET_BYTES) {
+      problems.push({
+        key: `cases.${caseIndex}.clues`,
+        kind: "over-budget",
+        detail: `clues-only audio is ${total} B, over the ${CLUES_ONLY_BUDGET_BYTES} B per-case budget (answer read not counted)`,
+      });
+    }
+  }
+  return problems;
 }

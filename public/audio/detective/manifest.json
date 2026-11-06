@@ -754,19 +754,6 @@
    "durationSec": 2.52,
    "status": "ok"
   },
-  "amazement": {
-   "text": "Extraordinary... truly extraordinary.",
-   "textHash": "44df8e9f550359b9b40307c038d2f1807368ab9aafc6b7b2f0fdda7e2b89ed89",
-   "voice": "avocado_v2:pb1_music_02",
-   "speed": 103,
-   "gainDb": 0,
-   "file": "fixed/amazement.mp3",
-   "measuredHz": 103.9,
-   "measuredWpm": 49,
-   "durationSec": 3.7,
-   "status": "ok",
-   "note": "DRAFT wording — no approved prototype wording exists; panel review required; pitch retry ladder moved speed 106 -> 103"
-  },
   "decode-climate": {
    "text": "Weather narrows the world.",
    "textHash": "16d1ff0accf367fa91cd4eb7de2b06b6e4e4ced3eeb3c6963adbbead116b653d",
@@ -781,15 +768,15 @@
    "note": "pitch retry ladder moved speed 100 -> 103"
   },
   "decode-giveaway": {
-   "text": "That settles it. Trust your pin.",
-   "textHash": "82ce2f8c5b9ea3ea107c69493349467503c534d053b303e2ee2a0f9ece078604",
+   "text": "That settles it — with the giveaway in hand, you can trust your pin.",
+   "textHash": "ea6601a54313b515a89d6723c73b1c6d3734a3b8e27c95c25845d0238031585d",
    "voice": "avocado_v2:atlas",
    "speed": 104,
    "gainDb": 0,
    "file": "fixed/decode-giveaway.mp3",
-   "measuredHz": 125,
-   "measuredWpm": 128,
-   "durationSec": 2.81,
+   "measuredHz": 144.1,
+   "measuredWpm": 203,
+   "durationSec": 4.13,
    "status": "ok",
    "note": "DRAFT wording — template decode, panel review required"
   },
@@ -820,15 +807,15 @@
    "note": "pitch 115.1 Hz outside target 82-100 Hz — inside the wider family band 78-127 Hz, accepted as flagged; pitch retry ladder moved speed 100 -> 94"
   },
   "decode-hook": {
-   "text": "One detail... and the whole map tilts. Everything before it was a path to this.",
-   "textHash": "a00d402f81b6eb318e6cc1bc6df61a3acc0aa788edca4a9d569e60c86ee4af51",
+   "text": "This is the clue to weigh most carefully.",
+   "textHash": "dcd8295cd089c5a43b49ae854b8bde5a5bf35cd8945475cd9469a395b59713bd",
    "voice": "avocado_v2:atlas",
    "speed": 104,
    "gainDb": 0,
    "file": "fixed/decode-hook.mp3",
-   "measuredHz": 136.8,
-   "measuredWpm": 119,
-   "durationSec": 7.58,
+   "measuredHz": 120.3,
+   "measuredWpm": 175,
+   "durationSec": 2.74,
    "status": "ok",
    "note": "DRAFT wording — template decode, panel review required"
   },

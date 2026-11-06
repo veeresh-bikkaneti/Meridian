@@ -85,13 +85,18 @@ test("fixed lines: instructions are the game's own copy, split Holmes/Watson", (
   assert.equal(fixedLine("win-watson").text, "Case closed — the gold star marks the answer.");
 });
 
-test("fixed lines: decodes are templates; hook/giveaway + amazement flagged DRAFT", () => {
+test("fixed lines: decodes are templates; hook/giveaway flagged DRAFT, clue-local", () => {
   assert.equal(fixedLine("decode-geography").text, "Borders first. The rest follows.");
   assert.equal(fixedLine("decode-hook").speed, 104);
   assert.match(fixedLine("decode-hook").note, /DRAFT/);
   assert.match(fixedLine("decode-giveaway").note, /DRAFT/);
-  assert.match(fixedLine("amazement").note, /DRAFT/);
-  assert.equal(fixedLine("amazement").voice, VOICES.watson);
+  // Cure pass: both reworded decodes are ONE sentence about their own
+  // clue only — no cross-clue synthesis, no reference to earlier clues.
+  assert.equal(fixedLine("decode-hook").text, "This is the clue to weigh most carefully.");
+  assert.equal(fixedLine("decode-giveaway").text, "That settles it — with the giveaway in hand, you can trust your pin.");
+  // The amazement fragment was cut (49 wpm vs its ≥165 wpm spec,
+  // unreachable at maximum render speed) — it must not reappear.
+  assert.equal(FIXED_LINES.some((l) => l.id === "amazement"), false);
   assert.equal(fixedLine("debrief-frame").text, "The land. The weather. The story. The hook. The giveaway.");
   assert.equal(fixedLine("debrief-close").text, "All of it — one place. Elementary.");
 });
