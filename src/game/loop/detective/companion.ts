@@ -240,6 +240,19 @@ export type BerthResult =
 export const BERTH_TOUCH_CENTRE_MIN = 96;
 export const BERTH_DESKTOP_CENTRE_MIN = 64;
 export const BERTH_EDGE_MIN = 56;
+/**
+ * Render margin (px) added to the legal minimums INSIDE the solver.
+ * The constants above are the council's law, and the law judges the
+ * RENDERED box — but two small losses sit between the solver's model
+ * and the screen: the box origin is rounded to whole px (≤0.71 px of
+ * centre drift), and the host's rendered rect sits +1/+1 px from the
+ * solved transform (measured by the U10 K2 audit's transform-vs-rect
+ * diagnostic). Solving to the bare minimum therefore rendered as low
+ * as 94.3 px centre / 55.3 px edge on the touch grid — a real breach
+ * of the law the player sees. The solver now aims 3 px past the law
+ * so the rendered berth honours it; the law itself is unchanged.
+ */
+const RENDER_MARGIN_PX = 3;
 export const BERTH_EXCLUSION_CLEARANCE = 120;
 export const BERTH_REMOTE_DISTANCE = 320;
 /** Candidate offsets are scanned on this grid (px) — coarse enough to
@@ -252,7 +265,9 @@ const SCAN_MAX_CENTRE = 280;
 export function berthFor(input: BerthInput): BerthResult {
   const { pausePoint, holmesBox, viewport, dock, exclusions } = input;
   const touch = input.pointerType === "touch";
-  const centreMin = touch ? BERTH_TOUCH_CENTRE_MIN : BERTH_DESKTOP_CENTRE_MIN;
+  const centreMin =
+    (touch ? BERTH_TOUCH_CENTRE_MIN : BERTH_DESKTOP_CENTRE_MIN) +
+    RENDER_MARGIN_PX;
 
   // Remote rule first: a pause far from home is not worth crossing
   // the map for — he stays docked and thinks there.
@@ -280,7 +295,7 @@ export function berthFor(input: BerthInput): BerthResult {
     // Closest box edge ≥ 56 dp from the touch centroid.
     const dxEdge = Math.max(Math.abs(pausePoint.x - cx) - halfW, 0);
     const dyEdge = Math.max(Math.abs(pausePoint.y - cy) - halfH, 0);
-    if (Math.hypot(dxEdge, dyEdge) < BERTH_EDGE_MIN) return false;
+    if (Math.hypot(dxEdge, dyEdge) < BERTH_EDGE_MIN + RENDER_MARGIN_PX) return false;
     // On screen, fully.
     if (cx - halfW < 0 || cy - halfH < 0) return false;
     if (cx + halfW > viewport.w || cy + halfH > viewport.h) return false;
