@@ -163,6 +163,28 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // U10 gates pack: one project per detective gate spec (the U9
+      // one-project-per-spec convention).
+      name: "detective-stations",
+      testMatch: /detective-stations\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      name: "detective-companion",
+      testMatch: /detective-companion\.spec\.ts/,
+      use: { viewport: { width: 768, height: 1024 } },
+    },
+    {
+      name: "detective-swap",
+      testMatch: /detective-swap\.spec\.ts/,
+      use: { viewport: { width: 800, height: 700 } },
+    },
+    {
+      name: "detective-endings",
+      testMatch: /detective-endings\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },
