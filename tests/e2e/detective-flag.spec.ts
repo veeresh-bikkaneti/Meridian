@@ -2,18 +2,22 @@ import { test, expect, type BrowserContext } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * Detective flag wiring (U9): the Holmes & Watson pair ships dark
- * behind the `detectivePair` flag.
+ * Detective flag wiring (U9): the Holmes & Watson pair sits behind
+ * the `detectivePair` flag.
  *
- * - Served with the artifact's flags.json AS COMMITTED (the flag key
- *   present, value false) → no detective host exists in the DOM on a
- *   GeoDetective case: the game is byte-identical to today.
- * - Served with a route-intercepted flags.json flipping the flag true
+ * - Served with a route-intercepted flags.json setting the flag false
+ *   → no detective host exists in the DOM on a GeoDetective case: the
+ *   game is byte-identical to the pair never having shipped.
+ * - Served with a route-intercepted flags.json setting the flag true
  *   → the host mounts on the case.
  *
- * The interception follows the feature-flags.spec.ts pattern: the
- * route is registered AFTER serveBuiltArtifact, so it wins for the
- * flags.json request.
+ * Both states are intercepted (the pattern feature-flags.spec.ts
+ * uses), so this spec verifies the kill-switch wiring itself and
+ * does not depend on the value committed in public/flags.json —
+ * the committed value flipped to true on the owner's word
+ * (2026-11-06), and flipping it back must not change what this
+ * spec proves. The interception is registered AFTER
+ * serveBuiltArtifact, so it wins for the flags.json request.
  */
 
 const APP = "http://127.0.0.1:4123/Meridian/?loop-puzzle=137";
@@ -59,11 +63,11 @@ test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
-test("flag off (committed flags.json): no detective host in the DOM", async ({
+test("flag off (intercepted flags.json): no detective host in the DOM", async ({
   page,
+  context,
 }) => {
-  // No interception: the built artifact serves public/flags.json as
-  // committed, where detectivePair is present and false.
+  await fulfillFlags(context, false);
   await openCase(page);
   // Give a (hypothetical) host every chance to mount, then assert the
   // pair's DOM simply does not exist.

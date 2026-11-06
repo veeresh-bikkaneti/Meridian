@@ -174,6 +174,27 @@ the re-run panel and the flip owner can check them off one by one.
   accept the named famous gaps in FG-4 — or hold the flip. Silence
   is not acceptance.
 
+### THE FLIP — executed 2026-11-06
+
+- **The word:** Veeresh, 2026-11-06 09:54 CST, in the 'meridian'
+  chat: "flip" — given after the complete gate state (FG-1…FG-14,
+  the re-vote's six Act-On items, K4 measured on the throttled
+  proxy only, K1/K6 child sessions not yet run) had been presented
+  to him in writing in that chat. This chapter records his word as
+  the explicit acceptance the section above requires: the FG-4
+  named gaps are accepted as-is, and the remaining gates are stood
+  down by the owner, not cured. They stay on the record above as
+  known state, not as closed items.
+- **The change:** `public/flags.json` — `detectivePair` false →
+  true (one line). The pair's code was already live dark on both
+  hosts (main `f6009cc`, PR #355); this redeploy is the flip.
+- **The probe:** re-run at flip time per the ownership above; its
+  result is appended to this record when it lands. (0/88 is the
+  expected outcome — the backend failure is deterministic per
+  string across every attempt so far.)
+- **Kill-switch:** reverting is the same one-line redeploy with
+  `false`; clients pick it up on next boot, no client release.
+
 ## Audio: pre-rendered, with honest coverage
 
 - Runtime speech synthesis was rejected for this pair (BUILD-SCOPE

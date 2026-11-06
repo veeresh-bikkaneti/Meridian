@@ -1,3 +1,12 @@
+## FLIP — chore/flip-detective-pair (2026-11-06)
+
+- **The word:** Veeresh, 2026-11-06 09:54 CST: "flip" — the owner-gated
+  `detectivePair` flip this file's Locked decisions (5) anticipated.
+- **The change:** `public/flags.json` `detectivePair` false → true (one
+  line); the flag E2E spec now intercepts both states instead of assuming
+  the committed value; the flip is recorded in handbook ch.10 ("THE FLIP").
+  Tier 0 (config) per the repo AGENTS.md. Gates: CI on the flip PR.
+
 ## Holmes & Watson for GeoDetective, Phase A — feat/detective-pair (2026-11-05)
 
 - **Authority:** Veeresh, 2026-11-05 — build ordered on the approved full-loop mockup ("I guess its ok let's build it"), then all six scope decisions answered "All recommended." Design of record: `BUILD-SCOPE.md` + `COUNCIL-holmes-watson.md` (evidence folder; scope also at `prototype/BUILD-SCOPE.md` on `design/detective-moments-prototype`).
