@@ -1,11 +1,14 @@
 # 10 — Holmes & Watson: the detective pair (decision record)
 
-*Status as of 2026-11-06: built on `feat/detective-pair` (units U1–U9),
-merged dark — the feature is OFF in production. This chapter records
-what is decided, what is built, and what still gates the switch-on.
-It does not record approval where none has been given: the review
-panel has NOT reviewed this PR yet, and no merge or flip is approved
-by anything written here.*
+*Status as of 2026-11-06: built on `feat/detective-pair` — units
+U1–U10, plus the owner's fold-in Unit A (tap-Watson replay) and
+Unit B (game-end celebration in every edition), plus the review
+cure pass — in PR #355, which is OPEN. The feature is **to be
+merged dark — not yet merged; feature OFF.** This chapter records
+what is decided, what is built, and what still gates the
+switch-on. It does not record approval where none has been given:
+the review panel has NOT approved this PR's final tip yet, and no
+merge or flip is approved by anything written here.*
 
 ## The decision
 
@@ -16,10 +19,42 @@ by anything written here.*
   pause-triggered waypoint companion that is answer-blind by
   construction, pre-rendered voices only, and a post-solve debrief as
   the one place Holmes draws a conclusion.
+- Veeresh, 2026-11-06 (fold-in order): tap-Watson replay (Unit A) and
+  the game-end celebration in every edition (Unit B) belong in this
+  PR, not a follow-up.
 - The pair ships behind the `detectivePair` feature flag, **default
   false** — in `src/lib/flags.ts` (baked-in default) and, since U9,
   in `public/flags.json` as an explicit `false`, so the remote flip
   path is ready and testable.
+
+## How the system fits together
+
+```mermaid
+flowchart TD
+  subgraph Host["DetectiveHost (observer wiring)"]
+    Props["Whitelisted props only:<br/>phase, clueIndex, pointer,<br/>sheetOpen, speechPlaying"]
+    HostEvents["Game / pointer / sheet events"]
+  end
+  Machine["detective-state.ts<br/>pure state machine — 13 phases<br/>(DETECTIVE_PHASES)"]
+  Player["detective-audio.ts<br/>sequential speech player<br/>manifest = coverage"]
+  Companion["companion.ts<br/>pause detector + berth solver<br/>+ auto-kill"]
+  Pair["DetectivePair rigs<br/>Holmes on the map · Watson at the card"]
+  Manifest["public/audio/detective/manifest.json<br/>hash-pinned render record"]
+  Pipeline["scripts/detective pipeline<br/>render-plan → render-audio<br/>(pitch + pace ladders) → manifest gate<br/>+ clues-only budget check"]
+  Degradation["detective-degradation.ts<br/>reduced motion / Save-Data / memory /<br/>battery / sound → dock-only, tap, off"]
+  Summary["SummaryDetectiveCelebration (Unit B)<br/>RunSummaryCard mount — every edition<br/>fixed score line; score as frame text"]
+
+  HostEvents --> Machine
+  Props --> Machine
+  Machine -->|"speak / dwell effects"| Player
+  Machine -->|"view: poses + placements"| Pair
+  Machine --> Companion
+  Companion -->|"berth / dock / hidden"| Pair
+  Player -->|"clip URLs by manifest entry"| Manifest
+  Pipeline --> Manifest
+  Degradation -->|"companion / walk / speech modes"| Host
+  Machine -.->|"CELEBRATE choreography + dwells (local driver)"| Summary
+```
 
 ## The flip gate (not yet passed)
 
@@ -33,9 +68,111 @@ Turning the flag on is a separate, later step, gated on ALL of:
    audits, the performance protocol) passing on the shipping tip.
 3. The full review pipeline's verdict on the final tip.
 4. Veeresh's explicit word for the flip itself.
+5. Every **named flip gate** in the next section, each closed by its
+   own stated trigger or cure condition.
 
-Until all four hold, the flag stays false. A flags.json redeploy is
-the whole flip mechanism — and the whole kill-switch.
+Until all of these hold, the flag stays false. A flags.json redeploy
+is the whole flip mechanism — and the whole kill-switch.
+
+### Named flip gates (recorded by the cure pass — not cured in it)
+
+Each gate below blocks the flip, not the dark merge, unless it says
+otherwise. Wording is the panel's / gate evidence's, kept by name so
+the re-run panel and the flip owner can check them off one by one.
+
+- **FG-1 · Station occlusion (HIGH, two panel seats).** The shipped
+  Phase A capture stills 1 + 3 and frames f06/f09 show the pair
+  standing ON clue cards, covering text; the U5 smoke shows them over
+  the search input + legend. The U10 stations "gap 0 / overlap 0"
+  rests on ONE Clue-1 sample against the anchored card (see the U10
+  gate report's cure-pass qualification). **Trigger/cure:** before
+  the flip, station overlap must be asserted across clues 1–5, the
+  CELEBRATE and DEBRIEF layouts, and after layout shifts / scroll;
+  the cure must reserve or offset real space (gutter, side placement,
+  or shrink) — overlaying the card is not a cure.
+- **FG-2 · External-speech absence unwired.** The machine handles
+  `externalSpeechStarted` / `externalSpeechEnded`, but
+  `DetectiveHost` never dispatches them, so the storyteller hook
+  narration (`LoopScreen.tsx`) can overlap the pair's speech.
+  **Trigger/cure:** wire the dispatch + an E2E proving the pair goes
+  absent / silent during external speech, before the flip.
+- **FG-3 · Core-387 silence.** Phase A audio covers the Capitals
+  pack only. If the flag flips before U11, core-deck cases play the
+  full visual ritual over silent clue reads. **Trigger:** U11
+  complete OR coverage-gated speech (no ritual without its reads)
+  is required before the flip.
+- **FG-4 · The 88 missing names hit famous places.** The render
+  backend deterministically refuses 88 planned name reads, and they
+  are not obscure: **Lahore (13.0M), Karachi (11.6M), Baghdad
+  (7.2M)**; capitals **Tashkent, Phnom Penh, Kampala, Mogadishu,
+  Ulaanbaatar, Chisinau** (plus Tallinn, a below-tier case answer).
+  The debrief's name slot is silent in **case 462 (Baghdad)** and
+  **case 491 (Tallinn)**. **Trigger:** the flip / Phase-B decision
+  must explicitly accept these named gaps or cure the top-end names
+  first (see also the flip-day probe ownership below).
+- **FG-5 · K4 performance additions.** K4 stays a flip gate (proxy
+  FAIL-as-measured rows; battery unmeasured; re-measure on hardware).
+  Added trigger, recorded verbatim from the panel: **auto-kill can
+  latch during case-load jank on instant-drain paths (tap/off speech
+  reaches SEARCH_IDLE during load jank)** — the flip check must
+  exercise that path, not only steady-state search.
+- **FG-6 · K6 ear pass is 244 flagged entries, 69 out-of-band.** The
+  K6 owner ear pass covers **244 flagged manifest entries, 69 of
+  them outside their pitch family band** — it is not a 3-line check.
+  Two entries are resolved by name here:
+  - **ack-3 — cured by Unit B's re-render (recorded accurately).**
+    Unit B's `--fixed` passes incidentally re-rendered ack-3 under
+    the flagged-retry semantics: **115.1 Hz / 90 wpm** (was 107.4 Hz /
+    81 wpm at U2). 115.1 Hz is **inside Holmes's 110–160 Hz family
+    band** (still flagged: outside the 120–145 Hz target). Its
+    manifest note still quotes the older 107.4 Hz pitch-ladder text;
+    the measured fields (115.1 Hz / 90 wpm) are the current truth.
+    ack-3 therefore does **not** stand as an outstanding K6 item on
+    its old numbers; the ear pass still hears it as a flagged line.
+  - **win-watson — still flagged, stays a named K6 item.** Current
+    manifest: **115.1 Hz / 138 wpm, status flagged** — outside
+    Watson's 82–100 Hz target, inside the wider 78–127 Hz family
+    band. The K6 ear pass must explicitly pass or re-render it.
+- **FG-7 · Guess-during-reading is dropped.** `guessConfirmed` is a
+  no-op outside the SEARCH phases, so a guess confirmed while a clue
+  read is playing is silently dropped by the machine.
+  **Trigger/cure:** pendingGuess symmetry (the pendingClue /
+  pendingEnd pattern) is required before the flip.
+- **FG-8 · Dock overlaps MapLibre attribution at 390 px.** Capture
+  stills f04/f05 and still-2 show the dock over the attribution.
+  **Trigger/cure:** move the dock or the attribution before the flip.
+- **FG-9 · Exclusion-marker over-claim.** `measureExclusions` reads
+  the target-correlated pulse marker. **Trigger/cure:** restrict it
+  to the draft marker and correct the "No game data" comment, before
+  the flip.
+- **FG-10 · measure() scroll-throttle.** The host's measurement path
+  needs its scroll-throttle before the flip.
+- **FG-11 · Tap-mode drops ALL non-clue lines (equity).** In tap
+  speech mode, non-clue lines (acks, decodes, endings) are dropped,
+  so low-end / Save-Data players — the tap-mode population — get a
+  lesser pair. **Trigger:** fix before the flip, or the flip decision
+  explicitly accepts it on the record.
+- **FG-12 · Debrief needs a text equivalent.** The spoken debrief
+  (frame → name → close) has no caption. **Trigger/cure:** a text
+  equivalent (caption) for the debrief is a flip item.
+- **FG-13 · K5 widening at the flip gate.** The swap test must be
+  widened at flip time: a touch trace (the shipped K5 used a pointer
+  trace) and a second endpoint.
+- **FG-14 · DRAFT-line ratification.** The decode templates (as
+  reworded in the cure pass), and Unit B's score-celebration line,
+  are DRAFT wording. (The third draft, the amazement fragment, was
+  cut by the cure pass and needs no ratification.) **Trigger:**
+  owner / panel ratification of the DRAFT lines is a named flip gate.
+
+### Flip-day ownership: the 88-name probe
+
+- **Owner:** the agent running the flip — Chitti — on Veeresh's
+  explicit flip word.
+- **Trigger:** at flip time, Chitti re-runs the 88-name render probe
+  (the deterministic plan set minus the manifest's name keys). If the
+  probe still recovers **0/88**, the flip decision must explicitly
+  accept the named famous gaps in FG-4 — or hold the flip. Silence
+  is not acceptance.
 
 ## Audio: pre-rendered, with honest coverage
 
@@ -49,8 +186,34 @@ the whole flip mechanism — and the whole kill-switch.
   deterministically. Those 88 picks are not gaps in disguise: an
   uncovered name plays the suspicion line with the name silent —
   never an improvised or substituted voice.
+- **Per-case size budget — corrected definition (cure pass).** The
+  budget is **CLUES-ONLY: a case's five clue reads together ≤
+  500,000 B; the answer read is not counted.** It is enforced by
+  `checkClueBudgets` in the manifest gate
+  (`scripts/detective/check-audio-manifest.mjs`), with unit tests.
+  Measured on the shipped tree: the clues-only maximum is **495,161 B
+  (case 397)** — inside budget. The earlier clues+answer claim was
+  false as written (the old gate had no budget logic at all):
+  **clues+answer exceeds 500,000 B in 12 of 497 cases, worst case 397
+  at 524,574 B.** That fact stands on the record; it is not gated.
 - The core deck's 387 cases are Phase B (U11), after the Phase A
-  gates pass.
+  gates pass. **Phase B cost (cure-pass record): U11 = 1,935 core
+  clue reads (387 × 5); ≈ +155 MB of audio, ≈ 248 MB total** for the
+  detective audio tree.
+- **Unit B spoken score — Path 2 verdict (recorded).** The preferred
+  composable spoken score was measured broken across two full
+  pipeline passes: single-word number renders are pitch-unstable
+  (num-four measured 116.8 Hz in one pass and 222.2 Hz in the next;
+  8 of 30 words outside Holmes's 110–160 Hz family band) and the
+  "points" framing line failed its pace floor twice (83 wpm). The
+  shipped design is therefore ONE fixed celebration line, with the
+  score always visible in-frame as text — a spoken number can never
+  disagree with the displayed total.
+- **Known transient (not a fold-in regression).** On the capture VM,
+  the pre-existing READING→SEARCH figure overlap can show the pair
+  at station and dock together for ~3 s; it self-resolves and was
+  measured during Unit A's E2E work. Recorded so the flip-day QA
+  does not mistake it for a new defect.
 
 ## Degradation is part of the design (U9)
 
@@ -62,3 +225,36 @@ makes the pair fully visual. The matrix is one pure function —
 `resolveDetectiveDegradation` in
 `src/game/loop/detective/detective-degradation.ts` — with a unit test
 for every row.
+
+## Player-facing QA checklist (for the flip-day pass)
+
+Worked from the gate / flip-gate material above; every item is
+checkable by playing, not by reading code.
+
+- [ ] **Occlusion, every clue:** play one Capitals case through all
+  five clues — at no clue does either figure cover clue-card text,
+  the search input, or the map legend (FG-1).
+- [ ] **Occlusion, endings:** on a solve (CELEBRATE + DEBRIEF) and on
+  the game-end summary celebration, the pair covers no card text and
+  no score.
+- [ ] **Occlusion, after shifts:** rotate / resize / scroll mid-case
+  and re-check the two items above — placement re-settles clear.
+- [ ] **External speech:** trigger the storyteller hook narration
+  mid-case — the pair does not speak over it (FG-2).
+- [ ] **Core-case behaviour:** open a core-deck (non-Capitals) case —
+  either its clues are read aloud (U11 done) or the pair does not
+  perform the silent ritual (FG-3).
+- [ ] **Dock + attribution at 390 px:** at phone width, the dock and
+  the MapLibre attribution are both fully readable, never stacked
+  (FG-8).
+- [ ] **Debrief caption:** solve a case with sound off — the debrief
+  is available as on-screen text (FG-12).
+- [ ] **Tap-mode equity:** in tap (Save-Data / low-memory) mode, a
+  case still delivers acks, decodes and endings — or the flip record
+  explicitly accepts their absence (FG-11).
+- [ ] **Replay:** tap Watson mid-read and after a read — the current
+  clue's read + ack + decode restarts from the top, exactly once
+  (Unit A).
+- [ ] **Game end, every edition:** end a State, a Country and a
+  Globe run — each summary celebrates with the pair around the final
+  score, and the frame total matches the card total (Unit B).
