@@ -192,6 +192,14 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // Unit B (fold-in): game-end celebration on the run summary in
+      // every edition. The reduced-motion variant rides the shared
+      // `reduced` project (detective-summary.reduced.spec.ts).
+      name: "detective-summary",
+      testMatch: /detective-summary\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },
