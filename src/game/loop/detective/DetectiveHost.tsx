@@ -174,17 +174,14 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [caseIndex]);
 
-  // New clue revealed mid-case (after a guess): remember it — the
-  // machine bridges through the selection read + ASK_NEXT itself.
-  const seenCluesRef = useRef(cluesRevealed);
-  useEffect(() => {
-    if (seenCluesRef.current === cluesRevealed) return;
-    seenCluesRef.current = cluesRevealed;
-    if (seenCaseRef.current !== caseIndex) return; // case effect owns it
-    dispatch({ type: "clueUnlocked", clueIndex: cluesRevealed });
-  }, [cluesRevealed, caseIndex, dispatch]);
-
-  // The player's own latest pick → selection read. Ring absence timed here.
+  // The player's own latest pick → selection read. Ring absence timed
+  // here. ORDER MATTERS: a guess commit changes lastGuessPlaceId and
+  // cluesRevealed in the SAME render, and effects run in declaration
+  // order — the guess must reach the machine FIRST, while it is still
+  // in a SEARCH phase. The clue effect below then lands its
+  // clueUnlocked inside SELECTION_READ, where the machine stores it as
+  // the pending clue and bridges via ASK_NEXT. (Reversed, the clue
+  // would start READING and the selection read would be swallowed.)
   const seenGuessRef = useRef<string | null>(null);
   useEffect(() => {
     if (!lastGuessPlaceId || lastGuessPlaceId === seenGuessRef.current) return;
@@ -196,6 +193,16 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       dispatchRef.current({ type: "ringAnimationEnded" });
     }, RING_ABSENCE_MS);
   }, [lastGuessPlaceId, dispatch]);
+
+  // New clue revealed mid-case (after a guess): remember it — the
+  // machine bridges through the selection read + ASK_NEXT itself.
+  const seenCluesRef = useRef(cluesRevealed);
+  useEffect(() => {
+    if (seenCluesRef.current === cluesRevealed) return;
+    seenCluesRef.current = cluesRevealed;
+    if (seenCaseRef.current !== caseIndex) return; // case effect owns it
+    dispatch({ type: "clueUnlocked", clueIndex: cluesRevealed });
+  }, [cluesRevealed, caseIndex, dispatch]);
 
   // Case endings, from the game's own status.
   const seenStatusRef = useRef(status);
