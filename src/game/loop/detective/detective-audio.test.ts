@@ -619,11 +619,12 @@ test("Unit A auto mode: sound off at replay time still drops the replay", async 
 
 /* ------------------------------------------------------------------ */
 /* Gesture-wait resurrection (cure, panel round 1): the DEFAULT clip  */
-/* player parks in waitForGesture() before currentStop exists, so a   */
-/* stopAll in that window (a mute, whose host path generation-bumps)  */
-/* cannot reach it. After the cure the player re-checks generation +  */
-/* the sound gate when the wait resolves and aborts silently. These   */
-/* tests drive the real default player with a stubbed window/Audio.   */
+/* player parks in waitForGesture() before its Audio element exists. */
+/* The cure registers the stop handle BEFORE the wait, so a stopAll  */
+/* in that window (a mute, a case change) settles the parked clip    */
+/* exactly like a playing one, and the sound gate is re-checked at   */
+/* wake. These tests drive the real default player with a stubbed    */
+/* window/Audio.                                                      */
 /* ------------------------------------------------------------------ */
 
 function stubBrowserAudio(playedUrls: string[]): () => void {
@@ -682,9 +683,10 @@ test("gesture wait: a stopAll during the wait keeps the parked clip silent when 
     await tick();
     // The clip is parked in waitForGesture (no Audio exists yet).
     assert.deepEqual(playedUrls, []);
-    // The mute path: stopAll generation-bumps while currentStop
-    // does not exist — then the gesture lands with sound reading
-    // on again (the keyboard mute/unmute cycle from the panel).
+    // The mute path: stopAll lands while the clip is parked — then
+    // the gesture lands with sound reading on again (the keyboard
+    // mute/unmute cycle from the panel). The parked clip must stay
+    // silent: stopAll settled it through the pre-registered stopper.
     player.stopAll();
     fireGesture();
     await tick();
@@ -714,6 +716,34 @@ test("gesture wait: with no stop, the parked clip plays when the gesture lands",
     await tick();
     await tick();
     assert.deepEqual(playedUrls, ["/audio/detective/case-387/clue-1.mp3"]);
+    player.dispose();
+  } finally {
+    unplugBrowserAudio();
+  }
+});
+
+test("gesture wait: a sound gate closed at wake (no stopAll) keeps the parked clip silent", async () => {
+  const playedUrls: string[] = [];
+  const fireGesture = stubBrowserAudio(playedUrls);
+  let soundOn = true;
+  try {
+    const player = createDetectiveSpeech({
+      caseIndex: 387,
+      loadManifest: async () => MANIFEST,
+      isSoundOn: () => soundOn,
+      canAutoPlay: () => true,
+    });
+    player.enqueue({ kind: "clue", clueIndex: 1 });
+    await tick();
+    await tick();
+    assert.deepEqual(playedUrls, []);
+    // The gate closes while parked, without a stopAll reaching the
+    // player — the wake-time gate re-check must still hold the clip.
+    soundOn = false;
+    fireGesture();
+    await tick();
+    await tick();
+    assert.deepEqual(playedUrls, []);
     player.dispose();
   } finally {
     unplugBrowserAudio();
