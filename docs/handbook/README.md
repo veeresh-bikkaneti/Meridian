@@ -37,6 +37,7 @@ trace it, treat it as a claim, not a fact, and ask.
 | 7 | [Engineering & ops](07-engineering-and-ops.md) | Stack, flags, gates, crash reporting, and the merge traps |
 | 8 | [How we work](08-how-we-work.md) | The people, the review pipeline, the merge law, the scar tissue |
 | 9 | [Onboarding](09-onboarding.md) | Your first week: what to read, how to ship a change, the glossary |
+| 10 | [Holmes & Watson pair](10-holmes-and-watson-pair.md) | The GeoDetective companions: what is decided, what is built, and what gates the flag flip |
 
 ## The drawings
 

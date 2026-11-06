@@ -109,6 +109,23 @@ node scripts/detective/render-audio.mjs --case 137
 
 Each render is measured (pitch and words-per-minute) and recorded in `public/audio/detective/manifest.json` with a hash of its exact words, voice, speed and gain. If a clue's words change later, that line's hash no longer matches, and the staleness gate — `npm run check:detective-audio`, also wired into every build — fails and names the stale line until it is re-rendered. Case 137 ships with its renders as the development/test case; the Capitals & Flags cases are the first claimed coverage.
 
+### Holmes & Watson on the case
+
+When the pair is switched on, two companions join GeoDetective. Watson stands by the clue card and reads each clue aloud. Holmes acknowledges, adds a short decode, then waits on the map: when a player pauses to think, he walks over and thinks beside the pause — never pointing, never hinting, because he never sees the answer, any guess score, or even which case is being played. A chosen place gets its name read back with one and the same suspicion line for every pick. A solve ends in a jump, a high-five with real hand contact, and a short deduction speech; a loss ends with Holmes reading the answer the game itself just revealed, and both of them pouting.
+
+The pair ships **behind the `detectivePair` feature flag, which is off by default** (`public/flags.json` carries it as `false`). With the flag off, none of their code mounts and the game is exactly the game described above. Turning them on later is a flags change, not a new release.
+
+On smaller or quieter setups the pair steps back instead of getting in the way:
+
+| What the device asks for | What the pair does |
+| --- | --- |
+| Reduced motion | No walks — Holmes appears beside a thinking pause by an instant cut, after a longer 600 ms pause. Sound is unchanged. |
+| Save-Data, little memory (≤ 4 GB), or battery saver | Holmes stays at his dock instead of walking, and clues no longer play by themselves — a **Listen** button beside the clue card plays the current clue's read, acknowledgement, and decode when tapped. |
+| Sound off | No speech at all; the pair is pictures only, and every fact stays on screen as text. |
+| Read-aloud set to "never" or "sometimes" | Same Listen button — it is never hidden, because it is the player's own tool. |
+
+The decision itself is one small pure function, `resolveDetectiveDegradation` in `src/game/loop/detective/detective-degradation.ts`, and the voices follow the pre-rendered pipeline in [Detective audio](#detective-audio-holmes--watson-in-build) above.
+
 ### Supporting the game
 
 Meridian is free for kids — no paywalls, no accounts. Grown-ups can buy the builder a coffee: **"Grown-ups — buy me a coffee? ☕"** — "Your support keeps Meridian free for kids". That copy is locked verbatim.
