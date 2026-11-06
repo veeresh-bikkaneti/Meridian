@@ -258,6 +258,17 @@ the re-run panel and the flip owner can check them off one by one.
 - **Kill-switch note:** none needed — PR C adds no flag and touches
   no existing one (`detectivePair` stays as the owner set it).
   Rollback is a plain revert of the PR.
+- **Pre-registered alias cut (council, recorded at panel round 1):**
+  if child sessions read a Holmes tap-mute as "the game broke",
+  remove the detective-holmes-mute alias first — chip + toggles stay.
+- **Cure round (panel round 1, 2026-11-06):** the panel voted
+  8 APPROVE-WITH-NITS / 4 BLOCK on tip `26e2250` (Silo QA
+  PASS-WITH-NITS, DevEx PASS-WITH-NITS, benchmark PASS). The two
+  defects — the station chip/Holmes-mute overlapping the tap-mode
+  Listen button, and a duplicate chip + badge during NOTE_MARK —
+  plus the folded Act-On nits were cured on the same branch in
+  PR #357's cure round; the cured tip goes back through Silo QA +
+  the full panel for a re-vote before any merge.
 
 ## Audio: pre-rendered, with honest coverage
 
