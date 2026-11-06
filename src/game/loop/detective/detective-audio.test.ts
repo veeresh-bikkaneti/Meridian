@@ -235,3 +235,52 @@ test("setCaseIndex rebinds clue/answer resolution", async () => {
   assert.deepEqual(played, ["/audio/detective/case-387/clue-1.mp3"]);
   player.dispose();
 });
+
+/* ------------------------------------------------------------------ */
+/* U7 — uncovered pick at player level + the real manifest's shape     */
+/* ------------------------------------------------------------------ */
+
+test("U7 queue: an uncovered name plays suspicion only — no stall, no error, one drain", async () => {
+  const { player, played, speaking } = harness();
+  // geonames:424242 has NO entry in the manifest — the name goes silent
+  // and the queue moves straight to the suspicion line.
+  player.enqueue({ kind: "name", placeId: "geonames:424242" });
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  await tick();
+  assert.deepEqual(played, ["/audio/detective/fixed/suspicion.mp3"]);
+  assert.equal(speaking[speaking.length - 1], null); // drained exactly once at the end
+  player.dispose();
+});
+
+test("U7 manifest (real, on disk): exactly ONE suspicion asset; names present 1,460 of 1,548 planned", async () => {
+  const { readFileSync } = await import("node:fs");
+  const url = new URL(
+    "../../../../public/audio/detective/manifest.json",
+    import.meta.url,
+  );
+  const real = JSON.parse(readFileSync(url, "utf8")) as DetectiveManifest;
+  // One suspicion line in the whole fixed table — a second entry would
+  // be a second voice for the same beat, and a leak surface.
+  const suspicionKeys = Object.keys(real.fixed).filter((k) =>
+    k.includes("suspicion"),
+  );
+  assert.deepEqual(suspicionKeys, ["suspicion"]);
+  assert.equal(real.fixed["suspicion"]!.file, "fixed/suspicion.mp3");
+  // Coverage reality (BRANCH_STATUS, U7): 1,460 name reads rendered of
+  // the 1,548 planned (88 backend-refused) — the missing 88 fall back to
+  // suspicion-only by design (entry presence is the rule).
+  assert.equal(Object.keys(real.names).length, 1460);
+  // A covered pick resolves; an uncovered one resolves null (silent).
+  assert.deepEqual(
+    resolveDetectiveClip(real, { kind: "name", placeId: "geonames:5506956" }, 137, BASE),
+    { url: "/audio/detective/names/5506956.mp3", who: "holmes" },
+  );
+  assert.equal(
+    resolveDetectiveClip(real, { kind: "name", placeId: "geonames:424242" }, 137, BASE),
+    null,
+  );
+  assert.deepEqual(
+    resolveDetectiveClip(real, { kind: "fixed", id: "suspicion" }, 137, BASE),
+    { url: "/audio/detective/fixed/suspicion.mp3", who: "holmes" },
+  );
+});

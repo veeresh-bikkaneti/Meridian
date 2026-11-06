@@ -402,3 +402,170 @@ test("answer-blindness: swapping the pick changes ONLY the name ref", () => {
     assert.ok(!stateKeys.includes(forbidden), `state has no ${forbidden}`);
   }
 });
+
+/* ------------------------------------------------------------------ */
+/* U7 — selection handoff, hardened + proven                           */
+/* ------------------------------------------------------------------ */
+
+/** Speak refs (not just ids) of one step, for identity assertions. */
+function speakRefs(effects: DetectiveEffect[]) {
+  return effects
+    .filter((e) => e.type === "speak")
+    .map((e) => (e as Extract<DetectiveEffect, { type: "speak" }>).ref);
+}
+
+/** Five picks on clue 1 (machine-level: each drains back to SEARCH_IDLE),
+ * then the named ending. Returns every step. */
+function fivePicksThen(end: "solved" | "failed"): Step[] {
+  const events: DetectiveEvent[] = [...normalClue(1)];
+  for (let i = 1; i <= 5; i++) {
+    events.push(
+      { type: "guessConfirmed", placeId: `geonames:${700 + i}` },
+      { type: "ringAnimationEnded" },
+      { type: "speechEnded" }, // selection read drains
+    );
+  }
+  events.push(end === "solved" ? { type: "caseSolved" } : { type: "caseFailed" });
+  if (end === "failed") events.push({ type: "speechEnded" }); // → POUT
+  return run(events);
+}
+
+test("U7: every selection read enqueues the SAME single suspicion ref — picks 1..5, win or lose", () => {
+  for (const end of ["solved", "failed"] as const) {
+    const steps = fivePicksThen(end);
+    const selections = steps.filter(
+      (s) => s.phase === "SELECTION_READ" && s.effects.length > 0,
+    );
+    assert.equal(selections.length, 5, `${end}: five selection reads`);
+    const suspicions = selections.map((s) => {
+      const refs = speakRefs(s.effects);
+      assert.equal(refs.length, 2, "name + suspicion, nothing else");
+      assert.equal(refs[0]!.kind, "name");
+      return refs[1]!;
+    });
+    // The suspicion ref is the identical fixed entry every time — the
+    // answer-blindness of the line is this equality, not a comment.
+    for (const ref of suspicions) {
+      assert.deepEqual(ref, { kind: "fixed", id: "suspicion" });
+      assert.deepEqual(ref, suspicions[0]);
+    }
+  }
+});
+
+test("U7: uncovered pick — machine effects are identical minus the name ref", () => {
+  // The machine cannot know coverage (entry presence lives in the
+  // manifest, player-side), so a covered and an uncovered pick produce
+  // the same machine step; stripping the name ref leaves exactly the
+  // one suspicion effect the player will actually sound.
+  const covered = run([
+    ...normalClue(1),
+    { type: "guessConfirmed", placeId: "geonames:5506956" }, // Las Vegas: covered
+  ]);
+  const uncovered = run([
+    ...normalClue(1),
+    { type: "guessConfirmed", placeId: "geonames:424242" }, // no name entry
+  ]);
+  const a = last(covered);
+  const b = last(uncovered);
+  assert.equal(a.phase, b.phase);
+  assert.deepEqual(viewForState(a.state), viewForState(b.state));
+  const minusName = (effects: DetectiveEffect[]) =>
+    speakRefs(effects).filter((r) => r.kind !== "name");
+  assert.deepEqual(minusName(a.effects), minusName(b.effects));
+  assert.deepEqual(minusName(a.effects), [{ kind: "fixed", id: "suspicion" }]);
+});
+
+test("U7: ask-next fires exactly once per unlock across a full 5-guess game — 4 total, never on the final clue", () => {
+  const events: DetectiveEvent[] = [...normalClue(1)];
+  // Guesses 1..3 bridge to clues 2..4 via the pending-clue path.
+  for (const n of [2, 3, 4]) {
+    events.push(
+      { type: "guessConfirmed", placeId: `geonames:${800 + n}` },
+      { type: "ringAnimationEnded" },
+      { type: "clueUnlocked", clueIndex: n }, // mid-selection-read
+      { type: "speechEnded" }, // selection drains → ASK_NEXT
+      { type: "speechEnded" }, // ask drains → clue n starts
+    );
+    if (n === 4) {
+      events.push(
+        { type: "beatElapsed" }, // hook silence → announcement
+        { type: "speechEnded" }, // announcement → read
+        { type: "speechEnded" }, // read → decode + amazement
+        { type: "speechEnded" }, // → search
+      );
+    } else {
+      events.push(
+        { type: "speechEnded" }, // read → thinking beat
+        { type: "beatElapsed" }, // → ack + decode
+        { type: "speechEnded" }, // → search
+      );
+    }
+  }
+  // Guess 4 bridges to the final clue.
+  events.push(
+    { type: "guessConfirmed", placeId: "geonames:805" },
+    { type: "ringAnimationEnded" },
+    { type: "clueUnlocked", clueIndex: 5 },
+    { type: "speechEnded" }, // → ASK_NEXT (4th and last)
+    { type: "speechEnded" }, // → clue 5 read
+    { type: "speechEnded" }, // read → thinking beat
+    { type: "beatElapsed" }, // → ack + decode
+    { type: "speechEnded" }, // → search
+    // Guess 5 solves: selection read, solve lands mid-read, drain → CELEBRATE.
+    { type: "guessConfirmed", placeId: "geonames:999" },
+    { type: "caseSolved" },
+    { type: "speechEnded" },
+  );
+  const steps = run(events);
+  const asks = steps.filter((s) =>
+    s.effects.some(
+      (e) => e.type === "speak" && e.ref.kind === "fixed" && e.ref.id === "ask-next",
+    ),
+  );
+  assert.equal(asks.length, 4);
+  assert.equal(last(steps).phase, "CELEBRATE");
+});
+
+test("U7: sheet churn never duplicates ask-next (open/close/open after the ask was spoken)", () => {
+  const steps = run([
+    ...normalClue(1),
+    { type: "guessConfirmed", placeId: "geonames:42" },
+    { type: "ringAnimationEnded" },
+    { type: "speechEnded" }, // selection drains → SEARCH_IDLE (marker set)
+    { type: "sheetOpened" },
+    { type: "sheetClosed" }, // → ASK_NEXT (the one ask)
+    { type: "speechEnded" }, // ask drains → SEARCH_IDLE, askNextSpoken
+    { type: "sheetOpened" }, // churn: reopen + close twice more
+    { type: "sheetClosed" },
+    { type: "sheetOpened" },
+    { type: "sheetClosed" },
+    { type: "clueUnlocked", clueIndex: 2 }, // straight to the read
+  ]);
+  const asks = steps.filter((s) =>
+    s.effects.some(
+      (e) => e.type === "speak" && e.ref.kind === "fixed" && e.ref.id === "ask-next",
+    ),
+  );
+  assert.equal(asks.length, 1);
+  assert.equal(last(steps).phase, "READING");
+  assert.deepEqual(speakIds(last(steps).effects), ["clue:2"]);
+});
+
+test("U7: no ask-next on the final clue — the sheetClosed path is clue-gated", () => {
+  const steps = run([
+    ...normalClue(5),
+    { type: "guessConfirmed", placeId: "geonames:42" },
+    { type: "ringAnimationEnded" },
+    { type: "speechEnded" }, // drains → SEARCH_IDLE (marker set, clue 5)
+    { type: "sheetOpened" },
+    { type: "sheetClosed" }, // must NOT fire ask-next: no clue 6 exists
+  ]);
+  assert.equal(last(steps).phase, "SEARCH_IDLE");
+  assert.deepEqual(last(steps).effects, []);
+  const asks = steps.filter((s) =>
+    s.effects.some(
+      (e) => e.type === "speak" && e.ref.kind === "fixed" && e.ref.id === "ask-next",
+    ),
+  );
+  assert.equal(asks.length, 0);
+});
