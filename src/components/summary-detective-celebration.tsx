@@ -51,16 +51,10 @@ import {
   HIGH_FIVE_HOLD_MS,
 } from "@/game/loop/detective/detective-state";
 import {
-  detectiveCanAutoPlay,
-  loadDetectiveManifest,
-  resolveDetectiveClip,
-} from "@/game/loop/detective/detective-audio";
-import {
   readConnectionSignals,
   resolveSummaryCelebrationMode,
 } from "@/game/loop/detective/detective-degradation";
-import { soundAudible } from "@/game/audio/play-guards";
-import { onSoundChanged } from "@/game/audio/sfx";
+import { createCelebrationLinePlayer } from "@/components/summary-celebration-line";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { EDITION_LABELS, type SessionSummary } from "@/game/session";
 import "@/game/loop/detective/detective.css";
@@ -77,67 +71,11 @@ const STEP_POSES: Record<
   settle: { holmes: "gaze-up", watson: "station-idle" },
 };
 
-/** Play the one fixed celebration line, gated exactly like the loop
- * player's speech (sound toggle + hidden tab + read-aloud preference,
- * all read at play time). Resolves when the clip ends, errors, is
- * paused by a mid-line mute (see the driver's onSoundChanged
- * subscription), or is gated off — a silent celebration is a valid
- * celebration. Mirrors detective-audio's default clip player
- * (ended/error both settle), minus the first-gesture wait: the
- * summary only exists because the player tapped "End game", so the
- * document already has its gesture.
- *
- * Cure (panel round 1, Game Audio MAJOR): the gate is re-checked
- * after the manifest await — a mute that landed while the manifest
- * loaded must not be honoured only at the start — and the created
- * Audio element is handed to the caller through `audioRef`, so the
- * driver's sound subscription can pause it mid-line. The ref is
- * cleared again when the line settles. */
-async function playCelebrationLine(
-  isCancelled: () => boolean,
-  onSpeaking: (speaking: boolean) => void,
-  audioRef: { current: HTMLAudioElement | null },
-): Promise<void> {
-  if (!detectiveCanAutoPlay() || !soundAudible()) return;
-  const manifest = await loadDetectiveManifest();
-  if (isCancelled()) return;
-  // Gate re-check after the await: sound flipped off (or the tab
-  // hid, or the read-aloud verdict changed) while the manifest was
-  // loading — the line must not start.
-  if (!detectiveCanAutoPlay() || !soundAudible()) return;
-  const clip = resolveDetectiveClip(
-    manifest,
-    { kind: "fixed", id: "score-celebration" },
-    0,
-  );
-  if (!clip) return; // uncovered → silent, by the fallback law
-  await new Promise<void>((resolve) => {
-    let settled = false;
-    const done = () => {
-      if (settled) return;
-      settled = true;
-      if (audioRef.current) audioRef.current = null;
-      onSpeaking(false);
-      resolve();
-    };
-    try {
-      const audio = new Audio(clip.url);
-      audioRef.current = audio;
-      audio.addEventListener("ended", done, { once: true });
-      audio.addEventListener("error", done, { once: true });
-      // A pause settles the line too: the only pause this element
-      // ever gets is the driver's mid-line mute, and a muted line is
-      // finished — the choreography must complete, not wait out a
-      // clip that will never end.
-      audio.addEventListener("pause", done, { once: true });
-      onSpeaking(true);
-      const playPromise = audio.play();
-      if (playPromise) playPromise.catch(done);
-    } catch {
-      done();
-    }
-  });
-}
+/* The spoken line itself lives in summary-celebration-line.ts (the
+ * testable seam): its player holds the line's Audio element, gates
+ * at play time and again after the manifest await, and subscribes
+ * to onSoundChanged so a mid-line mute pauses the line and settles
+ * the driver below (cure, panel round 1 — Game Audio MAJOR). */
 
 export function SummaryDetectiveCelebration(props: {
   totalScore: number;
@@ -162,12 +100,6 @@ export function SummaryDetectiveCelebration(props: {
   // until the choreography has settled AND the line has finished.
   const [playing, setPlaying] = useState(animated);
   const startedRef = useRef(false);
-  /* The celebration line's Audio element (cure, panel round 1): the
-   * driver hands this ref to playCelebrationLine, which fills it
-   * when the line starts and clears it when the line settles — the
-   * sound subscription below pauses through it, so a mid-line mute
-   * stops this line in the same event, like every other surface. */
-  const celebrationAudioRef = useRef<HTMLAudioElement | null>(null);
 
   /* The storyteller yield handshake — the celebration-overlay pattern
    * verbatim: announce on play, release on settle/unmount. The
@@ -214,34 +146,27 @@ export function SummaryDetectiveCelebration(props: {
         CELEBRATE_JUMP_MS + HIGH_FIVE_HOLD_MS + CLAP_HOLD_MS,
       ),
     );
-    // Mid-line mute (cure, panel round 1): subscribe to the sound
-    // channel for the driver's lifetime — on sound-off, pause the
-    // line's element. The pause settles playCelebrationLine's
-    // promise (its pause listener), which marks speechDone through
-    // the .then below, so the choreography completes sanely instead
-    // of waiting on a silenced clip. Unsubscribed on unmount.
-    const offSound = onSoundChanged((on) => {
-      if (on) return;
-      const audio = celebrationAudioRef.current;
-      if (audio) {
-        try {
-          audio.pause();
-        } catch {
-          /* element already gone — the line settles via its own path */
-        }
-      }
-    });
-    void playCelebrationLine(
-      () => cancelled,
-      (s) => !cancelled && setSpeaking(s),
-      celebrationAudioRef,
-    ).then(() => {
-      speechDone = true;
-      maybeFinish();
-    });
+    // The line player (summary-celebration-line.ts) holds the
+    // line's Audio element in its own ref and subscribes to
+    // onSoundChanged for its lifetime: a mid-line mute pauses the
+    // element, the pause settles the player's promise, and
+    // speechDone lands through the .then below so the choreography
+    // completes sanely instead of waiting on a silenced clip.
+    // dispose() unsubscribes — called in this effect's cleanup, so
+    // unmount always unsubscribes.
+    const linePlayer = createCelebrationLinePlayer();
+    void linePlayer
+      .play(
+        () => cancelled,
+        (s) => !cancelled && setSpeaking(s),
+      )
+      .then(() => {
+        speechDone = true;
+        maybeFinish();
+      });
     return () => {
       cancelled = true;
-      offSound();
+      linePlayer.dispose();
       for (const t of timers) clearTimeout(t);
     };
   }, [animated]);
