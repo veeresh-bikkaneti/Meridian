@@ -19,8 +19,9 @@
 - **Cure:** C1 Holmes's dock moves beside Watson (x = 12 + 100 + 8 = 120;
   berth solver's dock reference moves with it). C2 on entering a clue
   phase (case open, each read) the active clue card scrolls into view
-  once — the station rides above it into the viewport. C3 one deferred
-  anchor re-measure after each phase/clue change.
+  once — the station rides above it into the viewport. C3 (one deferred
+  anchor re-measure) was implemented, then REMOVED in the cure round —
+  see the Status bisection record; RC3 ships as a follow-up.
 - **Done condition:** new E2E `tests/e2e/detective-visibility.spec.ts`
   green (pair in-viewport + zero figure-vs-figure overlap; station AND
   dock; 1280 AND 390; core AND Capitals); shipped detective gates green;
@@ -33,10 +34,46 @@
   ~0.32 in view at the fold)
 - [x] C1/C2/C3 implemented (DetectiveHost.tsx only) · spec registered in
   playwright.config.ts + the telemetry guard's CONTEXT_FILES
-- [x] Gates so far: tsc clean · npm test 3,240 pass / 0 fail ·
+- [x] Gates on 85adc1a: tsc clean · npm test 3,240 pass / 0 fail ·
   lint-cards GATE PASSED · build green · visibility spec 4/4
-- [ ] Detective E2E family regression (running)
-- [ ] Pipeline (panel · Silo QA · DevEx · benchmark) on the tip
+- [x] Detective E2E family on 85adc1a: 34 passed / 4 failed — triage:
+  reduced berth-by-cut PASSED on sequential re-run (contention flake);
+  companion K3-pan + geodetective win-path re-runs pending on the cured
+  tip; summary flag-off PROVEN pre-existing on unmodified main 1b38cb3
+  (control run, buildId-verified) — the flip (PR #356) made the
+  committed flags.json true and the test's no-interception premise
+  stale; CI never caught it (detective specs are not in CI's e2e
+  subset — the required e2e job runs 6 files / 22 tests).
+- [x] Panel on 85adc1a: **12/12, zero BLOCKs** (5 APPROVE · 7
+  APPROVE-WITH-NITS, all LOW except one Frontend MED) · DevEx APPROVE ·
+  Benchmark: DetectiveHost chunk +380 B (+2.6%), inside the 5% gate
+- [x] Cure round (this commit): C2 scroll reworked to hand-computed
+  minimal scrollBy (Frontend MED: scrollIntoView's options dictionary
+  is coerced to align-to-top on Safari ≤15.3, which would re-hide the
+  station above the card); summary flag-off test repaired — flag state
+  now set explicitly via a new fulfillFlagsOff interception (same
+  assertions; setup made honest)
+- [x] **C3 REMOVED (unproven; implicated, then cleared):** companion
+  K3 "pan cancels a berth" failed repeatedly at the berth-confirm poll
+  on the full cure; early bisection (C1-only PASS 23.7 s, C1+C2 PASS
+  23.4 s, both solo) pointed at C3's +350 ms re-measure, and C3 was
+  cut on that evidence. The fuller record cleared it: the final batch
+  (C3 removed) still failed K3-pan in-batch while passing solo, and a
+  back-to-back A/B on 2026-11-06 — same 2-test batch, same load
+  window — fails BYTE-IDENTICALLY on unmodified main `1b38cb3`. The
+  mechanism is the suite's own disclosed environment property: under
+  SwiftShader + VM load, frame collapse trips the U6 auto-kill
+  (rolling FPS <45 in SEARCH phases), latching Holmes dock-only
+  mid-pause; the poll then reads "dock" forever. K3-pan is a
+  load-flake on main and cure alike (solo passes on the cure:
+  2×; same failure on main: evidenced) — NOT a regression. C3 stays
+  out anyway: it was the weakest cure, its guilt is unproven either
+  way, and a defect cure does not ship an unproven third change.
+  RC3 self-heals on scroll/resize/next phase in play → follow-up.
+  Also closed in triage: geodetective win-path fails BYTE-IDENTICALLY
+  on unmodified main (share text takes the Pages URL locally; the
+  spec hard-expects the workers.dev URL) — pre-existing, not this PR.
+- [ ] Re-vote on the cured tip · Silo QA re-keyed to the cured tip
 - [ ] PR merged · live verification both hosts · tip in deleted-branches ledger
 
 ## FLIP — chore/flip-detective-pair (2026-11-06)

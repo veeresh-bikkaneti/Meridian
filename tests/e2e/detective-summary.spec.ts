@@ -7,6 +7,7 @@ import {
   dismissTileOverlayIfPresent,
 } from "./helpers";
 import {
+  fulfillFlagsOff,
   fulfillFlagsOn,
   installDetectiveRecorder,
   collectAudioRequests,
@@ -185,9 +186,15 @@ test("Unit B: ending a Globe run celebrates on the summary with the final score 
 
 test("Unit B: flag off — the summary is exactly today's, no pair anywhere", async ({
   page,
+  context,
 }) => {
-  // No interception: the built artifact serves the committed
-  // flags.json, where detectivePair is false.
+  // The flag state is set EXPLICITLY by interception. (This test
+  // used to rely on the committed flags.json being false; the
+  // owner's flip in PR #356 made it true, and the test has failed
+  // on unmodified main ever since — the detective specs are not in
+  // CI's e2e subset, so nothing caught it. Repaired 2026-11-06 in
+  // the prod-pair visibility PR: same assertions, honest setup.)
+  await fulfillFlagsOff(context);
   await startStateRun(page);
   await playOnePlace(page);
   await endRunToSummary(page);

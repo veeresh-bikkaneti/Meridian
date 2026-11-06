@@ -225,13 +225,28 @@ the re-run panel and the flip owner can check them off one by one.
   dock moves BESIDE Watson — x = inset 12 + Watson 100 + gap 8 =
   120 — and the berth solver's dock reference moves with it.
   (2) On entering a clue phase (case open, each read), the active
-  clue card scrolls into view once; the station rides above it into
-  the viewport. Search phases never scroll. (3) One deferred anchor
-  re-measure (350 ms) after each phase/clue change. New E2E gate
-  `detective-visibility.spec.ts` asserts both figures in-viewport
-  and zero mutual overlap — station AND dock, 1280 px AND 390 px,
-  core AND Capitals — and is registered in the Playwright config
-  and the telemetry guard's context list so CI runs it.
+  clue card is scrolled into view once — by a hand-computed minimal
+  `scrollBy`, not `scrollIntoView({block})`, whose options form is
+  coerced to align-to-top on Safari ≤15.3 and would re-hide the
+  station above the card; the station rides above the card into
+  the viewport. Search phases never scroll. (3) A deferred anchor
+  re-measure for RC3 was tried and REMOVED before merge: early
+  bisection against the companion E2E (K3 pan-cancels-a-berth)
+  implicated it, but the completed A/B — same batch, same load
+  window — fails identically on unmodified main: under SwiftShader
+  + VM load the U6 auto-kill (rolling FPS <45 in SEARCH) latches
+  Holmes dock-only mid-pause, a load-flake the suite's own comments
+  already disclose. The re-measure's guilt is unproven either way;
+  a defect cure does not ship an unproven third change. RC3
+  self-heals on scroll, resize, or the next phase change, and
+  stands as a follow-up, not a cure.
+  New E2E gate `detective-visibility.spec.ts` asserts both figures
+  in-viewport and zero mutual overlap — station AND dock, 1280 px
+  AND 390 px, core AND Capitals — registered in the Playwright
+  config and the telemetry guard's context list. Note it does NOT
+  run in CI: the required CI `e2e` job runs only a 6-file subset
+  with no detective specs — the same gap that let this incident
+  (and a stale flag-off summary test, repaired in this PR) ship.
 - **Standing lesson:** for anything a player must SEE, presence is
   not evidence. Visibility gates assert viewport intersection and
   occlusion, or they assert nothing.

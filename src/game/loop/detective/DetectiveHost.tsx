@@ -374,17 +374,19 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       }
     };
     measure();
-    /* One deferred re-measure (prod-pair fix, RC3): on a slow first
-     * load the page is still settling — fonts, the tile canvas — when
-     * a phase-driven measure runs, and the anchor it captures can be
-     * a mid-shift rect, parking the station hundreds of px from the
-     * card until the next phase change. A single 350 ms pass catches
-     * the common shift window; scroll/resize keep tracking after. */
-    const settleTimer = setTimeout(measure, 350);
+    /* NOTE (prod-pair fix): a deferred +350 ms re-measure for slow-
+     * load anchor staleness (diagnosis RC3) was tried here and
+     * REMOVED before merge. Early bisection against the companion
+     * E2E (K3 pan-cancels-a-berth) implicated the extra pass, but
+     * the completed A/B fails identically on unmodified main — the
+     * K3 failure is the disclosed SwiftShader/load auto-kill flake,
+     * and the re-measure's guilt is unproven. A defect cure does not
+     * ship an unproven third change: RC3 is self-healing in play
+     * (scroll, resize, and the next phase change all re-measure) and
+     * ships as a documented follow-up. See BRANCH_STATUS.md. */
     window.addEventListener("resize", measure);
     window.addEventListener("scroll", measure, { passive: true });
     return () => {
-      clearTimeout(settleTimer);
       window.removeEventListener("resize", measure);
       window.removeEventListener("scroll", measure);
     };
@@ -410,13 +412,32 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     const card = document.querySelector(
       `article[aria-label^="Clue ${cluesRevealed}:"]`,
     );
-    card?.scrollIntoView({
-      block: "nearest",
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
-        .matches
-        ? "auto"
-        : "smooth",
-    });
+    if (!card) return;
+    /* Scroll the minimum so the card AND the station above it are in
+     * view. The distance is computed by hand instead of
+     * scrollIntoView({ block: "nearest" }): engines without the
+     * options dictionary (Safari ≤15.3 — the dictionary shipped in
+     * 15.4) coerce the object to the boolean align-to-top form,
+     * which would park the card at the viewport top and the station,
+     * glued above it, off-screen again — the very defect being
+     * cured, on exactly the older tablets kids use. The numeric
+     * scrollBy form works everywhere; smoothness is layered on only
+     * where the engine advertises it. */
+    const rect = card.getBoundingClientRect();
+    /** The station's 104 px + a breath of air above the card. */
+    const STATION_CLEARANCE_PX = 116;
+    let dy = 0;
+    if (rect.top < STATION_CLEARANCE_PX) {
+      dy = rect.top - STATION_CLEARANCE_PX;
+    } else if (rect.bottom > window.innerHeight) {
+      dy = rect.bottom - window.innerHeight + 8;
+    }
+    if (dy === 0) return;
+    const smooth =
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+      "scrollBehavior" in document.documentElement.style;
+    if (smooth) window.scrollBy({ top: dy, behavior: "smooth" });
+    else window.scrollBy(0, dy);
   }, [phase, cluesRevealed, caseIndex]);
 
   /* -- waypoint companion (U6) -----------------------------------------

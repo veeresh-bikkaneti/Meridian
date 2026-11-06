@@ -45,6 +45,32 @@ export async function fulfillFlagsOn(context: BrowserContext): Promise<void> {
   });
 }
 
+/** The OFF twin of fulfillFlagsOn: the same flag set with
+ * detectivePair false, served by interception. A spec that needs
+ * the flag OFF must say so explicitly — it must never rely on the
+ * committed flags.json value, which the owner's flip (PR #356) set
+ * to true; the summary spec's flag-off test silently broke on
+ * exactly that assumption (fails on unmodified main 1b38cb3). */
+export async function fulfillFlagsOff(context: BrowserContext): Promise<void> {
+  await context.route("**/flags.json", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json; charset=utf-8",
+      body: JSON.stringify({
+        version: 1,
+        flags: {
+          globeTierSplit: true,
+          learningOutcomes: true,
+          pwaUpdateToast: true,
+          friendChallenges: true,
+          scoutUpgradeTrial: true,
+          detectivePair: false,
+        },
+      }),
+    });
+  });
+}
+
 /** Install the play() recorder + speed-up + freeze watchdog. Call
  * BEFORE navigation (it uses addInitScript). */
 export async function installDetectiveRecorder(
