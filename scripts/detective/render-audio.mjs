@@ -6,10 +6,12 @@
  * §1.5: runtime synthesis cannot pin the approved voices or hold the
  * pitch gates). This tool renders lines with the pinned voices, measures
  * every line's pitch + pace with the voice SPEC's method
- * (measure_pitch.py), retries off-band lines with a ±3 speed ladder, and
+ * (measure_pitch.py), retries off-band lines with a ±3 pitch ladder,
+ * retries slow lines with a +6 pace ladder (pace-ladder.mjs), and
  * records everything in public/audio/detective/manifest.json. A line
- * that still lands outside its family band is written as "flagged" with
- * the numbers attached — never silently passed.
+ * that still lands outside its family band — or under its pace floor —
+ * is written as "flagged" with the numbers attached — never silently
+ * passed.
  *
  * Errors state the fix, not just the failure. Exit codes are an API:
  *   0 ok · 2 usage · 3 source missing/unreadable · 4 render or voice-pin
@@ -22,7 +24,7 @@
  *   node scripts/detective/render-audio.mjs --all-phase-a --concurrency 4
  */
 import { execFile, spawn } from "node:child_process";
-import { existsSync, mkdirSync, renameSync, unlinkSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, renameSync, unlinkSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
@@ -40,6 +42,7 @@ import {
   textHash,
   writeManifest,
 } from "./audio-manifest.mjs";
+import { MAX_PACE_RETRIES, PACE_STEP, paceFloorFor, selectBestTake, settlePace } from "./pace-ladder.mjs";
 import { FIXED_LINES, VOICES, casePlan, displayName, selectionNamePlan } from "./render-plan.mjs";
 
 const run = promisify(execFile);
@@ -216,7 +219,7 @@ async function renderWithRetry(args, text, key) {
   );
 }
 
-/** Render one spec (with the pitch retry ladder) and return its entry. */
+/** Render one spec (pitch ladder, then pace ladder) and return its entry. */
 async function renderOne(spec, { force, manifest }) {
   const existing = getEntry(manifest, spec);
   const finalPath = join(ROOT, AUDIO_REL, spec.file);
@@ -231,9 +234,11 @@ async function renderOne(spec, { force, manifest }) {
   }
   mkdirSync(dirname(finalPath), { recursive: true });
   const band = bandFor(spec);
-  let speed = spec.speed;
-  let last = null;
-  for (let attempt = 0; attempt <= 2; attempt++) {
+
+  /* One render at one speed: leaves the audio at finalPath and returns
+   * its measurements. Shared by both ladders so a take always means
+   * the same thing whichever ladder asked for it. */
+  const renderAtSpeed = async (speed) => {
     const tmp = `${finalPath}.tmp.mp3`;
     if (existsSync(tmp)) unlinkSync(tmp);
     const stdout = await renderWithRetry([
@@ -259,31 +264,79 @@ async function renderOne(spec, { force, manifest }) {
     }
     const m = await measure(finalPath);
     const wpm = m.durationSec > 0 ? Math.round((wordsOf(spec.text) / m.durationSec) * 60) : null;
-    last = { hz: m.hz, wpm, durationSec: m.durationSec, speed };
-    if (m.hz === null) break; // unmeasurable — flagged below, no ladder to climb
-    if (m.hz >= band.target[0] && m.hz <= band.target[1]) break;
-    if (attempt < 2) speed += m.hz < band.target[0] ? 3 : -3;
+    return { hz: m.hz, wpm, durationSec: m.durationSec, speed };
+  };
+
+  /* Pitch ladder: ±3 speed nudges toward the target band, as before. */
+  let speed = spec.speed;
+  let pitchTake = null;
+  for (let attempt = 0; attempt <= 2; attempt++) {
+    pitchTake = await renderAtSpeed(speed);
+    if (pitchTake.hz === null) break; // unmeasurable — flagged below, no ladder to climb
+    if (pitchTake.hz >= band.target[0] && pitchTake.hz <= band.target[1]) break;
+    if (attempt < 2) speed += pitchTake.hz < band.target[0] ? 3 : -3;
   }
-  const inTarget = last.hz !== null && last.hz >= band.target[0] && last.hz <= band.target[1];
-  const inFamily = last.hz !== null && last.hz >= band.family[0] && last.hz <= band.family[1];
-  // In target (possibly after a ladder nudge, recorded in the note) = ok.
-  // Flagged is reserved for lines still outside target after the ladder.
-  const status = inTarget ? "ok" : "flagged";
+  const inTarget = pitchTake.hz !== null && pitchTake.hz >= band.target[0] && pitchTake.hz <= band.target[1];
+  const inFamily = pitchTake.hz !== null && pitchTake.hz >= band.family[0] && pitchTake.hz <= band.family[1];
+
+  /* Pace ladder: a settled take under its wpm floor retries at +6
+   * speed (max MAX_PACE_RETRIES). Every take overwrites finalPath, so
+   * the current best take's audio is snapshotted as we go and restored
+   * at the end if a later, worse take overwrote it. The decision logic
+   * itself is pure — see pace-ladder.mjs. */
+  const floor = paceFloorFor(spec);
+  const takes = [pitchTake];
+  let bestSnapshot = null;
+  let lastRenderedSpeed = pitchTake.speed;
+  if (
+    floor !== null &&
+    pitchTake.hz !== null &&
+    typeof pitchTake.wpm === "number" &&
+    pitchTake.wpm < floor
+  ) {
+    bestSnapshot = `${finalPath}.pace-best.mp3`;
+    copyFileSync(finalPath, bestSnapshot); // the pitch take is best so far
+    for (let retry = 1; retry <= MAX_PACE_RETRIES; retry++) {
+      if (selectBestTake(takes, band.family).wpm >= floor) break;
+      const take = await renderAtSpeed(pitchTake.speed + PACE_STEP * retry);
+      lastRenderedSpeed = take.speed;
+      takes.push(take);
+      if (selectBestTake(takes, band.family) === take) copyFileSync(finalPath, bestSnapshot);
+    }
+  }
+  const { best, paceFlagged, status } = settlePace({
+    takes, familyBand: band.family, floor, pitchInTarget: inTarget,
+  });
+  if (bestSnapshot) {
+    if (best.speed !== lastRenderedSpeed) copyFileSync(bestSnapshot, finalPath);
+    unlinkSync(bestSnapshot);
+  }
+
+  // In target and at pace (possibly after ladder nudges, recorded in
+  // the note) = ok. Flagged is reserved for lines still outside target
+  // or under their pace floor after the ladders — and a pitch flag is
+  // never lifted by pace (settlePace keeps it).
   const notes = [];
   if (spec.note) notes.push(spec.note);
   if (!inTarget) {
     notes.push(
-      `pitch ${last.hz ?? "unmeasured"} Hz outside target ${band.target[0]}-${band.target[1]} Hz` +
+      `pitch ${pitchTake.hz ?? "unmeasured"} Hz outside target ${band.target[0]}-${band.target[1]} Hz` +
         (inFamily ? ` — inside the wider family band ${band.family[0]}-${band.family[1]} Hz, accepted as flagged` : ` — OUTSIDE the family band ${band.family[0]}-${band.family[1]} Hz too; human ear check required`),
     );
   }
-  if (last.speed !== spec.speed) notes.push(`pitch retry ladder moved speed ${spec.speed} -> ${last.speed}`);
+  if (pitchTake.speed !== spec.speed) notes.push(`pitch retry ladder moved speed ${spec.speed} -> ${pitchTake.speed}`);
+  if (best.speed !== pitchTake.speed) notes.push(`pace retry ladder moved speed ${pitchTake.speed} -> ${best.speed}`);
+  if (paceFlagged) {
+    notes.push(
+      `pace ${best.wpm} wpm below the ${floor} wpm floor after ${takes.length - 1} pace ${takes.length - 1 === 1 ? "retry" : "retries"} — best in-family take kept, flagged for a human ear check`,
+    );
+  }
   const entry = entryFromSpec(
-    { ...spec, speed: last.speed },
+    { ...spec, speed: best.speed },
     {
-      measuredHz: last.hz,
-      measuredWpm: last.wpm,
-      durationSec: last.durationSec,
+      measuredHz: best.hz,
+      measuredWpm: best.wpm,
+      durationSec: best.durationSec,
       status,
       note: notes.length ? notes.join("; ") : undefined,
     },

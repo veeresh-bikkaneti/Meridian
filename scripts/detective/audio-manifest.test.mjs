@@ -95,6 +95,33 @@ test("verify: a claimed-but-missing render is reported missing", () => {
   assert.ok(result.problems.some((p) => p.kind === "missing" && p.key === "cases.7.answer"));
 });
 
+test("verify: a pace-ladder speed (+12 over plan) with its ladder note is not stale", () => {
+  const { root, clue } = fakeTree("A fine first clue.");
+  const manifest = manifestFor(root, clue);
+  const plan = casePlan(clue, "Testville, Nevada, United States", 7);
+  const spec = plan.clues[0];
+  setEntry(manifest, spec, entryFromSpec(
+    { ...spec, speed: spec.speed + 12 },
+    { measuredHz: 90, measuredWpm: 140, durationSec: 5, note: `pace retry ladder moved speed ${spec.speed} -> ${spec.speed + 12}` },
+  ));
+  const result = verifyManifest(root, manifest);
+  assert.equal(result.ok, true, JSON.stringify(result.problems));
+});
+
+test("verify: the same +12 speed without a ladder note is stale", () => {
+  const { root, clue } = fakeTree("A fine first clue.");
+  const manifest = manifestFor(root, clue);
+  const plan = casePlan(clue, "Testville, Nevada, United States", 7);
+  const spec = plan.clues[0];
+  setEntry(manifest, spec, entryFromSpec(
+    { ...spec, speed: spec.speed + 12 },
+    { measuredHz: 90, measuredWpm: 140, durationSec: 5 },
+  ));
+  const result = verifyManifest(root, manifest);
+  assert.equal(result.ok, false);
+  assert.ok(result.problems.some((p) => p.kind === "stale" && p.key === "cases.7.clues.0"));
+});
+
 test("manifest round-trips through disk", () => {
   const { root, clue } = fakeTree("A fine first clue.");
   const manifest = manifestFor(root, clue);

@@ -268,15 +268,19 @@ export function verifyManifest(root, manifest) {
       continue;
     }
     // Text, voice and gain must match the plan exactly. Speed may differ
-    // only as a pitch-retry-ladder adjustment (±3/±6) that the entry's
-    // own note records — see render-audio.mjs; the stored hash must
-    // always be the hash of the stored fields, so a hand-edited entry
-    // cannot pass.
+    // only as a retry-ladder adjustment that the entry's own note
+    // records — see render-audio.mjs and pace-ladder.mjs: the pitch
+    // ladder moves ±3/±6 and the pace ladder then adds +6/+12 on top,
+    // so the total drift is a multiple of 3 between -6 and +18. The
+    // stored hash must always be the hash of the stored fields, so a
+    // hand-edited entry cannot pass.
+    const speedDelta = stored.speed - spec.speed;
     const speedOk =
       stored.speed === spec.speed ||
-      (Math.abs(stored.speed - spec.speed) <= 6 &&
-        (stored.speed - spec.speed) % 3 === 0 &&
-        /pitch retry ladder/.test(stored.note ?? ""));
+      (speedDelta % 3 === 0 &&
+        speedDelta >= -6 &&
+        speedDelta <= 18 &&
+        /(pitch|pace) retry ladder/.test(stored.note ?? ""));
     const hashOk =
       stored.textHash ===
       textHash({ voice: stored.voice, speed: stored.speed, gainDb: stored.gainDb, text: stored.text });
