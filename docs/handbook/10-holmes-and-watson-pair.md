@@ -269,6 +269,8 @@ the re-run panel and the flip owner can check them off one by one.
   plus the folded Act-On nits were cured on the same branch in
   PR #357's cure round; the cured tip goes back through Silo QA +
   the full panel for a re-vote before any merge.
+- Forward obligation for PR A: when PR A (hostsStaging) resizes the staging figures, it must re-derive chipStationOffset/holmesStationOffset in DetectiveHost from the layout constants — PR C's literals are arithmetic on the current 100/70px figures, not constants of record.
+- Open owner question: should the summary dialog get its own SoundToggle? Right now no mute surface is reachable while the modal summary is open; the question is the owner's and stays open.
 
 ## Audio: pre-rendered, with honest coverage
 
