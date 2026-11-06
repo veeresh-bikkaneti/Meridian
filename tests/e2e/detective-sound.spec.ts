@@ -64,6 +64,14 @@ import {
  *   in the cure round: 40 Tabs cycle only the dialog's controls),
  *   so no master-mute surface is reachable while the line plays.
  *   No toggle is added to the dialog (council boundary).
+ * - (j) THREE-WIDTH placement (cure 12, owner amendment 2026-11-06 —
+ *   "you didnt test in all devices. desktop, mobile, tab."): the
+ *   in-screen SoundToggle instances (sound-toggle-loop in
+ *   GeoDetective, sound-toggle-trail in Cold Trail) are checked at
+ *   390 px (phone), 768 px (tablet) and 1280 px (desktop): visible,
+ *   ≥44×44 px, fully inside the viewport width, and overlapping no
+ *   other visible interactive element on the screen. Placement
+ *   only — the behaviour is (a)'s.
  *
  * Speech is observed on the harness's play() record (detective-u10.ts).
  * The detectivePair flag is already true in the committed flags.json;
@@ -741,4 +749,93 @@ test("(i) summary celebration: sound preset off — the line never starts and th
   console.log(
     `[sound-i] preset-off summary: frame settled with zero celebration-line plays; watchdogSeeks=${await watchdogSeeks(page)}`,
   );
+});
+
+/* ------------------------------------------------------------------ */
+/* Cure 12 (owner amendment, 2026-11-06): three-width placement of    */
+/* the in-screen toggles. For each screen and each width the toggle   */
+/* must be visible, ≥44×44 px, inside the viewport width, and clear   */
+/* of every other visible interactive element (the overlap sweep      */
+/* runs in-page in one pass — no per-element round-trips).            */
+/* ------------------------------------------------------------------ */
+
+const WIDTHS = [390, 768, 1280] as const;
+
+async function expectTogglePlaced(
+  page: import("playwright/test").Page,
+  testId: string,
+  width: number,
+): Promise<void> {
+  const toggle = page.getByTestId(testId);
+  await expect(toggle).toBeVisible({ timeout: 30_000 });
+  const result = await page.evaluate((id) => {
+    const el = document.querySelector(`[data-testid="${id}"]`);
+    if (!el) return null;
+    const box = (e: Element): Box => {
+      const r = e.getBoundingClientRect();
+      return { x: r.x, y: r.y, width: r.width, height: r.height };
+    };
+    const mine = box(el);
+    const others: Array<{ tag: string; box: Box }> = [];
+    const all = document.querySelectorAll(
+      'button, a[href], input, select, textarea, [role="button"]',
+    );
+    for (const other of all) {
+      if (other === el || el.contains(other) || other.contains(el)) continue;
+      const style = getComputedStyle(other);
+      if (style.display === "none" || style.visibility === "hidden") continue;
+      const b = box(other);
+      if (b.width <= 0 || b.height <= 0) continue;
+      others.push({
+        tag:
+          other.getAttribute("data-testid") ??
+          other.getAttribute("aria-label") ??
+          other.tagName,
+        box: b,
+      });
+    }
+    return { mine, others };
+  }, testId);
+  expect(result, `${testId} at ${width}px: element present`).not.toBeNull();
+  const { mine, others } = result!;
+  expect(mine.width, `${testId} at ${width}px: width ≥44`).toBeGreaterThanOrEqual(44);
+  expect(mine.height, `${testId} at ${width}px: height ≥44`).toBeGreaterThanOrEqual(44);
+  expect(mine.x, `${testId} at ${width}px: left edge in viewport`).toBeGreaterThanOrEqual(-0.5);
+  expect(
+    mine.x + mine.width,
+    `${testId} at ${width}px: right edge in viewport`,
+  ).toBeLessThanOrEqual(width + 0.5);
+  for (const other of others) {
+    expect(
+      boxesOverlap(mine, other.box),
+      `${testId} at ${width}px overlaps ${other.tag}`,
+    ).toBe(false);
+  }
+  console.log(
+    `[sound-j] ${testId} at ${width}px: ${Math.round(mine.width)}x${Math.round(mine.height)} at x=${Math.round(mine.x)}, clear of ${others.length} interactive elements`,
+  );
+}
+
+test("(j) LoopScreen toggle placement at phone, tablet and desktop widths", async ({ page }) => {
+  await page.goto(`${BASE}?loop-puzzle=137`);
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
+  await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
+    timeout: 30_000,
+  });
+  for (const width of WIDTHS) {
+    await page.setViewportSize({ width, height: 844 });
+    await page.waitForTimeout(400);
+    await expectTogglePlaced(page, "sound-toggle-loop", width);
+  }
+});
+
+test("(j) TrailScreen toggle placement at phone, tablet and desktop widths", async ({ page }) => {
+  await page.goto(BASE);
+  await page.getByRole("button", { name: "Cold Trail: Start the trail" }).click();
+  await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 30_000 });
+  for (const width of WIDTHS) {
+    await page.setViewportSize({ width, height: 844 });
+    await page.waitForTimeout(400);
+    await expectTogglePlaced(page, "sound-toggle-trail", width);
+  }
 });
