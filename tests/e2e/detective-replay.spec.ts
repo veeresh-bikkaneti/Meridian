@@ -27,7 +27,8 @@ import {
  * - (c) A tap DURING an in-progress read restarts the read from item
  *   1: the clue clip plays again from the top, and the ladder then
  *   continues (ack → decode) exactly once. Playback is slowed to
- *   0.5× here so the read is genuinely in flight at tap time.
+ *   0.25× here, and the test proves the read is in flight at tap
+ *   time (no ack/decode on the record yet) before it taps.
  *
  * Speech is observed on the harness's play() record (the player's own
  * queue order — see detective-u10.ts), cross-checked in (a) on the
@@ -82,7 +83,17 @@ test("(a) tap on Watson replays the current clue sequence in auto mode", async (
 
   // --- the control: a real, labelled, ≥44×44 button over Watson,
   //     outside every aria-hidden cluster, with the ↻ cue badge ---
-  const btn = page.getByTestId("detective-watson-replay");
+  // Settle first: at the READING→SEARCH handoff the pair's station
+  // and dock figures coexist briefly (a pre-existing mount overlap —
+  // the U10 harness polls through the same window), so wait until
+  // exactly one replay control remains, then scope to Watson's dock
+  // button inside the map.
+  await expect(page.getByTestId("detective-watson-replay")).toHaveCount(1, {
+    timeout: 30_000,
+  });
+  const btn = page
+    .getByTestId("loop-map")
+    .getByTestId("detective-watson-replay");
   await expect(btn).toBeVisible({ timeout: 15_000 });
   await expect(btn).toHaveAttribute("aria-label", "Ask Watson to repeat this clue");
   const geo = await btn.evaluate((el) => {
@@ -164,29 +175,59 @@ test("(c) tap during an in-progress read restarts it from item 1", async ({
   page,
   context,
 }) => {
-  // Slow playback: the clue read is genuinely in flight at tap time.
-  await installDetectiveRecorder(context, 0.5);
+  // Slow playback (0.25×): the clue read is genuinely in flight —
+  // and provably so — at tap time.
+  await installDetectiveRecorder(context, 0.25);
   await fulfillFlagsOn(context);
   await openSeamCase(page, 137);
 
+  // Bring the clue card (and Watson's station, anchored to it) into
+  // the viewport NOW, while the case-open duet is still playing: the
+  // station button sits below the fold, and a Playwright click that
+  // has to scroll-and-chase the re-anchoring button burns longer
+  // than the read window (observed in this gate's first runs — the
+  // tap landed after the chain drained and merely replayed it).
+  await page.getByRole("article", { name: /Clue 1:/ }).scrollIntoViewIfNeeded();
+  await page.waitForTimeout(800);
+
   // Wait until Watson's clue-1 read has STARTED (its play() is on the
-  // record). At 0.5× it runs for seconds from here.
+  // record). At 0.25× it runs for many seconds from here.
   await expect
     .poll(async () => countIn(await detectiveOnly(page), CLUE), { timeout: 120_000 })
     .toBe(1);
+  // PROOF the read is still in flight: the ladder has not advanced —
+  // no ack, no decode yet. (If a slow VM ever ate the whole window,
+  // this fails loudly as a flake instead of passing falsely on a
+  // post-read replay.)
+  const inFlight = await detectiveOnly(page);
+  expect(countIn(inFlight, ACK)).toBe(0);
+  expect(countIn(inFlight, DECODE)).toBe(0);
 
-  // Watson is at the clue-card station (READING) — tap him there.
+  // Watson is at the clue-card station (READING) — tap him there,
+  // with a direct mouse tap on his settled box.
   const btn = page.getByTestId("detective-watson-replay");
-  await expect(btn).toBeVisible({ timeout: 15_000 });
-  await btn.click();
+  await expect(btn).toHaveCount(1, { timeout: 15_000 });
+  const box = await btn.boundingBox();
+  expect(box).not.toBeNull();
+  await page.mouse.click(box!.x + box!.width / 2, box!.y + box!.height / 2);
 
-  // The read restarts from item 1: clue-1 plays a second time.
+  // The read restarts from item 1: clue-1 plays a second time…
   await expect
     .poll(async () => countIn(await detectiveOnly(page), CLUE), { timeout: 60_000 })
     .toBe(2);
+  // …and DECISIVELY, it restarted mid-read: at the moment the second
+  // read starts, the original chain still has not advanced — the ack
+  // exists nowhere on the record. (A post-drain replay would show
+  // the completed ack + decode BEFORE the second clue.)
+  const atRestart = await detectiveOnly(page);
+  expect(countIn(atRestart, ACK)).toBe(0);
+  expect(countIn(atRestart, DECODE)).toBe(0);
 
   // …and the ladder continues exactly once from there: ack → decode
   // follow the restarted read (no duplicated chain, no stall).
+  await expect
+    .poll(async () => countIn(await detectiveOnly(page), DECODE), { timeout: 120_000 })
+    .toBe(1);
   await waitForSearchIdle(page);
   const plays = await detectiveOnly(page);
   const firstClue = plays.findIndex((u) => u.includes(CLUE));
