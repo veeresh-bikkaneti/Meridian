@@ -96,6 +96,7 @@ export function casePlan(clueFile, name, caseIndex) {
   return { clues, answer };
 }
 
+
 /**
  * The fixed lines: same words every case, rendered once (Unit U2 renders
  * them; the plan lives here from U1 so the manifest schema is stable).
@@ -133,7 +134,21 @@ export const FIXED_LINES = Object.freeze([
   // two lines at runtime; the frame itself names no place.
   spec({ id: "debrief-frame", kind: "debrief", text: "The land. The weather. The story. The hook. The giveaway.", voice: VOICES.holmes, speed: 104, file: "fixed/debrief-frame.mp3" }),
   spec({ id: "debrief-close", kind: "debrief", text: "All of it — one place. Elementary.", voice: VOICES.holmes, speed: 100, file: "fixed/debrief-close.mp3" }),
+  // Game-end celebration line (Unit B, PATH 2 — measured fallback).
+  // The preferred design was a COMPOSABLE spoken score (Holmes reading
+  // the total from single-word number clips). Two full pipeline passes
+  // (2026-11-06) measured it broken: the single-word renders are pitch-
+  // unstable (num-four measured 116.8 Hz in one pass and 222.2 Hz in
+  // the next; after both passes 8 of 30 words sat outside Holmes's
+  // 110–160 Hz family band) and the "points" framing line failed the
+  // 90 wpm pace floor twice (83 wpm). A spoken number that can drift
+  // out of the voice family — or worse, disagree with the displayed
+  // total — never ships, so the pair speaks ONE fixed line here and
+  // the score itself lives in the celebration frame as text, exactly
+  // as the summary card displays it. The line is new writing: DRAFT.
+  spec({ id: "score-celebration", kind: "score", text: "What a game! Well played, everyone!", voice: VOICES.holmes, speed: 104, file: "fixed/score-celebration.mp3", note: "DRAFT wording — Unit B game-end celebration line; panel review required" }),
 ]);
+
 
 export function fixedLine(id) {
   const line = FIXED_LINES.find((l) => l.id === id);

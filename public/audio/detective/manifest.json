@@ -731,16 +731,16 @@
   },
   "ack-3": {
    "text": "Noted, Watson.",
-   "textHash": "3b639464b52a74d31cf700b6337eb511a7d9c7d48a661bb53671f0ae56db885b",
+   "textHash": "6e2f427bd043745ba516c676a372260f6347f4f40895c07377348dcc42912436",
    "voice": "avocado_v2:atlas",
-   "speed": 106,
+   "speed": 118,
    "gainDb": 0,
    "file": "fixed/ack-3.mp3",
-   "measuredHz": 107.4,
-   "measuredWpm": 81,
-   "durationSec": 1.49,
+   "measuredHz": 115.1,
+   "measuredWpm": 90,
+   "durationSec": 1.34,
    "status": "flagged",
-   "note": "pitch 107.4 Hz outside target 120-145 Hz — OUTSIDE the family band 110-160 Hz too; human ear check required; pitch retry ladder moved speed 100 -> 106"
+   "note": "pitch 107.4 Hz outside target 120-145 Hz — OUTSIDE the family band 110-160 Hz too; human ear check required; pitch retry ladder moved speed 100 -> 106; pace retry ladder moved speed 106 -> 118"
   },
   "decode-history": {
    "text": "Old stories leave addresses.",
@@ -855,6 +855,19 @@
    "measuredWpm": 115,
    "durationSec": 5.23,
    "status": "ok"
+  },
+  "score-celebration": {
+   "text": "What a game! Well played, everyone!",
+   "textHash": "9f46513c58517b5b744cad382ef0d2a96c75916a378e3d0c7becb37d0d6af125",
+   "voice": "avocado_v2:atlas",
+   "speed": 104,
+   "gainDb": 0,
+   "file": "fixed/score-celebration.mp3",
+   "measuredHz": 135.6,
+   "measuredWpm": 91,
+   "durationSec": 3.94,
+   "status": "ok",
+   "note": "DRAFT wording — Unit B game-end celebration line; panel review required"
   }
  },
  "cases": {
