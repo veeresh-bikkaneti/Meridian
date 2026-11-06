@@ -42,7 +42,7 @@ import {
   type DetectiveManifest,
 } from "../game/loop/detective/detective-audio.ts";
 import { soundAudible } from "../game/audio/play-guards.ts";
-import { onSoundChanged } from "../game/audio/sfx.ts";
+import { isSoundEnabled, onSoundChanged } from "../game/audio/sfx.ts";
 
 /** The slice of HTMLAudioElement the player touches. */
 export interface CelebrationAudioElement {
@@ -60,6 +60,7 @@ export interface CelebrationLineDeps {
   createAudio?: (url: string) => CelebrationAudioElement;
   canAutoPlay?: () => boolean;
   audible?: () => boolean;
+  soundEnabled?: () => boolean;
   subscribeSound?: (
     listener: (on: boolean) => void,
   ) => () => void;
@@ -85,7 +86,15 @@ export function createCelebrationLinePlayer(
     ((url: string) => new Audio(url) as unknown as CelebrationAudioElement);
   const canAutoPlay = deps.canAutoPlay ?? detectiveCanAutoPlay;
   const audible = deps.audible ?? soundAudible;
+  /* The master toggle, read DIRECTLY (the loop player's isSoundOn
+   * idiom): detectiveCanAutoPlay alone has a hole — with the
+   * read-aloud preference unset it returns the band's autoplay
+   * verdict and never consults the toggle, so a preset-off summary
+   * would still speak. The file's own header promises the toggle
+   * gates this line; this read is what keeps that promise. */
+  const soundEnabled = deps.soundEnabled ?? isSoundEnabled;
   const subscribeSound = deps.subscribeSound ?? onSoundChanged;
+  const gateOpen = () => canAutoPlay() && audible() && soundEnabled();
 
   /* The line's Audio element, held for exactly the line's lifetime:
    * set when the element is created, cleared when it settles. The
@@ -109,13 +118,13 @@ export function createCelebrationLinePlayer(
   return {
     async play(isCancelled, onSpeaking) {
       if (disposed) return;
-      if (!canAutoPlay() || !audible()) return;
+      if (!gateOpen()) return;
       const manifest = await loadManifest();
       if (isCancelled() || disposed) return;
       // Gate re-check after the await: sound flipped off (or the
       // tab hid, or the read-aloud verdict changed) while the
       // manifest was loading — the line must not start.
-      if (!canAutoPlay() || !audible()) return;
+      if (!gateOpen()) return;
       const clip = resolveDetectiveClip(
         manifest,
         { kind: "fixed", id: "score-celebration" },

@@ -74,6 +74,7 @@ const tick = () => new Promise((r) => setTimeout(r, 5));
 
 function harness(overrides: {
   canAutoPlay?: () => boolean;
+  soundEnabled?: () => boolean;
   loadManifest?: () => Promise<DetectiveManifest | null>;
 } = {}) {
   const channel = fakeSoundChannel();
@@ -88,10 +89,28 @@ function harness(overrides: {
     },
     canAutoPlay: overrides.canAutoPlay ?? (() => true),
     audible: () => true,
+    soundEnabled: overrides.soundEnabled ?? (() => true),
     subscribeSound: channel.subscribe,
   });
   return { player, channel, audios, speaking };
 }
+
+test("celebration line: the master toggle gates directly — autoplay verdict alone is not enough", async () => {
+  // Regression for the unset-pref hole: detectiveCanAutoPlay
+  // returns the band verdict without consulting the toggle when the
+  // read-aloud preference is unset, so canAutoPlay reads true here
+  // while the toggle is OFF — the line must still not start.
+  const { player, audios } = harness({
+    canAutoPlay: () => true,
+    soundEnabled: () => false,
+  });
+  await player.play(
+    () => false,
+    () => {},
+  );
+  assert.deepEqual(audios, []);
+  player.dispose();
+});
 
 test("celebration line: gated off at start creates no Audio and resolves", async () => {
   const { player, audios } = harness({ canAutoPlay: () => false });
