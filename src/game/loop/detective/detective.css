@@ -1,0 +1,264 @@
+/*
+ * DetectivePair rig animation (U4).
+ *
+ * Rules: transform / opacity ONLY (compositor-friendly), every selector
+ * prefixed `detective-`, no filter or shadow animation. A pose is a
+ * class on the rig root (detective-pose-<pose>) toggled by the U5 state
+ * machine; the static pose geometry (arm angles, head tilts, faces)
+ * lives in DetectivePair.tsx, this file only adds MOTION on top.
+ * Rig parts are addressed by their data-part attributes.
+ */
+
+.detective-rig {
+  display: block;
+  overflow: visible;
+}
+
+.detective-rig [data-part] {
+  transform-box: view-box;
+}
+
+.detective-rig [data-part="bob"] {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.detective-rig .detective-mouth {
+  transform-box: fill-box;
+  transform-origin: 50% 20%;
+}
+
+/* --- idle breath (dock + station poses) --- */
+@keyframes detective-breath {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+.detective-pose-dock [data-part="bob"],
+.detective-pose-berth-think [data-part="bob"],
+.detective-pose-ack [data-part="bob"],
+.detective-pose-gaze-up [data-part="bob"],
+.detective-pose-card-look [data-part="bob"],
+.detective-pose-station-idle [data-part="bob"],
+.detective-pose-notebook-mark [data-part="bob"],
+.detective-pose-read [data-part="bob"],
+.detective-pose-think [data-part="bob"] {
+  animation: detective-breath 2.8s ease-in-out infinite;
+}
+
+/* --- walk: bob + opposite leg/arm swing --- */
+@keyframes detective-swing-a {
+  from {
+    transform: rotate(17deg);
+  }
+  to {
+    transform: rotate(-17deg);
+  }
+}
+
+@keyframes detective-swing-b {
+  from {
+    transform: rotate(-17deg);
+  }
+  to {
+    transform: rotate(17deg);
+  }
+}
+
+@keyframes detective-walk-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2.6px);
+  }
+}
+
+.detective-pose-walk [data-part="leg-a"] {
+  animation: detective-swing-a 0.36s ease-in-out infinite alternate;
+}
+
+.detective-pose-walk [data-part="leg-b"] {
+  animation: detective-swing-b 0.36s ease-in-out infinite alternate;
+}
+
+.detective-pose-walk [data-part="arm-swing"] {
+  animation: detective-swing-b 0.36s ease-in-out infinite alternate;
+}
+
+.detective-pose-walk [data-part="bob"] {
+  animation: detective-walk-bob 0.36s ease-in-out infinite;
+}
+
+/* --- dock: occasional glass polish (long cycle, brief motion) --- */
+@keyframes detective-glass-polish {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(-10deg);
+  }
+  55% {
+    transform: rotate(-4deg);
+  }
+  78% {
+    transform: rotate(-9deg);
+  }
+}
+
+.detective-pose-dock [data-part="arm-front"] {
+  animation: detective-glass-polish 1.25s ease-in-out;
+  animation-delay: 4s;
+  animation-iteration-count: 2;
+}
+
+/* --- station-idle: pencil tap --- */
+@keyframes detective-pencil-tap {
+  0%,
+  68%,
+  100% {
+    transform: rotate(0deg);
+  }
+  76% {
+    transform: rotate(-4.5deg);
+  }
+  84% {
+    transform: rotate(0deg);
+  }
+  91% {
+    transform: rotate(-4.5deg);
+  }
+  97% {
+    transform: rotate(0deg);
+  }
+}
+
+.detective-pose-station-idle [data-part="arm-note"] {
+  animation: detective-pencil-tap 2.8s ease-in-out infinite;
+}
+
+/* --- celebrate: jump --- */
+@keyframes detective-jump {
+  0% {
+    transform: translateY(0);
+  }
+  22% {
+    transform: translateY(-13px);
+  }
+  58% {
+    transform: translateY(-13px);
+  }
+  82% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.detective-pose-celebrate-jump {
+  animation: detective-jump 1.15s ease-in-out;
+}
+
+/* --- clap: arms alternate toward each other --- */
+/* Clap keyframes oscillate AROUND each rig's clap-together base
+   angles (set in DetectivePair.tsx), so the hands stay met. */
+@keyframes detective-clap-a {
+  from {
+    transform: rotate(30deg);
+  }
+  to {
+    transform: rotate(44deg);
+  }
+}
+
+@keyframes detective-clap-b {
+  from {
+    transform: rotate(-44deg);
+  }
+  to {
+    transform: rotate(-30deg);
+  }
+}
+
+@keyframes detective-clap-watson-front {
+  from {
+    transform: rotate(-58deg);
+  }
+  to {
+    transform: rotate(-44deg);
+  }
+}
+
+@keyframes detective-clap-watson-note {
+  from {
+    transform: rotate(32deg);
+  }
+  to {
+    transform: rotate(46deg);
+  }
+}
+
+.detective-pose-clap [data-part="bob"] {
+  animation: detective-walk-bob 0.15s ease-in-out infinite;
+}
+
+.detective-holmes.detective-pose-clap [data-part="arm-front"] {
+  animation: detective-clap-a 0.17s ease-in-out infinite alternate;
+}
+
+.detective-holmes.detective-pose-clap [data-part="arm-swing"] {
+  animation: detective-clap-b 0.17s ease-in-out infinite alternate;
+}
+
+.detective-watson.detective-pose-clap [data-part="arm-front"] {
+  animation: detective-clap-watson-front 0.17s ease-in-out infinite alternate;
+}
+
+.detective-watson.detective-pose-clap [data-part="arm-note"] {
+  animation: detective-clap-watson-note 0.17s ease-in-out infinite alternate;
+}
+
+/* --- speaking: generic mouth flap — oscillation, NOT lip-sync --- */
+@keyframes detective-mouth-flap {
+  from {
+    transform: scaleY(0.45);
+  }
+  to {
+    transform: scaleY(1.2);
+  }
+}
+
+@keyframes detective-speak-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2.6px);
+  }
+}
+
+.detective-speaking .detective-mouth {
+  animation: detective-mouth-flap 0.26s ease-in-out infinite alternate;
+}
+
+.detective-speaking [data-part="head"] {
+  animation: detective-speak-bob 0.3s ease-in-out infinite;
+}
+
+/* --- reduced motion: poses still change, motion does not --- */
+@media (prefers-reduced-motion: reduce) {
+  .detective-rig,
+  .detective-rig [data-part],
+  .detective-rig .detective-mouth {
+    animation: none !important;
+  }
+}
