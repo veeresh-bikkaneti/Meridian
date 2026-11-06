@@ -1,3 +1,21 @@
+## RECORDS CORRECTION — docs/correct-358-records (2026-11-06)
+
+- **TASK / outcome:** Correct the overstated PR #358 records — the
+  K3-pan "byte-identical" claim, the panel re-vote tally, and the
+  lost-log notes — in handbook ch.10, the #358 capsule below, and the
+  `DetectiveHost.tsx` NOTE comment (comment-only). Owner's word,
+  2026-11-06: "Fix the records — PR body now + docs correction PR."
+  PR #358's body was corrected separately; this PR mirrors its final
+  wording exactly.
+- **Tier:** 0 (docs + one comment) run under the standing full review
+  pipeline per the coordinator's brief. **Merge only on the owner's
+  explicit word for this PR** — ship-when-ready does not apply here.
+- **Done condition:** diff limited to the three surfaces + this entry;
+  `DetectiveHost.tsx` diff comment-only; gates green; independent Silo
+  QA + panel verdict on the final tip; STOP at the verdict.
+- **Status:** edits applied by the builder; unit gates recorded in the
+  PR body; Silo QA + panel verdict to follow on the final tip.
+
 ## PROD PAIR VISIBILITY FIX — fix/prod-pair-visibility (2026-11-06)
 
 - **TASK / outcome:** Cure the live defect "Holmes and Watson is not in prod"
@@ -31,7 +49,9 @@
 - [x] Diagnosis proven + filed
 - [x] Visibility E2E written — RED on unmodified build with the intended
   signature (overlap 7,151 px² ≈ Holmes's whole box; both figures
-  ~0.32 in view at the fold)
+  ~0.32 in view at the fold) (The RED-run log was kept in /tmp and
+  did not survive; the figure rests on this record and the diagnosis
+  probe traces preserved in the evidence folder's `diag/`.)
 - [x] C1/C2/C3 implemented (DetectiveHost.tsx only) · spec registered in
   playwright.config.ts + the telemetry guard's CONTEXT_FILES
 - [x] Gates on 85adc1a: tsc clean · npm test 3,240 pass / 0 fail ·
@@ -40,7 +60,9 @@
   reduced berth-by-cut PASSED on sequential re-run (contention flake);
   companion K3-pan + geodetective win-path re-runs pending on the cured
   tip; summary flag-off PROVEN pre-existing on unmodified main 1b38cb3
-  (control run, buildId-verified) — the flip (PR #356) made the
+  (control run, buildId-verified; that control log was kept in /tmp and
+  did not survive, so this rests on the session record) — the flip
+  (PR #356) made the
   committed flags.json true and the test's no-interception premise
   stale; CI never caught it (detective specs are not in CI's e2e
   subset — the required e2e job runs 6 files / 22 tests).
@@ -53,28 +75,49 @@
   station above the card); summary flag-off test repaired — flag state
   now set explicitly via a new fulfillFlagsOff interception (same
   assertions; setup made honest)
-- [x] **C3 REMOVED (unproven; implicated, then cleared):** companion
-  K3 "pan cancels a berth" failed repeatedly at the berth-confirm poll
-  on the full cure; early bisection (C1-only PASS 23.7 s, C1+C2 PASS
-  23.4 s, both solo) pointed at C3's +350 ms re-measure, and C3 was
-  cut on that evidence. The fuller record cleared it: the final batch
-  (C3 removed) still failed K3-pan in-batch while passing solo, and a
-  back-to-back A/B on 2026-11-06 — same 2-test batch, same load
-  window — fails BYTE-IDENTICALLY on unmodified main `1b38cb3`. The
-  mechanism is the suite's own disclosed environment property: under
-  SwiftShader + VM load, frame collapse trips the U6 auto-kill
-  (rolling FPS <45 in SEARCH phases), latching Holmes dock-only
-  mid-pause; the poll then reads "dock" forever. K3-pan is a
-  load-flake on main and cure alike (solo passes on the cure:
-  2×; same failure on main: evidenced) — NOT a regression. C3 stays
-  out anyway: it was the weakest cure, its guilt is unproven either
-  way, and a defect cure does not ship an unproven third change.
-  RC3 self-heals on scroll/resize/next phase in play → follow-up.
-  Also closed in triage: geodetective win-path fails BYTE-IDENTICALLY
-  on unmodified main (share text takes the Pages URL locally; the
-  spec hard-expects the workers.dev URL) — pre-existing, not this PR.
-- [ ] Re-vote on the cured tip · Silo QA re-keyed to the cured tip
-- [ ] PR merged · live verification both hosts · tip in deleted-branches ledger
+- [x] **C3 REMOVED (implicated by early bisection; guilt unproven):**
+  companion K3 "pan cancels a berth" failed repeatedly at the
+  berth-confirm poll on the full cure; early bisection (C1-only PASS
+  23.7 s, C1+C2 PASS 23.4 s, both solo) pointed at C3's +350 ms
+  re-measure, and C3 was cut on that evidence. The fuller record does
+  NOT clear it: both builds fail K3-pan in loaded batches with
+  different signatures. On unmodified main `1b38cb3` (surviving
+  control log) the U6 auto-kill had already latched before the berth
+  attempt — `companionMode` "killed" at entry, spec line 606 — the
+  suite's disclosed environment property: under SwiftShader + VM
+  load, frame collapse trips the auto-kill (rolling FPS <45 in
+  SEARCH phases). On the cured build the mode was "full" at entry
+  and the berth poll timed out at line 613; the cured failure's
+  cause is unproven — a mid-pause kill and confirm-chain starvation
+  cannot be separated in the surviving logs. K3-pan passes solo on
+  the cure (one surviving solo-pass log; a second pass was observed
+  in-session, its log lost) and is not shown to be a regression. C3
+  stays out anyway: it was the weakest cure, its guilt is unproven,
+  and a defect cure does not ship an unproven third change. RC3
+  self-heals on scroll/resize/next phase in play → follow-up. Also
+  closed in triage: geodetective win-path fails on unmodified main
+  with the same share-string mismatch (share URL resolves to the
+  Pages host locally; the spec hard-expects the workers.dev URL) —
+  pre-existing, not this PR. Both failure blocks were read
+  in-session; the control log was in /tmp and did not survive, so
+  "byte-identical" is not claimed.
+- [x] Re-vote on the cured tip `ca245d6` · Silo QA re-keyed to the cured tip
+- [x] PR merged 2026-11-06 23:16Z · live verification both hosts · tip
+  in deleted-branches ledger
+- **Correction (2026-11-06 — owner's word: "fix the records"; PR #358's
+  body carries the same correction):** the re-vote was first reported
+  as unanimous. The true tally is **11 seats non-blocking (5 APPROVE ·
+  6 APPROVE-WITH-NITS) + 1 BLOCK** — the Reality Checker seat, cast
+  23:03Z, before the 23:16Z merge; its verdict reached the coordinator
+  only after the merge, which proceeded on an incomplete count (a
+  process fault, recorded plainly). The BLOCK's own text: "the code
+  cure itself is evidenced and is not the blocker" — its required cure
+  was this records correction plus filing the missing logs. **Lost
+  logs (unrecoverable, /tmp wipe):** the visibility RED-run log, the
+  summary flag-off control log, the geodetective control log, and one
+  of two K3-pan solo-pass logs. Surviving A/B logs, the final-batch
+  log, and the diagnosis traces are preserved in
+  `~/workspace/meridian-detective-evidence/diag/`.
 
 ## FLIP — chore/flip-detective-pair (2026-11-06)
 
