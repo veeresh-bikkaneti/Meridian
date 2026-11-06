@@ -9052,16 +9052,16 @@
    "clues": [
     {
      "text": "This city hugs the south-east shore of an island in the vast Pacific. It is one port in a long chain of islands across that sea.",
-     "textHash": "b2196cbc2fa7078a68b6a98bedbe64abd1ee50c59829938907eae8097e204d28",
+     "textHash": "62e064197de9089e06923255c992bdb7bfeb6dad1b8ce5de205b7f7ae3023963",
      "voice": "avocado_v2:pb1_music_02",
-     "speed": 97,
+     "speed": 109,
      "gainDb": 0,
      "file": "case-416/clue-1.mp3",
-     "measuredHz": 85.1,
-     "measuredWpm": 29,
-     "durationSec": 54.07,
+     "measuredHz": 82.5,
+     "measuredWpm": 143,
+     "durationSec": 10.94,
      "status": "ok",
-     "note": "pitch retry ladder moved speed 100 -> 97"
+     "note": "pitch retry ladder moved speed 100 -> 97; pace retry ladder moved speed 97 -> 109"
     },
     {
      "text": "This island town stays warm all year, yet its summer is mostly dry. A rain shadow steals much of the rain that should fall here.",
