@@ -294,6 +294,36 @@
   pointer-events: none;
 }
 
+/* --- companion wrapper (U6): Holmes's map-side stage ------------------ */
+/* The portal wrapper fills the map container; Holmes's own element is
+   moved ONLY by translate3d (set inline by the host, transition-driven
+   for the walk / exit bursts). Nothing here animates per frame. */
+.detective-host-map {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.detective-host-holmes {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Solver-hide: absence must land fast — the hide path's transition is
+   80 ms, under the 100 ms absence ceiling (council Q2 §8). */
+.detective-host-holmes-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 80ms linear,
+    visibility 0s linear 80ms;
+}
+
 .detective-host-figure svg {
   display: block;
   height: 104px;

@@ -333,7 +333,7 @@ test("caseFailed from SEARCH goes straight to FAIL_READ", () => {
   assert.deepEqual(speakIds(last(steps).effects), ["answer"]);
 });
 
-test("pointer: pause → SEARCH_AREA (still docked in U5); move/gesture cancel", () => {
+test("pointer: pause → SEARCH_AREA (berth placement, U6); move/gesture cancel", () => {
   const steps = run([
     ...normalClue(1),
     { type: "pointerPaused", point: { x: 120, y: 200 } },
@@ -343,7 +343,7 @@ test("pointer: pause → SEARCH_AREA (still docked in U5); move/gesture cancel",
   ]);
   assert.equal(steps[4]!.phase, "SEARCH_AREA");
   const areaView = viewForState(steps[4]!.state);
-  assert.equal(areaView.holmes.placement, "dock"); // U5: companion berth is U6
+  assert.equal(areaView.holmes.placement, "berth"); // U6: host solver resolves pixels
   assert.equal(areaView.holmes.pose, "berth-think");
   assert.deepEqual(steps[4]!.state.lastPausePoint, { x: 120, y: 200 });
   assert.equal(steps[5]!.phase, "SEARCH_IDLE");

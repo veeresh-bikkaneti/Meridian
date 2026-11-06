@@ -328,8 +328,9 @@ export function berthFor(input: BerthInput): BerthResult {
     }
     if (best) break; // nearest distance ring with any legal berth wins
   }
-  if (!best) return { kind: "hide" };
-  return { kind: "berth", x: Math.round(best.x), y: Math.round(best.y) };
+  if (best === null) return { kind: "hide" };
+  const found: { x: number; y: number } = best;
+  return { kind: "berth", x: Math.round(found.x), y: Math.round(found.y) };
 }
 
 /* ------------------------------------------------------------------ */

@@ -48,8 +48,9 @@ export const DETECTIVE_PHASES = [
 ] as const;
 export type DetectivePhase = (typeof DETECTIVE_PHASES)[number];
 
-/** Where a character is rendered. "berth" is U6 vocabulary (waypoint
- * companion); U5 never emits it — Holmes sits at the dock in SEARCH. */
+/** Where a character is rendered. "berth" is the waypoint companion's
+ * placement (U6): emitted in SEARCH_AREA; the host's solver decides
+ * the actual pixels (berth / remote-at-dock / hidden). */
 export type HolmesPlacement = "station" | "dock" | "berth" | "hidden";
 export type WatsonPlacement = "station" | "dock" | "hidden";
 
@@ -243,20 +244,24 @@ export function viewForState(state: DetectiveState): DetectiveView {
         watson: { pose: "think", placement: "station", speaking: false },
       };
     case "SEARCH_IDLE":
-      // U5: Holmes sits at the map dock in the search pose (the pose
+      // Holmes sits at the map dock in the search pose (the pose
       // alternation with dock idle is render-side CSS, not state).
-      // U6 replaces placement logic with the waypoint companion.
+      // A confirmed pause moves him to SEARCH_AREA's berth (U6).
       return {
         ...base,
         holmes: { pose: "search", placement: "dock", speaking: false },
         watson: { pose: "station-idle", placement: "dock", speaking: false },
       };
     case "SEARCH_AREA":
-      // Player paused over an area. U5 keeps Holmes docked (companion
-      // berthing is U6); the thinking pose marks the pause.
+      // Player paused over an area (U6): the machine says "berth" and
+      // the thinking pose; the HOST resolves the berth solver against
+      // the real pause point — the rendered outcome may be a berth
+      // beside the point, "remote" thinking at the dock, or hidden,
+      // and the walk itself is host-side CSS. The machine stays free
+      // of geometry: its placement is intent, not pixels.
       return {
         ...base,
-        holmes: { pose: "berth-think", placement: "dock", speaking: false },
+        holmes: { pose: "berth-think", placement: "berth", speaking: false },
         watson: { pose: "station-idle", placement: "dock", speaking: false },
       };
     case "SELECTION_READ":
