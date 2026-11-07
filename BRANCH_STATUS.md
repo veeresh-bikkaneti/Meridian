@@ -49,7 +49,7 @@ no new host props; the K5 swap test must still pass).
 - [x] tests/e2e/detective-watson-walk.spec.ts at 390/768/1280 + playwright project + telemetry-guard registration
 - [x] Handbook ch.10 PR B staging record
 - [x] Gates: tsc / npm test / test:worker / lint-cards / build:pages + detective union E2E
-- [ ] PR opened (NO MERGE) — opened at tip below; merge is the coordinator's pipeline + the owner's word
+- [x] PR opened: **#363** https://github.com/veeresh-bikkaneti/Meridian/pull/363 (NO MERGE — coordinator pipeline + owner word)
 
 ## Build + verification record (builder, 2026-11-07)
 
