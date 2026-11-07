@@ -5,6 +5,8 @@ import {
   clearLoopStore,
   completePuzzle,
   dealPuzzleIndex,
+  endSession,
+  loopSessionSummary,
   freshLoopPuzzleState,
   freshLoopUnlimitedStore,
   isLoopPuzzleState,
@@ -762,4 +764,114 @@ test("clearLoopStore: blocked storage reports failure, never throws", () => {
     result = clearLoopStore();
   });
   assert.equal(result, false);
+});
+
+test("endSession outright: discards a playing current, summary shows no open case", () => {
+  const playing = freshLoopPuzzleState(4, 1);
+  const store: LoopUnlimitedStore = {
+    ...freshLoopUnlimitedStore(10),
+    streak: 2,
+    bestStreak: 3,
+    totals: { solved: 2, lost: 1 },
+    current: playing,
+  };
+  const next = endSession(store, "outright");
+  assert.equal(next.current, null, "the in-flight case is discarded");
+  const summary = loopSessionSummary(next);
+  assert.equal(summary.openCaseDeckId, null);
+  assert.equal(summary.casesClosed, 3);
+  assert.equal(summary.solved, 2);
+  assert.equal(summary.lost, 1);
+});
+
+test("endSession outright: leaves a won or lost current untouched", () => {
+  for (const finished of [wonPuzzle(4, 1), lostPuzzle(4, 1)]) {
+    const store: LoopUnlimitedStore = {
+      ...freshLoopUnlimitedStore(10),
+      current: finished,
+    };
+    const next = endSession(store, "outright");
+    assert.equal(next, store, "a finished current is returned unchanged");
+    assert.equal(next.current, finished);
+  }
+});
+
+test("endSession: outright and pause never change totals, streak, bestStreak or cycleCompleted", () => {
+  const base: LoopUnlimitedStore = {
+    ...freshLoopUnlimitedStore(10),
+    streak: 2,
+    bestStreak: 5,
+    totals: { solved: 3, lost: 1 },
+    current: freshLoopPuzzleState(4, 1),
+  };
+  // Give the deck a non-zero cycleCompleted to prove it is untouched too.
+  const store: LoopUnlimitedStore = {
+    ...base,
+    deck: { ...base.deck, cycleCompleted: 4 },
+  };
+  for (const fate of ["outright", "pause"] as const) {
+    const next = endSession(store, fate);
+    assert.deepEqual(next.totals, store.totals, `${fate} leaves totals alone`);
+    assert.equal(next.streak, store.streak, `${fate} leaves streak alone — discarding is not a loss`);
+    assert.equal(next.bestStreak, store.bestStreak);
+    assert.equal(next.deck.cycleCompleted, store.deck.cycleCompleted);
+    assert.deepEqual(next.deck, store.deck);
+  }
+});
+
+test("endSession pause: returns an equal store with the current intact", () => {
+  const playing = freshLoopPuzzleState(4, 1);
+  const store: LoopUnlimitedStore = {
+    ...freshLoopUnlimitedStore(10),
+    streak: 1,
+    totals: { solved: 1, lost: 0 },
+    current: playing,
+  };
+  const next = endSession(store, "pause");
+  assert.deepEqual(next, store);
+  assert.equal(next.current, playing, "the in-flight case is preserved exactly");
+  assert.equal(loopSessionSummary(next).openCaseDeckId, "core");
+});
+
+test("loopSessionSummary: multi-deck store derives decks in order with the open-case flag on the right deck", () => {
+  const packPuzzle = { ...freshLoopPuzzleState(400, 2), deckId: "capitals" };
+  const store: LoopUnlimitedStore = {
+    ...freshLoopUnlimitedStore(10),
+    streak: 1,
+    bestStreak: 2,
+    totals: { solved: 2, lost: 1 },
+    deck: { deck: [1, 2, 3], cycle: 1, cycleCompleted: 7 },
+    packDecks: {
+      capitals: { deck: [400, 401], cycle: 2, cycleCompleted: 5 },
+    },
+    current: packPuzzle,
+  };
+  const summary = loopSessionSummary(store);
+  assert.equal(summary.casesClosed, 3);
+  assert.equal(summary.solved, 2);
+  assert.equal(summary.lost, 1);
+  assert.equal(summary.streak, 1);
+  assert.equal(summary.bestStreak, 2);
+  assert.equal(summary.openCaseDeckId, "capitals");
+  assert.deepEqual(summary.decks, [
+    { deckId: "core", cycle: 1, cycleCompleted: 7, remaining: 3, openCase: false },
+    { deckId: "capitals", cycle: 2, cycleCompleted: 5, remaining: 2, openCase: true },
+  ]);
+});
+
+test("loopSessionSummary: a fresh store summarizes to zeros with the core deck listed", () => {
+  const store = freshLoopUnlimitedStore(10);
+  const summary = loopSessionSummary(store);
+  assert.equal(summary.casesClosed, 0);
+  assert.equal(summary.solved, 0);
+  assert.equal(summary.lost, 0);
+  assert.equal(summary.streak, 0);
+  assert.equal(summary.bestStreak, 0);
+  assert.equal(summary.openCaseDeckId, null);
+  assert.equal(summary.decks.length, 1);
+  assert.equal(summary.decks[0]!.deckId, "core");
+  assert.equal(summary.decks[0]!.cycle, 1);
+  assert.equal(summary.decks[0]!.cycleCompleted, 0);
+  assert.equal(summary.decks[0]!.remaining, 10);
+  assert.equal(summary.decks[0]!.openCase, false);
 });
