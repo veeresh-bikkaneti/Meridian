@@ -132,7 +132,7 @@ On smaller or quieter setups the pair steps back instead of getting in the way:
 | Sound off | No speech at all; the pair is pictures only, and every fact stays on screen as text. |
 | Read-aloud set to "never" or "sometimes" | Same Listen button — it is never hidden, because it is the player's own tool. |
 
-The decision itself is one small pure function, `resolveDetectiveDegradation` in `src/game/loop/detective/detective-degradation.ts`, and the voices follow the pre-rendered pipeline in [Detective audio](#detective-audio-holmes--watson-in-build) above.
+The decision itself is one small pure function, `resolveDetectiveDegradation` in `src/game/loop/detective/detective-degradation.ts`, and the voices follow the pre-rendered pipeline in [Detective audio](#detective-audio-holmes--watson) above.
 
 ### Supporting the game
 

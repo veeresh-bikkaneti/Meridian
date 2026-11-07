@@ -422,12 +422,13 @@ the re-run panel and the flip owner can check them off one by one.
     standing, reading, muted and reduced-motion. Under
     staging, LoopScreen reserves a 118 px gutter beside the clue
     cards (the cards narrow; their text reflows inside them — the
-    mockup v2 geometry), Watson's station stands IN the gutter
-    centred on the active card, and Holmes never joins the station
-    cluster: before entry he stands in the bench slot, after entry
-    he lives on the map. The staging E2E ports the mockup's
-    position-sampling audit (figure boxes vs every clue text
-    element, sampled through the whole case).
+    mockup v2 geometry). The 118 px margin applies for the whole
+    session by design — cards never reflow mid-case. Watson's
+    station stands IN the gutter centred on the active card, and
+    Holmes never joins the station cluster: before entry he stands
+    in the bench slot, after entry he lives on the map. The staging
+    E2E ports the mockup's position-sampling audit (figure boxes
+    vs every clue text element, sampled through the whole case).
   - **Dock alias restored:** PR C's 44 px dock narrowing of the
     Holmes mute alias was forced by the pre-#358 dock overlap;
     #358 deleted that overlap (Holmes beside Watson, boxes

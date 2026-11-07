@@ -21,8 +21,8 @@
  * SVG under the figure (data-part="halo"), never a live CSS
  * filter. The halo group renders only when the caller passes the
  * `halo` prop (hosts pass isEnabled("hostsStaging")); the default
- * is the pre-A rig, so hostsStaging:false restores the pair
- * exactly as PR #355–#358 shipped it on every surface (cure C5).
+ * is the pre-A rig, so hostsStaging:false restores the rigs
+ * exactly as PR #355–#358 shipped them (cure C5).
  * The bench scene's coffee cups live in the host's bench
  * markup (detective.css), not in these rigs: the cups stay on the
  * bench and never enter play.
@@ -83,8 +83,8 @@ export interface HolmesRigProps {
   /** Makeover halo/keyline (PR A): painted ONLY when the caller
    * passes it — hosts pass isEnabled("hostsStaging"). Default false
    * renders the pre-A rig exactly as PR #355–#358 shipped it, so the
-   * hostsStaging kill-switch restores the shipped pair on every
-   * surface, including the summary celebration (cure C5). */
+   * hostsStaging kill-switch restores the rigs exactly as shipped,
+   * including on the summary celebration (cure C5). */
   halo?: boolean;
 }
 
