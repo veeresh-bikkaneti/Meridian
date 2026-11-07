@@ -40,13 +40,30 @@
   the mode from the degradation matrix, and the latch CLEARS on every
   case change. The degradation dock-only path (Save-Data / ≤4 GB /
   battery saver — `data-companion="dock"`) is by design and untouched.
-- **Gates so far:** companion unit tests 23/23 (4 new cure tests) ·
-  `npx tsc --noEmit` clean. Full builder gates + new E2E below: PENDING.
-- **E2E (PENDING):** new closed-state spec (SOLVE + FAIL × 390/768/1280,
-  ≤200 ms sampling of the SELECTION_READ window — closes the recorded
-  CELEBRATE-window sampling hole) + new real-berth spec (measured
-  arrival, 390 touch + 1280 mouse + post-throttle recovery) + all
-  existing detective gates solo under flock.
+- **Gates (final tip):** `npx tsc --noEmit` clean · `npm test`
+  3,263 pass / 0 fail / 11 skipped (scripts 1,020 + src 2,243, incl.
+  companion 23/23 with 4 new cure tests) · `npm run test:worker`
+  145/0 · `node scripts/lint-cards.mjs` GATE PASSED ·
+  `npm run build:pages` exit 0, entry chunk 457.83 kB (gzip 144.81).
+  Logs: `~/workspace/meridian-cure-logs/`.
+- **E2E (solo, `--workers=1`, under flock; logs in the cure-logs
+  folder):** NEW closed-state 6/6 (SOLVE + FAIL × 390/768/1280;
+  SELECTION_READ window sampled in every run, 3–9 samples, bench-free
+  throughout) · NEW real-berth 3/3 in one clean final run (mouse 1280:
+  dock→berth 358 px, centre 100 px from the point; touch 390: 271 px,
+  centre 97 px; recovery: latch fired under 8× throttle → no berth
+  while killed → re-qualified → berth 358 px) · existing gates all
+  green: staging 11 · companion 6 · swap (K5) 1 · endings 2 ·
+  stations 1 · replay 3 · sound 10 · summary 3 · visibility 4 ·
+  flag 3 · reduced summary 1 + reduced detective 1 (the reduced
+  detective spec failed once on the documented audio-unlock stall
+  under load — zero detective requests — and passed its solo
+  re-run in 16.5 s; recorded as environment flake, no test edits).
+- **ENVIRONMENT NOTE:** at ~10:34 the VM wiped `/var/tmp`, deleting
+  the cure clone mid-run. No work was lost — every commit was
+  already pushed (tip verified on origin) — the clone was recreated
+  from the builder repo at the same tip, hashes re-verified, dist
+  rebuilt, and the remaining gates ran there.
 - **Protected / untouched:** scoring, dealing, clue text, hint defaults,
   donation copy, celebration choreography, answer-blind whitelist,
   flag values, FG-5 thresholds, watson-walk code (none on this base).
