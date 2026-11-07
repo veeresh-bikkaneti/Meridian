@@ -180,6 +180,12 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   const stagingStageRef = useRef(stagingStage);
   stagingStageRef.current = stagingStage;
   const entryPendingRef = useRef(false);
+  /* Cure C2: a map interaction during "bench" records entry intent
+   * here instead of jumping bench -> entering mid-duet; the entry
+   * proceeds when the stage reaches "standing". */
+  const entryIntentRef = useRef(false);
+  /* Cure C9: the entry walk's rAF handle, cancelled on unmount. */
+  const entryRafRef = useRef<number | null>(null);
   const holmesEntered =
     !stagingOn || stagingStage === "entering" || stagingStage === "gone";
   const viewRef = useRef(view);
@@ -410,6 +416,38 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     return () => clearTimeout(t);
   }, [stagingStage, reducedMotion]);
 
+  /* Cure C2: entry intent recorded during "bench" fires the moment
+   * the stage reaches "standing" — the duet is never cut short, and
+   * the interaction handlers themselves are untouched. */
+  useEffect(() => {
+    if (stagingStage !== "standing" || !entryIntentRef.current) return;
+    entryIntentRef.current = false;
+    enterMapRef.current();
+  }, [stagingStage]);
+
+  /* Cure C3: a case that ends with Holmes never entered (no map
+   * interaction ever happened — stage still "standing") forces his
+   * entry at case end. This is the structurally cleaner cure: the
+   * one existing entry mechanism runs, the bench slot collapses
+   * empty, CELEBRATE's station cluster is then the only Holmes on
+   * the page (his map wrapper does not render while celebrating),
+   * and DEBRIEF keeps its Holmes at the map dock via the existing
+   * station-phase dock fallback. Gating the bench figure out per
+   * phase instead would have needed a second Holmes source for
+   * DEBRIEF and left the slot reserved through the endings. */
+  useEffect(() => {
+    if (!stagingOn) return;
+    if (
+      view.phase !== "CELEBRATE" &&
+      view.phase !== "DEBRIEF" &&
+      view.phase !== "FAIL_READ" &&
+      view.phase !== "POUT"
+    )
+      return;
+    if (stagingStage !== "standing") return;
+    enterMapRef.current();
+  }, [stagingOn, view.phase, stagingStage]);
+
   /* -- station anchoring: measure on discrete changes, never per frame  */
   const [anchor, setAnchor] = useState<StationAnchor | null>(null);
   /** Whether the first anchor measure has completed. Under staging
@@ -420,6 +458,24 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * law does not forgive. A measure that finds NO card still counts
    * (that is the genuine anchor-null fallback, rendered as before). */
   const [anchorMeasured, setAnchorMeasured] = useState(false);
+  /* Cure C6: the pre-measure suppression must cover TRANSITIONS,
+   * not only mount — a clue/case change leaves the previous card's
+   * anchor in place, and a case change with the same clue count did
+   * not even re-run the measure effect. Reset during render (the
+   * React adjust-state pattern: the re-render happens before any
+   * paint) whenever the case or clue changes; the measure effect
+   * below then re-measures the new card and re-arms the station. */
+  const [anchorResetKey, setAnchorResetKey] = useState({
+    caseIndex,
+    cluesRevealed,
+  });
+  if (
+    anchorResetKey.caseIndex !== caseIndex ||
+    anchorResetKey.cluesRevealed !== cluesRevealed
+  ) {
+    setAnchorResetKey({ caseIndex, cluesRevealed });
+    setAnchorMeasured(false);
+  }
   const [mapEl, setMapEl] = useState<Element | null>(null);
   const mapElRef = useRef<Element | null>(null);
   /** Cached map container rect (client coords): measured HERE, on
@@ -470,7 +526,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       window.removeEventListener("resize", measure);
       window.removeEventListener("scroll", measure);
     };
-  }, [cluesRevealed, phase, status]);
+  }, [cluesRevealed, phase, status, caseIndex]);
 
   /* -- the reading moment comes to the player (prod-pair fix, RC2) --
    * On the shipped layout the clue cards render BELOW the map, past a
@@ -603,6 +659,13 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * on to the berth instead. */
   const enterMap = () => {
     if (!stagingOn) return;
+    /* Cure C2: during "bench" the interaction only records intent —
+     * the stage must not jump bench -> entering mid-duet. The
+     * standing effect above fires the entry when the duet ends. */
+    if (stagingStageRef.current === "bench") {
+      entryIntentRef.current = true;
+      return;
+    }
     if (
       stagingStageRef.current === "entering" ||
       stagingStageRef.current === "gone"
@@ -618,7 +681,8 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     entryPendingRef.current = true;
     setHolmesTransition({ durationMs: 0, easing: EASE_OUT });
     setHolmesXY({ x: dock.x + 90, y: dock.y + 34 });
-    requestAnimationFrame(() => {
+    entryRafRef.current = requestAnimationFrame(() => {
+      entryRafRef.current = null;
       if (!entryPendingRef.current) return;
       entryPendingRef.current = false;
       setHolmesTransition({ durationMs: 700, easing: EASE_OUT });
@@ -633,6 +697,22 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   };
   const enterMapRef = useRef(enterMap);
   enterMapRef.current = enterMap;
+
+  /* Cure C9: unmount cleanup for the entry machinery — cancel the
+   * entry rAF and the walk timer so neither can fire into an
+   * unmounted host (the dwell/ring timers already die above). */
+  useEffect(() => {
+    return () => {
+      if (entryRafRef.current !== null) {
+        cancelAnimationFrame(entryRafRef.current);
+        entryRafRef.current = null;
+      }
+      if (walkTimerRef.current) {
+        clearTimeout(walkTimerRef.current);
+        walkTimerRef.current = null;
+      }
+    };
+  }, []);
 
   /* Auto-kill: rAF deltas + long-task observer feed the pure tracker;
    * on kill the companion is off for the session (Holmes dock-only).
@@ -758,12 +838,21 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         pointerType: lastPointerType,
         handSide: point.x >= window.innerWidth / 2 ? "right" : "left",
       });
+      /* Cure C4 (entry supersession ownership): entryPendingRef is
+       * cleared exactly when another path assumes ownership of
+       * holmesXY — only a berth does (it sets the target below).
+       * `hide` and `remote` return WITHOUT clearing, so a queued
+       * entry walk completes to the dock: a routine desktop far
+       * hover-pause as the first interaction used to clear it and
+       * strand Holmes at the entry offset dock+(90,34), feet past
+       * the map's bottom edge. For `hide`, completing the entry
+       * under the hidden wrapper is harmless and uniform. */
       if (result.kind === "hide") {
         setBerthHidden(true);
         return;
       }
+      if (result.kind === "remote") return; // thinks at the dock (view pose); the entry walk delivers him there
       entryPendingRef.current = false; // a berth supersedes the entry walk's dock target
-      if (result.kind === "remote") return; // thinks at the dock (view pose)
       const target = {
         x: result.x - rect.left,
         y: result.y - rect.top,
@@ -948,6 +1037,11 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       }
       // Snap the wrapper home even when he never berthed (cheap no-op
       // when already docked) so SELECTION_READ renders him at the dock.
+      /* Cure C4 (Sr Dev nit 3): the snap moves holmesXY, so it owns
+       * it — consume any queued entry walk, or the entry rAF would
+       * fire after the snap and walk him in place with the walk
+       * pose (the tap-first-interaction case). */
+      entryPendingRef.current = false;
       setHolmesXY(dockXY());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -956,6 +1050,13 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   /* -- render ---------------------------------------------------------- */
   if (view.hidden || view.phase === "OFF") return null;
 
+  /* Cure C1 (panel round, PR #361): while the bench stage holds,
+   * the pair exist ONLY on the bench — Watson's station cluster is
+   * suppressed whole (figure, replay, Listen, sound chip) so the
+   * page never carries two Watsons, and the bench rigs speak the
+   * CASE_OPEN duet (see benchEl). Holmes's station suppression
+   * below already had this shape; Watson's is now symmetric. */
+  const benchStage = stagingOn && stagingStage === "bench";
   const holmesEl =
     view.holmes.placement !== "hidden" ? (
       <div className="detective-host-figure" data-detective="holmes">
@@ -963,6 +1064,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           pose={view.holmes.pose}
           facing="right"
           speaking={speakingWho === "holmes"}
+          halo={stagingOn}
         />
       </div>
     ) : null;
@@ -973,6 +1075,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           pose={view.watson.pose}
           facing="left"
           speaking={speakingWho === "watson"}
+          halo={stagingOn}
         />
       </div>
     ) : null;
@@ -984,7 +1087,10 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     holmesEl !== null &&
     watsonEl !== null;
   const stationFigures: ReactElement[] = [];
-  if (view.watson.placement === "station" && watsonEl) stationFigures.push(<span key="w">{watsonEl}</span>);
+  /* Cure C1: during the bench stage Watson's station figure is
+   * suppressed with the rest of his cluster — the bench Watson is
+   * the only Watson on the page. */
+  if (view.watson.placement === "station" && watsonEl && !benchStage) stationFigures.push(<span key="w">{watsonEl}</span>);
   /* Staging (PR A): Holmes NEVER joins the station cluster — that is
    * what keeps the zero-overlap law: Watson alone stands in the
    * gutter beside the card, Holmes waits in the bench slot (before
@@ -1078,6 +1184,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           pose={walking ? "walk" : view.holmes.pose}
           facing="right"
           speaking={speakingWho === "holmes"}
+          halo={stagingOn}
         />
       </div>
     </div>
@@ -1089,9 +1196,15 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * the cluster, beside the pair at the active clue card. Tapping it
    * replays the player's held clue sequence; the sound gate is
    * re-checked inside the player at play time. */
+  const stationReady = !stagingOn || anchorMeasured;
   const showListen =
     degradation.speechMode === "tap" &&
     !view.hidden &&
+    !benchStage &&
+    /* Cure C7: the Listen element waits for the first anchor
+     * measure like its sibling station surfaces (stationReady) —
+     * an unmeasured Listen could paint over the card it serves. */
+    stationReady &&
     LISTEN_PHASES.has(view.phase);
   /* Gutter station (staging): the station cluster stands IN the
    * 118 px gutter LoopScreen reserves beside the clue cards,
@@ -1100,7 +1213,6 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     stagingOn && !celebrating && anchor !== null && view.watson.placement === "station";
   const gutterLeft = anchor ? anchor.left + anchor.width + 6 : 0;
   const gutterCentreTop = anchor ? anchor.top + anchor.height / 2 : 0;
-  const stationReady = !stagingOn || anchorMeasured;
   const listenEl = showListen ? (
     <div
       className="detective-host-listen"
@@ -1158,7 +1270,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     </span>
   );
   const watsonReplayStationEl =
-    showWatsonReplay && view.watson.placement === "station" && stationReady ? (
+    showWatsonReplay && view.watson.placement === "station" && stationReady && !benchStage ? (
       <div
         className={
           gutterStation
@@ -1423,19 +1535,33 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         data-staging-stage={stagingStage}
         aria-hidden="true"
       >
+        {/* Cure C1 (iii): while muted, the pair's muted badge
+            latches on the bench slot — the badge only; the sound
+            chip stays suppressed with Watson's station cluster, so
+            PR C's exactly-one-chip invariant holds in this state
+            too (zero chips on the bench, one badge). */}
+        {benchStage && mutedBadge ? (
+          <div className="detective-bench-muted">{mutedBadge}</div>
+        ) : null}
         <div className="detective-bench-figures">
           {stagingStage === "bench" ? (
             <>
+              {/* Cure C1 (ii): the bench rigs speak the CASE_OPEN
+                  duet — speaking follows speakingWho, so Holmes's
+                  instruction line is visibly spoken by bench Holmes
+                  and Watson's by bench Watson. Their poses stay the
+                  seated bench poses; only the mouth flap follows
+                  the speaker. */}
               <div className="detective-bench-figure" data-bench="watson">
-                <WatsonRig pose="station-idle" facing="left" speaking={false} />
+                <WatsonRig pose="station-idle" facing="left" speaking={speakingWho === "watson"} halo={stagingOn} />
               </div>
               <div className="detective-bench-figure" data-bench="holmes">
-                <HolmesRig pose="dock" facing="right" speaking={false} />
+                <HolmesRig pose="dock" facing="right" speaking={speakingWho === "holmes"} halo={stagingOn} />
               </div>
             </>
           ) : stagingStage === "standing" ? (
             <div className="detective-bench-figure" data-bench="holmes">
-              <HolmesRig pose="dock" facing="right" speaking={false} />
+              <HolmesRig pose="dock" facing="right" speaking={false} halo={stagingOn} />
             </div>
           ) : null}
           {/* Entering: NO bench figure. Holmes leaves WITH the
