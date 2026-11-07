@@ -55,7 +55,7 @@
   while killed → re-qualified → berth 358 px) · existing gates all
   green: staging 11 · companion 6 · swap (K5) 1 · endings 2 ·
   stations 1 · replay 3 · sound 10 · summary 3 · visibility 4 ·
-  flag 3 · reduced summary 1 + reduced detective 1 (the reduced
+  flag 2 · reduced summary 1 + reduced detective 1 (the reduced
   detective spec failed once on the documented audio-unlock stall
   under load — zero detective requests — and passed its solo
   re-run in 16.5 s; recorded as environment flake, no test edits).
