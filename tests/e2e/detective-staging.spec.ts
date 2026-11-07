@@ -509,12 +509,20 @@ for (const w of WIDTHS) {
         y: mapBox!.y + mapBox!.height * 0.3,
       };
       await berthAt(page, berthPoint);
-      const berthPos = await holmesWrapperPos(page);
-      expect(berthPos).not.toBeNull();
-      expect(
-        Math.hypot(berthPos!.x - dockPos!.x, berthPos!.y - dockPos!.y),
-        "berth must differ from the dock (he walked there)",
-      ).toBeGreaterThan(40);
+      // Placement flips to "berth" when the walk STARTS; poll the
+      // wrapper until the walk has actually carried him away from
+      // the dock (350/450 ms of travel, longer under load).
+      await expect
+        .poll(
+          async () => {
+            const p = await holmesWrapperPos(page);
+            return p
+              ? Math.hypot(p.x - dockPos!.x, p.y - dockPos!.y)
+              : 0;
+          },
+          { timeout: 15_000 },
+        )
+        .toBeGreaterThan(40);
       trail.absorb(await berthWindow, `berth @ ${w.name}`);
 
       /* -- MUTE TAP at three widths: full-width Holmes alias ----- */
@@ -526,14 +534,19 @@ for (const w of WIDTHS) {
       await expect(page.getByTestId("detective-muted-badge")).toBeVisible({
         timeout: 10_000,
       });
+      // The one master key, canonical values (sfx.setSoundEnabled
+      // writes "on"/"off" — the same values the sound spec pins).
       const soundKey = await page.evaluate(() =>
         localStorage.getItem("meridian.sound"),
       );
-      expect(soundKey).toBe("false");
+      expect(soundKey).toBe("off");
       await mute.click({ position: { x: 35, y: 52 } });
       await expect(page.getByTestId("detective-muted-badge")).toHaveCount(0, {
         timeout: 10_000,
       });
+      expect(
+        await page.evaluate(() => localStorage.getItem("meridian.sound")),
+      ).toBe("on");
       await trail.collect(page, `mute @ ${w.name}`);
     } finally {
       await context.close();
