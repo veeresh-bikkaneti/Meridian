@@ -232,11 +232,15 @@ the re-run panel and the flip owner can check them off one by one.
   the viewport. Search phases never scroll. (3) A deferred anchor
   re-measure for RC3 was tried and REMOVED before merge: early
   bisection against the companion E2E (K3 pan-cancels-a-berth)
-  implicated it, but the completed A/B — same batch, same load
-  window — fails identically on unmodified main: under SwiftShader
-  + VM load the U6 auto-kill (rolling FPS <45 in SEARCH) latches
-  Holmes dock-only mid-pause, a load-flake the suite's own comments
-  already disclose. The re-measure's guilt is unproven either way;
+  implicated it. Both builds fail K3-pan in loaded batches, but
+  with different signatures: on unmodified main the U6 auto-kill
+  had already latched before the berth attempt (under SwiftShader
+  + VM load, frame collapse trips the auto-kill — rolling FPS <45
+  in SEARCH — a load property the suite's own comments already
+  disclose); on the cured build the failure's cause is unproven —
+  a mid-pause kill and confirm-chain starvation cannot be separated
+  in the surviving logs. The re-measure's guilt is unproven either
+  way;
   a defect cure does not ship an unproven third change. RC3
   self-heals on scroll, resize, or the next phase change, and
   stands as a follow-up, not a cure.
@@ -250,6 +254,19 @@ the re-run panel and the flip owner can check them off one by one.
 - **Standing lesson:** for anything a player must SEE, presence is
   not evidence. Visibility gates assert viewport intersection and
   occlusion, or they assert nothing.
+- **Correction (2026-11-06 — owner's word: "fix the records"):** the
+  panel re-vote on the cured tip was first reported as 12/12 with
+  zero BLOCKs. The true tally is 11 seats non-blocking (5 APPROVE ·
+  6 APPROVE-WITH-NITS) + 1 BLOCK — the Reality Checker seat, cast
+  23:03Z, before the 23:16Z merge; its verdict reached the
+  coordinator only after the merge, which proceeded on an incomplete
+  count (a process fault). The BLOCK's own text states the code cure
+  itself is evidenced and is not the blocker; it required this
+  records correction. Logs lost in a /tmp wipe (unrecoverable): the
+  visibility RED-run log, the summary flag-off control log, the
+  geodetective control log, and one K3-pan solo-pass log; survivors
+  are preserved in the evidence folder's `diag/`. Full text: the
+  "Correction" section of PR #358's body.
 
 ## Staging rework — PR C: Sound Everywhere (2026-11-06)
 

@@ -455,13 +455,15 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     /* NOTE (prod-pair fix): a deferred +350 ms re-measure for slow-
      * load anchor staleness (diagnosis RC3) was tried here and
      * REMOVED before merge. Early bisection against the companion
-     * E2E (K3 pan-cancels-a-berth) implicated the extra pass, but
-     * the completed A/B fails identically on unmodified main — the
-     * K3 failure is the disclosed SwiftShader/load auto-kill flake,
-     * and the re-measure's guilt is unproven. A defect cure does not
-     * ship an unproven third change: RC3 is self-healing in play
-     * (scroll, resize, and the next phase change all re-measure) and
-     * ships as a documented follow-up. See BRANCH_STATUS.md. */
+     * E2E (K3 pan-cancels-a-berth) implicated the extra pass. Both
+     * builds fail K3-pan in loaded batches, but with different
+     * signatures, and the cured build's failure cause is unproven
+     * (a mid-pause auto-kill and confirm-chain starvation cannot be
+     * separated in the surviving logs) — so the re-measure's guilt
+     * is unproven too. A defect cure does not ship an unproven
+     * third change: RC3 is self-healing in play (scroll, resize,
+     * and the next phase change all re-measure) and ships as a
+     * documented follow-up. See BRANCH_STATUS.md. */
     window.addEventListener("resize", measure);
     window.addEventListener("scroll", measure, { passive: true });
     return () => {

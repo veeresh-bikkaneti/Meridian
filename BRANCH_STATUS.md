@@ -1,3 +1,46 @@
+## PROVEN WORDING CURE — docs/cure-proven-flagoff (2026-11-06)
+
+- **TASK / outcome:** Cure the one retained "PROVEN" on the #358
+  flag-off line in the #358 capsule below: "PROVEN pre-existing"
+  becomes "shown pre-existing in-session" — the wording prescribed
+  by the #359 verdict seats and already carried in PR #358's
+  corrected body. The control log was kept in /tmp and did not
+  survive, so the claim rests on the session record; it is not
+  proven. Owner's word, 2026-11-06: "Cure the PROVEN wording".
+- **Tier:** 0 (docs only) run under the standing full review
+  pipeline per the coordinator's brief.
+- **Done condition:** diff limited to the #358 capsule line + this
+  entry; no other "proven" claim touched — the evidence-backed
+  claims (root causes / diagnosis filed / pairwise separation)
+  stay, their traces survive in the evidence folder's `diag/`;
+  gates green; independent Silo QA + panel verdict on the final
+  tip.
+- **Status:** in pipeline — ship-when-ready on READY /
+  READY-WITH-NITS (owner's word 2026-11-06: "Cure the PROVEN
+  wording").
+
+## RECORDS CORRECTION — docs/correct-358-records (2026-11-06)
+
+- **TASK / outcome:** Correct the overstated PR #358 records — the
+  K3-pan "byte-identical" claim, the panel re-vote tally, and the
+  lost-log notes — in handbook ch.10, the #358 capsule below, and the
+  `DetectiveHost.tsx` NOTE comment (comment-only). Owner's word,
+  2026-11-06: "Fix the records — PR body now + docs correction PR."
+  PR #358's body was corrected separately; this PR mirrors its
+  corrected wording in substance.
+- **Tier:** 0 (docs + one comment) run under the standing full review
+  pipeline per the coordinator's brief. **Merge only on the owner's
+  explicit word for this PR** — ship-when-ready does not apply here.
+- **Done condition:** diff limited to the three surfaces + this entry;
+  `DetectiveHost.tsx` diff comment-only; gates green; independent Silo
+  QA + panel verdict on the final tip; STOP at the verdict.
+- **Status:** edits applied by the builder; unit gates recorded in the
+  PR body. Silo QA PASS-WITH-NITS + panel READY-WITH-NITS on tip
+  `60972b4` (tally in the PR verdict comment). Merge-up onto `79c5120`
+  after PR #357 landed: conflict only in this file, resolved keep-both
+  (both capsules carried); handbook + DetectiveHost auto-merged; PR
+  diff vs new main verified identical in substance to the voted tip.
+
 ## Staging PR A — feat/hosts-staging (2026-11-06) — "Found at a Glance"
 
 - **Authority:** staging council report (`~/workspace/meridian-detective-evidence/COUNCIL-staging-rework.md`, PR A = 5 units) + owner amendments in `~/workspace/orchestrate/meridian/COORDINATION.md`: the bench replaces the council's reserved strip (owner, mockup v2 review), coffee + watch on the bench, NO padded/empty reserved strip, and the per-device gate (owner, 2026-11-06: "you didnt test in all devices. desktop, mobile, tab."). Mockup of record: `staging-mockup-v2.NOTE.md` (bench slot, rise path, timings, 0 px² audit). PR 2 of 3 (C #357 merged -> A -> B watsonWalk). NO MERGE in this task — Silo QA + panel run afterwards on the final tip.
@@ -8,10 +51,12 @@
 - **ZERO-OVERLAP LAW (owner, absolute):** neither figure overlaps ANY clue-card text — 0 px² — in every state (bench, rising, walking, standing, reading, muted, reduced-motion). Staging cure: LoopScreen reserves a 118px gutter beside the clue cards (flag-gated class; cards narrow and text reflows inside them, the mockup v2 geometry) and Watson's station stands IN the gutter, vertically centred on the active card; Holmes never joins the station cluster under staging — before entry he stands in the bench slot, after entry he lives on the map. The mockup's position-sampling audit is ported into `tests/e2e/detective-staging.spec.ts`.
 - **Dock tap-target decision (deliberate call, carried in from PR C's pipeline): RESTORE the full 70px dock alias.** Reasoning: the 44px narrowing was forced only by the pre-#358 dock overlap (Holmes's box painted over Watson's replay box). #358 moved Holmes's dock beside Watson (HOLMES_DOCK_X = 12 + 100 + 8 = 120), so the boxes are disjoint: Watson's replay box is [12,112], Holmes's full mute box is [120,190] — both centres unobstructed at full width, and the rightmost ~26px of Holmes is no longer tap-dead for no reason. Change = delete the `.detective-holmes-mute-dock` narrowing rule + its class. Map-chip re-check against the wider dock cluster [12,190]: the map sound chip sits ABOVE the dock cluster (`bottom: 128px` = DOCK_INSET 12 + HOLMES_BOX.h 104 + 12 clear) — it clears the cluster at any dock width, no offset change. The station tap-mode edge slice (Game Designer note: Holmes's rightmost ~26px in tap mode is Listen territory) is NOT the dock slice: at the station the Listen clearance already narrows the station alias to 44px while Listen shows (PR C cure, kept) and lifts the chip 56px — that separation is unchanged and re-proven by the staging spec's solo/anchor-null samples.
 - **Offset re-derivation (Senior Architect obligation, discharged):** `chipStationOffset` / `holmesStationOffset` are now DERIVED in DetectiveHost from the constants of record — WATSON_DOCK_W (100), HOLMES_BOX {70,104}, the 4px station cluster gap, the 8px chip clear, and CELEBRATE_LAYOUT (celebrate width = watsonOffsetPx.x + WATSON_DOCK_W, rounded) — never a third Watson-width constant. `STATION_CLEARANCE_PX` (= HOLMES_BOX.h + 12 = 116, #358's scroll clearance) joined the same derivation at module scope. The three look-alike gaps stay distinct by name: DOCK_GAP 8 (dock inter-figure), chip clear 8, station cluster gap 4 — values coincide, meanings don't; no unification.
-- **Stale-premise corrections (this PR's docs pass):** (1) dock-overlap rationale comments rewritten — DetectiveHost's PR C comment block ("paints him over Watson's left side" — false since #358) and detective.css's dock-separation comment block; (2) the #358 section's two "BYTE-IDENTICALLY" lines above aligned down to the handbook's "fails identically" (checked first: the separate #358 docs-correction lane had NOT landed them on main 79c5120 — owned and done here); (3) PR C section: dock-parking line -> "RESOLVED by #358" wording with the FG-1/FG-8 pointer fixed (dock = FG-8 territory; FG-1 = station occlusion, PR B's), flag-off line annotated superseded by the #358 repair, forward-obligation line extended with the full-width dock alias and marked discharged; (4) handbook ch.10: PR C dock premise re-worded, cure-round-2 tally line added, PR A staging record added stating the per-device gate (390/768/1280) as the standing rule for this feature.
+- **Stale-premise corrections (this PR's docs pass):** (1) dock-overlap rationale comments rewritten — DetectiveHost's PR C comment block ("paints him over Watson's left side" — false since #358) and detective.css's dock-separation comment block; (2) the #358 capsule's two "BYTE-IDENTICALLY" lines — on base 79c5120 the docs-correction lane had not landed, so this branch first aligned them to "fails identically"; SUPERSEDED at this branch's merge-up onto 93b9791: PR #359's fuller correction (true tally, lost-log notes, "byte-identical is not claimed") is now the text of record in the #358 capsule below, taken wholesale in the merge — and #360's "shown pre-existing in-session" cure for the flag-off line is likewise in (grep-verified after the merge); (3) PR C section: dock-parking line -> "RESOLVED by #358" wording with the FG-1/FG-8 pointer fixed (dock = FG-8 territory; FG-1 = station occlusion, PR B's), flag-off line annotated superseded by the #358 repair, forward-obligation line extended with the full-width dock alias and marked discharged; (4) handbook ch.10: PR C dock premise re-worded, cure-round-2 tally line added, PR A staging record added stating the per-device gate (390/768/1280) as the standing rule for this feature.
 - **Per-device gate (owner amendment):** EVERY staging assertion (bench+coffee+watch, slot collapse, entry walk, berth walks, zero overlap, mute taps) is E2E-verified at 390 / 768 / 1280 — no width proxies another. The staging spec extends the #358 visibility harness pattern (own contexts per width), and includes one FORCED anchor-null sample, a Watson-alone station sample, and a Holmes-alone station sample (carried in from PR C).
 - **Protected:** scoring, dealing, clue text, hint defaults, donation copy, shipped celebration choreography, answer-blindness whitelist (no new props — staging reads only the host's existing view/degradation state + the hostsStaging flag; the swap test must still pass).
-- **Status:** [x] branch from origin/main 79c5120 · [x] flag + first docs commit (this record + handbook) · [ ] makeover + bench + entry walk + gutter station · [ ] staging E2E at 3 widths + full detective union · [ ] gates + push + PR. NO MERGE.
+- **Merge-up (2026-11-07):** merged origin/main `93b9791` (#359 + #360 landed after this branch was cut). Conflicts: BRANCH_STATUS only — resolved keep-both (the #359/#360 capsules ride above this section; the #358 capsule took main's corrected text wholesale, superseding this branch's earlier line edits there — see the corrections bullet). Handbook + DetectiveHost NOTE comment auto-merged clean. The merge-up touched NO code (records + one comment), so the gates re-run below covers the merged tip.
+- **Zero-overlap cures found by the staging E2E (both real, both fixed on this branch):** (a) the pre-measure fallback frame could paint the station over below-fold card text during the screen entrance — the station surfaces now wait for the first anchor measure under staging; (b) a bench figure lingering through the slot collapse could paint over the first card when a sheet-dismiss scroll carried the card up mid-collapse — the bench figure now leaves WITH the map-side entry walk and the slot collapses empty (bench-exit fade + its CSS removed as a consequence). The audit measures PAINTED boxes (each figure's rect clipped by any overflow:hidden ancestor — the collapsing slot clips by design), in bounded per-frame collection windows at each checkpoint and across the entry/berth walks.
+- **Status:** [x] branch from origin/main 79c5120 · [x] flag + first docs commit (this record + handbook) · [x] makeover + bench + entry walk + gutter station · [x] merge-up onto 93b9791 · [ ] staging E2E at 3 widths + full detective union (desktop berth walk environment-blocked on this VM — shipped FPS auto-kill; see PR body) · [ ] gates + push + PR. NO MERGE.
 
 ## PROD PAIR VISIBILITY FIX — fix/prod-pair-visibility (2026-11-06)
 
@@ -46,7 +91,9 @@
 - [x] Diagnosis proven + filed
 - [x] Visibility E2E written — RED on unmodified build with the intended
   signature (overlap 7,151 px² ≈ Holmes's whole box; both figures
-  ~0.32 in view at the fold)
+  ~0.32 in view at the fold) (The RED-run log was kept in /tmp and
+  did not survive; the figure rests on this record and the diagnosis
+  probe traces preserved in the evidence folder's `diag/`.)
 - [x] C1/C2/C3 implemented (DetectiveHost.tsx only) · spec registered in
   playwright.config.ts + the telemetry guard's CONTEXT_FILES
 - [x] Gates on 85adc1a: tsc clean · npm test 3,240 pass / 0 fail ·
@@ -54,8 +101,11 @@
 - [x] Detective E2E family on 85adc1a: 34 passed / 4 failed — triage:
   reduced berth-by-cut PASSED on sequential re-run (contention flake);
   companion K3-pan + geodetective win-path re-runs pending on the cured
-  tip; summary flag-off PROVEN pre-existing on unmodified main 1b38cb3
-  (control run, buildId-verified) — the flip (PR #356) made the
+  tip; summary flag-off shown pre-existing in-session (control run on
+  unmodified main 1b38cb3, buildId-verified, identical failure; the
+  control log was in /tmp and did not survive, so this rests on the
+  session record) — the flip
+  (PR #356) made the
   committed flags.json true and the test's no-interception premise
   stale; CI never caught it (detective specs are not in CI's e2e
   subset — the required e2e job runs 6 files / 22 tests).
@@ -68,28 +118,49 @@
   station above the card); summary flag-off test repaired — flag state
   now set explicitly via a new fulfillFlagsOff interception (same
   assertions; setup made honest)
-- [x] **C3 REMOVED (unproven; implicated, then cleared):** companion
-  K3 "pan cancels a berth" failed repeatedly at the berth-confirm poll
-  on the full cure; early bisection (C1-only PASS 23.7 s, C1+C2 PASS
-  23.4 s, both solo) pointed at C3's +350 ms re-measure, and C3 was
-  cut on that evidence. The fuller record cleared it: the final batch
-  (C3 removed) still failed K3-pan in-batch while passing solo, and a
-  back-to-back A/B on 2026-11-06 — same 2-test batch, same load
-  window — fails identically on unmodified main `1b38cb3`. The
-  mechanism is the suite's own disclosed environment property: under
-  SwiftShader + VM load, frame collapse trips the U6 auto-kill
-  (rolling FPS <45 in SEARCH phases), latching Holmes dock-only
-  mid-pause; the poll then reads "dock" forever. K3-pan is a
-  load-flake on main and cure alike (solo passes on the cure:
-  2×; same failure on main: evidenced) — NOT a regression. C3 stays
-  out anyway: it was the weakest cure, its guilt is unproven either
-  way, and a defect cure does not ship an unproven third change.
-  RC3 self-heals on scroll/resize/next phase in play → follow-up.
-  Also closed in triage: geodetective win-path fails identically
-  on unmodified main (share text takes the Pages URL locally; the
-  spec hard-expects the workers.dev URL) — pre-existing, not this PR.
-- [x] Re-vote on the cured tip · Silo QA re-keyed to the cured tip — MERGED as PR #358 at main `53e6a6e` (merge-up record, PR #357 branch, 2026-11-06)
-- [x] PR merged at main `53e6a6e` · live verification both hosts recorded by the #358 crew · tip in deleted-branches ledger (per #358 merge record)
+- [x] **C3 REMOVED (implicated by early bisection; guilt unproven):**
+  companion K3 "pan cancels a berth" failed repeatedly at the
+  berth-confirm poll on the full cure; early bisection (C1-only PASS
+  23.7 s, C1+C2 PASS 23.4 s, both solo) pointed at C3's +350 ms
+  re-measure, and C3 was cut on that evidence. The fuller record does
+  NOT clear it: both builds fail K3-pan in loaded batches with
+  different signatures. On unmodified main `1b38cb3` (surviving
+  control log) the U6 auto-kill had already latched before the berth
+  attempt — `companionMode` "killed" at entry, spec line 606 — the
+  suite's disclosed environment property: under SwiftShader + VM
+  load, frame collapse trips the auto-kill (rolling FPS <45 in
+  SEARCH phases). On the cured build the mode was "full" at entry
+  and the berth poll timed out at line 613; the cured failure's
+  cause is unproven — a mid-pause kill and confirm-chain starvation
+  cannot be separated in the surviving logs. K3-pan passes solo on
+  the cure (one surviving solo-pass log; a second pass was observed
+  in-session, its log lost) and is not shown to be a regression. C3
+  stays out anyway: it was the weakest cure, its guilt is unproven,
+  and a defect cure does not ship an unproven third change. RC3
+  self-heals on scroll/resize/next phase in play → follow-up. Also
+  closed in triage: geodetective win-path fails on unmodified main
+  with the same share-string mismatch (share URL resolves to the
+  Pages host locally; the spec hard-expects the workers.dev URL) —
+  pre-existing, not this PR. Both failure blocks were read
+  in-session; the control log was in /tmp and did not survive, so
+  "byte-identical" is not claimed.
+- [x] Re-vote on the cured tip `ca245d6` · Silo QA re-keyed to the cured tip
+- [x] PR merged 2026-11-06 23:16Z · live verification both hosts · tip
+  in deleted-branches ledger
+- **Correction (2026-11-06 — owner's word: "fix the records"; PR #358's
+  body carries the same correction):** the re-vote was first reported
+  as unanimous. The true tally is **11 seats non-blocking (5 APPROVE ·
+  6 APPROVE-WITH-NITS) + 1 BLOCK** — the Reality Checker seat, cast
+  23:03Z, before the 23:16Z merge; its verdict reached the coordinator
+  only after the merge, which proceeded on an incomplete count (a
+  process fault, recorded plainly). The BLOCK's own text: "the code
+  cure itself is evidenced and is not the blocker" — its required cure
+  was this records correction plus filing the missing logs. **Lost
+  logs (unrecoverable, /tmp wipe):** the visibility RED-run log, the
+  summary flag-off control log, the geodetective control log, and one
+  of two K3-pan solo-pass logs. Surviving A/B logs, the final-batch
+  log, and the diagnosis traces are preserved in
+  `~/workspace/meridian-detective-evidence/diag/`.
 
 ## Sound Everywhere — feat/sound-everywhere (2026-11-06)
 
