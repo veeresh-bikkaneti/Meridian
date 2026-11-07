@@ -517,7 +517,14 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           // NOT the ladder's speechEnded — it is the announcement
           // finishing, or a stopAll flush (mute / mid-read advance).
           // The real drain comes after arrival releases the read.
-          if (heldClueRef.current) return;
+          // The same holds while a drain is DEFERRED (sheet opened
+          // mid-walk and dropped the held read): the cancel cleared
+          // heldClueRef, so without this second guard the
+          // announcement's own drain would advance the ladder during
+          // the sheet and the ack would play behind it. The
+          // sheet-close effect consumes deferredDrainRef and
+          // dispatches the one real speechEnded itself.
+          if (heldClueRef.current || deferredDrainRef.current) return;
           dispatchRef.current({ type: "speechEnded" });
         }
       },
