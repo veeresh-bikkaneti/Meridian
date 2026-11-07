@@ -69,6 +69,30 @@ export async function fulfillFlagsStaging(context: BrowserContext): Promise<void
   });
 }
 
+/** PR B walk twin of fulfillFlagsStaging: detectivePair AND
+ * hostsStaging AND watsonWalk on, served by interception. */
+export async function fulfillFlagsWalk(context: BrowserContext): Promise<void> {
+  await context.route("**/flags.json", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json; charset=utf-8",
+      body: JSON.stringify({
+        version: 1,
+        flags: {
+          globeTierSplit: true,
+          learningOutcomes: true,
+          pwaUpdateToast: true,
+          friendChallenges: true,
+          scoutUpgradeTrial: true,
+          detectivePair: true,
+          hostsStaging: true,
+          watsonWalk: true,
+        },
+      }),
+    });
+  });
+}
+
 /** The OFF twin of fulfillFlagsOn: the same flag set with
  * detectivePair false, served by interception. A spec that needs
  * the flag OFF must say so explicitly — it must never rely on the
@@ -168,6 +192,149 @@ export async function installDetectiveRecorder(
       });
     }, 400);
   }, playbackRate);
+}
+
+/* ------------------------------------------------------------------ */
+/* Zero-overlap audit (the staging mockup v2 position-sampling        */
+/* audit, ported in PR A's staging spec and shared here since PR B   */
+/* so the walk spec inherits it instead of duplicating it): bounded  */
+/* COLLECTION WINDOWS — at each checkpoint an in-page rAF collector  */
+/* measures every figure's PAINTED box (layout rect clipped by any   */
+/* overflow:hidden ancestor) against every leaf text element inside  */
+/* the clue articles, once per animation frame for the window.       */
+/* ------------------------------------------------------------------ */
+
+export type AuditStats = { samples: number; maxOverlap: number; worst: string };
+
+export async function collectAuditWindow(
+  page: Page,
+  ms: number,
+): Promise<AuditStats> {
+  return page.evaluate(
+    (dwell) =>
+      new Promise<AuditStats>((resolve) => {
+        let samples = 0;
+        let maxOverlap = 0;
+        let worst = "";
+        const t0 = performance.now();
+        const frame = () => {
+          try {
+            const figs = Array.from(
+              document.querySelectorAll(
+                '[data-detective] svg, .detective-bench-figure svg',
+              ),
+            );
+            const texts = Array.from(
+              document.querySelectorAll('article[aria-label^="Clue"] *'),
+            ).filter(
+              (el) =>
+                el.children.length === 0 &&
+                (el.textContent ?? "").trim().length > 0,
+            );
+            const paintedRect = (el: Element) => {
+              const r = el.getBoundingClientRect();
+              let left = r.left;
+              let top = r.top;
+              let right = r.right;
+              let bottom = r.bottom;
+              let anc = el.parentElement;
+              while (anc && anc !== document.body) {
+                const cs = getComputedStyle(anc);
+                if (
+                  cs.overflowX === "hidden" ||
+                  cs.overflowX === "clip" ||
+                  cs.overflowY === "hidden" ||
+                  cs.overflowY === "clip"
+                ) {
+                  const ar = anc.getBoundingClientRect();
+                  left = Math.max(left, ar.left);
+                  top = Math.max(top, ar.top);
+                  right = Math.min(right, ar.right);
+                  bottom = Math.min(bottom, ar.bottom);
+                }
+                anc = anc.parentElement;
+              }
+              return {
+                left,
+                top,
+                right,
+                bottom,
+                width: Math.max(0, right - left),
+                height: Math.max(0, bottom - top),
+              };
+            };
+            const frs = figs.map((el) => ({ el, r: paintedRect(el) }));
+            const trs = texts.map((el) => ({
+              el,
+              r: el.getBoundingClientRect(),
+            }));
+            for (const f of frs) {
+              if (f.r.width === 0 || f.r.height === 0) continue;
+              const fl = Math.max(f.r.left, 0);
+              const ft = Math.max(f.r.top, 0);
+              const fr = Math.min(f.r.right, window.innerWidth);
+              const fb = Math.min(f.r.bottom, window.innerHeight);
+              for (const t of trs) {
+                if (t.r.width === 0 || t.r.height === 0) continue;
+                const tl = Math.max(t.r.left, 0);
+                const tt = Math.max(t.r.top, 0);
+                const trr = Math.min(t.r.right, window.innerWidth);
+                const tb = Math.min(t.r.bottom, window.innerHeight);
+                const ox = Math.min(fr, trr) - Math.max(fl, tl);
+                const oy = Math.min(fb, tb) - Math.max(ft, tt);
+                samples += 1;
+                if (ox > 0 && oy > 0) {
+                  const area = ox * oy;
+                  if (area > maxOverlap) {
+                    maxOverlap = area;
+                    const inBench = f.el.closest(".detective-bench")
+                      ? "bench"
+                      : "map";
+                    worst =
+                      `${inBench}:${f.el.getAttribute("data-pose") ?? "?"} over ` +
+                      `"${(t.el.textContent ?? "").slice(0, 24)}"`;
+                  }
+                }
+              }
+            }
+          } catch {
+            /* the audit never breaks the page */
+          }
+          if (performance.now() - t0 < dwell) {
+            requestAnimationFrame(frame);
+          } else {
+            resolve({ samples, maxOverlap, worst });
+          }
+        };
+        requestAnimationFrame(frame);
+      }),
+    ms,
+  );
+}
+
+/** Accumulates audit windows across a test's checkpoints. */
+export class AuditTrail {
+  samples = 0;
+  maxOverlap = 0;
+  worst = "";
+  absorb(s: AuditStats, label: string) {
+    this.samples += s.samples;
+    if (s.maxOverlap > this.maxOverlap) {
+      this.maxOverlap = s.maxOverlap;
+      this.worst = s.worst;
+    }
+    expect(
+      s.samples,
+      `${label}: audit window must have sampled figure/text pairs`,
+    ).toBeGreaterThan(10);
+    expect(
+      this.maxOverlap,
+      `${label}: figure-over-clue-text overlap must be 0 px\u00b2 (worst: ${this.worst}, ${this.samples} pair samples so far)`,
+    ).toBe(0);
+  }
+  async collect(page: Page, label: string, ms = 900) {
+    this.absorb(await collectAuditWindow(page, ms), label);
+  }
 }
 
 export async function detectivePlays(page: Page): Promise<string[]> {

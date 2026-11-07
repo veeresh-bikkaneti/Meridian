@@ -1,6 +1,8 @@
 import { test, expect, type BrowserContext, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 import {
+  AuditTrail,
+  collectAuditWindow,
   companionMode,
   currentPhase,
   currentPlacement,
@@ -35,151 +37,9 @@ import {
 
 test.setTimeout(300_000);
 
-type AuditStats = { samples: number; maxOverlap: number; worst: string };
-
-/**
- * One bounded collection window of the mockup's sampling audit:
- * for `ms`, once per animation frame, measure every figure's
- * artwork box against every leaf text element in the clue
- * articles (viewport-clipped — the law is what a player can SEE).
- * Returns the window's pair-sample count and worst overlap.
- */
-async function collectAuditWindow(
-  page: Page,
-  ms: number,
-): Promise<AuditStats> {
-  return page.evaluate(
-    (dwell) =>
-      new Promise<AuditStats>((resolve) => {
-        let samples = 0;
-        let maxOverlap = 0;
-        let worst = "";
-        const t0 = performance.now();
-        const frame = () => {
-          try {
-            const figs = Array.from(
-              document.querySelectorAll(
-                '[data-detective] svg, .detective-bench-figure svg',
-              ),
-            );
-            const texts = Array.from(
-              document.querySelectorAll('article[aria-label^="Clue"] *'),
-            ).filter(
-              (el) =>
-                el.children.length === 0 &&
-                (el.textContent ?? "").trim().length > 0,
-            );
-            // A figure's PAINTED box: its layout rect clipped by
-            // any overflow:hidden ancestor. The collapsing bench
-            // slot clips its figures by design (curtain), so the
-            // unclipped layout box would report overlaps a player
-            // can never see; genuinely unclipped figures (station,
-            // dock, berth) are measured exactly as before.
-            const paintedRect = (el: Element) => {
-              const r = el.getBoundingClientRect();
-              let left = r.left;
-              let top = r.top;
-              let right = r.right;
-              let bottom = r.bottom;
-              let anc = el.parentElement;
-              while (anc && anc !== document.body) {
-                const cs = getComputedStyle(anc);
-                if (
-                  cs.overflowX === "hidden" ||
-                  cs.overflowX === "clip" ||
-                  cs.overflowY === "hidden" ||
-                  cs.overflowY === "clip"
-                ) {
-                  const ar = anc.getBoundingClientRect();
-                  left = Math.max(left, ar.left);
-                  top = Math.max(top, ar.top);
-                  right = Math.min(right, ar.right);
-                  bottom = Math.min(bottom, ar.bottom);
-                }
-                anc = anc.parentElement;
-              }
-              return {
-                left,
-                top,
-                right,
-                bottom,
-                width: Math.max(0, right - left),
-                height: Math.max(0, bottom - top),
-              };
-            };
-            const frs = figs.map((el) => ({ el, r: paintedRect(el) }));
-            const trs = texts.map((el) => ({
-              el,
-              r: el.getBoundingClientRect(),
-            }));
-            for (const f of frs) {
-              if (f.r.width === 0 || f.r.height === 0) continue;
-              const fl = Math.max(f.r.left, 0);
-              const ft = Math.max(f.r.top, 0);
-              const fr = Math.min(f.r.right, window.innerWidth);
-              const fb = Math.min(f.r.bottom, window.innerHeight);
-              for (const t of trs) {
-                if (t.r.width === 0 || t.r.height === 0) continue;
-                const tl = Math.max(t.r.left, 0);
-                const tt = Math.max(t.r.top, 0);
-                const trr = Math.min(t.r.right, window.innerWidth);
-                const tb = Math.min(t.r.bottom, window.innerHeight);
-                const ox = Math.min(fr, trr) - Math.max(fl, tl);
-                const oy = Math.min(fb, tb) - Math.max(ft, tt);
-                samples += 1;
-                if (ox > 0 && oy > 0) {
-                  const area = ox * oy;
-                  if (area > maxOverlap) {
-                    maxOverlap = area;
-                    const inBench = f.el.closest(".detective-bench")
-                      ? "bench"
-                      : "map";
-                    worst =
-                      `${inBench}:${f.el.getAttribute("data-pose") ?? "?"} over ` +
-                      `"${(t.el.textContent ?? "").slice(0, 24)}"`;
-                  }
-                }
-              }
-            }
-          } catch {
-            /* the audit never breaks the page */
-          }
-          if (performance.now() - t0 < dwell) {
-            requestAnimationFrame(frame);
-          } else {
-            resolve({ samples, maxOverlap, worst });
-          }
-        };
-        requestAnimationFrame(frame);
-      }),
-    ms,
-  );
-}
-
-/** Accumulates audit windows across a test's checkpoints. */
-class AuditTrail {
-  samples = 0;
-  maxOverlap = 0;
-  worst = "";
-  absorb(s: AuditStats, label: string) {
-    this.samples += s.samples;
-    if (s.maxOverlap > this.maxOverlap) {
-      this.maxOverlap = s.maxOverlap;
-      this.worst = s.worst;
-    }
-    expect(
-      s.samples,
-      `${label}: audit window must have sampled figure/text pairs`,
-    ).toBeGreaterThan(10);
-    expect(
-      this.maxOverlap,
-      `${label}: figure-over-clue-text overlap must be 0 px\u00b2 (worst: ${this.worst}, ${this.samples} pair samples so far)`,
-    ).toBe(0);
-  }
-  async collect(page: Page, label: string, ms = 900) {
-    this.absorb(await collectAuditWindow(page, ms), label);
-  }
-}
+/* The zero-overlap audit (collectAuditWindow / AuditTrail) is shared
+ * from detective-u10.ts since PR B — the walk spec inherits the same
+ * harness instead of duplicating it (PR A carried a local copy). */
 
 /** Open the seam case WITHOUT the speech-unlock taps, so the bench
  * stage (CASE_OPEN, before the questions load) is still on screen. */
@@ -822,10 +682,19 @@ for (const w of WIDTHS) {
         [...speakers].every((who) => who === "holmes" || who === "watson"),
         `duet speaking figures must be bench figures only (saw: ${[...speakers].join(",") || "none"})`,
       ).toBe(true);
+      /* PR B carry-in (d): the C11 duet assertion is strengthened
+       * from "at least one speaker" to BOTH speakers — the duet is
+       * a two-line exchange (Holmes's instruction, then Watson's),
+       * and a bench that only ever showed one of them speaking
+       * would pass the old assertion while failing the design. */
       expect(
-        speakers.size,
-        "at least one duet line visibly spoken by a bench figure",
-      ).toBeGreaterThan(0);
+        speakers.has("holmes"),
+        `bench Holmes must visibly speak his duet line (saw: ${[...speakers].join(",") || "none"})`,
+      ).toBe(true);
+      expect(
+        speakers.has("watson"),
+        `bench Watson must visibly speak his duet line (saw: ${[...speakers].join(",") || "none"})`,
+      ).toBe(true);
     } finally {
       await context.close();
     }

@@ -229,6 +229,17 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // PR B (Watson Walks): arrival-gated reads, the case-open
+      // announcement, silent clue-2 walks, instant replay, sheet
+      // cancellation, reduced-motion instant placement, and the
+      // zero-overlap law — every assertion at 390 / 768 / 1280
+      // (owner per-device gate). The spec drives its own per-width
+      // contexts; the project viewport is only a default.
+      name: "detective-watson-walk",
+      testMatch: /detective-watson-walk\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },
