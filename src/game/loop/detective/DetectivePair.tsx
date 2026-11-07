@@ -16,6 +16,13 @@
  * Identity props: deerstalker, bowler, magnifying glass, Watson's
  * notebook / clue card. There is NO pipe — in any pose, ever.
  *
+ * Makeover (PR A, staging council Q1): each rig paints its own
+ * separation — a cream halo + near-black keyline baked into the
+ * SVG under the figure (data-part="halo"), never a live CSS
+ * filter. The bench scene's coffee cups live in the host's bench
+ * markup (detective.css), not in these rigs: the cups stay on the
+ * bench and never enter play.
+ *
  * Expressions are part of every pose (brow + eye + mouth variants), so
  * each pose reads solo at game scale. Watson's moustache stays shrunk
  * with a visible mouth beneath it — he speaks.
@@ -348,6 +355,30 @@ export function HolmesRig({ pose, facing = "right", speaking = false }: HolmesRi
         </pattern>
       </defs>
       <g transform={flip}>
+        {/* MAKEOVER (PR A): separation BAKED into the art — a cream halo
+            with a near-black keyline painted UNDER the figure, inside
+            the SVG itself. Two stroke layers over the figure's own
+            silhouette paths: the wide dark layer leaves ~1.5 px of
+            keyline outside the narrower cream layer's ~3.5 px halo
+            (at the 104 px render scale). No CSS filter / drop-shadow
+            is ever applied to a moving figure (perf veto). */}
+        <g data-part="halo" aria-hidden="true">
+          <ellipse cx="60" cy="173" rx="36" ry="5.5" fill="#fff6dd" stroke="#171310" strokeWidth="2.6" />
+          <g fill="#fff6dd" stroke="#171310" strokeWidth="17" strokeLinejoin="round">
+            <path d="M46,14 Q62,5 76,14 L79,38 Q78,56 63,59 Q48,57 45,40 Z" />
+            <path d="M40,52 C33,80 32,104 35,132 L86,132 C89,104 88,80 81,52 C68,45 53,45 40,52 Z" />
+            <path d="M42,16 Q61,-4 80,16 L80,20 L42,20 Z" />
+          </g>
+          <g fill="#fff6dd" stroke="#fff6dd" strokeWidth="11.5" strokeLinejoin="round">
+            <path d="M46,14 Q62,5 76,14 L79,38 Q78,56 63,59 Q48,57 45,40 Z" />
+            <path d="M40,52 C33,80 32,104 35,132 L86,132 C89,104 88,80 81,52 C68,45 53,45 40,52 Z" />
+            <path d="M42,16 Q61,-4 80,16 L80,20 L42,20 Z" />
+          </g>
+          <path d="M64,118 L64,162" stroke="#171310" strokeWidth="27" strokeLinecap="round" />
+          <path d="M52,118 L52,162" stroke="#171310" strokeWidth="27" strokeLinecap="round" />
+          <path d="M64,118 L64,162" stroke="#fff6dd" strokeWidth="21.5" strokeLinecap="round" />
+          <path d="M52,118 L52,162" stroke="#fff6dd" strokeWidth="21.5" strokeLinecap="round" />
+        </g>
         <g data-part="leg-b" style={{ transformOrigin: "64px 118px" }}>
           <path d="M64,118 L64,162" stroke="#3d4950" strokeWidth="10" strokeLinecap="round" />
           <ellipse cx="68" cy="167" rx="9" ry="4.2" fill="#241d16" />
@@ -476,6 +507,27 @@ export function WatsonRig({ pose, facing = "right", speaking = false }: WatsonRi
         </pattern>
       </defs>
       <g transform={flip}>
+        {/* MAKEOVER (PR A): baked cream halo + near-black keyline,
+            same construction as Holmes's — see the note there.
+            Watson's render scale (104/140) differs, so the stroke
+            widths differ; the rendered halo/keyline match. */}
+        <g data-part="halo" aria-hidden="true">
+          <ellipse cx="60" cy="136" rx="38" ry="5.5" fill="#fff6dd" stroke="#171310" strokeWidth="2.6" />
+          <g fill="#fff6dd" stroke="#171310" strokeWidth="13.5" strokeLinejoin="round">
+            <path d="M36,16 Q60,6 84,16 L86,34 Q84,52 60,54 Q36,52 34,34 Z" />
+            <path d="M28,46 C21,68 23,90 27,110 L93,110 C97,90 99,68 92,46 C74,37 46,37 28,46 Z" />
+            <path d="M33,15 Q60,-6 87,15 L87,18 L33,18 Z" />
+          </g>
+          <g fill="#fff6dd" stroke="#fff6dd" strokeWidth="9" strokeLinejoin="round">
+            <path d="M36,16 Q60,6 84,16 L86,34 Q84,52 60,54 Q36,52 34,34 Z" />
+            <path d="M28,46 C21,68 23,90 27,110 L93,110 C97,90 99,68 92,46 C74,37 46,37 28,46 Z" />
+            <path d="M33,15 Q60,-6 87,15 L87,18 L33,18 Z" />
+          </g>
+          <path d="M66,92 L66,128" stroke="#171310" strokeWidth="24" strokeLinecap="round" />
+          <path d="M52,92 L52,128" stroke="#171310" strokeWidth="24" strokeLinecap="round" />
+          <path d="M66,92 L66,128" stroke="#fff6dd" strokeWidth="19.5" strokeLinecap="round" />
+          <path d="M52,92 L52,128" stroke="#fff6dd" strokeWidth="19.5" strokeLinecap="round" />
+        </g>
         <g data-part="leg-b" style={{ transformOrigin: "66px 92px" }}>
           <path d="M66,92 L66,128" stroke="#2e3a52" strokeWidth="10.5" strokeLinecap="round" />
           <ellipse cx="62" cy="133" rx="9" ry="4.2" fill="#2b2119" />
