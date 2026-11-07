@@ -1,3 +1,79 @@
+## PR #361 CURE ROUND 1 — feat/hosts-staging (2026-11-07)
+
+- **TASK / outcome:** One consolidated cure round for the 12-seat panel's
+  6 APPROVE-WITH-NITS / 6 BLOCK on tip `84fc265` (cures C1–C15 in the
+  coordinator's brief). NO MERGE — the cured tip goes back through
+  Silo QA + the full panel for a re-vote.
+- **Reproductions (pre-cure, 1280, staging harness; logs in
+  `~/workspace/meridian-361-cure-logs/`):** (1) bench double-casting
+  REPRODUCED — during CASE_OPEN/bench: 2 Watson rigs on the page
+  (station `[data-detective="watson"]` = 1 + bench Watson), Holmes
+  rigs = 1 (bench only, `[data-detective="holmes"]` = 0), and the
+  duet's speaking class on the STATION Watson while both bench
+  figures stayed silent (`repro1-precure.log`). (2) remote stranding:
+  the first hover attempt never confirmed a pause (no entry at all);
+  the second attempt was lock-blocked by the parallel Silo QA run —
+  the stranding is proven by the code path (the `remote` branch
+  cleared `entryPendingRef` synchronously, the entry rAF then
+  early-returned with holmesXY at dock+(90,34)) and by the cured
+  C12 test's RED/GREEN pair (see the E2E line below).
+- **Cures:** C1 bench single-casting (station cluster suppressed
+  whole during bench; bench rigs speak the duet via `speakingWho`;
+  muted badge latched on the bench slot, chip suppressed) · C2 entry
+  intent during bench, entry at `standing` · C3 force entry at case
+  end (CELEBRATE/DEBRIEF/FAIL_READ/POUT at `standing`) — chosen over
+  per-phase bench gating because DEBRIEF keeps its Holmes at the
+  map dock via the station-phase dock fallback · C4 `entryPendingRef`
+  cleared only on `berth`; phase-exit snap consumes it · C5 `halo`
+  prop (default false = pre-A rigs) at DetectiveHost +
+  summary-detective-celebration (reads the flag itself) · C6
+  `anchorMeasured` render-phase reset on clue/case change +
+  `caseIndex` in the measure deps · C7 Listen gated on
+  `stationReady` · C8 board fades to a 0.22 ghost under the
+  left-behind cups (spec poll updated to match) · C9 entry rAF +
+  walk timer cancelled on unmount · C10 slot 148px → 132px (mockup
+  standing record exact; seated 126 unreachable — 128px rigs,
+  justification in handbook + CSS) · C11/C12 staging E2E (below) ·
+  C13 zero-overlap re-scope (this file + handbook + PR body:
+  "0 px² in every sampled staging state; CELEBRATE excepted and
+  unmeasured") · C14 DevEx (README staging paragraph + LIVE pair
+  wording, handbook rise trigger = machine leaves CASE_OPEN,
+  detective.css comment, flags.ts kill-switch wording post-C5 with
+  the two permanent deltas disclosed) · C15 pointer from the #358
+  first-panel tally line to its Correction block.
+- **Gates (cured tip):** `npx tsc --noEmit` clean · `npm run
+  test:worker` 145 pass / 0 fail · `node scripts/lint-cards.mjs`
+  GATE PASSED · `npm run build:pages` exit 0 (entry chunk recorded
+  in the PR body) · `npm test` — src 2235 pass / 0 fail; scripts
+  1018 pass with the only 2 failures traced to this round's
+  temporary repro spec (deleted; the telemetry guard re-run alone
+  is 6 pass / 0 fail) and a final full re-run on the pushed tip.
+- **E2E (cured tip; logs in `~/workspace/meridian-361-cure-logs/`):**
+  staging spec — flow 390 PASS, reduced-motion ×3 PASS, samples
+  PASS, C12 PASS (remote-first-entry lands Holmes AT the dock;
+  the same test on the PRE-CURE build FAILS with the wrapper at
+  dock+(91,35) ≈ the panel's claimed (90,34) — the stranding,
+  reproduced in-browser), C11 PASS at all widths (part (b) via
+  toggle-during-bench: a preset-off bench never paints — the
+  off-mode speech queue drains in microtasks before first paint,
+  probed at 50 ms sampling — so the toggle path is the assertable
+  one; stopAll never drains, so the bench holds). Staging flow
+  768/1280: every assertion completed in the batch run; both died
+  only at artifact/context close (-122 EDQUOT, the documented VM
+  flake); solo re-runs stayed env-blocked (browser death mid-berth
+  at 768; shipped FPS auto-kill mid-berth at 1280). Detective
+  union — visibility 4/4, stations 1/1, summary 3/3 (flag-off
+  solo), summary.reduced 1/1, reduced 1/1 (solo), sound: every
+  test has a green run on the cured tip across batch + solos
+  (failures all browser-death / EDQUOT signatures, rotating set),
+  companion K1/K2/K3 green across batch + solos (K3-pan on its
+  one rerun), replay 2/3 with (c) env-blocked (renderer Target
+  crashed in three runs). Still env-blocked on this VM and owed
+  by Silo QA on the cured tip as the merge-blocking gate:
+  desktop staging berth merits run, K2 clearance grids, K5 swap,
+  replay (c).
+- **Status:** cure commits pushed; NO MERGE.
+
 ## PROVEN WORDING CURE — docs/cure-proven-flagoff (2026-11-06)
 
 - **TASK / outcome:** Cure the one retained "PROVEN" on the #358
