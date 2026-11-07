@@ -5,8 +5,8 @@
   lost-log notes — in handbook ch.10, the #358 capsule below, and the
   `DetectiveHost.tsx` NOTE comment (comment-only). Owner's word,
   2026-11-06: "Fix the records — PR body now + docs correction PR."
-  PR #358's body was corrected separately; this PR mirrors its final
-  wording exactly.
+  PR #358's body was corrected separately; this PR mirrors its
+  corrected wording in substance.
 - **Tier:** 0 (docs + one comment) run under the standing full review
   pipeline per the coordinator's brief. **Merge only on the owner's
   explicit word for this PR** — ship-when-ready does not apply here.
