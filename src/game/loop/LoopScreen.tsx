@@ -17,6 +17,7 @@ import { shareLoopText } from "@/game/share";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
+import { SoundToggle } from "@/components/SoundToggle";
 import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
 import { displayLoopName, fetchLoopIndex, isDuplicateGuess, unlabeledSpotEntry } from "./evaluate";
@@ -850,7 +851,14 @@ export function LoopScreen({
         <Button variant="ghost" className="self-start" onClick={onLeave}>
           Editions
         </Button>
-        <p className="text-sm text-fg">Case #{caseNo}</p>
+        <div className="flex items-center gap-2">
+          <p className="text-sm text-fg">Case #{caseNo}</p>
+          {/* Sound Everywhere (PR C, council Q6): the same master
+              SoundToggle as home and the map-quiz chrome — GeoDetective
+              had no in-screen mute before this. One persisted key
+              (meridian.sound), one implementation (SoundToggle.tsx). */}
+          <SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />
+        </div>
       </div>
       <header className="mt-4">
         <h1 ref={headingRef} tabIndex={-1} className="mode-title text-4xl text-fg sm:text-5xl">GeoDetective</h1>

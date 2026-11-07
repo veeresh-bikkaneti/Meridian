@@ -496,3 +496,133 @@
     animation: none;
   }
 }
+
+/* --- sound chip, muted badge, tap-Holmes mute (PR C, council Q6) ----- */
+/* The chip is a SoundToggle instance riding the pair cluster: at the
+   clue-card station its fixed wrapper mirrors the station cluster's
+   anchor (translated up by its full height, like the Listen and
+   tap-Watson wrappers); on the map it sits above the dock cluster
+   inside the portal. The button is a white disc with a dark keyline —
+   readable on every tile family, ≥44×44 px, dark-on-white contrast
+   well over 4.5:1. The muted badge is a dark slashed-speaker disc
+   latched beside the chip while muted; the figures themselves are
+   never greyed or altered. The tap-Holmes alias is a transparent
+   button laid over Holmes's rendered box (70×104 px), following the
+   tap-Watson pattern: only its focus ring is ever visible. */
+.detective-host-sound {
+  position: fixed;
+  z-index: 31;
+  transform: translateY(-100%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.detective-host-sound-map {
+  position: absolute;
+  left: 12px;
+  bottom: 128px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.detective-sound-chip {
+  pointer-events: auto;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 2px solid #14213d;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #14213d;
+  cursor: pointer;
+}
+
+/* Focus rings on the pair's sound controls (a11y cure, panel round
+   1): a lone 3px #14213d outline is under 3:1 against dark map
+   tiles, so the ring is DUAL-TONE — a white outline ringed by a
+   dark outer shadow. On dark tiles the white outline carries the
+   ≥3:1 contrast; on light tiles the dark shadow ring does. The
+   chip and the tap-Holmes alias share the treatment. */
+.detective-sound-chip:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px #14213d;
+}
+
+.detective-muted-badge {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background: #14213d;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.detective-host-holmes-mute {
+  position: fixed;
+  z-index: 31;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.detective-holmes-mute {
+  pointer-events: auto;
+  display: block;
+  width: 70px;
+  height: 104px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.detective-holmes-mute-map {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 6;
+}
+
+/* Dock separation (PR C): at the dock the shipped staging paints
+   Holmes's 70 px box OVER the left of Watson's 100 px replay box —
+   the figures overlap, so two full-size hitboxes cannot both own
+   their centres there. The dock alias therefore claims only a 44 px
+   strip on Holmes's painted side (the accessibility floor), leaving
+   Watson's replay an unobstructed ≥44 px effective strip on his
+   side; the two tap centres can never collide. At a berth Holmes
+   stands alone and the alias keeps his full 70 px box. Separation is
+   proven in tests/e2e/detective-sound.spec.ts (c)+(d). */
+.detective-holmes-mute-dock {
+  width: 44px;
+}
+
+.detective-holmes-mute:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px #14213d;
+}
+
+/* Listen clearance (cure, panel round 1): while the tap-mode Listen
+   button shows beside the station cluster, the station Holmes-mute
+   narrows to a 44 px strip (the accessibility floor) on Holmes's
+   left — its box [+104, +148] then ends 4 px before Listen's left
+   edge at +152, so the two tap targets can never overlap. The host
+   adds this class only in that state; everywhere else the alias
+   keeps Holmes's full 70 px box. */
+.detective-holmes-mute-listen {
+  width: 44px;
+}

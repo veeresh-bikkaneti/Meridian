@@ -4,6 +4,8 @@ import {
   distanceToFrequencyKm,
   initAudio,
   isSoundEnabled,
+  onSoundChanged,
+  soundListenerCount,
   playCardTap,
   playConfettiPop,
   playConfirmGuess,
@@ -192,6 +194,95 @@ test("sound disabled: celebration play functions short-circuit silently", () => 
     playConfettiPop();
   });
   setSoundEnabled(true);
+});
+
+// ---------------------------------------------------------------------------
+// Sound-change listeners (PR C): setSoundEnabled notifies subscribers
+// synchronously, in the same call — the detective host's instant speech
+// stop depends on never waiting for a poll or a window event.
+// ---------------------------------------------------------------------------
+
+test("onSoundChanged: listener fires synchronously with the new value on every set", () => {
+  stubStorage();
+  const seen: boolean[] = [];
+  const off = onSoundChanged((on) => seen.push(on));
+  try {
+    setSoundEnabled(false);
+    // Synchronous: the value is already recorded before set returns.
+    assert.deepEqual(seen, [false]);
+    setSoundEnabled(true);
+    assert.deepEqual(seen, [false, true]);
+  } finally {
+    off();
+    setSoundEnabled(true);
+  }
+});
+
+test("onSoundChanged: unsubscribe stops delivery and the count hatch tracks it", () => {
+  stubStorage();
+  const before = soundListenerCount();
+  const seen: boolean[] = [];
+  const off = onSoundChanged((on) => seen.push(on));
+  assert.equal(soundListenerCount(), before + 1);
+  off();
+  assert.equal(soundListenerCount(), before);
+  setSoundEnabled(false);
+  assert.deepEqual(seen, []);
+  setSoundEnabled(true);
+});
+
+test("onSoundChanged: in-process listeners run BEFORE the window meridian:sound-change listener", () => {
+  // Ordering pin (Senior Architect, PR C cure round): onSoundChanged
+  // is the canonical channel for instant reactors — the speech stop
+  // must land before any legacy window-event consumer hears about
+  // the flip. The window stub records dispatch order; the
+  // meridian:sound-change dispatch is what a window listener would
+  // observe.
+  stubStorage();
+  const order: string[] = [];
+  const origWindow = (globalThis as Record<string, unknown>).window;
+  (globalThis as Record<string, unknown>).window = {
+    dispatchEvent: (e: Event) => {
+      if (e.type === "meridian:sound-change") order.push("window");
+      return true;
+    },
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  };
+  const off = onSoundChanged(() => order.push("in-process"));
+  try {
+    setSoundEnabled(false);
+    setSoundEnabled(true);
+    // Each flip: the in-process listener is notified before the
+    // window event is dispatched for that same flip.
+    assert.deepEqual(order, ["in-process", "window", "in-process", "window"]);
+  } finally {
+    off();
+    if (origWindow === undefined) {
+      delete (globalThis as Record<string, unknown>).window;
+    } else {
+      (globalThis as Record<string, unknown>).window = origWindow;
+    }
+    setSoundEnabled(true);
+  }
+});
+
+test("onSoundChanged: a throwing listener never breaks the toggle or other listeners", () => {
+  stubStorage();
+  const seen: boolean[] = [];
+  const offBad = onSoundChanged(() => {
+    throw new Error("bad subscriber");
+  });
+  const offGood = onSoundChanged((on) => seen.push(on));
+  try {
+    assert.doesNotThrow(() => setSoundEnabled(false));
+    assert.equal(isSoundEnabled(), false);
+    assert.deepEqual(seen, [false]);
+  } finally {
+    offBad();
+    offGood();
+    setSoundEnabled(true);
+  }
 });
 
 // ---------------------------------------------------------------------------

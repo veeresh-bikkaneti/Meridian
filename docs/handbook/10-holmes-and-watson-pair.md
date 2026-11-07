@@ -268,6 +268,83 @@ the re-run panel and the flip owner can check them off one by one.
   are preserved in the evidence folder's `diag/`. Full text: the
   "Correction" section of PR #358's body.
 
+## Staging rework — PR C: Sound Everywhere (2026-11-06)
+
+- **The word:** Veeresh, 2026-11-06: "mute and unmute should be
+  available in each game edition, and click on character should also
+  act as mute or unmute" — with the programme order "No mockup needed
+  just build it into production". Design of record: the staging
+  council's Q6 (evidence folder, `COUNCIL-staging-rework.md`). PR C is
+  slice 1 of 3 (C → A → B); it ships the mute order first because it
+  is independent of the staging and walking work.
+- **What shipped:**
+  - The existing `SoundToggle` now also renders in-screen in
+    `LoopScreen` (GeoDetective, `sound-toggle-loop`) and `TrailScreen`
+    (Cold Trail, `sound-toggle-trail`) — the two editions that had no
+    in-screen mute. With the home header and map-quiz chrome
+    instances, every edition now has mute reachable mid-game.
+  - The component lives in `src/components/SoundToggle.tsx` (moved
+    out of `game-app.tsx`): `game-app` lazy-loads both screens, so
+    importing the toggle back from `game-app` would close an import
+    cycle. One implementation everywhere — never a copy.
+  - On the pair's own surface (GeoDetective, flag on): a ≥44 px
+    speaker chip on the pair cluster (station + dock) wired to the
+    same toggle, a slashed-speaker badge latched on the cluster while
+    muted, and Holmes's figure body as an alias tap target for the
+    same action. Tap-Watson keeps its shipped replay behaviour; the
+    two hitboxes are separate elements, both handlers stop
+    propagation, and the E2E gate proves each tap never fires the
+    other's action. At the dock — where the shipped staging paints
+    Holmes's box over the left of Watson's replay box — the Holmes
+    alias narrows to a 44 px strip so both tap centres stay
+    unobstructed; at a berth it keeps Holmes's full box. The figures
+    themselves are never greyed or altered while muted (Brand ruling).
+- **The one-key decision:** everything flips the single persisted
+  `meridian.sound` value through `setSoundEnabled`, and all audio
+  keeps gating on `isSoundEnabled()`. A pair-only mute was rejected
+  by the council: it would need a second persisted key and a second
+  player gate, and it produces two contradictory sound truths ("the
+  button says muted, the game still sounds"). Pair speech keeps its
+  own finer control — the read-aloud preference — as before.
+- **The immediate-stop mechanism:** `sfx.ts` gained a minimal
+  in-process listener set, `onSoundChanged` (the age-profile events
+  pattern: synchronous delivery, isolated listener errors,
+  unsubscribe contract). `setSoundEnabled` notifies it in the same
+  event that flips the persisted value. `DetectiveHost` subscribes
+  and, on mute, calls the speech player's `stopAll()` — the player's
+  own stop path (`currentStop` pauses the speaking clip; the queue
+  is flushed) — in that same event. This replaces the host's old 1 Hz
+  `isSoundEnabled()` poll, which leaked up to a second of speech
+  after a mute tap. Unmuting never resumes a stopped line: the queue
+  was cleared and nothing re-enqueues it. Co-mounted toggle instances
+  subscribe too, so the screen toggle, the chip, and the Holmes alias
+  can never show different states. No new machine props were added —
+  mute is host-level sound state, and answer-blindness is untouched.
+- **Evidence:** unit tests for the listener set in `sfx.test.ts`
+  (synchronous delivery, unsubscribe/count, throwing-listener
+  isolation) and a new E2E gate, `tests/e2e/detective-sound.spec.ts`
+  (project `detective-sound`): toggles in both screens flip the key;
+  a tap on Holmes during a slowed read pauses the speaking clip
+  within 1 s, flushes the queue, and latches the badge; unmute
+  clears the badge without resuming; Watson replays without muting;
+  Holmes mutes without replaying; the chip drives the same key.
+- **Kill-switch note:** none needed — PR C adds no flag and touches
+  no existing one (`detectivePair` stays as the owner set it).
+  Rollback is a plain revert of the PR.
+- **Pre-registered alias cut (council, recorded at panel round 1):**
+  if child sessions read a Holmes tap-mute as "the game broke",
+  remove the detective-holmes-mute alias first — chip + toggles stay.
+- **Cure round (panel round 1, 2026-11-06):** the panel voted
+  8 APPROVE-WITH-NITS / 4 BLOCK on tip `26e2250` (Silo QA
+  PASS-WITH-NITS, DevEx PASS-WITH-NITS, benchmark PASS). The two
+  defects — the station chip/Holmes-mute overlapping the tap-mode
+  Listen button, and a duplicate chip + badge during NOTE_MARK —
+  plus the folded Act-On nits were cured on the same branch in
+  PR #357's cure round; the cured tip goes back through Silo QA +
+  the full panel for a re-vote before any merge.
+- Forward obligation for PR A: when PR A (hostsStaging) resizes the staging figures, it must re-derive chipStationOffset/holmesStationOffset in DetectiveHost from the layout constants — PR C's literals are arithmetic on the current 100/70px figures, not constants of record.
+- Open owner question: should the summary dialog get its own SoundToggle? Right now no mute surface is reachable while the modal summary is open; the question is the owner's and stays open.
+
 ## Audio: pre-rendered, with honest coverage
 
 - Runtime speech synthesis was rejected for this pair (BUILD-SCOPE

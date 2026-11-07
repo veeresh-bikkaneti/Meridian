@@ -68,7 +68,13 @@ import {
   type DetectiveDegradation,
 } from "./detective-degradation";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
-import { isSoundEnabled } from "@/game/audio/sfx";
+import { VolumeX } from "lucide-react";
+import { SoundToggle } from "@/components/SoundToggle";
+import {
+  isSoundEnabled,
+  onSoundChanged,
+  setSoundEnabled,
+} from "@/game/audio/sfx";
 import type { DetectiveHostProps } from "./detective-host-props";
 import {
   berthFor,
@@ -224,20 +230,23 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Sound toggle-off stops speech immediately (spec: the toggle cancels
-  // speech). Polled cheaply at 1 Hz — there is no sound-change event bus
-  // in the codebase, and 1 Hz is not per-frame work. The same poll keeps
-  // the degradation's soundOn input current (U9).
+  // Sound toggle-off stops speech immediately (PR C, council Q6): the
+  // host SUBSCRIBES to the sound module's change listeners —
+  // setSoundEnabled notifies synchronously, so a mute from any surface
+  // (the screen's SoundToggle, the pair chip below, or a tap on
+  // Holmes) stops the current clip and flushes the queued pair lines
+  // in the SAME event, through the player's stopAll (its currentStop
+  // path). This replaces the old 1 Hz poll, which leaked up to a
+  // second of speech after a mute tap. Unmute never resumes a stopped
+  // line: stopAll cleared the queue and nothing re-enqueues it. The
+  // same subscription keeps the degradation's soundOn input current
+  // (U9) and drives the muted badge below.
   useEffect(() => {
-    let wasOn = isSoundEnabled();
-    setSoundOn(wasOn);
-    const id = setInterval(() => {
-      const on = isSoundEnabled();
-      if (wasOn && !on) playerRef.current?.stopAll();
-      wasOn = on;
+    setSoundOn(isSoundEnabled());
+    return onSoundChanged((on) => {
       setSoundOn(on);
-    }, 1000);
-    return () => clearInterval(id);
+      if (!on) playerRef.current?.stopAll();
+    });
   }, []);
 
   // The player's speech mode follows the degradation (U9): in "tap"
@@ -1035,10 +1044,197 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       </button>
     ) : null;
 
+  /* Sound Everywhere (PR C, council Q6) — three surfaces, ONE action:
+   * every one of them flips the same persisted master toggle
+   * (meridian.sound via setSoundEnabled / SoundToggle); there is no
+   * second key and no pair-only mute.
+   *
+   * 1. The speaker CHIP: a real SoundToggle instance (≥44 px) riding
+   *    the pair cluster — beside the figures at the clue-card station,
+   *    above the dock cluster on the map. Its Volume2/VolumeX icon is
+   *    the toggle's own muted display.
+   * 2. The muted BADGE: a slashed-speaker disc latched on the cluster
+   *    while muted, so the state reads at a glance. The figures
+   *    themselves are never greyed or altered (Brand ruling, Q6).
+   * 3. Tap-HOLMES alias: Holmes's figure body is a transparent button
+   *    over his rendered box (station, celebrate, and berth — the map
+   *    one rides his transform wrapper's exact geometry; at the dock,
+   *    where the shipped staging paints him over Watson's left side,
+   *    it narrows to a 44 px strip so the two centres stay separate —
+   *    see detective.css), wired to the same toggle. Watson's replay
+   *    button is a separate element over a separate figure; both
+   *    handlers stop propagation, so a Holmes tap can never fire a
+   *    replay and a Watson tap can never mute. Muting stops the
+   *    speaking clip in the same event via the onSoundChanged
+   *    subscription above. */
+  const toggleSoundFromHolmes = (e: { stopPropagation(): void }) => {
+    e.stopPropagation();
+    try {
+      // Derive from the host's SUBSCRIBED soundOn state, never from a
+      // fresh storage read (cure, Senior Developer): where setItem
+      // throws (private mode) storage can disagree with the live
+      // state, and an alias reading storage could mute but never
+      // unmute. soundOn is kept current by the onSoundChanged
+      // subscription above, so the alias always flips the truth the
+      // player sees.
+      setSoundEnabled(!soundOn);
+    } catch {
+      // Sound is enhancement-only; the alias never throws into play.
+    }
+  };
+  const mutedBadge = !soundOn ? (
+    <span
+      className="detective-muted-badge"
+      data-testid="detective-muted-badge"
+      aria-hidden="true"
+    >
+      <VolumeX className="size-4" aria-hidden="true" />
+    </span>
+  ) : null;
+  const soundChip = (
+    <SoundToggle testId="detective-sound-chip" className="detective-sound-chip" />
+  );
+  const watsonAtStation = view.watson.placement === "station";
+  const holmesAtStation = view.holmes.placement === "station";
+  // Station geometry (rendered boxes at 104 px tall): Watson ≈100 px
+  // wide, Holmes 70 px, cluster gap 4 px. Holmes stands right of
+  // Watson in the plain station cluster; in the celebrate cluster he
+  // is at the origin (CELEBRATE_LAYOUT) and the cluster is 147 px wide.
+  // holmesStationOffset 104 = Watson's 100 px width + the 4 px gap.
+  //
+  // chipStationOffset — every literal mapped to its layout terms
+  // (DevEx cure): the chip starts 8 px clear of whatever stands to
+  // its left in the cluster.
+  // - 155 (celebrate): the celebrate cluster is 147 px wide
+  //   (CELEBRATE_LAYOUT: Watson's 46.7 px offset + his ≈100 px
+  //   rendered width) + 8 px clear = 155.
+  // - 182 (Watson + Holmes at the station): Watson 100 px + 4 px gap
+  //   + Holmes 70 px + 8 px clear = 182.
+  // - 108 (Watson alone): Watson 100 px + 8 px clear = 108.
+  // - 78 (Holmes alone): Holmes 70 px + 8 px clear = 78.
+  const holmesStationOffset = celebrating ? 0 : watsonAtStation ? 104 : 0;
+  const chipStationOffset = celebrating
+    ? 155
+    : watsonAtStation && holmesAtStation
+      ? 182
+      : watsonAtStation
+        ? 108
+        : 78;
+  /* Listen clearance (cure, panel round 1 BLOCK): in tap speech mode
+   * the Listen button sits at anchor.left + 152, ≈108 px wide →
+   * [+152, +260], in the same z-31 band as the chip and the station
+   * Holmes-mute — the chip's [+182, +226] box sat ON Listen's centre
+   * and the mute's [+104, +174] box ate its left edge, leaving Listen
+   * a ≈32 px hittable strip (< the 44 px floor) whose mis-taps muted
+   * (muting flips speech off, which unmounts Listen itself). While
+   * Listen shows, the three controls are separated geometrically:
+   * - the chip row LIFTS one row up (LISTEN_CLEARANCE_PX above the
+   *   anchor line): the Listen button is at most 48 px tall, so the
+   *   lifted chip's bottom edge clears Listen's top edge by ≥ 8 px
+   *   at any horizontal position;
+   * - the station Holmes-mute NARROWS to a 44 px strip (the
+   *   accessibility floor, detective.css) at [+104, +148], 4 px
+   *   clear of Listen's left edge at +152.
+   * The anchor-null fallback (Listen at left 164, right edge ≈272)
+   * fits the same rules inside 390 px: chip at 12 + 182 = 194 lifted
+   * to bottom 96 + 56 = 152, mute strip [116, 160] vs Listen from
+   * 164. Pairwise separation is proven in
+   * tests/e2e/detective-sound.spec.ts (tap-mode station proof). */
+  const LISTEN_CLEARANCE_PX = 56;
+  const stationSoundShown = stationFigures.length > 0 || celebrateEl != null;
+  const stationSoundEl = stationSoundShown ? (
+    <div
+      className="detective-host-sound"
+      style={
+        anchor
+          ? {
+              left: anchor.left + chipStationOffset,
+              top: showListen
+                ? anchor.top - LISTEN_CLEARANCE_PX
+                : anchor.top,
+            }
+          : {
+              left: 12 + chipStationOffset,
+              bottom: showListen ? 96 + LISTEN_CLEARANCE_PX : 96,
+              top: "auto",
+              transform: "none",
+            }
+      }
+    >
+      {soundChip}
+      {mutedBadge}
+    </div>
+  ) : null;
+  const stationHolmesMuteEl = holmesAtStation ? (
+    <div
+      className="detective-host-holmes-mute"
+      style={
+        anchor
+          ? { left: anchor.left + holmesStationOffset, top: anchor.top }
+          : {
+              left: 12 + holmesStationOffset,
+              bottom: 96,
+              top: "auto",
+              transform: "none",
+            }
+      }
+    >
+      <button
+        type="button"
+        className={
+          showListen && holmesStationOffset > 0
+            ? "detective-holmes-mute detective-holmes-mute-listen"
+            : "detective-holmes-mute"
+        }
+        data-testid="detective-holmes-mute"
+        aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
+        aria-pressed={soundOn}
+        onClick={toggleSoundFromHolmes}
+      />
+    </div>
+  ) : null;
+  /* Exactly ONE chip + badge in every state (cure, Game Developer):
+   * the guards are mutually exclusive — the station cluster wins
+   * whenever it renders, the map cluster only when it does not.
+   * During NOTE_MARK the placement splits (Watson at the station,
+   * Holmes at the dock), so the old independent guards BOTH fired
+   * and painted two chips + two badges with duplicate testids. */
+  const mapSoundEl =
+    !stationSoundShown && (holmesOnMap || watsonOnMap) ? (
+      <div className="detective-host-sound-map">
+        {soundChip}
+        {mutedBadge}
+      </div>
+    ) : null;
+  const mapHolmesMuteEl =
+    holmesOnMap && !berthHidden ? (
+      <button
+        type="button"
+        className={
+          berthed
+            ? "detective-holmes-mute detective-holmes-mute-map"
+            : "detective-holmes-mute detective-holmes-mute-map detective-holmes-mute-dock"
+        }
+        data-testid="detective-holmes-mute"
+        aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
+        aria-pressed={soundOn}
+        onClick={toggleSoundFromHolmes}
+        style={{
+          transform: `translate3d(${holmesXY.x}px, ${holmesXY.y}px, 0)`,
+          transition:
+            holmesTransition.durationMs > 0
+              ? `transform ${holmesTransition.durationMs}ms ${holmesTransition.easing}`
+              : "none",
+        }}
+      />
+    ) : null;
+
   return (
     <>
       {listenEl}
       {watsonReplayStationEl}
+      {stationSoundEl}
+      {stationHolmesMuteEl}
       {stationFigures.length > 0 || celebrateEl ? (
         <div
           className="detective-host-station"
@@ -1084,6 +1280,11 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
                   but OUTSIDE the aria-hidden map root, over Watson's
                   dock figure (see the station element above). */}
               {watsonReplayDockEl}
+              {/* PR C: the pair's sound chip + tap-Holmes alias ride
+                  the same portal, likewise OUTSIDE the aria-hidden
+                  map root — real buttons must stay reachable. */}
+              {mapSoundEl}
+              {mapHolmesMuteEl}
             </>,
             mapEl,
           )
