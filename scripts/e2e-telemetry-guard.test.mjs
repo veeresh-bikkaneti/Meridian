@@ -56,6 +56,7 @@ const COLLECTOR_FILES = Object.freeze([
 const CONTEXT_FILES = Object.freeze([
   "card-redesign.desktop.spec.ts",
   "detective-companion.spec.ts",
+  "detective-staging.spec.ts",
   "detective-swap.spec.ts",
   "detective-visibility.spec.ts",
   "discarded-notice.spec.ts",
