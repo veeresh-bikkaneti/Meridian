@@ -412,6 +412,14 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
 
   /* -- station anchoring: measure on discrete changes, never per frame  */
   const [anchor, setAnchor] = useState<StationAnchor | null>(null);
+  /** Whether the first anchor measure has completed. Under staging
+   * the station surfaces wait for it: the pre-measure fallback frame
+   * can paint the cluster over below-fold card text while the
+   * screen entrance transform is live (measured in the staging
+   * E2E sampling audit) - a one-frame overlap the zero-overlap
+   * law does not forgive. A measure that finds NO card still counts
+   * (that is the genuine anchor-null fallback, rendered as before). */
+  const [anchorMeasured, setAnchorMeasured] = useState(false);
   const [mapEl, setMapEl] = useState<Element | null>(null);
   const mapElRef = useRef<Element | null>(null);
   /** Cached map container rect (client coords): measured HERE, on
@@ -441,6 +449,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       } else {
         setAnchor(null);
       }
+      setAnchorMeasured(true);
     };
     measure();
     /* NOTE (prod-pair fix): a deferred +350 ms re-measure for slow-
@@ -579,11 +588,12 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   exitToDockRef.current = exitToDock;
 
   /* Staging entry walk (PR A unit 4): the FIRST map interaction
-   * walks Holmes from the bench slot onto the map. The bench figure
-   * steps up and fades (detective.css) while, in the same beat, his
-   * map wrapper starts offset from the dock — down and to the side,
-   * as if stepping up from the bench below the map — and walks to
-   * the dock with the walk pose over 700 ms. Not a teleport: the
+   * walks Holmes from the bench slot onto the map. The bench
+   * figure leaves in the same beat (the slot collapses empty —
+   * see the bench render for the zero-overlap reason) while his
+   * map wrapper starts offset from the dock — down and to the
+   * side, as if stepping up from the bench below the map — and
+   * walks to the dock with the walk pose over 700 ms. Not a teleport: the
    * wrapper's transform transition is the walk, and the staging E2E
    * samples it mid-flight. Reduced motion (walkMode "cut") places
    * him at the dock instantly. A berth confirmed during the entry
@@ -725,6 +735,10 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     };
 
     const onPauseConfirmed = (point: { x: number; y: number }) => {
+      // A desktop hover-pause is a first map interaction too: Holmes
+      // enters (his entry walk's dock target is then superseded by
+      // the berth below — he walks on to the berth instead).
+      enterMapRef.current();
       pausePoint = point;
       dispatchRef.current({ type: "pointerPaused", point });
       if (companionModeRef.current !== "full") return; // dock-only/killed: he thinks at the dock
@@ -1084,6 +1098,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     stagingOn && !celebrating && anchor !== null && view.watson.placement === "station";
   const gutterLeft = anchor ? anchor.left + anchor.width + 6 : 0;
   const gutterCentreTop = anchor ? anchor.top + anchor.height / 2 : 0;
+  const stationReady = !stagingOn || anchorMeasured;
   const listenEl = showListen ? (
     <div
       className="detective-host-listen"
@@ -1141,7 +1156,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     </span>
   );
   const watsonReplayStationEl =
-    showWatsonReplay && view.watson.placement === "station" ? (
+    showWatsonReplay && view.watson.placement === "station" && stationReady ? (
       <div
         className={
           gutterStation
@@ -1283,7 +1298,8 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * 164. Pairwise separation is proven in
    * tests/e2e/detective-sound.spec.ts (tap-mode station proof). */
   const LISTEN_CLEARANCE_PX = 56;
-  const stationSoundShown = stationFigures.length > 0 || celebrateEl != null;
+  const stationSoundShown =
+    stationReady && (stationFigures.length > 0 || celebrateEl != null);
   const stationSoundEl = stationSoundShown ? (
     <div
       className={
@@ -1415,18 +1431,19 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
                 <HolmesRig pose="dock" facing="right" speaking={false} />
               </div>
             </>
-          ) : (
-            <div
-              className={
-                stagingStage === "entering"
-                  ? "detective-bench-figure detective-bench-holmes-entering"
-                  : "detective-bench-figure"
-              }
-              data-bench="holmes"
-            >
+          ) : stagingStage === "standing" ? (
+            <div className="detective-bench-figure" data-bench="holmes">
               <HolmesRig pose="dock" facing="right" speaking={false} />
             </div>
-          )}
+          ) : null}
+          {/* Entering: NO bench figure. Holmes leaves WITH the
+              map-side entry walk (same beat); the slot collapses
+              empty. A lingering bench figure — even fading — could
+              paint over the first clue card: on a sheet dismiss the
+              card scrolls up inside its own scroller by the full
+              slot height while the slot is still mid-collapse
+              (staging E2E entry window measured the overlap). The
+              zero-overlap law outranks the bench-exit fade. */}
         </div>
         {stagingStage === "bench" ? (
           <>
@@ -1463,7 +1480,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       {watsonReplayStationEl}
       {stationSoundEl}
       {stationHolmesMuteEl}
-      {stationFigures.length > 0 || celebrateEl ? (
+      {stationReady && (stationFigures.length > 0 || celebrateEl) ? (
         <div
           className={
             gutterStation

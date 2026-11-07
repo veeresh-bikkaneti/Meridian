@@ -785,24 +785,6 @@
   left: calc(50% - 34px);
 }
 
-/* Holmes standing in the slot after the board fades, and the entry
-   beat: he steps UP toward the map as the slot collapses behind
-   him (the map-side walk to the dock runs in the same beat). */
-.detective-bench-holmes-entering {
-  animation: detective-bench-enter 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-}
-
-@keyframes detective-bench-enter {
-  from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-26px);
-    opacity: 0;
-  }
-}
-
 /* The gutter station (staging only): Watson stands IN the reserved
    gutter beside the active clue card, vertically centred on it —
    never above or over the card. The wrapper's transform centres it
@@ -832,8 +814,7 @@
   }
   .detective-bench-cup,
   .detective-bench .detective-holmes [data-part="arm-front"],
-  .detective-bench .detective-holmes [data-part="head"],
-  .detective-bench-holmes-entering {
+  .detective-bench .detective-holmes [data-part="head"] {
     animation: none !important;
   }
 }
