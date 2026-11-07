@@ -402,16 +402,23 @@ the re-run panel and the flip owner can check them off one by one.
   - **Berth-to-berth walks:** the shipped pause-berth engine
     (350 ms desktop / 450 ms touch pause trigger; 80 ms absence on
     pan/zoom/sheet/rings/speech) walks him between berths with the
-    walk pose — pinned by the staging E2E at 390/768; the desktop
-    berth run lands on the cured tip (PR #361 cure round 1 — the
-    pre-cure desktop berth point also violated BERTH_REMOTE_DISTANCE
-    and was fixed there, cure C12).
+    walk pose — pinned by the staging E2E at 390/768/1280 on the
+    cured tip (PR #361 cure round 1, berth geometry completed on
+    Silo QA's probe: the pre-cure shared berth point (0.72w, 0.30h)
+    sat 480.7 px from the dock centre at 768 and 464.4 px at 1280 —
+    beyond BERTH_REMOTE_DISTANCE 320, so no berth could ever land
+    there; the spec now uses (0.48w, 0.50h) at tablet/desktop —
+    280.4 px at 768, 267.0 px at 1280 from the dock centre
+    (155, mapH−64) — and keeps (0.72w, 0.30h) at 390, 261.6 px;
+    cure C12).
   - **Zero-overlap law (owner, absolute):** neither figure ever
     overlaps clue-card text — 0 px² in every sampled staging state;
-    CELEBRATE excepted and unmeasured (re-scoped in PR #361 cure
-    round 1: the shipped CELEBRATE cluster keeps its above-card
-    station as a named exception, and no sampling window has
-    measured it). The sampled states are bench, rising, walking,
+    CELEBRATE excepted — the shipped cluster sits over the
+    active card there and is unmeasured (re-scoped in PR #361
+    cure round 1, wording per Silo QA's code read: during
+    CELEBRATE the cluster is positioned at {left: anchor.left,
+    top: anchor.top} — over the active clue card's area — and
+    the spec never audits a CELEBRATE state). The sampled states are bench, rising, walking,
     standing, reading, muted and reduced-motion. Under
     staging, LoopScreen reserves a 118 px gutter beside the clue
     cards (the cards narrow; their text reflows inside them — the

@@ -35,8 +35,7 @@
   standing record exact; seated 126 unreachable — 128px rigs,
   justification in handbook + CSS) · C11/C12 staging E2E (below) ·
   C13 zero-overlap re-scope (this file + handbook + PR body:
-  "0 px² in every sampled staging state; CELEBRATE excepted and
-  unmeasured") · C14 DevEx (README staging paragraph + LIVE pair
+  "0 px² in every sampled staging state; CELEBRATE excepted — the shipped cluster sits over the active card there and is unmeasured." (exact scope per Silo QA's code read: during CELEBRATE the cluster is positioned at the active clue card's anchor, and the spec never audits a CELEBRATE state)) · C14 DevEx (README staging paragraph + LIVE pair
   wording, handbook rise trigger = machine leaves CASE_OPEN,
   detective.css comment, flags.ts kill-switch wording post-C5 with
   the two permanent deltas disclosed) · C15 pointer from the #358
@@ -73,6 +72,36 @@
   by Silo QA on the cured tip as the merge-blocking gate:
   desktop staging berth merits run, K2 clearance grids, K5 swap,
   replay (c).
+- **Silo QA follow-up (2026-11-07, on QA's pre-cure results):**
+  (1) BERTH GEOMETRY COMPLETED — QA's probe (companion=full)
+  proved the tablet/desktop berth failure was geometry, not
+  environment: the shared point (0.72w, 0.30h) sat 480.7 px from
+  the dock centre at 768 (the cure round's first fix covered
+  only 1280, at a thin-margin 309.7 px point). The spec now
+  uses (0.48w, 0.50h) at 768/1280 — 280.4 px / 267.0 px from
+  the dock centre (155, mapH-64), ~270 px displacement vs the
+  >40 px real-walk proof — and keeps (0.72w, 0.30h) at 390
+  (261.6 px). Verified solo on the berth-fix tip: staging
+  full-flow PASS at 390 (28.7s), 768 (31.7s) and 1280 (23.6s,
+  plus an assertions-complete run that died only at artifact
+  close); C12 in final form PASS (31.5s — settle tolerance
+  <=2 px for sub-pixel rounding, and a named companion=full
+  precondition, since the hover trigger rides the rAF watch
+  the shipped auto-kill can latch); C11 desktop PASS in the
+  grouped re-run. (2) C13 wording tightened to QA's exact
+  scope (see the re-scope line above; handbook + PR body
+  aligned). (3) QA watch items, outcomes on the cured tip:
+  K3-pinch (unstable in QA's runs, env signatures) — PASS
+  solo in this round's union triage; detective.reduced
+  (unstable in QA's runs) — PASS solo (18.9s) after a batch
+  failure. (4) QA passed K5 swap (48.6s, identical trace) and
+  K2 grids (both, clearances within law) ON MERITS on the
+  pre-cure tip — carried forward as evidence; the cure does
+  not touch those lanes. (5) QA reproduced all unit gates
+  exactly (tsc clean, 3,255 pass / 0 fail / 11 skipped, worker
+  145/0, lint-cards PASSED, entry 457,830 B — the size is the
+  gate; the chunk hash varies by build env) and its merge-up
+  audit + #360 greps verified clean.
 - **Status:** cure commits pushed; NO MERGE.
 
 ## PROVEN WORDING CURE — docs/cure-proven-flagoff (2026-11-06)
@@ -125,7 +154,7 @@
 - **Tier:** 2 (multi-file feature on the council's settled design + owner's amendments).
 - **Base:** `origin/main` @ `79c5120` (#357 merged, includes #358).
 - **Units:** (1) MAKEOVER — cream halo (3-4px) + near-black keyline (~1.5px) BAKED into both rigs' SVG art (a silhouette group painted under each figure; NO live CSS filter/drop-shadow); costumes unchanged (Holmes brick-red #a52a21, Watson royal-blue #27408b). (2) SIZES — ~128px in the bench slot, 104px on-map/station (inside the 104-112px band). (3) THE BENCH — before a case's questions load (the CASE_OPEN beat) both figures SIT on a bench in the page's own flow directly under the map; Holmes glances at his watch (idle loop); BOTH drink coffee, cups in hand, alternating sip cycles, NOT synchronized; when the first clue read starts the bench board fades, Watson rises to his station, Holmes stands in the slot; the slot COLLAPSES to zero height when Holmes enters the map — cups stay behind on the bench, never in play; no padded/empty reserved strip anywhere. (4) ENTRY WALK — at the first map interaction Holmes visibly walks from the bench slot onto the map to his dock (not a teleport; reduced motion = instant placement). (5) BERTH-TO-BERTH WALKS — the shipped pause-berth engine (350ms desktop / 450ms touch; 80ms absence on pan/zoom/sheet/rings/speech preserved) already walks him with the walk pose; pinned by the staging E2E at three widths.
-- **ZERO-OVERLAP LAW (owner, absolute):** neither figure overlaps ANY clue-card text — 0 px² in every sampled staging state; CELEBRATE excepted and unmeasured (cure round 1 re-scope, PR #361: the shipped CELEBRATE cluster keeps its above-card station as a named exception, and no sampling window has measured it). Staging cure: LoopScreen reserves a 118px gutter beside the clue cards (flag-gated class; cards narrow and text reflows inside them, the mockup v2 geometry) and Watson's station stands IN the gutter, vertically centred on the active card; Holmes never joins the station cluster under staging — before entry he stands in the bench slot, after entry he lives on the map. The mockup's position-sampling audit is ported into `tests/e2e/detective-staging.spec.ts`.
+- **ZERO-OVERLAP LAW (owner, absolute):** neither figure overlaps ANY clue-card text — 0 px² in every sampled staging state; CELEBRATE excepted — the shipped cluster sits over the active card there and is unmeasured. (cure round 1 re-scope, PR #361, wording per Silo QA's code read: during CELEBRATE the cluster is positioned at {left: anchor.left, top: anchor.top} — over the active clue card's area — and the spec never audits a CELEBRATE state). Staging cure: LoopScreen reserves a 118px gutter beside the clue cards (flag-gated class; cards narrow and text reflows inside them, the mockup v2 geometry) and Watson's station stands IN the gutter, vertically centred on the active card; Holmes never joins the station cluster under staging — before entry he stands in the bench slot, after entry he lives on the map. The mockup's position-sampling audit is ported into `tests/e2e/detective-staging.spec.ts`.
 - **Dock tap-target decision (deliberate call, carried in from PR C's pipeline): RESTORE the full 70px dock alias.** Reasoning: the 44px narrowing was forced only by the pre-#358 dock overlap (Holmes's box painted over Watson's replay box). #358 moved Holmes's dock beside Watson (HOLMES_DOCK_X = 12 + 100 + 8 = 120), so the boxes are disjoint: Watson's replay box is [12,112], Holmes's full mute box is [120,190] — both centres unobstructed at full width, and the rightmost ~26px of Holmes is no longer tap-dead for no reason. Change = delete the `.detective-holmes-mute-dock` narrowing rule + its class. Map-chip re-check against the wider dock cluster [12,190]: the map sound chip sits ABOVE the dock cluster (`bottom: 128px` = DOCK_INSET 12 + HOLMES_BOX.h 104 + 12 clear) — it clears the cluster at any dock width, no offset change. The station tap-mode edge slice (Game Designer note: Holmes's rightmost ~26px in tap mode is Listen territory) is NOT the dock slice: at the station the Listen clearance already narrows the station alias to 44px while Listen shows (PR C cure, kept) and lifts the chip 56px — that separation is unchanged and re-proven by the staging spec's solo/anchor-null samples.
 - **Offset re-derivation (Senior Architect obligation, discharged):** `chipStationOffset` / `holmesStationOffset` are now DERIVED in DetectiveHost from the constants of record — WATSON_DOCK_W (100), HOLMES_BOX {70,104}, the 4px station cluster gap, the 8px chip clear, and CELEBRATE_LAYOUT (celebrate width = watsonOffsetPx.x + WATSON_DOCK_W, rounded) — never a third Watson-width constant. `STATION_CLEARANCE_PX` (= HOLMES_BOX.h + 12 = 116, #358's scroll clearance) joined the same derivation at module scope. The three look-alike gaps stay distinct by name: DOCK_GAP 8 (dock inter-figure), chip clear 8, station cluster gap 4 — values coincide, meanings don't; no unification.
 - **Stale-premise corrections (this PR's docs pass):** (1) dock-overlap rationale comments rewritten — DetectiveHost's PR C comment block ("paints him over Watson's left side" — false since #358) and detective.css's dock-separation comment block; (2) the #358 capsule's two "BYTE-IDENTICALLY" lines — on base 79c5120 the docs-correction lane had not landed, so this branch first aligned them to "fails identically"; SUPERSEDED at this branch's merge-up onto 93b9791: PR #359's fuller correction (true tally, lost-log notes, "byte-identical is not claimed") is now the text of record in the #358 capsule below, taken wholesale in the merge — and #360's "shown pre-existing in-session" cure for the flag-off line is likewise in (grep-verified after the merge); (3) PR C section: dock-parking line -> "RESOLVED by #358" wording with the FG-1/FG-8 pointer fixed (dock = FG-8 territory; FG-1 = station occlusion, PR B's), flag-off line annotated superseded by the #358 repair, forward-obligation line extended with the full-width dock alias and marked discharged; (4) handbook ch.10: PR C dock premise re-worded, cure-round-2 tally line added, PR A staging record added stating the per-device gate (390/768/1280) as the standing rule for this feature.
