@@ -5,7 +5,7 @@ import {
   fulfillFlagsStaging,
   guessByEntryId,
   installDetectiveRecorder,
-  openSeamCase,
+  detectivePlays,
   waitForPhase,
   waitForSearchIdle,
 } from "./detective-u10";
@@ -39,6 +39,38 @@ import {
  */
 
 test.setTimeout(420_000);
+
+/** Open the seam case WITH staging on (the staging spec's pattern):
+ * u10's openSeamCase waits for the station element, which the bench
+ * stage suppresses whole (cure C1) — with staging on, the case opens
+ * on the bench and speech unlocks from there. */
+async function openStagingCase(page: Page, index: number): Promise<void> {
+  await page.goto(`http://127.0.0.1:4123/Meridian/?loop-puzzle=${index}`);
+  await page
+    .getByRole("button", { name: "GeoDetective: Solve a mystery" })
+    .click();
+  await expect(
+    page.getByRole("article", { name: /Clue 1:/ }),
+  ).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("detective-bench")).toBeVisible({
+    timeout: 20_000,
+  });
+  const heading = page.getByRole("heading", { name: "GeoDetective" });
+  const count = async () =>
+    (await detectivePlays(page)).filter((u) =>
+      u.includes("/audio/detective/"),
+    ).length;
+  for (let attempt = 0; attempt < 8; attempt++) {
+    await heading.click();
+    try {
+      await expect.poll(count, { timeout: 4_000 }).toBeGreaterThan(0);
+      return;
+    } catch {
+      /* tap again — the tap may land before the listener arms */
+    }
+  }
+  throw new Error("speech never unlocked after 8 verified gesture taps");
+}
 
 type ClosedSample = {
   closed: boolean;
@@ -146,7 +178,7 @@ for (const w of WIDTHS) {
       await installDetectiveRecorder(context, 4);
       await fulfillFlagsStaging(context);
       const page = await context.newPage();
-      await openSeamCase(page, 137);
+      await openStagingCase(page, 137);
       await waitForSearchIdle(page);
 
       // Bench during CASE_OPEN was the verified live behaviour and
@@ -179,7 +211,7 @@ for (const w of WIDTHS) {
       await installDetectiveRecorder(context, 4);
       await fulfillFlagsStaging(context);
       const page = await context.newPage();
-      await openSeamCase(page, 137);
+      await openStagingCase(page, 137);
       await waitForSearchIdle(page);
 
       const misses = ["las vegas", "paris", "tokyo", "sydney", "cairo"];

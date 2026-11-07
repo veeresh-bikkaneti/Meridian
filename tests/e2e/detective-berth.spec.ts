@@ -6,7 +6,7 @@ import {
   currentPlacement,
   fulfillFlagsStaging,
   installDetectiveRecorder,
-  openSeamCase,
+  detectivePlays,
   waitForSearchIdle,
 } from "./detective-u10";
 
@@ -37,6 +37,38 @@ import {
  */
 
 test.setTimeout(420_000);
+
+/** Open the seam case WITH staging on (the staging spec's pattern):
+ * u10's openSeamCase waits for the station element, which the bench
+ * stage suppresses whole (cure C1) — with staging on, the case opens
+ * on the bench and speech unlocks from there. */
+async function openStagingCase(page: Page, index: number): Promise<void> {
+  await page.goto(`http://127.0.0.1:4123/Meridian/?loop-puzzle=${index}`);
+  await page
+    .getByRole("button", { name: "GeoDetective: Solve a mystery" })
+    .click();
+  await expect(
+    page.getByRole("article", { name: /Clue 1:/ }),
+  ).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("detective-bench")).toBeVisible({
+    timeout: 20_000,
+  });
+  const heading = page.getByRole("heading", { name: "GeoDetective" });
+  const count = async () =>
+    (await detectivePlays(page)).filter((u) =>
+      u.includes("/audio/detective/"),
+    ).length;
+  for (let attempt = 0; attempt < 8; attempt++) {
+    await heading.click();
+    try {
+      await expect.poll(count, { timeout: 4_000 }).toBeGreaterThan(0);
+      return;
+    } catch {
+      /* tap again — the tap may land before the listener arms */
+    }
+  }
+  throw new Error("speech never unlocked after 8 verified gesture taps");
+}
 
 async function holmesWrapperPos(page: Page) {
   return page.evaluate(() => {
@@ -135,7 +167,7 @@ test("real berth: mouse pause lands Holmes at the pause point (desktop 1280)", a
     await installDetectiveRecorder(context, 3);
     await fulfillFlagsStaging(context);
     const page = await context.newPage();
-    await openSeamCase(page, 137);
+    await openStagingCase(page, 137);
     await waitForSearchIdle(page);
     await showMap(page);
     const mapBox = await page.getByTestId("loop-map").boundingBox();
@@ -169,17 +201,27 @@ test("real berth: touch pause lands Holmes at the pause point (phone 390)", asyn
     await installDetectiveRecorder(context, 3);
     await fulfillFlagsStaging(context);
     const page = await context.newPage();
-    await openSeamCase(page, 137);
+    await openStagingCase(page, 137);
     await waitForSearchIdle(page);
     await showMap(page);
     const mapBox = await page.getByTestId("loop-map").boundingBox();
     expect(mapBox).not.toBeNull();
-    const dockPos = await holmesWrapperPos(page);
-    // Holmes may not have entered yet on touch (no map interaction
-    // so far): the touch pause itself is the first interaction and
-    // the entry + berth chain runs from it, as in production.
-    const point = berthPointFor(390, mapBox!);
+    // First touch interaction enters Holmes (a quick tap at the map
+    // corner), so the dock is a real measured position before the
+    // pause — the same entry a player's first touch makes.
     const cdp = await context.newCDPSession(page);
+    await cdp.send("Input.dispatchTouchEvent", {
+      type: "touchStart",
+      touchPoints: [{ x: mapBox!.x + 40, y: mapBox!.y + 40, id: 1 }],
+    });
+    await cdp.send("Input.dispatchTouchEvent", {
+      type: "touchEnd",
+      touchPoints: [],
+    });
+    await page.waitForTimeout(1_200);
+    const dockPos = await holmesWrapperPos(page);
+    expect(dockPos, "Holmes wrapper at the dock after touch entry").not.toBeNull();
+    const point = berthPointFor(390, mapBox!);
     await cdp.send("Input.dispatchTouchEvent", {
       type: "touchStart",
       touchPoints: [{ x: point.x, y: point.y, id: 1 }],
@@ -235,7 +277,7 @@ test("real berth: post-throttle recovery — kill latches, re-qualifies, berths 
     await fulfillFlagsStaging(context);
     const page = await context.newPage();
     page.on("console", (m) => logs.push(m.text()));
-    await openSeamCase(page, 137);
+    await openStagingCase(page, 137);
     await waitForSearchIdle(page);
     await showMap(page);
     const mapBox = await page.getByTestId("loop-map").boundingBox();
