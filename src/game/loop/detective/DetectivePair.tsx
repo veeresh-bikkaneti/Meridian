@@ -16,10 +16,14 @@
  * Identity props: deerstalker, bowler, magnifying glass, Watson's
  * notebook / clue card. There is NO pipe — in any pose, ever.
  *
- * Makeover (PR A, staging council Q1): each rig paints its own
+ * Makeover (PR A, staging council Q1): each rig CAN paint its own
  * separation — a cream halo + near-black keyline baked into the
  * SVG under the figure (data-part="halo"), never a live CSS
- * filter. The bench scene's coffee cups live in the host's bench
+ * filter. The halo group renders only when the caller passes the
+ * `halo` prop (hosts pass isEnabled("hostsStaging")); the default
+ * is the pre-A rig, so hostsStaging:false restores the pair
+ * exactly as PR #355–#358 shipped it on every surface (cure C5).
+ * The bench scene's coffee cups live in the host's bench
  * markup (detective.css), not in these rigs: the cups stay on the
  * bench and never enter play.
  *
@@ -76,12 +80,20 @@ export interface HolmesRigProps {
   pose: HolmesPose;
   facing?: DetectiveFacing;
   speaking?: boolean;
+  /** Makeover halo/keyline (PR A): painted ONLY when the caller
+   * passes it — hosts pass isEnabled("hostsStaging"). Default false
+   * renders the pre-A rig exactly as PR #355–#358 shipped it, so the
+   * hostsStaging kill-switch restores the shipped pair on every
+   * surface, including the summary celebration (cure C5). */
+  halo?: boolean;
 }
 
 export interface WatsonRigProps {
   pose: WatsonPose;
   facing?: DetectiveFacing;
   speaking?: boolean;
+  /** See HolmesRigProps.halo — same gating, same default. */
+  halo?: boolean;
 }
 
 /** Raised-hand contact points for the high-five, in each rig's viewBox units. */
@@ -328,7 +340,7 @@ const HOLMES_POSE_SPECS: Record<HolmesPose, HolmesPoseSpec> = {
 const part = (transform: string, origin: string): CSSProperties =>
   transform ? { transform, transformOrigin: origin } : { transformOrigin: origin };
 
-export function HolmesRig({ pose, facing = "right", speaking = false }: HolmesRigProps): ReactElement {
+export function HolmesRig({ pose, facing = "right", speaking = false, halo = false }: HolmesRigProps): ReactElement {
   const spec = HOLMES_POSE_SPECS[pose];
   const flip = facing === "left" ? "translate(120 0) scale(-1 1)" : undefined;
   const hi = pose === "high-five";
@@ -362,6 +374,7 @@ export function HolmesRig({ pose, facing = "right", speaking = false }: HolmesRi
             keyline outside the narrower cream layer's ~3.5 px halo
             (at the 104 px render scale). No CSS filter / drop-shadow
             is ever applied to a moving figure (perf veto). */}
+        {halo ? (
         <g data-part="halo" aria-hidden="true">
           <ellipse cx="60" cy="173" rx="36" ry="5.5" fill="#fff6dd" stroke="#171310" strokeWidth="2.6" />
           <g fill="#fff6dd" stroke="#171310" strokeWidth="17" strokeLinejoin="round">
@@ -379,6 +392,7 @@ export function HolmesRig({ pose, facing = "right", speaking = false }: HolmesRi
           <path d="M64,118 L64,162" stroke="#fff6dd" strokeWidth="21.5" strokeLinecap="round" />
           <path d="M52,118 L52,162" stroke="#fff6dd" strokeWidth="21.5" strokeLinecap="round" />
         </g>
+        ) : null}
         <g data-part="leg-b" style={{ transformOrigin: "64px 118px" }}>
           <path d="M64,118 L64,162" stroke="#3d4950" strokeWidth="10" strokeLinecap="round" />
           <ellipse cx="68" cy="167" rx="9" ry="4.2" fill="#241d16" />
@@ -484,7 +498,7 @@ const WATSON_POSE_SPECS: Record<WatsonPose, WatsonPoseSpec> = {
   pout: { face: "pout", head: "rotate(9deg) translateY(3.5px)", torso: "rotate(2.5deg) translateY(2px)", frontArm: -4, noteArm: 4, notebook: true, card: false, pencil: false, glass: false },
 };
 
-export function WatsonRig({ pose, facing = "right", speaking = false }: WatsonRigProps): ReactElement {
+export function WatsonRig({ pose, facing = "right", speaking = false, halo = false }: WatsonRigProps): ReactElement {
   const spec = WATSON_POSE_SPECS[pose];
   // Watson's base art profiles LEFT (nose at the left of the head), so
   // the default "right" facing is the flip — one art, mirrored.
@@ -511,6 +525,7 @@ export function WatsonRig({ pose, facing = "right", speaking = false }: WatsonRi
             same construction as Holmes's — see the note there.
             Watson's render scale (104/140) differs, so the stroke
             widths differ; the rendered halo/keyline match. */}
+        {halo ? (
         <g data-part="halo" aria-hidden="true">
           <ellipse cx="60" cy="136" rx="38" ry="5.5" fill="#fff6dd" stroke="#171310" strokeWidth="2.6" />
           <g fill="#fff6dd" stroke="#171310" strokeWidth="13.5" strokeLinejoin="round">
@@ -528,6 +543,7 @@ export function WatsonRig({ pose, facing = "right", speaking = false }: WatsonRi
           <path d="M66,92 L66,128" stroke="#fff6dd" strokeWidth="19.5" strokeLinecap="round" />
           <path d="M52,92 L52,128" stroke="#fff6dd" strokeWidth="19.5" strokeLinecap="round" />
         </g>
+        ) : null}
         <g data-part="leg-b" style={{ transformOrigin: "66px 92px" }}>
           <path d="M66,92 L66,128" stroke="#2e3a52" strokeWidth="10.5" strokeLinecap="round" />
           <ellipse cx="62" cy="133" rx="9" ry="4.2" fill="#2b2119" />

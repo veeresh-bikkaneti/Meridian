@@ -56,6 +56,7 @@ import {
 } from "@/game/loop/detective/detective-degradation";
 import { createCelebrationLinePlayer } from "@/components/summary-celebration-line";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { isEnabled } from "@/lib/flags";
 import { EDITION_LABELS, type SessionSummary } from "@/game/session";
 import "@/game/loop/detective/detective.css";
 
@@ -190,7 +191,7 @@ export function SummaryDetectiveCelebration(props: {
       >
         <div className="detective-celebrate-holmes">
           <div className="detective-host-figure" data-detective="holmes">
-            <HolmesRig pose={poses.holmes} facing="right" speaking={speaking} />
+            <HolmesRig pose={poses.holmes} facing="right" speaking={speaking} halo={isEnabled("hostsStaging")} />
           </div>
         </div>
         <div
@@ -200,7 +201,7 @@ export function SummaryDetectiveCelebration(props: {
           }}
         >
           <div className="detective-host-figure" data-detective="watson">
-            <WatsonRig pose={poses.watson} facing="left" speaking={false} />
+            <WatsonRig pose={poses.watson} facing="left" speaking={false} halo={isEnabled("hostsStaging")} />
           </div>
         </div>
         {animated && step === "high-five" ? (
