@@ -520,23 +520,33 @@ for (const w of WIDTHS) {
       const dockPos = await holmesWrapperPos(page);
       expect(dockPos).not.toBeNull();
       const berthWindow = collectAuditWindow(page, 3_000);
-      /* Cure C12 geometry check: a berth point must sit within
+      /* Berth-point geometry (cure C12, completed per Silo QA's
+       * probe on the pre-cure tip): a berth point must sit within
        * BERTH_REMOTE_DISTANCE (320 px) of the dock centre, or the
-       * solver lawfully answers "remote" and no berth can land.
-       * The old shared point (0.72w, 0.30h) violates that at
-       * desktop: with the 1280 map at 728x494 it sits ~464 px from
-       * the dock centre (155, h-64). Desktop therefore uses
-       * (0.45w, 0.35h) (~285 px, with a legal berth above it);
-       * phone/tablet keep the proven point (within 320 there). */
+       * solver lawfully answers "remote" and no berth can ever
+       * land. Dock centre, map-relative, is (155, mapH-64)
+       * (HOLMES_DOCK_X 120 + the 70x104 wrapper box). The old
+       * shared point (0.72w, 0.30h) measures, on QA's probed map
+       * boxes: 261.6 px at 390 (map 350x439 — legal, kept),
+       * 480.7 px at 768 (map 728x532) and 464.4 px at 1280 (map
+       * 728x494) — both remote, which is why the tablet/desktop
+       * berth never landed pre-cure (the failure was geometry,
+       * not environment). Tablet/desktop therefore use
+       * (0.48w, 0.50h): 280.4 px at 768, 267.0 px at 1280 —
+       * inside 320 with headroom, and ~270 px of displacement
+       * from the dock, far over the >40 px a real walk must
+       * prove. (An interim desktop-only point (0.45w, 0.35h)
+       * measured 309.7 px — legal but ~10 px of margin; replaced
+       * by this unified point.) */
       const berthPoint =
-        w.width === 1280
+        w.width === 390
           ? {
-              x: mapBox!.x + mapBox!.width * 0.45,
-              y: mapBox!.y + mapBox!.height * 0.35,
-            }
-          : {
               x: mapBox!.x + mapBox!.width * 0.72,
               y: mapBox!.y + mapBox!.height * 0.3,
+            }
+          : {
+              x: mapBox!.x + mapBox!.width * 0.48,
+              y: mapBox!.y + mapBox!.height * 0.5,
             };
       await berthAt(page, berthPoint, dockPos!);
       trail.absorb(await berthWindow, `berth @ ${w.name}`);
