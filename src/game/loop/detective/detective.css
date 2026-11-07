@@ -826,10 +826,20 @@
 }
 
 /* Clue cards narrow under staging so the gutter is real layout
-   space and the card text reflows INSIDE the card (mockup v2). */
+   space and the card text reflows INSIDE the card (mockup v2).
+   The 118 px is DERIVED (PR B unit 3, watson-walk.ts — the source
+   of record; CSS cannot import the constant, and its unit test
+   pins the arithmetic): 6 px clear air between the card's right
+   edge and Watson's figure + Watson's 100 px rendered figure +
+   12 px clear air to the screen edge (the pair's standard outer
+   clearance). The council mockup staged 112 px; PR A shipped 118
+   and proved it zero-overlap at 390/768/1280 — 112 would leave
+   only 6 px of edge clear and re-narrow every card against that
+   proven layout for no clearance gain. */
 .detective-staging-on article[aria-label^="Clue"] {
   margin-right: 118px;
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   .detective-bench,

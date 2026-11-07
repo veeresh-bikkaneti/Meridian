@@ -84,6 +84,19 @@ import {
   type AutoKillTracker,
   type PauseDetector,
 } from "./companion";
+import {
+  ANNOUNCEMENT_FIXED_ID,
+  CASE_OPEN_WALK_MS,
+  CASE_OPEN_WALK_START_OFFSET_PX,
+  GUTTER_BELOW_FIGURE_PX,
+  GUTTER_CARD_GAP_PX,
+  GUTTER_CHIP_BELOW_LISTEN_PX,
+  shouldAnnounce,
+  stationChipOffsetPx,
+  stationHolmesOffsetPx,
+  watsonWalkDurationMs,
+  WATSON_WALK_FALLBACK_GRACE_MS,
+} from "./watson-walk";
 import "./detective.css";
 
 export type { DetectiveHostProps };
@@ -112,14 +125,12 @@ const DOCK_GAP = 8;
  * this same spot as its dock reference, so remote distances and
  * dock returns stay honest. */
 const HOLMES_DOCK_X = DOCK_INSET + WATSON_DOCK_W + DOCK_GAP;
-/** Station cluster gap: the clear air between Watson and Holmes when
- * they stand together at the clue card. NOT the dock gap and NOT the
- * chip clear below — three gaps that share values by coincidence and
- * stay distinct by name (PR A re-derivation, Senior Architect). */
-const STATION_GAP_PX = 4;
-/** The speaker chip's clear air from whatever stands to its left in
- * the station cluster (8 px — a different 8 from DOCK_GAP). */
-const CHIP_CLEAR_PX = 8;
+/* The station cluster gap (4 px) and the speaker chip's clear air
+ * (8 px) — two of the three look-alike gaps (the dock gap is the
+ * third) that stay distinct by name (PR A re-derivation) — are
+ * owned by watson-walk.ts since PR B (STATION_GAP_PX /
+ * CHIP_CLEAR_PX there), where the station offset functions that
+ * consume them live and are unit-pinned. */
 /** Reading-scroll clearance (#358): the station's figure height plus
  * a breath of air above the clue card — derived from HOLMES_BOX.h,
  * the same figure height every station offset below derives from. */
@@ -174,9 +185,14 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * the machine's view, and the degradation matrix — no new props,
    * so the answer-blindness whitelist is untouched. */
   const stagingOn = isEnabled("hostsStaging");
+  /* Carry-in (f) cure: a RESUMED case's questions are already loaded,
+   * so the bench beat must not flash — the stage starts at "standing"
+   * whenever this mount is not a fresh deal, here and on case change
+   * below. (Before this cure the stage initialised to "bench"
+   * regardless of the resumed phase.) */
   const [stagingStage, setStagingStage] = useState<
     "bench" | "standing" | "entering" | "gone"
-  >("bench");
+  >(() => (freshDeal ? "bench" : "standing"));
   const stagingStageRef = useRef(stagingStage);
   stagingStageRef.current = stagingStage;
   const entryPendingRef = useRef(false);
@@ -188,6 +204,81 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   const entryRafRef = useRef<number | null>(null);
   const holmesEntered =
     !stagingOn || stagingStage === "entering" || stagingStage === "gone";
+
+  /* -- Watson walks (PR B, watsonWalk flag; staging council Q3) -----
+   * The WALKING state of the pair's host machine (PR A's stage
+   * machine is the precedent for host-local states): when a clue
+   * speak effect arrives, Watson WALKS the reserved gutter from the
+   * previous card's centre to the new card's centre — a one-
+   * dimensional vertical path, because every clue card shares the
+   * column's left and width, so the gutter's x never changes. The
+   * pure arithmetic (duration band, gutter derivation, announcement
+   * gate) lives in watson-walk.ts; this block owns the environment:
+   * the measured anchors, the cluster's transform transition, and
+   * the arrival signals (transitionend + a timeout fallback).
+   *
+   * Speech gating: in auto speech mode the clue read is HELD
+   * host-side and enqueued only on arrival — the machine stays in
+   * READING until the read actually plays and drains, so the ladder
+   * can never run ahead of the walker. In tap/off modes the read is
+   * enqueued immediately (the shipped ladder timing is untouched)
+   * and the walk is visual only. Reduced motion (walkMode "cut") or
+   * a resource-constrained device (dock-only companion) never walks:
+   * instant placement + immediate read, per the council's edge rule.
+   *
+   * This is a SECOND, parallel walker (carry-in a, named decision):
+   * Holmes's walker above is 2-D map geometry — holmesXY, a walk
+   * timer, and the berth solver's dock/berth/hide outcomes — while
+   * Watson's is 1-D gutter travel between measured card anchors
+   * whose arrival gates speech. Extracting a generic walker would
+   * refactor Holmes's proven engine to share almost nothing.
+   *
+   * With watsonWalk off (the kill-switch) none of this runs: the
+   * clue speak enqueues at reveal and Watson teleports with the
+   * anchor — exactly the PR A behaviour. */
+  const walkOn = stagingOn && isEnabled("watsonWalk");
+  const walkOnRef = useRef(walkOn);
+  walkOnRef.current = walkOn;
+  const [watsonWalking, setWatsonWalking] = useState(false);
+  const watsonWalkingRef = useRef(false);
+  watsonWalkingRef.current = watsonWalking;
+  /** True while the current walk holds its clue read host-side. */
+  const [watsonWalkGated, setWatsonWalkGated] = useState(false);
+  const [watsonWalkOffsetY, setWatsonWalkOffsetY] = useState(0);
+  const [watsonWalkMs, setWatsonWalkMs] = useState(0);
+  /** Generation counter: every walk start / arrival / cancel bumps
+   * it, so a stale transitionend, timer, or rAF from a superseded
+   * walk can never release (or re-release) a read. */
+  const walkGenRef = useRef(0);
+  const watsonWalkTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const walkRafRef = useRef<number | null>(null);
+  /** The clue read held until arrival (auto mode only). */
+  const heldClueRef = useRef<{ kind: "clue"; clueIndex: number } | null>(null);
+  /** The current walk's destination centre (viewport coords). */
+  const walkTargetCentreRef = useRef<number | null>(null);
+  /** The centre of the card Watson last arrived at (or was placed
+   * at instantly) — the next walk starts from here. */
+  const prevStationCentreRef = useRef<number | null>(null);
+  /** The first clue walk of a case is the case-open walk (the only
+   * walk the announcement may ride). Reset per case below. */
+  const firstWalkOfCaseRef = useRef(true);
+  /** Announcements spoken this session (host mount) — cap 2. */
+  const announceCountRef = useRef(0);
+  /** A held read was dropped by a sheet-open cancellation: when the
+   * sheet closes, the ladder is advanced past the skipped read so
+   * it can never stall waiting for a drain that will not come —
+   * and the read itself never fires late. */
+  const deferredDrainRef = useRef(false);
+  /* Walk machinery entry points (defined with the speech player
+   * below; runEffect and the transitionend handler reach them via
+   * these refs, the dispatchRef pattern). */
+  const walkBeginRef = useRef<
+    (clueRef: { kind: "clue"; clueIndex: number }) => boolean
+  >(() => false);
+  const arriveWatsonRef = useRef<(gen: number) => void>(() => {});
+  const cancelWatsonWalkRef = useRef<(deferDrain: boolean) => void>(
+    () => {},
+  );
   const viewRef = useRef(view);
   viewRef.current = view;
 
@@ -227,6 +318,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
 
   /* -- speech player -------------------------------------------------- */
   const [speakingWho, setSpeakingWho] = useState<DetectiveSpeaker | null>(null);
+  const speakingWhoRef = useRef<DetectiveSpeaker | null>(null);
   const playerRef = useRef<DetectiveSpeechPlayer | null>(null);
   const dwellTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const ringTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -236,6 +328,16 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   // always current); effects and listeners reach them via dispatchRef.
   const runEffect = (effect: DetectiveEffect) => {
     if (effect.type === "speak") {
+      // PR B: a clue read may be held by Watson's walk (arrival-
+      // gated). beginWatsonWalk returns true only when it took the
+      // read; every other speak — and every clue when the walk is
+      // off, instant, or visual-only — enqueues exactly as shipped.
+      if (
+        effect.ref.kind === "clue" &&
+        walkBeginRef.current(effect.ref)
+      ) {
+        return;
+      }
       playerRef.current?.enqueue(effect.ref);
       return;
     }
@@ -255,12 +357,169 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   };
   const dispatchRef = useRef(dispatch);
   dispatchRef.current = dispatch;
+
+  /* -- Watson walk machinery (PR B) -----------------------------------
+   * beginWatsonWalk runs from runEffect (above, via walkBeginRef):
+   * it returns TRUE when it took ownership of the clue read (auto
+   * mode, animated, unconstrained) — the read is then enqueued by
+   * arriveWatson and by nothing else. It returns FALSE for the
+   * shipped path (flag off, instant placement, tap/off visual-only
+   * walks): the caller enqueues immediately. */
+
+  /** The active clue card's vertical centre, measured from the DOM
+   * the same way the station anchor is measured (discrete events
+   * only — walk starts are discrete). Null when no card is on the
+   * page yet: the walk cannot start, so the read is never held. */
+  const measureClueCentre = (clueIndex: number): number | null => {
+    const card = document.querySelector(
+      `article[aria-label^="Clue ${clueIndex}:"]`,
+    );
+    if (!card) return null;
+    const rect = card.getBoundingClientRect();
+    return rect.top + rect.height / 2;
+  };
+
+  const arriveWatson = (gen: number) => {
+    if (walkGenRef.current !== gen) return;
+    walkGenRef.current += 1; // consume: transitionend vs timer, first wins
+    if (watsonWalkTimerRef.current) {
+      clearTimeout(watsonWalkTimerRef.current);
+      watsonWalkTimerRef.current = null;
+    }
+    if (walkRafRef.current) {
+      cancelAnimationFrame(walkRafRef.current);
+      walkRafRef.current = null;
+    }
+    setWatsonWalking(false);
+    setWatsonWalkGated(false);
+    setWatsonWalkMs(0);
+    setWatsonWalkOffsetY(0);
+    prevStationCentreRef.current = walkTargetCentreRef.current;
+    const held = heldClueRef.current;
+    heldClueRef.current = null;
+    // Arrival releases the held read — and ONLY arrival does. The
+    // player's drain after this read is the ladder's real
+    // speechEnded (the suppression in onSpeakingChange lifts with
+    // heldClueRef now null).
+    if (held) playerRef.current?.enqueue(held);
+  };
+  arriveWatsonRef.current = arriveWatson;
+
+  /** Cancel the walk (sheet opened mid-walk; the case ended or
+   * changed mid-walk). The figure's placement completes instantly —
+   * he IS at the target card when the pair reappears — and a held
+   * read is dropped, never fired late. `deferDrain` is the sheet
+   * path only: the machine is still waiting in READING there, so
+   * the sheet-close effect advances the ladder past the skipped
+   * read; on a case ending the machine has already moved on and
+   * no drain is owed. */
+  const cancelWatsonWalk = (deferDrain: boolean) => {
+    if (!watsonWalkingRef.current && !heldClueRef.current) return;
+    walkGenRef.current += 1;
+    if (watsonWalkTimerRef.current) {
+      clearTimeout(watsonWalkTimerRef.current);
+      watsonWalkTimerRef.current = null;
+    }
+    if (walkRafRef.current) {
+      cancelAnimationFrame(walkRafRef.current);
+      walkRafRef.current = null;
+    }
+    setWatsonWalking(false);
+    setWatsonWalkGated(false);
+    setWatsonWalkMs(0);
+    setWatsonWalkOffsetY(0);
+    prevStationCentreRef.current = walkTargetCentreRef.current;
+    if (heldClueRef.current) {
+      heldClueRef.current = null;
+      if (deferDrain) deferredDrainRef.current = true;
+    }
+  };
+  cancelWatsonWalkRef.current = cancelWatsonWalk;
+
+  const beginWatsonWalk = (clueRef: { kind: "clue"; clueIndex: number }): boolean => {
+    if (!walkOnRef.current) return false;
+    const deg = degradationRef.current;
+    const isCaseOpenWalk = firstWalkOfCaseRef.current;
+    firstWalkOfCaseRef.current = false;
+    const target = measureClueCentre(clueRef.clueIndex);
+    const instant =
+      deg.walkMode === "cut" || deg.companionMode === "dock-only";
+    if (instant || target === null) {
+      // Instant placement + immediate read (council edge rule), or
+      // no card to walk to: the shipped timing, untouched.
+      if (target !== null) prevStationCentreRef.current = target;
+      return false;
+    }
+    const startCentre = prevStationCentreRef.current;
+    const fromBench = isCaseOpenWalk || startCentre === null;
+    const offsetY = fromBench
+      ? -CASE_OPEN_WALK_START_OFFSET_PX
+      : startCentre - target;
+    const durationMs = fromBench
+      ? CASE_OPEN_WALK_MS
+      : watsonWalkDurationMs(offsetY);
+    const gated = deg.speechMode === "auto";
+    // The held read is installed BEFORE any stopAll below, so the
+    // stop's drain signal is suppressed by onSpeakingChange's held
+    // check — the ladder must not advance on a flush.
+    heldClueRef.current = gated ? clueRef : null;
+    walkTargetCentreRef.current = target;
+    // Clue advance mid-read (or mid-walk): the current speech stops
+    // and the queue flushes; the new read waits for arrival.
+    if (speakingWhoRef.current) playerRef.current?.stopAll();
+    if (watsonWalkTimerRef.current) clearTimeout(watsonWalkTimerRef.current);
+    if (walkRafRef.current) cancelAnimationFrame(walkRafRef.current);
+    const gen = ++walkGenRef.current;
+    setWatsonWalkGated(gated);
+    setWatsonWalkMs(0);
+    setWatsonWalkOffsetY(offsetY);
+    setWatsonWalking(true);
+    // The announcement rides the CASE-OPEN walk only (cap 2 per
+    // session; clue 2+ walks are silent). It is enqueued to the
+    // player, so it plays DURING the walk; the held clue read is
+    // host-side, so the announcement can never block it, and its
+    // drain is suppressed while the read is held.
+    if (
+      shouldAnnounce({
+        isCaseOpenWalk,
+        announcedThisSession: announceCountRef.current,
+        speechMode: deg.speechMode,
+      })
+    ) {
+      announceCountRef.current += 1;
+      playerRef.current?.enqueue({
+        kind: "fixed",
+        id: ANNOUNCEMENT_FIXED_ID,
+      });
+    }
+    walkRafRef.current = requestAnimationFrame(() => {
+      walkRafRef.current = null;
+      if (walkGenRef.current !== gen) return;
+      setWatsonWalkMs(durationMs);
+      setWatsonWalkOffsetY(0);
+    });
+    watsonWalkTimerRef.current = setTimeout(
+      () => arriveWatsonRef.current(gen),
+      durationMs + WATSON_WALK_FALLBACK_GRACE_MS,
+    );
+    return gated;
+  };
+  walkBeginRef.current = beginWatsonWalk;
+
   useEffect(() => {
     const player = createDetectiveSpeech({
       caseIndex,
       onSpeakingChange: (who) => {
         setSpeakingWho(who);
-        if (who === null) dispatchRef.current({ type: "speechEnded" });
+        speakingWhoRef.current = who;
+        if (who === null) {
+          // PR B: while a clue read is held by the walk, a drain is
+          // NOT the ladder's speechEnded — it is the announcement
+          // finishing, or a stopAll flush (mute / mid-read advance).
+          // The real drain comes after arrival releases the read.
+          if (heldClueRef.current) return;
+          dispatchRef.current({ type: "speechEnded" });
+        }
       },
     });
     playerRef.current = player;
@@ -323,8 +582,32 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     const fresh = viewForState(machineRef.current);
     viewRef.current = fresh;
     setView(fresh);
-    setStagingStage("bench");
+    setStagingStage(freshDeal ? "bench" : "standing");
     entryPendingRef.current = false;
+    /* Carry-in (e): entry intent recorded during a previous case's
+     * bench must not fire into this case — reset it with the other
+     * per-case entry state. */
+    entryIntentRef.current = false;
+    /* PR B: the walk restarts per case (the announcement's
+     * case-open walk is this case's first clue walk); the session
+     * announcement count is NOT reset — the cap is per session. */
+    walkGenRef.current += 1;
+    if (watsonWalkTimerRef.current) {
+      clearTimeout(watsonWalkTimerRef.current);
+      watsonWalkTimerRef.current = null;
+    }
+    if (walkRafRef.current) {
+      cancelAnimationFrame(walkRafRef.current);
+      walkRafRef.current = null;
+    }
+    heldClueRef.current = null;
+    deferredDrainRef.current = false;
+    prevStationCentreRef.current = null;
+    firstWalkOfCaseRef.current = true;
+    setWatsonWalking(false);
+    setWatsonWalkGated(false);
+    setWatsonWalkMs(0);
+    setWatsonWalkOffsetY(0);
     playerRef.current?.stopAll();
     playerRef.current?.setCaseIndex(caseIndex);
     // Case open FIRST (U8): on a fresh deal the machine starts the
@@ -393,6 +676,38 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     seenSheetRef.current = sheetOpen;
     dispatch({ type: sheetOpen ? "sheetOpened" : "sheetClosed" });
   }, [sheetOpen, dispatch]);
+
+  /* PR B: the sheet opening mid-walk cancels the walk (the council's
+   * stale-read condition): a held read is dropped and must NEVER
+   * fire late. When the sheet closes, the ladder is advanced past
+   * the skipped read (deferredDrainRef, set by the cancel) so the
+   * case continues — the ack/decode that follow the read play
+   * normally in the open. The announcement count is untouched: a
+   * cancelled case-open walk already spent its announcement. */
+  useEffect(() => {
+    if (sheetOpen) {
+      cancelWatsonWalkRef.current(true);
+      return;
+    }
+    if (deferredDrainRef.current) {
+      deferredDrainRef.current = false;
+      dispatchRef.current({ type: "speechEnded" });
+    }
+  }, [sheetOpen]);
+
+  /* PR B: a case ending mid-walk cancels the walk with no drain
+   * owed — the machine has left READING, and the ending's own lines
+   * own the queue from here. */
+  useEffect(() => {
+    if (
+      view.phase === "CELEBRATE" ||
+      view.phase === "DEBRIEF" ||
+      view.phase === "FAIL_READ" ||
+      view.phase === "POUT"
+    ) {
+      cancelWatsonWalkRef.current(false);
+    }
+  }, [view.phase]);
 
   /* Staging: the bench holds only while the case opens. The moment
    * the machine leaves CASE_OPEN (the case's questions loading),
@@ -710,6 +1025,15 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       if (walkTimerRef.current) {
         clearTimeout(walkTimerRef.current);
         walkTimerRef.current = null;
+      }
+      /* PR B: Watson's walk timer + rAF die on unmount too. */
+      if (watsonWalkTimerRef.current) {
+        clearTimeout(watsonWalkTimerRef.current);
+        watsonWalkTimerRef.current = null;
+      }
+      if (walkRafRef.current) {
+        cancelAnimationFrame(walkRafRef.current);
+        walkRafRef.current = null;
       }
     };
   }, []);
@@ -1072,7 +1396,11 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     view.watson.placement !== "hidden" ? (
       <div className="detective-host-figure" data-detective="watson">
         <WatsonRig
-          pose={view.watson.pose}
+          pose={
+            watsonWalking && view.watson.placement === "station"
+              ? "walk"
+              : view.watson.pose
+          }
           facing="left"
           speaking={speakingWho === "watson"}
           halo={stagingOn}
@@ -1207,19 +1535,39 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     stationReady &&
     LISTEN_PHASES.has(view.phase);
   /* Gutter station (staging): the station cluster stands IN the
-   * 118 px gutter LoopScreen reserves beside the clue cards,
-   * vertically centred on the active card — never over its text. */
+   * gutter LoopScreen reserves beside the clue cards (118 px,
+   * derived in watson-walk.ts: 6 card gap + 100 Watson figure +
+   * 12 edge clear), vertically centred on the active card — never
+   * over its text. */
   const gutterStation =
     stagingOn && !celebrating && anchor !== null && view.watson.placement === "station";
-  const gutterLeft = anchor ? anchor.left + anchor.width + 6 : 0;
+  const gutterLeft = anchor ? anchor.left + anchor.width + GUTTER_CARD_GAP_PX : 0;
   const gutterCentreTop = anchor ? anchor.top + anchor.height / 2 : 0;
+  /* PR B: while Watson walks, the whole gutter cluster (figure,
+   * replay, Listen, chip) travels together on the same transform —
+   * their relative geometry, and every pairwise separation PR C
+   * proved, is preserved mid-walk. The station/replay wrappers
+   * centre on the card (translateY(-50%) base); the side controls
+   * ride a plain translateY of the same offset. */
+  const walkShiftPx = watsonWalking || watsonWalkOffsetY !== 0 ? watsonWalkOffsetY : 0;
+  const gutterWalkTransform = `translateY(calc(-50% + ${walkShiftPx}px))`;
+  const gutterSideTransform = `translateY(${walkShiftPx}px)`;
+  const gutterWalkTransition =
+    watsonWalkMs > 0
+      ? `transform ${watsonWalkMs}ms cubic-bezier(0.22, 0.61, 0.36, 1)`
+      : undefined;
   const listenEl = showListen ? (
     <div
       className="detective-host-listen"
       data-testid="detective-listen"
       style={
         gutterStation
-          ? { left: gutterLeft, top: gutterCentreTop + 62, transform: "none" }
+          ? {
+              left: gutterLeft,
+              top: gutterCentreTop + GUTTER_BELOW_FIGURE_PX,
+              transform: gutterSideTransform,
+              transition: gutterWalkTransition,
+            }
           : anchor
             ? { left: anchor.left + 152, top: anchor.top }
             : { left: 164, bottom: 96, top: "auto", transform: "none" }
@@ -1255,12 +1603,20 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * Pointer tap and keyboard activation run the same path: the
    * player's replay, which restarts the held sequence from item 1
    * and re-checks the sound gate at play time. */
-  const showWatsonReplay = watsonReplayCueVisible({
-    phase: view.phase,
-    watsonPlacement: view.watson.placement,
-    hidden: view.hidden,
-    speechMode: degradation.speechMode,
-  });
+  const showWatsonReplay =
+    watsonReplayCueVisible({
+      phase: view.phase,
+      watsonPlacement: view.watson.placement,
+      hidden: view.hidden,
+      speechMode: degradation.speechMode,
+    }) &&
+    /* PR B: during a speech-gated walk the current clue has not
+     * been read yet — the player's held sequence is still the
+     * PREVIOUS clue's, so the replay cue hides until arrival. At
+     * the station after arrival it is instant, with no re-walk
+     * (council Q3 edge rule). Visual-only walks (tap mode) keep
+     * the cue: their held sequence is already the current clue. */
+    !(watsonWalking && watsonWalkGated);
   const onWatsonReplay = () => {
     void playerRef.current?.playHeldSequence();
   };
@@ -1279,7 +1635,12 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         }
         style={
           gutterStation
-            ? { left: gutterLeft, top: gutterCentreTop }
+            ? {
+                left: gutterLeft,
+                top: gutterCentreTop,
+                transform: gutterWalkTransform,
+                transition: gutterWalkTransition,
+              }
             : anchor
               ? { left: anchor.left, top: anchor.top }
               : { left: 12, bottom: 96, top: "auto", transform: "none" }
@@ -1376,21 +1737,26 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   // - chipStationOffset = whatever stands left of the chip + the
   //   chip clear: celebrate cluster (Watson's celebrate offset +
   //   his width) / Watson + Holmes / Watson alone / Holmes alone.
-  const holmesStationOffset = celebrating
-    ? 0
-    : watsonAtStation
-      ? WATSON_DOCK_W + STATION_GAP_PX
-      : 0;
+  /* PR B (carry-in c): the offset arithmetic now lives in the pure
+   * stationChipOffsetPx / stationHolmesOffsetPx (watson-walk.ts),
+   * unit-pinned for every figure combination — including the
+   * Holmes-alone branch (HOLMES_BOX.w + CHIP_CLEAR_PX = 78) that
+   * PR A recorded as unreachable from viewForState. It stays
+   * unreachable in PR B: WALKING moves Watson WITHIN the station
+   * cluster and never puts Holmes alone at the station. */
+  const holmesStationOffset = stationHolmesOffsetPx({
+    celebrating,
+    watsonAtStation,
+  });
   const celebrateClusterW = Math.round(
     CELEBRATE_LAYOUT.watsonOffsetPx.x + WATSON_DOCK_W,
   );
-  const chipStationOffset = celebrating
-    ? celebrateClusterW + CHIP_CLEAR_PX
-    : watsonAtStation && holmesAtStation
-      ? WATSON_DOCK_W + STATION_GAP_PX + HOLMES_BOX.w + CHIP_CLEAR_PX
-      : watsonAtStation
-        ? WATSON_DOCK_W + CHIP_CLEAR_PX
-        : HOLMES_BOX.w + CHIP_CLEAR_PX;
+  const chipStationOffset = stationChipOffsetPx({
+    celebrating,
+    celebrateClusterW,
+    watsonAtStation,
+    holmesAtStation,
+  });
   /* Listen clearance (cure, panel round 1 BLOCK): in tap speech mode
    * the Listen button sits at anchor.left + 152, ≈108 px wide →
    * [+152, +260], in the same z-31 band as the chip and the station
@@ -1425,8 +1791,13 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         gutterStation
           ? {
               left: gutterLeft,
-              top: gutterCentreTop + (showListen ? 118 : 62),
-              transform: "none",
+              top:
+                gutterCentreTop +
+                (showListen
+                  ? GUTTER_CHIP_BELOW_LISTEN_PX
+                  : GUTTER_BELOW_FIGURE_PX),
+              transform: gutterSideTransform,
+              transition: gutterWalkTransition,
             }
           : anchor
             ? {
@@ -1623,10 +1994,29 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           data-walk-mode={degradation.walkMode}
           data-speech-mode={degradation.speechMode}
           data-staging={stagingOn ? stagingStage : "off"}
+          data-watson-walk={
+            walkOn ? (watsonWalking ? "walking" : "idle") : "off"
+          }
           aria-hidden="true"
+          onTransitionEnd={(e) => {
+            // PR B arrival: the cluster's own transform transition
+            // ending is the primary arrival signal (the fallback
+            // timer in beginWatsonWalk covers its absence).
+            if (
+              e.propertyName === "transform" &&
+              e.target === e.currentTarget
+            ) {
+              arriveWatsonRef.current(walkGenRef.current);
+            }
+          }}
           style={
             gutterStation
-              ? { left: gutterLeft, top: gutterCentreTop }
+              ? {
+                  left: gutterLeft,
+                  top: gutterCentreTop,
+                  transform: gutterWalkTransform,
+                  transition: gutterWalkTransition,
+                }
               : anchor
                 ? { left: anchor.left, top: anchor.top }
                 : { left: 12, bottom: 96, top: "auto", transform: "none" }
