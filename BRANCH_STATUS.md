@@ -1,6 +1,6 @@
 # BRANCH_STATUS — feat/watson-walks (PR B, staging rework 3 of 3)
 
-- **Branch:** `feat/watson-walks` · **Base:** `main` @ `97d1dcf` (PR A #361 merged + live)
+- **Branch:** `feat/watson-walks` · **Base:** `main` @ `3690aee` (PR #362 merged + live), after merge-up `48243e3` + brace-cure `353072e`; this capsule is closed by the records commit that carries it
 - **Design of record:** `~/workspace/meridian-detective-evidence/COUNCIL-staging-rework.md` (Q3 + slice B), `staging-mockup-v2.NOTE.md`, handbook ch.10.
 
 ## Task capsule
@@ -55,10 +55,16 @@ no new host props; the K5 swap test must still pass).
 
 - **Commits:** `c52e846` foundations · `cdefd15` walking · `01f32db`
   deferred-drain suppression cure · `e8d71ae` E2E unit · `4dd614b`
-  arrival-boundary sample tolerance. Tip at PR open: see PR.
-- **Gates (final tip):** `npx tsc --noEmit` clean · `npm test`
-  3,273 pass / 0 fail / 11 skipped (scripts 1021 + src 2252; +17
-  watson-walk pins, +1 render-plan pin over the 3,255 baseline) ·
+  arrival-boundary sample tolerance · merge-up `48243e3` over
+  main `3690aee` (PR #362) · `353072e` brace cure (playwright.config.ts
+  opening brace lost in the merge-up union) · records commit (this
+  capsule). Tip of record for the pipeline: `353072e`.
+- **Gates (merged tip `353072e`, pipeline):** `npx tsc --noEmit`
+  clean · `npm test` 3,277 pass / 0 fail / 11 skipped (scripts 1,021
+  + src 2,256; main's 3,259 baseline incl. PR #362, plus PR B's 18
+  pins) · detective E2E union on the merged tip **60/60 unique
+  tests PASS** (61 passing run-results incl. one arbiter solo
+  re-run) ·
   `npm run test:worker` 145 / 0 · `node scripts/lint-cards.mjs`
   GATE PASSED · `npm run build:pages` green, entry chunk 457,844 B
   (PR A cured tip: 457,830 B; the walk code rides the lazy
@@ -77,7 +83,7 @@ no new host props; the K5 swap test must still pass).
   companion 6/6 · replay 3/3 · sound 10/10 · summary 3/3 ·
   visibility 4/4 · stations 1/1 · endings 2/2 · swap 1/1 (K5) ·
   flag 2/2.
-- **Env-signature failures, all cured by solo re-runs (repo rule:
+- **Env-signature failures, all passed on solo re-runs (repo rule:
   sequential is the arbiter):** EDQUOT (-122) teardown writes on
   the 1280 walk flow + staging 390 flow; one 300 s page-load hang
   (empty snapshot) on the sheet test; batch runs repeatedly cut
@@ -91,15 +97,40 @@ no new host props; the K5 swap test must still pass).
   so the announcement's drain advanced the ladder during the sheet
   and the ack played behind it. Guard now covers deferredDrainRef;
   sheet test green.
-- **Coordination:** two live defects from PR A surfaces (bench
-  close-state leak; FG-5 latch never resetting) ship as ONE
-  standalone cure PR from main in parallel. Frozen seams respected:
-  bench gating / stagingStage transitions beyond carry-in (f),
-  companion.ts, berth/entry handlers, entryPendingRef, FG-5 latch —
-  none modified (entryIntentRef gained only carry-in (e)'s reset).
-  After the cure PR merges, this branch takes a merge-up before
-  its pipeline; expected coordination points are the stagingStage
-  initialiser / case-change assignment and the entryIntentRef line.
+- **Coordination (closed):** two live defects from PR A surfaces
+  (bench close-state leak; FG-5 latch never resetting) shipped as
+  ONE standalone cure PR from main in parallel — PR #362, merged
+  as main `3690aee`. Frozen seams were respected: bench gating /
+  stagingStage transitions beyond carry-in (f), companion.ts,
+  berth/entry handlers, entryPendingRef, FG-5 latch — none
+  modified by PR B's authored hunks (entryIntentRef gained only
+  carry-in (e)'s reset). This branch then took its merge-up
+  `48243e3` over the cure before its pipeline; the expected
+  coordination points were the stagingStage initialiser /
+  case-change assignment and the entryIntentRef line. Actual
+  conflict surfaces: `BRANCH_STATUS.md`, handbook ch.10,
+  `playwright.config.ts` — all resolved as faithful unions, plus
+  brace cure `353072e`. Merge-up checklist: conflicts resolved as
+  unions with zero lines lost (content-grep verified) · merged-tree
+  gates re-run green (tsc / 3,277 unit / worker 145 / lint-cards /
+  build) · companionMode walk-gate re-verified against #362's
+  cured latch (berth recovery test — throttle, latch fires,
+  re-qualifies, real berth — plus K2/K3/K5, all passing with the
+  walk active).
+- **Panel follow-ups (PR #363 pipeline, 2026-11-07):** (1)
+  post-ship kid-observation of clues 3–5 impatience under the walk
+  (UX Researcher, MED; flip-first response pre-committed);
+  (2) mute-during-walk lacks a dedicated E2E pin — follow-up case
+  (Game Audio); (3) measure time-to-clue-1 in child sessions — the
+  1.82 s announcement plays serially, so clue 1 starts ~1 s after
+  arrival (Game Designer); (4) QA Nit 1 — the #362-owned
+  closed-state spec's SELECTION_READ sampler-coverage assertion
+  missed its window at 390+768 in Silo QA's batch (solo outcomes
+  differ by agent/run; the bench-furniture defect assertion never
+  tripped — benchFree=true in 100% of samples taken): sampler
+  sensitivity on a loaded VM, not a PR B product defect;
+  (5) the FLIP transient in Follow-ups (1) below must become a
+  tracked issue (Level Architect).
 - **Follow-ups:** (1) pre-existing guesses-list FLIP transient at
   guess commit (~200 ms; figure-over-text across the bench slot,
   reproduced with watsonWalk OFF — LoopScreen animation, not pair

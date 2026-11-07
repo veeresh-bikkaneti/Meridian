@@ -575,11 +575,14 @@ the re-run panel and the flip owner can check them off one by one.
   untouched and the K5 swap test passes unchanged.
 - **Coordination note:** two live defects found in PR A's
   surfaces after it shipped (the bench close-state leak and the
-  FG-5 companion latch never resetting) are cured by a separate
-  PR from `main`, in parallel; PR B's diff does not touch the
-  bench gating, `companion.ts`, the berth/entry handlers, or
-  the latch. When the cure merges, this branch takes a merge-up
-  before its review pipeline runs.
+  FG-5 companion latch never resetting) were cured by a separate
+  PR from `main`, in parallel — PR #362, merged as main
+  `3690aee`; PR B's diff did not touch the bench gating,
+  `companion.ts`, the berth/entry handlers, or the latch. This
+  branch took its merge-up `48243e3` over the cure (conflicts in
+  `BRANCH_STATUS.md`, this chapter, and `playwright.config.ts`,
+  resolved as faithful unions) plus the `353072e` brace cure,
+  and its review pipeline ran on the merged tip.
 
 ## Audio: pre-rendered, with honest coverage
 
