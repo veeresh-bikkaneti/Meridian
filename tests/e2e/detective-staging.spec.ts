@@ -905,6 +905,16 @@ test("staging cure C12: remote-first-entry lands Holmes AT the dock (desktop 128
       point.y - (mapBox!.y + dockCentre.y),
     );
     expect(dist, "hover point must be remote (>320 px from dock centre)").toBeGreaterThan(320);
+    /* The hover-pause trigger rides the companion's rAF watch:
+     * if the shipped FPS auto-kill has latched (a loaded VM's
+     * SwiftShader frames), no pause can ever confirm and the
+     * bench simply never leaves — name that precondition like
+     * the flow test's berth does, so a kill reads as an
+     * environment result, not as an entry-ownership failure. */
+    expect(
+      await companionMode(page),
+      "companion must be full (not auto-killed) for the hover entry",
+    ).toBe("full");
     await page.mouse.move(point.x, point.y, { steps: 10 });
     await page.mouse.move(point.x + 2, point.y + 1, { steps: 2 });
     // Entry completes: bench gone, wrapper parked AT the dock —
