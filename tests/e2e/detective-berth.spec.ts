@@ -222,6 +222,7 @@ test("real berth: touch pause lands Holmes at the pause point (phone 390)", asyn
   const context = await browser.newContext({
     viewport: { width: 390, height: 844 },
     hasTouch: true,
+    isMobile: true,
   });
   try {
     await serveBuiltArtifact(context);
@@ -233,47 +234,61 @@ test("real berth: touch pause lands Holmes at the pause point (phone 390)", asyn
     await showMap(page);
     const mapBox = await page.getByTestId("loop-map").boundingBox();
     expect(mapBox).not.toBeNull();
-    // First touch interaction enters Holmes (a quick tap at the map
-    // corner), so the dock is a real measured position before the
-    // pause — the same entry a player's first touch makes.
-    const cdp = await context.newCDPSession(page);
-    await cdp.send("Input.dispatchTouchEvent", {
-      type: "touchStart",
-      touchPoints: [{ x: mapBox!.x + 40, y: mapBox!.y + 40, id: 1 }],
-    });
-    await cdp.send("Input.dispatchTouchEvent", {
-      type: "touchEnd",
-      touchPoints: [],
-    });
-    await dismissSheetIfOpen(page);
-    const dockPos = await waitForDock(page);
+    // The touch pause is the FIRST map interaction, as in production
+    // and in the diagnosis trace: entry + berth chain from it. The
+    // dock reference is the dock's own geometry (HOLMES_DOCK_X 120,
+    // DOCK_INSET 12, HOLMES_BOX 104 map-relative). The wrapper's
+    // first dock sighting in the loop below is logged against it for
+    // comparison (a few px of scroll settling sit between the map
+    // box measure and the sighting; the >40 px displacement rule
+    // dwarfs either reading). The diagnosis trace measured the same
+    // dock at (141,527) on a 350x439 map.
+    const dockPos = {
+      x: Math.round(mapBox!.x + 120),
+      y: Math.round(mapBox!.y + mapBox!.height - 12 - 104),
+    };
     const point = berthPointFor(390, mapBox!);
+    const cdp = await context.newCDPSession(page);
     await cdp.send("Input.dispatchTouchEvent", {
       type: "touchStart",
       touchPoints: [{ x: point.x, y: point.y, id: 1 }],
     });
     let landed: Landed | null = null;
-    const deadline = Date.now() + 120_000;
-    const dock = dockPos;
+    let dockSighting: { x: number; y: number } | null = null;
+    const deadline = Date.now() + 90_000;
     try {
-      while (Date.now() < deadline) {
-        // Finger micro-jitter, as in the K2 touch grid (a perfectly
+      while (Date.now() < deadline && !landed) {
+        // Finger micro-jitter, the diagnosis/K2 pattern (a perfectly
         // still touch emits nothing for the detector to feed on).
-        for (const [jx, jy] of [[1, 0], [0, 1], [-1, 0], [0, -1]] as const) {
+        for (const [jx, jy] of [
+          [1, 0],
+          [0, 1],
+          [-1, 1],
+          [1, -1],
+          [0, 0],
+        ] as const) {
           await cdp.send("Input.dispatchTouchEvent", {
             type: "touchMove",
             touchPoints: [{ x: point.x + jx, y: point.y + jy, id: 1 }],
           });
-          await page.waitForTimeout(220);
+          await page.waitForTimeout(350);
+          if (!dockSighting && (await currentPlacement(page)) === "dock") {
+            dockSighting = await holmesWrapperPos(page);
+          }
+          landed = await checkLanded(page, point, dockPos);
+          if (landed) break;
         }
-        landed = await checkLanded(page, point, dock);
-        if (landed) break;
       }
     } finally {
       await cdp.send("Input.dispatchTouchEvent", {
         type: "touchEnd",
         touchPoints: [],
       });
+    }
+    if (dockSighting) {
+      console.log(
+        `[berth touch 390] dock sighting=(${dockSighting.x},${dockSighting.y}) vs geometric dock=(${dockPos.x},${dockPos.y})`,
+      );
     }
     expect(
       landed,
