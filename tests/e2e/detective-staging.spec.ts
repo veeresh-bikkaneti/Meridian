@@ -913,17 +913,25 @@ test("staging cure C12: remote-first-entry lands Holmes AT the dock (desktop 128
     await expect(page.getByTestId("detective-bench")).toHaveCount(0, {
       timeout: 30_000,
     });
+    /* Settle tolerance: the wrapper's rendered top-left can sit
+     * 1 px off its style position (sub-pixel rounding) — observed
+     * (121,379) vs the dock (120,378) on a run where Holmes WAS at
+     * the dock. The invariant is "at the dock, not stranded at
+     * dock+(90,34)": a <=2 px tolerance keeps 45x margin against
+     * the 91 px defect while ignoring rounding. */
     await expect
       .poll(
         async () => {
           const p = await holmesWrapperPos(page);
-          return p
-            ? `${Math.round(p.x - mapBox!.x)},${Math.round(p.y - mapBox!.y)}`
-            : "none";
+          if (!p) return 9999;
+          return Math.hypot(
+            p.x - mapBox!.x - dockRel.x,
+            p.y - mapBox!.y - dockRel.y,
+          );
         },
         { timeout: 30_000 },
       )
-      .toBe(`${dockRel.x},${dockRel.y}`);
+      .toBeLessThanOrEqual(2);
   } finally {
     await context.close();
   }
