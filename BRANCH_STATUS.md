@@ -103,10 +103,24 @@ build-meta both hosts + screenshots.
 Assumptions / risks: the summary is a transient screen state (like
 the classic summary) — a reload on the summary reopens the loop,
 which resumes (pause) or deals fresh (outright); recorded, accepted.
-An outright-discarded pack case is consumed from its cycle (the
-clampDeckToPoolSize abandonment precedent); if that pack later grows,
-ensurePackDeck's built-from size is short by the discarded case —
-reshuffles rebuild from the full manifest; noted in the PR body.
+An outright-discarded case: the original capsule claimed it was
+consumed from its cycle (the clampDeckToPoolSize abandonment
+precedent) and that the only consequence was a shortfall if that pack
+later grew. **That framing was WRONG — corrected on the record
+(panel round 1, Level Architect BLOCK, verified by the coordinator
+against the code):** the pack shortfall fires on ordinary same-size
+re-entry, not only after growth. A discarded pack case left the deck
+accounting identity (closed + open + in-deck = cycle size) short by
+one, so on the player's very next visit ensurePackDeck appended the
+manifest's tail case as a false "new" case — a duplicate dealt twice
+in one cycle — and a cycle containing a discard could "complete" one
+case early while the celebration copy claimed "all / every". **Cure
+(return-to-tail):** endSession's outright path returns the discarded
+case's index to the TAIL of its own deck before clearing `current`
+(guarded against duplicates). The case's progress is discarded — not
+counted, streak/totals untouched, not resumable — but the case itself
+stays in its cycle, may be dealt again fresh later in the cycle, and
+the accounting identity stays exact.
 Simpler / rejected: wiring the loop into the classic session
 (`session.ts`/`requestEndGame`) — rejected: the loop is a separate
 store, separate persistence namespace, and score-free; a bridge
@@ -129,6 +143,7 @@ Approvals: PR + merge under the coordinator's assignment
 - [ ] Builder gates (tsc / npm test / lint-cards / build:pages)
   - Builder note (2026-11-07): tsc clean · npm test green · lint-cards GATE PASSED · E2E spec collects (7 tests). `build:pages` NOT green locally: 4 attempts, vite build completed + dist written every time, prerender crawl OOM-killed (exit 137) under concurrent crew load on the VM — CI build is the clean read.
 - [x] PR opened — #365 https://github.com/veeresh-bikkaneti/Meridian/pull/365
+- [x] Panel round 1 cure — Level Architect BLOCK (deck accounting) + Economy major nit cured by return-to-tail in `endSession`; Senior Developer / UX Researcher keyboard-modality guards, UX Designer summary fixes, Game Developer unit pins (items A–C in the PR body's "Panel round 1 — cure" section)
 - [ ] Silo QA (keyed PR#+tip)
 - [ ] Panel 12 seats by name + DevEx + benchmark
 - [ ] Merge on verdict + branch deleted + tip SHA ledgered

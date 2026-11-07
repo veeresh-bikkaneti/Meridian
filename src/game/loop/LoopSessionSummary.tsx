@@ -55,6 +55,7 @@ export function LoopSessionSummaryPanel({
       >
         How your cases went
       </h2>
+      <p className="mt-1 text-sm text-muted">All your cases so far.</p>
 
       {isEnabled("detectivePair") ? (
         <Suspense fallback={null}>
@@ -90,6 +91,12 @@ export function LoopSessionSummaryPanel({
         </li>
       </ul>
 
+      {fate === "pause" && summary.openCaseDeckId ? (
+        <p className="mt-3 text-fg">
+          Your open case is waiting — you can resume it from Home.
+        </p>
+      ) : null}
+
       {summary.decks.length > 0 ? (
         <ul className="mt-3 space-y-1 text-sm text-muted">
           {summary.decks.map((deck) => (
@@ -101,13 +108,8 @@ export function LoopSessionSummaryPanel({
         </ul>
       ) : null}
 
-      {fate === "pause" && summary.openCaseDeckId ? (
-        <p className="mt-3 text-fg">
-          Your open case is waiting — you can resume it from Home.
-        </p>
-      ) : null}
 
-      <Button className="mt-4 min-h-[48px]" onClick={onDone}>
+      <Button className="mt-4 min-h-[48px] w-full" onClick={onDone}>
         Done
       </Button>
     </section>

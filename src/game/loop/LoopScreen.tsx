@@ -437,6 +437,20 @@ export function LoopScreen({
     if (endChoiceOpen) endGameDialogRef.current?.focus({ preventScroll: true });
   }, [endChoiceOpen]);
 
+  // Document-level Escape for the end-game dialog (panel round 1,
+  // keyboard modality): focus may sit outside the dialog div — where
+  // the div's own onKeyDown never fires — so while the choice is open
+  // Escape is also heard on the document and closes with no change.
+  useEffect(() => {
+    if (!endChoiceOpen) return;
+    const onDocumentKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeEndChoice();
+    };
+    document.addEventListener("keydown", onDocumentKeyDown);
+    return () => document.removeEventListener("keydown", onDocumentKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [endChoiceOpen]);
+
   const closeEndChoice = () => {
     setEndChoiceOpen(false);
     const opener = endGameOpenerRef.current;
@@ -464,6 +478,10 @@ export function LoopScreen({
   // overwrite. The open mystery is untouched: it completes against
   // the deck it was dealt from; the pick steers the next deal.
   const onPickDeck = (shelfDeckId: string) => {
+    // Keyboard modality (panel round 1): while the end-game choice is
+    // open the store must not change under the dialog — pointer users
+    // are blocked by the overlay; this closes the keyboard path.
+    if (endChoiceOpen) return;
     const s = storeRef.current;
     if (!s) return;
     // A fresh pick supersedes any fallback notice from the last deal:
@@ -673,6 +691,10 @@ export function LoopScreen({
   };
 
   const onPick = (entry: LoopNameEntry) => {
+    // Keyboard modality (panel round 1): while the end-game choice is
+    // open, a guess must not land under the dialog that describes the
+    // case — the dialog reads live `current`, so the store stays frozen.
+    if (endChoiceOpen) return;
     const s = storeRef.current;
     const current = s?.current;
     // The loaded clue must belong to the open mystery — a stale pick
@@ -776,6 +798,9 @@ export function LoopScreen({
 
   /** The core retention hook: instant deal from the deck, no waiting room. */
   const onNextMystery = () => {
+    // Keyboard modality (panel round 1): no deal while the end-game
+    // choice dialog is open (see onPick).
+    if (endChoiceOpen) return;
     if (dealingRef.current) return;
     const s = storeRef.current;
     if (!s?.current || s.current.status === "playing") return;

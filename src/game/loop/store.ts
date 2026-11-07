@@ -625,18 +625,32 @@ export interface LoopSessionSummary {
  * resume from the still-playing `current`, and the case counts once,
  * when it later closes through completePuzzle.
  *
- * "outright": a still-playing `current` is discarded — cleared, the
- * way clampDeckToPoolSize discards an out-of-range mystery as
- * abandoned. The case was already popped from its deck at deal time,
- * so it is consumed from that deck's cycle; it is NOT counted as
- * solved or lost, and streak/totals/cycle counters are untouched —
- * discarding is not a loss. A finished (won/lost) current is left
- * exactly as it is: it already counted when it closed.
+ * "outright": a still-playing `current`'s PROGRESS is discarded — the
+ * case is NOT counted as solved or lost, streak/totals/cycle counters
+ * are untouched (discarding is not a loss), and it cannot be resumed:
+ * its guesses/clue state are destroyed with `current`. The case
+ * itself returns to the TAIL (bottom) of its own deck, so the deck
+ * accounting identity (closed + open + in-deck = cycle size) stays
+ * exact: ensurePackDeck never manufactures a duplicate from a phantom
+ * shortfall, and a cycle completes only when every case has truly
+ * been closed — the "all / every" celebration copy stays honest. It
+ * may be dealt again later in the cycle as a fresh case. (The tail,
+ * not the head: the just-ended case must not be the next one dealt —
+ * returnPuzzleIndexToDeck's head return is the failed-deal rollback,
+ * a different path.) A finished (won/lost) current is left exactly
+ * as it is: it already counted when it closed.
  */
 export function endSession(store: LoopUnlimitedStore, fate: LoopEndFate): LoopUnlimitedStore {
   if (fate === "pause") return store;
   if (store.current && store.current.status === "playing") {
-    return { ...store, current: null };
+    const current = store.current;
+    const deckId = deckIdOfPuzzle(current);
+    const deck = getDeckState(store, deckId);
+    const withReturned =
+      deck && !deck.deck.includes(current.index)
+        ? setDeckState(store, deckId, { ...deck, deck: [...deck.deck, current.index] })
+        : store;
+    return { ...withReturned, current: null };
   }
   return store;
 }
