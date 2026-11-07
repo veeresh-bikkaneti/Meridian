@@ -239,6 +239,7 @@ export default defineConfig({
       testMatch: /detective-watson-walk\.spec\.ts/,
       use: { viewport: { width: 1440, height: 900 } },
     },
+    {
       name: "detective-closed-state",
       testMatch: /detective-closed-state\.spec\.ts/,
       use: { viewport: { width: 1440, height: 900 } },
