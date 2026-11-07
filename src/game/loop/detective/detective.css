@@ -597,19 +597,21 @@
   z-index: 6;
 }
 
-/* Dock separation (PR C): at the dock the shipped staging paints
-   Holmes's 70 px box OVER the left of Watson's 100 px replay box —
-   the figures overlap, so two full-size hitboxes cannot both own
-   their centres there. The dock alias therefore claims only a 44 px
-   strip on Holmes's painted side (the accessibility floor), leaving
-   Watson's replay an unobstructed ≥44 px effective strip on his
-   side; the two tap centres can never collide. At a berth Holmes
-   stands alone and the alias keeps his full 70 px box. Separation is
-   proven in tests/e2e/detective-sound.spec.ts (c)+(d). */
-.detective-holmes-mute-dock {
-  width: 44px;
-}
-
+/* Dock alias (PR C, restored PR A): PR C narrowed this alias to a
+   44 px strip because the staging of the day painted Holmes's 70 px
+   box OVER the left of Watson's 100 px replay box — two full-size
+   hitboxes could not both own their centres there. PR #358 moved
+   Holmes's dock beside Watson (x = 120), deleting the overlap:
+   Watson's replay box is [12,112], Holmes's alias is [120,190],
+   disjoint at full width. PR A therefore RESTORED the full 70 px
+   dock alias (the .detective-holmes-mute-dock narrowing class is
+   deleted) — Holmes's rightmost ~26 px is no longer tap-dead for
+   no remaining reason. The map speaker chip was re-checked against
+   the wider dock cluster [12,190]: it rides above the cluster
+   (bottom: 128px in .detective-host-sound-map), clear at any dock
+   width. Separation at the dock is proven in
+   tests/e2e/detective-sound.spec.ts (c)+(d) and re-proven at three
+   widths in tests/e2e/detective-staging.spec.ts. */
 .detective-holmes-mute:focus-visible {
   outline: 3px solid #ffffff;
   outline-offset: 2px;
@@ -625,4 +627,213 @@
    keeps Holmes's full 70 px box. */
 .detective-holmes-mute-listen {
   width: 44px;
+}
+
+/* --- staging rework (PR A, hostsStaging): bench, gutter, entry ------ */
+/* All staging rules are scoped under .detective-staging-on or the
+   bench's own classes, which only render when the hostsStaging flag
+   is on — flag off, none of this exists and the shipped pair is
+   byte-for-byte the old layout. Motion stays transform/opacity. */
+
+/* The bench slot: in-flow, directly under the map (the host now
+   mounts after the map section in LoopScreen). It has height ONLY
+   while the pair wait or stand in it — it is not a reserved strip:
+   the moment Holmes enters the map it collapses to zero height and
+   unmounts, and it never exists in any other state. */
+.detective-bench {
+  position: relative;
+  height: 148px;
+  overflow: hidden;
+  transition: height 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.detective-bench-collapsing {
+  height: 0;
+}
+
+.detective-bench-figures {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.detective-bench-figure svg {
+  display: block;
+  height: 128px;
+  width: auto;
+}
+
+/* Seated: the bench's front board paints OVER the figures' legs —
+   the shipped standing rigs read as seated behind it (mockup v2). */
+.detective-bench-board {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(340px, 92%);
+  height: 62px;
+  pointer-events: none;
+  transition: opacity 0.45s ease-out;
+}
+
+.detective-bench-board-faded {
+  opacity: 0;
+}
+
+/* Holmes's watch glance on the bench: his glass arm lifts and his
+   head dips, on a slow idle loop (transform only). It replaces the
+   dock glass-polish inside the bench scope only. */
+@keyframes detective-bench-watch {
+  0%,
+  62%,
+  100% {
+    transform: rotate(0deg);
+  }
+  72%,
+  88% {
+    transform: rotate(-38deg);
+  }
+}
+
+.detective-bench .detective-holmes [data-part="arm-front"] {
+  animation: detective-bench-watch 5.2s ease-in-out infinite;
+}
+
+@keyframes detective-bench-watch-head {
+  0%,
+  62%,
+  100% {
+    transform: rotate(0deg);
+  }
+  72%,
+  88% {
+    transform: rotate(7deg) translateY(2px);
+  }
+}
+
+.detective-bench .detective-holmes [data-part="head"] {
+  animation: detective-bench-watch-head 5.2s ease-in-out infinite;
+}
+
+/* Coffee: a cup in each seated figure's hand area; the sip cycle
+   lifts the cup to the mouth and back. The two cycles are
+   DELIBERATELY unsynchronized (different periods, phase-shifted
+   delays) — they alternate, they never sip together. */
+.detective-bench-cup {
+  position: absolute;
+  bottom: 64px;
+  width: 26px;
+  height: 26px;
+  pointer-events: none;
+}
+
+.detective-bench-cup-holmes {
+  left: calc(50% + 34px);
+  animation: detective-sip-holmes 6.4s ease-in-out infinite;
+}
+
+.detective-bench-cup-watson {
+  left: calc(50% - 96px);
+  animation: detective-sip-watson 8.1s ease-in-out 1.7s infinite;
+}
+
+@keyframes detective-sip-holmes {
+  0%,
+  58%,
+  100% {
+    transform: translateY(0);
+  }
+  68%,
+  80% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes detective-sip-watson {
+  0%,
+  52%,
+  100% {
+    transform: translateY(0);
+  }
+  62%,
+  74% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Cups left behind: when the pair rise, the in-hand cups are gone
+   and two cups rest ON the bench board — they stay with the bench
+   when the slot collapses and never enter play. */
+.detective-bench-cup-left {
+  position: absolute;
+  bottom: 52px;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+}
+
+.detective-bench-cup-left-holmes {
+  left: calc(50% + 10px);
+}
+
+.detective-bench-cup-left-watson {
+  left: calc(50% - 34px);
+}
+
+/* Holmes standing in the slot after the board fades, and the entry
+   beat: he steps UP toward the map as the slot collapses behind
+   him (the map-side walk to the dock runs in the same beat). */
+.detective-bench-holmes-entering {
+  animation: detective-bench-enter 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes detective-bench-enter {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-26px);
+    opacity: 0;
+  }
+}
+
+/* The gutter station (staging only): Watson stands IN the reserved
+   gutter beside the active clue card, vertically centred on it —
+   never above or over the card. The wrapper's transform centres it
+   (the shipped station wrapper translates -100% instead). */
+.detective-host-station-gutter {
+  transform: translateY(-50%);
+}
+
+.detective-host-watson-replay-gutter {
+  transform: translateY(-50%);
+}
+
+.detective-host-sound-gutter {
+  transform: none;
+}
+
+/* Clue cards narrow under staging so the gutter is real layout
+   space and the card text reflows INSIDE the card (mockup v2). */
+.detective-staging-on article[aria-label^="Clue"] {
+  margin-right: 118px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detective-bench,
+  .detective-bench-board {
+    transition: none;
+  }
+  .detective-bench-cup,
+  .detective-bench .detective-holmes [data-part="arm-front"],
+  .detective-bench .detective-holmes [data-part="head"],
+  .detective-bench-holmes-entering {
+    animation: none !important;
+  }
 }

@@ -68,6 +68,7 @@ import {
   type DetectiveDegradation,
 } from "./detective-degradation";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { isEnabled } from "@/lib/flags";
 import { VolumeX } from "lucide-react";
 import { SoundToggle } from "@/components/SoundToggle";
 import {
@@ -111,6 +112,18 @@ const DOCK_GAP = 8;
  * this same spot as its dock reference, so remote distances and
  * dock returns stay honest. */
 const HOLMES_DOCK_X = DOCK_INSET + WATSON_DOCK_W + DOCK_GAP;
+/** Station cluster gap: the clear air between Watson and Holmes when
+ * they stand together at the clue card. NOT the dock gap and NOT the
+ * chip clear below — three gaps that share values by coincidence and
+ * stay distinct by name (PR A re-derivation, Senior Architect). */
+const STATION_GAP_PX = 4;
+/** The speaker chip's clear air from whatever stands to its left in
+ * the station cluster (8 px — a different 8 from DOCK_GAP). */
+const CHIP_CLEAR_PX = 8;
+/** Reading-scroll clearance (#358): the station's figure height plus
+ * a breath of air above the clue card — derived from HOLMES_BOX.h,
+ * the same figure height every station offset below derives from. */
+const STATION_CLEARANCE_PX = HOLMES_BOX.h + 12;
 /** Walk speed: ~260 px/s, duration clamped 240–700 ms (Q2 §3). */
 const WALK_PX_PER_S = 260;
 const WALK_MIN_MS = 240;
@@ -138,6 +151,8 @@ const LISTEN_PHASES: ReadonlySet<string> = new Set([
 interface StationAnchor {
   left: number;
   top: number;
+  width: number;
+  height: number;
 }
 
 export default function DetectiveHost(props: DetectiveHostProps): ReactElement | null {
@@ -146,6 +161,27 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   /* -- machine instance: ref-held state, React state only for the view */
   const machineRef = useRef<DetectiveState>(initialDetectiveState());
   const [view, setView] = useState<DetectiveView>(() => viewForState(machineRef.current));
+
+  /* -- staging rework (PR A, hostsStaging flag) ----------------------
+   * Stage machine, host-local and monotonic per case:
+   * bench (both seated, coffee + watch, during CASE_OPEN — before the
+   * case's questions load) -> standing (bench board faded, Watson at
+   * his station, Holmes standing in the slot) -> entering (first map
+   * interaction: Holmes walks onto the map, the slot collapses) ->
+   * gone (slot unmounted, zero height — no reserved strip remains).
+   * With the flag off none of this renders and every placement below
+   * is exactly the shipped behaviour. Staging reads ONLY the flag,
+   * the machine's view, and the degradation matrix — no new props,
+   * so the answer-blindness whitelist is untouched. */
+  const stagingOn = isEnabled("hostsStaging");
+  const [stagingStage, setStagingStage] = useState<
+    "bench" | "standing" | "entering" | "gone"
+  >("bench");
+  const stagingStageRef = useRef(stagingStage);
+  stagingStageRef.current = stagingStage;
+  const entryPendingRef = useRef(false);
+  const holmesEntered =
+    !stagingOn || stagingStage === "entering" || stagingStage === "gone";
   const viewRef = useRef(view);
   viewRef.current = view;
 
@@ -281,6 +317,8 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     const fresh = viewForState(machineRef.current);
     viewRef.current = fresh;
     setView(fresh);
+    setStagingStage("bench");
+    entryPendingRef.current = false;
     playerRef.current?.stopAll();
     playerRef.current?.setCaseIndex(caseIndex);
     // Case open FIRST (U8): on a fresh deal the machine starts the
@@ -350,6 +388,28 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     dispatch({ type: sheetOpen ? "sheetOpened" : "sheetClosed" });
   }, [sheetOpen, dispatch]);
 
+  /* Staging: the bench holds only while the case opens. The moment
+   * the machine leaves CASE_OPEN (the first clue read = the case's
+   * questions loading), the pair rise: Watson goes to his station,
+   * Holmes stands in the slot until the first map interaction. */
+  useEffect(() => {
+    if (!stagingOn) return;
+    if (stagingStage === "bench" && view.phase !== "CASE_OPEN") {
+      setStagingStage("standing");
+    }
+  }, [stagingOn, stagingStage, view.phase]);
+
+  /* Staging: once Holmes enters the map, the bench slot finishes
+   * collapsing and unmounts — zero height, nothing reserved. */
+  useEffect(() => {
+    if (stagingStage !== "entering") return;
+    const t = setTimeout(
+      () => setStagingStage("gone"),
+      reducedMotion ? 60 : 750,
+    );
+    return () => clearTimeout(t);
+  }, [stagingStage, reducedMotion]);
+
   /* -- station anchoring: measure on discrete changes, never per frame  */
   const [anchor, setAnchor] = useState<StationAnchor | null>(null);
   const [mapEl, setMapEl] = useState<Element | null>(null);
@@ -377,7 +437,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       );
       if (card) {
         const rect = card.getBoundingClientRect();
-        setAnchor({ left: rect.left, top: rect.top });
+        setAnchor({ left: rect.left, top: rect.top, width: rect.width, height: rect.height });
       } else {
         setAnchor(null);
       }
@@ -433,8 +493,6 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
      * scrollBy form works everywhere; smoothness is layered on only
      * where the engine advertises it. */
     const rect = card.getBoundingClientRect();
-    /** The station's 104 px + a breath of air above the card. */
-    const STATION_CLEARANCE_PX = 116;
     let dy = 0;
     if (rect.top < STATION_CLEARANCE_PX) {
       dy = rect.top - STATION_CLEARANCE_PX;
@@ -519,6 +577,50 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   };
   const exitToDockRef = useRef(exitToDock);
   exitToDockRef.current = exitToDock;
+
+  /* Staging entry walk (PR A unit 4): the FIRST map interaction
+   * walks Holmes from the bench slot onto the map. The bench figure
+   * steps up and fades (detective.css) while, in the same beat, his
+   * map wrapper starts offset from the dock — down and to the side,
+   * as if stepping up from the bench below the map — and walks to
+   * the dock with the walk pose over 700 ms. Not a teleport: the
+   * wrapper's transform transition is the walk, and the staging E2E
+   * samples it mid-flight. Reduced motion (walkMode "cut") places
+   * him at the dock instantly. A berth confirmed during the entry
+   * supersedes the dock target (entryPendingRef) — he simply walks
+   * on to the berth instead. */
+  const enterMap = () => {
+    if (!stagingOn) return;
+    if (
+      stagingStageRef.current === "entering" ||
+      stagingStageRef.current === "gone"
+    )
+      return;
+    setStagingStage("entering");
+    const dock = dockXY();
+    if (degradationRef.current.walkMode === "cut") {
+      setHolmesTransition({ durationMs: 0, easing: EASE_OUT });
+      setHolmesXY(dock);
+      return;
+    }
+    entryPendingRef.current = true;
+    setHolmesTransition({ durationMs: 0, easing: EASE_OUT });
+    setHolmesXY({ x: dock.x + 90, y: dock.y + 34 });
+    requestAnimationFrame(() => {
+      if (!entryPendingRef.current) return;
+      entryPendingRef.current = false;
+      setHolmesTransition({ durationMs: 700, easing: EASE_OUT });
+      setHolmesXY(dock);
+      setWalking(true);
+      if (walkTimerRef.current) clearTimeout(walkTimerRef.current);
+      walkTimerRef.current = setTimeout(() => {
+        walkTimerRef.current = null;
+        setWalking(false);
+      }, 700);
+    });
+  };
+  const enterMapRef = useRef(enterMap);
+  enterMapRef.current = enterMap;
 
   /* Auto-kill: rAF deltas + long-task observer feed the pure tracker;
    * on kill the companion is off for the session (Holmes dock-only).
@@ -644,6 +746,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         setBerthHidden(true);
         return;
       }
+      entryPendingRef.current = false; // a berth supersedes the entry walk's dock target
       if (result.kind === "remote") return; // thinks at the dock (view pose)
       const target = {
         x: result.x - rect.left,
@@ -708,6 +811,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     };
 
     const startGesture = () => {
+      enterMapRef.current();
       if (!gestureActive) {
         gestureActive = true;
         detector.notifyGestureStart();
@@ -759,6 +863,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     };
 
     const onDown = (e: PointerEvent) => {
+      enterMapRef.current();
       const now = performance.now();
       lastPointerType = e.pointerType;
       lastMapActivity = now;
@@ -856,9 +961,20 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       </div>
     ) : null;
 
+  const celebratingEarly =
+    view.phase === "CELEBRATE" &&
+    view.holmes.placement === "station" &&
+    view.watson.placement === "station" &&
+    holmesEl !== null &&
+    watsonEl !== null;
   const stationFigures: ReactElement[] = [];
   if (view.watson.placement === "station" && watsonEl) stationFigures.push(<span key="w">{watsonEl}</span>);
-  if (view.holmes.placement === "station" && holmesEl) stationFigures.push(<span key="h">{holmesEl}</span>);
+  /* Staging (PR A): Holmes NEVER joins the station cluster — that is
+   * what keeps the zero-overlap law: Watson alone stands in the
+   * gutter beside the card, Holmes waits in the bench slot (before
+   * entry) or lives on the map (after entry). The one exception is
+   * the shipped CELEBRATE cluster, which keeps its choreography. */
+  if (view.holmes.placement === "station" && holmesEl && (!stagingOn || celebratingEarly)) stationFigures.push(<span key="h">{holmesEl}</span>);
 
   /* CELEBRATE layout (U8): the pair stands side-by-side in a fixed
    * cluster — Holmes at the origin, Watson offset by exactly
@@ -868,12 +984,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * only the poses do — so the choreography reads as one held frame.
    * The spark sits ABOVE the contact point (its box ends 8 px over the
    * hands): it crowns the contact, it never masks it. */
-  const celebrating =
-    view.phase === "CELEBRATE" &&
-    view.holmes.placement === "station" &&
-    view.watson.placement === "station" &&
-    holmesEl !== null &&
-    watsonEl !== null;
+  const celebrating = celebratingEarly;
   const celebrateEl = celebrating ? (
     <div
       className="detective-host-celebrate"
@@ -909,8 +1020,20 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * rides his own transform wrapper so the companion can walk him
    * between the dock and a berth without touching Watson or the map.
    * data-companion / data-holmes-placement are the U10 spec surface. */
+  /* Staging: before entry Holmes is in the bench slot, NOT on the
+   * map — his map figure (and its mute alias) render only once he
+   * has entered. After entry, a station phase finds him at his map
+   * dock instead of the station cluster (see stationFigures). */
+  const holmesDockFallback =
+    stagingOn &&
+    holmesEntered &&
+    view.holmes.placement === "station" &&
+    !celebrating;
   const holmesOnMap =
-    view.holmes.placement === "dock" || view.holmes.placement === "berth";
+    (view.holmes.placement === "dock" ||
+      view.holmes.placement === "berth" ||
+      holmesDockFallback) &&
+    (!stagingOn || holmesEntered);
   const watsonOnMap = view.watson.placement === "dock";
   const effectivePlacement = berthHidden
     ? "hidden"
@@ -954,14 +1077,23 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     degradation.speechMode === "tap" &&
     !view.hidden &&
     LISTEN_PHASES.has(view.phase);
+  /* Gutter station (staging): the station cluster stands IN the
+   * 118 px gutter LoopScreen reserves beside the clue cards,
+   * vertically centred on the active card — never over its text. */
+  const gutterStation =
+    stagingOn && !celebrating && anchor !== null && view.watson.placement === "station";
+  const gutterLeft = anchor ? anchor.left + anchor.width + 6 : 0;
+  const gutterCentreTop = anchor ? anchor.top + anchor.height / 2 : 0;
   const listenEl = showListen ? (
     <div
       className="detective-host-listen"
       data-testid="detective-listen"
       style={
-        anchor
-          ? { left: anchor.left + 152, top: anchor.top }
-          : { left: 164, bottom: 96, top: "auto", transform: "none" }
+        gutterStation
+          ? { left: gutterLeft, top: gutterCentreTop + 62, transform: "none" }
+          : anchor
+            ? { left: anchor.left + 152, top: anchor.top }
+            : { left: 164, bottom: 96, top: "auto", transform: "none" }
       }
     >
       <button
@@ -1011,11 +1143,17 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   const watsonReplayStationEl =
     showWatsonReplay && view.watson.placement === "station" ? (
       <div
-        className="detective-host-watson-replay"
+        className={
+          gutterStation
+            ? "detective-host-watson-replay detective-host-watson-replay-gutter"
+            : "detective-host-watson-replay"
+        }
         style={
-          anchor
-            ? { left: anchor.left, top: anchor.top }
-            : { left: 12, bottom: 96, top: "auto", transform: "none" }
+          gutterStation
+            ? { left: gutterLeft, top: gutterCentreTop }
+            : anchor
+              ? { left: anchor.left, top: anchor.top }
+              : { left: 12, bottom: 96, top: "auto", transform: "none" }
         }
       >
         <button
@@ -1056,10 +1194,13 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    *    themselves are never greyed or altered (Brand ruling, Q6).
    * 3. Tap-HOLMES alias: Holmes's figure body is a transparent button
    *    over his rendered box (station, celebrate, and berth — the map
-   *    one rides his transform wrapper's exact geometry; at the dock,
-   *    where the shipped staging paints him over Watson's left side,
-   *    it narrows to a 44 px strip so the two centres stay separate —
-   *    see detective.css), wired to the same toggle. Watson's replay
+   *    one rides his transform wrapper's exact geometry), wired to
+   *    the same toggle. PR C narrowed the dock alias to a 44 px strip
+   *    because the staging of the day painted Holmes over Watson's
+   *    replay box; PR #358 moved his dock beside Watson (the boxes
+   *    are disjoint: [12,112] vs [120,190]), so PR A restored the
+   *    full 70 px dock alias — the narrowing was voluntary the
+   *    moment the overlap died. Watson's replay
    *    button is a separate element over a separate figure; both
    *    handlers stop propagation, so a Holmes tap can never fire a
    *    replay and a Watson tap can never mute. Muting stops the
@@ -1094,30 +1235,33 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   );
   const watsonAtStation = view.watson.placement === "station";
   const holmesAtStation = view.holmes.placement === "station";
-  // Station geometry (rendered boxes at 104 px tall): Watson ≈100 px
-  // wide, Holmes 70 px, cluster gap 4 px. Holmes stands right of
-  // Watson in the plain station cluster; in the celebrate cluster he
-  // is at the origin (CELEBRATE_LAYOUT) and the cluster is 147 px wide.
-  // holmesStationOffset 104 = Watson's 100 px width + the 4 px gap.
-  //
-  // chipStationOffset — every literal mapped to its layout terms
-  // (DevEx cure): the chip starts 8 px clear of whatever stands to
-  // its left in the cluster.
-  // - 155 (celebrate): the celebrate cluster is 147 px wide
-  //   (CELEBRATE_LAYOUT: Watson's 46.7 px offset + his ≈100 px
-  //   rendered width) + 8 px clear = 155.
-  // - 182 (Watson + Holmes at the station): Watson 100 px + 4 px gap
-  //   + Holmes 70 px + 8 px clear = 182.
-  // - 108 (Watson alone): Watson 100 px + 8 px clear = 108.
-  // - 78 (Holmes alone): Holmes 70 px + 8 px clear = 78.
-  const holmesStationOffset = celebrating ? 0 : watsonAtStation ? 104 : 0;
+  // Station geometry (rendered boxes at 104 px tall): Watson
+  // WATSON_DOCK_W wide, Holmes HOLMES_BOX wide, STATION_GAP_PX of
+  // clear air in the plain station cluster; in the celebrate cluster
+  // Holmes is at the origin (CELEBRATE_LAYOUT).
+  // PR A re-derivation: every offset below is arithmetic on the
+  // constants of record — WATSON_DOCK_W (100), HOLMES_BOX (70x104),
+  // STATION_GAP_PX (4), CHIP_CLEAR_PX (8), CELEBRATE_LAYOUT — never a
+  // bare literal and never a third Watson-width constant.
+  // - holmesStationOffset = Watson's width + the station gap.
+  // - chipStationOffset = whatever stands left of the chip + the
+  //   chip clear: celebrate cluster (Watson's celebrate offset +
+  //   his width) / Watson + Holmes / Watson alone / Holmes alone.
+  const holmesStationOffset = celebrating
+    ? 0
+    : watsonAtStation
+      ? WATSON_DOCK_W + STATION_GAP_PX
+      : 0;
+  const celebrateClusterW = Math.round(
+    CELEBRATE_LAYOUT.watsonOffsetPx.x + WATSON_DOCK_W,
+  );
   const chipStationOffset = celebrating
-    ? 155
+    ? celebrateClusterW + CHIP_CLEAR_PX
     : watsonAtStation && holmesAtStation
-      ? 182
+      ? WATSON_DOCK_W + STATION_GAP_PX + HOLMES_BOX.w + CHIP_CLEAR_PX
       : watsonAtStation
-        ? 108
-        : 78;
+        ? WATSON_DOCK_W + CHIP_CLEAR_PX
+        : HOLMES_BOX.w + CHIP_CLEAR_PX;
   /* Listen clearance (cure, panel round 1 BLOCK): in tap speech mode
    * the Listen button sits at anchor.left + 152, ≈108 px wide →
    * [+152, +260], in the same z-31 band as the chip and the station
@@ -1142,28 +1286,38 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   const stationSoundShown = stationFigures.length > 0 || celebrateEl != null;
   const stationSoundEl = stationSoundShown ? (
     <div
-      className="detective-host-sound"
+      className={
+        gutterStation
+          ? "detective-host-sound detective-host-sound-gutter"
+          : "detective-host-sound"
+      }
       style={
-        anchor
+        gutterStation
           ? {
-              left: anchor.left + chipStationOffset,
-              top: showListen
-                ? anchor.top - LISTEN_CLEARANCE_PX
-                : anchor.top,
-            }
-          : {
-              left: 12 + chipStationOffset,
-              bottom: showListen ? 96 + LISTEN_CLEARANCE_PX : 96,
-              top: "auto",
+              left: gutterLeft,
+              top: gutterCentreTop + (showListen ? 118 : 62),
               transform: "none",
             }
+          : anchor
+            ? {
+                left: anchor.left + chipStationOffset,
+                top: showListen
+                  ? anchor.top - LISTEN_CLEARANCE_PX
+                  : anchor.top,
+              }
+            : {
+                left: 12 + chipStationOffset,
+                bottom: showListen ? 96 + LISTEN_CLEARANCE_PX : 96,
+                top: "auto",
+                transform: "none",
+              }
       }
     >
       {soundChip}
       {mutedBadge}
     </div>
   ) : null;
-  const stationHolmesMuteEl = holmesAtStation ? (
+  const stationHolmesMuteEl = holmesAtStation && (!stagingOn || celebrating) ? (
     <div
       className="detective-host-holmes-mute"
       style={
@@ -1208,11 +1362,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     holmesOnMap && !berthHidden ? (
       <button
         type="button"
-        className={
-          berthed
-            ? "detective-holmes-mute detective-holmes-mute-map"
-            : "detective-holmes-mute detective-holmes-mute-map detective-holmes-mute-dock"
-        }
+        className="detective-holmes-mute detective-holmes-mute-map"
         data-testid="detective-holmes-mute"
         aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
         aria-pressed={soundOn}
@@ -1227,15 +1377,99 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       />
     ) : null;
 
+  /* The bench (staging): in-flow, rendered where LoopScreen mounts
+   * the host — directly under the map. Seated stage: both figures
+   * behind the bench board (it paints over their legs), a coffee
+   * cup in each hand, Holmes's watch glance running (CSS). Standing
+   * stage: the board has faded, the cups rest ON the bench (they
+   * stay behind — never in play), Watson is at his station, Holmes
+   * stands in the slot. Entering: the slot collapses to zero height
+   * behind his step onto the map; then this element unmounts. */
+  const cupSvg = (cls: string, testId: string) => (
+    <svg className={cls} data-testid={testId} viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7,3 q1.5,2 0,4 M12,3 q1.5,2 0,4 M17,3 q1.5,2 0,4" stroke="#b9c4cc" strokeWidth="1.6" fill="none" strokeLinecap="round" />
+      <path d="M4,10 h15 v5 a5,5 0 0 1 -5,5 h-5 a5,5 0 0 1 -5,-5 Z" fill="#fffdf6" stroke="#171310" strokeWidth="1.7" />
+      <path d="M19,11 h1.5 a2.8,2.8 0 0 1 0,5.6 H19" fill="none" stroke="#171310" strokeWidth="1.7" />
+      <ellipse cx="11.5" cy="10.2" rx="7" ry="1.1" fill="#6b4423" />
+    </svg>
+  );
+  const benchEl =
+    stagingOn && stagingStage !== "gone" ? (
+      <div
+        className={
+          stagingStage === "entering"
+            ? "detective-bench detective-bench-collapsing"
+            : "detective-bench"
+        }
+        data-testid="detective-bench"
+        data-staging-stage={stagingStage}
+        aria-hidden="true"
+      >
+        <div className="detective-bench-figures">
+          {stagingStage === "bench" ? (
+            <>
+              <div className="detective-bench-figure" data-bench="watson">
+                <WatsonRig pose="station-idle" facing="left" speaking={false} />
+              </div>
+              <div className="detective-bench-figure" data-bench="holmes">
+                <HolmesRig pose="dock" facing="right" speaking={false} />
+              </div>
+            </>
+          ) : (
+            <div
+              className={
+                stagingStage === "entering"
+                  ? "detective-bench-figure detective-bench-holmes-entering"
+                  : "detective-bench-figure"
+              }
+              data-bench="holmes"
+            >
+              <HolmesRig pose="dock" facing="right" speaking={false} />
+            </div>
+          )}
+        </div>
+        {stagingStage === "bench" ? (
+          <>
+            {cupSvg("detective-bench-cup detective-bench-cup-watson", "detective-coffee-watson")}
+            {cupSvg("detective-bench-cup detective-bench-cup-holmes", "detective-coffee-holmes")}
+          </>
+        ) : (
+          <>
+            {cupSvg("detective-bench-cup-left detective-bench-cup-left-watson", "detective-coffee-left-watson")}
+            {cupSvg("detective-bench-cup-left detective-bench-cup-left-holmes", "detective-coffee-left-holmes")}
+          </>
+        )}
+        <svg
+          className={
+            stagingStage === "bench"
+              ? "detective-bench-board"
+              : "detective-bench-board detective-bench-board-faded"
+          }
+          data-testid="detective-bench-board"
+          viewBox="0 0 340 62"
+          aria-hidden="true"
+        >
+          <rect x="6" y="6" width="328" height="13" rx="4" fill="#8a5a33" stroke="#171310" strokeWidth="2" />
+          <rect x="6" y="24" width="328" height="22" rx="4" fill="#a06a3a" stroke="#171310" strokeWidth="2" />
+          <rect x="22" y="46" width="12" height="14" fill="#8a5a33" stroke="#171310" strokeWidth="2" />
+          <rect x="306" y="46" width="12" height="14" fill="#8a5a33" stroke="#171310" strokeWidth="2" />
+        </svg>
+      </div>
+    ) : null;
   return (
     <>
+      {benchEl}
       {listenEl}
       {watsonReplayStationEl}
       {stationSoundEl}
       {stationHolmesMuteEl}
       {stationFigures.length > 0 || celebrateEl ? (
         <div
-          className="detective-host-station"
+          className={
+            gutterStation
+              ? "detective-host-station detective-host-station-gutter"
+              : "detective-host-station"
+          }
           data-testid="detective-station"
           data-companion={companionMode}
           data-holmes-placement={effectivePlacement}
@@ -1243,11 +1477,14 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           data-degradation={degradationAttr}
           data-walk-mode={degradation.walkMode}
           data-speech-mode={degradation.speechMode}
+          data-staging={stagingOn ? stagingStage : "off"}
           aria-hidden="true"
           style={
-            anchor
-              ? { left: anchor.left, top: anchor.top }
-              : { left: 12, bottom: 96, top: "auto", transform: "none" }
+            gutterStation
+              ? { left: gutterLeft, top: gutterCentreTop }
+              : anchor
+                ? { left: anchor.left, top: anchor.top }
+                : { left: 12, bottom: 96, top: "auto", transform: "none" }
           }
         >
           {celebrateEl ?? stationFigures}

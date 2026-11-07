@@ -1239,28 +1239,13 @@ function LoopGame({
     <div
       ref={screenAnimateRef}
       data-testid="loop-screen"
-      className="mt-8 flex flex-col gap-6"
+      className={
+        "mt-8 flex flex-col gap-6" +
+        (isEnabled("detectivePair") && isEnabled("hostsStaging")
+          ? " detective-staging-on"
+          : "")
+      }
     >
-      {/* Holmes & Watson (U5, flag-gated, default off = not mounted at
-          all). Props come from the whitelist builder ONLY
-          (detective-host-props.ts): the pair never receives the puzzle,
-          the clue file, a target, or any evaluation. */}
-      {isEnabled("detectivePair") ? (
-        <Suspense fallback={null}>
-          <DetectiveHost
-            {...buildDetectiveHostProps({
-              caseIndex: puzzle.index,
-              cluesRevealed: puzzle.cluesRevealed,
-              status: puzzle.status,
-              sheetOpen: selected !== null,
-              lastGuessPlaceId:
-                puzzle.guesses[puzzle.guesses.length - 1]?.placeId ?? null,
-              freshDeal: puzzle.guesses.length === 0 && puzzle.cluesRevealed <= dealConfig.startingClues,
-              answerPlaceId: clue.placeId, // U8: the props builder gates this to the post-solve reveal only
-            })}
-          />
-        </Suspense>
-      ) : null}
       <section
         ref={mapSectionAnimateRef}
         aria-label="Detective's map"
@@ -1328,6 +1313,30 @@ function LoopGame({
           {ringNote}
         </p>
       </section>
+
+      {/* Holmes & Watson (U5, flag-gated, default off = not mounted at
+          all). Mounted AFTER the map section (PR A): the host's
+          fixed/portal surfaces do not care about DOM position, but
+          its in-flow bench slot must sit directly under the map.
+          Props come from the whitelist builder ONLY
+          (detective-host-props.ts): the pair never receives the puzzle,
+          the clue file, a target, or any evaluation. */}
+      {isEnabled("detectivePair") ? (
+        <Suspense fallback={null}>
+          <DetectiveHost
+            {...buildDetectiveHostProps({
+              caseIndex: puzzle.index,
+              cluesRevealed: puzzle.cluesRevealed,
+              status: puzzle.status,
+              sheetOpen: selected !== null,
+              lastGuessPlaceId:
+                puzzle.guesses[puzzle.guesses.length - 1]?.placeId ?? null,
+              freshDeal: puzzle.guesses.length === 0 && puzzle.cluesRevealed <= dealConfig.startingClues,
+              answerPlaceId: clue.placeId, // U8: the props builder gates this to the post-solve reveal only
+            })}
+          />
+        </Suspense>
+      ) : null}
 
       {selected && !finished ? (
         <PlaceSheet
