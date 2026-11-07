@@ -1,3 +1,56 @@
+## STAGING CLOSE / BERTH CURE — feat/staging-close-berth-cure (2026-11-07)
+
+- **TASK / outcome:** Standalone cure PR for TWO live production defects in
+  the Holmes & Watson staging surfaces on main `97d1dcf` (PR #361), both
+  reproduced + mechanism-proven by an independent diagnostician
+  (`~/workspace/meridian-detective-evidence/DIAGNOSIS-bench-at-close.md`).
+  NO MERGE by the builder — coordinator runs Silo QA + 12-seat panel.
+- **WORKTREE DEVIATION (recorded):** the brief's
+  `git worktree add ~/workspace/meridian-cure-build` failed twice with
+  EDQUOT at ~63% checkout (`scripts/clues/production/tranches/...`),
+  although the volume shows 45 GB free — a file-count quota on the home
+  volume. The work therefore runs in the diagnostician's isolated clone
+  of the exact SHA at `/var/tmp/meridian-benchdiag` (package.json /
+  package-lock.json sha256 verified identical to the brief's pins;
+  node_modules symlinked from the builder tree after that match, as in
+  the diagnosis). `~/workspace/meridian-cure-build` is a symlink to it.
+  Pushes go to origin as work lands, per the standing rule.
+- **Defect 1 — bench at case close (CURED, code):** bench gate keyed off
+  `stagingStage` alone + cure C3 omitted `SELECTION_READ` (the phase the
+  machine sits in while LoopScreen already shows "Case closed"). Cure in
+  `DetectiveHost.tsx` only: (a) the bench element now also requires
+  `status === "playing"` — the closed state is structurally bench-free
+  from the same render that first shows "Case closed", whatever the
+  stage machine does; (b) C3's forced entry is additionally driven by
+  the existing `status` prop (won/lost), so Holmes lands at his designed
+  dock/station positions for the endings instead of vanishing with the
+  slot. Pick justified: gate-only would strand Holmes absent through
+  SELECTION_READ (his placement there is "dock", which needs entry);
+  entry-only would leave the collapsing slot (board + left cups) in
+  flow for the 750 ms collapse. Bench during CASE_OPEN is untouched.
+- **Defect 2 — FG-5 auto-kill latch (CURED, code):** the kill latched
+  for the host's lifetime; host persists across cases, so one transient
+  SEARCH-phase dip docked Holmes for a whole run. Cure: thresholds
+  UNCHANGED; the tracker (`companion.ts`) gains re-qualification — a
+  sustained healthy window (rolling 5 s at ≥55 FPS, no long task; the
+  45→55 band is hysteresis against dock/berth flap) resurrects it, a
+  long task restarts the sustain, plus an explicit `reset()`. Host
+  (`DetectiveHost.tsx`): the feed now also runs while killed (that is
+  what judges recovery), recovery clears the latch ref and re-derives
+  the mode from the degradation matrix, and the latch CLEARS on every
+  case change. The degradation dock-only path (Save-Data / ≤4 GB /
+  battery saver — `data-companion="dock"`) is by design and untouched.
+- **Gates so far:** companion unit tests 23/23 (4 new cure tests) ·
+  `npx tsc --noEmit` clean. Full builder gates + new E2E below: PENDING.
+- **E2E (PENDING):** new closed-state spec (SOLVE + FAIL × 390/768/1280,
+  ≤200 ms sampling of the SELECTION_READ window — closes the recorded
+  CELEBRATE-window sampling hole) + new real-berth spec (measured
+  arrival, 390 touch + 1280 mouse + post-throttle recovery) + all
+  existing detective gates solo under flock.
+- **Protected / untouched:** scoring, dealing, clue text, hint defaults,
+  donation copy, celebration choreography, answer-blind whitelist,
+  flag values, FG-5 thresholds, watson-walk code (none on this base).
+
 ## PR #361 RECORDS ROUND 2 — feat/hosts-staging (2026-11-07)
 
 - **Records-only micro-batch (docs + comments, NO code-behaviour change, NO MERGE):** on tip `7c137ea` — delta panel 12/12 APPROVE-WITH-NITS, delta Silo QA PASS-WITH-NITS. Items: README anchor fixed to `#detective-audio-holmes--watson` (DevEx delta NIT-D1) · DetectivePair header + halo-prop comments scoped to THE RIGS, matching flags.ts (Senior Architect delta nit 1) · Units-summary bench trigger corrected to machine-leaves-CASE_OPEN (Game Audio delta nit 3) · Silo QA follow-up capsule completed with replay (c) PASSED in delta Silo QA — merge-blocking list fully discharged (Office Hours delta nit 4) · handbook staging record: 118px margin applies for the whole session, cards never reflow mid-case (Frontend delta nit 1) · findability pre-registration + CELEBRATE sampling window + CELEBRATE frame in post-merge screenshots recorded as NAMED follow-ups in the PR A capsule below and in the PR body (UX Researcher delta nit 2 + Level Architect delta nit 2) · PR body stale original lines annotated in place (Office Hours delta nits 1–3 + DevEx NIT-D2).

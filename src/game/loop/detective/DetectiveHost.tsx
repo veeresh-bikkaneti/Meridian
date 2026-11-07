@@ -434,19 +434,34 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * and DEBRIEF keeps its Holmes at the map dock via the existing
    * station-phase dock fallback. Gating the bench figure out per
    * phase instead would have needed a second Holmes source for
-   * DEBRIEF and left the slot reserved through the endings. */
+   * DEBRIEF and left the slot reserved through the endings.
+   *
+   * Close-berth cure (2026-11-07, defect 1): C3 as shipped fired
+   * only in CELEBRATE / DEBRIEF / FAIL_READ / POUT — it omitted
+   * SELECTION_READ, the phase the machine sits in while LoopScreen
+   * already shows "Case closed" (the ending is stored as the
+   * machine's pendingEnd until the selection-read speech drains).
+   * On search-box play the bench therefore stood through the whole
+   * closed window (DIAGNOSIS-bench-at-close.md). The cure drives
+   * the forced entry from the game's own `status` prop as well:
+   * status flips to won/lost in the same commit that renders
+   * "Case closed", so entry fires at close, not when the speech
+   * queue drains. The phase list stays for the paths where the
+   * machine reaches an ending phase in step with the status. */
   useEffect(() => {
     if (!stagingOn) return;
     if (
       view.phase !== "CELEBRATE" &&
       view.phase !== "DEBRIEF" &&
       view.phase !== "FAIL_READ" &&
-      view.phase !== "POUT"
+      view.phase !== "POUT" &&
+      status !== "won" &&
+      status !== "lost"
     )
       return;
     if (stagingStage !== "standing") return;
     enterMapRef.current();
-  }, [stagingOn, view.phase, stagingStage]);
+  }, [stagingOn, view.phase, stagingStage, status]);
 
   /* -- station anchoring: measure on discrete changes, never per frame  */
   const [anchor, setAnchor] = useState<StationAnchor | null>(null);
@@ -591,8 +606,14 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   const [companionMode, setCompanionMode] = useState<CompanionMode>("full");
   const companionModeRef = useRef(companionMode);
   companionModeRef.current = companionMode;
-  /** Auto-kill is latched for the session: once killed, a degradation
-   * change must never resurrect the companion (U6). */
+  /** Auto-kill state (U6, ownership cured 2026-11-07 — defect 2):
+   * the kill used to latch for the host's whole lifetime, so one
+   * transient SEARCH-phase dip docked Holmes for every later case
+   * (the host persists across cases). The latch now has two exits,
+   * both below: the tracker re-qualifies on a sustained healthy
+   * window (the feed effect), and this ref is cleared on every case
+   * change. While the ref IS set, a degradation change must still
+   * never resurrect the companion on its own. */
   const companionKilledRef = useRef(false);
   /* Degradation → companion (U9): dock-only means berth resolutions
    * are ignored and Holmes stays at the dock in SEARCH phases (the
@@ -605,6 +626,24 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       degradation.companionMode === "dock-only" ? "dock" : "full",
     );
   }, [degradation.companionMode]);
+  /* Berth cure (defect 2, exit a): a kill never crosses a case
+   * boundary. On case change the tracker is reset and the mode is
+   * re-derived from the degradation matrix — a resource-docked
+   * device stays docked (that path is by design, owner's
+   * weak-device rulings), a healthy device starts the new case
+   * with a live companion. */
+  const seenKillCaseRef = useRef(caseIndex);
+  useEffect(() => {
+    if (seenKillCaseRef.current === caseIndex) return;
+    seenKillCaseRef.current = caseIndex;
+    companionKilledRef.current = false;
+    killRef.current?.reset();
+    setCompanionMode(
+      degradationRef.current.companionMode === "dock-only"
+        ? "dock"
+        : "full",
+    );
+  }, [caseIndex]);
   /** Holmes's wrapper position, map-relative px (top-left). */
   const [holmesXY, setHolmesXY] = useState({ x: HOLMES_DOCK_X, y: 0 });
   const holmesXYRef = useRef(holmesXY);
@@ -714,18 +753,28 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     };
   }, []);
 
-  /* Auto-kill: rAF deltas + long-task observer feed the pure tracker;
-   * on kill the companion is off for the session (Holmes dock-only).
-   * The feed runs only while the companion is LIVE (the SEARCH
-   * phases): the kill criterion guards the companion's own operation
-   * (council Q2 §10; K4 measures it during pan+companion), and page-
-   * load jank — tile loads, the 11 MB name index — is not companion
-   * performance. Measured on the U6 smoke rig: load runs 3–34 FPS for
-   * ~7 s, then a clean 60 FPS; feeding load frames would kill a
-   * companion that would have run perfectly. The rAF loop does
-   * nothing per frame but push one timestamp into the tracker. */
+  /* Auto-kill: rAF deltas + long-task observer feed the pure tracker.
+   * The feed runs only in the SEARCH phases: the kill criterion guards
+   * the companion's own operation (council Q2 §10; K4 measures it
+   * during pan+companion), and page-load jank — tile loads, the 11 MB
+   * name index — is not companion performance. Measured on the U6
+   * smoke rig: load runs 3–34 FPS for ~7 s, then a clean 60 FPS;
+   * feeding load frames would kill a companion that would have run
+   * perfectly. The rAF loop does nothing per frame but push one
+   * timestamp into the tracker.
+   *
+   * Berth cure (2026-11-07, defect 2, exit b): the feed now ALSO runs
+   * while the mode is "killed" — feeding is what lets the tracker
+   * judge re-qualification (a sustained healthy window, companion.ts).
+   * On recovery the latch ref clears and the mode is re-derived from
+   * the degradation matrix, exactly as at case change: a kill is a
+   * dock-until-proven-healthy verdict, never a life sentence. (The
+   * "dock" mode is NOT fed and never passes through here: that is
+   * the degradation matrix's by-design dock-only path, owner's
+   * weak-device rulings, and it presents as data-companion="dock",
+   * never "killed".) */
   useEffect(() => {
-    if (companionMode !== "full") return;
+    if (companionMode !== "full" && companionMode !== "killed") return;
     if (phase !== "SEARCH_IDLE" && phase !== "SEARCH_AREA") return;
     let raf = 0;
     let last = performance.now();
@@ -737,19 +786,39 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       cancelAnimationFrame(raf);
       // eslint-disable-next-line no-console
       console.info(
-        `[detective] waypoint companion auto-killed (${killRef.current?.killReason ?? "unknown"}) — Holmes stays docked for this session`,
+        `[detective] waypoint companion auto-killed (${killRef.current?.killReason ?? "unknown"}) — Holmes stays docked until the companion re-qualifies`,
       );
       setCompanionMode("killed");
       exitToDockRef.current(true);
+    };
+    const onRecover = () => {
+      if (stopped) return;
+      stopped = true;
+      companionKilledRef.current = false;
+      cancelAnimationFrame(raf);
+      // eslint-disable-next-line no-console
+      console.info(
+        "[detective] waypoint companion re-qualified — Holmes berths again",
+      );
+      setCompanionMode(
+        degradationRef.current.companionMode === "dock-only"
+          ? "dock"
+          : "full",
+      );
+    };
+    const judge = () => {
+      if (killRef.current?.killed) {
+        if (!companionKilledRef.current) onKill();
+      } else if (companionKilledRef.current) {
+        onRecover();
+      }
     };
     const tick = (now: number) => {
       if (stopped) return;
       killRef.current?.feedFrame(now - last, now);
       last = now;
-      if (killRef.current?.killed) {
-        onKill();
-        return;
-      }
+      judge();
+      if (stopped) return;
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -762,7 +831,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
             entry.startTime + entry.duration,
           );
         }
-        if (killRef.current?.killed) onKill();
+        judge();
       });
       observer.observe({ entryTypes: ["longtask"] });
     } catch {
@@ -1523,8 +1592,20 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       <ellipse cx="11.5" cy="10.2" rx="7" ry="1.1" fill="#6b4423" />
     </svg>
   );
+  /* Close-berth cure (2026-11-07, defect 1): the bench exists only
+   * while the case is PLAYING. The gate as shipped keyed off the
+   * staging stage alone, so any non-"gone" stage re-rendered the
+   * furniture (board + both left-behind cups + standing Holmes) over
+   * the already-closed state for as long as the selection read took
+   * to drain — indefinitely if that speech stalled. With `status`
+   * in the gate the closed state is structurally bench-free from
+   * the same render that first shows "Case closed", whatever the
+   * stage machine does; the status-driven C3 entry above still runs
+   * so Holmes lands at his designed dock/station positions for the
+   * endings instead of vanishing with the slot. Bench during
+   * CASE_OPEN (status "playing") is exactly as shipped. */
   const benchEl =
-    stagingOn && stagingStage !== "gone" ? (
+    stagingOn && stagingStage !== "gone" && status === "playing" ? (
       <div
         className={
           stagingStage === "entering"
