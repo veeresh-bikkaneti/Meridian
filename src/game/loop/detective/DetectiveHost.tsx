@@ -1552,15 +1552,15 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
                   and Watson's by bench Watson. Their poses stay the
                   seated bench poses; only the mouth flap follows
                   the speaker. */}
-              <div className="detective-bench-figure" data-bench="watson">
+              <div className="detective-bench-figure" data-bench="watson" data-detective="watson">
                 <WatsonRig pose="station-idle" facing="left" speaking={speakingWho === "watson"} halo={stagingOn} />
               </div>
-              <div className="detective-bench-figure" data-bench="holmes">
+              <div className="detective-bench-figure" data-bench="holmes" data-detective="holmes">
                 <HolmesRig pose="dock" facing="right" speaking={speakingWho === "holmes"} halo={stagingOn} />
               </div>
             </>
           ) : stagingStage === "standing" ? (
-            <div className="detective-bench-figure" data-bench="holmes">
+            <div className="detective-bench-figure" data-bench="holmes" data-detective="holmes">
               <HolmesRig pose="dock" facing="right" speaking={false} halo={stagingOn} />
             </div>
           ) : null}

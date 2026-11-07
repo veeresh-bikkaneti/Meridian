@@ -432,6 +432,9 @@ for (const w of WIDTHS) {
       ).toBeVisible();
       // The board fades over 0.45 s by design (detective.css); poll
       // until the fade completes rather than sampling mid-transition.
+      // Cure C8: the fade lands on a 0.22 GHOST, not 0 — the ghost
+      // stays under the left-behind cups so they rest on a visible
+      // bench instead of floating over a fully faded board.
       await expect
         .poll(
           () =>
@@ -439,11 +442,13 @@ for (const w of WIDTHS) {
               const el = document.querySelector(
                 '[data-testid="detective-bench-board"]',
               );
-              return el ? Number(getComputedStyle(el).opacity) : -1;
+              return el
+                ? Math.round(Number(getComputedStyle(el).opacity) * 100) / 100
+                : -1;
             }),
           { timeout: 10_000 },
         )
-        .toBe(0);
+        .toBe(0.22);
       // Watson alone at the gutter station, beside (never over) the card.
       const gutter = await page.evaluate(() => {
         const card = document.querySelector('article[aria-label^="Clue 1:"]');
@@ -515,10 +520,24 @@ for (const w of WIDTHS) {
       const dockPos = await holmesWrapperPos(page);
       expect(dockPos).not.toBeNull();
       const berthWindow = collectAuditWindow(page, 3_000);
-      const berthPoint = {
-        x: mapBox!.x + mapBox!.width * 0.72,
-        y: mapBox!.y + mapBox!.height * 0.3,
-      };
+      /* Cure C12 geometry check: a berth point must sit within
+       * BERTH_REMOTE_DISTANCE (320 px) of the dock centre, or the
+       * solver lawfully answers "remote" and no berth can land.
+       * The old shared point (0.72w, 0.30h) violates that at
+       * desktop: with the 1280 map at 728x494 it sits ~464 px from
+       * the dock centre (155, h-64). Desktop therefore uses
+       * (0.45w, 0.35h) (~285 px, with a legal berth above it);
+       * phone/tablet keep the proven point (within 320 there). */
+      const berthPoint =
+        w.width === 1280
+          ? {
+              x: mapBox!.x + mapBox!.width * 0.45,
+              y: mapBox!.y + mapBox!.height * 0.35,
+            }
+          : {
+              x: mapBox!.x + mapBox!.width * 0.72,
+              y: mapBox!.y + mapBox!.height * 0.3,
+            };
       await berthAt(page, berthPoint, dockPos!);
       trail.absorb(await berthWindow, `berth @ ${w.name}`);
 
@@ -718,6 +737,178 @@ test("staging samples: Holmes-alone berth separation + FORCED anchor-null fallba
     // berth is audited in the per-width flow tests (berth window);
     // this test's own assertions are the pairwise box separations
     // and the forced fallback geometry.
+  } finally {
+    await context.close();
+  }
+});
+
+/* ------------------------------------------------------------------ */
+/* Cure round 1 (PR #361 panel): C11 page-level bench assertions +    */
+/* C12 remote-first-entry. The panel's bench claim was reproduced    */
+/* on the pre-cure tip at 1280 (2 Watson rigs on the page during      */
+/* CASE_OPEN, the duet's speaking class on the STATION Watson, both   */
+/* bench figures silent, bench Holmes the only Holmes and never      */
+/* speaking). These tests pin the cured behaviour at all widths.     */
+/* ------------------------------------------------------------------ */
+
+for (const w of WIDTHS) {
+  test(`staging cure C11: bench single-casting + duet from the bench + bench muted badge (${w.name})`, async ({
+    browser,
+  }) => {
+    /* (a) Sound ON: exactly one Watson and one Holmes on the whole
+     * page during CASE_OPEN/bench, and the duet's speaking figure
+     * is the bench one. */
+    const context = await browser.newContext({
+      viewport: { width: w.width, height: w.height },
+    });
+    try {
+      await serveBuiltArtifact(context);
+      await installDetectiveRecorder(context, 3);
+      const page = await context.newPage();
+      await fulfillFlagsStaging(context);
+      await openCaseOnBench(page, 137);
+      const counts = () =>
+        page.evaluate(() => ({
+          watson: document.querySelectorAll('[data-detective="watson"]').length,
+          holmes: document.querySelectorAll('[data-detective="holmes"]').length,
+          chips: document.querySelectorAll('[data-testid="detective-sound-chip"]').length,
+          stage: document
+            .querySelector('[data-testid="detective-bench"]')
+            ?.getAttribute("data-staging-stage"),
+          phase: document
+            .querySelector('[data-testid="detective-station"]')
+            ?.getAttribute("data-phase"),
+        }));
+      const c0 = await counts();
+      expect(c0.stage).toBe("bench");
+      expect(c0.watson, "exactly ONE Watson on the page during bench").toBe(1);
+      expect(c0.holmes, "exactly ONE Holmes on the page during bench").toBe(1);
+      expect(c0.chips, "sound chip suppressed with the station cluster during bench").toBe(0);
+      // The duet plays from the bench: poll the speaking rig and
+      // record WHO speaks (bench figure only — no station figure
+      // exists while the bench holds, per the counts above).
+      await unlockSpeech(page);
+      const speakers = new Set<string>();
+      const deadline = Date.now() + 45_000;
+      while (Date.now() < deadline) {
+        const s = await page.evaluate(() => {
+          const speaking = document.querySelector("svg.detective-speaking");
+          if (!speaking) return null;
+          const benchFigure = speaking.closest("[data-bench]");
+          return {
+            who: benchFigure?.getAttribute("data-bench") ?? "NOT-BENCH",
+            stage: document
+              .querySelector('[data-testid="detective-bench"]')
+              ?.getAttribute("data-staging-stage"),
+          };
+        });
+        if (s && s.stage === "bench") speakers.add(s.who);
+        if (speakers.has("holmes") && speakers.has("watson")) break;
+        const now = await counts();
+        if (now.stage !== "bench") break;
+        await page.waitForTimeout(150);
+      }
+      expect(
+        [...speakers].every((who) => who === "holmes" || who === "watson"),
+        `duet speaking figures must be bench figures only (saw: ${[...speakers].join(",") || "none"})`,
+      ).toBe(true);
+      expect(
+        speakers.size,
+        "at least one duet line visibly spoken by a bench figure",
+      ).toBeGreaterThan(0);
+    } finally {
+      await context.close();
+    }
+
+    /* (b) Sound OFF preset: the muted badge latches on the bench
+     * slot, and no sound chip exists anywhere (no duplication). */
+    const offContext = await browser.newContext({
+      viewport: { width: w.width, height: w.height },
+    });
+    try {
+      await offContext.addInitScript(() => {
+        try {
+          localStorage.setItem("meridian.sound", "off");
+        } catch {
+          /* storage may be unavailable pre-navigation on some engines */
+        }
+      });
+      await serveBuiltArtifact(offContext);
+      await installDetectiveRecorder(offContext, 3);
+      const page = await offContext.newPage();
+      await fulfillFlagsStaging(offContext);
+      await openCaseOnBench(page, 137);
+      const bench = page.getByTestId("detective-bench");
+      await expect(bench).toHaveAttribute("data-staging-stage", "bench");
+      await expect(
+        bench.getByTestId("detective-muted-badge"),
+        "muted badge latched on the bench slot",
+      ).toBeVisible({ timeout: 10_000 });
+      await expect(
+        page.getByTestId("detective-sound-chip"),
+        "no sound chip anywhere during bench (exactly-one-chip invariant)",
+      ).toHaveCount(0);
+      await expect(page.locator('[data-detective="watson"]')).toHaveCount(1);
+      await expect(page.locator('[data-detective="holmes"]')).toHaveCount(1);
+    } finally {
+      await offContext.close();
+    }
+  });
+}
+
+test("staging cure C12: remote-first-entry lands Holmes AT the dock (desktop 1280)", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    viewport: { width: 1280, height: 950 },
+  });
+  try {
+    await serveBuiltArtifact(context);
+    await installDetectiveRecorder(context, 3);
+    const page = await context.newPage();
+    await fulfillFlagsStaging(context);
+    await openCaseOnBench(page, 137);
+    await unlockSpeech(page);
+    await waitForSearchIdle(page, 120_000);
+    await showMap(page);
+    const mapBox = await page.getByTestId("loop-map").boundingBox();
+    expect(mapBox).not.toBeNull();
+    // Dock top-left is map-relative (120, height-116); its centre is
+    // +(35, 52). The hover point sits >320 px from that centre, so
+    // the berth solver answers "remote" — and as the FIRST map
+    // interaction it is also Holmes's entry. Pre-cure, the remote
+    // branch cleared the entry walk and stranded him at the entry
+    // offset dock+(90,34); the cure lets the entry walk complete.
+    const dockRel = { x: 120, y: Math.round(mapBox!.height) - 116 };
+    const dockCentre = { x: dockRel.x + 35, y: dockRel.y + 52 };
+    const point = {
+      x: Math.round(mapBox!.x + mapBox!.width * 0.85),
+      y: Math.round(mapBox!.y + mapBox!.height * 0.25),
+    };
+    const dist = Math.hypot(
+      point.x - (mapBox!.x + dockCentre.x),
+      point.y - (mapBox!.y + dockCentre.y),
+    );
+    expect(dist, "hover point must be remote (>320 px from dock centre)").toBeGreaterThan(320);
+    await page.mouse.move(point.x, point.y, { steps: 10 });
+    await page.mouse.move(point.x + 2, point.y + 1, { steps: 2 });
+    // Entry completes: bench gone, wrapper parked AT the dock —
+    // not at dock+(90,34). Poll because the pause-confirm + 700 ms
+    // entry walk take a few seconds on this VM.
+    await expect(page.getByTestId("detective-bench")).toHaveCount(0, {
+      timeout: 30_000,
+    });
+    await expect
+      .poll(
+        async () => {
+          const p = await holmesWrapperPos(page);
+          return p
+            ? `${Math.round(p.x - mapBox!.x)},${Math.round(p.y - mapBox!.y)}`
+            : "none";
+        },
+        { timeout: 30_000 },
+      )
+      .toBe(`${dockRel.x},${dockRel.y}`);
   } finally {
     await context.close();
   }
