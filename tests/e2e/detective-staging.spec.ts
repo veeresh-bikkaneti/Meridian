@@ -820,45 +820,41 @@ for (const w of WIDTHS) {
       await context.close();
     }
 
-    /* (b) Sound OFF preset: the muted badge latches on the bench
-     * slot, and no sound chip exists anywhere (no duplication). */
+    /* (b) Toggle mute DURING the bench: the muted badge latches on
+     * the bench slot, and no sound chip exists anywhere (no
+     * duplication). The toggle path is used instead of a preset-off
+     * boot for a measured reason: with sound preset off, the speech
+     * player's off-mode queue drains in microtasks (the fallback
+     * law — the ladder advances silently), so CASE_OPEN completes
+     * before the bench ever paints and there is no bench window to
+     * assert in (probed at 50 ms in-page sampling on the cured tip:
+     * bench stage never appeared). Toggling during the bench is
+     * deterministic: the mute fires the player's stopAll, which by
+     * design never drains the queue, so CASE_OPEN — and the bench —
+     * hold while muted. */
     const offContext = await browser.newContext({
       viewport: { width: w.width, height: w.height },
     });
     try {
-      await offContext.addInitScript(() => {
-        try {
-          localStorage.setItem("meridian.sound", "off");
-        } catch {
-          /* storage may be unavailable pre-navigation on some engines */
-        }
-      });
       await serveBuiltArtifact(offContext);
       await installDetectiveRecorder(offContext, 3);
       const page = await offContext.newPage();
       await fulfillFlagsStaging(offContext);
-      /* With sound OFF the CASE_OPEN duet drains silently and the
-       * bench rises quickly — so sample the bench from its FIRST
-       * paint instead of asserting after the case fully opens: the
-       * badge is latched from the bench's first render (soundOn
-       * starts false), and the poll catches that window. */
-      await page.goto(`http://127.0.0.1:4123/Meridian/?loop-puzzle=137`);
-      await page
-        .getByRole("button", { name: "GeoDetective: Solve a mystery" })
-        .click();
-      const benchSample = () =>
-        page.evaluate(() => {
-          const bench = document.querySelector('[data-testid="detective-bench"]');
-          if (!bench) return "none";
-          const stage = bench.getAttribute("data-staging-stage");
-          if (stage !== "bench") return `stage:${stage}`;
-          const badge = bench.querySelector('[data-testid="detective-muted-badge"]');
-          const chips = document.querySelectorAll('[data-testid="detective-sound-chip"]').length;
-          return badge ? `badge:chips=${chips}` : "bench:no-badge";
-        });
-      await expect
-        .poll(benchSample, { timeout: 30_000 })
-        .toBe("badge:chips=0");
+      await openCaseOnBench(page, 137);
+      const bench = page.getByTestId("detective-bench");
+      await expect(bench).toHaveAttribute("data-staging-stage", "bench");
+      await page.getByTestId("sound-toggle-loop").click();
+      await expect(
+        bench.getByTestId("detective-muted-badge"),
+        "muted badge latched on the bench slot after toggling mute during bench",
+      ).toBeVisible({ timeout: 10_000 });
+      await expect(bench).toHaveAttribute("data-staging-stage", "bench");
+      await expect(
+        page.getByTestId("detective-sound-chip"),
+        "no sound chip anywhere during bench (exactly-one-chip invariant)",
+      ).toHaveCount(0);
+      await expect(page.locator('[data-detective="watson"]')).toHaveCount(1);
+      await expect(page.locator('[data-detective="holmes"]')).toHaveCount(1);
     } finally {
       await offContext.close();
     }
