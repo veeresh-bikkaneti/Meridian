@@ -230,6 +230,18 @@ test("a case closed after a pause-end counts once, and ending from a reveal coun
   // closed case — the open case is not counted early.
   await guessOpenWater(page, -30, 30);
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
+
+  // The first-ever solve raises the App-level "Your first discovery!"
+  // celebration overlay (pre-existing wiring, dismiss-only — there is
+  // no auto-timer). A real player taps it away before carrying on;
+  // dismiss it the same way so it cannot sit over the End game click.
+  const celebration = page.getByTestId("celebration-overlay");
+  await celebration.waitFor({ state: "visible", timeout: 5_000 }).catch(() => undefined);
+  if ((await celebration.count()) > 0) {
+    await celebration.getByRole("button", { name: "Close celebration" }).click();
+    await expect(celebration).toHaveCount(0);
+  }
+
   await page.getByTestId("end-game-button").click();
   await page.getByTestId("end-game-pause").click();
   summary = page.getByTestId("loop-session-summary");
