@@ -1,3 +1,24 @@
+## PROVEN WORDING CURE — docs/cure-proven-flagoff (2026-11-06)
+
+- **TASK / outcome:** Cure the one retained "PROVEN" on the #358
+  flag-off line in the #358 capsule below: "PROVEN pre-existing"
+  becomes "shown pre-existing in-session" — the wording prescribed
+  by the #359 verdict seats and already carried in PR #358's
+  corrected body. The control log was kept in /tmp and did not
+  survive, so the claim rests on the session record; it is not
+  proven. Owner's word, 2026-11-06: "Cure the PROVEN wording".
+- **Tier:** 0 (docs only) run under the standing full review
+  pipeline per the coordinator's brief.
+- **Done condition:** diff limited to the #358 capsule line + this
+  entry; no other "proven" claim touched — the evidence-backed
+  claims (root causes / diagnosis filed / pairwise separation)
+  stay, their traces survive in the evidence folder's `diag/`;
+  gates green; independent Silo QA + panel verdict on the final
+  tip.
+- **Status:** in pipeline — ship-when-ready on READY /
+  READY-WITH-NITS (owner's word 2026-11-06: "Cure the PROVEN
+  wording").
+
 ## RECORDS CORRECTION — docs/correct-358-records (2026-11-06)
 
 - **TASK / outcome:** Correct the overstated PR #358 records — the
@@ -63,9 +84,10 @@
 - [x] Detective E2E family on 85adc1a: 34 passed / 4 failed — triage:
   reduced berth-by-cut PASSED on sequential re-run (contention flake);
   companion K3-pan + geodetective win-path re-runs pending on the cured
-  tip; summary flag-off PROVEN pre-existing on unmodified main 1b38cb3
-  (control run, buildId-verified; that control log was kept in /tmp and
-  did not survive, so this rests on the session record) — the flip
+  tip; summary flag-off shown pre-existing in-session (control run on
+  unmodified main 1b38cb3, buildId-verified, identical failure; the
+  control log was in /tmp and did not survive, so this rests on the
+  session record) — the flip
   (PR #356) made the
   committed flags.json true and the test's no-interception premise
   stale; CI never caught it (detective specs are not in CI's e2e
