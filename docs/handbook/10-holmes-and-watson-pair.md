@@ -458,6 +458,48 @@ the re-run panel and the flip owner can check them off one by one.
   the machine's existing view, the degradation matrix, and the
   flag. The props whitelist and the swap test are untouched.
 
+- **Staging close / berth cure (2026-11-07, this PR):** two live
+  defects the owner found on the shipped staging were reproduced
+  and mechanism-proven before the cure
+  (`DIAGNOSIS-bench-at-close.md` in the detective evidence folder).
+  (1) *Bench at case close:* the bench gate keyed off the staging
+  stage alone and cure C3's forced entry omitted `SELECTION_READ`
+  — the phase the machine sits in while the screen already shows
+  "Case closed" — so on search-box play the bench (board + both
+  left-behind cups + standing Holmes) stood over the closed case
+  until the selection-read speech drained, indefinitely if that
+  speech stalled. Cure: the bench element now also requires the
+  game's `status` to be `playing` (the closed state is bench-free
+  from the first "Case closed" render), and C3's forced entry is
+  additionally driven by that same `status` prop so Holmes lands
+  at his designed dock/station positions for the endings. Bench
+  during CASE_OPEN is unchanged.
+  (2) *Holmes never berths:* the FG-5 auto-kill latched for the
+  host's lifetime and the host persists across cases, so one
+  transient SEARCH-phase performance dip docked Holmes for a
+  whole run (8/8 full case plays in the diagnosis ended killed).
+  Cure, thresholds unchanged: the tracker re-qualifies after a
+  sustained healthy window (rolling 5 s at ≥ 55 FPS, no long
+  task — the 45→55 band is hysteresis), a long task restarts the
+  sustain, the host keeps feeding the tracker while killed, and
+  the latch clears on every case change. The degradation
+  dock-only path (Save-Data / ≤ 4 GB / battery saver,
+  `data-companion="dock"`) is a separate by-design verdict and
+  was not touched.
+  **Per-device gate extension (part of the standing rule above):**
+  the staging gate now also samples the CLOSED state — from
+  "Case closed" first rendering through CELEBRATE / POUT, sampled
+  at exactly 50 ms (`detective-closed-state.spec.ts`: the in-page
+  sampler polls at 50 ms; 200 ms is the gate's ceiling requirement)
+  — asserting bench count 0 throughout it, on
+  SOLVE and FAIL, at all three widths
+  (`detective-closed-state` E2E); and berthing is gated on a
+  MEASURED arrival, never DOM presence, including after a
+  throttled SEARCH window (`detective-berth` E2E: latch fires
+  under throttle → re-qualification → real berth). A gate that
+  preconditions on `companionMode === "full"` reads a latch as an
+  environment result and is not a berth gate.
+
 ## Staging rework — PR B: Watson Walks (2026-11-07)
 
 - **The word:** the staging council's Q3 (evidence folder,
