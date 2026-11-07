@@ -128,7 +128,7 @@ Approvals: PR + merge under the coordinator's assignment
 - [x] Docs: handbook §2 record + README sentence
 - [ ] Builder gates (tsc / npm test / lint-cards / build:pages)
   - Builder note (2026-11-07): tsc clean · npm test green · lint-cards GATE PASSED · E2E spec collects (7 tests). `build:pages` NOT green locally: 4 attempts, vite build completed + dist written every time, prerender crawl OOM-killed (exit 137) under concurrent crew load on the VM — CI build is the clean read.
-- [ ] PR opened
+- [x] PR opened — #365 https://github.com/veeresh-bikkaneti/Meridian/pull/365
 - [ ] Silo QA (keyed PR#+tip)
 - [ ] Panel 12 seats by name + DevEx + benchmark
 - [ ] Merge on verdict + branch deleted + tip SHA ledgered
