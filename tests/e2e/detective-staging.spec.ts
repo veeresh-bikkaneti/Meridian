@@ -301,8 +301,19 @@ async function sampleEntryWalk(
 async function berthAt(
   page: Page,
   point: { x: number; y: number },
+  dockPos: { x: number; y: number },
   timeoutMs = 60_000,
 ) {
+  // A berth counts only when he has actually LEFT the dock: the
+  // pointer rested at the entry-tap point while the entry walk
+  // ran, so a dock-adjacent pause can confirm a "berth" whose
+  // position IS the dock — placement alone would return on it
+  // while he never moves (measured at 768: distance stayed 0).
+  const landed = async () => {
+    if ((await currentPlacement(page)) !== "berth") return false;
+    const p = await holmesWrapperPos(page);
+    return p !== null && Math.hypot(p.x - dockPos.x, p.y - dockPos.y) > 40;
+  };
   const deadline = Date.now() + timeoutMs;
   await page.mouse.move(point.x, point.y, { steps: 8 });
   await page.mouse.move(point.x + 2, point.y + 1, { steps: 2 });
@@ -311,11 +322,11 @@ async function berthAt(
   // move restarts the detector's stillness timer).
   const fastUntil = Date.now() + 6_000;
   while (Date.now() < fastUntil) {
-    if ((await currentPlacement(page)) === "berth") return;
+    if (await landed()) return;
     await page.waitForTimeout(400);
   }
   while (Date.now() < deadline) {
-    if ((await currentPlacement(page)) === "berth") return;
+    if (await landed()) return;
     const phase = await currentPhase(page);
     if (phase && phase.startsWith("SEARCH")) {
       await page.mouse.move(point.x + 1, point.y, { steps: 2 });
@@ -508,21 +519,7 @@ for (const w of WIDTHS) {
         x: mapBox!.x + mapBox!.width * 0.72,
         y: mapBox!.y + mapBox!.height * 0.3,
       };
-      await berthAt(page, berthPoint);
-      // Placement flips to "berth" when the walk STARTS; poll the
-      // wrapper until the walk has actually carried him away from
-      // the dock (350/450 ms of travel, longer under load).
-      await expect
-        .poll(
-          async () => {
-            const p = await holmesWrapperPos(page);
-            return p
-              ? Math.hypot(p.x - dockPos!.x, p.y - dockPos!.y)
-              : 0;
-          },
-          { timeout: 15_000 },
-        )
-        .toBeGreaterThan(40);
+      await berthAt(page, berthPoint, dockPos!);
       trail.absorb(await berthWindow, `berth @ ${w.name}`);
 
       /* -- MUTE TAP at three widths: full-width Holmes alias ----- */
@@ -684,7 +681,9 @@ test("staging samples: Holmes-alone berth separation + FORCED anchor-null fallba
       x: mapBox!.x + mapBox!.width * 0.72,
       y: mapBox!.y + mapBox!.height * 0.3,
     };
-    await berthAt(page, berthPoint);
+    const dockPos = await holmesWrapperPos(page);
+    expect(dockPos).not.toBeNull();
+    await berthAt(page, berthPoint, dockPos!);
     const boxes = await page.evaluate(() => {
       const rect = (sel: string) => {
         const el = document.querySelector(sel);
