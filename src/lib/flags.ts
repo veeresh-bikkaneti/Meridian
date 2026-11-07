@@ -38,7 +38,8 @@ export type FlagName =
   | "friendChallenges"
   | "scoutUpgradeTrial"
   | "detectivePair"
-  | "hostsStaging";
+  | "hostsStaging"
+  | "watsonWalk";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -90,6 +91,24 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // stays false so a failed flags fetch falls back to the shipped
   // pair, never to half-proven staging.
   hostsStaging: false,
+  // Holmes & Watson staging rework (PR B, "Watson Walks"): Watson
+  // walks the reserved gutter to each clue card and the clue read is
+  // released only when he arrives; "Let's find some clues" plays
+  // during the case-open walk only (session cap 2). A sub-flag of
+  // the staging: it acts only when detectivePair AND hostsStaging
+  // are also on. false = the kill-switch: redeploy flags.json with
+  // watsonWalk false and Watson teleports to the active card and
+  // reads at reveal again — exactly the PR A behaviour. The
+  // announcement render (fixed/lets-find-clues.mp3) stays in the
+  // audio manifest in both modes but is only ever enqueued while
+  // this flag is on. Two host fixes from PR A's carry-ins land with
+  // this PR and apply whenever hostsStaging is on, in BOTH watsonWalk
+  // modes — they are staging fixes, not walk behaviour, and the
+  // kill-switch does not undo them: (1) entryIntent is reset on case
+  // change, and (2) a resumed case no longer flashes the bench (its
+  // stage starts at "standing"). The baked default stays false so a
+  // failed flags fetch falls back to the PR A pair.
+  watsonWalk: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;

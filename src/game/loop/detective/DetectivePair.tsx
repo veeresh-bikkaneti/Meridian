@@ -62,6 +62,7 @@ export const HOLMES_POSES = [
 export type HolmesPose = (typeof HOLMES_POSES)[number];
 
 export const WATSON_POSES = [
+  "walk",
   "read",
   "think",
   "station-idle",
@@ -487,6 +488,10 @@ interface WatsonPoseSpec {
 }
 
 const WATSON_POSE_SPECS: Record<WatsonPose, WatsonPoseSpec> = {
+  // PR B: the gutter walk — notebook in hand, neutral face; the leg
+  // and bob swing comes from detective.css's shared walk keyframes
+  // (they address leg-a / leg-b / bob, which this rig has).
+  walk: { face: "neutral", head: "", torso: "", frontArm: 0, noteArm: 0, notebook: true, card: false, pencil: true, glass: false },
   read: { face: "reading", head: "rotate(4deg) translateY(1.5px)", torso: "", frontArm: 0, noteArm: -52, notebook: false, card: true, pencil: false, glass: false },
   think: { face: "thinking", head: "rotate(-4deg)", torso: "", frontArm: 0, noteArm: -52, notebook: false, card: true, pencil: false, glass: false },
   "station-idle": { face: "neutral", head: "", torso: "", frontArm: 0, noteArm: 0, notebook: true, card: false, pencil: true, glass: false },

@@ -1,3 +1,58 @@
+# BRANCH_STATUS — feat/watson-walks (PR B, staging rework 3 of 3)
+
+- **Branch:** `feat/watson-walks` · **Base:** `main` @ `97d1dcf` (PR A #361 merged + live)
+- **Design of record:** `~/workspace/meridian-detective-evidence/COUNCIL-staging-rework.md` (Q3 + slice B), `staging-mockup-v2.NOTE.md`, handbook ch.10.
+
+## Task capsule
+
+TASK / requested outcome: PR B "Watson Walks" — (1) a WALKING state in
+the pair's host machine (PR A's precedent: the stage machine is
+host-local): Watson walks the gutter to each clue card, clue speech is
+released only on walk-arrival (transitionend + timeout fallback),
+clue 2+ walks silent, tap-Watson replay at the station instant,
+mid-read clue advance = stop + flush + walk + read on arrival, sheet
+mid-walk cancels the walk and a held read never fires late,
+reduced-motion / resource-constrained = instant placement + immediate
+read. (2) "Let's find some clues" — fixed line #20, Watson voice,
+speed 106, spoken during the CASE-OPEN walk only, session cap 2,
+exactly one new render through scripts/detective. (3) Gutter
+reconciliation: the shipped 118 px is DERIVED (6 card gap + 100 Watson
+figure + 12 edge clear) and kept; the +6/+62/+118 host literals are
+replaced by derived constants in the new pure module
+`watson-walk.ts` (unit-pinned).
+Tier: Tier 2 programme slice, run as a builder silo under the
+coordinator's brief; Silo QA + 12-seat panel follow separately.
+Builder stops at PR open — NO MERGE.
+Walker decision (carry-in a): a SECOND, parallel walker for Watson —
+host-local, 1-D vertical gutter travel between measured card
+anchors, transform on the station cluster, arrival gates speech.
+Holmes's walker (holmesXY / walk timer / berth solver) is 2-D map
+geometry with dock/berth/hide outcomes; extracting a generic walker
+would refactor proven working code (Constitution rule 1) to share
+almost nothing.
+Flag: `watsonWalk` — baked default false in src/lib/flags.ts,
+`public/flags.json` sets it true. Sub-flag of the staging: it acts
+only when `detectivePair` + `hostsStaging` are also on.
+Protected: scoring, dealing, clue text, hint defaults, donation
+copy, celebration choreography, the props whitelist (untouched —
+no new host props; the K5 swap test must still pass).
+
+## Status
+
+- [ ] watson-walk.ts pure module + unit pins (gutter derivation, walk duration, announcement cap, station chip offsets incl. Holmes-alone 78)
+- [ ] Watson "walk" pose in DetectivePair (+ rig pin update)
+- [ ] flags.ts + flags.json (watsonWalk)
+- [ ] Fixed line #20 in render-plan + ONE production render + manifest
+- [ ] DetectiveHost: WALKING state, arrival-gated speech, announcement, sheet-cancel, entryIntent reset (carry-in e), resumed-bench fix (carry-in f)
+- [ ] detective.css: derived gutter comment (118 = 6 + 100 + 12)
+- [ ] C11 duet assertion strengthened to BOTH speakers (carry-in d)
+- [ ] tests/e2e/detective-watson-walk.spec.ts at 390/768/1280 + playwright project + telemetry-guard registration
+- [ ] Handbook ch.10 PR B staging record
+- [ ] Gates: tsc / npm test / test:worker / lint-cards / build:pages + detective union E2E
+- [ ] PR opened (NO MERGE)
+
+---
+
 ## PR #361 RECORDS ROUND 2 — feat/hosts-staging (2026-11-07)
 
 - **Records-only micro-batch (docs + comments, NO code-behaviour change, NO MERGE):** on tip `7c137ea` — delta panel 12/12 APPROVE-WITH-NITS, delta Silo QA PASS-WITH-NITS. Items: README anchor fixed to `#detective-audio-holmes--watson` (DevEx delta NIT-D1) · DetectivePair header + halo-prop comments scoped to THE RIGS, matching flags.ts (Senior Architect delta nit 1) · Units-summary bench trigger corrected to machine-leaves-CASE_OPEN (Game Audio delta nit 3) · Silo QA follow-up capsule completed with replay (c) PASSED in delta Silo QA — merge-blocking list fully discharged (Office Hours delta nit 4) · handbook staging record: 118px margin applies for the whole session, cards never reflow mid-case (Frontend delta nit 1) · findability pre-registration + CELEBRATE sampling window + CELEBRATE frame in post-merge screenshots recorded as NAMED follow-ups in the PR A capsule below and in the PR body (UX Researcher delta nit 2 + Level Architect delta nit 2) · PR body stale original lines annotated in place (Office Hours delta nits 1–3 + DevEx NIT-D2).
