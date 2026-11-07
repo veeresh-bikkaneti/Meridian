@@ -632,17 +632,26 @@
 /* --- staging rework (PR A, hostsStaging): bench, gutter, entry ------ */
 /* All staging rules are scoped under .detective-staging-on or the
    bench's own classes, which only render when the hostsStaging flag
-   is on — flag off, none of this exists and the shipped pair is
-   byte-for-byte the old layout. Motion stays transform/opacity. */
+   is on. Flag off, none of this renders and the pair renders its
+   pre-A rigs (the halo is gated in DetectivePair.tsx, cure C5) —
+   not literally the old layout in every respect: two accepted
+   permanent deltas apply in BOTH modes (the restored 70 px dock
+   alias, and the LoopScreen host mount order), disclosed in
+   src/lib/flags.ts. Motion stays transform/opacity. */
 
 /* The bench slot: in-flow, directly under the map (the host now
    mounts after the map section in LoopScreen). It has height ONLY
    while the pair wait or stand in it — it is not a reserved strip:
    the moment Holmes enters the map it collapses to zero height and
-   unmounts, and it never exists in any other state. */
+   unmounts, and it never exists in any other state. Height (cure
+   C10): 132 px — the mockup of record's standing height exactly.
+   The seated record (126 px) is not reachable: the bench rigs are
+   128 px tall and the slot clips overflow, so 126 would shave the
+   hats; 132 keeps 4 px of headroom over the rigs for the watch
+   arc. The handbook staging record carries the same numbers. */
 .detective-bench {
   position: relative;
-  height: 148px;
+  height: 132px;
   overflow: hidden;
   transition: height 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -681,8 +690,23 @@
   transition: opacity 0.45s ease-out;
 }
 
+/* Cure C8: the board does not fade to nothing — it fades to a
+   ghost (0.22) that stays under the left-behind cups for the whole
+   standing stage, so the cups rest ON a visible bench instead of
+   floating over empty page. The ghost is gone with the slot when
+   Holmes enters (the slot itself collapses and unmounts). */
 .detective-bench-board-faded {
-  opacity: 0;
+  opacity: 0.22;
+}
+
+/* Cure C1 (iii): the muted badge latched on the bench slot while
+   the pair are seated and muted — badge only, no chip. */
+.detective-bench-muted {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* Holmes's watch glance on the bench: his glass arm lifts and his
