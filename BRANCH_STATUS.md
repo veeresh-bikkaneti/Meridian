@@ -44,10 +44,11 @@
 - **Gates (cured tip):** `npx tsc --noEmit` clean · `npm run
   test:worker` 145 pass / 0 fail · `node scripts/lint-cards.mjs`
   GATE PASSED · `npm run build:pages` exit 0 (entry chunk recorded
-  in the PR body) · `npm test` — src 2235 pass / 0 fail; scripts
-  1018 pass with the only 2 failures traced to this round's
-  temporary repro spec (deleted; the telemetry guard re-run alone
-  is 6 pass / 0 fail) and a final full re-run on the pushed tip.
+  in the PR body) · `npm test` FULLY GREEN on the final tip —
+  scripts 1020 pass / 0 fail, src 2235 pass / 0 fail. (An earlier
+  run showed 2 scripts failures, both traced to this round's
+  temporary repro spec — deleted before the final run; the
+  telemetry guard alone re-ran 6 pass / 0 fail.)
 - **E2E (cured tip; logs in `~/workspace/meridian-361-cure-logs/`):**
   staging spec — flow 390 PASS, reduced-motion ×3 PASS, samples
   PASS, C12 PASS (remote-first-entry lands Holmes AT the dock;
