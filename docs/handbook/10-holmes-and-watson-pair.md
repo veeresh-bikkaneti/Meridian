@@ -362,9 +362,14 @@ the re-run panel and the flip owner can check them off one by one.
   TRUE in `public/flags.json` in this PR (the staging ships live);
   the baked-in default in `src/lib/flags.ts` stays false, so a
   failed flags fetch falls back to the shipped pair. FALSE =
-  today's shipped behaviour exactly — the working kill-switch is
-  the same one-line flags.json redeploy as the pair's own flip.
-  `detectivePair` is untouched.
+  the kill-switch (the same one-line flags.json redeploy as the
+  pair's own flip): staging disappears and the pair renders its
+  pre-A rigs — the makeover halo is gated by this flag in the rigs
+  themselves (cure C5, PR #361 cure round 1), on the summary
+  celebration too. Two accepted permanent deltas apply in BOTH
+  modes and are not part of the kill-switch: Holmes's dock mute
+  alias is the restored full 70 px (below), and LoopScreen mounts
+  the host below the map section. `detectivePair` is untouched.
 - **What shipped:**
   - **Makeover:** a cream halo (3–4 px) with a near-black keyline
     (~1.5 px) BAKED into both rigs' art — a silhouette group painted
@@ -372,16 +377,24 @@ the re-run panel and the flip owner can check them off one by one.
     drop-shadow anywhere (the performance seat's veto). Costumes
     unchanged: Holmes brick-red #a52a21, Watson royal-blue #27408b.
   - **Sizes:** ~128 px in the bench slot; 104 px on the map and at
-    the station (inside the council's 104–112 px on-map band).
+    the station (inside the council's 104–112 px on-map band). The
+    bench SLOT is 132 px tall (cure C10, PR #361 cure round 1):
+    the mockup of record's standing height exactly. Its seated
+    height (126 px) is not reachable — the bench rigs are 128 px
+    tall and the slot clips overflow, so 126 would shave the hats;
+    132 keeps 4 px of headroom for the watch arc. (The slot was
+    148 px as first built; the record now matches the geometry.)
   - **The bench:** before a case's questions load (the case-open
     beat), Holmes and Watson SIT on a bench in the page's own flow
     directly under the map. Holmes glances at his watch on an idle
     loop; both drink coffee — cups in hand, alternating sip cycles,
-    deliberately NOT synchronized. When the first clue read starts,
-    the bench board fades: Watson rises to his station, Holmes
-    stands in the slot. When Holmes enters the map the slot
-    COLLAPSES to zero height; the cups stay behind on the bench and
-    never enter play.
+    deliberately NOT synchronized. When the machine leaves
+    CASE_OPEN, the pair rise: Watson goes to his station, Holmes
+    stands in the slot, and the bench board fades to a 0.22 ghost
+    that stays under the left-behind cups (cure C8 — the cups rest
+    on a visible bench, they do not float over a fully faded
+    board). When Holmes enters the map the slot COLLAPSES to zero
+    height; the cups stay behind on the bench and never enter play.
   - **Entry walk:** at the first map interaction Holmes visibly
     WALKS from the bench slot onto the map to his dock — a real
     transition with the walk pose, not a teleport. Reduced motion
@@ -389,10 +402,17 @@ the re-run panel and the flip owner can check them off one by one.
   - **Berth-to-berth walks:** the shipped pause-berth engine
     (350 ms desktop / 450 ms touch pause trigger; 80 ms absence on
     pan/zoom/sheet/rings/speech) walks him between berths with the
-    walk pose — pinned by the staging E2E at all three widths.
+    walk pose — pinned by the staging E2E at 390/768; the desktop
+    berth run lands on the cured tip (PR #361 cure round 1 — the
+    pre-cure desktop berth point also violated BERTH_REMOTE_DISTANCE
+    and was fixed there, cure C12).
   - **Zero-overlap law (owner, absolute):** neither figure ever
-    overlaps clue-card text — 0 px² — in any state (bench, rising,
-    walking, standing, reading, muted, reduced-motion). Under
+    overlaps clue-card text — 0 px² in every sampled staging state;
+    CELEBRATE excepted and unmeasured (re-scoped in PR #361 cure
+    round 1: the shipped CELEBRATE cluster keeps its above-card
+    station as a named exception, and no sampling window has
+    measured it). The sampled states are bench, rising, walking,
+    standing, reading, muted and reduced-motion. Under
     staging, LoopScreen reserves a 118 px gutter beside the clue
     cards (the cards narrow; their text reflows inside them — the
     mockup v2 geometry), Watson's station stands IN the gutter

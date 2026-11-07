@@ -395,8 +395,8 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   }, [sheetOpen, dispatch]);
 
   /* Staging: the bench holds only while the case opens. The moment
-   * the machine leaves CASE_OPEN (the first clue read = the case's
-   * questions loading), the pair rise: Watson goes to his station,
+   * the machine leaves CASE_OPEN (the case's questions loading),
+   * the pair rise: Watson goes to his station,
    * Holmes stands in the slot until the first map interaction. */
   useEffect(() => {
     if (!stagingOn) return;
