@@ -39,17 +39,73 @@ no new host props; the K5 swap test must still pass).
 
 ## Status
 
-- [ ] watson-walk.ts pure module + unit pins (gutter derivation, walk duration, announcement cap, station chip offsets incl. Holmes-alone 78)
-- [ ] Watson "walk" pose in DetectivePair (+ rig pin update)
-- [ ] flags.ts + flags.json (watsonWalk)
-- [ ] Fixed line #20 in render-plan + ONE production render + manifest
-- [ ] DetectiveHost: WALKING state, arrival-gated speech, announcement, sheet-cancel, entryIntent reset (carry-in e), resumed-bench fix (carry-in f)
-- [ ] detective.css: derived gutter comment (118 = 6 + 100 + 12)
-- [ ] C11 duet assertion strengthened to BOTH speakers (carry-in d)
-- [ ] tests/e2e/detective-watson-walk.spec.ts at 390/768/1280 + playwright project + telemetry-guard registration
-- [ ] Handbook ch.10 PR B staging record
-- [ ] Gates: tsc / npm test / test:worker / lint-cards / build:pages + detective union E2E
-- [ ] PR opened (NO MERGE)
+- [x] watson-walk.ts pure module + unit pins (gutter derivation, walk duration, announcement cap, station chip offsets incl. Holmes-alone 78)
+- [x] Watson "walk" pose in DetectivePair (+ rig pin update)
+- [x] flags.ts + flags.json (watsonWalk)
+- [x] Fixed line #20 in render-plan + ONE production render + manifest
+- [x] DetectiveHost: WALKING state, arrival-gated speech, announcement, sheet-cancel, entryIntent reset (carry-in e), resumed-bench fix (carry-in f)
+- [x] detective.css: derived gutter comment (118 = 6 + 100 + 12)
+- [x] C11 duet assertion strengthened to BOTH speakers (carry-in d)
+- [x] tests/e2e/detective-watson-walk.spec.ts at 390/768/1280 + playwright project + telemetry-guard registration
+- [x] Handbook ch.10 PR B staging record
+- [x] Gates: tsc / npm test / test:worker / lint-cards / build:pages + detective union E2E
+- [ ] PR opened (NO MERGE) — opened at tip below; merge is the coordinator's pipeline + the owner's word
+
+## Build + verification record (builder, 2026-11-07)
+
+- **Commits:** `c52e846` foundations · `cdefd15` walking · `01f32db`
+  deferred-drain suppression cure · `e8d71ae` E2E unit · `4dd614b`
+  arrival-boundary sample tolerance. Tip at PR open: see PR.
+- **Gates (final tip):** `npx tsc --noEmit` clean · `npm test`
+  3,273 pass / 0 fail / 11 skipped (scripts 1021 + src 2252; +17
+  watson-walk pins, +1 render-plan pin over the 3,255 baseline) ·
+  `npm run test:worker` 145 / 0 · `node scripts/lint-cards.mjs`
+  GATE PASSED · `npm run build:pages` green, entry chunk 457,844 B
+  (PR A cured tip: 457,830 B; the walk code rides the lazy
+  DetectiveHost chunk) · built flags.json carries `watsonWalk: true`.
+- **Render:** fixed line #20 "Let's find some clues" — production
+  pipeline, speed 106, measured median F0 93.8 Hz (Watson family
+  gate 82–115), 132 wpm, 1.82 s, manifest clean (2,532 entries).
+  Exactly ONE new render ships: the renderer's stale-hash check
+  also re-rendered 4 shipped lines whose stored speeds were
+  ladder-adjusted; all 4 were reverted (mp3s + manifest), leaving a
+  one-entry manifest diff.
+- **E2E (solo sequential runs under flock, dist built at the tip;
+  logs in `~/workspace/meridian-watson-walk-logs/`):** walk spec
+  8/8 (flow + reduced at 390/768/1280, sheet-cancel, kill-switch) ·
+  staging 11/11 (incl. strengthened C11 at 3 widths + C12) ·
+  companion 6/6 · replay 3/3 · sound 10/10 · summary 3/3 ·
+  visibility 4/4 · stations 1/1 · endings 2/2 · swap 1/1 (K5) ·
+  flag 2/2.
+- **Env-signature failures, all cured by solo re-runs (repo rule:
+  sequential is the arbiter):** EDQUOT (-122) teardown writes on
+  the 1280 walk flow + staging 390 flow; one 300 s page-load hang
+  (empty snapshot) on the sheet test; batch runs repeatedly cut
+  mid-file while a second crew worked this VM. One staging 768
+  batch failure carried the defect-2 signature (`companion=killed`,
+  no berth — the FG-5 latch, owned by the standalone cure PR); it
+  passes solo and is NOT a PR B regression (companion.ts, berth
+  handlers and the latch are untouched by this diff — verified).
+- **Cure found by the sheet test (in-scope, fixed here):** the
+  sheet-cancel cleared heldClueRef, lifting the drain suppression,
+  so the announcement's drain advanced the ladder during the sheet
+  and the ack played behind it. Guard now covers deferredDrainRef;
+  sheet test green.
+- **Coordination:** two live defects from PR A surfaces (bench
+  close-state leak; FG-5 latch never resetting) ship as ONE
+  standalone cure PR from main in parallel. Frozen seams respected:
+  bench gating / stagingStage transitions beyond carry-in (f),
+  companion.ts, berth/entry handlers, entryPendingRef, FG-5 latch —
+  none modified (entryIntentRef gained only carry-in (e)'s reset).
+  After the cure PR merges, this branch takes a merge-up before
+  its pipeline; expected coordination points are the stagingStage
+  initialiser / case-change assignment and the entryIntentRef line.
+- **Follow-ups:** (1) pre-existing guesses-list FLIP transient at
+  guess commit (~200 ms; figure-over-text across the bench slot,
+  reproduced with watsonWalk OFF — LoopScreen animation, not pair
+  placement); (2) arrival-boundary sampling note lives in the walk
+  spec; (3) PR A follow-ups unchanged (findability study, CELEBRATE
+  overlap sampling).
 
 ---
 

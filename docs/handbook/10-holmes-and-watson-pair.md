@@ -458,6 +458,87 @@ the re-run panel and the flip owner can check them off one by one.
   the machine's existing view, the degradation matrix, and the
   flag. The props whitelist and the swap test are untouched.
 
+## Staging rework — PR B: Watson Walks (2026-11-07)
+
+- **The word:** the staging council's Q3 (evidence folder,
+  `COUNCIL-staging-rework.md`). PR B is the third and final slice
+  of the staging rework, after PR C (#357) and PR A (#361). The
+  flag `watsonWalk` ships **TRUE** in this PR (baked default
+  `false` in `src/lib/flags.ts`; `public/flags.json` sets it
+  true), acting only when `detectivePair` + `hostsStaging` are
+  also on. **Kill-switch:** `watsonWalk: false` restores the PR A
+  behaviour on the pair surface — Watson teleports to the station
+  and clue speech starts at clue reveal. Two deltas are permanent
+  in both modes and disclosed here rather than hidden: the
+  "Let's find some clues" render stays in the audio manifest
+  (it is only ever enqueued while the flag is on), and the two
+  staging carry-in fixes — the `entryIntentRef` reset on case
+  change and the resumed-case staging initialisation — apply
+  whenever `hostsStaging` is on, in both `watsonWalk` modes;
+  they are staging fixes, not walk behaviour.
+- **The walk:** Watson walks the gutter to each clue card; the
+  whole gutter cluster (station, replay cue, Listen button, sound
+  chip) travels together so their pairwise separations hold
+  mid-walk. Clue speech is released **only on walk-arrival**
+  (the station cluster's `transitionend`, with a duration + 250 ms
+  fallback so a throttled transition can never trap a read).
+  Clue 2+ walks are silent. Tap-Watson replay at the station is
+  instant — no re-walk. A clue advance mid-read stops and flushes
+  speech, then walks, then reads on arrival. Opening the sheet
+  mid-walk cancels the walk and the held read is **dropped, never
+  fired late**: the ladder's drain is deferred and dispatched
+  once when the sheet closes (a suppression cure found by the
+  walk spec's sheet test — the announcement's own drain must not
+  advance the ladder behind the sheet). Reduced-motion and
+  resource-constrained (dock-only) devices skip the walk:
+  instant placement, immediate read.
+- **Walker decision:** a **second, parallel walker**, host-local
+  in `DetectiveHost` — 1-D vertical travel between measured card
+  anchors, a transform on the station cluster. Holmes's engine
+  was NOT generalised: it is 2-D map geometry (`holmesXY`, its
+  own walk timer, the berth solver's dock/berth/hide outcomes),
+  and extracting a shared walker would refactor proven code to
+  share almost nothing. The pure module
+  `src/game/loop/detective/watson-walk.ts` owns the walk's
+  constants and gates, unit-pinned: the gutter derivation, the
+  duration band (260 px/s clamped to 600–1000 ms), the
+  announcement gate, and the station chip/Holmes offsets.
+- **Gutter reconciliation:** PR A's **118 px ships**, now derived
+  instead of literal — card gap 6 + Watson figure 100 + edge
+  clear 12. The council sketch's 112 px would leave only 6 px of
+  edge clearance, half the pair's standard 12 px outer clearance,
+  and re-narrow every card against PR A's proven layout for no
+  clearance gain. The vertical look-alikes are derived too
+  (figure-half 52 + 10 below the figure; the Listen/chip stacks
+  build on it). The margin still applies for the whole session —
+  no mid-case reflow (PR A's rule stands).
+- **The announcement:** fixed line #20, "Let's find some clues",
+  spoken during the **case-open walk only**, session cap 2,
+  production-rendered at speed 106 — measured median F0 **93.8 Hz**
+  (Watson family gate 82–115 Hz), 132 wpm, 1.82 s. Exactly one
+  new render ships in PR B.
+- **Zero overlap:** the per-device gate above covers the walk
+  states as well — `tests/e2e/detective-watson-walk.spec.ts`
+  ports PR A's position-sampling audit (shared via
+  `tests/e2e/detective-u10.ts`, not duplicated) and asserts
+  0 px² in walking, standing, reading, muted, rising, and
+  reduced-motion states at 390/768/1280. One boundary note lives
+  in the spec: the arrival sample may record the released clip a
+  frame before React commits the idle attribute — the gate
+  itself (release only inside the arrival handler) is what the
+  spec pins.
+- **Answer-blindness:** PR B adds NO host props. The walk reads
+  only the machine's view, the degradation matrix, DOM geometry
+  of the clue cards, and the flags. The props whitelist is
+  untouched and the K5 swap test passes unchanged.
+- **Coordination note:** two live defects found in PR A's
+  surfaces after it shipped (the bench close-state leak and the
+  FG-5 companion latch never resetting) are cured by a separate
+  PR from `main`, in parallel; PR B's diff does not touch the
+  bench gating, `companion.ts`, the berth/entry handlers, or
+  the latch. When the cure merges, this branch takes a merge-up
+  before its review pipeline runs.
+
 ## Audio: pre-rendered, with honest coverage
 
 - Runtime speech synthesis was rejected for this pair (BUILD-SCOPE
