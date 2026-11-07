@@ -219,6 +219,16 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // PR A (staging rework): bench + coffee + watch, slot collapse,
+      // entry walk, berth walks, zero clue-text overlap, mute taps —
+      // every assertion at 390 / 768 / 1280 (owner per-device gate).
+      // The spec drives its own per-width contexts; the project
+      // viewport is only a default.
+      name: "detective-staging",
+      testMatch: /detective-staging\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },
