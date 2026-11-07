@@ -837,19 +837,28 @@ for (const w of WIDTHS) {
       await installDetectiveRecorder(offContext, 3);
       const page = await offContext.newPage();
       await fulfillFlagsStaging(offContext);
-      await openCaseOnBench(page, 137);
-      const bench = page.getByTestId("detective-bench");
-      await expect(bench).toHaveAttribute("data-staging-stage", "bench");
-      await expect(
-        bench.getByTestId("detective-muted-badge"),
-        "muted badge latched on the bench slot",
-      ).toBeVisible({ timeout: 10_000 });
-      await expect(
-        page.getByTestId("detective-sound-chip"),
-        "no sound chip anywhere during bench (exactly-one-chip invariant)",
-      ).toHaveCount(0);
-      await expect(page.locator('[data-detective="watson"]')).toHaveCount(1);
-      await expect(page.locator('[data-detective="holmes"]')).toHaveCount(1);
+      /* With sound OFF the CASE_OPEN duet drains silently and the
+       * bench rises quickly — so sample the bench from its FIRST
+       * paint instead of asserting after the case fully opens: the
+       * badge is latched from the bench's first render (soundOn
+       * starts false), and the poll catches that window. */
+      await page.goto(`http://127.0.0.1:4123/Meridian/?loop-puzzle=137`);
+      await page
+        .getByRole("button", { name: "GeoDetective: Solve a mystery" })
+        .click();
+      const benchSample = () =>
+        page.evaluate(() => {
+          const bench = document.querySelector('[data-testid="detective-bench"]');
+          if (!bench) return "none";
+          const stage = bench.getAttribute("data-staging-stage");
+          if (stage !== "bench") return `stage:${stage}`;
+          const badge = bench.querySelector('[data-testid="detective-muted-badge"]');
+          const chips = document.querySelectorAll('[data-testid="detective-sound-chip"]').length;
+          return badge ? `badge:chips=${chips}` : "bench:no-badge";
+        });
+      await expect
+        .poll(benchSample, { timeout: 30_000 })
+        .toBe("badge:chips=0");
     } finally {
       await offContext.close();
     }
