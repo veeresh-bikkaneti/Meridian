@@ -37,7 +37,8 @@ export type FlagName =
   | "globeTierSplit"
   | "friendChallenges"
   | "scoutUpgradeTrial"
-  | "detectivePair";
+  | "detectivePair"
+  | "hostsStaging";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -72,6 +73,15 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // byte-identical. true = the pair mounts in LoopScreen. Ships dark;
   // the flip is a separate owner-gated flags.json redeploy (U9).
   detectivePair: false,
+  // Holmes & Watson staging rework (PR A, "Found at a Glance"): the
+  // bench scene before a case's questions load, the makeover sizes,
+  // the entry walk onto the map, and the gutter station. false =
+  // today's shipped behaviour (the pair exactly as PR #355–#358
+  // shipped it) — that is the kill-switch: redeploy flags.json with
+  // hostsStaging false and staging disappears, the shipped pair
+  // stays. The baked default stays false so a failed flags fetch
+  // falls back to the shipped pair, never to half-proven staging.
+  hostsStaging: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;

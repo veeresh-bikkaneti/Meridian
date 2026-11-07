@@ -277,10 +277,13 @@ the re-run panel and the flip owner can check them off one by one.
     same action. Tap-Watson keeps its shipped replay behaviour; the
     two hitboxes are separate elements, both handlers stop
     propagation, and the E2E gate proves each tap never fires the
-    other's action. At the dock — where the shipped staging paints
-    Holmes's box over the left of Watson's replay box — the Holmes
-    alias narrows to a 44 px strip so both tap centres stay
-    unobstructed; at a berth it keeps Holmes's full box. The figures
+    other's action. At the dock — where the staging of the day
+    painted Holmes's box over the left of Watson's replay box — the
+    Holmes alias narrowed to a 44 px strip so both tap centres stayed
+    unobstructed; at a berth it kept Holmes's full box. (Premise
+    superseded the same day: PR #358 moved Holmes's dock beside
+    Watson, the boxes no longer overlap, and PR A restored the full
+    70 px dock alias — see the staging record below.) The figures
     themselves are never greyed or altered while muted (Brand ruling).
 - **The one-key decision:** everything flips the single persisted
   `meridian.sound` value through `setSoundEnabled`, and all audio
@@ -325,8 +328,90 @@ the re-run panel and the flip owner can check them off one by one.
   plus the folded Act-On nits were cured on the same branch in
   PR #357's cure round; the cured tip goes back through Silo QA +
   the full panel for a re-vote before any merge.
-- Forward obligation for PR A: when PR A (hostsStaging) resizes the staging figures, it must re-derive chipStationOffset/holmesStationOffset in DetectiveHost from the layout constants — PR C's literals are arithmetic on the current 100/70px figures, not constants of record.
+- Forward obligation for PR A: when PR A (hostsStaging) resizes the staging figures, it must re-derive chipStationOffset/holmesStationOffset in DetectiveHost from the layout constants — PR C's literals are arithmetic on the current 100/70px figures, not constants of record. DISCHARGED in PR A (see the staging record below): the offsets are derived from WATSON_DOCK_W / HOLMES_BOX / CELEBRATE_LAYOUT, and STATION_CLEARANCE_PX joined the derivation.
+- **Cure round 2 (panel re-vote, 2026-11-06):** panel 2 APPROVE / 8 APPROVE-WITH-NITS / 1 BLOCK (Office Hours: the summary-celebration player leaked its line on unmount — `dispose()` never paused the held Audio element) · DevEx PASS-WITH-NITS. The cure (pause on dispose, +2 unit tests) landed on the same branch; the merged tip then passed the merge-up re-vote 12/12 with 0 BLOCKs.
 - Open owner question: should the summary dialog get its own SoundToggle? Right now no mute surface is reachable while the modal summary is open; the question is the owner's and stays open.
+
+## Staging rework — PR A: Found at a Glance (2026-11-06)
+
+- **The word:** the staging council's PR A (council report in the
+  evidence folder), as amended by the owner at the mockup v2 review:
+  the council's reserved strip is REPLACED by the bench — no
+  padded/empty reserved strip anywhere — with coffee and a watch
+  glance on the bench, and (owner, 2026-11-06, after the prod-pair
+  incident) the per-device gate below. PR #357 (PR C) merged first;
+  PR B (Watson walks) follows.
+- **The flag:** `hostsStaging`, a sub-flag of the pair. It ships
+  TRUE in `public/flags.json` in this PR (the staging ships live);
+  the baked-in default in `src/lib/flags.ts` stays false, so a
+  failed flags fetch falls back to the shipped pair. FALSE =
+  today's shipped behaviour exactly — the working kill-switch is
+  the same one-line flags.json redeploy as the pair's own flip.
+  `detectivePair` is untouched.
+- **What shipped:**
+  - **Makeover:** a cream halo (3–4 px) with a near-black keyline
+    (~1.5 px) BAKED into both rigs' art — a silhouette group painted
+    under each figure inside the SVG itself. No live CSS filter or
+    drop-shadow anywhere (the performance seat's veto). Costumes
+    unchanged: Holmes brick-red #a52a21, Watson royal-blue #27408b.
+  - **Sizes:** ~128 px in the bench slot; 104 px on the map and at
+    the station (inside the council's 104–112 px on-map band).
+  - **The bench:** before a case's questions load (the case-open
+    beat), Holmes and Watson SIT on a bench in the page's own flow
+    directly under the map. Holmes glances at his watch on an idle
+    loop; both drink coffee — cups in hand, alternating sip cycles,
+    deliberately NOT synchronized. When the first clue read starts,
+    the bench board fades: Watson rises to his station, Holmes
+    stands in the slot. When Holmes enters the map the slot
+    COLLAPSES to zero height; the cups stay behind on the bench and
+    never enter play.
+  - **Entry walk:** at the first map interaction Holmes visibly
+    WALKS from the bench slot onto the map to his dock — a real
+    transition with the walk pose, not a teleport. Reduced motion
+    cuts the walk (instant placement), as with every pair motion.
+  - **Berth-to-berth walks:** the shipped pause-berth engine
+    (350 ms desktop / 450 ms touch pause trigger; 80 ms absence on
+    pan/zoom/sheet/rings/speech) walks him between berths with the
+    walk pose — pinned by the staging E2E at all three widths.
+  - **Zero-overlap law (owner, absolute):** neither figure ever
+    overlaps clue-card text — 0 px² — in any state (bench, rising,
+    walking, standing, reading, muted, reduced-motion). Under
+    staging, LoopScreen reserves a 118 px gutter beside the clue
+    cards (the cards narrow; their text reflows inside them — the
+    mockup v2 geometry), Watson's station stands IN the gutter
+    centred on the active card, and Holmes never joins the station
+    cluster: before entry he stands in the bench slot, after entry
+    he lives on the map. The staging E2E ports the mockup's
+    position-sampling audit (figure boxes vs every clue text
+    element, sampled through the whole case).
+  - **Dock alias restored:** PR C's 44 px dock narrowing of the
+    Holmes mute alias was forced by the pre-#358 dock overlap;
+    #358 deleted that overlap (Holmes beside Watson, boxes
+    [12,112] vs [120,190]), so PR A restores the full 70 px dock
+    alias (the narrowing class is deleted) and re-checks the map
+    chip against the wider dock cluster: the chip rides ABOVE the
+    cluster (bottom 128 px = inset 12 + figure 104 + 12 clear) and
+    clears it at any dock width. The station's Listen-clearance
+    narrowing (PR C) is a different slice and stays.
+  - **Offset re-derivation:** chipStationOffset /
+    holmesStationOffset are derived from the layout constants of
+    record (WATSON_DOCK_W, HOLMES_BOX, CELEBRATE_LAYOUT, the 4 px
+    station gap, the 8 px chip clear); STATION_CLEARANCE_PX
+    (= HOLMES_BOX.h + 12) is derived the same way. The three
+    look-alike gaps (DOCK_GAP 8, chip clear 8, station gap 4) stay
+    distinct — shared values, different meanings.
+- **PER-DEVICE GATE — STANDING RULE for this feature (owner
+  amendment, 2026-11-06):** every staging assertion (bench +
+  coffee + watch, slot collapse, entry walk, berth walks, zero
+  text overlap, mute taps) is E2E-verified at THREE widths —
+  390 px (phone), 768 px (tablet), 1280 px (desktop). No width
+  proxies another. Presence is not evidence: the assertions are
+  viewport/geometry measurements in the #358 visibility pattern,
+  and post-merge live verification includes desktop-width
+  screenshots of the shipped behaviour.
+- **Answer-blindness:** staging adds NO host props — it reads only
+  the machine's existing view, the degradation matrix, and the
+  flag. The props whitelist and the swap test are untouched.
 
 ## Audio: pre-rendered, with honest coverage
 
