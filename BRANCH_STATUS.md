@@ -121,12 +121,13 @@ Approvals: PR + merge under the coordinator's assignment
 
 - [x] Diagnosis verified against main `566c955` (code + spec grep)
 - [x] Capsule committed (first commit)
-- [ ] Store: endSession + loopSessionSummary + unit tests
-- [ ] UI: header button + two-option choice dialog
-- [ ] UI: LoopSessionSummary + LoopSummaryCelebration
-- [ ] E2E: geodetective-endgame.spec.ts (both paths, 4 widths)
-- [ ] Docs: handbook §2 record + README sentence
+- [x] Store: endSession + loopSessionSummary + unit tests
+- [x] UI: header button + two-option choice dialog
+- [x] UI: LoopSessionSummary + LoopSummaryCelebration
+- [x] E2E: geodetective-endgame.spec.ts (both paths, 4 widths)
+- [x] Docs: handbook §2 record + README sentence
 - [ ] Builder gates (tsc / npm test / lint-cards / build:pages)
+  - Builder note (2026-11-07): tsc clean · npm test green · lint-cards GATE PASSED · E2E spec collects (7 tests). `build:pages` NOT green locally: 4 attempts, vite build completed + dist written every time, prerender crawl OOM-killed (exit 137) under concurrent crew load on the VM — CI build is the clean read.
 - [ ] PR opened
 - [ ] Silo QA (keyed PR#+tip)
 - [ ] Panel 12 seats by name + DevEx + benchmark

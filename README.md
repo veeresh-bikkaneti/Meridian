@@ -71,6 +71,8 @@ https://meridian.knowledgetest.workers.dev/
 
 Solving all 387 mysteries earns the full-collection celebration.
 
+The header's **End game** button ends a session with a summary — cases closed, streaks, and deck progress, with Holmes and Watson celebrating on it. Mid-case it offers a choice: end the case for good (it counts for nothing and can't be resumed), or pause it exactly as it stands and pick it up later from Home.
+
 ### Capitals & Flags — the first story pack
 
 New geography content arrives as **story packs**: extra case sets that plug into the editions above instead of standing alone. The first pack is **Capitals & Flags** — 110 cases (60 country capitals, all 50 US state capitals), each written to the same standard as the core mysteries: a five-rung ladder whose history rung is the moment the place became a capital, one retellable hook, a giveaway that names the seat of government, and a reveal card that ends with the plain pairing ("Accra is the capital of Ghana."). Every clue traces to a verbatim Wikipedia quote in its authoring record — no invented facts.
