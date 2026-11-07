@@ -1,3 +1,7 @@
+## PR #362 RECORDS ROUND — feat/staging-close-berth-cure (2026-11-07)
+
+- **Records-only batch (docs + one comment, NO code-behaviour change, NO MERGE):** full-pipeline vote on tip `d02a752` — panel 7 APPROVE-WITH-NITS / 4 APPROVE / 1 BLOCK (records-only, Office Hours) + DevEx BLOCK (records-only) + Silo QA PASS-WITH-NITS + benchmark PASS; ZERO code-merits blocks. This batch cures: missing capsule Follow-ups bullet [DevEx BLOCK] · unit count corrected to 3,259, sourced from the preserved test logs [Office Hours BLOCK 1 + Silo QA nit] · berth numbers labelled by run, recovery 323 px in the builder final run [Office Hours BLOCK 2] · net +4 tests wording (four new + one extended) [DevEx nit 1 + Office Hours nit] · handbook closed-state sampling stated as exact 50 ms [DevEx nit 2] · berth spec [56, 320] relabelled ARRIVAL band, comment only [Level Architect nit] · follow-ups (a)–(h) added to capsule + PR body. New tip = the commit carrying this capsule.
+
 ## STAGING CLOSE / BERTH CURE — feat/staging-close-berth-cure (2026-11-07)
 
 - **TASK / outcome:** Standalone cure PR for TWO live production defects in
@@ -41,18 +45,29 @@
   case change. The degradation dock-only path (Save-Data / ≤4 GB /
   battery saver — `data-companion="dock"`) is by design and untouched.
 - **Gates (final tip):** `npx tsc --noEmit` clean · `npm test`
-  3,263 pass / 0 fail / 11 skipped (scripts 1,020 + src 2,243, incl.
-  companion 23/23 with 4 new cure tests) · `npm run test:worker`
+  3,259 pass / 0 fail / 11 skipped (scripts 1,020 + src 2,239, incl.
+  companion 23/23 — net +4 tests, 19→23: four new tests plus one
+  EXTENDED pre-existing kill test, the short-burst behaviour) ·
+  `npm run test:worker`
   145/0 · `node scripts/lint-cards.mjs` GATE PASSED ·
   `npm run build:pages` exit 0, entry chunk 457.83 kB (gzip 144.81).
-  Logs: `~/workspace/meridian-cure-logs/`.
+  Logs: `~/workspace/meridian-cure-logs/`. Unit-count source: the
+  builder's preserved `npm-test.log` + `npm-test2.log` in that folder
+  and Silo QA's fresh run in `~/workspace/meridian-362-siloqa-logs/`
+  both measure 3,259 pass / 0 fail / 11 skipped (scripts 1,020 + src
+  2,239) = main's 3,255 + 4 net-new companion tests.
 - **E2E (solo, `--workers=1`, under flock; logs in the cure-logs
   folder):** NEW closed-state 6/6 (SOLVE + FAIL × 390/768/1280;
   SELECTION_READ window sampled in every run, 3–9 samples, bench-free
-  throughout) · NEW real-berth 3/3 in one clean final run (mouse 1280:
+  throughout) · NEW real-berth 3/3 — numbers labelled BY RUN, never
+  pooled. Builder final clean run (`e2e-berth-final.log`): mouse 1280:
   dock→berth 358 px, centre 100 px from the point; touch 390: 271 px,
   centre 97 px; recovery: latch fired under 8× throttle → no berth
-  while killed → re-qualified → berth 358 px) · existing gates all
+  while killed → re-qualified → berth 323 px, centre 68 px. Silo QA
+  independent run (`meridian-362-siloqa-logs/e2e-berth.log`): mouse
+  358 px, centre 100 px; touch 244 px, centre 93 px; recovery 318 px,
+  centre 64 px. (An earlier 358 px recovery figure came from
+  `e2e-berth2.log`, a run where touch FAILED — superseded.) · existing gates all
   green: staging 11 · companion 6 · swap (K5) 1 · endings 2 ·
   stations 1 · replay 3 · sound 10 · summary 3 · visibility 4 ·
   flag 2 · reduced summary 1 + reduced detective 1 (the reduced
@@ -64,6 +79,31 @@
   already pushed (tip verified on origin) — the clone was recreated
   from the builder repo at the same tip, hashes re-verified, dist
   rebuilt, and the remaining gates ran there.
+- **Follow-ups:** (i) Post-merge CLOSED-state live screenshots at
+  390/768/1280 on BOTH hosts. (ii) PR-B merge-up coordination note:
+  PR B touches the stagingStage initialiser + an entryIntentRef reset
+  near this surface and the telemetry guard's CONTEXT_FILES; this
+  branch was built from main as if those lines do not exist. (iii)
+  Real-device confirmation on the owner's phone AND desktop
+  post-merge: after normal play, observe the real berth and the
+  `data-companion` transitions — "killed" → "full" timing (the latch,
+  cured here), or "dock" (degradation, by design), which re-routes
+  the diagnosis — plus the bench-free closed state at production 1×
+  speech [UX Researcher nit 4]. (a) Composite E2E: kill-while-standing
+  → re-qualify → first pause enters + berths [Game Developer].
+  (b) Post-recovery grace-window tuning incl. the ~4.9 s effective
+  sustain tolerance comment [Game Developer / Senior Developer].
+  (c) Slot-height/page-height sample in the closed-state sampler
+  [UX Designer]. (d) Closed-state rect-vs-text overlap assertion
+  [UX Designer]. (e) Map-tap final-guess close as a regression anchor
+  in the closed-state spec [UX Researcher]. (f) Owner-eye check of
+  the post-merge close captures for the snap-vs-0.7 s-ease jolt
+  [Game Designer]. (g) PR B merge-up checklist addition: expect
+  content conflicts in BRANCH_STATUS.md + playwright.config.ts
+  (additive registrations/capsules) alongside the two known
+  DetectiveHost lines [Senior Architect, merge-tree verified].
+  (h) Measured-dock assertion for the touch berth (today the dock
+  reference is geometric) [Game Developer / Senior Developer].
 - **Protected / untouched:** scoring, dealing, clue text, hint defaults,
   donation copy, celebration choreography, answer-blind whitelist,
   flag values, FG-5 thresholds, watson-walk code (none on this base).

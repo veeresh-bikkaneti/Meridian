@@ -488,8 +488,10 @@ the re-run panel and the flip owner can check them off one by one.
   was not touched.
   **Per-device gate extension (part of the standing rule above):**
   the staging gate now also samples the CLOSED state — from
-  "Case closed" first rendering through CELEBRATE / POUT, at
-  ≤ 200 ms cadence — asserting bench count 0 throughout it, on
+  "Case closed" first rendering through CELEBRATE / POUT, sampled
+  at exactly 50 ms (`detective-closed-state.spec.ts`: the in-page
+  sampler polls at 50 ms; 200 ms is the gate's ceiling requirement)
+  — asserting bench count 0 throughout it, on
   SOLVE and FAIL, at all three widths
   (`detective-closed-state` E2E); and berthing is gated on a
   MEASURED arrival, never DOM presence, including after a

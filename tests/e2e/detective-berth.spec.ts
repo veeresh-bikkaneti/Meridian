@@ -24,9 +24,10 @@ import {
  *     staging spec's own rule), AND
  *   - placement reads "berth", AND
  *   - the wrapper's centre lands within the berth law's reach of
- *     the pause point: centre distance in [56, 320] px (the solver's
- *     legal band: ≥64 px centre minimum on desktop / ≥96 dp touch,
- *     ≤320 px remote cutoff) and strictly ABOVE the point.
+ *     the pause point: centre distance in [56, 320] px (the ARRIVAL
+ *     band: 56 is BERTH_EDGE_MIN, not a centre minimum — the solver's
+ *     centre minimums are 64 px desktop / 96 px touch — and 320 px is
+ *     the remote cutoff) and strictly ABOVE the point.
  *
  * Cases: mouse pause at 1280, touch pause (CDP, finger held with
  * micro-jitter) at 390, and the post-throttle RECOVERY case at 1280:
