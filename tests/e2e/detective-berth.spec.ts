@@ -81,6 +81,34 @@ async function holmesWrapperPos(page: Page) {
   });
 }
 
+/** A map tap can open the place-confirm sheet, which hides the
+ * host whole (wrapper unmounted) until dismissed — the staging
+ * spec's pattern. */
+async function dismissSheetIfOpen(page: Page) {
+  const dialog = page.getByRole("dialog");
+  if (await dialog.isVisible().catch(() => false)) {
+    await page
+      .getByRole("button", { name: "Not this one" })
+      .click()
+      .catch(() => undefined);
+    await page.waitForTimeout(400);
+  }
+}
+
+async function waitForDock(page: Page) {
+  let pos: { x: number; y: number } | null = null;
+  await expect
+    .poll(
+      async () => {
+        pos = await holmesWrapperPos(page);
+        return pos !== null;
+      },
+      { timeout: 30_000 },
+    )
+    .toBe(true);
+  return pos!;
+}
+
 async function showMap(page: Page) {
   await page.evaluate(() => {
     document
@@ -176,11 +204,10 @@ test("real berth: mouse pause lands Holmes at the pause point (desktop 1280)", a
     await page.mouse.move(mapBox!.x + 40, mapBox!.y + 40);
     await page.mouse.down();
     await page.mouse.up();
-    await page.waitForTimeout(1_200);
-    const dockPos = await holmesWrapperPos(page);
-    expect(dockPos, "Holmes wrapper at the dock after entry").not.toBeNull();
+    await dismissSheetIfOpen(page);
+    const dockPos = await waitForDock(page);
     const point = berthPointFor(1280, mapBox!);
-    const landed = await berthAtMouse(page, point, dockPos!);
+    const landed = await berthAtMouse(page, point, dockPos);
     console.log(
       `[berth mouse 1280] dock=(${dockPos!.x},${dockPos!.y}) point=(${Math.round(point.x)},${Math.round(point.y)}) landed=(${landed.x},${landed.y}) distFromDock=${Math.round(landed.distFromDock)}px centreDist=${Math.round(landed.centreDist)}px companion=${await companionMode(page)}`,
     );
@@ -218,9 +245,8 @@ test("real berth: touch pause lands Holmes at the pause point (phone 390)", asyn
       type: "touchEnd",
       touchPoints: [],
     });
-    await page.waitForTimeout(1_200);
-    const dockPos = await holmesWrapperPos(page);
-    expect(dockPos, "Holmes wrapper at the dock after touch entry").not.toBeNull();
+    await dismissSheetIfOpen(page);
+    const dockPos = await waitForDock(page);
     const point = berthPointFor(390, mapBox!);
     await cdp.send("Input.dispatchTouchEvent", {
       type: "touchStart",
@@ -228,7 +254,7 @@ test("real berth: touch pause lands Holmes at the pause point (phone 390)", asyn
     });
     let landed: Landed | null = null;
     const deadline = Date.now() + 120_000;
-    let dock = dockPos;
+    const dock = dockPos;
     try {
       while (Date.now() < deadline) {
         // Finger micro-jitter, as in the K2 touch grid (a perfectly
@@ -240,11 +266,8 @@ test("real berth: touch pause lands Holmes at the pause point (phone 390)", asyn
           });
           await page.waitForTimeout(220);
         }
-        if (!dock) dock = await holmesWrapperPos(page);
-        if (dock) {
-          landed = await checkLanded(page, point, dock);
-          if (landed) break;
-        }
+        landed = await checkLanded(page, point, dock);
+        if (landed) break;
       }
     } finally {
       await cdp.send("Input.dispatchTouchEvent", {
@@ -285,9 +308,8 @@ test("real berth: post-throttle recovery — kill latches, re-qualifies, berths 
     await page.mouse.move(mapBox!.x + 40, mapBox!.y + 40);
     await page.mouse.down();
     await page.mouse.up();
-    await page.waitForTimeout(1_200);
-    const dockPos = await holmesWrapperPos(page);
-    expect(dockPos).not.toBeNull();
+    await dismissSheetIfOpen(page);
+    const dockPos = await waitForDock(page);
     const point = berthPointFor(1280, mapBox!);
 
     /* -- Throttle in SEARCH until the FG-5 latch provably fires --- */
@@ -320,7 +342,7 @@ test("real berth: post-throttle recovery — kill latches, re-qualifies, berths 
     console.log("[berth recovery] companion re-qualified after unthrottle");
 
     /* -- And now a pause produces a REAL berth --------------------- */
-    const landed = await berthAtMouse(page, point, dockPos!);
+    const landed = await berthAtMouse(page, point, dockPos);
     console.log(
       `[berth recovery] landed=(${landed.x},${landed.y}) distFromDock=${Math.round(landed.distFromDock)}px centreDist=${Math.round(landed.centreDist)}px`,
     );
