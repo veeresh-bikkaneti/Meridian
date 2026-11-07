@@ -298,6 +298,16 @@ export default defineConfig({
       testMatch: /geodetective\.spec\.ts/,
     },
     {
+      // GeoDetective End game (owner ruling, 2026-11-07): header
+      // button at four widths, both fates (pause / outright) at 390 +
+      // desktop, counts-once after a pause-end, Esc / Keep playing.
+      // The spec drives its own per-width viewports; the project
+      // viewport is only a default.
+      name: "geodetective-endgame",
+      testMatch: /geodetective-endgame\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       // Owner directive 2026-10-12: every map tap registers a guess —
       // unlabeled taps open the confirm sheet instead of being rejected.
       name: "geodetective-unlabeled-tap",
