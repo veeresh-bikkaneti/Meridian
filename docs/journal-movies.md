@@ -72,7 +72,7 @@ clone downloads it).
 | 03 | 7–9 | southpointe, havelock, college-view, university-place, near-south, hyde, robbers-cave, star-city-shores, quilt-museum | 9/9 LIVE (university-place = flagged still+narration fallback; star-city-shores flagged close-up) |
 | 04 | 10–12 | woods-park, conestoga, branched-oak, mahoney, sac-museum, seward, homestead, pawnee-lake, platte-river-sp | 9/9 LIVE (cap did not block this batch) |
 | 05 | 13–15 | ashland, wahoo, wagon-train, spring-creek, arbor-lodge, beatrice, stagecoach, grand-island, henry-doorly | 9/9 LIVE |
-| 06 | 16–18 | old-market, chimney-rock, scotts-bluff, archway, durham, carhenge, kingsley, smith-falls, fort-robinson | 8/9 LIVE (kingsley, smith-falls, fort-robinson, chimney-rock v2 regens replace held v1s); archway regen in mix-only follow-up (hold overturned — two wagons are the keyframe's own exhibits) |
+| 06 | 16–18 | old-market, chimney-rock, scotts-bluff, archway, durham, carhenge, kingsley, smith-falls, fort-robinson | 9/9 LIVE (archway v2 mixed + swapped; hold overturned — two wagons are the keyframe's own exhibits) |
 | 07 | 19–21 | valentine, joslyn, golden-spike, indian-cave, ashfall, toadstool, chadron, niobrara, white-house | 9/9 LIVE (chadron, niobrara, white-house built; white-house stillness flag) |
 | 08 | 22–24 | golden-gate, grand-canyon, [old-faithful = pilot], rushmore, gateway-arch, french-quarter, space-needle, niagara, alamo | 8/8 LIVE (niagara + alamo flagged, see NOTES) |
 | 09 | 25–27 | willis, crater-lake, monument-valley, pike-place, cadillac, denali, everglades, death-valley, hoover | 9/9 LIVE (everglades, death-valley, hoover built; hoover v3 after two rejected takes) |
