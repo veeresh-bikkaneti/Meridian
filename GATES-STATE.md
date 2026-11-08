@@ -11,9 +11,9 @@ Base main at start: `9e49da3` (already merged up via `047739c`).
 - 7 owner negative tests posted in PR body; travel-overlap closed in `ac87cca`
 
 ## Gate progress
-1. [ ] Full-census E2E at healthy load (load ≲9) — IN PREP (worktree + deps)
-2. [ ] Play-style rest verification (1280 mouse rests ×2 + 390 touch-hold, screenshots)
-3. [ ] Follow screenshots 390/768/1280
+1. [~] Full-census E2E at healthy load (load ≲9) — DISPATCHED 2026-11-08 ~06:35 CST to census runner worker: full suite = 994 tests / 164 files / 64 projects (listed with VITE_KOFI_URL set; without it Playwright lists 0 — the env var is mandatory). Runner waits for load ≤9, runs under flock --workers=1, writes ~/workspace/meridian-364-evidence/census-full.log + census-summary.md with every failure bucketed FG-5-KILL / SELECTION_READ-MISS / OTHER. Never-run projects confirmed present: endings 2, replay 3, sound 10, swap 1, flag 2, stations 1, summary 3, reduced 14. tap-precision + p0-gaps list 0 tests (their spec files are absent from tests/e2e on this branch — census covers everything that exists).
+2. [~] Play-style rest verification — DISPATCHED 2026-11-08 ~06:33 CST to visual-tester worker: standalone script ~/workspace/meridian-364-evidence/rest-verify.mjs modeled on detective-follow.spec.ts (recorder rate 3 + fulfillFlagsFollow + case 137 + real heading-tap gesture unlock; waitForSearchIdle; map scrolled into view). Cases: 1280 mouse rests ×2 (map points 0.66,0.30 + 0.40,0.62, ~5 s parked sampling, drift + distance-to-rest-point + clue-overlap max), 768 rest 1, 390 CDP touch-hold rest 1 (parked while finger down + after-lift check). Log: rest-verify-log.md in the same evidence dir. NOTE for panel use: recorder accelerates clips 3× — play-style evidence only; the clean-room no-clue-read finding is a SEPARATE lane (U11 renders approved by owner 2026-11-08), not this PR's panel question.
+3. [~] Follow screenshots 390/768/1280 — folded into the Gate-2 worker run (follow-<width>-*.png in ~/workspace/meridian-364-evidence/): settled + rest-1 parked at all three widths + rest-2 at 1280 + after-lift at 390.
 4. [ ] Silo QA delta re-key (fresh clone, key PR364+342a5e4)
 5. [ ] 13-seat panel by name incl. Game player (timed log + screenshots)
 6. [ ] DevEx + benchmark
