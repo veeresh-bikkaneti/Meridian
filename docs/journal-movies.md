@@ -67,7 +67,7 @@ clone downloads it).
 ## Batches (12 workers, 3 sets each; batch 08 skips old-faithful = pilot)
 | Batch | Sets | Entries | Status |
 |---|---|---|---|
-| 01 | 1–3 | capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o | building |
+| 01 | 1–3 | capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o | 6 VERIFIED + LIVE (sets 1–2); set 3 in follow-up run (video cap) |
 | 02 | 4–6 | holmes-lake, pioneers-park, wilderness-park, antelope-park, oak-lake, wyuka, lincoln-airport, union-plaza, gateway | building |
 | 03 | 7–9 | southpointe, havelock, college-view, university-place, near-south, hyde, robbers-cave, star-city-shores, quilt-museum | building |
 | 04 | 10–12 | woods-park, conestoga, branched-oak, mahoney, sac-museum, seward, homestead, pawnee-lake, platte-river-sp | building |
