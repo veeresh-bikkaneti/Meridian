@@ -106,13 +106,13 @@
   "palm_gate_px": 3,
   "palm_pass": true,
   "budgets": {
-    "runtime_total_bytes": 173004,
+    "runtime_total_bytes": 174588,
     "runtime_budget_bytes": 500000,
     "runtime_pass": true,
-    "decoded_total_MB": 2.471,
+    "decoded_total_MB": 2.486,
     "decoded_budget_MB": 32,
     "decoded_pass": true,
-    "runtime_file_count": 44,
+    "runtime_file_count": 45,
     "note": "Pose plates + silhouettes are docs/test assets, excluded from the runtime total."
   },
   "scale_lock": {
@@ -1514,7 +1514,7 @@
     },
     {
       "file": "prop-notebook-pencil.png",
-      "bytes": 856,
+      "bytes": 1220,
       "width": 60,
       "height": 65,
       "decodedMB": 0.0156,
@@ -1571,6 +1571,21 @@
       ],
       "character": "watson",
       "part": "halo"
+    },
+    {
+      "file": "prop-pencil.png",
+      "bytes": 1220,
+      "width": 60,
+      "height": 65,
+      "decodedMB": 0.0156,
+      "rect_vb": [
+        1.0,
+        2.0,
+        31.0,
+        34.5
+      ],
+      "character": "prop",
+      "part": "pencil"
     }
   ],
   "docs_files": [

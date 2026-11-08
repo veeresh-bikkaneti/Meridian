@@ -1063,7 +1063,7 @@
     {
       "part": "notebook-pencil",
       "file": "prop-notebook-pencil.png",
-      "bytes": 856,
+      "bytes": 1220,
       "widthPx": 60,
       "heightPx": 65,
       "rectViewBox": [
@@ -1097,16 +1097,35 @@
         "width": 34.0,
         "height": 23.0
       }
+    },
+    {
+      "part": "pencil",
+      "file": "prop-pencil.png",
+      "bytes": 1220,
+      "widthPx": 60,
+      "heightPx": 65,
+      "rectViewBox": [
+        1.0,
+        2.0,
+        31.0,
+        34.5
+      ],
+      "rectPx": {
+        "x": 2.0,
+        "y": 4.0,
+        "width": 60.0,
+        "height": 65.0
+      }
     }
   ],
   "budgets": {
-    "runtime_total_bytes": 173004,
+    "runtime_total_bytes": 174588,
     "runtime_budget_bytes": 500000,
     "runtime_pass": true,
-    "decoded_total_MB": 2.471,
+    "decoded_total_MB": 2.486,
     "decoded_budget_MB": 32,
     "decoded_pass": true,
-    "runtime_file_count": 44,
+    "runtime_file_count": 45,
     "note": "Pose plates + silhouettes are docs/test assets, excluded from the runtime total."
   },
   "scaleLock": {
