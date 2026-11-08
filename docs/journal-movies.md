@@ -24,8 +24,11 @@ it is not rebuilt or reassigned.
   payoff line, then a soft close. Every line grounded in the entry's story
   text / imageAlt / visible art; never invent history.
 - Voice: Magnus (`avocado_v2:magnus`, "Boomy Mountain", deepest measured,
-  86–138 Hz) is the kept storyteller family; each story gets its own voice —
-  a mix of excitement and deeper bass, no two sounding the same. Briggs
+  86–138 Hz) is the kept storyteller family. Voices are spread across stories
+  for variety (a mix of excitement and deeper bass), but they are NOT unique
+  per story: the manifest uses 8 voice labels across 106 entries (top:
+  `avocado_v2:magnus` × 22), and `vdc_5723` / `avocado_v2:vdc_5723` appear as
+  two labels for what may be one voice (unverified). Briggs
   ("Husky Campfire") is the runner-up; the live-call-approved voice was
   `vdc_NOID19` (139–203 Hz). Either is a one-line swap. NEVER Aria/MAI_01
   (rejected: flat, robotic).
@@ -39,7 +42,7 @@ it is not rebuilt or reassigned.
   quiet, big at the key moment; one hero per frame; no page chrome/text;
   palette holds throughout; no invented objects/animals/buildings/text.
 
-## Verification (every clip, before it counts as done)
+## Verification recipe (the intended per-clip check)
 - ffprobe: 10 s, 1152x768, h264 + AAC; full decode exit 0.
 - Frames at 2 s / 6 s / 9.5 s checked against the source art (faithful, no
   invented objects/text, palette holds); motion present at beats.
@@ -48,7 +51,36 @@ it is not rebuilt or reassigned.
 - Nobody here can verify by ear — say so plainly per clip; the owner's
   listen is the final check.
 
-## Storage decision (recorded 2026-11-08)
+## Verification actually done (state as of PR head after `cb01f91c`)
+What is established, and by what evidence — do not read more into it:
+- **Mapping:** 106 manifest ids = the 106 `JOURNAL_NOTES` ids = the 106
+  images in `public/images/journal/`; every `file` is `<id>.mp4`. Checked by
+  an independent review script, not yet by a repo gate (see Pending in
+  `BRANCH_STATUS.md`).
+- **Assets:** all 106 URLs served HTTP 200 `video/mp4` from meridian-media
+  `08c8308`, byte-identical to that commit; ffprobe 10.000 s, h264 High
+  1152×768 24 fps + one AAC-LC track; full decode exit 0 (independent
+  review, 2026-11-08). Audio sample rate/channels vary between clips
+  (24/48/96 kHz, mono and stereo) and integrated loudness ranges about
+  −20.6 to −14.7 LUFS; 7 clips peak at −0.9 dBTP, just above the −1 dB target.
+- **Visuals:** sampled still frames only (per-clip frames by the building
+  workers and coordinator; 4 frames per clip in the independent review). No
+  one has watched the clips end to end as video.
+- **Narration:** NOT verified. No narration scripts or transcripts are kept
+  in this repo or in meridian-media, and no one has listened. "Every line
+  grounded in the entry's text" is the recipe's intent, not a checked fact.
+- **Known defects are recorded, not cleared.** Per the manifest's own notes,
+  80 of 106 entries carry a flag or caveat (only 26 notes lead with
+  "Clean"/"Cleanest"/"Best clip"), including residual invented or changed
+  objects (e.g. branched-oak, rushmore, space-needle, oak-lake, machu,
+  woods-park, tongariki, fort-robinson) and two still+narration fallbacks
+  (haymarket, university-place). Those clips do not meet the motion gates
+  above; shipping them as-is is the owner's call, per clip.
+
+## Storage proposal (recorded 2026-11-08 — not yet decided)
+Status: a proposal. Storage, hosting and the privacy effect of a third-party
+media host are Tier 2 under `AGENTS.md`; no Consensus Manifest or owner
+citation for this choice is recorded in this repo yet.
 Movies do NOT live in this repo. 106 clips × ~5.6 MB ≈ 600 MB would
 quadruple the git object store (~210 MB today) and push the GitHub Pages
 site from ~33 MB of `public/` to ~630 MB (1 GB cap, slow deploys, every
@@ -56,9 +88,13 @@ clone downloads it).
 - Movies live in the separate repo `veeresh-bikkaneti/meridian-media`,
   served by its own GitHub Pages at
   `https://veeresh-bikkaneti.github.io/meridian-media/journal/<id>.mp4`.
-- The app lazy-loads by URL only when a player opens that journal entry
-  (`preload="none"`); nothing is bundled. Same GitHub account and Pages
-  mechanism the owner already uses; no new vendor.
+- Intended design, NOT BUILT: a future player would lazy-load by URL only
+  when a player opens that journal entry (`preload="none"`), bundling
+  nothing. No code in `src/` reads the manifest today, so no movie plays in
+  the app. Before it can, the production CSP in `public/_headers`
+  (`media-src 'self' data: blob:`) would block this host; changing that is a
+  separate security/privacy decision, not part of this PR. Same GitHub
+  account and Pages mechanism the owner already uses; no new vendor.
 - `public/videos/journal-manifest.json` in THIS repo maps entry id → video
   URL + voice + verification date. Moving hosts later is a manifest change.
 - Future option (needs owner provisioning): Cloudflare R2 — best long-term
