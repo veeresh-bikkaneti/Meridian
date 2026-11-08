@@ -262,12 +262,22 @@ test("neg/faces-distinct — sabotage: a face copied over another FAILS the chec
 /*   for parts/plates because the cured whole-file values are 0 on    */
 /*   every part and 0/0/10 on the glass=null plates — a baked glass   */
 /*   would add ~240-400 px, materially above either threshold.        */
-/* - Pencil-yellow: NO pencil zone exists in the cure records, so    */
-/*   per the brief this scans Watson's torso + arm-back (plus every   */
-/*   other Watson part, reported) for the pencil's recorded colour   */
-/*   from prop-notebook-pencil.png, exactly (201,162,39) (112 px in   */
-/*   the prop), widened by ±12/±12/±14. Measured on the real parts:   */
-/*   0 px everywhere. The notebook band is NOT applied to Holmes:     */
+/* - Pencil-yellow: the art cure round split the pencil out of the   */
+/*   combined prop. prop-notebook-pencil.png is now notebook-ONLY    */
+/*   (0 pencil-band px, asserted exactly below) and the pencil ships */
+/*   as its own part, prop-pencil.png — same canvas and rect_vb as   */
+/*   the notebook, so it overlays it pixel-exactly — carrying the    */
+/*   pencil's recorded colour exactly (201,162,39): 112 px in        */
+/*   prop-pencil.png, the band widened by ±12/±12/±14. A pencil      */
+/*   zone DOES exist on the plates: on every pencil-present plate    */
+/*   (walk / station-idle / pout 112 px, notebook-mark 59 px) the    */
+/*   pencil sits at plate px x[200,213] y[197,219], the notebook's   */
+/*   lower-right edge; PENCIL_ZONE_PLATE_BOX is that measured bbox   */
+/*   with margin. Spec §4.2: the pencil is absent in gasp and        */
+/*   high-five, so both plates are asserted at exactly 0 pencil-     */
+/*   band px, in the zone AND whole-file. Measured on the real       */
+/*   parts: 0 px everywhere. The notebook band is NOT applied to     */
+/*   Holmes:                                                          */
 /*   his plaid coat sits inside it (7,698 px on holmes-torso.png),    */
 /*   so it cannot discriminate a notebook there — the notebook is     */
 /*   Watson's prop (spec §4.2) and the gate scans its owner.          */
@@ -308,6 +318,16 @@ function notebookZoneBoxForPart(rectVb, w, h) {
 const NB_ZONE_PLATE_BOX = [NB_ZONE_VB.x0 * 2, NB_ZONE_VB.y0 * 2, NB_ZONE_VB.x1 * 2, NB_ZONE_VB.y1 * 2]; // plates are full figures at 2 px/vb
 const NB_THRESHOLD = 10; // cured values: plates 0/0/0/3, parts <=4
 
+// Spec §4.2: Watson holds notebook + pencil in gasp and high-five,
+// but the pencil appears with the notebook EXCEPT in those two poses.
+const PENCIL_ABSENT_PLATES = [
+  "watson-pose-gasp.png", "watson-pose-high-five.png",
+];
+// Pencil zone on Watson plates (plate px at 2 px/vb): the measured
+// pencil bbox on the pencil-present plates — x[200,213] y[197,219] on
+// walk / station-idle / pout — with margin on every side.
+const PENCIL_ZONE_PLATE_BOX = [196, 192, 218, 224];
+
 const WATSON_NOTEBOOK_OFF_PLATES = [
   "watson-pose-read.png", "watson-pose-think.png",
   "watson-pose-celebrate-jump.png", "watson-pose-clap.png",
@@ -326,7 +346,7 @@ const HOLMES_GLASS_ON_PLATES = [
 ];
 
 function bakedPropReport() {
-  const report = { notebookZone: {}, lens: {}, pencil: {}, violations: [] };
+  const report = { notebookZone: {}, lens: {}, pencil: {}, pencilPlates: {}, violations: [] };
   // Notebook zone — every Watson runtime part (mapped) + plates (direct).
   for (const entry of lock.runtime_files.filter((e) => e.character === "watson")) {
     const img = readImg(entry.file);
@@ -347,6 +367,16 @@ function bakedPropReport() {
     const n = countBand(readImg(f), NB_BAND, NB_ZONE_PLATE_BOX);
     report.notebookZone[f] = n;
     if (n > NB_THRESHOLD) report.violations.push(`notebook-brown ${n}px in baked zone of ${f} (notebook:false pose)`);
+  }
+  // Pencil absence on the §4.2 plates: exactly 0 in the pencil zone
+  // AND exactly 0 whole-file — any pencil-band px at all is a violation.
+  for (const f of PENCIL_ABSENT_PLATES) {
+    const img = readImg(f);
+    const zone = countBand(img, PENCIL_BAND, PENCIL_ZONE_PLATE_BOX);
+    const whole = countBand(img, PENCIL_BAND);
+    report.pencilPlates[f] = { zone, whole };
+    if (zone !== 0) report.violations.push(`pencil-yellow ${zone}px in pencil zone of ${f} (spec §4.2: pencil absent in gasp and high-five, must be 0)`);
+    if (whole !== 0) report.violations.push(`pencil-yellow ${whole}px in ${f} (spec §4.2: pencil absent in gasp and high-five, must be 0)`);
   }
   // Holmes — glass on every runtime part (whole file) + glass=null plates.
   for (const entry of lock.runtime_files.filter((e) => e.character === "holmes")) {
@@ -375,6 +405,7 @@ test("neg/no-baked-props — real set: no notebook/glass/pencil baked where the 
   t.diagnostic(`notebook zone: ${JSON.stringify(r.notebookZone)}`);
   t.diagnostic(`pale-lens: ${JSON.stringify(r.lens)}`);
   t.diagnostic(`pencil-yellow (Watson parts): ${JSON.stringify(r.pencil)}`);
+  t.diagnostic(`pencil-yellow (pencil-absent plates, zone/whole): ${JSON.stringify(r.pencilPlates)}`);
   // Positive controls: the bands must FIND the props where they belong,
   // or a zero reading everywhere would prove nothing.
   for (const f of WATSON_NOTEBOOK_ON_PLATES) {
@@ -386,7 +417,22 @@ test("neg/no-baked-props — real set: no notebook/glass/pencil baked where the 
     assert.ok(n >= 50, `positive control: ${f} should carry the prop glass (>=50 lens px), got ${n}`);
   }
   assert.ok(countBand(readImg("watson-pose-celebrate-jump.png"), LENS_BAND) >= 50, "positive control: Watson celebrate-jump carries the handed-off glass");
-  assert.ok(countBand(readImg("prop-notebook-pencil.png"), PENCIL_BAND) >= 50, "positive control: pencil band finds the prop pencil");
+  // Pencil split (art cure round): the positive control hunts the
+  // pencil in its own part, prop-pencil.png — the combined prop no
+  // longer carries it.
+  const propPencilPx = countBand(readImg("prop-pencil.png"), PENCIL_BAND);
+  t.diagnostic(`prop-pencil.png pencil-band px: ${propPencilPx}`);
+  assert.ok(propPencilPx >= 50, `positive control: pencil band finds the prop pencil in prop-pencil.png, got ${propPencilPx}`);
+  // Negative: the notebook alone must carry no pencil at all.
+  const notebookOnlyPx = countBand(readImg("prop-notebook-pencil.png"), PENCIL_BAND);
+  t.diagnostic(`prop-notebook-pencil.png pencil-band px: ${notebookOnlyPx}`);
+  assert.equal(notebookOnlyPx, 0, `prop-notebook-pencil.png is notebook-only after the pencil split: pencil-band px must be 0, got ${notebookOnlyPx}`);
+  // Negative: spec §4.2 — pencil absent in gasp and high-five, in the
+  // measured pencil zone and anywhere else on the plate.
+  for (const f of PENCIL_ABSENT_PLATES) {
+    assert.equal(r.pencilPlates[f].zone, 0, `pencil zone of ${f} must read 0 pencil-band px (spec §4.2: pencil absent), got ${r.pencilPlates[f].zone}`);
+    assert.equal(r.pencilPlates[f].whole, 0, `${f} must carry 0 pencil-band px whole-file (spec §4.2: pencil absent), got ${r.pencilPlates[f].whole}`);
+  }
   assert.deepEqual(r.violations, [], `baked-prop violations: ${r.violations.join("; ")}`);
 });
 
@@ -419,6 +465,24 @@ test("neg/no-baked-props — sabotage: prop-coloured patch composited into a tor
   }
   const lensN = countBand(hImg, LENS_BAND);
   assert.ok(lensN > 10, `lens sabotage did not bite: read ${lensN}`);
+  // And the pencil-absence plate scan bites: a pencil-coloured patch
+  // painted inside the pencil zone of a gasp-plate copy must read
+  // > 0 where the real plate reads exactly 0 (zone AND whole file).
+  const gImg = readImg("watson-pose-gasp.png");
+  for (let y = 200; y < 216; y++) {
+    for (let x = 198; x < 214; x++) {
+      const i = (y * gImg.width + x) * 4;
+      gImg.data[i] = 201; gImg.data[i + 1] = 162; gImg.data[i + 2] = 39; gImg.data[i + 3] = 255;
+    }
+  }
+  const gFixture = path.join(dir, "watson-pose-gasp.png");
+  fs.writeFileSync(gFixture, encodePng(gImg));
+  const gReread = decodePng(fs.readFileSync(gFixture));
+  const gZone = countBand(gReread, PENCIL_BAND, PENCIL_ZONE_PLATE_BOX);
+  const gWhole = countBand(gReread, PENCIL_BAND);
+  t.diagnostic(`sabotaged gasp plate reads ${gZone} pencil-band px in the pencil zone, ${gWhole} whole-file (real plate: 0/0)`);
+  assert.ok(gZone > 0, `pencil sabotage did not bite in the zone scan: read ${gZone}`);
+  assert.ok(gWhole > 0, `pencil sabotage did not bite in the whole-file scan: read ${gWhole}`);
 });
 
 /* ------------------------------------------------------------------ */
@@ -581,9 +645,12 @@ test("neg/plate-palms-open — sabotage: a filled skin disc at the anchor FAILS 
 /* plates + silhouettes are docs/test assets, excluded per the lock's */
 /* own note). Decoded size = width x height x 4 bytes, decimal MB —   */
 /* the lock's own arithmetic (44 runtime files -> 2.436 MB).          */
-/* manifest.json's byte fields are NOT used here: it is stale on 7    */
-/* files at this tip (recorded in PR_BODY "Recorded for PR B" item    */
-/* 2); ASSET_LOCK.json is the audit record and matches disk exactly.  */
+/* manifest.json's byte fields are NOT used here: these gates        */
+/* measure the files on disk directly (statSync + PNG header) and    */
+/* read ASSET_LOCK.json as the source of truth — the lock is the     */
+/* audit record, its runtime byte fields match disk, and the         */
+/* lock-honesty limb in evaluateRuntimeBudget fails the gate if      */
+/* its recorded total ever stops matching the disk total.            */
 /* ------------------------------------------------------------------ */
 
 const RUNTIME_BUDGET_BYTES = 500_000;
