@@ -1438,6 +1438,9 @@ function LoopGame({
         className="flex flex-col gap-3"
       >
         <p className="text-sm text-fg" role="status">
+          {/* #337: while playing, the number is the next guess
+              (guesses made + 1). Once the case is finished there is
+              no next guess, so count the guesses actually made. */}
           Guess {finished ? puzzle.guesses.length : puzzle.guesses.length + 1} of {dealConfig.guessCap}
           {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
         </p>

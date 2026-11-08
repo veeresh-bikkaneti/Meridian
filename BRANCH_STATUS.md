@@ -88,8 +88,9 @@ header actually renders — confirmed by the red run's page snapshots.
       "Guess N of {cap}" render in `src/`; the only other
       cap-denominated surface, the reveal's "Solved in X of Y
       guesses." (line 1633), already counts actual guesses
-- [ ] PR opened against main — NO MERGE (owner's word only);
-      Silo QA + panel follow as separate silos on the final tip
+- [x] PR opened against main — #340, still NO MERGE (owner's
+      word only). The "now ticked" line in the PR body was false
+      through `16daa5ad` (unchecked at `528df01` and `8e3ccda` too).
 
 ## Sync with main (2026-11-08, Rock — not a re-approval)
 
@@ -124,3 +125,45 @@ header actually renders — confirmed by the red run's page snapshots.
 - GitHub's e2e job runs a fixed list of 6 specs that includes
   neither `guess-counter.desktop.spec.ts` nor
   `geodetective.spec.ts`, so CI green does not exercise this fix.
+
+## P-Stack swarm on `16daa5ad` (2026-11-08 — not a 12-seat panel)
+
+Owner ordered `/pstack:swarm` because the handbook persona pack
+and `~/workspace/custom-skills/local-meridian-review-pipeline/SKILL.md`
+are not on this machine. Role titles were not improvised as those
+12 seats. Resolver `check-models-config.py` is not installed, so
+each arm inherited the session model. The work model is unknown,
+so this review may be same-model. Not a merge approval.
+
+| Slice | SHA checked | Verdict |
+|---|---|---|
+| scope-and-regression | `16daa5ad` | PASS — 3 files; one counter line; merge-base `9e49da3` |
+| counter-correctness | `16daa5ad` | PASS (SHA recorded; case table was thin — parent is re-checking the comment commit) |
+| e2e-spec | `16daa5ad` | PASS |
+| records-honesty | `16daa5ad` | ISSUES |
+
+Kept from records-honesty (parent dropped two BLOCKs that treated
+"not re-run in this session" as proof the builder VM log was false;
+GitHub `build (22.x)` on `16daa5ad` is success and includes
+`npm run build` + `npm test`):
+
+- The PR body said a JSX why-comment was added. It was not in
+  `16daa5ad`. This commit adds it above the counter. The expression
+  is unchanged. It now sits under that comment (line moves by the
+  comment only).
+- The PR-opened checkbox was unticked. It is ticked above. PR #340
+  is open. Still no merge.
+- GitHub reviews API on #340 was empty. The "9 APPROVE / 3
+  APPROVE-WITH-NITS on `8e3ccda`" sentence is PR-body prose, not a
+  review object, and it does not cover this tip.
+
+Independent re-run beside the builder log, not a replacement of it:
+`tsc` 0, `test:worker` 145/145, `typecheck:worker` 0, lint-cards
+GATE PASSED, lint-content GATE PASSED, `build:pages` 0,
+`guess-counter.desktop.spec.ts` 2/2. Browser: Chrome for Testing
+156.0.8078.4 (headless shell). `/usr/bin/google-chrome` was absent.
+`npm test`: scripts 1021 pass / 11 skip / 0 fail, src 2266/2266.
+The two extra skips versus 1023/9 are the SSR pins; `npm run build`
+was not re-run here. `geodetective.spec.ts:199` was not re-run.
+No Cloudflare Workers build result for `16daa5ad`.
+
