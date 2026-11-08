@@ -846,3 +846,15 @@ the tip):
   budget rows re-synced to 172,414 B / 2.486 MB in the
   same pass. Panel-facing numbers now agree across
   lock, manifest, asset-lock.md, PR body, and disk.
+- **Silo QA re-key on the round-4 tip: PASS-WITH-NITS**
+  (keyed `2b447d9`): every substantive number
+  independently re-measured exact; kidtest find at
+  390/768 `blocked-no-lawful-spot`, 1280/1920 lawful
+  captures regenerated in the QA clone, 96 trials all
+  `results: null`. Kidtest project count on this tip:
+  **7 tests** (4 width measures, assembly + palm,
+  trial preparation, lawfulSpots sabotage self-check).
+  The nit — a stale "runs 6 tests" sentence in the PR
+  body's round-1-era verification paragraph — is cured
+  in the same records pass; the round-4 sections
+  already enumerated all 7.
