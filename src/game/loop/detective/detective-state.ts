@@ -321,10 +321,13 @@ export function viewForState(state: DetectiveState): DetectiveView {
       // Holmes sits at the map dock in the search pose (the pose
       // alternation with dock idle is render-side CSS, not state).
       // A confirmed pause moves him to SEARCH_AREA's berth (U6).
+      // Watson holds his station beside the active clue card for
+      // the whole case once play starts (owner ruling 2026-11-07):
+      // only Holmes uses the map dock during the guessing phases.
       return {
         ...base,
         holmes: { pose: "search", placement: "dock", speaking: false },
-        watson: { pose: "station-idle", placement: "dock", speaking: false },
+        watson: { pose: "station-idle", placement: "station", speaking: false },
       };
     case "SEARCH_AREA":
       // Player paused over an area (U6): the machine says "berth" and
@@ -333,16 +336,22 @@ export function viewForState(state: DetectiveState): DetectiveView {
       // beside the point, "remote" thinking at the dock, or hidden,
       // and the walk itself is host-side CSS. The machine stays free
       // of geometry: its placement is intent, not pixels.
+      // Watson stays at his clue-card station here too (owner ruling
+      // 2026-11-07) — the pause is Holmes's moment on the map, not a
+      // reason to move Watson off the clues.
       return {
         ...base,
         holmes: { pose: "berth-think", placement: "berth", speaking: false },
-        watson: { pose: "station-idle", placement: "dock", speaking: false },
+        watson: { pose: "station-idle", placement: "station", speaking: false },
       };
     case "SELECTION_READ":
+      // Holmes reads the pick from the map dock; Watson marks his
+      // notebook at his clue-card station (owner ruling 2026-11-07
+      // — he holds the station through the whole guessing stretch).
       return {
         ...base,
         holmes: { pose: "ack", placement: "dock", speaking: true },
-        watson: { pose: "notebook-mark", placement: "dock", speaking: false },
+        watson: { pose: "notebook-mark", placement: "station", speaking: false },
       };
     case "NOTE_MARK":
       // The miss beat (U8): Watson marks his notebook AT THE STATION
@@ -354,10 +363,13 @@ export function viewForState(state: DetectiveState): DetectiveView {
         watson: { pose: "notebook-mark", placement: "station", speaking: false },
       };
     case "ASK_NEXT":
+      // Holmes asks for the next question from the map dock; Watson
+      // waits at his clue-card station, where the next clue will
+      // land (owner ruling 2026-11-07).
       return {
         ...base,
         holmes: { pose: "ack", placement: "dock", speaking: true },
-        watson: { pose: "station-idle", placement: "dock", speaking: false },
+        watson: { pose: "station-idle", placement: "station", speaking: false },
       };
     case "CELEBRATE": {
       // Choreography poses follow celebrateStep (U8); the host lays the

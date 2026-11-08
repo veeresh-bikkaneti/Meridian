@@ -16,8 +16,10 @@ import {
  *
  * - (a) In AUTO speech mode (this spec never forces tap mode — the
  *   default profile in this harness auto-plays, exactly as the
- *   stations spec proves), a tap on Watson's figure at the map dock
- *   replays the current clue's full sequence (read → ack → decode)
+ *   stations spec proves), a tap on Watson's figure at his clue-card
+ *   station — where he now stands through the guessing phases too
+ *   (station cure, 2026-11-08) — replays the current clue's full
+ *   sequence (read → ack → decode)
  *   from the top; keyboard activation of the same control replays it
  *   again. The control is a real button ≥44×44 px with the owner's
  *   aria-label, NOT inside any aria-hidden cluster, carrying the ↻
@@ -83,17 +85,17 @@ test("(a) tap on Watson replays the current clue sequence in auto mode", async (
 
   // --- the control: a real, labelled, ≥44×44 button over Watson,
   //     outside every aria-hidden cluster, with the ↻ cue badge ---
-  // Settle first: at the READING→SEARCH handoff the pair's station
-  // and dock figures coexist briefly (a pre-existing mount overlap —
-  // the U10 harness polls through the same window), so wait until
-  // exactly one replay control remains, then scope to Watson's dock
-  // button inside the map.
+  // Settle first: at the READING→SEARCH handoff the pair's figures
+  // coexist briefly (a pre-existing mount overlap — the U10 harness
+  // polls through the same window), so wait until exactly one
+  // replay control remains. In SEARCH_IDLE that control is the
+  // STATION form: Watson holds the clue-card station through the
+  // guessing phases (station cure, 2026-11-08), so the button is
+  // page-scoped — it no longer lives inside the map.
   await expect(page.getByTestId("detective-watson-replay")).toHaveCount(1, {
     timeout: 30_000,
   });
-  const btn = page
-    .getByTestId("loop-map")
-    .getByTestId("detective-watson-replay");
+  const btn = page.getByTestId("detective-watson-replay");
   await expect(btn).toBeVisible({ timeout: 15_000 });
   await expect(btn).toHaveAttribute("aria-label", "Ask Watson to repeat this clue");
   const geo = await btn.evaluate((el) => {
