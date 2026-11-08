@@ -61,6 +61,20 @@ merge on round 1.
   prepared (96 trials); they were never run, and
   the human kid test is not part of this PR's
   vote.
+- Silo QA re-key on the converged tip: every
+  asset, budget, gate, and harness promise PASS —
+  guard 13/13 with sabotage bites, coverage
+  **0 px² for both figures at all four widths**,
+  size bands pass at all widths; the only width-
+  test failures are the demoted face-floor soft
+  lines (Holmes 31/35/39/43 vs 38/44/48/52;
+  Watson 43 vs 44 at 768 only). QA failed that
+  tip on records honesty alone (a stale manifest
+  budget block + per-file bytes, a stale smoke
+  inventory, and this body's diff stat) — all
+  cured in records commits on this branch; the
+  QA delta re-key on the cured tip is the gate
+  that stands between this body and the vote.
 
 **Owner rulings of record:**
 
@@ -268,7 +282,7 @@ Flagged in spec §12, not papered over. Headlines:
 - [ ] Diff audit — scope list above, staged files named only,
   never `git add -A`
 - [x] Harness — `node scripts/kidtest-smoke.mjs` + the `pair-art-kidtest` Playwright project, re-run on the final tip `504ddbc`:
-  smoke RAN (70 plates, 0 missing; face measure live via the manifest `plates` adapter — Holmes below floor in every cell, Watson 768 by 1 px, both recorded under ruling (f), NOT cured); Playwright: 5 tests executed in 33.6 min — size band + zero clue-text coverage PASS on the real built page at 390/768/1280/1920; face floor FAILED for Holmes at every width exactly as the smoke predicted (the harness hard-asserts the shortfall — see the Panel section: the round-1 panel read the "5/5" phrasing against this FAIL and the wording is corrected here; the run's green was the size/coverage measures completing their contract, never a face pass); human trials prepared, never faked: trial manifest + find screens exported, `results: null` throughout. Repo gates on the same tip: tsc clean · `npm test` 3,287 pass / 0 fail · worker suite 145/0 (run for completeness; no `workers/` files touched) · lint-cards GATE PASSED · `build:pages` green (71 pair-art files in dist on the cured tip, inert until PR B imports them). On the cured tip the kidtest project runs 6 tests: the 4 width measures (size + coverage PASS, face floor FAIL per ruling (f) — recorded as the by-design negative; the asserts are now soft so every leg runs (owner rule 15)), the trial preparation (96 trials, results null), and the assembly + palm measurement — **PASS** (Holmes 0.53 / Watson 0.56 rig px vs ≤3 gate on the converged tip, 2026-11-08 — the pre-repaint reading was 0.22 / 0.33; assembly-vs-plate diff 0.561 / 0.557 vs ≤0.60).
+  smoke RAN (70 plates, 0 missing; face measure live via the manifest `plates` adapter — Holmes below floor in every cell, Watson 768 by 1 px, both recorded under ruling (f), NOT cured); Playwright: 5 tests executed in 33.6 min — size band + zero clue-text coverage PASS on the real built page at 390/768/1280/1920; face floor FAILED for Holmes at every width exactly as the smoke predicted (the harness hard-asserts the shortfall — see the Panel section: the round-1 panel read the "5/5" phrasing against this FAIL and the wording is corrected here; the run's green was the size/coverage measures completing their contract, never a face pass); human trials prepared, never faked: trial manifest + find screens exported, `results: null` throughout. Repo gates on the same tip: tsc clean · `npm test` 3,287 pass / 0 fail · worker suite 145/0 (run for completeness; no `workers/` files touched) · lint-cards GATE PASSED · `build:pages` green (71 pair-art files in dist on the cured tip, inert until PR B imports them). On the cured tip the kidtest project runs 6 tests: the 4 width measures (size + coverage PASS, face floor FAIL per ruling (f) — recorded as the by-design negative; the asserts are now soft so every leg runs (owner rule 15)), the trial preparation (96 trials, results null), and the assembly + palm measurement — **PASS** (Holmes 0.53 / Watson 0.56 rig px vs ≤3 gate on the converged tip, 2026-11-08 — the pre-repaint reading was 0.22 / 0.33; assembly-vs-plate diff 0.561 / 0.557 vs ≤0.60). Silo QA re-key (independent clone, keyed to the converged tip) independently re-ran the full kidtest project — 2 passed / 4 failed, every failure a demoted face-floor soft line (Holmes 31/35/39/43 vs 38/44/48/52; Watson 43 vs 44 at 768 only), the coverage hard-expect held at 0 px² for both figures at every width, trial manifest 97 × `results: null` — and re-measured the budgets exactly (runtime 171,918 B; decoded 2,436,448 B). Its FAIL was records-only: the manifest's budget block and 7 per-file byte fields were stale from the art cure, the smoke inventory was stale in 16 rows, and this body's diff stat understated insertions by 4 — all cured in records commits on this branch (manifest diff = the 8 stale values exactly; smoke regen verified idempotent) and delta re-keyed before the vote.
 - [x] Silo QA — **PASS** keyed PR#366 + `df7adbc`: full silo @`96ab16e` passed 7/8 checks with exact matches (scope, lock drift 0/64, manifest adapter, guard 6/6, tsc, lint-cards) and FAILED one records item (1920 face-px prose 42/56 vs the smoke script's measured 43/53); prose-only cure `df7adbc`; **DELTA SILO QA PASS** on the cured tip (cure confined to the 3 records files, corrected numbers verified, smoke regeneration byte-identical, guard still 6/6).
 - [ ] Panel — 13 seats incl. Game player, on the final tip:
   {{PANEL_TALLY}}

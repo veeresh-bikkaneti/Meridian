@@ -669,3 +669,50 @@ the tip):
   (coverage + Watson legs under the soft asserts) was
   still running when this section was written; its
   numbers land here when the runner reports.
+
+## Silo QA re-key @ `ba4e213` — FAIL (records only) → cured — 2026-11-08
+
+- **Key:** PR #366 @ `ba4e213d102162cf43568476bbd8f572dfb23aac`
+  (the `df7adbc` key is void). Independent clone, HEAD
+  verified at start and end, zero tracked files modified
+  by QA.
+- **PASS on every substantive promise:** scope (85 files,
+  zero `src/`) · budgets (runtime 171,918 B = the lock
+  exactly; decoded 2,436,448 B = 2.436 MB) · faces (11/11
+  distinct md5 + pixel hashes per character; surprised↔
+  wonder differ 656 / 707 px) · props & palms (torso zones
+  0 px; assembled palms 0.5286 / 0.5604 rig px; composite
+  sizes match the body exactly) · gaze (structural scan
+  clean, no contradictions, `delighted` NOT MEASURED by
+  name) · negative gates 13/13 with every sabotage limb
+  executed and biting · repo gates (tsc clean, lint-cards
+  GATE PASSED, worker green, `npm test` scripts 1,034
+  pass / 0 fail / 11 skipped + src 2,266 / 0).
+- **Kidtest leg (closes the width leg above):** full
+  project run — 2 passed / 4 failed; the 4 failures are
+  exclusively the demoted face-floor soft lines (Holmes
+  31/35/39/43 vs floors 38/44/48/52; Watson 43 vs 44 at
+  768 only). Size-band hard expects passed at all widths
+  for both figures; the coverage hard expect (0 px²)
+  held in every leg — **0 px² overlap, both figures,
+  390/768/1280/1920**. Trial manifest: 97 ×
+  `results: null` — no faked human results.
+- **FAIL — records honesty only, 3 items:** (1) PR-body
+  diff stat understated insertions by 4 (body 9,011 vs
+  measured 9,015); (2) `manifest.json` budget block stale
+  (`runtime_total_bytes` 172,431 vs actual 171,918) —
+  coordinator survey found 7 further stale per-file
+  `bytes` fields from the art cure; (3) `KIDTEST_SMOKE.md`
+  plate inventory stale in 16 rows.
+- **Cure (records commits on this branch):** manifest
+  bytes synced field-by-field to disk (8 lines exactly);
+  `KIDTEST_SMOKE.md` regenerated with
+  `scripts/kidtest-smoke.mjs` (regen verified idempotent);
+  the PR-body diff stat recounted at the cured tip as
+  the final records step. Environment note: QA's first
+  two kidtest attempts crashed Chromium on a 96%-full
+  shared /tmp (sibling lanes) — environmental, cured by
+  a TMPDIR redirect, not a product defect.
+- **Next:** Silo QA delta re-key on the cured tip →
+  13-seat panel round-3 re-vote → tally in PR body →
+  DevEx → benchmark → merge on READY / READY-WITH-NITS.
