@@ -409,8 +409,19 @@ test("pause-berth tier: kill steps down to DOCK_ONLY, re-qualify restores the be
     ).toBe(true);
     console.log("[berth-tier recovery] tier restored to PAUSE_BERTH");
 
-    /* And now a pause produces a REAL berth again. */
-    const landed = await berthAtMouse(page, point, startPos!);
+    /* And now a pause produces a REAL berth again. The travel
+     * baseline is re-read HERE, after recovery: startPos was the
+     * pre-kill entry berth, and this test's pause point sits
+     * ~25 px from that entry point, so a lawful landing beside
+     * it can never clear the >40 px displacement check against
+     * the stale baseline (round-9 trace: landing 25.06 px from
+     * startPos, held for 65 identical reads while the check
+     * timed out). From the recovered position — the dock perch
+     * the kill pinned him to — the same check measures the real
+     * post-recovery travel. The assertion itself is unchanged. */
+    const recoveredPos = await holmesWrapperPos(page);
+    expect(recoveredPos).not.toBeNull();
+    const landed = await berthAtMouse(page, point, recoveredPos!);
     console.log(
       `[berth-tier recovery] landed=(${landed.x},${landed.y})`,
     );
