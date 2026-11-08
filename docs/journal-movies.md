@@ -63,19 +63,26 @@ What is established, and by what evidence — do not read more into it:
   review, 2026-11-08). Audio sample rate/channels vary between clips
   (24/48/96 kHz, mono and stereo) and integrated loudness ranges about
   −20.6 to −14.7 LUFS; 7 clips peak at −0.9 dBTP, just above the −1 dB target.
-- **Visuals:** sampled still frames only (per-clip frames by the building
-  workers and coordinator; 4 frames per clip in the independent review). No
-  one has watched the clips end to end as video.
-- **Narration:** NOT verified. No narration scripts or transcripts are kept
-  in this repo or in meridian-media, and no one has listened. "Every line
-  grounded in the entry's text" is the recipe's intent, not a checked fact.
-- **Known defects are recorded, not cleared.** Per the manifest's own notes,
-  80 of 106 entries carry a flag or caveat (only 26 notes lead with
-  "Clean"/"Cleanest"/"Best clip"), including residual invented or changed
-  objects (e.g. branched-oak, rushmore, space-needle, oak-lake, machu,
-  woods-park, tongariki, fort-robinson) and two still+narration fallbacks
-  (haymarket, university-place). Those clips do not meet the motion gates
-  above; shipping them as-is is the owner's call, per clip.
+- **Visuals and narration:** sampled still frames and automated video
+  descriptions exist (review records, 2026-11-08: an earlier automated watch
+  of 8 original clips; then descriptions for all 106 — 26 from full-quality
+  originals, 80 from compressed reels). These do not establish full visual or
+  factual clearance (compressed reels cannot clear fine text or detail).
+  Reliable narration verification across the 106 remains incomplete: the
+  automated tools gave inconsistent accounts of their own audio access, so
+  no narration claim from them counts as trusted listening (0/106 trusted).
+  No narration scripts or transcripts are kept in this repo or in
+  meridian-media. "Every line grounded in the entry's text" is the recipe's
+  intent, not a checked fact.
+- **Manifest notes are self-reported, not a verified defect count.** A text
+  heuristic over the notes (does it open with "Clean", "Cleanest" or "Best
+  clip"?) puts 26 in that group and 80 outside it. The 80 is a grouping of
+  note wording, NOT 80 verified defects. Some notes self-report invented or
+  changed objects (e.g. branched-oak, rushmore, space-needle, oak-lake,
+  machu, woods-park, tongariki, fort-robinson); these are the builders'
+  notes, not independently confirmed. Known fallbacks: haymarket and
+  university-place (still + narration). Review also reported taj as
+  appearing still; unresolved. Shipping any clip as-is is the owner's call.
 
 ## Storage proposal (recorded 2026-11-08 — not yet decided)
 Status: a proposal. Storage, hosting and the privacy effect of a third-party
