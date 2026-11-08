@@ -19,14 +19,14 @@
 ## Council finding → task matrix
 | Council finding | Task | Code | Tests | Status |
 |---|---|---|---|---|
-| Rel V3/P1, Arch #6: URL query/fragment + tokens reach Discord | T1 | worker `scrubErrorText`, normalise + render; client `sanitizeError` | redaction suite, parity, legacy payload | planned |
-| Rel §3.4: mentions/markdown in error text | T1 | Discord `allowed_mentions: {parse: []}` | payload assertion | planned |
-| Arch #3, Dev "still open", Rel V1/A3: `!tele.counted` fail-open | T2 | remove bypass; per-isolate bounded uncorroborated summary | KV absent / throwing / concurrency / forged full shape | planned |
-| Rel V2/A9: response oracle | T2 | stable `{ok:true}` body; outcome via test accessor + logs | body identical across outcomes | planned |
-| Rel V6/A5: fire-and-forget without waitUntil; no delivery record | T3 | `fetch(req, env, ctx)`, `ctx.waitUntil`, 1 bounded retry, `ops:delivery:last` (TTL) | ctx spy, 429 retry once, outcome unknown≠ok | planned |
-| Rel V4/A6: counters without TTL; count-map numeric guard | T4 | `expirationTtl` on every put; `numericRecord` on all maps | put-options spy, corrupted map read | planned |
-| Dev §2.9, Arch #5: "app failed to start" for payload-less js_error | T5 | whyLine/priority wording + `failure(v1)` evidence line | golden text, no-claim tests | planned |
-| Arch #4/#5, Rel A1/V5: static /health, vacuous healthy, KV readback | T6 | scheduled health run (separate cron, digest untouched); `/health` liveness + evidence summary; unknown on missing/stale/future/invalid | evaluator totality, freshness, ingress can't write health | planned |
+| Rel V3/P1, Arch #6: URL query/fragment + tokens reach Discord | T1 | worker `scrubErrorText`, normalise + render; client `sanitizeError` | redaction suite, parity, legacy payload | implemented (unverified by independent verifier) |
+| Rel §3.4: mentions/markdown in error text | T1 | Discord `allowed_mentions: {parse: []}` | payload assertion | implemented (unverified by independent verifier) |
+| Arch #3, Dev "still open", Rel V1/A3: `!tele.counted` fail-open | T2 | remove bypass; per-isolate bounded uncorroborated summary | KV absent / throwing / concurrency / forged full shape | implemented (unverified by independent verifier) |
+| Rel V2/A9: response oracle | T2 | stable `{ok:true}` body; outcome via test accessor + logs | body identical across outcomes | implemented (unverified by independent verifier) |
+| Rel V6/A5: fire-and-forget without waitUntil; no delivery record | T3 | `fetch(req, env, ctx)`, `ctx.waitUntil`, 1 bounded retry, `ops:delivery:last` (TTL) | ctx spy, 429 retry once, outcome unknown≠ok | implemented (unverified by independent verifier) |
+| Rel V4/A6: counters without TTL; count-map numeric guard | T4 | `expirationTtl` on every put; `numericRecord` on all maps | put-options spy, corrupted map read | implemented (unverified by independent verifier) |
+| Dev §2.9, Arch #5: "app failed to start" for payload-less js_error | T5 | whyLine/priority wording + `failure(v1)` evidence line | golden text, no-claim tests | implemented (unverified by independent verifier) |
+| Arch #4/#5, Rel A1/V5: static /health, vacuous healthy, KV readback | T6 | scheduled health run (separate cron, digest untouched); `/health` liveness + evidence summary; unknown on missing/stale/future/invalid | evaluator totality, freshness, ingress can't write health | implemented (unverified by independent verifier) |
 | Arch #1/#2, Dev §3 v2 diag, Rel new fields | — | none | — | **deferred: needs owner schema-policy + AGENTS amendment** |
 | Rel A2 independent watchdog | — | none (needs external monitor choice) | — | **deferred: owner decision** |
 | Rel P2 sessionId ruling | — | none | — | **deferred: owner/panel ruling** |

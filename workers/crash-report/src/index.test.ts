@@ -1066,7 +1066,7 @@ test("no-op mode: no secrets → 200 forwarded:false, fetch never called", async
   assert.equal(outcomeJson().counted, false);
 });
 
-test("forwarding: Discord webhook called, 200 forwarded:true", async () => {
+test("forwarding: Discord webhook called, stable {ok:true} body, outcome paged", async () => {
   globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
     fetchCalls.push({ url: String(url), init });
     return new Response("{}", { status: 200 });
