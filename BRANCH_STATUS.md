@@ -134,13 +134,38 @@ ancestor of this branch and the true branch diff is 11 files (623+/185−).
     touching production code) this is flagged to the parent for a
     routing decision; the pins are NOT loosened and production code
     is NOT touched by this session.
-- [ ] Gate 1b — `detective-watson-walk.spec.ts` (N2 guessing-chain
-  window + N6 mid-walk tap): NEXT.
-- [ ] Gate 2 — nit-5 measurement (watsonWalk OFF, 390 px): pending.
-- [ ] Gate 3 — Silo QA delta re-key: NOT NEEDED unless a commit lands
-  after `034535e` (none yet — tip unchanged).
-- [ ] Gates 4–7 — PR, panel, DevEx/benchmark, merge: pending gate 1–2
-  outcomes + the N2-endings routing decision above.
+- [x] **Gate 1b — `detective-watson-walk.spec.ts`: 9 passed / 0 failed**
+  (PLAYWRIGHT_EXIT=0, full output read; log `e2e-walk1.log` in the
+  evidence dir). The main walk test at 390/768/1280 carries BOTH the
+  N2 guessing-chain window (SELECTION_READ → NOTE_MARK → ASK_NEXT →
+  READING sampled in order; window absorbed at 0 px²) and the clue-2
+  walk window — **N2 guessing-chain half: PASSING**. The new mid-walk
+  tap test passed — **N6: PASSING**. Kill-switch (watsonWalk OFF) and
+  reduced-motion tests also passed.
+- [x] **Gate 2 — nit-5 measurement TAKEN: maxOverlap 0 px²**
+  (watsonWalk OFF via `fulfillFlagsStaging`, 390 px; throwaway probe,
+  written → run → deleted; log `e2e-nit5b.log`). 9,600 figure/text
+  pair samples across two 4 s windows: the first right after the
+  unlock gesture (host not yet mounted — phase null, bench/CASE_OPEN
+  window), the second starting 2.5 s after the guess commit (phase
+  SELECTION_READ, spanning the guessing-chain into the clue-2 read).
+  **No overlap anywhere on the walk-off path at 390 — nothing to
+  route.** Caveat for the record: the probe's strict READING-phase
+  gate never latched in the walk-off flow (the host mounts only after
+  the duet drains), so the windows are labelled by their actual
+  phases above, not by the intended READING label; the zero stands
+  for the windows sampled.
+- [x] Gate 3 — Silo QA delta re-key: the tip moved past `034535e`
+  ONLY by this file's GATES-STATE commits (records, zero code/test
+  changes) — the existing PASS-WITH-NITS + the now-run-verified gaps
+  stand; no code delta exists to re-key. Stated per the finisher
+  brief's either/or.
+- [ ] Gates 4–7 — PR, panel, DevEx/benchmark, merge: BLOCKED on the
+  parent's routing decision for the N2-endings finding above
+  (pre-existing CELEBRATE/FAIL_READ layout overlap). Everything else
+  in gates 1–3 is green: N1 (unit, prior round), N2 guessing-chain,
+  N6, N7 PASSING; N2 endings windows FAIL on the pre-existing
+  overlap; nit-5 = 0 px².
 
 ## Gap-closure round (2026-11-08, Silo QA PASS-WITH-NITS follow-up)
 
