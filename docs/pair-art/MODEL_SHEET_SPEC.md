@@ -397,8 +397,8 @@ blank. Degradation ends at a figure, never at an empty box.
 
 > **Delivered in PR A (coordinator ruling (c), 2026-11-07
 > night):** the static composites of record are the delivered
-> pose plates — Holmes `holmes-pose-dock.png` (15.7 KB),
-> Watson `watson-pose-station-idle.png` (18.6 KB) — both
+> pose plates — Holmes `holmes-pose-dock.png` (14,690 B),
+> Watson `watson-pose-station-idle.png` (16,651 B) — both
 > within the ≈20–30 KB band (slightly under is fine; the band
 > is a budget, not a target). These are PR A’s sheet
 > composites for the kid test, NOT a change to the locked
@@ -1193,6 +1193,14 @@ also noted inline at §5.2, §6.4, §8.2, and §8.3.
   population estimates (27/30 Wilson 95% CI ≈ 74–97%), and
   that the all-cells-pass requirement in practice demands
   a true rate well above 90%.
+- **Gate of record (§7 palm):** the ASSEMBLY measurer —
+  the kid-test harness's assembly + palm measurement
+  (`tests/e2e/pair-art-kidtest.spec.ts`), which composes
+  the parts per the manifest contract and measures the
+  assembled figure — is the §7 palm gate of record.
+  Plate palm measures and standalone part measures are
+  diagnostics, not the gate, and neither may be quoted
+  as the §7 result.
 
 ### 16.5 Face floors demoted — pending the owner's ruling (panel re-vote cure, 2026-11-08)
 
@@ -1261,3 +1269,16 @@ has not measured.
   `delighted` and `pout` for both characters — the
   expression cells rest on the kid test (PR D), not on
   a §6.4 pass claimed here.
+
+- **(iv) The find leg: placement is asserted against
+  map + chrome + page text at settle time.** The
+  harness now asserts the placed figure against the
+  map, the page chrome, and page text — not clue text
+  alone. At 390/768 no lawful spot exists on the
+  case-open page (every placement intersects the map,
+  clue text, or page chrome incl. page text), so find
+  screens at those widths are **NOT RUN**, with the
+  reason recorded here. The §10 find gate at PR D
+  needs either a lawful staging state at those widths
+  or an owner-accepted substitute — until then the
+  find claim covers 1280/1920 only.
