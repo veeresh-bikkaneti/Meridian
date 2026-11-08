@@ -197,20 +197,20 @@
         {
           "part": "arm-raised",
           "file": "holmes-arm-raised.png",
-          "bytes": 2314,
-          "widthPx": 70,
-          "heightPx": 92,
+          "bytes": 2810,
+          "widthPx": 96,
+          "heightPx": 125,
           "rectViewBox": [
-            70.0,
-            20.5,
-            105.0,
+            66.0,
+            4.0,
+            114.0,
             66.5
           ],
           "rectPx": {
-            "x": 140.0,
-            "y": 41.0,
-            "width": 70,
-            "height": 92
+            "x": 132.0,
+            "y": 8.0,
+            "width": 96,
+            "height": 125
           },
           "pose": "high-five",
           "drawnExplicitly": true,
@@ -734,20 +734,20 @@
         {
           "part": "arm-raised",
           "file": "watson-arm-raised.png",
-          "bytes": 2159,
-          "widthPx": 66,
-          "heightPx": 92,
+          "bytes": 2749,
+          "widthPx": 77,
+          "heightPx": 118,
           "rectViewBox": [
-            8.5,
-            16.0,
+            3.0,
+            3.0,
             41.5,
             62.0
           ],
           "rectPx": {
-            "x": 17.0,
-            "y": 32.0,
-            "width": 66,
-            "height": 92
+            "x": 6.0,
+            "y": 6.0,
+            "width": 77,
+            "height": 118
           },
           "pose": "high-five",
           "drawnExplicitly": true,
@@ -1100,10 +1100,10 @@
     }
   ],
   "budgets": {
-    "runtime_total_bytes": 171918,
+    "runtime_total_bytes": 173004,
     "runtime_budget_bytes": 500000,
     "runtime_pass": true,
-    "decoded_total_MB": 2.436,
+    "decoded_total_MB": 2.471,
     "decoded_budget_MB": 32,
     "decoded_pass": true,
     "runtime_file_count": 44,

@@ -1,6 +1,6 @@
 {
   "lock_version": 1,
-  "pr": "A — pair-art model sheets",
+  "pr": "A \u2014 pair-art model sheets",
   "base_contract": "src/game/loop/detective/DetectivePair.tsx @ main 9e49da3",
   "viewBoxes": {
     "holmes": [
@@ -106,10 +106,10 @@
   "palm_gate_px": 3,
   "palm_pass": true,
   "budgets": {
-    "runtime_total_bytes": 171918,
+    "runtime_total_bytes": 173004,
     "runtime_budget_bytes": 500000,
     "runtime_pass": true,
-    "decoded_total_MB": 2.436,
+    "decoded_total_MB": 2.471,
     "decoded_budget_MB": 32,
     "decoded_pass": true,
     "runtime_file_count": 44,
@@ -134,9 +134,9 @@
     }
   },
   "silhouette_gate": {
-    "holmes": "PASS — tall/thin (43px wide at 104px high), deerstalker crown + brim reads",
-    "watson": "PASS — short/stout (63px wide at 104px high), bowler dome + flat brim reads",
-    "distinguishable": "PASS — width ratio 43:63 plus hat profiles differ at a glance"
+    "holmes": "PASS \u2014 tall/thin (43px wide at 104px high), deerstalker crown + brim reads",
+    "watson": "PASS \u2014 short/stout (63px wide at 104px high), bowler dome + flat brim reads",
+    "distinguishable": "PASS \u2014 width ratio 43:63 plus hat profiles differ at a glance"
   },
   "transparency_checks": {
     "holmes-arm-back.png": {
@@ -989,14 +989,14 @@
     },
     {
       "file": "holmes-arm-raised.png",
-      "bytes": 2314,
-      "width": 70,
-      "height": 92,
-      "decodedMB": 0.0258,
+      "bytes": 2810,
+      "width": 96,
+      "height": 125,
+      "decodedMB": 0.048,
       "rect_vb": [
-        70.0,
-        20.5,
-        105.0,
+        66.0,
+        4.0,
+        114.0,
         66.5
       ],
       "character": "holmes",
@@ -1079,13 +1079,13 @@
     },
     {
       "file": "watson-arm-raised.png",
-      "bytes": 2159,
-      "width": 66,
-      "height": 92,
-      "decodedMB": 0.0243,
+      "bytes": 2749,
+      "width": 77,
+      "height": 118,
+      "decodedMB": 0.0363,
       "rect_vb": [
-        8.5,
-        16.0,
+        3.0,
+        3.0,
         41.5,
         62.0
       ],
@@ -1815,20 +1815,20 @@
     "Parts are cropped to their alpha bbox; rect_vb gives each part's placement rect in rig viewBox units (x0,y0,x1,y1). Assemble in order: halo, legs (leg-a + leg-b), arm-back/note, torso, arm-front, face, hat.",
     "Faces: holmes-face-<kind>.png / watson-face-<kind>.png are full head parts with the expression drawn in the character's own features; holmes-head.png / watson-head.png are the neutral bases.",
     "PANEL CURE 2026-11-08 (glass): the earlier claim that the painted magnifier had been cleared was FALSE for the parts and plates as shipped. The baked hand + magnifier has now been inpainted out of holmes-torso.png, the Holmes leg parts and every Holmes pose plate (plaid/trouser clone-tile fill, contained to the original silhouette). Measured with a narrow skin band (see arm_palm_measurements_cure.band): holmes-torso hand-zone skin 165 -> 0 px below y=130 (8 skin px remain at the neck, which is the neck); Holmes leg parts 190 -> 0 / 4 px; pale-lens pixels in the baked-glass box of every Holmes plate -> 0 (<=1). prop-glass.png is now the single glass source: dock/search/berth-think/ack/announce/gaze-up/card-look/walk plates carry exactly one glass (400 pale-lens px, the prop), celebrate-jump/high-five/clap carry zero (glass = null, section 4.2/3.5).",
-    "PANEL CURE 2026-11-08 (arms): all four arm parts were repainted to the rig geometry — shoulder cap centred on the pivot, sleeve to a cream cuff, painted hand centred on the rig hand point (Holmes front (87,83), Holmes back (37,98), Watson front (26,89), Watson note-arm hand (97,93) measured from the notebook hand in the source painting). See arm_palm_measurements_cure.",
-    "PANEL CURE 2026-11-08 (legs split): holmes-legs.png / watson-legs.png are replaced by leg-a + leg-b parts (complementary masks over the same placement rect; pivots Holmes (52,118)/(64,118), Watson (52,92)/(66,92) recorded in pivots_vb and the manifest, each pivot inside its part's painted hip, alpha 254-255). Watson's book + hand were also inpainted out of his leg parts (coat plaid fill) — legs carry legs only. The fused holmes-legs.png / watson-legs.png files are removed.",
-    "PANEL CURE 2026-11-08 (seams): the flat keyline rows at the interior cut edges of every face/head/torso/hat part (3 rows of RGB(32,22,14) at the bottom edge) were re-cut — those rows now carry mirrored source pixels from directly above the cut (coat/collar texture), so no straight bar can appear at the neck/chest junction. Verified on assembled figures from the cured parts: no junction row in either assembly contains a keyline run of 8 px or more, at natural size or at 128 px render.",
-    "PANEL CURE 2026-11-08 (halo): holmes-halo.png / watson-halo.png are new runtime parts — silhouette-shaped cream halo + dark keyline underlays at full figure size, placed behind the assembled doll (assembly order above). The assembled composites show the cream halo around both figures (1,848 / 1,400 cream px on a mid-tone ground). No live filters.",
-    "PANEL CURE 2026-11-08 (pout): holmes-face-pout.png redrawn to section 6.2 — brow angled down-in, mouth an inverted arc (measured: dark-stroke top edge at mouth centre y=1.0 vs y=4.0 at the edges of the mouth box), and the chin fist removed (it read as berth-think). watson-face-pout.png likewise (inverted arc below the moustache: centre y=1.0 vs edges y=2.8; brows angled down-in). watson-face-delighted.png strengthened: a wide open smile with teeth now reads below the moustache (mouth-band dark px 91 in neutral -> 177 in delighted). holmes-pose-pout.png now uses the cured pout face and a 3-degree forward slump rotation about the torso pivot — it no longer reads as thinking.",
-    "DUPLICATES DISCLOSED: holmes-head.png is byte-identical to holmes-face-neutral.png, and watson-head.png is byte-identical to watson-face-neutral.png (the head part IS the neutral face plate; both filenames are kept because the harness expects the inventory). holmes-face-surprised.png is likewise byte-identical to holmes-face-wonder.png, and watson-face-surprised.png to watson-face-wonder.png. watson-pose-walk.png is NO LONGER byte-identical to watson-pose-station-idle.png: it is the station figure with a split-leg stride applied below the coat hem (3,527 px differ) — walk = station figure + leg swing, the same semantics the engine's leg-a/leg-b swing gives the doll.",
+    "PANEL CURE 2026-11-08 (arms): all four arm parts were repainted to the rig geometry \u2014 shoulder cap centred on the pivot, sleeve to a cream cuff, painted hand centred on the rig hand point (Holmes front (87,83), Holmes back (37,98), Watson front (26,89), Watson note-arm hand (97,93) measured from the notebook hand in the source painting). See arm_palm_measurements_cure.",
+    "PANEL CURE 2026-11-08 (legs split): holmes-legs.png / watson-legs.png are replaced by leg-a + leg-b parts (complementary masks over the same placement rect; pivots Holmes (52,118)/(64,118), Watson (52,92)/(66,92) recorded in pivots_vb and the manifest, each pivot inside its part's painted hip, alpha 254-255). Watson's book + hand were also inpainted out of his leg parts (coat plaid fill) \u2014 legs carry legs only. The fused holmes-legs.png / watson-legs.png files are removed.",
+    "PANEL CURE 2026-11-08 (seams): the flat keyline rows at the interior cut edges of every face/head/torso/hat part (3 rows of RGB(32,22,14) at the bottom edge) were re-cut \u2014 those rows now carry mirrored source pixels from directly above the cut (coat/collar texture), so no straight bar can appear at the neck/chest junction. Verified on assembled figures from the cured parts: no junction row in either assembly contains a keyline run of 8 px or more, at natural size or at 128 px render.",
+    "PANEL CURE 2026-11-08 (halo): holmes-halo.png / watson-halo.png are new runtime parts \u2014 silhouette-shaped cream halo + dark keyline underlays at full figure size, placed behind the assembled doll (assembly order above). The assembled composites show the cream halo around both figures (1,848 / 1,400 cream px on a mid-tone ground). No live filters.",
+    "PANEL CURE 2026-11-08 (pout): holmes-face-pout.png redrawn to section 6.2 \u2014 brow angled down-in, mouth an inverted arc (measured: dark-stroke top edge at mouth centre y=1.0 vs y=4.0 at the edges of the mouth box), and the chin fist removed (it read as berth-think). watson-face-pout.png likewise (inverted arc below the moustache: centre y=1.0 vs edges y=2.8; brows angled down-in). watson-face-delighted.png strengthened: a wide open smile with teeth now reads below the moustache (mouth-band dark px 91 in neutral -> 177 in delighted). holmes-pose-pout.png now uses the cured pout face and a 3-degree forward slump rotation about the torso pivot \u2014 it no longer reads as thinking.",
+    "DUPLICATES DISCLOSED: holmes-head.png is byte-identical to holmes-face-neutral.png, and watson-head.png is byte-identical to watson-face-neutral.png (the head part IS the neutral face plate; both filenames are kept because the harness expects the inventory). holmes-face-surprised.png is likewise byte-identical to holmes-face-wonder.png, and watson-face-surprised.png to watson-face-wonder.png. watson-pose-walk.png is NO LONGER byte-identical to watson-pose-station-idle.png: it is the station figure with a split-leg stride applied below the coat hem (3,527 px differ) \u2014 walk = station figure + leg swing, the same semantics the engine's leg-a/leg-b swing gives the doll.",
     "Watson's painted notebook remains in his torso/arm region where the source art places it; prop-notebook-pencil.png is also provided for the engine.",
     "High-five raised arms are drawn explicitly to the anchor (same technique as the SVG rig), sleeve in coat plaid, palm disc centred on HIGH_FIVE_CONTACT; error measured from the assembled plates' skin-cluster centroid.",
     "Identity distractors (tracker-standing.png, jolly-standing.png) are TEST assets for the identity trial: listed separately, EXCLUDED from the runtime 500 KB total.",
-    "manifest.json (beside the assets) is the harness/engine-shaped export of this lock's geometry — see manifest_alignment.",
-    "POSE-PLATE REGENERATION 2026-11-08 (high-five geometry cure): the painted pose plates' raised arms disagreed with the rig pose spec (DetectivePair.tsx @ 9e49da3) — in the old high-five plates the anchor hand was a flat rig-colour disc (242,196,154), not painted skin, the arm rose from the wrong shoulder line, and a duplicate base-position front hand remained. All six arm-pose plates were regenerated as composites of the cured parts at the pose-spec angles (high-five: arm-front rotated about its pivot by the harness angle, hand segment extended along the arm axis so the painted palm lands on HIGH_FIVE_CONTACT; celebrate/clap: parts at CELEBRATE/CLAP spec angles, arms behind/over torso in rig draw order). Measured on the shipped plates (harness skin band, >=40px cluster within 30 vb): Holmes high-five palm (98.89,25.36) vb, 0.37 vb from (99,25), 229 px; Watson (15.44,20.91), 0.45 vb from (15,21), 224 px. Celebrate palms 0.39-0.90 vb from rig targets; clap palms 0.29-0.36 vb. Glass: high-five and Holmes celebrate/clap carry zero pale-lens px (glass = null); Watson celebrate carries the prop glass at the rig position. NOTE: the parts-assembly palm number is bounded by rigid-arm geometry — the arm-front part's palm radius (26.6 vb Holmes) is shorter than the contact radius (39.1 vb), so a pure rotation assembly lands ~7.3 rig px short regardless of plate content; the rig itself draws a longer explicit arm for high-five. Plates now show the true anchor geometry.",
-    "FOLLOW-UP CURE 2026-11-08 (raised-arm parts): holmes-arm-raised.png / watson-arm-raised.png are new runtime parts — the dedicated raised arm the rig draws explicitly for pose 'high-five' (DetectivePair.tsx @ 9e49da3 high-five branch: Holmes M78,58 L97,27 + hand at (99,25); Watson M36,54 L17,23 + hand at (15,21); drawn explicitly so the anchor never drifts with a rotation guess). Each part is that same arm isolated from the regenerated high-five plate, placed at its rect with NO rotation; in the high-five assembly it replaces arm-front (kid-test measurer keys on part id 'arm-raised'). Narrow-band self-check, part at rect: Holmes hand cluster 244 px, centroid (98.77,25.50) vb — 0.56 vb from (99,25); Watson 235 px, centroid (15.50,20.96) vb — 0.50 vb from (15,21). Runtime total 168,126 -> 172,431 B of 500,000. See raised_arm_parts_cure."
+    "manifest.json (beside the assets) is the harness/engine-shaped export of this lock's geometry \u2014 see manifest_alignment.",
+    "POSE-PLATE REGENERATION 2026-11-08 (high-five geometry cure): the painted pose plates' raised arms disagreed with the rig pose spec (DetectivePair.tsx @ 9e49da3) \u2014 in the old high-five plates the anchor hand was a flat rig-colour disc (242,196,154), not painted skin, the arm rose from the wrong shoulder line, and a duplicate base-position front hand remained. All six arm-pose plates were regenerated as composites of the cured parts at the pose-spec angles (high-five: arm-front rotated about its pivot by the harness angle, hand segment extended along the arm axis so the painted palm lands on HIGH_FIVE_CONTACT; celebrate/clap: parts at CELEBRATE/CLAP spec angles, arms behind/over torso in rig draw order). Measured on the shipped plates (harness skin band, >=40px cluster within 30 vb): Holmes high-five palm (98.89,25.36) vb, 0.37 vb from (99,25), 229 px; Watson (15.44,20.91), 0.45 vb from (15,21), 224 px. Celebrate palms 0.39-0.90 vb from rig targets; clap palms 0.29-0.36 vb. Glass: high-five and Holmes celebrate/clap carry zero pale-lens px (glass = null); Watson celebrate carries the prop glass at the rig position. NOTE: the parts-assembly palm number is bounded by rigid-arm geometry \u2014 the arm-front part's palm radius (26.6 vb Holmes) is shorter than the contact radius (39.1 vb), so a pure rotation assembly lands ~7.3 rig px short regardless of plate content; the rig itself draws a longer explicit arm for high-five. Plates now show the true anchor geometry.",
+    "FOLLOW-UP CURE 2026-11-08 (raised-arm parts): holmes-arm-raised.png / watson-arm-raised.png are new runtime parts \u2014 the dedicated raised arm the rig draws explicitly for pose 'high-five' (DetectivePair.tsx @ 9e49da3 high-five branch: Holmes M78,58 L97,27 + hand at (99,25); Watson M36,54 L17,23 + hand at (15,21); drawn explicitly so the anchor never drifts with a rotation guess). Each part is that same arm isolated from the regenerated high-five plate, placed at its rect with NO rotation; in the high-five assembly it replaces arm-front (kid-test measurer keys on part id 'arm-raised'). Narrow-band self-check, part at rect: Holmes hand cluster 244 px, centroid (98.77,25.50) vb \u2014 0.56 vb from (99,25); Watson 235 px, centroid (15.50,20.96) vb \u2014 0.50 vb from (15,21). Runtime total 168,126 -> 172,431 B of 500,000. See raised_arm_parts_cure."
   ],
-  "manifest_alignment": "public/assets/detective/pair-art/manifest.json carries the identical geometry (natural sizes, per-face-kind faceBox, per-part placement rects, pivots, palm anchors + measurements) in harness/engine shape. ASSET_LOCK.json remains the audit record; manifest.json is the runtime-shaped contract. Numbers are generated from the same build data — they cannot drift without a rebuild.",
+  "manifest_alignment": "public/assets/detective/pair-art/manifest.json carries the identical geometry (natural sizes, per-face-kind faceBox, per-part placement rects, pivots, palm anchors + measurements) in harness/engine shape. ASSET_LOCK.json remains the audit record; manifest.json is the runtime-shaped contract. Numbers are generated from the same build data \u2014 they cannot drift without a rebuild.",
   "face_geometry": {
     "holmes": {
       "naturalSizePx": [
@@ -2187,7 +2187,7 @@
       "kind": "test-asset-identity-distractor",
       "inRuntimeTotal": false,
       "cornersTransparent": true,
-      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) — same painted register"
+      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) \u2014 same painted register"
     },
     {
       "file": "jolly-standing.png",
@@ -2198,7 +2198,7 @@
       "kind": "test-asset-identity-distractor",
       "inRuntimeTotal": false,
       "cornersTransparent": true,
-      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) — same painted register"
+      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) \u2014 same painted register"
     }
   ],
   "arm_palm_measurements_cure": {
@@ -2271,9 +2271,9 @@
   },
   "raised_arm_parts_cure": {
     "date": "2026-11-08",
-    "basis": "Rig contract, DetectivePair.tsx @ main 9e49da3 (Holmes lines 347/425-433, Watson 511/598-606): for pose == 'high-five' ONLY the rig does NOT rotate the base arm; it draws a DEDICATED raised arm explicitly — Holmes stroke path M78,58 L97,27 (strokeWidth 10, round cap, coat colour) + hand circle at HIGH_FIVE_CONTACT (99,25) r=4.6; Watson M36,54 L17,23 + hand circle at (15,21) r=4.6. Rig comment: 'the raised hand IS the contact point, drawn explicitly so the anchor never drifts with a rotation guess.' The base arm-front palm radius (26.6 vb Holmes) cannot reach the anchor radius (39.1 vb) by any rotation, so a parts assembly that rotates arm-front reads ~7.3 rig px short through no plate defect.",
+    "basis": "Rig contract, DetectivePair.tsx @ main 9e49da3 (Holmes lines 347/425-433, Watson 511/598-606): for pose == 'high-five' ONLY the rig does NOT rotate the base arm; it draws a DEDICATED raised arm explicitly \u2014 Holmes stroke path M78,58 L97,27 (strokeWidth 10, round cap, coat colour) + hand circle at HIGH_FIVE_CONTACT (99,25) r=4.6; Watson M36,54 L17,23 + hand circle at (15,21) r=4.6. Rig comment: 'the raised hand IS the contact point, drawn explicitly so the anchor never drifts with a rotation guess.' The base arm-front palm radius (26.6 vb Holmes) cannot reach the anchor radius (39.1 vb) by any rotation, so a parts assembly that rotates arm-front reads ~7.3 rig px short through no plate defect.",
     "method": "Each part is the raised arm of the regenerated high-five pose plate, isolated (corridor + painted-register colour classes + connected component), palette-lossless (max channel delta 0 vs the plate pixels). Placed at its manifest rect with NO rotation, it replaces arm-front in the high-five assembly.",
-    "harness_detection": "tests/e2e/pair-art-kidtest.spec.ts assembly section: raisedPart = parts.find(p => /high-five|highfive|raised/.test(p.part)) — the part id 'arm-raised' matches; when found, arm-front is excluded and the raised part is drawn explicitly at its rectPx with rotationDeg 0.",
+    "harness_detection": "tests/e2e/pair-art-kidtest.spec.ts assembly section: raisedPart = parts.find(p => /high-five|highfive|raised/.test(p.part)) \u2014 the part id 'arm-raised' matches; when found, arm-front is excluded and the raised part is drawn explicitly at its rectPx with rotationDeg 0.",
     "band": "narrow band of arm_palm_measurements_cure.band for the standalone self-check; harness wide band for the assembled check",
     "parts": {
       "holmes-arm-raised.png": {
@@ -2287,15 +2287,15 @@
           25
         ],
         "rect_vb": [
-          70.0,
-          20.5,
-          105.0,
+          66.0,
+          4.0,
+          114.0,
           66.5
         ],
-        "bytes": 2219,
-        "width": 70,
-        "height": 92,
-        "decodedMB": 0.0258,
+        "bytes": 2810,
+        "width": 96,
+        "height": 125,
+        "decodedMB": 0.048,
         "narrow_band_skin_px_total": 278,
         "hand_cluster_px": 244,
         "hand_centroid_vb": [
@@ -2315,15 +2315,15 @@
           21
         ],
         "rect_vb": [
-          8.5,
-          16.0,
+          3.0,
+          3.0,
           41.5,
           62.0
         ],
-        "bytes": 2086,
-        "width": 66,
-        "height": 92,
-        "decodedMB": 0.0243,
+        "bytes": 2749,
+        "width": 77,
+        "height": 118,
+        "decodedMB": 0.0363,
         "narrow_band_skin_px_total": 264,
         "hand_cluster_px": 235,
         "hand_centroid_vb": [
@@ -2333,6 +2333,7 @@
         "centroid_error_vb": 0.5
       }
     },
-    "assembled_check": "Parts assembly simulated in harness draw order (raised part at rect, no rotation, arm-front excluded): wide-band palm cluster Holmes 229 px, centroid (98.89,25.36) vb = 0.37 vb / 0.22 rig px from (99,25); Watson 224 px, centroid (15.44,20.91) vb = 0.45 vb / 0.33 rig px from (15,21) — identical to the regenerated plates' own measurements. Assembly-vs-high-five-plate differing fraction: Holmes 0.563, Watson 0.520 (gate 0.60)."
+    "assembled_check": "Parts assembly simulated in harness draw order (raised part at rect, no rotation, arm-front excluded): wide-band palm cluster Holmes 229 px, centroid (98.89,25.36) vb = 0.37 vb / 0.22 rig px from (99,25); Watson 224 px, centroid (15.44,20.91) vb = 0.45 vb / 0.33 rig px from (15,21) \u2014 identical to the regenerated plates' own measurements. Assembly-vs-high-five-plate differing fraction: Holmes 0.563, Watson 0.520 (gate 0.60).",
+    "round2_recut_2026_11_08": "Cure round 2 (panel re-vote BLOCK, Game developer): previous rects clipped the fingers - plate palm skin reached vb y=16.5 (Holmes) / 13.5 (Watson) vs rect tops 20.5 / 16.0. Parts re-extracted from the finger-redrawn high-five plates (corridor + connected component) with rect tops at vb 4.0 / 3.0, above the new fingertip skin tops (vb 7.0 / 7.0) with halo margin; Holmes rect also widened (105->114 vb) for the thumb. Assembled-part vs plate hand-zone skin: Holmes 1220 of 1226 px reproduced, Watson 1028 of 1028 px."
   }
 }
