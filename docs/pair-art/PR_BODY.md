@@ -242,7 +242,7 @@ spec §14:
   `scripts/kidtest-*`, and `public/assets/detective/pair-art/`
   are PR A’s own harness and assets, in scope per the owner’s
   brief.)
-- Diff stat at vote time: the full PR diff against main `9e49da3`: 86 files changed, 9,715 insertions(+), 138 deletions(-) (recounted on the round-4 records branch at `0e149b4` and verified against `git diff --shortstat origin/main...HEAD`; this stat line's own edit is line-count neutral — `PR_BODY.md` is a new file in this PR — so the count holds at the tip that carries it; records-only commits change prose counts, never scope) — assets, docs, harness; zero `src/` paths — any `src/` path in
+- Diff stat at vote time: the full PR diff against main `9e49da3`: 86 files changed, 9,729 insertions(+), 138 deletions(-) (recounted on the round-4 records branch at `0e149b4` and verified against `git diff --shortstat origin/main...HEAD`; this stat line's own edit is line-count neutral — `PR_BODY.md` is a new file in this PR — so the count holds at the tip that carries it; records-only commits change prose counts, never scope) — assets, docs, harness; zero `src/` paths — any `src/` path in
   the final diff fails this PR; `tests/`, `scripts/`, and
   `public/` paths beyond the kidtest spec, the playwright
   project, the kidtest scripts, and the pair-art assets fail
