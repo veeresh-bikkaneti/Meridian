@@ -36,6 +36,7 @@ import {
   renderDigest,
   runHourlyDigest,
   resetRateLimitsForTests,
+  scrubErrorText,
   thresholdConfig,
   tierOf,
   validateEvent,
@@ -3343,3 +3344,106 @@ for (const buildId of ["wake-check", "periodic-probe"]) {
     });
   }
 }
+
+// --- Council fix T1 (2026-11-08): privacy scrubbing of error text ---------
+//
+// Synthetic, obviously-fake tokens only. Rules: URL keeps scheme/host/path
+// and drops ?query / #fragment; emails, UUIDs, long hex and long mixed
+// token runs are replaced; file:line:col and identifiers survive.
+
+const FAKE_HEX = "deadbeef".repeat(4); // 32 hex chars
+const FAKE_TOKEN = "FAKEtok3nFAKEtok3nFAKEtok3nFAKEtok3n"; // 36 mixed chars, not a real token
+const FAKE_UUID = "00000000-0000-4000-8000-000000000000";
+
+test("T1 P1 scrubErrorText drops URL query and fragment but keeps origin + path + line:col", () => {
+  const out = scrubErrorText(
+    "Failed to fetch dynamically imported module: https://meridian.example/assets/region-ab12cd.js?token=abc&kid=1#player=Kid",
+    300,
+  );
+  assert.equal(out, "Failed to fetch dynamically imported module: https://meridian.example/assets/region-ab12cd.js");
+  assert.equal(
+    scrubErrorText("at renderGlobe (https://x.example/assets/index-Bk3x9.js?v=2:12:345)", 300),
+    "at renderGlobe (https://x.example/assets/index-Bk3x9.js:12:345)",
+  );
+});
+
+test("T1 P1 scrubErrorText redacts emails, UUIDs, long hex and long token runs; keeps identifiers", () => {
+  const out = scrubErrorText(
+    `user kid@example.com id ${FAKE_UUID} sig ${FAKE_HEX} bearer ${FAKE_TOKEN} in mapInitWebgl2Context`,
+    300,
+  );
+  assert.ok(!out.includes("kid@example.com"), out);
+  assert.ok(!out.includes(FAKE_UUID), out);
+  assert.ok(!out.includes(FAKE_HEX), out);
+  assert.ok(!out.includes(FAKE_TOKEN), out);
+  assert.ok(out.includes("mapInitWebgl2Context"), "code identifiers survive");
+  assert.ok(out.includes("<email>") && out.includes("<id>") && out.includes("<redacted>"), out);
+  // Short build hashes and ordinary words are not over-redacted.
+  assert.equal(scrubErrorText("TypeError: Cannot read properties of undefined (reading 'map') build a1b2c3d", 300),
+    "TypeError: Cannot read properties of undefined (reading 'map') build a1b2c3d");
+});
+
+test("T1 P1 scrubErrorText is bounded and neutralises @everyone/@here", () => {
+  const out = scrubErrorText("@everyone " + "x".repeat(1000), 140);
+  assert.ok(out.length <= 140, `len ${out.length}`);
+  assert.ok(!out.includes("@everyone"), out);
+  assert.equal(scrubErrorText(undefined as unknown as string, 50), "");
+});
+
+test("T1 P1 normaliseEvent scrubs error text and keeps only name/message (stack, cause, nested dropped)", () => {
+  const ev = normaliseEvent({
+    type: "js_error", ts: Date.now(), buildId: "a1b2c3d",
+    error: {
+      name: "TypeError",
+      message: `boom https://x.example/a.js?secret=${FAKE_TOKEN}#frag`,
+      stack: `at f (https://x.example/a.js?secret=${FAKE_TOKEN}:1:2)`,
+      cause: { message: FAKE_TOKEN },
+      nested: { deep: FAKE_HEX },
+    },
+  }) as Record<string, unknown>;
+  const err = ev.error as Record<string, unknown>;
+  assert.deepEqual(Object.keys(err).sort(), ["message", "name"]);
+  assert.equal(err.message, "boom https://x.example/a.js");
+  assert.deepEqual(validateEvent(ev), [], "scrubbed legacy event still validates");
+});
+
+test("T1 P1 Discord + email never carry the query secret, token, or mention; allowed_mentions parse is empty", async () => {
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, {
+    DISCORD_WEBHOOK_URL: "https://discord.test/hook",
+    RESEND_API_KEY: "test-key",
+    REPORT_EMAIL: "owner@example.test",
+  });
+  const ev = provJsError({
+    error: { name: "TypeError", message: `Failed to fetch https://m.example/assets/r.js?token=${FAKE_TOKEN}#player=Kid @everyone` },
+  });
+  const res = await handleRequest(postEvent(ev), env);
+  assert.equal(res.status, 200);
+  const discord = fetchCalls.find((c) => c.url === "https://discord.test/hook");
+  const email = fetchCalls.find((c) => c.url.includes("resend"));
+  assert.ok(discord && email, "both channels attempted");
+  for (const c of [discord!, email!]) {
+    const body = String((c.init as RequestInit).body);
+    assert.ok(!body.includes(FAKE_TOKEN), "token stripped");
+    assert.ok(!body.includes("player=Kid"), "fragment stripped");
+    assert.ok(!body.includes("?token"), "query stripped");
+    assert.ok(!body.includes("@everyone"), "mention neutralised");
+    assert.ok(body.includes("https://m.example/assets/r.js"), "useful path kept");
+  }
+  const payload = JSON.parse(String((discord!.init as RequestInit).body)) as { allowed_mentions?: { parse: unknown[] } };
+  assert.deepEqual(payload.allowed_mentions, { parse: [] });
+});
+
+test("T1 P1 client sanitizeError scrubs the same way and stays bounded (parity with worker)", () => {
+  const raw = new TypeError(`Failed to fetch https://m.example/assets/r.js?token=${FAKE_TOKEN}#frag id ${FAKE_UUID}`);
+  const c = sanitizeError(raw);
+  assert.equal(c.name, "TypeError");
+  assert.equal(c.message, scrubErrorText(raw.message, 300), "client and worker scrub identically");
+  assert.ok(!c.message.includes(FAKE_TOKEN) && !c.message.includes(FAKE_UUID));
+  assert.ok(sanitizeError("x".repeat(5000)).message.length <= 300);
+  assert.deepEqual(sanitizeError(new Error("plain message")), { name: "Error", message: "plain message" });
+});

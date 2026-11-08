@@ -528,12 +528,42 @@ export function coarseDeviceFacts(): DeviceInfo {
   return runtimeFacts();
 }
 
+/**
+ * Privacy scrub for error text (council fix T1, 2026-11-08). Mirrored in
+ * workers/crash-report/src/index.ts (scrubErrorText) and pinned identical by the
+ * worker test "client sanitizeError scrubs the same way". Rules, in order:
+ * URLs keep scheme/host/path and drop ?query and #fragment; emails become
+ * <email>; UUIDs and hex runs >= 20 become <id>; mixed letter+digit token
+ * runs >= 32 become <redacted>; @everyone/@here lose their mention form.
+ * file:line:col and code identifiers survive. Output is capped at `max`.
+ */
+export function scrubErrorText(value: unknown, max: number): string {
+  if (typeof value !== "string" || value.length === 0) return "";
+  // Bound the work before regexes run (inputs are already capped upstream).
+  let s = value.slice(0, 2048);
+  s = s.replace(
+    /\b((?:https?|wss?|blob|file):\/\/[^\s?#'"<>()]*?)(?:\?[^\s#'"<>()]*?)?(?:#[^\s'"<>()]*?)?(?=(?::\d+(?::\d+)?)?(?:[\s'"<>()]|$))/gi,
+    "$1",
+  );
+  s = s.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "<email>");
+  s = s.replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, "<id>");
+  s = s.replace(/\b[0-9a-f]{20,}\b/gi, "<id>");
+  s = s.replace(/[A-Za-z0-9_\-+/=]{32,}/g, (run) =>
+    /[0-9]/.test(run) && /[A-Za-z]/.test(run) ? "<redacted>" : run,
+  );
+  s = s.replace(/@(everyone|here)\b/gi, "@\u200b$1");
+  return s.length > max ? `${s.slice(0, Math.max(0, max - 1))}…` : s;
+}
+
 export function sanitizeError(err: unknown): { name: string; message: string } {
   try {
     if (err instanceof Error) {
-      return { name: String(err.name || "Error").slice(0, 80), message: String(err.message || "").slice(0, MAX_ERROR_CHARS) };
+      return {
+        name: scrubErrorText(String(err.name || "Error"), 80) || "Error",
+        message: scrubErrorText(String(err.message || ""), MAX_ERROR_CHARS),
+      };
     }
-    return { name: "Error", message: String(err).slice(0, MAX_ERROR_CHARS) };
+    return { name: "Error", message: scrubErrorText(String(err), MAX_ERROR_CHARS) };
   } catch {
     return { name: "Error", message: "" };
   }

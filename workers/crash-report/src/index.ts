@@ -459,13 +459,15 @@ export function normaliseEvent(raw: unknown): unknown {
     if (typeof v === "string" && v.length > cap) event[key] = v.slice(0, cap);
   }
   if (isPlainObject(event.error)) {
-    const error = { ...event.error };
-    if (typeof error.name === "string" && error.name.length > 80) {
-      error.name = error.name.slice(0, 80);
-    }
-    if (typeof error.message === "string" && error.message.length > 300) {
-      error.message = error.message.slice(0, 300);
-    }
+    // Council fix T1: keep ONLY name/message (stack, cause and nested
+    // objects never travel further) and scrub both before anything —
+    // alert, email, log line or counter — can read them.
+    const raw = event.error;
+    const error: Record<string, unknown> = {};
+    if (typeof raw.name === "string") error.name = scrubErrorText(raw.name, 80);
+    else if (raw.name !== undefined) error.name = raw.name;
+    if (typeof raw.message === "string") error.message = scrubErrorText(raw.message, 300);
+    else if (raw.message !== undefined) error.message = raw.message;
     event.error = error;
   }
   if (isPlainObject(event.device)) event.device = normaliseDevice(event.device);
@@ -890,7 +892,7 @@ function whyLineFor(whyKey: CrashWhyKey, event: CrashReportEvent): string {
       return "App stopped mid-game on the current build; no error was captured, so the cause is unknown.";
     case "captured_error":
       return event.error
-        ? `The app hit a real error and did not recover from it. Error captured: ${truncate(event.error.name, 60)} — ${truncate(event.error.message, 140)}.`
+        ? `The app hit a real error and did not recover from it. Error captured: ${scrubErrorText(event.error.name, 60) || "—"} — ${scrubErrorText(event.error.message, 140) || "—"}.`
         : "The app failed to start; that failure was captured and it did not recover.";
     case "missing_fields":
       return "This report is missing the evidence needed to classify it, so it can't be called harmless.";
@@ -928,6 +930,34 @@ function lastStepWords(rawMilestone: string | undefined): string {
 }
 
 // --- Compact, PII-free alert -------------------------------------------
+
+/**
+ * Privacy scrub for error text (council fix T1, 2026-11-08). Mirrored in
+ * src/lib/observability.ts (sanitizeError) and pinned identical by the
+ * worker test "client sanitizeError scrubs the same way". Rules, in order:
+ * URLs keep scheme/host/path and drop ?query and #fragment; emails become
+ * <email>; UUIDs and hex runs >= 20 become <id>; mixed letter+digit token
+ * runs >= 32 become <redacted>; @everyone/@here lose their mention form.
+ * file:line:col and code identifiers survive. Output is capped at `max`.
+ */
+export function scrubErrorText(value: unknown, max: number): string {
+  if (typeof value !== "string" || value.length === 0) return "";
+  // Bound the work before regexes run (inputs are already capped upstream).
+  let s = value.slice(0, 2048);
+  s = s.replace(
+    /\b((?:https?|wss?|blob|file):\/\/[^\s?#'"<>()]*?)(?:\?[^\s#'"<>()]*?)?(?:#[^\s'"<>()]*?)?(?=(?::\d+(?::\d+)?)?(?:[\s'"<>()]|$))/gi,
+    "$1",
+  );
+  s = s.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "<email>");
+  s = s.replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, "<id>");
+  s = s.replace(/\b[0-9a-f]{20,}\b/gi, "<id>");
+  s = s.replace(/[A-Za-z0-9_\-+/=]{32,}/g, (run) =>
+    /[0-9]/.test(run) && /[A-Za-z]/.test(run) ? "<redacted>" : run,
+  );
+  s = s.replace(/@(everyone|here)\b/gi, "@\u200b$1");
+  return s.length > max ? `${s.slice(0, Math.max(0, max - 1))}…` : s;
+}
+
 
 function truncate(value: string | undefined, max: number): string {
   if (!value) return "—";
@@ -1387,7 +1417,7 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   const region = truncate(event.regionId, 64);
   const lastStep = lastStepWords(event.lastMilestone);
   const errorLine = event.error
-    ? `${truncate(event.error.name, 60)} — ${truncate(event.error.message, 140)}`
+    ? `${scrubErrorText(event.error.name, 60) || "—"} — ${scrubErrorText(event.error.message, 140) || "—"}`
     : "none captured";
   // The device line starts from the coarse os/form bucket (COPPA) and
   // adds the parsed manifest facts — never raw UA or precise facts.
@@ -1507,7 +1537,8 @@ async function forwardToDiscord(webhookUrl: string, content: string): Promise<bo
     const res = await fetchWithTimeout(webhookUrl, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ content }),
+      // Council fix T1: never let report text ping @everyone/@here/users.
+      body: JSON.stringify({ content, allowed_mentions: { parse: [] } }),
     });
     if (!res.ok) {
       logLine("discord forward failed", res.status);
@@ -1891,7 +1922,7 @@ export async function recordTelemetry(
     bump(bucket.severities, severityKeyOf(event));
     bump(bucket.milestones, event.lastMilestone ?? "—");
     bump(bucket.modes, typeof event.mapMode === "string" && event.mapMode ? event.mapMode : "unknown");
-    bump(bucket.errorNames, event.error ? truncate(event.error.name, 80) : "none");
+    bump(bucket.errorNames, event.error ? scrubErrorText(event.error.name, 80) || "—" : "none");
     bucket.firstAt = bucket.firstAt === 0 ? now : Math.min(bucket.firstAt, now);
     bucket.lastAt = Math.max(bucket.lastAt, now);
     const hourStart = hourBucketStart(now);
