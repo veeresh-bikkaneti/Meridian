@@ -716,3 +716,72 @@ the tip):
 - **Next:** Silo QA delta re-key on the cured tip →
   13-seat panel round-3 re-vote → tally in PR body →
   DevEx → benchmark → merge on READY / READY-WITH-NITS.
+
+## Panel round 3 on `a4593c0` — NOT READY (8 AWN / 4 BLOCK / 1 vacant) — 2026-11-08
+
+- **APPROVE-WITH-NITS (8):** Game designer · Game audio
+  designer (Game Audio Engineer file) · Game economy
+  designer · Senior architect (Software Architect file) ·
+  Senior developer · Frontend developer · UX designer
+  (UI/UX file) · UX researcher.
+- **BLOCK (4):**
+  - **Game developer** (Senior Mechanics Engineer file):
+    raised-arm parts clip the finger tips (plate skin to
+    vb y 16.5 / 13.5; part rects start 20.5 / 16.0 —
+    assembled hand amputated ~4 / ~2.5 vb); the lock's
+    `raised_arm_parts_cure` record is stale vs the
+    shipped bytes (2219/2086 recorded, 2314/2159 on disk;
+    "identical to the plates" off by 0.85 vb).
+  - **Game level architect** (Level Designer file): the
+    harness's find captures place Holmes INSIDE the map
+    at 768 and over the search chrome at 390, while the
+    manifest records "page-above-map"; Measure 3 asserts
+    clue-text overlap only — no figure∩map / figure∩chrome
+    assertion exists; `lawfulSpots` mints spots in
+    occupied flow at widths with no gutter.
+  - **Game narrative designer:** Holmes's glass is never
+    raised (search + berth-think tell the wrong story);
+    Watson `notebook-mark` reads as standing idle; both
+    clap plates show one arm, not hands meeting; pencil
+    present in gasp + high-five plates (§4.2 exception
+    never drawn — pencil baked into the notebook part).
+  - **Game player** (timed log + 20+ named captures —
+    evidence rule satisfied): find-390 covers search
+    words; high-five reads as fists AT PLAY SIZE;
+    Watson celebrate reads as searching AT PLAY SIZE;
+    clap plates read as nobody clapping; Watson read
+    plate has no notebook in hand, gaze on the viewer;
+    feelings blur at play size (Watson surprised≈wonder,
+    pout≈thinking; black ear disc on `wonder`).
+- **VACANT (1):** Office hours — no persona file exists
+  in `~/.codex/agents/`; disclosed, never improvised.
+- **Cross-reads noted:** Narrative + Game developer +
+  UX designer PASS the high-five palms / celebration /
+  live-beat faces on zoomed or downscaled inspection;
+  the Game player's BLOCK is the play-size read. The
+  cure standard is therefore the play-size read
+  (figure 104 px, face 31–43 px), not zoom.
+- **Nits carried into the cure round / PR B list:**
+  lock's stale "byte-identical" surprised note; lock
+  raised-arm subsection (folds into the BLOCK cure);
+  manifest silhouette prose 47 px vs measured 43 px;
+  PR-body manifest size 33,208 vs 33,207 B; guard header
+  comment claiming manifest staleness; spec §5.4
+  composite sizes (15.7/18.6 KB vs 14,690/16,651 B);
+  harness halo `rank()` (halo painted over legs);
+  §6.2 `hushed` round mouth undrawn; Watson reserve
+  faces near-neutral; §6.4 neutral-anchored travel +
+  §5.4 mouth-height = PR B entry measurements; kid-test
+  protocol pre-D fixes (per-child rotation for find /
+  identity, Watson expression-size line, production
+  route sentence) recorded for PR D prep.
+- **Cure round dispatched 2026-11-08:** art crew
+  (`cure/366-art2`) — raised-arm re-cut, search /
+  berth-think / notebook-mark / clap redraws, pencil
+  split, Watson read/think prop fix, play-size
+  readability pass; harness crew (`cure/366-harness2`) —
+  placement assertions (figure∩map, figure∩chrome = 0
+  at settle time), lawfulSpots exclusion + fail-when-
+  none, halo rank −1, find captures regenerated.
+  Records crew follows on convergence → coordinator
+  verification → Silo QA re-key → panel round 4.
