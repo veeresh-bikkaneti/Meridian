@@ -837,3 +837,12 @@ the tip):
   load). No captures are claimed from that run; its
   clean re-run rides Silo QA.
 - **Next:** Silo QA re-key → panel round 4.
+- **Coordinator addendum (post-records convergence):**
+  the lock's `docs_files` bytes for 13 redrawn plates
+  were stale vs disk (e.g. holmes-pose-search 15,609
+  recorded / 14,574 on disk) — the art crew had synced
+  runtime files only. Lock corrected from disk;
+  `asset-lock.md` tables + headline and the PR body's
+  budget rows re-synced to 172,414 B / 2.486 MB in the
+  same pass. Panel-facing numbers now agree across
+  lock, manifest, asset-lock.md, PR body, and disk.

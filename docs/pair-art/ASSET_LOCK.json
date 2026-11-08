@@ -1611,7 +1611,7 @@
     },
     {
       "file": "holmes-pose-search.png",
-      "bytes": 15609,
+      "bytes": 14574,
       "width": 240,
       "height": 356,
       "decodedMB": 0.3418,
@@ -1621,7 +1621,7 @@
     },
     {
       "file": "holmes-pose-berth-think.png",
-      "bytes": 15611,
+      "bytes": 14300,
       "width": 240,
       "height": 356,
       "decodedMB": 0.3418,
@@ -1641,7 +1641,7 @@
     },
     {
       "file": "holmes-pose-announce.png",
-      "bytes": 16568,
+      "bytes": 16150,
       "width": 240,
       "height": 356,
       "decodedMB": 0.3418,
@@ -1651,7 +1651,7 @@
     },
     {
       "file": "holmes-pose-gaze-up.png",
-      "bytes": 15552,
+      "bytes": 15013,
       "width": 240,
       "height": 356,
       "decodedMB": 0.3418,
@@ -1681,7 +1681,7 @@
     },
     {
       "file": "holmes-pose-high-five.png",
-      "bytes": 16526,
+      "bytes": 15951,
       "width": 240,
       "height": 356,
       "decodedMB": 0.3418,
@@ -1691,7 +1691,7 @@
     },
     {
       "file": "holmes-pose-clap.png",
-      "bytes": 14665,
+      "bytes": 13281,
       "width": 240,
       "height": 356,
       "decodedMB": 0.3418,
@@ -1721,7 +1721,7 @@
     },
     {
       "file": "watson-pose-read.png",
-      "bytes": 16595,
+      "bytes": 15877,
       "width": 268,
       "height": 280,
       "decodedMB": 0.3002,
@@ -1731,7 +1731,7 @@
     },
     {
       "file": "watson-pose-think.png",
-      "bytes": 16929,
+      "bytes": 16241,
       "width": 268,
       "height": 280,
       "decodedMB": 0.3002,
@@ -1751,7 +1751,7 @@
     },
     {
       "file": "watson-pose-notebook-mark.png",
-      "bytes": 17784,
+      "bytes": 16894,
       "width": 268,
       "height": 280,
       "decodedMB": 0.3002,
@@ -1761,7 +1761,7 @@
     },
     {
       "file": "watson-pose-gasp.png",
-      "bytes": 18829,
+      "bytes": 18324,
       "width": 268,
       "height": 280,
       "decodedMB": 0.3002,
@@ -1771,7 +1771,7 @@
     },
     {
       "file": "watson-pose-celebrate-jump.png",
-      "bytes": 15954,
+      "bytes": 15070,
       "width": 268,
       "height": 280,
       "decodedMB": 0.3002,
@@ -1781,7 +1781,7 @@
     },
     {
       "file": "watson-pose-high-five.png",
-      "bytes": 18640,
+      "bytes": 17785,
       "width": 268,
       "height": 280,
       "decodedMB": 0.3002,
@@ -1791,7 +1791,7 @@
     },
     {
       "file": "watson-pose-clap.png",
-      "bytes": 16064,
+      "bytes": 15155,
       "width": 268,
       "height": 280,
       "decodedMB": 0.3002,
@@ -2202,7 +2202,9 @@
       "kind": "test-asset-identity-distractor",
       "inRuntimeTotal": false,
       "cornersTransparent": true,
-      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) \u2014 same painted register"
+      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) \u2014 same painted register",
+      "width": 173,
+      "height": 338
     },
     {
       "file": "jolly-standing.png",
@@ -2213,7 +2215,9 @@
       "kind": "test-asset-identity-distractor",
       "inRuntimeTotal": false,
       "cornersTransparent": true,
-      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) \u2014 same painted register"
+      "source": "Cut from the shipped Cold Trail card films (src/assets/home-v5) \u2014 same painted register",
+      "width": 261,
+      "height": 338
     }
   ],
   "arm_palm_measurements_cure": {

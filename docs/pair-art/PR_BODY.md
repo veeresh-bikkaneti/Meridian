@@ -131,7 +131,7 @@ placeholder.
 
 | Budget | Hard limit | Measured | Verdict |
 | :--- | :--- | :--- | :--- |
-| Total runtime pair assets (lazy-loaded) | ≤500 KB | 171.9 KB (171,918 B at the converged cure tip — panel-cure parts: split legs, halos, raised arms) | PASS |
+| Total runtime pair assets (lazy-loaded) | ≤500 KB | 172.4 KB (172,414 B on the round-4 cure tip — 45 runtime files, incl. the split pencil part and the re-cut raised arms) | PASS |
 | Decoded memory | ≤32 MB | 2.44 MB | PASS |
 | Palm-anchor error — Holmes `(99, 25)` | ≤3 px at rig scale | 0.58 rig px — measured by the shipped assembly measurer (harness, converged cure tip, 2026-11-08; dedicated raised-arm part, drawn explicitly per the rig contract; supersedes the 0.53 reading on the pre-round-2 art, and 0.22 before the open-palm repaint) | PASS |
 | Palm-anchor error — Watson `(15, 21)` | ≤3 px at rig scale | 2.00 rig px — measured by the shipped assembly measurer (harness, converged cure tip, 2026-11-08; dedicated raised-arm part; supersedes the 0.56 reading on the pre-round-2 art, and 0.33 before the open-palm repaint) | PASS |
@@ -210,9 +210,9 @@ assets are never mutated):
 | `neg/faces-distinct` | Any two of the 22 face files (11 per character) being byte- or pixel-identical — the pre-cure surprised ≡ wonder ship is impossible | A fixture dir with one face copied over another (and a byte-different re-encode with identical pixels) is flagged both ways |
 | `neg/no-baked-props` | A notebook, magnifying glass, or pencil baked into a torso/head part or plate where the rig hides it (notebook: false / glass: null poses), measured in the cure records' own zones and bands | A notebook-brown patch composited into a fixture copy of Watson's torso (and a pale-lens patch into Holmes's) is caught by the same scans |
 | `neg/plate-palms-open` | A high-five plate whose anchor skin cluster is off-anchor (>3 rig px) or a closed fist: cluster bbox <10×10 vb or skin fill ratio >0.85 | A fixture plate with a filled skin disc at the anchor passes the anchor limb and FAILS the open-palm limb |
-| `neg/budget-bites` | The runtime-budget gate passing a blown or dishonestly recorded set: total >500,000 B, or a lock total that understates the real bytes | Both violations are fed to the same gate function the real-set assertion uses; the real set (171,918 B) is the positive control |
+| `neg/budget-bites` | The runtime-budget gate passing a blown or dishonestly recorded set: total >500,000 B, or a lock total that understates the real bytes | Both violations are fed to the same gate function the real-set assertion uses; the real set (172,414 B) is the positive control |
 | `neg/gaze-no-answer` | An answer coordinate leaking into the sheets: any answer/target/coordinate field beyond the seven §4.1 host-prop keys in the manifest or lock, and any measured gaze that contradicts its §5.2/§6.2 declared target or aims down-and-outward at the map (own-prop targets excepted). Honest scope: at PR A a sheet carries no runtime answer coordinate, so this proves structure + directional consistency, not runtime blindness. `delighted` plates (6) are NOT MEASURED by name — a closed eye arc has no pupils | A planted `targetX` / `answerLat` field in a fixture manifest copy is flagged by the same scanner |
-| `neg/decoded-bites` | The decoded-size gate passing a set decoded past 32 MB | A synthetic 3000×3000 PNG (36 MB decoded, ~35 KB on disk) fed to the same decoded function FAILS; the real set (2.436 MB) is the positive control |
+| `neg/decoded-bites` | The decoded-size gate passing a set decoded past 32 MB | A synthetic 3000×3000 PNG (36 MB decoded, ~35 KB on disk) fed to the same decoded function FAILS; the real set (2.486 MB) is the positive control |
 
 ## Redundancy audit
 
