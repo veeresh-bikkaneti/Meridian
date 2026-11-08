@@ -51,6 +51,7 @@ Files in scope: `src/game/loop/detective/detective-state.ts`,
 `tests/e2e/detective-replay.spec.ts`, `tests/e2e/detective-sound.spec.ts`,
 `tests/e2e/detective-visibility.spec.ts`,
 `tests/e2e/detective-watson-walk.spec.ts`,
+`tests/e2e/detective-endings.spec.ts` (gap-closure round),
 `tests/e2e/detective-staging.spec.ts` (comment only),
 `docs/handbook/10-holmes-and-watson-pair.md` (new dated record section),
 this file.
@@ -77,8 +78,8 @@ lane merges second rebases over the other.
     completed. Two earlier local attempts were killed by VM restarts
     mid-build — environment, not build errors — and the gate was
     re-run clean to this result.)
-- [ ] PR opened — NO: builder brief forbids opening PRs; the
-  coordinator opens it after independent clean-context QA
+- [x] PR opened — PR #372 (opened by the pipeline finisher; the
+  builder brief forbade the builder from opening it)
 - [ ] Merge — on the owner's word / coordinator only, never the builder
 
 ## GATES STATE (finisher session, 2026-11-08 — updated after every gate)
@@ -86,7 +87,7 @@ lane merges second rebases over the other.
 Finisher: pipeline-finisher subagent (lane 1 of the owner's sequential
 pipeline law). Base verified against **origin/main `9e49da3`** — the
 local `main` ref is stale (#361-era `97d1dcf`); origin/main IS an
-ancestor of this branch and the true branch diff is 11 files (623+/185−).
+ancestor of this branch and the true branch diff is 11 files (709+/185−, measured at 3f3eaf0; later commits are docs-only).
 
 - [x] Chromium launch RE-TEST: the WebGL-policy outage is OVER for the
   real spec path — Playwright + bundled chromium-1243 launches and
@@ -160,12 +161,28 @@ ancestor of this branch and the true branch diff is 11 files (623+/185−).
   changes) — the existing PASS-WITH-NITS + the now-run-verified gaps
   stand; no code delta exists to re-key. Stated per the finisher
   brief's either/or.
-- [ ] Gates 4–7 — PR, panel, DevEx/benchmark, merge: BLOCKED on the
-  parent's routing decision for the N2-endings finding above
-  (pre-existing CELEBRATE/FAIL_READ layout overlap). Everything else
-  in gates 1–3 is green: N1 (unit, prior round), N2 guessing-chain,
-  N6, N7 PASSING; N2 endings windows FAIL on the pre-existing
-  overlap; nit-5 = 0 px².
+- [x] Gate 4 — PR opened: PR #372; the parent's routing decision
+  (a) is recorded — the N2-endings failure is routed to its own
+  follow-up (issue #371) and this PR proceeds with the failure
+  recorded honestly in the PR body.
+- [ ] Gates 5–7 — panel + DevEx + benchmark ran on `3f3eaf0`
+  (panel 13/13 in: 1 APPROVE, 11 APPROVE-WITH-NITS, 2 BLOCKs both
+  adjudicated pre-existing/out-of-scope — game audio → PR #370/PR 2,
+  game player → issues #371/#373 + PR #370/PR 2; DevEx records cure
+  applied after the panel, confirmation re-vote follows); merge
+  awaits the panel verdict on the cured tip + the parent's merge
+  call on the standing audio BLOCK.
+
+> **SUPERSEDED — records cure, 2026-11-08 (pipeline finisher).**
+> This capsule's per-gap run statuses below are STALE: they were written
+> before the re-runs and claim several gaps are "NOT YET RUN", nit-5 is
+> "not taken", and the Chromium outage is current. All three are wrong
+> now. The **GATES-STATE section above is the current record**: GAP 4
+> (N7) RUN VERIFIED PASSING; GAP 2 endings windows RUN — FAILED on the
+> pre-existing CELEBRATE/FAIL_READ overlap (issue #371); GAP 2
+> guessing-chain + GAP 3 (N6) RUN VERIFIED PASSING (walk spec 9/9);
+> nit-5 MEASUREMENT TAKEN (maxOverlap 0 px²); the Chromium outage is
+> OVER. Where this capsule and GATES-STATE disagree, GATES-STATE wins.
 
 ## Gap-closure round (2026-11-08, Silo QA PASS-WITH-NITS follow-up)
 
@@ -177,32 +194,35 @@ Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
   in `detective-state.test.ts` — Watson's placement asserted
   "station" in all five phases (CELEBRATE across all four
   choreography steps). Full suite: `npm test` 2268/2268.
-- [ ] **GAP 4 (N7) — pinned, run UNVERIFIED** (`35db604`): endings
-  spec "WIN in 2" now asserts, after a 2 s settle, that no
+- [x] **GAP 4 (N7) — pinned, RUN VERIFIED PASSING (GATES-STATE Gate 1a)** (`35db604`): endings
+  spec "WIN in 2" asserts, after a 2 s settle, that no
   `case-137/clue-3.mp3`, `clue-4.mp3` or `clue-5.mp3` appears in
-  either the play record or the network request list. NOT YET
-  RUN — see the Chromium outage below. (Correction, same day:
+  either the play record or the network request list. RUN: verified
+  passing inside the Gate 1a endings run — the test reached and
+  passed this assertion before the run's N2-window failure (absence
+  checks fail loudly, so reaching the absorb proves them).
   an earlier version of this capsule claimed this and the N2
   endings windows were PASSING on a "2 passed" endings run.
   That was a misread of truncated, piped output: the run's full
   output shows **2 failed**, both at browser launch. No endings
   test has passed in this round.)
-- [ ] **GAP 2 (N2), endings half — pinned, run UNVERIFIED**
+- [x] **GAP 2 (N2), endings half — pinned, RUN (windows FAILED on the pre-existing overlap, issue #371)**
   (`35db604`): audit windows "WIN celebrate→debrief @ endings"
   (9 s, opens at CELEBRATE) and "FAIL fail-read→pout @ endings"
   (12 s, opens at the final miss) absorbed through `AuditTrail`
-  at 0 px². NOT YET RUN — see the Chromium outage below and the
-  correction note under GAP 4.
-- [ ] **GAP 2 (N2), guessing-chain half — pinned, run UNVERIFIED**
+  at 0 px². RUN (GATES-STATE Gate 1a): both windows absorbed
+  overlap up to 4,777.5 px² from Holmes's pre-existing
+  celebration/fail-read placement (issue #371).
+- [x] **GAP 2 (N2), guessing-chain half — pinned, RUN VERIFIED PASSING (walk spec 9/9, GATES-STATE Gate 1b)**
   (`368c201`): in the watson-walk main test (all 3 widths), a
   12 s audit window "guessing chain selection→note→ask-next"
   opens once SELECTION_READ is live + 300 ms (the documented
   ~200 ms guess-commit FLIP exclusion kept exactly), with a
   trace assertion that SELECTION_READ → NOTE_MARK → ASK_NEXT →
   READING were sampled in order and a play-order subsequence
-  (name → suspicion → ask-next → clue-2). NOT YET RUN — see the
-  Chromium outage below.
-- [ ] **GAP 3 (N6) — pinned, run UNVERIFIED** (`368c201`): new
+  (name → suspicion → ask-next → clue-2). RUN: the window
+  absorbed at 0 px² at all three widths.
+- [x] **GAP 3 (N6) — pinned, RUN VERIFIED PASSING (GATES-STATE Gate 1b)** (`368c201`): new
   watson-walk test "watson walk: tap on Watson MID-WALK is
   ignored — one figure, walk arrives, held clue read fires
   exactly once (phone 390)". Pins the shipped behaviour: during
@@ -210,29 +230,32 @@ Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
   cluster is pointer-events:none, so the tap is a no-op — walk
   still "walking" after the tap, exactly one
   `[data-detective="watson"]` in every walking sample (never >1
-  anywhere), clue-2 read + ack-2 each exactly once. NOT YET
-  RUN — see the Chromium outage below.
-- [ ] **OBSERVATION (nit 5) — MEASUREMENT BLOCKED, not taken.**
-  A throwaway probe spec (audit sampler + per-frame phase,
-  watsonWalk OFF via `fulfillFlagsStaging`, 390px, clue-1 and
-  post-guess clue-2 READING windows) was written and deleted
-  unrun: no measurement number exists yet. Do not quote one.
-  Re-run on Chromium recovery; the coordinator routes any real
-  overlap separately (pre-existing station anchoring — out of
-  this branch's scope either way).
-- **Chromium outage (environment, evidenced):** every NEW
-  Chromium launch on this VM currently fails with
-  `Hatch WebGL domain policy is required for browser startup`
-  (chrome_main_delegate.cc:1283). Evidence: the endings run
-  started 10:42 (VM clock) **failed both tests at
+  anywhere), clue-2 read + ack-2 each exactly once. RUN: passing
+  in the Gate 1b walk-spec run (9/9).
+- [x] **OBSERVATION (nit 5) — MEASUREMENT TAKEN: maxOverlap 0 px² (GATES-STATE Gate 2).**
+  The finisher re-ran the probe (audit sampler + per-frame
+  phase, watsonWalk OFF via `fulfillFlagsStaging`, 390px, two
+  4 s windows, 9,600 pair samples): maxOverlap 0 px² (log
+  `e2e-nit5b.log`). The probe's strict READING gate never latched
+  in the walk-off flow, so the windows are recorded under their
+  actual phases in GATES-STATE Gate 2.
+- **Chromium outage — RESOLVED (see GATES-STATE Gate 1).** At the
+  time this capsule was written, every NEW Chromium launch on
+  this VM failed with `Hatch WebGL domain policy is required
+  for browser startup` (chrome_main_delegate.cc:1283) — a
+  runtime policy delivery break, not a code issue. The finisher
+  re-test found the outage OVER on the real spec path
+  (Playwright + bundled chromium-1243 launches and renders).
+  The re-runs prescribed here are DONE — GATES-STATE Gates 1a/1b
+  record the results. Historical detail, kept for the record:
+  the endings run started 10:42 (VM clock) **failed both tests at
   browserType.launch** with exactly this error (full output in
   the run log; error contexts under `test-results/`); a bare
-  `chrome --headless --dump-dom about:blank` reproduces it and
+  `chrome --headless --dump-dom about:blank` reproduced it and
   was still failing at 11:38. The binary's strings show it
   requires `--hatch-webgl-allowed-domains-file` + `-sha256`
-  switches that are not present on disk — a runtime policy
-  delivery break, not a code issue. Re-run ALL THREE touched
-  E2E specs on recovery, sequentially under the flock:
+  switches that are not present on disk. Re-run prescription
+  (DONE):
   `npx playwright test tests/e2e/detective-endings.spec.ts --workers=1`
   then `npx playwright test tests/e2e/detective-watson-walk.spec.ts --workers=1`
   (read the full reporter output — a piped `tail` masks the
