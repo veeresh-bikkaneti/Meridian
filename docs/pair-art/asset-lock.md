@@ -2,7 +2,7 @@
 
 Painted-parts paper-doll for Holmes & Watson, cut from the owner-approved mockup art (keeper: bench still, Cold Trail film register). Engine contract: `DetectivePair.tsx` @ main `9e49da3` — Holmes viewBox 120×178, Watson 134×140, parts rendered at 2 px per viewBox unit.
 
-**Runtime total: 171,918 bytes / 500,000 budget — PASS** · **Decoded: 2.436 MB / 32 MB — PASS** · Palm error (assembled parts, harness, re-measured 2026-11-08 on the converged cure tip — raised-arm parts repainted with open palms since the earlier 0.22/0.33 reading): Holmes 0.53 rig px, Watson 0.56 rig px / ≤3 rig px — PASS · Plates after the open-palm repaint (PIL, cluster-nearest-anchor): Holmes 0.72 / Watson 0.71 rig px — PASS
+**Runtime total: 171,918 bytes / 500,000 budget — PASS** · **Decoded: 2.436 MB / 32 MB — PASS** · Palm error (assembled parts, harness, converged cure tip, 2026-11-08): Holmes 0.58 rig px, Watson 2.00 rig px / ≤3 rig px — PASS · Assembly-vs-plate diff: Holmes 0.450, Watson 0.448 / ≤0.60 — PASS · THEN (superseded): Holmes 0.53 / Watson 0.56 rig px (harness, pre-round-2 art), 0.22 / 0.33 before the open-palm repaint; plates then read 0.72 / 0.71 rig px (PIL, cluster-nearest-anchor)
 
 Pose plates and silhouettes are docs/test assets and are excluded from the runtime total.
 

@@ -785,3 +785,55 @@ the tip):
   none, halo rank −1, find captures regenerated.
   Records crew follows on convergence → coordinator
   verification → Silo QA re-key → panel round 4.
+
+## Cure round 2 converged — round 4 — 2026-11-08
+
+- **Crews + branches:** art crew `cure/366-art2`
+  (raised-arm re-cut, story plates redrawn, pencil
+  split, play-size pass) · harness crew
+  `cure/366-harness2` (placement assertions,
+  lawfulSpots, halo rank) · guard crew
+  `cure/366-guardfix` (pencil prop model follows the
+  split) · records crew `cure/366-records2` (this
+  section). Converged onto `feat/pair-art-sheets`:
+  art merged `01b8b48`, harness merged `4960179`,
+  guard merged `0a52134`, records sync on top —
+  converged tip `11dc084`.
+- **Guard-fix + manifest re-sync commits:** guard
+  cure `cbc8922` (test: guard cure — pencil prop
+  model follows the split), merged `0a52134`;
+  manifest re-sync `11dc084` (manifest face bytes
+  follow the cure-7c redraws, 8 fields; smoke
+  inventory regenerated).
+- **Numbers on the converged tip (measured):**
+  runtime **172,414 B / 45 files** (= lock =
+  manifest = disk) · harness assembly (converged
+  cure tip, 2026-11-08): Holmes palm **0.584 rig
+  px**, plate diff **0.4498**; Watson palm **2.000
+  rig px**, plate diff **0.4484** (gates: palm ≤3,
+  diff ≤0.60) · guard **13/13** incl. the new pencil
+  negatives (prop-pencil positive control 112 px;
+  notebook-only 0; gasp / high-five pencil
+  zone+whole 0/0; new sabotage limb bites) ·
+  decoded **2.486 MB** recomputed (w×h×4, 45 files)
+  — supersedes the 2.436 MB figure, which counted
+  the 44-file pre-pencil-split set ·
+  `surprised`↔`wonder` pixel diff **1,483 / 2,042
+  px** (full-frame RGBA, md5 distinct) — supersedes
+  the 656 / 707 px in the `ba4e213` Silo QA record,
+  measured before the cure-7c face redraws.
+- **Kidtest on the final harness:** assembly PASS,
+  sabotage self-check PASS; the width tests fail
+  ONLY on (a) the demoted face-floor soft lines
+  (§16.5) and (b) at 390/768 the hard "no lawful
+  spot" line. Find screens: 1280 + 1920 captured
+  lawful (0 overlaps); **390 + 768 NOT RUN — no
+  lawful spot** (every placement intersects map,
+  clue text, or page chrome incl. page text;
+  spec §16.6(iv)).
+- **Trial prep — environmental crash, re-run owed:**
+  trial preparation on the converged tip crashed
+  environmentally (Chromium "Target crashed" under
+  load). No captures are claimed from that run; its
+  clean re-run rides Silo QA.
+- **Next:** Silo QA re-key → panel round 4.

@@ -1150,9 +1150,9 @@
     "holmes": "silhouette-holmes-104.png",
     "watson": "silhouette-watson-104.png",
     "gate": {
-      "holmes": "PASS \u2014 tall/thin (47px wide at 104px high), deerstalker crown + brim reads",
+      "holmes": "PASS \u2014 tall/thin (43px wide at 104px high), deerstalker crown + brim reads",
       "watson": "PASS \u2014 short/stout (63px wide at 104px high), bowler dome + flat brim reads",
-      "distinguishable": "PASS \u2014 width ratio 47:63 plus hat profiles differ at a glance"
+      "distinguishable": "PASS \u2014 width ratio 43:63 plus hat profiles differ at a glance"
     }
   },
   "identityDistractors": [

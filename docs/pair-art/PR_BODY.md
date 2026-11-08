@@ -33,59 +33,49 @@ the UX researcher and Office hours. Cures are being applied on
 this branch; the panel re-votes the cured tip. The sheets do NOT
 merge on round 1.
 
-**Round 3 — panel re-vote on `a4593c0`: 8 APPROVE-WITH-NITS,
-4 BLOCKs (Game developer, Game level architect, Game
-narrative designer, Game player), 1 seat vacant (Office
-hours — no persona file exists) — NOT READY.** The BLOCKs:
-raised-arm parts clip the finger tips; the kidtest find
-captures place the figure on the map / search chrome with
-no placement assertion to catch it; search / berth-think /
-notebook-mark / clap plates tell the wrong story; several
-plates fail the player's read at play size. A consolidated
-cure round is in progress on this branch; round 4 re-votes
-the cured tip. The round-3 vote was taken on the state
-summarised below:
-- The round-2 re-vote on `652cf13` returned 8
-  APPROVE-WITH-NITS + **5 BLOCKs (NOT READY)**.
-- Cured this round (cure commits on this branch):
-  the Watson torso's baked hand + notebook was
-  inpainted out; `surprised` was redrawn distinct
-  from `wonder` for both characters; `delighted`
-  was exaggerated; the high-five plates were
-  repainted as open palms; both celebrate-jump
-  plates now leave the ground. Spec §8.2/§8.3
-  corrected: 170/130 is the **bench tableau** lock,
-  not in-play; the face floors are **demoted to
-  PENDING THE OWNER'S RULING** (§16.5); coverage
-  is scoped to static single-figure endpoints,
-  the celebration slot un-dimensioned and Watson's
-  walk sweep unmeasured (§16.6, incl. (iii):
-  §6.4 mouth travel for `delighted` / `pout` NOT
-  MEASURED on record — only `surprised`↔`wonder`
-  stands measured — so no §6.4 pass is claimed
-  for those faces). Six `neg/*`
-  negative gates **with sabotage controls** were
-  added (owner rule 15; see the Negative gates
-  section).
-- Kid-test scope: the kid test is the PR D
-  go / no-go gate. Human per-cell trials were
-  prepared (96 trials); they were never run, and
-  the human kid test is not part of this PR's
-  vote.
-- Silo QA re-key on the converged tip: every
-  asset, budget, gate, and harness promise PASS —
-  guard 13/13 with sabotage bites, coverage
-  **0 px² for both figures at all four widths**,
-  size bands pass at all widths; the only width-
-  test failures are the demoted face-floor soft
-  lines (Holmes 31/35/39/43 vs 38/44/48/52;
-  Watson 43 vs 44 at 768 only). QA failed that
-  tip on records honesty alone (a stale manifest
-  budget block + per-file bytes, a stale smoke
-  inventory, and this body's diff stat) — all
-  cured in records commits on this branch; the
-  QA delta re-key on the cured tip is the gate
-  that stands between this body and the vote.
+**Round 4 — panel re-vote open on this tip.**
+
+- Round 3 outcome: the panel re-vote on `a4593c0`
+  returned 8 APPROVE-WITH-NITS, 4 BLOCKs (Game
+  developer, Game level architect, Game narrative
+  designer, Game player), 1 seat vacant (Office
+  hours — no persona file exists) — **NOT READY**.
+- Cures landed this round (cure round 2, converged
+  at `11dc084`):
+  - Raised-arm parts re-cut — rects [66, 4, 114, 66.5]
+    / [3, 3, 41.5, 62] vb; assembled hand-zone skin
+    reproduces the plates 1220/1226 px (Holmes) +
+    1028/1028 px (Watson); harness palm 0.584 /
+    2.000 rig px (see Verification).
+  - Search / berth-think plates: the magnifying
+    glass is raised.
+  - Notebook-mark plate: head down, pencil on page.
+  - Both clap plates: two palms meeting.
+  - Pencil split: `prop-pencil.png` is a new
+    standalone part; the gasp and high-five plates
+    are pencil-free.
+  - Watson read / think plates: sheet held in hand;
+    read gaze down.
+  - Play-size pass: high-five fingers drawn;
+    celebrate glass clear of the sightline; wonder
+    ear-discs reduced 116→4 / 98→24 px with open
+    mouths; hushed round mouths drawn; Watson
+    focused / attentive / pout / thinking faces
+    separated.
+  - Harness: figure placement is asserted against
+    map + chrome + page text at settle time;
+    `lawfulSpots` fails when no lawful spot exists;
+    halo rank −1 (halo paints under the figure).
+  - Guard: the pencil prop model follows the split
+    — 13/13 incl. the new pencil negatives.
+- Find leg: find screens at 1280 + 1920 captured
+  lawful (0 overlaps). At 390 + 768 the find leg is
+  **NOT RUN — no lawful spot**: every placement on
+  the case-open page intersects the map, clue text,
+  or page chrome incl. page text (spec §16.6(iv)).
+- Face floors: still **PENDING THE OWNER'S RULING**
+  (§16.5) — not binding law; the §8.3 size band
+  stands.
 
 **Owner rulings of record:**
 
@@ -143,8 +133,8 @@ placeholder.
 | :--- | :--- | :--- | :--- |
 | Total runtime pair assets (lazy-loaded) | ≤500 KB | 171.9 KB (171,918 B at the converged cure tip — panel-cure parts: split legs, halos, raised arms) | PASS |
 | Decoded memory | ≤32 MB | 2.44 MB | PASS |
-| Palm-anchor error — Holmes `(99, 25)` | ≤3 px at rig scale | 0.53 rig px — measured by the shipped assembly measurer on the converged cure tip, 2026-11-08 (dedicated raised-arm part, drawn explicitly per the rig contract; the open-palm repaint moved the reading from the earlier 0.22) | PASS |
-| Palm-anchor error — Watson `(15, 21)` | ≤3 px at rig scale | 0.56 rig px — measured by the shipped assembly measurer on the converged cure tip, 2026-11-08 (dedicated raised-arm part; earlier reading 0.33, before the open-palm repaint) | PASS |
+| Palm-anchor error — Holmes `(99, 25)` | ≤3 px at rig scale | 0.58 rig px — measured by the shipped assembly measurer (harness, converged cure tip, 2026-11-08; dedicated raised-arm part, drawn explicitly per the rig contract; supersedes the 0.53 reading on the pre-round-2 art, and 0.22 before the open-palm repaint) | PASS |
+| Palm-anchor error — Watson `(15, 21)` | ≤3 px at rig scale | 2.00 rig px — measured by the shipped assembly measurer (harness, converged cure tip, 2026-11-08; dedicated raised-arm part; supersedes the 0.56 reading on the pre-round-2 art, and 0.33 before the open-palm repaint) | PASS |
 | Live per-frame SVG filters | 0 | 0 | PASS |
 | Static composite — Holmes (holmes-pose-dock.png) | ≈20–30 KB | 14,690 B | PASS |
 | Static composite — Watson (watson-pose-station-idle.png) | ≈20–30 KB | 16,651 B | PASS |
@@ -252,7 +242,7 @@ spec §14:
   `scripts/kidtest-*`, and `public/assets/detective/pair-art/`
   are PR A’s own harness and assets, in scope per the owner’s
   brief.)
-- Diff stat at vote time: the full PR diff against main `9e49da3`: 85 files changed, 9,076 insertions(+), 138 deletions(-) (recounted at the cured tip and verified against `git diff --shortstat origin/main...HEAD` at that tip; records-only commits change prose counts, never scope) — assets, docs, harness; zero `src/` paths — any `src/` path in
+- Diff stat at vote time: the full PR diff against main `9e49da3`: 86 files changed, 9,715 insertions(+), 138 deletions(-) (recounted on the round-4 records branch at `0e149b4` and verified against `git diff --shortstat origin/main...HEAD`; this stat line's own edit is line-count neutral — `PR_BODY.md` is a new file in this PR — so the count holds at the tip that carries it; records-only commits change prose counts, never scope) — assets, docs, harness; zero `src/` paths — any `src/` path in
   the final diff fails this PR; `tests/`, `scripts/`, and
   `public/` paths beyond the kidtest spec, the playwright
   project, the kidtest scripts, and the pair-art assets fail
@@ -260,16 +250,40 @@ spec §14:
 
 ## Recorded for PR B — not built here
 
-These five items are recorded for PR B. None of them is
+These items are recorded for PR B. None of them is
 built, measured, or claimed in PR A:
 
 1. Manifest plates-adapter drift test.
-2. `manifest.json` (33,208 B) classification in the lock.
+2. `manifest.json` (33,534 B) classification in the lock.
 3. Composites promoted to runtime per ruling (c).
 4. Mouth-box entry measurement (§16.1).
 5. Kid-test protocol pre-D-run fixes (tap-boundary
    definition, full counterbalance rotations, same-band
    replacement rule, §4 "floor scale" sentence).
+6. Walk-sweep measurement (§16.6(ii)): PR B measures
+   the area Watson's figure sweeps while walking, at
+   the band maximum, before claiming §10 coverage for
+   walk or celebration.
+7. Wire-defaulted faces (§12.2 / §6.3): the faces the
+   shipped renderers default (Holmes `marking`;
+   Watson `focused` / `attentive` / `hushed` /
+   `wonder`) — PR B wires each one, or records why it
+   stays defaulted.
+8. Entry measurements: mouth height (§5.4) and
+   neutral-anchored mouth travel (§6.4) for
+   `delighted` / `surprised` / `pout`.
+9. Head ≡ face-neutral alias: `holmes-head.png` /
+   `watson-head.png` are byte-identical to the
+   neutral face files — 9,345 B of disclosed
+   duplicate files. PR B aliases one name to the
+   other in the manifest instead of shipping both.
+10. Kid-test protocol pre-D fixes from round 3:
+    per-child rotation for the find spot and the
+    identity lineup; a recorded line deciding whether
+    §8.3's band sizes both figures or Holmes with
+    Watson at 0.75× for expression trials; a named
+    production route for identity / expression
+    screens.
 
 ## Where the study and the code disagreed
 
@@ -293,7 +307,8 @@ Flagged in spec §12, not papered over. Headlines:
 - [ ] Diff audit — scope list above, staged files named only,
   never `git add -A`
 - [x] Harness — `node scripts/kidtest-smoke.mjs` + the `pair-art-kidtest` Playwright project, re-run on the final tip `504ddbc`:
-  smoke RAN (70 plates, 0 missing; face measure live via the manifest `plates` adapter — Holmes below floor in every cell, Watson 768 by 1 px, both recorded under ruling (f), NOT cured); Playwright: 5 tests executed in 33.6 min — size band + zero clue-text coverage PASS on the real built page at 390/768/1280/1920; face floor FAILED for Holmes at every width exactly as the smoke predicted (the harness hard-asserts the shortfall — see the Panel section: the round-1 panel read the "5/5" phrasing against this FAIL and the wording is corrected here; the run's green was the size/coverage measures completing their contract, never a face pass); human trials prepared, never faked: trial manifest + find screens exported, `results: null` throughout. Repo gates on the same tip: tsc clean · `npm test` 3,287 pass / 0 fail · worker suite 145/0 (run for completeness; no `workers/` files touched) · lint-cards GATE PASSED · `build:pages` green (71 pair-art files in dist on the cured tip, inert until PR B imports them). On the cured tip the kidtest project runs 6 tests: the 4 width measures (size + coverage PASS, face floor FAIL per ruling (f) — recorded as the by-design negative; the asserts are now soft so every leg runs (owner rule 15)), the trial preparation (96 trials, results null), and the assembly + palm measurement — **PASS** (Holmes 0.53 / Watson 0.56 rig px vs ≤3 gate on the converged tip, 2026-11-08 — the pre-repaint reading was 0.22 / 0.33; assembly-vs-plate diff 0.561 / 0.557 vs ≤0.60). Silo QA re-key (independent clone, keyed to the converged tip) independently re-ran the full kidtest project — 2 passed / 4 failed, every failure a demoted face-floor soft line (Holmes 31/35/39/43 vs 38/44/48/52; Watson 43 vs 44 at 768 only), the coverage hard-expect held at 0 px² for both figures at every width, trial manifest 97 × `results: null` — and re-measured the budgets exactly (runtime 171,918 B; decoded 2,436,448 B). Its FAIL was records-only: the manifest's budget block and 7 per-file byte fields were stale from the art cure, the smoke inventory was stale in 16 rows, and this body's diff stat understated insertions by 4 — all cured in records commits on this branch (manifest diff = the 8 stale values exactly; smoke regen verified idempotent) and delta re-keyed before the vote.
+  smoke RAN (70 plates, 0 missing; face measure live via the manifest `plates` adapter — Holmes below floor in every cell, Watson 768 by 1 px, both recorded under ruling (f), NOT cured); Playwright: 5 tests executed in 33.6 min — size band + zero clue-text coverage PASS on the real built page at 390/768/1280/1920; face floor FAILED for Holmes at every width exactly as the smoke predicted (the harness hard-asserts the shortfall — see the Panel section: the round-1 panel read the "5/5" phrasing against this FAIL and the wording is corrected here; the run's green was the size/coverage measures completing their contract, never a face pass); human trials prepared, never faked: trial manifest + find screens exported, `results: null` throughout. Repo gates on the same tip: tsc clean · `npm test` 3,287 pass / 0 fail · worker suite 145/0 (run for completeness; no `workers/` files touched) · lint-cards GATE PASSED · `build:pages` green (71 pair-art files in dist on the cured tip, inert until PR B imports them). On the cured tip the kidtest project runs 6 tests: the 4 width measures (size + coverage PASS, face floor FAIL per ruling (f) — recorded as the by-design negative; the asserts are now soft so every leg runs (owner rule 15)), the trial preparation (96 trials, results null), and the assembly + palm measurement — **PASS** (Holmes 0.58 / Watson 2.00 rig px vs ≤3 gate — harness, converged cure tip, 2026-11-08; supersedes 0.53 / 0.56 on the pre-round-2 art and 0.22 / 0.33 before the open-palm repaint; assembly-vs-plate diff 0.450 / 0.448 vs ≤0.60). Silo QA re-key (independent clone, keyed to the converged tip) independently re-ran the full kidtest project — 2 passed / 4 failed, every failure a demoted face-floor soft line (Holmes 31/35/39/43 vs 38/44/48/52; Watson 43 vs 44 at 768 only), the coverage hard-expect held at 0 px² for both figures at every width, trial manifest 97 × `results: null` — and re-measured the budgets exactly (runtime 171,918 B; decoded 2,436,448 B). Its FAIL was records-only: the manifest's budget block and 7 per-file byte fields were stale from the art cure, the smoke inventory was stale in 16 rows, and this body's diff stat understated insertions by 4 — all cured in records commits on this branch (manifest diff = the 8 stale values exactly; smoke regen verified idempotent) and delta re-keyed before the vote.
+- [x] Round-4 records update — cured tip `11dc084`, 2026-11-08: runtime total **172,414 B / 45 files** (= ASSET_LOCK = manifest = disk, re-measured on the cured tip); decoded 2.486 MB (recomputed w×h×4 on the 45-file set — supersedes the 2.436 MB figure, which counted the 44-file pre-pencil-split set). Guard **13/13 incl. the new pencil negatives** (prop-pencil positive control 112 px; notebook-only 0; gasp / high-five pencil zone + whole 0/0; the new sabotage limb bites). Kidtest on the final harness: assembly **PASS** (palm Holmes 0.58 / Watson 2.00 rig px, diffs 0.450 / 0.448 — harness, converged cure tip, 2026-11-08) and sabotage self-check **PASS**; the width tests fail ONLY on (a) the demoted face-floor soft lines (§16.5) and (b) at 390/768 the hard "no lawful spot" line; find screens at 1280 + 1920 captured lawful (0 overlaps), at 390 + 768 **NOT RUN — no lawful spot** (§16.6(iv)). Trial preparation on the converged tip crashed environmentally (Chromium "Target crashed" under load) — no captures are claimed from that run; its clean re-run rides Silo QA.
 - [x] Silo QA — **PASS** keyed PR#366 + `df7adbc`: full silo @`96ab16e` passed 7/8 checks with exact matches (scope, lock drift 0/64, manifest adapter, guard 6/6, tsc, lint-cards) and FAILED one records item (1920 face-px prose 42/56 vs the smoke script's measured 43/53); prose-only cure `df7adbc`; **DELTA SILO QA PASS** on the cured tip (cure confined to the 3 records files, corrected numbers verified, smoke regeneration byte-identical, guard still 6/6).
 - [ ] Panel — 13 seats incl. Game player, on the final tip:
   {{PANEL_TALLY}}
