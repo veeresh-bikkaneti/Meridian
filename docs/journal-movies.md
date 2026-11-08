@@ -68,17 +68,17 @@ clone downloads it).
 | Batch | Sets | Entries | Status |
 |---|---|---|---|
 | 01 | 1–3 | capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o | 9/9 LIVE (haymarket = flagged fallback; regen failed gate twice) |
-| 02 | 4–6 | holmes-lake, pioneers-park, wilderness-park, antelope-park, oak-lake, wyuka, lincoln-airport, union-plaza, gateway | 6 LIVE; 3 HELD (no-bed ffmpeg: holmes-lake, wyuka, gateway) in follow-up regen |
-| 03 | 7–9 | southpointe, havelock, college-view, university-place, near-south, hyde, robbers-cave, star-city-shores, quilt-museum | 7 LIVE (hyde, near-south, robbers-cave, college-view, quilt-museum, havelock v2, southpointe v2); 1 HELD (university-place — v2 board still not blank, fallback in follow-up #2); 1 pending (star-city-shores) |
+| 02 | 4–6 | holmes-lake, pioneers-park, wilderness-park, antelope-park, oak-lake, wyuka, lincoln-airport, union-plaza, gateway | 9/9 LIVE (holmes-lake, wyuka, gateway v2 regens replace held ffmpeg-only v1s) |
+| 03 | 7–9 | southpointe, havelock, college-view, university-place, near-south, hyde, robbers-cave, star-city-shores, quilt-museum | 9/9 LIVE (university-place = flagged still+narration fallback; star-city-shores flagged close-up) |
 | 04 | 10–12 | woods-park, conestoga, branched-oak, mahoney, sac-museum, seward, homestead, pawnee-lake, platte-river-sp | 9/9 LIVE (cap did not block this batch) |
 | 05 | 13–15 | ashland, wahoo, wagon-train, spring-creek, arbor-lodge, beatrice, stagecoach, grand-island, henry-doorly | 9/9 LIVE |
-| 06 | 16–18 | old-market, chimney-rock, scotts-bluff, archway, durham, carhenge, kingsley, smith-falls, fort-robinson | 4 LIVE; 5 HELD (no-bed ffmpeg x3, chimney-rock spire cropped, archway duplicated wagon) in follow-up regen |
-| 07 | 19–21 | valentine, joslyn, golden-spike, indian-cave, ashfall, toadstool, chadron, niobrara, white-house | 6 LIVE; 3 in follow-up (chadron, niobrara, white-house) |
+| 06 | 16–18 | old-market, chimney-rock, scotts-bluff, archway, durham, carhenge, kingsley, smith-falls, fort-robinson | 8/9 LIVE (kingsley, smith-falls, fort-robinson, chimney-rock v2 regens replace held v1s); archway regen in mix-only follow-up (hold overturned — two wagons are the keyframe's own exhibits) |
+| 07 | 19–21 | valentine, joslyn, golden-spike, indian-cave, ashfall, toadstool, chadron, niobrara, white-house | 9/9 LIVE (chadron, niobrara, white-house built; white-house stillness flag) |
 | 08 | 22–24 | golden-gate, grand-canyon, [old-faithful = pilot], rushmore, gateway-arch, french-quarter, space-needle, niagara, alamo | 8/8 LIVE (niagara + alamo flagged, see NOTES) |
-| 09 | 25–27 | willis, crater-lake, monument-valley, pike-place, cadillac, denali, everglades, death-valley, hoover | 6 LIVE; 3 in follow-up (everglades, death-valley, hoover) |
+| 09 | 25–27 | willis, crater-lake, monument-valley, pike-place, cadillac, denali, everglades, death-valley, hoover | 9/9 LIVE (everglades, death-valley, hoover built; hoover v3 after two rejected takes) |
 | 10 | 28–30 | eiffel, colosseum, liberty, taj, opera-house, redeemer, sagrada, giza, cn-tower | 9/9 LIVE (all static landmarks, gentle-motion; take-1 rejected for all 9, re-shot style-locked) |
 | 11 | 31–33 | machu, fuji, chichen, stonehenge, neuschwanstein, angkor, petra, table-mountain, uluru | 9/9 LIVE (neuschwanstein v2 replaces held v1) |
-| 12 | 34–36 | victoria-falls, fushimi, iguazu, tongariki, potala, timbuktu, galapagos | 5 LIVE; 1 HELD (potala — palace re-interpreted as golden temple); 1 in follow-up (galapagos build + potala regen) |
+| 12 | 34–36 | victoria-falls, fushimi, iguazu, tongariki, potala, timbuktu, galapagos | 7/7 LIVE (galapagos built; potala v2 replaces held v1) |
 
 Staging: `~/workspace/journal-movies-batches/batch-NN/` (mp4 + NOTES.md per
 batch). Coordinator verifies each batch, uploads to meridian-media, updates
