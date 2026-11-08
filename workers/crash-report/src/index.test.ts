@@ -37,6 +37,10 @@ import {
   runHourlyDigest,
   resetRateLimitsForTests,
   scrubErrorText,
+  resetIngestStateForTests,
+  lastIngestOutcomeForTests,
+  setSleepForTests,
+  UncorroboratedSummary,
   thresholdConfig,
   tierOf,
   validateEvent,
@@ -326,7 +330,7 @@ test("counting: increments per dimension", async () => {
   ]) {
     const res = await handleRequest(postEvent(body), env);
     assert.equal(res.status, 200);
-    const json = (await res.json()) as { counted: boolean; forwarded: boolean };
+    const json = outcomeJson();
     assert.equal(json.counted, true);
     assert.equal(json.forwarded, false, "no webhook configured");
   }
@@ -385,7 +389,7 @@ test("crash-class event: counted AND forwarded immediately, verdict-first format
   const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
   const res = await handleRequest(postEvent(corroboratedSuspected()), env);
   assert.equal(res.status, 200);
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  const json = outcomeJson();
   assert.equal(json.forwarded, true);
   assert.equal(json.counted, true);
   assert.equal(fetchCalls.length, 1);
@@ -406,7 +410,7 @@ test("hiccup-class event: counted but NOT forwarded individually", async () => {
   const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
   const res = await handleRequest(postEvent(tileEvent()), env);
   assert.equal(res.status, 200);
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  const json = outcomeJson();
   assert.equal(json.forwarded, false);
   assert.equal(json.counted, true);
   assert.equal(fetchCalls.length, 0, "no individual forward for hiccup-class");
@@ -425,7 +429,7 @@ test("funnel-class event: accepted, counted, NOT forwarded individually (#194)",
     env,
   );
   assert.equal(res.status, 200, "previously a 400 — the event was dropped");
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  const json = outcomeJson();
   assert.equal(json.forwarded, false);
   assert.equal(json.counted, true);
   assert.equal(fetchCalls.length, 0, "no individual forward for funnel-class");
@@ -643,10 +647,12 @@ test("fail-open: store errors never break ingest or crash-class forwards", async
   };
   const res = await handleRequest(postEvent(validEvent({ type: "suspected_crash" })), env);
   assert.equal(res.status, 200, "client never sees a 500 for a counting failure");
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
-  assert.equal(json.forwarded, true, "crash-class forward still fires");
+  const json = outcomeJson();
+  assert.equal(json.forwarded, false, "council fix T2: an uncorroborated crash is never paged just because counting failed");
+  assert.equal(json.route, "summarized_kv_unavailable");
   assert.equal(json.counted, false);
-  assert.equal(fetchCalls.length, 1);
+  assert.equal(fetchCalls.length, 1, "one bounded unverified summary");
+  assert.ok(String((fetchCalls[0].init as RequestInit).body).includes("Unverified crash-type reports"));
 });
 
 test("no KV binding: counting skipped, crash-class still forwards", async () => {
@@ -658,8 +664,9 @@ test("no KV binding: counting skipped, crash-class still forwards", async () => 
     DISCORD_WEBHOOK_URL: "https://discord.test/hook",
   });
   assert.equal(res.status, 200);
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
-  assert.equal(json.forwarded, true);
+  const json = outcomeJson();
+  assert.equal(json.forwarded, false, "council fix T2: no KV-state bypass of the provenance gate");
+  assert.equal(json.route, "summarized_kv_unavailable");
   assert.equal(json.counted, false);
 });
 
@@ -789,12 +796,25 @@ test("renderDigest: fail-open on store errors", async () => {
 
 // --- handleRequest: routing, CORS, limits ---------------------------------
 
+/** Council fix T2/A9: routing is no longer in the HTTP body; tests read it here. */
+function outcomeJson(): { counted: boolean; forwarded: boolean; route: string } {
+  const o = lastIngestOutcomeForTests();
+  assert.ok(o, "an ingest outcome was recorded");
+  return {
+    counted: o.counted,
+    route: o.route,
+    forwarded: o.route === "paged" && Object.values(o.deliveries).some((d) => d !== "not_configured"),
+  };
+}
+
 const realFetch = globalThis.fetch;
 let fetchCalls: Array<{ url: string; init: unknown }>;
 
 beforeEach(() => {
   fetchCalls = [];
   resetRateLimitsForTests();
+  resetIngestStateForTests();
+  setSleepForTests(async () => {});
 });
 
 afterEach(() => {
@@ -887,7 +907,9 @@ test("S4: a sendBeacon-style text/plain POST from the game is accepted (no prefl
     {},
   );
   assert.equal(res.status, 200);
-  assert.deepEqual(await res.json(), { ok: true, forwarded: false, counted: false });
+  assert.deepEqual(await res.json(), { ok: true });
+  assert.equal(outcomeJson().forwarded, false);
+  assert.equal(outcomeJson().counted, false);
 });
 
 test("S4: a chunked body over the cap is cancelled mid-stream with 413", async () => {
@@ -1030,7 +1052,9 @@ test("no-op mode: no secrets → 200 forwarded:false, fetch never called", async
   }) as typeof fetch;
   const res = await handleRequest(postEvent(validEvent()), {});
   assert.equal(res.status, 200);
-  assert.deepEqual(await res.json(), { ok: true, forwarded: false, counted: false });
+  assert.deepEqual(await res.json(), { ok: true });
+  assert.equal(outcomeJson().forwarded, false);
+  assert.equal(outcomeJson().counted, false);
 });
 
 test("forwarding: Discord webhook called, 200 forwarded:true", async () => {
@@ -1039,11 +1063,10 @@ test("forwarding: Discord webhook called, 200 forwarded:true", async () => {
     return new Response("{}", { status: 200 });
   }) as typeof fetch;
   const env: CrashReportEnv = { DISCORD_WEBHOOK_URL: "https://discord.test/hook" };
-  const res = await handleRequest(postEvent(validEvent({ edition: "globe" })), env);
+  const res = await handleRequest(postEvent(provJsError({ edition: "globe" })), env);
   assert.equal(res.status, 200);
-  const body = (await res.json()) as { ok: boolean; forwarded: boolean };
-  assert.equal(body.ok, true);
-  assert.equal(body.forwarded, true);
+  assert.deepEqual(await res.json(), { ok: true });
+  assert.equal(outcomeJson().forwarded, true);
   assert.equal(fetchCalls.length, 1);
   assert.equal(fetchCalls[0].url, "https://discord.test/hook");
 });
@@ -1381,7 +1404,7 @@ test("handleRequest: a shape A suspected_crash is still forwarded individually i
     env,
   );
   assert.equal(res.status, 200);
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  const json = outcomeJson();
   assert.equal(json.forwarded, true, "a corroborated crash forwards exactly as in Slice 1");
   assert.equal(json.counted, true);
   assert.equal(fetchCalls.length, 1);
@@ -1552,7 +1575,7 @@ test("handleRequest (Slice 2): repeat_failure forwards immediately (crash tier);
     env,
   );
   assert.equal(failed.status, 200);
-  const failedJson = (await failed.json()) as { forwarded: boolean; counted: boolean };
+  const failedJson = outcomeJson();
   assert.equal(failedJson.forwarded, true, "repeat_failure is the one crash-class outcome");
   assert.equal(failedJson.counted, true);
   assert.equal(fetchCalls.length, 1);
@@ -1564,7 +1587,7 @@ test("handleRequest (Slice 2): repeat_failure forwards immediately (crash tier);
     env,
   );
   assert.equal(confirmed.status, 200);
-  const confirmedJson = (await confirmed.json()) as { forwarded: boolean; counted: boolean };
+  const confirmedJson = outcomeJson();
   assert.equal(confirmedJson.forwarded, false, "confirmed outcomes are counted only in Slice 2 (policy is Slice 3)");
   assert.equal(confirmedJson.counted, true);
   assert.equal(fetchCalls.length, 1, "no second forward");
@@ -2810,7 +2833,7 @@ test("W15a KV-up: uncorroborated crash is gated — zero Discord/email stub call
   assert.equal(bucket.provenance.corroborated ?? 0, 0);
 });
 
-test("W15b KV-down: the same uncorroborated crash payload is forwarded (gate fails open on !counted)", async () => {
+test("W15b KV-down (council fix T2): the same uncorroborated crash payload is summarized, not paged", async () => {
   globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
     fetchCalls.push({ url: String(url), init });
     return new Response("{}", { status: 200 });
@@ -2832,9 +2855,10 @@ test("W15b KV-down: the same uncorroborated crash payload is forwarded (gate fai
     env,
   );
   assert.equal(res.status, 200);
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  const json = outcomeJson();
   assert.equal(json.counted, false);
-  assert.equal(json.forwarded, true, "KV failure must not gate everything");
+  assert.equal(json.forwarded, false, "KV failure no longer opens the gate");
+  assert.equal(json.route, "summarized_kv_unavailable", "but it is not silently lost either");
   assert.equal(fetchCalls.length, 1);
 });
 
@@ -3446,4 +3470,179 @@ test("T1 P1 client sanitizeError scrubs the same way and stays bounded (parity w
   assert.ok(!c.message.includes(FAKE_TOKEN) && !c.message.includes(FAKE_UUID));
   assert.ok(sanitizeError("x".repeat(5000)).message.length <= 300);
   assert.deepEqual(sanitizeError(new Error("plain message")), { name: "Error", message: "plain message" });
+});
+
+// --- Council fix T2 (2026-11-08): provenance never bypassed by KV state ---
+
+function throwingKv(): KvLike {
+  return {
+    get: async () => {
+      throw new Error("kv down");
+    },
+    put: async () => {
+      throw new Error("kv down");
+    },
+  };
+}
+
+function okFetch(status = 200, headers: Record<string, string> = {}) {
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status, headers });
+  }) as typeof fetch;
+}
+
+const PROBE = (buildId = "wake-check") => ({ type: "js_error", ts: Date.now(), buildId });
+
+function discordBodies(): string[] {
+  return fetchCalls
+    .filter((c) => c.url === "https://discord.test/hook")
+    .map((c) => (JSON.parse(String((c.init as RequestInit).body)) as { content: string }).content);
+}
+
+for (const [label, kvEnv] of [
+  ["KV binding absent", (): Partial<CrashReportEnv> => ({})],
+  ["KV throwing", (): Partial<CrashReportEnv> => ({ TELEMETRY_COUNTS: throwingKv() })],
+] as const) {
+  test(`T2 ${label}: probe js_error is NOT individually paged; one bounded unverified summary instead`, async () => {
+    okFetch();
+    const env: CrashReportEnv = { DISCORD_WEBHOOK_URL: "https://discord.test/hook", ...kvEnv() };
+    for (let i = 0; i < 5; i++) {
+      const res = await handleRequest(postEvent(PROBE(i % 2 ? "periodic-probe" : "wake-check")), env);
+      assert.equal(res.status, 200);
+    }
+    const bodies = discordBodies();
+    assert.equal(bodies.length, 1, "exactly one summary per window per isolate");
+    assert.ok(bodies[0].includes("Unverified crash-type reports"), bodies[0]);
+    assert.ok(!bodies[0].includes("FIX — Developer action needed"), "never rendered as a player crash");
+    assert.equal(lastIngestOutcomeForTests()?.route, "summary_suppressed", "5th report: tallied, not re-sent");
+  });
+
+  test(`T2 ${label}: a real-client-shaped crash still pages individually`, async () => {
+    okFetch();
+    const env: CrashReportEnv = { DISCORD_WEBHOOK_URL: "https://discord.test/hook", ...kvEnv() };
+    const res = await handleRequest(postEvent(provJsError({ lastMilestone: undefined })), env);
+    assert.equal(res.status, 200);
+    const bodies = discordBodies();
+    assert.equal(bodies.length, 1);
+    assert.ok(bodies[0].startsWith("🚨 FIX — Developer action needed"), bodies[0]);
+    assert.equal(lastIngestOutcomeForTests()?.route, "paged");
+    assert.equal(lastIngestOutcomeForTests()?.counted, false);
+  });
+}
+
+test("T2 concurrent probes with KV down in one isolate produce at most one summary", async () => {
+  okFetch();
+  const env: CrashReportEnv = { DISCORD_WEBHOOK_URL: "https://discord.test/hook", TELEMETRY_COUNTS: throwingKv() };
+  await Promise.all(Array.from({ length: 20 }, () => handleRequest(postEvent(PROBE()), env)));
+  assert.equal(discordBodies().length, 1);
+});
+
+test("T2 UncorroboratedSummary: <=1 text per 15-min window, lower-bound counts, capped pattern keys", () => {
+  const sum = new UncorroboratedSummary();
+  const t0 = Date.UTC(2026, 10, 8, 12, 0, 0);
+  const texts: string[] = [];
+  for (let i = 0; i < 50; i++) {
+    const t = sum.record({ type: "js_error", buildId: `b${i}` } as never, t0 + i * 1000);
+    if (t) texts.push(t);
+  }
+  assert.equal(texts.length, 1, "one per window");
+  const next = sum.record({ type: "js_error", buildId: "b0" } as never, t0 + 15 * 60_000);
+  assert.ok(next, "next window sends one");
+  assert.ok(next!.includes("previous window: ≥50"), next!);
+  assert.ok(next!.length <= 1800, "Discord-size bound");
+  assert.ok((next!.match(/×/g) ?? []).length <= 17, "≤16 pattern keys + other");
+});
+
+test("T2 forged full real-client shape still pages with KV down (documented limit, not authentication)", async () => {
+  okFetch();
+  const env: CrashReportEnv = { DISCORD_WEBHOOK_URL: "https://discord.test/hook", TELEMETRY_COUNTS: throwingKv() };
+  await handleRequest(postEvent(provJsError({ sessionId: "forged", error: { name: "Error", message: "forged" } })), env);
+  assert.equal(discordBodies().length, 1);
+});
+
+test("T2/A9 stable public body: paged, gated, KV-down summary and no-forwarder outcomes all return {ok:true}", async () => {
+  okFetch();
+  const { map } = memoryStore();
+  const cases: Array<[Request, CrashReportEnv]> = [
+    [postEvent(provJsError()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" })],
+    [postEvent(PROBE()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" })],
+    [postEvent(PROBE()), { DISCORD_WEBHOOK_URL: "https://discord.test/hook", TELEMETRY_COUNTS: throwingKv() }],
+    [postEvent(provJsError()), {}],
+    [postEvent(tileEvent()), storeEnv(map)],
+  ];
+  for (const [req, env] of cases) {
+    const res = await handleRequest(req, env);
+    assert.equal(res.status, 200);
+    assert.deepEqual(await res.json(), { ok: true });
+  }
+});
+
+// --- Council fix T3 (2026-11-08): delivery lifecycle ----------------------
+
+function ctxSpy() {
+  const pending: Promise<unknown>[] = [];
+  return {
+    pending,
+    ctx: { waitUntil: (p: Promise<unknown>) => void pending.push(p) },
+  };
+}
+
+test("T3 with an execution context, deliveries run via ctx.waitUntil (background) and complete", async () => {
+  okFetch();
+  const { map } = memoryStore();
+  const { ctx, pending } = ctxSpy();
+  const res = await handleRequest(postEvent(provJsError()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }), ctx);
+  assert.equal(res.status, 200);
+  assert.ok(pending.length >= 1, "background work registered with waitUntil");
+  await Promise.all(pending);
+  assert.equal(discordBodies().length, 1);
+});
+
+test("T3 Discord 429 with Retry-After is retried exactly once, then accepted", async () => {
+  let n = 0;
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    n++;
+    return new Response("{}", { status: n === 1 ? 429 : 200, headers: { "retry-after": "1" } });
+  }) as typeof fetch;
+  const { map } = memoryStore();
+  await handleRequest(postEvent(provJsError()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }));
+  assert.equal(discordBodies().length, 2);
+  assert.equal(lastIngestOutcomeForTests()?.deliveries.discord, "provider_accepted");
+  const rec = JSON.parse(map.get("ops:delivery:last") ?? "null") as { discord: string } | null;
+  assert.equal(rec?.discord, "provider_accepted");
+});
+
+test("T3 persistent 5xx: one retry, recorded as failed, no recursive alert", async () => {
+  okFetch(503);
+  const { map } = memoryStore();
+  await handleRequest(postEvent(provJsError()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }));
+  assert.equal(fetchCalls.length, 2, "original + one retry, nothing else");
+  assert.equal(lastIngestOutcomeForTests()?.deliveries.discord, "failed");
+  const rec = JSON.parse(map.get("ops:delivery:last") ?? "null") as { discord: string; v: number } | null;
+  assert.equal(rec?.discord, "failed");
+  assert.equal(rec?.v, 1);
+  assert.ok(!(map.get("ops:delivery:last") ?? "").includes("discord.test"), "no webhook URL stored");
+});
+
+test("T3 timeout/abort is 'unknown' (provider may have it), never retried, never reported as success", async () => {
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    const e = new Error("aborted");
+    e.name = "AbortError";
+    throw e;
+  }) as typeof fetch;
+  const { map } = memoryStore();
+  await handleRequest(postEvent(provJsError()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }));
+  assert.equal(fetchCalls.length, 1);
+  assert.equal(lastIngestOutcomeForTests()?.deliveries.discord, "unknown");
+});
+
+test("T3 default export passes ctx through (fetch signature matches dev-entry re-export)", async () => {
+  const mod = await import("./index.ts");
+  const devMod = await import("./dev-entry.ts");
+  assert.equal(devMod.default, mod.default, "dev-entry re-exports the same handler");
+  assert.equal(mod.default.fetch.length, 3, "fetch(request, env, ctx)");
+  assert.equal(mod.default.scheduled.length, 3, "scheduled(event, env, ctx)");
 });

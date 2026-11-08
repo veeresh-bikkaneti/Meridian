@@ -1532,53 +1532,201 @@ async function fetchWithTimeout(url: string, init: RequestInit): Promise<Respons
   }
 }
 
-async function forwardToDiscord(webhookUrl: string, content: string): Promise<boolean> {
-  try {
-    const res = await fetchWithTimeout(webhookUrl, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      // Council fix T1: never let report text ping @everyone/@here/users.
-      body: JSON.stringify({ content, allowed_mentions: { parse: [] } }),
-    });
-    if (!res.ok) {
-      logLine("discord forward failed", res.status);
-      return false;
+// Council fix T3 (2026-11-08): every send reports what actually
+// happened. "provider_accepted" = the provider returned 2xx (not proof a
+// human read it); "failed" = a definite non-2xx or a rejected request;
+// "unknown" = timed out / aborted, so the provider may or may not have it.
+// One bounded retry, only on 429/5xx (a definite "not taken"), never on
+// "unknown" (that could duplicate a page). Failures are logged and
+// recorded; they never trigger another alert (no recursion).
+export type DeliveryState = "provider_accepted" | "failed" | "unknown" | "not_configured";
+
+const RETRY_STATUSES = new Set([429, 500, 502, 503, 504]);
+const MAX_RETRY_WAIT_MS = 2_000;
+const DEFAULT_RETRY_WAIT_MS = 500;
+
+let sleepFn: (ms: number) => Promise<void> = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** Test hook: replace the retry back-off sleep (tests pass a no-op). */
+export function setSleepForTests(fn: (ms: number) => Promise<void>): void {
+  sleepFn = fn;
+}
+
+function retryWaitMs(res: Response): number {
+  const h = Number(res.headers.get("retry-after"));
+  return Number.isFinite(h) && h >= 0 ? Math.min(h * 1000, MAX_RETRY_WAIT_MS) : DEFAULT_RETRY_WAIT_MS;
+}
+
+async function postWithRetry(label: string, url: string, init: RequestInit): Promise<DeliveryState> {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const res = await fetchWithTimeout(url, init);
+      if (res.ok) return "provider_accepted";
+      logLine(`${label} forward failed`, res.status);
+      if (attempt === 0 && RETRY_STATUSES.has(res.status)) {
+        await sleepFn(retryWaitMs(res));
+        continue;
+      }
+      return "failed";
+    } catch (err) {
+      const name = err instanceof Error ? err.name : "unknown";
+      logLine(`${label} forward error`, name);
+      return name === "AbortError" || name === "TimeoutError" ? "unknown" : "failed";
     }
-    return true;
-  } catch (err) {
-    logLine("discord forward error", err instanceof Error ? err.name : "unknown");
-    return false;
   }
+  return "failed";
+}
+
+async function forwardToDiscord(webhookUrl: string, content: string): Promise<DeliveryState> {
+  return postWithRetry("discord", webhookUrl, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    // Council fix T1: never let report text ping @everyone/@here/users.
+    body: JSON.stringify({ content, allowed_mentions: { parse: [] } }),
+  });
 }
 
 async function forwardToEmail(
   env: CrashReportEnv,
   subject: string,
   text: string,
-): Promise<boolean> {
+): Promise<DeliveryState> {
+  return postWithRetry("email", RESEND_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${env.RESEND_API_KEY}`,
+    },
+    body: JSON.stringify({
+      from: env.REPORT_FROM?.trim() || DEFAULT_REPORT_FROM,
+      to: [env.REPORT_EMAIL],
+      subject,
+      text,
+    }),
+  });
+}
+
+/** KV key + TTL for the last real-crash delivery outcome (ops evidence). */
+export const DELIVERY_RECORD_KEY = "ops:delivery:last";
+export const OPS_RECORD_TTL_SECONDS = 7 * 24 * 3600;
+
+/**
+ * Best-effort record of the last real-crash delivery outcome. Holds only
+ * channel states and a time — no webhook URL, no event content. A write
+ * failure is logged and swallowed (never an alert).
+ */
+async function recordDelivery(
+  kv: KvLike | undefined,
+  results: Partial<Record<"discord" | "email", DeliveryState>>,
+  now: number,
+): Promise<void> {
+  if (!kv) return;
   try {
-    const res = await fetchWithTimeout(RESEND_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${env.RESEND_API_KEY}`,
-      },
-      body: JSON.stringify({
-        from: env.REPORT_FROM?.trim() || DEFAULT_REPORT_FROM,
-        to: [env.REPORT_EMAIL],
-        subject,
-        text,
-      }),
-    });
-    if (!res.ok) {
-      logLine("email forward failed", res.status);
-      return false;
-    }
-    return true;
+    await kv.put(
+      DELIVERY_RECORD_KEY,
+      JSON.stringify({ v: 1, at: new Date(now).toISOString(), ...results }),
+      { expirationTtl: OPS_RECORD_TTL_SECONDS },
+    );
   } catch (err) {
-    logLine("email forward error", err instanceof Error ? err.name : "unknown");
-    return false;
+    logLine("delivery record failed", err instanceof Error ? err.name : "unknown");
   }
+}
+
+// --- Council fix T2 (2026-11-08): bounded unverified summary ------------
+//
+// When the counter store is missing or failing, an uncorroborated
+// crash-tier report can neither be counted nor escalated through the
+// can't-tell leg. Paging it individually (the old !counted fail-open)
+// let any probe page; dropping it silently would lose legacy clients.
+// Instead each worker isolate keeps an in-memory tally and sends at most
+// one summary per 15-minute window. Honest bound: <= 4/hour PER ISOLATE
+// (isolates are not countable from inside), counts are lower bounds
+// (an evicted isolate loses its tally), and the optional
+// CRASH_RATE_LIMITER binding adds a best-effort cross-isolate ceiling.
+
+export const SUMMARY_WINDOW_MS = 15 * 60_000;
+const MAX_SUMMARY_PATTERNS = 16;
+
+export class UncorroboratedSummary {
+  private windowStart = -1;
+  private sent = false;
+  private counts = new Map<string, number>();
+  private total = 0;
+  private previousTotal = 0;
+
+  /** Tally one report; returns summary text when this window has not sent yet. */
+  record(event: CrashReportEvent, now: number): string | null {
+    const ws = Math.floor(now / SUMMARY_WINDOW_MS) * SUMMARY_WINDOW_MS;
+    if (ws !== this.windowStart) {
+      this.previousTotal = this.windowStart < 0 ? 0 : this.total;
+      this.windowStart = ws;
+      this.sent = false;
+      this.counts = new Map();
+      this.total = 0;
+    }
+    const key = `${event.type} · ${scrubErrorText(String(event.buildId), 24) || "—"}`;
+    const k = this.counts.has(key) || this.counts.size < MAX_SUMMARY_PATTERNS ? key : "other";
+    this.counts.set(k, (this.counts.get(k) ?? 0) + 1);
+    this.total += 1;
+    if (this.sent) return null;
+    this.sent = true;
+    const from = new Date(ws).toISOString().slice(11, 16);
+    const to = new Date(ws + SUMMARY_WINDOW_MS).toISOString().slice(11, 16);
+    const patterns = [...this.counts.entries()].map(([p, n]) => `${p} ×${n}`).join(", ");
+    const text =
+      `❔ Unverified crash-type reports while telemetry storage is unavailable\n` +
+      `window: ${from}–${to} UTC (this worker instance only, best-effort)\n` +
+      `this window so far: ≥${this.total} (${patterns})\n` +
+      (this.previousTotal > 0 ? `previous window: ≥${this.previousTotal}\n` : "") +
+      `Not paged one by one: they did not match a real client's report shape. ` +
+      `Real-client-shaped crashes still page. Sender not identified. ` +
+      `Counts are lower bounds and could not be stored.`;
+    return text.length > 1800 ? `${text.slice(0, 1799)}…` : text;
+  }
+}
+
+let uncorroboratedSummary = new UncorroboratedSummary();
+
+export type IngestRoute =
+  | "paged"
+  | "counted_only"
+  | "summarized_kv_unavailable"
+  | "summary_suppressed";
+
+export interface IngestOutcome {
+  provenance: Provenance;
+  counted: boolean;
+  route: IngestRoute;
+  deliveries: Partial<Record<"discord" | "email", DeliveryState>>;
+}
+
+let lastIngestOutcome: IngestOutcome | null = null;
+
+/** Test hook: the last /ingest routing outcome (never in the HTTP body). */
+export function lastIngestOutcomeForTests(): IngestOutcome | null {
+  return lastIngestOutcome;
+}
+
+/** Test hook: reset per-isolate ingest state between tests. */
+export function resetIngestStateForTests(): void {
+  uncorroboratedSummary = new UncorroboratedSummary();
+  lastIngestOutcome = null;
+}
+
+/** Minimal ExecutionContext surface (Cloudflare passes the real one). */
+export interface ExecutionContextLike {
+  waitUntil(promise: Promise<unknown>): void;
+}
+
+/**
+ * Run background work: with a real context it continues after the
+ * response via waitUntil; without one (tests, direct callers) it is
+ * awaited so nothing is silently dropped.
+ */
+async function runInBackground(ctx: ExecutionContextLike | undefined, work: Promise<unknown>): Promise<void> {
+  const guarded = work.catch((err) => logLine("background task failed", err instanceof Error ? err.name : "unknown"));
+  if (ctx) ctx.waitUntil(guarded);
+  else await guarded;
 }
 
 /** Severity tiers (Phase 1 telemetry, 2026-10-17).
@@ -1732,7 +1880,7 @@ export function emptyBucket(): CountBucket {
 /** Minimal KV surface — structurally satisfied by the real KVNamespace. */
 export interface KvLike {
   get(key: string): Promise<string | null>;
-  put(key: string, value: string): Promise<void>;
+  put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
 }
 
 /** Telemetry store abstraction (KV-backed in prod, in-memory in tests). */
@@ -2269,7 +2417,8 @@ export async function runHourlyDigest(
     logLine("digest ready but no Discord webhook configured");
     return null;
   }
-  await forwardToDiscord(discordUrl, message);
+  const state = await forwardToDiscord(discordUrl, message);
+  if (state !== "provider_accepted") logLine("digest delivery", state);
   return message;
 }
 
@@ -2313,7 +2462,11 @@ function optionsResponse(origin: string | null): Response {
  * Pure request handler (testable without a Workers runtime).
  * Never throws for client errors — every failure path is a 4xx.
  */
-export async function handleRequest(request: Request, env: CrashReportEnv): Promise<Response> {
+export async function handleRequest(
+  request: Request,
+  env: CrashReportEnv,
+  ctx?: ExecutionContextLike,
+): Promise<Response> {
   const url = new URL(request.url);
   const path = url.pathname;
   const origin = originPolicy.allowedOrigin(request);
@@ -2378,69 +2531,79 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
     const store = env.TELEMETRY_COUNTS ? kvTelemetryStore(env.TELEMETRY_COUNTS) : null;
     const provenance = provenanceOf(valid);
     const tele = await recordTelemetry(store, valid, Date.now(), thresholdConfig(env), provenance);
-    if (discordUrl) {
-      // Threshold + can't-tell alerts: Discord only, fire-and-forget —
+    if (discordUrl && tele.alertTexts.length > 0) {
+      // Threshold + can't-tell alerts: Discord only, in the background —
       // a failed alert post must never fail the client request.
-      for (const text of tele.alertTexts) {
-        forwardToDiscord(discordUrl, text).catch(() => {});
-      }
+      const texts = tele.alertTexts;
+      await runInBackground(ctx, Promise.all(texts.map((t) => forwardToDiscord(discordUrl, t))));
     }
 
     const tier = tierOf(
       valid.type,
       typeof valid.recoveryOutcome === "string" ? valid.recoveryOutcome : undefined,
     );
-    const alert = buildAlert(valid);
-    const attempts: Array<{ channel: "discord" | "email"; promise: Promise<boolean> }> = [];
-    // Provenance gate: a counted, uncorroborated crash is counted-only.
-    // KV-down (!tele.counted) fails open to forwarding, and a gated
-    // event lands in the no-forwarders branch below, so its response
-    // body is identical to no-secrets mode (no prober oracle).
-    if (tier === "crash" && (provenance === "corroborated" || !tele.counted)) {
-      // Crash-class: immediate individual forward, unchanged from before.
-      if (discordUrl)
-        attempts.push({ channel: "discord", promise: forwardToDiscord(discordUrl, alert.discord) });
-      if (resendKey && reportEmail) {
-        attempts.push({
-          channel: "email",
-          promise: forwardToEmail(env, alert.emailSubject, alert.emailBody),
-        });
+    // Council fix T2: the gate is provenance only. KV state never opens
+    // it (the old `|| !tele.counted` bypass let any probe page whenever
+    // counting failed). Every accepted event gets the same public body,
+    // so the response reveals neither routing nor store health.
+    const outcome: IngestOutcome = { provenance, counted: tele.counted, route: "counted_only", deliveries: {} };
+    if (tier === "crash" && provenance === "corroborated") {
+      outcome.route = "paged";
+      const alert = buildAlert(valid);
+      const now = Date.now();
+      const work = (async () => {
+        const [discord, email] = await Promise.all([
+          discordUrl ? forwardToDiscord(discordUrl, alert.discord) : Promise.resolve<DeliveryState>("not_configured"),
+          resendKey && reportEmail
+            ? forwardToEmail(env, alert.emailSubject, alert.emailBody)
+            : Promise.resolve<DeliveryState>("not_configured"),
+        ]);
+        outcome.deliveries = { discord, email };
+        logLine("forwarded", valid.type, valid.buildId, valid.edition ?? "—", outcome.deliveries);
+        if (discordUrl || (resendKey && reportEmail)) {
+          await recordDelivery(env.TELEMETRY_COUNTS, outcome.deliveries, now);
+        }
+      })();
+      await runInBackground(ctx, work);
+    } else if (tier === "crash" && !tele.counted) {
+      // Uncorroborated + store unavailable: bounded summary, never a page.
+      const text = uncorroboratedSummary.record(valid, Date.now());
+      outcome.route = text ? "summarized_kv_unavailable" : "summary_suppressed";
+      if (text && discordUrl) {
+        const work = (async () => {
+          if (env.CRASH_RATE_LIMITER) {
+            try {
+              const r = await env.CRASH_RATE_LIMITER.limit({ key: "kvdown-summary" });
+              if (!r.success) return;
+            } catch {
+              // A throwing limiter falls back to the per-isolate window.
+            }
+          }
+          outcome.deliveries = { discord: await forwardToDiscord(discordUrl, text) };
+        })();
+        await runInBackground(ctx, work);
       }
+      logLine("uncorroborated crash, store unavailable", valid.type, outcome.route);
+    } else {
+      // Hiccup/funnel, or an uncorroborated crash that WAS counted
+      // (it feeds the threshold / can't-tell legs and the digest).
+      logLine("accepted (counted only)", valid.type, valid.buildId, valid.edition ?? "—");
     }
-    // Hiccup-class: counted above; individual forwards are replaced by
-    // the threshold alert + hourly digest (no per-event pings) — except
-    // routine funnel types, which never trip the threshold alert (#311).
-
-    if (attempts.length === 0) {
-      // No-op mode: safe to deploy before secrets exist.
-      logLine(
-        "accepted (no forwarders configured)",
-        valid.type,
-        valid.buildId,
-        valid.edition ?? "—",
-      );
-      return jsonResponse(200, { ok: true, forwarded: false, counted: tele.counted }, cors);
-    }
-
-    // One forwarder failing must not fail the request (or the other).
-    const settled = await Promise.allSettled(attempts.map((a) => a.promise));
-    const results: Record<string, boolean> = {};
-    settled.forEach((s, i) => {
-      results[attempts[i].channel] = s.status === "fulfilled" && s.value === true;
-    });
-    logLine("forwarded", valid.type, valid.buildId, valid.edition ?? "—", results);
-    return jsonResponse(200, { ok: true, forwarded: true, counted: tele.counted, results }, cors);
+    lastIngestOutcome = outcome;
+    return jsonResponse(200, { ok: true }, cors);
   }
 
   return jsonResponse(404, { error: "not found" });
 }
 
 export default {
-  fetch: (request: Request, env: CrashReportEnv): Promise<Response> => handleRequest(request, env),
+  fetch: (request: Request, env: CrashReportEnv, ctx: ExecutionContextLike): Promise<Response> =>
+    handleRequest(request, env, ctx),
   // Phase 1: hourly digest cron (see [triggers] in wrangler.toml).
   scheduled: async (
     event: { cron: string; scheduledTime: number },
     env: CrashReportEnv,
+    _ctx?: ExecutionContextLike,
   ): Promise<void> => {
     const store = env.TELEMETRY_COUNTS ? kvTelemetryStore(env.TELEMETRY_COUNTS) : null;
     await runHourlyDigest(event.scheduledTime, env, store);
