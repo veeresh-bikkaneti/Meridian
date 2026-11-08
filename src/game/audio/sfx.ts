@@ -62,12 +62,71 @@ export function isSoundEnabled(): boolean {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Sound-change listeners (PR C, staging rework Q6)
+// ---------------------------------------------------------------------------
+// The smallest in-process notification channel for the toggle: a Set of
+// listeners that setSoundEnabled() notifies SYNCHRONOUSLY, in the same
+// event that flips the persisted value. It exists because a mute has to
+// stop speech that is already playing in that same event — the detective
+// host used to poll isSoundEnabled() at 1 Hz, which leaked up to a second
+// of speech after a mute tap. Subscribers that must react instantly (the
+// detective host's speech stop, co-mounted toggle instances keeping their
+// icon in sync) use this; the window CustomEvents below stay as the
+// cross-component channel other surfaces already listen to. The pattern
+// follows src/game/age-profile/events.ts: listener errors are isolated,
+// and callers MUST unsubscribe on unmount.
+//
+// Canonical channel (Senior Architect, PR C cure round): this listener
+// set is THE channel for new code — new instant reactors MUST subscribe
+// via onSoundChanged, never via the window events. The window
+// CustomEvents ("meridian:sound-off" / "meridian:sound-change") remain
+// only for the legacy consumers that already listen to them, and they
+// are dispatched AFTER the in-process listeners run (the ordering is
+// pinned in sfx.test.ts), so a window consumer can never act before
+// an instant reactor has stopped the sound.
+
+export type SoundChangeListener = (on: boolean) => void;
+
+const soundListeners = new Set<SoundChangeListener>();
+
+/**
+ * Subscribe to sound-toggle changes. The listener fires synchronously
+ * from setSoundEnabled() with the new value. Returns an unsubscribe
+ * function — React effects MUST call it on cleanup.
+ */
+export function onSoundChanged(listener: SoundChangeListener): () => void {
+  soundListeners.add(listener);
+  return () => {
+    soundListeners.delete(listener);
+  };
+}
+
+/** Test/SSR escape hatch: how many listeners are currently subscribed. */
+export function soundListenerCount(): number {
+  return soundListeners.size;
+}
+
+function notifySoundListeners(on: boolean): void {
+  for (const listener of [...soundListeners]) {
+    try {
+      listener(on);
+    } catch {
+      // Deliberately swallowed: one bad subscriber never breaks the
+      // toggle or the other subscribers.
+    }
+  }
+}
+
 export function setSoundEnabled(on: boolean): void {
   try {
     storage()?.setItem(SOUND_KEY, on ? "on" : "off");
   } catch {
     // Storage unavailable (private mode etc.) — silent, game plays on.
   }
+  // In-process listeners first: they include the speech stop that must
+  // land in this same event, before any window-event consumer runs.
+  notifySoundListeners(on);
   if (!on) {
     // Toggling sound OFF stops any active loop (globe spin) immediately —
     // spec §7.1. The registry lives in the voice-management section below;

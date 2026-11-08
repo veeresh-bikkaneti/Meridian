@@ -855,6 +855,18 @@
    "durationSec": 3.94,
    "status": "ok",
    "note": "DRAFT wording — Unit B game-end celebration line; panel review required"
+  },
+  "lets-find-clues": {
+   "text": "Let's find some clues.",
+   "textHash": "b37bc90b3a78366c6f484c72a8f08f5adbe5f57c49fffc20e27a3cee91fde371",
+   "voice": "avocado_v2:pb1_music_02",
+   "speed": 106,
+   "gainDb": 0,
+   "file": "fixed/lets-find-clues.mp3",
+   "measuredHz": 93.8,
+   "measuredWpm": 132,
+   "durationSec": 1.82,
+   "status": "ok"
   }
  },
  "cases": {

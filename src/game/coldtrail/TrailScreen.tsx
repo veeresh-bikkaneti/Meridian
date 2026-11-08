@@ -3,6 +3,7 @@ import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
+import { SoundToggle } from "@/components/SoundToggle";
 import { FlagImg } from "@/components/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
 import { PackShelf } from "@/components/pack-shelf";
@@ -495,9 +496,16 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
             ← All games
           </Button>
-          <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
-            ⭐ {store.stars}
-          </p>
+          <div className="flex items-center gap-2">
+            <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
+              ⭐ {store.stars}
+            </p>
+            {/* Sound Everywhere (PR C, council Q6): the same master
+                SoundToggle as home and the map-quiz chrome — Cold Trail
+                had no in-screen mute before this. One persisted key
+                (meridian.sound), one implementation (SoundToggle.tsx). */}
+            <SoundToggle testId="sound-toggle-trail" className="atlas-sound-toggle" />
+          </div>
         </div>
         <p className="name-eyebrow mt-4">{theme.eyebrow}</p>
         <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">

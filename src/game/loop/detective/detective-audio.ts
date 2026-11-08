@@ -344,7 +344,19 @@ export function createDetectiveSpeech(
   /* -- default clip playback: one HTMLAudioElement chain ------------- */
   let currentStop: (() => void) | null = null;
   async function defaultPlayClip(clip: ResolvedClip): Promise<void> {
-    await waitForGesture();
+    // Gesture-wait resurrection guard (cure, panel round 1): the
+    // stop handle is registered BEFORE the first-gesture wait, not
+    // after it. Previously currentStop only existed once the Audio
+    // element did — after the wait — so a stopAll landing while the
+    // clip was parked (a mute, a case change, a replay interrupting)
+    // could not reach it, and the parked clip played on the next tap
+    // even though it had been stopped; a mute/unmute cycle in that
+    // window was invisible to it because the sound gate read ON
+    // again by wake time. Now stopAll settles a parked clip exactly
+    // like a playing one (it resolves as skipped — the queue's
+    // existing stopped-item path, drain accounting untouched), and
+    // the sound gate is re-checked at wake for a gate that closed
+    // without a stopAll.
     await new Promise<void>((resolve) => {
       let settled = false;
       const done = () => {
@@ -353,31 +365,41 @@ export function createDetectiveSpeech(
         currentStop = null;
         resolve();
       };
-      try {
-        const audio = new Audio(clip.url);
-        currentStop = () => {
-          try {
-            audio.pause();
-          } catch {
-            /* element already gone — nothing to stop */
-          }
+      // Parked-clip stopper: settling now abandons the clip — the
+      // gesture wake below sees `settled` and never creates Audio.
+      currentStop = done;
+      void waitForGesture().then(() => {
+        if (settled || disposed) return;
+        if (!isSoundOn()) {
           done();
-        };
-        audio.addEventListener("ended", done, { once: true });
-        // An erroring clip (404 / codec) resolves as SKIPPED — the
-        // queue must never stall (fallback law).
-        audio.addEventListener("error", done, { once: true });
-        const playPromise = audio.play();
-        if (playPromise) {
-          playPromise.catch(() => {
-            // Autoplay refusal after the gesture wait (or a raced
-            // pause from stopAll): treat as skipped, never a stall.
-            done();
-          });
+          return;
         }
-      } catch {
-        done();
-      }
+        try {
+          const audio = new Audio(clip.url);
+          currentStop = () => {
+            try {
+              audio.pause();
+            } catch {
+              /* element already gone — nothing to stop */
+            }
+            done();
+          };
+          audio.addEventListener("ended", done, { once: true });
+          // An erroring clip (404 / codec) resolves as SKIPPED — the
+          // queue must never stall (fallback law).
+          audio.addEventListener("error", done, { once: true });
+          const playPromise = audio.play();
+          if (playPromise) {
+            playPromise.catch(() => {
+              // Autoplay refusal after the gesture wait (or a raced
+              // pause from stopAll): treat as skipped, never a stall.
+              done();
+            });
+          }
+        } catch {
+          done();
+        }
+      });
     });
   }
   const playClip = opts.playClip ?? defaultPlayClip;

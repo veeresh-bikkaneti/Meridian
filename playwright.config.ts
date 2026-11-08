@@ -200,6 +200,56 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // PR C (Sound Everywhere): in-screen toggles in GeoDetective +
+      // Cold Trail, tap-Holmes instant mute + badge, tap-Watson replay
+      // separation, pair speaker chip — one project, shared fixture
+      // context (no CONTEXT_FILES entry, the Unit A/B convention).
+      name: "detective-sound",
+      testMatch: /detective-sound\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // Prod-pair visibility fix (2026-11-06): the pair must be
+      // VISIBLE — inside the player's viewport and never painted over
+      // each other. Presence-only assertions are how the live dock
+      // occlusion shipped. The spec drives its own 1280 px and 390 px
+      // contexts; the project viewport is only a default.
+      name: "detective-visibility",
+      testMatch: /detective-visibility\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // PR A (staging rework): bench + coffee + watch, slot collapse,
+      // entry walk, berth walks, zero clue-text overlap, mute taps —
+      // every assertion at 390 / 768 / 1280 (owner per-device gate).
+      // The spec drives its own per-width contexts; the project
+      // viewport is only a default.
+      name: "detective-staging",
+      testMatch: /detective-staging\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // PR B (Watson Walks): arrival-gated reads, the case-open
+      // announcement, silent clue-2 walks, instant replay, sheet
+      // cancellation, reduced-motion instant placement, and the
+      // zero-overlap law — every assertion at 390 / 768 / 1280
+      // (owner per-device gate). The spec drives its own per-width
+      // contexts; the project viewport is only a default.
+      name: "detective-watson-walk",
+      testMatch: /detective-watson-walk\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      name: "detective-closed-state",
+      testMatch: /detective-closed-state\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      name: "detective-berth",
+      testMatch: /detective-berth\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },
@@ -246,6 +296,16 @@ export default defineConfig({
     {
       name: "geodetective",
       testMatch: /geodetective\.spec\.ts/,
+    },
+    {
+      // GeoDetective End game (owner ruling, 2026-11-07): header
+      // button at four widths, both fates (pause / outright) at 390 +
+      // desktop, counts-once after a pause-end, Esc / Keep playing.
+      // The spec drives its own per-width viewports; the project
+      // viewport is only a default.
+      name: "geodetective-endgame",
+      testMatch: /geodetective-endgame\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
     },
     {
       // Owner directive 2026-10-12: every map tap registers a guess —

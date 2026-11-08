@@ -101,6 +101,15 @@ test("fixed lines: decodes are templates; hook/giveaway flagged DRAFT, clue-loca
   assert.equal(fixedLine("debrief-close").text, "All of it — one place. Elementary.");
 });
 
+test("fixed lines: the case-open announcement is Watson, line #20 (PR B)", () => {
+  const line = fixedLine("lets-find-clues");
+  assert.equal(line.text, "Let's find some clues.");
+  assert.equal(line.voice, VOICES.watson);
+  assert.equal(line.speed, 106);
+  assert.equal(line.file, "fixed/lets-find-clues.mp3");
+  assert.equal(FIXED_LINES.length, 20);
+});
+
 test("selection name plan: bare display name, Holmes at speed 100", () => {
   const spec = selectionNamePlan({ id: "geonames:5505411", n: "henderson", r: "Nevada, United States", p: 285667 });
   assert.equal(spec.text, "Henderson, Nevada, United States");

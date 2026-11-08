@@ -140,7 +140,7 @@ export function CelebrationOverlay({
 
   return (
     <div
-      className="celebration-overlay absolute inset-0 z-50 flex items-center justify-center p-4"
+      className="celebration-overlay pointer-events-none absolute inset-0 z-50 flex items-center justify-center p-4"
       role="status"
       aria-live="polite"
       data-celebration="active"

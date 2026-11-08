@@ -616,3 +616,136 @@ test("Unit A auto mode: sound off at replay time still drops the replay", async 
   assert.deepEqual(played, ["/audio/detective/case-387/clue-1.mp3"]); // unchanged — silence
   player.dispose();
 });
+
+/* ------------------------------------------------------------------ */
+/* Gesture-wait resurrection (cure, panel round 1): the DEFAULT clip  */
+/* player parks in waitForGesture() before its Audio element exists. */
+/* The cure registers the stop handle BEFORE the wait, so a stopAll  */
+/* in that window (a mute, a case change) settles the parked clip    */
+/* exactly like a playing one, and the sound gate is re-checked at   */
+/* wake. These tests drive the real default player with a stubbed    */
+/* window/Audio.                                                      */
+/* ------------------------------------------------------------------ */
+
+function stubBrowserAudio(playedUrls: string[]): () => void {
+  const listeners = new Map<string, () => void>();
+  class FakeAudio {
+    private handlers = new Map<string, () => void>();
+    url: string;
+    constructor(url: string) {
+      this.url = url;
+    }
+    addEventListener(type: string, fn: () => void) {
+      this.handlers.set(type, fn);
+    }
+    play() {
+      playedUrls.push(this.url);
+      // Finish on the next microtask, like a very short clip.
+      queueMicrotask(() => this.handlers.get("ended")?.());
+      return Promise.resolve();
+    }
+    pause() {}
+  }
+  const g = globalThis as Record<string, unknown>;
+  g.window = {
+    addEventListener: (type: string, fn: () => void) => {
+      listeners.set(type, fn);
+    },
+    removeEventListener: (type: string) => {
+      listeners.delete(type);
+    },
+  };
+  g.Audio = FakeAudio;
+  return () => {
+    // Fire the parked first-gesture listener, if one is armed.
+    listeners.get("pointerdown")?.();
+  };
+}
+
+function unplugBrowserAudio(): void {
+  const g = globalThis as Record<string, unknown>;
+  delete g.window;
+  delete g.Audio;
+}
+
+test("gesture wait: a stopAll during the wait keeps the parked clip silent when the gesture lands", async () => {
+  const playedUrls: string[] = [];
+  const fireGesture = stubBrowserAudio(playedUrls);
+  try {
+    const player = createDetectiveSpeech({
+      caseIndex: 387,
+      loadManifest: async () => MANIFEST,
+      isSoundOn: () => true,
+      canAutoPlay: () => true,
+    });
+    player.enqueue({ kind: "clue", clueIndex: 1 });
+    await tick();
+    await tick();
+    // The clip is parked in waitForGesture (no Audio exists yet).
+    assert.deepEqual(playedUrls, []);
+    // The mute path: stopAll lands while the clip is parked — then
+    // the gesture lands with sound reading on again (the keyboard
+    // mute/unmute cycle from the panel). The parked clip must stay
+    // silent: stopAll settled it through the pre-registered stopper.
+    player.stopAll();
+    fireGesture();
+    await tick();
+    await tick();
+    assert.deepEqual(playedUrls, []);
+    player.dispose();
+  } finally {
+    unplugBrowserAudio();
+  }
+});
+
+test("gesture wait: with no stop, the parked clip plays when the gesture lands", async () => {
+  const playedUrls: string[] = [];
+  const fireGesture = stubBrowserAudio(playedUrls);
+  try {
+    const player = createDetectiveSpeech({
+      caseIndex: 387,
+      loadManifest: async () => MANIFEST,
+      isSoundOn: () => true,
+      canAutoPlay: () => true,
+    });
+    player.enqueue({ kind: "clue", clueIndex: 1 });
+    await tick();
+    await tick();
+    assert.deepEqual(playedUrls, []);
+    fireGesture();
+    await tick();
+    await tick();
+    assert.deepEqual(playedUrls, ["/audio/detective/case-387/clue-1.mp3"]);
+    player.dispose();
+  } finally {
+    unplugBrowserAudio();
+  }
+});
+
+test("gesture wait: a sound gate closed at wake (no stopAll) keeps the parked clip silent", async () => {
+  const playedUrls: string[] = [];
+  const fireGesture = stubBrowserAudio(playedUrls);
+  let soundOn = true;
+  try {
+    const player = createDetectiveSpeech({
+      caseIndex: 387,
+      loadManifest: async () => MANIFEST,
+      isSoundOn: () => soundOn,
+      canAutoPlay: () => true,
+    });
+    player.enqueue({ kind: "clue", clueIndex: 1 });
+    await tick();
+    await tick();
+    assert.deepEqual(playedUrls, []);
+    // The gate closes while parked, without a stopAll reaching the
+    // player — the wake-time gate re-check must still hold the clip.
+    soundOn = false;
+    fireGesture();
+    await tick();
+    await tick();
+    assert.deepEqual(playedUrls, []);
+    player.dispose();
+  } finally {
+    unplugBrowserAudio();
+  }
+});

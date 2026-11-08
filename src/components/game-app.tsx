@@ -59,7 +59,8 @@ import {
 import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand } from "@/assets/home-v5/card-media";
 import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
-import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
+import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
+import { SoundToggle } from "./SoundToggle";
 import {
   initAudio,
   isSoundEnabled,
@@ -68,7 +69,6 @@ import {
   playEditionEntrance,
   playLose,
   playWin,
-  setSoundEnabled,
 } from "@/game/audio/sfx";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import {
@@ -424,61 +424,6 @@ function isReviewRun(run: Run): boolean {
  */
 export function isChallengeRun(run: Run): boolean {
   return run.regionId === CHALLENGE_REGION_ID;
-}
-
-/**
- * Speaker toggle (SFX audio spec §4): persisted under `meridian.sound`,
- * default ON, and the single control for ALL sounds (the 7 shipped + the
- * 9 celebration recipes — every play call goes through the
- * `isSoundEnabled()` gate). Turning ON plays the card tap as confirmation;
- * OFF is silent. This toggle is the "reduced sound" control — reduced
- * motion never mutes audio (spec §4.6).
- *
- * One instance lives in the Chart Room home header; a second lives in the
- * game chrome so sound is reachable mid-game (Veeresh's explicit ask).
- * The two never co-mount — each reads the persisted value on mount, so a
- * toggle flipped on one screen is correct on the next.
- */
-function SoundToggle({
-  testId,
-  className,
-  style,
-  iconClassName = "size-5",
-}: {
-  testId: string;
-  className?: string;
-  style?: CSSProperties;
-  iconClassName?: string;
-}) {
-  const [soundOn, setSoundOn] = useState<boolean>(() => isSoundEnabled());
-  const toggleSound = () => {
-    try {
-      const next = !soundOn;
-      setSoundEnabled(next);
-      setSoundOn(next);
-      if (next) playCardTap();
-    } catch {
-      // Sound is enhancement-only; the toggle itself never throws.
-    }
-  };
-  return (
-    <button
-      type="button"
-      data-testid={testId}
-      aria-pressed={soundOn}
-      aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
-      title={soundOn ? "Sound on" : "Sound off"}
-      onClick={toggleSound}
-      className={className}
-      style={style}
-    >
-      {soundOn ? (
-        <Volume2 className={iconClassName} aria-hidden="true" />
-      ) : (
-        <VolumeX className={iconClassName} aria-hidden="true" />
-      )}
-    </button>
-  );
 }
 
 /**

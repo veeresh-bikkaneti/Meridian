@@ -591,6 +591,107 @@ export function completePuzzle(
   };
 }
 
+/** How a session ends (owner ruling, 2026-11-07). */
+export type LoopEndFate = "outright" | "pause";
+
+/** One deck's progress, as the session summary reports it. */
+export interface LoopDeckProgress {
+  deckId: string;
+  cycle: number;
+  cycleCompleted: number;
+  remaining: number;
+  openCase: boolean;
+}
+
+/** The session summary: closed cases only, plus per-deck progress. */
+export interface LoopSessionSummary {
+  casesClosed: number;
+  solved: number;
+  lost: number;
+  streak: number;
+  bestStreak: number;
+  openCaseDeckId: string | null;
+  decks: LoopDeckProgress[];
+}
+
+/**
+ * End a GeoDetective session (owner ruling, 2026-11-07, amended within
+ * the minute to offer BOTH capabilities — the player picks, neither is
+ * a stray-tap default).
+ *
+ * "pause": the store is returned unchanged. The in-flight case is
+ * preserved exactly — same clue/guess state — because ending the
+ * session this way is a screen state, not a store change; Home offers
+ * resume from the still-playing `current`, and the case counts once,
+ * when it later closes through completePuzzle.
+ *
+ * "outright": a still-playing `current`'s PROGRESS is discarded — the
+ * case is NOT counted as solved or lost, streak/totals/cycle counters
+ * are untouched (discarding is not a loss), and it cannot be resumed:
+ * its guesses/clue state are destroyed with `current`. The case
+ * itself returns to the TAIL (bottom) of its own deck, so the deck
+ * accounting identity (closed + open + in-deck = cycle size) stays
+ * exact: ensurePackDeck never manufactures a duplicate from a phantom
+ * shortfall, and a cycle completes only when every case has truly
+ * been closed — the "all / every" celebration copy stays honest. It
+ * may be dealt again later in the cycle as a fresh case. (The tail,
+ * not the head: the just-ended case must not be the next one dealt —
+ * returnPuzzleIndexToDeck's head return is the failed-deal rollback,
+ * a different path.) A finished (won/lost) current is left exactly
+ * as it is: it already counted when it closed.
+ */
+export function endSession(store: LoopUnlimitedStore, fate: LoopEndFate): LoopUnlimitedStore {
+  if (fate === "pause") return store;
+  if (store.current && store.current.status === "playing") {
+    const current = store.current;
+    const deckId = deckIdOfPuzzle(current);
+    const deck = getDeckState(store, deckId);
+    const withReturned =
+      deck && !deck.deck.includes(current.index)
+        ? setDeckState(store, deckId, { ...deck, deck: [...deck.deck, current.index] })
+        : store;
+    return { ...withReturned, current: null };
+  }
+  return store;
+}
+
+/**
+ * Derive the session summary from the store (owner ruling, 2026-11-07).
+ * Only closed cases count: casesClosed is totals.solved + totals.lost,
+ * copied from the standing totals completePuzzle maintains — there is
+ * no session-start snapshot and none is invented. Decks are reported
+ * core first, then pack decks in key order, each with its cycle
+ * progress and whether the still-playing case (if any) is that deck's.
+ */
+export function loopSessionSummary(store: LoopUnlimitedStore): LoopSessionSummary {
+  const openCaseDeckId =
+    store.current && store.current.status === "playing"
+      ? deckIdOfPuzzle(store.current)
+      : null;
+  const deckIds = [LOOP_CORE_DECK_ID, ...Object.keys(store.packDecks ?? {})];
+  const decks: LoopDeckProgress[] = [];
+  for (const deckId of deckIds) {
+    const deck = getDeckState(store, deckId);
+    if (!deck) continue;
+    decks.push({
+      deckId,
+      cycle: deck.cycle,
+      cycleCompleted: deck.cycleCompleted,
+      remaining: deck.deck.length,
+      openCase: openCaseDeckId === deckId,
+    });
+  }
+  return {
+    casesClosed: store.totals.solved + store.totals.lost,
+    solved: store.totals.solved,
+    lost: store.totals.lost,
+    streak: store.streak,
+    bestStreak: store.bestStreak,
+    openCaseDeckId,
+    decks,
+  };
+}
+
 function storage(): Storage | null {
   try {
     return typeof localStorage === "undefined" ? null : localStorage;

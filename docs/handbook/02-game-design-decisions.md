@@ -47,6 +47,17 @@ Engineering notes that survive the change: the `meridian.loop.v1` namespace stay
 - Finish all 387 cases and you get a **completion celebration**.
 - Share text: date kept, streak shown per the rule above, **skip-case NO**, and the emoji strip is spoiler-free.
 
+### End game — ending a GeoDetective session (Veeresh, 2026-11-07)
+
+GeoDetective shipped with **no End game control, no end-session action, and no session summary**: the only way out mid-case was the Editions button, and leaving that way is only a pause — Home offers resume and the case stays `playing`. (The map editions got their equivalent fix in #264.) Veeresh ruled on 2026-11-07 that GeoDetective gets a real end, and **amended the ruling within the minute: the End game flow offers BOTH capabilities and the player picks** — neither is a stray-tap default.
+
+- **End outright** — the session closes and the summary shows; the in-flight case's **progress is discarded**: not resumable, **not counted solved or lost, and the streak is untouched** (discarding is not a loss). The case itself **returns to the bottom (tail) of its own deck**, so the deck's cycle counting stays exact (closed + open + in-deck = cycle size) and the case may be dealt again fresh later in the cycle; a cycle completes only when every case has truly been closed. (Corrected in the panel round 1 cure: an earlier draft of this record said the case was "consumed from its cycle" — that broke the deck accounting and could deal a duplicate; see the PR body's "Panel round 1 — cure" section.)
+- **Pause & resume later** — the session closes and the summary shows; the in-flight case is **preserved exactly** (same clue/guess state), Home offers resume afterwards, and it **counts once, when it later closes**.
+- **The summary counts closed cases only**: cases closed, the solved/lost split, the current streak and best streak, and per-deck progress (cycle, cases closed in the cycle, cases remaining, whether a case is open). The pair's game-end celebration (the #355 machinery) fires on the summary.
+- With no case in flight (ending from a reveal), there is nothing to pick: a single confirm ends the session, and the summary counts the case that just closed.
+
+Cold Trail is **not** covered here: it has its own store and screen (`src/game/coldtrail/`), so its equivalent End game is a follow-up on the owner's word.
+
 ## 3. Cold Trail — the triangulation edition
 
 Three **sightings**, three **rings**, one **interception**. Each sighting gives a distance + bearing from a named anchor place ("575 km southwest of Umraniye"); the player taps where the rings cross to make the interception.

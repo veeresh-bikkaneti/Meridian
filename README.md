@@ -71,6 +71,8 @@ https://meridian.knowledgetest.workers.dev/
 
 Solving all 387 mysteries earns the full-collection celebration.
 
+The header's **End game** button ends a session with a summary — cases closed, streaks, and deck progress, with Holmes and Watson celebrating on it. Mid-case it offers a choice: end the case for good (it counts for nothing and can't be resumed), or pause it exactly as it stands and pick it up later from Home.
+
 ### Capitals & Flags — the first story pack
 
 New geography content arrives as **story packs**: extra case sets that plug into the editions above instead of standing alone. The first pack is **Capitals & Flags** — 110 cases (60 country capitals, all 50 US state capitals), each written to the same standard as the core mysteries: a five-rung ladder whose history rung is the moment the place became a capital, one retellable hook, a giveaway that names the seat of government, and a reveal card that ends with the plain pairing ("Accra is the capital of Ghana."). Every clue traces to a verbatim Wikipedia quote in its authoring record — no invented facts.
@@ -97,9 +99,9 @@ For the youngest players (Little Explorer, ages 5–7), GeoDetective is locked, 
 
 Two of the card films come in a second version, picked by the player's age band through two small selector functions in the same `card-media.ts` module. Little Explorer players (ages 5–7) see a softer Cold Trail film: the same walk out along the footprint trail and back, at a slower, gentler pace. Trail Scout players (ages 8–10) see a different Review film: the magnifying glass sweeps out and back over the satchel and settles on the usual picture, where the standard Review film overshoots, rewinds, and pauses to rethink. Every other player — including anyone who has not set a band, who gets the standard films — sees the films described above. The choice is exact and fails safe: only the one band named for each variant ever downloads it, the card boxes and the component never change, and the same reduced-motion, Save-Data, and low-memory rules apply to the variants too.
 
-### Detective audio (Holmes & Watson, in build)
+### Detective audio (Holmes & Watson)
 
-GeoDetective is gaining two spoken companions — Holmes on the map, Watson at the clue card — behind the `detectivePair` feature flag, which ships off. Their voices are **pre-rendered on purpose**: every line is recorded ahead of time with the two pinned voices, because a live text-to-speech voice on the player's device cannot hold the characters' measured pitch or pace. Lines live as plain MP3 files under `public/audio/detective/`, fetched only when a case plays — never bundled, never precached.
+GeoDetective has two spoken companions — Holmes on the map, Watson at the clue card — behind the `detectivePair` feature flag (live: `public/flags.json` carries it as `true` since the owner flipped it on 2026-11-06, PR #356). Their voices are **pre-rendered on purpose**: every line is recorded ahead of time with the two pinned voices, because a live text-to-speech voice on the player's device cannot hold the characters' measured pitch or pace. Lines live as plain MP3 files under `public/audio/detective/`, fetched only when a case plays — never bundled, never precached.
 
 The render pipeline lives in `scripts/detective/`. One command re-renders a case end to end (five clue reads plus the answer read):
 
@@ -115,9 +117,13 @@ When the pair is switched on, two companions join GeoDetective. Watson stands by
 
 A player can also ask Watson to say the current clue again: while Watson is on screen for a clue or during the guessing that follows it, his figure carries a small ↻ badge, and tapping him — or focusing his "Ask Watson to repeat this clue" button and pressing it — replays that clue's read, acknowledgement, and decode from the start, even mid-read. This works whether clues play by themselves or only on tap; with sound off there is nothing held to replay, and the badge steps away with the speech.
 
+Sound can be muted and unmuted from inside every edition — the speaker button sits on the game screen itself, never buried in a menu. All of these buttons are the same one switch (stored as `meridian.sound`), so they always agree. In GeoDetective the pair carries a small speaker chip of its own, and tapping Holmes flips the same switch; tapping Watson still only asks him to repeat the clue. Muting stops a line that is speaking right away, in the same tap, and a small crossed-out speaker badge shows on the pair while the sound is off — Holmes and Watson themselves look exactly as cheerful as ever.
+
 Ending a game celebrates too, in every edition. When the pair is switched on and a player ends a game — State, Country, Globe or GeoDetective — Holmes and Watson appear on the summary card and run the same celebration around the final score: jump, high-five, claps. The session total and its per-edition split are shown inside their celebration frame, and Holmes says one fixed line ("What a game! Well played, everyone!"). He deliberately does not read the number aloud: early renders of a word-by-word spoken score measured pitch-unstable from one render pass to the next, so the score lives in the frame as text — exactly the number the card itself shows — and a spoken line can never disagree with it. While the celebration plays, the summary's storyteller narration waits its turn, exactly as it does for the game's other celebrations. On reduced-motion, Save-Data or low-memory setups the pair instead stands still at the high-five and stays silent; with the flag off, the summary card is unchanged.
 
-The pair ships **behind the `detectivePair` feature flag, which is off by default** (`public/flags.json` carries it as `false`). With the flag off, none of their code mounts and the game is exactly the game described above. Turning them on later is a flags change, not a new release.
+The pair ships **behind the `detectivePair` feature flag** (`public/flags.json` carries it as `true` — the owner flipped it on 2026-11-06, PR #356). With the flag off, none of their code mounts and the game is exactly the game described above. Turning them off again is a flags change, not a new release.
+
+Before a case's questions load, the pair wait on a bench under the map (the `hostsStaging` flag): Holmes glances at his watch, both sip coffee, and they speak the case-open lines from the bench. When the questions arrive they rise — Watson reads each clue from the gutter beside the clue card, never over its words, and Holmes stands in the bench slot until your first map interaction walks him onto the map. The coffee cups stay behind on the bench. Turning `hostsStaging` off restores the shipped pair — the pair as it first shipped, apart from two small permanent deltas that stay in both modes: Holmes's dock tap-to-mute area is his full figure width, and the pair's host mounts under the map section. With the `watsonWalk` flag on, Watson now walks down the gutter to each clue card and starts reading only when he arrives — turning the flag off, or using a reduced-motion or resource-constrained setup, puts him beside the card at once and the reading starts straight away.
 
 On smaller or quieter setups the pair steps back instead of getting in the way:
 
@@ -128,7 +134,7 @@ On smaller or quieter setups the pair steps back instead of getting in the way:
 | Sound off | No speech at all; the pair is pictures only, and every fact stays on screen as text. |
 | Read-aloud set to "never" or "sometimes" | Same Listen button — it is never hidden, because it is the player's own tool. |
 
-The decision itself is one small pure function, `resolveDetectiveDegradation` in `src/game/loop/detective/detective-degradation.ts`, and the voices follow the pre-rendered pipeline in [Detective audio](#detective-audio-holmes--watson-in-build) above.
+The decision itself is one small pure function, `resolveDetectiveDegradation` in `src/game/loop/detective/detective-degradation.ts`, and the voices follow the pre-rendered pipeline in [Detective audio](#detective-audio-holmes--watson) above.
 
 ### Supporting the game
 

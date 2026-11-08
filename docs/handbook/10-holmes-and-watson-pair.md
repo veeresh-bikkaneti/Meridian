@@ -195,6 +195,395 @@ the re-run panel and the flip owner can check them off one by one.
 - **Kill-switch:** reverting is the same one-line redeploy with
   `false`; clients pick it up on next boot, no client release.
 
+### INCIDENT — "Holmes and Watson is not in prod" (2026-11-06, cured same day)
+
+- **Report:** Veeresh, playing the flipped build, 2026-11-06 13:51
+  CST: Watson alone at the map's bottom-left corner, Holmes nowhere
+  — on a core case, at desktop width. A fresh-player live test on
+  both hosts showed the same picture.
+- **Diagnosis (measured on a byte-copy mirror of the prod build;
+  full record `DIAGNOSIS-prod-pair.md` in the evidence folder):**
+  the pair rendered correctly — placement and paint hid it.
+  **RC1:** Holmes's dock position and Watson's dock cluster shared
+  one origin (both at the 12 px inset); Watson's ~100 px figure box
+  fully covers Holmes's 70 px box, and the dock's z-index (5) paints
+  over Holmes's wrapper (auto) — Holmes was invisible in every dock
+  phase, and on every "remote" berth (a pause >320 px from the
+  dock — nearly every desktop pause). **RC2:** on the shipped
+  layout (tall header, map, then cards), the station and the dock
+  both start BELOW the viewport fold at 390–1440 px widths, so the
+  case-open duet and the clue reads played off-screen. **RC3:** the
+  station anchor went stale during slow first loads (measured
+  flicker between two card positions ≈440 px apart). The auto-kill
+  (FG-5) and the core-case silent-speech path (FG-3) were both
+  investigated and **refuted** as causes.
+- **Why the gates missed it:** every shipped assertion checked DOM
+  presence and bounding boxes. An off-screen or fully occluded
+  figure passes both. No gate ever asserted viewport intersection
+  or figure-vs-figure overlap.
+- **The cure (branch `fix/prod-pair-visibility`):** (1) Holmes's
+  dock moves BESIDE Watson — x = inset 12 + Watson 100 + gap 8 =
+  120 — and the berth solver's dock reference moves with it.
+  (2) On entering a clue phase (case open, each read), the active
+  clue card is scrolled into view once — by a hand-computed minimal
+  `scrollBy`, not `scrollIntoView({block})`, whose options form is
+  coerced to align-to-top on Safari ≤15.3 and would re-hide the
+  station above the card; the station rides above the card into
+  the viewport. Search phases never scroll. (3) A deferred anchor
+  re-measure for RC3 was tried and REMOVED before merge: early
+  bisection against the companion E2E (K3 pan-cancels-a-berth)
+  implicated it. Both builds fail K3-pan in loaded batches, but
+  with different signatures: on unmodified main the U6 auto-kill
+  had already latched before the berth attempt (under SwiftShader
+  + VM load, frame collapse trips the auto-kill — rolling FPS <45
+  in SEARCH — a load property the suite's own comments already
+  disclose); on the cured build the failure's cause is unproven —
+  a mid-pause kill and confirm-chain starvation cannot be separated
+  in the surviving logs. The re-measure's guilt is unproven either
+  way;
+  a defect cure does not ship an unproven third change. RC3
+  self-heals on scroll, resize, or the next phase change, and
+  stands as a follow-up, not a cure.
+  New E2E gate `detective-visibility.spec.ts` asserts both figures
+  in-viewport and zero mutual overlap — station AND dock, 1280 px
+  AND 390 px, core AND Capitals — registered in the Playwright
+  config and the telemetry guard's context list. Note it does NOT
+  run in CI: the required CI `e2e` job runs only a 6-file subset
+  with no detective specs — the same gap that let this incident
+  (and a stale flag-off summary test, repaired in this PR) ship.
+- **Standing lesson:** for anything a player must SEE, presence is
+  not evidence. Visibility gates assert viewport intersection and
+  occlusion, or they assert nothing.
+- **Correction (2026-11-06 — owner's word: "fix the records"):** the
+  panel re-vote on the cured tip was first reported as 12/12 with
+  zero BLOCKs. The true tally is 11 seats non-blocking (5 APPROVE ·
+  6 APPROVE-WITH-NITS) + 1 BLOCK — the Reality Checker seat, cast
+  23:03Z, before the 23:16Z merge; its verdict reached the
+  coordinator only after the merge, which proceeded on an incomplete
+  count (a process fault). The BLOCK's own text states the code cure
+  itself is evidenced and is not the blocker; it required this
+  records correction. Logs lost in a /tmp wipe (unrecoverable): the
+  visibility RED-run log, the summary flag-off control log, the
+  geodetective control log, and one K3-pan solo-pass log; survivors
+  are preserved in the evidence folder's `diag/`. Full text: the
+  "Correction" section of PR #358's body.
+
+## Staging rework — PR C: Sound Everywhere (2026-11-06)
+
+- **The word:** Veeresh, 2026-11-06: "mute and unmute should be
+  available in each game edition, and click on character should also
+  act as mute or unmute" — with the programme order "No mockup needed
+  just build it into production". Design of record: the staging
+  council's Q6 (evidence folder, `COUNCIL-staging-rework.md`). PR C is
+  slice 1 of 3 (C → A → B); it ships the mute order first because it
+  is independent of the staging and walking work.
+- **What shipped:**
+  - The existing `SoundToggle` now also renders in-screen in
+    `LoopScreen` (GeoDetective, `sound-toggle-loop`) and `TrailScreen`
+    (Cold Trail, `sound-toggle-trail`) — the two editions that had no
+    in-screen mute. With the home header and map-quiz chrome
+    instances, every edition now has mute reachable mid-game.
+  - The component lives in `src/components/SoundToggle.tsx` (moved
+    out of `game-app.tsx`): `game-app` lazy-loads both screens, so
+    importing the toggle back from `game-app` would close an import
+    cycle. One implementation everywhere — never a copy.
+  - On the pair's own surface (GeoDetective, flag on): a ≥44 px
+    speaker chip on the pair cluster (station + dock) wired to the
+    same toggle, a slashed-speaker badge latched on the cluster while
+    muted, and Holmes's figure body as an alias tap target for the
+    same action. Tap-Watson keeps its shipped replay behaviour; the
+    two hitboxes are separate elements, both handlers stop
+    propagation, and the E2E gate proves each tap never fires the
+    other's action. At the dock — where the staging of the day
+    painted Holmes's box over the left of Watson's replay box — the
+    Holmes alias narrowed to a 44 px strip so both tap centres stayed
+    unobstructed; at a berth it kept Holmes's full box. (Premise
+    superseded the same day: PR #358 moved Holmes's dock beside
+    Watson, the boxes no longer overlap, and PR A restored the full
+    70 px dock alias — see the staging record below.) The figures
+    themselves are never greyed or altered while muted (Brand ruling).
+- **The one-key decision:** everything flips the single persisted
+  `meridian.sound` value through `setSoundEnabled`, and all audio
+  keeps gating on `isSoundEnabled()`. A pair-only mute was rejected
+  by the council: it would need a second persisted key and a second
+  player gate, and it produces two contradictory sound truths ("the
+  button says muted, the game still sounds"). Pair speech keeps its
+  own finer control — the read-aloud preference — as before.
+- **The immediate-stop mechanism:** `sfx.ts` gained a minimal
+  in-process listener set, `onSoundChanged` (the age-profile events
+  pattern: synchronous delivery, isolated listener errors,
+  unsubscribe contract). `setSoundEnabled` notifies it in the same
+  event that flips the persisted value. `DetectiveHost` subscribes
+  and, on mute, calls the speech player's `stopAll()` — the player's
+  own stop path (`currentStop` pauses the speaking clip; the queue
+  is flushed) — in that same event. This replaces the host's old 1 Hz
+  `isSoundEnabled()` poll, which leaked up to a second of speech
+  after a mute tap. Unmuting never resumes a stopped line: the queue
+  was cleared and nothing re-enqueues it. Co-mounted toggle instances
+  subscribe too, so the screen toggle, the chip, and the Holmes alias
+  can never show different states. No new machine props were added —
+  mute is host-level sound state, and answer-blindness is untouched.
+- **Evidence:** unit tests for the listener set in `sfx.test.ts`
+  (synchronous delivery, unsubscribe/count, throwing-listener
+  isolation) and a new E2E gate, `tests/e2e/detective-sound.spec.ts`
+  (project `detective-sound`): toggles in both screens flip the key;
+  a tap on Holmes during a slowed read pauses the speaking clip
+  within 1 s, flushes the queue, and latches the badge; unmute
+  clears the badge without resuming; Watson replays without muting;
+  Holmes mutes without replaying; the chip drives the same key.
+- **Kill-switch note:** none needed — PR C adds no flag and touches
+  no existing one (`detectivePair` stays as the owner set it).
+  Rollback is a plain revert of the PR.
+- **Pre-registered alias cut (council, recorded at panel round 1):**
+  if child sessions read a Holmes tap-mute as "the game broke",
+  remove the detective-holmes-mute alias first — chip + toggles stay.
+- **Cure round (panel round 1, 2026-11-06):** the panel voted
+  8 APPROVE-WITH-NITS / 4 BLOCK on tip `26e2250` (Silo QA
+  PASS-WITH-NITS, DevEx PASS-WITH-NITS, benchmark PASS). The two
+  defects — the station chip/Holmes-mute overlapping the tap-mode
+  Listen button, and a duplicate chip + badge during NOTE_MARK —
+  plus the folded Act-On nits were cured on the same branch in
+  PR #357's cure round; the cured tip goes back through Silo QA +
+  the full panel for a re-vote before any merge.
+- Forward obligation for PR A: when PR A (hostsStaging) resizes the staging figures, it must re-derive chipStationOffset/holmesStationOffset in DetectiveHost from the layout constants — PR C's literals are arithmetic on the current 100/70px figures, not constants of record. DISCHARGED in PR A (see the staging record below): the offsets are derived from WATSON_DOCK_W / HOLMES_BOX / CELEBRATE_LAYOUT, and STATION_CLEARANCE_PX joined the derivation.
+- **Cure round 2 (panel re-vote, 2026-11-06):** panel 2 APPROVE / 8 APPROVE-WITH-NITS / 1 BLOCK (Office Hours: the summary-celebration player leaked its line on unmount — `dispose()` never paused the held Audio element) · DevEx PASS-WITH-NITS. The cure (pause on dispose, +2 unit tests) landed on the same branch; the merged tip then passed the merge-up re-vote 12/12 with 0 BLOCKs.
+- Open owner question: should the summary dialog get its own SoundToggle? Right now no mute surface is reachable while the modal summary is open; the question is the owner's and stays open.
+
+## Staging rework — PR A: Found at a Glance (2026-11-06)
+
+- **The word:** the staging council's PR A (council report in the
+  evidence folder), as amended by the owner at the mockup v2 review:
+  the council's reserved strip is REPLACED by the bench — no
+  padded/empty reserved strip anywhere — with coffee and a watch
+  glance on the bench, and (owner, 2026-11-06, after the prod-pair
+  incident) the per-device gate below. PR #357 (PR C) merged first;
+  PR B (Watson walks) follows.
+- **The flag:** `hostsStaging`, a sub-flag of the pair. It ships
+  TRUE in `public/flags.json` in this PR (the staging ships live);
+  the baked-in default in `src/lib/flags.ts` stays false, so a
+  failed flags fetch falls back to the shipped pair. FALSE =
+  the kill-switch (the same one-line flags.json redeploy as the
+  pair's own flip): staging disappears and the pair renders its
+  pre-A rigs — the makeover halo is gated by this flag in the rigs
+  themselves (cure C5, PR #361 cure round 1), on the summary
+  celebration too. Two accepted permanent deltas apply in BOTH
+  modes and are not part of the kill-switch: Holmes's dock mute
+  alias is the restored full 70 px (below), and LoopScreen mounts
+  the host below the map section. `detectivePair` is untouched.
+- **What shipped:**
+  - **Makeover:** a cream halo (3–4 px) with a near-black keyline
+    (~1.5 px) BAKED into both rigs' art — a silhouette group painted
+    under each figure inside the SVG itself. No live CSS filter or
+    drop-shadow anywhere (the performance seat's veto). Costumes
+    unchanged: Holmes brick-red #a52a21, Watson royal-blue #27408b.
+  - **Sizes:** ~128 px in the bench slot; 104 px on the map and at
+    the station (inside the council's 104–112 px on-map band). The
+    bench SLOT is 132 px tall (cure C10, PR #361 cure round 1):
+    the mockup of record's standing height exactly. Its seated
+    height (126 px) is not reachable — the bench rigs are 128 px
+    tall and the slot clips overflow, so 126 would shave the hats;
+    132 keeps 4 px of headroom for the watch arc. (The slot was
+    148 px as first built; the record now matches the geometry.)
+  - **The bench:** before a case's questions load (the case-open
+    beat), Holmes and Watson SIT on a bench in the page's own flow
+    directly under the map. Holmes glances at his watch on an idle
+    loop; both drink coffee — cups in hand, alternating sip cycles,
+    deliberately NOT synchronized. When the machine leaves
+    CASE_OPEN, the pair rise: Watson goes to his station, Holmes
+    stands in the slot, and the bench board fades to a 0.22 ghost
+    that stays under the left-behind cups (cure C8 — the cups rest
+    on a visible bench, they do not float over a fully faded
+    board). When Holmes enters the map the slot COLLAPSES to zero
+    height; the cups stay behind on the bench and never enter play.
+  - **Entry walk:** at the first map interaction Holmes visibly
+    WALKS from the bench slot onto the map to his dock — a real
+    transition with the walk pose, not a teleport. Reduced motion
+    cuts the walk (instant placement), as with every pair motion.
+  - **Berth-to-berth walks:** the shipped pause-berth engine
+    (350 ms desktop / 450 ms touch pause trigger; 80 ms absence on
+    pan/zoom/sheet/rings/speech) walks him between berths with the
+    walk pose — pinned by the staging E2E at 390/768/1280 on the
+    cured tip (PR #361 cure round 1, berth geometry completed on
+    Silo QA's probe: the pre-cure shared berth point (0.72w, 0.30h)
+    sat 480.7 px from the dock centre at 768 and 464.4 px at 1280 —
+    beyond BERTH_REMOTE_DISTANCE 320, so no berth could ever land
+    there; the spec now uses (0.48w, 0.50h) at tablet/desktop —
+    280.4 px at 768, 267.0 px at 1280 from the dock centre
+    (155, mapH−64) — and keeps (0.72w, 0.30h) at 390, 261.6 px;
+    cure C12).
+  - **Zero-overlap law (owner, absolute):** neither figure ever
+    overlaps clue-card text — 0 px² in every sampled staging state;
+    CELEBRATE excepted — the shipped cluster sits over the
+    active card there and is unmeasured (re-scoped in PR #361
+    cure round 1, wording per Silo QA's code read: during
+    CELEBRATE the cluster is positioned at {left: anchor.left,
+    top: anchor.top} — over the active clue card's area — and
+    the spec never audits a CELEBRATE state). The sampled states are bench, rising, walking,
+    standing, reading, muted and reduced-motion. Under
+    staging, LoopScreen reserves a 118 px gutter beside the clue
+    cards (the cards narrow; their text reflows inside them — the
+    mockup v2 geometry). The 118 px margin applies for the whole
+    session by design — cards never reflow mid-case. Watson's
+    station stands IN the gutter centred on the active card, and
+    Holmes never joins the station cluster: before entry he stands
+    in the bench slot, after entry he lives on the map. The staging
+    E2E ports the mockup's position-sampling audit (figure boxes
+    vs every clue text element, sampled through the whole case).
+  - **Dock alias restored:** PR C's 44 px dock narrowing of the
+    Holmes mute alias was forced by the pre-#358 dock overlap;
+    #358 deleted that overlap (Holmes beside Watson, boxes
+    [12,112] vs [120,190]), so PR A restores the full 70 px dock
+    alias (the narrowing class is deleted) and re-checks the map
+    chip against the wider dock cluster: the chip rides ABOVE the
+    cluster (bottom 128 px = inset 12 + figure 104 + 12 clear) and
+    clears it at any dock width. The station's Listen-clearance
+    narrowing (PR C) is a different slice and stays.
+  - **Offset re-derivation:** chipStationOffset /
+    holmesStationOffset are derived from the layout constants of
+    record (WATSON_DOCK_W, HOLMES_BOX, CELEBRATE_LAYOUT, the 4 px
+    station gap, the 8 px chip clear); STATION_CLEARANCE_PX
+    (= HOLMES_BOX.h + 12) is derived the same way. The three
+    look-alike gaps (DOCK_GAP 8, chip clear 8, station gap 4) stay
+    distinct — shared values, different meanings.
+- **PER-DEVICE GATE — STANDING RULE for this feature (owner
+  amendment, 2026-11-06):** every staging assertion (bench +
+  coffee + watch, slot collapse, entry walk, berth walks, zero
+  text overlap, mute taps) is E2E-verified at THREE widths —
+  390 px (phone), 768 px (tablet), 1280 px (desktop). No width
+  proxies another. Presence is not evidence: the assertions are
+  viewport/geometry measurements in the #358 visibility pattern,
+  and post-merge live verification includes desktop-width
+  screenshots of the shipped behaviour.
+- **Answer-blindness:** staging adds NO host props — it reads only
+  the machine's existing view, the degradation matrix, and the
+  flag. The props whitelist and the swap test are untouched.
+
+- **Staging close / berth cure (2026-11-07, this PR):** two live
+  defects the owner found on the shipped staging were reproduced
+  and mechanism-proven before the cure
+  (`DIAGNOSIS-bench-at-close.md` in the detective evidence folder).
+  (1) *Bench at case close:* the bench gate keyed off the staging
+  stage alone and cure C3's forced entry omitted `SELECTION_READ`
+  — the phase the machine sits in while the screen already shows
+  "Case closed" — so on search-box play the bench (board + both
+  left-behind cups + standing Holmes) stood over the closed case
+  until the selection-read speech drained, indefinitely if that
+  speech stalled. Cure: the bench element now also requires the
+  game's `status` to be `playing` (the closed state is bench-free
+  from the first "Case closed" render), and C3's forced entry is
+  additionally driven by that same `status` prop so Holmes lands
+  at his designed dock/station positions for the endings. Bench
+  during CASE_OPEN is unchanged.
+  (2) *Holmes never berths:* the FG-5 auto-kill latched for the
+  host's lifetime and the host persists across cases, so one
+  transient SEARCH-phase performance dip docked Holmes for a
+  whole run (8/8 full case plays in the diagnosis ended killed).
+  Cure, thresholds unchanged: the tracker re-qualifies after a
+  sustained healthy window (rolling 5 s at ≥ 55 FPS, no long
+  task — the 45→55 band is hysteresis), a long task restarts the
+  sustain, the host keeps feeding the tracker while killed, and
+  the latch clears on every case change. The degradation
+  dock-only path (Save-Data / ≤ 4 GB / battery saver,
+  `data-companion="dock"`) is a separate by-design verdict and
+  was not touched.
+  **Per-device gate extension (part of the standing rule above):**
+  the staging gate now also samples the CLOSED state — from
+  "Case closed" first rendering through CELEBRATE / POUT, sampled
+  at exactly 50 ms (`detective-closed-state.spec.ts`: the in-page
+  sampler polls at 50 ms; 200 ms is the gate's ceiling requirement)
+  — asserting bench count 0 throughout it, on
+  SOLVE and FAIL, at all three widths
+  (`detective-closed-state` E2E); and berthing is gated on a
+  MEASURED arrival, never DOM presence, including after a
+  throttled SEARCH window (`detective-berth` E2E: latch fires
+  under throttle → re-qualification → real berth). A gate that
+  preconditions on `companionMode === "full"` reads a latch as an
+  environment result and is not a berth gate.
+
+## Staging rework — PR B: Watson Walks (2026-11-07)
+
+- **The word:** the staging council's Q3 (evidence folder,
+  `COUNCIL-staging-rework.md`). PR B is the third and final slice
+  of the staging rework, after PR C (#357) and PR A (#361). The
+  flag `watsonWalk` ships **TRUE** in this PR (baked default
+  `false` in `src/lib/flags.ts`; `public/flags.json` sets it
+  true), acting only when `detectivePair` + `hostsStaging` are
+  also on. **Kill-switch:** `watsonWalk: false` restores the PR A
+  behaviour on the pair surface — Watson teleports to the station
+  and clue speech starts at clue reveal. Two deltas are permanent
+  in both modes and disclosed here rather than hidden: the
+  "Let's find some clues" render stays in the audio manifest
+  (it is only ever enqueued while the flag is on), and the two
+  staging carry-in fixes — the `entryIntentRef` reset on case
+  change and the resumed-case staging initialisation — apply
+  whenever `hostsStaging` is on, in both `watsonWalk` modes;
+  they are staging fixes, not walk behaviour.
+- **The walk:** Watson walks the gutter to each clue card; the
+  whole gutter cluster (station, replay cue, Listen button, sound
+  chip) travels together so their pairwise separations hold
+  mid-walk. Clue speech is released **only on walk-arrival**
+  (the station cluster's `transitionend`, with a duration + 250 ms
+  fallback so a throttled transition can never trap a read).
+  Clue 2+ walks are silent. Tap-Watson replay at the station is
+  instant — no re-walk. A clue advance mid-read stops and flushes
+  speech, then walks, then reads on arrival. Opening the sheet
+  mid-walk cancels the walk and the held read is **dropped, never
+  fired late**: the ladder's drain is deferred and dispatched
+  once when the sheet closes (a suppression cure found by the
+  walk spec's sheet test — the announcement's own drain must not
+  advance the ladder behind the sheet). Reduced-motion and
+  resource-constrained (dock-only) devices skip the walk:
+  instant placement, immediate read.
+- **Walker decision:** a **second, parallel walker**, host-local
+  in `DetectiveHost` — 1-D vertical travel between measured card
+  anchors, a transform on the station cluster. Holmes's engine
+  was NOT generalised: it is 2-D map geometry (`holmesXY`, its
+  own walk timer, the berth solver's dock/berth/hide outcomes),
+  and extracting a shared walker would refactor proven code to
+  share almost nothing. The pure module
+  `src/game/loop/detective/watson-walk.ts` owns the walk's
+  constants and gates, unit-pinned: the gutter derivation, the
+  duration band (260 px/s clamped to 600–1000 ms), the
+  announcement gate, and the station chip/Holmes offsets.
+- **Gutter reconciliation:** PR A's **118 px ships**, now derived
+  instead of literal — card gap 6 + Watson figure 100 + edge
+  clear 12. The council sketch's 112 px would leave only 6 px of
+  edge clearance, half the pair's standard 12 px outer clearance,
+  and re-narrow every card against PR A's proven layout for no
+  clearance gain. The vertical look-alikes are derived too
+  (figure-half 52 + 10 below the figure; the Listen/chip stacks
+  build on it). The margin still applies for the whole session —
+  no mid-case reflow (PR A's rule stands).
+- **The announcement:** fixed line #20, "Let's find some clues",
+  spoken during the **case-open walk only**, session cap 2,
+  production-rendered at speed 106 — measured median F0 **93.8 Hz**
+  (Watson family gate 82–115 Hz), 132 wpm, 1.82 s. Exactly one
+  new render ships in PR B.
+- **Zero overlap:** the per-device gate above covers the walk
+  states as well — `tests/e2e/detective-watson-walk.spec.ts`
+  ports PR A's position-sampling audit (shared via
+  `tests/e2e/detective-u10.ts`, not duplicated) and asserts
+  0 px² in walking, standing, reading, muted, rising, and
+  reduced-motion states at 390/768/1280. One boundary note lives
+  in the spec: the arrival sample may record the released clip a
+  frame before React commits the idle attribute — the gate
+  itself (release only inside the arrival handler) is what the
+  spec pins.
+- **Answer-blindness:** PR B adds NO host props. The walk reads
+  only the machine's view, the degradation matrix, DOM geometry
+  of the clue cards, and the flags. The props whitelist is
+  untouched and the K5 swap test passes unchanged.
+- **Coordination note:** two live defects found in PR A's
+  surfaces after it shipped (the bench close-state leak and the
+  FG-5 companion latch never resetting) were cured by a separate
+  PR from `main`, in parallel — PR #362, merged as main
+  `3690aee`; PR B's diff did not touch the bench gating,
+  `companion.ts`, the berth/entry handlers, or the latch. This
+  branch took its merge-up `48243e3` over the cure (conflicts in
+  `BRANCH_STATUS.md`, this chapter, and `playwright.config.ts`,
+  resolved as faithful unions) plus the `353072e` brace cure,
+  and its review pipeline ran on the merged tip.
+
 ## Audio: pre-rendered, with honest coverage
 
 - Runtime speech synthesis was rejected for this pair (BUILD-SCOPE

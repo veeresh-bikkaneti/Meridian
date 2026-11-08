@@ -26,7 +26,16 @@
  *   point > 320 px from the dock → "remote"; no legal position →
  *   "hide". Overlap is NEVER the fallback.
  * - auto-kill: rolling 5 s FPS < 45 OR 3 long tasks > 100 ms within
- *   10 s → killed for the session (the host owns the session scope).
+ *   10 s → killed. The kill is NOT a session latch (staging close /
+ *   berth cure, 2026-11-07): the tracker re-qualifies the companion
+ *   after a sustained healthy window (rolling 5 s at ≥ 55 FPS with
+ *   no long task — a hysteresis band above the 45 FPS kill line, so
+ *   a borderline device does not flap), and the host additionally
+ *   resets the tracker on every case change, so one bad case can
+ *   never dock Holmes for a whole run. The diagnosis that forced
+ *   this: the old latch fired under ordinary SEARCH-phase tile load
+ *   and never cleared — 8/8 full case plays on the diagnosis rig
+ *   ended killed (DIAGNOSIS-bench-at-close.md, defect 2).
  */
 
 /* ------------------------------------------------------------------ */
@@ -353,13 +362,22 @@ export function berthFor(input: BerthInput): BerthResult {
 /* ------------------------------------------------------------------ */
 
 export interface AutoKillTracker {
-  /** Feed one rendered frame's duration (ms) ending at time `t`. */
+  /** Feed one rendered frame's duration (ms) ending at time `t`.
+   * Feeding CONTINUES while killed — that is how re-qualification
+   * is judged — so the host must keep feeding in SEARCH phases
+   * even after a kill. */
   feedFrame(durationMs: number, t: number): void;
-  /** Feed one long-task event: `durationMs` ending at time `t`. */
+  /** Feed one long-task event: `durationMs` ending at time `t`.
+   * While killed, a long task does not change the kill reason; it
+   * restarts the healthy window re-qualification is judged on. */
   feedLongTask(durationMs: number, t: number): void;
+  /** Clear the kill and every window (host: on case change). */
+  reset(): void;
   readonly killed: boolean;
   /** Why the kill fired (for the host's console line), once killed. */
   readonly killReason: "fps" | "longtask" | null;
+  /** How many times the tracker has re-qualified after a kill. */
+  readonly requalifiedCount: number;
 }
 
 export const KILL_FPS_WINDOW_MS = 5000;
@@ -370,18 +388,50 @@ export const KILL_LONGTASK_WINDOW_MS = 10000;
 /** FPS is judged only once at least this much frame history exists —
  * a single slow first frame is a load hiccup, not a trend. */
 const KILL_FPS_MIN_SPAN_MS = 1000;
+/** Re-qualification (berth cure): after a kill, the companion earns
+ * its way back only on a SUSTAINED healthy window — a full rolling
+ * 5 s (the kill window's own length) of frames at ≥ 55 FPS with no
+ * long task inside it. 55 is deliberately above the 45 FPS kill
+ * line: the 10 FPS band is hysteresis, so a device hovering at the
+ * kill line stays docked instead of flapping dock/berth. */
+export const REQUALIFY_FPS_MIN = 55;
+export const REQUALIFY_SUSTAIN_MS = 5000;
 
 export function createAutoKillTracker(): AutoKillTracker {
   let killed = false;
   let killReason: "fps" | "longtask" | null = null;
+  let requalifiedCount = 0;
   /** Frame end timestamps inside the rolling window. */
   let frameEnds: number[] = [];
   /** End timestamps of long tasks (> 100 ms) inside their window. */
   let longTaskEnds: number[] = [];
+  /** Frame end timestamps since the kill, pruned to the
+   * re-qualification window: the healthy evidence. Cleared by any
+   * long task, so the sustain must be one unbroken healthy run. */
+  let healthyFrameEnds: number[] = [];
 
   return {
     feedFrame(_durationMs: number, t: number) {
-      if (killed) return;
+      if (killed) {
+        // Re-qualification judging: keep only the trailing sustain
+        // window; a full window at a healthy rate resurrects.
+        healthyFrameEnds.push(t);
+        const hCutoff = t - REQUALIFY_SUSTAIN_MS;
+        healthyFrameEnds = healthyFrameEnds.filter((e) => e > hCutoff);
+        if (healthyFrameEnds.length >= 2) {
+          const spanMs = t - healthyFrameEnds[0]!;
+          const fps = ((healthyFrameEnds.length - 1) / spanMs) * 1000;
+          if (spanMs >= REQUALIFY_SUSTAIN_MS - 100 && fps >= REQUALIFY_FPS_MIN) {
+            killed = false;
+            killReason = null;
+            requalifiedCount += 1;
+            frameEnds = [];
+            longTaskEnds = [];
+            healthyFrameEnds = [];
+          }
+        }
+        return;
+      }
       frameEnds.push(t);
       const cutoff = t - KILL_FPS_WINDOW_MS;
       frameEnds = frameEnds.filter((e) => e > cutoff);
@@ -397,8 +447,13 @@ export function createAutoKillTracker(): AutoKillTracker {
       }
     },
     feedLongTask(durationMs: number, t: number) {
-      if (killed) return;
       if (durationMs <= KILL_LONGTASK_MS) return;
+      if (killed) {
+        // A long task breaks the healthy run: re-qualification's
+        // sustain restarts from here.
+        healthyFrameEnds = [];
+        return;
+      }
       longTaskEnds.push(t);
       const cutoff = t - KILL_LONGTASK_WINDOW_MS;
       longTaskEnds = longTaskEnds.filter((e) => e > cutoff);
@@ -407,11 +462,21 @@ export function createAutoKillTracker(): AutoKillTracker {
         killReason = "longtask";
       }
     },
+    reset() {
+      killed = false;
+      killReason = null;
+      frameEnds = [];
+      longTaskEnds = [];
+      healthyFrameEnds = [];
+    },
     get killed() {
       return killed;
     },
     get killReason() {
       return killReason;
+    },
+    get requalifiedCount() {
+      return requalifiedCount;
     },
   };
 }

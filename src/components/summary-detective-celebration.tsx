@@ -51,16 +51,12 @@ import {
   HIGH_FIVE_HOLD_MS,
 } from "@/game/loop/detective/detective-state";
 import {
-  detectiveCanAutoPlay,
-  loadDetectiveManifest,
-  resolveDetectiveClip,
-} from "@/game/loop/detective/detective-audio";
-import {
   readConnectionSignals,
   resolveSummaryCelebrationMode,
 } from "@/game/loop/detective/detective-degradation";
-import { soundAudible } from "@/game/audio/play-guards";
+import { createCelebrationLinePlayer } from "@/components/summary-celebration-line";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
+import { isEnabled } from "@/lib/flags";
 import { EDITION_LABELS, type SessionSummary } from "@/game/session";
 import "@/game/loop/detective/detective.css";
 
@@ -76,46 +72,11 @@ const STEP_POSES: Record<
   settle: { holmes: "gaze-up", watson: "station-idle" },
 };
 
-/** Play the one fixed celebration line, gated exactly like the loop
- * player's speech (sound toggle + hidden tab + read-aloud preference,
- * all read at play time). Resolves when the clip ends, errors, or is
- * gated off — a silent celebration is a valid celebration. Mirrors
- * detective-audio's default clip player (ended/error both settle),
- * minus the first-gesture wait: the summary only exists because the
- * player tapped "End game", so the document already has its gesture. */
-async function playCelebrationLine(
-  isCancelled: () => boolean,
-  onSpeaking: (speaking: boolean) => void,
-): Promise<void> {
-  if (!detectiveCanAutoPlay() || !soundAudible()) return;
-  const manifest = await loadDetectiveManifest();
-  if (isCancelled()) return;
-  const clip = resolveDetectiveClip(
-    manifest,
-    { kind: "fixed", id: "score-celebration" },
-    0,
-  );
-  if (!clip) return; // uncovered → silent, by the fallback law
-  await new Promise<void>((resolve) => {
-    let settled = false;
-    const done = () => {
-      if (settled) return;
-      settled = true;
-      onSpeaking(false);
-      resolve();
-    };
-    try {
-      const audio = new Audio(clip.url);
-      audio.addEventListener("ended", done, { once: true });
-      audio.addEventListener("error", done, { once: true });
-      onSpeaking(true);
-      const playPromise = audio.play();
-      if (playPromise) playPromise.catch(done);
-    } catch {
-      done();
-    }
-  });
-}
+/* The spoken line itself lives in summary-celebration-line.ts (the
+ * testable seam): its player holds the line's Audio element, gates
+ * at play time and again after the manifest await, and subscribes
+ * to onSoundChanged so a mid-line mute pauses the line and settles
+ * the driver below (cure, panel round 1 — Game Audio MAJOR). */
 
 export function SummaryDetectiveCelebration(props: {
   totalScore: number;
@@ -186,15 +147,27 @@ export function SummaryDetectiveCelebration(props: {
         CELEBRATE_JUMP_MS + HIGH_FIVE_HOLD_MS + CLAP_HOLD_MS,
       ),
     );
-    void playCelebrationLine(
-      () => cancelled,
-      (s) => !cancelled && setSpeaking(s),
-    ).then(() => {
-      speechDone = true;
-      maybeFinish();
-    });
+    // The line player (summary-celebration-line.ts) holds the
+    // line's Audio element in its own ref and subscribes to
+    // onSoundChanged for its lifetime: a mid-line mute pauses the
+    // element, the pause settles the player's promise, and
+    // speechDone lands through the .then below so the choreography
+    // completes sanely instead of waiting on a silenced clip.
+    // dispose() unsubscribes — called in this effect's cleanup, so
+    // unmount always unsubscribes.
+    const linePlayer = createCelebrationLinePlayer();
+    void linePlayer
+      .play(
+        () => cancelled,
+        (s) => !cancelled && setSpeaking(s),
+      )
+      .then(() => {
+        speechDone = true;
+        maybeFinish();
+      });
     return () => {
       cancelled = true;
+      linePlayer.dispose();
       for (const t of timers) clearTimeout(t);
     };
   }, [animated]);
@@ -218,7 +191,7 @@ export function SummaryDetectiveCelebration(props: {
       >
         <div className="detective-celebrate-holmes">
           <div className="detective-host-figure" data-detective="holmes">
-            <HolmesRig pose={poses.holmes} facing="right" speaking={speaking} />
+            <HolmesRig pose={poses.holmes} facing="right" speaking={speaking} halo={isEnabled("hostsStaging")} />
           </div>
         </div>
         <div
@@ -228,7 +201,7 @@ export function SummaryDetectiveCelebration(props: {
           }}
         >
           <div className="detective-host-figure" data-detective="watson">
-            <WatsonRig pose={poses.watson} facing="left" speaking={false} />
+            <WatsonRig pose={poses.watson} facing="left" speaking={false} halo={isEnabled("hostsStaging")} />
           </div>
         </div>
         {animated && step === "high-five" ? (

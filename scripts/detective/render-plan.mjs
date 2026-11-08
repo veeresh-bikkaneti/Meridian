@@ -146,6 +146,13 @@ export const FIXED_LINES = Object.freeze([
   // the score itself lives in the celebration frame as text, exactly
   // as the summary card displays it. The line is new writing: DRAFT.
   spec({ id: "score-celebration", kind: "score", text: "What a game! Well played, everyone!", voice: VOICES.holmes, speed: 104, file: "fixed/score-celebration.mp3", note: "DRAFT wording — Unit B game-end celebration line; panel review required" }),
+  // Case-open announcement (PR B, staging council Q3 — fixed line
+  // #20): Watson says it while he walks to clue 1, case-open walks
+  // only, session-capped at 2 by the host. The owner's own words
+  // from the staging brief ("lets find some clues"), in Watson's
+  // pinned voice; speed 106 is the pace-ladder target the mockup
+  // take of record was measured at (93.8 Hz median / 132 wpm).
+  spec({ id: "lets-find-clues", kind: "announcement", text: "Let's find some clues.", voice: VOICES.watson, speed: 106, file: "fixed/lets-find-clues.mp3" }),
 ]);
 
 

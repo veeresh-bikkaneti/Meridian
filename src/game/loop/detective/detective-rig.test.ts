@@ -73,6 +73,7 @@ test("pose enums are exactly the U5 contract sets", () => {
     "pout",
   ]);
   assert.deepEqual([...WATSON_POSES], [
+    "walk",
     "read",
     "think",
     "station-idle",
