@@ -668,6 +668,52 @@ unexpected flood (bug loop, someone replaying events) pages you before
 it matters. The rate limiter caps any single client at 10/min, and
 foreign origins are refused outright (S4).
 
+## Council fixes (2026-11-08, PR #353 — not deployed)
+
+Behaviour after these fixes ship (they are NOT live until a separately
+approved release uploads this version with its bindings and schedules):
+
+- **Response body.** Every accepted `/ingest` event returns `{ "ok": true }`.
+  Routing (paged / counted / summarised) and store health are in logs only,
+  so the body is no oracle. 400/403/405/413/429 are unchanged.
+- **Provenance gate never depends on KV.** A real-client-shaped crash pages
+  with KV absent or failing. An uncorroborated crash is never paged one by
+  one: with KV up it is counted (threshold / can't-tell legs); with KV
+  down it joins a per-isolate summary — at most 1 Discord message per
+  15-minute window per worker isolate (not a global cap), counts are
+  lower bounds, ≤16 pattern keys, optional `CRASH_RATE_LIMITER` key
+  `kvdown-summary` as a best-effort cross-isolate ceiling.
+- **Delivery.** Sends run under `ctx.waitUntil`; one retry on 429/5xx
+  (Retry-After capped at 2 s); timeouts are `unknown`, never success. The
+  last real-crash delivery states go to `ops:delivery:last` (7-day TTL, no
+  URL or content). A failed delivery never triggers another alert.
+- **Error text** is scrubbed in the client and again in the worker: URL
+  query strings and fragments, emails, UUIDs, hex runs ≥20 and mixed token
+  runs ≥32 are removed; `file.js:line:col` and identifiers survive. Only
+  `error.name`/`error.message` are kept. Discord `allowed_mentions` is empty.
+- **Alert wording.** A captured-error type with no details no longer says
+  "app failed to start". Every alert carries a `failure(v1)` line built only
+  from existing manifest fields; request status, server timing and a phase
+  timeline are listed as *not collected*.
+- **Retention.** Counter buckets: 90-day TTL (`COUNT_BUCKET_TTL_SECONDS`) on
+  new writes; existing keys are left alone (no deletion). Ops records 7 d,
+  health incident 30 d, KV probe 60 s.
+- **Health.** `GET /health` → `{ ok, v:1, live:true, scope:"crash-report-worker",
+  health, reason, sampledAt, ageSec, failing, ranChecks, requiredChecks }`,
+  `cache-control: no-store`. HTTP 200 means alive; read `health`. It is
+  `healthy` only when the last trusted scheduled run has all 4 required
+  checks (`bindings_present`, `kv_write`, `kv_read`, `provenance_selftest`)
+  passed and is ≤35 min old (≤60 s in the future); otherwise `unhealthy` or
+  `unknown`. A KV read that misses a fresh write is not a failure (KV is
+  eventually consistent). Scope is this worker only — never the game,
+  browsers or WebGL. The proposed `*/15 * * * *` cron (wrangler.toml) runs
+  it; the `15 * * * *` digest is unchanged. Healthy runs: one log line,
+  no Discord. Failures: one Discord message per incident (2 consecutive
+  failed runs; a missing binding at once), a 24 h reminder, one recovered
+  message after 2 passes; when incident state is unreadable, ≤1 per hour.
+  A dead worker cannot report itself: an independent monitor is still an
+  owner decision.
+
 ## Privacy
 
 - Alerts contain: the verdict headline and why, type, buildId,

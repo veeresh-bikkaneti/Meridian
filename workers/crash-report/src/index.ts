@@ -2464,6 +2464,385 @@ export async function runHourlyDigest(
   return message;
 }
 
+// --- Council fix T6 (2026-11-08): trusted scheduled ops health ----------
+//
+// Only the platform-invoked scheduled() handler produces a health run;
+// /ingest can never write one (it never touches ops:health:* keys).
+// Scope is the crash-report worker ONLY: bindings, its KV, and its own
+// provenance gate. It says nothing about the game, browsers or WebGL.
+// Healthy runs write one status record + one log line and send nothing.
+// Failed checks send one detailed Discord message per incident (best
+// effort: incident state lives in KV, which is not atomic; when it is
+// unreadable the cap degrades to <= 1 message per scheduled hour).
+// PROPOSED cron, not live until a separately approved deploy uploads it.
+
+export const HEALTH_CRON = "*/15 * * * *";
+export const HEALTH_RECORD_KEY = "ops:health:last";
+const HEALTH_INCIDENT_KEY = "ops:health:incident";
+const HEALTH_PROBE_KEY = "ops:health:probe";
+export const HEALTH_FRESH_MS = 35 * 60_000;
+const HEALTH_FUTURE_SKEW_MS = 60_000;
+const HEALTH_CHECK_TIMEOUT_MS = 2_000;
+const HEALTH_INCIDENT_TTL_SECONDS = 30 * 24 * 3600;
+const KV_MIN_TTL_SECONDS = 60;
+const HEALTH_PAGE_AFTER_FAILURES = 2;
+const HEALTH_RECOVER_AFTER_PASSES = 2;
+const HEALTH_REMINDER_MS = 24 * HOUR_MS;
+
+export const REQUIRED_CHECKS = ["bindings_present", "kv_write", "kv_read", "provenance_selftest"] as const;
+export type HealthCheckName = (typeof REQUIRED_CHECKS)[number];
+export type HealthState = "healthy" | "unhealthy" | "unknown";
+
+export interface HealthCheckResult {
+  name: HealthCheckName;
+  result: "passed" | "failed" | "unknown";
+  expected: string;
+  observed: string;
+  reason: string;
+  durationMs: number;
+}
+
+export interface HealthRunV1 {
+  v: 1;
+  kind: "health_run";
+  trigger: "platform_schedule";
+  cron: string;
+  scheduledAt: string;
+  sampledAt: string;
+  durationMs: number;
+  health: HealthState;
+  requiredChecks: number;
+  ranChecks: number;
+  checks: HealthCheckResult[];
+  worker: { versionId: "unavailable" };
+}
+
+export interface HealthEvaluation {
+  health: HealthState;
+  reason: string;
+  sampledAt: string | null;
+  ageSec: number | null;
+  failing: string[];
+  ranChecks: number;
+}
+
+/**
+ * Total evaluator: healthy ONLY when every required check is present
+ * once, passed, and the sample is fresh (<= 35 min old, <= 60 s ahead).
+ * Anything missing, duplicated, unknown, stale, future or malformed is
+ * "unknown"; a failed required check is "unhealthy". Never throws.
+ */
+export function evaluateHealth(record: unknown, now: number): HealthEvaluation {
+  const unknown = (reason: string, sampledAt: string | null = null, ageSec: number | null = null): HealthEvaluation => ({
+    health: "unknown", reason, sampledAt, ageSec, failing: [], ranChecks: 0,
+  });
+  try {
+    if (!isPlainObject(record) || record.v !== 1 || record.kind !== "health_run") return unknown("invalid");
+    const sampledAt = typeof record.sampledAt === "string" ? record.sampledAt : null;
+    const t = sampledAt ? Date.parse(sampledAt) : Number.NaN;
+    if (!Number.isFinite(t)) return unknown("invalid");
+    const ageSec = Math.round((now - t) / 1000);
+    if (t - now > HEALTH_FUTURE_SKEW_MS) return unknown("future", sampledAt, ageSec);
+    if (now - t > HEALTH_FRESH_MS) return unknown("stale", sampledAt, ageSec);
+    const checks = record.checks;
+    if (!Array.isArray(checks) || checks.length === 0 || checks.length > 8) return unknown("invalid", sampledAt, ageSec);
+    const seen = new Map<string, string>();
+    for (const c of checks) {
+      if (!isPlainObject(c) || typeof c.name !== "string" || typeof c.result !== "string") {
+        return unknown("invalid", sampledAt, ageSec);
+      }
+      if (!(REQUIRED_CHECKS as readonly string[]).includes(c.name) || seen.has(c.name)) {
+        return unknown("invalid", sampledAt, ageSec);
+      }
+      if (c.result !== "passed" && c.result !== "failed" && c.result !== "unknown") {
+        return unknown("invalid", sampledAt, ageSec);
+      }
+      seen.set(c.name, c.result);
+    }
+    if (REQUIRED_CHECKS.some((n) => !seen.has(n))) return unknown("incomplete", sampledAt, ageSec);
+    const failing = REQUIRED_CHECKS.filter((n) => seen.get(n) === "failed");
+    const ranChecks = [...seen.values()].filter((r) => r !== "unknown").length;
+    if (failing.length > 0) return { health: "unhealthy", reason: "check_failed", sampledAt, ageSec, failing: [...failing], ranChecks };
+    if ([...seen.values()].some((r) => r === "unknown")) {
+      return { health: "unknown", reason: "check_unknown", sampledAt, ageSec, failing: [], ranChecks };
+    }
+    return { health: "healthy", reason: "ok", sampledAt, ageSec, failing: [], ranChecks };
+  } catch {
+    return unknown("invalid");
+  }
+}
+
+async function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      p,
+      new Promise<T>((_, reject) => {
+        timer = setTimeout(() => reject(Object.assign(new Error("timeout"), { name: "TimeoutError" })), ms);
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
+
+async function timedCheck(
+  name: HealthCheckName,
+  expected: string,
+  fn: () => Promise<{ result: HealthCheckResult["result"]; observed: string; reason: string }>,
+): Promise<HealthCheckResult> {
+  const t0 = Date.now();
+  try {
+    const r = await withTimeout(fn(), HEALTH_CHECK_TIMEOUT_MS);
+    return { name, expected, ...r, durationMs: Date.now() - t0 };
+  } catch (err) {
+    const timedOut = err instanceof Error && err.name === "TimeoutError";
+    return {
+      name,
+      expected,
+      result: "failed",
+      observed: timedOut ? `no answer within ${HEALTH_CHECK_TIMEOUT_MS} ms` : "operation threw",
+      reason: timedOut ? "timeout" : "threw",
+      durationMs: Date.now() - t0,
+    };
+  }
+}
+
+/** Built-in fixtures: a real live-client error shape and a known probe shape. */
+function provenanceSelfTestPasses(): boolean {
+  const device = {
+    browser: "safari", browserVersion: "17.4", engine: "webkit", os: "ios", osVersion: "17.4",
+    deviceClass: "phone", form: "mobile", screen: "md", dpr: 2, touchPoints: "2-5",
+  };
+  const real = {
+    type: "js_error", ts: 0, buildId: "a1b2c3d", sessionId: "selftest", lcV: "2", storageOk: true,
+    deviceSource: "live", msSinceBootStart: 1200, device, error: { name: "Error", message: "selftest" },
+  } as unknown as CrashReportEvent;
+  const probe = { type: "js_error", ts: 0, buildId: "wake-check" } as unknown as CrashReportEvent;
+  return provenanceOf(real) === "corroborated" && provenanceOf(probe) === "uncorroborated";
+}
+
+/** Run the required checks once (no side effects beyond its own KV keys). */
+export async function runHealthChecks(env: CrashReportEnv, now: number, cron: string, scheduledTime: number): Promise<HealthRunV1> {
+  const t0 = Date.now();
+  const kv = env.TELEMETRY_COUNTS;
+  const hasKv = !!kv;
+  const hasDiscord = !!env.DISCORD_WEBHOOK_URL?.trim();
+  const hasEmail = !!(env.RESEND_API_KEY?.trim() && env.REPORT_EMAIL?.trim());
+  const sampledIso = new Date(now).toISOString();
+  const checks: HealthCheckResult[] = [];
+  checks.push({
+    name: "bindings_present",
+    expected: "counter store bound and at least one alert channel configured",
+    observed: `store ${hasKv ? "yes" : "no"} · discord ${hasDiscord ? "yes" : "no"} · email ${hasEmail ? "yes" : "no"} · limiter ${env.CRASH_RATE_LIMITER ? "yes" : "no"}`,
+    result: hasKv && (hasDiscord || hasEmail) ? "passed" : "failed",
+    reason: hasKv && (hasDiscord || hasEmail) ? "ok" : "binding_missing",
+    durationMs: 0,
+  });
+  if (!kv) {
+    for (const name of ["kv_write", "kv_read"] as const) {
+      checks.push({ name, expected: "counter store reachable", observed: "not run: store not bound", result: "unknown", reason: "not_run", durationMs: 0 });
+    }
+  } else {
+    checks.push(
+      await timedCheck("kv_write", "write acknowledged", async () => {
+        await kv.put(HEALTH_PROBE_KEY, sampledIso, { expirationTtl: KV_MIN_TTL_SECONDS });
+        return { result: "passed", observed: "write acknowledged", reason: "ok" };
+      }),
+    );
+    // A read that returns nothing is NOT a failure: KV is eventually
+    // consistent, so visibility of a fresh write is unconfirmed by design.
+    checks.push(
+      await timedCheck("kv_read", "read completes", async () => {
+        const v = await kv.get(HEALTH_RECORD_KEY);
+        return {
+          result: "passed",
+          observed: v ? "read ok · previous record visible" : "read ok · no previous record visible (visibility unconfirmed)",
+          reason: "ok",
+        };
+      }),
+    );
+  }
+  const selftest = provenanceSelfTestPasses();
+  checks.push({
+    name: "provenance_selftest",
+    expected: "real-client fixture corroborated, probe fixture uncorroborated",
+    observed: selftest ? "as expected" : "fixture mismatch",
+    result: selftest ? "passed" : "failed",
+    reason: selftest ? "ok" : "selftest_failed",
+    durationMs: 0,
+  });
+  const run: HealthRunV1 = {
+    v: 1,
+    kind: "health_run",
+    trigger: "platform_schedule",
+    cron,
+    scheduledAt: new Date(scheduledTime).toISOString(),
+    sampledAt: sampledIso,
+    durationMs: Date.now() - t0,
+    health: "unknown",
+    requiredChecks: REQUIRED_CHECKS.length,
+    ranChecks: 0,
+    checks,
+    worker: { versionId: "unavailable" },
+  };
+  const ev = evaluateHealth(run, now);
+  run.health = ev.health;
+  run.ranChecks = ev.ranChecks;
+  return run;
+}
+
+interface HealthIncidentState {
+  v: 1;
+  open: boolean;
+  failing: string[];
+  consecutiveFailures: number;
+  consecutivePasses: number;
+  openedAt: string | null;
+  lastNotifiedAt: number;
+  lastHealthyAt: string | null;
+}
+
+function emptyIncident(): HealthIncidentState {
+  return { v: 1, open: false, failing: [], consecutiveFailures: 0, consecutivePasses: 0, openedAt: null, lastNotifiedAt: 0, lastHealthyAt: null };
+}
+
+function parseIncident(raw: string | null): HealthIncidentState {
+  if (!raw) return emptyIncident();
+  try {
+    const p = JSON.parse(raw) as Partial<HealthIncidentState>;
+    const n = (x: unknown) => (typeof x === "number" && Number.isFinite(x) && x >= 0 ? Math.floor(x) : 0);
+    return {
+      v: 1,
+      open: p.open === true,
+      failing: Array.isArray(p.failing) ? p.failing.filter((f): f is string => typeof f === "string").slice(0, 8) : [],
+      consecutiveFailures: n(p.consecutiveFailures),
+      consecutivePasses: n(p.consecutivePasses),
+      openedAt: typeof p.openedAt === "string" ? p.openedAt : null,
+      lastNotifiedAt: n(p.lastNotifiedAt),
+      lastHealthyAt: typeof p.lastHealthyAt === "string" ? p.lastHealthyAt : null,
+    };
+  } catch {
+    return emptyIncident();
+  }
+}
+
+export function buildHealthFailureText(run: HealthRunV1, incident: HealthIncidentState | null, reminder: boolean): string {
+  const failed = run.checks.filter((c) => c.result !== "passed");
+  const lines = failed.map(
+    (c) => `• ${c.name}: ${c.result} — expected ${c.expected}; observed ${c.observed} (${c.reason}, ${c.durationMs} ms)`,
+  );
+  const text =
+    `🛠️ Crash-report worker check ${reminder ? "STILL FAILING (24 h reminder)" : "FAILED"}\n` +
+    `scope: crash-report worker only — not the game, not browsers or WebGL\n` +
+    lines.join("\n") +
+    `\nsampled: ${run.sampledAt} · run ${run.durationMs} ms · checks ran ${run.ranChecks}/${run.requiredChecks}` +
+    `\nlast healthy: ${incident?.lastHealthyAt ?? "unknown"} · incident state: ${incident ? "tracked" : "unreadable (best-effort cap: 1 message per hour)"}` +
+    `\ncause: unconfirmed · real-client-shaped crashes still page while this is open`;
+  return text.length > 1800 ? `${text.slice(0, 1799)}…` : text;
+}
+
+/**
+ * Scheduled health entry point: run checks, store the record, and send
+ * at most one failure message per incident (2 consecutive failures; a
+ * missing binding pages at once), one 24 h reminder, and one recovered
+ * message after 2 consecutive passes. Healthy = log line only.
+ */
+export async function runScheduledHealth(env: CrashReportEnv, scheduledTime: number, cron: string): Promise<HealthRunV1> {
+  const run = await runHealthChecks(env, scheduledTime, cron, scheduledTime);
+  const kv = env.TELEMETRY_COUNTS;
+  const discordUrl = env.DISCORD_WEBHOOK_URL?.trim();
+  let incident: HealthIncidentState | null = null;
+  if (kv) {
+    try {
+      incident = parseIncident(await withTimeout(kv.get(HEALTH_INCIDENT_KEY), HEALTH_CHECK_TIMEOUT_MS));
+    } catch {
+      incident = null;
+    }
+  }
+  let message: string | null = null;
+  if (run.health === "unhealthy") {
+    const bindingMissing = run.checks.some((c) => c.name === "bindings_present" && c.result === "failed");
+    if (incident) {
+      incident.consecutiveFailures += 1;
+      incident.consecutivePasses = 0;
+      incident.failing = run.checks.filter((c) => c.result === "failed").map((c) => c.name);
+      if (!incident.open && (bindingMissing || incident.consecutiveFailures >= HEALTH_PAGE_AFTER_FAILURES)) {
+        incident.open = true;
+        incident.openedAt = run.sampledAt;
+        incident.lastNotifiedAt = scheduledTime;
+        message = buildHealthFailureText(run, incident, false);
+      } else if (incident.open && scheduledTime - incident.lastNotifiedAt >= HEALTH_REMINDER_MS) {
+        incident.lastNotifiedAt = scheduledTime;
+        message = buildHealthFailureText(run, incident, true);
+      }
+    } else if (new Date(scheduledTime).getUTCMinutes() < 15) {
+      // No readable incident state: at most one message per scheduled hour.
+      message = buildHealthFailureText(run, null, false);
+    }
+  } else if (run.health === "healthy") {
+    logLine("health ok", `${run.ranChecks}/${run.requiredChecks}`, `${run.durationMs} ms`);
+    if (incident) {
+      incident.consecutiveFailures = 0;
+      incident.consecutivePasses += 1;
+      incident.lastHealthyAt = run.sampledAt;
+      if (incident.open && incident.consecutivePasses >= HEALTH_RECOVER_AFTER_PASSES) {
+        message =
+          `✅ Crash-report worker checks recovered (scope: crash-report worker only)\n` +
+          `failing since: ${incident.openedAt ?? "unknown"} · ${incident.consecutivePasses} healthy runs in a row · sampled ${run.sampledAt}`;
+        incident.open = false;
+        incident.failing = [];
+        incident.openedAt = null;
+      }
+    }
+  } else {
+    logLine("health unknown", `${run.ranChecks}/${run.requiredChecks}`);
+  }
+  if (kv) {
+    try {
+      await kv.put(HEALTH_RECORD_KEY, JSON.stringify(run), { expirationTtl: OPS_RECORD_TTL_SECONDS });
+    } catch (err) {
+      logLine("health record write failed", err instanceof Error ? err.name : "unknown");
+    }
+    if (incident) {
+      try {
+        await kv.put(HEALTH_INCIDENT_KEY, JSON.stringify(incident), { expirationTtl: HEALTH_INCIDENT_TTL_SECONDS });
+      } catch (err) {
+        logLine("health incident write failed", err instanceof Error ? err.name : "unknown");
+      }
+    }
+  }
+  if (message && discordUrl) {
+    const state = await forwardToDiscord(discordUrl, message);
+    if (state !== "provider_accepted") logLine("health message delivery", state);
+  } else if (message) {
+    logLine("health message not sent: no Discord webhook configured");
+  }
+  return run;
+}
+
+/** GET /health body: liveness plus the stored evidence summary (no secrets). */
+async function healthStatusBody(env: CrashReportEnv): Promise<Record<string, unknown>> {
+  const base = { ok: true, v: 1, live: true, scope: "crash-report-worker", requiredChecks: REQUIRED_CHECKS.length };
+  const kv = env.TELEMETRY_COUNTS;
+  if (!kv) return { ...base, health: "unknown", reason: "no_store", sampledAt: null, ageSec: null, failing: [], ranChecks: 0 };
+  let raw: string | null;
+  try {
+    raw = await withTimeout(kv.get(HEALTH_RECORD_KEY), HEALTH_CHECK_TIMEOUT_MS);
+  } catch {
+    return { ...base, health: "unknown", reason: "store_unreadable", sampledAt: null, ageSec: null, failing: [], ranChecks: 0 };
+  }
+  if (!raw) return { ...base, health: "unknown", reason: "no_record", sampledAt: null, ageSec: null, failing: [], ranChecks: 0 };
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    parsed = null;
+  }
+  const ev = evaluateHealth(parsed, Date.now());
+  return { ...base, ...ev };
+}
+
 // --- Request handling --------------------------------------------------
 
 function jsonResponse(
@@ -2520,7 +2899,10 @@ export async function handleRequest(
   if (path === "/health") {
     // Health is for humans and monitors (curl), not browsers: no CORS.
     if (request.method !== "GET") return jsonResponse(405, { error: "method not allowed" });
-    return jsonResponse(200, { ok: true });
+    // Council fix T6: liveness (this answered) is separate from
+    // dependency health (the last trusted scheduled run, freshness-checked).
+    // HTTP 200 means "alive"; monitors must read body.health.
+    return jsonResponse(200, await healthStatusBody(env), { "cache-control": "no-store" });
   }
 
   if (path === "/" || path === "/ingest") {
@@ -2647,6 +3029,13 @@ export default {
     env: CrashReportEnv,
     _ctx?: ExecutionContextLike,
   ): Promise<void> => {
+    // Council fix T6: dispatch on the cron expression. The health cron
+    // runs ONLY health; every other cron (the "15 * * * *" digest)
+    // keeps the unchanged digest path.
+    if (event.cron === HEALTH_CRON) {
+      await runScheduledHealth(env, event.scheduledTime, event.cron);
+      return;
+    }
     const store = env.TELEMETRY_COUNTS ? kvTelemetryStore(env.TELEMETRY_COUNTS) : null;
     await runHourlyDigest(event.scheduledTime, env, store);
   },

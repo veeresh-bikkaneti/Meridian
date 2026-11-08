@@ -42,6 +42,11 @@ import {
   setSleepForTests,
   UncorroboratedSummary,
   COUNT_BUCKET_TTL_SECONDS,
+  evaluateHealth,
+  runScheduledHealth,
+  HEALTH_CRON,
+  HEALTH_RECORD_KEY,
+  REQUIRED_CHECKS,
   thresholdConfig,
   tierOf,
   validateEvent,
@@ -826,7 +831,10 @@ test("GET /health returns 200 (no CORS: it is for curl and monitors)", async () 
   const res = await handleRequest(new Request("https://worker.test/health"), {});
   assert.equal(res.status, 200);
   assert.equal(res.headers.get("access-control-allow-origin"), null);
-  assert.deepEqual(await res.json(), { ok: true });
+  const body = (await res.json()) as { ok: boolean; live: boolean; health: string };
+  assert.equal(body.ok, true, "liveness kept for existing monitors");
+  assert.equal(body.live, true);
+  assert.equal(body.health, "unknown", "no store, no evidence: never healthy");
 });
 
 test("unknown path returns 404", async () => {
@@ -3723,4 +3731,165 @@ test("T5 the real route-boundary error renders observed facts and keeps phase ho
   const withStep = buildAlert(provJsError({ lastMilestone: "map_init_start" }) as CrashReportEvent);
   assert.ok(withStep.discord.includes("last reported step map loading"), withStep.discord);
   assert.ok(!withStep.discord.includes("pending"), "no inferred pending phase claimed");
+});
+
+// --- Council fix T6 (2026-11-08): truthful, versioned ops health ---------
+
+const H_T0 = Date.UTC(2026, 10, 8, 18, 0, 0);
+
+function healthRecord(overrides: Record<string, unknown> = {}, checkOverrides: Record<string, string> = {}) {
+  return {
+    v: 1,
+    kind: "health_run",
+    trigger: "platform_schedule",
+    sampledAt: new Date(H_T0).toISOString(),
+    checks: REQUIRED_CHECKS.map((name) => ({
+      name,
+      result: checkOverrides[name] ?? "passed",
+      expected: "x",
+      observed: "x",
+      reason: "ok",
+      durationMs: 1,
+    })),
+    ...overrides,
+  };
+}
+
+test("T6 evaluateHealth: healthy only for the complete, fresh, required set", () => {
+  assert.equal(evaluateHealth(healthRecord(), H_T0 + 60_000).health, "healthy");
+  assert.equal(evaluateHealth(healthRecord({}, { kv_write: "failed" }), H_T0).health, "unhealthy");
+  assert.equal(evaluateHealth(healthRecord({}, { kv_read: "unknown" }), H_T0).health, "unknown");
+});
+
+test("T6 evaluateHealth totality: empty/missing/duplicate/unknown checks, stale, future, malformed → unknown, never throws", () => {
+  const base = healthRecord();
+  const bad: unknown[] = [
+    null, undefined, "x", 42, [], {},
+    { ...base, v: 2 },
+    { ...base, kind: "player_crash" },
+    { ...base, checks: [] },
+    { ...base, checks: base.checks.slice(1) },
+    { ...base, checks: [...base.checks, base.checks[0]] },
+    { ...base, checks: [...base.checks.slice(1), { ...base.checks[0], name: "made_up" }] },
+    { ...base, sampledAt: "not a date" },
+    { ...base, checks: "nope" },
+    { ...base, checks: [null, 1, "a", ...base.checks.slice(3)] },
+  ];
+  for (const b of bad) assert.equal(evaluateHealth(b, H_T0).health, "unknown", JSON.stringify(b)?.slice(0, 80));
+  assert.equal(evaluateHealth(base, H_T0 + 35 * 60_000).health, "healthy", "35 min is still fresh");
+  assert.equal(evaluateHealth(base, H_T0 + 35 * 60_000 + 1).health, "unknown", "stale after 35 min");
+  assert.equal(evaluateHealth(base, H_T0 - 60_001).health, "unknown", "future-dated sample");
+  const trap = Object.defineProperty({ ...base }, "checks", { get() { throw new Error("boom"); } });
+  assert.equal(evaluateHealth(trap, H_T0).health, "unknown");
+});
+
+function healthEnv(kv?: KvLike, extra: Partial<CrashReportEnv> = {}): CrashReportEnv {
+  return { DISCORD_WEBHOOK_URL: "https://discord.test/hook", ...(kv ? { TELEMETRY_COUNTS: kv } : {}), ...extra };
+}
+
+test("T6 healthy scheduled run: writes the status record (TTL), sends NOTHING to Discord", async () => {
+  okFetch();
+  const { map, kv } = memoryStore();
+  const run = await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  assert.equal(run.health, "healthy");
+  assert.equal(run.ranChecks, REQUIRED_CHECKS.length);
+  assert.equal(fetchCalls.length, 0, "no healthy spam");
+  const stored = JSON.parse(map.get(HEALTH_RECORD_KEY) ?? "null");
+  assert.equal(stored.kind, "health_run");
+  const res = await handleRequest(new Request("https://worker.test/health"), healthEnv(kv));
+  const body = (await res.json()) as Record<string, unknown>;
+  assert.equal(res.headers.get("cache-control"), "no-store");
+  // Real Date.now() is far from H_T0, so the record reads as stale/future: honest unknown.
+  assert.equal(body.health, "unknown");
+  assert.equal(body.scope, "crash-report-worker");
+  assert.ok(!JSON.stringify(body).includes("discord.test"), "no secret values in /health");
+});
+
+test("T6 /health reports healthy only when the stored run is fresh", async () => {
+  const { kv } = memoryStore();
+  okFetch();
+  const now = Date.now();
+  await runScheduledHealth(healthEnv(kv), now, HEALTH_CRON);
+  const body = (await (await handleRequest(new Request("https://worker.test/health"), healthEnv(kv))).json()) as Record<string, unknown>;
+  assert.equal(body.health, "healthy");
+  assert.deepEqual(body.failing, []);
+  assert.equal(typeof body.ageSec, "number");
+});
+
+test("T6 KV write throws: unhealthy; first failure stores but does not page; second consecutive failure pages once; third does not", async () => {
+  okFetch();
+  const map = new Map<string, string>();
+  let failPut = true;
+  const kv: KvLike = {
+    get: async (k: string) => map.get(k) ?? null,
+    put: async (k: string, v: string) => {
+      if (failPut && k === "ops:health:probe") throw new Error("kv put");
+      map.set(k, v);
+    },
+  };
+  const r1 = await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  assert.equal(r1.health, "unhealthy");
+  assert.equal(discordBodies().length, 0, "1 failure → no page");
+  await runScheduledHealth(healthEnv(kv), H_T0 + 15 * 60_000, HEALTH_CRON);
+  assert.equal(discordBodies().length, 1, "2 consecutive → 1 page");
+  const msg = discordBodies()[0];
+  assert.ok(msg.includes("kv_write") && msg.includes("expected") && msg.includes("observed"), msg);
+  assert.ok(msg.includes("scope: crash-report worker only"), msg);
+  assert.ok(!msg.includes("discord.test"), "no secret values");
+  await runScheduledHealth(healthEnv(kv), H_T0 + 30 * 60_000, HEALTH_CRON);
+  assert.equal(discordBodies().length, 1, "still open → no repeat");
+  failPut = false;
+  await runScheduledHealth(healthEnv(kv), H_T0 + 45 * 60_000, HEALTH_CRON);
+  assert.equal(discordBodies().length, 1, "1 pass → no recovery yet");
+  await runScheduledHealth(healthEnv(kv), H_T0 + 60 * 60_000, HEALTH_CRON);
+  assert.equal(discordBodies().length, 2, "2 passes → one recovered message");
+  assert.ok(discordBodies()[1].includes("recovered"), discordBodies()[1]);
+});
+
+test("T6 missing binding pages on the first run (no waiting for a second)", async () => {
+  okFetch();
+  const run = await runScheduledHealth(healthEnv(undefined), H_T0, HEALTH_CRON);
+  assert.equal(run.health, "unhealthy");
+  assert.equal(discordBodies().length, 1);
+  assert.ok(discordBodies()[0].includes("bindings_present"));
+});
+
+test("T6 KV fully unreadable: incident state unknown → at most one page per scheduled hour", async () => {
+  okFetch();
+  let pages = 0;
+  for (let q = 0; q < 8; q++) {
+    await runScheduledHealth(healthEnv(throwingKv()), H_T0 + q * 15 * 60_000, HEALTH_CRON);
+    pages = discordBodies().length;
+  }
+  assert.equal(pages, 2, "8 quarter-hour runs over 2 hours → 2 pages");
+});
+
+test("T6 a KV readback miss (eventual consistency) is not a failure", async () => {
+  okFetch();
+  const kv: KvLike = { get: async () => null, put: async () => {} };
+  const run = await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  assert.equal(run.health, "healthy");
+  const read = run.checks.find((c) => c.name === "kv_read")!;
+  assert.equal(read.result, "passed");
+  assert.ok(read.observed.includes("visibility unconfirmed"), read.observed);
+});
+
+test("T6 ingress can never write health: a posted health_run / source=cron touches no ops:health key", async () => {
+  okFetch();
+  const { map } = memoryStore();
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  await handleRequest(postEvent({ kind: "health_run", type: "js_error", ts: Date.now(), buildId: "wake-check", source: "cron", trigger: "cron" }), env);
+  await handleRequest(postEvent({ kind: "health_run", health: "healthy" }), env);
+  assert.ok(![...map.keys()].some((k) => k.startsWith("ops:health")), [...map.keys()].join(","));
+});
+
+test("T6 scheduled() dispatch: digest cron keeps the digest path; health cron runs health (no digest)", async () => {
+  okFetch();
+  const mod = await import("./index.ts");
+  const { map, kv } = memoryStore();
+  await mod.default.scheduled({ cron: "15 * * * *", scheduledTime: H_T0 }, healthEnv(kv), { waitUntil: () => {} });
+  assert.ok(!map.has(HEALTH_RECORD_KEY), "digest cron does not run health");
+  await mod.default.scheduled({ cron: HEALTH_CRON, scheduledTime: H_T0 }, healthEnv(kv), { waitUntil: () => {} });
+  assert.ok(map.has(HEALTH_RECORD_KEY), "health cron writes the record");
+  assert.equal(HEALTH_CRON, "*/15 * * * *");
 });

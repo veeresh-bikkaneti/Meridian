@@ -27,7 +27,12 @@ main = "src/dev-entry.ts"
 compatibility_date = "2026-10-01"
 
 [triggers]
-crons = ["15 * * * *"]  # hourly digest, posted ~:15 for the previous UTC hour
+# "15 * * * *"  = hourly digest, posted ~:15 for the previous UTC hour (live).
+# "*/15 * * * *" = council fix T6 ops health run (PROPOSED, 2026-11-08): NOT
+#   live until a separately approved release uploads it in the version's
+#   schedules metadata. scheduled() dispatches on event.cron, so the digest
+#   path is unchanged either way.
+crons = ["15 * * * *", "*/15 * * * *"]
 
 [[kv_namespaces]]
 binding = "TELEMETRY_COUNTS"
