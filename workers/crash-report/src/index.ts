@@ -893,7 +893,9 @@ function whyLineFor(whyKey: CrashWhyKey, event: CrashReportEvent): string {
     case "captured_error":
       return event.error
         ? `The app hit a real error and did not recover from it. Error captured: ${scrubErrorText(event.error.name, 60) || "—"} — ${scrubErrorText(event.error.message, 140) || "—"}.`
-        : "The app failed to start; that failure was captured and it did not recover.";
+        : // Council fix T5: a captured-error TYPE with no details is not
+          // evidence of a failed startup; say what was observed.
+          `A ${event.type} report arrived with no error details attached. That alone is not evidence of a failed startup; the failure phase is ${event.lastMilestone ? `last reported step ${lastStepWords(event.lastMilestone)}` : "unavailable (no last step stamped)"}.`;
     case "missing_fields":
       return "This report is missing the evidence needed to classify it, so it can't be called harmless.";
     case "recovery_confirmed":
@@ -1251,7 +1253,7 @@ export function priorityRead(event: CrashReportEvent): PriorityRead {
       parts.push(
         event.error
           ? `captured error at ${lastStepWords(event.lastMilestone)}`
-          : "app failed to start",
+          : "captured-error type with no error details",
       );
       break;
     case "recovery_failed":
@@ -1410,6 +1412,29 @@ export interface CrashAlert {
  * lastMilestone, and a truncated error name/message. sessionId, UA,
  * device facts, breadcrumb history, and coordinates are NEVER included.
  */
+/**
+ * Council fix T5: versioned, structured failure line built ONLY from
+ * fields the client already sends (manifest). It separates what was
+ * observed from what is unknown and never names a root cause. Fields
+ * that would need new collection are listed as not collected.
+ */
+export function failureLine(event: CrashReportEvent): string {
+  const phase = event.lastMilestone
+    ? `last reported step ${lastStepWords(event.lastMilestone)}`
+    : "phase unavailable (no last step stamped)";
+  const age =
+    typeof event.msSinceBootStart === "number"
+      ? `boot age ${event.msSinceBootStart.toLocaleString("en-US")} ms`
+      : "boot age unavailable";
+  const dev = deviceRecord(event);
+  const deviceKnown = deviceString(dev, "os") !== "unknown" || deviceString(dev, "browser") !== "unknown";
+  return (
+    `failure(v1): domain client (reported) · origin client-shaped, not authenticated · ${phase} · ` +
+    `error ${event.error ? "present" : "absent"} · ${age} · device facts ${deviceKnown ? "present" : "absent"} · ` +
+    `cause unconfirmed · not collected: request status, server timing, phase timeline`
+  );
+}
+
 export function buildAlert(event: CrashReportEvent): CrashAlert {
   const type = event.type;
   const buildId = truncate(event.buildId, 64);
@@ -1434,7 +1459,12 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   const severity = severityOf(event);
   const why = whyLineFor(whyKey, event);
   const whyText = severity ? `${why} ${severity.clause}` : why;
-  const actionLine = verdict === "developer_needed" ? "action: Read the error below.\n" : "";
+  const actionLine =
+    verdict !== "developer_needed"
+      ? ""
+      : whyKey === "captured_error" && !event.error
+        ? "action: No error details were captured; read the facts below.\n"
+        : "action: Read the error below.\n";
   // The 🚨 stays in the no-action title for findability (design §5.1) —
   // the verdict line above it carries the real signal.
   const title = verdict === "not_a_real_issue" ? "🚨 Meridian crash report" : "Meridian crash report";
@@ -1470,6 +1500,7 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
     evidenceLine +
     `why-code: ${whyKey}\n` +
     actionLine +
+    `${failureLine(event)}\n` +
     `type: ${type} · build: ${buildId}\n` +
     `time: ${eventTime}\n` +
     `device: ${deviceText}\n` +
@@ -1489,6 +1520,7 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
     evidenceLine +
     `why-code: ${whyKey}\n` +
     actionLine +
+    `${failureLine(event)}\n` +
     `type:            ${type}\n` +
     `build:           ${buildId}\n` +
     `event time:      ${eventTime}\n` +

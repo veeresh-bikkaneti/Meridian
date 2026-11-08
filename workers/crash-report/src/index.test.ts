@@ -1998,6 +1998,7 @@ test("golden: buildAlert Discord for the #330 event (§5.5 shape, #345 severity 
       "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown. Severity: S1 — 3 unfinished boots in a row with no clean boot since; the player most likely left and never got back in (player-left is INFERRED from the missing clean boot, not observed).",
       "why-code: fg_kill_current",
       "action: Read the error below.",
+      "failure(v1): domain client (reported) · origin client-shaped, not authenticated · last reported step map loading · error absent · boot age 4,210 ms · device facts present · cause unconfirmed · not collected: request status, server timing, phase timeline",
       "type: suspected_crash · build: c6853be",
       "time: 2026-11-03T17:42:00.000Z",
       "device: ios/mobile · phone · Safari 16.4 · WebKit · iOS 16.4.1 (UA-parsed)",
@@ -2023,6 +2024,7 @@ test("golden: buildAlert email body for the #330 event (full string)", () => {
       "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown. Severity: S1 — 3 unfinished boots in a row with no clean boot since; the player most likely left and never got back in (player-left is INFERRED from the missing clean boot, not observed).",
       "why-code: fg_kill_current",
       "action: Read the error below.",
+      "failure(v1): domain client (reported) · origin client-shaped, not authenticated · last reported step map loading · error absent · boot age 4,210 ms · device facts present · cause unconfirmed · not collected: request status, server timing, phase timeline",
       "type:            suspected_crash",
       "build:           c6853be",
       "event time:      2026-11-03T17:42:00.000Z",
@@ -3694,4 +3696,31 @@ test("T4 stored count maps are numerically normalised on read (corrBuilds/cantTe
   const old = (await kvTelemetryStore(kv).readBucket("old"))!;
   assert.equal(old.total, 1);
   assert.deepEqual(old.corrBuilds, {});
+});
+
+// --- Council fix T5 (2026-11-08): honest failure wording -------------------
+
+test("T5 a js_error with no error details and no last step does not claim the app failed to start", () => {
+  const alert = buildAlert({ type: "js_error", ts: Date.now(), buildId: "a1b2c3d" } as CrashReportEvent);
+  for (const text of [alert.discord, alert.emailBody]) {
+    assert.ok(!text.includes("failed to start"), text);
+    assert.ok(text.includes("no error details"), text);
+    assert.ok(text.includes("failure(v1):"), "structured, versioned failure line");
+    assert.ok(text.includes("phase unavailable (no last step stamped)"), text);
+    assert.ok(text.includes("error absent"), text);
+    assert.ok(text.includes("boot age unavailable"), text);
+    assert.ok(text.includes("cause unconfirmed"), text);
+    assert.ok(text.includes("not collected: request status, server timing, phase timeline"), "deferred metrics named as not collected");
+  }
+});
+
+test("T5 the real route-boundary error renders observed facts and keeps phase honest", () => {
+  const alert = buildAlert(provJsError({ lastMilestone: undefined, msSinceBootStart: 3200 }) as CrashReportEvent);
+  assert.ok(alert.discord.includes("error present"), alert.discord);
+  assert.ok(alert.discord.includes("boot age 3,200 ms"), alert.discord);
+  assert.ok(alert.discord.includes("phase unavailable (no last step stamped)"));
+  assert.ok(alert.discord.includes("origin client-shaped, not authenticated"));
+  const withStep = buildAlert(provJsError({ lastMilestone: "map_init_start" }) as CrashReportEvent);
+  assert.ok(withStep.discord.includes("last reported step map loading"), withStep.discord);
+  assert.ok(!withStep.discord.includes("pending"), "no inferred pending phase claimed");
 });
