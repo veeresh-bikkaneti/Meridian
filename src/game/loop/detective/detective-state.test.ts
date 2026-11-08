@@ -172,6 +172,60 @@ test("guessing phases: Watson holds the clue-card station, Holmes keeps his map 
   assert.equal(askView.holmes.pose, "ack");
 });
 
+test("station law past guessing: THINKING_BEAT, FAIL_READ, POUT, DEBRIEF and CELEBRATE never dock Watson (owner ruling 2026-11-07)", () => {
+  // Negative pin (Silo QA gap N1): the guessing-phase test above pins
+  // SEARCH_IDLE / SEARCH_AREA / SELECTION_READ / ASK_NEXT. These five
+  // phases were previously unpinned — each must ALSO hold Watson at
+  // the clue-card station, never at the map dock.
+
+  // THINKING_BEAT: the silent beat between a clue read and its ack.
+  const thinking = run(normalClue(1));
+  assert.equal(thinking[1]!.phase, "THINKING_BEAT");
+  assert.equal(viewForState(thinking[1]!.state).watson.placement, "station");
+
+  // FAIL_READ: Holmes reads the case's answer aloud after a loss.
+  const failRead = run([...normalClue(1), { type: "caseFailed" }]);
+  assert.equal(last(failRead).phase, "FAIL_READ");
+  assert.equal(viewForState(last(failRead).state).watson.placement, "station");
+
+  // POUT: the sticky post-loss beat that follows FAIL_READ.
+  const pout = run([
+    ...normalClue(1),
+    { type: "caseFailed" },
+    { type: "speechEnded" }, // answer drains → POUT
+  ]);
+  assert.equal(last(pout).phase, "POUT");
+  assert.equal(viewForState(last(pout).state).watson.placement, "station");
+
+  // CELEBRATE: every choreography step (jump → high-five → clap →
+  // settle) stations the pair by design — pin all of them, not just
+  // the entry step.
+  const celebrate = run([
+    ...normalClue(1),
+    { type: "caseSolved", answerPlaceId: "geonames:5505411" },
+    { type: "beatElapsed" }, // jump → high-five
+    { type: "beatElapsed" }, // high-five → clap
+    { type: "beatElapsed" }, // clap → settle (still CELEBRATE)
+  ]);
+  const celebrateSteps = celebrate.filter((s) => s.phase === "CELEBRATE");
+  assert.ok(celebrateSteps.length >= 4, "entry + three choreography steps sampled");
+  for (const step of celebrateSteps) {
+    assert.equal(viewForState(step.state).watson.placement, "station");
+  }
+
+  // DEBRIEF: the post-solve answer read-aloud.
+  const debrief = run([
+    ...normalClue(1),
+    { type: "caseSolved" },
+    { type: "speechEnded" }, // win lines drain (remembered)
+    { type: "beatElapsed" },
+    { type: "beatElapsed" },
+    { type: "beatElapsed" }, // final beat → DEBRIEF
+  ]);
+  assert.equal(last(debrief).phase, "DEBRIEF");
+  assert.equal(viewForState(last(debrief).state).watson.placement, "station");
+});
+
 test("ack rotation is by ack count, and decode types by clue position", () => {
   // Count-based selector (cure pass item 7): the first ack played in a
   // case is ack-1; the rotation then walks 2, 3, 4 and wraps to 1.
