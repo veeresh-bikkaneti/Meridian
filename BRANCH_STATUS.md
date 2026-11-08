@@ -1,3 +1,69 @@
+# BRANCH_STATUS — feat/u11-clue-renders
+
+- **Branch:** `feat/u11-clue-renders` · **Base:** `main` @ `9e49da3` (PR #365 merged + live)
+- **Design of record:** clue-read diagnosis (evidence folder
+  `clue-read-diagnosis/DIAGNOSIS.md`) + owner approval (Veeresh,
+  2026-11-08 ~03:02 CST, in the `meridian` side chat): "Approve the
+  full render — all 386 core cases."
+
+## Task capsule
+
+TASK / requested outcome: Phase A rendered clue audio for the
+Capitals pack only, so 386 of the 387 core-deck cases had empty clue
+entries in the audio manifest and their clues were never read aloud
+(handbook ch.10 gate FG-3). Render all five clue reads for every core
+case in Watson's cast voice, extend the manifest gate so an empty
+core clue entry fails the build, and prove by ear-level E2E that a
+core case's clues fetch and play.
+
+OWNER APPROVAL (Veeresh, 2026-11-08): the full render of all 386
+core cases, on the diagnosis that the playback machinery already
+worked and only the renders were missing.
+
+## Done
+
+- [x] Pilot (cases 0–19): 105 rendered, 19% flagged, worst case
+  479,225 B of the 500,000 B budget, ≈16.9 s/case at concurrency 4.
+- [x] Full batch: 387/387 core cases carry all five clue reads
+  (1,935 reads; case 137's five pre-existed). Core clue audio totals
+  141.9 MB; the detective audio tree is 239 MB. Audio loads lazily
+  per case — the entry JS chunk is unchanged (457,847 B).
+- [x] Budget cures: five cases (28, 54, 87, 144, 289) busted the
+  500,000 B budget on one very slow take each; re-encoding the
+  affected clips at 32 kbit/s brought every case back under budget
+  with pitch and duration measurements unchanged. Zero cases held.
+- [x] Flagged disposition (explicit, not silent): 314 of 1,935 reads
+  ship flagged by the pipeline's pitch/pace ladders — 103 outside
+  Watson's family band (78–127 Hz), 6 under the 100 wpm pace floor,
+  the rest inside-band pitch flags. A cure pass re-rendered the 103
+  outside-band lines fresh: 0 landed inside the band, so the shipped
+  takes stand. The Capitals pack ships the same flagged state
+  (85 of 550) — flagged is the pipeline's designed "accepted with a
+  note" state, and every flagged line is named in the PR body.
+- [x] Manifest gate extended: `checkCoreCoverage` fails the build
+  when a core case is neither claimed with all five reads nor on
+  the explicit hold list (`coverage.coreHolds`, currently empty).
+  Sabotage controls proven: an emptied entry (case 42), an
+  over-budget case (case 10), and a dropped case (case 77) each
+  fail the gate by name. Real tree: gate clean, 4,462 entries
+  verified.
+- [x] Handbook ch.10: FG-3 marked CLOSED by U11; the flip checklist's
+  core-case item ticked with the closing E2E named.
+- [x] Gates on the finished tree: typecheck clean · unit suites
+  1,028 pass / 0 fail (scripts) + 2,266 / 2,266 (src) · worker
+  145 / 145 · lint-cards GATE PASSED · build:pages green.
+
+## Pending
+
+- [ ] E2E `tests/e2e/detective-core-audio.spec.ts` (fetch + play all
+  five clues on core case 5, tap-Watson repeats the clue itself,
+  solve-at-guess-2 flush) — result recorded in the PR body.
+- [ ] Silo QA re-keyed to the tip, 13-seat panel vote, DevEx,
+  benchmark; merge on READY under ship-when-ready; live check on
+  both hosts.
+
+---
+
 # BRANCH_STATUS — feat/geodetective-end-game
 
 - **Branch:** `feat/geodetective-end-game` · **Base:** `main` @ `566c955` (PR #363 merged + live)

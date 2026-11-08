@@ -6,6 +6,7 @@ import { test } from "node:test";
 import {
   CLUES_ONLY_BUDGET_BYTES,
   checkClueBudgets,
+  checkCoreCoverage,
   createManifest,
   entryFromSpec,
   readManifest,
@@ -164,4 +165,69 @@ test("budget: clue bytes over 500,000 fail, and the answer read does not count",
 test("real tree: every shipped case is inside the clues-only budget", () => {
   const manifest = readManifest(ROOT);
   assert.deepEqual(checkClueBudgets(ROOT, manifest), []);
+});
+
+/* Core coverage (U11, closes FG-3): a core case must be claimed with
+ * all five clue reads, or named on the explicit hold list. Before U11
+ * the core deck's clue entries were simply empty and no gate noticed —
+ * these tests pin the new behaviour, mainly its failures. The fake
+ * tree's only case is 7, so the checks run against the range [7]. */
+
+test("coverage: a claimed core case with all five clue reads passes", () => {
+  const { root, clue } = fakeTree("A fine first clue.");
+  const manifest = manifestFor(root, clue);
+  manifest.coverage.core = [7];
+  assert.deepEqual(checkCoreCoverage(manifest, [7]), []);
+  // And claiming the case keeps full hash verification clean.
+  assert.equal(verifyManifest(root, manifest).ok, true);
+});
+
+test("coverage: an unclaimed core case fails as uncovered", () => {
+  const { root, clue } = fakeTree("A fine first clue.");
+  const manifest = manifestFor(root, clue);
+  const problems = checkCoreCoverage(manifest, [7]);
+  assert.equal(problems.length, 1);
+  assert.equal(problems[0].kind, "uncovered");
+  assert.equal(problems[0].key, "cases.7.clues");
+});
+
+test("coverage: a claimed core case missing a clue read fails as incomplete", () => {
+  const { root, clue } = fakeTree("A fine first clue.");
+  const manifest = manifestFor(root, clue);
+  manifest.coverage.core = [7];
+  manifest.cases["7"].clues[2] = null; // one read silently dropped
+  const problems = checkCoreCoverage(manifest, [7]);
+  assert.equal(problems.length, 1);
+  assert.equal(problems[0].kind, "incomplete-coverage");
+  assert.match(problems[0].detail, /only 4 of its 5/);
+});
+
+test("coverage: a held core case with no audio is exempt", () => {
+  const manifest = createManifest();
+  manifest.coverage.coreHolds = [7];
+  assert.deepEqual(checkCoreCoverage(manifest, [7]), []);
+});
+
+test("coverage: a hold that carries full audio anyway is a contradiction", () => {
+  const { root, clue } = fakeTree("A fine first clue.");
+  const manifest = manifestFor(root, clue);
+  manifest.coverage.coreHolds = [7];
+  const problems = checkCoreCoverage(manifest, [7]);
+  assert.equal(problems.length, 1);
+  assert.equal(problems[0].kind, "hold-with-audio");
+});
+
+test("coverage: a hold outside the core range fails", () => {
+  const { root, clue } = fakeTree("A fine first clue.");
+  const manifest = manifestFor(root, clue);
+  manifest.coverage.core = [7];
+  manifest.coverage.coreHolds = [999];
+  const problems = checkCoreCoverage(manifest, [7]);
+  assert.equal(problems.length, 1);
+  assert.equal(problems[0].kind, "hold-out-of-range");
+});
+
+test("real tree: every core case is claimed or explicitly held (FG-3 closed)", () => {
+  const manifest = readManifest(ROOT);
+  assert.deepEqual(checkCoreCoverage(manifest), []);
 });

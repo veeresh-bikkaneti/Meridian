@@ -96,11 +96,21 @@ the re-run panel and the flip owner can check them off one by one.
   narration (`LoopScreen.tsx`) can overlap the pair's speech.
   **Trigger/cure:** wire the dispatch + an E2E proving the pair goes
   absent / silent during external speech, before the flip.
-- **FG-3 · Core-387 silence.** Phase A audio covers the Capitals
-  pack only. If the flag flips before U11, core-deck cases play the
-  full visual ritual over silent clue reads. **Trigger:** U11
-  complete OR coverage-gated speech (no ritual without its reads)
-  is required before the flip.
+- **FG-3 · Core-387 silence — CLOSED by U11 (2026-11-08).** Phase A
+  audio covered the Capitals pack only, so core-deck cases played
+  the full visual ritual over silent clue reads. U11 rendered all
+  five clue reads for every one of the 387 core cases in Watson's
+  cast voice (387/387 cases, 1,935 clue reads, no holds), and the
+  manifest gate now fails the build if a core case's clue entries
+  are ever empty again (`checkCoreCoverage` in
+  `scripts/detective/audio-manifest.mjs`, enforced by
+  `check-audio-manifest.mjs`; sabotage controls — an emptied entry,
+  an over-budget case, a dropped case — each fail the gate by
+  name). 314 of the 1,935 reads ship flagged by the render
+  pipeline's own pitch/pace ladders (103 outside Watson's family
+  band, 6 under the pace floor); the flagged list is named in the
+  U11 PR body, and fresh re-renders of those lines measured no
+  better, so the shipped takes stand as the explicit disposition.
 - **FG-4 · The 88 missing names hit famous places.** The render
   backend deterministically refuses 88 planned name reads, and they
   are not obscure: **Lahore (13.0M), Karachi (11.6M), Baghdad
@@ -651,9 +661,9 @@ checkable by playing, not by reading code.
   and re-check the two items above — placement re-settles clear.
 - [ ] **External speech:** trigger the storyteller hook narration
   mid-case — the pair does not speak over it (FG-2).
-- [ ] **Core-case behaviour:** open a core-deck (non-Capitals) case —
-  either its clues are read aloud (U11 done) or the pair does not
-  perform the silent ritual (FG-3).
+- [x] **Core-case behaviour:** open a core-deck (non-Capitals) case —
+  its clues are read aloud (U11 done, FG-3 closed 2026-11-08;
+  proven by `tests/e2e/detective-core-audio.spec.ts`).
 - [ ] **Dock + attribution at 390 px:** at phone width, the dock and
   the MapLibre attribution are both fully readable, never stacked
   (FG-8).
