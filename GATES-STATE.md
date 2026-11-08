@@ -58,3 +58,8 @@ Base main at start: `9e49da3` (already merged up via `047739c`).
 
 ## Fast gates re-verified (finisher session 4, 2026-11-08 ~06:55 CST, first-hand on the 342a5e4 dist tree)
 - tsc --noEmit clean (exit 0). npm test exit 0: scripts 1032 tests + src 2273 tests (counts include pass+fail tallies; exit 0 = all pass). npm run test:worker: 145/145 pass. lint-cards: GATE PASSED. dist/client/build-meta.json buildId = 342a5e4 (the built artifact matches the code tip; GATES-STATE commits are docs-only).
+
+## Session-4 status snapshot (2026-11-08 ~07:00 CST)
+- Remote feat/holmes-follow = f6b563d (verified via gh: PR #364 OPEN, MERGEABLE; remote tip includes this session's 4 docs-only GATES-STATE commits on top of code tip 342a5e4). main still 9e49da3 (gh api). PR #368 still OPEN @ edb7383 — no merge-up owed.
+- Census + rest-verify both alive at process level; census holds the flock, rest-verify queues behind it, #368 Silo-QA E2E queued third. Census started under contended load — weight FG-5-KILL bucketing accordingly.
+- #368 lane is itself deep in pipeline (seat workdirs + Silo QA present in ~/workspace) — it may merge before #364; the merge-up rule in the coordination watch applies when it does.
