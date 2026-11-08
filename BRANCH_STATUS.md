@@ -166,7 +166,7 @@ ancestor of this branch and the true branch diff is 11 files (709+/185−, measu
   follow-up (issue #371) and this PR proceeds with the failure
   recorded honestly in the PR body.
 - [ ] Gates 5–7 — panel + DevEx + benchmark ran on `3f3eaf0`
-  (panel 13/13 in: 1 APPROVE, 11 APPROVE-WITH-NITS, 2 BLOCKs both
+  (panel 13/13 in: 1 APPROVE, 10 APPROVE-WITH-NITS, 2 BLOCKs both
   adjudicated pre-existing/out-of-scope — game audio → PR #370/PR 2,
   game player → issues #371/#373 + PR #370/PR 2; DevEx records cure
   applied after the panel, confirmation re-vote follows); merge
@@ -201,7 +201,8 @@ Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
   passing inside the Gate 1a endings run — the test reached and
   passed this assertion before the run's N2-window failure (absence
   checks fail loudly, so reaching the absorb proves them).
-  an earlier version of this capsule claimed this and the N2
+  (Correction, same day: an earlier version of this capsule
+  claimed this and the N2
   endings windows were PASSING on a "2 passed" endings run.
   That was a misread of truncated, piped output: the run's full
   output shows **2 failed**, both at browser launch. No endings
