@@ -71,4 +71,4 @@ handling, sessionStorage run restore.
   - E2E new entry-routing spec — 16/16 pass, 22 screenshots in `tests/e2e/evidence/entry-routing/`
   - E2E regression: geodetective-hint 6/6 · chunk-boundary-copy 2/2 · reset-history + scout-toggle + coldtrail 28/28 · friend-challenge mc2-boot 5 pass + 1 scripted-manual skip · friend-challenge desktop: 3 tests failed twice under VM load 14–20 (timeouts / browser-closed), then passed 3/3 on this branch at healthy load and 3/3 on unmodified main — contention flake, evidenced
   - E2E known pre-existing failure (not this change): geodetective.spec "win path" share-URL assertion expects the Workers origin; a `build:pages` artifact bakes the Pages origin into share text (`src/game/share.ts` reads Vite `BASE_URL`; that file and the build are untouched by this PR, so the assertion fails identically on main with a Pages build)
-- [ ] PR opened
+- [x] PR opened: #368 — https://github.com/veeresh-bikkaneti/Meridian/pull/368
