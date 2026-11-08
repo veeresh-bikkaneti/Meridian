@@ -102,3 +102,25 @@ header actually renders — confirmed by the red run's page snapshots.
 - The panel's votes were on `8e3ccda`; this merge creates a new tip,
   so the panel must refresh on it. No merge without the owner's word.
 
+- Gates on the merge tip `53a59b5` (2026-11-08, logs on the
+  builder VM at /workspace/rock-pr340-logs): `npm ci` 0 · `tsc
+  --noEmit` 0 · `typecheck:worker` 0 · `build` 0 · `npm test` 0
+  (scripts 1023 pass / 9 skip / 0 fail; src 2266/2266) ·
+  `test:worker` 145/145 · `lint-cards` GATE PASSED · `build:pages`
+  0 · `lint:content` GATE PASSED · `check:flags` 0.
+- E2E (`flock ~/workspace/.e2e.lock`, `--workers=1 --retries=0`,
+  built Pages artifact). Browser: Playwright's bundled Chromium
+  v1243 is NOT installed on this VM (it needs a download, not
+  approved); ran with the config's documented override
+  `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome` (Chrome
+  156). `guess-counter.desktop.spec.ts` 2/2 pass;
+  `geodetective.spec.ts` 17/18 — spec:199 (win path) fails at
+  line 238: strict-mode violation, `heading "Ankara, Türkiye"`
+  matches both the guess sheet's h2 and the reveal's h2.
+  Pre-existing, not this PR: the identical test on unmodified main
+  `9e49da3` fails 3/3 with the same error (`--repeat-each=3`); this
+  tip also 3/3. This masks the older share-origin failure at
+  spec:256 recorded above (not reached).
+- GitHub's e2e job runs a fixed list of 6 specs that includes
+  neither `guess-counter.desktop.spec.ts` nor
+  `geodetective.spec.ts`, so CI green does not exercise this fix.
