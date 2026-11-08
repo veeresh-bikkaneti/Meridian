@@ -57,10 +57,20 @@ worked and only the renders were missing.
 
 - [ ] E2E `tests/e2e/detective-core-audio.spec.ts` (fetch + play all
   five clues on core case 5, tap-Watson repeats the clue itself,
-  solve-at-guess-2 flush) — result recorded in the PR body.
-- [ ] Silo QA re-keyed to the tip, 13-seat panel vote, DevEx,
-  benchmark; merge on READY under ship-when-ready; live check on
-  both hosts.
+  solve-at-guess-2 flush) — **NOT YET RUN**: the queued run failed
+  at launch ("No tests found") because no Playwright project
+  matches the spec, and CI's bare `playwright test` excludes it
+  for the same reason. Add the `detective-core-audio` project
+  first; exact resume sequence in `RESUME-STATE.md`.
+- [x] Silo QA PASS @ `93a8fe52` (isolated worktree: manifest gate
+  clean, typecheck, lint-cards, all suites green, silo's own
+  sabotage control bites). Any new tip voids this key — re-key
+  after the Playwright-project fix.
+- [ ] 13-seat panel vote, DevEx, benchmark; merge on READY under
+  ship-when-ready; live check on both hosts.
+- **LANE STOOD DOWN 2026-11-08** (owner's sequential pipeline
+  law): queue position 3, behind the Watson-station cure and
+  PR #364. Resume from `RESUME-STATE.md` in this worktree.
 
 ---
 
