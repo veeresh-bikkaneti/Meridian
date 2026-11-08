@@ -126,7 +126,10 @@ export interface PackDeckView {
 }
 
 const CATEGORY_LABELS: Record<string, { label: string; glyph: string }> = {
-  capitals: { label: "Capitals", glyph: "🏛️" },
+  // Owner-ratified relabel (issue #344): the pack is "Capitals & Flags"
+  // everywhere a player reads its name. The category key stays
+  // "capitals" — it is data, not copy.
+  capitals: { label: "Capitals & Flags", glyph: "🏛️" },
 };
 
 function categoryLabel(category: string, packId: string): { label: string; glyph: string } {
@@ -134,6 +137,20 @@ function categoryLabel(category: string, packId: string): { label: string; glyph
   if (known) return known;
   const name = packId.charAt(0).toUpperCase() + packId.slice(1);
   return { label: name, glyph: "🗺️" };
+}
+
+/**
+ * The shelf-vocabulary label for one deck, by deck id. Accepts either
+ * vocabulary: the loop store's core id ("core") and the shelf's
+ * ("all") both read "All cases"; a pack id reads through the same
+ * category-label logic the chips use, so a deck is called the same
+ * thing wherever it is named. The case screen uses this to name the
+ * OPEN case's deck (issue #336): the caller derives the id from the
+ * open case itself, never from the player's pick.
+ */
+export function deckLabelForId(deckId: string): string {
+  if (deckId === CORE_DECK_ID || deckId === LOOP_CORE_DECK_ID) return "All cases";
+  return categoryLabel(deckId, deckId).label;
 }
 
 /**
@@ -362,13 +379,59 @@ async function fetchJsonOrNull(url: string, fetcher?: Fetcher): Promise<unknown>
   }
 }
 
+/**
+ * Session-level cache of UI manifest loads, keyed by pack id.
+ *
+ * The deck shelf reads the manifest for display — once per mode
+ * screen, so the two editions mount two consumers of the same URL.
+ * Without sharing, each makes its own request, so on a flaky
+ * connection the two UI consumers compete: one screen's fetch can
+ * consume the one good response and leave the other screen's fetch
+ * to fail, and then the pack chip never renders — including in the
+ * fallback state the chip exists to explain (PR #346 merge-up
+ * finding, issue #336's regression surface). One shared load per
+ * pack removes the competition. (The Home doorway was a third
+ * consumer until the owner removed it from Home entirely,
+ * 2026-11-05; the sharing contract is unchanged.)
+ *
+ * Only the default path is cached. A caller that passes its own
+ * fetcher always gets a fresh, uncached load — and the GeoDetective
+ * deal path never calls this function at all: LoopScreen resolves
+ * the manifest with its own fetch (`resolveActivePack`), fresh at
+ * each deal, so a deal-time failure still falls back to the core
+ * deck exactly as before.
+ *
+ * Only successes are kept. A load that settles to null (offline,
+ * 404, invalid payload) is evicted as soon as it settles, so the
+ * next mount retries instead of pinning the failure all session.
+ */
+const sharedManifestLoads = new Map<string, Promise<PackManifest | null>>();
+
 /** The pack manifest for a pack id, or null when the pack has not shipped. */
-export async function fetchPackManifest(
+export function fetchPackManifest(
   packId: string,
   fetcher?: Fetcher,
 ): Promise<PackManifest | null> {
-  const raw = await fetchJsonOrNull(`${assetBase()}packs/${packId}/manifest.json`, fetcher);
-  return isPackManifest(raw) ? raw : null;
+  const url = `${assetBase()}packs/${packId}/manifest.json`;
+  if (fetcher) {
+    return (async () => {
+      const raw = await fetchJsonOrNull(url, fetcher);
+      return isPackManifest(raw) ? raw : null;
+    })();
+  }
+  const shared = sharedManifestLoads.get(packId);
+  if (shared) return shared;
+  const load = (async (): Promise<PackManifest | null> => {
+    const raw = await fetchJsonOrNull(url);
+    return isPackManifest(raw) ? raw : null;
+  })();
+  sharedManifestLoads.set(packId, load);
+  void load.then((manifest) => {
+    if (manifest === null && sharedManifestLoads.get(packId) === load) {
+      sharedManifestLoads.delete(packId);
+    }
+  });
+  return load;
 }
 
 /** The GeoDetective core deck size from the loop manifest, or null. */

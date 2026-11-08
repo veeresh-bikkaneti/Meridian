@@ -3,6 +3,9 @@ import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
+import { SoundToggle } from "@/components/SoundToggle";
+import { FlagImg } from "@/components/flag-img";
+import { flagEntry } from "@/lib/flag-registry";
 import { PackShelf } from "@/components/pack-shelf";
 import {
   FIRST_PACK_ID,
@@ -493,9 +496,16 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
             ← All games
           </Button>
-          <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
-            ⭐ {store.stars}
-          </p>
+          <div className="flex items-center gap-2">
+            <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
+              ⭐ {store.stars}
+            </p>
+            {/* Sound Everywhere (PR C, council Q6): the same master
+                SoundToggle as home and the map-quiz chrome — Cold Trail
+                had no in-screen mute before this. One persisted key
+                (meridian.sound), one implementation (SoundToggle.tsx). */}
+            <SoundToggle testId="sound-toggle-trail" className="atlas-sound-toggle" />
+          </div>
         </div>
         <p className="name-eyebrow mt-4">{theme.eyebrow}</p>
         <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">
@@ -661,6 +671,19 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
           <p className="mt-2 text-fg">
             {theme.reveal.targetLine(caseData.hideout.name)}
           </p>
+          {caseData.hideout.countryName ? (
+            <div className="mt-2" data-testid="coldtrail-reveal-flag">
+              <p className="flex items-center gap-2 text-fg">
+                <span>The trail ended in {caseData.hideout.countryName}.</span>
+                <FlagImg flagKey={caseData.hideout.flagKey} className="h-6" />
+              </p>
+              {caseData.hideout.flagKey && flagEntry(caseData.hideout.flagKey) ? (
+                <p className="mt-1 text-sm text-muted">
+                  {flagEntry(caseData.hideout.flagKey)!.story}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
           <p className="mt-1 text-muted">
             {theme.reveal.missLine(formatLength(progress.scoreKm, hideoutUnit))} {verdict.line}
           </p>

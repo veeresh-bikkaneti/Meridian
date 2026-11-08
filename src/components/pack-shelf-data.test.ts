@@ -23,6 +23,7 @@ import {
   readLoopCoreClosed,
   readLoopDeckClosed,
   readSelectedDeck,
+  deckLabelForId,
   toShelfDeckId,
   writeSelectedDeck,
   type PackManifest,
@@ -90,11 +91,13 @@ describe("buildDeckList", () => {
     assert.equal(decks[0]!.label, "All cases");
   });
 
-  it("adds the Capitals chip in GeoDetective when loop indexes exist", () => {
+  it("adds the Capitals & Flags chip in GeoDetective when loop indexes exist", () => {
     const decks = buildDeckList({ ...base, edition: "geodetective", packManifest: MANIFEST });
     assert.equal(decks.length, 2);
     assert.equal(decks[1]!.id, "capitals");
-    assert.equal(decks[1]!.label, "Capitals");
+    // Owner-ratified relabel (issue #344): the pack's player-facing
+    // name is "Capitals & Flags"; the deck id stays "capitals".
+    assert.equal(decks[1]!.label, "Capitals & Flags");
     assert.equal(decks[1]!.star, true);
     assert.equal(decks[1]!.total, 72);
   });
@@ -329,6 +332,127 @@ describe("manifest fetches", () => {
       }),
       null,
     );
+  });
+});
+
+describe("fetchPackManifest shared UI load (shelf dedupe)", () => {
+  const realFetch = globalThis.fetch;
+
+  function manifestFor(id: string): PackManifest {
+    return { ...MANIFEST, packId: id };
+  }
+
+  /**
+   * Stub the global fetch the default path uses. `respond` decides
+   * per call; the returned probe counts underlying network loads.
+   */
+  function stubNetwork(respond: (id: string, call: number) => { ok: boolean; body?: unknown }) {
+    let calls = 0;
+    globalThis.fetch = (async (input: unknown) => {
+      calls += 1;
+      const id = /packs\/([^/]+)\/manifest\.json/.exec(String(input))?.[1] ?? "";
+      const { ok, body } = respond(id, calls);
+      return { ok, json: async () => body } as Response;
+    }) as unknown as typeof fetch;
+    return () => calls;
+  }
+
+  it("two UI callers mounting together share one underlying load", async () => {
+    const calls = stubNetwork((id) => ({ ok: true, body: manifestFor(id) }));
+    try {
+      // Fired back-to-back, as two shelf mounts in the same
+      // session (one per mode screen): only the first may touch
+      // the network.
+      const [first, second] = await Promise.all([
+        fetchPackManifest("probe-shared"),
+        fetchPackManifest("probe-shared"),
+      ]);
+      assert.deepEqual(first, manifestFor("probe-shared"));
+      assert.deepEqual(second, manifestFor("probe-shared"));
+      assert.equal(calls(), 1);
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  });
+
+  it("a settled success is reused by the next mount, not refetched", async () => {
+    const calls = stubNetwork((id) => ({ ok: true, body: manifestFor(id) }));
+    try {
+      assert.deepEqual(await fetchPackManifest("probe-cached"), manifestFor("probe-cached"));
+      assert.deepEqual(await fetchPackManifest("probe-cached"), manifestFor("probe-cached"));
+      assert.equal(calls(), 1);
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  });
+
+  it("a failed load is evicted, so a later mount can retry and succeed", async () => {
+    let healthy = false;
+    const calls = stubNetwork((id) =>
+      healthy ? { ok: true, body: manifestFor(id) } : { ok: false },
+    );
+    try {
+      assert.equal(await fetchPackManifest("probe-retry"), null);
+      healthy = true;
+      assert.deepEqual(await fetchPackManifest("probe-retry"), manifestFor("probe-retry"));
+      assert.equal(calls(), 2);
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  });
+
+  it("an injected fetcher bypasses the shared cache — it neither reads nor writes it", async () => {
+    const calls = stubNetwork((id) => ({ ok: true, body: manifestFor(id) }));
+    try {
+      // Prime the shared cache through the default (UI) path.
+      assert.deepEqual(await fetchPackManifest("probe-bypass"), manifestFor("probe-bypass"));
+      assert.equal(calls(), 1);
+      // A caller with its own fetcher must NOT be served the cached
+      // success: its failure is its own (this is the seam a fresh,
+      // fail-able load depends on — the deal path proper uses its
+      // own fetch in LoopScreen and never this function).
+      let injectedCalls = 0;
+      const failed = await fetchPackManifest("probe-bypass", async () => {
+        injectedCalls += 1;
+        throw new Error("offline");
+      });
+      assert.equal(failed, null);
+      assert.equal(injectedCalls, 1);
+      // And the injected path must not write the cache either: its
+      // success does not replace what UI callers already share.
+      const other = { ...manifestFor("probe-bypass"), size: 1, loopIndexes: [0] };
+      const fresh = await fetchPackManifest("probe-bypass", async () => other);
+      assert.deepEqual(fresh, other);
+      assert.deepEqual(await fetchPackManifest("probe-bypass"), manifestFor("probe-bypass"));
+      assert.equal(calls(), 1);
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  });
+});
+
+describe("deckLabelForId (the open case's deck name, issue #336)", () => {
+  it("names the core deck in shelf vocabulary, in either id vocabulary", () => {
+    assert.equal(deckLabelForId("core"), "All cases");
+    assert.equal(deckLabelForId(CORE_DECK_ID), "All cases");
+  });
+
+  it("names a pack deck with the chip's label", () => {
+    assert.equal(deckLabelForId("capitals"), "Capitals & Flags");
+    // The label agrees with the chip buildDeckList renders for the pack.
+    const decks = buildDeckList({
+      edition: "geodetective",
+      packManifest: MANIFEST,
+      coreClosed: null,
+      coreTotal: null,
+      packClosed: null,
+    });
+    assert.equal(deckLabelForId("capitals"), decks[1]!.label);
+    assert.equal(deckLabelForId("core"), decks[0]!.label);
+  });
+
+  it("falls back to the capitalized pack id for an unknown pack", () => {
+    assert.equal(deckLabelForId("rivers"), "Rivers");
   });
 });
 

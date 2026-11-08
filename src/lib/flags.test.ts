@@ -456,6 +456,55 @@ describe("friendChallenges flag", () => {
   });
 });
 
+describe("scoutUpgradeTrial flag (issue #330 kill-switch)", () => {
+  beforeEach(() => resetFlags());
+
+  it("defaults to true — armed, the shipped #331 behavior (upgrade may fire)", () => {
+    assert.equal(FLAG_DEFAULTS.scoutUpgradeTrial, true);
+    assert.equal(isEnabled("scoutUpgradeTrial"), true);
+  });
+
+  it("a boolean false in flags.json disarms the trial", async () => {
+    const { fn } = fakeFetch(okResponse({ flags: { scoutUpgradeTrial: false } }));
+    await loadFlags({ ...BASE, fetch: fn });
+    assert.equal(isEnabled("scoutUpgradeTrial"), false);
+  });
+
+  it("a boolean true in flags.json keeps it armed", async () => {
+    const { fn } = fakeFetch(okResponse({ flags: { scoutUpgradeTrial: true } }));
+    await loadFlags({ ...BASE, fetch: fn });
+    assert.equal(isEnabled("scoutUpgradeTrial"), true);
+  });
+
+  it("non-boolean values are ignored and the armed default wins", async () => {
+    for (const bad of ["false", 0, null]) {
+      resetFlags();
+      const { fn } = fakeFetch(okResponse({ flags: { scoutUpgradeTrial: bad } }));
+      await loadFlags({ ...BASE, fetch: fn });
+      assert.equal(
+        isEnabled("scoutUpgradeTrial"),
+        true,
+        `value ${JSON.stringify(bad)} must be ignored — a malformed kill payload must not disarm or break the trial`,
+      );
+    }
+  });
+
+  it("fail-closed to armed: unreachable flags.json keeps the shipped behavior", async () => {
+    const { fn } = fakeFetch(failedResponse());
+    await loadFlags({ ...BASE, fetch: fn });
+    assert.equal(isEnabled("scoutUpgradeTrial"), true);
+  });
+
+  it("is a registered flag: Object.keys(FLAG_DEFAULTS) includes it", () => {
+    assert.ok(Object.keys(FLAG_DEFAULTS).includes("scoutUpgradeTrial"));
+  });
+
+  it("the shipped public/flags.json carries it armed (true)", () => {
+    const shipped = JSON.parse(readFileSync(new URL("../../public/flags.json", import.meta.url), "utf8"));
+    assert.equal(shipped.flags.scoutUpgradeTrial, true);
+  });
+});
+
 describe("observabilityEndpoint", () => {
   beforeEach(() => resetFlags());
   it("defaults to null (transport disabled — shipped behavior)", async () => {

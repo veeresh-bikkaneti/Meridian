@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "sofia-bulgaria",
+  "target": {
+    "placeId": "gn-727011",
+    "name": "Sofia",
+    "aliases": [],
+    "lat": 42.69751,
+    "lon": 23.32415,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Bulgaria",
+    "iso2": "BG",
+    "subdivision": "Sofia-Capital"
+  },
+  "subjectAnswer": {
+    "name": "Bulgaria",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Bulgaria",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This town sits in a vale at the foot of a big peak. It lies in the west of its land, in a vale with hills on each side.",
+      "narrowing": "Puts the player in a mountain-ringed valley in the western Balkans.",
+      "source": {
+        "article": "Sofia",
+        "url": "https://en.wikipedia.org/wiki/Sofia",
+        "quote": "It is situated in the Sofia Valley at the foot of the Vitosha mountain, in the western part of the country."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The cold months here bring snow that falls on the town in drifts. Days stay cold and white, and snow lies on roofs and on the ground.",
+      "narrowing": "Keeps a high valley capital with snowy winters and warm summers.",
+      "source": {
+        "article": "Sofia",
+        "url": "https://en.wikipedia.org/wiki/Sofia",
+        "quote": "Winters are relatively cold and snowy."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "One year past 1878, when rule came back to this land, this town was picked. It was picked as the chief town of the new Third State of the land.",
+      "narrowing": "Shrinks the list to capitals selected in 1879 for a new state.",
+      "source": {
+        "article": "Sofia",
+        "url": "https://en.wikipedia.org/wiki/Sofia",
+        "quote": "Sofia was selected as the capital of the Third Bulgarian State in the next year"
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "In one part of this town, three great faiths stand side by side. A church, a mosque, and a house of prayer for Jews all stand close by.",
+      "narrowing": "Nearly decisive: one capital is famed for its triangle of three faiths' temples.",
+      "source": {
+        "article": "Sofia",
+        "url": "https://en.wikipedia.org/wiki/Sofia",
+        "quote": "This is because three temples of three major world religions—Christianity, Islam and Judaism—are situated close together: Sveta Nedelya Church, Banya Bashi Mosque and Sofia Synagogue."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Bulgaria is run from this town, and its work of state is done here. More folk live in this town than in any town in the land.",
+      "narrowing": "Confirms it: capital and largest city of Bulgaria.",
+      "source": {
+        "article": "Sofia",
+        "url": "https://en.wikipedia.org/wiki/Sofia",
+        "quote": "Sofia is the capital and largest city of Bulgaria."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "People have lived here since at least 7000 BC, when Romans later called it Serdica. It sits at the foot of the Vitosha mountain, where a church, a mosque and a synagogue stand close together as neighbours. Sofia is the capital of Bulgaria."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Sofia"
+  },
+  "pointPolicy": "geonames-point"
+}

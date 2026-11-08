@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "algiers-algeria",
+  "target": {
+    "placeId": "gn-2507480",
+    "name": "Algiers",
+    "aliases": [],
+    "lat": 36.73225,
+    "lon": 3.08746,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Algeria",
+    "iso2": "DZ",
+    "subdivision": "Algiers"
+  },
+  "subjectAnswer": {
+    "name": "Algeria",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Algeria",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city spreads along a wide bay of the sea. A flat plain and tall peaks lie close round it on land.",
+      "narrowing": "Puts the player on a bay of the Mediterranean, by a plain and mountain ranges.",
+      "source": {
+        "article": "Algiers",
+        "url": "https://en.wikipedia.org/wiki/Algiers",
+        "quote": "It extends along the Bay of Algiers surrounded by the Mitidja Plain and major mountain ranges."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The sea keeps this city's heat and cold from going too far. Most rain falls in the cool months, from fall to spring.",
+      "narrowing": "Keeps a sea-mild city whose rain comes mostly from October to April.",
+      "source": {
+        "article": "Algiers",
+        "url": "https://en.wikipedia.org/wiki/Algiers",
+        "quote": "Its proximity to the Mediterranean aids in moderating the city's temperatures. As a result, Algiers usually does not see the extreme temperatures that are experienced in the adjacent interior. Algiers on average receives roughly 685.6 millimetres (27 in) of rain per year, the bulk of which is seen between October and April."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This city was founded in the year 972, long, long ago. Yet a trade town stood here much, much earlier still.",
+      "narrowing": "Shrinks the list to capitals founded in 972 on a far older trading site.",
+      "source": {
+        "article": "Algiers",
+        "url": "https://en.wikipedia.org/wiki/Algiers",
+        "quote": "Algiers was formally founded in 972 AD by Buluggin ibn Ziri, though its history goes back to between 1200 and 250 BC as a Phoenician trading settlement."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Folk call this city 'the White' for its bright white homes. Its whitewashed walls shine in the sun by the sea.",
+      "narrowing": "Nearly decisive: one capital is famed as 'the White' for its whitewashed buildings.",
+      "source": {
+        "article": "Algiers",
+        "url": "https://en.wikipedia.org/wiki/Algiers",
+        "quote": "Commonly referred to as al bidha (\"the white\") for its whitewashed buildings, Algiers blends colonial and indigenous urban influences."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This is the largest town in Algeria and the seat of its rule. The men and women who lead the land work from here.",
+      "narrowing": "Confirms it: the capital and largest city of Algeria.",
+      "source": {
+        "article": "Algiers",
+        "url": "https://en.wikipedia.org/wiki/Algiers",
+        "quote": "is the capital and largest city of Algeria, located on the Mediterranean Sea in the north-central portion of the country"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This white city by the sea has been a trading place for thousands of years, and its old Casbah is a world treasure. Algiers is the capital of Algeria."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Algiers"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -19,11 +19,14 @@ import { listInputIds, loadCase, validatePackCase } from "./validate-pack.mjs";
 
 const ids = listInputIds();
 
-test("the curated set is complete: 72 inputs (44 countries, 28 US states)", () => {
-  assert.equal(ids.length, 72, `expected 72 inputs, found ${ids.length}`);
+test("the curated set is complete: 110 inputs (60 countries, 50 US states)", () => {
+  // Wave 1 shipped 72 (44 + 28); Capitals & Flags wave 2 (issue #344)
+  // grew the pack to the ratified 60:50 mix — all 50 state capitals
+  // and 60 famous country capitals.
+  assert.equal(ids.length, 110, `expected 110 inputs, found ${ids.length}`);
   const kinds = ids.map((id) => loadCase(id).input.subject.kind);
-  assert.equal(kinds.filter((k) => k === "country").length, 44);
-  assert.equal(kinds.filter((k) => k === "state").length, 28);
+  assert.equal(kinds.filter((k) => k === "country").length, 60);
+  assert.equal(kinds.filter((k) => k === "state").length, 50);
 });
 
 for (const id of ids) {

@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "tunis-tunisia",
+  "target": {
+    "placeId": "gn-2464470",
+    "name": "Tunis",
+    "aliases": [],
+    "lat": 36.81897,
+    "lon": 10.16579,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Tunisia",
+    "iso2": "TN",
+    "subdivision": "Tunis Governorate"
+  },
+  "subjectAnswer": {
+    "name": "Tunisia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Tunisia",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits in the north-east of its land, on a wide lake. A canal links the lake to the sea and its port.",
+      "narrowing": "Puts the player in the north-east of the country, on a lake linked by canal to the sea.",
+      "source": {
+        "article": "Tunis",
+        "url": "https://en.wikipedia.org/wiki/Tunis",
+        "quote": "Tunis is located in north-eastern Tunisia on the Lake of Tunis, and is connected to the Mediterranean sea's Gulf of Tunis by a canal which terminates at the port of La Goulette/Halq al Wadi."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This city has hot, dry days for much of the year. Its summers are long, and its winters are mild, with some rain.",
+      "narrowing": "Keeps a hot, dry city with long summers and mild winters.",
+      "source": {
+        "article": "Tunis",
+        "url": "https://en.wikipedia.org/wiki/Tunis",
+        "quote": "Tunis has a hot semi-arid climate (Köppen climate classification BSh) bordering a hot-summer Mediterranean climate (Csa), characterized by hot and dry, prolonged summers and mild winters with moderate rainfall."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Long ago, this city was the chief town of a strong realm. Its lands stretched out towards Tripoli and Fez.",
+      "narrowing": "Shrinks the list to the old Hafsid capital whose realm stretched towards Tripoli and Fez.",
+      "source": {
+        "article": "Tunis",
+        "url": "https://en.wikipedia.org/wiki/Tunis",
+        "quote": "The city became the capital of a Hafsid kingdom stretching towards Tripoli and Fez."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "The old heart of this city is a famed world gem. UNESCO has kept it on its World Heritage list since 1979.",
+      "narrowing": "Nearly decisive: one capital's old medina is a UNESCO World Heritage Site since 1979.",
+      "source": {
+        "article": "Tunis",
+        "url": "https://en.wikipedia.org/wiki/Tunis",
+        "quote": "The Medina of Tunis has been a UNESCO World Heritage Site since 1979."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "This is the largest city in the whole land, and its seat of rule. All the top chiefs of the state work here.",
+      "narrowing": "Confirms it: the capital and largest city of Tunisia.",
+      "source": {
+        "article": "Tunis",
+        "url": "https://en.wikipedia.org/wiki/Tunis",
+        "quote": "is the capital and largest city of Tunisia"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This city's old medina has been a UNESCO World Heritage Site since 1979, and the ruins of ancient Carthage lie just up the coast. Its lake links by canal to the sea, under hot, dry summers. Tunis is the capital of Tunisia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Tunis"
+  },
+  "pointPolicy": "geonames-point"
+}

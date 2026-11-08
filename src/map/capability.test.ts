@@ -30,15 +30,20 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
   LOW_MEMORY_GB,
+  MAP_CRASH_MARKER_KEY,
   MAP_MODE_DECAY_MS,
   MAP_MODE_STORAGE_KEY,
+  SCOUT_UPGRADE_SOAK_MS,
   clearStoredMapMode,
+  hasDurableMapCrashMarker,
   planBootMapMode,
   probeWebGL,
   qualifyMapMode,
   readDeviceMemoryGB,
   readStoredMapMode,
   resolveMapMode,
+  shouldFireScoutUpgrade,
+  writeDurableMapCrashMarker,
   writeStoredMapMode,
   type StoredMapMode,
 } from "./capability.ts";
@@ -214,7 +219,7 @@ test("failed/weak probe → scout; probe beats memory (order)", () => {
   assert.equal(r.source, "probe");
 });
 
-test("deviceMemory <= 2 → scout; > 2 / absent / null → no demotion", () => {
+test("deviceMemory <= 2 → scout; > 2 → no demotion; null depends on pointer (issue #330)", () => {
   assert.deepEqual(qualifyMapMode({ deviceMemoryGB: 2 }), {
     mode: "scout",
     source: "low-memory",
@@ -227,9 +232,17 @@ test("deviceMemory <= 2 → scout; > 2 / absent / null → no demotion", () => {
     mode: "full",
     source: "default",
   });
-  assert.deepEqual(qualifyMapMode({ deviceMemoryGB: null }), {
+  // UPDATED PIN (issue #330, deliberate): this test used to assert
+  // null-memory → full with no pointer signal at all. The new semantics
+  // split on the pointer: null + fine → full (unchanged desktop path),
+  // null + coarse → scout with the new "unknown-memory" source.
+  assert.deepEqual(qualifyMapMode({ deviceMemoryGB: null, coarsePointer: false }), {
     mode: "full",
     source: "default",
+  });
+  assert.deepEqual(qualifyMapMode({ deviceMemoryGB: null, coarsePointer: true }), {
+    mode: "scout",
+    source: "unknown-memory",
   });
   assert.deepEqual(qualifyMapMode({}), { mode: "full", source: "default" });
 });
@@ -355,10 +368,21 @@ test("P0 golden: decayed auto record + capable signals → full", () => {
   assert.deepEqual(r, { mode: "full", source: "default" });
 });
 
-test("P0 golden: unavailable everything → full (never demote on missing signals)", () => {
+test("P0 golden: unavailable everything on a fine pointer → full (never demote on missing signals)", () => {
+  // UPDATED PIN (issue #330, deliberate): the golden now names its
+  // pointer. With a coarse pointer the same missing signals are the
+  // unknown-memory trial (next test); with a fine pointer — the desktop
+  // case this golden protects — nothing demotes.
   assert.deepEqual(
-    qualifyMapMode({ manual: null, webglProbeOk: null, deviceMemoryGB: null }),
+    qualifyMapMode({ manual: null, webglProbeOk: null, deviceMemoryGB: null, coarsePointer: false }),
     { mode: "full", source: "default" },
+  );
+});
+
+test("issue #330: unavailable memory on a coarse pointer → scout trial, source unknown-memory", () => {
+  assert.deepEqual(
+    qualifyMapMode({ manual: null, webglProbeOk: null, deviceMemoryGB: null, coarsePointer: true }),
+    { mode: "scout", source: "unknown-memory" },
   );
 });
 
@@ -575,4 +599,320 @@ test("P1-7: a clean WebGL probe keeps a 2 GB device on the Full map; 1 GB still 
     mode: "scout",
     source: "low-memory",
   });
+});
+
+// ---------------------------------------------------------------------------
+// Issue #330 — unknown-memory Scout trial: full qualification matrix
+// ---------------------------------------------------------------------------
+
+test("#330 matrix: unknown memory + coarse → scout trial, whatever the probe says", () => {
+  for (const webglProbeOk of [true, null, undefined]) {
+    assert.deepEqual(
+      qualifyMapMode({ deviceMemoryGB: null, coarsePointer: true, webglProbeOk }),
+      { mode: "scout", source: "unknown-memory" },
+      `probe=${String(webglProbeOk)} must not change the trial`,
+    );
+  }
+  // Absent and non-finite readings are also "unknown".
+  assert.deepEqual(qualifyMapMode({ coarsePointer: true }), {
+    mode: "scout",
+    source: "unknown-memory",
+  });
+  assert.deepEqual(qualifyMapMode({ deviceMemoryGB: Number.NaN, coarsePointer: true }), {
+    mode: "scout",
+    source: "unknown-memory",
+  });
+});
+
+test("#330 matrix: known memory + coarse behaves exactly as before the rule existed", () => {
+  assert.deepEqual(qualifyMapMode({ deviceMemoryGB: 8, coarsePointer: true, webglProbeOk: true }), {
+    mode: "full",
+    source: "default",
+  });
+  assert.deepEqual(qualifyMapMode({ deviceMemoryGB: 4, coarsePointer: true, webglProbeOk: true }), {
+    mode: "full",
+    source: "default",
+  });
+  assert.deepEqual(qualifyMapMode({ deviceMemoryGB: 2, coarsePointer: true, webglProbeOk: true }), {
+    mode: "full",
+    source: "default",
+  });
+  assert.deepEqual(qualifyMapMode({ deviceMemoryGB: 1, coarsePointer: true, webglProbeOk: true }), {
+    mode: "scout",
+    source: "low-memory",
+  });
+});
+
+test("#330 matrix: real weak signals keep their own source on a coarse unknown-memory device", () => {
+  // prior-crash, probe and low-memory all outrank the trial rule, so a
+  // device demoted by any of them is never "demoted solely by the new
+  // rule" — and never gets the upgrade (gate tests below).
+  assert.deepEqual(
+    qualifyMapMode({ deviceMemoryGB: null, coarsePointer: true, priorMapCrash: true }),
+    { mode: "scout", source: "prior-crash" },
+  );
+  assert.deepEqual(
+    qualifyMapMode({ deviceMemoryGB: null, coarsePointer: true, webglProbeOk: false }),
+    { mode: "scout", source: "probe" },
+  );
+});
+
+test("#330 matrix: a stored manual record beats the trial rule in both directions", () => {
+  assert.deepEqual(
+    qualifyMapMode({
+      manual: { mode: "full", source: "manual", setAt: NOW },
+      deviceMemoryGB: null,
+      coarsePointer: true,
+      webglProbeOk: true,
+    }),
+    { mode: "full", source: "manual" },
+  );
+  assert.deepEqual(
+    qualifyMapMode({
+      manual: { mode: "scout", source: "manual", setAt: NOW },
+      deviceMemoryGB: null,
+      coarsePointer: true,
+      webglProbeOk: true,
+    }),
+    { mode: "scout", source: "manual" },
+  );
+});
+
+test("#330: unknown-memory source survives a stored-record round-trip (reader robustness)", () => {
+  // Production never writes this source (the trial persists nothing —
+  // see the state-machine test), but the reader must not mangle it if a
+  // future build ever does.
+  const s = fakeStorage();
+  writeStoredMapMode("scout", "unknown-memory", s, NOW);
+  assert.deepEqual(readStoredMapMode(s, NOW), {
+    mode: "scout",
+    source: "unknown-memory",
+    setAt: NOW,
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Issue #330 — Scout → full upgrade gate + the crash state machine
+// ---------------------------------------------------------------------------
+
+test("#330 plan: unknown-memory decision → scout with NOTHING persisted", () => {
+  const decision = qualifyMapMode({ deviceMemoryGB: null, coarsePointer: true, webglProbeOk: true });
+  assert.deepEqual(planBootMapMode(decision), { mode: "scout", persistSource: null });
+});
+
+test("#330 gate: fires only for the trial, only after the full soak", () => {
+  const ready = NOW;
+  const base = { initialSource: "unknown-memory" as const, scoutReadyAtMs: ready };
+  assert.equal(SCOUT_UPGRADE_SOAK_MS, 3000);
+  assert.equal(shouldFireScoutUpgrade({ ...base, nowMs: ready }), false);
+  assert.equal(shouldFireScoutUpgrade({ ...base, nowMs: ready + SCOUT_UPGRADE_SOAK_MS - 1 }), false);
+  assert.equal(shouldFireScoutUpgrade({ ...base, nowMs: ready + SCOUT_UPGRADE_SOAK_MS }), true);
+  assert.equal(shouldFireScoutUpgrade({ ...base, nowMs: ready + 60_000 }), true);
+  // Not ready yet → never.
+  assert.equal(
+    shouldFireScoutUpgrade({ initialSource: "unknown-memory", scoutReadyAtMs: null, nowMs: ready + 60_000 }),
+    false,
+  );
+});
+
+test("#330 gate flag: disarmed trial never fires, even with every soak condition met", () => {
+  const ready = NOW;
+  // The kill-switch position (scoutUpgradeTrial: false): the pure gate
+  // must stay shut at and past the full soak, however stable Scout was.
+  assert.equal(
+    shouldFireScoutUpgrade({
+      initialSource: "unknown-memory",
+      trialArmed: false,
+      scoutReadyAtMs: ready,
+      nowMs: ready + SCOUT_UPGRADE_SOAK_MS,
+    }),
+    false,
+  );
+  assert.equal(
+    shouldFireScoutUpgrade({
+      initialSource: "unknown-memory",
+      trialArmed: false,
+      scoutReadyAtMs: ready,
+      nowMs: ready + 60_000,
+    }),
+    false,
+  );
+});
+
+test("#330 gate flag: armed trial fires exactly as before (explicit true and omitted)", () => {
+  const ready = NOW;
+  // Explicit armed = the flag's shipped position; omitted = the baked-in
+  // default — both must reproduce the pre-flag behavior byte-for-byte:
+  // shut before the soak, open at it.
+  for (const trialArmed of [true, undefined] as const) {
+    assert.equal(
+      shouldFireScoutUpgrade({
+        initialSource: "unknown-memory",
+        trialArmed,
+        scoutReadyAtMs: ready,
+        nowMs: ready + SCOUT_UPGRADE_SOAK_MS - 1,
+      }),
+      false,
+      `trialArmed=${trialArmed} must stay shut before the soak`,
+    );
+    assert.equal(
+      shouldFireScoutUpgrade({
+        initialSource: "unknown-memory",
+        trialArmed,
+        scoutReadyAtMs: ready,
+        nowMs: ready + SCOUT_UPGRADE_SOAK_MS,
+      }),
+      true,
+      `trialArmed=${trialArmed} must fire at the soak`,
+    );
+  }
+});
+
+test("#330 gate: weak-device sources, prior crash, and stored records never upgrade", () => {
+  const ready = NOW;
+  for (const initialSource of ["prior-crash", "probe", "low-memory", "manual", "contextlost", "default"] as const) {
+    assert.equal(
+      shouldFireScoutUpgrade({ initialSource, scoutReadyAtMs: ready, nowMs: ready + 60_000 }),
+      false,
+      `source=${initialSource} must not upgrade`,
+    );
+  }
+  assert.equal(
+    shouldFireScoutUpgrade({
+      initialSource: "unknown-memory",
+      priorMapCrash: true,
+      scoutReadyAtMs: ready,
+      nowMs: ready + 60_000,
+    }),
+    false,
+  );
+  assert.equal(
+    shouldFireScoutUpgrade({
+      initialSource: "unknown-memory",
+      storedRecordPresent: true,
+      scoutReadyAtMs: ready,
+      nowMs: ready + 60_000,
+    }),
+    false,
+  );
+});
+
+test("#330 state machine: trial → upgrade → upgrade crash → next boot stays scout, no upgrade", () => {
+  const storage = fakeStorage();
+  // Boot 1 (field device): unknown memory, coarse pointer, clean probe,
+  // no stored record, no prior crash. Follows the plan exactly as
+  // game-app does: write only when persistSource is non-null.
+  const boot1 = planBootMapMode(
+    qualifyMapMode({ deviceMemoryGB: null, coarsePointer: true, webglProbeOk: true }),
+  );
+  assert.equal(boot1.mode, "scout");
+  if (boot1.persistSource !== null) writeStoredMapMode("scout", boot1.persistSource, storage, NOW);
+  // The trial wrote no record — so no stored artifact exists that a
+  // later boot could mistake for a standing assignment and skip the
+  // prior-crash check for.
+  assert.equal(storage.getItem(MAP_MODE_STORAGE_KEY), null);
+  assert.equal(readStoredMapMode(storage, NOW), null);
+  // Scout map reaches map_ready at NOW+1000; the upgrade fires at +3 s.
+  assert.equal(
+    shouldFireScoutUpgrade({
+      initialSource: "unknown-memory",
+      scoutReadyAtMs: NOW + 1000,
+      nowMs: NOW + 1000 + SCOUT_UPGRADE_SOAK_MS,
+    }),
+    true,
+  );
+  // The upgraded full map is what kills the process. Boot 2 therefore
+  // sees a prior map crash (session signal, or the durable marker —
+  // both feed the same priorMapCrash input in game-app).
+  const boot2Decision = qualifyMapMode({
+    deviceMemoryGB: null,
+    coarsePointer: true,
+    webglProbeOk: true,
+    priorMapCrash: true,
+  });
+  assert.deepEqual(boot2Decision, { mode: "scout", source: "prior-crash" });
+  assert.deepEqual(planBootMapMode(boot2Decision), { mode: "scout", persistSource: "prior-crash" });
+  // And the gate stays shut for boot 2 even after a long stable Scout:
+  // its source is prior-crash, not the trial.
+  assert.equal(
+    shouldFireScoutUpgrade({
+      initialSource: boot2Decision.source,
+      priorMapCrash: true,
+      scoutReadyAtMs: NOW,
+      nowMs: NOW + 10 * SCOUT_UPGRADE_SOAK_MS,
+    }),
+    false,
+  );
+});
+
+// ---------------------------------------------------------------------------
+// Issue #330 — durable map-crash marker (localStorage, 7-day decay)
+// ---------------------------------------------------------------------------
+
+test("#330 marker: write → read round-trips inside the decay window", () => {
+  const s = fakeStorage();
+  assert.equal(hasDurableMapCrashMarker(s, NOW), false);
+  writeDurableMapCrashMarker(s, NOW);
+  assert.deepEqual(JSON.parse(s.getItem(MAP_CRASH_MARKER_KEY)!), { at: NOW });
+  assert.equal(hasDurableMapCrashMarker(s, NOW), true);
+  assert.equal(hasDurableMapCrashMarker(s, NOW + MAP_MODE_DECAY_MS), true);
+});
+
+test("#330 marker: stale marker decays; garbage reads as absent", () => {
+  const s = fakeStorage();
+  writeDurableMapCrashMarker(s, NOW);
+  assert.equal(hasDurableMapCrashMarker(s, NOW + MAP_MODE_DECAY_MS + 1), false);
+  assert.equal(hasDurableMapCrashMarker(fakeStorage({ [MAP_CRASH_MARKER_KEY]: "not-json" }), NOW), false);
+  assert.equal(
+    hasDurableMapCrashMarker(fakeStorage({ [MAP_CRASH_MARKER_KEY]: JSON.stringify({ at: "soon" }) }), NOW),
+    false,
+  );
+  assert.equal(hasDurableMapCrashMarker(fakeStorage(), NOW), false);
+  assert.equal(hasDurableMapCrashMarker(null, NOW), false);
+});
+
+test("#330 marker: a manual record still outranks the durable crash signal", () => {
+  // The marker only feeds the priorMapCrash input; a stored manual
+  // record is evaluated before that input in qualifyMapMode.
+  const s = fakeStorage();
+  writeDurableMapCrashMarker(s, NOW);
+  assert.equal(hasDurableMapCrashMarker(s, NOW), true);
+  assert.deepEqual(
+    qualifyMapMode({
+      manual: { mode: "full", source: "manual", setAt: NOW },
+      priorMapCrash: hasDurableMapCrashMarker(s, NOW),
+      deviceMemoryGB: null,
+      coarsePointer: true,
+    }),
+    { mode: "full", source: "manual" },
+  );
+});
+
+// ---------------------------------------------------------------------------
+// Issue #330 — probe context release
+// ---------------------------------------------------------------------------
+
+test("#330 probe: the probe context is released via WEBGL_lose_context on pass and on weak verdict", () => {
+  for (const renderer of [NVIDIA, SWIFT]) {
+    let lost = 0;
+    const doc = {
+      createElement: (_tag: string) => ({
+        getContext: (kind: string) => {
+          if (kind !== "webgl") return null;
+          return {
+            getExtension: (name: string) => {
+              if (name === "WEBGL_debug_renderer_info") return { UNMASKED_RENDERER_WEBGL: UNMASKED_RENDERER };
+              if (name === "WEBGL_lose_context") return { loseContext: () => { lost += 1; } };
+              return null;
+            },
+            getParameter: (p: number) => (p === UNMASKED_RENDERER ? renderer : null),
+          };
+        },
+      }),
+    };
+    withDocument(doc, () => {
+      assert.equal(probeWebGL(), renderer === NVIDIA);
+    });
+    assert.equal(lost, 1, `context must be released exactly once for ${renderer.slice(0, 20)}…`);
+  }
 });

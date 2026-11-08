@@ -1,0 +1,52 @@
+{
+  "caseId": "tunis-tunisia",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Its old medina is a UNESCO World Heritage Site, and the ruins of Carthage lie just nearby.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-2464470",
+    "name": "Tunis",
+    "country": "Tunisia",
+    "subdivision": "Tunis Governorate",
+    "lat": 36.81897,
+    "lon": 10.16579
+  },
+  "target": {
+    "placeId": "gn-2464470",
+    "name": "Tunis",
+    "lat": 36.81897,
+    "lon": 10.16579,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Tunisia",
+    "iso2": "TN",
+    "subdivision": "Tunis Governorate"
+  },
+  "subjectAnswer": {
+    "name": "Tunisia",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "TN",
+    "subdivision": "Tunis Governorate",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Tunis is the capital of Tunisia. It's one of Tunisia's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Tunis",
+      "url": "https://en.wikipedia.org/wiki/Tunis",
+      "text": "Tunis (Arabic: تونس, ) is the capital and largest city of Tunisia. The greater metropolitan area of Tunis, often referred to as \"Grand Tunis\", has about 2,700,000 inhabitants. As of 2020, it was the third-largest city in the Maghreb region (after Casablanca and Algiers) and the fifteenth-largest in the Arab world.\nSituated on the Gulf of Tunis, behind the Lake of Tunis and the port of La Goulette (Ḥalq il-Wād), the city extends along the coastal plain and the hills that surround it. At its core lies the Medina, a World Heritage Site. East of the Medina, through the Sea Gate (also known as the Bab el Bhar and the Porte de France), begins the modern part of the city called \"Ville Nouvelle\", traversed by the grand Avenue Habib Bourguiba (often referred to by media and travel guides as \"the Tunisian Champs-Élysées\"), where the colonial-era buildings provide a clear contrast to smaller, older structures. Further east by the sea lie the suburbs of Carthage, La Marsa, and Sidi Bou Said.\nAs the capital of the country, Tunis is the focus of Tunisian political and administrative life and also the center of the country's commercial and cultural activities.\nIn 1228, Governor Abu Zakariya seized power and, a year later, took the title of Emir and founded the Hafsid dynasty. The city became the capital of a Hafsid kingdom stretching towards Tripoli and Fez. Walls were built to protect the emerging principal town of the kingdom, surrounding the medina, the kasbah, and the new suburbs of Tunis. In 1270 the city was taken briefly by Louis IX of France, who was hoping to convert the Hafsid sovereign to Christianity. King Louis easily captured Carthage, but his army soon fell victim to an outbreak of dysentery. Louis himself died before the walls of the capital and his army were forced out. At the same time, driven by the reconquest of Spain, the first Andalusian Muslims and Jews arrived in Tunis and would become of importance to the economic prosperity of the Hafsid capital and the development of its intellectual life.\nTunis is located in north-eastern Tunisia on the Lake of Tunis, and is connected to the Mediterranean sea's Gulf of Tunis by a canal which terminates at the port of La Goulette/Halq al Wadi. The ancient city of Carthage is located just north of Tunis along the coastal part. The city is further South than Sicily, on a similar latitude to Cádiz, an ancient city in Southern Spain with ties to the Phoenician and Carthaginian civilizations.\nTunis has a hot semi-arid climate (Köppen climate classification BSh) bordering a hot-summer Mediterranean climate (Csa), characterized by hot and dry, prolonged summers and mild winters with moderate rainfall. The local climate is also affected somewhat by the latitude of the city, the moderating influence of the Mediterranean sea, and the terrain of the hills.\nBecause of population pressure and the rate of migration to the capital, the city continued to grow, even with the creation of new districts in the suburbs. Old buildings have gradually been renovated and upgraded. New buildings have come to influence the urban landscape. At the same time, an active policy of industrialization is developing the municipal economy. The Medina of Tunis has been a UNESCO World Heritage Site since 1979.\nThe ruins of Carthage are nearby, along the coast to the northeast, with many ancient ruins."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

@@ -6,6 +6,10 @@ import { formatLength, loopGradeBand, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { nameTier } from "@/game/place-name";
 import { PlaceNameText } from "@/components/place-name";
+import { FlagImg } from "@/components/flag-img";
+import { flagEntry } from "@/lib/flag-registry";
+import { isEnabled } from "@/lib/flags";
+import { buildDetectiveHostProps } from "./detective/detective-host-props";
 import { GradeChip } from "@/components/grade-chip";
 import { ScrollCue, useMoreBelow } from "@/components/scroll-cue";
 import { BRAND } from "@/game/brand";
@@ -13,8 +17,10 @@ import { shareLoopText } from "@/game/share";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
+import { SoundToggle } from "@/components/SoundToggle";
 import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
+import { LoopSessionSummaryPanel } from "./LoopSessionSummary.tsx";
 import { displayLoopName, fetchLoopIndex, isDuplicateGuess, unlabeledSpotEntry } from "./evaluate";
 import { LoopMap, ringAnnouncement, type LoopMapHandle } from "./LoopMap";
 import { LoopMapBoundary, LoopMapOffLine } from "./loop-map-boundary";
@@ -42,14 +48,18 @@ import {
   dealFromDeck,
   dealPuzzleIndex,
   deckIdOfPuzzle,
+  endSession,
   ensurePackDeck,
   freshLoopPuzzleState,
   getDeckState,
   loadLoopStore,
+  loopSessionSummary,
   returnIndexToDeckHead,
   returnPuzzleIndexToDeck,
   setActiveDeck,
   writeLoopStoreV2,
+  type LoopEndFate,
+  type LoopSessionSummary,
 } from "./store";
 import {
   isLoopPackManifest,
@@ -64,7 +74,7 @@ import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
 import { geodetectiveConfig, getBandConfig, canUseHint, resolveBand, type AgeBandId, type GeoDetectiveConfig } from "@/game/age-profile";
 import { HintPanel } from "@/components/hint-panel";
 import { PackShelf } from "@/components/pack-shelf";
-import { CORE_DECK_ID as SHELF_CORE_DECK_ID, toShelfDeckId } from "@/components/pack-shelf-data";
+import { CORE_DECK_ID as SHELF_CORE_DECK_ID, deckLabelForId, toShelfDeckId } from "@/components/pack-shelf-data";
 import { directionalHint } from "@/components/hint-logic";
 import { awardCleanRoundBadge, type PassportBadge } from "@/game/passport/badges";
 import {
@@ -96,6 +106,11 @@ const HOOK_TIER_INDEX = 3;
 
 // The Storyteller mascot stays out of the initial bundle (lazy chunk).
 const StorytellerNarration = lazy(() => import("@/components/storyteller"));
+
+// Holmes & Watson (U5): same lazy-chunk discipline — and the host is
+// only ever mounted behind the detectivePair flag (default off), so a
+// flag-off session never even fetches the chunk.
+const DetectiveHost = lazy(() => import("./detective/DetectiveHost"));
 
 /** Puzzles whose hook narration already played this session (auto once per puzzle). */
 const hookNarratedPuzzles = new Set<string>();
@@ -301,6 +316,45 @@ function dealActiveDeck(
   };
 }
 
+/**
+ * The plain notice shown for a case that was dealt as a FALLBACK
+ * (#336): the player picked a pack, the pack could not be resolved at
+ * deal time, and the deal came from the core deck instead (the §0
+ * fallback in docs/story-packs.md — the fallback stays, the silence
+ * goes). The pick is untouched, so the next deal tries the pack
+ * again, and the notice says exactly that.
+ */
+function deckFallbackNoticeText(pickedDeckId: string): string {
+  const packLabel = deckLabelForId(pickedDeckId);
+  return `${packLabel} couldn’t load just now — this case is from All cases instead. Your next case will try ${packLabel} again.`;
+}
+
+/**
+ * The one plain sentence that names where the OPEN case came from
+ * (#336, owner wording cure 2026-11-04). The owner found the first
+ * version confusing: a "Deck: X" header label, the shelf's next-case
+ * line, and the fallback notice could all speak at once and seem to
+ * disagree. So now there is exactly one sentence, in one place: a
+ * healthy case gets this line, and a fallback case gets the fallback
+ * notice (deckFallbackNoticeText) in the same spot instead — never
+ * both. The deck comes from the case itself (deckIdOfPuzzle), never
+ * from the player's pick, which steers the NEXT deal.
+ */
+function caseSourceText(openCaseDeckId: string): string {
+  if (openCaseDeckId === LOOP_CORE_DECK_ID) return "This case is from All cases.";
+  return `This case is from your ${deckLabelForId(openCaseDeckId)} deck.`;
+}
+
+/**
+ * Did this deal fall back? A pack was picked (the store's active deck
+ * is not the core deck) but the dealt case came from the core deck.
+ * Keyed on the dealt result, so it fires exactly when resolution
+ * returned no pack — at either deal site.
+ */
+function dealFellBack(store: LoopUnlimitedStore, dealtDeckId: string): boolean {
+  return activeDeckIdOf(store) !== LOOP_CORE_DECK_ID && dealtDeckId === LOOP_CORE_DECK_ID;
+}
+
 /** §7e rollback for either deck: the failed index returns to its own deck's head. */
 function rollbackDeal(
   store: LoopUnlimitedStore,
@@ -362,14 +416,79 @@ export function LoopScreen({
     writeLoopStoreV2(next);
   };
 
+  // End game (owner ruling, 2026-11-07): the header button opens a
+  // choice dialog; picking a fate runs endSession and swaps the case
+  // surface for the session summary. The summary is a transient
+  // screen state (nothing extra is persisted): a reload on it
+  // reopens the loop, which resumes (pause) or deals fresh
+  // (outright). The opener ref returns focus on a no-change close,
+  // the ResetHistory alertdialog pattern.
+  const [endChoiceOpen, setEndChoiceOpen] = useState(false);
+  const [endedSummary, setEndedSummary] = useState<{
+    summary: LoopSessionSummary;
+    fate: LoopEndFate | "none";
+  } | null>(null);
+  const endGameOpenerRef = useRef<HTMLButtonElement | null>(null);
+  const endGameDialogRef = useRef<HTMLDivElement | null>(null);
+
+  // Focus moves into the dialog when it opens — this is also what
+  // lets the dialog's Esc handler fire.
+  useEffect(() => {
+    if (endChoiceOpen) endGameDialogRef.current?.focus({ preventScroll: true });
+  }, [endChoiceOpen]);
+
+  // Document-level Escape for the end-game dialog (panel round 1,
+  // keyboard modality): focus may sit outside the dialog div — where
+  // the div's own onKeyDown never fires — so while the choice is open
+  // Escape is also heard on the document and closes with no change.
+  useEffect(() => {
+    if (!endChoiceOpen) return;
+    const onDocumentKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeEndChoice();
+    };
+    document.addEventListener("keydown", onDocumentKeyDown);
+    return () => document.removeEventListener("keydown", onDocumentKeyDown);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [endChoiceOpen]);
+
+  const closeEndChoice = () => {
+    setEndChoiceOpen(false);
+    const opener = endGameOpenerRef.current;
+    if (opener && document.contains(opener)) {
+      // The dialog unmounts on the next paint — return focus after
+      // that, without scrolling the page.
+      requestAnimationFrame(() => {
+        if (document.contains(opener)) opener.focus({ preventScroll: true });
+      });
+    }
+  };
+
+  const finishEndGame = (fate: LoopEndFate, recorded: LoopEndFate | "none") => {
+    const s = storeRef.current;
+    if (!s) return;
+    const next = endSession(s, fate);
+    commitStore(next);
+    setEndedSummary({ summary: loopSessionSummary(next), fate: recorded });
+    setEndChoiceOpen(false);
+  };
+
   // Pack shelf pick: the loop store is this edition's one selection
   // store, and this screen owns its live copy, so a pick is a store
   // commit (setActiveDeck), never a side write the next commit would
   // overwrite. The open mystery is untouched: it completes against
   // the deck it was dealt from; the pick steers the next deal.
   const onPickDeck = (shelfDeckId: string) => {
+    // Keyboard modality (panel round 1): while the end-game choice is
+    // open the store must not change under the dialog — pointer users
+    // are blocked by the overlay; this closes the keyboard path.
+    if (endChoiceOpen) return;
     const s = storeRef.current;
     if (!s) return;
+    // A fresh pick supersedes any fallback notice from the last deal:
+    // the notice described that deal, not the player's new pick. (When
+    // the tap also starts the next case, the deal that follows sets a
+    // fresh notice if it falls back again.)
+    setDeckFallbackNotice(null);
     commitStore(setActiveDeck(s, shelfDeckId === SHELF_CORE_DECK_ID ? undefined : shelfDeckId));
   };
 
@@ -397,6 +516,12 @@ export function LoopScreen({
   // the badge needs a visible surface). Set only on the winning guess that
   // earns it; cleared when the next mystery deals.
   const [cleanRoundBadge, setCleanRoundBadge] = useState<PassportBadge | null>(null);
+  // Deck fallback notice (#336): set only when a deal actually fell
+  // back — a pack was picked but the case came from the core deck.
+  // It belongs to that case: it stays up while the case plays and on
+  // its reveal, and it is cleared by the next deal and by a deck
+  // pick. Resumed/revealed cases and healthy deals never set it.
+  const [deckFallbackNotice, setDeckFallbackNotice] = useState<string | null>(null);
   // "Next mystery" idempotence: the button deals once and unmounts with
   // the reveal; a second tap during the deal is a no-op.
   const dealingRef = useRef(false);
@@ -481,6 +606,10 @@ export function LoopScreen({
       let dealIndex: number;
       let popped = false;
       let poppedDeckId = LOOP_CORE_DECK_ID;
+      // #336: the fallback notice for a FRESH deal on this mount, if it
+      // falls back. Resume/reveal/seam paths never deal, so they leave
+      // the notice alone (it starts null and those cases get none).
+      let dealNotice: string | null = null;
       if (next.current && next.current.status === "playing") {
         // Resume first: neither the seam nor a fresh deal ever clobbers an
         // in-progress mystery (the seam param survives reloads in the URL —
@@ -501,6 +630,9 @@ export function LoopScreen({
         dealIndex = dealt.index;
         popped = true;
         poppedDeckId = dealt.deckId;
+        dealNotice = dealFellBack(next, dealt.deckId)
+          ? deckFallbackNoticeText(activeDeckIdOf(next))
+          : null;
         const dealtConfig = captureDealConfig();
         next = {
           ...dealt.store,
@@ -514,7 +646,12 @@ export function LoopScreen({
           `${base}loop/clues/${dealIndex}.json`,
           isLoopClueFile,
         );
-        if (!cancelled) setLoad({ phase: "ready", clue, index: dealIndex });
+        if (!cancelled) {
+          // The fresh deal is the open case now: its fallback notice
+          // (or none) replaces any previous case's.
+          if (popped) setDeckFallbackNotice(dealNotice);
+          setLoad({ phase: "ready", clue, index: dealIndex });
+        }
       } catch (err: unknown) {
         if (cancelled) return;
         if (popped) {
@@ -526,6 +663,8 @@ export function LoopScreen({
             manifest.size,
           );
           commitStore(rolled);
+          // The deal was rolled back — no case opened, no notice.
+          setDeckFallbackNotice(null);
         }
         setLoad(await toErrorState(err, !onlineRef.current));
       }
@@ -552,6 +691,10 @@ export function LoopScreen({
   };
 
   const onPick = (entry: LoopNameEntry) => {
+    // Keyboard modality (panel round 1): while the end-game choice is
+    // open, a guess must not land under the dialog that describes the
+    // case — the dialog reads live `current`, so the store stays frozen.
+    if (endChoiceOpen) return;
     const s = storeRef.current;
     const current = s?.current;
     // The loaded clue must belong to the open mystery — a stale pick
@@ -655,6 +798,9 @@ export function LoopScreen({
 
   /** The core retention hook: instant deal from the deck, no waiting room. */
   const onNextMystery = () => {
+    // Keyboard modality (panel round 1): no deal while the end-game
+    // choice dialog is open (see onPick).
+    if (endChoiceOpen) return;
     if (dealingRef.current) return;
     const s = storeRef.current;
     if (!s?.current || s.current.status === "playing") return;
@@ -681,6 +827,11 @@ export function LoopScreen({
       const resolved = await resolveActivePack(next, base);
       next = resolved.store;
       const dealt = dealActiveDeck(next, manifest.size, resolved.pack);
+      // #336: a fallback on this deal gets its notice; a healthy deal
+      // (or a core pick) clears any previous case's notice.
+      const dealNotice = dealFellBack(next, dealt.deckId)
+        ? deckFallbackNoticeText(activeDeckIdOf(next))
+        : null;
       const dealtConfig = captureDealConfig();
       next = {
         ...dealt.store,
@@ -692,6 +843,7 @@ export function LoopScreen({
           `${base}loop/clues/${dealt.index}.json`,
           isLoopClueFile,
         );
+        setDeckFallbackNotice(dealNotice);
         setLoad({ phase: "ready", clue, index: dealt.index });
         // SFX audio spec §2.5: the "case file snapped open" fires when the
         // next mystery deals — only on this explicit user tap, and only on
@@ -705,6 +857,8 @@ export function LoopScreen({
           manifest.size,
         );
         commitStore(rolled);
+        // The deal was rolled back — no case opened, no notice.
+        setDeckFallbackNotice(null);
         setLoad(await toErrorState(err, !onlineRef.current));
       }
     })()
@@ -766,10 +920,30 @@ export function LoopScreen({
   return (
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
       <div className="flex items-center justify-between gap-3">
-        <Button variant="ghost" className="self-start" onClick={onLeave}>
-          Editions
-        </Button>
-        <p className="text-sm text-fg">Case #{caseNo}</p>
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" className="self-start" onClick={onLeave}>
+            Editions
+          </Button>
+          {store && load.phase === "ready" && !endedSummary ? (
+            <Button
+              variant="secondary"
+              data-testid="end-game-button"
+              className="min-h-[44px]"
+              onClick={() => setEndChoiceOpen(true)}
+              ref={endGameOpenerRef}
+            >
+              End game
+            </Button>
+          ) : null}
+        </div>
+        <div className="flex items-center gap-2">
+          <p className="text-sm text-fg">Case #{caseNo}</p>
+          {/* Sound Everywhere (PR C, council Q6): the same master
+              SoundToggle as home and the map-quiz chrome — GeoDetective
+              had no in-screen mute before this. One persisted key
+              (meridian.sound), one implementation (SoundToggle.tsx). */}
+          <SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />
+        </div>
       </div>
       <header className="mt-4">
         <h1 ref={headingRef} tabIndex={-1} className="mode-title text-4xl text-fg sm:text-5xl">GeoDetective</h1>
@@ -779,20 +953,139 @@ export function LoopScreen({
         </p>
       </header>
 
+      {/* End game choice dialog: the ResetHistory alertdialog
+          mechanics — focus moves into the dialog on open, Esc means
+          "no change", and focus returns to the opener on a
+          no-change close. Mid-case the player picks the in-flight
+          case's fate (owner ruling, 2026-11-07: BOTH capabilities,
+          neither is a stray-tap default); with no case in flight a
+          single confirm ends the session. */}
+      {endChoiceOpen ? (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4">
+          <div
+            role="alertdialog"
+            aria-modal="true"
+            aria-labelledby="loop-end-game-title"
+            aria-describedby="loop-end-game-desc"
+            data-testid="end-game-dialog"
+            tabIndex={-1}
+            ref={endGameDialogRef}
+            className="mode-card w-full max-w-md p-5"
+            onKeyDown={(e) => {
+              if (e.key === "Escape") closeEndChoice();
+            }}
+          >
+            <h2 id="loop-end-game-title" className="text-2xl text-fg">
+              End the game?
+            </h2>
+            {current?.status === "playing" ? (
+              <>
+                <p id="loop-end-game-desc" className="mt-2 text-fg">
+                  You'll see how your cases went. What about the case you're
+                  solving right now?
+                </p>
+                <div className="mt-4 flex flex-col gap-2">
+                  <Button
+                    variant="secondary"
+                    data-testid="end-game-outright"
+                    className="min-h-[48px] w-full"
+                    onClick={() => finishEndGame("outright", "outright")}
+                  >
+                    <span className="flex flex-col items-center">
+                      <span>End this case too</span>
+                      <span className="block text-sm opacity-80">
+                        This case is over. It won't count as solved or lost, and you
+                        can't resume it.
+                      </span>
+                    </span>
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    data-testid="end-game-pause"
+                    className="min-h-[48px] w-full"
+                    onClick={() => finishEndGame("pause", "pause")}
+                  >
+                    <span className="flex flex-col items-center">
+                      <span>Pause this case</span>
+                      <span className="block text-sm opacity-80">
+                        This case waits for you, just as it is. You can resume it from
+                        Home.
+                      </span>
+                    </span>
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <>
+                <p id="loop-end-game-desc" className="mt-2 text-fg">
+                  You'll see how your cases went.
+                </p>
+                <div className="mt-4">
+                  <Button
+                    variant="secondary"
+                    data-testid="end-game-confirm"
+                    className="min-h-[48px] w-full"
+                    onClick={() => finishEndGame("pause", "none")}
+                  >
+                    End game
+                  </Button>
+                </div>
+              </>
+            )}
+            <Button
+              variant="ghost"
+              data-testid="end-game-keep-playing"
+              className="mt-3 min-h-[44px]"
+              onClick={closeEndChoice}
+            >
+              Keep playing
+            </Button>
+          </div>
+        </div>
+      ) : null}
+
+      {endedSummary ? (
+        <LoopSessionSummaryPanel
+          summary={endedSummary.summary}
+          fate={endedSummary.fate}
+          onDone={onLeave}
+        />
+      ) : null}
+
       {/* Pack shelf (story packs): deck chips under the header. A pick
           commits the loop store's active deck through onPickDeck, and
           the deal path reads that same store. activeDeckId names the
           deck the open case came from (the store's active deck while
           no case is open), in shelf vocabulary. */}
-      <PackShelf
-        edition="geodetective"
+      {!endedSummary ? (
+        <PackShelf
+          edition="geodetective"
         activeDeckId={toShelfDeckId(
           current ? deckIdOfPuzzle(current) : store ? activeDeckIdOf(store) : LOOP_CORE_DECK_ID,
         )}
         caseFinished={!!current && current.status !== "playing"}
         onPickDeck={onPickDeck}
         onStartNext={onNextMystery}
-      />
+          statusLineSuppressed={deckFallbackNotice !== null}
+        />
+      ) : null}
+
+      {/* The ONE deck signal (#336, owner wording cure): a single
+          plain sentence naming where the open case came from. A
+          healthy case gets caseSourceText; a fallback case gets the
+          fallback notice in this same spot instead — and while that
+          notice is up, the shelf's own status line is suppressed
+          (statusLineSuppressed above) so only one message speaks.
+          Shown only once the case's clues are on screen (phase
+          "ready"): during a deal the store already points at the new
+          case while its notice is not settled yet, and a half-dealt
+          case must not speak early. Before the first deal there is
+          no open case, so there is nothing to name. */}
+      {current && load.phase === "ready" && !endedSummary ? (
+        <p role="status" data-testid="case-source-line" className="mt-4 text-sm text-fg">
+          {deckFallbackNotice ?? caseSourceText(deckIdOfPuzzle(current))}
+        </p>
+      ) : null}
 
       {load.phase === "loading" ? (
         <p className="mt-10 text-lg text-fg" role="status">
@@ -836,7 +1129,7 @@ export function LoopScreen({
         )
       ) : null}
 
-      {load.phase === "ready" && store && current ? (
+      {load.phase === "ready" && store && current && !endedSummary ? (
         <LoopGame
           clue={load.clue}
           puzzle={current}
@@ -851,6 +1144,7 @@ export function LoopScreen({
           }
           packBriefing={packBriefing}
           packBlurb={packEntry?.blurb ?? null}
+          packFlagKey={packEntry?.flagKey ?? null}
           reduced={reduced}
           notice={pickNotice}
           revealAnnouncement={revealAnnouncement}
@@ -910,6 +1204,7 @@ function LoopGame({
   cycleCompleted,
   packBriefing,
   packBlurb,
+  packFlagKey,
   reduced,
   notice,
   revealAnnouncement,
@@ -931,6 +1226,13 @@ function LoopGame({
   packBriefing: string | null;
   /** Pack pairing blurb for the reveal; null for core cases. */
   packBlurb: string | null;
+  /**
+   * Capitals & Flags: the subject land's flag identity, or null when
+   * the land is flagless (no licence-verified flag). The flag renders
+   * only beside the land's name: in this briefing, at the Giveaway
+   * rung, and on the reveal's identity card.
+   */
+  packFlagKey: string | null;
   reduced: boolean;
   notice: string | null;
   revealAnnouncement: string | null;
@@ -1123,7 +1425,12 @@ function LoopGame({
     <div
       ref={screenAnimateRef}
       data-testid="loop-screen"
-      className="mt-8 flex flex-col gap-6"
+      className={
+        "mt-8 flex flex-col gap-6" +
+        (isEnabled("detectivePair") && isEnabled("hostsStaging")
+          ? " detective-staging-on"
+          : "")
+      }
     >
       <section
         ref={mapSectionAnimateRef}
@@ -1193,6 +1500,30 @@ function LoopGame({
         </p>
       </section>
 
+      {/* Holmes & Watson (U5, flag-gated, default off = not mounted at
+          all). Mounted AFTER the map section (PR A): the host's
+          fixed/portal surfaces do not care about DOM position, but
+          its in-flow bench slot must sit directly under the map.
+          Props come from the whitelist builder ONLY
+          (detective-host-props.ts): the pair never receives the puzzle,
+          the clue file, a target, or any evaluation. */}
+      {isEnabled("detectivePair") ? (
+        <Suspense fallback={null}>
+          <DetectiveHost
+            {...buildDetectiveHostProps({
+              caseIndex: puzzle.index,
+              cluesRevealed: puzzle.cluesRevealed,
+              status: puzzle.status,
+              sheetOpen: selected !== null,
+              lastGuessPlaceId:
+                puzzle.guesses[puzzle.guesses.length - 1]?.placeId ?? null,
+              freshDeal: puzzle.guesses.length === 0 && puzzle.cluesRevealed <= dealConfig.startingClues,
+              answerPlaceId: clue.placeId, // U8: the props builder gates this to the post-solve reveal only
+            })}
+          />
+        </Suspense>
+      ) : null}
+
       {selected && !finished ? (
         <PlaceSheet
           // Core F-3 (sheet path): a tap entry was named synchronously at
@@ -1213,7 +1544,13 @@ function LoopGame({
       ) : null}
 
       {packBriefing && !finished ? (
-        <p className="text-base font-medium text-fg">{packBriefing}</p>
+        <p className="flex items-center gap-2 text-base font-medium text-fg">
+          {/* The flag sits beside the given name the briefing itself
+              states — the design's one flag rule. Flagless lands and
+              core cases render the plain line. */}
+          <FlagImg flagKey={packFlagKey ?? undefined} className="h-6" />
+          <span>{packBriefing}</span>
+        </p>
       ) : null}
 
       <section aria-label="Clues" className="flex flex-col gap-3">
@@ -1228,6 +1565,12 @@ function LoopGame({
               revealed={finished || i < puzzle.cluesRevealed}
               reduced={reduced}
             />
+            {i === CLUE_TIERS.length - 1 && packFlagKey && (finished || i < puzzle.cluesRevealed) ? (
+              <p className="flex items-center gap-2 pl-1 text-xs text-muted" data-testid="loop-giveaway-flag">
+                <FlagImg flagKey={packFlagKey} className="h-6" />
+                <span>The flag of {flagEntry(packFlagKey)?.land ?? "this land"}</span>
+              </p>
+            ) : null}
             {i === HOOK_TIER_INDEX && hookVisible ? (
               <Suspense fallback={null}>
                 <StorytellerNarration
@@ -1316,6 +1659,7 @@ function LoopGame({
           caseNo={caseNo}
           cycleCompleted={cycleCompleted}
           packBlurb={packBlurb}
+          packFlagKey={packFlagKey}
           reduced={reduced}
           revealAnnouncement={revealAnnouncement}
           onNextMystery={onNextMystery}
@@ -1507,6 +1851,7 @@ function LoopReveal({
   caseNo,
   cycleCompleted,
   packBlurb,
+  packFlagKey,
   reduced,
   revealAnnouncement,
   onNextMystery,
@@ -1526,6 +1871,8 @@ function LoopReveal({
    * plainly (design §4 rule 7). Null for core cases.
    */
   packBlurb: string | null;
+  /** Capitals & Flags: subject land's flag identity; null = flagless. */
+  packFlagKey: string | null;
   reduced: boolean;
   revealAnnouncement: string | null;
   onNextMystery: () => void;
@@ -1650,6 +1997,20 @@ function LoopReveal({
             </>
           )}
           {packBlurb ? <p className="mt-3 text-sm text-fg">{packBlurb}</p> : null}
+          {packFlagKey && flagEntry(packFlagKey) ? (
+            <div
+              className="mt-3 flex items-center gap-3 rounded-xl border border-line bg-bg p-3"
+              data-testid="loop-reveal-flag"
+            >
+              <FlagImg flagKey={packFlagKey} className="h-10" />
+              <p className="text-sm text-fg">
+                <span className="font-medium">
+                  The flag of {flagEntry(packFlagKey)!.land}.
+                </span>{" "}
+                {flagEntry(packFlagKey)!.story}
+              </p>
+            </div>
+          ) : null}
         </div>
         {/* ---- Zone 2: the single scrolling body — case file + share +
             source. Named region + tabindex="0" per spec §8.1. ---- */}

@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "tallahassee-florida",
+  "target": {
+    "placeId": "gn-4174715",
+    "name": "Tallahassee",
+    "aliases": [],
+    "lat": 30.43826,
+    "lon": -84.28073,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Florida",
+    "iso2": "US",
+    "subdivision": "Florida"
+  },
+  "subjectAnswer": {
+    "name": "Florida",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Florida",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city is hilly, which is rare in its flat southern state. It sits at the southern end of a red hills region.",
+      "narrowing": "Points to a hilly inland city in a famously flat state.",
+      "source": {
+        "article": "Tallahassee, Florida",
+        "url": "https://en.wikipedia.org/wiki/Tallahassee%2C_Florida",
+        "quote": "Tallahassee's terrain is hilly by Florida standards, being at the southern end of the Red Hills Region, just above the Cody Scarp."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Summers here are long and tropical, hotter than the beach towns to the south. Winters are short and mild, with barely a touch of cold.",
+      "narrowing": "Keeps inland southern capitals with long tropical summers.",
+      "source": {
+        "article": "Tallahassee, Florida",
+        "url": "https://en.wikipedia.org/wiki/Tallahassee%2C_Florida",
+        "quote": "Tallahassee has a humid subtropical climate (Köppen: Cfa), with long, tropical summers and short, mild winters, as well as warm to hot, drier springs and autumns."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "The lawmakers were tired of long boat trips to two far ports. In 1824, they chose this old town site, halfway in between.",
+      "narrowing": "Cuts the list to the site two commissioners picked as a halfway point.",
+      "source": {
+        "article": "Tallahassee, Florida — History",
+        "url": "https://en.wikipedia.org/wiki/Tallahassee%2C_Florida#History",
+        "quote": "Two appointed commissioners selected Tallahassee, then an Apalachee settlement (Anhaica) virtually abandoned after Andrew Jackson burned it in 1818, as a halfway point."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "This city's name is a Muskogean word. It is often translated as \"old fields\" or \"old town\".",
+      "narrowing": "Nearly decisive: one capital's name means 'old fields' in Muskogean.",
+      "source": {
+        "article": "Tallahassee, Florida — History",
+        "url": "https://en.wikipedia.org/wiki/Tallahassee%2C_Florida#History",
+        "quote": "The name Tallahassee is a Muskogean word often translated as \"old fields\" or \"old town\"."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Florida works in this city. The state capitol tower rises here, near the top of one of its high hills.",
+      "narrowing": "Confirms it: the governor and lawmakers of Florida work in this city.",
+      "source": {
+        "article": "Tallahassee, Florida",
+        "url": "https://en.wikipedia.org/wiki/Tallahassee%2C_Florida",
+        "quote": "is the capital city of the U.S. state of Florida"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Two commissioners picked this halfway spot in 1824 so lawmakers would stop sailing between two distant old capitals. Its name is a Muskogean word meaning \"old fields,\" and its hills surprise visitors in a flat state. The building is the capitol, and the city is the capital. Tallahassee is the capital of Florida."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Tallahassee%2C_Florida"
+  },
+  "pointPolicy": "geonames-point"
+}

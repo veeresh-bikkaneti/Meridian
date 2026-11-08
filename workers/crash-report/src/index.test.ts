@@ -16,7 +16,16 @@ import {
   classifyCrashVerdict,
   type CrashVerdictFacts,
   bucketKey,
+  DEVICE_FIELD_ALLOWLIST,
+  deriveVerdict,
   emptyBucket,
+  groupKeyOf,
+  MAX_GROUP_KEYS,
+  missingStampNames,
+  normaliseEvent,
+  severityKeyOf,
+  severityOf,
+  verdictFactsOf,
   handleRequest,
   hourLabelOf,
   HOUR_MS,
@@ -28,6 +37,8 @@ import {
   thresholdConfig,
   tierOf,
   validateEvent,
+  EVENT_TYPES,
+  FUNNEL_CLASS_TYPES,
   MAX_BODY_BYTES,
   ALLOWED_ORIGINS,
   RATE_LIMIT_BINDING,
@@ -71,6 +82,63 @@ test("validateEvent: accepts a well-formed event", () => {
 
 test("validateEvent: accepts tile_failed", () => {
   assert.deepEqual(validateEvent(validEvent({ type: "tile_failed" })), []);
+});
+
+// --- #194 wave 2: the funnel types (storyteller / narration) -------------
+//
+// The client has emitted these six types since #108 through the same
+// transport as every crash event, but the worker's allowlist never
+// included them — every one was answered 400 and silently dropped.
+// The payloads below are copied from the real emission sites in
+// src/components/storyteller.tsx (COPPA-clean: screen/trigger/booleans
+// only, never place content).
+
+const FUNNEL_PAYLOADS: Record<string, Record<string, unknown>> = {
+  storyteller_shown: { screen: "story", sound_on: true, reduced_motion: false },
+  narration_started: { screen: "story", trigger: "first_gesture", sound_on: true, line_count: 1 },
+  narration_completed: { screen: "summary", duration_ms: 4200, trigger: "speaker" },
+  narration_replayed: { screen: "story", line_index: 0, trigger: "replay" },
+  narration_failed: { screen: "geodetective", error_name: "NotSupportedError", trigger: "summary" },
+  narration_dismissed: { screen: "story", at_line: 1, reason: "tap_caption" },
+};
+
+test("EVENT_TYPES: the accepted set is exactly the client's 14 types (#194)", () => {
+  // Pinned literally on purpose: this list is the contract with
+  // ObservabilityEventType in src/lib/observability.ts, and the drift
+  // test (scripts/observability-event-types.test.mjs) fails if the two
+  // ever disagree again. Changing one side MUST change both.
+  assert.deepEqual(
+    [...EVENT_TYPES].sort(),
+    [
+      "boot_failure",
+      "js_error",
+      "map_error",
+      "narration_completed",
+      "narration_dismissed",
+      "narration_failed",
+      "narration_replayed",
+      "narration_started",
+      "recovery_outcome",
+      "storyteller_shown",
+      "suspected_crash",
+      "tile_failed",
+      "unhandled_rejection",
+      "webgl_context_lost",
+    ],
+  );
+  assert.deepEqual([...FUNNEL_CLASS_TYPES].sort(), Object.keys(FUNNEL_PAYLOADS).sort());
+});
+
+test("validateEvent: accepts every funnel type with its real payload shape (#194)", () => {
+  for (const [type, params] of Object.entries(FUNNEL_PAYLOADS)) {
+    assert.deepEqual(validateEvent(validEvent({ type, ...params })), [], type);
+  }
+});
+
+test("validateEvent: still rejects unknown types, including funnel near-misses (#194)", () => {
+  for (const type of ["narration_ended", "storyteller_hidden", "narration", "crash"]) {
+    assert.ok(validateEvent(validEvent({ type })).length > 0, type);
+  }
 });
 
 test("validateEvent: rejects missing/unknown type", () => {
@@ -170,6 +238,12 @@ test("tierOf: crash-class vs hiccup-class classification", () => {
   }
   assert.equal(tierOf("tile_failed"), "hiccup");
   assert.equal(tierOf("webgl_context_lost"), "hiccup");
+});
+
+test("tierOf: funnel-class types are counted-only (hiccup tier) (#194)", () => {
+  for (const t of FUNNEL_CLASS_TYPES) {
+    assert.equal(tierOf(t), "hiccup", t);
+  }
 });
 
 test("thresholdConfig: env overrides and fallbacks", () => {
@@ -283,6 +357,28 @@ test("hiccup-class event: counted but NOT forwarded individually", async () => {
   assert.equal(fetchCalls.length, 0, "no individual forward for hiccup-class");
 });
 
+test("funnel-class event: accepted, counted, NOT forwarded individually (#194)", async () => {
+  const { map, store } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  // The exact shape storyteller.tsx posts for a finished narration.
+  const res = await handleRequest(
+    postEvent(validEvent({ type: "narration_completed", ...FUNNEL_PAYLOADS.narration_completed })),
+    env,
+  );
+  assert.equal(res.status, 200, "previously a 400 — the event was dropped");
+  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  assert.equal(json.forwarded, false);
+  assert.equal(json.counted, true);
+  assert.equal(fetchCalls.length, 0, "no individual forward for funnel-class");
+  const hour = hourLabelOf(Date.now());
+  const bucket = (await store.readBucket(bucketKey(hour, "narration_completed")))!;
+  assert.equal(bucket.total, 1, "counted into its own (hour × type) bucket");
+});
+
 test("threshold alert: fires exactly once per type+hour", async () => {
   const { map, store } = memoryStore();
   globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
@@ -334,6 +430,115 @@ test("threshold alert: per-build threshold (10/hour from one build)", async () =
   assert.equal(fetchCalls.length, 1, "alert fires on the 10th event from one build");
   const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
   assert.ok(sent.includes("single build crossed"), "per-build reason in the alert");
+});
+
+test("threshold alert: routine funnel types never alert, even past both thresholds (#311)", async () => {
+  const cfg = thresholdConfig({});
+  const now = 1_729_000_000_000;
+  // Per-build leg (the spec's exact case): 10 storyteller_shown from one build.
+  const { store } = memoryStore();
+  for (let i = 0; i < 10; i++) {
+    const r = await recordTelemetry(
+      store,
+      tileEvent({ type: "storyteller_shown" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `storyteller_shown #${i + 1} must not alert`);
+  }
+  // Per-hour leg: 20 storyteller_shown across 20 builds (total >= perHour).
+  const { store: store2 } = memoryStore();
+  for (let i = 0; i < 20; i++) {
+    const r = await recordTelemetry(
+      store2,
+      tileEvent({ type: "storyteller_shown", buildId: `build-${i}` }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `cross-build storyteller_shown #${i + 1} must not alert`);
+  }
+  // A second routine type: the exemption is set-wide, not storyteller-only.
+  const { store: store3 } = memoryStore();
+  for (let i = 0; i < 10; i++) {
+    const r = await recordTelemetry(
+      store3,
+      tileEvent({ type: "narration_started" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `narration_started #${i + 1} must not alert`);
+  }
+});
+
+test("threshold alert: 10 storyteller_shown via ingest post no Discord alert (#311)", async () => {
+  const { map, store } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const now = Date.now();
+  const cfg = thresholdConfig({});
+  for (let i = 0; i < 9; i++) {
+    await recordTelemetry(
+      store,
+      tileEvent({ type: "storyteller_shown" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+  }
+  const res = await handleRequest(
+    postEvent(validEvent({ type: "storyteller_shown", buildId: "f331846", ...FUNNEL_PAYLOADS.storyteller_shown })),
+    env,
+  );
+  assert.equal(res.status, 200);
+  assert.equal(fetchCalls.length, 0, "no Discord post for 10 routine funnel events");
+});
+
+test("threshold alert: narration_failed still alerts at the per-build threshold (#311)", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const now = 1_729_000_000_000;
+  for (let i = 0; i < 9; i++) {
+    const r = await recordTelemetry(
+      store,
+      tileEvent({ type: "narration_failed" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `narration_failed #${i + 1} below threshold`);
+  }
+  const r10 = await recordTelemetry(
+    store,
+    tileEvent({ type: "narration_failed" }) as CrashReportEvent,
+    now,
+    cfg,
+  );
+  assert.equal(r10.alerted, true, "narration_failed trips at 10 from one build");
+  assert.ok(r10.alertText?.includes("narration_failed"), "alert names the type");
+});
+
+test("threshold alert: suspected_crash still alerts at the per-build threshold (#311)", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const now = 1_729_000_000_000;
+  for (let i = 0; i < 9; i++) {
+    const r = await recordTelemetry(
+      store,
+      tileEvent({ type: "suspected_crash" }) as CrashReportEvent,
+      now,
+      cfg,
+    );
+    assert.equal(r.alerted, false, `suspected_crash #${i + 1} below threshold`);
+  }
+  const r10 = await recordTelemetry(
+    store,
+    tileEvent({ type: "suspected_crash" }) as CrashReportEvent,
+    now,
+    cfg,
+  );
+  assert.equal(r10.alerted, true, "suspected_crash trips at 10 from one build");
+  assert.ok(r10.alertText?.includes("suspected_crash"), "alert names the type");
 });
 
 test("threshold: env override lowers the trip point", async () => {
@@ -465,7 +670,13 @@ test("digest: renders counts, flags the anomaly, posts once", async () => {
   assert.equal(fetchCalls.length, 1, "exactly one digest post");
   const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
   assert.ok(sent.startsWith("📊 Meridian telemetry — hourly digest"), "digest header");
-  assert.ok(sent.includes("hour: 2026-10-18 02:00–02:59 UTC") || sent.includes("02:00"), "hour line");
+  // Exact hour line (the old assertion accepted any string containing
+  // "02:00" — Slice 3 found it vacuous; the digest now labels the hour
+  // as the receipt hour, §5.2/§5.3).
+  assert.ok(
+    sent.split("\n")[1] === "hour: 2026-10-18 02:00–03:00 UTC (receipt hour) (36 events)",
+    `hour line: ${sent.split("\n")[1]}`,
+  );
   assert.ok(sent.includes("js_error 11"), "js_error count line");
   assert.ok(sent.includes("⚠️"), "anomaly flagged");
   assert.ok(sent.includes("tile_failed 22"), "tile_failed count line");
@@ -1280,4 +1491,864 @@ test("handleRequest (Slice 2): repeat_failure forwards immediately (crash tier);
   void store;
   const bucket = JSON.parse(map.get(bucketKey(hour, "recovery_outcome")) as string) as { total: number };
   assert.equal(bucket.total, 2, "both outcomes counted under the new type");
+});
+
+// --- Crash-telemetry §5.1: intake normalisation (strip-and-continue) -----
+
+test("normaliseEvent: strips device.ua and breadcrumb.device.ua and every non-allowlist device key", () => {
+  const out = normaliseEvent(
+    validEvent({
+      device: { os: "ios", form: "mobile", ua: "SECRET-UA", gpu: "SECRET-GPU", screenW: 390 },
+      breadcrumb: { device: { os: "ios", ua: "SECRET-BC-UA", gpu: "SECRET-GPU" }, history: [] },
+    }),
+  ) as Record<string, unknown>;
+  // boot_failure (the helper's type): the stripped device also gains
+  // the E-rule engine fill (os ios → webkit, §7.5 ladder step 2 cure).
+  assert.deepEqual(out.device, { os: "ios", form: "mobile", engine: "webkit" });
+  assert.deepEqual((out.breadcrumb as Record<string, unknown>).device, { os: "ios" });
+  assert.ok(!JSON.stringify(out).includes("SECRET"));
+});
+
+test("normaliseEvent: coerces wrong-typed and out-of-enum manifest fields to unknown, clamps unfinishedBoots", () => {
+  const out = normaliseEvent(
+    validEvent({
+      device: {
+        browser: "netscape",
+        browserVersion: "SECRET-VER",
+        engine: 42,
+        osVersion: "sixteen",
+        deviceClass: "phablet",
+        deviceMemory: 999,
+        hardwareConcurrency: 3.5,
+        touchPoints: "many",
+        displayMode: "floating",
+        connection: "5g",
+        locale: "SECRET!!LOCALE",
+        dpr: 99,
+        screen: "huge",
+      },
+      unfinishedBoots: 12345,
+      msSinceBootStart: -5,
+      mapMode: "sideways",
+    }),
+  ) as Record<string, unknown>;
+  const dev = out.device as Record<string, unknown>;
+  for (const key of [
+    "browser", "browserVersion", "engine", "osVersion", "deviceClass",
+    "deviceMemory", "hardwareConcurrency", "touchPoints", "displayMode",
+    "connection", "locale", "dpr", "screen",
+  ]) {
+    assert.equal(dev[key], "unknown", key);
+  }
+  assert.equal(out.unfinishedBoots, 999, "clamped to 0..999");
+  assert.equal(out.msSinceBootStart, "unknown");
+  assert.equal(out.mapMode, "unknown");
+  // Valid as-read values pass through untouched (range rule, Slice 4 I-8).
+  const ok = normaliseEvent(
+    validEvent({ device: { deviceMemory: 0.5, hardwareConcurrency: 6, osVersion: "16.4.1", browserVersion: "16.4", locale: "en-US" } }),
+  ) as Record<string, unknown>;
+  assert.deepEqual(ok.device, {
+    deviceMemory: 0.5,
+    hardwareConcurrency: 6,
+    osVersion: "16.4.1",
+    browserVersion: "16.4",
+    locale: "en-US",
+    // boot_failure with no os/browser to derive from: the engine
+    // fill lands on its honest "unknown" (§7.5 ladder step 2 cure).
+    engine: "unknown",
+  });
+});
+
+test("normaliseEvent: deletes non-primitive top-level extras and truncates over-cap strings instead of rejecting", () => {
+  const out = normaliseEvent(
+    validEvent({ extra: { nested: true }, list: [1, 2], edition: "e".repeat(200) }),
+  ) as Record<string, unknown>;
+  assert.equal("extra" in out, false);
+  assert.equal("list" in out, false);
+  assert.equal((out.edition as string).length, 128);
+  assert.deepEqual(validateEvent(out), []);
+});
+
+test("normaliseEvent: legacy superset — every event valid today stays valid, read-fields byte-identical", () => {
+  const fixtures: Record<string, unknown>[] = [
+    validEvent(),
+    validEvent({ type: "tile_failed", device: { os: "linux", form: "desktop" } }),
+    tileEvent(),
+    shapeAEvent() as unknown as Record<string, unknown>,
+    outcomeEvent() as unknown as Record<string, unknown>,
+    validEvent({
+      type: "suspected_crash",
+      sessionId: "s-1",
+      edition: "state",
+      regionId: "nebraska",
+      lastMilestone: "backgrounded",
+      device: { os: "android", form: "mobile", dpr: 2, screen: "sm", webgl1: true, webgl2: false },
+      breadcrumb: { history: [{ name: "backgrounded", at: 1 }] },
+      mapMode: "full",
+      bgTerminal: true,
+      buildReplaced: false,
+      trailStuck: false,
+      storageOk: true,
+      lcV: "1",
+    }),
+  ];
+  for (const fixture of fixtures) {
+    assert.deepEqual(validateEvent(fixture), [], "fixture is valid under the old rules");
+    const out = normaliseEvent(structuredClone(fixture));
+    assert.deepEqual(out, fixture, "normalisation leaves a valid legacy event untouched");
+    assert.deepEqual(validateEvent(out), [], "and it stays valid");
+  }
+});
+
+test("normaliseEvent: caps unchanged — a device carrying all 17 allowlist keys still trips the 16-key cap", () => {
+  const device = Object.fromEntries(
+    DEVICE_FIELD_ALLOWLIST.map((k) => [
+      k,
+      k === "dpr" || k === "deviceMemory" || k === "hardwareConcurrency"
+        ? 2
+        : k === "webgl1" || k === "webgl2"
+          ? true
+          : "unknown",
+    ]),
+  );
+  device.os = "ios";
+  const out = normaliseEvent(validEvent({ device }));
+  assert.ok(validateEvent(out).some((p) => p.includes("too many fields")), "device cap stays 16");
+});
+
+test("normaliseEvent: watchdog-shaped boot_failure (no engine) gains the E-rule engine in counting + alert", async () => {
+  // The watchdog drops engine (§7.5 ladder step 2); deviceClass is
+  // dropped too and is NOT recovered — it stays "unknown".
+  const watchdog = validEvent({
+    type: "boot_failure",
+    device: {
+      browser: "safari",
+      browserVersion: "16",
+      os: "ios",
+      osVersion: "16.4.1",
+      form: "mobile",
+      webgl1: true,
+      webgl2: true,
+    },
+    error: { name: "Error", message: "boot timeout" },
+  });
+  const out = normaliseEvent(structuredClone(watchdog)) as Record<string, unknown>;
+  const dev = out.device as Record<string, unknown>;
+  assert.equal(dev.engine, "webkit", "os ios → webkit (E1)");
+  assert.equal(dev.deviceClass, undefined, "deviceClass is not filled — stays unknown downstream");
+  // Counting + alert both consume the normalised event.
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 5, 0);
+  const normalised = { ...out, ts: t0 } as unknown as CrashReportEvent;
+  const counted = await recordTelemetry(store, normalised, t0, cfg);
+  assert.equal(counted.counted, true);
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "boot_failure")))!;
+  assert.equal(bucket.total, 1);
+  const alert = buildAlert(normalised);
+  assert.ok(alert.discord.includes("WebKit"), "alert renders the filled engine");
+  assert.ok(alert.emailBody.includes("WebKit"), "email renders the filled engine");
+  // The E-rule table over the parsed fields (boot_failure only).
+  const cases: Array<[Record<string, unknown>, string]> = [
+    [{ browser: "chrome", os: "android" }, "blink"],
+    [{ browser: "edge", os: "windows" }, "blink"],
+    [{ browser: "samsung", os: "android" }, "blink"],
+    [{ browser: "firefox", os: "linux" }, "gecko"],
+    [{ browser: "safari", os: "mac" }, "webkit"],
+    [{ browser: "chrome", os: "ios" }, "webkit"],
+    [{ browser: "unknown", os: "other" }, "unknown"],
+  ];
+  for (const [device, want] of cases) {
+    const filled = normaliseEvent(validEvent({ type: "boot_failure", device })) as Record<string, unknown>;
+    assert.equal((filled.device as Record<string, unknown>).engine, want, JSON.stringify(device));
+  }
+});
+
+test("normaliseEvent: a boot_failure WITH an engine keeps it (never overwritten)", () => {
+  const out = normaliseEvent(
+    validEvent({
+      type: "boot_failure",
+      device: { browser: "chrome", os: "android", engine: "gecko" },
+    }),
+  ) as Record<string, unknown>;
+  assert.equal((out.device as Record<string, unknown>).engine, "gecko");
+});
+
+test("normaliseEvent: a js_error without engine is NOT filled", () => {
+  const out = normaliseEvent(
+    validEvent({
+      type: "js_error",
+      device: { browser: "chrome", os: "android" },
+    }),
+  ) as Record<string, unknown>;
+  assert.equal((out.device as Record<string, unknown>).engine, undefined, "fill is boot_failure only");
+  const unknown = normaliseEvent(
+    validEvent({
+      type: "js_error",
+      device: { browser: "safari", os: "ios", engine: "unknown" },
+    }),
+  ) as Record<string, unknown>;
+  assert.equal((unknown.device as Record<string, unknown>).engine, "unknown", "unknown stays unknown on other types");
+});
+
+// (The #339 funnel-gap pin lived here: it asserted a funnel type still
+// returns 400 on the pre-#311 base. This PR closes that gap, so the pin
+// is removed — funnel acceptance is pinned by the #194 tests below.)
+
+// --- Crash-telemetry §5.2: counting v2 ------------------------------------
+
+test("counting v2: groups, verdicts, milestones, modes, errorNames, first/last receipt times, late flag", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 5, 0);
+  const ev = (over: Record<string, unknown> = {}) =>
+    ({
+      type: "suspected_crash",
+      ts: t0,
+      buildId: "c6853be",
+      edition: "state",
+      regionId: "nebraska",
+      lastMilestone: "map_init_start",
+      device: { os: "ios", form: "mobile", osVersion: "16.4.1", deviceClass: "phone" },
+      mapMode: "scout",
+      bgTerminal: false,
+      buildReplaced: false,
+      trailStuck: false,
+      lcV: "2",
+      ...over,
+    }) as unknown as CrashReportEvent;
+  await recordTelemetry(store, ev(), t0, cfg);
+  await recordTelemetry(store, ev(), t0 + 37 * 60_000, cfg);
+  // A late arrival: receipt in the 17:00 hour, client ts in the 15:00 hour.
+  await recordTelemetry(store, ev({ ts: t0 - 2 * HOUR_MS }), t0 + 40 * 60_000, cfg);
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "suspected_crash")))!;
+  assert.equal(bucket.total, 3);
+  assert.equal(bucket.groups["c6853be|ios|16|phone"], 3);
+  assert.equal(bucket.verdicts["developer_needed/fg_kill_current"], 3);
+  assert.equal(bucket.milestones["map_init_start"], 3);
+  assert.equal(bucket.modes["scout"], 3);
+  assert.equal(bucket.errorNames["none"], 3);
+  assert.equal(bucket.firstAt, t0);
+  assert.equal(bucket.lastAt, t0 + 40 * 60_000);
+  assert.equal(bucket.late, 1);
+  assert.equal(groupKeyOf(ev()), "c6853be|ios|16|phone");
+});
+
+test("counting v2: the 33rd distinct group tallies under other (hard cap 32)", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 5, 0);
+  for (let i = 0; i < MAX_GROUP_KEYS + 1; i++) {
+    await recordTelemetry(
+      store,
+      validEvent({ type: "tile_failed", buildId: `build-${i}` }) as unknown as CrashReportEvent,
+      t0,
+      cfg,
+    );
+  }
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "tile_failed")))!;
+  assert.equal(Object.keys(bucket.groups).length, MAX_GROUP_KEYS + 1, "32 real keys + other");
+  assert.equal(bucket.groups["other"], 1);
+});
+
+test("counting v2: an old-shape bucket in KV reads back with v2 defaults", async () => {
+  const { kv, store } = memoryStore();
+  const key = bucketKey("2026-11-03T17", "js_error");
+  await kv.put(key, JSON.stringify({ total: 2, builds: { a: 2 }, alerts: [] }));
+  const bucket = (await store.readBucket(key))!;
+  assert.equal(bucket.total, 2);
+  assert.deepEqual(bucket.groups, {});
+  assert.deepEqual(bucket.verdicts, {});
+  assert.equal(bucket.firstAt, 0);
+  assert.equal(bucket.lastAt, 0);
+  assert.equal(bucket.late, 0);
+});
+
+test("telemetry: hostile event with secrets planted in the new fields leaks nothing anywhere", async () => {
+  const { map, store } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const hostile = {
+    type: "suspected_crash",
+    ts: Date.now(),
+    buildId: "f331846",
+    edition: "state",
+    regionId: "nebraska",
+    lastMilestone: "map_init_start",
+    sessionId: "SECRET-SESSION",
+    device: {
+      os: "ios",
+      form: "mobile",
+      ua: "SECRET-UA",
+      browser: "SECRET!!BROWSER",
+      browserVersion: "SECRET-VER",
+      osVersion: "SECRET-OSVER",
+      locale: "SECRET!!LOCALE",
+      deviceMemory: "SECRET-MEM",
+      hardwareConcurrency: "SECRET-CORES",
+    },
+    breadcrumb: { device: { ua: "SECRET-BC-UA" }, history: [] },
+    unfinishedBoots: "SECRET-BOOTS",
+    msSinceBootStart: "SECRET-MS",
+    bgTerminal: false,
+    buildReplaced: false,
+    trailStuck: false,
+    lcV: "2",
+  };
+  const res = await handleRequest(postEvent(hostile), env);
+  assert.equal(res.status, 200, "hostile event is stripped and continued, not rejected");
+  assert.equal(fetchCalls.length, 1, "crash-class alert forwarded");
+  const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
+  const rawBucket = [...map.values()].join("\n");
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(Date.now()), "suspected_crash")))!;
+  const threshold = buildThresholdAlert("suspected_crash", hourLabelOf(Date.now()), bucket, thresholdConfig({}), 1);
+  const digest = await renderDigest(store, Date.now() + HOUR_MS);
+  const secrets = [
+    "SECRET-SESSION", "SECRET-UA", "SECRET-BC-UA", "SECRET!!BROWSER", "SECRET-VER",
+    "SECRET-OSVER", "SECRET!!LOCALE", "SECRET-MEM", "SECRET-CORES", "SECRET-BOOTS", "SECRET-MS",
+  ];
+  for (const secret of secrets) {
+    assert.ok(!sent.includes(secret), `alert leaked: ${secret}`);
+    assert.ok(!rawBucket.includes(secret), `bucket leaked: ${secret}`);
+    assert.ok(!threshold.includes(secret), `threshold leaked: ${secret}`);
+    assert.ok(!(digest ?? "").includes(secret), `digest leaked: ${secret}`);
+  }
+  // The planted dimensions were counted under their unknown forms.
+  assert.equal(bucket.groups["f331846|ios|unknown|unknown"], 1);
+  assert.equal(bucket.verdicts["developer_needed/fg_kill_current"], 1, "the settled verdict is counted");
+  assert.ok(sent.includes("verdict: developer action needed"), "and rendered");
+});
+
+// --- Crash-telemetry §5.3/§8.3: surfaces, goldens, parity, iff ------------
+
+/** The #330-shaped event as the enriched build stamps it (DESIGN-FINAL §5.5). */
+function incident330Event(overrides: Record<string, unknown> = {}): CrashReportEvent {
+  return {
+    type: "suspected_crash",
+    ts: Date.UTC(2026, 10, 3, 17, 42, 0),
+    buildId: "c6853be",
+    edition: "state",
+    regionId: "nebraska",
+    lastMilestone: "map_init_start",
+    device: {
+      os: "ios",
+      form: "mobile",
+      browser: "safari",
+      browserVersion: "16.4",
+      engine: "webkit",
+      osVersion: "16.4.1",
+      deviceClass: "phone",
+      hardwareConcurrency: 6,
+      deviceMemory: "unknown",
+      screen: "md",
+      dpr: 2,
+      touchPoints: "2-5",
+      displayMode: "unknown",
+      connection: "unknown",
+      locale: "en-US",
+    },
+    mapMode: "scout",
+    msSinceBootStart: 4210,
+    unfinishedBoots: 3,
+    bgTerminal: false,
+    buildReplaced: false,
+    trailStuck: false,
+    lcV: "2",
+    deviceSource: "crashed_session",
+    ...overrides,
+  } as CrashReportEvent;
+}
+
+test("#330 fixture: the enriched shape settles to developer_needed/fg_kill_current", () => {
+  assert.deepEqual(deriveVerdict(incident330Event()), {
+    verdict: "developer_needed",
+    whyKey: "fg_kill_current",
+  });
+  assert.deepEqual(missingStampNames(verdictFactsOf(incident330Event())), []);
+});
+
+test("golden: buildAlert Discord for the #330 event (§5.5 shape, #345 severity lead)", () => {
+  const alert = buildAlert(incident330Event());
+  assert.equal(
+    alert.discord,
+    [
+      "🚨 FIX — Developer action needed",
+      "Meridian crash report",
+      "priority: S1 · P1 — current build, foreground kill at map loading, phone-class iOS 16",
+      "verdict: developer action needed",
+      "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown. Severity: S1 — 3 unfinished boots in a row with no clean boot since; the player most likely left and never got back in (player-left is INFERRED from the missing clean boot, not observed).",
+      "why-code: fg_kill_current",
+      "action: Read the error below.",
+      "type: suspected_crash · build: c6853be",
+      "time: 2026-11-03T17:42:00.000Z",
+      "device: ios/mobile · phone · Safari 16.4 · WebKit · iOS 16.4.1 (UA-parsed)",
+      "runtime: mem unknown · cores 6 (as reported) · screen md · dpr 2 · touch 2-5 · standalone unknown · net unknown · locale en-US",
+      "edition: state · region: nebraska",
+      "mode: scout · last step: map loading · 4,210 ms after boot start",
+      "boots: 3 unfinished in a row",
+      "error: none captured",
+    ].join("\n"),
+  );
+});
+
+test("golden: buildAlert email body for the #330 event (full string)", () => {
+  const alert = buildAlert(incident330Event());
+  assert.equal(alert.emailSubject, "[Meridian] 🚨 FIX — Developer action needed · suspected_crash · build c6853be · state");
+  assert.equal(
+    alert.emailBody,
+    [
+      "Meridian crash report",
+      "",
+      "verdict: developer action needed",
+      "priority: S1 · P1 — current build, foreground kill at map loading, phone-class iOS 16",
+      "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown. Severity: S1 — 3 unfinished boots in a row with no clean boot since; the player most likely left and never got back in (player-left is INFERRED from the missing clean boot, not observed).",
+      "why-code: fg_kill_current",
+      "action: Read the error below.",
+      "type:            suspected_crash",
+      "build:           c6853be",
+      "event time:      2026-11-03T17:42:00.000Z",
+      "device:          ios/mobile · phone · Safari 16.4 · WebKit · iOS 16.4.1 (UA-parsed)",
+      "runtime:         mem unknown · cores 6 (as reported) · screen md · dpr 2 · touch 2-5 · standalone unknown · net unknown · locale en-US",
+      "edition:         state",
+      "region:          nebraska",
+      "mode:            scout",
+      "last step:       map loading · 4,210 ms after boot start",
+      "boots:           3 unfinished in a row",
+      "error:           none captured",
+      "",
+      "(Compact alert — full event payloads are never forwarded.)",
+    ].join("\n"),
+  );
+});
+
+test("alert/email parity: every manifest field's rendered value appears in BOTH bodies", () => {
+  const alert = buildAlert(incident330Event());
+  const renderedValues = [
+    "S1 · P1 — current build, foreground kill at map loading, phone-class iOS 16",
+    "fg_kill_current",
+    "2026-11-03T17:42:00.000Z",
+    "ios/mobile · phone · Safari 16.4 · WebKit · iOS 16.4.1 (UA-parsed)",
+    "mem unknown · cores 6 (as reported) · screen md · dpr 2 · touch 2-5 · standalone unknown · net unknown · locale en-US",
+    "scout",
+    "map loading · 4,210 ms after boot start",
+    "3 unfinished in a row",
+    "state",
+    "nebraska",
+    "c6853be",
+  ];
+  for (const value of renderedValues) {
+    assert.ok(alert.discord.includes(value), `discord missing: ${value}`);
+    assert.ok(alert.emailBody.includes(value), `email missing: ${value}`);
+  }
+  // The two lines the email body dropped before §5.3, named explicitly.
+  assert.ok(alert.emailBody.includes("device:"), "email carries the device line");
+  assert.ok(alert.emailBody.includes("runtime:"), "email carries the runtime line");
+});
+
+test("legacy shape: missing bgTerminal still classifies missing_fields, and the evidence line names it", () => {
+  const legacy = incident330Event();
+  delete (legacy as Record<string, unknown>).bgTerminal;
+  assert.deepEqual(deriveVerdict(legacy), {
+    verdict: "insufficient_evidence",
+    whyKey: "missing_fields",
+  });
+  const alert = buildAlert(legacy);
+  const lines = alert.discord.split("\n");
+  assert.equal(lines[0], "❔ WAIT — Can't tell from this report");
+  assert.equal(lines[2], "priority: ungraded · P3 — current build, evidence incomplete, phone-class iOS 16");
+  assert.ok(
+    alert.discord.includes("evidence: bgTerminal ✗ · buildReplaced ✓ · trailStuck ✓ · lcV ✓"),
+    "evidence line names the missing stamp",
+  );
+  assert.ok(alert.emailBody.includes("evidence: bgTerminal ✗"), "email carries it too");
+  // A different missing set renders a different line.
+  const legacy2 = incident330Event();
+  delete (legacy2 as Record<string, unknown>).lcV;
+  assert.ok(
+    buildAlert(legacy2).discord.includes("evidence: bgTerminal ✓ · buildReplaced ✓ · trailStuck ✓ · lcV ✗"),
+  );
+});
+
+test("missingStampNames iff-property: failing set non-empty iff classifier returns missing_fields (suspected_crash / recovery_outcome shapes)", () => {
+  const tables: CrashVerdictFacts[] = [
+    ...CLASSIFIER_TABLE.map((r) => r.facts),
+    ...RECOVERY_CLASSIFIER_TABLE.map((r) => r.facts),
+    { type: "suspected_crash", lastMilestone: "backgrounded" },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, trailStuck: false },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, buildReplaced: false, lcV: "1" },
+    { type: "suspected_crash", lastMilestone: "backgrounded", bgTerminal: true, trailStuck: false, lcV: "1" },
+  ];
+  for (const facts of tables) {
+    if (facts.type !== "suspected_crash" && facts.type !== "recovery_outcome") continue;
+    const isMissing = classifyCrashVerdict(facts).whyKey === "missing_fields";
+    assert.equal(
+      missingStampNames(facts).length > 0,
+      isMissing,
+      `${JSON.stringify(facts)} → missing=${JSON.stringify(missingStampNames(facts))}`,
+    );
+  }
+});
+
+test("golden: buildThresholdAlert carries the fire-time caveat (full string)", () => {
+  const bucket = emptyBucket();
+  bucket.total = 20;
+  bucket.builds = { f331846: 12, other: 8 };
+  assert.equal(
+    buildThresholdAlert("tile_failed", "2026-11-03T17", bucket, thresholdConfig({}), 12),
+    [
+      "🚨 Meridian telemetry alert",
+      "type: tile_failed crossed the hiccup threshold (single build crossed 10/hour)",
+      "hour: 2026-11-03T17 UTC · counts: 20 total (f331846 ×12, other ×8)",
+      "one alert per type+hour — further events this hour only raise the counts",
+      "counts are at fire time; the hourly digest carries the final total",
+    ].join("\n"),
+  );
+});
+
+test("golden: renderDigest for the §5.3 two-event hour (full string)", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const hourStart = Date.UTC(2026, 10, 3, 17, 0, 0);
+  await recordTelemetry(store, incident330Event(), hourStart + 42 * 60_000, cfg);
+  await recordTelemetry(
+    store,
+    {
+      type: "js_error",
+      ts: hourStart + 5 * 60_000,
+      buildId: "2a0527f",
+      edition: "state",
+      regionId: "nebraska",
+      lastMilestone: "game_loaded",
+      error: { name: "TypeError", message: "boom" },
+      device: { os: "android", form: "mobile", deviceClass: "phone" },
+      mapMode: "full",
+    } as unknown as CrashReportEvent,
+    hourStart + 5 * 60_000,
+    cfg,
+  );
+  const digest = await renderDigest(store, hourStart + HOUR_MS + 30 * 60_000);
+  assert.equal(
+    digest,
+    [
+      "📊 Meridian telemetry — hourly digest",
+      "hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)",
+      "priority: S1 · P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone",
+      "S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.",
+      "",
+      "suspected_crash 1 · first 17:42 · last 17:42",
+      "  builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1",
+      "  groups: c6853be|ios|16|phone ×1",
+      "  verdicts: developer_needed/fg_kill_current ×1 · severities: S1 ×1 · modes: scout ×1 · steps: map_init_start ×1",
+      "js_error 1 · first 17:05 · last 17:05",
+      "  builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1",
+      "  groups: 2a0527f|android|unknown|phone ×1",
+      "  verdicts: developer_needed/captured_error ×1 · severities: S2b ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1",
+      "",
+      "alerts this hour: none",
+    ].join("\n"),
+  );
+});
+
+test("digest: caps are labelled with (+N more) remainders and ties break key-asc", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 1, 0);
+  for (const buildId of ["b-build", "a-build", "d-build", "c-build", "e-build"]) {
+    await recordTelemetry(
+      store,
+      validEvent({ type: "tile_failed", buildId }) as unknown as CrashReportEvent,
+      t0,
+      cfg,
+    );
+  }
+  const digest = await renderDigest(store, t0 + HOUR_MS);
+  assert.ok(digest, "digest produced");
+  const buildsLine = digest.split("\n").find((l) => l.includes("builds:"))!;
+  assert.ok(
+    buildsLine.startsWith("  builds: a-build ×1 · b-build ×1 · c-build ×1 (+2 more)"),
+    `labelled cap with remainder, key-asc ties: ${buildsLine}`,
+  );
+});
+
+test("digest: a counted event outside the receipt hour labels its type line as late", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
+  await recordTelemetry(
+    store,
+    validEvent({ type: "tile_failed", ts: t0 - 2 * HOUR_MS }) as unknown as CrashReportEvent,
+    t0,
+    cfg,
+  );
+  const digest = await renderDigest(store, t0 + HOUR_MS);
+  assert.ok(digest?.includes("tile_failed 1 · first 17:10 · last 17:10 (some reports arrived late)"));
+});
+
+// --- Issue #345: severity grades -----------------------------------------
+//
+// The grade derives ONLY from the re-derived verdict + the stamped
+// unfinished-boot streak. Boundaries pinned: threshold exactly 3,
+// absent-streak fallback wording, and the ungraded absoluteness of
+// insufficient_evidence / not_a_real_issue at any streak.
+
+function bootFailureEvent(overrides: Record<string, unknown> = {}): CrashReportEvent {
+  return {
+    type: "boot_failure",
+    ts: Date.UTC(2026, 10, 3, 17, 42, 0),
+    buildId: "c6853be",
+    error: { name: "Error", message: "boot timeout" },
+    ...overrides,
+  } as CrashReportEvent;
+}
+
+function recoveryEvent(overrides: Record<string, unknown> = {}): CrashReportEvent {
+  return {
+    type: "recovery_outcome",
+    ts: Date.UTC(2026, 10, 3, 17, 42, 0),
+    buildId: "c6853be",
+    recoveryOutcome: "confirmed",
+    ...overrides,
+  } as unknown as CrashReportEvent;
+}
+
+test("severity: developer_needed at exactly the threshold streak (3) grades S1", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: 3 }));
+  assert.equal(read?.grade, "S1");
+  assert.equal(read?.streak, 3);
+  assert.ok(read?.clause.includes("INFERRED"), "player-left is labelled inferred, never observed");
+});
+
+test("severity: developer_needed just below the threshold (2) grades S2b", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: 2 }));
+  assert.equal(read?.grade, "S2b");
+  assert.ok(read?.clause.includes("boot streak is 2"), "clause carries the stamped streak");
+});
+
+test("severity: developer_needed at streak 99 still grades S1 (no upper edge)", () => {
+  assert.equal(severityOf(bootFailureEvent({ unfinishedBoots: 99 }))?.grade, "S1");
+});
+
+test("severity: developer_needed with NO stamped streak grades S2b and says it was not stamped", () => {
+  const read = severityOf(bootFailureEvent());
+  assert.equal(read?.grade, "S2b");
+  assert.equal(read?.streak, null);
+  assert.ok(read?.clause.includes("was not stamped"), "the fallback grade names its missing evidence");
+  assert.ok(!read?.clause.includes("boot streak is"), "no invented streak number");
+});
+
+test("severity: developer_needed at streak 0 grades S2b without the not-stamped wording", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: 0 }));
+  assert.equal(read?.grade, "S2b");
+  assert.ok(read?.clause.includes("boot streak is 0"));
+  assert.ok(!read?.clause.includes("was not stamped"), "a stamped zero is evidence, not absence");
+});
+
+test("severity: auto_fixed at the threshold streak (3) grades S2a", () => {
+  const read = severityOf(recoveryEvent({ unfinishedBoots: 3 }));
+  assert.equal(read?.grade, "S2a");
+  assert.ok(read?.clause.includes("only after 3 unfinished boots"));
+});
+
+test("severity: auto_fixed above the threshold (7) grades S2a", () => {
+  assert.equal(severityOf(recoveryEvent({ unfinishedBoots: 7 }))?.grade, "S2a");
+});
+
+test("severity: auto_fixed below the threshold (2) grades S3", () => {
+  const read = severityOf(recoveryEvent({ unfinishedBoots: 2 }));
+  assert.equal(read?.grade, "S3");
+  assert.ok(read?.clause.includes("fixed itself"));
+});
+
+test("severity: auto_fixed with NO stamped streak grades S3 and says so", () => {
+  const read = severityOf(recoveryEvent());
+  assert.equal(read?.grade, "S3");
+  assert.equal(read?.streak, null);
+  assert.ok(read?.clause.includes("no boot streak was stamped"));
+});
+
+test("severity: auto_fixed at streak 0 grades S3", () => {
+  assert.equal(severityOf(recoveryEvent({ unfinishedBoots: 0 }))?.grade, "S3");
+});
+
+// Direct-caller edge pins (#347 cure riders): severityOf is exported, so
+// a caller can bypass normaliseEvent's clamping. The function re-checks
+// the stamp itself — these tests pin that defensive behaviour without
+// changing the adopted grading rules.
+test("severity: a negative streak clamps to 0 (developer_needed grades S2b, streak 0)", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: -5 }));
+  assert.equal(read?.grade, "S2b");
+  assert.equal(read?.streak, 0);
+  assert.ok(read?.clause.includes("boot streak is 0"));
+});
+
+test("severity: a negative streak clamps to 0 (auto_fixed grades S3, streak 0)", () => {
+  const read = severityOf(recoveryEvent({ unfinishedBoots: -1 }));
+  assert.equal(read?.grade, "S3");
+  assert.equal(read?.streak, 0);
+});
+
+test("severity: a non-integer streak floors before grading (3.9 grades S1 as streak 3)", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: 3.9 }));
+  assert.equal(read?.grade, "S1");
+  assert.equal(read?.streak, 3);
+});
+
+test("severity: a non-integer streak below the threshold floors down (2.9 grades S3 as streak 2)", () => {
+  const read = severityOf(recoveryEvent({ unfinishedBoots: 2.9 }));
+  assert.equal(read?.grade, "S3");
+  assert.equal(read?.streak, 2);
+});
+
+test("severity: a string streak reads as not stamped (developer_needed grades S2b, streak null)", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: "5" }));
+  assert.equal(read?.grade, "S2b");
+  assert.equal(read?.streak, null);
+  assert.ok(read?.clause.includes("was not stamped"));
+});
+
+test("severity: a string streak reads as not stamped (auto_fixed grades S3, streak null)", () => {
+  const read = severityOf(recoveryEvent({ unfinishedBoots: "5" }));
+  assert.equal(read?.grade, "S3");
+  assert.equal(read?.streak, null);
+  assert.ok(read?.clause.includes("no boot streak was stamped"));
+});
+
+test("severity: a non-finite streak reads as not stamped", () => {
+  const read = severityOf(bootFailureEvent({ unfinishedBoots: Number.NaN }));
+  assert.equal(read?.grade, "S2b");
+  assert.equal(read?.streak, null);
+});
+
+test("severity: insufficient_evidence is NEVER graded, even at streak 99", () => {
+  const event = incident330Event({ unfinishedBoots: 99 });
+  delete (event as Record<string, unknown>).bgTerminal;
+  assert.equal(deriveVerdict(event).verdict, "insufficient_evidence");
+  assert.equal(severityOf(event), null);
+  assert.equal(severityKeyOf(event), "ungraded");
+});
+
+test("severity: not_a_real_issue is NEVER graded, even at streak 99", () => {
+  const event = incident330Event({ unfinishedBoots: 99, bgTerminal: true, trailStuck: false });
+  assert.equal(deriveVerdict(event).verdict, "not_a_real_issue");
+  assert.equal(severityOf(event), null);
+  assert.equal(severityKeyOf(event), "ungraded");
+});
+
+test("severity: hiccup-class events (tile_failed) stay ungraded", () => {
+  const event = bootFailureEvent({ type: "tile_failed", unfinishedBoots: 50 });
+  delete (event as Record<string, unknown>).error;
+  assert.equal(severityOf(event), null);
+});
+
+test("severity: the alert leads priority with the grade and appends the clause to why", () => {
+  const alert = buildAlert(incident330Event());
+  assert.ok(alert.discord.includes("priority: S1 · P1 — "), "discord priority is severity-led");
+  assert.ok(alert.emailBody.includes("priority: S1 · P1 — "), "email parity");
+  assert.ok(alert.discord.includes("Severity: S1 — 3 unfinished boots in a row"), "why gains the clause");
+  assert.ok(alert.emailBody.includes("Severity: S1 — 3 unfinished boots in a row"), "email parity");
+});
+
+test("severity: an ungraded alert renders 'ungraded' and gains NO Severity clause", () => {
+  const event = incident330Event();
+  delete (event as Record<string, unknown>).bgTerminal;
+  const alert = buildAlert(event);
+  assert.ok(alert.discord.includes("priority: ungraded · P3 — "));
+  assert.ok(!alert.discord.includes("Severity:"), "no clause is invented for an ungraded verdict");
+  assert.ok(!alert.emailBody.includes("Severity:"));
+});
+
+test("severity: an ungraded not_a_real_issue alert renders 'ungraded · P4' and gains NO Severity clause", () => {
+  const event = incident330Event({ unfinishedBoots: 99, bgTerminal: true, trailStuck: false });
+  assert.equal(deriveVerdict(event).verdict, "not_a_real_issue");
+  const alert = buildAlert(event);
+  assert.ok(alert.discord.includes("priority: ungraded · P4 — "));
+  assert.ok(!alert.discord.includes("Severity:"), "a benign verdict gains no grade, even at streak 99");
+  assert.ok(!alert.emailBody.includes("Severity:"));
+});
+
+test("severity counting: recordTelemetry tallies grades per bucket, ungraded included", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 3 }), t0, cfg);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 4 }), t0, cfg);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 1 }), t0, cfg);
+  await recordTelemetry(store, bootFailureEvent(), t0, cfg);
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "boot_failure")))!;
+  assert.deepEqual(bucket.severities, { S1: 2, S2b: 2 });
+});
+
+test("severity counting: a pre-#345 bucket JSON without severities reads back as an empty map", async () => {
+  const legacy = JSON.stringify({ total: 3, builds: { abc123: 3 } });
+  const store = kvTelemetryStore({
+    get: async () => legacy,
+    put: async () => {},
+  });
+  const bucket = await store.readBucket(bucketKey("2026-11-03T17", "boot_failure"));
+  assert.deepEqual(bucket?.severities, {});
+});
+
+test("severity digest: an S1 hour carries the INFERRED gloss exactly once", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 3 }), t0, cfg);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 4 }), t0, cfg);
+  const digest = await renderDigest(store, t0 + HOUR_MS);
+  assert.ok(digest, "digest produced");
+  const gloss =
+    "S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.";
+  assert.ok(digest.includes(gloss), "the S1 gloss line is present");
+  assert.equal(
+    digest.split("\n").filter((l) => l === gloss).length,
+    1,
+    "the gloss appears exactly once, however many S1 events the hour counted",
+  );
+});
+
+test("severity digest: an hour with NO S1 carries no INFERRED gloss", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
+  // S2b (developer_needed, no streak) + S3 (auto_fixed, low streak):
+  // graded, but neither is S1, so no gloss may appear.
+  await recordTelemetry(store, bootFailureEvent(), t0, cfg);
+  await recordTelemetry(store, recoveryEvent({ unfinishedBoots: 1 }), t0, cfg);
+  const digest = await renderDigest(store, t0 + HOUR_MS);
+  assert.ok(digest, "digest produced");
+  assert.ok(!digest.includes("INFERRED"), "no S1 in the hour → no player-left gloss");
+  assert.ok(!digest.includes("player-left"), "no S1 in the hour → no player-left wording at all");
+});
+
+test("severity digest: an hour of only ungraded events keeps the plain priority line", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
+  await recordTelemetry(
+    store,
+    validEvent({ type: "tile_failed" }) as unknown as CrashReportEvent,
+    t0,
+    cfg,
+  );
+  const digest = await renderDigest(store, t0 + HOUR_MS);
+  assert.ok(digest, "digest produced");
+  const priorityLine = digest.split("\n").find((l) => l.startsWith("priority:"))!;
+  assert.ok(priorityLine.startsWith("priority: P3 — "), `no severity lead without a graded event: ${priorityLine}`);
+  assert.ok(digest.includes("severities: ungraded ×1"), "the counted dimension still renders");
+});
+
+test("classifier freeze: the fixture tables still classify exactly as pinned (byte-identical behaviour)", () => {
+  // classifyCrashVerdict / GAMEPLAY_MILESTONES / precedence are frozen
+  // by §5.4; the two fixture tables above are the assertion surface.
+  for (const row of [...CLASSIFIER_TABLE, ...RECOVERY_CLASSIFIER_TABLE]) {
+    assert.deepEqual(
+      classifyCrashVerdict(row.facts),
+      { verdict: row.verdict, whyKey: row.whyKey },
+      row.name,
+    );
+  }
 });

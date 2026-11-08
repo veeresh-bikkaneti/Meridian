@@ -1,7 +1,7 @@
 # BRANCH_STATUS — fix/337-guess-counter
 
 - **Branch:** `fix/337-guess-counter`
-- **Base:** `main` @ `775d8b4` (#329 merged)
+- **Base:** `main` @ `775d8b4` (#329 merged) · synced with `main` @ `9e49da3` on 2026-11-08 (merge commit; see Sync below)
 
 ## Task capsule
 
@@ -90,3 +90,15 @@ header actually renders — confirmed by the red run's page snapshots.
       guesses." (line 1633), already counts actual guesses
 - [ ] PR opened against main — NO MERGE (owner's word only);
       Silo QA + panel follow as separate silos on the final tip
+
+## Sync with main (2026-11-08, Rock — not a re-approval)
+
+- Merged `origin/main` @ `9e49da3e` into this branch normally (no
+  rebase, no force). The only conflict was this file (main carried
+  another branch's status); resolved by keeping this PR's record.
+  `LoopScreen.tsx` auto-merged; the fix line is now at line 1441
+  (was 1134 at the original tip — main grew the file); it is still
+  the only "Guess N of {cap}" render in `src/`.
+- The panel's votes were on `8e3ccda`; this merge creates a new tip,
+  so the panel must refresh on it. No merge without the owner's word.
+

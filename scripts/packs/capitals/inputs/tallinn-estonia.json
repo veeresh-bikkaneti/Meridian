@@ -1,0 +1,57 @@
+{
+  "caseId": "tallinn-estonia",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Its Old Town is one of the best-preserved medieval cities in Europe.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-588409",
+    "name": "Tallinn",
+    "country": "Estonia",
+    "subdivision": "Harjumaa",
+    "lat": 59.43696,
+    "lon": 24.75353
+  },
+  "target": {
+    "placeId": "gn-588409",
+    "name": "Tallinn",
+    "lat": 59.43696,
+    "lon": 24.75353,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Estonia",
+    "iso2": "EE",
+    "subdivision": "Harjumaa"
+  },
+  "subjectAnswer": {
+    "name": "Estonia",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "EE",
+    "subdivision": "Harjumaa",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Tallinn is the capital of Estonia. It's one of Estonia's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Tallinn",
+      "url": "https://en.wikipedia.org/wiki/Tallinn",
+      "text": "Tallinn is the capital and largest city of Estonia. Located on a bay in northern Estonia, on the shore of the Gulf of Finland of the Baltic Sea, it has a population of 452,563 as of 2026, making it the third most-populous city in the Baltics. As of 2024, the population of the Tallinn metropolitan area is estimated at 646,315. Tallinn is the main governmental, financial, industrial, and cultural centre of Estonia. It is located 187 kilometres (116 mi) northwest of the country's second largest city, Tartu, however, only 80 kilometres (50 mi) south of Helsinki, the capital city of Finland. It is also 320 kilometres (200 mi) west of Saint Petersburg, Russia, 300 kilometres (190 mi) north of Riga, Latvia, and 380 kilometres (240 mi) east of Stockholm, Sweden. From the 13th century until the first half of the 20th century, Tallinn was known in most of the world by variants of its other historical name, Reval.\nReval (Tallinn) received Lübeck city rights in 1248; however, the earliest evidence of human settlement in the area dates back almost 5,000 years. The medieval indigenous inhabitants of present-day Tallinn and northern Estonia were among the last \"pagan\" peoples in Europe to be Christianised during the papal-sanctioned Northern Crusades in the 13th century.\nThe first recorded claim to the area was made by Denmark after a successful raid in 1219 led by King Valdemar II, followed by a period of alternating Scandinavian and Teutonic rulers. Due to the strategic location by the sea, its port became a significant trade hub, especially in the 14th to 16th centuries, when Tallinn grew in importance as the northernmost member city of the Hanseatic League. Tallinn Old Town is one of the best-preserved medieval cities in Europe and is listed as a UNESCO World Heritage Site.\nIn 2012, Tallinn had the highest number of startup companies (per capita) among all capitals and larger cities in Europe. Tallinn is the birthplace of many international high-technology companies, including Bolt and Skype. The city is home to the headquarters of the European Union's IT agency and to the NATO Cyber Defence Centre of Excellence.\n\nGeography\nThe length of the seaside coast is 46 kilometres (29 mi), comprising three larger (Kopli, Paljassaare, and Kakumäe) peninsulas. The city has a number of public beaches, including those at Pirita, Stroomi, Kakumäe, Harku, and Pikakari.\nThe highest point in Tallinn, at 64 metres (210 feet) above sea level, is situated in Hiiu, Nõmme District, in the southwestern portion of the city. A large limestone cliff runs through the city. It can be seen at Toompea, Lasnamäe, and Astangu.\n\nClimate\nTallinn has a humid continental climate (Köppen climate classification Dfb) with warm, rainy summers and cold, snowy winters.\nWinters are cold, but mild for its latitude, owing to its coastal location. The average temperature in February, the coldest month, is −3.6 °C (25.5 °F). During the winters, temperatures tend to hover close to freezing, but mild spells of weather can push temperatures above 0 °C (32 °F), occasionally reaching above 5 °C (41 °F) while cold air masses can push temperatures below −18 °C (0 °F) an average of 6 days a year. Snowfall is common during the winters, which are cloudy and characterised by low amounts of sunshine, ranging from only 20.7 hours of sunshine per month in December to 58.8 hours in February. At the winter solstice, daylight lasts for less than 6 hours and 5 minutes.\nSummers are warm with daytime temperatures hovering around 19.2 to 22.2 °C (66.6 to 72.0 °F) and nighttime temperatures averaging between 9.8 to 13.1 °C (49.6 to 55.6 °F) from June to August. The warmest month is usually July, with an average of 17.6 °C (63.7 °F). At the summer solstice, daylight lasts for more than 18 hours and 40 minutes.\nTallinn receives 700 millimetres (28 inches) of precipitation annually, which is evenly distributed throughout the year although March, April and May are the driest months."
+    },
+    {
+      "article": "Tallinn — History",
+      "url": "https://en.wikipedia.org/wiki/Tallinn#History",
+      "text": "History\nThe first archaeological traces of a small hunter-fisherman community's presence in what is now Tallinn's city centre are c. 5,000 years old. The comb ceramic pottery found on the site dates to about 3000 BCE and corded ware pottery to around 2500 BCE.\nAround 1050 AD, a fortress was built in what is now central Tallinn, on the hill of Toompea.\nAs an important port on a major trade route between Novgorod and western Europe, it became a target for the expansion of the Teutonic Order and the Kingdom of Denmark during the period of Northern Crusades in the beginning of the 13th century when Roman Catholic Christianity was forcibly imposed on the local population. The King Valdemar II of Denmark conquered Tallinn and northern Estonia in 1219.\nTallinn, then known more widely as Reval, was granted Lübeck town rights by the king of Denmark in 1248. In 1285, Reval became the northernmost member of the Hanseatic League – a mercantile and military alliance of German-dominated cities in Northern Europe. The king of Denmark sold Reval along with other land possessions in north Estonia to the Teutonic Order in 1346. Reval was arguably the most significant medieval port in the Gulf of Finland. Reval enjoyed a strategic position at the crossroads of trade between the rest of western Europe and Novgorod and Muscovy in the east. The city, with a population of about 8,000, was very well fortified with city walls and 66 defence towers. The city wall has been described as an outstanding example of German Medieval fortification architecture.\nA weather vane, the figure of an old warrior called Old Thomas, was put on top of the spire of the Tallinn Town Hall in 1530. Old Thomas later became a popular symbol of the city.\nIn the early years of the Protestant Reformation, the city converted to Lutheranism. In 1561, Reval (Tallinn) became a dominion of Sweden.\nDuring the 1700–1721 Great Northern War, plague-stricken Tallinn along with Swedish Estonia and Livonia capitulated to Tsardom of Russia (Muscovy) in 1710, but the local self-government institutions retained their cultural and economical autonomy within the Governorate of Estonia of the Russian Empire.\nOn 24 February 1918, the Estonian Declaration of Independence was proclaimed in Tallinn. It was followed by German occupation until the end of World War I in November 1918, after which Tallinn became the capital of independent Estonia."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

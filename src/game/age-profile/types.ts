@@ -64,7 +64,12 @@ export interface BandDifficulty {
 
 export interface AgeBand {
   id: AgeBandId;
-  /** Parent-facing short name ("Little Explorer"). Never shown to the child. */
+  /**
+   * Parent-facing short name ("Little Explorer"). Never shown to
+   * the child — one exception: the post-save confirmation toast
+   * names the band briefly on home (~3.5 s), per the owner's
+   * 2026-11-04 ruling (see AgeProfileSettings.confirmChange).
+   */
   label: string;
   ageMin: number;
   ageMax: number;

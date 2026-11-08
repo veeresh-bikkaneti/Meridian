@@ -32,6 +32,14 @@ export interface LoopPackMetaEntry {
   prompt: LoopPackPrompt;
   /** Reveal text. Ends by stating the pairing plainly (design §4 rule 7). */
   blurb: string;
+  /**
+   * Capitals & Flags: the subject land's flag identity ("fr", "us-ne"),
+   * derived at build time and present ONLY when the land has a
+   * licence-verified flag in src/assets/flags (design §2). Absent =
+   * flagless land = screens render no flag. Never a hunt target: it
+   * only ever sits beside the land's name, which is already on screen.
+   */
+  flagKey?: string;
 }
 
 /** Shape of public/packs/<packId>/loop-meta.json. Keys are clue-file indexes. */
@@ -115,7 +123,9 @@ export function isLoopPackMetaEntry(value: unknown): value is LoopPackMetaEntry 
     (prompt.givenKind === "country" ||
       prompt.givenKind === "state" ||
       prompt.givenKind === "capital") &&
-    isNonEmptyString(e.blurb)
+    isNonEmptyString(e.blurb) &&
+    (e.flagKey === undefined ||
+      (typeof e.flagKey === "string" && /^[a-z]{2}(-[a-z]{2})?$/.test(e.flagKey)))
   );
 }
 

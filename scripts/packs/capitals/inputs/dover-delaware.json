@@ -1,0 +1,57 @@
+{
+  "caseId": "dover-delaware",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "The only state capital in America whose fire department is all volunteers.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-4142290",
+    "name": "Dover",
+    "country": "United States",
+    "subdivision": "Delaware",
+    "lat": 39.15817,
+    "lon": -75.52437
+  },
+  "target": {
+    "placeId": "gn-4142290",
+    "name": "Dover",
+    "lat": 39.15817,
+    "lon": -75.52437,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Delaware",
+    "iso2": "US",
+    "subdivision": "Delaware"
+  },
+  "subjectAnswer": {
+    "name": "Delaware",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "US",
+    "subdivision": "Delaware",
+    "difficulty": 2,
+    "regionId": "delaware",
+    "edition": "state",
+    "blurb": "Dover is the capital of Delaware, the United States. It's one of Delaware's biggest places.",
+    "history": "Delaware was the first state to ratify the Constitution — hence 'the First State.' Dover has been its capital since 1777."
+  },
+  "extracts": [
+    {
+      "article": "Dover, Delaware",
+      "url": "https://en.wikipedia.org/wiki/Dover%2C_Delaware",
+      "text": "Dover ( DOH-vər) is the capital and the second-most populous city of the U.S. state of Delaware, after Wilmington. It is also the county seat of Kent County and the principal city of the Dover metropolitan statistical area, which encompasses all of Kent County and is part of the Philadelphia metropolitan area. It is located on the St. Jones River in the Delaware River coastal plain. It was named by William Penn for Dover in Kent, England (for which Kent County is named). As of 2024, its population was estimated as 40,191.\nGeography According to the United States Census Bureau, the city has a total area of 22.7 square miles (59 km2), of which 22.4 square miles (58 km2) is land and 0.3 square miles (0.78 km2), or 1.32%, is water.\n\n\n=== Climate ===\n\nDover has a warm temperate climate or humid subtropical climate (Köppen Cfa). Summers are hot and humid, with 25 days per year reaching or surpassing 90 °F (32 °C). Brief, but heavy summer thunderstorms are common. Winters are moderated by the Delaware Bay and the partial shielding of the Appalachians, though there are normally 8−9 days when the daily high remains below freezing and 15 nights with lows below 20 °F (−7 °C). Snow is typically light and sporadic, averaging only 13.2 inches (34 cm) per year, and does not usually remain on the ground for long. The hardiness zone is 7b.  Spring and autumn provide transitions of reasonable length and are similar, though spring is wetter. The monthly mean temperature ranges from 36.0 °F (2.2 °C) in January to 77.9 °F (25.5 °C) in July. The annual total precipitation of around 47.61 inches (1,209.3 mm) is spread rather evenly year-round.\nClimate Dover has a warm temperate climate or humid subtropical climate (Köppen Cfa). Summers are hot and humid, with 25 days per year reaching or surpassing 90 °F (32 °C). Brief, but heavy summer thunderstorms are common. Winters are moderated by the Delaware Bay and the partial shielding of the Appalachians, though there are normally 8−9 days when the daily high remains below freezing and 15 nights with lows below 20 °F (−7 °C). Snow is typically light and sporadic, averaging only 13.2 inches (34 cm) per year, and does not usually remain on the ground for long. The hardiness zone is 7b.  Spring and autumn provide transitions of reasonable length and are similar, though spring is wetter. The monthly mean temperature ranges from 36.0 °F (2.2 °C) in January to 77.9 °F (25.5 °C) in July. The annual total precipitation of around 47.61 inches (1,209.3 mm) is spread rather evenly year-round.\nGovernment Dover is governed via the council-manager system with an elected mayor, currently Robin R. Christiansen since 2014. The council consists of nine members, eight of whom are elected from four districts with each district having two members. One member of the council is elected at large. Municipal elections, which are nonpartisan, are held on the third Tuesday in April in odd-numbered years. The mayor is elected directly by the city voters for a four-year term. City council members are elected to staggered four-year terms.\nThere have been four full-time Mayors of Dover to date: James \"Hutch\" Hutchison from 1994 to 2004; Stephen Speed from 2004 to 2007; Carleton Carey from 2007 to 2014; Robin R. Christiansen since 2014.\nThe Dover Police Department provides police services to the city of Dover. The police department is led by a Chief of Police, currently Thomas Johnson, and consists of 101 officers, responding to 43,000 calls a year.  The Dover Police Department is composed of several sworn police units along with civilian units. Fire protection in Dover is provided by the Dover Fire Department, a volunteer fire department which has served the city since 1882 and operates two stations in Dover. Station 1 is the department's headquarters and houses Engines 4, 6, and 7; Ladder 2; Rescue 1; Brush 9; and Marine 1. The Dover Fire Department Museum is also located at the headquarters. Station 2 houses Engines 2 and 3; Ladder 1; Utility 1; and the foam trailer. \nDover is the only state capital in the United States with a volunteer fire department.\nFederally, Dover is part of Delaware's at-large congressional district, represented by Democrat Sarah McBride, elected in 2024. The state's senior member of the United States Senate is Democrat Chris Coons, first elected in 2010. The state's junior member of the United States Senate is Democrat Lisa Blunt Rochester, elected in 2024. The governor of Delaware is Democrat Matt Meyer, elected in 2024."
+    },
+    {
+      "article": "Dover, Delaware — History",
+      "url": "https://en.wikipedia.org/wiki/Dover%2C_Delaware#History",
+      "text": "History Dover was founded as the court town for newly established Kent County in 1683 by William Penn, the proprietor of the territory generally known as the \"Lower Counties on the Delaware.\" Later, in 1717, the city was officially laid out by a special commission of the Delaware General Assembly. The capital of the state of Delaware was moved here from New Castle in 1777 because of its central location and relative safety from British raiders on the Delaware River. Because of an act passed in October 1779, the assembly elected to meet at any place in the state they saw fit, meeting successively in Wilmington, Lewes, Dover, New Castle, and Lewes again, until it finally settled down permanently in Dover in October 1781. The city's central square, known as The Green, was the location of many rallies, troop reviews, and other patriotic events. To this day, The Green remains the heart of Dover's historic district and is the location of the Delaware Supreme Court and the Kent County Courthouse.\nDover was most famously the home of Caesar Rodney, the popular wartime leader of Delaware during the American Revolution. He is known to have been buried outside Dover, but the precise location of his grave is unknown. A cenotaph in his honor is erected in the cemetery of the Christ Episcopal Church near The Green in Dover.\n\n \nDover and Kent County were deeply divided over the issue of slavery, and the city was a \"stop\" on the Underground Railroad because of its proximity to slave-holding Maryland and free Pennsylvania and New Jersey. It was also home to a large Quaker community that encouraged a sustained emancipation effort in the early 19th century. There were very few slaves in the area, but the institution was supported, if not practiced, by a small majority, who saw to its continuation.\nThe Bradford-Loockerman House, Building 1301, Dover Air Force Base, John Bullen House, Carey Farm Site, Christ Church, Delaware State Museum Buildings, John Dickinson House, Dover Green Historic District, Eden Hill, Delaware Governor's Mansion, Greenwold, Hughes-Willis Site, Loockerman Hall, Macomb Farm, Mifflin-Marim Agricultural Complex, Old Statehouse, Palmer Home, Town Point, Tyn Head Court, and Victorian Dover Historic District are listed on the National Register of Historic Places.\n\nOn August 4, 2020, Hurricane Isaias produced an EF2 tornado that struck the city. Trees were significantly damaged, including some that fell on homes, roofing was blown off a middle school, a warehouse had metal walls torn off, some tractor trailers were blown over and a garage was severely damaged. Damage in Dover was rated EF1. The tornado was on the ground for tracked 35.78 miles (57.58 km), becoming the longest-tracked tornado in the state, but there were no casualties."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

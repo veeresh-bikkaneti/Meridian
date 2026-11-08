@@ -1,0 +1,57 @@
+{
+  "caseId": "oslo-norway",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 2,
+  "hookAngle": "This city hands out the Nobel Peace Prize every year.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-3143244",
+    "name": "Oslo",
+    "country": "Norway",
+    "subdivision": "Oslo",
+    "lat": 59.91273,
+    "lon": 10.74609
+  },
+  "target": {
+    "placeId": "gn-3143244",
+    "name": "Oslo",
+    "lat": 59.91273,
+    "lon": 10.74609,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Norway",
+    "iso2": "NO",
+    "subdivision": "Oslo"
+  },
+  "subjectAnswer": {
+    "name": "Norway",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "NO",
+    "subdivision": "Oslo",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Oslo is the capital of Norway. It's one of Norway's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Oslo",
+      "url": "https://en.wikipedia.org/wiki/Oslo",
+      "text": "Oslo is the capital and largest city of Norway. It constitutes both a county and a municipality. The municipality of Oslo had a population of 724,290 in 2025, while the city's greater urban area had a population of 1,110,887 in 2025, and the metropolitan area had an estimated population of 1,546,706 in 2021.\nDuring the Viking Age, the area was part of Viken. Oslo was founded as a city at the end of the Viking Age in 1040 under the name Ánslo, and established as a kaupstad or trading place in 1048 by Harald Hardrada. The city was elevated to a bishopric in 1070 and a capital under Haakon V of Norway around the year 1300. Personal unions with Denmark from 1397 to 1523 and again from 1536 to 1814 reduced its influence. After being destroyed by a fire in 1624, during the reign of King Christian IV, a new city was built closer to Akershus Fortress and named Christiania in honour of the king. It became a municipality (formannskapsdistrikt) on 1 January 1838. The city functioned as the capital of Norway during the 1814–1905 union between Sweden and Norway. From 1877, the city's name was spelled Kristiania in government usage, a spelling that was adopted by the municipal authorities in 1897, although 'Christiania' was also used. In 1925, the city, after incorporating the village retaining its former name, was renamed 'Oslo'. In 1948, Oslo merged with Aker, a municipality which surrounded the capital and which was 27 times larger, thus creating the modern, much larger Oslo municipality.\nOslo is Norway's primate city, being its dominant economic and governmental centre, and its metropolitan area is approximately 3.5 times more populated than the country's second-largest urban area, containing the second-largest city, Bergen. The city is also a hub of Norwegian trade, banking, industry and shipping. It is an important centre for maritime industries and maritime trade in Europe. The city is home to many companies within the maritime sector, some of which are among the world's largest shipping companies, shipbrokers and maritime insurance brokers. Oslo is a pilot city of the Council of Europe and the European Commission intercultural cities programme.\n\nGeography\nOslo occupies an arc of land at the northernmost end of the Oslofjord. The fjord, which is nearly bisected by the Nesodden peninsula opposite Oslo, lies to the south; in all other directions Oslo is surrounded by green hills and mountains. There are 40 islands within the city limits, the largest being Malmøya (0.56 km2 or 0.22 sq mi), and scores more around the Oslofjord. Oslo has 343 lakes, the largest being Maridalsvannet (3.91 km2 or 1.51 sq mi). This is also a main source of drinking water for large parts of Oslo.\nAlthough Eastern Norway has a number of rivers, none of these flow into the ocean at Oslo. Instead Oslo has two smaller rivers: Akerselva (draining Maridalsvannet, which flows into the fjord in Bjørvika), and Alna. The waterfalls in Akerselva gave power to some of the first modern industry of Norway in the 1840s. Later in the century, the river became the symbol of the stable and consistent economic and social divide of the city into an East End and a West End; the labourers' neighbourhoods lie on both sides of the river, and the divide in reality follows Uelands street a bit further west. River Alna flows through Groruddalen, Oslo's major suburb and industrial area. The highest point is Kirkeberget, at 629 m (2,064 ft). Although the city's population is small compared to most European capitals, it occupies an unusually large land area, of which two-thirds are protected areas of forests, hills and lakes. Its boundaries encompass many parks and open areas, giving it an airy and green appearance.\n\nClimate\nOslo has a humid continental climate (Köppen climate classification: Dfb) or, if the original Köppen winter threshold −3 °C (27 °F) is used, an oceanic climate (Cfb). Oslo has some of the warmest summers of Norway and fairly cold winters. Oslo receives a fair amount of precipitation during the year. The driest seasons are winter and spring, and the wettest are summer and autumn. Because of the city's northern latitude, daylight varies greatly, from more than 18 hours in midsummer, when it never gets completely dark at night (no darker than nautical twilight), to around 6 hours in midwinter.\nIn January, on average three out of four days are below freezing (0 °C [32 °F]) and one out of four days is colder than −10 °C (14 °F) (1961–1990). The coldest temperature recorded is −29.6 °C (−21.3 °F), on 21 January 1841, while the coldest recorded at Blindern is −26 °C (−14.8 °F) in January 1941.\n\nCulture\nOslo is also known for giving out the Nobel Peace Prize every year. The Nobel Peace Prize Ceremony is headed by the Institute; the award ceremony is held annually in The City Hall on 10 December."
+    },
+    {
+      "article": "Oslo — History",
+      "url": "https://en.wikipedia.org/wiki/Oslo#History",
+      "text": "History\nViking Age\nDuring the Viking Age, the area that includes modern Oslo was located in Viken, the northernmost province of Denmark. Control over the area shifted between Danish and Norwegian kings in the Middle Ages, and Denmark continued to claim the area until 1241.\nAccording to the Norse sagas, Oslo was founded around 1049 by Harald Hardrada. Recent archaeological research, however, uncovered Christian burials which could be dated to prior to AD 1000, evidence of a preceding urban settlement. This called for the celebration of Oslo's millennium in 2000 rather than 2049.\n1000–1600\nUnder the reign of Olaf III of Norway (1067–1093), Oslo became a cultural centre for Eastern Norway. Hallvard Vebjørnsson became the city's patron saint and is depicted on the city's seal.\nIn 1174, Hovedøya Abbey was built. The churches and abbeys became major owners of large tracts of land, which proved important for the city's economic development, especially before the Black Death.\nAt the end of the 12th century, Hanseatic League traders from Rostock moved into the city and gained major influence in the city.\nOn 25 July 1197, Sverre of Norway and his soldiers attacked Oslo from Hovedøya.\nDuring the Middle Ages, Oslo reached new heights during the reign of Haakon V of Norway (1299–1319). He was the first king to reside permanently in the city, and it has been regarded as the capital city of Norway since his reign. He also started the construction of the Akershus Fortress and the Oslo Kongsgård.\nThe Black Death came to Norway in 1349 and, like other cities in Europe, the city suffered greatly. The churches' earnings from their land dropped so much that the Hanseatic traders dominated the city's foreign trade in the 15th century.\nIn 1380, Norway was the weaker part in a personal union with Denmark, and Oslo's role was reduced to that of provincial administrative centre, with the monarchs residing in Copenhagen.\n17th century\nOver the years, fires destroyed significant parts of the city multiple times, as many of the city's buildings were built entirely of wood. After the fourteenth calamity, in 1624, which lasted for three days, Christian IV of Denmark decided that the old city should not be rebuilt again. His men built a network of roads on the other side of the bay in Akershagen near Akershus Castle. He demanded that all citizens move their shops and workplaces to the newly built city of \"Christiania\", named in his honour. The part of the city built starting in 1624 is now often called Kvadraturen because of its orthogonal layout in regular, square blocks. Anatomigården is a historic timber framing house located on the north side of Christiania Torv; it was built in 1640.\n18th century\nIn the 18th century, after the Great Northern War, the city's economy boomed with shipbuilding and trade. The strong economy transformed Christiania into a trading port.\n19th century\nThe Royal Frederick University (now the University of Oslo) was founded in 1811; the fact that it was founded this late reportedly had an adverse effect on the development of the nation.\nIn 1814 the former provincial town of Christiania became the capital of the independent Kingdom of Norway, when the union with Denmark was dissolved and replaced by a personal union with Sweden. Several state institutions were established and the city's role as a capital initiated a period of rapidly increasing population. The government of this new state needed buildings for its expanding administration and institutions. Several important buildings and landmarks were erected in the 19th century, including the Royal Palace (1825–1848), the Stock Exchange (1826–1828), the Bank of Norway (1828), the Storting (1861–1866), the National Theatre (1899), and several University buildings.\nLarge areas of the surrounding Aker municipality were incorporated in 1839, 1859, and 1878. The 1859 expansion included Grünerløkka, Grønland, and Oslo. At that time the area called Oslo (now Gamlebyen or Old Town) was a village or suburb outside the city borders east of Aker river. The population increased from approximately 10.000 in 1814 to 230.000 in 1900. In 1850, Christiania overtook Bergen and became the most populous city in the country.\n20th century\nThe city and municipality used the name Kristiania until 1 January 1925 when the original name of Oslo was restored. This was because Norway became fully independent in 1905, and Norwegians argued that a name memorializing a Danish king (Christian IV of Denmark) was inappropriate as the name of the capital of their country."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

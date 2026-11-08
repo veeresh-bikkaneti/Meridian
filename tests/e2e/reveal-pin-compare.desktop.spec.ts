@@ -10,6 +10,7 @@ import {
   clickNextPlace,
   dismissTileOverlayIfPresent,
   tapHitsMap,
+  readQuestion,
 } from "./helpers";
 
 /**
@@ -28,11 +29,16 @@ import {
  * Determinism: the globe deal is a per-session shuffle (trail.ts), so the
  * date freeze alone cannot pin the first place. seedDeterministicDeal
  * freezes the calendar AND the RNG streams the session seed is minted
- * from (crypto.getRandomValues with a Math.random fallback), making the
- * first globe place (now a place in Iran — the difficulty-tiers merge
- * changed the dealer to fame-weighted, so the seeded first deal moved
- * from "El Tambo, Colombia") identical on every run —
- * verified stable across repeated runs during development. The miss pins
+ * from (crypto.getRandomValues with a Math.random fallback). It once
+ * pinned the first globe place exactly (El Tambo, Colombia, then a
+ * place in Iran after the difficulty-tiers merge switched the dealer
+ * to fame-weighted), but on current main the first deal STILL varies
+ * between sessions despite the frozen streams — #298 observed first
+ * deals in Spain, Hong Kong and Uganda on the same main — so no test
+ * here may depend on WHICH place is dealt first. The another-country
+ * test derives the truth's country from the served question and
+ * retries past a Brazil deal or a lucky hit; the hit and ocean tests
+ * are deal-independent. The miss pins
  * are fixed viewport points probed end-to-end against the live camera +
  * tap path; each sits deep inside its region (neighbor taps resolve
  * identically), so small camera jitter cannot flip the resolved name.
@@ -79,11 +85,12 @@ test.beforeEach(async ({ context }) => {
 /**
  * Deterministic deal for the globe tests. The per-session shuffle seed
  * comes from trail.ts mintSeed(): crypto.getRandomValues when available,
- * Math.random otherwise. Seeding both (plus the calendar) pins the full
- * deal order — the first globe place is a place in Iran on every
- * run (it was "El Tambo, Colombia" before the difficulty-tiers merge
- * switched the dealer to fame-weighted). The streams stay varying (mulberry32), just deterministic, so no
- * app behavior changes — only the seed.
+ * Math.random otherwise. Seeding both (plus the calendar) makes the
+ * streams deterministic, but on current main the first deal still
+ * varies between sessions (#298 — see the header note), so callers
+ * must not depend on which place is dealt first. The streams stay
+ * varying (mulberry32), just deterministic, so no app behavior
+ * changes — only the seed.
  */
 async function seedDeterministicDeal(page: Page): Promise<void> {
   await page.addInitScript(() => {
@@ -158,8 +165,33 @@ test("miss in another country: the card names both locations", async ({
   await seedDeterministicDeal(page);
   await startGlobeRunPatient(page);
 
-  const { phase } = await commitPin(page, BAHIA_PIN.x, BAHIA_PIN.y);
-  expect(phase).toBe("done");
+  // #298: the seeded first deal can no longer be pinned to one country
+  // (Spain, Hong Kong and Uganda all observed on the same main), so the
+  // truth's country is read from the served question itself — the globe
+  // label is "Find <place>, <subdivision>, <country>." — and the line
+  // must name THAT country next to the pin's Brazil. A deal whose truth
+  // is itself in Brazil (the pin would be same-country) or a lucky hit
+  // on the truth is burned and the next deal is tried, the same retry
+  // shape commitMiss and the same-state spec use.
+  let truthCountry: string | null = null;
+  for (let attempt = 0; attempt < 4 && truthCountry === null; attempt++) {
+    const question = await readQuestion(page);
+    const dealtCountry = question
+      .replace(/^Find /, "")
+      .replace(/\.$/, "")
+      .split(",")
+      .pop()!
+      .trim();
+    const { phase } = await commitPin(page, BAHIA_PIN.x, BAHIA_PIN.y);
+    if (phase === "done" && dealtCountry !== "Brazil") {
+      truthCountry = dealtCountry;
+      break;
+    }
+    // Hit, or a Brazil truth: advance and try the next deal.
+    await clickNextPlace(page);
+    await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
+  }
+  expect(truthCountry, "no non-Brazil globe deal in 4 attempts").not.toBeNull();
 
   const card = resultCard(page);
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
@@ -168,9 +200,12 @@ test("miss in another country: the card names both locations", async ({
   // auto-retried, no sleeps.
   const line = card.getByTestId("pin-compare-line");
   await expect(line).toBeVisible({ timeout: 15_000 });
-  // The <dl> text normalizes without the ": " and " · " separators — match
-  // the two country names in order.
-  await expect(line).toHaveText(/Your pin\s*Brazil.*True spot\s*Iran/s);
+  // PR2: the ledger is a real <dl> (DT/DD); assert the structured sides —
+  // the pin is Brazil (fixed probed pin) and the true spot is the country
+  // the served question named.
+  const dds = line.locator("dd");
+  await expect(dds.nth(0)).toHaveText("Brazil");
+  await expect(dds.nth(1)).toHaveText(truthCountry!);
 });
 
 test("hit: the card shows no pin-compare line", async ({ page }) => {
@@ -260,5 +295,12 @@ test("same-state miss: 'Right state, wrong town!'", async ({ page }) => {
   await expect(nextPlaceButton(page)).toBeVisible({ timeout: 15_000 });
   const line = card.getByTestId("pin-compare-line");
   await expect(line).toBeVisible({ timeout: 15_000 });
-  await expect(line).toHaveText("Right state, wrong town!");
+  // PR2: the ledger is a real <dl> (DT/DD) — the whole-line text is
+  // "Your pin" + verdict + "True spot" + the town, so the verdict is
+  // asserted on the first DD, exactly as the Nebraska regression spec
+  // in reveal-your-pin-country-globe.desktop.spec.ts does (#298: the
+  // old whole-line exact-text assertion predated the ledger format).
+  await expect(line.locator("dd").nth(0)).toHaveText(
+    "Right state, wrong town!",
+  );
 });

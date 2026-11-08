@@ -1,0 +1,52 @@
+{
+  "caseId": "quito-ecuador",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "The capital closest to the equator — that line runs through the north of the city.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-3652462",
+    "name": "Quito",
+    "country": "Ecuador",
+    "subdivision": "Pichincha",
+    "lat": -0.22985,
+    "lon": -78.52495
+  },
+  "target": {
+    "placeId": "gn-3652462",
+    "name": "Quito",
+    "lat": -0.22985,
+    "lon": -78.52495,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Ecuador",
+    "iso2": "EC",
+    "subdivision": "Pichincha"
+  },
+  "subjectAnswer": {
+    "name": "Ecuador",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "EC",
+    "subdivision": "Pichincha",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Quito is the capital of Ecuador. It's one of Ecuador's biggest places.",
+    "history": "The oldest capital in South America, an Inca northern capital refounded by the Spanish in 1534. In 1978 it became one of the first sites ever inscribed on the UNESCO World Heritage List; at 2,850 m it is the capital closest to the Equator."
+  },
+  "extracts": [
+    {
+      "article": "Quito",
+      "url": "https://en.wikipedia.org/wiki/Quito",
+      "text": "Quito (Spanish pronunciation: [ˈkito] ; Quechua: Kitu), officially San Francisco de Quito, is the capital of Ecuador, and the province of Pichincha. It is the largest city in Pichincha and the second-largest city in Ecuador, with an estimated population of 1.7 million in the city and 2.8 million in its metropolitan area. Quito is in a valley on the eastern slopes of Pichincha, an active stratovolcano in the Andes.\nQuito features a subtropical highland climate with uniform precipitation (Köppen: Cfb, Trewartha: Cfll). Because of its altitude and location on the equator, Quito has a fairly constant cool but comfortable climate. The average afternoon maximum temperature is 21.4 °C (70.5 °F), and the average night-time minimum temperature is 9.8 °C (49.6 °F). The annual average temperature is 15.6 °C (60.1 °F). The city has only two seasons: dry and wet. The dry season, June through August (3 months), is referred to as summer; the wet season, September through May (9 months), is referred to as winter. Annual precipitation, depending on location, is over 1,000 millimeters (39 in).\nThe date of its first habitation is unknown, but archaeological evidence suggests that it was first settled by sedentary populations between 4400 and 1600 BC. In the late fifteenth century, the Inca Emperor Huayna Capac defeated the Quitu, the region's original inhabitants, and incorporated Quito into the Inca Empire, designating it the capital of the Inca Empire's northern region. The Spanish conquest of the city in 1534 is the date most frequently cited as the city's official founding, making Quito the oldest capital in South America.\nQuito's historic center is among the largest and best-preserved in the Americas. In 1978, Quito and Kraków were the first World Cultural Heritage Sites declared by UNESCO. Quito is the capital city closest to the Equator, which runs through the northern part of the metropolitan area in the parish of San Antonio.\nQuito is the political and cultural center of Ecuador as the country's major governmental, administrative, and cultural institutions are within the city. The majority of transnational companies with a presence in Ecuador are headquartered there. It is also one of the country's two major industrial centers—the port city of Guayaquil being the other one."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

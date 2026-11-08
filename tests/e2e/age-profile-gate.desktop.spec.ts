@@ -13,7 +13,9 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  * - keyboard Enter on the gate input checks exactly once (no double-fire);
  * - the picker selection ring follows the tapped card;
  * - Esc backs out of the change-confirm dialog;
- * - the change toast never names the band ("Saved ✅");
+ * - the change toast names the band it saved ("Saved — GeoDetective
+ *   (ages 11–13) ✅" for this spec's 8-10 → 11-13 switch; the owner's
+ *   2026-11-04 ruling superseded the earlier band-invisible toast);
  * - focus returns to the invoking "For grown-ups" control on close.
  */
 test.setTimeout(180_000);
@@ -37,7 +39,7 @@ test.beforeEach(async ({ context }) => {
   });
 });
 
-test("grown-ups gate opens as a viewport overlay; picker flow is band-invisible", async ({
+test("grown-ups gate opens as a viewport overlay; toast names the saved band", async ({
   page,
 }) => {
   await page.goto(APP_NO_IDLE);
@@ -94,13 +96,14 @@ test("grown-ups gate opens as a viewport overlay; picker flow is band-invisible"
   await expect(confirm).not.toBeVisible();
   await expect(picker).toBeVisible();
 
-  // Save → Switch → the toast never names the band, and focus returns to
-  // the invoking control.
+  // Save → Switch → the toast names the band just saved (this spec
+  // switches 8-10 → 11-13, the "GeoDetective" band), and focus returns
+  // to the invoking control.
   await page.getByTestId("agep-save").click();
   await page.getByTestId("agep-confirm-switch").click();
   const toast = page.getByTestId("agep-toast");
   await expect(toast).toBeVisible();
-  await expect(toast).toHaveText("Saved ✅");
+  await expect(toast).toHaveText("Saved — GeoDetective (ages 11–13) ✅");
   await expect(picker).not.toBeVisible();
   await expect(page.locator("div[inert]")).toHaveCount(0);
   await expect(footerLink).toBeFocused();

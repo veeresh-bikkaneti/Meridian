@@ -20,11 +20,35 @@
  * fallback overlay (never destroying document.body — the app may still
  * boot late) with a "Try again" path. The report then auto-sends: the
  * endpoint is resolved at runtime (never baked in) and the crash note
- * goes automatically when the fallback shows, with an honest on-screen
- * confirmation. The report reuses the existing observability contract:
+ * goes automatically when the generic fallback shows, with an honest
+ * on-screen confirmation. One overlay is the exception: when a fresh
+ * chunk-reload notice survives (next note), the overlay is the recovery
+ * card and no report sends. The report reuses the existing observability contract:
  * same ObservabilityEvent shape with type "boot_failure", same
  * flags.json `observabilityEndpoint` validation as src/lib/flags.ts, same
  * sessionStorage keys — no parallel pipeline.
+ *
+ * One case deserves its own note. When a chunk fails mid-session,
+ * chunk-recovery (src/lib/chunk-recovery.ts) reloads the page once, and
+ * MapErrorBoundary's manual "Try again" does the same; both first write
+ * a timestamp under sessionStorage key `meridian.chunkReloadNotice`,
+ * and in practice both run inside an app that already booted and
+ * reached home. If that recovery reload itself stalls (assets still
+ * failing), this watchdog's timer would otherwise show the generic
+ * boot-failure overlay and file a false `boot_failure` for a session
+ * that had already booted fine. So when a fresh notice (age <=
+ * 900_000 ms, mirroring CHUNK_RELOAD_NOTICE_MAX_AGE_MS in
+ * chunk-recovery.ts) survives to fire time with readiness unset, the
+ * report and the generic card stand down — that combination is, in
+ * practice, a stalled recovery reload (in practice, not by
+ * construction: the notice's removal when the next boot consumes it
+ * is best-effort, so a surviving flag is strong evidence, not proof).
+ * But standing the player down too would leave a child on a blank
+ * shell — possibly in the standalone PWA, which has no browser reload
+ * button — so the overlay still shows, as the recovery card: same
+ * surface and actions, a heading that says the reload didn't finish,
+ * and no report. A notice that is absent, malformed, or stale changes
+ * nothing — the generic fallback shows, and reports, exactly as before.
  *
  * Like scripts/nosw-hatch.mjs, the logic is written against an injected
  * `host` (window/document/navigator/sessionStorage/setTimeout/
@@ -37,7 +61,10 @@
  * isValidWatchdogEndpoint): var, function, no ?./??, no arrows, no
  * template literals, no const/let, no classes, no fetch/Promise (XHR +
  * callbacks only), no import/export. The whole inline body is wrapped in
- * try/catch and the rendered output must stay <= 5120 bytes, so the
+ * try/catch and the rendered output must stay <= 6,600 bytes
+ * (6,144 until issue #345 added the read-only boot-health stamp
+ * and PR #349 added the chunk-recovery stand-down + recovery card;
+ * see the RENAME comment for the measured figures), so the
  * embedded code is written terse and renderCrashWatchdogScript() runs it
  * through minifyEmbedded() (comment/whitespace removal plus renaming of
  * a fixed safe-list of long locals — token-based, so strings, regexes,
@@ -89,17 +116,21 @@ export function isValidWatchdogEndpoint(value, hosts) {
  * which drives the real orchestration against fake browser globals. The
  * inline script embeds this same function by source via
  * renderCrashWatchdogScript(). Everything in here is ES5-only (see the
- * module docstring) and deliberately terse to hold the 5120-byte budget.
+ * module docstring) and deliberately terse to hold the 6600-byte budget.
  */
 export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts) {
   var ASKED = "meridian.crashwatchdogAsked",
     CRUMB = "meridian.breadcrumb",
     CLEAN = "meridian.cleanExit",
+    BHK = "meridian:boot-health",
     READY = "__meridian_ready",
     STALE = "A new version of Meridian is available.",
     CAP = 8192;
   var win = host,
     doc = win.document;
+  // §4.4 parity: false iff any guarded storage access threw during
+  // this run — stamped on the boot_failure event as storageOk.
+  var sok = true;
   // sessionStorage is resolved lazily: on old Safari even touching it can
   // throw, and every access is guarded here anyway.
   function ss(k, v) {
@@ -107,6 +138,20 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
       var st = win.sessionStorage;
       return v === void 0 ? st.getItem(k) : st.setItem(k, v);
     } catch (e) {
+      sok = false;
+      return null;
+    }
+  }
+  // §4.3: guarded READ-ONLY access to the durable store (localStorage),
+  // where init() keeps the boot-health counter. The watchdog only ever
+  // reads it — never a second writer (§4.4). A missing store reads as
+  // absent; a throwing one flips storageOk, same as sessionStorage.
+  function ds(k) {
+    try {
+      var d = win.localStorage;
+      return d ? d.getItem(k) : null;
+    } catch (e) {
+      sok = false;
       return null;
     }
   }
@@ -145,16 +190,23 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
   } catch (e) {
     /* best-effort */
   }
-  // WebGL probe: webgl2, else webgl, on one canvas. A device with WebGL2
-  // also does WebGL1, so g1 covers both for diagnostics. Booleans only —
-  // the GPU renderer string (UNMASKED_RENDERER_WEBGL) is deliberately
-  // never read: it fingerprints the individual device (COPPA).
+  // WebGL probe: webgl2 on one canvas, webgl1 on a SECOND canvas —
+  // a canvas that has produced (or attempted) one context mode can
+  // refuse the other, so reusing the webgl2 canvas made webgl1 read
+  // false on devices that have it (DESIGN-FINAL §1.2 row 20). A
+  // device with WebGL2 also does WebGL1, so g2 implies g1. Booleans
+  // only — the GPU renderer string (UNMASKED_RENDERER_WEBGL) is
+  // deliberately never read: it fingerprints the device (COPPA).
   var g1 = false,
     g2 = false;
   try {
     var cv = doc.createElement("canvas");
     g2 = !!cv.getContext("webgl2");
-    g1 = g2 || !!cv.getContext("webgl");
+    if (g2) g1 = true;
+    else {
+      var cv2 = doc.createElement("canvas");
+      g1 = !!cv2.getContext("webgl");
+    }
   } catch (e) {
     /* best-effort */
   }
@@ -171,7 +223,11 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
     /* best-effort */
   }
   var unclean = !!prev && ss(CLEAN) === "0",
-    shown = false;
+    shown = false,
+    // Set by onTimer when this load is, in practice, a stalled
+    // chunk-recovery reload (fresh chunkReloadNotice, ready unset).
+    // show() reads it: recovery copy in the heading, and no send().
+    rcv = false;
   function xhr(m, u, b, cb) {
     try {
       var x = new win.XMLHttpRequest();
@@ -233,9 +289,19 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
     getEndpoint(function (ep) {
       if (!ep) return;
       try {
-        // COPPA: OS/form buckets from the UA (never the UA or GPU
-        // string), DPR clamped to 1-4, short-side screen bucket; no memory or
-        // cores (2026-10-21). undefined fields are dropped by JSON.
+        // COPPA: parsed/coarse facts only (never the UA or GPU
+        // string), DPR clamped to 1-4, short-side screen bucket.
+        // §4.4 parity, as cut by the §7.5 ladder: the device
+        // carries the manifest keys this path can stamp. The subset
+        // parser below (rule IDs mirror src/lib/ua-parse.ts:
+        // O1/O2/O3/O4 osVersion, B7/B8 Safari name/version, the
+        // §2.3 frozen-token denylist) computes what it can; every
+        // other stamped new key is the literal "unknown" (§2.1:
+        // unknown is a value). engine and deviceClass are dropped
+        // entirely (ladder steps 2–3, below): engine is filled
+        // worker-side for boot_failure, deviceClass stays
+        // "unknown". Memory and cores are never READ here — the
+        // host may expose numbers, they still stamp "unknown".
         var r,
           n = win.navigator || {},
           w = win.screen || {},
@@ -251,15 +317,86 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
                   : /linux/.test(uaS)
                     ? "linux"
                     : "other",
-          ss = Math.min(w.width, w.height);
+          ss = Math.min(w.width, w.height),
+          un = "unknown",
+          vm = /version\/([0-9]+)\.([0-9]+)/.exec(uaS),
+          br = un,
+          bv = un,
+          ov = un,
+          im,
+          am;
+        // B7/B8 subset, order-guarded: Chromium UAs also carry a
+        // Safari/ compat token, so Safari is claimed only when no
+        // Chrome/ token is present (B6 outranks B7 in the full rules).
+        if (/safari\//.test(uaS) && !/chrome\//.test(uaS)) {
+          br = "safari";
+          // §7.5 ladder step 1: watchdog browserVersion is MAJOR ONLY.
+          if (vm) bv = vm[1];
+        }
+        if ((im = /(?:cpu(?: iphone)? os|mac os x) ([0-9_]+)/.exec(uaS))) {
+          ov = im[1].replace(/_/g, ".");
+          // §2.3: the Mac token is frozen — never stamped as a version.
+          if (ov === "10.15.7" || ov === "10.15") ov = un;
+        } else if (os === "android" && (am = /android ([0-9]+(?:\.[0-9]+)?)/.exec(uaS))) {
+          ov = am[1];
+          // §2.3: Android 10 + a UA-Reduction tell = frozen, not real.
+          if (ov === "10" && (/chrome\/[0-9]+\.0\.0\.0/.test(uaS) || /; k\)/.test(uaS))) ov = un;
+        } else if (os === "windows" && (am = /windows nt ([0-9.]+)/.exec(uaS))) {
+          ov = am[1];
+        }
+        // §2.3: iOS 18_6/18_7 freeze only with the Version/ >= 26 witness.
+        if (os === "ios" && (ov === "18.6" || ov === "18.7") && vm && +vm[1] >= 26) ov = un;
+        // §7.5 ladder step 3: deviceClass is NOT stamped on this path
+        // and is NOT recovered worker-side — it stays "unknown" on
+        // watchdog boot_failure events. (The P2/P3 subset rules live
+        // in src/lib/ua-parse.ts; the watchdog's byte budget cannot
+        // carry them — see BRANCH_STATUS.)
+        // msSinceBootStart from the recovered trail only (§4.4).
+        var ms = un,
+          hh = prev && prev.history,
+          la = hh && hh[hh.length - 1];
+        if (la && typeof la.at === "number" && la.at >= prev.startedAt) ms = la.at - prev.startedAt;
+        // §4.3 watchdog stamp (#345): borrow the durable unfinished
+        // streak so a boot_failure grades on the same count the app
+        // path stamps. Read at send time (freshest — a late-loading
+        // bundle's init() may have updated the record since parse).
+        // Absent, malformed, or blocked → no stamp: the worker then
+        // grades its fallback and says the streak was not stamped.
+        // The v:1 shape check mirrors readBootHealth in
+        // src/lib/observability.ts; the 0..99 clamp is the manifest's
+        // declared range for unfinishedBoots.
+        var ub = null;
+        try {
+          var hp = JSON.parse(ds(BHK) || "");
+          // Strict === on purpose: hp.v comes from parsed JSON, so it
+          // can be a string ("1") or boolean (true) that loose == would
+          // accept — readBootHealth discards those records, and so do
+          // we, or the stamp would inflate the worker's severity grade.
+          if (hp && hp.v === 1 && typeof hp.unfinished == "number" && isFinite(hp.unfinished))
+            ub = Math.min(99, Math.max(0, Math.floor(hp.unfinished)));
+        } catch (e) {
+          /* absent-safe: ub stays null, nothing is stamped */
+        }
+        // §7.5 ladder step 2: engine is NOT stamped on this path —
+        // for boot_failure events only, the worker fills it from the
+        // event's parsed fields via the §3.4 E-rules.
         var dv = {
+          browser: br,
+          browserVersion: bv,
           os: os,
+          osVersion: ov,
+          hardwareConcurrency: un,
+          deviceMemory: un,
           form: os === "android" || os === "ios" ? "mobile" : "desktop",
           // Same bucket as dprBucket() in src/lib/observability.ts: an
           // integer clamped to 1-4, or undefined when the value is missing
           // or bogus. Rounding alone let odd zoom values such as 7 through.
           dpr: (r = win.devicePixelRatio) > 0 ? Math.min(4, Math.round(r)) || 1 : void 0,
           screen: ss < 480 ? "sm" : ss < 768 ? "md" : ss < 1080 ? "lg" : ss ? "xl" : void 0,
+          touchPoints: un,
+          displayMode: un,
+          connection: un,
+          locale: un,
           webgl1: g1,
           // (No device.buildId: the top-level event already carries it,
           // and dropping the copy keeps the script within its byte budget.)
@@ -270,16 +407,29 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
             ts: Date.now(),
             buildId: buildId,
             device: dv,
+            // §4.4 parity: same envelope stamps as the app path.
+            // unfinishedBoots is stamped below, read-only, when the
+            // durable record was readable — the watchdog borrows the
+            // streak; it never writes meridian:boot-health.
+            lcV: "2",
+            storageOk: sok,
+            mapMode: prev && (prev.mapMode === "full" || prev.mapMode === "scout") ? prev.mapMode : un,
+            msSinceBootStart: ms,
             error: err0 || { name: "Error", message: "boot timeout" }
           };
+          // §4.3: stamp the borrowed streak only when one was read —
+          // an absent stamp is the honest "not stamped" signal.
+          if (ub !== null) ev.unfinishedBoots = ub;
           if (prev) {
             ev.sessionId = prev.sessionId;
             if (prev.lastMilestone) ev.lastMilestone = prev.lastMilestone;
             if (unclean) {
-              // Strip the breadcrumb's device sub-object: the app bundle
-              // writes the raw UA string there (device.ua) and this
-              // watchdog never sends UA — the coarse facts already ride
-              // on ev.device. Mutating prev is safe: sessionId /
+              // Strip the breadcrumb's device sub-object: legacy
+              // trails may carry the raw UA string there (device.ua);
+              // current builds store the parsed snapshot only, not
+              // the raw UA. This watchdog never sends UA either way —
+              // the coarse facts already ride on ev.device.
+              // Mutating prev is safe: sessionId /
               // lastMilestone were extracted above, prev is never written
               // back to storage and never read again below.
               delete prev.device;
@@ -366,7 +516,16 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
         CSS +
         "</style>" +
         '<div id="mc"><h2 id="mt" tabindex="-1">' +
-        (g1 || g2 ? "The game couldn't start on this phone." : "This phone can't run the 3D map.") +
+        // The recovery card's heading says what actually happened —
+        // a reload stalled — and blames neither the game's start nor
+        // the phone. The WebGL-less variant does not apply here: the
+        // load failure is the proximate cause either way. The body
+        // line below is shared: it is true for both cards.
+        (rcv
+          ? "The reload didn't finish loading."
+          : g1 || g2
+            ? "The game couldn't start on this phone."
+            : "This phone can't run the 3D map.") +
         "</h2><p>The game didn't finish loading.</p>" +
         '<div id="ma"><button id="ag">Try again</button></div>' +
         '<a id="mr">Reload</a> · <a id="mn">?nosw=1</a></div>';
@@ -391,7 +550,9 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
         /* best-effort */
       }
       // Auto-send: no tap needed. Fail-closed and once per session.
-      send();
+      // The recovery card never sends: this session already booted
+      // once, so a boot_failure here would be a false report.
+      if (!rcv) send();
     } catch (e) {
       /* best-effort */
     }
@@ -406,6 +567,26 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
     try {
       if (shown || doc.readyState !== "complete" || doc.hidden || win[READY] || ss(ASKED) === "1")
         return;
+      // Chunk-recovery case: a fresh meridian.chunkReloadNotice
+      // (age <= 9e5 ms = CHUNK_RELOAD_NOTICE_MAX_AGE_MS in
+      // src/lib/chunk-recovery.ts; keep in sync) was, in practice,
+      // written by an app that already booted — chunk-recovery's
+      // auto-reload, or MapErrorBoundary's manual "Try again" — just
+      // before reloading. In practice, not by construction: the
+      // notice's removal when the next boot consumes it is
+      // best-effort, so a surviving fresh flag is strong evidence,
+      // not proof. If it survived to this timer with ready unset,
+      // this load is in practice that recovery reload, stalled: a
+      // mid-session chunk failure, not a fresh boot failure. The
+      // boot_failure report therefore stands down — but the player
+      // does not stand down with it: show() reads rcv and swaps in
+      // the recovery card (same overlay, same Try again path,
+      // reload-true copy, no send), so a child — possibly in the
+      // standalone PWA, which has no browser reload button — is
+      // never left on a blank shell. A malformed value reads as NaN
+      // and a stale one falls below the cutoff, so both keep the
+      // generic fallback, report included.
+      rcv = +ss("meridian.chunkReloadNotice") >= Date.now() - 9e5;
       var t = "";
       try {
         // innerText, not textContent: <script>/<style> contents are part
@@ -445,10 +626,25 @@ export function crashWatchdogMain(host, buildId, isValidEndpointFn, ingestHosts)
 const RENAME = {
   // #223: crashWatchdogMain and CSS are renamed too — production build
   // ids are 12 chars (14 for the timestamp fallback), which pushed the
-  // rendered script 2–4 bytes over the 5120 budget while the 10-char
-  // test fixture still passed. These two renames free 20 bytes, so the
-  // worst real case (14 chars) renders at 5104 bytes. Neither name is
-  // an object-literal key or a property, so the rename is safe here.
+  // rendered script 2–4 bytes over its then budget while the 10-char
+  // test fixture still passed. These two renames free 20 bytes.
+  // Current figures (§7.5 gated decision): the budget was 6,144
+  // bytes with the worst case (14-char build id) at 6,104 bytes.
+  // Two features then landed on parallel branches. Issue #345
+  // (PR #347) added the read-only boot-health stamp (the ds()
+  // reader, the send-time parse, the BHK rename): +338 bytes at
+  // the worst case including the strict-`===` shape-check cure,
+  // measuring 6,442, budget 6,656 on that branch. PR #349 added
+  // the chunk-recovery stand-down in onTimer (+51 bytes, 6,155)
+  // and then the recovery card (panel round 1: the report stands
+  // down, the player does not — recovery heading + rcv flag + the
+  // send() skip; +58 more, 6,213), budget 6,250 on that branch.
+  // Merged (PR #349 merge-up over main 70e1be6): both features
+  // survive; the rendered worst case MEASURES 6,551 bytes on the
+  // merged tree, so the budget is now 6,600 bytes — the smallest
+  // round fit keeping the established ~40-byte headroom pattern
+  // (49 bytes of margin). Neither name is an
+  // object-literal key or a property, so the rename is safe here.
   crashWatchdogMain: "M",
   CSS: "G",
   isValidEndpointFn: "ok",
@@ -463,6 +659,7 @@ const RENAME = {
   ASKED: "A",
   CRUMB: "B",
   CLEAN: "C",
+  BHK: "J",
   READY: "D",
   STALE: "E",
   CAP: "F",

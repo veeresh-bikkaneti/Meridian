@@ -71,7 +71,8 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { unpackNameIndex } from "../src/game/loop/names-codec.ts";
-import { buildCase } from "./build-coldtrail.mjs";
+import { buildCase, regionForCity } from "./build-coldtrail.mjs";
+import { flagKeyForSubject } from "./packs/schema.mjs";
 
 const SCRIPTS_DIR = dirname(fileURLToPath(import.meta.url));
 const ROOT = dirname(SCRIPTS_DIR);
@@ -85,8 +86,19 @@ export const CAPITALS_PACK_ID = "capitals";
 /** Own stream. Never the core COLDTRAIL_SEED. */
 export const COLDTRAIL_CAPITALS_SEED = 20261103;
 export const PACK_CASE_TARGET = 60;
+/**
+ * Wave 2 (Capitals & Flags, issue #344): cases appended AFTER the
+ * shipped 60, built with the grown anchor pool. Generation is
+ * append-only — the first PACK_CASE_TARGET cases are built with the
+ * original 72-capital anchor pool on the same stream, so their
+ * composition cannot re-roll; only then does the loop continue down
+ * the same shuffled hideout list with all 110 capitals eligible.
+ */
+export const PACK_CASE_TARGET_WAVE2 = 25;
 /** A thinner pack than this is a broken pack. Fail closed. */
 export const MIN_PACK_CASES = 40;
+/** Wave 2 must land substantially or the growth failed. Fail closed. */
+export const MIN_PACK_CASES_WAVE2 = 75;
 
 /** Same values as in build-coldtrail.mjs; kept in step by the tests. */
 const MIN_WITNESS_POP = 300_000;
@@ -157,6 +169,66 @@ export function loadPackCapitalIds(recordsDir = RECORDS_DIR) {
 /** Records win when present; the curated list is the fallback. */
 export function resolvePackCapitalIds(recordsDir = RECORDS_DIR) {
   return loadPackCapitalIds(recordsDir) ?? [...CURATED_CAPITAL_IDS];
+}
+
+const FLAG_REGISTRY_PATH = join(ROOT, "scripts/packs/capitals/flags/registry.json");
+
+/** Pack records by target place id (subjects drive the flag stamps). */
+export function loadPackRecordSubjects(recordsDir = RECORDS_DIR) {
+  const byPlaceId = new Map();
+  if (!existsSync(recordsDir)) return byPlaceId;
+  for (const file of readdirSync(recordsDir).filter((f) => f.endsWith(".json")).sort()) {
+    const record = JSON.parse(readFileSync(join(recordsDir, file), "utf8"));
+    if (record?.target?.placeId && record?.subject) {
+      byPlaceId.set(record.target.placeId, record.subject);
+    }
+  }
+  return byPlaceId;
+}
+
+/** Licence-verified flagKeys from the curation registry (empty = no stamps). */
+export function loadVerifiedFlagKeys(registryPath = FLAG_REGISTRY_PATH) {
+  if (!existsSync(registryPath)) return new Set();
+  const registry = JSON.parse(readFileSync(registryPath, "utf8"));
+  return new Set(Object.keys(registry.flags ?? {}));
+}
+
+/**
+ * Capitals & Flags stamps (design §3): additive metadata only — case
+ * composition (hideouts, witnesses, radii) is never touched, so the
+ * first 60 cases stay byte-stable apart from these fields.
+ * - A sighting whose witness is a pack capital gets the flagKey of the
+ *   land that capital belongs to, when that flag is licence-verified.
+ * - Every pack hideout gets its country name (the reveal prints it in
+ *   text beside the flag — the one flag rule) plus the country's
+ *   flagKey when verified.
+ */
+export function stampPackFlags(cases, { subjectsByPlaceId, verifiedFlagKeys, hideoutPlacesById }) {
+  return cases.map((packCase) => {
+    const sightings = packCase.sightings.map((sighting) => {
+      const subject = subjectsByPlaceId.get(sighting.cityId);
+      if (!subject) return sighting;
+      const flagKey = flagKeyForSubject(subject);
+      return flagKey && verifiedFlagKeys.has(flagKey)
+        ? { ...sighting, flagKey }
+        : sighting;
+    });
+    const hideoutPlace = hideoutPlacesById.get(packCase.hideout.placeId);
+    let hideout = packCase.hideout;
+    if (hideoutPlace) {
+      const { country } = regionForCity(hideoutPlace);
+      const flagKey =
+        typeof hideoutPlace.iso2 === "string"
+          ? hideoutPlace.iso2.toLowerCase()
+          : null;
+      hideout = {
+        ...hideout,
+        countryName: country,
+        ...(flagKey && verifiedFlagKeys.has(flagKey) ? { flagKey } : {}),
+      };
+    }
+    return { ...packCase, sightings, hideout };
+  });
 }
 
 function mulberry32(seed) {
@@ -262,12 +334,19 @@ export function hideoutPool(places) {
 export function buildPackDeck() {
   const places = loadPlaces();
   const capitalIds = resolvePackCapitalIds();
+  // Phase A pool: the original 72 capitals only, in the records'
+  // order — exactly the pool the shipped deck was built from, so the
+  // first 60 cases reproduce byte-for-byte (composition-wise).
+  const originalIds = capitalIds.filter((id) => CURATED_CAPITAL_IDS.includes(id));
+  const { anchors: anchorsWave1 } = splitWitnessPool(places, originalIds);
   const { anchors } = splitWitnessPool(places, capitalIds);
-  if (anchors.length < 3) {
+  if (anchorsWave1.length < 3 || anchors.length < 3) {
     throw new Error(
       `build-coldtrail-capitals: only ${anchors.length} capitals can anchor — refusing to generate a pack that cannot triangulate`,
     );
   }
+  const grown = capitalIds.length > originalIds.length;
+  const target = grown ? PACK_CASE_TARGET + PACK_CASE_TARGET_WAVE2 : PACK_CASE_TARGET;
   const hideouts = hideoutPool(places);
   const random = mulberry32(COLDTRAIL_CAPITALS_SEED);
   // Shuffle hideout candidates on the pack stream; no hideout repeats.
@@ -279,14 +358,26 @@ export function buildPackDeck() {
   const cases = [];
   const usedHideouts = new Set();
   for (const h of shuffled) {
-    if (cases.length >= PACK_CASE_TARGET) break;
+    if (cases.length >= target) break;
     if (usedHideouts.has(h.id)) continue;
-    const built = buildCase(cases.length + 1, h, anchors, random);
+    // Append-only: cases up to the shipped target draw witnesses from
+    // the original pool; appended cases may draw from the grown pool.
+    const pool = cases.length < PACK_CASE_TARGET ? anchorsWave1 : anchors;
+    const built = buildCase(cases.length + 1, h, pool, random);
     if (!built) continue; // fewer than 3 capitals in range: skip, never deal a thin case
     usedHideouts.add(h.id);
     cases.push({ ...built, packId: CAPITALS_PACK_ID });
   }
-  return cases;
+  if (grown && cases.length < MIN_PACK_CASES_WAVE2) {
+    throw new Error(
+      `build-coldtrail-capitals: grown pack built only ${cases.length} cases, below the ${MIN_PACK_CASES_WAVE2} wave-2 floor — refusing to emit a short wave`,
+    );
+  }
+  return stampPackFlags(cases, {
+    subjectsByPlaceId: loadPackRecordSubjects(),
+    verifiedFlagKeys: loadVerifiedFlagKeys(),
+    hideoutPlacesById: new Map(places.map((p) => [p.id, p])),
+  });
 }
 
 function main() {

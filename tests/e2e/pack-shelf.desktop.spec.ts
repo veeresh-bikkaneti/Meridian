@@ -127,7 +127,7 @@ test("GeoDetective shelf: pack chip arrives from the manifest and stores the pic
   // The case on screen is mid-play: the pick applies to the next case,
   // and the shelf says so instead of changing the open case.
   await expect(page.getByTestId("pack-shelf-status")).toHaveText(
-    "Your next case comes from Capitals.",
+    "Your next case comes from Capitals & Flags.",
   );
   // GeoDetective selection lives in the loop store itself, the store
   // the dealer reads; the shelf blob never carries this edition.
@@ -244,9 +244,9 @@ test("Cold Trail shelf: progress shows and a chip tap on the reveal starts the n
   const pack = page.getByTestId("pack-chip-capitals");
   await expect(pack).toBeVisible({ timeout: 15_000 });
   // The pack chip's progress line is denominated in the Cold Trail
-  // deck's own case count (60), never the GeoDetective pack size (72).
-  await expect(pack).toContainText("60 cases");
-  await expect(pack).not.toContainText("72");
+  // deck's own case count (85), never the GeoDetective pack size (110).
+  await expect(pack).toContainText("85 cases");
+  await expect(pack).not.toContainText("110");
 
   await pack.click();
   // The next case is a pack case: the sighting cards name the pack
@@ -309,8 +309,8 @@ test("Cold Trail shelf: an unrevealed pack case resumes ahead of the stored sele
   await openColdTrail(page);
   const pack = page.getByTestId("pack-chip-capitals");
   // The pack chip's progress line carries the pack store's own count
-  // against the Cold Trail deck total: 0 of 60, never 72.
-  await expect(pack).toContainText("0 of 60 cases closed", { timeout: 15_000 });
+  // against the Cold Trail deck total: 0 of 85, never 110.
+  await expect(pack).toContainText("0 of 85 cases closed", { timeout: 15_000 });
   // The case on screen is the pack deck's first case, mid-play — the
   // resume won over the stored selection. (The chips still show the
   // stored pick for the NEXT case; the status line says so.)

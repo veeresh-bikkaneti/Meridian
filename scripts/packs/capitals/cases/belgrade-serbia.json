@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "belgrade-serbia",
+  "target": {
+    "placeId": "gn-792680",
+    "name": "Belgrade",
+    "aliases": [],
+    "lat": 44.80401,
+    "lon": 20.46513,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Serbia",
+    "iso2": "RS",
+    "subdivision": "Central Serbia"
+  },
+  "subjectAnswer": {
+    "name": "Serbia",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Serbia",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "Two great rivers meet at this town. The Sava flows in here and joins the Danube.",
+      "narrowing": "Puts the player at the Sava–Danube meeting point in south-eastern Europe.",
+      "source": {
+        "article": "Belgrade",
+        "url": "https://en.wikipedia.org/wiki/Belgrade",
+        "quote": "It is located at the confluence of the Sava and Danube rivers and at the crossroads of the Pannonian Plain and the Balkan Peninsula."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This town has four clear times of year, with hot days in the warm months. Cold days come in the dark months, and rain falls all year round.",
+      "narrowing": "Keeps a four-season river city with rain all year round.",
+      "source": {
+        "article": "Belgrade",
+        "url": "https://en.wikipedia.org/wiki/Belgrade",
+        "quote": "Under the Köppen climate classification, Belgrade has a humid subtropical climate (Cfa) bordering on a humid continental climate (Dfa) with four seasons and uniformly spread precipitation."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1841 this town was named the chief town of its land once more. That came just past the fight that set the land free.",
+      "narrowing": "Shrinks the list to capitals restored in 1841 after a revolution.",
+      "source": {
+        "article": "Belgrade",
+        "url": "https://en.wikipedia.org/wiki/Belgrade",
+        "quote": "Following the Serbian Revolution, Belgrade was once again named the capital of Serbia in 1841."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Men have fought for this town in 115 wars through the years. It was knocked flat 44 times, yet it rose back up each time.",
+      "narrowing": "Nearly decisive: one capital has been fought over in 115 wars.",
+      "source": {
+        "article": "Belgrade",
+        "url": "https://en.wikipedia.org/wiki/Belgrade",
+        "quote": "In a fatally strategic position, the city has been battled over in 115 wars and razed 44 times, being bombed five times and besieged many times."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Serbia is run from this town, and the land's chief work of state is done here. More folk live in this town than in any other town in the land.",
+      "narrowing": "Confirms it: capital and largest city of Serbia.",
+      "source": {
+        "article": "Belgrade",
+        "url": "https://en.wikipedia.org/wiki/Belgrade",
+        "quote": "Belgrade (Serbian: Београд / Beograd, lit. 'White City') is the capital and largest city of Serbia."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Its name means 'White City', and it stands where the Sava river joins the mighty Danube. Armies fought over it in 115 wars, yet it always rose again. Belgrade is the capital of Serbia."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Belgrade"
+  },
+  "pointPolicy": "geonames-point"
+}

@@ -22,7 +22,7 @@ import { mountStarfield } from "./starfield.ts";
 import { buildScoutStyle } from "./scout-style.ts";
 import { ScoutFallbackMap } from "./scout-fallback.tsx";
 import { isCoarsePointer, mapOptionsForDevice, revealZoomCap, settleZoomCap, SCOUT_MAX_ZOOM_FLAT, SCOUT_MAX_ZOOM_GLOBE } from "./map-options.ts";
-import type { MapMode } from "./capability.ts";
+import { SCOUT_UPGRADE_SOAK_MS, type MapMode } from "./capability.ts";
 import { emitTileFailed, emitWebglContextLost, recordMilestone, recordTileErrors } from "@/lib/observability";
 import { createTapTracker } from "./tap-tracker.ts";
 import { INITIAL_TILE_STATUS, tileStatusReducer, type TileStatus } from "./tile-status.ts";
@@ -471,6 +471,15 @@ export function SatelliteMap(props: {
    * stores nothing. Carries the viewport so the outline map reopens in place.
    */
   onTileFallback?: (view: ScoutRestoreView) => void;
+  /**
+   * Issue #330: fired once when this SCOUT mount is an unknown-memory
+   * trial (the owner passes this only then) and the map has proved
+   * stable: style loaded (map_ready), first idle render completed, then
+   * SCOUT_UPGRADE_SOAK_MS with no teardown and no context loss. The
+   * owner switches the session to the full map, storing nothing.
+   * Carries the live viewport so the full map reopens in place.
+   */
+  onScoutUpgrade?: (view: ScoutRestoreView) => void;
 }): JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -486,6 +495,10 @@ export function SatelliteMap(props: {
   // scout switch); read via ref so the canvas listener never goes stale.
   const onWebglContextLostPropRef = useRef(props.onWebglContextLost);
   onWebglContextLostPropRef.current = props.onWebglContextLost;
+  // Issue #330: same ref pattern for the scout-upgrade callback, so the
+  // soak timer armed in the construction effect never goes stale.
+  const onScoutUpgradePropRef = useRef(props.onScoutUpgrade);
+  onScoutUpgradePropRef.current = props.onScoutUpgrade;
   const spotRef = useRef<{ lon: number; lat: number } | null>(null);
   spotRef.current = props.spot ?? null;
   const marksRef = useRef(props.marks);
@@ -945,12 +958,26 @@ export function SatelliteMap(props: {
     }
     maxBoundsRef.current = initialMaxBounds ?? null;
     mapRef.current = map;
+    // Issue #330: the unknown-memory trial's soak timer (armed in the
+    // load handler below; see its comment there for how the timer
+    // relates to shouldFireScoutUpgrade in src/map/capability.ts).
+    // Cleared on teardown and on context loss — a Scout map that lost
+    // its context has not proved stable.
+    let scoutUpgradeTimer: number | undefined;
 
     if (mapMode === "scout") {
       // PBI-4: the outline style has no external resources — any map error
       // is a real render failure, so drop to the static SVG fallback and
       // keep the game playable instead of stranding it on a dead canvas.
-      map.on("error", () => setScoutFallback(true));
+      map.on("error", () => {
+        // Issue #330: a failed Scout render has not proved stable —
+        // cancel the upgrade soak so it cannot fire from this mount.
+        if (scoutUpgradeTimer !== undefined) {
+          window.clearTimeout(scoutUpgradeTimer);
+          scoutUpgradeTimer = undefined;
+        }
+        setScoutFallback(true);
+      });
     }
 
     // Observability: a lost WebGL context is a field signal for GPU /
@@ -962,6 +989,11 @@ export function SatelliteMap(props: {
     // so a failing read can never break the observability emit above.
     const onWebglContextLost = () => {
       emitWebglContextLost();
+      // Issue #330: a context loss during the soak cancels the upgrade.
+      if (scoutUpgradeTimer !== undefined) {
+        window.clearTimeout(scoutUpgradeTimer);
+        scoutUpgradeTimer = undefined;
+      }
       try {
         if (mapModeRef.current !== "full") return;
         const owner = onWebglContextLostPropRef.current;
@@ -1608,6 +1640,40 @@ export function SatelliteMap(props: {
 
     map.on("load", () => {
       recordMilestone("map_ready");
+      // Issue #330: arm the unknown-memory trial's upgrade soak. Only a
+      // scout mount with an owner-supplied upgrade callback does this.
+      // The soak starts at the first idle (Scout has no tiles, so idle
+      // is the first completed render) and fires once with the LIVE
+      // viewport, mirroring the context-lost switch's view capture.
+      // This timer implements the soak half of shouldFireScoutUpgrade
+      // (src/map/capability.ts); the gate's other conditions (no stored
+      // record, no prior crash, unknown-memory source, trial armed) hold
+      // by construction, because boot eligibility is only ever set for
+      // the unknown-memory branch of planBootMapMode — after
+      // qualifyMapMode's precedence order has already ruled the other
+      // conditions out, and only when the `scoutUpgradeTrial` flag is on
+      // (GameApp's boot effect awaits the flags load before arming). A
+      // disarmed trial never passes an upgrade callback, so this timer
+      // never arms.
+      if (mapMode === "scout" && onScoutUpgradePropRef.current) {
+        map.once("idle", () => {
+          scoutUpgradeTimer = window.setTimeout(() => {
+            try {
+              if (mapModeRef.current !== "scout") return;
+              const owner = onScoutUpgradePropRef.current;
+              const liveMap = mapRef.current;
+              if (!owner || !liveMap) return;
+              owner({
+                center: liveMap.getCenter().toArray() as [number, number],
+                zoom: liveMap.getZoom(),
+                projection: logicalProjection(),
+              });
+            } catch {
+              // Upgrade is best-effort: staying in Scout is always safe.
+            }
+          }, SCOUT_UPGRADE_SOAK_MS);
+        });
+      }
       // Must-fix #2: style parsed, tiles in flight — not a verdict either
       // way (the reducer treats map-load as a no-op; the first idle
       // decides). Recorded for contract fidelity with tile-status.ts.
@@ -1706,6 +1772,7 @@ export function SatelliteMap(props: {
       controllerRef.current = null;
       tapHandlersRef.current = null;
       window.clearTimeout(watchdog);
+      if (scoutUpgradeTimer !== undefined) window.clearTimeout(scoutUpgradeTimer);
       disarmSkip();
       stopSpin();
       // An unmount mid-intro must not leave the ambient loop playing.

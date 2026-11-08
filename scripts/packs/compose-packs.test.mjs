@@ -5,6 +5,7 @@ import {
   mkdtempSync,
   readdirSync,
   readFileSync,
+  rmSync,
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
@@ -37,7 +38,7 @@ function caseIdsInOrder() {
     .sort();
 }
 
-test("the full pack composes: 72 clue files after the core pool, manifest, sidecar", () => {
+test("the full pack composes: 110 clue files after the core pool, manifest, sidecar", () => {
   const { packDir, publicDir, coreManifestPath } = fixture();
   const result = composePack({
     packDir,
@@ -47,10 +48,10 @@ test("the full pack composes: 72 clue files after the core pool, manifest, sidec
   });
   assert.equal(result.ok, true, JSON.stringify(result.reasons ?? []));
   const caseIds = caseIdsInOrder();
-  assert.equal(caseIds.length, 72);
+  assert.equal(caseIds.length, 110);
   const expectedIndexes = caseIds.map((_, i) => 387 + i);
   assert.deepEqual(result.loopIndexes, expectedIndexes, "pack indexes continue after the core pool in caseId order");
-  assert.equal(result.size, 72);
+  assert.equal(result.size, 110);
 
   // Paris sits at its caseId-order position; its clue file is an
   // ordinary clue file that never names the target.
@@ -68,14 +69,14 @@ test("the full pack composes: 72 clue files after the core pool, manifest, sidec
 
   const manifest = readJson(join(publicDir, "packs", "capitals", "manifest.json"));
   assert.equal(isLoopPackManifest(manifest), true, "the runtime validator accepts the manifest");
-  assert.equal(manifest.size, 72);
+  assert.equal(manifest.size, 110);
   assert.deepEqual(manifest.loopIndexes, expectedIndexes);
-  assert.equal(manifest.loopTiers.length, 72);
+  assert.equal(manifest.loopTiers.length, 110);
   assert.equal(manifest.coldtrailFile, "cases.capitals.generated.json");
 
   const meta = readJson(join(publicDir, "packs", "capitals", "loop-meta.json"));
   assert.equal(isLoopPackMeta(meta), true, "the runtime validator accepts the sidecar");
-  assert.equal(Object.keys(meta).length, 72);
+  assert.equal(Object.keys(meta).length, 110);
   assert.equal(meta[String(parisIndex)].subject.name, "France");
   assert.equal(meta[String(parisIndex)].direction, "A");
 
@@ -97,4 +98,30 @@ test("a record that fails validation writes nothing", () => {
   assert.ok(result.reasons.some((r) => r.caseId === "paris-france"));
   assert.equal(existsSync(join(publicDir, "loop", "clues", "387.json")), false);
   assert.equal(existsSync(join(publicDir, "packs", "capitals", "manifest.json")), false);
+});
+
+test("append-only: removing a published case fails closed (Capitals & Flags §8)", () => {
+  const { packDir, publicDir, coreManifestPath } = fixture();
+  const first = composePack({
+    packDir,
+    publicDir,
+    coreManifestPath,
+    generatedAt: new Date("2026-11-04T00:00:00.000Z"),
+  });
+  assert.equal(first.ok, true, JSON.stringify(first.reasons ?? []));
+  // Delete one record + its input, then recompose against the
+  // published tree: the composer must refuse rather than renumber.
+  rmSync(join(packDir, "cases", "paris-france.json"));
+  rmSync(join(packDir, "inputs", "paris-france.json"));
+  const second = composePack({
+    packDir,
+    publicDir,
+    coreManifestPath,
+    generatedAt: new Date("2026-11-04T01:00:00.000Z"),
+  });
+  assert.equal(second.ok, false);
+  assert.ok(
+    second.reasons.some((r) => r.code === "PACK_APPEND_ONLY"),
+    JSON.stringify(second.reasons),
+  );
 });

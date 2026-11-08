@@ -1,0 +1,57 @@
+{
+  "caseId": "baghdad-iraq",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 2,
+  "hookAngle": "The Arabian Nights tales are set in this city — once famed across the world as a centre of learning.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-98182",
+    "name": "Baghdad",
+    "country": "Iraq",
+    "subdivision": "Baghdad",
+    "lat": 33.34058,
+    "lon": 44.40088
+  },
+  "target": {
+    "placeId": "gn-98182",
+    "name": "Baghdad",
+    "lat": 33.34058,
+    "lon": 44.40088,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Iraq",
+    "iso2": "IQ",
+    "subdivision": "Baghdad"
+  },
+  "subjectAnswer": {
+    "name": "Iraq",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "IQ",
+    "subdivision": "Baghdad",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Baghdad is the capital of Iraq. It's one of Iraq's biggest places.",
+    "history": "Founded in 762 AD by Caliph al-Mansur as the Abbasid capital, it became the 'Center of Learning' of the Islamic Golden Age, housing the House of Wisdom and rivalling Chang'an as the world's largest city. The Mongols largely destroyed it in 1258."
+  },
+  "extracts": [
+    {
+      "article": "Baghdad",
+      "url": "https://en.wikipedia.org/wiki/Baghdad",
+      "text": "Baghdad is the capital and the largest city of Iraq. It is located on the banks of the Tigris in central Iraq. With an estimated population of 8 million, it ranks among the most populous and largest cities in the Middle East and the Arab world and constitutes 22% of Iraq's population. Baghdad is a primary financial and commercial center in the region.\nFounded in 762 AD by al-Mansur on a site with settlement dating back to at least the Neo-Babylonian period, Baghdad became the capital of the Abbasid Caliphate and its most notable development project. The city evolved into an intellectual and cultural center. This, in addition to housing several key academic institutions, including the House of Wisdom, as well as a multi-ethnic and multi-religious environment, garnered it a worldwide reputation as the \"Center of Learning\". For much of the Abbasid era, during the Islamic Golden Age, Baghdad was one of the largest cities in the world and rivaled Chang'an, as the population peaked at more than one million. It was largely destroyed at the hands of the Mongol Empire in 1258, resulting in a decline that would linger for many centuries due to frequent plagues and shifts in power between multiple successive empires. Later, Baghdad served as the administrative center of Ottoman Iraq, exercising authority over the provinces of Basra, Mosul, and Shahrizor.\nIraq's largest city, Baghdad is the seat of government. It generates 40% of the economy of Iraq. A major center of Islamic history, Baghdad is home to numerous historic mosques, as well as churches, mandis and synagogues, highlighting the city's historical diversity.\n\nGeography\nThe city is located on a vast plain bisected by the Tigris river. The Tigris splits Baghdad in half, with the eastern half being called \"Risafa\" and the Western half known as \"Karkh\". The land on which the city is built is almost entirely flat and low-lying, being of quaternary alluvial origin due to periodic large flooding of the Tigris river. The Diyala river is a tributary of the Tigris, flowing southeast of the city and bordering its eastern suburbs.\n\nClimate\nBaghdad has a hot desert climate (Köppen BWh), featuring extremely hot, prolonged, dry summers and mild to cool, slightly wet, short winters. In the summer, from June through August, the average maximum temperature is as high as 44 °C (111 °F) and accompanied by sunshine. Rainfall has been recorded on fewer than half a dozen occasions at this time of year and has never exceeded 1 mm (0.04 in). Even at night, temperatures in summer are seldom below 24 °C (75 °F). Baghdad's record highest temperature of 51.8 °C (125.2 °F) was reached on 28 July 2020. Humidity is under 50% in summer, due to Baghdad's distance from both the marshes in southern Iraq and the coasts of the Persian Gulf. Dust storms from the deserts to the west are a normal occurrence during the summer.\nIts winter temperatures are those of a hot desert climate. From December through February, Baghdad has maximum temperatures averaging 16 to 19 °C (61 to 66 °F), with highs possible above 21 °C (70 °F). Lows below freezing occur statistically a couple of times per year.\nAnnual rainfall, almost entirely confined to the period from November through March, averages approximately 150 mm (5.91 in), but has been as high as 338 mm (13.31 in) and as low as 37 mm (1.46 in). On 11 January 2008, light snow fell across Baghdad for the first time in 100 years."
+    },
+    {
+      "article": "Baghdad — History",
+      "url": "https://en.wikipedia.org/wiki/Baghdad#History",
+      "text": "History\nFoundation\nArchaeological evidence indicates that the site of Baghdad had been occupied prior to its Abbasid foundation. An extensive facing of Neo-Babylonian brickwork has been identified along the western bank of the Tigris at Baghdad, with bricks stamped with the name and titles of Nebuchadnezzar II.\nAfter the fall of the Umayyads, the victorious Abbasids sought a new capital. On 30 July 762, the Caliph Al-Mansur commissioned Baghdad's construction, guided by the Iranian Barmakids. He believed Baghdad was ideal for ruling the Islamic Empire. Historian al-Tabari recorded a prophecy from Christian monks about a leader named Miklas building a great city in the area, and Al-Mansur, who was once called Miklas, saw this as a good omen. He expressed deep affection for the site, declaring it would be the home of his dynasty. The two designers who were hired by Al-Mansur to plan the city's design were Naubakht, a Zoroastrian who also determined that the date of the foundation of the city would be astrologically auspicious, and Mashallah, a Jew from Khorasan, Iran. They determined the city's auspicious founding date under the sign of Leo the lion, symbolizing strength and expansion.\nThe city's layout consisted of two large semicircles, with a 2 km-wide circular core known as the \"Round City.\" It had parks, gardens, villas, and promenades. Unlike European cities of the time, Baghdad had a sanitation system, fountains, and public baths, with thousands of hammams enhancing hygiene. The mosque and guard headquarters stood at the center, though some central space's function remains unknown. Baghdad's circular design reflected ancient Near Eastern urban planning, similar to the Sasanian city of Gur and older Mesopotamian cities like Mari.\nBaghdad was designed to symbolize paradise as described in the Qur'an. It took four years (764–768) to build, with over 100,000 workers involved.\nIslamic Golden Age\nMany of the One Thousand and One Nights tales, widely known as the Arabian Nights, are set in Baghdad during this period. It would surpass even Constantinople in prosperity and size. Among the notable features of Baghdad during this period were its exceptional libraries. Many of the Abbasid caliphs were patrons of learning and became avid collectors of both ancient and contemporary literature."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

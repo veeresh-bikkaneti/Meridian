@@ -59,7 +59,8 @@ import {
 import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand } from "@/assets/home-v5/card-media";
 import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
-import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
+import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
+import { SoundToggle } from "./SoundToggle";
 import {
   initAudio,
   isSoundEnabled,
@@ -68,7 +69,6 @@ import {
   playEditionEntrance,
   playLose,
   playWin,
-  setSoundEnabled,
 } from "@/game/audio/sfx";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import {
@@ -199,6 +199,7 @@ import {
   writeStoredMapMode,
 } from "@/map/capability";
 import type { ScoutRestoreView } from "@/map/satellite-map";
+import { isCoarsePointer } from "@/map/map-options";
 import { SCOUT_COPY } from "./scout-copy.ts";
 import { TILE_FALLBACK_COPY } from "@/map/tile-fallback-copy.ts";
 import { MapModeToggle } from "./map-mode-toggle.tsx";
@@ -223,7 +224,11 @@ import {
   writeLearningStore,
   type LearningStore,
 } from "@/game/learning";
-import { readLoopOpen, writeLoopOpen, peekLoopProgress } from "@/game/loop/store";
+import {
+  readLoopOpen,
+  writeLoopOpen,
+  peekLoopProgress,
+} from "@/game/loop/store";
 import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
 // screens — they render only when the player opens them (or when a saved
@@ -419,61 +424,6 @@ function isReviewRun(run: Run): boolean {
  */
 export function isChallengeRun(run: Run): boolean {
   return run.regionId === CHALLENGE_REGION_ID;
-}
-
-/**
- * Speaker toggle (SFX audio spec §4): persisted under `meridian.sound`,
- * default ON, and the single control for ALL sounds (the 7 shipped + the
- * 9 celebration recipes — every play call goes through the
- * `isSoundEnabled()` gate). Turning ON plays the card tap as confirmation;
- * OFF is silent. This toggle is the "reduced sound" control — reduced
- * motion never mutes audio (spec §4.6).
- *
- * One instance lives in the Chart Room home header; a second lives in the
- * game chrome so sound is reachable mid-game (Veeresh's explicit ask).
- * The two never co-mount — each reads the persisted value on mount, so a
- * toggle flipped on one screen is correct on the next.
- */
-function SoundToggle({
-  testId,
-  className,
-  style,
-  iconClassName = "size-5",
-}: {
-  testId: string;
-  className?: string;
-  style?: CSSProperties;
-  iconClassName?: string;
-}) {
-  const [soundOn, setSoundOn] = useState<boolean>(() => isSoundEnabled());
-  const toggleSound = () => {
-    try {
-      const next = !soundOn;
-      setSoundEnabled(next);
-      setSoundOn(next);
-      if (next) playCardTap();
-    } catch {
-      // Sound is enhancement-only; the toggle itself never throws.
-    }
-  };
-  return (
-    <button
-      type="button"
-      data-testid={testId}
-      aria-pressed={soundOn}
-      aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
-      title={soundOn ? "Sound on" : "Sound off"}
-      onClick={toggleSound}
-      className={className}
-      style={style}
-    >
-      {soundOn ? (
-        <Volume2 className={iconClassName} aria-hidden="true" />
-      ) : (
-        <VolumeX className={iconClassName} aria-hidden="true" />
-      )}
-    </button>
-  );
 }
 
 /**
@@ -1415,6 +1365,18 @@ export function GameApp() {
    */
   const [autoScoutNote, setAutoScoutNote] = useState(false);
   /**
+   * Issue #330: true only when this boot started in Scout SOLELY under
+   * the unknown-memory trial (capability source "unknown-memory") AND
+   * the `scoutUpgradeTrial` flag is on (the trial's kill-switch — the
+   * boot effect awaits the flags load before setting this; flag off =
+   * never set, so the upgrade never arms). The first Scout map mount
+   * may then upgrade the session to full after its stability soak.
+   * Session-only state: it is never persisted, and firing the upgrade
+   * clears it, so a later runtime fallback to Scout (tile failure,
+   * context loss) can never re-arm it.
+   */
+  const [scoutUpgradeEligible, setScoutUpgradeEligible] = useState(false);
+  /**
    * Friend-challenge boot notice (cure round for PR #274): set by the
    * boot effect when a `#c=` link was tapped with the friendChallenges
    * flag ON but the challenge could not be loaded (broken link, unknown
@@ -1523,13 +1485,16 @@ export function GameApp() {
    * - The switched notice RETIRES (here and in applyMapMode): its
    *   text names the mode the next game uses, and this switch just
    *   changed that mode.
-   * - The boot auto-switch note does NOT retire here: it can only be
-   *   standing when this boot itself auto-switched to Scout, and in
-   *   that state both runtime paths early-return (they fire only
-   *   from full) — so it is never standing when a runtime switch
-   *   runs. Its text would also remain TRUE after a switch to Scout.
-   *   (Manual flips clear it for a different reason: the player's own
-   *   choice supersedes the "picked for this device" framing.)
+   * - The boot auto-switch note does NOT retire here. The tile-
+   *   fallback path (the other runtime caller) fires only from full,
+   *   and its switch lands on Scout, where the note's text would
+   *   remain TRUE. The one path that DOES falsify the note is the
+   *   #330 trial upgrade: a trial boot leaves the note standing in
+   *   Scout, and the upgrade then moves the session to full — so
+   *   applyScoutUpgrade retires the note itself before delegating
+   *   here. (Manual flips clear it for a different reason: the
+   *   player's own choice supersedes the "picked for this device"
+   *   framing.)
    * - Nothing is ANNOUNCED: device-driven switches are silent (owner
    *   ruling, 2026-10-20), the announcer's texts are manual-switch
    *   wording ("back home; your next game…") that would be false
@@ -1540,6 +1505,24 @@ export function GameApp() {
     setMapMode(mode);
     setMapSwitchedNote(null);
   }, []);
+  /**
+   * Issue #330: the unknown-memory trial's upgrade. Session-only, like
+   * the tile fallback: no record is written, so if the upgraded full
+   * map kills the process, the next boot meets the prior-crash signal
+   * (session or durable marker) with no stored artifact in front of it
+   * and stays in Scout with no further upgrade. Silent, per the
+   * 2026-10-20 auto-switch ruling. Clears eligibility first so the
+   * upgrade fires at most once per boot.
+   */
+  const applyScoutUpgrade = useCallback(() => {
+    setScoutUpgradeEligible(false);
+    setReportMapMode("full");
+    // The trial boot left the auto-Scout note standing; this upgrade
+    // falsifies it (the session is no longer on Scout), so retire it
+    // here, mirroring the manual and home toggle paths.
+    setAutoScoutNote(false);
+    applySessionMapMode("full");
+  }, [applySessionMapMode]);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
   // run/drop keys. The open flag (meridian.loop.open) restores the screen
@@ -2037,6 +2020,14 @@ export function GameApp() {
     // probes clean returns to full. (This replaced the boot choice
     // dialog; see planBootMapMode's docstring for the superseded
     // directive.)
+    // Issue #330 exception: an "unknown-memory" decision (Safari reports
+    // no deviceMemory; coarse pointer) is a trial, not a verdict — it
+    // persists NOTHING and instead arms the in-session Scout → full
+    // upgrade (applyScoutUpgrade), so no stored artifact can ever stand
+    // in front of a later prior-crash check. The arming itself is gated
+    // by the `scoutUpgradeTrial` flag (see the unknown-memory branch
+    // below): flag off, the boot still starts in Scout and the upgrade
+    // simply never arms.
     // There is deliberately NO test bypass here (issue #154 item 1):
     // the E2E harness used to set a window flag to suppress this
     // auto-switch on its SwiftShader VM, which reads as a weak device.
@@ -2050,16 +2041,36 @@ export function GameApp() {
         setReportMapMode(stored.mode);
         setMapMode(stored.mode);
       } else {
-        const plan = planBootMapMode(
-          qualifyMapMode({
-            priorMapCrash: wasMapAttributedCrash(),
-            webglProbeOk: probeWebGL(),
-            deviceMemoryGB: readDeviceMemoryGB(),
-          }),
-        );
+        const decision = qualifyMapMode({
+          priorMapCrash: wasMapAttributedCrash(),
+          webglProbeOk: probeWebGL(),
+          deviceMemoryGB: readDeviceMemoryGB(),
+          coarsePointer: isCoarsePointer(),
+        });
+        const plan = planBootMapMode(decision);
         if (plan.mode === "scout") {
           if (plan.persistSource !== null) {
             writeStoredMapMode("scout", plan.persistSource);
+          }
+          if (decision.source === "unknown-memory") {
+            // Issue #330 trial: nothing was persisted above (the plan's
+            // persistSource is null for this source) — arm the in-session
+            // upgrade the first Scout map may fire after its soak.
+            // Flag gate (PR #331 panel cure — the trial's kill-switch):
+            // eligibility is set only when the `scoutUpgradeTrial` flag
+            // is on. Kill-switches await the shared flags load before
+            // checking (src/lib/flags.ts), so a remote `false` in
+            // flags.json wins the boot-time race deterministically and
+            // the upgrade never arms; the baked-in default is true, so
+            // an unreachable flags.json keeps the shipped behavior.
+            // The manual re-check mirrors Play's fire-time guard: a
+            // manual choice that landed while the load was in flight
+            // stands over the trial and must not be re-armed over.
+            void loadFlags().then(() => {
+              if (!isEnabled("scoutUpgradeTrial")) return;
+              if (readStoredMapMode()?.source === "manual") return;
+              setScoutUpgradeEligible(true);
+            });
           }
           setReportMapMode("scout");
           setMapMode("scout");
@@ -2151,6 +2162,9 @@ export function GameApp() {
     // BLOCK-1: retire this boot's auto-switch note — the switched
     // notice set above supersedes it (see the docstring).
     setAutoScoutNote(false);
+    // #330 cure: an explicit manual choice disarms any pending trial
+    // upgrade — the upgrade must never override the player's pick.
+    setScoutUpgradeEligible(false);
     // BLOCK-4: close every other full-screen state so the render
     // precedence below cannot hand the landing to a lurking flag
     // (see the docstring). writeLoopOpen mirrors LoopScreen's own
@@ -2187,6 +2201,9 @@ export function GameApp() {
       mode === "scout" ? SCOUT_COPY.homeAnnounceOn : SCOUT_COPY.homeAnnounceOff,
     );
     setAutoScoutNote(false);
+    // #330 cure: an explicit manual choice disarms any pending trial
+    // upgrade — the upgrade must never override the player's pick.
+    setScoutUpgradeEligible(false);
     // BLOCK-2: this flip supersedes any earlier switched notice.
     setMapSwitchedNote(null);
   }, []);
@@ -3348,6 +3365,8 @@ export function GameApp() {
           onManualMapMode={handleManualMapMode}
           applyMapMode={applyMapMode}
           applySessionMapMode={applySessionMapMode}
+          scoutUpgradeEligible={scoutUpgradeEligible}
+          onScoutUpgrade={applyScoutUpgrade}
           celebrationOpen={cleared !== null}
           ageBand={ageBand}
         />
@@ -3795,6 +3814,7 @@ export function GameApp() {
   // menu only. It never blocks play — every edition button stays one tap
   // away — and it appears at most once ever (the seen-flag persists).
   const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
+
   return (
     <>
     {mapModeAnnouncer}
@@ -3922,6 +3942,409 @@ function startNoticeTarget(
     : { label: target.regionId === "globe" ? "the Globe" : target.regionName, scope: "region" };
 }
 
+/**
+ * Hero motion V1 — "the journey up": an SVG overlay that tracks the
+ * painted mountain art exactly (same 800×533 viewBox, sliced like the
+ * img's object-fit: cover / right-bottom) — a dotted trail whose dots
+ * march along the painted switchbacks, a gold pulse that climbs the
+ * trail to the summit, a waving flag on the peak, and soft cloud
+ * forms drifting in front of the upper slopes (owner's V1b pick,
+ * 2026-11-04: the painted summits already sit in mist bands, so the
+ * clouds move — "the mountains are in the cloud"). V1b also answers
+ * his "very subtle" note: bigger pulse core + halo + comet tail,
+ * larger/brisker trail dots, wider flag wave. Zero new assets.
+ *
+ * Motion gates mirror CardFilm (card-film.tsx), the same pattern
+ * the trekker overlay below uses: prefers-reduced-motion (the
+ * shared hook, so an OS flip mid-session lands on the still too),
+ * Save-Data, or deviceMemory ≤ 2 — any of them means the pulse and
+ * clouds are never rendered, and the CSS kills the march + wave:
+ * the JS `reduced` state is reflected onto this SVG as the
+ * `hv5-trail-still` class, and home-v5.css sets `animation: none`
+ * on the dots + flag under that class (mirroring its
+ * prefers-reduced-motion rules, which only cover the OS gate),
+ * leaving a static dotted trail. The loops otherwise run
+ * continuously; no timer ever stops them.
+ *
+ * The tradeoff, stated plainly (the same one CardFilm records):
+ * WCAG 2.2.2 asks for a stop on moving content that lasts more
+ * than five seconds. These hero loops are continuous looping
+ * decorative motion with no pause button — the hero has no pause
+ * button by the owner's autoloop order (2026-11-03: "we dont need
+ * playbutton it should be in autoloop"). The stops that remain
+ * are the gates above: a player who prefers reduced motion, or
+ * is saving data, or is on a low-memory device never gets the
+ * motion at all, only the still. Do not add a button back
+ * without a new owner order.
+ */
+function HeroTrailOverlay() {
+  const reducedMotion = usePrefersReducedMotion();
+  const [staticGate] = useState<boolean>(heroStaticGateAtMount);
+  const reduced = reducedMotion || staticGate;
+  const trail =
+    "M322 528 C 305 500, 345 480, 350 460 C 355 438, 300 432, 292 408 C 284 384, 312 362, 340 350 C 375 336, 415 340, 408 318 C 402 298, 380 285, 402 268 C 428 248, 486 240, 512 226 C 532 215, 500 200, 492 182 C 486 166, 498 148, 503 134";
+  return (
+    <svg
+      className={reduced ? "hv5-trail hv5-trail-still" : "hv5-trail"}
+      viewBox="0 0 800 533"
+      preserveAspectRatio="xMaxYMax slice"
+      aria-hidden="true"
+    >
+      <defs>
+        <filter id="hv5-cloud-soft" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="9" />
+        </filter>
+      </defs>
+      <path
+        d={trail}
+        fill="none"
+        stroke="#7c5a1e"
+        strokeWidth="5.5"
+        strokeLinecap="round"
+        strokeDasharray="0.1 11"
+        className="hv5-trail-dots"
+        opacity="0.95"
+      />
+      {!reduced ? (
+        <g className="hv5-clouds" aria-hidden="true">
+          <g className="hv5-cloud-drift-a" filter="url(#hv5-cloud-soft)" fill="#fdfbf3">
+            <ellipse cx="0" cy="118" rx="120" ry="17" opacity="0.32" />
+            <ellipse cx="85" cy="106" rx="80" ry="13" opacity="0.26" />
+            <ellipse cx="-80" cy="108" rx="70" ry="12" opacity="0.22" />
+            <ellipse cx="560" cy="238" rx="130" ry="15" opacity="0.2" />
+            <ellipse cx="645" cy="228" rx="75" ry="11" opacity="0.16" />
+            {/* The same bank again, +800: the drift translates one
+                full pattern width, so this copy lands exactly where
+                the first sat at loop reset — no empty bank, no pop. */}
+            <g transform="translate(800 0)">
+              <ellipse cx="0" cy="118" rx="120" ry="17" opacity="0.32" />
+              <ellipse cx="85" cy="106" rx="80" ry="13" opacity="0.26" />
+              <ellipse cx="-80" cy="108" rx="70" ry="12" opacity="0.22" />
+              <ellipse cx="560" cy="238" rx="130" ry="15" opacity="0.2" />
+              <ellipse cx="645" cy="228" rx="75" ry="11" opacity="0.16" />
+            </g>
+          </g>
+          <g className="hv5-cloud-drift-b" filter="url(#hv5-cloud-soft)" fill="#fdfbf3">
+            <ellipse cx="330" cy="168" rx="105" ry="14" opacity="0.24" />
+            <ellipse cx="405" cy="158" rx="65" ry="10" opacity="0.19" />
+            <ellipse cx="60" cy="268" rx="95" ry="12" opacity="0.15" />
+            <g transform="translate(800 0)">
+              <ellipse cx="330" cy="168" rx="105" ry="14" opacity="0.24" />
+              <ellipse cx="405" cy="158" rx="65" ry="10" opacity="0.19" />
+              <ellipse cx="60" cy="268" rx="95" ry="12" opacity="0.15" />
+            </g>
+          </g>
+        </g>
+      ) : null}
+      {!reduced ? (
+        <g className="hv5-trail-pulse">
+          <path
+            d={trail}
+            fill="none"
+            stroke="#e9cd7d"
+            strokeWidth="7"
+            strokeLinecap="round"
+            pathLength={100}
+            strokeDasharray="10 90"
+            opacity="0.55"
+            className="hv5-pulse-tail"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              from="10"
+              to="-90"
+              dur="9s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0;0.55;0.55;0"
+              keyTimes="0;0.05;0.93;1"
+              dur="9s"
+              repeatCount="indefinite"
+            />
+          </path>
+          <circle r="13" fill="#b8932f" opacity="0.28" className="hv5-pulse-halo">
+            <animateMotion dur="9s" repeatCount="indefinite" path={trail} />
+            <animate
+              attributeName="opacity"
+              values="0;0.28;0.28;0"
+              keyTimes="0;0.06;0.92;1"
+              dur="9s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle
+            r="8.5"
+            fill="#b8932f"
+            stroke="#fffdf6"
+            strokeWidth="2.5"
+            className="hv5-pulse-core"
+          >
+            <animateMotion dur="9s" repeatCount="indefinite" path={trail} />
+            <animate
+              attributeName="opacity"
+              values="0;1;1;0"
+              keyTimes="0;0.06;0.92;1"
+              dur="9s"
+              repeatCount="indefinite"
+            />
+          </circle>
+        </g>
+      ) : null}
+      <g transform="translate(20 6)">
+        <g className="hv5-trail-flag">
+          <line x1="503" y1="134" x2="503" y2="106" stroke="#4c3a14" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M503 107 L525 112 L503 118 Z" fill="#8a6d2f" />
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+/**
+ * Hero trekker — "Just a child, trekking" (prototype v2 from
+ * branch design/hero-trekker-prototype, composed into production
+ * on the owner's ship word, 2026-11-04 21:15: "Ship it — fold the
+ * simple trekker into the home build"). Owner's simplification
+ * ruling, 2026-11-04 20:29, on
+ * the v1 "Catch It, Pin It" prototype: "Reduce the size of the
+ * animated cartoon guy, this is supposed be a child walking the
+ * trail and let just keep it to that. No more complexities, but
+ * while trekking you need sticks and make it realistic trekking
+ * please and wind blowing, climbing slowly."
+ *
+ * So v2 is ONLY a child trekking. The paper, the gust event, the
+ * tumble, the catch, the hold-up map reveal, the tuck and the point
+ * are all DELETED. What remains, on ONE 18s SMIL master clock:
+ *   0–1.1s    he fades in inside the valley mist at the leg's foot
+ *   1.1–15.3s slow climb up ONE painted switchback leg (leg 3 of the
+ *             v1 spline), two trekking poles working the whole way
+ *   15.3–16.7s he fades into the mist bank at the leg's top end
+ *   16.7–18s  reset happens invisible inside the mist — no jump cut
+ *
+ * The figure is a CHILD, drawn ~44 units tall (v1's adult was ~69.5;
+ * ≈63%), with child proportions: head ≈27% of height, shorter legs.
+ * He keeps the identity the brainstorm chose: rust-orange headwrap,
+ * teal backpack. He leans ~6° into the slope.
+ *
+ * The pole gait is the realism core. Legs, arms and poles are all
+ * keyframed path shapes on one 1.8s step clock, opposite pairing
+ * like a real climber: each pole PLANTS on the trail ahead at the
+ * same beat as the OPPOSITE foot, stays grounded while the body
+ * passes over it (the tip sweeps back relative to the body), pushes
+ * off behind, then swings forward lifted for the next plant. Pole
+ * tips pass through y=0 (the trail under his feet) at every stance
+ * keyframe — a floating pole would fail the owner's ask.
+ *
+ * Wind is an always-on layer, not an event: the headwrap's two tail
+ * strands stream and flutter on their own fast clocks, the jacket
+ * hem flutters, and the valley mist drifts on the climb leg. The
+ * prototype's own ambient peak/summit clouds are NOT ported: the
+ * trail overlay's drifting clouds are the hero's one cloud layer.
+ * The mist stays — it is this figure's fade staging (he fades in
+ * and out inside it), sitting on the leg, not a second weather
+ * layer.
+ *
+ * Gates mirror CardFilm (card-film.tsx): prefers-reduced-motion
+ * (the shared hook), Save-Data, or deviceMemory ≤ 2 get the STILL
+ * instead — the same SVG with its clock paused mid-climb
+ * (t = 7.25s: both poles on the ground, front planted, rear at
+ * push-off, headwrap streaming). The loop itself never stops on a
+ * timer; like the V1 overlay it is ambient, aria-hidden art.
+ * When the gate lifts mid-session (the shared hook is live, so an
+ * OS flip lands here), the effect below un-pauses the clock and
+ * the climb resumes from the still frame.
+ *
+ * The tradeoff, stated plainly (the same one CardFilm records):
+ * WCAG 2.2.2 asks for a stop on moving content that lasts more
+ * than five seconds. This loop is continuous looping decorative
+ * motion with no pause button — the hero has no pause button by
+ * the owner's autoloop order (2026-11-03: "we dont need
+ * playbutton it should be in autoloop"). The stops that remain
+ * are the gates above: a player who prefers reduced motion, or
+ * is saving data, or is on a low-memory device never gets the
+ * motion at all, only the still. Do not add a button back
+ * without a new owner order.
+ */
+const TREKKER_CLIMB_PATH =
+  "M294 406 C 288 386, 315 362, 342 351 C 368 340, 398 336, 402 321";
+
+/** Save-Data / low-memory gate, mirroring CardFilm's mount read.
+ * Shared by both hero overlays (trail + trekker). */
+function heroStaticGateAtMount(): boolean {
+  if (typeof navigator === "undefined") return false;
+  const nav = navigator as Navigator & {
+    connection?: { saveData?: boolean };
+    deviceMemory?: number;
+  };
+  if (nav.connection?.saveData) return true;
+  const mem = nav.deviceMemory;
+  return typeof mem === "number" && mem > 0 && mem <= 2;
+}
+
+function HeroTrekkerOverlay() {
+  const reducedMotion = usePrefersReducedMotion();
+  const [staticGate] = useState<boolean>(heroStaticGateAtMount);
+  const still = reducedMotion || staticGate;
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
+    if (!still) {
+      // The gate lifted mid-session: resume the master clock from
+      // wherever the still froze it — without this the clock stays
+      // paused at 7.25 forever even though `still` is false again.
+      svg.unpauseAnimations();
+      return;
+    }
+    // The still IS the mid-climb frame: freeze the master clock on it.
+    svg.pauseAnimations();
+    svg.setCurrentTime(7.25);
+  }, [still]);
+  return (
+    <svg
+      ref={svgRef}
+      className="hv5-trekker"
+      viewBox="0 0 800 533"
+      preserveAspectRatio="xMaxYMax slice"
+      aria-hidden="true"
+    >
+      <defs>
+        <radialGradient id="tk-mist" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#fffdf6" stopOpacity="0.95" />
+          <stop offset="60%" stopColor="#fffdf6" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#fffdf6" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+
+      {/* The trekker rig: one small group climbing the leg on the 18s
+          clock. Fades in inside the foot mist, fades out inside the
+          top mist; the position reset rides the invisible window. */}
+      <g opacity="0">
+        <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.06;0.85;0.93;1" dur="18s" repeatCount="indefinite" />
+        <animateMotion
+          path={TREKKER_CLIMB_PATH}
+          keyPoints="0;1;1;0"
+          keyTimes="0;0.92;0.97;1"
+          calcMode="linear"
+          dur="18s"
+          repeatCount="indefinite"
+        />
+        {/* ~6° forward lean into the slope, pivoting on the ground
+            point; inside it, the step bob (two bobs per step cycle). */}
+        <g transform="rotate(6)">
+          <g>
+            <animateTransform attributeName="transform" type="translate" values="0 0;0 -0.8;0 0;0 -0.8;0 0" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" />
+
+            {/* Far leg (darker): stance in the second half-cycle,
+                swing in the first — opposite the near leg. */}
+            <path fill="none" stroke="#4a3826" strokeWidth="3.6" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M-1 -18 L0 -9 L-4.5 -1;M-1 -18 L4.5 -10 L0 -3.5;M-1 -18 L4 -9 L5 0;M-1 -18 L3 -9.5 L0.5 0;M-1 -18 L0 -9 L-4.5 -1" />
+            </path>
+            <ellipse rx="2.7" ry="1.5" fill="#3d2c12">
+              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-4.5;0;5;0.5;-4.5" />
+              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-1;-3.5;0;0;-1" />
+            </ellipse>
+
+            {/* Far arm + its pole: plants WITH the near foot (opposite
+                pairing) — tip grounded ahead at cycle start, sweeps
+                back, pushes off at mid-cycle, swings forward lifted. */}
+            <path fill="none" stroke="#8a3f1f" strokeWidth="3.4" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M-3 -29 L-7 -26 L-5 -21.5;M-3 -29 L-8 -25.5 L-6 -21;M-3 -29 L-6 -25 L-4 -20;M-3 -29 L-6.5 -25 L-4.5 -20.5;M-3 -29 L-7 -26 L-5 -21.5" />
+            </path>
+            <circle r="2" fill="#caa06a">
+              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-5;-6;-4;-4.5;-5" />
+              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-21.5;-21;-20;-20.5;-21.5" />
+            </circle>
+
+            {/* Teal backpack behind the torso; torso over it, with a
+                wind-fluttered hem at its back-bottom corner. */}
+            <rect x="-13.5" y="-31" width="8.5" height="14.5" rx="4" fill="#177e70" />
+            <rect x="-14.5" y="-32.5" width="7" height="4" rx="2" fill="#12685c" />
+            <rect x="-5" y="-32" width="12" height="14" rx="5" fill="#9c4a24" />
+            <path d="M-5 -19.5 C -8 -18.5, -9 -16.5, -8.2 -14.5" fill="none" stroke="#7e3a1c" strokeWidth="2.4" strokeLinecap="round">
+              <animateTransform attributeName="transform" type="rotate" values="-3 -5 -19.5;4 -5 -19.5;-3 -5 -19.5" keyTimes="0;0.5;1" dur="0.7s" repeatCount="indefinite" />
+            </path>
+
+            {/* Near leg: stance in the first half-cycle (foot planted,
+                body passes over it), swing in the second. */}
+            <path fill="none" stroke="#5a4632" strokeWidth="3.6" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M1 -18 L4 -9 L5 0;M1 -18 L3 -9.5 L0.5 0;M1 -18 L0 -9 L-4.5 -1;M1 -18 L4.5 -10 L0 -3.5;M1 -18 L4 -9 L5 0" />
+            </path>
+            <ellipse rx="2.7" ry="1.5" fill="#4c3a14">
+              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="5;0.5;-4.5;0;5" />
+              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="0;0;-1;-3.5;0" />
+            </ellipse>
+
+            {/* The far pole, drawn after the legs on purpose: its
+                shaft crosses behind the body from the back hand, and
+                at this size the plant only reads if the lower shaft
+                and tip stay visible against the trail. */}
+            <path fill="none" stroke="#4a5058" strokeWidth="1.9" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M-5 -21.5 L8 0;M-6 -21 L1 0;M-4 -20 L-6 -0.5;M-4.5 -20.5 L0 -4.5;M-5 -21.5 L8 0" />
+            </path>
+
+            {/* Near arm + its pole: plants WITH the far foot at
+                mid-cycle, pushes off as the cycle wraps. Elbow stays
+                bent; the hand rides the pole grip. */}
+            <path fill="none" stroke="#9c4a24" strokeWidth="3.4" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M4 -29 L7 -25.5 L5.5 -20;M4 -29 L8.5 -25.5 L6.5 -20.5;M4 -29 L10 -26 L8 -21.5;M4 -29 L9 -25.5 L7 -21;M4 -29 L7 -25.5 L5.5 -20" />
+            </path>
+            <path fill="none" stroke="#565d66" strokeWidth="1.9" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M5.5 -20 L-6 -0.5;M6.5 -20.5 L1 -4.5;M8 -21.5 L10 0;M7 -21 L2 0;M5.5 -20 L-6 -0.5" />
+            </path>
+            <circle r="2" fill="#caa06a">
+              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="5.5;6.5;8;7;5.5" />
+              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-20;-20.5;-21.5;-21;-20" />
+            </circle>
+
+            {/* Headwrap tails: two strands streaming behind the head,
+                fluttering on their own fast clocks — the wind never
+                stops, the whole loop long. */}
+            <g transform="translate(-4.2 -38.5)">
+              <path d="M0 0 C -5 0.5, -9 3, -12.5 6.5" fill="none" stroke="#e07b2a" strokeWidth="3" strokeLinecap="round">
+                <animateTransform attributeName="transform" type="rotate" values="-4;6;-4" keyTimes="0;0.5;1" dur="0.6s" repeatCount="indefinite" />
+              </path>
+              <path d="M0 1.5 C -4 2, -7 4.5, -9.5 7" fill="none" stroke="#c25e2e" strokeWidth="2.2" strokeLinecap="round">
+                <animateTransform attributeName="transform" type="rotate" values="5;-5;5" keyTimes="0;0.5;1" dur="0.45s" repeatCount="indefinite" />
+              </path>
+            </g>
+            {/* Head + rust-orange headwrap (child: head ≈27% of height). */}
+            <circle cx="1.5" cy="-37.5" r="5.9" fill="#caa06a" />
+            <path d="M-4.4 -37.5 A 5.9 5.9 0 0 1 7.4 -37.5 Z" fill="#e07b2a" />
+            <rect x="-4.4" y="-39.8" width="11.8" height="2.4" rx="1.2" fill="#c25e2e" />
+          </g>
+        </g>
+      </g>
+
+      {/* Valley mist over the leg's foot: thick at the loop point
+          (his entrance), thin while he climbs. Front of the figure. */}
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="-6 0;6 0;-6 0" keyTimes="0;0.5;1" dur="18s" repeatCount="indefinite" />
+        <ellipse cx="330" cy="452" rx="150" ry="62" fill="url(#tk-mist)">
+          <animate attributeName="opacity" values="0.95;0.5;0.22;0.22;0.75;1" keyTimes="0;0.09;0.22;0.9;0.97;1" dur="18s" repeatCount="indefinite" />
+        </ellipse>
+      </g>
+
+      {/* Mist bank at the leg's top end: thin while he climbs, thick
+          at the exit so the reset happens inside it — no jump cut. */}
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="-5 0;5 0;-5 0" keyTimes="0;0.5;1" dur="18s" repeatCount="indefinite" />
+        <ellipse cx="415" cy="312" rx="95" ry="30" fill="url(#tk-mist)">
+          <animate attributeName="opacity" values="0.35;0.15;0.15;0.7;1;0.35" keyTimes="0;0.1;0.8;0.88;0.95;1" dur="18s" repeatCount="indefinite" />
+        </ellipse>
+      </g>
+    </svg>
+  );
+}
+
 /** Kid-friendly hints for each learning path, shown under the picker. */
 const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
   easy: "Famous places — the spots every explorer starts with.",
@@ -3996,7 +4419,8 @@ function Choose({
   /** The map-mode toggle + current-mode indicator, hosted in the
    * hero's top row (Block C cure). GameApp owns the mode state and
    * the handlers; Choose only places the control. */
-  mapModeControl?: ReactNode;}) {
+  mapModeControl?: ReactNode;
+}) {
   // GeoDetective progress for the edition card: the resume variant and the
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
@@ -4091,6 +4515,27 @@ function Choose({
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   };
+  // The About card. It stands alone in the pages band at full
+  // width: the Capitals & Flags doorway that rode beside it was
+  // removed from Home entirely (owner's word, Veeresh, 2026-11-05:
+  // "card is not clickable. if its not clickable then there is no
+  // point of putting it on home page."). The pack's only entry is
+  // the deck shelf inside each mode.
+  const aboutSection = (
+    <section id="home-about" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="about-title">
+      <span className="hv5-label">About</span>
+      <h2 id="about-title">How a round works</h2>
+      <p>
+        A place name, then one pin on an unlabeled map. Right or wrong, the round opens a short
+        story about that place. Pick the globe, a country, or a state. Your score keeps adding
+        up until you end the game, or after 2 minutes with nothing tapped.
+      </p>
+      <p>
+        No account. The run stays in this browser. A coffee for Grandpa is optional and never
+        locks a game.
+      </p>
+    </section>
+  );
   return (
     <>
     <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-5 py-8 md:px-9">
@@ -4250,7 +4695,16 @@ function Choose({
               <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
             </button>
           </div>
-          <img className="hv5-mountain" src={heroMountainUrl} alt="" aria-hidden="true" />
+          {/* The composed hero (owner ship word, 2026-11-04): the
+              painted mountain, the V1b trail overlay (marching dots,
+              climbing pulse, summit flag, drifting clouds) and the
+              trekking-kid overlay stacked on the same sliced box, so
+              both overlays track the art exactly. */}
+          <div className="hv5-mtn-wrap" aria-hidden="true">
+            <img className="hv5-mtn-img" src={heroMountainUrl} alt="" />
+            <HeroTrailOverlay />
+            <HeroTrekkerOverlay />
+          </div>
         </section>
         <div className="hv5-rail">
         <div className="hv5-globe-zone">
@@ -4325,6 +4779,13 @@ function Choose({
             </Button>
           ) : null}
         </div>
+        {/* The Capitals & Flags doorway no longer renders anywhere
+            on Home: it began under this map card (issue #344), moved
+            beside the About card below (2026-11-04), became a
+            signpost (2026-11-05), and was then removed entirely on
+            the owner's word (Veeresh, 2026-11-05: "card is not
+            clickable. if its not clickable then there is no point
+            of putting it on home page."). */}
         </div>
 
       <div className="hv5-grid2" id="home-cases" tabIndex={-1}>
@@ -4349,7 +4810,7 @@ function Choose({
               GeoDetective reshoot film once, governed by CardFilm
               (reduced-motion / Save-Data / low-memory / error all land
               on the owner's still image). Media: card-media.ts. */}
-          <CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" />
+          <CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" band={ageBand} />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4401,7 +4862,7 @@ function Choose({
               walks the footprint trail (character motion, not a camera
               move — the owner's 2026-11-02 correction). Media:
               card-media.ts. */}
-          <CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" />
+          <CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" band={ageBand} />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4441,7 +4902,7 @@ function Choose({
             data-testid="tour-stop-review"
             id="home-review"
           >
-            <CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" />
+            <CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />
             <div className="hv5-txt">
               <div className="hv5-head">
                 <span className="hv5-badge">
@@ -4512,7 +4973,7 @@ function Choose({
             deferred while focus is inside this card or the journal
             section (spec §6). */}
         <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)} data-testid="journal-card">
-          <CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" />
+          <CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4535,7 +4996,7 @@ function Choose({
           </div>
         </article>
         <article id="home-grownups" tabIndex={-1} className="hv5-card hv5-spot hv5-involved home-rise" style={rise(7)} data-testid="grownups-card">
-          <CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" />
+          <CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" band={ageBand} />
           <div className="hv5-txt">
             <div className="hv5-head">
               <span className="hv5-badge">
@@ -4558,19 +5019,7 @@ function Choose({
       </div>
 
       <div className="hv5-pages">
-        <section id="home-about" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="about-title">
-          <span className="hv5-label">About</span>
-          <h2 id="about-title">How a round works</h2>
-          <p>
-            A place name, then one pin on an unlabeled map. Right or wrong, the round opens a short
-            story about that place. Pick the globe, a country, or a state. Your score keeps adding
-            up until you end the game, or after 2 minutes with nothing tapped.
-          </p>
-          <p>
-            No account. The run stays in this browser. A coffee for Grandpa is optional and never
-            locks a game.
-          </p>
-        </section>
+        {aboutSection}
         <section id="home-journal" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="journal-title" data-testid="journal-section">
           <span className="hv5-label">Journal</span>
           <h2 id="journal-title">What the land remembers</h2>
@@ -5823,6 +6272,8 @@ function Play({
   onManualMapMode,
   applyMapMode,
   applySessionMapMode,
+  scoutUpgradeEligible,
+  onScoutUpgrade,
 }: {
   run: Run;
   session: Session | null;
@@ -5891,6 +6342,10 @@ function Play({
    * setter (BLOCK-B).
    */
   applySessionMapMode: (mode: MapMode) => void;
+  /** Issue #330: this boot is an unknown-memory Scout trial. */
+  scoutUpgradeEligible: boolean;
+  /** Issue #330: apply the trial's session-only upgrade to full. */
+  onScoutUpgrade: () => void;
 }) {
   // The catalog is stored WITH the key it was loaded for and only used while
   // that key is the current run's key. Play stays mounted across run changes
@@ -6080,6 +6535,8 @@ function Play({
       onManualMapMode={onManualMapMode}
       applyMapMode={applyMapMode}
       applySessionMapMode={applySessionMapMode}
+      scoutUpgradeEligible={scoutUpgradeEligible}
+      onScoutUpgrade={onScoutUpgrade}
     />
   );
 }
@@ -6111,6 +6568,8 @@ function PlayLoaded({
   onManualMapMode,
   applyMapMode,
   applySessionMapMode,
+  scoutUpgradeEligible,
+  onScoutUpgrade,
 }: {
   run: Run;
   places: Starter[];
@@ -6186,6 +6645,10 @@ function PlayLoaded({
    * setter (BLOCK-B).
    */
   applySessionMapMode: (mode: MapMode) => void;
+  /** Issue #330: this boot is an unknown-memory Scout trial. */
+  scoutUpgradeEligible: boolean;
+  /** Issue #330: apply the trial's session-only upgrade to full. */
+  onScoutUpgrade: () => void;
 }) {
   // Review-deck session: a synthetic Run reusing this game loop. The deck
   // queue (due order) is the pool; review answers never bank into the
@@ -6383,6 +6846,31 @@ function PlayLoaded({
     [applySessionMapMode, place],
   );
 
+  /**
+   * Issue #330: the unknown-memory trial's Scout map stayed stable past
+   * its soak — upgrade the session to the full map. Mirrors the tile
+   * fallback's remount (live viewport carried over, nothing stored),
+   * in reverse. No switch note: the player did not lose anything, the
+   * map simply got richer, and device-driven switches are silent.
+   * Challenge runs are excluded: a challenge's map is picked at its
+   * welcome card, and a challenge is never re-mapped mid-run.
+   */
+  const handleScoutUpgrade = useCallback(
+    (view: ScoutRestoreView) => {
+      if (mapModeRef.current !== "scout") return;
+      if (challenge) return;
+      // #330 cure: re-check at fire time — a stored manual record
+      // written after boot (a manual choice that did not pass through
+      // the handlers that clear eligibility) stands over the trial,
+      // and the upgrade must never override it.
+      if (readStoredMapMode()?.source === "manual") return;
+      onScoutUpgrade();
+      setScoutSwitchView(view);
+      setMapRemountNonce((n) => n + 1);
+    },
+    [onScoutUpgrade, challenge],
+  );
+
   // The switch viewport is consumed by the remount it triggers; clear it
   // when the place changes so later mounts never re-open a stale view.
   const lastPlaceIdRef = useRef<string | null>(null);
@@ -6399,6 +6887,10 @@ function PlayLoaded({
   // no reads, no writes, no traces — dealing/scoring/session byte-identical.
   const [learningEnabled, setLearningEnabled] = useState(false);
   const [friendChallengesEnabled, setFriendChallengesEnabled] = useState(false);
+  // Unit B: the detectivePair flag also gates the pair's game-end
+  // celebration on the run summary (every edition). Boot-time value,
+  // like the other flag reads here; off = the summary is today's.
+  const [detectivePairEnabled, setDetectivePairEnabled] = useState(false);
   const [learningStore, setLearningStore] = useState<LearningStore | null>(null);
   useEffect(() => {
     let active = true;
@@ -6412,6 +6904,7 @@ function PlayLoaded({
       setLearningEnabled(on);
       if (on) setLearningStore(readLearningStore() ?? emptyLearningStore());
       setFriendChallengesEnabled(isEnabled("friendChallenges"));
+      setDetectivePairEnabled(isEnabled("detectivePair"));
     });
     return () => {
       active = false;
@@ -7487,6 +7980,7 @@ function PlayLoaded({
               tileRetriesUsed={tileRetriesUsed}
               onTileRetry={handleTileRetry}
               onTileFallback={handleTileFallback}
+              onScoutUpgrade={scoutUpgradeEligible ? handleScoutUpgrade : undefined}
               mode={mode}
               mapMode={mapMode}
               initialView={scoutSwitchView}
@@ -7953,6 +8447,7 @@ function PlayLoaded({
               ? growthSummary(learningStore ?? emptyLearningStore(), Date.now())
               : null
           }
+          detectiveCelebration={detectivePairEnabled}
           onDone={onSummaryDone}
           onPlayAgain={onSummaryPlayAgain}
           onReview={onReviewDeck}

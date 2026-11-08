@@ -1,5 +1,6 @@
 import type { JSX, Ref } from "react";
 import { Button } from "@/components/ui/button";
+import { FlagImg } from "@/components/flag-img";
 import { BoundedText } from "@/components/bounded-text";
 import { formatLength, type LengthUnit } from "@/game/units";
 import { effectiveRadius, INFORMANT_COST } from "./engine.ts";
@@ -85,6 +86,11 @@ export function SightingCard({
         🌍 Region: {sighting.region.continent} · {sighting.region.country}
         {sighting.region.subdivision ? ` · ${sighting.region.subdivision}` : ""}
       </BoundedText>
+      {sighting.flagKey ? (
+        <p className="mt-1 flex items-center gap-2" data-testid="sighting-flag">
+          <FlagImg flagKey={sighting.flagKey} className="h-5" />
+        </p>
+      ) : null}
       <p className="mt-2 text-sm text-muted">
         Ring radius:{" "}
         <span className="text-gold-ink">~{formatLength(radius, unit)}</span>

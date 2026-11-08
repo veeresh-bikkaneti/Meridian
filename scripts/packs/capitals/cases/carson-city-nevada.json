@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "carson-city-nevada",
+  "target": {
+    "placeId": "gn-5501344",
+    "name": "Carson City",
+    "aliases": [],
+    "lat": 39.1638,
+    "lon": -119.7674,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Nevada",
+    "iso2": "US",
+    "subdivision": "Nevada"
+  },
+  "subjectAnswer": {
+    "name": "Nevada",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Nevada",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "Most folks in this town live in a wide valley. High peaks rise on the west side of the town.",
+      "narrowing": "Points to a valley city at the foot of the Sierra Nevada.",
+      "source": {
+        "article": "Carson City, Nevada",
+        "url": "https://en.wikipedia.org/wiki/Carson_City%2C_Nevada",
+        "quote": "The majority of the city's population lives in Eagle Valley, on the eastern edge of the Carson Range, a branch of the Sierra Nevada, about 30 miles (50 km) south of Reno."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "This high, dry town has cold winters and hot summers. Rain and snow are scarce for most of the year.",
+      "narrowing": "Keeps dry high-desert capitals with cold winters and hot summers.",
+      "source": {
+        "article": "Carson City, Nevada",
+        "url": "https://en.wikipedia.org/wiki/Carson_City%2C_Nevada",
+        "quote": "Carson City features a cold semi-arid climate (Köppen: BSk, Trewartha: BSak) with cold winters and hot summers."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "This town has been the capital since 1861, when the land was not yet a state. Its founder set land aside in its heart for a capitol.",
+      "narrowing": "Cuts the list to the city that has been capital since territorial days in 1861.",
+      "source": {
+        "article": "Carson City, Nevada",
+        "url": "https://en.wikipedia.org/wiki/Carson_City%2C_Nevada",
+        "quote": "The city has served as Nevada's capital since 1861, when it was still a territory."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "For more than twenty years, a mint in this town stamped gold and silver coins. The coins came from rich mines in the hills.",
+      "narrowing": "Nearly decisive: one small capital had its own U.S. Mint stamping coins.",
+      "source": {
+        "article": "Carson City, Nevada — History",
+        "url": "https://en.wikipedia.org/wiki/Carson_City%2C_Nevada#History",
+        "quote": "The United States Mint also operated its branch of the Carson City Mint between the years of 1870 and 1893, which struck gold and silver coins of United States currency."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Nevada works in this town. State lawmakers meet here, in a small town by the hills.",
+      "narrowing": "Confirms it: the governor and lawmakers of Nevada work in this city.",
+      "source": {
+        "article": "Carson City, Nevada",
+        "url": "https://en.wikipedia.org/wiki/Carson_City%2C_Nevada",
+        "quote": "the capital of the U.S. state of Nevada"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This valley city is named for the mountain man Kit Carson, and silver from the Comstock Lode built its early years. It has been the capital since 1861, and its old mint once stamped prized coins. The building is the capitol, and the city is the capital. Carson City is the capital of Nevada."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Carson_City%2C_Nevada"
+  },
+  "pointPolicy": "geonames-point"
+}

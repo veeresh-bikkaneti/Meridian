@@ -273,30 +273,6 @@ body:has(.home-v5) {
   margin-top: 30px;
   flex-wrap: wrap;
 }
-.home-v5 .hv5-mountain {
-  position: relative;
-  right: auto;
-  bottom: auto;
-  width: auto;
-  max-width: none;
-  flex: 1 1 180px;
-  min-height: 180px;
-  margin: 20px -40px -40px;
-  object-fit: cover;
-  object-position: right bottom;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to top, #000 72%, transparent);
-  mask-image: linear-gradient(to top, #000 72%, transparent);
-  animation: hv5-kenburns 26s ease-in-out infinite alternate;
-}
-@keyframes hv5-kenburns {
-  from {
-    transform: scale(1) translateY(0);
-  }
-  to {
-    transform: scale(1.055) translateY(-5px);
-  }
-}
 .home-v5 .hv5-storyteller {
   position: relative;
   flex: none;
@@ -857,9 +833,6 @@ body:has(.home-v5) {
     aspect-ratio: 1;
     margin: 0 auto;
   }
-  .home-v5 .hv5-mountain {
-    display: none;
-  }
 }
 @media (max-width: 860px) {
   .home-v5 .hv5-nav {
@@ -940,9 +913,6 @@ body:has(.home-v5) {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .home-v5 .hv5-mountain {
-    animation: none;
-  }
   .home-v5 .hv5-card,
   .home-v5 .hv5-btn,
   .home-v5 .hv5-edition {
@@ -1428,4 +1398,168 @@ body:has(.home-v5) {
    keeps its native aspect, and the card grows to fit both. */
 .home-v5 .hv5-spot .hv5-txt {
   height: auto;
+}
+
+/* ---------- home rework (owner-approved designs, composed) ----------
+   Owner findings, 2026-11-04: (1) the hero reads as motionless — the
+   shipped Ken Burns is 26s at scale 1.055 (imperceptible) and the art
+   is display:none at ≤1080px; (2) the Capitals & Flags doorway did
+   not speak the hv5 card language; (3) its placement moves beside the
+   About card, without crowding the page. The designs were prototyped
+   behind a variant harness on design branches; this section is
+   the production composition — the harness is gone and everything
+   below applies unconditionally.
+   Doorway removal, 2026-11-05: the doorway composed here in #352
+   (theme restyle, beside-About placement, then signpost-only) was
+   removed from Home entirely on the owner's word (Veeresh,
+   2026-11-05: "card is not clickable. if its not clickable then
+   there is no point of putting it on home page."). Every
+   .hv5-doorway* rule, the .hv5-about-row two-column placement, and
+   the consumer-less .hv5-btn-ghost rules went with it; the About
+   card stands alone in .hv5-pages at full width again. */
+
+/* Hero mountain wrap. The wrap takes over the shipped img's box
+   (flex, margins, top-fade mask) so the overlays can sit on the art. */
+.home-v5 .hv5-mtn-wrap {
+  position: relative;
+  /* flex-basis must stay auto: a definite basis (the shipped
+     180px) overrides aspect-ratio below and the wrap collapses
+     back to the foothills crop. */
+  flex: 1 1 auto;
+  min-height: 180px;
+  /* Framing (production composition): the wrap keeps the painted
+     art's own 800/533 ratio, so the sliced overlays show the WHOLE
+     painting — summit + flag at the top, the trekker's full climb
+     leg and the trail's foot at the bottom — exactly as framed in
+     the owner's approved V1 capture. Letting flex shrink the wrap
+     to its 180px floor instead crops the slice to the foothills
+     (visible viewBox y from ~359 of 533): the summit, the flag and
+     most of the climb leg fall outside the crop. Flex may still
+     GROW the wrap when the rail runs taller; growing only widens
+     the visible slice, never misaligns it (both overlays and the
+     img slice from the same box). Cost: the hero card runs ~377px
+     taller at desktop widths (~1,212px tall, was 835) and the rows
+     below start lower — the trade the approved capture already
+     makes. */
+  aspect-ratio: 800 / 533;
+  margin: 20px -40px -40px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to top, #000 72%, transparent);
+  mask-image: linear-gradient(to top, #000 72%, transparent);
+}
+/* The sliced mountain art itself. It must never gain a transform
+   or an animation: the trail + trekker overlays slice the exact
+   same box, and any movement of the img would drift it out from
+   under them and break the overlay alignment. (The old bare-img
+   path that carried the Ken Burns zoom was removed by this PR —
+   see the trail comment below.) */
+.home-v5 .hv5-mtn-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: right bottom;
+}
+/* The trail overlay (SVG in game-app.tsx, sliced like the art).
+   The wrapped art carries no Ken Burns: a transform on the img
+   would drift it under the sliced overlays and break their
+   pixel-exact alignment with the painting. The old bare-img
+   .hv5-mountain rule and its hv5-kenburns keyframes were removed
+   in the panel cure round: no element renders that class, and
+   every rule that named it was a single-selector rule, so the
+   removal touched nothing live. */
+.home-v5 .hv5-trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.home-v5 .hv5-trail-dots {
+  animation: hv5-trailmarch 3s linear infinite;
+}
+@keyframes hv5-trailmarch {
+  to {
+    stroke-dashoffset: -111;
+  }
+}
+/* V1b clouds (owner's pick, 2026-11-04): two banks of blurred
+   watercolor cloud forms drifting in front of the upper slopes.
+   Each bank is 1600 units wide — the viewBox pattern doubled — and
+   translates ±800, so the 28s / 40s loops are seamless. The pulse
+   trail runs later in the SVG, so the climber stays in front of the
+   weather. Periods are long but the travel is a full scene width,
+   which keeps the drift clearly perceptible at capture size. */
+.home-v5 .hv5-cloud-drift-a {
+  animation: hv5-clouddrift-a 28s linear infinite;
+}
+.home-v5 .hv5-cloud-drift-b {
+  animation: hv5-clouddrift-b 40s linear infinite;
+}
+@keyframes hv5-clouddrift-a {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-800px);
+  }
+}
+@keyframes hv5-clouddrift-b {
+  from {
+    transform: translateX(-800px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.home-v5 .hv5-trail-flag {
+  transform-box: view-box;
+  transform-origin: 523px 116px;
+  animation: hv5-flagwave 2.2s ease-in-out infinite alternate;
+}
+@keyframes hv5-flagwave {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(8deg);
+  }
+}
+/* Still gate from the JS side (Save-Data / deviceMemory ≤ 2, where
+   no OS reduced-motion media query fires): HeroTrailOverlay
+   reflects its `reduced` state as .hv5-trail-still on the trail
+   SVG, and these rules kill the dot march + flag wave under it,
+   mirroring the prefers-reduced-motion rules at the end of this
+   section. (The pulse + clouds are never rendered under the gate,
+   so they need no rule here.) */
+.home-v5 .hv5-trail-still .hv5-trail-dots,
+.home-v5 .hv5-trail-still .hv5-trail-flag {
+  animation: none;
+}
+/* Trekker overlay (SVG in game-app.tsx): a second SVG stacked over
+   the trail overlay, sliced identically. All of its motion is SMIL
+   on one 18s master clock inside the component; its still gate
+   pauses that clock on the mid-climb frame, so no CSS animation
+   needs to reach it here. */
+.home-v5 .hv5-trekker {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+@media (max-width: 1080px) {
+  /* No mountain art at these widths — the wrap is display:none,
+     so neither overlay inside it can render or leak there either. */
+  .home-v5 .hv5-mtn-wrap {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-v5 .hv5-trail-dots,
+  .home-v5 .hv5-trail-flag,
+  .home-v5 .hv5-cloud-drift-a,
+  .home-v5 .hv5-cloud-drift-b {
+    animation: none;
+  }
 }

@@ -1,0 +1,57 @@
+{
+  "caseId": "zagreb-croatia",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "A cannon has fired from the old tower every day at noon since 1877.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-3186886",
+    "name": "Zagreb",
+    "country": "Croatia",
+    "subdivision": "Zagreb",
+    "lat": 45.81444,
+    "lon": 15.97798
+  },
+  "target": {
+    "placeId": "gn-3186886",
+    "name": "Zagreb",
+    "lat": 45.81444,
+    "lon": 15.97798,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Croatia",
+    "iso2": "HR",
+    "subdivision": "Zagreb"
+  },
+  "subjectAnswer": {
+    "name": "Croatia",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "HR",
+    "subdivision": "Zagreb",
+    "difficulty": 1,
+    "regionId": "globe",
+    "edition": "globe",
+    "blurb": "Zagreb is the capital of Croatia. It's one of Croatia's biggest places.",
+    "history": null
+  },
+  "extracts": [
+    {
+      "article": "Zagreb",
+      "url": "https://en.wikipedia.org/wiki/Zagreb",
+      "text": "Zagreb is the capital and largest city of Croatia. It is in the north of the country, along the Sava River, at the southern slopes of the Medvednica mountain. Zagreb stands near the international border between Croatia and Slovenia at an elevation of approximately 158 m (518 ft) above sea level. At the 2021 census, the city itself had a population of 767,131, while the population of the Zagreb metropolitan area is 1,086,528.\nThe oldest settlement in the vicinity of the city was the Roman Andautonia, in today's Šćitarjevo. The historical record of the name \"Zagreb\" dates from 1134, in reference to the foundation of the settlement at Kaptol in 1094. Zagreb became a free royal city in 1242. In 1851, Janko Kamauf became Zagreb's first mayor. Zagreb has special status as a Croatian administrative division—it comprises a consolidated city-county (but separate from Zagreb County), and is administratively subdivided into 17 city districts. Most of the city districts lie at a low elevation along the valley of the river Sava, whereas northern and northeastern city districts, such as Podsljeme and Sesvete districts are spread out across the foothills of the Medvednica mountain, making the city's geography rather diverse.\nZagreb is the seat of the central government, administrative bodies, and almost all government ministries. Almost all of the largest Croatian companies, media, and scientific institutions have their headquarters in the city. Zagreb is the most important transport hub in Croatia: here Central Europe, the Mediterranean and Southeast Europe meet, making the Zagreb area the centre of the road, rail and air networks of Croatia.\n\nClimate\nThe climate of Zagreb is classified as a humid temperate climate. It is further classified as oceanic climate (Köppen: Cfb) bordering on a humid subtropical climate (Köppen: Cfa).\nZagreb has four distinct seasons. Summers are generally warm, sometimes hot. In late May it gets significantly warmer, temperatures start rising and it often becomes very warm or even hot with occasional afternoon and evening thunderstorms. Heatwaves can occur but are short-lived. Temperatures rise above 30 °C (86 °F) on average on 14.6 days in summer. During summertime, rainfall is abundant, often due to thunderstorms. With 840 mm of precipitation per year, Zagreb is Europe's ninth wettest capital, receiving less precipitation than Luxembourg but more than Brussels, Paris or London.\nWinters are relatively cold, bringing overcast skies and a precipitation decrease pattern. February is the driest month, averaging 39 mm of precipitation. On average there are 29 days with snowfall, with the first snow usually falling in early December. Spring is characterized by often pleasant but changeable weather."
+    },
+    {
+      "article": "Zagreb — History",
+      "url": "https://en.wikipedia.org/wiki/Zagreb#History",
+      "text": "History\nThe oldest known settlement located near present-day Zagreb, the Roman town of Andautonia, now Ščitarjevo, existed between the 1st and the 5th centuries AD.\nThe first recorded appearance of the name \"Zagreb\" dates from 1094, at which time the city existed as two different city centres: the smaller, eastern Kaptol, inhabited mainly by clergy and housing Zagreb Cathedral, and the larger, western Gradec, inhabited mainly by craftsmen and merchants. In 1851 the Ban of Croatia, Josip Jelačić, united Gradec and Kaptol; the name of the main city square, Ban Jelačić Square honors him.\nWhile Croatia formed part of Yugoslavia (1918 to 1991), Zagreb remained an important economic centre of that country, and was the second largest city. After Croatia declared independence from Yugoslavia in 1991, the Parliament of the Republic of Croatia proclaimed Zagreb as the capital of the Republic of Croatia.\nEarly Zagreb\nThe history of Zagreb dates as far back as 1094 when the Hungarian King Ladislaus, returning from his campaign against the Kingdom of Croatia, founded a diocese. Alongside the bishop's see, the canonical settlement Kaptol developed north of Zagreb Cathedral, as did the fortified settlement Gradec on the neighbouring hill, with the border between the two formed by the Medveščak stream. Today the latter is Zagreb's Upper Town (Gornji grad) and is one of the best-preserved urban nuclei in Croatia. Both settlements came under Mongol attack in 1242. As a sign of gratitude for offering him a safe haven from the Mongols, the Croatian and Hungarian King Béla IV granted Gradec the Golden Bull of 1242, which gave its citizens exemption from county rule and autonomy, as well as their own judicial system.\nThe first railway line to connect Zagreb with Zidani Most and Sisak opened in 1862 and in 1863 Zagreb received a gasworks. Since 1 January 1877, the Grič cannon fires daily from the Lotrščak Tower on Grič to mark midday. The Zagreb waterworks opened in 1878."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

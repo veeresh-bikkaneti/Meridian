@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "providence-rhode-island",
+  "target": {
+    "placeId": "gn-5224151",
+    "name": "Providence",
+    "aliases": [],
+    "lat": 41.82399,
+    "lon": -71.41283,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Rhode Island",
+    "iso2": "US",
+    "subdivision": "Rhode Island"
+  },
+  "subjectAnswer": {
+    "name": "Rhode Island",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Rhode Island",
+    "givenKind": "state"
+  },
+  "packTier": 1,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This port city sits at the head of a bay, where two small rivers join to form its river. The river runs through the city center into the bay.",
+      "narrowing": "Points to a port at the head of a bay where two rivers join.",
+      "source": {
+        "article": "Providence, Rhode Island",
+        "url": "https://en.wikipedia.org/wiki/Providence%2C_Rhode_Island",
+        "quote": "Providence is located at the head of Narragansett Bay, with the Providence River running into the bay through the center of the city, formed by the confluence of the Moshassuck and Woonasquatucket Rivers."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The sea is close, and it keeps this town warm in winter. Towns far from the shore feel the cold much more.",
+      "narrowing": "Keeps coastal New England capitals warmed by the ocean.",
+      "source": {
+        "article": "Providence, Rhode Island",
+        "url": "https://en.wikipedia.org/wiki/Providence%2C_Rhode_Island",
+        "quote": "The influence of the Atlantic Ocean keeps the state of Rhode Island warmer than many inland locales in New England."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "Lawmakers met in this city's Old State House for a long stretch, from 1762 to 1904. The port grew rich, and it held on to the seat of government.",
+      "narrowing": "Cuts the list to the port whose Old State House served as capitol from 1762 to 1904.",
+      "source": {
+        "article": "Providence, Rhode Island",
+        "url": "https://en.wikipedia.org/wiki/Providence%2C_Rhode_Island",
+        "quote": "Providence's East Side is home to the First Baptist Church in America, which was founded by Williams in 1638, as well as the Old State House which served as the state's capitol from 1762 to 1904."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Roger Williams set up this town in 1636, when he was cast out for his faith. He made it a home where all could pray as they wished.",
+      "narrowing": "Nearly decisive: one capital was founded by Roger Williams in 1636.",
+      "source": {
+        "article": "Providence, Rhode Island",
+        "url": "https://en.wikipedia.org/wiki/Providence%2C_Rhode_Island",
+        "quote": "Providence is one of the oldest cities in New England, founded in 1636 by Reformed Baptist theologian Roger Williams, a religious exile from the Massachusetts Bay Colony."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Rhode Island's governor works in this town, the state's biggest. Its lawmakers meet in the white marble State House.",
+      "narrowing": "Confirms it: the governor and lawmakers of Rhode Island work in this city.",
+      "source": {
+        "article": "Providence, Rhode Island",
+        "url": "https://en.wikipedia.org/wiki/Providence%2C_Rhode_Island",
+        "quote": "is the capital and most populous city of the U.S. state of Rhode Island"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "Roger Williams founded this port in 1636 after he was banished for his beliefs, and it grew into a haven of religious freedom. Its marble State House dome is one of the largest of its kind in the world. Providence is the capital of Rhode Island."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Providence%2C_Rhode_Island"
+  },
+  "pointPolicy": "geonames-point"
+}

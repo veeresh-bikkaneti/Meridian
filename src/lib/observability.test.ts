@@ -8,24 +8,30 @@ import {
   stampCleanExitDirty,
 } from "../game/clean-exit.ts";
 import {
+  BOOT_HEALTH_KEY,
   BREADCRUMB_KEY,
   CHUNK_RECOVERY_KEY,
   CHUNK_RELOAD_KEY,
+  COLLECT_MEMORY_CORES,
   MAX_HISTORY,
   MAX_PAYLOAD_BYTES,
   classifyCrashVerdict,
   coarseDeviceFacts,
+  collectDeviceInfo,
   createObservability,
   dprBucket,
   isValidRecoveryMarker,
   parseRecoveryMarker,
+  runtimeFacts,
   screenBucket,
+  setReportMapMode,
   truncateEventToCap,
   type CrashVerdictFacts,
   type ObsStorage,
   type ObsTransport,
   type ObservabilityEvent,
 } from "./observability.ts";
+import { TELEMETRY_MANIFEST } from "./telemetry-manifest.ts";
 
 function makeStorage(initial: Record<string, string> = {}): ObsStorage & { raw: Map<string, string> } {
   const raw = new Map(Object.entries(initial));
@@ -620,7 +626,7 @@ test("visibility: a backgrounded trail classifies the next-boot suspected_crash"
   assert.equal(event.edition, "globe");
 });
 
-test("COPPA coarsening: reports carry a screen bucket and rounded DPR, never exact pixels, memory, or cores", () => {
+test("buckets: screenBucket and dprBucket keep their coarse shapes", () => {
   assert.equal(screenBucket(390, 844), "sm");
   assert.equal(screenBucket(820, 1180), "lg");
   assert.equal(screenBucket(1920, 1080), "xl");
@@ -629,10 +635,30 @@ test("COPPA coarsening: reports carry a screen bucket and rounded DPR, never exa
   assert.equal(dprBucket(2.625), 3);
   assert.equal(dprBucket(1.25), 1);
   assert.equal(dprBucket(9), 4);
-  const facts = coarseDeviceFacts();
-  for (const k of ["screenW", "screenH", "deviceMemory", "hardwareConcurrency", "ua"]) {
-    assert.ok(!(k in facts) || (facts as Record<string, unknown>)[k] === undefined, `${k} must not be reported`);
+});
+
+test("runtimeFacts: every manifest key present, unknown is a value, ua never present", () => {
+  // §2.1 presence assertion — REPLACES the pre-enrichment absence
+  // assertion (which forbade deviceMemory/hardwareConcurrency keys).
+  // Under the §6.3 safeguard amendment those two fields are admitted
+  // as whole-session values inside the fixed manifest set; the raw UA
+  // and exact pixels remain forbidden, now structurally: runtimeFacts
+  // never produces those keys at all.
+  assert.equal(COLLECT_MEMORY_CORES, true, "§6.4 gate defaults to collecting");
+  const facts = runtimeFacts() as unknown as Record<string, unknown>;
+  const deviceKeys = TELEMETRY_MANIFEST.filter((f) => f.wire === "device" && f.key !== "webgl1" && f.key !== "webgl2").map((f) => f.key);
+  assert.equal(deviceKeys.length, 15, "app path stamps 15 device keys (§1.1)");
+  for (const k of deviceKeys) {
+    assert.ok(k in facts && facts[k] !== undefined, `${k} must be present (§2.1: unknown is a value)`);
   }
+  for (const k of ["ua", "screenW", "screenH"]) {
+    assert.ok(!(k in facts), `${k} must never be a runtimeFacts key`);
+  }
+  // The deprecated alias returns the same shape (§3.3).
+  const alias = coarseDeviceFacts() as unknown as Record<string, unknown>;
+  assert.deepEqual(Object.keys(alias).sort(), Object.keys(facts).sort());
+  // collectDeviceInfo no longer stores the raw UA anywhere (§4.1).
+  assert.ok(!("ua" in collectDeviceInfo()), "collectDeviceInfo must not store ua");
 });
 
 // --- Slice 1: crash-report verdicts (Consensus Manifest 2026-10-25) ------
@@ -1343,4 +1369,446 @@ test("Slice 2 queue eviction: a queued recovery_outcome survives a burst of live
   assert.equal(flushed.length, 20);
   assert.equal(flushed[0].type, "recovery_outcome", "protected from eviction like suspected_crash");
   assert.equal(flushed.filter((e) => e.type === "recovery_outcome").length, 1);
+});
+
+// ---------------------------------------------------------------------------
+// Issue #330 — durable map-crash marker: the prior-crash signal survives
+// sessionStorage loss. Reporting (suspected_crash) is unchanged: it still
+// requires the session trail. Only wasMapAttributedCrash() lasts longer.
+// ---------------------------------------------------------------------------
+
+const MAP_CRASH_MARKER_KEY_FOR_TEST = "meridian:map-crash";
+const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
+
+test("#330: a session-detected map crash stamps the durable marker", () => {
+  const session = makeStorage({
+    [BREADCRUMB_KEY]: prevBreadcrumbJson({ lastMilestone: "map_init_start" }),
+  });
+  const durable = makeStorage();
+  const { transport } = makeTransport(true);
+  const obs = createObservability({
+    storage: session, durableStorage: durable, transport,
+    endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "s2", device: DEVICE, buildId: "b2", isUnclean: () => true,
+  });
+  obs.init();
+  assert.equal(obs.wasMapAttributedCrash(), true);
+  assert.deepEqual(JSON.parse(durable.getItem(MAP_CRASH_MARKER_KEY_FOR_TEST) as string), { at: 9000 });
+});
+
+test("#330: fresh durable marker alone (session trail lost) → wasMapAttributedCrash, but NO suspected_crash beacon", async () => {
+  const session = makeStorage(); // fresh visit: no breadcrumb, clean-exit state gone
+  const durable = makeStorage({
+    [MAP_CRASH_MARKER_KEY_FOR_TEST]: JSON.stringify({ at: 8000 }),
+  });
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: session, durableStorage: durable, transport,
+    endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "s3", device: DEVICE, buildId: "b2", isUnclean: () => false,
+  });
+  obs.init();
+  assert.equal(obs.wasMapAttributedCrash(), true, "durable marker still demotes");
+  await Promise.resolve();
+  assert.equal(
+    beacons.filter((b) => (JSON.parse(b.body) as ObservabilityEvent).type === "suspected_crash").length,
+    0,
+    "reporting unchanged: no session trail, no suspected_crash",
+  );
+  // A marker-only read must not refresh the stamp (no sliding decay).
+  assert.deepEqual(JSON.parse(durable.getItem(MAP_CRASH_MARKER_KEY_FOR_TEST) as string), { at: 8000 });
+});
+
+test("#330: stale durable marker (past the 7-day decay) → no demotion", () => {
+  const session = makeStorage();
+  const durable = makeStorage({
+    [MAP_CRASH_MARKER_KEY_FOR_TEST]: JSON.stringify({ at: 9000 - SEVEN_DAYS_MS - 1 }),
+  });
+  const { transport } = makeTransport(true);
+  const obs = createObservability({
+    storage: session, durableStorage: durable, transport,
+    now: () => 9000, randomId: () => "s4", device: DEVICE, buildId: "b2", isUnclean: () => false,
+  });
+  obs.init();
+  assert.equal(obs.wasMapAttributedCrash(), false);
+});
+
+test("#330: an unclean exit at a non-map milestone does not stamp the marker", () => {
+  const session = makeStorage({
+    [BREADCRUMB_KEY]: prevBreadcrumbJson({ lastMilestone: "data_loaded" }),
+  });
+  const durable = makeStorage();
+  const { transport } = makeTransport(true);
+  const obs = createObservability({
+    storage: session, durableStorage: durable, transport,
+    endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "s5", device: DEVICE, buildId: "b2", isUnclean: () => true,
+  });
+  obs.init();
+  assert.equal(obs.wasMapAttributedCrash(), false);
+  assert.equal(durable.getItem(MAP_CRASH_MARKER_KEY_FOR_TEST), null);
+});
+
+// --- Telemetry enrichment (DESIGN-FINAL §§2.1-2.2, 4.1-4.3, 7.4) --------
+//
+// Persisted classifier state, the crashed session's runtime snapshot,
+// the #335 mapMode fix, the durable boot-health counter, the two-level
+// emit, and the §7.4 trim order.
+
+test("#330 regression: a vis-marked trail with NO visibility entry stamps bgTerminal=false and settles fg_kill_current", () => {
+  // The incident shape: first-visit foreground session, jetsam-killed
+  // before any backgrounding. The trail carries the vis marker (its
+  // build tracked visibility its whole life), so silent history means
+  // never-backgrounded — the stamp is false, rule 4 passes, rule 6b
+  // fires. No classifier change was needed (§2.2).
+  const payload = seededCrashPayload({
+    buildId: "b2",
+    lastMilestone: "map_init_start",
+    history: HIST("boot_start", "run_start", "map_init_start"),
+    vis: true,
+  });
+  assert.equal(payload.bgTerminal, false, "vis-gated false is stamped, not omitted");
+  assert.equal(payload.trailStuck, false);
+  assert.equal(payload.buildReplaced, false);
+  assert.equal(payload.verdict, "developer_needed");
+  assert.equal(payload.whyKey, "fg_kill_current");
+  assert.equal(payload.mapMode, "unknown", "no persisted as-run mode on this trail");
+  assert.equal(payload.deviceSource, "detecting_boot", "no snapshot persisted — fresh facts, labelled");
+  assert.equal(payload.msSinceBootStart, 2, "last history entry (1002) minus startedAt (1000)");
+});
+
+test("stamps precedence: the persisted state field beats the history scan, both ways", () => {
+  const stateFalse = seededCrashPayload({
+    buildId: "prev-build",
+    lastMilestone: "data_loaded",
+    history: HIST("boot_start", "backgrounded"), // scan would say true
+    bgTerminal: false,
+    trailStuck: true, // trailWasStuck() would derive false for this trail
+    vis: true,
+  });
+  assert.equal(stateFalse.bgTerminal, false, "state field wins over history scan");
+  assert.equal(stateFalse.trailStuck, true, "state field wins over derivation");
+
+  const stateTrue = seededCrashPayload({
+    buildId: "prev-build",
+    lastMilestone: "game_loaded",
+    history: HIST("boot_start", "backgrounded", "foregrounded", "game_loaded"), // scan says false
+    bgTerminal: true,
+    trailStuck: false,
+    vis: true,
+  });
+  assert.equal(stateTrue.bgTerminal, true, "state field wins over history scan");
+  assert.equal(stateTrue.trailStuck, false);
+});
+
+test("stamps: capped-history fixture — evicted visibility entry cannot lose the persisted state", () => {
+  // 12 history entries (the cap), none of them a visibility entry: the
+  // old derivation would fail closed, but the state written at the
+  // transition survives eviction (§2.2).
+  const payload = seededCrashPayload({
+    buildId: "prev-build",
+    lastMilestone: "backgrounded",
+    history: HIST(
+      "boot_start", "run_start", "data_chunk_load_start", "data_loaded",
+      "map_init_start", "map_ready", "game_loaded", "storyteller_ready",
+      "run_start", "data_loaded", "game_loaded", "data_loaded",
+    ),
+    bgTerminal: true,
+    trailStuck: false,
+    vis: true,
+  });
+  assert.equal(payload.bgTerminal, true);
+  assert.equal(payload.trailStuck, false);
+  assert.equal(payload.verdict, "not_a_real_issue");
+  assert.equal(payload.whyKey, "bg_close");
+});
+
+test("session truth: suspected_crash carries the CRASHED session's snapshot, mode, span and streak", () => {
+  const runtime = {
+    browser: "safari", browserVersion: "16.4", engine: "webkit", os: "ios",
+    osVersion: "16.4.1", deviceClass: "phone", hardwareConcurrency: 6,
+    deviceMemory: "unknown", form: "mobile", dpr: 2, screen: "md",
+    touchPoints: "2-5", displayMode: "unknown", connection: "unknown", locale: "en-US",
+  };
+  const durable = makeStorage();
+  const store = makeStorage({
+    [BREADCRUMB_KEY]: prevBreadcrumbJson({
+      buildId: "b2",
+      lastMilestone: "map_init_start",
+      history: [
+        { name: "boot_start", at: 1000 },
+        { name: "map_init_start", at: 5210 },
+      ],
+      runtime,
+      mapMode: "scout",
+      vis: true,
+      bgTerminal: false,
+      trailStuck: false,
+    }),
+  });
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: store, durableStorage: durable, transport, endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "new-session", device: DEVICE, buildId: "b2", isUnclean: () => true,
+  });
+  obs.init();
+  assert.equal(beacons.length, 1);
+  const payload = JSON.parse(beacons[0].body) as ObservabilityEvent;
+  assert.deepEqual(payload.device, runtime, "device is boot 1's snapshot, not the detecting boot's facts");
+  assert.equal(payload.deviceSource, "crashed_session");
+  assert.equal(payload.mapMode, "scout", "#335: the as-run mode, not the detecting boot's default");
+  assert.equal(payload.msSinceBootStart, 4210);
+  assert.equal(payload.unfinishedBoots, 1, "post-increment: the crashed session counts itself");
+  assert.deepEqual(
+    (payload.breadcrumb as { runtime?: unknown }).runtime,
+    runtime,
+    "the nested trail carries the parsed snapshot (no device slot)",
+  );
+  assert.ok(!("device" in ((payload.breadcrumb as object) ?? {})), "nested trail has no device slot");
+  const health = JSON.parse(durable.getItem(BOOT_HEALTH_KEY) as string) as { v: number; unfinished: number };
+  assert.equal(health.v, 1);
+  assert.equal(health.unfinished, 1);
+});
+
+test("boot-health counter: increments per unfinished boot, resets only on a positively clean trail, caps at 99", () => {
+  const { transport, beacons } = makeTransport(true);
+  const store = makeStorage();
+  const durable = makeStorage();
+  let n = 0;
+  const boot = (unclean: boolean) => {
+    const obs = createObservability({
+      storage: store, durableStorage: durable, transport, endpoint: "https://example.com/ingest",
+      now: () => 9000, randomId: () => `boot-${++n}`, device: DEVICE, buildId: "b", isUnclean: () => unclean,
+    });
+    obs.init();
+    return obs;
+  };
+  const crashes = () =>
+    beacons
+      .map((b) => JSON.parse(b.body) as ObservabilityEvent)
+      .filter((e) => e.type === "suspected_crash");
+
+  boot(false); // clean first boot: trail created, no counter write
+  assert.equal(durable.getItem(BOOT_HEALTH_KEY), null, "no write without an unfinished boot");
+  boot(true); // kill 1
+  assert.equal(crashes().at(-1)?.unfinishedBoots, 1);
+  boot(true); // kill 2
+  assert.equal(crashes().at(-1)?.unfinishedBoots, 2);
+  boot(false); // positively clean previous trail → streak over
+  assert.equal(
+    (JSON.parse(durable.getItem(BOOT_HEALTH_KEY) as string) as { unfinished: number }).unfinished,
+    0,
+    "clean boot with a previous trail resets the streak",
+  );
+  boot(true); // a new streak starts at 1, not 3
+  assert.equal(crashes().at(-1)?.unfinishedBoots, 1);
+
+  // [GRAFT] No prev trail does NOT reset: seed a streak, boot clean
+  // against EMPTY session storage — the streak survives.
+  const durable2 = makeStorage({
+    [BOOT_HEALTH_KEY]: JSON.stringify({ v: 1, unfinished: 3, lastUnfinishedAt: 5 }),
+  });
+  const fresh = createObservability({
+    storage: makeStorage(), durableStorage: durable2, transport, endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "fresh", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  fresh.init();
+  assert.equal(
+    (JSON.parse(durable2.getItem(BOOT_HEALTH_KEY) as string) as { unfinished: number }).unfinished,
+    3,
+    "missing trail is not evidence a crash loop ended",
+  );
+
+  // Cap: 99 + one more unfinished boot stays 99.
+  const durable3 = makeStorage({
+    [BOOT_HEALTH_KEY]: JSON.stringify({ v: 1, unfinished: 99, lastUnfinishedAt: 5 }),
+  });
+  const store3 = makeStorage({ [BREADCRUMB_KEY]: prevBreadcrumbJson() });
+  const obs3 = createObservability({
+    storage: store3, durableStorage: durable3, transport, endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "cap", device: DEVICE, buildId: "b", isUnclean: () => true,
+  });
+  obs3.init();
+  const capPayload = beacons
+    .map((b) => JSON.parse(b.body) as ObservabilityEvent)
+    .filter((e) => e.type === "suspected_crash")
+    .at(-1);
+  assert.equal(capPayload?.unfinishedBoots, 99, "streak capped at 99");
+});
+
+test("boot-health counter never touches the #331 map-crash marker", () => {
+  const durable = makeStorage();
+  const store = makeStorage({ [BREADCRUMB_KEY]: prevBreadcrumbJson({ lastMilestone: "map_init_start" }) });
+  const { transport } = makeTransport(true);
+  const obs = createObservability({
+    storage: store, durableStorage: durable, transport, endpoint: "https://example.com/ingest",
+    now: () => 9000, randomId: () => "s", device: DEVICE, buildId: "b2", isUnclean: () => true,
+  });
+  obs.init();
+  // The only durable keys written are the boot-health counter and
+  // (#331's own session-detection path) the map-crash marker — the
+  // counter's write is its own key/shape, the marker stays {at}.
+  const healthRaw = durable.getItem(BOOT_HEALTH_KEY);
+  assert.ok(healthRaw && healthRaw.includes('"unfinished"'), "counter written under its own key");
+  const markerRaw = durable.getItem(MAP_CRASH_MARKER_KEY_FOR_TEST);
+  if (markerRaw) {
+    assert.deepEqual(Object.keys(JSON.parse(markerRaw)), ["at"], "map-crash marker shape untouched");
+  }
+});
+
+test("two-level emit: funnel types stamp the LEGACY coarse device only; crash-class stamps full facts + top-level stamps", () => {
+  const store = makeStorage();
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: store, transport, endpoint: "https://example.com/ingest",
+    now: () => 1000, randomId: () => "s", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  obs.emit({ type: "storyteller_shown", ts: 1000, buildId: "b" });
+  obs.emit({ type: "js_error", ts: 1000, buildId: "b", error: { name: "Error", message: "x" } });
+  assert.equal(beacons.length, 2);
+  const funnel = JSON.parse(beacons[0].body) as ObservabilityEvent;
+  const funnelKeys = Object.keys(funnel.device as object).sort();
+  for (const k of funnelKeys) {
+    assert.ok(["os", "form", "dpr", "screen"].includes(k), `funnel device key ${k} is legacy-only [GRAFT §1.1]`);
+  }
+  assert.ok(!("browser" in (funnel.device as object)), "no enriched facts on funnel events");
+  assert.ok(!("deviceSource" in funnel), "no crash-class top-level stamps on funnel events");
+  assert.ok(!("unfinishedBoots" in funnel));
+
+  const crash = JSON.parse(beacons[1].body) as ObservabilityEvent;
+  const crashKeys = Object.keys(crash.device as object);
+  assert.equal(crashKeys.length, 15, "crash-class device carries all 15 app-path keys");
+  assert.equal(crash.deviceSource, "live");
+  assert.equal(crash.unfinishedBoots, 0);
+  assert.equal(crash.msSinceBootStart, 0, "live stamp: now (1000) minus trail start (1000)");
+
+  // Hiccup types keep the FULL device (tile/WebGL triage is browser × OS work).
+  obs.emitTileFailed();
+  const hiccup = JSON.parse(beacons[2].body) as ObservabilityEvent;
+  assert.equal(Object.keys(hiccup.device as object).length, 15, "hiccup device is the full set");
+  assert.ok(!("deviceSource" in hiccup), "hiccups carry no crash-class top-level stamps");
+});
+
+test("#335: setReportMapMode persists the as-run mode on the live trail; map_init_start pin covers a pre-trail resolution", () => {
+  const store = makeStorage();
+  const { transport, beacons } = makeTransport(true);
+  const obs = createObservability({
+    storage: store, transport, endpoint: "https://example.com/ingest",
+    now: () => 1000, randomId: () => "m1", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  assert.equal(obs.getBreadcrumb()?.mapMode, undefined, "unset until a mode is chosen");
+  obs.setReportMapMode("scout");
+  assert.equal(obs.getBreadcrumb()?.mapMode, "scout", "choke point writes the live trail");
+  const stored = JSON.parse(store.getItem(BREADCRUMB_KEY) as string) as { mapMode?: string };
+  assert.equal(stored.mapMode, "scout", "mode persisted, not just in memory");
+  obs.setReportMapMode("full");
+  assert.equal(obs.getBreadcrumb()?.mapMode, "full");
+
+  // Pin path: the mode was resolved BEFORE the trail existed (module
+  // variable only). The next trail picks it up at map_init_start.
+  setReportMapMode("scout");
+  const store2 = makeStorage();
+  const obs2 = createObservability({
+    storage: store2, transport, endpoint: "https://example.com/ingest",
+    now: () => 2000, randomId: () => "m2", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs2.init();
+  obs2.recordMilestone("map_init_start");
+  assert.equal(obs2.getBreadcrumb()?.mapMode, "scout", "pin lands the pre-trail mode on the trail");
+
+  // And that persisted mode is what the NEXT boot reports after a kill.
+  const obs3 = createObservability({
+    storage: store2, transport, endpoint: "https://example.com/ingest",
+    now: () => 3000, randomId: () => "m3", device: DEVICE, buildId: "b", isUnclean: () => true,
+  });
+  obs3.init();
+  const crash = beacons
+    .map((b) => JSON.parse(b.body) as ObservabilityEvent)
+    .filter((e) => e.type === "suspected_crash")
+    .at(-1);
+  assert.equal(crash?.mapMode, "scout", "next boot reports the crashed session's mode (#335)");
+  setReportMapMode("full"); // restore the module default for other tests
+});
+
+test("visibility listener writes PERSISTED state at the transition (bgTerminal + trailStuck on the stored trail)", () => {
+  const store = makeStorage();
+  const { transport } = makeTransport();
+  const doc = makeDocument();
+  const obs = createObservability({
+    storage: store, transport, document: doc,
+    now: () => 1000, randomId: () => "vis-state", device: DEVICE, buildId: "b", isUnclean: () => false,
+  });
+  obs.init();
+  let stored = JSON.parse(store.getItem(BREADCRUMB_KEY) as string) as { bgTerminal?: boolean; trailStuck?: boolean; vis?: boolean };
+  assert.equal(stored.vis, true, "trail creation sets the vis marker");
+  assert.equal(stored.bgTerminal, false, "state initialised false at creation");
+  assert.equal(stored.trailStuck, false);
+
+  obs.recordMilestone("map_init_start");
+  doc.visibilityState = "hidden";
+  doc.fire("visibilitychange");
+  stored = JSON.parse(store.getItem(BREADCRUMB_KEY) as string) as { bgTerminal?: boolean; trailStuck?: boolean };
+  assert.equal(stored.bgTerminal, true, "backgrounded transition persists bgTerminal=true");
+  assert.equal(stored.trailStuck, true, "last non-visibility milestone was a start milestone at backgrounding time");
+
+  doc.visibilityState = "visible";
+  doc.fire("visibilitychange");
+  stored = JSON.parse(store.getItem(BREADCRUMB_KEY) as string) as { bgTerminal?: boolean; trailStuck?: boolean };
+  assert.equal(stored.bgTerminal, false, "foregrounded transition resets the state");
+  assert.equal(stored.trailStuck, false);
+});
+
+test("trim order (§7.4): an oversized enriched suspected_crash keeps device.osVersion, mapMode and msSinceBootStart under the cap", () => {
+  const ev: ObservabilityEvent = {
+    type: "suspected_crash",
+    ts: 9000,
+    buildId: "prev-build",
+    sessionId: "prev-session",
+    edition: "state",
+    regionId: "nebraska",
+    chunkId: "c".repeat(1500),
+    lastMilestone: "map_init_start",
+    mapMode: "scout",
+    msSinceBootStart: 4210,
+    deviceSource: "crashed_session",
+    unfinishedBoots: 2,
+    bgTerminal: false,
+    buildReplaced: false,
+    trailStuck: false,
+    storageOk: true,
+    lcV: "2",
+    error: { name: "Error", message: "x".repeat(300) },
+    device: {
+      browser: "safari", browserVersion: "16.4", engine: "webkit", os: "ios",
+      osVersion: "16.4.1", deviceClass: "phone", hardwareConcurrency: 6,
+      deviceMemory: "unknown", form: "mobile", dpr: 2, screen: "md",
+      touchPoints: "2-5", displayMode: "unknown", connection: "unknown", locale: "en-US",
+    },
+    breadcrumb: {
+      sessionId: "prev-session",
+      buildId: "prev-build",
+      startedAt: 1000,
+      lastMilestone: "map_init_start",
+      mapMode: "scout",
+      history: HIST(
+        "boot_start", "run_start", "data_chunk_load_start", "data_loaded",
+        "map_init_start", "map_ready", "game_loaded", "storyteller_ready",
+        "run_start", "data_loaded", "game_loaded", "data_loaded",
+      ),
+      edition: "state",
+      regionId: "nebraska",
+    },
+  };
+  const body = truncateEventToCap(ev, MAX_PAYLOAD_BYTES);
+  assert.ok(new TextEncoder().encode(body).length <= MAX_PAYLOAD_BYTES, "cap holds");
+  const parsed = JSON.parse(body) as ObservabilityEvent;
+  assert.equal((parsed.device as { osVersion?: string }).osVersion, "16.4.1", "device survives trimming (§7.4 inversion)");
+  assert.equal(parsed.mapMode, "scout");
+  assert.equal(parsed.msSinceBootStart, 4210);
+  // The reduced stub preserves the mode when the breadcrumb survives.
+  if (parsed.breadcrumb) {
+    assert.equal((parsed.breadcrumb as { mapMode?: string }).mapMode, "scout", "stub keeps mapMode");
+  }
 });

@@ -85,14 +85,78 @@ export function toLoopRecord(record, input) {
   };
 }
 
-/** The sidecar entry for one pack case (design §1.2). */
-export function loopMetaEntry(record) {
-  return {
+/**
+ * USPS postal codes by state name — the build-time half of the flagKey
+ * derivation (Capitals & Flags design §2, Flagstaff gate): a state
+ * subject's flagKey is its ISO 3166-2 code, which needs the postal code
+ * the case records do not carry (they store the state NAME). Inverting
+ * this table for an unmapped subdivision throws at build time, so a
+ * record naming a non-state fails closed instead of shipping a wrong
+ * or missing flag.
+ */
+export const US_STATE_POSTAL = {
+  Alabama: "AL", Alaska: "AK", Arizona: "AZ", Arkansas: "AR",
+  California: "CA", Colorado: "CO", Connecticut: "CT", Delaware: "DE",
+  Florida: "FL", Georgia: "GA", Hawaii: "HI", Idaho: "ID",
+  Illinois: "IL", Indiana: "IN", Iowa: "IA", Kansas: "KS",
+  Kentucky: "KY", Louisiana: "LA", Maine: "ME", Maryland: "MD",
+  Massachusetts: "MA", Michigan: "MI", Minnesota: "MN", Mississippi: "MS",
+  Missouri: "MO", Montana: "MT", Nebraska: "NE", Nevada: "NV",
+  "New Hampshire": "NH", "New Jersey": "NJ", "New Mexico": "NM",
+  "New York": "NY", "North Carolina": "NC", "North Dakota": "ND",
+  Ohio: "OH", Oklahoma: "OK", Oregon: "OR", Pennsylvania: "PA",
+  "Rhode Island": "RI", "South Carolina": "SC", "South Dakota": "SD",
+  Tennessee: "TN", Texas: "TX", Utah: "UT", Vermont: "VT",
+  Virginia: "VA", Washington: "WA", "West Virginia": "WV",
+  Wisconsin: "WI", Wyoming: "WY",
+};
+
+/**
+ * The flag identity of a case's subject land, derived at build time —
+ * never authored on the record (design §2). A country subject's key is
+ * its lowercase ISO 3166-1 alpha-2 (which is exactly its flag's ISO
+ * 3166-1 alpha-2, cross-checked against Wikidata P297→P41 by the
+ * Flagstaff gate); a state subject's key is "us-" + its postal code.
+ * Returns null only for a subject shape the validator already rejects.
+ */
+export function flagKeyForSubject(subject) {
+  if (!subject || typeof subject !== "object") return null;
+  if (subject.kind === "country") {
+    return typeof subject.iso2 === "string" && /^[A-Z]{2}$/.test(subject.iso2)
+      ? subject.iso2.toLowerCase()
+      : null;
+  }
+  if (subject.kind === "state") {
+    const postal = US_STATE_POSTAL[subject.subdivision];
+    if (!postal) {
+      throw new Error(
+        `flagKeyForSubject: no USPS postal code for subdivision ${JSON.stringify(subject.subdivision)} — refusing to derive a flag identity`,
+      );
+    }
+    return `us-${postal.toLowerCase()}`;
+  }
+  return null;
+}
+
+/**
+ * The sidecar entry for one pack case (design §1.2). Capitals & Flags:
+ * when the caller passes the licence-verified flag registry's key set
+ * and the subject's derived flagKey is in it, the entry carries the
+ * flagKey — the one field screens learn (design §2). A land with no
+ * verified flag simply has no flagKey: flagless is a data state.
+ */
+export function loopMetaEntry(record, verifiedFlagKeys) {
+  const entry = {
     subject: { kind: record.subject.kind, name: record.subject.name },
     direction: record.direction,
     prompt: { givenName: record.prompt.givenName, givenKind: record.prompt.givenKind },
     blurb: record.reveal.blurb,
   };
+  if (verifiedFlagKeys) {
+    const flagKey = flagKeyForSubject(record.subject);
+    if (flagKey && verifiedFlagKeys.has(flagKey)) entry.flagKey = flagKey;
+  }
+  return entry;
 }
 
 /**

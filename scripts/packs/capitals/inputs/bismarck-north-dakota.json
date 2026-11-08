@@ -1,0 +1,57 @@
+{
+  "caseId": "bismarck-north-dakota",
+  "packId": "capitals",
+  "category": "capitals",
+  "packTier": 3,
+  "hookAngle": "Named for Germany's Otto von Bismarck to lure railroad investment.",
+  "hookRewrittenInReview": false,
+  "place": {
+    "place_id": "gn-5688025",
+    "name": "Bismarck",
+    "country": "United States",
+    "subdivision": "North Dakota",
+    "lat": 46.80833,
+    "lon": -100.78374
+  },
+  "target": {
+    "placeId": "gn-5688025",
+    "name": "Bismarck",
+    "lat": 46.80833,
+    "lon": -100.78374,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "North Dakota",
+    "iso2": "US",
+    "subdivision": "North Dakota"
+  },
+  "subjectAnswer": {
+    "name": "North Dakota",
+    "aliases": []
+  },
+  "curated_aliases": [],
+  "chunk": {
+    "iso2": "US",
+    "subdivision": "North Dakota",
+    "difficulty": 2,
+    "regionId": "north-dakota",
+    "edition": "state",
+    "blurb": "Bismarck is the capital of North Dakota, the United States. It's one of North Dakota's biggest places.",
+    "history": "Named for Germany's Otto von Bismarck to lure railroad investment. Its 19-story Capitol is the 'Skyscraper on the Prairie'."
+  },
+  "extracts": [
+    {
+      "article": "Bismarck, North Dakota",
+      "url": "https://en.wikipedia.org/wiki/Bismarck%2C_North_Dakota",
+      "text": "Bismarck () is the capital city of the U.S. state of North Dakota and the county seat of Burleigh County. It is the state's second-most populous city, after Fargo. The population was 73,622 at the 2020 census, and was estimated at 77,772 in 2024, while its metropolitan population was 133,626. In 2014, Forbes magazine ranked Bismarck as the seventh fastest-growing small city in the United States.\nBismarck was founded by European-Americans in 1872 on the east bank of the Missouri River. It has been North Dakota's capital city since 1889, when the state was created from the Dakota Territory and admitted to the Union.\nBismarck is across the river from Mandan, named after a Native American tribe of the area. The two cities comprise the core of the Bismarck metropolitan area.\nThe North Dakota State Capitol is in central Bismarck. The state government employs more than 4,600 in the city. As a hub of retail and health care, Bismarck is the economic center of south-central North Dakota and north-central South Dakota.\nGeography Bismarck is located at 46°48′51.39″N 100°46′9.86″W (46.8142737, -100.7694052).\nAccording to the United States Census Bureau, the city has an area of 36.452 square miles (94.41 km2), of which 35.955 square miles (93.12 km2) is land and 0.497 square miles (1.29 km2) (1.36%) is water.\n\n\n=== Cityscape ===\n\nThe city has developed around downtown Bismarck, the center of historic development. It is distinctive because the city's major shopping center, Kirkwood Mall, is in the city center rather than in the suburbs. Several other major retail stores are near Kirkwood Mall, which was developed near the Bismarck Event Center. The two Bismarck hospitals, CHI St. Alexius Medical Center and Sanford Health (previously Medcenter One Health Systems), are downtown. The streets are lined with small stores and restaurants.\nMuch recent commercial and residential growth has occurred in the city's northern section, largely because of expanding retail centers. Among the shopping centers in northern Bismarck are Gateway Fashion Mall, Northbrook Mall, Arrowhead Plaza, and the Pinehurst Square \"power center\" mall.\nThe North Dakota State Capitol complex is just north of downtown Bismarck. The 19-story Art Deco capitol is the tallest building in the state, at a height of 241.75 feet (73.69 m). Completed during the Great Depression in 1934, it replaced the original capitol building that burned to the ground in 1930. The capitol grounds encompass the North Dakota Heritage Center, the North Dakota State Library, the North Dakota Governor's Residence, the State Office Building, and the Liberty Memorial Building. The North Dakota State Penitentiary is in eastern Bismarck.\nThe Cathedral District, named after the Art Deco Cathedral of the Holy Spirit, is a historic neighborhood near downtown Bismarck. Some homes in this neighborhood date to the 1880s, although many were built in the first decades of the 20th century. At times, the city has proposed widening the streets in the neighborhood to improve traffic flow. Many residents object because such a project would require the removal of many of the towering American elms which line the streets. These have escaped the elm disease that destroyed street canopies of trees in eastern cities.\nAfter the completion of the Garrison Dam in 1953 by the Army Corps of Engineers, which improved flood control, the floodplain of the Missouri River became a more practical place for development. Significant residential and commercial building has occurred in this area on the city's south side. The Upper Missouri River is still subject to seasonal flooding.\n\n\n=== Climate ===\n\nSituated in the middle of the Great Plains, between the geographic centers of the United States and Canada, Bismarck displays a highly variable four-season humid continental climate (Köppen Dfa/Dfb, Trewartha Dcac/Dcbc) bordering on a cold semi arid climate. Bismarck's climate is characterized by cold, somewhat dry, snowy, and windy winters and warm, humid summers. Thunderstorms occur in spring and summer, but much of the rest of the year is dry.\nThe warmest month in Bismarck is July, with a daily mean of 71.3 °F (21.8 °C), with typically wide variations between day and night. The coldest month is January, with a 24-hour average of 12.8 °F (−10.7 °C). Precipitation peaks from May to September and is rather sparse in the winter. Winter snowfall is typically light to moderate, occurring with the passage of frontal systems; major storms are rare.\nClimate Situated in the middle of the Great Plains, between the geographic centers of the United States and Canada, Bismarck displays a highly variable four-season humid continental climate (Köppen Dfa/Dfb, Trewartha Dcac/Dcbc) bordering on a cold semi arid climate. Bismarck's climate is characterized by cold, somewhat dry, snowy, and windy winters and warm, humid summers. Thunderstorms occur in spring and summer, but much of the rest of the year is dry.\nThe warmest month in Bismarck is July, with a daily mean of 71.3 °F (21.8 °C), with typically wide variations between day and night. The coldest month is January, with a 24-hour average of 12.8 °F (−10.7 °C). Precipitation peaks from May to September and is rather sparse in the winter. Winter snowfall is typically light to moderate, occurring with the passage of frontal systems; major storms are rare."
+    },
+    {
+      "article": "Bismarck, North Dakota — History",
+      "url": "https://en.wikipedia.org/wiki/Bismarck%2C_North_Dakota#History",
+      "text": "History For thousands of years, various indigenous peoples inhabited present-day central North Dakota. The historic Mandan Native American tribe occupied the area long before Europeans arrived. The Hidatsa name for Bismarck is mirahacii arumaaguash (\"Place of the tall willows\"); the Arikara name is ituhtaáwe [itUhtaáwe].\nIn 1872, European Americans founded a settlement at what was then called Missouri Crossing, so named because the Lewis and Clark Expedition crossed the river there on their exploration of the land acquired by the Louisiana Purchase in 1804–06. It had been an area of Mandan settlement. Later, the new town was called Edwinton, after Edwin Ferry Johnson, engineer-in-chief for the Northern Pacific Railway. Its construction of railroads in the territory attracted workers and settlers.\nIn 1873, the Northern Pacific Railway renamed the city Bismarck in honor of German chancellor Otto von Bismarck. Railroad officials hoped to attract German settlers to the area and German investment in the railroad. It is the only U.S. state capital named for a foreign statesman. The discovery of gold in the nearby Black Hills of South Dakota the following year was a great impetus for growth. Thousands of miners came to the area, encroaching on what the Lakota considered sacred territory, leading to heightened tensions with Native Americans.\nBismarck became a freight-shipping center on the \"Custer Route\" from the Black Hills. In 1879, the first recorded tornado in North Dakota history smashed a steamship into the Missouri River's bank near Bismarck, causing major damage.\nIn 1883, Bismarck was designated as the capital of the Dakota Territory in place of Yankton, South Dakota, and in 1889, as the state capital of the new state of North Dakota."
+    }
+  ],
+  "climateSectionFetched": true,
+  "historySectionFetched": true
+}

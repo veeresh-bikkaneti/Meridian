@@ -1,6 +1,5 @@
 import { BRAND } from "@/game/brand";
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
-import { AuthProvider } from "@/lib/auth/provider";
 import { PreviewHostBridge } from "@/components/preview-host-bridge";
 import { registerServiceWorker, unregisterServiceWorker, type PwaUpdateHandle } from "@/lib/pwa";
 import { isEnabled, loadFlags } from "@/lib/flags";
@@ -147,9 +146,7 @@ export const Route = createRootRoute({
       <body>
         <PreviewHostBridge />
         <PwaUpdateToast />
-        <AuthProvider>
-          <Outlet />
-        </AuthProvider>
+        <Outlet />
         <Scripts />
       </body>
     </html>

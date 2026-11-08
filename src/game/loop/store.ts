@@ -312,8 +312,22 @@ export function setDeckState(
 
 /**
  * Build a pack deck the first time the pack is dealt from. A deck that
- * already exists is returned untouched: rebuilding it would reshuffle a
- * pack the player has partly played and break exactly-once dealing.
+ * already exists is never rebuilt: rebuilding would reshuffle a pack
+ * the player has partly played and break exactly-once dealing.
+ *
+ * Grown packs top up instead (Capitals & Flags design §7): when the
+ * manifest now lists MORE cases than the deck was built from, the new
+ * cases — tier-banded and shuffled among themselves — are appended to
+ * the undealt remainder. Dealt history is untouched: within a cycle,
+ * every dealt case is either completed (cycleCompleted), the open
+ * mystery, or still in the deck, so the built-from size is exactly
+ * deck.length + cycleCompleted + (open mystery from this deck ? 1 : 0).
+ * The cases list is the manifest's append-only order (loopIndexes), so
+ * the new cases are precisely the tail past that size. Topping up an
+ * exhausted deck (cycle complete, nothing open) still works: the new
+ * cases deal first, cycleCompleted keeps counting toward the grown
+ * pack's celebration, and the next reshuffle rebuilds from the full
+ * manifest anyway.
  */
 export function ensurePackDeck(
   store: LoopUnlimitedStore,
@@ -322,8 +336,29 @@ export function ensurePackDeck(
   randInt: (bound: number) => number = cryptoRandInt,
 ): LoopUnlimitedStore {
   if (packId === LOOP_CORE_DECK_ID) return store;
-  if (store.packDecks?.[packId]) return store;
-  return setDeckState(store, packId, freshPackDeckState(cases, randInt));
+  const existing = store.packDecks?.[packId];
+  if (!existing) {
+    return setDeckState(store, packId, freshPackDeckState(cases, randInt));
+  }
+  // Only a still-playing mystery counts as open. A finished one (won or
+  // lost) stays in `current` until the player deals on, but completePuzzle
+  // already counted it in cycleCompleted — counting it here too would
+  // skip the first appended case when the pack grows.
+  const openFromThisDeck =
+    store.current &&
+    store.current.status === "playing" &&
+    deckIdOfPuzzle(store.current) === packId
+      ? 1
+      : 0;
+  const builtFromSize =
+    existing.deck.length + existing.cycleCompleted + openFromThisDeck;
+  if (cases.length <= builtFromSize) return store;
+  const freshCases = cases.slice(builtFromSize);
+  const addition = buildTierBandedDeck(freshCases, randInt);
+  return setDeckState(store, packId, {
+    ...existing,
+    deck: [...existing.deck, ...addition],
+  });
 }
 
 /**
@@ -553,6 +588,107 @@ export function completePuzzle(
       streakEndedAt: won ? null : store.streak,
       completedCycle,
     },
+  };
+}
+
+/** How a session ends (owner ruling, 2026-11-07). */
+export type LoopEndFate = "outright" | "pause";
+
+/** One deck's progress, as the session summary reports it. */
+export interface LoopDeckProgress {
+  deckId: string;
+  cycle: number;
+  cycleCompleted: number;
+  remaining: number;
+  openCase: boolean;
+}
+
+/** The session summary: closed cases only, plus per-deck progress. */
+export interface LoopSessionSummary {
+  casesClosed: number;
+  solved: number;
+  lost: number;
+  streak: number;
+  bestStreak: number;
+  openCaseDeckId: string | null;
+  decks: LoopDeckProgress[];
+}
+
+/**
+ * End a GeoDetective session (owner ruling, 2026-11-07, amended within
+ * the minute to offer BOTH capabilities — the player picks, neither is
+ * a stray-tap default).
+ *
+ * "pause": the store is returned unchanged. The in-flight case is
+ * preserved exactly — same clue/guess state — because ending the
+ * session this way is a screen state, not a store change; Home offers
+ * resume from the still-playing `current`, and the case counts once,
+ * when it later closes through completePuzzle.
+ *
+ * "outright": a still-playing `current`'s PROGRESS is discarded — the
+ * case is NOT counted as solved or lost, streak/totals/cycle counters
+ * are untouched (discarding is not a loss), and it cannot be resumed:
+ * its guesses/clue state are destroyed with `current`. The case
+ * itself returns to the TAIL (bottom) of its own deck, so the deck
+ * accounting identity (closed + open + in-deck = cycle size) stays
+ * exact: ensurePackDeck never manufactures a duplicate from a phantom
+ * shortfall, and a cycle completes only when every case has truly
+ * been closed — the "all / every" celebration copy stays honest. It
+ * may be dealt again later in the cycle as a fresh case. (The tail,
+ * not the head: the just-ended case must not be the next one dealt —
+ * returnPuzzleIndexToDeck's head return is the failed-deal rollback,
+ * a different path.) A finished (won/lost) current is left exactly
+ * as it is: it already counted when it closed.
+ */
+export function endSession(store: LoopUnlimitedStore, fate: LoopEndFate): LoopUnlimitedStore {
+  if (fate === "pause") return store;
+  if (store.current && store.current.status === "playing") {
+    const current = store.current;
+    const deckId = deckIdOfPuzzle(current);
+    const deck = getDeckState(store, deckId);
+    const withReturned =
+      deck && !deck.deck.includes(current.index)
+        ? setDeckState(store, deckId, { ...deck, deck: [...deck.deck, current.index] })
+        : store;
+    return { ...withReturned, current: null };
+  }
+  return store;
+}
+
+/**
+ * Derive the session summary from the store (owner ruling, 2026-11-07).
+ * Only closed cases count: casesClosed is totals.solved + totals.lost,
+ * copied from the standing totals completePuzzle maintains — there is
+ * no session-start snapshot and none is invented. Decks are reported
+ * core first, then pack decks in key order, each with its cycle
+ * progress and whether the still-playing case (if any) is that deck's.
+ */
+export function loopSessionSummary(store: LoopUnlimitedStore): LoopSessionSummary {
+  const openCaseDeckId =
+    store.current && store.current.status === "playing"
+      ? deckIdOfPuzzle(store.current)
+      : null;
+  const deckIds = [LOOP_CORE_DECK_ID, ...Object.keys(store.packDecks ?? {})];
+  const decks: LoopDeckProgress[] = [];
+  for (const deckId of deckIds) {
+    const deck = getDeckState(store, deckId);
+    if (!deck) continue;
+    decks.push({
+      deckId,
+      cycle: deck.cycle,
+      cycleCompleted: deck.cycleCompleted,
+      remaining: deck.deck.length,
+      openCase: openCaseDeckId === deckId,
+    });
+  }
+  return {
+    casesClosed: store.totals.solved + store.totals.lost,
+    solved: store.totals.solved,
+    lost: store.totals.lost,
+    streak: store.streak,
+    bestStreak: store.bestStreak,
+    openCaseDeckId,
+    decks,
   };
 }
 

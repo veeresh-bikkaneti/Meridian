@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "augusta-maine",
+  "target": {
+    "placeId": "gn-4957003",
+    "name": "Augusta",
+    "aliases": [],
+    "lat": 44.31062,
+    "lon": -69.77949,
+    "featureCode": "PPLA"
+  },
+  "subject": {
+    "kind": "state",
+    "name": "Maine",
+    "iso2": "US",
+    "subdivision": "Maine"
+  },
+  "subjectAnswer": {
+    "name": "Maine",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Maine",
+    "givenKind": "state"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This small town sits on a river where the tide runs out. Past this point, the sea no longer lifts the stream.",
+      "narrowing": "Points to a small city on a tidal river in the far northeast.",
+      "source": {
+        "article": "Augusta, Maine",
+        "url": "https://en.wikipedia.org/wiki/Augusta%2C_Maine",
+        "quote": "Located on the Kennebec River at the head of tide, it is the principal city in the Augusta–Waterville micropolitan statistical area"
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "Winters here are cold, windy, and full of snow. On most nights in mid winter, the air sinks to ten degrees or less.",
+      "narrowing": "Keeps far-northern capitals with bitter, snowy winters.",
+      "source": {
+        "article": "Augusta, Maine",
+        "url": "https://en.wikipedia.org/wiki/Augusta%2C_Maine",
+        "quote": "Winters are bitterly cold, windy, and snowy."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "In 1827, this river town won the capital job. It beat out three rival towns that wanted the honor, including the state's big port city.",
+      "narrowing": "Cuts the list to the town designated capital in 1827 over Portland and two rivals.",
+      "source": {
+        "article": "Augusta, Maine — History",
+        "url": "https://en.wikipedia.org/wiki/Augusta%2C_Maine#History",
+        "quote": "Augusta was designated as its capital in 1827, over Portland, and rival communities Brunswick and Hallowell."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "Of all the state capitals in the land, this one sits farthest east. It is the first to catch the sun each day.",
+      "narrowing": "Nearly decisive: only one capital is the easternmost in the nation.",
+      "source": {
+        "article": "Augusta, Maine",
+        "url": "https://en.wikipedia.org/wiki/Augusta%2C_Maine",
+        "quote": "Augusta is the easternmost state capital in the United States."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "The governor of Maine works in this small city. State lawmakers meet here, beside the river.",
+      "narrowing": "Confirms it: the governor and lawmakers of Maine work in this city.",
+      "source": {
+        "article": "Augusta, Maine",
+        "url": "https://en.wikipedia.org/wiki/Augusta%2C_Maine",
+        "quote": "is the capital city of the U.S. state of Maine"
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "English traders built a post on this river in 1628, and the town grew where the tide stops. It won the capital job in 1827 over three rival towns, and it is still the easternmost state capital in the country. Augusta is the capital of Maine."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Augusta%2C_Maine"
+  },
+  "pointPolicy": "geonames-point"
+}

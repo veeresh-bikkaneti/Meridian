@@ -1,0 +1,98 @@
+{
+  "schema": "meridian.pack.case.v1",
+  "packId": "capitals",
+  "category": "capitals",
+  "caseId": "abuja-nigeria",
+  "target": {
+    "placeId": "gn-2352778",
+    "name": "Abuja",
+    "aliases": [],
+    "lat": 9.05785,
+    "lon": 7.49508,
+    "featureCode": "PPLC"
+  },
+  "subject": {
+    "kind": "country",
+    "name": "Nigeria",
+    "iso2": "NG",
+    "subdivision": "FCT"
+  },
+  "subjectAnswer": {
+    "name": "Nigeria",
+    "aliases": []
+  },
+  "direction": "A",
+  "directions": [
+    "A"
+  ],
+  "prompt": {
+    "givenName": "Nigeria",
+    "givenKind": "country"
+  },
+  "packTier": 3,
+  "clues": [
+    {
+      "tier": 1,
+      "tier_name": "geography",
+      "text": "This city sits right in the heart of its land. Its ground is a tract set up just for the seat of rule.",
+      "narrowing": "Puts the player inland, at a country's geographic centre.",
+      "source": {
+        "article": "Abuja",
+        "url": "https://en.wikipedia.org/wiki/Abuja",
+        "quote": "Abuja is the capital city of Nigeria, strategically situated at the geographic midpoint of the country within the Federal Capital Territory (FCT)."
+      }
+    },
+    {
+      "tier": 2,
+      "tier_name": "climate",
+      "text": "The year here swings between a warm, humid rainy season and a blazing dry season. In between, dusty harmattan winds fill the air with haze.",
+      "narrowing": "Keeps a tropical city with two big seasons: wet and blistering dry.",
+      "source": {
+        "article": "Abuja",
+        "url": "https://en.wikipedia.org/wiki/Abuja",
+        "quote": "This includes a warm, humid rainy season and a blistering dry season."
+      }
+    },
+    {
+      "tier": 3,
+      "tier_name": "history",
+      "text": "On 12 Dec 1991, this city took the top job from Lagos. Lagos was the place with the most folk in all the land.",
+      "narrowing": "Shrinks the list to capitals that took the job from a bigger coastal city in 1991.",
+      "source": {
+        "article": "Abuja",
+        "url": "https://en.wikipedia.org/wiki/Abuja",
+        "quote": "It replaced Lagos (the most populous city in Nigeria) as the capital on 12 December 1991."
+      }
+    },
+    {
+      "tier": 4,
+      "tier_name": "hook",
+      "text": "One single giant rock, carved by water long ago, defines this city's view. Its big government buildings spread out at the rock's feet.",
+      "narrowing": "Nearly decisive: one capital is defined by a single giant monolith rock.",
+      "source": {
+        "article": "Abuja",
+        "url": "https://en.wikipedia.org/wiki/Abuja",
+        "quote": "Abuja's geography is defined by Aso Rock, a 400-metre (1,300 ft) monolith left by water erosion."
+      }
+    },
+    {
+      "tier": 5,
+      "tier_name": "giveaway",
+      "text": "Nigeria is run from this town, and its work of state is done here. The top team that leads the land has its base in this place.",
+      "narrowing": "Confirms it: Nigeria's administrative and political capital.",
+      "source": {
+        "article": "Abuja",
+        "url": "https://en.wikipedia.org/wiki/Abuja",
+        "quote": "Abuja is Nigeria's administrative and political capital."
+      }
+    }
+  ],
+  "reveal": {
+    "blurb": "This city was planned from scratch in the middle of its country, so every part of the land could share it fairly. It took the capital job from Lagos in 1991, and a giant rock called Aso Rock watches over it. Abuja is the capital of Nigeria."
+  },
+  "source": {
+    "label": "Wikipedia",
+    "href": "https://en.wikipedia.org/wiki/Abuja"
+  },
+  "pointPolicy": "geonames-point"
+}
