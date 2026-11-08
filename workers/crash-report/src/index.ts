@@ -934,10 +934,45 @@ function lastStepWords(rawMilestone: string | undefined): string {
 // --- Compact, PII-free alert -------------------------------------------
 
 /**
+ * Council fix round 2 (F1): token-based query/fragment removal. A token is
+ * a run without whitespace, quotes, angle brackets or backticks — so
+ * parentheses, brackets and markdown link syntax stay INSIDE the token and
+ * can no longer end a URL early. In a token holding scheme://, everything
+ * from the first ?, #, %3F or %23 after the scheme to the token's end is
+ * dropped (nested URLs included). A schemeless token is cut at its first
+ * ? / %3F only when a key=value query follows (relative "/api?token=x").
+ * Only trailing closing punctuation of the cut part is kept. Path segments
+ * are kept by design; a bare "k=v" without "?" is not a query and survives.
+ * A trailing stack position ":line:col" after a removed query is kept
+ * (so a numeric "a:1:2" query tail would survive — documented limit).
+ */
+function stripUrlQueries(s: string): string {
+  return s.replace(/[^\s'"<>`]+/g, (tok) => {
+    const scheme = /(?:https?|wss?|blob|file):\/\//i.exec(tok);
+    let start: number;
+    let cutRe: RegExp;
+    if (scheme) {
+      start = scheme.index + scheme[0].length;
+      cutRe = /[?#]|%3f|%23/i;
+    } else if (/(?:\?|%3f)[^\s=?&#]+(?:=|%3d)/i.test(tok)) {
+      start = 0;
+      cutRe = /\?|%3f/i;
+    } else {
+      return tok;
+    }
+    const rest = tok.slice(start);
+    const cut = rest.search(cutRe);
+    if (cut < 0) return tok;
+    const tail = /(?::\d{1,7}:\d{1,7})?[)\]}.,;!]*$/.exec(rest.slice(cut))?.[0] ?? "";
+    return tok.slice(0, start) + rest.slice(0, cut) + tail;
+  });
+}
+
+/**
  * Privacy scrub for error text (council fix T1, 2026-11-08). Mirrored in
  * src/lib/observability.ts (sanitizeError) and pinned identical by the
  * worker test "client sanitizeError scrubs the same way". Rules, in order:
- * URLs keep scheme/host/path and drop ?query and #fragment; emails become
+ * URLs keep scheme/host/path and drop ?query and #fragment (stripUrlQueries); emails become
  * <email>; UUIDs and hex runs >= 20 become <id>; mixed letter+digit token
  * runs >= 32 become <redacted>; @everyone/@here lose their mention form.
  * file:line:col and code identifiers survive. Output is capped at `max`.
@@ -946,10 +981,7 @@ export function scrubErrorText(value: unknown, max: number): string {
   if (typeof value !== "string" || value.length === 0) return "";
   // Bound the work before regexes run (inputs are already capped upstream).
   let s = value.slice(0, 2048);
-  s = s.replace(
-    /\b((?:https?|wss?|blob|file):\/\/[^\s?#'"<>()]*?)(?:\?[^\s#'"<>()]*?)?(?:#[^\s'"<>()]*?)?(?=(?::\d+(?::\d+)?)?(?:[\s'"<>()]|$))/gi,
-    "$1",
-  );
+  s = stripUrlQueries(s);
   s = s.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "<email>");
   s = s.replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, "<id>");
   s = s.replace(/\b[0-9a-f]{20,}\b/gi, "<id>");
@@ -1917,6 +1949,47 @@ export interface KvLike {
   put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
 }
 
+/**
+ * Council fix round 2 (F2/F3): every KV operation this worker awaits is
+ * bounded. Each op races a per-op deadline; with a budget, the wrapper
+ * also refuses any op once the budget is spent, and close() refuses all
+ * later ops — so a request that has given up on the store can never START
+ * a late write (an op already in flight cannot be cancelled: KV has no
+ * abort, so a late in-flight write may still land). A timed-out op throws
+ * TimeoutError, which every caller already treats as "store failing".
+ */
+export const KV_OP_TIMEOUT_MS = 1_500;
+export const INGEST_COUNT_BUDGET_MS = 2_000;
+
+export interface BoundedKv extends KvLike {
+  close(): void;
+}
+
+export function boundedKv(kv: KvLike, opMs: number = KV_OP_TIMEOUT_MS, budgetMs?: number): BoundedKv {
+  const startedAt = Date.now();
+  let closed = false;
+  const guard = <T>(op: () => Promise<T>): Promise<T> => {
+    const left = budgetMs === undefined ? opMs : Math.min(opMs, budgetMs - (Date.now() - startedAt));
+    if (closed || left <= 0) {
+      return Promise.reject(Object.assign(new Error("store deadline passed"), { name: "TimeoutError" }));
+    }
+    let p: Promise<T>;
+    try {
+      p = Promise.resolve(op());
+    } catch (err) {
+      p = Promise.reject(err);
+    }
+    return withTimeout(p, left);
+  };
+  return {
+    get: (key) => guard(() => kv.get(key)),
+    put: (key, value, options) => guard(() => kv.put(key, value, options)),
+    close: () => {
+      closed = true;
+    },
+  };
+}
+
 /** Telemetry store abstraction (KV-backed in prod, in-memory in tests). */
 export interface TelemetryStore {
   readBucket(key: string): Promise<CountBucket | null>;
@@ -2633,7 +2706,7 @@ export async function runHealthChecks(env: CrashReportEnv, now: number, cron: st
   const checks: HealthCheckResult[] = [];
   checks.push({
     name: "bindings_present",
-    expected: "counter store bound and at least one alert channel configured",
+    expected: "counter store bound and an ops channel (Discord; email only as fallback when Discord is absent)",
     observed: `store ${hasKv ? "yes" : "no"} · discord ${hasDiscord ? "yes" : "no"} · email ${hasEmail ? "yes" : "no"} · limiter ${env.CRASH_RATE_LIMITER ? "yes" : "no"}`,
     result: hasKv && (hasDiscord || hasEmail) ? "passed" : "failed",
     reason: hasKv && (hasDiscord || hasEmail) ? "ok" : "binding_missing",
@@ -2743,39 +2816,68 @@ export function buildHealthFailureText(run: HealthRunV1, incident: HealthInciden
 }
 
 /**
- * Scheduled health entry point: run checks, store the record, and send
- * at most one failure message per incident (2 consecutive failures; a
- * missing binding pages at once), one 24 h reminder, and one recovered
- * message after 2 consecutive passes. Healthy = log line only.
+ * Ops-channel delivery for health messages (round 2, F5). Discord is the
+ * ops channel; email is used ONLY when no Discord webhook is configured
+ * (the same Resend channel real-crash alerts already use), so a
+ * Discord-configured deployment sends no new email. Neither configured:
+ * "not_configured" (bindings_present already fails in that case).
+ */
+async function sendOpsMessage(env: CrashReportEnv, text: string): Promise<DeliveryState> {
+  const discordUrl = env.DISCORD_WEBHOOK_URL?.trim();
+  if (discordUrl) return forwardToDiscord(discordUrl, text);
+  if (env.RESEND_API_KEY?.trim() && env.REPORT_EMAIL?.trim()) {
+    return forwardToEmail(env, `[Meridian ops] ${text.split("\n")[0].slice(0, 120)}`, text);
+  }
+  return "not_configured";
+}
+
+const HEALTH_BROKEN_WRITE_TIMEOUT_MS = 500;
+
+/**
+ * Scheduled health entry point: run checks, decide, SEND, then store.
+ * Round 2 (F3/F4): the message is sent before any publication write, so
+ * storage can never suppress its own outage alert, and every KV op is
+ * bounded. The incident ledger records a notification only when the
+ * provider accepted it (lastNotifiedAt = 0 means "open, not yet
+ * delivered"): a failed or unknown send is retried at the next run
+ * (<= 1 send + 1 bounded retry per 15-min run; an "unknown" timeout may
+ * duplicate). Policy: page after 2 consecutive failures (a missing
+ * binding at once), 24 h reminder after a delivered page, and one
+ * recovered message after 2 passes — the incident closes only once that
+ * message is accepted. Unreadable incident state: <= 1 message per hour.
  */
 export async function runScheduledHealth(env: CrashReportEnv, scheduledTime: number, cron: string): Promise<HealthRunV1> {
-  const run = await runHealthChecks(env, scheduledTime, cron, scheduledTime);
-  const kv = env.TELEMETRY_COUNTS;
-  const discordUrl = env.DISCORD_WEBHOOK_URL?.trim();
+  const rawKv = env.TELEMETRY_COUNTS;
+  const kv = rawKv ? boundedKv(rawKv, HEALTH_CHECK_TIMEOUT_MS) : undefined;
+  const run = await runHealthChecks(kv ? { ...env, TELEMETRY_COUNTS: kv } : env, scheduledTime, cron, scheduledTime);
   let incident: HealthIncidentState | null = null;
   if (kv) {
     try {
-      incident = parseIncident(await withTimeout(kv.get(HEALTH_INCIDENT_KEY), HEALTH_CHECK_TIMEOUT_MS));
+      incident = parseIncident(await kv.get(HEALTH_INCIDENT_KEY));
     } catch {
       incident = null;
     }
   }
   let message: string | null = null;
+  let onAccepted: (() => void) | null = null;
   if (run.health === "unhealthy") {
     const bindingMissing = run.checks.some((c) => c.name === "bindings_present" && c.result === "failed");
     if (incident) {
-      incident.consecutiveFailures += 1;
-      incident.consecutivePasses = 0;
-      incident.failing = run.checks.filter((c) => c.result === "failed").map((c) => c.name);
-      if (!incident.open && (bindingMissing || incident.consecutiveFailures >= HEALTH_PAGE_AFTER_FAILURES)) {
-        incident.open = true;
-        incident.openedAt = run.sampledAt;
-        incident.lastNotifiedAt = scheduledTime;
-        message = buildHealthFailureText(run, incident, false);
-      } else if (incident.open && scheduledTime - incident.lastNotifiedAt >= HEALTH_REMINDER_MS) {
-        incident.lastNotifiedAt = scheduledTime;
-        message = buildHealthFailureText(run, incident, true);
+      const inc = incident;
+      inc.consecutiveFailures += 1;
+      inc.consecutivePasses = 0;
+      inc.failing = run.checks.filter((c) => c.result === "failed").map((c) => c.name);
+      if (!inc.open && (bindingMissing || inc.consecutiveFailures >= HEALTH_PAGE_AFTER_FAILURES)) {
+        inc.open = true;
+        inc.openedAt = run.sampledAt;
+        inc.lastNotifiedAt = 0;
       }
+      if (inc.open && inc.lastNotifiedAt === 0) {
+        message = buildHealthFailureText(run, inc, false);
+      } else if (inc.open && scheduledTime - inc.lastNotifiedAt >= HEALTH_REMINDER_MS) {
+        message = buildHealthFailureText(run, inc, true);
+      }
+      if (message) onAccepted = () => { inc.lastNotifiedAt = scheduledTime; };
     } else if (new Date(scheduledTime).getUTCMinutes() < 15) {
       // No readable incident state: at most one message per scheduled hour.
       message = buildHealthFailureText(run, null, false);
@@ -2783,40 +2885,46 @@ export async function runScheduledHealth(env: CrashReportEnv, scheduledTime: num
   } else if (run.health === "healthy") {
     logLine("health ok", `${run.ranChecks}/${run.requiredChecks}`, `${run.durationMs} ms`);
     if (incident) {
-      incident.consecutiveFailures = 0;
-      incident.consecutivePasses += 1;
-      incident.lastHealthyAt = run.sampledAt;
-      if (incident.open && incident.consecutivePasses >= HEALTH_RECOVER_AFTER_PASSES) {
+      const inc = incident;
+      inc.consecutiveFailures = 0;
+      inc.consecutivePasses += 1;
+      inc.lastHealthyAt = run.sampledAt;
+      if (inc.open && inc.consecutivePasses >= HEALTH_RECOVER_AFTER_PASSES) {
         message =
           `✅ Crash-report worker checks recovered (scope: crash-report worker only)\n` +
-          `failing since: ${incident.openedAt ?? "unknown"} · ${incident.consecutivePasses} healthy runs in a row · sampled ${run.sampledAt}`;
-        incident.open = false;
-        incident.failing = [];
-        incident.openedAt = null;
+          `failing since: ${inc.openedAt ?? "unknown"} · ${inc.consecutivePasses} healthy runs in a row · sampled ${run.sampledAt}`;
+        onAccepted = () => {
+          inc.open = false;
+          inc.failing = [];
+          inc.openedAt = null;
+          inc.lastNotifiedAt = 0;
+        };
       }
     }
   } else {
     logLine("health unknown", `${run.ranChecks}/${run.requiredChecks}`);
   }
-  if (kv) {
-    try {
-      await kv.put(HEALTH_RECORD_KEY, JSON.stringify(run), { expirationTtl: OPS_RECORD_TTL_SECONDS });
-    } catch (err) {
-      logLine("health record write failed", err instanceof Error ? err.name : "unknown");
-    }
-    if (incident) {
-      try {
-        await kv.put(HEALTH_INCIDENT_KEY, JSON.stringify(incident), { expirationTtl: HEALTH_INCIDENT_TTL_SECONDS });
-      } catch (err) {
-        logLine("health incident write failed", err instanceof Error ? err.name : "unknown");
-      }
-    }
+  if (message) {
+    const state = await sendOpsMessage(env, message);
+    if (state === "provider_accepted") onAccepted?.();
+    else logLine("health message not delivered (retried next run)", state);
   }
-  if (message && discordUrl) {
-    const state = await forwardToDiscord(discordUrl, message);
-    if (state !== "provider_accepted") logLine("health message delivery", state);
-  } else if (message) {
-    logLine("health message not sent: no Discord webhook configured");
+  if (kv) {
+    // Publication writes run in parallel and are bounded; when this run
+    // already saw the store fail to write, they get a short deadline.
+    const writeBroken = run.checks.some((c) => c.name === "kv_write" && c.result !== "passed");
+    const ms = writeBroken ? HEALTH_BROKEN_WRITE_TIMEOUT_MS : HEALTH_CHECK_TIMEOUT_MS;
+    const writes: Array<[string, Promise<void>]> = [
+      ["health record", withTimeout(kv.put(HEALTH_RECORD_KEY, JSON.stringify(run), { expirationTtl: OPS_RECORD_TTL_SECONDS }), ms)],
+    ];
+    if (incident) {
+      writes.push(["health incident", withTimeout(kv.put(HEALTH_INCIDENT_KEY, JSON.stringify(incident), { expirationTtl: HEALTH_INCIDENT_TTL_SECONDS }), ms)]);
+    }
+    const results = await Promise.allSettled(writes.map(([, w]) => w));
+    results.forEach((r, i) => {
+      if (r.status === "rejected") logLine(`${writes[i][0]} write failed`, r.reason instanceof Error ? r.reason.name : "unknown");
+    });
+    kv.close();
   }
   return run;
 }
@@ -2949,29 +3057,19 @@ export async function handleRequest(
     const resendKey = env.RESEND_API_KEY?.trim();
     const reportEmail = env.REPORT_EMAIL?.trim();
 
-    // Phase 1: count every accepted event, best-effort (fail-open).
-    // Provenance is computed once, here: the counted dim and the
-    // forwarding gate below can never disagree.
-    const store = env.TELEMETRY_COUNTS ? kvTelemetryStore(env.TELEMETRY_COUNTS) : null;
+    // Council fix T2 + round 2 (F2): routing is provenance only, and a real
+    // corroborated crash is paged BEFORE counting starts, so a missing,
+    // throwing or hanging counter store can never delay or block it.
+    // Every accepted event gets the same public body, so the response
+    // reveals neither routing nor store health.
     const provenance = provenanceOf(valid);
-    const tele = await recordTelemetry(store, valid, Date.now(), thresholdConfig(env), provenance);
-    if (discordUrl && tele.alertTexts.length > 0) {
-      // Threshold + can't-tell alerts: Discord only, in the background —
-      // a failed alert post must never fail the client request.
-      const texts = tele.alertTexts;
-      await runInBackground(ctx, Promise.all(texts.map((t) => forwardToDiscord(discordUrl, t))));
-    }
-
     const tier = tierOf(
       valid.type,
       typeof valid.recoveryOutcome === "string" ? valid.recoveryOutcome : undefined,
     );
-    // Council fix T2: the gate is provenance only. KV state never opens
-    // it (the old `|| !tele.counted` bypass let any probe page whenever
-    // counting failed). Every accepted event gets the same public body,
-    // so the response reveals neither routing nor store health.
-    const outcome: IngestOutcome = { provenance, counted: tele.counted, route: "counted_only", deliveries: {} };
-    if (tier === "crash" && provenance === "corroborated") {
+    const outcome: IngestOutcome = { provenance, counted: false, route: "counted_only", deliveries: {} };
+    const paged = tier === "crash" && provenance === "corroborated";
+    if (paged) {
       outcome.route = "paged";
       const alert = buildAlert(valid);
       const now = Date.now();
@@ -2984,11 +3082,35 @@ export async function handleRequest(
         ]);
         outcome.deliveries = { discord, email };
         logLine("forwarded", valid.type, valid.buildId, valid.edition ?? "—", outcome.deliveries);
-        if (discordUrl || (resendKey && reportEmail)) {
-          await recordDelivery(env.TELEMETRY_COUNTS, outcome.deliveries, now);
+        if (env.TELEMETRY_COUNTS && (discordUrl || (resendKey && reportEmail))) {
+          await recordDelivery(boundedKv(env.TELEMETRY_COUNTS), outcome.deliveries, now);
         }
       })();
       await runInBackground(ctx, work);
+    }
+
+    // Phase 1: count every accepted event, best-effort, under a hard
+    // budget (round 2, F2). On timeout the store is closed, so the
+    // abandoned count cannot start new writes, and its alert texts are
+    // dropped — no late or duplicate notification from it.
+    const kvb = env.TELEMETRY_COUNTS ? boundedKv(env.TELEMETRY_COUNTS, KV_OP_TIMEOUT_MS, INGEST_COUNT_BUDGET_MS) : null;
+    const store = kvb ? kvTelemetryStore(kvb) : null;
+    const notCounted: TelemetryRecordResult = { counted: false, alerted: false, alertTexts: [] };
+    const tele = await withTimeout(
+      recordTelemetry(store, valid, Date.now(), thresholdConfig(env), provenance),
+      INGEST_COUNT_BUDGET_MS + 250,
+    ).catch(() => notCounted);
+    kvb?.close();
+    outcome.counted = tele.counted;
+    if (discordUrl && tele.alertTexts.length > 0) {
+      // Threshold + can't-tell alerts: Discord only, in the background —
+      // a failed alert post must never fail the client request.
+      const texts = tele.alertTexts;
+      await runInBackground(ctx, Promise.all(texts.map((t) => forwardToDiscord(discordUrl, t))));
+    }
+
+    if (paged) {
+      // Already handled above.
     } else if (tier === "crash" && !tele.counted) {
       // Uncorroborated + store unavailable: bounded summary, never a page.
       const text = uncorroboratedSummary.record(valid, Date.now());
@@ -2997,7 +3119,7 @@ export async function handleRequest(
         const work = (async () => {
           if (env.CRASH_RATE_LIMITER) {
             try {
-              const r = await env.CRASH_RATE_LIMITER.limit({ key: "kvdown-summary" });
+              const r = await withTimeout(env.CRASH_RATE_LIMITER.limit({ key: "kvdown-summary" }), KV_OP_TIMEOUT_MS);
               if (!r.success) return;
             } catch {
               // A throwing limiter falls back to the per-isolate window.
@@ -3036,7 +3158,8 @@ export default {
       await runScheduledHealth(env, event.scheduledTime, event.cron);
       return;
     }
-    const store = env.TELEMETRY_COUNTS ? kvTelemetryStore(env.TELEMETRY_COUNTS) : null;
+    // Round 2: every digest store op is bounded (per op, no total budget).
+    const store = env.TELEMETRY_COUNTS ? kvTelemetryStore(boundedKv(env.TELEMETRY_COUNTS)) : null;
     await runHourlyDigest(event.scheduledTime, env, store);
   },
 };

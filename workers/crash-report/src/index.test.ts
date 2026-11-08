@@ -3893,3 +3893,142 @@ test("T6 scheduled() dispatch: digest cron keeps the digest path; health cron ru
   assert.ok(map.has(HEALTH_RECORD_KEY), "health cron writes the record");
   assert.equal(HEALTH_CRON, "*/15 * * * *");
 });
+
+// --- Council fix round 2 (2026-11-08): independent verifier F1–F5 -------
+
+const R2_SCRUB_CASES: Array<{ input: string; secrets: string[]; keeps: string[] }> = [
+  { input: "https://host/a?token=(SECRET123)", secrets: ["SECRET123", "token"], keeps: ["https://host/a"] },
+  { input: "[docs](https://host/a?t=S1ECRET)", secrets: ["S1ECRET"], keeps: ["[docs](https://host/a)"] },
+  { input: "see https://a.test/p?x=S2ECRET and https://b.test/q#S3ECRET\nnext line", secrets: ["S2ECRET", "S3ECRET"], keeps: ["https://a.test/p", "https://b.test/q", "\nnext line"] },
+  { input: "https://h.test/a\\?t=S4ECRET", secrets: ["S4ECRET"], keeps: ["https://h.test/a"] },
+  { input: "GET /api/v1?token=S5ECRET failed", secrets: ["S5ECRET"], keeps: ["GET /api/v1", "failed"] },
+  { input: "https://h.test/p%3Ftoken%3DS6ECRET", secrets: ["S6ECRET"], keeps: ["https://h.test/p"] },
+  { input: "(https://h.test/a?t=(S7ECRET)).", secrets: ["S7ECRET"], keeps: ["(https://h.test/a"] },
+  { input: "https://h.test/a#access_token=S8ECRET", secrets: ["S8ECRET"], keeps: ["https://h.test/a"] },
+  { input: "x(https://a.test/?u=https://b.test/c?k=S9ECRET)", secrets: ["S9ECRET"], keeps: ["x(https://a.test/"] },
+];
+
+test("R2-F1 URL queries/fragments are removed across parentheses, markdown, escapes, encodings, relative paths and lines — worker and client identical", () => {
+  for (const c of R2_SCRUB_CASES) {
+    const w = scrubErrorText(c.input, 1000);
+    const client = sanitizeError(new Error(c.input)).message;
+    assert.equal(client, w, `client/worker parity for ${JSON.stringify(c.input)}`);
+    for (const s of c.secrets) assert.ok(!w.includes(s), `${s} survived in ${JSON.stringify(w)}`);
+    for (const k of c.keeps) assert.ok(w.includes(k), `${JSON.stringify(k)} lost from ${JSON.stringify(w)}`);
+  }
+  const benign = "TypeError at https://cdn.test/app.js:10:5 (render) a?b c#1 foo(bar) [x](y) 50% done";
+  assert.equal(scrubErrorText(benign, 1000), benign, "benign symbols and stack positions untouched");
+  assert.equal(sanitizeError(new Error(benign)).message, benign);
+});
+
+test("R2-F1 a parenthesised query value never reaches Discord via real ingress", async () => {
+  okFetch();
+  const ev = provJsError({ error: sanitizeError(new Error("load failed https://host/a?token=(SECRET123)")) });
+  await handleRequest(postEvent(ev), { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(fetchCalls.length, 1);
+  assert.ok(!String((fetchCalls[0].init as { body: string }).body).includes("SECRET123"));
+});
+
+const hang = () => new Promise<never>(() => {});
+function hangingKv(): KvLike & { puts: number } {
+  const kv = { puts: 0, get: () => hang(), put: () => { kv.puts++; return hang(); } };
+  return kv as unknown as KvLike & { puts: number };
+}
+
+test("R2-F2 a hanging counter store does not delay paging a real-client crash; response is bounded", { timeout: 15_000 }, async () => {
+  okFetch(200);
+  const pending: Promise<unknown>[] = [];
+  const t0 = Date.now();
+  const resP = handleRequest(postEvent(provJsError()), { TELEMETRY_COUNTS: hangingKv(), DISCORD_WEBHOOK_URL: "https://discord.test/hook" }, { waitUntil: (p) => pending.push(p) });
+  await new Promise((r) => setTimeout(r, 50));
+  assert.equal(pending.length >= 1, true, "paging work registered before counting finishes");
+  await Promise.all(pending);
+  assert.equal(fetchCalls.length, 1, "paged once despite a hanging store");
+  const res = await resP;
+  assert.deepEqual(await res.json(), { ok: true });
+  assert.ok(Date.now() - t0 < 3_500, "response bounded by the counting deadline");
+  assert.equal(lastIngestOutcomeForTests()?.counted, false);
+});
+
+test("R2-F2 a hanging store never turns a probe into an individual page (summary only), and no write starts after the deadline", { timeout: 15_000 }, async () => {
+  okFetch(200);
+  const kv = hangingKv();
+  await handleRequest(postEvent({ type: "js_error", ts: Date.now(), buildId: "wake-check" }), { TELEMETRY_COUNTS: kv, DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(lastIngestOutcomeForTests()?.route, "summarized_kv_unavailable");
+  assert.equal(fetchCalls.length, 1);
+  assert.ok(String((fetchCalls[0].init as { body: string }).body).toLowerCase().includes("unverified crash-type reports"), "summary, not a crash alert");
+  // A store whose read answers only after the deadline: the late answer must not start a write.
+  let lateWrites = 0;
+  let closedAt = 0;
+  const slow: KvLike = {
+    get: () => new Promise((r) => setTimeout(() => r(null), 2_600)),
+    put: async () => { if (closedAt && Date.now() >= closedAt) lateWrites++; },
+  };
+  await handleRequest(postEvent(provJsError()), { TELEMETRY_COUNTS: slow });
+  closedAt = Date.now();
+  await new Promise((r) => setTimeout(r, 900));
+  assert.equal(lateWrites, 0, "no counter write started after the request gave up on the store");
+});
+
+test("R2-F3 health: a hanging store cannot suppress its own outage alert; the run is bounded", { timeout: 15_000 }, async () => {
+  okFetch(200);
+  const { kv, map } = memoryStore();
+  map.set("ops:health:incident", JSON.stringify({ v: 1, open: false, consecutiveFailures: 1 }));
+  kv.put = () => hang();
+  const t0 = Date.now();
+  await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 1, "second consecutive failure paged");
+  assert.ok(Date.now() - t0 < 4_000, "publication writes are bounded");
+});
+
+test("R2-F4 health: a definitely failed notification is retried next run; an accepted one is not repeated", { timeout: 15_000 }, async () => {
+  const { kv } = memoryStore();
+  const put = kv.put.bind(kv);
+  kv.put = (k, v, o) => (k === "ops:health:probe" ? Promise.reject(new Error("outage")) : put(k, v, o));
+  okFetch(503);
+  await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  await runScheduledHealth(healthEnv(kv), H_T0 + 15 * 60_000, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 2, "one send + one bounded retry, both 503");
+  okFetch(200);
+  fetchCalls = [];
+  await runScheduledHealth(healthEnv(kv), H_T0 + 30 * 60_000, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 1, "retried at the next run");
+  await runScheduledHealth(healthEnv(kv), H_T0 + 45 * 60_000, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 1, "accepted: not repeated before the 24 h reminder");
+  await runScheduledHealth(healthEnv(kv), H_T0 + 30 * 60_000 + 24 * HOUR_MS, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 2, "24 h reminder");
+});
+
+test("R2-F4 health: a failed recovered message keeps the incident open and is retried", { timeout: 15_000 }, async () => {
+  const { kv, map } = memoryStore();
+  map.set("ops:health:incident", JSON.stringify({ v: 1, open: true, failing: ["kv_write"], consecutiveFailures: 3, consecutivePasses: 1, openedAt: "x", lastNotifiedAt: H_T0 - HOUR_MS }));
+  okFetch(503);
+  await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  assert.equal(JSON.parse(map.get("ops:health:incident") ?? "{}").open, true, "still open after failed recovered send");
+  okFetch(200);
+  fetchCalls = [];
+  await runScheduledHealth(healthEnv(kv), H_T0 + 15 * 60_000, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 1);
+  assert.ok(String((fetchCalls[0].init as { body: string }).body).includes("recovered"));
+  assert.equal(JSON.parse(map.get("ops:health:incident") ?? "{}").open, false);
+});
+
+test("R2-F5 health: email is used ONLY as a fallback when no Discord webhook is configured", { timeout: 15_000 }, async () => {
+  const failingProbe = () => {
+    const { kv } = memoryStore();
+    const put = kv.put.bind(kv);
+    kv.put = (k, v, o) => (k === "ops:health:probe" ? Promise.reject(new Error("outage")) : put(k, v, o));
+    return kv;
+  };
+  okFetch(202);
+  const emailOnly = { TELEMETRY_COUNTS: failingProbe(), RESEND_API_KEY: "synthetic", REPORT_EMAIL: "ops@example.invalid" };
+  await runScheduledHealth(emailOnly, H_T0, HEALTH_CRON);
+  await runScheduledHealth(emailOnly, H_T0 + 15 * 60_000, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 1);
+  assert.equal(fetchCalls[0].url, "https://api.resend.com/emails");
+  fetchCalls = [];
+  const both = healthEnv(failingProbe(), { RESEND_API_KEY: "synthetic", REPORT_EMAIL: "ops@example.invalid" });
+  await runScheduledHealth(both, H_T0, HEALTH_CRON);
+  await runScheduledHealth(both, H_T0 + 15 * 60_000, HEALTH_CRON);
+  assert.deepEqual(fetchCalls.map((c) => c.url), ["https://discord.test/hook"], "Discord configured: no ops email");
+});

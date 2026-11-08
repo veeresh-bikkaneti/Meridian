@@ -529,10 +529,45 @@ export function coarseDeviceFacts(): DeviceInfo {
 }
 
 /**
+ * Council fix round 2 (F1): token-based query/fragment removal. A token is
+ * a run without whitespace, quotes, angle brackets or backticks — so
+ * parentheses, brackets and markdown link syntax stay INSIDE the token and
+ * can no longer end a URL early. In a token holding scheme://, everything
+ * from the first ?, #, %3F or %23 after the scheme to the token's end is
+ * dropped (nested URLs included). A schemeless token is cut at its first
+ * ? / %3F only when a key=value query follows (relative "/api?token=x").
+ * Only trailing closing punctuation of the cut part is kept. Path segments
+ * are kept by design; a bare "k=v" without "?" is not a query and survives.
+ * A trailing stack position ":line:col" after a removed query is kept
+ * (so a numeric "a:1:2" query tail would survive — documented limit).
+ */
+function stripUrlQueries(s: string): string {
+  return s.replace(/[^\s'"<>`]+/g, (tok) => {
+    const scheme = /(?:https?|wss?|blob|file):\/\//i.exec(tok);
+    let start: number;
+    let cutRe: RegExp;
+    if (scheme) {
+      start = scheme.index + scheme[0].length;
+      cutRe = /[?#]|%3f|%23/i;
+    } else if (/(?:\?|%3f)[^\s=?&#]+(?:=|%3d)/i.test(tok)) {
+      start = 0;
+      cutRe = /\?|%3f/i;
+    } else {
+      return tok;
+    }
+    const rest = tok.slice(start);
+    const cut = rest.search(cutRe);
+    if (cut < 0) return tok;
+    const tail = /(?::\d{1,7}:\d{1,7})?[)\]}.,;!]*$/.exec(rest.slice(cut))?.[0] ?? "";
+    return tok.slice(0, start) + rest.slice(0, cut) + tail;
+  });
+}
+
+/**
  * Privacy scrub for error text (council fix T1, 2026-11-08). Mirrored in
  * workers/crash-report/src/index.ts (scrubErrorText) and pinned identical by the
  * worker test "client sanitizeError scrubs the same way". Rules, in order:
- * URLs keep scheme/host/path and drop ?query and #fragment; emails become
+ * URLs keep scheme/host/path and drop ?query and #fragment (stripUrlQueries); emails become
  * <email>; UUIDs and hex runs >= 20 become <id>; mixed letter+digit token
  * runs >= 32 become <redacted>; @everyone/@here lose their mention form.
  * file:line:col and code identifiers survive. Output is capped at `max`.
@@ -541,10 +576,7 @@ export function scrubErrorText(value: unknown, max: number): string {
   if (typeof value !== "string" || value.length === 0) return "";
   // Bound the work before regexes run (inputs are already capped upstream).
   let s = value.slice(0, 2048);
-  s = s.replace(
-    /\b((?:https?|wss?|blob|file):\/\/[^\s?#'"<>()]*?)(?:\?[^\s#'"<>()]*?)?(?:#[^\s'"<>()]*?)?(?=(?::\d+(?::\d+)?)?(?:[\s'"<>()]|$))/gi,
-    "$1",
-  );
+  s = stripUrlQueries(s);
   s = s.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "<email>");
   s = s.replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, "<id>");
   s = s.replace(/\b[0-9a-f]{20,}\b/gi, "<id>");

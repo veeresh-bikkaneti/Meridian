@@ -676,8 +676,13 @@ approved release uploads this version with its bindings and schedules):
 - **Response body.** Every accepted `/ingest` event returns `{ "ok": true }`.
   Routing (paged / counted / summarised) and store health are in logs only,
   so the body is no oracle. 400/403/405/413/429 are unchanged.
-- **Provenance gate never depends on KV.** A real-client-shaped crash pages
-  with KV absent or failing. An uncorroborated crash is never paged one by
+- **Provenance gate never depends on KV.** A real-client-shaped crash is
+  paged *before* counting starts, so it pages with KV absent, throwing or
+  hanging. Every KV operation is bounded (1.5 s per op; counting has a 2 s
+  total budget, after which the store is closed so no new write can
+  start). A timeout bounds the response; it cannot cancel a KV call
+  already in flight, so a late in-flight write may still land. An
+  abandoned count's threshold/can't-tell alerts are dropped, not sent late. An uncorroborated crash is never paged one by
   one: with KV up it is counted (threshold / can't-tell legs); with KV
   down it joins a per-isolate summary — at most 1 Discord message per
   15-minute window per worker isolate (not a global cap), counts are
@@ -688,8 +693,14 @@ approved release uploads this version with its bindings and schedules):
   last real-crash delivery states go to `ops:delivery:last` (7-day TTL, no
   URL or content). A failed delivery never triggers another alert.
 - **Error text** is scrubbed in the client and again in the worker: URL
-  query strings and fragments, emails, UUIDs, hex runs ≥20 and mixed token
-  runs ≥32 are removed; `file.js:line:col` and identifiers survive. Only
+  query strings and fragments (token-based, so parentheses, brackets,
+  markdown links, backslash escapes, `%3F`/`%23`, nested and multiple URLs
+  cannot end a URL early; relative `/path?k=v` too; a trailing
+  `:line:col` is kept), emails, UUIDs, hex runs ≥20 and mixed token
+  runs ≥32 are removed; `file.js:line:col` and identifiers survive. Limits: URL paths are kept;
+  a bare `k=v` with no `?`, a schemeless `host/a?x` without `k=`, and a
+  numeric `:n:n` query tail survive; a whole percent-encoded URL is not
+  decoded. Only
   `error.name`/`error.message` are kept. Discord `allowed_mentions` is empty.
 - **Alert wording.** A captured-error type with no details no longer says
   "app failed to start". Every alert carries a `failure(v1)` line built only
@@ -707,10 +718,20 @@ approved release uploads this version with its bindings and schedules):
   `unknown`. A KV read that misses a fresh write is not a failure (KV is
   eventually consistent). Scope is this worker only — never the game,
   browsers or WebGL. The proposed `*/15 * * * *` cron (wrangler.toml) runs
-  it; the `15 * * * *` digest is unchanged. Healthy runs: one log line,
-  no Discord. Failures: one Discord message per incident (2 consecutive
-  failed runs; a missing binding at once), a 24 h reminder, one recovered
-  message after 2 passes; when incident state is unreadable, ≤1 per hour.
+  it; the `15 * * * *` digest is unchanged (its KV ops are bounded per op).
+  Healthy runs: one log line, no message. Failures: one message per
+  incident (2 consecutive failed runs; a missing binding at once), a 24 h
+  reminder, one recovered message after 2 passes; when incident state is
+  unreadable, ≤1 per hour. The message is sent *before* the status and
+  incident records are written (writes bounded, in parallel; 0.5 s when
+  the run already saw KV writes fail), so storage can't suppress its own
+  outage alert. A notification counts as sent only when the provider
+  accepted it: a failed or timed-out send is retried at the next 15-min
+  run (≤1 send + 1 bounded retry per run; a timeout retry may duplicate),
+  and an incident closes only when its recovered message is accepted.
+  Channel: Discord. Email (the existing Resend alert channel) is used for
+  health messages ONLY when no Discord webhook is configured, so a
+  Discord-configured deployment sends no new email.
   A dead worker cannot report itself: an independent monitor is still an
   owner decision.
 

@@ -56,3 +56,17 @@ Files: `index.ts` default export (`fetch(request, env, ctx)`), `handleRequest(re
 
 ## Not in scope (explicit)
 Client v2 diagnostics, new manifest fields, GPU, colo/country, external watchdog, Durable Object dedupe, healthy Discord cadence, sessionId policy, deploy.
+
+## Round 2 — independent verifier FAIL on d5f2fe49 (2026-11-08)
+
+| Verifier finding | Fix | Repo tests | Status |
+|---|---|---|---|
+| F1 P1 `?token=(SECRET)` survived scrub | token-based `stripUrlQueries` (worker + client, identical) | R2-F1 matrix + ingress | implemented, awaiting re-verification |
+| F2 P1 hanging KV blocked real-crash paging | page before counting; `boundedKv` per-op 1.5 s, 2 s count budget, close() | R2-F2 ×2 | implemented, awaiting re-verification |
+| F3 P1 health publication writes unbounded | send before store; bounded parallel writes | R2-F3 | implemented, awaiting re-verification |
+| F4 P2 ledger marked before delivery | `lastNotifiedAt` set only on provider acceptance; close on accepted recovery | R2-F4 ×2 | implemented, awaiting re-verification |
+| F5 P2 email-only accepted but unused | email fallback only when Discord absent (existing Resend channel) | R2-F5 | implemented, awaiting re-verification; owner may prefer Discord-required |
+
+Still not built: delivery-history health check, external dead-man, atomic
+dedupe. Release gaps (separate): observability block / #351, signed
+council manifest for these fixes, per-release approval.
