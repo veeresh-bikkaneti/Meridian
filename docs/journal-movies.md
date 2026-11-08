@@ -67,15 +67,15 @@ clone downloads it).
 ## Batches (12 workers, 3 sets each; batch 08 skips old-faithful = pilot)
 | Batch | Sets | Entries | Status |
 |---|---|---|---|
-| 01 | 1–3 | capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o | 6 VERIFIED + LIVE (sets 1–2); set 3 in follow-up run (video cap) |
-| 02 | 4–6 | holmes-lake, pioneers-park, wilderness-park, antelope-park, oak-lake, wyuka, lincoln-airport, union-plaza, gateway | building |
+| 01 | 1–3 | capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o | 9/9 LIVE (haymarket = flagged fallback; regen failed gate twice) |
+| 02 | 4–6 | holmes-lake, pioneers-park, wilderness-park, antelope-park, oak-lake, wyuka, lincoln-airport, union-plaza, gateway | 6 LIVE; 3 HELD (no-bed ffmpeg: holmes-lake, wyuka, gateway) in follow-up regen |
 | 03 | 7–9 | southpointe, havelock, college-view, university-place, near-south, hyde, robbers-cave, star-city-shores, quilt-museum | 3 LIVE (hyde, near-south, robbers-cave); 3 HELD for regen (university-place text, havelock rooster, southpointe palette); 3 in follow-up |
 | 04 | 10–12 | woods-park, conestoga, branched-oak, mahoney, sac-museum, seward, homestead, pawnee-lake, platte-river-sp | 9/9 LIVE (cap did not block this batch) |
-| 05 | 13–15 | ashland, wahoo, wagon-train, spring-creek, arbor-lodge, beatrice, stagecoach, grand-island, henry-doorly | building |
-| 06 | 16–18 | old-market, chimney-rock, scotts-bluff, archway, durham, carhenge, kingsley, smith-falls, fort-robinson | building |
-| 07 | 19–21 | valentine, joslyn, golden-spike, indian-cave, ashfall, toadstool, chadron, niobrara, white-house | building |
-| 08 | 22–24 | golden-gate, grand-canyon, [old-faithful = pilot], rushmore, gateway-arch, french-quarter, space-needle, niagara, alamo | building |
-| 09 | 25–27 | willis, crater-lake, monument-valley, pike-place, cadillac, denali, everglades, death-valley, hoover | building |
+| 05 | 13–15 | ashland, wahoo, wagon-train, spring-creek, arbor-lodge, beatrice, stagecoach, grand-island, henry-doorly | 9/9 LIVE |
+| 06 | 16–18 | old-market, chimney-rock, scotts-bluff, archway, durham, carhenge, kingsley, smith-falls, fort-robinson | 4 LIVE; 5 HELD (no-bed ffmpeg x3, chimney-rock spire cropped, archway duplicated wagon) in follow-up regen |
+| 07 | 19–21 | valentine, joslyn, golden-spike, indian-cave, ashfall, toadstool, chadron, niobrara, white-house | 6 LIVE; 3 in follow-up (chadron, niobrara, white-house) |
+| 08 | 22–24 | golden-gate, grand-canyon, [old-faithful = pilot], rushmore, gateway-arch, french-quarter, space-needle, niagara, alamo | 6 LIVE; 2 in follow-up (niagara, alamo) |
+| 09 | 25–27 | willis, crater-lake, monument-valley, pike-place, cadillac, denali, everglades, death-valley, hoover | 6 LIVE; 3 in follow-up (everglades, death-valley, hoover) |
 | 10 | 28–30 | eiffel, colosseum, liberty, taj, opera-house, redeemer, sagrada, giza, cn-tower | building |
 | 11 | 31–33 | machu, fuji, chichen, stonehenge, neuschwanstein, angkor, petra, table-mountain, uluru | 5 LIVE (machu, fuji, chichen, stonehenge, petra); 1 HELD for regen (neuschwanstein rooster); 3 in follow-up |
 | 12 | 34–36 | victoria-falls, fushimi, iguazu, tongariki, potala, timbuktu, galapagos | building |
