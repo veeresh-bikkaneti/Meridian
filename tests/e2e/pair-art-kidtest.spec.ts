@@ -1,5 +1,5 @@
 import { test, expect, type Page } from "playwright/test";
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { serveBuiltArtifact } from "./helpers";
 
@@ -49,6 +49,21 @@ import { serveBuiltArtifact } from "./helpers";
  *    exports the trial manifest to
  *    test-results/pair-art-kidtest/trial-manifest.json.
  *    Human scores are recorded by hand in docs/pair-art/KIDTEST_RESULTS.md.
+ *
+ * Panel re-vote cure (Game level architect BLOCK, tip a4593c0):
+ * placement is now a negative gate, not an assumption. lawfulSpots
+ * judges a spot against the map, clue text, AND occupied page
+ * chrome (search input + label, buttons, attribution bar, header
+ * text, bench slot); a width with no lawful spot FAILS its find
+ * leg with a "no lawful spot" reason instead of minting a fallback
+ * spot (the pre-cure captures placed Holmes inside the map at 768
+ * and over the search input at 390). Measure 3 and the find-screen
+ * captures assert, after layout settles and on the final DOM
+ * geometry: figure ∩ map = 0, figure ∩ chrome = 0, figure ∩ clue
+ * text = 0. A pure-logic sabotage self-check (below) proves
+ * deliberately unlawful spots are rejected. The assembly compositor
+ * also paints the halo FIRST (rank −1, an underlay), not over the
+ * legs.
  *
  * Plates live in public/assets/detective/pair-art/ (built into
  * dist/client/assets/detective/pair-art/). The art lands in parallel
@@ -296,10 +311,40 @@ async function openRealCase(page: Page, index = 0) {
   });
 }
 
-/** Leaf text rects inside the clue articles + the map rect, in-page. */
-async function layoutRects(page: Page): Promise<{ clueText: Rect[]; map: Rect | null }> {
+/** One piece of occupied page chrome the figure may never cover:
+ * the search input + its label, any button, the map attribution bar,
+ * header text, or the detective bench slot (panel re-vote cure,
+ * Game level architect BLOCK: the pre-cure harness excluded only the
+ * map rect, so find captures placed Holmes INSIDE the map at 768 and
+ * over the search input at 390 while every assertion stayed green). */
+interface ChromeRect {
+  kind: "search" | "button" | "attribution" | "header" | "bench" | "text";
+  label: string;
+  rect: Rect;
+}
+
+interface PageLayout {
+  clueText: Rect[];
+  map: Rect | null;
+  chrome: ChromeRect[];
+  /** The placed kidtest plate's rect, when one is on the page. */
+  figure: Rect | null;
+}
+
+/** Leaf text rects inside the clue articles, the map rect, every
+ * occupied-chrome rect, and the placed plate's rect — all read in
+ * ONE page evaluation, so a placement assertion and the screenshot
+ * that follows it judge the same settled geometry. */
+async function layoutRects(page: Page): Promise<PageLayout> {
   return page.evaluate(() => {
     const toRect = (r: DOMRect): Rect => ({ x: r.x, y: r.y, w: r.width, h: r.height });
+    const visible = (el: Element): DOMRect | null => {
+      const r = el.getBoundingClientRect();
+      if (r.width <= 0 || r.height <= 0) return null;
+      const anyEl = el as Element & { checkVisibility?: () => boolean };
+      if (typeof anyEl.checkVisibility === "function" && !anyEl.checkVisibility()) return null;
+      return r;
+    };
     const clueText: Rect[] = [];
     document
       .querySelectorAll('article[aria-label^="Clue"], [role="article"]')
@@ -312,8 +357,103 @@ async function layoutRects(page: Page): Promise<{ clueText: Rect[]; map: Rect | 
         });
       });
     const mapEl = document.querySelector('[data-testid="loop-map"]');
-    return { clueText, map: mapEl ? toRect(mapEl.getBoundingClientRect()) : null };
+    const chrome: ChromeRect[] = [];
+    const push = (kind: ChromeRect["kind"], el: Element) => {
+      const r = visible(el);
+      if (!r) return;
+      const label =
+        el.getAttribute("aria-label") ??
+        el.getAttribute("data-testid") ??
+        (el.textContent ?? "").trim().slice(0, 40) ??
+        el.tagName;
+      chrome.push({ kind, label: `${kind}:${label}`, rect: toRect(r) });
+    };
+    /* Search chrome: the guess-input container (label + input +
+     * suggestion list live inside it), plus the input and its label
+     * individually so a failure names the exact element. */
+    document.querySelectorAll('[data-testid="loop-guess-input"]').forEach((el) => push("search", el));
+    document.querySelectorAll('[data-testid="loop-guess-input"] input, [data-testid="loop-guess-input"] label').forEach((el) => push("search", el));
+    /* Every visible button on the page (header controls, sound
+     * toggles, guess controls, bench controls included). */
+    document.querySelectorAll("button").forEach((el) => push("button", el));
+    /* MapLibre attribution + control bars. */
+    document
+      .querySelectorAll(".maplibregl-ctrl-attrib, .maplibregl-ctrl-group, .maplibregl-ctrl")
+      .forEach((el) => push("attribution", el));
+    /* Header text: the header element's leaf text, plus headings
+     * anywhere outside the clue articles. */
+    document.querySelectorAll("header").forEach((header) => {
+      header.querySelectorAll("*").forEach((el) => {
+        if (el.children.length === 0 && (el.textContent ?? "").trim().length > 0) push("header", el);
+      });
+    });
+    document.querySelectorAll("h1, h2").forEach((el) => {
+      if (!el.closest('article[aria-label^="Clue"], [role="article"]')) push("header", el);
+    });
+    /* Occupied page flow, generally (root-cause wording of the
+     * BLOCK: lawful spots must exclude "other occupied page flow",
+     * not only the named widgets): EVERY visible leaf text element
+     * outside the map and outside the clue articles is a blocker —
+     * status lines ("This case is from All cases.", "Guess 1 of 5"),
+     * instructions, the pair's speech text, footnotes. A figure
+     * standing on any readable text is the defect class being
+     * cured; the first cured run's find-768 capture proved the
+     * named-widget list alone misses exactly these lines (Holmes
+     * covered both status lines while every named-chrome overlap
+     * measured 0). Clue-article text is already collected as
+     * clueText, and map-internal text is covered by the map rect. */
+    document.querySelectorAll("body *").forEach((el) => {
+      if (el.children.length > 0) return;
+      if ((el.textContent ?? "").trim().length === 0) return;
+      if (el.closest('[data-testid="loop-map"]')) return;
+      if (el.closest('article[aria-label^="Clue"], [role="article"]')) return;
+      if (el.id === "kidtest-plate") return;
+      const r = visible(el);
+      if (r && r.width >= 4 && r.height >= 4) {
+        chrome.push({
+          kind: "text",
+          label: `text:${(el.textContent ?? "").trim().slice(0, 40)}`,
+          rect: toRect(r),
+        });
+      }
+    });
+    /* The detective bench slot — occupied page flow the pre-cure
+     * lawfulSpots never knew about. */
+    document
+      .querySelectorAll('[data-testid="detective-bench"], [data-testid="detective-bench-board"]')
+      .forEach((el) => push("bench", el));
+    const plate = document.getElementById("kidtest-plate");
+    return {
+      clueText,
+      map: mapEl ? toRect(mapEl.getBoundingClientRect()) : null,
+      chrome,
+      figure: plate ? toRect(plate.getBoundingClientRect()) : null,
+    };
   });
+}
+
+/** Read layoutRects until the geometry stops moving. Opening a
+ * case auto-scrolls the page (and the bench pair settles), so a
+ * layout read taken the moment the first clue appears is NOT the
+ * geometry a capture will show: in the first cured run, spots
+ * minted against that early read failed at settle time with the
+ * map / search chrome shifted under the fixed plate (measured:
+ * figure ∩ map 12,251 px² @768 find screen). Minting and measuring
+ * both start from a settled layout: poll until the map rect is
+ * identical across three consecutive reads, ~200 ms apart. */
+async function settledLayout(page: Page): Promise<PageLayout> {
+  let last = await layoutRects(page);
+  let prevKey = JSON.stringify(last.map);
+  let stableReads = 0;
+  for (let i = 0; i < 25 && stableReads < 2; i++) {
+    await page.waitForTimeout(200);
+    const cur = await layoutRects(page);
+    const key = JSON.stringify(cur.map);
+    stableReads = key === prevKey ? stableReads + 1 : 0;
+    prevKey = key;
+    last = cur;
+  }
+  return last;
 }
 
 interface Spot {
@@ -322,31 +462,136 @@ interface Spot {
   y: number;
 }
 
+/** Everything a figure rect may not touch: the map, clue text, and
+ * occupied page chrome (search, buttons, attribution, header, bench). */
+interface SpotBlockers {
+  map: Rect | null;
+  clueText: Rect[];
+  chrome: ChromeRect[];
+}
+
+/** Is a `figW × figH` figure at (x, y) lawful? Lawful means: fully
+ * inside the viewport AND intersecting NONE of the blockers — not
+ * the map, not clue text, not search chrome, not a button, not the
+ * attribution bar, not header text, not the bench slot. (Panel
+ * re-vote cure: the pre-cure definition excluded only the map rect
+ * at minting time and then minted `page-top-left` as a fallback —
+ * which is how Holmes came to stand inside the map at 768 and over
+ * the search input at 390.) */
+function isLawfulSpot(
+  x: number,
+  y: number,
+  figW: number,
+  figH: number,
+  blockers: SpotBlockers,
+  vw: number,
+  vh: number,
+): boolean {
+  if (x < 0 || y < 0 || x + figW > vw || y + figH > vh) return false;
+  const fig: Rect = { x, y, w: figW, h: figH };
+  if (blockers.map && overlapArea(fig, blockers.map) > 0) return false;
+  if (blockers.clueText.some((t) => overlapArea(fig, t) > 0)) return false;
+  if (blockers.chrome.some((c) => overlapArea(fig, c.rect) > 0)) return false;
+  return true;
+}
+
 /**
- * Lawful gutter spots for a figure of `figW × figH`: page space beside
- * or above/below the map — never on the map itself (staging law:
- * figures live in page space). A spot is only a CANDIDATE here; the
- * coverage measure below is what proves it lawful at max in-band size.
+ * Lawful spots for a figure of `figW × figH`, judged against the
+ * blockers the page actually presents. The named gutter spots are
+ * tried first (beside / above / below the map — staging law: figures
+ * live in page space); if none is lawful, a coarse viewport scan
+ * looks for ANY lawful position. If none exists, this returns an
+ * EMPTY list — it never mints an unlawful spot. Callers must treat
+ * empty as a hard "no lawful spot" failure for that width.
  */
-function lawfulSpots(figW: number, figH: number, map: Rect | null, vw: number, vh: number): Spot[] {
-  const spots: Spot[] = [];
-  const fits = (x: number, y: number) => x >= 0 && y >= 0 && x + figW <= vw && y + figH <= vh;
+function lawfulSpots(
+  figW: number,
+  figH: number,
+  blockers: SpotBlockers,
+  vw: number,
+  vh: number,
+): Spot[] {
+  const { map } = blockers;
+  const candidates: Spot[] = [];
   if (map) {
     if (map.x - 16 >= figW) {
-      spots.push({ id: "gutter-left-top", x: 8, y: Math.max(8, map.y) });
-      spots.push({ id: "gutter-left-bottom", x: 8, y: map.y + map.h - figH });
+      candidates.push({ id: "gutter-left-top", x: 8, y: Math.max(8, map.y) });
+      candidates.push({ id: "gutter-left-bottom", x: 8, y: map.y + map.h - figH });
     }
     if (vw - (map.x + map.w) - 16 >= figW) {
-      spots.push({ id: "gutter-right-top", x: vw - 8 - figW, y: Math.max(8, map.y) });
-      spots.push({ id: "gutter-right-bottom", x: vw - 8 - figW, y: map.y + map.h - figH });
+      candidates.push({ id: "gutter-right-top", x: vw - 8 - figW, y: Math.max(8, map.y) });
+      candidates.push({ id: "gutter-right-bottom", x: vw - 8 - figW, y: map.y + map.h - figH });
     }
-    if (map.y - 16 >= figH) spots.push({ id: "page-above-map", x: 8, y: map.y - 8 - figH });
+    if (map.y - 16 >= figH) candidates.push({ id: "page-above-map", x: 8, y: map.y - 8 - figH });
     if (vh - (map.y + map.h) - 16 >= figH)
-      spots.push({ id: "page-below-map", x: 8, y: map.y + map.h + 8 });
+      candidates.push({ id: "page-below-map", x: 8, y: map.y + map.h + 8 });
   }
-  if (spots.length === 0 && fits(8, 8)) spots.push({ id: "page-top-left", x: 8, y: 8 });
-  return spots.filter((s) => fits(s.x, s.y));
+  const lawful = candidates.filter((s) =>
+    isLawfulSpot(s.x, s.y, figW, figH, blockers, vw, vh),
+  );
+  if (lawful.length > 0) return lawful;
+  /* No named spot is lawful: scan the viewport on an 8 px grid for
+   * the first position that clears every blocker. One scan spot is
+   * enough to prove a lawful placement exists at this width. */
+  for (let y = 0; y + figH <= vh; y += 8) {
+    for (let x = 0; x + figW <= vw; x += 8) {
+      if (isLawfulSpot(x, y, figW, figH, blockers, vw, vh)) {
+        return [{ id: `scan-x${x}-y${y}`, x, y }];
+      }
+    }
+  }
+  return [];
 }
+
+/* Sabotage self-check (owner test-design law: negative gates carry
+ * a sabotage control). Pure logic — no browser — so it runs in
+ * every project invocation and cannot be lost to page flake. It
+ * proves the cured lawfulSpots REJECTS deliberately unlawful spots
+ * instead of minting them: the pre-cure harness, given the second
+ * layout below, minted `page-top-left` (8,8) inside the search
+ * chrome and called it lawful. */
+test("lawfulSpots sabotage self-check — deliberately unlawful spots are rejected, never minted", () => {
+  const figW = 80;
+  const figH = 128;
+  /* Case 1: every returned spot must clear map + clue text + chrome. */
+  const blockers: SpotBlockers = {
+    map: { x: 0, y: 300, w: 390, h: 300 },
+    clueText: [{ x: 16, y: 640, w: 358, h: 20 }],
+    chrome: [{ kind: "search", label: "search:Search the map", rect: { x: 0, y: 230, w: 390, h: 60 } }],
+  };
+  const spots = lawfulSpots(figW, figH, blockers, 390, 844);
+  expect(spots.length, "sabotage case 1: the open band above the search chrome is lawful").toBeGreaterThan(0);
+  for (const s of spots) {
+    const fig: Rect = { x: s.x, y: s.y, w: figW, h: figH };
+    expect(overlapArea(fig, blockers.map!), `spot ${s.id} must not touch the map`).toBe(0);
+    expect(
+      blockers.clueText.reduce((sum, t) => sum + overlapArea(fig, t), 0),
+      `spot ${s.id} must not touch clue text`,
+    ).toBe(0);
+    expect(
+      blockers.chrome.reduce((sum, c) => sum + overlapArea(fig, c.rect), 0),
+      `spot ${s.id} must not touch chrome`,
+    ).toBe(0);
+  }
+  /* Case 2: search chrome fills the whole band above the map and the
+   * remaining gap is shorter than the figure — NO lawful spot exists,
+   * and the function must say so (empty), never fall back to (8,8). */
+  const squeezed: SpotBlockers = {
+    map: { x: 0, y: 400, w: 390, h: 444 },
+    clueText: [],
+    chrome: [{ kind: "search", label: "search:Search the map", rect: { x: 0, y: 0, w: 390, h: 280 } }],
+  };
+  expect(
+    lawfulSpots(figW, figH, squeezed, 390, 844),
+    "sabotage case 2: a width with no lawful spot must return [], not a minted fallback",
+  ).toEqual([]);
+  /* Case 3: the map covers the whole viewport — trivially unlawful
+   * everywhere; still []. */
+  expect(
+    lawfulSpots(figW, figH, { map: { x: 0, y: 0, w: 390, h: 844 }, clueText: [], chrome: [] }, 390, 844),
+    "sabotage case 3: full-viewport map must return []",
+  ).toEqual([]);
+});
 
 /** Composite one plate onto the live page at a spot; return its rect. */
 async function placePlate(
@@ -413,7 +658,8 @@ for (const width of WIDTHS) {
     const page = await context.newPage();
     try {
       await openRealCase(page);
-      const { clueText, map } = await layoutRects(page);
+      const layout = await settledLayout(page);
+      const { clueText } = layout;
       expect(clueText.length, "real clue layout must expose clue text rects").toBeGreaterThan(0);
 
       for (const plate of figures) {
@@ -484,16 +730,49 @@ for (const width of WIDTHS) {
           });
         }
 
-        /* Measure 3 — zero clue-text coverage at max in-band size,
-         * at every lawful gutter spot this width offers. */
-        const spots = lawfulSpots(figW, band.max, map, width, band.height);
+        /* Measure 3 — zero coverage at max in-band size, at every
+         * lawful spot this width offers. Coverage now means THREE
+         * negative gates, all measured AFTER the layout settles,
+         * against the final DOM geometry the screenshot would show
+         * (panel re-vote cure — the pre-cure measure asserted only
+         * clue-text overlap, against rects read at spot-minting
+         * time, so a figure standing inside the map or over the
+         * search input passed):
+         *   figure ∩ map    = 0 px²
+         *   figure ∩ chrome = 0 px² (search input + label, buttons,
+         *                     attribution bar, header text, bench)
+         *   figure ∩ clue text = 0 px² (the original product law)
+         * And lawfulSpots itself now excludes all three classes: a
+         * width with no lawful spot FAILS here with that reason —
+         * no spot is ever minted into occupied flow. */
+        const spots = lawfulSpots(figW, band.max, layout, width, band.height);
         expect(
           spots.length,
-          `${plate.id} @${width}: at least one lawful gutter spot must exist`,
+          `${plate.id} @${width}: no lawful spot — every figure placement at max in-band size intersects the map, clue text, or page chrome (search/buttons/attribution/header/bench); the find leg cannot be staged lawfully at this width`,
         ).toBeGreaterThan(0);
         for (const spot of spots) {
-          const rect = await placePlate(page, plate, spot, band.max);
-          const covered = clueText.reduce((sum, t) => sum + overlapArea(rect, t), 0);
+          await placePlate(page, plate, spot, band.max);
+          /* Settle, then read figure + blockers in one snapshot —
+           * the same geometry a capture taken now would show. */
+          await page.waitForTimeout(250);
+          const snap = await layoutRects(page);
+          expect(snap.figure, `${plate.id} @${width} spot ${spot.id}: placed plate must be measurable`).not.toBeNull();
+          const rect = snap.figure!;
+          if (snap.map) {
+            const mapOverlap = overlapArea(rect, snap.map);
+            expect(
+              mapOverlap,
+              `${plate.id} @${width} spot ${spot.id}: figure ∩ map must be 0 px², measured ${mapOverlap} px²`,
+            ).toBe(0);
+          }
+          for (const c of snap.chrome) {
+            const chromeOverlap = overlapArea(rect, c.rect);
+            expect(
+              chromeOverlap,
+              `${plate.id} @${width} spot ${spot.id}: figure ∩ chrome (${c.label}) must be 0 px², measured ${chromeOverlap} px²`,
+            ).toBe(0);
+          }
+          const covered = snap.clueText.reduce((sum, t) => sum + overlapArea(rect, t), 0);
           expect(
             covered,
             `${plate.id} @${width} spot ${spot.id}: clue-text coverage must be 0 px², measured ${covered} px²`,
@@ -606,18 +885,25 @@ async function measureOneAssembly(input: AssemblyCharInput) {
     });
   const isSkin = (r: number, g: number, b: number, a: number) =>
     a > 128 && r > 180 && g >= 120 && g < 225 && b >= 70 && b < 190 && r > g && g > b && r - b > 40;
+  /* Halo-first underlay (panel re-vote cure, Frontend developer
+   * nit): the halo is the figure's ground glow — it must paint
+   * BEFORE (under) every body part. The pre-cure rank gave halo
+   * and legs both rank 0, so manifest order painted the halo OVER
+   * the legs. Halo is rank −1: strictly first. */
   const rank = (part: string) =>
-    part === "hat"
-      ? 5
-      : part === "head"
-        ? 4
-        : part.includes("arm-front") || part.includes("raised") || part.includes("high-five")
-          ? 3
-          : part === "torso"
-            ? 2
-            : part === "arm-back"
-              ? 1
-              : 0;
+    part === "halo"
+      ? -1
+      : part === "hat"
+        ? 5
+        : part === "head"
+          ? 4
+          : part.includes("arm-front") || part.includes("raised") || part.includes("high-five")
+            ? 3
+            : part === "torso"
+              ? 2
+              : part === "arm-back"
+                ? 1
+                : 0;
   const [W, H] = input.natural;
   const canvas = document.createElement("canvas");
   canvas.width = W;
@@ -924,8 +1210,18 @@ interface Trial {
   spotSource?: "manifest" | "reconciled-to-lawful-spot-on-real-page";
   choices: string[];
   correctChoice: string | null;
-  status: "ready" | "blocked-missing-plate";
+  status: "ready" | "blocked-missing-plate" | "blocked-no-lawful-spot";
   blockedReason?: string;
+  /** Find trials only: the settle-time placement proof for the
+   * captured screen — figure rect plus its measured overlap with
+   * the map, page chrome, and clue text (all must be 0 px²). */
+  placement?: {
+    figureRect: Rect;
+    mapOverlapPx2: number;
+    chromeOverlapPx2: number;
+    clueCoveragePx2: number;
+    blockersChecked: { clueText: number; chrome: number };
+  };
   /** Expression trials only: whose face, which feeling. The feeling
    * is recorded per trial (B1 cure) — the pre-cure manifest's
    * correctChoice distribution was pout ×6, delighted ×0,
@@ -1060,6 +1356,7 @@ test("trial preparation — build trial screens and export the trial manifest", 
    * The manifest is written AFTER the screenshots so a spot the real
    * page could not lawfully offer is reconciled INTO the manifest
    * (spotId + spotSource) — manifest and screenshot always agree. */
+  const findFailures: string[] = [];
   if (!holmes) {
     test.info().annotations.push({
       type: "not-run",
@@ -1075,20 +1372,80 @@ test("trial preparation — build trial screens and export the trial manifest", 
       const page = await context.newPage();
       try {
         await openRealCase(page);
-        const { map } = await layoutRects(page);
+        const layout = await settledLayout(page);
         const probe = await placePlate(page, holmes, { id: "probe", x: 8, y: 8 }, band.max);
-        const spots = lawfulSpots(Math.round(probe.w), band.max, map, width, band.height);
+        const spots = lawfulSpots(Math.round(probe.w), band.max, layout, width, band.height);
         const trial = trials.find((t) => t.id === `find-${width}-map`);
-        const spot =
-          spots.find((s) => s.id === trial?.spotId) ?? spots[0] ?? { id: "page-top-left", x: 8, y: 8 };
+        const capturePath = path.resolve(`test-results/pair-art-kidtest/find-${width}.png`);
+        if (spots.length === 0) {
+          /* No lawful spot at this width (panel re-vote cure): the
+           * find leg FAILS for this width with this reason — the
+           * harness never mints an unlawful spot, and any stale
+           * capture from an earlier run is removed so it cannot be
+           * mistaken for this run's evidence. The failure is
+           * asserted after the manifest is written (below), so the
+           * manifest records the outcome for every width. */
+          const reason =
+            `no lawful spot @${width}: every figure placement at max in-band size (${Math.round(probe.w)}×${band.max}) ` +
+            "intersects the map, clue text, or page chrome (search/buttons/attribution/header/bench)";
+          if (trial) {
+            trial.status = "blocked-no-lawful-spot";
+            trial.spotId = null;
+            trial.spotSource = undefined;
+            trial.blockedReason = reason;
+          }
+          findFailures.push(`find-${width}-map: ${reason}`);
+          test.info().annotations.push({ type: "blocked-no-lawful-spot", description: reason });
+          rmSync(capturePath, { force: true });
+          continue;
+        }
+        const spot = spots.find((s) => s.id === trial?.spotId) ?? spots[0]!;
         if (trial && trial.spotId !== spot.id) {
           trial.spotId = spot.id;
           trial.spotSource = "reconciled-to-lawful-spot-on-real-page";
         }
         await placePlate(page, holmes, spot, band.max);
-        await page.screenshot({
-          path: path.resolve(`test-results/pair-art-kidtest/find-${width}.png`),
-        });
+        /* Settle, then prove the placement against the final DOM
+         * geometry BEFORE capturing it: figure ∩ map = 0, figure ∩
+         * chrome = 0, figure ∩ clue text = 0 — the same negative
+         * gates as Measure 3, on the same settled snapshot the
+         * screenshot will show. A placement that fails is recorded
+         * in the manifest + findFailures (asserted after the
+         * manifest is written) and its screen is NOT captured — one
+         * unlawful width must not block the other widths' evidence,
+         * and an unlawful capture must never exist. */
+        await page.waitForTimeout(250);
+        const snap = await layoutRects(page);
+        expect(snap.figure, `find-${width}: placed Holmes plate must be measurable`).not.toBeNull();
+        const rect = snap.figure!;
+        const mapOverlap = snap.map ? overlapArea(rect, snap.map) : 0;
+        let chromeOverlapTotal = 0;
+        let worstChrome = "";
+        for (const c of snap.chrome) {
+          const chromeOverlap = overlapArea(rect, c.rect);
+          chromeOverlapTotal += chromeOverlap;
+          if (chromeOverlap > 0 && !worstChrome) worstChrome = `${c.label} ${chromeOverlap} px²`;
+        }
+        const clueCovered = snap.clueText.reduce((sum, t) => sum + overlapArea(rect, t), 0);
+        if (trial) {
+          trial.placement = {
+            figureRect: rect,
+            mapOverlapPx2: mapOverlap,
+            chromeOverlapPx2: chromeOverlapTotal,
+            clueCoveragePx2: clueCovered,
+            blockersChecked: { clueText: snap.clueText.length, chrome: snap.chrome.length },
+          };
+        }
+        if (mapOverlap > 0 || chromeOverlapTotal > 0 || clueCovered > 0) {
+          findFailures.push(
+            `find-${width}-map spot ${spot.id}: placement UNLAWFUL at settle time — figure ∩ map ${mapOverlap} px², ` +
+              `figure ∩ chrome ${chromeOverlapTotal} px²${worstChrome ? ` (first: ${worstChrome})` : ""}, ` +
+              `figure ∩ clue text ${clueCovered} px²; screen NOT captured`,
+          );
+          rmSync(capturePath, { force: true });
+          continue;
+        }
+        await page.screenshot({ path: capturePath });
       } finally {
         await context.close();
       }
@@ -1131,4 +1488,13 @@ test("trial preparation — build trial screens and export the trial manifest", 
       2,
     ),
   );
+
+  /* The find leg's verdict — asserted only after the manifest is on
+   * disk, so a width with no lawful spot is both RECORDED in the
+   * manifest (status "blocked-no-lawful-spot") and FAILED here.
+   * A find screen is never captured at an unlawful spot. */
+  expect(
+    findFailures,
+    `find leg FAILED for ${findFailures.length} width(s): no lawful spot at max in-band size, or the minted spot proved unlawful at settle time — those find screens were NOT captured and stand NOT RUN with the recorded reason`,
+  ).toEqual([]);
 });
