@@ -65,11 +65,14 @@ mount, so specs can target a known mystery without the real clock.
   whole store, with no UTC-day keying. The v1 daily-era archive is kept
   untouched. The Loop **never** reads or writes `meridian.run` /
   `meridian.drop` (the endless-run keys).
-- Reload mid-game restores the in-progress state (PR #31 pattern:
-  restore on mount, never reset). A separate `meridian.loop.open` flag
-  records whether the GeoDetective screen was open, so a mid-game
-  reload reopens the screen — while an explicit "leave to editions"
-  stays on the menu.
+- The in-progress state is restored when the player re-enters the
+  edition (PR #31 pattern: restore on mount, never reset) — but entry
+  itself always lands on Home first (owner ruling, 2026-11-08). A
+  reload mid-game therefore shows Home, and Home's GeoDetective card
+  offers "Resume your case"; one tap reopens the case exactly where
+  it was left. The old `meridian.loop.open` flag, which used to reopen
+  the screen by itself on the next visit, is no longer read or
+  written — the reset still deletes stale values from older versions.
 - Pack decks live in the same blob, in their own fields: `packDecks`
   (one deck state per pack, keyed by pack id) and `activeDeckId`
   (which deck the shelf last selected). The core deck's fields keep

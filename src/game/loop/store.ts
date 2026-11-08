@@ -780,48 +780,19 @@ export function peekLoopProgress(): {
   };
 }
 
-function storageAvailable(): boolean {
-  try {
-    return typeof localStorage !== "undefined";
-  } catch {
-    return false;
-  }
-}
-
 /**
- * Whether the loop screen was open when the tab last closed/reloaded.
- * Unchanged in the unlimited era: a mid-game reload reopens the screen
- * and the screen itself resumes-or-deals instead of day-keying.
- */
-export function readLoopOpen(): boolean {
-  if (!storageAvailable()) return false;
-  try {
-    return localStorage.getItem(LOOP_OPEN_KEY) === "1";
-  } catch {
-    return false;
-  }
-}
-
-/** Record the loop screen's open state (fail-silent when storage is blocked). */
-export function writeLoopOpen(open: boolean): void {
-  if (!storageAvailable()) return;
-  try {
-    if (open) localStorage.setItem(LOOP_OPEN_KEY, "1");
-    else localStorage.removeItem(LOOP_OPEN_KEY);
-  } catch {
-    /* private-mode storage: the loop screen still works for the session */
-  }
-}
-
-/**
- * Remove the unlimited store and the open flag (the "Start over" reset,
- * manifest 2026-10-28 §2). The v1 archive is NEVER touched — it is a
- * deliberately inert namespace, not play history this reset owns.
+ * Remove the unlimited store and the legacy open flag (the "Start over"
+ * reset, manifest 2026-10-28 §2). The v1 archive is NEVER touched — it
+ * is a deliberately inert namespace, not play history this reset owns.
+ * The open flag is legacy too: since the 2026-11-08 entry rule (a bare
+ * visit always lands on Home) nothing reads or writes it, but a value
+ * saved by an older version can still sit in storage, so the reset
+ * keeps removing it like any other play record.
  * Follows resetProfile()'s precedent: where removal fails, overwrite
  * with the empty value (a zeroed store whose empty deck reshuffles
- * fresh on the next deal; "0" for the flag, which readLoopOpen reads as
- * closed). Returns true only when a re-read proves the store is gone
- * or empty — the reset reports the store as failed otherwise.
+ * fresh on the next deal; "0" for the flag). Returns true only when a
+ * re-read proves the store is gone or empty — the reset reports the
+ * store as failed otherwise.
  */
 export function clearLoopStore(
   target?: Pick<Storage, "getItem" | "setItem" | "removeItem">,

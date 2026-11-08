@@ -158,10 +158,12 @@ export interface LoopUnlimitedStore {
  * never read, written, or deleted. */
 export const LOOP_STORAGE_KEY_V2 = "meridian.loop.v2";
 /**
- * Separate key in the same namespace: whether the GeoDetective was the
- * open screen when the tab closed/reloaded. Lets a mid-game reload reopen
- * the loop screen (whose mystery persists under `meridian.loop.v2`)
- * instead of dropping the player back at the editions menu.
+ * Legacy key in the same namespace: older versions saved whether the
+ * GeoDetective screen was open when the tab closed, and reopened the
+ * screen on the next visit. Since the 2026-11-08 entry rule (a bare
+ * visit always lands on Home) nothing reads or writes this key any
+ * more; the constant stays only so the "Start over" reset can delete
+ * a stale value an older version left behind.
  */
 export const LOOP_OPEN_KEY = "meridian.loop.open";
 export const LOOP_MAX_GUESSES = 5;

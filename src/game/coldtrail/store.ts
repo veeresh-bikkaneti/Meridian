@@ -42,30 +42,46 @@ const PACK_SHELF_SELECTION_KEY = "meridian.pack-shelf.v1";
 /** Previous-generation key: read once for migration, then deleted. */
 const LEGACY_STORAGE_KEY = "meridian.coldtrail.v1";
 /**
- * Whether the Cold Trail screen was open when the tab last closed or
- * reloaded (PR #203 panel: recovery parity with the loop's open flag).
- * The MapErrorBoundary retry reloads the page under "Your game is safe"
- * copy — without this flag a Trail player landed home while a
- * GeoDetective player resumed. Mirrors readLoopOpen/writeLoopOpen.
+ * Legacy key: older versions saved whether the Cold Trail screen was
+ * open when the tab closed, and reopened the screen on the next visit
+ * (PR #203, parity with the loop's old open flag). Since the
+ * 2026-11-08 entry rule (a bare visit always lands on Home) nothing
+ * reads or writes this key any more; the constant stays only so the
+ * "Start over" reset can delete a stale value an older version left
+ * behind.
  */
 export const COLDTRAIL_OPEN_KEY = "meridian.coldtrail.open";
 
-/** Whether the Cold Trail screen was open at last close/reload. */
-export function readColdTrailOpen(): boolean {
+/**
+ * Lightweight progress peek for the Home card: is a Cold Trail case
+ * mid-play in either deck's store (core or the capitals pack)? A case
+ * counts as mid-play when a current case exists and has not been
+ * revealed yet — the same test TrailScreen's deck picker uses.
+ * Mirrors the loop's peekLoopProgress: it only reads, never writes —
+ * in particular it never runs loadColdtrail's legacy migration, so
+ * calling it on Home cannot change anyone's saved game.
+ */
+export function peekColdTrailProgress(): { inProgress: boolean } {
+  const hasOpenCase = (key: string): boolean => {
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) return false;
+      const parsed = JSON.parse(raw) as {
+        v?: unknown;
+        current?: { revealed?: unknown } | null;
+      };
+      return parsed.v === 2 && parsed.current != null && parsed.current.revealed === false;
+    } catch {
+      return false;
+    }
+  };
   try {
-    return localStorage.getItem(COLDTRAIL_OPEN_KEY) === "1";
+    return {
+      inProgress:
+        hasOpenCase(COLDTRAIL_STORAGE_KEY) || hasOpenCase(COLDTRAIL_PACK_STORAGE_KEY),
+    };
   } catch {
-    return false;
-  }
-}
-
-/** Record the Cold Trail screen's open state (fail-silent when storage is blocked). */
-export function writeColdTrailOpen(open: boolean): void {
-  try {
-    if (open) localStorage.setItem(COLDTRAIL_OPEN_KEY, "1");
-    else localStorage.removeItem(COLDTRAIL_OPEN_KEY);
-  } catch {
-    /* private-mode storage: the trail screen still works for the session */
+    return { inProgress: false };
   }
 }
 

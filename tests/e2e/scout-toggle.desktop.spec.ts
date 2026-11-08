@@ -361,14 +361,19 @@ test("manual switch lands HOME even with a persisted GeoDetective flag under the
     await page.evaluate(() => sessionStorage.getItem("meridian.run")),
   ).not.toBeNull();
 
-  // Enter GeoDetective: its open flag persists alongside the run.
+  // Enter GeoDetective alongside the run. Entry rule (owner,
+  // 2026-11-08): entering writes no persisted open flag any more — the
+  // screen is in-session state only. Seed the legacy flag by hand so
+  // this test still faces a persisted flag in storage, the way a
+  // returning player's browser would.
   await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(
     page.getByRole("heading", { name: "GeoDetective" }),
   ).toBeVisible({ timeout: 30_000 });
   expect(
     await page.evaluate(() => localStorage.getItem("meridian.loop.open")),
-  ).toBe("1");
+  ).toBeNull();
+  await page.evaluate(() => localStorage.setItem("meridian.loop.open", "1"));
 
   // A reload restores BOTH — and branch precedence renders the run on
   // top of the lurking flag (Play on screen, LoopScreen not).
@@ -380,7 +385,7 @@ test("manual switch lands HOME even with a persisted GeoDetective flag under the
   // nothing else, so the persisted flag won the next render:
   // LoopScreen instead of Home — no heading for the focus landing,
   // no notice, and "back home" copy falsified. Post-cure the exit
-  // clears the flag too, and Home is deterministic:
+  // closes the in-session screen state too, and Home is deterministic:
   await flipMapModeToggle(page);
   await expect(
     page.getByRole("button", { name: "Play the globe" }),
@@ -398,11 +403,14 @@ test("manual switch lands HOME even with a persisted GeoDetective flag under the
       { timeout: 10_000 },
     )
     .toBe("home-heading");
-  // The persisted flag went with the exit — a later reload cannot
-  // resurrect the loop over Home either.
-  expect(
-    await page.evaluate(() => localStorage.getItem("meridian.loop.open")),
-  ).toBeNull();
+  // A later reload cannot resurrect the loop over Home either — under
+  // the entry rule the boot never reads the flag at all, so even the
+  // seeded legacy value still sitting in storage is inert.
+  await page.reload();
+  await expect(
+    page.getByRole("button", { name: "Play the globe" }),
+  ).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("loop-screen")).toHaveCount(0);
 });
 
 test("a runtime tile-failure switch retires the stale switched notice (BLOCK-B)", async ({

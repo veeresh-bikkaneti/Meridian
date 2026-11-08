@@ -58,6 +58,15 @@ GeoDetective shipped with **no End game control, no end-session action, and no s
 
 Cold Trail is **not** covered here: it has its own store and screen (`src/game/coldtrail/`), so its equivalent End game is a follow-up on the owner's word.
 
+### Entry always lands on Home (Veeresh, 2026-11-08)
+
+Veeresh's play-test found the game opening straight into GeoDetective instead of the home screen, and he ordered: **"we should always push the player onto homescreen."** The cause was a saved "screen was open" flag (`meridian.loop.open`, and its Cold Trail twin `meridian.coldtrail.open`): tapping a game card set it, only leaving the game cleared it, and the next visit — a new tab, the next day — read it at boot and reopened the game, skipping Home entirely. The flag alone, with no case in progress, even dealt a fresh case unasked.
+
+- **The rule now:** every visit starts on Home. The GeoDetective and Cold Trail screens open only when the player taps their card on Home during that visit. This supersedes the older reload-resume behaviour (a mid-game refresh used to reopen the game screen; PR #203 gave Cold Trail the same treatment for error-recovery parity) — a refresh now lands on Home too.
+- **Nothing is lost:** a case left mid-play stays saved in its store, and Home offers it back — GeoDetective's card says "Resume your case" (the offer End game relies on), and Cold Trail's card now says "Resume your trail" the same way. Returning to a case is one clear tap the player chooses.
+- **Explicit intent still counts:** a tapped challenge link (`#c=`) still goes straight into its run — that is a player opening a door on purpose, not a bare visit. The map editions' same-tab session restore (`meridian.run` in sessionStorage) is a separate mechanism and is untouched.
+- The old flag keys are no longer read or written; the "Start over" reset still deletes any stale values older versions left behind.
+
 ## 3. Cold Trail — the triangulation edition
 
 Three **sightings**, three **rings**, one **interception**. Each sighting gives a distance + bearing from a named anchor place ("575 km southwest of Umraniye"); the player taps where the rings cross to make the interception.

@@ -14,11 +14,10 @@
  *
  * game-app.tsx is a large component with no unit-render harness in this
  * repo, so — like the boot-wiring pin in src/map/capability.test.ts —
- * the wiring is pinned by reading the source. The runtime restore path
- * itself (a saved meridian.loop.open flag reopening GeoDetective across
- * this boundary after a reload) is walked end-to-end by the Playwright
- * spec "reload mid-game resumes the open mystery without re-dealing"
- * in tests/e2e/geodetective.spec.ts.
+ * the wiring is pinned by reading the source. The entry rule itself
+ * (owner, 2026-11-08: a bare visit always lands on Home, even with a
+ * saved meridian.loop.open flag from an older version) is walked
+ * end-to-end by the Playwright spec in tests/e2e/entry-routing.spec.ts.
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
@@ -81,11 +80,15 @@ describe("F2 lazy boundary — Loop/Trail are not eagerly imported", () => {
   });
 });
 
-describe("F2 lazy boundary — restore path crosses Suspense + error boundary", () => {
-  it("the saved loopOpen flag still restores GeoDetective on boot", () => {
+describe("F2 lazy boundary — open screens cross Suspense + error boundary", () => {
+  it("boot never restores GeoDetective from a saved flag (entry rule, owner 2026-11-08)", () => {
     assert.ok(
-      gameAppSource.includes("useState<boolean>(() => readLoopOpen())"),
-      "loopOpen must keep initializing from the persisted flag",
+      gameAppSource.includes("const [loopOpen, setLoopOpen] = useState<boolean>(false);"),
+      "loopOpen must start closed on every boot — a bare visit lands on Home",
+    );
+    assert.ok(
+      !gameAppSource.includes("readLoopOpen") && !gameAppSource.includes("writeLoopOpen"),
+      "the persisted loop open flag must not be read or written any more",
     );
   });
 
@@ -141,18 +144,18 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
     );
   });
 
-  it("coldTrailOpen persists like loopOpen (PR #203 panel: reload-retry parity)", () => {
+  it("coldTrailOpen follows the same entry rule as loopOpen (owner 2026-11-08)", () => {
     assert.ok(
-      gameAppSource.includes("useState<boolean>(() => readColdTrailOpen())"),
-      "coldTrailOpen must initialize from the persisted flag so a reload restores the screen",
+      gameAppSource.includes("const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(false);"),
+      "coldTrailOpen must start closed on every boot — a bare visit lands on Home",
     );
     assert.ok(
-      gameAppSource.includes("writeColdTrailOpen(true); setColdTrailOpen(true);"),
-      "opening Cold Trail must persist the flag",
+      !gameAppSource.includes("readColdTrailOpen") && !gameAppSource.includes("writeColdTrailOpen"),
+      "the persisted cold-trail open flag must not be read or written any more",
     );
     assert.ok(
-      gameAppSource.includes("writeColdTrailOpen(false); setColdTrailOpen(false);"),
-      "leaving/resetting Cold Trail must clear the persisted flag with the state",
+      gameAppSource.includes("onColdTrail={withCardTap(\"coldtrail\", () => setColdTrailOpen(true))}"),
+      "opening Cold Trail is the Home card tap — in-session state only",
     );
   });
 });

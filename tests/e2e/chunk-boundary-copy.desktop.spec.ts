@@ -12,7 +12,8 @@
  *
  * Note on chunk-recovery (#245): a real chunk failure may also fire
  * the one-shot auto-reload. Both legs are written reload-tolerant:
- * after a reload the persisted loop-open flag restores GeoDetective,
+ * after a reload the entry rule (owner, 2026-11-08) lands the player
+ * on Home, so the helper re-opens GeoDetective from its Home card,
  * the chunk fails again, and the same card reappears (the recovery
  * latch blocks further reloads). Assertions poll for the settled
  * state, never a first paint.
@@ -37,6 +38,34 @@ async function openGeoDetective(
     .click();
 }
 
+/**
+ * Poll for the boundary card, re-opening GeoDetective from Home
+ * whenever the chunk-recovery auto-reload has landed the player there
+ * (entry rule, owner 2026-11-08: a reload lands on Home, never back
+ * inside the edition). Returns once the card is visible; the final
+ * expect in each test still makes the assertion that fails the spec.
+ */
+async function expectBoundaryCard(
+  page: import("playwright/test").Page,
+  cardText: string,
+) {
+  const card = page.getByRole("alert").filter({ hasText: cardText });
+  const entry = page.getByRole("button", {
+    name: /GeoDetective: (Solve a mystery|Resume your case)/,
+  });
+  const deadline = Date.now() + 90_000;
+  while (Date.now() < deadline) {
+    if (await card.isVisible().catch(() => false)) return card;
+    if (await entry.isVisible().catch(() => false)) {
+      await entry.click().catch(() => {});
+      await page.waitForTimeout(2_000);
+    } else {
+      await page.waitForTimeout(1_000);
+    }
+  }
+  return card;
+}
+
 test("a GeoDetective chunk failure names GeoDetective, not the map (#210)", async ({
   context,
   page,
@@ -45,9 +74,7 @@ test("a GeoDetective chunk failure names GeoDetective, not the map (#210)", asyn
   await abortLoopChunk(context);
   await openGeoDetective(page);
 
-  const card = page.getByRole("alert").filter({
-    hasText: "Couldn’t load GeoDetective.",
-  });
+  const card = await expectBoundaryCard(page, "Couldn’t load GeoDetective.");
   await expect(card).toBeVisible({ timeout: 90_000 });
   await expect(card).toContainText("Your game is safe");
   await expect(
@@ -74,9 +101,7 @@ test("a stale tab's chunk failure becomes the new-version prompt (#210)", async 
   });
   await openGeoDetective(page);
 
-  const card = page.getByRole("alert").filter({
-    hasText: "A new version of Meridian is available.",
-  });
+  const card = await expectBoundaryCard(page, "A new version of Meridian is available.");
   await expect(card).toBeVisible({ timeout: 90_000 });
   await expect(
     card.getByRole("button", { name: "Refresh" }),

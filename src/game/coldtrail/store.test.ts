@@ -7,10 +7,9 @@ import {
   COLDTRAIL_STORAGE_KEY,
   freshProgress,
   loadColdtrail,
-  readColdTrailOpen,
+  peekColdTrailProgress,
   saveColdtrail,
   takeLegacyMigrationNotice,
-  writeColdTrailOpen,
 } from "./store.ts";
 import type { ColdTrailProgress, ColdTrailStore } from "./types.ts";
 
@@ -350,41 +349,70 @@ test("a v1 blob under the v2 key fails closed (never silently accepted)", () => 
   }
 });
 
-// PR #203 panel — the open flag (reload-retry parity with GeoDetective):
-// the error boundary's reload must restore the Trail screen, not home.
-test("cold trail open flag round-trips through storage", () => {
-  const { data, restore } = stubStorage();
+// Entry rule (owner, 2026-11-08): a bare visit always lands on Home, so
+// the old open flag is gone — nothing reads or writes it. What Home
+// needs instead is the resume peek: is a case mid-play in a store?
+// The peek mirrors peekLoopProgress — read-only, fail-closed.
+// (PACK_KEY itself is declared with the pack-store tests below.)
+
+test("peekColdTrailProgress: no store reads as no case in progress", () => {
+  const { restore } = stubStorage();
   try {
-    assert.equal(readColdTrailOpen(), false, "absent flag reads closed");
-    writeColdTrailOpen(true);
-    assert.equal(data[COLDTRAIL_OPEN_KEY], "1");
-    assert.equal(readColdTrailOpen(), true);
-    writeColdTrailOpen(false);
-    assert.equal(COLDTRAIL_OPEN_KEY in data, false, "closing removes the key");
-    assert.equal(readColdTrailOpen(), false);
+    assert.deepEqual(peekColdTrailProgress(), { inProgress: false });
   } finally {
     restore();
   }
 });
 
-test("cold trail open flag fails silent when storage throws", () => {
+test("peekColdTrailProgress: an unrevealed current case is in progress (core and pack)", () => {
+  const core = stubStorage({
+    [COLDTRAIL_STORAGE_KEY]: JSON.stringify({ ...baseStore(), current: freshProgress() }),
+  });
+  try {
+    assert.deepEqual(peekColdTrailProgress(), { inProgress: true });
+  } finally {
+    core.restore();
+  }
+  const pack = stubStorage({
+    [PACK_KEY]: JSON.stringify({ ...baseStore(), current: freshProgress() }),
+  });
+  try {
+    assert.deepEqual(peekColdTrailProgress(), { inProgress: true });
+  } finally {
+    pack.restore();
+  }
+});
+
+test("peekColdTrailProgress: a revealed case is finished, not in progress", () => {
+  const { restore } = stubStorage({
+    [COLDTRAIL_STORAGE_KEY]: JSON.stringify({
+      ...baseStore(),
+      current: { ...freshProgress(), revealed: true },
+    }),
+  });
+  try {
+    assert.deepEqual(peekColdTrailProgress(), { inProgress: false });
+  } finally {
+    restore();
+  }
+});
+
+test("peekColdTrailProgress: corrupt storage reads closed and never writes", () => {
+  const { data, restore } = stubStorage({ [COLDTRAIL_STORAGE_KEY]: "{not json" });
+  try {
+    assert.deepEqual(peekColdTrailProgress(), { inProgress: false });
+    assert.equal(data[COLDTRAIL_STORAGE_KEY], "{not json", "peek must not touch the stored blob");
+  } finally {
+    restore();
+  }
+});
+
+test("peekColdTrailProgress fails silent when storage throws", () => {
   const { restore } = stubStorage({}, true);
   try {
-    writeColdTrailOpen(true); // must not throw
-    assert.equal(readColdTrailOpen(), false, "throwing storage reads closed");
+    assert.deepEqual(peekColdTrailProgress(), { inProgress: false });
   } finally {
     restore();
-  }
-});
-
-test("cold trail open flag is a no-op without localStorage", () => {
-  const prev = (globalThis as Record<string, unknown>).localStorage;
-  delete (globalThis as Record<string, unknown>).localStorage;
-  try {
-    writeColdTrailOpen(true); // must not throw
-    assert.equal(readColdTrailOpen(), false);
-  } finally {
-    (globalThis as Record<string, unknown>).localStorage = prev;
   }
 });
 
@@ -420,7 +448,7 @@ test("clearColdtrailStore removes v1 before v2, plus the open flag; load is fres
     // Reset symmetry: the shelf selection pick dies with the stores,
     // so a pack pick cannot resurrect after "Start over".
     assert.equal(data["meridian.pack-shelf.v1"], undefined);
-    assert.equal(readColdTrailOpen(), false);
+    assert.equal(data[COLDTRAIL_OPEN_KEY], undefined, "the legacy open flag is gone after the reset");
     // Kept keys byte-identical, and the loader sees a fresh wallet.
     assert.equal(data["meridian.palette"], "standard");
     const loaded = loadColdtrail();

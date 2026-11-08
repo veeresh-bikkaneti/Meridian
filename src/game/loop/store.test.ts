@@ -272,6 +272,14 @@ test("peekLoopProgress: streak + resume flag for the edition card", () => {
   assert.deepEqual(peekLoopProgress(), { streak: 3, bestStreak: 5, inProgress: false, activeDeckId: "core" });
 });
 
+test("peekLoopProgress: the legacy open flag alone offers no resume (entry rule, owner 2026-11-08)", () => {
+  // A flag saved by an older version, with no in-flight case in the
+  // store, must not read as a resumable case — Home shows the plain
+  // "Solve a mystery" entry, and no case is auto-dealt.
+  installStorage({ "meridian.loop.open": "1" });
+  assert.deepEqual(peekLoopProgress(), { streak: 0, bestStreak: 0, inProgress: false, activeDeckId: "core" });
+});
+
 test("v1 archive is never read, written, or deleted", () => {
   const v1 = JSON.stringify({ "2026-10-01": { guesses: [], status: "won", cluesRevealed: 2 } });
   const data = installStorage({ "meridian.loop.v1": v1 });

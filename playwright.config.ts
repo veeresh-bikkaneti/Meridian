@@ -318,6 +318,16 @@ export default defineConfig({
       testMatch: /coldtrail\.spec\.ts/,
     },
     {
+      // Entry routing (owner order, 2026-11-08): a bare visit always
+      // lands on Home; in-flight GeoDetective / Cold Trail cases are
+      // offered as Resume on Home, never auto-opened. The spec drives
+      // its own per-width viewports (390 / 768 / 1280); the project
+      // viewport is only a default.
+      name: "entry-routing",
+      testMatch: /entry-routing\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "review-deck",
       testMatch: /review-deck\.desktop\.spec\.ts/,
     },

@@ -224,15 +224,11 @@ import {
   writeLearningStore,
   type LearningStore,
 } from "@/game/learning";
-import {
-  readLoopOpen,
-  writeLoopOpen,
-  peekLoopProgress,
-} from "@/game/loop/store";
-import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
+import { peekLoopProgress } from "@/game/loop/store";
+import { peekColdTrailProgress } from "@/game/coldtrail/store";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
-// screens — they render only when the player opens them (or when a saved
-// loopOpen flag restores GeoDetective on boot). Both screens statically
+// screens — they render only when the player opens them from Home.
+// Both screens statically
 // import LoopMap, which value-imports maplibre-gl (~1.1 MB) and its
 // stylesheet, so a static import here pulled the whole map library into
 // the preloaded route chunk. They are React.lazy instead — the
@@ -1524,17 +1520,17 @@ export function GameApp() {
     applySessionMapMode("full");
   }, [applySessionMapMode]);
   // GeoDetective mounts its own screen outside the endless-run state
-  // machine; it persists under meridian.loop.v2 and never touches the
-  // run/drop keys. The open flag (meridian.loop.open) restores the screen
-  // after a reload so a mid-game refresh resumes the mystery, not the menu.
-  const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
-  // Cold Trail (vertical slice): its own screen outside the run machine,
-  // persisted under meridian.coldtrail.v2. The open flag
-  // (meridian.coldtrail.open) restores the screen after a reload — PR
-  // #203 panel: without it, the error boundary's reload-retry ("Your
-  // game is safe") returned a Trail player home while a GeoDetective
-  // player resumed. In-progress cases resume from the store.
-  const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(() => readColdTrailOpen());
+  // machine (Cold Trail mounts its own the same way). Entry rule
+  // (owner, 2026-11-08): a bare visit always lands on Home first —
+  // never straight into a game. Both screens start closed on every
+  // boot, no matter what an older version of the game left saved.
+  // A case that was left mid-play is
+  // not lost: its progress stays in its store (meridian.loop.v2 /
+  // meridian.coldtrail.v2) and Home offers it back with a Resume
+  // button, so returning to a case is always one clear tap the player
+  // chooses — never a surprise jump past the home screen.
+  const [loopOpen, setLoopOpen] = useState<boolean>(false);
+  const [coldTrailOpen, setColdTrailOpen] = useState<boolean>(false);
   // Age profile (parent-set band). The profile object lives in state and
   // refreshes via the `ageprofile:changed` event — game screens never
   // touch the store directly. The settings screen (lazy) is the only
@@ -2166,12 +2162,10 @@ export function GameApp() {
     // upgrade — the upgrade must never override the player's pick.
     setScoutUpgradeEligible(false);
     // BLOCK-4: close every other full-screen state so the render
-    // precedence below cannot hand the landing to a lurking flag
-    // (see the docstring). writeLoopOpen mirrors LoopScreen's own
-    // onLeave, which clears state and persisted flag together.
-    writeLoopOpen(false);
+    // precedence below cannot hand the landing to a lurking screen
+    // (see the docstring). The GeoDetective / Cold Trail screens are
+    // plain in-session state now — closing them here is the whole job.
     setLoopOpen(false);
-    writeColdTrailOpen(false);
     setColdTrailOpen(false);
     setStarting(null);
   }, [run]);
@@ -3410,7 +3404,8 @@ export function GameApp() {
 
   // GeoDetective lives outside the run machine: its own screen, its own
   // storage namespace, its own deck rhythm. An in-progress run takes
-  // precedence (the player is mid-game); otherwise the open flag wins.
+  // precedence (the player is mid-game); otherwise the screen shows
+  // only when the player opened it from Home this visit.
   if (loopOpen) {
     return (
       <>
@@ -3418,7 +3413,7 @@ export function GameApp() {
         <MapErrorBoundary surface="GeoDetective">
           <Suspense fallback={<SessionLoadingFallback label="Loading GeoDetective…" />}>
             <LoopScreen
-              onLeave={() => { writeLoopOpen(false); setLoopOpen(false); }}
+              onLeave={() => setLoopOpen(false)}
               onCelebrate={(spec) => setCelebration(spec)}
             />
           </Suspense>
@@ -3430,15 +3425,16 @@ export function GameApp() {
   }
 
   // Cold Trail lives next to the loop edition: its own screen, its own
-  // storage namespace. A mid-case reload resumes from meridian.coldtrail.v2,
-  // and the persisted open flag restores the screen itself (PR #203).
+  // storage namespace. Like GeoDetective, it shows only when the player
+  // opened it from Home this visit; a mid-case visit back to Home is
+  // offered as a resume on the Cold Trail card there.
   if (coldTrailOpen) {
     return (
       <>
         {mapModeAnnouncer}
         <MapErrorBoundary surface="Cold Trail">
           <Suspense fallback={<SessionLoadingFallback label="Loading Cold Trail…" />}>
-            <TrailScreen onLeave={() => { writeColdTrailOpen(false); setColdTrailOpen(false); }} />
+            <TrailScreen onLeave={() => setColdTrailOpen(false)} />
           </Suspense>
         </MapErrorBoundary>
         {celebrationOverlay}
@@ -3842,10 +3838,9 @@ export function GameApp() {
             detail: { loop: "geodetective" },
           }),
         );
-        writeLoopOpen(true);
         setLoopOpen(true);
       })}
-      onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
+      onColdTrail={withCardTap("coldtrail", () => setColdTrailOpen(true))}      onReview={startReview}
       challengeEnabled={friendChallengesOn}
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
@@ -4425,6 +4420,10 @@ function Choose({
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
   const [loopProgress] = useState(() => peekLoopProgress());
+  // Cold Trail gets the same promise: a case left mid-play is offered
+  // back on its Home card as a resume, never auto-opened (entry rule,
+  // owner 2026-11-08 — see the loopOpen state note in GameApp).
+  const [coldTrailProgress] = useState(() => peekColdTrailProgress());
   // Journal ("What the land remembers", docs/journal-spec.md §3/§5/§6):
   // the displayed set index is state, driven by the auto-switch rotation
   // (createJournalRotation in ./home-journal): a boundary timeout at the
@@ -4884,9 +4883,13 @@ function Choose({
               onPointerEnter={prefetchTerritoryData}
               onPointerDown={prefetchTerritoryData}
               onFocus={prefetchTerritoryDataOnFocus}
-              aria-label="Cold Trail: Start the trail"
+              aria-label={coldTrailProgress.inProgress ? "Cold Trail: Resume your trail" : "Cold Trail: Start the trail"}
             >
-              <span aria-hidden="true">❄️</span>{" "}Start the trail
+              {coldTrailProgress.inProgress ? (
+                <><span aria-hidden="true">▶️</span>{" "}Resume your trail</>
+              ) : (
+                <><span aria-hidden="true">❄️</span>{" "}Start the trail</>
+              )}
             </button>
           </div>
         </article>

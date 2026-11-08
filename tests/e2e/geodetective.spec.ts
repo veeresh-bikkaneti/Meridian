@@ -70,6 +70,24 @@ async function guessViaMap(page: import("playwright/test").Page, query: string) 
   await page.getByRole("button", { name: "Guess this place" }).click();
 }
 
+/**
+ * Entry rule (owner, 2026-11-08): a reload lands on Home, never back
+ * inside GeoDetective. The player re-enters through the edition card —
+ * "Resume your case" while a case is mid-play, the plain entry once it
+ * is finished (the screen then re-renders the finished case).
+ */
+async function reenterFromHome(page: import("playwright/test").Page) {
+  const card = page.getByRole("button", {
+    name: /^GeoDetective: (Resume your case|Solve a mystery)$/,
+  });
+  await expect(card).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByTestId("loop-screen")).toHaveCount(0);
+  await card.click();
+  await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
+    timeout: 30_000,
+  });
+}
+
 /** The v2 store blob from the page's localStorage. */
 async function loopStore(page: import("playwright/test").Page) {
   return page.evaluate(() => JSON.parse(localStorage.getItem("meridian.loop.v2")!));
@@ -375,15 +393,20 @@ test("ocean tap selects an Open Water guess (owner directive 2026-10-12)", async
   expect(await guessCount(page)).toBe(0);
 });
 
-test("reload mid-game resumes the open mystery without re-dealing", async ({ page }) => {
+test("reload lands Home; Resume reopens the open mystery without re-dealing", async ({ page }) => {
   await openLoop(page, "218");
   await guessViaMap(page, "tokyo");
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
   expect(await ringFeatureCount(page)).toBeGreaterThan(0);
 
   await page.reload();
-  // Reload-restore: the in-progress mystery comes back, not a reset.
-  await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible();
+  // Entry rule (owner, 2026-11-08): the reload lands on Home and Home
+  // offers the case back — it never drops the player straight back in.
+  await expect(
+    page.getByRole("button", { name: "GeoDetective: Resume your case" }),
+  ).toBeVisible({ timeout: 30_000 });
+  await reenterFromHome(page);
+  // Resume-restore: the in-progress mystery comes back, not a reset.
   await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible();
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
   await expect(
@@ -401,7 +424,7 @@ test("reload mid-game resumes the open mystery without re-dealing", async ({ pag
   expect(store.deck.deck).toHaveLength(387);
 });
 
-test("reload on a finished reveal re-renders the reveal, not a fresh deal", async ({
+test("reload lands Home; reopening re-renders the finished reveal, not a fresh deal", async ({
   page,
 }) => {
   await openLoop(page, "218");
@@ -409,6 +432,8 @@ test("reload on a finished reveal re-renders the reveal, not a fresh deal", asyn
   await expect(page.getByText("🎯 You found it!")).toBeVisible();
 
   await page.reload();
+  // Entry rule: Home first; the finished case is one chosen tap away.
+  await reenterFromHome(page);
   // The reveal re-renders: same mystery acknowledged, streak intact.
   await expect(page.getByText("🎯 You found it!")).toBeVisible({ timeout: 30_000 });
   await expect(page.getByText("Solved in 1 of 5 guesses.")).toBeVisible();
@@ -435,7 +460,9 @@ test("bestStreak persists across a reload: win raises the best, the best survive
   expect(won.bestStreak).toBe(1);
 
   await page.reload();
-  // The reveal re-renders from the persisted blob — the best is untouched.
+  // Entry rule: Home first, then the player re-enters — the reveal
+  // re-renders from the persisted blob and the best is untouched.
+  await reenterFromHome(page);
   await expect(page.getByText("🎯 You found it!")).toBeVisible({ timeout: 30_000 });
   const afterReload = await loopStore(page);
   expect(afterReload.bestStreak).toBe(1);

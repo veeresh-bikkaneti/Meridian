@@ -92,11 +92,13 @@ test("8-10: hint stays used after a mid-mystery reload (#185)", async ({
   await expect(button).toBeDisabled();
   await expect(button).toHaveAccessibleName(/Hint used/i);
 
-  // Reload mid-mystery: the persisted loop-open flag restores the
-  // screen and the persisted puzzle carries hintsUsed = 1. Pre-#185 the
-  // local counter remounted at zero and the button came back enabled —
-  // a second hint for a one-per-round player.
+  // Reload mid-mystery: the entry rule (owner, 2026-11-08) lands the
+  // player on Home; tapping "Resume your case" reopens the mystery and
+  // the persisted puzzle carries hintsUsed = 1. Pre-#185 the local
+  // counter remounted at zero and the button came back enabled — a
+  // second hint for a one-per-round player.
   await page.reload();
+  await page.getByRole("button", { name: "GeoDetective: Resume your case" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 30_000,
   });
@@ -120,8 +122,10 @@ test("8-10: a reload BEFORE any hint keeps the button enabled (#185 negative con
 
   // Hydration must restore the persisted count — zero here — not a
   // sticky "used". Guards against an over-eager fix that disables the
-  // button after any reload.
+  // button after any reload. (Entry rule, owner 2026-11-08: the reload
+  // lands on Home, so the mystery is re-entered via "Resume your case".)
   await page.reload();
+  await page.getByRole("button", { name: "GeoDetective: Resume your case" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 30_000,
   });
