@@ -41,6 +41,7 @@ import {
   lastIngestOutcomeForTests,
   setSleepForTests,
   UncorroboratedSummary,
+  COUNT_BUCKET_TTL_SECONDS,
   thresholdConfig,
   tierOf,
   validateEvent,
@@ -3645,4 +3646,52 @@ test("T3 default export passes ctx through (fetch signature matches dev-entry re
   assert.equal(devMod.default, mod.default, "dev-entry re-exports the same handler");
   assert.equal(mod.default.fetch.length, 3, "fetch(request, env, ctx)");
   assert.equal(mod.default.scheduled.length, 3, "scheduled(event, env, ctx)");
+});
+
+// --- Council fix T4 (2026-11-08): retention + numeric count maps ----------
+
+test("T4 every counter write sets expirationTtl (90 days); ops records 7 days", async () => {
+  const puts: Array<{ k: string; o?: { expirationTtl?: number } }> = [];
+  const map = new Map<string, string>();
+  const kv: KvLike = {
+    get: async (k: string) => map.get(k) ?? null,
+    put: async (k: string, v: string, o?: { expirationTtl?: number }) => {
+      puts.push({ k, o });
+      map.set(k, v);
+    },
+  };
+  okFetch();
+  await handleRequest(postEvent(tileEvent()), { TELEMETRY_COUNTS: kv });
+  await handleRequest(postEvent(provJsError()), { TELEMETRY_COUNTS: kv, DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(COUNT_BUCKET_TTL_SECONDS, 90 * 24 * 3600);
+  assert.ok(puts.length >= 3);
+  for (const p of puts) {
+    assert.ok(typeof p.o?.expirationTtl === "number" && p.o.expirationTtl >= 60, `ttl on ${p.k}`);
+    if (p.k.startsWith("tel:counts:")) assert.equal(p.o!.expirationTtl, COUNT_BUCKET_TTL_SECONDS);
+    if (p.k.startsWith("ops:")) assert.equal(p.o!.expirationTtl, 7 * 24 * 3600);
+  }
+});
+
+test("T4 stored count maps are numerically normalised on read (corrBuilds/cantTellGroups/others); old buckets still read", async () => {
+  const map = new Map<string, string>();
+  const kv: KvLike = { get: async (k: string) => map.get(k) ?? null, put: async (k: string, v: string) => void map.set(k, v) };
+  map.set("k", JSON.stringify({
+    total: 3,
+    builds: { a: 2, b: "x" },
+    corrBuilds: { a: "9", b: 1, c: null, d: Infinity },
+    cantTellGroups: { g: { nested: 1 }, h: 2 },
+    provenance: { corroborated: "5", uncorroborated: 1 },
+    verdicts: "garbage",
+  }));
+  const b = (await kvTelemetryStore(kv).readBucket("k"))!;
+  assert.deepEqual(b.builds, { a: 2 });
+  assert.deepEqual(b.corrBuilds, { b: 1 });
+  assert.deepEqual(b.cantTellGroups, { h: 2 });
+  assert.deepEqual(b.provenance, { uncorroborated: 1 });
+  assert.deepEqual(b.verdicts, {});
+  assert.deepEqual(b.alerts, []);
+  map.set("old", JSON.stringify({ total: 1, builds: { a: 1 } }));
+  const old = (await kvTelemetryStore(kv).readBucket("old"))!;
+  assert.equal(old.total, 1);
+  assert.deepEqual(old.corrBuilds, {});
 });

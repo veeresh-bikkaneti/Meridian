@@ -1813,6 +1813,8 @@ export function tierOf(type: CrashReportEventType, recoveryOutcome?: string): Te
 // os/form device bucket). No sessionId, no UA, no IPs, no payloads.
 
 export const HOUR_MS = 3_600_000;
+/** Council fix T4: counter retention (proposal default, documented in README). */
+export const COUNT_BUCKET_TTL_SECONDS = 90 * 24 * 3600;
 export const TRAILING_BASELINE_HOURS = 24;
 export const ANOMALY_RATIO = 3;
 export const ANOMALY_MIN_COUNT = 3;
@@ -1930,25 +1932,30 @@ export function kvTelemetryStore(kv: KvLike): TelemetryStore {
         if (parsed && typeof parsed.total === "number") {
           // Read-tolerant (§5.2): buckets written by older code lack
           // the v2 fields and default to empty maps / zero times.
+          // Council fix T4: every count map is numerically normalised
+          // (a corrupt or hand-edited value can never feed the threshold
+          // or can't-tell predicates as a string/object).
           return {
             total: parsed.total,
-            builds: parsed.builds ?? {},
-            editions: parsed.editions ?? {},
-            regions: parsed.regions ?? {},
-            devices: parsed.devices ?? {},
-            groups: parsed.groups ?? {},
-            verdicts: parsed.verdicts ?? {},
-            severities: parsed.severities ?? {},
-            milestones: parsed.milestones ?? {},
-            modes: parsed.modes ?? {},
-            errorNames: parsed.errorNames ?? {},
+            builds: numericRecord(parsed.builds),
+            editions: numericRecord(parsed.editions),
+            regions: numericRecord(parsed.regions),
+            devices: numericRecord(parsed.devices),
+            groups: numericRecord(parsed.groups),
+            verdicts: numericRecord(parsed.verdicts),
+            severities: numericRecord(parsed.severities),
+            milestones: numericRecord(parsed.milestones),
+            modes: numericRecord(parsed.modes),
+            errorNames: numericRecord(parsed.errorNames),
             firstAt: typeof parsed.firstAt === "number" ? parsed.firstAt : 0,
             lastAt: typeof parsed.lastAt === "number" ? parsed.lastAt : 0,
             late: typeof parsed.late === "number" ? parsed.late : 0,
-            alerts: Array.isArray(parsed.alerts) ? parsed.alerts : [],
+            alerts: Array.isArray(parsed.alerts)
+              ? parsed.alerts.filter((a): a is string => typeof a === "string").slice(0, 256)
+              : [],
             provenance: numericRecord(parsed.provenance),
-            corrBuilds: parsed.corrBuilds ?? {},
-            cantTellGroups: parsed.cantTellGroups ?? {},
+            corrBuilds: numericRecord(parsed.corrBuilds),
+            cantTellGroups: numericRecord(parsed.cantTellGroups),
           };
         }
       } catch {
@@ -1957,7 +1964,10 @@ export function kvTelemetryStore(kv: KvLike): TelemetryStore {
       return null;
     },
     async writeBucket(key: string, bucket: CountBucket): Promise<void> {
-      await kv.put(key, JSON.stringify(bucket));
+      // Council fix T4: hour buckets expire (they are inert after the
+      // digest + 24 h trailing window). Existing keys written before this
+      // change keep no TTL; nothing here deletes historical data.
+      await kv.put(key, JSON.stringify(bucket), { expirationTtl: COUNT_BUCKET_TTL_SECONDS });
     },
   };
 }
