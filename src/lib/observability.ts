@@ -529,37 +529,30 @@ export function coarseDeviceFacts(): DeviceInfo {
 }
 
 /**
- * Council fix round 2 (F1): token-based query/fragment removal. A token is
- * a run without whitespace, quotes, angle brackets or backticks — so
- * parentheses, brackets and markdown link syntax stay INSIDE the token and
- * can no longer end a URL early. In a token holding scheme://, everything
- * from the first ?, #, %3F or %23 after the scheme to the token's end is
- * dropped (nested URLs included). A schemeless token is cut at its first
- * ? / %3F only when a key=value query follows (relative "/api?token=x").
- * Only trailing closing punctuation of the cut part is kept. Path segments
- * are kept by design; a bare "k=v" without "?" is not a query and survives.
- * A trailing stack position ":line:col" after a removed query is kept
- * (so a numeric "a:1:2" query tail would survive — documented limit).
+ * Council fix round 3: delimiter-boundary query/fragment removal. A token
+ * is a run without whitespace, quotes, angle brackets or backticks (so
+ * parentheses, brackets and markdown stay inside it). Its boundary is the
+ * first "?", "#", or percent-encoded ?/# at any nesting depth (%3F, %253F,
+ * %2523, ...). The tail from the boundary to the token end is removed —
+ * nothing after it is ever kept (no line:col or punctuation rescue: query
+ * and fragment content is never stack metadata) — when the boundary is
+ * encoded, the head is path-like (contains / or an encoded /), or the tail
+ * holds a key=value (= or an encoded =). Otherwise the token is plain
+ * prose ("what?", "c#1", "a?b") and is kept. Finite single pass; nothing
+ * is decoded. Limits: URL paths are kept; a bare prose token like
+ * "?SECRET" or "#SECRET" with no path and no "=" survives; HTML-entity
+ * delimiters (&#63;) are not recognised.
  */
 function stripUrlQueries(s: string): string {
   return s.replace(/[^\s'"<>`]+/g, (tok) => {
-    const scheme = /(?:https?|wss?|blob|file):\/\//i.exec(tok);
-    let start: number;
-    let cutRe: RegExp;
-    if (scheme) {
-      start = scheme.index + scheme[0].length;
-      cutRe = /[?#]|%3f|%23/i;
-    } else if (/(?:\?|%3f)[^\s=?&#]+(?:=|%3d)/i.test(tok)) {
-      start = 0;
-      cutRe = /\?|%3f/i;
-    } else {
-      return tok;
-    }
-    const rest = tok.slice(start);
-    const cut = rest.search(cutRe);
-    if (cut < 0) return tok;
-    const tail = /(?::\d{1,7}:\d{1,7})?[)\]}.,;!]*$/.exec(rest.slice(cut))?.[0] ?? "";
-    return tok.slice(0, start) + rest.slice(0, cut) + tail;
+    const boundary = tok.search(/[?#]|%(?:25)*(?:3f|23)/i);
+    if (boundary < 0) return tok;
+    const head = tok.slice(0, boundary);
+    const tail = tok.slice(boundary);
+    const encoded = tail.startsWith("%");
+    const pathLike = /\/|%(?:25)*2f/i.test(head);
+    const keyValue = /=|%(?:25)*3d/i.test(tail);
+    return encoded || pathLike || keyValue ? head : tok;
   });
 }
 

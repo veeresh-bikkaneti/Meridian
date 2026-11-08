@@ -3396,9 +3396,16 @@ test("T1 P1 scrubErrorText drops URL query and fragment but keeps origin + path 
     300,
   );
   assert.equal(out, "Failed to fetch dynamically imported module: https://meridian.example/assets/region-ab12cd.js");
+  // Round 3 premise correction: anything after a query/fragment delimiter
+  // is query data, never stack metadata — a ":line:col" there is dropped.
   assert.equal(
     scrubErrorText("at renderGlobe (https://x.example/assets/index-Bk3x9.js?v=2:12:345)", 300),
+    "at renderGlobe (https://x.example/assets/index-Bk3x9.js",
+  );
+  assert.equal(
+    scrubErrorText("at renderGlobe (https://x.example/assets/index-Bk3x9.js:12:345)", 300),
     "at renderGlobe (https://x.example/assets/index-Bk3x9.js:12:345)",
+    "a genuine line:col BEFORE any delimiter survives",
   );
 });
 
@@ -3898,7 +3905,7 @@ test("T6 scheduled() dispatch: digest cron keeps the digest path; health cron ru
 
 const R2_SCRUB_CASES: Array<{ input: string; secrets: string[]; keeps: string[] }> = [
   { input: "https://host/a?token=(SECRET123)", secrets: ["SECRET123", "token"], keeps: ["https://host/a"] },
-  { input: "[docs](https://host/a?t=S1ECRET)", secrets: ["S1ECRET"], keeps: ["[docs](https://host/a)"] },
+  { input: "[docs](https://host/a?t=S1ECRET)", secrets: ["S1ECRET"], keeps: ["[docs](https://host/a"] },
   { input: "see https://a.test/p?x=S2ECRET and https://b.test/q#S3ECRET\nnext line", secrets: ["S2ECRET", "S3ECRET"], keeps: ["https://a.test/p", "https://b.test/q", "\nnext line"] },
   { input: "https://h.test/a\\?t=S4ECRET", secrets: ["S4ECRET"], keeps: ["https://h.test/a"] },
   { input: "GET /api/v1?token=S5ECRET failed", secrets: ["S5ECRET"], keeps: ["GET /api/v1", "failed"] },
@@ -4013,22 +4020,159 @@ test("R2-F4 health: a failed recovered message keeps the incident open and is re
   assert.equal(JSON.parse(map.get("ops:health:incident") ?? "{}").open, false);
 });
 
-test("R2-F5 health: email is used ONLY as a fallback when no Discord webhook is configured", { timeout: 15_000 }, async () => {
-  const failingProbe = () => {
-    const { kv } = memoryStore();
-    const put = kv.put.bind(kv);
-    kv.put = (k, v, o) => (k === "ops:health:probe" ? Promise.reject(new Error("outage")) : put(k, v, o));
-    return kv;
-  };
-  okFetch(202);
-  const emailOnly = { TELEMETRY_COUNTS: failingProbe(), RESEND_API_KEY: "synthetic", REPORT_EMAIL: "ops@example.invalid" };
-  await runScheduledHealth(emailOnly, H_T0, HEALTH_CRON);
-  await runScheduledHealth(emailOnly, H_T0 + 15 * 60_000, HEALTH_CRON);
-  assert.equal(fetchCalls.length, 1);
-  assert.equal(fetchCalls[0].url, "https://api.resend.com/emails");
-  fetchCalls = [];
-  const both = healthEnv(failingProbe(), { RESEND_API_KEY: "synthetic", REPORT_EMAIL: "ops@example.invalid" });
+test("R3 ops channel is Discord only: email-only config is unhealthy (explicit reason) and sends NO health email", { timeout: 15_000 }, async () => {
+  okFetch(200);
+  const { kv } = memoryStore();
+  const emailOnly = { TELEMETRY_COUNTS: kv, RESEND_API_KEY: "synthetic", REPORT_EMAIL: "ops@example.invalid" };
+  const now = Date.now(); // /health evaluates freshness against the real clock
+  await runScheduledHealth(emailOnly, now - 15 * 60_000, HEALTH_CRON);
+  const r1 = await runScheduledHealth(emailOnly, now, HEALTH_CRON);
+  const b = r1.checks.find((c) => c.name === "bindings_present");
+  assert.equal(r1.health, "unhealthy");
+  assert.equal(b?.result, "failed");
+  assert.equal(b?.reason, "ops_discord_missing");
+  assert.equal(fetchCalls.length, 0, "no ops email, no other send");
+  const res = await handleRequest(new Request("https://worker.test/health"), emailOnly);
+  const body = (await res.json()) as { health: string; failing: string[] };
+  assert.equal(body.health, "unhealthy", "never claims a healthy deliverable ops channel");
+  assert.deepEqual(body.failing, ["bindings_present"]);
+  // Both configured: health goes to Discord only.
+  const { kv: kv2 } = memoryStore();
+  const put = kv2.put.bind(kv2);
+  kv2.put = (k, v, o) => (k === "ops:health:probe" ? Promise.reject(new Error("outage")) : put(k, v, o));
+  const both = healthEnv(kv2, { RESEND_API_KEY: "synthetic", REPORT_EMAIL: "ops@example.invalid" });
   await runScheduledHealth(both, H_T0, HEALTH_CRON);
   await runScheduledHealth(both, H_T0 + 15 * 60_000, HEALTH_CRON);
-  assert.deepEqual(fetchCalls.map((c) => c.url), ["https://discord.test/hook"], "Discord configured: no ops email");
+  assert.deepEqual(fetchCalls.map((c) => c.url), ["https://discord.test/hook"]);
+});
+
+test("R3 existing ingest email channel unchanged: a real crash still emails when email is configured", async () => {
+  okFetch(200);
+  await handleRequest(postEvent(provJsError()), { RESEND_API_KEY: "synthetic", REPORT_EMAIL: "ops@example.invalid" });
+  assert.deepEqual(fetchCalls.map((c) => c.url), ["https://api.resend.com/emails"]);
+});
+
+// --- Council fix round 3 (2026-11-08): delimiter-boundary scrub, bounded admission ---
+//
+// Premise retired: "after a query/fragment delimiter we can keep a safe
+// suffix" and "a token is URL-like only with a scheme or ?k=v". Rule now:
+// once a token crosses a query/fragment boundary (?, #, or their percent-
+// encodings at any nesting depth) and the token is path-like (has / or
+// %2F), uses an encoded delimiter, or carries k=v after it, EVERYTHING
+// from the boundary to the token end is removed — no suffix is rescued.
+
+const R3_SECRET = "Z9SECRETz";
+const R3_CORPUS: Array<[string, string]> = [
+  // [input, exact expected output]
+  ["https://host/a?recovery_code=:612345:789012", "https://host/a"],
+  ["/map#session=Z9SECRETz", "/map"],
+  ["https%3A%2F%2Fhost%2Fmap%23session%3DZ9SECRETz", "https%3A%2F%2Fhost%2Fmap"],
+  ["/api?Z9SECRETz", "/api"],
+  ["https://h/p%253Ftoken%253DZ9SECRETz", "https://h/p"],
+  ["https://h/p%25253FZ9SECRETz", "https://h/p"],
+  ["https://h/a?t=1#frag=Z9SECRETz", "https://h/a"],
+  ["https://h/a#?t=Z9SECRETz", "https://h/a"],
+  ["https://h/a??t=Z9SECRETz", "https://h/a"],
+  ["?token=Z9SECRETz", ""],
+  ["#access_token=Z9SECRETz", ""],
+  ["at f (https://cdn.test/app.js?v=2:10:5)", "at f (https://cdn.test/app.js"],
+  ["[x](https://h/a?t=Z9SECRETz) next", "[x](https://h/a next"],
+  ["one https://a/p?x=Z9SECRETz\ntwo /b#y=Z9SECRETz", "one https://a/p\ntwo /b"],
+  ["host.test/a?Z9SECRETz", "host.test/a"],
+  ["?token%3DZ9SECRETz", ""],
+  ["#k%253DZ9SECRETz", ""],
+  ["note:?pin%3d612345", "note:"],
+  // benign: no boundary crossed, or a bare non-path token without k=v
+  ["at f (https://cdn.test/app.js:10:5)", "at f (https://cdn.test/app.js:10:5)"],
+  ["what? c#1 a?b foo(bar) 50% done [x](y)", "what? c#1 a?b foo(bar) 50% done [x](y)"],
+  ["Failed: https://h/assets/region-ab12.js", "Failed: https://h/assets/region-ab12.js"],
+];
+
+test("R3 scrub corpus: exact outputs, worker and client identical", () => {
+  for (const [input, expected] of R3_CORPUS) {
+    const w = scrubErrorText(input, 1000);
+    assert.equal(w, expected, `worker ${JSON.stringify(input)}`);
+    assert.equal(sanitizeError(new Error(input)).message, expected, `client ${JSON.stringify(input)}`);
+  }
+});
+
+test("R3 scrub property: a value after any query/fragment boundary never survives, in any context", () => {
+  const prefixes = ["", "(", "[l](", "at f (", "x=", "\"", "<"];
+  const bases = ["https://h.test/a", "/rel/p", "h.test/p", "https%3A%2F%2Fh%2Fp", "blob:https://h/x", "wss://h/s", "file:///C:/a"];
+  const delims = ["?", "#", "%3F", "%23", "%3f", "%253F", "%2523", "\\?", "??", "#?", "?#"];
+  const mids = ["", "k=", ":", "(", "k=(", ":61:", "%3D", "k=v&j="];
+  const suffixes = ["", ")", ":1:2", ").", ":1:2)", "\nnext", ")]"];
+  let n = 0;
+  for (const p of prefixes) for (const b of bases) for (const d of delims) for (const m of mids) for (const x of suffixes) {
+    const input = `${p}${b}${d}${m}${R3_SECRET}${x}`;
+    const w = scrubErrorText(input, 1000);
+    assert.ok(!w.includes(R3_SECRET), `leak: ${JSON.stringify(input)} -> ${JSON.stringify(w)}`);
+    assert.ok(!w.includes(":1:2") || !x.includes(":1:2"), `query suffix rescued: ${JSON.stringify(input)} -> ${JSON.stringify(w)}`);
+    if (n++ % 37 === 0) assert.equal(sanitizeError(new Error(input)).message, w, "client parity");
+  }
+  assert.ok(n > 10_000);
+});
+
+test("R3 numeric query value never reaches Discord via real ingress", async () => {
+  okFetch(200);
+  await handleRequest(postEvent(provJsError({ error: sanitizeError(new Error("https://host/a?recovery_code=:612345:789012")) })), { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(fetchCalls.length, 1);
+  assert.ok(!String((fetchCalls[0].init as { body: string }).body).includes("612345"));
+});
+
+function hangingLimiter(): { limit: () => Promise<{ success: boolean }>; calls: number } {
+  const b = { calls: 0, limit: () => { b.calls++; return new Promise<{ success: boolean }>(() => {}); } };
+  return b;
+}
+
+test("R3 a hanging admission rate-limit binding: real crash pages once, response bounded, in-memory limit still enforced", { timeout: 20_000 }, async () => {
+  okFetch(200);
+  const pending: Promise<unknown>[] = [];
+  const limiter = hangingLimiter();
+  const env = { DISCORD_WEBHOOK_URL: "https://discord.test/hook", CRASH_RATE_LIMITER: limiter };
+  const t0 = Date.now();
+  const res = await handleRequest(postEvent(provJsError()), env, { waitUntil: (p) => pending.push(p) });
+  assert.ok(Date.now() - t0 < 2_500, "admission is bounded");
+  assert.equal(res.status, 200);
+  assert.deepEqual(await res.json(), { ok: true });
+  assert.equal(pending.length, 1, "exactly one background delivery registered");
+  await Promise.all(pending);
+  assert.equal(fetchCalls.length, 1, "exactly one send");
+  assert.equal(limiter.calls, 1);
+  // The in-memory layer (first) still caps one client while the binding hangs.
+  resetRateLimitsForTests();
+  const codes: number[] = [];
+  for (let i = 0; i < 11; i++) {
+    const r = await handleRequest(postEvent(tileEvent(), "/ingest", { "cf-connecting-ip": "203.0.113.9" }), { CRASH_RATE_LIMITER: hangingLimiter() });
+    codes.push(r.status);
+  }
+  assert.equal(codes.filter((c) => c === 429).length, 1, "11th request from one client is limited by the in-memory layer");
+});
+
+test("R3 a hanging admission binding never turns a probe into an individual send", { timeout: 20_000 }, async () => {
+  okFetch(200);
+  const { kv } = memoryStore();
+  await handleRequest(postEvent({ type: "js_error", ts: Date.now(), buildId: "wake-check" }), { TELEMETRY_COUNTS: kv, DISCORD_WEBHOOK_URL: "https://discord.test/hook", CRASH_RATE_LIMITER: hangingLimiter() });
+  assert.equal(fetchCalls.length, 0);
+  assert.equal(lastIngestOutcomeForTests()?.route, "counted_only");
+});
+
+test("R3 a late binding answer after the admission deadline has no effect", { timeout: 20_000 }, async () => {
+  okFetch(200);
+  const late = { limit: () => new Promise<{ success: boolean }>((r) => setTimeout(() => r({ success: false }), 1_500)) };
+  const res = await handleRequest(postEvent(provJsError()), { DISCORD_WEBHOOK_URL: "https://discord.test/hook", CRASH_RATE_LIMITER: late });
+  assert.equal(res.status, 200);
+  await new Promise((r) => setTimeout(r, 900));
+  assert.equal(fetchCalls.length, 1, "paged once; the late 'limited' answer neither blocks nor re-sends");
+});
+
+test("R3 a request body that never finishes is answered 408 within the bound and sends nothing", { timeout: 20_000 }, async () => {
+  okFetch(200);
+  const stalled = new ReadableStream<Uint8Array>({ start(c) { c.enqueue(new TextEncoder().encode("{")); } });
+  const req = new Request("https://worker.test/ingest", { method: "POST", headers: { "content-type": "application/json", origin: GAME_ORIGIN }, body: stalled, duplex: "half" } as RequestInit);
+  const t0 = Date.now();
+  const res = await handleRequest(req, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(res.status, 408);
+  assert.ok(Date.now() - t0 < 12_000);
+  assert.equal(fetchCalls.length, 0);
 });

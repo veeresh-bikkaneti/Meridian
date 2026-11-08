@@ -123,6 +123,10 @@ export const RATE_LIMIT_BINDING = "CRASH_RATE_LIMITER";
 
 const RATE_LIMIT_MAX = 10;
 const RATE_LIMIT_WINDOW_MS = 60_000;
+/** Round 3: deadline for the shared rate-limit binding at admission. */
+export const RATE_LIMIT_BINDING_TIMEOUT_MS = 1_000;
+/** Round 3: deadline for reading the client's request body. */
+export const BODY_READ_TIMEOUT_MS = 10_000;
 
 const FORWARD_TIMEOUT_MS = 5_000;
 
@@ -641,12 +645,20 @@ export class BindingRateLimiter implements IngestRateLimiter {
     this.binding = binding;
   }
 
+  /**
+   * Round 3: the shared binding is bounded. Policy: a binding that throws,
+   * rejects OR does not answer within RATE_LIMIT_BINDING_TIMEOUT_MS fails
+   * open to the in-memory layer (which runs first and still caps each
+   * client per isolate). A late answer after the deadline is ignored —
+   * it can neither block nor re-route the request.
+   */
   async check(ip: string, now: number): Promise<RateDecision> {
     try {
-      const { success } = await this.binding.limit({ key: await bindingClientKey(ip, now) });
+      const key = await bindingClientKey(ip, now);
+      const { success } = await withTimeout(Promise.resolve(this.binding.limit({ key })), RATE_LIMIT_BINDING_TIMEOUT_MS);
       return success ? ALLOW : { allowed: false, retryAfterSec: RATE_LIMIT_WINDOW_MS / 1000 };
     } catch (err) {
-      logLine("rate-limit binding failed (fail-open)", err instanceof Error ? err.name : "unknown");
+      logLine("rate-limit binding failed or timed out (fail-open to in-memory layer)", err instanceof Error ? err.name : "unknown");
       return ALLOW;
     }
   }
@@ -718,13 +730,26 @@ const originPolicy = new OriginPolicy();
  * `max` bytes. Returns null when over the cap. A chunked upload without a
  * Content-Length is never buffered beyond the cap.
  */
-export async function readBodyCapped(request: Request, max: number): Promise<string | null> {
+/**
+ * Read at most `max` bytes: null when over the cap, undefined when the
+ * body does not finish within `timeoutMs` (round 3: a stalled body can
+ * no longer hold the request open; the reader is cancelled).
+ */
+export async function readBodyCapped(request: Request, max: number, timeoutMs: number = BODY_READ_TIMEOUT_MS): Promise<string | null | undefined> {
   if (!request.body) return "";
   const reader = request.body.getReader();
   const chunks: Uint8Array[] = [];
   let total = 0;
+  const deadline = Date.now() + timeoutMs;
   for (;;) {
-    const { done, value } = await reader.read();
+    let chunk: ReadableStreamReadResult<Uint8Array>;
+    try {
+      chunk = await withTimeout(reader.read(), Math.max(1, deadline - Date.now()));
+    } catch {
+      await reader.cancel().catch(() => {});
+      return undefined;
+    }
+    const { done, value } = chunk;
     if (done) break;
     total += value.byteLength;
     if (total > max) {
@@ -934,37 +959,30 @@ function lastStepWords(rawMilestone: string | undefined): string {
 // --- Compact, PII-free alert -------------------------------------------
 
 /**
- * Council fix round 2 (F1): token-based query/fragment removal. A token is
- * a run without whitespace, quotes, angle brackets or backticks — so
- * parentheses, brackets and markdown link syntax stay INSIDE the token and
- * can no longer end a URL early. In a token holding scheme://, everything
- * from the first ?, #, %3F or %23 after the scheme to the token's end is
- * dropped (nested URLs included). A schemeless token is cut at its first
- * ? / %3F only when a key=value query follows (relative "/api?token=x").
- * Only trailing closing punctuation of the cut part is kept. Path segments
- * are kept by design; a bare "k=v" without "?" is not a query and survives.
- * A trailing stack position ":line:col" after a removed query is kept
- * (so a numeric "a:1:2" query tail would survive — documented limit).
+ * Council fix round 3: delimiter-boundary query/fragment removal. A token
+ * is a run without whitespace, quotes, angle brackets or backticks (so
+ * parentheses, brackets and markdown stay inside it). Its boundary is the
+ * first "?", "#", or percent-encoded ?/# at any nesting depth (%3F, %253F,
+ * %2523, ...). The tail from the boundary to the token end is removed —
+ * nothing after it is ever kept (no line:col or punctuation rescue: query
+ * and fragment content is never stack metadata) — when the boundary is
+ * encoded, the head is path-like (contains / or an encoded /), or the tail
+ * holds a key=value (= or an encoded =). Otherwise the token is plain
+ * prose ("what?", "c#1", "a?b") and is kept. Finite single pass; nothing
+ * is decoded. Limits: URL paths are kept; a bare prose token like
+ * "?SECRET" or "#SECRET" with no path and no "=" survives; HTML-entity
+ * delimiters (&#63;) are not recognised.
  */
 function stripUrlQueries(s: string): string {
   return s.replace(/[^\s'"<>`]+/g, (tok) => {
-    const scheme = /(?:https?|wss?|blob|file):\/\//i.exec(tok);
-    let start: number;
-    let cutRe: RegExp;
-    if (scheme) {
-      start = scheme.index + scheme[0].length;
-      cutRe = /[?#]|%3f|%23/i;
-    } else if (/(?:\?|%3f)[^\s=?&#]+(?:=|%3d)/i.test(tok)) {
-      start = 0;
-      cutRe = /\?|%3f/i;
-    } else {
-      return tok;
-    }
-    const rest = tok.slice(start);
-    const cut = rest.search(cutRe);
-    if (cut < 0) return tok;
-    const tail = /(?::\d{1,7}:\d{1,7})?[)\]}.,;!]*$/.exec(rest.slice(cut))?.[0] ?? "";
-    return tok.slice(0, start) + rest.slice(0, cut) + tail;
+    const boundary = tok.search(/[?#]|%(?:25)*(?:3f|23)/i);
+    if (boundary < 0) return tok;
+    const head = tok.slice(0, boundary);
+    const tail = tok.slice(boundary);
+    const encoded = tail.startsWith("%");
+    const pathLike = /\/|%(?:25)*2f/i.test(head);
+    const keyValue = /=|%(?:25)*3d/i.test(tail);
+    return encoded || pathLike || keyValue ? head : tok;
   });
 }
 
@@ -2704,14 +2722,16 @@ export async function runHealthChecks(env: CrashReportEnv, now: number, cron: st
   const hasEmail = !!(env.RESEND_API_KEY?.trim() && env.REPORT_EMAIL?.trim());
   const sampledIso = new Date(now).toISOString();
   const checks: HealthCheckResult[] = [];
+  const bindingsReason = !hasKv ? "binding_missing" : !hasDiscord ? "ops_discord_missing" : "ok";
   checks.push({
     name: "bindings_present",
-    expected: "counter store bound and an ops channel (Discord; email only as fallback when Discord is absent)",
-    observed: `store ${hasKv ? "yes" : "no"} · discord ${hasDiscord ? "yes" : "no"} · email ${hasEmail ? "yes" : "no"} · limiter ${env.CRASH_RATE_LIMITER ? "yes" : "no"}`,
-    result: hasKv && (hasDiscord || hasEmail) ? "passed" : "failed",
-    reason: hasKv && (hasDiscord || hasEmail) ? "ok" : "binding_missing",
+    expected: "counter store bound and Discord ops webhook configured (ops alerts are Discord only)",
+    observed: `store ${hasKv ? "yes" : "no"} · discord ${hasDiscord ? "yes" : "no"} · crash-alert email ${hasEmail ? "yes" : "no"} (not an ops channel) · limiter ${env.CRASH_RATE_LIMITER ? "yes" : "no"}`,
+    result: bindingsReason === "ok" ? "passed" : "failed",
+    reason: bindingsReason,
     durationMs: 0,
   });
+
   if (!kv) {
     for (const name of ["kv_write", "kv_read"] as const) {
       checks.push({ name, expected: "counter store reachable", observed: "not run: store not bound", result: "unknown", reason: "not_run", durationMs: 0 });
@@ -2816,19 +2836,16 @@ export function buildHealthFailureText(run: HealthRunV1, incident: HealthInciden
 }
 
 /**
- * Ops-channel delivery for health messages (round 2, F5). Discord is the
- * ops channel; email is used ONLY when no Discord webhook is configured
- * (the same Resend channel real-crash alerts already use), so a
- * Discord-configured deployment sends no new email. Neither configured:
- * "not_configured" (bindings_present already fails in that case).
+ * Ops-channel delivery for health messages. Round 3: the ops channel is
+ * Discord ONLY (a new email category was not approved). Without a
+ * webhook nothing is sent ("not_configured"), bindings_present fails with
+ * reason "ops_discord_missing", and /health reports unhealthy — it never
+ * claims a deliverable ops channel. Real-crash email at /ingest is
+ * unchanged.
  */
 async function sendOpsMessage(env: CrashReportEnv, text: string): Promise<DeliveryState> {
   const discordUrl = env.DISCORD_WEBHOOK_URL?.trim();
-  if (discordUrl) return forwardToDiscord(discordUrl, text);
-  if (env.RESEND_API_KEY?.trim() && env.REPORT_EMAIL?.trim()) {
-    return forwardToEmail(env, `[Meridian ops] ${text.split("\n")[0].slice(0, 120)}`, text);
-  }
-  return "not_configured";
+  return discordUrl ? forwardToDiscord(discordUrl, text) : "not_configured";
 }
 
 const HEALTH_BROKEN_WRITE_TIMEOUT_MS = 500;
@@ -3036,6 +3053,7 @@ export async function handleRequest(
     }
     const body = await readBodyCapped(request, MAX_BODY_BYTES);
     if (body === null) return jsonResponse(413, { error: "body too large" }, cors);
+    if (body === undefined) return jsonResponse(408, { error: "body timeout" }, cors);
 
     let event: unknown;
     try {

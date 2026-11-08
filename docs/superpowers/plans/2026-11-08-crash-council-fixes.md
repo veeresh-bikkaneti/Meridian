@@ -65,8 +65,24 @@ Client v2 diagnostics, new manifest fields, GPU, colo/country, external watchdog
 | F2 P1 hanging KV blocked real-crash paging | page before counting; `boundedKv` per-op 1.5 s, 2 s count budget, close() | R2-F2 ×2 | implemented, awaiting re-verification |
 | F3 P1 health publication writes unbounded | send before store; bounded parallel writes | R2-F3 | implemented, awaiting re-verification |
 | F4 P2 ledger marked before delivery | `lastNotifiedAt` set only on provider acceptance; close on accepted recovery | R2-F4 ×2 | implemented, awaiting re-verification |
-| F5 P2 email-only accepted but unused | email fallback only when Discord absent (existing Resend channel) | R2-F5 | implemented, awaiting re-verification; owner may prefer Discord-required |
+| F5 P2 email-only accepted but unused | superseded in round 3: ops is Discord only | R3 ops channel | superseded (see round 3) |
 
 Still not built: delivery-history health check, external dead-man, atomic
 dedupe. Release gaps (separate): observability block / #351, signed
 council manifest for these fixes, per-release approval.
+
+## Round 3 — independent verifier FAIL on 2fc19e80 (2026-11-08)
+
+Premise retired (two scrub patches failed the same gate on it): "after a
+query/fragment delimiter a safe suffix (line:col, closers) can be kept",
+and "a token is URL-like only with a scheme or ?k=v". Falsified by
+`council-fixes-353-logs/r3/premise.before.out`: all 6 leaks sat in those
+two assumptions; scheme and relative k=v controls passed.
+
+| Finding | Fix | Tests | Status |
+|---|---|---|---|
+| Numeric query rescued as line:col | delimiter-boundary rule, no suffix rescue | R3 corpus, property (>10k), ingress | implemented, awaiting re-verification |
+| Relative / encoded fragment-only, opaque `/api?x` | boundary + path-like / encoded / k=v trigger | R3 corpus, property | implemented, awaiting re-verification |
+| Admission rate-limit binding unbounded | 1 s deadline, fail open to in-memory layer | R3 limiter ×3 | implemented, awaiting re-verification |
+| (every-await audit) stalled request body | 10 s read deadline, 408 | R3 body | implemented, awaiting re-verification |
+| Ops email fallback not approved | removed; ops Discord only, `ops_discord_missing` | R3 ops channel, ingest email unchanged | implemented; verifier's original F5 superseded |

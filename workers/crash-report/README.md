@@ -673,6 +673,13 @@ foreign origins are refused outright (S4).
 Behaviour after these fixes ship (they are NOT live until a separately
 approved release uploads this version with its bindings and schedules):
 
+- **Admission bounds (round 3).** The shared `CRASH_RATE_LIMITER` binding
+  call at admission has a 1 s deadline; throw, reject or timeout all fail
+  open to the in-memory limiter, which runs first and still caps 10
+  requests/min per client per isolate. A late binding answer is ignored.
+  A request body that does not finish within 10 s gets `408` and sends
+  nothing. With these, every await on the ingest path is bounded (KV
+  1.5 s/op + 2 s count budget, delivery 5 s/attempt + ≤2 s back-off, ×2).
 - **Response body.** Every accepted `/ingest` event returns `{ "ok": true }`.
   Routing (paged / counted / summarised) and store health are in logs only,
   so the body is no oracle. 400/403/405/413/429 are unchanged.
@@ -692,16 +699,21 @@ approved release uploads this version with its bindings and schedules):
   (Retry-After capped at 2 s); timeouts are `unknown`, never success. The
   last real-crash delivery states go to `ops:delivery:last` (7-day TTL, no
   URL or content). A failed delivery never triggers another alert.
-- **Error text** is scrubbed in the client and again in the worker: URL
-  query strings and fragments (token-based, so parentheses, brackets,
-  markdown links, backslash escapes, `%3F`/`%23`, nested and multiple URLs
-  cannot end a URL early; relative `/path?k=v` too; a trailing
-  `:line:col` is kept), emails, UUIDs, hex runs ≥20 and mixed token
-  runs ≥32 are removed; `file.js:line:col` and identifiers survive. Limits: URL paths are kept;
-  a bare `k=v` with no `?`, a schemeless `host/a?x` without `k=`, and a
-  numeric `:n:n` query tail survive; a whole percent-encoded URL is not
-  decoded. Only
-  `error.name`/`error.message` are kept. Discord `allowed_mentions` is empty.
+- **Error text** is scrubbed in the client and again in the worker
+  (identical code). Query/fragment rule (round 3): in each token (a run
+  without whitespace, quotes, `<>` or backticks), the first `?`, `#` or
+  percent-encoded `?`/`#` at any depth (`%3F`, `%253F`, `%2523`, …) is a
+  boundary, and everything from it to the token end is removed when the
+  boundary is encoded, the part before it is path-like (`/` or `%2F`), or
+  a `=`/`%3D` follows. Nothing after a boundary is kept — not even a
+  `:line:col` (query/fragment content is never stack metadata); a genuine
+  `file.js:line:col` with no boundary survives. Also: emails, UUIDs, hex
+  runs ≥20 and mixed token runs ≥32 are replaced, `@everyone`/`@here`
+  are made inert, only `error.name`/`error.message` are kept, and Discord
+  `allowed_mentions` is empty. Limits: URL paths are kept; a bare prose
+  token like `?SECRET`/`#SECRET` with no path and no `=` survives; HTML
+  entities (`&#63;`) are not decoded; nothing is decoded repeatedly; free
+  text is not a guaranteed PII filter.
 - **Alert wording.** A captured-error type with no details no longer says
   "app failed to start". Every alert carries a `failure(v1)` line built only
   from existing manifest fields; request status, server timing and a phase
@@ -729,9 +741,10 @@ approved release uploads this version with its bindings and schedules):
   accepted it: a failed or timed-out send is retried at the next 15-min
   run (≤1 send + 1 bounded retry per run; a timeout retry may duplicate),
   and an incident closes only when its recovered message is accepted.
-  Channel: Discord. Email (the existing Resend alert channel) is used for
-  health messages ONLY when no Discord webhook is configured, so a
-  Discord-configured deployment sends no new email.
+  Channel: **Discord only** (round 3). Without a webhook, nothing is sent;
+  `bindings_present` fails with reason `ops_discord_missing` and `/health`
+  reports `unhealthy`, never a deliverable ops channel. Health messages
+  never use email; real-crash email at `/ingest` is unchanged.
   A dead worker cannot report itself: an independent monitor is still an
   owner decision.
 
