@@ -724,7 +724,10 @@ checkable by playing, not by reading code.
 
 *Status: built on `feat/holmes-follow`, flag `holmesFollow` shipped
 ON in `public/flags.json` (baked default false = the kill-switch
-posture). HARD STOP at the owner's merge word.*
+posture). Session 5 (2026-11-08): merged up to main @ 63d8286
+(PR #372 beneath); fast gates green on the merged tree; the
+owner's standing ship-when-ready directive is the merge word
+for a READY / READY-WITH-NITS pipeline verdict on the final tip.*
 
 - **The model in one paragraph.** Holmes follows the pointer across
   the whole page (mouse and touch) and STAYS with it. A solver

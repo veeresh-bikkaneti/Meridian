@@ -120,21 +120,29 @@ bug". This PR replaces the waypoint-berth + dock-return model
 
 ## How it was verified
 - Unit: follow solver + tier machine fail-before/pass-after
-  (16 tests); detective suite green; full suite 2262/2262 src +
-  1021 pass scripts + worker 145/145; tsc clean; lint-cards PASSED.
-- Build: `npm run build:pages` exit 0 (prerendered; required
-  XDG dirs on tmpfs — home quota was exhausted on this VM).
+  (16 tests); detective suite green; full suite on the merged
+  tree (session 5, tip d869083): 2275/2275 src + 1021 pass
+  scripts + worker 145/145; tsc clean; lint-cards PASSED.
+- Build: `npm run build:pages` exit 0 on the merged tree;
+  `dist/client/_shell.html` verified present (14,339 B) and
+  buildId = code tip — the session-4 gap (a build that verified
+  build-meta.json only, with no shell file) is closed.
 - E2E: NEW `detective-follow.spec.ts` gates (a)–(f);
   `detective-berth.spec.ts`, the K2/K3 assertions in
   `detective-companion.spec.ts`, and staging cure C12 were
   REWRITTEN to the new model (they asserted deleted behaviour).
-  E2E EXECUTION on this VM is currently blocked by an environment
-  fault: the renderer crashes on game mount in all three Chromium
-  builds, identically on the UNMODIFIED main build (donor dist
-  control) — see the PR body for the control evidence. The specs
-  must be run by Silo QA on a healthy runner before merge.
+  SUPERSEDED (session 5): the earlier claim that E2E execution
+  was environment-blocked (renderer crashes on game mount) no
+  longer holds — the Chromium launch-policy outage recovered,
+  and the step-0 CSO sweep ran the full 57-test detective set on
+  unmodified main @ 63d8286 (55 pass + the 2 known issue-#371
+  endings windows). The full census on this branch's merged
+  tree runs as the session-5 gate; results land in
+  GATES-STATE.md.
 
-## Ready to merge? NO
-(Per standing policy the verdict lives in the PR body; this
-checklist is the plain-language record. HARD STOP at the owner's
-merge word.)
+## Ready to merge? PENDING — pipeline verdict on the final tip
+(Census, rest verification, Silo QA re-key, 13-seat panel,
+DevEx + benchmark on the merged tree — session 5. The verdict
+lives in the PR body; this checklist is the plain-language
+record. The owner's standing ship-when-ready directive is the
+merge word for a READY / READY-WITH-NITS verdict.)
