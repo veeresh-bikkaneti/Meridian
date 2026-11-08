@@ -197,7 +197,7 @@
         {
           "part": "arm-raised",
           "file": "holmes-arm-raised.png",
-          "bytes": 2219,
+          "bytes": 2314,
           "widthPx": 70,
           "heightPx": 92,
           "rectViewBox": [
@@ -311,7 +311,7 @@
         },
         "thinking": {
           "file": "holmes-face-thinking.png",
-          "bytes": 3943,
+          "bytes": 3976,
           "faceBox": {
             "x": 65.0,
             "y": 39.0,
@@ -413,7 +413,7 @@
         },
         "delighted": {
           "file": "holmes-face-delighted.png",
-          "bytes": 3795,
+          "bytes": 3822,
           "faceBox": {
             "x": 65.0,
             "y": 42.0,
@@ -430,7 +430,7 @@
         },
         "surprised": {
           "file": "holmes-face-surprised.png",
-          "bytes": 3932,
+          "bytes": 4046,
           "faceBox": {
             "x": 65.0,
             "y": 37.0,
@@ -734,7 +734,7 @@
         {
           "part": "arm-raised",
           "file": "watson-arm-raised.png",
-          "bytes": 2086,
+          "bytes": 2159,
           "widthPx": 66,
           "heightPx": 92,
           "rectViewBox": [
@@ -775,7 +775,7 @@
         {
           "part": "torso",
           "file": "watson-torso.png",
-          "bytes": 10794,
+          "bytes": 9834,
           "widthPx": 165,
           "heightPx": 170,
           "rectViewBox": [
@@ -986,7 +986,7 @@
         },
         "surprised": {
           "file": "watson-face-surprised.png",
-          "bytes": 5414,
+          "bytes": 5519,
           "faceBox": {
             "x": 55.0,
             "y": 31.0,
@@ -1100,7 +1100,7 @@
     }
   ],
   "budgets": {
-    "runtime_total_bytes": 172431,
+    "runtime_total_bytes": 171918,
     "runtime_budget_bytes": 500000,
     "runtime_pass": true,
     "decoded_total_MB": 2.436,
