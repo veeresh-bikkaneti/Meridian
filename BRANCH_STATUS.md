@@ -81,6 +81,67 @@ lane merges second rebases over the other.
   coordinator opens it after independent clean-context QA
 - [ ] Merge — on the owner's word / coordinator only, never the builder
 
+## GATES STATE (finisher session, 2026-11-08 — updated after every gate)
+
+Finisher: pipeline-finisher subagent (lane 1 of the owner's sequential
+pipeline law). Base verified against **origin/main `9e49da3`** — the
+local `main` ref is stale (#361-era `97d1dcf`); origin/main IS an
+ancestor of this branch and the true branch diff is 11 files (623+/185−).
+
+- [x] Chromium launch RE-TEST: the WebGL-policy outage is OVER for the
+  real spec path — Playwright + bundled chromium-1243 launches and
+  renders the app. Two environment facts every E2E run here needs:
+  (1) `PLAYWRIGHT_CHROMIUM_EXECUTABLE` must point at the bundled 1243
+  binary (the config default `/opt/meta-chromium/chrome` refuses to
+  launch); (2) runs go with `TMPDIR=$HOME/playwright-tmp` — the VM's
+  /tmp is a 512 MB tmpfs that LANDED AT 100% under other lanes'
+  profile/cache junk (since freed), and the home volume carries an
+  EDQUOT **file-count** quota: Chromium dies with SIGBUS
+  (`BUS_ADRERR`, "Creating shared memory … Disk quota exceeded (122)")
+  once renderer shared-memory creation hits it.
+- [x] **Gate 1a — `detective-endings.spec.ts`: RUN, 0 passed / 2 failed**
+  (full reporter output read; logs in
+  `~/workspace/meridian-detective-evidence/station-e2e-2026-11-08/`).
+  Runs 1–3 died at the first click on environment (full /tmp, then the
+  EDQUOT crash). **Run 4 (clean environment) played both tests end to
+  end** — the complete WIN path and the full 5-guess FAIL path ran —
+  and both failed on the NEW N2 audit windows only:
+  - WIN: `WIN celebrate→debrief @ endings` — worst
+    `map:high-five` over clue-2 text ("This is a hot desert cit…"),
+    max overlap 4,777.5 px² over 2,900 samples.
+  - FAIL: `FAIL fail-read→pout @ endings` — worst `map:think` over
+    clue-4 text ("After the PEPCON disaste…"), max overlap 4,777.5 px²
+    over 11,920 samples.
+  - **N7 VERIFIED PASSING inside the WIN run:** no clue-3/4/5 clip in
+    the play record or the network list after the guess-2 solve (the
+    test reached and passed that assertion before failing at the N2
+    absorb; absence checks fail loudly, so reaching the absorb proves
+    them).
+  - **What the failure IS (screenshots read first-hand):** at the
+    1440 px endings viewport, Watson stands at his clue-card STATION
+    (left gutter beside the active card — the cure working) and Holmes
+    stands on the card's LEFT EDGE, his painted box overlapping the
+    card's first text column. Holmes is the CELEBRATE/FAIL_READ layout
+    partner placed beside Watson by the host's existing celebration
+    layout — a phase this branch never touched (CELEBRATE was already
+    "station" for Watson before the cure; FAIL_READ likewise). The
+    sampler's "map:" prefix is its cluster label for Holmes, not a map
+    position — in both failure screenshots **neither figure is on the
+    map**; both stand at the clue cards. So: **pre-existing
+    celebration/fail-read layout overlap, exposed by the NEW N2
+    windows (Silo QA's own gap), not a regression of this cure.**
+    Per the finisher brief (pin exposes a product bug → flag before
+    touching production code) this is flagged to the parent for a
+    routing decision; the pins are NOT loosened and production code
+    is NOT touched by this session.
+- [ ] Gate 1b — `detective-watson-walk.spec.ts` (N2 guessing-chain
+  window + N6 mid-walk tap): NEXT.
+- [ ] Gate 2 — nit-5 measurement (watsonWalk OFF, 390 px): pending.
+- [ ] Gate 3 — Silo QA delta re-key: NOT NEEDED unless a commit lands
+  after `034535e` (none yet — tip unchanged).
+- [ ] Gates 4–7 — PR, panel, DevEx/benchmark, merge: pending gate 1–2
+  outcomes + the N2-endings routing decision above.
+
 ## Gap-closure round (2026-11-08, Silo QA PASS-WITH-NITS follow-up)
 
 Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
