@@ -677,8 +677,10 @@ approved release uploads this version with its bindings and schedules):
   call at admission has a 1 s deadline; throw, reject or timeout all fail
   open to the in-memory limiter, which runs first and still caps 10
   requests/min per client per isolate. A late binding answer is ignored.
-  A request body that does not finish within 10 s gets `408` and sends
-  nothing. With these, every await on the ingest path is bounded (KV
+  A request body that does not finish within 10 s (or whose stream errors)
+  gets `408` and sends nothing; over 8 KiB gets `413`. In both cases the
+  stream's cancel() is started but never awaited (it may settle late or
+  never), so cleanup cannot delay the response. With these, every await on the ingest path is bounded (KV
   1.5 s/op + 2 s count budget, delivery 5 s/attempt + ≤2 s back-off, ×2).
 - **Response body.** Every accepted `/ingest` event returns `{ "ok": true }`.
   Routing (paged / counted / summarised) and store health are in logs only,

@@ -731,6 +731,26 @@ const originPolicy = new OriginPolicy();
  * Content-Length is never buffered beyond the cap.
  */
 /**
+ * Round 4: start cancellation but never wait for it. A stream's cancel()
+ * may return a promise that settles late or never (allowed by the Streams
+ * contract), so it must not hold the 408/413 response. A rejection or a
+ * synchronous throw is swallowed; the lock is released afterwards (a read
+ * still pending at that moment rejects into an already-handled race).
+ */
+function abandonReader(reader: ReadableStreamDefaultReader<Uint8Array>): void {
+  try {
+    reader.cancel().catch(() => {});
+  } catch {
+    // Best effort only.
+  }
+  try {
+    reader.releaseLock();
+  } catch {
+    // Best effort only.
+  }
+}
+
+/**
  * Read at most `max` bytes: null when over the cap, undefined when the
  * body does not finish within `timeoutMs` (round 3: a stalled body can
  * no longer hold the request open; the reader is cancelled).
@@ -746,17 +766,23 @@ export async function readBodyCapped(request: Request, max: number, timeoutMs: n
     try {
       chunk = await withTimeout(reader.read(), Math.max(1, deadline - Date.now()));
     } catch {
-      await reader.cancel().catch(() => {});
+      // Deadline passed or the stream errored: 408, cancellation not awaited.
+      abandonReader(reader);
       return undefined;
     }
     const { done, value } = chunk;
     if (done) break;
     total += value.byteLength;
     if (total > max) {
-      await reader.cancel().catch(() => {});
+      abandonReader(reader);
       return null;
     }
     chunks.push(value);
+  }
+  try {
+    reader.releaseLock();
+  } catch {
+    // Already released.
   }
   const bytes = new Uint8Array(total);
   let offset = 0;

@@ -86,3 +86,9 @@ two assumptions; scheme and relative k=v controls passed.
 | Admission rate-limit binding unbounded | 1 s deadline, fail open to in-memory layer | R3 limiter ×3 | implemented, awaiting re-verification |
 | (every-await audit) stalled request body | 10 s read deadline, 408 | R3 body | implemented, awaiting re-verification |
 | Ops email fallback not approved | removed; ops Discord only, `ops_discord_missing` | R3 ops channel, ingest email unchanged | implemented; verifier's original F5 superseded |
+
+## Round 4 — independent verifier P2 on c2b413a6 (2026-11-08)
+
+| Finding | Fix | Tests | Status |
+|---|---|---|---|
+| `await reader.cancel()` after the body deadline / size cap could hang (no 408/413) | `abandonReader`: start cancel, swallow rejection, release lock, never await | R4 ×5 (stall, reject, oversize, full handler 408, success + read error) | implemented, awaiting re-verification |

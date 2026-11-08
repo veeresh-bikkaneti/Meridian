@@ -57,6 +57,7 @@ import {
   RATE_LIMIT_BINDING,
   bindingClientKey,
   readBodyCapped,
+  BODY_READ_TIMEOUT_MS,
   type CrashReportEnv,
   type CrashReportEvent,
   type KvLike,
@@ -4174,5 +4175,76 @@ test("R3 a request body that never finishes is answered 408 within the bound and
   const res = await handleRequest(req, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
   assert.equal(res.status, 408);
   assert.ok(Date.now() - t0 < 12_000);
+  assert.equal(fetchCalls.length, 0);
+});
+
+// --- Council fix round 4 (2026-11-08): body cancellation never delays 408/413 ---
+
+function cancelSource(cancel: () => Promise<void>, chunks: Uint8Array[] = [new TextEncoder().encode("{")]) {
+  let calls = 0;
+  const body = new ReadableStream<Uint8Array>({
+    start(c) { for (const ch of chunks) c.enqueue(ch); },
+    cancel() { calls++; return cancel(); },
+  });
+  return { body, get calls() { return calls; } };
+}
+const r4Request = (body: ReadableStream<Uint8Array>) =>
+  new Request("https://worker.test/ingest", { method: "POST", headers: { "content-type": "application/json", origin: GAME_ORIGIN }, body, duplex: "half" } as RequestInit);
+const settleWithin = <T>(p: Promise<T>, ms: number) =>
+  Promise.race([p.then((value) => ({ settled: true as const, value })), new Promise<{ settled: false }>((r) => setTimeout(() => r({ settled: false }), ms))]);
+
+test("R4 body deadline: a cancel() that never settles does not delay the timeout result", { timeout: 5_000 }, async () => {
+  const s = cancelSource(() => new Promise(() => {}));
+  const r = await settleWithin(readBodyCapped(r4Request(s.body), 8192, 20), 250);
+  assert.deepEqual(r, { settled: true, value: undefined });
+  assert.equal(s.calls, 1, "cancellation was started (best effort)");
+});
+
+test("R4 body deadline: a cancel() that rejects is swallowed (no unhandled rejection)", { timeout: 5_000 }, async () => {
+  const seen: unknown[] = [];
+  const onUnhandled = (e: unknown) => seen.push(e);
+  process.on("unhandledRejection", onUnhandled);
+  try {
+    const s = cancelSource(() => Promise.reject(new Error("cancel failed")));
+    const r = await settleWithin(readBodyCapped(r4Request(s.body), 8192, 20), 250);
+    assert.deepEqual(r, { settled: true, value: undefined });
+    await new Promise((res) => setTimeout(res, 50));
+    assert.deepEqual(seen, []);
+  } finally {
+    process.off("unhandledRejection", onUnhandled);
+  }
+});
+
+test("R4 oversized body: 413 at once even when cancel() never settles; nothing sent", { timeout: 5_000 }, async () => {
+  okFetch(200);
+  const big = new Uint8Array(70_000).fill(32);
+  const s = cancelSource(() => new Promise(() => {}), [big]);
+  const r = await settleWithin(handleRequest(r4Request(s.body), { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }), 500);
+  assert.equal(r.settled, true);
+  assert.equal(r.settled && r.value.status, 413);
+  assert.equal(s.calls, 1);
+  assert.equal(fetchCalls.length, 0);
+});
+
+test("R4 full handler: stalled body with a never-settling cancel() still answers 408 within the deadline; nothing sent", { timeout: 15_000 }, async () => {
+  okFetch(200);
+  const pending: Promise<unknown>[] = [];
+  const s = cancelSource(() => new Promise(() => {}));
+  const r = await settleWithin(handleRequest(r4Request(s.body), { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }, { waitUntil: (p) => pending.push(p) }), BODY_READ_TIMEOUT_MS + 400);
+  assert.equal(r.settled, true);
+  assert.equal(r.settled && r.value.status, 408);
+  assert.equal(fetchCalls.length, 0);
+  assert.equal(pending.length, 0);
+});
+
+test("R4 normal body: read completes, lock released; an erroring stream answers 408 and sends nothing", { timeout: 5_000 }, async () => {
+  const text = JSON.stringify({ hello: "world" });
+  const req = r4Request(new ReadableStream<Uint8Array>({ start(c) { c.enqueue(new TextEncoder().encode(text)); c.close(); } }));
+  assert.equal(await readBodyCapped(req, 8192, 1_000), text);
+  assert.equal(req.body?.locked, false, "reader lock released after a completed read");
+  okFetch(200);
+  const errored = new ReadableStream<Uint8Array>({ pull(c) { c.error(new Error("network reset")); } });
+  const res = await handleRequest(r4Request(errored), { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(res.status, 408);
   assert.equal(fetchCalls.length, 0);
 });
