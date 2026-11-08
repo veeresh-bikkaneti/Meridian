@@ -199,6 +199,15 @@ test("a case closed after a pause-end counts once, and ending from a reveal coun
   await guessViaMap(page, "ankara");
   await expect(page.getByText("🎯 You found it!")).toBeVisible();
 
+  // Panel round-2 pin (Game player BLOCK cure): the first-ever solve
+  // raises the App-level first-discovery celebration overlay over the
+  // whole screen. Wait for it to be up, then click End game WITHOUT
+  // dismissing it — the overlay root is pointer-events-none outside
+  // its own card, so the click must still reach the button below.
+  // Pre-cure the overlay root intercepted the click and the
+  // single-confirm dialog below never appeared.
+  await expect(page.getByTestId("celebration-overlay")).toBeVisible({ timeout: 30_000 });
+
   // Ending from the reveal: no case in flight, so the dialog is the
   // single-confirm variant — and the summary counts the just-closed
   // case.
