@@ -33,7 +33,18 @@ the UX researcher and Office hours. Cures are being applied on
 this branch; the panel re-votes the cured tip. The sheets do NOT
 merge on round 1.
 
-**Round 3 — panel re-vote open on this tip:**
+**Round 3 — panel re-vote on `a4593c0`: 8 APPROVE-WITH-NITS,
+4 BLOCKs (Game developer, Game level architect, Game
+narrative designer, Game player), 1 seat vacant (Office
+hours — no persona file exists) — NOT READY.** The BLOCKs:
+raised-arm parts clip the finger tips; the kidtest find
+captures place the figure on the map / search chrome with
+no placement assertion to catch it; search / berth-think /
+notebook-mark / clap plates tell the wrong story; several
+plates fail the player's read at play size. A consolidated
+cure round is in progress on this branch; round 4 re-votes
+the cured tip. The round-3 vote was taken on the state
+summarised below:
 - The round-2 re-vote on `652cf13` returned 8
   APPROVE-WITH-NITS + **5 BLOCKs (NOT READY)**.
 - Cured this round (cure commits on this branch):
