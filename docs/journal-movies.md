@@ -81,8 +81,8 @@ What is established, and by what evidence — do not read more into it:
   changed objects (e.g. branched-oak, rushmore, space-needle, oak-lake,
   machu, woods-park, tongariki, fort-robinson); these are the builders'
   notes, not independently confirmed. Known fallbacks: haymarket and
-  university-place (still + narration). Review also reported taj as
-  appearing still; unresolved. Shipping any clip as-is is the owner's call.
+  university-place (still + narration). Shipping any clip as-is is the
+  owner's call.
 
 ## Storage proposal (recorded 2026-11-08 — not yet decided)
 Status: a proposal. Storage, hosting and the privacy effect of a third-party
@@ -108,6 +108,8 @@ clone downloads it).
   host, but not provisioned; the manifest makes the move mechanical.
 
 ## Batches (12 workers, 3 sets each; batch 08 skips old-faithful = pilot)
+LIVE means hosted on meridian-media, not playable in the app.
+
 | Batch | Sets | Entries | Status |
 |---|---|---|---|
 | 01 | 1–3 | capitol, memorial-stadium, haymarket, pinnacle, 27th-and-o, centennial-mall, sunken-gardens, childrens-zoo, 48th-and-o | 9/9 LIVE (haymarket = flagged fallback; regen failed gate twice) |
