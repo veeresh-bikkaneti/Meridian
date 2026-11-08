@@ -1,4 +1,4 @@
-# PR #364 finisher — GATES STATE (second finisher session, 2026-11-08)
+# PR #364 finisher — GATES STATE (fourth finisher session, 2026-11-08 ~06:17 CST — resumed from this file; sessions 1–3 died in runtime daemon restarts, infrastructure only)
 
 Branch `feat/holmes-follow` · tip under test: `342a5e4c017a5e5ade6edfbcb56e8bea84d1a222`
 Worktree: `~/workspace/meridian-364-finish` (worktree of meridian-346-mergeup clone; local branch `finisher-364`, push via `HEAD:feat/holmes-follow` if cures are committed)
@@ -24,6 +24,13 @@ Base main at start: `9e49da3` (already merged up via `047739c`).
 - EDQUOT hit at session start; freed by deleting stale silo-QA clones of merged PRs #347/#348/#352/#354/#355/#357/#358/#359 (~128k inodes). Write probe OK after.
 - Load at start: spiked 9.1, trending down (6.1/4.8/2.1 at last read). Census waits for ≲9 sustained, ideally lower.
 - House E2E pattern: flock ~/workspace/.e2e.lock, --workers=1, PLAYWRIGHT_CHROMIUM_EXECUTABLE=~/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome
+
+## Coordination watch (fourth session, 2026-11-08 ~06:20 CST)
+- main still `9e49da3` — nothing merged since #365; no merge-up owed.
+- Watson-station cure: branch `feat/watson-station` @ `034535e` (test-only gap closure landed). NOT yet main / likely not yet a PR — if it merges first: merge-up + re-verify diff substance (it touches detective-state.ts + DetectiveHost.tsx comments; #364's state/host hunks intersect) + fast gates + detective E2E subset, note in PR body.
+- U11 clue renders: owner APPROVED the full batch 2026-11-08 ~03:02 CST (386 core cases); no PR exists yet — watch for it; same merge-up rule if it lands first.
+- PR #368 (entry routing, tip `edb7383`) is OPEN ahead in the queue — if it merges first: merge-up + fast gates + detective subset (boot-flag change, low intersection risk).
+- Playwright projects enumerated from playwright.config.ts (authoritative): default (no suffix), desktop, mobile, reduced, tap-precision, p0-gaps, zoom-space, tap-verify, grandpa-tour, endless-game, scoring-v3, question-randomization, pinch-zoom, drilldown, desktop-gestures, highlight, session-score, pwa, detective-flag, detective-follow, detective-stations, detective-companion, detective-swap, detective-endings, detective-replay, detective-summary, detective-sound, detective-visibility, detective-staging, detective-watson-walk, detective-closed-state, detective-berth, feature-flags, question-labels, question-wrap, endgame-share, subdivision-labels, difficulty-picker, cleared-mode, crash-loop-breaker, observability, safari-launch, question-card-header, geodetective, geodetective-endgame, geodetective-unlabeled-tap, coldtrail, review-deck, tutorial, game-sfx, celebration, crash-watchdog, offline-content, facts-ladder-pilot, storyteller, clean-round-badge, hint-button, geodetective-hint, read-aloud-always, home-badges-readaloud, motionmaxxing, journal, search-hidden, round-loop-a11y, discarded-notice, motionmaxxing-reduced. Census runs ALL of them, --workers=1, flock, chromium-1243 executable. Never-run set per brief (confirm in run): detective-endings, detective-replay, detective-sound, detective-swap, detective-flag, detective-stations, detective-summary, reduced-project detective specs.
 
 ## Third finisher session resume (2026-11-08 ~06:09 CST)
 - Prior two finisher sessions died in runtime daemon restarts (infrastructure).
