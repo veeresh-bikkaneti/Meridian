@@ -62,5 +62,13 @@ handling, sessionStorage run restore.
 - [x] E2E specs re-pinned (geodetective, geodetective-hint, scout-toggle BLOCK-4, reset-history, chunk-boundary-copy)
 - [x] NEW E2E written: entry-routing spec at 390 + 768 + 1280 with render-level screenshots (run pending gates below)
 - [x] Docs: README, docs/geodetective.md, handbook ch.02 decision record ("Entry always lands on Home")
-- [ ] Gates: tsc · npm test · test:worker · lint-cards · build:pages · E2E (sequential, flock)
+- [x] Gates (all run on this branch, sequential E2E under flock, `--workers=1`):
+  - `npx tsc --noEmit` — clean
+  - `npm test` — scripts 1032 tests (1021 pass, 0 fail) + src 2269/2269 pass
+  - `npm run test:worker` — 145/145 pass
+  - `node scripts/lint-cards.mjs` — GATE PASSED
+  - `npm run build:pages` — green
+  - E2E new entry-routing spec — 16/16 pass, 22 screenshots in `tests/e2e/evidence/entry-routing/`
+  - E2E regression: geodetective-hint 6/6 · chunk-boundary-copy 2/2 · reset-history + scout-toggle + coldtrail 28/28 · friend-challenge mc2-boot 5 pass + 1 scripted-manual skip · friend-challenge desktop: 3 tests failed twice under VM load 14–20 (timeouts / browser-closed), then passed 3/3 on this branch at healthy load and 3/3 on unmodified main — contention flake, evidenced
+  - E2E known pre-existing failure (not this change): geodetective.spec "win path" share-URL assertion expects the Workers origin; a `build:pages` artifact bakes the Pages origin into share text (`src/game/share.ts` reads Vite `BASE_URL`; that file and the build are untouched by this PR, so the assertion fails identically on main with a Pages build)
 - [ ] PR opened
