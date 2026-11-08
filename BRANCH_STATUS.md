@@ -91,16 +91,22 @@ Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
   in `detective-state.test.ts` — Watson's placement asserted
   "station" in all five phases (CELEBRATE across all four
   choreography steps). Full suite: `npm test` 2268/2268.
-- [x] **GAP 4 (N7) — pinned + PASSING** (`35db604`): endings spec
-  "WIN in 2" now asserts, after a 2 s settle, that no
+- [ ] **GAP 4 (N7) — pinned, run UNVERIFIED** (`35db604`): endings
+  spec "WIN in 2" now asserts, after a 2 s settle, that no
   `case-137/clue-3.mp3`, `clue-4.mp3` or `clue-5.mp3` appears in
-  either the play record or the network request list.
-- [x] **GAP 2 (N2), endings half — pinned + PASSING** (`35db604`):
-  audit windows "WIN celebrate→debrief @ endings" (9 s, opens at
-  CELEBRATE) and "FAIL fail-read→pout @ endings" (12 s, opens at
-  the final miss) absorbed through `AuditTrail` at 0 px².
-  Endings spec run: 2 passed (sequential, flock, `--workers=1`;
-  VM load 16.8 at start — flagged, still green).
+  either the play record or the network request list. NOT YET
+  RUN — see the Chromium outage below. (Correction, same day:
+  an earlier version of this capsule claimed this and the N2
+  endings windows were PASSING on a "2 passed" endings run.
+  That was a misread of truncated, piped output: the run's full
+  output shows **2 failed**, both at browser launch. No endings
+  test has passed in this round.)
+- [ ] **GAP 2 (N2), endings half — pinned, run UNVERIFIED**
+  (`35db604`): audit windows "WIN celebrate→debrief @ endings"
+  (9 s, opens at CELEBRATE) and "FAIL fail-read→pout @ endings"
+  (12 s, opens at the final miss) absorbed through `AuditTrail`
+  at 0 px². NOT YET RUN — see the Chromium outage below and the
+  correction note under GAP 4.
 - [ ] **GAP 2 (N2), guessing-chain half — pinned, run UNVERIFIED**
   (`368c201`): in the watson-walk main test (all 3 widths), a
   12 s audit window "guessing chain selection→note→ask-next"
@@ -128,14 +134,24 @@ Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
   Re-run on Chromium recovery; the coordinator routes any real
   overlap separately (pre-existing station anchoring — out of
   this branch's scope either way).
-- **Chromium outage (environment, evidenced):** from ~10:45 CST
-  every NEW Chromium launch on this VM fails with
+- **Chromium outage (environment, evidenced):** every NEW
+  Chromium launch on this VM currently fails with
   `Hatch WebGL domain policy is required for browser startup`
-  (chrome_main_delegate.cc:1283) — reproduced with a bare
-  `chrome --headless --dump-dom about:blank`, still failing at
-  11:37 CST. The endings run at 10:42 CST (pre-outage) passed.
-  Re-run on recovery, sequentially under the flock:
-  `npx playwright test tests/e2e/detective-watson-walk.spec.ts --workers=1`
+  (chrome_main_delegate.cc:1283). Evidence: the endings run
+  started 10:42 (VM clock) **failed both tests at
+  browserType.launch** with exactly this error (full output in
+  the run log; error contexts under `test-results/`); a bare
+  `chrome --headless --dump-dom about:blank` reproduces it and
+  was still failing at 11:38. The binary's strings show it
+  requires `--hatch-webgl-allowed-domains-file` + `-sha256`
+  switches that are not present on disk — a runtime policy
+  delivery break, not a code issue. Re-run ALL THREE touched
+  E2E specs on recovery, sequentially under the flock:
+  `npx playwright test tests/e2e/detective-endings.spec.ts --workers=1`
+  then `npx playwright test tests/e2e/detective-watson-walk.spec.ts --workers=1`
+  (read the full reporter output — a piped `tail` masks the
+  playwright exit code; that masking caused the correction
+  above).
 - [x] Gap-round gates: `npx tsc --noEmit` clean ·
   `npm test` PASS 2268/2268 · `npm run test:worker` PASS 145/145 ·
   `node scripts/lint-cards.mjs` GATE PASSED ·
