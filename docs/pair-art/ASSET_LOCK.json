@@ -106,7 +106,7 @@
   "palm_gate_px": 3,
   "palm_pass": true,
   "budgets": {
-    "runtime_total_bytes": 174588,
+    "runtime_total_bytes": 172414,
     "runtime_budget_bytes": 500000,
     "runtime_pass": true,
     "decoded_total_MB": 2.486,
@@ -1169,7 +1169,7 @@
     },
     {
       "file": "watson-face-focused.png",
-      "bytes": 5350,
+      "bytes": 5015,
       "width": 161,
       "height": 85,
       "decodedMB": 0.0547,
@@ -1199,7 +1199,7 @@
     },
     {
       "file": "watson-face-thinking.png",
-      "bytes": 5382,
+      "bytes": 5027,
       "width": 161,
       "height": 87,
       "decodedMB": 0.056,
@@ -1229,7 +1229,7 @@
     },
     {
       "file": "watson-face-attentive.png",
-      "bytes": 5305,
+      "bytes": 4956,
       "width": 161,
       "height": 84,
       "decodedMB": 0.0541,
@@ -1244,7 +1244,7 @@
     },
     {
       "file": "holmes-face-hushed.png",
-      "bytes": 3918,
+      "bytes": 3702,
       "width": 102,
       "height": 86,
       "decodedMB": 0.0351,
@@ -1259,7 +1259,7 @@
     },
     {
       "file": "watson-face-hushed.png",
-      "bytes": 5352,
+      "bytes": 5231,
       "width": 161,
       "height": 84,
       "decodedMB": 0.0541,
@@ -1274,7 +1274,7 @@
     },
     {
       "file": "holmes-face-wonder.png",
-      "bytes": 3932,
+      "bytes": 3732,
       "width": 102,
       "height": 91,
       "decodedMB": 0.0371,
@@ -1289,7 +1289,7 @@
     },
     {
       "file": "watson-face-wonder.png",
-      "bytes": 5414,
+      "bytes": 4982,
       "width": 161,
       "height": 89,
       "decodedMB": 0.0573,
@@ -1439,7 +1439,7 @@
     },
     {
       "file": "watson-face-pout.png",
-      "bytes": 5222,
+      "bytes": 5056,
       "width": 161,
       "height": 85,
       "decodedMB": 0.0547,

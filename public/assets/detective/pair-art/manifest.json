@@ -1119,7 +1119,7 @@
     }
   ],
   "budgets": {
-    "runtime_total_bytes": 174588,
+    "runtime_total_bytes": 172414,
     "runtime_budget_bytes": 500000,
     "runtime_pass": true,
     "decoded_total_MB": 2.486,
