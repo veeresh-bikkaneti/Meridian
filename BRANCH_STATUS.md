@@ -1,10 +1,7 @@
-# BRANCH_STATUS — feat/journal-movies
+# BRANCH_STATUS — feat/journal-player
 
-**Branch:** `feat/journal-movies` · **Base:** `origin/main` @ `f2bbf1a2` (#370)
-**Rebased:** 2026-11-09 — onto main `f2bbf1a2` (#370); only conflict was
-this file (docs-only); main's #370/#376 records preserved verbatim below
-("Merged main record — feat/u11-clue-renders" + credits capsule). Prior panel YES on
-`4964a727` does NOT transfer to the new head.
+**Branch:** `feat/journal-player` · **Base:** `feat/journal-movies` @ `84fa3a0a` (stacked on frozen main `f2bbf1a2` #370)
+**Rebased:** 2026-11-09 — onto movies head `84fa3a0a`; only conflict was this file (docs-only). Historian-block clearance on `86624dde` does NOT transfer to the new head.
 **Owner order:** 2026-11-07 — "Build all journals" (Old Faithful pilot approved)
 **Status:** 106/106 clips BUILT and HOSTED (incl. pilot) — not "all
 verified". All 12 batches delivered (batch 08 is 8/8 new + pilot); nothing
@@ -27,25 +24,6 @@ unbuilt. What is actually established (detail: `docs/journal-movies.md` →
 clip passed every recipe gate.
 Next: see Pending. PR #369 is open; never merge without the owner's word,
 per PR, per head.
-
-## Rebase verification — onto frozen main f2bbf1a2 (#370), this run (2026-11-09)
-
-- Gates ran on `b26c26db` (rebase-record commit); this commit adds only this
-  BRANCH_STATUS.md text on top. Pushed head = this commit.
-- Gates on `b26c26db`: `npx tsc --noEmit` exit 0; `npm test` exit 0 (scripts
-  1161 pass / 11 skipped / 0 fail of 1172; src 2268 pass / 0 fail; validator
-  suite 133/133 on a direct re-run); lint-cards GATE PASSED; `npm run
-  build:pages` exit 0, buildId `b26c26db`. Logs:
-  `~/workspace/gjm-movies-r2-{tsc,npmtest,lintcards,build}.log`.
-- Docs-only: `git diff f2bbf1a2..HEAD --stat` = BRANCH_STATUS.md + the 5 branch
-  files (validator, validator test, manifest, package.json,
-  docs/journal-movies.md); no src/, tests/, workers/ changes. Branch files
-  byte-identical to old head `4964a727` (`git diff 4964a727 HEAD -- <files>`
-  empty); manifest byte-identical to `4964a727`.
-- Prior panel YES on `4964a727` does NOT transfer. This head is ready for
-  DuckDuck (testing prompt:
-  `~/workspace/journal-testing-prompts-duckduck-firefox-edge.md`). No E2E /
-  panel / recording in this run (gates only, per the split).
 
 ## Done
 - [x] 2026-11-08 — Branch created from origin/main 9e49da3e; worktree
@@ -568,6 +546,95 @@ Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
 
 ---
 
+## feat/journal-player — Impeccable follow-up, Part 1 (6 small fixes)
+
+**Branch:** `feat/journal-player` · **Base:** `0f06a852` (stacked on #369's `4964a727`)
+**Owner order:** "Yes. Keep going" — implement the 6 fixes, no merge, no PR.
+**Status:** all 6 done, all gates green, recordings delivered. Head `fc64a897`.
+
+- [x] 1. Mute (`f1ce6c99`): mute toggle in the controls (`journal-player-mute-<id>`,
+      ≥44px, aria-pressed, toggles `video.muted` — synced onto the element
+      directly since React's muted attribute doesn't reliably update the
+      property). Badge is now "▶ Watch the movie · 10 sec 🔊" (aria-hidden);
+      play button aria-label warns of sound ("10 seconds with sound").
+      The header comment's "Audio is never muted" line updated.
+- [x] 2. Tap-to-pause (`97e504d7`): clicking the video toggles play/pause;
+      a tap-pause flashes a large ⏸ overlay for ~600ms
+      (`journal-player-pause-flash-<id>`); toggle button untouched.
+- [x] 3. Focus, WCAG 2.4.3 (`7ab25178`): on open, focus moves into the player
+      (video, tabIndex -1, once ready; Close button while loading/on error).
+      On close — Close button, Escape, or any path — focus returns to that
+      entry's `journal-play-<id>` button instead of landing on BODY.
+- [x] 4. Error retry (`6a1eeb0a`): "Try again" button
+      (`journal-player-retry-<id>`) on the error state; adds
+      `resetJournalMovieManifestCache()` (unit-tested: fetch → reset → fetch
+      again) because the memoized loader would otherwise cache the failed
+      fetch for the whole page load.
+- [x] 5. Skip link, WCAG 2.4.1 (`d49a8bc6`): first focusable element on the
+      home page, visually hidden until focused, jumps to `#home-journal`
+      via the existing scrollTo (focus lands in the section): 1 Tab + Enter.
+- [x] 6. GET INVOLVED nav at 390px (`996bdb31`): the ≤680px nav row wrapped
+      instead of scrolling (was 83px past the right edge, scrollWidth 453
+      vs clientWidth 350). All 6 items in-bounds, no strip scroll; desktop
+      rules untouched.
+- [x] E2E (`d0d8bd4c`, fixed in `3fc78134`): 10 new tests
+      (journal-player.fixes.desktop/mobile.spec.ts) — all 6 fixes at 1280
+      and 390, media fulfilled with the real 10 s Old Faithful clip
+      (`stubJournalMediaRealClip`). First run 7/10: the retry stub's
+      `route.continue()` sends the request to the real network (nothing
+      listens on 4123 — the artifact is served from disk), so the second
+      fetch failed; probe-verified, test now fulfills the real manifest
+      bytes. The nav `boundingBox()` nulls were a transient measurement
+      flake (probe re-measured GET INVOLVED right=953.5 at 1280); tests now
+      read getBoundingClientRect. Re-run: 10/10.
+- [x] Recordings (`fc64a897`): one continuous take per viewport
+      (journal-player.fixes.record.*.spec.ts) — nav, skip link (desktop),
+      retry, mute, tap-to-pause + flash, Escape/close focus return,
+      keyboard reopen + Tab through controls.
+      `~/workspace/journal-player-fixes-play/fixes-desktop.webm` (41.5 s,
+      800x500) and `fixes-mobile.webm` (21.9 s, 368x800). Video-only, no
+      audio. Frames spot-checked: skip pill, playing movie with Sound
+      button, Muted state, new badge on close.
+- [x] Gates (buildId `996bdb31`): `npx tsc --noEmit` clean ·
+      `npm test` scripts 1154 pass / 0 fail / 11 skip, src 2282 pass /
+      0 fail / 0 skip (baseline src 2281, +1 new reset test) ·
+      `node scripts/lint-cards.mjs` GATE PASSED ·
+      `npm run build:pages` green (VITE_KOFI_URL set) ·
+      pre-existing journal-player E2E 7/7 (desktop, mobile, Old Faithful,
+      reduced). Logs: `~/workspace/gjm-player-fixes-{gates,e2e,e2e2,
+      e2e-regress,record,build,probe}.log`.
+
+Out of scope, NOT done (separate items): mobile progress bar 27px wide
+(Impeccable P1); loop/end-card issue (loop makes onEnded/Play-again
+unreachable). The 106 clips' narration/audio/visuals are NOT verified
+by this work. No merge, no PR opened.
+
+## feat/journal-player — Part 2: desktop two-column layout + captions/transcript (approved mockup)
+
+**Branch:** `feat/journal-player` · **Base:** `0f06a852` (stacked on #369's `4964a727`) · **Head:** `12dce717` (pushed) · **Owner approval:** mockup `journal-desktop-captions-mockup` approved 2026-11-09 03:06 CST.
+
+- [x] Captions recovered for all 106 clips (`c5cc7ecf`): narration scripts from `journal-movies-batches/batch-*/NOTES.md` (+ Old Faithful from pilot NOTE-v4.md). `public/videos/captions/<id>.vtt` (106) + `public/videos/journal-transcripts.json` (v1, 106 entries, 430 cues). VTT↔JSON agreement checked: 0 mismatches. No narration text invented. Coverage report: `~/workspace/journal-captions-coverage.md`.
+- [x] Desktop two-column layout + captions/transcript UI (`3688a134`): entries ≥681px two-column (art left, title/story/source right rail); mobile stacked. New `src/components/journal-transcripts.ts` (memoized lazy loader, `activeCue`, `captionUrl`). Player: `crossOrigin="anonymous"` + `<track kind="captions">`, CC toggle, Story-text transcript panel (live highlight, tap-to-seek + play), full-width progress row on all widths. Coverage-honest gating: entries absent from the JSON get no CC/Story-text button. Mobile progress bar now 216.5px (was 27px — Part 1 out-of-scope item, now done).
+- [x] E2E + gates (`12dce717`, 9 files: 6 captions specs, helpers, 2 fixes-spec updates). Gates (buildId `3688a134`): `npx tsc --noEmit` clean · `npm test` scripts 1154 pass / 0 fail / 11 skip, src 2302 pass / 0 fail / 0 skip · `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green. E2E (sequential, flock lock, chromium-1243, route-intercepted real Old Faithful clip): captions specs 8/8 green; regression 21 tests 19 pass / 2 fail on first run (both failures were the old tab-order tests — the new CC/Story-text buttons change Tab order, an intended consequence; specs updated to assert the new 5-stop order and re-run green per file). Recordings (video-only): `~/workspace/journal-player-captions-play/captions-desktop.webm` (29.0 s) + `captions-mobile.webm` (20.1 s); frame-difference checked, real motion. Logs: `~/workspace/gjm-captions-{gates,build,e2e,e2e2,e2e3,e2e4,e2e5}.log`.
+- [ ] OPEN JUDGMENT CALL (not resolved by the build): the mockup's text says "all controls in a right rail", but the build puts the player + all controls in the art column (measured: controls row x=65–722 inside art column x=65–722; right rail holds 0 buttons). Needs the owner's read against the mockup.
+- [ ] Out of scope, NOT done: loop/end-card issue (loop makes onEnded/Play-again unreachable). The 106 clips' narration/audio/visuals are NOT verified by this work. No merge, no PR opened. Panel review follows (not part of this task).
+
+## feat/journal-player — Part 3: 5 Historian-blocked facts corrected (text + audio)
+
+**Branch:** `feat/journal-player` · **Head:** `a7191e3e` (text fix, pushed) · **Audio:** meridian-media `fix/journal-facts-5` @ `70b2e95` (separate repo, NOT merged, NOT on the live Pages site — the live site still serves the old clips).
+
+- [x] Text fix (`a7191e3e`): cue 2 only, in `public/videos/captions/<id>.vtt` + `public/videos/journal-transcripts.json` (VTT↔JSON 0 mismatches, 20 cues):
+  - alamo: "An old mission, from 1718." 2.23–4.53 (was "from 1836", 2.23–4.13)
+  - cadillac: "In winter, it catches the first sunrise!" 2.61–4.61 (was "It catches the first sunrise in the country!", 2.61–4.60)
+  - joslyn: "Joslyn's museum stands right in Omaha." 2.86–5.49 (was "...stands north of Omaha.", 2.86–5.59)
+  - niagara: "They drop where New York meets Canada!" 2.86–5.06 (was "They drop over a cliff in New York.", 2.86–4.52)
+  - homestead: "One of the first claims, under the 1862 law." 2.89–5.64 (was "One of the first claims, back in 1862.", 2.89–5.10)
+  Manifest untouched. Source scripts in `journal-movies-batches` batch-04/07/08/09 NOTES.md corrected with fix notes (unversioned working files, not in this repo).
+- [x] Verification (this commit): gates — `npx tsc --noEmit` clean · `npm test` scripts 1154 pass / 0 fail / 11 skip, src 2302 pass / 0 fail / 0 skip · `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green, buildId `a7191e3e` · worker suite 145/145 (bonus, not in the assigned gate set). E2E (sequential, flock lock, chromium-1243, VITE_KOFI_URL set at build + test): new facts specs 6/6 desktop + 2/2 mobile — each entry plays with its corrected cue-2 line as the active caption inside its window, the same line highlights in the transcript panel, and the 5 old wordings appear nowhere on the page; source check 5/5 VTT + JSON corrected. Regression: existing journal-player + captions specs 31/31. Media: the fixed mp4s were fulfilled locally from the `fix/journal-facts-5` branch files (`git show origin/fix/journal-facts-5:journal/<id>.mp4`, media clone's branch untouched); the video src stays the real meridian-media URL — VM Chromium cannot reach github.io, and the live Pages site still serves the OLD clips, so local fulfillment is the only way to test the fix. Recording (video-only, Playwright video has no audio): `~/workspace/journal-player-facts-play/facts-desktop.webm` (94.6 s, 800x500) — one continuous take, all 5 corrected entries playing; frames spot-checked by eye, each corrected caption legible on-video (alamo ~0:15, cadillac ~0:34, joslyn ~0:53, niagara ~1:12, homestead ~1:29.5). New specs: `tests/e2e/journal-player.facts.{desktop,mobile,record.desktop}.spec.ts` + `journal-player.facts.data.ts`; helper `stubJournalMediaFixedClips` in `journal-player.helpers.ts`. Logs: `~/workspace/journal-facts-{gates,unittest,worker,tsc2,build,e2e-desktop,e2e-mobile,e2e-record,e2e-regress}.log`. No merge, no PR opened.
+- [ ] Out of scope, NOT done: the other 101 clips' narration/audio/visuals are NOT verified by this work; the media branch `fix/journal-facts-5` still needs merging/deploying before the live site serves the corrected audio.
+
+---
+
 ## Merged main record — fix/337-guess-counter (PR #340, main @ 5e6af2f9)
 
 Preserved from main during the rebase onto 5e6af2f9: the #340
@@ -800,6 +867,9 @@ No Cloudflare Workers build result for `16daa5ad`.
 
 ---
 
+
+---
+
 ## Merged main record — feat/u11-clue-renders (PR #370, main @ f2bbf1a2)
 
 # BRANCH_STATUS — feat/u11-clue-renders
@@ -918,6 +988,9 @@ worked and only the renders were missing.
 - **Tip after close-out: `fb46cf55`.** Remaining: Silo re-key →
   panel → DevEx → benchmark → merge on the owner's word →
   live verification on both hosts.
+
+
+---
 
 
 ---
