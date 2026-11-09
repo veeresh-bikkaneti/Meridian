@@ -232,7 +232,10 @@ test("(c)+(d)+(e) Watson tap replays without muting; Holmes tap mutes without re
   const map = page.getByTestId("loop-map");
 
   // --- (c) tap-Watson: replay fires, sound stays ON, no badge ---
-  const watsonBtn = map.getByTestId("detective-watson-replay");
+  // Watson holds his clue-card station in SEARCH_IDLE (station cure,
+  // 2026-11-08), so his replay control is the STATION form — it no
+  // longer lives inside the map. Holmes alone is map-scoped below.
+  const watsonBtn = page.getByTestId("detective-watson-replay");
   await expect(watsonBtn).toHaveCount(1, { timeout: 30_000 });
   await watsonBtn.click();
   await expect
@@ -244,12 +247,16 @@ test("(c)+(d)+(e) Watson tap replays without muting; Holmes tap mutes without re
   console.log("[sound-c] Watson tap replayed the chain; sound stayed on, no badge");
 
   // --- (d) tap-Holmes at the dock: mutes, badge appears, NO replay ---
+  // Holmes's mute alias stays on the map (he docks alone now); the
+  // muted badge latches on the STATION cluster, because that is the
+  // cluster rendering while Watson holds his station — so the badge
+  // is asserted page-wide, not inside the map.
   const playsBeforeHolmes = (await detectiveOnly(page)).length;
   const holmesBtn = map.getByTestId("detective-holmes-mute");
   await expect(holmesBtn).toHaveCount(1, { timeout: 15_000 });
   await holmesBtn.click();
   await expect.poll(() => soundKey(page), { timeout: 10_000 }).toBe("off");
-  await expect(map.getByTestId("detective-muted-badge")).toHaveCount(1, {
+  await expect(page.getByTestId("detective-muted-badge")).toHaveCount(1, {
     timeout: 10_000,
   });
   await page.waitForTimeout(2500);
@@ -261,7 +268,9 @@ test("(c)+(d)+(e) Watson tap replays without muting; Holmes tap mutes without re
 
   // --- (e) the pair chip: same key, ≥44 px, unmute clears the badge,
   //         and the Holmes alias stays in sync with it ---
-  const chip = map.getByTestId("detective-sound-chip");
+  // The chip rides the station cluster in the guessing phases (the
+  // station cluster is the one rendering), so it is page-scoped too.
+  const chip = page.getByTestId("detective-sound-chip");
   await expect(chip).toHaveCount(1, { timeout: 15_000 });
   await expect(chip).toBeVisible();
   await expect(chip).toHaveAttribute("aria-pressed", "false");
@@ -283,7 +292,7 @@ test("(c)+(d)+(e) Watson tap replays without muting; Holmes tap mutes without re
 
   await chip.click();
   await expect.poll(() => soundKey(page), { timeout: 10_000 }).toBe("off");
-  await expect(map.getByTestId("detective-muted-badge")).toHaveCount(1, {
+  await expect(page.getByTestId("detective-muted-badge")).toHaveCount(1, {
     timeout: 10_000,
   });
   console.log("[sound-e] pair chip flipped the same meridian.sound key both ways, badge followed");
@@ -664,9 +673,9 @@ test("(h) preset-off boot: badge at first paint, no speech; turning sound on cle
   // Where the pair renders, the muted badge is already latched —
   // first paint, no interaction needed. (The speech-mode attribute
   // is read off whichever host root is mounted: with sound off the
-  // ladder drains silently and the pair reaches the map dock fast,
-  // so the station root may already have handed over to the map
-  // root — both carry the attribute.)
+  // ladder drains silently and Holmes reaches the map dock fast
+  // while Watson settles at his station, so either root may be the
+  // one on screen — both carry the attribute.)
   const pairRoot = page.locator(
     '[data-testid="detective-station"], [data-testid="detective-host"]',
   );

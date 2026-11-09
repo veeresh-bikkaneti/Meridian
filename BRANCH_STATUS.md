@@ -75,152 +75,224 @@ worked and only the renders were missing.
 ---
 
 # BRANCH_STATUS — feat/geodetective-end-game
+# BRANCH_STATUS — fix/337-guess-counter
 
-- **Branch:** `feat/geodetective-end-game` · **Base:** `main` @ `566c955` (PR #363 merged + live)
-- **Design of record:** owner report + ruling (Veeresh, 2026-11-07, in the
-  `meridian` side chat), diagnosis `DIAGNOSIS-endgame.md` (evidence folder),
-  handbook ch.02 §2 (decision record lands with this PR).
+- **Branch:** `fix/337-guess-counter`
+- **Base:** `main` @ `775d8b4` (#329 merged) · synced with `main` @ `9e49da3` on 2026-11-08 (merge commit; see Sync below)
 
 ## Task capsule
 
-TASK / requested outcome: GeoDetective shipped with NO End game control,
-no end-session action, and no session summary (diagnosis proven in code +
-live DOM: mid-case controls are Editions / sound toggle / deck chips /
-Hint / pair speech controls only; `src/game/loop/store.ts` has no
-end/finish action; the only summary is the per-case reveal; leaving via
-Editions is a pause — Home offers resume, case stays `playing`). Map
-editions got the equivalent fix in #264. Build: an `endSession` store
-action + a session summary surface + a header End game button beside
-Editions whose confirm surface offers BOTH of the owner's capabilities.
+TASK / requested outcome: Fix issue #337 — the GeoDetective header
+counter overstates by one once a case is finished: a case lost on
+its 6th guess read "Guess 7 of 6" (owner screenshot, 2026-11-03),
+a 1-guess win read "Guess 2 of 5". Finished case: show the guesses
+actually made. Playing state unchanged. Builder silo: build, open
+the PR, stop. NO MERGE without the owner's per-PR word; Silo QA and
+the panel follow as separate silos.
 
-OWNER RULING (Veeresh, 2026-11-07 14:27 CST, amended within the minute —
-the amendment governs): the End game flow offers BOTH capabilities and
-the player picks; neither is a stray-tap default:
-1. **End outright** — session closes, summary shows; the in-flight case
-   is discarded: not resumable, not counted solved or lost, streak
-   untouched (it is not a loss).
-2. **Pause & resume later** — session closes, summary shows (closed
-   cases only); the in-flight case is preserved exactly (same
-   clue/guess state) and Home offers resume afterwards; when later
-   resumed and closed it counts once, when it closes.
-Both paths show the summary and fire the pair's game-end celebration
-on it (the #355 machinery/pattern).
+Tier and rationale: Tier 1 — Solo TDD. One bug, one expression, a
+clear repro (the owner's screenshot + the seeded finished cases
+below).
 
-Interpretations considered and selected reading:
-- "Session summary" contents = the brief's own list, all standing
-  store values: cases closed (totals.solved + totals.lost), the
-  solved/lost split, current streak, best streak, per-deck progress
-  (cycle, cycleCompleted, remaining, open-case flag). The loop store
-  has no session-start snapshot and none is invented; copy never calls
-  the standing totals "this session only".
-- The classic `SummaryDetectiveCelebration` component is NOT reused:
-  its props and frame are score-shaped (`totalScore`, per-edition
-  score rows, "your score of N" aria) and GeoDetective has no score.
-  Reused instead, verbatim: the machinery — DetectivePair rigs,
-  CELEBRATE_LAYOUT, the U8 dwell timings, `createCelebrationLinePlayer`
-  (the fixed "What a game! Well played, everyone!" line carries no
-  number), and `resolveSummaryCelebrationMode`. A loop sibling mount
-  (`LoopSummaryCelebration`) carries the loop's own stats in frame.
-- Cold Trail does NOT share the loop store or screen (its own
-  `src/game/coldtrail/store.ts` + `TrailScreen.tsx`; it borrows only
-  LoopMap). It is therefore NOT cured by this PR — stated in the PR
-  body; its equivalent is a follow-up on the owner's word.
-- The brief's note that geodetective.spec.ts pins end-game-button
-  count 0 was checked against main `566c955`: no such assertion
-  exists in the tree (no `end-game` string in any GeoDetective spec).
-  The diagnosis's runtime DOM enumeration (count 0 mid-case) is the
-  evidence of absence. New E2E pins the presence + both paths.
+Done condition / evidence: a new E2E spec seeds finished cases and
+asserts the truthful header — it fails on the unmodified build with
+the exact pre-fix strings, and passes after the fix; the shipped
+playing-state pins in geodetective.spec.ts stay green; all gates
+green (tsc, npm test, lint-cards, build:pages).
 
-Tier and rationale: Tier 2 — new feature, 3+ files, store-level state
-semantics. Run as a builder silo under the coordinator's brief;
-independent Silo QA + 12-seat panel + DevEx + benchmark follow.
+Files in scope: `src/game/loop/LoopScreen.tsx` (the counter
+expression on the LoopGame header line only),
+`tests/e2e/guess-counter.desktop.spec.ts` (new), this file.
+Protected / untouched: LoopScreen's deal paths and the "Case #N"
+header block (owned by the parallel #336 run), every other surface.
+Redundancy: grep-verified — the header counter at this line is the
+only surface that renders "Guess N of {cap}" from
+`guesses.length + 1`; the reveal's "Solved in X of Y guesses."
+already counts actual guesses and is untouched.
 
-Done condition / scenarios / evidence:
-- Unit: `endSession` outright discards only a `playing` current (a
-  finished current is untouched), never moves streak/totals/counters;
-  pause returns the store unchanged; `loopSessionSummary` derives
-  closed-only counts + per-deck progress incl. the open-case flag.
-- E2E (new `tests/e2e/geodetective-endgame.spec.ts`): button present
-  mid-case at 390/768/1280/1440; pause path at 390 + desktop (summary
-  totals exclude the open case; Done → Home resume offer; resume
-  restores the exact clue/guess state); outright path at 390 +
-  desktop (summary shows; Home has NO resume offer; reopening deals a
-  fresh case); a case closed after a pause-end counts exactly once;
-  ending from a reveal (no case in flight) uses the single-confirm
-  variant and counts the just-closed case; Editions-leave unchanged
-  (existing geodetective suite stays green).
-- Gates: tsc clean · npm test green · lint-cards GATE PASSED ·
-  build:pages green · detective/geodetective E2E suites green ·
-  post-merge live screenshots (button mid-case + summary, 390 + 1280,
-  both hosts).
-
-Files in scope: `src/game/loop/store.ts` (endSession +
-loopSessionSummary + types), `src/game/loop/store.test.ts` (unit
-pins), `src/game/loop/LoopScreen.tsx` (header button + choice dialog
-+ summary switch), `src/game/loop/LoopSessionSummary.tsx` (new —
-summary surface), `src/game/loop/LoopSummaryCelebration.tsx` (new —
-pair celebration mount, lazy), `tests/e2e/geodetective-endgame.spec.ts`
-(new), `docs/handbook/02-game-design-decisions.md` (§2 record),
-`README.md` (one GeoDetective sentence), this file.
-Protected / untouched: DetectiveHost/DetectivePair state machines,
-the classic run/session flow (`game-app.tsx`, `session.ts`,
-`run-summary.tsx`), Cold Trail, PR #340's header-counter line,
-PR #364's detective files.
-
-Dependencies / ordering: PR #340 (fix/337-guess-counter) touches the
-LoopScreen header counter expression — read its diff; if it merges
-first, merge-up over it (this PR does not touch that line). PR #364
-(feat/holmes-follow) touches detective files only — different surface.
-Verification contract: clean-silo QA keyed PR#+tip → 12-seat panel
-(personas verbatim from ~/.codex/agents) → DevEx → benchmark → fresh
-CI (build 22.x, e2e, GitGuardian) → merge on READY/READY-WITH-NITS
-(ship-when-ready, owner's standing directive 2026-11-04) → live
-build-meta both hosts + screenshots.
-Assumptions / risks: the summary is a transient screen state (like
-the classic summary) — a reload on the summary reopens the loop,
-which resumes (pause) or deals fresh (outright); recorded, accepted.
-An outright-discarded case: the original capsule claimed it was
-consumed from its cycle (the clampDeckToPoolSize abandonment
-precedent) and that the only consequence was a shortfall if that pack
-later grew. **That framing was WRONG — corrected on the record
-(panel round 1, Level Architect BLOCK, verified by the coordinator
-against the code):** the pack shortfall fires on ordinary same-size
-re-entry, not only after growth. A discarded pack case left the deck
-accounting identity (closed + open + in-deck = cycle size) short by
-one, so on the player's very next visit ensurePackDeck appended the
-manifest's tail case as a false "new" case — a duplicate dealt twice
-in one cycle — and a cycle containing a discard could "complete" one
-case early while the celebration copy claimed "all / every". **Cure
-(return-to-tail):** endSession's outright path returns the discarded
-case's index to the TAIL of its own deck before clearing `current`
-(guarded against duplicates). The case's progress is discarded — not
-counted, streak/totals untouched, not resumable — but the case itself
-stays in its cycle, may be dealt again fresh later in the cycle, and
-the accounting identity stays exact.
-Simpler / rejected: wiring the loop into the classic session
-(`session.ts`/`requestEndGame`) — rejected: the loop is a separate
-store, separate persistence namespace, and score-free; a bridge
-would duplicate truth across two stores. Reusing
-SummaryDetectiveCelebration — rejected above (score-shaped).
-Budget: Tier 2 parent cap 400k tokens (repo default), shared across
-coordinator + delegates.
-Approvals: PR + merge under the coordinator's assignment
-(ship-when-ready); branch protection untouched.
+Assumptions: the rendered cap for a resumed case comes from the
+puzzle's deal snapshot (`dealStartClues` / `dealMaxGuesses` →
+`persistedDealConfig`); the spec's seeds stamp those fields so the
+asserted caps (6 for the loss, 5 for the win) are the caps the
+header actually renders — confirmed by the red run's page snapshots.
 
 ## Status
 
-- [x] Diagnosis verified against main `566c955` (code + spec grep)
-- [x] Capsule committed (first commit)
-- [x] Store: endSession + loopSessionSummary + unit tests
-- [x] UI: header button + two-option choice dialog
-- [x] UI: LoopSessionSummary + LoopSummaryCelebration
-- [x] E2E: geodetective-endgame.spec.ts (both paths, 4 widths)
-- [x] Docs: handbook §2 record + README sentence
-- [ ] Builder gates (tsc / npm test / lint-cards / build:pages)
-  - Builder note (2026-11-07): tsc clean · npm test green · lint-cards GATE PASSED · E2E spec collects (7 tests). `build:pages` NOT green locally: 4 attempts, vite build completed + dist written every time, prerender crawl OOM-killed (exit 137) under concurrent crew load on the VM — CI build is the clean read.
-- [x] PR opened — #365 https://github.com/veeresh-bikkaneti/Meridian/pull/365
-- [x] Panel round 1 cure — Level Architect BLOCK (deck accounting) + Economy major nit cured by return-to-tail in `endSession`; Senior Developer / UX Researcher keyboard-modality guards, UX Designer summary fixes, Game Developer unit pins (items A–C in the PR body's "Panel round 1 — cure" section)
-- [ ] Silo QA (keyed PR#+tip)
-- [ ] Panel 12 seats by name + DevEx + benchmark
-- [ ] Merge on verdict + branch deleted + tip SHA ledgered
-- [ ] Live verification: build-meta both hosts + screenshots
+- [x] Fresh clone at `~/workspace/meridian-counter-fix`, branch cut
+      at `775d8b4`
+- [x] RED: new spec on the unmodified build — 2 failed, both on the
+      header assertion. Page snapshots in the Playwright error
+      contexts show the exact pre-fix headers: `- status: Guess 7
+      of 6` (lost seed) and `- status: Guess 2 of 5` (won seed).
+      Both seeds validated cleanly: each case restored as its
+      reveal ("Out of guesses" / "🎯 You found it!") before the
+      header assertion failed
+- [x] FIX: one line — `finished ? puzzle.guesses.length :
+      puzzle.guesses.length + 1` (the `finished` value already in
+      scope on LoopGame; the neighbouring "— N left" suffix was
+      already gated on it)
+- [x] GREEN + gates on the tip: `npx tsc --noEmit` exit 0 ·
+      `npm test` exit 0 (scripts 943 pass / 11 skip / 0 fail;
+      src 2016/2016) · `node scripts/lint-cards.mjs` GATE PASSED ·
+      `npm run build:pages` exit 0 · E2E under
+      `flock ~/workspace/.e2e.lock`, `--workers=1`, against the
+      Pages build: **19 passed / 1 failed of 20** — new spec 2/2,
+      `geodetective.spec.ts` 17/18. Every counter pin stays green
+      (playing state: "Guess 2 of 5" after one guess, "Guess 1 of
+      5" on a fresh deal; the win-path snapshot shows the finished
+      2-guess win header reading "Guess 2 of 5" — post-fix truth;
+      pre-fix it read "Guess 3 of 5"), so the playing state is
+      untouched. The 1 failure is NOT the counter — see next item
+- [x] Pre-existing failure, proven on unmodified main: the
+      geodetective win-path test (spec:199) fails at its share-text
+      assertion (spec:256) — expected
+      `https://meridian.knowledgetest.workers.dev/`, received the
+      Pages URL `https://veeresh-bikkaneti.github.io/Meridian/`.
+      Cause: the share origin follows the build's baked base
+      (`shareOrigin` in `src/lib/og/share-meta.ts`); the harness
+      serves the Pages build (base `/Meridian/`), while the pin
+      expects the Workers origin (PR #128). Proven pre-existing:
+      the identical test on unmodified main `775d8b4` (worktree,
+      same Pages build recipe) fails with a byte-identical
+      received share string. (One main run also flaked earlier on
+      a sheet/reveal heading strict-mode race — transient timing,
+      unrelated.) Out of scope for #337; flagged for the owner as
+      a separate test-pin/build mismatch. Correction note: the
+      first status commit claimed "21/21" — that was a misread of
+      a piped E2E summary (the pipe masked Playwright's exit
+      code); the true counts are as stated here
+- [x] Redundancy grep on the tip: line 1134 is the only
+      "Guess N of {cap}" render in `src/`; the only other
+      cap-denominated surface, the reveal's "Solved in X of Y
+      guesses." (line 1633), already counts actual guesses
+- [x] PR opened against main — #340, still NO MERGE (owner's
+      word only). The "now ticked" line in the PR body was false
+      through `16daa5ad` (unchecked at `528df01` and `8e3ccda` too).
+
+## Sync with main (2026-11-08, Rock — not a re-approval)
+
+- Merged `origin/main` @ `9e49da3e` into this branch normally (no
+  rebase, no force). The only conflict was this file (main carried
+  another branch's status); resolved by keeping this PR's record.
+  `LoopScreen.tsx` auto-merged; the fix line is now at line 1441
+  (was 1134 at the original tip — main grew the file); it is still
+  the only "Guess N of {cap}" render in `src/`.
+- The panel's votes were on `8e3ccda`; this merge creates a new tip,
+  so the panel must refresh on it. No merge without the owner's word.
+
+- Gates on the merge tip `53a59b5` (2026-11-08, logs on the
+  builder VM at /workspace/rock-pr340-logs): `npm ci` 0 · `tsc
+  --noEmit` 0 · `typecheck:worker` 0 · `build` 0 · `npm test` 0
+  (scripts 1023 pass / 9 skip / 0 fail; src 2266/2266) ·
+  `test:worker` 145/145 · `lint-cards` GATE PASSED · `build:pages`
+  0 · `lint:content` GATE PASSED · `check:flags` 0.
+- E2E (`flock ~/workspace/.e2e.lock`, `--workers=1 --retries=0`,
+  built Pages artifact). Browser: Playwright's bundled Chromium
+  v1243 is NOT installed on this VM (it needs a download, not
+  approved); ran with the config's documented override
+  `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome` (Chrome
+  156). `guess-counter.desktop.spec.ts` 2/2 pass;
+  `geodetective.spec.ts` 17/18 — spec:199 (win path) fails at
+  line 238: strict-mode violation, `heading "Ankara, Türkiye"`
+  matches both the guess sheet's h2 and the reveal's h2.
+  Pre-existing, not this PR: the identical test on unmodified main
+  `9e49da3` fails 3/3 with the same error (`--repeat-each=3`); this
+  tip also 3/3. This masks the older share-origin failure at
+  spec:256 recorded above (not reached).
+- GitHub's e2e job runs a fixed list of 6 specs that includes
+  neither `guess-counter.desktop.spec.ts` nor
+  `geodetective.spec.ts`, so CI green does not exercise this fix.
+
+## P-Stack swarm on `16daa5ad` (2026-11-08 — not a 12-seat panel)
+
+Owner ordered `/pstack:swarm` because the handbook persona pack
+and `~/workspace/custom-skills/local-meridian-review-pipeline/SKILL.md`
+are not on this machine. Role titles were not improvised as those
+12 seats. Resolver `check-models-config.py` is not installed, so
+each arm inherited the session model. The work model is unknown,
+so this review may be same-model. Not a merge approval.
+
+| Slice | SHA checked | Verdict |
+|---|---|---|
+| scope-and-regression | `16daa5ad` | PASS — 3 files; one counter line; merge-base `9e49da3` |
+| counter-correctness | `16daa5ad` | PASS (SHA recorded; case table was thin — parent is re-checking the comment commit) |
+| e2e-spec | `16daa5ad` | PASS |
+| records-honesty | `16daa5ad` | ISSUES |
+
+Kept from records-honesty (parent dropped two BLOCKs that treated
+"not re-run in this session" as proof the builder VM log was false;
+GitHub `build (22.x)` on `16daa5ad` is success and includes
+`npm run build` + `npm test`):
+
+- The PR body said a JSX why-comment was added. It was not in
+  `16daa5ad`. This commit adds it above the counter. The expression
+  is unchanged. It now sits under that comment (line moves by the
+  comment only).
+- The PR-opened checkbox was unticked. It is ticked above. PR #340
+  is open. Still no merge.
+- GitHub reviews API on #340 was empty. The "9 APPROVE / 3
+  APPROVE-WITH-NITS on `8e3ccda`" sentence is PR-body prose, not a
+  review object, and it does not cover this tip.
+
+Independent re-run beside the builder log, not a replacement of it:
+`tsc` 0, `test:worker` 145/145, `typecheck:worker` 0, lint-cards
+GATE PASSED, lint-content GATE PASSED, `build:pages` 0,
+`guess-counter.desktop.spec.ts` 2/2. Browser: Chrome for Testing
+156.0.8078.4 (headless shell). `/usr/bin/google-chrome` was absent.
+`npm test`: scripts 1021 pass / 11 skip / 0 fail, src 2266/2266.
+The two extra skips versus 1023/9 are the SSR pins; `npm run build`
+was not re-run here. `geodetective.spec.ts:199` was not re-run.
+No Cloudflare Workers build result for `16daa5ad`.
+
+## Sync with main (2026-11-08, verification-gate crew — not a re-approval)
+
+- Merged `origin/main` @ `63d82869` (#372) into this branch (no
+  rebase, no force; pushed by GitHub API replay — the created tree
+  `e6ce631f` matched the local merge tree exactly). Merge commit
+  `78b258e9`, parents `835ad2ef` + `63d82869`. The only conflict was
+  this file; resolved by keeping this PR's record, per the standing
+  per-branch convention. Branch diff vs main is now exactly 3 files:
+  this file, `src/game/loop/LoopScreen.tsx`, and
+  `tests/e2e/guess-counter.desktop.spec.ts` — the counter fix is
+  unchanged (the expression sits at LoopScreen.tsx:1444 on this
+  tip). GitHub reports the PR mergeable again.
+- Gates on the merge tip `78b258e9` (2026-11-08, logs at
+  `~/workspace/meridian-pr340-e2e/logs-gate/t340/` on this VM):
+  `tsc --noEmit` 0 · `npm test` 0 (scripts 1021 pass / 11 skip /
+  0 fail of 1032; src 2268/2268) · `test:worker` 145/145 ·
+  `typecheck:worker` 0 · `lint-cards` GATE PASSED · `build:pages` 0.
+- E2E (`flock ~/workspace/.e2e.lock`, `--workers=1`, built Pages
+  artifact; browser = Playwright's bundled Chromium 1243 via the
+  config's documented `PLAYWRIGHT_CHROMIUM_EXECUTABLE` override —
+  it IS installed on this VM): `guess-counter.desktop.spec.ts`
+  **2/2 pass**. The 6 leftover failures from the original full-suite
+  run were baseline-matched on pristine main `63d82869` first: ALL
+  SIX are pre-existing, zero are regressions from this PR — five
+  fail signature-identically on unmodified main
+  (tutorial.spec.ts:125/166/174 strict-mode 'Take the tour' ×2;
+  crash-watchdog.spec.ts:164 lastMilestone; offline-content
+  .spec.ts:203 heading timeout), and offline-content.spec.ts:181 is
+  a proven flake on both trees (storyteller-CSS preload console
+  error; trace-settled as the test's own offline choreography).
+  On this tip the same six fail with identical signatures
+  (`logs-gate/t340/e2e-six.log`), plus the pre-existing
+  telemetry-spill teardown error also present on main. Fixes for
+  the four clusters were built under a signed Tier 2 council
+  manifest on their OWN branches off main (this PR stays purely
+  the counter fix): `fix/e2e-tutorial-tour-names` @ `acbd506d`,
+  `fix/e2e-watchdog-milestone-assertion` @ `ed13b47f`,
+  `fix/e2e-offline-loop-scenario` @ `ff0d2628`,
+  `fix/e2e-offline-preload-assertion` @ `8cbe1b99` — each gated
+  green on its own scope; no PRs opened for them.
+- GitHub CI on `78b258e9`: `build (22.x)` SUCCESS · `e2e` (the
+  fixed 6-spec job — still neither guess-counter nor geodetective)
+  SUCCESS · GitGuardian SUCCESS. No Workers Builds result exists
+  for this or any branch: branch builds are off account-wide
+  (platform tag mismatch, fixed during PR #351 by disabling
+  non-production branch builds); production Workers state is
+  untouched by this work.
+- This tip supersedes every earlier tip the panel or swarm looked
+  at; the 12-seat panel + Reality Checker refresh on this tip is
+  recorded in `~/workspace/meridian-pr340-e2e/CREW-REPORT-2.md`.
+  Still NO MERGE without the owner's per-PR word.
+
