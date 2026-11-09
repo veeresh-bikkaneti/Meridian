@@ -68,7 +68,10 @@ worked and only the renders were missing.
   READY under ship-when-ready; live check on both hosts.
 - **LANE STOOD DOWN 2026-11-08** (owner's sequential pipeline
   law): queue position 3, behind the Watson-station cure and
-  PR #364. Resume from `RESUME-STATE.md` in this worktree.
+  PR #364. (The lane later resumed and closed out in this file —
+  see the Close-out section below; the old `RESUME-STATE.md`
+  worktree file was retired 2026-11-09, its record lives in
+  this file and the PR #370 body.)
 
 ## Close-out (2026-11-09, Agent ARCHIVE)
 
