@@ -1415,20 +1415,6 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     holmesHiddenRef.current = hidden;
     setHolmesHidden(hidden);
   };
-  /* F1 cure attempt 2 (PR #364): the sheet-close hold. Dismissing
-   * the place-confirm sheet can scroll the page under Holmes's
-   * stored berth (the sheet's button sits down-page, so the tap
-   * scrolls the page to reach it and a clue card lands where his
-   * berth was legal when solved). Attempt 1 re-judged legality on
-   * the close but still PAINTED him at the unchecked berth while
-   * its glide travelled. So from the close event he stays in
-   * hide-withdraw until a legality check against FRESH rects —
-   * measured after the scroll settles — has passed: the check
-   * below reveals him at the stored berth when it is legal, or
-   * places him straight onto a re-solved berth (no glide out of
-   * the illegal spot) when it is not. The hold clears only when a
-   * check passes or a teleport lands him legally. */
-  const sheetCloseHoldRef = useRef(false);
   /** The first legal DOCK_ONLY perch: dockPerch's bottom-left first
    * (kept whenever legal — behaviour at 1280 unchanged), then the
    * other viewport corners in reading order. */
@@ -1516,9 +1502,6 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     const rects = forbiddenRef.current;
     if (!holmesBoxHitsForbidden(cur, rects)) {
       clearEvictionCheck();
-      // A legal verdict is the sheet-close hold's pass: reveal him
-      // where he already stands — that IS the legal position.
-      sheetCloseHoldRef.current = false;
       if (holmesHiddenRef.current) setHolmesHiddenBoth(false);
       return;
     }
@@ -1541,11 +1524,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     clearEvictionCheck();
     if (followTierRef.current === "DOCK_ONLY") {
       // The tier never berths: move the pin itself to a legal corner,
-      // or hide him when no corner is legal. This path already
-      // places him in one step (no glide), so it satisfies the
-      // sheet-close hold either way — revealed on a legal perch,
-      // or still hidden with no legal corner.
-      sheetCloseHoldRef.current = false;
+      // or hide him when no corner is legal.
       const perch = legalPerch(rects);
       if (!perch) {
         setHolmesHiddenBoth(true);
@@ -1586,20 +1565,6 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       setHolmesHiddenBoth(true);
       return;
     }
-    if (sheetCloseHoldRef.current) {
-      // F1 attempt 2: under the sheet-close hold he must be revealed
-      // AT the legal position, never glide out of the unchecked
-      // berth painted over the card that slid under him — so the
-      // solved berth is placed in one step (the same instant-place
-      // the DOCK_ONLY perch above uses) and only then un-hidden.
-      sheetCloseHoldRef.current = false;
-      berthedRef.current = true;
-      setBerthed(true);
-      setHolmesTransition({ durationMs: 0, easing: EASE_OUT });
-      setHolmesXY({ x: berth.x, y: berth.y });
-      setHolmesHiddenBoth(false);
-      return;
-    }
     setHolmesHiddenBoth(false);
     applyFollowTargetRef.current({ x: berth.x, y: berth.y });
   };
@@ -1615,49 +1580,11 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     checkHolmesLegalityRef.current();
   }, [speakingWho]);
 
-  /* F1 cure attempt 2: the sheet-close hold, armed on the close
-   * transition itself. Declared after the sheet dispatch effect
-   * (top of this file), so the machine has processed sheetClosed
-   * when this runs. He is withdrawn BEFORE his first post-close
-   * paint at the stored berth, and the settle check is armed for
-   * after the dismiss scroll lands and goes quiet: the eviction
-   * timer rebuilds the forbidden rects fresh when it fires, and
-   * the legality check's own motion gate defers again if the page
-   * is still moving then — so the verdict that reveals or
-   * re-places him is always judged on settled, fresh geometry.
-   * 300 ms covers the measured dismiss scroll (lands ~56 ms after
-   * the tap, quiet ~180 ms later) with margin. */
-  const prevSheetHoldRef = useRef(sheetOpen);
-  useEffect(() => {
-    const wasOpen = prevSheetHoldRef.current;
-    prevSheetHoldRef.current = sheetOpen;
-    if (!wasOpen || sheetOpen) return;
-    sheetCloseHoldRef.current = true;
-    setHolmesHiddenBoth(true);
-    scheduleEvictionCheck(300, false, holmesXYRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sheetOpen]);
-
   /* A legal landing un-hides him: any placement writer (entry,
    * perch, follow solve) that lands his box on legal ground clears
    * the burst-hide. Illegal landings are gated upstream, so this
    * only ever fires on a legal spot or not at all. */
   useEffect(() => {
-    // F1 land backstop — reveal on arrival: attempt 2's probe found
-    // him still hidden seconds after settling on a legal berth,
-    // because a scroll-end glide changed his position and the
-    // arm-cancel below threw away the pending settle re-check, and
-    // no later trigger fired to reveal him. So a position change
-    // under the sheet-close hold does not just cancel the old
-    // check: it arms a fresh settle check for the NEW position.
-    // The legality check's own motion gate defers that check until
-    // the travel has actually landed, then it reveals him there if
-    // legal or places him on a re-solved berth if not — either way
-    // the hold cannot leave him hidden indefinitely.
-    if (sheetCloseHoldRef.current && holmesHiddenRef.current) {
-      scheduleEvictionCheck(300, false, holmesXY);
-      return;
-    }
     // C-precision: a new landing supersedes any eviction arm keyed
     // to the previous position — cancel it before it can confirm a
     // verdict against a position he no longer occupies.
@@ -1666,11 +1593,6 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       clearEvictionCheck();
     }
     if (!holmesHiddenRef.current) return;
-    // F1 attempt 2: while the sheet-close hold stands, a landing
-    // alone never reveals him — the settled fresh-rect check in
-    // checkHolmesLegality owns the reveal, so a solve that lands
-    // mid-hold cannot paint him before that check has passed.
-    if (sheetCloseHoldRef.current) return;
     if (!holmesBoxHitsForbidden(holmesXY, measureForbiddenRects())) {
       setHolmesHiddenBoth(false);
     }
