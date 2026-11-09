@@ -55,22 +55,62 @@ worked and only the renders were missing.
 
 ## Pending
 
-- [ ] E2E `tests/e2e/detective-core-audio.spec.ts` (fetch + play all
-  five clues on core case 5, tap-Watson repeats the clue itself,
-  solve-at-guess-2 flush) — **NOT YET RUN**: the queued run failed
-  at launch ("No tests found") because no Playwright project
-  matches the spec, and CI's bare `playwright test` excludes it
-  for the same reason. Add the `detective-core-audio` project
-  first; exact resume sequence in `RESUME-STATE.md`.
+- [x] E2E `tests/e2e/detective-core-audio.spec.ts` — **RUN AND
+  PASSED 2026-11-09** (close-out below): all 3 tests by name —
+  (a) all five clue clips fetched (HTTP 200) and play, in order ·
+  (b) tap-Watson repeats the clue itself, not the ack or decode ·
+  (c) solving at guess 2 flushes the queue.
 - [x] Silo QA PASS @ `93a8fe52` (isolated worktree: manifest gate
   clean, typecheck, lint-cards, all suites green, silo's own
-  sabotage control bites). Any new tip voids this key — re-key
-  after the Playwright-project fix.
-- [ ] 13-seat panel vote, DevEx, benchmark; merge on READY under
-  ship-when-ready; live check on both hosts.
+  sabotage control bites). **Key VOIDED by the close-out tip
+  `fb46cf55` — Silo re-key is the next step.**
+- [ ] Silo re-key, 13-seat panel vote, DevEx, benchmark; merge on
+  READY under ship-when-ready; live check on both hosts.
 - **LANE STOOD DOWN 2026-11-08** (owner's sequential pipeline
   law): queue position 3, behind the Watson-station cure and
   PR #364. Resume from `RESUME-STATE.md` in this worktree.
+
+## Close-out (2026-11-09, Agent ARCHIVE)
+
+- **Merge-up done:** `origin/main` @ `5e6af2f9` merged in (merge
+  commit `02798fd3`) — the two main commits past the old base
+  `9e49da3` are `63d82869` (#372 Watson-station cure) and
+  `5e6af2f9` (#340 guess counter). Sole conflict:
+  `BRANCH_STATUS.md`, resolved keeping BOTH records (this U11
+  capsule and main's #340 capsule both stand below). Handbook
+  ch.10 auto-merged as a faithful union: main's Watson-station
+  section came in, and this branch's FG-3 CLOSED record replaced
+  main's open FG-3 text.
+- **Playwright project added** (commit `6d4ad8e4`):
+  `detective-core-audio` registered in `playwright.config.ts`
+  immediately after `detective-berth` — the registration gap was
+  why the spec never ran locally or in CI.
+- **Fast gates on the merged + config tree, all PASS:**
+  typecheck clean · `npm test` — scripts 1,028 pass / 0 fail,
+  src 2,268 / 2,268 · worker 145 / 145 · lint-cards GATE PASSED ·
+  audio manifest gate clean (4,462 entries verified) ·
+  build:pages green (buildId `6d4ad8e4`).
+- **E2E run 1** (log
+  `~/workspace/meridian-detective-evidence/u11/e2e-core-audio.log`):
+  2 passed, test (b) FAILED — a spec defect, not a product
+  defect: test (b) scoped its `detective-watson-replay` locator
+  inside the `loop-map` subtree, but the button renders at the
+  station (the failure snapshot shows "Ask Watson to repeat this
+  clue" below the map region); every other spec using this
+  button scopes it page-wide. Fixed in commit `fb46cf55`
+  (locator scope only — same button, same count assertion, same
+  click; no assertion loosened).
+- **E2E run 2** (log
+  `~/workspace/meridian-detective-evidence/u11/e2e-core-audio-run2.log`):
+  **3 passed (2.9 m), exit 0** — (a) core case: all five clue
+  clips are fetched (HTTP 200) and play, in order · (b) core
+  case: tap-Watson repeats the clue itself, not the ack or
+  decode (replay started with `case-5/clue-1.mp3`) · (c) core
+  case: solving at guess 2 flushes the queue — no clue audio
+  fires after the solve.
+- **Tip after close-out: `fb46cf55`.** Remaining: Silo re-key →
+  panel → DevEx → benchmark → merge on the owner's word →
+  live verification on both hosts.
 
 ---
 
