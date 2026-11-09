@@ -1,4 +1,5 @@
-import { test, expect, type Page } from "playwright/test";
+import { test, expect, type Page, type Locator } from "playwright/test";
+import { readFileSync } from "node:fs";
 import { serveBuiltArtifact } from "./helpers";
 import {
   closeEntry,
@@ -36,6 +37,19 @@ async function activeTestId(page: Page): Promise<string | null> {
   return page.evaluate(
     () => (document.activeElement as HTMLElement | null)?.getAttribute("data-testid"),
   );
+}
+
+/**
+ * Viewport-relative box via getBoundingClientRect. locator.boundingBox()
+ * flaked to null on the nav buttons once (transient, during the header's
+ * entrance state — the probe re-measured the same elements fine), so
+ * geometry assertions read the rect directly instead.
+ */
+async function rectOf(locator: Locator): Promise<{ left: number; right: number; height: number }> {
+  return locator.evaluate((el) => {
+    const r = el.getBoundingClientRect();
+    return { left: r.left, right: r.right, height: r.height };
+  });
 }
 
 test("play badge names the length and warns of sound", async ({ page }) => {
@@ -144,13 +158,19 @@ test("manifest 500 shows Try again; retry with the manifest back reaches playing
 }) => {
   const ids = await shownNoteIds(page);
   const id = ids[0]!;
+  // The retry's second fetch must be answered here, not via
+  // route.continue(): continue() sends the request to the real network
+  // (nothing listens on 4123 — the artifact is served from disk), so
+  // the fetch fails and the error state persists. Fulfilling with the
+  // real manifest bytes proves the retry path itself.
+  const realManifest = readFileSync("public/videos/journal-manifest.json", "utf8");
   let manifestCalls = 0;
   await page.route("**/videos/journal-manifest.json", async (route) => {
     manifestCalls += 1;
     if (manifestCalls === 1) {
       await route.fulfill({ status: 500, contentType: "application/json", body: "{}" });
     } else {
-      await route.continue();
+      await route.fulfill({ status: 200, contentType: "application/json", body: realManifest });
     }
   });
   await page.getByTestId(`journal-play-${id}`).scrollIntoViewIfNeeded();
@@ -194,12 +214,13 @@ test("nav at 1280px: single row, GET INVOLVED inside the viewport, no strip scro
   page,
 }) => {
   const nav = page.locator(".hv5-nav nav");
-  const box = await nav.boundingBox();
-  expect(box!.height).toBeLessThan(70);
   const button = page.getByRole("button", { name: "GET INVOLVED" });
-  const btnBox = await button.boundingBox();
-  expect(btnBox!.right).toBeLessThanOrEqual(1280);
-  expect(btnBox!.left).toBeGreaterThanOrEqual(0);
+  await expect(button).toBeVisible();
+  const navRect = await rectOf(nav);
+  expect(navRect.height).toBeLessThan(70);
+  const btnRect = await rectOf(button);
+  expect(btnRect.right).toBeLessThanOrEqual(1280);
+  expect(btnRect.left).toBeGreaterThanOrEqual(0);
   const overflow = await nav.evaluate((el) => el.scrollWidth - el.clientWidth);
   expect(overflow).toBe(0);
 });
