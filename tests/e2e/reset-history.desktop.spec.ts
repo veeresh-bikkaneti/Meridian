@@ -346,9 +346,9 @@ test("reload proof: wiped open flags do not auto-open an edition after reload", 
   // is still set, just no longer honored at boot.
   await page.reload();
   await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 20_000 });
-  // GeoDetective did not auto-open: no loop screen, no loop map.
+  // GeoDetective did not auto-open: no loop screen. (No loop-map
+  // assertion here: Cold Trail renders a loop-map of its own.)
   await expect(page.getByTestId("loop-screen")).toHaveCount(0);
-  await expect(page.getByTestId("loop-map")).toHaveCount(0);
   expect(await localGet(page, "meridian.loop.open")).toBe("1");
   // Leave Cold Trail ("← All games" clears its flag), then Home renders.
   await page.getByRole("button", { name: "← All games" }).click();
