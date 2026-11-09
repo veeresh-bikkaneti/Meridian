@@ -118,9 +118,7 @@ test("(b) core case: tap-Watson repeats the clue itself, not the ack or decode",
   const before = await detectiveOnly(page);
   expect(before.some((u) => u.includes(CLUES[0]))).toBe(true);
 
-  const watsonBtn = page
-    .getByTestId("loop-map")
-    .getByTestId("detective-watson-replay");
+  const watsonBtn = page.getByTestId("detective-watson-replay");
   await expect(watsonBtn).toHaveCount(1, { timeout: 30_000 });
   await watsonBtn.click();
 
