@@ -633,7 +633,23 @@ test("follow OFF (f): PAUSE_BERTH tier — sweeps ignored, pause berths + holds 
     await page.mouse.move(a.x, a.y);
     await page.mouse.move(b.x, b.y, { steps: 4 });
     await page.mouse.move(a.x, a.y + 60, { steps: 4 });
-    await page.waitForTimeout(600);
+    // Keep the sweep moving for the same 600 ms window instead of
+    // parking at its end point: a pointer parked for 600 ms is a
+    // lawful thinking pause in this tier (the desktop pause law
+    // confirms at 350 ms), so Holmes would berth toward the parked
+    // point and that lawful glide would read as hold drift below.
+    // Sweeping between the two end points keeps this a sweep for
+    // the whole window, and the read lands right after a move.
+    const sweepUntil = Date.now() + 600;
+    let sweepToB = true;
+    while (Date.now() < sweepUntil) {
+      const target = sweepToB ? b : a;
+      await page.mouse.move(target.x, target.y + (sweepToB ? 0 : 60), {
+        steps: 2,
+      });
+      sweepToB = !sweepToB;
+      await page.waitForTimeout(50);
+    }
     const afterSweep = await holmesRect(page);
     expect(Math.abs(afterSweep!.x - settled!.x)).toBeLessThanOrEqual(8);
     expect(Math.abs(afterSweep!.y - settled!.y)).toBeLessThanOrEqual(8);
