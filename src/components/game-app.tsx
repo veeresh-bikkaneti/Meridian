@@ -101,6 +101,7 @@ import {
   journalSetIndexAt,
   nextEntryCountdown,
 } from "./home-journal";
+import { JournalPlayer } from "./journal-player";
 // Storyteller banner host (owner directive 2026-10-09): the Storyteller
 // sits IN THE BANNER beside the Meridian branding — always visible, mobile
 // and desktop. React.lazy — the host (and its copy chunk) never lands in
@@ -121,7 +122,6 @@ import { LockedLoop } from "./age-profile/LockedLoop";
 import { ReadAloudPrefPrompt } from "./age-profile/ReadAloudPrefPrompt";
 import { ReadAloudPrefSettings } from "./age-profile/ReadAloudPrefSettings";
 import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
-import { LazyHomeImage } from "./lazy-home-image";
 import {
   applyPendingAtBoundary,
   audioMode,
@@ -4436,6 +4436,9 @@ function Choose({
   // its own 60s clock so it stays live without re-rendering the set.
   const [journalIndex, setJournalIndex] = useState(() => journalSetIndexAt(Date.now()));
   const [journalNowMs, setJournalNowMs] = useState(() => Date.now());
+  // Journal movie player: the single open note id, or null. One movie
+  // plays at a time; opening another entry closes the first.
+  const [playingJournalId, setPlayingJournalId] = useState<string | null>(null);
   const focusInsideJournalCard = useCallback(() => {
     const active = document.activeElement;
     const card = document.querySelector('[data-testid="journal-card"]');
@@ -4481,6 +4484,10 @@ function Choose({
   }, [journalRotation]);
   const journalEntry = journalSetByIndex(journalIndex) ?? journalSetAt(Date.now());
   const journalNotes = journalEntry?.notes ?? [];
+  // A movie stops when its set rotates away — the note is no longer shown.
+  useEffect(() => {
+    setPlayingJournalId(null);
+  }, [journalIndex]);
   // Stagger order for the orchestrated entrance (110ms steps in CSS).
   // motionmaxxing M7: the atlas entrance cascade's stagger gaps, retuned
   // uneven (60–100ms) so the cards don't land on a metronome. Keyframes,
@@ -5029,9 +5036,15 @@ function Choose({
           {journalNotes.map((note) => (
             <article key={note.id} className="hv5-entry" data-testid="journal-note">
               {note.image && note.imageAlt && (
-                <figure className="hv5-entry-art">
-                  <LazyHomeImage src={journalImageUrl(note.image)} alt={note.imageAlt} />
-                </figure>
+                <JournalPlayer
+                  noteId={note.id}
+                  place={note.place}
+                  imageSrc={journalImageUrl(note.image)}
+                  imageAlt={note.imageAlt}
+                  open={playingJournalId === note.id}
+                  onOpen={setPlayingJournalId}
+                  onClose={() => setPlayingJournalId(null)}
+                />
               )}
               <h3>{note.place}</h3>
               <p className="hv5-label" style={{ marginTop: 4 }}>{note.where}</p>

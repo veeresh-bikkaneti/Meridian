@@ -459,6 +459,97 @@ body:has(.home-v5) {
   object-fit: cover;
   border-radius: 16px;
 }
+/* Journal movie player: the still picture is the button — tapping it
+   swaps the picture for that entry's movie in the same 3/2 box.
+   Controls stay at the 44px accessibility floor; the badge is white on
+   dark translucent, clearing 4.5:1. Reduced motion never changes the
+   layout, only the loop (see journal-player.tsx). */
+.home-v5 .hv5-journal-art {
+  position: relative;
+}
+.home-v5 .hv5-journal-play {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+.home-v5 .hv5-journal-play:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
+.home-v5 .hv5-journal-play-badge {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: rgba(20, 16, 12, 0.72);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+.home-v5 .hv5-journal-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #000;
+}
+.home-v5 .hv5-journal-status {
+  margin: 12px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+.home-v5 .hv5-journal-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+.home-v5 .hv5-journal-toggle,
+.home-v5 .hv5-journal-close {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--hv5-brown-deep);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.home-v5 .hv5-journal-toggle:focus-visible,
+.home-v5 .hv5-journal-close:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
+.home-v5 .hv5-journal-progress {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--hv5-line);
+  overflow: hidden;
+}
+.home-v5 .hv5-journal-progress span {
+  display: block;
+  height: 100%;
+  background: var(--hv5-brown-deep);
+}
+.home-v5 .hv5-journal-time {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
 .home-v5 .hv5-entry h3 {
   font-family: var(--hv5-display);
   font-size: 22px;
