@@ -358,3 +358,9 @@ Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
 - [x] **Acceptance batch PASS (fallback A)** — ONE flock session, --workers=1, buildId `ffa128b` (product diff is host-only, HEAD-derived): berth:236 PASS (25.6s) · companion:660 PASS (berths=4 remotes=2 samples=14 — strongest K2 signature on record) · K3 :691/:865/:899/:937 ALL PASS · replay:62 PASS · sound:222 PASS · berth:347 witness FAIL verbatim as parked (F7 signature, "killed" vs "full" — not chased). Log: `~/workspace/meridian-364-evidence/new3-acceptance-batch-A.log`.
 - [x] **Fast gates on cured tree:** tsc clean · npm test 1021 + 2275/2275 · test:worker 145/145 · lint-cards GATE PASSED · build:pages PASS.
 - [ ] Next: detective-set full re-run on the final tip → Silo QA re-key → 13-seat panel (F7 + F2-transit as open priced items) → DevEx + benchmark → report verdict to parent. NO MERGE from this lane.
+
+## Detective set on final tip ad035a6 — 63/68, zero NEW failures (2026-11-09, session 6)
+
+- [x] **Set complete** (main run killed by the environment after test 56/68; remainders finished in two recovery runs — same pattern as sessions 4–5). Record: `~/workspace/meridian-364-evidence/detective-set-final-ad035a6.md` (+ 3 logs). Per project: flag 2/2 · follow 6/7 · stations 1/1 · companion 5/6 · swap 1/1 · endings 0/2 · replay 3/3 · summary 3/3 · sound 10/10 · visibility 4/4 · staging 11/11 · watson-walk 9/9 · closed-state 6/6 · berth 2/3.
+- **5 failures, all pre-classified:** follow:746 = F2 transit → panel · companion:634 = KNOWN-ENV (out of scope) · endings pair = #371 (pre-existing) · berth:347 = F7 priced open item. **Zero NEW failures; NEW-3 cures hold in set conditions (companion:660, replay 3/3, sound 10/10, swap 1/1).**
+- [ ] Next: Silo QA re-key on ad035a6 → 13-seat panel → DevEx + benchmark → report verdict to parent.
