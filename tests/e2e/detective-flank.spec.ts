@@ -16,7 +16,7 @@
  *   the defect this replaces). Play is proven by the harness's
  *   play() record (an Audio element played a detective clip) —
  *   this sandbox cannot prove audible sound, and the report says
- *   so; it never claims the clip was heard.
+ *   so; it never says the clip was heard.
  * - Flag-off run (staging on, flank off): today's behaviour
  *   unchanged — no flank, no strip, no slot, bench slot still
  *   standing, baseline card widths.
