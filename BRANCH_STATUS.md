@@ -18,7 +18,7 @@
 - [x] Silo QA (independent) re-key PR#364@ad035a6 — PASS (record: `silo-qa-ad035a6.md`).
 - [x] Benchmark — PASS (+8,907 B, +0.023%; record: `benchmark-ad035a6.md`).
 - [x] 13-seat panel + DevEx on `ad035a6` — COMPLETE: **NOT READY — 10 APPROVE-WITH-NITS · 3 BLOCK** (tally at the end of this file).
-- [ ] **Merge: BLOCKED pending a parent ruling on the 3 BLOCKs (F7 ×2 seats; Game Player promise-4 mouse quick-tap ×1).** This lane does not merge, does not design a fourth F7 cure, and does not re-vote.
+- [x] **Parent ruling received (2026-11-09, session 7 dispatch):** cure ONLY the Game Player promise-4 BLOCK in this lane; F7 ships as a filed follow-up if the re-vote allows (no F7 cure design — loop CLOSED); DevEx docs Act-Ons folded in; F7 + F2 follow-up issues filed; full panel RE-VOTE on the cured tip. Merge still requires the owner's word after the re-vote. Diagnosis: `~/workspace/meridian-364-evidence/diagnosis-promise4.md`.
 
 ## Standing rules honoured
 - HARD STOP at the owner's merge word — this branch is NOT merged.
@@ -383,3 +383,12 @@ Panel complete (13/13 seats + DevEx gate). Code tip judged: `ad035a6`. Evidence 
 
 **Disposition by this lane (per parent rulings):** the F7 design loop is CLOSED — no fourth design in this lane; no cure is improvised for the Game Player finding either. Both blockers are reported to the parent as needing a ruling. NO MERGE from this lane. NO re-vote from this lane.
 **Panel Act-Ons carried to the parent report:** file the F7 follow-up issue with the merge paperwork (discriminator + three-attempt record; acceptance = :347 AND K3 :899 green in the same run; cure starts with in-page judge instrumentation; audio seat adds a degraded-run audio check, watchdogSeeks=0); file F2 transit residue by magnitude + settled-state ADR/handbook record; #371 endings pair ranked ABOVE F7/F2 in the follow-up queue by multiple seats; record the :660 floor margin in the PR body (berths 2 Silo QA / 3 set-final / 4 builder batch vs law ≥2); ship reporting must state plainly that #364 does NOT fix core-clue silence (lane 3 / U11, PR #370) or the tap-mode session flow (pair PR 2).
+
+## Promise-4 cure — session 7 (2026-11-09, parent dispatch: cure the Game Player BLOCK only)
+
+- [x] **Diagnosis written BEFORE product code:** `~/workspace/meridian-364-evidence/diagnosis-promise4.md`. Verdict: the pause detector's confirm chain fired on the click — (1) A3's +500 ms pose flip to `berth-think` proves the `pointerPaused` dispatch (SEARCH_AREA is entered only via `onPauseConfirmed`); (2) timeline arithmetic (arm 460 + telegraph 120 + glide 800 = arrival ≈ +1,380 ms) fits A3's unmoved +500 ms / arrived +1,500 ms samples and excludes the dwell (+1,070 ms) and end-gesture channels; (3) A3's landing centre (118,480) is exactly `solveFollow`'s east-ring candidate for the click point (24,480). Root cause: the pause-candidate state has NO press evidence — the detector is fed pointermove only, so a click's arrival move births a candidate at the click point and the trail-velocity guard is vacuous on a single-sample trail.
+- [ ] Cure: pause-candidate state gains press evidence (`notifyPress` on the detector; host feeds it from `onDown`; a press at the anchor kills the candidate and re-arms the pause clock from the press). Genuine no-press rests byte-identical. Unit pins in companion.test.ts + E2E pin (settled berth → quick click, pointer left resting → no move; sabotage control: click + genuine post-press rest still berths).
+- [ ] Regression batch (ONE run): new pin + K3 :691/:865/:899/:937 + berth:236 + companion:660 + rest-verification 390/768/1280.
+- [ ] DevEx docs Act-Ons: DetectiveHost.tsx header → shipped follow model; SPEC_CHECKLIST PB-1 + handbook ch.10 gain F7 + F2 disclosures.
+- [ ] File F7 + F2 follow-up issues (#371 ranked above both, stated in each).
+- [ ] Detective set on cured tip → Silo QA re-key → 13-seat panel RE-VOTE → DevEx → benchmark. NO MERGE.
