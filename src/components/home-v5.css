@@ -54,6 +54,29 @@ body:has(.home-v5) {
 }
 
 /* ---------- nav ---------- */
+/* Skip link (WCAG 2.4.1): visually hidden until focused, then a visible
+   pill at the top of the page. */
+.home-v5 .hv5-skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--hv5-brown-deep);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.home-v5 .hv5-skip-link:focus-visible {
+  top: 12px;
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
 .home-v5 .hv5-nav {
   position: relative;
   z-index: 5;
