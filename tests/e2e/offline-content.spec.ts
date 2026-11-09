@@ -92,7 +92,23 @@ function collectErrors(
   });
 }
 
-function expectNoErrors(sink: ErrorSink): void {
+// Narrow exclusion for the :181 offline-reload test only: the storyteller
+// CSS is first requested during that test's own offline reload, so the
+// load fails by the test's own choreography (net::ERR_INTERNET_DISCONNECTED)
+// while the shell still boots fully styled. Vite surfaces this as a
+// console error by design (chunk-recovery deliberately does not
+// preventDefault vite:preloadError). Matches ONLY this one asset: the
+// origin is built from APP_URL, the hash is the only wildcard, and the
+// entry must end or continue with whitespace (the real entry carries a
+// trailing stack line).
+const STORYTELLER_CSS_PRELOAD_RE = new RegExp(
+  `^console: Error: Unable to preload CSS for ${APP_URL.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}assets/storyteller-[A-Za-z0-9_-]+\\.css(\\s|$)`,
+);
+
+function expectNoErrors(
+  sink: ErrorSink,
+  opts?: { allowStorytellerCssPreload?: boolean },
+): void {
   // React #418 is a pre-existing flaky hydration warning in this build,
   // unrelated to offline wiring — it comes and goes on unmodified loads,
   // so it is excluded here exactly as in pwa.spec.ts / feature-flags.spec.ts.
@@ -106,7 +122,11 @@ function expectNoErrors(sink: ErrorSink): void {
     (e) =>
       !e.includes("Minified React error #418") &&
       !e.includes("Failed to load resource") &&
-      !e.includes("AJAXError"),
+      !e.includes("AJAXError") &&
+      !(
+        opts?.allowStorytellerCssPreload &&
+        STORYTELLER_CSS_PRELOAD_RE.test(e)
+      ),
   );
   expect(
     relevant,
@@ -197,7 +217,7 @@ test("offline: app shell boots from cache, no dead error page", async ({
   // browser error document.
   await expect(page.getByTestId("sound-toggle")).toBeVisible();
 
-  expectNoErrors(sink);
+  expectNoErrors(sink, { allowStorytellerCssPreload: true });
 });
 
 test("offline loop, uncached: exact offline headline in the error-card slot", async ({
