@@ -1,7 +1,6 @@
 import { expect, type Locator, type Page } from "playwright/test";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { serveBuiltArtifact } from "./helpers";
 
 /**
  * Shared journey for the Journal player E2E specs.
@@ -115,5 +114,3 @@ export async function closeEntry(page: Page, id: string): Promise<void> {
   await expect(page.getByTestId(`journal-play-${id}`)).toBeVisible();
   await expect(page.getByTestId(`journal-movie-${id}`)).toHaveCount(0);
 }
-
-export { serveBuiltArtifact };

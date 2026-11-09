@@ -1,4 +1,5 @@
 import { test, expect } from "playwright/test";
+import { serveBuiltArtifact } from "./helpers";
 import {
   closeEntry,
   expectPaused,
@@ -6,7 +7,6 @@ import {
   fixedInstant,
   loadHome,
   openEntry,
-  serveBuiltArtifact,
   shownNoteIds,
   stubJournalMedia,
   trackJournalRequests,
