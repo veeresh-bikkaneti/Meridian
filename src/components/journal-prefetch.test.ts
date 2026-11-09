@@ -47,9 +47,9 @@ test("isJournalPrefetchAllowed fails open when the connection object throws", ()
   assert.equal(isJournalPrefetchAllowed(throwing), true);
 });
 
-// --- Entry selection: first 1–2 in set order, skips playing + warmed --
+// --- Entry selection: first 1–2 given, skips playing + warmed --
 
-test("selectJournalPrefetchNoteIds takes the first two in set order", () => {
+test("selectJournalPrefetchNoteIds takes the first two in given order", () => {
   assert.deepEqual(
     selectJournalPrefetchNoteIds(["a", "b", "c"]),
     ["a", "b"],
@@ -71,7 +71,7 @@ test("selectJournalPrefetchNoteIds skips the playing entry and warmed ids", () =
   );
 });
 
-test("selectJournalPrefetchNoteIds handles the 1-note set and empty sets", () => {
+test("selectJournalPrefetchNoteIds handles a single id and empty lists", () => {
   assert.deepEqual(selectJournalPrefetchNoteIds(["galapagos"]), ["galapagos"]);
   assert.deepEqual(selectJournalPrefetchNoteIds(["galapagos"], { playingJournalId: "galapagos" }), []);
   assert.deepEqual(selectJournalPrefetchNoteIds([]), []);
