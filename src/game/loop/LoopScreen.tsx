@@ -1428,7 +1428,8 @@ function LoopGame({
       className={
         "mt-8 flex flex-col gap-6" +
         (isEnabled("detectivePair") && isEnabled("hostsStaging")
-          ? " detective-staging-on"
+          ? " detective-staging-on" +
+            (isEnabled("detectiveFlank") ? " detective-flank-on" : "")
           : "")
       }
     >
@@ -1559,6 +1560,19 @@ function LoopGame({
       <section aria-label="Clues" className="flex flex-col gap-3">
         {clue.clues.map((text, i) => (
           <Fragment key={i}>
+            {/* Flank strip slot (STAGE): the in-flow home for the
+                bookend strip — Holmes left, Listen middle, Watson
+                right, directly above the ACTIVE clue card (the one
+                the host anchors on, index cluesRevealed - 1).
+                Empty (zero height) unless the host portals the
+                strip into it in strip mode; gated on the flank
+                flag so flag-off is byte-identical. */}
+            {isEnabled("detectivePair") &&
+            isEnabled("hostsStaging") &&
+            isEnabled("detectiveFlank") &&
+            i === puzzle.cluesRevealed - 1 ? (
+              <div data-testid="detective-strip-slot" />
+            ) : null}
             <ClueCard
               tier={CLUE_TIERS[i]!}
               index={i}

@@ -825,6 +825,66 @@
   transform: none;
 }
 
+/* The flank row (STAGE): Holmes's fixed slot at the clue card's
+   left, vertically centred on it like Watson's station. The host
+   sets left/top inline (flankHolmesX / the card centre, -50%);
+   the class carries only the fixed positioning — no transition,
+   no animation: he appears at his post (frozen-motion law). */
+.detective-host-flank {
+  position: fixed;
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* The flank mute alias (STAGE): the tap-Holmes mute over the
+   flank figure — the same transparent 70×104 button as the
+   station alias, centred on the card like the figure. */
+.detective-host-flank-mute {
+  position: fixed;
+  z-index: 31;
+  pointer-events: none;
+}
+
+/* The bookend strip (STAGE): Holmes left, Listen + chip middle,
+   Watson right, in-flow above the active clue card. Plain page
+   flow — no transition, no animation, no travel: the figures are
+   simply there when the clue opens. The strip is 104 px tall
+   (one figure); the section's own 12 px gaps clear it from the
+   cards above and below. */
+.detective-flank-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 104px;
+}
+
+.detective-flank-strip-middle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detective-flank-strip-sound {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+
+.detective-flank-strip-figure {
+  position: relative;
+}
+
+/* Tap aliases inside the strip: absolutely positioned over their
+   figure (the replay button is relative by its own class; the
+   mute is static) — the same hitboxes as the station/map aliases
+   they replace. */
+.detective-flank-strip-alias {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 /* Clue cards narrow under staging so the gutter is real layout
    space and the card text reflows INSIDE the card (mockup v2).
    The 118 px is DERIVED (PR B unit 3, watson-walk.ts — the source
@@ -838,6 +898,34 @@
    proven layout for no clearance gain. */
 .detective-staging-on article[aria-label^="Clue"] {
   margin-right: 118px;
+}
+
+/* Flank (STAGE): Holmes takes the left of the clue card. The
+   margins are DERIVED (watson-walk.ts — the source of record;
+   CSS cannot import the constants, and its unit test pins the
+   arithmetic):
+ * - 641–768 px (row): the card moves right for Holmes and
+ *   narrows for Watson's gutter — margin-left 68 (88 flank
+ *   reserve − 20 page padding), margin-right 98 (118 gutter −
+ *   20); card = viewport − 206 (562 at 768, Holmes x12–82).
+ * - ≤640 px (strip): the gutter reservation is released whole
+ *   — margin-right 0, the card takes the full content width
+ *   (350 at 390) under the bookend strip.
+ * - Above 768 px the card is unchanged (610): Holmes stands in
+ *   the page margin (x194 at 1280), no card change needed.
+ * At 769–900 the host's measured mode is still "strip" (the row
+ * cannot fit until the card left reaches 88 at 904) — the strip
+ * stands above the 610 card there, overlapping nothing. */
+@media (max-width: 640px) {
+  .detective-staging-on.detective-flank-on article[aria-label^="Clue"] {
+    margin-right: 0;
+  }
+}
+@media (min-width: 641px) and (max-width: 768px) {
+  .detective-staging-on.detective-flank-on article[aria-label^="Clue"] {
+    margin-left: 68px;
+    margin-right: 98px;
+  }
 }
 
 
