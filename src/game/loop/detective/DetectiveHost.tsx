@@ -2000,7 +2000,19 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         pointerType === "touch"
           ? PAUSE_TOUCH_DISP_PX
           : PAUSE_DESKTOP_DISP_PX;
+      /* F6 regression fallback (A): anchor-arming is scoped to
+       * TOUCH only. Session 5's bisect proved leg (i) regressed
+       * the K2 mouse grid, and design (B) (clearing the anchor at
+       * every candidate reset) made it worse (berths 0): on the
+       * desktop path the detector candidate restarts at moves the
+       * host cannot see (its feed applies trail/velocity rules),
+       * so any host-side anchor lifecycle desyncs from it. The
+       * 383 ms jitter starvation leg (i) cured was a touch pause
+       * (berth:236); desktop returns to the exact pre-F6 rule —
+       * every move re-arms — whose timing the K2 grid was built
+       * against. */
       if (
+        pointerType === "touch" &&
         pauseTimerRef.current !== null &&
         confirmAnchor !== null &&
         confirmAnchor.pointerType === pointerType &&

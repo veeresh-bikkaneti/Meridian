@@ -68,9 +68,17 @@ test("(a) tap on Watson replays the current clue sequence in auto mode", async (
   const requests = collectAudioRequests(page);
   await openSeamCase(page, 137);
   await waitForSearchIdle(page);
+  // data-speech-mode rides whichever cluster is rendering: in the
+  // guessing phases Watson holds his station, so the carrier is
+  // detective-station; detective-host only mounts when Watson is
+  // docked on the map. Poll the station first, then the host — the
+  // same seam the u10 helpers use. (Spec seam cure, NEW-3: polling
+  // detective-host alone read undefined for the whole SEARCH phase
+  // even though auto playback demonstrably runs.)
   await expect
     .poll(() => page.evaluate(() =>
-      document.querySelector('[data-testid="detective-host"]')?.getAttribute("data-speech-mode"),
+      (document.querySelector('[data-testid="detective-station"]') ??
+        document.querySelector('[data-testid="detective-host"]'))?.getAttribute("data-speech-mode"),
     ), { timeout: 15_000 })
     .toBe("auto");
 

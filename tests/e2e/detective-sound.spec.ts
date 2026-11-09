@@ -229,12 +229,11 @@ test("(c)+(d)+(e) Watson tap replays without muting; Holmes tap mutes without re
   await openSeamCase(page, 137);
   await waitForSearchIdle(page);
 
-  const map = page.getByTestId("loop-map");
-
   // --- (c) tap-Watson: replay fires, sound stays ON, no badge ---
   // Watson holds his clue-card station in SEARCH_IDLE (station cure,
   // 2026-11-08), so his replay control is the STATION form — it no
-  // longer lives inside the map. Holmes alone is map-scoped below.
+  // longer lives inside the map. Holmes's mute alias is likewise
+  // page-scoped below (app-root follow portal).
   const watsonBtn = page.getByTestId("detective-watson-replay");
   await expect(watsonBtn).toHaveCount(1, { timeout: 30_000 });
   await watsonBtn.click();
@@ -246,13 +245,15 @@ test("(c)+(d)+(e) Watson tap replays without muting; Holmes tap mutes without re
   await expect(page.getByTestId("detective-muted-badge")).toHaveCount(0);
   console.log("[sound-c] Watson tap replayed the chain; sound stayed on, no badge");
 
-  // --- (d) tap-Holmes at the dock: mutes, badge appears, NO replay ---
-  // Holmes's mute alias stays on the map (he docks alone now); the
-  // muted badge latches on the STATION cluster, because that is the
-  // cluster rendering while Watson holds his station — so the badge
-  // is asserted page-wide, not inside the map.
+  // --- (d) tap-Holmes: mutes, badge appears, NO replay ---
+  // Holmes and his mute alias render in the app-root follow portal
+  // (the whole page is his ground under the follow model), so the
+  // alias is page-scoped — a loop-map-scoped lookup can never match
+  // it. The muted badge latches on the STATION cluster, because
+  // that is the cluster rendering while Watson holds his station —
+  // so the badge is asserted page-wide too.
   const playsBeforeHolmes = (await detectiveOnly(page)).length;
-  const holmesBtn = map.getByTestId("detective-holmes-mute");
+  const holmesBtn = page.getByTestId("detective-holmes-mute");
   await expect(holmesBtn).toHaveCount(1, { timeout: 15_000 });
   await holmesBtn.click();
   await expect.poll(() => soundKey(page), { timeout: 10_000 }).toBe("off");
