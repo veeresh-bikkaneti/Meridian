@@ -13,11 +13,12 @@
 - [x] E2E specs: NEW `detective-follow.spec.ts` (a)–(f) + telemetry-guard registration; REWRITTEN `detective-berth.spec.ts` (tier model), K2/K3 in `detective-companion.spec.ts` (above-point + pinch/pan-cancel rules deleted), staging C12 (remote rule deleted).
 - [x] Docs: handbook ch.10 PB-1 banner + addendum; SPEC_CHECKLIST PB-1 section.
 
-## Blocked / not done
-- [ ] **E2E execution + 390/768/1280 render screenshots: ENVIRONMENT-BLOCKED on this VM.** The Chromium renderer crashes on game mount in all three installed browser builds, identically against the UNMODIFIED main build (donor dist control run) — not a PB-1 defect. Home disk quota is also exhausted (builds need the XDG redirect). Silo QA must run the detective E2E set + capture the three widths on a healthy runner before merge.
-- [ ] Silo QA (independent) — coordinator's lane after this PR opens.
-- [ ] 12-seat panel on the final tip — coordinator's lane.
-- [ ] Benchmark (build bytes at tip) — coordinator's lane (bundle-report needs a healthy build env).
+## Blocked / not done — SUPERSEDED 2026-11-09 (session 6; see the panel record at the end of this file)
+- [x] E2E execution: detective set on final tip `ad035a6` — 63/68, zero NEW failures (record: `detective-set-final-ad035a6.md` in the evidence dir).
+- [x] Silo QA (independent) re-key PR#364@ad035a6 — PASS (record: `silo-qa-ad035a6.md`).
+- [x] Benchmark — PASS (+8,907 B, +0.023%; record: `benchmark-ad035a6.md`).
+- [x] 13-seat panel + DevEx on `ad035a6` — COMPLETE: **NOT READY — 10 APPROVE-WITH-NITS · 3 BLOCK** (tally at the end of this file).
+- [ ] **Merge: BLOCKED pending a parent ruling on the 3 BLOCKs (F7 ×2 seats; Game Player promise-4 mouse quick-tap ×1).** This lane does not merge, does not design a fourth F7 cure, and does not re-vote.
 
 ## Standing rules honoured
 - HARD STOP at the owner's merge word — this branch is NOT merged.
@@ -364,3 +365,21 @@ Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
 - [x] **Set complete** (main run killed by the environment after test 56/68; remainders finished in two recovery runs — same pattern as sessions 4–5). Record: `~/workspace/meridian-364-evidence/detective-set-final-ad035a6.md` (+ 3 logs). Per project: flag 2/2 · follow 6/7 · stations 1/1 · companion 5/6 · swap 1/1 · endings 0/2 · replay 3/3 · summary 3/3 · sound 10/10 · visibility 4/4 · staging 11/11 · watson-walk 9/9 · closed-state 6/6 · berth 2/3.
 - **5 failures, all pre-classified:** follow:746 = F2 transit → panel · companion:634 = KNOWN-ENV (out of scope) · endings pair = #371 (pre-existing) · berth:347 = F7 priced open item. **Zero NEW failures; NEW-3 cures hold in set conditions (companion:660, replay 3/3, sound 10/10, swap 1/1).**
 - [ ] Next: Silo QA re-key on ad035a6 → 13-seat panel → DevEx + benchmark → report verdict to parent.
+
+## PANEL VERDICT — PR #364 @ ad035a6: NOT READY — 10 APPROVE-WITH-NITS · 3 BLOCK (2026-11-09, session 6)
+
+Panel complete (13/13 seats + DevEx gate). Code tip judged: `ad035a6`. Evidence home: `~/workspace/meridian-364-evidence/` (`panel-<slug>.md` per seat; Game Player play log + 60 screenshots in `gameplayer-364/`).
+
+**APPROVE-WITH-NITS (10):** Game Designer · Game Developer · Game Narrative Designer · Game Economy Designer · Game Level Architect · Game Audio Designer · UX Designer · UX Researcher · Senior Developer · Frontend Developer.
+**DevEx gate: APPROVE-WITH-NITS** — with 3 docs-only Act-Ons still open: (1) this file's top Blocked block (cured above), (2) `DetectiveHost.tsx` file header still describes the deleted waypoint/dock architecture, (3) `SPEC_CHECKLIST.md` PB-1 + handbook ch.10 do not disclose F7/F2.
+**BLOCK (3):**
+
+1. **Office Hours — F7.** "BLOCK — F7… Must be cured — berth:347 and K3 pan companion:899 passing in the same batch, FG-5 thresholds untouched — and the cured tip re-voted. Merging first and filing it would ship a known violation of owner promise 6."
+2. **Senior Architect — F7.** Discriminator decisive (unmodified main kills in <36.8 s under the :347 throttle stimulus; the branch stays "full" for the full 120 s poll); reversibility is the design's own safety story and the step-down axis is broken. Cure acceptance: one batch with :347 + :899 + :691/:865/:937 + :236 green, thresholds untouched, panel re-vote on the cured tip. Also Act-On: record :347/:899 as a permanent gate pair; Consider: DetectiveHost.tsx god-component follow-up (judge-feed port + shared carrier resolver); ADR for the settled-state model + app-root portal.
+3. **Game Player — promise 4, played and reproduced (NEW product finding, not F7/F2).** With Holmes fully settled at a berth (1139,568), one quick mouse click (a few ms, <250 ms) on empty page margin at (24,480) moved him 1065 px across the page to berth beside the tap point within 1.5 s (screenshot `gameplayer-364/A3-1280-02-after-quick-tap.png`). Reproduced twice (sessions A3 + A2). The same check PASSES on touch (390, 80 ms tap → 0 px movement): a mouse click leaves a resting pointer, which the follow treats as a new berth target; the owner's promise ("a quick tap never summons or moves Holmes") has no mouse carve-out. Seat's stated cure scope: narrow — a re-check of the quick-tap case at 1280 from a settled berth suffices for this seat; no full re-play needed. Everything else played as promised: follow + STAY at 1280/390, settled clue overlap 0 px² everywhere, sheet-burst hide/rejoin, pan does not cancel a berth, WIN end-to-end, LOSS end-to-end at both widths with pair reactions, End game both fates exact.
+
+**F2 disposition — RATIFIED by all 13 seats + DevEx:** the settled-state legality model is the governing measure for promise 3; the follow:746 transit-frame sample (~3.6k px² mid-glide after sheet dismiss) is accepted residue, to be filed by magnitude with the settled-state ruling recorded (ADR / handbook / SPEC_CHECKLIST PB-1).
+**F7 disposition — SPLIT:** 11 seats + DevEx accept F7 as a priced follow-up issue (kill chain proven alive under genuine frame degradation, probe F7b; all 3 cure designs reverted because each false-killed on pan jank = promise-5 violation; thresholds never retuned). 2 seats BLOCK and require a cure + re-vote before merge.
+
+**Disposition by this lane (per parent rulings):** the F7 design loop is CLOSED — no fourth design in this lane; no cure is improvised for the Game Player finding either. Both blockers are reported to the parent as needing a ruling. NO MERGE from this lane. NO re-vote from this lane.
+**Panel Act-Ons carried to the parent report:** file the F7 follow-up issue with the merge paperwork (discriminator + three-attempt record; acceptance = :347 AND K3 :899 green in the same run; cure starts with in-page judge instrumentation; audio seat adds a degraded-run audio check, watchdogSeeks=0); file F2 transit residue by magnitude + settled-state ADR/handbook record; #371 endings pair ranked ABOVE F7/F2 in the follow-up queue by multiple seats; record the :660 floor margin in the PR body (berths 2 Silo QA / 3 set-final / 4 builder batch vs law ≥2); ship reporting must state plainly that #364 does NOT fix core-clue silence (lane 3 / U11, PR #370) or the tap-mode session flow (pair PR 2).
