@@ -27,7 +27,8 @@ import {
 test.setTimeout(180_000);
 test.use({ viewport: { width: 1280, height: 800 }, video: "on" });
 
-const OLD_FAITHFUL_TIME = new Date(Date.UTC(2026, 9, 17, 16, 0, 0));
+// First instant showing old-faithful alone (B8: one entry per 30-min window).
+const OLD_FAITHFUL_TIME = new Date(Date.UTC(2026, 9, 16, 0, 30, 0));
 const CUE_TEXTS = [
   "Hey kids, have you heard about this place?",
   "Crowds wait for Old Faithful.",
@@ -44,7 +45,7 @@ async function loadOldFaithfulSet(page: Page): Promise<void> {
   await page.clock.install({ time: OLD_FAITHFUL_TIME });
   await loadHome(page, OLD_FAITHFUL_TIME);
   const ids = await shownNoteIds(page);
-  expect(ids).toEqual(["old-faithful", "rushmore", "gateway-arch"]);
+  expect(ids).toEqual(["old-faithful"]);
 }
 
 /** Bounding box via getBoundingClientRect (never null when visible). */
@@ -93,7 +94,7 @@ test("desktop fold: play badge, loading status, and ready controls all sit above
   await page.clock.install({ time });
   await loadHome(page, time);
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
+  expect(ids.length).toBe(1);
   const id = ids[0]!;
 
   // Play badge: scroll the entry into view as a user would, then measure.

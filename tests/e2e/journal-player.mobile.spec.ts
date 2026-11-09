@@ -38,7 +38,7 @@ test("tap the picture plays the movie; pause, resume, close return the still", a
   expect(media).toEqual([]);
   expect(manifest).toEqual([]);
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
+  expect(ids.length).toBe(1);
   const id = ids[0]!;
   const playButton = page.getByTestId(`journal-play-${id}`);
   await playButton.scrollIntoViewIfNeeded();

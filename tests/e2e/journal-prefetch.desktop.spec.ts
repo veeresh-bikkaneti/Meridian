@@ -18,9 +18,10 @@ test.setTimeout(240_000);
 /**
  * Journal prefetch E2E — desktop (lazy-load scenario 2).
  *
- * While a round is active, the first 1–2 movies of the current journal
- * set are warmed in the background (CORS fetch + drain into the HTTP
- * cache); a later tap plays instantly. Tap-to-load is unchanged.
+ * While a round is active, the current entry's movie and the next
+ * window's (B8: one entry per 30-minute window) are warmed in the
+ * background (CORS fetch + drain into the HTTP cache); a later tap
+ * plays instantly. Tap-to-load is unchanged.
  *
  * Harness limit (proven by the Step 0b real-server probe in
  * ~/workspace/journal-prefetch-probe/): Playwright route-interception
@@ -38,7 +39,7 @@ test.setTimeout(240_000);
 async function startRound(page: Page): Promise<void> {
   // The journal specs freeze the clock; gameplay timers (map mount,
   // zoom settle) need real time, so resume from the fixed instant —
-  // the 2 h journal window still cannot cross during the test.
+  // the 30 min journal window still cannot cross during the test.
   await page.clock.resume();
   await page.getByRole("button", { name: "Play the globe" }).click();
   await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
@@ -80,6 +81,26 @@ async function delayManifest(page: Page, ms = 800): Promise<void> {
 /** The mp4 URL for a note id. */
 function clipUrl(id: string): string {
   return `https://veeresh-bikkaneti.github.io/meridian-media/journal/${id}.mp4`;
+}
+
+/**
+ * Note ids in catalog (rotation) order, parsed from the generated
+ * dataset — the same source the app renders. B8: one entry per
+ * 30-minute window, so the "next" entry is the following id.
+ */
+const NOTE_IDS: string[] = (() => {
+  const data = readFileSync(
+    path.resolve("src/components/home-journal.data.ts"),
+    "utf8",
+  );
+  const notesPart = data.slice(0, data.indexOf("JOURNAL_SETS"));
+  return [...notesPart.matchAll(/"id": "([^"]+)"/g)].map((m) => m[1]!);
+})();
+
+/** The entry showing in the window after `id`'s (wraps at the cycle end). */
+function nextNoteId(id: string): string {
+  const i = NOTE_IDS.indexOf(id);
+  return NOTE_IDS[(i + 1) % NOTE_IDS.length]!;
 }
 
 /** The 2 s h264+AAC fixture, for the delayed-route abort tests. */
@@ -260,8 +281,9 @@ test("(ii)+(iii) prefetch fires only after a round starts, at most the first 2 e
 }) => {
   const { media, manifest } = trackJournalRequests(page);
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
-  const firstTwo = new Set([clipUrl(ids[0]!), clipUrl(ids[1]!)]);
+  expect(ids.length).toBe(1);
+  // B8: the current window's entry + the next window's — at most two warms.
+  const allowed = new Set([clipUrl(ids[0]!), clipUrl(nextNoteId(ids[0]!))]);
   // Nothing before the round, even given time.
   await page.waitForTimeout(2_000);
   expect(media).toEqual([]);
@@ -272,9 +294,11 @@ test("(ii)+(iii) prefetch fires only after a round starts, at most the first 2 e
   // Let any second warm land.
   await page.waitForTimeout(3_000);
   for (const url of media) {
-    expect(firstTwo.has(url)).toBe(true);
+    expect(allowed.has(url)).toBe(true);
   }
   expect(new Set(media).size).toBeLessThanOrEqual(2);
+  // The current entry's clip is always among the warms.
+  expect(media).toContain(clipUrl(ids[0]!));
   // Prefetch also warms the memoized manifest cache: exactly one fetch.
   expect(manifest).toHaveLength(1);
 });
@@ -320,7 +344,7 @@ test("(v) no prefetch after gameplay ends", async ({ page }) => {
   await startRound(page);
   await expect.poll(() => media.length, { timeout: 20_000 }).toBeGreaterThan(0);
   await endRound(page);
-  // The set is unchanged after the round; a stale warm would show up here.
+  // The entry is unchanged after the round; a stale warm would show up here.
   expect(await shownNoteIds(page)).toEqual(ids);
   const countAtEnd = media.length;
   expect(countAtEnd).toBeGreaterThan(0);
@@ -354,22 +378,24 @@ test("(vii) a non-prefetched entry's tap loads only that clip, with the spinner"
   await delayManifest(page);
   const { media, manifest } = trackJournalRequests(page);
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
-  const third = ids[2]!;
-  const playButton = page.getByTestId(`journal-play-${third}`);
+  expect(ids.length).toBe(1);
+  // No round started, so nothing was prefetched: the single shown
+  // entry is the non-prefetched tap target.
+  const only = ids[0]!;
+  const playButton = page.getByTestId(`journal-play-${only}`);
   await playButton.scrollIntoViewIfNeeded();
   await playButton.click();
-  await expect(page.getByTestId(`journal-loading-spinner-${third}`)).toBeVisible({
+  await expect(page.getByTestId(`journal-loading-spinner-${only}`)).toBeVisible({
     timeout: 5_000,
   });
-  await expect(page.getByTestId(`journal-loading-${third}`)).toHaveText("Loading the movie…");
-  const video = page.getByTestId(`journal-movie-${third}`);
+  await expect(page.getByTestId(`journal-loading-${only}`)).toHaveText("Loading the movie…");
+  const video = page.getByTestId(`journal-movie-${only}`);
   await expect(video).toBeVisible({ timeout: 10_000 });
   await expectPlaying(video);
   // Only that clip's bytes moved, plus the one manifest fetch.
-  expect(new Set(media)).toEqual(new Set([clipUrl(third)]));
+  expect(new Set(media)).toEqual(new Set([clipUrl(only)]));
   expect(manifest).toHaveLength(1);
-  await closeEntry(page, third);
+  await closeEntry(page, only);
 });
 
 test("(viii-a) entry text stays on in closed, loading, and playing phases", async ({
@@ -498,13 +524,14 @@ test("(x) ending the round with a warm in flight aborts the fetch", async ({
   expect(mediaReqs(ev).length).toBe(started);
 });
 
-test("(xi) entering GeoDetective triggers prefetch for the current set", async ({
+test("(xi) entering GeoDetective triggers prefetch for the current entry", async ({
   page,
 }) => {
   const { media, manifest } = trackJournalRequests(page);
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
-  const firstTwo = new Set([clipUrl(ids[0]!), clipUrl(ids[1]!)]);
+  expect(ids.length).toBe(1);
+  // B8: the current window's entry + the next window's — at most two warms.
+  const allowed = new Set([clipUrl(ids[0]!), clipUrl(nextNoteId(ids[0]!))]);
   // Nothing before entry, even given time.
   await page.waitForTimeout(2_000);
   expect(media).toEqual([]);
@@ -518,9 +545,11 @@ test("(xi) entering GeoDetective triggers prefetch for the current set", async (
   // Let any second warm land.
   await page.waitForTimeout(3_000);
   for (const url of media) {
-    expect(firstTwo.has(url)).toBe(true);
+    expect(allowed.has(url)).toBe(true);
   }
   expect(new Set(media).size).toBeLessThanOrEqual(2);
+  // The current entry's clip is always among the warms.
+  expect(media).toContain(clipUrl(ids[0]!));
   // Prefetch also warms the memoized manifest cache: exactly one fetch.
   expect(manifest).toHaveLength(1);
 });

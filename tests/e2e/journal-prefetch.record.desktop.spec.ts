@@ -60,11 +60,11 @@ test("recorded walkthrough: gameplay prefetches, tap plays instantly", async ({
   await page.clock.install({ time });
   await loadHome(page, time);
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
-  stamp("note", `set=${ids.join(",")}`);
+  expect(ids.length).toBe(1);
+  stamp("note", `entry=${ids.join(",")}`);
 
   // Start the round: the clock resumes (gameplay timers need real time)
-  // from the fixed instant, so the 2 h journal window cannot cross.
+  // from the fixed instant, so the 30 min journal window cannot cross.
   await page.clock.resume();
   await page.getByRole("button", { name: "Play the globe" }).click();
   await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");

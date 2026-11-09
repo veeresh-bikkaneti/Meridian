@@ -61,7 +61,7 @@ test("GET INVOLVED sits inside the 390px viewport with no nav strip scroll", asy
 
 test("tap the video pauses with a flash; mute toggle works by tap", async ({ page }) => {
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
+  expect(ids.length).toBe(1);
   const id = ids[0]!;
   const playButton = page.getByTestId(`journal-play-${id}`);
   await playButton.scrollIntoViewIfNeeded();
