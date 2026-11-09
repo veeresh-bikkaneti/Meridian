@@ -129,9 +129,15 @@ test("keyboard: Tab/Enter opens with focus in the player; Close returns focus to
   await expectPlaying(video);
   // Focus moved INTO the player: on the video itself.
   await expect.poll(() => activeTestId(page)).toBe(`journal-movie-${id}`);
-  // Tab past toggle + mute to Close, Enter closes.
+  // Tab through the controls in DOM order — toggle, CC, Story text,
+  // mute, Close (the captions build added the CC and Story text
+  // buttons between toggle and mute) — then Enter closes.
   await page.keyboard.press("Tab");
   await expect.poll(() => activeTestId(page)).toBe(`journal-player-toggle-${id}`);
+  await page.keyboard.press("Tab");
+  await expect.poll(() => activeTestId(page)).toBe(`journal-player-cc-${id}`);
+  await page.keyboard.press("Tab");
+  await expect.poll(() => activeTestId(page)).toBe(`journal-player-transcript-${id}`);
   await page.keyboard.press("Tab");
   await expect.poll(() => activeTestId(page)).toBe(`journal-player-mute-${id}`);
   await page.keyboard.press("Tab");
