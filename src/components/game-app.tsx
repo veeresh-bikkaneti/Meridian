@@ -5059,15 +5059,17 @@ function Choose({
                   onClose={() => setPlayingJournalId(null)}
                 />
               )}
-              <h3>{note.place}</h3>
-              <p className="hv5-label" style={{ marginTop: 4 }}>{note.where}</p>
-              <p style={{ marginTop: 8 }}>{note.story}</p>
-              <p style={{ marginTop: 8 }}>
-                <a href={note.sourceHref} target="_blank" rel="noopener noreferrer">
-                  {note.sourceLabel}
-                </a>
-                <span className="hv5-journal-confidence">{confidenceText(note)}</span>
-              </p>
+              <div className="hv5-entry-text">
+                <h3>{note.place}</h3>
+                <p className="hv5-label" style={{ marginTop: 4 }}>{note.where}</p>
+                <p style={{ marginTop: 8 }}>{note.story}</p>
+                <p style={{ marginTop: 8 }}>
+                  <a href={note.sourceHref} target="_blank" rel="noopener noreferrer">
+                    {note.sourceLabel}
+                  </a>
+                  <span className="hv5-journal-confidence">{confidenceText(note)}</span>
+                </p>
+              </div>
             </article>
           ))}
           {journalEntry ? (

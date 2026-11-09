@@ -554,13 +554,32 @@ body:has(.home-v5) {
 }
 .home-v5 .hv5-journal-controls {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
   margin-top: 10px;
 }
+/* Progress on its own full-width row above the buttons, at every width:
+   the old shared row squeezed it to 27px on a 390px phone. The time
+   rides with the bar, not with the buttons. */
+.home-v5 .hv5-journal-progress-row {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 20px;
+}
+.home-v5 .hv5-journal-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 .home-v5 .hv5-journal-toggle,
 .home-v5 .hv5-journal-mute,
-.home-v5 .hv5-journal-close {
+.home-v5 .hv5-journal-close,
+.home-v5 .hv5-journal-cc,
+.home-v5 .hv5-journal-transcript-btn {
   min-height: 44px;
   min-width: 44px;
   padding: 0 16px;
@@ -574,9 +593,49 @@ body:has(.home-v5) {
 }
 .home-v5 .hv5-journal-toggle:focus-visible,
 .home-v5 .hv5-journal-mute:focus-visible,
-.home-v5 .hv5-journal-close:focus-visible {
+.home-v5 .hv5-journal-close:focus-visible,
+.home-v5 .hv5-journal-cc:focus-visible,
+.home-v5 .hv5-journal-transcript-btn:focus-visible {
   outline: 3px solid var(--hv5-brown-deep);
   outline-offset: 3px;
+}
+/* Toggled-on CC / Story text read as active: deep green, white text —
+   same 4.5:1-clear pairing as the brown buttons. */
+.home-v5 .hv5-journal-cc[aria-pressed="true"],
+.home-v5 .hv5-journal-transcript-btn[aria-pressed="true"] {
+  background: var(--hv5-forest-deep);
+}
+/* Transcript panel: the narration as tappable lines under the player.
+   Lines are buttons (keyboard-accessible); the line being spoken is
+   highlighted, and during the voice-free gap no line is. */
+.home-v5 .hv5-journal-transcript {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+}
+.home-v5 .hv5-journal-transcript-line {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--hv5-ink);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.45;
+  text-align: left;
+  cursor: pointer;
+}
+.home-v5 .hv5-journal-transcript-line:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 2px;
+}
+.home-v5 .hv5-journal-transcript-line-active {
+  background: #f1ead3;
+  font-weight: 700;
 }
 .home-v5 .hv5-journal-progress {
   flex: 1;
@@ -599,6 +658,28 @@ body:has(.home-v5) {
   font-family: var(--hv5-display);
   font-size: 22px;
   font-weight: 560;
+}
+/* Desktop two-column journal entry (approved mockup, 2026-11-09):
+   storybook art LEFT, title / story / cited fact in a RIGHT RAIL, so
+   art + play badge + status + controls fit one 1280x800 viewport. The
+   player (open state included) stays in the art column; the rail holds
+   the entry text. Mobile (<=680px) keeps the stacked layout exactly
+   as before — this rule only exists at >=681px. */
+@media (min-width: 681px) {
+  .home-v5 .hv5-entry {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .home-v5 .hv5-entry-art {
+    grid-column: 1;
+    margin: 0;
+  }
+  .home-v5 .hv5-entry-text {
+    grid-column: 2;
+    min-width: 0;
+  }
 }
 .home-v5 .hv5-entry a {
   color: var(--hv5-brown-deep);
