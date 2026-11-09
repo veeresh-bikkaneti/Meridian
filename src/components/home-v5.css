@@ -516,6 +516,7 @@ body:has(.home-v5) {
   margin-top: 10px;
 }
 .home-v5 .hv5-journal-toggle,
+.home-v5 .hv5-journal-mute,
 .home-v5 .hv5-journal-close {
   min-height: 44px;
   min-width: 44px;
@@ -529,6 +530,7 @@ body:has(.home-v5) {
   cursor: pointer;
 }
 .home-v5 .hv5-journal-toggle:focus-visible,
+.home-v5 .hv5-journal-mute:focus-visible,
 .home-v5 .hv5-journal-close:focus-visible {
   outline: 3px solid var(--hv5-brown-deep);
   outline-offset: 3px;
