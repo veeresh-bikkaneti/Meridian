@@ -75,10 +75,12 @@ test("(B7) fresh load with a persisted loopOpen flag lands on Home, GeoDetective
   await loadHome(page, time);
 
   // Home, not GeoDetective: the journal card is up, the loop screen is not.
+  // (The home menu itself carries a "GeoDetective" edition-card heading,
+  // so the screen-closed proof is the loop testids, not the heading.)
   await expect(page.getByTestId("journal-card")).toBeVisible({ timeout: 20_000 });
-  await expect(page.getByRole("heading", { name: "GeoDetective" })).toHaveCount(0);
   await expect(page.getByTestId("loop-map")).toHaveCount(0);
   await expect(page.getByTestId("loop-screen")).toHaveCount(0);
+  await expect(page.getByRole("combobox", { name: "Search the map" })).toHaveCount(0);
   // The menu offers the resume variant for the saved in-progress mystery.
   await expect(
     page.getByRole("button", { name: "GeoDetective: Resume your case" }),
@@ -139,7 +141,8 @@ test("(B7) tapping in after a flagged boot resumes the saved loop without re-dea
 
 test("(B7) plain boot with no saved flag lands on Home (control)", async ({ page }) => {
   await expect(page.getByTestId("journal-card")).toBeVisible({ timeout: 20_000 });
-  await expect(page.getByRole("heading", { name: "GeoDetective" })).toHaveCount(0);
   await expect(page.getByTestId("loop-map")).toHaveCount(0);
+  await expect(page.getByTestId("loop-screen")).toHaveCount(0);
+  await expect(page.getByRole("combobox", { name: "Search the map" })).toHaveCount(0);
   expect(await page.evaluate(() => localStorage.getItem("meridian.loop.open"))).toBeNull();
 });
