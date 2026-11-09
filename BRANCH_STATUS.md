@@ -333,3 +333,12 @@ Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
   `npm test` PASS 2268/2268 · `npm run test:worker` PASS 145/145 ·
   `node scripts/lint-cards.mjs` GATE PASSED ·
   `npm run build:pages` PASS (exit 0)
+
+## Detective-set re-run — final tip (2026-11-09, lane 2 session 5, READ-ONLY measurement)
+
+- [x] **Run complete** on starting tip `0c7922c` (buildId `0c7922c`; `dist/client/_shell.html` EXISTS; build:pages PASS). HEAD advanced mid-run by a docs-only `GATES-STATE.md` commit (`5fbec18`) — no code/spec change, results unaffected. Fast gates: tsc clean · `npm test` PASS (scripts 1021 pass/0 fail of 1032; src 2275/2275) · `test:worker` 145/145.
+- [x] **Full detective set (14 projects, ONE flock session, --workers=1): 58 passed / 10 failed / 68 total (41.5m).** Full report: `~/workspace/meridian-364-evidence/detective-set-rerun-final.md`; logs: `detective-set-rerun-final.log` + `detective-set-rerun-confirmations.log` in the same evidence dir.
+- **Known buckets (6 failures):** endings WIN + FAIL pair at 4777.5 px² = KNOWN-371 · follow:746 sheet-burst = KNOWN-F2, TRANSIT sample 3621.506… (not settled) · berth:347 = KNOWN-F7 ("killed" vs "full") · swap:271 = KNOWN-F5B family BUT fired at :376 pose (third surface — neither predicted :349 nor :383; rows 26=26, think-transition bucket 14 vs 13) · companion:634 K2 touch = KNOWN-ENV page-lost (reproduced identically solo).
+- **NEW failures (3, all reproduced verbatim solo):** companion:660 K2 mouse (berths 1 < 2, :671) · replay:62 (a) (`data-speech-mode` undefined vs "auto", :75) · sound:222 (c)+(d)+(e) (`detective-holmes-mute` count 0 vs 1, :256).
+- **Load/timing (not a product failure):** closed-state:227 FAIL (desktop 1280) failed in the main run (SELECTION_READ window 0) and PASSED solo (selectionReadWindow=4, benchFree=true).
+- [ ] Next (parent's lane): Silo QA re-key + panel — the 3 NEW failures above are unbucketed work for that lane, alongside the known items.
