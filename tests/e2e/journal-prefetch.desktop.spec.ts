@@ -1,4 +1,4 @@
-import { test, expect, type Page } from "playwright/test";
+import { test, expect, type BrowserContext, type CDPSession, type Page, type Route } from "playwright/test";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { serveBuiltArtifact, readPhase } from "./helpers";
@@ -80,6 +80,158 @@ async function delayManifest(page: Page, ms = 800): Promise<void> {
 /** The mp4 URL for a note id. */
 function clipUrl(id: string): string {
   return `https://veeresh-bikkaneti.github.io/meridian-media/journal/${id}.mp4`;
+}
+
+/** The 2 s h264+AAC fixture, for the delayed-route abort tests. */
+const FIXTURE_MP4 = readFileSync(path.resolve("tests/e2e/fixtures/journal-player-test.mp4"));
+
+/**
+ * Range-aware mp4 fulfill with a delay, so the warm is provably still
+ * in flight when the test hides the tab / ends the round (mirrors
+ * journal-player.helpers fulfillMp4, which is not exported).
+ */
+async function fulfillMp4Delayed(route: Route, bytes: Buffer, delayMs: number): Promise<void> {
+  try {
+    if (delayMs > 0) await new Promise((resolve) => setTimeout(resolve, delayMs));
+    const range = route.request().headers()["range"];
+    const m = range ? /bytes=(\d+)-(\d*)/.exec(range) : null;
+    if (m) {
+      const start = parseInt(m[1]!, 10);
+      const end = m[2] ? Math.min(parseInt(m[2], 10), bytes.length - 1) : bytes.length - 1;
+      if (Number.isFinite(start) && start >= 0 && start <= end) {
+        await route.fulfill({
+          status: 206,
+          contentType: "video/mp4",
+          headers: {
+            "accept-ranges": "bytes",
+            "content-range": `bytes ${start}-${end}/${bytes.length}`,
+          },
+          body: bytes.subarray(start, end + 1),
+        });
+        return;
+      }
+    }
+    await route.fulfill({
+      status: 200,
+      contentType: "video/mp4",
+      headers: { "accept-ranges": "bytes" },
+      body: bytes,
+    });
+  } catch {
+    // The warm was aborted while the fulfill was delayed — the route is
+    // gone; nothing to do.
+  }
+}
+
+/**
+ * Replace the beforeEach mp4 stub with a delayed one (30 s: warms are
+ * provably still in flight when the test hides the tab / ends the
+ * round, even when the end-game sequence runs slow on a contended VM —
+ * the 15 s delay lost that race in the full-suite run). The manifest
+ * route (serveBuiltArtifact) is untouched — unrouteAll only removes
+ * page routes.
+ */
+async function delayMp4(page: Page, ms = 30_000): Promise<void> {
+  await page.unrouteAll({ behavior: "wait" });
+  await page.route("**/meridian-media/journal/*.mp4", (route) =>
+    fulfillMp4Delayed(route, FIXTURE_MP4, ms),
+  );
+}
+
+interface ReqEvent {
+  url: string;
+  kind: "request" | "finished" | "failed";
+  t: number;
+  status?: number;
+  failure?: string;
+}
+
+/** Request/response/failure events for journal media + manifest, with wall-clock timestamps. */
+function trackAll(page: Page): ReqEvent[] {
+  const events: ReqEvent[] = [];
+  const isJournal = (u: string) =>
+    u.includes("meridian-media/journal/") || u.includes("videos/journal-manifest.json");
+  page.on("request", (r) => {
+    if (isJournal(r.url())) events.push({ url: r.url(), kind: "request", t: Date.now() });
+  });
+  page.on("response", (res) => {
+    if (isJournal(res.url()))
+      events.push({ url: res.url(), kind: "finished", t: Date.now(), status: res.status() });
+  });
+  page.on("requestfailed", (r) => {
+    if (isJournal(r.url()))
+      events.push({ url: r.url(), kind: "failed", t: Date.now(), failure: r.failure()?.errorText });
+  });
+  return events;
+}
+
+const mediaReqs = (ev: ReqEvent[]) =>
+  ev.filter((e) => e.kind === "request" && e.url.includes("meridian-media/journal/"));
+const failedMedia = (ev: ReqEvent[]) =>
+  ev.filter((e) => e.kind === "failed" && e.url.includes("meridian-media/journal/"));
+const finishedMedia = (ev: ReqEvent[]) =>
+  ev.filter((e) => e.kind === "finished" && e.url.includes("meridian-media/journal/"));
+const finishedMediaAfter = (ev: ReqEvent[], at: number) =>
+  ev.filter(
+    (e) => e.kind === "finished" && e.url.includes("meridian-media/journal/") && e.t > at,
+  );
+
+/**
+ * Hide the tab, by the strongest method this headless Chromium allows:
+ * (a) real tab switch (second tab to front), (b) CDP lifecycle
+ * "passive", (c) CDP lifecycle "frozen", (d) synthetic override of
+ * document.visibilityState + a dispatched visibilitychange event (tests
+ * the app's listener itself; the browser transition is Chromium's job).
+ * Returns which method actually produced visibilityState === "hidden".
+ * NOTE: (a) alone does NOT hide in headless new mode — the background
+ * tab still reports "visible". (b)/(c) are tried before (d).
+ */
+async function hideTab(
+  page: Page,
+  context: BrowserContext,
+): Promise<{ method: string; visibilityState: string; other: Page | null }> {
+  const vis = () => page.evaluate(() => document.visibilityState);
+  // (a) real tab switch
+  const other = await context.newPage();
+  await other.goto("about:blank");
+  await other.bringToFront();
+  await page.waitForTimeout(1000);
+  if ((await vis()) === "hidden") return { method: "real-tab-switch", visibilityState: "hidden", other };
+  // (b)/(c) CDP lifecycle states
+  const cdp: CDPSession = await context.newCDPSession(page);
+  for (const state of ["passive", "frozen"]) {
+    try {
+      await cdp.send("Page.setWebLifecycleState", { state });
+      await page.waitForTimeout(500);
+      if ((await vis()) === "hidden") return { method: `cdp-${state}`, visibilityState: "hidden", other };
+    } catch {
+      // CDP rejected the transition — fall through to the next method.
+    }
+  }
+  // (d) synthetic: override the property the app reads, dispatch the event
+  await page.evaluate(() => {
+    Object.defineProperty(document, "visibilityState", { get: () => "hidden", configurable: true });
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  await page.waitForTimeout(300);
+  return { method: "synthetic-dispatch", visibilityState: await vis(), other };
+}
+
+async function showTab(page: Page, other: Page | null): Promise<string> {
+  await page.evaluate(() => {
+    try {
+      delete (document as unknown as Record<string, unknown>)["visibilityState"];
+    } catch {
+      /* ignore */
+    }
+    document.dispatchEvent(new Event("visibilitychange"));
+  });
+  if (other) {
+    await page.bringToFront();
+    await other.close().catch(() => undefined);
+  }
+  await page.waitForTimeout(500);
+  return page.evaluate(() => document.visibilityState);
 }
 
 test.beforeEach(async ({ page, context }) => {
@@ -276,3 +428,100 @@ test("(viii-b) entry text stays on in the error phase", async ({ page }) => {
   await expect(text.locator("a").first()).toBeVisible();
   await expect(note.locator("img").first()).toBeVisible();
 });
+
+test("(ix) hiding the tab mid-warm aborts the in-flight warms", async ({
+  page,
+  context,
+}) => {
+  // 30 s delay: the warms are provably still in flight when the tab hides.
+  await delayMp4(page);
+  const ev = trackAll(page);
+  await startRound(page);
+  await expect.poll(() => mediaReqs(ev).length, { timeout: 20_000 }).toBeGreaterThan(0);
+  // Let any second warm start.
+  await page.waitForTimeout(500);
+  const started = mediaReqs(ev).length;
+  expect(started).toBeLessThanOrEqual(2);
+  const hideAt = Date.now();
+  const { visibilityState, other } = await hideTab(page, context);
+  expect(visibilityState).toBe("hidden");
+  // Premise: no warm finished before the hide — the abort has something
+  // in flight to kill (the 30 s fulfill cannot have landed yet).
+  expect(finishedMedia(ev)).toEqual([]);
+  // Aborted warms fail fast (net::ERR_ABORTED); none finish after the
+  // hide, and none start. The 20 s poll tolerates slow requestfailed
+  // delivery on a contended VM (the 15 s fulfill would land first if
+  // the abort had not fired, so a timeout here still means no abort).
+  await expect
+    .poll(() => failedMedia(ev).length, { timeout: 20_000 })
+    .toBeGreaterThanOrEqual(1);
+  expect(finishedMediaAfter(ev, hideAt)).toEqual([]);
+  expect(mediaReqs(ev).length).toBe(started);
+  await showTab(page, other);
+  await endRound(page);
+});
+
+test("(x) ending the round with a warm in flight aborts the fetch", async ({
+  page,
+}) => {
+  // 30 s delay: the warms are provably still in flight when the round ends.
+  await delayMp4(page);
+  const ev = trackAll(page);
+  await startRound(page);
+  await expect.poll(() => mediaReqs(ev).length, { timeout: 20_000 }).toBeGreaterThan(0);
+  // Let any second warm start.
+  await page.waitForTimeout(500);
+  const started = mediaReqs(ev).length;
+  expect(started).toBeLessThanOrEqual(2);
+  await page.getByTestId("end-game-button").click();
+  await expect(page.getByRole("dialog", { name: "Game summary" })).toBeVisible({
+    timeout: 15_000,
+  });
+  await page.getByRole("button", { name: "Done" }).click();
+  await expect(page.getByTestId("journal-card")).toBeVisible({ timeout: 20_000 });
+  // run becomes null in onSummaryDone in the same commit that returns
+  // home; the effect cleanup (abort) runs before home paints. Use the
+  // home-visible moment as the run-null landmark.
+  const runNullAt = Date.now();
+  // Premise: no warm finished before the round ended — the abort has
+  // something in flight to kill (the 30 s fulfill cannot have landed yet).
+  expect(finishedMedia(ev)).toEqual([]);
+  // The abort landmark is Done, not End game: the in-flight warms fail
+  // (aborted) once the round ends; none finish after, none start. The
+  // 20 s poll tolerates slow requestfailed delivery on a contended VM
+  // (the 15 s fulfill would land first if the abort had not fired, so
+  // a timeout here still means no abort).
+  await expect
+    .poll(() => failedMedia(ev).length, { timeout: 20_000 })
+    .toBeGreaterThanOrEqual(1);
+  expect(finishedMediaAfter(ev, runNullAt)).toEqual([]);
+  expect(mediaReqs(ev).length).toBe(started);
+});
+
+test("(xi) entering GeoDetective triggers prefetch for the current set", async ({
+  page,
+}) => {
+  const { media, manifest } = trackJournalRequests(page);
+  const ids = await shownNoteIds(page);
+  expect(ids.length).toBe(3);
+  const firstTwo = new Set([clipUrl(ids[0]!), clipUrl(ids[1]!)]);
+  // Nothing before entry, even given time.
+  await page.waitForTimeout(2_000);
+  expect(media).toEqual([]);
+  expect(manifest).toEqual([]);
+
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
+  await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
+    timeout: 30_000,
+  });
+  await expect.poll(() => media.length, { timeout: 20_000 }).toBeGreaterThan(0);
+  // Let any second warm land.
+  await page.waitForTimeout(3_000);
+  for (const url of media) {
+    expect(firstTwo.has(url)).toBe(true);
+  }
+  expect(new Set(media).size).toBeLessThanOrEqual(2);
+  // Prefetch also warms the memoized manifest cache: exactly one fetch.
+  expect(manifest).toHaveLength(1);
+});
+
