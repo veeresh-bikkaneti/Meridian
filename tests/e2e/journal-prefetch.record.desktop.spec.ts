@@ -97,19 +97,22 @@ test("recorded walkthrough: gameplay prefetches, tap plays instantly", async ({
   await expect(video).toBeVisible({ timeout: 10_000 });
   await expectPlaying(video);
   // Playback-start estimate for the audio mux: the video's own clock
-  // (currentTime) against page time — precise to ~100 ms, unlike
-  // polling observations. Audio delay = this wall time minus the
-  // recording start.
+  // (currentTime) against the real wall clock. (NOT performance.now():
+  // the mocked clock makes performance.timeOrigin a mocked epoch, so
+  // mixing it with real Date.now() collapses the delay to 0 — observed
+  // on the first take.) The evaluate reads currentTime just before
+  // evalWall, so playback started ~currentTime earlier.
+  const evalWall = Date.now();
   const playStart = await page.evaluate(() => {
     const v = document.querySelector("video");
     if (!v) return null;
-    return {
-      wall: performance.timeOrigin + performance.now() - v.currentTime * 1000,
-      currentTime: v.currentTime,
-    };
+    return { currentTime: v.currentTime };
   });
   expect(playStart).not.toBeNull();
-  const audioDelayMs = Math.max(0, Math.round(playStart!.wall - recStartWall));
+  const audioDelayMs = Math.max(
+    0,
+    Math.round(evalWall - playStart!.currentTime * 1000 - recStartWall),
+  );
   console.log(
     `record: tap->playing wall=${Date.now() - tapWall}ms audioDelayMs=${audioDelayMs} currentTime=${playStart!.currentTime.toFixed(2)}`,
   );

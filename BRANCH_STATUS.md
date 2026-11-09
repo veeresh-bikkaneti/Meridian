@@ -2,7 +2,7 @@
 
 **Branch:** `feat/journal-prefetch` · **Base:** `feat/journal-player` @ `af7ec7c1` (stacked on movies `84fa3a0a`, frozen main `f2bbf1a2`)
 **Task:** Meridian lazy-load scenario 2 — background prefetch of journal movies WHILE the user is playing the game. Tap-to-load stays the primary path.
-**Status:** Implemented (prefetch module + GameApp wiring + loading spinner). E2E + full gates + screen recording pending. No PR, no merge.
+**Status:** Implemented + E2E green + full gates green. Screen recording in progress. No PR, no merge.
 **Rebased:** 2026-11-09 — onto player head `af7ec7c1`; only conflict was this file (docs-only). The unanimous APPROVE on `c19f8dfc` does NOT transfer to the new head.
 
 ## Base record — feat/journal-player (rebased onto movies head 84fa3a0a, frozen main f2bbf1a2)
@@ -58,15 +58,15 @@ per PR, per head.
 - [x] Step 0b — Cache-reuse experiment (real-server probe, `~/workspace/journal-prefetch-probe/`): CORS fetch + drain, then a `<video preload="none">` tap — server-side clip hits stayed at 1 before AND after the tap (zero additional transfers); video played. Hidden-`<video preload="auto">` warm scored the same 1→1; fetch wins on simplicity. Route interception CANNOT observe cache reuse (fulfilled responses bypass the cache) — E2E under interception asserts prefetch requests happen, reuse is proven by the probe.
 - [x] Step 1 — `src/components/journal-prefetch.ts` (gating, entry selection, bounded runner ≤2 concurrent, per-fetch AbortController, never rejects) + 16 unit tests; GameApp wiring (`run !== null || loopOpen` trigger, stops on round end / tab hidden / unmount); tsc clean.
 - [x] Step 2 — Loading spinner on the player's loading state (decorative, aria-hidden, keeps the text; never renders under reduced motion) + CSS + 2 unit tests.
+- [x] Step 3 — E2E `tests/e2e/journal-prefetch.desktop.spec.ts`: (i)–(viii) all pass (9/9); regression run 18/18 with journal-player.desktop + journal.spec. One fix found by the run: a page-route `continue()` goes to the real network, not to serveBuiltArtifact's route — the manifest-delay helper fulfills from the built file instead.
+- [x] Step 4 — Full gates on head `f4b1639d`: tsc exit 0; `npm test` green (scripts 1154 pass / 11 skipped / 0 fail; src 2320 pass / 0 fail); lint-cards GATE PASSED; `build:pages` green.
 
 ## Design corrections vs the brief (verified from code, not re-litigated)
 - The effect lives in **GameApp**, not in Choose/home: GameApp returns early with `<Play>`/`<LoopScreen>` while a round is active, so Choose is unmounted during gameplay and no effect inside it could run. The set is derived from the wall clock (same derivation Choose initialises from).
 - The effect keys on the round-active **boolean**, not on `run` itself: `run` is a new object on every pin drop / phase change, so keying on it would abort and restart the warm mid-round.
 
 ## Pending
-- [ ] Step 3 — E2E specs (i)–(viii) under `flock ~/workspace/.e2e.lock`.
-- [ ] Step 4 — Full repo gates on the new head: tsc, `npm test`, lint-cards, `build:pages`.
-- [ ] Step 5 — Screen recording (gameplay → prefetch → instant tap-play) + network trace, audio-probed per the video-audio law (mux the clip's own audio, verify the OUTPUT file).
+- [ ] Step 5 — Screen recording (gameplay → prefetch → instant tap-play) + network trace, audio-probed per the video-audio law (mux the clip's own audio, verify the OUTPUT file). Record spec: `tests/e2e/journal-prefetch.record.desktop.spec.ts`.
 
 ## Never
 - Never merge — merge word stays the owner's, per PR, per head.
