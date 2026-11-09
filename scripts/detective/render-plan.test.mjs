@@ -61,7 +61,18 @@ test("fixed lines: acks rotate verbatim, suspicion + hook are hushed", () => {
   const acks = FIXED_LINES.filter((l) => l.kind === "ack");
   assert.deepEqual(
     acks.map((l) => l.text),
-    ["Right. Leave it with me.", "Very well, Watson.", "Noted, Watson.", "Ah... the game is afoot."],
+    [
+      "Right. Leave it with me.",
+      "Very well, Watson.",
+      "Noted, Watson.",
+      "Ah... the game is afoot.",
+      "Heard, Watson.",
+      "I'll take that, Watson.",
+      "Filed, Watson.",
+      "Received, Watson.",
+      "Set it down, Watson.",
+      "One moment, Watson.",
+    ],
   );
   for (const l of acks) assert.equal(l.voice, VOICES.holmes);
   const suspicion = fixedLine("suspicion");
@@ -101,13 +112,15 @@ test("fixed lines: decodes are templates; hook/giveaway flagged DRAFT, clue-loca
   assert.equal(fixedLine("debrief-close").text, "All of it — one place. Elementary.");
 });
 
-test("fixed lines: the case-open announcement is Watson, line #20 (PR B)", () => {
+test("fixed lines: the case-open announcement is Watson (PR B)", () => {
   const line = fixedLine("lets-find-clues");
   assert.equal(line.text, "Let's find some clues.");
   assert.equal(line.voice, VOICES.watson);
   assert.equal(line.speed, 106);
   assert.equal(line.file, "fixed/lets-find-clues.mp3");
-  assert.equal(FIXED_LINES.length, 20);
+  // Was the 20th line when PR B added it; the 2026-11-09 ack-pool
+  // extension (ack-5…ack-10) inserted six lines before it.
+  assert.equal(FIXED_LINES.length, 26);
 });
 
 test("selection name plan: bare display name, Holmes at speed 100", () => {
