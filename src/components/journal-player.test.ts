@@ -131,5 +131,6 @@ test("open with no movie: error message + still picture, no video, close works",
   assert.ok(html.includes(`src="${STILL}"`), "still picture stays");
   assert.ok(!html.includes("<video"), "no video without a movie");
   assert.ok(html.includes('data-testid="journal-player-close-old-faithful"'), "close button");
+  assert.ok(html.includes('data-testid="journal-player-retry-old-faithful"'), "retry button");
   assert.ok(html.includes('role="alert"'), "message is announced");
 });

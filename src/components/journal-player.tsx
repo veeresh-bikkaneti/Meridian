@@ -20,6 +20,7 @@ import { LazyHomeImage } from "./lazy-home-image";
 import {
   getJournalMovieManifest,
   journalMovieUrl,
+  resetJournalMovieManifestCache,
   type JournalMovieManifest,
 } from "./journal-movies";
 
@@ -72,6 +73,7 @@ export function JournalPlayer({
   );
   const [paused, setPaused] = useState(true);
   const [muted, setMuted] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
   const [showPauseFlash, setShowPauseFlash] = useState(false);
   const flashTimerRef = useRef<number | null>(null);
   const [ended, setEnded] = useState(false);
@@ -116,7 +118,14 @@ export function JournalPlayer({
     return () => {
       cancelled = true;
     };
-  }, [open, noteId, movieUrlOverride]);
+  }, [open, noteId, movieUrlOverride, retryCount]);
+
+  // "Try again" on the error state: drop the memoized manifest (a failed
+  // fetch would otherwise be cached for the whole page load) and refetch.
+  const handleRetry = () => {
+    resetJournalMovieManifestCache();
+    setRetryCount((c) => c + 1);
+  };
 
   // Start playback once the video is mounted: the tap is the gesture,
   // so sound is allowed — but if the browser refuses, degrade to paused
@@ -261,16 +270,26 @@ export function JournalPlayer({
         <p className="hv5-journal-status" role="alert" data-testid={`journal-error-${noteId}`}>
           This story&rsquo;s movie isn&rsquo;t ready yet.
         </p>
-        <button
-          type="button"
-          className="hv5-journal-close"
-          ref={closeRef}
-          data-testid={`journal-player-close-${noteId}`}
-          aria-label="Close movie"
-          onClick={onClose}
-        >
-          ✕ Close
-        </button>
+        <div className="hv5-journal-controls">
+          <button
+            type="button"
+            className="hv5-journal-close"
+            data-testid={`journal-player-retry-${noteId}`}
+            onClick={handleRetry}
+          >
+            ↻ Try again
+          </button>
+          <button
+            type="button"
+            className="hv5-journal-close"
+            ref={closeRef}
+            data-testid={`journal-player-close-${noteId}`}
+            aria-label="Close movie"
+            onClick={onClose}
+          >
+            ✕ Close
+          </button>
+        </div>
       </figure>
     );
   }
