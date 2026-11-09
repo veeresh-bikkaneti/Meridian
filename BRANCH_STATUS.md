@@ -117,6 +117,34 @@ worked and only the renders were missing.
 
 ---
 
+# BRANCH_STATUS — feat/pivot-ack-renders (Agent VOICE)
+
+- **Branch:** `feat/pivot-ack-renders` · **Base:** `main` @ `5e6af2f9` (#340)
+- **What landed (2026-11-09):** Holmes's ack pool grows 4 → 10. Six new
+  fixed lines added to `scripts/detective/render-plan.mjs` (ack-5…ack-10,
+  frozen text, receipt-only register) and rendered through the pipeline
+  (`render-audio.mjs --fixed`) in Holmes's cast voice `avocado_v2:atlas`
+  (voice field verified per render by the renderer — a mismatch aborts):
+  ack-5 "Heard, Watson." · ack-6 "I'll take that, Watson." · ack-7 "Filed,
+  Watson." · ack-8 "Received, Watson." · ack-9 "Set it down, Watson." ·
+  ack-10 "One moment, Watson."
+- **Gates:** manifest gate clean (2,538 entries verified) · scripts suite
+  1,032 tests, 0 fail (render-plan count expectations updated 4 → 10 acks,
+  fixed-lines total 20 → 26).
+- **Flags (pipeline's own, kept honestly):** ack-7 flagged — final take
+  111.1 Hz, below the 110–160 family band's floor edge after the pitch
+  ladder (speed 112); ack-8 flagged on pace only (85 wpm vs the 90 floor,
+  pitch in target at 123.7 Hz). ack-5/6/9/10 ok. Human ear check owed on
+  ack-7/ack-8 at panel time.
+- **Untouched on purpose:** ack-1…4, suspicion, and every other fixed
+  line are byte-identical to main (the render run's collateral re-renders
+  were restored); `detective-state.ts` still rotates 4 — the random
+  picker is Agent HERALD's piece, stacked on this branch.
+- **Pending:** GATE opens the PR and runs integration + panel. No PR
+  opened by this branch's builder.
+
+---
+
 # BRANCH_STATUS — feat/geodetective-end-game
 # BRANCH_STATUS — fix/337-guess-counter
 
