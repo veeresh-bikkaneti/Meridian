@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import {
   isJournalPrefetchAllowed,
+  resolveJournalPrefetchEntries,
   resolveJournalPrefetchUrls,
   selectJournalPrefetchNoteIds,
   startJournalPrefetch,
@@ -10,6 +11,7 @@ import {
   JOURNAL_PREFETCH_MAX_CONCURRENT,
   JOURNAL_PREFETCH_MAX_ENTRIES,
 } from "./journal-prefetch.ts";
+import { resetJournalMovieManifestCache } from "./journal-movies.ts";
 import type { JournalMovieManifest } from "./journal-movies.ts";
 
 const REAL_MANIFEST = JSON.parse(
@@ -107,7 +109,45 @@ test("resolveJournalPrefetchUrls drops ids with no movie and a null manifest", (
   assert.deepEqual(resolveJournalPrefetchUrls(null, ["old-faithful"]), []);
 });
 
-// --- Warm: CORS fetch + drain, never throws ------------------------------
+// --- resolveJournalPrefetchEntries: manifest fetch + cache interaction ---
+
+test("resolveJournalPrefetchEntries retries the manifest after a failed fetch (no poisoned null)", async () => {
+  resetJournalMovieManifestCache();
+  const realFetch = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = (async () => {
+    calls += 1;
+    if (calls === 1) throw new Error("network down");
+    return { ok: true, json: async () => REAL_MANIFEST };
+  }) as unknown as typeof fetch;
+  try {
+    // First call: the manifest fetch fails — no entries, as today.
+    assert.deepEqual(
+      await resolveJournalPrefetchEntries(["old-faithful", "southpointe", "alamo"]),
+      [],
+    );
+    assert.equal(calls, 1);
+    // Second call: the fetch now succeeds, so the entries must resolve —
+    // a cached null from the first failure must not poison the tap path.
+    assert.deepEqual(
+      await resolveJournalPrefetchEntries(["old-faithful", "southpointe", "alamo"]),
+      [
+        {
+          noteId: "old-faithful",
+          url: "https://veeresh-bikkaneti.github.io/meridian-media/journal/old-faithful.mp4",
+        },
+        {
+          noteId: "southpointe",
+          url: "https://veeresh-bikkaneti.github.io/meridian-media/journal/southpointe.mp4",
+        },
+      ],
+    );
+    assert.equal(calls, 2);
+  } finally {
+    globalThis.fetch = realFetch;
+    resetJournalMovieManifestCache();
+  }
+});
 
 test("warmJournalMovie fetches CORS/omit with the signal and drains the body", async () => {
   const seen: Array<{ url: string; init: unknown }> = [];

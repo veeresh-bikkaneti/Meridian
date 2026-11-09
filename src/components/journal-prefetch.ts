@@ -11,11 +11,13 @@
  * clip URL with the body drained (`arrayBuffer()`) stores the full 200
  * in the browser HTTP cache, and the tap's <video> Range requests are
  * then served from that entry. Verified 2026-11-09 by a real-server
- * probe (probe script + logs in ~/workspace/journal-prefetch-probe/):
- * CORS fetch warm, then a <video preload="none"> tap — server-side
- * clip hits stayed at 1 before AND after the tap (zero additional
- * transfers), and the video played (paused=false, currentTime 1.96 s).
- * A hidden-<video preload="auto"> warm scored the same 1→1, so the
+ * probe on the production-scale clip southpointe.mp4 (3,623,177 bytes)
+ * — driver ~/workspace/journal-prefetch-probe/probe-production-clip.mjs,
+ * log exp4-production-clip.log: CORS fetch warm, then a <video
+ * preload="none"> tap — server-side clip hits stayed at 1 before AND
+ * after the tap (zero additional transfers), and the video played
+ * (paused=false, currentTime 2.04 s). A hidden-<video preload="auto">
+ * warm scored the same 1→1 on the earlier 23 KB fixture probe, so the
  * fetch mechanism wins on simplicity (no DOM elements, no autoplay).
  * The probe also established the harness limit: Playwright
  * route-interception fulfills bypass the HTTP cache entirely (a second
@@ -39,6 +41,7 @@
 import {
   getJournalMovieManifest,
   journalMovieUrl,
+  resetJournalMovieManifestCache,
   type JournalMovieManifest,
 } from "./journal-movies.ts";
 
@@ -257,6 +260,13 @@ export async function resolveJournalPrefetchEntries(
   options: SelectJournalPrefetchOptions = {},
 ): Promise<JournalPrefetchEntry[]> {
   const manifest = await getJournalMovieManifest().catch(() => null);
-  if (manifest === null) return [];
+  if (manifest === null) {
+    // A failed manifest fetch resolves the shared memoized loader to
+    // null for the whole page load — without this reset a kid's later
+    // tap would hit the cached null until Try again. Drop the poisoned
+    // entry so the next call (prefetch or tap) fetches again.
+    resetJournalMovieManifestCache();
+    return [];
+  }
   return resolveJournalPrefetchUrls(manifest, noteIds, options);
 }
