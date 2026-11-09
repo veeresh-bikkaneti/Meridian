@@ -543,13 +543,39 @@ export function firstIndexOf(list: string[], needle: string): number {
   return list.findIndex((u) => u.includes(needle));
 }
 
-/** Assert every needle appears in `list`, in the given order. Returns
- * the matched indices so callers can report them. */
-export function assertSubsequence(list: string[], needles: string[]): number[] {
+/** Holmes's ack is a random draw from the ack pool (fixed/ack-1.mp3 …
+ * fixed/ack-10.mp3, no repeat within a case — HERALD). Specs match the
+ * pool, never one file id: the retired rotation's exact-id pins broke
+ * on every lawful draw. */
+export const ACK_POOL = /fixed\/ack-\d+\.mp3/;
+
+/** How many pool acks a play (or request) record holds. */
+export function countAcks(list: string[]): number {
+  return list.filter((u) => ACK_POOL.test(u)).length;
+}
+
+/** The pool files a record played, in play order (for distinctness). */
+export function ackFiles(list: string[]): string[] {
+  return list
+    .map((u) => u.match(ACK_POOL)?.[0])
+    .filter((m): m is string => m !== undefined);
+}
+
+/** Assert every needle appears in `list`, in the given order. A needle
+ * is a substring, or a RegExp matched against the entry (the ack pool).
+ * Returns the matched indices so callers can report them. */
+export function assertSubsequence(
+  list: string[],
+  needles: (string | RegExp)[],
+): number[] {
   const idx: number[] = [];
   let from = 0;
   for (const needle of needles) {
-    const found = list.slice(from).findIndex((u) => u.includes(needle));
+    const found = list
+      .slice(from)
+      .findIndex((u) =>
+        typeof needle === "string" ? u.includes(needle) : needle.test(u),
+      );
     if (found === -1) {
       throw new Error(
         `subsequence broken: "${needle}" not found after index ${from} in [${list.join(", ")}]`,

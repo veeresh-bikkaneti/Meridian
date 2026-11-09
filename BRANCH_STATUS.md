@@ -177,6 +177,32 @@ worked and only the renders were missing.
 - **No cures:** no clip was convicted, so zero re-renders and zero
   audio/manifest changes; this capsule is the only change in its commit.
 
+## GATE integration cure — ack-pool spec pins (2026-11-09, on feat/pivot-speech @ 891031da)
+
+- **Why:** GATE verification of HERALD's random ack picker (pool
+  ack-1…ack-10, no repeat within a case) found 7 E2E failures, all one
+  class — older specs pinned the exact file `fixed/ack-1.mp3` (or
+  `ack-2.mp3`) the retired rotation always played. Live behaviour was
+  correct in every failure: the chain fired in position with a lawful
+  pool draw. The specs now assert the pool contract instead of the
+  retired rotation; no assertion was weakened or deleted.
+- **What changed (specs + shared harness only, no `src/`):**
+  `tests/e2e/detective-u10.ts` gains the shared pool matcher
+  (`ACK_POOL` = /fixed\/ack-\d+\.mp3/, plus `countAcks` / `ackFiles`)
+  and `assertSubsequence` accepts RegExp needles alongside substrings.
+  `detective-replay.spec.ts`: every played/network ack pin is now a
+  pool count (first pass exactly 1 · after replay exactly 2 · restart
+  exactly 1 · chain tail still clue → ack → decode in order); ack-1
+  remains only as test (c)'s absence needle (mid-read: no ack at all).
+  `detective-watson-walk.spec.ts`: the full-walk order array takes the
+  pool matcher in the ack slot (order + count unchanged); the mid-walk
+  arrival pin now asserts exactly 2 acks in the case so far, ALL
+  DISTINCT — the no-repeat rule, stronger than the old ack-2 pin; the
+  sheet test's deferred drain asserts exactly one pool ack.
+  `detective-sound.spec.ts` untouched (verified pool-safe).
+- **Gates:** `npx tsc --noEmit` clean; the two cured specs + the sound
+  spec re-run E2E after this commit (counts in the GATE report).
+
 ---
 
 # BRANCH_STATUS — feat/geodetective-end-game
