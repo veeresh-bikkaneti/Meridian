@@ -28,6 +28,25 @@ clip passed every recipe gate.
 Next: see Pending. PR #369 is open; never merge without the owner's word,
 per PR, per head.
 
+## Rebase verification — onto frozen main f2bbf1a2 (#370), this run (2026-11-09)
+
+- Gates ran on `b26c26db` (rebase-record commit); this commit adds only this
+  BRANCH_STATUS.md text on top. Pushed head = this commit.
+- Gates on `b26c26db`: `npx tsc --noEmit` exit 0; `npm test` exit 0 (scripts
+  1161 pass / 11 skipped / 0 fail of 1172; src 2268 pass / 0 fail; validator
+  suite 133/133 on a direct re-run); lint-cards GATE PASSED; `npm run
+  build:pages` exit 0, buildId `b26c26db`. Logs:
+  `~/workspace/gjm-movies-r2-{tsc,npmtest,lintcards,build}.log`.
+- Docs-only: `git diff f2bbf1a2..HEAD --stat` = BRANCH_STATUS.md + the 5 branch
+  files (validator, validator test, manifest, package.json,
+  docs/journal-movies.md); no src/, tests/, workers/ changes. Branch files
+  byte-identical to old head `4964a727` (`git diff 4964a727 HEAD -- <files>`
+  empty); manifest byte-identical to `4964a727`.
+- Prior panel YES on `4964a727` does NOT transfer. This head is ready for
+  DuckDuck (testing prompt:
+  `~/workspace/journal-testing-prompts-duckduck-firefox-edge.md`). No E2E /
+  panel / recording in this run (gates only, per the split).
+
 ## Done
 - [x] 2026-11-08 — Branch created from origin/main 9e49da3e; worktree
       `~/workspace/journal-movies-work` (clean checkout).
