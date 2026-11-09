@@ -4546,6 +4546,19 @@ function Choose({
   return (
     <>
     <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-5 py-8 md:px-9">
+      {/* Skip link (WCAG 2.4.1): the first focusable element on the home
+          page, visually hidden until focused; jumps to the journal
+          section (scrollTo moves focus there as well as scrolling). */}
+      <a
+        href="#home-journal"
+        className="hv5-skip-link"
+        onClick={(event) => {
+          event.preventDefault();
+          scrollTo("home-journal");
+        }}
+      >
+        Skip to journal
+      </a>
       <AtlasBackdrop />
       <svg className="hv5-sprig" viewBox="0 0 120 150" fill="none" stroke="#8FA382" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
         <path d="M14 148 C20 100 34 60 62 22" strokeOpacity=".7" />
