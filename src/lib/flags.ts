@@ -39,7 +39,8 @@ export type FlagName =
   | "scoutUpgradeTrial"
   | "detectivePair"
   | "hostsStaging"
-  | "watsonWalk";
+  | "watsonWalk"
+  | "detectiveFlank";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -109,6 +110,18 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // stage starts at "standing"). The baked default stays false so a
   // failed flags fetch falls back to the PR A pair.
   watsonWalk: false,
+  // Holmes's frozen flank (STAGE, pair pivot): Holmes stands at the
+  // clue card's left side — the frozen flank slot mirroring Watson's
+  // right station — through the guessing phases instead of docking /
+  // berthing on the map, and the Listen button plays the held clue
+  // sequence on the FIRST tap in tap mode. A sub-flag of the
+  // staging: it acts only when detectivePair AND hostsStaging are
+  // also on. false = the kill-switch: redeploy flags.json with
+  // detectiveFlank false and Holmes docks/berths as shipped and the
+  // Listen button keeps its two-tap flow — exactly the pre-STAGE
+  // behaviour. The baked default stays false so a failed flags
+  // fetch falls back to the shipped pair.
+  detectiveFlank: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;

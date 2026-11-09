@@ -346,6 +346,23 @@ export function createDetectiveSpeech(
     return new Promise((resolve) => gestureWaiters.push(resolve));
   }
 
+  /* -- Listen first-tap cure (STAGE step 6) -------------------------
+   * Arm the first-gesture listener EAGERLY, at player creation —
+   * not lazily inside the first playClip. In tap mode nothing ever
+   * calls playClip before the kid taps Listen (the queue skips
+   * every item without playing), so a lazy listener meant the
+   * first Listen tap only armed it and nothing played until a
+   * second tap (the owner's live defect; the two-tap flow is
+   * recorded as "by design" in tests/e2e/detective-sound.spec.ts
+   * (f)). Arming early only moves the unlock to the first
+   * pointerdown anywhere — exactly the storyteller pattern — and
+   * the listener still consumes only when sound is on
+   * (decideFirstGesture); it never starts playback by itself.
+   * Auto mode is unchanged: its first clip armed the same
+   * listener before playing, and an earlier arm unlocks no
+   * sooner than the first gesture either way. */
+  armGestureListener();
+
   /* -- default clip playback: one HTMLAudioElement chain ------------- */
   let currentStop: (() => void) | null = null;
   async function defaultPlayClip(clip: ResolvedClip): Promise<void> {
