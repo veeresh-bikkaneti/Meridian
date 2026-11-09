@@ -93,6 +93,33 @@ export async function fulfillFlagsWalk(context: BrowserContext): Promise<void> {
   });
 }
 
+/** STAGE flank twin of fulfillFlagsWalk: detectivePair AND
+ * hostsStaging AND detectiveFlank on, served by interception.
+ * watsonWalk stays off here — the flank's walk-free layout is
+ * the piece under test, and Watson teleports to the active card
+ * instead of walking (the PR A behaviour). */
+export async function fulfillFlagsFlank(context: BrowserContext): Promise<void> {
+  await context.route("**/flags.json", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json; charset=utf-8",
+      body: JSON.stringify({
+        version: 1,
+        flags: {
+          globeTierSplit: true,
+          learningOutcomes: true,
+          pwaUpdateToast: true,
+          friendChallenges: true,
+          scoutUpgradeTrial: true,
+          detectivePair: true,
+          hostsStaging: true,
+          detectiveFlank: true,
+        },
+      }),
+    });
+  });
+}
+
 /** The OFF twin of fulfillFlagsOn: the same flag set with
  * detectivePair false, served by interception. A spec that needs
  * the flag OFF must say so explicitly — it must never rely on the
