@@ -89,6 +89,34 @@ export async function stubJournalMediaRealClip(page: Page): Promise<void> {
   );
 }
 
+/**
+ * Same route as stubJournalMedia, but each of the 5 Historian-block
+ * entries (alamo, cadillac, joslyn, niagara, homestead) is fulfilled
+ * with its REBUILT mp4 from meridian-media branch fix/journal-facts-5
+ * (@ 70b2e95), extracted WITHOUT switching the media clone's branch
+ * (`git show origin/fix/journal-facts-5:journal/<id>.mp4`) into
+ * ~/workspace/journal-player-facts-play/real-clips/. Other entries in
+ * the same set get the 2 s fixture (never opened). The video src stays
+ * the REAL meridian-media URL; only the bytes are local — Chromium in
+ * this VM cannot reach github.io, and the live Pages site still serves
+ * the OLD clips, so local fulfillment is the only way to test the fix.
+ */
+export async function stubJournalMediaFixedClips(page: Page): Promise<void> {
+  const dir = path.resolve(
+    process.env.HOME ?? "",
+    "workspace/journal-player-facts-play/real-clips",
+  );
+  const clips = new Map<string, Buffer>();
+  for (const id of ["alamo", "cadillac", "joslyn", "niagara", "homestead"]) {
+    clips.set(id, readFileSync(path.join(dir, `${id}.mp4`)));
+  }
+  await page.route("**/meridian-media/journal/*.mp4", (route) => {
+    const m = /\/journal\/([^/]+)\.mp4$/.exec(route.request().url());
+    const bytes = (m && clips.get(m[1])) ?? FIXTURE_MP4;
+    return fulfillMp4(route, bytes);
+  });
+}
+
 /** A fixed instant in a pure-triple window (index < 33), with its index. */
 export function fixedInstant(): { time: Date; index: number } {
   let t = Date.UTC(2026, 9, 16, 12, 0, 0);
