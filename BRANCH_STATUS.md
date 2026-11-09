@@ -2,7 +2,7 @@
 
 **Branch:** `feat/journal-prefetch` · **Base:** `feat/journal-player` @ `af7ec7c1` (stacked on movies `84fa3a0a`, frozen main `f2bbf1a2`)
 **Task:** Meridian lazy-load scenario 2 — background prefetch of journal movies WHILE the user is playing the game. Tap-to-load stays the primary path.
-**Status:** Share-URL fix complete on head `0cf449d7` (tip verified this session: `git rev-parse HEAD`, worktree clean, remote tip matches). Unit gates + `build:pages` green; E2E union **88 passed / 0 failed** — the former :199 share-URL failure is fixed by the owner's 2026-11-09 ruling (share text + share URL always point at workers.dev). Screen recording re-done on the final head (second take, audio-probed). No PR, no merge.
+**Status:** Share-URL fix complete on code head `0cf449d7` (docs-only commit on top; tip verified this session: `git rev-parse HEAD`, worktree clean, remote tip matches). Unit gates + `build:pages` green; E2E union **88 passed / 0 failed** — the former :199 share-URL failure is fixed by the owner's 2026-11-09 ruling (share text + share URL always point at workers.dev). Screen recording re-done on the final head (second take, audio-probed). No PR, no merge.
 **Rebased:** 2026-11-09 — onto player head `af7ec7c1`; only conflict was this file (docs-only). The unanimous APPROVE on `c19f8dfc` does NOT transfer to the new head.
 
 ## Base record — feat/journal-player (rebased onto movies head 84fa3a0a, frozen main f2bbf1a2)
@@ -829,5 +829,5 @@ worked and only the renders were missing.
 ## Notes
 - CSP is NOT changed (repo CSP has no meridian-media in `media-src`/`connect-src`; GitHub Pages ignores `_headers`, so live Pages is unaffected — separate security decision).
 - No PR opened; merging stays the owner's decision.
-- Head: `0cf449d7` (share-URL fix commit; all gates / E2E union ran on it; verified this session: `git rev-parse HEAD`, worktree clean, remote tip matches; B5/B6 fix pass 2026-11-09, share-URL fix pass 2026-11-09).
+- Head: this commit (docs-only over share-fix code head `0cf449d7`; all gates / E2E union ran on `0cf449d7`; verified this session: `git rev-parse HEAD`, worktree clean, remote tip matches; B5/B6 fix pass 2026-11-09, share-URL fix pass 2026-11-09).
 - Final-pass verdict: unit gates + `build:pages` green on head `0cf449d7`; E2E union **88 passed / 0 failed** — the former share-URL failure (Step 3) is cured by the owner's 2026-11-09 ruling (see Share-URL fix). The three blocking seats re-vote with the green union on the record. One open item remains outside the union: endgame-share E2E (see Pending).
