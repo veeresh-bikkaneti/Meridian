@@ -231,14 +231,13 @@ import {
   type LearningStore,
 } from "@/game/learning";
 import {
-  readLoopOpen,
   writeLoopOpen,
   peekLoopProgress,
 } from "@/game/loop/store";
 import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
-// screens — they render only when the player opens them (or when a saved
-// loopOpen flag restores GeoDetective on boot). Both screens statically
+// screens — they render only when the player opens them (B7: never on
+// boot from a saved loopOpen flag — tap-in only). Both screens statically
 // import LoopMap, which value-imports maplibre-gl (~1.1 MB) and its
 // stylesheet, so a static import here pulled the whole map library into
 // the preloaded route chunk. They are React.lazy instead — the
@@ -1531,9 +1530,13 @@ export function GameApp() {
   }, [applySessionMapMode]);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
-  // run/drop keys. The open flag (meridian.loop.open) restores the screen
-  // after a reload so a mid-game refresh resumes the mystery, not the menu.
-  const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
+  // run/drop keys. B7 (owner ruling, 2026-11-09): a new session always
+  // lands on Home — the loop NEVER auto-opens from the persisted open
+  // flag (meridian.loop.open). The flag is still written on tap-in /
+  // leave, and the saved loop (deck/progress/streak in meridian.loop.v2)
+  // stays intact, so tapping in resumes the saved mystery where it left
+  // off; only the boot auto-open is gone.
+  const [loopOpen, setLoopOpen] = useState<boolean>(false);
   // Journal prefetch (lazy-load scenario 2): while a round is active,
   // warm the first 1–2 movies of the current journal set in the
   // background so a later tap plays instantly. Tap-to-load is unchanged
@@ -2215,10 +2218,11 @@ export function GameApp() {
    * it closes every other full-screen state, because the render
    * branches below run in precedence order and ANY lurking flag
    * would render its screen instead of Home. loopOpen is the sharp
-   * case: it rehydrates from a persisted flag, and the Editions exit
-   * keeps the run record, so a restored run can sit on top of a
-   * persisted GeoDetective flag — without the clears, the flip would
-   * drop the run and land on LoopScreen, stranding the focus landing
+   * case: it can only be true in-session now (B7 — tap-in sets it,
+   * boot never restores it), and the Editions exit keeps the run
+   * record, so a restored run can sit on top of an in-session
+   * GeoDetective flag — without the clears, the flip would drop
+   * the run and land on LoopScreen, stranding the focus landing
    * and hiding the notice.
    */
   const handleManualMapMode = useCallback((mode: MapMode) => {
