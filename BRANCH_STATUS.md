@@ -167,3 +167,55 @@ The two extra skips versus 1023/9 are the SSR pins; `npm run build`
 was not re-run here. `geodetective.spec.ts:199` was not re-run.
 No Cloudflare Workers build result for `16daa5ad`.
 
+## Sync with main (2026-11-08, verification-gate crew — not a re-approval)
+
+- Merged `origin/main` @ `63d82869` (#372) into this branch (no
+  rebase, no force; pushed by GitHub API replay — the created tree
+  `e6ce631f` matched the local merge tree exactly). Merge commit
+  `78b258e9`, parents `835ad2ef` + `63d82869`. The only conflict was
+  this file; resolved by keeping this PR's record, per the standing
+  per-branch convention. Branch diff vs main is now exactly 3 files:
+  this file, `src/game/loop/LoopScreen.tsx`, and
+  `tests/e2e/guess-counter.desktop.spec.ts` — the counter fix is
+  unchanged (the expression sits at LoopScreen.tsx:1444 on this
+  tip). GitHub reports the PR mergeable again.
+- Gates on the merge tip `78b258e9` (2026-11-08, logs at
+  `~/workspace/meridian-pr340-e2e/logs-gate/t340/` on this VM):
+  `tsc --noEmit` 0 · `npm test` 0 (scripts 1021 pass / 11 skip /
+  0 fail of 1032; src 2268/2268) · `test:worker` 145/145 ·
+  `typecheck:worker` 0 · `lint-cards` GATE PASSED · `build:pages` 0.
+- E2E (`flock ~/workspace/.e2e.lock`, `--workers=1`, built Pages
+  artifact; browser = Playwright's bundled Chromium 1243 via the
+  config's documented `PLAYWRIGHT_CHROMIUM_EXECUTABLE` override —
+  it IS installed on this VM): `guess-counter.desktop.spec.ts`
+  **2/2 pass**. The 6 leftover failures from the original full-suite
+  run were baseline-matched on pristine main `63d82869` first: ALL
+  SIX are pre-existing, zero are regressions from this PR — five
+  fail signature-identically on unmodified main
+  (tutorial.spec.ts:125/166/174 strict-mode 'Take the tour' ×2;
+  crash-watchdog.spec.ts:164 lastMilestone; offline-content
+  .spec.ts:203 heading timeout), and offline-content.spec.ts:181 is
+  a proven flake on both trees (storyteller-CSS preload console
+  error; trace-settled as the test's own offline choreography).
+  On this tip the same six fail with identical signatures
+  (`logs-gate/t340/e2e-six.log`), plus the pre-existing
+  telemetry-spill teardown error also present on main. Fixes for
+  the four clusters were built under a signed Tier 2 council
+  manifest on their OWN branches off main (this PR stays purely
+  the counter fix): `fix/e2e-tutorial-tour-names` @ `acbd506d`,
+  `fix/e2e-watchdog-milestone-assertion` @ `ed13b47f`,
+  `fix/e2e-offline-loop-scenario` @ `ff0d2628`,
+  `fix/e2e-offline-preload-assertion` @ `8cbe1b99` — each gated
+  green on its own scope; no PRs opened for them.
+- GitHub CI on `78b258e9`: `build (22.x)` SUCCESS · `e2e` (the
+  fixed 6-spec job — still neither guess-counter nor geodetective)
+  SUCCESS · GitGuardian SUCCESS. No Workers Builds result exists
+  for this or any branch: branch builds are off account-wide
+  (platform tag mismatch, fixed during PR #351 by disabling
+  non-production branch builds); production Workers state is
+  untouched by this work.
+- This tip supersedes every earlier tip the panel or swarm looked
+  at; the 12-seat panel + Reality Checker refresh on this tip is
+  recorded in `~/workspace/meridian-pr340-e2e/CREW-REPORT-2.md`.
+  Still NO MERGE without the owner's per-PR word.
+
