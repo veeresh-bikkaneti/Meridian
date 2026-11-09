@@ -11,8 +11,8 @@
  * One player open at a time: `open` is driven by the parent, which holds
  * the single open note id. Reduced motion: the movie still plays on the
  * explicit tap (the tap is consent), but it plays once instead of
- * looping. Audio is never muted — the tap is the user gesture that
- * allows sound — but if the browser refuses playback, the player degrades
+ * looping. Audio plays on the tap gesture, with a mute toggle in the
+ * controls — but if the browser refuses playback, the player degrades
  * to paused-with-a-big-Play-button instead of failing.
  */
 import { useEffect, useRef, useState } from "react";
@@ -71,6 +71,7 @@ export function JournalPlayer({
     movieUrlOverride === undefined ? null : movieUrlOverride,
   );
   const [paused, setPaused] = useState(true);
+  const [muted, setMuted] = useState(false);
   const [ended, setEnded] = useState(false);
   const [progress, setProgress] = useState(0);
   const [timeText, setTimeText] = useState("0:00 / 0:10");
@@ -82,6 +83,7 @@ export function JournalPlayer({
       setPhase("closed");
       setMovieUrl(movieUrlOverride === undefined ? null : movieUrlOverride);
       setPaused(true);
+      setMuted(false);
       setEnded(false);
       setProgress(0);
       setTimeText("0:00 / 0:10");
@@ -124,6 +126,14 @@ export function JournalPlayer({
     }
   }, [phase]);
 
+  // Keep the video's muted flag in sync with the toggle: React's
+  // muted attribute alone does not reliably update the property after
+  // mount, so set it on the element directly.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) video.muted = muted;
+  }, [muted, phase]);
+
   // Escape closes the player.
   useEffect(() => {
     if (!open) return;
@@ -163,11 +173,11 @@ export function JournalPlayer({
           type="button"
           className="hv5-journal-play"
           data-testid={`journal-play-${noteId}`}
-          aria-label={`Watch the ${place} movie`}
+          aria-label={`Watch the ${place} movie, 10 seconds with sound`}
           onClick={() => onOpen(noteId)}
         >
           <span className="hv5-journal-play-badge" aria-hidden="true">
-            ▶ Watch the movie
+            ▶ Watch the movie · 10 sec 🔊
           </span>
         </button>
       </figure>
@@ -247,6 +257,16 @@ export function JournalPlayer({
           onClick={togglePlay}
         >
           {ended ? "▶ Play again" : paused ? "▶ Play" : "⏸ Pause"}
+        </button>
+        <button
+          type="button"
+          className="hv5-journal-mute"
+          data-testid={`journal-player-mute-${noteId}`}
+          aria-label={muted ? "Unmute movie" : "Mute movie"}
+          aria-pressed={muted}
+          onClick={() => setMuted((m) => !m)}
+        >
+          {muted ? "🔇 Muted" : "🔊 Sound"}
         </button>
         <div
           className="hv5-journal-progress"

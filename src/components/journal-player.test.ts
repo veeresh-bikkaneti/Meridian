@@ -81,9 +81,12 @@ function renderPlayer(overrides: Record<string, unknown> = {}) {
 test("closed: the still picture is a button, no <video> is rendered", () => {
   const html = renderPlayer();
   assert.ok(html.includes('data-testid="journal-play-old-faithful"'), "play button present");
-  assert.ok(html.includes('aria-label="Watch the Old Faithful movie"'), "accessible name");
+  assert.ok(
+    html.includes('aria-label="Watch the Old Faithful movie, 10 seconds with sound"'),
+    "accessible name warns of sound",
+  );
   assert.ok(html.includes(`src="${STILL}"`), "still picture present");
-  assert.ok(html.includes("Watch the movie"), "visible play badge");
+  assert.ok(html.includes("Watch the movie · 10 sec"), "visible play badge names the length");
   assert.ok(!html.includes("<video"), "no video element before the tap");
   assert.ok(!html.includes(".mp4"), "no movie URL anywhere before the tap");
 });
@@ -104,6 +107,9 @@ test("open with a movie URL: video has preload=none, poster, loop, controls", ()
   assert.ok(html.includes(`poster="${STILL}"`), "still as poster");
   assert.ok(html.includes(" loop"), "loops by default");
   assert.ok(html.includes('data-testid="journal-player-toggle-old-faithful"'), "play/pause toggle");
+  assert.ok(html.includes('data-testid="journal-player-mute-old-faithful"'), "mute toggle");
+  assert.ok(html.includes('aria-label="Mute movie"'), "mute toggle names the action");
+  assert.ok(html.includes('aria-pressed="false"'), "sound starts unmuted");
   assert.ok(html.includes('data-testid="journal-player-close-old-faithful"'), "close button");
   assert.ok(html.includes('role="progressbar"'), "progress bar");
   assert.ok(html.includes("0:00 / 0:10"), "initial time text");
