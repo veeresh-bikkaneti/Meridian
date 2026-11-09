@@ -32,8 +32,10 @@ import {
  * Alignment + bucketing (the honest jitter handling): absolute clocks
  * differ between runs (the pause-confirm timer chain fires within a
  * ~120 ms retry window), so both timelines are aligned at the first
- * frame where Holmes leaves the dock/search state — the berth itself
- * is the sync event — and bucketed to 100 ms from there. The bucket
+ * walk frame — the glide onset is the sync event — and bucketed to
+ * 100 ms from there. Rows are compared by bucket number, and an empty
+ * bucket is kept as an explicit empty row so the verdict sees it as a
+ * mismatch instead of silently shifting every later row. The bucket
  * width and grid are stated here and in the gate report, per the
  * brief.
  */
@@ -236,27 +238,43 @@ interface ComparableRow {
   bucket: number;
   placement: string | null;
   pose: string | null;
-  gx: number;
-  gy: number;
+  gx: number | null;
+  gy: number | null;
 }
 
-/** Align at the first non-dock/search frame (the berth), then bucket
- * to 100 ms; positions on a 20 px grid. */
+/** Align at the first walk frame (the glide onset), then bucket to
+ * 100 ms; positions on a 20 px grid.
+ * Why the glide onset: the sampler's start time is not a product
+ * event — Holmes is already at the berth when sampling begins, and
+ * the pause-confirm chain that leads into the glide fires inside a
+ * ~120 ms retry window, so bucketing from the sampler start leaves
+ * the whole glide at an uncontrolled phase and the front-loaded
+ * easing turns that phase into a multi-cell reading on the same
+ * straight path. Anchoring bucket 0 at each run's own first walk
+ * sample cancels that phase for the walk onset and the transit
+ * cells, the same way the verdict below locates the walk→think
+ * transition per run.
+ * Why empty rows stay: an empty bucket (no frame landed in it) is
+ * kept as a row with null cells instead of being dropped. Dropping
+ * it would shift every later row one position and compare buckets
+ * that are not the same moment; keeping it lets the verdict fail
+ * on the missing bucket itself. */
 function comparableSamples(samples: SwapSample[]): ComparableRow[] {
-  const startIdx = samples.findIndex(
-    (s) => !(s.placement === "dock" && s.pose === "search"),
-  );
-  if (startIdx === -1) throw new Error("trace never left the dock/search state");
-  const t0 = samples[startIdx]!.dt;
+  const walkIdx = samples.findIndex((s) => s.pose === "walk");
+  if (walkIdx === -1) throw new Error("trace never reached the walk (glide onset)");
+  const t0 = samples[walkIdx]!.dt;
   const byBucket = new Map<number, SwapSample>();
-  for (const s of samples.slice(startIdx)) {
+  for (const s of samples.slice(walkIdx)) {
     byBucket.set(Math.floor((s.dt - t0) / 100), s);
   }
   const rows: ComparableRow[] = [];
   const maxBucket = Math.max(...byBucket.keys());
   for (let b = 0; b <= Math.min(maxBucket, 25); b++) {
     const s = byBucket.get(b);
-    if (!s) continue;
+    if (!s) {
+      rows.push({ bucket: b, placement: null, pose: null, gx: null, gy: null });
+      continue;
+    }
     rows.push({
       bucket: b,
       placement: s.placement,
@@ -266,6 +284,57 @@ function comparableSamples(samples: SwapSample[]): ComparableRow[] {
     });
   }
   return rows;
+}
+
+/** The K5 verdict, keyed by bucket number (never by array position):
+ * placement identical in every bucket, pose identical except the
+ * walk→think transition bucket (which may differ by ≤1 between
+ * runs), transit cells within 1 grid cell, destination identical.
+ * A bucket that is empty in either run, or that only one run
+ * reached, fails here — it is a mismatch, not a shift to absorb. */
+function checkSwapRows(a: ComparableRow[], b: ComparableRow[]) {
+  const byBucketA = new Map(a.map((r) => [r.bucket, r]));
+  const byBucketB = new Map(b.map((r) => [r.bucket, r]));
+  const tRowA = a.find((r) => r.pose === "berth-think");
+  const tRowB = b.find((r) => r.pose === "berth-think");
+  expect(tRowA, "case 137 never settled into berth-think").toBeDefined();
+  expect(tRowB, "case 100 never settled into berth-think").toBeDefined();
+  const tA = tRowA!.bucket;
+  const tB = tRowB!.bucket;
+  expect(tA).toBeGreaterThan(0);
+  expect(tB).toBeGreaterThan(0);
+  expect(Math.abs(tA - tB)).toBeLessThanOrEqual(1);
+  const straddle = Math.min(tA, tB);
+  const maxBucket = Math.max(
+    a[a.length - 1]!.bucket,
+    b[b.length - 1]!.bucket,
+  );
+  let maxCellDev = 0;
+  for (let bucket = 0; bucket <= maxBucket; bucket++) {
+    const ra = byBucketA.get(bucket);
+    const rb = byBucketB.get(bucket);
+    expect(
+      ra !== undefined && ra.gx !== null && ra.gy !== null,
+      `bucket ${bucket} is empty in case 137`,
+    ).toBe(true);
+    expect(
+      rb !== undefined && rb.gx !== null && rb.gy !== null,
+      `bucket ${bucket} is empty in case 100`,
+    ).toBe(true);
+    expect(rb!.placement).toBe(ra!.placement);
+    if (bucket !== straddle) expect(rb!.pose).toBe(ra!.pose);
+    maxCellDev = Math.max(
+      maxCellDev,
+      Math.abs(rb!.gx! - ra!.gx!),
+      Math.abs(rb!.gy! - ra!.gy!),
+    );
+    expect(Math.abs(rb!.gx! - ra!.gx!)).toBeLessThanOrEqual(1);
+    expect(Math.abs(rb!.gy! - ra!.gy!)).toBeLessThanOrEqual(1);
+  }
+  const lastA = a[a.length - 1]!;
+  const lastB = b[b.length - 1]!;
+  expect({ gx: lastB.gx, gy: lastB.gy }).toEqual({ gx: lastA.gx, gy: lastA.gy });
+  return { tA, tB, maxCellDev, buckets: maxBucket + 1 };
 }
 
 test("K5 swap: identical trace, swapped answer — identical Holmes timeline", async ({
@@ -346,7 +415,6 @@ test("K5 swap: identical trace, swapped answer — identical Holmes timeline", a
   console.log(`[K5] comparable rows: 137=${a.length} 100=${b.length}`);
   console.log(`[K5] 137: ${fmt(a)}`);
   console.log(`[K5] 100: ${fmt(b)}`);
-  expect(b.length).toBe(a.length);
   // THE PROOF, stated precisely:
   // - placement: IDENTICAL in every 100 ms bucket (behaviour is a
   //   function of the pointer trace only);
@@ -364,28 +432,11 @@ test("K5 swap: identical trace, swapped answer — identical Holmes timeline", a
   //   layout reason above. Any answer-driven difference would show
   //   up as a different pose sequence, placement, or destination —
   //   none does.
-  const tA = a.findIndex((r) => r.pose === "berth-think");
-  const tB = b.findIndex((r) => r.pose === "berth-think");
-  expect(tA).toBeGreaterThan(0);
-  expect(tB).toBeGreaterThan(0);
-  expect(Math.abs(tA - tB)).toBeLessThanOrEqual(1);
-  const straddle = Math.min(tA, tB);
-  let maxCellDev = 0;
-  for (let i = 0; i < a.length; i++) {
-    expect(b[i]!.placement).toBe(a[i]!.placement);
-    if (i !== straddle) expect(b[i]!.pose).toBe(a[i]!.pose);
-    maxCellDev = Math.max(
-      maxCellDev,
-      Math.abs(b[i]!.gx - a[i]!.gx),
-      Math.abs(b[i]!.gy - a[i]!.gy),
-    );
-    expect(Math.abs(b[i]!.gx - a[i]!.gx)).toBeLessThanOrEqual(1);
-    expect(Math.abs(b[i]!.gy - a[i]!.gy)).toBeLessThanOrEqual(1);
-  }
-  const lastA = a[a.length - 1]!;
-  const lastB = b[b.length - 1]!;
-  expect({ gx: lastB.gx, gy: lastB.gy }).toEqual({ gx: lastA.gx, gy: lastA.gy });
+  // The verdict runs in checkSwapRows, keyed by bucket number: a
+  // bucket either run left empty (or only one run reached) fails
+  // there instead of shifting the comparison.
+  const { tA, tB, maxCellDev, buckets } = checkSwapRows(a, b);
   console.log(
-    `[K5] verdict: placement identical in all ${a.length} buckets; pose sequences identical (walk→think transition bucket ${tA} vs ${tB}, Δ≤1 allowed); destination identical; max transit deviation ${maxCellDev} cell (≤1 allowed, 20 px grid)`,
+    `[K5] verdict: placement identical in all ${buckets} buckets; pose sequences identical (walk→think transition bucket ${tA} vs ${tB}, Δ≤1 allowed); destination identical; max transit deviation ${maxCellDev} cell (≤1 allowed, 20 px grid)`,
   );
 });
