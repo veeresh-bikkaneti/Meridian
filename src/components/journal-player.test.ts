@@ -113,6 +113,7 @@ test("open with a movie URL: video has preload=none, poster, loop, controls", ()
   assert.ok(html.includes('data-testid="journal-player-close-old-faithful"'), "close button");
   assert.ok(html.includes('role="progressbar"'), "progress bar");
   assert.ok(html.includes("0:00 / 0:10"), "initial time text");
+  assert.ok(!html.includes("journal-player-pause-flash-"), "no pause flash before any tap");
 });
 
 test("open with reduced motion: the video does not loop", () => {

@@ -504,6 +504,22 @@ body:has(.home-v5) {
   border-radius: 16px;
   background: #000;
 }
+/* Tap-to-pause flash: a big pause glyph centred on the video for ~600ms
+   after a tap pauses playback. Decorative only; never intercepts taps. */
+.home-v5 .hv5-journal-pause-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
 .home-v5 .hv5-journal-status {
   margin: 12px 0 0;
   font-size: 15px;

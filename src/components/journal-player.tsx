@@ -72,6 +72,8 @@ export function JournalPlayer({
   );
   const [paused, setPaused] = useState(true);
   const [muted, setMuted] = useState(false);
+  const [showPauseFlash, setShowPauseFlash] = useState(false);
+  const flashTimerRef = useRef<number | null>(null);
   const [ended, setEnded] = useState(false);
   const [progress, setProgress] = useState(0);
   const [timeText, setTimeText] = useState("0:00 / 0:10");
@@ -84,6 +86,7 @@ export function JournalPlayer({
       setMovieUrl(movieUrlOverride === undefined ? null : movieUrlOverride);
       setPaused(true);
       setMuted(false);
+      setShowPauseFlash(false);
       setEnded(false);
       setProgress(0);
       setTimeText("0:00 / 0:10");
@@ -157,6 +160,28 @@ export function JournalPlayer({
       video.pause();
     }
   };
+
+  // Tapping the video itself toggles play/pause; a tap-pause flashes a
+  // brief pause icon (~600ms) so the kid sees the tap landed.
+  const handleVideoClick = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      togglePlay();
+      return;
+    }
+    video.pause();
+    setShowPauseFlash(true);
+    if (flashTimerRef.current !== null) window.clearTimeout(flashTimerRef.current);
+    flashTimerRef.current = window.setTimeout(() => setShowPauseFlash(false), 600);
+  };
+
+  // The flash timer never outlives the player.
+  useEffect(() => {
+    return () => {
+      if (flashTimerRef.current !== null) window.clearTimeout(flashTimerRef.current);
+    };
+  }, []);
 
   const handleTimeUpdate = () => {
     const video = videoRef.current;
@@ -247,7 +272,17 @@ export function JournalPlayer({
         }}
         onTimeUpdate={handleTimeUpdate}
         onError={() => setPhase("error")}
+        onClick={handleVideoClick}
       />
+      {showPauseFlash && (
+        <span
+          className="hv5-journal-pause-flash"
+          data-testid={`journal-player-pause-flash-${noteId}`}
+          aria-hidden="true"
+        >
+          ⏸
+        </span>
+      )}
       <div className="hv5-journal-controls">
         <button
           type="button"
