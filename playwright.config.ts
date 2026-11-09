@@ -255,6 +255,17 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // PR 2a (STAGE flank): Holmes/Watson flank the clue card at
+      // 768/1280, bookend strip above the card at 390, zero clue-text
+      // overlap, Listen plays on the first tap in tap mode, and the
+      // detectiveFlank flag-off path reproduces the shipped layout.
+      // The spec drives its own per-width contexts; the project
+      // viewport is only a default.
+      name: "detective-flank",
+      testMatch: /detective-flank\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },

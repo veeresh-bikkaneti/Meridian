@@ -547,14 +547,12 @@ test("(f) tap mode: Listen, chip and Holmes-mute are pairwise separate at the st
   console.log("[sound-f] chip centre click unmuted; badge cleared");
 
   // A wrong guess deals clue 2 (its chain is held in tap mode) —
-  // Listen's centre click then plays the held clue sequence. TWO
-  // taps, by design of the player's first-gesture unlock: in tap
-  // mode nothing has called playClip yet, so the gesture listener
-  // arms only when the FIRST tap's playHeldSequence reaches the
-  // clip — that tap parks in waitForGesture, and the second tap's
-  // pointerdown is the gesture that unlocks it (a kid taps again;
-  // the replay's restart semantics make the second tap start the
-  // sequence from item 1).
+  // Listen's centre click then plays the held clue sequence. Since
+  // the STAGE first-tap cure, the player arms its gesture listener
+  // eagerly at creation, so the FIRST Listen tap unlocks and plays
+  // the held sequence. The second tap below is belt-and-braces:
+  // replay restart semantics make it restart the sequence from
+  // item 1, so the assertions that follow hold either way.
   await guessByEntryId(page, entryByName("las vegas").id, "las vegas");
   await waitForSearchIdle(page, 120_000);
   await page.getByRole("article", { name: /Clue 2:/ }).scrollIntoViewIfNeeded();

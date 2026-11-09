@@ -441,3 +441,11 @@ No Cloudflare Workers build result for `16daa5ad`.
 - **Files:** `tests/e2e/credits.desktop.spec.ts` + this capsule. Nothing else.
 - **Proof:** build:pages green · credits spec 5 consecutive passes by name · full CI six-file set green once · tsc clean · lint-cards GATE PASSED (numbers in the PR body).
 - **Merge:** NO MERGE without the owner's per-PR word. Once merged, PR #370 merges up and its red e2e check clears.
+
+---
+
+# BRANCH_STATUS — feat/pivot-flank (PR 2a integration, GATE, 2026-11-09)
+
+- **Stack state:** the PR 2a train was rebased onto main `f2bbf1a2` (#370 + #376 merged) after #370's CSO sweep: `feat/pivot-ack-renders` @ `dcd4f717` → `feat/pivot-speech` @ `86ecbef7` → this branch. Manifest union verified: gate clean, 4,468 entries (main's 4,462 + ack-5…ack-10); fixed table 26, ack-1…ack-10 all present, `suspicion` single.
+- **This commit (integration):** `playwright.config.ts` gains the `detective-flank` project (beside `detective-core-audio`, mirroring `detective-staging`), and the stale "TWO taps by design" comment in `tests/e2e/detective-sound.spec.ts` (f) is cured — the STAGE first-tap cure arms the gesture listener at player creation, so the first Listen tap now plays; assertions unchanged, second tap kept as belt-and-braces.
+- **Pending:** GATE fast gates + the detective E2E set on this tip, then stacked PRs and the 13-seat panel on the final tip. No merge without the owner's per-PR word.
