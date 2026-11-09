@@ -219,3 +219,17 @@ No Cloudflare Workers build result for `16daa5ad`.
   recorded in `~/workspace/meridian-pr340-e2e/CREW-REPORT-2.md`.
   Still NO MERGE without the owner's per-PR word.
 
+
+---
+
+## Capsule — fix/credits-wait-for-content (2026-11-09)
+
+- **Branch:** `fix/credits-wait-for-content` · **Base:** `origin/main` @ `5e6af2f9`
+- **Owner's word:** "Land the credits cure now as a tiny PR" (2026-11-09 14:36 CST).
+- **Tier:** Tier 0/1 — one E2E spec file, no product code.
+- **TASK:** Cure the no-wait race in `tests/e2e/credits.desktop.spec.ts`: `expectCreditsContent` read the body text once, immediately after the click/navigation, and asserted the credits strings — the credits route had not always rendered yet, so the test failed intermittently.
+- **Evidence it is a spec race, not a product bug** (identical failure on unmodified main / other branches): main run `42511936129` (2026-11-08) · PR #370 tip run `42662167590` · `feat/journal-movies` run `42692238457` (2026-11-09) — while main passes other runs.
+- **Cure:** `expectCreditsContent` now `expect.poll`s the body text (repo idiom, cf. band-film specs) until it carries the credits strings, then runs the original assertions unchanged — every assertion string kept at the same strength; only the waiting changed.
+- **Files:** `tests/e2e/credits.desktop.spec.ts` + this capsule. Nothing else.
+- **Proof:** build:pages green · credits spec 5 consecutive passes by name · full CI six-file set green once · tsc clean · lint-cards GATE PASSED (numbers in the PR body).
+- **Merge:** NO MERGE without the owner's per-PR word. Once merged, PR #370 merges up and its red e2e check clears.
