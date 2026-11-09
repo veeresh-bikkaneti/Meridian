@@ -84,6 +84,8 @@ import type { DetectiveHostProps } from "./detective-host-props";
 import {
   createAutoKillTracker,
   createPauseDetector,
+  PAUSE_DESKTOP_DISP_PX,
+  PAUSE_TOUCH_DISP_PX,
   type AutoKillTracker,
   type PauseDetector,
 } from "./companion";
@@ -1797,16 +1799,83 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       pauseTimerRef.current = null;
     };
 
+    /* F6 leg (ii): a confirmed pause is consumed exactly once —
+     * detector.check returns its point a single time — but its
+     * one-shot solve silently drops when a suspension holds at
+     * confirm time. With the anchor-armed confirm (leg i) that
+     * drop is deterministic: the timer fires 460 ms after the
+     * anchor move, the next jitter move (~383 ms cadence) has
+     * re-stamped the camera-busy horizon to anchor+503 ms, so
+     * the confirm lands ~43 ms inside the horizon and the solve
+     * is lost with no retry until the finger lifts. Remember the
+     * confirmed anchor instead and re-solve from it the moment
+     * the suspension lifts: the perch is re-derived from that
+     * same anchor, the detector is NOT re-armed, and no second
+     * pause is waited for. A new gesture (startGesture, below)
+     * or leaving the SEARCH phases supersedes the pending
+     * re-solve; a newer confirmed pause replaces it. */
+    let pendingPauseSolve: {
+      x: number;
+      y: number;
+      pointerType: string;
+    } | null = null;
+    let pendingPauseTimer: ReturnType<typeof setTimeout> | null = null;
+    const clearPendingPauseSolve = () => {
+      if (pendingPauseTimer) clearTimeout(pendingPauseTimer);
+      pendingPauseTimer = null;
+      pendingPauseSolve = null;
+    };
+    const schedulePendingPauseResolve = () => {
+      if (pendingPauseTimer) clearTimeout(pendingPauseTimer);
+      const now = performance.now();
+      const liftAt = Math.max(
+        followRef.current.cameraBusyUntil,
+        followRef.current.scrollingUntil,
+      );
+      // A time horizon lifts at a known moment (+ a small settle
+      // beat); any other suspension (speech, pinch, hidden) has
+      // no known lift time, so re-check on the confirm chain's
+      // own 120 ms retry cadence until it lifts or is superseded.
+      const delayMs = liftAt > now ? liftAt - now + 20 : 120;
+      pendingPauseTimer = setTimeout(() => {
+        pendingPauseTimer = null;
+        const pending = pendingPauseSolve;
+        if (!pending) return;
+        if (followSuspendedRef.current()) {
+          const phaseNow = viewRef.current.phase;
+          if (phaseNow !== "SEARCH_IDLE" && phaseNow !== "SEARCH_AREA") {
+            pendingPauseSolve = null;
+            return;
+          }
+          schedulePendingPauseResolve();
+          return;
+        }
+        pendingPauseSolve = null;
+        solveFollowAtRef.current(
+          { x: pending.x, y: pending.y },
+          pending.pointerType,
+        );
+      }, delayMs);
+    };
+
     const onPauseConfirmed = (point: { x: number; y: number }) => {
       enterMapRef.current();
       pausePoint = point;
       dispatchRef.current({ type: "pointerPaused", point });
       // Both solving tiers take a pause as a target moment;
       // PAGE_FOLLOW also solves on displacement/dwell (below).
-      solveFollowAtRef.current(
-        point,
-        followRef.current.lastPointer?.pointerType ?? "mouse",
-      );
+      const pointerType =
+        followRef.current.lastPointer?.pointerType ?? "mouse";
+      const dropped =
+        followTierRef.current !== "DOCK_ONLY" &&
+        followSuspendedRef.current();
+      solveFollowAtRef.current(point, pointerType);
+      if (dropped) {
+        pendingPauseSolve = { x: point.x, y: point.y, pointerType };
+        schedulePendingPauseResolve();
+      } else {
+        clearPendingPauseSolve();
+      }
     };
 
     const attemptConfirm = (triesLeft: number) => {
@@ -1831,7 +1900,37 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         );
       }
     };
-    const scheduleConfirm = () => {
+    /* F6 cure: this timer used to re-arm from scratch on EVERY
+     * pointermove, so a held finger whose small jitter moves kept
+     * arriving faster than the 460 ms arm (the berth spec's cycle
+     * measures ~383 ms) cleared the pending confirm forever — a
+     * genuine touch pause never confirmed and the detector was
+     * never even asked. The detector itself only restarts its
+     * pause candidate when the pointer leaves its stillness radius
+     * (see feed in companion.ts), so the arming now follows the
+     * same rule: a move inside the anchor's radius leaves the
+     * pending confirm alone, and only a move that would restart
+     * the candidate re-arms the timer and moves the anchor. The
+     * 460 ms arm and the pause durations are unchanged. */
+    let confirmAnchor: {
+      x: number;
+      y: number;
+      pointerType: string;
+    } | null = null;
+    const scheduleConfirm = (x: number, y: number, pointerType: string) => {
+      const dispLimit =
+        pointerType === "touch"
+          ? PAUSE_TOUCH_DISP_PX
+          : PAUSE_DESKTOP_DISP_PX;
+      if (
+        pauseTimerRef.current !== null &&
+        confirmAnchor !== null &&
+        confirmAnchor.pointerType === pointerType &&
+        Math.hypot(x - confirmAnchor.x, y - confirmAnchor.y) < dispLimit
+      ) {
+        return;
+      }
+      confirmAnchor = { x, y, pointerType };
       clearPauseTimer();
       const delayMs =
         degradationRef.current.walkMode === "cut"
@@ -1841,6 +1940,9 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     };
 
     const startGesture = (onMap = true) => {
+      // A real gesture supersedes a dropped pause's pending
+      // re-solve: the player has moved on from that anchor.
+      clearPendingPauseSolve();
       followRef.current.lastMapActivityT = performance.now();
       enterMapRef.current(onMap);
       if (!gestureActive) {
@@ -1942,7 +2044,8 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         pointersDown:
           e.pointerType === "touch" ? cache.size : e.buttons > 0 ? 1 : 0,
       });
-      if (viewRef.current.phase === "SEARCH_IDLE") scheduleConfirm();
+      if (viewRef.current.phase === "SEARCH_IDLE")
+        scheduleConfirm(e.clientX, e.clientY, e.pointerType);
       maybeSolveFromMove(e);
     };
 
@@ -2051,6 +2154,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("scroll", onScroll);
       clearPauseTimer();
+      clearPendingPauseSolve();
       cache.clear();
     };
     // mapEl state mirrors mapElRef; listeners are window-level now
