@@ -109,7 +109,7 @@ async function sampleBerth(
           const w = document.querySelector(
             '[data-testid="detective-holmes-wrapper"]',
           );
-          const host = document.querySelector('[data-testid="detective-host"]');
+          const host = document.querySelector('[data-testid="detective-follow-root"]') ?? document.querySelector('[data-testid="detective-station"]') ?? document.querySelector('[data-testid="detective-host"]'); // detective-host is Watson-only here and absent in SEARCH, so berth samples read 0 from it alone; Holmes rides the follow root, station as fallback (detective-u10.ts pattern)
           if (w && host?.getAttribute("data-holmes-placement") === "berth") {
             const pose = w
               .querySelector("[data-pose]")
