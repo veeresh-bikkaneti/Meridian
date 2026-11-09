@@ -124,6 +124,31 @@ test("open with reduced motion: the video does not loop", () => {
   assert.ok(html.includes('data-testid="journal-player-toggle-old-faithful"'), "still controllable");
 });
 
+// --- Open while the manifest loads: spinner + text, never under reduced motion ---
+
+test("open while loading: spinner renders beside the loading text", () => {
+  // No movieUrlOverride: server-side render never runs the open effect,
+  // so the phase stays "loading" — the deterministic loading state.
+  const html = renderPlayer({ open: true });
+  assert.ok(html.includes("Loading the movie…"), "loading text stays");
+  assert.ok(
+    html.includes('data-testid="journal-loading-spinner-old-faithful"'),
+    "spinner present while loading",
+  );
+  assert.ok(html.includes('aria-hidden="true"'), "spinner is decorative");
+  assert.ok(html.includes(`src="${STILL}"`), "still picture stays behind the spinner");
+  assert.ok(!html.includes("<video"), "no video before the movie loads");
+});
+
+test("open while loading under reduced motion: text only, no spinner", () => {
+  const html = renderPlayer({ open: true, reducedMotion: true });
+  assert.ok(html.includes("Loading the movie…"), "static loading text stays");
+  assert.ok(
+    !html.includes('data-testid="journal-loading-spinner-old-faithful"'),
+    "no spinner under reduced motion",
+  );
+});
+
 // --- Open without a movie: graceful degradation, still stays -------------
 
 test("open with no movie: error message + still picture, no video, close works", () => {

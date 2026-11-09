@@ -328,6 +328,13 @@ export function JournalPlayer({
     return (
       <figure className="hv5-entry-art hv5-journal-art">
         <LazyHomeImage src={imageSrc} alt={imageAlt} />
+        {!reduceMotion ? (
+          <span
+            className="hv5-journal-spinner"
+            data-testid={`journal-loading-spinner-${noteId}`}
+            aria-hidden="true"
+          />
+        ) : null}
         <p className="hv5-journal-status" data-testid={`journal-loading-${noteId}`}>
           Loading the movie…
         </p>
