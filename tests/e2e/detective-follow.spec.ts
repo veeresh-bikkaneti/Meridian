@@ -182,8 +182,107 @@ async function waitArrived(
   );
 }
 
+/** One atomic planted sample: Holmes's rect, whether he is
+ * withdrawn from paint (hidden class, computed visibility hidden,
+ * or opacity 0 — the same tests `clueOverlap` uses), the painted
+ * overlap (visibility-aware, so a withdrawn figure reads 0), the
+ * plain geometric overlap (ignoring visibility), and the geometric
+ * overlap of the segment ANCHOR against the clue rects as they lie
+ * right now. The anchor figure matters when a scroll has moved a
+ * clue card under the spot he was planted at: that spot can become
+ * illegal after he was lawfully placed there, and only a fresh
+ * measurement against the current rects can show it. */
+type PlantState = {
+  rect: Rect | null;
+  hidden: boolean;
+  paintedOverlap: number;
+  geometricOverlap: number;
+  anchorOverlap: number;
+};
+
+async function plantState(page: Page, anchor: Rect): Promise<PlantState> {
+  return page.evaluate((a) => {
+    const el = document.querySelector(
+      '[data-testid="detective-holmes-wrapper"]',
+    );
+    if (!el) {
+      return {
+        rect: null,
+        hidden: false,
+        paintedOverlap: 0,
+        geometricOverlap: 0,
+        anchorOverlap: 0,
+      };
+    }
+    const cs = window.getComputedStyle(el);
+    const hidden =
+      el.classList.contains("detective-host-holmes-hidden") ||
+      cs.visibility === "hidden" ||
+      parseFloat(cs.opacity) === 0;
+    const r = el.getBoundingClientRect();
+    const targets = document.querySelectorAll(
+      'article[aria-label^="Clue"], [data-testid="detective-station"], [data-testid="detective-bench"]',
+    );
+    const overlapOf = (box: {
+      left: number;
+      right: number;
+      top: number;
+      bottom: number;
+    }) => {
+      let worst = 0;
+      targets.forEach((t) => {
+        const tr = t.getBoundingClientRect();
+        const ox = Math.max(
+          0,
+          Math.min(box.right, tr.right) - Math.max(box.left, tr.left),
+        );
+        const oy = Math.max(
+          0,
+          Math.min(box.bottom, tr.bottom) - Math.max(box.top, tr.top),
+        );
+        worst = Math.max(worst, ox * oy);
+      });
+      return worst;
+    };
+    const geometricOverlap = overlapOf(r);
+    return {
+      rect: { x: r.left, y: r.top, w: r.width, h: r.height },
+      hidden,
+      paintedOverlap: hidden ? 0 : geometricOverlap,
+      geometricOverlap,
+      anchorOverlap: overlapOf({
+        left: a.x,
+        right: a.x + a.w,
+        top: a.y,
+        bottom: a.y + a.h,
+      }),
+    };
+  }, anchor);
+}
+
 /** Sample for `ms`: Holmes must stay within `slack` px of `from`,
- * and (when `dock` given) never come within 30 px of the dock. */
+ * and (when `dock` given) never come within 30 px of the dock.
+ *
+ * Segment-aware (F1 reland, parent adjudication 2026-11-09): the
+ * stability pin and the zero-overlap pin cannot both hold when the
+ * planted spot itself becomes illegal mid-window — a clue card
+ * scrolled under his berth, say — because legality has priority
+ * and a lawful re-place MUST move him. So the window is tracked in
+ * segments. Within a segment the rules are exactly as before:
+ * drift at most `slack` px from the segment anchor and zero
+ * painted clue overlap at every poll; the 8 px slack is never
+ * widened. A segment may end only on evidence of a lawful
+ * re-place, checked at the poll where movement beyond `slack` is
+ * first seen: (a) he was hidden at the transition (this poll's
+ * sample, or the one just before it, reads withdrawn from paint),
+ * or (b) the pre-move anchor is illegal against the clue rects as
+ * they lie now (geometric overlap > 0) and the post-move position
+ * is legal (geometric overlap 0). On a lawful break the new
+ * position must settle (stable across two polls, geometrically
+ * legal) before it becomes the next segment's anchor, and the
+ * break is logged with its evidence. Any other movement beyond
+ * `slack` fails with the same drift assertions as before. The
+ * dock guard applies to every sample, in every segment. */
 async function assertPlanted(
   page: Page,
   from: Rect,
@@ -192,25 +291,97 @@ async function assertPlanted(
   slack = 8,
 ): Promise<void> {
   const deadline = Date.now() + ms;
-  while (Date.now() < deadline) {
-    const r = await holmesRect(page);
-    expect(r, "Holmes must stay mounted while planted").not.toBeNull();
-    expect(
-      Math.abs(r!.x - from.x),
-      "planted: x drifted",
-    ).toBeLessThanOrEqual(slack);
-    expect(
-      Math.abs(r!.y - from.y),
-      "planted: y drifted",
-    ).toBeLessThanOrEqual(slack);
+  let anchor: Rect = from;
+  let segment = 1;
+  let prevHidden = false;
+  const checkDock = (r: Rect) => {
     if (dock) {
       expect(
-        Math.hypot(r!.x - dock.x, r!.y - dock.y),
+        Math.hypot(r.x - dock.x, r.y - dock.y),
         "planted: drifted back toward the dock corner",
       ).toBeGreaterThan(30);
     }
-    expect(await clueOverlap(page), "clue overlap while planted").toBe(0);
-    await page.waitForTimeout(250);
+  };
+  const failDrift = (r: Rect) => {
+    expect(
+      Math.abs(r.x - anchor.x),
+      "planted: x drifted",
+    ).toBeLessThanOrEqual(slack);
+    expect(
+      Math.abs(r.y - anchor.y),
+      "planted: y drifted",
+    ).toBeLessThanOrEqual(slack);
+  };
+  while (Date.now() < deadline) {
+    const s = await plantState(page, anchor);
+    expect(s.rect, "Holmes must stay mounted while planted").not.toBeNull();
+    const r = s.rect!;
+    if (Math.abs(r.x - anchor.x) <= slack && Math.abs(r.y - anchor.y) <= slack) {
+      checkDock(r);
+      expect(s.paintedOverlap, "clue overlap while planted").toBe(0);
+      prevHidden = s.hidden;
+      await page.waitForTimeout(250);
+      continue;
+    }
+    // Movement beyond the slack: lawful re-place or failure.
+    const clauseA = s.hidden || prevHidden;
+    const clauseB = s.anchorOverlap > 0 && s.geometricOverlap === 0;
+    if (!clauseA && !clauseB) {
+      failDrift(r);
+      // failDrift throws on the drifted axis; this guards the
+      // (impossible) case where both axes are within slack.
+      throw new Error("planted: moved without lawful re-place evidence");
+    }
+    const clause = clauseA
+      ? "(a) hidden at the transition"
+      : "(b) pre-move position illegal, post-move position legal";
+    // The re-place must settle before it earns a new anchor: poll
+    // until two samples 250 ms apart agree within 2 px on a
+    // geometrically legal spot. Painted overlap and the dock
+    // guard are asserted on every settle sample too, so a lawful
+    // break never smuggles him over clue text or to the dock.
+    let candidate: Rect = r;
+    let settled: PlantState | null = null;
+    while (Date.now() < deadline && !settled) {
+      await page.waitForTimeout(250);
+      const s2 = await plantState(page, anchor);
+      expect(
+        s2.rect,
+        "Holmes must stay mounted while planted",
+      ).not.toBeNull();
+      checkDock(s2.rect!);
+      expect(s2.paintedOverlap, "clue overlap while planted").toBe(0);
+      if (
+        Math.abs(s2.rect!.x - candidate.x) <= 2 &&
+        Math.abs(s2.rect!.y - candidate.y) <= 2 &&
+        s2.geometricOverlap === 0
+      ) {
+        settled = s2;
+      } else {
+        candidate = s2.rect!;
+      }
+    }
+    if (!settled) {
+      // No settled legal landing inside the window: the movement
+      // is judged against the old anchor, exactly as before.
+      failDrift(candidate);
+      throw new Error(
+        "planted: lawful re-place evidence seen but he never settled",
+      );
+    }
+    const evidence =
+      `[assertPlanted] segment ${segment} break: clause ${clause}; ` +
+      `pre=${JSON.stringify(anchor)} post=${JSON.stringify(settled.rect)}; ` +
+      `anchorOverlap=${s.anchorOverlap} postOverlap=${settled.geometricOverlap}; ` +
+      `hiddenAtTransition=${s.hidden} hiddenAtPrevPoll=${prevHidden}`;
+    console.log(evidence);
+    test.info().annotations.push({
+      type: "segment-break",
+      description: evidence,
+    });
+    anchor = settled.rect!;
+    segment += 1;
+    prevHidden = settled.hidden;
   }
 }
 
