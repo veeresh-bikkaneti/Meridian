@@ -105,3 +105,13 @@ export function getJournalMovieManifest(
   }
   return cachedManifest;
 }
+
+/**
+ * Drop the memoized manifest so the next getJournalMovieManifest()
+ * fetches again. The player's "Try again" path: a failed first fetch
+ * (e.g. an HTTP 500) would otherwise be cached for the whole page load
+ * and no retry could ever succeed.
+ */
+export function resetJournalMovieManifestCache(): void {
+  cachedManifest = null;
+}

@@ -7,6 +7,7 @@ import {
   journalMovieUrl,
   loadJournalMovieManifest,
   parseJournalMovieManifest,
+  resetJournalMovieManifestCache,
   type JournalMovieManifest,
 } from "./journal-movies.ts";
 
@@ -93,4 +94,20 @@ test("getJournalMovieManifest fetches at most once per page load", async () => {
   const second = await getJournalMovieManifest(stub);
   assert.equal(first, second);
   assert.equal(calls, 1);
+});
+
+test("resetJournalMovieManifestCache lets the next call fetch again", async () => {
+  resetJournalMovieManifestCache();
+  let calls = 0;
+  const stub = async () => {
+    calls += 1;
+    return { ok: true, json: async () => REAL_MANIFEST };
+  };
+  const first = await getJournalMovieManifest(stub);
+  assert.equal(calls, 1);
+  resetJournalMovieManifestCache();
+  const second = await getJournalMovieManifest(stub);
+  assert.equal(calls, 2);
+  assert.equal(first, second);
+  resetJournalMovieManifestCache();
 });
