@@ -132,7 +132,7 @@ async function runTrace(page: import("playwright/test").Page, caseIndex: number)
     w.__swapT0 = performance.now();
     const loop = () => {
       const wrapper = document.querySelector('[data-testid="detective-holmes-wrapper"]');
-      const host = document.querySelector('[data-testid="detective-host"]');
+      const host = document.querySelector('[data-testid="detective-follow-root"]') ?? document.querySelector('[data-testid="detective-station"]') ?? document.querySelector('[data-testid="detective-host"]'); // detective-host is Watson-only here and absent in SEARCH, so placement/mode read null from it alone; Holmes rides the follow root, station as fallback (detective-u10.ts pattern)
       const mapEl = document.querySelector('[data-testid="loop-map"]');
       if (wrapper && mapEl) {
         const r = wrapper.getBoundingClientRect();
