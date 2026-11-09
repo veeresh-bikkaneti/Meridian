@@ -78,6 +78,8 @@ export function JournalPlayer({
   const [progress, setProgress] = useState(0);
   const [timeText, setTimeText] = useState("0:00 / 0:10");
   const videoRef = useRef<HTMLVideoElement | null>(null);
+  const closeRef = useRef<HTMLButtonElement | null>(null);
+  const wasOpenRef = useRef(open);
 
   // Open/close transitions: fetch the manifest lazily on open, reset on close.
   useEffect(() => {
@@ -136,6 +138,28 @@ export function JournalPlayer({
     const video = videoRef.current;
     if (video) video.muted = muted;
   }, [muted, phase]);
+
+  // Focus (WCAG 2.4.3): opening moves focus INTO the player — the
+  // video once it is ready, the Close button while loading or on error.
+  // Closing (Close button, Escape, or any other path) returns focus to
+  // this entry's play button instead of stranding it on <body>.
+  useEffect(() => {
+    if (!open) return;
+    if (phase === "ready") {
+      videoRef.current?.focus();
+    } else {
+      closeRef.current?.focus();
+    }
+  }, [open, phase]);
+
+  useEffect(() => {
+    if (wasOpenRef.current && !open) {
+      document
+        .querySelector<HTMLButtonElement>(`[data-testid="journal-play-${noteId}"]`)
+        ?.focus();
+    }
+    wasOpenRef.current = open;
+  }, [open, noteId]);
 
   // Escape closes the player.
   useEffect(() => {
@@ -219,6 +243,7 @@ export function JournalPlayer({
         <button
           type="button"
           className="hv5-journal-close"
+          ref={closeRef}
           data-testid={`journal-player-close-${noteId}`}
           aria-label="Close movie"
           onClick={onClose}
@@ -239,6 +264,7 @@ export function JournalPlayer({
         <button
           type="button"
           className="hv5-journal-close"
+          ref={closeRef}
           data-testid={`journal-player-close-${noteId}`}
           aria-label="Close movie"
           onClick={onClose}
@@ -260,6 +286,7 @@ export function JournalPlayer({
         preload="none"
         loop={!reduceMotion}
         playsInline
+        tabIndex={-1}
         aria-label={`${place} movie`}
         onPlay={() => {
           setPaused(false);
@@ -319,6 +346,7 @@ export function JournalPlayer({
         <button
           type="button"
           className="hv5-journal-close"
+          ref={closeRef}
           data-testid={`journal-player-close-${noteId}`}
           aria-label="Close movie"
           onClick={onClose}

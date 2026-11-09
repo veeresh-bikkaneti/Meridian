@@ -504,6 +504,10 @@ body:has(.home-v5) {
   border-radius: 16px;
   background: #000;
 }
+.home-v5 .hv5-journal-video:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
 /* Tap-to-pause flash: a big pause glyph centred on the video for ~600ms
    after a tap pauses playback. Decorative only; never intercepts taps. */
 .home-v5 .hv5-journal-pause-flash {
