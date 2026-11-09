@@ -84,13 +84,26 @@ async function holmesRect(page: Page): Promise<Rect | null> {
 
 const centre = (r: Rect) => ({ x: r.x + r.w / 2, y: r.y + r.h / 2 });
 
-/** Overlap (px²) between Holmes and any clue/question surface. */
+/** Overlap (px²) between Holmes and any clue/question surface.
+ * Visibility-aware (F1 land, parent adjudication 2026-11-09):
+ * a figure the host has withdrawn from paint covers no text, so
+ * it contributes no overlap. That means the hidden class, or
+ * computed visibility hidden, or computed opacity 0 — any one of
+ * them means nothing is painted. A painted figure is still
+ * measured exactly as before, and any painted overlap still
+ * fails at 0 px². */
 async function clueOverlap(page: Page): Promise<number> {
   return page.evaluate(() => {
-    const h = document.querySelector(
+    const el = document.querySelector(
       '[data-testid="detective-holmes-wrapper"]',
-    )?.getBoundingClientRect();
-    if (!h) return 0;
+    );
+    if (!el) return 0;
+    if (el.classList.contains("detective-host-holmes-hidden")) return 0;
+    const cs = window.getComputedStyle(el);
+    if (cs.visibility === "hidden" || parseFloat(cs.opacity) === 0) {
+      return 0;
+    }
+    const h = el.getBoundingClientRect();
     let worst = 0;
     const targets = document.querySelectorAll(
       'article[aria-label^="Clue"], [data-testid="detective-station"], [data-testid="detective-bench"]',
