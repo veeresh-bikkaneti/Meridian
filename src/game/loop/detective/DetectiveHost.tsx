@@ -2058,6 +2058,8 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         className="detective-host-flank"
         data-testid="detective-flank"
         data-flank-mode="row"
+        data-holmes-placement={effectivePlacement}
+        data-phase={view.phase}
         aria-hidden="true"
         style={{
           left: flankHolmesX(anchor.left),
@@ -2106,6 +2108,8 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           className="detective-flank-strip"
           data-testid="detective-flank-strip"
           data-flank-mode="strip"
+          data-holmes-placement={effectivePlacement}
+          data-phase={view.phase}
         >
           <div className="detective-flank-strip-figure">
             {holmesEl}

@@ -393,13 +393,18 @@ export function collectAudioRequests(page: Page): string[] {
 
 /** The pair's current phase, from whichever host root is mounted
  * (the station root carries clue phases, the map root carries the
- * guessing phases; both expose data-phase). Null when the pair is
- * fully absent (sheet / rings / speech-owned screen). */
+ * guessing phases; both expose data-phase). In flank mode the
+ * station/map roots are absent, so the flank row and the strip
+ * carry the same attributes — they are the pair's station there.
+ * Null when the pair is fully absent (sheet / rings /
+ * speech-owned screen). */
 export async function currentPhase(page: Page): Promise<string | null> {
   return page.evaluate(() => {
     const el =
       document.querySelector('[data-testid="detective-host"]') ??
-      document.querySelector('[data-testid="detective-station"]');
+      document.querySelector('[data-testid="detective-station"]') ??
+      document.querySelector('[data-testid="detective-flank-strip"]') ??
+      document.querySelector('[data-testid="detective-flank"]');
     return el?.getAttribute("data-phase") ?? null;
   });
 }
@@ -419,7 +424,9 @@ export async function currentPlacement(page: Page): Promise<string | null> {
   return page.evaluate(() => {
     const el =
       document.querySelector('[data-testid="detective-host"]') ??
-      document.querySelector('[data-testid="detective-station"]');
+      document.querySelector('[data-testid="detective-station"]') ??
+      document.querySelector('[data-testid="detective-flank-strip"]') ??
+      document.querySelector('[data-testid="detective-flank"]');
     return el?.getAttribute("data-holmes-placement") ?? null;
   });
 }
@@ -428,7 +435,9 @@ export async function companionMode(page: Page): Promise<string | null> {
   return page.evaluate(() => {
     const el =
       document.querySelector('[data-testid="detective-host"]') ??
-      document.querySelector('[data-testid="detective-station"]');
+      document.querySelector('[data-testid="detective-station"]') ??
+      document.querySelector('[data-testid="detective-flank-strip"]') ??
+      document.querySelector('[data-testid="detective-flank"]');
     return el?.getAttribute("data-companion") ?? null;
   });
 }
