@@ -25,6 +25,10 @@ export const NAMES_MIN_POPULATION = 500000;
 export const CAPITALS_INDEXES = Object.freeze(
   Array.from({ length: 110 }, (_, i) => 387 + i),
 );
+/** Core-deck case indexes: audio 0–386 (the default "All cases" deck). */
+export const CORE_INDEXES = Object.freeze(
+  Array.from({ length: 387 }, (_, i) => i),
+);
 
 export function textHash({ voice, speed, gainDb, text }) {
   return createHash("sha256").update(`${voice}|${speed}|${gainDb}|${text}`).digest("hex");
@@ -37,10 +41,17 @@ export function createManifest() {
     coverage: {
       // Claimed coverage grows as units land: U1 renders the dev case
       // only (below, under cases), U2 claims `fixed`, U3 fills
-      // `capitals` + `answers`. The CI gate fails on any CLAIMED entry
+      // `capitals` + `answers`, U11 fills `core` (the 387 core-deck
+      // cases) and closes FG-3. The CI gate fails on any CLAIMED entry
       // that is missing or stale — an empty list claims nothing.
+      // `coreHolds` is the explicit exception list for core coverage:
+      // a core case listed there ships without clue reads ON PURPOSE
+      // (named in the U11 PR body); every other core case must be
+      // claimed — see checkCoreCoverage below.
       capitals: [],
       answers: [],
+      core: [],
+      coreHolds: [],
       fixed: false,
       namesMinPopulation: NAMES_MIN_POPULATION,
       namesTierComplete: false,
@@ -211,6 +222,7 @@ export function collectExpectedSpecs(root, manifest) {
     for (const s of FIXED_LINES) expected.set(entryKey(s), s);
   }
   for (const i of manifest.coverage?.capitals ?? []) addCase(i);
+  for (const i of manifest.coverage?.core ?? []) addCase(i);
   for (const i of manifest.coverage?.answers ?? []) addCase(i, { clues: false });
   if (manifest.coverage?.namesTierComplete) {
     const min = manifest.coverage.namesMinPopulation ?? NAMES_MIN_POPULATION;
@@ -327,6 +339,76 @@ export const CLUES_ONLY_BUDGET_BYTES = 500_000;
  * verifyManifest already reports them as missing-file problems.
  * @returns {{ key: string, kind: "over-budget", detail: string }[]}
  */
+/* ------------------------------------------------------------------ */
+/* Core-deck coverage completeness (U11 — closes FG-3)                */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The core deck ("All cases", audio indexes 0–386) must never ship
+ * silent again. Phase A rendered the Capitals pack only, and the flip
+ * proceeded with core cases playing the full visual ritual over
+ * silent clue reads (handbook gate FG-3) because nothing in the gate
+ * required a core case to HAVE clue reads — verifyManifest only ever
+ * checks entries the manifest claims or already holds.
+ *
+ * This check makes core coverage itself the claim: every core case
+ * must be either (a) claimed in coverage.core with all five clue
+ * reads present in the manifest, or (b) named in coverage.coreHolds —
+ * the explicit, on-the-record exception list for cases that ship
+ * without clue reads on purpose (each hold is named in the U11 PR
+ * body). Anything else fails: an unclaimed case, a claimed case with
+ * a clue read missing, a hold outside the core range, or a hold that
+ * contradicts itself by carrying full audio anyway.
+ *
+ * @returns {{ key: string, kind: string, detail: string }[]}
+ */
+export function checkCoreCoverage(manifest, indexes = CORE_INDEXES) {
+  const problems = [];
+  const claimed = new Set(manifest.coverage?.core ?? []);
+  const holds = new Set(manifest.coverage?.coreHolds ?? []);
+  const inRange = new Set(indexes);
+  for (const h of holds) {
+    if (!inRange.has(h)) {
+      problems.push({
+        key: `coverage.coreHolds.${h}`,
+        kind: "hold-out-of-range",
+        detail: `core hold ${h} is not a core case index (${indexes[0]}–${indexes[indexes.length - 1]}) — remove it or fix the index`,
+      });
+    }
+  }
+  for (const i of indexes) {
+    const clueCount = Array.isArray(manifest.cases?.[i]?.clues)
+      ? manifest.cases[i].clues.filter(Boolean).length
+      : 0;
+    if (holds.has(i)) {
+      if (clueCount === 5) {
+        problems.push({
+          key: `cases.${i}.clues`,
+          kind: "hold-with-audio",
+          detail: `core case ${i} is on the hold list (ships without clue reads) but all 5 clue reads are in the manifest — remove the hold; a hold must name a real gap`,
+        });
+      }
+      continue;
+    }
+    if (!claimed.has(i)) {
+      problems.push({
+        key: `cases.${i}.clues`,
+        kind: "uncovered",
+        detail: `core case ${i} is neither claimed in coverage.core nor on the explicit hold list (coverage.coreHolds) — render its five clue reads, or record it as a hold with the reason in the PR body`,
+      });
+      continue;
+    }
+    if (clueCount !== 5) {
+      problems.push({
+        key: `cases.${i}.clues`,
+        kind: "incomplete-coverage",
+        detail: `core case ${i} is claimed in coverage.core but only ${clueCount} of its 5 clue reads are in the manifest — a claimed case must carry all five`,
+      });
+    }
+  }
+  return problems;
+}
+
 export function checkClueBudgets(root, manifest) {
   const problems = [];
   for (const [caseIndex, bucket] of Object.entries(manifest.cases ?? {})) {

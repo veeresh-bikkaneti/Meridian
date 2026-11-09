@@ -250,6 +250,11 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      name: "detective-core-audio",
+      testMatch: /detective-core-audio\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },

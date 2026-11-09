@@ -1,3 +1,123 @@
+# BRANCH_STATUS — feat/u11-clue-renders
+
+- **Branch:** `feat/u11-clue-renders` · **Base:** `main` @ `9e49da3` (PR #365 merged + live)
+- **Design of record:** clue-read diagnosis (evidence folder
+  `clue-read-diagnosis/DIAGNOSIS.md`) + owner approval (Veeresh,
+  2026-11-08 ~03:02 CST, in the `meridian` side chat): "Approve the
+  full render — all 386 core cases."
+
+## Task capsule
+
+TASK / requested outcome: Phase A rendered clue audio for the
+Capitals pack only, so 386 of the 387 core-deck cases had empty clue
+entries in the audio manifest and their clues were never read aloud
+(handbook ch.10 gate FG-3). Render all five clue reads for every core
+case in Watson's cast voice, extend the manifest gate so an empty
+core clue entry fails the build, and prove by ear-level E2E that a
+core case's clues fetch and play.
+
+OWNER APPROVAL (Veeresh, 2026-11-08): the full render of all 386
+core cases, on the diagnosis that the playback machinery already
+worked and only the renders were missing.
+
+## Done
+
+- [x] Pilot (cases 0–19): 105 rendered, 19% flagged, worst case
+  479,225 B of the 500,000 B budget, ≈16.9 s/case at concurrency 4.
+- [x] Full batch: 387/387 core cases carry all five clue reads
+  (1,935 reads; case 137's five pre-existed). Core clue audio totals
+  141.9 MB; the detective audio tree is 239 MB. Audio loads lazily
+  per case — the entry JS chunk is unchanged (457,847 B).
+- [x] Budget cures: five cases (28, 54, 87, 144, 289) busted the
+  500,000 B budget on one very slow take each; re-encoding the
+  affected clips at 32 kbit/s brought every case back under budget
+  with pitch and duration measurements unchanged. Zero cases held.
+- [x] Flagged disposition (explicit, not silent): 314 of 1,935 reads
+  ship flagged by the pipeline's pitch/pace ladders — 103 outside
+  Watson's family band (78–127 Hz), 6 under the 100 wpm pace floor,
+  the rest inside-band pitch flags. A cure pass re-rendered the 103
+  outside-band lines fresh: 0 landed inside the band, so the shipped
+  takes stand. The Capitals pack ships the same flagged state
+  (85 of 550) — flagged is the pipeline's designed "accepted with a
+  note" state, and every flagged line is named in the PR body.
+- [x] Manifest gate extended: `checkCoreCoverage` fails the build
+  when a core case is neither claimed with all five reads nor on
+  the explicit hold list (`coverage.coreHolds`, currently empty).
+  Sabotage controls proven: an emptied entry (case 42), an
+  over-budget case (case 10), and a dropped case (case 77) each
+  fail the gate by name. Real tree: gate clean, 4,462 entries
+  verified.
+- [x] Handbook ch.10: FG-3 marked CLOSED by U11; the flip checklist's
+  core-case item ticked with the closing E2E named.
+- [x] Gates on the finished tree: typecheck clean · unit suites
+  1,028 pass / 0 fail (scripts) + 2,266 / 2,266 (src) · worker
+  145 / 145 · lint-cards GATE PASSED · build:pages green.
+
+## Pending
+
+- [x] E2E `tests/e2e/detective-core-audio.spec.ts` — **RUN AND
+  PASSED 2026-11-09** (close-out below): all 3 tests by name —
+  (a) all five clue clips fetched (HTTP 200) and play, in order ·
+  (b) tap-Watson repeats the clue itself, not the ack or decode ·
+  (c) solving at guess 2 flushes the queue.
+- [x] Silo QA PASS @ `93a8fe52` (isolated worktree: manifest gate
+  clean, typecheck, lint-cards, all suites green, silo's own
+  sabotage control bites). **Key VOIDED by the close-out tip
+  `fb46cf55` — Silo re-key is the next step.**
+- [ ] Silo re-key, 13-seat panel vote, DevEx, benchmark; merge on
+  READY under ship-when-ready; live check on both hosts.
+- **LANE STOOD DOWN 2026-11-08** (owner's sequential pipeline
+  law): queue position 3, behind the Watson-station cure and
+  PR #364. (The lane later resumed and closed out in this file —
+  see the Close-out section below; the old `RESUME-STATE.md`
+  worktree file was retired 2026-11-09, its record lives in
+  this file and the PR #370 body.)
+
+## Close-out (2026-11-09, Agent ARCHIVE)
+
+- **Merge-up done:** `origin/main` @ `5e6af2f9` merged in (merge
+  commit `02798fd3`) — the two main commits past the old base
+  `9e49da3` are `63d82869` (#372 Watson-station cure) and
+  `5e6af2f9` (#340 guess counter). Sole conflict:
+  `BRANCH_STATUS.md`, resolved keeping BOTH records (this U11
+  capsule and main's #340 capsule both stand below). Handbook
+  ch.10 auto-merged as a faithful union: main's Watson-station
+  section came in, and this branch's FG-3 CLOSED record replaced
+  main's open FG-3 text.
+- **Playwright project added** (commit `6d4ad8e4`):
+  `detective-core-audio` registered in `playwright.config.ts`
+  immediately after `detective-berth` — the registration gap was
+  why the spec never ran locally or in CI.
+- **Fast gates on the merged + config tree, all PASS:**
+  typecheck clean · `npm test` — scripts 1,028 pass / 0 fail,
+  src 2,268 / 2,268 · worker 145 / 145 · lint-cards GATE PASSED ·
+  audio manifest gate clean (4,462 entries verified) ·
+  build:pages green (buildId `6d4ad8e4`).
+- **E2E run 1** (log
+  `~/workspace/meridian-detective-evidence/u11/e2e-core-audio.log`):
+  2 passed, test (b) FAILED — a spec defect, not a product
+  defect: test (b) scoped its `detective-watson-replay` locator
+  inside the `loop-map` subtree, but the button renders at the
+  station (the failure snapshot shows "Ask Watson to repeat this
+  clue" below the map region); every other spec using this
+  button scopes it page-wide. Fixed in commit `fb46cf55`
+  (locator scope only — same button, same count assertion, same
+  click; no assertion loosened).
+- **E2E run 2** (log
+  `~/workspace/meridian-detective-evidence/u11/e2e-core-audio-run2.log`):
+  **3 passed (2.9 m), exit 0** — (a) core case: all five clue
+  clips are fetched (HTTP 200) and play, in order · (b) core
+  case: tap-Watson repeats the clue itself, not the ack or
+  decode (replay started with `case-5/clue-1.mp3`) · (c) core
+  case: solving at guess 2 flushes the queue — no clue audio
+  fires after the solve.
+- **Tip after close-out: `fb46cf55`.** Remaining: Silo re-key →
+  panel → DevEx → benchmark → merge on the owner's word →
+  live verification on both hosts.
+
+---
+
+# BRANCH_STATUS — feat/geodetective-end-game
 # BRANCH_STATUS — fix/337-guess-counter
 
 - **Branch:** `fix/337-guess-counter`
