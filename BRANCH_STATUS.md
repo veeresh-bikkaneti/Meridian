@@ -143,6 +143,40 @@ worked and only the renders were missing.
 - **Pending:** GATE opens the PR and runs integration + panel. No PR
   opened by this branch's builder.
 
+## GROK-REWORK — independent verification + ear check (2026-11-09)
+
+- **Re-verified at tip `de612a41`:** tip + clean tree confirmed; all ten
+  ack clips present and playable (ffprobe); manifest gate clean (2,538
+  entries); manifest diff vs main = only the six new entries (+75/−0
+  lines); all 20 pre-existing fixed clips md5-identical to main; every
+  ack manifest entry's text = the frozen text, voice `avocado_v2:atlas`,
+  measuredHz = the record's pitch table.
+- **Voice tool confirmed on this machine:** a throwaway probe render via
+  `/opt/hatch/bin/tts speak --voice avocado_v2:atlas` returned the voice
+  field `"avocado_v2:atlas"` — the exact cast voice is reachable here.
+- **Ear check (measurement-based — no human hearing claimed):** two
+  independent pitch trackers (YIN + HPS) reproduce the pipeline's Hz
+  within ~5 Hz on all ten clips; pace = words/total-duration (reproduces
+  manifest wpm exactly); plus ebur128 loudness, spectral centroid, and
+  terminal-contour measures per clip.
+- **ack-7 "Filed, Watson." — KEEP.** YIN 111.6 Hz ≈ pipeline 111.1 Hz:
+  ~2 semitones below the set median but bracketed by shipped ack-3
+  (114.0 Hz), pace identical to its 2-word peers (89.3 wpm), loudness
+  mid-set, narrowest pitch spread of the ten — the same man at the
+  family's low end, not a different, gruffer Holmes. (The manifest note
+  cites the first take's 107.8 Hz; the shipped take measures 111.1.)
+- **ack-8 "Received, Watson." — KEEP.** 84.7 wpm vs 89–91 for the other
+  2-word lines (+72–96 ms on a ~1.35 s clip, ≈5–7% — at the edge of
+  tempo perceptibility); pitch in target (YIN 128.4 Hz), widest pitch
+  movement and bright timbre — deliberate, not dragging.
+- **Set picture:** ack-4 stays the warm ceiling (highest pitch,
+  brightest, flattest ending); no clip exceeds it, so no draw can sound
+  more encouraging than the shipped reference. Panel observation only:
+  ack-3 is the set's quietest (−30.5 LUFS) — pre-existing on main,
+  byte-identical, left untouched.
+- **No cures:** no clip was convicted, so zero re-renders and zero
+  audio/manifest changes; this capsule is the only change in its commit.
+
 ---
 
 # BRANCH_STATUS — feat/geodetective-end-game
