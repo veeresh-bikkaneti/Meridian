@@ -23,6 +23,14 @@ import {
   resetJournalMovieManifestCache,
   type JournalMovieManifest,
 } from "./journal-movies";
+import {
+  activeCue,
+  captionUrl,
+  getJournalTranscripts,
+  journalTranscriptFor,
+  resetJournalTranscriptsCache,
+  type JournalTranscript,
+} from "./journal-transcripts";
 
 export type JournalPlayerPhase = "closed" | "loading" | "ready" | "error";
 
@@ -50,6 +58,10 @@ export function JournalPlayer({
   /** Test-only deterministic path: bypass the manifest fetch. When
    *  undefined (production), the manifest is fetched lazily on open. */
   movieUrlOverride,
+  /** Test-only deterministic path: bypass the transcripts fetch. When
+   *  undefined (production), the transcripts file is fetched lazily on
+   *  open; null means "this entry has no transcript". */
+  transcriptOverride,
 }: {
   noteId: string;
   place: string;
@@ -60,6 +72,7 @@ export function JournalPlayer({
   onClose: () => void;
   reducedMotion?: boolean;
   movieUrlOverride?: string | null;
+  transcriptOverride?: JournalTranscript | null;
 }) {
   const reduceMotion = reducedMotion ?? prefersReducedMotion();
   const initialPhase = (): JournalPlayerPhase => {
@@ -79,11 +92,25 @@ export function JournalPlayer({
   const [ended, setEnded] = useState(false);
   const [progress, setProgress] = useState(0);
   const [timeText, setTimeText] = useState("0:00 / 0:10");
+  // Transcript state: undefined = not loaded yet (production, before
+  // the open fetch resolves); null = this entry has no transcript (or
+  // the fetch failed) — the CC and Story text buttons stay hidden.
+  const [transcript, setTranscript] = useState<JournalTranscript | null | undefined>(
+    transcriptOverride,
+  );
+  const [captionsOn, setCaptionsOn] = useState(false);
+  const [transcriptOpen, setTranscriptOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const hasTranscript =
+    transcript !== null && transcript !== undefined && transcript.cues.length > 0;
+  const currentCue = hasTranscript ? activeCue(transcript.cues, currentTime) : null;
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const closeRef = useRef<HTMLButtonElement | null>(null);
   const wasOpenRef = useRef(open);
 
   // Open/close transitions: fetch the manifest lazily on open, reset on close.
+  // The transcripts file is fetched alongside the manifest, also only
+  // after the tap; entries absent from it get no CC / Story text buttons.
   useEffect(() => {
     if (!open) {
       setPhase("closed");
@@ -94,12 +121,32 @@ export function JournalPlayer({
       setEnded(false);
       setProgress(0);
       setTimeText("0:00 / 0:10");
+      setTranscript(transcriptOverride);
+      setCaptionsOn(false);
+      setTranscriptOpen(false);
+      setCurrentTime(0);
       return;
+    }
+    let cancelledTranscript = false;
+    if (transcriptOverride !== undefined) {
+      setTranscript(transcriptOverride);
+    } else {
+      getJournalTranscripts()
+        .then((file) => {
+          if (cancelledTranscript) return;
+          setTranscript(journalTranscriptFor(file, noteId));
+        })
+        .catch(() => {
+          if (cancelledTranscript) return;
+          setTranscript(null);
+        });
     }
     if (movieUrlOverride !== undefined) {
       setMovieUrl(movieUrlOverride);
       setPhase(movieUrlOverride === null ? "error" : "ready");
-      return;
+      return () => {
+        cancelledTranscript = true;
+      };
     }
     let cancelled = false;
     setPhase("loading");
@@ -117,13 +164,16 @@ export function JournalPlayer({
       });
     return () => {
       cancelled = true;
+      cancelledTranscript = true;
     };
-  }, [open, noteId, movieUrlOverride, retryCount]);
+  }, [open, noteId, movieUrlOverride, transcriptOverride, retryCount]);
 
   // "Try again" on the error state: drop the memoized manifest (a failed
   // fetch would otherwise be cached for the whole page load) and refetch.
+  // The transcripts cache is dropped alongside it, for the same reason.
   const handleRetry = () => {
     resetJournalMovieManifestCache();
+    resetJournalTranscriptsCache();
     setRetryCount((c) => c + 1);
   };
 
@@ -147,6 +197,37 @@ export function JournalPlayer({
     const video = videoRef.current;
     if (video) video.muted = muted;
   }, [muted, phase]);
+
+  // Keep the captions track's mode in sync with the CC toggle. The
+  // track starts hidden (cues available to the transcript panel, no
+  // on-video captions); CC flips it to showing. Default is OFF.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !hasTranscript) return;
+    const track = video.textTracks?.[0];
+    if (track) track.mode = captionsOn ? "showing" : "hidden";
+  }, [captionsOn, phase, hasTranscript]);
+
+  const toggleCaptions = () => {
+    const next = !captionsOn;
+    setCaptionsOn(next);
+    const video = videoRef.current;
+    const track = video?.textTracks?.[0];
+    if (track) track.mode = next ? "showing" : "hidden";
+  };
+
+  // Tapping a transcript line seeks to that cue's start and resumes
+  // playback, so the kid hears the line they tapped.
+  const seekToCue = (cue: { start: number }) => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.currentTime = cue.start;
+    setCurrentTime(cue.start);
+    const attempt = video.play();
+    if (attempt && typeof attempt.catch === "function") {
+      attempt.catch(() => setPaused(true));
+    }
+  };
 
   // Focus (WCAG 2.4.3): opening moves focus INTO the player — the
   // video once it is ready, the Close button while loading or on error.
@@ -220,6 +301,7 @@ export function JournalPlayer({
     const video = videoRef.current;
     if (!video || !Number.isFinite(video.duration) || video.duration <= 0) return;
     setProgress(video.currentTime / video.duration);
+    setCurrentTime(video.currentTime);
     setTimeText(`${formatTime(video.currentTime)} / ${formatTime(video.duration)}`);
   };
 
@@ -307,6 +389,7 @@ export function JournalPlayer({
         playsInline
         tabIndex={-1}
         aria-label={`${place} movie`}
+        crossOrigin="anonymous"
         onPlay={() => {
           setPaused(false);
           setEnded(false);
@@ -319,7 +402,16 @@ export function JournalPlayer({
         onTimeUpdate={handleTimeUpdate}
         onError={() => setPhase("error")}
         onClick={handleVideoClick}
-      />
+      >
+        {hasTranscript ? (
+          <track
+            kind="captions"
+            label="English captions"
+            srcLang="en"
+            src={captionUrl(noteId)}
+          />
+        ) : null}
+      </video>
       {showPauseFlash && (
         <span
           className="hv5-journal-pause-flash"
@@ -330,49 +422,106 @@ export function JournalPlayer({
         </span>
       )}
       <div className="hv5-journal-controls">
-        <button
-          type="button"
-          className="hv5-journal-toggle"
-          data-testid={`journal-player-toggle-${noteId}`}
-          aria-label={ended ? "Play movie again" : paused ? "Play movie" : "Pause movie"}
-          onClick={togglePlay}
-        >
-          {ended ? "▶ Play again" : paused ? "▶ Play" : "⏸ Pause"}
-        </button>
-        <button
-          type="button"
-          className="hv5-journal-mute"
-          data-testid={`journal-player-mute-${noteId}`}
-          aria-label={muted ? "Unmute movie" : "Mute movie"}
-          aria-pressed={muted}
-          onClick={() => setMuted((m) => !m)}
-        >
-          {muted ? "🔇 Muted" : "🔊 Sound"}
-        </button>
-        <div
-          className="hv5-journal-progress"
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-valuenow={Math.round(progress * 100)}
-          aria-label="Movie progress"
-        >
-          <span style={{ width: `${Math.round(progress * 100)}%` }} />
+        <div className="hv5-journal-progress-row">
+          <div
+            className="hv5-journal-progress"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={Math.round(progress * 100)}
+            aria-label="Movie progress"
+          >
+            <span style={{ width: `${Math.round(progress * 100)}%` }} />
+          </div>
+          <span className="hv5-journal-time" data-testid={`journal-player-time-${noteId}`}>
+            {timeText}
+          </span>
         </div>
-        <span className="hv5-journal-time" data-testid={`journal-player-time-${noteId}`}>
-          {timeText}
-        </span>
-        <button
-          type="button"
-          className="hv5-journal-close"
-          ref={closeRef}
-          data-testid={`journal-player-close-${noteId}`}
-          aria-label="Close movie"
-          onClick={onClose}
-        >
-          ✕ Close
-        </button>
+        <div className="hv5-journal-buttons">
+          <button
+            type="button"
+            className="hv5-journal-toggle"
+            data-testid={`journal-player-toggle-${noteId}`}
+            aria-label={ended ? "Play movie again" : paused ? "Play movie" : "Pause movie"}
+            onClick={togglePlay}
+          >
+            {ended ? "▶ Play again" : paused ? "▶ Play" : "⏸ Pause"}
+          </button>
+          {hasTranscript ? (
+            <button
+              type="button"
+              className="hv5-journal-cc"
+              data-testid={`journal-player-cc-${noteId}`}
+              aria-label={captionsOn ? "Hide captions" : "Show captions"}
+              aria-pressed={captionsOn}
+              onClick={toggleCaptions}
+            >
+              CC
+            </button>
+          ) : null}
+          {hasTranscript ? (
+            <button
+              type="button"
+              className="hv5-journal-transcript-btn"
+              data-testid={`journal-player-transcript-${noteId}`}
+              aria-label={transcriptOpen ? "Hide story text" : "Show story text"}
+              aria-pressed={transcriptOpen}
+              aria-expanded={transcriptOpen}
+              onClick={() => setTranscriptOpen((o) => !o)}
+            >
+              Story text
+            </button>
+          ) : null}
+          <button
+            type="button"
+            className="hv5-journal-mute"
+            data-testid={`journal-player-mute-${noteId}`}
+            aria-label={muted ? "Unmute movie" : "Mute movie"}
+            aria-pressed={muted}
+            onClick={() => setMuted((m) => !m)}
+          >
+            {muted ? "🔇 Muted" : "🔊 Sound"}
+          </button>
+          <button
+            type="button"
+            className="hv5-journal-close"
+            ref={closeRef}
+            data-testid={`journal-player-close-${noteId}`}
+            aria-label="Close movie"
+            onClick={onClose}
+          >
+            ✕ Close
+          </button>
+        </div>
       </div>
+      {transcriptOpen && hasTranscript ? (
+        <div
+          className="hv5-journal-transcript"
+          data-testid={`journal-player-transcript-panel-${noteId}`}
+          role="region"
+          aria-label="Story text"
+        >
+          {transcript!.cues.map((cue, index) => {
+            const active = currentCue === cue;
+            return (
+              <button
+                key={index}
+                type="button"
+                className={
+                  active
+                    ? "hv5-journal-transcript-line hv5-journal-transcript-line-active"
+                    : "hv5-journal-transcript-line"
+                }
+                data-testid={`journal-player-transcript-line-${noteId}-${index}`}
+                aria-current={active ? "true" : undefined}
+                onClick={() => seekToCue(cue)}
+              >
+                {cue.text}
+              </button>
+            );
+          })}
+        </div>
+      ) : null}
     </figure>
   );
 }
