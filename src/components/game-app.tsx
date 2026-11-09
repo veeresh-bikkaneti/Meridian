@@ -1538,21 +1538,22 @@ export function GameApp() {
   // off; only the boot auto-open is gone.
   const [loopOpen, setLoopOpen] = useState<boolean>(false);
   // Journal prefetch (lazy-load scenario 2): while a round is active,
-  // warm the first 1–2 movies of the current journal set in the
-  // background so a later tap plays instantly. Tap-to-load is unchanged
-  // — this only pre-warms the plain HTTP cache (CORS fetch + drain;
-  // see journal-prefetch.ts for the real-server probe that proved zero
-  // additional transfers on the tap). Warmed ids are tracked per set so
-  // an entry is never warmed twice; a failed warm means the tap fetches
-  // cold, as today.
+  // warm the current entry's movie and the next window's (B8: one entry
+  // per 30-minute window, so "the next 1–2 in the current set" is the
+  // current window + the next window) in the background so a later tap
+  // plays instantly. Tap-to-load is unchanged — this only pre-warms the
+  // plain HTTP cache (CORS fetch + drain; see journal-prefetch.ts for
+  // the real-server probe that proved zero additional transfers on the
+  // tap). Warmed ids are tracked per window so an entry is never warmed
+  // twice; a failed warm means the tap fetches cold, as today.
   //
   // Placement matters: the effect MUST live here in GameApp, not in
   // Choose (home). GameApp returns early with <Play>/<LoopScreen>
   // while a round is active, so Choose — which owns the journal state
   // — is unmounted during gameplay and no effect inside it could ever
-  // run while playing. The set here is therefore derived from the wall
+  // run while playing. The entry here is therefore derived from the wall
   // clock (the same derivation Choose initialises from), not read from
-  // Choose's state; it matches the displayed set except at a window
+  // Choose's state; it matches the displayed entry except at a window
   // boundary where Choose deferred a rotation for focus — then the
   // warm simply misses and the tap fetches cold, as today. No player
   // can be open during a run (Choose is unmounted), so there is no
@@ -1562,9 +1563,12 @@ export function GameApp() {
   // `run` is a new object on every pin drop / phase change, so keying
   // on it would abort and restart the warm mid-round. The trigger is
   // the brief's — `run !== null || loopOpen` first becoming true.
-  // Warmed ids, keyed by journal set index: a set rotation gets a fresh
-  // set (no re-warm of the old set, no skip of the new one), and a later
-  // round in the same set never re-warms what is already cached.
+  // Warmed ids, keyed by journal window index: a rotation gets a fresh
+  // window (no re-warm of the old window, no skip of the new one), and
+  // a later round in the same window never re-warms what is already
+  // cached. The next window's note was possibly warmed as "next"
+  // during the previous window, so the previous window's warmed ids
+  // also count as warmed — no entry is ever warmed twice.
   const warmedJournalIdsRef = useRef<Map<number, Set<string>>>(new Map());
   const roundActive = run !== null || loopOpen;
   useEffect(() => {
@@ -1573,13 +1577,28 @@ export function GameApp() {
     // A round that starts in an already-hidden tab must not warm: the
     // visibilitychange listener below only fires on a transition.
     if (document.visibilityState === "hidden") return;
-    const setIndex = journalSetIndexAt(Date.now());
-    const setNotes =
-      journalSetByIndex(setIndex) ?? journalSetAt(Date.now());
-    const noteIds = (setNotes?.notes ?? []).map((note) => note.id);
+    const windowIndex = journalSetIndexAt(Date.now());
+    const currentNotes =
+      journalSetByIndex(windowIndex) ?? journalSetAt(Date.now());
+    // B8: the current window's entry plus the next window's — the
+    // selection limit (2) caps this at two warms.
+    const nextNotes = journalSetByIndex(windowIndex + 1);
+    const noteIds = [
+      ...(currentNotes?.notes ?? []),
+      ...(nextNotes?.notes ?? []),
+    ].map((note) => note.id);
     const warmedIds =
-      warmedJournalIdsRef.current.get(setIndex) ?? new Set<string>();
-    warmedJournalIdsRef.current.set(setIndex, warmedIds);
+      warmedJournalIdsRef.current.get(windowIndex) ?? new Set<string>();
+    warmedJournalIdsRef.current.set(windowIndex, warmedIds);
+    // A note warmed as "next" in the previous window must not warm
+    // again as "current" now (B8 singletons: every note is the next
+    // window's note once before it is the current one).
+    const prevIndex =
+      (windowIndex - 1 + journalSetCount()) % journalSetCount();
+    const prevWarmed = warmedJournalIdsRef.current.get(prevIndex);
+    const skipIds = prevWarmed
+      ? new Set([...warmedIds, ...prevWarmed])
+      : warmedIds;
     let cancelled = false;
     let handle: JournalPrefetchHandle | null = null;
     const abortController = new AbortController();
@@ -1593,7 +1612,7 @@ export function GameApp() {
     document.addEventListener("visibilitychange", onVisibility);
     void resolveJournalPrefetchEntries(noteIds, {
       playingJournalId: null,
-      warmedIds,
+      warmedIds: skipIds,
     }).then((entries) => {
       if (cancelled || entries.length === 0) return;
       const idByUrl = new Map(entries.map((entry) => [entry.url, entry.noteId]));
@@ -4525,14 +4544,14 @@ function Choose({
   // closes, so this is always fresh on return).
   const [loopProgress] = useState(() => peekLoopProgress());
   // Journal ("What the land remembers", docs/journal-spec.md §3/§5/§6):
-  // the displayed set index is state, driven by the auto-switch rotation
+  // the displayed entry index is state, driven by the auto-switch rotation
   // (createJournalRotation in ./home-journal): a boundary timeout at the
   // next window start + a 30s safety interval recompute it, as do
   // visibilitychange (tab visible again) and focusin. A new index is
   // DEFERRED while focus is inside the home Journal card or inside the
   // inline journal section — content is never swapped under a reader
   // (§6, focus-only per owner ruling Q3). The footer countdown ticks on
-  // its own 60s clock so it stays live without re-rendering the set.
+  // its own 60s clock so it stays live without re-rendering the entry.
   const [journalIndex, setJournalIndex] = useState(() => journalSetIndexAt(Date.now()));
   const [journalNowMs, setJournalNowMs] = useState(() => Date.now());
   // Journal movie player: the single open note id, or null. One movie
@@ -4583,7 +4602,7 @@ function Choose({
   }, [journalRotation]);
   const journalEntry = journalSetByIndex(journalIndex) ?? journalSetAt(Date.now());
   const journalNotes = journalEntry?.notes ?? [];
-  // A movie stops when its set rotates away — the note is no longer shown.
+  // A movie stops when its window rotates away — the note is no longer shown.
   useEffect(() => {
     setPlayingJournalId(null);
   }, [journalIndex]);
@@ -5087,9 +5106,9 @@ function Choose({
         ) : (
           <div aria-hidden="true" />
         )}
-        {/* Journal — the card names the currently-rotating set and
-            jumps to the field notes below; the set rotates every 2 hours,
-            deferred while focus is inside this card or the journal
+        {/* Journal — the card names the currently-rotating entry and
+            jumps to the field note below; the entry rotates every
+            30 minutes, deferred while focus is inside this card or the journal
             section (spec §6). */}
         <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)} data-testid="journal-card">
           <CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />
@@ -5106,7 +5125,7 @@ function Choose({
               <p className="hv5-journal-now" data-testid="journal-now-showing">
                 {journalEntry.mixed
                   ? "Now showing: Field Notes"
-                  : `Now showing: ${journalEntry.geography} · ${journalEntry.notes.length} field notes`}
+                  : `Now showing: ${journalEntry.geography} · ${journalEntry.notes.length === 1 ? "1 field note" : `${journalEntry.notes.length} field notes`}`}
               </p>
             ) : null}
             <button type="button" className="hv5-go hv5-stretch" data-testid="journal-open" onClick={() => scrollTo("home-journal")}>

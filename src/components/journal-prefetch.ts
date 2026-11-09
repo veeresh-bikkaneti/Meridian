@@ -4,8 +4,9 @@
  *
  * Tap-to-load stays the primary path: nothing here creates a <video>,
  * autoplays, or changes what a tap does. While a round is active, the
- * first 1–2 movies of the current journal set are warmed in the
- * background so a later tap plays instantly.
+ * current entry's movie and the next window's (B8: one entry per
+ * 30-minute window) are warmed in the background so a later tap plays
+ * instantly.
  *
  * Mechanism — plain HTTP cache, not Cache Storage: a CORS fetch of the
  * clip URL with the body drained (`arrayBuffer()`) stores the full 200
@@ -45,7 +46,8 @@ import {
   type JournalMovieManifest,
 } from "./journal-movies.ts";
 
-/** At most this many entries warmed per set (brief decision 2). */
+/** At most this many entries warmed per round (brief decision 2; B8:
+ *  the current window's entry + the next window's). */
 export const JOURNAL_PREFETCH_MAX_ENTRIES = 2;
 /** At most this many warms in flight at once (brief decision 5). */
 export const JOURNAL_PREFETCH_MAX_CONCURRENT = 2;
@@ -97,15 +99,16 @@ export function isJournalPrefetchAllowedNow(): boolean {
 export interface SelectJournalPrefetchOptions {
   /** The open player id — never prefetch the entry being watched. */
   playingJournalId?: string | null;
-  /** Ids already warmed in this set — never warm twice. */
+  /** Ids already warmed — never warm twice. */
   warmedIds?: ReadonlySet<string>;
   limit?: number;
 }
 
 /**
- * Entry selection (pure): the first `limit` note ids of the current
- * set, in set order, skipping the playing entry and any id already
- * warmed in this set. A 1-note set (set 35) yields 0–1 ids.
+ * Entry selection (pure): the first `limit` note ids given — the caller
+ * passes the current window's entry first, then the next window's
+ * (B8) — skipping the playing entry and any id already warmed.
+ * A single id yields 0–1 ids.
  */
 export function selectJournalPrefetchNoteIds(
   noteIds: readonly string[],
@@ -184,7 +187,7 @@ export interface JournalPrefetchHandle {
 
 export interface StartJournalPrefetchOptions {
   fetchImpl?: JournalPrefetchFetch;
-  /** External abort (round end / set rotation / tab hidden). */
+  /** External abort (round end / window rotation / tab hidden). */
   signal?: AbortSignal;
   /** Called once per attempted URL, with whether the warm landed. */
   onWarmed?: (url: string, warmed: boolean) => void;
@@ -250,7 +253,7 @@ export function startJournalPrefetch(
 }
 
 /**
- * Resolve the current set's warmable entries from the memoized
+ * Resolve the current and next windows' warmable entries from the memoized
  * manifest (fetching it on first call — the same lazy load the tap
  * path uses, so this also warms the manifest cache as a side effect).
  * Returns [] when the manifest is unavailable.
