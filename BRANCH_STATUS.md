@@ -66,7 +66,12 @@ per PR, per head.
 - The effect keys on the round-active **boolean**, not on `run` itself: `run` is a new object on every pin drop / phase change, so keying on it would abort and restart the warm mid-round.
 
 ## Pending
-- [ ] Step 5 — Screen recording (gameplay → prefetch → instant tap-play) + network trace, audio-probed per the video-audio law (mux the clip's own audio, verify the OUTPUT file). Record spec: `tests/e2e/journal-prefetch.record.desktop.spec.ts`.
+- [x] Step 5 — Screen recording (gameplay → prefetch → instant tap-play) + network trace, audio-probed per the video-audio law. Record spec: `tests/e2e/journal-prefetch.record.desktop.spec.ts` (1 passed, 39 s). Recording: `~/workspace/journal-prefetch-record/prefetch-desktop.mp4` (37 s, 800×500, h264 + aac) — raw Playwright capture `prefetch-desktop-raw.webm`, timeline `timeline.json`, mux script `mux.sh`. Audio gate on the OUTPUT: ffprobe shows h264 + aac; volumedetect playing segment [26.4, 36.4] mean −19.1 dB / max −1.0 dB (audible narration), pre-play [0, 26] mean −91.0 dB (silent). Frames verified: t=12 s globe round in progress, t=30 s movie playing 0:03/0:10 with entry text on, t=36 s player closed, still + badge back. Timeline proof: round started t=9186 ms → manifest t=9188 → southpointe prefetch t=9843 → havelock prefetch t=9860 → back home t=21577 → tap t=25742 → movie playing t=26964. One fix found: the spec's first audio-delay estimate used performance.timeOrigin under the mocked clock and collapsed to 0; recomputed from eval wall time minus video currentTime (26,374 ms).
+
+## Notes
+- CSP is NOT changed (repo CSP has no meridian-media in `media-src`/`connect-src`; GitHub Pages ignores `_headers`, so live Pages is unaffected — separate security decision).
+- No PR opened; merging stays the owner's decision.
+- Head: `0d4c8c44` (see `git log`).
 
 ## Never
 - Never merge — merge word stays the owner's, per PR, per head.
