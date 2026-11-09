@@ -2,7 +2,7 @@
 
 **Branch:** `feat/journal-prefetch` · **Base:** `feat/journal-player` @ `af7ec7c1` (stacked on movies `84fa3a0a`, frozen main `f2bbf1a2`)
 **Task:** Meridian lazy-load scenario 2 — background prefetch of journal movies WHILE the user is playing the game. Tap-to-load stays the primary path.
-**Status:** Implemented + E2E green + full gates green. Screen recording in progress. No PR, no merge.
+**Status:** Implemented + E2E green + full gates green (last full-gates head `f4b1639d`; re-run pending on the final head after B7 lands). Screen recording done (first take); re-record pending in the final pass. No PR, no merge.
 **Rebased:** 2026-11-09 — onto player head `af7ec7c1`; only conflict was this file (docs-only). The unanimous APPROVE on `c19f8dfc` does NOT transfer to the new head.
 
 ## Base record — feat/journal-player (rebased onto movies head 84fa3a0a, frozen main f2bbf1a2)
@@ -55,15 +55,19 @@ per PR, per head.
 
 ## Done
 - [x] Step 0a — CORS gate: `curl` on old-faithful.mp4 shows `Access-Control-Allow-Origin: *` (plus `Cache-Control: max-age=600`, ETag, `Accept-Ranges: bytes`). Prefetch can work.
-- [x] Step 0b — Cache-reuse experiment (real-server probe, `~/workspace/journal-prefetch-probe/`): CORS fetch + drain, then a `<video preload="none">` tap — server-side clip hits stayed at 1 before AND after the tap (zero additional transfers); video played. Hidden-`<video preload="auto">` warm scored the same 1→1; fetch wins on simplicity. Route interception CANNOT observe cache reuse (fulfilled responses bypass the cache) — E2E under interception asserts prefetch requests happen, reuse is proven by the probe.
-- [x] Step 1 — `src/components/journal-prefetch.ts` (gating, entry selection, bounded runner ≤2 concurrent, per-fetch AbortController, never rejects) + 16 unit tests; GameApp wiring (`run !== null || loopOpen` trigger, stops on round end / tab hidden / unmount); tsc clean.
-- [x] Step 2 — Loading spinner on the player's loading state (decorative, aria-hidden, keeps the text; never renders under reduced motion) + CSS + 2 unit tests.
-- [x] Step 3 — E2E `tests/e2e/journal-prefetch.desktop.spec.ts`: (i)–(viii) all pass (9/9); regression run 18/18 with journal-player.desktop + journal.spec. One fix found by the run: a page-route `continue()` goes to the real network, not to serveBuiltArtifact's route — the manifest-delay helper fulfills from the built file instead.
-- [x] Step 4 — Full gates on head `f4b1639d`: tsc exit 0; `npm test` green (scripts 1154 pass / 11 skipped / 0 fail; src 2320 pass / 0 fail); lint-cards GATE PASSED; `build:pages` green.
+- [x] Step 0b — Cache-reuse experiment (real-server probe, `~/workspace/journal-prefetch-probe/`, driver `probe-production-clip.mjs`, log `exp4-production-clip.log`): production clip `southpointe.mp4` (3,623,177 bytes) fetched via CORS + drain, then a `<video preload="none">` tap — server-side clip hits stayed at 1 before AND after the tap (1→1, zero additional transfers); video played (paused=false, currentTime 2.04). Hidden-`<video preload="auto">` warm scored the same 1→1; fetch wins on simplicity. Route interception CANNOT observe cache reuse (fulfilled responses bypass the cache) — E2E under interception asserts prefetch requests happen, reuse is proven by the probe.
+- [x] Step 1 — `src/components/journal-prefetch.ts` (gating, entry selection, bounded runner ≤2 concurrent, per-fetch AbortController, never rejects) + 17 unit tests (16 + the B1 manifest-retry test); GameApp wiring (`run !== null || loopOpen` trigger, stops on round end / tab hidden / unmount) with the follow-up fixes: skip warming when the tab is already hidden at round start, warmed ids keyed per journal set (a set rotation gets a fresh set), manifest cache reset on null so a transient failure cannot poison the tap path (B1), and the manifest baseUrl re-pinned to the validator's pinned value; tsc clean.
+- [x] Step 2 — Loading spinner on the player's loading state (decorative, aria-hidden, keeps the text; the loading text carries `role="status"`; never renders under reduced motion) + CSS + 2 unit tests.
+- [x] Step 3 — E2E `tests/e2e/journal-prefetch.desktop.spec.ts`: (i)–(xi), 12 tests. First run (`~/workspace/journal-prefetch-e2e1.log`) 7 passed / 2 failed — (vii) and (viii-a) both timed out waiting for the movie element, because the manifest-delay helper's `route.continue()` goes to the real network, not to serveBuiltArtifact's route; fixed by fulfilling the manifest from the built file after the delay, and the re-run of the 2 (`~/workspace/journal-prefetch-e2e2.log`) passed 2/2. Regression run 18/18 with journal-player.desktop + journal.spec (from the 9-test run; re-run pending in the final pass on the 12-test spec).
+- [x] Step 4 — Full gates on head `65019f99`: PENDING re-run in the final pass after B7 lands (last full-gates green was `f4b1639d`: tsc exit 0; `npm test` green (scripts 1154 pass / 11 skipped / 0 fail; src 2320 pass / 0 fail); lint-cards GATE PASSED; `build:pages` green — `build:pages` re-verified on `65019f99`, buildId `65019f99`, log `~/workspace/journal-prefetch-fix2-build.log`).
 
 ## Design corrections vs the brief (verified from code, not re-litigated)
 - The effect lives in **GameApp**, not in Choose/home: GameApp returns early with `<Play>`/`<LoopScreen>` while a round is active, so Choose is unmounted during gameplay and no effect inside it could run. The set is derived from the wall clock (same derivation Choose initialises from).
 - The effect keys on the round-active **boolean**, not on `run` itself: `run` is a new object on every pin drop / phase change, so keying on it would abort and restart the warm mid-round.
+
+## History — feat/journal-player Part 3 (restored)
+
+The player-branch history below was deleted from this file; restored from `feat/journal-player`'s `BRANCH_STATUS.md` (`86624dde`) and its git log — no facts invented. Part 3: 5 Historian-blocked facts corrected (text + audio) at head `a7191e3e` (verified `86624dde`): cue 2 only, in `public/videos/captions/<id>.vtt` + `public/videos/journal-transcripts.json` (VTT↔JSON 0 mismatches, 20 cues) — alamo "An old mission, from 1718." (was "from 1836"), cadillac "In winter, it catches the first sunrise!" (was "It catches the first sunrise in the country!"), joslyn "Joslyn's museum stands right in Omaha." (was "...stands north of Omaha."), niagara "They drop where New York meets Canada!" (was "They drop over a cliff in New York."), homestead "One of the first claims, under the 1862 law." (was "One of the first claims, back in 1862."); manifest untouched. The audio fix lives on meridian-media `fix/journal-facts-5` @ `70b2e95` (separate repo, NOT merged — the live site still serves the old clips). Verification: E2E facts specs 6/6 desktop + 2/2 mobile, regression 31/31; recording `~/workspace/journal-player-facts-play/facts-desktop.webm` (94.6 s, all 5 corrected lines legible on-video).
 
 ## Pending
 - [x] Step 5 — Screen recording (gameplay → prefetch → instant tap-play) + network trace, audio-probed per the video-audio law. Record spec: `tests/e2e/journal-prefetch.record.desktop.spec.ts` (1 passed, 39 s). Recording: `~/workspace/journal-prefetch-record/prefetch-desktop.mp4` (37 s, 800×500, h264 + aac) — raw Playwright capture `prefetch-desktop-raw.webm`, timeline `timeline.json`, mux script `mux.sh`. Audio gate on the OUTPUT: ffprobe shows h264 + aac; volumedetect playing segment [26.4, 36.4] mean −19.1 dB / max −1.0 dB (audible narration), pre-play [0, 26] mean −91.0 dB (silent). Frames verified: t=12 s globe round in progress, t=30 s movie playing 0:03/0:10 with entry text on, t=36 s player closed, still + badge back. Timeline proof: round started t=9186 ms → manifest t=9188 → southpointe prefetch t=9843 → havelock prefetch t=9860 → back home t=21577 → tap t=25742 → movie playing t=26964. One fix found: the spec's first audio-delay estimate used performance.timeOrigin under the mocked clock and collapsed to 0; recomputed from eval wall time minus video currentTime (26,374 ms).
@@ -71,7 +75,7 @@ per PR, per head.
 ## Notes
 - CSP is NOT changed (repo CSP has no meridian-media in `media-src`/`connect-src`; GitHub Pages ignores `_headers`, so live Pages is unaffected — separate security decision).
 - No PR opened; merging stays the owner's decision.
-- Head: `0d4c8c44` (see `git log`).
+- Head: `65019f99` (verified this session: `git rev-parse HEAD`, worktree clean, remote tip matches; final pass updates this after B7 lands).
 
 ## Never
 - Never merge — merge word stays the owner's, per PR, per head.
