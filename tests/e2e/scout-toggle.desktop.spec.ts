@@ -370,8 +370,9 @@ test("manual switch lands HOME even with a persisted GeoDetective flag under the
     await page.evaluate(() => localStorage.getItem("meridian.loop.open")),
   ).toBe("1");
 
-  // A reload restores BOTH — and branch precedence renders the run on
-  // top of the lurking flag (Play on screen, LoopScreen not).
+  // A reload restores the run only (B7: the persisted loop flag no
+  // longer reopens GeoDetective on boot) — and branch precedence renders
+  // the run on top of the lurking flag (Play on screen, LoopScreen not).
   await page.reload();
   await expect(mapWrapper(page)).toBeVisible({ timeout: 30_000 });
   await expect(page.getByTestId("loop-screen")).toHaveCount(0);
