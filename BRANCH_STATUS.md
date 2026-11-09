@@ -9,7 +9,7 @@
 
 Root cause: two visible buttons shared the accessible name "Take the tour" — the invite button and the footer re-entry button (same handler) — so Playwright's role/name locator hit a strict-mode violation (tutorial.spec.ts:125/166/174 on the #340 branch; signature-identical failures on pristine main).
 
-Changes (working diff `src/components/game-app.tsx | 1 +`, `tests/e2e/tutorial.spec.ts | 4 +++-` = +4/−1; the manifest footprint said tutorial.spec.ts +5/−1, the difference being the dropped pin below):
+Changes (working diff `src/components/game-app.tsx | 1 +`, `tests/e2e/tutorial.spec.ts` = +3/−1; the manifest footprint said tutorial.spec.ts +5/−1, the difference being the dropped pin below):
 
 1. `src/components/game-app.tsx` — added `aria-label="Take the tour again"` to the footer re-entry button (`data-testid="take-tour-link"`). Visible text unchanged ("🗺️ Take the tour"); invite untouched; handler unchanged. This is the only production edit in the T1 cluster. Trade-off recorded by the Chair (manifest C-1): distinct names remove a screen-reader disambiguation harm; a first-run SR user hears "again" for an untaken tour, mitigated because the footer offer is literally the second appearance of the offer on the same page (P2-11).
 2. `tests/e2e/tutorial.spec.ts` —
@@ -43,4 +43,4 @@ Environment: `PLAYWRIGHT_CHROMIUM_EXECUTABLE=$HOME/.cache/ms-playwright/chromium
 - Touched only the permitted files: `src/components/game-app.tsx` (footer button block only), `tests/e2e/tutorial.spec.ts`, and this file.
 - Protected files untouched: `package-lock.json`, `src/game/data/**`, `.scratch/`, `src/lib/observability.ts`, `src/lib/chunk-recovery.ts`, `workers/**`, other worktrees.
 - No visible player-facing string changed; the only new string is the aria-label above plus test-internal text.
-- Not pushed, not merged, no PR opened — merge remains the owner's word.
+- Pushed by the coordinator via GitHub API replay (current head in PIPELINE-STATE.md) — not merged, no PR opened; merge remains the owner's word.
