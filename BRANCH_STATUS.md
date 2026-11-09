@@ -16,10 +16,10 @@ The :203 test claimed to "warm the chunk cache" but `warmOnline` warms only the 
 ## Evidence (logs: `~/workspace/meridian-pr340-e2e/logs-gate/t3/`)
 
 - **RED** (`red-203.log`): unmodified :203 test on the main-built artifact — FAIL with the predicted signature: `expect(locator).toBeVisible() failed — getByRole('heading', { name: 'GeoDetective' }), Timeout: 30000ms`.
-- **GREEN** (`e2e-green.log`): full `tests/e2e/offline-content.spec.ts` — **6 passed (2.0m)**, `--workers=1` under `flock ~/workspace/.e2e.lock`, `PLAYWRIGHT_CHROMIUM_EXECUTABLE` + `VITE_KOFI_URL` set. Run exit code was 1 despite 6/6 passing: the global `telemetry-spill-teardown` threw "telemetry escaped the E2E stub" over 1 crash-report `/ingest` request that failed while the context was offline. **Pre-existing, not from this fix**: the identical teardown error (same signature, 2 escapes) appears in the pristine-main baseline run (`logs-gate/main-baseline-6.log`) and in this branch's RED run of the unmodified test (`red-203.log`):
+- **GREEN** (`e2e-green.log`): full `tests/e2e/offline-content.spec.ts` — **6 passed (2.0m)**, `--workers=1` under `flock ~/workspace/.e2e.lock`, `PLAYWRIGHT_CHROMIUM_EXECUTABLE` + `VITE_KOFI_URL` set. Run exit code was 1 despite 6/6 passing: the global `telemetry-spill-teardown` threw "telemetry escaped the E2E stub" over 1 crash-report `/ingest` request that failed while the context was offline. **Pre-existing, not from this fix**: the identical teardown error (same signature) appears in the pristine-main baseline run (`logs-gate/main-baseline-6.log`, 2 escapes) and in this branch's RED run of the unmodified test (`red-203.log`, 3 escapes):
   - :181 shell boots — 9.0s ✓
   - :203 uncached offline notice — 32.2s ✓
-  - fence (never warmed) — 12.7s ✓ — wall-clock: the settled boundary card was observed inside the first poll window; total test time 12.7s, no first-paint claim made.
+  - fence (never warmed) — 12.7s ✓ — wall-clock: the boundary card first satisfied its assertions inside the first poll window (a first satisfaction, not a post-reload observation; the post-reload state is deterministically the same card — chunk still uncached offline, reload latched to one); total test time 12.7s, no first-paint claim made.
   - cached replay — 30.4s ✓ · online no-notice — 18.5s ✓ · offline audio — 14.0s ✓
 - **Gates** (all on this branch's tip): `npx tsc --noEmit` PASS (`tsc.log`) · `npm test` PASS — 1021 pass / 0 fail (scripts suite) + 2268 pass / 0 fail (src suite) (`npm-test.log`) · `npm run test:worker` PASS — 145 pass / 0 fail (`test-worker.log`) · `npm run typecheck:worker` PASS (`typecheck-worker.log`) · `node scripts/lint-cards.mjs` — GATE PASSED (`lint-cards.log`) · `npm run build:pages` PASS (`build-green.log`; RED-phase build `build-red.log`) · `npm ci` logged (`npm-ci.log`).
 
@@ -33,5 +33,5 @@ T3 and T4 both edit `tests/e2e/offline-content.spec.ts` (textually disjoint hunk
 
 ## State
 
-- Committed locally on `fix/e2e-offline-loop-scenario`; **NOT pushed, no PR opened** (merge not authorized — packages stop at gated, PR-ready per the manifest).
+- Committed locally on `fix/e2e-offline-loop-scenario`; **pushed by the coordinator via GitHub API replay (current head in PIPELINE-STATE.md); no PR opened** (merge not authorized — packages stop at gated, PR-ready per the manifest).
 - Files changed: `tests/e2e/offline-content.spec.ts`, `BRANCH_STATUS.md` (this file, this branch's record only, per C-8). Protected files untouched.
