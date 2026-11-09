@@ -852,3 +852,34 @@
     animation: none !important;
   }
 }
+
+/* --- proximity follow overlay (Pair Behaviour PR 1) ------------------- */
+/* Holmes's page-wide stage: a fixed root at the app root, below the
+   sheet / modal / celebration layers (those live at z-index 30+ in
+   this file and the app's sheet stack), pointer-events none except
+   his own footprint — the mute alias button below is the footprint's
+   interactive surface and rides the same transform. The figure moves
+   ONLY by the host's single translate3d transition; travelling is
+   low-intensity (no extra animation runs — the walk pose is a static
+   rig swap), resting returns to the machine's full idle life. */
+.detective-follow-root {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.detective-follow-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.detective-holmes-mute-follow {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 21;
+}

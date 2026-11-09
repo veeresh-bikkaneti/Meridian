@@ -39,7 +39,8 @@ export type FlagName =
   | "scoutUpgradeTrial"
   | "detectivePair"
   | "hostsStaging"
-  | "watsonWalk";
+  | "watsonWalk"
+  | "holmesFollow";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -109,6 +110,17 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // stage starts at "standing"). The baked default stays false so a
   // failed flags fetch falls back to the PR A pair.
   watsonWalk: false,
+  // Holmes proximity follow (Pair Behaviour PR 1): Holmes travels
+  // to the pointer's last neighbourhood anywhere on the page and
+  // STAYS there — the waypoint berth engine (dock home, exitToDock,
+  // >320 px remote rule) is removed, not gated. true = PAGE_FOLLOW
+  // tier enabled. false = the kill-switch: redeploy flags.json with
+  // holmesFollow false and the same solver pins to PAUSE_BERTH —
+  // page-wide pause-based berths that still stay put (never a
+  // dock-return). The baked default stays false so a failed flags
+  // fetch falls back to the pause-berth behaviour, never to
+  // half-proven per-move following.
+  holmesFollow: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;

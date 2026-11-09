@@ -163,6 +163,13 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // PB-1: the follow-model gates (travel / planted / speech lock /
+      // burst return / OFF tier).
+      name: "detective-follow",
+      testMatch: /detective-follow\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       // U10 gates pack: one project per detective gate spec (the U9
       // one-project-per-spec convention).
       name: "detective-stations",

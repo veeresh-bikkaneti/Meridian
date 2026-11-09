@@ -1,5 +1,6 @@
 import { test, expect, type BrowserContext } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
+import { holmesRect, waitForSearchIdle } from "./detective-u10";
 
 /**
  * Detective reduced-motion gate (U9, BUILD-SCOPE §2.5 / council Q2
@@ -12,6 +13,18 @@ import { serveBuiltArtifact } from "./helpers";
  *   walk:cut), after the longer 600 ms reduced-motion pause;
  * - audio requests still fire: reduced motion mutes animation, never
  *   sound, so Watson's clue-1 read plays exactly as in the full build.
+ *
+ * RE-PIN (STAYS era): placement alone no longer discriminates here.
+ * Under the STAYS latch, any solved follow target latches placement
+ * to "berth", and the burst-return solve at the first SEARCH
+ * transition can already have berthed Holmes at the heading unlock
+ * click before this test's scripted pause — so a "was dock, now
+ * berth" pin could pass without the pause doing anything. The test
+ * therefore pins what the pause itself causes: Holmes's settled
+ * rect is displaced >40 px from its pre-pause settled rect AND
+ * lands within the solver's 220 px neighbourhood of the pause
+ * point (the checkLanded band from detective-berth.spec.ts), on
+ * top of placement="berth" and the cut assertions below.
  *
  * Speech is sped to 3x via the U5/U6 smoke pattern (a play() patch
  * that also records every clip src) so the clue ladder reaches the
@@ -105,14 +118,13 @@ test("reduced motion: pair present, berth by cut, audio still fires", async ({
     );
 
   // The ladder reaches the guessing phase: the map-side host mounts
-  // with Holmes docked.
+  // and Holmes SETTLES — phase SEARCH_IDLE with placement "dock" OR
+  // "berth" and a stable rect (the shared waitForSearchIdle; under
+  // STAYS the entry solve may already have latched him "berth", so
+  // "dock" alone is no longer a reachable precondition — see the
+  // header re-pin note).
   const host = page.getByTestId("detective-host");
-  await expect
-    .poll(() => host.getAttribute("data-phase"), { timeout: 60_000 })
-    .toBe("SEARCH_IDLE");
-  await expect
-    .poll(() => host.getAttribute("data-holmes-placement"))
-    .toBe("dock");
+  await waitForSearchIdle(page, 60_000);
 
   // Scripted pointer pause near (but not on) the dock: Holmes berths.
   const map = page.getByTestId("loop-map");
@@ -120,7 +132,12 @@ test("reduced motion: pair present, berth by cut, audio still fires", async ({
   const box = await map.boundingBox();
   expect(box).not.toBeNull();
   const wrapper = page.getByTestId("detective-holmes-wrapper");
-  const dockTransform = await wrapper.evaluate(
+  // The pre-pause SETTLED rect: the displacement pin below is
+  // measured from here, so the pause must move him from wherever
+  // he settled (dock or entry berth), not just flip a label.
+  const prePauseRect = await holmesRect(page);
+  expect(prePauseRect).not.toBeNull();
+  const prePauseTransform = await wrapper.evaluate(
     (el) => getComputedStyle(el).transform,
   );
   const px = box!.x + 170;
@@ -133,6 +150,24 @@ test("reduced motion: pair present, berth by cut, audio still fires", async ({
       timeout: 20_000,
     })
     .toBe("berth");
+
+  // The discriminating pin (see header): the pause MOVED him —
+  // his rect is displaced >40 px from the pre-pause settled rect
+  // and he landed within the solver's 220 px neighbourhood of
+  // the pause point (the checkLanded band, detective-berth.spec.ts).
+  await expect
+    .poll(
+      async () => {
+        const r = await holmesRect(page);
+        if (!r) return false;
+        const displaced =
+          Math.hypot(r.x - prePauseRect!.x, r.y - prePauseRect!.y) > 40;
+        const centreDist = Math.hypot(r.x + r.w / 2 - px, r.y + r.h / 2 - py);
+        return displaced && centreDist <= 220;
+      },
+      { timeout: 20_000 },
+    )
+    .toBe(true);
 
   // …and he arrived by CUT: no walk transition on his wrapper, and
   // the host still reports the cut walk mode. (The computed duration
@@ -152,5 +187,5 @@ test("reduced motion: pair present, berth by cut, audio still fires", async ({
   expect(cut.walkMode).toBe("cut");
   expect(cut.inlineTransition).toBe("none");
   expect(cut.durationS).toBeLessThan(0.01);
-  expect(cut.transform).not.toBe(dockTransform);
+  expect(cut.transform).not.toBe(prePauseTransform);
 });

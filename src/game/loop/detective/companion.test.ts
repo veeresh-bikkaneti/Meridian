@@ -2,10 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
-  berthFor,
   createAutoKillTracker,
   createPauseDetector,
-  type BerthInput,
   type PointerSample,
 } from "./companion.ts";
 
@@ -98,113 +96,6 @@ test("pause: post-gesture re-arm — 500 ms idle + a fresh full pause", () => {
 });
 
 /* ------------------------------------------------------------------ */
-/* Berth solver                                                        */
-/* ------------------------------------------------------------------ */
-
-const BOX = { w: 70, h: 104 };
-const baseInput = (over: Partial<BerthInput> = {}): BerthInput => ({
-  pausePoint: { x: 200, y: 300 },
-  holmesBox: BOX,
-  viewport: { w: 800, h: 600 },
-  dock: { x: 12, y: 484 }, // dock centre (47, 536)
-  exclusions: [],
-  pointerType: "mouse",
-  handSide: "right",
-  ...over,
-});
-
-function centreOf(r: { x: number; y: number }) {
-  return { x: r.x + BOX.w / 2, y: r.y + BOX.h / 2 };
-}
-function edgeDistance(cx: number, cy: number, px: number, py: number) {
-  const dx = Math.max(Math.abs(px - cx) - BOX.w / 2, 0);
-  const dy = Math.max(Math.abs(py - cy) - BOX.h / 2, 0);
-  return Math.hypot(dx, dy);
-}
-
-test("solver: desktop berth is above the finger at legal distances, NW for right hand", () => {
-  const r = berthFor(baseInput());
-  assert.equal(r.kind, "berth");
-  if (r.kind !== "berth") return;
-  const c = centreOf(r);
-  assert.ok(c.y < 300, "centre above the pause point");
-  assert.ok(c.x < 200, "NW bias for a right hand");
-  assert.ok(Math.hypot(c.x - 200, c.y - 300) >= 64, "centre ≥ 64 px");
-  assert.ok(edgeDistance(c.x, c.y, 200, 300) >= 56, "edge ≥ 56 dp");
-  assert.ok(r.x >= 0 && r.y >= 0 && r.x + BOX.w <= 800 && r.y + BOX.h <= 600);
-});
-
-test("solver: touch berth honours the 96 dp centre minimum", () => {
-  const r = berthFor(baseInput({ pointerType: "touch" }));
-  assert.equal(r.kind, "berth");
-  if (r.kind !== "berth") return;
-  const c = centreOf(r);
-  assert.ok(Math.hypot(c.x - 200, c.y - 300) >= 96, "centre ≥ 96 dp");
-  assert.ok(edgeDistance(c.x, c.y, 200, 300) >= 56, "edge ≥ 56 dp");
-  assert.ok(c.y < 300, "above the finger");
-});
-
-test("solver: left hand mirrors the berth to NE", () => {
-  const r = berthFor(baseInput({ handSide: "left" }));
-  assert.equal(r.kind, "berth");
-  if (r.kind !== "berth") return;
-  const c = centreOf(r);
-  assert.ok(c.x > 200, "NE bias for a left hand");
-  assert.ok(c.y < 300, "still above the finger");
-});
-
-test("solver: pause far from the dock is remote, not a cross-map walk", () => {
-  const r = berthFor(baseInput({ pausePoint: { x: 700, y: 100 } }));
-  assert.deepEqual(r, { kind: "remote" });
-});
-
-test("solver: boxed in by the viewport top → hide (never overlap)", () => {
-  // 200 px-wide viewport, pause near the top: no above-the-finger
-  // position can satisfy centre + edge distances inside the screen.
-  const r = berthFor(
-    baseInput({
-      viewport: { w: 200, h: 600 },
-      pausePoint: { x: 100, y: 60 },
-      dock: { x: 65, y: 0 },
-    }),
-  );
-  assert.deepEqual(r, { kind: "hide" });
-});
-
-test("solver: an exclusion over the ideal berth pushes him elsewhere, legally", () => {
-  const ideal = berthFor(baseInput());
-  assert.equal(ideal.kind, "berth");
-  if (ideal.kind !== "berth") return;
-  const ic = centreOf(ideal);
-  const r = berthFor(
-    baseInput({ exclusions: [{ x: ic.x, y: ic.y, r: 10 }] }),
-  );
-  assert.equal(r.kind, "berth");
-  if (r.kind !== "berth") return;
-  const c = centreOf(r);
-  assert.ok(
-    Math.hypot(c.x - ic.x, c.y - ic.y) >= 130,
-    "centre ≥ exclusion r + 120 dp",
-  );
-  assert.ok(c.y < 300, "still above the finger");
-});
-
-test("solver: an exclusion covering every candidate → hide", () => {
-  const r = berthFor(
-    baseInput({ exclusions: [{ x: 200, y: 300, r: 250 }] }),
-  );
-  assert.deepEqual(r, { kind: "hide" });
-});
-
-test("solver: deterministic — identical inputs, identical outputs", () => {
-  const input = baseInput({
-    exclusions: [{ x: 150, y: 180, r: 24 }],
-    pointerType: "touch",
-  });
-  assert.deepEqual(berthFor(input), berthFor(input));
-});
-
-/* ------------------------------------------------------------------ */
 /* Auto-kill accumulator                                               */
 /* ------------------------------------------------------------------ */
 
@@ -274,6 +165,22 @@ test("reset: clears a latched kill and every window (the host's case-change cure
   k.feedLongTask(150, 10000);
   k.feedLongTask(150, 11000);
   assert.equal(k.killed, false);
+});
+
+test("noteGate: a gated gap inside the window does not dilute the measured rate into a kill", () => {
+  const k = createAutoKillTracker();
+  // ~1.5 s of honest 60 fps frames.
+  for (let t = 17; t <= 1500; t += 17) k.feedFrame(17, t);
+  // A motion-gated stretch: the host feeds nothing for 900 ms,
+  // marks the transition, then resumes at 60 fps. Without the
+  // gate mark, the resumed window's span would include the gap
+  // (~2.4 s span over ~1.5 s of frames \u2248 34 fps) and trip the
+  // kill on a healthy device \u2014 the landing-kill pattern of
+  // PR #364's cure rounds 5-6.
+  k.noteGate(2400);
+  for (let t = 2417; t <= 6000; t += 17) k.feedFrame(17, t);
+  assert.equal(k.killed, false);
+  assert.equal(k.killReason, null);
 });
 
 test("kill: healthy 60 fps stream never fires", () => {

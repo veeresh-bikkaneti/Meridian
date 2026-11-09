@@ -1,6 +1,7 @@
 import { test, expect, type BrowserContext, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 import {
+  assertHolmesStaysSettled,
   AuditTrail,
   collectAuditWindow,
   companionMode,
@@ -741,7 +742,7 @@ for (const w of WIDTHS) {
   });
 }
 
-test("staging cure C12: remote-first-entry lands Holmes AT the dock (desktop 1280)", async ({
+test("staging PB-1: remote-first-entry berths Holmes AT THE PAUSE, not the dock (desktop 1280)", async ({
   browser,
 }) => {
   const context = await browser.newContext({
@@ -758,60 +759,59 @@ test("staging cure C12: remote-first-entry lands Holmes AT the dock (desktop 128
     await showMap(page);
     const mapBox = await page.getByTestId("loop-map").boundingBox();
     expect(mapBox).not.toBeNull();
-    // Dock top-left is map-relative (120, height-116); its centre is
-    // +(35, 52). The hover point sits >320 px from that centre, so
-    // the berth solver answers "remote" — and as the FIRST map
-    // interaction it is also Holmes's entry. Pre-cure, the remote
-    // branch cleared the entry walk and stranded him at the entry
-    // offset dock+(90,34); the cure lets the entry walk complete.
+    // REWRITTEN for PB-1: cure C12 asserted the berth engine's
+    // "remote" answer — a first hover >320 px from the dock centre
+    // landed Holmes AT the dock. The owner restatement deleted the
+    // remote rule: Holmes berths beside the pointer ANYWHERE on the
+    // page. These staging flags carry no holmesFollow (baked default
+    // false → the PAUSE_BERTH tier), where the same page-wide rule
+    // holds. The entry half of C12 survives: the bench still leaves
+    // and the entry completes into this first berth.
     const dockRel = { x: 120, y: Math.round(mapBox!.height) - 116 };
-    const dockCentre = { x: dockRel.x + 35, y: dockRel.y + 52 };
     const point = {
       x: Math.round(mapBox!.x + mapBox!.width * 0.85),
       y: Math.round(mapBox!.y + mapBox!.height * 0.25),
     };
-    const dist = Math.hypot(
-      point.x - (mapBox!.x + dockCentre.x),
-      point.y - (mapBox!.y + dockCentre.y),
+    const distFromDock = Math.hypot(
+      point.x - (mapBox!.x + dockRel.x + 35),
+      point.y - (mapBox!.y + dockRel.y + 52),
     );
-    expect(dist, "hover point must be remote (>320 px from dock centre)").toBeGreaterThan(320);
-    /* The hover-pause trigger rides the companion's rAF watch:
-     * if the shipped FPS auto-kill has latched (a loaded VM's
-     * SwiftShader frames), no pause can ever confirm and the
-     * bench simply never leaves — name that precondition like
-     * the flow test's berth does, so a kill reads as an
-     * environment result, not as an entry-ownership failure. */
+    expect(distFromDock, "hover point is far from the dock").toBeGreaterThan(320);
     expect(
       await companionMode(page),
       "companion must be full (not auto-killed) for the hover entry",
     ).toBe("full");
     await page.mouse.move(point.x, point.y, { steps: 10 });
     await page.mouse.move(point.x + 2, point.y + 1, { steps: 2 });
-    // Entry completes: bench gone, wrapper parked AT the dock —
-    // not at dock+(90,34). Poll because the pause-confirm + 700 ms
-    // entry walk take a few seconds on this VM.
+    // Entry completes: bench gone.
     await expect(page.getByTestId("detective-bench")).toHaveCount(0, {
       timeout: 30_000,
     });
-    /* Settle tolerance: the wrapper's rendered top-left can sit
-     * 1 px off its style position (sub-pixel rounding) — observed
-     * (121,379) vs the dock (120,378) on a run where Holmes WAS at
-     * the dock. The invariant is "at the dock, not stranded at
-     * dock+(90,34)": a <=2 px tolerance keeps 45x margin against
-     * the 91 px defect while ignoring rounding. */
+    // And he berths in the PAUSE's neighbourhood — not at the dock.
     await expect
       .poll(
         async () => {
+          if ((await currentPlacement(page)) !== "berth") return 9999;
           const p = await holmesWrapperPos(page);
           if (!p) return 9999;
-          return Math.hypot(
-            p.x - mapBox!.x - dockRel.x,
-            p.y - mapBox!.y - dockRel.y,
-          );
+          return Math.hypot(p.x + 35 - point.x, p.y + 52 - point.y);
         },
         { timeout: 30_000 },
       )
-      .toBeLessThanOrEqual(2);
+      .toBeLessThanOrEqual(230);
+    const landed = await holmesWrapperPos(page);
+    expect(landed).not.toBeNull();
+    // Cure A3: the arrival is not a pass-through — he STAYS settled
+    // at the pause (default 3 s window) before the not-at-dock
+    // check below.
+    await assertHolmesStaysSettled(page);
+    expect(
+      Math.hypot(
+        landed!.x - (mapBox!.x + dockRel.x),
+        landed!.y - (mapBox!.y + dockRel.y),
+      ),
+      "PB-1: the remote first entry must NOT land at the dock",
+    ).toBeGreaterThan(40);
   } finally {
     await context.close();
   }

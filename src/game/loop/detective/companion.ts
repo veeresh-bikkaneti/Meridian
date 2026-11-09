@@ -213,151 +213,6 @@ export function createPauseDetector(): PauseDetector {
 }
 
 /* ------------------------------------------------------------------ */
-/* Berth solver                                                        */
-/* ------------------------------------------------------------------ */
-
-export interface ExclusionCircle {
-  x: number;
-  y: number;
-  r: number;
-}
-
-export interface BerthInput {
-  pausePoint: { x: number; y: number };
-  /** Holmes's rendered box size (px). */
-  holmesBox: { w: number; h: number };
-  viewport: { w: number; h: number };
-  /** The dock position (Holmes box's top-left when docked), same
-   * coordinate space as pausePoint. */
-  dock: { x: number; y: number };
-  /** Screen-px circles around things already visible to the player
-   * (their own guess markers / pin element). Geometry only — the
-   * solver neither knows nor cares what they represent. */
-  exclusions: ExclusionCircle[];
-  pointerType: string;
-  /** "right" berths NW of the point, "left" mirrors to NE. The host
-   * derives it from the pause x vs the viewport midline unless it
-   * knows the player's hand another way. */
-  handSide: "left" | "right";
-}
-
-export type BerthResult =
-  | { kind: "berth"; x: number; y: number }
-  | { kind: "remote" }
-  | { kind: "hide" };
-
-export const BERTH_TOUCH_CENTRE_MIN = 96;
-export const BERTH_DESKTOP_CENTRE_MIN = 64;
-export const BERTH_EDGE_MIN = 56;
-/**
- * Render margin (px) added to the legal minimums INSIDE the solver.
- * The constants above are the council's law, and the law judges the
- * RENDERED box — but two small losses sit between the solver's model
- * and the screen: the box origin is rounded to whole px (≤0.71 px of
- * centre drift), and the host's rendered rect sits +1/+1 px from the
- * solved transform (measured by the U10 K2 audit's transform-vs-rect
- * diagnostic). Solving to the bare minimum therefore rendered as low
- * as 94.3 px centre / 55.3 px edge on the touch grid — a real breach
- * of the law the player sees. The solver now aims 3 px past the law
- * so the rendered berth honours it; the law itself is unchanged.
- */
-const RENDER_MARGIN_PX = 3;
-export const BERTH_EXCLUSION_CLEARANCE = 120;
-export const BERTH_REMOTE_DISTANCE = 320;
-/** Candidate offsets are scanned on this grid (px) — coarse enough to
- * stay deterministic and cheap, fine enough to find legal berths in
- * tight corners. */
-const SCAN_STEP = 8;
-/** How far out (centre distance, px) the scan looks for a berth. */
-const SCAN_MAX_CENTRE = 280;
-
-export function berthFor(input: BerthInput): BerthResult {
-  const { pausePoint, holmesBox, viewport, dock, exclusions } = input;
-  const touch = input.pointerType === "touch";
-  const centreMin =
-    (touch ? BERTH_TOUCH_CENTRE_MIN : BERTH_DESKTOP_CENTRE_MIN) +
-    RENDER_MARGIN_PX;
-
-  // Remote rule first: a pause far from home is not worth crossing
-  // the map for — he stays docked and thinks there.
-  const dockCentre = {
-    x: dock.x + holmesBox.w / 2,
-    y: dock.y + holmesBox.h / 2,
-  };
-  if (
-    Math.hypot(pausePoint.x - dockCentre.x, pausePoint.y - dockCentre.y) >
-    BERTH_REMOTE_DISTANCE
-  ) {
-    return { kind: "remote" };
-  }
-
-  const halfW = holmesBox.w / 2;
-  const halfH = holmesBox.h / 2;
-
-  const legal = (cx: number, cy: number): boolean => {
-    // Centre distance from the touch point.
-    if (Math.hypot(cx - pausePoint.x, cy - pausePoint.y) < centreMin) {
-      return false;
-    }
-    // Above the finger, strictly: centre above the point.
-    if (cy >= pausePoint.y) return false;
-    // Closest box edge ≥ 56 dp from the touch centroid.
-    const dxEdge = Math.max(Math.abs(pausePoint.x - cx) - halfW, 0);
-    const dyEdge = Math.max(Math.abs(pausePoint.y - cy) - halfH, 0);
-    if (Math.hypot(dxEdge, dyEdge) < BERTH_EDGE_MIN + RENDER_MARGIN_PX) return false;
-    // On screen, fully.
-    if (cx - halfW < 0 || cy - halfH < 0) return false;
-    if (cx + halfW > viewport.w || cy + halfH > viewport.h) return false;
-    // Exclusions: centre-to-centre ≥ exclusion radius + 120 dp.
-    for (const ex of exclusions) {
-      if (
-        Math.hypot(cx - ex.x, cy - ex.y) <
-        ex.r + BERTH_EXCLUSION_CLEARANCE
-      ) {
-        return false;
-      }
-    }
-    return true;
-  };
-
-  // Scan outward from the ideal berth: directly above at the minimum
-  // centre distance, biased toward the hand side (NW right / NE
-  // left). Deterministic order: increasing centre distance, then the
-  // hand-side direction first — identical inputs, identical result.
-  const sideSign = input.handSide === "right" ? -1 : 1;
-  let best: { x: number; y: number; score: number } | null = null;
-  for (
-    let dist = centreMin;
-    dist <= SCAN_MAX_CENTRE;
-    dist += SCAN_STEP
-  ) {
-    // Angles in the upper half-plane, hand side first: start at
-    // straight up, sweep toward the hand side, then the other side.
-    for (let step = 0; step <= 16; step++) {
-      const frac = step / 16; // 0 = up, 1 = horizontal
-      for (const sgn of [sideSign, -sideSign]) {
-        if (step === 0 && sgn !== sideSign) continue;
-        const ang = (frac * Math.PI) / 2; // 0..90° from vertical
-        const cx = pausePoint.x + sgn * Math.sin(ang) * dist;
-        const cy = pausePoint.y - Math.cos(ang) * dist;
-        if (!legal(cx, cy)) continue;
-        // Prefer: hand side, then mostly-above, then near the minimum
-        // distance (the scan order already ascends distance).
-        const sideBonus = Math.sign(cx - pausePoint.x) === sideSign ? 0 : 1;
-        const score = sideBonus * 1000 + frac;
-        if (!best || score < best.score) {
-          best = { x: cx - halfW, y: cy - halfH, score };
-        }
-      }
-    }
-    if (best) break; // nearest distance ring with any legal berth wins
-  }
-  if (best === null) return { kind: "hide" };
-  const found: { x: number; y: number } = best;
-  return { kind: "berth", x: Math.round(found.x), y: Math.round(found.y) };
-}
-
-/* ------------------------------------------------------------------ */
 /* Auto-kill accumulator                                               */
 /* ------------------------------------------------------------------ */
 
@@ -373,6 +228,14 @@ export interface AutoKillTracker {
   feedLongTask(durationMs: number, t: number): void;
   /** Clear the kill and every window (host: on case change). */
   reset(): void;
+  /** Mark a feeding gate transition (host: judge feeding resumes
+   * after a motion-gated stretch). The FPS math divides fed frames
+   * by the wall-clock span between the first and last fed
+   * timestamps, so a gated glide inside a window dilutes the
+   * measured rate and can trip the kill at a true 60 fps. Clearing
+   * the windows at the transition makes each window measure only
+   * one continuously-fed run. Kill state is untouched. */
+  noteGate(t: number): void;
   readonly killed: boolean;
   /** Why the kill fired (for the host's console line), once killed. */
   readonly killReason: "fps" | "longtask" | null;
@@ -465,6 +328,11 @@ export function createAutoKillTracker(): AutoKillTracker {
     reset() {
       killed = false;
       killReason = null;
+      frameEnds = [];
+      longTaskEnds = [];
+      healthyFrameEnds = [];
+    },
+    noteGate(_t: number) {
       frameEnds = [];
       longTaskEnds = [];
       healthyFrameEnds = [];

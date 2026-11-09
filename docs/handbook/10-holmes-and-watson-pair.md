@@ -1,5 +1,17 @@
 # 10 — Holmes & Watson: the detective pair (decision record)
 
+> **PB-1 SUPERSESSION (2026-11-07, PR `feat/holmes-follow`):** the
+> waypoint-berth + dock-return companion model described in this
+> chapter was REPLACED on the owner's restated word ("Holmes follows
+> the pointer across the whole page and stays with it; returning to
+> a home spot is a big bug"). The berth solver, the >320 px remote
+> rule, and every dock-return are deleted. What survives: the pause
+> detector, the FG-5 auto-kill + re-qualification (#362), the
+> stations, the bench, and the answer-blindness discipline. The new
+> model is recorded in the addendum at the END of this chapter;
+> berth-era passages below are history, not current behaviour.
+
+
 *Status as of 2026-11-06: built on `feat/detective-pair` — units
 U1–U10, plus the owner's fold-in Unit A (tap-Watson replay) and
 Unit B (game-end celebration in every edition), plus the review
@@ -706,3 +718,45 @@ checkable by playing, not by reading code.
 - [ ] **Game end, every edition:** end a State, a Country and a
   Globe run — each summary celebrates with the pair around the final
   score, and the frame total matches the card total (Unit B).
+
+
+## Addendum — PB-1: the follow model (2026-11-07)
+
+*Status: built on `feat/holmes-follow`, flag `holmesFollow` shipped
+ON in `public/flags.json` (baked default false = the kill-switch
+posture). Session 5 (2026-11-08): merged up to main @ 63d8286
+(PR #372 beneath); fast gates green on the merged tree; the
+owner's standing ship-when-ready directive is the merge word
+for a READY / READY-WITH-NITS pipeline verdict on the final tip.*
+
+- **The model in one paragraph.** Holmes follows the pointer across
+  the whole page (mouse and touch) and STAYS with it. A solver
+  (`src/game/loop/detective/follow.ts`, pure) picks a legal spot
+  beside the pointer: edge clearance 56 px desktop / 64 px touch
+  (the K2 law), centre 80–100 px out, zero intersection with the
+  forbidden rects (clue/question text, Watson's cluster, header,
+  result card, pin markers +48 px). He travels once per solve —
+  head-turn telegraph, then a single transform glide of 0.3–0.8 s —
+  and then he is PLANTED: scrolls, pinches, idle time and case
+  changes never move him, and nothing in the code owns a "home"
+  position to send him back to. During speech he holds still;
+  during bursts (sheet, rings, full-screen) he hides and re-solves
+  to the pointer's last position ~120 ms after the burst ends.
+- **Tiers.** PAGE_FOLLOW (the model above) → PAUSE_BERTH (a genuine
+  pause berths him page-wide — the old behaviour as a floor, minus
+  the remote rule) → DOCK_ONLY (the fixed perch). Verdicts from the
+  FG-5 auto-kill tracker and the degradation classifier step the
+  tier DOWN; the #362 re-qualification signals (case change, 5
+  healthy seconds) and passing case-open probes step it back UP.
+  The latch itself is untouched.
+- **Why a fixed portal.** He renders in a `position: fixed` portal
+  at the app root in viewport coordinates — the only frame in which
+  "stays during scroll" and "follows across the whole page" are the
+  same statement. Positional memory lives in a ref, so phase exits
+  and case changes cannot reset it.
+- **Specs.** `detective-follow.spec.ts` gates travel / planted /
+  scroll+pinch / speech lock / burst return / the OFF tier. The
+  berth spec, the K2/K3 companion assertions, and staging cure C12
+  were rewritten where they asserted deleted behaviour (dock
+  returns, the remote rule, the above-the-point anchor, pinch/pan
+  cancels) — each rewrite is flagged in its file header.

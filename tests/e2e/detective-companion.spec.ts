@@ -1,12 +1,14 @@
 import { test, expect, type Browser, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 import {
+  assertHolmesStaysSettled,
   companionMode,
   currentPhase,
   currentPlacement,
   entryByName,
   fulfillFlagsOn,
   guessByEntryId,
+  holmesRect,
   installDetectiveRecorder,
   openSeamCase,
   waitForSearchIdle,
@@ -21,16 +23,26 @@ import {
  * in-page rAF sampler records every frame's geometry against the
  * pause point. ZERO violations tolerated on real berths: the box must
  * never contain the point, centre distance ≥96 px (touch) / ≥64 px
- * (mouse), closest edge ≥56 px, box centre above the point. Grid
- * points where the solver lawfully answers "remote" (thinks at the
- * dock) or "hide" are counted and reported, not silently dropped:
- * remote samples are still held to contain/centre/edge (the
- * above-the-point rule governs berths, where he stands BY the point).
+ * (mouse), closest edge ≥56 px. Grid points where the solver
+ * lawfully answers "remote" (thinks at the dock) or "hide" are
+ * counted and reported, not silently dropped: remote samples are
+ * still held to contain/centre/edge.
+ *
+ * PB-1 REWRITE NOTE (2026-11-07): the old K2 "centre above the
+ * point" anchor rule and the K3 "pinch/pan cancels a berth to the
+ * dock" rules asserted the DELETED berth engine. Under the owner's
+ * follow model a pinch or pan does NOT cancel anything — Holmes
+ * stays planted (viewport-fixed in the follow tier; map-anchored in
+ * the pause-berth tier this spec's intercepted flags select) and
+ * NEVER returns to a dock on his own. The two K3 tests below assert
+ * exactly that; the follow model itself is gated by
+ * detective-follow.spec.ts.
  *
  * K3 ABSENCE — sheet open hides Holmes ≤100 ms after the sheet appears
  * (MutationObserver timestamps, both taken in-page); after a miss he
- * stays hidden through the ring window; a pinch cancels a berth; a
- * pan cancels to the dock; a tap (<250 ms) never summons him.
+ * stays hidden through the ring window; a pinch does NOT cancel a
+ * berth; a pan does NOT cancel a berth; a tap (<250 ms) never
+ * summons him.
  *
  * Case 137 (Henderson) via the seam — the core case with full audio.
  * No hard sleeps for assertions: every wait polls a condition. The
@@ -82,13 +94,22 @@ async function sampleBerth(
         // frame can fake stillness mid-walk — a moving box is in
         // transit, not berthed; K2 judges the berth, so transit
         // frames are excluded by construction here.
+        // K2 cure (PR #364): the audit window opens only once the
+        // wrapper is SETTLED in the host's own signals too — neither
+        // travelling (class detective-follow-travelling) nor
+        // telegraphing (data-follow-telegraph attr), both carried on
+        // the wrapper element — AND the rect has been stable for
+        // >= 150 ms of wall time (the 3-frame gate alone can pass
+        // inside 150 ms under jank). Travelling/telegraphing frames
+        // reset the stability clock entirely.
         let prev: { left: number; top: number } | null = null;
         let stableFrames = 0;
+        let stableSince: number | null = null;
         const frame = () => {
           const w = document.querySelector(
             '[data-testid="detective-holmes-wrapper"]',
           );
-          const host = document.querySelector('[data-testid="detective-host"]');
+          const host = document.querySelector('[data-testid="detective-follow-root"]') ?? document.querySelector('[data-testid="detective-station"]') ?? document.querySelector('[data-testid="detective-host"]'); // detective-host is Watson-only here and absent in SEARCH, so berth samples read 0 from it alone; Holmes rides the follow root, station as fallback (detective-u10.ts pattern)
           if (w && host?.getAttribute("data-holmes-placement") === "berth") {
             const pose = w
               .querySelector("[data-pose]")
@@ -96,6 +117,18 @@ async function sampleBerth(
             if (pose === "berth-think") {
               const point = pointOf();
               const r = w.getBoundingClientRect();
+              const travelling = w.classList.contains(
+                "detective-follow-travelling",
+              );
+              const telegraphing = w.hasAttribute("data-follow-telegraph");
+              if (travelling || telegraphing) {
+                prev = null;
+                stableFrames = 0;
+                stableSince = null;
+                if (performance.now() - t0 < durationMs) requestAnimationFrame(frame);
+                else resolve(out);
+                return;
+              }
               if (
                 prev !== null &&
                 Math.abs(r.left - prev.left) < 0.5 &&
@@ -104,9 +137,12 @@ async function sampleBerth(
                 stableFrames += 1;
               } else {
                 stableFrames = 0;
+                stableSince = performance.now();
               }
               prev = { left: r.left, top: r.top };
-              const settled = stableFrames >= 2;
+              const stableMs =
+                stableSince === null ? 0 : performance.now() - stableSince;
+              const settled = stableFrames >= 2 && stableMs >= 150;
               if (!settled) {
                 if (performance.now() - t0 < durationMs) requestAnimationFrame(frame);
                 else resolve(out);
@@ -150,7 +186,15 @@ async function mapBox(page: Page) {
   return box!;
 }
 
-async function dockRect(page: Page) {
+/**
+ * The wrapper's CURRENT settled rect. (This helper used to be
+ * `dockRect`: under the owner's STAYS model there is no true dock
+ * reference to capture once a dwell has berthed him — the rect
+ * read after the cured idle wait may be a berth, not the dock.
+ * K2's remote classification is therefore re-derived per grid
+ * point from THIS settled rect — see runGridMouse/runGridTouch.)
+ */
+async function settledRect(page: Page) {
   return page.evaluate(() => {
     const w = document.querySelector('[data-testid="detective-holmes-wrapper"]');
     if (!w) return null;
@@ -190,9 +234,18 @@ interface GridResult {
 
 async function runGridMouse(page: Page): Promise<GridResult> {
   const box = await mapBox(page);
-  const dock = await dockRect(page);
   const res: GridResult = { samples: [], berths: 0, remotes: 0, hides: 0, remoteSamples: [] };
   for (const [fx, fy] of GRID) {
+    // Remote re-derivation (Cure A2, option (b)): a sample set is
+    // "remote" when the solver answered THIS point's pause by not
+    // moving — i.e. every sample sits on the rect Holmes was
+    // settled at BEFORE this point's stimulus. The old grid-start
+    // dock capture cannot serve: after the cured idle wait that
+    // rect may be a dwell berth, not the dock, and under STAYS the
+    // settled spot changes point to point. (Option (a), a fresh
+    // context's pre-pause capture, was rejected: its own unlock
+    // dwell can berth it too, and its geometry need not match.)
+    const settled = await settledRect(page);
     const point = { x: box.x + box.width * fx, y: box.y + box.height * fy };
     await page.mouse.move(point.x, point.y, { steps: 8 });
     await page.mouse.move(point.x + 2, point.y + 1, { steps: 2 });
@@ -201,24 +254,25 @@ async function runGridMouse(page: Page): Promise<GridResult> {
       res.hides += 1;
     } else if (outcome === "berth") {
       const samples = await sampleBerth(page, { fx, fy }, 900);
-      const atDock = samples.filter(
-        (s) => dock && Math.abs(s.left - dock.left) < 4 && Math.abs(s.top - dock.top) < 4,
+      const atSettled = samples.filter(
+        (s) => settled && Math.abs(s.left - settled.left) < 4 && Math.abs(s.top - settled.top) < 4,
       );
-      if (samples.length > 0 && atDock.length === samples.length) {
+      if (samples.length > 0 && atSettled.length === samples.length) {
         res.remotes += 1;
         res.remoteSamples.push(...samples);
       } else if (samples.length > 0) {
         res.berths += 1;
-        res.samples.push(...samples.filter((s) => !atDock.includes(s)));
+        res.samples.push(...samples.filter((s) => !atSettled.includes(s)));
       } else {
         res.remotes += 1;
       }
-      // Cancel back to the dock: a real move away from the pause point.
-      await page.mouse.move(point.x + 150, point.y + 90, { steps: 6 });
-      await expect
-        .poll(() => currentPlacement(page), { timeout: 10_000 })
-        .toBe("dock");
-      await waitForSearchIdle(page, 30_000);
+      // PB-1 STAYS: there is NO cancel back to the dock — a move
+      // or drag away does not un-berth him (the deleted-model step
+      // that polled for "dock" here is gone). The next grid point's
+      // own move + jitter is the fresh stimulus, and pauseOutcome
+      // judges its outcome: in this spec's flag-OFF (PAUSE_BERTH)
+      // tier a fresh berth requires a genuine new pause at the new
+      // point.
     } else {
       res.remotes += 1;
     }
@@ -226,12 +280,182 @@ async function runGridMouse(page: Page): Promise<GridResult> {
   return res;
 }
 
+/** The wrapper's current transform string (viewport translate3d),
+ * or null when Holmes is not mounted. Recorded before each touch
+ * stimulus for the fresh-confirm rule below. */
+async function wrapperTransform(page: Page): Promise<string | null> {
+  return page.evaluate(() => {
+    const w = document.querySelector(
+      '[data-testid="detective-holmes-wrapper"]',
+    ) as HTMLElement | null;
+    if (!w) return null;
+    return getComputedStyle(w).transform;
+  });
+}
+
+/**
+ * K2 touch grid — fresh-pause gate (PR #364 cure).
+ *
+ * Why: under STAYS a berth is STICKY. After point 1 berths, the
+ * phase sits in SEARCH_AREA, which exits ONLY via gestureStarted —
+ * and gestureStarted needs a real on-map move > 12 px
+ * (GESTURE_CANCEL_PX) from the pause point; attemptConfirm also
+ * requires SEARCH_IDLE. The grid's <= 1 px finger jitter can never
+ * fire any of that, so without this gate points 2-6 would inherit
+ * point 1's berth and be "confirmed" instantly against new anchors.
+ *
+ * The lawful reset is a real touch drag on the map (> 12 px — a
+ * ~map-width sweep, so some move event lands > 12 px from ANY pause
+ * point on the map) via the spec's CDP touch pattern, after which
+ * the phase must poll back to SEARCH_IDLE (bounded; a phase that
+ * never returns is a harness error, not a remote).
+ */
+async function ensureTouchSearchIdle(
+  page: Page,
+  cdp: Awaited<
+    ReturnType<import("playwright/test").BrowserContext["newCDPSession"]>
+  >,
+  box: { x: number; y: number; width: number; height: number },
+): Promise<void> {
+  // Cure round 5 (diagnosis E): the previous point's lift-in-place
+  // is a tap on the map \u2014 the place-confirm sheet may be open
+  // with the host unmounted under it by design (phase reads null).
+  // Dismiss it first; the phase logic below then judges the
+  // returned SEARCH state exactly as before.
+  const notThisOne = page.getByRole("button", { name: "Not this one" });
+  const sheetOpened = await notThisOne
+    .waitFor({ state: "visible", timeout: 1_500 })
+    .then(() => true)
+    .catch(() => false);
+  if (sheetOpened) await notThisOne.click();
+  const phase0 = await currentPhase(page);
+  if (phase0 === "SEARCH_IDLE") return;
+  if (phase0 !== "SEARCH_AREA") {
+    // Some other phase (e.g. a read still draining): give it a
+    // bounded chance to settle to SEARCH_IDLE on its own first.
+    try {
+      await expect
+        .poll(() => currentPhase(page), { timeout: 10_000 })
+        .toBe("SEARCH_IDLE");
+      return;
+    } catch (pollErr) {
+      // Round 8 (diagnosis #2 Q1): a poll that died on a destroyed
+      // execution context is a dead page (renderer loss), not a
+      // phase verdict \u2014 name it as the environment failure it is
+      // instead of manufacturing a phase diagnosis from it.
+      const msg = pollErr instanceof Error ? pollErr.message : String(pollErr);
+      if (/Execution context was destroyed|Target closed/i.test(msg)) {
+        throw new Error(
+          `[K2 touch grid] fresh-pause gate: page lost during the settle poll (environment): ${msg}`,
+        );
+      }
+      /* fall through to the clear error below if it is SEARCH_AREA */
+      const phaseNow = await currentPhase(page).catch(() => null);
+      if (phaseNow !== "SEARCH_AREA") {
+        throw new Error(
+          `[K2 touch grid] fresh-pause gate: phase is ${phaseNow}, not SEARCH_IDLE/SEARCH_AREA — cannot start a stimulus lawfully`,
+        );
+      }
+    }
+  }
+  const y = box.y + box.height * 0.5;
+  const x0 = box.x + 24;
+  const x1 = box.x + box.width - 24;
+  await cdp.send("Input.dispatchTouchEvent", {
+    type: "touchStart",
+    touchPoints: [{ x: x0, y, id: 1 }],
+  });
+  const steps = 6;
+  for (let i = 1; i <= steps; i++) {
+    await cdp.send("Input.dispatchTouchEvent", {
+      type: "touchMove",
+      touchPoints: [{ x: x0 + ((x1 - x0) * i) / steps, y, id: 1 }],
+    });
+    await page.waitForTimeout(60);
+  }
+  await cdp.send("Input.dispatchTouchEvent", {
+    type: "touchEnd",
+    touchPoints: [],
+  });
+  try {
+    await expect
+      .poll(() => currentPhase(page), { timeout: 15_000 })
+      .toBe("SEARCH_IDLE");
+  } catch (pollErr) {
+    // Round 8 (diagnosis #2 Q1): as above \u2014 a destroyed context
+    // in the poll is a dead page, not a phase that never returned.
+    const msg = pollErr instanceof Error ? pollErr.message : String(pollErr);
+    if (/Execution context was destroyed|Target closed/i.test(msg)) {
+      throw new Error(
+        `[K2 touch grid] fresh-pause gate: page lost during the post-drag poll (environment): ${msg}`,
+      );
+    }
+    const lastPhase = await currentPhase(page).catch(() => null);
+    throw new Error(
+      `[K2 touch grid] fresh-pause gate: phase never returned to SEARCH_IDLE after the lawful >12 px drag reset (last phase=${lastPhase})`,
+    );
+  }
+}
+
+/**
+ * K2 touch grid — fresh-confirm poll (PR #364 cure). A "berth"
+ * counts ONLY on a transition into berth/SEARCH_AREA AFTER the
+ * stimulus: the gate above guarantees the phase was SEARCH_IDLE
+ * (and the wrapper transform was recorded) before the stimulus, so
+ * SEARCH_AREA appearing now is by construction THIS point's pause
+ * confirming — never the inherited STAYS berth, whose samples must
+ * not be asserted against this point's anchor. No fresh confirm
+ * within the window => remote/none (counted + logged by the
+ * caller). "hidden" is reported as before.
+ */
+async function freshBerthOutcome(
+  page: Page,
+  beforeTransform: string | null,
+  timeout = 12_000,
+): Promise<{ outcome: string; transformChanged: boolean }> {
+  const start = Date.now();
+  let transformChanged = false;
+  for (;;) {
+    const placement = await currentPlacement(page);
+    if (placement === "hidden") return { outcome: "hidden", transformChanged };
+    const t = await wrapperTransform(page);
+    if (t !== null && beforeTransform !== null && t !== beforeTransform) {
+      transformChanged = true;
+    }
+    const phase = await currentPhase(page);
+    if (phase === "SEARCH_AREA") {
+      return { outcome: "berth", transformChanged };
+    }
+    // Placement "berth" without the SEARCH_AREA transition counts
+    // only if the wrapper actually moved after the stimulus.
+    if (placement === "berth" && transformChanged) {
+      return { outcome: "berth", transformChanged };
+    }
+    if (Date.now() - start > timeout) {
+      return { outcome: placement ?? "none", transformChanged };
+    }
+    await page.waitForTimeout(120);
+  }
+}
+
 async function runGridTouch(page: Page): Promise<GridResult> {
   const box = await mapBox(page);
-  const dock = await dockRect(page);
   const cdp = await page.context().newCDPSession(page);
   const res: GridResult = { samples: [], berths: 0, remotes: 0, hides: 0, remoteSamples: [] };
   for (const [fx, fy] of GRID) {
+    // Fresh-pause gate FIRST (see ensureTouchSearchIdle): the
+    // stimulus for this point starts only from SEARCH_IDLE.
+    await ensureTouchSearchIdle(page, cdp, box);
+    // Per-point settled reference for the remote classification —
+    // same Cure A2 re-derivation as runGridMouse (option (b)),
+    // captured AFTER the gate so it names the inherited STAYS
+    // berth this point must not be judged by. Null handling: see
+    // the berth branch below (never let a null empty the filter).
+    let settled = await settledRect(page);
+    // Fresh-confirm baseline: phase (SEARCH_IDLE, per the gate) +
+    // wrapper transform recorded before the stimulus.
+    const phaseBefore = await currentPhase(page);
+    const transformBefore = await wrapperTransform(page);
     const dispatchPoint = { x: box.x + box.width * fx, y: box.y + box.height * fy };
     // Capture the pointer coordinate the PAGE reports for this touch:
     // Chromium's touch pipeline reports the contact centroid, which
@@ -278,61 +502,85 @@ async function runGridTouch(page: Page): Promise<GridResult> {
       });
       await page.waitForTimeout(110);
     }
-    const outcome = await pauseOutcome(page);
-    console.log(
-      `[K2 touch grid] point (${fx},${fy}) → ${outcome}, phase=${await currentPhase(page)}`,
+    // Fresh-confirm ONLY (see freshBerthOutcome): a placement that
+    // already read "berth" from the inherited STAYS berth is NOT an
+    // outcome for this point.
+    const { outcome, transformChanged } = await freshBerthOutcome(
+      page,
+      transformBefore,
     );
-    if (outcome === "hidden") {
-      res.hides += 1;
-    } else if (outcome === "berth") {
-      const reported = await page.evaluate(
-        () =>
-          (window as unknown as { __anchor: { x: number; y: number } | null })
-            .__anchor,
-      );
-      const anchor = reported ?? point;
-      console.log(
-        `[K2 touch grid] point (${fx},${fy}) dispatch=${JSON.stringify(point)} reported anchor=${JSON.stringify(anchor)}`,
-      );
-      const samples = await sampleBerth(page, { abs: anchor }, 900);
-      if (samples.length > 0) {
-        // Diagnostic: distance from the berth centre to the ORIGINAL
-        // client point (captured at dispatch, no reprojection).
-        const s0 = samples[0]!;
-        const cx = s0.left + 35;
-        const cy = s0.top + 52;
-        const distToClientPoint = Math.hypot(cx - point.x, cy - point.y);
+    console.log(
+      `[K2 touch grid] point (${fx},${fy}) → ${outcome} (phaseBefore=${phaseBefore} phase=${await currentPhase(page)} transformChanged=${transformChanged})`,
+    );
+    try {
+      if (outcome === "hidden") {
+        res.hides += 1;
+      } else if (outcome === "berth") {
+        // Null-settled hole (PR #364 cure): if the pre-stimulus
+        // settled capture was null, re-capture now the outcome has
+        // resolved; if it is STILL null the point's classification
+        // is "unknown" and the point fails as a harness error —
+        // a null must never silently empty the remote filter and
+        // dump the inherited berth's samples into the asserted
+        // bucket.
+        if (!settled) {
+          settled = await settledRect(page);
+          console.log(
+            `[K2 touch grid] point (${fx},${fy}) settledRect was null pre-stimulus; re-captured=${JSON.stringify(settled)}`,
+          );
+        }
+        if (!settled) {
+          throw new Error(
+            `[K2 touch grid] harness error: settledRect still null for point (${fx},${fy}) after the berth resolved — classification unknown, refusing to assert unfiltered samples`,
+          );
+        }
+        const reported = await page.evaluate(
+          () =>
+            (window as unknown as { __anchor: { x: number; y: number } | null })
+              .__anchor,
+        );
+        const anchor = reported ?? point;
         console.log(
-          `[K2 touch grid] point (${fx},${fy}) worst centre=${Math.min(...samples.map((s) => s.centreDist)).toFixed(2)} worst edge=${Math.min(...samples.map((s) => s.edgeDist)).toFixed(2)} distToClientPoint=${distToClientPoint.toFixed(2)} transformVsRect=${await page.evaluate(() => { const w = document.querySelector('[data-testid="detective-holmes-wrapper"]') as HTMLElement | null; const m = document.querySelector('[data-testid="loop-map"]'); if (!w || !m) return null; const r = w.getBoundingClientRect(); const mr = m.getBoundingClientRect(); const t = new DOMMatrixReadOnly(getComputedStyle(w).transform); return `intended=(${t.e.toFixed(2)},${t.f.toFixed(2)}) renderedMapRel=(${(r.left - mr.left).toFixed(2)},${(r.top - mr.top).toFixed(2)})`; })}`,
+          `[K2 touch grid] point (${fx},${fy}) dispatch=${JSON.stringify(point)} reported anchor=${JSON.stringify(anchor)}`,
+        );
+        const samples = await sampleBerth(page, { abs: anchor }, 900);
+        if (samples.length > 0) {
+          // Diagnostic: distance from the berth centre to the ORIGINAL
+          // client point (captured at dispatch, no reprojection).
+          const s0 = samples[0]!;
+          const cx = s0.left + 35;
+          const cy = s0.top + 52;
+          const distToClientPoint = Math.hypot(cx - point.x, cy - point.y);
+          console.log(
+            `[K2 touch grid] point (${fx},${fy}) worst centre=${Math.min(...samples.map((s) => s.centreDist)).toFixed(2)} worst edge=${Math.min(...samples.map((s) => s.edgeDist)).toFixed(2)} distToClientPoint=${distToClientPoint.toFixed(2)} transformVsRectViewport=${await page.evaluate(() => { const w = document.querySelector('[data-testid="detective-holmes-wrapper"]') as HTMLElement | null; if (!w) return null; const r = w.getBoundingClientRect(); const t = new DOMMatrixReadOnly(getComputedStyle(w).transform); return `transformViewport=(${t.e.toFixed(2)},${t.f.toFixed(2)}) rectViewport=(${r.left.toFixed(2)},${r.top.toFixed(2)})`; })}`,
+          );
+        }
+        const atSettled = samples.filter(
+          (s) => Math.abs(s.left - settled.left) < 4 && Math.abs(s.top - settled.top) < 4,
+        );
+        if (samples.length > 0 && atSettled.length === samples.length) {
+          res.remotes += 1;
+          res.remoteSamples.push(...samples);
+        } else if (samples.length > 0) {
+          res.berths += 1;
+          res.samples.push(...samples.filter((s) => !atSettled.includes(s)));
+        } else {
+          res.remotes += 1;
+        }
+      } else {
+        // No fresh confirm: remote/none — counted + logged, and the
+        // inherited position's samples are never asserted.
+        res.remotes += 1;
+        console.log(
+          `[K2 touch grid] point (${fx},${fy}) classified remote/none (no fresh berth transition after stimulus)`,
         );
       }
-      const atDock = samples.filter(
-        (s) => dock && Math.abs(s.left - dock.left) < 4 && Math.abs(s.top - dock.top) < 4,
-      );
-      if (samples.length > 0 && atDock.length === samples.length) {
-        res.remotes += 1;
-        res.remoteSamples.push(...samples);
-      } else if (samples.length > 0) {
-        res.berths += 1;
-        res.samples.push(...samples.filter((s) => !atDock.includes(s)));
-      } else {
-        res.remotes += 1;
-      }
-      // Cancel: drag away, then lift.
-      await cdp.send("Input.dispatchTouchEvent", {
-        type: "touchMove",
-        touchPoints: [{ x: point.x + 120, y: point.y + 70, id: 1 }],
-      });
-      await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
-      await expect
-        .poll(() => currentPlacement(page), { timeout: 10_000 })
-        .toBe("dock");
-      await waitForSearchIdle(page, 30_000);
-    } else {
-      res.remotes += 1;
-      await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
-    }
-    if (outcome === "hidden") {
+    } finally {
+      // The finger is LIFTED at the end of every point (touch
+      // lifecycle for the next grid point's touchStart / gate drag,
+      // not a cancel stimulus: a lift in place starts no gesture).
+      // The next point's fresh-pause gate performs any lawful
+      // SEARCH_AREA -> SEARCH_IDLE reset before its stimulus.
       await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
     }
   }
@@ -352,13 +600,13 @@ function assertClearance(
     worstEdge = Math.min(worstEdge, s.edgeDist);
   }
   console.log(
-    `[${label}] worst centre=${worstCentre.toFixed(2)} worst edge=${worstEdge.toFixed(2)} above-violations=${samples.filter((s) => !s.centreAbove).length} contains=${samples.filter((s) => s.contains).length}`,
+    `[${label}] worst centre=${worstCentre.toFixed(2)} worst edge=${worstEdge.toFixed(2)} contains=${samples.filter((s) => s.contains).length}`,
   );
   for (const s of samples) {
     expect(s.contains, `${label}: box contains the pause point`).toBe(false);
     expect(s.centreDist, `${label}: centre distance`).toBeGreaterThanOrEqual(centreMin);
     expect(s.edgeDist, `${label}: edge clearance`).toBeGreaterThanOrEqual(56);
-    expect(s.centreAbove, `${label}: centre above the point`).toBe(true);
+    // PB-1: no above-the-point assertion — the anchor rule is deleted.
   }
   return { worstCentre, worstEdge };
 }
@@ -614,13 +862,14 @@ async function berthAtDockNearPoint(page: Page): Promise<{ x: number; y: number 
   return point;
 }
 
-test("K3 absence — pinch cancels a berth", async ({ page, context }) => {
+test("K3 planted — a pinch does NOT cancel a berth (PB-1)", async ({ page, context }) => {
   await fulfillFlagsOn(context);
   await openSeamCase(page, 137);
   await waitForSearchIdle(page);
   const point = await berthAtDockNearPoint(page);
   const cdp = await context.newCDPSession(page);
-  // Pinch: two fingers down cancels the berth.
+  // Pinch: two fingers down. Under the follow model this is a burst
+  // gesture, not a cancel: Holmes stays berthed where he stands.
   await cdp.send("Input.dispatchTouchEvent", {
     type: "touchStart",
     touchPoints: [{ x: point.x, y: point.y, id: 1 }],
@@ -632,23 +881,22 @@ test("K3 absence — pinch cancels a berth", async ({ page, context }) => {
       { x: point.x + 80, y: point.y + 40, id: 2 },
     ],
   });
-  await expect
-    .poll(() => currentPlacement(page), { timeout: 10_000 })
-    .toBe("dock");
+  await page.waitForTimeout(1_500);
+  expect(
+    await currentPlacement(page),
+    "PB-1: a pinch must not cancel the berth back to a dock",
+  ).toBe("berth");
+  // Cure A3: the instant assertion becomes a stays-settled window
+  // (1.5 s, matching the wait above) — placement constant and
+  // centre planted while the pinch still holds.
+  await assertHolmesStaysSettled(page, 1_500);
   await cdp.send("Input.dispatchTouchEvent", { type: "touchEnd", touchPoints: [] });
-  // Disclosed observation (not a K3 failure): on this VM's SwiftShader
-  // renderer the pinch zoom's frame collapse reliably trips the U6
-  // auto-kill (rolling FPS < 45 in SEARCH phases), latching the
-  // companion dock-only for the session. The pinch CANCEL — K3's
-  // actual requirement — landed on the dock above, before and
-  // regardless of the kill. The pan half therefore runs in its own
-  // test with a fresh session (the kill is session-scoped by design).
   console.log(
-    `[K3 pinch] berth cancelled to dock; companion mode after pinch = ${await companionMode(page)}; watchdogSeeks=${await watchdogSeeks(page)}`,
+    `[K3 pinch PB-1] berth held through pinch; companion mode = ${await companionMode(page)}; watchdogSeeks=${await watchdogSeeks(page)}`,
   );
 });
 
-test("K3 absence — pan cancels a berth to the dock", async ({ page, context }) => {
+test("K3 planted — a pan does NOT cancel a berth (PB-1)", async ({ page, context }) => {
   await fulfillFlagsOn(context);
   await openSeamCase(page, 137);
   await waitForSearchIdle(page);
@@ -657,29 +905,103 @@ test("K3 absence — pan cancels a berth to the dock", async ({ page, context })
   await page.mouse.down();
   await page.mouse.move(point.x + 140, point.y + 80, { steps: 8 });
   await page.mouse.up();
-  await expect
-    .poll(() => currentPlacement(page), { timeout: 10_000 })
-    .toBe("dock");
+  await page.waitForTimeout(1_500);
+  expect(
+    await currentPlacement(page),
+    "PB-1: a pan must not cancel the berth back to a dock — he stays",
+  ).toBe("berth");
+  // Cure A3: stays-settled window (1.5 s, matching the wait above).
+  await assertHolmesStaysSettled(page, 1_500);
   console.log(
-    `[K3 pan] berth cancelled to dock; watchdogSeeks=${await watchdogSeeks(page)}`,
+    `[K3 pan PB-1] berth held through pan; watchdogSeeks=${await watchdogSeeks(page)}`,
   );
 });
 
+/**
+ * K3 tap — premise, stated honestly (cure round 4, v3): the
+ * settled state after the idle wait VARIES. Round 3's E2E proved
+ * Holmes can be at the STATION then (placement "station", no
+ * follow wrapper in the DOM), as well as "dock" or "berth" — so
+ * v2's premise "he is mounted on the map after the idle wait, the
+ * settled rect must exist" failed AT THE PREMISE ("Holmes must
+ * stay mounted: Received: null"). This rewrite is placement-based
+ * (the original main-era pin): record whatever state he settled
+ * in, with no rect requirement, and pin the boundary that matters
+ * from EVERY settled state — a tap (<250 ms) is not a
+ * summons/pause: the press must not change his placement, must
+ * not move him, and must not create a berth. Whatever state he
+ * settled in, the tap changes nothing. (Positive control:
+ * berthAtDockNearPoint in this file, used by the pinch/pan tests
+ * above, proves a genuine pause at a point DOES berth.)
+ */
 test("K3 — a tap (<250 ms) never summons Holmes", async ({ page, context }) => {
   await fulfillFlagsOn(context);
   await openSeamCase(page, 137);
   await waitForSearchIdle(page);
+  // Settled state, recorded — not assumed, and with NO rect
+  // requirement: the placement may be "station", "dock" or
+  // "berth". If a wrapper rect does exist, record its centre too.
+  const settledPlacement = await currentPlacement(page);
+  const settledWrapper = await holmesRect(page);
+  const settledCentre = settledWrapper
+    ? {
+        x: settledWrapper.x + settledWrapper.w / 2,
+        y: settledWrapper.y + settledWrapper.h / 2,
+      }
+    : null;
+  // Position reference for choosing the tap point: his settled
+  // centre if mounted; otherwise the station/dock reference —
+  // the rect centre of the same placement-carrying element
+  // currentPlacement() reads (detective-station, falling back to
+  // detective-host).
+  const stationReference = await page.evaluate(() => {
+    const el =
+      document.querySelector('[data-testid="detective-station"]') ??
+      document.querySelector('[data-testid="detective-host"]');
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  });
   const box = await mapBox(page);
-  // Record every placement the host reports during the tap window.
+  const reference =
+    settledCentre ??
+    stationReference ?? { x: box.x + box.width / 2, y: box.y + box.height / 2 };
+  // Tap at whichever candidate point is FARTHER from his current
+  // position reference — a tap that "summoned" him would have
+  // the longest, most visible travel to make, and neither
+  // candidate can be confused with wherever he is already sitting.
+  const candidates = [
+    { x: box.x + box.width * 0.38, y: box.y + box.height * 0.68 },
+    { x: box.x + box.width * 0.72, y: box.y + box.height * 0.3 },
+  ];
+  const point = candidates.reduce((farther, c) =>
+    Math.hypot(c.x - reference.x, c.y - reference.y) >
+    Math.hypot(farther.x - reference.x, farther.y - reference.y)
+      ? c
+      : farther,
+  );
+  // Record TRANSITIONS, not state (round 1's fix, kept). The old
+  // sampler observed childList over the whole document and pushed
+  // the CURRENT placement on any DOM mutation, so a latch state
+  // set at any earlier time was logged as an in-window event.
+  // This observer is seeded with the placement at arm time and
+  // pushes only when data-holmes-placement actually changes.
   await page.evaluate(() => {
     const w = window as unknown as { __tapPlacements: string[] };
     w.__tapPlacements = [];
-    const obs = new MutationObserver(() => {
+    const read = () => {
       const el =
         document.querySelector('[data-testid="detective-host"]') ??
         document.querySelector('[data-testid="detective-station"]');
-      const p = el?.getAttribute("data-holmes-placement");
-      if (p) w.__tapPlacements.push(p);
+      return el?.getAttribute("data-holmes-placement") ?? null;
+    };
+    let last = read();
+    const obs = new MutationObserver(() => {
+      const p = read();
+      if (p !== last) {
+        last = p;
+        if (p) w.__tapPlacements.push(p);
+      }
     });
     obs.observe(document.documentElement, {
       childList: true,
@@ -688,24 +1010,71 @@ test("K3 — a tap (<250 ms) never summons Holmes", async ({ page, context }) =>
       attributeFilter: ["data-holmes-placement"],
     });
   });
-  const point = { x: box.x + box.width * 0.38, y: box.y + box.height * 0.68 };
   await page.mouse.move(point.x, point.y);
   await page.mouse.down();
   await page.mouse.up(); // a tap: well under 250 ms, no travel
-  // Sample the recorded placements over the following ~1.2 s (the
-  // measurement window — a berth would need only ~460 ms to fire).
+  // Remove the rest channel (round 1's fix, kept). Leaving the
+  // mouse RESTING on the tap point for the whole sample window
+  // would make the sustained dwell (460 ms pause-confirm + ≥350 ms
+  // stillness), not the press, what berths him — the press itself
+  // is invisible to the pause detector. Move far away immediately,
+  // so the pointer does not dwell at the tap point during the
+  // window. (The positive control stands elsewhere in this file:
+  // berthAtDockNearPoint, used by the pinch/pan tests above,
+  // proves a genuine pause at a point DOES berth.)
+  await page.mouse.move(0, 0);
+  // Sample the recorded transitions over the following ~1.2 s
+  // (the measurement window — a berth would need only ~460 ms
+  // to fire).
   await page.waitForTimeout(1200);
   const placements = await page.evaluate(
     () => (window as unknown as { __tapPlacements: string[] }).__tapPlacements,
   );
-  console.log(`[K3 tap] placements seen during tap window: ${JSON.stringify(placements)}`);
-  expect(placements).not.toContain("berth");
+  console.log(
+    `[K3 tap] settled=${settledPlacement} mounted=${settledCentre !== null} reference=(${Math.round(reference.x)},${Math.round(reference.y)}), tap at (${Math.round(point.x)},${Math.round(point.y)}), placement transitions during tap window: ${JSON.stringify(placements)}`,
+  );
+  // (a) The pin, valid from every settled state: the tap changed
+  // nothing — no placement transition at all occurs in the window.
+  expect(
+    placements,
+    "K3 tap: a tap must not cause any placement transition",
+  ).toHaveLength(0);
+  // (b) If he was mounted, he did not travel: his centre at the
+  // window's end is within 8 px of the settled centre. (A wrapper
+  // that vanished mid-window would already have failed (a) as a
+  // placement transition, so a missing end rect needs no separate
+  // assertion here.)
+  if (settledCentre) {
+    const endRect = await holmesRect(page);
+    if (endRect) {
+      const endCentre = {
+        x: endRect.x + endRect.w / 2,
+        y: endRect.y + endRect.h / 2,
+      };
+      expect(
+        Math.hypot(endCentre.x - settledCentre.x, endCentre.y - settledCentre.y),
+        "K3 tap: Holmes must not move toward the tap point",
+      ).toBeLessThanOrEqual(8);
+    }
+  }
   const now = await currentPlacement(page);
-  expect(now === "dock" || now === null).toBe(true);
+  // (c) v2's preserved original assertion, generalised to every
+  // non-berth settled state: if he did not settle berthed,
+  // "berth" never appears in the window.
+  if (settledPlacement !== "berth") {
+    expect(placements).not.toContain("berth");
+    expect(now, "K3 tap: a tap must not berth Holmes").not.toBe("berth");
+  }
+  // Final overall placement sanity (the original main-era pin,
+  // generalised): he ends in the placement he settled in, or the
+  // host is gone at teardown (null).
+  expect(
+    now === settledPlacement || now === null,
+    `K3 tap: final placement ${JSON.stringify(now)} must equal the settled placement ${JSON.stringify(settledPlacement)} or be null at teardown`,
+  ).toBe(true);
   // Dismiss the confirm sheet the tap opened, if it opened.
   const dialog = page.getByRole("dialog");
   if (await dialog.isVisible().catch(() => false)) {
     await page.keyboard.press("Escape");
   }
-  void currentPhase;
 });

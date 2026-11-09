@@ -87,10 +87,12 @@ async function startClosedSampler(page: Page): Promise<void> {
     const w = window as unknown as { __closedSamples: ClosedSample[] };
     w.__closedSamples = [];
     const count = (sel: string) => document.querySelectorAll(sel).length;
-    const iv = setInterval(() => {
+    let lastPhase: string | null = null;
+    const pushSample = () => {
       const root =
         document.querySelector('[data-testid="detective-host"]') ??
         document.querySelector('[data-testid="detective-station"]');
+      lastPhase = root?.getAttribute("data-phase") ?? null;
       w.__closedSamples.push({
         closed: (document.body?.innerText ?? "").includes("Case closed"),
         phase: root?.getAttribute("data-phase") ?? null,
@@ -105,8 +107,28 @@ async function startClosedSampler(page: Page): Promise<void> {
         watson: count('[data-detective="watson"]'),
       });
       if (w.__closedSamples.length > 6000) w.__closedSamples.shift();
-    }, 50);
+    };
+    const iv = setInterval(pushSample, 50);
     void iv;
+    // Round 7: a 50 ms interval still misses a short phase window
+    // whole when a long task blocks the main thread past it
+    // (SELECTION_READ was lost that way: phases seen jumped
+    // straight to FAIL_READ/POUT). Attribute changes queue
+    // MutationObserver records even while blocked, so every phase
+    // transition is captured on delivery, in order.
+    const mo = new MutationObserver(() => {
+      const root =
+        document.querySelector('[data-testid="detective-host"]') ??
+        document.querySelector('[data-testid="detective-station"]');
+      const ph = root?.getAttribute("data-phase") ?? null;
+      if (ph !== lastPhase) pushSample();
+    });
+    mo.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["data-phase"],
+      subtree: true,
+      childList: true,
+    });
   });
 }
 

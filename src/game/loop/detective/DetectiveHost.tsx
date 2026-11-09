@@ -82,12 +82,26 @@ import {
 } from "@/game/audio/sfx";
 import type { DetectiveHostProps } from "./detective-host-props";
 import {
-  berthFor,
   createAutoKillTracker,
   createPauseDetector,
   type AutoKillTracker,
   type PauseDetector,
 } from "./companion";
+import {
+  baseTierFor,
+  createFollowTierMachine,
+  dockPerch,
+  followTravelMs,
+  solveFollow,
+  FOLLOW_CAMERA_IDLE_MS,
+  FOLLOW_SOLVE_DISPLACEMENT_PX,
+  FOLLOW_SOLVE_DWELL_MS,
+  FOLLOW_SOLVE_MIN_INTERVAL_MS,
+  FOLLOW_TELEGRAPH_MS,
+  type FollowTier,
+  type FollowTierMachine,
+  type ForbiddenRect,
+} from "./follow";
 import {
   ANNOUNCEMENT_FIXED_ID,
   CASE_OPEN_WALK_MS,
@@ -150,7 +164,7 @@ const EASE_IN = "cubic-bezier(0.55, 0.06, 0.68, 0.19)";
 /** A move further than this from the pause point cancels a berth. */
 const GESTURE_CANCEL_PX = 12;
 
-type CompanionMode = "full" | "dock" | "killed";
+type CompanionMode = "full" | "dock" | "killed" | "berth";
 
 /** Phases where the Listen button may show in tap speech mode (U9):
  * the clue phases (Watson reading / the thinking beat) and the
@@ -744,11 +758,28 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
 
   /* Cure C2: entry intent recorded during "bench" fires the moment
    * the stage reaches "standing" — the duet is never cut short, and
-   * the interaction handlers themselves are untouched. */
+   * the interaction handlers themselves are untouched.
+   *
+   * Cure D2 (PR #364 cure round 2): with holmesFollow ON, Holmes
+   * enters automatically at "standing" — no map touch required.
+   * The owner's PB-1 role model is explicit: bench + intro are
+   * first-entry only, and once play starts the pair holds roles
+   * (Watson at the clues, Holmes on the map following the pointer
+   * across the whole page), so a follow-ON Holmes waiting at the
+   * bench for a map interaction never takes his post. This uses
+   * the same enterMap path as C2 intent (his first placement is
+   * the entry dock; the follow machinery owns him from there).
+   * With the flag OFF nothing changes: entry stays intent-only
+   * (cure D). followFlagOn is the boot-time flag const declared
+   * with the follow section below; it is read only inside the
+   * effect body, which runs after render, so the declaration is
+   * initialised by then — it cannot sit in this deps array. */
   useEffect(() => {
-    if (stagingStage !== "standing" || !entryIntentRef.current) return;
+    if (stagingStage !== "standing") return;
+    if (!entryIntentRef.current && !followFlagOn) return;
     entryIntentRef.current = false;
     enterMapRef.current();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stagingStage]);
 
   /* Cure C3: a case that ends with Holmes never entered (no map
@@ -915,62 +946,123 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     else window.scrollBy(0, dy);
   }, [phase, cluesRevealed, caseIndex]);
 
-  /* -- waypoint companion (U6) -----------------------------------------
-   * Performance shape (council Q2 §10): ONE passive listener set on
-   * the map container; samples land in refs; the pause check is a
-   * timeout chain (a still pointer emits no events to react to), never
-   * a rAF loop and never React state per pointermove. The map rect is
-   * cached by the measure effect (resize / phase change only) — no
-   * per-frame getBoundingClientRect. Holmes moves by translate3d on
-   * his portal wrapper, transition-driven: zero per-frame writes.
-   * All decisions live in companion.ts (pure); this section is only
-   * the environment wiring around it. */
+  /* -- proximity follow (Pair Behaviour PR 1) -------------------------
+   * The waypoint berth engine is REMOVED — no dock home, no
+   * exitToDock, no >320 px remote rule, no dual paths. Holmes lives
+   * in a position:fixed portal overlay at the app root (rendered
+   * below), positioned in VIEWPORT coordinates, and he follows the
+   * pointer across the WHOLE PAGE: window-level Pointer Events write
+   * only to refs (zero React state per move); solves run on >= 32 px
+   * displacement or >= 150 ms dwell, at most one per 100 ms; the
+   * pure solver (follow.ts) rings the pointer with 8 scored berths
+   * against the cached ForbiddenRect[] and he STAYS where he lands —
+   * holmesXYRef is positional memory that persists across cases,
+   * phase exits, and bursts. Nothing in this section ever moves him
+   * "home": phase exits and gesture resumes do not touch his
+   * position at all.
+   *
+   * Suspension (he plants and waits, then solves again at the
+   * pointer's LAST position): scroll/pinch (the pinch centroid is
+   * never a target), any speech (position locked while a line
+   * plays), and bursts — sheet open / rings / camera moves / pin
+   * commits, all of which surface as a hidden view or a non-SEARCH
+   * phase, plus a ~120 ms camera-idle tail after map gestures.
+   *
+   * Tiers (one solver): PAGE_FOLLOW solves on displacement/dwell;
+   * PAUSE_BERTH solves only on a confirmed thinking pause (the
+   * detector below) — page-wide, and it still stays; that is also
+   * the holmesFollow-flag-OFF behaviour. DOCK_ONLY pins him to the
+   * viewport perch (the degradation matrix's dock-only devices, and
+   * the perf bottom tier). The follow latch is its OWN: the shared
+   * auto-kill tracker feeds it, a kill steps the tier DOWN, and
+   * re-qualification (a sustained healthy window, or the case-open
+   * probe at case change — the #362 pattern) steps it back UP.
+   * ZERO follow audio, by design. */
+  const followFlagOn = isEnabled("holmesFollow");
   const detectorRef = useRef<PauseDetector | null>(null);
   if (!detectorRef.current) detectorRef.current = createPauseDetector();
   const killRef = useRef<AutoKillTracker | null>(null);
   if (!killRef.current) killRef.current = createAutoKillTracker();
-  const [companionMode, setCompanionMode] = useState<CompanionMode>("full");
-  const companionModeRef = useRef(companionMode);
-  companionModeRef.current = companionMode;
-  /** Auto-kill state (U6, ownership cured 2026-11-07 — defect 2):
-   * the kill used to latch for the host's whole lifetime, so one
-   * transient SEARCH-phase dip docked Holmes for every later case
-   * (the host persists across cases). The latch now has two exits,
-   * both below: the tracker re-qualifies on a sustained healthy
-   * window (the feed effect), and this ref is cleared on every case
-   * change. While the ref IS set, a degradation change must still
-   * never resurrect the companion on its own. */
-  const companionKilledRef = useRef(false);
-  /* Degradation → companion (U9): dock-only means berth resolutions
-   * are ignored and Holmes stays at the dock in SEARCH phases (the
-   * berth path below already gates on companionModeRef). A resource
-   * signal clearing returns him to full — unless the auto-kill
-   * latched. */
-  useEffect(() => {
-    if (companionKilledRef.current) return;
-    setCompanionMode(
-      degradation.companionMode === "dock-only" ? "dock" : "full",
+  const tierMachineRef = useRef<FollowTierMachine | null>(null);
+  if (!tierMachineRef.current) {
+    tierMachineRef.current = createFollowTierMachine(
+      baseTierFor({ followFlagOn, dockOnlyDevice: false }),
     );
-  }, [degradation.companionMode]);
-  /* Berth cure (defect 2, exit a): a kill never crosses a case
-   * boundary. On case change the tracker is reset and the mode is
-   * re-derived from the degradation matrix — a resource-docked
-   * device stays docked (that path is by design, owner's
-   * weak-device rulings), a healthy device starts the new case
-   * with a live companion. */
+  }
+  const [followTier, setFollowTier] = useState<FollowTier>(
+    () => tierMachineRef.current!.tier,
+  );
+  const followTierRef = useRef(followTier);
+  followTierRef.current = followTier;
+  /** data-companion compat: the U10 spec surface keeps its three
+   * historical values mapped from the tier machine (a stepped-down
+   * tier after a kill reads "killed" only while DOCK_ONLY-by-kill;
+   * by-design dock-only reads "dock"). */
+  const companionKilledRef = useRef(false);
+  /* Cure B (PR #364 cure round): with holmesFollow OFF, data-companion
+   * must keep main's three historical values — the tier remap below
+   * reads "berth" for the flag-OFF base tier (PAUSE_BERTH from first
+   * render), a value that never existed on main, breaking every
+   * flag-OFF spec (kill-switch integrity). The legacy mirror state
+   * re-derives main's state machine ("full" | "dock" | "killed") and
+   * is engaged ONLY when the flag is off; it is updated at the three
+   * transition points that map 1:1 onto main's three effects (base /
+   * degradation, case change, auto-kill judge). The tier machine and
+   * data-follow-tier are untouched. */
+  const [legacyCompanionMode, setLegacyCompanionMode] = useState<
+    "full" | "dock" | "killed"
+  >("full");
+  const legacyModeForDegradation = (): "full" | "dock" =>
+    degradationRef.current.companionMode === "dock-only" ? "dock" : "full";
+  const companionMode: CompanionMode = followFlagOn
+    ? followTier === "PAGE_FOLLOW"
+      ? "full"
+      : followTier === "PAUSE_BERTH"
+        ? "berth"
+        : companionKilledRef.current
+          ? "killed"
+          : "dock"
+    : legacyCompanionMode;
+  /* Base tier follows the flag + the degradation matrix. */
+  useEffect(() => {
+    // Cure B, point 1: the mirror updates HERE so label + tier stay in
+    // sync if the flags resolve late (suppressed while the kill latch
+    // is set, exactly like main's degradation effect).
+    if (!followFlagOn && !companionKilledRef.current) {
+      setLegacyCompanionMode(legacyModeForDegradation());
+    }
+    const m = tierMachineRef.current!;
+    setFollowTier(
+      m.setBase(
+        baseTierFor({
+          followFlagOn,
+          dockOnlyDevice: degradation.companionMode === "dock-only",
+        }),
+      ),
+    );
+  }, [degradation.companionMode, followFlagOn]);
+  /* Case-open re-qualification probe (#362 pattern): a kill never
+   * crosses a case boundary — the tracker resets and the tier steps
+   * back up to base, so one bad case can never dock Holmes for a
+   * whole run. His POSITION is untouched: positional memory. */
   const seenKillCaseRef = useRef(caseIndex);
   useEffect(() => {
     if (seenKillCaseRef.current === caseIndex) return;
     seenKillCaseRef.current = caseIndex;
     companionKilledRef.current = false;
+    // Cure B, point 2: the latch reset above re-derives the mirror
+    // (main's case-change effect) — flag-OFF only.
+    if (!followFlagOn) setLegacyCompanionMode(legacyModeForDegradation());
     killRef.current?.reset();
-    setCompanionMode(
-      degradationRef.current.companionMode === "dock-only"
-        ? "dock"
-        : "full",
-    );
+    const m = tierMachineRef.current!;
+    let t = m.tier;
+    while (t !== m.baseTier) t = m.requalify();
+    setFollowTier(t);
   }, [caseIndex]);
-  /** Holmes's wrapper position, map-relative px (top-left). */
+  /** Holmes's overlay position, VIEWPORT px (top-left). This state
+   * is the positional memory: it is written by the entry walk, by
+   * follow solves, and by the DOCK_ONLY perch — and by nothing else.
+   * In particular no effect resets it on case or phase change. */
   const [holmesXY, setHolmesXY] = useState({ x: HOLMES_DOCK_X, y: 0 });
   const holmesXYRef = useRef(holmesXY);
   holmesXYRef.current = holmesXY;
@@ -980,55 +1072,133 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   });
   const [walking, setWalking] = useState(false);
   const [berthed, setBerthed] = useState(false);
-  const [berthHidden, setBerthHidden] = useState(false);
   const berthedRef = useRef(false);
+  /** Head-turn telegraph: his facing flips toward the target ~120 ms
+   * before the walk starts (data-follow-telegraph on the wrapper). */
+  const [followFacing, setFollowFacing] = useState<"left" | "right">("right");
+  const [followTelegraph, setFollowTelegraph] = useState(false);
   const walkTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const telegraphTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  /* C-precision (PR #364 cure): eviction-only machinery. evictionTimerRef
+   * is the ONE deferred legality re-check (unmount-cleaned alongside
+   * walkTimerRef/telegraphTimerRef); evictionArmRef keys that arm to
+   * the judged holmesXY and marks whether its firing may ACT as the
+   * confirming second measure; followTravelEndRef stamps the moment
+   * the current glide lands (telegraph + travel), stamped in
+   * applyFollowTarget where both values are computed. */
+  const evictionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const evictionArmRef = useRef<{
+    x: number;
+    y: number;
+    confirm: boolean;
+  } | null>(null);
+  const followTravelEndRef = useRef(0);
+  const followPlacedRef = useRef(false);
 
+  /** The old dock spot, in viewport coordinates — now used ONLY as
+   * his first placement (entry) and never as a return target. */
   const dockXY = () => {
     const r = mapRectRef.current;
+    return r
+      ? {
+          x: r.left + HOLMES_DOCK_X,
+          y: r.top + r.height - DOCK_INSET - HOLMES_BOX.h,
+        }
+      : {
+          x: HOLMES_DOCK_X,
+          y: window.innerHeight - DOCK_INSET - HOLMES_BOX.h,
+        };
+  };
+
+  /* Cure C (PR #364 cure round) — placement legality helpers.
+   * PR #364 moved Holmes to a position:fixed app-root portal with no
+   * clipping ancestor, and no placement writer except solveFollow
+   * ever checked the forbidden rects — so a stale or unchecked
+   * landing paints him over clue text (the zero-overlap law is
+   * PRODUCT LAW). These helpers measure the forbidden set FRESH
+   * (the same DOM sources rebuildForbidden caches, written back to
+   * the cache) and test Holmes's box against it. Geometry/refs only:
+   * Holmes stays answer-blind. */
+  const measureForbiddenRects = (): ForbiddenRect[] => {
+    const out: ForbiddenRect[] = [];
+    const push = (el: Element | null, pad = 0) => {
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 && r.height === 0) return;
+      out.push({
+        x: r.left - pad,
+        y: r.top - pad,
+        w: r.width + pad * 2,
+        h: r.height + pad * 2,
+      });
+    };
+    document
+      .querySelectorAll('article[aria-label^="Clue "]')
+      .forEach((el) => push(el));
+    push(document.querySelector('[data-testid="detective-station"]'));
+    push(document.querySelector('[data-testid="detective-dock"]'));
+    push(document.querySelector("header"));
+    push(document.querySelector('[data-testid="loop-result-card"]'));
+    push(document.querySelector('[data-testid="loop-reveal"]'));
+    mapElRef.current
+      ?.querySelectorAll(".maplibregl-marker")
+      .forEach((el) => push(el, 48));
+    return out;
+  };
+  const holmesBoxHitsForbidden = (
+    target: { x: number; y: number },
+    rects: ForbiddenRect[],
+  ): boolean =>
+    rects.some(
+      (r) =>
+        target.x < r.x + r.w &&
+        target.x + HOLMES_BOX.w > r.x &&
+        target.y < r.y + r.h &&
+        target.y + HOLMES_BOX.h > r.y,
+    );
+  /** Gate for every non-solver placement writer: rebuild the
+   * forbidden rects fresh (never the cache), then test the box. */
+  const freshPlacementLegal = (target: { x: number; y: number }): boolean => {
+    const rects = measureForbiddenRects();
+    forbiddenRef.current = rects;
+    return !holmesBoxHitsForbidden(target, rects);
+  };
+  /** Cure C, point 3 (defence-in-depth): the entry dock measured
+   * from the LIVE map element at call time, not the mapRectRef
+   * cache — the cache is taken at scroll 0 with the map below the
+   * fold, which placed Holmes below the viewport in the C-1 traces. */
+  const liveDockXY = () => {
+    const node = document.querySelector('[data-testid="loop-map"]');
+    if (!node) return dockXY();
+    const r = node.getBoundingClientRect();
     return {
-      x: HOLMES_DOCK_X,
-      y: r ? r.height - DOCK_INSET - HOLMES_BOX.h : 0,
+      x: r.left + HOLMES_DOCK_X,
+      y: r.top + r.height - DOCK_INSET - HOLMES_BOX.h,
     };
   };
 
-  /** Send Holmes back to the dock (gesture cancel / phase exit). */
-  const exitToDock = (instant: boolean) => {
-    if (walkTimerRef.current) clearTimeout(walkTimerRef.current);
-    walkTimerRef.current = null;
-    setWalking(false);
-    berthedRef.current = false;
-    setBerthed(false);
-    setBerthHidden(false);
-    setHolmesTransition({
-      durationMs: instant ? 0 : EXIT_MS,
-      easing: EASE_IN,
-    });
-    setHolmesXY(dockXY());
-  };
-  const exitToDockRef = useRef(exitToDock);
-  exitToDockRef.current = exitToDock;
-
-  /* Staging entry walk (PR A unit 4): the FIRST map interaction
-   * walks Holmes from the bench slot onto the map. The bench
-   * figure leaves in the same beat (the slot collapses empty —
-   * see the bench render for the zero-overlap reason) while his
-   * map wrapper starts offset from the dock — down and to the
-   * side, as if stepping up from the bench below the map — and
-   * walks to the dock with the walk pose over 700 ms. Not a teleport: the
-   * wrapper's transform transition is the walk, and the staging E2E
-   * samples it mid-flight. Reduced motion (walkMode "cut") places
-   * him at the dock instantly. A berth confirmed during the entry
-   * supersedes the dock target (entryPendingRef) — he simply walks
-   * on to the berth instead. */
-  const enterMap = () => {
+  /* Staging entry walk (PR A unit 4), retargeted to viewport
+   * coordinates: the FIRST map interaction walks Holmes from below
+   * the map to his first placement. After that the follow engine
+   * owns his position; a berth confirmed during the entry supersedes
+   * the entry target (entryPendingRef) — he simply walks on. */
+  /* Cure D (PR #364 cure round): main bound the pointer listeners to
+   * the MAP ELEMENT ONLY, so entry intent could only ever come from
+   * the map. The follow wiring is window-level now (page-wide follow
+   * stays), and an unconditional enterMap on every pointerdown armed
+   * entryIntentRef for clicks ANYWHERE — e.g. the staging tests'
+   * unlockSpeech clicks on the "GeoDetective" heading — so the C2
+   * effect fired the instant the duet ended and the "standing" stage
+   * was never observable. Callers now pass onMap: entry intent is
+   * recorded ONLY for map-originated interactions. The default stays
+   * true so the unconditional callers keep main's entry semantics:
+   * onPauseConfirmed (a genuine page-wide pause still enters +
+   * berths him — PB-1) and the internal C2/C3 effects. */
+  const enterMap = (onMap = true) => {
     if (!stagingOn) return;
-    /* Cure C2: during "bench" the interaction only records intent —
-     * the stage must not jump bench -> entering mid-duet. The
-     * standing effect above fires the entry when the duet ends. */
     if (stagingStageRef.current === "bench") {
-      entryIntentRef.current = true;
+      if (onMap) entryIntentRef.current = true;
       return;
     }
     if (
@@ -1037,7 +1207,14 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     )
       return;
     setStagingStage("entering");
-    const dock = dockXY();
+    if (berthedRef.current) return; // already following: no entry walk
+    const dock = liveDockXY();
+    followPlacedRef.current = true;
+    // Cure C, point 1: if the entry dock intersects a fresh forbidden
+    // rect, do not land there — the stage still enters (the slot
+    // collapses), and the eviction check / follow solves place him
+    // legally instead of painting him over clue text.
+    if (!freshPlacementLegal(dock)) return;
     if (degradationRef.current.walkMode === "cut") {
       setHolmesTransition({ durationMs: 0, easing: EASE_OUT });
       setHolmesXY(dock);
@@ -1052,6 +1229,10 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       entryPendingRef.current = false;
       setHolmesTransition({ durationMs: 700, easing: EASE_OUT });
       setHolmesXY(dock);
+      // C-precision: stamp the entry walk's landing so the eviction
+      // settled gate can wait it out (a ref write only — no landing
+      // behaviour changes).
+      followTravelEndRef.current = performance.now() + 700;
       setWalking(true);
       if (walkTimerRef.current) clearTimeout(walkTimerRef.current);
       walkTimerRef.current = setTimeout(() => {
@@ -1063,9 +1244,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   const enterMapRef = useRef(enterMap);
   enterMapRef.current = enterMap;
 
-  /* Cure C9: unmount cleanup for the entry machinery — cancel the
-   * entry rAF and the walk timer so neither can fire into an
-   * unmounted host (the dwell/ring timers already die above). */
+  /* Unmount cleanup for the entry + follow machinery. */
   useEffect(() => {
     return () => {
       if (entryRafRef.current !== null) {
@@ -1076,7 +1255,15 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         clearTimeout(walkTimerRef.current);
         walkTimerRef.current = null;
       }
-      /* PR B: Watson's walk timer + rAF die on unmount too. */
+      if (telegraphTimerRef.current) {
+        clearTimeout(telegraphTimerRef.current);
+        telegraphTimerRef.current = null;
+      }
+      if (evictionTimerRef.current) {
+        clearTimeout(evictionTimerRef.current);
+        evictionTimerRef.current = null;
+      }
+      evictionArmRef.current = null;
       if (watsonWalkTimerRef.current) {
         clearTimeout(watsonWalkTimerRef.current);
         watsonWalkTimerRef.current = null;
@@ -1088,69 +1275,464 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     };
   }, []);
 
-  /* Auto-kill: rAF deltas + long-task observer feed the pure tracker.
-   * The feed runs only in the SEARCH phases: the kill criterion guards
-   * the companion's own operation (council Q2 §10; K4 measures it
-   * during pan+companion), and page-load jank — tile loads, the 11 MB
-   * name index — is not companion performance. Measured on the U6
-   * smoke rig: load runs 3–34 FPS for ~7 s, then a clean 60 FPS;
-   * feeding load frames would kill a companion that would have run
-   * perfectly. The rAF loop does nothing per frame but push one
-   * timestamp into the tracker.
-   *
-   * Berth cure (2026-11-07, defect 2, exit b): the feed now ALSO runs
-   * while the mode is "killed" — feeding is what lets the tracker
-   * judge re-qualification (a sustained healthy window, companion.ts).
-   * On recovery the latch ref clears and the mode is re-derived from
-   * the degradation matrix, exactly as at case change: a kill is a
-   * dock-until-proven-healthy verdict, never a life sentence. (The
-   * "dock" mode is NOT fed and never passes through here: that is
-   * the degradation matrix's by-design dock-only path, owner's
-   * weak-device rulings, and it presents as data-companion="dock",
-   * never "killed".) */
+  /* -- follow engine state (refs only — the hot path never renders) - */
+  const followRef = useRef({
+    lastPointer: null as { x: number; y: number; pointerType: string } | null,
+    lastSolved: null as { x: number; y: number } | null,
+    lastSolveT: 0,
+    pointersDown: 0,
+    lastMapActivityT: 0,
+    scrollingUntil: 0,
+    cameraBusyUntil: 0,
+    dwellTimer: null as ReturnType<typeof setTimeout> | null,
+    scrollTimer: null as ReturnType<typeof setTimeout> | null,
+  });
+  /** ForbiddenRect[] cache: rebuilt on resize / scroll-end / clue,
+   * phase and case changes (the effect + wiring below) — never
+   * measured in the pointer hot path. Sources are DOM geometry of
+   * things already visible to the player: every clue article, the
+   * station + dock clusters (Watson), the page header, the result
+   * card, and the map's DOM markers (the pin; rings are GL layers
+   * whose ground is the pin marker's own rect, padded below). */
+  const forbiddenRef = useRef<ForbiddenRect[]>([]);
+  const rebuildForbidden = () => {
+    forbiddenRef.current = measureForbiddenRects();
+  };
+  const rebuildForbiddenRef = useRef(rebuildForbidden);
+  rebuildForbiddenRef.current = rebuildForbidden;
+  /* Cure C: the current-position eviction check (defined below,
+   * after solveFollowAt) is reached through this ref from the
+   * rebuild triggers that sit above its definition. */
+  const checkHolmesLegalityRef = useRef<() => void>(() => {});
   useEffect(() => {
-    if (companionMode !== "full" && companionMode !== "killed") return;
+    rebuildForbiddenRef.current();
+    // Cure C, point 2: after every forbidden rebuild, test Holmes's
+    // CURRENT box against the fresh rects — host-caused layout
+    // motion (reading scroll, bench-slot collapse, clue reveal) can
+    // move clue text under a Holmes who never moved himself.
+    checkHolmesLegalityRef.current();
+  }, [phase, cluesRevealed, caseIndex, status]);
+
+  const followSuspended = (): boolean => {
+    const v = viewRef.current;
+    if (v.hidden) return true;
+    if (v.phase !== "SEARCH_IDLE" && v.phase !== "SEARCH_AREA") return true;
+    if (speakingWhoRef.current) return true; // locked during speech
+    const s = followRef.current;
+    const now = performance.now();
+    if (s.pointersDown >= 2) return true; // pinch: centroid never a target
+    if (now < s.scrollingUntil) return true; // planted during scroll
+    if (now < s.cameraBusyUntil) return true; // camera moving / settling
+    return false;
+  };
+  const followSuspendedRef = useRef(followSuspended);
+  followSuspendedRef.current = followSuspended;
+
+  /** Travel to a solved berth: head-turn telegraph ~120 ms first,
+   * then ONE translate3d transition (0.3–0.8 s, distance-capped).
+   * Travelling is low-intensity (walk pose, no gestures); on arrival
+   * the machine's own pose takes over at full idle life. */
+  const applyFollowTarget = (target: { x: number; y: number }) => {
+    const cur = holmesXYRef.current;
+    const dist = Math.hypot(target.x - cur.x, target.y - cur.y);
+    berthedRef.current = true;
+    setBerthed(true);
+    if (dist < 4) return;
+    entryPendingRef.current = false; // a berth supersedes the entry walk
+    // C-precision: stamp the landing moment (telegraph delay + travel
+    // duration, both computed here) so eviction never judges mid-glide,
+    // even if the walking/telegraph state flickers off early.
+    followTravelEndRef.current =
+      performance.now() +
+      FOLLOW_TELEGRAPH_MS +
+      (degradationRef.current.walkMode === "cut" ? 0 : followTravelMs(dist));
+    setFollowFacing(target.x >= cur.x ? "right" : "left");
+    setFollowTelegraph(true);
+    if (telegraphTimerRef.current) clearTimeout(telegraphTimerRef.current);
+    telegraphTimerRef.current = setTimeout(() => {
+      telegraphTimerRef.current = null;
+      setFollowTelegraph(false);
+      if (followSuspendedRef.current()) {
+        followTravelEndRef.current = 0; // no travel launched: no landing
+        return; // conditions changed: stay
+      }
+      const durationMs =
+        degradationRef.current.walkMode === "cut"
+          ? 0
+          : followTravelMs(dist);
+      setHolmesTransition({ durationMs, easing: EASE_OUT });
+      setHolmesXY(target);
+      // C-precision: refine the landing stamp to the launched glide.
+      followTravelEndRef.current = performance.now() + durationMs;
+      if (durationMs > 0) {
+        setWalking(true);
+        if (walkTimerRef.current) clearTimeout(walkTimerRef.current);
+        walkTimerRef.current = setTimeout(() => {
+          walkTimerRef.current = null;
+          setWalking(false);
+        }, durationMs);
+      }
+    }, FOLLOW_TELEGRAPH_MS);
+  };
+  const applyFollowTargetRef = useRef(applyFollowTarget);
+  applyFollowTargetRef.current = applyFollowTarget;
+
+  /** One solve at a pointer position. A null solve (nothing legal)
+   * leaves Holmes exactly where he is — staying is always legal. */
+  const solveFollowAt = (point: { x: number; y: number }, pointerType: string) => {
+    if (followTierRef.current === "DOCK_ONLY") return;
+    if (followSuspendedRef.current()) return;
+    const berth = solveFollow({
+      pointer: point,
+      holmesBox: HOLMES_BOX,
+      viewport: { w: window.innerWidth, h: window.innerHeight },
+      forbidden: forbiddenRef.current,
+      pointerType,
+      currentCentre: {
+        x: holmesXYRef.current.x + HOLMES_BOX.w / 2,
+        y: holmesXYRef.current.y + HOLMES_BOX.h / 2,
+      },
+    });
+    followRef.current.lastSolved = { x: point.x, y: point.y };
+    followRef.current.lastSolveT = performance.now();
+    if (!berth) return;
+    applyFollowTargetRef.current({ x: berth.x, y: berth.y });
+  };
+  const solveFollowAtRef = useRef(solveFollowAt);
+  solveFollowAtRef.current = solveFollowAt;
+
+  /* Cure C, point 2 — current-position eviction. holmesHidden is the
+   * burst-hide state: while his current box is illegal AND a
+   * suspension holds (speech above all — he must not travel
+   * mid-speech; the follow spec's speech-lock gate pins that), he is
+   * hidden with the existing .detective-host-holmes-hidden pattern
+   * (80 ms) rather than painted over clue text, and re-solved when
+   * the suspension lifts. When no suspension holds he re-solves at
+   * the last pointer immediately, through the same pure solver. */
+  const [holmesHidden, setHolmesHidden] = useState(false);
+  const holmesHiddenRef = useRef(false);
+  const setHolmesHiddenBoth = (hidden: boolean) => {
+    holmesHiddenRef.current = hidden;
+    setHolmesHidden(hidden);
+  };
+  /** The first legal DOCK_ONLY perch: dockPerch's bottom-left first
+   * (kept whenever legal — behaviour at 1280 unchanged), then the
+   * other viewport corners in reading order. */
+  const legalPerch = (
+    rects: ForbiddenRect[],
+  ): { x: number; y: number } | null => {
+    const viewport = { w: window.innerWidth, h: window.innerHeight };
+    const def = dockPerch(HOLMES_BOX, viewport);
+    const spots = [
+      def,
+      { x: viewport.w - DOCK_INSET - HOLMES_BOX.w, y: def.y },
+      { x: def.x, y: DOCK_INSET },
+      { x: viewport.w - DOCK_INSET - HOLMES_BOX.w, y: DOCK_INSET },
+    ];
+    for (const spot of spots) {
+      if (!holmesBoxHitsForbidden(spot, rects)) return spot;
+    }
+    return null;
+  };
+  const legalPerchRef = useRef(legalPerch);
+  legalPerchRef.current = legalPerch;
+
+  /* C-precision (PR #364 cure): the deferred eviction re-check. Arms
+   * ONE timer (superseding any previous arm) keyed to the judged
+   * position; on firing it rebuilds the forbidden rects FRESH and
+   * re-enters the legality check, which re-judges the CURRENT
+   * position by construction. */
+  const scheduleEvictionCheck = (
+    delayMs: number,
+    confirm: boolean,
+    cur: { x: number; y: number },
+  ) => {
+    if (evictionTimerRef.current) clearTimeout(evictionTimerRef.current);
+    evictionArmRef.current = { x: cur.x, y: cur.y, confirm };
+    evictionTimerRef.current = setTimeout(() => {
+      evictionTimerRef.current = null;
+      rebuildForbiddenRef.current();
+      checkHolmesLegalityRef.current();
+    }, Math.max(0, delayMs));
+  };
+  const clearEvictionCheck = () => {
+    if (evictionTimerRef.current) {
+      clearTimeout(evictionTimerRef.current);
+      evictionTimerRef.current = null;
+    }
+    evictionArmRef.current = null;
+  };
+
+  const checkHolmesLegality = () => {
+    const cur = holmesXYRef.current;
+    /* C-precision settled gate: a mid-motion position is NEVER
+     * judged. While any motion signal is active — walking, the
+     * follow telegraph (state or its timer), an entry walk pending,
+     * a stamped travel landing still ahead, page scroll, or a busy
+     * camera — arm the one deferred re-check for the latest motion
+     * horizon + ~30 ms and return. Geometry measured mid-scroll /
+     * mid-glide is transient; the settled re-check judges the settled
+     * box against settled rects. Bounded exposure: a genuinely
+     * illegal settled overlap whose trigger coincides with motion
+     * waits one defer/confirm cycle (~250-300 ms) before eviction;
+     * the writer gates are untouched, so no NEW illegal landing can
+     * be created in that window. */
+    const now = performance.now();
+    const fs = followRef.current;
+    const motionUntil = Math.max(
+      followTravelEndRef.current,
+      fs.scrollingUntil,
+      fs.cameraBusyUntil,
+    );
+    const moving =
+      walking ||
+      followTelegraph ||
+      walkTimerRef.current !== null ||
+      telegraphTimerRef.current !== null ||
+      entryPendingRef.current ||
+      now < motionUntil;
+    if (moving) {
+      scheduleEvictionCheck(
+        motionUntil > now ? motionUntil - now + 30 : 250,
+        false,
+        cur,
+      );
+      return;
+    }
+    const rects = forbiddenRef.current;
+    if (!holmesBoxHitsForbidden(cur, rects)) {
+      clearEvictionCheck();
+      if (holmesHiddenRef.current) setHolmesHiddenBoth(false);
+      return;
+    }
+    /* C-precision two-measure confirm: a settled illegal verdict
+     * inside the ~250 ms window after the last motion horizon is a
+     * first measure only — geometry may still be settling from the
+     * scroll/glide that just ended. Defer ONCE to the end of that
+     * window; the deferred re-check (arm.confirm, same position)
+     * is the confirming second measure. Legal at confirm un-hides
+     * via the branch above and never moves him; a position change
+     * drops the arm (the holmesXY effect below), so a new position
+     * always earns its own first measure. */
+    const arm = evictionArmRef.current;
+    const confirmed =
+      arm !== null && arm.confirm && arm.x === cur.x && arm.y === cur.y;
+    if (!confirmed && motionUntil > 0 && now < motionUntil + 250) {
+      scheduleEvictionCheck(motionUntil + 250 - now + 30, true, cur);
+      return;
+    }
+    clearEvictionCheck();
+    if (followTierRef.current === "DOCK_ONLY") {
+      // The tier never berths: move the pin itself to a legal corner,
+      // or hide him when no corner is legal.
+      const perch = legalPerch(rects);
+      if (!perch) {
+        setHolmesHiddenBoth(true);
+        return;
+      }
+      setHolmesHiddenBoth(false);
+      berthedRef.current = false;
+      setBerthed(false);
+      setHolmesTransition({ durationMs: 0, easing: EASE_OUT });
+      setHolmesXY(perch);
+      return;
+    }
+    if (followSuspendedRef.current()) {
+      setHolmesHiddenBoth(true);
+      return;
+    }
+    const pt = followRef.current.lastPointer;
+    if (!pt) {
+      setHolmesHiddenBoth(true);
+      return;
+    }
+    const berth = solveFollow({
+      pointer: pt,
+      holmesBox: HOLMES_BOX,
+      viewport: { w: window.innerWidth, h: window.innerHeight },
+      forbidden: rects,
+      pointerType: pt.pointerType,
+      currentCentre: {
+        x: cur.x + HOLMES_BOX.w / 2,
+        y: cur.y + HOLMES_BOX.h / 2,
+      },
+    });
+    followRef.current.lastSolved = { x: pt.x, y: pt.y };
+    followRef.current.lastSolveT = performance.now();
+    if (!berth) {
+      // Nothing legal at the pointer either: staying painted over
+      // text is the one outcome the law forbids — hide instead.
+      setHolmesHiddenBoth(true);
+      return;
+    }
+    setHolmesHiddenBoth(false);
+    applyFollowTargetRef.current({ x: berth.x, y: berth.y });
+  };
+  checkHolmesLegalityRef.current = checkHolmesLegality;
+
+  /* Suspension lift (speech end): the speech lock is the suspension
+   * that must never leave him painted over text, so the moment a
+   * line finishes the legality check runs again on fresh rects — a
+   * hidden Holmes re-solves now, a legal one simply un-hides. */
+  useEffect(() => {
+    if (speakingWho) return;
+    rebuildForbiddenRef.current();
+    checkHolmesLegalityRef.current();
+  }, [speakingWho]);
+
+  /* A legal landing un-hides him: any placement writer (entry,
+   * perch, follow solve) that lands his box on legal ground clears
+   * the burst-hide. Illegal landings are gated upstream, so this
+   * only ever fires on a legal spot or not at all. */
+  useEffect(() => {
+    // C-precision: a new landing supersedes any eviction arm keyed
+    // to the previous position — cancel it before it can confirm a
+    // verdict against a position he no longer occupies.
+    const arm = evictionArmRef.current;
+    if (arm && (arm.x !== holmesXY.x || arm.y !== holmesXY.y)) {
+      clearEvictionCheck();
+    }
+    if (!holmesHiddenRef.current) return;
+    if (!holmesBoxHitsForbidden(holmesXY, measureForbiddenRects())) {
+      setHolmesHiddenBoth(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [holmesXY]);
+
+  /* Round 7 (diagnosis Q2): recovery from a step-down that
+   * interrupted a berth. The DOCK_ONLY pin below teleports XY to
+   * the perch, but the berth claim (his own flag or the machine's
+   * placement) survives, and the pause that earned the berth is
+   * consumed \u2014 nothing ever re-solves, so he would sit at the
+   * perch under a "berth" label forever. When the tier steps back
+   * UP out of DOCK_ONLY and he is still exactly at the perch under
+   * a live berth claim, re-solve once at the last pointer so the
+   * berth is re-earned. By-design dock-only devices never leave
+   * DOCK_ONLY, so this never fires for them. */
+  const prevTierRef = useRef(followTier);
+  useEffect(() => {
+    const prev = prevTierRef.current;
+    prevTierRef.current = followTier;
+    if (prev !== "DOCK_ONLY" || followTier === "DOCK_ONLY") return;
+    const claimed =
+      berthedRef.current || viewRef.current.holmes.placement === "berth";
+    if (!claimed) return;
+    const perch = legalPerchRef.current(forbiddenRef.current);
+    const cur = holmesXYRef.current;
+    if (!perch || cur.x !== perch.x || cur.y !== perch.y) return;
+    const p = followRef.current.lastPointer;
+    if (p) solveFollowAtRef.current(p, p.pointerType);
+  }, [followTier]);
+
+  /** DOCK_ONLY: pin him to the viewport perch when the tier lands
+   * there (by-design dock-only device, or the perf bottom tier after
+   * two kill verdicts). This is a pin, not a return: the tier never
+   * berths, so there is nothing to return FROM. */
+  useEffect(() => {
+    if (followTier !== "DOCK_ONLY") return;
+    // Cure C, points 1+2 (the C-2 traces): the perch pin used to land
+    // at bottom-left with NO forbidden check — after the reading
+    // scroll, bottom-left IS the clue column at 390/768 (identical
+    // 727.39 px2 over clue text in both). Rebuild fresh and scan the
+    // corners for the first legal perch; if none is legal, keep the
+    // previous position (hiding him if that spot is illegal too).
+    rebuildForbiddenRef.current();
+    const perch = legalPerchRef.current(forbiddenRef.current);
+    if (!perch) {
+      if (
+        holmesBoxHitsForbidden(holmesXYRef.current, forbiddenRef.current)
+      ) {
+        setHolmesHiddenBoth(true);
+      }
+      return;
+    }
+    setHolmesHiddenBoth(false);
+    berthedRef.current = false;
+    setBerthed(false);
+    setHolmesTransition({ durationMs: 0, easing: EASE_OUT });
+    setHolmesXY(perch);
+  }, [followTier]);
+
+  /* Auto-kill feed: rAF deltas + long-task observer feed the pure
+   * tracker, SEARCH phases only (the criterion guards the follow's
+   * own compositing cost; page-load jank is not follow performance).
+   * The verdict steps the FOLLOW tier down one notch — never a
+   * dock-return: PAUSE_BERTH keeps him page-wide and staying. The
+   * tracker keeps being fed while stepped down, which is how
+   * re-qualification is judged: a sustained healthy window steps the
+   * tier back up (exit b of the #362 cure, applied to the tier
+   * machine). */
+  useEffect(() => {
     if (phase !== "SEARCH_IDLE" && phase !== "SEARCH_AREA") return;
+    if (followTierRef.current === "DOCK_ONLY" && !companionKilledRef.current) {
+      return; // by-design dock-only: nothing to judge
+    }
     let raf = 0;
     let last = performance.now();
     let stopped = false;
-    const onKill = () => {
-      if (stopped) return;
-      stopped = true;
-      companionKilledRef.current = true;
-      cancelAnimationFrame(raf);
-      // eslint-disable-next-line no-console
-      console.info(
-        `[detective] waypoint companion auto-killed (${killRef.current?.killReason ?? "unknown"}) — Holmes stays docked until the companion re-qualifies`,
-      );
-      setCompanionMode("killed");
-      exitToDockRef.current(true);
-    };
-    const onRecover = () => {
-      if (stopped) return;
-      stopped = true;
-      companionKilledRef.current = false;
-      cancelAnimationFrame(raf);
-      // eslint-disable-next-line no-console
-      console.info(
-        "[detective] waypoint companion re-qualified — Holmes berths again",
-      );
-      setCompanionMode(
-        degradationRef.current.companionMode === "dock-only"
-          ? "dock"
-          : "full",
-      );
-    };
     const judge = () => {
+      const m = tierMachineRef.current!;
       if (killRef.current?.killed) {
-        if (!companionKilledRef.current) onKill();
+        if (!companionKilledRef.current) {
+          companionKilledRef.current = true;
+          // Cure B, point 3 (kill): mirror reads "killed" — flag-OFF only.
+          if (!followFlagOn) setLegacyCompanionMode("killed");
+          const next = m.stepDown();
+          // eslint-disable-next-line no-console
+          console.info(
+            `[detective] follow auto-kill (${killRef.current?.killReason ?? "unknown"}) — tier steps down to ${next}`,
+          );
+          setFollowTier(next);
+        }
       } else if (companionKilledRef.current) {
-        onRecover();
+        companionKilledRef.current = false;
+        // Cure B, point 3 (recovery): re-derive dock/full — flag-OFF only.
+        if (!followFlagOn) setLegacyCompanionMode(legacyModeForDegradation());
+        const next = m.requalify();
+        // eslint-disable-next-line no-console
+        console.info(
+          `[detective] follow re-qualified — tier steps up to ${next}`,
+        );
+        setFollowTier(next);
       }
     };
+    /* Cure rounds 5-6 (diagnosis D + F): the judge is not fed
+     * during motion the follow itself causes or the player
+     * causes, using the same motion signals the legality
+     * eviction gate already trusts \u2014 a follow travel or berth
+     * walk in flight (telegraph/walk timers, entry pending), the
+     * stamped travel landing, page scroll, or a busy camera. His
+     * own glides and the player's pans render at whatever the
+     * map costs; billing those frames and long tasks to the
+     * follow killed the tier mid-glide at 768 and mid-pan in
+     * K3. The thresholds are unchanged (45 FPS kill / 55 FPS
+     * re-qualify, companion.ts); sustained degradation at rest
+     * \u2014 no motion signals active \u2014 still kills exactly as
+     * before (the throttled kill/recovery gate is the pin). */
+    const judgeBusy = (now: number) =>
+      walkTimerRef.current !== null ||
+      telegraphTimerRef.current !== null ||
+      entryPendingRef.current ||
+      now <
+        Math.max(
+          followTravelEndRef.current,
+          followRef.current.scrollingUntil,
+          followRef.current.cameraBusyUntil,
+        );
+    // Round 7 (diagnosis Q1/Q2): when feeding resumes after a
+    // gated stretch, prune the tracker windows first \u2014 otherwise
+    // the gated span dilutes the measured FPS and the kill trips
+    // at motion landings on healthy devices.
+    killRef.current?.noteGate(performance.now());
+    let wasBusy = false;
     const tick = (now: number) => {
       if (stopped) return;
-      killRef.current?.feedFrame(now - last, now);
+      const busy = judgeBusy(now);
+      if (!busy && wasBusy) killRef.current?.noteGate(now);
+      wasBusy = busy;
+      if (!busy) {
+        killRef.current?.feedFrame(now - last, now);
+      }
       last = now;
       judge();
       if (stopped) return;
@@ -1161,6 +1743,22 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     try {
       observer = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
+          // Same rounds 5-6 gating for long tasks, judged at
+          // the task's START against the motion horizon: a task
+          // that began inside a gesture can END after the
+          // horizon lapses (it was itself blocking the main
+          // thread), and the pan's own jank must not bill the
+          // follow (diagnosis F; the end-based form let K3's
+          // pan task through and docked him).
+          if (
+            entry.startTime <
+            Math.max(
+              followTravelEndRef.current,
+              followRef.current.scrollingUntil,
+              followRef.current.cameraBusyUntil,
+            )
+          )
+            continue;
           killRef.current?.feedLongTask(
             entry.duration,
             entry.startTime + entry.duration,
@@ -1177,21 +1775,20 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       cancelAnimationFrame(raf);
       observer?.disconnect();
     };
-  }, [companionMode, phase]);
+  }, [followTier, phase]);
 
-  /* Pointer wiring: attached to the map container element itself. */
+  /* Pointer wiring: WINDOW-level (the follow is page-wide), passive,
+   * samples land in refs. The map container is no longer special —
+   * it is simply part of the page the pointer crosses. The pause
+   * detector still runs (it drives the machine's pointerPaused view
+   * and the PAUSE_BERTH tier's solves); map gestures still dispatch
+   * gestureStarted to the machine in SEARCH_AREA. */
   useEffect(() => {
-    const el = mapElRef.current as HTMLElement | null;
-    if (!el) return;
     const detector = detectorRef.current!;
     const cache = new Map<
       number,
       { x: number; y: number; downT: number; downX: number; downY: number }
     >();
-    let lastX = 0;
-    let lastY = 0;
-    let lastPointerType = "mouse";
-    let lastMapActivity = 0; // last time the MAP may have moved
     let gestureActive = false;
     let pausePoint: { x: number; y: number } | null = null;
 
@@ -1200,101 +1797,29 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       pauseTimerRef.current = null;
     };
 
-    /** Exclusions: screen geometry of things ALREADY VISIBLE to the
-     * player — the MapLibre DOM markers inside the map container
-     * (measured once, at pause-confirm time; never per frame). The
-     * guess rings and ✕ marks are MapLibre GL canvas layers with no
-     * DOM geometry, so they cannot be exclusion sources here — see
-     * the U6 report. No game data ever enters the solver. */
-    const measureExclusions = () => {
-      const out: { x: number; y: number; r: number }[] = [];
-      el.querySelectorAll(".maplibregl-marker").forEach((m) => {
-        const rect = (m as HTMLElement).getBoundingClientRect();
-        if (rect.width === 0 && rect.height === 0) return;
-        out.push({
-          x: rect.left + rect.width / 2,
-          y: rect.top + rect.height / 2,
-          r: Math.max(rect.width, rect.height) / 2,
-        });
-      });
-      return out;
-    };
-
     const onPauseConfirmed = (point: { x: number; y: number }) => {
-      // A desktop hover-pause is a first map interaction too: Holmes
-      // enters (his entry walk's dock target is then superseded by
-      // the berth below — he walks on to the berth instead).
       enterMapRef.current();
       pausePoint = point;
       dispatchRef.current({ type: "pointerPaused", point });
-      if (companionModeRef.current !== "full") return; // dock-only/killed: he thinks at the dock
-      const rect = mapRectRef.current;
-      if (!rect) return;
-      const result = berthFor({
-        pausePoint: point,
-        holmesBox: HOLMES_BOX,
-        viewport: { w: window.innerWidth, h: window.innerHeight },
-        dock: {
-          x: rect.left + HOLMES_DOCK_X,
-          y: rect.top + rect.height - DOCK_INSET - HOLMES_BOX.h,
-        },
-        exclusions: measureExclusions(),
-        pointerType: lastPointerType,
-        handSide: point.x >= window.innerWidth / 2 ? "right" : "left",
-      });
-      /* Cure C4 (entry supersession ownership): entryPendingRef is
-       * cleared exactly when another path assumes ownership of
-       * holmesXY — only a berth does (it sets the target below).
-       * `hide` and `remote` return WITHOUT clearing, so a queued
-       * entry walk completes to the dock: a routine desktop far
-       * hover-pause as the first interaction used to clear it and
-       * strand Holmes at the entry offset dock+(90,34), feet past
-       * the map's bottom edge. For `hide`, completing the entry
-       * under the hidden wrapper is harmless and uniform. */
-      if (result.kind === "hide") {
-        setBerthHidden(true);
-        return;
-      }
-      if (result.kind === "remote") return; // thinks at the dock (view pose); the entry walk delivers him there
-      entryPendingRef.current = false; // a berth supersedes the entry walk's dock target
-      const target = {
-        x: result.x - rect.left,
-        y: result.y - rect.top,
-      };
-      const dist = Math.hypot(
-        target.x - holmesXYRef.current.x,
-        target.y - holmesXYRef.current.y,
+      // Both solving tiers take a pause as a target moment;
+      // PAGE_FOLLOW also solves on displacement/dwell (below).
+      solveFollowAtRef.current(
+        point,
+        followRef.current.lastPointer?.pointerType ?? "mouse",
       );
-      // Walk mode (U9): "cut" (reduced motion) applies the placement
-      // with NO walk transition — an instant cut in the think pose
-      // (Q2 §11); "animated" walks at the U6 speed/clamps.
-      const durationMs =
-        degradationRef.current.walkMode === "cut"
-          ? 0
-          : Math.min(
-            WALK_MAX_MS,
-            Math.max(WALK_MIN_MS, (dist / WALK_PX_PER_S) * 1000),
-          );
-      berthedRef.current = true;
-      setBerthed(true);
-      setHolmesTransition({ durationMs, easing: EASE_OUT });
-      setHolmesXY(target);
-      if (durationMs > 0) {
-        setWalking(true);
-        if (walkTimerRef.current) clearTimeout(walkTimerRef.current);
-        walkTimerRef.current = setTimeout(() => {
-          walkTimerRef.current = null;
-          setWalking(false); // arrival: view pose (berth-think) takes over
-        }, durationMs);
-      }
     };
 
     const attemptConfirm = (triesLeft: number) => {
       pauseTimerRef.current = null;
       if (viewRef.current.phase !== "SEARCH_IDLE") return;
-      if (companionModeRef.current === "killed") return;
+      if (followTierRef.current === "DOCK_ONLY" && companionKilledRef.current) {
+        return;
+      }
       const now = performance.now();
-      const point = detector.check(now, now - lastMapActivity);
+      const point = detector.check(
+        now,
+        now - followRef.current.lastMapActivityT,
+      );
       if (point) {
         onPauseConfirmed(point);
         return;
@@ -1308,10 +1833,6 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     };
     const scheduleConfirm = () => {
       clearPauseTimer();
-      // Pause-confirm threshold (U9): 460 ms in animated mode (the
-      // detector's own 350/450 ms rule confirms inside the retries);
-      // 600 ms when walks are cut — reduced-motion berthing happens
-      // after a 600 ms pause, same offsets (council Q2 §11).
       const delayMs =
         degradationRef.current.walkMode === "cut"
           ? REDUCED_MOTION_PAUSE_MS
@@ -1319,45 +1840,98 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       pauseTimerRef.current = setTimeout(() => attemptConfirm(12), delayMs);
     };
 
-    const startGesture = () => {
-      enterMapRef.current();
+    const startGesture = (onMap = true) => {
+      followRef.current.lastMapActivityT = performance.now();
+      enterMapRef.current(onMap);
       if (!gestureActive) {
         gestureActive = true;
         detector.notifyGestureStart();
       }
       clearPauseTimer();
+      followRef.current.cameraBusyUntil =
+        performance.now() + FOLLOW_CAMERA_IDLE_MS;
       if (viewRef.current.phase === "SEARCH_AREA") {
         dispatchRef.current({ type: "gestureStarted" });
       }
-      if (berthedRef.current || walking) exitToDockRef.current(false);
-      if (berthHidden) setBerthHidden(false);
+      // NO position change: a gesture plants him where he is. The
+      // deleted engine walked him home here — that was the bug.
     };
     const endGesture = () => {
       if (!gestureActive) return;
       gestureActive = false;
       detector.notifyGestureEnd(performance.now());
+      followRef.current.cameraBusyUntil =
+        performance.now() + FOLLOW_CAMERA_IDLE_MS;
+      // After the camera settles he returns to the POINTER'S LAST
+      // position (owner-approved 120 ms camera-idle deferral).
+      const s = followRef.current;
+      if (s.dwellTimer) clearTimeout(s.dwellTimer);
+      s.dwellTimer = setTimeout(() => {
+        s.dwellTimer = null;
+        const p = followRef.current.lastPointer;
+        if (p) solveFollowAtRef.current(p, p.pointerType);
+      }, FOLLOW_CAMERA_IDLE_MS + 10);
+    };
+
+    const maybeSolveFromMove = (e: PointerEvent) => {
+      if (followTierRef.current !== "PAGE_FOLLOW") return;
+      const s = followRef.current;
+      const now = performance.now();
+      const last = s.lastSolved;
+      const displaced =
+        !last ||
+        Math.hypot(e.clientX - last.x, e.clientY - last.y) >=
+          FOLLOW_SOLVE_DISPLACEMENT_PX;
+      if (displaced && now - s.lastSolveT >= FOLLOW_SOLVE_MIN_INTERVAL_MS) {
+        solveFollowAtRef.current(
+          { x: e.clientX, y: e.clientY },
+          e.pointerType,
+        );
+        return;
+      }
+      // Dwell: the pointer settled — solve at its resting place.
+      if (s.dwellTimer) clearTimeout(s.dwellTimer);
+      s.dwellTimer = setTimeout(() => {
+        s.dwellTimer = null;
+        const p = followRef.current.lastPointer;
+        if (p) solveFollowAtRef.current(p, p.pointerType);
+      }, FOLLOW_SOLVE_DWELL_MS);
     };
 
     const onMove = (e: PointerEvent) => {
       const now = performance.now();
-      lastPointerType = e.pointerType;
       const prev = cache.get(e.pointerId);
       if (prev) cache.set(e.pointerId, { ...prev, x: e.clientX, y: e.clientY });
-      const moved = Math.hypot(e.clientX - lastX, e.clientY - lastY);
-      lastX = e.clientX;
-      lastY = e.clientY;
-      if ((e.pointerType === "touch" || e.buttons > 0) && moved > 2) {
-        lastMapActivity = now;
+      // Round 7 (diagnosis Q4): while the confirm sheet is open
+      // the follow's pointer memory is frozen \u2014 clicks inside
+      // the sheet (the dismiss button above all) must not become
+      // the position he rejoins at when the sheet closes.
+      if (!seenSheetRef.current) {
+        followRef.current.lastPointer = {
+          x: e.clientX,
+          y: e.clientY,
+          pointerType: e.pointerType,
+        };
       }
-      // Berth cancel: a real move away from the pause point.
+      followRef.current.pointersDown = cache.size;
+      // Round 8: a held drag keeps the camera busy \u2014 re-stamp
+      // the horizon on every move while a pointer is down.
+      if (cache.size > 0) {
+        followRef.current.cameraBusyUntil = now + FOLLOW_CAMERA_IDLE_MS;
+      }
+      const onMap =
+        mapElRef.current?.contains(e.target as Node) ?? false;
+      // A real move away from the pause point, on the map, is the
+      // machine's gesture signal (SEARCH_AREA -> SEARCH_IDLE path).
       if (
+        onMap &&
         pausePoint &&
         viewRef.current.phase === "SEARCH_AREA" &&
         Math.hypot(e.clientX - pausePoint.x, e.clientY - pausePoint.y) >
           GESTURE_CANCEL_PX
       ) {
         startGesture();
-        if (cache.size === 0) endGesture(); // hover move: gesture is over
+        if (cache.size === 0) endGesture();
         return;
       }
       detector.feed({
@@ -1369,13 +1943,25 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           e.pointerType === "touch" ? cache.size : e.buttons > 0 ? 1 : 0,
       });
       if (viewRef.current.phase === "SEARCH_IDLE") scheduleConfirm();
+      maybeSolveFromMove(e);
     };
 
     const onDown = (e: PointerEvent) => {
-      enterMapRef.current();
+      // Cure D: a pointerdown off the map (e.g. on the heading) must
+      // not arm bench entry intent; a map pointerdown still does.
+      enterMapRef.current(
+        mapElRef.current?.contains(e.target as Node) ?? false,
+      );
       const now = performance.now();
-      lastPointerType = e.pointerType;
-      lastMapActivity = now;
+      followRef.current.lastMapActivityT = now;
+      // Round 8 (diagnosis #2 Q3): the camera-busy horizon must
+      // cover a drag's whole duration, not just its end \u2014
+      // startGesture never fires during a single-pointer pan in
+      // SEARCH_IDLE, so without this stamp the FG-5 judge was fed
+      // the pan's own long tasks and docked him mid-pan. Moves
+      // while a pointer is down re-stamp it (onMove); endGesture
+      // stamps the trailing idle as before.
+      followRef.current.cameraBusyUntil = now + FOLLOW_CAMERA_IDLE_MS;
       cache.set(e.pointerId, {
         x: e.clientX,
         y: e.clientY,
@@ -1383,73 +1969,150 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         downX: e.clientX,
         downY: e.clientY,
       });
-      if (cache.size >= 2) startGesture(); // pinch: pan/zoom wins instantly
-      // A tap (<250 ms, <10 px) must NOT summon or move Holmes: nothing
-      // happens on pointerdown. If he is already berthed he freezes.
+      followRef.current.pointersDown = cache.size;
+      // Round 7 (diagnosis Q4): sheet freeze, as in onMove.
+      if (!seenSheetRef.current) {
+        followRef.current.lastPointer = {
+          x: e.clientX,
+          y: e.clientY,
+          pointerType: e.pointerType,
+        };
+      }
+      // Cure D: the pinch branch threads the same containment as the
+      // pointerdown itself, so an off-map pinch cannot re-arm intent.
+      if (cache.size >= 2)
+        startGesture(mapElRef.current?.contains(e.target as Node) ?? false);
+      // A tap (<250 ms, <10 px) must NOT summon or move Holmes:
+      // nothing happens on pointerdown.
     };
 
     const onUp = (e: PointerEvent) => {
       const rec = cache.get(e.pointerId);
       cache.delete(e.pointerId);
+      followRef.current.pointersDown = cache.size;
       if (rec) {
         const travel = Math.hypot(e.clientX - rec.downX, e.clientY - rec.downY);
         const isTap = performance.now() - rec.downT < 250 && travel < 10;
-        if (!isTap && travel > GESTURE_CANCEL_PX && berthedRef.current) {
-          startGesture();
+        if (!isTap && travel > GESTURE_CANCEL_PX) {
+          // Cure D: cache stores no target, so attribute the drag by
+          // its DOWN point — the map rect is position:fixed geometry
+          // in viewport coords, the same space as downX/downY.
+          const mr = mapRectRef.current;
+          const downOnMap =
+            mr !== null &&
+            rec.downX >= mr.left &&
+            rec.downX <= mr.left + mr.width &&
+            rec.downY >= mr.top &&
+            rec.downY <= mr.top + mr.height;
+          startGesture(downOnMap);
         }
       }
       if (cache.size === 0) endGesture();
     };
 
     const onWheel = () => {
-      lastMapActivity = performance.now();
-      startGesture();
-      endGesture(); // wheel is momentary: the 500 ms re-arm runs from now
+      // Cure D: the window wheel listener cannot attribute the gesture
+      // to the map, so it must not arm bench entry intent either.
+      startGesture(false);
+      endGesture(); // wheel is momentary: camera-idle runs from now
     };
 
-    el.addEventListener("pointermove", onMove, { passive: true });
-    el.addEventListener("pointerdown", onDown, { passive: true });
-    el.addEventListener("pointerup", onUp, { passive: true });
-    el.addEventListener("pointercancel", onUp, { passive: true });
-    el.addEventListener("wheel", onWheel, { passive: true });
+    const onScroll = () => {
+      // Planted during scroll: solves suspend until the scroll has
+      // been quiet for a beat, then the forbidden cache is rebuilt
+      // (the page moved under his fixed overlay) and he re-solves at
+      // the pointer's last position so the clearance law still holds.
+      const s = followRef.current;
+      s.scrollingUntil = performance.now() + 180;
+      if (s.scrollTimer) clearTimeout(s.scrollTimer);
+      s.scrollTimer = setTimeout(() => {
+        s.scrollTimer = null;
+        rebuildForbiddenRef.current();
+        // Cure C, point 2: eviction at the scroll-end trigger — the
+        // scroll may have swept clue text through his fixed slice
+        // while he never moved (the C-1 traces).
+        checkHolmesLegalityRef.current();
+        const p = followRef.current.lastPointer;
+        if (p) solveFollowAtRef.current(p, p.pointerType);
+      }, 200);
+    };
+
+    window.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("pointerdown", onDown, { passive: true });
+    window.addEventListener("pointerup", onUp, { passive: true });
+    window.addEventListener("pointercancel", onUp, { passive: true });
+    window.addEventListener("wheel", onWheel, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
-      el.removeEventListener("pointermove", onMove);
-      el.removeEventListener("pointerdown", onDown);
-      el.removeEventListener("pointerup", onUp);
-      el.removeEventListener("pointercancel", onUp);
-      el.removeEventListener("wheel", onWheel);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerdown", onDown);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("scroll", onScroll);
       clearPauseTimer();
       cache.clear();
     };
-    // mapEl state mirrors mapElRef; the effect re-runs when it changes.
+    // mapEl state mirrors mapElRef; listeners are window-level now
+    // and never rebind, but the effect keys on mapEl as before so the
+    // first bind happens once the map exists.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapEl]);
 
-  /* Once the map is measured, park the wrapper at the dock. */
+  /* First placement: once the map is measured, place the wrapper at
+   * his entry spot — ONCE. Later map measures never move him (that
+   * was the dock snap; positional memory rules now). */
   useEffect(() => {
-    if (mapEl && !berthedRef.current) setHolmesXY(dockXY());
+    if (mapEl && !followPlacedRef.current) {
+      followPlacedRef.current = true;
+      // Cure C, points 1+3: measure the map LIVE (the cached rect is
+      // taken at scroll 0 with the map below the fold and placed him
+      // below the viewport in the C-1 traces) and gate the landing on
+      // fresh forbidden rects — an illegal dock is never landed on;
+      // the eviction check and follow solves place him legally.
+      const dock = liveDockXY();
+      if (freshPlacementLegal(dock)) setHolmesXY(dock);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mapEl]);
 
-  /* Phase exits: leaving the SEARCH phases parks Holmes at the dock
-   * and resets the detector, so no stale candidate can fire later. */
+  /* Phase exits: the detector resets so no stale pause candidate can
+   * fire later — and NOTHING moves Holmes. Leaving the SEARCH phases
+   * used to park him at the dock; he now stays where he was, and the
+   * burst-return below re-solves at the pointer's last position when
+   * play resumes. */
   useEffect(() => {
     if (phase !== "SEARCH_IDLE" && phase !== "SEARCH_AREA") {
       detectorRef.current?.reset();
-      if (berthedRef.current || walking || berthHidden) {
-        exitToDockRef.current(true);
-      }
-      // Snap the wrapper home even when he never berthed (cheap no-op
-      // when already docked) so SELECTION_READ renders him at the dock.
-      /* Cure C4 (Sr Dev nit 3): the snap moves holmesXY, so it owns
-       * it — consume any queued entry walk, or the entry rAF would
-       * fire after the snap and walk him in place with the walk
-       * pose (the tap-first-interaction case). */
-      entryPendingRef.current = false;
-      setHolmesXY(dockXY());
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
+
+  /* Burst return: when a burst (sheet / rings / camera / pin commit)
+   * ends and a SEARCH phase resumes, he yields to the pointer's last
+   * position — the solve is a no-op while any suspension still
+   * holds, and the wiring's own timers cover the camera-idle tail. */
+  const prevPhaseRef = useRef(phase);
+  useEffect(() => {
+    const prev = prevPhaseRef.current;
+    prevPhaseRef.current = phase;
+    const wasSearch = prev === "SEARCH_IDLE" || prev === "SEARCH_AREA";
+    const isSearch = phase === "SEARCH_IDLE" || phase === "SEARCH_AREA";
+    if (!wasSearch && isSearch) {
+      const p = followRef.current.lastPointer;
+      if (p) {
+        const t = setTimeout(() => {
+          // Round 7 (diagnosis Q4): rebuild the forbidden set
+          // fresh before the return solve \u2014 a just-closed
+          // sheet's rect must not linger in the cache and push
+          // his rejoin ring outward.
+          rebuildForbiddenRef.current();
+          solveFollowAtRef.current(p, p.pointerType);
+        }, FOLLOW_CAMERA_IDLE_MS);
+        return () => clearTimeout(t);
+      }
+    }
+  }, [phase]);
+
 
   /* -- render ---------------------------------------------------------- */
   if (view.hidden || view.phase === "OFF") return null;
@@ -1569,20 +2232,29 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       holmesDockFallback) &&
     (!stagingOn || holmesEntered);
   const watsonOnMap = view.watson.placement === "dock";
-  const effectivePlacement = berthHidden
-    ? "hidden"
-    : view.holmes.placement === "berth"
+  const effectivePlacement =
+    berthed && view.holmes.placement === "dock"
       ? "berth"
       : view.holmes.placement;
+  /* Follow overlay (PR 1): Holmes renders in a position:fixed
+   * portal at the app root — pointer-events none on the layer, auto
+   * only on his own footprint (the mute alias button rides the same
+   * geometry below) — layered below sheet/modal/celebration (CSS).
+   * His coordinates are VIEWPORT px: the whole page is his ground. */
   const holmesMapEl = holmesOnMap ? (
     <div
       className={
-        berthHidden
-          ? "detective-host-holmes detective-host-holmes-hidden"
-          : "detective-host-holmes"
+        (walking
+          ? "detective-host-holmes detective-follow-overlay detective-follow-travelling"
+          : "detective-host-holmes detective-follow-overlay") +
+        // Cure C: burst-hide while his current box is illegal under a
+        // suspension — hidden, never painted over clue text.
+        (holmesHidden ? " detective-host-holmes-hidden" : "")
       }
       data-testid="detective-holmes-wrapper"
       data-walk-mode={degradation.walkMode}
+      data-follow-tier={followTier}
+      data-follow-telegraph={followTelegraph ? "true" : undefined}
       style={{
         transform: `translate3d(${holmesXY.x}px, ${holmesXY.y}px, 0)`,
         transition:
@@ -1594,7 +2266,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       <div className="detective-host-figure" data-detective="holmes">
         <HolmesRig
           pose={walking ? "walk" : view.holmes.pose}
-          facing="right"
+          facing={walking || followTelegraph ? followFacing : "right"}
           speaking={speakingWho === "holmes"}
           halo={stagingOn}
         />
@@ -1943,24 +2615,23 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         {mutedBadge}
       </div>
     ) : null;
-  const mapHolmesMuteEl =
-    holmesOnMap && !berthHidden ? (
-      <button
-        type="button"
-        className="detective-holmes-mute detective-holmes-mute-map"
-        data-testid="detective-holmes-mute"
-        aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
-        aria-pressed={soundOn}
-        onClick={toggleSoundFromHolmes}
-        style={{
-          transform: `translate3d(${holmesXY.x}px, ${holmesXY.y}px, 0)`,
-          transition:
-            holmesTransition.durationMs > 0
-              ? `transform ${holmesTransition.durationMs}ms ${holmesTransition.easing}`
-              : "none",
-        }}
-      />
-    ) : null;
+  const mapHolmesMuteEl = holmesOnMap ? (
+    <button
+      type="button"
+      className="detective-holmes-mute detective-holmes-mute-follow"
+      data-testid="detective-holmes-mute"
+      aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
+      aria-pressed={soundOn}
+      onClick={toggleSoundFromHolmes}
+      style={{
+        transform: `translate3d(${holmesXY.x}px, ${holmesXY.y}px, 0)`,
+        transition:
+          holmesTransition.durationMs > 0
+            ? `transform ${holmesTransition.durationMs}ms ${holmesTransition.easing}`
+            : "none",
+      }}
+    />
+  ) : null;
 
   /* The bench (staging): in-flow, rendered where LoopScreen mounts
    * the host — directly under the map. Seated stage: both figures
@@ -2089,6 +2760,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           data-degradation={degradationAttr}
           data-walk-mode={degradation.walkMode}
           data-speech-mode={degradation.speechMode}
+          data-follow-tier={followTier}
           data-staging={stagingOn ? stagingStage : "off"}
           data-watson-walk={
             walkOn ? (watsonWalking ? "walking" : "idle") : "off"
@@ -2121,7 +2793,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           {celebrateEl ?? stationFigures}
         </div>
       ) : null}
-      {(holmesOnMap || watsonOnMap) && mapEl
+      {watsonOnMap && mapEl
         ? createPortal(
             <>
               <div
@@ -2133,26 +2805,49 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
                 data-degradation={degradationAttr}
                 data-walk-mode={degradation.walkMode}
                 data-speech-mode={degradation.speechMode}
+                data-follow-tier={followTier}
                 aria-hidden="true"
               >
-                {watsonOnMap && watsonEl ? (
+                {watsonEl ? (
                   <div className="detective-host-dock" data-testid="detective-dock">
                     {watsonEl}
                   </div>
                 ) : null}
-                {holmesMapEl}
               </div>
               {/* Unit A: the tap-Watson control rides the same portal
                   but OUTSIDE the aria-hidden map root, over Watson's
                   dock figure (see the station element above). */}
               {watsonReplayDockEl}
-              {/* PR C: the pair's sound chip + tap-Holmes alias ride
-                  the same portal, likewise OUTSIDE the aria-hidden
-                  map root — real buttons must stay reachable. */}
+              {/* PR C: the pair's sound chip rides the same portal,
+                  likewise OUTSIDE the aria-hidden map root — real
+                  buttons must stay reachable. */}
               {mapSoundEl}
-              {mapHolmesMuteEl}
             </>,
             mapEl,
+          )
+        : null}
+      {/* Follow overlay portal (PR 1): Holmes + his tap-to-mute alias
+          at the APP ROOT, position:fixed — the whole page is his
+          ground now, not just the map. Layered below sheet / modal /
+          celebration surfaces (detective.css). */}
+      {holmesOnMap
+        ? createPortal(
+            <>
+              <div
+                className="detective-follow-root"
+                data-testid="detective-follow-root"
+                data-companion={companionMode}
+                data-holmes-placement={effectivePlacement}
+                data-phase={view.phase}
+                data-follow-tier={followTier}
+                aria-hidden="true"
+              >
+                {holmesMapEl}
+              </div>
+              {mapHolmesMuteEl}
+              {!watsonOnMap ? mapSoundEl : null}
+            </>,
+            document.body,
           )
         : null}
     </>

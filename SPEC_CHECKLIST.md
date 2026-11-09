@@ -71,3 +71,78 @@ Plain-language record of what was built and verified.
 ## Ready to merge? NO
 (Per standing policy the verdict lives in the PR body; this checklist is
 the plain-language record.)
+
+---
+
+# Spec checklist — PB-1: Holmes follows the pointer (`feat/holmes-follow`)
+
+Plain-language record of what was built and verified. Owner
+restatement, 2026-11-07 ~11:55 CST: "Holmes follows finger gestures
++ mouse movement throughout the WHOLE PAGE and stays with the
+pointer" — returning to a home spot after a pause was named "a big
+bug". This PR replaces the waypoint-berth + dock-return model
+(shipped in #361–#363) with that model.
+
+## What was implemented
+1. **Follow model (new flag `holmesFollow`, shipped ON in
+   flags.json, baked default false):** Holmes senses the pointer
+   page-wide (mouse + touch) and travels to a legal spot BESIDE the
+   pointer — never on top of it. One travel per solve, head-turn
+   telegraph first, 0.3–0.8 s by distance. Desktop clearance 56 px /
+   touch 64 px edge bubble (the K2 law), centre band 80–100 px.
+2. **Positional memory:** he stays where the last solve parked him —
+   across pauses, phase exits, and case changes. NOTHING sends him
+   home: `exitToDock`, the phase-exit dock snap, and the >320 px
+   remote rule are deleted.
+3. **Planted during scroll/pinch:** the two-pointer centroid is
+   never a target; scroll and pinch never move him.
+4. **Speech lock:** while any pair speech plays he holds still;
+   the next solve runs when the queue drains.
+5. **Bursts:** sheet/rings/full-screen hide him; ~120 ms after the
+   burst he re-solves to the pointer's last position. A quick tap
+   still opens the place sheet instead of summoning him.
+6. **Zero text coverage:** every solve rejects candidates
+   intersecting clue/question articles, the Watson cluster, top
+   header, result card, and pin markers (+48 px).
+7. **Tier machine (new pure module `follow.ts`):** PAGE_FOLLOW →
+   PAUSE_BERTH (yesterday's pause-berth, page-wide) → DOCK_ONLY,
+   stepping DOWN on every auto-kill verdict (kill / degradation
+   dock / Save-Data / low-memory / reduced-motion / battery saver)
+   and back UP on the #362 re-qualification signals (case change /
+   5 healthy seconds). The FG-5 latch itself is unchanged.
+8. **Answer-blindness untouched:** the follow code reads only
+   geometry; ack/decode/selection-reaction inputs are unchanged.
+
+## What was NOT changed
+- Watson: bench, walk, station, tap-to-replay, all lines.
+- The speech player, the state machine's phases, the bench.
+- PB-2 (session/moments) and PB-3 (mute-by-character) — separate PRs.
+
+## How it was verified
+- Unit: follow solver + tier machine fail-before/pass-after
+  (16 tests); detective suite green; full suite on the merged
+  tree (session 5, tip d869083): 2275/2275 src + 1021 pass
+  scripts + worker 145/145; tsc clean; lint-cards PASSED.
+- Build: `npm run build:pages` exit 0 on the merged tree;
+  `dist/client/_shell.html` verified present (14,339 B) and
+  buildId = code tip — the session-4 gap (a build that verified
+  build-meta.json only, with no shell file) is closed.
+- E2E: NEW `detective-follow.spec.ts` gates (a)–(f);
+  `detective-berth.spec.ts`, the K2/K3 assertions in
+  `detective-companion.spec.ts`, and staging cure C12 were
+  REWRITTEN to the new model (they asserted deleted behaviour).
+  SUPERSEDED (session 5): the earlier claim that E2E execution
+  was environment-blocked (renderer crashes on game mount) no
+  longer holds — the Chromium launch-policy outage recovered,
+  and the step-0 CSO sweep ran the full 57-test detective set on
+  unmodified main @ 63d8286 (55 pass + the 2 known issue-#371
+  endings windows). The full census on this branch's merged
+  tree runs as the session-5 gate; results land in
+  GATES-STATE.md.
+
+## Ready to merge? PENDING — pipeline verdict on the final tip
+(Census, rest verification, Silo QA re-key, 13-seat panel,
+DevEx + benchmark on the merged tree — session 5. The verdict
+lives in the PR body; this checklist is the plain-language
+record. The owner's standing ship-when-ready directive is the
+merge word for a READY / READY-WITH-NITS verdict.)
