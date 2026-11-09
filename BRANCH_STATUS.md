@@ -84,7 +84,7 @@ Logs: `~/workspace/meridian-pr340-e2e/logs-gate/t4/`
 | :--- | :--- | :--- |
 | `npm ci` | PASS (exit 0, 365 packages) | `npm-ci.log` |
 | `npx tsc --noEmit` | PASS (exit 0) | `tsc.log` |
-| `npm test` | PASS — 2268 pass / 0 fail | `npm-test.log` |
+| `npm test` | PASS — scripts 1021 pass / 11 skipped / 0 fail (of 1032); src 2268 pass / 0 fail | `npm-test.log` |
 | `npm run test:worker` | PASS — 145 pass / 0 fail | `test-worker.log` |
 | `npm run typecheck:worker` | PASS (exit 0) | `typecheck-worker.log` |
 | `node scripts/lint-cards.mjs` | PASS — GATE PASSED | `lint-cards.log` |
