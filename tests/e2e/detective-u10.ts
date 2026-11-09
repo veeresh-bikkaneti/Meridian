@@ -450,12 +450,18 @@ export async function waitForPhase(
     .toBe(phase);
 }
 
-/** Holmes's placement from the mounted root that carries it. */
+/** Holmes's placement from the mounted root that carries it.
+ * The follow root comes first: since the portal split it is the
+ * carrier that is actually mounted for Holmes in the SEARCH phases,
+ * while detective-host only mounts when Watson is on the map — a
+ * host-first read can poll a missing or stale element and report
+ * null for a berth that really happened (F4 seam 2). */
 export async function currentPlacement(page: Page): Promise<string | null> {
   return page.evaluate(() => {
     const el =
-      document.querySelector('[data-testid="detective-host"]') ??
-      document.querySelector('[data-testid="detective-station"]');
+      document.querySelector('[data-testid="detective-follow-root"]') ??
+      document.querySelector('[data-testid="detective-station"]') ??
+      document.querySelector('[data-testid="detective-host"]');
     return el?.getAttribute("data-holmes-placement") ?? null;
   });
 }
@@ -463,8 +469,9 @@ export async function currentPlacement(page: Page): Promise<string | null> {
 export async function companionMode(page: Page): Promise<string | null> {
   return page.evaluate(() => {
     const el =
-      document.querySelector('[data-testid="detective-host"]') ??
-      document.querySelector('[data-testid="detective-station"]');
+      document.querySelector('[data-testid="detective-follow-root"]') ??
+      document.querySelector('[data-testid="detective-station"]') ??
+      document.querySelector('[data-testid="detective-host"]');
     return el?.getAttribute("data-companion") ?? null;
   });
 }
