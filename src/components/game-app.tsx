@@ -102,6 +102,12 @@ import {
   nextEntryCountdown,
 } from "./home-journal";
 import { JournalPlayer } from "./journal-player";
+import {
+  isJournalPrefetchAllowedNow,
+  resolveJournalPrefetchEntries,
+  startJournalPrefetch,
+  type JournalPrefetchHandle,
+} from "./journal-prefetch";
 // Storyteller banner host (owner directive 2026-10-09): the Storyteller
 // sits IN THE BANNER beside the Meridian branding — always visible, mobile
 // and desktop. React.lazy — the host (and its copy chunk) never lands in
@@ -1528,6 +1534,82 @@ export function GameApp() {
   // run/drop keys. The open flag (meridian.loop.open) restores the screen
   // after a reload so a mid-game refresh resumes the mystery, not the menu.
   const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
+  // Journal prefetch (lazy-load scenario 2): while a round is active,
+  // warm the first 1–2 movies of the current journal set in the
+  // background so a later tap plays instantly. Tap-to-load is unchanged
+  // — this only pre-warms the plain HTTP cache (CORS fetch + drain;
+  // see journal-prefetch.ts for the real-server probe that proved zero
+  // additional transfers on the tap). Warmed ids are tracked per set so
+  // an entry is never warmed twice; a failed warm means the tap fetches
+  // cold, as today.
+  //
+  // Placement matters: the effect MUST live here in GameApp, not in
+  // Choose (home). GameApp returns early with <Play>/<LoopScreen>
+  // while a round is active, so Choose — which owns the journal state
+  // — is unmounted during gameplay and no effect inside it could ever
+  // run while playing. The set here is therefore derived from the wall
+  // clock (the same derivation Choose initialises from), not read from
+  // Choose's state; it matches the displayed set except at a window
+  // boundary where Choose deferred a rotation for focus — then the
+  // warm simply misses and the tap fetches cold, as today. No player
+  // can be open during a run (Choose is unmounted), so there is no
+  // playing entry to skip.
+  //
+  // The effect keys on the round-active boolean, not on `run` itself:
+  // `run` is a new object on every pin drop / phase change, so keying
+  // on it would abort and restart the warm mid-round. The trigger is
+  // the brief's — `run !== null || loopOpen` first becoming true.
+  const warmedJournalIdsRef = useRef<Set<string>>(new Set());
+  const roundActive = run !== null || loopOpen;
+  useEffect(() => {
+    if (!roundActive) return;
+    if (!isJournalPrefetchAllowedNow()) return;
+    warmedJournalIdsRef.current = new Set();
+    const setNotes =
+      journalSetByIndex(journalSetIndexAt(Date.now())) ?? journalSetAt(Date.now());
+    const noteIds = (setNotes?.notes ?? []).map((note) => note.id);
+    let cancelled = false;
+    let handle: JournalPrefetchHandle | null = null;
+    const abortController = new AbortController();
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        cancelled = true;
+        handle?.abort();
+        abortController.abort();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    void resolveJournalPrefetchEntries(noteIds, {
+      playingJournalId: null,
+      warmedIds: warmedJournalIdsRef.current,
+    }).then((entries) => {
+      if (cancelled || entries.length === 0) return;
+      const idByUrl = new Map(entries.map((entry) => [entry.url, entry.noteId]));
+      handle = startJournalPrefetch(
+        entries.map((entry) => entry.url),
+        {
+          signal: abortController.signal,
+          onWarmed: (url, warmed) => {
+            if (!warmed) return;
+            const id = idByUrl.get(url);
+            if (id) warmedJournalIdsRef.current.add(id);
+          },
+        },
+      );
+    });
+    return () => {
+      cancelled = true;
+      document.removeEventListener("visibilitychange", onVisibility);
+      handle?.abort();
+      abortController.abort();
+    };
+    // Deps are intentionally [roundActive]: `run` churns identity
+    // mid-round (see above); the set is derived from the clock at
+    // trigger time, and a mid-round window crossing simply leaves the
+    // older set warmed — the tap after the round recomputes from the
+    // clock, so a stale warm can only miss, never mislead.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roundActive]);
   // Cold Trail (vertical slice): its own screen outside the run machine,
   // persisted under meridian.coldtrail.v2. The open flag
   // (meridian.coldtrail.open) restores the screen after a reload — PR

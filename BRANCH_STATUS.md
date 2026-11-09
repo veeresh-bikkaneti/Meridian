@@ -1,4 +1,12 @@
-# BRANCH_STATUS — feat/journal-player
+# BRANCH_STATUS — feat/journal-prefetch
+
+**Branch:** `feat/journal-prefetch` · **Base:** `feat/journal-player` @ `af7ec7c1` (stacked on movies `84fa3a0a`, frozen main `f2bbf1a2`)
+**Task:** Meridian lazy-load scenario 2 — background prefetch of journal movies WHILE the user is playing the game. Tap-to-load stays the primary path.
+**Status:** Implemented (prefetch module + GameApp wiring + loading spinner). E2E + full gates + screen recording pending. No PR, no merge.
+**Rebased:** 2026-11-09 — onto player head `af7ec7c1`; only conflict was this file (docs-only). The unanimous APPROVE on `c19f8dfc` does NOT transfer to the new head.
+
+## Base record — feat/journal-player (rebased onto movies head 84fa3a0a, frozen main f2bbf1a2)
+
 
 **Branch:** `feat/journal-player` · **Base:** `feat/journal-movies` @ `84fa3a0a` (stacked on frozen main `f2bbf1a2` #370)
 **Rebased:** 2026-11-09 — onto movies head `84fa3a0a`; only conflict was this file (docs-only). Historian-block clearance on `86624dde` does NOT transfer to the new head.
@@ -46,243 +54,19 @@ Next: see Pending. PR #369 is open; never merge without the owner's word,
 per PR, per head.
 
 ## Done
-- [x] 2026-11-08 — Branch created from origin/main 9e49da3e; worktree
-      `~/workspace/journal-movies-work` (clean checkout).
-- [x] 2026-11-08 — `docs/journal-movies.md` (plan + pilot recipe + storage
-      decision + batch table) and `public/videos/journal-manifest.json`
-      (pilot entry, version 1).
-- [x] 2026-11-08 — 12 worker subagents spawned in parallel (3 sets each,
-      9 clips each; batch 08 has 8 new + pilot skipped; batch 12 has 7).
-      Staging: `~/workspace/journal-movies-batches/batch-NN/`.
-- [x] 2026-11-08 — Media repo `veeresh-bikkaneti/meridian-media` created,
-      Pages enabled, pilot v4 uploaded byte-identical (sha256 5a985e28…);
-      URL verified 200, 5,664,273 bytes, valid MP4.
-- [x] 2026-11-08 — **Batch 01, sets 1–2: 6 clips coordinator-verified and
-      LIVE** (meridian-media `488329d`, manifest v1+6 entries):
-      capitol (magnus), memorial-stadium (briggs), haymarket (casper,
-      still+narration FALLBACK — AI video failed no-text gate),
-      pinnacle (vdc_2561), 27th-and-o (miles, bad-fit flag),
-      centennial-mall (vdc_NOID19). Independent checks: ffprobe 10.000 s /
-      1152x768 / 24 fps / h264+AAC, full decode exit 0, frames viewed
-      (faithful, no text), audio re-measured (peaks −1.5 dB, means match
-      worker to 0.1 dB, no clipping). Bed-30% per worker measurement
-      (NOTES.md). Not verified by ear — owner's listen is the final check.
-- [x] 2026-11-08 — Batch 01 follow-up worker spawned (set 3: sunken-gardens,
-      childrens-zoo, 48th-and-o + 1 haymarket regen attempt, 4 video calls).
-- [x] 2026-11-08 — **Batch 04: 9/9 coordinator-verified and LIVE**
-      (meridian-media `4d35706`): woods-park, conestoga, branched-oak,
-      mahoney, sac-museum, seward, homestead, pawnee-lake, platte-river-sp.
-      The 6-video cap did NOT block this batch (all 9 generations
-      succeeded). Flags in manifest (homestead dusk fade + gentle-motion,
-      platte-river-sp gentle-motion + 0.74 s window, mahoney hard cut,
-      seward sky-only settle, sac-museum close-up style drift,
-      branched-oak pink pennants, woods-park crowd drift).
-- [x] 2026-11-08 — **Batch 03: 3/6 delivered clips coordinator-verified
-      and LIVE** (hyde, near-south, robbers-cave). **HELD, not shipped:**
-      university-place (readable text "heritage" on the destination board
-      — hard gate fail, confirmed in frame), havelock (invented rooster),
-      southpointe (palette does not hold — saturated sunset, pilot-v1
-      failure mode + fence bird). 3 unbuilt (college-view video failed,
-      star-city-shores + quilt-museum capped). Follow-up spawned: 3 builds
-      + 3 regens (6 calls, priority-ordered).
-- [x] 2026-11-08 — **Batch 11: 5/6 delivered clips coordinator-verified
-      and LIVE** (machu, fuji, chichen, stonehenge, petra). **HELD:**
-      neuschwanstein (invented rooster standing on the lake ~6 s + faint
-      ghost castle at 2 s). 3 unbuilt (angkor video failed on a bad path,
-      table-mountain + uluru capped). Follow-up spawned: 3 builds + 1 regen.
-- [x] 2026-11-08 — Independent verification of all 21 batch-03/04/11
-      clips: ffprobe 10.000 s / 1152x768 / 24 fps / h264+AAC, full decode
-      exit 0, audio re-measured (means match workers; peaks −1.0 to
-      −1.6 dB, 0 clipped), 10 frames viewed by the coordinator
-      (holds confirmed in-frame; flags confirmed). Bed-30% per worker
-      measurement (NOTES.md). Not verified by ear — owner's listen is
-      the final check.
-- [x] 2026-11-08 — **Batch 01 follow-up DONE: set 3 verified + LIVE**
-      (sunken-gardens vdc_5723, childrens-zoo casper, 48th-and-o magnus
-      with bad-fit flag). **Haymarket regen FAILED the no-text gate a
-      2nd time** (clock gains hands/numerals at 6/9.5 s despite the
-      blank-clock prompt); fallback NOT overwritten and stands as the
-      shipped version. A 3rd attempt would need a different approach
-      (no clock tower in frame). Batch 01 is now 9/9 complete.
-- [x] 2026-11-08 — **Batches 02, 05, 06, 07, 08, 09 landed; 40 clips
-      coordinator-verified and LIVE** (meridian-media push in flight):
-      02: pioneers-park, wilderness-park, antelope-park, oak-lake,
-      lincoln-airport, union-plaza (6); 05: all 9; 06: old-market,
-      scotts-bluff, durham, carhenge (4); 07: all 6; 08: all 6;
-      09: all 6. Independent checks: ffprobe/decode/audio re-measured
-      on all 48 (means match workers; peaks −0.9 to −1.6 dB, 0 clipped),
-      8 decision frames viewed by the coordinator. Bed-30% per worker
-      measurement. Not verified by ear — owner's listen is the final check.
-- [x] 2026-11-08 — Follow-ups spawned for 02 (3 AI regens), 06 (5 regens),
-      07 (3 builds), 08 (2 builds), 09 (3 builds). Batches 03 + 11
-      follow-ups already running. Batches 10 + 12 still running.
-- [x] 2026-11-08 — **Batch 10: 9/9 coordinator-verified and LIVE**
-      (eiffel, colosseum, liberty, taj, opera-house, redeemer, sagrada,
-      giza, cn-tower). Video take 1 was rejected for ALL 9 (camera zoomed
-      into photoreal close-ups, invented pigeons, pseudo-text glyphs,
-      statue cropped out) and re-shot with a style-lock prompt (camera
-      NEVER moves, framing/style/palette NEVER change); take 2 held the
-      wide watercolor shot on all 9 — confirmed at 6 s in-frame
-      (colosseum, redeemer, eiffel). All 9 are static landmarks, flagged
-      gentle-motion bad fits; key moment is a light change or a small
-      vehicle (train, ferry, camels). Peaks −1.2 to −1.6 dB, decode 0.
-      Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 12: 5/6 coordinator-verified and LIVE**
-      (victoria-falls, fushimi, iguazu, tongariki, timbuktu). **HELD:**
-      potala — the model re-interpreted the palace mid-clip as a different
-      golden-roofed temple with Buddha statues flanking the door,
-      confirmed in-frame at 6 s + 9.5 s. Tongariki ships flagged (settle
-      frame pushes to a ~6-moai close-up, fifteen-in-a-row composition
-      lost; reddish caps not in source art). Peaks −1.3 to −1.6 dB,
-      decode 0. Bed-30% per worker measurement. Not verified by ear.
-      Follow-up spawned: galapagos build (1 call, staged) + potala
-      locked-wide regen reusing TTS.
-- [x] 2026-11-08 — **Batch 03 follow-up DONE: 4 more clips verified +
-      LIVE** (college-view, quilt-museum, havelock v2, southpointe v2).
-      Havelock v2: rooster gone, confirmed in-frame at 6 s. Southpointe
-      v2: intra-clip palette constant, no fence bird (v1 failure mode
-      gone); caveat — framed warmer/closer than the keyframe. Batch 03
-      now 7 LIVE. **Still HELD:** university-place (v2 board still not
-      blank — 2nd failed regen). **Still pending:** star-city-shores
-      (video call failed, not retried). Follow-up #2 spawned: 1 fresh
-      star-city-shores call + university-place still+narration fallback
-      (haymarket precedent — no 3rd regen).
-- [x] 2026-11-08 — **Batch 11 follow-up DONE: 9/9 complete.** Neuschwanstein
-      v2 PASSES — rooster + ghost castle gone, swans only, one castle,
-      confirmed in-frame at 6 s. Angkor, table-mountain, uluru built.
-      Peaks −1.4 to −1.5 dB, decode 0. Bed-30% per worker measurement.
-      Not verified by ear.
-- [x] 2026-11-08 — **Batch 08 follow-up DONE: 8/8 complete.** Niagara +
-      alamo built, both flagged (niagara: Horseshoe Falls leaves frame
-      from ~6 s; alamo: heavy zoom, closing line plays over a facade-only
-      shot with no garden visible). Peaks −1.0/−1.5 dB, decode 0.
-      Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 07 follow-up DONE: 9/9 complete.** Chadron,
-      niobrara, white-house built (vdc_5723 / briggs / vdc_2561). White-house
-      ships flagged: near-static after 4 s (motion diffs ~2), fountain arc
-      compressed — option (b) still+narration only remains open. Niobrara
-      flagged (6/9.5 s drift toward photorealism). Peaks −1.0 dB, decode 0.
-      Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 02 follow-up DONE: 9/9 complete.** Holmes-lake,
-      wyuka, gateway regens replace the held ffmpeg-only v1s — real bed at
-      0.30 (gaps were −91.0 dB silent, now −46.6 to −47.8 dB). Gateway take 1
-      rejected (invented pseudo-text signage); take 2 blank, no text.
-      Wyuka flagged (headstone leaves frame, bird count varies 4→3→4);
-      gateway flagged (one awning green instead of striped). Peaks −1.4/−1.5
-      dB, decode 0. Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 09 follow-up DONE: 9/9 complete.** Everglades,
-      death-valley, hoover built. Everglades: heron visibly lifts off at 6 s
-      (fallback line not needed), confirmed in-frame. Hoover: v1 rejected
-      (invented waterfall through the arch), v2 rejected (bypass bridge as
-      hero); v3 locked-camera holds, no waterfall, dam is the hero —
-      confirmed in-frame at 6 s. Everglades peak −0.9 dB by volumedetect
-      (−1.01 dB by the worker's measure; headroom either way, no clipping).
-      Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 06 follow-up DONE: 4 of 5 regens swapped.**
-      Kingsley (spillway in full rush at 6 s), smith-falls (full wide flow
-      with mist, child pointing), fort-robinson (flag raises, full at 9.5 s),
-      chimney-rock (spire in frame at 2/6/9.5 s) — all four defects fixed,
-      confirmed in-frame. Batch 06 now 8/9. **Archway NOT swapped by the
-      worker** (its replace gate demanded exactly one wagon; the regen
-      shows two) — see Held below: the coordinator overturned that hold.
-      Peaks −1.0 dB, decode 0. Bed-30% per worker measurement.
-      Not verified by ear.
-- [x] 2026-11-08 — **Batch 12 follow-up DONE: 7/7 complete.** Galapagos
-      built (tortoises + iguanas, real visible verb; minor flag: dark
-      animals resting on the dock at 6/9.5 s). Potala v2 PASSES — the
-      white-and-red palace mass on the hill holds at 2/6/9.5 s, confirmed
-      in-frame at 6 s; v1's golden-temple reinterpretation gone. Voice-free
-      window 2.10 s, as in the pilot. Peaks −1.4/−1.5 dB, decode 0.
-      Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 03 follow-up #2 DONE: 9/9 complete.**
-      Star-city-shores built (fresh call, not a repeat of the failed one),
-      flagged: tight near-photoreal close-up of two slides over one pool;
-      the keyframe's wide watercolor aerial layout is gone — same failure
-      mode as hyde; re-render option recorded. University-place ships as a
-      still+narration FALLBACK (haymarket precedent, no 3rd regen): source
-      still held 10 s with existing Casper narration + v1 audio bed at 0.30,
-      peak −1.01 dB, no text possible. Batch 03 now 9/9.
-- [x] 2026-11-08 — **Archway mix-only follow-up DONE: batch 06 now 9/9,
-      build 106/106 COMPLETE.** The regen raw was mixed with existing
-      vdc_2561 TTS (no re-render, no video call), verified, and swapped in
-      as `archway.mp4` (md5 `0f12426222d1226eecd11a909523c415`, 7,043,093 B).
-      Coordinator re-verified independently: 10.000 s / 1152×768 / 24 fps /
-      h264+AAC, decode exit 0, peak −1.0 dB, mean −18.7 dB, bed −10.5 dB in
-      the voice-free gap; 6 s + 9.5 s frames viewed — bridge hero + highway
-      + cars in frame throughout, both wagons in place. The held v1 is
-      preserved at `work/held-original-archway.mp4`. Bed-30% per worker
-      measurement. Not verified by ear.
+- [x] Step 0a — CORS gate: `curl` on old-faithful.mp4 shows `Access-Control-Allow-Origin: *` (plus `Cache-Control: max-age=600`, ETag, `Accept-Ranges: bytes`). Prefetch can work.
+- [x] Step 0b — Cache-reuse experiment (real-server probe, `~/workspace/journal-prefetch-probe/`): CORS fetch + drain, then a `<video preload="none">` tap — server-side clip hits stayed at 1 before AND after the tap (zero additional transfers); video played. Hidden-`<video preload="auto">` warm scored the same 1→1; fetch wins on simplicity. Route interception CANNOT observe cache reuse (fulfilled responses bypass the cache) — E2E under interception asserts prefetch requests happen, reuse is proven by the probe.
+- [x] Step 1 — `src/components/journal-prefetch.ts` (gating, entry selection, bounded runner ≤2 concurrent, per-fetch AbortController, never rejects) + 16 unit tests; GameApp wiring (`run !== null || loopOpen` trigger, stops on round end / tab hidden / unmount); tsc clean.
+- [x] Step 2 — Loading spinner on the player's loading state (decorative, aria-hidden, keeps the text; never renders under reduced motion) + CSS + 2 unit tests.
 
-## Video cap (discovered 2026-11-08, affects every batch)
-The media pipeline allows at most **6 successful videos per agent
-message**, even when the task asks for more. Batch 01 used all 6 on sets
-1–2; set 3 was unbuilt. Every batch will need a follow-up run for its
-last 3 clips (batch 08: last 2; batch 12: last 1) — ~24 worker runs total
-instead of 12. Follow-up spawns are new messages, so each gets a fresh
-6-video budget. **Exception observed 2026-11-08: batch 04 delivered 9/9
-in one run — all 9 generations succeeded, cap did not block.** The cap
-is enforced per run, not per batch; do not assume it.
-
-## Held clips — none. (Resolved holds kept below for the record.)
-- archway (batch 06): hold OVERTURNED 2026-11-08 (see Resolved holds) and
-  the regen is now live. Nothing is held.
-- haymarket (batch 01) ships as a flagged still+narration FALLBACK
-  (AI video failed the no-text gate TWICE); a 3rd attempt would need a
-  different approach (no clock tower in frame).
-- university-place (batch 03) ships as a flagged still+narration FALLBACK
-  (v1 + v2 both failed the no-text gate); see Done above.
-
-## Resolved holds (were held, now live — record kept here)
-- archway (batch 06): the regen was first refused for showing TWO wagons
-  against an "exactly one wagon" gate. Coordinator overturn: the calm
-  keyframe itself contains two wagons (white-covered left, open wagon
-  centre-right) and the regen shows the same two in the same positions —
-  the source art's own exhibits, not a duplication. Mixed with existing
-  TTS, verified, swapped in 2026-11-08. Batch 06 now 9/9.
-- havelock, southpointe (batch 03): v2 regens passed, live.
-- neuschwanstein (batch 11): v2 regen passed, live.
-- holmes-lake, wyuka, gateway (batch 02): v2 AI regens with real bed, live.
-- kingsley, smith-falls, fort-robinson, chimney-rock (batch 06): v2 regens
-  with real bed + visible payoffs, live.
-- potala (batch 12): v2 locked-wide regen, palace holds, live.
-
-## Storage proposal (recorded in docs/journal-movies.md)
-Movies do NOT live in this repo (~600 MB would quadruple git objects and
-push Pages toward the 1 GB cap). Separate repo `veeresh-bikkaneti/meridian-media`
-with its own GitHub Pages; a future player (NOT BUILT) would lazy-load by
-URL on entry open, which the current CSP `media-src 'self'` would block.
-Still a proposal: storage/hosting/privacy is Tier 2 and has no Consensus
-Manifest or owner citation recorded here. Manifest here maps entry id → URL. R2 is the better long-term host but needs owner
-provisioning; media repo needs none.
+## Design corrections vs the brief (verified from code, not re-litigated)
+- The effect lives in **GameApp**, not in Choose/home: GameApp returns early with `<Play>`/`<LoopScreen>` while a round is active, so Choose is unmounted during gameplay and no effect inside it could run. The set is derived from the wall clock (same derivation Choose initialises from).
+- The effect keys on the round-active **boolean**, not on `run` itself: `run` is a new object on every pin drop / phase change, so keying on it would abort and restart the warm mid-round.
 
 ## Pending
-- [ ] Create `veeresh-bikkaneti/meridian-media` repo + Pages; upload pilot
-      v4 unchanged as `old-faithful.mp4`; verify URL serves. — DONE 2026-11-08
-      (repo created, Pages on, pilot live; see Done above).
-- [ ] Verify each batch as it lands (ffprobe/decode/frames/audio/no-text),
-      upload to meridian-media, update manifest, commit + push progressively.
-- [ ] Report first completed batch to owner promptly; keep reporting per batch.
-- [ ] Gates before PR: `npx tsc --noEmit`, `npm test`, `node scripts/lint-cards.mjs`,
-      `npm run build:pages`, Playwright E2E (sequential, under `flock` lock).
-      Superseded: PR #369 is open; see its body and review records for runs.
-      Full E2E suite has not completed on any head.
-- [ ] **Manifest validator gate — BLOCKED on Tier 2.** Independent review
-      (2026-11-08) reproduced on `cb01f91c`: appending invalid JSON, deleting
-      an entry, adding an unknown id, or duplicating a key in
-      `public/videos/journal-manifest.json` all still pass `npm run
-      build:pages`, `npm test` (scripts suite) and `lint-cards`, and ship.
-      A validator (new module + test + `prebuild`/`prebuild:pages` wiring) is
-      a new module across 3+ files → Tier 2 (`AGENTS.md`, tier table), and
-      the protocol forbids implementation code before a signed Consensus
-      Manifest (`docs/ops/agent-council-protocol.md` §2, directive 1). Draft contracts
-      exist off-branch; council not convened, nothing signed.
-- [ ] Manifest top-level `note` still says movies "load only on request" —
-      present tense for an unbuilt player. Correct it with the validator work.
-- [ ] Trusted listen of all 106 narrations against each entry's story text,
-      and full-resolution visual clearance — INCOMPLETE (automated
-      descriptions exist; not a clearance).
-- [ ] Live six-viewport browser check of the journal on this head — NOT RUN.
-- [ ] Panel review of the final tip; owner's merge word — pending.
+- [ ] Step 3 — E2E specs (i)–(viii) under `flock ~/workspace/.e2e.lock`.
+- [ ] Step 4 — Full repo gates on the new head: tsc, `npm test`, lint-cards, `build:pages`.
+- [ ] Step 5 — Screen recording (gameplay → prefetch → instant tap-play) + network trace, audio-probed per the video-audio law (mux the clip's own audio, verify the OUTPUT file).
 
 ## Never
 - Never merge — merge word stays the owner's, per PR, per head.
@@ -1028,3 +812,7 @@ worked and only the renders were missing.
 - **Files:** `tests/e2e/credits.desktop.spec.ts` + this capsule. Nothing else.
 - **Proof:** build:pages green · credits spec 5 consecutive passes by name · full CI six-file set green once · tsc clean · lint-cards GATE PASSED (numbers in the PR body).
 - **Merge:** NO MERGE without the owner's per-PR word. Once merged, PR #370 merges up and its red e2e check clears.
+
+## Notes
+- CSP is NOT changed (repo CSP has no meridian-media in `media-src`/`connect-src`; GitHub Pages ignores `_headers`, so live Pages is unaffected — separate security decision).
+- No PR opened; merging stays the owner's decision.
