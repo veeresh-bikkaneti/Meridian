@@ -345,3 +345,6 @@ Owner's law (voice 2026-11-08 ~09:15 CST, now in ~/AGENTS.md + ~/MEMORY.md): Mer
 
 ### Detective set on ad035a6 (session 6) — 63/68, zero NEW
 - Main run killed after test 56 (env), recovery runs completed coverage. Failures: F2 follow:746, ENV companion:634, #371 endings pair, F7 berth:347 — all pre-classified. Record: detective-set-final-ad035a6.md. Next: Silo QA re-key, panel, DevEx, benchmark.
+
+### Silo QA re-key PR#364@ad035a6 — PASS (session 6)
+- Independent clean-context QA (not the builder): fast gates all PASS verbatim; acceptance E2E 8/8 PASS (berth:236, companion:660 berths=2 at floor, K3 x4, replay:62, sound:222); sabotage negative control BITES (removing the touch-scope -> :660 berths=1 FAIL; restore md5-proven + re-run PASS berths=3); set-record spot-check vs logs: zero mismatches. Record: silo-qa-ad035a6.md. Benchmark PASS (+0.023% total; benchmark-ad035a6.md). Next: 13-seat panel + DevEx.
