@@ -995,12 +995,12 @@ body:has(.home-v5) {
     order: 3;
     flex-basis: 100%;
     gap: 10px;
-    overflow-x: auto;
+    /* Narrow widths: wrap onto two rows instead of scrolling — the
+       last item (GET INVOLVED) sat 83px past the 390px viewport edge
+       in the old scrollable row. Every item stays reachable with no
+       strip scroll; desktop is untouched (this block is <=680px only). */
+    flex-wrap: wrap;
     margin: 2px 0 0;
-    /* Right-edge fade: the visible scroll affordance for the clipped
-       final item (GET INVOLVED) in this scrollable row. */
-    -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
-    mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
   }
   .home-v5 .hv5-nav nav button,
   .home-v5 .hv5-nav nav a {
