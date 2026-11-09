@@ -2,6 +2,26 @@
 
 **Branch:** `feat/journal-player` · **Base:** `feat/journal-movies` @ `84fa3a0a` (stacked on frozen main `f2bbf1a2` #370)
 **Rebased:** 2026-11-09 — onto movies head `84fa3a0a`; only conflict was this file (docs-only). Historian-block clearance on `86624dde` does NOT transfer to the new head.
+
+## Rebase verification — onto movies head 84fa3a0a (frozen main f2bbf1a2), this run (2026-11-09)
+
+- Gates ran on `576e1e06` (rebase-record commit); this commit adds only this
+  BRANCH_STATUS.md text on top. Pushed head = this commit.
+- Gates on `576e1e06`: `npx tsc --noEmit` exit 0; `npm test` exit 0 (scripts
+  1161 pass / 11 skipped / 0 fail of 1172; src 2302 pass / 0 fail);
+  lint-cards GATE PASSED; `npm run build:pages` exit 0, buildId `576e1e06`.
+  No workers/ changes, so no test:worker. Logs:
+  `~/workspace/gjm-player-r2-{tsc,npmtest,lintcards,build}.log`.
+- Docs-only: `git diff 84fa3a0a..HEAD --stat` = BRANCH_STATUS.md + the 136
+  player files; no other files. All 136 branch files byte-identical to old
+  head `86624dde` (`git diff 86624dde HEAD -- <files>` empty). 5 corrected
+  Historian facts verified intact in `public/videos/journal-transcripts.json`
+  and the VTT files (alamo 1718, cadillac winter-only, joslyn IN Omaha,
+  niagara New York meets Canada, homestead 1862 law); old wordings absent.
+- Historian-block clearance on `86624dde` does NOT transfer. This head is
+  ready for Firefox (testing prompt:
+  `~/workspace/journal-testing-prompts-duckduck-firefox-edge.md`). No E2E /
+  panel / recording in this run (gates only, per the split).
 **Owner order:** 2026-11-07 — "Build all journals" (Old Faithful pilot approved)
 **Status:** 106/106 clips BUILT and HOSTED (incl. pilot) — not "all
 verified". All 12 batches delivered (batch 08 is 8/8 new + pilot); nothing
