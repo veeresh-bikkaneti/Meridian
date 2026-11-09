@@ -45,6 +45,7 @@ type WalkSample = {
   pose: string | null;
   top: number | null;
   plays: string[];
+  phase: string | null;
 };
 
 async function detectiveOnly(page: Page): Promise<string[]> {
@@ -117,6 +118,12 @@ async function startWalkTrace(page: Page) {
         pose: svg?.getAttribute("data-pose") ?? null,
         top: svg ? Math.round(svg.getBoundingClientRect().top) : null,
         plays,
+        phase:
+          document
+            .querySelector('[data-testid="detective-host"]')
+            ?.getAttribute("data-phase") ??
+          st?.getAttribute("data-phase") ??
+          null,
       });
     }, 30);
   });
@@ -233,6 +240,19 @@ for (const w of WIDTHS) {
       await startWalkTrace(page);
       const lasVegas = entryByName("las vegas");
       await guessByEntryId(page, lasVegas.id, "las vegas");
+      /* Zero-overlap audit, guessing-phase transitions (Silo QA gap
+       * N2): a second window covers the chain the clue-2 window
+       * below does not — SELECTION_READ → NOTE_MARK → ASK_NEXT →
+       * clue-2 READING — sampling every frame and asserting 0 px²
+       * for both figures against clue-article leaf text. It opens
+       * once SELECTION_READ is live AND the ~200 ms guess-commit
+       * FLIP slide documented below has elapsed, so the documented
+       * FLIP exclusion is kept exactly, not extended. */
+      await expect
+        .poll(() => currentPhase(page), { timeout: 60_000 })
+        .toBe("SELECTION_READ");
+      await page.waitForTimeout(300);
+      const chainWindow = collectAuditWindow(page, 12_000);
       /* The audit window opens when the clue-2 READING begins (the
        * walk starts in the same dispatch), NOT across the guess
        * itself — for a measured, walk-independent reason: at guess
@@ -251,7 +271,27 @@ for (const w of WIDTHS) {
       const trace2 = await stopWalkTrace(page);
       assertWalked(trace2, CLUE2, `clue-2 walk @ ${w.name}`);
       trail.absorb(await clue2Window, `clue-2 walk @ ${w.name}`);
+      /* The chain window really did span the guessing transitions:
+       * the walk trace's phase samples visit SELECTION_READ →
+       * NOTE_MARK → ASK_NEXT → READING in that order. */
+      const chainPhases = trace2.map((s) => s.phase);
+      let chainFrom = 0;
+      for (const p of ["SELECTION_READ", "NOTE_MARK", "ASK_NEXT", "READING"]) {
+        const idx = chainPhases.indexOf(p, chainFrom);
+        expect(idx, `guessing chain @ ${w.name}: phase ${p} must be sampled in order`).toBeGreaterThanOrEqual(0);
+        chainFrom = idx + 1;
+      }
+      trail.absorb(
+        await chainWindow,
+        `guessing chain selection→note→ask-next @ ${w.name}`,
+      );
       const plays2 = await detectiveOnly(page);
+      // The selection read, the miss beat's ask, and the clue-2 read
+      // all fired exactly in chain order while the window sampled.
+      assertSubsequence(
+        plays2.map((u) => u.split("/").slice(-2).join("/")),
+        ["names/5506956.mp3", "fixed/suspicion.mp3", "fixed/ask-next.mp3", CLUE2],
+      );
       expect(
         countIn(plays2, ANNOUNCE),
         `clue-2 walk @ ${w.name}: no second announcement (clue 2+ walks are silent)`,
@@ -259,11 +299,11 @@ for (const w of WIDTHS) {
       expect(countIn(plays2, CLUE2)).toBe(1);
 
       /* -- REPLAY AT THE STATION: instant, no re-walk -------------- */
-      // Watson is at the map dock in SEARCH_IDLE; his replay control
-      // replays the held clue-2 chain at once. (The station form of
-      // the same rule — replay while he stands at a card — is the
-      // shipped Unit A behaviour; what PR B adds is that a replay
-      // never starts a walk.)
+      // Watson holds his clue-card station in SEARCH_IDLE (station
+      // cure, 2026-11-08 — he no longer parks at the map dock while
+      // guessing); his replay control is the station form and
+      // replays the held clue-2 chain at once. What PR B adds is
+      // that a replay never starts a walk.
       await startWalkTrace(page);
       const acksBefore = countIn(await detectiveOnly(page), "fixed/ack-");
       await page.getByTestId("detective-watson-replay").click();
@@ -317,6 +357,129 @@ for (const w of WIDTHS) {
     }
   });
 }
+
+test("watson walk: tap on Watson MID-WALK is ignored — one figure, walk arrives, held clue read fires exactly once (phone 390)", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+  });
+  try {
+    await serveBuiltArtifact(context);
+    await installDetectiveRecorder(context, 3);
+    const page = await context.newPage();
+    await fulfillFlagsWalk(context);
+    await openCaseOnBench(page, 137);
+    await unlockSpeech(page);
+    await waitForSearchIdle(page, 120_000);
+
+    /* Sampler (25 ms): the station's walk state, how many Watson
+     * figures exist at that moment, and how many times the held
+     * clue-2 read has started — the three things a mid-walk tap
+     * could break (a doubled figure, a cancelled walk, a lost or
+     * duplicated read). */
+    type MidTapSample = { walk: string | null; watsons: number; clue2: number };
+    await page.evaluate(() => {
+      const w = window as unknown as {
+        __midTapTrace: MidTapSample[];
+        __midTapTimer: ReturnType<typeof setInterval>;
+        __detectivePlays: string[];
+      };
+      w.__midTapTrace = [];
+      w.__midTapTimer = setInterval(() => {
+        const st = document.querySelector('[data-testid="detective-station"]');
+        w.__midTapTrace.push({
+          walk: st?.getAttribute("data-watson-walk") ?? null,
+          watsons: document.querySelectorAll('[data-detective="watson"]').length,
+          clue2: (w.__detectivePlays ?? []).filter((u) =>
+            u.includes("case-137/clue-2.mp3"),
+          ).length,
+        });
+      }, 25);
+    });
+
+    // Miss with Las Vegas: clue 2 unlocks and Watson walks to it.
+    const lasVegas = entryByName("las vegas");
+    await guessByEntryId(page, lasVegas.id, "las vegas");
+
+    /* Wait for the walk to start on the page's own frame clock,
+     * then tap Watson in the same breath (sheet-test pattern). */
+    await page.evaluate(
+      () =>
+        new Promise<void>((resolve) => {
+          const check = () => {
+            const st = document.querySelector(
+              '[data-testid="detective-station"]',
+            );
+            if (st?.getAttribute("data-watson-walk") === "walking") {
+              resolve();
+              return;
+            }
+            requestAnimationFrame(check);
+          };
+          check();
+        }),
+    );
+    /* The shipped behaviour this pins: during a speech-gated walk
+     * the replay cue is HIDDEN (the held sequence is still the
+     * previous clue's), and the figure cluster itself is
+     * pointer-events:none — so a tap on Watson mid-walk is a
+     * no-op by design. It must not cancel the walk, double the
+     * figure, or lose/duplicate the held read. */
+    await expect(page.getByTestId("detective-watson-replay")).toHaveCount(0);
+    const centre = await page.evaluate(() => {
+      const el =
+        document.querySelector('[data-detective="watson"] svg') ??
+        document.querySelector('[data-detective="watson"]');
+      const r = el!.getBoundingClientRect();
+      return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+    });
+    await page.mouse.click(centre.x, centre.y);
+    const walkAfterTap = await page.evaluate(() =>
+      document
+        .querySelector('[data-testid="detective-station"]')
+        ?.getAttribute("data-watson-walk"),
+    );
+    expect(
+      walkAfterTap,
+      "the mid-walk tap must not cancel the walk",
+    ).toBe("walking");
+
+    await waitForSearchIdle(page, 120_000);
+    const trace = await page.evaluate(() => {
+      const w = window as unknown as {
+        __midTapTrace: MidTapSample[];
+        __midTapTimer: ReturnType<typeof setInterval>;
+      };
+      clearInterval(w.__midTapTimer);
+      return w.__midTapTrace;
+    });
+    const walking = trace.filter((s) => s.walk === "walking");
+    expect(
+      walking.length,
+      `mid-walk tap: the WALKING state must be observed (trace: ${trace.length} samples)`,
+    ).toBeGreaterThan(3);
+    // Exactly one Watson figure at every walking moment, and never
+    // a doubled figure in any sampled moment of the whole trace.
+    for (const s of walking) {
+      expect(s.watsons, "exactly one Watson figure while walking").toBe(1);
+    }
+    expect(
+      Math.max(...trace.map((s) => s.watsons)),
+      "no doubled Watson figure at any sampled moment",
+    ).toBe(1);
+    // The held read had not started mid-walk (arrival gate intact)…
+    for (const s of walking.slice(0, -1)) {
+      expect(s.clue2, "clue 2 must not start before walk-arrival").toBe(0);
+    }
+    // …and it fired exactly once on arrival, ack included.
+    const plays = await detectiveOnly(page);
+    expect(countIn(plays, CLUE2)).toBe(1);
+    expect(countIn(plays, "fixed/ack-2.mp3")).toBe(1);
+  } finally {
+    await context.close();
+  }
+});
 
 test("watson walk: sheet opens mid-walk — walk cancels, held read never fires late (phone 390)", async ({
   browser,

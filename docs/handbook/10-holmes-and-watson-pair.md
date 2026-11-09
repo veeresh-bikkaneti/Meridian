@@ -584,6 +584,44 @@ the re-run panel and the flip owner can check them off one by one.
   resolved as faithful unions) plus the `353072e` brace cure,
   and its review pipeline ran on the merged tip.
 
+## Watson station cure (2026-11-08)
+
+- **The defect:** the owner, playing the live build on his phone
+  (2026-11-08 ~00:53 CST), found Watson standing large at the map's
+  bottom-left corner during the guessing part of a case. A measured
+  diagnosis (live relay + real input at 390/768/1280/1920, both
+  themes; `DIAGNOSIS.md` in the detective evidence folder,
+  `diag-watson-corner/`) proved the walk itself works: Watson walks
+  to the clue-card station and reads there, but the moment a read
+  ends, the state machine's view parked him at the map dock for the
+  whole guessing stretch — `SEARCH_IDLE`, `SEARCH_AREA`,
+  `SELECTION_READ` and `ASK_NEXT` all carried Watson's placement
+  "dock". That was the shipped station split from the pair's first
+  build, and it contradicts the owner's standing ruling of
+  2026-11-07: **Watson stays at the clues once play starts.**
+- **The cure:** those four phases now carry Watson's placement
+  "station" in `viewForState` (`detective-state.ts`) — same poses
+  as before. Watson holds his station beside the active clue card
+  for the whole case; only Holmes uses the map dock. No Holmes
+  placement or pose changed anywhere, and no host logic changed:
+  `DetectiveHost` already renders purely from the machine's
+  placement, so the station cluster (figure, gutter transform,
+  replay-at-station, station sound cluster) takes Watson in the
+  guessing phases and the map portal renders Holmes alone. The
+  "dock" placement stays in the type and in the host as the
+  fallback it always was; the degraded path (dock-only companion
+  on constrained devices, `data-companion="dock"`, tap speech) is
+  a separate by-design verdict and is untouched.
+- **What a player sees now:** while guessing, Watson stands beside
+  the clue card he last read — tap him there to hear the clue
+  again — and Holmes works the map alone, docking at the bottom
+  of the map and walking to a berth when the player pauses over
+  an area. The pair comes back together for the celebration.
+- Earlier sections of this chapter that describe Watson at the
+  dock during search (the Phase A build, the 2026-11-06 incident,
+  PRs #357/#361/#363) are the historical record of how the game
+  behaved then; this section supersedes them for current play.
+
 ## Audio: pre-rendered, with honest coverage
 
 - Runtime speech synthesis was rejected for this pair (BUILD-SCOPE

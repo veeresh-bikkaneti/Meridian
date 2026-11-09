@@ -558,14 +558,15 @@ test("staging samples: Holmes-alone berth separation + FORCED anchor-null fallba
       "companion must be full (not auto-killed) for the berth sample",
     ).toBe("full");
 
-    /* Holmes-alone sample: at a berth Holmes stands ALONE (Watson
-     * stays at the dock) — the reachable Holmes-alone geometry. (The
+    /* Holmes-alone sample: at a berth Holmes stands ALONE on the
+     * map (Watson stays at his clue-card station — station cure,
+     * 2026-11-08) — the reachable Holmes-alone geometry. (The
      * station chip-offset "Holmes alone" case in PR C's arithmetic
      * is unreachable from the machine's view table: every station
      * phase pairs Holmes with Watson or shows neither — verified in
      * detective-state.ts viewForState. The berth is the honest
      * sample.) Assert his full-width alias, Watson's replay box and
-     * the map chip are pairwise disjoint. */
+     * the pair chip are pairwise disjoint. */
     const berthPoint = {
       x: mapBox!.x + mapBox!.width * 0.72,
       y: mapBox!.y + mapBox!.height * 0.3,

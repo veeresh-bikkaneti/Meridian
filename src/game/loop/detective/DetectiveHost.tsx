@@ -21,15 +21,19 @@
  *   fixed cluster to that card element's measured rect (the card whose
  *   aria-label names the latest revealed clue).
  * - Holmes's station is beside Watson during clue phases (same cluster).
- * - During guessing phases the pair renders through a portal INTO the
+ * - During guessing phases Holmes renders through a portal INTO the
  *   map container ([data-testid="loop-map"], the stable element LoopMap
- *   already renders): Watson in the bottom-left dock cluster (12 px
- *   inset, clear of the sheet safe area), Holmes on his own transform
- *   wrapper at the dock — the U6 waypoint companion walks that wrapper
- *   to a berth beside the player's thinking pause (companion.ts owns
- *   the pause detection, berth geometry, and auto-kill decisions).
- *   Portal target missing → the map cluster is not rendered (never
- *   overlap blindly).
+ *   already renders), on his own transform wrapper at the dock — the
+ *   U6 waypoint companion walks that wrapper to a berth beside the
+ *   player's thinking pause (companion.ts owns the pause detection,
+ *   berth geometry, and auto-kill decisions). Watson does NOT join
+ *   him on the map: he holds his clue-card station through the whole
+ *   guessing stretch (owner ruling 2026-11-07 — an earlier view table
+ *   parked him in a bottom-left dock cluster inside the map, which is
+ *   the defect the owner photographed on 2026-11-08). The dock
+ *   cluster markup below stays only as the host fallback for a view
+ *   that still asks for it. Portal target missing → the map cluster
+ *   is not rendered (never overlap blindly).
  * - When the machine's view says hidden (sheet open / external speech /
  *   ring animation / OFF), nothing renders at all — absence is an
  *   unmount, so it lands in 0 ms, under the 100 ms ceiling.
@@ -1542,10 +1546,14 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     </div>
   ) : null;
 
-  /* Map-side rendering (U6): Watson keeps the U5 dock cluster; Holmes
-   * rides his own transform wrapper so the companion can walk him
-   * between the dock and a berth without touching Watson or the map.
-   * data-companion / data-holmes-placement are the U10 spec surface. */
+  /* Map-side rendering (U6): Holmes rides his own transform wrapper
+   * so the companion can walk him between the dock and a berth
+   * without touching Watson or the map. Watson's U5 dock cluster
+   * below is now only a fallback — since the 2026-11-08 station cure
+   * the machine's view holds Watson at his clue-card station through
+   * the guessing phases, so in normal play Holmes docks alone and
+   * `watsonOnMap` stays false. data-companion / data-holmes-placement
+   * are the U10 spec surface. */
   /* Staging: before entry Holmes is in the bench slot, NOT on the
    * map — his map figure (and its mute alias) render only once he
    * has entered. After entry, a station phase finds him at his map
