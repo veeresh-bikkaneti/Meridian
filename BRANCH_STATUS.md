@@ -1,268 +1,221 @@
-# BRANCH_STATUS — feat/watson-station
+# BRANCH_STATUS — fix/337-guess-counter
 
-- **Branch:** `feat/watson-station` · **Base:** `main` @ `9e49da3` (PR #365 merged + live)
-- **Task:** Watson holds the clue-card station through the guessing phases.
-- **Owner defect:** 2026-11-08 ~00:53 CST — Watson standing large at the
-  map's bottom-left corner on the owner's phone during guessing.
-- **Diagnosis of record:** `~/workspace/meridian-detective-evidence/diag-watson-corner/DIAGNOSIS.md`
-  — the walk works on live production; when a clue read ends, the state
-  machine enters `SEARCH_IDLE`, whose view parked Watson at placement
-  "dock" (rendered inside the map, bottom-left), and `SEARCH_AREA` /
-  `SELECTION_READ` / `ASK_NEXT` kept him docked. Owner's standing ruling
-  (2026-11-07): "Watson stays at the clues once play starts."
+- **Branch:** `fix/337-guess-counter`
+- **Base:** `main` @ `775d8b4` (#329 merged) · synced with `main` @ `9e49da3` on 2026-11-08 (merge commit; see Sync below)
 
 ## Task capsule
 
-TASK / requested outcome: change Watson's placement from "dock" to
-"station" in exactly four phases of `viewForState`
-(`src/game/loop/detective/detective-state.ts`) — SEARCH_IDLE,
-SEARCH_AREA, SELECTION_READ, ASK_NEXT — poses unchanged, no Holmes
-placement or pose changed anywhere. Verify DetectiveHost needs no
-logic change (it renders purely from the machine's placement), update
-the unit + E2E pins that required Watson at the dock in the FULL
-(non-degraded) path, and record the cure in the handbook.
+TASK / requested outcome: Fix issue #337 — the GeoDetective header
+counter overstates by one once a case is finished: a case lost on
+its 6th guess read "Guess 7 of 6" (owner screenshot, 2026-11-03),
+a 1-guess win read "Guess 2 of 5". Finished case: show the guesses
+actually made. Playing state unchanged. Builder silo: build, open
+the PR, stop. NO MERGE without the owner's per-PR word; Silo QA and
+the panel follow as separate silos.
 
-Tier and rationale: Tier 1 builder silo under the coordinator's brief —
-one proven mechanism, one view-table change. Independent clean-context
-QA + panel verification are run by other agents, not the builder.
+Tier and rationale: Tier 1 — Solo TDD. One bug, one expression, a
+clear repro (the owner's screenshot + the seeded finished cases
+below).
 
-Done condition / evidence:
-- Unit (TDD, RED first): the search-view pin flips dock → station; a
-  new per-phase test pins SEARCH_AREA / SELECTION_READ / ASK_NEXT with
-  Holmes-placement guards in all four phases. RED confirmed
-  (dock ≠ station) before the cure; GREEN after.
-- Host check: every `view.watson.placement === "dock"` consumer traced
-  (`watsonOnMap`, `watsonReplayDockEl`, `mapSoundEl` guard, the map
-  portal block) — all are placement-generic; in the cured phases the
-  station cluster (figure, gutter transform, replay-at-station,
-  station sound cluster) takes Watson and the map portal renders
-  Holmes alone (the dock cluster markup is already conditional on
-  `watsonOnMap`, so it tolerates Watson's absence). **Zero host logic
-  changes** — only two stale comments updated.
-- Degraded path untouched by design: dock-only companion
-  (`data-companion="dock"` — Holmes's berth verdict), tap speech mode,
-  and the "dock" member of `WatsonPlacement` (host fallback) all stay;
-  E2E pins for that path were not modified.
-- Gates: see Status below (real results, filled by the builder).
+Done condition / evidence: a new E2E spec seeds finished cases and
+asserts the truthful header — it fails on the unmodified build with
+the exact pre-fix strings, and passes after the fix; the shipped
+playing-state pins in geodetective.spec.ts stay green; all gates
+green (tsc, npm test, lint-cards, build:pages).
 
-Files in scope: `src/game/loop/detective/detective-state.ts`,
-`src/game/loop/detective/detective-state.test.ts`,
-`src/game/loop/detective/DetectiveHost.tsx` (comments only),
-`tests/e2e/detective-replay.spec.ts`, `tests/e2e/detective-sound.spec.ts`,
-`tests/e2e/detective-visibility.spec.ts`,
-`tests/e2e/detective-watson-walk.spec.ts`,
-`tests/e2e/detective-endings.spec.ts` (gap-closure round),
-`tests/e2e/detective-staging.spec.ts` (comment only),
-`docs/handbook/10-holmes-and-watson-pair.md` (new dated record section),
-this file.
+Files in scope: `src/game/loop/LoopScreen.tsx` (the counter
+expression on the LoopGame header line only),
+`tests/e2e/guess-counter.desktop.spec.ts` (new), this file.
+Protected / untouched: LoopScreen's deal paths and the "Case #N"
+header block (owned by the parallel #336 run), every other surface.
+Redundancy: grep-verified — the header counter at this line is the
+only surface that renders "Guess N of {cap}" from
+`guesses.length + 1`; the reveal's "Solved in X of Y guesses."
+already counts actual guesses and is untouched.
 
-Collision note: the #364 lane (`feat/holmes-follow`) touches the same
-two source files (`detective-state.ts`, `DetectiveHost.tsx`). This
-branch is off `main` @ `9e49da3` and merges independently; whichever
-lane merges second rebases over the other.
+Assumptions: the rendered cap for a resumed case comes from the
+puzzle's deal snapshot (`dealStartClues` / `dealMaxGuesses` →
+`persistedDealConfig`); the spec's seeds stamp those fields so the
+asserted caps (6 for the loss, 5 for the win) are the caps the
+header actually renders — confirmed by the red run's page snapshots.
 
 ## Status
 
-- [x] Diagnosis read in full; mechanism confirmed in code
-- [x] Unit test RED (dock ≠ station in the four phases)
-- [x] Cure: four placements → "station" + plain-tone why-comments — `63879d8`, pushed
-- [x] Host audit: zero logic changes needed; stale header + map-render comments updated — `45865ff`, pushed
-- [x] E2E pins updated (full path only; degraded pins untouched) — `c142574`, pushed
-- [x] Handbook: "Watson station cure (2026-11-08)" record section — `d732610`, pushed
-- [x] Builder gates:
-  - `npx tsc --noEmit` — clean
-  - `npm test` — PASS (final suite 2267/2267, 0 fail; command exit 0)
-  - `npm run test:worker` — PASS (145/145, 0 fail)
-  - `node scripts/lint-cards.mjs` — GATE PASSED
-  - `npm run build:pages` — PASS (exit 0; prerender + fingerprint-sw
-    completed. Two earlier local attempts were killed by VM restarts
-    mid-build — environment, not build errors — and the gate was
-    re-run clean to this result.)
-- [x] PR opened — PR #372 (opened by the pipeline finisher; the
-  builder brief forbade the builder from opening it)
-- [ ] Merge — on the owner's word / coordinator only, never the builder
+- [x] Fresh clone at `~/workspace/meridian-counter-fix`, branch cut
+      at `775d8b4`
+- [x] RED: new spec on the unmodified build — 2 failed, both on the
+      header assertion. Page snapshots in the Playwright error
+      contexts show the exact pre-fix headers: `- status: Guess 7
+      of 6` (lost seed) and `- status: Guess 2 of 5` (won seed).
+      Both seeds validated cleanly: each case restored as its
+      reveal ("Out of guesses" / "🎯 You found it!") before the
+      header assertion failed
+- [x] FIX: one line — `finished ? puzzle.guesses.length :
+      puzzle.guesses.length + 1` (the `finished` value already in
+      scope on LoopGame; the neighbouring "— N left" suffix was
+      already gated on it)
+- [x] GREEN + gates on the tip: `npx tsc --noEmit` exit 0 ·
+      `npm test` exit 0 (scripts 943 pass / 11 skip / 0 fail;
+      src 2016/2016) · `node scripts/lint-cards.mjs` GATE PASSED ·
+      `npm run build:pages` exit 0 · E2E under
+      `flock ~/workspace/.e2e.lock`, `--workers=1`, against the
+      Pages build: **19 passed / 1 failed of 20** — new spec 2/2,
+      `geodetective.spec.ts` 17/18. Every counter pin stays green
+      (playing state: "Guess 2 of 5" after one guess, "Guess 1 of
+      5" on a fresh deal; the win-path snapshot shows the finished
+      2-guess win header reading "Guess 2 of 5" — post-fix truth;
+      pre-fix it read "Guess 3 of 5"), so the playing state is
+      untouched. The 1 failure is NOT the counter — see next item
+- [x] Pre-existing failure, proven on unmodified main: the
+      geodetective win-path test (spec:199) fails at its share-text
+      assertion (spec:256) — expected
+      `https://meridian.knowledgetest.workers.dev/`, received the
+      Pages URL `https://veeresh-bikkaneti.github.io/Meridian/`.
+      Cause: the share origin follows the build's baked base
+      (`shareOrigin` in `src/lib/og/share-meta.ts`); the harness
+      serves the Pages build (base `/Meridian/`), while the pin
+      expects the Workers origin (PR #128). Proven pre-existing:
+      the identical test on unmodified main `775d8b4` (worktree,
+      same Pages build recipe) fails with a byte-identical
+      received share string. (One main run also flaked earlier on
+      a sheet/reveal heading strict-mode race — transient timing,
+      unrelated.) Out of scope for #337; flagged for the owner as
+      a separate test-pin/build mismatch. Correction note: the
+      first status commit claimed "21/21" — that was a misread of
+      a piped E2E summary (the pipe masked Playwright's exit
+      code); the true counts are as stated here
+- [x] Redundancy grep on the tip: line 1134 is the only
+      "Guess N of {cap}" render in `src/`; the only other
+      cap-denominated surface, the reveal's "Solved in X of Y
+      guesses." (line 1633), already counts actual guesses
+- [x] PR opened against main — #340, still NO MERGE (owner's
+      word only). The "now ticked" line in the PR body was false
+      through `16daa5ad` (unchecked at `528df01` and `8e3ccda` too).
 
-## GATES STATE (finisher session, 2026-11-08 — updated after every gate)
+## Sync with main (2026-11-08, Rock — not a re-approval)
 
-Finisher: pipeline-finisher subagent (lane 1 of the owner's sequential
-pipeline law). Base verified against **origin/main `9e49da3`** — the
-local `main` ref is stale (#361-era `97d1dcf`); origin/main IS an
-ancestor of this branch and the true branch diff is 11 files (709+/185−, measured at 3f3eaf0; later commits are docs-only).
+- Merged `origin/main` @ `9e49da3e` into this branch normally (no
+  rebase, no force). The only conflict was this file (main carried
+  another branch's status); resolved by keeping this PR's record.
+  `LoopScreen.tsx` auto-merged; the fix line is now at line 1441
+  (was 1134 at the original tip — main grew the file); it is still
+  the only "Guess N of {cap}" render in `src/`.
+- The panel's votes were on `8e3ccda`; this merge creates a new tip,
+  so the panel must refresh on it. No merge without the owner's word.
 
-- [x] Chromium launch RE-TEST: the WebGL-policy outage is OVER for the
-  real spec path — Playwright + bundled chromium-1243 launches and
-  renders the app. Two environment facts every E2E run here needs:
-  (1) `PLAYWRIGHT_CHROMIUM_EXECUTABLE` must point at the bundled 1243
-  binary (the config default `/opt/meta-chromium/chrome` refuses to
-  launch); (2) runs go with `TMPDIR=$HOME/playwright-tmp` — the VM's
-  /tmp is a 512 MB tmpfs that LANDED AT 100% under other lanes'
-  profile/cache junk (since freed), and the home volume carries an
-  EDQUOT **file-count** quota: Chromium dies with SIGBUS
-  (`BUS_ADRERR`, "Creating shared memory … Disk quota exceeded (122)")
-  once renderer shared-memory creation hits it.
-- [x] **Gate 1a — `detective-endings.spec.ts`: RUN, 0 passed / 2 failed**
-  (full reporter output read; logs in
-  `~/workspace/meridian-detective-evidence/station-e2e-2026-11-08/`).
-  Runs 1–3 died at the first click on environment (full /tmp, then the
-  EDQUOT crash). **Run 4 (clean environment) played both tests end to
-  end** — the complete WIN path and the full 5-guess FAIL path ran —
-  and both failed on the NEW N2 audit windows only:
-  - WIN: `WIN celebrate→debrief @ endings` — worst
-    `map:high-five` over clue-2 text ("This is a hot desert cit…"),
-    max overlap 4,777.5 px² over 2,900 samples.
-  - FAIL: `FAIL fail-read→pout @ endings` — worst `map:think` over
-    clue-4 text ("After the PEPCON disaste…"), max overlap 4,777.5 px²
-    over 11,920 samples.
-  - **N7 VERIFIED PASSING inside the WIN run:** no clue-3/4/5 clip in
-    the play record or the network list after the guess-2 solve (the
-    test reached and passed that assertion before failing at the N2
-    absorb; absence checks fail loudly, so reaching the absorb proves
-    them).
-  - **What the failure IS (screenshots read first-hand):** at the
-    1440 px endings viewport, Watson stands at his clue-card STATION
-    (left gutter beside the active card — the cure working) and Holmes
-    stands on the card's LEFT EDGE, his painted box overlapping the
-    card's first text column. Holmes is the CELEBRATE/FAIL_READ layout
-    partner placed beside Watson by the host's existing celebration
-    layout — a phase this branch never touched (CELEBRATE was already
-    "station" for Watson before the cure; FAIL_READ likewise). The
-    sampler's "map:" prefix is its cluster label for Holmes, not a map
-    position — in both failure screenshots **neither figure is on the
-    map**; both stand at the clue cards. So: **pre-existing
-    celebration/fail-read layout overlap, exposed by the NEW N2
-    windows (Silo QA's own gap), not a regression of this cure.**
-    Per the finisher brief (pin exposes a product bug → flag before
-    touching production code) this is flagged to the parent for a
-    routing decision; the pins are NOT loosened and production code
-    is NOT touched by this session.
-- [x] **Gate 1b — `detective-watson-walk.spec.ts`: 9 passed / 0 failed**
-  (PLAYWRIGHT_EXIT=0, full output read; log `e2e-walk1.log` in the
-  evidence dir). The main walk test at 390/768/1280 carries BOTH the
-  N2 guessing-chain window (SELECTION_READ → NOTE_MARK → ASK_NEXT →
-  READING sampled in order; window absorbed at 0 px²) and the clue-2
-  walk window — **N2 guessing-chain half: PASSING**. The new mid-walk
-  tap test passed — **N6: PASSING**. Kill-switch (watsonWalk OFF) and
-  reduced-motion tests also passed.
-- [x] **Gate 2 — nit-5 measurement TAKEN: maxOverlap 0 px²**
-  (watsonWalk OFF via `fulfillFlagsStaging`, 390 px; throwaway probe,
-  written → run → deleted; log `e2e-nit5b.log`). 9,600 figure/text
-  pair samples across two 4 s windows: the first right after the
-  unlock gesture (host not yet mounted — phase null, bench/CASE_OPEN
-  window), the second starting 2.5 s after the guess commit (phase
-  SELECTION_READ, spanning the guessing-chain into the clue-2 read).
-  **No overlap anywhere on the walk-off path at 390 — nothing to
-  route.** Caveat for the record: the probe's strict READING-phase
-  gate never latched in the walk-off flow (the host mounts only after
-  the duet drains), so the windows are labelled by their actual
-  phases above, not by the intended READING label; the zero stands
-  for the windows sampled.
-- [x] Gate 3 — Silo QA delta re-key: the tip moved past `034535e`
-  ONLY by this file's GATES-STATE commits (records, zero code/test
-  changes) — the existing PASS-WITH-NITS + the now-run-verified gaps
-  stand; no code delta exists to re-key. Stated per the finisher
-  brief's either/or.
-- [x] Gate 4 — PR opened: PR #372; the parent's routing decision
-  (a) is recorded — the N2-endings failure is routed to its own
-  follow-up (issue #371) and this PR proceeds with the failure
-  recorded honestly in the PR body.
-- [ ] Gates 5–7 — panel + DevEx + benchmark ran on `3f3eaf0`
-  (panel 13/13 in: 1 APPROVE, 10 APPROVE-WITH-NITS, 2 BLOCKs both
-  adjudicated pre-existing/out-of-scope — game audio → PR #370/PR 2,
-  game player → issues #371/#373 + PR #370/PR 2; DevEx records cure
-  applied after the panel, confirmation re-vote follows); merge
-  awaits the panel verdict on the cured tip + the parent's merge
-  call on the standing audio BLOCK.
+- Gates on the merge tip `53a59b5` (2026-11-08, logs on the
+  builder VM at /workspace/rock-pr340-logs): `npm ci` 0 · `tsc
+  --noEmit` 0 · `typecheck:worker` 0 · `build` 0 · `npm test` 0
+  (scripts 1023 pass / 9 skip / 0 fail; src 2266/2266) ·
+  `test:worker` 145/145 · `lint-cards` GATE PASSED · `build:pages`
+  0 · `lint:content` GATE PASSED · `check:flags` 0.
+- E2E (`flock ~/workspace/.e2e.lock`, `--workers=1 --retries=0`,
+  built Pages artifact). Browser: Playwright's bundled Chromium
+  v1243 is NOT installed on this VM (it needs a download, not
+  approved); ran with the config's documented override
+  `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome` (Chrome
+  156). `guess-counter.desktop.spec.ts` 2/2 pass;
+  `geodetective.spec.ts` 17/18 — spec:199 (win path) fails at
+  line 238: strict-mode violation, `heading "Ankara, Türkiye"`
+  matches both the guess sheet's h2 and the reveal's h2.
+  Pre-existing, not this PR: the identical test on unmodified main
+  `9e49da3` fails 3/3 with the same error (`--repeat-each=3`); this
+  tip also 3/3. This masks the older share-origin failure at
+  spec:256 recorded above (not reached).
+- GitHub's e2e job runs a fixed list of 6 specs that includes
+  neither `guess-counter.desktop.spec.ts` nor
+  `geodetective.spec.ts`, so CI green does not exercise this fix.
 
-> **SUPERSEDED — records cure, 2026-11-08 (pipeline finisher).**
-> This capsule's per-gap run statuses below are STALE: they were written
-> before the re-runs and claim several gaps are "NOT YET RUN", nit-5 is
-> "not taken", and the Chromium outage is current. All three are wrong
-> now. The **GATES-STATE section above is the current record**: GAP 4
-> (N7) RUN VERIFIED PASSING; GAP 2 endings windows RUN — FAILED on the
-> pre-existing CELEBRATE/FAIL_READ overlap (issue #371); GAP 2
-> guessing-chain + GAP 3 (N6) RUN VERIFIED PASSING (walk spec 9/9);
-> nit-5 MEASUREMENT TAKEN (maxOverlap 0 px²); the Chromium outage is
-> OVER. Where this capsule and GATES-STATE disagree, GATES-STATE wins.
+## P-Stack swarm on `16daa5ad` (2026-11-08 — not a 12-seat panel)
 
-## Gap-closure round (2026-11-08, Silo QA PASS-WITH-NITS follow-up)
+Owner ordered `/pstack:swarm` because the handbook persona pack
+and `~/workspace/custom-skills/local-meridian-review-pipeline/SKILL.md`
+are not on this machine. Role titles were not improvised as those
+12 seats. Resolver `check-models-config.py` is not installed, so
+each arm inherited the session model. The work model is unknown,
+so this review may be same-model. Not a merge approval.
 
-Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
+| Slice | SHA checked | Verdict |
+|---|---|---|
+| scope-and-regression | `16daa5ad` | PASS — 3 files; one counter line; merge-base `9e49da3` |
+| counter-correctness | `16daa5ad` | PASS (SHA recorded; case table was thin — parent is re-checking the comment commit) |
+| e2e-spec | `16daa5ad` | PASS |
+| records-honesty | `16daa5ad` | ISSUES |
 
-- [x] **GAP 1 (N1) — pinned + PASSING** (`49f210d`): unit test
-  "station law past guessing: THINKING_BEAT, FAIL_READ, POUT,
-  DEBRIEF and CELEBRATE never dock Watson (owner ruling 2026-11-07)"
-  in `detective-state.test.ts` — Watson's placement asserted
-  "station" in all five phases (CELEBRATE across all four
-  choreography steps). Full suite: `npm test` 2268/2268.
-- [x] **GAP 4 (N7) — pinned, RUN VERIFIED PASSING (GATES-STATE Gate 1a)** (`35db604`): endings
-  spec "WIN in 2" asserts, after a 2 s settle, that no
-  `case-137/clue-3.mp3`, `clue-4.mp3` or `clue-5.mp3` appears in
-  either the play record or the network request list. RUN: verified
-  passing inside the Gate 1a endings run — the test reached and
-  passed this assertion before the run's N2-window failure (absence
-  checks fail loudly, so reaching the absorb proves them).
-  (Correction, same day: an earlier version of this capsule
-  claimed this and the N2
-  endings windows were PASSING on a "2 passed" endings run.
-  That was a misread of truncated, piped output: the run's full
-  output shows **2 failed**, both at browser launch. No endings
-  test has passed in this round.)
-- [x] **GAP 2 (N2), endings half — pinned, RUN (windows FAILED on the pre-existing overlap, issue #371)**
-  (`35db604`): audit windows "WIN celebrate→debrief @ endings"
-  (9 s, opens at CELEBRATE) and "FAIL fail-read→pout @ endings"
-  (12 s, opens at the final miss) absorbed through `AuditTrail`
-  at 0 px². RUN (GATES-STATE Gate 1a): both windows absorbed
-  overlap up to 4,777.5 px² from Holmes's pre-existing
-  celebration/fail-read placement (issue #371).
-- [x] **GAP 2 (N2), guessing-chain half — pinned, RUN VERIFIED PASSING (walk spec 9/9, GATES-STATE Gate 1b)**
-  (`368c201`): in the watson-walk main test (all 3 widths), a
-  12 s audit window "guessing chain selection→note→ask-next"
-  opens once SELECTION_READ is live + 300 ms (the documented
-  ~200 ms guess-commit FLIP exclusion kept exactly), with a
-  trace assertion that SELECTION_READ → NOTE_MARK → ASK_NEXT →
-  READING were sampled in order and a play-order subsequence
-  (name → suspicion → ask-next → clue-2). RUN: the window
-  absorbed at 0 px² at all three widths.
-- [x] **GAP 3 (N6) — pinned, RUN VERIFIED PASSING (GATES-STATE Gate 1b)** (`368c201`): new
-  watson-walk test "watson walk: tap on Watson MID-WALK is
-  ignored — one figure, walk arrives, held clue read fires
-  exactly once (phone 390)". Pins the shipped behaviour: during
-  a speech-gated walk the replay cue is hidden and the figure
-  cluster is pointer-events:none, so the tap is a no-op — walk
-  still "walking" after the tap, exactly one
-  `[data-detective="watson"]` in every walking sample (never >1
-  anywhere), clue-2 read + ack-2 each exactly once. RUN: passing
-  in the Gate 1b walk-spec run (9/9).
-- [x] **OBSERVATION (nit 5) — MEASUREMENT TAKEN: maxOverlap 0 px² (GATES-STATE Gate 2).**
-  The finisher re-ran the probe (audit sampler + per-frame
-  phase, watsonWalk OFF via `fulfillFlagsStaging`, 390px, two
-  4 s windows, 9,600 pair samples): maxOverlap 0 px² (log
-  `e2e-nit5b.log`). The probe's strict READING gate never latched
-  in the walk-off flow, so the windows are recorded under their
-  actual phases in GATES-STATE Gate 2.
-- **Chromium outage — RESOLVED (see GATES-STATE Gate 1).** At the
-  time this capsule was written, every NEW Chromium launch on
-  this VM failed with `Hatch WebGL domain policy is required
-  for browser startup` (chrome_main_delegate.cc:1283) — a
-  runtime policy delivery break, not a code issue. The finisher
-  re-test found the outage OVER on the real spec path
-  (Playwright + bundled chromium-1243 launches and renders).
-  The re-runs prescribed here are DONE — GATES-STATE Gates 1a/1b
-  record the results. Historical detail, kept for the record:
-  the endings run started 10:42 (VM clock) **failed both tests at
-  browserType.launch** with exactly this error (full output in
-  the run log; error contexts under `test-results/`); a bare
-  `chrome --headless --dump-dom about:blank` reproduced it and
-  was still failing at 11:38. The binary's strings show it
-  requires `--hatch-webgl-allowed-domains-file` + `-sha256`
-  switches that are not present on disk. Re-run prescription
-  (DONE):
-  `npx playwright test tests/e2e/detective-endings.spec.ts --workers=1`
-  then `npx playwright test tests/e2e/detective-watson-walk.spec.ts --workers=1`
-  (read the full reporter output — a piped `tail` masks the
-  playwright exit code; that masking caused the correction
-  above).
-- [x] Gap-round gates: `npx tsc --noEmit` clean ·
-  `npm test` PASS 2268/2268 · `npm run test:worker` PASS 145/145 ·
-  `node scripts/lint-cards.mjs` GATE PASSED ·
-  `npm run build:pages` PASS (exit 0)
+Kept from records-honesty (parent dropped two BLOCKs that treated
+"not re-run in this session" as proof the builder VM log was false;
+GitHub `build (22.x)` on `16daa5ad` is success and includes
+`npm run build` + `npm test`):
+
+- The PR body said a JSX why-comment was added. It was not in
+  `16daa5ad`. This commit adds it above the counter. The expression
+  is unchanged. It now sits under that comment (line moves by the
+  comment only).
+- The PR-opened checkbox was unticked. It is ticked above. PR #340
+  is open. Still no merge.
+- GitHub reviews API on #340 was empty. The "9 APPROVE / 3
+  APPROVE-WITH-NITS on `8e3ccda`" sentence is PR-body prose, not a
+  review object, and it does not cover this tip.
+
+Independent re-run beside the builder log, not a replacement of it:
+`tsc` 0, `test:worker` 145/145, `typecheck:worker` 0, lint-cards
+GATE PASSED, lint-content GATE PASSED, `build:pages` 0,
+`guess-counter.desktop.spec.ts` 2/2. Browser: Chrome for Testing
+156.0.8078.4 (headless shell). `/usr/bin/google-chrome` was absent.
+`npm test`: scripts 1021 pass / 11 skip / 0 fail, src 2266/2266.
+The two extra skips versus 1023/9 are the SSR pins; `npm run build`
+was not re-run here. `geodetective.spec.ts:199` was not re-run.
+No Cloudflare Workers build result for `16daa5ad`.
+
+## Sync with main (2026-11-08, verification-gate crew — not a re-approval)
+
+- Merged `origin/main` @ `63d82869` (#372) into this branch (no
+  rebase, no force; pushed by GitHub API replay — the created tree
+  `e6ce631f` matched the local merge tree exactly). Merge commit
+  `78b258e9`, parents `835ad2ef` + `63d82869`. The only conflict was
+  this file; resolved by keeping this PR's record, per the standing
+  per-branch convention. Branch diff vs main is now exactly 3 files:
+  this file, `src/game/loop/LoopScreen.tsx`, and
+  `tests/e2e/guess-counter.desktop.spec.ts` — the counter fix is
+  unchanged (the expression sits at LoopScreen.tsx:1444 on this
+  tip). GitHub reports the PR mergeable again.
+- Gates on the merge tip `78b258e9` (2026-11-08, logs at
+  `~/workspace/meridian-pr340-e2e/logs-gate/t340/` on this VM):
+  `tsc --noEmit` 0 · `npm test` 0 (scripts 1021 pass / 11 skip /
+  0 fail of 1032; src 2268/2268) · `test:worker` 145/145 ·
+  `typecheck:worker` 0 · `lint-cards` GATE PASSED · `build:pages` 0.
+- E2E (`flock ~/workspace/.e2e.lock`, `--workers=1`, built Pages
+  artifact; browser = Playwright's bundled Chromium 1243 via the
+  config's documented `PLAYWRIGHT_CHROMIUM_EXECUTABLE` override —
+  it IS installed on this VM): `guess-counter.desktop.spec.ts`
+  **2/2 pass**. The 6 leftover failures from the original full-suite
+  run were baseline-matched on pristine main `63d82869` first: ALL
+  SIX are pre-existing, zero are regressions from this PR — five
+  fail signature-identically on unmodified main
+  (tutorial.spec.ts:125/166/174 strict-mode 'Take the tour' ×2;
+  crash-watchdog.spec.ts:164 lastMilestone; offline-content
+  .spec.ts:203 heading timeout), and offline-content.spec.ts:181 is
+  a proven flake on both trees (storyteller-CSS preload console
+  error; trace-settled as the test's own offline choreography).
+  On this tip the same six fail with identical signatures
+  (`logs-gate/t340/e2e-six.log`), plus the pre-existing
+  telemetry-spill teardown error also present on main. Fixes for
+  the four clusters were built under a signed Tier 2 council
+  manifest on their OWN branches off main (this PR stays purely
+  the counter fix): `fix/e2e-tutorial-tour-names` @ `acbd506d`,
+  `fix/e2e-watchdog-milestone-assertion` @ `ed13b47f`,
+  `fix/e2e-offline-loop-scenario` @ `ff0d2628`,
+  `fix/e2e-offline-preload-assertion` @ `8cbe1b99` — each gated
+  green on its own scope; no PRs opened for them.
+- GitHub CI on `78b258e9`: `build (22.x)` SUCCESS · `e2e` (the
+  fixed 6-spec job — still neither guess-counter nor geodetective)
+  SUCCESS · GitGuardian SUCCESS. No Workers Builds result exists
+  for this or any branch: branch builds are off account-wide
+  (platform tag mismatch, fixed during PR #351 by disabling
+  non-production branch builds); production Workers state is
+  untouched by this work.
+- This tip supersedes every earlier tip the panel or swarm looked
+  at; the 12-seat panel + Reality Checker refresh on this tip is
+  recorded in `~/workspace/meridian-pr340-e2e/CREW-REPORT-2.md`.
+  Still NO MERGE without the owner's per-PR word.
+
