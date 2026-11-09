@@ -27,6 +27,25 @@ export async function stubJournalMedia(page: Page): Promise<void> {
   );
 }
 
+/**
+ * Same route as stubJournalMedia, but fulfilled with the REAL 10 s Old
+ * Faithful clip (5,664,273 bytes) instead of the 2 s fixture — the
+ * fixes specs and the screen recording show the real movie bytes. The
+ * video src stays the REAL meridian-media URL; only the bytes are
+ * local. Read lazily so specs that never use it never touch the file.
+ */
+export async function stubJournalMediaRealClip(page: Page): Promise<void> {
+  const realClip = readFileSync(
+    path.resolve(
+      process.env.HOME ?? "",
+      "workspace/journal-player-play/real-clip/old-faithful.mp4",
+    ),
+  );
+  await page.route("**/meridian-media/journal/*.mp4", (route) =>
+    route.fulfill({ status: 200, contentType: "video/mp4", body: realClip }),
+  );
+}
+
 /** A fixed instant in a pure-triple window (index < 33), with its index. */
 export function fixedInstant(): { time: Date; index: number } {
   let t = Date.UTC(2026, 9, 16, 12, 0, 0);
