@@ -34,15 +34,26 @@ test("GET INVOLVED sits inside the 390px viewport with no nav strip scroll", asy
   const nav = page.locator(".hv5-nav nav");
   const items = page.locator(".hv5-nav nav button, .hv5-nav nav a");
   await expect(items).toHaveCount(6);
+  // getBoundingClientRect via evaluate: locator.boundingBox() flaked to
+  // null on the nav buttons once (transient, during the header's
+  // entrance state — the probe re-measured the same elements fine).
   for (let i = 0; i < 6; i++) {
-    const box = await items.nth(i).boundingBox();
-    expect(box!.left).toBeGreaterThanOrEqual(0);
-    expect(box!.right).toBeLessThanOrEqual(390);
+    const item = items.nth(i);
+    await expect(item).toBeVisible();
+    const r = await item.evaluate((el) => {
+      const b = el.getBoundingClientRect();
+      return { left: b.left, right: b.right };
+    });
+    expect(r.left).toBeGreaterThanOrEqual(0);
+    expect(r.right).toBeLessThanOrEqual(390);
   }
   const button = page.getByRole("button", { name: "GET INVOLVED" });
   await expect(button).toBeVisible();
-  const btnBox = await button.boundingBox();
-  expect(btnBox!.right).toBeLessThanOrEqual(390);
+  const btnRect = await button.evaluate((el) => {
+    const b = el.getBoundingClientRect();
+    return { right: b.right };
+  });
+  expect(btnRect.right).toBeLessThanOrEqual(390);
   // No horizontal scrolling in the strip: everything is laid out, not clipped.
   const overflow = await nav.evaluate((el) => el.scrollWidth - el.clientWidth);
   expect(overflow).toBe(0);
