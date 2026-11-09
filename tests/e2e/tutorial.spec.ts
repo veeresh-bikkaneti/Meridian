@@ -47,7 +47,7 @@ const beat3 = (page: Page) => page.getByTestId("tutorial-beat-3");
 async function startTour(page: Page): Promise<void> {
   await gotoMenu(page);
   await expect(invite(page)).toBeVisible();
-  await page.getByRole("button", { name: "Take the tour" }).click();
+  await invite(page).getByRole("button", { name: "Take the tour" }).click();
   await expect(page.locator(".satellite-map")).toBeVisible({ timeout: 60_000 });
   await expect.poll(() => readPhase(page), { timeout: 30_000 }).toBe("aim");
   await expect(beat1(page)).toBeVisible();
@@ -105,6 +105,8 @@ test("invitation shows on first run; dismissing persists across visits", async (
   await gotoMenu(page);
   // The invitation is inline: every edition button stays usable beneath it.
   await expect(invite(page)).toBeVisible();
+  await expect(page.getByRole("button", { name: "Take the tour again", exact: true })).toBeVisible();
+  await expect(page.getByTestId("take-tour-link")).toHaveAccessibleName("Take the tour again");
   await expect(
     page.getByRole("button", { name: "Play the globe" }),
   ).toBeVisible();
