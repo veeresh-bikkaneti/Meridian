@@ -335,7 +335,7 @@ export function JournalPlayer({
             aria-hidden="true"
           />
         ) : null}
-        <p className="hv5-journal-status" data-testid={`journal-loading-${noteId}`}>
+        <p className="hv5-journal-status" data-testid={`journal-loading-${noteId}`} role="status">
           Loading the movie…
         </p>
         <button

@@ -28,6 +28,15 @@ export interface JournalMovieManifest {
 
 export const JOURNAL_MANIFEST_PATH = "videos/journal-manifest.json";
 
+/**
+ * The only baseUrl a manifest may carry — pinned by the build validator
+ * (scripts/validate-journal-manifest.mjs BASE_URL). The runtime re-pins
+ * it here so a swapped or stale manifest cannot redirect clip URLs
+ * elsewhere; anything else is not a usable manifest.
+ */
+export const JOURNAL_MOVIE_BASE_URL =
+  "https://veeresh-bikkaneti.github.io/meridian-media/journal/";
+
 /** Public URL of the manifest file (same assetBase seam as images/audio). */
 export function journalManifestUrl(): string {
   return `${assetBase()}${JOURNAL_MANIFEST_PATH}`;
@@ -60,7 +69,7 @@ export function parseJournalMovieManifest(value: unknown): JournalMovieManifest 
     return null;
   }
   const v = value as Record<string, unknown>;
-  if (typeof v.baseUrl !== "string" || v.baseUrl.length === 0) return null;
+  if (v.baseUrl !== JOURNAL_MOVIE_BASE_URL) return null;
   if (typeof v.movies !== "object" || v.movies === null || Array.isArray(v.movies)) {
     return null;
   }

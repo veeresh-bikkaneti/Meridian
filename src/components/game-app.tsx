@@ -1559,15 +1559,24 @@ export function GameApp() {
   // `run` is a new object on every pin drop / phase change, so keying
   // on it would abort and restart the warm mid-round. The trigger is
   // the brief's — `run !== null || loopOpen` first becoming true.
-  const warmedJournalIdsRef = useRef<Set<string>>(new Set());
+  // Warmed ids, keyed by journal set index: a set rotation gets a fresh
+  // set (no re-warm of the old set, no skip of the new one), and a later
+  // round in the same set never re-warms what is already cached.
+  const warmedJournalIdsRef = useRef<Map<number, Set<string>>>(new Map());
   const roundActive = run !== null || loopOpen;
   useEffect(() => {
     if (!roundActive) return;
     if (!isJournalPrefetchAllowedNow()) return;
-    warmedJournalIdsRef.current = new Set();
+    // A round that starts in an already-hidden tab must not warm: the
+    // visibilitychange listener below only fires on a transition.
+    if (document.visibilityState === "hidden") return;
+    const setIndex = journalSetIndexAt(Date.now());
     const setNotes =
-      journalSetByIndex(journalSetIndexAt(Date.now())) ?? journalSetAt(Date.now());
+      journalSetByIndex(setIndex) ?? journalSetAt(Date.now());
     const noteIds = (setNotes?.notes ?? []).map((note) => note.id);
+    const warmedIds =
+      warmedJournalIdsRef.current.get(setIndex) ?? new Set<string>();
+    warmedJournalIdsRef.current.set(setIndex, warmedIds);
     let cancelled = false;
     let handle: JournalPrefetchHandle | null = null;
     const abortController = new AbortController();
@@ -1581,7 +1590,7 @@ export function GameApp() {
     document.addEventListener("visibilitychange", onVisibility);
     void resolveJournalPrefetchEntries(noteIds, {
       playingJournalId: null,
-      warmedIds: warmedJournalIdsRef.current,
+      warmedIds,
     }).then((entries) => {
       if (cancelled || entries.length === 0) return;
       const idByUrl = new Map(entries.map((entry) => [entry.url, entry.noteId]));
@@ -1592,12 +1601,16 @@ export function GameApp() {
           onWarmed: (url, warmed) => {
             if (!warmed) return;
             const id = idByUrl.get(url);
-            if (id) warmedJournalIdsRef.current.add(id);
+            if (id) warmedIds.add(id);
           },
         },
       );
     });
     return () => {
+      // Abort landmark: this cleanup runs when roundActive flips false —
+      // at summary Done, not at End game (run stays non-null while the
+      // summary is up, so warms keep progressing during the summary
+      // and only abort at Done).
       cancelled = true;
       document.removeEventListener("visibilitychange", onVisibility);
       handle?.abort();
