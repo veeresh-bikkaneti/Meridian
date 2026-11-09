@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from "playwright/test";
+import { expect, type BrowserContext, type Page, type Route } from "playwright/test";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
@@ -21,9 +21,52 @@ const SET_COUNT = 36;
 
 const FIXTURE_MP4 = readFileSync(path.resolve("tests/e2e/fixtures/journal-player-test.mp4"));
 
+/**
+ * Range-aware mp4 fulfillment.
+ *
+ * Production (GitHub Pages / Fastly) answers byte-range requests on
+ * the journal clips with 206 Partial Content (verified 2026-11-09
+ * with curl: `Range: bytes=0-99` → 206). The clips are NOT faststart
+ * — moov sits at the END of the file (old-faithful.mp4: moov at
+ * 5656737 of 5664273 bytes) — so Chromium can only build a seek
+ * index by fetching the moov tail over ranges. A plain 200 + full
+ * body (what the stub used to do) leaves `video.seekable` at [0, 0]
+ * and silently ignores every `currentTime = X` assignment, which
+ * broke tap-to-seek in the harness while it works in production.
+ * This fulfiller restores the production condition: Range requests
+ * get a 206 with the sliced bytes, plain requests get a 200 that
+ * advertises Accept-Ranges.
+ */
+async function fulfillMp4(route: Route, bytes: Buffer): Promise<void> {
+  const range = route.request().headers()["range"];
+  const m = range ? /bytes=(\d+)-(\d*)/.exec(range) : null;
+  if (m) {
+    const start = parseInt(m[1]!, 10);
+    const end = m[2] ? Math.min(parseInt(m[2], 10), bytes.length - 1) : bytes.length - 1;
+    if (Number.isFinite(start) && start >= 0 && start <= end) {
+      await route.fulfill({
+        status: 206,
+        contentType: "video/mp4",
+        headers: {
+          "accept-ranges": "bytes",
+          "content-range": `bytes ${start}-${end}/${bytes.length}`,
+        },
+        body: bytes.subarray(start, end + 1),
+      });
+      return;
+    }
+  }
+  await route.fulfill({
+    status: 200,
+    contentType: "video/mp4",
+    headers: { "accept-ranges": "bytes" },
+    body: bytes,
+  });
+}
+
 export async function stubJournalMedia(page: Page): Promise<void> {
   await page.route("**/meridian-media/journal/*.mp4", (route) =>
-    route.fulfill({ status: 200, contentType: "video/mp4", body: FIXTURE_MP4 }),
+    fulfillMp4(route, FIXTURE_MP4),
   );
 }
 
@@ -42,7 +85,7 @@ export async function stubJournalMediaRealClip(page: Page): Promise<void> {
     ),
   );
   await page.route("**/meridian-media/journal/*.mp4", (route) =>
-    route.fulfill({ status: 200, contentType: "video/mp4", body: realClip }),
+    fulfillMp4(route, realClip),
   );
 }
 

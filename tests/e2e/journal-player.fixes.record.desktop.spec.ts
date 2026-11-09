@@ -101,7 +101,11 @@ test("recorded walkthrough: all six fixes on desktop", async ({ page }) => {
   await expectPlaying(video);
   await page.waitForTimeout(1_000);
 
-  // 8. Tab through toggle → mute → Close, Enter closes.
+  // 8. Tab through toggle → CC → Story text → mute → Close, Enter closes.
+  await page.keyboard.press("Tab");
+  await page.waitForTimeout(400);
+  await page.keyboard.press("Tab");
+  await page.waitForTimeout(400);
   await page.keyboard.press("Tab");
   await page.waitForTimeout(400);
   await page.keyboard.press("Tab");
