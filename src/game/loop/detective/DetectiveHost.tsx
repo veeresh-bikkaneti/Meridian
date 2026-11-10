@@ -778,6 +778,10 @@ export default function DetectiveHost(
     if (seenSheetRef.current === sheetOpen) return;
     seenSheetRef.current = sheetOpen;
     dispatch({ type: sheetOpen ? "sheetOpened" : "sheetClosed" });
+    // The pair stays visible under the sheet (2026-11-10), so a
+    // berthed Holmes walks home to the dock when the sheet opens:
+    // the player is answering the sheet, not pausing over the map.
+    if (sheetOpen && berthedRef.current) exitToDockRef.current(false);
   }, [sheetOpen, dispatch]);
 
   // The player's current pick → the selection read (PR 2a cure: the
@@ -1426,6 +1430,7 @@ export default function DetectiveHost(
     const attemptConfirm = (triesLeft: number) => {
       pauseTimerRef.current = null;
       if (viewRef.current.phase !== "SEARCH_IDLE") return;
+      if (seenSheetRef.current) return; // the guess sheet is up: no thinking pause
       if (companionModeRef.current === "killed") return;
       const now = performance.now();
       const point = detector.check(now, now - lastMapActivity);

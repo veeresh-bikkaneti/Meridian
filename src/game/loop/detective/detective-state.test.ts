@@ -474,6 +474,27 @@ test("fail path: answer read → truce cheer-up, STICKY (no dwell, no auto-advan
   assert.notEqual(viewForState(last(steps).state).holmes.pose, "pout");
 });
 
+test("pointer: no thinking pause while the guess sheet is up (K3)", () => {
+  // A pause confirmed on the map ends when the sheet opens…
+  const opened = run([
+    ...normalClue(1),
+    { type: "pointerPaused", point: { x: 120, y: 200 } },
+    { type: "sheetOpened" },
+  ]);
+  assert.equal(last(opened).phase, "SEARCH_IDLE");
+  assert.equal(last(opened).state.lastPausePoint, null);
+  assert.equal(viewForState(last(opened).state).holmes.placement, "dock");
+  // …and a pointer resting on the map under the open sheet is not one.
+  const resting = run([{ type: "pointerPaused", point: { x: 40, y: 60 } }], last(opened).state);
+  assert.equal(last(resting).phase, "SEARCH_IDLE");
+  // Once the sheet closes, pauses count again.
+  const closed = run(
+    [{ type: "sheetClosed" }, { type: "pointerPaused", point: { x: 40, y: 60 } }],
+    last(opened).state,
+  );
+  assert.equal(last(closed).phase, "SEARCH_AREA");
+});
+
 test("caseFailed from SEARCH goes straight to FAIL_READ", () => {
   const steps = run([...normalClue(1), { type: "caseFailed" }]);
   assert.equal(last(steps).phase, "FAIL_READ");

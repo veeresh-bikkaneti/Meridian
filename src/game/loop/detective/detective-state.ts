@@ -871,6 +871,13 @@ export function transition(
   // Absence flags are phase-independent state inputs.
   switch (event.type) {
     case "sheetOpened":
+      // The guess sheet is the player's focus now: a thinking pause
+      // that was confirmed on the map ends here, so Holmes is back at
+      // the dock while the sheet is up (the pair stays visible under
+      // the sheet since 2026-11-10, so a berth would show).
+      if (state.phase === "SEARCH_AREA") {
+        return result({ ...state, sheetOpen: true, phase: "SEARCH_IDLE", lastPausePoint: null });
+      }
       return result({ ...state, sheetOpen: true });
     case "sheetClosed": {
       const closed = { ...state, sheetOpen: false };
@@ -1322,7 +1329,9 @@ export function transition(
     }
 
     case "pointerPaused":
-      if (state.phase === "SEARCH_IDLE") {
+      // A pointer resting on the map while the guess sheet is up is
+      // not a thinking pause: the player is answering the sheet.
+      if (state.phase === "SEARCH_IDLE" && !state.sheetOpen) {
         return result({
           ...state,
           phase: "SEARCH_AREA",
