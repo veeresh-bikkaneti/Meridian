@@ -19,6 +19,9 @@ Read docs/scaling/plans/feat-math-spec.md and follow it. You may edit ONLY:
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/math-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
