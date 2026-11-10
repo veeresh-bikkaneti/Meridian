@@ -42,6 +42,7 @@ not found on this machine, so no fact rests on it any more.
 | L-11 | 58 steps from the chamber to the plaza; 87 to the reflecting pool. | S2 | HIGH | not used (possible extra question, O6) |
 | L-12 | The memorial is at the western end of the National Mall in Washington, D.C. | S3 | HIGH | place, narration ("Washington, D.C.") |
 | L-13 | Coordinates 38.88927778, −77.05013889. | S6 | HIGH | place |
+| L-14 | The outside (Doric) columns are 44 feet tall, and the statue is 19 feet tall. | S1; S3 | HIGH | stretch (10-18) |
 
 Conflicts (none narrated):
 - **L-C1** Drums per column: 11 including the capital (S1) vs 12 (S3).
@@ -103,3 +104,4 @@ Why it is cut (standard §7a; council record in the spec):
 |---|---|---|---|---|---|
 | D2.His.1.3-5 | C3 History | by end of grade 5 | build and use a time order of related events | S7 Table 20 | lincoln-memorial |
 | 4.NBT.B.4 | CCSS Math | grade 4 | add and subtract multi-digit whole numbers with the standard algorithm | S8 | lincoln-memorial opening question (1922 − 1914) |
+| 6.EE.B.7 | CCSS Math | grade 6 | write and solve equations of the form x + p = q | S8 | lincoln-memorial stretch (10-18 only) |

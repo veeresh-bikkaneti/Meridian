@@ -15,7 +15,7 @@ the owner lifts the build gate.
 - `public/videos/journals/great-leaders/**` (untouched: Stage B)
 - this file
 
-## Done (2026-11-10, synced with origin/main `8dee5bad`)
+## Done (2026-11-10, synced with origin/main `a265f5f6`)
 
 - [x] §7a screen of both clips, strict reading (highest politics risk).
       **Lincoln Memorial: kept, reframed as a place** (building, 1914–1922,
@@ -24,7 +24,8 @@ the owner lifts the build gate.
       **MLK Memorial: cut** (sermon wall, civil-rights laws, public disputes
       over the memorial; a place-only version would mislead). Council 2–1;
       the dissent goes to the owner.
-- [x] `clips.json`: 1 clip in the exact I5 shape. The C3 code comes from the
+- [x] `clips.json`: 1 clip in the exact I5 shape, plus the optional I5
+      `stretch` (#403) for 10-18: 19 + x = 44 from the NPS heights (L-14). The C3 code comes from the
       live C3 PDF; the CCSS math code from the live CCSSO PDF.
 - [x] `sources.md`: every fact with source, date and confidence (NPS and
       encyclopedia, fetched live). Small NPS/encyclopedia number conflicts are
@@ -37,10 +38,12 @@ the owner lifts the build gate.
       checklist in the spec. The earlier draft's tool and voice names are
       removed.
 - [x] `check-clips.mjs` (no dependencies): I5 shape, reading grade per
-      group, and a §7a term tripwire on spoken and shown text. It passes on 1
-      clip. The retrieval question failed the grade check three times while
+      group, the optional stretch (older group, fact id present in
+      `sources.md`), and a §7a term tripwire on spoken and shown text. It
+      passes on 1 clip. The retrieval question failed the grade check three times while
       being reworded and passes now; the tripwire was tested once with a
-      planted "war" and failed as expected.
+      planted "war", and the stretch rules with a bad fact id and a younger
+      group; each failed as expected.
 
 ## Gates
 
@@ -56,7 +59,7 @@ is not created yet (Stage B).
   gate; no record of a lift was found on main.
 - Educator sign-off: blocked. No named educator yet.
 - Owner questions O1–O8 in the spec: count; overrule the MLK cut or not; a
-  replacement leader; educator name; no 10-18 or 18+ clip; extra questions;
+  replacement leader; educator name; no 18+ question; extra questions;
   listen check; "opened" vs "dedicated" wording.
 - Narration timing (22 words for about 8 s) is TO CONFIRM when rendered.
 

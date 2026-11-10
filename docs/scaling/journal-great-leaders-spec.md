@@ -22,7 +22,8 @@ act in it, and cut if it cannot be told truthfully that way.
 ## Why this is not in the 106
 
 Checked against `public/videos/journal-manifest.json` on `origin/main`
-`8dee5bad` (106 movies): no key for the Lincoln Memorial or the Martin Luther
+`8dee5bad` (106 movies; main has since moved to `a265f5f6`, which changes
+only `contracts.md`): no key for the Lincoln Memorial or the Martin Luther
 King Jr. Memorial. The nearest keys are `rushmore` (the carving),
 `arbor-lodge` and `lincoln-airport` (a place named Lincoln, not the memorial).
 The kept clip is additive; no existing story is touched.
@@ -68,12 +69,15 @@ record so the owner can overrule it.
 | Math used (live, S8) | 4.NBT.B.4 |
 | Opening real question | How many years did it take to build? 1922 − 1914 (does not depend on the current year) |
 | Retrieval check (read aloud, tap) | In the big statue, does Lincoln sit or stand? He sits |
+| Stretch (optional I5 field, 10-18) | Columns 44 ft, statue 19 ft: solve 19 + x = 44 (x = 25). Fact L-14; 6.EE.B.7 |
 | Globe fly-to / Flat 2D pin | Lincoln Memorial, National Mall, Washington, D.C. 38.88927778, −77.05013889 (S6) |
-| Facts: sourced (used) / UNVERIFIED / conflicts / screened out | 13 (9) / 2 / 4 / 5 |
+| Facts: sourced (used) / UNVERIFIED / conflicts / screened out | 14 (10) / 2 / 4 / 5 |
 
 The group follows the grade of the math the clip uses (owner rule: tag by the
-standard's grade). No clip serves 10-18 or 18+ yet (open item O5). The clip uses
-no algebra or trigonometry, and `check-clips.mjs` fails if a 7-10 clip does.
+standard's grade). 10-18 is served only by the optional stretch question that
+`contracts.md` I5 added on main in #403 (asked after the retrieval check, no
+new video). No 18+ question yet (open item O5). The 7-10 questions use no
+algebra or trigonometry, and `check-clips.mjs` fails if a 7-10 clip does.
 
 **Use it elsewhere (map, cross-application web):** elapsed years on a
 timeline (history: how long a building took); the same subtraction used for
@@ -106,7 +110,7 @@ sign the gate.
 | Keep the Lincoln Memorial? | Keep: a real build span to work out, and a statue a child can recognise. | Keep only as a place: no speech, no rally, no inscriptions, no death. | Keep: the building, year, columns and statue are uncontested and sourced. | **Keep, 3–0, reframed as a place.** |
 | Keep the "I Have a Dream" steps in the Lincoln clip? | It is the best-known moment there. | Cut: a political rally. | Cut: it turns the clip into the march's story, which is politics. | **Cut, 2–1.** Logged as L-X1. |
 | Keep the MLK Memorial? | Keep, reframed as a place: "a 30-foot stone figure, opened in 2011". | Cut: sermon wall (religion), civil-rights laws (politics), and public disputes over the memorial itself. | Cut: a truthful telling needs the movement and his ministry; without them the clip misleads (rubric A1). | **Cut, 2–1.** The educator's reframe is recorded here for the owner (O2); it is not adopted. |
-| Group | Subtracting years is grade 4 (4.NBT.B.4), so 7-10. | Fine. | Fine. | 7-10. 10-18 and 18+ open (O5). |
+| Group | Subtracting years is grade 4 (4.NBT.B.4), so 7-10. A 10-18 stretch on sourced heights fits 6.EE.B.7. | Fine: heights only. | Use the two-source heights (L-14), not the one-source 28 ft (L-9). | 7-10, plus a 10-18 stretch. 18+ open (O5). |
 | Replacement leader? | Wants a second clip. | Only an achievement-or-place story with no politics. | The earlier draft says no further US-only leaders without the owner. | **None added.** Owner's call (O3). |
 | Narration length | 22 words may not fit 8 s. | — | — | Keep. Measure in Stage B and cut, never rush. |
 
@@ -117,7 +121,7 @@ K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
 - Why first (§0): the clip opens with a real number question before play: [x]
 - Headline goal (§0): bridge + real-life application: [x] as a journal (no unit chain); elapsed-years bridge noted
 - Use-it-elsewhere round in another subject: [x] proposed (history timeline); not built
-- Bands served: [x] 7-10 (1 clip); 10-18 and 18+ none yet (O5)
+- Bands served: [x] 7-10 (1 clip); 10-18 by the optional I5 stretch; 18+ none yet (O5)
 - Objective per item, observable verb, "shown by": [x] clips.json
 - Standards cited per item (C3, plus CCSS for the math): [x] live sources S7, S8
 - Loop mapped: hook (opening question) / predict (answer before play) / see (movie, pin) / explain (narration) / retry (one hint, then review deck): [x]
@@ -135,7 +139,7 @@ K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
 ## Stage B (not started: build gate not lifted)
 
 Stage B starts only after the owner lifts the build gate for this branch. As
-of `origin/main` `8dee5bad` there is no record of a lift in the plan, in
+of `origin/main` `a265f5f6` there is no record of a lift in the plan, in
 `branch-prompts.md` or in `integrator-runbook.md`. When it is lifted, the
 work is:
 
@@ -163,8 +167,9 @@ work is:
    achievement or a place, no politics). The earlier draft asks that no further
    US-only leaders be added without your call.
 4. **O4 Educator:** who is the named educator who signs this topic in writing?
-5. **O5 Groups:** no 10-18 or 18+ clip. A possible 10-18 stretch on the same
-   clip: seated 19 ft vs standing 28 ft (L-6, L-9; L-9 is one source, MEDIUM).
+5. **O5 Groups:** no 18+ question, and 10-18 has only the stretch. No sourced
+   distance or angle was found for an 18+ question (for example a sight-line
+   angle to the roof), so none is invented.
 6. **O6 Extra questions:** the step counts (58 and 87, L-11) could be a second
    question. Not added without your word.
 7. **O7 Listen check:** the earlier draft records an unresolved question

@@ -1,6 +1,6 @@
 // Stage A check for the great-leaders journal data. No dependencies.
 // Run: node docs/scaling/journals/great-leaders/check-clips.mjs
-// Checks: clips.json matches the contract I5 keys, groups, ids, standard
+// Checks: clips.json matches the contract I5 keys (plus the optional stretch), groups, ids, standard
 // shape, coordinates and file paths; each captions draft exists and starts
 // with WEBVTT; caption, question and retrieval text sit at or below the
 // group's reading-grade limit (Flesch-Kincaid, heuristic syllables, +/- 1);
@@ -12,6 +12,7 @@ import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const clips = JSON.parse(fs.readFileSync(path.join(here, "clips.json"), "utf8"));
+const ledger = fs.readFileSync(path.join(here, "sources.md"), "utf8");
 const I5_KEYS = ["id", "group", "objective", "standard", "why", "place", "file", "captions", "retrieval"];
 const GROUPS = new Set(["7-10", "10-18", "18+"]);
 const MAX_GRADE = { "7-10": 5, "10-18": 12, "18+": 16 }; // top grade of each group (standard §1)
@@ -41,7 +42,7 @@ if (!Array.isArray(clips) || clips.length === 0) errors.push("clips.json must be
 console.log("| id | group | text | FK grade | limit | ok |\n|---|---|---|---|---|---|");
 for (const c of clips) {
   const id = c.id ?? "(no id)";
-  const keys = Object.keys(c).sort().join(",");
+  const keys = Object.keys(c).filter((k) => k !== "stretch").sort().join(",");
   if (keys !== [...I5_KEYS].sort().join(",")) fail(id, `keys must be exactly I5: ${I5_KEYS.join(", ")}`);
   if (!/^great-leaders:[a-z0-9-]+$/.test(id)) fail(id, "id must be great-leaders:<clip>");
   if (seen.has(id)) fail(id, "duplicate id");
@@ -63,13 +64,26 @@ for (const c of clips) {
   if (c.group === "7-10" && /[a-z]\s*[+=]\s*\d|\bsolve\b.*=|\b(sin|cos|tan)\b/i.test(`${c.why} ${c.retrieval?.question}`))
     fail(id, "no algebra or trigonometry in 7-10");
   const cueText = vtt.split(/\r?\n/).filter((l) => l && !/^(WEBVTT|NOTE|\d+$|\d\d:)/.test(l)).join(" ");
-  const spoken = `${cueText} ${c.why} ${c.retrieval?.question} ${c.retrieval?.answer}`;
+  // Optional I5 stretch: an older group, a question and answer, and a fact id in sources.md.
+  const ORDER = ["7-10", "10-18", "18+"];
+  const st = c.stretch;
+  if (st !== undefined) {
+    if (!(ORDER.indexOf(st.group) > ORDER.indexOf(c.group))) fail(id, "stretch group must be older than the clip's group");
+    if (!st.question || !st.answer) fail(id, "stretch needs question and answer");
+    if (!st.fact || !new RegExp(`\\| ${st.fact} \\|`).test(ledger)) fail(id, `stretch fact ${st.fact} not found in sources.md`);
+  }
+  const spoken = `${cueText} ${c.why} ${c.retrieval?.question} ${c.retrieval?.answer} ${st?.question ?? ""} ${st?.answer ?? ""}`;
   const hit = spoken.match(SCREEN);
   if (hit) fail(id, `§7a screen term in spoken or shown text: "${hit[0]}"`);
   for (const [label, text] of [["captions", cueText], ["why", c.why], ["retrieval", c.retrieval?.question]]) {
     const g = grade(text ?? ""), lim = MAX_GRADE[c.group], ok = g <= lim;
     if (!ok) fail(id, `${label} reads at grade ${g.toFixed(1)}, above ${lim}`);
     console.log(`| ${id} | ${c.group} | ${label} | ${g.toFixed(1)} | ${lim} | ${ok ? "yes" : "NO"} |`);
+  }
+  if (st?.question) {
+    const g = grade(st.question), lim = MAX_GRADE[st.group] ?? 0, ok = g <= lim;
+    if (!ok) fail(id, `stretch reads at grade ${g.toFixed(1)}, above ${lim}`);
+    console.log(`| ${id} | ${st.group} | stretch | ${g.toFixed(1)} | ${lim} | ${ok ? "yes" : "NO"} |`);
   }
 }
 if (errors.length) {

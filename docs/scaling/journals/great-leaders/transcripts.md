@@ -30,6 +30,11 @@ inscriptions are shown. [L-1, L-4, L-6, L-7, L-8, L-12]
 or stand? Choices: *He sits* (correct) · *He stands* · *He rides a horse*.
 Hint on a miss: "Look at the big chair in the middle hall."
 
+**Stretch (10-18 only, optional I5 field, read aloud after the retrieval
+check):** Each outside column is 44 feet tall. The seated statue is 19 feet
+tall. Solve 19 + x = 44 to find how much taller a column is. *(Answer: x = 25,
+so a column is 25 feet taller.)* [L-14]
+
 **Screen notes for the producer:** no "I Have a Dream" steps, no crowd or
 march, no inscriptions, no murals, nothing about the reason for the 36 columns.
 See `sources.md` L-X1 to L-X5.
