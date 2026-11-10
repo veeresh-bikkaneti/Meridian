@@ -6,75 +6,74 @@
 > boundaries. Every unit answers "why do I need this?" with a real problem
 > before it teaches the skill.
 
-**Prompt 4 · Spec only.** Paste this into any capable coding agent:
+**Stream 5 · Spec + shared engine; build gated · Start now.** Paste into any capable coding agent:
 
 ```
 Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/science-definitions.
 git fetch origin && git checkout feat/science-definitions && git merge --no-edit origin/main
-Read docs/scaling/plans/feat-science-definitions.md and follow it; it lists the shared rules to read.
+Read docs/scaling/plans/feat-science-definitions.md and follow it. You may edit ONLY:
+  docs/scaling/science-definitions-spec.md
+  docs/scaling/p4-algebra-physics-brief.md
+  docs/scaling/p6-chemistry-brief.md
+  docs/scaling/p7-science-map-brief.md
+  src/scenes/predict-see/**
+  docs/branch-status/feat-science-definitions.md
+Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/science-definitions. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-## Read first (once, from this branch after syncing with main)
-
-`docs/scaling/agent-instructions.md` (shared rules, owner decisions, house
-stack, token economy), `docs/scaling/k12-learning-design-standard.md` (the
-learning bar; cite it by section, never copy it),
-`docs/scaling/subject-progression-map.md` (chain and cross-application web),
-`docs/scaling/educator-gate-rubric.md` (what the teacher checks).
+Shared rules (read once, from this branch after syncing): `docs/scaling/agent-instructions.md`,
+`docs/scaling/k12-learning-design-standard.md` (cite by section, never copy),
+`docs/scaling/subject-progression-map.md`, `docs/scaling/educator-gate-rubric.md`,
+`docs/scaling/contracts.md`.
 
 ## Your task
 
-Update `science-definitions-spec.md` and the P4 / P6 / P7 briefs. Add the §9
-block. Pick ONE first predict-then-see system for P7 (recommend ramps and
-friction) and define it as an interactive three.js scene with Full / Lite /
-Flat tiers, every cause-to-effect rule sourced. Give each item an objective and
-an NGSS physical-science code (no life-science codes; no biology). Keep the
-disclosed Spatial Data Scientist seat. Push the P7 choice first, as its own
-small commit, so sibling branches can start.
+Update `science-definitions-spec.md` and the P4 / P6 / P7 briefs: §9 block,
+NGSS physical-science codes only (no biology), the disclosed Spatial Data
+Scientist seat. You own the shared predict-then-see engine: contract I4's
+types in `src/scenes/predict-see/types.ts` exactly as written in
+`contracts.md`, so physics and chemistry can build against them in parallel.
 
-## Order and neighbours
+Stage B, build v1 (about 4 hours), only once the owner has lifted the build
+gate for this branch (the integrator tells you): the I4 engine (three.js scene shell, tiers, dispose on exit, pause when hidden) with one ramps-and-friction demo scene. Ship the types file first, as its own small PR. Build it as a
+subject module (contract I1) with `released: false`, against contracts I2 to
+I4. Full / Lite / Flat tiers with the same learning; tests first; all
+`AGENTS.md` gates; a screen recording. Until Phase 0 merges, prove it with
+tests and a local harness you do not commit.
 
-- **Start after:** Nothing. Start now.
-- **Feeds:** `feat/science-spec`, `feat/physics-spec`, `feat/chemistry-spec` (the one P7 engine choice and the P4/P7 split).
-- **May collide with:** The three science-family spec branches read your P7 choice: decide it first and push early.
+## Files you own (exclusive; no other branch edits these)
 
-## Files you own
+- `docs/scaling/science-definitions-spec.md`
+- `docs/scaling/p4-algebra-physics-brief.md`
+- `docs/scaling/p6-chemistry-brief.md`
+- `docs/scaling/p7-science-map-brief.md`
+- `src/scenes/predict-see/**`
+- `docs/branch-status/feat-science-definitions.md` (your status: task, scope, done, open)
 
-`docs/scaling/science-definitions-spec.md`, `p4-algebra-physics-brief.md`, `p6-chemistry-brief.md`, `p7-science-map-brief.md`, plus your own section of `BRANCH_STATUS.md` (repo root, per
-`AGENTS.md`). Do not edit the shared docs (`agent-instructions.md`, the
-standard, the map, the rubric, `branch-prompts.md`, `plans/`, `AGENTS.md`)
-or another branch's files. Put any change you'd make to them in your report.
+Everything else is read-only for you. To change anything else, including root
+`BRANCH_STATUS.md`, the shared docs, `contracts.md`, the review deck,
+`learning.ts`, routes, `public/flags.json`, `public/videos/journal-manifest.json`,
+`package.json` or config, ask the integrator in your report, naming the file
+and why. The integrator makes the change on main, and you pick it up by merging.
 
-## Keep up with main (standing rule)
+## Keep up with main
 
-Sibling branches run in parallel and merge to main one at a time, so stay
-close to main:
-
-1. Sync at session start, after every merge to main, and before you open or
-   update a PR: `git fetch origin && git merge --no-edit origin/main`.
-2. Resolve conflicts. In `BRANCH_STATUS.md`, keep every section from both
-   sides, with yours on top. In shared docs, take main's version; you never
-   edit them here.
-3. After a merge, if `docs/scaling/` changed, re-read the changed shared docs.
-   Rerun your checks, then push.
-4. Do not rebase or force-push. A rebase rewrites history and needs a
-   force-push, which `AGENTS.md` allows only with the owner's authorization
-   naming this branch and that push. If the owner's assignment for this branch
-   grants it, you may rebase onto `origin/main` and push with
-   `--force-with-lease`; otherwise merge as above.
-5. Keep commits small and inside the files you own, so siblings rarely collide.
+Merge `origin/main` into your branch at session start, after each merge to
+main and before you open or update a PR: `git fetch origin && git merge
+--no-edit origin/main`. Because your paths are exclusive, conflicts should not
+happen. If one does, stop and report it instead of resolving it in a shared
+file. Don't rebase or force-push.
 
 ## Done when
 
-- Every §9 checkbox in the standard is ticked, or listed as open with a reason.
-- Every item has an observable objective and a standard code with a live
-  source, or is marked UNVERIFIED with a source note.
-- Every unit opens with a real problem that needs the skill (standard §0, §3)
-  and has a "use it elsewhere" round from the map's cross-application web.
-- Counts stay PROPOSED or TO CONFIRM; nothing is invented.
-- Your section of `BRANCH_STATUS.md` is updated; the branch is synced with main
-  and pushed; your final report is under 150 words and names the owner
-  decision needed next. No code gates apply (docs only); say so.
+- Every item in your task is done, or listed as open with a reason.
+- Your status file is updated, the branch is synced with main and pushed, and
+  a draft PR is open. You never merge it; the integrator does.
+- For code: all `AGENTS.md` gates are green and run by you, with a screen
+  recording. For docs only: say that no code gates ran.
+- Your report is under 150 words and names any file you need the integrator to
+  change.
