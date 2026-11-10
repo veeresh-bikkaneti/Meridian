@@ -173,6 +173,20 @@ export function fixedLine(id) {
 }
 
 /**
+ * Spoken-text overrides for name reads the render backend refuses
+ * (handbook FG-4: 88 planned name reads, deterministic per string, e.g.
+ * Lahore, Karachi, Baghdad). Keyed by geonames id; the value is the
+ * text sent to TTS in place of the display name. Fill it ONLY from a
+ * probe-names.mjs run on a machine with the TTS tool: the probe tries a
+ * ladder of variants per name and prints the first that renders. The
+ * override changes the spoken words only; the screen still shows the
+ * display name, and the manifest hash follows the spoken text, so the
+ * staleness gate stays exact. Empty = every name reads its display name.
+ * @type {Readonly<Record<string, string>>}
+ */
+export const NAME_SPOKEN_OVERRIDES = Object.freeze({});
+
+/**
  * Render spec for a bare selection-name read (Holmes). The row is an
  * unpacked names-catalog entry: { id: "geonames:<n>", n, r, p }.
  */
@@ -184,7 +198,7 @@ export function selectionNamePlan(row) {
   return spec({
     kind: "name",
     geonameId: numeric,
-    text: displayName(row),
+    text: NAME_SPOKEN_OVERRIDES[numeric] ?? displayName(row),
     voice: VOICES.holmes,
     speed: 100,
     file: `names/${numeric}.mp3`,
