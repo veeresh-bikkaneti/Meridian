@@ -24,7 +24,10 @@ const MEDIA_HOST = "https://veeresh-bikkaneti.github.io";
  * CSP-blocked and currentTime never moves, so this spec fails without the
  * fix and passes with it. The video src stays the REAL meridian-media
  * URL; only the bytes are local (Chromium in this VM cannot reach
- * github.io).
+ * github.io). Rotation-agnostic by design: it plays whichever entry the
+ * pinned instant shows — the 3-per-set player rotation and the
+ * 1-per-30-minute prefetch rotation show different entries at the same
+ * instant, and the CSP question is identical for either.
  */
 function productionCsp(): string {
   const text = readFileSync("public/_headers", "utf8");
@@ -82,19 +85,22 @@ test("journal movie plays under the real production CSP", async ({
     },
   );
 
-  // Same pin as the Old Faithful spec: set index 20 (Old Faithful,
-  // Rushmore, Gateway Arch).
+  // Pin the clock to a fixed instant and play whichever entry it shows.
+  // (Player: a 3-entry set headed by Old Faithful. Prefetch B8: the one
+  // entry in that 30-minute window. Either way the <video> src is a
+  // meridian-media URL, which is what CSP governs.)
   const time = new Date(Date.UTC(2026, 9, 17, 16, 0, 0));
   await page.clock.install({ time });
   await loadHome(page, time);
   const ids = await shownNoteIds(page);
-  expect(ids).toEqual(["old-faithful", "rushmore", "gateway-arch"]);
+  expect(ids.length).toBeGreaterThan(0);
+  const id = ids[0];
 
-  const video = await openEntry(page, "old-faithful");
+  const video = await openEntry(page, id);
   await expectPlaying(video);
   const t = await video.evaluate((v) => v.currentTime);
   expect(t).toBeGreaterThan(0);
 
   expect(servedCsp, "document served the production CSP").toBe(csp);
-  console.log(`csp: movie currentTime advanced to ${t.toFixed(2)}s under production CSP`);
+  console.log(`csp: movie currentTime advanced to ${t.toFixed(2)}s under production CSP (entry ${id})`);
 });

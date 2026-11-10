@@ -1066,3 +1066,12 @@ worked and only the renders were missing.
   the #388 tip; the old validator YES on `af7ec7c1` does not transfer.
   Next: merge this tip into `feat/journal-prefetch` (#389) per the
   owner's order.
+- **Follow-up (same evening):** the first merge attempt into prefetch
+  caught a spec bug — the CSP spec asserted the player's 3-entry set,
+  but prefetch B8 shows 1 entry per 30-minute window (`wagon-train` at
+  the pinned instant), so the spec failed there on the rotation
+  assertion, not on CSP. Fixed by making the spec rotation-agnostic: it
+  plays whichever entry the pinned instant shows (`ids[0]`). Re-run on
+  the player branch: CSP + facts specs 9/9, movie `currentTime` 0.51 s
+  (entry old-faithful). This lands as a second commit on this branch
+  before the prefetch merge is redone.
