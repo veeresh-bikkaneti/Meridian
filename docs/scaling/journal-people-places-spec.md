@@ -63,9 +63,14 @@ For every clip, in order:
 
 Learning parity: Full, Lite, and Flat ask the same question and score the same answer. Beauty changes. Content does not.
 
+## Owner calls
+
+- **Keep all 5 clips, including Andean roads** (length and division only; no religion, conquest, or defence, see `notTaught`). Recorded from the owner's instruction, not a signed approval. Count stays PROPOSED.
+- **Fixed opener on every clip.** All five narrations and captions open with "Hey kids, have you heard about this place?". `akashi-span`'s why was rewritten in plain words; its objective and retrieval are unchanged.
+
 ## Captions and transcript
 
-Spoken words are the `narration` string. Captions (timings PROPOSED until a real voice exists):
+Every narration opens with the recipe's fixed line, "Hey kids, have you heard about this place?" (`docs/journal-movies.md`), then one short hook with the key number, so the clip fits 10 seconds. The how far / how many / where question is asked by the `predict` prompt after the clip. Spoken words are the `narration` string. Captions (timings PROPOSED until a real voice exists):
 
 - `docs/scaling/journals/people-places/captions/<clip>.vtt`
 - transcript: `docs/scaling/journals/people-places/captions/<clip>.txt`
@@ -132,7 +137,7 @@ The signer should look hardest at the Andean road clip (rubric 17a) and at every
 
 ## Open
 
-- [ ] Owner: accept these five replacements, or cut the Andean road clip and name another. Count stays PROPOSED until the owner says otherwise.
+- [x] Owner call (2026-11-11, per the owner's instruction to the integrator; no signed approval): keep all 5 clips, including Andean roads, which teaches length and division only. Count stays PROPOSED.
 - [ ] Owner: name a human educator. No agent signs.
 - [ ] Owner: Stage B stays shut. Only the math definition and the Phase 0 shell split are approved to build (agent instructions). No mp4 and no `public/videos/journals/people-places/manifest.json` until that gate lifts.
 - [ ] Integrator, at Stage B only: merge manifest entries into `public/videos/journal-manifest.json`, and add a review-deck subject id if `src/game/learning.ts` needs one. Not requested now.

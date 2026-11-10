@@ -46,7 +46,7 @@
       "standardText": "Use maps, satellite images, photographs, and other representations to explain relationships between the locations of places and regions and their environmental characteristics.",
       "standardSource": "https://www.socialstudies.org/sites/default/files/c3/C3-Framework-for-Social-Studies.pdf",
       "standardChecked": "2026-11-10",
-      "why": "How far is it from one tower to the other? You need multiplication when two equal sides have to be added as a product, and you need the measured middle span to compare.",
+      "why": "The two side spans are the same length. How long are they together, and how does that compare with the middle span?",
       "opensWith": "how far",
       "place": {
         "lat": 34.616,
@@ -59,7 +59,7 @@
       "file": "public/videos/journals/people-places/akashi-span.mp4",
       "captions": "akashi-span.vtt",
       "captionsSpec": "docs/scaling/journals/people-places/captions/akashi-span.vtt",
-      "narration": "Hey kids, how far is it from tower to tower? This bridge in Japan measures 1,991 meters across the middle.",
+      "narration": "Hey kids, have you heard about this place? Its middle span is 1,991 meters long.",
       "predict": {
         "prompt": "Each side span is 960 meters. How long are the two sides together?",
         "answer": "1920",
@@ -119,7 +119,7 @@
       "file": "public/videos/journals/people-places/pont-du-gard.mp4",
       "captions": "pont-du-gard.vtt",
       "captionsSpec": "docs/scaling/journals/people-places/captions/pont-du-gard.vtt",
-      "narration": "Hey kids, how many arches are on the top row? This bridge in France has 35 arches up there.",
+      "narration": "Hey kids, have you heard about this place? This bridge in France has 35 arches on its top row.",
       "predict": {
         "prompt": "Look at the top row as 5 groups of 7 arches. How many arches is that? This grouping is a practice frame, not a claim about the builders.",
         "answer": "35",
@@ -186,7 +186,7 @@
       "file": "public/videos/journals/people-places/eratosthenes-earth.mp4",
       "captions": "eratosthenes-earth.vtt",
       "captionsSpec": "docs/scaling/journals/people-places/captions/eratosthenes-earth.vtt",
-      "narration": "How far is it from Alexandria to Syene? Eratosthenes used 5,000 stadia, then multiplied by 50.",
+      "narration": "Hey kids, have you heard about this place? In Alexandria, Eratosthenes multiplied 5,000 stadia by 50.",
       "predict": {
         "prompt": "What is 50 times 5,000?",
         "answer": "250000",
@@ -252,7 +252,7 @@
       "file": "public/videos/journals/people-places/andean-roads.mp4",
       "captions": "andean-roads.vtt",
       "captionsSpec": "docs/scaling/journals/people-places/captions/andean-roads.vtt",
-      "narration": "How far do these Andean roads go? UNESCO says the network is about 30,000 kilometers long.",
+      "narration": "Hey kids, have you heard about this place? These Andean roads stretch about 30,000 kilometers.",
       "predict": {
         "prompt": "Use 100 kilometers as one day on this map. That speed is practice, not a historical claim. How many days is 30,000 kilometers?",
         "answer": "300",
@@ -319,7 +319,7 @@
       "file": "public/videos/journals/people-places/aconcagua-height.mp4",
       "captions": "aconcagua-height.vtt",
       "captionsSpec": "docs/scaling/journals/people-places/captions/aconcagua-height.vtt",
-      "narration": "Where is the highest peak in the Americas? It is Aconcagua, in Argentina. The published heights do not agree.",
+      "narration": "Hey kids, have you heard about this place? Aconcagua, in Argentina, is the Americas' tallest peak. Its published heights disagree.",
       "predict": {
         "prompt": "Practice triangle, not a real survey. Ground distance 100 meters. Angle up 45 degrees. Tangent of 45 degrees is 1. How many meters tall is the practice triangle?",
         "answer": "100",
