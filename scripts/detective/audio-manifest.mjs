@@ -14,7 +14,7 @@
  * textHash = sha256 hex of `voice|speed|gainDb|text`.
  */
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, renameSync, statSync, writeFileSync } from "node:fs";
+import { closeSync, existsSync, openSync, readFileSync, readSync, renameSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { FIXED_LINES, VOICES, casePlan, displayName, selectionNamePlan } from "./render-plan.mjs";
 
@@ -263,6 +263,31 @@ export function collectExpectedSpecs(root, manifest) {
  * @returns {{ ok: boolean, checked: number,
  *   problems: { key: string, kind: "missing"|"stale"|"missing-file"|"orphan", detail: string }[] }}
  */
+/** Smallest clip that can hold audio: the shortest shipped read (a
+ * one-word ack) is several KB, so anything under this is a broken write. */
+export const MIN_CLIP_BYTES = 1024;
+
+/**
+ * Why an audio file is not a usable MP3, or null when it looks fine
+ * (#380). Checks the size floor and the start of the file: an ID3 tag
+ * or an MPEG audio frame sync (11 set bits).
+ */
+export function audioFileProblem(filePath) {
+  const size = statSync(filePath).size;
+  if (size === 0) return "file is empty (0 bytes)";
+  if (size < MIN_CLIP_BYTES) return `file is only ${size} bytes`;
+  const fd = openSync(filePath, "r");
+  const head = Buffer.alloc(3);
+  try {
+    readSync(fd, head, 0, 3, 0);
+  } finally {
+    closeSync(fd);
+  }
+  const id3 = head[0] === 0x49 && head[1] === 0x44 && head[2] === 0x33;
+  const sync = head[0] === 0xff && (head[1] & 0xe0) === 0xe0;
+  return id3 || sync ? null : "file does not start like an MP3 (no ID3 tag or frame sync)";
+}
+
 export function verifyManifest(root, manifest) {
   const expected = collectExpectedSpecs(root, manifest);
   const problems = [];
@@ -310,9 +335,15 @@ export function verifyManifest(root, manifest) {
       });
       continue;
     }
-    if (!existsSync(join(root, AUDIO_REL, stored.file))) {
+    const filePath = join(root, AUDIO_REL, stored.file);
+    if (!existsSync(filePath)) {
       problems.push({ key, kind: "missing-file", detail: `audio file missing: ${AUDIO_REL}/${stored.file}` });
+      continue;
     }
+    // #380: a zero-byte or corrupt clip used to pass every layer. The
+    // file must be big enough to hold audio and start like an MP3.
+    const bad = audioFileProblem(filePath);
+    if (bad) problems.push({ key, kind: "corrupt-file", detail: `${AUDIO_REL}/${stored.file}: ${bad}` });
   }
   return { ok: problems.length === 0, checked, problems };
 }

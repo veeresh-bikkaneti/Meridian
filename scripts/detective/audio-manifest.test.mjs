@@ -15,6 +15,15 @@ import {
   verifyManifest,
   writeManifest,
 } from "./audio-manifest.mjs";
+
+/** A stand-in clip that passes the #380 content check: an MPEG frame
+ * sync followed by padding. */
+function fakeMp3(bytes) {
+  const b = Buffer.alloc(bytes);
+  b[0] = 0xff;
+  b[1] = 0xfb;
+  return b;
+}
 import { casePlan } from "./render-plan.mjs";
 
 const ROOT = new URL("../..", import.meta.url).pathname;
@@ -62,7 +71,7 @@ function manifestFor(root, clue) {
   const plan = casePlan(clue, "Testville, Nevada, United States", 7);
   for (const spec of [...plan.clues, plan.answer]) {
     setEntry(manifest, spec, entryFromSpec(spec, { measuredHz: 90, measuredWpm: 140, durationSec: 5 }));
-    writeFileSync(join(root, "public/audio/detective", spec.file), "fake mp3 bytes");
+    writeFileSync(join(root, "public/audio/detective", spec.file), fakeMp3(2048));
   }
   return manifest;
 }
@@ -230,4 +239,29 @@ test("coverage: a hold outside the core range fails", () => {
 test("real tree: every core case is claimed or explicitly held (FG-3 closed)", () => {
   const manifest = readManifest(ROOT);
   assert.deepEqual(checkCoreCoverage(manifest), []);
+});
+
+/* #380: zero-byte or corrupt clips no longer pass the gate. */
+test("audioFileProblem: empty, tiny and non-MP3 files are named; real clips pass", async () => {
+  const { mkdtempSync, writeFileSync: write, rmSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const { join: j } = await import("node:path");
+  const { audioFileProblem, MIN_CLIP_BYTES } = await import("./audio-manifest.mjs");
+  const dir = mkdtempSync(j(tmpdir(), "clip-"));
+  try {
+    const f = (name, buf) => { const p = j(dir, name); write(p, buf); return p; };
+    assert.match(audioFileProblem(f("empty.mp3", Buffer.alloc(0))), /empty/);
+    assert.match(audioFileProblem(f("tiny.mp3", Buffer.from([0xff, 0xfb, 0x90]))), /only 3 bytes/);
+    const junk = Buffer.alloc(MIN_CLIP_BYTES * 2, 0x41);
+    assert.match(audioFileProblem(f("junk.mp3", junk)), /does not start like an MP3/);
+    const id3 = Buffer.alloc(MIN_CLIP_BYTES * 2);
+    id3.write("ID3", 0, "latin1");
+    assert.equal(audioFileProblem(f("id3.mp3", id3)), null);
+    const frame = Buffer.alloc(MIN_CLIP_BYTES * 2);
+    frame[0] = 0xff;
+    frame[1] = 0xfb;
+    assert.equal(audioFileProblem(f("frame.mp3", frame)), null);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
