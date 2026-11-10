@@ -1695,6 +1695,15 @@ export default function DetectiveHost(
    * corner is open ground (the zero-overlap law). Without a map
    * element the shipped station cluster remains the fallback. */
   const celebrateOnMap = celebrating && mapEl !== null;
+  /* #371, the loss half (owner order 2026-11-10): the fail read and the
+   * cheer-up play in the same map corner as the celebration. On a loss
+   * every card is revealed too, so Watson's station spot always sat on
+   * clue text. Both figures stand together in the dock for the
+   * cheer-up; without a map element the station stays the fallback. */
+  const failOnMap =
+    !celebrating &&
+    (view.phase === "FAIL_READ" || view.phase === "POUT") &&
+    mapEl !== null;
   const celebrateEl = celebrating ? (
     <div
       className="detective-host-celebrate"
@@ -2384,7 +2393,7 @@ export default function DetectiveHost(
       {flankHolmesEl}
       {flankHolmesMuteEl}
       {stripEl}
-      {stationReady && !celebrateOnMap && (stationFigures.length > 0 || celebrateEl) ? (
+      {stationReady && !celebrateOnMap && !failOnMap && (stationFigures.length > 0 || celebrateEl) ? (
         <div
           className={
             gutterStation
@@ -2430,9 +2439,22 @@ export default function DetectiveHost(
           {celebrateEl ?? stationFigures}
         </div>
       ) : null}
-      {(holmesOnMap || watsonOnMap || celebrateOnMap) && mapEl
+      {(holmesOnMap || watsonOnMap || celebrateOnMap || failOnMap) && mapEl
         ? createPortal(
             <>
+              {failOnMap ? (
+                <div
+                  className="detective-host-map detective-host-map-celebrate"
+                  data-testid="detective-ending-map"
+                  data-phase={view.phase}
+                  aria-hidden="true"
+                >
+                  <div className="detective-host-dock">
+                    {holmesEl && !holmesOnMap && !holmesFlanked ? <span key="h">{holmesEl}</span> : null}
+                    {watsonEl && !watsonOnMap ? <span key="w">{watsonEl}</span> : null}
+                  </div>
+                </div>
+              ) : null}
               {celebrateOnMap ? (
                 <div
                   className="detective-host-map detective-host-map-celebrate"
