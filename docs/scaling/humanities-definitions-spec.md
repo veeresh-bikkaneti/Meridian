@@ -392,17 +392,340 @@ Done when the acceptance criteria above are met, the process is written,
 the listen-verdict question is answered by the owner, and the educator
 sign-off is on file.
 
-## §3. P10 — GK Trivia Quiz
+## §3. P10 — GK Trivia Quiz (option A)
 
-*(Brief to follow: commit 3.)*
+**Status: PREPARED — AWAITING EDUCATOR SIGN-OFF. GATED — do not build.**
+Branch (proposed, confirm before use): `feat/gk-trivia-quiz`. **Gate to
+clear first:** P2 landed AND its own definition signed (GK topic map per
+band + judging rule + machine-verification gate) AND the readiness audit
+passed. Leaf packet. Rides P3's quiz loop — build after the loop is
+proven, or in parallel with P3 once P2's interfaces exist.
 
-## §4. P11 — GK Current Affairs
+### 3.1 What the definition must contain
 
-*(Brief to follow: commit 3.)*
+1. **GK boundary answer, sourced** — "school GK" is the boundary and it
+   is fuzzy: what counts as general knowledge a school teaches varies by
+   country and curriculum. The definition must name the GK topic map per
+   band with sources; the boundary cannot be invented. If the definition
+   cannot name it with sources, it reports that rather than building a
+   bank on a guessed boundary. (Open: Q16 — what counts as school GK per
+   band, varies by country/curriculum?)
+2. **Topic map following from the boundary** — every topic cites the
+   boundary research; a topic outside the map is out of scope.
+3. **Judging rule** — exact-answer judging in v1; a test walks right
+   answer, wrong answer, near-miss.
+4. **Question-bank shape** — bank + difficulty tiers, every question
+   machine-verified (answer checked against its source, not trusted from
+   the generator) and cited with a trusted source + confidence level. The
+   verification gate must be demonstrated on one complete mode; an
+   asserted gate is UNVERIFIED.
+5. **Review deck wiring** — misses replay by topic; topic tags are part
+   of the question record (a question with no topic tag cannot be
+   replayed by topic).
+6. **Loop reuse traced to P2/P3** — same run/session/scoring/review-deck
+   machinery as P3's quiz loop, new question bank and judging, against
+   P2's `Question`/`Result` interfaces. If P3 has not landed, this packet
+   waits for the loop contract — it does not re-implement a loop.
+7. **Overlap rule** — the same fact must not be written three ways with
+   three different answers across P5 (history), P7 (science), and P8
+   (journal). Overlapping facts cite one source; a fact with conflicting
+   sources across packets is a contradiction to resolve before build.
 
-## §5. P12 — GK Detective
+### 3.2 Scope
 
-*(Brief to follow: commit 3.)*
+**In:** one trivia mode on the quiz loop: school-GK questions per the
+signed topic map, exact-answer judging in v1; question bank + difficulty
+tiers, every question machine-verified and cited; review deck wired to
+question topics; host story clip after every question (§6.2); funnel
+events + E2E specs; lazy loading per the guardrail (§6.3) — the GK chunk
+loads only when a kid picks GK; inside GK, prefetch of the next 1–2 items
+is allowed.
+
+**Out:** current affairs (P11); detective format (P12); any GK beyond
+the signed school topic map; any new teaching (revision only — this is
+the rule the packet exists under); any tiny-model use (P9, parked); any
+behaviour change to geography or math.
+
+### 3.3 Acceptance criteria
+
+(a) Loop reuse traced to P2/P3; (b) verification gate demonstrated;
+(c) topic tags in the record; (d) load budget met on measured numbers
+from P2; (e) mode mocked at 390px and 1280px, per-band presentation
+mocked at both widths for both ends; (f) host clip spec bounded (§6.2);
+(g) mode plays end to end on the quiz loop; (h) judging test walks all
+cases; (i) review deck replays by topic; (j) overlaps resolved to one
+source per fact; (k) GK boundary named with sources; (l) audit four
+points demonstrated (§6.1).
+
+### 3.4 Educator sign-off — BLOCKED (UNSTAFFED)
+
+No educator persona exists. Nothing in this lens is approved. The named
+human educator / SME (a general-knowledge educator) must sign IN WRITING,
+before P10 can build:
+
+1. The GK topic map per band.
+2. The judging rule for this mode.
+3. The machine-verification gate, demonstrated on one complete mode.
+
+**Blocked items:** all three. A math educator's signature does not cover
+this packet.
+
+### 3.5 Open owner questions blocking P10
+
+Q16 (what counts as school GK per band, varies by country/curriculum?),
+Q1 (educator + curriculum). See §7.
+
+### 3.6 Deliverable / definition of done
+
+Deliverables: GK boundary answer (sourced); topic map following from the
+boundary; mode mockup; judging test plan; overlap-resolution table
+(P5/P7/P8). Done when the acceptance criteria above are met, the audit's
+four points are demonstrated, and the educator signature is on file.
+
+## §4. P11 — GK Current Affairs (option B)
+
+**Status: PREPARED — AWAITING EDUCATOR SIGN-OFF. GATED — and carries an
+extra gate no other packet has.** Branch (proposed, confirm before use):
+`feat/gk-current-affairs`. **Gate to clear first:** P2 landed AND its own
+definition signed AND the owner's WRITTEN ruling on the revision-rule
+tension (option (a) or (b) below). Until the owner rules, this packet is
+definition-only. Leaf packet.
+
+### 4.1 The tension (do not soften, do not drop)
+
+**This packet FAILS the standing "revision, not new teaching" rule.**
+Current affairs, by definition, teaches what just happened — new content,
+not revision of what school already taught. The owner picked it anyway
+("All 3", 2026-11-07). Two honest resolutions; the owner must pick one in
+writing before any build:
+
+- **(a) Explicit recorded override** — the owner waives the revision rule
+  for this packet only, carried as a named risk.
+- **(b) Reframe as revision** — every item anchored to a civics/history
+  topic the child already met in school; items with no school anchor are
+  out of scope.
+
+**An agent may never record the waiver itself. This spec records the two
+options and the fact that neither is chosen. The ruling is OPEN (Q16) —
+see §7.**
+
+Also open: what counts as school GK per band, and the staleness period
+(how fast items retire). A stale fact presented as current is wrong —
+this is the standing warning that defines this packet (a president from
+10–15 years ago presented as current is not contextual anymore). Every
+item must be dated; no undated "current" claims anywhere. Audience is
+5th grade and up.
+
+### 4.2 What the definition must contain
+
+1. **Fresh-content pipeline design, written FIRST** — sourcing, dating,
+   review, publication, retirement — with the staleness period stated as
+   a number with a rationale (e.g. "retire after N days unless
+   re-verified"); a period stated as "when it feels stale" is not a rule.
+   The pipeline is a deliverable, not an afterthought; a mode built
+   before the pipeline exists is out of order.
+2. **Sourcing rules** — trusted sources only (named list), every item
+   cited; aggregators and social sources excluded. The named list is
+   written with each source's publisher and why it is trusted; a source
+   with no stated reason is LOW.
+3. **Recency rules** — every item dated at publication; stale items
+   retire automatically — demonstrated by a test that walks an expired
+   item being withheld, not asserted.
+4. **Operator statement** — who operates the pipeline after launch?
+   Recorded even if the answer is "no operator named" — that is a
+   finding, and without an operator the mode rots in weeks. A mode with
+   an expiry that visibly retires it is the fallback, not a silent
+   rotting feed.
+5. **Mode format** — one current-affairs mode (quiz loop or short news
+   card; mockup first at 390px and 1280px). Every item shows its date;
+   stale items are visibly retired, never silently served. Per-band
+   presentation mocked at both widths for both ends.
+6. **Judging rule** per the definition — a test walks right answer,
+   wrong answer, near-miss.
+7. **Per-item sign-off flow** — every item educator-signed before it
+   ships (see §4.5). The flow is a gate in the pipeline, not a checkbox
+   after publication.
+8. **Option (b) costed** — what "the news behind what you learned in
+   school" would require in practice (school anchors per item). The
+   deliverable is the costed shape of option (b); the choice between (a)
+   and (b) is the owner's, in writing.
+
+### 4.3 Scope
+
+**In:** fresh-content pipeline design (written first); sourcing rules
+(trusted sources only, named list); recency rules (every item dated;
+staleness/expiry rule; no undated "current" claims); one current-affairs
+mode (format per the definition; mockup first); every item
+educator-signed before it ships; expiry/retirement behaviour
+(demonstrated by test); host story clip after every question (§6.2);
+funnel events + E2E specs; lazy loading per the guardrail (§6.3).
+
+**Out:** anything presented as current without a date; evergreen trivia
+(P10); detective format (P12); any item without a trusted source or
+without educator sign-off; any tiny-model use (P9, parked); any behaviour
+change to other games.
+
+### 4.4 Acceptance criteria
+
+(a) Pipeline design written with staleness period stated; (b) retirement
+test walks the path; (c) operator named or the expiry fallback stated;
+(d) load budget met on measured numbers from P2; (e) format mocked at
+both widths; (f) dates visible on every item; (g) retired state mocked;
+(h) per-band presentation mocked; (i) mode plays end to end under the
+ruling; (j) judging test walks all cases; (k) per-item sign-off is a
+pipeline gate; (l) host clip after every question; (m) owner's written
+ruling on file; (n) audit four points demonstrated — noting the audit
+cannot pass until the ruling is on file.
+
+### 4.5 Grounding notes — background only, never evidence for the ruling
+
+Accessed 2026-11-10. These name the kind of sources a definition author
+would study when writing the trusted-source list. They do NOT choose the
+list (that is the definition's job, with the educator) and they do NOT
+resolve the tension.
+
+- Kids'-news products exist as background comparables: TIME for Kids
+  (https://www.timeforkids.com/ — news written for students K–6, editions
+  by grade), Newsela (https://newsela.com/ — leveled articles, ages 8+),
+  DOGOnews (https://www.dogonews.com/ — kids' current-events articles,
+  K–12). Source: Common Sense Media, "Best News Sources for Kids",
+  updated 2026-04-13,
+  https://aiprot.commonsensemedia.org/lists/best-news-sources-for-kids
+  (accessed 2026-11-10). Confidence MEDIUM as background: these are
+  products, not the packet's trusted-source list; inclusion here does not
+  endorse any of them.
+
+### 4.6 Educator sign-off — BLOCKED (UNSTAFFED)
+
+No educator persona exists. Nothing in this lens is approved. The named
+human educator / SME (a current-affairs educator) must sign IN WRITING,
+before P11 can build — and **per item, not just per topic map**:
+
+1. The topic map + pipeline design (signed once).
+2. **Every published item** (signed, or signed-off in a reviewed batch)
+   before it ships. A math educator's signature does not cover this
+   packet.
+
+**Blocked items:** both. The per-item sign-off is the mitigation for the
+revision-rule tension — it is not optional. Freshness is a permanent
+operational cost, not a one-time build: without per-item sign-off, a
+wrong or outdated "fact" taught to children is the silent failure this
+packet cannot absorb.
+
+### 4.7 Open owner questions blocking P11
+
+Q16 (ruling (a) or (b), in writing, before any build; staleness period),
+Q1 (educator + curriculum). **This packet cannot build without Q16
+answered in writing.** See §7.
+
+### 4.8 Deliverable / definition of done
+
+Deliverables: pipeline design (sourcing, dating, review, publication,
+retirement, staleness period); trusted-source list; ruling question for
+the owner with option (b) costed; format mockup with dates visible;
+operator statement. Done when the acceptance criteria above are met, the
+audit's four points are demonstrated, the owner's written ruling is on
+file, and the per-item sign-off flow is a pipeline gate.
+
+## §5. P12 — General Knowledge Detective (option C)
+
+**Status: PREPARED — AWAITING EDUCATOR SIGN-OFF. GATED — do not build.**
+Branch (proposed, confirm before use): `feat/gk-detective`. **Gate to
+clear first:** P2 landed AND its own definition signed (GK case-topic map
+per band + game design + judging rule + machine-verification gate) AND the
+game design itself signed before any code. The game design is a gate, not
+a phase. Leaf packet.
+
+### 5.1 What the definition must contain
+
+1. **Game design document FIRST** — case structure, clue reveal, guess
+   mechanic, win/loss, fail state, deduction verb — signed before any
+   code is written. The design must prove the deduction verb is real: a
+   worked case where the clues, and only the clues, lead to the answer.
+   A detective game without a real deduction verb is trivia with a
+   detective skin — the design must prove the verb is real, or the packet
+   returns to the owner rather than shipping trivia as a detective game.
+2. **Case-topic map per band** — GK cases from school GK, history,
+   geography, science — cross-subject cases. Each case topic cites a
+   curriculum document per band; a topic with no citation is UNVERIFIED.
+3. **Case-bank shape** — cases built from cited GK facts, every case
+   solution path machine-verified (the solution path checked, not trusted
+   from the author). Every case fact cited with a trusted source and a
+   confidence level (§0.1 per fact); a case with an uncited fact is
+   UNVERIFIED as a case. The verification gate must be demonstrated on
+   one complete case; an asserted gate is UNVERIFIED.
+4. **Deck/guess machine reuse, traced to files** — GeoDetective
+   (`src/game/loop/`): shuffled deck, exactly-once-per-cycle, cap,
+   win/loss, clue reveal (study §8). A reuse claim with no file trace is
+   UNVERIFIED.
+5. **Clue economy** — how many clues, what each reveals. Stated in the
+   design AND playtested with the age group, not asserted — a case too
+   hard teaches nothing (the child guesses blind); a case too easy is
+   trivia.
+6. **Judging rule** per the definition — a test walks right guess, wrong
+   guess, near-miss; a test walks the loop (win, loss, guess cap, clue
+   order).
+7. **Cross-subject fact coordination** — case facts span subjects;
+   coordinate with P5 (history), P7 (science), P8 (journal) so the same
+   fact is not written three ways. Overlapping facts cite one source; a
+   contradiction is resolved before build.
+8. **`Question` kind for cases and the `Result` evidence field** — mapped
+   against P2's interfaces.
+
+### 5.2 Scope
+
+**In:** game design document (signed before build); one detective mode
+on the GeoDetective machine: cases built from cited GK facts, clues
+reveal step by step, guesses judged by the definition's rule; case bank
+per the signed topic map, every case verified (solution path checked);
+host story clip after every question/case (§6.2); funnel events + E2E
+specs; lazy loading per the guardrail (§6.3).
+
+**Out:** quiz-loop GK (P10); current affairs (P11); any case without
+cited facts; any detective skin over a trivia loop (the deduction verb
+must be real — if the design cannot prove it, the packet returns to the
+owner); any tiny-model use (P9, parked); any behaviour change to other
+games.
+
+### 5.3 Acceptance criteria
+
+(a) Design document signed, verb proven real (one worked case);
+(b) loop plays end to end per the GeoDetective contract; (c) judging
+test walks all cases; (d) overlaps resolved to one source per fact;
+(e) deck reuse traced to files; (f) case verification demonstrated;
+(g) interfaces mapped; (h) load budget met on measured numbers from P2;
+(i) case flow mocked at both widths (390px and 1280px); (j) clue economy
+stated and playtested; (k) per-band presentation mocked; (l) audit four
+points demonstrated — noting the design gate (signed game design) sits
+on top of the audit.
+
+### 5.4 Educator sign-off — BLOCKED (UNSTAFFED)
+
+No educator persona exists. Nothing in this lens is approved. The named
+human educator / SME (a general-knowledge educator) must sign IN WRITING,
+before P12 can build:
+
+1. The case-topic map per band.
+2. The game design (case structure, clue reveal, guess mechanic,
+   win/loss, fail state, deduction verb).
+3. The judging rule for this mode.
+4. The machine-verification gate, demonstrated on one complete mode.
+
+**Blocked items:** all four. The case bank's facts span subjects, so the
+signer must cover the case content, or two signers must sign.
+
+### 5.5 Open owner questions blocking P12
+
+Q16 (what counts as school GK per band), Q1 (educator + curriculum).
+See §7.
+
+### 5.6 Deliverable / definition of done
+
+Deliverables: signed game design document; case-topic map with citations;
+one worked case proving the deduction verb; judging test plan;
+overlap-resolution table (P5/P7/P8). Done when the acceptance criteria
+above are met, the audit's four points are demonstrated, the design is
+signed, and the educator signature(s) are on file.
 
 ## §6. Cross-cutting definitions
 
