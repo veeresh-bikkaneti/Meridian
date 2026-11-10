@@ -40,7 +40,8 @@ export type FlagName =
   | "detectivePair"
   | "hostsStaging"
   | "watsonWalk"
-  | "detectiveFlank";
+  | "detectiveFlank"
+  | "pair3d";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -125,6 +126,14 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // baked default stays false so a failed flags fetch falls back
   // to the shipped pair.
   detectiveFlank: false,
+  // 3D Holmes & Watson (owner request 2026-11-10, look approved from
+  // the Blender renders): the GLB pair is painted over the SVG rigs,
+  // which stay in the DOM as the fallback and the layout source. Acts
+  // only where the rigs render (detectivePair on), and only on devices
+  // that pass the pair3d gate (WebGL, not Save-Data, not low-memory).
+  // false = the kill-switch: the SVG rigs exactly as shipped. The baked
+  // default stays false so a failed flags fetch falls back to them.
+  pair3d: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;
