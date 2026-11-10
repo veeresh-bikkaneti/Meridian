@@ -36,6 +36,7 @@
     "smoke:prod": "node scripts/prod-smoke.mjs",
     "verify:build-stamp": "node scripts/verify-build-stamp.mjs",
     "perf:bundle": "node scripts/bundle-report.mjs",
+    "check:entry-size": "node scripts/check-entry-size.mjs",
     "perf:globe-easy": "node scripts/perf-globe-easy.mjs",
     "flags:build": "node scripts/packs/build-flags.mjs",
     "check:flags": "node scripts/packs/check-flags.mjs"

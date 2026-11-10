@@ -74,6 +74,9 @@ jobs:
     - run: npm ci
     - run: npx playwright install --with-deps chromium
     - run: npm run build:pages
+    # Entry JS budget (owner, 2026-11-10): the Phase 0 starting measurement,
+    # 323,865 B gzip. Subjects load lazily, so first load should not grow.
+    - run: npm run check:entry-size
     - run: >-
         npx playwright test
         tests/e2e/credits.desktop.spec.ts
