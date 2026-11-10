@@ -859,3 +859,235 @@ the forcing rule. Claims without one are not done.
 
 **This file is UNSIGNED. P1 is complete as a draft; P3 stays GATED
 until the signatures above exist. No agent signed this file.**
+
+---
+
+## 11. Number strand for three age groups — items as contract I2 data
+
+**Added by the Stage A pass on `feat/math-definition`, 2026-11-10.** Sections
+1 to 10 above are the earlier draft and are not edited here. This section
+adds what the scaling standard asks for (`k12-learning-design-standard.md`,
+cited by section, not copied) and the item list for the number strand
+(counting, place value, multiplication, division, fractions). It is PROPOSED
+and GATED like the rest: no real, named human educator has signed
+`educator-gate-rubric.md`, and no agent can. Measurement, rates, algebra,
+geometry and trigonometry belong to `feat/math-spec`.
+
+**What changes against sections 1 to 10.** Owner ruling D1 (standard §1) sets
+three groups, `7-10`, `10-18` and `18+`, so the "5th grade and up" audience in
+§0 and §3 and the age-band question Q8 (§6.3) are overtaken for audience and
+bands. §3's grade ladder is kept as the grade map for the `10-18` tier, and
+the `7-10` tier (grades 2 to 5, picture first) and an `18+` tier are added
+below. The curriculum (CCSS, Q1) and the educator calls are unchanged and
+still open. The error taxonomy (§4.5), the verification gate (§5), the
+scoring base (§7.9) and the review-deck wiring (§7.7) are reused, not
+rebuilt.
+
+### 11.1 Shape of the strand
+
+Five units, in the order a child meets them. Every unit has a `7-10` entry
+tier, and the `10-18` and `18+` tiers reuse the unit with harder items.
+
+| Unit | What it is | Items (PROPOSED) |
+|---|---|---|
+| `groups` | Counting in groups, equal groups, arrays | 3 |
+| `place` | Place value, comparing, rounding, tenfold shifts, powers of 10 | 6 |
+| `tables` | **Times Table Races**: the v1 build target | 6 |
+| `division` | Fair shares, the opposite of multiplying, remainders | 6 |
+| `fractions` | Fair parts to percents and shares | 9 |
+
+Total 30 items: 19 in `7-10`, 8 in `10-18`, 3 in `18+`. Counts are PROPOSED.
+A `7-10` item uses only shops, bricks, sharing, buses, recipes and packing (the
+map's age-band note), and never algebra, trigonometry, rates or formulas; the
+test enforces it. Two `18+` items have no school code that fits an adult and
+are `UNVERIFIED` with the reason stated; `place:scientific` uses the nearest
+code with its fit stated for the educator.
+
+**Overlap with the applied strand.** `fractions:percent` (6.RP.A.3) sits here
+because the map's M2 is "fractions and percentages". If `feat/math-spec` also
+claims percent, the integrator decides; this branch drops it on request.
+
+### 11.2 The items, as data (contract I2)
+
+The source of truth is [`math/number/items.json`](math/number/items.json). The
+table is generated from it; edit the JSON, never the table. The test
+`math/number/items.test.mjs` checks the shape, the sources, `buildsOn`, the
+age-group rules and that every id appears here. Standard codes were fetched on
+2026-11-10 from `thecorestandards.org` (one domain page per grade); that proved
+each code exists and showed the opening of its wording, not every sub-clause.
+The educator confirms each code's fit (rubric A3). A code not fetched is
+`UNVERIFIED`.
+
+| Id | Group | Objective (observable, shown by) | Standard | Why first (opening problem) | Builds on | Use it elsewhere |
+|---|---|---|---|---|---|---|
+| `math-number:groups:skip-count` | 7-10 | After this, a child can count a pile of up to 1000 objects by 5s, 10s and 100s, shown by tapping the next number in the sequence and the total at the end. | [2.NBT.A.2](https://www.thecorestandards.org/Math/Content/2/NBT/) | Forty coins are spilled on the shop counter. Counting them one by one takes ages and slips; counting in 5s is quick. | none | economics: counting out change in coins by 5s and 10s |
+| `math-number:groups:arrays` | 7-10 | After this, a child can find the total in a rectangle of up to 5 rows and 5 columns by adding the rows, shown by tapping the row totals and the final total. | [2.OA.C.4](https://www.thecorestandards.org/Math/Content/2/OA/) | A wall is built from rows of bricks and the builder needs the total without counting every brick. | `groups:skip-count` | everyday life: rows of bricks in a wall, rows of chairs in a hall |
+| `math-number:groups:equal-groups` | 7-10 | After this, a child can explain a product as a number of equal groups of a given size, shown by choosing the picture of 5 groups of 7 for 5 × 7. | [3.OA.A.1](https://www.thecorestandards.org/Math/Content/3/OA/) | Four boxes hold 6 pencils each. How many pencils is that, and what is a short way to say it? | `groups:skip-count` | economics: price per item, packs of the same size on a shelf |
+| `math-number:place:hundreds-tens-ones` | 7-10 | After this, a child can say how many hundreds, tens and ones are in a three-digit number, shown by building the number from hundreds, tens and ones tiles. | [2.NBT.A.1](https://www.thecorestandards.org/Math/Content/2/NBT/) | A cashier is handed 3 hundred notes, 4 tens and 5 ones. Which number is that, and why is the 3 worth more than the 5? | `groups:skip-count` | economics: making change from notes and coins |
+| `math-number:place:compare` | 7-10 | After this, a child can compare two three-digit numbers, shown by tapping the larger one and choosing the right sign: greater than, equal to or less than. | [2.NBT.A.4](https://www.thecorestandards.org/Math/Content/2/NBT/) | Two routes to the lake: one is 358 steps, one is 385. Which is the longer walk, and how can you tell without counting? | `place:hundreds-tens-ones` | geography: comparing two distances on a map |
+| `math-number:place:round` | 7-10 | After this, a child can round a whole number to the nearest 10 or 100, shown by placing it on a number line and tapping the nearer 10 or 100. | [3.NBT.A.1](https://www.thecorestandards.org/Math/Content/3/NBT/) | A school fair has 287 visitors and the sign-maker wants a round number for the banner. Is it about 200 or about 300? | `place:compare` | geography: about how many people live in a small town (populations) |
+| `math-number:place:ten-times` | 7-10 | After this, a child can explain that a digit in one place is worth ten times the same digit one place to its right, shown by sliding digit tiles one place and naming the new value. | [4.NBT.A.1](https://www.thecorestandards.org/Math/Content/4/NBT/) | A path of 70 steps is stretched by a mapmaker to ten times as long. How many steps is that, and what happened to each digit? | `place:hundreds-tens-ones` | geography: a map where each square stands for ten times the distance |
+| `math-number:tables:buses` | 7-10 | After this, a child can solve a word problem about equal groups using multiplication or division within 100, shown by tapping the number of buses for 24 children with 6 seats a bus. | [3.OA.A.3](https://www.thecorestandards.org/Math/Content/3/OA/) | The class trip has 24 children and each bus seats 6. How many buses do we book? Counting seats one by one is slow; groups of 6 are fast. | `groups:equal-groups` | geography: how many buses a school trip across the region needs |
+| `math-number:tables:facts` | 7-10 | After this, a child can multiply and divide within 100 using the times tables, shown by giving the exact answer without a hint. | [3.OA.C.7](https://www.thecorestandards.org/Math/Content/3/OA/) | A shop sells pencils in packs of 4 and a customer wants 7 packs. The answer is already known if the 4 times table is known, so there is no need to count them again. | `tables:buses` | physics: a gear with 8 teeth turns 6 times, so how many teeth pass the mark |
+| `math-number:tables:patterns` | 7-10 | After this, a child can spot and explain a pattern in the multiplication table, shown by tapping the cells that follow the pattern and checking an answer with it. | [3.OA.D.9](https://www.thecorestandards.org/Math/Content/3/OA/) | A stall-holder wants a quick way to check their counting of packs. A pattern in the table is a free double-check. | `tables:facts` | economics: checking a total at a stall before giving change |
+| `math-number:tables:big-products` | 7-10 | After this, a child can multiply a number of up to four digits by a one-digit number, shown by building the product from place-value parts and entering the exact answer. | [4.NBT.B.5](https://www.thecorestandards.org/Math/Content/4/NBT/) | A hall has 8 rows of 126 chairs for a concert. The caretaker needs the total number of seats to print the tickets. | `tables:facts`, `place:hundreds-tens-ones` | economics: the cost of 8 tickets at 126 each at a small show |
+| `math-number:tables:multi-digit` | 10-18 | After this, a child can multiply multi-digit whole numbers with the standard method, shown by entering the exact product and checking it with an estimate. | [5.NBT.B.5](https://www.thecorestandards.org/Math/Content/5/NBT/) | A floor is tiled in 23 rows of 47 tiles. Ordering by guessing wastes money; the exact total decides the order. | `tables:big-products` | economics: the cost of 47 items at a price of 23 each, then checking it by rounding |
+| `math-number:tables:mental-strategies` | 18+ | After this, an adult can multiply two-digit numbers in their head by splitting, doubling and halving, shown by giving the exact answer and naming the strategy used. | UNVERIFIED | Splitting a bill or comparing two quotes at a counter, where there is no calculator in hand, goes faster with a clean mental method. Fit: mental strategies are an adult extension of 5.NBT.B.5 that no single code covers. | `tables:multi-digit` | economics: splitting a bill in your head |
+| `math-number:place:decimal-shifts` | 10-18 | After this, a child can explain how a digit's value changes by a factor of 10 in both directions, shown by moving digits across a decimal point on a place-value chart and reading the new number. | [5.NBT.A.1](https://www.thecorestandards.org/Math/Content/5/NBT/) | A mapmaker draws 1 cm for 10 km and then wants a map ten times closer in. Every distance must shift one place; where does each digit land? | `place:ten-times` | geography: changing the scale of a map by a factor of 10 |
+| `math-number:place:scientific` | 18+ | After this, an adult can write a very large or very small number as a single digit times a power of 10 and compare two such numbers, shown by choosing the matching form and the larger one. | [8.EE.A.3](https://www.thecorestandards.org/Math/Content/8/EE/) | Two quantities on the globe differ by many zeros and a long string of zeros hides which is larger. A power of 10 makes the gap visible. Fit: an adult extension of the grade 8 code; the code is the nearest match and the educator confirms it. | `place:decimal-shifts` | geography: comparing the size of two areas on the globe, with real figures taken from a sourced list when the unit is built |
+| `math-number:division:fair-share` | 7-10 | After this, a child can interpret a division as the size of each fair share, shown by dealing 12 snacks to 4 friends on screen and entering the share each friend gets. | [3.OA.A.2](https://www.thecorestandards.org/Math/Content/3/OA/) | Twelve snacks and four friends: is it fair, and how many does each get? | `groups:equal-groups` | economics: splitting a bill fairly among friends |
+| `math-number:division:unknown-factor` | 7-10 | After this, a child can find a missing factor by thinking of a division as the opposite of multiplication, shown by completing 8 × ? = 40 and checking it by multiplying. | [3.OA.B.6](https://www.thecorestandards.org/Math/Content/3/OA/) | A box holds 8 pencils and there are 40 pencils to pack. How many boxes? Asking what times 8 makes 40 solves it. | `division:fair-share`, `tables:facts` | everyday life: packing boxes of equal size |
+| `math-number:division:remainders` | 7-10 | After this, a child can solve a division problem that leaves a remainder and say what the remainder means, shown by choosing whether to round up for 26 children and 6-seat buses. | [4.OA.A.3](https://www.thecorestandards.org/Math/Content/4/OA/) | There are 26 children and each bus seats 6. Four buses leave two children behind, so what do we book? | `division:unknown-factor`, `tables:buses` | geography: how many vans a school trip needs when the last van is not full |
+| `math-number:division:big-quotients` | 7-10 | After this, a child can divide a number of up to four digits by one digit and give the quotient and remainder, shown by entering both and checking them by multiplying. | [4.NBT.B.6](https://www.thecorestandards.org/Math/Content/4/NBT/) | A school library has 1,248 books to put on 8 shelves, evenly. How many go on each shelf, and does any book get left over? | `division:remainders`, `tables:big-products` | economics: splitting a bill, or a prize shared evenly |
+| `math-number:division:two-digit-divisors` | 10-18 | After this, a child can divide a number of up to four digits by a two-digit number, shown by entering the quotient and remainder and checking it by multiplying. | [5.NBT.B.6](https://www.thecorestandards.org/Math/Content/5/NBT/) | A builder has 156 bricks to load onto pallets of 12 and needs the number of pallets and bricks left over. | `division:big-quotients` | everyday life: packing boxes, and what is left over |
+| `math-number:division:standard-algorithm` | 10-18 | After this, a child can divide multi-digit numbers with the standard method, shown by entering an exact quotient and checking it by estimation. | [6.NS.B.2](https://www.thecorestandards.org/Math/Content/6/NS/) | A trip costs 4,368 in total and 28 people share the cost equally. What does each person pay? | `division:two-digit-divisors` | economics: splitting the cost of a trip among a group |
+| `math-number:fractions:fair-parts` | 7-10 | After this, a child can name a unit fraction as one of several equal parts of a whole, shown by cutting a pizza into equal parts on screen and naming one part. | [3.NF.A.1](https://www.thecorestandards.org/Math/Content/3/NF/) | Four friends share one pizza. Cut it so nobody gets a bigger piece. What do we call one piece? | `division:fair-share` | geography: share of land, a map cut into 4 equal parts |
+| `math-number:fractions:number-line` | 7-10 | After this, a child can place a fraction on a number line between 0 and 1, shown by tapping the point on a line divided into equal parts. | [3.NF.A.2](https://www.thecorestandards.org/Math/Content/3/NF/) | A hiker walks 3 of 4 equal parts of a trail. Where on the trail are they now? | `fractions:fair-parts` | geography: map scale, how far along a route in equal parts |
+| `math-number:fractions:equivalent` | 7-10 | After this, a child can identify two fractions that are the same size, shown by matching 1/2 to 2/4 on a pair of equal strips. | [3.NF.A.3](https://www.thecorestandards.org/Math/Content/3/NF/) | One friend cut a pizza into 2 pieces and took 1; another cut into 4 pieces and took 2. Who has more? | `fractions:number-line` | chemistry: two jugs of juice mix are the same strength when they show the same fraction of juice |
+| `math-number:fractions:compare-unlike` | 7-10 | After this, a child can compare two fractions with different denominators, shown by tapping the larger of 3/4 and 2/3 and choosing a common-denominator picture. | [4.NF.A.2](https://www.thecorestandards.org/Math/Content/4/NF/) | Two water bottles are 3/4 full and 2/3 full. Which one holds more water? | `fractions:equivalent` | chemistry: which of two mixes has more of the dissolved ingredient |
+| `math-number:fractions:add-unlike` | 10-18 | After this, a child can add fractions with unlike denominators, shown by entering the exact sum and drawing it on a fraction bar. | [5.NF.A.1](https://www.thecorestandards.org/Math/Content/5/NF/) | A recipe wants 1/2 cup of one thing and 1/3 cup of another. How much is that altogether, so the bowl is big enough? | `fractions:compare-unlike` | everyday life: recipes |
+| `math-number:fractions:multiply` | 10-18 | After this, a child can multiply a fraction by a whole number or a fraction, shown by shading an area model and entering the product. | [5.NF.B.4](https://www.thecorestandards.org/Math/Content/5/NF/) | A recipe needs 2/3 cup, but only half of the recipe is being made. How much is needed? | `fractions:add-unlike`, `division:fair-share` | chemistry: scaling a mixture down to half the batch |
+| `math-number:fractions:divide` | 10-18 | After this, a child can divide a whole number by a fraction and a fraction by a fraction in a real situation, shown by entering how many pieces of a given size fit. | [6.NS.A.1](https://www.thecorestandards.org/Math/Content/6/NS/) | A roll of ribbon is 6 metres long and each ribbon takes 3/4 of a metre. How many ribbons? | `fractions:multiply`, `division:standard-algorithm` | economics: a budget split into portions of a fraction each |
+| `math-number:fractions:percent` | 10-18 | After this, a child can find a percent of a quantity as a rate per 100, shown by entering 30% of 80 and checking it on a hundred grid. | [6.RP.A.3](https://www.thecorestandards.org/Math/Content/6/RP/) | A shop takes 30% off a price of 80. What do you pay, and how much did you save? | `fractions:multiply` | economics: discounts at a shop and a stall |
+| `math-number:fractions:combine-shares` | 18+ | After this, an adult can combine fractions, percents and a division in one multi-step situation, shown by entering the final amount and the order of steps used. | UNVERIFIED | A group budget is shared by fractions of the total and some shares carry a discount. The real question is who pays what once everything is combined. Fit: no single code covers multi-step fraction and percent reasoning for adults. | `fractions:percent`, `fractions:divide` | economics: sharing a group budget when some items are discounted |
+
+### 11.3 The "confident" bar and the three states (standard §4)
+
+The geography rule (`docs/learning-outcomes.md` §3) uses distance from a pin.
+Exact-answer math has no distance, so math gets its own bar. **PROPOSED for the
+owner and the educator.** This is mastery, which is separate from the score in
+§7.9; speed is not an input to either.
+
+An **attempt** is one answer to one item-round. Each attempt carries: `itemId`,
+`correct` (exact, per §4.1), `hintsUsed`, `triedAgain` (the retry after a
+miss), `setting` (`opening` or an elsewhere setting such as `economics`),
+`errorType` (§4.5, only on a miss) and `at`. No name, no identifier, no free
+text, local only (standard §7).
+
+- **Confident attempt:** `correct`, `hintsUsed` is 0 and `triedAgain` is false.
+  Never speed: there are no timers in `7-10` (standard §6), and the bar must be
+  the same for every group.
+- **Explored:** at least one recorded attempt.
+- **Growing:** at least two attempts, not Mastered, and the latest used fewer
+  hints than the first or was correct when the first was not. (This replaces
+  "the latest error is smaller than the first", which has no meaning for an
+  exact answer.)
+- **Mastered:** the two most recent attempts are both confident, and across the
+  item's attempts there is one correct answer in the `opening` problem and one
+  in a different setting (the "use it elsewhere" round). Standard §0 asks for
+  two different settings; the opening problem counts as the everyday one.
+
+**What the integrator must record.** `src/game/learning.ts` and
+`src/game/review-deck.ts` are read-only for this branch. The attempt record
+needs `correct`, `hintsUsed`, `triedAgain`, `setting` and `errorType`, and the
+mastery function needs a subject-aware branch. Until then the subject module
+keeps its own attempts in module state (contract I2 note) and exposes the same
+three state names.
+
+### 11.4 Review deck hookup (standard §4)
+
+- Misses enter the same deck on the same `[0, 1, 3, 7, 14, 30]`-day ladder, as
+  in §7.7. Error-type replay is a filter on that deck, not a second deck.
+- Error types are the §4.5 list: `times-table-slip`, `place-value-slip`,
+  `operation-slip`, `carried-wrong`, `decimal-point-slip`,
+  `fraction-added-denominators`, `percent-wrong-base`, `unclassified-wrong`.
+- **One new type is proposed, `remainder-dropped`.** Example: 26 children,
+  6-seat buses, the child answers `4`. Detector: the problem asks for a
+  number of containers, `a mod b` is not 0, and the answer equals
+  `floor(a / b)`. Stated, not implemented or run (MEDIUM, like the rest of
+  §4.5). It needs the educator's confirmation (sign-off item 5).
+- A review round mixes 2 to 3 skills and rotates between the `opening` and an
+  elsewhere setting (map, "How it plays"). Misses on a `useElsewhere` round
+  return inside the other subject once it exists, and in an everyday-life
+  round until then.
+- Items whose answer is a quotient and a remainder need a canonical form for
+  the §4.1 exact-answer rule. That is the open equivalent-form question (Q3),
+  not decided here.
+
+### 11.5 Times Table Races for the three groups (the v1 unit)
+
+Plan only. Stage B is gated; nothing under `src/subjects/math-number/` exists.
+
+- **Where it sits against §5.2.** The paper demonstration of the verification
+  gate (§5.2) is on "Times Table Races" at Band A, CCSS 5.NBT.5, which is the
+  `10-18` item `tables:multi-digit`. The `7-10` items (`tables:buses`,
+  `tables:facts`, `tables:patterns`, `tables:big-products`) and `18+`
+  (`tables:mental-strategies`) are **not** covered by that demonstration. Stage
+  B runs the gate on them as code first. §5.2 stays a worked example on paper
+  and UNVERIFIED as an implementation.
+- **Hook (3 to 5 seconds):** "The class trip has 24 children and each bus seats
+  6. How many buses?", shown as four pictured buses of six seats (standard §3).
+- **Predict, see, explain, retry:** the child taps a number of buses before
+  they fill; the buses fill in 6s; one or two short sentences explain; a miss
+  gets one retry with a hint, then goes to the deck.
+- **A "race" without a clock.** Standard §6 bans timers in `7-10`, so the race
+  is the child's own bus moving along the trip as they answer, with a ghost bus
+  of their last trip. No countdown anywhere in `7-10`. In `10-18` and `18+` an
+  optional timer can be switched on and off. The title is owner copy still TODO
+  (contract I1), and whether a clockless race fits the name is an owner
+  question (11.8).
+- **Tiers.** Full: a three.js scene (dynamic import, as `home-globe.tsx`) where
+  buses fill with children. Lite: the same scene, low-poly, no shadows, 30 fps
+  cap. Flat: 2D SVG buses with short gentle transitions, for reduced motion, no
+  WebGL or Save-Data. The same question, cause and effect and scoring in all
+  three (standard §5.2); tests assert it.
+- **Accessibility.** 44 px tap targets, no drag, a live region that says what
+  happened ("Four buses are full, 24 children are on board"), shape and sound
+  as well as colour, read-aloud on by default in `7-10`.
+- The educator evidence pack is in
+  [`math/number/times-table-races-evidence-pack.md`](math/number/times-table-races-evidence-pack.md).
+
+### 11.6 Privacy, free, and the content screen
+
+No names, accounts or free text; attempts stay on the device and no network
+call carries learning data (standard §7). No ads, payments or revenue features,
+no new library (three.js is in the house stack, standard §5.1), and any asset
+is open-licensed with its licence recorded beside it. The content screen
+(standard §7a) was applied while writing and the test blocks living-thing and
+contested-topic words. Cut log: none cut. Left out on purpose: eggs and fruit as
+counting objects (avoids living-things content) and any real population or
+area figure (none is sourced yet, so rounds use made-up classroom numbers, and
+real figures must be sourced when built).
+
+### 11.7 K-12 STANDARD block (standard §9)
+
+An unchecked box means this file does not yet demonstrate the thing. A checked
+box points to where.
+
+```
+K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+- Why first (§0): unit opens with a real problem that needs the skill; "why does this matter?" answered in the first minute: [x] every item's `why` in items.json (11.2); the one-sentence answer is still to be written at build
+- Headline goal (§0): bridge to the previous subject + playable real-life application: [ ] math has no earlier subject; the bridge to physics and chemistry is `useElsewhere` prose only; the playable application exists as a plan (11.5), not built
+- Use-it-elsewhere round in at least one other subject (cross-application web): [x] one per item in items.json, each a setting from the map; the rounds themselves are not built
+- Bands served: [x] 7-10, 10-18, 18+ (11.1); 7-10 is the entry tier of every unit; 18+ has 3 items, two UNVERIFIED
+- Objective per item, observable verb, "shown by": [x] items.json, enforced by items.test.mjs
+- Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [x] 28 codes fetched live 2026-11-10, 2 items UNVERIFIED; sub-clauses not checked, educator confirms fit
+- Loop mapped: hook / predict / see / explain / retry: [x] 11.5 for the v1 unit; the other four units are mapped when their build is approved
+- Mastery "confident" bar for this subject: [x] 11.3
+- Review-deck hookup (same deck, same ladder): [x] 11.4 as a plan; wiring is integrator-only (learning.ts, review-deck.ts)
+- Post-clip retrieval check (journal + any video): [x] not applicable, no clips in this strand
+- Motion tiers: Full / Lite / Flat described, learning parity stated: [x] 11.5; parity tests come with Stage B
+- Accessibility: captions, tap alternative, no-timer default, SR live region: [x] 11.5; axe and manual QA come with Stage B
+- Privacy: no PII, no identifiers, local-only records: [x] 11.3 and 11.6
+- Content screen (§7a) passed; cut items logged with reason: [x] 11.6, enforced by the word list in items.test.mjs; the educator runs rubric 17a
+- Free: no revenue features; asset licences recorded: [x] 11.6; no assets exist yet
+- Educator rubric (docs/scaling/educator-gate-rubric.md) attached: [x] evidence pack in math/number/; not signed
+```
+
+### 11.8 Open owner questions from this section
+
+Numbered `N1` to `N7` so they do not collide with Q1 to Q15 in §9.
+
+| # | Question | Decider |
+|---|---|---|
+| N1 | "Times Table Races" is owner copy (TODO). Is a race with no timer in `7-10` acceptable under that name? | Owner |
+| N2 | Mastered bar in 11.3: two confident in a row plus two settings, the opening problem counting as the everyday one. Alternatives: three in a row; one setting. | Owner + educator |
+| N3 | `fractions:percent`: here or with `feat/math-spec`? | Integrator |
+| N4 | The 30 items in 5 units are PROPOSED. Confirm, add or cut. | Owner |
+| N5 | Build gate for Stage B (Times Table Races, `released: false`). | Owner |
+| N6 | Is `remainder-dropped` (11.4) accepted as a new error type, and how is a quotient with a remainder written canonically (Q3)? | Educator + owner |
+| N7 | This pass ran as Tier 0 (docs and data, nothing under `src/`); the 25k budget was exceeded (estimated, no meter). Raise or narrow before Stage B. | Owner |
+
+The unsigned sign-off blocks above (§8 and the block at the end of this file)
+and the rubric's own block in the evidence pack stay blank. No agent signed
+anything.
