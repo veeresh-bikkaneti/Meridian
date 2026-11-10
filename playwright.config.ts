@@ -277,6 +277,18 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // PR 2a cure 3 (the tap-mode silent guess): the selection-read
+      // beats replayed in the OWNER'S configuration — read-aloud
+      // preference "sometimes" (tap mode), flank on, 390 px, held
+      // chains released by Listen — confirming DURING the pick's name
+      // clip and JUST AFTER it ends; the guess's spoken reaction must
+      // play both times. The spec drives its own viewport; the
+      // project viewport is a default.
+      name: "detective-tapmode-selection",
+      testMatch: /detective-tapmode-selection\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },
