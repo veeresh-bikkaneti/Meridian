@@ -1105,3 +1105,56 @@ test("solve: the celebration says 'We did it together!' with a bubble over Holme
     enter.effects.some((e) => e.type === "caption" && e.who === "holmes" && /together/i.test(e.text)),
   );
 });
+
+/* #374: Watson never docks on the map. The "dock" placement type and
+ * the host's dock branch survive (the constrained-device path shares
+ * them with Holmes's berth), so pin the invariant with a sweep instead
+ * of per-phase cases: thousands of seeded random event walks from a
+ * fresh state, and no reachable view may put Watson on the map. */
+test("sweep: no reachable state places Watson on the map dock (#374)", () => {
+  let seed = 374;
+  const rand = () => {
+    seed = (seed * 1103515245 + 12345) % 2147483648;
+    return seed / 2147483648;
+  };
+  const events: DetectiveEvent[] = [
+    { type: "caseOpened", freshDeal: true, openTarget: 3 },
+    { type: "caseOpened", freshDeal: true, intro: false, openTarget: 1 },
+    { type: "caseOpened", freshDeal: false },
+    { type: "clueUnlocked", clueIndex: 1 },
+    { type: "clueUnlocked", clueIndex: 2 },
+    { type: "clueUnlocked", clueIndex: 3 },
+    { type: "clueUnlocked", clueIndex: 4 },
+    { type: "clueUnlocked", clueIndex: 5 },
+    { type: "speechEnded" },
+    { type: "speechEnded" },
+    { type: "speechEnded" },
+    { type: "beatElapsed" },
+    { type: "beatElapsed" },
+    { type: "pointerPaused", point: { x: 10, y: 10 } },
+    { type: "pointerMoved" },
+    { type: "gestureStarted" },
+    { type: "sheetOpened" },
+    { type: "sheetClosed" },
+    { type: "guessConfirmed", placeId: "geonames:1" },
+    { type: "selectionNamed", placeId: "geonames:2" },
+    { type: "caseSolved", answerPlaceId: "geonames:3" },
+    { type: "caseFailed" },
+    { type: "externalSpeechStarted" },
+    { type: "externalSpeechEnded" },
+    { type: "ringAnimationEnded" },
+  ];
+  const phases = new Set<string>();
+  for (let walk = 0; walk < 2000; walk++) {
+    let state = initialDetectiveState();
+    for (let step = 0; step < 60; step++) {
+      const ev = events[Math.floor(rand() * events.length)]!;
+      const r = transition(state, ev, rand);
+      state = r.state;
+      phases.add(r.view.phase);
+      assert.notEqual(r.view.watson.placement, "dock", `walk ${walk} step ${step} after ${ev.type} in ${r.view.phase}`);
+    }
+  }
+  // The sweep must actually reach the play, ending and absence phases.
+  for (const p of ["READING", "SEARCH_IDLE", "CELEBRATE", "FAIL_READ", "POUT"]) assert.ok(phases.has(p), `sweep reached ${p}`);
+});
