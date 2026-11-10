@@ -1,13 +1,27 @@
-# Journal — Freedom fighters
+# Journal — leaders, folded into Great leaders
 
-- **Topic:** Freedom fighters, told through the places that remember them
-- **Status:** GATED. Stage A (spec and data) done 2026-11-10; Stage B (clips) waits for the owner to lift the build gate, and for a named human educator to sign `educator-gate-rubric.md`.
+- **Topic:** Leaders, folded into the Great leaders journal. The label "freedom fighter" is not used.
+- **Status:** GATED. Stage A (spec and data) done 2026-11-10. Owner decisions recorded 2026-11-10 (see below). Stage B (clips) waits for the owner to lift the build gate, and for a named human educator to sign `educator-gate-rubric.md`.
 - **Branch:** `feat/journal-freedom-fighters-spec`
-- **Proposed clip count:** 2 PROPOSED; after the content screen, 1 kept (reframed) and 1 cut. The count stays PROPOSED / TO CONFIRM; whether to replace the cut clip is an owner call (O1).
+- **Proposed clip count:** `clips.json` still has 1 kept clip (Robben Island) and no row for Jhansi or for Bose. The owner has since kept Rani Lakshmibai as a leader and added Subhas Chandra Bose. Those rows are not written in this pass (see Owner decisions).
 - **Clip data (contract I5):** `docs/scaling/journals/freedom-fighters/clips.json`
 - **Fact ledger:** `docs/scaling/journals/freedom-fighters/sources.md` (every fact with source, access date and confidence; screened facts and cuts logged)
 - **Draft captions and transcripts:** `docs/scaling/journals/freedom-fighters/captions/*.vtt`, `docs/scaling/journals/freedom-fighters/transcripts.md`
 - **Check:** `node docs/scaling/journals/freedom-fighters/check-clips.mjs` (I5 keys and optional `stretch`, groups, ids, standard shape, coordinates, captions, no algebra in 7-10, screened words in narration, 18-word narration cap, reading grade per group)
+
+## Owner decisions (2026-11-10)
+
+The owner decided these points for PR #407 on 2026-11-10. The words below follow that instruction. They supersede the council's Jhansi Fort cut and the open questions they name. They do not lift the build gate, and they do not add a clip row.
+
+The path `docs/scaling/journal-freedom-fighters-spec.md` and the branch name stay, so existing links keep working. Those names are not the label we use. Where the screening log below still says "Freedom fighters", that is the earlier name of this stream.
+
+**Fold.** This stream is folded into the Great leaders journal. The label "freedom fighter" is not used: not as a journal name, not in narration, not in captions, and not as a word for a person.
+
+**Lakshmibai — KEEP as a leader, not place-only.** Rani Lakshmibai at Jhansi Fort stays. She is a leader, not a fort-only place clip. Frame her as a mother, a queen and a leader. She ruled Jhansi, trained and led her own forces, rallied them and stood her ground in 1857. The picture is her riding out with her young son Damodar tied to her back. No graphic battle detail, no deaths or blood, and no "enemy" or us-versus-them wording. The council CUT in the tables below stays in the record as the screen that was run. This decision supersedes that cut. It answers O1 (she is kept) and O2 (not a place-only fort clip). The picture drops the swords in F2-U1. Her rule, her forces, the year she stood her ground, and Damodar's name are owner-directed. They are not in `sources.md` yet, so they are not narrated, captioned or asked until they are sourced.
+
+**Bose — ADD.** Add Subhas Chandra Bose as a leader. He is known as "Netaji". He founded the Indian National Army (Azad Hind Fauj) in 1943, which had a women's regiment, and he popularised "Jai Hind". The Indian National Army is not today's Indian Army. Never call him the founder of today's Indian Army. The place is Netaji Bhawan, Kolkata: his family home, now a museum. Leave out his wartime alliances and the mystery of his death. These facts are owner-directed and are not in `sources.md` yet, so they are not narrated, captioned or asked until they are sourced. No clip id is reserved in this pass.
+
+**Left untouched on purpose.** `clips.json`, `sources.md`, the captions and `transcripts.md` are unchanged. Robben Island stays as already kept. Stage B stays blocked.
 
 ## Topic scope
 
@@ -23,9 +37,11 @@ shown. When in doubt, the clip is cut, not softened (§7a).
 
 The earlier draft recorded that no freedom-fighter story is among the 106
 journal entries, and that neither "Robben Island" nor "Jhansi Fort" is a key
-in the live manifest (checked 2026-11-10). This journal is additive only. The
-earlier rule stands: Robben Island is counted here only, never also under
-great leaders.
+in the live manifest (checked 2026-11-10). This journal is additive only. Superseded 2026-11-10: an earlier line said
+Robben Island is counted here only, never also under great leaders. The owner
+has folded this stream into the Great leaders journal. Robben Island's clip
+data stays in these files until the integrator moves it. The label "freedom
+fighter" is not used.
 
 ## Stage A results (2026-11-10)
 
@@ -34,7 +50,7 @@ great leaders.
 | Clip (earlier draft) | Religion / mythology | Sexuality or gender identity | Current or contested politics | Violence, death, weapons | Biology | Verdict |
 |---|---|---|---|---|---|---|
 | Robben Island, "a cell where Mandela slept on the floor for 18 years" | none | none | The reason for his imprisonment is a political conviction tied to an armed wing (F1-U3). UNESCO's own wording judges a government (F1-U4). Both are left out. | Prison is not violence, but the reason would be. Left out. | The island's leper-hospital past (F1-U6) is left out. | **KEEP, REFRAMED** as a place of remembrance: where he was held, and what it is today. |
-| Jhansi Fort, "a queen who rode into battle with her son on her back and a sword in each hand" | The revolt grew partly from religious grievances (F2-5). | none | The event has two names, one a national claim (F2-1); she is "a hero to the Indians and was a villain to the British" (F2-4). | A siege, a bombardment, a massacre and her death in battle (F2-2 to F2-4). The hook itself is weapons (F2-U1). | none | **CUT.** It cannot be told without battle, death and weapons, and its framing is contested. |
+| Jhansi Fort, "a queen who rode into battle with her son on her back and a sword in each hand" | The revolt grew partly from religious grievances (F2-5). | none | The event has two names, one a national claim (F2-1); she is "a hero to the Indians and was a villain to the British" (F2-4). | A siege, a bombardment, a massacre and her death in battle (F2-2 to F2-4). The hook itself is weapons (F2-U1). | none | **CUT** on the 2026-11-10 screen. Superseded the same day: the owner keeps her as a leader (see Owner decisions). The new frame has no graphic battle detail, no deaths or blood, and no "enemy" wording. |
 
 **Reframe log**
 
@@ -51,6 +67,9 @@ great leaders.
   to a places or monuments journal if anywhere (owner call O2). (b) The
   queen's refusal to give up Jhansi (S7) leads straight into the annexation
   dispute and the war. Both fail; per §7a the clip is dropped, not softened.
+  Superseded for the keep/cut call on 2026-11-10: the owner keeps Rani
+  Lakshmibai as a leader, in the frame under Owner decisions, not as a
+  place-only fort clip. The screened facts in this log stay screened.
 
 ### Clip data (contract I5; full row in `clips.json`)
 
@@ -67,8 +86,10 @@ great leaders.
 | Narration | 18 spoken words, opener included: "Hey kids, have you heard about this place? Nelson Mandela was held here. Today it is a museum." |
 | Facts: sourced / UNVERIFIED, screened or cut | 11 sourced (F1-1 to F1-11) / 9 (F1-U1 to F1-U9) |
 
-`freedom-fighters:jhansi-fort` is cut: 7 facts sourced for screening only
-(F2-1 to F2-7), 2 UNVERIFIED or cut (F2-U1, F2-U2), none used.
+`freedom-fighters:jhansi-fort` was cut by the council: 7 facts sourced for
+screening only (F2-1 to F2-7), 2 UNVERIFIED or cut (F2-U1, F2-U2), none used.
+The owner keep (2026-11-10) does not put those screened facts back into a
+clip. No new row was added in this pass.
 
 **Groups served:** 10-18 by the clip, 18+ by the stretch question. **7-10 is
 not served** (owner call O3): the only kept story needs algebra for its
@@ -105,7 +126,7 @@ human educator can sign the gate.
 
 | Call | Educator | Child-safety / content | Historian | Outcome |
 |---|---|---|---|---|
-| Jhansi Fort | Reframe as a fort place clip; it is a strong "where" question. | Cut: battle, death, weapons, and the hook is swords. | Cut: the fort is known for the siege, the naming of 1857 is contested, and the source says myth and history blur. | **CUT, 2–1.** The fort-only idea goes to the owner as a candidate for another journal (O2). |
+| Jhansi Fort | Reframe as a fort place clip; it is a strong "where" question. | Cut: battle, death, weapons, and the hook is swords. | Cut: the fort is known for the siege, the naming of 1857 is contested, and the source says myth and history blur. | **CUT, 2–1.** Superseded 2026-11-10 by the owner: keep her as a leader (see Owner decisions), not as a place-only fort clip. The votes are not rewritten. |
 | Robben Island | Keep: a real timeline question. | Keep only if the reason for imprisonment is never told or shown, no cell interior, and not in 7-10. | Keep: the place and dates are firm (S1, S2). Leaving out the reason must not make the child think he was a criminal, so add a neutral adult note. | **KEEP, reframed, 3–0,** with all three conditions. |
 | Group | Algebra (6.EE.B.7) puts it in 10-18. | 10-18 only. | Fine. | 10-18; 18+ via the stretch. 7-10 is an owner call (O3). |
 | "18 years" | Children like a round number. | — | The dates give 17 years and about 9 months. Ask "how many years apart are the dates", not "how long". | Adopted; the narration states no length. |
@@ -160,9 +181,11 @@ No named educator exists yet, so the seat is BLOCKED. A real, named human
 educator signs `docs/scaling/educator-gate-rubric.md` for this spec, covering:
 
 1. Every fact in `sources.md`, including the MEDIUM items (F1-7, F1-8).
-2. The Jhansi cut and the Robben Island reframe (rubric 17 and 17a): is
-   "was held here" with no reason right for 10-18, and is the adult note
-   neutral?
+2. The Robben Island reframe (rubric 17 and 17a): is "was held here" with no
+   reason right for 10-18, and is the adult note neutral? The Jhansi council
+   cut is superseded. The owner keeps Rani Lakshmibai as a leader. The signer
+   reviews that frame (Owner decisions) once the facts are sourced. This
+   pass does not ask the signer to approve an unsourced clip.
 3. The group tag (10-18), the opening question, and the 18+ stretch.
 4. The picture brief reads as remembrance: calm, nothing graphic.
 5. Readability: `check-clips.mjs` FK grades are at or under the group limit
@@ -180,17 +203,16 @@ Signature (typed name is fine): [ ]
 
 ## Open questions for the owner
 
-- **O1** The journal now has 1 clip, not 2. Replace Jhansi Fort with another
-  story, or keep 1? A replacement must pass the same screen; none is proposed
-  here, because none was sourced in this pass.
-- **O2** Offer a fort-only Jhansi Fort clip to a places or monuments journal?
-  The council split 2–1 against it here.
+- **O1** ANSWERED 2026-11-10. Keep Rani Lakshmibai as a leader (not cut, and
+  not place-only). Also add Subhas Chandra Bose. Clip rows are not written
+  in this pass.
+- **O2** ANSWERED 2026-11-10. Not a fort-only clip. She stays as a leader,
+  in the frame under Owner decisions.
 - **O3** 7-10 is not served. Allow a 7-10 version of Robben Island (for
   example "the dates are 1964 and 1982: subtract", 4.NBT.B.4), or leave this
   journal to 10-18 and 18+? The child-safety seat wants the educator's say first.
-- **O4** The journal's display name. "Freedom fighters" names fighting; the
-  kept clip is about a place of remembrance. Group labels and copy are the
-  owner's to name.
+- **O4** ANSWERED 2026-11-10. No "freedom fighter" label. The stream is
+  folded into the Great leaders journal.
 - **O5** Name the educator who signs the gate.
 - **O6** Narration voice and listen check: is a fresh owner listen required
   for this clip? The earlier draft recorded an open question about whether a
@@ -202,7 +224,7 @@ Signature (typed name is fine): [ ]
 
 - [x] Stage A: content screen, reframe log, I5 data, sources, captions and
       transcript drafts, council record, §9 checklist (this pass).
-- [ ] Owner answers O1 to O7.
+- [ ] Owner answers O3, O5, O6 and O7. O1, O2 and O4 are answered (2026-11-10).
 - [ ] A named educator signs the rubric for this spec's commit.
 - [ ] Owner lifts the build gate; Stage B clip, manifest and verification
       numbers.

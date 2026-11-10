@@ -1,8 +1,13 @@
 # Branch status — feat/journal-freedom-fighters-spec
 
-Stream 16 of the scaling plan: the Freedom fighters journal. Spec; clips gated.
+Stream 16 of the scaling plan, folded into Great leaders. The label
+"freedom fighter" is not used. Spec; clips gated. The branch name is
+unchanged.
 
-**Status: STAGE A DONE (docs only). Stage B NOT STARTED: build gate not lifted.**
+**Status: STAGE A DONE (docs only). Owner decisions recorded 2026-11-10:
+Lakshmibai kept as a leader, Bose added, stream folded into Great leaders.
+Clip rows for those two leaders are not written. Stage B NOT STARTED:
+build gate not lifted.**
 
 ## Task
 
@@ -23,9 +28,10 @@ after the owner lifts the build gate.
 ## Done (2026-11-10)
 
 - [x] §7a screen. Robben Island KEPT, reframed as a place of remembrance
-      (3–0 council). Jhansi Fort CUT: battle, death, weapons, contested
-      framing, religion (2–1 council; the fort-only reframe was rejected and
-      goes to the owner).
+      (3–0 council). Jhansi Fort was CUT by the council: battle, death,
+      weapons, contested framing, religion (2–1; the fort-only reframe was
+      rejected). Superseded 2026-11-10: the owner keeps Rani Lakshmibai as a
+      leader, not place-only. See the later checkbox and the spec.
 - [x] `clips.json`: 1 clip in the I5 shape, group 10-18, C3 D2.His.2.6-8 and
       CCSS 6.EE.B.7 from the live PDFs, plus an 18+ `stretch` (contract I5
       optional field, merged to main in #403).
@@ -39,6 +45,19 @@ after the owner lifts the build gate.
       are removed.
 - [x] `check-clips.mjs` (no dependencies) passes on 1 clip. A mutation run
       (group 7-10, "prison" in the captions) failed with both errors, as it should.
+- [x] Owner decisions recorded in the spec (2026-11-10). The stream is folded
+      into Great leaders, and the label "freedom fighter" is not used. Rani
+      Lakshmibai at Jhansi Fort is KEPT as a leader: mother, queen and leader;
+      she ruled Jhansi, trained and led her own forces, rallied them and stood
+      her ground in 1857; the picture is her riding out with her young son
+      Damodar tied to her back; no graphic battle detail, no deaths or blood,
+      no "enemy" or us-versus-them wording. Subhas Chandra Bose is ADDED: known
+      as "Netaji"; founded the Indian National Army (Azad Hind Fauj) in 1943,
+      which had a women's regiment; popularised "Jai Hind". The Indian National
+      Army is not today's Indian Army. Never call him the founder of today's
+      Indian Army. Place: Netaji Bhawan, Kolkata (his family home, now a
+      museum). Leave out his wartime alliances and the mystery of his death.
+      `clips.json` and `sources.md` were not changed.
 
 ## Gates
 
@@ -51,17 +70,24 @@ is not created yet (Stage B).
 - Stage B clip and manifest: blocked. The owner has not lifted the build
   gate; no record of a lift was found on main.
 - Educator sign-off: blocked. No named educator yet.
-- Owner calls O1–O7 in the spec: replace the cut clip or keep 1 (O1), Jhansi
-  fort-only clip elsewhere (O2), 7-10 not served (O3), journal display name
-  (O4), educator (O5), listen check (O6), 5 vs 10 entries (O7).
+- Owner calls: O1, O2 and O4 are answered 2026-11-10 (see the spec). Still
+  open: O3 (7-10), O5 (named educator), O6 (listen check), O7 (5 vs 10 entries).
+- Source the owner-directed Lakshmibai and Bose facts into `sources.md`, then
+  add their clip rows. Not done in this pass. Do not narrate them until they
+  are sourced. Never call Bose the founder of today's Indian Army.
 - Narration fits about 8 s: TO CONFIRM when rendered.
 
 ## Needs the integrator (outside this branch's paths)
 
-- I-1 `public/videos/journal-manifest.json`: merge the freedom-fighters entry
-  after Stage B (never edited here).
+- I-1 `public/videos/journal-manifest.json`: after Stage B, merge the kept
+  clips under Great leaders. Do not add a separate freedom-fighters journal
+  or use that label. Never edited here.
 - I-2 The journal player code: the globe fly-to / Flat pin from I5 `place`,
   the opening question before play, the retrieval check and the `stretch`
   question after it.
 - I-3 `src/game/review-deck.ts`: hooking journal retrieval misses into the deck
   (integrator-only per contracts.md).
+- I-4 The Great leaders journal is where this stream now belongs. This branch
+  does not edit `docs/scaling/journal-great-leaders-spec.md` or
+  `docs/scaling/journals/great-leaders/**`. The integrator copies the two
+  leader decisions across when that branch should hold them.
