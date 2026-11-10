@@ -92,7 +92,7 @@ The owner keep (2026-11-10) does not put those screened facts back into a
 clip. No new row was added in this pass.
 
 **Groups served:** 10-18 by the clip, 18+ by the stretch question. **7-10 is
-not served** (owner call O3): the only kept story needs algebra for its
+not served** (owner decision 2026-11-10, O3): the only kept story needs algebra for its
 question, and the child-safety seat would not move a prison story into 7-10
 without an educator's say.
 
@@ -128,7 +128,7 @@ human educator can sign the gate.
 |---|---|---|---|---|
 | Jhansi Fort | Reframe as a fort place clip; it is a strong "where" question. | Cut: battle, death, weapons, and the hook is swords. | Cut: the fort is known for the siege, the naming of 1857 is contested, and the source says myth and history blur. | **CUT, 2–1.** Superseded 2026-11-10 by the owner: keep her as a leader (see Owner decisions), not as a place-only fort clip. The votes are not rewritten. |
 | Robben Island | Keep: a real timeline question. | Keep only if the reason for imprisonment is never told or shown, no cell interior, and not in 7-10. | Keep: the place and dates are firm (S1, S2). Leaving out the reason must not make the child think he was a criminal, so add a neutral adult note. | **KEEP, reframed, 3–0,** with all three conditions. |
-| Group | Algebra (6.EE.B.7) puts it in 10-18. | 10-18 only. | Fine. | 10-18; 18+ via the stretch. 7-10 is an owner call (O3). |
+| Group | Algebra (6.EE.B.7) puts it in 10-18. | 10-18 only. | Fine. | 10-18; 18+ via the stretch. 7-10 not served (owner, 2026-11-10, O3). |
 | "18 years" | Children like a round number. | — | The dates give 17 years and about 9 months. Ask "how many years apart are the dates", not "how long". | Adopted; the narration states no length. |
 | UNESCO's "triumph of freedom over racism" | It gives the why. | It judges a government (§7a: no praising or blaming). | True and sourced, but a judgement. | **Not narrated.** Adult note gives only the facts (1999, 1991, 1996). |
 | Narration length | 18 words is enough with a pin. | — | — | 18 spoken words, opener included, as for the technology journal; `check-clips.mjs` enforces it. Measure in Stage B. |
@@ -140,7 +140,7 @@ K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
 - Why first (§0): the clip opens with a real number question before play: [x]
 - Headline goal (§0): bridge + real-life application: [x] as a journal (no unit chain); algebra used on a history timeline
 - Use-it-elsewhere round in another subject: [x] proposed (time span on a timeline; area of a real place); not built
-- Bands served: [x] 10-18 (clip), 18+ (stretch); 7-10 not served (O3)
+- Bands served: [x] 10-18 (clip), 18+ (stretch); 7-10 not served (owner decision O3, 2026-11-10)
 - Objective per item, observable verb, "shown by": [x] clips.json
 - Standards cited per item (C3, plus CCSS for the math): [x] live sources S8, S9
 - Loop mapped: hook (opening question) / predict (answer before play) / see (movie, pin) / explain (narration) / retry (one hint, then review deck): [x]
@@ -208,9 +208,8 @@ Signature (typed name is fine): [ ]
   in this pass.
 - **O2** ANSWERED 2026-11-10. Not a fort-only clip. She stays as a leader,
   in the frame under Owner decisions.
-- **O3** 7-10 is not served. Allow a 7-10 version of Robben Island (for
-  example "the dates are 1964 and 1982: subtract", 4.NBT.B.4), or leave this
-  journal to 10-18 and 18+? The child-safety seat wants the educator's say first.
+- **O3** ANSWERED 2026-11-10. Ages 10-18 and 18+ only. No 7-10 version of
+  Robben Island.
 - **O4** ANSWERED 2026-11-10. No "freedom fighter" label. The stream is
   folded into the Great leaders journal.
 - **O5** Name the educator who signs the gate.
@@ -224,7 +223,7 @@ Signature (typed name is fine): [ ]
 
 - [x] Stage A: content screen, reframe log, I5 data, sources, captions and
       transcript drafts, council record, §9 checklist (this pass).
-- [ ] Owner answers O3, O5, O6 and O7. O1, O2 and O4 are answered (2026-11-10).
+- [ ] Owner answers O5, O6 and O7 (later gates: educator, listen check, entry count). O1 to O4 are answered (2026-11-10).
 - [ ] A named educator signs the rubric for this spec's commit.
 - [ ] Owner lifts the build gate; Stage B clip, manifest and verification
       numbers.

@@ -70,11 +70,15 @@ is not created yet (Stage B).
 - Stage B clip and manifest: blocked. The owner has not lifted the build
   gate; no record of a lift was found on main.
 - Educator sign-off: blocked. No named educator yet.
-- Owner calls: O1, O2 and O4 are answered 2026-11-10 (see the spec). Still
-  open: O3 (7-10), O5 (named educator), O6 (listen check), O7 (5 vs 10 entries).
+- Owner calls: O1 to O4 are answered 2026-11-10 (see the spec); O3 keeps
+  this journal to 10-18 and 18+. Still open, as later gates: O5 (named
+  educator), O6 (listen check), O7 (5 vs 10 entries).
 - Source the owner-directed Lakshmibai and Bose facts into `sources.md`, then
   add their clip rows. Not done in this pass. Do not narrate them until they
   are sourced. Never call Bose the founder of today's Indian Army.
+  Check two dates when sourcing: the Jhansi siege and her ride out were in
+  1858 (she took charge of Jhansi in 1857), and the first Indian National
+  Army formed in 1942, with Bose taking command and rebuilding it in 1943.
 - Narration fits about 8 s: TO CONFIRM when rendered.
 
 ## Needs the integrator (outside this branch's paths)
