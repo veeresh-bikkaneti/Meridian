@@ -1,161 +1,139 @@
 # Journal — People & Places
 
-- **Topic:** People & places — cultures, teachers, and storytellers beyond the 106
-- **Status:** GATED (educator sign-off in writing — see § Educator gate)
-- **Branch (proposed):** `feat/journal-people-places-spec`
-- **Proposed video count:** 5 — PROPOSED, pending owner approval. Never presented as decided.
-- **Owner direction 2026-11-10 (epics/religion rules) folded in for the Zeus video only:** authentic sources only; panel-debate verification; parable format (one myth = one lesson); children's language. The other four videos are unchanged by this direction.
-- **Sources consulted:** `~/workspace/journal-106-coverage.md` (audit 2026-11-10, main `f37dea50`); `~/workspace/journal-p8-candidates.md`; `~/workspace/meridian-scaling-lens-breakdown.md` §7 P8 (lines 1249–1424); live web search 2026-11-10 for every key fact below.
+- **Topic:** People and places that make a distance, a count, or a height need math.
+- **Status:** GATED. No educator has signed. Stage B (video files) stays closed.
+- **Branch:** `feat/journal-people-places-spec`
+- **Proposed clip count:** 5 — PROPOSED, not decided.
+- **Screened:** 2026-11-10 against standard §7a. None of the five earlier drafts is kept.
+- **Contract rows:** [`journals/people-places/clips.json`](journals/people-places/clips.json). If this prose and that file disagree, the file wins.
+- **Counting year for any "years ago" line:** 2026, named in the problem, never a hidden "now".
 
-## Topic scope
+Mission: a child should see why multiplication, division, a rate, or trigonometry is useful. Each clip opens on a real question — how far, how many, or where — before the skill is used. Standard §0 and §2. No algebra and no trigonometry in the 7-10 group (standard §1, progression map age note).
 
-Five 10-second journal movies about peoples, teachers, and storytellers: one whole culture (the Maya beyond a single pyramid), one living temple tradition (Shaolin), two teachers who crossed the world with an idea (Bodhidharma, Vivekananda), and one set of stories that shaped the West's imagination (Zeus and the Greek myths). Kid-level, world view, no US-heavy framing.
+## What was cut (§7a)
 
-## Why this is not in the 106
+Dropped, not softened. Reasons also live in `clips.json` under `cuts`.
 
-The coverage audit finds mythology essentially missing (only Uluru and Robber's Cave touch it) and no entry about a person as a teacher or leader. Verified 2026-11-10 against the live manifest: none of Shaolin, Bodhidharma, Vivekananda, or Zeus/Greek myths appears in the 106 manifest keys. What IS in the 106 and must NOT be duplicated:
+| Draft | Verdict | Why |
+|---|---|---|
+| Maya culture (sacred calendar, Tikal as a ceremonial center) | CUT | Religion and religious practice. Temples, priests on stelae, and a sacred 260-day calendar cannot be taught as a neutral counting lesson without softening a cut. The old Britannica link pointed at an Aztec article. Population figures conflict and are unused. |
+| Shaolin Temple | CUT | A Buddhist monastery and monks at prayer are religious practice. |
+| Bodhidharma | CUT | The story is the start of Chan (Zen). It cannot be told without religion. The nine-years tale stays out. |
+| Vivekananda at the Parliament of Religions | CUT | The event and the theme are religion. |
+| Zeus | CUT | Mythology. Owner ruling: religion, pilgrimage, and mythology are out. Not retold as a parable. |
 
-- **Chichen Itza is already in the 106** — so the Maya video is the wider culture (calendar, cities, daily life), NOT the pyramid again.
-- **Mount Olympus / Delphi are in the P8 mythology spec by another writer** — so the Zeus entry is the Zeus STORIES, labelled myth throughout, not the mountain or the site.
+Also left out of narration even where a source mentions them: Agrippa and Augustus (politics, not the arch count); the 1995 earthquake; Inca defence, conquest, and religious sites; any kilometer size for Eratosthenes' Earth; any single height for Aconcagua.
 
-## Expert seats
+Chichén Itzá, the Eiffel Tower, Giza, the Golden Gate, and Machu Picchu are already in the 106. They are not reused.
 
-In addition to the five lenses (architect, UI/UX designer, game developer, researcher, educator):
+## Kept set (5, PROPOSED)
 
-- **Historian seat: owns the Mayan culture video** (world history). Seat per video is noted in the video list below.
-- **Religions/mythology seat: VACANT** for the Shaolin Temple, Bodhidharma, Vivekananda, and Greek myths/Zeus videos. No theologian / religion / mythology persona exists in the installed persona packs (checked 2026-11-10, 157 TOMLs). The seat is vacant, with the owner's three paths: (a) he names a human expert, (b) the coordinator finds and audits a candidate persona — nothing installs without his go-ahead, (c) carry as a recorded risk.
-- **Educator seat: BLOCKED (no named educator exists).** See § Educator gate — the signer must approve, in writing, exactly the items listed there.
+| Clip | Group | Skill | Opens with | C3 code |
+|---|---|---|---|---|
+| `akashi-span` | 7-10 | multiplication | how far | D2.Geo.2.3-5 |
+| `pont-du-gard` | 7-10 | multiplication | how many | D2.Geo.1.3-5 |
+| `eratosthenes-earth` | 10-18 | proportion (× 50) | how far | D2.Geo.3.9-12 |
+| `andean-roads` | 10-18 | rate (distance ÷ day) | how far | D2.Geo.3.6-8 |
+| `aconcagua-height` | 18+ | trigonometry | where | UNVERIFIED |
 
-## Video list (5, PROPOSED)
+Grade check: the 3–5 codes match 7-10 (grades 2–5). The 6–8 and 9–12 codes match 10-18 (grades 5–12). Grade 5 may sit in either group; these 3–5 items stay in 7-10 because the arithmetic is equal groups, not a formula. C3 pathways inspected on 2026-11-10 stop at grade 12, so the adult clip is UNVERIFIED rather than given a 9–12 code.
 
-### 1. The Maya — More than one pyramid [HISTORIAN seat]
-- **Kid hook:** A whole people who read the stars, wrote in pictures, and built cities in the jungle — and their grandchildren still live there today.
-- **Visible verb:** A calendar wheel turning with the sun; a busy market square; glyphs being painted on paper.
-- **Key facts:**
-  - At its height Maya civilisation had more than 40 cities of 5,000–50,000 people — Tikal, Copán, Palenque, Calakmul among them — and a population that may have reached two million; the Classic Period ran about 250–900 CE. Source: https://www.britannica.com/topic/Aztec/Establishment-of-the-Aztec-empire (Britannica Maya article) — **HIGH** (Britannica).
-  - The Maya tracked time with a 365-day solar calendar, a 260-day sacred calendar, and the Long Count; they farmed maize, beans, and squash and wrote in hieroglyphs on bark-paper books called codices. Source: https://www.britannica.com/topic/Aztec/Establishment-of-the-Aztec-empire — **HIGH** (Britannica). Living Maya: some 30 Mayan languages spoken by more than five million people today, same source — **HIGH**.
-- **Scope guard:** No Chichen Itza pyramid — that entry exists. End on the living Maya, not on a vanished people.
+**Andean roads is the closest call.** UNESCO's own page also says "defence" and "sites of religious significance." The clip teaches only the length (about 30,000 km; the brief says "more than") and a practice rate. Religion, armies, and conquest are not in the child-facing lines. An educator may still Fail rubric item 17a. Until then it stays, flagged.
 
-### 2. Shaolin Temple — Monks who move like the wind [VACANT — religions/mythology seat]
-- **Kid hook:** High on a mountain, monks pray in the morning and train their bodies like athletes — the home of kung fu.
-- **Visible verb:** Monks training with staffs at dawn; the old temple on the mountain slope.
-- **Key facts:**
-  - Shaolin Temple was founded in 495 CE, when Emperor Xiaowen of the Northern Wei ordered a monastery built for the Indian monk Batuo (Buddhabhadra), its first abbot. Source: https://en.wikipedia.org/wiki/shaolinsi — **HIGH** (Wikipedia, corroborated by https://www.chinadiscovery.com/henan/dengfeng/shaolin-temple.html).
-  - The first firm evidence of fighting monks is a stele recording that in spring 621 Shaolin monks fought for Li Shimin, the future Tang emperor Taizong; the temple is a Chan (Zen) Buddhist monastery and a UNESCO World Heritage site (inscribed 2010). Source: https://e-buddhism.com/shaolin-temple/ — **HIGH** on the 621 stele and the UNESCO listing.
-- **Scope guard:** Do NOT claim Bodhidharma invented kung fu — scholarship says that link comes from a 1624 text, a thousand years later (see Bodhidharma entry). The clip shows monks training; it does not explain the origin of kung fu.
+### What each clip teaches
 
-### 3. Bodhidharma — The monk who sat still [VACANT — religions/mythology seat]
-- **Kid hook:** A monk walks all the way from India to China, sits facing a wall for nine years, and starts a whole new way of thinking — Zen.
-- **Visible verb:** A lone traveller crossing a river; a monk sitting still as seasons pass.
-- **Key facts:**
-  - Bodhidharma was a Buddhist monk of the 5th or 6th century CE, traditionally credited as the transmitter of Chan (Zen) Buddhism to China and its first Chinese patriarch. Source: https://en.wikipedia.org/wiki/Bodhiharma — **HIGH** on the traditional attribution; the same source stresses he is "semi-legendary" and that little contemporary biographical information exists.
-  - Tradition says he meditated facing a wall at Shaolin for nine years; the kung-fu link is a later invention — the earliest text tying him to martial training is the Yijin Jing, dated 1624. Source: https://www.shaolinstore.com/blog/bodhidharma-zen-shaolin-kung-fu/ — **HIGH** on the 1624 dating; **MEDIUM** overall (commercial site, but it cites Shahar and Broughton and matches Wikipedia).
-- **Scope guard:** Label the nine-years story as tradition/legend ("the story goes…"), and explicitly keep the kung-fu myth OUT of the narration — the clip must not repeat a claim scholarship rejects.
+Numbers below are the ones the game may say. Sources, conflicts, and "do not teach" lists are on the clip in `clips.json`.
 
-### 4. Vivekananda — "Sisters and Brothers of America" [VACANT — religions/mythology seat]
-- **Kid hook:** A young monk from India sails across the world, stands up in Chicago, and says "Sisters and Brothers of America" — and the whole hall stands and cheers.
-- **Visible verb:** A ship crossing the sea; a hall of thousands rising to applaud.
-- **Key facts:**
-  - Swami Vivekananda represented India and Hinduism at the first World's Parliament of Religions, held in Chicago 11–27 September 1893; on opening day, 11 September 1893, he opened with "Sisters and Brothers of America". Source: https://en.wikipedia.org/wiki/Swami_Vivekananda_at_the_Parliament_of_the_World%27s_Religions — **HIGH**.
-  - His theme was religious tolerance and universal acceptance; the Parliament was the first formal gathering of representatives from different religions worldwide. Source: https://testbook.com/question-answer/the-parliament-of-religions-held-at-chicago-in-whi--68c189f1b950e16094969fb4/amp — **MEDIUM** (test-prep site; corroborated by https://www.theinterfaithobserver.org/journal-articles/2011/10/9/crossing-the-ocean-changing-the-world.html).
-- **Scope guard:** The "two-minute standing ovation" detail is widely repeated but not verified to a primary source in this search — **UNVERIFIED as a precise duration**; do not state a time. Say the hall cheered.
+1. **Akashi Kaikyo Bridge** (7-10). How far from tower to tower? Middle span **1,991 meters**. The two side spans are **960 meters** each, so together they are **1,920 meters**. Opened 5 April 1998 (not asked as "years ago", so the answer does not rot). Pin: 34.616 N, 135.021 E (gazetteer, rounded).
+2. **Pont du Gard** (7-10). How many arches on the top row? **35.** Practice frame only: 5 groups of 7. Bottom row 6, middle row 11. Height and build year are **not** taught (sources disagree). Pin: 43.947 N, 4.535 E.
+3. **Eratosthenes** (10-18). How far from Alexandria to Syene? The Cleomedes account uses **5,000 stadia** and **1/50** of a circle, so **50 × 5,000 = 250,000 stadia**. Other ancient accounts say 252,000. No kilometer conversion. Pin: Alexandria, 31.202 N, 29.916 E (modern city center).
+4. **Andean road network** (10-18). How far? **About 30,000 kilometers.** Practice rate, not history: 100 km a day → **300 days**. Countries named in the explain line. Pin: Cusco, 13.517 S, 71.979 W, one city on the network, not the whole of it.
+5. **Aconcagua** (18+). Where is the highest peak in the Americas? Argentina, on the Chilean border. Published heights **do not agree** (6,959 m on the Argentine figure Britannica quotes; a 2001 report of 6,962 m was not adopted; a later paper says 6,960 m). Practice triangle only: 100 m ground distance, 45°, tangent 1, height **100 m**. That triangle is not a survey of the mountain. Pin: 32.653 S, 70.012 W.
 
-### 5. Zeus — King of the gods (MYTH) [VACANT — religions/mythology seat]
-- **Kid hook:** The loudest god in the sky — a thunderbolt in one hand, a whole family of gods and heroes at his table. But remember: this is a story, not history.
-- **Visible verb:** Lightning splitting a storm sky; gods gathered on a mountain top.
-- **Key facts (all labelled MYTH):**
-  - MYTH: Zeus was chief of the Greek gods, a sky and weather god whose weapon was the thunderbolt; he was called father and ruler of both gods and humans. Source: https://www.britannica.com/topic/Zeus — **HIGH** (Britannica, for what the myths say).
-  - MYTH: After defeating the Titans with his brothers, Zeus took the sky, Poseidon the sea, and Hades the underworld; the twelve Olympian gods were said to live on Mount Olympus, Greece's highest mountain (2,917 m — real height). Source: https://www.britannica.com/topic/Zeus — **HIGH** (Britannica).
-- **Scope guard:** The word MYTH appears in the narration and on screen. Mount Olympus and Delphi are covered by the other writer's P8 mythology spec — this entry is the stories only, never the mountain or the site.
-- **Parable shape (owner direction 2026-11-10):** the Zeus story is told as one small children's story teaching one life lesson about how a person should conduct their life, told simply in children's language. The lesson is picked from the authenticated source (Britannica's account of the myths) by the build agent and confirmed by the panel — never invented. Authentic sources only; the topic expert sits on a panel that debates the facts. Same rules as the religions-epics spec: no personal views, no opinions, no commentary from the builders.
+## Loop (standard §3 and §4)
 
-## Agent prompt (copy-paste)
+For every clip, in order:
+
+1. **Hook / predict.** The on-screen prompt (`predict`) is read aloud. The child taps an answer before the clip.
+2. **See.** The 10-second clip (narration + globe). Full and Lite fly the existing three.js globe (`import("three")` only inside mount, as `home-globe.tsx` does). Flat, Save-Data, and `prefers-reduced-motion` show a 2D pin at the same lat/lon. No swoop on Flat. Pause when the tab is hidden. Dispose on exit.
+3. **Explain.** One or two sentences (`explain`), read aloud on demand.
+4. **Retrieval.** One read-aloud question (`retrieval`) about a fact the narration said. A correct first try with no hint is the confident bar (standard §4, journal).
+5. **Retry.** One hint (`hint`), then the same review deck and the same `[0, 1, 3, 7, 14, 30]`-day ladder. No second deck. No timer in 7-10. Timers off unless the player opts in.
+6. **Use it elsewhere.** A later card (`elsewhere`) uses the same skill in geography, everyday bricks, or a physics ramp or trip. Those numbers are the game's, and the files say so.
+
+Learning parity: Full, Lite, and Flat ask the same question and score the same answer. Beauty changes. Content does not.
+
+## Captions and transcript
+
+Spoken words are the `narration` string. Captions (timings PROPOSED until a real voice exists):
+
+- `docs/scaling/journals/people-places/captions/<clip>.vtt`
+- transcript: `docs/scaling/journals/people-places/captions/<clip>.txt`
+
+Stage B copies them beside the mp4. Recipe, when the owner lifts the gate: `docs/journal-movies.md` (10 s, 1152×768, 24 fps, h264 + AAC, no on-screen text, tap to play). Manifest for that day: `public/videos/journals/people-places/manifest.json`. Do not edit `public/videos/journal-manifest.json` on this branch.
+
+Read-aloud is on by default for 7-10. Every prompt has text. The pin has a screen-reader name (the place name). No drag is required.
+
+## Readability
+
+`node docs/scaling/journals/people-places/readability.mjs` prints a Flesch-Kincaid grade (heuristic, about ±1). Limits: 7-10 → 5, 10-18 → 12, 18+ → 14. All six child-facing fields passed on 2026-11-10.
+
+## Checks
 
 ```
-You are the expert seat for the Meridian journal expansion, per video:
-- Mayan culture video: HISTORIAN seat (world history).
-- Shaolin Temple, Bodhidharma, Vivekananda, Greek myths/Zeus videos:
-  religions/mythology seat — VACANT (no theologian / religion / mythology
-  persona exists in the installed packs; resolved by the owner's call:
-  human expert named, audited candidate persona installed, or recorded
-  risk carried; do not proceed on those four videos until the seat is
-  resolved). Work alongside the five lenses: architect, UI/UX designer,
-  game developer, researcher, and educator (educator seat BLOCKED —
-  no named educator; sign-off in writing is required before batch
-  production — see the spec's Educator gate).
-
-EXPERTISE REQUIRED: world history (Maya) and respectful storytelling
-of religious/mythological traditions (Shaolin, Bodhidharma,
-Vivekananda, Zeus) for children aged 5th grade and up. You must keep
-fact, tradition, and myth in separate boxes and label each on screen
-and in narration. You write narration only from the spec's sourced
-facts; you never invent a fact, a date, or a quote. The kung-fu origin
-myth is OUT — do not repeat it. Chichen Itza is OUT — the Maya video
-is the wider culture. Mount Olympus / Delphi are OUT — the Zeus video
-is the stories only.
-
-DELIVERABLES (branch feat/journal-people-places-spec):
-- 5 videos, 10 seconds each, one per entry in the spec. PROPOSED count —
-  pending owner approval.
-- Tech = v4 recipe: AI video-gen + Avocado TTS + ffmpeg. Storyteller
-  voice: Magnus (86–138 Hz). 1152x768, 24fps, h264 + AAC.
-- Narration opens "Hey kids, have you heard about this place?" and is
-  drawn ONLY from the entry's sourced facts + what is visible on screen.
-  No invented facts. Bed at 30%. Limiter at −1 dB on any re-mix.
-  10 s fits ~8 s of speech — cut, never rush.
-- Tap-to-play, preload=none; movies stream on demand only, never
-  precached. Lazy-load law: video data loads only (a) when the user
-  taps play, or (b) in background prefetch while the user is playing.
-- Captions/VTT + a transcript per clip. Journal rotation: 1 entry per
-  30-minute clock window (JOURNAL_WINDOW_MS = 1_800_000, B8).
-- Sensitivity review is part of the brief: a story with facts right
-  and tone wrong is a failure. World view, not US-heavy. NO POLITICS
-  anywhere. Myth/tradition labelled as myth/tradition throughout.
-- Zeus video: PARABLE format (owner direction 2026-11-10) — one myth =
-  one life lesson, told simply in children's language; authentic sources
-  only; the topic expert sits on a panel that debates the facts.
-
-GATES (all must pass, in order): tsc → npm test → test:worker →
-lint-cards GATE PASSED → build:pages → Playwright E2E sequential
---workers=1 → panel review → educator sign-off in writing.
-
-VERIFICATION PROTOCOL (per clip, recorded numbers, not vibes):
-live web search grounds every fact (named site source + access date +
-confidence HIGH/MEDIUM/LOW; no source = UNVERIFIED, never asserted);
-duration check; full decode; video MD5 vs approved cut; frame checks
-(start, punchline beat, final frame); audio levels; bed-at-30%
-measurement; human listen check. VIDEO-AUDIO LAW: ffprobe must show
-an audio stream AND volumedetect must show non-silent audio in the
-playing segments — a silent video never ships.
+node --test docs/scaling/journals/people-places/clips.test.mjs
+node docs/scaling/journals/people-places/readability.mjs
 ```
 
-## Educator gate — what the signer must approve (in writing)
+## Council (design pass, 2026-11-10)
 
-The educator seat is BLOCKED — no named educator exists. Before batch production, a named human educator / SME must sign IN WRITING:
+- **Architect.** Rows follow contract I5. Shared files were not edited. The globe reuses the house stack (standard §5.1). No new library.
+- **Game designer.** The 10-second narration cannot hold the whole lesson. The predict step is before the clip. The retrieval step asks only what the narration said.
+- **Accessibility.** Captions, transcript, read-aloud, a named pin, no timer for 7-10, Flat still pins the same place.
+- **Skeptic.** All five drafts fail §7a or the mythology ruling. Conflicting heights, dates, and stadion lengths are not averaged into a fake fact. The Andean clip is the one an educator might still cut.
 
-1. The per-story production process (narration drawn only from sourced facts + what is visible).
-2. Historical correctness of the Maya entry (dates, calendar, living-Maya framing) — historian + educator.
-3. Sensitivity + correctness of the Shaolin, Bodhidharma, and Vivekananda entries (religious content handled with respect; the kung-fu myth kept out).
-4. The Zeus entry's myth labelling (MYTH on screen and in narration; no confusion between story and history).
-5. Age-fit for 5th grade and up (language, concepts, and visuals a 10-year-old can follow without an adult explaining).
-6. Zeus entry: panel debate held + parable format and children's language verified (one myth = one lesson, told simply).
+## K-12 standard block
 
-## Open questions for the owner
+```
+K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+- Why first (§0): unit opens with a real problem that needs the skill; "why does this matter?" answered in the first minute: [x] predict prompt before each clip
+- Headline goal (§0): bridge to the previous subject + playable real-life application: [x] buildsOn + realLife on each row
+- Use-it-elsewhere round in at least one other subject (cross-application web): [x] elsewhere on each row
+- Bands served: [x] 7-10 (2), 10-18 (2), 18+ (1). 7-10 has no formula, algebra, or trigonometry.
+- Objective per item, observable verb, "shown by": [x]
+- Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [x] four C3 codes checked 2026-11-10; adult clip UNVERIFIED
+- Loop mapped: hook / predict / see / explain / retry: [x]
+- Mastery "confident" bar for this subject: [x] post-clip answer correct on the first try, no hint
+- Review-deck hookup (same deck, same ladder): [x] specified; not wired (Stage B)
+- Post-clip retrieval check (journal + any video): [x]
+- Motion tiers: Full / Lite / Flat described, learning parity stated: [x]
+- Accessibility: captions, tap alternative, no-timer default, SR live region: [x] captions drafted; live region is the pin name; no timer in 7-10
+- Privacy: no PII, no identifiers, local-only records: [x] no age question, no account
+- Content screen (§7a) passed; cut items logged with reason: [x] five drafts cut; Andean roads flagged
+- Free: no revenue features; asset licences recorded: [x] no assets yet; Stage B must use the open journal recipe
+- Educator rubric (docs/scaling/educator-gate-rubric.md) attached: [x] unsigned
+```
 
-1. Approve the PROPOSED count of 5 videos (or a different number)?
-2. Name the religions/mythology seat-holder for the Shaolin, Bodhidharma, Vivekananda, and Zeus videos.
-3. Name the educator / SME who signs the gate above.
-4. Unresolved v3-vs-v4 gate question (from §7 P8): the owner's ear approved v4's Magnus narration on 2026-11-08, but the written gate names a listen-verdict on v3. Does the v4 approval satisfy the gate, or is a fresh listen-verdict required?
-5. Batch size: 5 at once, or a smaller first tier?
-6. Bodhidharma: is a "nine years facing a wall" legend acceptable for kids if labelled as a story, or too uncertain to include at all?
-7. Vivekananda: the standing-ovation duration is UNVERIFIED — keep the cheer without a time, or drop the applause beat?
+## Educator gate
 
-## Definition of done
+Evidence prepared, not signed. Rubric item 6 (a screen recording of play) is open because no clip is built. Item 7 is the readability script.
 
-- [ ] Owner approves the proposed count (5) and names the religions/mythology seat-holder.
-- [ ] Educator/SME named and sign-off in writing on all 6 items in the Educator gate.
-- [ ] Listen-verdict question (v3 vs v4) answered by the owner.
-- [ ] Per-story production process written (pipeline: script from sourced facts only; voice direction; "Hey kids" opening; bed at 30%; video-discipline — never re-render approved video to add audio).
-- [ ] All 5 clips pass every gate above, with recorded verification numbers per clip.
-- [ ] Scope guards honoured: no Chichen Itza pyramid, no kung-fu origin myth, no Mount Olympus/Delphi site content, MYTH labelled throughout the Zeus clip.
-- [ ] Zeus clip: parable format + children's language verified (one myth = one lesson, told simply), panel debate held.
+```
+EDUCATOR SIGN-OFF
+Spec: docs/scaling/journal-people-places-spec.md (commit to be named by the signer)
+Signer: [name], [role], [band(s)], [subject]
+Date: [YYYY-MM-DD]
+Result: Approved / Approved after fixes / Not approved
+Fixes: [list with owner]
+Signature (typed name is fine): [ ]
+```
+
+The signer should look hardest at the Andean road clip (rubric 17a) and at every "practice, not history" number.
+
+## Open
+
+- [ ] Owner: accept these five replacements, or cut the Andean road clip and name another. Count stays PROPOSED until the owner says otherwise.
+- [ ] Owner: name a human educator. No agent signs.
+- [ ] Owner: Stage B stays shut. Only the math definition and the Phase 0 shell split are approved to build (agent instructions). No mp4 and no `public/videos/journals/people-places/manifest.json` until that gate lifts.
+- [ ] Integrator, at Stage B only: merge manifest entries into `public/videos/journal-manifest.json`, and add a review-deck subject id if `src/game/learning.ts` needs one. Not requested now.
+- [ ] v3-versus-v4 listen question from the old draft: still open, and only matters at Stage B.
