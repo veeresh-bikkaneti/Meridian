@@ -842,7 +842,54 @@ worked and only the renders were missing.
 - **Merge:** NO MERGE without the owner's per-PR word. Once merged, PR #370 merges up and its red e2e check clears.
 
 ## Notes
-- CSP is NOT changed (repo CSP has no meridian-media in `media-src`/`connect-src`; GitHub Pages ignores `_headers`, so live Pages is unaffected — separate security decision).
+- CSP: was NOT changed by this branch itself (repo CSP had no meridian-media in `media-src`/`connect-src`) — SUPERSEDED by the merge below: the player CSP fix (`da43a03f` + `8d4475e9`) adds the host to both directives, so this branch now carries it too. GitHub Pages ignores `_headers`, so live Pages is unaffected by the file; the worker-served CSP is what matters.
 - No PR opened; merging stays the owner's decision.
 - Head: this commit (docs-only over share-fix code head `0cf449d7`; all gates / E2E union ran on `0cf449d7`; verified this session: `git rev-parse HEAD`, worktree clean, remote tip matches; B5/B6 fix pass 2026-11-09, share-URL fix pass 2026-11-09).
 - Final-pass verdict: unit gates + `build:pages` green on head `0cf449d7`; E2E union **88 passed / 0 failed** — the former share-URL failure (Step 3) is cured by the owner's 2026-11-09 ruling (see Share-URL fix). The three blocking seats re-vote with the green union on the record. One open item remains outside the union: endgame-share E2E (see Pending).
+
+---
+
+## CSP fix — journal media host (PR #388 follow-up, 2026-11-09, owner-ordered)
+
+- **Problem:** the journal clips live on meridian-media Pages
+  (`https://veeresh-bikkaneti.github.io/meridian-media/journal/`), but CSP
+  had no `veeresh-bikkaneti.github.io` in `media-src` or `connect-src` —
+  in production the player would show "This story's movie isn't ready
+  yet." and prefetch would silently warm nothing. Proven by the negative
+  controls below (not assumed).
+- **Fix:** added the host to BOTH directives in
+  `src/lib/security-headers.ts` AND `public/_headers` (drift test pins
+  them identical), plus the matching lines in `docs/security-headers.md`
+  (quotes the CSP verbatim) and a rationale bullet in the .ts CSP notes.
+- **Tests:** new unit test in `src/lib/security-headers.test.ts` asserts
+  both directives contain the host (src 2302 → 2303). New E2E
+  `tests/e2e/journal-player.csp.desktop.spec.ts` serves the app shell
+  with the real production CSP read from `public/_headers` and asserts
+  the Old Faithful movie's `currentTime` advances (0.54 s in the run).
+  Negative controls, both fail as designed: (1) old `_headers` restored
+  → spec fails at the CSP-contains-host assertion; (2) old CSP served
+  with the file fixed → the player shows "This story's movie isn't
+  ready yet.", no `<video>` mounts, spec fails at `openEntry`.
+- **Also:** `tests/e2e/journal-player.facts.data.ts` comment fixed to the
+  30-minute window / mod 106 (wording copied from the prefetch branch so
+  the merge stays clean). Pinned times untouched — they are the 2h-based
+  instants this branch's rotation uses; B8's times arrive with the
+  prefetch merge.
+- **Gates (this commit):** tsc 0; `npm test` scripts 1161/11 skipped/0,
+  src 2303/0; lint-cards GATE PASSED; `build:pages` ok; `test:worker`
+  145/0. E2E targeted player set 39/39 (38 + new CSP spec).
+  Logs: `~/workspace/journal-player-csp/`.
+- **Merge:** NO MERGE without the owner's per-PR word. This commit moves
+  the #388 tip; the old validator YES on `af7ec7c1` does not transfer.
+  Next: merge this tip into `feat/journal-prefetch` (#389) per the
+  owner's order.
+- **Follow-up (same evening):** the first merge attempt into prefetch
+  caught a spec bug — the CSP spec asserted the player's 3-entry set,
+  but prefetch B8 shows 1 entry per 30-minute window (`wagon-train` at
+  the pinned instant), so the spec failed there on the rotation
+  assertion, not on CSP. Fixed by making the spec rotation-agnostic: it
+  plays whichever entry the pinned instant shows (`ids[0]`). Re-run on
+  the player branch: CSP + facts specs 9/9, movie `currentTime` 0.51 s
+  (entry old-faithful). This lands as a second commit on this branch
+  before the prefetch merge is redone.
+- **Repair (2026-11-10, owner-ordered):** Lotus rebased this branch onto main `10e8121d` overnight (`6dcdcfc7`), orphaning the first merge (`60c16460`) and dropping the CSP fix — the rebased tip had no `github.io` in either CSP directive and #389 went CONFLICTING vs base. This merge re-merges the player tip `8d4475e9`. Resolution, all 21 conflicts: kept the prefetch (B8/B7) version of every player file whose two sides diverged — `game-app.tsx` (B7 boot-Home + prefetch effect; player's `readLoopOpen` boot-restore would regress B7), `journal-movies.ts` (baseUrl re-pin restored by prefetch follow-up `13844336`), the spinner (`journal-player.tsx`, `home-v5.css`, unit tests), and all rotation-sensitive specs (B8 1-entry/30-min assertions, incl. `facts.data.ts` B8 times + the fixed 30-min comment); took the player's CSP fix (security-headers files + docs, merged clean), the CSP spec, and this section. The player's 3-per-set spec wording and 2-hour language were NOT taken — they describe the old rotation.

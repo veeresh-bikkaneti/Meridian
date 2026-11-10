@@ -17,7 +17,7 @@ import {
  */
 export interface FixedEntry {
   id: string;
-  /** UTC instant whose 2 h window shows this entry's set. */
+  /** UTC instant whose 30-minute window shows this entry. */
   time: Date;
   /** Corrected cue 2 (index 1): window + text. */
   cue: { start: number; end: number; text: string };
