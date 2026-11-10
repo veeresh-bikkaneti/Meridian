@@ -1521,6 +1521,18 @@ function LoopGame({
               sheetOpen: selected !== null,
               lastGuessPlaceId:
                 puzzle.guesses[puzzle.guesses.length - 1]?.placeId ?? null,
+              // The CURRENT pick for the selection read: the same
+              // re-derivation the sheet below renders (a tap entry's
+              // id is rebuilt from its coordinates), so Holmes names
+              // the id the guess will record under — the machine's
+              // dedup keys on that identity. Null when nothing is
+              // picked.
+              selectedPlaceId:
+                selected && !finished
+                  ? selected.id.startsWith("tap:")
+                    ? unlabeledSpotEntry(selected.lon, selected.lat).id
+                    : selected.id
+                  : null,
               freshDeal: puzzle.guesses.length === 0 && puzzle.cluesRevealed <= dealConfig.startingClues,
               answerPlaceId: clue.placeId, // U8: the props builder gates this to the post-solve reveal only
             })}

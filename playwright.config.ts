@@ -266,6 +266,17 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // PR 2a cure (selection read wiring): the real pick path —
+      // LoopScreen → props whitelist → host → machine → audio —
+      // Holmes names the player's map pick aloud before any guess is
+      // spent, suspicion-only on the confirming guess, and the
+      // pending-slot law for a pick made mid-clue-chain. The spec
+      // drives its own contexts; the project viewport is a default.
+      name: "detective-selection-read",
+      testMatch: /detective-selection-read\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },

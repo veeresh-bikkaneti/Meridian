@@ -173,7 +173,7 @@ interface StationAnchor {
 }
 
 export default function DetectiveHost(props: DetectiveHostProps): ReactElement | null {
-  const { caseIndex, cluesRevealed, status, sheetOpen, lastGuessPlaceId, freshDeal, answerPlaceId } = props;
+  const { caseIndex, cluesRevealed, status, sheetOpen, lastGuessPlaceId, freshDeal, answerPlaceId, selectedPlaceId } = props;
 
   /* -- machine instance: ref-held state, React state only for the view */
   const machineRef = useRef<DetectiveState>(initialDetectiveState());
@@ -694,6 +694,25 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     seenSheetRef.current = sheetOpen;
     dispatch({ type: sheetOpen ? "sheetOpened" : "sheetClosed" });
   }, [sheetOpen, dispatch]);
+
+  // The player's current pick → the selection read (PR 2a cure: the
+  // machine's selectionNamed event had no production dispatcher —
+  // Holmes stayed silent from the pick until the guess was spent).
+  // One dispatch per pick LANDING: a change to a new non-null id.
+  // Re-renders with the same pick, and the pick clearing (cancel /
+  // confirm), dispatch nothing — the machine dedups re-names itself,
+  // and a confirmed guess rides guessConfirmed, never this path.
+  // ORDER: this effect is declared AFTER the sheet effect above on
+  // purpose — a pick always arrives WITH the sheet opening (same
+  // render), so sheetOpened lands first; the machine stores the pick
+  // as its pending selection (sheetOpened never discards it) and the
+  // read then waits for the clue chain exactly as designed.
+  const seenPickRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!selectedPlaceId || selectedPlaceId === seenPickRef.current) return;
+    seenPickRef.current = selectedPlaceId;
+    dispatch({ type: "selectionNamed", placeId: selectedPlaceId });
+  }, [selectedPlaceId, dispatch]);
 
   /* PR B: the sheet opening mid-walk cancels the walk (the council's
    * stale-read condition): a held read is dropped and must NEVER
