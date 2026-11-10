@@ -123,7 +123,19 @@ against the repo before being asserted as current.
 
 | Slice | What | Head | Gates |
 |---|---|---|---|
-| 0 | Spec file (this document) | — | — |
-| 1 | Pure helpers → `src/game/shell-helpers.ts` (formatting + clamp + id helpers, no React, no state) | TBD | TBD |
+| 0 | Spec file (this document) | 34297527 | — |
+| 1 | Pure helpers → `src/game/shell-helpers.ts` (164 lines): `isReviewRun`, `isChallengeRun`, `trailDate`, `DiscardedNotice` + `discardedNoticeText`, `runResultsTotals`, `boundsFor`, `isEdition`, `isPhase`, `isPlaceResult`, `isScoredPlace`, `isDrop`, `Drop` type — moved verbatim from `game-app.tsx` (8,609 → 8,472 lines). `Drop` + `isChallengeRun` re-exported from `game-app.tsx` so `result-card.tsx` and any external import keep working. One source-pinning test updated as a mechanical consequence: `game-app-lazy-boundary.test.ts` segment end marker `export type Drop = {` → `type ModelAvailability = "available"` (the pinned behaviour — fallback role="status" + spinner — is unchanged). | 2f0578e9 | tsc PASS; `npm test` 2,323 pass / 0 fail; `test:worker` PASS; `lint-cards.mjs` GATE PASSED; `build:pages` PASS; E2E smoke (hydration-boot + geodetective-boot-home, 4 tests) PASS |
+
+## 9. Repo-rule conflict recorded (not decided here)
+
+The repo's `AGENTS.md` Constitution rule 1 says "Do not refactor existing
+working code" and rule 3 says "Edit only the targeted functions, in
+place." This workstream's assigned task — the Phase 0 shell split,
+authorised by the owner's CONDITIONAL GO (council verdict 2026-11-07) —
+is a refactor by definition. The split proceeds on the assigned task's
+authority, on the narrow, behaviour-preserving reading only (verbatim
+moves, no behaviour change, gates after every slice). The conflict is
+recorded here for the owner/panel; this workstream does not amend the
+repo rule and does not claim an exemption beyond the assigned task.
 
 (Append rows as slices land.)
