@@ -163,6 +163,23 @@ export const FIXED_LINES = Object.freeze([
   // pinned voice; speed 106 is the pace-ladder target the mockup
   // take of record was measured at (93.8 Hz median / 132 wpm).
   spec({ id: "lets-find-clues", kind: "announcement", text: "Let's find some clues.", voice: VOICES.watson, speed: 106, file: "fixed/lets-find-clues.mp3" }),
+  // Truce lines (PR 2b): the loss moment, replacing the silent pout.
+  // Watson assures first (a pool of four — warmth, addressed to the
+  // child, credit for the effort), then Holmes reframes (a pool of
+  // three — a miss is information, never a failure). One draw from
+  // each pool per lost case; the pools take no game state, and the
+  // case is already over when they play, so nothing here can leak
+  // or judge. Kindness law: no surrender framing, ever — the child
+  // never "gives up"; the case simply closes, kindly. Banned copy
+  // (plant / claim / conquer / territory / discovered) is absent by
+  // construction and swept by the state tests.
+  spec({ id: "truce-watson-1", kind: "truce-assurance", text: "You worked hard on that one. Well tried.", voice: VOICES.watson, speed: 100, file: "fixed/truce-watson-1.mp3" }),
+  spec({ id: "truce-watson-2", kind: "truce-assurance", text: "Every guess taught us something new.", voice: VOICES.watson, speed: 100, file: "fixed/truce-watson-2.mp3" }),
+  spec({ id: "truce-watson-3", kind: "truce-assurance", text: "That was a tricky case. You kept going.", voice: VOICES.watson, speed: 100, file: "fixed/truce-watson-3.mp3" }),
+  spec({ id: "truce-watson-4", kind: "truce-assurance", text: "Good hunting. The next case is waiting.", voice: VOICES.watson, speed: 100, file: "fixed/truce-watson-4.mp3" }),
+  spec({ id: "truce-holmes-1", kind: "truce-reframe", text: "A missed case is still a case learned.", voice: VOICES.holmes, speed: 100, file: "fixed/truce-holmes-1.mp3" }),
+  spec({ id: "truce-holmes-2", kind: "truce-reframe", text: "We know more now than when we started.", voice: VOICES.holmes, speed: 100, file: "fixed/truce-holmes-2.mp3" }),
+  spec({ id: "truce-holmes-3", kind: "truce-reframe", text: "The clues will keep. So will we.", voice: VOICES.holmes, speed: 100, file: "fixed/truce-holmes-3.mp3" }),
 ]);
 
 

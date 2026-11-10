@@ -119,8 +119,25 @@ test("fixed lines: the case-open announcement is Watson (PR B)", () => {
   assert.equal(line.speed, 106);
   assert.equal(line.file, "fixed/lets-find-clues.mp3");
   // Was the 20th line when PR B added it; the 2026-11-09 ack-pool
-  // extension (ack-5…ack-10) inserted six lines before it.
-  assert.equal(FIXED_LINES.length, 26);
+  // extension (ack-5…ack-10) inserted six lines before it, and
+  // PR 2b appended the seven truce lines after it.
+  assert.equal(FIXED_LINES.length, 33);
+});
+
+test("fixed lines: the truce pools (PR 2b) — Watson assures, Holmes reframes", () => {
+  const watson = FIXED_LINES.filter((l) => l.kind === "truce-assurance");
+  const holmes = FIXED_LINES.filter((l) => l.kind === "truce-reframe");
+  assert.equal(watson.length, 4);
+  assert.equal(holmes.length, 3);
+  for (const l of watson) assert.equal(l.voice, VOICES.watson);
+  for (const l of holmes) assert.equal(l.voice, VOICES.holmes);
+  // Kindness law: no surrender framing and none of the banned copy,
+  // in any truce line, ever.
+  for (const l of [...watson, ...holmes]) {
+    assert.doesNotMatch(l.text, /give up|giving up|surrender/i, l.id);
+    assert.doesNotMatch(l.text, /plant|claim|conquer|territory|discovered/i, l.id);
+    assert.equal(l.file, `fixed/${l.id}.mp3`);
+  }
 });
 
 test("selection name plan: bare display name, Holmes at speed 100", () => {
