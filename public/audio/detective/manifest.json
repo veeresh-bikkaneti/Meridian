@@ -1257,6 +1257,81 @@
    "measuredWpm": 132,
    "durationSec": 1.82,
    "status": "ok"
+  },
+  "ack-5": {
+   "text": "Heard, Watson.",
+   "textHash": "2a7e3286c377e8c99ab696c4b8057839848de0349659235eb963f39d31f41165",
+   "voice": "avocado_v2:atlas",
+   "speed": 100,
+   "gainDb": 0,
+   "file": "fixed/ack-5.mp3",
+   "measuredHz": 133.9,
+   "measuredWpm": 91,
+   "durationSec": 1.32,
+   "status": "ok"
+  },
+  "ack-6": {
+   "text": "I'll take that, Watson.",
+   "textHash": "c6f8ed105b334fad1fede444bfc97143ce2e52080f7c72c046619cd7d954ecb5",
+   "voice": "avocado_v2:atlas",
+   "speed": 100,
+   "gainDb": 0,
+   "file": "fixed/ack-6.mp3",
+   "measuredHz": 122.1,
+   "measuredWpm": 147,
+   "durationSec": 1.63,
+   "status": "ok"
+  },
+  "ack-9": {
+   "text": "Set it down, Watson.",
+   "textHash": "babef71cf7689069a3e468637a2cacf67db84722f9a9eabdf2b1f75af3932d9a",
+   "voice": "avocado_v2:atlas",
+   "speed": 97,
+   "gainDb": 0,
+   "file": "fixed/ack-9.mp3",
+   "measuredHz": 126,
+   "measuredWpm": 121,
+   "durationSec": 1.99,
+   "status": "ok",
+   "note": "pitch retry ladder moved speed 100 -> 97"
+  },
+  "ack-7": {
+   "text": "Filed, Watson.",
+   "textHash": "e32c85e2ffa1809bc56701ea8660095c35469120431e7529ae47ad129a03d624",
+   "voice": "avocado_v2:atlas",
+   "speed": 112,
+   "gainDb": 0,
+   "file": "fixed/ack-7.mp3",
+   "measuredHz": 111.1,
+   "measuredWpm": 90,
+   "durationSec": 1.34,
+   "status": "flagged",
+   "note": "pitch 107.8 Hz outside target 120-145 Hz — OUTSIDE the family band 110-160 Hz too; human ear check required; pitch retry ladder moved speed 100 -> 106; pace retry ladder moved speed 106 -> 112"
+  },
+  "ack-8": {
+   "text": "Received, Watson.",
+   "textHash": "9f7039e1113abfc5642720f02906bde5863ea1078dda54b8a7bb9f340df2d5c2",
+   "voice": "avocado_v2:atlas",
+   "speed": 106,
+   "gainDb": 0,
+   "file": "fixed/ack-8.mp3",
+   "measuredHz": 123.7,
+   "measuredWpm": 85,
+   "durationSec": 1.42,
+   "status": "flagged",
+   "note": "pace retry ladder moved speed 100 -> 106; pace 85 wpm below the 90 wpm floor after 2 pace retries — best in-family take kept, flagged for a human ear check"
+  },
+  "ack-10": {
+   "text": "One moment, Watson.",
+   "textHash": "389318d269fff1026ed2dd7dce0c7e516e0f65189e6973c66c308f52fcfc8118",
+   "voice": "avocado_v2:atlas",
+   "speed": 100,
+   "gainDb": 0,
+   "file": "fixed/ack-10.mp3",
+   "measuredHz": 121.2,
+   "measuredWpm": 104,
+   "durationSec": 1.73,
+   "status": "ok"
   }
  },
  "cases": {

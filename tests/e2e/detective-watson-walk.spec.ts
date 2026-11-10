@@ -1,9 +1,12 @@
 import { test, expect, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 import {
+  ACK_POOL,
+  ackFiles,
   AuditTrail,
   assertSubsequence,
   collectAuditWindow,
+  countAcks,
   currentPhase,
   detectivePlays,
   entryByName,
@@ -229,7 +232,7 @@ for (const w of WIDTHS) {
           "fixed/instructions-watson.mp3",
           ANNOUNCE,
           CLUE1,
-          "fixed/ack-1.mp3",
+          ACK_POOL,
           "fixed/decode-geography.mp3",
         ],
       );
@@ -475,7 +478,16 @@ test("watson walk: tap on Watson MID-WALK is ignored — one figure, walk arrive
     // …and it fired exactly once on arrival, ack included.
     const plays = await detectiveOnly(page);
     expect(countIn(plays, CLUE2)).toBe(1);
-    expect(countIn(plays, "fixed/ack-2.mp3")).toBe(1);
+    // Pool contract (HERALD): the case's acks so far are clue 1's and
+    // this arrival's — exactly two plays, and DISTINCT files (the old
+    // rotation pinned the second one as ack-2; the pool forbids a
+    // repeat within a case, which is the stronger pin).
+    const acksSoFar = ackFiles(plays);
+    expect(acksSoFar.length, "two acks played in the case so far").toBe(2);
+    expect(
+      new Set(acksSoFar).size,
+      "no ack repeats within a case",
+    ).toBe(2);
   } finally {
     await context.close();
   }
@@ -549,7 +561,10 @@ test("watson walk: sheet opens mid-walk — walk cancels, held read never fires 
     await waitForSearchIdle(page, 120_000);
     const after = await detectiveOnly(page);
     expect(countIn(after, CLUE1)).toBe(0);
-    expect(countIn(after, "fixed/ack-1.mp3")).toBe(1);
+    expect(
+      countAcks(after),
+      "the deferred drain plays exactly one pool ack",
+    ).toBe(1);
     expect(await currentPhase(page)).toBe("SEARCH_IDLE");
   } finally {
     await context.close();
