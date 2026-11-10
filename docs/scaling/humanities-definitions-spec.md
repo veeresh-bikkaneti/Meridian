@@ -325,7 +325,7 @@ this plainly) — do not claim it was.
    deferred to a later tier, not forced. Most existing entries are static
    places and forcing a movie onto each would be slow pans.
    - **EXTENDED 2026-11-10 (owner, voice call) — the journal set must
-     include these categories:** historical places, mythological places,
+     include these categories:** historical places,
      famous spots, World War monuments, great leaders, and freedom
      fighters. This EXTENDS
      the 2026-11-07 list above — keep everything built, add on top. Both
@@ -437,7 +437,9 @@ transcribed from that audit, not re-derived here.
   the pilgrimage and religions-epics spec branches were deleted.
 - **Mythology:** essentially missing — only Uluru (sacred to the Anangu)
   and Robber's Cave (local legend) touch it. No Greek, Norse, Hindu or
-  other mythology entry.
+  other mythology entry. Audit fact only — no expansion: mythology was
+  removed from the plan by the owner 2026-11-10; the mythology spec
+  branch was deleted.
 
 **MISSING entirely:**
 
@@ -451,11 +453,11 @@ transcribed from that audit, not re-derived here.
   death at Fort Robinson.
 
 > **RULE FOR P8 (binding on the expansion): only add what is NOT in
-> the 106.** The four gaps are: (1) World War monuments, (2) great
-> leaders, (3) freedom fighters, (4) mythology. Do NOT duplicate historical places or famous spots —
+> the 106.** The three gaps are: (1) World War monuments, (2) great
+> leaders, (3) freedom fighters. Do NOT duplicate historical places or famous spots —
 > only add one of those if it fills a named gap (e.g. a WWII monument
 > that is also a famous spot counts as a monument, not as a famous
-> spot). The first batch (owner's choice, §2.6) is shaped by these four
+> spot). The first batch (owner's choice, §2.6) is shaped by these three
 > gaps, not by re-covering what the 106 already has.
 
 P8 stays GATED (no building; educator sign-off before final). Everything

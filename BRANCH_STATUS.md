@@ -20,6 +20,11 @@ removed, sensitivity review narrowed to a tone review for historical
 content, P8 gaps five → four. The religions-epics and pilgrimage spec
 branches were deleted (both gone from remote, verified 2026-11-10).
 Mythology stays (separate category).
+**Update 2026-11-10 (owner: remove mythology):** §2 P8 stripped of
+mythology — "mythological places" removed from the §2.2 category list,
+P8 gaps four → three (WWII monuments, great leaders, freedom
+fighters). The mythology spec branch was deleted. Coverage-audit facts
+about Uluru / Robber's Cave stay as facts, marked no-expansion.
 **Blocked (not by this branch):** every brief is PREPARED — AWAITING
 EDUCATOR SIGN-OFF (educator seat UNSTAFFED, no signer exists). P8: owner
 question — does the v4 listen-approval satisfy the v3 gate? P11: owner
