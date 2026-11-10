@@ -81,5 +81,15 @@ equivalent with the same rule.
   "retrieval": { "question": "", "answer": "" } }
 ```
 
+Optional `stretch` (owner, 2026-11-10): one extra question for an older group,
+asked after the retrieval check, on the same clip. Clips without it stay valid.
+
+```json
+"stretch": { "group": "18+", "question": "", "answer": "", "fact": "<fact id in sources.md>" }
+```
+
+The stretch group is older than the clip's own group, and its answer follows
+from a sourced fact in that journal's `sources.md`. It never needs a new video.
+
 Each journal keeps its entries in `public/videos/journals/<journal>/manifest.json`.
 The integrator merges them into `public/videos/journal-manifest.json`.
