@@ -269,6 +269,11 @@ export function createDetectiveSpeech(
   let caseIndex = opts.caseIndex ?? 0;
   let queue: SpeakRef[] = [];
   let processing = false;
+  /* -- selection reads (user-initiated name reads) -------------------
+   * The set marks queue items that are selection reads. They are never
+   * held for replay, and in "tap" mode they play for real (the
+   * selecting tap is the gesture) instead of resolving as skipped. */
+  const selectionItems = new WeakSet<SpeakRef>();
   /* -- U9 speech mode + clue-sequence hold (Unit A: auto too) ------- */
   let speechMode: SpeechMode = opts.speechMode ?? "auto";
   /** The most recent clue sequence, remembered in "tap" and "auto"
@@ -420,13 +425,18 @@ export function createDetectiveSpeech(
         // clue-sequence hold itself is recorded at enqueue time (see
         // enqueue below) — recordHeld here is the idempotent backstop
         // for a mode that flipped to "tap" mid-burst.
-        if (speechMode !== "auto") {
-          if (speechMode === "tap") recordHeld(ref);
+        const isSelection = selectionItems.has(ref);
+        if (speechMode === "off") continue;
+        if (speechMode === "tap" && !isSelection) {
+          recordHeld(ref);
           continue;
         }
         // Gates at play time: sound off or the read-aloud preference
         // vetoes autoplay → the item is dropped, the queue moves on.
-        if (!isSoundOn() || !canAutoPlay()) continue;
+        // A tap-mode selection read is user-initiated (like the held
+        // replay): the sound gate applies, the autoplay veto does not.
+        if (!isSoundOn()) continue;
+        if (speechMode === "auto" && !canAutoPlay()) continue;
         const manifest = await loadManifest();
         if (gen !== generation || disposed) return;
         const clip = resolveDetectiveClip(manifest, ref, caseIndex);
@@ -535,6 +545,19 @@ export function createDetectiveSpeech(
   return {
     enqueue(ref: SpeakRef): void {
       if (disposed) return;
+      // A selection read (the player's own pick, no guess spent) takes
+      // its own path: it never interrupts a playing clip, and a second
+      // one that has not started yet replaces the first (latest wins).
+      if (ref.kind === "name" && ref.selection === true) {
+        if (speechMode === "off") return;
+        const item: SpeakRef = { ...ref };
+        selectionItems.add(item);
+        const stale = queue.findIndex((q) => selectionItems.has(q));
+        if (stale !== -1) queue.splice(stale, 1);
+        queue.push(item);
+        kick();
+        return;
+      }
       // Retention at enqueue time (Unit A — see the header): the full
       // burst is held before its first clip starts, so a mid-play
       // replay restarts the complete chain, not just the clip in

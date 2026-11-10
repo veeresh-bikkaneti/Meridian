@@ -50,6 +50,34 @@ Docs/briefs only — NO code. Base: origin/main `f37dea50`.
 
 ---
 
+# BRANCH_STATUS — claude/k12-plan-review
+
+**Branch:** `claude/k12-plan-review` · **Base:** main `2688d8b8`
+**Task:** Owner, 2026-11-10: review the repo and the scaling plan as a K-12
+learning-game expert, make the required changes, push, and set a priority
+order. Steers: agent-neutral (no model names), cheaper models as subagents plus
+a council of experts, rich three.js and motion with old-device fallbacks, free
+for everyone (no revenue).
+**Scope (Tier 0, docs only):** new files under `docs/scaling/` —
+`k12-plan-review.md` (findings, owner decisions, priority order, spec gap
+table), `k12-learning-design-standard.md` (shared learning bar, incl. the
+house stack and theme to reuse), `educator-gate-rubric.md` (human educator
+sign-off checklist), `agent-instructions.md` (agent-neutral shared rules),
+`branch-prompts.md` (one copy-paste prompt per branch, in priority order),
+`subject-progression-map.md` (how subjects connect and apply). Owner rulings
+captured: D1 age groups 7-10 / 10-18 / 18+, D2 no controversial topics, D8 no
+biology (final). Mission (owner): kids see why they learn each skill;
+every unit opens with a real problem that needs it ("why first"). No code, no
+spec branch edited, `AGENTS.md` not edited (model-neutral wording is proposed
+as its own eval-gated PR).
+Council review (learning designer, parallel-streams lead, adversarial
+skeptic) applied. Added `docs/scaling/plans/` with one self-contained plan
+and launch prompt per branch, start-after order, owned files, collisions and
+the keep-up-with-main rule.
+**Status:** draft PR open for owner review. Code gates not run (no code
+changed). No panel verdict on this tip (not self-certified). Merge: owner's
+word only.
+
 # BRANCH_STATUS — fix/journal-manifest-note
 
 **Branch:** `fix/journal-manifest-note` · **Base:** main `9cf9e64f` (#388 + #389 merged)
@@ -178,6 +206,95 @@ The player-branch history below was deleted from this file; restored from `feat/
 
 ---
 
+# BRANCH_STATUS — feat/pivot-ack-renders (Agent VOICE)
+
+- **Branch:** `feat/pivot-ack-renders` · **Base:** `main` @ `5e6af2f9` (#340)
+- **What landed (2026-11-09):** Holmes's ack pool grows 4 → 10. Six new
+  fixed lines added to `scripts/detective/render-plan.mjs` (ack-5…ack-10,
+  frozen text, receipt-only register) and rendered through the pipeline
+  (`render-audio.mjs --fixed`) in Holmes's cast voice `avocado_v2:atlas`
+  (voice field verified per render by the renderer — a mismatch aborts):
+  ack-5 "Heard, Watson." · ack-6 "I'll take that, Watson." · ack-7 "Filed,
+  Watson." · ack-8 "Received, Watson." · ack-9 "Set it down, Watson." ·
+  ack-10 "One moment, Watson."
+- **Gates:** manifest gate clean (2,538 entries verified) · scripts suite
+  1,032 tests, 0 fail (render-plan count expectations updated 4 → 10 acks,
+  fixed-lines total 20 → 26).
+- **Flags (pipeline's own, kept honestly):** ack-7 flagged — final take
+  111.1 Hz, below the 110–160 family band's floor edge after the pitch
+  ladder (speed 112); ack-8 flagged on pace only (85 wpm vs the 90 floor,
+  pitch in target at 123.7 Hz). ack-5/6/9/10 ok. Human ear check owed on
+  ack-7/ack-8 at panel time.
+- **Untouched on purpose:** ack-1…4, suspicion, and every other fixed
+  line are byte-identical to main (the render run's collateral re-renders
+  were restored); `detective-state.ts` still rotates 4 — the random
+  picker is Agent HERALD's piece, stacked on this branch.
+- **Pending:** GATE opens the PR and runs integration + panel. No PR
+  opened by this branch's builder.
+
+## GROK-REWORK — independent verification + ear check (2026-11-09)
+
+- **Re-verified at tip `de612a41`:** tip + clean tree confirmed; all ten
+  ack clips present and playable (ffprobe); manifest gate clean (2,538
+  entries); manifest diff vs main = only the six new entries (+75/−0
+  lines); all 20 pre-existing fixed clips md5-identical to main; every
+  ack manifest entry's text = the frozen text, voice `avocado_v2:atlas`,
+  measuredHz = the record's pitch table.
+- **Voice tool confirmed on this machine:** a throwaway probe render via
+  `/opt/hatch/bin/tts speak --voice avocado_v2:atlas` returned the voice
+  field `"avocado_v2:atlas"` — the exact cast voice is reachable here.
+- **Ear check (measurement-based — no human hearing claimed):** two
+  independent pitch trackers (YIN + HPS) reproduce the pipeline's Hz
+  within ~5 Hz on all ten clips; pace = words/total-duration (reproduces
+  manifest wpm exactly); plus ebur128 loudness, spectral centroid, and
+  terminal-contour measures per clip.
+- **ack-7 "Filed, Watson." — KEEP.** YIN 111.6 Hz ≈ pipeline 111.1 Hz:
+  ~2 semitones below the set median but bracketed by shipped ack-3
+  (114.0 Hz), pace identical to its 2-word peers (89.3 wpm), loudness
+  mid-set, narrowest pitch spread of the ten — the same man at the
+  family's low end, not a different, gruffer Holmes. (The manifest note
+  cites the first take's 107.8 Hz; the shipped take measures 111.1.)
+- **ack-8 "Received, Watson." — KEEP.** 84.7 wpm vs 89–91 for the other
+  2-word lines (+72–96 ms on a ~1.35 s clip, ≈5–7% — at the edge of
+  tempo perceptibility); pitch in target (YIN 128.4 Hz), widest pitch
+  movement and bright timbre — deliberate, not dragging.
+- **Set picture:** ack-4 stays the warm ceiling (highest pitch,
+  brightest, flattest ending); no clip exceeds it, so no draw can sound
+  more encouraging than the shipped reference. Panel observation only:
+  ack-3 is the set's quietest (−30.5 LUFS) — pre-existing on main,
+  byte-identical, left untouched.
+- **No cures:** no clip was convicted, so zero re-renders and zero
+  audio/manifest changes; this capsule is the only change in its commit.
+
+## GATE integration cure — ack-pool spec pins (2026-11-09, on feat/pivot-speech @ 891031da)
+
+- **Why:** GATE verification of HERALD's random ack picker (pool
+  ack-1…ack-10, no repeat within a case) found 7 E2E failures, all one
+  class — older specs pinned the exact file `fixed/ack-1.mp3` (or
+  `ack-2.mp3`) the retired rotation always played. Live behaviour was
+  correct in every failure: the chain fired in position with a lawful
+  pool draw. The specs now assert the pool contract instead of the
+  retired rotation; no assertion was weakened or deleted.
+- **What changed (specs + shared harness only, no `src/`):**
+  `tests/e2e/detective-u10.ts` gains the shared pool matcher
+  (`ACK_POOL` = /fixed\/ack-\d+\.mp3/, plus `countAcks` / `ackFiles`)
+  and `assertSubsequence` accepts RegExp needles alongside substrings.
+  `detective-replay.spec.ts`: every played/network ack pin is now a
+  pool count (first pass exactly 1 · after replay exactly 2 · restart
+  exactly 1 · chain tail still clue → ack → decode in order); ack-1
+  remains only as test (c)'s absence needle (mid-read: no ack at all).
+  `detective-watson-walk.spec.ts`: the full-walk order array takes the
+  pool matcher in the ack slot (order + count unchanged); the mid-walk
+  arrival pin now asserts exactly 2 acks in the case so far, ALL
+  DISTINCT — the no-repeat rule, stronger than the old ack-2 pin; the
+  sheet test's deferred drain asserts exactly one pool ack.
+  `detective-sound.spec.ts` untouched (verified pool-safe).
+- **Gates:** `npx tsc --noEmit` clean; the two cured specs + the sound
+  spec re-run E2E after this commit (counts in the GATE report).
+
+---
+
+# BRANCH_STATUS — feat/geodetective-end-game
 ## Merged main record — feat/watson-station (PR #372, main @ 63d82869)
 
 Preserved from main during the rebase onto 63d82869: the watson-station
