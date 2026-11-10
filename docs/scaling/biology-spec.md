@@ -5,7 +5,7 @@
 | Status | **GATED** — educator sign-off in writing (`educator-gate-rubric.md`) before any build |
 | Branch for the work | `feat/biology-spec` (to be cut from `main`; this draft lives on `claude/k12-plan-review`) |
 | Count | **TO CONFIRM** — the list below is PROPOSED, never decided |
-| Audience | Ages 10 and up; adults can play (standard §1) |
+| Audience | Age groups 7-10, 10-18, 18+ (standard §1) |
 | Date | 2026-11-10 |
 
 ## Owner ruling (2026-11-10)

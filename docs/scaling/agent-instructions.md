@@ -33,9 +33,10 @@ agent; no vendor or model is assumed.
    History stays factual and neutral: events, places, people, achievements.
    When in doubt, leave it out. No invented facts — every key fact sourced with a
    confidence level, or marked UNVERIFIED and left out.
-8. Audience is ages 10 and up, and adults can play too (owner ruling D1,
-   standard §1). Make nothing new for under-10s; give every mode a top tier
-   that challenges an adult, with copy that is smart, not childish.
+8. Three age groups (owner ruling D1, standard §1): 7-10, 10-18, 18 and
+   above. Nothing for under-7s. Every mode covers all three through its
+   difficulty ladder; the top tier challenges an adult with copy that is
+   smart, not childish. Never ask for an exact age.
 9. The headline goal is teaching how subjects connect and how they are applied
    (standard §0, `subject-progression-map.md`): math → physics → chemistry
    → biology, with environmental studies as the thread. Every

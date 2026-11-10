@@ -39,7 +39,7 @@ the spec already flags this, and it still needs a decision before build.
 - Science: predict-then-see as the core verb, and the council's call that "a
   quiz with science words is not a science game".
 - `main` already ships a computable mastery rule, a Leitner-lite review deck and
-  a local-only privacy guarantee. That is the right foundation for ages 10 to adult.
+  a local-only privacy guarantee. That is the right foundation for ages 7 to adult.
 
 ## 3. Top findings (in order of impact)
 
@@ -73,8 +73,8 @@ the spec already flags this, and it still needs a decision before build.
    → A written rubric any real teacher can complete with an agent-prepared
    evidence pack. The gate stays human; it just becomes passable.
 8. **Audience was unclear: "K–12" vs "5th grade and up".** **Ruled 2026-11-10:**
-   ages 10 and up, adults welcome (standard §1). The new subject specs' 5th-and-up
-   scope fits; what was missing is a high-school band and an adult tier.
+   three groups, 7-10, 10-18 and 18+ (standard §1). The 5th-and-up subject specs
+   need a `7-10` entry tier and an `18+` top tier.
 9. **"No politics" collides with great leaders, freedom fighters, world wars and
    modern world.** These topics are political by nature. The rule needs a working
    definition so agents do not each guess (D2). **Ruled 2026-11-10** — see standard §7a.
@@ -98,7 +98,7 @@ the spec already flags this, and it still needs a decision before build.
 
 | # | Decision | Options | Recommendation |
 |---|---|---|---|
-| **D1 — RULED 2026-11-10** | Audience | Owner: "age 10 and above; adults can play too." Written as standard §1: new work targets `11-13`, a proposed `14-18` band and an adult tier; nothing new for under-10s. | — |
+| **D1 — RULED 2026-11-10** | Audience | Owner: "1. 7-10 2. 10-18 3. 18 and above." Written as standard §1: three groups for the whole game; nothing for under-7s. | — |
 | ~~D1 (original options)~~ | Bands for new subjects | (a) keep 5th+ for all new subjects; (b) add `5-7` and `8-10` tracks per subject now; (c) geography + journal serve the existing `5-7` / `8-10` / `11-13` bands now, new subjects start 5th+ and add younger bands later; plus, in every option, whether to add a `14-18` band to `bands.ts` | **(c)**, and add `14-18` when the first high-school content is signed — K–12 reach today through what already works. |
 | **D2 — RULED 2026-11-10** | What "no politics" means | Owner: no controversial topics (religion, sexuality and gender identity topics, current or contested world politics). Written as standard §7a: factual, neutral events, places, people and achievements only. | — |
 | ~~D2 (original options)~~ | What "no politics" means | (a) no historical political figures at all; (b) historical figures allowed with neutral, sourced facts only, no present-day parties, elections or living politicians' views | **(b)** — otherwise four journal specs cannot exist. |
@@ -107,7 +107,7 @@ the spec already flags this, and it still needs a decision before build.
 | **D8 — RULED 2026-11-10** | Biology | Owner: "biology only related to LGBTQ is out of the plan." Biology is back; new `biology-spec.md` added, GATED. | — |
 | ~~D8 (original)~~ | Biology in the chain | The owner's tracker says no biology anywhere; his 2026-11-10 message names biology in the math → physics → chemistry → biology chain | Slot left empty in the map until the owner confirms. |
 | **D9** | Earth science | Its own units, or only as the environment link inside physics and chemistry | Environment link first (no new spec needed). |
-| **D7** | Live game's existing `5-7` and `8-10` bands | (a) keep them for the current geography game; (b) retire them to match the 10+ audience | Ask before any code change; no spec touches them. |
+| **D7 — RULED 2026-11-10** | Live game's `5-7` and `8-10` bands | Replaced by the `7-10` group under D1; `11-13` becomes `10-18`; `18+` is added. Code change is work item 6. | — |
 | **D5** | Math build branch name | `feat/math-spec` or `feat/math-tricks` | Either; just pick before build. |
 | **D6** | P8 journal pick | 3 or 6 entries | Pick after screening the candidates against §7a. |
 
@@ -138,9 +138,10 @@ Ranked by what unblocks the most learning per unit of cost. Items marked
 
 ### P1 — next (after the math sign-off)
 
-6. **Add the `14-18` band and an adult tier to `bands.ts`** (Tier 2 code, with
-   the math build): data rows only, top difficulty tiers and skippable host
-   narration for adults.
+6. **Move `bands.ts` to the three groups** (Tier 2 code, needs its own
+   council manifest and the owner's labels): `5-7` + `8-10` → `7-10`,
+   `11-13` → `10-18`, add `18+`; migrate stored profiles with no lost progress;
+   no exact age ever asked.
 7. **Math v1 build** — Times Table Races on the quiz loop, with the verification
    gate, motion tiers and review-deck hookup. First new game; proves the
    pattern for every later subject.
@@ -164,7 +165,7 @@ Ranked by what unblocks the most learning per unit of cost. Items marked
 
 ### Parked
 
-- Tiny-model use (P9), any new under-10 content (owner ruling D1), earth science and
+- Tiny-model use (P9), any content for under-7s (owner ruling D1), earth science and
   astronomy until the owner scopes it. Religion, mythology and pilgrimage stay
   out; biology topics on sexuality and gender identity stay out.
 

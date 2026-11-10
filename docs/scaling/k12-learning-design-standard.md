@@ -45,36 +45,30 @@ This is the first objective of every unit, above its subject objective:
 - The game sees it: the bridge and application rounds are scored like any other
   round and feed the same mastery record.
 
-## 1. Audience and bands (owner ruling D1, 2026-11-10)
+## 1. Audience and age groups (owner ruling D1, 2026-11-10)
 
-Owner, 2026-11-10: **"age 10 and above; adults can play too."** All new work
-targets ages 10 and up, roughly grade 5 through high school, and must also be
-fun for adults. Nothing new is made for under-10s.
+Owner, 2026-11-10: **"1. 7-10  2. 10-18  3. 18 and above. this will
+accomodate all people."** Three age groups for the whole game, new subjects
+and the live geography game alike. Nothing is made for under-7s.
 
-**Reuse the band system `main` already has.** `src/game/age-profile/bands.ts`
-defines bands as data (`5-7`, `8-10`, `11-13` today), with read-aloud mode,
-tap-target size, timers, quiz length and map labels per band. New subjects add
-rows to that table; they do not invent a second band system. Band labels and
-parent-facing strings are agreed copy: new labels are the owner's to name.
-
-| Band for new work | Grades (approx.) | What a new subject must respect |
+| Group | Grades (approx.) | What every mode must give this group |
 |---|---|---|
-| `11-13` (existing; also serves 10-year-olds) | 5–8 | Grade-level text; read-aloud available; predict-then-test and multi-step tasks; timers optional. |
-| *proposed* `14-18` | 9–12 | Escape-room cases, labs, real challenge, humour that is not childish (the specs' existing 14–18 register). |
-| *proposed* adult / open | — | Same content at the hardest tiers; host narration optional and skippable; no "kids" framing in the play itself; scoring and leaderboards stay local (no accounts). |
+| **7-10** | 2–5 | Read-aloud on by default; short sentences, everyday words; big tap targets; no timers; concrete objects and pictures first (the depth ladder's first rungs). |
+| **10-18** | 5–12 | Grade-level text, read-aloud available; predict-then-test, multi-step tasks; timers optional; the 14–18 register (labs, escape-room cases, humour that is not childish) at the upper tiers. |
+| **18 and above** | adults | Hardest tiers; host narration optional and skippable; smart, not childish copy; big-number tricks and Olympiad-style depth live here. |
 
-Rules from the ruling:
-- New subject specs target `11-13` and up. The existing "5th grade and up"
-  scope in the math, science and journal specs already fits; keep it.
-- Adults are a real audience, not an afterthought: every mode needs a top
-  difficulty tier that challenges an adult, and copy that reads as smart, not
-  childish. The card voice stays warm.
-- The live game's existing `5-7` and `8-10` bands are not removed by any spec.
-  Whether to retire or keep them in the shipped game is a separate code change
-  and an open owner question.
-- Adding `14-18` and an adult row to `bands.ts` is a code change (Tier 2 under
-  AGENTS.md: `src/game/` data); specs describe them, the Phase 0 / math build
-  adds them.
+- A 10-year-old sits on the line between the first two groups. The age profile
+  is the player's own choice, so they pick either; the game never asks for an
+  exact age or birth date (privacy, §7).
+- **Reuse the band system `main` already has.** `src/game/age-profile/bands.ts`
+  holds bands as data (`5-7`, `8-10`, `11-13` today). Moving it to the three
+  groups is a code change (Tier 2 under AGENTS.md, `src/game/` data): merge
+  `5-7` and `8-10` into `7-10`, widen `11-13` to `10-18`, add `18+`, and migrate
+  stored profiles so no player loses progress. Group labels and parent-facing
+  strings are agreed copy: the owner names them.
+- Every subject spec covers all three groups through its difficulty ladder.
+  Specs scoped "5th grade and up" add a `7-10` entry tier (concrete, picture
+  first) and an `18+` top tier; the educator signs each group separately.
 - Reading level is checked, not asserted: host lines and on-screen text are run
   through a readability formula (for example Flesch-Kincaid grade) and must sit
   at or below the band's top grade. The check is a script in CI, not a review
@@ -229,8 +223,8 @@ text contrast ≥ 4.5:1, focus ring ≥ 3:1 on dark surfaces. Plus:
 - Every drag has a tap or keyboard alternative (WCAG 2.5.7). Every 3D control
   has a button equivalent; nothing requires precise pointer paths.
 - Colour is never the only signal (correct/incorrect also uses shape and sound).
-- Timers are optional and can be turned off in every band (WCAG 2.2.1); the
-  existing no-timer rule for the live game's `5-7` and `8-10` bands stays.
+- No timers in the `7-10` group; timers optional and switchable off in every
+  group (WCAG 2.2.1).
 - Screen-reader labels on every interactive element; the 3D canvas has a live
   region that announces what happened ("The ball rolled down the steep ramp
   first").

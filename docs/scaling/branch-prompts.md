@@ -33,6 +33,24 @@ Done = all AGENTS.md gates green, screen recording, BRANCH_STATUS.md updated.
 Open or update a draft PR; never merge.
 ```
 
+## 1b. Age groups in `bands.ts` — new branch `feat/age-groups` (code; build only on the owner's go)
+
+```
+Repo veeresh-bikkaneti/Meridian. First read, once:
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+Follow them. Cut feat/age-groups from main; push only that branch.
+
+Task: move src/game/age-profile/bands.ts from 5-7 / 8-10 / 11-13 to the owner's
+three groups 7-10 / 10-18 / 18+ (standard §1). Merge 5-7 and 8-10 into 7-10,
+widen 11-13 to 10-18, add 18+ (hardest tiers, skippable narration, no timers in
+7-10). Migrate stored profiles so no player loses progress. Group labels and
+parent-facing strings are owner copy: leave TODO placeholders and ask; never
+invent them. Never ask for an exact age. Tier 2 per AGENTS.md: council
+manifest, failing tests first, minimal change, all gates, screen recording.
+This is not yet approved to build: write the manifest and stop for the owner's
+go before code. Draft PR only; never merge.
+```
+
 ## 2. `feat/math-definition` — approved definition work
 
 ```
@@ -47,9 +65,9 @@ existing Explored/Growing/Mastered states. Replace the separate error-type deck
 with a filter on the existing review deck (src/game/review-deck.ts). Describe
 the play surface in Full / Lite / Flat motion tiers with learning parity.
 Then assemble the educator evidence pack (rubric section "Evidence pack") for
-Times Table Races so a real teacher can sign it. Audience is 10 and up plus
-adults (standard §1): extend the band map with the proposed 14-18 band and an
-adult top tier (big-number tricks and Olympiad-style depth fit there).
+Times Table Races so a real teacher can sign it. Age groups are 7-10, 10-18
+and 18+ (standard §1): add a 7-10 entry tier (concrete, picture first) and an
+18+ top tier (big-number tricks and Olympiad-style depth fit there).
 Docs only; no feature code.
 Done = BRANCH_STATUS.md updated; report what the educator must sign.
 ```
