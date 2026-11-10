@@ -77,7 +77,7 @@ UNVERIFIED, conflicting or cut:
 | T3-2 | It was built by John Mauchly, J. Presper Eckert Jr. and colleagues at the Moore School of Electrical Engineering, University of Pennsylvania. | S4 | HIGH | place |
 | T3-3 | The machine occupied a 50-by-30-foot basement. | S4 | MEDIUM: S5 gives the machine's own footprint as about 300 sq ft, so the panels did not cover the whole floor. The question asks about the room, not the machine. | why, narration, retrieval |
 | T3-4 | It contained about 18,000 vacuum tubes. | S4; S5 | HIGH | picture |
-| T3-5 | It could do up to 5,000 additions per second. | S4 | HIGH | not used (possible 10-18 stretch, O4) |
+| T3-5 | It could do up to 5,000 additions per second. | S4 | HIGH | 18+ stretch question (O3) |
 | T3-6 | The University of Pennsylvania is in Philadelphia. | S6 | HIGH | narration, place |
 | T3-7 | Coordinates 39.9523, −75.1906 (the ENIAC article's coordinates). | S7 | MEDIUM (exact building not confirmed) | place |
 | T3-8 | 1946: completed by February 1946 (S4); formally dedicated on 15 February 1946 (S5). | S4; S5 | HIGH for 1946 as the year it was shown | narration |

@@ -50,10 +50,8 @@ is not created yet (Stage B).
 - Stage B clips and manifest: blocked. The owner has not lifted the build
   gate; no record of a lift was found on main.
 - Educator sign-off: blocked. No named educator yet.
-- Owner questions O1–O9 in the spec: count; keep or cut ENIAC; no 18+ clip;
-  extra questions; modern-phone comparison; year-dependent answer; educator
-  name; listen check; pilot first.
-- Narration timing (21–23 words for about 8 s) is TO CONFIRM when rendered.
+- Owner calls O1 (keep 3), O2 (keep ENIAC, purpose left out) and O3 (18+ stretch question on the ENIAC clip) are recorded in the spec. Still open: O4–O10.
+- Narrations are 18 spoken words or fewer (opener included); timing for about 8 s is TO CONFIRM when rendered.
 
 ## Needs the integrator (outside this branch's paths)
 

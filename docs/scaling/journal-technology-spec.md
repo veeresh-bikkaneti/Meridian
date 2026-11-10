@@ -72,7 +72,7 @@ cost (two sources conflict); and ENIAC's purpose.
 | Facts used: sourced / UNVERIFIED or cut | 7 / 3 | 7 / 5 | 8 / 5 (+ purpose screened out) |
 
 Groups follow the grade of the math each clip uses (owner rule: tag by the
-standard's grade). No clip serves 18+ yet (open item O3). No 7-10 clip uses
+standard's grade). The ENIAC clip carries an 18+ stretch question (O3, decided). No 7-10 clip uses
 algebra or trigonometry, and `check-clips.mjs` fails if one does.
 
 **Use it elsewhere (map, cross-application web):** subtraction on a
@@ -105,10 +105,10 @@ a named human educator can sign the gate.
 | Call | Educator | Child-safety / content | Historian | Outcome |
 |---|---|---|---|---|
 | Keep all 3 clips? | Keep: each has a real number to work with. | Keep phone and mobile. ENIAC: cut, because its first task was weapons work, and "when in doubt, leave it out". | Keep: ENIAC is a milestone, and the purpose can be left out without misleading. | **Keep 3, 2–1 on ENIAC.** The purpose is never told or shown. The dissent goes to the owner (O2). |
-| Groups | Area and subtraction are grade 4, so 7-10. x + p = q is grade 6, so 10-18. | Fine. | Fine. | As in the table. 18+ is open (O3). |
+| Groups | Area and subtraction are grade 4, so 7-10. x + p = q is grade 6, so 10-18. | Fine. | Fine. | As in the table. 18+ is the ENIAC stretch question (O3). |
 | "First" claims | Children remember "first". | Avoid credit disputes. | Say only what the source says: "first telephone message", "first public cell phone call", "an early computer". | Adopted. |
 | Modern-phone comparison | It helps the "why". | No issue. | No sourced figure, so no multiplier. | **Cut** for now (O5). |
-| Narration length | 21–23 words may not fit 8 s. | — | — | Keep. Measure in Stage B and cut, never rush. |
+| Narration length | 21–23 words may not fit 8 s. | — | — | **Cut to 18 spoken words or fewer, opener included** (owner call); `check-clips.mjs` enforces it. Still measure in Stage B. |
 
 ### K-12 standard checklist (§9)
 
@@ -117,7 +117,7 @@ K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
 - Why first (§0): each clip opens with a real number question before play: [x]
 - Headline goal (§0): bridge + real-life application: [x] as a journal (no unit chain); bridge noted per clip
 - Use-it-elsewhere round in another subject: [x] proposed (history timeline, history time span, building area); not built
-- Bands served: [x] 7-10 (2 clips), 10-18 (1 clip); 18+ none yet (O3)
+- Bands served: [x] 7-10 (2 clips), 10-18 (1 clip); 18+ via the ENIAC stretch question (O3)
 - Objective per item, observable verb, "shown by": [x] clips.json
 - Standards cited per item (C3, plus CCSS for the math): [x] live sources S8, S9
 - Loop mapped: hook (opening question) / predict (answer before play) / see (movie, pin) / explain (narration) / retry (one hint, then review deck): [x]
@@ -177,16 +177,33 @@ Fixes: [list with owner]
 Signature (typed name is fine): [ ]
 ```
 
+## Owner calls (recorded)
+
+Owner calls on this branch, taken for PR 401 (recorded from the owner's
+instruction in the PR 401 task, not from a signed approval; merge still needs
+the owner's explicit per-PR word):
+
+- **O1 decided:** keep 3 clips.
+- **O2 decided:** keep ENIAC, with its purpose left out (the council's 2–1
+  call stands; the dissent is on record).
+- **O3 decided:** no new clip. The ENIAC clip gets an 18+ stretch question,
+  stored as an extra `stretch` entry on that clip in `clips.json` (group
+  `18+`, fact T3-5): "ENIAC could do 5,000 additions a second. How many in
+  one minute?" Answer 300,000 (5,000 × 60). `check-clips.mjs` validates the
+  keys, the fact id, the group, the answer and the reading grade. `stretch` is
+  not a contract I5 key; the integrator decides whether I5 grows an optional
+  field (new open item O10).
+- **Narration trim (owner call):** each narration is 18 spoken words or fewer,
+  fixed opener included. Dropped to fit: the "Mr. Watson, come here!" quote
+  (T1-4), the city name in the mobile-phone line, and "basement" in the ENIAC
+  line. Each retrieval answer still rests on a sourced fact kept in the
+  narration or picture. Captions match.
+
 ## Open questions for the owner
 
-- **O1** Approve the PROPOSED count of 3, or a different number?
-- **O2** ENIAC: keep it with its purpose left out (council 2–1), or cut it?
-- **O3** No clip serves 18+. Add a stretch question (for example, ENIAC's
-  5,000 additions a second (T3-5) turned into a count for one minute), or
-  accept journal coverage of 7-10 and 10-18 only?
-- **O4** Use the sourced extra numbers (35 minutes of talk, T2-4; 5,000
-  additions a second, T3-5) as follow-up questions, or keep one question per
-  clip?
+- **O4** Use the other sourced extra number (35 minutes of talk, T2-4) as a
+  follow-up question, or keep one question per clip? (T3-5 is now the ENIAC
+  stretch.)
 - **O5** Show any modern-phone comparison in the ENIAC clip? Only if a
   sourced figure is found; none is stated now.
 - **O6** "How many years ago" depends on the current year (150 in 2026). The
@@ -197,12 +214,14 @@ Signature (typed name is fine): [ ]
   for these clips? (An earlier question asked whether a past approval carries
   over.)
 - **O9** Pilot one clip first (first-phone), or make all 3 at once?
+- **O10** (integrator) Contract I5 has no `stretch` field. Allow it as an
+  optional key, or move the 18+ question into its own item?
 
 ## Definition of done
 
 - [x] Stage A: content screen, I5 data, sources, captions and transcript
       drafts, council record, §9 checklist (this pass).
-- [ ] Owner approves the count (O1) and the ENIAC call (O2).
+- [x] Owner calls O1, O2, O3 recorded (see Owner calls).
 - [ ] A named educator signs the rubric for this spec's commit.
 - [ ] Owner lifts the build gate; Stage B clips, manifest and verification
       numbers per clip.

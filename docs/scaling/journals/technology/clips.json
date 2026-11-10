@@ -8,10 +8,17 @@
       "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
     },
     "why": "The first phone call was in 1876. How many years ago was that?",
-    "place": { "lat": 42.36027778, "lon": -71.05777778, "name": "Boston, Massachusetts, United States" },
+    "place": {
+      "lat": 42.36027778,
+      "lon": -71.05777778,
+      "name": "Boston, Massachusetts, United States"
+    },
     "file": "public/videos/journals/technology/first-phone.mp4",
     "captions": "first-phone.vtt",
-    "retrieval": { "question": "In the first phone call, how did the voice travel?", "answer": "Down a wire" }
+    "retrieval": {
+      "question": "In the first phone call, how did the voice travel?",
+      "answer": "Down a wire"
+    }
   },
   {
     "id": "technology:mobile-phone",
@@ -22,10 +29,17 @@
       "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
     },
     "why": "The first phone call down a wire was in 1876. The first public call from a phone you could carry was in 1973. How many years apart were they? Solve 1876 + x = 1973.",
-    "place": { "lat": 40.7128, "lon": -74.0061, "name": "New York City, New York, United States" },
+    "place": {
+      "lat": 40.7128,
+      "lon": -74.0061,
+      "name": "New York City, New York, United States"
+    },
     "file": "public/videos/journals/technology/mobile-phone.mp4",
     "captions": "mobile-phone.vtt",
-    "retrieval": { "question": "What did the 1973 phone not need?", "answer": "A wire" }
+    "retrieval": {
+      "question": "What did the 1973 phone not need?",
+      "answer": "A wire"
+    }
   },
   {
     "id": "technology:eniac",
@@ -36,9 +50,22 @@
       "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
     },
     "why": "ENIAC, an early computer, was kept in a basement room 50 feet long and 30 feet wide. How much floor did that room cover?",
-    "place": { "lat": 39.9523, "lon": -75.1906, "name": "University of Pennsylvania, Philadelphia, Pennsylvania, United States" },
+    "place": {
+      "lat": 39.9523,
+      "lon": -75.1906,
+      "name": "University of Pennsylvania, Philadelphia, Pennsylvania, United States"
+    },
     "file": "public/videos/journals/technology/eniac.mp4",
     "captions": "eniac.vtt",
-    "retrieval": { "question": "How big was ENIAC?", "answer": "It took up a big room" }
+    "retrieval": {
+      "question": "How big was ENIAC?",
+      "answer": "It took up a big room"
+    },
+    "stretch": {
+      "group": "18+",
+      "question": "ENIAC could do 5,000 additions a second. How many in one minute?",
+      "answer": "300,000",
+      "fact": "T3-5"
+    }
   }
 ]
