@@ -12,7 +12,7 @@ import {
   stampCleanExitDirty,
 } from "@/game/clean-exit";
 import type { Starter } from "@/game/starters";
-import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
+import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm, type Region } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
 import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
@@ -42,7 +42,26 @@ import {
   type SessionSummary,
 } from "@/game/session";
 import { scoreRingForEdition } from "@/game/score";
-import { SCORING_VERSION, scorePlace, type Difficulty, type ScoredPlace } from "@/game/scoring";
+// Phase 0 shell split (slice 1): pure helpers moved verbatim to
+// src/game/shell-helpers.ts; the shell imports them back.
+import {
+  boundsFor,
+  discardedNoticeText,
+  isChallengeRun,
+  isDrop,
+  isEdition,
+  isPhase,
+  isPlaceResult,
+  isReviewRun,
+  isScoredPlace,
+  runResultsTotals,
+  trailDate,
+  type DiscardedNotice,
+  type Drop,
+} from "@/game/shell-helpers";
+export { isChallengeRun } from "@/game/shell-helpers";
+export type { Drop } from "@/game/shell-helpers";
+import { SCORING_VERSION, scorePlace, type Difficulty } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
 import { resolveRunPool } from "@/game/pool";
 import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";
@@ -340,13 +359,6 @@ declare global {
   }
 }
 
-/**
- * A review-deck session is a Run with this regionId (typed edition "globe")
- * so the PlayLoaded game loop is reused instead of forked. Every
- * review-specific branch keys off this predicate. Review runs never consult
- * the no-repeat history of real regions and never bank into the session —
- * review is practice, not scoring.
- */
 import {
   buildCreationSources,
   buildFreshChallengeShareText,
@@ -410,26 +422,6 @@ import {
   VERDICT_ICONS,
   type VerdictClass,
 } from "@/game/challenge-verdict";
-
-function isReviewRun(run: Run): boolean {
-  return run.regionId === REVIEW_DECK_REGION_ID;
-}
-
-/**
- * A friend-challenge run is identified by its region id alone — the run
- * carries no other marker. Every isolation guard in this file keys off
- * this one check, so there is exactly one place to get it right:
- * challenge runs never bank into the session, never write learning
- * records or review-deck cards, and never touch the persistent
- * no-repeat history (see the dealer, the flag effect, and onConfirm).
- * Why isolate them? The places were chosen by a FRIEND, not dealt to
- * this player — letting them into the player's own history, deck, or
- * score would teach the game the wrong lessons about what this player
- * has seen and how well they are doing.
- */
-export function isChallengeRun(run: Run): boolean {
-  return run.regionId === CHALLENGE_REGION_ID;
-}
 
 /**
  * High-contrast view toggle (manifest 2026-10-27): the SoundToggle
@@ -628,17 +620,6 @@ function SessionLoadingFallback({ label }: { label: string }) {
   );
 }
 
-export type Drop = {
-  lon: number;
-  lat: number;
-  distanceKm: number;
-  placeId: string;
-  /** The v3 breakdown for the reveal; null on a miss. */
-  breakdown: ScoredPlace | null;
-  /** Consecutive hits before this place (for the miss "streak reset" note). */
-  streakBefore: number;
-};
-
 type ModelAvailability = "available" | "downloadable" | "downloading" | "unavailable";
 
 type NanoSession = {
@@ -650,89 +631,6 @@ type LanguageModelGlobal = {
   availability: () => Promise<string>;
   create: () => Promise<NanoSession>;
 };
-
-function trailDate(): string {
-  return new Date().toISOString().slice(0, 10);
-}
-
-/**
- * Wave 1 P0 Item 1: what the shared discarded-run notice shows. Totals
- * are always whole-session totals (summarizeSession) or the discarded
- * run's own results — never recomputed, never invented. A 0-place
- * discard carries no numbers at all: the honest "nothing scored yet".
- */
-type DiscardedNotice = {
-  reason: "inactivity" | "new-day" | "scoring" | "challenges";
-  totalScore: number;
-  placesPlayed: number;
-};
-
-function discardedNoticeText(notice: DiscardedNotice): string {
-  const reason =
-    notice.reason === "inactivity"
-      ? "Your game ended after 2 minutes of inactivity."
-      : notice.reason === "new-day"
-        ? "A new day started, so your saved game could not be resumed."
-        : notice.reason === "scoring"
-          ? "The scoring changed, so your saved game could not be resumed."
-          : "Friend challenges are switched off, so your saved game could not be resumed.";
-  const summary =
-    notice.placesPlayed === 0
-      ? "You had not scored anything yet."
-      : `You played ${notice.placesPlayed} ${notice.placesPlayed === 1 ? "place" : "places"} and scored ${notice.totalScore.toLocaleString("en-US")} points.`;
-  return `${reason} ${summary}`;
-}
-
-/** Sum a run's own results — the fallback when no session survives. */
-function runResultsTotals(run: Run | null): { totalScore: number; placesPlayed: number } {
-  const results = run?.results ?? [];
-  return {
-    totalScore: results.reduce((sum, r) => sum + r.score, 0),
-    placesPlayed: results.length,
-  };
-}
-
-function boundsFor(run: Run): RegionBounds {
-  if (run.regionId === CHALLENGE_REGION_ID) {
-    // A challenge run's sentinel regionId names no real place; its
-    // bounds are the REAL region's (the route's own region), so the
-    // map frames and the territory resolves for the place the route is
-    // actually about. Legacy mc1 saves carry no region: the globe.
-    const regionId = run.challengeRegionId ?? "globe";
-    if (run.edition === "state") {
-      const regions = Object.values(ADMIN1_BY_COUNTRY).flat();
-      return regions.find((region) => region.id === regionId)?.bounds ?? [0, 0, 0, 0];
-    }
-    if (run.edition === "country") {
-      return COUNTRIES.find((region) => region.id === regionId)?.bounds ?? [0, 0, 0, 0];
-    }
-    return [0, 0, 0, 0];
-  }
-  if (run.edition === "state") {
-    // States can drill from any country that maps subdivisions; look across all of them.
-    const regions = Object.values(ADMIN1_BY_COUNTRY).flat();
-    return regions.find((region) => region.id === run.regionId)?.bounds ?? [0, 0, 0, 0];
-  }
-  return COUNTRIES.find((region) => region.id === run.regionId)?.bounds ?? [0, 0, 0, 0];
-}
-
-function isEdition(value: unknown): value is Edition {
-  return value === "state" || value === "country" || value === "globe";
-}
-
-function isPhase(value: unknown): value is RunPhase {
-  return value === "aim" || value === "story" || value === "done" || value === "summary";
-}
-
-function isPlaceResult(value: unknown): value is PlaceResult {
-  if (!value || typeof value !== "object") return false;
-  const r = value as Record<string, unknown>;
-  return (
-    typeof r.distanceKm === "number" &&
-    typeof r.hit === "boolean" &&
-    typeof r.score === "number"
-  );
-}
 
 const DIFFICULTY_KEY = "meridian.difficulty";
 
@@ -999,39 +897,6 @@ function writeRun(run: Run) {
   } catch {
     // The run still lives in memory when storage is blocked.
   }
-}
-
-/** Loose ScoredPlace shape check: enough to render the reveal card. */
-function isScoredPlace(value: unknown): value is ScoredPlace {
-  if (!value || typeof value !== "object") return false;
-  const b = value as Record<string, unknown>;
-  return (
-    typeof b.base === "number" &&
-    typeof b.diffMult === "number" &&
-    typeof b.combo === "number" &&
-    typeof b.streak === "number" &&
-    typeof b.score === "number"
-  );
-}
-
-function isDrop(value: unknown): value is Drop {
-  if (!value || typeof value !== "object") return false;
-  const d = value as Record<string, unknown>;
-  return (
-    typeof d.lon === "number" &&
-    Number.isFinite(d.lon) &&
-    typeof d.lat === "number" &&
-    Number.isFinite(d.lat) &&
-    typeof d.distanceKm === "number" &&
-    Number.isFinite(d.distanceKm) &&
-    d.distanceKm >= 0 &&
-    typeof d.placeId === "string" &&
-    d.placeId.length > 0 &&
-    typeof d.streakBefore === "number" &&
-    Number.isInteger(d.streakBefore) &&
-    d.streakBefore >= 0 &&
-    (d.breakdown === null || isScoredPlace(d.breakdown))
-  );
 }
 
 /** Fail closed to null on anything malformed or tampered. */
