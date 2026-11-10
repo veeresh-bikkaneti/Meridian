@@ -1,4 +1,4 @@
-# Subject progression map — math → physics → chemistry → biology, tied together by environmental studies
+# Subject progression map — math → physics → chemistry, tied together by environmental studies
 
 **Status:** PROPOSED structure, not content. No fact is asserted here; every unit
 still needs sourced facts, standard codes and educator sign-off per
@@ -23,14 +23,16 @@ are where the environmental thread lives: every unit can end on a real place
 where the idea matters.
 
 ```
-MATH ──► PHYSICS ──► CHEMISTRY ──► BIOLOGY     
-  │          │            │                 │
-  └──────────┴─── ENVIRONMENTAL STUDIES ────┘   (the thread, shown on the globe)
+MATH ──► PHYSICS ──► CHEMISTRY
+  │          │            │
+  └──────────┴──── ENVIRONMENTAL STUDIES   (the thread, shown on the globe)
 ```
 
-**Biology — back in the plan (owner, 2026-11-10).** Topics on sexuality,
-sexual orientation, gender identity and human reproduction are out; the rest
-of biology is in. Units are in `biology-spec.md`.
+**No biology (owner, final, 2026-11-10).** The owner first named biology in the
+chain, then removed it: "just remove bilogy all together ... no bilogy." The
+chain ends at chemistry. Environment links stay on earth, water, weather,
+energy, materials and maps; no living-things content (plants, animals,
+ecosystems, the body) slips in through them.
 
 ## Every unit carries four fields
 
@@ -47,7 +49,7 @@ of biology is in. Units are in `biology-spec.md`.
 |---|---|---|---|---|
 | M1 | Measurement (math spec, Measure-Up Workshop) | — | Cooking, building | Measuring rainfall, river length |
 | M2 | Fractions and percentages (math spec) | M1 | Sharing, discounts | Share of Earth covered by water, land use |
-| M3 | Big numbers and estimation (math spec) | M2 | Distances, populations | Distances on the globe, sizes of oceans and forests |
+| M3 | Big numbers and estimation (math spec) | M2 | Distances, populations | Distances on the globe, sizes of oceans and deserts |
 | M4 | Rates and simple formulas (P4 algebra-physics) | M2, M3 | Speed on a trip | How fast rivers or glaciers move |
 | P1 | Push, pull, friction, ramps (science / physics spec) | M1, M4 | Brakes, slides, shoes | Rockfalls, landslides, erosion |
 | P2 | Levers, pulleys, wheels (physics spec) | P1, M2 | Seesaws, cranes, bikes | — (optional) |
@@ -57,14 +59,7 @@ of biology is in. Units are in `biology-spec.md`.
 | C2 | Where does the water go? (chemistry) | C1 | Drying clothes | Evaporation, clouds, rain |
 | C3 | What dissolves? (chemistry) | C1, M2 (mixtures as parts) | Sugar in tea | Salt in the sea, clean water |
 | C4 | Rust and reactions (chemistry) | C3 | Bikes left in the rain | Weathering of rocks and buildings |
-| B1 | Cells, tiny building blocks of life | C-unit "tiny building blocks" | Microscopes | Microbes in soil and water |
-| B2 | Plants make food from light | P4, C1 | Gardens, farms | Forests and oxygen |
-| B3 | Water in living things | C2, C3 | Watering plants | Wetlands, water cycle through plants |
-| B4 | Body systems at work (movement, breathing, heart, digestion) | P1, P2, C3 | Sport, eating | Clean air and water |
-| B5 | Food webs and energy | P3, M2 | What we eat | Ecosystems on the globe |
-| B6 | Habitats and adaptations | B5 | Parks, zoos | Deserts, oceans, rainforests, poles |
-| B7 | Decomposers and recycling in nature | C4, B5 | Compost | Soil and nutrient cycles |
-| E | Environmental studies capstone (optional) | B5–B7 + any finished chain | Planning a trip, a garden, a home | A real place on the globe, read through every subject the child has learned |
+| E | Environmental studies capstone (optional) | Any finished chain | Planning a trip, a home, a bridge | A real place on the globe, read through every subject the child has learned |
 
 Earth science (water cycle, weather, landforms) was "scope to confirm" in the
 science spec. Under this map it is not a separate subject: it appears as the
@@ -86,6 +81,6 @@ units is an owner question.
 
 ## What each spec adds
 
-The math, physics, chemistry, biology, science, P4 and social-studies specs each add a
+The math, physics, chemistry, science, P4 and social-studies specs each add a
 "Builds on / Real life / Environment link" column to their item list, and a
 pointer to this map. Branch prompts are updated accordingly.
