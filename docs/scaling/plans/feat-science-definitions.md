@@ -23,6 +23,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/science-definitions. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 Shared rules (read once, from this branch after syncing): `docs/scaling/agent-instructions.md`,
@@ -67,6 +68,10 @@ main and before you open or update a PR: `git fetch origin && git merge
 --no-edit origin/main`. Because your paths are exclusive, conflicts should not
 happen. If one does, stop and report it instead of resolving it in a shared
 file. Don't rebase or force-push.
+
+**This branch stays open until dev work is complete** (owner rule,
+2026-11-10). A merged PR does not end it: keep working here, sync with main,
+and open the next PR from the same branch. Never delete or close it.
 
 ## Done when
 

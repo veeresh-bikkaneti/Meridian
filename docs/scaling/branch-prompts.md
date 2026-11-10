@@ -12,7 +12,8 @@ waiting. Each stream is sized for one agent in well under a day: Stage A
 research and spec, about 3 hours; Stage B, one playable v1 unit, about 4
 hours. Stage B runs only once the owner lifts the build gate for that branch.
 Phase 0 is already approved to build. The integrator (see
-`integrator-runbook.md`) reviews and merges.
+`integrator-runbook.md`) reviews and merges. Every branch stays open until
+dev work is complete, even after its PRs merge (owner rule); none is deleted.
 
 `feat/science-spec` is retired and folded in: its 14 physics items go to
 `feat/physics-spec` and its 10 chemistry items to `feat/chemistry-spec`. The
@@ -68,6 +69,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/phase0-shell-split. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 2. `feat/age-groups`
@@ -84,6 +86,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/age-groups. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 3. `feat/math-definition`
@@ -101,6 +104,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/math-definition. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 4. `feat/math-spec`
@@ -118,6 +122,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/math-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 5. `feat/science-definitions`
@@ -137,6 +142,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/science-definitions. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 6. `feat/physics-spec`
@@ -154,6 +160,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/physics-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 7. `feat/chemistry-spec`
@@ -171,6 +178,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/chemistry-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 8. `feat/social-studies-spec`
@@ -188,6 +196,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/social-studies-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 9. `feat/humanities-definitions`
@@ -204,6 +213,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/humanities-definitions. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 10. `feat/journal-people-places-spec`
@@ -221,6 +231,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-people-places-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 11. `feat/journal-technology-spec`
@@ -238,6 +249,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-technology-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 12. `feat/journal-ww2-monuments-spec`
@@ -255,6 +267,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-ww2-monuments-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 13. `feat/journal-world-wars-spec`
@@ -272,6 +285,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-world-wars-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 14. `feat/journal-modern-world-spec`
@@ -289,6 +303,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-modern-world-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 15. `feat/journal-great-leaders-spec`
@@ -306,6 +321,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-great-leaders-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 16. `feat/journal-freedom-fighters-spec`
@@ -323,6 +339,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-freedom-fighters-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 17. `feat/general-knowledge-spec`
@@ -340,6 +357,7 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/general-knowledge-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```
 
 ### 18. `chore/model-neutral-agents`
@@ -356,4 +374,5 @@ MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only chore/model-neutral-agents. Never push to main, merge a PR, rebase, force-push or delete a branch.
+This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
 ```

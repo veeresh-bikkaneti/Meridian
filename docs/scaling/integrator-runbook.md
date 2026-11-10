@@ -4,6 +4,15 @@ The integrator sits above the streams. It is the only session that edits
 shared files and the only one that merges, and it merges on the owner's word.
 Streams own exclusive paths (`branch-prompts.md`), so they never collide.
 
+## Branches stay open (owner rule, 2026-11-10)
+
+All scaling branches stay open until dev work is complete. Never delete or
+close one, including after its PR merges: merge with the branch kept (no
+"delete branch after merge"), and keep GitHub's automatic head-branch
+deletion off for these branches. This overrides the `AGENTS.md` line that
+deletes merged branches, for the scaling streams only. A stream opens its next
+PR from the same branch.
+
 ## Merge order
 
 Every stream starts now. Merge in this order as PRs arrive, so contracts land
@@ -38,6 +47,7 @@ before the code that uses them:
 - [ ] **Teacher gate:** builds only after a real educator signs the rubric.
 - [ ] **No invented numbers;** counts stay PROPOSED or TO CONFIRM.
 - [ ] **Owner's merge word** for this PR.
+- [ ] **Branch kept:** merged without deleting the head branch.
 
 ## How streams sync
 
