@@ -1,0 +1,23 @@
+[
+  {
+    "id": "great-leaders:lincoln-memorial",
+    "group": "7-10",
+    "objective": "After this, a child in group 7-10 can compute how many years it took to build the Lincoln Memorial (from 1914 to 1922, 8 years) and identify that the statue of Abraham Lincoln inside sits rather than stands, shown by a correct answer to the opening years question and a correct tap on the post-clip retrieval check.",
+    "standard": {
+      "code": "D2.His.1.3-5",
+      "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
+    },
+    "why": "Work on the Lincoln Memorial began in 1914. It opened in 1922. How many years did it take to build?",
+    "place": {
+      "lat": 38.88927778,
+      "lon": -77.05013889,
+      "name": "Lincoln Memorial, National Mall, Washington, D.C., United States"
+    },
+    "file": "public/videos/journals/great-leaders/lincoln-memorial.mp4",
+    "captions": "lincoln-memorial.vtt",
+    "retrieval": {
+      "question": "In the big statue, does Lincoln sit or stand?",
+      "answer": "He sits"
+    }
+  }
+]
