@@ -1005,3 +1005,9 @@ worked and only the renders were missing.
   (entry old-faithful). This lands as a second commit on this branch
   before the prefetch merge is redone.
 - **Repair (2026-11-10, owner-ordered):** Lotus rebased this branch onto main `10e8121d` overnight (`6dcdcfc7`), orphaning the first merge (`60c16460`) and dropping the CSP fix — the rebased tip had no `github.io` in either CSP directive and #389 went CONFLICTING vs base. This merge re-merges the player tip `8d4475e9`. Resolution, all 21 conflicts: kept the prefetch (B8/B7) version of every player file whose two sides diverged — `game-app.tsx` (B7 boot-Home + prefetch effect; player's `readLoopOpen` boot-restore would regress B7), `journal-movies.ts` (baseUrl re-pin restored by prefetch follow-up `13844336`), the spinner (`journal-player.tsx`, `home-v5.css`, unit tests), and all rotation-sensitive specs (B8 1-entry/30-min assertions, incl. `facts.data.ts` B8 times + the fixed 30-min comment); took the player's CSP fix (security-headers files + docs, merged clean), the CSP spec, and this section. The player's 3-per-set spec wording and 2-hour language were NOT taken — they describe the old rotation.
+
+# BRANCH_STATUS — feat/physics-spec
+
+**Branch:** `feat/physics-spec` · **Base:** `origin/main`
+**Task:** physics expansion spec (proposed, gated) — docs only, no build.
+**Update 2026-11-10 (owner):** Scientist seat filled — Spatial Data Scientist (`spatial-data-scientist.toml`), the only science persona in the installed packs; imperfect fit disclosed (spatial statistics, not physics/chemistry). Children's-language + verify-every-fact requirements still bind.
