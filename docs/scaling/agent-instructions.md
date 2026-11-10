@@ -27,8 +27,10 @@ agent; no vendor or model is assumed.
    build. Everything else is spec work only.
 6. Free for everyone: no charging, ads, paywalls, in-app purchases or revenue
    features. Zero-cost hosting, open-licensed assets and libraries.
-7. No politics (working definition pending owner decision D2 in
-   `k12-plan-review.md`); no invented facts — every key fact sourced with a
+7. No controversial topics (owner ruling D2, standard §7a): no religion, no
+   sexuality or gender identity topics, no current or contested politics.
+   History stays factual and neutral: events, places, people, achievements.
+   When in doubt, leave it out. No invented facts — every key fact sourced with a
    confidence level, or marked UNVERIFIED and left out.
 8. Counts marked "TO CONFIRM" stay unconfirmed; never invent a number.
 

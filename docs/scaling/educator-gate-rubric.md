@@ -62,6 +62,9 @@ subject, and date. Nothing about the signer is placed in the app.
 **E. Safety and privacy**
 16. No personal information is asked for or possible to enter.
 17. No content a school would object to for the band.
+17a. Content screen (standard §7a): nothing on religion, sexuality or gender
+     identity, or current or contested politics; history told neutrally
+     through events, places and achievements, taking no side.
 
 ## Decision rule
 

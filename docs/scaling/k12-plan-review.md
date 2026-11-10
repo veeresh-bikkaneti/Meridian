@@ -72,7 +72,7 @@ the spec already flags this, and it still needs a decision before build.
    question Q2. This is the biggest scope decision open (D1).
 9. **"No politics" collides with great leaders, freedom fighters, world wars and
    modern world.** These topics are political by nature. The rule needs a working
-   definition so agents do not each guess (D2).
+   definition so agents do not each guess (D2). **Ruled 2026-11-10** — see standard §7a.
 10. **Model names are hard-coded in `AGENTS.md` and
     `docs/ops/agent-council-protocol.md`.** The owner wants the plan agent-neutral
     (any capable agent may build it). Changing `AGENTS.md` is never Tier 0, so it
@@ -94,11 +94,12 @@ the spec already flags this, and it still needs a decision before build.
 | # | Decision | Options | Recommendation |
 |---|---|---|---|
 | **D1** | Bands for new subjects | (a) keep 5th+ for all new subjects; (b) add `5-7` and `8-10` tracks per subject now; (c) geography + journal serve the existing `5-7` / `8-10` / `11-13` bands now, new subjects start 5th+ and add younger bands later; plus, in every option, whether to add a `14-18` band to `bands.ts` | **(c)**, and add `14-18` when the first high-school content is signed — K–12 reach today through what already works. |
-| **D2** | What "no politics" means | (a) no historical political figures at all; (b) historical figures allowed with neutral, sourced facts only, no present-day parties, elections or living politicians' views | **(b)** — otherwise four journal specs cannot exist. |
+| **D2 — RULED 2026-11-10** | What "no politics" means | Owner: no controversial topics (religion, sexuality and gender identity topics, current or contested world politics). Written as standard §7a: factual, neutral events, places, people and achievements only. | — |
+| ~~D2 (original options)~~ | What "no politics" means | (a) no historical political figures at all; (b) historical figures allowed with neutral, sourced facts only, no present-day parties, elections or living politicians' views | **(b)** — otherwise four journal specs cannot exist. |
 | **D3** | Host wrap-up format | (a) produced video clip every question (current rule); (b) real-time animated host scene by default, produced clips for journal stories only | **(b)** — same "short cartoon" feel, a fraction of the cost and size, works offline and on Flat tier. |
 | **D4** | Educator route | Find one volunteer teacher per subject group (math; science; humanities) to use the rubric | Start with math, since it is already approved to build. |
 | **D5** | Math build branch name | `feat/math-spec` or `feat/math-tricks` | Either; just pick before build. |
-| **D6** | P8 journal pick | 3 or 6 entries | Hold until D2 is ruled. |
+| **D6** | P8 journal pick | 3 or 6 entries | Pick after screening the candidates against §7a. |
 
 ## 5. Priority order
 
@@ -140,7 +141,7 @@ Ranked by what unblocks the most learning per unit of cost. Items marked
 ### P2 — later (each after its own sign-off)
 
 9. Social studies (C3-aligned, map-based — reuses the geography engine).
-10. Journal specs, after D2: people & places, technology, modern world, world
+10. Journal specs, each screened against §7a: people & places, technology, modern world, world
     wars, WWII monuments, great leaders, freedom fighters — each with objectives
     and retrieval checks.
 11. Chemistry P6 (shares the predict-then-see engine with P7 — build second).
@@ -169,13 +170,13 @@ Legend: **O** objectives · **S** standard codes · **R** retrieval check ·
 | Science definitions (`feat/science-definitions`) | partial | ✓ | n/a | ✗ | ✗ | ✗ | ✗ | Add tiers and parity rule to the P7 brief. |
 | Social studies (`feat/social-studies-spec`) | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | C3 Geography + History codes. |
 | General knowledge (`feat/general-knowledge-spec`) | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✓ | Mixed review of other subjects may serve better than new trivia. |
-| Humanities definitions (`feat/humanities-definitions`) | partial | partial | ✗ | ✗ | ✗ | ✗ | ✓ | Needs D2 definition of politics. |
+| Humanities definitions (`feat/humanities-definitions`) | partial | partial | ✗ | ✗ | ✗ | ✗ | ✓ | Apply §7a definition of politics. |
 | Journal: WWII monuments | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Tone rules good; add C3 History code + check. |
-| Journal: great leaders | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Blocked on D2. |
-| Journal: freedom fighters | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Blocked on D2. |
+| Journal: great leaders | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Screen each figure against §7a; achievements only. |
+| Journal: freedom fighters | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Screen each figure against §7a; achievements only. |
 | Journal: people & places | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Best journal fit for geography; do first. |
-| Journal: world wars | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Needs D2. |
-| Journal: modern world | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Needs D2. |
+| Journal: world wars | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Apply §7a; remembrance tone. |
+| Journal: modern world | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Highest §7a risk; cut contested items. |
 | Journal: technology | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Low risk; good second journal. |
 | Phase 0 split (`feat/phase0-shell-split`) | n/a | n/a | n/a | n/a | n/a | sets chunks | ✓ | Approved; add the 3D chunk budget once measured. |
 

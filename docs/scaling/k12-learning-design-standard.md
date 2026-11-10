@@ -222,6 +222,32 @@ every new subject:
 - Anything that would collect or send a child's data is out of scope until the
   owner rules and a COPPA review is done — this is a stop-and-ask item.
 
+## 7a. Content screen — no controversial topics (owner ruling D2, 2026-11-10)
+
+Owner, 2026-11-10: "we dont want any contraversial topics like religion, lgbtq,
+and other nonsense happinging in world politics."
+
+As a rule for every item, clip, card, host line and quiz answer:
+
+- **Out:** religion and religious practice; sexuality, sexual orientation and
+  gender identity topics; current or contested political issues, parties,
+  elections, ideologies, and living politicians' views; any topic the public
+  is actively divided over.
+- **In:** factual, age-appropriate events, places, people and achievements,
+  told neutrally: what happened, where, when, what was built or discovered,
+  sourced, without taking sides, praising or blaming a nation, group or
+  ideology. War and history are told as remembrance (existing tone rules:
+  no graphic detail, no battle re-enactment).
+- **Historical people** (leaders, freedom fighters, inventors) are allowed when
+  the story is their documented achievement or the place tied to it, not
+  their politics. A figure whose story cannot be told without a contested
+  political view is left out.
+- **When in doubt, leave it out.** An item that fails the screen is dropped,
+  not softened.
+- The screen is checked twice: by the agent before writing (listed in the
+  spec's UNVERIFIED/CUT log with the reason) and by the educator rubric
+  (item 17a).
+
 ## 8. Agent-neutral build and token economy
 
 These specs may be built by any capable coding agent. To keep cost low:
@@ -256,6 +282,7 @@ K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
 - Motion tiers: Full / Lite / Flat described, learning parity stated: [ ]
 - Accessibility: captions, tap alternative, no-timer default, SR live region: [ ]
 - Privacy: no PII, no identifiers, local-only records: [ ]
+- Content screen (§7a) passed; cut items logged with reason: [ ]
 - Free: no revenue features; asset licences recorded: [ ]
 - Educator rubric (docs/scaling/educator-gate-rubric.md) attached: [ ]
 ```

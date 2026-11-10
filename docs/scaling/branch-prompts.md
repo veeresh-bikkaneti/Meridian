@@ -156,8 +156,8 @@ Follow them. Work only on branch feat/social-studies-spec; push only that branch
 Task: in docs/scaling/social-studies-spec.md add the §9 block and make the
 mode map-based on the existing geography engine (place, region, route,
 compare). Each item: objective, C3 code, review-deck hookup, motion tiers.
-Propose a count marked PROPOSED. Anything touching politics waits for owner
-decision D2 — list it, do not write it. Spec only. Update BRANCH_STATUS.md.
+Propose a count marked PROPOSED. Screen every item against the content rule
+(standard §7a) and log cut items with the reason. Spec only. Update BRANCH_STATUS.md.
 ```
 
 ## 11. `feat/humanities-definitions` — spec only
@@ -166,21 +166,23 @@ decision D2 — list it, do not write it. Spec only. Update BRANCH_STATUS.md.
 Same setup lines as prompt 10, branch feat/humanities-definitions.
 Task: add the §9 block to humanities-definitions-spec.md; give each topic an
 objective and C3 code; confirm religion and mythology stay fully removed;
-record every item that depends on the politics definition (D2) as BLOCKED with
-the reason. Spec only. Update BRANCH_STATUS.md.
+screen every topic against the content rule (standard §7a) and log cut items
+with the reason. Spec only. Update BRANCH_STATUS.md.
 ```
 
-## 12–16. Journal specs blocked on D2 (politics definition) — spec only
+## 12–16. History journal specs — spec only, content rule §7a applies
 
-Run each only after the owner rules D2. One prompt, five branches:
+Owner ruled D2 on 2026-11-10 (standard §7a). One prompt, five branches:
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch <BRANCH>; push only that branch.
 
-Task: apply the owner's D2 ruling on "no politics" to docs/scaling/<FILE>.
-Then for each proposed clip add: band, objective, C3 History code (live source
+Task: screen docs/scaling/<FILE> against the content rule (standard §7a): no
+religion, no sexuality or gender identity topics, no current or contested
+politics; people are told through documented achievements and places, never
+their politics; when in doubt, cut it and log why. Then for each kept clip add: band, objective, C3 History code (live source
 or UNVERIFIED), one read-aloud retrieval check, captions + transcript, a globe
 fly-to with Flat fallback, and the tone rules (remembrance, no graphic detail,
 no battle re-enactment). Keep the clip count PROPOSED. Spec only.
