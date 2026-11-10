@@ -43,6 +43,14 @@ import {
  *   continues (clue 2 arrives with its read chain). This is the
  *   deferred-guess cure's end-to-end pin (the watson-walk phone-390
  *   failure on the merge-up tip was this exact race).
+ * - (d) A pick confirmed JUST AFTER its name clip ends — the player
+ *   hears the name, THEN taps Guess (follow-up cure 2; the Game
+ *   Player BLOCK on tip 65629760: the guess committed visibly in
+ *   silence, suspicion never played). The pick read's exit drain
+ *   leaves the post-pick arming trace standing, so the confirm's
+ *   clue unlock still takes the deferred-guess branch: suspicion
+ *   plays exactly once, the name is never re-read, and the case
+ *   continues to clue 2.
  *
  * Speech is observed on the harness's play() record and the network
  * layer (detective-u10.ts), never on DOM state alone. The sandbox
@@ -255,6 +263,72 @@ test("(c) a pick confirmed while its name clip is still playing keeps the guess 
   expect(suspicionAt).toBeGreaterThan(nameAt);
   expect(requests.some((u) => u.includes(SUSPICION))).toBe(true);
   // The name is never read twice.
+  expect(plays.filter((u) => u.includes(NAME_CLIP))).toHaveLength(1);
+
+  // The case continues normally: clue 2 arrives with its read chain.
+  await expect(page.getByText(/Guess 2 of/).first()).toBeVisible();
+  await expect
+    .poll(
+      async () =>
+        (await detectiveOnly(page)).some((u) =>
+          u.includes(`case-${CASE}/clue-2.mp3`),
+        ),
+      { timeout: 120_000 },
+    )
+    .toBe(true);
+});
+
+test("(d) a pick confirmed just after its name clip ends keeps the guess reaction (suspicion still plays, case continues)", async ({
+  page,
+  context,
+}) => {
+  await fulfillFlagsOn(context);
+  await installDetectiveRecorder(context);
+  const requests = collectAudioRequests(page);
+  await openSeamCase(page, CASE);
+  await waitForSearchIdle(page);
+
+  const shanghai = entryByName("shanghai");
+  const NAME_CLIP = "names/1796236.mp3"; // Shanghai, China — has a clip.
+  const SUSPICION = "fixed/suspicion.mp3";
+
+  // The post-name window: pick, then WAIT for the name clip to fully
+  // end (the tracked element's own `ended` flag — the same signal the
+  // player's queue drains on; no fixed sleep), then confirm in the
+  // next breath. This is the Game Player's leg-4 timing.
+  await pickOnly(page, shanghai.id, "Shanghai");
+  await expect
+    .poll(
+      async () =>
+        page.evaluate((clip) => {
+          const w = window as unknown as {
+            __detectiveAudios?: HTMLMediaElement[];
+          };
+          const el = (w.__detectiveAudios ?? []).find((a) =>
+            (a.currentSrc || a.src || "").includes(clip),
+          );
+          return el ? el.ended : false;
+        }, NAME_CLIP),
+      { timeout: 90_000 },
+    )
+    .toBe(true);
+  await page.getByRole("button", { name: "Guess this place" }).click();
+
+  // The guess reaction still plays: suspicion, AFTER the name clip,
+  // and the name itself was read exactly once (never re-named).
+  await expect
+    .poll(
+      async () =>
+        (await detectiveOnly(page)).some((u) => u.includes(SUSPICION)),
+      { timeout: 90_000 },
+    )
+    .toBe(true);
+  const plays = await detectiveOnly(page);
+  const nameAt = plays.findIndex((u) => u.includes(NAME_CLIP));
+  const suspicionAt = plays.findIndex((u) => u.includes(SUSPICION));
+  expect(nameAt).toBeGreaterThan(-1);
+  expect(suspicionAt).toBeGreaterThan(nameAt);
+  expect(requests.some((u) => u.includes(SUSPICION))).toBe(true);
   expect(plays.filter((u) => u.includes(NAME_CLIP))).toHaveLength(1);
 
   // The case continues normally: clue 2 arrives with its read chain.
