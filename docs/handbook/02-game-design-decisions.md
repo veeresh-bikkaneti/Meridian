@@ -58,6 +58,14 @@ GeoDetective shipped with **no End game control, no end-session action, and no s
 
 Cold Trail is **not** covered here: it has its own store and screen (`src/game/coldtrail/`), so its equivalent End game is a follow-up on the owner's word.
 
+### Boot always lands on Home — no auto-open (Veeresh, 2026-11-09 / B7)
+
+Every boot lands on Home. A saved GeoDetective loop — the persisted open flag plus the saved mystery — **never auto-opens GeoDetective** on boot or on reload. The saved loop resumes only on tap-in: Home offers "GeoDetective: Resume your case" (or "Solve a mystery" after a finished reveal), and tapping it resumes the exact saved mystery — same clue/guess state, no re-deal — while a finished-but-unacknowledged reveal re-renders instead of dealing fresh. `bestStreak` survives the reload the same way.
+
+- **Superseded (kept for history):** until 2026-11-09 a reload re-opened the in-progress mystery (or the finished reveal) directly, without landing on Home first. That behavior is gone: reload now lands on Home, and the loop waits for the tap.
+- **Consequence:** the journal-prefetch question of whether a restored loop warms movies on reload is moot — no restored loop warms, because no loop is restored at boot.
+- **Cold Trail is not covered here either:** its persisted open flag still restores its screen on reload, intentionally (PR #203 panel: reload-retry parity — see the comment at the Cold Trail render branch in `src/components/game-app.tsx`). Do not "fix" it to match GeoDetective without the owner's word.
+
 ## 3. Cold Trail — the triangulation edition
 
 Three **sightings**, three **rings**, one **interception**. Each sighting gives a distance + bearing from a named anchor place ("575 km southwest of Umraniye"); the player taps where the rings cross to make the interception.
