@@ -1,3 +1,23 @@
+# BRANCH_STATUS — feat/humanities-definitions
+
+**Branch:** `feat/humanities-definitions` · **Base:** `origin/main` @ `f37dea50`
+(verified 2026-11-10)
+**Task:** Workstream 4 of the Meridian scaling-plan push — Humanities + GK
+definitions, cross-cutting definitions, and stale-doc fixes. Docs/briefs
+only — NO code, NO game build, NO PR, NO merge.
+**Status:** spec skeleton pushed (c5569641); §1 P5 + §2 P8 briefs landed
+below. Pending: §3 P10, §4 P11, §5 P12, §6 cross-cutting, §7 open
+questions, §8 stale-doc correction record + in-place workspace fixes.
+**Blocked (not by this branch):** every brief is PREPARED — AWAITING
+EDUCATOR SIGN-OFF (educator seat UNSTAFFED, no signer exists). P8: owner
+question — does the v4 listen-approval satisfy the v3 gate? P11: owner
+ruling (a) override vs (b) reframe + school-GK per band + staleness
+period, all open. Q14/Q15: no written owner answer (decided-by-direction /
+council resolution, confirmation open). Constitution-first ordering is
+conditional, not a plan.
+
+---
+
 # BRANCH_STATUS — fix/journal-manifest-note
 
 **Branch:** `fix/journal-manifest-note` · **Base:** main `9cf9e64f` (#388 + #389 merged)
