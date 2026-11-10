@@ -122,3 +122,13 @@ test("every group is served and the 7-10 entry tier comes first in each unit", (
 test("the spec lists every item id", () => {
   for (const i of items) assert.ok(spec.includes(`\`${i.id}\``), `spec is missing ${i.id}`);
 });
+
+test("group matches the standard's grade: 7-10 is grades 2-5, 10-18 is grades 5-12, 18+ has no school code", () => {
+  for (const i of items) {
+    if (i.standard === "UNVERIFIED") continue;
+    const grade = Number(i.standard.code.split(".")[0]);
+    if (i.group === "7-10") assert.ok(grade >= 2 && grade <= 5, `${i.id}: grade ${grade}`);
+    else if (i.group === "10-18") assert.ok(grade >= 5 && grade <= 12, `${i.id}: grade ${grade}`);
+    else assert.fail(`${i.id}: an 18+ item cites a school grade ${grade}`);
+  }
+});

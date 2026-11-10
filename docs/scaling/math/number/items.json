@@ -221,13 +221,13 @@
   },
   {
     "id": "math-number:place:scientific",
-    "group": "18+",
-    "objective": "After this, an adult can write a very large or very small number as a single digit times a power of 10 and compare two such numbers, shown by choosing the matching form and the larger one.",
+    "group": "10-18",
+    "objective": "After this, a child can write a very large or very small number as a single digit times a power of 10 and compare two such numbers, shown by choosing the matching form and the larger one.",
     "standard": {
       "code": "8.EE.A.3",
       "source": "https://www.thecorestandards.org/Math/Content/8/EE/"
     },
-    "why": "Two quantities on the globe differ by many zeros and a long string of zeros hides which is larger. A power of 10 makes the gap visible. Fit: an adult extension of the grade 8 code; the code is the nearest match and the educator confirms it.",
+    "why": "Two quantities on the globe differ by many zeros and a long string of zeros hides which is larger. A power of 10 makes the gap visible.",
     "buildsOn": [
       "math-number:place:decimal-shifts"
     ],

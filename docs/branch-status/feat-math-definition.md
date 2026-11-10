@@ -40,6 +40,12 @@ Done in this pass:
       lines, readability script. Rubric pack item 3 points at the earlier
       spec's §5.2 paper demonstration, which covers only the 10-18 item.
 
+Fix after review (PR 395): merged main (7-10 = grades 2-5, 10-18 = grades
+5-12, 18+ = adults). Checked every item's group against its standard's grade:
+only `place:scientific` (8.EE.A.3) was wrong; moved 18+ to 10-18, dropped
+"adult extension". Now 19 / 9 / 2 across 7-10 / 10-18 / 18+; the two 18+
+items are UNVERIFIED. Added a grade-vs-group test (11 pass).
+
 Open:
 
 - [ ] Stage B (Times Table Races, `released: false`, Full / Lite / Flat, tests

@@ -56,7 +56,7 @@ Pointers only. The calls are the educator's.
 | 10 no pressure or shaming | spec §11.5 "race without a clock"; no timer in 7-10 |
 | 11 session length suits the band | **not defined yet**; a build detail the signer may set |
 | 12 child can tell what to do by looking | storyboard only; needs a real mockup |
-| 13, 13a read-aloud, audience fit | spec §11.5 accessibility; the 18+ tier has 3 items |
+| 13, 13a read-aloud, audience fit | spec §11.5 accessibility; the 18+ tier has 2 items |
 | 14 no fast reflexes or precise dragging | spec §11.5: tap answers, no drag, no timer in 7-10 |
 | 15 Flat tier teaches the same | spec §11.5 tiers; a parity test comes with Stage B |
 | 16 no personal information | spec §11.3 and §11.6 |
