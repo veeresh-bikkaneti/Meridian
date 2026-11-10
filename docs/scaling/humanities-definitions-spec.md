@@ -729,11 +729,185 @@ signed, and the educator signature(s) are on file.
 
 ## §6. Cross-cutting definitions
 
-*(To follow: commit 4.)*
+Transcribed from the packets' "Shared gates" (`meridian-scaling-
+work-packets.md`, §"Shared gates") and the spec breakdown §2
+(`meridian-scaling-spec-breakdown.md`). These apply to every packet in
+§1–§5 and to every subject packet. Nothing here is new: it is the
+definition record of decisions already made (owner 2026-11-07, council
+2026-11-07).
+
+### 6.1 The 7-stage release pipeline (decided, owner 2026-11-07)
+
+**Rule: no feature ships unless all seven ran. A review-only pass is not
+testing.**
+
+| # | Stage | What it means |
+|---|---|---|
+| 1 | Code review | — |
+| 2 | Architectural review | — |
+| 3 | Design review | — |
+| 4 | Feasibility analysis | Will it work in a browser |
+| 5 | Manual QA | Real play-testing, not just code review |
+| 6 | Visual testers | Effects in sync and consistent |
+| 7 | Age-group playtest | A person of the target age plays it; feedback goes to the game player and the game researcher |
+
+Source: packets ("Shared gates"); the debate does not list it — it is the
+owner's rule, recorded in the packets. The description's open question 8
+(full treatment vs a lighter set for new games) is resolved in favour of
+the packets: full verification law + 7-stage pipeline on every packet
+(§8 flag 4).
+
+The pipeline sits on top of the readiness audit (all four points,
+demonstrated not promised): (1) named curriculum + written topic map per
+band; (2) judging rule that is machine-verifiable; (3) content
+correctness checkable without an LLM near the data; (4) core verb a child
+gets just by looking. And on top of the full verification law: full gates
+(`tsc`, `npm test`, `test:worker`, `lint-cards` GATE PASSED, `build:pages`,
+Playwright E2E sequential under the shared VM lock), screen recording of
+the built app (no recording = testing did not happen), panel review of the
+final tip, no self-certification, merge only on the owner's explicit
+per-PR word. Mockup first; progressive check-ins to the branch.
+
+### 6.2 The host wrap-up rule (decided, owner 2026-11-07)
+
+**After every question — win or lose, correct or wrong — the host retells
+the story behind the answer, followed by a very short animated cartoonish
+clip. Short by rule; not a lecture, not lengthy. Applies to EVERY topic
+and EVERY feature, because the audience is children.**
+
+Source: packets ("Shared gates" + every packet); debate (Game Designer
+seat). The model is the Who Wants to Be a Millionaire / Kaun Banega
+Crorepati host, whose job is to tell the story no matter the answer.
+Bounded by rule: the clip is very small and short; clip length is bounded
+by the rule in each packet's acceptance criteria. For the journal (P8),
+the story IS the clip — the "Hey kids, have you heard about this place?"
+opening and the story retold.
+
+### 6.3 The lazy-load guardrail (decided — rewritten guardrail)
+
+**Nothing loads until a kid picks it. Inside a chosen subject, prefetch
+the next 1–2 items only. A load failure must never reset a streak or eat
+a guess (retry + state preserved + offline fallback).**
+
+- Load budget (**PROPOSED, not measured**): initial JS ≤ 250 KB gzip;
+  per-game chunk ≤ 500 KB gzip. Baselines on P2's first build, then gated
+  in CI. Breach = branch blocked, never a silent raise. No packet may cite
+  these numbers as measured (§8 flag 11).
+- Enforced by: import-boundary test (shell has zero static game imports),
+  tap → first-playable-paint measured on a real low-end phone,
+  no-interaction network trace on every subject PR, three designed states
+  per subject (loading / slow / failed-offline).
+- The guardrail applies to media too (P8): journal movies stream on
+  demand only, never precached.
+- Source: debate ("The lazy-loading guardrail, rewritten"); packets
+  ("Cross-cutting gates").
+
+**Status note (Q14):** the debate lists Q14 as an open owner question
+("do you accept the rewritten guardrail?"). The owner's direction since
+treats the rewritten guardrail as a hard rule. Recorded here as
+**decided by direction**, not by a written Q14 answer — if the owner
+wants it re-asked, say so (§8 flag 8; §7 Q14). No written owner answer
+exists.
+
+### 6.4 Standing content rules (owner's rules, apply to every packet)
+
+- Verify key facts independently — add site sources, or indicate
+  confidence levels. Ground responses in current information with web
+  searches. A stale fact (e.g. a president from 10–15 years ago presented
+  as current) is wrong.
+- No fabrication, ever — no LLM near place/content data. For math: no
+  wrong answers — every generated problem machine-verified.
+- Revision, not new teaching: games practise what school already taught.
+  (P11's tension with this rule is recorded in §4.1, not softened.)
+- A child must get it just by looking. Free, no paywalls, COPPA-safe (no
+  accounts, no PII, no identifiers).
+- **Educator gap — the binding constraint:** no educator persona exists
+  (verified 2026-11-07: 157 TOMLs, none for education). The educator seat
+  is UNSTAFFED; the researcher seat is a disclosed stand-in (UX
+  Researcher — imperfect match, cannot speak to curricular alignment or
+  subject-matter correctness). A named educator / subject-matter expert
+  must sign, IN WRITING, the curriculum + topic map + judging rule +
+  machine-verification gate for one complete mode — demonstrated on that
+  mode, not promised for later. Until that signature exists, every subject
+  packet stays GATED. Proceeding without one is only possible as an
+  explicit, recorded owner decision carried as a risk — an agent may never
+  record that decision itself. Three paths (owner's call): (a) name a
+  human subject expert; (b) authorize finding and auditing an educator
+  persona candidate (nothing installs without the owner's go-ahead);
+  (c) proceed as a recorded risk.
+
+### 6.5 One app for now (decided)
+
+One app, one deploy, one flags file, one telemetry pipeline, one COPPA
+posture. Written tripwire to revisit: different privacy posture,
+different deploy cadence, or the shell cannot meet the load budget after
+honest splitting. Tripwire acceptance itself is owner question Q13 (§7).
+
+### 6.6 Thin progression contract in Phase 0 (decided)
+
+Thin contract in Phase 0 (one passport / streak / badge namespace);
+full design after two real games. The study (§9.6, Phase 4) put
+cross-game progression late; the debate (tension resolution) and packets
+(P2) put the thin contract in Phase 0 — **debate governs** (newer,
+owner-facing, council-decided; §8 flag 3). Passport ownership
+confirmation is still open (Q15, §7).
 
 ## §7. Open owner questions (recorded, never decided)
 
-*(To follow: commit 4.)*
+14 open questions (spec-breakdown §4 rows 30–42, 45). Q14 and Q15 are
+recorded as decided-by-direction / council resolution, with written
+confirmation still open — they are listed here so they are not lost.
+**The binding ones:** Q1 (educator) blocks every subject GO; Q16 (P11
+ruling) is the other hard block. Answering one unblocks the packet that
+needs it.
+
+| Q | Question | Blocks | Decider |
+|---|---|---|---|
+| Q1 | Educator seat + which curriculum (varies by country?) | Every subject (P1 signature → P3–P7, P10–P12); P8 process sign-off | Owner |
+| Q2 | Audience written confirmation; do 5–7 games drop out? | P1 draft, P3 scope, all subjects' bands | Owner |
+| Q3 | Judging policy: exact-only vs partial credit; is `2x + 6` = `2(x + 3)`? | P1, P3, P4 | Owner + educator (seat unstaffed) |
+| Q4 | Phase 0 GO-evidence acceptance | P2 | Owner |
+| Q5 | Load budget acceptance + tap-to-paint time/device | P2, all subjects | Owner |
+| Q6 | Home order — what sits above the fold at 390px | P1 mockup, P8 placement | Owner |
+| Q7 | 16–18 register — same brand or different? | P1 presentation specs | Owner |
+| Q8 | Age-band split — two bands or one 14–18; years vs ages? | P1 | Owner |
+| Q9 | Constitution verbatim vs paraphrase; game or shelf? | P5 | Owner + educator |
+| Q10 | Olympiad placement — mode, difficulty, or separate subject? | P1, P3 | Educator (owner picks with educator input) |
+| Q11 | Science spike authorization | P2 spike, P7 | Owner |
+| Q12 | Model trigger acceptance + eligibility bar + parity | P9 (parked) | Owner |
+| Q13 | One-app tripwire acceptance | P2 | Owner |
+| Q16 | P11 ruling (a) override or (b) reframe; school-GK per band; staleness period | P11 (blocks build), P10/P12 definitions | Owner, in writing |
+| Q14† | Lazy-load acceptance — decided by direction, no written answer | All subjects | Owner (confirm if re-ask wanted) |
+| Q15† | Passport ownership — council resolution (thin contract in P2), owner confirmation open | P2 | Owner |
+
+† Q14/Q15 are counted as decided in the breakdown (rows 43–44) but
+neither has a written owner answer. They are carried here as
+"decided-by-direction / resolution, confirmation open" — not as settled.
+
+### Questions this workstream adds (recorded open, owner to answer)
+
+- **P8-1 (v3 gate vs v4 keeper):** the packets' P8 gate names "the owner's
+  listen-verdict on v3". The keeper is v4, and the owner's ear approved
+  v4's Magnus narration on 2026-11-08. Does that approval satisfy the gate
+  as written, or is a fresh listen-verdict required? **Open — owner.**
+  Do not assume the gate is met.
+- **P8-2 (batch size):** does the owner choose 10–15 entries for the
+  first global tier, or another size? **Open — owner.**
+- **P5-1 (constitution-first ordering):** the Researcher's conditional —
+  if a single-jurisdiction constitution clears the audit before math,
+  build order changes. **Conditional, not a plan** — it is a possibility
+  to record, not a commitment to act on.
+
+### Gaps with no owning packet (carried, not fixed by this workstream)
+
+- **Alert policy for new games (unassigned):** the study (§10 Q7) asks
+  who decides which new funnel types may page a human (the
+  `narration_failed` precedent from the #311 fix). No packet owns this.
+  Needs an owner decision before any subject's funnel types are defined.
+- **Family / social features (deliberately no packet):** the study
+  (§10 Q9) raises shared family accounts vs local-only family play;
+  the packets omit it on purpose — a COPPA decision must come first.
+  No packet may be written until the owner decides.
 
 ## §8. Stale-doc correction record (12 flags)
 
