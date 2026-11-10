@@ -9,6 +9,17 @@ it does not clear the gate.
 
 > Nothing in this brief is approved. A named educator must sign the items
 > in §6 in writing before P4 can build. No educator exists yet.
+> The scientist seat is the Spatial Data Scientist persona, disclosed in
+> §11. It cannot sign.
+
+**Age groups (standard §1).** `7-10` (grades 2–5), `10-18` (grades 5–12),
+`18+` (adults). Grade 5 may sit in either of the first two groups. P4's
+skill is algebra, so **there is no algebra item in `7-10`** (standard §1;
+`subject-progression-map.md`: no 7-10 round uses algebra or trigonometry).
+The concrete "which trip is faster" picture, with no letters and no
+formula, lives in P7, not here. `18+` uses the same high-school standards
+as the top of `10-18`, with harder cases and adult copy. The game never
+asks for an exact age.
 
 ## 1. What P4 is
 
@@ -44,48 +55,67 @@ jurisdiction.
 
 **Band assignment for P4 (definition claim, educator to confirm):**
 
-- **5th grade (bottom band): NOT in scope for algebra.** P4 has no
-  content for the youngest band; a 5th-grader meets algebra only later.
-  This is a consequence of the CCSS map above, not a design choice.
-- **Grades 6–7 (middle band):** one-step and two-step linear equations;
-  equivalent expressions. Algebra Detective's core.
-- **Grade 8 (upper-middle band):** linear equations, systems (two
+- **`7-10` (grades 2–5): not in scope for algebra.** No letters standing
+  for numbers, no trigonometry. This follows CCSS (EE starts at grade 6)
+  and standard §1. It is not a hole to fill with an easier equation.
+- **`10-18`, standard grades 6–7:** one-step and two-step linear equations;
+  equivalent expressions. Algebra Detective's core. Grade 5 is not pulled
+  up into this.
+- **`10-18`, standard grade 8:** linear equations, systems (two
   equations), functions as models — Function Lab lives here at the
   earliest, and only if the educator agrees.
-- **Grades 9–12 (oldest band):** full algebra; Function Lab (graphs,
-  changing x watches y move) is scoped here as its home band per the
-  lens breakdown; grade 8 is the earliest the educator may allow.
+- **`10-18`, standard grades 9–12, and the whole `18+` group:** full
+  algebra. Function Lab's home is this band per the lens breakdown;
+  grade 8 is the earliest the educator may allow. `18+` does not add a
+  new curriculum. It adds harder cases and adult wording.
 
 **OPEN (not this brief's to invent):** which band meets algebra vs
 functions is a P1-definition question (Q1/Q3 family). This brief records
 the CCSS-derived map as the research answer for the educator to sign or
 correct — it does not decide it.
 
-### 2.2 Physics topics per band (NGSS, HIGH for the NGSS, MEDIUM for "what a given school teaches")
+### 2.2 Physics topics per group (NGSS physical science only)
 
-Every physics topic below is a formula the algebra acts on. Each formula
-is a standard textbook relation; the source column is the verification
-source for the eventual problem bank.
+Every formula below is a quantity the algebra acts on. A formula is in
+the table only when a source states it. An NGSS code is attached only
+when the performance expectation is actually about that relationship.
+Where the PE does not print the symbols, the code is not pretended to be
+the formula.
 
-| Band | Physics topic | Formula | NGSS anchor | Source |
-|---|---|---|---|---|
-| Grades 6–8 | Average speed from distance and time | v = d / t | MS-PS2-2 (forces and motion; motion described by speed/direction) | https://www.toolscoops.com/2025/10/physics-formula-calculator-free-online.html — accessed 2026-11-10 |
-| Grades 6–8 | Force from mass and acceleration | F = m · a | MS-PS2-1/2 (Newton's second law, qualitative at this band) | Same source |
-| Grades 6–8 | Work from force and distance | W = F · d | MS-PS3-1/2 (energy transfer) | Same source |
-| Grades 9–12 | Kinetic energy | KE = ½ m v² | HS-PS2-1, HS-PS3-1/2 | Same source |
-| Grades 9–12 | Gravitational potential energy | PE = m · g · h | HS-PS3-1/2 | Same source |
-| Grades 9–12 | Motion with uniform acceleration (v = u + at; s = ut + ½at²; v² = u² + 2as) | — | HS-PS2-1 | Same source (formula list) |
+No life-science code. 5-PS3-1 is cut even though it begins with PS: its
+text is energy in animals' food (see the scope spec §11).
 
-**Scope discipline:** P4's physics is *quantities in formulas only*.
-Qualitative forces/motion — what happens when you push, drop, or remove
-a force — belongs to P7 (see §5). No formula appears in both packets'
-content.
+| Group | Standard's grade | Topic the child solves | Formula on screen | Standard | Source |
+|---|---|---|---|---|---|
+| 7-10 | — | None. Algebra is out of this group. | — | — | Standard §1 |
+| 10-18 | 6 | How long a trip takes at a steady speed, or what the speed was | v = d / t | CCSS 6.RP.A.3b (unit rate, constant speed). Not an NGSS formula. | https://www.thecorestandards.org/Math/Content/RP/ — accessed 2026-11-10 |
+| 10-18 | 6–8 | How a bigger push, or a heavier object, changes the motion. Compare and predict. Do not rearrange F = ma. | No equation in this grade band | MS-PS2-2. MS-PS2-1 is Newton's **third** law (collisions), not the second, and is not this row. | MS-PS2-2: https://www.nextgenscience.org/disciplinary-core-idea/ps2a-forces-and-motion — accessed 2026-11-10. MS-PS2-1: https://my.nsta.org/ngss/DisplayStandard?view=pe&id=148 — accessed 2026-11-10 |
+| 10-18 and 18+ | 9–12 | Net force, mass, and acceleration, one dimension | F = m · a | HS-PS2-1. The clarification names an object rolling down a ramp. | https://www.nextgenscience.org/sites/ngss/files/HS-PS2-1_Evidence%20Statements%20Jan%202015.pdf — accessed 2026-11-10. Formula symbols: toolscoops, MEDIUM, URL in §9 |
+| 10-18 and 18+ | 9–12 | Kinetic energy from mass and speed | KE = ½ m v² | HS-PS3-1 (a computational energy model). The PE does not print these symbols. The DCI says kinetic energy depends on mass and speed. | PE text: https://my.nsta.org/ngss/DisplayStandard.aspx?view=topic&id=43 — accessed 2026-11-10. Symbols: toolscoops, MEDIUM |
+| 10-18 and 18+ | 9–12 | Stored energy from height | PE = m · g · h | HS-PS3-2 (energy of motion and of relative position). MS-PS3-2 says assessment is **not** a calculation of potential energy, so this formula is not grades 6–8. Symbols are the textbook form, not the PE's own text. | Same NSTA topic page. Symbols: toolscoops, MEDIUM |
+| 10-18 and 18+ | 9–12 | Work when the push is along the motion | W = F · d | **UNVERIFIED as an NGSS code.** No PE consulted for this update states W = F·d. The formula stays a textbook relation until the educator names a code or drops the row. | toolscoops, MEDIUM (URL in §9) |
 
-**UNVERIFIED / not included:** no physics topic is claimed for grade 5
-in this brief — NGSS grade 5 physical science is matter (5-PS1) and
-energy in ecosystems (5-PS3-1), not mechanics. If the educator wants a
-grade-5 physics foothold, they must name it; this brief does not invent
-one.
+**Earlier error, corrected here.** The previous table put F = m·a, W = F·d
+on grades 6–8 under "MS-PS2-1/2 (Newton's second law)". MS-PS2-1 is the
+third law. The second-law relationship in NGSS is HS-PS2-1. Grades 6–8
+stay qualitative.
+
+**Uniform-acceleration formulas** (v = u + at, s = ut + ½at², v² = u² + 2as)
+were in the previous table under HS-PS2-1. HS-PS2-1 does not print them.
+They are **out** until a source is named. Not moved, not renamed.
+
+**Scope discipline:** P4's physics is *quantities in formulas only*, and
+only in `10-18` and `18+`. Qualitative forces and motion — what happens
+when the ramp is steeper or friction is higher — belong to P7 (see §5).
+No formula appears in both packets' on-screen content. The sine form of
+the ramp (OpenStax, cited in the scope spec) is a source for P7's rule,
+not a P4 item, and it is never shown in `7-10`.
+
+**Grade 5.** NGSS grade 5 physical science includes matter (5-PS1, see the
+P6 brief) and 5-PS2-1 (gravity pulls down; assessment includes no
+gravitational formula). 5-PS2-1 is a P7 prediction, not a P4 equation.
+5-PS3-1 is cut (biology content). This brief does not invent a grade-5
+algebra foothold.
 
 ## 3. Judging rule
 
@@ -219,3 +249,101 @@ SME must sign IN WRITING, before P4 can build:
 - Inputs: `meridian-scaling-lens-breakdown.md` §3 (P4);
   `meridian-scaling-work-packets.md` P4;
   `meridian-scaling-spec-breakdown.md` §3 P4.
+- CCSS 6.RP.A.3b (constant speed) —
+  https://www.thecorestandards.org/Math/Content/RP/ — accessed 2026-11-10.
+- HS-PS2-1 evidence statement (ramp named in the clarification) —
+  https://www.nextgenscience.org/sites/ngss/files/HS-PS2-1_Evidence%20Statements%20Jan%202015.pdf
+  — accessed 2026-11-10.
+- HS-PS3-1 / HS-PS3-2 topic page —
+  https://my.nsta.org/ngss/DisplayStandard.aspx?view=topic&id=43 —
+  accessed 2026-11-10.
+- MS-PS2-1 (third law) —
+  https://my.nsta.org/ngss/DisplayStandard?view=pe&id=148 — accessed
+  2026-11-10.
+
+## 10. Why first, bridge, use-it-elsewhere (standard §0)
+
+**Why first (`10-18`, grade 6).** Hook, inside 5 seconds: "The bus trip is
+180 miles. The bus goes 60 miles each hour. How long is the ride?" Those
+three numbers are an illustrative scenario, not a measured trip. A child
+who only counts cannot finish it. The one-sentence why, inside a minute:
+"Speed is how the clock and the miles fit together. That is why the trip
+has a time." Shown by a numeric answer with the unit (hours). Objective:
+after this, a child in `10-18` can compute a constant speed or a time from
+distance and speed, shown by a correct value plus unit. Standard:
+CCSS 6.RP.A.3b.
+
+**Why first (algebra, grades 7–12 and `18+`).** "The same bus went 180
+miles in 3 hours at one steady speed. What was that speed?" The letter is
+the missing speed. Objective: after this, the player can solve a one-step
+linear equation whose unknown is a physical quantity, shown by the value
+and the unit, without a hint. Standard: 7.EE.B.4a for the equation shape;
+HS-PS2-1 when the unknown is a force or an acceleration (grades 9–12 and
+`18+` only).
+
+**Bridge.** Builds on fractions, rates, and big numbers (map steps M2 and
+M3) before M4. Does not build on a physics unit the child has not had.
+`7-10` is not given a bridge into algebra.
+
+**Use it elsewhere** (cross-application web; not built, named so the
+educator can sign the intent):
+- the same rate prices a stall (money: price × quantity) — everyday
+  arithmetic, no policy;
+- the same equation times a trip between two places on the map
+  (geography);
+- force and energy formulas stay inside physics and are not re-taught as
+  a chemistry rate. Chemistry rates are `10-18` / `18+` only and are
+  P6's pointer, not a second problem bank here.
+
+**Loop.** Hook → predict the value → see the check (the world states the
+quantity; it does not lecture first) → one or two sentences of why → one
+retry with a hint, then the review deck. No timer in any group unless the
+player opts in. No timer control is offered to `7-10` because `7-10` has
+no item.
+
+**Mastery.** Confident = exact answer, with unit, and no hint (standard
+§4, math bar).
+
+## 11. Scientist seat (disclosed)
+
+The scientist seat on this brief is the Spatial Data Scientist persona.
+Imperfect fit: spatial statistics, not algebra or physics. It may ask
+whether a row has a source. It does not certify F = m·a, and it cannot
+sign the rubric in `docs/scaling/educator-gate-rubric.md`.
+
+## 12. K-12 standard checklist (standard §9)
+
+```
+K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+- Why first (§0): unit opens with a real problem that needs the skill; "why does this matter?" answered in the first minute: [x] §10
+- Headline goal (§0): bridge to the previous subject + playable real-life application: [x] bridge named; the playable check is specified, not built
+- Use-it-elsewhere round in at least one other subject (cross-application web): [x] §10 (money, geography)
+- Bands served: [x] 10-18 and 18+. 7-10 excluded on purpose (no algebra)
+- Objective per item, observable verb, "shown by": [x] §10 for the trip items; the rest of the bank is not written
+- Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [x] §2. W = F·d is UNVERIFIED as an NGSS code
+- Loop mapped: hook / predict / see / explain / retry: [x] §10
+- Mastery "confident" bar for this subject: [x] exact answer, with unit, no hint
+- Review-deck hookup (same deck, same ladder): [ ] integrator-only (contracts.md I2)
+- Post-clip retrieval check (journal + any video): [x] no clip in this packet
+- Motion tiers: Full / Lite / Flat described, learning parity stated: [x] a formula check does not need three.js; if a ramp is shown it uses P7's tiers and the same answer
+- Accessibility: captions, tap alternative, no-timer default, SR live region: [x] tap or keyboard to enter or pick a value; no drag; read-aloud available; no timer by default
+- Privacy: no PII, no identifiers, local-only records: [x]
+- Content screen (§7a) passed; cut items logged with reason: [x] 5-PS3-1 and the mis-cited grades 6–8 formulas removed; no religion, sexuality, or contested politics
+- Free: no revenue features; asset licences recorded: [x] no new asset
+- Educator rubric (docs/scaling/educator-gate-rubric.md) attached: [x] block below; NOT signed
+```
+
+## 13. Educator sign-off (empty)
+
+```
+EDUCATOR SIGN-OFF
+Spec: docs/scaling/p4-algebra-physics-brief.md (this commit)
+Signer: [name], [role], [band(s)], [subject]
+Date: [YYYY-MM-DD]
+Result: Approved / Approved after fixes / Not approved
+Fixes: [list with owner]
+Signature (typed name is fine): [ ]
+```
+
+The §6 list is still what they sign. This block is not a signature.
+

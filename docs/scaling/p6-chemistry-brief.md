@@ -10,16 +10,36 @@ all hold. This brief prepares the definition; it does not clear the gate.
 > Nothing in this brief is approved. A web search grounds facts; it does
 > not certify a curriculum. The scope answer below is evidence for the
 > educator to sign — it is not the signature. No educator exists yet.
+> The scientist seat is the Spatial Data Scientist persona (§12). It
+> cannot sign.
+
+**Age groups (standard §1).** The NGSS rows below stay tagged by the
+standard's grade. They map like this:
+
+| Group | NGSS grades in this brief | On-screen rule |
+|---|---|---|
+| 7-10 | Grade 2 (2-PS1-3) and grade 5 (5-PS1-1 through 5-PS1-4) | Watch, sort, and predict. No atom diagrams as structures, no formulas, no periodic table. |
+| 10-18 | Grade 5 may repeat as a bridge. Grades 6–8 (MS-PS1) and grades 9–12 (HS-PS1) | Models, then — only at grades 9–12 — prediction from the periodic table. |
+| 18+ | The same HS-PS1 items | Harder cases, adult wording. No extra curriculum. |
+
+No life-science code is in this brief. PS1 only. HS-PS1-8 (nuclear) stays
+an open educator question; it is not biology, and it is not approved by
+being listed.
+
+**Safety.** Combine-and-watch shows a checked outcome inside the game. It
+never tells a child to mix, heat, taste, or reproduce a change at home.
 
 ## 1. What P6 is
 
-A small, honest chemistry game for 5th grade and up — scoped to what US
-schools actually teach at this level — built around a real verb
-(combine-and-watch / classify / build-and-test), not a quiz. Chemistry as
-a quiz fails like a science quiz fails (council, all seats). Its real verb
-is combine-and-watch: predict what happens when things combine, then see
-it. Element Detective (solve cases using clues from the periodic table) is
-the candidate format — only if the definition supports it.
+A small, honest chemistry game — scoped to what US schools actually teach —
+built around a real verb (combine-and-watch / classify / build-and-test),
+not a quiz. The first real chemistry is grade 5 (observational). Grade 2
+in the `7-10` group is only "take apart and rebuild" (2-PS1-3), with no
+reactions. Chemistry as a quiz fails like a science quiz fails (council,
+all seats). Its real verb is combine-and-watch: predict what happens when
+things combine, then see it. Element Detective (solve cases using clues
+from the periodic table) is the candidate format — only if the definition
+supports it, and only in grades 9–12 and `18+`.
 
 ## 2. FIRST DELIVERABLE — How much chemistry do US schools teach per band?
 
@@ -167,12 +187,13 @@ walks is UNVERIFIED.
    statement, a published standard, or a primary science source). A rule
    with no source is UNVERIFIED and out of scope.
 2. **Scope answered in writing with sources** — §2 of this brief.
-3. **Engine sharing decided via P2's spike:** P6 and P7 share the
-   "predict-then-see" engine shape where honest, but neither may wait for
-   the other; if a shared engine is needed, it is defined in P2's spike,
-   not invented here. The sharing decision is recorded with its owner
-   (P2's spike) — an engine invented in this packet is out of scope.
-   Status: UNDECIDED — P2's spike does not exist yet (Q11, owner-only).
+3. **Engine shape is contract I4, owned here, implementation gated.**
+   Predict-then-see scenes use `PredictSeeScene` in
+   `src/scenes/predict-see/types.ts` (contracts.md I4). Physics and
+   chemistry import that shape. The three.js shell, tiers, dispose-on-exit,
+   and pause-when-hidden are not built until the owner lifts this branch's
+   build gate. This packet does not invent a second engine. P2's spike
+   (Q11) is still open and is not required to type against I4.
 4. **Load budget:** measured numbers from P2. No numbers exist yet —
    UNVERIFIED until P2 lands.
 
@@ -206,7 +227,8 @@ is evidence for the educator to sign — it is not the signature.
 - **Q1** (educator + curriculum) — decider: owner. OPEN. Blocks the
   signature in §7.
 - **Q11** (science spike authorization) — decider: owner only. OPEN.
-  Blocks the engine-sharing decision in §6.3 and P7's gate.
+  Does not block typing against I4. Still blocks a measured load budget
+  (§6.4) and any claim that a spike has proved the shell.
 - **Scope confirmation by jurisdiction** — decider: signing educator.
   OPEN: does the educator's jurisdiction follow NGSS, TEKS, or another
   framework, and does §2's band table hold there?
@@ -236,3 +258,85 @@ is evidence for the educator to sign — it is not the signature.
 - Inputs: `meridian-scaling-lens-breakdown.md` §5 (P6);
   `meridian-scaling-work-packets.md` P6;
   `meridian-scaling-spec-breakdown.md` §3 P6.
+
+## 11. Why first, bridge, use-it-elsewhere (standard §0)
+
+**Why first (`7-10`, grade 5).** Hook: "The ice in the cooler is gone, and
+the outside of the cooler is wet. Where did the ice go?" Counting the ice
+cubes that remain does not answer it. Why, inside a minute: "Cooling and
+heating move matter between solid, liquid, and gas. That is why the ice
+became water." Illustrative scene, not a measured cooler. Objective: after
+this, a child in `7-10` can predict whether heating, cooling, or mixing
+makes a new substance or only a new state, shown by a tap before the
+outcome plays. Standard: 5-PS1-2 and 5-PS1-4.
+
+**Bridge.** States of matter build on heat as energy (map step Ph3) when
+that unit exists; until it does, the bridge is measurement (M1): the child
+already compares heavier and lighter, hotter and colder, as observations.
+`subject-progression-map.md` step C1.
+
+**Use it elsewhere.**
+- Math: a mixture as parts (fractions), `7-10` concrete ("half the cup is
+  water"), no concentration formula.
+- Everyday: sugar in tea, wet clothes drying. The game does not give a
+  recipe to try in a real kitchen.
+- Environment: salt in the sea, and the water cycle (evaporation). Earth
+  science only as the setting. No plants, animals, or ecosystems.
+  MS-ESS2-4 is the environment link for the cycle (sun and gravity),
+  already sourced in §10's sibling notes; living things are not added.
+
+**`10-18` / `18+` why.** "The beads of water on the cold cup — did the cup
+leak, or did the water come from the air?" Same loop. Grades 6–8 standard
+MS-PS1-4 (particle motion and state). Grades 9–12 and `18+`: predict a
+property from the periodic table (HS-PS1-1), Element Detective only.
+
+**Loop.** Hook → predict → see the checked row → one sentence why → one
+retry, then the review deck. Fail state is a visible wrong outcome, not
+only a score (already §4).
+
+**Mastery.** Confident = correct prediction on the first try (standard §4,
+science bar).
+
+## 12. Scientist seat (disclosed)
+
+The scientist seat is the Spatial Data Scientist persona. Imperfect fit:
+spatial statistics, not chemistry. It may check that an outcome is a
+sourced row. It does not certify a reaction, and it cannot sign
+`docs/scaling/educator-gate-rubric.md`.
+
+## 13. K-12 standard checklist (standard §9)
+
+```
+K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+- Why first (§0): unit opens with a real problem that needs the skill; "why does this matter?" answered in the first minute: [x] §11
+- Headline goal (§0): bridge to the previous subject + playable real-life application: [x] §11; scene not built
+- Use-it-elsewhere round in at least one other subject (cross-application web): [x] fractions, everyday drying, salt water
+- Bands served: [x] 7-10, 10-18, 18+ — mapped in the header table
+- Objective per item, observable verb, "shown by": [x] §11 for the ice and the cold cup; the full bank is not written
+- Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [x] PS1 only
+- Loop mapped: hook / predict / see / explain / retry: [x] §11 and §5
+- Mastery "confident" bar for this subject: [x] correct prediction on the first try
+- Review-deck hookup (same deck, same ladder): [ ] integrator-only (contracts.md I2)
+- Post-clip retrieval check (journal + any video): [x] no clip; the prediction is the check
+- Motion tiers: Full / Lite / Flat described, learning parity stated: [x] I4 scene, same rule on Flat (2D); learning does not depend on WebGL
+- Accessibility: captions, tap alternative, no-timer default, SR live region: [x] I4 choices are taps; no drag; no timer in 7-10; live region states the outcome
+- Privacy: no PII, no identifiers, local-only records: [x]
+- Content screen (§7a) passed; cut items logged with reason: [x] no LS codes; no at-home instructions; nuclear row stays unsigned
+- Free: no revenue features; asset licences recorded: [x] no new asset
+- Educator rubric (docs/scaling/educator-gate-rubric.md) attached: [x] block below; NOT signed
+```
+
+## 14. Educator sign-off (empty)
+
+```
+EDUCATOR SIGN-OFF
+Spec: docs/scaling/p6-chemistry-brief.md (this commit)
+Signer: [name], [role], [band(s)], [subject]
+Date: [YYYY-MM-DD]
+Result: Approved / Approved after fixes / Not approved
+Fixes: [list with owner]
+Signature (typed name is fine): [ ]
+```
+
+The §7 list is still what they sign. This block is not a signature.
+
