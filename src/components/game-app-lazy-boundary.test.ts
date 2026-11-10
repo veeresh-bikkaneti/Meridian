@@ -144,10 +144,14 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
         gameAppSource.includes("return <BootSplash />;"),
       "the boot !ready gate keeps the BootSplash",
     );
+    // Phase 0 slice 1: `export type Drop` moved verbatim to
+    // src/game/shell-helpers.ts, so the segment now ends at the next
+    // declaration after the fallback (ModelAvailability). What the
+    // segment pins — the fallback's role="status" + spinner — is unchanged.
     const fallback = segment(
       gameAppSource,
       "function SessionLoadingFallback",
-      "export type Drop = {",
+      'type ModelAvailability = "available"',
     );
     assert.ok(fallback.includes('role="status"'), "the session fallback must announce");
     assert.ok(
