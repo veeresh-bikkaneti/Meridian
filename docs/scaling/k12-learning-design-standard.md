@@ -1,0 +1,225 @@
+# K-12 Learning Design Standard — the bar every scaling spec meets
+
+**Status:** PROPOSED (review branch `claude/k12-plan-review`). Owner approval is
+the per-PR merge word. Nothing here reverses an owner decision already made:
+religion, pilgrimage and mythology stay out; no biology anywhere; the scientist
+seat stays with the disclosed Spatial Data Scientist persona; every spec stays
+GATED on educator sign-off; only the math definition work and the Phase 0 split
+are approved to build.
+
+**Why this file exists.** The spec branches are strong on fact verification,
+lazy loading and release gates. They are thin on the learning side: no spec
+names what a child can *do* after a clip or round, the journal and subject specs
+cite no standards, none ties play to the spaced review that `main` already has,
+none states an accessibility floor, and none says how three.js and motion scale
+down on old devices. This standard is one shared section every spec cites
+instead of re-inventing it 13 times. Each spec adds only its own deltas
+(see the gap table in `k12-plan-review.md`).
+
+**Ground rules from the owner that this standard carries everywhere**
+- Free for everyone. No charging, ads, paywalls, in-app purchases, loot boxes,
+  or revenue features of any kind. Prefer zero-cost hosting, open-licensed
+  libraries and assets, and low running cost.
+- Agent-neutral. Any capable coding agent may build from these specs. Specs name
+  roles and budgets, never a vendor or model.
+- Rich in three.js and motion, with lighter fallbacks for older devices.
+
+---
+
+## 1. Grade bands
+
+| Band | Ages (approx.) | Reading load | Interaction | Session target |
+|---|---|---|---|---|
+| **K–2** | 5–8 | Pre-reader to early reader. Every prompt is read aloud; text is a caption, never the only channel. | Big tap targets (≥ 64px for this band, above the 44px floor), drag, one action per screen. | 3–5 min |
+| **3–5** | 8–11 | Short sentences, everyday words; read-aloud on by default, can be turned off. | Tap, drag, simple typing of numbers. | 5–10 min |
+| **6–8** | 11–14 | Grade-level text; read-aloud available. | Typing, multi-step tasks, predict-then-test. | 10–15 min |
+| **9–12** | 14–18 | Grade-level text; read-aloud available. Humour that is not childish (existing 14–18 register rule). | Multi-step reasoning, formulas where the subject needs them. | 10–20 min |
+
+- Each spec states which bands it serves and why. The current subject specs say
+  "5th grade and up"; the owner's goal is K–12. That gap is an **open owner
+  decision** (see `k12-plan-review.md` §4, D1). Until the owner rules, specs keep
+  their stated band and do not widen it.
+- Reading level is checked, not asserted: host lines and on-screen text are run
+  through a readability formula (for example Flesch-Kincaid grade) and must sit
+  at or below the band's top grade. The check is a script in CI, not a review
+  opinion.
+
+## 2. Learning objectives — required on every clip, round and mode
+
+Every item that a child plays or watches carries one objective in this form:
+
+> **After this, a child in band [B] can [observable verb] [content], shown by [what the game sees].**
+> Standard: [code or UNVERIFIED]
+
+- Observable verbs only: *identify, locate, sort, predict, explain, compare,
+  compute, estimate*. Never *know, understand, appreciate* — the game cannot see
+  those.
+- "Shown by" names the in-game evidence (a correct pin, a correct prediction, a
+  correct sort). If nothing in the game can observe it, the objective is
+  rewritten or the item is a story only, labelled as such.
+- Standards to cite (verify the code with a live source per the existing
+  verification protocol; no source = UNVERIFIED, never asserted):
+  - Math: Common Core State Standards for Mathematics (already proposed in the
+    math definition spec).
+  - Physics and chemistry: NGSS performance expectations (physical science only;
+    no life-science codes, per the no-biology rule).
+  - Geography, history, social studies, journal stories: the C3 Framework
+    (Geography and History dimensions) and, for geography, the National
+    Geography Standards.
+  - The topic map must also say which curriculum it follows when the
+    world-view rule needs a non-US equivalent.
+
+## 3. The core game loop (learning lives inside the loop)
+
+Every mode follows one loop. A spec that cannot map its play onto it is not
+ready:
+
+1. **Hook** — a 3–5 second question or mystery ("Which ramp wins?").
+2. **Predict / attempt** — the child commits an answer *before* seeing it
+   (retrieval and prediction are where the learning happens).
+3. **See** — the world responds: the ball rolls, the pin lands, the number
+   checks. Motion shows the cause, not just a tick.
+4. **Explain** — the host wrap-up retells why (the owner's host rule). One or
+   two sentences at the band's reading level.
+5. **Try again or move on** — a miss offers one immediate retry with a hint,
+   then goes to the review deck.
+
+**Motivation rules (kids, not casinos).**
+- Reward mastery and effort, never time-on-app. Badges come from the existing
+  mastery states (Explored / Growing / Mastered in `docs/learning-outcomes.md`),
+  not from streak pressure.
+- No variable-ratio rewards, no loot boxes, no countdown pressure for K–5, no
+  daily-login punishment, no "you'll lose your streak" nags. A streak may exist
+  but never shames or resets in a way that feels like loss (the existing
+  "a load failure must never reset a streak" rule stays).
+- Feedback is specific and kind: say what was right, what to look at, and that
+  effort grows skill. Never "Wrong!" alone. Reuse the existing growth copy bank.
+- Difficulty adapts gently: two misses in a row on one skill drops support one
+  rung (more scaffold, fewer choices); two confident hits raises it. Any change
+  to tiers, bands, weights or hint defaults is an owner decision under AGENTS.md.
+
+## 4. Mastery and spaced practice — reuse what `main` already has
+
+`main` already ships a computable mastery rule and a Leitner-lite review deck
+(`src/game/learning.ts`, `src/game/review-deck.ts`; design in
+`docs/learning-outcomes.md` §3 and §11). New subjects **extend these, they do
+not build parallel systems**:
+
+- Each new subject maps its item to the same Explored / Growing / Mastered states,
+  with a subject-specific "confident" bar (math: exact answer without a hint;
+  science: correct prediction on first try; journal: correct answer to the
+  post-clip check).
+- Misses enter the same deck on the same `[0, 1, 3, 7, 14, 30]`-day ladder. Math's
+  error-type replay (from the math spec) becomes a deck *filter*, not a second
+  deck.
+- Interleave: a review round mixes 2–3 skills, not one skill drilled.
+- Every journal clip ends with **one retrieval check** (a tap answer, read aloud,
+  about something the clip showed). Without it, a clip is entertainment, not
+  learning, and is labelled "story only".
+
+## 5. Three.js, motion, and the device tiers
+
+three.js is already a dependency (`three@^0.160`) and the home globe uses it.
+Motion is a learning tool here: it should show cause and effect (a ramp, a
+lever, a fraction cut, a pin flying to a place), not decorate.
+
+**Three tiers, chosen automatically at start and changeable by the player:**
+
+| Tier | When | What renders |
+|---|---|---|
+| **Full** | WebGL2 available, ≥ 4 GB device memory hint, first frames hold ≥ 50 fps | three.js scenes with lighting, particles, and physics-driven motion. |
+| **Lite** | WebGL available but weak device, or Full drops below 30 fps for 3 s | Same scenes, low-poly, no shadows or post-processing, capped at 30 fps, smaller textures. |
+| **Flat** | No WebGL, `prefers-reduced-motion: reduce`, Save-Data, or player choice | 2D SVG/CSS with short, gentle transitions; every learning event still shows (the ball still reaches the bottom — as a stepped diagram). |
+
+Rules:
+- Learning parity across tiers: a child on Flat gets the same question, the same
+  cause-and-effect information and the same scoring. A tier may change beauty,
+  never content.
+- `prefers-reduced-motion` is honoured: no parallax, no camera swoops, no
+  flashing. Nothing flashes more than 3 times a second (WCAG 2.3.1).
+- three.js is lazy-loaded per subject (the existing lazy-load law); nothing 3D
+  loads on the home screen beyond the existing globe.
+- Dispose geometries, materials and textures on scene exit; one renderer reused
+  across scenes; pause rendering when the tab is hidden.
+- Budgets are proposals until the Phase 0 baseline measures them, then they are
+  CI gates: per-subject 3D chunk and asset weight, and a frame-time check on a
+  throttled run in the existing weak-device CI branch (`ci/weak-device-test-in-ci`).
+- Prefer real-time animation over pre-rendered video where the scene is a
+  simulation: it is smaller to ship, works offline, is cheaper to produce and
+  scales across tiers. Pre-rendered clips stay for journal stories (real places,
+  real footage). Whether the per-question host wrap-up becomes a real-time
+  animation instead of a video clip is an **owner decision** (D3), because the
+  host rule is the owner's.
+- Assets: open-licensed only (CC0 / CC-BY with credit, or made in-house), with
+  licence recorded next to the asset. No paid asset stores.
+
+## 6. Accessibility (WCAG 2.2 AA floor)
+
+The existing floors stay and apply to every new mode: tap targets ≥ 44px,
+text contrast ≥ 4.5:1, focus ring ≥ 3:1 on dark surfaces. Plus:
+
+- Every clip has captions (VTT) and a transcript; every spoken prompt has a text
+  equivalent; every text prompt can be read aloud.
+- Every drag has a tap or keyboard alternative (WCAG 2.5.7). Every 3D control
+  has a button equivalent; nothing requires precise pointer paths.
+- Colour is never the only signal (correct/incorrect also uses shape and sound).
+- Timers are off by default for K–5 and can be turned off at every band
+  (WCAG 2.2.1).
+- Screen-reader labels on every interactive element; the 3D canvas has a live
+  region that announces what happened ("The ball rolled down the steep ramp
+  first").
+- Checked by automated scan (axe in the Playwright suite) plus the manual QA
+  stage of the 7-stage pipeline.
+
+## 7. Child privacy (COPPA-safe by design)
+
+Restates the existing guarantee (`docs/learning-outcomes.md` §6) as a rule for
+every new subject:
+
+- No accounts, no names, no emails, no photos, no voice recording, no free-text
+  fields that could take personal information, no persistent identifiers, no
+  third-party scripts, no ad or analytics vendors.
+- Learning records stay in `localStorage` on the device. No network call carries
+  learning data.
+- Funnel and crash events are aggregate and carry no identifier, no free text and
+  no learning record.
+- Anything that would collect or send a child's data is out of scope until the
+  owner rules and a COPPA review is done — this is a stop-and-ask item.
+
+## 8. Agent-neutral build and token economy
+
+These specs may be built by any capable coding agent. To keep cost low:
+
+- **Roles, not models.** An orchestrator (the strongest model the builder can
+  afford) plans, reviews and decides. Execution work — running tests, applying an
+  agreed patch, mechanical edits, visual and playtest checks — goes to
+  **cheaper models orchestrated as subagents**. Specs never hard-code a vendor
+  or model name.
+- **Council of experts** for design calls: a small panel of reviewer roles
+  (architect, designer, game developer, educator rubric, adversarial skeptic)
+  reviews the spec, not the full code dump. Councilors read summaries and diffs;
+  only the seat whose call it is reads the raw file.
+- **Token budget per task** follows AGENTS.md tiers; a spec states its tier.
+- **Read once, summarise once.** Shared facts go in one notes file; agents read
+  conclusions, not bulk output.
+- **Generate content by data, not by prompt.** Problem banks, item metadata and
+  objectives live in versioned data files with validators, so content scales by
+  adding rows that a cheap check verifies, not by re-prompting.
+
+## 9. Spec checklist — add this block to every spec
+
+```
+K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+- Bands served: [ ] and why
+- Objective per item, observable verb, "shown by": [ ]
+- Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [ ]
+- Loop mapped: hook / predict / see / explain / retry: [ ]
+- Mastery "confident" bar for this subject: [ ]
+- Review-deck hookup (same deck, same ladder): [ ]
+- Post-clip retrieval check (journal + any video): [ ]
+- Motion tiers: Full / Lite / Flat described, learning parity stated: [ ]
+- Accessibility: captions, tap alternative, no-timer default, SR live region: [ ]
+- Privacy: no PII, no identifiers, local-only records: [ ]
+- Free: no revenue features; asset licences recorded: [ ]
+- Educator rubric (docs/scaling/educator-gate-rubric.md) attached: [ ]
+```

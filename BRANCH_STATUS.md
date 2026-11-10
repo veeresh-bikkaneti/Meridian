@@ -1,3 +1,21 @@
+# BRANCH_STATUS — claude/k12-plan-review
+
+**Branch:** `claude/k12-plan-review` · **Base:** main `2688d8b8`
+**Task:** Owner, 2026-11-10: review the repo and the scaling plan as a K-12
+learning-game expert, make the required changes, push, and set a priority
+order. Steers: agent-neutral (no model names), cheaper models as subagents plus
+a council of experts, rich three.js and motion with old-device fallbacks, free
+for everyone (no revenue).
+**Scope (Tier 0, docs only):** three new files under `docs/scaling/` —
+`k12-plan-review.md` (findings, owner decisions, priority order, spec gap
+table), `k12-learning-design-standard.md` (shared learning bar),
+`educator-gate-rubric.md` (human educator sign-off checklist). No code, no
+spec branch edited, `AGENTS.md` not edited (model-neutral wording is proposed
+as its own eval-gated PR).
+**Status:** draft PR open for owner review. Code gates not run (no code
+changed). No panel verdict on this tip (not self-certified). Merge: owner's
+word only.
+
 # BRANCH_STATUS — fix/journal-manifest-note
 
 **Branch:** `fix/journal-manifest-note` · **Base:** main `9cf9e64f` (#388 + #389 merged)
