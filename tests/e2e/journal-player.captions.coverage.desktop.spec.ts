@@ -26,7 +26,8 @@ test.beforeEach(async ({ context, page }) => {
   await page.route("**/videos/journal-transcripts.json", async (route) => {
     await route.fulfill({ status: 200, contentType: "application/json", body: "{}" });
   });
-  const time = new Date(Date.UTC(2026, 9, 17, 16, 0, 0));
+  // First instant showing old-faithful alone (B8: one entry per 30-min window).
+  const time = new Date(Date.UTC(2026, 9, 16, 0, 30, 0));
   await page.clock.install({ time });
   await loadHome(page, time);
 });
@@ -35,7 +36,7 @@ test("no transcript in the file: movie plays, but no CC and no Story-text button
   page,
 }) => {
   const ids = await shownNoteIds(page);
-  expect(ids).toEqual(["old-faithful", "rushmore", "gateway-arch"]);
+  expect(ids).toEqual(["old-faithful"]);
   const id = "old-faithful";
   const video = await openEntry(page, id);
   await expectPlaying(video);

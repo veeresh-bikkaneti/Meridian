@@ -8,6 +8,7 @@ import {
   loadJournalMovieManifest,
   parseJournalMovieManifest,
   resetJournalMovieManifestCache,
+  JOURNAL_MOVIE_BASE_URL,
   type JournalMovieManifest,
 } from "./journal-movies.ts";
 
@@ -21,8 +22,23 @@ test("parseJournalMovieManifest accepts the real manifest", () => {
   const parsed = parseJournalMovieManifest(REAL_MANIFEST);
   assert.ok(parsed !== null);
   assert.equal(parsed!.baseUrl, "https://veeresh-bikkaneti.github.io/meridian-media/journal/");
+  assert.equal(parsed!.baseUrl, JOURNAL_MOVIE_BASE_URL);
   assert.equal(Object.keys(parsed!.movies).length, 106);
   assert.equal(parsed!.version, 1);
+});
+
+test("parseJournalMovieManifest rejects a baseUrl other than the pinned one", () => {
+  // Valid shape, wrong host: the runtime re-pins baseUrl to the value
+  // the build validator enforces, so a swapped manifest cannot redirect
+  // clip URLs elsewhere.
+  assert.equal(
+    parseJournalMovieManifest({ ...REAL_MANIFEST, baseUrl: "https://example.invalid/" }),
+    null,
+  );
+  assert.equal(
+    parseJournalMovieManifest({ ...REAL_MANIFEST, baseUrl: "" }),
+    null,
+  );
 });
 
 test("parseJournalMovieManifest rejects anything that is not a usable manifest", () => {

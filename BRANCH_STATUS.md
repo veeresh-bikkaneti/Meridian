@@ -1,4 +1,27 @@
-# BRANCH_STATUS — feat/journal-player
+# BRANCH_STATUS — feat/journal-prefetch
+
+**Branch:** `feat/journal-prefetch` · **Base:** current main `10e8121d` (PR #369 merged; was frozen main `f2bbf1a2`; stacked on player `feat/journal-player` @ `af7ec7c1`, which is a separate live branch)
+**Task:** Meridian lazy-load scenario 2 — background prefetch of journal movies WHILE the user is playing the game. Tap-to-load stays the primary path.
+**Status:** Rebased onto current main `10e8121d` (clean, 48 commits, zero conflicts; tip `72b5569f` before the fix commit); Option 1 spec filter implemented (endgame-share `expectCleanConsole` also filters `net::ERR_TUNNEL_CONNECTION_FAILED` only, Dinesh's explicit approval 2026-11-09 ~20:49 CT); gates + E2E re-run on the fix tip — see "Rebase + Option 1 fix" section. No PR, no merge.
+**Rebased:** 2026-11-09 — onto current main `10e8121d`; zero conflicts. The unanimous APPROVE on `c19f8dfc` does NOT transfer to the new head. The Edge verdict NO (endgame-share 0/2) on `0a08007e` does NOT transfer either — this is a new tip; panel (GATE/Chitti) re-verifies.
+
+## Rebase + Option 1 fix — onto current main 10e8121d, this run (2026-11-09 evening)
+
+- Plain `git rebase origin/main` (48 commits, zero conflicts). The branch is stacked on the player branch (`feat/journal-player` @ `af7ec7c1`, separate live branch), so the delta vs main is 163 files — the player feature + the prefetch feature. The prefetch commits alone cannot rebase onto main: they modify `journal-player.tsx` / `journal-movies.ts`, which do not exist on main. The validator/wiring from #369 (on main) and the prefetch changes are both present in the rebased tree (verified: `scripts/validate-journal-manifest.mjs` + `src/components/journal-prefetch.ts` both present; `package.json` prebuild runs the validator; manifest has 106 movies).
+- Option 1 (Dinesh's pick, 2026-11-09 ~20:49 CT — explicit approval + recorded rationale for weakening the endgame-share gate): `tests/e2e/endgame-share.spec.ts` `expectCleanConsole` now also filters `net::ERR_TUNNEL_CONNECTION_FAILED` only, with a comment citing the prefetch failure contract (`journal-prefetch.ts:35-36`) and the `globe-promotion-offline` precedent (`:180-186`). Touch ONLY that spec file (+ this file). No src changes, no other spec changes.
+- Gates + E2E on the fix tip `d6c5985c` (builder-side evidence; panel re-verifies): tsc exit 0 clean; `npm test` exit 0 (scripts 1161 pass / 11 skipped / 0 fail of 1172; src 2322 pass / 0 fail); `test:worker` 145 pass / 0 fail; lint-cards GATE PASSED; `npm run build:pages` exit 0, buildId `d6c5985c`; `endgame-share` **2/2 pass** (the Option 1 filter cures the Edge NO); targeted E2E **34/34 pass** (prefetch 12/12, boot-home 3/3, footer-close 1/1, geodetective 18/18). Logs: `~/workspace/journal-prefetch-fix/{npm-ci,tsc,npm-test,test-worker,lint-cards,build-pages,e2e-endgame-share,e2e-targeted}.log`.
+- This commit adds only this BRANCH_STATUS.md text on top of the fix tip. Pushed head = this commit.
+
+## Rebase verification — onto player head af7ec7c1 (movies 84fa3a0a, frozen main f2bbf1a2), this run (2026-11-09)
+
+- Plain `git rebase af7ec7c1` replayed already-applied movies/player commits, so the rebase used `--onto af7ec7c1 86624dde` (26 prefetch-only commits). Every conflict was this file only (docs-only), resolved by keeping both sides' records.
+- Content check: same 47 files in the prefetch delta; all 46 non-status files byte-identical diffs vs the old head. B7/B8/share verified in code at the new head (boot `useState<boolean>(false)`; `journalSetCount()` = 106 singletons, window 30 min; `WORKERS_ORIGIN` = `https://meridian.knowledgetest.workers.dev/`).
+- Gates + E2E + recording as in Status. Logs: `~/workspace/journal-prefetch-r3-{tsc,npmtest,worker,lintcards,build,e2e-union,mux}.log`. Recording: `~/workspace/journal-prefetch-record/prefetch-desktop.mp4` (take 3, entry giza; prefetch warmed giza + cn-tower before the tap).
+- mux.sh probe windows [35,45]/[0,34] are take-2 geometry; take 3 was probed at the correct windows [25,33] (playing, −19.5 dB) / [0,24] (pre-play, −91 dB).
+- The unanimous APPROVE on `c19f8dfc` does NOT transfer. Re-check by the three blocking seats pending on this head.
+
+## Base record — feat/journal-player (rebased onto movies head 84fa3a0a, frozen main f2bbf1a2)
+
 
 **Branch:** `feat/journal-player` · **Base:** `feat/journal-movies` @ `84fa3a0a` (stacked on frozen main `f2bbf1a2` #370)
 **Rebased:** 2026-11-09 — onto movies head `84fa3a0a`; only conflict was this file (docs-only). Historian-block clearance on `86624dde` does NOT transfer to the new head.
@@ -46,243 +69,32 @@ Next: see Pending. PR #369 is open; never merge without the owner's word,
 per PR, per head.
 
 ## Done
-- [x] 2026-11-08 — Branch created from origin/main 9e49da3e; worktree
-      `~/workspace/journal-movies-work` (clean checkout).
-- [x] 2026-11-08 — `docs/journal-movies.md` (plan + pilot recipe + storage
-      decision + batch table) and `public/videos/journal-manifest.json`
-      (pilot entry, version 1).
-- [x] 2026-11-08 — 12 worker subagents spawned in parallel (3 sets each,
-      9 clips each; batch 08 has 8 new + pilot skipped; batch 12 has 7).
-      Staging: `~/workspace/journal-movies-batches/batch-NN/`.
-- [x] 2026-11-08 — Media repo `veeresh-bikkaneti/meridian-media` created,
-      Pages enabled, pilot v4 uploaded byte-identical (sha256 5a985e28…);
-      URL verified 200, 5,664,273 bytes, valid MP4.
-- [x] 2026-11-08 — **Batch 01, sets 1–2: 6 clips coordinator-verified and
-      LIVE** (meridian-media `488329d`, manifest v1+6 entries):
-      capitol (magnus), memorial-stadium (briggs), haymarket (casper,
-      still+narration FALLBACK — AI video failed no-text gate),
-      pinnacle (vdc_2561), 27th-and-o (miles, bad-fit flag),
-      centennial-mall (vdc_NOID19). Independent checks: ffprobe 10.000 s /
-      1152x768 / 24 fps / h264+AAC, full decode exit 0, frames viewed
-      (faithful, no text), audio re-measured (peaks −1.5 dB, means match
-      worker to 0.1 dB, no clipping). Bed-30% per worker measurement
-      (NOTES.md). Not verified by ear — owner's listen is the final check.
-- [x] 2026-11-08 — Batch 01 follow-up worker spawned (set 3: sunken-gardens,
-      childrens-zoo, 48th-and-o + 1 haymarket regen attempt, 4 video calls).
-- [x] 2026-11-08 — **Batch 04: 9/9 coordinator-verified and LIVE**
-      (meridian-media `4d35706`): woods-park, conestoga, branched-oak,
-      mahoney, sac-museum, seward, homestead, pawnee-lake, platte-river-sp.
-      The 6-video cap did NOT block this batch (all 9 generations
-      succeeded). Flags in manifest (homestead dusk fade + gentle-motion,
-      platte-river-sp gentle-motion + 0.74 s window, mahoney hard cut,
-      seward sky-only settle, sac-museum close-up style drift,
-      branched-oak pink pennants, woods-park crowd drift).
-- [x] 2026-11-08 — **Batch 03: 3/6 delivered clips coordinator-verified
-      and LIVE** (hyde, near-south, robbers-cave). **HELD, not shipped:**
-      university-place (readable text "heritage" on the destination board
-      — hard gate fail, confirmed in frame), havelock (invented rooster),
-      southpointe (palette does not hold — saturated sunset, pilot-v1
-      failure mode + fence bird). 3 unbuilt (college-view video failed,
-      star-city-shores + quilt-museum capped). Follow-up spawned: 3 builds
-      + 3 regens (6 calls, priority-ordered).
-- [x] 2026-11-08 — **Batch 11: 5/6 delivered clips coordinator-verified
-      and LIVE** (machu, fuji, chichen, stonehenge, petra). **HELD:**
-      neuschwanstein (invented rooster standing on the lake ~6 s + faint
-      ghost castle at 2 s). 3 unbuilt (angkor video failed on a bad path,
-      table-mountain + uluru capped). Follow-up spawned: 3 builds + 1 regen.
-- [x] 2026-11-08 — Independent verification of all 21 batch-03/04/11
-      clips: ffprobe 10.000 s / 1152x768 / 24 fps / h264+AAC, full decode
-      exit 0, audio re-measured (means match workers; peaks −1.0 to
-      −1.6 dB, 0 clipped), 10 frames viewed by the coordinator
-      (holds confirmed in-frame; flags confirmed). Bed-30% per worker
-      measurement (NOTES.md). Not verified by ear — owner's listen is
-      the final check.
-- [x] 2026-11-08 — **Batch 01 follow-up DONE: set 3 verified + LIVE**
-      (sunken-gardens vdc_5723, childrens-zoo casper, 48th-and-o magnus
-      with bad-fit flag). **Haymarket regen FAILED the no-text gate a
-      2nd time** (clock gains hands/numerals at 6/9.5 s despite the
-      blank-clock prompt); fallback NOT overwritten and stands as the
-      shipped version. A 3rd attempt would need a different approach
-      (no clock tower in frame). Batch 01 is now 9/9 complete.
-- [x] 2026-11-08 — **Batches 02, 05, 06, 07, 08, 09 landed; 40 clips
-      coordinator-verified and LIVE** (meridian-media push in flight):
-      02: pioneers-park, wilderness-park, antelope-park, oak-lake,
-      lincoln-airport, union-plaza (6); 05: all 9; 06: old-market,
-      scotts-bluff, durham, carhenge (4); 07: all 6; 08: all 6;
-      09: all 6. Independent checks: ffprobe/decode/audio re-measured
-      on all 48 (means match workers; peaks −0.9 to −1.6 dB, 0 clipped),
-      8 decision frames viewed by the coordinator. Bed-30% per worker
-      measurement. Not verified by ear — owner's listen is the final check.
-- [x] 2026-11-08 — Follow-ups spawned for 02 (3 AI regens), 06 (5 regens),
-      07 (3 builds), 08 (2 builds), 09 (3 builds). Batches 03 + 11
-      follow-ups already running. Batches 10 + 12 still running.
-- [x] 2026-11-08 — **Batch 10: 9/9 coordinator-verified and LIVE**
-      (eiffel, colosseum, liberty, taj, opera-house, redeemer, sagrada,
-      giza, cn-tower). Video take 1 was rejected for ALL 9 (camera zoomed
-      into photoreal close-ups, invented pigeons, pseudo-text glyphs,
-      statue cropped out) and re-shot with a style-lock prompt (camera
-      NEVER moves, framing/style/palette NEVER change); take 2 held the
-      wide watercolor shot on all 9 — confirmed at 6 s in-frame
-      (colosseum, redeemer, eiffel). All 9 are static landmarks, flagged
-      gentle-motion bad fits; key moment is a light change or a small
-      vehicle (train, ferry, camels). Peaks −1.2 to −1.6 dB, decode 0.
-      Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 12: 5/6 coordinator-verified and LIVE**
-      (victoria-falls, fushimi, iguazu, tongariki, timbuktu). **HELD:**
-      potala — the model re-interpreted the palace mid-clip as a different
-      golden-roofed temple with Buddha statues flanking the door,
-      confirmed in-frame at 6 s + 9.5 s. Tongariki ships flagged (settle
-      frame pushes to a ~6-moai close-up, fifteen-in-a-row composition
-      lost; reddish caps not in source art). Peaks −1.3 to −1.6 dB,
-      decode 0. Bed-30% per worker measurement. Not verified by ear.
-      Follow-up spawned: galapagos build (1 call, staged) + potala
-      locked-wide regen reusing TTS.
-- [x] 2026-11-08 — **Batch 03 follow-up DONE: 4 more clips verified +
-      LIVE** (college-view, quilt-museum, havelock v2, southpointe v2).
-      Havelock v2: rooster gone, confirmed in-frame at 6 s. Southpointe
-      v2: intra-clip palette constant, no fence bird (v1 failure mode
-      gone); caveat — framed warmer/closer than the keyframe. Batch 03
-      now 7 LIVE. **Still HELD:** university-place (v2 board still not
-      blank — 2nd failed regen). **Still pending:** star-city-shores
-      (video call failed, not retried). Follow-up #2 spawned: 1 fresh
-      star-city-shores call + university-place still+narration fallback
-      (haymarket precedent — no 3rd regen).
-- [x] 2026-11-08 — **Batch 11 follow-up DONE: 9/9 complete.** Neuschwanstein
-      v2 PASSES — rooster + ghost castle gone, swans only, one castle,
-      confirmed in-frame at 6 s. Angkor, table-mountain, uluru built.
-      Peaks −1.4 to −1.5 dB, decode 0. Bed-30% per worker measurement.
-      Not verified by ear.
-- [x] 2026-11-08 — **Batch 08 follow-up DONE: 8/8 complete.** Niagara +
-      alamo built, both flagged (niagara: Horseshoe Falls leaves frame
-      from ~6 s; alamo: heavy zoom, closing line plays over a facade-only
-      shot with no garden visible). Peaks −1.0/−1.5 dB, decode 0.
-      Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 07 follow-up DONE: 9/9 complete.** Chadron,
-      niobrara, white-house built (vdc_5723 / briggs / vdc_2561). White-house
-      ships flagged: near-static after 4 s (motion diffs ~2), fountain arc
-      compressed — option (b) still+narration only remains open. Niobrara
-      flagged (6/9.5 s drift toward photorealism). Peaks −1.0 dB, decode 0.
-      Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 02 follow-up DONE: 9/9 complete.** Holmes-lake,
-      wyuka, gateway regens replace the held ffmpeg-only v1s — real bed at
-      0.30 (gaps were −91.0 dB silent, now −46.6 to −47.8 dB). Gateway take 1
-      rejected (invented pseudo-text signage); take 2 blank, no text.
-      Wyuka flagged (headstone leaves frame, bird count varies 4→3→4);
-      gateway flagged (one awning green instead of striped). Peaks −1.4/−1.5
-      dB, decode 0. Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 09 follow-up DONE: 9/9 complete.** Everglades,
-      death-valley, hoover built. Everglades: heron visibly lifts off at 6 s
-      (fallback line not needed), confirmed in-frame. Hoover: v1 rejected
-      (invented waterfall through the arch), v2 rejected (bypass bridge as
-      hero); v3 locked-camera holds, no waterfall, dam is the hero —
-      confirmed in-frame at 6 s. Everglades peak −0.9 dB by volumedetect
-      (−1.01 dB by the worker's measure; headroom either way, no clipping).
-      Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 06 follow-up DONE: 4 of 5 regens swapped.**
-      Kingsley (spillway in full rush at 6 s), smith-falls (full wide flow
-      with mist, child pointing), fort-robinson (flag raises, full at 9.5 s),
-      chimney-rock (spire in frame at 2/6/9.5 s) — all four defects fixed,
-      confirmed in-frame. Batch 06 now 8/9. **Archway NOT swapped by the
-      worker** (its replace gate demanded exactly one wagon; the regen
-      shows two) — see Held below: the coordinator overturned that hold.
-      Peaks −1.0 dB, decode 0. Bed-30% per worker measurement.
-      Not verified by ear.
-- [x] 2026-11-08 — **Batch 12 follow-up DONE: 7/7 complete.** Galapagos
-      built (tortoises + iguanas, real visible verb; minor flag: dark
-      animals resting on the dock at 6/9.5 s). Potala v2 PASSES — the
-      white-and-red palace mass on the hill holds at 2/6/9.5 s, confirmed
-      in-frame at 6 s; v1's golden-temple reinterpretation gone. Voice-free
-      window 2.10 s, as in the pilot. Peaks −1.4/−1.5 dB, decode 0.
-      Bed-30% per worker measurement. Not verified by ear.
-- [x] 2026-11-08 — **Batch 03 follow-up #2 DONE: 9/9 complete.**
-      Star-city-shores built (fresh call, not a repeat of the failed one),
-      flagged: tight near-photoreal close-up of two slides over one pool;
-      the keyframe's wide watercolor aerial layout is gone — same failure
-      mode as hyde; re-render option recorded. University-place ships as a
-      still+narration FALLBACK (haymarket precedent, no 3rd regen): source
-      still held 10 s with existing Casper narration + v1 audio bed at 0.30,
-      peak −1.01 dB, no text possible. Batch 03 now 9/9.
-- [x] 2026-11-08 — **Archway mix-only follow-up DONE: batch 06 now 9/9,
-      build 106/106 COMPLETE.** The regen raw was mixed with existing
-      vdc_2561 TTS (no re-render, no video call), verified, and swapped in
-      as `archway.mp4` (md5 `0f12426222d1226eecd11a909523c415`, 7,043,093 B).
-      Coordinator re-verified independently: 10.000 s / 1152×768 / 24 fps /
-      h264+AAC, decode exit 0, peak −1.0 dB, mean −18.7 dB, bed −10.5 dB in
-      the voice-free gap; 6 s + 9.5 s frames viewed — bridge hero + highway
-      + cars in frame throughout, both wagons in place. The held v1 is
-      preserved at `work/held-original-archway.mp4`. Bed-30% per worker
-      measurement. Not verified by ear.
+- [x] Step 0a — CORS gate: `curl` on old-faithful.mp4 shows `Access-Control-Allow-Origin: *` (plus `Cache-Control: max-age=600`, ETag, `Accept-Ranges: bytes`). Prefetch can work.
+- [x] Step 0b — Cache-reuse experiment (real-server probe, `~/workspace/journal-prefetch-probe/`, driver `probe-production-clip.mjs`, log `exp4-production-clip.log`): production clip `southpointe.mp4` (3,623,177 bytes) fetched via CORS + drain, then a `<video preload="none">` tap — server-side clip hits stayed at 1 before AND after the tap (1→1, zero additional transfers); video played (paused=false, currentTime 2.04). Hidden-`<video preload="auto">` warm scored the same 1→1; fetch wins on simplicity. Route interception CANNOT observe cache reuse (fulfilled responses bypass the cache) — E2E under interception asserts prefetch requests happen, reuse is proven by the probe.
+- [x] Step 1 — `src/components/journal-prefetch.ts` (gating, entry selection, bounded runner ≤2 concurrent, per-fetch AbortController, never rejects) + 17 unit tests (16 + the B1 manifest-retry test); GameApp wiring (`run !== null || loopOpen` trigger, stops on round end / tab hidden / unmount) with the follow-up fixes: skip warming when the tab is already hidden at round start, warmed ids keyed per journal set (a set rotation gets a fresh set), manifest cache reset on null so a transient failure cannot poison the tap path (B1), and the manifest baseUrl re-pinned to the validator's pinned value; tsc clean.
+- [x] Step 2 — Loading spinner on the player's loading state (decorative, aria-hidden, keeps the text; the loading text carries `role="status"`; never renders under reduced motion) + CSS + 2 unit tests.
+- [x] Step 3 — E2E `tests/e2e/journal-prefetch.desktop.spec.ts`: (i)–(xi), 12 tests. First run (`~/workspace/journal-prefetch-e2e1.log`) 7 passed / 2 failed — (vii) and (viii-a) both timed out waiting for the movie element, because the manifest-delay helper's `route.continue()` goes to the real network, not to serveBuiltArtifact's route; fixed by fulfilling the manifest from the built file after the delay, and the re-run of the 2 (`~/workspace/journal-prefetch-e2e2.log`) passed 2/2.
+- [x] Step 3 (final pass, code head `05b8f506`) — E2E regression union, sequential (`--workers=1`, `flock ~/workspace/.e2e.lock`, `PLAYWRIGHT_CHROMIUM_EXECUTABLE=$HOME/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome`, `VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy` at build + test time), log `~/workspace/journal-prefetch-final-e2e.log`: **87 passed / 1 failed (25.9 m)**. Per spec: journal-prefetch.desktop 12/12, journal.spec 5/5, journal-player.desktop 4/4, journal-player.mobile 1/1, journal-player.reduced 1/1, captions.desktop 4/4, captions.mobile 2/2, fixes.desktop 8/8, fixes.mobile 2/2, journal-art.desktop 1/1, geodetective-boot-home.desktop 3/3, geodetective.spec 17 passed / 1 failed, geodetective-hint.spec 7/7, pack-deal-fallback.desktop 3/3, reset-history.desktop 6/6, scout-toggle.desktop 11/11.
+- [x] Step 3 — ONE FAILURE, deterministic, pre-existing (not a B1–B8 regression): `tests/e2e/geodetective.spec.ts:199` "win path: seam deal…" fails at line 256 — expects the share text to contain `https://meridian.knowledgetest.workers.dev/`, but the app produced `https://veeresh-bikkaneti.github.io/Meridian/`. Isolated re-run (`~/workspace/journal-prefetch-final-e2e-rerun.log`) fails identically (exit 1, same assertion, same received text). Root cause: `build:pages` bakes `BASE_URL=/Meridian/`, so `shareOrigin()` (`src/lib/og/share-meta.ts`) returns the Pages origin; #128 changed `BRAND.siteUrl` + the test expectation to workers.dev but left `shareOrigin`'s Pages branch intact. B1–B8 changed nothing in `src/game/share.ts`, `src/lib/og/share-meta.ts`, `src/game/brand.ts`, or `vite.config.ts` (zero diff `86624dde..HEAD`), and B7's edit to this spec touched only the reload tests — the share assertion is untouched. No prior branch log shows this test passing under a `build:pages` artifact. **FIXED by owner ruling 2026-11-09 — see "Share-URL fix" below; :199 passes, union is 88/88.**
+- [x] Step 4 — Full gates on the final CODE head `05b8f506` (final pass, logs `~/workspace/journal-prefetch-final-*.log`): `npx tsc --noEmit` exit 0 (clean); `npm test` exit 0 — scripts 1154 pass / 11 skipped / 0 fail (1165 tests, 55 suites), src 2322 pass / 0 fail / 0 skipped (171 suites); `npm run test:worker` exit 0 — 145 pass / 0 fail; `node scripts/lint-cards.mjs` exit 0 — GATE PASSED; `npm run build:pages` exit 0 — buildId `05b8f506`. (Previous full-gates green was `f4b1639d`: scripts 1154 pass / 11 skipped / 0 fail; src 2320 pass / 0 fail — the +2 src tests are the B7/B8 additions.)
+- [x] B7 — Boot always lands on Home, never auto-opens GeoDetective (owner ruling, 2026-11-09; fix `b81ae06d`, E2E `78038be1` + `b247057a` + `cb128987`): a saved loop (`loopOpen` flag + saved mystery) resumes only on tap-in ("GeoDetective: Resume your case" / "Solve a mystery"), same clue/guess state, no re-deal; a finished-but-unacknowledged reveal re-renders. Recorded in the Handbook, `docs/handbook/02-game-design-decisions.md` §2 (final pass — the B7 agent had flagged it as missing). The B4 law question is MOOTED by B7: reload lands on Home, so no restored loop warms and there is no reload-time prefetch question. Cold Trail restore left alone as intentional per PR #203 (its persisted open flag restores its screen on reload — see the comment at the Cold Trail render branch in `src/components/game-app.tsx`).
+- [x] B8 — One entry per 30-minute window (fix `cb66339f`, unit `2dd98b52`, E2E `05b8f506`): 106 entries × 30 min = a 53-hour cycle; footer reads "Entry X of 106"; prefetch warms the current + next window's entries. The old set-boundary straddle (a set spanning two windows) no longer exists. `docs/handbook/06-design-and-ux-decisions.md` already updated for the journal by B8 — not duplicated here.
+- [x] B5 (Reality Checker) — "89 → 88 on player close" in the take-2 video: NOT an app bug — a Playwright screencast-capture artifact, proven, no code change. The DOM never renders 88: a `MutationObserver` over the whole record journey (body-scoped, so it survives the Home unmount/remount round-trip) logged exactly 3 footer-text states — `Entry 89 of 106` at load, `<none>` while Home is unmounted during the round, `Entry 89 of 106` on return — and zero further changes through close + 3 s; a 100 ms DOM poll across the close likewise read 89 at every sample (logs `~/workspace/journal-prefetch-observer2.log`, `~/workspace/journal-prefetch-videoprobe.log`, `~/workspace/journal-prefetch-shot.log`). The same instant, captured two other ways, reads 89: `page.screenshot` (`test-results/footer-after-close.png`, "ENTRY 89 OF 106") vs the screencast frame at the same wall-clock moment ("ENTRY 88"). The video's 88 is real pixels in the capture (pixel-diff vs the 89/88 reference strips: d88 ≈ 1.5–1.8, d89 ≈ 36; present even in an intra-coded keyframe at 40.96 s in take 5, so it is in the screencast source frames, not VP8 interframe prediction) — but the app cannot produce it: note and footer come from the one `journalEntry` object (`src/components/game-app.tsx:4603-4604`, footer `:5193-5195`), and giza is index 88 (display 89) while index 87 is sagrada (`node --experimental-strip-types` import of `home-journal.ts`), so a genuine 88 would show Sagrada Família as the note — the video still shows Giza. The mocked clock cannot explain it either (`journalSetIndexAt(2026-10-16T12:00Z)` = 88; the take never leaves that window; the real-clock index at record time is 83, not 87). Boundary: screencast-only, post-close only (video→poster transition), in 4 takes (take 2 delivered mp4 + raw, re-runs take 3/4/5/6); no DOM, screenshot, or unit observation ever shows it, and production has no screencast — a real user sees 89. Regression guard: `tests/e2e/journal-footer-close.desktop.spec.ts` asserts the DOM footer is identical before open and after close on the same entry. Standing lesson: video frames are not a reliable oracle for footer text — DOM/screenshot win on disagreement. Fix-pass verification on code+test head `76b8c16c` (logs `~/workspace/journal-prefetch-b5-*.log`): `npx tsc --noEmit` exit 0; `npm test` exit 0 — scripts 1154 pass / 11 skipped / 0 fail, src 2322 pass / 0 fail; `npm run test:worker` exit 0 — 145 pass / 0 fail; `node scripts/lint-cards.mjs` exit 0 — GATE PASSED; `npm run build:pages` exit 0 — buildId `76b8c16c`; E2E journal family 41 passed / 0 failed (7.6 m): footer-close 1/1, journal-prefetch.desktop 12/12, journal.spec 5/5, journal-player.desktop 4/4, journal-player.mobile 1/1, journal-player.reduced 1/1, captions.desktop 4/4, captions.mobile 2/2, fixes.desktop 8/8, fixes.mobile 2/2, journal-art.desktop 1/1.
+- [x] B6 (Reality Checker) — BRANCH_STATUS head lines: the tip was `2b196516` (docs-only over code head `05b8f506`), not `05b8f506`. Status + Head lines corrected in this pass; the Step 3/4/5 lines still cite `05b8f506` deliberately — that is the code head the gates / E2E / record actually ran on, not the tip. Audio figure corrected in the same pass (see Step 5 final-pass line): take-2 [35, 45] is −19.1 dB (re-probed 2026-11-09 by the B5/B6 fix pass and re-verified by mux.sh's own probe + atrim cross-check; −25.6 dB is the whole-file mean, not the segment figure).
+- [x] Share-URL fix (owner ruling, 2026-11-09; fix `0cf449d7`): the share text must point at workers.dev, not the Pages origin. **Scope check first:** `shareOrigin()` served four consumers; the share path is `src/game/share.ts:53` (`shareText`) and `:117` (`shareLoopText`) — the share text (ruling target) — plus `src/game/share-action.ts:120` (`SHARE_URL`, the `url` of the `navigator.share` payload); `src/routes/__root.tsx:127` is OG meta (`og:url`/`og:image`), where the Pages origin is CORRECT as the canonical URL of the served page. So `shareOrigin()` itself and `__root.tsx` are UNTOUCHED; only the share path changed — `shareText`/`shareLoopText` now use `WORKERS_ORIGIN` (`src/game/share.ts:53`, `:117`) and `SHARE_URL = WORKERS_ORIGIN` (`src/game/share-action.ts:120`), superseding the Wave 1 P0 Item 4E/4F build-aware share for shares only. The `baseUrl` params are retained for call-site compatibility (the updated Pages-input unit tests still prove Pages input → workers.dev output). **Tests updated to the ruling (named, not silent):** `src/game/share.test.ts:153` — "Pages build share carries the Workers link (owner ruling 2026-11-09)" and `:189` — "Pages build geodetective share carries the Workers link (owner ruling 2026-11-09)"; `src/game/share-action.test.ts:202` — "Pages build share carries the Workers link (owner ruling 2026-11-09)" (sessionShareText) plus `:191` — the SHARE_URL test, "SHARE_URL is the single canonical workers.dev URL (owner ruling 2026-11-09)" (assertions unchanged); `tests/e2e/endgame-share.spec.ts:42` — `SITE_URL` github.io → workers.dev (its text assertion `:240` and `url:` assertion `:313` follow from it). `src/lib/og/share-meta.test.ts` unchanged (`shareOrigin` + OG behaviour intact). **Verification on `0cf449d7`** (logs `~/workspace/journal-prefetch-sharefix-*.log`): `npx tsc --noEmit` exit 0; `npm test` exit 0 — scripts 1154 pass / 11 skipped / 0 fail, src 2322 pass / 0 fail; `npm run test:worker` exit 0 — 145 pass / 0 fail; `node scripts/lint-cards.mjs` exit 0 — GATE PASSED; `npm run build:pages` exit 0 (VITE_KOFI_URL set at build + test time). E2E geodetective spec first (`~/workspace/journal-prefetch-sharefix-e2e-geodetective.log`): **18/18 passed (4.4 m), :199 win path passes**. Full union (`~/workspace/journal-prefetch-sharefix-e2e-union.log`, sequential `--workers=1`, `flock ~/workspace/.e2e.lock`, same 16 specs): **88 passed / 0 failed (20.9 m)** — geodetective.spec 18/18 (was 17/1), all other per-spec counts identical to the 87/1 run. No screen recording: the share flow's user-visible surface (the share-text line) is asserted by the E2E specs above; no record-spec coverage exists for it.
 
-## Video cap (discovered 2026-11-08, affects every batch)
-The media pipeline allows at most **6 successful videos per agent
-message**, even when the task asks for more. Batch 01 used all 6 on sets
-1–2; set 3 was unbuilt. Every batch will need a follow-up run for its
-last 3 clips (batch 08: last 2; batch 12: last 1) — ~24 worker runs total
-instead of 12. Follow-up spawns are new messages, so each gets a fresh
-6-video budget. **Exception observed 2026-11-08: batch 04 delivered 9/9
-in one run — all 9 generations succeeded, cap did not block.** The cap
-is enforced per run, not per batch; do not assume it.
+## Design corrections vs the brief (verified from code, not re-litigated)
+- The effect lives in **GameApp**, not in Choose/home: GameApp returns early with `<Play>`/`<LoopScreen>` while a round is active, so Choose is unmounted during gameplay and no effect inside it could run. The set is derived from the wall clock (same derivation Choose initialises from).
+- The effect keys on the round-active **boolean**, not on `run` itself: `run` is a new object on every pin drop / phase change, so keying on it would abort and restart the warm mid-round.
 
-## Held clips — none. (Resolved holds kept below for the record.)
-- archway (batch 06): hold OVERTURNED 2026-11-08 (see Resolved holds) and
-  the regen is now live. Nothing is held.
-- haymarket (batch 01) ships as a flagged still+narration FALLBACK
-  (AI video failed the no-text gate TWICE); a 3rd attempt would need a
-  different approach (no clock tower in frame).
-- university-place (batch 03) ships as a flagged still+narration FALLBACK
-  (v1 + v2 both failed the no-text gate); see Done above.
+## History — feat/journal-player Part 3 (restored)
 
-## Resolved holds (were held, now live — record kept here)
-- archway (batch 06): the regen was first refused for showing TWO wagons
-  against an "exactly one wagon" gate. Coordinator overturn: the calm
-  keyframe itself contains two wagons (white-covered left, open wagon
-  centre-right) and the regen shows the same two in the same positions —
-  the source art's own exhibits, not a duplication. Mixed with existing
-  TTS, verified, swapped in 2026-11-08. Batch 06 now 9/9.
-- havelock, southpointe (batch 03): v2 regens passed, live.
-- neuschwanstein (batch 11): v2 regen passed, live.
-- holmes-lake, wyuka, gateway (batch 02): v2 AI regens with real bed, live.
-- kingsley, smith-falls, fort-robinson, chimney-rock (batch 06): v2 regens
-  with real bed + visible payoffs, live.
-- potala (batch 12): v2 locked-wide regen, palace holds, live.
-
-## Storage proposal (recorded in docs/journal-movies.md)
-Movies do NOT live in this repo (~600 MB would quadruple git objects and
-push Pages toward the 1 GB cap). Separate repo `veeresh-bikkaneti/meridian-media`
-with its own GitHub Pages; a future player (NOT BUILT) would lazy-load by
-URL on entry open, which the current CSP `media-src 'self'` would block.
-Still a proposal: storage/hosting/privacy is Tier 2 and has no Consensus
-Manifest or owner citation recorded here. Manifest here maps entry id → URL. R2 is the better long-term host but needs owner
-provisioning; media repo needs none.
+The player-branch history below was deleted from this file; restored from `feat/journal-player`'s `BRANCH_STATUS.md` (`86624dde`) and its git log — no facts invented. Part 3: 5 Historian-blocked facts corrected (text + audio) at head `a7191e3e` (verified `86624dde`): cue 2 only, in `public/videos/captions/<id>.vtt` + `public/videos/journal-transcripts.json` (VTT↔JSON 0 mismatches, 20 cues) — alamo "An old mission, from 1718." (was "from 1836"), cadillac "In winter, it catches the first sunrise!" (was "It catches the first sunrise in the country!"), joslyn "Joslyn's museum stands right in Omaha." (was "...stands north of Omaha."), niagara "They drop where New York meets Canada!" (was "They drop over a cliff in New York."), homestead "One of the first claims, under the 1862 law." (was "One of the first claims, back in 1862."); manifest untouched. The audio fix lives on meridian-media `fix/journal-facts-5` @ `70b2e95` (separate repo, NOT merged — the live site still serves the old clips). Verification: E2E facts specs 6/6 desktop + 2/2 mobile, regression 31/31; recording `~/workspace/journal-player-facts-play/facts-desktop.webm` (94.6 s, all 5 corrected lines legible on-video).
 
 ## Pending
-- [ ] Create `veeresh-bikkaneti/meridian-media` repo + Pages; upload pilot
-      v4 unchanged as `old-faithful.mp4`; verify URL serves. — DONE 2026-11-08
-      (repo created, Pages on, pilot live; see Done above).
-- [ ] Verify each batch as it lands (ffprobe/decode/frames/audio/no-text),
-      upload to meridian-media, update manifest, commit + push progressively.
-- [ ] Report first completed batch to owner promptly; keep reporting per batch.
-- [ ] Gates before PR: `npx tsc --noEmit`, `npm test`, `node scripts/lint-cards.mjs`,
-      `npm run build:pages`, Playwright E2E (sequential, under `flock` lock).
-      Superseded: PR #369 is open; see its body and review records for runs.
-      Full E2E suite has not completed on any head.
-- [ ] **Manifest validator gate — BLOCKED on Tier 2.** Independent review
-      (2026-11-08) reproduced on `cb01f91c`: appending invalid JSON, deleting
-      an entry, adding an unknown id, or duplicating a key in
-      `public/videos/journal-manifest.json` all still pass `npm run
-      build:pages`, `npm test` (scripts suite) and `lint-cards`, and ship.
-      A validator (new module + test + `prebuild`/`prebuild:pages` wiring) is
-      a new module across 3+ files → Tier 2 (`AGENTS.md`, tier table), and
-      the protocol forbids implementation code before a signed Consensus
-      Manifest (`docs/ops/agent-council-protocol.md` §2, directive 1). Draft contracts
-      exist off-branch; council not convened, nothing signed.
-- [ ] Manifest top-level `note` still says movies "load only on request" —
-      present tense for an unbuilt player. Correct it with the validator work.
-- [ ] Trusted listen of all 106 narrations against each entry's story text,
-      and full-resolution visual clearance — INCOMPLETE (automated
-      descriptions exist; not a clearance).
-- [ ] Live six-viewport browser check of the journal on this head — NOT RUN.
-- [ ] Panel review of the final tip; owner's merge word — pending.
+- [ ] endgame-share E2E (NOT in the union; pre-existing, NOT a share-fix regression): `tests/e2e/endgame-share.spec.ts` fails 2/2 on BOTH `228467d2` (pre-fix head) and `0cf449d7` (share-fix head) with the identical signature — `expectCleanConsole` fails on two `Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED` console errors. Trace proves the failed fetches are the journal-prefetch mp4s (`meridian-media/journal/redeemer.mp4`, `sagrada.mp4`) fetched for real during gameplay — VM Chromium via the egress proxy cannot reach github.io (standing VM limitation), and this spec has no mp4 route interception (unlike the journal-prefetch spec). The share assertions themselves PASS on the new head (clipboard exact text `:240`, `navigator.share` call `:313` — execution reaches the console check after them). Logs: `~/workspace/journal-prefetch-sharefix-e2e-endgame-share.log` (new head), `...-rerun.log` (identical re-run), `...-prefix.log` (pre-fix head, identical failure). Fix is a separate decision — intercept the mp4s in this spec as the journal-prefetch spec does, or scope the console check — NOT done here; the share fix touches no prefetch or console-check behaviour.
+- [x] Step 5 — Screen recording (gameplay → prefetch → instant tap-play) + network trace, audio-probed per the video-audio law. Record spec: `tests/e2e/journal-prefetch.record.desktop.spec.ts` (1 passed, 39 s, first take). Recording: `~/workspace/journal-prefetch-record/prefetch-desktop.mp4` (37 s, 800×500, h264 + aac) — raw Playwright capture `prefetch-desktop-raw.webm`, timeline `timeline.json`, mux script `mux.sh`. Audio gate on the OUTPUT: ffprobe shows h264 + aac; volumedetect playing segment [26.4, 36.4] mean −19.1 dB / max −1.0 dB (audible narration), pre-play [0, 26] mean −91.0 dB (silent). Frames verified: t=12 s globe round in progress, t=30 s movie playing 0:03/0:10 with entry text on, t=36 s player closed, still + badge back. Timeline proof: round started t=9186 ms → manifest t=9188 → southpointe prefetch t=9843 → havelock prefetch t=9860 → back home t=21577 → tap t=25742 → movie playing t=26964. One fix found: the spec's first audio-delay estimate used performance.timeOrigin under the mocked clock and collapsed to 0; recomputed from eval wall time minus video currentTime (26,374 ms).
+- [x] Step 5 (final pass, code head `05b8f506`) — RE-RECORDED on the final head, log `~/workspace/journal-prefetch-final-record.log`: record spec 1 passed (48.4 s). New take, `~/workspace/journal-prefetch-record/`: `prefetch-desktop.mp4` (45 s, 800×500, h264 + aac, 1,519,685 bytes) from raw `prefetch-desktop-raw.webm` (46.48 s); `mux.sh` default `DELAY_MS` updated 26374 → **34927** (new timeline `audioDelayMs`), `-t` 37 → 45, probe windows moved to the new beats. Timeline proof (entry this take: giza — window-dependent): manifest t=11720 → round started t=12577 → giza prefetch t=12887 → cn-tower prefetch t=13093 → back home t=30779 → tap t=34287 → movie playing t=36013 (audioDelayMs=34927) → closed t=44393. Audio gate on the OUTPUT (re-probed 2026-11-09 by the B5/B6 fix pass and re-verified by mux.sh's own probe + atrim cross-check: the −19.1 dB quoted here before was correct for take 2; −25.6 dB is the whole-file mean, not the segment figure): ffprobe shows h264 + aac; volumedetect playing segment [35, 45] mean **−19.1 dB** / max −0.9 dB (audible narration), pre-play [0, 34] mean −91.0 dB (silent). Frames verified: t=20 s Globe round in progress (Kriva Palanka card, Drop pin), t=38 s movie playing 0:02/0:10 with entry text on ("Great Pyramid of Giza", footer "ENTRY 89 OF 106 · NEXT ENTRY IN 0:30"), t=44.6 s player closed, still + "Watch the movie · 10 sec" back (footer in the VIDEO then reads "ENTRY 88 OF 106" — see B5 below: a screencast-capture artifact, the DOM reads 89; not an app bug, no re-record). Near-miss caught: the record spec writes the video only under `test-results/…/video.webm` — the first mux of this take ran against the STALE 12:55 raw (37 s) with the new delay; caught by the duration check, raw re-copied from `test-results/journal-prefetch.record.de-dffb5-fetches-tap-plays-instantly-desktop/video.webm`, mux re-run. The stale first-take frames (frame-12/30/36) were replaced with the new take's frame-20/38/44.
 
 ## Never
 - Never merge — merge word stays the owner's, per PR, per head.
@@ -1029,6 +841,11 @@ worked and only the renders were missing.
 - **Proof:** build:pages green · credits spec 5 consecutive passes by name · full CI six-file set green once · tsc clean · lint-cards GATE PASSED (numbers in the PR body).
 - **Merge:** NO MERGE without the owner's per-PR word. Once merged, PR #370 merges up and its red e2e check clears.
 
+## Notes
+- CSP: was NOT changed by this branch itself (repo CSP had no meridian-media in `media-src`/`connect-src`) — SUPERSEDED by the merge below: the player CSP fix (`da43a03f` + `8d4475e9`) adds the host to both directives, so this branch now carries it too. GitHub Pages ignores `_headers`, so live Pages is unaffected by the file; the worker-served CSP is what matters.
+- No PR opened; merging stays the owner's decision.
+- Head: this commit (docs-only over share-fix code head `0cf449d7`; all gates / E2E union ran on `0cf449d7`; verified this session: `git rev-parse HEAD`, worktree clean, remote tip matches; B5/B6 fix pass 2026-11-09, share-URL fix pass 2026-11-09).
+- Final-pass verdict: unit gates + `build:pages` green on head `0cf449d7`; E2E union **88 passed / 0 failed** — the former share-URL failure (Step 3) is cured by the owner's 2026-11-09 ruling (see Share-URL fix). The three blocking seats re-vote with the green union on the record. One open item remains outside the union: endgame-share E2E (see Pending).
 
 ---
 
@@ -1075,3 +892,4 @@ worked and only the renders were missing.
   the player branch: CSP + facts specs 9/9, movie `currentTime` 0.51 s
   (entry old-faithful). This lands as a second commit on this branch
   before the prefetch merge is redone.
+- **Repair (2026-11-10, owner-ordered):** Lotus rebased this branch onto main `10e8121d` overnight (`6dcdcfc7`), orphaning the first merge (`60c16460`) and dropping the CSP fix — the rebased tip had no `github.io` in either CSP directive and #389 went CONFLICTING vs base. This merge re-merges the player tip `8d4475e9`. Resolution, all 21 conflicts: kept the prefetch (B8/B7) version of every player file whose two sides diverged — `game-app.tsx` (B7 boot-Home + prefetch effect; player's `readLoopOpen` boot-restore would regress B7), `journal-movies.ts` (baseUrl re-pin restored by prefetch follow-up `13844336`), the spinner (`journal-player.tsx`, `home-v5.css`, unit tests), and all rotation-sensitive specs (B8 1-entry/30-min assertions, incl. `facts.data.ts` B8 times + the fixed 30-min comment); took the player's CSP fix (security-headers files + docs, merged clean), the CSP spec, and this section. The player's 3-per-set spec wording and 2-hour language were NOT taken — they describe the old rotation.

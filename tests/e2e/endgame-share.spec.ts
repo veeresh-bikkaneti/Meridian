@@ -33,11 +33,13 @@ import {
  * session/run storage the app itself writes, mirroring shareText().
  */
 
-// E2E artifact is Pages bytes served at localhost, so the expected share
-// URL is the Pages URL (build-aware share, Wave 1 P0 Item 4E/4F) — not the
-// Workers SITE_URL, not a localhost URL. The "meridian " first-line casing
-// below is UNCHANGED (CONDITIONAL wording, owner word still owed).
-const SITE_URL = "https://veeresh-bikkaneti.github.io/Meridian/";
+// E2E artifact is Pages bytes served at localhost, but the expected share
+// URL is the workers.dev URL, not the Pages URL: owner ruling 2026-11-09 —
+// the share payload (text + url) always points at workers.dev, in every
+// build. The old build-aware expectation (Wave 1 P0 Item 4E/4F) is
+// superseded for shares. The "meridian " first-line casing below is
+// UNCHANGED (CONDITIONAL wording, owner word still owed).
+const SITE_URL = "https://meridian.knowledgetest.workers.dev/";
 
 function collectErrors(page: Page): string[] {
   const errors: string[] = [];

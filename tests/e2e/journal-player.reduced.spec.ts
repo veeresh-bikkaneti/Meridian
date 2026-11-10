@@ -31,7 +31,7 @@ test("reduced motion: movie plays once on tap, no loop, replay offered", async (
   page,
 }) => {
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
+  expect(ids.length).toBe(1);
   const id = ids[0]!;
   const video = await openEntry(page, id);
   await expect(video).not.toHaveAttribute("loop", "");

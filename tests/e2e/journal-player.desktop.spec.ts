@@ -24,6 +24,9 @@ import {
 test.setTimeout(180_000);
 test.use({ viewport: { width: 1280, height: 800 }, video: "on" });
 
+/** One journal window: 30 minutes (B8 amendment). */
+const WINDOW_MS = 1_800_000;
+
 test.beforeEach(async ({ context, page }) => {
   await serveBuiltArtifact(context);
   await stubJournalMedia(page);
@@ -49,7 +52,7 @@ test("tap the picture plays the movie; pause, resume, close return the still", a
   page,
 }) => {
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
+  expect(ids.length).toBe(1);
   const id = ids[0]!;
   const video = await openEntry(page, id);
   await expectPlaying(video);
@@ -60,21 +63,34 @@ test("tap the picture plays the movie; pause, resume, close return the still", a
   await closeEntry(page, id);
 });
 
-test("three entries play in turn; opening one closes the other", async ({ page }) => {
+test("one entry plays at a time; a window rotation closes the playing movie", async ({
+  page,
+}) => {
+  // B8: only one entry shows per 30-minute window, so "one movie at a
+  // time" is structural now — the case that still needs a test is the
+  // rotation: when the window rolls, the playing movie must close and
+  // the next entry must show (the player resets on journalIndex change).
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
-  const [first, second, third] = ids as [string, string, string];
+  expect(ids.length).toBe(1);
+  const first = ids[0]!;
   const firstVideo = await openEntry(page, first);
   await expectPlaying(firstVideo);
-  await openEntry(page, second);
+
+  // Focus must not be inside the card or the section, or rotation is
+  // (correctly) deferred.
+  await page.evaluate(() => {
+    (document.activeElement as HTMLElement | null)?.blur();
+  });
+  await page.clock.fastForward(WINDOW_MS);
+
   await expect(page.getByTestId(`journal-movie-${first}`)).toHaveCount(0);
-  await expect(page.getByTestId(`journal-play-${first}`)).toBeVisible();
-  const secondVideo = page.getByTestId(`journal-movie-${second}`);
-  await expectPlaying(secondVideo);
-  await openEntry(page, third);
-  await expect(page.getByTestId(`journal-movie-${second}`)).toHaveCount(0);
-  await expectPlaying(page.getByTestId(`journal-movie-${third}`));
-  await closeEntry(page, third);
+  await expect(page.getByTestId(`journal-play-${first}`)).toHaveCount(0);
+  const nextIds = await shownNoteIds(page);
+  expect(nextIds.length).toBe(1);
+  expect(nextIds[0]).not.toBe(first);
+  const nextVideo = await openEntry(page, nextIds[0]!);
+  await expectPlaying(nextVideo);
+  await closeEntry(page, nextIds[0]!);
 });
 
 test("unreachable movie fails gracefully: message, still stays, close works", async ({

@@ -102,6 +102,12 @@ import {
   nextEntryCountdown,
 } from "./home-journal";
 import { JournalPlayer } from "./journal-player";
+import {
+  isJournalPrefetchAllowedNow,
+  resolveJournalPrefetchEntries,
+  startJournalPrefetch,
+  type JournalPrefetchHandle,
+} from "./journal-prefetch";
 // Storyteller banner host (owner directive 2026-10-09): the Storyteller
 // sits IN THE BANNER beside the Meridian branding — always visible, mobile
 // and desktop. React.lazy — the host (and its copy chunk) never lands in
@@ -225,14 +231,13 @@ import {
   type LearningStore,
 } from "@/game/learning";
 import {
-  readLoopOpen,
   writeLoopOpen,
   peekLoopProgress,
 } from "@/game/loop/store";
 import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
-// screens — they render only when the player opens them (or when a saved
-// loopOpen flag restores GeoDetective on boot). Both screens statically
+// screens — they render only when the player opens them (B7: never on
+// boot from a saved loopOpen flag — tap-in only). Both screens statically
 // import LoopMap, which value-imports maplibre-gl (~1.1 MB) and its
 // stylesheet, so a static import here pulled the whole map library into
 // the preloaded route chunk. They are React.lazy instead — the
@@ -1525,9 +1530,121 @@ export function GameApp() {
   }, [applySessionMapMode]);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
-  // run/drop keys. The open flag (meridian.loop.open) restores the screen
-  // after a reload so a mid-game refresh resumes the mystery, not the menu.
-  const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
+  // run/drop keys. B7 (owner ruling, 2026-11-09): a new session always
+  // lands on Home — the loop NEVER auto-opens from the persisted open
+  // flag (meridian.loop.open). The flag is still written on tap-in /
+  // leave, and the saved loop (deck/progress/streak in meridian.loop.v2)
+  // stays intact, so tapping in resumes the saved mystery where it left
+  // off; only the boot auto-open is gone.
+  const [loopOpen, setLoopOpen] = useState<boolean>(false);
+  // Journal prefetch (lazy-load scenario 2): while a round is active,
+  // warm the current entry's movie and the next window's (B8: one entry
+  // per 30-minute window, so "the next 1–2 in the current set" is the
+  // current window + the next window) in the background so a later tap
+  // plays instantly. Tap-to-load is unchanged — this only pre-warms the
+  // plain HTTP cache (CORS fetch + drain; see journal-prefetch.ts for
+  // the real-server probe that proved zero additional transfers on the
+  // tap). Warmed ids are tracked per window so an entry is never warmed
+  // twice; a failed warm means the tap fetches cold, as today.
+  //
+  // Placement matters: the effect MUST live here in GameApp, not in
+  // Choose (home). GameApp returns early with <Play>/<LoopScreen>
+  // while a round is active, so Choose — which owns the journal state
+  // — is unmounted during gameplay and no effect inside it could ever
+  // run while playing. The entry here is therefore derived from the wall
+  // clock (the same derivation Choose initialises from), not read from
+  // Choose's state; it matches the displayed entry except at a window
+  // boundary where Choose deferred a rotation for focus — then the
+  // warm simply misses and the tap fetches cold, as today. No player
+  // can be open during a run (Choose is unmounted), so there is no
+  // playing entry to skip.
+  //
+  // The effect keys on the round-active boolean, not on `run` itself:
+  // `run` is a new object on every pin drop / phase change, so keying
+  // on it would abort and restart the warm mid-round. The trigger is
+  // the brief's — `run !== null || loopOpen` first becoming true.
+  // Warmed ids, keyed by journal window index: a rotation gets a fresh
+  // window (no re-warm of the old window, no skip of the new one), and
+  // a later round in the same window never re-warms what is already
+  // cached. The next window's note was possibly warmed as "next"
+  // during the previous window, so the previous window's warmed ids
+  // also count as warmed — no entry is ever warmed twice.
+  const warmedJournalIdsRef = useRef<Map<number, Set<string>>>(new Map());
+  const roundActive = run !== null || loopOpen;
+  useEffect(() => {
+    if (!roundActive) return;
+    if (!isJournalPrefetchAllowedNow()) return;
+    // A round that starts in an already-hidden tab must not warm: the
+    // visibilitychange listener below only fires on a transition.
+    if (document.visibilityState === "hidden") return;
+    const windowIndex = journalSetIndexAt(Date.now());
+    const currentNotes =
+      journalSetByIndex(windowIndex) ?? journalSetAt(Date.now());
+    // B8: the current window's entry plus the next window's — the
+    // selection limit (2) caps this at two warms.
+    const nextNotes = journalSetByIndex(windowIndex + 1);
+    const noteIds = [
+      ...(currentNotes?.notes ?? []),
+      ...(nextNotes?.notes ?? []),
+    ].map((note) => note.id);
+    const warmedIds =
+      warmedJournalIdsRef.current.get(windowIndex) ?? new Set<string>();
+    warmedJournalIdsRef.current.set(windowIndex, warmedIds);
+    // A note warmed as "next" in the previous window must not warm
+    // again as "current" now (B8 singletons: every note is the next
+    // window's note once before it is the current one).
+    const prevIndex =
+      (windowIndex - 1 + journalSetCount()) % journalSetCount();
+    const prevWarmed = warmedJournalIdsRef.current.get(prevIndex);
+    const skipIds = prevWarmed
+      ? new Set([...warmedIds, ...prevWarmed])
+      : warmedIds;
+    let cancelled = false;
+    let handle: JournalPrefetchHandle | null = null;
+    const abortController = new AbortController();
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        cancelled = true;
+        handle?.abort();
+        abortController.abort();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    void resolveJournalPrefetchEntries(noteIds, {
+      playingJournalId: null,
+      warmedIds: skipIds,
+    }).then((entries) => {
+      if (cancelled || entries.length === 0) return;
+      const idByUrl = new Map(entries.map((entry) => [entry.url, entry.noteId]));
+      handle = startJournalPrefetch(
+        entries.map((entry) => entry.url),
+        {
+          signal: abortController.signal,
+          onWarmed: (url, warmed) => {
+            if (!warmed) return;
+            const id = idByUrl.get(url);
+            if (id) warmedIds.add(id);
+          },
+        },
+      );
+    });
+    return () => {
+      // Abort landmark: this cleanup runs when roundActive flips false —
+      // at summary Done, not at End game (run stays non-null while the
+      // summary is up, so warms keep progressing during the summary
+      // and only abort at Done).
+      cancelled = true;
+      document.removeEventListener("visibilitychange", onVisibility);
+      handle?.abort();
+      abortController.abort();
+    };
+    // Deps are intentionally [roundActive]: `run` churns identity
+    // mid-round (see above); the set is derived from the clock at
+    // trigger time, and a mid-round window crossing simply leaves the
+    // older set warmed — the tap after the round recomputes from the
+    // clock, so a stale warm can only miss, never mislead.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roundActive]);
   // Cold Trail (vertical slice): its own screen outside the run machine,
   // persisted under meridian.coldtrail.v2. The open flag
   // (meridian.coldtrail.open) restores the screen after a reload — PR
@@ -2120,10 +2237,11 @@ export function GameApp() {
    * it closes every other full-screen state, because the render
    * branches below run in precedence order and ANY lurking flag
    * would render its screen instead of Home. loopOpen is the sharp
-   * case: it rehydrates from a persisted flag, and the Editions exit
-   * keeps the run record, so a restored run can sit on top of a
-   * persisted GeoDetective flag — without the clears, the flip would
-   * drop the run and land on LoopScreen, stranding the focus landing
+   * case: it can only be true in-session now (B7 — tap-in sets it,
+   * boot never restores it), and the Editions exit keeps the run
+   * record, so a restored run can sit on top of an in-session
+   * GeoDetective flag — without the clears, the flip would drop
+   * the run and land on LoopScreen, stranding the focus landing
    * and hiding the notice.
    */
   const handleManualMapMode = useCallback((mode: MapMode) => {
@@ -4426,14 +4544,14 @@ function Choose({
   // closes, so this is always fresh on return).
   const [loopProgress] = useState(() => peekLoopProgress());
   // Journal ("What the land remembers", docs/journal-spec.md §3/§5/§6):
-  // the displayed set index is state, driven by the auto-switch rotation
+  // the displayed entry index is state, driven by the auto-switch rotation
   // (createJournalRotation in ./home-journal): a boundary timeout at the
   // next window start + a 30s safety interval recompute it, as do
   // visibilitychange (tab visible again) and focusin. A new index is
   // DEFERRED while focus is inside the home Journal card or inside the
   // inline journal section — content is never swapped under a reader
   // (§6, focus-only per owner ruling Q3). The footer countdown ticks on
-  // its own 60s clock so it stays live without re-rendering the set.
+  // its own 60s clock so it stays live without re-rendering the entry.
   const [journalIndex, setJournalIndex] = useState(() => journalSetIndexAt(Date.now()));
   const [journalNowMs, setJournalNowMs] = useState(() => Date.now());
   // Journal movie player: the single open note id, or null. One movie
@@ -4484,7 +4602,7 @@ function Choose({
   }, [journalRotation]);
   const journalEntry = journalSetByIndex(journalIndex) ?? journalSetAt(Date.now());
   const journalNotes = journalEntry?.notes ?? [];
-  // A movie stops when its set rotates away — the note is no longer shown.
+  // A movie stops when its window rotates away — the note is no longer shown.
   useEffect(() => {
     setPlayingJournalId(null);
   }, [journalIndex]);
@@ -4988,9 +5106,9 @@ function Choose({
         ) : (
           <div aria-hidden="true" />
         )}
-        {/* Journal — the card names the currently-rotating set and
-            jumps to the field notes below; the set rotates every 2 hours,
-            deferred while focus is inside this card or the journal
+        {/* Journal — the card names the currently-rotating entry and
+            jumps to the field note below; the entry rotates every
+            30 minutes, deferred while focus is inside this card or the journal
             section (spec §6). */}
         <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)} data-testid="journal-card">
           <CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />
@@ -5007,7 +5125,7 @@ function Choose({
               <p className="hv5-journal-now" data-testid="journal-now-showing">
                 {journalEntry.mixed
                   ? "Now showing: Field Notes"
-                  : `Now showing: ${journalEntry.geography} · ${journalEntry.notes.length} field notes`}
+                  : `Now showing: ${journalEntry.geography} · ${journalEntry.notes.length === 1 ? "1 field note" : `${journalEntry.notes.length} field notes`}`}
               </p>
             ) : null}
             <button type="button" className="hv5-go hv5-stretch" data-testid="journal-open" onClick={() => scrollTo("home-journal")}>

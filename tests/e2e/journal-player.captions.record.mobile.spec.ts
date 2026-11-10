@@ -24,7 +24,8 @@ test.use({ video: "on" });
 test.beforeEach(async ({ context, page }) => {
   await serveBuiltArtifact(context);
   await stubJournalMediaRealClip(page);
-  const time = new Date(Date.UTC(2026, 9, 17, 16, 0, 0));
+  // First instant showing old-faithful alone (B8: one entry per 30-min window).
+  const time = new Date(Date.UTC(2026, 9, 16, 0, 30, 0));
   await page.clock.install({ time });
   await loadHome(page, time);
 });
@@ -33,7 +34,7 @@ test("recorded walkthrough: full-width progress, captions, transcript tap-to-see
   page,
 }) => {
   const ids = await shownNoteIds(page);
-  expect(ids).toEqual(["old-faithful", "rushmore", "gateway-arch"]);
+  expect(ids).toEqual(["old-faithful"]);
   const id = "old-faithful";
 
   // 1. Stacked entry in view: hold so the layout reads on camera.

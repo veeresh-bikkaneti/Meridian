@@ -31,7 +31,7 @@ test("progress row is full-width (>=200px) and the controls fit without overflow
   page,
 }) => {
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
+  expect(ids.length).toBe(1);
   const id = ids[0]!;
   const video = await openEntry(page, id);
   await expectPlaying(video);

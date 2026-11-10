@@ -54,7 +54,7 @@ async function rectOf(locator: Locator): Promise<{ left: number; right: number; 
 
 test("play badge names the length and warns of sound", async ({ page }) => {
   const ids = await shownNoteIds(page);
-  expect(ids.length).toBe(3);
+  expect(ids.length).toBe(1);
   const playButton = page.getByTestId(`journal-play-${ids[0]!}`);
   await expect(playButton).toContainText("Watch the movie · 10 sec");
   await expect(playButton).toHaveAttribute(

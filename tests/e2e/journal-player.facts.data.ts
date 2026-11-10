@@ -26,27 +26,27 @@ export interface FixedEntry {
 export const FIXED_ENTRIES: FixedEntry[] = [
   {
     id: "alamo",
-    time: new Date(Date.UTC(2026, 9, 17, 20, 0, 0)),
+    time: new Date(Date.UTC(2026, 9, 16, 3, 30, 0)),
     cue: { start: 2.23, end: 4.53, text: "An old mission, from 1718." },
   },
   {
     id: "cadillac",
-    time: new Date(Date.UTC(2026, 9, 17, 22, 0, 0)),
+    time: new Date(Date.UTC(2026, 9, 16, 6, 0, 0)),
     cue: { start: 2.61, end: 4.61, text: "In winter, it catches the first sunrise!" },
   },
   {
     id: "joslyn",
-    time: new Date(Date.UTC(2026, 9, 17, 10, 0, 0)),
+    time: new Date(Date.UTC(2026, 9, 18, 0, 30, 0)),
     cue: { start: 2.86, end: 5.49, text: "Joslyn's museum stands right in Omaha." },
   },
   {
     id: "niagara",
-    time: new Date(Date.UTC(2026, 9, 17, 18, 0, 0)),
+    time: new Date(Date.UTC(2026, 9, 16, 3, 0, 0)),
     cue: { start: 2.86, end: 5.06, text: "They drop where New York meets Canada!" },
   },
   {
     id: "homestead",
-    time: new Date(Date.UTC(2026, 9, 16, 20, 0, 0)),
+    time: new Date(Date.UTC(2026, 9, 17, 13, 30, 0)),
     cue: { start: 2.89, end: 5.64, text: "One of the first claims, under the 1862 law." },
   },
 ];
@@ -91,7 +91,7 @@ export async function assertFixedEntry(page: Page, entry: FixedEntry): Promise<L
   await page.clock.install({ time });
   await loadHome(page, time);
   const ids = await shownNoteIds(page);
-  expect(ids, `${id}'s set is showing`).toContain(id);
+  expect(ids, `${id}'s window is showing`).toContain(id);
 
   const video = await openEntry(page, id);
   await expectPlaying(video);

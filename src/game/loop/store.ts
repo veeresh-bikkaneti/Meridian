@@ -790,8 +790,10 @@ function storageAvailable(): boolean {
 
 /**
  * Whether the loop screen was open when the tab last closed/reloaded.
- * Unchanged in the unlimited era: a mid-game reload reopens the screen
- * and the screen itself resumes-or-deals instead of day-keying.
+ * B7 (owner ruling, 2026-11-09): boot no longer reads this — a new
+ * session always lands on Home. The flag is still written on tap-in /
+ * leave, and the screen itself resumes-or-deals from the saved store
+ * when the player taps back in.
  */
 export function readLoopOpen(): boolean {
   if (!storageAvailable()) return false;

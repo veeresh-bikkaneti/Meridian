@@ -16,8 +16,8 @@ import path from "node:path";
  */
 
 export const APP = "http://127.0.0.1:4123/Meridian/";
-const WINDOW_MS = 7_200_000;
-const SET_COUNT = 36;
+const WINDOW_MS = 1_800_000;
+const ENTRY_COUNT = 106;
 
 const FIXTURE_MP4 = readFileSync(path.resolve("tests/e2e/fixtures/journal-player-test.mp4"));
 
@@ -117,14 +117,10 @@ export async function stubJournalMediaFixedClips(page: Page): Promise<void> {
   });
 }
 
-/** A fixed instant in a pure-triple window (index < 33), with its index. */
+/** A fixed instant, with its window index (B8: any window shows one entry). */
 export function fixedInstant(): { time: Date; index: number } {
-  let t = Date.UTC(2026, 9, 16, 12, 0, 0);
-  let index = Math.floor(t / WINDOW_MS) % SET_COUNT;
-  while (index >= 33) {
-    t += WINDOW_MS;
-    index = Math.floor(t / WINDOW_MS) % SET_COUNT;
-  }
+  const t = Date.UTC(2026, 9, 16, 12, 0, 0);
+  const index = Math.floor(t / WINDOW_MS) % ENTRY_COUNT;
   return { time: new Date(t), index };
 }
 
