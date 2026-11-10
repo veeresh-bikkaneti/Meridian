@@ -18,8 +18,8 @@ the branch.**
 of religion — 2026-11-07 religious list struck, pilgrimage category
 removed, sensitivity review narrowed to a tone review for historical
 content, P8 gaps five → four. The religions-epics and pilgrimage spec
-branches were deleted (religions-epics done; pilgrimage pending the
-council-manifest check). Mythology stays (separate category).
+branches were deleted (both gone from remote, verified 2026-11-10).
+Mythology stays (separate category).
 **Blocked (not by this branch):** every brief is PREPARED — AWAITING
 EDUCATOR SIGN-OFF (educator seat UNSTAFFED, no signer exists). P8: owner
 question — does the v4 listen-approval satisfy the v3 gate? P11: owner
