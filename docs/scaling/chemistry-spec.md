@@ -14,7 +14,7 @@
 
 ## Expert seats
 
-- **Scientist seat — VACANT (holder).** No physicist / chemist / general-scientist TOML exists in the installed persona packs (checked 2026-11-10; only data-scientist TOMLs, which do not fit). The seat's REQUIREMENTS stay: physics and chemistry only; the scientist writes and speaks in **children's language: simple words a 5th-grader follows**. Every script, clue, label, and host line must pass that test; a sentence a 5th-grader cannot follow is rewritten, not shipped. The holder is vacant, with the owner's three paths: (a) he names a human expert, (b) the coordinator finds and audits a candidate persona — nothing installs without his go-ahead, (c) carry as a recorded risk. Nothing in this spec is staffed.
+- **Scientist seat — HELD by Spatial Data Scientist (`spatial-data-scientist.toml`).** Owner decision 2026-11-10: use the available science persona since the content is public knowledge. Imperfect fit, disclosed: spatial statistics, not physics/chemistry — no physicist/chemist TOML exists in the packs (only data-scientist TOMLs). The seat's REQUIREMENTS stay: physics and chemistry only; the scientist writes and speaks in **children's language: simple words a 5th-grader follows**. Every script, clue, label, and host line must pass that test; a sentence a 5th-grader cannot follow is rewritten, not shipped.
 - **Educator seat — BLOCKED.** No named educator exists. The named human educator / SME (a science educator) must sign IN WRITING, before build: (1) the US-school scope answer (what chemistry is taught per band), (2) the chemistry topic map per band, (3) the judging rule for this subject, (4) the machine-verification gate, demonstrated on one complete mode. Until that signature is on file, this packet stays GATED. The scope question **cannot be answered by an agent's web search alone** — search grounds facts; it does not certify a curriculum. A web search that finds a standards document is evidence for the educator to sign — it is not the signature.
 - Five lenses also apply as usual: software architect, UI/UX designer, game developer, researcher, educator (blocked).
 
@@ -69,7 +69,7 @@ the coordinator does all git work and merging stays the owner's decision,
 per PR, per head.
 
 EXPERTISE REQUIRED: Software Architect, UI/UX Designer, Game Developer,
-Researcher, plus the SCIENTIST seat (VACANT holder — requirements stand:
+Researcher, plus the SCIENTIST seat (Spatial Data Scientist — requirements stand:
 physics and chemistry only) and the EDUCATOR seat (BLOCKED — no named
 educator exists; see gate below). The SCIENTIST must write and speak in
 CHILDREN'S LANGUAGE: simple words a 5th-grader follows, in every script,
