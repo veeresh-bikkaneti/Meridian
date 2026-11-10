@@ -11,7 +11,7 @@ modules. No behaviour change to the geography game. No educator sign-off.
 - [x] Slice 0 — spec file `docs/scaling/phase0-shell-split-spec.md` (head `34297527`).
 - [x] Slice 1 — pure helpers moved verbatim into `src/game/shell-helpers.ts`
       (head `2f0578e9`). Gates recorded in the spec slice log.
-- [x] Slice 2 — contract I1 registry.
+- [x] Slice 2 — contract I1 registry (head `5f73b05d`).
       - `selectReleased` keeps only `released === true`, `id` equal to the
         folder, a non-empty age-group list drawn from `7-10` / `10-18` / `18+`,
         a non-empty title, an array of units, and a `load` function.
