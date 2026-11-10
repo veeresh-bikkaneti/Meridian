@@ -436,6 +436,111 @@ test("U9 setSpeechMode: leaving tap for off drops the hold (Unit A: auto retains
 });
 
 /* ------------------------------------------------------------------ */
+/* Cure 3 — tap mode: the guess read is gesture-initiated speech.      */
+/* The host arms the player around its guessConfirmed dispatch; the    */
+/* refs enqueued inside the window are the guess read (name +          */
+/* suspicion) and must PLAY in tap mode — before the cure they         */
+/* resolved as skipped like ambient speech, so a confirmed guess in    */
+/* the owner's tap-mode configuration landed in silence.               */
+/* ------------------------------------------------------------------ */
+
+test("cure 3 tap mode: an armed guess read (name + suspicion) plays for real, in order, and drains once", async () => {
+  const { player, played, speaking } = modeHarness("tap");
+  // Unarmed, the shipped tap rule stands: suspicion resolves skipped.
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  await tick();
+  assert.deepEqual(played, []);
+  // Armed (the host's guessConfirmed window): the whole burst plays.
+  player.armGuessRead();
+  player.enqueue({ kind: "name", placeId: "geonames:323786" });
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  player.disarmGuessRead();
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/names/323786.mp3",
+    "/audio/detective/fixed/suspicion.mp3",
+  ]);
+  // Disarmed again: ambient refs are skipped as before.
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  await tick();
+  assert.equal(played.length, 2);
+  // The ladder is never left with a stuck speaker: the last
+  // speaking change is a drain.
+  assert.equal(speaking[speaking.length - 1], null);
+  player.dispose();
+});
+
+test("cure 3 tap mode: the sound gate still silences an armed guess read", async () => {
+  const { player, played } = modeHarness("tap", {
+    isSoundOn: () => false,
+  });
+  player.armGuessRead();
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  player.disarmGuessRead();
+  await tick();
+  assert.deepEqual(played, []); // gesture-initiated ≠ ungated
+  player.dispose();
+});
+
+test("cure 3 tap mode: a pick read never splices out a queued guess read", async () => {
+  // A slow first clip keeps the queue occupied: the guess read waits
+  // unstarted behind it while a NEW pick read arrives. The selection
+  // path's latest-wins splice may only remove a queued SELECTION
+  // item — the spent guess's suspicion must survive and play.
+  const played: string[] = [];
+  let releaseFirst: () => void = () => {};
+  const firstGate = new Promise<void>((r) => {
+    releaseFirst = r;
+  });
+  let first = true;
+  const player = createDetectiveSpeech({
+    caseIndex: 387,
+    speechMode: "tap",
+    loadManifest: async () => MANIFEST,
+    playClip: async (clip) => {
+      played.push(clip.url);
+      if (first) {
+        first = false;
+        await firstGate;
+      }
+    },
+    isSoundOn: () => true,
+    canAutoPlay: () => true,
+    onSpeakingChange: () => {},
+  });
+  player.enqueue({ kind: "name", placeId: "geonames:323786", selection: true });
+  await tick(); // the pick read is now playing (blocked on the gate)
+  player.armGuessRead();
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  player.disarmGuessRead();
+  // A second pick lands while suspicion is still queued.
+  player.enqueue({ kind: "name", placeId: "geonames:323786", selection: true });
+  releaseFirst();
+  await tick();
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/names/323786.mp3", // the first pick read
+    "/audio/detective/fixed/suspicion.mp3", // the guess read — NOT spliced
+    "/audio/detective/names/323786.mp3", // the second pick read
+  ]);
+  player.dispose();
+});
+
+test("cure 3 auto mode: arming changes nothing — the guess read plays as shipped", async () => {
+  const { player, played } = modeHarness("auto");
+  player.armGuessRead();
+  player.enqueue({ kind: "name", placeId: "geonames:323786" });
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  player.disarmGuessRead();
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/names/323786.mp3",
+    "/audio/detective/fixed/suspicion.mp3",
+  ]);
+  player.dispose();
+});
+
+/* ------------------------------------------------------------------ */
 /* Unit A — tap-Watson replay: retention + replay in auto mode         */
 /* ------------------------------------------------------------------ */
 

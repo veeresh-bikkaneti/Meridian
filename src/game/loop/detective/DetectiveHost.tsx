@@ -655,7 +655,17 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   useEffect(() => {
     if (!lastGuessPlaceId || lastGuessPlaceId === seenGuessRef.current) return;
     seenGuessRef.current = lastGuessPlaceId;
+    // PR 2a cure 3 (the tap-mode silent guess): the guess read this
+    // dispatch emits is the kid's own confirm tap made audible, so
+    // the player is armed for exactly this synchronous dispatch —
+    // every speak effect it produces is the guess read, and nothing
+    // else enqueues inside the window. In tap mode the armed refs
+    // play for real instead of resolving as skipped; the drain
+    // accounting is untouched (this dispatch's read drains through
+    // the ordinary onSpeakingChange path like any other).
+    playerRef.current?.armGuessRead();
     dispatch({ type: "guessConfirmed", placeId: lastGuessPlaceId });
+    playerRef.current?.disarmGuessRead();
     if (ringTimerRef.current) clearTimeout(ringTimerRef.current);
     ringTimerRef.current = setTimeout(() => {
       ringTimerRef.current = null;

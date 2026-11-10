@@ -39,7 +39,13 @@
  *   the tap-Watson control both call playHeldSequence() to play
  *   those held refs for real; the sound gate still applies at that
  *   play time, the read-aloud autoplay veto does NOT (a tap is the
- *   kid choosing to listen).
+ *   kid choosing to listen). Two kinds of speech are gesture-
+ *   initiated and play for real in tap mode for the same reason:
+ *   selection reads (the selecting tap) and guess reads (the
+ *   confirm tap — the host marks them via armGuessRead around its
+ *   guessConfirmed dispatch; PR 2a cure 3: before that marking, a
+ *   tap-mode guess read resolved as skipped like ambient speech,
+ *   so the reaction to a confirmed guess never sounded).
  * - "off": items resolve skipped and nothing is held.
  *
  * Retention happens at ENQUEUE time (Unit A), not play time: a clue
@@ -236,6 +242,18 @@ export interface DetectiveSpeechPlayer {
    * sequence from its first item (Unit A: an explicit repeat request
    * interrupts whatever is in flight). */
   playHeldSequence(): Promise<void>;
+  /** PR 2a cure 3: arm/disarm the guess-read window. The host arms
+   * immediately before dispatching guessConfirmed to the machine
+   * and disarms immediately after; every speak ref enqueued inside
+   * that synchronous window IS the guess read (the machine emits it
+   * as one burst: the guess's name where it was not just named,
+   * then suspicion). Marked refs play for real in "tap" mode — the
+   * confirm tap is the kid's own gesture, exactly like the
+   * selecting tap behind a selection read — instead of resolving
+   * as skipped. No observable effect in "auto" (everything plays)
+   * or "off" (nothing does). */
+  armGuessRead(): void;
+  disarmGuessRead(): void;
 }
 
 /** Is this ref part of a clue sequence — the chain the tap-mode hold
@@ -274,6 +292,16 @@ export function createDetectiveSpeech(
    * held for replay, and in "tap" mode they play for real (the
    * selecting tap is the gesture) instead of resolving as skipped. */
   const selectionItems = new WeakSet<SpeakRef>();
+  /* -- guess reads (PR 2a cure 3) ------------------------------------
+   * The same tap-mode treatment as selection reads — the confirm tap
+   * is the kid's gesture too — but a SEPARATE set: the selection
+   * path's latest-wins splice removes a queued selection item by
+   * set membership, and a guess already spent must never be spliced
+   * out by a later pick. Refs join this set only while the host's
+   * guess-read arm stands (armGuessRead), which brackets exactly
+   * the machine's guess-read burst. */
+  const guessItems = new WeakSet<SpeakRef>();
+  let guessReadArmed = false;
   /* -- U9 speech mode + clue-sequence hold (Unit A: auto too) ------- */
   let speechMode: SpeechMode = opts.speechMode ?? "auto";
   /** The most recent clue sequence, remembered in "tap" and "auto"
@@ -442,16 +470,18 @@ export function createDetectiveSpeech(
         // clue-sequence hold itself is recorded at enqueue time (see
         // enqueue below) — recordHeld here is the idempotent backstop
         // for a mode that flipped to "tap" mid-burst.
-        const isSelection = selectionItems.has(ref);
+        const isGesture =
+          selectionItems.has(ref) || guessItems.has(ref);
         if (speechMode === "off") continue;
-        if (speechMode === "tap" && !isSelection) {
+        if (speechMode === "tap" && !isGesture) {
           recordHeld(ref);
           continue;
         }
         // Gates at play time: sound off or the read-aloud preference
         // vetoes autoplay → the item is dropped, the queue moves on.
-        // A tap-mode selection read is user-initiated (like the held
-        // replay): the sound gate applies, the autoplay veto does not.
+        // A tap-mode gesture-initiated read (a pick read, a guess
+        // read, or the held replay) is the kid's own tap at work:
+        // the sound gate applies, the autoplay veto does not.
         if (!isSoundOn()) continue;
         if (speechMode === "auto" && !canAutoPlay()) continue;
         const manifest = await loadManifest();
@@ -580,8 +610,19 @@ export function createDetectiveSpeech(
       // replay restarts the complete chain, not just the clip in
       // flight. "off" mode holds nothing.
       if (speechMode !== "off") recordHeld(ref);
+      // PR 2a cure 3: refs enqueued while the host's guess-read arm
+      // stands are the guess read — mark them so tap mode plays
+      // them for real (the confirm tap is the kid's gesture). The
+      // mark is inert in the other modes (see armGuessRead).
+      if (guessReadArmed) guessItems.add(ref);
       queue.push(ref);
       kick();
+    },
+    armGuessRead(): void {
+      guessReadArmed = true;
+    },
+    disarmGuessRead(): void {
+      guessReadArmed = false;
     },
     setSpeechMode(mode: SpeechMode): void {
       if (mode === speechMode) return;
