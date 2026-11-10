@@ -1,0 +1,16 @@
+{
+  "note": "DRAFT host and on-screen lines. Owner copy: nothing here is approved wording. Reading-level check only.",
+  "maxGrade": { "7-10": 5, "10-18": 12, "18+": 16 },
+  "lines": [
+    { "id": "ttr:7-10:hook-1", "group": "7-10", "text": "The class trip has 24 children. Each bus has 6 seats." },
+    { "id": "ttr:7-10:hook-2", "group": "7-10", "text": "How many buses do we need? Tap a number." },
+    { "id": "ttr:7-10:see", "group": "7-10", "text": "Let us fill the first bus. 6, 12, 18, 24." },
+    { "id": "ttr:7-10:explain", "group": "7-10", "text": "Four buses with six seats each. That is 4 times 6." },
+    { "id": "ttr:7-10:praise", "group": "7-10", "text": "Nice work. Groups of the same size are what multiplying counts." },
+    { "id": "ttr:7-10:miss", "group": "7-10", "text": "Not quite yet. Let us count the seats bus by bus." },
+    { "id": "ttr:7-10:hint", "group": "7-10", "text": "Look at one bus. How many seats is that?" },
+    { "id": "ttr:10-18:hook", "group": "10-18", "text": "A floor needs 23 rows of 47 tiles. Guess first, then find the exact total." },
+    { "id": "ttr:10-18:explain", "group": "10-18", "text": "About 20 rows of 50 tiles is 1,000. The exact total should be close to that." },
+    { "id": "ttr:18+:hook", "group": "18+", "text": "Two quotes, 18 items at 47 and 22 items at 39. Which is cheaper, and by roughly how much?" }
+  ]
+}
