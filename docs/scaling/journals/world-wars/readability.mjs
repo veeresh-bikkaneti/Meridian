@@ -37,7 +37,7 @@ if (isMain) {
       ["retrieval", clip.retrieval.question, clip.group],
       ["elsewhere", clip.elsewhere.prompt, clip.group],
     ];
-    if (clip.adult) rows.push(["adult", clip.adult.prompt, "18+"]);
+    if (clip.stretch) rows.push(["stretch", clip.stretch.question, "18+"]);
     return rows;
   };
   let failed = 0;

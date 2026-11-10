@@ -31,7 +31,7 @@ Done:
 - [x] Cut the Christmas Truce (§7a religion) and the unsourced "letters home" draft. Logged in `clips.json`.
 - [x] Kept 2 PROPOSED clips: `school-morning` (7-10, 2026−1939=87, school at 5am, no train at the pin) and `quiet-hour` (10-18, 1939−1918=21).
 - [x] I5 rows, captions, transcripts, globe pins, Flat 2D pin described.
-- [x] 18+ question on `quiet-hour` only (teach no people-count). Not a third film.
+- [x] 18+ stretch on `quiet-hour` only (teach no people-count). Not a third film. Contract I5 `stretch`.
 - [x] K-12 §9 block and unsigned educator block in the spec.
 
 Open:

@@ -82,8 +82,10 @@ test("worked answers are the sourced arithmetic", () => {
   assert.equal(byId["quiet-hour"].predict.answer, "21");
   assert.equal(byId["quiet-hour"].retrieval.answer, "11");
   assert.equal(byId["quiet-hour"].elsewhere.answer, "20");
-  assert.equal(byId["quiet-hour"].adult.answer, "none");
-  assert.equal(byId["quiet-hour"].adult.standard, "UNVERIFIED");
+  assert.equal(byId["quiet-hour"].stretch.answer, "none");
+  assert.equal(byId["quiet-hour"].stretch.group, "18+");
+  const sources = fs.readFileSync(path.join(here, "sources.md"), "utf8");
+  assert.ok(sources.includes(byId["quiet-hour"].stretch.fact));
   const taught = childText(byId["school-morning"]) + " " + childText(byId["quiet-hour"]);
   assert.equal(/1\.5 million|800,000|3 million/.test(taught), false);
 });
@@ -102,6 +104,6 @@ test("child-facing lines sit at or below the band top grade", () => {
       assert.ok(grade(text) <= lim, `${clip.id} ${grade(text).toFixed(1)} > ${lim}: ${text}`);
     }
   }
-  const adult = data.clips.find((c) => c.adult);
-  assert.ok(grade(adult.adult.prompt) <= data.maxGrade["18+"]);
+  const stretch = data.clips.find((c) => c.stretch);
+  assert.ok(grade(stretch.stretch.question) <= data.maxGrade["18+"]);
 });

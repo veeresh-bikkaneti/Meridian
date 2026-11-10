@@ -123,13 +123,11 @@
         "answer": "20",
         "note": "Same subtraction, a trip. The ship, 1900, and 1920 are the game's key, not a voyage from this clearing."
       },
-      "adult": {
+      "stretch": {
         "group": "18+",
-        "standard": "UNVERIFIED",
-        "standardNote": "C3 pathways checked on 2026-11-10 stop at grade 12. This question is not given a 9–12 code.",
-        "prompt": "One page says more than a million people left the cities. Another says nearly three million. What count do you teach?",
+        "question": "One page says more than a million people left the cities. Another says nearly three million. What count do you teach?",
         "answer": "none",
-        "shownBy": "The player rejects both counts. The clip teaches the dates and the place only."
+        "fact": "evac-counts-conflict"
       },
       "buildsOn": "subtraction of whole numbers, including the school-morning year gap",
       "realLife": "finding how many years passed between two dated mornings",
@@ -146,7 +144,7 @@
         "The 5:45 signing time is a source fact and is not asked. The narration teaches 11 in the morning, when it went quiet.",
         "No who-won line, no signing table, no flags, no soldiers, no guns, no poppies, no monument. Poppies and stone memorials stay with the monuments journal.",
         "The 1940 reuse of this clearing is not mentioned to the player.",
-        "No count of people. See the adult question: the answer is none."
+        "No count of people. See the stretch question: the answer is none."
       ],
       "motion": "Full and Lite: the existing three.js globe, loaded with import(\"three\") inside the scene, flies to this lat/lon. Flat, Save-Data, and prefers-reduced-motion: a 2D pin at the same point, no swoop. Same question and the same answer on every tier."
     }

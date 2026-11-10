@@ -28,9 +28,9 @@ Also left out of every child-facing line: gas masks, bombs, soldiers, guns, a na
 | `school-morning` | 7-10 | subtraction | how many years ago | D2.His.2.3-5 |
 | `quiet-hour` | 10-18 | subtraction | how many years ago | D2.His.1.6-8 |
 
-Grade check: the 3–5 code matches 7-10 (grades 2–5). The 6–8 code matches 10-18 (grades 5–12). Grade 5 may sit in either group; the school-morning item stays in 7-10 because the work is one subtraction, not a formula. C3 pathways inspected on 2026-11-10 stop at grade 12, so the adult question is UNVERIFIED rather than given a 9–12 code.
+Grade check: the 3–5 code matches 7-10 (grades 2–5). The 6–8 code matches 10-18 (grades 5–12). Grade 5 may sit in either group; the school-morning item stays in 7-10 because the work is one subtraction, not a formula. C3 pathways inspected on 2026-11-10 stop at grade 12, so the 18+ stretch is UNVERIFIED rather than given a 9–12 code.
 
-**18+ is a question, not a third film.** The proposed count is 2. On `quiet-hour` only, an 18+ player is asked which people-count to teach. The answer is none. A 10-18 player does not see that question.
+**18+ is a stretch, not a third film.** Contract I5 allows one `stretch` for an older group on the same clip. On `quiet-hour` only, an 18+ player is asked which people-count to teach. The answer is none (`evac-counts-conflict` in `sources.md`). A 10-18 player does not see that question. The stretch has no C3 code of its own.
 
 **`school-morning` is the closest call.** The 7-10 narration does not say "war". The explain line does: "It was wartime. This clip shows the school, not the war." That is so the morning is not mistaken for an ordinary school day with no reason. An educator may still Fail rubric item 4 or 17a (children leaving home). Until then it stays, flagged. The narration says they met at school at 5 in the morning. It does not say a train was on this street.
 
@@ -96,9 +96,9 @@ K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
 - Why first (§0): unit opens with a real problem that needs the skill; "why does this matter?" answered in the first minute: [x] predict prompt before each clip
 - Headline goal (§0): bridge to the previous subject + playable real-life application: [x] buildsOn + realLife on each row
 - Use-it-elsewhere round in at least one other subject (cross-application web): [x] elsewhere on each row (geography)
-- Bands served: [x] 7-10 (school-morning), 10-18 (quiet-hour), 18+ (adult question on quiet-hour, not a third film). 7-10 has no algebra or trigonometry.
+- Bands served: [x] 7-10 (school-morning), 10-18 (quiet-hour), 18+ (stretch on quiet-hour, not a third film). 7-10 has no algebra or trigonometry.
 - Objective per item, observable verb, "shown by": [x]
-- Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [x] two C3 history codes checked 2026-11-10; adult question UNVERIFIED
+- Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [x] two C3 history codes checked 2026-11-10; 18+ stretch UNVERIFIED
 - Loop mapped: hook / predict / see / explain / retry: [x]
 - Mastery "confident" bar for this subject: [x] post-clip answer correct on the first try, no hint
 - Review-deck hookup (same deck, same ladder): [x] specified; not wired (Stage B)
