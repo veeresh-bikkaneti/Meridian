@@ -1,0 +1,57 @@
+# Holmes & Watson browser specs (every detective-* Playwright project).
+#
+# The main e2e job in node.js.yml runs a short fixed list and none of the
+# detective specs, so a green CI said nothing about them (PR 387 review,
+# 2026-11-10). This job runs them all on the PR head, and on main as the
+# baseline, so each failure can be read as new or already there.
+name: Detective e2e
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - "src/game/loop/detective/**"
+      - "src/components/storyteller*"
+      - "tests/e2e/detective*"
+      - "public/flags.json"
+      - "public/models/detective/**"
+      - "public/audio/detective/**"
+      - "playwright.config.ts"
+      - ".github/workflows/detective-e2e.yml"
+  workflow_dispatch:
+
+jobs:
+  detective:
+    timeout-minutes: 75
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        side: [ head, main ]
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ matrix.side == 'main' && 'main' || github.event.pull_request.head.sha || github.sha }}
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22.x
+        cache: 'npm'
+    - run: npm ci
+    - run: npx playwright install --with-deps chromium
+    - run: npm run build:pages
+    - name: Run every detective project
+      run: |
+        PROJECTS=$(grep -o 'name: "detective[^"]*"' playwright.config.ts | sed 's/name: "/--project=/; s/"$//' | tr '\n' ' ')
+        echo "projects: $PROJECTS"
+        PLAYWRIGHT_JSON_OUTPUT_NAME=detective-results.json \
+          npx playwright test $PROJECTS --workers=1 --reporter=line,json
+    - name: Upload results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: detective-e2e-${{ matrix.side }}
+        path: |
+          detective-results.json
+          playwright-report/
+          test-results/
+        retention-days: 7
