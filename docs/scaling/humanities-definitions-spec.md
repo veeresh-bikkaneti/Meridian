@@ -99,17 +99,25 @@ A partial landing reported honestly beats a false "done".
 
 ## §0.3 Verification block (for this spec)
 
-- [ ] Branch `feat/humanities-definitions` exists on the remote; HEAD
-  re-verified via `git ls-remote origin feat/humanities-definitions`.
-- [ ] `docs/scaling/humanities-definitions-spec.md` is the only file added
+- [x] Branch `feat/humanities-definitions` exists on the remote; HEAD
+  re-verified via `git ls-remote origin feat/humanities-definitions`
+  (see final commit SHA below).
+- [x] `docs/scaling/humanities-definitions-spec.md` is the only file added
   in the first commit; later commits add sections to the same file only
-  (plus the workspace-file corrections, which live outside the repo).
-- [ ] Every brief marked PREPARED — AWAITING EDUCATOR SIGN-OFF; the word
-  "approved" appears nowhere as a claim about any brief.
-- [ ] Every factual claim in §1–§6 has a source URL + access date or a
+  (plus `BRANCH_STATUS.md`, per the repo's branch convention, and the
+  workspace-file corrections, which live outside the repo).
+- [x] Every brief marked PREPARED — AWAITING EDUCATOR SIGN-OFF; the word
+  "approved" appears nowhere as a claim about any brief (checked by grep
+  on the final file: "approved" occurs only in "approved pilot pattern /
+  approved video" for the journal v4 keeper and "approved by the owner's
+  ear", never as an educator approval of a brief).
+- [x] Every factual claim in §1–§6 has a source URL + access date or a
   confidence level. Claims from the workspace docs cite the doc + section.
-- [ ] No code files touched. `git status` in the worktree shows only
-  `docs/scaling/humanities-definitions-spec.md` (modified/added).
+  Live sources accessed 2026-11-10: C3 Framework grades 3–5 planning
+  tool, National Archives Constitution transcription, NHTSA Child
+  Pedestrian Safety Curriculum, Common Sense Media kids'-news list.
+- [x] No code files touched. `git status` in the worktree shows only
+  `docs/scaling/humanities-definitions-spec.md` and `BRANCH_STATUS.md`.
 
 ---
 
@@ -911,7 +919,52 @@ neither has a written owner answer. They are carried here as
 
 ## §8. Stale-doc correction record (12 flags)
 
-*(To follow: commit 5, after the workspace-file edits.)*
+All 12 flags are from `meridian-scaling-spec-breakdown.md` §5 (and
+`meridian-scaling-lens-breakdown.md` §12). Each flag below states the
+corrected fact, where the stale text lived, what edit was made in place
+in the workspace files on 2026-11-10 (workstream 4), and what was
+deliberately NOT changed. Nothing was silently resolved; the original
+wording is preserved with a dated correction marker next to it — history
+is annotated, not rewritten.
+
+| # | Flag | Corrected fact (wins) | Workspace edit (2026-11-10) |
+|---|---|---|---|
+| 1 | Audience 5–7 | **5th grade and up only** (owner, 2026-11-07) | `meridian-platform-project-description.md`: correction banner added after the intro; the two Maths 5–7 rows in the §4 chart marked `[SUPERSEDED 2026-11-10]`. NOT changed: the §3 age-band table (5–7 / 8–10 / 11–13) — it describes what Meridian ALREADY does in code today, a verified code fact. The Maths 8–10 rows were not flagged stale by any source and were left alone. Also fixed in the scaling docs themselves: "8–10 and 16–18 ends" → "5th-grade and 16–18 ends" in `meridian-scaling-work-packets.md` (P1), `meridian-scaling-debate.md`, and `meridian-scaling-lens-breakdown.md` (P1 UI/UX lens). |
+| 2 | Math first band | **5th grade and up** (owner correction) | `meridian-end-to-end-study.md`: correction banner added at top; §9.6 Phase 1 row marked `[SUPERSEDED 2026-11-10]` in place. |
+| 3 | Progression timing | **Thin contract in Phase 0; full design after two games** (debate governs) | `meridian-end-to-end-study.md`: §9.6 Phase 4 row marked `[SUPERSEDED 2026-11-10]` in place; covered in the top banner. |
+| 4 | Quality process for new games | **Full verification law + 7-stage pipeline on every packet** (packets win) | `meridian-platform-project-description.md`: open question 8 marked `[RESOLVED 2026-11-10]` in place. |
+| 5 | Passport | **Thin contract in Phase 0** (debate + packets P2; owner confirmation still open, Q15) | `meridian-platform-project-description.md`: the §1 passport line and the progression line both marked `[CORRECTED 2026-11-10]` in place. |
+| 6 | Journal rotation | **1 entry per 30 minutes** (B8, PR #389 merged 2026-11-10; `JOURNAL_WINDOW_MS = 1_800_000`) | `meridian-end-to-end-study.md` §5 journal bullet marked `[SUPERSEDED 2026-11-10]`; `meridian-scaling-work-packets.md` P8 current-state line corrected in place (106 entries, 1 per 30 minutes, 53 hours) and the "36 set-movies" scope arithmetic struck. |
+| 7 | Journal pilot pattern | **v4 keeper** (`old-faithful-story-v4.mp4`, Magnus, owner's ear 2026-11-08) | `meridian-scaling-work-packets.md` P8: sources line now cites NOTE-v4; status, objective, pattern, limits, dependencies, acceptance criteria, scope-out, educator note, and gap #7 all corrected/annotated in place. The v3 pattern details are kept as a labelled historical record, not as the pattern to build on. The v3-vs-v4 gate question is recorded OPEN (§7, P8-1) — not resolved by this edit. |
+| 8 | Lazy-load acceptance (Q14) | **Decided by owner direction** (rewritten guardrail is a hard rule) | `meridian-scaling-work-packets.md` Q14 and `meridian-scaling-debate.md` Q14 both annotated `[CORRECTED 2026-11-10 — decided by direction, no written answer]`. NOT claimed as a written answer. |
+| 9 | Alert policy for new games | **Unassigned — no packet owns it** (study §10 Q7) | NO EDIT — there is no stale text to correct; this is a gap, not a wrong fact. Carried in §7 as an owner decision still needed before any subject's funnel types are defined. |
+| 10 | Family / social features | **Deliberately no packet** (COPPA decision must come first) | NO EDIT — no stale text to correct; deliberately omitted by the packets. Carried in §7. No packet may be written until the owner decides. |
+| 11 | Load-budget numbers | **Proposals, not measurements** (250 KB / 500 KB gzip) | NO EDIT — verified on 2026-11-10 that every occurrence already labels them "proposed" (debate lines 107, 331–332, 538–539; plan line 135; packets gap #9). No doc cites them as measured. This spec's §6.3 repeats the PROPOSED status. |
+| 12 | P11 revision-rule tension | **Rule-vs-decision conflict, not doc-vs-doc** ("All 3" pick vs revision rule) | NO EDIT — no stale text to correct; the tension is already recorded in packets P11 and spec-breakdown §5. Carried in §4.1 and §7 (Q16) as OPEN. |
+
+**Files edited in place (workspace, outside the repo):**
+
+- `~/workspace/meridian-platform-project-description.md` — banner + 2
+  superseded chart rows + Q8 resolved + 2 passport corrections.
+- `~/workspace/meridian-end-to-end-study.md` — banner + journal bullet +
+  Phase 1 row + Phase 4 row.
+- `~/workspace/meridian-scaling-work-packets.md` — sources line, P1
+  band ends, P8 status/objective/current-state/pattern/limits/scope
+  arithmetic/dependencies/acceptance/educator note/gap #7, Q14.
+- `~/workspace/meridian-scaling-debate.md` — age-band ends, Q14.
+- `~/workspace/meridian-scaling-lens-breakdown.md` — P1 band ends.
+- `~/workspace/meridian-scaling-plan.md` — checked: no stale fact stated
+  as current (its 5–7 mention is already a correction record). No edit.
+- `~/workspace/meridian-scaling-spec-breakdown.md` — the flag register
+  itself; no edit (it is the record these corrections implement).
+
+**Verification of the corrections (2026-11-10):** after the edits, a grep
+over `meridian-scaling-*.md` for `36 sets`, `2 hours`, `8–10 and 16–18`
+returns only correction markers and the breakdown docs' own flag records
+(which correctly quote the superseded wording as the thing superseded).
+A grep over the description and study for the superseded phrasings
+returns only the dated correction banners/markers. No remaining spot
+states a superseded fact as current.
 
 ---
 
