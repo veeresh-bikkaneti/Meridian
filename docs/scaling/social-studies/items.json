@@ -41,7 +41,7 @@
     "objective": "After this, a child in 7-10 can estimate and compare the areas of two regions by counting grid squares in rows, shown by choosing the larger region and the number of squares.",
     "standard": "UNVERIFIED",
     "why": "Two farmers each claim the bigger field. Counting every square one at a time is slow; counting rows of equal squares is quick.",
-    "buildsOn": ["social-studies:place:grid-reference", "math:M1"],
+    "buildsOn": ["social-studies:place:grid-reference", "math-number:groups:arrays", "math-applied:measure:area-tiles"],
     "useElsewhere": ["Math: area as rows times columns (multiplication)", "Economics: how many floor tiles or how much paint a room needs"]
   },
   {
@@ -50,7 +50,7 @@
     "objective": "After this, a child in 10-18 can compare how crowded two regions are by dividing a count of people by an area, shown by choosing the more crowded region and giving the rate.",
     "standard": "UNVERIFIED",
     "why": "Two towns each have a thousand people, but one fits inside a small valley and the other spreads across a plain. Which one needs more buses per street?",
-    "buildsOn": ["social-studies:region:area-by-squares", "math:M2"],
+    "buildsOn": ["social-studies:region:area-by-squares", "math-applied:rates:unit-rate"],
     "useElsewhere": ["Math: rates as division", "Economics: price per item, cost per person", "Chemistry: concentration as amount per volume (same idea, different setting)"]
   },
   {
@@ -68,7 +68,7 @@
     "objective": "After this, a child in 7-10 can find the distance between two places by counting how many scale-bar lengths fit along the route and multiplying, shown by entering the correct distance in whole units.",
     "standard": "UNVERIFIED",
     "why": "The class trip bus leaves at 9. The teacher wants to know how far it is from school to the museum, and the map only shows a little bar marked \"10 km\".",
-    "buildsOn": ["social-studies:place:grid-reference", "math:M1"],
+    "buildsOn": ["social-studies:place:grid-reference", "math-number:groups:equal-groups"],
     "useElsewhere": ["Math: equal groups, skip counting, multiplication", "Everyday life: how many blocks to the shop at 100 m each"]
   },
   {
@@ -86,7 +86,7 @@
     "objective": "After this, a child in 10-18 can convert a length measured on a map to a real distance using a ratio scale such as 1:50 000, shown by entering the correct distance in km.",
     "standard": "UNVERIFIED",
     "why": "Your hiking map shows the trail as 7 cm long. Is that a stroll or an all-day climb?",
-    "buildsOn": ["social-studies:route:count-the-steps", "math:M2", "math:M3"],
+    "buildsOn": ["social-studies:route:count-the-steps", "math-applied:geometry:scale-drawing", "math-applied:measure:convert-metric"],
     "useElsewhere": ["Math: ratios and proportional reasoning", "Physics: scale models and drawings", "Economics: unit price (price per kilo scales the same way)"]
   },
   {
@@ -95,7 +95,7 @@
     "objective": "After this, a child in 10-18 can solve time = distance / speed for a planned route, including rearranging it to find the speed or the distance, shown by the correct time on a clock and the correct departure time.",
     "standard": { "code": "CCSS.MATH.CONTENT.6.RP.A.3", "source": "Opening of the standard (use ratio and rate reasoning to solve real-world and mathematical problems) seen in https://ospi.k12.wa.us/sites/default/files/2022-12/mathstandards_grade6.pdf. Full text not fetched from corestandards.org (404 on 2026-11-10). Confidence MEDIUM." },
     "why": "A friend's train arrives at 3:40 and you live 90 km away. When must you leave, and how fast must you ride, to be there first?",
-    "buildsOn": ["social-studies:route:scale-ratio", "social-studies:route:trip-clock", "math:M4"],
+    "buildsOn": ["social-studies:route:scale-ratio", "social-studies:route:trip-clock", "math-applied:rates:constant-speed", "math-applied:rates:rearrange"],
     "useElsewhere": ["Physics: speed, velocity and motion graphs", "Economics: price x quantity, cost of a trip", "Environment: fuel used per trip"]
   },
   {
@@ -113,7 +113,7 @@
     "objective": "After this, a child in 10-18 can find the compass bearing from one place to another and split a trip into its north-south and east-west parts using sine and cosine, shown by the correct bearing and the two component distances.",
     "standard": "UNVERIFIED",
     "why": "A pilot must say which way to turn to reach an island 200 km away. Saying \"somewhere that way\" crashes planes.",
-    "buildsOn": ["social-studies:route:travel-time", "social-studies:place:latlon-pin", "math:M5"],
+    "buildsOn": ["social-studies:route:travel-time", "social-studies:place:latlon-pin", "math-applied:trig:bearings"],
     "useElsewhere": ["Math: right triangles, sine and cosine", "Physics: splitting a force or velocity into parts", "Everyday life: setting a safe ladder angle or ramp slope"]
   },
   {
@@ -140,8 +140,8 @@
     "objective": "After this, a child in 10-18 can work out the clock-time difference between two places from their positions east or west of each other, shown by the correct local time at the second place.",
     "standard": "UNVERIFIED",
     "why": "You want to call a cousin on the other side of the world at a time when both of you are awake. What time is it there when it is 8 pm here?",
-    "buildsOn": ["social-studies:place:latlon-pin", "math:M4"],
-    "useElsewhere": ["Math: addition and subtraction with a 24-hour cycle", "Physics: Earth turns about 15 degrees every hour (value to verify)", "Economics: when markets and shops open across the world"]
+    "buildsOn": ["social-studies:place:latlon-pin", "math-applied:measure:elapsed-time", "math-applied:rates:unit-rate"],
+    "useElsewhere": ["Math: addition and subtraction with a 24-hour cycle", "Physics: Earth turns 15 degrees every hour (360 / 24)", "Economics: when markets and shops open across the world"]
   },
   {
     "id": "social-studies:compare:trip-cost",

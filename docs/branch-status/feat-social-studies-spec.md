@@ -16,4 +16,4 @@ problem that needs the skill, then teaches it, then uses it in another subject.
 Waiting for the owner to lift the build gate. Plan: unit `route:count-the-steps`, `trip-clock`, `scale-ratio`, `travel-time` as a subject module (I1), `released: false`, Full/Lite/Flat, tests first, all AGENTS.md gates, screen recording.
 
 ## Open
-1. Build gate (owner). 2. Named educator sign-off. 3. Real math item ids for `buildsOn` (placeholders `math:M1..M5`). 4. Road rules/signs deferred. 5. Live sources for C3 and CCSS codes. 6. Counts PROPOSED.
+1. Build gate (owner). 2. Named educator sign-off. 3. Real math ids now in `buildsOn`; math-applied ids resolve only once `feat/math-spec` merges. 4. Road rules/signs deferred. 5. Live sources for C3 and CCSS codes. 6. Counts PROPOSED.
