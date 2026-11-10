@@ -323,6 +323,18 @@ this plainly) — do not claim it was.
    (eruptions, waterfalls, battles); a story with no visible verb is
    deferred to a later tier, not forced. Most existing entries are static
    places and forcing a movie onto each would be slow pans.
+   - **EXTENDED 2026-11-10 (owner, voice call) — the journal set must
+     include these categories:** historical places, mythological places,
+     religious-importance places like pilgrimages, famous spots, World
+     War monuments, great leaders, and freedom fighters. This EXTENDS
+     the 2026-11-07 list above — keep everything built, add on top. Both
+     lists stand in this brief. **Scope note:** the current 106 entries
+     (81 US + 25 global landmarks) are the BUILT set — these categories
+     are the expansion, not a rebuild. P8 stays GATED: no building, and
+     educator sign-off is needed before any of it is final. These
+     categories are scope definition only, not approval to build.
+     What is actually missing from the 106 is decided by the coverage
+     audit in §2.8 — not by this list alone.
 3. **Per-story verification checklist** — duration, full decode, video
    MD5 vs approved cut, frame checks, audio levels, bed-at-30%
    measurement, human listen check. Each check is a measurement with a
@@ -399,6 +411,58 @@ batch-size question for the owner; v3-vs-v4 gate question for the owner.
 Done when the acceptance criteria above are met, the process is written,
 the listen-verdict question is answered by the owner, and the educator
 sign-off is on file.
+
+### 2.8 Coverage verdict — what the 106 already has (audit 2026-11-10)
+
+Audited against the actual 106 on main `f37dea50`: sources
+`public/videos/journal-manifest.json` (106 movies) and
+`src/components/home-journal.data.ts` (id, place, story — verbatim).
+Full audit: `~/workspace/journal-106-coverage.md`. The verdict below is
+transcribed from that audit, not re-derived here.
+
+**COVERED — do not re-add:**
+
+- **Historical places:** Alamo, Homestead, Oregon Trail sites (Chimney
+  Rock, Scotts Bluff), Fort Robinson, Golden Spike, Colosseum, Giza,
+  Machu Picchu, Chichén Itzá, Stonehenge, Angkor, Petra, Timbuktu, and
+  more — already the bulk of the 106.
+- **Famous spots:** Eiffel, Taj Mahal, Statue of Liberty, Grand Canyon,
+  Niagara, Old Faithful, Golden Gate, Space Needle, White House,
+  Rushmore, Sydney Opera House, Great Pyramid, Denali, Victoria Falls,
+  Iguazú, Fuji, CN Tower, Neuschwanstein — already covered.
+
+**PARTIAL:**
+
+- **Religious importance:** sites YES (Sagrada Família, Fushimi Inari,
+  Potala, Angkor, Timbuktu, Christ the Redeemer, Alamo as former
+  mission). Pilgrimage destinations NO — no Mecca, Varanasi, Jerusalem,
+  Vatican, Bodh Gaya, Amritsar, Santiago.
+- **Mythology:** essentially missing — only Uluru (sacred to the Anangu)
+  and Robber's Cave (local legend) touch it. No Greek, Norse, Hindu or
+  other mythology entry.
+
+**MISSING entirely:**
+
+- **World War monuments:** none. Only borderline is Memorial Stadium,
+  named for Nebraskans lost in war, but the entry is about football —
+  not a monument. (SAC Museum is Cold War bombers/missiles, not WWII.)
+- **Great leaders:** no entry is about a leader. Closest is Rushmore's
+  four faces (entry is about the carving, not the men); Arbor Lodge
+  names J. Sterling Morton (Arbor Day founder).
+- **Freedom fighters:** nothing. Closest is one line on Crazy Horse's
+  death at Fort Robinson.
+
+> **RULE FOR P8 (binding on the expansion): only add what is NOT in
+> the 106.** The five gaps are: (1) World War monuments, (2) great
+> leaders, (3) freedom fighters, (4) pilgrimage destinations,
+> (5) mythology. Do NOT duplicate historical places or famous spots —
+> only add one of those if it fills a named gap (e.g. a WWII monument
+> that is also a famous spot counts as a monument, not as a famous
+> spot). The first batch (owner's choice, §2.6) is shaped by these five
+> gaps, not by re-covering what the 106 already has.
+
+P8 stays GATED (no building; educator sign-off before final). Everything
+else in this brief stands.
 
 ## §3. P10 — GK Trivia Quiz (option A)
 
