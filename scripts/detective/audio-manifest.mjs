@@ -14,7 +14,7 @@
  * textHash = sha256 hex of `voice|speed|gainDb|text`.
  */
 import { createHash } from "node:crypto";
-import { closeSync, existsSync, openSync, readFileSync, readSync, renameSync, statSync, writeFileSync } from "node:fs";
+import { closeSync, existsSync, openSync, readFileSync, readSync, readdirSync, renameSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { FIXED_LINES, VOICES, casePlan, displayName, selectionNamePlan } from "./render-plan.mjs";
 
@@ -25,10 +25,57 @@ export const NAMES_MIN_POPULATION = 500000;
 export const CAPITALS_INDEXES = Object.freeze(
   Array.from({ length: 110 }, (_, i) => 387 + i),
 );
-/** Core-deck case indexes: audio 0–386 (the default "All cases" deck). */
+/** Core-deck case indexes: audio 0–386 (the default "All cases" deck).
+ * The gate derives the set from disk (coreIndexesFromDisk) and a unit
+ * test pins this literal to that derivation, so neither can drift (#382). */
 export const CORE_INDEXES = Object.freeze(
   Array.from({ length: 387 }, (_, i) => i),
 );
+
+/**
+ * The core deck as the files on disk define it (#382): every case with
+ * a clue file in public/loop/clues/, minus the cases that belong to a
+ * pack (public/packs/<pack>/manifest.json loopIndexes). Sorted.
+ */
+export function coreIndexesFromDisk(root) {
+  const clueDir = join(root, "public/loop/clues");
+  const all = readdirSync(clueDir)
+    .map((f) => /^(\d+)\.json$/.exec(f)?.[1])
+    .filter((n) => n !== undefined)
+    .map(Number);
+  const packed = new Set();
+  const packsDir = join(root, "public/packs");
+  if (existsSync(packsDir)) {
+    for (const pack of readdirSync(packsDir)) {
+      const mf = join(packsDir, pack, "manifest.json");
+      if (!existsSync(mf)) continue;
+      for (const i of JSON.parse(readFileSync(mf, "utf8")).loopIndexes ?? []) packed.add(i);
+    }
+  }
+  return all.filter((i) => !packed.has(i)).sort((a, b) => a - b);
+}
+
+/**
+ * Render by-products that must never ship (#381): the pace ladder's
+ * scratch takes (e.g. clue-3.mp3.pace-best.mp3) and any other file in
+ * the audio tree that is not a plain .mp3 clip or the manifest.
+ * Returns the offending paths relative to the audio root.
+ */
+export function strayAudioFiles(root) {
+  const base = join(root, AUDIO_REL);
+  const out = [];
+  if (!existsSync(base)) return out;
+  const walk = (dir, rel) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const r = rel ? `${rel}/${e.name}` : e.name;
+      if (e.isDirectory()) walk(join(dir, e.name), r);
+      else if (r === "manifest.json") continue;
+      else if (!/^[^.]+\.mp3$/.test(e.name)) out.push(r);
+    }
+  };
+  walk(base, "");
+  return out.sort();
+}
 
 export function textHash({ voice, speed, gainDb, text }) {
   return createHash("sha256").update(`${voice}|${speed}|${gainDb}|${text}`).digest("hex");

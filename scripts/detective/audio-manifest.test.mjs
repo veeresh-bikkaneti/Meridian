@@ -265,3 +265,54 @@ test("audioFileProblem: empty, tiny and non-MP3 files are named; real clips pass
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+/* #379: a partial hold (1-4 of 5 clue reads on a held case) is pinned.
+ * A hold means "ships without full reads"; the reads it does carry are
+ * still hash-verified, so the gate accepts it rather than forcing a
+ * re-render or a deletion. Only a hold with all five reads contradicts. */
+test("coverage: a held core case with a partial set of reads (1-4) is accepted", async () => {
+  const { checkCoreCoverage: ccc } = await import("./audio-manifest.mjs");
+  const { root, clue } = fakeTree("A fine first clue.");
+  const manifest = manifestFor(root, clue);
+  manifest.coverage.coreHolds = [7];
+  for (const keep of [1, 2, 3, 4]) {
+    const m = structuredClone(manifest);
+    for (let k = keep; k < 5; k++) m.cases["7"].clues[k] = null;
+    assert.deepEqual(ccc(m, [7]), [], `partial hold with ${keep} read(s)`);
+  }
+});
+
+/* #382: the core literal is pinned to the case files on disk. */
+test("real tree: CORE_INDEXES equals the core deck derived from disk", async () => {
+  const { CORE_INDEXES, coreIndexesFromDisk } = await import("./audio-manifest.mjs");
+  const { fileURLToPath } = await import("node:url");
+  const realRoot = join(fileURLToPath(new URL(".", import.meta.url)), "..", "..");
+  assert.deepEqual(coreIndexesFromDisk(realRoot), [...CORE_INDEXES]);
+});
+
+/* #381: render scratch next to a clip is flagged; clean trees pass. */
+test("strayAudioFiles: names render scratch, ignores clips and the manifest", async () => {
+  const { strayAudioFiles } = await import("./audio-manifest.mjs");
+  const root = mkdtempSync(join(tmpdir(), "stray-"));
+  mkdirSync(join(root, "public/audio/detective/case-1"), { recursive: true });
+  writeFileSync(join(root, "public/audio/detective/manifest.json"), "{}");
+  writeFileSync(join(root, "public/audio/detective/case-1/clue-1.mp3"), fakeMp3(2048));
+  assert.deepEqual(strayAudioFiles(root), []);
+  writeFileSync(join(root, "public/audio/detective/case-1/clue-1.mp3.pace-best.mp3"), fakeMp3(2048));
+  assert.deepEqual(strayAudioFiles(root), ["case-1/clue-1.mp3.pace-best.mp3"]);
+});
+
+/* #378: the gate fails closed when renders exist but the manifest is gone. */
+test("gate: missing manifest with rendered case folders exits 2; an empty tree passes", async () => {
+  const { spawnSync } = await import("node:child_process");
+  const { fileURLToPath } = await import("node:url");
+  const gate = fileURLToPath(new URL("./check-audio-manifest.mjs", import.meta.url));
+  const empty = mkdtempSync(join(tmpdir(), "gate-empty-"));
+  assert.equal(spawnSync(process.execPath, [gate, "--root", empty]).status, 0);
+  const lost = mkdtempSync(join(tmpdir(), "gate-lost-"));
+  mkdirSync(join(lost, "public/audio/detective/case-3"), { recursive: true });
+  writeFileSync(join(lost, "public/audio/detective/case-3/clue-1.mp3"), fakeMp3(2048));
+  const r = spawnSync(process.execPath, [gate, "--root", lost], { encoding: "utf8" });
+  assert.equal(r.status, 2);
+  assert.match(r.stderr, /manifest\.json is missing/);
+});
