@@ -27,6 +27,12 @@ instead of re-inventing it 13 times. Each spec adds only its own deltas
 
 ---
 
+> **Mission (owner, 2026-11-10):** most children don't understand why they
+> learn multiplication, division, algebra and trigonometry. Meridian helps
+> them see the real application from an early age, across subject
+> boundaries. Every unit answers "why do I need this?" with a real problem
+> before it teaches the skill.
+
 ## 0. The headline goal: how subjects connect, and how they are applied
 
 Owner, 2026-11-10: "we want to teach them how they connect and applied."
@@ -42,6 +48,20 @@ This is the first objective of every unit, above its subject objective:
 - The application is **playable, not told**: ideally a three.js scene where the
   child uses the skill in a real setting (a ramp on a hillside, a mixture in a
   kitchen, a measurement on a river), with the Flat tier as a 2D equivalent.
+- **Why first.** Every unit opens with a real problem that needs the skill,
+  before any teaching, and answers "why does this matter?" within the first
+  minute. The skill arrives as the tool that solves the problem. Starting in
+  the `7-10` group, for example:
+  - multiplication and division: sharing snacks fairly, packing boxes, how
+    many buses a school trip needs, building with equal rows of bricks;
+  - fractions: cutting a pizza or a map into fair parts;
+  - algebra (10-18 and up): how long a trip takes, what to charge at a stall,
+    the missing number in a recipe scaled up;
+  - trigonometry (10-18 and up): how tall a tree or tower is from its shadow,
+    how steep a ramp is safe, which way a ship or plane must turn on the map.
+- **Think beyond the subject.** The opening problem may come from any area
+  (sport, travel, building, money, maps, weather); the subject label comes
+  last.
 - **Use it elsewhere.** Every unit has at least one round that applies its skill
   inside another subject (algebra in physics, economics and geography; physics
   in chemistry and the environment), from the cross-application web in
@@ -110,7 +130,8 @@ Every item that a child plays or watches carries one objective in this form:
 Every mode follows one loop. A spec that cannot map its play onto it is not
 ready:
 
-1. **Hook** — a 3–5 second question or mystery ("Which ramp wins?").
+1. **Hook: a real problem that needs the skill** — 3–5 seconds ("The class
+   needs buses for 92 kids. How many?"). This is the "why" (§0).
 2. **Predict / attempt** — the child commits an answer *before* seeing it
    (retrieval and prediction are where the learning happens).
 3. **See** — the world responds: the ball rolls, the pin lands, the number
@@ -301,6 +322,7 @@ These specs may be built by any capable coding agent. To keep cost low:
 
 ```
 K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+- Why first (§0): unit opens with a real problem that needs the skill; "why does this matter?" answered in the first minute: [ ]
 - Headline goal (§0): bridge to the previous subject + playable real-life application: [ ]
 - Use-it-elsewhere round in at least one other subject (cross-application web): [ ]
 - Bands served: [ ] and why

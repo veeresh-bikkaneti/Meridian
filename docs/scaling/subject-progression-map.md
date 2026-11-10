@@ -8,6 +8,12 @@ Owner, 2026-11-10: "each topic is related like math->physics->chem->biology and
 their application in real life. and these topic are related to environmental
 studies."
 
+> **Mission (owner, 2026-11-10):** most children don't understand why they
+> learn multiplication, division, algebra and trigonometry. Meridian helps
+> them see the real application from an early age, across subject
+> boundaries. Every unit answers "why do I need this?" with a real problem
+> before it teaches the skill.
+
 ## The headline goal
 
 Teach how the subjects connect and how they are applied (owner, 2026-11-10).
@@ -81,6 +87,8 @@ three.js scene (Flat tier: 2D equivalent).
 | Fractions and percentages (math) | Gear and lever ratios | Mixture strengths, concentration | Discounts, interest, sales tax, budgets | Share of land, population, map scale | Recipes, rainfall share |
 | Big numbers and estimation (math) | Distances, speeds of light and sound | Counting tiny particles | Prices, totals, large budgets | Populations, areas, distances on the globe | Ocean and desert sizes |
 | Algebra: rates and formulas (math, P4) | Speed = distance ÷ time, force and motion | Rates of reactions, amounts in a mix | Price × quantity, profit, break-even | Travel time between places, time zones | Fuel use on a trip, water use per day |
+| Multiplication and division (math, from 7-10) | Gear turns, speed × time | Doubling a recipe of a mixture | Price per item, change, splitting a bill | Buses for a trip, map scale | Sharing fairly, packing boxes, rows of bricks |
+| Trigonometry (math, 10-18 and up) | Ramp angles, forces on a slope | — | Roof and ramp building costs | Navigation bearings, heights of mountains and towers | Tree height from its shadow, safe ladder angle |
 | Graphs and data (math) | Motion graphs | Temperature vs state change | Price and sales over time | Climate charts, population over time | Weather charts |
 | Geometry and measurement (math) | Angles of ramps, levers | Volume of liquids | Area and cost of land or paint | Map scale, coordinates, routes | Building and home projects |
 | Forces and motion (physics) | — | Particles moving faster when heated | Transport and shipping costs | Rivers, landslides, erosion | Brakes, sport, bikes |

@@ -1,5 +1,11 @@
 # Branch prompts — one copy-paste prompt per branch, in priority order
 
+> **Mission (owner, 2026-11-10):** most children don't understand why they
+> learn multiplication, division, algebra and trigonometry. Meridian helps
+> them see the real application from an early age, across subject
+> boundaries. Every unit answers "why do I need this?" with a real problem
+> before it teaches the skill.
+
 Paste one block into any capable coding agent. Each block is self-contained;
 the shared rules live in `agent-instructions.md` so the prompts stay short.
 Until PR `claude/k12-plan-review` merges, the shared files are read from that
@@ -22,6 +28,9 @@ else is spec work only and stays GATED on a real educator's signed rubric.
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/phase0-shell-split; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: continue the Phase 0 shell split per docs/scaling/phase0-shell-split-spec.md
 on this branch (slice 1 is partial; game-app is ~8,472 lines). Split so each
@@ -41,6 +50,9 @@ Open or update a draft PR; never merge.
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Cut feat/age-groups from main; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: move src/game/age-profile/bands.ts from 5-7 / 8-10 / 11-13 to the owner's
 three groups 7-10 / 10-18 / 18+ (standard §1). Merge 5-7 and 8-10 into 7-10,
@@ -59,6 +71,9 @@ go before code. Draft PR only; never merge.
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map educator-gate-rubric; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/math-definition; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: finish docs/scaling/math-definition-spec.md. Add the standard's §9 block.
 For every mode in the topic map: one observable objective, its CCSS code with
@@ -80,6 +95,9 @@ Done = BRANCH_STATUS.md updated; report what the educator must sign.
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/math-spec; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: align docs/scaling/math-spec.md with the signed-to-be math definition:
 add the §9 block, point objectives and codes at the definition (no copies),
@@ -97,6 +115,9 @@ Spec only; no code. Update BRANCH_STATUS.md and report.
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/science-definitions; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: update science-definitions-spec.md and the P4/P6/P7 briefs. Add the §9
 block. Pick ONE first predict-then-see system for P7 (recommend ramps and
@@ -112,6 +133,9 @@ disclosed Spatial Data Scientist seat. Spec only. Update BRANCH_STATUS.md.
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/science-spec; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: recast the 24 proposed "videos" in docs/scaling/science-spec.md as
 interactive three.js predict-then-see scenes (the child changes something,
@@ -127,6 +151,9 @@ PROPOSED. No biology. Spec only. Update BRANCH_STATUS.md.
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/physics-spec; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: in docs/scaling/physics-spec.md add the §9 block, an objective and NGSS
 PS code per item, three.js scene descriptions with Full / Lite / Flat tiers,
@@ -140,6 +167,9 @@ mark it PROPOSED; never decided. Spec only. Update BRANCH_STATUS.md.
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/chemistry-spec; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: in docs/scaling/chemistry-spec.md add the §9 block, an objective and
 NGSS PS code per item, and a safety rule: combine-and-watch happens only on
@@ -154,6 +184,9 @@ PROPOSED. No biology. Spec only. Update BRANCH_STATUS.md.
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/journal-people-places-spec; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: in docs/scaling/journal-people-places-spec.md, for each of the 5
 proposed clips add: band, an objective, a C3 Geography or History code (live
@@ -166,7 +199,7 @@ globe fly-to that places the story on the map before the clip (Flat tier: a
 ## 9. `feat/journal-technology-spec` — spec only
 
 ```
-Same setup lines as prompt 8, branch feat/journal-technology-spec.
+Same setup and MISSION lines as prompt 8, branch feat/journal-technology-spec.
 Task: same additions as prompt 8 for its 3 proposed clips (objective, C3 code,
 retrieval check, captions, globe fly-to with Flat fallback). Keep 3 as PROPOSED.
 Spec only. Update BRANCH_STATUS.md.
@@ -178,6 +211,9 @@ Spec only. Update BRANCH_STATUS.md.
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/social-studies-spec; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: in docs/scaling/social-studies-spec.md add the §9 block and make the
 mode map-based on the existing geography engine (place, region, route,
@@ -189,7 +225,7 @@ Propose a count marked PROPOSED. Screen every item against the content rule
 ## 11. `feat/humanities-definitions` — spec only
 
 ```
-Same setup lines as prompt 10, branch feat/humanities-definitions.
+Same setup and MISSION lines as prompt 10, branch feat/humanities-definitions.
 Task: add the §9 block to humanities-definitions-spec.md; give each topic an
 objective and C3 code; confirm religion and mythology stay fully removed;
 screen every topic against the content rule (standard §7a) and log cut items
@@ -204,6 +240,9 @@ Owner ruled D2 on 2026-11-10 (standard §7a). One prompt, five branches:
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch <BRANCH>; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: screen docs/scaling/<FILE> against the content rule (standard §7a): no
 religion, no sexuality or gender identity topics, no current or contested
@@ -229,6 +268,9 @@ Update BRANCH_STATUS.md.
 Repo veeresh-bikkaneti/Meridian. First read, once:
 git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/general-knowledge-spec; push only that branch.
+MISSION: kids should see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Every unit opens with a real problem that needs the skill.
 
 Task: in docs/scaling/general-knowledge-spec.md add the §9 block and reframe
 general knowledge as a mixed review round that interleaves items the child has

@@ -1,5 +1,11 @@
 # Meridian scaling plan — K-12 review and priority order
 
+> **Mission (owner, 2026-11-10):** most children don't understand why they
+> learn multiplication, division, algebra and trigonometry. Meridian helps
+> them see the real application from an early age, across subject
+> boundaries. Every unit answers "why do I need this?" with a real problem
+> before it teaches the skill.
+
 **Date:** 2026-11-10 · **Branch:** `claude/k12-plan-review` (from `main` `2688d8b8`)
 **Status:** PROPOSED for owner review. Docs only; no feature code. Nothing here
 reverses an owner decision (religion, pilgrimage and mythology removed;

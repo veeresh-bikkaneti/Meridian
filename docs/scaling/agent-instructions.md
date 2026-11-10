@@ -4,6 +4,12 @@ Read this once per session. Every branch prompt in `branch-prompts.md` points
 here instead of repeating it, to save tokens. Written for any capable coding
 agent; no vendor or model is assumed.
 
+> **Mission (owner, 2026-11-10):** most children don't understand why they
+> learn multiplication, division, algebra and trigonometry. Meridian helps
+> them see the real application from an early age, across subject
+> boundaries. Every unit answers "why do I need this?" with a real problem
+> before it teaches the skill.
+
 ## Who decides
 
 - The owner (Veeresh) decides scope, priority and merges. You never merge,

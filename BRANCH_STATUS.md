@@ -14,7 +14,8 @@ sign-off checklist), `agent-instructions.md` (agent-neutral shared rules),
 `branch-prompts.md` (one copy-paste prompt per branch, in priority order),
 `subject-progression-map.md` (how subjects connect and apply). Owner rulings
 captured: D1 age groups 7-10 / 10-18 / 18+, D2 no controversial topics, D8 no
-biology (final). No code, no
+biology (final). Mission (owner): kids see why they learn each skill;
+every unit opens with a real problem that needs it ("why first"). No code, no
 spec branch edited, `AGENTS.md` not edited (model-neutral wording is proposed
 as its own eval-gated PR).
 **Status:** draft PR open for owner review. Code gates not run (no code

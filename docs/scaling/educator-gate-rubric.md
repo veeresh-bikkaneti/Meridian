@@ -47,6 +47,9 @@ subject, and date. Nothing about the signer is placed in the app.
 4b. Each unit has a "use it elsewhere" round that applies the skill inside
     another subject (for example algebra in physics or money), and the
     application is correct in that subject too.
+4c. Why first: each unit opens with a real problem that needs the skill and
+    answers "why does this matter?" within the first minute, at the group's
+    level (7-10 included).
 5. Each objective uses an observable verb and the game can actually see it.
 6. The child predicts or attempts before being told the answer.
 7. Feedback after a miss explains *why*, in band-level words, and is kind.
