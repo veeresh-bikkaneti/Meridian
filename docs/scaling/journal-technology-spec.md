@@ -1,146 +1,208 @@
 # Journal — Technology
 
-- **Topic:** Technology — how we learned to talk across distance and think with machines
-- **Status:** GATED (educator sign-off in writing — see § Educator gate)
-- **Branch (proposed):** `feat/journal-technology-spec`
-- **Proposed video count:** 3 — PROPOSED, pending owner approval. Never presented as decided.
-- **Sources consulted:** `~/workspace/journal-106-coverage.md` (audit 2026-11-10, main `f37dea50`); `~/workspace/journal-p8-candidates.md`; `~/workspace/meridian-scaling-lens-breakdown.md` §7 P8 (lines 1249–1424); live web search 2026-11-10 for every key fact below.
+- **Topic:** Technology: how people learned to talk across distance and compute with machines
+- **Status:** GATED. Stage A (spec and data) done 2026-11-10; Stage B (clips) waits for the owner to lift the build gate, and for a named human educator to sign `educator-gate-rubric.md`.
+- **Branch:** `feat/journal-technology-spec`
+- **Proposed clip count:** 3. PROPOSED, pending owner approval; never presented as decided.
+- **Clip data (contract I5):** `docs/scaling/journals/technology/clips.json`
+- **Fact ledger:** `docs/scaling/journals/technology/sources.md` (every fact with source, access date and confidence; conflicts and cuts logged)
+- **Draft captions and transcripts:** `docs/scaling/journals/technology/captions/*.vtt`, `docs/scaling/journals/technology/transcripts.md`
+- **Check:** `node docs/scaling/journals/technology/check-clips.mjs` (I5 keys, groups, ids, standard shape, coordinates, captions present, reading grade per group)
 
 ## Topic scope
 
-Three 10-second journal movies about communication and computing: the first phone call down a wire, the first phone call with no wire at all, and the first computers — machines so big they filled a room. Kid-level, world view, no US-heavy framing (the inventors happen to be in Scotland/America and the US; the story is what the machines did, not whose flag they carried).
+Three 10-second journal movies: the first telephone message down a wire
+(Boston, 1876), the first public call from a phone you could carry (New York
+City, 1973), and ENIAC, an early computer that took up a basement room
+(Philadelphia, 1946). The story is what the machines did, told as dated
+achievements in real places; no nation, company or person is praised or
+blamed.
 
 ## Why this is not in the 106
 
-The coverage audit's categories have no technology entry at all — the 106 is places, nature, monuments, and stories. Verified 2026-11-10 against the live manifest: none of phone, computers (or telephone, mobile, ENIAC) appears in the 106 manifest keys. These 3 are wholly new ground.
+The 106-clip journal covers places, nature, monuments and stories, with no
+technology entry. An earlier check against the live manifest (2026-11-10)
+found none of phone, telephone, mobile, computer or ENIAC among its keys.
 
-## Expert seats
+## Stage A results (2026-11-10)
 
-In addition to the five lenses (architect, UI/UX designer, game developer, researcher, educator):
+### Content screen (standard §7a)
 
-- **Technology seat: HISTORIAN (historian.toml).** Phones and computers evolution is history — same seat as world history (owner call 2026-11-10). No technology content work proceeds until the educator sign-off is on file.
-- **Educator seat: BLOCKED (no named educator exists).** See § Educator gate — the signer must approve, in writing, exactly the items listed there.
+| Clip | Religion / mythology | Sexuality or gender identity | Current or contested politics | Biology | Verdict |
+|---|---|---|---|---|---|
+| `technology:first-phone` | none | none | none. Credit for the telephone was argued in courts and by historians (S1). That is a historical credit question, not politics, but the clip avoids it by telling only what happened on 10 March 1876 and never says "invented". | none | **KEEP** |
+| `technology:mobile-phone` | none | none | none. The company rivalry (S2) is left out to keep the story on the machine. | none | **KEEP** |
+| `technology:eniac` | none | none | The machine is not contested. Its purpose was military: artillery range tables, and a first task of hydrogen-bomb calculations (S4). Weapons are a contested topic, so the purpose is never told or shown. The clip covers only size, place and year. One council seat would cut the clip (see Council); the owner may. | none | **KEEP, with the condition above** |
 
-## Diagrams flag (rule 6)
+Nothing was cut whole. Claims cut from the earlier draft (unsourced,
+conflicting or screened) are listed under "UNVERIFIED or cut" in
+`sources.md`. They are: sole credit for the telephone; "costing as much as a
+car"; "on a New York street"; a tower in the 1973 call; "bigger than your
+classroom"; "millions of times more powerful"; "glowing tubes"; ENIAC's
+cost (two sources conflict); and ENIAC's purpose.
 
-All 3 videos still use the **v4 recipe** (AI video-gen + Avocado TTS + ffmpeg) — the tech does not change. Treatment differences, flagged here:
+### Corrections to the earlier draft
 
-- **Early phone:** a simple on-screen diagram helps — a voice wave travelling down a wire from one room to another. Treatment: AI video-gen shows the wire and the wave as an animated line; no extra tooling. Flag for the historian seat to confirm the wave visual reads clearly at 1152x768.
-- **Cell phone:** a simple on-screen diagram helps — a phone sending invisible waves up to a tower, then down to another phone. Treatment: AI video-gen shows the tower and the arcs; no extra tooling. Flag for the historian seat to confirm the tower-and-arcs visual reads clearly.
-- **Computers:** a size-comparison visual helps — a room full of machine panels next to a small modern phone. Treatment: AI video-gen split-frame comparison; no extra tooling. Flag for the historian seat to confirm the comparison reads clearly and does not need a labelled diagram.
+- The DynaTAC numbers had mixed two phones. 9 in and 35 minutes describe the
+  1973 phone (S2), while 10 in and 30 minutes describe the 8000X (S3). The
+  8000X sale year is 1983 in S2 and 1984 in S3 (TO CONFIRM). None of these
+  numbers is narrated.
+- Bell's first message was sent from an attic in Boston (S1), not a
+  "laboratory". The two notebook versions of the sentence differ, so the clip
+  quotes only the shared opening, "Mr. Watson, come here".
+- ENIAC's completion year is 1945 in S5 and "by February 1946" in S4. Its
+  cost is $400,000 in S4 and $487,000 in S5. The clip says only "1946", the
+  year it was formally dedicated (S5) and that both sources agree on, and it
+  drops the cost.
+- The earlier draft named specific production tools and voices. This spec
+  points to the house recipe in `docs/journal-movies.md` instead and names no
+  vendor.
 
-No video in this spec needs a different pipeline. If the technology seat finds a diagram does NOT read in AI video-gen, that is a treatment question for the owner — not a tech change.
+### Clip data (contract I5; full rows in `clips.json`)
 
-## Video list (3, PROPOSED)
+| Field | `technology:first-phone` | `technology:mobile-phone` | `technology:eniac` |
+|---|---|---|---|
+| Group | 7-10 | 10-18 | 7-10 |
+| Objective (verb, shown by) | compute years ago (1876) and identify "down a wire", shown by correct taps | solve 1876 + x = 1973 and identify "no wire", shown by a correct x and tap | compute the room's floor area (50 × 30 = 1,500 sq ft) and compare computer size with a room, shown by a correct area and tap |
+| C3 code (live, S8) | D2.His.1.3-5 | D2.His.2.6-8 | D2.His.2.3-5 |
+| Math used (live, S9) | 4.NBT.B.4 | 6.EE.B.7 (algebra, so 10-18 only) | 4.MD.A.3, 4.NBT.B.5 |
+| Opening real question | How many years ago? (1876) | How many years apart? 1876 + x = 1973 | How much floor? 50 ft × 30 ft |
+| Retrieval check (read aloud, tap) | How did the voice travel? Down a wire | What did the 1973 phone not need? A wire | How big was ENIAC? It took up a big room |
+| Globe fly-to / Flat 2D pin | Boston 42.3603, −71.0578 (city level) | New York City 40.7128, −74.0061 (city level) | Univ. of Pennsylvania, Philadelphia 39.9523, −75.1906 |
+| Facts used: sourced / UNVERIFIED or cut | 7 / 3 | 7 / 5 | 8 / 5 (+ purpose screened out) |
 
-### 1. The first phone — "Mr. Watson, come here!"
-- **Kid hook:** Two rooms, one wire — and a man's voice travels through it for the very first time.
-- **Visible verb:** A voice wave rippling down a wire from one room to the next; a man picking up a receiver in surprise.
-- **Key facts:**
-  - Alexander Graham Bell was granted US Patent 174,465 for the telephone on 7 March 1876; three days later, on 10 March 1876, he made the first intelligible telephone call in his Boston laboratory: "Mr. Watson — come here — I want to see you." Source: https://scottishinventions.com/inventions/telephone — **HIGH**; corroborated by https://ethw.org/Telephone (IEEE Engineering and Technology History Wiki).
-  - Bell's device turned sound waves into electrical waves that travelled down a wire and were turned back into sound at the other end. Source: https://ethw.org/Telephone — **HIGH** (IEEE).
-- **Diagram note:** Voice-wave-down-a-wire diagram (see § Diagrams flag).
+Groups follow the grade of the math each clip uses (owner rule: tag by the
+standard's grade). No clip serves 18+ yet (open item O3). No 7-10 clip uses
+algebra or trigonometry, and `check-clips.mjs` fails if one does.
 
-### 2. The cell phone — a phone with no wire
-- **Kid hook:** A phone as heavy as a brick, costing as much as a car — and it was the first phone you could carry anywhere.
-- **Visible verb:** A man on a New York street holding a big brick phone to his ear; invisible waves rising to a tower.
-- **Key facts:**
-  - On 3 April 1973, Motorola engineer Martin Cooper made the first public handheld mobile phone call from a DynaTAC prototype on a New York street, calling Joel Engel at rival AT&T. Source: https://www.britannica.com/biography/Martin-Cooper — **HIGH** (Britannica).
-  - The first commercially available handheld cell phone, the Motorola DynaTAC 8000X, went on sale in 1983 for $3,995; it weighed 2.5 pounds (1.1 kg), was 9 inches tall, and gave about 30 minutes of talk per charge. Source: https://en.wikipedia.org/wiki/DynaTAC — **HIGH** (Wikipedia, corroborated by Britannica).
-- **Diagram note:** Phone-to-tower waves diagram (see § Diagrams flag).
+**Use it elsewhere (map, cross-application web):** subtraction on a
+timeline (history); a missing-number equation for a time span (algebra used
+in history, as in the map's "travel time" row); rectangle area for a real room
+(geometry used in building and home projects).
 
-### 3. Computers — a machine that filled a room
-- **Kid hook:** The first computers were bigger than your classroom — and a phone in your pocket today is millions of times more powerful.
-- **Visible verb:** A huge wall of humming panels with glowing tubes; the same wall shrinking down into a pocket phone.
-- **Key facts:**
-  - ENIAC, built at the University of Pennsylvania during World War II by John Mauchly, J. Presper Eckert Jr., and colleagues, was the first programmable general-purpose electronic digital computer; completed by February 1946, it cost the government $400,000. Source: https://www.britannica.com/technology/ENIAC — **HIGH** (Britannica).
-  - ENIAC filled a 50-by-30-foot basement, held about 18,000 vacuum tubes, and could do up to 5,000 additions per second — several orders of magnitude faster than any calculating machine before it. Source: https://www.britannica.com/technology/ENIAC — **HIGH** (Britannica).
-- **Diagram note:** Room-vs-pocket size comparison (see § Diagrams flag). The "millions of times more powerful" line is a rhetorical comparison, not a measured figure — **UNVERIFIED as a precise number**; the narration must say "far more powerful" or give no multiplier. Do not state a multiplier.
+### Motion tiers: same learning in Full, Lite and Flat
 
-## Agent prompt (copy-paste)
+The movie and its narration, captions, transcript, opening question,
+retrieval check and scoring are identical in every tier. Only the place
+reveal changes:
+
+| Tier | Place reveal |
+|---|---|
+| Full | The existing three.js globe (dynamic `import("three")`, as in `home-globe.tsx`) flies to the pin on the existing motion-token curves. |
+| Lite | The same globe, low-poly and capped, with a short cut to the pin instead of a camera swoop. |
+| Flat | A 2D map pin at the same coordinates with the same place name. With reduced motion, the movie shows its poster still until the player taps play, and the transcript is one tap away. Nothing flashes. |
+
+Wiring the fly-to into the journal player is code outside this branch's paths
+(integrator item I-2 in the branch status file).
+
+### Council record (design calls, 2026-11-10)
+
+Three seat perspectives were applied by the spec agent: an educator, a
+child-safety and content reviewer, and a historian of technology. There are no
+persona files, so this is a recorded design review, not a certification. Only
+a named human educator can sign the gate.
+
+| Call | Educator | Child-safety / content | Historian | Outcome |
+|---|---|---|---|---|
+| Keep all 3 clips? | Keep: each has a real number to work with. | Keep phone and mobile. ENIAC: cut, because its first task was weapons work, and "when in doubt, leave it out". | Keep: ENIAC is a milestone, and the purpose can be left out without misleading. | **Keep 3, 2–1 on ENIAC.** The purpose is never told or shown. The dissent goes to the owner (O2). |
+| Groups | Area and subtraction are grade 4, so 7-10. x + p = q is grade 6, so 10-18. | Fine. | Fine. | As in the table. 18+ is open (O3). |
+| "First" claims | Children remember "first". | Avoid credit disputes. | Say only what the source says: "first telephone message", "first public cell phone call", "an early computer". | Adopted. |
+| Modern-phone comparison | It helps the "why". | No issue. | No sourced figure, so no multiplier. | **Cut** for now (O5). |
+| Narration length | 21–23 words may not fit 8 s. | — | — | Keep. Measure in Stage B and cut, never rush. |
+
+### K-12 standard checklist (§9)
 
 ```
-You are the HISTORIAN seat for the Meridian journal expansion
-(technology: phones/computers evolution is history — historian.toml, owner
-call 2026-11-10). Work alongside
-the five lenses: architect, UI/UX designer, game developer, researcher,
-and educator (educator seat BLOCKED — no named educator; sign-off in
-writing is required before batch production — see the spec's Educator
-gate).
-
-EXPERTISE REQUIRED: history of technology for children aged 5th
-grade and up. You explain HOW a machine works in one kid-level line
-(a wave down a wire, waves to a tower, tubes that count) without
-inventing a mechanism or a number. You write narration only from the
-spec's sourced facts; you never invent a fact, a date, a quote, or a
-statistic. The "millions of times more powerful" multiplier is
-UNVERIFIED — never state a multiplier.
-
-DELIVERABLES (branch feat/journal-technology-spec):
-- 3 videos, 10 seconds each, one per entry in the spec. PROPOSED count —
-  pending owner approval.
-- Tech = v4 recipe: AI video-gen + Avocado TTS + ffmpeg. Storyteller
-  voice: Magnus (86–138 Hz). 1152x768, 24fps, h264 + AAC.
-  DIAGRAMS: each video may carry one simple on-screen diagram
-  (voice wave down a wire / phone-to-tower arcs / room-vs-pocket
-  size comparison), rendered as part of the AI video-gen clip — NO
-  change of pipeline, no extra tooling. Confirm each diagram reads
-  clearly at 1152x768 in the frame checks; if one does not read,
-  flag it as a treatment question for the owner, do not change tech.
-- Narration opens "Hey kids, have you heard about this place?" and is
-  drawn ONLY from the entry's sourced facts + what is visible on screen.
-  No invented facts. Bed at 30%. Limiter at −1 dB on any re-mix.
-  10 s fits ~8 s of speech — cut, never rush.
-- Tap-to-play, preload=none; movies stream on demand only, never
-  precached. Lazy-load law: video data loads only (a) when the user
-  taps play, or (b) in background prefetch while the user is playing.
-- Captions/VTT + a transcript per clip. Journal rotation: 1 entry per
-  30-minute clock window (JOURNAL_WINDOW_MS = 1_800_000, B8).
-- Sensitivity review is part of the brief: a story with facts right
-  and tone wrong is a failure. World view, not US-heavy: the story is
-  what the machines did for everyone, not whose flag they carried.
-  NO POLITICS anywhere.
-
-GATES (all must pass, in order): tsc → npm test → test:worker →
-lint-cards GATE PASSED → build:pages → Playwright E2E sequential
---workers=1 → panel review → educator sign-off in writing.
-
-VERIFICATION PROTOCOL (per clip, recorded numbers, not vibes):
-live web search grounds every fact (named site source + access date +
-confidence HIGH/MEDIUM/LOW; no source = UNVERIFIED, never asserted);
-duration check; full decode; video MD5 vs approved cut; frame checks
-(start, punchline beat, final frame — INCLUDING whether the diagram
-reads clearly); audio levels; bed-at-30% measurement; human listen
-check. VIDEO-AUDIO LAW: ffprobe must show an audio stream AND
-volumedetect must show non-silent audio in the playing segments — a
-silent video never ships.
+K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+- Why first (§0): each clip opens with a real number question before play: [x]
+- Headline goal (§0): bridge + real-life application: [x] as a journal (no unit chain); bridge noted per clip
+- Use-it-elsewhere round in another subject: [x] proposed (history timeline, history time span, building area); not built
+- Bands served: [x] 7-10 (2 clips), 10-18 (1 clip); 18+ none yet (O3)
+- Objective per item, observable verb, "shown by": [x] clips.json
+- Standards cited per item (C3, plus CCSS for the math): [x] live sources S8, S9
+- Loop mapped: hook (opening question) / predict (answer before play) / see (movie, pin) / explain (narration) / retry (one hint, then review deck): [x]
+- Mastery "confident" bar: journal = correct retrieval answer after the clip (standard §4): [x]
+- Review-deck hookup (same deck, same ladder): [ ] integrator-only (contracts I2 note)
+- Post-clip retrieval check: [x] one per clip, read aloud
+- Motion tiers: Full / Lite / Flat described, learning parity stated: [x]
+- Accessibility: captions + transcript drafts, tap answers, no timers, SR announcement of the pin: [x] drafted, not built
+- Privacy: no PII, no identifiers, local-only records: [x] nothing collected
+- Content screen (§7a) passed; cuts logged with reason: [x] sources.md
+- Free: no revenue features; asset licences recorded: [x] free; licences TO CONFIRM in Stage B
+- Educator rubric attached: [ ] not signed; no named educator yet
 ```
 
-## Educator gate — what the signer must approve (in writing)
+## Stage B (not started: build gate not lifted)
 
-The educator seat is BLOCKED — no named educator exists. Before batch production, a named human educator / SME must sign IN WRITING:
+Stage B starts only after the owner lifts the build gate for this branch. As
+of `origin/main` `8dee5bad` there is no record of a lift in the plan, in
+`branch-prompts.md` or in `integrator-runbook.md`. When it is lifted, the
+work is:
 
-1. The per-story production process (narration drawn only from sourced facts + what is visible).
-2. Technical correctness of all 3 entries (dates, patent, prices, sizes, speeds) — historian seat + educator.
-3. The on-screen diagrams: each one reads clearly to a 10-year-old at 1152x768 and teaches the mechanism correctly (wave down a wire; waves to a tower; room vs pocket).
-4. The "far more powerful" comparison in the computers clip (no unverified multiplier).
-5. Age-fit for 5th grade and up (language, concepts, and visuals a 10-year-old can follow without an adult explaining).
+1. Produce each kept clip with the house recipe (`docs/journal-movies.md`:
+   10 s, 1152×768, 24 fps, h264 + AAC, no on-screen text, storyteller
+   narration from this spec's sourced lines only) into
+   `public/videos/journals/technology/<clip>.mp4`.
+2. Copy and re-time the VTT drafts into `public/videos/journals/technology/`.
+3. Write `public/videos/journals/technology/manifest.json` from `clips.json`.
+   Never edit `public/videos/journal-manifest.json`.
+4. Run the recipe's verification on each clip (ffprobe, full decode, frames at
+   2, 6 and 9.5 s, audio levels, non-silent audio). Say plainly that no agent
+   can verify by ear; the owner's listen is the final check.
+
+## Educator gate: what the signer must approve (in writing)
+
+No named educator exists yet, so the seat is BLOCKED. A real, named human
+educator signs `docs/scaling/educator-gate-rubric.md` for this spec, covering
+the following:
+
+1. Every fact in `sources.md`, including the MEDIUM items (T3-3, T3-7) and
+   the 1946 wording (T3-U1).
+2. The group tags and the opening questions, including the year-dependent
+   answer (O6).
+3. The pictures read clearly and teach the right thing: a wave down a wire,
+   waves leaving a phone with no tower, and rows of panels in a basement room.
+4. The ENIAC content call (rubric 4 and 17a): purpose left out, nothing
+   graphic.
+5. Readability: `check-clips.mjs` FK grades are at or under the group limit
+   (heuristic, ±1).
+
+```
+EDUCATOR SIGN-OFF
+Spec: docs/scaling/journal-technology-spec.md @ [commit]
+Signer: [name], [role], [band(s)], [subject]
+Date: [YYYY-MM-DD]
+Result: Approved / Approved after fixes / Not approved
+Fixes: [list with owner]
+Signature (typed name is fine): [ ]
+```
 
 ## Open questions for the owner
 
-1. Approve the PROPOSED count of 3 videos (or a different number)?
-2. Technology seat: RESOLVED by owner call 2026-11-10 — historian.toml (phones/computers evolution is history).
-3. Name the educator / SME who signs the gate above.
-4. Unresolved v3-vs-v4 gate question (from §7 P8): the owner's ear approved v4's Magnus narration on 2026-11-08, but the written gate names a listen-verdict on v3. Does the v4 approval satisfy the gate, or is a fresh listen-verdict required?
-5. Batch size: 3 at once, or one pilot clip first (early phone) with a listen-verdict before the rest?
-6. Diagrams: if a diagram does not read clearly in AI video-gen, is a simpler treatment acceptable, or does the owner want a different diagram approach?
-7. Should the computers clip include a modern-phone comparison at all, or stay on ENIAC alone?
+- **O1** Approve the PROPOSED count of 3, or a different number?
+- **O2** ENIAC: keep it with its purpose left out (council 2–1), or cut it?
+- **O3** No clip serves 18+. Add a stretch question (for example, ENIAC's
+  5,000 additions a second (T3-5) turned into a count for one minute), or
+  accept journal coverage of 7-10 and 10-18 only?
+- **O4** Use the sourced extra numbers (35 minutes of talk, T2-4; 5,000
+  additions a second, T3-5) as follow-up questions, or keep one question per
+  clip?
+- **O5** Show any modern-phone comparison in the ENIAC clip? Only if a
+  sourced figure is found; none is stated now.
+- **O6** "How many years ago" depends on the current year (150 in 2026). The
+  player should work out the answer from the device's year, or the question
+  should give the year. This is a code decision for the integrator.
+- **O7** Name the educator who signs the gate.
+- **O8** Narration voice and listen check: is a fresh owner listen required
+  for these clips? (An earlier question asked whether a past approval carries
+  over.)
+- **O9** Pilot one clip first (first-phone), or make all 3 at once?
 
 ## Definition of done
 
-- [ ] Owner approves the proposed count (3) and names the technology seat-holder.
-- [ ] Educator/SME named and sign-off in writing on all 5 items in the Educator gate.
-- [ ] Listen-verdict question (v3 vs v4) answered by the owner.
-- [ ] Per-story production process written (pipeline: script from sourced facts only; voice direction; "Hey kids" opening; bed at 30%; video-discipline — never re-render approved video to add audio).
-- [ ] All 3 clips pass every gate above, with recorded verification numbers per clip.
-- [ ] All 3 diagrams verified to read clearly in the frame checks; v4 recipe unchanged — no tech change, no multiplier stated in the computers clip.
+- [x] Stage A: content screen, I5 data, sources, captions and transcript
+      drafts, council record, §9 checklist (this pass).
+- [ ] Owner approves the count (O1) and the ENIAC call (O2).
+- [ ] A named educator signs the rubric for this spec's commit.
+- [ ] Owner lifts the build gate; Stage B clips, manifest and verification
+      numbers per clip.
