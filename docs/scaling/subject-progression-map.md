@@ -66,6 +66,41 @@ science spec. Under this map it is not a separate subject: it appears as the
 environment link of physics and chemistry units. Whether it also gets its own
 units is an owner question.
 
+## Cross-application web — every skill used somewhere else
+
+Owner, 2026-11-10: "we need to teach how we apply each topic in another topic,
+like we learn algebra in phycis, encnomic, and several other studies."
+
+The chain above is the order skills are learned. The web below is where each
+skill is *used*. Every unit includes at least one **"use it elsewhere"** round:
+the same skill, applied inside another subject's setting, ideally a playable
+three.js scene (Flat tier: 2D equivalent).
+
+| Skill (where it is learned) | Used in physics | Used in chemistry | Used in economics and money | Used in geography and social studies | Used in environment and everyday life |
+|---|---|---|---|---|---|
+| Fractions and percentages (math) | Gear and lever ratios | Mixture strengths, concentration | Discounts, interest, sales tax, budgets | Share of land, population, map scale | Recipes, rainfall share |
+| Big numbers and estimation (math) | Distances, speeds of light and sound | Counting tiny particles | Prices, totals, large budgets | Populations, areas, distances on the globe | Ocean and desert sizes |
+| Algebra: rates and formulas (math, P4) | Speed = distance ÷ time, force and motion | Rates of reactions, amounts in a mix | Price × quantity, profit, break-even | Travel time between places, time zones | Fuel use on a trip, water use per day |
+| Graphs and data (math) | Motion graphs | Temperature vs state change | Price and sales over time | Climate charts, population over time | Weather charts |
+| Geometry and measurement (math) | Angles of ramps, levers | Volume of liquids | Area and cost of land or paint | Map scale, coordinates, routes | Building and home projects |
+| Forces and motion (physics) | — | Particles moving faster when heated | Transport and shipping costs | Rivers, landslides, erosion | Brakes, sport, bikes |
+| Energy (physics) | — | Heat in reactions | Energy bills and costs | Where power plants and dams are on the map | Wind and water turning turbines |
+| Light and sound (physics) | — | Colours of flames and materials | — | Day length and seasons across latitudes | Echoes, shadows, sundials |
+| States of matter (chemistry) | Heat as energy | — | Cost of keeping things cold or hot | Glaciers, sea ice, deserts | Cooking, freezing, drying clothes |
+| Dissolving and mixtures (chemistry) | Density, floating and sinking | — | Making and selling a drink by recipe | Salt seas and lakes on the globe | Clean water, sugar in tea |
+| Reactions and rust (chemistry) | Heat and energy released | — | Repair and replacement costs | Weathering of landmarks and rocks | Bikes left in the rain |
+
+**Economics here means everyday money and how trade works** (budgets, prices,
+interest, supply in a shop game), told as neutral facts and arithmetic. No
+policy debates, parties or contested economic views (content rule §7a).
+
+**How the round plays.** After a child masters a skill, the game deals a
+"use it elsewhere" card from the review deck: same skill, new setting (for
+example, the rate formula from math now times a ball on a ramp, then prices a
+lemonade stall). The card is scored like any round and counts toward mastery
+of the skill, so a skill is only fully Mastered once it has been used in at
+least two subjects.
+
 ## How it plays
 
 - **Unlock by skill, not by age.** A unit opens when its "builds on" skills are

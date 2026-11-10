@@ -44,6 +44,9 @@ subject, and date. Nothing about the signer is placed in the app.
 **B. Learning design**
 4a. Each unit shows how it connects to the subject before it and lets the
     child apply it in a real-life setting (standard §0).
+4b. Each unit has a "use it elsewhere" round that applies the skill inside
+    another subject (for example algebra in physics or money), and the
+    application is correct in that subject too.
 5. Each objective uses an observable verb and the game can actually see it.
 6. The child predicts or attempts before being told the answer.
 7. Feedback after a miss explains *why*, in band-level words, and is kind.

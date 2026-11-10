@@ -7,7 +7,9 @@ branch (the first line of every prompt does this).
 
 Every subject prompt below also carries the headline goal (standard §0): each
 unit gets a "Builds on / Real life / Environment link" entry from
-`subject-progression-map.md`, and its application is a playable scene.
+`subject-progression-map.md`, a playable application, and at least one "use it
+elsewhere" round from the map's cross-application web (for example, algebra
+used in physics, money and geography).
 
 Run them in this order. Items 1–2 are approved to build or define; everything
 else is spec work only and stays GATED on a real educator's signed rubric.

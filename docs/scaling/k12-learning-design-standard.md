@@ -42,8 +42,13 @@ This is the first objective of every unit, above its subject objective:
 - The application is **playable, not told**: ideally a three.js scene where the
   child uses the skill in a real setting (a ramp on a hillside, a mixture in a
   kitchen, a measurement on a river), with the Flat tier as a 2D equivalent.
-- The game sees it: the bridge and application rounds are scored like any other
-  round and feed the same mastery record.
+- **Use it elsewhere.** Every unit has at least one round that applies its skill
+  inside another subject (algebra in physics, economics and geography; physics
+  in chemistry and the environment), from the cross-application web in
+  `subject-progression-map.md`. A skill counts as fully Mastered only once it
+  has been used in at least two subjects.
+- The game sees it: the bridge, application and use-it-elsewhere rounds are
+  scored like any other round and feed the same mastery record.
 
 ## 1. Audience and age groups (owner ruling D1, 2026-11-10)
 
@@ -297,6 +302,7 @@ These specs may be built by any capable coding agent. To keep cost low:
 ```
 K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
 - Headline goal (§0): bridge to the previous subject + playable real-life application: [ ]
+- Use-it-elsewhere round in at least one other subject (cross-application web): [ ]
 - Bands served: [ ] and why
 - Objective per item, observable verb, "shown by": [ ]
 - Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [ ]

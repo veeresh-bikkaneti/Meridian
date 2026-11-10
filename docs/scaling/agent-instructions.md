@@ -40,8 +40,9 @@ agent; no vendor or model is assumed.
 9. The headline goal is teaching how subjects connect and how they are applied
    (standard §0, `subject-progression-map.md`): math → physics → chemistry
    with environmental studies as the thread. Every
-   unit has a bridge from the previous subject and a playable real-life
-   application, ideally a three.js scene.
+   unit has a bridge from the previous subject, a playable real-life
+   application, and at least one "use it elsewhere" round applying the skill in
+   another subject (cross-application web in the map), ideally a three.js scene.
 10. Counts marked "TO CONFIRM" stay unconfirmed; never invent a number.
 
 ## The learning bar
