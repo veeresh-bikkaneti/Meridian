@@ -10,13 +10,14 @@ import {
  * Shared data + assertions for the 5 Historian-blocked journal facts
  * (text head a7191e3e; audio meridian-media fix/journal-facts-5 @ 70b2e95).
  *
- * Set times: each entry's journal set is picked by floor(time / 2h) mod 36
- * (see src/components/home-journal.ts); the times below are the first
- * 2026-10-16/17 instants landing in each entry's set.
+ * Window times: each entry's 30-minute window is picked by
+ * floor(time / 30 min) mod 106 (see src/components/home-journal.ts);
+ * the times below are the first 2026-10-16/17/18 instants landing in
+ * each entry's window.
  */
 export interface FixedEntry {
   id: string;
-  /** UTC instant whose 2 h window shows this entry's set. */
+  /** UTC instant whose 30-minute window shows this entry. */
   time: Date;
   /** Corrected cue 2 (index 1): window + text. */
   cue: { start: number; end: number; text: string };

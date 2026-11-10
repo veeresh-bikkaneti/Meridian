@@ -1028,3 +1028,41 @@ worked and only the renders were missing.
 - **Files:** `tests/e2e/credits.desktop.spec.ts` + this capsule. Nothing else.
 - **Proof:** build:pages green · credits spec 5 consecutive passes by name · full CI six-file set green once · tsc clean · lint-cards GATE PASSED (numbers in the PR body).
 - **Merge:** NO MERGE without the owner's per-PR word. Once merged, PR #370 merges up and its red e2e check clears.
+
+
+---
+
+## CSP fix — journal media host (PR #388 follow-up, 2026-11-09, owner-ordered)
+
+- **Problem:** the journal clips live on meridian-media Pages
+  (`https://veeresh-bikkaneti.github.io/meridian-media/journal/`), but CSP
+  had no `veeresh-bikkaneti.github.io` in `media-src` or `connect-src` —
+  in production the player would show "This story's movie isn't ready
+  yet." and prefetch would silently warm nothing. Proven by the negative
+  controls below (not assumed).
+- **Fix:** added the host to BOTH directives in
+  `src/lib/security-headers.ts` AND `public/_headers` (drift test pins
+  them identical), plus the matching lines in `docs/security-headers.md`
+  (quotes the CSP verbatim) and a rationale bullet in the .ts CSP notes.
+- **Tests:** new unit test in `src/lib/security-headers.test.ts` asserts
+  both directives contain the host (src 2302 → 2303). New E2E
+  `tests/e2e/journal-player.csp.desktop.spec.ts` serves the app shell
+  with the real production CSP read from `public/_headers` and asserts
+  the Old Faithful movie's `currentTime` advances (0.54 s in the run).
+  Negative controls, both fail as designed: (1) old `_headers` restored
+  → spec fails at the CSP-contains-host assertion; (2) old CSP served
+  with the file fixed → the player shows "This story's movie isn't
+  ready yet.", no `<video>` mounts, spec fails at `openEntry`.
+- **Also:** `tests/e2e/journal-player.facts.data.ts` comment fixed to the
+  30-minute window / mod 106 (wording copied from the prefetch branch so
+  the merge stays clean). Pinned times untouched — they are the 2h-based
+  instants this branch's rotation uses; B8's times arrive with the
+  prefetch merge.
+- **Gates (this commit):** tsc 0; `npm test` scripts 1161/11 skipped/0,
+  src 2303/0; lint-cards GATE PASSED; `build:pages` ok; `test:worker`
+  145/0. E2E targeted player set 39/39 (38 + new CSP spec).
+  Logs: `~/workspace/journal-player-csp/`.
+- **Merge:** NO MERGE without the owner's per-PR word. This commit moves
+  the #388 tip; the old validator YES on `af7ec7c1` does not transfer.
+  Next: merge this tip into `feat/journal-prefetch` (#389) per the
+  owner's order.
