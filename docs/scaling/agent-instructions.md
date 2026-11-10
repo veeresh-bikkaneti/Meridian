@@ -18,7 +18,8 @@ agent; no vendor or model is assumed.
 ## Owner decisions you must not reverse
 
 1. Religion, pilgrimage and mythology are out of the plan entirely.
-2. No biology anywhere.
+2. Biology is in, except any topic on sexuality, sexual orientation or gender
+   identity, and human reproduction (owner, 2026-11-10; standard §7a).
 3. Scientist seat = Spatial Data Scientist persona, disclosed as an imperfect
    fit (spatial statistics, not physics/chemistry).
 4. Every spec is GATED until a real, named human educator signs
@@ -37,7 +38,7 @@ agent; no vendor or model is assumed.
    that challenges an adult, with copy that is smart, not childish.
 9. The headline goal is teaching how subjects connect and how they are applied
    (standard §0, `subject-progression-map.md`): math → physics → chemistry
-   (biology slot on hold), with environmental studies as the thread. Every
+   → biology, with environmental studies as the thread. Every
    unit has a bridge from the previous subject and a playable real-life
    application, ideally a three.js scene.
 10. Counts marked "TO CONFIRM" stay unconfirmed; never invent a number.

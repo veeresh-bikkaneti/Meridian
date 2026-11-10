@@ -82,7 +82,8 @@ Task: update science-definitions-spec.md and the P4/P6/P7 briefs. Add the §9
 block. Pick ONE first predict-then-see system for P7 (recommend ramps and
 friction) and define it as an interactive three.js scene with Full / Lite /
 Flat tiers, every cause-to-effect rule sourced. Give each item an objective and
-an NGSS physical-science code (no life-science codes; no biology). Keep the
+an NGSS code (life-science codes are allowed now; none on reproduction,
+sexuality or gender identity). Keep the
 disclosed Spatial Data Scientist seat. Spec only. Update BRANCH_STATUS.md.
 ```
 
@@ -98,7 +99,7 @@ interactive three.js predict-then-see scenes (the child changes something,
 predicts, then watches). Keep video only where real footage is the point.
 Add the §9 block, an objective and NGSS PS code per item (or UNVERIFIED), the
 motion tiers with learning parity, and the review-deck hookup. Keep 24 as
-PROPOSED. No biology. Spec only. Update BRANCH_STATUS.md.
+PROPOSED. Spec only. Update BRANCH_STATUS.md.
 ```
 
 ## 6. `feat/physics-spec` — spec only
@@ -126,6 +127,24 @@ NGSS PS code per item, and a safety rule: combine-and-watch happens only on
 screen and never reads as at-home instructions. Reuse the P7 predict-then-see
 engine (shared three.js scene shell, tiers, parity). Propose a count marked
 PROPOSED. Spec only. Update BRANCH_STATUS.md.
+```
+
+## 7b. `feat/biology-spec` (new branch) — spec only
+
+```
+Repo veeresh-bikkaneti/Meridian. First read, once:
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map biology-spec; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+Follow them. Cut branch feat/biology-spec from main; push only that branch.
+
+Task: move docs/scaling/biology-spec.md onto this branch and finish it. For
+each proposed unit (B1-B7): bridge from the chemistry or physics unit it builds
+on, a real-life and environment link, one observable objective, an NGSS LS code
+with a live source (or UNVERIFIED), and a playable three.js scene with Full /
+Lite / Flat tiers that reuses the predict-then-see engine and the home globe
+for habitats. Out of scope: sexuality, sexual orientation, gender identity and
+human reproduction (owner ruling); dissection or graphic imagery. Keep the
+count TO CONFIRM. Disclose the scientist seat as an imperfect fit. Spec only.
+Add BRANCH_STATUS.md and open a draft PR; never merge.
 ```
 
 ## 8. `feat/journal-people-places-spec` — spec only (first journal)

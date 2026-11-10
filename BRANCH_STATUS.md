@@ -11,7 +11,10 @@ for everyone (no revenue).
 table), `k12-learning-design-standard.md` (shared learning bar, incl. the
 house stack and theme to reuse), `educator-gate-rubric.md` (human educator
 sign-off checklist), `agent-instructions.md` (agent-neutral shared rules),
-`branch-prompts.md` (one copy-paste prompt per branch, in priority order). No code, no
+`branch-prompts.md` (one copy-paste prompt per branch, in priority order),
+`subject-progression-map.md` (how subjects connect and apply), `biology-spec.md`
+(new, GATED). Owner rulings captured: D1 audience 10+ and adults, D2 no
+controversial topics, D8 biology back except sexuality and gender identity. No code, no
 spec branch edited, `AGENTS.md` not edited (model-neutral wording is proposed
 as its own eval-gated PR).
 **Status:** draft PR open for owner review. Code gates not run (no code

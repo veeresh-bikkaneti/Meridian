@@ -2,7 +2,8 @@
 
 **Status:** PROPOSED (review branch `claude/k12-plan-review`). Owner approval is
 the per-PR merge word. Nothing here reverses an owner decision already made:
-religion, pilgrimage and mythology stay out; no biology anywhere; the scientist
+religion, pilgrimage and mythology stay out; biology is back except topics on
+sexuality and gender identity (owner, 2026-11-10); the scientist
 seat stays with the disclosed Spatial Data Scientist persona; every spec stays
 GATED on educator sign-off; only the math definition work and the Phase 0 split
 are approved to build.
@@ -96,8 +97,9 @@ Every item that a child plays or watches carries one objective in this form:
   verification protocol; no source = UNVERIFIED, never asserted):
   - Math: Common Core State Standards for Mathematics (already proposed in the
     math definition spec).
-  - Physics and chemistry: NGSS performance expectations (physical science only;
-    no life-science codes, per the no-biology rule).
+  - Physics, chemistry and biology: NGSS performance expectations (physical and
+    life science). Codes on reproduction, heredity and sexual development are
+    excluded (owner ruling, §7a).
   - Geography, history, social studies, journal stories: the C3 Framework
     (Geography and History dimensions) and, for geography, the National
     Geography Standards.

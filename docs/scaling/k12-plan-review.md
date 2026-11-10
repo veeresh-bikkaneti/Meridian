@@ -2,8 +2,9 @@
 
 **Date:** 2026-11-10 · **Branch:** `claude/k12-plan-review` (from `main` `2688d8b8`)
 **Status:** PROPOSED for owner review. Docs only; no feature code. Nothing here
-reverses an owner decision (religion, pilgrimage and mythology removed; no
-biology; scientist seat = disclosed Spatial Data Scientist; educator gate on
+reverses an owner decision (religion, pilgrimage and mythology removed;
+biology is back except topics on sexuality and gender identity, per the
+owner's 2026-11-10 ruling; scientist seat = disclosed Spatial Data Scientist; educator gate on
 every spec; only math definition work and the Phase 0 split approved to build).
 
 Companion files:
@@ -12,8 +13,8 @@ Companion files:
   an hour, without an educator persona.
 - `agent-instructions.md` — shared, agent-neutral rules every builder reads once.
 - `branch-prompts.md` — one copy-paste prompt per branch, in this priority order.
-- `subject-progression-map.md` — how math → physics → chemistry (biology slot
-  on hold) connect, with real-life use and environmental studies as the thread.
+- `subject-progression-map.md` — how math → physics → chemistry → biology
+  connect, with real-life use and environmental studies as the thread.
   **Headline goal (owner, 2026-11-10): teach how the subjects connect and how
   they are applied.**
 
@@ -103,7 +104,8 @@ the spec already flags this, and it still needs a decision before build.
 | ~~D2 (original options)~~ | What "no politics" means | (a) no historical political figures at all; (b) historical figures allowed with neutral, sourced facts only, no present-day parties, elections or living politicians' views | **(b)** — otherwise four journal specs cannot exist. |
 | **D3** | Host wrap-up format | (a) produced video clip every question (current rule); (b) real-time animated host scene by default, produced clips for journal stories only | **(b)** — same "short cartoon" feel, a fraction of the cost and size, works offline and on Flat tier. |
 | **D4** | Educator route | Find one volunteer teacher per subject group (math; science; humanities) to use the rubric | Start with math, since it is already approved to build. |
-| **D8** | Biology in the chain | The owner's tracker says no biology anywhere; his 2026-11-10 message names biology in the math → physics → chemistry → biology chain | Slot left empty in the map until the owner confirms. |
+| **D8 — RULED 2026-11-10** | Biology | Owner: "biology only related to LGBTQ is out of the plan." Biology is back; new `biology-spec.md` added, GATED. | — |
+| ~~D8 (original)~~ | Biology in the chain | The owner's tracker says no biology anywhere; his 2026-11-10 message names biology in the math → physics → chemistry → biology chain | Slot left empty in the map until the owner confirms. |
 | **D9** | Earth science | Its own units, or only as the environment link inside physics and chemistry | Environment link first (no new spec needed). |
 | **D7** | Live game's existing `5-7` and `8-10` bands | (a) keep them for the current geography game; (b) retire them to match the 10+ audience | Ask before any code change; no spec touches them. |
 | **D5** | Math build branch name | `feat/math-spec` or `feat/math-tricks` | Either; just pick before build. |
@@ -156,14 +158,15 @@ Ranked by what unblocks the most learning per unit of cost. Items marked
     wars, WWII monuments, great leaders, freedom fighters — each with objectives
     and retrieval checks.
 12. Chemistry P6 (shares the predict-then-see engine with P7 — build second).
+12b. Biology B1 (`biology-spec.md`, after chemistry in the chain; reuses the same engine and the globe for habitats).
 13. P4 algebra-physics (inherits math's judging and engine).
 14. General knowledge (lowest learning density; mostly recall).
 
 ### Parked
 
 - Tiny-model use (P9), any new under-10 content (owner ruling D1), earth science and
-  astronomy until the owner scopes it. Religion, mythology, pilgrimage and
-  biology stay out.
+  astronomy until the owner scopes it. Religion, mythology and pilgrimage stay
+  out; biology topics on sexuality and gender identity stay out.
 
 ## 6. Spec gap table — what each spec must add
 
@@ -189,6 +192,7 @@ Legend: **O** objectives · **S** standard codes · **R** retrieval check ·
 | Journal: world wars | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Apply §7a; remembrance tone. |
 | Journal: modern world | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Highest §7a risk; cut contested items. |
 | Journal: technology | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ | Low risk; good second journal. |
+| Biology (new, `biology-spec.md`) | ✓ | NGSS LS | n/a | ✗ | via standard | ✓ | ✓ | New; needs its own branch and educator sign-off. |
 | Phase 0 split (`feat/phase0-shell-split`) | n/a | n/a | n/a | n/a | n/a | sets chunks | ✓ | Approved; add the 3D chunk budget once measured. |
 
 Every spec's captions line counts as a start on **A**, not the full block.
