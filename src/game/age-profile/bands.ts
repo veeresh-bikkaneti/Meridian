@@ -14,8 +14,8 @@ export const AGE_BAND_IDS: AgeBandId[] = ["7-10", "10-18", "18+"];
 export const FULL_ACCESS_BAND: AgeBandId = "10-18";
 
 /**
- * Group table. Labels are the owner's words (2026-11-10). Description and
- * what-changes lines stay TODO(owner). Do not invent parent copy.
+ * Group table. Labels, descriptions and what-changes lines are the owner's
+ * approved copy (2026-11-10). Change them only with the owner's yes.
  * 7-10 numbers and loops are the previous 8-10 row (Duel stays off).
  * 10-18 keeps the previous 11-13 difficulty row. 18+ copies that row.
  */
@@ -25,8 +25,8 @@ export const AGE_BANDS: Record<AgeBandId, AgeBand> = {
     label: "Ages 7-10",
     ageMin: 7,
     ageMax: 10,
-    description: "TODO(owner): parent description for 7-10",
-    whatChanges: "TODO(owner): what-changes line for 7-10",
+    description: "Stories to read or hear, mysteries to solve, capitals to find.",
+    whatChanges: "📖 Read or listen · mysteries · free hints",
     rungCeiling: "wikitext",
     audioMode: "button",
     loops: [
@@ -55,8 +55,8 @@ export const AGE_BANDS: Record<AgeBandId, AgeBand> = {
     label: "Ages 10-18",
     ageMin: 10,
     ageMax: 18,
-    description: "TODO(owner): parent description for 10-18",
-    whatChanges: "TODO(owner): what-changes line for 10-18",
+    description: "The full game: every story, every mystery, head-to-head duels.",
+    whatChanges: "🗺️ The whole game · one hint per round",
     rungCeiling: "wikidata",
     audioMode: "off",
     loops: [
@@ -86,8 +86,8 @@ export const AGE_BANDS: Record<AgeBandId, AgeBand> = {
     label: "Ages 18+",
     ageMin: 18,
     ageMax: null,
-    description: "TODO(owner): parent description for 18+",
-    whatChanges: "TODO(owner): what-changes line for 18+",
+    description: "The full game with no hints.",
+    whatChanges: "🗺️ The whole game · no hints",
     rungCeiling: "wikidata",
     audioMode: "off",
     loops: [

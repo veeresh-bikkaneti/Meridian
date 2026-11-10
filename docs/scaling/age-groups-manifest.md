@@ -159,14 +159,12 @@ Review deck (`meridian:review-deck:v1`) and learning scores
 (`meridian:learning:v1`) do not store a band. Badge rows store id and time
 only. Those records are not rewritten.
 
-**Copy.** `label`, `description`, and `whatChanges` are owner copy.
-Placeholders only, never a new sentence:
+**Copy.** `label`, `description`, and `whatChanges` are owner copy,
+approved 2026-11-10. Change them only with the owner's yes.
 
-- `TODO(owner): label for 7-10`
-- `TODO(owner): label for 10-18`
-- `TODO(owner): label for 18+`
-- `TODO(owner): parent description for <group>`
-- `TODO(owner): what-changes line for <group>`
+- **Ages 7-10:** "Stories to read or hear, mysteries to solve, capitals to find." / "📖 Read or listen · mysteries · free hints"
+- **Ages 10-18:** "The full game: every story, every mystery, head-to-head duels." / "🗺️ The whole game · one hint per round"
+- **Ages 18+:** "The full game with no hints." / "🗺️ The whole game · no hints"
 
 The old names (Little Explorer, Trail Scout, GeoDetective) belonged to the
 old bands. They are not reused as the new labels.

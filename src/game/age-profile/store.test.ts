@@ -242,7 +242,7 @@ test("v2 legacy band and schemaVersion 3 are rejected; v1 18+ is not migrated", 
   );
 });
 
-test("owner labels, TODO copy, 7-10 loops, and the 11-13 difficulty row", () => {
+test("owner labels, owner copy, 7-10 loops, and the 11-13 difficulty row", () => {
   assert.equal(ageProfile.FULL_ACCESS_BAND, "10-18");
   const young = ageProfile.AGE_BANDS["7-10"];
   const mid = ageProfile.AGE_BANDS["10-18"];
@@ -251,12 +251,12 @@ test("owner labels, TODO copy, 7-10 loops, and the 11-13 difficulty row", () => 
   assert.equal(young.label, "Ages 7-10");
   assert.equal(mid.label, "Ages 10-18");
   assert.equal(adult.label, "Ages 18+");
-  assert.equal(young.description, "TODO(owner): parent description for 7-10");
-  assert.equal(mid.description, "TODO(owner): parent description for 10-18");
-  assert.equal(adult.description, "TODO(owner): parent description for 18+");
-  assert.equal(young.whatChanges, "TODO(owner): what-changes line for 7-10");
-  assert.equal(mid.whatChanges, "TODO(owner): what-changes line for 10-18");
-  assert.equal(adult.whatChanges, "TODO(owner): what-changes line for 18+");
+  assert.equal(young.description, "Stories to read or hear, mysteries to solve, capitals to find.");
+  assert.equal(mid.description, "The full game: every story, every mystery, head-to-head duels.");
+  assert.equal(adult.description, "The full game with no hints.");
+  assert.equal(young.whatChanges, "📖 Read or listen · mysteries · free hints");
+  assert.equal(mid.whatChanges, "🗺️ The whole game · one hint per round");
+  assert.equal(adult.whatChanges, "🗺️ The whole game · no hints");
   assert.ok(young.description.length <= 140);
   assert.ok(mid.description.length <= 140);
   assert.ok(adult.description.length <= 140);
