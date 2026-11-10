@@ -43,8 +43,10 @@ existing Explored/Growing/Mastered states. Replace the separate error-type deck
 with a filter on the existing review deck (src/game/review-deck.ts). Describe
 the play surface in Full / Lite / Flat motion tiers with learning parity.
 Then assemble the educator evidence pack (rubric section "Evidence pack") for
-Times Table Races so a real teacher can sign it. Keep 5th grade and up unless
-the owner rules D1. Docs only; no feature code.
+Times Table Races so a real teacher can sign it. Audience is 10 and up plus
+adults (standard §1): extend the band map with the proposed 14-18 band and an
+adult top tier (big-number tricks and Olympiad-style depth fit there).
+Docs only; no feature code.
 Done = BRANCH_STATUS.md updated; report what the educator must sign.
 ```
 
@@ -59,7 +61,7 @@ Task: align docs/scaling/math-spec.md with the signed-to-be math definition:
 add the §9 block, point objectives and codes at the definition (no copies),
 make the review deck reuse the existing deck, add the motion-tier play surface
 (three.js number line or ten-frame with a Flat SVG fallback), add the WCAG 2.2
-AA items (tap alternative for drags, no timers by default for younger bands,
+AA items (tap alternative for drags, timers optional and switchable off,
 screen-reader live region). Keep the video count TO CONFIRM. Record that the
 build branch name (feat/math-spec vs feat/math-tricks) awaits owner decision D5.
 Spec only; no code. Update BRANCH_STATUS.md and report.

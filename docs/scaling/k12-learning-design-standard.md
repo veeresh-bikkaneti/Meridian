@@ -26,26 +26,36 @@ instead of re-inventing it 13 times. Each spec adds only its own deltas
 
 ---
 
-## 1. Grade bands
+## 1. Audience and bands (owner ruling D1, 2026-11-10)
 
-**Reuse the bands `main` already has.** `src/game/age-profile/bands.ts` defines
-three bands as data — `5-7` "Little Explorer", `8-10` "Trail Scout", `11-13` —
-with read-aloud mode, tap-target size, timers (none below `11-13`), quiz length
-and map labels per band. New subjects add rows to that table; they do not
-invent a second band system. The parent-facing band strings are agreed copy
-and are not reworded.
+Owner, 2026-11-10: **"age 10 and above; adults can play too."** All new work
+targets ages 10 and up, roughly grade 5 through high school, and must also be
+fun for adults. Nothing new is made for under-10s.
 
-| Existing band | Grades (approx.) | What a new subject must respect |
+**Reuse the band system `main` already has.** `src/game/age-profile/bands.ts`
+defines bands as data (`5-7`, `8-10`, `11-13` today), with read-aloud mode,
+tap-target size, timers, quiz length and map labels per band. New subjects add
+rows to that table; they do not invent a second band system. Band labels and
+parent-facing strings are agreed copy: new labels are the owner's to name.
+
+| Band for new work | Grades (approx.) | What a new subject must respect |
 |---|---|---|
-| `5-7` Little Explorer | K–2 | Stories read aloud automatically; big targets; picture games first; no timers; text is a caption, never the only channel. |
-| `8-10` Trail Scout | 3–5 | Short sentences, everyday words; read-aloud available; tap, drag, simple number typing; no timers. |
-| `11-13` | 6–8 | Grade-level text; predict-then-test, multi-step tasks; timers allowed but optional. |
-| *proposed* `14-18` | 9–12 | Not in `bands.ts` yet. The specs already describe a 14–18 register (escape-room cases, labs, humour that is not childish). Adding the band is an owner decision (D1). |
+| `11-13` (existing; also serves 10-year-olds) | 5–8 | Grade-level text; read-aloud available; predict-then-test and multi-step tasks; timers optional. |
+| *proposed* `14-18` | 9–12 | Escape-room cases, labs, real challenge, humour that is not childish (the specs' existing 14–18 register). |
+| *proposed* adult / open | — | Same content at the hardest tiers; host narration optional and skippable; no "kids" framing in the play itself; scoring and leaderboards stay local (no accounts). |
 
-- Each spec states which bands it serves and why. The current subject specs say
-  "5th grade and up"; the owner's goal is K–12. That gap is an **open owner
-  decision** (see `k12-plan-review.md` §4, D1). Until the owner rules, specs keep
-  their stated band and do not widen it.
+Rules from the ruling:
+- New subject specs target `11-13` and up. The existing "5th grade and up"
+  scope in the math, science and journal specs already fits; keep it.
+- Adults are a real audience, not an afterthought: every mode needs a top
+  difficulty tier that challenges an adult, and copy that reads as smart, not
+  childish. The card voice stays warm.
+- The live game's existing `5-7` and `8-10` bands are not removed by any spec.
+  Whether to retire or keep them in the shipped game is a separate code change
+  and an open owner question.
+- Adding `14-18` and an adult row to `bands.ts` is a code change (Tier 2 under
+  AGENTS.md: `src/game/` data); specs describe them, the Phase 0 / math build
+  adds them.
 - Reading level is checked, not asserted: host lines and on-screen text are run
   through a readability formula (for example Flesch-Kincaid grade) and must sit
   at or below the band's top grade. The check is a script in CI, not a review
@@ -95,7 +105,7 @@ ready:
 - Reward mastery and effort, never time-on-app. Badges come from the existing
   mastery states (Explored / Growing / Mastered in `docs/learning-outcomes.md`),
   not from streak pressure.
-- No variable-ratio rewards, no loot boxes, no countdown pressure for K–5, no
+- No variable-ratio rewards, no loot boxes, countdowns only as an opt-in, no
   daily-login punishment, no "you'll lose your streak" nags. A streak may exist
   but never shames or resets in a way that feels like loss (the existing
   "a load failure must never reset a streak" rule stays).
@@ -199,8 +209,8 @@ text contrast ≥ 4.5:1, focus ring ≥ 3:1 on dark surfaces. Plus:
 - Every drag has a tap or keyboard alternative (WCAG 2.5.7). Every 3D control
   has a button equivalent; nothing requires precise pointer paths.
 - Colour is never the only signal (correct/incorrect also uses shape and sound).
-- No timers in the `5-7` and `8-10` bands (already the rule in `bands.ts`);
-  timers can be turned off in every band (WCAG 2.2.1).
+- Timers are optional and can be turned off in every band (WCAG 2.2.1); the
+  existing no-timer rule for the live game's `5-7` and `8-10` bands stays.
 - Screen-reader labels on every interactive element; the 3D canvas has a live
   region that announces what happened ("The ball rolled down the steep ramp
   first").

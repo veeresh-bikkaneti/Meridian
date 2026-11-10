@@ -13,7 +13,7 @@ the evidence pack; a human makes the call.
 
 ## Who can sign
 
-Any one of: a certified K–12 teacher (current or retired) for the band and
+Any one of: a certified grade 5–12 teacher (current or retired) for the band and
 subject; a school curriculum coordinator; a university education-faculty
 member. Free routes the owner can try: a volunteer teacher, a local school or
 district contact, a teacher-education program looking for practicum projects,
@@ -50,12 +50,15 @@ subject, and date. Nothing about the signer is placed in the app.
 
 **C. Child-appropriate engagement**
 10. Motivation comes from mastery and curiosity, not pressure (no shaming,
-    no streak-loss fear, no countdowns for K–5).
+    no streak-loss fear, countdowns only where optional).
 11. Session length suits the band.
 12. A child of the band can tell what to do just by looking (mockup check).
 
 **D. Access**
-13. Read-aloud and captions cover every prompt; a pre-reader can play K–2 items.
+13. Read-aloud and captions cover every prompt; a reader at the low end of
+    the band (age 10) can follow every item.
+13a. Audience fit (owner ruling D1): the item suits ages 10 and up and the top
+     tier still challenges an adult without feeling childish.
 14. Nothing requires fast reflexes or precise dragging to learn the content.
 15. Reduced-motion / Flat tier still teaches the same thing.
 

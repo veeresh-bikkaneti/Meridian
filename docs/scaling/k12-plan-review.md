@@ -34,7 +34,7 @@ the spec already flags this, and it still needs a decision before build.
 - Science: predict-then-see as the core verb, and the council's call that "a
   quiz with science words is not a science game".
 - `main` already ships a computable mastery rule, a Leitner-lite review deck and
-  a local-only privacy guarantee. That is the right foundation for K–12.
+  a local-only privacy guarantee. That is the right foundation for ages 10 to adult.
 
 ## 3. Top findings (in order of impact)
 
@@ -56,7 +56,7 @@ the spec already flags this, and it still needs a decision before build.
    → Science and physics items become interactive three.js scenes; video only
    where a real place or real footage is the point (§5).
 5. **No accessibility floor in any scaling spec.** Captions appear once each, but
-   there is no read-aloud rule for pre-readers, no tap alternative for drags, no
+   there is no read-aloud rule, no tap alternative for drags, no
    reduced-motion behaviour, no timer rule.
    → WCAG 2.2 AA block in the standard (§6), checked by axe in Playwright.
 6. **three.js and motion have no device plan.** The owner wants a rich 3D,
@@ -67,9 +67,9 @@ the spec already flags this, and it still needs a decision before build.
    persona exists, so everything is blocked indefinitely.
    → A written rubric any real teacher can complete with an agent-prepared
    evidence pack. The gate stays human; it just becomes passable.
-8. **"K–12" vs "5th grade and up".** The owner's goal is K–12, but every new
-   subject spec is 5th grade and up, and K–2 / 3–5 content is waiting on owner
-   question Q2. This is the biggest scope decision open (D1).
+8. **Audience was unclear: "K–12" vs "5th grade and up".** **Ruled 2026-11-10:**
+   ages 10 and up, adults welcome (standard §1). The new subject specs' 5th-and-up
+   scope fits; what was missing is a high-school band and an adult tier.
 9. **"No politics" collides with great leaders, freedom fighters, world wars and
    modern world.** These topics are political by nature. The rule needs a working
    definition so agents do not each guess (D2). **Ruled 2026-11-10** — see standard §7a.
@@ -85,7 +85,7 @@ the spec already flags this, and it still needs a decision before build.
     → Standard §5.1 lists the stack every agent must reuse; new libraries need
     the owner's word.
 12. **Per-question host video clips are the costliest part of the plan.** Each
-    question needs a produced clip; at K–12 scale that is thousands of clips,
+    question needs a produced clip; at full scale that is thousands of clips,
     heavy downloads on old devices, and high production cost for a free project.
     A real-time animated host scene costs far less (D3).
 
@@ -93,11 +93,13 @@ the spec already flags this, and it still needs a decision before build.
 
 | # | Decision | Options | Recommendation |
 |---|---|---|---|
-| **D1** | Bands for new subjects | (a) keep 5th+ for all new subjects; (b) add `5-7` and `8-10` tracks per subject now; (c) geography + journal serve the existing `5-7` / `8-10` / `11-13` bands now, new subjects start 5th+ and add younger bands later; plus, in every option, whether to add a `14-18` band to `bands.ts` | **(c)**, and add `14-18` when the first high-school content is signed — K–12 reach today through what already works. |
+| **D1 — RULED 2026-11-10** | Audience | Owner: "age 10 and above; adults can play too." Written as standard §1: new work targets `11-13`, a proposed `14-18` band and an adult tier; nothing new for under-10s. | — |
+| ~~D1 (original options)~~ | Bands for new subjects | (a) keep 5th+ for all new subjects; (b) add `5-7` and `8-10` tracks per subject now; (c) geography + journal serve the existing `5-7` / `8-10` / `11-13` bands now, new subjects start 5th+ and add younger bands later; plus, in every option, whether to add a `14-18` band to `bands.ts` | **(c)**, and add `14-18` when the first high-school content is signed — K–12 reach today through what already works. |
 | **D2 — RULED 2026-11-10** | What "no politics" means | Owner: no controversial topics (religion, sexuality and gender identity topics, current or contested world politics). Written as standard §7a: factual, neutral events, places, people and achievements only. | — |
 | ~~D2 (original options)~~ | What "no politics" means | (a) no historical political figures at all; (b) historical figures allowed with neutral, sourced facts only, no present-day parties, elections or living politicians' views | **(b)** — otherwise four journal specs cannot exist. |
 | **D3** | Host wrap-up format | (a) produced video clip every question (current rule); (b) real-time animated host scene by default, produced clips for journal stories only | **(b)** — same "short cartoon" feel, a fraction of the cost and size, works offline and on Flat tier. |
 | **D4** | Educator route | Find one volunteer teacher per subject group (math; science; humanities) to use the rubric | Start with math, since it is already approved to build. |
+| **D7** | Live game's existing `5-7` and `8-10` bands | (a) keep them for the current geography game; (b) retire them to match the 10+ audience | Ask before any code change; no spec touches them. |
 | **D5** | Math build branch name | `feat/math-spec` or `feat/math-tricks` | Either; just pick before build. |
 | **D6** | P8 journal pick | 3 or 6 entries | Pick after screening the candidates against §7a. |
 
@@ -128,29 +130,32 @@ Ranked by what unblocks the most learning per unit of cost. Items marked
 
 ### P1 — next (after the math sign-off)
 
-6. **Math v1 build** — Times Table Races on the quiz loop, with the verification
+6. **Add the `14-18` band and an adult tier to `bands.ts`** (Tier 2 code, with
+   the math build): data rows only, top difficulty tiers and skippable host
+   narration for adults.
+7. **Math v1 build** — Times Table Races on the quiz loop, with the verification
    gate, motion tiers and review-deck hookup. First new game; proves the
    pattern for every later subject.
-7. **Journal retrieval checks** — add one read-aloud check per existing journal
+8. **Journal retrieval checks** — add one read-aloud check per existing journal
    clip, feeding the review deck. Cheap (data rows, no new video) and turns 106
    existing stories into learning.
-8. **Science P7: one three.js predict-then-see system** (ramps and friction is a
+9. **Science P7: one three.js predict-then-see system** (ramps and friction is a
    good first pick: clear cause and effect, NGSS physical science, renders well
    on all three tiers). After the science educator signs.
 
 ### P2 — later (each after its own sign-off)
 
-9. Social studies (C3-aligned, map-based — reuses the geography engine).
-10. Journal specs, each screened against §7a: people & places, technology, modern world, world
+10. Social studies (C3-aligned, map-based — reuses the geography engine).
+11. Journal specs, each screened against §7a: people & places, technology, modern world, world
     wars, WWII monuments, great leaders, freedom fighters — each with objectives
     and retrieval checks.
-11. Chemistry P6 (shares the predict-then-see engine with P7 — build second).
-12. P4 algebra-physics (inherits math's judging and engine).
-13. General knowledge (lowest learning density; mostly recall).
+12. Chemistry P6 (shares the predict-then-see engine with P7 — build second).
+13. P4 algebra-physics (inherits math's judging and engine).
+14. General knowledge (lowest learning density; mostly recall).
 
 ### Parked
 
-- Tiny-model use (P9), 5–7 content in new subjects until D1, earth science and
+- Tiny-model use (P9), any new under-10 content (owner ruling D1), earth science and
   astronomy until the owner scopes it. Religion, mythology, pilgrimage and
   biology stay out.
 

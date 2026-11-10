@@ -32,7 +32,10 @@ agent; no vendor or model is assumed.
    History stays factual and neutral: events, places, people, achievements.
    When in doubt, leave it out. No invented facts — every key fact sourced with a
    confidence level, or marked UNVERIFIED and left out.
-8. Counts marked "TO CONFIRM" stay unconfirmed; never invent a number.
+8. Audience is ages 10 and up, and adults can play too (owner ruling D1,
+   standard §1). Make nothing new for under-10s; give every mode a top tier
+   that challenges an adult, with copy that is smart, not childish.
+9. Counts marked "TO CONFIRM" stay unconfirmed; never invent a number.
 
 ## The learning bar
 
