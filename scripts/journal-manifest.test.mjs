@@ -48,12 +48,12 @@ const VALIDATOR_STEP =
 const EXPECTED = {
   "unreadable-manifest": "manifest file exists and is readable",
   "invalid-json":
-    "parseable JSON object with keys baseUrl, movies, note, version",
+    "parseable JSON object with keys baseUrl, movies, version",
   "top-level-not-object": "top-level JSON object",
   "missing-top-key":
-    "all top-level keys present: baseUrl, movies, note, version",
+    "all top-level keys present: baseUrl, movies, version",
   "extra-top-key":
-    "exactly the top-level keys baseUrl, movies, note, version",
+    "exactly the top-level keys baseUrl, movies, version",
   "bad-base-url": `baseUrl exactly ${BASE_URL}`,
   "bad-version": "version === 1 (number)",
   "bad-note": "note is a non-empty string",
@@ -661,48 +661,28 @@ test("case 9: extra top-level key", () => {
   );
 });
 
-test("case 21: deleted top-level note", () => {
+test("case 21: top-level note absent validates clean", () => {
   withTempManifest(
     mutated((obj) => {
       delete obj.note;
     }),
     (manifestPath) => {
       const result = validate({ manifestPath, imagesDir: REAL_IMAGES });
-      assertExact(
-        result,
-        [err("missing-top-key", "note", "note", "absent")],
-        2,
-      );
+      assertExact(result, [], 0);
     },
   );
 });
 
-test("case 21b: top-level note empty", () => {
+test("case 21b: top-level note present is an extra key", () => {
   withTempManifest(
     mutated((obj) => {
-      obj.note = "";
+      obj.note = "stale";
     }),
     (manifestPath) => {
       const result = validate({ manifestPath, imagesDir: REAL_IMAGES });
       assertExact(
         result,
-        [err("empty-field", "note", "note", "")],
-        2,
-      );
-    },
-  );
-});
-
-test("case 21c: top-level note wrong type", () => {
-  withTempManifest(
-    mutated((obj) => {
-      obj.note = 42;
-    }),
-    (manifestPath) => {
-      const result = validate({ manifestPath, imagesDir: REAL_IMAGES });
-      assertExact(
-        result,
-        [err("bad-note", "note", "note", 42)],
+        [err("extra-top-key", "note", "note", "note")],
         2,
       );
     },

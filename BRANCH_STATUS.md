@@ -1,3 +1,26 @@
+# BRANCH_STATUS — fix/journal-manifest-note
+
+**Branch:** `fix/journal-manifest-note` · **Base:** main `9cf9e64f` (#388 + #389 merged)
+**Task:** Remove the stale top-level `note` from `public/videos/journal-manifest.json`
+("No player loads this file yet…" — written 2026-11-08 when no player existed;
+the #388 player merged 2026-11-10 loads the manifest on tap). Owner order on
+voice call 2026-11-10: "Remove it then."
+**Scope (synchronized, one change):** manifest JSON (drop the `note` key;
+106 per-entry `note` fields untouched) + `scripts/validate-journal-manifest.mjs`
+(top-level keys now exactly { baseUrl, movies, version }; top-level `note`
+check removed; per-entry `note` validation unchanged) +
+`scripts/journal-manifest.test.mjs` (case 21 rewritten: note-less manifest
+validates clean; new case 21b: a top-level note is now an extra key; old
+21b/21c removed; suite 133 → 132). The 30-minute / one-entry rotation (B8)
+is already live on main — verified in `src/components/home-journal.ts`
+(`JOURNAL_WINDOW_MS = 1_800_000`, singleton sets, 106 × 30 min = 53-hour
+cycle, wall-clock derivation, no server state); no rotation change in this PR.
+**Status:** edits landed; gates running. No panel verdict on this tip yet
+(not self-certified). Merge: owner's word only.
+**Assumption recorded:** no branch was assigned for this fix; this branch
+was cut from main `9cf9e64f` to carry it, and the PR is opened under the
+owner's standing "complete the work, open the PR, never merge" policy.
+
 # BRANCH_STATUS — feat/journal-prefetch
 
 **Branch:** `feat/journal-prefetch` · **Base:** current main `10e8121d` (PR #369 merged; was frozen main `f2bbf1a2`; stacked on player `feat/journal-player` @ `af7ec7c1`, which is a separate live branch)
