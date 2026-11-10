@@ -171,17 +171,12 @@ const LISTEN_PHASES: ReadonlySet<string> = new Set([
   "SEARCH_AREA",
 ]);
 
-/** Phases where the ENDING Listen button may show in tap speech
- * mode (PR 2b): the case is closed and its ending burst — win lines
- * + debrief, or the answer read + truce exchange — sits held in
- * the player waiting for the kid's tap. Disjoint from LISTEN_PHASES
- * by construction: a phase is mid-case or closed, never both. */
-const ENDING_LISTEN_PHASES: ReadonlySet<string> = new Set([
-  "CELEBRATE",
-  "DEBRIEF",
-  "FAIL_READ",
-  "TRUCE",
-]);
+/** The ending Listen's phases are deliberately NOT a phase set
+ * (PR 2b): after a win's DEBRIEF drains, the machine settles back
+ * to CASE_OPEN while the result card — and the kid's chance to
+ * hear the ending — is still on screen. The honest gate is the
+ * game's own status (the case is closed) plus the player actually
+ * holding an ending; showEndingListen below combines them. */
 
 interface StationAnchor {
   left: number;
@@ -1950,8 +1945,9 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   ) : null;
 
   /* Ending Listen button (PR 2b): the release surface for the
-   * tap-mode ending hold. Tap mode only, closed-case phases only,
-   * and only while the player actually holds an ending burst
+   * tap-mode ending hold. Tap mode only, closed cases only (the
+   * game's status, not a phase — see the note at the top), and
+   * only while the player actually holds an ending burst
    * (pairReactions on) — in auto mode the lines play live and no
    * button is offered; with the flag off nothing is held and the
    * endings behave exactly as shipped. It shares the clue Listen's
@@ -1964,10 +1960,10 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     degradation.speechMode === "tap" &&
     reactionsOn &&
     endingHeldCount > 0 &&
+    status !== "playing" &&
     !view.hidden &&
     !benchStage &&
-    stationReady &&
-    ENDING_LISTEN_PHASES.has(view.phase);
+    stationReady;
   const endingListenButton = (
     <button
       type="button"

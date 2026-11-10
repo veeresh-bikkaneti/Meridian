@@ -224,7 +224,7 @@ for (const w of WIDTHS) {
         await guessByEntryId(page, entry.id, misses[i]!);
         if (i < misses.length - 1) await waitForSearchIdle(page, 150_000);
       }
-      await waitForPhase(page, "POUT", 90_000);
+      await waitForPhase(page, "TRUCE", 90_000);
       await page.waitForTimeout(800);
       assertClosedWindow(await closedSamples(page), `FAIL ${w.name}`);
       await expect(page.getByTestId("detective-bench")).toHaveCount(0);

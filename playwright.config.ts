@@ -289,6 +289,18 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // PR 2b (session + moments): tap-mode endings released by the
+      // ending Listen (win + loss, 390 + a 1280 solve leg), the
+      // pairReactions kill-switch rest, session gating (bench +
+      // duet + announcement once per tab session; case 2 quiet with
+      // a stamp), and staging completion in tap mode and muted.
+      // The spec drives its own viewports; the project viewport is
+      // a default.
+      name: "detective-session",
+      testMatch: /detective-session\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },

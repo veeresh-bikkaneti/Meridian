@@ -28,8 +28,11 @@ import {
  * debrief-frame → the answer's name read → debrief-close.
  *
  * FAIL in 5 — five distinct misses burn every guess: Holmes reads the
- * case's answer aloud (case-137/answer.mp3) and the pair POUTs —
- * sticky: the host phase stays POUT across a ≥3 s window.
+ * case's answer aloud (case-137/answer.mp3), then the TRUCE exchange
+ * (PR 2b — Watson's assurance, then Holmes's reframe) and the pair
+ * rests in TRUCE — sticky: the host phase stays TRUCE across a ≥3 s
+ * window. (Named POUT before PR 2b; pairReactions is on by default,
+ * so the exchange plays in this spec's flag shape too.)
  *
  * Order assertions run on the play() record and are cross-checked
  * against the network request log.
@@ -177,7 +180,7 @@ test("WIN in 2: NOTE_MARK + ask-next after the miss, CELEBRATE, debrief in order
   }
 });
 
-test("FAIL in 5: the answer is read aloud and POUT holds ≥3 s", async ({
+test("FAIL in 5: the answer is read aloud, the truce exchange plays, TRUCE holds ≥3 s", async ({
   page,
   context,
 }) => {
@@ -208,7 +211,7 @@ test("FAIL in 5: the answer is read aloud and POUT holds ≥3 s", async ({
     } else {
       /* Zero-overlap audit, endings transitions (Silo QA gap N2):
        * the window opens as the final miss commits and samples
-       * every frame across SELECTION_READ → FAIL_READ → POUT —
+       * every frame across SELECTION_READ → FAIL_READ → TRUCE —
        * neither figure's painted box may touch clue-article leaf
        * text (0 px²). */
       failWindow = collectAuditWindow(page, 12_000);
@@ -225,9 +228,28 @@ test("FAIL in 5: the answer is read aloud and POUT holds ≥3 s", async ({
     );
   expect(requests.some((u) => u.includes("case-137/answer.mp3"))).toBe(true);
 
-  // POUT, sticky across a ≥3 s window: sample the phase every ~200 ms
-  // for 3.2 s — every sample after POUT is reached must stay POUT.
-  await waitForPhase(page, "POUT", 60_000);
+  // PR 2b: the truce exchange follows the answer — one Watson
+  // assurance draw, then one Holmes reframe draw, in that order.
+  // (The draws are random; the needles match the pool prefixes.)
+  await expect
+    .poll(() => detectivePlays(page), { timeout: 90_000 })
+    .toEqual(
+      expect.arrayContaining([
+        expect.stringMatching(/fixed\/truce-watson-\d\.mp3/),
+        expect.stringMatching(/fixed\/truce-holmes-\d\.mp3/),
+      ]),
+    );
+  const failPlays = await detectivePlays(page);
+  assertSubsequence(failPlays, [
+    "case-137/answer.mp3",
+    "fixed/truce-watson-",
+    "fixed/truce-holmes-",
+  ]);
+
+  // TRUCE, sticky across a ≥3 s window: sample the phase every
+  // ~200 ms for 3.2 s — every sample after TRUCE is reached must
+  // stay TRUCE.
+  await waitForPhase(page, "TRUCE", 60_000);
   const samples: Array<string | null> = [];
   const t0 = Date.now();
   while (Date.now() - t0 < 3200) {
@@ -235,13 +257,13 @@ test("FAIL in 5: the answer is read aloud and POUT holds ≥3 s", async ({
     await page.waitForTimeout(200);
   }
   console.log(
-    `[endings FAIL] POUT samples over 3.2 s: ${samples.length} samples, all POUT = ${samples.every((s) => s === "POUT")}`,
+    `[endings FAIL] TRUCE samples over 3.2 s: ${samples.length} samples, all TRUCE = ${samples.every((s) => s === "TRUCE")}`,
   );
   expect(samples.length).toBeGreaterThanOrEqual(10);
-  expect(samples.every((s) => s === "POUT")).toBe(true);
+  expect(samples.every((s) => s === "TRUCE")).toBe(true);
   const phaseLog = await readPhaseLog();
   expect(phaseLog.map((p) => p.phase)).toContain("FAIL_READ");
   console.log(`[endings FAIL] watchdogSeeks=${await watchdogSeeks(page)}`);
-  expect(failWindow, "the FAIL_READ→POUT audit window must have opened").not.toBeNull();
-  trail.absorb(await failWindow!, "FAIL fail-read→pout @ endings");
+  expect(failWindow, "the FAIL_READ→TRUCE audit window must have opened").not.toBeNull();
+  trail.absorb(await failWindow!, "FAIL fail-read→truce @ endings");
 });

@@ -65,16 +65,39 @@ Approvals: branch push + PR open are named in the brief; merge is NOT
 ## PR 2b build log
 
 - [x] Worktree + branch from `58de2f6d`; capsule written.
-- [ ] Probe: muted + tap-mode staging behaviour on the base build.
-- [ ] Item 1 — tap-mode ending speech (player hold + host Listen).
-- [ ] Item 2 — session gating (intro once per tab session; case 2+
-      page-turn + stamp; resume = announcement + clue re-read).
-- [ ] Item 3 — solve flush + closed-case speech guards; solve-at-2/3 pins.
-- [ ] Item 4 — truce (7 new renders, machine chain, TRUCE phase,
-      pennant behind `trucePennant` default false).
-- [ ] Item 5 — play-start staging completion (tap/off modes + later
-      cases); muted-phone cure per probe evidence.
-- [ ] Flags: `pairReactions` (ships ON) + `trucePennant` (default FALSE).
+- [x] Probe [measured, base build]: muted phone does NOT wedge
+      CASE_OPEN (phase exits in ~5 s in off mode) but staging stalls
+      at "standing" with the bench mounted — in BOTH muted and tap
+      modes — whenever play never touches the map (probe: search-box
+      guess spent, case at guess 2, stage still "standing", bench
+      element mounted). The stall is the item-5 defect in both modes.
+- [x] Item 1 — player ending hold + `playHeldEnding`; host ending
+      Listen (`detective-ending-listen`) in CELEBRATE/DEBRIEF/
+      FAIL_READ/TRUCE, strip-middle + fixed-wrapper forms. Built;
+      E2E pins below.
+- [x] Item 2 — `detective-session.ts` (sessionStorage, fail-open);
+      duet + bench only on the session's first case; "Case N" stamp
+      portal for fresh cases 2+; `shouldAnnounce` occasion shape
+      (first/resume/later), `ANNOUNCEMENT_SESSION_CAP` retired.
+- [x] Item 3 — `flushSpeech()` (no drain signal) + status-effect
+      wiring; machine clueUnlocked closed-case guard. LAW CHANGE:
+      clueUnlocked no longer exits TRUCE (an old U8 POUT exit;
+      production never used it — the host resets per case); exits
+      re-pinned to caseOpened. Solve-at-2/3 E2E pins below.
+- [x] Item 4 — 7 truce renders via the pipeline (manifest +7 entries
+      only; 7 drift re-renders restored byte-for-byte, VOICE
+      precedent). Two Watson takes flagged for the panel ear pass:
+      truce-watson-1 (108.1 Hz, inside family band) and
+      truce-watson-3 (130.6 Hz, outside the family band too; the
+      retry ladder moved it to speed 94 — manifest note says a
+      human ear check is required; cf. shipped flagged ack-3).
+      Machine TRUCE chain + truce/pennant poses built.
+- [x] Item 5 — play-start entry effect (tap/off modes + later cases;
+      auto + session-intro case keeps the shipped map-touch entry).
+- [x] Flags: `pairReactions` (ships ON) + `trucePennant` (default FALSE).
+- [ ] E2E: update endings + closed-state specs (POUT→TRUCE); new
+      session spec (endings win/loss in tap mode, session gating,
+      staging completion, muted completion, solve-at-2/3).
 - [ ] Gates on final tip + screenshots 390/768/1280.
 - [ ] Docs: geodetective.md · handbook ch10 · feature-flags.md · README.
 - [ ] PR opened against `feat/pivot-flank`; Silo QA re-key.
