@@ -36,6 +36,13 @@ import {
  *   only after the chain drains (the pending-slot law) — it is never
  *   injected into a live clue chain, and it still fires before its
  *   own guess is spent.
+ * - (c) A pick confirmed INSTANTLY — the confirm lands while the
+ *   place-name clip is still playing — keeps the guess's spoken
+ *   reaction: the pick read and the guess read are separate ladder
+ *   steps, the suspicion still plays after the name, and the case
+ *   continues (clue 2 arrives with its read chain). This is the
+ *   deferred-guess cure's end-to-end pin (the watson-walk phone-390
+ *   failure on the merge-up tip was this exact race).
  *
  * Speech is observed on the harness's play() record and the network
  * layer (detective-u10.ts), never on DOM state alone. The sandbox
@@ -212,4 +219,53 @@ test("(b) flank on: a pick made mid-clue-chain waits for the chain to drain (pen
   const beijingAt = plays.findIndex((u) => u.includes(BJ_CLIP));
   expect(clue2At).toBeGreaterThan(-1);
   expect(beijingAt).toBeGreaterThan(clue2At);
+});
+
+test("(c) a pick confirmed while its name clip is still playing keeps the guess reaction (suspicion still plays, case continues)", async ({
+  page,
+  context,
+}) => {
+  await fulfillFlagsOn(context);
+  await installDetectiveRecorder(context);
+  const requests = collectAudioRequests(page);
+  await openSeamCase(page, CASE);
+  await waitForSearchIdle(page);
+
+  const shanghai = entryByName("shanghai");
+  const NAME_CLIP = "names/1796236.mp3"; // Shanghai, China — has a clip.
+  const SUSPICION = "fixed/suspicion.mp3";
+
+  // The instant-confirm race: pick, then confirm in the same breath —
+  // no wait for the name clip to finish (a kid's natural one-tap move).
+  await pickOnly(page, shanghai.id, "Shanghai");
+  await page.getByRole("button", { name: "Guess this place" }).click();
+
+  // The guess reaction still plays: suspicion, AFTER the name clip.
+  await expect
+    .poll(
+      async () =>
+        (await detectiveOnly(page)).some((u) => u.includes(SUSPICION)),
+      { timeout: 90_000 },
+    )
+    .toBe(true);
+  const plays = await detectiveOnly(page);
+  const nameAt = plays.findIndex((u) => u.includes(NAME_CLIP));
+  const suspicionAt = plays.findIndex((u) => u.includes(SUSPICION));
+  expect(nameAt).toBeGreaterThan(-1);
+  expect(suspicionAt).toBeGreaterThan(nameAt);
+  expect(requests.some((u) => u.includes(SUSPICION))).toBe(true);
+  // The name is never read twice.
+  expect(plays.filter((u) => u.includes(NAME_CLIP))).toHaveLength(1);
+
+  // The case continues normally: clue 2 arrives with its read chain.
+  await expect(page.getByText(/Guess 2 of/).first()).toBeVisible();
+  await expect
+    .poll(
+      async () =>
+        (await detectiveOnly(page)).some((u) =>
+          u.includes(`case-${CASE}/clue-2.mp3`),
+        ),
+      { timeout: 120_000 },
+    )
+    .toBe(true);
 });
