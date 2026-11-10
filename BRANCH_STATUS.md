@@ -2,7 +2,7 @@
 
 **Branch:** `feat/journal-prefetch` · **Base:** `feat/journal-player` @ `af7ec7c1` (stacked on movies `84fa3a0a`, frozen main `f2bbf1a2`)
 **Task:** Meridian lazy-load scenario 2 — background prefetch of journal movies WHILE the user is playing the game. Tap-to-load stays the primary path.
-**Status:** Rebased onto player head `af7ec7c1` (new tip `e920d64f`); re-verified on the new head — tsc 0, npm test scripts 1161/0/11 skipped + src 2322/0/0, test:worker 145/0, lint-cards GATE PASSED, build:pages green (buildId `e920d64f`); E2E union **97 passed / 0 failed** (22.6 min, 24 specs, :199 passes by name); screen recording re-done on the new head (take 3, audioDelayMs 24420, playing [25,33] −19.5 dB, pre-play −91 dB). No PR, no merge.
+**Status:** Rebased onto player head `af7ec7c1` (code head `e920d64f`; this commit is the docs-only rebase record on top of it); re-verified on the code head — tsc 0, npm test scripts 1161/0/11 skipped + src 2322/0/0, test:worker 145/0, lint-cards GATE PASSED, build:pages green (buildId `e920d64f`); E2E union **97 passed / 0 failed** (22.6 min, 24 specs, :199 passes by name); screen recording re-done on the code head (take 3, audioDelayMs 24420, playing [25,33] −19.5 dB, pre-play −91 dB). No PR, no merge.
 **Rebased:** 2026-11-09 — onto player head `af7ec7c1`; only conflict was this file (docs-only). The unanimous APPROVE on `c19f8dfc` does NOT transfer to the new head.
 
 ## Rebase verification — onto player head af7ec7c1 (movies 84fa3a0a, frozen main f2bbf1a2), this run (2026-11-09)
