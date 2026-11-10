@@ -6,7 +6,7 @@
 > (the educator seat is UNSTAFFED — no persona, no named human SME), so
 > nothing in this file is signed and nothing in it is approved. P3 stays
 > GATED until a named educator signs, in writing, the items listed in
-> §7. No agent may sign this file, substitute a generic review, or write
+> §8. No agent may sign this file, substitute a generic review, or write
 > "approved" anywhere in it.
 >
 > - Workstream: WS2 — Math definition (P1 + P3), scaling-plan push
@@ -45,7 +45,7 @@
 - No educator sign-off. No "approved" anywhere.
 - No 5–7 content (see §1). No algebra (P4). No tiny-model work (P9,
   parked). No behaviour change to the geography game.
-- No owner question is settled in this file. Open questions (§8) are
+- No owner question is settled in this file. Open questions (§9) are
   recorded, never decided.
 
 ### 0.3 What counts as done (for this workstream)
@@ -60,7 +60,7 @@
 3. P3 quiz-loop definition is written (§4) with the equivalent-form
    rule explicitly OPEN.
 4. Every factual claim carries a source or a confidence level (§9).
-5. The file ends in a written **unsigned** state (§7) — P3 stays GATED.
+5. The file ends in a written **unsigned** state (§8) — P3 stays GATED.
 
 ### 0.4 What is explicitly NOT done by this workstream
 
@@ -74,7 +74,7 @@
 - P1 acceptance (c) in full: the verification gate is demonstrated on
   one mode as a worked example (§5); the executable gate wired into CI
   is P3 build work, not definition work.
-- Educator sign-off (P1 acceptance (g) / §7): **blocked — no educator**.
+- Educator sign-off (P1 acceptance (g) / §8): **blocked — no educator**.
 
 ## 1. Corrections to superseded facts
 
@@ -104,7 +104,7 @@ says otherwise is stale on these points.
   machine-verification gate need to cite. Every topic in §3 cites a
   CCSS code or is explicitly marked as Meridian-added enrichment.
 - **Status: PROPOSAL.** The curriculum choice is item 1 of the six
-  educator sign-off items (§7) and the owner's Q1. This file proposes;
+  educator sign-off items (§8) and the owner's Q1. This file proposes;
   it does not choose.
 
 Sources (accessed 2026-11-10):
@@ -308,6 +308,35 @@ any Meridian curriculum or judging choice.
 No comparable was used as evidence for what Meridian should teach or
 how it should judge. Any future comparable added here must carry the
 same label.
+
+### 3.5 Olympiad placement (Q10) — draft recommendation, decision open
+
+Competitions, grounded (accessed 2026-11-10):
+
+- **MOEMS Math Olympiad:** grades 4–8; Division E grades 4–6,
+  Division M grades 6–8 —
+  <https://achievable.me/exams/amc-8-10-12/resources/paths-to-the-math-olympiad-amc-8-vs-mathcounts/>
+- **MATHCOUNTS:** grades 6–8; school → chapter → state → national;
+  Sprint (30 problems, 40 min, no calculator), Target, Team, Countdown —
+  same source; also
+  <https://www.eduavenues.com/blog/best-math-competitions>
+- **AMC 8:** grade 8 and below, under 15.5 years; 25 questions, 40
+  minutes, once a year (January) —
+  <https://achievable.me/exams/amc-8-10-12/resources/paths-to-the-math-olympiad-amc-8-vs-mathcounts/>,
+  <https://www.eduavenues.com/blog/best-math-competitions>
+- **AMC 10 / AMC 12:** grade 10 and below (under 17.5) / grade 12 and
+  below (under 19.5); AMC 8 does not lead to AIME —
+  <https://learn.modernagecoders.com/math-olympiad-amc-tutoring>
+
+**Draft recommendation (proposal, NOT a decision):** Olympiad prep as
+a **separate mode inside Math** ("Olympiad Training"), entered from
+Bands B–D, using competition-style problems (multi-step, no
+calculator, timed rounds modelled on MATHCOUNTS Sprint / AMC 8). Not a
+difficulty slider (dismissed by the council); not a separate subject
+(it is still maths, and the owner's aim is tricks + competition prep
+inside math). The recommendation is a proposal for the educator; the
+decision is the educator's (Q10), and without it Olympiad placement is
+BLOCKED.
 
 ## 4. P1 — Judging policy (v1, written and testable)
 
@@ -575,7 +604,7 @@ in this file is presented as measured.
 ## 7. P3 — Math v1 quiz-loop definition
 
 **Status: GATED.** P3 does not start building until (a) this definition
-is signed by the educator (see §7 below — it is not) AND (b) P2 has
+is signed by the educator (see §8 below — it is not) AND (b) P2 has
 landed (shell split + `Question`/`Result` + thin contract +
 import-boundary test — not landed at the time of writing). This section
 is the definition P3 will build from, not the build.
@@ -636,7 +665,7 @@ mockup-first rule). This file records the candidates and the selection
 criteria; it does not choose:
 
 - The surface must make the core verb visible in 2 seconds (the
-  readiness audit, §7.5, point iv).
+  readiness audit, §7.10, point iv).
 - The depth ladder is designed per subject: concrete objects →
   pictures → bare numbers → abstract symbols. Youngest band starts
   concrete; oldest band starts abstract. Mocked at 390px and 1280px
@@ -781,35 +810,6 @@ state. P3 stays GATED.**
 | — | P8's gate names v3 but the keeper is v4: does the owner's listen-approval of v4 satisfy the gate? | Owner | OPEN — recorded here because it gates journal work that shares the host-clip pipeline (§7.5); not a math decision, not settled here |
 | — | Constitution-first ordering is conditional: if a single-jurisdiction constitution clears audit before math, build order changes | Owner / council | OPEN — recorded; this file assumes math-first ordering (owner + council, 2026-11-07) unless that condition triggers |
 | — | Alert-desirability: which math funnel types may page a human? (§7.8) | Owner | OPEN (study §10 Q7) |
-
-### 3.5 Olympiad placement (Q10) — draft recommendation, decision open
-
-Competitions, grounded (accessed 2026-11-10):
-
-- **MOEMS Math Olympiad:** grades 4–8; Division E grades 4–6,
-  Division M grades 6–8 —
-  <https://achievable.me/exams/amc-8-10-12/resources/paths-to-the-math-olympiad-amc-8-vs-mathcounts/>
-- **MATHCOUNTS:** grades 6–8; school → chapter → state → national;
-  Sprint (30 problems, 40 min, no calculator), Target, Team, Countdown —
-  same source; also
-  <https://www.eduavenues.com/blog/best-math-competitions>
-- **AMC 8:** grade 8 and below, under 15.5 years; 25 questions, 40
-  minutes, once a year (January) —
-  <https://achievable.me/exams/amc-8-10-12/resources/paths-to-the-math-olympiad-amc-8-vs-mathcounts/>,
-  <https://www.eduavenues.com/blog/best-math-competitions>
-- **AMC 10 / AMC 12:** grade 10 and below (under 17.5) / grade 12 and
-  below (under 19.5); AMC 8 does not lead to AIME —
-  <https://learn.modernagecoders.com/math-olympiad-amc-tutoring>
-
-**Draft recommendation (proposal, NOT a decision):** Olympiad prep as
-a **separate mode inside Math** ("Olympiad Training"), entered from
-Bands B–D, using competition-style problems (multi-step, no
-calculator, timed rounds modelled on MATHCOUNTS Sprint / AMC 8). Not a
-difficulty slider (dismissed by the council); not a separate subject
-(it is still maths, and the owner's aim is tricks + competition prep
-inside math). The recommendation is a proposal for the educator; the
-decision is the educator's (Q10), and without it Olympiad placement is
-BLOCKED.
 
 ## 10. Verification block
 
