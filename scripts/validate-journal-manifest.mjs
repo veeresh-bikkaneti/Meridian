@@ -28,18 +28,18 @@ const KNOWN_VOICES = new Set([
   "avocado_v2:vdc_5723",
 ]);
 
-const TOP_KEYS = ["baseUrl", "movies", "note", "version"];
+const TOP_KEYS = ["baseUrl", "movies", "version"];
 const ENTRY_KEYS = ["file", "duration", "voice", "note", "verified"];
 
 // Pinned expected-value wording per error code (spec's per-code table).
 const EXPECTED = {
   "unreadable-manifest": "manifest file exists and is readable",
   "invalid-json":
-    "parseable JSON object with keys baseUrl, movies, note, version",
+    "parseable JSON object with keys baseUrl, movies, version",
   "top-level-not-object": "top-level JSON object",
   "missing-top-key":
-    "all top-level keys present: baseUrl, movies, note, version",
-  "extra-top-key": "exactly the top-level keys baseUrl, movies, note, version",
+    "all top-level keys present: baseUrl, movies, version",
+  "extra-top-key": "exactly the top-level keys baseUrl, movies, version",
   "bad-base-url": `baseUrl exactly ${BASE_URL}`,
   "bad-version": "version === 1 (number)",
   "bad-note": "note is a non-empty string",
@@ -415,7 +415,7 @@ export function validate(options = {}) {
   // Check 5 (duplicate scan) runs whenever the top level is an object.
   errors.push(...scanDuplicates(raw));
 
-  // Check 1: top-level keys — exactly { baseUrl, movies, note, version }.
+  // Check 1: top-level keys — exactly { baseUrl, movies, version }.
   for (const key of TOP_KEYS) {
     if (!has(data, key)) {
       errors.push(makeError("missing-top-key", key, key, "absent"));
@@ -437,21 +437,13 @@ export function validate(options = {}) {
     }
   }
 
-  // Check 7, top-level part: version and note (only when present).
+  // Check 7, top-level part: version (only when present).
   if (has(data, "version")) {
     const value = data.version;
     if (value === "") {
       errors.push(makeError("empty-field", "version", "version", ""));
     } else if (value !== 1) {
       errors.push(makeError("bad-version", "version", "version", actualOf(value)));
-    }
-  }
-  if (has(data, "note")) {
-    const value = data.note;
-    if (value === "") {
-      errors.push(makeError("empty-field", "note", "note", ""));
-    } else if (typeof value !== "string") {
-      errors.push(makeError("bad-note", "note", "note", actualOf(value)));
     }
   }
 

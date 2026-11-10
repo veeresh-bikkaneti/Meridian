@@ -31,6 +31,11 @@
  * - meridian-crash-report.knowledgetest.workers.dev: first-party crash
  *   ingest. The contact form posts to /api/contact on this same worker,
  *   which 'self' covers.
+ * - veeresh-bikkaneti.github.io: the journal movie clips (meridian-media
+ *   Pages). media-src lets the <video> element load them; connect-src lets
+ *   journal prefetch fetch() them. Without both, CSP blocks journal movies
+ *   in production — the player shows the still, prefetch silently warms
+ *   nothing.
  * - blob: workers: MapLibre starts its tile worker from a blob URL.
  */
 
@@ -40,8 +45,8 @@ export const CONTENT_SECURITY_POLICY = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://server.arcgisonline.com",
   "font-src 'self' data:",
-  "media-src 'self' data: blob:",
-  "connect-src 'self' https://server.arcgisonline.com https://meridian-crash-report.knowledgetest.workers.dev https://cloudflareinsights.com",
+  "media-src 'self' data: blob: https://veeresh-bikkaneti.github.io",
+  "connect-src 'self' https://server.arcgisonline.com https://meridian-crash-report.knowledgetest.workers.dev https://cloudflareinsights.com https://veeresh-bikkaneti.github.io",
   "worker-src 'self' blob:",
   "child-src 'self' blob:",
   "manifest-src 'self'",

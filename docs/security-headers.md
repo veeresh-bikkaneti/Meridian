@@ -46,10 +46,10 @@ default-src 'self';
 script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com;
 style-src 'self' 'unsafe-inline';
 img-src 'self' data: blob: https://server.arcgisonline.com;
-font-src 'self' data:; media-src 'self' data: blob:;
+font-src 'self' data:; media-src 'self' data: blob: https://veeresh-bikkaneti.github.io;
 connect-src 'self' https://server.arcgisonline.com
             https://meridian-crash-report.knowledgetest.workers.dev
-            https://cloudflareinsights.com;
+            https://cloudflareinsights.com https://veeresh-bikkaneti.github.io;
 worker-src 'self' blob:; child-src 'self' blob:; manifest-src 'self';
 object-src 'none'; base-uri 'self'; form-action 'self';
 frame-ancestors 'none'; upgrade-insecure-requests

@@ -6,14 +6,14 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  * carry an image render it above the title with alt text; all 106 notes
  * are now illustrated.
  *
- * DISCLOSED CLOCK PIN (journal consolidation, plan §1c): under set
- * rotation the section shows one set of notes per 2-hour window. This
- * spec pins the browser clock (installed BEFORE goto, with a
+ * DISCLOSED CLOCK PIN (journal consolidation, plan §1c): under
+ * single-entry rotation (B8) the section shows one note per 30-minute
+ * window. This spec pins the browser clock (installed BEFORE goto, with a
  * runFor(1_000) drain for boot timers, the pattern the journal spec uses)
- * to set index 26 so it always asserts against the same deterministic
- * set (taj, opera-house, redeemer). The pin's original rationale — set 26
- * being the only window whose notes all had art — is now stale: every
- * note is illustrated. The pin itself stays for determinism.
+ * to window index 26 so it always asserts against the same deterministic
+ * entry (quilt-museum). The pin's original rationale — set 26 being the
+ * only window whose notes all had art — is now stale: every note is
+ * illustrated. The pin itself stays for determinism.
  */
 test.setTimeout(240_000);
 
@@ -21,13 +21,13 @@ test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
 });
 
-const WINDOW_MS = 7_200_000;
-const SET_COUNT = 36;
+const WINDOW_MS = 1_800_000;
+const ENTRY_COUNT = 106;
 
-/** A fixed instant whose 2-hour window index is exactly set 26. */
-function set26Instant(): Date {
+/** A fixed instant whose 30-minute window index is exactly 26. */
+function entry26Instant(): Date {
   let t = Date.UTC(2026, 9, 16, 12, 0, 0);
-  while (Math.floor(t / WINDOW_MS) % SET_COUNT !== 26) t += WINDOW_MS;
+  while (Math.floor(t / WINDOW_MS) % ENTRY_COUNT !== 26) t += WINDOW_MS;
   return new Date(t);
 }
 
@@ -35,13 +35,13 @@ test("journal entries render storybook art with alt text, no overflow at 390px",
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.clock.install({ time: set26Instant() });
+  await page.clock.install({ time: entry26Instant() });
   await page.goto(APP_NO_IDLE);
   // Let boot timers (which the mocked clock holds) drain a little.
   await page.clock.runFor(1_000);
   const journal = page.locator("#home-journal");
   await journal.scrollIntoViewIfNeeded();
-  await expect(journal.locator("article.hv5-entry")).toHaveCount(3);
+  await expect(journal.locator("article.hv5-entry")).toHaveCount(1);
 
   const imgs = journal.locator("img");
   const count = await imgs.count();

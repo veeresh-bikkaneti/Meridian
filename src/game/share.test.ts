@@ -150,7 +150,7 @@ test("geodetective share appends the best streak segment when bestStreak >= 2", 
   );
 });
 
-test("Pages build share carries the Pages link, never Workers", () => {
+test("Pages build share carries the Workers link (owner ruling 2026-11-09)", () => {
   const text = shareText({
     regionName: "Nebraska",
     dateKey: "2026-09-28",
@@ -163,9 +163,9 @@ test("Pages build share carries the Pages link, never Workers", () => {
   });
   assert.equal(
     text,
-    "meridian September 28\nhttps://veeresh-bikkaneti.github.io/Meridian/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
+    "meridian September 28\nhttps://meridian.knowledgetest.workers.dev/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
   );
-  assert.equal(text.includes("workers.dev"), false);
+  assert.equal(text.includes("github.io"), false);
 });
 
 test("Workers build share carries the Workers link, never Pages", () => {
@@ -186,7 +186,7 @@ test("Workers build share carries the Workers link, never Pages", () => {
   assert.equal(text.includes("github.io"), false);
 });
 
-test("Pages build geodetective share carries the Pages link", () => {
+test("Pages build geodetective share carries the Workers link (owner ruling 2026-11-09)", () => {
   const guesses: LoopGuess[] = [
     { name: "Kota, India", placeId: "geonames:1266049", distKm: 2073, octant: "south", warmer: null },
     { name: "Colombo, Sri Lanka", placeId: "geonames:1248991", distKm: 0, octant: "north", warmer: true },
@@ -201,9 +201,9 @@ test("Pages build geodetective share carries the Pages link", () => {
   });
   assert.equal(
     text,
-    "meridian geodetective October 6\nhttps://veeresh-bikkaneti.github.io/Meridian/\n🟥🟩⬜⬜⬜ solved in 2\n🔥 7",
+    "meridian geodetective October 6\nhttps://meridian.knowledgetest.workers.dev/\n🟥🟩⬜⬜⬜ solved in 2\n🔥 7",
   );
-  assert.equal(text.includes("workers.dev"), false);
+  assert.equal(text.includes("github.io"), false);
 });
 
 test("geodetective share hides the best streak segment when bestStreak < 2 or unset", () => {
