@@ -10,6 +10,8 @@ Companion files:
 - `k12-learning-design-standard.md` — the shared learning bar every spec cites.
 - `educator-gate-rubric.md` — how a real human educator signs the gate in under
   an hour, without an educator persona.
+- `agent-instructions.md` — shared, agent-neutral rules every builder reads once.
+- `branch-prompts.md` — one copy-paste prompt per branch, in this priority order.
 
 ---
 
@@ -75,7 +77,14 @@ the spec already flags this, and it still needs a decision before build.
     `docs/ops/agent-council-protocol.md`.** The owner wants the plan agent-neutral
     (any capable agent may build it). Changing `AGENTS.md` is never Tier 0, so it
     is listed as its own work item (P0-4) with proposed wording, not edited here.
-11. **Per-question host video clips are the costliest part of the plan.** Each
+11. **Specs drift from the house stack and theme.** `main` already has age bands
+    (`5-7`, `8-10`, `11-13` in `src/game/age-profile/bands.ts`), named motion
+    curves (`motion-tokens.css`), a dynamically imported three.js globe,
+    particle caps, `CardFilm`, a journal player and a fixed movie recipe. The
+    scaling specs never point at them, so each builder would reinvent them.
+    → Standard §5.1 lists the stack every agent must reuse; new libraries need
+    the owner's word.
+12. **Per-question host video clips are the costliest part of the plan.** Each
     question needs a produced clip; at K–12 scale that is thousands of clips,
     heavy downloads on old devices, and high production cost for a free project.
     A real-time animated host scene costs far less (D3).
@@ -84,7 +93,7 @@ the spec already flags this, and it still needs a decision before build.
 
 | # | Decision | Options | Recommendation |
 |---|---|---|---|
-| **D1** | Bands for new subjects | (a) keep 5th+ for all new subjects; (b) add K–2 and 3–5 tracks per subject; (c) geography + journal serve all bands now, new subjects start 5th+ and add younger bands later | **(c)** — K–12 reach today through what already works, without widening specs before an educator signs. |
+| **D1** | Bands for new subjects | (a) keep 5th+ for all new subjects; (b) add `5-7` and `8-10` tracks per subject now; (c) geography + journal serve the existing `5-7` / `8-10` / `11-13` bands now, new subjects start 5th+ and add younger bands later; plus, in every option, whether to add a `14-18` band to `bands.ts` | **(c)**, and add `14-18` when the first high-school content is signed — K–12 reach today through what already works. |
 | **D2** | What "no politics" means | (a) no historical political figures at all; (b) historical figures allowed with neutral, sourced facts only, no present-day parties, elections or living politicians' views | **(b)** — otherwise four journal specs cannot exist. |
 | **D3** | Host wrap-up format | (a) produced video clip every question (current rule); (b) real-time animated host scene by default, produced clips for journal stories only | **(b)** — same "short cartoon" feel, a fraction of the cost and size, works offline and on Flat tier. |
 | **D4** | Educator route | Find one volunteer teacher per subject group (math; science; humanities) to use the rubric | Start with math, since it is already approved to build. |

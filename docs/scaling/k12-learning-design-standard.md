@@ -28,12 +28,19 @@ instead of re-inventing it 13 times. Each spec adds only its own deltas
 
 ## 1. Grade bands
 
-| Band | Ages (approx.) | Reading load | Interaction | Session target |
-|---|---|---|---|---|
-| **K–2** | 5–8 | Pre-reader to early reader. Every prompt is read aloud; text is a caption, never the only channel. | Big tap targets (≥ 64px for this band, above the 44px floor), drag, one action per screen. | 3–5 min |
-| **3–5** | 8–11 | Short sentences, everyday words; read-aloud on by default, can be turned off. | Tap, drag, simple typing of numbers. | 5–10 min |
-| **6–8** | 11–14 | Grade-level text; read-aloud available. | Typing, multi-step tasks, predict-then-test. | 10–15 min |
-| **9–12** | 14–18 | Grade-level text; read-aloud available. Humour that is not childish (existing 14–18 register rule). | Multi-step reasoning, formulas where the subject needs them. | 10–20 min |
+**Reuse the bands `main` already has.** `src/game/age-profile/bands.ts` defines
+three bands as data — `5-7` "Little Explorer", `8-10` "Trail Scout", `11-13` —
+with read-aloud mode, tap-target size, timers (none below `11-13`), quiz length
+and map labels per band. New subjects add rows to that table; they do not
+invent a second band system. The parent-facing band strings are agreed copy
+and are not reworded.
+
+| Existing band | Grades (approx.) | What a new subject must respect |
+|---|---|---|
+| `5-7` Little Explorer | K–2 | Stories read aloud automatically; big targets; picture games first; no timers; text is a caption, never the only channel. |
+| `8-10` Trail Scout | 3–5 | Short sentences, everyday words; read-aloud available; tap, drag, simple number typing; no timers. |
+| `11-13` | 6–8 | Grade-level text; predict-then-test, multi-step tasks; timers allowed but optional. |
+| *proposed* `14-18` | 9–12 | Not in `bands.ts` yet. The specs already describe a 14–18 register (escape-room cases, labs, humour that is not childish). Adding the band is an owner decision (D1). |
 
 - Each spec states which bands it serves and why. The current subject specs say
   "5th grade and up"; the owner's goal is K–12. That gap is an **open owner
@@ -119,9 +126,38 @@ not build parallel systems**:
 
 ## 5. Three.js, motion, and the device tiers
 
-three.js is already a dependency (`three@^0.160`) and the home globe uses it.
+### 5.1 House stack and theme — reuse, do not add
+
+Inspected on `main` `2688d8b8`. Every new subject builds with what is already
+here. Adding a new animation, 3D, video, audio or UI library is a stop-and-ask
+item for the owner.
+
+| Need | Already in the repo — use this |
+|---|---|
+| 3D | `three@^0.160`, always **dynamically imported** (`import("three")` in `src/components/home-globe.tsx`; a test enforces no static import). Copy that pattern. |
+| Maps | `maplibre-gl`, `d3-geo`, `topojson-client`, `world-atlas` / `us-atlas` (the quiz *is* the map). |
+| UI motion | CSS transitions/keyframes on the named curves in `src/styles/motion-tokens.css` (`--ease-soft-land`, `--ease-snap-settle`, `--ease-glide`, `--ease-accel-exit`, `--ease-pop-over` for the one celebration overshoot only, etc.), guarded by `src/motionmaxxing.test.ts`. List and layout motion: `@formkit/auto-animate`. |
+| Reduced motion | `usePrefersReducedMotion` hook (`src/hooks/`) plus the global collapse in `motion-tokens.css`; reduced motion shows a static globe disc. |
+| Particles and celebrations | `ConfettiCanvas` (`confetti.tsx`) with `resolveParticleCap` (`particle-caps.ts`) for weak devices; `celebration-overlay.tsx`. |
+| Characters | `characters.tsx`, the Storyteller, Grandpa and Comet (Comet is an emblem; read Handbook 03 before using any character). Characters host; new mascots need the owner. |
+| Short films on cards | `CardFilm` (`card-film.tsx`): film / poster / still per card, band-aware, reduced-motion aware. |
+| Journal video | `journal-player.tsx` + `journal-prefetch.ts`, manifest `public/videos/journal-manifest.json` validated in prebuild. Recipe in `docs/journal-movies.md`: 10 s, 1152×768, 24 fps, h264 + AAC, tap-to-play, no on-screen text, watercolor storybook style from the entry's still, storyteller narration, loudnorm −18 LUFS, limiter −1 dB, captions/VTT + transcript (`journal-transcripts.ts`). |
+| Voice | Storyteller TTS pipeline (`scripts/render-storyteller-*.mjs`, Handbook 04); read-aloud preference in `age-profile/read-aloud-pref.ts`. |
+| Sound effects | `src/game/audio/sfx.ts` — 100% Web Audio, zero audio files; "cartographic, inquisitive, brass-warm"; every sound has a visual equivalent; never chain `connect()`. |
+| Type and look | Self-hosted Fraunces (display), Karla (body), Space Mono; v5 premium atlas home; Tailwind 4; `lucide-react` icons. |
+| Motion proof | `scripts/record-motion-verify.mjs` screen recordings on the built app — no recording means the testing did not happen. |
+
+Theme rules that carry into every subject: the card is the product and the game
+is the vehicle; aged-atlas, cartographic, storybook warmth; one memorable hook a
+kid can retell; motion settles softly and never overshoots except the one
+celebration moment.
+
+### 5.2 Motion as teaching, in three device tiers
+
 Motion is a learning tool here: it should show cause and effect (a ramp, a
-lever, a fraction cut, a pin flying to a place), not decorate.
+lever, a fraction cut, a pin flying to a place), not decorate. New 3D scenes
+use the same dynamic-import, particle-cap and reduced-motion patterns as the
+home globe and confetti, and the same easing curves for any 2D motion.
 
 **Three tiers, chosen automatically at start and changeable by the player:**
 
@@ -163,8 +199,8 @@ text contrast ≥ 4.5:1, focus ring ≥ 3:1 on dark surfaces. Plus:
 - Every drag has a tap or keyboard alternative (WCAG 2.5.7). Every 3D control
   has a button equivalent; nothing requires precise pointer paths.
 - Colour is never the only signal (correct/incorrect also uses shape and sound).
-- Timers are off by default for K–5 and can be turned off at every band
-  (WCAG 2.2.1).
+- No timers in the `5-7` and `8-10` bands (already the rule in `bands.ts`);
+  timers can be turned off in every band (WCAG 2.2.1).
 - Screen-reader labels on every interactive element; the 3D canvas has a live
   region that announces what happened ("The ball rolled down the steep ramp
   first").
