@@ -117,10 +117,13 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // sequence on the FIRST tap in tap mode. A sub-flag of the
   // staging: it acts only when detectivePair AND hostsStaging are
   // also on. false = the kill-switch: redeploy flags.json with
-  // detectiveFlank false and Holmes docks/berths as shipped and the
-  // Listen button keeps its two-tap flow — exactly the pre-STAGE
-  // behaviour. The baked default stays false so a failed flags
-  // fetch falls back to the shipped pair.
+  // detectiveFlank false and Holmes docks/berths as shipped —
+  // exactly the pre-STAGE staging behaviour. One piece is NOT behind
+  // this switch: the Listen first-tap cure (the gesture listener is
+  // armed at player creation) ships ungated and stays in both
+  // worlds — flag-off does not restore the old two-tap flow. The
+  // baked default stays false so a failed flags fetch falls back
+  // to the shipped pair.
   detectiveFlank: false,
 };
 

@@ -183,10 +183,13 @@ export interface DetectiveState {
   ringAnimating: boolean;
   /** Last pointer-pause point (kinematics only — U6's berth solver input). */
   lastPausePoint: { x: number; y: number } | null;
-  /** How many acknowledgements have actually played in this case. The
-   * ack rotation is driven by THIS count, never by the clue index:
-   * the Hook (clue 4) plays no ack, so an index-keyed rotation repeated
-   * ack-1 on the Giveaway and never played ack-4 (cure pass, item 7). */
+  /** How many acknowledgements have actually played in this case.
+   * The count is bookkeeping only — it never picks the line: the ack
+   * is a random draw from the pool minus this case's played-set
+   * (acksUsed below; drawAckId), so no line repeats inside a case
+   * and the draw takes no clue or game state as input. (The retired
+   * count rotation keyed the line to this count and repeated lines;
+   * the Hook, clue 4, plays no ack at all.) */
   acksPlayed: number;
   /** The pool line ids already played this case — the played-set the
    * random ack draw excludes (never a repeat inside a case). */
@@ -929,10 +932,12 @@ export function transition(
             [speak({ kind: "fixed", id: "hook-announcement" })],
           );
         }
-        // Thinking beat over → Holmes acknowledges (next ack in the
-        // count rotation) and delivers the clue-type decode; both
-        // queue sequentially. The count advances here, at the one
-        // place an ack is actually spoken.
+        // Thinking beat over → Holmes acknowledges (a random draw
+        // from the ack pool minus the lines already played this
+        // case — drawAckId; the draw sees only the played-set) and
+        // delivers the clue-type decode; both queue sequentially.
+        // The count advances here, at the one place an ack is
+        // actually spoken.
         const ackId = drawAckId(state.acksUsed, rng);
         return result(
           {
