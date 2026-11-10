@@ -273,27 +273,42 @@ export function watsonWalkDurationMs(distancePx: number): number {
 
 /** The one new fixed line: Watson's case-open announcement, spoken
  * DURING the case-open walk only (council Q3 — per-clue announcing
- * fails the session dosage law; case-open-only, capped, is solvent:
- * baseline ≈27 lines + ≤2 = ≤29 of the 30-line ceiling). */
+ * fails the session dosage law; case-open-only is solvent). */
 export const ANNOUNCEMENT_FIXED_ID = "lets-find-clues";
 
-/** Session cap: at most two announcements per session (host mount),
- * however many cases the session holds. */
-export const ANNOUNCEMENT_SESSION_CAP = 2;
+/** Why this case is opening (PR 2b session gating):
+ * - "first":  the session's first case — the full opening.
+ * - "resume": this mount resumed a case already in progress —
+ *             the announcement + the current clue's re-read are
+ *             the whole ceremony (the brief's resume rule).
+ * - "later":  any later case in the session — opens in silence
+ *             (page-turn + "Case N" stamp instead).
+ * The host computes the occasion from the session record
+ * (detective-session.ts); the walk only judges it. */
+export type AnnounceOccasion = "first" | "resume" | "later";
 
 /** May the announcement play for this walk? All of: it is the
- * case-open walk (the first clue walk of a case), the session cap
- * has room, and speech is in auto mode (in tap mode the line would
- * be held inaudibly and in off mode dropped — neither is a spoken
- * announcement, so neither spends the cap). */
+ * case-open walk (the first clue walk of a case), the occasion is
+ * one that announces (the session's first case, or a resumed case),
+ * this case has not announced yet, and speech is in auto mode (in
+ * tap mode the line would resolve silently and in off mode drop —
+ * neither is a spoken announcement, so neither spends the case's
+ * one announcement).
+ *
+ * PR 2b replaced the shipped numeric cap (ANNOUNCEMENT_SESSION_CAP
+ * = 2 per mount): a count could announce on the session's second
+ * case and stay silent on a resume — the occasion says what the
+ * count could not. */
 export function shouldAnnounce(input: {
   isCaseOpenWalk: boolean;
-  announcedThisSession: number;
+  occasion: AnnounceOccasion;
+  announcedThisCase: boolean;
   speechMode: string;
 }): boolean {
   return (
     input.isCaseOpenWalk &&
-    input.announcedThisSession < ANNOUNCEMENT_SESSION_CAP &&
+    input.occasion !== "later" &&
+    !input.announcedThisCase &&
     input.speechMode === "auto"
   );
 }

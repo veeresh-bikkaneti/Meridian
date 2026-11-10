@@ -210,6 +210,15 @@ export interface DetectiveSpeechOptions {
   onSpeakingChange?: (who: DetectiveSpeaker | null) => void;
   /** Case the clue/answer refs resolve against. */
   caseIndex?: number;
+  /** PR 2b: fires with the number of ending refs currently held
+   * (0 = nothing held) whenever the ending hold changes. The host
+   * mirrors it into state to render the ending Listen button. */
+  onEndingHeldChange?: (count: number) => void;
+  /** PR 2b: initial ending-hold gate (the host drives it from the
+   * `pairReactions` flag via setHoldEndings). When off, ending refs
+   * are never held and playHeldEnding is a no-op — tap-mode endings
+   * behave exactly as they shipped before PR 2b. */
+  holdEndings?: boolean;
   /** Initial speech mode (U9); the host updates it via setSpeechMode
    * as the degradation signals change. Defaults to "auto" (U5). */
   speechMode?: SpeechMode;
@@ -254,6 +263,29 @@ export interface DetectiveSpeechPlayer {
    * or "off" (nothing does). */
   armGuessRead(): void;
   disarmGuessRead(): void;
+  /** PR 2b: the held ending burst (win lines + debrief, or the
+   * answer read + truce exchange), oldest first. Empty when the
+   * hold is gated off, in "off" mode, or before any ending. */
+  heldEndingRefs(): readonly SpeakRef[];
+  /** PR 2b: play the held ending for real — the ending Listen
+   * button on the result card in tap mode. Same replay contract as
+   * playHeldSequence (a tap is the kid choosing to listen; the
+   * sound gate applies, the autoplay veto does not; restart
+   * semantics via the shared replay generation). A no-op when the
+   * hold is gated off, in "off" mode, or when nothing is held. */
+  playHeldEnding(): Promise<void>;
+  /** PR 2b: gate the ending hold (flag `pairReactions`). Turning it
+   * off drops anything held. */
+  setHoldEndings(on: boolean): void;
+  /** PR 2b: drop everything queued and stop the current clip
+   * WITHOUT firing a drain signal. The host calls this the moment
+   * a case is won/lost while a clue chain owns the voice: the
+   * ending the host dispatches next owns the voice from here, and
+   * its own first drain is the speechEnded the machine waits for.
+   * (stopAll would fire onSpeakingChange(null) — a drain — which
+   * would advance the ladder one step as if the flushed speech had
+   * finished, double-stepping the ending.) */
+  flushSpeech(): void;
 }
 
 /** Is this ref part of a clue sequence — the chain the tap-mode hold
@@ -315,6 +347,66 @@ export function createDetectiveSpeech(
    * abandons ship without clearing the new loop's state or firing a
    * second drain signal. */
   let heldPlaySeq = 0;
+
+  /* -- PR 2b ending hold --------------------------------------------
+   * In tap mode the ending lines used to resolve as skipped with no
+   * release surface: they are not clue refs (never held), not
+   * gesture-marked (an ending is not tap-synchronous — the win lines
+   * follow the ring and a queue drain, the debrief lands on later
+   * drains), and the result card had no Listen button. The fix is a
+   * second hold, classified at enqueue time: an ending burst starts
+   * at win-holmes (win) or the answer read (loss) and continues with
+   * its known followers; the debrief's answer name is the one name
+   * ref that belongs to an ending (it directly follows debrief-
+   * frame). Anchors replace the hold, followers append — a win and
+   * a loss can never mix, and a fresh case (setCaseIndex) clears it.
+   * The hold records in "auto" too (harmless: the lines play live
+   * there; the host only renders the release button in tap mode).
+   * Gated by `pairReactions` via setHoldEndings. */
+  let holdEndings = opts.holdEndings === true;
+  let endingHeld: SpeakRef[] = [];
+  let prevEnqueued: SpeakRef | null = null;
+  const onEndingHeldChange = opts.onEndingHeldChange ?? (() => {});
+
+  function classifyEnding(ref: SpeakRef): "start" | "part" | null {
+    if (ref.kind === "answer") return "start";
+    if (ref.kind === "fixed") {
+      if (ref.id === "win-holmes") return "start";
+      if (
+        ref.id === "win-watson" ||
+        ref.id === "debrief-frame" ||
+        ref.id === "debrief-close" ||
+        ref.id.startsWith("truce-")
+      ) {
+        return "part";
+      }
+      return null;
+    }
+    if (ref.kind === "name") {
+      return prevEnqueued?.kind === "fixed" && prevEnqueued.id === "debrief-frame"
+        ? "part"
+        : null;
+    }
+    return null;
+  }
+
+  function recordEnding(ref: SpeakRef): void {
+    if (!holdEndings) return;
+    const cls = classifyEnding(ref);
+    if (cls === "start") {
+      endingHeld = [ref];
+      onEndingHeldChange(endingHeld.length);
+    } else if (cls === "part") {
+      endingHeld = [...endingHeld, ref];
+      onEndingHeldChange(endingHeld.length);
+    }
+  }
+
+  function clearEnding(): void {
+    if (endingHeld.length === 0) return;
+    endingHeld = [];
+    onEndingHeldChange(0);
+  }
 
   function recordHeld(ref: SpeakRef): void {
     if (!isClueSequenceRef(ref)) return;
@@ -547,9 +639,9 @@ export function createDetectiveSpeech(
    * least one clip actually played, clearing the host's speaking
    * indicator — and only from the LATEST replay: a superseded loop
    * never drains, so the ladder advances exactly once. */
-  async function playHeldSequence(): Promise<void> {
+  async function playRefList(source: readonly SpeakRef[]): Promise<void> {
     if (disposed || speechMode === "off") return;
-    const refs = [...held];
+    const refs = [...source];
     if (refs.length === 0) return;
     const mySeq = ++heldPlaySeq;
     generation += 1;
@@ -589,6 +681,19 @@ export function createDetectiveSpeech(
     }
   }
 
+  /** The clue chain's replay (Listen / tap-Watson). */
+  async function playHeldSequence(): Promise<void> {
+    await playRefList(held);
+  }
+
+  /** The ending burst's replay (the result card's Listen, PR 2b).
+   * Shares the replay generation with playHeldSequence, so the two
+   * replays supersede each other instead of interleaving. */
+  async function playHeldEnding(): Promise<void> {
+    if (!holdEndings) return;
+    await playRefList(endingHeld);
+  }
+
   return {
     enqueue(ref: SpeakRef): void {
       if (disposed) return;
@@ -610,6 +715,11 @@ export function createDetectiveSpeech(
       // replay restarts the complete chain, not just the clip in
       // flight. "off" mode holds nothing.
       if (speechMode !== "off") recordHeld(ref);
+      // PR 2b: the ending hold records alongside (see recordEnding).
+      // prevEnqueued updates AFTER classification — the debrief's
+      // name ref is recognised by what directly preceded it.
+      if (speechMode !== "off") recordEnding(ref);
+      prevEnqueued = ref;
       // PR 2a cure 3: refs enqueued while the host's guess-read arm
       // stands are the guess read — mark them so tap mode plays
       // them for real (the confirm tap is the kid's gesture). The
@@ -627,7 +737,10 @@ export function createDetectiveSpeech(
     setSpeechMode(mode: SpeechMode): void {
       if (mode === speechMode) return;
       speechMode = mode;
-      if (mode === "off") held = [];
+      if (mode === "off") {
+        held = [];
+        clearEnding(); // "off" holds nothing — the clue law, extended
+      }
     },
     getSpeechMode(): SpeechMode {
       return speechMode;
@@ -636,6 +749,30 @@ export function createDetectiveSpeech(
       return [...held];
     },
     playHeldSequence,
+    heldEndingRefs(): readonly SpeakRef[] {
+      return [...endingHeld];
+    },
+    playHeldEnding,
+    setHoldEndings(on: boolean): void {
+      holdEndings = on;
+      if (!on) clearEnding();
+    },
+    flushSpeech(): void {
+      // Generation bump + queue drop + current-clip stop, and NO
+      // drain signal (see the interface note): the ending dispatched
+      // right after this call owns the voice, and its first drain is
+      // the one speechEnded the machine is waiting for.
+      generation += 1;
+      queue = [];
+      if (currentStop) {
+        try {
+          currentStop();
+        } catch {
+          /* stopping must never throw into game flow */
+        }
+        currentStop = null;
+      }
+    },
     stopAll(): void {
       generation += 1;
       queue = [];
@@ -664,7 +801,11 @@ export function createDetectiveSpeech(
       gestureWaiters = [];
     },
     setCaseIndex(next: number): void {
-      if (next !== caseIndex) held = []; // a new case, a new clue chain
+      if (next !== caseIndex) {
+        held = []; // a new case, a new clue chain
+        clearEnding(); // ... and a new ending — the old one is gone
+        prevEnqueued = null;
+      }
       caseIndex = next;
     },
   };

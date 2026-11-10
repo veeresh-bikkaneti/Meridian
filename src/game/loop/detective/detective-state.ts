@@ -44,7 +44,7 @@ export const DETECTIVE_PHASES = [
   "ASK_NEXT",
   "CELEBRATE",
   "FAIL_READ",
-  "POUT",
+  "TRUCE",
   "DEBRIEF",
 ] as const;
 export type DetectivePhase = (typeof DETECTIVE_PHASES)[number];
@@ -263,10 +263,25 @@ export interface DetectiveState {
    * latest-wins). Flushed when the ladder rests in SEARCH_IDLE; discarded
    * by a guess confirmation, a clue unlock, or a case ending. */
   pendingSelection: string | null;
+  /** Spoken-reactions gate (PR 2b, flag `pairReactions`): when on, a
+   * lost case runs the TRUCE exchange (Watson's assurance, then
+   * Holmes's reframe) before resting; when off, the loss rests in
+   * TRUCE silently with the shipped pout poses. Set by the host from
+   * the flag at machine creation; the machine never reads flags. */
+  reactions: boolean;
+  /** The truce step while in phase TRUCE: "assurance" (Watson
+   * speaking) → "reframe" (Holmes speaking) → "rest" (the sticky
+   * closed-case pose, the old POUT's semantics). null outside TRUCE
+   * and whenever reactions are off. */
+  truceStep: "assurance" | "reframe" | "rest" | null;
+  /** Truce pennant gate (PR 2b, flag `trucePennant`, ships OFF):
+   * when on, Watson's truce pose holds a small white pennant —
+   * held, never planted. View-only; the machine takes no part. */
+  pennant: boolean;
 }
 
 export function initialDetectiveState(
-  opts: { enabled?: boolean } = {},
+  opts: { enabled?: boolean; reactions?: boolean; pennant?: boolean } = {},
 ): DetectiveState {
   return {
     phase: opts.enabled === false ? "OFF" : "CASE_OPEN",
@@ -292,6 +307,9 @@ export function initialDetectiveState(
     guessesConfirmed: 0,
     lastNamed: null,
     pendingSelection: null,
+    reactions: opts.reactions === true,
+    truceStep: null,
+    pennant: opts.pennant === true,
   };
 }
 
@@ -350,6 +368,43 @@ export function drawAckId(
   const r = rng();
   const i = Math.min(pool.length - 1, Math.max(0, Math.floor(r * pool.length)));
   return pool[i]!;
+}
+
+/** The truce pools (PR 2b): the spoken half of a lost case. Watson's
+ * assurance pool (four lines — warmth first, credit for the effort)
+ * and Holmes's reframe pool (three lines — a miss is information,
+ * never a failure). One draw from each pool per lost case; a pool
+ * draw takes NO game state at all — the case is already over when
+ * these play, so there is nothing to leak and nothing to judge. */
+export const TRUCE_WATSON_IDS: readonly string[] = [
+  "truce-watson-1",
+  "truce-watson-2",
+  "truce-watson-3",
+  "truce-watson-4",
+];
+export const TRUCE_HOLMES_IDS: readonly string[] = [
+  "truce-holmes-1",
+  "truce-holmes-2",
+  "truce-holmes-3",
+];
+
+function drawFromPool(
+  pool: readonly string[],
+  rng: () => number,
+): string {
+  const r = rng();
+  const i = Math.min(pool.length - 1, Math.max(0, Math.floor(r * pool.length)));
+  return pool[i]!;
+}
+
+/** Random truce draw — Watson's assurance. `rng` injectable. */
+export function drawTruceWatsonId(rng: () => number = Math.random): string {
+  return drawFromPool(TRUCE_WATSON_IDS, rng);
+}
+
+/** Random truce draw — Holmes's reframe. `rng` injectable. */
+export function drawTruceHolmesId(rng: () => number = Math.random): string {
+  return drawFromPool(TRUCE_HOLMES_IDS, rng);
 }
 
 export function decodeIdForClue(clueIndex: number): string {
@@ -518,12 +573,36 @@ export function viewForState(state: DetectiveState): DetectiveView {
         holmes: { pose: "ack", placement: "station", speaking: true },
         watson: { pose: "think", placement: "station", speaking: false },
       };
-    case "POUT":
+    case "TRUCE": {
+      // The closed-case rest (PR 2b renamed POUT → TRUCE; the phase
+      // keeps POUT's sticky semantics). With reactions OFF the pair
+      // shows the shipped pout poses and says nothing — the flag-off
+      // world is byte-identical to what shipped. With reactions ON
+      // the exchange runs in truce poses: Watson assures (holding
+      // the white pennant when the pennant flag is on — held, never
+      // planted), Holmes reframes, then both rest in the truce pose.
+      if (state.truceStep === null) {
+        return {
+          ...base,
+          holmes: { pose: "pout", placement: "station", speaking: false },
+          watson: { pose: "pout", placement: "station", speaking: false },
+        };
+      }
+      const watsonPose = state.pennant ? "truce-pennant" : "truce";
       return {
         ...base,
-        holmes: { pose: "pout", placement: "station", speaking: false },
-        watson: { pose: "pout", placement: "station", speaking: false },
+        holmes: {
+          pose: "truce",
+          placement: "station",
+          speaking: state.truceStep === "reframe",
+        },
+        watson: {
+          pose: watsonPose,
+          placement: "station",
+          speaking: state.truceStep === "assurance",
+        },
       };
+    }
     case "DEBRIEF":
       // Holmes delivers the deduction (frame → the answer's name →
       // close — the effects are emitted on entry, see enterDebrief);
@@ -808,12 +887,20 @@ export function transition(
 
   switch (event.type) {
     case "caseOpened": {
-      // A new case while POUTing is one of POUT's only exits (U8): the
-      // lost case is over — reset to a fresh case-open, then let the
-      // fresh/resumed decision below run on the clean state.
+      // A new case while in TRUCE is one of TRUCE's only exits (U8):
+      // the lost case is over — reset to a fresh case-open, then let
+      // the fresh/resumed decision below run on the clean state. The
+      // behaviour gates (reactions / pennant) are host configuration,
+      // not case state — they carry over the reset.
       const base =
-        state.phase === "POUT"
-          ? { ...initialDetectiveState(), sheetOpen: state.sheetOpen }
+        state.phase === "TRUCE"
+          ? {
+              ...initialDetectiveState({
+                reactions: state.reactions,
+                pennant: state.pennant,
+              }),
+              sheetOpen: state.sheetOpen,
+            }
           : state;
       if (base.phase !== "CASE_OPEN" || base.instructionsStep !== "awaiting") {
         return base === state ? noOp(state) : result(base);
@@ -832,6 +919,20 @@ export function transition(
     case "clueUnlocked": {
       const n = event.clueIndex;
       if (!Number.isInteger(n) || n < 1 || n > 5) return noOp(state);
+      // A CLOSED case never speaks another clue (PR 2b): an unlock
+      // landing after the case ended — a straggler from the game's
+      // guess bookkeeping — must not restart the ladder out of
+      // CELEBRATE / DEBRIEF / FAIL_READ / TRUCE. (Before this guard
+      // the fall-through below called startClue from ANY phase,
+      // including the ending phases.)
+      if (
+        state.phase === "CELEBRATE" ||
+        state.phase === "DEBRIEF" ||
+        state.phase === "FAIL_READ" ||
+        state.phase === "TRUCE"
+      ) {
+        return noOp(state);
+      }
       // A clue unlock supersedes and discards a pending selection read.
       if (state.pendingSelection !== null) {
         return transition({ ...state, pendingSelection: null }, event, rng);
@@ -976,7 +1077,7 @@ export function transition(
           return result({ ...state, pendingSelection: event.placeId });
         default:
           // SELECTION_READ (a guess owns the voice), CELEBRATE, FAIL_READ,
-          // POUT, DEBRIEF: nothing to name.
+          // TRUCE, DEBRIEF: nothing to name.
           return noOp(state);
       }
     }
@@ -999,7 +1100,7 @@ export function transition(
       if (state.phase === "SELECTION_READ") {
         return result({ ...state, pendingEnd: "failed", pendingSelection: null });
       }
-      if (state.phase === "FAIL_READ" || state.phase === "POUT") return noOp(state);
+      if (state.phase === "FAIL_READ" || state.phase === "TRUCE") return noOp(state);
       return enterFailRead(state, state.selectionReadInFlight);
 
     case "speechEnded": {
@@ -1111,10 +1212,33 @@ export function transition(
           // (the host resets the machine wholesale on the next case).
           return result({ ...state, phase: "CASE_OPEN", instructionsStep: "done" });
         case "FAIL_READ":
-          // POUT is sticky (U8): no dwell, no auto-advance — the pair
-          // stays pouting while the case stays lost. Exits are only a
-          // new case (caseOpened / clueUnlocked / the host's reset).
-          return result({ ...state, phase: "POUT" });
+          // The answer read drained → TRUCE (PR 2b; the phase is
+          // POUT's sticky successor: no dwell, no auto-advance out of
+          // "rest" — exits are only a new case via caseOpened or the
+          // host's reset). With reactions ON the truce exchange runs
+          // first: Watson's assurance draw now, Holmes's reframe on
+          // its drain. With reactions OFF the case rests silently in
+          // the shipped pout poses, exactly as before PR 2b.
+          if (!state.reactions) {
+            return result({ ...state, phase: "TRUCE", truceStep: null });
+          }
+          return result(
+            { ...state, phase: "TRUCE", truceStep: "assurance" },
+            [speak({ kind: "fixed", id: drawTruceWatsonId(rng) })],
+          );
+        case "TRUCE":
+          // The exchange walks assurance → reframe → rest, one drain
+          // per step. At rest (or with reactions off) a stray drain
+          // changes nothing — TRUCE stays sticky.
+          if (state.truceStep === "assurance") {
+            return result({ ...state, truceStep: "reframe" }, [
+              speak({ kind: "fixed", id: drawTruceHolmesId(rng) }),
+            ]);
+          }
+          if (state.truceStep === "reframe") {
+            return result({ ...state, truceStep: "rest" });
+          }
+          return noOp(state);
         default:
           return noOp(state);
       }
@@ -1181,7 +1305,7 @@ export function transition(
           ],
         );
       }
-      // POUT has no beatElapsed exit (sticky, U8) — it falls through
+      // TRUCE has no beatElapsed exit (sticky, U8) — it falls through
       // to the no-op like every other phase without a dwell.
       return noOp(state);
     }

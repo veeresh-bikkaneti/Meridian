@@ -8,7 +8,6 @@
 import assert from "node:assert/strict";
 import { describe, test } from "node:test";
 import {
-  ANNOUNCEMENT_SESSION_CAP,
   CASE_OPEN_WALK_MS,
   CHIP_CLEAR_PX,
   GUTTER_BELOW_FIGURE_PX,
@@ -132,40 +131,53 @@ describe("walk duration (council Q3: 0.6–1.0 s, distance-capped)", () => {
   });
 });
 
-describe("announcement gate (council Q3)", () => {
-  test("case-open walk, cap room, auto mode: announce", () => {
+describe("announcement gate (council Q3, PR 2b occasion shape)", () => {
+  test("the session's first case announces on its case-open walk", () => {
     assert.equal(
-      shouldAnnounce({ isCaseOpenWalk: true, announcedThisSession: 0, speechMode: "auto" }),
-      true,
-    );
-    assert.equal(
-      shouldAnnounce({ isCaseOpenWalk: true, announcedThisSession: 1, speechMode: "auto" }),
+      shouldAnnounce({ isCaseOpenWalk: true, occasion: "first", announcedThisCase: false, speechMode: "auto" }),
       true,
     );
   });
 
-  test("the session cap is 2 — the third case-open walk is silent", () => {
-    assert.equal(ANNOUNCEMENT_SESSION_CAP, 2);
+  test("a resumed case announces (the resume rule)", () => {
     assert.equal(
-      shouldAnnounce({ isCaseOpenWalk: true, announcedThisSession: 2, speechMode: "auto" }),
+      shouldAnnounce({ isCaseOpenWalk: true, occasion: "resume", announcedThisCase: false, speechMode: "auto" }),
+      true,
+    );
+  });
+
+  test("NEGATIVE: a later case in the session never announces", () => {
+    assert.equal(
+      shouldAnnounce({ isCaseOpenWalk: true, occasion: "later", announcedThisCase: false, speechMode: "auto" }),
+      false,
+    );
+  });
+
+  test("NEGATIVE: one announcement per case — a second case-open walk is silent", () => {
+    assert.equal(
+      shouldAnnounce({ isCaseOpenWalk: true, occasion: "first", announcedThisCase: true, speechMode: "auto" }),
+      false,
+    );
+    assert.equal(
+      shouldAnnounce({ isCaseOpenWalk: true, occasion: "resume", announcedThisCase: true, speechMode: "auto" }),
       false,
     );
   });
 
   test("clue 2+ walks never announce", () => {
     assert.equal(
-      shouldAnnounce({ isCaseOpenWalk: false, announcedThisSession: 0, speechMode: "auto" }),
+      shouldAnnounce({ isCaseOpenWalk: false, occasion: "first", announcedThisCase: false, speechMode: "auto" }),
       false,
     );
   });
 
   test("tap / off modes never announce (nothing would be heard)", () => {
     assert.equal(
-      shouldAnnounce({ isCaseOpenWalk: true, announcedThisSession: 0, speechMode: "tap" }),
+      shouldAnnounce({ isCaseOpenWalk: true, occasion: "first", announcedThisCase: false, speechMode: "tap" }),
       false,
     );
     assert.equal(
-      shouldAnnounce({ isCaseOpenWalk: true, announcedThisSession: 0, speechMode: "off" }),
+      shouldAnnounce({ isCaseOpenWalk: true, occasion: "first", announcedThisCase: false, speechMode: "off" }),
       false,
     );
   });

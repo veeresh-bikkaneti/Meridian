@@ -40,7 +40,9 @@ export type FlagName =
   | "detectivePair"
   | "hostsStaging"
   | "watsonWalk"
-  | "detectiveFlank";
+  | "detectiveFlank"
+  | "pairReactions"
+  | "trucePennant";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -125,6 +127,24 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // baked default stays false so a failed flags fetch falls back
   // to the shipped pair.
   detectiveFlank: false,
+  // Holmes & Watson spoken reactions (PR 2b): the truce exchange on
+  // a lost case (Watson's assurance pool, then Holmes's reframe
+  // pool), and — in tap mode — the ending hold that gives the
+  // win/loss lines a Listen button on the result card instead of
+  // letting them resolve silently. true = the behaviour ships ON
+  // (the owner's brief for PR 2b); false = the kill-switch:
+  // redeploy flags.json with pairReactions false and a loss ends
+  // exactly as it shipped before — the answer read, then the quiet
+  // pout poses — and tap-mode endings hold nothing.
+  pairReactions: true,
+  // The truce pennant (PR 2b): Watson holds a small white pennant
+  // during the truce exchange on a lost case. HELD, never planted —
+  // the copy law bans plant/claim/conquer/territory/discovered in
+  // every form. A sub-flag of pairReactions: it only changes the
+  // truce pose when pairReactions is also on. false = today's
+  // behaviour (no pennant art exists on screen); the baked default
+  // stays false so the pennant lands only on the owner's word.
+  trucePennant: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;
