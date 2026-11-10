@@ -1,123 +1,581 @@
-# BRANCH_STATUS — feat/u11-clue-renders
+# BRANCH_STATUS — feat/journal-movies
 
-- **Branch:** `feat/u11-clue-renders` · **Base:** `main` @ `9e49da3` (PR #365 merged + live)
-- **Design of record:** clue-read diagnosis (evidence folder
-  `clue-read-diagnosis/DIAGNOSIS.md`) + owner approval (Veeresh,
-  2026-11-08 ~03:02 CST, in the `meridian` side chat): "Approve the
-  full render — all 386 core cases."
+**Branch:** `feat/journal-movies` · **Base:** `origin/main` @ `f2bbf1a2` (#370)
+**Rebased:** 2026-11-09 — onto main `f2bbf1a2` (#370); only conflict was
+this file (docs-only); main's #370/#376 records preserved verbatim below
+("Merged main record — feat/u11-clue-renders" + credits capsule). Prior panel YES on
+`4964a727` does NOT transfer to the new head.
+**Owner order:** 2026-11-07 — "Build all journals" (Old Faithful pilot approved)
+**Status:** 106/106 clips BUILT and HOSTED (incl. pilot) — not "all
+verified". All 12 batches delivered (batch 08 is 8/8 new + pilot); nothing
+unbuilt. What is actually established (detail: `docs/journal-movies.md` →
+"Verification actually done"):
+- Verified: 106-id mapping to `JOURNAL_NOTES`, URLs serve 200 and match
+  meridian-media `08c8308`, ffprobe format + full decode on all 106.
+- Sampled still frames and automated video descriptions exist (8 original
+  clips in an earlier automated watch; then all 106, 26 full-quality + 80
+  compressed). They do not establish full visual/factual clearance.
+- Reliable narration verification across 106 remains incomplete: automated
+  tools were inconsistent about audio access, so trusted listening is 0/106.
+  No scripts/transcripts kept. Owner's listen is the final check.
+- Manifest notes are self-reported. A wording heuristic (note opens with
+  Clean/Cleanest/Best clip) splits them 26 / 80; the 80 is NOT a verified
+  defect count. Known fallbacks: haymarket, university-place (still +
+  narration). Shipping is the owner's call.
+- Not built: no app code reads the manifest; no movie plays in the app.
+"Done" items below mean the coordinator's per-batch check ran — not that a
+clip passed every recipe gate.
+Next: see Pending. PR #369 is open; never merge without the owner's word,
+per PR, per head.
 
-## Task capsule
+## Rebase verification — onto frozen main f2bbf1a2 (#370), this run (2026-11-09)
 
-TASK / requested outcome: Phase A rendered clue audio for the
-Capitals pack only, so 386 of the 387 core-deck cases had empty clue
-entries in the audio manifest and their clues were never read aloud
-(handbook ch.10 gate FG-3). Render all five clue reads for every core
-case in Watson's cast voice, extend the manifest gate so an empty
-core clue entry fails the build, and prove by ear-level E2E that a
-core case's clues fetch and play.
-
-OWNER APPROVAL (Veeresh, 2026-11-08): the full render of all 386
-core cases, on the diagnosis that the playback machinery already
-worked and only the renders were missing.
+- Gates ran on `b26c26db` (rebase-record commit); this commit adds only this
+  BRANCH_STATUS.md text on top. Pushed head = this commit.
+- Gates on `b26c26db`: `npx tsc --noEmit` exit 0; `npm test` exit 0 (scripts
+  1161 pass / 11 skipped / 0 fail of 1172; src 2268 pass / 0 fail; validator
+  suite 133/133 on a direct re-run); lint-cards GATE PASSED; `npm run
+  build:pages` exit 0, buildId `b26c26db`. Logs:
+  `~/workspace/gjm-movies-r2-{tsc,npmtest,lintcards,build}.log`.
+- Docs-only: `git diff f2bbf1a2..HEAD --stat` = BRANCH_STATUS.md + the 5 branch
+  files (validator, validator test, manifest, package.json,
+  docs/journal-movies.md); no src/, tests/, workers/ changes. Branch files
+  byte-identical to old head `4964a727` (`git diff 4964a727 HEAD -- <files>`
+  empty); manifest byte-identical to `4964a727`.
+- Prior panel YES on `4964a727` does NOT transfer. This head is ready for
+  DuckDuck (testing prompt:
+  `~/workspace/journal-testing-prompts-duckduck-firefox-edge.md`). No E2E /
+  panel / recording in this run (gates only, per the split).
 
 ## Done
+- [x] 2026-11-08 — Branch created from origin/main 9e49da3e; worktree
+      `~/workspace/journal-movies-work` (clean checkout).
+- [x] 2026-11-08 — `docs/journal-movies.md` (plan + pilot recipe + storage
+      decision + batch table) and `public/videos/journal-manifest.json`
+      (pilot entry, version 1).
+- [x] 2026-11-08 — 12 worker subagents spawned in parallel (3 sets each,
+      9 clips each; batch 08 has 8 new + pilot skipped; batch 12 has 7).
+      Staging: `~/workspace/journal-movies-batches/batch-NN/`.
+- [x] 2026-11-08 — Media repo `veeresh-bikkaneti/meridian-media` created,
+      Pages enabled, pilot v4 uploaded byte-identical (sha256 5a985e28…);
+      URL verified 200, 5,664,273 bytes, valid MP4.
+- [x] 2026-11-08 — **Batch 01, sets 1–2: 6 clips coordinator-verified and
+      LIVE** (meridian-media `488329d`, manifest v1+6 entries):
+      capitol (magnus), memorial-stadium (briggs), haymarket (casper,
+      still+narration FALLBACK — AI video failed no-text gate),
+      pinnacle (vdc_2561), 27th-and-o (miles, bad-fit flag),
+      centennial-mall (vdc_NOID19). Independent checks: ffprobe 10.000 s /
+      1152x768 / 24 fps / h264+AAC, full decode exit 0, frames viewed
+      (faithful, no text), audio re-measured (peaks −1.5 dB, means match
+      worker to 0.1 dB, no clipping). Bed-30% per worker measurement
+      (NOTES.md). Not verified by ear — owner's listen is the final check.
+- [x] 2026-11-08 — Batch 01 follow-up worker spawned (set 3: sunken-gardens,
+      childrens-zoo, 48th-and-o + 1 haymarket regen attempt, 4 video calls).
+- [x] 2026-11-08 — **Batch 04: 9/9 coordinator-verified and LIVE**
+      (meridian-media `4d35706`): woods-park, conestoga, branched-oak,
+      mahoney, sac-museum, seward, homestead, pawnee-lake, platte-river-sp.
+      The 6-video cap did NOT block this batch (all 9 generations
+      succeeded). Flags in manifest (homestead dusk fade + gentle-motion,
+      platte-river-sp gentle-motion + 0.74 s window, mahoney hard cut,
+      seward sky-only settle, sac-museum close-up style drift,
+      branched-oak pink pennants, woods-park crowd drift).
+- [x] 2026-11-08 — **Batch 03: 3/6 delivered clips coordinator-verified
+      and LIVE** (hyde, near-south, robbers-cave). **HELD, not shipped:**
+      university-place (readable text "heritage" on the destination board
+      — hard gate fail, confirmed in frame), havelock (invented rooster),
+      southpointe (palette does not hold — saturated sunset, pilot-v1
+      failure mode + fence bird). 3 unbuilt (college-view video failed,
+      star-city-shores + quilt-museum capped). Follow-up spawned: 3 builds
+      + 3 regens (6 calls, priority-ordered).
+- [x] 2026-11-08 — **Batch 11: 5/6 delivered clips coordinator-verified
+      and LIVE** (machu, fuji, chichen, stonehenge, petra). **HELD:**
+      neuschwanstein (invented rooster standing on the lake ~6 s + faint
+      ghost castle at 2 s). 3 unbuilt (angkor video failed on a bad path,
+      table-mountain + uluru capped). Follow-up spawned: 3 builds + 1 regen.
+- [x] 2026-11-08 — Independent verification of all 21 batch-03/04/11
+      clips: ffprobe 10.000 s / 1152x768 / 24 fps / h264+AAC, full decode
+      exit 0, audio re-measured (means match workers; peaks −1.0 to
+      −1.6 dB, 0 clipped), 10 frames viewed by the coordinator
+      (holds confirmed in-frame; flags confirmed). Bed-30% per worker
+      measurement (NOTES.md). Not verified by ear — owner's listen is
+      the final check.
+- [x] 2026-11-08 — **Batch 01 follow-up DONE: set 3 verified + LIVE**
+      (sunken-gardens vdc_5723, childrens-zoo casper, 48th-and-o magnus
+      with bad-fit flag). **Haymarket regen FAILED the no-text gate a
+      2nd time** (clock gains hands/numerals at 6/9.5 s despite the
+      blank-clock prompt); fallback NOT overwritten and stands as the
+      shipped version. A 3rd attempt would need a different approach
+      (no clock tower in frame). Batch 01 is now 9/9 complete.
+- [x] 2026-11-08 — **Batches 02, 05, 06, 07, 08, 09 landed; 40 clips
+      coordinator-verified and LIVE** (meridian-media push in flight):
+      02: pioneers-park, wilderness-park, antelope-park, oak-lake,
+      lincoln-airport, union-plaza (6); 05: all 9; 06: old-market,
+      scotts-bluff, durham, carhenge (4); 07: all 6; 08: all 6;
+      09: all 6. Independent checks: ffprobe/decode/audio re-measured
+      on all 48 (means match workers; peaks −0.9 to −1.6 dB, 0 clipped),
+      8 decision frames viewed by the coordinator. Bed-30% per worker
+      measurement. Not verified by ear — owner's listen is the final check.
+- [x] 2026-11-08 — Follow-ups spawned for 02 (3 AI regens), 06 (5 regens),
+      07 (3 builds), 08 (2 builds), 09 (3 builds). Batches 03 + 11
+      follow-ups already running. Batches 10 + 12 still running.
+- [x] 2026-11-08 — **Batch 10: 9/9 coordinator-verified and LIVE**
+      (eiffel, colosseum, liberty, taj, opera-house, redeemer, sagrada,
+      giza, cn-tower). Video take 1 was rejected for ALL 9 (camera zoomed
+      into photoreal close-ups, invented pigeons, pseudo-text glyphs,
+      statue cropped out) and re-shot with a style-lock prompt (camera
+      NEVER moves, framing/style/palette NEVER change); take 2 held the
+      wide watercolor shot on all 9 — confirmed at 6 s in-frame
+      (colosseum, redeemer, eiffel). All 9 are static landmarks, flagged
+      gentle-motion bad fits; key moment is a light change or a small
+      vehicle (train, ferry, camels). Peaks −1.2 to −1.6 dB, decode 0.
+      Bed-30% per worker measurement. Not verified by ear.
+- [x] 2026-11-08 — **Batch 12: 5/6 coordinator-verified and LIVE**
+      (victoria-falls, fushimi, iguazu, tongariki, timbuktu). **HELD:**
+      potala — the model re-interpreted the palace mid-clip as a different
+      golden-roofed temple with Buddha statues flanking the door,
+      confirmed in-frame at 6 s + 9.5 s. Tongariki ships flagged (settle
+      frame pushes to a ~6-moai close-up, fifteen-in-a-row composition
+      lost; reddish caps not in source art). Peaks −1.3 to −1.6 dB,
+      decode 0. Bed-30% per worker measurement. Not verified by ear.
+      Follow-up spawned: galapagos build (1 call, staged) + potala
+      locked-wide regen reusing TTS.
+- [x] 2026-11-08 — **Batch 03 follow-up DONE: 4 more clips verified +
+      LIVE** (college-view, quilt-museum, havelock v2, southpointe v2).
+      Havelock v2: rooster gone, confirmed in-frame at 6 s. Southpointe
+      v2: intra-clip palette constant, no fence bird (v1 failure mode
+      gone); caveat — framed warmer/closer than the keyframe. Batch 03
+      now 7 LIVE. **Still HELD:** university-place (v2 board still not
+      blank — 2nd failed regen). **Still pending:** star-city-shores
+      (video call failed, not retried). Follow-up #2 spawned: 1 fresh
+      star-city-shores call + university-place still+narration fallback
+      (haymarket precedent — no 3rd regen).
+- [x] 2026-11-08 — **Batch 11 follow-up DONE: 9/9 complete.** Neuschwanstein
+      v2 PASSES — rooster + ghost castle gone, swans only, one castle,
+      confirmed in-frame at 6 s. Angkor, table-mountain, uluru built.
+      Peaks −1.4 to −1.5 dB, decode 0. Bed-30% per worker measurement.
+      Not verified by ear.
+- [x] 2026-11-08 — **Batch 08 follow-up DONE: 8/8 complete.** Niagara +
+      alamo built, both flagged (niagara: Horseshoe Falls leaves frame
+      from ~6 s; alamo: heavy zoom, closing line plays over a facade-only
+      shot with no garden visible). Peaks −1.0/−1.5 dB, decode 0.
+      Bed-30% per worker measurement. Not verified by ear.
+- [x] 2026-11-08 — **Batch 07 follow-up DONE: 9/9 complete.** Chadron,
+      niobrara, white-house built (vdc_5723 / briggs / vdc_2561). White-house
+      ships flagged: near-static after 4 s (motion diffs ~2), fountain arc
+      compressed — option (b) still+narration only remains open. Niobrara
+      flagged (6/9.5 s drift toward photorealism). Peaks −1.0 dB, decode 0.
+      Bed-30% per worker measurement. Not verified by ear.
+- [x] 2026-11-08 — **Batch 02 follow-up DONE: 9/9 complete.** Holmes-lake,
+      wyuka, gateway regens replace the held ffmpeg-only v1s — real bed at
+      0.30 (gaps were −91.0 dB silent, now −46.6 to −47.8 dB). Gateway take 1
+      rejected (invented pseudo-text signage); take 2 blank, no text.
+      Wyuka flagged (headstone leaves frame, bird count varies 4→3→4);
+      gateway flagged (one awning green instead of striped). Peaks −1.4/−1.5
+      dB, decode 0. Bed-30% per worker measurement. Not verified by ear.
+- [x] 2026-11-08 — **Batch 09 follow-up DONE: 9/9 complete.** Everglades,
+      death-valley, hoover built. Everglades: heron visibly lifts off at 6 s
+      (fallback line not needed), confirmed in-frame. Hoover: v1 rejected
+      (invented waterfall through the arch), v2 rejected (bypass bridge as
+      hero); v3 locked-camera holds, no waterfall, dam is the hero —
+      confirmed in-frame at 6 s. Everglades peak −0.9 dB by volumedetect
+      (−1.01 dB by the worker's measure; headroom either way, no clipping).
+      Bed-30% per worker measurement. Not verified by ear.
+- [x] 2026-11-08 — **Batch 06 follow-up DONE: 4 of 5 regens swapped.**
+      Kingsley (spillway in full rush at 6 s), smith-falls (full wide flow
+      with mist, child pointing), fort-robinson (flag raises, full at 9.5 s),
+      chimney-rock (spire in frame at 2/6/9.5 s) — all four defects fixed,
+      confirmed in-frame. Batch 06 now 8/9. **Archway NOT swapped by the
+      worker** (its replace gate demanded exactly one wagon; the regen
+      shows two) — see Held below: the coordinator overturned that hold.
+      Peaks −1.0 dB, decode 0. Bed-30% per worker measurement.
+      Not verified by ear.
+- [x] 2026-11-08 — **Batch 12 follow-up DONE: 7/7 complete.** Galapagos
+      built (tortoises + iguanas, real visible verb; minor flag: dark
+      animals resting on the dock at 6/9.5 s). Potala v2 PASSES — the
+      white-and-red palace mass on the hill holds at 2/6/9.5 s, confirmed
+      in-frame at 6 s; v1's golden-temple reinterpretation gone. Voice-free
+      window 2.10 s, as in the pilot. Peaks −1.4/−1.5 dB, decode 0.
+      Bed-30% per worker measurement. Not verified by ear.
+- [x] 2026-11-08 — **Batch 03 follow-up #2 DONE: 9/9 complete.**
+      Star-city-shores built (fresh call, not a repeat of the failed one),
+      flagged: tight near-photoreal close-up of two slides over one pool;
+      the keyframe's wide watercolor aerial layout is gone — same failure
+      mode as hyde; re-render option recorded. University-place ships as a
+      still+narration FALLBACK (haymarket precedent, no 3rd regen): source
+      still held 10 s with existing Casper narration + v1 audio bed at 0.30,
+      peak −1.01 dB, no text possible. Batch 03 now 9/9.
+- [x] 2026-11-08 — **Archway mix-only follow-up DONE: batch 06 now 9/9,
+      build 106/106 COMPLETE.** The regen raw was mixed with existing
+      vdc_2561 TTS (no re-render, no video call), verified, and swapped in
+      as `archway.mp4` (md5 `0f12426222d1226eecd11a909523c415`, 7,043,093 B).
+      Coordinator re-verified independently: 10.000 s / 1152×768 / 24 fps /
+      h264+AAC, decode exit 0, peak −1.0 dB, mean −18.7 dB, bed −10.5 dB in
+      the voice-free gap; 6 s + 9.5 s frames viewed — bridge hero + highway
+      + cars in frame throughout, both wagons in place. The held v1 is
+      preserved at `work/held-original-archway.mp4`. Bed-30% per worker
+      measurement. Not verified by ear.
 
-- [x] Pilot (cases 0–19): 105 rendered, 19% flagged, worst case
-  479,225 B of the 500,000 B budget, ≈16.9 s/case at concurrency 4.
-- [x] Full batch: 387/387 core cases carry all five clue reads
-  (1,935 reads; case 137's five pre-existed). Core clue audio totals
-  141.9 MB; the detective audio tree is 239 MB. Audio loads lazily
-  per case — the entry JS chunk is unchanged (457,847 B).
-- [x] Budget cures: five cases (28, 54, 87, 144, 289) busted the
-  500,000 B budget on one very slow take each; re-encoding the
-  affected clips at 32 kbit/s brought every case back under budget
-  with pitch and duration measurements unchanged. Zero cases held.
-- [x] Flagged disposition (explicit, not silent): 314 of 1,935 reads
-  ship flagged by the pipeline's pitch/pace ladders — 103 outside
-  Watson's family band (78–127 Hz), 6 under the 100 wpm pace floor,
-  the rest inside-band pitch flags. A cure pass re-rendered the 103
-  outside-band lines fresh: 0 landed inside the band, so the shipped
-  takes stand. The Capitals pack ships the same flagged state
-  (85 of 550) — flagged is the pipeline's designed "accepted with a
-  note" state, and every flagged line is named in the PR body.
-- [x] Manifest gate extended: `checkCoreCoverage` fails the build
-  when a core case is neither claimed with all five reads nor on
-  the explicit hold list (`coverage.coreHolds`, currently empty).
-  Sabotage controls proven: an emptied entry (case 42), an
-  over-budget case (case 10), and a dropped case (case 77) each
-  fail the gate by name. Real tree: gate clean, 4,462 entries
-  verified.
-- [x] Handbook ch.10: FG-3 marked CLOSED by U11; the flip checklist's
-  core-case item ticked with the closing E2E named.
-- [x] Gates on the finished tree: typecheck clean · unit suites
-  1,028 pass / 0 fail (scripts) + 2,266 / 2,266 (src) · worker
-  145 / 145 · lint-cards GATE PASSED · build:pages green.
+## Video cap (discovered 2026-11-08, affects every batch)
+The media pipeline allows at most **6 successful videos per agent
+message**, even when the task asks for more. Batch 01 used all 6 on sets
+1–2; set 3 was unbuilt. Every batch will need a follow-up run for its
+last 3 clips (batch 08: last 2; batch 12: last 1) — ~24 worker runs total
+instead of 12. Follow-up spawns are new messages, so each gets a fresh
+6-video budget. **Exception observed 2026-11-08: batch 04 delivered 9/9
+in one run — all 9 generations succeeded, cap did not block.** The cap
+is enforced per run, not per batch; do not assume it.
+
+## Held clips — none. (Resolved holds kept below for the record.)
+- archway (batch 06): hold OVERTURNED 2026-11-08 (see Resolved holds) and
+  the regen is now live. Nothing is held.
+- haymarket (batch 01) ships as a flagged still+narration FALLBACK
+  (AI video failed the no-text gate TWICE); a 3rd attempt would need a
+  different approach (no clock tower in frame).
+- university-place (batch 03) ships as a flagged still+narration FALLBACK
+  (v1 + v2 both failed the no-text gate); see Done above.
+
+## Resolved holds (were held, now live — record kept here)
+- archway (batch 06): the regen was first refused for showing TWO wagons
+  against an "exactly one wagon" gate. Coordinator overturn: the calm
+  keyframe itself contains two wagons (white-covered left, open wagon
+  centre-right) and the regen shows the same two in the same positions —
+  the source art's own exhibits, not a duplication. Mixed with existing
+  TTS, verified, swapped in 2026-11-08. Batch 06 now 9/9.
+- havelock, southpointe (batch 03): v2 regens passed, live.
+- neuschwanstein (batch 11): v2 regen passed, live.
+- holmes-lake, wyuka, gateway (batch 02): v2 AI regens with real bed, live.
+- kingsley, smith-falls, fort-robinson, chimney-rock (batch 06): v2 regens
+  with real bed + visible payoffs, live.
+- potala (batch 12): v2 locked-wide regen, palace holds, live.
+
+## Storage proposal (recorded in docs/journal-movies.md)
+Movies do NOT live in this repo (~600 MB would quadruple git objects and
+push Pages toward the 1 GB cap). Separate repo `veeresh-bikkaneti/meridian-media`
+with its own GitHub Pages; a future player (NOT BUILT) would lazy-load by
+URL on entry open, which the current CSP `media-src 'self'` would block.
+Still a proposal: storage/hosting/privacy is Tier 2 and has no Consensus
+Manifest or owner citation recorded here. Manifest here maps entry id → URL. R2 is the better long-term host but needs owner
+provisioning; media repo needs none.
 
 ## Pending
+- [ ] Create `veeresh-bikkaneti/meridian-media` repo + Pages; upload pilot
+      v4 unchanged as `old-faithful.mp4`; verify URL serves. — DONE 2026-11-08
+      (repo created, Pages on, pilot live; see Done above).
+- [ ] Verify each batch as it lands (ffprobe/decode/frames/audio/no-text),
+      upload to meridian-media, update manifest, commit + push progressively.
+- [ ] Report first completed batch to owner promptly; keep reporting per batch.
+- [ ] Gates before PR: `npx tsc --noEmit`, `npm test`, `node scripts/lint-cards.mjs`,
+      `npm run build:pages`, Playwright E2E (sequential, under `flock` lock).
+      Superseded: PR #369 is open; see its body and review records for runs.
+      Full E2E suite has not completed on any head.
+- [ ] **Manifest validator gate — BLOCKED on Tier 2.** Independent review
+      (2026-11-08) reproduced on `cb01f91c`: appending invalid JSON, deleting
+      an entry, adding an unknown id, or duplicating a key in
+      `public/videos/journal-manifest.json` all still pass `npm run
+      build:pages`, `npm test` (scripts suite) and `lint-cards`, and ship.
+      A validator (new module + test + `prebuild`/`prebuild:pages` wiring) is
+      a new module across 3+ files → Tier 2 (`AGENTS.md`, tier table), and
+      the protocol forbids implementation code before a signed Consensus
+      Manifest (`docs/ops/agent-council-protocol.md` §2, directive 1). Draft contracts
+      exist off-branch; council not convened, nothing signed.
+- [ ] Manifest top-level `note` still says movies "load only on request" —
+      present tense for an unbuilt player. Correct it with the validator work.
+- [ ] Trusted listen of all 106 narrations against each entry's story text,
+      and full-resolution visual clearance — INCOMPLETE (automated
+      descriptions exist; not a clearance).
+- [ ] Live six-viewport browser check of the journal on this head — NOT RUN.
+- [ ] Panel review of the final tip; owner's merge word — pending.
 
-- [x] E2E `tests/e2e/detective-core-audio.spec.ts` — **RUN AND
-  PASSED 2026-11-09** (close-out below): all 3 tests by name —
-  (a) all five clue clips fetched (HTTP 200) and play, in order ·
-  (b) tap-Watson repeats the clue itself, not the ack or decode ·
-  (c) solving at guess 2 flushes the queue.
-- [x] Silo QA PASS @ `93a8fe52` (isolated worktree: manifest gate
-  clean, typecheck, lint-cards, all suites green, silo's own
-  sabotage control bites). **Key VOIDED by the close-out tip
-  `fb46cf55` — Silo re-key is the next step.**
-- [ ] Silo re-key, 13-seat panel vote, DevEx, benchmark; merge on
-  READY under ship-when-ready; live check on both hosts.
-- **LANE STOOD DOWN 2026-11-08** (owner's sequential pipeline
-  law): queue position 3, behind the Watson-station cure and
-  PR #364. (The lane later resumed and closed out in this file —
-  see the Close-out section below; the old `RESUME-STATE.md`
-  worktree file was retired 2026-11-09, its record lives in
-  this file and the PR #370 body.)
-
-## Close-out (2026-11-09, Agent ARCHIVE)
-
-- **Merge-up done:** `origin/main` @ `5e6af2f9` merged in (merge
-  commit `02798fd3`) — the two main commits past the old base
-  `9e49da3` are `63d82869` (#372 Watson-station cure) and
-  `5e6af2f9` (#340 guess counter). Sole conflict:
-  `BRANCH_STATUS.md`, resolved keeping BOTH records (this U11
-  capsule and main's #340 capsule both stand below). Handbook
-  ch.10 auto-merged as a faithful union: main's Watson-station
-  section came in, and this branch's FG-3 CLOSED record replaced
-  main's open FG-3 text.
-- **Playwright project added** (commit `6d4ad8e4`):
-  `detective-core-audio` registered in `playwright.config.ts`
-  immediately after `detective-berth` — the registration gap was
-  why the spec never ran locally or in CI.
-- **Fast gates on the merged + config tree, all PASS:**
-  typecheck clean · `npm test` — scripts 1,028 pass / 0 fail,
-  src 2,268 / 2,268 · worker 145 / 145 · lint-cards GATE PASSED ·
-  audio manifest gate clean (4,462 entries verified) ·
-  build:pages green (buildId `6d4ad8e4`).
-- **E2E run 1** (log
-  `~/workspace/meridian-detective-evidence/u11/e2e-core-audio.log`):
-  2 passed, test (b) FAILED — a spec defect, not a product
-  defect: test (b) scoped its `detective-watson-replay` locator
-  inside the `loop-map` subtree, but the button renders at the
-  station (the failure snapshot shows "Ask Watson to repeat this
-  clue" below the map region); every other spec using this
-  button scopes it page-wide. Fixed in commit `fb46cf55`
-  (locator scope only — same button, same count assertion, same
-  click; no assertion loosened).
-- **E2E run 2** (log
-  `~/workspace/meridian-detective-evidence/u11/e2e-core-audio-run2.log`):
-  **3 passed (2.9 m), exit 0** — (a) core case: all five clue
-  clips are fetched (HTTP 200) and play, in order · (b) core
-  case: tap-Watson repeats the clue itself, not the ack or
-  decode (replay started with `case-5/clue-1.mp3`) · (c) core
-  case: solving at guess 2 flushes the queue — no clue audio
-  fires after the solve.
-- **Tip after close-out: `fb46cf55`.** Remaining: Silo re-key →
-  panel → DevEx → benchmark → merge on the owner's word →
-  live verification on both hosts.
+## Never
+- Never merge — merge word stays the owner's, per PR, per head.
+- Never rebuild the pilot. Never bundle all 106 into the app (lazy-load only).
+- No ear-verification here — owner's listen is the final check per clip.
 
 ---
 
-# BRANCH_STATUS — feat/geodetective-end-game
+## Merged main record — feat/watson-station (PR #372, main @ 63d82869)
+
+Preserved from main during the rebase onto 63d82869: the watson-station
+branch-status record that main carried at the merge. It is not this
+branch's work; it is kept here so the rebase does not silently drop it.
+
+### feat/watson-station record
+
+- **Branch:** `feat/watson-station` · **Base:** `main` @ `9e49da3` (PR #365 merged + live)
+- **Task:** Watson holds the clue-card station through the guessing phases.
+- **Owner defect:** 2026-11-08 ~00:53 CST — Watson standing large at the
+  map's bottom-left corner on the owner's phone during guessing.
+- **Diagnosis of record:** `~/workspace/meridian-detective-evidence/diag-watson-corner/DIAGNOSIS.md`
+  — the walk works on live production; when a clue read ends, the state
+  machine enters `SEARCH_IDLE`, whose view parked Watson at placement
+  "dock" (rendered inside the map, bottom-left), and `SEARCH_AREA` /
+  `SELECTION_READ` / `ASK_NEXT` kept him docked. Owner's standing ruling
+  (2026-11-07): "Watson stays at the clues once play starts."
+
+TASK / requested outcome: change Watson's placement from "dock" to
+"station" in exactly four phases of `viewForState`
+(`src/game/loop/detective/detective-state.ts`) — SEARCH_IDLE,
+SEARCH_AREA, SELECTION_READ, ASK_NEXT — poses unchanged, no Holmes
+placement or pose changed anywhere. Verify DetectiveHost needs no
+logic change (it renders purely from the machine's placement), update
+the unit + E2E pins that required Watson at the dock in the FULL
+(non-degraded) path, and record the cure in the handbook.
+
+Tier and rationale: Tier 1 builder silo under the coordinator's brief —
+one proven mechanism, one view-table change. Independent clean-context
+QA + panel verification are run by other agents, not the builder.
+
+Done condition / evidence:
+- Unit (TDD, RED first): the search-view pin flips dock → station; a
+  new per-phase test pins SEARCH_AREA / SELECTION_READ / ASK_NEXT with
+  Holmes-placement guards in all four phases. RED confirmed
+  (dock ≠ station) before the cure; GREEN after.
+- Host check: every `view.watson.placement === "dock"` consumer traced
+  (`watsonOnMap`, `watsonReplayDockEl`, `mapSoundEl` guard, the map
+  portal block) — all are placement-generic; in the cured phases the
+  station cluster (figure, gutter transform, replay-at-station,
+  station sound cluster) takes Watson and the map portal renders
+  Holmes alone (the dock cluster markup is already conditional on
+  `watsonOnMap`, so it tolerates Watson's absence). **Zero host logic
+  changes** — only two stale comments updated.
+- Degraded path untouched by design: dock-only companion
+  (`data-companion="dock"` — Holmes's berth verdict), tap speech mode,
+  and the "dock" member of `WatsonPlacement` (host fallback) all stay;
+  E2E pins for that path were not modified.
+- Gates: see Status below (real results, filled by the builder).
+
+Files in scope: `src/game/loop/detective/detective-state.ts`,
+`src/game/loop/detective/detective-state.test.ts`,
+`src/game/loop/detective/DetectiveHost.tsx` (comments only),
+`tests/e2e/detective-replay.spec.ts`, `tests/e2e/detective-sound.spec.ts`,
+`tests/e2e/detective-visibility.spec.ts`,
+`tests/e2e/detective-watson-walk.spec.ts`,
+`tests/e2e/detective-endings.spec.ts` (gap-closure round),
+`tests/e2e/detective-staging.spec.ts` (comment only),
+`docs/handbook/10-holmes-and-watson-pair.md` (new dated record section),
+this file.
+
+Collision note: the #364 lane (`feat/holmes-follow`) touches the same
+two source files (`detective-state.ts`, `DetectiveHost.tsx`). This
+branch is off `main` @ `9e49da3` and merges independently; whichever
+lane merges second rebases over the other.
+
+## Status
+
+- [x] Diagnosis read in full; mechanism confirmed in code
+- [x] Unit test RED (dock ≠ station in the four phases)
+- [x] Cure: four placements → "station" + plain-tone why-comments — `63879d8`, pushed
+- [x] Host audit: zero logic changes needed; stale header + map-render comments updated — `45865ff`, pushed
+- [x] E2E pins updated (full path only; degraded pins untouched) — `c142574`, pushed
+- [x] Handbook: "Watson station cure (2026-11-08)" record section — `d732610`, pushed
+- [x] Builder gates:
+  - `npx tsc --noEmit` — clean
+  - `npm test` — PASS (final suite 2267/2267, 0 fail; command exit 0)
+  - `npm run test:worker` — PASS (145/145, 0 fail)
+  - `node scripts/lint-cards.mjs` — GATE PASSED
+  - `npm run build:pages` — PASS (exit 0; prerender + fingerprint-sw
+    completed. Two earlier local attempts were killed by VM restarts
+    mid-build — environment, not build errors — and the gate was
+    re-run clean to this result.)
+- [x] PR opened — PR #372 (opened by the pipeline finisher; the
+  builder brief forbade the builder from opening it)
+- [ ] Merge — on the owner's word / coordinator only, never the builder
+
+## GATES STATE (finisher session, 2026-11-08 — updated after every gate)
+
+Finisher: pipeline-finisher subagent (lane 1 of the owner's sequential
+pipeline law). Base verified against **origin/main `9e49da3`** — the
+local `main` ref is stale (#361-era `97d1dcf`); origin/main IS an
+ancestor of this branch and the true branch diff is 11 files (709+/185−, measured at 3f3eaf0; later commits are docs-only).
+
+- [x] Chromium launch RE-TEST: the WebGL-policy outage is OVER for the
+  real spec path — Playwright + bundled chromium-1243 launches and
+  renders the app. Two environment facts every E2E run here needs:
+  (1) `PLAYWRIGHT_CHROMIUM_EXECUTABLE` must point at the bundled 1243
+  binary (the config default `/opt/meta-chromium/chrome` refuses to
+  launch); (2) runs go with `TMPDIR=$HOME/playwright-tmp` — the VM's
+  /tmp is a 512 MB tmpfs that LANDED AT 100% under other lanes'
+  profile/cache junk (since freed), and the home volume carries an
+  EDQUOT **file-count** quota: Chromium dies with SIGBUS
+  (`BUS_ADRERR`, "Creating shared memory … Disk quota exceeded (122)")
+  once renderer shared-memory creation hits it.
+- [x] **Gate 1a — `detective-endings.spec.ts`: RUN, 0 passed / 2 failed**
+  (full reporter output read; logs in
+  `~/workspace/meridian-detective-evidence/station-e2e-2026-11-08/`).
+  Runs 1–3 died at the first click on environment (full /tmp, then the
+  EDQUOT crash). **Run 4 (clean environment) played both tests end to
+  end** — the complete WIN path and the full 5-guess FAIL path ran —
+  and both failed on the NEW N2 audit windows only:
+  - WIN: `WIN celebrate→debrief @ endings` — worst
+    `map:high-five` over clue-2 text ("This is a hot desert cit…"),
+    max overlap 4,777.5 px² over 2,900 samples.
+  - FAIL: `FAIL fail-read→pout @ endings` — worst `map:think` over
+    clue-4 text ("After the PEPCON disaste…"), max overlap 4,777.5 px²
+    over 11,920 samples.
+  - **N7 VERIFIED PASSING inside the WIN run:** no clue-3/4/5 clip in
+    the play record or the network list after the guess-2 solve (the
+    test reached and passed that assertion before failing at the N2
+    absorb; absence checks fail loudly, so reaching the absorb proves
+    them).
+  - **What the failure IS (screenshots read first-hand):** at the
+    1440 px endings viewport, Watson stands at his clue-card STATION
+    (left gutter beside the active card — the cure working) and Holmes
+    stands on the card's LEFT EDGE, his painted box overlapping the
+    card's first text column. Holmes is the CELEBRATE/FAIL_READ layout
+    partner placed beside Watson by the host's existing celebration
+    layout — a phase this branch never touched (CELEBRATE was already
+    "station" for Watson before the cure; FAIL_READ likewise). The
+    sampler's "map:" prefix is its cluster label for Holmes, not a map
+    position — in both failure screenshots **neither figure is on the
+    map**; both stand at the clue cards. So: **pre-existing
+    celebration/fail-read layout overlap, exposed by the NEW N2
+    windows (Silo QA's own gap), not a regression of this cure.**
+    Per the finisher brief (pin exposes a product bug → flag before
+    touching production code) this is flagged to the parent for a
+    routing decision; the pins are NOT loosened and production code
+    is NOT touched by this session.
+- [x] **Gate 1b — `detective-watson-walk.spec.ts`: 9 passed / 0 failed**
+  (PLAYWRIGHT_EXIT=0, full output read; log `e2e-walk1.log` in the
+  evidence dir). The main walk test at 390/768/1280 carries BOTH the
+  N2 guessing-chain window (SELECTION_READ → NOTE_MARK → ASK_NEXT →
+  READING sampled in order; window absorbed at 0 px²) and the clue-2
+  walk window — **N2 guessing-chain half: PASSING**. The new mid-walk
+  tap test passed — **N6: PASSING**. Kill-switch (watsonWalk OFF) and
+  reduced-motion tests also passed.
+- [x] **Gate 2 — nit-5 measurement TAKEN: maxOverlap 0 px²**
+  (watsonWalk OFF via `fulfillFlagsStaging`, 390 px; throwaway probe,
+  written → run → deleted; log `e2e-nit5b.log`). 9,600 figure/text
+  pair samples across two 4 s windows: the first right after the
+  unlock gesture (host not yet mounted — phase null, bench/CASE_OPEN
+  window), the second starting 2.5 s after the guess commit (phase
+  SELECTION_READ, spanning the guessing-chain into the clue-2 read).
+  **No overlap anywhere on the walk-off path at 390 — nothing to
+  route.** Caveat for the record: the probe's strict READING-phase
+  gate never latched in the walk-off flow (the host mounts only after
+  the duet drains), so the windows are labelled by their actual
+  phases above, not by the intended READING label; the zero stands
+  for the windows sampled.
+- [x] Gate 3 — Silo QA delta re-key: the tip moved past `034535e`
+  ONLY by this file's GATES-STATE commits (records, zero code/test
+  changes) — the existing PASS-WITH-NITS + the now-run-verified gaps
+  stand; no code delta exists to re-key. Stated per the finisher
+  brief's either/or.
+- [x] Gate 4 — PR opened: PR #372; the parent's routing decision
+  (a) is recorded — the N2-endings failure is routed to its own
+  follow-up (issue #371) and this PR proceeds with the failure
+  recorded honestly in the PR body.
+- [ ] Gates 5–7 — panel + DevEx + benchmark ran on `3f3eaf0`
+  (panel 13/13 in: 1 APPROVE, 10 APPROVE-WITH-NITS, 2 BLOCKs both
+  adjudicated pre-existing/out-of-scope — game audio → PR #370/PR 2,
+  game player → issues #371/#373 + PR #370/PR 2; DevEx records cure
+  applied after the panel, confirmation re-vote follows); merge
+  awaits the panel verdict on the cured tip + the parent's merge
+  call on the standing audio BLOCK.
+
+> **SUPERSEDED — records cure, 2026-11-08 (pipeline finisher).**
+> This capsule's per-gap run statuses below are STALE: they were written
+> before the re-runs and claim several gaps are "NOT YET RUN", nit-5 is
+> "not taken", and the Chromium outage is current. All three are wrong
+> now. The **GATES-STATE section above is the current record**: GAP 4
+> (N7) RUN VERIFIED PASSING; GAP 2 endings windows RUN — FAILED on the
+> pre-existing CELEBRATE/FAIL_READ overlap (issue #371); GAP 2
+> guessing-chain + GAP 3 (N6) RUN VERIFIED PASSING (walk spec 9/9);
+> nit-5 MEASUREMENT TAKEN (maxOverlap 0 px²); the Chromium outage is
+> OVER. Where this capsule and GATES-STATE disagree, GATES-STATE wins.
+
+## Gap-closure round (2026-11-08, Silo QA PASS-WITH-NITS follow-up)
+
+Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
+
+- [x] **GAP 1 (N1) — pinned + PASSING** (`49f210d`): unit test
+  "station law past guessing: THINKING_BEAT, FAIL_READ, POUT,
+  DEBRIEF and CELEBRATE never dock Watson (owner ruling 2026-11-07)"
+  in `detective-state.test.ts` — Watson's placement asserted
+  "station" in all five phases (CELEBRATE across all four
+  choreography steps). Full suite: `npm test` 2268/2268.
+- [x] **GAP 4 (N7) — pinned, RUN VERIFIED PASSING (GATES-STATE Gate 1a)** (`35db604`): endings
+  spec "WIN in 2" asserts, after a 2 s settle, that no
+  `case-137/clue-3.mp3`, `clue-4.mp3` or `clue-5.mp3` appears in
+  either the play record or the network request list. RUN: verified
+  passing inside the Gate 1a endings run — the test reached and
+  passed this assertion before the run's N2-window failure (absence
+  checks fail loudly, so reaching the absorb proves them).
+  (Correction, same day: an earlier version of this capsule
+  claimed this and the N2
+  endings windows were PASSING on a "2 passed" endings run.
+  That was a misread of truncated, piped output: the run's full
+  output shows **2 failed**, both at browser launch. No endings
+  test has passed in this round.)
+- [x] **GAP 2 (N2), endings half — pinned, RUN (windows FAILED on the pre-existing overlap, issue #371)**
+  (`35db604`): audit windows "WIN celebrate→debrief @ endings"
+  (9 s, opens at CELEBRATE) and "FAIL fail-read→pout @ endings"
+  (12 s, opens at the final miss) absorbed through `AuditTrail`
+  at 0 px². RUN (GATES-STATE Gate 1a): both windows absorbed
+  overlap up to 4,777.5 px² from Holmes's pre-existing
+  celebration/fail-read placement (issue #371).
+- [x] **GAP 2 (N2), guessing-chain half — pinned, RUN VERIFIED PASSING (walk spec 9/9, GATES-STATE Gate 1b)**
+  (`368c201`): in the watson-walk main test (all 3 widths), a
+  12 s audit window "guessing chain selection→note→ask-next"
+  opens once SELECTION_READ is live + 300 ms (the documented
+  ~200 ms guess-commit FLIP exclusion kept exactly), with a
+  trace assertion that SELECTION_READ → NOTE_MARK → ASK_NEXT →
+  READING were sampled in order and a play-order subsequence
+  (name → suspicion → ask-next → clue-2). RUN: the window
+  absorbed at 0 px² at all three widths.
+- [x] **GAP 3 (N6) — pinned, RUN VERIFIED PASSING (GATES-STATE Gate 1b)** (`368c201`): new
+  watson-walk test "watson walk: tap on Watson MID-WALK is
+  ignored — one figure, walk arrives, held clue read fires
+  exactly once (phone 390)". Pins the shipped behaviour: during
+  a speech-gated walk the replay cue is hidden and the figure
+  cluster is pointer-events:none, so the tap is a no-op — walk
+  still "walking" after the tap, exactly one
+  `[data-detective="watson"]` in every walking sample (never >1
+  anywhere), clue-2 read + ack-2 each exactly once. RUN: passing
+  in the Gate 1b walk-spec run (9/9).
+- [x] **OBSERVATION (nit 5) — MEASUREMENT TAKEN: maxOverlap 0 px² (GATES-STATE Gate 2).**
+  The finisher re-ran the probe (audit sampler + per-frame
+  phase, watsonWalk OFF via `fulfillFlagsStaging`, 390px, two
+  4 s windows, 9,600 pair samples): maxOverlap 0 px² (log
+  `e2e-nit5b.log`). The probe's strict READING gate never latched
+  in the walk-off flow, so the windows are recorded under their
+  actual phases in GATES-STATE Gate 2.
+- **Chromium outage — RESOLVED (see GATES-STATE Gate 1).** At the
+  time this capsule was written, every NEW Chromium launch on
+  this VM failed with `Hatch WebGL domain policy is required
+  for browser startup` (chrome_main_delegate.cc:1283) — a
+  runtime policy delivery break, not a code issue. The finisher
+  re-test found the outage OVER on the real spec path
+  (Playwright + bundled chromium-1243 launches and renders).
+  The re-runs prescribed here are DONE — GATES-STATE Gates 1a/1b
+  record the results. Historical detail, kept for the record:
+  the endings run started 10:42 (VM clock) **failed both tests at
+  browserType.launch** with exactly this error (full output in
+  the run log; error contexts under `test-results/`); a bare
+  `chrome --headless --dump-dom about:blank` reproduced it and
+  was still failing at 11:38. The binary's strings show it
+  requires `--hatch-webgl-allowed-domains-file` + `-sha256`
+  switches that are not present on disk. Re-run prescription
+  (DONE):
+  `npx playwright test tests/e2e/detective-endings.spec.ts --workers=1`
+  then `npx playwright test tests/e2e/detective-watson-walk.spec.ts --workers=1`
+  (read the full reporter output — a piped `tail` masks the
+  playwright exit code; that masking caused the correction
+  above).
+- [x] Gap-round gates: `npx tsc --noEmit` clean ·
+  `npm test` PASS 2268/2268 · `npm run test:worker` PASS 145/145 ·
+  `node scripts/lint-cards.mjs` GATE PASSED ·
+  `npm run build:pages` PASS (exit 0)
+
+---
+
+## Merged main record — fix/337-guess-counter (PR #340, main @ 5e6af2f9)
+
+Preserved from main during the rebase onto 5e6af2f9: the #340
+branch-status record that main carried at the merge. It is not this
+branch's work; it is kept here so the rebase does not silently drop it.
+
+### fix/337-guess-counter record (verbatim from main @ 5e6af2f9)
+
 # BRANCH_STATUS — fix/337-guess-counter
 
 - **Branch:** `fix/337-guess-counter`
@@ -341,6 +799,130 @@ No Cloudflare Workers build result for `16daa5ad`.
 
 
 ---
+
+## Merged main record — feat/u11-clue-renders (PR #370, main @ f2bbf1a2)
+
+# BRANCH_STATUS — feat/u11-clue-renders
+
+- **Branch:** `feat/u11-clue-renders` · **Base:** `main` @ `9e49da3` (PR #365 merged + live)
+- **Design of record:** clue-read diagnosis (evidence folder
+  `clue-read-diagnosis/DIAGNOSIS.md`) + owner approval (Veeresh,
+  2026-11-08 ~03:02 CST, in the `meridian` side chat): "Approve the
+  full render — all 386 core cases."
+
+## Task capsule
+
+TASK / requested outcome: Phase A rendered clue audio for the
+Capitals pack only, so 386 of the 387 core-deck cases had empty clue
+entries in the audio manifest and their clues were never read aloud
+(handbook ch.10 gate FG-3). Render all five clue reads for every core
+case in Watson's cast voice, extend the manifest gate so an empty
+core clue entry fails the build, and prove by ear-level E2E that a
+core case's clues fetch and play.
+
+OWNER APPROVAL (Veeresh, 2026-11-08): the full render of all 386
+core cases, on the diagnosis that the playback machinery already
+worked and only the renders were missing.
+
+## Done
+
+- [x] Pilot (cases 0–19): 105 rendered, 19% flagged, worst case
+  479,225 B of the 500,000 B budget, ≈16.9 s/case at concurrency 4.
+- [x] Full batch: 387/387 core cases carry all five clue reads
+  (1,935 reads; case 137's five pre-existed). Core clue audio totals
+  141.9 MB; the detective audio tree is 239 MB. Audio loads lazily
+  per case — the entry JS chunk is unchanged (457,847 B).
+- [x] Budget cures: five cases (28, 54, 87, 144, 289) busted the
+  500,000 B budget on one very slow take each; re-encoding the
+  affected clips at 32 kbit/s brought every case back under budget
+  with pitch and duration measurements unchanged. Zero cases held.
+- [x] Flagged disposition (explicit, not silent): 314 of 1,935 reads
+  ship flagged by the pipeline's pitch/pace ladders — 103 outside
+  Watson's family band (78–127 Hz), 6 under the 100 wpm pace floor,
+  the rest inside-band pitch flags. A cure pass re-rendered the 103
+  outside-band lines fresh: 0 landed inside the band, so the shipped
+  takes stand. The Capitals pack ships the same flagged state
+  (85 of 550) — flagged is the pipeline's designed "accepted with a
+  note" state, and every flagged line is named in the PR body.
+- [x] Manifest gate extended: `checkCoreCoverage` fails the build
+  when a core case is neither claimed with all five reads nor on
+  the explicit hold list (`coverage.coreHolds`, currently empty).
+  Sabotage controls proven: an emptied entry (case 42), an
+  over-budget case (case 10), and a dropped case (case 77) each
+  fail the gate by name. Real tree: gate clean, 4,462 entries
+  verified.
+- [x] Handbook ch.10: FG-3 marked CLOSED by U11; the flip checklist's
+  core-case item ticked with the closing E2E named.
+- [x] Gates on the finished tree: typecheck clean · unit suites
+  1,028 pass / 0 fail (scripts) + 2,266 / 2,266 (src) · worker
+  145 / 145 · lint-cards GATE PASSED · build:pages green.
+
+## Pending
+
+- [x] E2E `tests/e2e/detective-core-audio.spec.ts` — **RUN AND
+  PASSED 2026-11-09** (close-out below): all 3 tests by name —
+  (a) all five clue clips fetched (HTTP 200) and play, in order ·
+  (b) tap-Watson repeats the clue itself, not the ack or decode ·
+  (c) solving at guess 2 flushes the queue.
+- [x] Silo QA PASS @ `93a8fe52` (isolated worktree: manifest gate
+  clean, typecheck, lint-cards, all suites green, silo's own
+  sabotage control bites). **Key VOIDED by the close-out tip
+  `fb46cf55` — Silo re-key is the next step.**
+- [ ] Silo re-key, 13-seat panel vote, DevEx, benchmark; merge on
+  READY under ship-when-ready; live check on both hosts.
+- **LANE STOOD DOWN 2026-11-08** (owner's sequential pipeline
+  law): queue position 3, behind the Watson-station cure and
+  PR #364. (The lane later resumed and closed out in this file —
+  see the Close-out section below; the old `RESUME-STATE.md`
+  worktree file was retired 2026-11-09, its record lives in
+  this file and the PR #370 body.)
+
+## Close-out (2026-11-09, Agent ARCHIVE)
+
+- **Merge-up done:** `origin/main` @ `5e6af2f9` merged in (merge
+  commit `02798fd3`) — the two main commits past the old base
+  `9e49da3` are `63d82869` (#372 Watson-station cure) and
+  `5e6af2f9` (#340 guess counter). Sole conflict:
+  `BRANCH_STATUS.md`, resolved keeping BOTH records (this U11
+  capsule and main's #340 capsule both stand below). Handbook
+  ch.10 auto-merged as a faithful union: main's Watson-station
+  section came in, and this branch's FG-3 CLOSED record replaced
+  main's open FG-3 text.
+- **Playwright project added** (commit `6d4ad8e4`):
+  `detective-core-audio` registered in `playwright.config.ts`
+  immediately after `detective-berth` — the registration gap was
+  why the spec never ran locally or in CI.
+- **Fast gates on the merged + config tree, all PASS:**
+  typecheck clean · `npm test` — scripts 1,028 pass / 0 fail,
+  src 2,268 / 2,268 · worker 145 / 145 · lint-cards GATE PASSED ·
+  audio manifest gate clean (4,462 entries verified) ·
+  build:pages green (buildId `6d4ad8e4`).
+- **E2E run 1** (log
+  `~/workspace/meridian-detective-evidence/u11/e2e-core-audio.log`):
+  2 passed, test (b) FAILED — a spec defect, not a product
+  defect: test (b) scoped its `detective-watson-replay` locator
+  inside the `loop-map` subtree, but the button renders at the
+  station (the failure snapshot shows "Ask Watson to repeat this
+  clue" below the map region); every other spec using this
+  button scopes it page-wide. Fixed in commit `fb46cf55`
+  (locator scope only — same button, same count assertion, same
+  click; no assertion loosened).
+- **E2E run 2** (log
+  `~/workspace/meridian-detective-evidence/u11/e2e-core-audio-run2.log`):
+  **3 passed (2.9 m), exit 0** — (a) core case: all five clue
+  clips are fetched (HTTP 200) and play, in order · (b) core
+  case: tap-Watson repeats the clue itself, not the ack or
+  decode (replay started with `case-5/clue-1.mp3`) · (c) core
+  case: solving at guess 2 flushes the queue — no clue audio
+  fires after the solve.
+- **Tip after close-out: `fb46cf55`.** Remaining: Silo re-key →
+  panel → DevEx → benchmark → merge on the owner's word →
+  live verification on both hosts.
+
+
+---
+
+## Merged main record — fix/credits-wait-for-content (PR #376, main @ f2bbf1a2)
 
 ## Capsule — fix/credits-wait-for-content (2026-11-09)
 
