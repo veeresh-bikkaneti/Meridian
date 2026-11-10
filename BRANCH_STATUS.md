@@ -14,6 +14,12 @@ owner's 7-category list added alongside the 2026-11-07 list, plus the
 **Workstream complete — all five briefs, cross-cutting definitions, the
 12-flag correction record, and the P8 category/coverage update are on
 the branch.**
+**Update 2026-11-10 (owner: remove religion completely):** §2 P8 stripped
+of religion — 2026-11-07 religious list struck, pilgrimage category
+removed, sensitivity review narrowed to a tone review for historical
+content, P8 gaps five → four. The religions-epics and pilgrimage spec
+branches were deleted (religions-epics done; pilgrimage pending the
+council-manifest check). Mythology stays (separate category).
 **Blocked (not by this branch):** every brief is PREPARED — AWAITING
 EDUCATOR SIGN-OFF (educator seat UNSTAFFED, no signer exists). P8: owner
 question — does the v4 listen-approval satisfy the v3 gate? P11: owner

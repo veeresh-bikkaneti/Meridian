@@ -314,19 +314,20 @@ this plainly) — do not claim it was.
    (never re-render approved video to add audio). A story produced before
    the process exists is out of order.
 2. **Global story list with citations and visible verbs** — the owner's
-   direction (2026-11-07): India (Himalayas, Vaishno Devi, the seven
-   sisters/holy rivers, Ramayana, Mahabharata, Bhagavad Gita), Jerusalem
-   (Christian history), Islam (Quran), Sikhs (Guru Granth Sahib), Greek
-   (Zeus and myths). Each story's facts cite a primary or authoritative
-   source (HIGH) — religious/historical content with no citation is
+   direction (2026-11-07), as amended 2026-11-10: religion removed from
+   the plan entirely. The 2026-11-07 list's religious items (Vaishno
+   Devi, Ramayana, Mahabharata, Bhagavad Gita, Jerusalem, Islam/Quran,
+   Guru Granth Sahib) are struck; the non-religious remainder (Himalayas
+   as geography) stands. Each story's facts cite a primary or
+   authoritative source (HIGH) — historical content with no citation is
    UNVERIFIED and out of scope. Each story needs a real visible verb
    (eruptions, waterfalls, battles); a story with no visible verb is
    deferred to a later tier, not forced. Most existing entries are static
    places and forcing a movie onto each would be slow pans.
    - **EXTENDED 2026-11-10 (owner, voice call) — the journal set must
      include these categories:** historical places, mythological places,
-     religious-importance places like pilgrimages, famous spots, World
-     War monuments, great leaders, and freedom fighters. This EXTENDS
+     famous spots, World War monuments, great leaders, and freedom
+     fighters. This EXTENDS
      the 2026-11-07 list above — keep everything built, add on top. Both
      lists stand in this brief. **Scope note:** the current 106 entries
      (81 US + 25 global landmarks) are the BUILT set — these categories
@@ -344,9 +345,8 @@ this plainly) — do not claim it was.
    clause (10 s fits ~8 s of speech); not a seamless loop; crowd drift in
    the final frame. Each limit has a fix in the process; a limit carried
    into 106 movies is a process failure.
-5. **Sensitivity review** for religious/historical content (Ramayana,
-   Mahabharata, Bhagavad Gita, Quran, Guru Granth Sahib, Bible, Greek
-   myths, Jerusalem): tone and respect, not just fact-checking. A story
+5. **Tone review** for historical content (world wars, leaders,
+   freedom fighters): tone and respect, not just fact-checking. A story
    with facts right and tone wrong is a failure.
 6. **Batch size** — curated tiers of 10–15 entries first, each with a
    real visible verb. 106 movies is ~3× the "36" first imagined. Batch
@@ -359,8 +359,7 @@ this plainly) — do not claim it was.
 **In:** per-story production process (written first); global stories in
 curated batches on top of the existing 106 (additive only — existing
 stories untouched); each new story: place + storyline movie + narration +
-cited source; religious/historical content cited, dated,
-sensitivity-reviewed; movies stream on demand only, never precached; the
+cited source; historical content cited, dated, tone-reviewed; movies stream on demand only, never precached; the
 journal showcase stays light (the lazy-load guardrail applies to media
 too, §6.3).
 
@@ -376,7 +375,7 @@ minutes, 106 entries over 53 hours); (c) batch size is the owner's choice
 on file; (d) media streams on demand only; (e) listen-along mockup — the
 story must read without reading (a mockup that needs its text read aloud
 to be understood fails); (f) voice direction cited (owner's 2026-11-07);
-(g) sensitivity review in the brief; (h) placement coordinated with P1;
+(g) tone review in the brief; (h) placement coordinated with P1;
 (i) no invented loop; (j) per-story checks are measurements; (k) pilot
 limits fixed in the process; (l) opening line cited ("Hey kids, have you
 heard about this place?" — owner's direction).
@@ -387,11 +386,8 @@ No educator persona exists. Nothing in this lens is approved. The named
 human educator / SME must sign IN WRITING, before batch production:
 
 1. The per-story production process.
-2. Religious/historical content — sensitivity + correctness (a wrong or
-   careless telling of a sacred story is the failure this packet cannot
-   absorb).
 
-**Blocked items:** both. Note the two gates are different people: the
+**Blocked item:** the production process. Note the two gates are different people: the
 **listen-verdict is the owner's**, not an educator's — do not confuse the
 two gates. The listen-verdict (does the voice land? does the story read
 without reading?) is the owner's ear; the sensitivity + correctness
@@ -436,7 +432,9 @@ transcribed from that audit, not re-derived here.
 - **Religious importance:** sites YES (Sagrada Família, Fushimi Inari,
   Potala, Angkor, Timbuktu, Christ the Redeemer, Alamo as former
   mission). Pilgrimage destinations NO — no Mecca, Varanasi, Jerusalem,
-  Vatican, Bodh Gaya, Amritsar, Santiago.
+  Vatican, Bodh Gaya, Amritsar, Santiago. Audit fact only — no
+  expansion: religion was removed from the plan by the owner 2026-11-10;
+  the pilgrimage and religions-epics spec branches were deleted.
 - **Mythology:** essentially missing — only Uluru (sacred to the Anangu)
   and Robber's Cave (local legend) touch it. No Greek, Norse, Hindu or
   other mythology entry.
@@ -453,12 +451,11 @@ transcribed from that audit, not re-derived here.
   death at Fort Robinson.
 
 > **RULE FOR P8 (binding on the expansion): only add what is NOT in
-> the 106.** The five gaps are: (1) World War monuments, (2) great
-> leaders, (3) freedom fighters, (4) pilgrimage destinations,
-> (5) mythology. Do NOT duplicate historical places or famous spots —
+> the 106.** The four gaps are: (1) World War monuments, (2) great
+> leaders, (3) freedom fighters, (4) mythology. Do NOT duplicate historical places or famous spots —
 > only add one of those if it fills a named gap (e.g. a WWII monument
 > that is also a famous spot counts as a monument, not as a famous
-> spot). The first batch (owner's choice, §2.6) is shaped by these five
+> spot). The first batch (owner's choice, §2.6) is shaped by these four
 > gaps, not by re-covering what the 106 already has.
 
 P8 stays GATED (no building; educator sign-off before final). Everything
