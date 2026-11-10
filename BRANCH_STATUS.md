@@ -311,13 +311,17 @@ provisioning; media repo needs none.
   111.1 Hz, below the 110–160 family band's floor edge after the pitch
   ladder (speed 112); ack-8 flagged on pace only (85 wpm vs the 90 floor,
   pitch in target at 123.7 Hz). ack-5/6/9/10 ok. Human ear check owed on
-  ack-7/ack-8 at panel time.
+  ack-7/ack-8 at panel time. *(Resolved since: the measurement ear check
+  in the next capsule kept both clips, and the owner ear-approved ack-7
+  on 2026-11-09.)*
 - **Untouched on purpose:** ack-1…4, suspicion, and every other fixed
   line are byte-identical to main (the render run's collateral re-renders
-  were restored); `detective-state.ts` still rotates 4 — the random
-  picker is Agent HERALD's piece, stacked on this branch.
+  were restored); at this branch's own tip `detective-state.ts` still
+  rotates 4 — the random picker is Agent HERALD's piece, stacked on this
+  branch (it landed in PR #386).
 - **Pending:** GATE opens the PR and runs integration + panel. No PR
-  opened by this branch's builder.
+  opened by this branch's builder. *(Done since: PR #385; its final tip
+  after the merge-up is `c8f40692`.)*
 
 ## GROK-REWORK — independent verification + ear check (2026-11-09)
 
@@ -1029,6 +1033,7 @@ worked and only the renders were missing.
 
 # BRANCH_STATUS — feat/pivot-flank (PR 2a integration, GATE, 2026-11-09)
 
+- **Current tips (after the later merge-up onto main `10e8121d`, #369):** `feat/pivot-ack-renders` @ `c8f40692` (PR #385) → `feat/pivot-speech` @ `8475c111` (PR #386) → this branch @ `b8bfc8d4` (PR #387), the panel's final voting tip. The capsules below are the chronological record; where a capsule names an older tip, that tip was current when it was written.
 - **Stack state:** the PR 2a train was rebased onto main `f2bbf1a2` (#370 + #376 merged) after #370's CSO sweep: `feat/pivot-ack-renders` @ `dcd4f717` → `feat/pivot-speech` @ `86ecbef7` → this branch. Manifest union verified: gate clean, 4,468 entries (main's 4,462 + ack-5…ack-10); fixed table 26, ack-1…ack-10 all present, `suspicion` single.
 - **This commit (integration):** `playwright.config.ts` gains the `detective-flank` project (beside `detective-core-audio`, mirroring `detective-staging`), and the stale "TWO taps by design" comment in `tests/e2e/detective-sound.spec.ts` (f) is cured — the STAGE first-tap cure arms the gesture listener at player creation, so the first Listen tap now plays; assertions unchanged, second tap kept as belt-and-braces.
 - **Pending:** GATE fast gates + the detective E2E set on this tip, then stacked PRs and the 13-seat panel on the final tip. No merge without the owner's per-PR word.
@@ -1073,3 +1078,4 @@ worked and only the renders were missing.
 - **Tests:** NEW played-level pin `tests/e2e/detective-tapmode-selection.spec.ts` (registered as the `detective-tapmode-selection` Playwright project): the OWNER'S configuration — pref "sometimes" seeded before first load, flank on, 390 px, held chains released by one Listen tap — (during) pick Las Vegas, confirm while the name clip is still playing; (after) pick Paris, wait for the name element's own `ended` flag, confirm in the next breath. Both assert: suspicion plays, the name was read exactly once, the counter shows Guess 2, and clue 2's chain is what Listen releases next. **Pre-cure RED [measured]: both tests fail on the suspicion assertion (30 s poll timeout) against the unmodified `99de79f1` build** (log: `pr2a/cure3/pin-precure-red.log`). Post-cure GREEN [measured]: 2/2 (log: `pr2a/cure3/pin-postcure-green.log`). NEW unit pins in `detective-audio.test.ts` (4): armed guess read (name + suspicion) plays for real in tap mode, in order, unarmed stays skipped · the sound gate still silences an armed guess read · a pick read never splices a queued guess read · arming is inert in auto mode.
 - **Gates on the cured tip [measured]:** tsc clean · `npm test` scripts 1,161 pass / 0 fail · src **2,322/2,322** (2,318 + 4 new pins) · worker 145/145 · lint-cards GATE PASSED · manifest clean 4,468 · build green. **E2E [measured, sequential `--workers=1` under flock, chromium-1243]:** the full detective battery in ONE run — selection-read **4/4** · watson-walk **9/9** · flank **7/7** · replay **3/3** · sound **10/10** · staging **11/11** · core-audio **3/3** = **47/47** (log: `pr2a/cure3/e2e-regression.log`) — plus the new tap-mode pin **2/2** above. Two adjudication re-runs were also done because the runtime's delivery of the battery output carried failure blocks that appear nowhere in the run's own log (no ✘ marks; stale test-results content): selection-read re-run **4/4** · watson-walk re-run **8/9** — the phone-390 main test failed the standalone re-run at the SELECTION_READ phase poll, the same intermittent signature control-proven pre-existing on the UNMODIFIED `65629760` build in cure 2's capsule (it passed in this cure's battery at 46.0 s); no assertion touched, and cure 3's surface (tap-mode marking + one wrapped dispatch) cannot move an auto-mode phase window.
 - **Pending:** Game Player RE-PLAY on this tip (both timings, owner tap-mode config — the re-play wins any disagreement with the spec, per the hunt) → panel re-vote (touched seats) → DevEx + benchmark → verdict to the owner. No merge without the owner's per-PR word; merges #385 → #386 → #387 in one sitting; the `detectiveFlank` flip stays gated on the kid read test.
+- **Status update (pipeline tail, 2026-11-10):** the re-vote round 3 code seats (Senior Developer + Game Developer) both returned APPROVE-WITH-NITS on this tip, and the Game Player re-play round 3 passed the owner-config gate — the panel is complete with 0 BLOCKs on `b8bfc8d4`. The remaining pipeline stages (Silo QA re-key, benchmark, DevEx/records) run on this tip; the verdict then goes to the owner. Merges stay the owner's hand, one sitting, #385 → #386 → #387.
