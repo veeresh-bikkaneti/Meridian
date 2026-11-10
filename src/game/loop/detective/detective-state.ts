@@ -192,22 +192,48 @@ export interface DetectiveState {
    * drains next is a PICK read (armed via speakSelection) with a
    * guess read queued behind it in the player; true while a GUESS
    * read (armed via guessConfirmed) owns the voice, and whenever no
-   * read is pending. clueUnlocked consults it to mark an unlock that
+   * read is pending. clueUnlocked consults it — together with
+   * selectionReadDone's arming-marker job — to mark an unlock that
    * lands mid-selection-read as a deferred guess's payload (the
    * pendingGuessConfirm pair) rather than a plain pending clue.
+   * A PICK read's own drain restores it to true (speechEnded at
+   * rest, follow-up cure 2) — the exit instant is part of the read's
+   * lifecycle, and a guess confirmed there still defers.
    * CAVEAT: guards suppress drained-while-held signals (e.g. the
    * deferred-drain consumption on sheet close), so a read can
    * drain without a speechEnded the ladder sees; hosts only ever
    * emit clueUnlocked/guess events off audible queue drains, so in
    * play the flag tracks the audible state faithfully. */
   selectionReadInFlight: boolean;
+  /** How the CURRENT SELECTION_READ was armed (follow-up cure 2):
+   * "direct" = a guess read armed at rest or mid clue chain (the
+   * shipped kind); "post-pick" = a guess read armed while a PICK
+   * read was playing ahead of it, or directly on a PICK read's
+   * exit drain; null = no selection read stands. Two writers:
+   * guessConfirmed, and the speechEnded pre-check in the SEARCH
+   * phases — the pre-check is the only transition that knows a
+   * pick read just drained at rest, so it leaves "post-pick"
+   * standing as the arming trace and guessConfirmed preserves it.
+   * The selection-read exit and every phase entry that clears the
+   * read clear it. clueUnlocked reads it (never selectionReadDone,
+   * whose resting meaning is the sheetClosed ASK_NEXT trigger) to
+   * route a post-pick guess read's unlock to the deferred-guess
+   * branch. */
+  selectionReadKind: "direct" | "post-pick" | null;
   /** Ask-next was already spoken for the pending unlock (sheetClosed
    * path), so the arriving clueUnlocked goes straight to READING. */
   askNextSpoken: boolean;
-  /** A selection read has completed this clue and the ladder is waiting
-   * in SEARCH_IDLE: a sheetClosed here is the task's ASK_NEXT trigger.
-   * Cleared by the next guess, clue, or ending so a stray sheet cycle
-   * during ordinary searching can never fire ask-next. */
+  /** A guess read has completed this clue (its drain ran the
+   * selection-read exit) and the ladder waits in SEARCH_IDLE: a
+   * sheetClosed here is the task's ASK_NEXT trigger. Cleared by the
+   * next guess, clue, or ending so a stray sheet cycle during
+   * ordinary searching can never fire ask-next. ONE writer of true:
+   * afterSelectionRead, on a guess read's exit. A PICK read's drain
+   * never reaches that exit (a pick read never enters
+   * SELECTION_READ; its at-rest drain is the speechEnded pre-check
+   * in the SEARCH phases) and never sets it. The post-name arming
+   * information lives in selectionReadKind instead — never overload
+   * this flag with it again. */
   selectionReadDone: boolean;
   // Absence flags — state inputs, set/cleared only by their events.
   sheetOpen: boolean;
@@ -254,6 +280,7 @@ export function initialDetectiveState(
     pendingEnd: null,
     pendingGuessConfirm: null,
     selectionReadInFlight: false,
+    selectionReadKind: null,
     askNextSpoken: false,
     selectionReadDone: false,
     sheetOpen: false,
@@ -543,6 +570,7 @@ function startClue(
     pendingClue: null,
     pendingGuessConfirm: null,
     selectionReadInFlight,
+    selectionReadKind: null,
     askNextSpoken: false,
     selectionReadDone: false,
     pendingSelection: null, // a clue unlock discards a pending read
@@ -577,6 +605,7 @@ function enterCelebrate(
       pendingClue: null,
       pendingGuessConfirm: null,
       selectionReadInFlight,
+      selectionReadKind: null,
       pendingSelection: null,
       selectionReadDone: false,
       celebrateStep: "jump",
@@ -624,6 +653,7 @@ function enterNoteMark(
       ...state,
       phase: "NOTE_MARK",
       selectionReadDone: false,
+      selectionReadKind: null,
       selectionReadInFlight,
     },
     [dwell(NOTE_MARK_MS)],
@@ -643,6 +673,7 @@ function enterFailRead(
       pendingClue: null,
       pendingGuessConfirm: null,
       selectionReadInFlight,
+      selectionReadKind: null,
       pendingSelection: null,
       selectionReadDone: false,
     },
@@ -669,7 +700,16 @@ function afterSelectionRead(state: DetectiveState): Step & { view: DetectiveView
   return result({
     ...state,
     phase: "SEARCH_IDLE",
+    // Every exit through here is a GUESS read's exit: SELECTION_READ
+    // is entered only by guessConfirmed (a PICK read never changes
+    // the phase — its at-rest drain is the speechEnded pre-check in
+    // the SEARCH phases, which never touches this flag). So the
+    // completion flag is set unconditionally, exactly as shipped:
+    // resting with it true is the sheetClosed ASK_NEXT trigger.
+    // The arming kind is always cleared here: no selection read
+    // stands once its exit has run.
     selectionReadDone: true,
+    selectionReadKind: null,
     selectionReadInFlight: true,
   });
 }
@@ -809,13 +849,24 @@ export function transition(
       // Mid-selection-read unlocks are remembered, not acted on: Holmes
       // finishes the selection line, then ASK_NEXT bridges to the clue.
       if (state.phase === "SELECTION_READ") {
-        if (!state.selectionReadInFlight) {
-          // A PICK read owns the voice and the guess read is queued
-          // behind it in the player: remember the unlock as the
-          // deferred guess's bridge payload — pendingClue carries
-          // the clue, the marker beside it records whose it is. The
-          // two clips drain as one queue event and that drain runs
-          // the ordinary bridge off pendingClue (afterSelectionRead).
+        if (!state.selectionReadInFlight || state.selectionReadKind === "post-pick") {
+          // The deferred-guess branch: EITHER a PICK read owns the
+          // voice and the guess read is queued behind it in the
+          // player (selectionReadInFlight = false), OR the confirm
+          // landed just AFTER the pick read drained (follow-up
+          // cure 2): the pick read's exit drain already restored
+          // the kind flag to true, but selectionReadKind marks this
+          // SELECTION_READ as the guess read armed on top of a
+          // completed pick read — the kind field is the only thing
+          // distinguishing it from a shipped guess-read-in-flight
+          // (selectionReadDone cannot be: its resting meaning is
+          // the sheetClosed ASK_NEXT trigger, and overloading it
+          // broke the shipped sheet-flow pins).
+          // Remember the unlock as the deferred guess's bridge
+          // payload — pendingClue carries the clue, the marker
+          // beside it records whose it is. The clips drain as one
+          // queue event and that drain runs the ordinary bridge off
+          // pendingClue (afterSelectionRead).
           return result({ ...state, pendingGuessConfirm: n, pendingClue: n });
         }
         return result({ ...state, pendingClue: n });
@@ -845,13 +896,32 @@ export function transition(
           phase: "SELECTION_READ",
           ringAnimating: true,
           lastPausePoint: null,
-          selectionReadDone: false,
           pendingSelection: null,
           // The in-flight kind from here is THIS guess read — unless
           // a pick read is still audibly playing ahead of it in the
           // player queue, in which case the pick read's kind stands
           // until the ladder settles (the unlock decides by it).
           selectionReadInFlight: state.selectionReadInFlight,
+          // Follow-up cure 2: selectionReadKind records how THIS
+          // read was armed, so clueUnlocked can route this read's
+          // unlock to the deferred-guess branch. Three armings:
+          // a pick read is still playing ahead of this guess read
+          // (flag false) — "post-pick" (the unlock would take the
+          // pair branch on the flag alone anyway); the confirm lands
+          // directly on a pick read's exit drain — the pre-check in
+          // speechEnded restored the flag AND left "post-pick"
+          // standing, and it is preserved here (the restored flag
+          // alone cannot distinguish that rest from an ordinary
+          // one); anything else is an ordinary at-rest guess —
+          // "direct", the shipped kind. selectionReadDone is set
+          // false here: resting with it true is the ASK_NEXT
+          // trigger, and afterSelectionRead sets it at this read's
+          // exit.
+          selectionReadDone: false,
+          selectionReadKind:
+            state.selectionReadKind === "post-pick" || !state.selectionReadInFlight
+              ? "post-pick"
+              : "direct",
           lastNamed: null,
           guessesConfirmed: state.guessesConfirmed + 1,
         },
@@ -933,6 +1003,32 @@ export function transition(
       return enterFailRead(state, state.selectionReadInFlight);
 
     case "speechEnded": {
+      // Follow-up cure 2 — a PICK read drains while the machine
+      // rests in a SEARCH phase (speakSelection never changes the
+      // phase): that drain is the read's exit instant, and the
+      // ladder must mark the kind restored — no GUESS read pending —
+      // so a guessConfirmed landing right after it keeps the
+      // shipped deferral behaviour (its clue unlock is stored as
+      // the deferred guess's payload, not as a plain pending clue
+      // behind a stale completion flag whose sheet cycle already
+      // closed at the spend). The drain itself advances nothing.
+      if (
+        (state.phase === "SEARCH_IDLE" || state.phase === "SEARCH_AREA") &&
+        !state.selectionReadInFlight &&
+        state.pendingSelection === null
+      ) {
+        return result({
+          ...state,
+          selectionReadInFlight: true,
+          // The arming trace (follow-up cure 2): this drain IS a pick
+          // read's exit, so a guess confirmed next was armed on top of
+          // a completed pick read. guessConfirmed preserves a standing
+          // "post-pick" (the restored flag alone cannot distinguish
+          // this rest from an ordinary one), and clueUnlocked routes
+          // that kind to the deferred-guess branch.
+          selectionReadKind: "post-pick",
+        });
+      }
       switch (state.phase) {
         case "READING":
           if (state.readingStep === "announce") {

@@ -192,6 +192,142 @@ test("deferred guess: a fail arriving while the guess bridge stands still wins",
   assert.equal(failed.state.pendingGuessConfirm, null);
 });
 
+/* Follow-up cure 2 — the post-name window (Game Player BLOCK on
+ * tip 65629760). The defer pair above covers a confirm DURING the
+ * pick read; a player who hears the name and THEN taps Guess lands
+ * one step later: the pick read's own drain has already fired (the
+ * machine hears it as a speechEnded while SEARCH_IDLE — a no-op
+ * today) before guessConfirmed arrives. The reaction must survive
+ * that exit instant exactly as it survives the playback: the exit
+ * drain restores the "no guess read pending" kind (the shipped
+ * clue-unlock branch keys the deferral off it), so the confirm's
+ * clue unlock is marked as the deferred guess's payload — never
+ * stored as a plain pending clue behind a dead selectionReadDone
+ * flag (the sheet cycle that would re-trigger off it already
+ * closed at the spend). */
+
+test("post-name window: a confirm landing at the pick read's exit instant keeps its reaction", () => {
+  const steps = fold([
+    ...CLUE1_AT_REST,
+    { type: "selectionNamed", placeId: A }, // pick read fires (name, selection)
+    { type: "speechEnded" }, // the pick read's OWN drain — its exit instant
+    { type: "guessConfirmed", placeId: A }, // the player confirms just after
+    { type: "clueUnlocked", clueIndex: 2 }, // the guess's clue lands
+  ]);
+  // The pick was named exactly once — by the pick read itself.
+  assert.deepEqual(ids(steps[CLUE1_AT_REST.length]!.effects), [`name:${A}`]);
+  // The exit drain is a no-op for effects, but it must restore the
+  // in-flight kind: after the pick read drains, no GUESS read is
+  // pending, so the next unlock keys off the guess branch again.
+  const exited = steps[CLUE1_AT_REST.length + 1]!;
+  assert.equal(exited.phase, "SEARCH_IDLE");
+  assert.deepEqual(ids(exited.effects), []);
+  assert.equal(
+    exited.state.selectionReadInFlight,
+    true,
+    "the exit drain restores the no-guess-read-pending kind",
+  );
+  assert.equal(
+    exited.state.selectionReadDone,
+    false,
+    "no guess read completed — selectionReadDone stays down",
+  );
+  // The confirm speaks the guess read's suspicion (dedup: the
+  // just-named pick is not re-named).
+  const confirmed = steps[CLUE1_AT_REST.length + 2]!;
+  assert.deepEqual(ids(confirmed.effects), ["fixed:suspicion"]);
+  // The unlock is marked as the deferred guess's payload — the pair,
+  // exactly as in the during-read window.
+  const armed = lastOf(steps);
+  assert.equal(armed.phase, "SELECTION_READ");
+  assert.equal(
+    armed.state.pendingGuessConfirm,
+    2,
+    "the post-name unlock takes the deferred-guess branch, not a plain pending clue",
+  );
+  assert.equal(armed.state.pendingClue, 2, "pendingClue carries the bridge payload");
+  // The ONE queue drain (the guess read alone this time) runs the bridge.
+  const drained = transition(armed.state, { type: "speechEnded" }, rng);
+  assert.equal(drained.view.phase, "NOTE_MARK", "the drain runs the bridge");
+  assert.deepEqual(ids(drained.effects), [], "the miss beat itself is voiceless");
+  assert.equal(drained.state.pendingGuessConfirm, 2, "the marker stands through the bridge");
+  // The bridge asks — never a second suspicion — then starts the clue.
+  const ask = transition(drained.state, { type: "beatElapsed" }, rng);
+  assert.equal(ask.view.phase, "ASK_NEXT");
+  assert.deepEqual(ids(ask.effects), ["fixed:ask-next"]);
+  const clue = transition(ask.state, { type: "speechEnded" }, rng);
+  assert.equal(clue.view.phase, "READING");
+  assert.deepEqual(ids(clue.effects), ["clue"]);
+  assert.equal(clue.state.pendingGuessConfirm, null, "the clue start clears the marker");
+  // Across the whole flow the name was read once and the suspicion once.
+  const all = [
+    ...steps.flatMap((s) => ids(s.effects)),
+    ...ids(drained.effects),
+    ...ids(ask.effects),
+    ...ids(clue.effects),
+  ];
+  assert.equal(all.filter((x) => x === `name:${A}`).length, 1, "the pick is named once");
+  assert.equal(
+    all.filter((x) => x === "fixed:suspicion").length,
+    1,
+    "the guess reaction plays once",
+  );
+});
+
+test("post-name window: a SOLVED confirm at the exit instant celebrates at the drain — no guess read into a closed case", () => {
+  const steps = fold([
+    ...CLUE1_AT_REST,
+    { type: "selectionNamed", placeId: A },
+    { type: "speechEnded" }, // the pick read's exit drain
+    { type: "guessConfirmed", placeId: A },
+    { type: "caseSolved", answerPlaceId: A },
+  ]);
+  // The solve lands while the guess read stands in SELECTION_READ,
+  // so it takes the shipped ending path (cure-1 pin 6's precedent):
+  // pendingEnd is stored, the ending itself emits nothing, and the
+  // celebration wins at the guess read's drain — nothing fires a
+  // guess reaction INTO the closed case; the suspicion in this flow
+  // was emitted by guessConfirmed itself, before the solve arrived
+  // (the host's dispatch order: guess effect, then status effect).
+  const solved = lastOf(steps);
+  assert.equal(solved.phase, "SELECTION_READ", "the ending defers while the guess read stands");
+  assert.equal(solved.state.pendingEnd, "solved", "the ending is stored, not lost");
+  assert.deepEqual(ids(solved.effects), [], "the ending emits no guess reaction of its own");
+  const drained = transition(solved.state, { type: "speechEnded" }, rng);
+  assert.equal(drained.view.phase, "CELEBRATE", "the ending wins at the drain");
+  assert.equal(drained.state.pendingGuessConfirm, null);
+  assert.equal(drained.state.pendingClue, null, "no bridge payload survives the close");
+  assert.ok(
+    !ids(drained.effects).includes("fixed:suspicion"),
+    "the drain into CELEBRATE speaks no suspicion",
+  );
+  // No later event resurrects the guess read.
+  const after = transition(drained.state, { type: "sheetClosed" }, rng);
+  assert.ok(!ids(after.effects).includes("fixed:suspicion"));
+});
+
+test("post-name window: the exit drain alone never mistakes itself for a guess read", () => {
+  const steps = fold([
+    ...CLUE1_AT_REST,
+    { type: "selectionNamed", placeId: A },
+    { type: "speechEnded" }, // the pick read drains; NO confirm follows
+  ]);
+  const exited = lastOf(steps);
+  assert.equal(exited.phase, "SEARCH_IDLE");
+  assert.equal(
+    exited.state.selectionReadInFlight,
+    true,
+    "the kind is restored even when no guess ever comes",
+  );
+  assert.equal(exited.state.selectionReadDone, false, "no guess read completed");
+  assert.equal(exited.state.pendingGuessConfirm, null);
+  assert.equal(exited.state.pendingClue, null);
+  // The dedup record survives the drain: re-naming the same place in
+  // the same clue cycle is still a no-op (name exactly once).
+  const renamed = transition(exited.state, { type: "selectionNamed", placeId: A }, rng);
+  assert.deepEqual(ids(renamed.effects), [], "the pick is not re-named after its drain");
+});
+
 test("deferred guess: a solve landing mid-reads still defers via pendingEnd and wins at the drain", () => {
   const steps = fold([
     ...CLUE1_AT_REST,
