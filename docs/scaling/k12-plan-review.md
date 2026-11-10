@@ -115,7 +115,7 @@ the spec already flags this, and it still needs a decision before build.
 | **D9** | Earth science | Its own units, or only as the environment link inside physics and chemistry | Environment link first (no new spec needed). |
 | **D7 — RULED 2026-11-10** | Live game's `5-7` and `8-10` bands | Replaced by the `7-10` group under D1; `11-13` becomes `10-18`; `18+` is added. Code change is work item 6. | — |
 | **D10** | Keeping branches current | (a) merge `origin/main` into each branch (no force-push; the default in every plan); (b) true rebase, which needs a force-push that `AGENTS.md` allows only with the owner's authorization naming the branch and push | **(a)** now; grant (b) in a branch's assignment only where a linear history matters. |
-| **D11** | Shared `BRANCH_STATUS.md` | Keep one root file (every branch keeps only its own section on top) or move to `docs/branch-status/<branch>.md` (`AGENTS.md` names this as the owner's pending decision) | Move it: 17 parallel streams will collide on one file. |
+| **D11 — adopted 2026-11-10 for scaling streams** (owner asked for no collisions; `AGENTS.md` wording in stream 18) | Shared `BRANCH_STATUS.md` | Keep one root file (every branch keeps only its own section on top) or move to `docs/branch-status/<branch>.md` (`AGENTS.md` names this as the owner's pending decision) | Move it: 17 parallel streams will collide on one file. |
 | **D5** | Math build branch name | `feat/math-spec` or `feat/math-tricks` | Either; just pick before build. |
 | **D6** | P8 journal pick | 3 or 6 entries | Pick after screening the candidates against §7a. |
 
@@ -208,13 +208,11 @@ this branch does not edit the 17 spec branches directly.
 
 ## 7. Parallel streams
 
-One agent per branch. The run table in `branch-prompts.md` says which streams
-start now (1, 1b manifest, 2, 4, 8, 10, 11, model-neutral) and which wait on a
-sibling. Every stream merges `origin/main` progressively. A true rebase needs a
-force-push, which `AGENTS.md` allows only with the owner's authorization for
-that branch and push (owner decision D10: grant it per branch, or keep merging).
-All branches share `BRANCH_STATUS.md` (owner decision D11: move to
-`docs/branch-status/<branch>.md`).
+One independent agent per branch, all starting now (`branch-prompts.md`).
+Each owns exclusive paths; links go through `contracts.md` (subject module,
+unit item, age group, predict-see scene, journal clip). `feat/science-spec` is
+folded into physics and chemistry. The integrator reviews and merges in the
+order in `integrator-runbook.md`. Status lives in `docs/branch-status/`.
 
 ## 8. How to build this cheaply (agent-neutral)
 
