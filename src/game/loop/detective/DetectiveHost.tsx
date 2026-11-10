@@ -1705,9 +1705,18 @@ export default function DetectiveHost(
    * every card is revealed too, so Watson's station spot always sat on
    * clue text. Both figures stand together in the dock for the
    * cheer-up; without a map element the station stays the fallback. */
+  /* …and the rest of the closed case (2026-11-10 review): from the
+   * moment the case closes (the game's own status, the same render that
+   * shows "Case closed") every card is revealed, so any station spot sits
+   * on clue text — the closing pick read (SELECTION_READ), the debrief
+   * after a solve, the fail read and the cheer-up all play in the map
+   * corner. */
   const failOnMap =
     !celebrating &&
-    (view.phase === "FAIL_READ" || view.phase === "POUT") &&
+    (status !== "playing" ||
+      view.phase === "FAIL_READ" ||
+      view.phase === "POUT" ||
+      view.phase === "DEBRIEF") &&
     mapEl !== null;
   const celebrateEl = celebrating ? (
     <div
