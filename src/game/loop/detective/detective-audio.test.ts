@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   createDetectiveSpeech,
+  isEndingRef,
   resolveDetectiveClip,
   type DetectiveManifest,
   type DetectiveSpeaker,
@@ -853,4 +854,62 @@ test("gesture wait: a sound gate closed at wake (no stopAll) keeps the parked cl
   } finally {
     unplugBrowserAudio();
   }
+});
+
+/* ------------------------------------------------------------------ */
+/* Owner fixes, 2026-11-10                                             */
+/* ------------------------------------------------------------------ */
+
+test("stopAll then an immediate enqueue: the new line still plays (no stranded queue)", async () => {
+  const played: string[] = [];
+  let releaseFirst: (() => void) | null = null;
+  const { player } = harness({
+    playClip: (clip) => {
+      played.push(clip.url);
+      if (played.length === 1) {
+        return new Promise<void>((r) => {
+          releaseFirst = r;
+        });
+      }
+      return Promise.resolve();
+    },
+  });
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  // A pin lands mid-read: stop, then the pick's lines queue at once
+  // (the old loop still holds `processing` at this instant).
+  player.stopAll();
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  releaseFirst!();
+  await tick();
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/suspicion.mp3",
+  ]);
+  player.dispose();
+});
+
+test("tap mode: ending lines play for real (they follow the kid's confirm tap)", async () => {
+  const { player, played } = harness();
+  player.setSpeechMode("tap");
+  player.enqueue({ kind: "clue", clueIndex: 1 }); // held, not played
+  player.enqueue({ kind: "fixed", id: "debrief-frame" });
+  player.enqueue({ kind: "fixed", id: "debrief-close" });
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/fixed/debrief-frame.mp3",
+    "/audio/detective/fixed/debrief-close.mp3",
+  ]);
+  player.dispose();
+});
+
+test("isEndingRef: win/debrief/answer/truce and the debrief name; never clues, acks or pick reads", () => {
+  assert.equal(isEndingRef({ kind: "fixed", id: "win-holmes" }), true);
+  assert.equal(isEndingRef({ kind: "fixed", id: "truce-watson" }), true);
+  assert.equal(isEndingRef({ kind: "answer" }), true);
+  assert.equal(isEndingRef({ kind: "name", placeId: "geonames:1" }), true);
+  assert.equal(isEndingRef({ kind: "name", placeId: "geonames:1", selection: true }), false);
+  assert.equal(isEndingRef({ kind: "clue", clueIndex: 2 }), false);
+  assert.equal(isEndingRef({ kind: "fixed", id: "ack-3" }), false);
 });

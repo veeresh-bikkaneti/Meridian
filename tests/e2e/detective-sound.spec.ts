@@ -143,7 +143,8 @@ test("(a) Cold Trail in-screen toggle flips the persisted key both ways", async 
   console.log("[sound-a] TrailScreen toggle flipped meridian.sound off → on");
 });
 
-test("(b) tap-Holmes during a read stops speech immediately, badge latches, unmute does not resume", async ({
+// Retired by the owner, 2026-11-10: the pair no longer vanishes while the sheet is up, there is no Listen chip or pair speaker chip, and a tap on Holmes repeats the line (the one mute is the screen's top-left toggle). Superseded by detective-owner-spec.spec.ts.
+test.skip("(b) tap-Holmes during a read stops speech immediately, badge latches, unmute does not resume", async ({
   page,
   context,
 }) => {
@@ -219,7 +220,8 @@ test("(b) tap-Holmes during a read stops speech immediately, badge latches, unmu
   );
 });
 
-test("(c)+(d)+(e) Watson tap replays without muting; Holmes tap mutes without replaying; chip drives the same key", async ({
+// Retired by the owner, 2026-11-10: the pair no longer vanishes while the sheet is up, there is no Listen chip or pair speaker chip, and a tap on Holmes repeats the line (the one mute is the screen's top-left toggle). Superseded by detective-owner-spec.spec.ts.
+test.skip("(c)+(d)+(e) Watson tap replays without muting; Holmes tap mutes without replaying; chip drives the same key", async ({
   page,
   context,
 }) => {
@@ -344,7 +346,8 @@ async function clickStationControl(
   throw new Error(`station window for ${testId} never opened`);
 }
 
-test("(f) tap mode: Listen, chip and Holmes-mute are pairwise separate at the station; each centre click does its own job", async ({
+// Retired by the owner, 2026-11-10: the pair no longer vanishes while the sheet is up, there is no Listen chip or pair speaker chip, and a tap on Holmes repeats the line (the one mute is the screen's top-left toggle). Superseded by detective-owner-spec.spec.ts.
+test.skip("(f) tap mode: Listen, chip and Holmes-mute are pairwise separate at the station; each centre click does its own job", async ({
   page,
   context,
 }) => {
@@ -594,7 +597,8 @@ test("(f) tap mode: Listen, chip and Holmes-mute are pairwise separate at the st
 });
 
 
-test("(g) NOTE_MARK split placement renders exactly one chip and at most one badge", async ({
+// Retired by the owner, 2026-11-10: the pair no longer vanishes while the sheet is up, there is no Listen chip or pair speaker chip, and a tap on Holmes repeats the line (the one mute is the screen's top-left toggle). Superseded by detective-owner-spec.spec.ts.
+test.skip("(g) NOTE_MARK split placement renders exactly one chip and at most one badge", async ({
   page,
   context,
 }) => {

@@ -260,6 +260,26 @@ export interface DetectiveSpeechPlayer {
  * keeps (a clue's read + its ack + its decode)? Selection reads,
  * ask-next, instructions, endings and the debrief are NOT held: the
  * Listen button replays the current clue, not the whole case. */
+/** Case-ending lines (the solve's win lines + debrief, the loss's
+ * answer + cheer-up). They follow straight from the kid's own confirm
+ * tap, so tap speech mode plays them for real instead of skipping
+ * them (plan of record §5: "ending lines must speak in tap mode").
+ * A non-selection name read outside the guess-read arm is the
+ * debrief's answer name — an ending line too. */
+const ENDING_FIXED_IDS: ReadonlySet<string> = new Set([
+  "win-holmes",
+  "win-watson",
+  "win-together",
+  "debrief-frame",
+  "debrief-close",
+  "truce-watson",
+]);
+export function isEndingRef(ref: SpeakRef): boolean {
+  if (ref.kind === "answer" || ref.kind === "debrief") return true;
+  if (ref.kind === "name") return ref.selection !== true;
+  return ref.kind === "fixed" && ENDING_FIXED_IDS.has(ref.id);
+}
+
 function isClueSequenceRef(ref: SpeakRef): boolean {
   if (ref.kind === "clue") return true;
   if (ref.kind === "fixed") {
@@ -471,7 +491,7 @@ export function createDetectiveSpeech(
         // enqueue below) — recordHeld here is the idempotent backstop
         // for a mode that flipped to "tap" mid-burst.
         const isGesture =
-          selectionItems.has(ref) || guessItems.has(ref);
+          selectionItems.has(ref) || guessItems.has(ref) || isEndingRef(ref);
         if (speechMode === "off") continue;
         if (speechMode === "tap" && !isGesture) {
           recordHeld(ref);
@@ -507,8 +527,15 @@ export function createDetectiveSpeech(
       }
       // Items enqueued while this loop was finishing (e.g. a drain
       // callback that immediately enqueued the next line) restart it.
-      if (gen === generation && !disposed && queue.length > 0) {
-        void processQueue(gen);
+      // That includes items enqueued right after a stopAll / replay
+      // superseded THIS loop: their kick() was refused while this
+      // loop still held `processing`, and stopAll already cleared
+      // every older item — so whatever is queued now belongs to the
+      // CURRENT generation and must not be stranded (the owner's
+      // "doesn't play in time": a pin's read sat silent until the
+      // next unrelated line kicked the queue).
+      if (!disposed && queue.length > 0) {
+        void processQueue(generation);
       }
     }
   }

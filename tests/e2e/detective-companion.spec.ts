@@ -440,7 +440,8 @@ test.beforeEach(async ({ context }) => {
   await installDetectiveRecorder(context, 4);
 });
 
-test("K3 absence — sheet ≤100 ms, ring window hidden", async ({ page, context }) => {
+// Retired by the owner, 2026-11-10: the pair no longer vanishes while the sheet is up, there is no Listen chip or pair speaker chip, and a tap on Holmes repeats the line (the one mute is the screen's top-left toggle). Superseded by detective-owner-spec.spec.ts.
+test.skip("K3 absence — sheet ≤100 ms, ring window hidden", async ({ page, context }) => {
   await fulfillFlagsOn(context);
   await openSeamCase(page, 137);
   await waitForSearchIdle(page);

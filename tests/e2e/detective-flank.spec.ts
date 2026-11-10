@@ -306,7 +306,8 @@ for (const w of WIDTHS) {
   });
 }
 
-test("Listen first tap plays the held clue sequence (tap mode, 390)", async ({
+// Retired by the owner, 2026-11-10: the pair no longer vanishes while the sheet is up, there is no Listen chip or pair speaker chip, and a tap on Holmes repeats the line (the one mute is the screen's top-left toggle). Superseded by detective-owner-spec.spec.ts.
+test.skip("Listen first tap plays the held clue sequence (tap mode, 390)", async ({
   page,
   context,
 }) => {

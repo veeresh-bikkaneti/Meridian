@@ -374,7 +374,7 @@ test("full ladder: open → 5 clues with selection reads → solve → debrief",
   assert.equal(askSteps.length, 4);
   // Celebration: win lines in Holmes → Watson order, jump poses.
   const celebrate = steps.find((s) => s.phase === "CELEBRATE" && s.effects.length > 0)!;
-  assert.deepEqual(speakIds(celebrate.effects), ["fixed:win-holmes", "fixed:win-watson"]);
+  assert.deepEqual(speakIds(celebrate.effects), ["fixed:win-holmes", "fixed:win-together", "fixed:win-watson"]);
   const celebrateView = viewForState(celebrate.state);
   assert.equal(celebrateView.holmes.pose, "celebrate-jump");
   assert.equal(celebrateView.watson.pose, "celebrate-jump");
@@ -393,7 +393,8 @@ test("selection read: guessConfirmed speaks name + suspicion; rings hide the pai
   const sel = last(steps);
   assert.equal(sel.phase, "SELECTION_READ");
   assert.deepEqual(speakIds(sel.effects), ["name:geonames:42", "fixed:suspicion"]);
-  assert.equal(viewForState(sel.state).hidden, true); // ringAnimating
+  // The pair stays on screen through the rings (owner, 2026-11-10).
+  assert.equal(viewForState(sel.state).hidden, false);
   const after = run([{ type: "ringAnimationEnded" }], sel.state);
   assert.equal(viewForState(last(after).state).hidden, false);
   assert.equal(last(after).phase, "SELECTION_READ");
@@ -414,7 +415,8 @@ test("sheetClosed after a drained selection read fires ASK_NEXT exactly once (vi
   // Steps: 0–3 clue 1, 4 guess, 5 ring end, 6 selection drain, 7 sheet
   // open, 8 sheet close, 9 beat, 10 ask drain, 11 next clue.
   assert.equal(steps[6]!.phase, "SEARCH_IDLE");
-  assert.equal(viewForState(steps[7]!.state).hidden, true); // sheet open
+  // The pair stays on screen while the sheet is open (owner, 2026-11-10).
+  assert.equal(viewForState(steps[7]!.state).hidden, false);
   assert.equal(steps[8]!.phase, "NOTE_MARK");
   assert.equal(steps[9]!.phase, "ASK_NEXT");
   assert.deepEqual(speakIds(steps[9]!.effects), ["fixed:ask-next"]);
@@ -445,7 +447,7 @@ test("external speech hides the pair without changing phase", () => {
   assert.equal(viewForState(last(steps).state).hidden, false);
 });
 
-test("fail path: answer read → pout, STICKY (U8 — no dwell, no auto-advance)", () => {
+test("fail path: answer read → truce cheer-up, STICKY (no dwell, no auto-advance, no pout)", () => {
   const steps = run([
     ...normalClue(1),
     { type: "guessConfirmed", placeId: "geonames:42" },
@@ -461,13 +463,15 @@ test("fail path: answer read → pout, STICKY (U8 — no dwell, no auto-advance)
   const pout = steps[steps.length - 4]!;
   assert.equal(pout.phase, "POUT");
   assert.deepEqual(dwells(pout.effects), []); // no dwell is ever armed
-  assert.deepEqual(pout.effects, []);
+  // Watson's cheer-up: a bubble + its line, nothing else.
+  assert.deepEqual(speakIds(pout.effects), ["fixed:truce-watson"]);
+  assert.ok(pout.effects.some((e) => e.type === "caption" && e.who === "watson"));
   const poutView = viewForState(pout.state);
-  assert.equal(poutView.holmes.pose, "pout");
-  assert.equal(poutView.watson.pose, "pout");
-  // Still pouting after every later beat/speech event.
+  assert.notEqual(poutView.holmes.pose, "pout");
+  assert.notEqual(poutView.watson.pose, "pout");
+  // Still resting in the truce after every later beat/speech event.
   assert.equal(last(steps).phase, "POUT");
-  assert.equal(viewForState(last(steps).state).holmes.pose, "pout");
+  assert.notEqual(viewForState(last(steps).state).holmes.pose, "pout");
 });
 
 test("caseFailed from SEARCH goes straight to FAIL_READ", () => {
@@ -814,7 +818,7 @@ test("U8 celebrate: dwell-chained jump → high-five → clap → settle; speech
   ]);
   const enter = steps[steps.length - 5]!;
   assert.equal(enter.phase, "CELEBRATE");
-  assert.deepEqual(speakIds(enter.effects), ["fixed:win-holmes", "fixed:win-watson"]);
+  assert.deepEqual(speakIds(enter.effects), ["fixed:win-holmes", "fixed:win-together", "fixed:win-watson"]);
   assert.deepEqual(dwells(enter.effects), [CELEBRATE_JUMP_MS]);
   assert.equal(viewForState(enter.state).holmes.pose, "celebrate-jump");
   assert.equal(viewForState(enter.state).watson.pose, "celebrate-jump");
@@ -964,4 +968,140 @@ test("U8 pout exits: only a new case — clueUnlocked of a new case, or caseOpen
   const viaResume = run([{ type: "caseOpened", freshDeal: false }], last(lost).state);
   assert.equal(last(viaResume).phase, "CASE_OPEN");
   assert.deepEqual(last(viaResume).effects, []);
+});
+
+/* ------------------------------------------------------------------ */
+/* Owner fixes, 2026-11-10: clues open one at a time, every clue gets  */
+/* Watson's read + Holmes's ack, a pin beats Watson to it.             */
+/* ------------------------------------------------------------------ */
+
+function presented(steps: Step[]): number[] {
+  return steps.flatMap((s) =>
+    s.effects
+      .filter((e) => e.type === "presentClue")
+      .map((e) => (e as Extract<DetectiveEffect, { type: "presentClue" }>).clueIndex),
+  );
+}
+function allSpeakIds(steps: Step[]): string[] {
+  return steps.flatMap((s) => speakIds(s.effects));
+}
+
+/** Drive one non-hook clue chain from its read to rest/next. */
+const clueChain: DetectiveEvent[] = [
+  { type: "speechEnded" }, // Watson's read drains → thinking beat
+  { type: "beatElapsed" }, // → Holmes ack + decode
+  { type: "speechEnded" }, // ack + decode drain
+];
+
+test("opening: a 3-clue deal reads clues 1, 2, 3 one at a time, each with Holmes's ack", () => {
+  const steps = run([
+    { type: "caseOpened", freshDeal: true, intro: true, openTarget: 3 },
+    { type: "clueUnlocked", clueIndex: 1 },
+    { type: "speechEnded" }, // instructions-holmes
+    { type: "speechEnded" }, // instructions-watson → clue 1
+    ...clueChain, // → clue 2 straight away, no ask
+    ...clueChain, // → clue 3
+    ...clueChain, // → rest
+  ]);
+  assert.deepEqual(presented(steps), [1, 2, 3]);
+  const ids = allSpeakIds(steps);
+  assert.deepEqual(
+    ids.filter((id) => id.startsWith("clue:")),
+    ["clue:1", "clue:2", "clue:3"],
+  );
+  // An ack follows every clue read, and none repeats.
+  const acks = ids.filter((id) => id.startsWith("fixed:ack-"));
+  assert.equal(acks.length, 3);
+  assert.equal(new Set(acks).size, 3);
+  // No "ask next" between the opening clues.
+  assert.equal(ids.includes("fixed:ask-next"), false);
+  assert.equal(last(steps).phase, "SEARCH_IDLE");
+  assert.equal(last(steps).state.openTarget, 3);
+});
+
+test("opening: case 2+ of the session (intro false) skips the duet and reads clue 1 at once", () => {
+  const steps = run([
+    { type: "caseOpened", freshDeal: true, intro: false, openTarget: 3 },
+    { type: "clueUnlocked", clueIndex: 1 },
+  ]);
+  const ids = allSpeakIds(steps);
+  assert.equal(ids.some((id) => id.startsWith("fixed:instructions")), false);
+  assert.deepEqual(ids, ["clue:1"]);
+  assert.deepEqual(presented(steps), [1]);
+});
+
+test("opening: a resumed case re-reads only its current clue (no sequence)", () => {
+  const steps = run([
+    { type: "caseOpened", freshDeal: false, openTarget: 4 },
+    { type: "clueUnlocked", clueIndex: 4 },
+  ]);
+  assert.equal(last(steps).state.openTarget, 0);
+  assert.deepEqual(presented(steps), [4]);
+});
+
+test("pin before Watson finishes: speech stops, Watson says 'You beat me to it!', Holmes reads the pick", () => {
+  const steps = run([
+    { type: "caseOpened", freshDeal: true, intro: false, openTarget: 3 },
+    { type: "clueUnlocked", clueIndex: 1 }, // Watson reading clue 1
+    { type: "guessConfirmed", placeId: "geonames:42" },
+  ]);
+  const pin = last(steps);
+  assert.equal(pin.phase, "SELECTION_READ");
+  assert.equal(pin.effects[0]!.type, "stopSpeech");
+  assert.ok(
+    pin.effects.some(
+      (e) => e.type === "caption" && e.who === "watson" && /beat me to it/i.test(e.text),
+    ),
+  );
+  assert.deepEqual(speakIds(pin.effects), [
+    "fixed:beat-me",
+    "name:geonames:42",
+    "fixed:suspicion",
+  ]);
+  // The opening sequence ends: the next clue comes from the guess.
+  assert.equal(pin.state.openTarget, 0);
+  // The guess's clue then bridges in as usual after the pick read.
+  const after = run(
+    [
+      { type: "clueUnlocked", clueIndex: 4 },
+      { type: "speechEnded" }, // pick read drains → miss beat
+      { type: "beatElapsed" }, // → ask next
+      { type: "speechEnded" }, // → clue 4 (the Hook)
+    ],
+    pin.state,
+  );
+  assert.deepEqual(presented(after), [4]);
+});
+
+test("pin during the thinking beat also beats Watson; a pin during ask-next does not say it", () => {
+  const beat = run([
+    { type: "caseOpened", freshDeal: true, intro: false, openTarget: 1 },
+    { type: "clueUnlocked", clueIndex: 1 },
+    { type: "speechEnded" }, // read done → thinking beat
+    { type: "guessConfirmed", placeId: "geonames:7" },
+  ]);
+  assert.ok(speakIds(last(beat).effects).includes("fixed:beat-me"));
+
+  const ask = run([
+    ...normalClue(1),
+    { type: "guessConfirmed", placeId: "geonames:1" },
+    { type: "speechEnded" }, // pick read → rest (no pending clue yet)
+    { type: "sheetOpened" },
+    { type: "sheetClosed" }, // → NOTE_MARK
+    { type: "beatElapsed" }, // → ASK_NEXT
+    { type: "guessConfirmed", placeId: "geonames:2" },
+  ]);
+  const pin = last(ask);
+  assert.equal(pin.phase, "SELECTION_READ");
+  assert.equal(speakIds(pin.effects).includes("fixed:beat-me"), false);
+  assert.deepEqual(speakIds(pin.effects), ["name:geonames:2", "fixed:suspicion"]);
+});
+
+test("solve: the celebration says 'We did it together!' with a bubble over Holmes", () => {
+  const steps = run([...normalClue(1), { type: "caseSolved", answerPlaceId: null }]);
+  const enter = last(steps);
+  assert.equal(enter.phase, "CELEBRATE");
+  assert.ok(
+    enter.effects.some((e) => e.type === "caption" && e.who === "holmes" && /together/i.test(e.text)),
+  );
 });

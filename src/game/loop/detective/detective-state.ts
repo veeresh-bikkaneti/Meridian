@@ -83,7 +83,19 @@ export type SpeakRef =
  * effects — they ride the view (see header). */
 export type DetectiveEffect =
   | { type: "speak"; ref: SpeakRef }
-  | { type: "dwell"; beatMs: number };
+  | { type: "dwell"; beatMs: number }
+  /** Show clue card `clueIndex` (1-based) now: the deal opens its
+   * starting clues ONE AT A TIME, each card appearing as Watson starts
+   * reading it (owner, 2026-11-10: "clues should open 1 at a time and
+   * watson should read it aloud"). The host reports it to the game,
+   * which reveals cards up to the highest index presented. */
+  | { type: "presentClue"; clueIndex: number }
+  /** Cut whatever is playing and flush the queue (the player pinned
+   * before Watson finished — the pin wins the voice). */
+  | { type: "stopSpeech" }
+  /** A short speech bubble over one figure (moment lines). The text
+   * always shows; the voice plays when the line's clip is rendered. */
+  | { type: "caption"; who: "holmes" | "watson"; text: string; ms: number };
 
 /** The ONLY inputs. Payloads are answer-blind by construction (header).
  * The two U8 exceptions are fenced: `freshDeal` says only whether this
@@ -92,7 +104,17 @@ export type DetectiveEffect =
  * untouched and consumed solely by the DEBRIEF effect (see the state
  * field); it cannot influence any pre-solve transition. */
 export type DetectiveEvent =
-  | { type: "caseOpened"; freshDeal: boolean }
+  | {
+      type: "caseOpened";
+      freshDeal: boolean;
+      /** Play the instruction duet. Defaults to `freshDeal`; the host
+       * passes false after the session's first case (the duet and
+       * bench intro are first entry only — plan of record §2). */
+      intro?: boolean;
+      /** The deal's starting clue count: the opening reads clues
+       * 1..openTarget one after another (fresh deal only). */
+      openTarget?: number;
+    }
   | { type: "clueUnlocked"; clueIndex: number }
   | { type: "speechEnded" }
   | { type: "beatElapsed" }
@@ -263,6 +285,12 @@ export interface DetectiveState {
    * latest-wins). Flushed when the ladder rests in SEARCH_IDLE; discarded
    * by a guess confirmation, a clue unlock, or a case ending. */
   pendingSelection: string | null;
+  /** The opening sequence's last clue: while clueIndex < openTarget
+   * the ladder reads the next starting clue as soon as Holmes's ack
+   * for the current one drains, with no ask in between. 0 = no
+   * opening sequence (a resumed case, or one clue dealt). A pin
+   * during the opening ends the sequence. */
+  openTarget: number;
 }
 
 export function initialDetectiveState(
@@ -292,6 +320,7 @@ export function initialDetectiveState(
     guessesConfirmed: 0,
     lastNamed: null,
     pendingSelection: null,
+    openTarget: 0,
   };
 }
 
@@ -360,12 +389,38 @@ export function decodeIdForClue(clueIndex: number): string {
 /* View — a pure derivation from state                                 */
 /* ------------------------------------------------------------------ */
 
+/** Moment lines (owner, 2026-11-10). Each shows as a bubble at once;
+ * its voice plays once the clip is rendered with the pinned voice
+ * (an id the manifest lacks is skipped silently by the player — the
+ * fallback law), so the bubble alone carries the line until then.
+ * DRAFT wording: owner review. The player is Holmes's partner here —
+ * "player is the holmes" — so Watson speaks to the player. */
+export const MOMENT_LINES = Object.freeze({
+  beatMe: { id: "beat-me", who: "watson", text: "You beat me to it!" },
+  together: { id: "win-together", who: "holmes", text: "We did it together!" },
+  truce: {
+    id: "truce-watson",
+    who: "watson",
+    text: "Good try! We'll crack the next one together.",
+  },
+} as const);
+export type MomentLineKey = keyof typeof MOMENT_LINES;
+export const MOMENT_CAPTION_MS = 2600;
+
+const momentEffects = (key: MomentLineKey): DetectiveEffect[] => {
+  const line = MOMENT_LINES[key];
+  return [
+    { type: "caption", who: line.who, text: line.text, ms: MOMENT_CAPTION_MS },
+    { type: "speak", ref: { kind: "fixed", id: line.id } },
+  ];
+};
+
 export function viewForState(state: DetectiveState): DetectiveView {
-  const hidden =
-    state.phase === "OFF" ||
-    state.sheetOpen ||
-    state.externalSpeech ||
-    state.ringAnimating;
+  // The pair stays on screen while the guess sheet is open and while
+  // the ring plays (plan of record §2: they never vanish mid-case —
+  // the zero-overlap layout keeps them off the clue text instead).
+  // Only another surface's own speech still clears the stage.
+  const hidden = state.phase === "OFF" || state.externalSpeech;
   const base = { phase: state.phase, hidden };
   switch (state.phase) {
     case "OFF":
@@ -519,10 +574,12 @@ export function viewForState(state: DetectiveState): DetectiveView {
         watson: { pose: "think", placement: "station", speaking: false },
       };
     case "POUT":
+      // The truce (plan of record §5): no pout — Holmes nods, Watson
+      // cheers the player on (his line rides the POUT entry).
       return {
         ...base,
-        holmes: { pose: "pout", placement: "station", speaking: false },
-        watson: { pose: "pout", placement: "station", speaking: false },
+        holmes: { pose: "ack", placement: "station", speaking: false },
+        watson: { pose: "station-idle", placement: "station", speaking: false },
       };
     case "DEBRIEF":
       // Holmes delivers the deduction (frame → the answer's name →
@@ -577,15 +634,16 @@ function startClue(
     celebrateStep: null,
     celebrateSpeechDone: false,
   };
+  const present: DetectiveEffect = { type: "presentClue", clueIndex };
   if (clueIndex === 4) {
     return result(
       { ...next, phase: "THINKING_BEAT", readingStep: "announce" },
-      [dwell(HOOK_BEAT_MS)],
+      [present, dwell(HOOK_BEAT_MS)],
     );
   }
   return result(
     { ...next, phase: "READING", readingStep: "watson-read" },
-    [speak({ kind: "clue", clueIndex })],
+    [present, speak({ kind: "clue", clueIndex })],
   );
 }
 
@@ -610,9 +668,11 @@ function enterCelebrate(
       selectionReadDone: false,
       celebrateStep: "jump",
       celebrateSpeechDone: false,
+      openTarget: 0,
     },
     [
       speak({ kind: "fixed", id: "win-holmes" }),
+      ...momentEffects("together"),
       speak({ kind: "fixed", id: "win-watson" }),
       dwell(CELEBRATE_JUMP_MS),
     ],
@@ -676,6 +736,7 @@ function enterFailRead(
       selectionReadKind: null,
       pendingSelection: null,
       selectionReadDone: false,
+      openTarget: 0,
     },
     [speak({ kind: "answer" })],
   );
@@ -737,6 +798,60 @@ function restingResult(state: DetectiveState): Step & { view: DetectiveView } {
     return result({ ...state, selectionReadInFlight: true });
   }
   return speakSelection(state, state.pendingSelection);
+}
+
+/** Phases where a clue chain (or the opening duet) still owns the
+ * voice. A pin here used to be dropped on the floor (the guess read
+ * never played); now the pin wins: speech stops, Watson says "You beat
+ * me to it!" if he was still on a clue, and Holmes reads the pick. */
+const INTERRUPTIBLE_PHASES: ReadonlySet<DetectivePhase> = new Set([
+  "CASE_OPEN",
+  "READING",
+  "THINKING_BEAT",
+  "NOTE_MARK",
+  "ASK_NEXT",
+]);
+
+function interruptWithGuess(
+  state: DetectiveState,
+  placeId: string,
+): Step & { view: DetectiveView } {
+  if (state.phase === "CASE_OPEN" && state.instructionsStep === "awaiting") {
+    return noOp(state);
+  }
+  const midClue =
+    state.phase === "READING" ||
+    state.phase === "THINKING_BEAT" ||
+    state.openTarget > state.clueIndex;
+  return result(
+    {
+      ...state,
+      phase: "SELECTION_READ",
+      instructionsStep:
+        state.instructionsStep === "holmes" || state.instructionsStep === "watson"
+          ? "done"
+          : state.instructionsStep,
+      readingStep: null,
+      openTarget: 0,
+      pendingClue: null,
+      pendingGuessConfirm: null,
+      ringAnimating: true,
+      lastPausePoint: null,
+      pendingSelection: null,
+      selectionReadInFlight: true,
+      selectionReadDone: false,
+      selectionReadKind: "direct",
+      askNextSpoken: false,
+      lastNamed: null,
+      guessesConfirmed: state.guessesConfirmed + 1,
+    },
+    [
+      { type: "stopSpeech" },
+      ...(midClue ? momentEffects("beatMe") : []),
+      speak({ kind: "name", placeId }),
+      speak({ kind: "fixed", id: "suspicion" }),
+    ],
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -820,11 +935,22 @@ export function transition(
       }
       if (!event.freshDeal) {
         // Resumed case: instructions are skipped, the ladder proceeds
-        // as U5 whenever its clue arrives.
-        return restingResult({ ...base, instructionsStep: "skipped" });
+        // as U5 whenever its clue arrives (the current clue only).
+        return restingResult({ ...base, instructionsStep: "skipped", openTarget: 0 });
+      }
+      const target =
+        typeof event.openTarget === "number" &&
+        Number.isInteger(event.openTarget) &&
+        event.openTarget > 1
+          ? Math.min(5, event.openTarget)
+          : 0;
+      const opened: DetectiveState = { ...base, openTarget: target };
+      if (event.intro === false) {
+        // Case 2+ of the session: no duet (first entry only).
+        return restingResult({ ...opened, instructionsStep: "done" });
       }
       // Fresh deal: Holmes's instruction line first (Q4 case open).
-      return result({ ...base, instructionsStep: "holmes" }, [
+      return result({ ...opened, instructionsStep: "holmes" }, [
         speak({ kind: "fixed", id: "instructions-holmes" }),
       ]);
     }
@@ -877,6 +1003,9 @@ export function transition(
     }
 
     case "guessConfirmed": {
+      if (INTERRUPTIBLE_PHASES.has(state.phase)) {
+        return interruptWithGuess(state, event.placeId);
+      }
       if (state.phase !== "SEARCH_IDLE" && state.phase !== "SEARCH_AREA") {
         return noOp(state);
       }
@@ -1060,6 +1189,11 @@ export function transition(
               [dwell(THINKING_BEAT_MS)],
             );
           }
+          // The opening sequence: the next starting clue follows
+          // Holmes's ack straight away — no ask in between.
+          if (state.openTarget > state.clueIndex && state.clueIndex >= 1) {
+            return startClue(state, state.clueIndex + 1, state.selectionReadInFlight);
+          }
           // ack-decode drained → guessing phase, Holmes to the dock.
           return restingResult({
             ...state,
@@ -1111,10 +1245,11 @@ export function transition(
           // (the host resets the machine wholesale on the next case).
           return result({ ...state, phase: "CASE_OPEN", instructionsStep: "done" });
         case "FAIL_READ":
-          // POUT is sticky (U8): no dwell, no auto-advance — the pair
-          // stays pouting while the case stays lost. Exits are only a
+          // The truce (plan of record §5): after the answer, Watson
+          // cheers the player up — no pout. POUT stays the sticky rest
+          // phase (its view is the kind truce pose); exits are only a
           // new case (caseOpened / clueUnlocked / the host's reset).
-          return result({ ...state, phase: "POUT" });
+          return result({ ...state, phase: "POUT" }, momentEffects("truce"));
         default:
           return noOp(state);
       }
