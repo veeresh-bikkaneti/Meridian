@@ -78,7 +78,7 @@ test("8-10: hint button visible, shows a directional hint, then disables", async
   await expect(button).toHaveAccessibleName(/Hint used/i);
 });
 
-test("8-10: hint stays used after a mid-mystery reload (#185)", async ({
+test("8-10: hint stays used after a mid-mystery reload (#185, B7)", async ({
   page,
   context,
 }) => {
@@ -92,11 +92,16 @@ test("8-10: hint stays used after a mid-mystery reload (#185)", async ({
   await expect(button).toBeDisabled();
   await expect(button).toHaveAccessibleName(/Hint used/i);
 
-  // Reload mid-mystery: the persisted loop-open flag restores the
-  // screen and the persisted puzzle carries hintsUsed = 1. Pre-#185 the
-  // local counter remounted at zero and the button came back enabled —
-  // a second hint for a one-per-round player.
+  // Reload mid-mystery: B7 lands on Home (no auto-open from the saved
+  // flag); tapping the resume variant reopens the mystery, and the
+  // persisted puzzle carries hintsUsed = 1. Pre-#185 the local counter
+  // remounted at zero and the button came back enabled — a second hint
+  // for a one-per-round player.
   await page.reload();
+  await expect(
+    page.getByRole("button", { name: "GeoDetective: Resume your case" }),
+  ).toBeVisible({ timeout: 30_000 });
+  await page.getByRole("button", { name: "GeoDetective: Resume your case" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 30_000,
   });
@@ -106,7 +111,7 @@ test("8-10: hint stays used after a mid-mystery reload (#185)", async ({
   await expect(afterReload).toHaveAccessibleName(/Hint used/i);
 });
 
-test("8-10: a reload BEFORE any hint keeps the button enabled (#185 negative control)", async ({
+test("8-10: a reload BEFORE any hint keeps the button enabled (#185 negative control, B7)", async ({
   page,
   context,
 }) => {
@@ -120,8 +125,13 @@ test("8-10: a reload BEFORE any hint keeps the button enabled (#185 negative con
 
   // Hydration must restore the persisted count — zero here — not a
   // sticky "used". Guards against an over-eager fix that disables the
-  // button after any reload.
+  // button after any reload. B7: the reload lands on Home; the button
+  // is checked after tapping back into the resumed mystery.
   await page.reload();
+  await expect(
+    page.getByRole("button", { name: "GeoDetective: Resume your case" }),
+  ).toBeVisible({ timeout: 30_000 });
+  await page.getByRole("button", { name: "GeoDetective: Resume your case" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 30_000,
   });

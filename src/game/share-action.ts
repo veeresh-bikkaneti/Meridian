@@ -1,7 +1,7 @@
 import type { SessionSummary } from "./session.ts";
 import { DIFFICULTY_LABELS, formatSuccessRate } from "./session.ts";
 import { shareText } from "./share.ts";
-import { shareOrigin } from "../lib/og/share-meta.ts";
+import { WORKERS_ORIGIN } from "../lib/og/share-meta.ts";
 
 /**
  * Outcome of a share attempt.
@@ -74,7 +74,9 @@ export function sessionShareText(input: {
   regionName: string;
   dateKey: string;
   now?: Date;
-  /** Vite build base; defaults to the running build's BASE_URL. */
+  /** Vite build base; defaults to the running build's BASE_URL. Retained
+   * for call-site compatibility — it no longer selects the share URL
+   * (owner ruling 2026-11-09: always workers.dev). */
   baseUrl?: string;
 }): string {
   const base = shareText({
@@ -109,10 +111,10 @@ export function sessionShareText(input: {
 
 /**
  * The share target for the running build — the text already carries it on
- * its own line. Build-aware (Wave 1 P0 Item 4E/4F): Pages build → Pages
- * URL, any other build → Workers URL. Node has no import.meta.env, so the
- * default base "/" (Workers origin) applies there.
+ * its own line. Owner ruling 2026-11-09: the share payload (text + url)
+ * always points at workers.dev, in every build — the old build-aware
+ * behaviour (Wave 1 P0 Item 4E/4F: Pages build → Pages URL) is superseded
+ * for shares. OG meta (`__root.tsx` via `shareOrigin()`) still keeps the
+ * Pages origin as the canonical URL of the served page.
  */
-export const SHARE_URL = shareOrigin(
-  (import.meta as unknown as { env?: { BASE_URL?: string } }).env?.BASE_URL ?? "/",
-);
+export const SHARE_URL = WORKERS_ORIGIN;
