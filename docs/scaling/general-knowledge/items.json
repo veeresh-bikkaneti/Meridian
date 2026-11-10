@@ -1,0 +1,187 @@
+[
+  {
+    "id": "general-knowledge:mixed:opera-years-ago",
+    "group": "7-10",
+    "objective": "After this, a child can compute how many years ago a landmark opened by subtracting its opening year from this year, shown by entering the difference.",
+    "standard": {
+      "code": "4.NBT.B.4",
+      "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
+    },
+    "why": "A postcard says the Sydney Opera House opened in 1973. How many years ago was that? Counting back one year at a time takes ages and slips; subtracting is quick.",
+    "buildsOn": [
+      "geography:globe:sydney-opera-house",
+      "math-number:place:hundreds-tens-ones"
+    ],
+    "useElsewhere": [
+      "geography: placing landmarks on a timeline by how many years ago they opened"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:eiffel-antennas",
+    "group": "7-10",
+    "objective": "After this, a child can find how much taller the Eiffel Tower is today than when it was built by subtracting two heights in feet, shown by entering 59.",
+    "standard": {
+      "code": "4.NBT.B.4",
+      "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
+    },
+    "why": "The Eiffel Tower was 1,024 feet tall without its antennas. With them it is 1,083 feet. How much did the antennas add? Guessing from a photo cannot tell you.",
+    "buildsOn": [
+      "geography:globe:eiffel-tower",
+      "math-number:place:hundreds-tens-ones"
+    ],
+    "useElsewhere": [
+      "everyday life: finding how much higher a stack of boxes gets when one more box goes on top"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:older-landmark",
+    "group": "7-10",
+    "objective": "After this, a child can compare the years two landmarks were finished using < or >, shown by tapping the older landmark and the matching sign.",
+    "standard": {
+      "code": "4.NBT.A.2",
+      "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
+    },
+    "why": "The Eiffel Tower was finished in 1889 and the Sydney Opera House opened in 1973. Which is older? Both look grand in photos, so only the numbers can tell you.",
+    "buildsOn": [
+      "math-number:place:compare",
+      "geography:globe:eiffel-tower",
+      "geography:globe:sydney-opera-house"
+    ],
+    "useElsewhere": [
+      "geography: putting two events in time order on a timeline"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:falls-in-km",
+    "group": "7-10",
+    "objective": "After this, a child can compare a width in metres with a width in kilometres by writing kilometres as metres, shown by choosing 'less than 2 km' for 1,708 m and the matching 2,000 m bar.",
+    "standard": {
+      "code": "4.MD.A.1",
+      "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
+    },
+    "why": "Victoria Falls is about 1,708 metres wide. A trail sign says 2 km. Is the falls wider or narrower than that? The two numbers use different units, so you cannot just look.",
+    "buildsOn": [
+      "geography:globe:victoria-falls",
+      "math-number:place:compare"
+    ],
+    "useElsewhere": [
+      "everyday life: reading a trail sign in kilometres next to a map scale in metres"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:trip-buses",
+    "group": "7-10",
+    "objective": "After this, a child can find how many minibuses a group needs by dividing and rounding up, shown by tapping the right number of pictured minibuses.",
+    "standard": {
+      "code": "4.OA.A.3",
+      "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
+    },
+    "why": "A class of 30 children and 4 adults is going to see a waterfall, and each minibus seats 8. How many minibuses do they book? These are numbers for the problem, not facts about a real trip.",
+    "buildsOn": [
+      "math-number:division:remainders",
+      "geography:globe:victoria-falls"
+    ],
+    "useElsewhere": [
+      "geography: planning a class trip to a place on the map"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:noon-shadow",
+    "group": "7-10",
+    "objective": "After this, a child can predict which of three pictures of the Eiffel Tower's shadow was taken around noon, shown by tapping the shortest shadow.",
+    "standard": {
+      "code": "5-ESS1-2",
+      "source": "https://www.nextgenscience.org/pe/5-ess1-2-earths-place-universe"
+    },
+    "why": "A visitor wants a photo of the tower with the shortest shadow. When should she go? Guessing a time wastes the trip; the pattern of shadows through the day answers it.",
+    "buildsOn": [
+      "physics:light:shadow-noon",
+      "geography:globe:eiffel-tower"
+    ],
+    "useElsewhere": [
+      "everyday life: reading the time from a sundial shadow"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:everest-vs-falls",
+    "group": "10-18",
+    "objective": "After this, a child can estimate how many times one height fits into another by dividing, shown by choosing 'about 80' for Mount Everest against the deepest drop of Victoria Falls.",
+    "standard": {
+      "code": "6.RP.A.3",
+      "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
+    },
+    "why": "Mount Everest is 8,848.86 m high. The deepest drop at Victoria Falls is 108 m. How many of those drops stacked up would reach the top of Everest? A picture cannot show both at once, so you need a ratio.",
+    "buildsOn": [
+      "geography:globe:everest",
+      "geography:globe:victoria-falls",
+      "math-number:division:two-digit-divisors"
+    ],
+    "useElsewhere": [
+      "geography: comparing the sizes of landforms on the globe"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:paris-sydney-flight",
+    "group": "10-18",
+    "objective": "After this, a child can compute a travel time from a distance and a constant speed, shown by choosing 'about 20 hours' for about 17,000 km at 850 km/h.",
+    "standard": {
+      "code": "6.RP.A.3",
+      "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
+    },
+    "why": "Paris to Sydney is about 17,000 km over the globe, worked out from the game's own pins. If a plane kept a steady 850 km/h (a round number for the problem, not a real flight), about how long is the trip? You need a rate to plan when you land.",
+    "buildsOn": [
+      "geography:globe:eiffel-tower",
+      "geography:globe:sydney-opera-house",
+      "math-number:fractions:percent"
+    ],
+    "useElsewhere": [
+      "physics: speed = distance ÷ time for a ball rolling down a ramp"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:tower-angle",
+    "group": "10-18",
+    "objective": "After this, a child can estimate a tower's height from a distance on the ground and the angle up to its top using the tangent ratio, shown by entering a height within 5% of 1,072 feet and comparing it with the official 1,083 feet.",
+    "standard": {
+      "code": "HSG-SRT.C.8",
+      "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
+    },
+    "why": "No one can drop a tape measure from the top of the Eiffel Tower. Standing 1,000 feet from its centre, the top is about 47 degrees up. How tall is it? The distance and the angle are enough, with trigonometry. These two numbers are for the problem.",
+    "buildsOn": [
+      "geography:globe:eiffel-tower",
+      "general-knowledge:mixed:eiffel-antennas"
+    ],
+    "useElsewhere": [
+      "geography: finding the height of a mountain from an angle and a distance"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:great-circle",
+    "group": "18+",
+    "objective": "After this, an adult can estimate the distance between two places on the globe from their latitude and longitude with the haversine formula, shown by choosing the right band (8,000 to 8,500 km) for Mount Everest to Victoria Falls.",
+    "standard": "UNVERIFIED",
+    "why": "A straight line on a flat map is not the shortest route over a round Earth. How far is it from Everest to Victoria Falls, really? The pins give latitude and longitude; spherical trigonometry turns them into kilometres. Fit: spherical distance goes past HSG-SRT.C.8 and no single school code covers it.",
+    "buildsOn": [
+      "general-knowledge:mixed:tower-angle",
+      "geography:globe:everest",
+      "geography:globe:victoria-falls"
+    ],
+    "useElsewhere": [
+      "geography: why flight paths drawn on a flat map look curved"
+    ]
+  },
+  {
+    "id": "general-knowledge:mixed:falls-flow",
+    "group": "18+",
+    "objective": "After this, an adult can convert a flow of up to 500 million litres per minute into litres per day in scientific notation, shown by choosing 7.2 × 10^11.",
+    "standard": "UNVERIFIED",
+    "why": "Up to 500 million litres of water a minute go over Victoria Falls. How much is that in a day? The number is too big to picture, so powers of ten keep it readable. Fit: an adult extension of 8.EE.A.4 that no single school code covers.",
+    "buildsOn": [
+      "math-number:place:scientific",
+      "geography:globe:victoria-falls"
+    ],
+    "useElsewhere": [
+      "everyday life: comparing a household's water use per day with one second of the falls"
+    ]
+  }
+]

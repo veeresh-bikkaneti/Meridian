@@ -1,0 +1,58 @@
+[
+  {
+    "id": "geography:globe:eiffel-tower",
+    "group": "7-10",
+    "objective": "After this, a child can locate the Eiffel Tower on the globe, shown by dropping a pin inside the hit radius on the first or second try.",
+    "standard": {
+      "code": "D2.Geo.3.3-5",
+      "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
+    },
+    "why": "A friend sends a postcard of a tall iron tower and asks which city it is in. A name means little until you can find the place on the globe.",
+    "buildsOn": [],
+    "useElsewhere": [
+      "geography: reading a city map to find a landmark"
+    ]
+  },
+  {
+    "id": "geography:globe:sydney-opera-house",
+    "group": "7-10",
+    "objective": "After this, a child can locate the Sydney Opera House on the globe, shown by dropping a pin inside the hit radius on the first or second try.",
+    "standard": {
+      "code": "D2.Geo.3.3-5",
+      "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
+    },
+    "why": "A picture shows white shell roofs on a harbour. Which side of the world is it on, and which city is it in?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "geography: using a globe to tell which half of the world a city is in"
+    ]
+  },
+  {
+    "id": "geography:globe:victoria-falls",
+    "group": "7-10",
+    "objective": "After this, a child can locate Mosi-oa-Tunya / Victoria Falls on the globe, shown by dropping a pin inside the hit radius on the first or second try.",
+    "standard": {
+      "code": "D2.Geo.3.3-5",
+      "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
+    },
+    "why": "A wide river drops into a gorge so hard that its spray can be seen from far away. Where on Earth is that river?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "geography: following a river on a map to the place where it falls"
+    ]
+  },
+  {
+    "id": "geography:globe:everest",
+    "group": "7-10",
+    "objective": "After this, a child can locate Mount Everest on the globe, shown by dropping a pin inside the hit radius on the first or second try.",
+    "standard": {
+      "code": "D2.Geo.3.3-5",
+      "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
+    },
+    "why": "People call one mountain the highest on Earth. Which mountain range holds it, and where is that range on the globe?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "geography: finding mountain ranges on a relief map"
+    ]
+  }
+]

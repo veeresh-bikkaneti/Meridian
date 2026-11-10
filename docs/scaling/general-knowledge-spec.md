@@ -1,181 +1,246 @@
-# General Knowledge Spec — P10 GK Trivia Quiz + P11 GK Current Affairs + P12 GK Detective
+# General Knowledge Spec — a mixed review round across subjects
+
+> **Mission (owner, 2026-11-10):** most children don't understand why they
+> learn multiplication, division, algebra and trigonometry. Every unit opens
+> with a real problem that needs the skill, then teaches it, then has the
+> child use it in another subject.
 
 ## Header
 
 | Field | Value |
 |---|---|
-| Topic | General Knowledge, all three owner-picked options (2026-11-07, "All 3"): P10 GK Trivia Quiz (option A) + P11 GK Current Affairs (option B) + P12 GK Detective (option C) |
-| Status | **GATED** — all three options. P11 carries an extra gate no other packet has: the owner's written ruling on the revision-rule tension (see below). Until the owner rules, P11 is definition-only. |
-| Branch | `feat/general-knowledge-spec` (per this spec brief; the work packets propose `feat/gk-trivia-quiz`, `feat/gk-current-affairs`, `feat/gk-detective` — confirm the branch name(s) before the build agent starts; the three options may need three branches, one per option) |
-| Video count | **TO CONFIRM** — do not invent a number, for any of the three options. The counts are set by the signed definitions, not by this spec. |
-| Repo | veeresh-bikkaneti/Meridian — free browser geography game for kids, live at https://veeresh-bikkaneti.github.io/Meridian/ (project record, MEMORY.md; confidence HIGH as a project-internal fact — the live web search on 2026-11-10 returned other products named "Meridian" and did not independently verify the repo URL, so no web citation is claimed for it) |
-| Sources consulted | `meridian-scaling-lens-breakdown.md` §0 (lines 15–151), §8 P10 (lines 1425–1558), §9 P11 (lines 1559–1714), §10 P12 (lines 1715–1852), §12 staleness flags (lines 1899–1926), §13 open questions (lines 1927–1961); `meridian-scaling-work-packets.md` shared gates + dependency chart (lines 7–102), P10 (lines 602–657), P11 (lines 658–719), P12 (lines 720–806) |
+| Topic | General knowledge, **reframed (Stage A, 2026-11-10)** as a mixed review round that re-deals items the child already met in other subjects, so one skill shows up in several places (plan `docs/scaling/plans/feat-general-knowledge-spec.md`; map `subject-progression-map.md`, "General knowledge becomes the mixed review across the whole chain") |
+| Status | **GATED.** Stage A (spec and data) done on this branch; Stage B (build) waits for the owner to lift the build gate for this branch. Educator seat vacant: no named educator has signed the rubric. |
+| Branch | `feat/general-knowledge-spec` (stays open until dev work is complete) |
+| Contract | I2 unit items (`docs/scaling/contracts.md`); I1 subject module and I3/I4 for Stage B only |
+| Item counts | **PROPOSED:** 11 mixed-review items (6 for 7-10, 3 for 10-18, 2 for 18+), 5 subject fixtures, 5 example rounds. Not decided; the educator and owner set the real counts. |
+| Data | `docs/scaling/general-knowledge/items.json` (mixed-review items), `fixtures/geography.items.json`, `fixtures/physics.items.json`, `rounds.json`; validator `items.test.mjs`; sources `sources.md`; council `council.md` |
 | Spec date | 2026-11-10 |
 
-## Expert seats
+## 1. The reframe — what a general-knowledge round is
 
-- **General-knowledge seat: owner to name.** No seat is named by the owner for general knowledge — do not invent one. This is a gap, not a silent default: the build agent reports it as open.
-- **Educator seat — BLOCKED.** No named educator exists. The named human educator / SME (a general-knowledge educator; for P11 a current-affairs educator) must sign IN WRITING, before build: (1) the GK topic map per band (P10) / the topic map + pipeline design (P11, signed once) / the case-topic map per band (P12), (2) the judging rule for each mode, (3) the machine-verification gate, demonstrated on one complete mode, (4) for P12, the game design (case structure, clue reveal, guess mechanic, win/loss, fail state, deduction verb). For P11, sign-off is **per item, not just per topic map** — every published item signed (or signed-off in a reviewed batch) before it ships. A math educator's signature does not cover this packet; for P12, the case bank's facts span subjects, so the signer must cover the case content or two signers must sign. Until the signature(s) are on file, all three options stay GATED.
-- Five lenses also apply as usual: software architect, UI/UX designer, game developer, researcher, educator (blocked).
+A general-knowledge round is **not new trivia**. It deals 2–3 cards, each a
+skill the child already met in another subject, now used in a new setting on
+the globe (standard §4, "Interleave"; map, cross-application web):
 
-## Topic scope
+- A **math** skill (subtracting, comparing, converting units, ratio, rate,
+  trigonometry) is applied to a **geography** place from the existing globe
+  deck (the Eiffel Tower, Sydney Opera House, Victoria Falls, Mount Everest in
+  `src/game/starters.ts`).
+- A **physics / earth-science** idea (shadows through the day) is applied to
+  the same places.
+- Each card's `buildsOn` points by id at the items it re-uses. Math links to
+  the real number-strand data on main (`docs/scaling/math/number/items.json`);
+  geography and physics link to fixtures in `docs/scaling/general-knowledge/fixtures/`
+  until those subjects publish their own I2 items (contracts "copy the shape
+  until the owning stream merges"). When they land, the fixture ids are
+  swapped for the real ones and the fixtures are deleted.
+- A round never mixes in a card above the child's group, mixes at least two
+  source subjects, and never drills one skill (checked by the validator).
+- Misses go to the **existing** review deck on the same `[0, 1, 3, 7, 14, 30]`
+  day ladder, keyed by the item id (standard §4; contracts I2). Wiring subject
+  items into `src/game/review-deck.ts` is integrator-only; until then the
+  module keeps misses in its own state.
 
-- **Age band:** 5th grade and up only. No 5–7 content until the owner answers Q2 in writing.
-- **Purpose:** school revision, not new teaching — **except P11, which FAILS that rule (see the OPEN ruling below).** P10 and P12 exist under the rule; P11 is recorded as failing it, not softened.
-- **"School GK" is the boundary and it is fuzzy** — what counts as general knowledge a school teaches varies by country and curriculum. The definitions must name the GK topic map per band with sources; the boundary cannot be invented. If a definition cannot name it with sources, the build agent reports that rather than building a bank on a guessed boundary.
-- **In scope (per lens §8–§10 + packets P10–P12):**
-  - **P10 Trivia Quiz:** one trivia mode on P3's quiz loop (same run/session/scoring/review-deck machinery, new question bank and judging — if P3 has not landed, this option waits for the loop contract; it does not re-implement a loop). School-GK questions per the signed topic map, exact-answer judging in v1. Review deck wired to question topics (misses replay by topic; topic tags are part of the question record). No current affairs here; no detective format here.
-  - **P11 Current Affairs:** one current-affairs mode (quiz loop or short news card, per the definition; mockup first). Fresh-content pipeline design FIRST — sourcing, dating, review, publication, retirement, with the staleness period stated as a number. Sourcing rules: trusted sources only (named list, each with publisher and why it is trusted); aggregators and social sources excluded. Every item dated at publication; no undated "current" claims anywhere; every item educator-signed before it ships. Expiry/retirement: a stale item must not be served — demonstrated by a test that walks an expired item being withheld, not asserted. Freshness is a permanent operational cost, not a one-time build: the definition must state who operates the pipeline after launch, or the mode ships with an expiry that visibly retires it.
-  - **P12 GK Detective:** one detective mode on the GeoDetective machine (shuffled deck, exactly-once-per-cycle, cap, win/loss, clue reveal — each reused piece traced to a file in `src/game/loop/`). Cases built from cited GK facts (school GK, history, geography, science — cross-subject cases; the science in cases is physics/chemistry only, per the owner's scope — no other science strands are assigned here). Clues reveal facts step by step; guesses are candidate answers; the deduction must be visible. **The game design document comes FIRST and is a gate, not a phase:** case structure, clue reveal, guess mechanic, win/loss, fail state, deduction verb — signed before any code. A detective game without a real deduction verb is trivia with a detective skin — the design must prove the verb is real (a worked case where the clues, and only the clues, lead to the answer), or the packet returns to the owner rather than shipping trivia as a detective game.
-- **Overlap rule (all three options):** the same fact must not be written three ways with three different answers across P5 (history), P7 (science), and P8 (journal). Overlapping facts cite one source — a fact with conflicting sources across packets is a contradiction to resolve before build.
-- **Out of scope:** any GK beyond the signed school topic map; any trivia-for-trivia's-sake (facts with no school anchor); any current-affairs item without a trusted source, a date, or educator sign-off; any case without cited facts; any detective skin over a trivia loop; any tiny-model use (P9, parked); any behaviour change to geography or math. World view, not US-heavy: the school-GK boundary varies by country and curriculum; definitions must not default to one country's GK.
+**Why this reframe.** The plan review (`k12-plan-review.md`, GK row) found
+"mixed review of other subjects may serve better than new trivia", and the
+map names general knowledge as the mixed review. It also shrinks the surface
+for unsourced facts: every fact here is already sourced by its place or
+subject, and the round only adds the computation.
 
-## ⚠️ P11 revision-rule tension — OPEN, do not decide
+## 2. Items (data in `general-knowledge/items.json`, PROPOSED)
 
-Recorded here exactly as the lens breakdown and work packets state it — **do not soften, do not drop, do not decide**:
+Every item carries an observable objective with "shown by", a standard code
+read live (or UNVERIFIED with a Fit note), the real problem that opens it,
+its group, Builds on, and one use-it-elsewhere setting from the map's web.
+The table is generated from the data; the data wins if they ever differ.
 
-> **P11 FAILS the standing "revision, not new teaching" rule.** Current affairs, by definition, teaches what just happened — new content, not revision of what school already taught. The owner picked it anyway ("All 3", 2026-11-07). Two honest resolutions; the owner must pick one **in writing** before any build:
-> - **(a) Explicit recorded override** — the owner waives the revision rule for this packet only, carried as a named risk.
-> - **(b) Reframe as revision** — every item anchored to a civics/history topic the child already met in school ("the news behind what you learned in school"); items with no school anchor are out of scope.
-> An agent may never record the waiver itself. Until the owner rules, P11 is definition-only and GATED. The readiness audit cannot pass until the ruling is on file.
+| Item | Group | Standard | Re-uses from | Builds on | Use it elsewhere |
+|---|---|---|---|---|---|
+| `general-knowledge:mixed:opera-years-ago` | 7-10 | 4.NBT.B.4 | geography, math-number | `geography:globe:sydney-opera-house`, `math-number:place:hundreds-tens-ones` | geography: placing landmarks on a timeline by how many years ago they opened |
+| `general-knowledge:mixed:eiffel-antennas` | 7-10 | 4.NBT.B.4 | geography, math-number | `geography:globe:eiffel-tower`, `math-number:place:hundreds-tens-ones` | everyday life: finding how much higher a stack of boxes gets when one more box goes on top |
+| `general-knowledge:mixed:older-landmark` | 7-10 | 4.NBT.A.2 | geography, math-number | `math-number:place:compare`, `geography:globe:eiffel-tower`, `geography:globe:sydney-opera-house` | geography: putting two events in time order on a timeline |
+| `general-knowledge:mixed:falls-in-km` | 7-10 | 4.MD.A.1 | geography, math-number | `geography:globe:victoria-falls`, `math-number:place:compare` | everyday life: reading a trail sign in kilometres next to a map scale in metres |
+| `general-knowledge:mixed:trip-buses` | 7-10 | 4.OA.A.3 | geography, math-number | `math-number:division:remainders`, `geography:globe:victoria-falls` | geography: planning a class trip to a place on the map |
+| `general-knowledge:mixed:noon-shadow` | 7-10 | 5-ESS1-2 | geography, physics | `physics:light:shadow-noon`, `geography:globe:eiffel-tower` | everyday life: reading the time from a sundial shadow |
+| `general-knowledge:mixed:everest-vs-falls` | 10-18 | 6.RP.A.3 | geography, math-number | `geography:globe:everest`, `geography:globe:victoria-falls`, `math-number:division:two-digit-divisors` | geography: comparing the sizes of landforms on the globe |
+| `general-knowledge:mixed:paris-sydney-flight` | 10-18 | 6.RP.A.3 | geography, math-number | `geography:globe:eiffel-tower`, `geography:globe:sydney-opera-house`, `math-number:fractions:percent` | physics: speed = distance ÷ time for a ball rolling down a ramp |
+| `general-knowledge:mixed:tower-angle` | 10-18 | HSG-SRT.C.8 | geography | `geography:globe:eiffel-tower`, `general-knowledge:mixed:eiffel-antennas` | geography: finding the height of a mountain from an angle and a distance |
+| `general-knowledge:mixed:great-circle` | 18+ | UNVERIFIED | geography | `general-knowledge:mixed:tower-angle`, `geography:globe:everest`, `geography:globe:victoria-falls` | geography: why flight paths drawn on a flat map look curved |
+| `general-knowledge:mixed:falls-flow` | 18+ | UNVERIFIED | geography, math-number | `math-number:place:scientific`, `geography:globe:victoria-falls` | everyday life: comparing a household's water use per day with one second of the falls |
 
-Also OPEN (Q16): what counts as school GK per band (and does it vary by country/curriculum), and the staleness period (how fast do items retire — a number with a rationale, e.g. "retire after N days unless re-verified"; "when it feels stale" is not a rule).
+### Fixtures (stand-ins until the owning subject publishes I2 data)
 
-## Topic structure — no count invented
+| Fixture | Group | Standard | Stands in for | Use it elsewhere |
+|---|---|---|---|---|
+| `geography:globe:eiffel-tower` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: reading a city map to find a landmark |
+| `geography:globe:sydney-opera-house` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: using a globe to tell which half of the world a city is in |
+| `geography:globe:victoria-falls` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: following a river on a map to the place where it falls |
+| `geography:globe:everest` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: finding mountain ranges on a relief map |
+| `physics:light:shadow-noon` | 7-10 | 5-ESS1-2 | physics fixture | everyday life: reading the time from a sundial shadow |
 
-Structure only; the video count is **TO CONFIRM** for each of the three options in the signed definitions. The build agent turns this structure into videos once the counts are set. Do not invent curriculum facts — each sub-topic below must cite the signed definition before content is written; a sub-topic with no citation is out of scope.
+Geography fixture ids map to the live globe deck: `geography:globe:eiffel-tower`
+= `globe-eiffel-tower`, `geography:globe:sydney-opera-house` =
+`globe-sydney-opera-house`, `geography:globe:victoria-falls` =
+`globe-victoria`, `geography:globe:everest` = `globe-everest`. The physics
+fixture `physics:light:shadow-noon` stands in for map step Ph4 (light and
+shadow) until the physics spec publishes items.
 
-### P10 — Trivia Quiz (option A)
+### Example rounds (`rounds.json`, PROPOSED)
 
-1. **School-GK question bank** — per the signed topic map per band; bank + difficulty tiers; every question machine-verified (answer checked against its source, not trusted from the generator) and cited with a trusted source and a confidence level.
-2. **Exact-answer judging (v1)** — a test walks right answer, wrong answer, near-miss.
-3. **Review deck by topic** — misses replay by topic.
-4. **Overlap-resolution table (P5/P7/P8)** — one source per overlapping fact.
+Five example rounds show the interleave rule (two for 7-10, two for 10-18,
+one for 18+). In v1 the round is dealt from the child's own due and mastered
+items, not from a fixed list.
 
-### P11 — Current Affairs (option B)
+### Problem numbers
 
-5. **Fresh-content pipeline** — sourcing, dating, review, publication, retirement; staleness period stated as a number.
-6. **Trusted-source list** — named list with publisher and why each source is trusted; aggregators and social sources excluded.
-7. **Recency rules** — every item dated; every item shows its date; stale items visibly retired, never silently served (retired state mocked).
-8. **Per-item sign-off flow** — a gate in the pipeline, not a checkbox after publication.
-9. **Operator statement** — who operates the pipeline after launch, or the expiry fallback that visibly retires the mode.
+Some hooks need numbers that are not facts (bus seats, a steady plane speed,
+a distance and an angle). Each such item says so in its `why`, and the host
+says "numbers for this problem" on screen. Every real fact and every worked
+answer is in `general-knowledge/sources.md`.
 
-### P12 — GK Detective (option C)
+## 3. How a card plays (standard §3 loop)
 
-10. **Game design document (signed gate)** — case structure, clue reveal, guess mechanic, win/loss, fail state, deduction verb; one worked case proving the deduction verb is real.
-11. **Case bank** — cases built from cited GK facts per the signed case-topic map per band; every case solution path machine-verified (checked, not trusted from the author).
-12. **Clue economy** — how many clues, what each reveals; stated in the design AND playtested with the age group, not asserted (too hard teaches nothing — the child guesses blind; too easy is trivia).
-13. **Overlap-resolution table (P5/P7/P8)** — one source per overlapping fact.
+1. **Hook (why first, within 5 seconds):** the real problem from `why`, with
+   the place on the globe (Flat tier: 2D map pin).
+2. **Predict / attempt:** tap one of 3–4 answers (7-10: pictured choices, no
+   typing beyond a number pad; no timer).
+3. **See:** the globe flies to the place and the answer is shown as motion:
+   two bars for 1,708 m vs 2,000 m, the antennas growing 59 feet, a shadow
+   sweeping to its shortest point.
+4. **Explain:** the host wrap-up retells why in one or two sentences at the
+   group's reading level (owner's host rule; whether it is a clip or real-time
+   animation is owner decision D3).
+5. **Retry or move on:** one retry with a hint, then the card goes to the
+   review deck.
 
-## Hard rules (owner's — in every file)
+**Confident bar (PROPOSED):** correct on the first try with no hint, in a
+round where the card was mixed with at least one other skill. Because the
+card is a use-it-elsewhere setting, a confident hit counts as one of the "two
+different settings" a skill needs to reach Mastered (standard §0).
 
-1. **Verify EVERY key fact with live web search:** source URL + confidence (HIGH/MEDIUM/LOW per lens §0.2) on every claim. No source = mark UNVERIFIED, never state it as fact. No stale facts — a stale fact presented as current is wrong (the standing warning that defines P11). Every P11 item must be dated; no undated "current" claims anywhere.
-2. **NO POLITICS anywhere.** This is a hard line for this packet in particular: current-affairs and history content must be factual, sourced, and dated — no political framing, commentary, or present-day political examples.
-3. **Status GATED (educator sign-off in writing).** Educator seat BLOCKED — no named educator exists. Signer must approve in writing: curriculum + topic map + judging rule + verification gate (plus the game design for P12, and per-item sign-off for P11).
-4. **Counts:** TO CONFIRM for all three options. Never present a proposed count as decided, never invent one.
-5. **7-stage release pipeline applies** — no feature ships unless all seven ran: (1) code review, (2) architectural review, (3) design review, (4) feasibility analysis (works in a browser), (5) manual QA by real play-testing, (6) visual testers (effects in sync/consistent), (7) age-group playtest with feedback to the game player and game researcher. A review-only pass is not testing.
-6. **Lazy-load law:** nothing loads until a kid picks it. No subject loads before selection; inside a chosen subject, prefetch of the next 1–2 items is allowed. Load budget numbers (initial JS ≤ 250 KB gzip; per-game chunk ≤ 500 KB gzip) are PROPOSALS, not measurements — baseline on P2's first build; breach = branch blocked.
-7. **Host wrap-up (owner's rule, every question, every feature):** win or lose, correct or wrong, every question ends with the host retelling the story behind the answer as a very small, short animated cartoonish video clip — not lengthy.
-8. **Mockup first:** each mode's mockup is shown to the owner before building, at 390px and 1280px, for the youngest and oldest bands in scope. A child must get it just by looking. Free, no paywalls, COPPA-safe (no accounts, no PII, no identifiers).
-9. **Readiness audit (all four, demonstrated not promised):** (i) named curriculum + topic map, (ii) machine-verifiable judging rule, (iii) correctness checkable without an LLM near the data, (iv) core verb a child gets just by looking. For P12, the signed game design sits on top of the audit.
-
-## Verification protocol (lens §0 — forcing rule)
-
-Before any question in this spec is answered, the build agent MUST: (1) run a live web search to ground the answer in current information — answering from its own knowledge is forbidden; (2) give every key fact a named site source (with URL where possible, plus access date) or an explicit confidence level (HIGH/MEDIUM/LOW per §0.2); (3) record any fact with no source as UNVERIFIED and never assert it; (4) re-check anything time-sensitive against a current source — a stale fact is wrong. A section completed without these four steps is incomplete. Full protocol: lens §0.
-
-## Agent prompt (copy-paste block)
+## 4. K-12 standard block (§9)
 
 ```
-You are the build agent for Meridian General Knowledge: P10 GK Trivia
-Quiz + P11 GK Current Affairs + P12 GK Detective
-(feat/general-knowledge-spec). Repo: veeresh-bikkaneti/Meridian. SPEC
-ONLY in this file — do NOT generate videos here; the build agent
-implements from this spec on branch feat/general-knowledge-spec (three
-options, one per mode — confirm branch name(s) before starting). Never
-commit, push, open PRs, or merge on your own; the coordinator does all
-git work and merging stays the owner's decision, per PR, per head.
-
-EXPERTISE REQUIRED: Software Architect, UI/UX Designer, Game Developer,
-Researcher, plus the GENERAL-KNOWLEDGE seat (owner to name — no seat is
-named by the owner; report it as open, do not invent one) and the
-EDUCATOR seat (BLOCKED — no named educator exists; see gate below).
-
-TOPIC: General knowledge for 5th grade and up, all three owner-picked
-options. P10: one trivia mode on P3's quiz loop, school-GK only,
-exact-answer judging in v1. P11: one current-affairs mode with a
-fresh-content pipeline (sourcing, dating, review, publication,
-retirement, staleness period as a number) — DEFINITION-ONLY until the
-owner rules in writing on the revision-rule tension: (a) explicit
-recorded override, or (b) reframe as revision anchored to school-taught
-civics/history. You may NEVER record that waiver yourself. P12: one
-detective mode on the GeoDetective machine; the game design document is
-a GATE, signed before any code, and must prove the deduction verb is
-real. VIDEO COUNTS: TO CONFIRM for all three options — set by the
-signed definitions, never invented here. "School GK" is the boundary and
-it is fuzzy; if a definition cannot name it with sources, report that
-rather than build a bank on a guessed boundary.
-
-DELIVERABLES: P10 — GK boundary answer (sourced); topic map following
-from the boundary; mode mockup; judging test plan; overlap-resolution
-table (P5/P7/P8). P11 — pipeline design; trusted-source list; ruling
-question for the owner with option (b) costed; format mockup with dates
-visible on every item and a retired state; operator statement. P12 —
-signed game design document; case-topic map with citations; one worked
-case proving the deduction verb; judging test plan; overlap-resolution
-table (P5/P7/P8). Video clips: 10 seconds each.
-
-TECH: v4 recipe — AI video-gen + Avocado TTS + ffmpeg. Storyteller
-voice: Magnus, 86-138 Hz (project record). 1152x768, 24fps, h264+AAC.
-Tap-to-play, preload=none. Captions/VTT + transcript per clip.
-Lazy-load law: nothing loads until a kid picks it; prefetch of the next
-1-2 items inside a chosen subject is allowed. Host story clip after
-every question (win or lose, correct or wrong) — very small, short
-animated cartoonish video, not lengthy.
-
-GATES (all must pass): tsc, npm test, test:worker, lint-cards GATE
-PASSED, build:pages, Playwright E2E sequential --workers=1, panel
-review, educator sign-off IN WRITING for curriculum + topic map +
-judging rule + verification gate (+ game design for P12; per-item
-sign-off for P11), screen recording of the built app — no recording =
-the testing did not happen. 7-stage release pipeline in full (code
-review, architectural review, design review, feasibility, manual QA by
-real play-testing, visual testers, age-group playtest). No
-self-certification.
-
-VERIFICATION PROTOCOL: verify EVERY key fact with live web search;
-source URL + confidence (HIGH/MEDIUM/LOW) on every claim; no source =
-UNVERIFIED, never asserted as fact; no stale facts. A stale fact
-presented as current is wrong; a wrong or outdated "fact" taught to
-children is the silent failure P11 cannot absorb.
-
-NO POLITICS anywhere. World view, not US-heavy. If the educator is
-still unstaffed when you are assigned, your first job is to report that
-the packet is blocked — not to build around it.
+K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+- Why first (§0): unit opens with a real problem that needs the skill; "why does this matter?" answered in the first minute: [x] every item's `why` is the opening problem; the host answers it at Explain
+- Headline goal (§0): bridge to the previous subject + playable real-life application: [x] bridge = `buildsOn` into math, geography and physics items; application = a real place on the globe
+- Use-it-elsewhere round in at least one other subject (cross-application web): [x] every item has one `useElsewhere` setting from the map's web; the round itself is a use-it-elsewhere setting for the source skill
+- Bands served: [x] 7-10, 10-18, 18+ — revision is useful at every level; 7-10 stays concrete (no algebra, trigonometry, rates or formulas, checked by the validator), 18+ gets haversine and powers of ten
+- Objective per item, observable verb, "shown by": [x] all items (validator)
+- Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [x] CCSS, C3 and one NGSS earth-science code read live 2026-11-10; two 18+ items UNVERIFIED with a Fit note
+- Loop mapped: hook / predict / see / explain / retry: [x] §3 above
+- Mastery "confident" bar for this subject: [x] PROPOSED in §3
+- Review-deck hookup (same deck, same ladder): [x] §1; wiring is integrator-only
+- Post-clip retrieval check (journal + any video): [n/a] no clips in this mode; the host wrap-up follows an answered card, so the card itself is the retrieval
+- Motion tiers: Full / Lite / Flat described, learning parity stated: [x] §5
+- Accessibility: captions, tap alternative, no-timer default, SR live region: [x] §5
+- Privacy: no PII, no identifiers, local-only records: [x] §5; "years ago" uses only the device year and never asks an age
+- Content screen (§7a) passed; cut items logged with reason: [x] §6 CUT log
+- Free: no revenue features; asset licences recorded: [x] no new assets in Stage A; Stage B reuses the globe and house art
+- Educator rubric (docs/scaling/educator-gate-rubric.md) attached: [ ] OPEN — no named educator; sign-off block in §9 is blank
 ```
 
-## Open questions for the owner
+## 5. Motion tiers, accessibility, privacy
 
-1. **Q16 (P11 ruling — OPEN, blocks P11 build):** (a) explicit override of the revision rule, carried as a named risk, or (b) reframe as revision anchored to school-taught civics/history? In writing, before any P11 build.
-2. **Q16 (school GK — OPEN):** what counts as school GK per band, and does it vary by country/curriculum? Needed by P10/P11/P12 definitions.
-3. **Q16 (staleness period — OPEN):** how fast do P11 items retire? (A number with a rationale.)
-4. **Q1 (educator + curriculum):** who is the named GK/current-affairs educator/SME, and which curriculum does the topic map follow?
-5. **GK seat:** owner to name the general-knowledge seat-holder.
-6. **Video counts:** TO CONFIRM — what counts do the signed definitions set for P10, P11, and P12?
-7. **P11 operator:** who operates the fresh-content pipeline after launch? (If no operator is named, that is a finding — without one the mode rots in weeks; a mode with an expiry that visibly retires it is the fallback.)
-8. **Q5 (load budget):** accept the proposed 250 KB / 500 KB starting numbers once baselined, and what tap → first-playable-paint time on what device is "fast enough"?
-9. **Alert policy (study §10 Q7):** which funnel types, if any, may page a human? Unassigned — needs your decision before funnel types are defined.
+- **Full:** the existing three.js globe (dynamic `import("three")`, as in
+  `home-globe.tsx`) flies to the place; bars, heights and shadows animate on
+  the house easing curves (`motion-tokens.css`). **Lite:** same scene, low
+  poly, no shadows or post-processing, 30 fps cap. **Flat:** a 2D map pin and
+  stepped SVG diagrams (two bars, a before/after tower, three shadow
+  pictures). Same question, same numbers, same scoring in every tier.
+- `usePrefersReducedMotion` switches to Flat transitions; nothing flashes
+  more than 3 times a second.
+- Every prompt is read aloud (on by default for 7-10) and has text; every
+  answer is a tap target ≥ 44px with a keyboard path; no timers in 7-10 and
+  optional elsewhere; the canvas has a live region ("The pin landed on
+  Victoria Falls").
+- No accounts, names or free text; records stay in `localStorage`; the round
+  makes no network call with learning data (standard §7).
 
-## Definition of done
+## 6. Content screen (§7a) and CUT log
 
-Done when: (a) P10 — one complete trivia mode plays end to end on the quiz loop; every question machine-verified and cited; judging test walks all cases; review deck replays by topic; overlaps resolved to one source per fact; (b) P11 — the owner's written ruling (option (a) or (b)) is on file; the pipeline design exists with the staleness period stated; one mode plays end to end; every item cited (trusted source), dated, and educator-signed; stale items retire automatically, demonstrated by a test that walks an expired item being withheld; (c) P12 — the game design document is written and signed, the deduction verb proven real; one detective mode plays end to end per the GeoDetective contract with a fail state; every case fact cited and every case solution path machine-verified; overlaps resolved; (d) for all three: load budget met on P2-measured numbers and lazy-load behaviour verified; educator sign-off on file; the readiness audit's four points demonstrated; every question ends with the host story clip; the 7-stage release pipeline ran in full; panel review passed with a screen recording.
+The four fixtures passed the screen: each is a place and an achievement told
+through a sourced number. Mount Everest is kept 2–1 on the condition that
+only the 2020 survey height and the location are used (council C6).
 
-## UNVERIFIED log (this spec)
+Globe-deck places **cut** from fixtures (when in doubt, leave it out):
 
-- Repo/live-site identity: per project record (MEMORY.md), confidence HIGH as a project-internal fact; live web search 2026-11-10 did not independently verify the repo URL — no web citation claimed.
-- Video counts: TO CONFIRM for P10, P11, and P12 — no number is stated anywhere in this spec.
-- **P11 revision-rule tension is OPEN and undecided** — no ruling (a) or (b) is recorded in this spec; no waiver is recorded.
-- **School-GK boundary is UNVERIFIED** — no curriculum citation names it yet; the boundary is the definitions' first job.
-- **Staleness period is UNVERIFIED** — no number is set in this spec.
-- Every sub-topic above is structure only; every question, item, and case fact is UNVERIFIED until §0 verification is done at build time.
-- Load-budget numbers (250 KB / 500 KB gzip): PROPOSAL, not measured (lens §12 flag 11).
-- No other factual claims are made in this spec.
+| Place in the deck | Reason |
+|---|---|
+| Angkor Wat, Ahu Tongariki, Chichén Itzá, Machu Picchu | Story centres on temples, epics or ceremonial sites (religion) |
+| Uluru | Deck text mentions sacred sites (religion) |
+| Giza Plateau | Royal burial monuments; the story is hard to tell without belief (doubt) |
+| Petra | Not needed for v1; facades include tombs (doubt) |
+| Serengeti, Puerto Ayora | Wildlife and tortoises (no biology) |
+| Statue of Liberty | A national political symbol; the name invites politics (doubt) |
+| Oia, Gullfoss | Kept for later: no sourced number fetched yet for a computation |
+
+No item mentions religion, sexuality or gender identity, current or contested
+politics, living things, war, or a child's age; the validator bans those
+words in item text.
+
+## 7. Earlier scope (P10 / P11 / P12) — recorded, not decided
+
+The earlier version of this spec (2026-11-10) defined three owner-picked
+options ("All 3", 2026-11-07): P10 trivia quiz, P11 current affairs, P12 GK
+detective. The reframe above replaces the P10 trivia bank with the mixed
+review round for v1 (council C1). The rest is kept as the owner's open
+choice:
+
+- **P12 GK detective** stays a later mode on the GeoDetective machine; its
+  game design document remains a signed gate before any code.
+- **P11 current affairs** — the tension is recorded exactly as before:
+
+{p11}
+
+  New since then: owner ruling D2 (standard §7a) puts current or contested
+  politics out of scope. Whether P11 survives D2 at all is open question G2.
+
+## 8. Stage B (build) — GATED
+
+Not started. Starts only when the integrator says the owner lifted the build
+gate for this branch. Plan, unchanged from the branch plan: a subject module
+at `src/subjects/general-knowledge/index.ts` (contract I1) with
+`released: false`, reading I2 items from every registered subject (fixtures
+until they land), Full / Lite / Flat with the same learning, tests first, all
+`AGENTS.md` gates, and a screen recording. Until Phase 0 merges, proof is
+tests plus a local harness that is not committed.
+
+## 9. Educator sign-off (blank — gate stays shut)
+
+```
+EDUCATOR SIGN-OFF
+Spec: docs/scaling/general-knowledge-spec.md + docs/scaling/general-knowledge/** @ [commit]
+Signer: [name], [role], [band(s)], [subject]
+Date: [YYYY-MM-DD]
+Result: Approved / Approved after fixes / Not approved
+Fixes: [list with owner]
+Signature (typed name is fine): [ ]
+```
+
+## 10. Open questions for the owner
+
+1. **G1 (educator):** who signs the rubric for general knowledge? The signer
+   must cover math, geography and earth science, or two signers sign.
+2. **G2 (P11):** does P11 current affairs stay in scope after ruling D2? If
+   yes, the earlier (a)/(b) ruling is still needed in writing.
+3. **G3 (placement):** is general knowledge its own subject card, or a mode
+   inside the existing "Review my misses" deck?
+4. **G4 (counts):** the item, fixture and round counts are PROPOSED.
+5. **G5 (curriculum):** CCSS, C3 and NGSS are US frameworks; which non-US
+   equivalent should the topic map also name (standard §2 world-view rule)?
+6. **G6 (units):** the official Eiffel Tower heights are in feet on its
+   English page; the other places use metres. Keep each fact in its source's
+   unit, or convert?
+7. **G7 (source host):** this branch cites the CCSSO PDF for CCSS because the
+   math strand's host blocked this agent; should all subjects use one host?
+
+## 11. UNVERIFIED log
+
+- Item counts: PROPOSED, not decided.
+- `general-knowledge:mixed:great-circle` and `general-knowledge:mixed:falls-flow`: standard UNVERIFIED (18+, no single school code; Fit notes in the data).
+- Mount Everest height: MEDIUM confidence (secondary source citing the 2020 joint survey reports).
+- Earth's mean radius: MEDIUM confidence (secondary source citing IUGG).
+- Physics fixture stands in for an item the physics spec has not published.
+- Readability of host lines: not measured in Stage A (no host lines written yet).
