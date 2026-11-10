@@ -1,3 +1,86 @@
+# BRANCH_STATUS — feat/pair-session-moments (PR 2b, stacked on PR #387)
+
+**Branch:** `feat/pair-session-moments` · **Base:** `feat/pivot-flank` @
+`58de2f6d` (PR #387 head; panel-voted code tip `b8bfc8d4` + one docs commit)
+**Scope (owner brief, 2026-11-10):** Holmes & Watson session + moments —
+(1) tap-mode ending speech, (2) session gating, (3) solve moment,
+(4) loss = truce replacing pout, (5) owner-mode session flow + state
+legibility. NO panel, NO merge, NO flag flips in this PR — the panel runs
+after the build report; merges stay the owner's hand.
+
+## Task capsule
+
+```text
+TASK / requested outcome: Build PR 2b per the brief's five items, in
+  priority order, stacked on the PR 2a flank tip; PR opened against
+  feat/pivot-flank; independent Silo QA re-key on the final tip.
+Interpretations considered and selected reading:
+  - Item 1 mechanism: HOLD + LISTEN (chosen by the code). Ending bursts
+    are not synchronous with one tap (win lines follow the ring + queue
+    drain; the debrief is emitted on later drains; the answer read
+    follows the fail), so cure 3's gesture-arm window cannot cover
+    them. The player therefore HOLDS ending refs at enqueue (the
+    Unit A clue-hold pattern) and the host renders a Listen surface in
+    the ending phases — the exact gap the PR 2a Game Player named in
+    three consecutive rounds ("no Listen surface on the ending").
+  - Item 4: the POUT phase is renamed TRUCE. With pairReactions OFF the
+    machine still lands in TRUCE but speaks no truce lines and the view
+    keeps the shipped pout poses — flag-off is byte-close to shipped.
+  - Item 2 "Case N": N is the SESSION's case ordinal (2nd case of the
+    tab visit stamps "Case 2"), counted host-side in sessionStorage.
+  - Item 3 flush: the shipped SELECTION_READ solve path (winning
+    guess's own read completes, then endings — pinned by
+    detective-endings.spec.ts) is untouched. The flush applies only
+    when an ending lands while a CLUE CHAIN owns the voice (READING /
+    THINKING_BEAT / NOTE_MARK / ASK_NEXT): the player drops queued +
+    playing non-ending speech so no clue audio sounds after a solve.
+Tier and rationale: Tier 2 shape (new feature, 3+ files) executed under
+  the owner's direct brief; the design of record is the 2026-11-07
+  owner rulings + the PR 2 capsule + the pivot council queue law.
+Done condition / scenarios / evidence: the brief's gates, all on the
+  final tip (tsc · npm test · test:worker · lint-cards · manifest gate ·
+  build:pages · detective E2E by name · owner-config playthrough incl.
+  endings speak in tap mode, win AND loss) + render-level screenshots
+  at 390/768/1280 with 0 px² clue-text overlap + Silo QA re-key verdict.
+Files and interfaces in scope: src/game/loop/detective/{detective-state,
+  detective-audio, DetectiveHost, DetectivePair, detective-session (new),
+  watson-walk}.ts(x), src/lib/flags.ts, public/flags.json,
+  scripts/detective/render-plan.mjs (+ its test), the audio manifest
+  (render pipeline only), new unit tests + new E2E specs,
+  playwright.config.ts (register the new specs), docs (geodetective.md,
+  handbook ch10, feature-flags.md, README pair paragraph), this file.
+  Protected/out of scope: LoopScreen.tsx (no changes planned), the
+  shipped CELEBRATE choreography (reused, never re-anchored), the
+  donation copy, detectiveFlank (no flip).
+Ownership: build coordinator (this agent), worktree
+  ~/workspace/meridian-2b-build; Silo QA = a separate clean-context agent.
+Assumptions, risks, unknowns: the muted-phone CASE_OPEN wedge (item 5)
+  has no proven mechanism yet — an E2E probe on the base build runs
+  BEFORE the cure is designed; the cure follows the probe's evidence.
+Budget: parent cap per repo Tier 2 (400k, estimated, no meter).
+Approvals: branch push + PR open are named in the brief; merge is NOT
+  requested and will not happen.
+```
+
+## PR 2b build log
+
+- [x] Worktree + branch from `58de2f6d`; capsule written.
+- [ ] Probe: muted + tap-mode staging behaviour on the base build.
+- [ ] Item 1 — tap-mode ending speech (player hold + host Listen).
+- [ ] Item 2 — session gating (intro once per tab session; case 2+
+      page-turn + stamp; resume = announcement + clue re-read).
+- [ ] Item 3 — solve flush + closed-case speech guards; solve-at-2/3 pins.
+- [ ] Item 4 — truce (7 new renders, machine chain, TRUCE phase,
+      pennant behind `trucePennant` default false).
+- [ ] Item 5 — play-start staging completion (tap/off modes + later
+      cases); muted-phone cure per probe evidence.
+- [ ] Flags: `pairReactions` (ships ON) + `trucePennant` (default FALSE).
+- [ ] Gates on final tip + screenshots 390/768/1280.
+- [ ] Docs: geodetective.md · handbook ch10 · feature-flags.md · README.
+- [ ] PR opened against `feat/pivot-flank`; Silo QA re-key.
+
+---
+
 # BRANCH_STATUS — feat/journal-movies
 
 **Branch:** `feat/journal-movies` · **Base:** `origin/main` @ `f2bbf1a2` (#370)
