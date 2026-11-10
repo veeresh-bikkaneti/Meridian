@@ -143,6 +143,32 @@ async function stopWalkTrace(page: Page): Promise<WalkSample[]> {
   });
 }
 
+/** Wait until `phase` has been live at least once since the walk
+ * trace started. SELECTION_READ dwells only ~500 ms (and the station
+ * root is unmounted for ~2.7 s before it while the sheet is open), so
+ * a host-side `expect.poll` — which backs off to one round-trip a
+ * second — can step straight over the window and then wait out its
+ * timeout on a phase that already came and went. This check runs in
+ * the page every animation frame and also latches on the 30 ms walk
+ * trace, so a phase that was live for even one sample counts. */
+async function waitForPhaseSeen(page: Page, phase: string, timeout = 60_000) {
+  await page.waitForFunction(
+    (ph) => {
+      const el =
+        document.querySelector('[data-testid="detective-host"]') ??
+        document.querySelector('[data-testid="detective-station"]') ??
+        document.querySelector('[data-testid="detective-flank-strip"]') ??
+        document.querySelector('[data-testid="detective-flank"]');
+      if (el?.getAttribute("data-phase") === ph) return true;
+      const trace =
+        (window as unknown as { __walkTrace?: WalkSample[] }).__walkTrace ?? [];
+      return trace.some((s) => s.phase === ph);
+    },
+    phase,
+    { polling: "raf", timeout },
+  );
+}
+
 /** The walk assertions shared by the case-open and clue-2 walks:
  * a real visible walk (state + walk pose + a multi-step path), and
  * the clue clip NOT started in any mid-walk sample. */
@@ -251,9 +277,7 @@ for (const w of WIDTHS) {
        * once SELECTION_READ is live AND the ~200 ms guess-commit
        * FLIP slide documented below has elapsed, so the documented
        * FLIP exclusion is kept exactly, not extended. */
-      await expect
-        .poll(() => currentPhase(page), { timeout: 60_000 })
-        .toBe("SELECTION_READ");
+      await waitForPhaseSeen(page, "SELECTION_READ");
       await page.waitForTimeout(300);
       const chainWindow = collectAuditWindow(page, 12_000);
       /* The audit window opens when the clue-2 READING begins (the
@@ -266,9 +290,7 @@ for (const w of WIDTHS) {
        * bench figure and the cards are both LoopScreen layout there,
        * not pair placements). The pair-state windows in this spec
        * scope to the pair's own states, as the mockup audit did. */
-      await expect
-        .poll(() => currentPhase(page), { timeout: 60_000 })
-        .toBe("READING");
+      await waitForPhaseSeen(page, "READING");
       const clue2Window = collectAuditWindow(page, 3_500);
       await waitForSearchIdle(page, 120_000);
       const trace2 = await stopWalkTrace(page);
