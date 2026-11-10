@@ -266,6 +266,14 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // The owner's restated spec (2026-11-10): clues one at a time,
+      // an ack per clue, no pair speaker, mute top-left, beat-me-to-it.
+      // Phone width — where he plays it.
+      name: "detective-owner-spec",
+      testMatch: /detective-owner-spec\.spec\.ts/,
+      use: { viewport: { width: 390, height: 844 } },
+    },
+    {
       // PR 2a cure (selection read wiring): the real pick path —
       // LoopScreen → props whitelist → host → machine → audio —
       // Holmes names the player's map pick aloud before any guess is
