@@ -26,6 +26,24 @@ instead of re-inventing it 13 times. Each spec adds only its own deltas
 
 ---
 
+## 0. The headline goal: how subjects connect, and how they are applied
+
+Owner, 2026-11-10: "we want to teach them how they connect and applied."
+
+This is the first objective of every unit, above its subject objective:
+
+> **The child can show how this idea connects to the subject before it, and use
+> it in one real-life situation.**
+
+- Every unit has a **bridge** (what it builds on from the earlier subject) and an
+  **application** (where it is used in real life and in the environment), per
+  `subject-progression-map.md`.
+- The application is **playable, not told**: ideally a three.js scene where the
+  child uses the skill in a real setting (a ramp on a hillside, a mixture in a
+  kitchen, a measurement on a river), with the Flat tier as a 2D equivalent.
+- The game sees it: the bridge and application rounds are scored like any other
+  round and feed the same mastery record.
+
 ## 1. Audience and bands (owner ruling D1, 2026-11-10)
 
 Owner, 2026-11-10: **"age 10 and above; adults can play too."** All new work
@@ -282,6 +300,7 @@ These specs may be built by any capable coding agent. To keep cost low:
 
 ```
 K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+- Headline goal (§0): bridge to the previous subject + playable real-life application: [ ]
 - Bands served: [ ] and why
 - Objective per item, observable verb, "shown by": [ ]
 - Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [ ]

@@ -35,7 +35,12 @@ agent; no vendor or model is assumed.
 8. Audience is ages 10 and up, and adults can play too (owner ruling D1,
    standard §1). Make nothing new for under-10s; give every mode a top tier
    that challenges an adult, with copy that is smart, not childish.
-9. Counts marked "TO CONFIRM" stay unconfirmed; never invent a number.
+9. The headline goal is teaching how subjects connect and how they are applied
+   (standard §0, `subject-progression-map.md`): math → physics → chemistry
+   (biology slot on hold), with environmental studies as the thread. Every
+   unit has a bridge from the previous subject and a playable real-life
+   application, ideally a three.js scene.
+10. Counts marked "TO CONFIRM" stay unconfirmed; never invent a number.
 
 ## The learning bar
 

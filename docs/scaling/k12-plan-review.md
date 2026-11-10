@@ -12,6 +12,10 @@ Companion files:
   an hour, without an educator persona.
 - `agent-instructions.md` — shared, agent-neutral rules every builder reads once.
 - `branch-prompts.md` — one copy-paste prompt per branch, in this priority order.
+- `subject-progression-map.md` — how math → physics → chemistry (biology slot
+  on hold) connect, with real-life use and environmental studies as the thread.
+  **Headline goal (owner, 2026-11-10): teach how the subjects connect and how
+  they are applied.**
 
 ---
 
@@ -99,6 +103,8 @@ the spec already flags this, and it still needs a decision before build.
 | ~~D2 (original options)~~ | What "no politics" means | (a) no historical political figures at all; (b) historical figures allowed with neutral, sourced facts only, no present-day parties, elections or living politicians' views | **(b)** — otherwise four journal specs cannot exist. |
 | **D3** | Host wrap-up format | (a) produced video clip every question (current rule); (b) real-time animated host scene by default, produced clips for journal stories only | **(b)** — same "short cartoon" feel, a fraction of the cost and size, works offline and on Flat tier. |
 | **D4** | Educator route | Find one volunteer teacher per subject group (math; science; humanities) to use the rubric | Start with math, since it is already approved to build. |
+| **D8** | Biology in the chain | The owner's tracker says no biology anywhere; his 2026-11-10 message names biology in the math → physics → chemistry → biology chain | Slot left empty in the map until the owner confirms. |
+| **D9** | Earth science | Its own units, or only as the environment link inside physics and chemistry | Environment link first (no new spec needed). |
 | **D7** | Live game's existing `5-7` and `8-10` bands | (a) keep them for the current geography game; (b) retire them to match the 10+ audience | Ask before any code change; no spec touches them. |
 | **D5** | Math build branch name | `feat/math-spec` or `feat/math-tricks` | Either; just pick before build. |
 | **D6** | P8 journal pick | 3 or 6 entries | Pick after screening the candidates against §7a. |

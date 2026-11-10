@@ -5,6 +5,10 @@ the shared rules live in `agent-instructions.md` so the prompts stay short.
 Until PR `claude/k12-plan-review` merges, the shared files are read from that
 branch (the first line of every prompt does this).
 
+Every subject prompt below also carries the headline goal (standard §0): each
+unit gets a "Builds on / Real life / Environment link" entry from
+`subject-progression-map.md`, and its application is a playable scene.
+
 Run them in this order. Items 1–2 are approved to build or define; everything
 else is spec work only and stays GATED on a real educator's signed rubric.
 
@@ -14,7 +18,7 @@ else is spec work only and stays GATED on a real educator's signed rubric.
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/phase0-shell-split; push only that branch.
 
 Task: continue the Phase 0 shell split per docs/scaling/phase0-shell-split-spec.md
@@ -33,7 +37,7 @@ Open or update a draft PR; never merge.
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard educator-gate-rubric; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map educator-gate-rubric; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/math-definition; push only that branch.
 
 Task: finish docs/scaling/math-definition-spec.md. Add the standard's §9 block.
@@ -54,7 +58,7 @@ Done = BRANCH_STATUS.md updated; report what the educator must sign.
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/math-spec; push only that branch.
 
 Task: align docs/scaling/math-spec.md with the signed-to-be math definition:
@@ -71,7 +75,7 @@ Spec only; no code. Update BRANCH_STATUS.md and report.
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/science-definitions; push only that branch.
 
 Task: update science-definitions-spec.md and the P4/P6/P7 briefs. Add the §9
@@ -86,7 +90,7 @@ disclosed Spatial Data Scientist seat. Spec only. Update BRANCH_STATUS.md.
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/science-spec; push only that branch.
 
 Task: recast the 24 proposed "videos" in docs/scaling/science-spec.md as
@@ -101,7 +105,7 @@ PROPOSED. No biology. Spec only. Update BRANCH_STATUS.md.
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/physics-spec; push only that branch.
 
 Task: in docs/scaling/physics-spec.md add the §9 block, an objective and NGSS
@@ -114,7 +118,7 @@ mark it PROPOSED; never decided. Spec only. Update BRANCH_STATUS.md.
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/chemistry-spec; push only that branch.
 
 Task: in docs/scaling/chemistry-spec.md add the §9 block, an objective and
@@ -128,7 +132,7 @@ PROPOSED. Spec only. Update BRANCH_STATUS.md.
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/journal-people-places-spec; push only that branch.
 
 Task: in docs/scaling/journal-people-places-spec.md, for each of the 5
@@ -152,7 +156,7 @@ Spec only. Update BRANCH_STATUS.md.
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/social-studies-spec; push only that branch.
 
 Task: in docs/scaling/social-studies-spec.md add the §9 block and make the
@@ -178,7 +182,7 @@ Owner ruled D2 on 2026-11-10 (standard §7a). One prompt, five branches:
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch <BRANCH>; push only that branch.
 
 Task: screen docs/scaling/<FILE> against the content rule (standard §7a): no
@@ -203,7 +207,7 @@ Update BRANCH_STATUS.md.
 
 ```
 Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
+git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
 Follow them. Work only on branch feat/general-knowledge-spec; push only that branch.
 
 Task: in docs/scaling/general-knowledge-spec.md add the §9 block and reframe

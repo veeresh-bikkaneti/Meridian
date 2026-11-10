@@ -42,6 +42,8 @@ subject, and date. Nothing about the signer is placed in the app.
    and gently for the band, with no graphic detail.
 
 **B. Learning design**
+4a. Each unit shows how it connects to the subject before it and lets the
+    child apply it in a real-life setting (standard §0).
 5. Each objective uses an observable verb and the game can actually see it.
 6. The child predicts or attempts before being told the answer.
 7. Feedback after a miss explains *why*, in band-level words, and is kind.
