@@ -418,6 +418,46 @@
   outline-offset: 2px;
 }
 
+/* PR 2b: the "Case N" stamp — the quiet page-turn marker for a
+ * fresh case 2+ of a session, portalled over the map. A paper
+ * stamp: it lands with a small press (scale + settle), holds, and
+ * the host unmounts it. Purely decorative (aria-hidden, inert):
+ * the case number is also the deck's own progress text. */
+.detective-case-stamp {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  z-index: 6;
+  transform: translateX(-50%) rotate(-4deg);
+  padding: 8px 18px;
+  border: 2.5px solid #14213d;
+  border-radius: 6px;
+  background: #fffdf6;
+  color: #14213d;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  animation: detective-stamp-in 320ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@keyframes detective-stamp-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) rotate(-9deg) scale(1.35);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) rotate(-4deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detective-case-stamp {
+    animation: none;
+  }
+}
+
 /* --- tap-Watson replay (Unit A) -------------------------------------- */
 /* The replay control is a transparent button laid over Watson's whole
    figure, so a tap anywhere on Watson asks him to repeat the clue —

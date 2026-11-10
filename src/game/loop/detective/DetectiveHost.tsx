@@ -89,7 +89,13 @@ import {
   type PauseDetector,
 } from "./companion";
 import {
+  markSessionIntroSeen,
+  noteSessionCase,
+  readDetectiveSession,
+} from "./detective-session";
+import {
   ANNOUNCEMENT_FIXED_ID,
+  type AnnounceOccasion,
   CASE_OPEN_WALK_MS,
   CASE_OPEN_WALK_START_OFFSET_PX,
   flankHolmesX,
@@ -165,6 +171,18 @@ const LISTEN_PHASES: ReadonlySet<string> = new Set([
   "SEARCH_AREA",
 ]);
 
+/** Phases where the ENDING Listen button may show in tap speech
+ * mode (PR 2b): the case is closed and its ending burst — win lines
+ * + debrief, or the answer read + truce exchange — sits held in
+ * the player waiting for the kid's tap. Disjoint from LISTEN_PHASES
+ * by construction: a phase is mid-case or closed, never both. */
+const ENDING_LISTEN_PHASES: ReadonlySet<string> = new Set([
+  "CELEBRATE",
+  "DEBRIEF",
+  "FAIL_READ",
+  "TRUCE",
+]);
+
 interface StationAnchor {
   left: number;
   top: number;
@@ -196,6 +214,18 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * only when hostsStaging is also on — flag-off is today's
    * proven behaviour, in every branch below. */
   const flankOn = stagingOn && isEnabled("detectiveFlank");
+  /* PR 2b: the spoken-reactions flag gates the machine's truce
+   * exchange AND the player's ending hold (the two halves of the
+   * tap-mode ending fix); the pennant flag only changes Watson's
+   * truce pose. The machine's copies live in refs for the effects
+   * and are synced into the machine itself by the effect below —
+   * the machine never reads flags. */
+  const reactionsOn = isEnabled("pairReactions");
+  const pennantOn = isEnabled("trucePennant");
+  const reactionsOnRef = useRef(reactionsOn);
+  reactionsOnRef.current = reactionsOn;
+  const pennantOnRef = useRef(pennantOn);
+  pennantOnRef.current = pennantOn;
   /* Carry-in (f) cure: a RESUMED case's questions are already loaded,
    * so the bench beat must not flash — the stage starts at "standing"
    * whenever this mount is not a fresh deal, here and on case change
@@ -203,7 +233,13 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * regardless of the resumed phase.) */
   const [stagingStage, setStagingStage] = useState<
     "bench" | "standing" | "entering" | "gone"
-  >(() => (freshDeal ? "bench" : "standing"));
+  >(
+    () =>
+      // PR 2b: the bench is the SESSION's opening, not every case's
+      // — a mount later in the session starts at "standing" even on
+      // a fresh deal (the case effect applies the same rule).
+      freshDeal && !readDetectiveSession().introSeen ? "bench" : "standing",
+  );
   const stagingStageRef = useRef(stagingStage);
   stagingStageRef.current = stagingStage;
   const entryPendingRef = useRef(false);
@@ -273,8 +309,28 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   /** The first clue walk of a case is the case-open walk (the only
    * walk the announcement may ride). Reset per case below. */
   const firstWalkOfCaseRef = useRef(true);
-  /** Announcements spoken this session (host mount) — cap 2. */
-  const announceCountRef = useRef(0);
+  /** PR 2b session gating (detective-session.ts): this case has
+   * announced already — one announcement per case, on the cases
+   * whose occasion allows one. Replaces the shipped per-mount
+   * count cap (≤2), which could spend both announcements on early
+   * cases and leave a resume silent. */
+  const announcedThisCaseRef = useRef(false);
+  /** PR 2b: this case is the session's first — it alone gets the
+   * bench scene, the duet, and the "first" announcement occasion. */
+  const sessionFirstCaseRef = useRef(false);
+  /** PR 2b: this mount's FIRST case resumed an in-progress case —
+   * its case-open walk carries the resume announcement. Later
+   * cases of the mount clear it (the case effect, below). */
+  const mountResumeCaseRef = useRef(false);
+  /** PR 2b: this mount has opened its first case already. */
+  const mountOpenedRef = useRef(false);
+  /** PR 2b item 5: the play-start entry already fired for this
+   * case (the staging-completion cure below). */
+  const playStartCaseRef = useRef<number | null>(null);
+  /** PR 2b: the "Case N" stamp's ordinal while it shows (null =
+   * no stamp). Set by the case effect for a fresh case 2+ of the
+   * session; cleared by its own timer. */
+  const [stampOrdinal, setStampOrdinal] = useState<number | null>(null);
   /** A held read was dropped by a sheet-open cancellation: when the
    * sheet closes, the ladder is advanced past the skipped read so
    * it can never stall waiting for a drain that will not come —
@@ -329,6 +385,9 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
 
   /* -- speech player -------------------------------------------------- */
   const [speakingWho, setSpeakingWho] = useState<DetectiveSpeaker | null>(null);
+  /** PR 2b: how many ending refs the player currently holds — the
+   * ending Listen button renders only while this is positive. */
+  const [endingHeldCount, setEndingHeldCount] = useState(0);
   const speakingWhoRef = useRef<DetectiveSpeaker | null>(null);
   const playerRef = useRef<DetectiveSpeechPlayer | null>(null);
   const dwellTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -485,19 +544,27 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     setWatsonWalkMs(0);
     setWatsonWalkOffsetY(offsetY);
     setWatsonWalking(true);
-    // The announcement rides the CASE-OPEN walk only (cap 2 per
-    // session; clue 2+ walks are silent). It is enqueued to the
-    // player, so it plays DURING the walk; the held clue read is
-    // host-side, so the announcement can never block it, and its
-    // drain is suppressed while the read is held.
+    // The announcement rides the CASE-OPEN walk only, on the
+    // occasions the session allows (PR 2b): the session's first
+    // case, or a case this mount resumed. Later cases open in
+    // silence; clue 2+ walks are always silent. It is enqueued to
+    // the player, so it plays DURING the walk; the held clue read
+    // is host-side, so the announcement can never block it, and
+    // its drain is suppressed while the read is held.
+    const occasion: AnnounceOccasion = sessionFirstCaseRef.current
+      ? "first"
+      : mountResumeCaseRef.current
+        ? "resume"
+        : "later";
     if (
       shouldAnnounce({
         isCaseOpenWalk,
-        announcedThisSession: announceCountRef.current,
+        occasion,
+        announcedThisCase: announcedThisCaseRef.current,
         speechMode: deg.speechMode,
       })
     ) {
-      announceCountRef.current += 1;
+      announcedThisCaseRef.current = true;
       playerRef.current?.enqueue({
         kind: "fixed",
         id: ANNOUNCEMENT_FIXED_ID,
@@ -520,6 +587,11 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   useEffect(() => {
     const player = createDetectiveSpeech({
       caseIndex,
+      /* PR 2b: the ending hold mirrors the reactions flag (synced
+       * live by the effect below, since flags may land after the
+       * player is created). */
+      holdEndings: isEnabled("pairReactions"),
+      onEndingHeldChange: (count) => setEndingHeldCount(count),
       onSpeakingChange: (who) => {
         setSpeakingWho(who);
         speakingWhoRef.current = who;
@@ -575,6 +647,17 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     playerRef.current?.setSpeechMode(degradation.speechMode);
   }, [degradation.speechMode]);
 
+  // PR 2b: the reactions/pennant gates follow their flags into the
+  // machine (flags can land after mount) and the ending hold.
+  useEffect(() => {
+    machineRef.current = {
+      ...machineRef.current,
+      reactions: reactionsOn,
+      pennant: pennantOn,
+    };
+    playerRef.current?.setHoldEndings(reactionsOn);
+  }, [reactionsOn, pennantOn]);
+
   // Unmount: timers die with the host.
   useEffect(() => {
     return () => {
@@ -596,19 +679,49 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     seenGuessRef.current = lastGuessPlaceId;
     seenStatusRef.current = status;
     seenSheetRef.current = sheetOpen;
-    machineRef.current = initialDetectiveState();
+    machineRef.current = initialDetectiveState({
+      reactions: reactionsOnRef.current,
+      pennant: pennantOnRef.current,
+    });
     const fresh = viewForState(machineRef.current);
     viewRef.current = fresh;
     setView(fresh);
-    setStagingStage(freshDeal ? "bench" : "standing");
+    /* PR 2b session gating: the session record (one tab visit)
+     * decides this case's opening. The session's FIRST fresh case
+     * gets the bench scene; every later case starts at "standing"
+     * (and, in tap/off modes, completes staging at play start via
+     * the item-5 entry below — no bench figure ever sits mid-case).
+     * The ordinal counts this session's cases for the stamp. */
+    const ordinal = noteSessionCase(caseIndex);
+    const session = readDetectiveSession();
+    const sessionFirst = freshDeal && !session.introSeen;
+    if (sessionFirst) markSessionIntroSeen();
+    sessionFirstCaseRef.current = sessionFirst;
+    announcedThisCaseRef.current = false;
+    if (!mountOpenedRef.current) {
+      mountOpenedRef.current = true;
+      /* Resume = this mount's first case is a case already in
+       * progress (dealt in an earlier mount, guesses spent). Its
+       * announcement occasion is "resume" (the walk decides). */
+      mountResumeCaseRef.current =
+        !freshDeal && status === "playing" && cluesRevealed >= 1;
+    } else {
+      mountResumeCaseRef.current = false;
+    }
+    setStampOrdinal(
+      !sessionFirst && freshDeal && ordinal >= 2 ? ordinal : null,
+    );
+    setStagingStage(sessionFirst ? "bench" : "standing");
     entryPendingRef.current = false;
     /* Carry-in (e): entry intent recorded during a previous case's
      * bench must not fire into this case — reset it with the other
      * per-case entry state. */
     entryIntentRef.current = false;
     /* PR B: the walk restarts per case (the announcement's
-     * case-open walk is this case's first clue walk); the session
-     * announcement count is NOT reset — the cap is per session. */
+     * case-open walk is this case's first clue walk). PR 2b: the
+     * per-case announcement flag WAS reset above — the session
+     * scope now lives in the occasion refs + the session record,
+     * not in a count. */
     walkGenRef.current += 1;
     if (watsonWalkTimerRef.current) {
       clearTimeout(watsonWalkTimerRef.current);
@@ -628,13 +741,16 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     setWatsonWalkOffsetY(0);
     playerRef.current?.stopAll();
     playerRef.current?.setCaseIndex(caseIndex);
-    // Case open FIRST (U8): on a fresh deal the machine starts the
-    // instruction duet; the clue below then pends behind it (the
-    // machine's pending pattern) instead of racing it. A resumed case
-    // skips the duet. freshDeal flips false after the first guess, but
-    // the seenCase guard above makes this effect once-per-case, so the
-    // value read here is the one from the case's first render.
-    dispatch({ type: "caseOpened", freshDeal });
+    // Case open FIRST (U8): the machine starts the instruction duet
+    // only on the SESSION's first case (PR 2b — freshDeal alone
+    // would replay the duet at every case of the session); the clue
+    // below then pends behind it (the machine's pending pattern)
+    // instead of racing it. A resumed case and every later case
+    // skip the duet. freshDeal flips false after the first guess,
+    // but the seenCase guard above makes this effect once-per-case,
+    // so the value read here is the one from the case's first
+    // render; sessionFirst was computed from that same value.
+    dispatch({ type: "caseOpened", freshDeal: sessionFirst });
     if (cluesRevealed >= 1) {
       dispatch({ type: "clueUnlocked", clueIndex: cluesRevealed });
     }
@@ -688,6 +804,25 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   useEffect(() => {
     if (seenStatusRef.current === status) return;
     seenStatusRef.current = status;
+    // PR 2b (solve moment): a solve at ANY guess ends the case
+    // immediately — if a clue chain owns the voice (the machine is
+    // mid-ladder: a read, the thinking beat, the miss beat, or the
+    // ask), flush it WITHOUT a drain signal before the ending is
+    // dispatched. The ending owns the voice from here; its first
+    // drain is the speechEnded the machine waits for. Reactions
+    // therefore never speak after a solve: the flushed chain is
+    // gone, and the machine's endings take pendingEnd from here.
+    if (status === "won" || status === "lost") {
+      const phase = viewRef.current.phase;
+      if (
+        phase === "READING" ||
+        phase === "THINKING_BEAT" ||
+        phase === "NOTE_MARK" ||
+        phase === "ASK_NEXT"
+      ) {
+        playerRef.current?.flushSpeech();
+      }
+    }
     // The answer's id (U8) crosses only here, on the solve, and only
     // because the props builder already gated it to the post-solve
     // reveal (it is null unless status is "won" — the same commit that
@@ -750,11 +885,19 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       view.phase === "CELEBRATE" ||
       view.phase === "DEBRIEF" ||
       view.phase === "FAIL_READ" ||
-      view.phase === "POUT"
+      view.phase === "TRUCE"
     ) {
       cancelWatsonWalkRef.current(false);
     }
   }, [view.phase]);
+
+  /* PR 2b: the "Case N" stamp shows for a beat, then goes — a
+   * page-turn marker, not furniture. */
+  useEffect(() => {
+    if (stampOrdinal === null) return;
+    const t = setTimeout(() => setStampOrdinal(null), 1800);
+    return () => clearTimeout(t);
+  }, [stampOrdinal]);
 
   /* Staging: the bench holds only while the case opens. The moment
    * the machine leaves CASE_OPEN (the case's questions loading),
@@ -792,6 +935,36 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     enterMapRef.current();
   }, [stagingStage]);
 
+  /* PR 2b item 5 — play-start entry: staging must COMPLETE. The
+   * shipped entry waits for the first MAP interaction; a case
+   * played from the search box (the owner's own play style), or
+   * with sound off where nothing prompts a map touch, could sit
+   * mid-case with Holmes still standing in the bench slot — which
+   * reads as "case over" (the owner's play-test complaint, probed
+   * on the base build: stage stuck at "standing", bench mounted,
+   * while the case played on at guess 2). So the first time the
+   * machine reaches a guessing phase with the stage still
+   * "standing", the one existing entry mechanism fires — EXCEPT
+   * the session's intro case in auto mode, whose bench welcome
+   * keeps the shipped map-touch entry exactly as proven. In tap
+   * and off modes, and on every later case, staging completes on
+   * its own: mid-case, no figure stands at the bench — that is
+   * what makes mid-case vs case-closed legible at a glance. */
+  useEffect(() => {
+    if (!stagingOn || flankOn) return;
+    if (stagingStage !== "standing") return;
+    if (view.phase !== "SEARCH_IDLE" && view.phase !== "SEARCH_AREA") return;
+    if (playStartCaseRef.current === caseIndex) return;
+    if (
+      degradationRef.current.speechMode === "auto" &&
+      sessionFirstCaseRef.current
+    ) {
+      return;
+    }
+    playStartCaseRef.current = caseIndex;
+    enterMapRef.current();
+  }, [stagingOn, flankOn, stagingStage, view.phase, caseIndex]);
+
   /* Cure C3: a case that ends with Holmes never entered (no map
    * interaction ever happened — stage still "standing") forces his
    * entry at case end. This is the structurally cleaner cure: the
@@ -804,7 +977,8 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * DEBRIEF and left the slot reserved through the endings.
    *
    * Close-berth cure (2026-11-07, defect 1): C3 as shipped fired
-   * only in CELEBRATE / DEBRIEF / FAIL_READ / POUT — it omitted
+   * only in CELEBRATE / DEBRIEF / FAIL_READ / POUT (TRUCE since
+   * PR 2b) — it omitted
    * SELECTION_READ, the phase the machine sits in while LoopScreen
    * already shows "Case closed" (the ending is stored as the
    * machine's pendingEnd until the selection-read speech drains).
@@ -821,7 +995,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       view.phase !== "CELEBRATE" &&
       view.phase !== "DEBRIEF" &&
       view.phase !== "FAIL_READ" &&
-      view.phase !== "POUT" &&
+      view.phase !== "TRUCE" &&
       status !== "won" &&
       status !== "lost"
     )
@@ -1775,6 +1949,38 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     </div>
   ) : null;
 
+  /* Ending Listen button (PR 2b): the release surface for the
+   * tap-mode ending hold. Tap mode only, closed-case phases only,
+   * and only while the player actually holds an ending burst
+   * (pairReactions on) — in auto mode the lines play live and no
+   * button is offered; with the flag off nothing is held and the
+   * endings behave exactly as shipped. It shares the clue Listen's
+   * class and geometry: in strip mode it rides the strip's middle
+   * (where the clue Listen rode during play); everywhere else it
+   * stands in the fixed wrapper beside the pair at the result
+   * card. During CELEBRATE the strip has unmounted (the pair is at
+   * the card), so the wrapper form below takes that phase. */
+  const showEndingListen =
+    degradation.speechMode === "tap" &&
+    reactionsOn &&
+    endingHeldCount > 0 &&
+    !view.hidden &&
+    !benchStage &&
+    stationReady &&
+    ENDING_LISTEN_PHASES.has(view.phase);
+  const endingListenButton = (
+    <button
+      type="button"
+      className="detective-listen-button"
+      aria-label="Listen to the ending"
+      onClick={() => {
+        void playerRef.current?.playHeldEnding();
+      }}
+    >
+      <span aria-hidden="true">🔊</span> Listen
+    </button>
+  );
+
   /* Tap-Watson replay (Unit A): tapping Watson himself asks him to
    * repeat the current clue. The control is a REAL button sized over
    * Watson's figure (≥44×44 px, keyboard-operable), rendered OUTSIDE
@@ -2152,7 +2358,9 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
             />
           </div>
           <div className="detective-flank-strip-middle">
-            {showListen ? (
+            {showEndingListen ? (
+              <div data-testid="detective-ending-listen">{endingListenButton}</div>
+            ) : showListen ? (
               <div data-testid="detective-listen">{listenButton}</div>
             ) : null}
             <div className="detective-flank-strip-sound">
@@ -2178,6 +2386,48 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         stripSlotEl,
       )
     ) : null;
+
+  /* The ending Listen's fixed-wrapper form: used whenever the
+   * strip is not the pair's home (non-strip flank modes, staging
+   * off, and CELEBRATE in strip mode). Same geometry as listenEl. */
+  const endingListenEl = showEndingListen && !stripEl ? (
+    <div
+      className="detective-host-listen"
+      data-testid="detective-ending-listen"
+      style={
+        gutterStation
+          ? {
+              left: gutterLeft,
+              top: gutterCentreTop + GUTTER_BELOW_FIGURE_PX,
+              transform: gutterSideTransform,
+              transition: gutterWalkTransition,
+            }
+          : anchor
+            ? { left: anchor.left + 152, top: anchor.top }
+            : { left: 164, bottom: 96, top: "auto", transform: "none" }
+      }
+    >
+      {endingListenButton}
+    </div>
+  ) : null;
+
+  /* PR 2b: the "Case N" stamp — a page-turn marker over the map
+   * for a fresh case 2+ of the session (the quiet opening: no
+   * bench, no duet, no announcement). Decorative and inert; the
+   * case effect sets the ordinal, its timer clears it. */
+  const stampEl =
+    stampOrdinal !== null && mapEl
+      ? createPortal(
+          <div
+            className="detective-case-stamp"
+            data-testid="detective-case-stamp"
+            aria-hidden="true"
+          >
+            Case {stampOrdinal}
+          </div>,
+          mapEl,
+        )
+      : null;
 
   /* The bench (staging): in-flow, rendered where LoopScreen mounts
    * the host — directly under the map. Seated stage: both figures
@@ -2288,7 +2538,9 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   return (
     <>
       {benchEl}
+      {stampEl}
       {listenEl}
+      {endingListenEl}
       {watsonReplayStationEl}
       {stationSoundEl}
       {stationHolmesMuteEl}

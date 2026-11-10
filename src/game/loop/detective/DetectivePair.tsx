@@ -58,6 +58,7 @@ export const HOLMES_POSES = [
   "high-five",
   "clap",
   "pout",
+  "truce",
 ] as const;
 export type HolmesPose = (typeof HOLMES_POSES)[number];
 
@@ -72,6 +73,8 @@ export const WATSON_POSES = [
   "high-five",
   "clap",
   "pout",
+  "truce",
+  "truce-pennant",
 ] as const;
 export type WatsonPose = (typeof WATSON_POSES)[number];
 
@@ -155,7 +158,8 @@ type FaceKind =
   | "marking"
   | "delighted"
   | "surprised"
-  | "pout";
+  | "pout"
+  | "kind";
 
 function HolmesFace({ kind }: { kind: FaceKind }): ReactElement {
   const brow = "#8a6a44";
@@ -232,6 +236,16 @@ function HolmesFace({ kind }: { kind: FaceKind }): ReactElement {
           <path className="detective-mouth" d="M65,53 Q70,49.5 75,53" fill="none" stroke="#b57e52" strokeWidth="1.9" strokeLinecap="round" />
         </g>
       );
+    case "kind":
+      // The truce face (PR 2b): level brow, soft eye, a small warm
+      // smile — kindness, not disappointment. The anti-pout.
+      return (
+        <g>
+          <path d="M61,23 L75,23" stroke={brow} strokeWidth="1.8" strokeLinecap="round" />
+          <circle cx="68" cy="28" r="2.3" fill="#2c2318" />
+          <path className="detective-mouth" d="M65,50 Q70,53.5 75,50" fill="none" stroke="#b57e52" strokeWidth="1.8" strokeLinecap="round" />
+        </g>
+      );
     default:
       return (
         <g>
@@ -295,6 +309,16 @@ function WatsonFace({ kind }: { kind: FaceKind }): ReactElement {
           <path className="detective-mouth" d="M47,52.5 Q54,48.5 61,52.5" fill="none" stroke="#a06a42" strokeWidth="1.9" strokeLinecap="round" />
         </g>
       );
+    case "kind":
+      // The truce face (PR 2b): level brow, soft eye, a warm smile
+      // under the moustache — assurance you can see.
+      return (
+        <g>
+          <path d="M41,21.5 L54,23" stroke={brow} strokeWidth="2" strokeLinecap="round" />
+          <circle cx="48" cy="27.5" r="2.3" fill="#2c2318" />
+          <path className="detective-mouth" d="M47,49.5 Q54,53.5 61,49.5" fill="none" stroke="#a06a42" strokeWidth="1.7" strokeLinecap="round" />
+        </g>
+      );
     default:
       return (
         <g>
@@ -336,6 +360,9 @@ const HOLMES_POSE_SPECS: Record<HolmesPose, HolmesPoseSpec> = {
   "high-five": { face: "delighted", head: "rotate(-2deg)", torso: "", frontArm: 0, swingArm: 6, glass: null, card: false },
   clap: { face: "delighted", head: "", torso: "", frontArm: 38, swingArm: -38, glass: null, card: false },
   pout: { face: "pout", head: "rotate(9deg) translateY(3.5px)", torso: "rotate(2.5deg) translateY(2px)", frontArm: 6, swingArm: -4, glass: 152, card: false },
+  // PR 2b truce: head up (the anti-pout — no bowed head), one hand
+  // open toward the player while Holmes reframes the miss.
+  truce: { face: "kind", head: "rotate(-3deg)", torso: "", frontArm: -38, swingArm: -6, glass: 152, card: false },
 };
 
 const part = (transform: string, origin: string): CSSProperties =>
@@ -485,22 +512,31 @@ interface WatsonPoseSpec {
   pencil: boolean;
   /** Watson holds Holmes's glass (celebration hand-off) */
   glass: boolean;
+  /** Watson holds the white truce pennant (PR 2b, flag-gated by
+   * the machine's view — the pose only exists as "truce-pennant").
+   * HELD in his hand, never planted. */
+  pennant: boolean;
 }
 
 const WATSON_POSE_SPECS: Record<WatsonPose, WatsonPoseSpec> = {
   // PR B: the gutter walk — notebook in hand, neutral face; the leg
   // and bob swing comes from detective.css's shared walk keyframes
   // (they address leg-a / leg-b / bob, which this rig has).
-  walk: { face: "neutral", head: "", torso: "", frontArm: 0, noteArm: 0, notebook: true, card: false, pencil: true, glass: false },
-  read: { face: "reading", head: "rotate(4deg) translateY(1.5px)", torso: "", frontArm: 0, noteArm: -52, notebook: false, card: true, pencil: false, glass: false },
-  think: { face: "thinking", head: "rotate(-4deg)", torso: "", frontArm: 0, noteArm: -52, notebook: false, card: true, pencil: false, glass: false },
-  "station-idle": { face: "neutral", head: "", torso: "", frontArm: 0, noteArm: 0, notebook: true, card: false, pencil: true, glass: false },
-  "notebook-mark": { face: "marking", head: "rotate(3deg) translateY(1.5px)", torso: "rotate(2deg)", frontArm: 0, noteArm: -20, notebook: true, card: false, pencil: true, glass: false },
-  gasp: { face: "surprised", head: "rotate(-8deg)", torso: "rotate(-5deg)", frontArm: -36, noteArm: 16, notebook: true, card: false, pencil: false, glass: false },
-  "celebrate-jump": { face: "delighted", head: "", torso: "", frontArm: -14, noteArm: -80, notebook: false, card: false, pencil: false, glass: true },
-  "high-five": { face: "delighted", head: "rotate(2deg)", torso: "", frontArm: 0, noteArm: 0, notebook: true, card: false, pencil: false, glass: false },
-  clap: { face: "delighted", head: "", torso: "", frontArm: -52, noteArm: 40, notebook: false, card: false, pencil: false, glass: false },
-  pout: { face: "pout", head: "rotate(9deg) translateY(3.5px)", torso: "rotate(2.5deg) translateY(2px)", frontArm: -4, noteArm: 4, notebook: true, card: false, pencil: false, glass: false },
+  walk: { face: "neutral", head: "", torso: "", frontArm: 0, noteArm: 0, notebook: true, card: false, pencil: true, glass: false, pennant: false },
+  read: { face: "reading", head: "rotate(4deg) translateY(1.5px)", torso: "", frontArm: 0, noteArm: -52, notebook: false, card: true, pencil: false, glass: false, pennant: false },
+  think: { face: "thinking", head: "rotate(-4deg)", torso: "", frontArm: 0, noteArm: -52, notebook: false, card: true, pencil: false, glass: false, pennant: false },
+  "station-idle": { face: "neutral", head: "", torso: "", frontArm: 0, noteArm: 0, notebook: true, card: false, pencil: true, glass: false, pennant: false },
+  "notebook-mark": { face: "marking", head: "rotate(3deg) translateY(1.5px)", torso: "rotate(2deg)", frontArm: 0, noteArm: -20, notebook: true, card: false, pencil: true, glass: false, pennant: false },
+  gasp: { face: "surprised", head: "rotate(-8deg)", torso: "rotate(-5deg)", frontArm: -36, noteArm: 16, notebook: true, card: false, pencil: false, glass: false, pennant: false },
+  "celebrate-jump": { face: "delighted", head: "", torso: "", frontArm: -14, noteArm: -80, notebook: false, card: false, pencil: false, glass: true, pennant: false },
+  "high-five": { face: "delighted", head: "rotate(2deg)", torso: "", frontArm: 0, noteArm: 0, notebook: true, card: false, pencil: false, glass: false, pennant: false },
+  clap: { face: "delighted", head: "", torso: "", frontArm: -52, noteArm: 40, notebook: false, card: false, pencil: false, glass: false, pennant: false },
+  pout: { face: "pout", head: "rotate(9deg) translateY(3.5px)", torso: "rotate(2.5deg) translateY(2px)", frontArm: -4, noteArm: 4, notebook: true, card: false, pencil: false, glass: false, pennant: false },
+  // PR 2b truce: head up, notebook away — both hands free for the
+  // assurance. The pennant twin raises the front hand a little
+  // higher with the white pennant in it (held, never planted).
+  truce: { face: "kind", head: "rotate(-3deg)", torso: "", frontArm: -30, noteArm: 4, notebook: false, card: false, pencil: false, glass: false, pennant: false },
+  "truce-pennant": { face: "kind", head: "rotate(-3deg)", torso: "", frontArm: -18, noteArm: 4, notebook: false, card: false, pencil: false, glass: false, pennant: true },
 };
 
 export function WatsonRig({ pose, facing = "right", speaking = false, halo = false }: WatsonRigProps): ReactElement {
@@ -606,6 +642,15 @@ export function WatsonRig({ pose, facing = "right", speaking = false, halo = fal
             <g data-part="arm-front" style={part(spec.frontArm ? `rotate(${spec.frontArm}deg)` : "", "36px 54px")}>
               <path d="M36,54 L27,86" stroke="#21376e" strokeWidth="10" strokeLinecap="round" />
               <circle cx="26" cy="89" r="4.6" fill="#eebd93" />
+              {spec.pennant ? (
+                // The truce pennant (PR 2b): a plain white flag on a
+                // short pole, in Watson's raised hand. It is HELD —
+                // there is no planted form of this prop anywhere.
+                <g data-part="pennant">
+                  <path d="M26,89 L26,38" stroke="#8a6a44" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M26,40 L49,47.5 L26,56 Z" fill="#fffdf6" stroke="#171310" strokeWidth="1.6" strokeLinejoin="round" />
+                </g>
+              ) : null}
             </g>
           )}
           <g data-part="head" style={part(spec.head, "60px 50px")}>
