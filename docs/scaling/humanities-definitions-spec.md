@@ -1,5 +1,37 @@
 # Meridian Scaling — Humanities + GK Definitions Spec
 
+> **Content screen applied (2026-11-10) — read this first.** Every topic in
+> this spec was screened against standard §7a. The verdicts, one objective
+> per topic and the C3 families are in
+> [`humanities/screened-topics.md`](humanities/screened-topics.md). Where
+> that list conflicts with the text below, **the list wins** and the text
+> below is superseded (kept for the record, not deleted):
+> - **P11 current affairs (§4): CUT** by the screen. Owner to confirm the packet is closed (the revision-rule ruling Q16 becomes moot).
+> - **P5 constitution picker (§1): CUT** (picker and "which right protects this?" cards). A neutral school-rules civics topic is held as REVIEW.
+> - **Audience:** "5th grade and up" is replaced by the three groups 7-10, 10-18, 18+ (standard §1).
+> - **Religion and mythology:** confirmed removed from all planned content; they appear below only as a removal record.
+> - Status stays **GATED**: no named educator has signed `educator-gate-rubric.md`.
+>
+> ```
+> K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+> - Why first (§0): n/a for this spec; it defines topics, not units. Units written from it must open with a real problem: [ ] pending
+> - Headline goal (§0): bridge + playable application: [ ] pending, per unit (map mode covers routes and directions)
+> - Use-it-elsewhere round: [ ] pending, per unit
+> - Bands served: 7-10, 10-18, 18+, per topic in screened-topics.md; why: each topic row names its groups
+> - Objective per item, observable verb, "shown by": [x] one per topic (18 topics not cut: 16 usable, 2 REVIEW; the 7 cut rows carry none)
+> - Standards cited per item: [ ] C3 families named; indicator numbers UNVERIFIED (official site returned 403); D2.Civ.3.3-5 MEDIUM
+> - Loop mapped (hook / predict / see / explain / retry): [ ] pending, per mode
+> - Mastery "confident" bar: [ ] pending, per mode
+> - Review-deck hookup: [ ] pending, per mode
+> - Post-clip retrieval check: [x] required for every journal story; stated in the topic rows
+> - Motion tiers Full / Lite / Flat: [ ] pending, per mode
+> - Accessibility (captions, tap alternative, no timers in 7-10, SR live region): [ ] pending, per mode
+> - Privacy (no PII, local records only): [x] no data collected by this spec
+> - Content screen (§7a) passed; cuts logged with reason: [x] 25 screened, 7 cut, 2 REVIEW
+> - Free (no revenue features; asset licences recorded): [x]
+> - Educator rubric attached: [ ] NOT SIGNED, spec stays GATED
+> ```
+
 **Branch:** `feat/humanities-definitions`
 **Base:** `origin/main` @ `f37dea50` (verified 2026-11-10)
 **Status: PREPARED — AWAITING EDUCATOR SIGN-OFF.** No educator exists; nothing
