@@ -15,6 +15,12 @@
     "retrieval": {
       "question": "How many years ago was this place dedicated?",
       "answer": "labeledYear - 1956"
+    },
+    "stretch": {
+      "group": "18+",
+      "question": "How many tens are in that year gap, and how many years are left over?",
+      "answer": "quotient and remainder of (labeledYear - 1956) / 10",
+      "fact": "normandy-dedicated-1956"
     }
   },
   {
@@ -33,6 +39,12 @@
     "retrieval": {
       "question": "How many steps of ten feet is one hundred eighty-four feet, and what is left over?",
       "answer": "18 steps, with 4 feet left"
+    },
+    "stretch": {
+      "group": "18+",
+      "question": "How many groups of eight feet fit in one hundred eighty-four, and what is left?",
+      "answer": "23 groups, with 0 feet left",
+      "fact": "arizona-length-feet"
     }
   }
 ]

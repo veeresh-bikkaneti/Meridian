@@ -4,7 +4,7 @@
 - **Branch:** `feat/journal-ww2-monuments-spec`
 - **Proposed clip count:** 2 — PROPOSED, not decided.
 - **Date:** 2026-11-10
-- **Contract:** I5 in `docs/scaling/contracts.md`. Rows: `docs/scaling/journals/ww2-monuments/clips.json`.
+- **Contract:** I5 in `docs/scaling/contracts.md`, including the optional `stretch` for an older group. Rows: `docs/scaling/journals/ww2-monuments/clips.json`. Fact ids: `docs/scaling/journals/ww2-monuments/sources.md`.
 - **Standard:** cite `docs/scaling/k12-learning-design-standard.md` by section. Do not copy it.
 
 Both kept places are quiet places of remembrance. The clip teaches a math question a child can check. It does not replay a battle.
@@ -22,7 +22,7 @@ The previous draft on this branch led with rows of white crosses, D-Day landings
 
 `labeledYear` is the calendar year the game shows on that day. The spec does not store a fixed gap. Example only, not a fact: if the label is 2026, then 2026 − 1956 = 70. 184 = 18 × 10 + 4.
 
-No algebra and no trigonometry in the 7-10 clip. No trigonometry item at all: no sourced angle or height, so none was invented.
+18+ is not a third movie. It is the I5 `stretch` on the same clip (contract, 2026-11-10). The stretch group is older than the clip's group. Eight feet is a problem unit, not a site fact. The Normandy stretch uses fact `normandy-dedicated-1956`. The Arizona stretch uses fact `arizona-length-feet`.
 
 ### Age ladder (same two movies)
 

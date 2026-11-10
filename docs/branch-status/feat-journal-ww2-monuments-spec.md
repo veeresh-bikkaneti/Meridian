@@ -18,7 +18,7 @@ remembrance. No graphic detail. No battle re-enactment. Proposed count: 2.
 - [x] Screened the previous two-clip draft. Kept both places. Cut crosses,
       chapel, shrine, landings, wreck, death counts, and the frozen "70 years."
       Log is in `docs/scaling/journal-ww2-monuments-spec.md`.
-- [x] I5 rows in `docs/scaling/journals/ww2-monuments/clips.json` (2, PROPOSED).
+- [x] I5 rows in `docs/scaling/journals/ww2-monuments/clips.json` (2, PROPOSED), plus the optional 18+ `stretch` and `sources.md`.
 - [x] Captions, transcripts, Full / Lite / Flat pin, §9 block, unsigned educator block.
 - [x] `node --test docs/scaling/journals/ww2-monuments/clips.test.mjs` — run this session.
 - [x] No code gates. No `src/` edits. No mp4. No `manifest.json`.

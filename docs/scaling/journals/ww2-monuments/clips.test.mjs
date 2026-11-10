@@ -9,7 +9,8 @@ import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const clips = JSON.parse(fs.readFileSync(path.join(here, "clips.json"), "utf8"));
-const KEYS = ["captions", "file", "group", "id", "objective", "place", "retrieval", "standard", "why"];
+const KEYS = ["captions", "file", "group", "id", "objective", "place", "retrieval", "standard", "stretch", "why"];
+const STRETCH_KEYS = ["answer", "fact", "group", "question"];
 const PLACE_KEYS = ["lat", "lon", "name"];
 const BANNED = /\b(cross|crosses|chapel|shrine|sacred|prayer|god|battle|landing|landings|explosion|bomb|torpedo|gun|attack|killed|dead|death|blood|president|congress|nazi|hitler|eisenhower|victory|defeat|d-day|dday)\b/i;
 
@@ -36,6 +37,10 @@ test("two proposed clips match contract I5", () => {
     assert.deepEqual(Object.keys(clip).sort(), KEYS, clip.id);
     assert.deepEqual(Object.keys(clip.place).sort(), PLACE_KEYS, clip.id);
     assert.deepEqual(Object.keys(clip.retrieval).sort(), ["answer", "question"]);
+    assert.deepEqual(Object.keys(clip.stretch).sort(), STRETCH_KEYS, clip.id);
+    assert.equal(clip.stretch.group, "18+");
+    const sources = fs.readFileSync(path.join(here, "sources.md"), "utf8");
+    assert.ok(sources.includes(clip.stretch.fact), clip.stretch.fact);
     assert.equal(typeof clip.place.lat, "number");
     assert.equal(typeof clip.place.lon, "number");
     assert.ok(clip.place.lat >= -90 && clip.place.lat <= 90, clip.id);
@@ -45,7 +50,10 @@ test("two proposed clips match contract I5", () => {
     assert.ok(fs.existsSync(path.join(here, clip.captions)), clip.captions);
     const vtt = fs.readFileSync(path.join(here, clip.captions), "utf8");
     assert.ok(vtt.startsWith("WEBVTT"), clip.captions);
-    const spoken = [clip.why, clip.objective, clip.retrieval.question, clip.retrieval.answer, vtt].join("\n");
+    const spoken = [
+      clip.why, clip.objective, clip.retrieval.question, clip.retrieval.answer,
+      clip.stretch.question, clip.stretch.answer, vtt,
+    ].join("\n");
     assert.equal(BANNED.test(spoken), false, `${clip.id} failed the content screen`);
   }
 });
@@ -61,6 +69,7 @@ test("groups, codes, and answers stay inside the rules", () => {
   assert.equal(normandy.retrieval.answer, "labeledYear - 1956");
   assert.equal(arizona.retrieval.answer, "18 steps, with 4 feet left");
   assert.equal(184, 18 * 10 + 4);
+  assert.equal(184, 23 * 8);
   assert.doesNotMatch(JSON.stringify(clips), /9389|9,389|1,102|1,177|1102|1177/);
   const young = fs.readFileSync(path.join(here, normandy.captions), "utf8");
   assert.ok(grade(young) <= 5.5, `7-10 captions grade ${grade(young)}`);
