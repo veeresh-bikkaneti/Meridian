@@ -96,15 +96,16 @@ tab is hidden. Open-licensed assets only, licence recorded beside each asset.
 ## Parallel streams
 
 Each branch has one agent, working alongside the others. Your plan in
-`plans/` says what you own, what you wait on and who you may collide with.
-Edit only the files you own. Keep up with main by merging `origin/main` into
-your branch at session start, after every merge to main and before opening or
-updating a PR, then rerun your checks (the standing rule in every plan).
+`plans/` lists the paths you own exclusively; no other branch edits them. Links
+between streams go through `contracts.md`, so nobody waits on a sibling.
+Anything outside your paths: ask the integrator (`integrator-runbook.md`).
+Keep up with main by merging `origin/main` into your branch at session start,
+after every merge to main and before opening or updating a PR.
 
 ## Finish line for every branch
 
-1. Update your own section of `BRANCH_STATUS.md` (keep other sections as they
-   are): task, scope, status, what is still open.
+1. Update your own status file, `docs/branch-status/<branch>.md` (never the
+   root `BRANCH_STATUS.md`): task, scope, status, what is still open.
 2. For code: run the `AGENTS.md` quality gates and attach a screen recording.
    For docs only: say that no code gates were run.
 3. Report in plain words: what changed, what is blocked, which owner decision
