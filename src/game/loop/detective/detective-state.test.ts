@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
-  ackIdForAckCount,
+  ackCandidates,
+  ACK_POOL_IDS,
   decodeIdForClue,
   initialDetectiveState,
   transition,
@@ -24,11 +25,18 @@ interface Step {
   effects: DetectiveEffect[];
   phase: string;
 }
-function run(events: DetectiveEvent[], start = initialDetectiveState()): Step[] {
+/* The ack draw is random in production; the driver pins it (first
+ * candidate) so scripted streams are reproducible. Pass your own rng to
+ * exercise the draw itself. */
+function run(
+  events: DetectiveEvent[],
+  start = initialDetectiveState(),
+  rng: () => number = () => 0,
+): Step[] {
   const steps: Step[] = [];
   let state = start;
   for (const event of events) {
-    const out = transition(state, event);
+    const out = transition(state, event, rng);
     state = out.state;
     steps.push({ state, effects: out.effects, phase: out.view.phase });
   }
@@ -101,7 +109,7 @@ test("OFF: disabled machine hides the pair and ignores every event", () => {
   assert.deepEqual(last(steps).effects, []);
 });
 
-test("clue 1: read → 600ms thinking beat → ack-1 + decode-geography → dock search", () => {
+test("clue 1: read → 600ms thinking beat → pool ack + decode-geography → dock search", () => {
   const steps = run(normalClue(1));
   assert.equal(steps[0]!.phase, "READING");
   assert.deepEqual(speakIds(steps[0]!.effects), ["clue:1"]);
@@ -117,7 +125,9 @@ test("clue 1: read → 600ms thinking beat → ack-1 + decode-geography → dock
   assert.deepEqual(speakIds(steps[1]!.effects), []);
 
   assert.equal(steps[2]!.phase, "READING");
-  assert.deepEqual(speakIds(steps[2]!.effects), ["fixed:ack-1", "fixed:decode-geography"]);
+  const ack1 = speakIds(steps[2]!.effects);
+  assert.match(ack1[0]!, /^fixed:ack-\d+$/);
+  assert.equal(ack1[1], "fixed:decode-geography");
   const ackView = viewForState(steps[2]!.state);
   assert.equal(ackView.holmes.pose, "ack");
   assert.equal(ackView.holmes.speaking, true);
@@ -226,39 +236,32 @@ test("station law past guessing: THINKING_BEAT, FAIL_READ, POUT, DEBRIEF and CEL
   assert.equal(viewForState(last(debrief).state).watson.placement, "station");
 });
 
-test("ack rotation is by ack count, and decode types by clue position", () => {
-  // Count-based selector (cure pass item 7): the first ack played in a
-  // case is ack-1; the rotation then walks 2, 3, 4 and wraps to 1.
-  // The old clue-index pin (clue 4 → ack-4, clue 5 → ack-1) encoded
-  // the flaw: the Hook plays no ack, so ack-4 never played and ack-1
-  // repeated on the Giveaway.
-  assert.equal(ackIdForAckCount(0), "ack-1");
-  assert.equal(ackIdForAckCount(1), "ack-2");
-  assert.equal(ackIdForAckCount(2), "ack-3");
-  assert.equal(ackIdForAckCount(3), "ack-4");
-  assert.equal(ackIdForAckCount(4), "ack-1"); // rotation wraps after all four
+test("ack draw is a pool line, and decode types by clue position", () => {
+  // The old count rotation is gone (HERALD): the ack is a random draw
+  // from the pool minus the played-set (see detective-pool.test.ts).
+  assert.deepEqual(ackCandidates([]), ACK_POOL_IDS);
   assert.equal(decodeIdForClue(1), "decode-geography");
   assert.equal(decodeIdForClue(2), "decode-climate");
   assert.equal(decodeIdForClue(3), "decode-history");
   assert.equal(decodeIdForClue(4), "decode-hook");
   assert.equal(decodeIdForClue(5), "decode-giveaway");
 
-  // In-machine, from a FRESH case each time: the first ack is always
-  // ack-1 (the E2E pins rely on this), whatever clue it follows.
+  // In-machine, from a FRESH case each time: whatever clue it follows,
+  // the ack is a pool line.
   for (const [n, decode] of [
     [2, "decode-climate"],
     [3, "decode-history"],
     [5, "decode-giveaway"],
   ] as const) {
     const steps = run(normalClue(n));
-    assert.deepEqual(speakIds(steps[2]!.effects), ["fixed:ack-1", `fixed:${decode}`]);
+    const ids = speakIds(steps[2]!.effects);
+    assert.ok(ACK_POOL_IDS.includes(ids[0]!.replace("fixed:", "")));
+    assert.equal(ids[1], `fixed:${decode}`);
   }
 });
 
-test("full 5-clue case: acks rotate 1→2→3→4 with no repeat, ack-4 plays", () => {
-  // One continuous case: clues 1–3 and 5 ack through the thinking
-  // beat; the Hook (clue 4) plays no ack. Count rotation therefore
-  // deals ack-1, ack-2, ack-3 and — on the Giveaway — ack-4.
+test("full 5-clue case: four acks, all from the pool, none repeated", () => {
+  // Clues 1–3 and 5 ack through the thinking beat; the Hook plays none.
   const steps = run([
     ...normalClue(1),
     ...normalClue(2),
@@ -269,9 +272,9 @@ test("full 5-clue case: acks rotate 1→2→3→4 with no repeat, ack-4 plays", 
   const acks = steps
     .flatMap((s) => speakIds(s.effects))
     .filter((id) => id.startsWith("fixed:ack-"));
-  assert.deepEqual(acks, ["fixed:ack-1", "fixed:ack-2", "fixed:ack-3", "fixed:ack-4"]);
-  assert.equal(new Set(acks).size, acks.length, "no ack repeats before all four have played");
-  assert.ok(acks.includes("fixed:ack-4"), "ack-4 plays at least once per full case");
+  assert.equal(acks.length, 4);
+  assert.equal(new Set(acks).size, acks.length, "no ack repeats inside a case");
+  for (const id of acks) assert.ok(ACK_POOL_IDS.includes(id.replace("fixed:", "")));
 });
 
 test("Hook (clue 4): long beat → announce → read → decode-hook → search", () => {

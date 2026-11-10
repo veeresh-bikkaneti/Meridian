@@ -111,6 +111,16 @@ export const FIXED_LINES = Object.freeze([
   spec({ id: "ack-2", kind: "ack", text: "Very well, Watson.", voice: VOICES.holmes, speed: 100, file: "fixed/ack-2.mp3" }),
   spec({ id: "ack-3", kind: "ack", text: "Noted, Watson.", voice: VOICES.holmes, speed: 100, file: "fixed/ack-3.mp3" }),
   spec({ id: "ack-4", kind: "ack", text: "Ah... the game is afoot.", voice: VOICES.holmes, speed: 100, file: "fixed/ack-4.mp3" }),
+  // Pool extension (owner order 2026-11-09: at least ten ack lines cycled
+  // randomly — one repeated line read aloud sounds robotic). Same register:
+  // receipt-only, content-free, answer-blind. The random picker that cycles
+  // them is a separate unit (HERALD); these lines ship ahead of it.
+  spec({ id: "ack-5", kind: "ack", text: "Heard, Watson.", voice: VOICES.holmes, speed: 100, file: "fixed/ack-5.mp3" }),
+  spec({ id: "ack-6", kind: "ack", text: "I'll take that, Watson.", voice: VOICES.holmes, speed: 100, file: "fixed/ack-6.mp3" }),
+  spec({ id: "ack-7", kind: "ack", text: "Filed, Watson.", voice: VOICES.holmes, speed: 100, file: "fixed/ack-7.mp3" }),
+  spec({ id: "ack-8", kind: "ack", text: "Received, Watson.", voice: VOICES.holmes, speed: 100, file: "fixed/ack-8.mp3" }),
+  spec({ id: "ack-9", kind: "ack", text: "Set it down, Watson.", voice: VOICES.holmes, speed: 100, file: "fixed/ack-9.mp3" }),
+  spec({ id: "ack-10", kind: "ack", text: "One moment, Watson.", voice: VOICES.holmes, speed: 100, file: "fixed/ack-10.mp3" }),
   // One identical asset for every pick — correctness cannot modulate it.
   spec({ id: "suspicion", kind: "suspicion", text: "Hmm... it could be it.", voice: VOICES.holmes, speed: 85, gainDb: -5, file: "fixed/suspicion.mp3" }),
   spec({ id: "ask-next", kind: "ask-next", text: "Watson. The next question.", voice: VOICES.holmes, speed: 100, file: "fixed/ask-next.mp3" }),
