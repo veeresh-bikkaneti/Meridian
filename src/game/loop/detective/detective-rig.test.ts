@@ -57,7 +57,7 @@ function renderWatson(pose: (typeof WATSON_POSES)[number], facing: "left" | "rig
   return renderToString(createElement(WatsonRig, { pose, facing, speaking }));
 }
 
-test("pose enums are exactly the U5 contract sets", () => {
+test("pose enums are exactly the U5 contract sets (PR 2b adds the truce poses)", () => {
   assert.deepEqual([...HOLMES_POSES], [
     "dock",
     "walk",
@@ -71,6 +71,7 @@ test("pose enums are exactly the U5 contract sets", () => {
     "high-five",
     "clap",
     "pout",
+    "truce",
   ]);
   assert.deepEqual([...WATSON_POSES], [
     "walk",
@@ -83,7 +84,23 @@ test("pose enums are exactly the U5 contract sets", () => {
     "high-five",
     "clap",
     "pout",
+    "truce",
+    "truce-pennant",
   ]);
+});
+
+test("PR 2b: the pennant renders ONLY in Watson's truce-pennant pose — held, in his hand group", () => {
+  for (const pose of WATSON_POSES) {
+    const html = renderWatson(pose, "right");
+    if (pose === "truce-pennant") {
+      assert.ok(html.includes('data-part="pennant"'), "pennant pose draws the pennant");
+    } else {
+      assert.ok(!html.includes('data-part="pennant"'), `${pose} never draws a pennant`);
+    }
+  }
+  for (const pose of HOLMES_POSES) {
+    assert.ok(!renderHolmes(pose, "right").includes('data-part="pennant"'), `Holmes ${pose} never holds the pennant`);
+  }
 });
 
 test("every Holmes pose renders to a non-empty SVG, both facings", () => {

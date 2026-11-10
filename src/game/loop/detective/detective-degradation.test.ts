@@ -179,7 +179,7 @@ test("Unit A cue: absent outside the clue/guessing phases, even with Watson at t
     "ASK_NEXT",
     "CELEBRATE",
     "FAIL_READ",
-    "POUT",
+    "TRUCE",
     "DEBRIEF",
     "OFF",
   ]) {

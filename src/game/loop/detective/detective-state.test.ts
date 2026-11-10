@@ -14,6 +14,8 @@ import {
   HOOK_BEAT_MS,
   NOTE_MARK_MS,
   THINKING_BEAT_MS,
+  TRUCE_HOLMES_IDS,
+  TRUCE_WATSON_IDS,
   type DetectiveEffect,
   type DetectiveEvent,
   type DetectiveState,
@@ -182,7 +184,7 @@ test("guessing phases: Watson holds the clue-card station, Holmes keeps his map 
   assert.equal(askView.holmes.pose, "ack");
 });
 
-test("station law past guessing: THINKING_BEAT, FAIL_READ, POUT, DEBRIEF and CELEBRATE never dock Watson (owner ruling 2026-11-07)", () => {
+test("station law past guessing: THINKING_BEAT, FAIL_READ, TRUCE, DEBRIEF and CELEBRATE never dock Watson (owner ruling 2026-11-07)", () => {
   // Negative pin (Silo QA gap N1): the guessing-phase test above pins
   // SEARCH_IDLE / SEARCH_AREA / SELECTION_READ / ASK_NEXT. These five
   // phases were previously unpinned — each must ALSO hold Watson at
@@ -198,13 +200,14 @@ test("station law past guessing: THINKING_BEAT, FAIL_READ, POUT, DEBRIEF and CEL
   assert.equal(last(failRead).phase, "FAIL_READ");
   assert.equal(viewForState(last(failRead).state).watson.placement, "station");
 
-  // POUT: the sticky post-loss beat that follows FAIL_READ.
+  // TRUCE: the sticky post-loss beat that follows FAIL_READ (named
+  // POUT before PR 2b; reactions off here, so it rests silently).
   const pout = run([
     ...normalClue(1),
     { type: "caseFailed" },
-    { type: "speechEnded" }, // answer drains → POUT
+    { type: "speechEnded" }, // answer drains → TRUCE
   ]);
-  assert.equal(last(pout).phase, "POUT");
+  assert.equal(last(pout).phase, "TRUCE");
   assert.equal(viewForState(last(pout).state).watson.placement, "station");
 
   // CELEBRATE: every choreography step (jump → high-five → clap →
@@ -445,13 +448,13 @@ test("external speech hides the pair without changing phase", () => {
   assert.equal(viewForState(last(steps).state).hidden, false);
 });
 
-test("fail path: answer read → pout, STICKY (U8 — no dwell, no auto-advance)", () => {
+test("fail path (reactions off): answer read → TRUCE rest, STICKY (U8 — no dwell, no auto-advance)", () => {
   const steps = run([
     ...normalClue(1),
     { type: "guessConfirmed", placeId: "geonames:42" },
     { type: "caseFailed" }, // lands mid-selection-read → deferred
     { type: "speechEnded" }, // selection drains → FAIL_READ
-    { type: "speechEnded" }, // answer drains → POUT
+    { type: "speechEnded" }, // answer drains → TRUCE (silent rest)
     { type: "beatElapsed" }, // U5's 1500 ms exit is gone: no-op now
     { type: "speechEnded" }, // stray drains are no-ops too
     { type: "beatElapsed" },
@@ -459,14 +462,14 @@ test("fail path: answer read → pout, STICKY (U8 — no dwell, no auto-advance)
   assert.equal(steps[steps.length - 5]!.phase, "FAIL_READ");
   assert.deepEqual(speakIds(steps[steps.length - 5]!.effects), ["answer"]);
   const pout = steps[steps.length - 4]!;
-  assert.equal(pout.phase, "POUT");
+  assert.equal(pout.phase, "TRUCE");
   assert.deepEqual(dwells(pout.effects), []); // no dwell is ever armed
   assert.deepEqual(pout.effects, []);
   const poutView = viewForState(pout.state);
   assert.equal(poutView.holmes.pose, "pout");
   assert.equal(poutView.watson.pose, "pout");
-  // Still pouting after every later beat/speech event.
-  assert.equal(last(steps).phase, "POUT");
+  // Still resting after every later beat/speech event.
+  assert.equal(last(steps).phase, "TRUCE");
   assert.equal(viewForState(last(steps).state).holmes.pose, "pout");
 });
 
@@ -569,7 +572,7 @@ function fivePicksThen(end: "solved" | "failed"): Step[] {
     );
   }
   events.push(end === "solved" ? { type: "caseSolved" } : { type: "caseFailed" });
-  if (end === "failed") events.push({ type: "speechEnded" }); // → POUT
+  if (end === "failed") events.push({ type: "speechEnded" }); // → TRUCE
   return run(events);
 }
 
@@ -946,22 +949,130 @@ test("U8 answer-blindness extension: answerPlaceId is IGNORED outside DEBRIEF �
   ]);
 });
 
-test("U8 pout exits: only a new case — clueUnlocked of a new case, or caseOpened — never a timer", () => {
+test("U8 truce exits: only caseOpened (a new case) — never a timer, never a clue (PR 2b guard)", () => {
   const lost = run([
     ...normalClue(1),
     { type: "caseFailed" },
-    { type: "speechEnded" }, // → POUT
+    { type: "speechEnded" }, // → TRUCE
   ]);
-  assert.equal(last(lost).phase, "POUT");
-  // A new case's first clue restarts the ladder straight from POUT.
+  assert.equal(last(lost).phase, "TRUCE");
+  // PR 2b LAW CHANGE: a clueUnlocked landing in TRUCE is a no-op.
+  // The shipped machine restarted the ladder from the old POUT on
+  // any unlock — which meant a straggler unlock could speak clue
+  // speech into a CLOSED case. Production never used that exit
+  // (the host resets the machine per case before dispatching
+  // caseOpened + clueUnlocked), so the guard costs nothing and
+  // closes the hole. The exits that remain: caseOpened (below)
+  // and the host's per-case reset.
   const viaClue = run([{ type: "clueUnlocked", clueIndex: 1 }], last(lost).state);
-  assert.equal(last(viaClue).phase, "READING");
-  // A fresh caseOpened resets the pout and starts the duet.
+  assert.equal(last(viaClue).phase, "TRUCE");
+  assert.deepEqual(last(viaClue).effects, []);
+  // A fresh caseOpened resets the truce and starts the duet.
   const viaOpen = run([{ type: "caseOpened", freshDeal: true }], last(lost).state);
   assert.equal(last(viaOpen).phase, "CASE_OPEN");
   assert.deepEqual(speakIds(last(viaOpen).effects), ["fixed:instructions-holmes"]);
-  // A resumed caseOpened also clears the pout, silently.
+  // A resumed caseOpened also clears the truce, silently.
   const viaResume = run([{ type: "caseOpened", freshDeal: false }], last(lost).state);
   assert.equal(last(viaResume).phase, "CASE_OPEN");
   assert.deepEqual(last(viaResume).effects, []);
+});
+
+/* ------------------------------------------------------------------ */
+/* PR 2b — the truce exchange + the closed-case guards                 */
+/* ------------------------------------------------------------------ */
+
+/** Drive a loss with reactions ON to the FAIL_READ drain. */
+function lostWithReactions(opts: { pennant?: boolean } = {}): Step[] {
+  return run(
+    [
+      ...normalClue(1),
+      { type: "caseFailed" },
+      { type: "speechEnded" }, // answer drains → TRUCE assurance
+    ],
+    initialDetectiveState({ reactions: true, pennant: opts.pennant === true }),
+  );
+}
+
+test("PR 2b truce: answer → Watson assurance → Holmes reframe → sticky rest", () => {
+  const steps = lostWithReactions();
+  const assurance = last(steps);
+  assert.equal(assurance.phase, "TRUCE");
+  assert.equal(assurance.state.truceStep, "assurance");
+  // The driver's rng is pinned to 0 → the first pool entry.
+  assert.deepEqual(speakIds(assurance.effects), [`fixed:${TRUCE_WATSON_IDS[0]}`]);
+  const assuranceView = viewForState(assurance.state);
+  assert.equal(assuranceView.watson.pose, "truce");
+  assert.equal(assuranceView.watson.speaking, true);
+  assert.equal(assuranceView.holmes.pose, "truce");
+  assert.equal(assuranceView.holmes.speaking, false);
+
+  const reframe = run([{ type: "speechEnded" }], assurance.state);
+  assert.equal(last(reframe).state.truceStep, "reframe");
+  assert.deepEqual(speakIds(last(reframe).effects), [`fixed:${TRUCE_HOLMES_IDS[0]}`]);
+  const reframeView = viewForState(last(reframe).state);
+  assert.equal(reframeView.holmes.speaking, true);
+  assert.equal(reframeView.watson.speaking, false);
+
+  const rest = run(
+    [{ type: "speechEnded" }, { type: "speechEnded" }, { type: "beatElapsed" }],
+    last(reframe).state,
+  );
+  assert.equal(last(rest).phase, "TRUCE");
+  assert.equal(last(rest).state.truceStep, "rest");
+  assert.deepEqual(last(rest).effects, []);
+  const restView = viewForState(last(rest).state);
+  assert.equal(restView.holmes.pose, "truce");
+  assert.equal(restView.watson.pose, "truce");
+});
+
+test("PR 2b truce: the pennant flag changes only Watson's truce pose", () => {
+  const steps = lostWithReactions({ pennant: true });
+  assert.equal(viewForState(last(steps).state).watson.pose, "truce-pennant");
+  assert.equal(viewForState(last(steps).state).holmes.pose, "truce");
+});
+
+test("PR 2b truce: draws stay inside their pools (answer-blind, rng-driven)", () => {
+  for (const r of [0, 0.34, 0.67, 0.999]) {
+    const steps = run(
+      [...normalClue(1), { type: "caseFailed" }, { type: "speechEnded" }],
+      initialDetectiveState({ reactions: true }),
+      () => r,
+    );
+    const id = speakIds(last(steps).effects)[0]!;
+    assert.ok(TRUCE_WATSON_IDS.includes(id.replace("fixed:", "")), id);
+  }
+});
+
+test("PR 2b truce: caseOpened out of TRUCE carries the behaviour gates", () => {
+  const steps = lostWithReactions({ pennant: true });
+  const opened = run(
+    [{ type: "caseOpened", freshDeal: false }],
+    last(steps).state,
+  );
+  assert.equal(last(opened).state.reactions, true);
+  assert.equal(last(opened).state.pennant, true);
+  assert.equal(last(opened).state.truceStep, null);
+});
+
+test("PR 2b NEGATIVE: no clue speech after an ending — clueUnlocked is a no-op in every closed phase", () => {
+  // CELEBRATE
+  const won = run([
+    ...normalClue(1),
+    { type: "caseSolved", answerPlaceId: "geonames:1" },
+  ]);
+  assert.equal(last(won).phase, "CELEBRATE");
+  const inCelebrate = run([{ type: "clueUnlocked", clueIndex: 2 }], last(won).state);
+  assert.equal(last(inCelebrate).phase, "CELEBRATE");
+  assert.deepEqual(last(inCelebrate).effects, []);
+  // FAIL_READ
+  const failing = run([...normalClue(1), { type: "caseFailed" }]);
+  const inFailRead = run([{ type: "clueUnlocked", clueIndex: 2 }], last(failing).state);
+  assert.equal(last(inFailRead).phase, "FAIL_READ");
+  assert.deepEqual(last(inFailRead).effects, []);
+  // TRUCE (reactions on, mid-exchange — the guard holds there too)
+  const truce = lostWithReactions();
+  const inTruce = run([{ type: "clueUnlocked", clueIndex: 3 }], last(truce).state);
+  assert.equal(last(inTruce).phase, "TRUCE");
+  assert.equal(last(inTruce).state.truceStep, "assurance");
+  assert.deepEqual(last(inTruce).effects, []);
 });

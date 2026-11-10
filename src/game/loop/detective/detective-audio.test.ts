@@ -17,6 +17,10 @@ const MANIFEST: DetectiveManifest = {
     suspicion: { file: "fixed/suspicion.mp3", voice: "avocado_v2:atlas" },
     "debrief-frame": { file: "fixed/debrief-frame.mp3", voice: "avocado_v2:atlas" },
     "debrief-close": { file: "fixed/debrief-close.mp3", voice: "avocado_v2:atlas" },
+    "win-holmes": { file: "fixed/win-holmes.mp3", voice: "avocado_v2:atlas" },
+    "win-watson": { file: "fixed/win-watson.mp3", voice: "avocado_v2:pb1_music_02" },
+    "truce-watson-1": { file: "fixed/truce-watson-1.mp3", voice: "avocado_v2:pb1_music_02" },
+    "truce-holmes-2": { file: "fixed/truce-holmes-2.mp3", voice: "avocado_v2:atlas" },
   },
   cases: {
     "387": {
@@ -853,4 +857,154 @@ test("gesture wait: a sound gate closed at wake (no stopAll) keeps the parked cl
   } finally {
     unplugBrowserAudio();
   }
+});
+
+/* ------------------------------------------------------------------ */
+/* PR 2b — the ending hold + the solve flush                           */
+/* ------------------------------------------------------------------ */
+
+function endingHarness(overrides: { holdEndings?: boolean } = {}) {
+  const played: string[] = [];
+  const speaking: Array<DetectiveSpeaker | null> = [];
+  const endingCounts: number[] = [];
+  const player = createDetectiveSpeech({
+    caseIndex: 387,
+    speechMode: "tap",
+    holdEndings: overrides.holdEndings ?? true,
+    loadManifest: async () => MANIFEST,
+    playClip: async (clip) => {
+      played.push(clip.url);
+    },
+    isSoundOn: () => true,
+    canAutoPlay: () => true,
+    onSpeakingChange: (who) => speaking.push(who),
+    onEndingHeldChange: (n) => endingCounts.push(n),
+  });
+  return { player, played, speaking, endingCounts };
+}
+
+test("PR 2b ending hold: a tap-mode win burst is held whole and released by playHeldEnding", async () => {
+  const { player, played, endingCounts } = endingHarness();
+  player.enqueue({ kind: "fixed", id: "win-holmes" });
+  player.enqueue({ kind: "fixed", id: "win-watson" });
+  player.enqueue({ kind: "fixed", id: "debrief-frame" });
+  player.enqueue({ kind: "name", placeId: "geonames:323786" });
+  player.enqueue({ kind: "fixed", id: "debrief-close" });
+  await tick();
+  // Tap mode: nothing played live (the named gap) — but now it is HELD.
+  assert.deepEqual(played, []);
+  assert.deepEqual(
+    player.heldEndingRefs().map((r) => r.kind + ":" + (r.kind === "fixed" ? r.id : r.kind === "name" ? r.placeId : "")),
+    ["fixed:win-holmes", "fixed:win-watson", "fixed:debrief-frame", "name:geonames:323786", "fixed:debrief-close"],
+  );
+  assert.deepEqual(endingCounts, [1, 2, 3, 4, 5]);
+  await player.playHeldEnding();
+  assert.deepEqual(played, [
+    "/audio/detective/fixed/win-holmes.mp3",
+    "/audio/detective/fixed/win-watson.mp3",
+    "/audio/detective/fixed/debrief-frame.mp3",
+    "/audio/detective/names/323786.mp3",
+    "/audio/detective/fixed/debrief-close.mp3",
+  ]);
+  player.dispose();
+});
+
+test("PR 2b ending hold: a loss burst (answer + truce) is held; a new anchor replaces it", async () => {
+  const { player } = endingHarness();
+  player.enqueue({ kind: "answer" });
+  player.enqueue({ kind: "fixed", id: "truce-watson-1" });
+  player.enqueue({ kind: "fixed", id: "truce-holmes-2" });
+  await tick();
+  assert.equal(player.heldEndingRefs().length, 3);
+  // A win burst starting later replaces the loss hold wholesale.
+  player.enqueue({ kind: "fixed", id: "win-holmes" });
+  assert.deepEqual(
+    player.heldEndingRefs().map((r) => (r.kind === "fixed" ? r.id : r.kind)),
+    ["win-holmes"],
+  );
+  player.dispose();
+});
+
+test("PR 2b ending hold NEGATIVE: a pick's name read is never an ending", async () => {
+  const { player } = endingHarness();
+  player.enqueue({ kind: "name", placeId: "geonames:323786" });
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  player.enqueue({ kind: "fixed", id: "ack-1" });
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  assert.deepEqual(player.heldEndingRefs(), []);
+  player.dispose();
+});
+
+test("PR 2b ending hold: gated off holds nothing and playHeldEnding is a no-op", async () => {
+  const { player, played, endingCounts } = endingHarness({ holdEndings: false });
+  player.enqueue({ kind: "fixed", id: "win-holmes" });
+  player.enqueue({ kind: "answer" });
+  await tick();
+  assert.deepEqual(player.heldEndingRefs(), []);
+  assert.deepEqual(endingCounts, []);
+  await player.playHeldEnding();
+  assert.deepEqual(played, []);
+  player.dispose();
+});
+
+test("PR 2b ending hold: setHoldEndings(false) drops the hold; setCaseIndex clears it", async () => {
+  const { player, endingCounts } = endingHarness();
+  player.enqueue({ kind: "answer" });
+  await tick();
+  assert.equal(player.heldEndingRefs().length, 1);
+  player.setHoldEndings(false);
+  assert.deepEqual(player.heldEndingRefs(), []);
+  assert.equal(endingCounts[endingCounts.length - 1], 0);
+  player.setHoldEndings(true);
+  player.enqueue({ kind: "fixed", id: "win-holmes" });
+  await tick();
+  assert.equal(player.heldEndingRefs().length, 1);
+  player.setCaseIndex(388);
+  assert.deepEqual(player.heldEndingRefs(), []);
+  player.dispose();
+});
+
+test("PR 2b flushSpeech: queued speech dies silently — no drain, the next enqueue owns the voice", async () => {
+  const played: string[] = [];
+  const speaking: Array<DetectiveSpeaker | null> = [];
+  let releaseFirst: (() => void) | null = null;
+  const player = createDetectiveSpeech({
+    caseIndex: 387,
+    speechMode: "auto",
+    loadManifest: async () => MANIFEST,
+    playClip: (clip) => {
+      played.push(clip.url);
+      if (played.length === 1) {
+        return new Promise<void>((resolve) => {
+          releaseFirst = resolve;
+        });
+      }
+      return Promise.resolve();
+    },
+    isSoundOn: () => true,
+    canAutoPlay: () => true,
+    onSpeakingChange: (who) => speaking.push(who),
+  });
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  assert.deepEqual(played, ["/audio/detective/case-387/clue-1.mp3"]);
+  // The case is solved mid-chain: flush. The queued ack must never
+  // play, and NO drain may fire (a drain would advance the ladder
+  // as if the chain had finished — the ending owns the next one).
+  player.flushSpeech();
+  releaseFirst!();
+  await tick();
+  assert.deepEqual(played, ["/audio/detective/case-387/clue-1.mp3"]);
+  assert.deepEqual(speaking.filter((s) => s === null), []);
+  // The ending's own enqueue plays and drains exactly once.
+  player.enqueue({ kind: "fixed", id: "win-holmes" });
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/win-holmes.mp3",
+  ]);
+  assert.deepEqual(speaking.filter((s) => s === null).length, 1);
+  player.dispose();
 });
