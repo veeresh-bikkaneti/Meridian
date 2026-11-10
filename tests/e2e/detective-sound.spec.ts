@@ -702,16 +702,15 @@ test("(h) preset-off boot: badge at first paint, no speech; turning sound on cle
   expect(await detectiveOnly(page)).toEqual([]);
   console.log("[sound-h] preset-off boot: badge latched at first paint, zero detective plays");
 
-  // Turning sound on from the pair chip clears the badge.
-  const chip = page.getByTestId("detective-sound-chip");
-  await expect(chip).toHaveCount(1, { timeout: 10_000 });
-  await expect(chip).toHaveAttribute("aria-pressed", "false");
-  await chip.click();
+  // Turning sound on from the screen's top-left toggle (the one mute
+  // since 2026-11-10; the pair's own chip is retired) clears the badge.
+  await expect(page.getByTestId("detective-sound-chip")).toHaveCount(0);
+  await page.getByTestId("sound-toggle-loop").click();
   await expect.poll(() => soundKey(page), { timeout: 10_000 }).toBe("on");
   await expect(page.getByTestId("detective-muted-badge")).toHaveCount(0, {
     timeout: 10_000,
   });
-  console.log("[sound-h] chip unmute cleared the badge");
+  console.log("[sound-h] top-left unmute cleared the badge");
 });
 
 

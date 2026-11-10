@@ -97,14 +97,13 @@ async function openTapCase(page: Page, index: number): Promise<void> {
   });
 }
 
-/** One Listen tap releases the held chain for the current clue;
- * assert that clue's read actually played. */
+/** One tap on Watson releases the held chain for the current clue
+ * (the Listen chip is retired: owner, 2026-11-10, "tapping on
+ * character will repeat the line"); assert that clue's read played. */
 async function releaseHeldClue(page: Page, clueClip: string): Promise<void> {
-  const listen = page
-    .getByRole("button", { name: "Listen to this clue" })
-    .first();
-  await expect(listen).toBeVisible({ timeout: 30_000 });
-  await listen.click();
+  const watson = page.getByTestId("detective-watson-replay").first();
+  await expect(watson).toBeVisible({ timeout: 30_000 });
+  await watson.click();
   await expect
     .poll(async () => (await playCount(page, clueClip)) > 0, {
       timeout: 45_000,

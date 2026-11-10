@@ -80,6 +80,11 @@ type ClosedSample = {
   coffee: number;
   holmes: number;
   watson: number;
+  /** Diagnostics: the bench's stage and whether it is painted, and
+   * which element carries the "Case closed" text. */
+  benchStage: string | null;
+  benchShown: boolean;
+  closedBy: string | null;
 };
 
 async function startClosedSampler(page: Page): Promise<void> {
@@ -103,6 +108,25 @@ async function startClosedSampler(page: Page): Promise<void> {
           count('[data-testid="detective-coffee-left-watson"]'),
         holmes: count('[data-detective="holmes"]'),
         watson: count('[data-detective="watson"]'),
+        benchStage:
+          document
+            .querySelector('[data-testid="detective-bench"]')
+            ?.getAttribute("data-staging-stage") ?? null,
+        benchShown: (() => {
+          const b = document.querySelector('[data-testid="detective-bench"]');
+          return b ? b.getClientRects().length > 0 : false;
+        })(),
+        closedBy: (() => {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+          for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+            if ((n.textContent ?? "").includes("Case closed")) {
+              const el = n.parentElement;
+              const tagged = el?.closest("[data-testid]");
+              return `${el?.tagName.toLowerCase() ?? "?"}${tagged ? ` in ${tagged.getAttribute("data-testid")}` : ""}`;
+            }
+          }
+          return null;
+        })(),
       });
       if (w.__closedSamples.length > 6000) w.__closedSamples.shift();
     }, 50);
@@ -133,7 +157,7 @@ function assertClosedWindow(samples: ClosedSample[], label: string) {
   for (const [i, x] of closed.entries()) {
     expect(
       x.bench + x.board + x.coffee,
-      `${label}: closed sample ${i} (phase=${x.phase}) must be bench-free (bench=${x.bench} board=${x.board} coffee=${x.coffee})`,
+      `${label}: closed sample ${i} (phase=${x.phase}) must be bench-free (bench=${x.bench} board=${x.board} coffee=${x.coffee}; stage=${x.benchStage} shown=${x.benchShown} closedBy=${x.closedBy})`,
     ).toBe(0);
     // Exactly-one-casting wherever the pair is mounted at all.
     expect(

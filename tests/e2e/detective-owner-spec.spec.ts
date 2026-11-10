@@ -134,9 +134,14 @@ test("no speaker by the pair; the one mute is top-left beside the other two butt
   const viewport = page.viewportSize()!;
   expect(mute).not.toBeNull();
   expect(editions).not.toBeNull();
-  // Same row as Editions, on the left half of the screen.
+  // Same row as Editions, in the left-hand button group: right of
+  // Editions and left of the "Case #" label on the right.
+  const caseLabel = await page.getByText(/^Case #\d+$/).first().boundingBox();
+  expect(caseLabel).not.toBeNull();
   expect(Math.abs(mute!.y - editions!.y)).toBeLessThan(24);
-  expect(mute!.x).toBeLessThan(viewport.width / 2);
+  expect(mute!.x).toBeGreaterThan(editions!.x);
+  expect(mute!.x + mute!.width).toBeLessThanOrEqual(caseLabel!.x);
+  void viewport;
 });
 
 test("pinning before Watson finishes: 'You beat me to it!' and Holmes reads the pick", async ({

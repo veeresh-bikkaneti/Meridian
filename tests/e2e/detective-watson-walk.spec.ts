@@ -403,7 +403,7 @@ test("watson walk: tap on Watson MID-WALK is ignored — one figure, walk arrive
      * clue-2 read has started — the three things a mid-walk tap
      * could break (a doubled figure, a cancelled walk, a lost or
      * duplicated read). */
-    type MidTapSample = { walk: string | null; watsons: number; clue2: number };
+    type MidTapSample = { walk: string | null; watsons: number; clue2: number; where: string; phase: string | null };
     await page.evaluate(() => {
       const w = window as unknown as {
         __midTapTrace: MidTapSample[];
@@ -416,6 +416,14 @@ test("watson walk: tap on Watson MID-WALK is ignored — one figure, walk arrive
         w.__midTapTrace.push({
           walk: st?.getAttribute("data-watson-walk") ?? null,
           watsons: document.querySelectorAll('[data-detective="watson"]').length,
+          // Diagnostics: which surface holds each Watson figure.
+          where: Array.from(document.querySelectorAll('[data-detective="watson"]'))
+            .map((el) => el.closest("[data-testid]")?.getAttribute("data-testid") ?? "?")
+            .join(","),
+          phase:
+            (document.querySelector('[data-testid="detective-host"]') ??
+              document.querySelector('[data-testid="detective-station"]'))
+              ?.getAttribute("data-phase") ?? null,
           clue2: (w.__detectivePlays ?? []).filter((u) =>
             u.includes("case-137/clue-2.mp3"),
           ).length,
@@ -491,7 +499,7 @@ test("watson walk: tap on Watson MID-WALK is ignored — one figure, walk arrive
     }
     expect(
       Math.max(...trace.map((s) => s.watsons)),
-      "no doubled Watson figure at any sampled moment",
+      `no doubled Watson figure at any sampled moment (doubled at: ${JSON.stringify(trace.filter((s) => s.watsons > 1).slice(0, 3).map((s) => ({ where: s.where, phase: s.phase, walk: s.walk })))})`,
     ).toBe(1);
     // The held read had not started mid-walk (arrival gate intact)…
     for (const s of walking.slice(0, -1)) {
@@ -563,8 +571,14 @@ test("watson walk: sheet opens mid-walk — walk cancels, held read never fires 
     await expect(page.getByRole("dialog")).toBeVisible({
       timeout: 15_000,
     });
-    // The pair is absent while the sheet owns the screen.
-    await expect(page.getByTestId("detective-station")).toHaveCount(0);
+    // The pair stays on screen under the sheet (owner, 2026-11-10),
+    // but the walk is cancelled: Watson stands still while the sheet
+    // owns the player's attention.
+    await expect(page.getByTestId("detective-station")).not.toHaveAttribute(
+      "data-watson-walk",
+      "walking",
+      { timeout: 5_000 },
+    );
     // While the sheet is open, the dropped read's chain must NOT
     // advance: no ack, no decode — the ladder waits, silently.
     await page.waitForTimeout(2_500);

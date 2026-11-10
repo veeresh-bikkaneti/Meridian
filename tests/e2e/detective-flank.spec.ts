@@ -23,7 +23,7 @@
  *
  * The flag is flipped ON by route interception only (fulfillFlagsFlank,
  * detective-u10.ts) — the committed flags.json stays false.
- * Screenshots land in ~/workspace/meridian-detective-stage/screenshots/.
+ * Screenshots land in the test's own output folder (test-results/).
  */
 import { test, expect, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
@@ -42,7 +42,6 @@ import {
 test.setTimeout(240_000);
 
 const BASE = "http://127.0.0.1:4123/Meridian/";
-const SHOTS = "/home/hatch/workspace/meridian-detective-stage/screenshots";
 
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
@@ -278,7 +277,7 @@ for (const w of WIDTHS) {
         Math.abs(g.strip!.x + g.strip!.width - (g.card!.x + g.card!.width)),
       ).toBeLessThanOrEqual(2);
     }
-    await page.screenshot({ path: `${SHOTS}/flank-${w.width}.png` });
+    await page.screenshot({ path: test.info().outputPath(`flank-${w.width}.png`) });
     console.log(
       `[flank ${w.name}] geometry OK, overlap 0 px² over ${trail.samples} pair samples`,
     );
@@ -298,7 +297,7 @@ for (const w of WIDTHS) {
       expect(Math.abs(g2.card!.width - 350)).toBeLessThanOrEqual(2);
       expect(g2.card!.y - (g2.strip!.y + g2.strip!.height)).toBeGreaterThanOrEqual(8);
       expect(g2.holmesMapCount).toBe(0);
-      await page.screenshot({ path: `${SHOTS}/flank-390-clue2.png` });
+      await page.screenshot({ path: test.info().outputPath(`flank-390-clue2.png`) });
       console.log(
         `[flank phone 390] clue-2 strip OK, overlap 0 px² over ${trail.samples} pair samples`,
       );
@@ -388,7 +387,7 @@ test.skip("Listen first tap plays the held clue sequence (tap mode, 390)", async
     expect(b.x + b.width).toBeLessThanOrEqual(390.5);
     expect(Math.min(b.width, b.height)).toBeGreaterThanOrEqual(44);
   }
-  await page.screenshot({ path: `${SHOTS}/flank-390-tap-listen.png` });
+  await page.screenshot({ path: test.info().outputPath(`flank-390-tap-listen.png`) });
   console.log("[flank listen] strip controls pairwise separate at 390px");
 });
 
