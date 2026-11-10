@@ -1,9 +1,15 @@
 # BRANCH_STATUS — feat/journal-prefetch
 
-**Branch:** `feat/journal-prefetch` · **Base:** `feat/journal-player` @ `af7ec7c1` (stacked on movies `84fa3a0a`, frozen main `f2bbf1a2`)
+**Branch:** `feat/journal-prefetch` · **Base:** current main `10e8121d` (PR #369 merged; was frozen main `f2bbf1a2`; stacked on player `feat/journal-player` @ `af7ec7c1`, which is a separate live branch)
 **Task:** Meridian lazy-load scenario 2 — background prefetch of journal movies WHILE the user is playing the game. Tap-to-load stays the primary path.
-**Status:** Rebased onto player head `af7ec7c1` (code head `e920d64f`; this commit is the docs-only rebase record on top of it); re-verified on the code head — tsc 0, npm test scripts 1161/0/11 skipped + src 2322/0/0, test:worker 145/0, lint-cards GATE PASSED, build:pages green (buildId `e920d64f`); E2E union **97 passed / 0 failed** (22.6 min, 24 specs, :199 passes by name); screen recording re-done on the code head (take 3, audioDelayMs 24420, playing [25,33] −19.5 dB, pre-play −91 dB). No PR, no merge.
-**Rebased:** 2026-11-09 — onto player head `af7ec7c1`; only conflict was this file (docs-only). The unanimous APPROVE on `c19f8dfc` does NOT transfer to the new head.
+**Status:** Rebased onto current main `10e8121d` (clean, 48 commits, zero conflicts; tip `72b5569f` before the fix commit); Option 1 spec filter implemented (endgame-share `expectCleanConsole` also filters `net::ERR_TUNNEL_CONNECTION_FAILED` only, Dinesh's explicit approval 2026-11-09 ~20:49 CT); gates + E2E re-run on the fix tip — see "Rebase + Option 1 fix" section. No PR, no merge.
+**Rebased:** 2026-11-09 — onto current main `10e8121d`; zero conflicts. The unanimous APPROVE on `c19f8dfc` does NOT transfer to the new head. The Edge verdict NO (endgame-share 0/2) on `0a08007e` does NOT transfer either — this is a new tip; panel (GATE/Chitti) re-verifies.
+
+## Rebase + Option 1 fix — onto current main 10e8121d, this run (2026-11-09 evening)
+
+- Plain `git rebase origin/main` (48 commits, zero conflicts). The branch is stacked on the player branch (`feat/journal-player` @ `af7ec7c1`, separate live branch), so the delta vs main is 163 files — the player feature + the prefetch feature. The prefetch commits alone cannot rebase onto main: they modify `journal-player.tsx` / `journal-movies.ts`, which do not exist on main. The validator/wiring from #369 (on main) and the prefetch changes are both present in the rebased tree (verified: `scripts/validate-journal-manifest.mjs` + `src/components/journal-prefetch.ts` both present; `package.json` prebuild runs the validator; manifest has 106 movies).
+- Option 1 (Dinesh's pick, 2026-11-09 ~20:49 CT — explicit approval + recorded rationale for weakening the endgame-share gate): `tests/e2e/endgame-share.spec.ts` `expectCleanConsole` now also filters `net::ERR_TUNNEL_CONNECTION_FAILED` only, with a comment citing the prefetch failure contract (`journal-prefetch.ts:35-36`) and the `globe-promotion-offline` precedent (`:180-186`). Touch ONLY that spec file (+ this file). No src changes, no other spec changes.
+- Gates + E2E on the fix tip: [results go here after the runs].
 
 ## Rebase verification — onto player head af7ec7c1 (movies 84fa3a0a, frozen main f2bbf1a2), this run (2026-11-09)
 

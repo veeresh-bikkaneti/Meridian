@@ -53,7 +53,18 @@ function collectErrors(page: Page): string[] {
 function expectCleanConsole(errors: string[]): void {
   // React #418 is a pre-existing flaky hydration warning, unrelated to this
   // feature (same filter as the question-labels and PWA specs).
-  const relevant = errors.filter((e) => !e.includes("Minified React error #418"));
+  // A failed journal-prefetch warm logs net::ERR_TUNNEL_CONNECTION_FAILED
+  // by design when the movie CDN is unreachable (offline/sandbox): the
+  // prefetch failure contract (journal-prefetch.ts:35-36) is that a failed
+  // warm means the tap fetches cold, so the fetch failure itself is not a
+  // product error. Filtered narrowly — this string only, not a blanket
+  // swallow. Owner approval (Dinesh, 2026-11-09, Option 1): explicit
+  // approval + recorded rationale for this gate weakening.
+  const relevant = errors.filter(
+    (e) =>
+      !e.includes("Minified React error #418") &&
+      !e.includes("net::ERR_TUNNEL_CONNECTION_FAILED"),
+  );
   expect(relevant, `console/page errors: ${JSON.stringify(relevant)}`).toEqual([]);
 }
 
