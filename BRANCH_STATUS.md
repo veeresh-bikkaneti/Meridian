@@ -2,8 +2,16 @@
 
 **Branch:** `feat/journal-prefetch` · **Base:** `feat/journal-player` @ `af7ec7c1` (stacked on movies `84fa3a0a`, frozen main `f2bbf1a2`)
 **Task:** Meridian lazy-load scenario 2 — background prefetch of journal movies WHILE the user is playing the game. Tap-to-load stays the primary path.
-**Status:** Share-URL fix complete on code head `0cf449d7` (docs-only commit on top; tip verified this session: `git rev-parse HEAD`, worktree clean, remote tip matches). Unit gates + `build:pages` green; E2E union **88 passed / 0 failed** — the former :199 share-URL failure is fixed by the owner's 2026-11-09 ruling (share text + share URL always point at workers.dev). Screen recording re-done on code head `05b8f506` (second take, audio-probed). No PR, no merge.
+**Status:** Rebased onto player head `af7ec7c1` (new tip `e920d64f`); re-verified on the new head — tsc 0, npm test scripts 1161/0/11 skipped + src 2322/0/0, test:worker 145/0, lint-cards GATE PASSED, build:pages green (buildId `e920d64f`); E2E union **97 passed / 0 failed** (22.6 min, 24 specs, :199 passes by name); screen recording re-done on the new head (take 3, audioDelayMs 24420, playing [25,33] −19.5 dB, pre-play −91 dB). No PR, no merge.
 **Rebased:** 2026-11-09 — onto player head `af7ec7c1`; only conflict was this file (docs-only). The unanimous APPROVE on `c19f8dfc` does NOT transfer to the new head.
+
+## Rebase verification — onto player head af7ec7c1 (movies 84fa3a0a, frozen main f2bbf1a2), this run (2026-11-09)
+
+- Plain `git rebase af7ec7c1` replayed already-applied movies/player commits, so the rebase used `--onto af7ec7c1 86624dde` (26 prefetch-only commits). Every conflict was this file only (docs-only), resolved by keeping both sides' records.
+- Content check: same 47 files in the prefetch delta; all 46 non-status files byte-identical diffs vs the old head. B7/B8/share verified in code at the new head (boot `useState<boolean>(false)`; `journalSetCount()` = 106 singletons, window 30 min; `WORKERS_ORIGIN` = `https://meridian.knowledgetest.workers.dev/`).
+- Gates + E2E + recording as in Status. Logs: `~/workspace/journal-prefetch-r3-{tsc,npmtest,worker,lintcards,build,e2e-union,mux}.log`. Recording: `~/workspace/journal-prefetch-record/prefetch-desktop.mp4` (take 3, entry giza; prefetch warmed giza + cn-tower before the tap).
+- mux.sh probe windows [35,45]/[0,34] are take-2 geometry; take 3 was probed at the correct windows [25,33] (playing, −19.5 dB) / [0,24] (pre-play, −91 dB).
+- The unanimous APPROVE on `c19f8dfc` does NOT transfer. Re-check by the three blocking seats pending on this head.
 
 ## Base record — feat/journal-player (rebased onto movies head 84fa3a0a, frozen main f2bbf1a2)
 
