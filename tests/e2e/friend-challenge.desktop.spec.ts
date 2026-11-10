@@ -55,8 +55,8 @@ import { SCORING_VERSION } from "../../src/game/scoring.ts";
  * - Flag ON: `#c=<valid>` with 5 real Globe places boots directly into the
  *   deterministic 5-place Globe challenge in `playOrder` order, enforces the
  *   750 km pin radius freeze (proven behaviourally: a ~600 km pin is a hit,
- *   and a ~800 km pin is a miss even for a seeded 5-7 profile whose band
- *   tolerance would be 1125 km — the seeded miss is what proves the freeze,
+ *   and a ~800 km pin is a miss even for a seeded 7-10 profile whose band
+ *   tolerance would be 937.5 km — the seeded miss is what proves the freeze,
  *   since an unset profile's x1.0 band misses at 800 km either way), never
  *   writes to session banking / learning
  *   records / review deck / no-repeat history, and renders the challenge
@@ -160,10 +160,10 @@ async function seedSavedRun(context: BrowserContext, runJson: string): Promise<v
 }
 
 /**
- * Seed an active 5-7 age profile (the youngest band) into the page before
+ * Seed an active 7-10 age profile (the youngest group) into the page before
  * the app boots, written in the exact shape src/game/age-profile/store.ts
- * validates (key `meridian.ageProfile.v1`, schemaVersion 1). A normal
- * Globe run for this band judges pins at 750 x 1.5 = 1125 km
+ * validates (key `meridian.ageProfile.v1`, schemaVersion 2). A normal
+ * Globe run for this band judges pins at 750 x 1.25 = 937.5 km
  * (pinToleranceKm), so any test that seeds it and still sees a ~800 km
  * pin judged a MISS is seeing the challenge freeze, not band scaling.
  */
@@ -174,10 +174,10 @@ async function seedYoungBandProfile(page: Page): Promise<void> {
         "meridian.ageProfile.v1",
         JSON.stringify({
           status: "active",
-          band: "5-7",
+          band: "7-10",
           updatedAt: new Date().toISOString(),
           changeCount: 1,
-          schemaVersion: 1,
+          schemaVersion: 2,
         }),
       );
     } catch {
@@ -193,7 +193,7 @@ async function seedYoungBandProfile(page: Page): Promise<void> {
 
 /**
  * Readback for seedYoungBandProfile: proves the seeded profile actually
- * landed in localStorage with band "5-7". A seed that silently failed
+ * landed in localStorage with band "7-10". A seed that silently failed
  * leaves the x1.0 band in place, and any test pinning band-scaled
  * behaviour (the 800 km freeze proof) would then pass vacuously — this
  * assertion exists so that can never happen unnoticed.
@@ -209,8 +209,8 @@ async function expectSeededYoungBand(page: Page): Promise<void> {
   });
   expect(
     band,
-    "the seeded 5-7 age profile must be readable back from localStorage",
-  ).toBe("5-7");
+    "the seeded 7-10 age profile must be readable back from localStorage",
+  ).toBe("7-10");
 }
 
 /**
@@ -592,8 +592,8 @@ test("flag ON: a pin ~600 km from the true place is a HIT under the frozen 750 k
   await waitForChallengeAim(page);
   expect(await readQuestion(page)).toContain("Mogadishu");
 
-  // 600 km is inside EVERY age-band Globe tolerance (1125 / 937.5 / 750 km
-  // for bands 5-7 / 8-10 / 11-13), so this hit alone cannot prove the
+  // 600 km is inside EVERY age-band Globe tolerance (937.5 / 750 / 750 km
+  // for groups 7-10 / 10-18 / 18+), so this hit alone cannot prove the
   // freeze — a band-scaled radius would call it a hit too. It pins the
   // inside of the circle; the seeded 800 km miss below is the half of the
   // pair that discriminates the freeze from band scaling.
@@ -612,7 +612,7 @@ test("flag ON: a pin ~800 km from the true place is a MISS under the frozen 750 
 }) => {
   await routeFlags(context, { friendChallenges: true, learningOutcomes: true });
   // Seed the youngest band BEFORE the app boots: this band's scaled Globe
-  // tolerance is 1125 km, so without the challenge freeze the ~800 km pin
+  // tolerance is 937.5 km, so without the challenge freeze the ~800 km pin
   // below would be judged a HIT. (An unset profile defaults to the x1.0
   // band and misses at 800 km either way — that is why the unseeded
   // version of this test could not prove the freeze.)
@@ -622,12 +622,12 @@ test("flag ON: a pin ~800 km from the true place is a MISS under the frozen 750 
 
   await page.goto(`${APP_URL}?idle-ms=3600000${VALID_HASH}`);
   await waitForChallengeAim(page);
-  // Readback: the freeze proof below is only real if the 5-7 seed landed.
+  // Readback: the freeze proof below is only real if the 7-10 seed landed.
   await expectSeededYoungBand(page);
   expect(await readQuestion(page)).toContain("Mogadishu");
 
   // 800 km is just outside the frozen circle but INSIDE the seeded band's
-  // 1125 km tolerance: the pair with the 600 km hit brackets 750 km
+  // 937.5 km tolerance: the pair with the 600 km hit brackets 750 km
   // behaviourally, and deleting either freeze call site (or changing the
   // constant) turns one of the pair red.
   const judged = await commitPinAtDistanceKm(page, CHALLENGE_IDS[0], 800);

@@ -2,8 +2,8 @@
  * AgePicker.tsx — the 3-band picker (Phase 2 §1c).
  *
  * A real `radiogroup`: arrow-key navigation, screen-reader announces
- * position ("1 of 3"). Age eyebrows are parent-safe here because the whole
- * screen sits behind the grown-up gate. No age numbers, badges, or
+ * position ("1 of 3"). The card title is the band label ("Ages 7-10", "Ages 18+" —
+ * no ceiling is shown for 18+). No age numbers, badges, or
  * "easy/hard" language appear on any durable child-visible surface —
  * the one exception is the post-save confirmation toast, which names
  * the band briefly (~3.5 s) on home (owner ruling, 2026-11-04; see
@@ -57,11 +57,8 @@ export function AgePicker({ profile, selected, onSelect, onSave, onCancel, onCle
                 className="sr-only"
                 checked={checked}
                 onChange={() => onSelect(id)}
-                aria-label={`${band.label}, ages ${band.ageMin} to ${band.ageMax}, ${i + 1} of 3`}
+                aria-label={`${band.label}, ${i + 1} of 3`}
               />
-              <span className="agep-eyebrow">
-                Ages {band.ageMin}–{band.ageMax}
-              </span>
               <span className="agep-card-title">{band.label}</span>
               <span className="agep-card-desc">{band.description}</span>
               <span className="agep-card-changes">{band.whatChanges}</span>

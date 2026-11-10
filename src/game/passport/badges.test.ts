@@ -29,35 +29,41 @@ function clearStorage() {
   __resetPassportBadgeMemory();
 }
 
-// --- Clean Round: 11-13 no-hint WINS only, badge-only ---
+// --- Clean Round: 10-18 / 18+ no-hint WINS only, badge-only ---
 
-test("Clean Round awarded on an 11-13 no-hint win", () => {
+test("Clean Round awarded on an 10-18 / 18+ no-hint win", () => {
   clearStorage();
-  const badge = awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true });
+  const badge = awardCleanRoundBadge({ band: "10-18", hintsUsed: 0, loopId: "quiz", won: true });
   assert.ok(badge);
   assert.equal(badge.id, CLEAN_ROUND_BADGE_ID);
   assert.equal(badge.name, "Clean Round");
   assert.equal(earnedPassportBadges().some((b) => b.id === CLEAN_ROUND_BADGE_ID), true);
 });
 
+test("Clean Round awarded on an 18+ no-hint win", () => {
+  clearStorage();
+  const badge = awardCleanRoundBadge({ band: "18+", hintsUsed: 0, loopId: "quiz", won: true });
+  assert.ok(badge);
+  assert.equal(badge.id, CLEAN_ROUND_BADGE_ID);
+});
+
 test("hints used → no badge (recognition is for genuinely hint-free wins)", () => {
   clearStorage();
-  const badge = awardCleanRoundBadge({ band: "11-13", hintsUsed: 1, loopId: "quiz", won: true });
+  const badge = awardCleanRoundBadge({ band: "10-18", hintsUsed: 1, loopId: "quiz", won: true });
   assert.equal(badge, null);
   assert.equal(earnedPassportBadges().some((b) => b.id === CLEAN_ROUND_BADGE_ID), false);
 });
 
-test("5-7 and 8-10 wins never earn Clean Round (band-scoped recognition)", () => {
+test("7-10 wins never earn Clean Round (band-scoped recognition)", () => {
   clearStorage();
-  assert.equal(awardCleanRoundBadge({ band: "5-7", hintsUsed: 0, loopId: "quiz", won: true }), null);
-  assert.equal(awardCleanRoundBadge({ band: "8-10", hintsUsed: 0, loopId: "quiz", won: true }), null);
+  assert.equal(awardCleanRoundBadge({ band: "7-10", hintsUsed: 0, loopId: "quiz", won: true }), null);
   assert.equal(earnedPassportBadges().some((b) => b.id === CLEAN_ROUND_BADGE_ID), false);
 });
 
-test("#113 BLOCK 2: losses never earn Clean Round, even hint-free on 11-13", () => {
+test("#113 BLOCK 2: losses never earn Clean Round, even hint-free on 10-18", () => {
   clearStorage();
   assert.equal(
-    awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: false }),
+    awardCleanRoundBadge({ band: "10-18", hintsUsed: 0, loopId: "quiz", won: false }),
     null,
   );
   assert.equal(earnedPassportBadges().some((b) => b.id === CLEAN_ROUND_BADGE_ID), false);
@@ -65,16 +71,16 @@ test("#113 BLOCK 2: losses never earn Clean Round, even hint-free on 11-13", () 
 
 test("#113 BLOCK 1: award uses the deal-snapshot band — a mid-run band change cannot mis-award", () => {
   clearStorage();
-  // Mystery dealt on 5-7 (snapshot band), grown-up flips to 11-13 mid-run:
-  // the deal-time band governs, so no 11-13 badge is due.
+  // Mystery dealt on 7-10 (snapshot band), grown-up flips to 10-18 mid-run:
+  // the deal-time band governs, so no 10-18 badge is due.
   assert.equal(
-    awardCleanRoundBadge({ band: "5-7", hintsUsed: 0, loopId: "quiz", won: true }),
+    awardCleanRoundBadge({ band: "7-10", hintsUsed: 0, loopId: "quiz", won: true }),
     null,
   );
-  // And the reverse: dealt on 11-13, flipped to 5-7 mid-run — the win still
-  // earns, because the deal-time band was 11-13.
+  // And the reverse: dealt on 10-18, flipped to 7-10 mid-run — the win still
+  // earns, because the deal-time band was 10-18.
   assert.ok(
-    awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true }),
+    awardCleanRoundBadge({ band: "10-18", hintsUsed: 0, loopId: "quiz", won: true }),
   );
   assert.equal(earnedPassportBadges().some((b) => b.id === CLEAN_ROUND_BADGE_ID), true);
 });
@@ -93,7 +99,7 @@ test("badge copy is band-invisible: no age numbers, no easy/hard", () => {
     const copy = `${badge.name} ${badge.blurb}`;
     assert.ok(!/\d/.test(copy), `badge copy contains a digit: ${copy}`);
     assert.ok(!/easy|hard/i.test(copy), `badge copy leaks difficulty: ${copy}`);
-    assert.ok(!/11-13|8-10|5-7/.test(copy), `badge copy leaks a band: ${copy}`);
+    assert.ok(!/18\+|10-18|7-10|11-13|8-10|5-7/.test(copy), `badge copy leaks a band: ${copy}`);
   }
 });
 
@@ -101,16 +107,16 @@ test("badge copy is band-invisible: no age numbers, no easy/hard", () => {
 
 test("#113 BLOCK: reveal panel fires once at earn — re-award returns null", () => {
   clearStorage();
-  const first = awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true });
+  const first = awardCleanRoundBadge({ band: "10-18", hintsUsed: 0, loopId: "quiz", won: true });
   assert.ok(first, "first qualifying win earns the badge");
-  const second = awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true });
+  const second = awardCleanRoundBadge({ band: "10-18", hintsUsed: 0, loopId: "quiz", won: true });
   assert.equal(second, null, "second qualifying win must not re-fire the panel");
   assert.equal(earnedPassportBadges().length, 1, "storage stays idempotent");
 });
 
 test("earned badge records carry no points, no score, no band, no hint state", () => {
   clearStorage();
-  awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true });
+  awardCleanRoundBadge({ band: "10-18", hintsUsed: 0, loopId: "quiz", won: true });
   const earned = earnedPassportBadges();
   assert.equal(earned.length, 1);
   const serialized = JSON.stringify(earned);
@@ -125,14 +131,14 @@ test("awarding a badge never touches the score object", () => {
   clearStorage();
   const score = { points: 42, combo: 3, breakdown: { base: 10 } };
   const before = JSON.parse(JSON.stringify(score));
-  awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true });
+  awardCleanRoundBadge({ band: "10-18", hintsUsed: 0, loopId: "quiz", won: true });
   assert.deepEqual(score, before);
 });
 
 test("award is idempotent: re-awarding never duplicates", () => {
   clearStorage();
-  awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true });
-  awardCleanRoundBadge({ band: "11-13", hintsUsed: 0, loopId: "quiz", won: true });
+  awardCleanRoundBadge({ band: "10-18", hintsUsed: 0, loopId: "quiz", won: true });
+  awardCleanRoundBadge({ band: "10-18", hintsUsed: 0, loopId: "quiz", won: true });
   assert.equal(earnedPassportBadges().length, 1);
 });
 
