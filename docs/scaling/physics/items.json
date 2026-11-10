@@ -114,32 +114,6 @@
     ]
   },
   {
-    "id": "physics:pulley:closed",
-    "group": "7-10",
-    "objective": "After this, a child can identify this pulley round as not ready to score, shown by tapping the closed card.",
-    "standard": "UNVERIFIED",
-    "why": "A bucket must come up a well. No physical-science performance expectation found on 2026-11-10 states how a pulley changes that lift, so the round stays closed.",
-    "buildsOn": [
-      "physics:lever:seesaw"
-    ],
-    "useElsewhere": [
-      "environment: a well bucket, named on the map, not played until a source exists"
-    ]
-  },
-  {
-    "id": "physics:wheel:closed",
-    "group": "7-10",
-    "objective": "After this, a child can identify this wheel round as not ready to score, shown by tapping the closed card.",
-    "standard": "UNVERIFIED",
-    "why": "A cart must roll instead of being dragged. No physical-science performance expectation found on 2026-11-10 states that a wheel makes that move easier, so the round stays closed.",
-    "buildsOn": [
-      "physics:push:which-way"
-    ],
-    "useElsewhere": [
-      "everyday life: a wheeled market cart, not played until a source exists"
-    ]
-  },
-  {
     "id": "physics:balance:tug",
     "group": "7-10",
     "objective": "After this, a child can predict that a box stays still when the two pushes match, and moves toward the weaker side when they do not, shown by tapping still or that direction before the box moves.",
@@ -174,45 +148,31 @@
   {
     "id": "physics:shadow:blocks",
     "group": "7-10",
-    "objective": "After this, a child can sort cardboard as opaque and clear plastic as transparent, shown by tapping those labels before the beam test plays.",
+    "objective": "After this, a child can predict that a book is seen only when light reflected from it enters the eye, and that a sheet in that path blocks the light, shown by tapping the open path before the scene marks it.",
     "standard": {
-      "code": "1-PS4-3",
-      "source": "https://www.nextgenscience.org/pe/1-ps4-3-waves-and-their-applications-technologies-information-transfer"
+      "code": "4-PS4-2",
+      "source": "https://www.nextgenscience.org/pe/4-ps4-2-waves-and-their-applications-technologies-information-transfer"
     },
-    "why": "A lamp shines on a wall. A cardboard sheet and a clear sheet can go in the beam. Which sheet is the opaque one, and which is the transparent one?",
+    "why": "A lamp is on, and a book sits where a child can look at it. A sheet can go in the path between the book and the eye. When is the book seen?",
     "buildsOn": [],
     "useElsewhere": [
-      "everyday life: a cardboard sheet and a clear sheet held in front of a lamp"
+      "everyday life: a book seen when nothing blocks the light from it to the eye"
     ]
   },
   {
     "id": "physics:mirror:sends-back",
     "group": "7-10",
-    "objective": "After this, a child can sort a mirror as reflective and cardboard as opaque, shown by tapping the mirror before the beam test plays.",
+    "objective": "After this, a child can predict that a mirror is seen because it sends reflected light into the eye, shown by tapping the mirror before the scene marks it.",
     "standard": {
-      "code": "1-PS4-3",
-      "source": "https://www.nextgenscience.org/pe/1-ps4-3-waves-and-their-applications-technologies-information-transfer"
+      "code": "4-PS4-2",
+      "source": "https://www.nextgenscience.org/pe/4-ps4-2-waves-and-their-applications-technologies-information-transfer"
     },
-    "why": "A lamp must light a book on the same side of a shelf. A mirror and a cardboard sheet are the two choices. Which one sends the light back?",
+    "why": "A book sits on the same side of a shelf as a lamp. A mirror and a bare board are the two choices. Which one sends reflected light into the eye so the book can be seen?",
     "buildsOn": [
       "physics:shadow:blocks"
     ],
     "useElsewhere": [
-      "everyday life: a mirror used to send lamp light back across a room"
-    ]
-  },
-  {
-    "id": "physics:sound:pluck",
-    "group": "7-10",
-    "objective": "After this, a child can predict that a plucked string makes a sound and a still string does not, shown by tapping the plucked string before the sound mark appears.",
-    "standard": {
-      "code": "1-PS4-1",
-      "source": "https://www.nextgenscience.org/pe/1-ps4-1-waves-and-their-applications-technologies-information-transfer"
-    },
-    "why": "A string on a box should make a sound for a game. One string is still. One is plucked. Which one makes the sound?",
-    "buildsOn": [],
-    "useElsewhere": [
-      "everyday life: a plucked string on a homemade box"
+      "everyday life: a mirror used so lamp light reflected from a book reaches the eye"
     ]
   },
   {
@@ -340,9 +300,7 @@
       "source": "https://www.nextgenscience.org/pe/ms-ps4-2-waves-and-their-applications-technologies-information-transfer"
     },
     "why": "A bell must be heard across a gap. One path is air. One path is drawn as empty. Which path carries the sound?",
-    "buildsOn": [
-      "physics:sound:pluck"
-    ],
+    "buildsOn": [],
     "useElsewhere": [
       "geography: a shout between two people still needs air between them; no real valley is measured"
     ]
@@ -383,11 +341,8 @@
     "id": "physics:ramp:adult-ratio",
     "group": "18+",
     "objective": "After this, an adult can compute which crane boom is steeper from a given rise and run, using a trigonometric ratio, shown by entering the ratio before that boom is marked.",
-    "standard": {
-      "code": "HSG.SRT.C.8",
-      "source": "https://www.thecorestandards.org/Math/Content/HSG/SRT/C/8/"
-    },
-    "why": "A crane drawing gives two booms. Boom A rises 3 for a run of 6. Boom B rises 4 for a run of 6. The longer boom is not the question. Which boom is steeper?",
+    "standard": "UNVERIFIED",
+    "why": "A crane drawing gives two booms. Boom A rises 3 for a run of 6. Boom B rises 4 for a run of 6. The longer boom is not the question. Which boom is steeper? Fit: this adult round extends HSG.SRT.C.8, and no single code covers it.",
     "buildsOn": [
       "physics:ramp:slope-ratio"
     ],
@@ -399,11 +354,8 @@
     "id": "physics:arrive:adult-time",
     "group": "18+",
     "objective": "After this, an adult can rearrange the card's rule distance = speed × time to compute the missing time, shown by entering that time before the cart is shown at the mark.",
-    "standard": {
-      "code": "HSA.CED.A.4",
-      "source": "https://www.thecorestandards.org/Math/Content/HSA/CED/A/4/"
-    },
-    "why": "A supply cart's card states distance = speed × time. The distance is 12 kilometres and the speed is 4 kilometres per hour. The time is missing. How long is the trip?",
+    "standard": "UNVERIFIED",
+    "why": "A supply cart's card states distance = speed × time. The distance is 12 kilometres and the speed is 4 kilometres per hour. The time is missing. How long is the trip? Fit: this adult round extends HSA.CED.A.4, and no single code covers it.",
     "buildsOn": [
       "math-applied:rates:rearrange",
       "physics:arrive:unit-rate"
@@ -416,11 +368,8 @@
     "id": "physics:energy:missing",
     "group": "18+",
     "objective": "After this, an adult can compute the missing energy change from the expression the card states, shown by entering that change before the scene marks it.",
-    "standard": {
-      "code": "HS-PS3-1",
-      "source": "https://www.nextgenscience.org/pe/hs-ps3-1-energy"
-    },
-    "why": "A two-part energy log states this expression: missing = known − outflow. The known change is 5 units and the outflow is 2 units. What is the missing change?",
+    "standard": "UNVERIFIED",
+    "why": "A two-part energy log states this expression: missing = known − outflow. The known change is 5 units and the outflow is 2 units. What is the missing change? Fit: this adult round extends HS-PS3-1, and no single code covers it.",
     "buildsOn": [
       "physics:energy:transfer",
       "math-applied:rates:rearrange"
