@@ -1,0 +1,2685 @@
+{
+ "version": 1,
+ "transcripts": {
+  "27th-and-o": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.16,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.3,
+     "end": 4.45,
+     "text": "Letters one way, numbers the other."
+    },
+    {
+     "start": 5.9,
+     "end": 8.85,
+     "text": "Count! Twenty-seven! There!"
+    },
+    {
+     "start": 8.85,
+     "end": 9.77,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-01/NOTES.md — ### 5. 27th-and-o — 27th and O — DONE (bad-fit flag) (timings: timed-bullet)"
+  },
+  "48th-and-o": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.45,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.5,
+     "end": 4.35,
+     "text": "Forty-eighth runs north and south."
+    },
+    {
+     "start": 5.9,
+     "end": 8.0,
+     "text": "Count! Forty-eight! There!"
+    },
+    {
+     "start": 8.0,
+     "end": 9.64,
+     "text": "And the bicycles roll on."
+    }
+   ],
+   "source": "batch-01/NOTES.md — ### 9. 48th-and-o — 48th and O — DONE (bad-fit flag) (timings: timed-bullet)"
+  },
+  "alamo": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.08,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.23,
+     "end": 4.53,
+     "text": "An old mission, from 1718."
+    },
+    {
+     "start": 5.63,
+     "end": 7.77,
+     "text": "Look up — there's the famous bell arch!"
+    },
+    {
+     "start": 8.02,
+     "end": 9.22,
+     "text": "And the garden stays green."
+    }
+   ],
+   "source": "batch-08/NOTES.md — ### alamo — DONE, flagged (gentle-motion bad fit, built as option (a)) (timings: timed-bullet)"
+  },
+  "angkor": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.09,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.24,
+     "end": 4.35,
+     "text": "Five towers over a still lotus pond."
+    },
+    {
+     "start": 6.35,
+     "end": 8.02,
+     "text": "Look! The sun wakes the temple!"
+    },
+    {
+     "start": 8.17,
+     "end": 9.36,
+     "text": "Shimmering in the water."
+    }
+   ],
+   "source": "batch-11/NOTES.md — ### angkor — DONE, minor flag (timings: placement)"
+  },
+  "antelope-park": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.8,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 3.0,
+     "end": 5.67,
+     "text": "A green thread of a park, along the creek."
+    },
+    {
+     "start": 6.97,
+     "end": 8.75,
+     "text": "Look — children feed the ducks!"
+    },
+    {
+     "start": 9.01,
+     "end": 9.87,
+     "text": "On it goes."
+    }
+   ],
+   "source": "batch-02/NOTES.md — ## antelope-park — DONE (timings: timed-bullet)"
+  },
+  "arbor-lodge": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.36,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.56,
+     "end": 5.23,
+     "text": "The home of J. Sterling Morton, who started Arbor Day."
+    },
+    {
+     "start": 6.6,
+     "end": 7.97,
+     "text": "Look! Leaves are falling!"
+    },
+    {
+     "start": 8.22,
+     "end": 9.17,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-05/NOTES.md — ### 5. arbor-lodge — Arbor Lodge — DONE (timings: timed-bullet)"
+  },
+  "archway": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 1.71,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 1.86,
+     "end": 4.14,
+     "text": "A museum like a bridge spans the highway."
+    },
+    {
+     "start": 4.73,
+     "end": 7.13,
+     "text": "Wagons above, cars whooshing below!"
+    },
+    {
+     "start": 7.28,
+     "end": 9.81,
+     "text": "Old trails and new roads, side by side."
+    }
+   ],
+   "source": "batch-06/NOTES.md — ### 5. archway — The Archway — NOT SWAPPED (regen gate failed) (timings: timed-bullet)"
+  },
+  "ashfall": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.38,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.53,
+     "end": 4.99,
+     "text": "Twelve million years ago, ash buried a waterhole."
+    },
+    {
+     "start": 6.49,
+     "end": 8.63,
+     "text": "Wow! Rhino and horse bones are still there!"
+    },
+    {
+     "start": 8.78,
+     "end": 9.77,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-07/NOTES.md — ### ashfall — DONE — voice: vdc_NOID19 (`avocado_v2:vdc_NOID19`), L1 speed 105, L2/L3 speed 120, L4 speed 105 (timings: timed-bullet)"
+  },
+  "ashland": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.44,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.64,
+     "end": 4.3,
+     "text": "A little town sits by the Platte."
+    },
+    {
+     "start": 6.34,
+     "end": 8.14,
+     "text": "Look! The sun wakes the town up!"
+    },
+    {
+     "start": 8.39,
+     "end": 9.9,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-05/NOTES.md — ### 1. ashland — Ashland — DONE (flagged: gentle-motion town, see Flags) (timings: timed-bullet)"
+  },
+  "beatrice": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.15,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.35,
+     "end": 3.9,
+     "text": "Beatrice sits on the Big Blue River."
+    },
+    {
+     "start": 6.6,
+     "end": 8.34,
+     "text": "Look! The river is sparkling!"
+    },
+    {
+     "start": 8.59,
+     "end": 9.29,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-05/NOTES.md — ### 6. beatrice — Beatrice — DONE (flagged: gentle-motion town, see Flags) (timings: timed-bullet)"
+  },
+  "branched-oak": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.44,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.54,
+     "end": 4.39,
+     "text": "The biggest Salt Valley lake."
+    },
+    {
+     "start": 5.9,
+     "end": 8.53,
+     "text": "Whoosh! The sailboats catch the wind!"
+    },
+    {
+     "start": 8.63,
+     "end": 9.85,
+     "text": "And the beach plays on."
+    }
+   ],
+   "source": "batch-04/NOTES.md — ## 3. branched-oak — Branched Oak Lake — DONE (timings: timed-bullet)"
+  },
+  "cadillac": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.41,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.61,
+     "end": 4.61,
+     "text": "In winter, it catches the first sunrise!"
+    },
+    {
+     "start": 6.2,
+     "end": 8.71,
+     "text": "There it is! The sun climbs over the sea!"
+    },
+    {
+     "start": 8.96,
+     "end": 9.59,
+     "text": "First light!"
+    }
+   ],
+   "source": "batch-09/NOTES.md — ## DONE — cadillac (Cadillac Mountain) ✅ (timings: timed-bullet)"
+  },
+  "capitol": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.45,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.6,
+     "end": 4.0,
+     "text": "Finished in 1932."
+    },
+    {
+     "start": 6.3,
+     "end": 7.76,
+     "text": "Look up! The Sower!"
+    },
+    {
+     "start": 8.0,
+     "end": 9.51,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-01/NOTES.md — ### 1. capitol — Nebraska State Capitol — DONE (timings: timed-bullet)"
+  },
+  "carhenge": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.32,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.47,
+     "end": 4.86,
+     "text": "Cars stand in a ring, like Stonehenge."
+    },
+    {
+     "start": 5.56,
+     "end": 7.91,
+     "text": "Cars, standing up in a field! Can you believe it?"
+    },
+    {
+     "start": 8.06,
+     "end": 9.51,
+     "text": "A strange, wonderful ring."
+    }
+   ],
+   "source": "batch-06/NOTES.md — ### carhenge — Carhenge — DONE (flagged, see below) (timings: timed-bullet)"
+  },
+  "centennial-mall": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.37,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.5,
+     "end": 4.1,
+     "text": "From the Capitol to the university."
+    },
+    {
+     "start": 5.9,
+     "end": 7.45,
+     "text": "Look! The fountains splash!"
+    },
+    {
+     "start": 7.6,
+     "end": 8.72,
+     "text": "And the kite drifts up."
+    }
+   ],
+   "source": "batch-01/NOTES.md — ### 6. centennial-mall — Centennial Mall — DONE (timings: timed-bullet)"
+  },
+  "chadron": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.88,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 3.03,
+     "end": 5.55,
+     "text": "Chadron is a college town on the Pine Ridge."
+    },
+    {
+     "start": 6.55,
+     "end": 8.69,
+     "text": "Here they come! The wagons are rolling!"
+    },
+    {
+     "start": 8.84,
+     "end": 9.87,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-07/NOTES.md — ### chadron — DONE — voice: vdc_5723 (`avocado_v2:vdc_5723`), all lines speed 105 (timings: timed-bullet)"
+  },
+  "chichen": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.38,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.53,
+     "end": 4.81,
+     "text": "El Castillo, the stepped pyramid."
+    },
+    {
+     "start": 5.86,
+     "end": 8.33,
+     "text": "Look! A serpent of light slides down the stair!"
+    },
+    {
+     "start": 8.47,
+     "end": 9.87,
+     "text": "Glowing in the evening sun."
+    }
+   ],
+   "source": "batch-11/NOTES.md — ## chichen — Chichén Itzá — DONE, flagged (timings: timed-bullet)"
+  },
+  "childrens-zoo": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.77,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.85,
+     "end": 4.88,
+     "text": "Animals close enough to watch."
+    },
+    {
+     "start": 5.9,
+     "end": 8.21,
+     "text": "Look! The giraffe is tall!"
+    },
+    {
+     "start": 8.25,
+     "end": 9.91,
+     "text": "And the ducks glide by."
+    }
+   ],
+   "source": "batch-01/NOTES.md — ### 8. childrens-zoo — Lincoln Children's Zoo — DONE (timings: timed-bullet)"
+  },
+  "chimney-rock": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.43,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.58,
+     "end": 4.48,
+     "text": "Travelers watched it for days."
+    },
+    {
+     "start": 5.07,
+     "end": 7.2,
+     "text": "There it stands, high above the valley!"
+    },
+    {
+     "start": 7.36,
+     "end": 9.49,
+     "text": "Still standing, still pointing the way."
+    }
+   ],
+   "source": "batch-06/NOTES.md — ### 4. chimney-rock — Chimney Rock — REGENERATED + SWAPPED ✓ (timings: timed-bullet)"
+  },
+  "cn-tower": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.77,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.97,
+     "end": 5.56,
+     "text": "The tallest in the world, in 1976!"
+    },
+    {
+     "start": 6.66,
+     "end": 8.47,
+     "text": "Look up! People on its high decks!"
+    },
+    {
+     "start": 8.67,
+     "end": 9.94,
+     "text": "What a tall tower!"
+    }
+   ],
+   "source": "batch-10/NOTES.md — ### 9. cn-tower — CN Tower (set 30) — DONE (timings: timed-bullet)"
+  },
+  "college-view": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.3,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.45,
+     "end": 4.62,
+     "text": "This neighborhood grew up around Union College."
+    },
+    {
+     "start": 5.62,
+     "end": 7.96,
+     "text": "Look — the red-brick halls around the green quad!"
+    },
+    {
+     "start": 8.11,
+     "end": 9.41,
+     "text": "The campus is still its heart."
+    }
+   ],
+   "source": "batch-03/NOTES.md — ### college-view — BUILT (new clip, PASS) (timings: placement)"
+  },
+  "colosseum": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 3.07,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 3.27,
+     "end": 4.71,
+     "text": "It opened in the year 80!"
+    },
+    {
+     "start": 6.11,
+     "end": 8.09,
+     "text": "Look! Those arches still stand!"
+    },
+    {
+     "start": 8.29,
+     "end": 9.91,
+     "text": "People still walk its stones."
+    }
+   ],
+   "source": "batch-10/NOTES.md — ### 2. colosseum — Colosseum (set 28) — DONE (timings: timed-bullet)"
+  },
+  "conestoga": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.14,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.24,
+     "end": 5.25,
+     "text": "A flood-control lake, with a trail and a boat ramp."
+    },
+    {
+     "start": 6.46,
+     "end": 8.84,
+     "text": "Look! A nibble — the fishing line is dancing!"
+    },
+    {
+     "start": 8.94,
+     "end": 9.84,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-04/NOTES.md — ## 2. conestoga — Conestoga Lake — DONE (timings: timed-bullet)"
+  },
+  "crater-lake": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.41,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.61,
+     "end": 5.1,
+     "text": "Rain and snow filled it with the bluest water!"
+    },
+    {
+     "start": 6.2,
+     "end": 7.55,
+     "text": "Look — Wizard Island!"
+    },
+    {
+     "start": 7.8,
+     "end": 8.71,
+     "text": "Blue and deep."
+    }
+   ],
+   "source": "batch-09/NOTES.md — ## DONE — crater-lake (Crater Lake) ✅ (timings: timed-bullet)"
+  },
+  "death-valley": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.13,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.33,
+     "end": 3.92,
+     "text": "The lowest ground in North America!"
+    },
+    {
+     "start": 6.2,
+     "end": 8.2,
+     "text": "Look at the sun dance on the salt!"
+    },
+    {
+     "start": 8.45,
+     "end": 9.57,
+     "text": "Hot and wide."
+    }
+   ],
+   "source": "batch-09/NOTES.md — ### DONE — death-valley (Badwater Basin) ✅ (timings: script-placement)"
+  },
+  "denali": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.35,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.55,
+     "end": 4.62,
+     "text": "The tallest mountain in North America!"
+    },
+    {
+     "start": 6.2,
+     "end": 8.06,
+     "text": "Look at that snowy giant!"
+    },
+    {
+     "start": 8.31,
+     "end": 9.78,
+     "text": "Big, white, and quiet."
+    }
+   ],
+   "source": "batch-09/NOTES.md — ## DONE — denali (Denali) ✅ (timings: timed-bullet)"
+  },
+  "durham": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.14,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.28,
+     "end": 4.48,
+     "text": "This grand hall was once a busy train station."
+    },
+    {
+     "start": 5.19,
+     "end": 7.14,
+     "text": "Look at those chandeliers!"
+    },
+    {
+     "start": 7.29,
+     "end": 8.94,
+     "text": "The hall still shines."
+    }
+   ],
+   "source": "batch-06/NOTES.md — ### durham — Durham Museum — DONE (timings: timed-bullet)"
+  },
+  "eiffel": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.43,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.63,
+     "end": 5.43,
+     "text": "Built for a fair in Paris, meant to be temporary!"
+    },
+    {
+     "start": 6.78,
+     "end": 8.69,
+     "text": "But look! Still standing tall!"
+    },
+    {
+     "start": 8.89,
+     "end": 9.9,
+     "text": "And the picnics go on."
+    }
+   ],
+   "source": "batch-10/NOTES.md — ### 1. eiffel — Eiffel Tower (set 28) — DONE (timings: timed-bullet)"
+  },
+  "everglades": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.16,
+     "text": "Hey kids! Have you heard about this place?"
+    },
+    {
+     "start": 2.36,
+     "end": 5.27,
+     "text": "A river of grass, birds, and one sleepy alligator!"
+    },
+    {
+     "start": 6.27,
+     "end": 7.93,
+     "text": "Look — the heron lifts off!"
+    },
+    {
+     "start": 8.18,
+     "end": 9.39,
+     "text": "Slow and wild."
+    }
+   ],
+   "source": "batch-09/NOTES.md — ### DONE — everglades (Everglades) ✅ (timings: script-placement)"
+  },
+  "fort-robinson": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.74,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.89,
+     "end": 4.37,
+     "text": "An old army post."
+    },
+    {
+     "start": 5.07,
+     "end": 6.91,
+     "text": "Look — the parade ground!"
+    },
+    {
+     "start": 7.06,
+     "end": 9.11,
+     "text": "Quiet now, full of stories."
+    }
+   ],
+   "source": "batch-06/NOTES.md — ### 3. fort-robinson — Fort Robinson — REGENERATED + SWAPPED ✓ (option (a)) (timings: timed-bullet)"
+  },
+  "french-quarter": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.3,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.45,
+     "end": 4.38,
+     "text": "Jackson Square, heart of the French Quarter."
+    },
+    {
+     "start": 5.88,
+     "end": 7.54,
+     "text": "Listen! The music is playing!"
+    },
+    {
+     "start": 7.79,
+     "end": 9.64,
+     "text": "And the riverboat floats on by."
+    }
+   ],
+   "source": "batch-08/NOTES.md — ## french-quarter — DONE, flagged (timings: timed-bullet)"
+  },
+  "fuji": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.72,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.85,
+     "end": 4.54,
+     "text": "Japan's highest peak."
+    },
+    {
+     "start": 6.02,
+     "end": 8.2,
+     "text": "Look! Pink petals dancing!"
+    },
+    {
+     "start": 8.33,
+     "end": 9.86,
+     "text": "Fuji stands tall."
+    }
+   ],
+   "source": "batch-11/NOTES.md — ## fuji — Mount Fuji — DONE, clean (timings: timed-bullet)"
+  },
+  "fushimi": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 0.84,
+     "text": "Hey kids!"
+    },
+    {
+     "start": 0.99,
+     "end": 2.44,
+     "text": "Have you heard about this place?"
+    },
+    {
+     "start": 2.64,
+     "end": 4.63,
+     "text": "Thousands of red gates climb!"
+    },
+    {
+     "start": 6.31,
+     "end": 8.34,
+     "text": "Look! The lanterns are lighting up!"
+    },
+    {
+     "start": 8.49,
+     "end": 9.85,
+     "text": "The shrine waits."
+    }
+   ],
+   "source": "batch-12/NOTES.md — ## 2. fushimi — Fushimi Inari — DONE (flag: gentle-motion entry) (timings: timed-bullet)"
+  },
+  "galapagos": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 0.79,
+     "text": "Hey kids!"
+    },
+    {
+     "start": 0.94,
+     "end": 2.35,
+     "text": "Have you heard about this place?"
+    },
+    {
+     "start": 2.55,
+     "end": 4.69,
+     "text": "Giant tortoises wander by the harbor!"
+    },
+    {
+     "start": 6.68,
+     "end": 8.44,
+     "text": "Iguanas sunbathe on the rocks!"
+    },
+    {
+     "start": 8.6,
+     "end": 9.85,
+     "text": "Boats bob in the water."
+    }
+   ],
+   "source": "batch-12/NOTES.md — ## 7. galapagos — Puerto Ayora — DONE (timings: timed-bullet)"
+  },
+  "gateway": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 1.72,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 1.92,
+     "end": 5.35,
+     "text": "Gateway Mall was the edge-of-town shops."
+    },
+    {
+     "start": 6.35,
+     "end": 8.2,
+     "text": "Look — shoppers under a prairie sky!"
+    },
+    {
+     "start": 8.45,
+     "end": 9.69,
+     "text": "The town grew up around it."
+    }
+   ],
+   "source": "batch-02/NOTES.md — ### gateway — REGENERATED (AI video, second take) (timings: placement)"
+  },
+  "gateway-arch": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.69,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.84,
+     "end": 5.31,
+     "text": "It was finished in 1965."
+    },
+    {
+     "start": 6.51,
+     "end": 7.9,
+     "text": "Look! It shines!"
+    },
+    {
+     "start": 8.15,
+     "end": 9.85,
+     "text": "And the river rolls on."
+    }
+   ],
+   "source": "batch-08/NOTES.md — ## gateway-arch — DONE (timings: timed-bullet)"
+  },
+  "giza": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 3.07,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 3.27,
+     "end": 5.71,
+     "text": "Built for Khufu, over four thousand years ago!"
+    },
+    {
+     "start": 7.01,
+     "end": 8.4,
+     "text": "Look how big it is!"
+    },
+    {
+     "start": 8.6,
+     "end": 9.91,
+     "text": "And the camels walk by."
+    }
+   ],
+   "source": "batch-10/NOTES.md — ### 8. giza — Great Pyramid of Giza (set 30) — DONE (timings: timed-bullet)"
+  },
+  "golden-gate": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.98,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 3.13,
+     "end": 5.17,
+     "text": "Orange, so it shows in fog."
+    },
+    {
+     "start": 6.37,
+     "end": 7.64,
+     "text": "Look! There it stands!"
+    },
+    {
+     "start": 7.89,
+     "end": 9.86,
+     "text": "And the sailboats glide on below."
+    }
+   ],
+   "source": "batch-08/NOTES.md — ## golden-gate — DONE (timings: timed-bullet)"
+  },
+  "golden-spike": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.43,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.58,
+     "end": 5.15,
+     "text": "This tower looks over Bailey Yard in North Platte."
+    },
+    {
+     "start": 6.0,
+     "end": 8.16,
+     "text": "Here they come! The trains are rolling!"
+    },
+    {
+     "start": 8.31,
+     "end": 9.94,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-07/NOTES.md — ### golden-spike — DONE — voice: Magnus (`avocado_v2:magnus`), all lines speed 105 (timings: timed-bullet)"
+  },
+  "grand-canyon": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.35,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.5,
+     "end": 4.25,
+     "text": "This gorge is more than a mile deep."
+    },
+    {
+     "start": 5.6,
+     "end": 7.75,
+     "text": "Look down — the river winds below!"
+    },
+    {
+     "start": 8.0,
+     "end": 9.85,
+     "text": "Big, wide, and quiet again."
+    }
+   ],
+   "source": "batch-08/NOTES.md — ## grand-canyon — DONE (timings: timed-bullet)"
+  },
+  "grand-island": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.76,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.96,
+     "end": 4.86,
+     "text": "The big city in the Platte valley."
+    },
+    {
+     "start": 6.34,
+     "end": 8.32,
+     "text": "Look! The valley glows!"
+    },
+    {
+     "start": 8.58,
+     "end": 9.9,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-05/NOTES.md — ### 8. grand-island — Grand Island — DONE (flagged: gentle-motion town, see Flags) (timings: timed-bullet)"
+  },
+  "havelock": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.38,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.53,
+     "end": 4.24,
+     "text": "A railroad town of its own."
+    },
+    {
+     "start": 5.74,
+     "end": 8.04,
+     "text": "The old shops still stand by the tracks!"
+    },
+    {
+     "start": 8.19,
+     "end": 9.32,
+     "text": "Its own street, still."
+    }
+   ],
+   "source": "batch-03/NOTES.md — ### havelock — REGEN PASSED, original REPLACED (timings: placement)"
+  },
+  "haymarket": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.77,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.85,
+     "end": 5.36,
+     "text": "Old brick shops, warm lamps."
+    },
+    {
+     "start": 6.55,
+     "end": 8.55,
+     "text": "Look! The lamps are glowing!"
+    },
+    {
+     "start": 8.6,
+     "end": 9.92,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-01/NOTES.md — ### 3. haymarket — Haymarket — FLAGGED (still + narration fallback) (timings: timed-bullet)"
+  },
+  "henry-doorly": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.44,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.64,
+     "end": 5.41,
+     "text": "Omaha's zoo is known for its giant desert dome."
+    },
+    {
+     "start": 6.22,
+     "end": 8.14,
+     "text": "Look! The giraffes stand tall!"
+    },
+    {
+     "start": 8.39,
+     "end": 9.9,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-05/NOTES.md — ### 9. henry-doorly — Henry Doorly Zoo — DONE (timings: timed-bullet)"
+  },
+  "holmes-lake": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.3,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.5,
+     "end": 4.79,
+     "text": "This lake was built to hold back floods."
+    },
+    {
+     "start": 6.09,
+     "end": 7.56,
+     "text": "Now sailboats glide by!"
+    },
+    {
+     "start": 7.81,
+     "end": 9.62,
+     "text": "A lake for everyone to enjoy."
+    }
+   ],
+   "source": "batch-02/NOTES.md — ### holmes-lake — REGENERATED (AI video) (timings: placement)"
+  },
+  "homestead": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.79,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.89,
+     "end": 5.64,
+     "text": "One of the first claims, under the 1862 law."
+    },
+    {
+     "start": 6.41,
+     "end": 8.56,
+     "text": "Shhh — the tall grass is whispering."
+    },
+    {
+     "start": 8.66,
+     "end": 9.85,
+     "text": "And the cabin stands."
+    }
+   ],
+   "source": "batch-04/NOTES.md — ## 7. homestead — Homestead National Historical Park — DONE, FLAGGED (gentle-motion + dusk darkening) (timings: timed-bullet)"
+  },
+  "hoover": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.74,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.94,
+     "end": 4.97,
+     "text": "A giant wall holds back the river!"
+    },
+    {
+     "start": 6.16,
+     "end": 8.39,
+     "text": "Look — the river flows on below!"
+    },
+    {
+     "start": 8.64,
+     "end": 9.9,
+     "text": "Strong and steady."
+    }
+   ],
+   "source": "batch-09/NOTES.md — ### DONE — hoover (Hoover Dam) ✅ (third take used) (timings: script-placement)"
+  },
+  "hyde": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.09,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.24,
+     "end": 4.9,
+     "text": "On the shore of Holmes Lake, a dome waits for night."
+    },
+    {
+     "start": 6.1,
+     "end": 8.79,
+     "text": "The dome opens! The stars come out!"
+    },
+    {
+     "start": 8.94,
+     "end": 9.6,
+     "text": "Quiet water."
+    }
+   ],
+   "source": "batch-03/NOTES.md — ### hyde — Hyde Observatory — FLAGGED (zoom abandons lake, style drift) (timings: timed-bullet)"
+  },
+  "iguazu": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 0.7,
+     "text": "Hey kids!"
+    },
+    {
+     "start": 0.85,
+     "end": 2.09,
+     "text": "Have you heard about this place?"
+    },
+    {
+     "start": 2.3,
+     "end": 4.52,
+     "text": "The Devil's Throat is the big horseshoe in the middle!"
+    },
+    {
+     "start": 6.54,
+     "end": 8.5,
+     "text": "Whoosh! Hear that water roar!"
+    },
+    {
+     "start": 8.65,
+     "end": 9.85,
+     "text": "The river keeps flowing."
+    }
+   ],
+   "source": "batch-12/NOTES.md — ## 3. iguazu — Iguazú Falls — DONE (timings: timed-bullet)"
+  },
+  "indian-cave": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.08,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.23,
+     "end": 5.15,
+     "text": "A cave with old carvings gives this park its name."
+    },
+    {
+     "start": 6.35,
+     "end": 8.85,
+     "text": "Look! The old carvings are waking up in the sunlight!"
+    },
+    {
+     "start": 9.0,
+     "end": 9.87,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-07/NOTES.md — ### indian-cave — DONE — voice: vdc_2561 (`avocado_v2:vdc_2561`), all lines speed 105 (timings: timed-bullet)"
+  },
+  "joslyn": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.71,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.86,
+     "end": 5.49,
+     "text": "Joslyn's museum stands right in Omaha."
+    },
+    {
+     "start": 6.29,
+     "end": 8.47,
+     "text": "Look! The fountains are dancing!"
+    },
+    {
+     "start": 8.62,
+     "end": 9.94,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-07/NOTES.md — ### joslyn — DONE — voice: Casper (`avocado_v2:casper`), L1/L2 speed 120, L3/L4 speed 105 (timings: timed-bullet)"
+  },
+  "kingsley": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.75,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.9,
+     "end": 5.06,
+     "text": "This great dam holds back a big lake."
+    },
+    {
+     "start": 5.75,
+     "end": 7.93,
+     "text": "Whoosh! Water rushes down below!"
+    },
+    {
+     "start": 8.08,
+     "end": 9.64,
+     "text": "And the lake sparkles behind it."
+    }
+   ],
+   "source": "batch-06/NOTES.md — ### 1. kingsley — Kingsley Dam — REGENERATED + SWAPPED ✓ (timings: timed-bullet)"
+  },
+  "liberty": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.43,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.63,
+     "end": 5.25,
+     "text": "A gift from France, on her own island!"
+    },
+    {
+     "start": 6.4,
+     "end": 8.14,
+     "text": "Look! Her torch shines!"
+    },
+    {
+     "start": 8.34,
+     "end": 9.88,
+     "text": "And the ferries sail by."
+    }
+   ],
+   "source": "batch-10/NOTES.md — ### 3. liberty — Statue of Liberty (set 28) — DONE (timings: timed-bullet)"
+  },
+  "lincoln-airport": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 1.98,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.18,
+     "end": 4.54,
+     "text": "The airport sits on the prairie, by Oak Creek."
+    },
+    {
+     "start": 6.14,
+     "end": 7.84,
+     "text": "Here it comes — a plane lifts off!"
+    },
+    {
+     "start": 8.1,
+     "end": 9.79,
+     "text": "Up, up — and away!"
+    }
+   ],
+   "source": "batch-02/NOTES.md — ## lincoln-airport — DONE (timings: timed-bullet)"
+  },
+  "machu": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 3.03,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 3.15,
+     "end": 5.25,
+     "text": "Stone terraces climb high above the river."
+    },
+    {
+     "start": 6.73,
+     "end": 8.24,
+     "text": "Wow! The llamas are waking up!"
+    },
+    {
+     "start": 8.38,
+     "end": 9.44,
+     "text": "Waking with the sun."
+    }
+   ],
+   "source": "batch-11/NOTES.md — ## machu — Machu Picchu — DONE, flagged (timings: timed-bullet)"
+  },
+  "mahoney": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.13,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.23,
+     "end": 4.56,
+     "text": "A lodge, a pool, and trails."
+    },
+    {
+     "start": 6.29,
+     "end": 8.27,
+     "text": "Splash! Somebody jumped in the pool!"
+    },
+    {
+     "start": 8.37,
+     "end": 9.84,
+     "text": "And the campfire glows."
+    }
+   ],
+   "source": "batch-04/NOTES.md — ## 4. mahoney — Eugene T. Mahoney State Park — DONE (timings: timed-bullet)"
+  },
+  "memorial-stadium": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.61,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.75,
+     "end": 4.61,
+     "text": "Played here since 1923."
+    },
+    {
+     "start": 6.05,
+     "end": 8.0,
+     "text": "Look! The whole bowl is red!"
+    },
+    {
+     "start": 8.0,
+     "end": 9.95,
+     "text": "And the leaves drift down."
+    }
+   ],
+   "source": "batch-01/NOTES.md — ### 2. memorial-stadium — Memorial Stadium — DONE (timings: timed-bullet)"
+  },
+  "monument-valley": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.13,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.33,
+     "end": 4.23,
+     "text": "Giant red rocks on the Navajo Nation!"
+    },
+    {
+     "start": 6.2,
+     "end": 7.13,
+     "text": "Look how they glow!"
+    },
+    {
+     "start": 7.38,
+     "end": 8.95,
+     "text": "Red rocks, big sky."
+    }
+   ],
+   "source": "batch-09/NOTES.md — ## DONE — monument-valley (Monument Valley) ✅ (timings: timed-bullet)"
+  },
+  "near-south": {
+   "cues": [
+    {
+     "start": 0.05,
+     "end": 2.02,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.12,
+     "end": 5.12,
+     "text": "South of downtown, old porch houses line the trees."
+    },
+    {
+     "start": 6.12,
+     "end": 8.13,
+     "text": "Look — the creek winds past the park!"
+    },
+    {
+     "start": 8.23,
+     "end": 9.78,
+     "text": "Everyone knows their lettered street."
+    }
+   ],
+   "source": "batch-03/NOTES.md — ### near-south — Near South — FLAGGED (final frame darkens) (timings: timed-bullet)"
+  },
+  "neuschwanstein": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.34,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.45,
+     "end": 4.83,
+     "text": "A king's castle, pale above the gorge."
+    },
+    {
+     "start": 5.95,
+     "end": 8.19,
+     "text": "Look! Swans gliding on the lake below!"
+    },
+    {
+     "start": 8.33,
+     "end": 9.64,
+     "text": "Shining like a fairytale."
+    }
+   ],
+   "source": "batch-11/NOTES.md — ### neuschwanstein — REGEN PASSED, v2 REPLACES the held v1 (timings: timed-bullet)"
+  },
+  "niagara": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.71,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.86,
+     "end": 5.06,
+     "text": "They drop where New York meets Canada!"
+    },
+    {
+     "start": 6.02,
+     "end": 8.06,
+     "text": "Whoosh! It thunders down!"
+    },
+    {
+     "start": 8.31,
+     "end": 9.63,
+     "text": "And the mist floats up."
+    }
+   ],
+   "source": "batch-08/NOTES.md — ### niagara — DONE, flagged (timings: timed-bullet)"
+  },
+  "niobrara": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 3.06,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 3.21,
+     "end": 5.51,
+     "text": "The Niobrara is a national scenic river."
+    },
+    {
+     "start": 6.41,
+     "end": 8.76,
+     "text": "Push off! The canoes are drifting between the bluffs!"
+    },
+    {
+     "start": 8.91,
+     "end": 9.92,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-07/NOTES.md — ### niobrara — DONE — voice: Briggs (`avocado_v2:briggs`), all lines speed 105 (timings: timed-bullet)"
+  },
+  "oak-lake": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.07,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.27,
+     "end": 4.57,
+     "text": "A grandfather and a child fish from the dock."
+    },
+    {
+     "start": 6.47,
+     "end": 8.31,
+     "text": "Look up — a plane hums by overhead!"
+    },
+    {
+     "start": 8.56,
+     "end": 9.73,
+     "text": "A quiet afternoon."
+    }
+   ],
+   "source": "batch-02/NOTES.md — ## oak-lake — DONE (timings: timed-bullet)"
+  },
+  "old-market": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 1.98,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.13,
+     "end": 4.67,
+     "text": "Old brick warehouses turned into shops and cafes."
+    },
+    {
+     "start": 5.56,
+     "end": 8.11,
+     "text": "Look! The string lights glow over the brick streets!"
+    },
+    {
+     "start": 8.26,
+     "end": 9.59,
+     "text": "And the market hums along."
+    }
+   ],
+   "source": "batch-06/NOTES.md — ### old-market — Old Market (Omaha) — DONE (timings: timed-bullet)"
+  },
+  "opera-house": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.15,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.35,
+     "end": 5.45,
+     "text": "Opened in 1973, after a long hard build!"
+    },
+    {
+     "start": 6.85,
+     "end": 8.41,
+     "text": "But look at those sails!"
+    },
+    {
+     "start": 8.61,
+     "end": 9.87,
+     "text": "Boats glide by."
+    }
+   ],
+   "source": "batch-10/NOTES.md — ### 5. opera-house — Sydney Opera House (set 29) — DONE (timings: timed-bullet)"
+  },
+  "pawnee-lake": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.71,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.81,
+     "end": 4.89,
+     "text": "Pawnee Lake winds through the trees."
+    },
+    {
+     "start": 6.16,
+     "end": 8.31,
+     "text": "Got one! The fishing line tugs!"
+    },
+    {
+     "start": 8.41,
+     "end": 9.85,
+     "text": "And the lake rests again."
+    }
+   ],
+   "source": "batch-04/NOTES.md — ## 8. pawnee-lake — Pawnee Lake — DONE (timings: timed-bullet)"
+  },
+  "petra": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.72,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.87,
+     "end": 4.8,
+     "text": "A city hides in a narrow canyon."
+    },
+    {
+     "start": 5.76,
+     "end": 8.36,
+     "text": "Look! The Treasury, carved from the cliff!"
+    },
+    {
+     "start": 8.48,
+     "end": 9.85,
+     "text": "Rose-red in the sun."
+    }
+   ],
+   "source": "batch-11/NOTES.md — ## petra — Petra — DONE, minor note (timings: timed-bullet)"
+  },
+  "pike-place": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.75,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.95,
+     "end": 4.99,
+     "text": "A busy market since 1907!"
+    },
+    {
+     "start": 6.2,
+     "end": 7.88,
+     "text": "Fish and flowers — look!"
+    },
+    {
+     "start": 8.13,
+     "end": 9.56,
+     "text": "Busy and bright!"
+    }
+   ],
+   "source": "batch-09/NOTES.md — ## DONE — pike-place (Pike Place Market) ✅ (timings: timed-bullet)"
+  },
+  "pinnacle": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.13,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.3,
+     "end": 3.66,
+     "text": "Opened in 2013."
+    },
+    {
+     "start": 5.9,
+     "end": 7.83,
+     "text": "Look! The arena glows!"
+    },
+    {
+     "start": 8.0,
+     "end": 8.91,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-01/NOTES.md — ### 4. pinnacle — Pinnacle Bank Arena — DONE (timings: timed-bullet)"
+  },
+  "pioneers-park": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.17,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.37,
+     "end": 5.39,
+     "text": "Prairie and woods — home to bison and elk!"
+    },
+    {
+     "start": 6.39,
+     "end": 8.28,
+     "text": "Look — a bison lifts its head!"
+    },
+    {
+     "start": 8.53,
+     "end": 9.72,
+     "text": "Wild prairie!"
+    }
+   ],
+   "source": "batch-02/NOTES.md — ## pioneers-park — DONE (timings: timed-bullet)"
+  },
+  "platte-river-sp": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.44,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.54,
+     "end": 5.03,
+     "text": "Trails on the bluffs look over the Platte."
+    },
+    {
+     "start": 5.87,
+     "end": 8.67,
+     "text": "Look! The whole river valley, spread out below!"
+    },
+    {
+     "start": 8.77,
+     "end": 9.85,
+     "text": "And the hikers walk on."
+    }
+   ],
+   "source": "batch-04/NOTES.md — ## 9. platte-river-sp — Platte River State Park — DONE, FLAGGED (gentle-motion) (timings: timed-bullet)"
+  },
+  "potala": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 0.69,
+     "text": "Hey kids!"
+    },
+    {
+     "start": 0.84,
+     "end": 1.97,
+     "text": "Have you heard about this place?"
+    },
+    {
+     "start": 2.17,
+     "end": 4.67,
+     "text": "A palace rises on a sacred hill."
+    },
+    {
+     "start": 6.77,
+     "end": 8.32,
+     "text": "Look — pilgrims climbing up!"
+    },
+    {
+     "start": 8.46,
+     "end": 9.8,
+     "text": "Flags flutter in the wind."
+    }
+   ],
+   "source": "batch-12/NOTES.md — ## 5. potala — Potala Palace — DONE (v2 regen replaces held v1) (timings: timed-bullet)"
+  },
+  "quilt-museum": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 1.72,
+     "text": "Hey kids, have you heard about this place?"
+    },
+    {
+     "start": 1.87,
+     "end": 3.85,
+     "text": "On East Campus, quilts from many countries."
+    },
+    {
+     "start": 5.2,
+     "end": 8.14,
+     "text": "Look — every square tells a story in color!"
+    },
+    {
+     "start": 8.29,
+     "end": 9.37,
+     "text": "So colorful!"
+    }
+   ],
+   "source": "batch-03/NOTES.md — ### quilt-museum — BUILT (new clip, PASS) (timings: placement)"
+  },
+  "redeemer": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.38,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.58,
+     "end": 4.74,
+     "text": "High over Rio, on top of Corcovado!"
+    },
+    {
+     "start": 6.34,
+     "end": 7.71,
+     "text": "Look! The little train climbs up!"
+    },
+    {
+     "start": 7.91,
+     "end": 9.26,
+     "text": "What a view!"
+    }
+   ],
+   "source": "batch-10/NOTES.md — ### 6. redeemer — Christ the Redeemer (set 29) — DONE (timings: timed-bullet)"
+  },
+  "robbers-cave": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.72,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.87,
+     "end": 5.63,
+     "text": "Dark caves hollow a south Lincoln bluff."
+    },
+    {
+     "start": 6.63,
+     "end": 9.84,
+     "text": "Whoa — look inside! A hollow in the stone!"
+    }
+   ],
+   "source": "batch-03/NOTES.md — ### robbers-cave — Robber's Cave — DONE (minor flag) (timings: timed-bullet)"
+  },
+  "rushmore": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.06,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.21,
+     "end": 4.46,
+     "text": "Four faces were carved into this mountain."
+    },
+    {
+     "start": 6.46,
+     "end": 7.8,
+     "text": "Look up! There they are!"
+    },
+    {
+     "start": 8.05,
+     "end": 9.5,
+     "text": "And the flags wave below."
+    }
+   ],
+   "source": "batch-08/NOTES.md — ## rushmore — DONE, flagged (gentle-motion bad fit) (timings: timed-bullet)"
+  },
+  "sac-museum": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.43,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.53,
+     "end": 5.4,
+     "text": "A museum of giant bombers — and a rocket!"
+    },
+    {
+     "start": 6.88,
+     "end": 8.6,
+     "text": "Wow! Look how big they are!"
+    },
+    {
+     "start": 8.7,
+     "end": 9.85,
+     "text": "And the planes rest."
+    }
+   ],
+   "source": "batch-04/NOTES.md — ## 5. sac-museum — Strategic Air Command & Aerospace Museum — DONE (timings: timed-bullet)"
+  },
+  "sagrada": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.43,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.63,
+     "end": 4.54,
+     "text": "Still growing since 1882!"
+    },
+    {
+     "start": 5.74,
+     "end": 7.44,
+     "text": "Look! The cranes are still at work!"
+    },
+    {
+     "start": 7.64,
+     "end": 9.9,
+     "text": "Stone by stone, it grows."
+    }
+   ],
+   "source": "batch-10/NOTES.md — ### 7. sagrada — Sagrada Família (set 30) — DONE (timings: timed-bullet)"
+  },
+  "scotts-bluff": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.67,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.82,
+     "end": 5.12,
+     "text": "Wagons used the pass at its foot."
+    },
+    {
+     "start": 5.82,
+     "end": 7.22,
+     "text": "Up the road climbs!"
+    },
+    {
+     "start": 7.37,
+     "end": 9.14,
+     "text": "And the wagons roll on."
+    }
+   ],
+   "source": "batch-06/NOTES.md — ### scotts-bluff — Scotts Bluff — DONE (timings: timed-bullet)"
+  },
+  "seward": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.28,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.38,
+     "end": 5.24,
+     "text": "Seward throws a Fourth of July party on the courthouse square."
+    },
+    {
+     "start": 7.21,
+     "end": 8.83,
+     "text": "Look! The kites are up!"
+    },
+    {
+     "start": 8.93,
+     "end": 9.85,
+     "text": "Happy Fourth, Seward!"
+    }
+   ],
+   "source": "batch-04/NOTES.md — ## 6. seward — Seward — DONE (timings: timed-bullet)"
+  },
+  "smith-falls": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.43,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.58,
+     "end": 5.01,
+     "text": "Nebraska's tallest waterfall drops into the river."
+    },
+    {
+     "start": 5.7,
+     "end": 7.49,
+     "text": "Splash! Down it tumbles!"
+    },
+    {
+     "start": 7.64,
+     "end": 8.88,
+     "text": "And the river carries on."
+    }
+   ],
+   "source": "batch-06/NOTES.md — ### 2. smith-falls — Smith Falls — REGENERATED + SWAPPED ✓ (timings: timed-bullet)"
+  },
+  "southpointe": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.61,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.76,
+     "end": 4.99,
+     "text": "Down south, shops meet the farmland."
+    },
+    {
+     "start": 5.99,
+     "end": 8.15,
+     "text": "And look — the city grew all the way here!"
+    },
+    {
+     "start": 8.3,
+     "end": 9.86,
+     "text": "What a sunny place to wander."
+    }
+   ],
+   "source": "batch-03/NOTES.md — ### southpointe — REGEN PASSED (with caveat), original REPLACED (timings: placement)"
+  },
+  "space-needle": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.08,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.23,
+     "end": 4.04,
+     "text": "Built for a fair in 1962."
+    },
+    {
+     "start": 5.54,
+     "end": 7.82,
+     "text": "Look up! The saucer glows in the sunset!"
+    },
+    {
+     "start": 8.07,
+     "end": 9.4,
+     "text": "And the city sparkles below."
+    }
+   ],
+   "source": "batch-08/NOTES.md — ## space-needle — DONE, flagged (timings: timed-bullet)"
+  },
+  "spring-creek": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.13,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.33,
+     "end": 3.92,
+     "text": "Tall grass still grows here."
+    },
+    {
+     "start": 6.6,
+     "end": 8.39,
+     "text": "Look! Birds and butterflies!"
+    },
+    {
+     "start": 8.64,
+     "end": 9.54,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-05/NOTES.md — ### 4. spring-creek — Spring Creek Prairie — DONE (timings: timed-bullet)"
+  },
+  "stagecoach": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 3.06,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 3.26,
+     "end": 5.19,
+     "text": "A smaller lake, with a quieter shore."
+    },
+    {
+     "start": 6.54,
+     "end": 8.59,
+     "text": "A tug! Something is biting on the line!"
+    },
+    {
+     "start": 8.84,
+     "end": 9.9,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-05/NOTES.md — ### 7. stagecoach — Stagecoach Lake — DONE (timings: timed-bullet)"
+  },
+  "star-city-shores": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.38,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.53,
+     "end": 4.66,
+     "text": "A water park with the Star City name."
+    },
+    {
+     "start": 5.66,
+     "end": 8.76,
+     "text": "Splash! Down the slides, into the sparkling pools!"
+    },
+    {
+     "start": 8.91,
+     "end": 9.77,
+     "text": "Summer lives here."
+    }
+   ],
+   "source": "batch-03/NOTES.md — ### star-city-shores — BUILT, FLAGGED (framing/style drift vs keyframe) (timings: placement)"
+  },
+  "stonehenge": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.12,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.22,
+     "end": 3.71,
+     "text": "Raised five thousand years ago."
+    },
+    {
+     "start": 5.65,
+     "end": 8.25,
+     "text": "Look! The sun rises between the stones!"
+    },
+    {
+     "start": 8.38,
+     "end": 9.28,
+     "text": "Quiet as morning."
+    }
+   ],
+   "source": "batch-11/NOTES.md — ## stonehenge — Stonehenge — DONE, clean (gentle-motion) (timings: timed-bullet)"
+  },
+  "sunken-gardens": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.79,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.85,
+     "end": 4.82,
+     "text": "Flower beds drop below the street."
+    },
+    {
+     "start": 5.9,
+     "end": 8.7,
+     "text": "Look! Butterflies dance over the flowers!"
+    },
+    {
+     "start": 8.7,
+     "end": 9.81,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-01/NOTES.md — ### 7. sunken-gardens — Sunken Gardens — DONE (timings: timed-bullet)"
+  },
+  "table-mountain": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.38,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.53,
+     "end": 4.96,
+     "text": "A flat-topped mountain stands over Cape Town."
+    },
+    {
+     "start": 6.11,
+     "end": 7.9,
+     "text": "Look! The cable car climbs to the top!"
+    },
+    {
+     "start": 8.05,
+     "end": 9.63,
+     "text": "The city sparkles below."
+    }
+   ],
+   "source": "batch-11/NOTES.md — ### table-mountain — DONE, flagged (push-in + photoreal drift) (timings: placement)"
+  },
+  "taj": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.16,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.36,
+     "end": 4.53,
+     "text": "White marble, in a garden by the river."
+    },
+    {
+     "start": 6.33,
+     "end": 7.5,
+     "text": "Look how it glows!"
+    },
+    {
+     "start": 7.7,
+     "end": 8.98,
+     "text": "Quiet and beautiful."
+    }
+   ],
+   "source": "batch-10/NOTES.md — ### 4. taj — Taj Mahal (set 29) — DONE (timings: timed-bullet)"
+  },
+  "timbuktu": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 0.87,
+     "text": "Hey kids!"
+    },
+    {
+     "start": 1.02,
+     "end": 2.13,
+     "text": "Have you heard about this place?"
+    },
+    {
+     "start": 2.33,
+     "end": 4.05,
+     "text": "Camels carry goods across the desert!"
+    },
+    {
+     "start": 6.04,
+     "end": 8.18,
+     "text": "And the library keeps old stories safe!"
+    },
+    {
+     "start": 8.33,
+     "end": 9.85,
+     "text": "And the mosques stand over it all."
+    }
+   ],
+   "source": "batch-12/NOTES.md — ## 6. timbuktu — Timbuktu — DONE (timings: timed-bullet)"
+  },
+  "toadstool": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.16,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.31,
+     "end": 5.11,
+     "text": "Soft clay wore into toadstool shapes."
+    },
+    {
+     "start": 6.31,
+     "end": 8.71,
+     "text": "Look! Giant stone mushrooms, all along the trail!"
+    },
+    {
+     "start": 8.86,
+     "end": 9.83,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-07/NOTES.md — ### toadstool — DONE — voice: Miles (`avocado_v2:miles`), L1/L3/L4 speed 105, L2 speed 115 (timings: timed-bullet)"
+  },
+  "tongariki": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 0.69,
+     "text": "Hey kids!"
+    },
+    {
+     "start": 0.99,
+     "end": 2.23,
+     "text": "Have you heard about this place?"
+    },
+    {
+     "start": 2.68,
+     "end": 4.46,
+     "text": "Fifteen stone faces in a row."
+    },
+    {
+     "start": 6.56,
+     "end": 7.72,
+     "text": "They all face the sea!"
+    },
+    {
+     "start": 8.07,
+     "end": 9.78,
+     "text": "Waves keep rolling in."
+    }
+   ],
+   "source": "batch-12/NOTES.md — ## 4. tongariki — Ahu Tongariki — DONE (flag: gentle-motion entry) (timings: timed-bullet)"
+  },
+  "uluru": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 3.0,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 3.15,
+     "end": 5.67,
+     "text": "Sacred to the Anangu people."
+    },
+    {
+     "start": 6.57,
+     "end": 8.65,
+     "text": "Look! The rock glows in the sunset!"
+    },
+    {
+     "start": 8.8,
+     "end": 9.93,
+     "text": "Quiet and gold."
+    }
+   ],
+   "source": "batch-11/NOTES.md — ### uluru — DONE, clean (gentle-motion, option (a)) (timings: placement)"
+  },
+  "union-plaza": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.53,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.73,
+     "end": 5.38,
+     "text": "Once rail yards — now a plaza!"
+    },
+    {
+     "start": 6.69,
+     "end": 8.57,
+     "text": "Look — the fountains burst!"
+    },
+    {
+     "start": 8.82,
+     "end": 9.84,
+     "text": "Splash!"
+    }
+   ],
+   "source": "batch-02/NOTES.md — ## union-plaza — DONE (best clip in the batch) (timings: timed-bullet)"
+  },
+  "university-place": {
+   "cues": [
+    {
+     "start": 0.05,
+     "end": 2.65,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.7,
+     "end": 5.27,
+     "text": "A streetcar town around Nebraska Wesleyan."
+    },
+    {
+     "start": 6.17,
+     "end": 8.56,
+     "text": "Ding ding! Here comes the streetcar!"
+    },
+    {
+     "start": 8.61,
+     "end": 9.9,
+     "text": "Still the heart."
+    }
+   ],
+   "source": "batch-03/NOTES.md — ### university-place — FALLBACK DONE (still + narration, haymarket precedent) (timings: placement)"
+  },
+  "valentine": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.47,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.62,
+     "end": 5.19,
+     "text": "Valentine sits where the Sandhills meet the Niobrara."
+    },
+    {
+     "start": 6.69,
+     "end": 8.39,
+     "text": "Push off! The canoes are gliding!"
+    },
+    {
+     "start": 8.54,
+     "end": 9.72,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-07/NOTES.md — ### valentine — DONE — voice: Briggs (`avocado_v2:briggs`), all lines speed 105 (timings: timed-bullet)"
+  },
+  "victoria-falls": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 0.73,
+     "text": "Hey kids!"
+    },
+    {
+     "start": 0.88,
+     "end": 2.14,
+     "text": "Have you heard about this place?"
+    },
+    {
+     "start": 2.34,
+     "end": 4.99,
+     "text": "The Zambezi River runs to the edge — and drops!"
+    },
+    {
+     "start": 6.61,
+     "end": 8.46,
+     "text": "Whoosh! Look at all that spray!"
+    },
+    {
+     "start": 8.61,
+     "end": 9.86,
+     "text": "And rainbows in the mist."
+    }
+   ],
+   "source": "batch-12/NOTES.md — ## 1. victoria-falls — Victoria Falls — DONE (timings: timed-bullet)"
+  },
+  "wagon-train": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.76,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.96,
+     "end": 4.86,
+     "text": "Down Highway 77."
+    },
+    {
+     "start": 6.05,
+     "end": 8.33,
+     "text": "Look! The boats are gliding out!"
+    },
+    {
+     "start": 8.58,
+     "end": 9.9,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-05/NOTES.md — ### 3. wagon-train — Wagon Train Lake — DONE (timings: timed-bullet)"
+  },
+  "wahoo": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 3.06,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 3.26,
+     "end": 5.07,
+     "text": "The courthouse stands in the middle of town."
+    },
+    {
+     "start": 6.6,
+     "end": 8.09,
+     "text": "Look! The fountain sparkles!"
+    },
+    {
+     "start": 8.34,
+     "end": 9.36,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-05/NOTES.md — ### 2. wahoo — Wahoo — DONE (flagged: gentle-motion town, see Flags) (timings: timed-bullet)"
+  },
+  "white-house": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.14,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.29,
+     "end": 5.11,
+     "text": "The president's house has stood here since eighteen hundred."
+    },
+    {
+     "start": 6.16,
+     "end": 8.76,
+     "text": "Look! The fountain is sparkling in the garden!"
+    },
+    {
+     "start": 8.91,
+     "end": 9.89,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "batch-07/NOTES.md — ### white-house — DONE — voice: vdc_2561 (`avocado_v2:vdc_2561`), all lines speed 105 (timings: timed-bullet)"
+  },
+  "wilderness-park": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.43,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.63,
+     "end": 4.7,
+     "text": "A creek winds through tall cottonwoods."
+    },
+    {
+     "start": 6.6,
+     "end": 8.26,
+     "text": "Look — a deer is drinking at the creek!"
+    },
+    {
+     "start": 8.51,
+     "end": 9.76,
+     "text": "And the creek ripples on."
+    }
+   ],
+   "source": "batch-02/NOTES.md — ## wilderness-park — DONE (timings: timed-bullet)"
+  },
+  "willis": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.3,
+     "text": "Hey kids! Have you heard about this place?"
+    },
+    {
+     "start": 2.5,
+     "end": 4.45,
+     "text": "Once the tallest building in the world!"
+    },
+    {
+     "start": 6.2,
+     "end": 8.48,
+     "text": "Look! The Skydeck looks over the lake!"
+    },
+    {
+     "start": 8.73,
+     "end": 9.7,
+     "text": "Tall and still."
+    }
+   ],
+   "source": "batch-09/NOTES.md — ## DONE — willis (Willis Tower) ✅ (timings: timed-bullet)"
+  },
+  "woods-park": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.85,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.95,
+     "end": 5.28,
+     "text": "Tennis courts and shade trees fill Woods Park."
+    },
+    {
+     "start": 7.27,
+     "end": 8.6,
+     "text": "Smack! There goes the ball!"
+    },
+    {
+     "start": 8.7,
+     "end": 9.85,
+     "text": "And the park plays on."
+    }
+   ],
+   "source": "batch-04/NOTES.md — ## 1. woods-park — Woods Park — DONE (timings: timed-bullet)"
+  },
+  "wyuka": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.4,
+     "text": "Hey kids — have you heard about this place?"
+    },
+    {
+     "start": 2.6,
+     "end": 4.83,
+     "text": "Wyuka — an old garden of tall oaks."
+    },
+    {
+     "start": 6.14,
+     "end": 7.15,
+     "text": "Roses bloom."
+    },
+    {
+     "start": 7.39,
+     "end": 9.63,
+     "text": "A quiet garden, full of memories."
+    }
+   ],
+   "source": "batch-02/NOTES.md — ### wyuka — REGENERATED (AI video) (timings: placement)"
+  },
+  "old-faithful": {
+   "cues": [
+    {
+     "start": 0.1,
+     "end": 2.35,
+     "text": "Hey kids, have you heard about this place?"
+    },
+    {
+     "start": 2.6,
+     "end": 4.5,
+     "text": "Crowds wait for Old Faithful."
+    },
+    {
+     "start": 6.6,
+     "end": 8.19,
+     "text": "Whoosh! That's how it goes up!"
+    },
+    {
+     "start": 8.44,
+     "end": 9.85,
+     "text": "And quiet again."
+    }
+   ],
+   "source": "journal-movie-pilot/NOTE-v4.md — v4 script table (placed speech spans); shipped mp4 byte-identical to old-faithful-story-v4.mp4 (md5 bbcd9c84ee3dee40f84b053fe5a9f974); batch-08/NOTES.md confirms pilot-built, not rebuilt"
+  }
+ }
+}
