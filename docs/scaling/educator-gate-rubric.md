@@ -8,7 +8,7 @@ can never sign it (AGENTS.md: no self-certification).
 **Why.** No educator persona exists in the packs, so the seat has been vacant and
 every spec is blocked on it. A persona would not be a real check anyway. What
 makes the gate real is a short, concrete checklist that a qualified person can
-complete in about 30–45 minutes per spec, with evidence attached. Agents prepare
+complete in about 30–45 minutes per spec (PROPOSED estimate), with evidence attached. Agents prepare
 the evidence pack; a human makes the call.
 
 ## Who can sign
@@ -82,7 +82,8 @@ subject, and date. Nothing about the signer is placed in the app.
 
 - **Approved for build:** no Fail, and every Fix is listed with an owner.
 - **Approved after fixes:** Fixes are re-checked by the same signer.
-- **Not approved:** any Fail in A or E.
+- **Not approved:** any Fail in A or E, or a Fail in 4a, 4b, 4c or 5 (the
+  mission items can never pass as a Fix).
 
 ## Sign-off block (copy into the spec)
 

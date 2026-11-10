@@ -1,6 +1,7 @@
 # Agent instructions — shared preamble for every Meridian scaling branch
 
-Read this once per session. Every branch prompt in `branch-prompts.md` points
+Read this once per session. Every branch plan in `plans/` (indexed in
+`branch-prompts.md`) points
 here instead of repeating it, to save tokens. Written for any capable coding
 agent; no vendor or model is assumed.
 
@@ -13,8 +14,9 @@ agent; no vendor or model is assumed.
 ## Who decides
 
 - The owner (Veeresh) decides scope, priority and merges. You never merge,
-  never push to `main`, never delete or force-push a branch, never open a
-  release. Push only the branch your prompt names. Open a **draft** PR only if
+  never push to `main`, never delete a branch, never open a release, and
+  never rebase or force-push without the owner's authorization naming that
+  branch and push (`AGENTS.md`). Push only the branch your prompt names. Open a **draft** PR only if
   your prompt says so.
 - `AGENTS.md` on `main` governs process (tiers, gates, safeguards). Where this
   file and `AGENTS.md` differ on process, `AGENTS.md` wins; where they differ on
@@ -91,10 +93,18 @@ tab is hidden. Open-licensed assets only, licence recorded beside each asset.
 - Read each file once; write shared facts to one notes file; do not re-read.
 - Stop at your tier's token budget in `AGENTS.md` and report what is left.
 
+## Parallel streams
+
+Each branch has one agent, working alongside the others. Your plan in
+`plans/` says what you own, what you wait on and who you may collide with.
+Edit only the files you own. Keep up with main by merging `origin/main` into
+your branch at session start, after every merge to main and before opening or
+updating a PR, then rerun your checks (the standing rule in every plan).
+
 ## Finish line for every branch
 
-1. Update `BRANCH_STATUS.md` on your branch: task, scope, status, what is
-   still open.
+1. Update your own section of `BRANCH_STATUS.md` (keep other sections as they
+   are): task, scope, status, what is still open.
 2. For code: run the `AGENTS.md` quality gates and attach a screen recording.
    For docs only: say that no code gates were run.
 3. Report in plain words: what changed, what is blocked, which owner decision

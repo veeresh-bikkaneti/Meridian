@@ -4,9 +4,9 @@
 still needs sourced facts, standard codes and educator sign-off per
 `k12-learning-design-standard.md`.
 
-Owner, 2026-11-10: "each topic is related like math->physics->chem->biology and
-their application in real life. and these topic are related to environmental
-studies."
+Owner, 2026-11-10: math → physics → chemistry and their application in real
+life, related to environmental studies (biology later removed by the owner;
+see below).
 
 > **Mission (owner, 2026-11-10):** most children don't understand why they
 > learn multiplication, division, algebra and trigonometry. Meridian helps
@@ -57,15 +57,19 @@ ecosystems, the body) slips in through them.
 | M2 | Fractions and percentages (math spec) | M1 | Sharing, discounts | Share of Earth covered by water, land use |
 | M3 | Big numbers and estimation (math spec) | M2 | Distances, populations | Distances on the globe, sizes of oceans and deserts |
 | M4 | Rates and simple formulas (P4 algebra-physics) | M2, M3 | Speed on a trip | How fast rivers or glaciers move |
-| P1 | Push, pull, friction, ramps (science / physics spec) | M1, M4 | Brakes, slides, shoes | Rockfalls, landslides, erosion |
-| P2 | Levers, pulleys, wheels (physics spec) | P1, M2 | Seesaws, cranes, bikes | — (optional) |
-| P3 | Stored to moving energy (physics spec) | P1 | Wind-up toys, roller coasters | Wind and water turning turbines |
-| P4 | Light and shadow, sound (physics spec) | P1 | Sundials, echoes | Day length and seasons across the globe |
-| C1 | Solid, liquid, gas; melting and freezing (chemistry) | P3 (heat as energy) | Ice, cooking | The water cycle, glaciers, sea ice |
+| Ph1 | Push, pull, friction, ramps (science / physics spec) | M1 (7-10); M1, M4 (10-18 and up) | Brakes, slides, shoes | Rockfalls, landslides, erosion |
+| Ph2 | Levers, pulleys, wheels (physics spec) | Ph1, M2 | Seesaws, cranes, bikes | Hand pumps and wells lifting water from the ground |
+| Ph3 | Stored to moving energy (physics spec) | Ph1 | Wind-up toys, roller coasters | Wind and water turning turbines |
+| Ph4 | Light and shadow, sound (physics spec) | Ph1 | Sundials, echoes | Day length and seasons across the globe |
+| C1 | Solid, liquid, gas; melting and freezing (chemistry) | Ph3 (heat as energy) | Ice, cooking | The water cycle, glaciers, sea ice |
 | C2 | Where does the water go? (chemistry) | C1 | Drying clothes | Evaporation, clouds, rain |
 | C3 | What dissolves? (chemistry) | C1, M2 (mixtures as parts) | Sugar in tea | Salt in the sea, clean water |
 | C4 | Rust and reactions (chemistry) | C3 | Bikes left in the rain | Weathering of rocks and buildings |
 | E | Environmental studies capstone (optional) | Any finished chain | Planning a trip, a home, a bridge | A real place on the globe, read through every subject the child has learned |
+
+IDs: M = math, Ph = physics, C = chemistry. These are chain steps, not the
+plan's P-numbers: Ph1 (ramps and friction) is the P7 first predict-then-see
+system; M4 is P4 algebra-physics; C1 to C4 sit in P6 chemistry.
 
 Earth science (water cycle, weather, landforms) was "scope to confirm" in the
 science spec. Under this map it is not a separate subject: it appears as the
@@ -88,7 +92,7 @@ three.js scene (Flat tier: 2D equivalent).
 | Big numbers and estimation (math) | Distances, speeds of light and sound | Counting tiny particles | Prices, totals, large budgets | Populations, areas, distances on the globe | Ocean and desert sizes |
 | Algebra: rates and formulas (math, P4) | Speed = distance ÷ time, force and motion | Rates of reactions, amounts in a mix | Price × quantity, profit, break-even | Travel time between places, time zones | Fuel use on a trip, water use per day |
 | Multiplication and division (math, from 7-10) | Gear turns, speed × time | Doubling a recipe of a mixture | Price per item, change, splitting a bill | Buses for a trip, map scale | Sharing fairly, packing boxes, rows of bricks |
-| Trigonometry (math, 10-18 and up) | Ramp angles, forces on a slope | — | Roof and ramp building costs | Navigation bearings, heights of mountains and towers | Tree height from its shadow, safe ladder angle |
+| Trigonometry (math, 10-18 and up) | Ramp angles, forces on a slope | — | Roof and ramp building costs | Navigation bearings, heights of mountains and towers | Flagpole or tower height from its shadow, safe ladder angle |
 | Graphs and data (math) | Motion graphs | Temperature vs state change | Price and sales over time | Climate charts, population over time | Weather charts |
 | Geometry and measurement (math) | Angles of ramps, levers | Volume of liquids | Area and cost of land or paint | Map scale, coordinates, routes | Building and home projects |
 | Forces and motion (physics) | — | Particles moving faster when heated | Transport and shipping costs | Rivers, landslides, erosion | Brakes, sport, bikes |
@@ -98,6 +102,13 @@ three.js scene (Flat tier: 2D equivalent).
 | Dissolving and mixtures (chemistry) | Density, floating and sinking | — | Making and selling a drink by recipe | Salt seas and lakes on the globe | Clean water, sugar in tea |
 | Reactions and rust (chemistry) | Heat and energy released | — | Repair and replacement costs | Weathering of landmarks and rocks | Bikes left in the rain |
 
+**Age bands in the web.** In the `7-10` group, cross-uses stay concrete
+(shops, bricks, sharing, buses, recipes) with no formulas: only
+multiplication, division, fractions, measurement, counting and shapes.
+Interest, rates, algebra, trigonometry and the speeds of light and sound are
+`10-18` and `18+` only. No `7-10` round uses algebra or trigonometry. In the
+chain table, `Builds on` for a `7-10` round never lists M4.
+
 **Economics here means everyday money and how trade works** (budgets, prices,
 interest, supply in a shop game), told as neutral facts and arithmetic. No
 policy debates, parties or contested economic views (content rule §7a).
@@ -106,8 +117,9 @@ policy debates, parties or contested economic views (content rule §7a).
 "use it elsewhere" card from the review deck: same skill, new setting (for
 example, the rate formula from math now times a ball on a ramp, then prices a
 lemonade stall). The card is scored like any round and counts toward mastery
-of the skill, so a skill is only fully Mastered once it has been used in at
-least two subjects.
+of the skill. A skill is fully Mastered once it has been used correctly in at
+least two different settings (another subject or everyday life); see standard
+§0.
 
 ## How it plays
 

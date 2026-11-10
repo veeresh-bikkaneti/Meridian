@@ -6,7 +6,7 @@ learning-game expert, make the required changes, push, and set a priority
 order. Steers: agent-neutral (no model names), cheaper models as subagents plus
 a council of experts, rich three.js and motion with old-device fallbacks, free
 for everyone (no revenue).
-**Scope (Tier 0, docs only):** five new files under `docs/scaling/` —
+**Scope (Tier 0, docs only):** new files under `docs/scaling/` —
 `k12-plan-review.md` (findings, owner decisions, priority order, spec gap
 table), `k12-learning-design-standard.md` (shared learning bar, incl. the
 house stack and theme to reuse), `educator-gate-rubric.md` (human educator
@@ -18,6 +18,10 @@ biology (final). Mission (owner): kids see why they learn each skill;
 every unit opens with a real problem that needs it ("why first"). No code, no
 spec branch edited, `AGENTS.md` not edited (model-neutral wording is proposed
 as its own eval-gated PR).
+Council review (learning designer, parallel-streams lead, adversarial
+skeptic) applied. Added `docs/scaling/plans/` with one self-contained plan
+and launch prompt per branch, start-after order, owned files, collisions and
+the keep-up-with-main rule.
 **Status:** draft PR open for owner review. Code gates not run (no code
 changed). No panel verdict on this tip (not self-certified). Merge: owner's
 word only.

@@ -6,7 +6,7 @@
 > boundaries. Every unit answers "why do I need this?" with a real problem
 > before it teaches the skill.
 
-**Date:** 2026-11-10 · **Branch:** `claude/k12-plan-review` (from `main` `2688d8b8`)
+**Date:** 2026-11-10 · **Branch:** reviewed on `claude/k12-plan-review`, merged to `main` on the owner's word
 **Status:** PROPOSED for owner review. Docs only; no feature code. Nothing here
 reverses an owner decision (religion, pilgrimage and mythology removed;
 no biology anywhere (reconfirmed by the owner 2026-11-10); scientist seat = disclosed Spatial Data Scientist; educator gate on
@@ -17,7 +17,9 @@ Companion files:
 - `educator-gate-rubric.md` — how a real human educator signs the gate in under
   an hour, without an educator persona.
 - `agent-instructions.md` — shared, agent-neutral rules every builder reads once.
-- `branch-prompts.md` — one copy-paste prompt per branch, in this priority order.
+- `branch-prompts.md` and `plans/` — one plan and launch prompt per branch, so each
+  branch can run as its own parallel stream, with start-after order, owned
+  files, likely collisions and the keep-up-with-main rule.
 - `subject-progression-map.md` — how math → physics → chemistry connect, with real-life use and environmental studies as the thread.
   **Headline goal (owner, 2026-11-10): teach how the subjects connect and how
   they are applied.**
@@ -47,7 +49,7 @@ the spec already flags this, and it still needs a decision before build.
 
 ## 3. Top findings (in order of impact)
 
-1. **No spec says what a child can do afterwards.** None of the 13 subject or
+1. **No spec says what a child can do afterwards.** None of the 16 subject or
    journal specs carries a learning objective per item, and the journal and
    subject specs cite no standards (only the definition specs do). Without that,
    the educator has nothing to sign against and the game cannot show learning.
@@ -103,7 +105,7 @@ the spec already flags this, and it still needs a decision before build.
 | # | Decision | Options | Recommendation |
 |---|---|---|---|
 | **D1 — RULED 2026-11-10** | Audience | Owner: "1. 7-10 2. 10-18 3. 18 and above." Written as standard §1: three groups for the whole game; nothing for under-7s. | — |
-| ~~D1 (original options)~~ | Bands for new subjects | (a) keep 5th+ for all new subjects; (b) add `5-7` and `8-10` tracks per subject now; (c) geography + journal serve the existing `5-7` / `8-10` / `11-13` bands now, new subjects start 5th+ and add younger bands later; plus, in every option, whether to add a `14-18` band to `bands.ts` | **(c)**, and add `14-18` when the first high-school content is signed — K–12 reach today through what already works. |
+| ~~D1 (original options)~~ | Bands for new subjects | (a) keep 5th+ for all new subjects; (b) add `5-7` and `8-10` tracks per subject now; (c) geography + journal serve the existing `5-7` / `8-10` / `11-13` bands now, new subjects start 5th+ and add younger bands later; plus, in every option, whether to add a `14-18` band to `bands.ts` | Superseded by the owner's ruling: three groups 7-10 / 10-18 / 18+. |
 | **D2 — RULED 2026-11-10** | What "no politics" means | Owner: no controversial topics (religion, sexuality and gender identity topics, current or contested world politics). Written as standard §7a: factual, neutral events, places, people and achievements only. | — |
 | ~~D2 (original options)~~ | What "no politics" means | (a) no historical political figures at all; (b) historical figures allowed with neutral, sourced facts only, no present-day parties, elections or living politicians' views | **(b)** — otherwise four journal specs cannot exist. |
 | **D3** | Host wrap-up format | (a) produced video clip every question (current rule); (b) real-time animated host scene by default, produced clips for journal stories only | **(b)** — same "short cartoon" feel, a fraction of the cost and size, works offline and on Flat tier. |
@@ -112,6 +114,8 @@ the spec already flags this, and it still needs a decision before build.
 | ~~D8 (original)~~ | Biology in the chain | The owner's tracker says no biology anywhere; his 2026-11-10 message names biology in the math → physics → chemistry → biology chain | Slot left empty in the map until the owner confirms. |
 | **D9** | Earth science | Its own units, or only as the environment link inside physics and chemistry | Environment link first (no new spec needed). |
 | **D7 — RULED 2026-11-10** | Live game's `5-7` and `8-10` bands | Replaced by the `7-10` group under D1; `11-13` becomes `10-18`; `18+` is added. Code change is work item 6. | — |
+| **D10** | Keeping branches current | (a) merge `origin/main` into each branch (no force-push; the default in every plan); (b) true rebase, which needs a force-push that `AGENTS.md` allows only with the owner's authorization naming the branch and push | **(a)** now; grant (b) in a branch's assignment only where a linear history matters. |
+| **D11** | Shared `BRANCH_STATUS.md` | Keep one root file (every branch keeps only its own section on top) or move to `docs/branch-status/<branch>.md` (`AGENTS.md` names this as the owner's pending decision) | Move it: 17 parallel streams will collide on one file. |
 | **D5** | Math build branch name | `feat/math-spec` or `feat/math-tricks` | Either; just pick before build. |
 | **D6** | P8 journal pick | 3 or 6 entries | Pick after screening the candidates against §7a. |
 
@@ -202,7 +206,17 @@ Every spec's captions line counts as a start on **A**, not the full block.
 Each spec branch adds the standard's §9 checklist block when it next moves;
 this branch does not edit the 17 spec branches directly.
 
-## 7. How to build this cheaply (agent-neutral)
+## 7. Parallel streams
+
+One agent per branch. The run table in `branch-prompts.md` says which streams
+start now (1, 1b manifest, 2, 4, 8, 10, 11, model-neutral) and which wait on a
+sibling. Every stream merges `origin/main` progressively. A true rebase needs a
+force-push, which `AGENTS.md` allows only with the owner's authorization for
+that branch and push (owner decision D10: grant it per branch, or keep merging).
+All branches share `BRANCH_STATUS.md` (owner decision D11: move to
+`docs/branch-status/<branch>.md`).
+
+## 8. How to build this cheaply (agent-neutral)
 
 - One orchestrator plans and reviews; **cheaper models run as subagents** for
   tests, mechanical edits, data-row generation, readability checks and visual

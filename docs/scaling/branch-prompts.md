@@ -1,4 +1,4 @@
-# Branch prompts — one copy-paste prompt per branch, in priority order
+# Branch prompts — one agent per branch, run in parallel
 
 > **Mission (owner, 2026-11-10):** most children don't understand why they
 > learn multiplication, division, algebra and trigonometry. Meridian helps
@@ -6,291 +6,271 @@
 > boundaries. Every unit answers "why do I need this?" with a real problem
 > before it teaches the skill.
 
-Paste one block into any capable coding agent. Each block is self-contained;
-the shared rules live in `agent-instructions.md` so the prompts stay short.
-Until PR `claude/k12-plan-review` merges, the shared files are read from that
-branch (the first line of every prompt does this).
+Each feature branch gets its own agent. Every branch carries the full plan
+set under `docs/scaling/plans/` (it arrives when the branch syncs with main),
+so an agent that checks out only its branch has everything: the mission,
+owner rules, age groups, subject web, house stack, token economy, its task,
+what it owns, what it waits on, and when it is done.
 
-Every subject prompt below also carries the headline goal (standard §0): each
-unit gets a "Builds on / Real life / Environment link" entry from
-`subject-progression-map.md`, a playable application, and at least one "use it
-elsewhere" round from the map's cross-application web (for example, algebra
-used in physics, money and geography).
+Only prompts 1 and 2 are approved to build or define. Prompt 1b writes a
+manifest and stops for the owner's go. Everything else is spec work only and
+stays GATED on a real educator's signed rubric.
 
-Run them in this order. Items 1–2 are approved to build or define; everything
-else is spec work only and stays GATED on a real educator's signed rubric.
+## Run table
 
----
+| # | Branch | Kind | Start after | Plan |
+|---|---|---|---|---|
+| 1 | `feat/phase0-shell-split` | Approved to build (Tier 2 code) | Nothing. Start now. | [plan](plans/feat-phase0-shell-split.md) |
+| 1b | `feat/age-groups` | Code, NOT yet approved: manifest only, then stop for the owner's go | Phase 0 slice in progress is fine; write the manifest now, code only on the owner's go. | [plan](plans/feat-age-groups.md) |
+| 2 | `feat/math-definition` | Approved definition work (docs only) | Nothing. Start now. | [plan](plans/feat-math-definition.md) |
+| 3 | `feat/math-spec` | Spec only (build follows the math sign-off) | `feat/math-definition` has its objectives and codes pushed (read them from that branch; do not copy). | [plan](plans/feat-math-spec.md) |
+| 4 | `feat/science-definitions` | Spec only | Nothing. Start now. | [plan](plans/feat-science-definitions.md) |
+| 5 | `feat/science-spec` | Spec only | `feat/science-definitions` has pushed its P7 engine choice. | [plan](plans/feat-science-spec.md) |
+| 6 | `feat/physics-spec` | Spec only | `feat/science-definitions` has pushed its P7 choice and P4/P7 split. | [plan](plans/feat-physics-spec.md) |
+| 7 | `feat/chemistry-spec` | Spec only | `feat/science-definitions` (P7 engine) and `feat/physics-spec` (energy units) are pushed. | [plan](plans/feat-chemistry-spec.md) |
+| 8 | `feat/journal-people-places-spec` | Spec only (first journal: sets the journal pattern) | Nothing. Start now. | [plan](plans/feat-journal-people-places-spec.md) |
+| 9 | `feat/journal-technology-spec` | Spec only | `feat/journal-people-places-spec` has pushed its clip pattern. | [plan](plans/feat-journal-technology-spec.md) |
+| 10 | `feat/social-studies-spec` | Spec only | Nothing. Start now. | [plan](plans/feat-social-studies-spec.md) |
+| 11 | `feat/humanities-definitions` | Spec only | Nothing. Start now. | [plan](plans/feat-humanities-definitions.md) |
+| 12 | `feat/journal-ww2-monuments-spec` | Spec only (content rule §7a applies) | `feat/journal-people-places-spec` (clip pattern) and `feat/humanities-definitions` (screened topics) have pushed. | [plan](plans/feat-journal-ww2-monuments-spec.md) |
+| 13 | `feat/journal-world-wars-spec` | Spec only (content rule §7a applies) | `feat/journal-people-places-spec` (clip pattern) and `feat/humanities-definitions` (screened topics) have pushed. | [plan](plans/feat-journal-world-wars-spec.md) |
+| 14 | `feat/journal-modern-world-spec` | Spec only (content rule §7a applies) | `feat/journal-people-places-spec` (clip pattern) and `feat/humanities-definitions` (screened topics) have pushed. | [plan](plans/feat-journal-modern-world-spec.md) |
+| 15 | `feat/journal-great-leaders-spec` | Spec only (content rule §7a applies) | `feat/journal-people-places-spec` (clip pattern) and `feat/humanities-definitions` (screened topics) have pushed. | [plan](plans/feat-journal-great-leaders-spec.md) |
+| 16 | `feat/journal-freedom-fighters-spec` | Spec only (content rule §7a applies) | `feat/journal-people-places-spec` (clip pattern) and `feat/humanities-definitions` (screened topics) have pushed. | [plan](plans/feat-journal-freedom-fighters-spec.md) |
+| 17 | `feat/general-knowledge-spec` | Spec only (last) | The subject specs above have items listed (it reviews them). | [plan](plans/feat-general-knowledge-spec.md) |
+| M | `chore/model-neutral-agents` | Process change (never Tier 0: eval discipline) | Nothing; independent. | [plan](plans/chore-model-neutral-agents.md) |
 
-## 1. `feat/phase0-shell-split` — approved to build
+Streams that can start at once: 1, 1b (manifest), 2, 4, 8, 10, 11, M. The rest
+wait on the branch named in "Start after".
+
+## Every stream keeps up with main
+
+Each plan carries the same standing rule: merge `origin/main` into the branch
+at session start, after every merge to main, and before opening or updating a
+PR; resolve conflicts; rerun checks; keep commits small and inside the files it
+owns. No rebase or force-push without the owner's authorization naming that
+branch and push (`AGENTS.md`).
+
+## Likely collisions
+
+- **All branches:** `BRANCH_STATUS.md` at the repo root (each keeps only its
+  own section on top; owner decision D11 could move this to
+  `docs/branch-status/<branch>.md`).
+- **`feat/math-definition` and `feat/math-spec`:** objectives and codes.
+- **`feat/science-definitions` with science, physics and chemistry specs:**
+  the P7 engine and the P4/P7 split.
+- **`feat/social-studies-spec` and `feat/humanities-definitions`:** §7a
+  screening.
+- **The seven journal branches:** shared clip fields.
+- **`feat/phase0-shell-split` and `feat/age-groups`:** the game shell.
+
+## Launch prompts
+
+### 1. `feat/phase0-shell-split`
 
 ```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Work only on branch feat/phase0-shell-split; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/phase0-shell-split.
+git fetch origin && git checkout feat/phase0-shell-split && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-phase0-shell-split.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: continue the Phase 0 shell split per docs/scaling/phase0-shell-split-spec.md
-on this branch (slice 1 is partial; game-app is ~8,472 lines). Split so each
-subject loads as its own lazy chunk and three.js loads only inside a chosen
-subject. Measure and record the baseline: initial JS gzip, per-chunk gzip, and
-tap-to-first-paint on the weak-device CI profile. Write the measured numbers
-into the spec as the starting budgets (they were proposals until now).
-No behaviour change to the geography game. Tier 2 per AGENTS.md: council
-manifest first, then failing tests, then the minimal change.
-Done = all AGENTS.md gates green, screen recording, BRANCH_STATUS.md updated.
-Open or update a draft PR; never merge.
+Push only feat/phase0-shell-split. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-## 1b. Age groups in `bands.ts` — new branch `feat/age-groups` (code; build only on the owner's go)
+### 1b. `feat/age-groups`
 
 ```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Cut feat/age-groups from main; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/age-groups.
+git fetch origin && git checkout -b feat/age-groups origin/main
+Read docs/scaling/plans/feat-age-groups.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: move src/game/age-profile/bands.ts from 5-7 / 8-10 / 11-13 to the owner's
-three groups 7-10 / 10-18 / 18+ (standard §1). Merge 5-7 and 8-10 into 7-10,
-widen 11-13 to 10-18, add 18+ (hardest tiers, skippable narration, no timers in
-7-10). Migrate stored profiles so no player loses progress. Group labels and
-parent-facing strings are owner copy: leave TODO placeholders and ask; never
-invent them. Never ask for an exact age. Tier 2 per AGENTS.md: council
-manifest, failing tests first, minimal change, all gates, screen recording.
-This is not yet approved to build: write the manifest and stop for the owner's
-go before code. Draft PR only; never merge.
+Push only feat/age-groups. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-## 2. `feat/math-definition` — approved definition work
+### 2. `feat/math-definition`
 
 ```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map educator-gate-rubric; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Work only on branch feat/math-definition; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/math-definition.
+git fetch origin && git checkout feat/math-definition && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-math-definition.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: finish docs/scaling/math-definition-spec.md. Add the standard's §9 block.
-For every mode in the topic map: one observable objective, its CCSS code with
-a live source, and the in-game evidence. Define math's "confident" bar for the
-existing Explored/Growing/Mastered states. Replace the separate error-type deck
-with a filter on the existing review deck (src/game/review-deck.ts). Describe
-the play surface in Full / Lite / Flat motion tiers with learning parity.
-Then assemble the educator evidence pack (rubric section "Evidence pack") for
-Times Table Races so a real teacher can sign it. Age groups are 7-10, 10-18
-and 18+ (standard §1): add a 7-10 entry tier (concrete, picture first) and an
-18+ top tier (big-number tricks and Olympiad-style depth fit there).
-Docs only; no feature code.
-Done = BRANCH_STATUS.md updated; report what the educator must sign.
+Push only feat/math-definition. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-## 3. `feat/math-spec` — spec only (build follows the math sign-off)
+### 3. `feat/math-spec`
 
 ```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Work only on branch feat/math-spec; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/math-spec.
+git fetch origin && git checkout feat/math-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-math-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: align docs/scaling/math-spec.md with the signed-to-be math definition:
-add the §9 block, point objectives and codes at the definition (no copies),
-make the review deck reuse the existing deck, add the motion-tier play surface
-(three.js number line or ten-frame with a Flat SVG fallback), add the WCAG 2.2
-AA items (tap alternative for drags, timers optional and switchable off,
-screen-reader live region). Keep the video count TO CONFIRM. Record that the
-build branch name (feat/math-spec vs feat/math-tricks) awaits owner decision D5.
-Spec only; no code. Update BRANCH_STATUS.md and report.
+Push only feat/math-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-## 4. `feat/science-definitions` — spec only
+### 4. `feat/science-definitions`
 
 ```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Work only on branch feat/science-definitions; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/science-definitions.
+git fetch origin && git checkout feat/science-definitions && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-science-definitions.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: update science-definitions-spec.md and the P4/P6/P7 briefs. Add the §9
-block. Pick ONE first predict-then-see system for P7 (recommend ramps and
-friction) and define it as an interactive three.js scene with Full / Lite /
-Flat tiers, every cause-to-effect rule sourced. Give each item an objective and
-an NGSS physical-science code (no life-science codes; no biology). Keep the
-disclosed Spatial Data Scientist seat. Spec only. Update BRANCH_STATUS.md.
+Push only feat/science-definitions. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-## 5. `feat/science-spec` — spec only
+### 5. `feat/science-spec`
 
 ```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Work only on branch feat/science-spec; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/science-spec.
+git fetch origin && git checkout feat/science-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-science-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: recast the 24 proposed "videos" in docs/scaling/science-spec.md as
-interactive three.js predict-then-see scenes (the child changes something,
-predicts, then watches). Keep video only where real footage is the point.
-Add the §9 block, an objective and NGSS PS code per item (or UNVERIFIED), the
-motion tiers with learning parity, and the review-deck hookup. Keep 24 as
-PROPOSED. No biology. Spec only. Update BRANCH_STATUS.md.
+Push only feat/science-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-## 6. `feat/physics-spec` — spec only
+### 6. `feat/physics-spec`
 
 ```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Work only on branch feat/physics-spec; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/physics-spec.
+git fetch origin && git checkout feat/physics-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-physics-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: in docs/scaling/physics-spec.md add the §9 block, an objective and NGSS
-PS code per item, three.js scene descriptions with Full / Lite / Flat tiers,
-and the P4/P7 split (qualitative here, formulas in P4). Propose a count but
-mark it PROPOSED; never decided. Spec only. Update BRANCH_STATUS.md.
+Push only feat/physics-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-## 7. `feat/chemistry-spec` — spec only
+### 7. `feat/chemistry-spec`
 
 ```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Work only on branch feat/chemistry-spec; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/chemistry-spec.
+git fetch origin && git checkout feat/chemistry-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-chemistry-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: in docs/scaling/chemistry-spec.md add the §9 block, an objective and
-NGSS PS code per item, and a safety rule: combine-and-watch happens only on
-screen and never reads as at-home instructions. Reuse the P7 predict-then-see
-engine (shared three.js scene shell, tiers, parity). Propose a count marked
-PROPOSED. No biology. Spec only. Update BRANCH_STATUS.md.
+Push only feat/chemistry-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-## 8. `feat/journal-people-places-spec` — spec only (first journal)
+### 8. `feat/journal-people-places-spec`
 
 ```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Work only on branch feat/journal-people-places-spec; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/journal-people-places-spec.
+git fetch origin && git checkout feat/journal-people-places-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-journal-people-places-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: in docs/scaling/journal-people-places-spec.md, for each of the 5
-proposed clips add: band, an objective, a C3 Geography or History code (live
-source, or UNVERIFIED), one read-aloud retrieval check about something the clip
-shows (feeds the review deck), captions + transcript, and a short three.js
-globe fly-to that places the story on the map before the clip (Flat tier: a
-2D map pin). Keep 5 as PROPOSED. Spec only. Update BRANCH_STATUS.md.
+Push only feat/journal-people-places-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-## 9. `feat/journal-technology-spec` — spec only
+### 9. `feat/journal-technology-spec`
 
 ```
-Same setup and MISSION lines as prompt 8, branch feat/journal-technology-spec.
-Task: same additions as prompt 8 for its 3 proposed clips (objective, C3 code,
-retrieval check, captions, globe fly-to with Flat fallback). Keep 3 as PROPOSED.
-Spec only. Update BRANCH_STATUS.md.
-```
-
-## 10. `feat/social-studies-spec` — spec only
-
-```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Work only on branch feat/social-studies-spec; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/journal-technology-spec.
+git fetch origin && git checkout feat/journal-technology-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-journal-technology-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: in docs/scaling/social-studies-spec.md add the §9 block and make the
-mode map-based on the existing geography engine (place, region, route,
-compare). Each item: objective, C3 code, review-deck hookup, motion tiers.
-Propose a count marked PROPOSED. Screen every item against the content rule
-(standard §7a) and log cut items with the reason. Spec only. Update BRANCH_STATUS.md.
+Push only feat/journal-technology-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-## 11. `feat/humanities-definitions` — spec only
+### 10. `feat/social-studies-spec`
 
 ```
-Same setup and MISSION lines as prompt 10, branch feat/humanities-definitions.
-Task: add the §9 block to humanities-definitions-spec.md; give each topic an
-objective and C3 code; confirm religion and mythology stay fully removed;
-screen every topic against the content rule (standard §7a) and log cut items
-with the reason. Spec only. Update BRANCH_STATUS.md.
-```
-
-## 12–16. History journal specs — spec only, content rule §7a applies
-
-Owner ruled D2 on 2026-11-10 (standard §7a). One prompt, five branches:
-
-```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Work only on branch <BRANCH>; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/social-studies-spec.
+git fetch origin && git checkout feat/social-studies-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-social-studies-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: screen docs/scaling/<FILE> against the content rule (standard §7a): no
-religion, no sexuality or gender identity topics, no current or contested
-politics; people are told through documented achievements and places, never
-their politics; when in doubt, cut it and log why. Then for each kept clip add: band, objective, C3 History code (live source
-or UNVERIFIED), one read-aloud retrieval check, captions + transcript, a globe
-fly-to with Flat fallback, and the tone rules (remembrance, no graphic detail,
-no battle re-enactment). Keep the clip count PROPOSED. Spec only.
-Update BRANCH_STATUS.md.
+Push only feat/social-studies-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
-| # | `<BRANCH>` | `<FILE>` | Proposed clips |
-|---|---|---|---|
-| 12 | `feat/journal-ww2-monuments-spec` | `journal-ww2-monuments-spec.md` | 2 |
-| 13 | `feat/journal-world-wars-spec` | `journal-world-wars-spec.md` | 2 |
-| 14 | `feat/journal-modern-world-spec` | `journal-modern-world-spec.md` | 3 |
-| 15 | `feat/journal-great-leaders-spec` | `journal-great-leaders-spec.md` | 2 |
-| 16 | `feat/journal-freedom-fighters-spec` | `journal-freedom-fighters-spec.md` | 2 |
-
-## 17. `feat/general-knowledge-spec` — spec only (last)
+### 11. `feat/humanities-definitions`
 
 ```
-Repo veeresh-bikkaneti/Meridian. First read, once:
-git fetch origin claude/k12-plan-review && for f in agent-instructions k12-learning-design-standard subject-progression-map; do git show origin/claude/k12-plan-review:docs/scaling/$f.md; done
-Follow them. Work only on branch feat/general-knowledge-spec; push only that branch.
-MISSION: kids should see why they learn each skill (multiplication, division,
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/humanities-definitions.
+git fetch origin && git checkout feat/humanities-definitions && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-humanities-definitions.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
-Every unit opens with a real problem that needs the skill.
-
-Task: in docs/scaling/general-knowledge-spec.md add the §9 block and reframe
-general knowledge as a mixed review round that interleaves items the child has
-already met in other subjects (from the review deck), rather than new trivia.
-Each new item still needs an objective and a code. Propose a count marked
-PROPOSED. No biology. Spec only. Update BRANCH_STATUS.md.
+Push only feat/humanities-definitions. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```
 
----
-
-## Model-neutral agent instructions (own PR, not a branch above)
+### 12. `feat/journal-ww2-monuments-spec`
 
 ```
-Repo veeresh-bikkaneti/Meridian. Cut branch chore/model-neutral-agents from main.
-Edit AGENTS.md ("Worker roles run on the cheapest capable model") and
-docs/ops/agent-council-protocol.md (seat table) to remove every vendor and
-model name. Replace with: "The orchestrator uses the strongest model the
-builder can afford; worker roles use the cheapest capable model, orchestrated
-as subagents; design calls go to a council of experts that reviews summaries
-and diffs, not bulk output." This file is never Tier 0: follow AGENTS.md
-"Prompt, skill, and persona changes — eval discipline" in full. Open a draft
-PR; never merge.
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/journal-ww2-monuments-spec.
+git fetch origin && git checkout feat/journal-ww2-monuments-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-journal-ww2-monuments-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Push only feat/journal-ww2-monuments-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+```
+
+### 13. `feat/journal-world-wars-spec`
+
+```
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/journal-world-wars-spec.
+git fetch origin && git checkout feat/journal-world-wars-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-journal-world-wars-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Push only feat/journal-world-wars-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+```
+
+### 14. `feat/journal-modern-world-spec`
+
+```
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/journal-modern-world-spec.
+git fetch origin && git checkout feat/journal-modern-world-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-journal-modern-world-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Push only feat/journal-modern-world-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+```
+
+### 15. `feat/journal-great-leaders-spec`
+
+```
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/journal-great-leaders-spec.
+git fetch origin && git checkout feat/journal-great-leaders-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-journal-great-leaders-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Push only feat/journal-great-leaders-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+```
+
+### 16. `feat/journal-freedom-fighters-spec`
+
+```
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/journal-freedom-fighters-spec.
+git fetch origin && git checkout feat/journal-freedom-fighters-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-journal-freedom-fighters-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Push only feat/journal-freedom-fighters-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+```
+
+### 17. `feat/general-knowledge-spec`
+
+```
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch feat/general-knowledge-spec.
+git fetch origin && git checkout feat/general-knowledge-spec && git merge --no-edit origin/main
+Read docs/scaling/plans/feat-general-knowledge-spec.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Push only feat/general-knowledge-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
+```
+
+### M. `chore/model-neutral-agents`
+
+```
+Repo veeresh-bikkaneti/Meridian. You are the only agent on branch chore/model-neutral-agents.
+git fetch origin && git checkout -b chore/model-neutral-agents origin/main
+Read docs/scaling/plans/chore-model-neutral-agents.md and follow it; it lists the shared rules to read.
+MISSION: kids see why they learn each skill (multiplication, division,
+algebra, trigonometry) through real problems, across subject boundaries.
+Push only chore/model-neutral-agents. Never push to main, merge a PR, rebase, force-push or delete a branch.
 ```

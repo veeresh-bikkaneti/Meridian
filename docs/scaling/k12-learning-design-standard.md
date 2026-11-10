@@ -1,6 +1,6 @@
 # K-12 Learning Design Standard — the bar every scaling spec meets
 
-**Status:** PROPOSED (review branch `claude/k12-plan-review`). Owner approval is
+**Status:** PROPOSED (merged to main by the owner, 2026-11-10). Owner approval is
 the per-PR merge word. Nothing here reverses an owner decision already made:
 religion, pilgrimage and mythology stay out; no biology anywhere (reconfirmed
 by the owner 2026-11-10); the scientist
@@ -14,7 +14,7 @@ names what a child can *do* after a clip or round, the journal and subject specs
 cite no standards, none ties play to the spaced review that `main` already has,
 none states an accessibility floor, and none says how three.js and motion scale
 down on old devices. This standard is one shared section every spec cites
-instead of re-inventing it 13 times. Each spec adds only its own deltas
+instead of re-inventing it 16 times. Each spec adds only its own deltas
 (see the gap table in `k12-plan-review.md`).
 
 **Ground rules from the owner that this standard carries everywhere**
@@ -49,15 +49,18 @@ This is the first objective of every unit, above its subject objective:
   child uses the skill in a real setting (a ramp on a hillside, a mixture in a
   kitchen, a measurement on a river), with the Flat tier as a 2D equivalent.
 - **Why first.** Every unit opens with a real problem that needs the skill,
-  before any teaching, and answers "why does this matter?" within the first
-  minute. The skill arrives as the tool that solves the problem. Starting in
+  before any teaching. The problem appears within the first 5 seconds (§3
+  hook), and the one-sentence answer to "why does this matter?" follows within
+  the first minute. A problem *needs* the skill when the child cannot solve it
+  well by counting, guessing or an earlier skill alone. The skill arrives as
+  the tool that solves the problem. Starting in
   the `7-10` group, for example:
   - multiplication and division: sharing snacks fairly, packing boxes, how
     many buses a school trip needs, building with equal rows of bricks;
   - fractions: cutting a pizza or a map into fair parts;
   - algebra (10-18 and up): how long a trip takes, what to charge at a stall,
     the missing number in a recipe scaled up;
-  - trigonometry (10-18 and up): how tall a tree or tower is from its shadow,
+  - trigonometry (10-18 and up): how tall a flagpole or tower is from its shadow,
     how steep a ramp is safe, which way a ship or plane must turn on the map.
 - **Think beyond the subject.** The opening problem may come from any area
   (sport, travel, building, money, maps, weather); the subject label comes
@@ -65,8 +68,10 @@ This is the first objective of every unit, above its subject objective:
 - **Use it elsewhere.** Every unit has at least one round that applies its skill
   inside another subject (algebra in physics, economics and geography; physics
   in chemistry and the environment), from the cross-application web in
-  `subject-progression-map.md`. A skill counts as fully Mastered only once it
-  has been used in at least two subjects.
+  `subject-progression-map.md`. A skill counts as fully Mastered once it has
+  been used correctly in at least two different settings (another subject or
+  everyday life). Until later units exist, an everyday-life round is enough,
+  so the first units can finish.
 - The game sees it: the bridge, application and use-it-elsewhere rounds are
   scored like any other round and feed the same mastery record.
 
@@ -79,7 +84,7 @@ and the live geography game alike. Nothing is made for under-7s.
 | Group | Grades (approx.) | What every mode must give this group |
 |---|---|---|
 | **7-10** | 2–5 | Read-aloud on by default; short sentences, everyday words; big tap targets; no timers; concrete objects and pictures first (the depth ladder's first rungs). |
-| **10-18** | 5–12 | Grade-level text, read-aloud available; predict-then-test, multi-step tasks; timers optional; the 14–18 register (labs, escape-room cases, humour that is not childish) at the upper tiers. |
+| **10-18** | 5–12 | Grade-level text, read-aloud available; predict-then-test, multi-step tasks; timers optional; the older-teen register (labs, escape-room cases, humour that is not childish) at the upper tiers. |
 | **18 and above** | adults | Hardest tiers; host narration optional and skippable; smart, not childish copy; big-number tricks and Olympiad-style depth live here. |
 
 - A 10-year-old sits on the line between the first two groups. The age profile
@@ -131,7 +136,8 @@ Every mode follows one loop. A spec that cannot map its play onto it is not
 ready:
 
 1. **Hook: a real problem that needs the skill** — 3–5 seconds ("The class
-   needs buses for 92 kids. How many?"). This is the "why" (§0).
+   trip has 24 kids and each bus seats 6. How many buses?", shown as 4
+   pictured buses of 6 for the youngest tier). This is the "why" (§0).
 2. **Predict / attempt** — the child commits an answer *before* seeing it
    (retrieval and prediction are where the learning happens).
 3. **See** — the world responds: the ball rolls, the pin lands, the number
@@ -213,7 +219,7 @@ home globe and confetti, and the same easing curves for any 2D motion.
 
 | Tier | When | What renders |
 |---|---|---|
-| **Full** | WebGL2 available, ≥ 4 GB device memory hint, first frames hold ≥ 50 fps | three.js scenes with lighting, particles, and physics-driven motion. |
+| **Full** | WebGL2 available, ≥ 4 GB device memory hint, first frames hold ≥ 50 fps (thresholds PROPOSED, set from the Phase 0 measurement) | three.js scenes with lighting, particles, and physics-driven motion. |
 | **Lite** | WebGL available but weak device, or Full drops below 30 fps for 3 s | Same scenes, low-poly, no shadows or post-processing, capped at 30 fps, smaller textures. |
 | **Flat** | No WebGL, `prefers-reduced-motion: reduce`, Save-Data, or player choice | 2D SVG/CSS with short, gentle transitions; every learning event still shows (the ball still reaches the bottom — as a stepped diagram). |
 
@@ -308,7 +314,7 @@ These specs may be built by any capable coding agent. To keep cost low:
   **cheaper models orchestrated as subagents**. Specs never hard-code a vendor
   or model name.
 - **Council of experts** for design calls: a small panel of reviewer roles
-  (architect, designer, game developer, educator rubric, adversarial skeptic)
+  (architect, game designer, accessibility reviewer, adversarial skeptic, plus the human educator rubric)
   reviews the spec, not the full code dump. Councilors read summaries and diffs;
   only the seat whose call it is reads the raw file.
 - **Token budget per task** follows AGENTS.md tiers; a spec states its tier.
