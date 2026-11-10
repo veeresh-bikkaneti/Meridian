@@ -4,7 +4,7 @@ Stream 18 of the scaling push. **Process change — never Tier 0.** Changes
 `AGENTS.md` and `docs/ops/agent-council-protocol.md`, so it follows
 "Prompt, skill, and persona changes — eval discipline" in full and needs
 owner review and the owner's explicit per-PR merge word.
-Docs only. Base: origin/main `8dee5bad`.
+Docs only. Base: origin/main `8dee5bad`, synced to `a265f5f6` (only `contracts.md` changed; grader re-run, identical).
 
 **Status: READY FOR OWNER REVIEW (draft PR). Behavioural eval NOT RUN (see open).**
 
