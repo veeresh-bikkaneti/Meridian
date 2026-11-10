@@ -1,5 +1,118 @@
 # Physics Spec — P4 Algebra-in-Physics
 
+> **Stage A addendum (2026-11-10).** The 14 physics families from the retired
+> `feat/science-spec` list now live here as predict-then-see scenes, not as
+> videos. The source of truth is [`docs/scaling/physics/items.json`](physics/items.json)
+> (contract I2). Sources and the cause-then-effect table are in
+> [`docs/scaling/physics/sources.md`](physics/sources.md). Check:
+> `node --test docs/scaling/physics/items.test.mjs`.
+> Where the P4 sections below disagree (5th-grade-only, generated videos,
+> formulas inside the youngest group), this addendum wins. Build stays
+> **GATED**. Stage B has not started.
+
+## Stage A — predict-then-see scenes
+
+**Count: PROPOSED 27 rows** across the 14 families. Proposed only. The signed
+definition may drop, split, or close any row. Two rows (`physics:pulley:closed`,
+`physics:wheel:closed`) are closed on purpose: no physical-science performance
+expectation was found for those effects, so they are not taught.
+
+**Groups (standard §1).** `7-10` uses measurement and multiplication only.
+`10-18` and `18+` add rates and trigonometry. No `7-10` row uses algebra or
+trigonometry. A grade-5 code may sit in `7-10`. Grade-1 codes `1-PS4-1` and
+`1-PS4-3` are flagged in the sources for the educator: the group is grades 2–5.
+
+**How a round plays (standard §3).** Hook with the `why` problem, the child
+taps a prediction, the scene shows the cause and the effect, the host says
+one or two sentences, a miss gets one retry then the review deck. Choices are
+taps. Nothing is a generated video. Full, Lite, and Flat tiers (standard §5.2)
+show the same cause and the same effect. Flat is a stepped diagram. three.js
+loads with a dynamic import inside the scene, only after the player picks
+physics. The host cartoon clip in the older sections below conflicts with
+"scenes, not videos." That conflict is owner decision D3. Until the owner
+speaks, the explain step is the scene plus two sentences, not a new clip.
+
+**v1 scene when the build gate lifts.** `physics:ramp:faster-hits-harder`
+(safe ramp: which ball moves the cup farther). Not built in this stage.
+
+**Mastery.** A first-try correct prediction is "confident" (standard §4).
+Mastered also requires a correct use-it-elsewhere round (standard §0). Misses
+use the existing review deck and the `[0, 1, 3, 7, 14, 30]`-day ladder.
+Wiring into `src/game/review-deck.ts` is integrator-only (contract I2). Until
+then a subject records misses in its own module. No module is built yet.
+
+**Council (roles, not a signature).** Architect: items are I2 data, one scene
+family, no second engine. Game designer: one variable, predict before the
+motion, closed card when the effect has no source. Accessibility: tap only,
+no timer in `7-10`, the canvas gets a live region at build time. Skeptic:
+steeper-is-faster, heavier-falls-faster, rough-always-shorter, pole names,
+and simple-machine advantage are cut. Recorded in `sources.md`. This council
+does not sign the educator rubric.
+
+### Item index
+
+The JSON holds the fields. This index is the same ids, for review.
+
+| Id | Group | Why it opens | Standard | Builds on | Use it elsewhere |
+|---|---|---|---|---|---|
+| `physics:push:which-way` | 7-10 | A box blocks a door. Which way does a stronger push move it? | 3-PS2-1 | — | everyday life: a stuck gate |
+| `physics:push:equal-pushes` | 7-10 | The line is 8 tiles away and one push is 2 tiles. | 3-PS2-2 | tables facts; which-way | geography: equal steps on a path |
+| `physics:drop:down` | 7-10 | A ball on a shelf must land in the bucket. | 5-PS2-1 | which-way | everyday life: a tipped jug |
+| `physics:friction:measure-slide` | 7-10 | Will the next equal push stop at the same mark? | 3-PS2-2 | length in centimetres; which-way | everyday life: a chair sliding toward a table |
+| `physics:ramp:faster-hits-harder` | 7-10 | Which ball moves the cup farther? | 4-PS3-1 | which-way; longer-than | everyday life: a wagon bumping a bucket |
+| `physics:arrive:equal-steps` | 7-10 | Which cart's equal steps reach the line first? | 3-PS2-2 | tables facts; equal-pushes | geography: walkers and a bridge |
+| `physics:lever:seesaw` | 7-10 | You push one end of a board down. Which end goes down? | 3-PS2-2 | which-way | everyday life: a playground see-saw |
+| `physics:pulley:closed` | 7-10 | A bucket must come up. The round is closed. | UNVERIFIED | seesaw | environment: a well bucket, not played |
+| `physics:wheel:closed` | 7-10 | A cart must roll. The round is closed. | UNVERIFIED | which-way | everyday life: a market cart, not played |
+| `physics:balance:tug` | 7-10 | When the two pushes match, which way does the gate go? | 3-PS2-1 | which-way | everyday life: a stuck gate |
+| `physics:energy:wound-moves` | 7-10 | Which toy car moves, the wound one or the other? | 4-PS3-4 | which-way | everyday life: a wound music box |
+| `physics:shadow:blocks` | 7-10 | Which sheet is opaque, and which is transparent? | 1-PS4-3 | — | everyday life: sheets in front of a lamp |
+| `physics:mirror:sends-back` | 7-10 | Which object sends the lamp light back? | 1-PS4-3 | shadow | everyday life: a mirror across a room |
+| `physics:sound:pluck` | 7-10 | Which string makes a sound? | 1-PS4-1 | — | everyday life: a string on a box |
+| `physics:magnet:flip` | 7-10 | After one magnet is turned, does the direction change? | 3-PS2-3 | which-way | everyday life: a cabinet door |
+| `physics:push:mass` | 10-18 | Same push, more boxes. Which motion changes more? | MS-PS2-2 | which-way | economics: a heavier delivery cart |
+| `physics:push:table` | 10-18 | Mass matches, net force does not. Which row changes more? | HS-PS2-1 | mass; one-step equations | geography: a sled on a straight path |
+| `physics:ramp:higher-stored` | 10-18 | Which cart on the hill has more stored energy? | MS-PS3-2 | faster-hits-harder | everyday life: a book on a high shelf |
+| `physics:ramp:slope-ratio` | 10-18 | Two ramps, rise and run given. Which is steeper? | HSG.SRT.C.8 | missing side; faster-hits-harder; right angle | geography: a tower and its shadow, lengths given |
+| `physics:arrive:unit-rate` | 10-18 | Two distance-and-time cards. Who reaches the bridge first? | 6.RP.A.3b | constant speed; equal-steps | economics: price for one metre of rope |
+| `physics:energy:transfer` | 10-18 | The ball stops and the cup slides. Where did the motion go? | MS-PS3-5 | faster-hits-harder | everyday life: a ball hitting a cup |
+| `physics:sound:medium` | 10-18 | Air path or empty gap. Which one carries the sound? | MS-PS4-2 | pluck | geography: a shout that still needs air |
+| `physics:mirror:three-ways` | 10-18 | The card's key says reflect, absorb, or transmit. | MS-PS4-2 | sends-back | everyday life: window, curtain, mirror |
+| `physics:magnet:closer` | 10-18 | Which pair of magnets pulls harder? | MS-PS2-3 | flip | everyday life: a knife and a rack magnet |
+| `physics:ramp:adult-ratio` | 18+ | Two crane booms. Which drawing is steeper? | HSG.SRT.C.8 | slope-ratio | economics: two roof slopes and a stated cost step |
+| `physics:arrive:adult-time` | 18+ | The card states distance = speed × time. The time is missing. | HSA.CED.A.4 | rearrange; unit-rate | economics: how long a delivery takes |
+| `physics:energy:missing` | 18+ | The card states the missing energy change. What is it? | HS-PS3-1 | transfer; rearrange | everyday life: a workshop lift card |
+
+```
+K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+- Why first (§0): unit opens with a real problem that needs the skill; "why does this matter?" answered in the first minute: [x] every row's why is that problem. Closed rows say why they are not played.
+- Headline goal (§0): bridge to the previous subject + playable real-life application: [x] buildsOn is the bridge. The why is the application. Map chain Ph1–Ph4.
+- Use-it-elsewhere round in at least one other subject (cross-application web): [x] one useElsewhere string on every row.
+- Bands served: [x] 7-10, 10-18, and 18+ and why — standard §1. 7-10 is measurement and multiplication. 10-18 and 18+ add rates and trigonometry.
+- Objective per item, observable verb, "shown by": [x] items.json
+- Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [x] sources.md, fetched 2026-11-10. Pulley and wheel are UNVERIFIED and closed.
+- Loop mapped: hook / predict / see / explain / retry: [x] §3, tap then scene. Not a video.
+- Mastery "confident" bar for this subject: [x] correct prediction on the first try, plus one use-it-elsewhere round to reach Mastered.
+- Review-deck hookup (same deck, same ladder): [x] same ladder. Integrator wires review-deck.ts. Not wired in this stage.
+- Post-clip retrieval check (journal + any video): [x] no clip. The prediction is the check. N/A for video.
+- Motion tiers: Full / Lite / Flat described, learning parity stated: [x] §5.2. Same cause and effect on every tier. Not built.
+- Accessibility: captions, tap alternative, no-timer default, SR live region: [x] taps only; no timer in 7-10; live region is a Stage B requirement. No captions because there is no clip.
+- Privacy: no PII, no identifiers, local-only records: [x] §7. No accounts, no free text.
+- Content screen (§7a) passed; cut items logged with reason: [x] sources.md cut log. No biology.
+- Free: no revenue features; asset licences recorded: [x] no assets yet. Open licence required at Stage B.
+- Educator rubric (docs/scaling/educator-gate-rubric.md) attached: [x] blank sign-off below. Not signed. Gate stays closed.
+```
+
+```
+EDUCATOR SIGN-OFF
+Spec: docs/scaling/physics-spec.md (Stage A addendum, 2026-11-10)
+Signer: [name], [role], [band(s)], [subject]
+Date: [YYYY-MM-DD]
+Result: Approved / Approved after fixes / Not approved
+Fixes: [list with owner]
+Signature (typed name is fine): [ ]
+```
+
 ## Header
 
 | Field | Value |
@@ -139,7 +252,7 @@ Done when: (a) Algebra Detective plays end to end per the GeoDetective contract 
 ## UNVERIFIED log (this spec)
 
 - Repo/live-site identity: per project record (MEMORY.md), confidence HIGH as a project-internal fact; live web search 2026-11-10 did not independently verify the repo URL — no web citation claimed.
-- Video count: TO CONFIRM — no number is stated anywhere in this spec.
+- Video count: TO CONFIRM — the sections below do not set a video count. The Stage A addendum replaces videos with scenes and states a separate row count, PROPOSED 27, which is not a decision.
 - Every sub-topic above is structure only; its curriculum anchoring and every physics formula are UNVERIFIED until the signed definition cites them per band and §0 verification is done at build time.
 - Load-budget numbers (250 KB / 500 KB gzip): PROPOSAL, not measured (lens §12 flag 11).
 - No other factual claims are made in this spec.
