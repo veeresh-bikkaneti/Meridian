@@ -1,175 +1,191 @@
-# Journal P8 — World War Monuments
+# Journal — World War monuments (remembrance)
 
-- **Topic:** World War monuments (2 videos)
-- **Status:** GATED (educator sign-off in writing required) + PENDING OWNER PICK (5 vs 10 — this spec covers all 10 candidates across the 5 specs, so either pick works)
+- **Status:** GATED. Spec only. No clips until a named educator signs and the owner lifts the build gate.
 - **Branch:** `feat/journal-ww2-monuments-spec`
-- **Proposed video count:** 2 — PROPOSED, pending owner approval. Never present as decided.
+- **Proposed clip count:** 2 — PROPOSED, not decided.
 - **Date:** 2026-11-10
-- **Sources consulted:**
-  - `~/workspace/journal-p8-candidates.md` (2026-11-10, 10 candidates with sourced facts)
-  - `~/workspace/journal-106-coverage.md` (audit vs main `f37dea50`, 2026-11-10)
-  - `~/workspace/meridian-scaling-lens-breakdown.md` §7 P8, lines 1249–1424 (gate wording)
-  - Live web verification: none needed beyond the candidates file — every fact below reuses a
-    sourced fact from the candidates file. No new fact was introduced.
+- **Contract:** I5 in `docs/scaling/contracts.md`. Rows: `docs/scaling/journals/ww2-monuments/clips.json`.
+- **Standard:** cite `docs/scaling/k12-learning-design-standard.md` by section. Do not copy it.
 
-## Expert seats
+Both kept places are quiet places of remembrance. The clip teaches a math question a child can check. It does not replay a battle.
 
-- **Historian seat — OWNS this topic.** World history, world wars, and social studies sit with the
-  Historian. This spec (WWII monuments) is owned by the HISTORIAN seat.
-- **Educator seat — BLOCKED (no named educator exists).** One educator sign-off per topic, as
-  usual. The signer must approve, in writing:
-  1. The per-story production process (narration script drawn only from the entry's facts +
-     what is visible; no invented facts; "Hey kids, have you heard about this place?" opening;
-     bed at 30%; limiter at −1 dB on any re-mix).
-  2. The WWII content in these two stories — sensitivity + correctness for a kids' audience
-     (a wrong or careless telling of a war story is the failure this packet cannot absorb).
-  3. The age-appropriateness of the tone flags in this spec (gentle remembering, no battle
-     re-enactment, no graphic detail).
-  Until a named educator signs, this spec stays GATED and no batch production starts.
-- **Five lenses** (architect, UI/UX designer, game developer, researcher, educator) apply as
-  usual per §7 P8.
-- Biology exclusion: not applicable — no biology in P8 topics; nothing removed.
+## What changed from the previous draft
 
-## Topic scope
+The previous draft on this branch led with rows of white crosses, D-Day landings, and a death count of 1,102. Those beats are cut. See the screen log. Facts below were read from the live pages on 2026-11-10, not from that draft.
 
-Two journal entries about World War II monuments — places built to remember people who died
-in the war, told as human stories for kids aged 5th grade and up. Scope is remembrance, not
-war: no battle re-enactment, no weapons, no graphic detail, no political framing (see the
-no-politics rule below).
+## Clips kept (2, PROPOSED)
 
-## Why this is not in the 106
+| id | group | opens with | scored check |
+|---|---|---|---|
+| `ww2-monuments:normandy-where` | 7-10 | how many years ago, and where | `labeledYear - 1956` |
+| `ww2-monuments:arizona-how-far` | 10-18 | how far, and where | 18 steps of 10 feet, 4 feet left |
 
-Per `~/workspace/journal-106-coverage.md` (audit §5, "World War monuments — MISSING"): **no
-WWII monument is in the 106.** The only borderline entries are Memorial Stadium (named for
-Nebraskans lost in war — but the entry is about the football stadium, not a monument) and the
-SAC Museum (Cold War bombers/missiles, not WWII). Both verified "not in the 106" live against
-the manifest on 2026-11-10: neither "Normandy American Cemetery" nor "USS Arizona Memorial"
-appears as a manifest key. This category is wholly missing, so both videos are additive only —
-no existing story is touched, per §7.
+`labeledYear` is the calendar year the game shows on that day. The spec does not store a fixed gap. Example only, not a fact: if the label is 2026, then 2026 − 1956 = 70. 184 = 18 × 10 + 4.
 
-## Video list
+No algebra and no trigonometry in the 7-10 clip. No trigonometry item at all: no sourced angle or height, so none was invented.
 
-### 1. Normandy American Cemetery — Omaha Beach, France
+### Age ladder (same two movies)
 
-- **Kid hook:** rows of white crosses on a cliff above the beach where boats landed on D-Day.
-- **Visible verb:** waves rolling onto Omaha Beach below the cliff; flags waving over the rows
-  of white crosses.
-- **Key facts:**
-  1. The cemetery is in Colleville-sur-Mer, France, on a cliff above Omaha Beach.
-     — Source: https://www.abmc.gov/cemeteries-memorials/about-normandy-american-cemetery/
-     — Confidence: **HIGH** (ABMC, official; basis: the American Battle Monuments Commission
-     is the cemetery's custodian).
-  2. It holds the graves of almost 9,400 US dead, most from the D-Day landings and the
-     operations that followed.
-     — Source: https://www.abmc.gov/cemeteries-memorials/about-normandy-american-cemetery/
-     — Confidence: **HIGH** (ABMC, official).
-- **Tone flag:** remembrance, not battle. The story is about the quiet rows of crosses and
-  the people remembered there — never a re-enactment of the landings.
+| Group | Normandy movie | Arizona movie |
+|---|---|---|
+| 7-10 | Scored year gap. Count back by tens, then ones. No timer. | If a younger player meets this movie: "Is 184 feet longer than 100 feet?" Answer yes. |
+| 10-18 | Same year gap, multi-digit subtraction, no ten-frame. | Scored: 18 steps, 4 feet left. |
+| 18+ | Extra card, not a new movie: how many tens are in the gap, and what is left over? | Extra card: groups of 8 feet in 184. 8 × 23 = 184, so 23 groups and 0 left. Eight is a problem unit, not a site fact. |
 
-### 2. USS Arizona Memorial — Pearl Harbor, Hawaii, USA
+Grade 5 sits on the line between 7-10 and 10-18 (standard §1). The Normandy code is an end-of-grade-5 geography indicator, so it is tagged 7-10. The Arizona code is end-of-grade-8, so it is tagged 10-18.
 
-- **Kid hook:** a white bridge floating over a sunken battleship you can still see below.
-- **Visible verb:** the sunken ship visible in the clear water beneath the white memorial
-  bridge.
-- **Key facts:**
-  1. The memorial marks the resting place of 1,102 of the 1,177 sailors and Marines killed
-     on USS Arizona on 7 December 1941.
-     — Source: https://www.nps.gov/perl/learn/historyculture/uss-arizona.htm and
-     https://en.wikipedia.org/wiki/USS_Arizona_Memorial
-     — Confidence: **HIGH** (NPS official + Wikipedia; basis: NPS is the memorial's manager).
-  2. The memorial was dedicated in 1962.
-     — Source: https://en.wikipedia.org/wiki/USS_Arizona_Memorial
-     — Confidence: **HIGH**.
-- **Tone flag:** it is a tomb — the story must be gentle, about remembering, not about the
-  explosion. No explosion imagery, no battle sound. Quiet water, white bridge, remembering.
+## I5 rows
 
-## Agent prompt (copy-paste)
+Machine-checked by `docs/scaling/journals/ww2-monuments/clips.test.mjs`.
+
+### 1. Normandy American Cemetery
+
+- **id:** `ww2-monuments:normandy-where`
+- **group:** 7-10
+- **objective:** After this, a child in the 7-10 group can compute how many years ago nineteen fifty-six was, shown by a year-difference equal to the labeled year minus 1956.
+- **standard:** `D2.Geo.1.3-5` (partial fit, below). Math code: UNVERIFIED.
+- **why:** How many years ago was this quiet place above the beach dedicated, and where is it?
+- **place:** 49.358627, −0.854686 — Normandy American Cemetery, Colleville-sur-Mer, France
+- **file (not made):** `public/videos/journals/ww2-monuments/normandy-where.mp4`
+- **captions:** `docs/scaling/journals/ww2-monuments/normandy-where.vtt`
+- **retrieval (read aloud):** "How many years ago was this place dedicated?" Answer rule: `labeledYear - 1956`. Tap choices, never free text. Distractors: the true gap plus 10, the true gap minus 10, and the true gap plus 1. No timer.
+
+### 2. USS Arizona Memorial
+
+- **id:** `ww2-monuments:arizona-how-far`
+- **group:** 10-18
+- **objective:** After this, a child in the 10-18 group can divide one hundred eighty-four feet into steps of ten feet, shown by answering 18 steps with 4 feet left.
+- **standard:** `D2.Geo.1.6-8` (partial fit, below). Math code: UNVERIFIED.
+- **why:** How far is it from one end of this memorial to the other, and where is it?
+- **place:** 21.364817, −157.949918 — USS Arizona Memorial, Pearl Harbor, Hawaiʻi
+- **file (not made):** `public/videos/journals/ww2-monuments/arizona-how-far.mp4`
+- **captions:** `docs/scaling/journals/ww2-monuments/arizona-how-far.vtt`
+- **retrieval (read aloud):** "How many steps of ten feet is one hundred eighty-four feet, and what is left over?" Answer: "18 steps, with 4 feet left." Ten feet is the problem's step, not a claim about how visitors walk.
+
+## Sources (accessed 2026-11-10)
+
+Spoken lines use only the facts in the "used" column.
+
+| Fact | Source | Used in speech? |
+|---|---|---|
+| Normandy American Cemetery, Colleville-sur-Mer, France. Dedicated 1956. | ABMC, https://www.abmc.gov/normandy — "Dedicated 1956", town and country in the page heading | Year in the clip. Place name in the host line and the pin, not as the scored answer. |
+| "overlooking the beach" | Same page: "An orientation table overlooking the beach…" | Glossed as "above the beach." The rest of that sentence (landings) is cut. |
+| 172.5 acres; half-mile access road; burials 9389; "almost 9,400"; missing 1557 | Same page | No. An older ABMC search snippet said 9,380 burials. Counts disagree, so no count is taught. |
+| Pin 49.358627, −0.854686 | OpenStreetMap Nominatim, relation 9390140, query "Normandy American Cemetery, Colleville-sur-Mer, France" | Pin only. |
+| ABMC degree-minute string 49° 20′ 55″ N, 0° 51′ 17″ W | Appeared in a search snippet of the ABMC page. Not in the HTML fetched the same day. | No. UNVERIFIED. Not the pin. |
+| Memorial is 184 feet long. Dedicated in 1962. | NPS, https://www.nps.gov/places/uss-arizona-memorial.htm — "The 184-foot-long memorial structure… The Memorial was dedicated in 1962." | 184 feet in the clip. 1962 is not spoken (one question only). |
+| "over 900 of the ship's 1,177" on December 7, 1941 | Same NPS page | No. |
+| 1,102 entombed | Older draft and a Wikipedia line. Not on the NPS page fetched today. | No. Do not teach it. |
+| Pin 21.364817, −157.949918 | OpenStreetMap Nominatim, memorial node 14133830914, query "USS Arizona Memorial" | Pin only. NPS page fetched today printed no coordinates. |
+
+C3 wording, read 2026-11-10 from the NCSS 2013 framework PDF hosted by the Oregon Department of Education (`C3-Framework-for-Social-Studies.pdf`). The file is encrypted, so this environment could not re-read the bytes. A public lesson page quotes the same 6–8 sentence (https://svhs.co/lesson/d2-geo-1-6-8/, accessed 2026-11-10).
+
+- **D2.Geo.1.3-5.** Construct maps and other graphic representations of both familiar and unfamiliar places. (By the end of grade 5.)
+- **D2.Geo.1.6-8.** Construct maps to represent and explain the spatial patterns of cultural and environmental characteristics. (By the end of grade 8.)
+
+Partial fit, on purpose: the scored check is arithmetic. The code is the globe pin, which is a map of an unfamiliar place, not a full map the child draws. Rubric item 3 may be a Fix. Do not treat the code as a perfect match.
+
+## Loop (standard §3)
+
+1. **Hook.** The movie asks the problem in the first 5 seconds. It does not say the answer.
+2. **Predict.** The child taps an answer before the host explains. Read aloud on for 7-10; available for the other groups.
+3. **See.** The globe flies to the pin. Flat shows the same pin on a 2D map with no fly.
+4. **Explain.** One or two short sentences (transcripts file). France is named here, after the predict, so the movie does not give the country away before the pin.
+5. **Retry.** One miss, then one hint, then the shared review deck when the integrator wires it.
+
+**Confident** for this journal (standard §4): correct retrieval on the first try, with no hint. A miss joins the same `[0, 1, 3, 7, 14, 30]`-day ladder. Wiring into `src/game/learning.ts` and `src/game/review-deck.ts` is integrator-only. Until then, Stage B would keep misses in the journal module.
+
+## Globe fly-to (standard §5)
+
+Same place and the same fact on every tier. Beauty changes. The question does not.
+
+| Tier | What the child gets |
+|---|---|
+| Full | `import("three")` only, same pattern as `src/components/home-globe.tsx`. Camera eases to the lat/lon on `--ease-glide`. A pin drops. Dispose on exit. Pause when the tab is hidden. |
+| Lite | Same globe and the same pin. Low poly, no shadows, cap 30 fps. |
+| Flat | A 2D map (SVG or CSS). A pin at the same lat/lon. No camera swoop. |
+
+`prefers-reduced-motion` and the reduced-motion hook use the Flat pin even when WebGL is available. Nothing flashes. The screen reader hears "Pin placed at [place name]." Arrow keys or buttons can face the pin. No drag required.
+
+Art for Stage B, if the gate opens: in-house storybook frames from the spoken facts. Not a download of ABMC or NPS photos.
+
+- Normandy frame: cliff, grass, a path, the beach below. No marker shapes, no crosses, no stars, no chapel, no flags, no boats, no soldiers.
+- Arizona frame: a white span over blue water. No hull, no wreck, no smoke, no explosion.
+
+## Bridge and use-it-elsewhere (standard §0)
+
+- **Bridge.** Subtraction (year gap) and division (equal groups) are the math. The place is where the child uses them. Stable math unit ids are UNVERIFIED until those items exist. Do not invent ids.
+- **Use it elsewhere.** The year gap is calendar time. The 10-foot steps are a stand-in for map scale (division on a length). The 18+ cards are the second setting. They are specified, not built.
+
+## Accessibility and privacy (standard §6, §7)
+
+- Captions (VTT) and a transcript for each clip. Host lines have the same words on screen.
+- Tap targets at least 44 px. No timer in 7-10. Timers off unless the player opts in.
+- No free text, no name, no age, no account. Choices only.
+- Say "Hawaii" in speech. Print Hawaiʻi with the ʻokina on the pin. Say "Colleville-sur-Mer" slowly in the host line.
+- Gloss once, in the host line, not as a lesson on dying: a cemetery is a place people are remembered.
+
+Approximate Flesch-Kincaid on the caption files is checked in `clips.test.mjs` (7-10 at or under 5.5, 10-18 at or under 8). It is a script estimate, not a certified score.
+
+## Content screen (standard §7a)
+
+Kept: the two places, told as where they are and one sourced number each (1956, 184 feet).
+
+Cut, and why:
+
+| Cut | Why |
+|---|---|
+| White crosses, Stars of David, the circular chapel, the word shrine, "sacred" | Religion (standard §7a). The ABMC page names a circular chapel. NPS names a shrine room. Neither is spoken or drawn. |
+| D-Day landings, boats, guns, soldiers, explosions, the hull of the ship | Battle re-enactment and graphic aftermath. Out. |
+| Naming an attacking country, victory, defeat, presidents, Congress | Praising or blaming a nation, or a political story. Out. |
+| Burial counts, "over 900", 1,177, 1,102, "killed", "dead" | Not needed for the question. Counts also disagree across ABMC pages. Death arithmetic is the wrong tone. |
+| "70 years ago" as a site fact | Not on the ABMC page. The gap is computed from the labeled year. |
+| Flags, the statue "Spirit of American Youth", visitor-center cost | Not needed, and easy to turn into praise. Out. |
+| A trigonometry item | No sourced angle. Inventing one is forbidden. |
+
+Council (architect seat not split out; four reviewer seats on the summary, 2026-11-10): do not drop either place. Fix was: no religious markers, no wreck, no death counts, no frozen "70 years." Those fixes are in this spec. Both clips stay. An open gap, not a cut: both places are in US history. A non-US monument would be a third clip. Count stays 2 PROPOSED.
+
+## Stage B — not started
+
+The owner has approved a build only for the math definition and the Phase 0 shell split (agent instructions). This journal stays spec-only until that gate is lifted in writing and the educator block below is signed.
+
+When both are true, produce clips with `docs/journal-movies.md` into `public/videos/journals/ww2-monuments/`, plus `manifest.json` there. Do not edit `public/videos/journal-manifest.json`. The integrator merges entries.
+
+Recipe tensions to confirm before any render, not resolved here:
+
+1. The 106-movie recipe opens "Hey kids, have you heard about this place?" A 10-second learning clip cannot fit that and the question. These drafts open with the question (standard §0). Owner's call.
+2. Voice, 1152×768, 24 fps, h264 + AAC, bed at 30%, limiter −1 dB: follow the recipe. No vendor names in this spec.
+3. The old draft's v3-versus-v4 listen question is still open. Do not treat it as answered.
+
+No `manifest.json` and no mp4 in this pass.
+
+## K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
+
+- Why first (§0): unit opens with a real problem that needs the skill; "why does this matter?" answered in the first minute: [x]
+- Headline goal (§0): bridge to the previous subject + playable real-life application: [x] described (pin + year or length). Not built.
+- Use-it-elsewhere round in at least one other subject (cross-application web): [x] calendar gap and length groups, on paper
+- Bands served: [x] 7-10, 10-18, and 18+ on the same two movies
+- Objective per item, observable verb, "shown by": [x]
+- Standards cited per item (CCSS / NGSS PS / C3 / NGS) or UNVERIFIED: [x] C3 codes with a partial-fit note; math codes UNVERIFIED
+- Loop mapped: hook / predict / see / explain / retry: [x]
+- Mastery "confident" bar for this subject: [x] first try, no hint
+- Review-deck hookup (same deck, same ladder): [ ] integrator (`learning.ts`, `review-deck.ts`)
+- Post-clip retrieval check (journal + any video): [x]
+- Motion tiers: Full / Lite / Flat described, learning parity stated: [x] not built
+- Accessibility: captions, tap alternative, no-timer default, SR live region: [x] specified
+- Privacy: no PII, no identifiers, local-only records: [x]
+- Content screen (§7a) passed; cut items logged with reason: [x]
+- Free: no revenue features; asset licences recorded: [x] no assets yet. Pin coordinates from OpenStreetMap (ODbL). Stage B art is in-house.
+- Educator rubric (docs/scaling/educator-gate-rubric.md) attached: [x] not signed
 
 ```
-You are the build agent for Meridian journal P8 — World War Monuments
-(branch feat/journal-ww2-monuments-spec). SPEC ONLY until the owner picks
-and the educator signs — do NOT build video until gated approval is on file.
-
-EXPERTISE REQUIRED: Historian seat owns this topic (world history, world
-wars, social studies). All history in these two stories must pass the
-Historian's check: cited, dated, and told as human stories, never political
-framing. Educator seat is BLOCKED (no named educator) — the educator sign-off
-in writing is still owed before batch production.
-
-DELIVERABLES: 2 journal videos, 10 seconds each:
-  1. Normandy American Cemetery, Omaha Beach, France
-  2. USS Arizona Memorial, Pearl Harbor, Hawaii, USA
-Each video: narration script drawn ONLY from the entry's sourced facts +
-what is visible (no invented facts); opening line "Hey kids, have you heard
-about this place?"; per-story captions/VTT + transcript.
-
-TECH (v4 recipe — the keeper is v4, NOT v3):
-  - AI video-gen + Avocado TTS + ffmpeg
-  - Storyteller voice: Magnus, 86–138 Hz (the owner's ear-approved v4 voice)
-  - 1152x768, 24fps, h264 + AAC
-  - Narration bed at 30%; limiter at −1 dB on any re-mix
-  - 10 s fits ~8 s of speech — keep the script short
-  - Tap-to-play, preload=none. LAZY-LOAD LAW: video data loads ONLY when the
-    user taps play, or in the background while the user is playing the game.
-    Nothing else loads video. Journal rotation: 1 entry per 30-minute clock
-    window; 106 entries over 53 hours; movies stream on demand only, never
-    precached.
-
-TONE: USS Arizona is a tomb — gentle remembering story, NOT the explosion.
-Normandy is remembrance, not battle. No battle re-enactment, no weapons,
-no graphic detail.
-
-NO POLITICS ANYWHERE. World Wars = human stories, never political framing.
-World view, not US-heavy.
-
-GATES (all must pass, in order): tsc, npm test, test:worker, lint-cards
-GATE PASSED, build:pages, Playwright E2E sequential --workers=1, panel
-review, educator sign-off IN WRITING. MERGE-READY requires the orchestrated
-scrum verdict + an independent reviewer outside the build chain — never
-self-declare merge-ready. Never merge; merging stays the owner's decision.
-
-VERIFICATION PROTOCOL (forcing rule — a story without these is incomplete):
-  (1) live web search grounds every key fact — answering from memory is
-      forbidden; (2) every key fact carries a named site source (URL +
-      access date) and a confidence level HIGH / MEDIUM / LOW; (3) any fact
-      with no source is marked UNVERIFIED and never asserted as fact;
-  (4) re-check anything time-sensitive against a current source — a stale
-      fact is wrong.
-  VIDEO-AUDIO LAW: every delivered video file must be verified BEFORE
-  delivery — ffprobe shows an audio stream AND volumedetect mean volume is
-  above silence in the playing segments. A video with no audio stream, or
-  silent audio, never goes out. Playwright recordings have no audio by
-  design: muxing is mandatory and must be verified on the OUTPUT file,
-  never assumed.
-  Per-story checks are measurements with recorded numbers (duration, full
-  decode, MD5 vs approved cut, frame checks, audio levels, bed-at-30%
-  measurement, human listen check). A check with no number is UNVERIFIED.
+EDUCATOR SIGN-OFF
+Spec: docs/scaling/journal-ww2-monuments-spec.md (this commit)
+Signer: [name], [role], [band(s)], [subject]
+Date: [YYYY-MM-DD]
+Result: Approved / Approved after fixes / Not approved
+Fixes: [list with owner]
+Signature (typed name is fine): [ ]
 ```
 
-## Open questions for the owner
-
-1. **5 vs 10:** does P8 add 5 entries (one per gap) or 10 (two per gap)? This spec covers
-   both videos so either pick works — but no build starts until he picks.
-2. **v3-vs-v4 listen-verdict (UNRESOLVED CONTRADICTION, do not resolve silently):** the P8
-   gate names "the owner's listen-verdict on v3". The current keeper is v4, and the owner's
-   ear approved v4's Magnus narration on 2026-11-08. It is not recorded whether that approval
-   satisfies the gate as written, or whether a fresh listen-verdict is required. His call.
-3. **Q14/Q15 written confirmation and constitution-first ordering:** the owner's 3 open calls
-   from the 12:52 UTC split table (recorded in the candidates file) — his decisions, not in
-   this spec.
-4. **Educator naming:** who is the named educator/SME who signs this topic in writing?
-   The seat is blocked until he names one.
-
-## Definition of done
-
-- [ ] This spec file complete: both videos listed with sourced facts + confidence.
-- [ ] Educator sign-off in writing on file (production process + WWII content sensitivity
-      and correctness + age-appropriateness of the tone flags).
-- [ ] Owner pick on file: 5 vs 10.
-- [ ] Owner's v3-vs-v4 listen-verdict question answered.
-- [ ] Agent prompt handed to the build agent with the Historian seat named.
-- [ ] Per-story production process written before any batch story is produced.
-- [ ] Both videos pass all gates (tsc, npm test, test:worker, lint-cards GATE PASSED,
-      build:pages, Playwright E2E sequential --workers=1, panel review) with audio verified
-      on the output files, and the scrum + independent reviewer verdicts are on file.
-- [ ] Additive only: no existing 106 story changed.
+No agent signs this block.
