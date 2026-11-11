@@ -76,31 +76,6 @@
    ],
    "source": "batch-08/NOTES.md — ### alamo — DONE, flagged (gentle-motion bad fit, built as option (a)) (timings: timed-bullet)"
   },
-  "angkor": {
-   "cues": [
-    {
-     "start": 0.1,
-     "end": 2.09,
-     "text": "Hey kids — have you heard about this place?"
-    },
-    {
-     "start": 2.24,
-     "end": 4.35,
-     "text": "Five towers over a still lotus pond."
-    },
-    {
-     "start": 6.35,
-     "end": 8.02,
-     "text": "Look! The sun wakes the temple!"
-    },
-    {
-     "start": 8.17,
-     "end": 9.36,
-     "text": "Shimmering in the water."
-    }
-   ],
-   "source": "batch-11/NOTES.md — ### angkor — DONE, minor flag (timings: placement)"
-  },
   "antelope-park": {
    "cues": [
     {
@@ -1791,36 +1766,6 @@
    ],
    "source": "batch-04/NOTES.md — ## 9. platte-river-sp — Platte River State Park — DONE, FLAGGED (gentle-motion) (timings: timed-bullet)"
   },
-  "potala": {
-   "cues": [
-    {
-     "start": 0.1,
-     "end": 0.69,
-     "text": "Hey kids!"
-    },
-    {
-     "start": 0.84,
-     "end": 1.97,
-     "text": "Have you heard about this place?"
-    },
-    {
-     "start": 2.17,
-     "end": 4.67,
-     "text": "A palace rises on a sacred hill."
-    },
-    {
-     "start": 6.77,
-     "end": 8.32,
-     "text": "Look — pilgrims climbing up!"
-    },
-    {
-     "start": 8.46,
-     "end": 9.8,
-     "text": "Flags flutter in the wind."
-    }
-   ],
-   "source": "batch-12/NOTES.md — ## 5. potala — Potala Palace — DONE (v2 regen replaces held v1) (timings: timed-bullet)"
-  },
   "quilt-museum": {
    "cues": [
     {
@@ -2266,36 +2211,6 @@
    ],
    "source": "batch-10/NOTES.md — ### 4. taj — Taj Mahal (set 29) — DONE (timings: timed-bullet)"
   },
-  "timbuktu": {
-   "cues": [
-    {
-     "start": 0.1,
-     "end": 0.87,
-     "text": "Hey kids!"
-    },
-    {
-     "start": 1.02,
-     "end": 2.13,
-     "text": "Have you heard about this place?"
-    },
-    {
-     "start": 2.33,
-     "end": 4.05,
-     "text": "Camels carry goods across the desert!"
-    },
-    {
-     "start": 6.04,
-     "end": 8.18,
-     "text": "And the library keeps old stories safe!"
-    },
-    {
-     "start": 8.33,
-     "end": 9.85,
-     "text": "And the mosques stand over it all."
-    }
-   ],
-   "source": "batch-12/NOTES.md — ## 6. timbuktu — Timbuktu — DONE (timings: timed-bullet)"
-  },
   "toadstool": {
    "cues": [
     {
@@ -2350,31 +2265,6 @@
     }
    ],
    "source": "batch-12/NOTES.md — ## 4. tongariki — Ahu Tongariki — DONE (flag: gentle-motion entry) (timings: timed-bullet)"
-  },
-  "uluru": {
-   "cues": [
-    {
-     "start": 0.1,
-     "end": 3.0,
-     "text": "Hey kids — have you heard about this place?"
-    },
-    {
-     "start": 3.15,
-     "end": 5.67,
-     "text": "Sacred to the Anangu people."
-    },
-    {
-     "start": 6.57,
-     "end": 8.65,
-     "text": "Look! The rock glows in the sunset!"
-    },
-    {
-     "start": 8.8,
-     "end": 9.93,
-     "text": "Quiet and gold."
-    }
-   ],
-   "source": "batch-11/NOTES.md — ### uluru — DONE, clean (gentle-motion, option (a)) (timings: placement)"
   },
   "union-plaza": {
    "cues": [

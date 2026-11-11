@@ -1472,7 +1472,7 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "place": "Angkor Wat",
     "ring": "world",
     "where": "The World",
-    "story": "The temple complex in Cambodia was built in the 12th century as a Hindu monument and later became a Buddhist one. Its five towers are the aim point.",
+    "story": "This huge stone complex near Siem Reap in Cambodia was built in the early 12th century. It covers about 160 hectares, and its five towers are the aim point.",
     "sourceLabel": "UNESCO",
     "sourceHref": "https://whc.unesco.org/en/list/668/",
     "confidence": {
@@ -1480,7 +1480,7 @@ export const JOURNAL_NOTES: JournalNote[] = [
       "basis": "Named source recorded in the catalog"
     },
     "image": "images/journal/angkor.webp",
-    "imageAlt": "Storybook drawing of Angkor Wat, the great temple with its five towers reflected in the lotus pond at sunrise."
+    "imageAlt": "Storybook drawing of Angkor Wat, the great stone complex with its five towers reflected in the pond at sunrise."
   },
   {
     "id": "petra",
@@ -1517,7 +1517,7 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "place": "Uluru",
     "ring": "world",
     "where": "The World",
-    "story": "The sandstone monolith in Australia's Northern Territory is a sacred place for the Anangu people. The rock itself, not the resort to the north, is the point.",
+    "story": "The huge red sandstone rock rises alone from the desert in Australia's Northern Territory.",
     "sourceLabel": "Parks Australia",
     "sourceHref": "https://parksaustralia.gov.au/uluru/",
     "confidence": {
@@ -1592,7 +1592,7 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "place": "Potala Palace",
     "ring": "world",
     "where": "The World",
-    "story": "The palace rises above Lhasa on a hill that was already sacred before the present buildings. It was the winter home of the Dalai Lamas for centuries.",
+    "story": "The palace sits on Red Mountain in the middle of the Lhasa Valley. Its thick walls of rammed earth and stone hold more than 1,000 rooms.",
     "sourceLabel": "UNESCO",
     "sourceHref": "https://whc.unesco.org/en/list/707/",
     "confidence": {
@@ -1600,14 +1600,14 @@ export const JOURNAL_NOTES: JournalNote[] = [
       "basis": "Named source recorded in the catalog"
     },
     "image": "images/journal/potala.webp",
-    "imageAlt": "Storybook drawing of the Potala Palace, the great palace rising on its sacred hill above Lhasa with pilgrims below."
+    "imageAlt": "Storybook drawing of the Potala Palace, the great white and red palace rising on its rocky hill above Lhasa."
   },
   {
     "id": "timbuktu",
     "place": "Timbuktu",
     "ring": "world",
     "where": "The World",
-    "story": "The city in Mali was a hub of the trans-Saharan trade and of Islamic learning. Its mosques and manuscript libraries still mark the historic center.",
+    "story": "The city in Mali stands at the edge of the Sahara Desert. It was a trading crossroads where salt, gold and books were bought and sold, and its great mud-brick buildings still mark the old center.",
     "sourceLabel": "UNESCO",
     "sourceHref": "https://whc.unesco.org/en/list/119/",
     "confidence": {
@@ -1615,7 +1615,7 @@ export const JOURNAL_NOTES: JournalNote[] = [
       "basis": "Named source recorded in the catalog"
     },
     "image": "images/journal/timbuktu.webp",
-    "imageAlt": "Storybook drawing of Timbuktu, the ancient mud-brick mosques and manuscript library with a camel caravan in the desert."
+    "imageAlt": "Storybook drawing of Timbuktu, the ancient mud-brick buildings and a library with a camel caravan in the desert."
   },
   {
     "id": "galapagos",
