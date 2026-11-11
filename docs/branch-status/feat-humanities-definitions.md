@@ -22,6 +22,7 @@
   - PROPOSED for balance: Kailasa (Ellora), Konark, Brihadeeswarar (Thanjavur), Ram Setu, also called Adam's Bridge; each with a math hook and an age group.
   - Home-folder note paths removed from the spec.
 - Owner fix (2026-11-10, evening): decision 12, Ram Setu, also called Adam's Bridge narrated only as a 48 km chain of shoals between India and Sri Lanka (no rock type, no origin); decision 13, proper names kept, story text architecture only.
+- Owner fix (2026-11-10, story measurements): every measurement taken out of the `story` field in `journal-places-reword.md` (Potala, Uluru, Sagrada Família, Fushimi Inari, Christ the Redeemer, Kailasa, Brihadeeswarar, Ram Setu, also called Adam's Bridge); Potala, Uluru and Ram Setu stories use the owner's text verbatim; measurements kept in math hooks only (Christ the Redeemer's 28 m arm span moved to a new 7-10 hook); Konark's held shadow hook reworded with no spoke count. Story fields checked with the game's own rules from `src/game/story-ai.ts`: 13 scanned, 0 fail.
 
 ## Open
 1. Named human educator to sign (spec stays GATED).

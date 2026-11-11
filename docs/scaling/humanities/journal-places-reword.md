@@ -76,7 +76,7 @@ Per the owner: nothing about who governs the region, religion or leaders.
 
 | Field | Proposed text |
 |---|---|
-| story | "This palace rises about 13 storeys on Red Mountain in Lhasa, about 3,700 metres above sea level. Its thick walls of rammed earth and stone hold more than 1,000 rooms." |
+| story | "The palace sits on Red Mountain in the middle of the Lhasa Valley. Its thick walls of rammed earth and stone hold more than 1,000 rooms." |
 | imageAlt | "Storybook drawing of the Potala Palace, the great white and red palace rising on its rocky hill above Lhasa." |
 | narration (after the opener) | "A palace climbs a rocky hill. Thirteen storeys tall! White walls and red walls. Flags flutter in the wind." |
 
@@ -122,7 +122,7 @@ the Anangu people" / "Sacred to the Anangu people".
 
 | Field | Proposed text |
 |---|---|
-| story | "The huge red sandstone rock rises from the desert in Australia's Northern Territory. It stands 348 metres high and is 9.4 kilometres around." |
+| story | "The huge red sandstone rock rises alone from the desert in Australia's Northern Territory. The rock itself, not the resort to the north, is the point." |
 | imageAlt | unchanged: "Storybook drawing of Uluru, the great red sandstone monolith glowing at sunset with visitors viewing from afar." |
 | narration (after the opener) | "A giant red rock in the desert. Look! The rock glows in the sunset! Quiet and gold." |
 
@@ -161,7 +161,7 @@ and adobe" holds for the mission (AL2). Wall thickness is UNVERIFIED (AL5).
 
 | Field | Proposed text |
 |---|---|
-| story | "Antoni Gaudí's building in Barcelona has been under construction since 1882. Its tallest tower reached 172.5 metres in 2026, and the stonework is still being finished." |
+| story | "Antoni Gaudí's building in Barcelona has been under construction since 1882. Its tallest tower reached its full height in 2026, and the stonework is still being finished." |
 | imageAlt | "Storybook drawing of Sagrada Familia, Gaudi's soaring unfinished building with cranes still at work on its stone towers." |
 | narration (after the opener) | unchanged: "Still growing since 1882! Look! The cranes are still at work! Stone by stone, it grows." |
 
@@ -178,7 +178,7 @@ name it by its religious building type.
 
 | Field | Proposed text |
 |---|---|
-| story | "Thousands of red wooden gates climb Mount Inari in southern Kyoto. The trails run about 4 kilometres up a mountain 233 metres high; the main gate at the foot of the trail is the point to place." |
+| story | "Thousands of red wooden gates climb Mount Inari in southern Kyoto. The trails run up the mountain; the main gate at the foot of the trail is the point to place." |
 | imageAlt | "Storybook drawing of Fushimi Inari, the tunnel of red gates climbing the wooded mountain." |
 | narration (after the opener) | "Thousands of red gates climb! Look! The lanterns are lighting up! Up and up the mountain." |
 
@@ -196,7 +196,7 @@ renamed). The description stays on size, material and place.
 
 | Field | Proposed text |
 |---|---|
-| story | "The giant statue with open arms stands on the 700-metre summit of Corcovado above Rio de Janeiro. Built from 1922 to 1931 of reinforced concrete covered in soapstone, it is 30 metres tall and its arms stretch 28 metres." |
+| story | "The giant statue with open arms stands on the summit of Corcovado above Rio de Janeiro. It was built from 1922 to 1931 of reinforced concrete covered in soapstone." |
 | imageAlt | unchanged: "Storybook drawing of Christ the Redeemer on the forested summit of Corcovado, with the little cog railway and the city below." |
 | narration (after the opener) | unchanged: "High over Rio, on top of Corcovado! Look! The little train climbs up! What a view!" |
 
@@ -204,6 +204,7 @@ renamed). The description stays on size, material and place.
 |---|---|---|---|
 | 7-10 | "The statue is 30 m tall and stands on an 8 m base. How tall are they together?" | 38 m | R1 |
 | 7-10 | "Building took from 1922 to 1931. How many years?" | 9 | R2 |
+| 7-10 | "The statue is 30 m tall and its arms stretch 28 m. How much taller is it than it is wide?" | 2 m | R1 |
 | 10-18 | "The statue is 30 m tall on a 700 m mountain, plus an 8 m base. How high above sea level is the top of the statue?" | 738 m | R1, R3 |
 
 ### 9. Robber's Cave (`robbers-cave`)
@@ -239,7 +240,7 @@ cited pages and are for the globe pin only.
 | Field | Proposed text |
 |---|---|
 | place | Kailasa Temple, Ellora (Maharashtra, India; 20.024° N, 75.179° E) |
-| story | "This whole building was carved out of one rock in the 8th century. Carvers started at the top of the hill and cut downward, leaving a courtyard 82 metres long and 46 metres wide." |
+| story | "This whole building was carved out of one rock in the 8th century. Carvers started at the top of the hill and cut downward, leaving a courtyard around it." |
 | narration (after the opener) | "One giant rock, carved from the top down! Look how deep the courtyard goes!" |
 
 | Group | Math hook | Answer | Fact |
@@ -267,7 +268,7 @@ is narrated.
 |---|---|---|---|
 | 7-10 | "There are 12 pairs of carved wheels. How many wheels is that?" | 24 | KO1 |
 | 7-10 | "It was built around 1250. How many years ago was that?" | about `currentYear − 1250` | KO2 |
-| 10-18 (HELD) | Time from a shadow: "If a wheel's 8 big spokes split a 24-hour day evenly, how many hours apart are two big spokes?" | 3 hours | **HELD**: depends on KO3 (UNVERIFIED) |
+| 10-18 (HELD) | Time from a shadow: "If a wheel were marked into 8 equal parts (a model) to split a 24-hour day, how many hours would each part show?" | 3 hours | **HELD**: depends on KO3 (UNVERIFIED) |
 
 **Checked as asked: "the wheels work as sundials" is UNVERIFIED.** The
 Government of India tourism site (Incredible India) says four of the 24
@@ -286,7 +287,7 @@ is narrated, until the owner accepts a source.
 | Field | Proposed text |
 |---|---|
 | place | Brihadeeswarar (Brihadisvara) Temple, Thanjavur (Tamil Nadu, India; 10.783° N, 79.132° E) |
-| story | "Built of granite blocks and completed around 1010, its great tower rises in 13 tiers above Thanjavur. The whole site is almost two squares side by side, about 241 metres long and 122 metres wide." |
+| story | "Built of granite blocks and completed around 1010, its great tower rises in 13 tiers above Thanjavur. The whole site is almost two squares side by side." |
 | narration (after the opener) | "A granite tower, thirteen tiers high! Finished more than a thousand years ago!" |
 
 | Group | Math hook | Answer | Fact |
@@ -312,7 +313,7 @@ formed or who made it.
 | Field | Proposed text |
 |---|---|
 | place | Ram Setu, also called Adam's Bridge (between Rameswaram Island, India, and Mannar Island, Sri Lanka) |
-| story | "Ram Setu, also called Adam's Bridge, is a chain of shoals about 48 kilometres long between India and Sri Lanka." |
+| story | "A chain of shoals links India and Sri Lanka." |
 | narration (after the opener) | "A chain of shoals across the sea! Ram Setu, also called Adam's Bridge, about 48 kilometres long, between India and Sri Lanka." |
 
 | Group | Math hook | Answer | Fact |
