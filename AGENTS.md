@@ -119,6 +119,38 @@ Tokens are the budget. Spend them on judgment, never on re-reading.
 - **Reports are short.** Verdict or outcome first, numbered findings, no
   preamble, no recap. One complete report, no "also found" follow-ups.
 
+### Testing on a budget (owner, 2026-11-11)
+
+The full regression and a full council cost hours of tokens. Test narrowly
+and let CI carry the bulk.
+
+1. **CI runs the full suite.** GitHub Actions (unit, build, `e2e`, and the
+   `Detective e2e` workflow on head and main) costs no tokens. Agents read
+   each run once, when it finishes. No polling, no reruns to "check again".
+   A CI run that matches main's known failures satisfies the §9 E2E gate.
+2. **Locally, run only what the change touches:** the unit tests for the
+   touched area, plus the browser specs that reproduce the bug. Never the
+   full Playwright suite on a builder's machine unless the owner asks.
+3. **Council only for content and spec changes.** A bug fix gets one seat,
+   a test-only change gets none. A spec or content change still gets its
+   subject-expert and age-band educator review before it merges.
+4. **One review pass per PR.** A re-review reads only what changed since the
+   last pass.
+5. **Holmes and Watson smoke set.** For a detective change, run these four
+   browser projects locally, `--workers=1`:
+
+   ```
+   npx playwright test --workers=1 --project=detective-owner-spec \
+     --project=detective-selection-read --project=detective-tapmode-selection \
+     --project=detective-watson-walk
+   ```
+
+   Add the spec that hits the bug if it is not one of these.
+
+None of this relaxes §2's merge authority, and the owner's rule stands: no
+merge of untested code. "Tested" means the targeted local run plus a CI run that
+matches main.
+
 ## 5. Council seats
 
 A *seat* is one agent session (any tool, at the model tier the seat calls
