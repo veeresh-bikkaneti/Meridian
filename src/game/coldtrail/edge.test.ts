@@ -32,14 +32,14 @@ test("scoreIntercept across the antimeridian is the short way around", () => {
 test("scoreBand exact boundaries", () => {
   assert.equal(scoreBand(100), 0);
   assert.equal(scoreBand(101), 1);
-  assert.equal(verdictForTheme(THEMES["11-13"], 101).caught, true);
+  assert.equal(verdictForTheme(THEMES["10-18"], 101).caught, true);
   assert.equal(scoreBand(300), 1);
   assert.equal(scoreBand(301), 2);
   assert.equal(scoreBand(800), 2);
   assert.equal(scoreBand(801), 3);
   // Negative scores are impossible; huge scores still classify.
-  assert.equal(verdictForTheme(THEMES["11-13"], 0).caught, true);
-  assert.equal(verdictForTheme(THEMES["11-13"], 20_000).caught, false);
+  assert.equal(verdictForTheme(THEMES["10-18"], 0).caught, true);
+  assert.equal(verdictForTheme(THEMES["10-18"], 20_000).caught, false);
 });
 
 // --- Edge 3: halving is exact on odd radii (no integer truncation) ---

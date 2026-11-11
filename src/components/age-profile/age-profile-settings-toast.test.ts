@@ -33,8 +33,8 @@ describe("AgeProfileSettings — confirm-change toast construction", () => {
   it("the band name is built from the band table via getBand, never hardcoded", () => {
     assert.ok(settings.includes("const band = getBand(confirmTarget);"), "band from getBand(confirmTarget)");
     assert.ok(
-      settings.includes("const bandName = `${band.label} (ages ${band.ageMin}–${band.ageMax})`;"),
-      "bandName = label + the AgePicker range format, both from the table entry",
+      settings.includes("const bandName = band.label;"),
+      "bandName = the table entry label (it already carries the range; 18+ has no ceiling)",
     );
   });
 
@@ -62,22 +62,22 @@ describe("AgeProfileSettings — confirm-change toast construction", () => {
     // player would see — including the in-progress one no E2E can
     // reach (see the header note).
     const expected: Record<AgeBandId, { plain: string; inProgress: string }> = {
-      "5-7": {
-        plain: "Saved — Little Explorer (ages 5–7) ✅",
-        inProgress: "Saved — Little Explorer (ages 5–7); takes effect on the next card. ✅",
+      "7-10": {
+        plain: "Saved — Ages 7-10 ✅",
+        inProgress: "Saved — Ages 7-10; takes effect on the next card. ✅",
       },
-      "8-10": {
-        plain: "Saved — Trail Scout (ages 8–10) ✅",
-        inProgress: "Saved — Trail Scout (ages 8–10); takes effect on the next card. ✅",
+      "10-18": {
+        plain: "Saved — Ages 10-18 ✅",
+        inProgress: "Saved — Ages 10-18; takes effect on the next card. ✅",
       },
-      "11-13": {
-        plain: "Saved — GeoDetective (ages 11–13) ✅",
-        inProgress: "Saved — GeoDetective (ages 11–13); takes effect on the next card. ✅",
+      "18+": {
+        plain: "Saved — Ages 18+ ✅",
+        inProgress: "Saved — Ages 18+; takes effect on the next card. ✅",
       },
     };
     for (const id of Object.keys(expected) as AgeBandId[]) {
       const band = getBand(id);
-      const bandName = `${band.label} (ages ${band.ageMin}–${band.ageMax})`;
+      const bandName = band.label;
       assert.equal(`Saved — ${bandName} ✅`, expected[id].plain, `${id} plain toast`);
       assert.equal(
         `Saved — ${bandName}; takes effect on the next card. ✅`,
