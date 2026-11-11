@@ -85,7 +85,14 @@ test("WIN in 2: NOTE_MARK + ask-next after the miss, CELEBRATE, debrief in order
   await guessByEntryId(page, lasVegas.id, "las vegas");
   // The selection read plays (name → suspicion), then the NOTE_MARK
   // beat, then ask-next — sampled on the phase log + the play record.
-  await waitForPhase(page, "NOTE_MARK", 60_000);
+  // NOTE_MARK is a short beat: read it from the 40 ms phase log, not
+  // a slower point poll that can step over it (the failure prints the
+  // whole timeline).
+  await expect
+    .poll(async () => (await readPhaseLog()).map((p) => p.phase), {
+      timeout: 60_000,
+    })
+    .toContain("NOTE_MARK");
   await expect
     .poll(() => detectivePlays(page), { timeout: 60_000 })
     .toEqual(

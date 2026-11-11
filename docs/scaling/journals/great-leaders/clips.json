@@ -7,7 +7,7 @@
       "code": "D2.His.1.3-5",
       "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
     },
-    "why": "Work on the Lincoln Memorial began in 1914. It opened in 1922. How many years did it take to build?",
+    "why": "Work on the Lincoln Memorial began in 1914. It was dedicated in 1922. How many years did it take to build?",
     "place": {
       "lat": 38.88927778,
       "lon": -77.05013889,
@@ -29,12 +29,12 @@
   {
     "id": "great-leaders:jhansi-fort",
     "group": "10-18",
-    "objective": "After this, a child in group 10-18 can compute how many years ago Queen Lakshmibai led her forces at Jhansi (the current year minus 1858, worked out at play time) and identify who rode with her, shown by a correct answer to the opening years-ago question and a correct tap on the post-clip retrieval check.",
+    "objective": "After this, a child in group 10-18 can compute how many years ago Queen Lakshmibai began to rule Jhansi (the current year minus 1857, worked out at play time) and identify who she ruled for, shown by a correct answer to the opening years-ago question and a correct tap on the post-clip retrieval check.",
     "standard": {
       "code": "D2.His.3.6-8",
       "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
     },
-    "why": "She led her forces in 1858. How many years ago was that?",
+    "why": "Queen Lakshmibai began to rule Jhansi in 1857. How many years ago was that?",
     "place": {
       "lat": 25.45809,
       "lon": 78.57544,
@@ -43,19 +43,19 @@
     "file": "public/videos/journals/great-leaders/jhansi-fort.mp4",
     "captions": "jhansi-fort.vtt",
     "retrieval": {
-      "question": "Who rode out with Queen Lakshmibai?",
+      "question": "Who did Queen Lakshmibai rule Jhansi for?",
       "answer": "Her young son"
     }
   },
   {
     "id": "great-leaders:netaji-bhawan",
     "group": "10-18",
-    "objective": "After this, a child in group 10-18 can compute how many years ago Subhas Chandra Bose took command of the Indian National Army (the current year minus 1943, worked out at play time) and identify the greeting he made famous, shown by a correct answer to the opening years-ago question and a correct tap on the post-clip retrieval check.",
+    "objective": "After this, a child in group 10-18 can compute how many years ago Netaji Bhawan was built as Subhas Chandra Bose's family home (the current year minus 1909, worked out at play time) and identify the greeting he made famous, shown by a correct answer to the opening years-ago question and a correct tap on the post-clip retrieval check.",
     "standard": {
       "code": "D2.His.3.6-8",
       "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
     },
-    "why": "He took command of the army in 1943. How many years ago was that?",
+    "why": "Netaji Bhawan was built as a family home in 1909. How many years ago was that?",
     "place": {
       "lat": 22.53758333,
       "lon": 88.35125,
@@ -64,7 +64,7 @@
     "file": "public/videos/journals/great-leaders/netaji-bhawan.mp4",
     "captions": "netaji-bhawan.vtt",
     "retrieval": {
-      "question": "What words did Netaji make famous?",
+      "question": "What greeting did Netaji make famous?",
       "answer": "Jai Hind"
     }
   }

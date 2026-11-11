@@ -143,7 +143,8 @@ test("(a) Cold Trail in-screen toggle flips the persisted key both ways", async 
   console.log("[sound-a] TrailScreen toggle flipped meridian.sound off → on");
 });
 
-test("(b) tap-Holmes during a read stops speech immediately, badge latches, unmute does not resume", async ({
+// Retired by the owner, 2026-11-10: the pair no longer vanishes while the sheet is up, there is no Listen chip or pair speaker chip, and a tap on Holmes repeats the line (the one mute is the screen's top-left toggle). Superseded by detective-owner-spec.spec.ts.
+test.skip("(b) tap-Holmes during a read stops speech immediately, badge latches, unmute does not resume", async ({
   page,
   context,
 }) => {
@@ -219,7 +220,8 @@ test("(b) tap-Holmes during a read stops speech immediately, badge latches, unmu
   );
 });
 
-test("(c)+(d)+(e) Watson tap replays without muting; Holmes tap mutes without replaying; chip drives the same key", async ({
+// Retired by the owner, 2026-11-10: the pair no longer vanishes while the sheet is up, there is no Listen chip or pair speaker chip, and a tap on Holmes repeats the line (the one mute is the screen's top-left toggle). Superseded by detective-owner-spec.spec.ts.
+test.skip("(c)+(d)+(e) Watson tap replays without muting; Holmes tap mutes without replaying; chip drives the same key", async ({
   page,
   context,
 }) => {
@@ -344,7 +346,8 @@ async function clickStationControl(
   throw new Error(`station window for ${testId} never opened`);
 }
 
-test("(f) tap mode: Listen, chip and Holmes-mute are pairwise separate at the station; each centre click does its own job", async ({
+// Retired by the owner, 2026-11-10: the pair no longer vanishes while the sheet is up, there is no Listen chip or pair speaker chip, and a tap on Holmes repeats the line (the one mute is the screen's top-left toggle). Superseded by detective-owner-spec.spec.ts.
+test.skip("(f) tap mode: Listen, chip and Holmes-mute are pairwise separate at the station; each centre click does its own job", async ({
   page,
   context,
 }) => {
@@ -547,14 +550,12 @@ test("(f) tap mode: Listen, chip and Holmes-mute are pairwise separate at the st
   console.log("[sound-f] chip centre click unmuted; badge cleared");
 
   // A wrong guess deals clue 2 (its chain is held in tap mode) —
-  // Listen's centre click then plays the held clue sequence. TWO
-  // taps, by design of the player's first-gesture unlock: in tap
-  // mode nothing has called playClip yet, so the gesture listener
-  // arms only when the FIRST tap's playHeldSequence reaches the
-  // clip — that tap parks in waitForGesture, and the second tap's
-  // pointerdown is the gesture that unlocks it (a kid taps again;
-  // the replay's restart semantics make the second tap start the
-  // sequence from item 1).
+  // Listen's centre click then plays the held clue sequence. Since
+  // the STAGE first-tap cure, the player arms its gesture listener
+  // eagerly at creation, so the FIRST Listen tap unlocks and plays
+  // the held sequence. The second tap below is belt-and-braces:
+  // replay restart semantics make it restart the sequence from
+  // item 1, so the assertions that follow hold either way.
   await guessByEntryId(page, entryByName("las vegas").id, "las vegas");
   await waitForSearchIdle(page, 120_000);
   await page.getByRole("article", { name: /Clue 2:/ }).scrollIntoViewIfNeeded();
@@ -596,7 +597,8 @@ test("(f) tap mode: Listen, chip and Holmes-mute are pairwise separate at the st
 });
 
 
-test("(g) NOTE_MARK split placement renders exactly one chip and at most one badge", async ({
+// Retired by the owner, 2026-11-10: the pair no longer vanishes while the sheet is up, there is no Listen chip or pair speaker chip, and a tap on Holmes repeats the line (the one mute is the screen's top-left toggle). Superseded by detective-owner-spec.spec.ts.
+test.skip("(g) NOTE_MARK split placement renders exactly one chip and at most one badge", async ({
   page,
   context,
 }) => {
@@ -700,16 +702,15 @@ test("(h) preset-off boot: badge at first paint, no speech; turning sound on cle
   expect(await detectiveOnly(page)).toEqual([]);
   console.log("[sound-h] preset-off boot: badge latched at first paint, zero detective plays");
 
-  // Turning sound on from the pair chip clears the badge.
-  const chip = page.getByTestId("detective-sound-chip");
-  await expect(chip).toHaveCount(1, { timeout: 10_000 });
-  await expect(chip).toHaveAttribute("aria-pressed", "false");
-  await chip.click();
+  // Turning sound on from the screen's top-left toggle (the one mute
+  // since 2026-11-10; the pair's own chip is retired) clears the badge.
+  await expect(page.getByTestId("detective-sound-chip")).toHaveCount(0);
+  await page.getByTestId("sound-toggle-loop").click();
   await expect.poll(() => soundKey(page), { timeout: 10_000 }).toBe("on");
   await expect(page.getByTestId("detective-muted-badge")).toHaveCount(0, {
     timeout: 10_000,
   });
-  console.log("[sound-h] chip unmute cleared the badge");
+  console.log("[sound-h] top-left unmute cleared the badge");
 });
 
 

@@ -58,10 +58,10 @@ The JSON holds the fields. This index is the same ids, for review.
 | `physics:ramp:faster-hits-harder` | 7-10 | Which ball moves the cup farther? | 4-PS3-1 | which-way; longer-than | everyday life: a wagon bumping a bucket |
 | `physics:arrive:equal-steps` | 7-10 | Which cart's equal steps reach the line first? | 3-PS2-2 | tables facts; equal-pushes | geography: walkers and a bridge |
 | `physics:lever:seesaw` | 7-10 | You push one end of a board down. Which end goes down? | 3-PS2-2 | which-way | everyday life: a playground see-saw |
-| `physics:balance:tug` | 7-10 | When the two pushes match, which way does the gate go? | 3-PS2-1 | which-way | everyday life: a stuck gate |
+| `physics:balance:tug` | 7-10 | When the pushes match, does the gate move? When one push is stronger, which way does the gate go? | 3-PS2-1 | which-way | everyday life: a stuck gate |
 | `physics:energy:wound-moves` | 7-10 | Which toy car moves, the wound one or the other? | 4-PS3-4 | which-way | everyday life: a wound music box |
-| `physics:shadow:blocks` | 7-10 | A lamp is on, and a book sits where a child can look at it. A sheet can go in the path between the book and the eye. When is the book seen? | 4-PS4-2 | — | everyday life: a book seen when nothing blocks the light from it to the eye |
-| `physics:mirror:sends-back` | 7-10 | A book sits on the same side of a shelf as a lamp. A mirror and a bare board are the two choices. Which one sends reflected light into the eye so the book can be seen? | 4-PS4-2 | shadow | everyday life: a mirror used so lamp light reflected from a book reaches the eye |
+| `physics:shadow:blocks` | 7-10 | A lamp is on, and a book sits where a child can look at it. A sheet of cardboard, which you cannot see through, can go in the path between the book and the eye. When is the book seen? | 4-PS4-2 | — | everyday life: a book seen when nothing blocks the light from it to the eye |
+| `physics:mirror:sends-back` | 7-10 | A lamp lights a book on a shelf. Light bounces off the book into your eye, and that is how you see it. Which light is that: light bouncing off the book, or light that only shines on the shelf? | 4-PS4-2 | shadow | everyday life: a mirror used so lamp light reflected from a book reaches the eye |
 | `physics:magnet:flip` | 7-10 | After one magnet is turned, does the direction change? | 3-PS2-3 | which-way | everyday life: a cabinet door |
 | `physics:push:mass` | 10-18 | Same push, more boxes. Which motion changes more? | MS-PS2-2 | which-way | economics: a heavier delivery cart |
 | `physics:push:table` | 10-18 | Mass matches, net force does not. Which row changes more? | HS-PS2-1 | mass; one-step equations | geography: a sled on a straight path |
@@ -74,7 +74,7 @@ The JSON holds the fields. This index is the same ids, for review.
 | `physics:magnet:closer` | 10-18 | Which pair of magnets pulls harder? | MS-PS2-3 | flip | everyday life: a knife and a rack magnet |
 | `physics:ramp:adult-ratio` | 18+ | Two crane booms. Which drawing is steeper? | UNVERIFIED (extends HSG.SRT.C.8) | slope-ratio | economics: two roof slopes and a stated cost step |
 | `physics:arrive:adult-time` | 18+ | The card states distance = speed × time. The time is missing. | UNVERIFIED (extends HSA.CED.A.4) | rearrange; unit-rate | economics: how long a delivery takes |
-| `physics:energy:missing` | 18+ | The card states the missing energy change. What is it? | UNVERIFIED (extends HS-PS3-1) | transfer; rearrange | everyday life: a workshop lift card |
+| `physics:energy:missing` | 18+ | A home battery log: how many units did the solar panels put in? | UNVERIFIED (extends HS-PS3-1) | transfer; rearrange | everyday life: a workshop lift card |
 
 ### Open items
 

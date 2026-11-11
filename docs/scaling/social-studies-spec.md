@@ -53,7 +53,9 @@ once its text is read from a live source.
 | CCSS 6.RP.A.3 (ratio and rate reasoning, real-world problems) | PARTIAL, MEDIUM | opening seen in https://ospi.k12.wa.us/sites/default/files/2022-12/mathstandards_grade6.pdf |
 | CCSS 4.MD.A.2 (word problems with distances and intervals of time) | PARTIAL, MEDIUM | opening seen in a published alignment PDF (see the item's `source`) |
 | C3 D2.Geo.* (maps, spatial views) | UNVERIFIED | socialstudies.org returned 403; candidates to check: D2.Geo.1 and D2.Geo.2 at the 3-5, 6-8 and 9-12 bands |
-| CCSS 3.MD, 5.MD, 6.EE, 7.RP, 7.G.A.1, HSG-SRT.C.8 | UNVERIFIED | corestandards.org returned 404; candidates only, not entered in the data |
+| CCSS 3.MD, 5.MD, 6.EE, 7.RP | UNVERIFIED | corestandards.org returned 404; candidates only, not entered in the data |
+| CCSS 6.RP.A.3.b, 7.G.A.1 | HIGH | read live on 2026-11-11 at thecorestandards.org (6/RP and 7/G pages); entered on route:travel-time and route:scale-ratio |
+| CCSS HSG-SRT.C.8 | HIGH | the live read the general-knowledge tower-angle row cites; entered on route:compass-bearing |
 
 Item `standard` fields hold `"UNVERIFIED"` unless the row above is PARTIAL or
 better. Upgrading them needs a person or a later session with a working source.

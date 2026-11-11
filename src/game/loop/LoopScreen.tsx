@@ -1,4 +1,4 @@
-import { Fragment, Suspense, lazy, useEffect, useRef, useState } from "react";
+import { Fragment, Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useOnlineStatus } from "@/hooks/use-online-status";
 import { useAutoAnimate } from "@/hooks/use-auto-animate";
@@ -126,6 +126,10 @@ const StorytellerNarration = lazy(() => import("@/components/storyteller"));
 // flag-off session never even fetches the chunk.
 const DetectiveHost = lazy(() => import("./detective/DetectiveHost"));
 
+/** Clues-one-at-a-time watchdog: if the pair has not presented the
+ * next starting clue within this long, show every dealt card anyway
+ * (a clue read + Holmes's ack runs well under it). */
+const CLUE_PRESENT_WATCHDOG_MS = 30_000;
 /** Puzzles whose hook narration already played this session (auto once per puzzle). */
 const hookNarratedPuzzles = new Set<string>();
 /**
@@ -950,14 +954,16 @@ export function LoopScreen({
               End game
             </Button>
           ) : null}
+          {/* The one mute, top-left beside the screen's other two
+              buttons — the same placement as the home page and the
+              map-quiz chrome (owner, 2026-11-10). Same master toggle
+              everywhere: one persisted key (meridian.sound), one
+              implementation (SoundToggle.tsx). The pair has no
+              speaker of its own. */}
+          <SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />
         </div>
         <div className="flex items-center gap-2">
           <p className="text-sm text-fg">Case #{caseNo}</p>
-          {/* Sound Everywhere (PR C, council Q6): the same master
-              SoundToggle as home and the map-quiz chrome — GeoDetective
-              had no in-screen mute before this. One persisted key
-              (meridian.sound), one implementation (SoundToggle.tsx). */}
-          <SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />
         </div>
       </div>
       <header className="mt-4">
@@ -1348,8 +1354,54 @@ function LoopGame({
   // auto once per puzzle on the T1 gesture model. No persistent figure —
   // caption + speaker button, inline with the clue cards.
   const puzzleKey = `${puzzle.cycle}:${puzzle.index}`;
+  const pairOn = isEnabled("detectivePair");
+  // Holmes & Watson own the clue reads when the pair is on (Watson
+  // reads every clue, the Hook included): the storyteller's own Hook
+  // voice and its speaker button would be a second reader of the same
+  // card, so it stays off under the pair (owner, 2026-11-10: "there is
+  // no speaker").
   const hookRevealed = finished || puzzle.cluesRevealed > HOOK_TIER_INDEX;
-  const hookVisible = hookRevealed && !hookNarratedPuzzles.has(puzzleKey);
+  const hookVisible = !pairOn && hookRevealed && !hookNarratedPuzzles.has(puzzleKey);
+
+  // Clues open ONE AT A TIME under the pair (owner, 2026-11-10): a
+  // 3-clue deal shows card 1 while Watson reads it, then card 2, then
+  // card 3 — the pair reports each card as Watson starts it
+  // (onCluePresented). The game's own count (puzzle.cluesRevealed) is
+  // untouched; only what is painted waits. A watchdog shows the rest
+  // if the pair ever stops reporting (no audio stack, a load failure)
+  // so play can never stall behind a hidden card.
+  const freshDealNow =
+    puzzle.guesses.length === 0 && puzzle.cluesRevealed <= dealConfig.startingClues;
+  const [presentedClues, setPresentedClues] = useState<{ key: string; n: number }>(() => ({
+    key: puzzleKey,
+    n: freshDealNow ? 1 : puzzle.cluesRevealed,
+  }));
+  const presentedN =
+    presentedClues.key === puzzleKey
+      ? presentedClues.n
+      : freshDealNow
+        ? 1
+        : puzzle.cluesRevealed;
+  const visibleClues =
+    pairOn && !finished
+      ? Math.max(1, Math.min(puzzle.cluesRevealed, presentedN))
+      : puzzle.cluesRevealed;
+  const onCluePresented = useCallback(
+    (n: number) => {
+      setPresentedClues((prev) => ({
+        key: puzzleKey,
+        n: prev.key === puzzleKey ? Math.max(prev.n, n) : n,
+      }));
+    },
+    [puzzleKey],
+  );
+  useEffect(() => {
+    if (!pairOn || finished || visibleClues >= puzzle.cluesRevealed) return;
+    const timer = setTimeout(() => {
+      setPresentedClues({ key: puzzleKey, n: puzzle.cluesRevealed });
+    }, CLUE_PRESENT_WATCHDOG_MS);
+    return () => clearTimeout(timer);
+  }, [pairOn, finished, visibleClues, puzzle.cluesRevealed, puzzleKey]);
 
   // Length unit for every distance on this screen: a USA mystery reads
   // miles, the rest of the world reads kilometers — derived from the
@@ -1443,7 +1495,8 @@ function LoopGame({
       className={
         "mt-8 flex flex-col gap-6" +
         (isEnabled("detectivePair") && isEnabled("hostsStaging")
-          ? " detective-staging-on"
+          ? " detective-staging-on" +
+            (isEnabled("detectiveFlank") ? " detective-flank-on" : "")
           : "")
       }
     >
@@ -1526,6 +1579,13 @@ function LoopGame({
           (detective-host-props.ts): the pair never receives the puzzle,
           the clue file, a target, or any evaluation. */}
       {isEnabled("detectivePair") ? (
+        /* display:contents keeps layout identical (the bench slot still
+         * sits in the screen's flex column under the map) while taking
+         * the host's own elements out of the screen's auto-animate:
+         * that library keeps a REMOVED direct child painted for its
+         * exit animation, so the bench lingered over the closed case
+         * and a re-mounted station showed two Watsons for a moment. */
+        <div style={{ display: "contents" }} data-testid="detective-host-slot">
         <Suspense fallback={null}>
           <DetectiveHost
             {...buildDetectiveHostProps({
@@ -1535,11 +1595,25 @@ function LoopGame({
               sheetOpen: selected !== null,
               lastGuessPlaceId:
                 puzzle.guesses[puzzle.guesses.length - 1]?.placeId ?? null,
-              freshDeal: puzzle.guesses.length === 0 && puzzle.cluesRevealed <= dealConfig.startingClues,
+              // The CURRENT pick for the selection read: the same
+              // re-derivation the sheet below renders (a tap entry's
+              // id is rebuilt from its coordinates), so Holmes names
+              // the id the guess will record under — the machine's
+              // dedup keys on that identity. Null when nothing is
+              // picked.
+              selectedPlaceId:
+                selected && !finished
+                  ? selected.id.startsWith("tap:")
+                    ? unlabeledSpotEntry(selected.lon, selected.lat).id
+                    : selected.id
+                  : null,
+              freshDeal: freshDealNow,
               answerPlaceId: clue.placeId, // U8: the props builder gates this to the post-solve reveal only
             })}
+            onCluePresented={onCluePresented}
           />
         </Suspense>
+        </div>
       ) : null}
 
       {selected && !finished ? (
@@ -1574,16 +1648,29 @@ function LoopGame({
       <section aria-label="Clues" className="flex flex-col gap-3">
         {clue.clues.map((text, i) => (
           <Fragment key={i}>
+            {/* Flank strip slot (STAGE): the in-flow home for the
+                bookend strip — Holmes left, Listen middle, Watson
+                right, directly above the ACTIVE clue card (the one
+                the host anchors on, index cluesRevealed - 1).
+                Empty (zero height) unless the host portals the
+                strip into it in strip mode; gated on the flank
+                flag so flag-off is byte-identical. */}
+            {isEnabled("detectivePair") &&
+            isEnabled("hostsStaging") &&
+            isEnabled("detectiveFlank") &&
+            i === visibleClues - 1 ? (
+              <div data-testid="detective-strip-slot" />
+            ) : null}
             <ClueCard
               tier={CLUE_TIERS[i]!}
               index={i}
               text={text}
               // When the mystery is over there is no "next guess" — reveal every
               // clue so the locked cards never promise one.
-              revealed={finished || i < puzzle.cluesRevealed}
+              revealed={finished || i < visibleClues}
               reduced={reduced}
             />
-            {i === CLUE_TIERS.length - 1 && packFlagKey && (finished || i < puzzle.cluesRevealed) ? (
+            {i === CLUE_TIERS.length - 1 && packFlagKey && (finished || i < visibleClues) ? (
               <p className="flex items-center gap-2 pl-1 text-xs text-muted" data-testid="loop-giveaway-flag">
                 <FlagImg flagKey={packFlagKey} className="h-6" />
                 <span>The flag of {flagEntry(packFlagKey)?.land ?? "this land"}</span>

@@ -10,8 +10,8 @@ recipe keeps the frame free of text).
 
 ## technology:first-phone (group 7-10)
 
-**Opening question (read aloud, before play):** The first phone call was in
-1876. How many years ago was that? *(Answer: 2026 − 1876 = 150 in 2026. The
+**Opening question (read aloud, before play):** In 1876, Bell's phone sent a
+spoken message. How many years ago was that? *(Answer: 2026 − 1876 = 150 in 2026. The
 answer depends on the current year, see open item O6.)* [T1-2]
 
 **Narration (16 spoken words, PROPOSED):**
@@ -22,15 +22,15 @@ answer depends on the current year, see open item O6.)* [T1-2]
 running along it; a wave moves along the wire; at the far end a second man
 listens at the receiver. [T1-3, T1-5, T1-6]
 
-**Retrieval check (read aloud, tap one):** In the first phone call, how did the
+**Retrieval check (read aloud, tap one):** In Bell's phone, how did the
 voice travel? Choices: *Down a wire* (correct) · *Through the air* · *In a
 letter*. Hint on a miss: "Look at the line between the two rooms."
 
 ## technology:mobile-phone (group 10-18)
 
-**Opening question (read aloud, before play):** The first phone call down a
-wire was in 1876. The first public call from a phone you could carry was in
-1973. How many years apart were they? Solve 1876 + x = 1973. *(Answer:
+**Opening question (read aloud, before play):** Bell's telephone carried a
+spoken message down a wire in 1876. The first public call from a handheld
+phone was made in 1973. How many years apart were they? Solve 1876 + x = 1973. *(Answer:
 x = 97.)* [T1-2, T2-1]
 
 **Narration (18 spoken words, PROPOSED):**

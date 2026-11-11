@@ -147,6 +147,86 @@ export function stationHolmesOffsetPx(input: {
 }
 
 /* ------------------------------------------------------------------ */
+/* The flank (STAGE, Holmes's frozen slot at the clue card)            */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The flank (STAGE): Holmes stands at the clue card's OTHER side —
+ * the left gutter, mirroring Watson's right station — and stays
+ * there through the guessing phases: no following, no berthing, no
+ * dock. The geometry is derived from the same constants as the
+ * gutter (unit 3): the pair's standard outer clearance (12), the
+ * card gap (6), and the two figure widths (70 / 100).
+ *
+ * Row vs strip (the mode decision, pure and unit-pinned): the row
+ * fits when the card's left edge leaves room for Holmes + the gaps
+ * — cardLeft ≥ 12 (edge) + 70 (Holmes) + 6 (card gap) = 88. At
+ * 1280 the card starts at 276, so Holmes sits at 276 − 12 − 70 =
+ * 194 (gap 12 to the card, in the page margin — the card is
+ * unchanged). At 768 the card starts at 20, so the row needs the
+ * card moved right and narrowed (see the margin constants below):
+ * card left 88, Holmes at 12 (edge 12, gap 6 to the card). Below
+ * 88 the row cannot fit with ≥6 px of card gap and the ≥12 px edge
+ * clear — at 390 the card starts at 20 — so the pair stands in
+ * the bookend strip above the card instead (in-flow, via the
+ * LoopScreen slot; the strip needs no coordinates from here).
+ *
+ * Holmes's row x is max(12, cardLeft − 82): he keeps the 12 px
+ * outer clearance from the card AND 12 px from the screen edge;
+ * where both cannot hold (the 768 pinch) the edge wins and the
+ * card gap shrinks to 6 — still the law's minimum, never less.
+ * The host verifies the mode against the MEASURED anchor (the card
+ * rect after the flank CSS margins apply), never against the
+ * viewport width alone: at 769–900 the row still cannot fit
+ * (cardLeft ≈ 20–86 < 88) and the strip is the lawful fallback,
+ * with the card staying 610 wide there.
+ */
+
+/** Clear air between Holmes and the clue card in the row (the
+ * pair's card gap — the same 6 as the gutter's). */
+export const FLANK_CARD_GAP_PX = GUTTER_CARD_GAP_PX;
+
+/** The card's left edge must clear this for the row to fit:
+ * 12 (edge) + 70 (Holmes) + 6 (card gap) = 88. */
+export const FLANK_ROW_MIN_CARD_LEFT_PX =
+  GUTTER_EDGE_CLEAR_PX + HOLMES_FIGURE_W_PX + FLANK_CARD_GAP_PX;
+
+/** The clue column's left offset at phone/tablet widths [measured:
+ * the card starts at x20 at 390 and 768 — the app shell's side
+ * padding]. The row margins below are the flank reserve minus
+ * this offset, because CSS margins are measured inside the
+ * column, not from the viewport edge. */
+export const FLANK_PAGE_PAD_PX = 20;
+
+/** Row-mode card margins (641–768 px viewports, detective.css):
+ * the card moves right for Holmes (88 − 20 = 68) and narrows on
+ * the right for Watson's gutter (118 − 20 = 98); card = viewport
+ * − 206. detective.css carries these numbers with this derivation
+ * in its comment — CSS cannot import the constants, so the unit
+ * test below pins the arithmetic. */
+export const FLANK_ROW_CARD_MARGIN_LEFT_PX =
+  FLANK_ROW_MIN_CARD_LEFT_PX - FLANK_PAGE_PAD_PX;
+export const FLANK_ROW_CARD_MARGIN_RIGHT_PX =
+  GUTTER_W_PX - FLANK_PAGE_PAD_PX;
+
+export type FlankMode = "row" | "strip";
+
+/** Row when the measured card left leaves room for Holmes + the
+ * gaps; strip (the bookend strip above the card) otherwise. */
+export function flankModeForCardLeft(anchorLeft: number): FlankMode {
+  return anchorLeft >= FLANK_ROW_MIN_CARD_LEFT_PX ? "row" : "strip";
+}
+
+/** Holmes's row x (viewport coords): 12 px from the card and 12 px
+ * from the screen edge, the edge winning at the 768 pinch (gap 6). */
+export function flankHolmesX(anchorLeft: number): number {
+  return Math.max(
+    GUTTER_EDGE_CLEAR_PX,
+    anchorLeft - GUTTER_EDGE_CLEAR_PX - HOLMES_FIGURE_W_PX,
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /* The walk (PR B unit 1)                                              */
 /* ------------------------------------------------------------------ */
 

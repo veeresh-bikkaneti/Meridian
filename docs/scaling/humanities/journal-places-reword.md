@@ -58,7 +58,7 @@ the image alt says "the great temple".
 
 | Field | Proposed text |
 |---|---|
-| story | "This huge stone complex near Siem Reap in Cambodia was built in the early 12th century. It covers about 160 hectares, and its five towers are the aim point." |
+| story | "Angkor Wat, a huge stone complex near Siem Reap in Cambodia, was built in the early 12th century. It covers about 160 hectares, and its five towers are the aim point." |
 | imageAlt | "Storybook drawing of Angkor Wat, the great stone complex with its five towers reflected in the pond at sunrise." |
 | narration (after the opener) | "Five stone towers over a wide moat. Look! The sun lights the stones! Shimmering in the water." |
 

@@ -43,7 +43,15 @@
  * palm-to-palm: place the rigs so the two points coincide (accounting
  * for each rig's facing flip and scale).
  */
-import type { CSSProperties, ReactElement } from "react";
+import { useEffect, useRef, useSyncExternalStore, type CSSProperties, type ReactElement } from "react";
+import {
+  ensurePair3d,
+  mountFigure,
+  pair3dStatus,
+  subscribePair3d,
+  type FigureHandle,
+  type Who3D,
+} from "./pair3d.ts";
 
 export const HOLMES_POSES = [
   "dock",
@@ -341,7 +349,7 @@ const HOLMES_POSE_SPECS: Record<HolmesPose, HolmesPoseSpec> = {
 const part = (transform: string, origin: string): CSSProperties =>
   transform ? { transform, transformOrigin: origin } : { transformOrigin: origin };
 
-export function HolmesRig({ pose, facing = "right", speaking = false, halo = false }: HolmesRigProps): ReactElement {
+function HolmesRigSvg({ pose, facing = "right", speaking = false, halo = false }: HolmesRigProps): ReactElement {
   const spec = HOLMES_POSE_SPECS[pose];
   const flip = facing === "left" ? "translate(120 0) scale(-1 1)" : undefined;
   const hi = pose === "high-five";
@@ -503,7 +511,7 @@ const WATSON_POSE_SPECS: Record<WatsonPose, WatsonPoseSpec> = {
   pout: { face: "pout", head: "rotate(9deg) translateY(3.5px)", torso: "rotate(2.5deg) translateY(2px)", frontArm: -4, noteArm: 4, notebook: true, card: false, pencil: false, glass: false },
 };
 
-export function WatsonRig({ pose, facing = "right", speaking = false, halo = false }: WatsonRigProps): ReactElement {
+function WatsonRigSvg({ pose, facing = "right", speaking = false, halo = false }: WatsonRigProps): ReactElement {
   const spec = WATSON_POSE_SPECS[pose];
   // Watson's base art profiles LEFT (nose at the left of the head), so
   // the default "right" facing is the flip — one art, mirrored.
@@ -627,4 +635,77 @@ export function WatsonRig({ pose, facing = "right", speaking = false, halo = fal
       </g>
     </svg>
   );
+}
+
+/* ------------------------------------------------------------------ */
+/* 3D layer (pair3d.ts): painted over the SVG rig when available       */
+/* ------------------------------------------------------------------ */
+
+const noopUnsub = () => () => {};
+
+/** True once the 3D pair has loaded on this device (flag pair3d on,
+ * gate passed). Always false on the server and in unit tests. */
+function usePair3dLive(): boolean {
+  const live = useSyncExternalStore(
+    typeof window === "undefined" ? noopUnsub : subscribePair3d,
+    () => pair3dStatus() === "ready",
+    () => false,
+  );
+  useEffect(() => {
+    ensurePair3d();
+  }, []);
+  return live;
+}
+
+interface Rig3DProps {
+  who: Who3D;
+  pose: string;
+  facing: "left" | "right";
+  speaking: boolean;
+  halo: boolean;
+}
+
+function Rig3DCanvas({ who, pose, facing, speaking, halo }: Rig3DProps): ReactElement {
+  const ref = useRef<HTMLCanvasElement | null>(null);
+  const handle = useRef<FigureHandle | null>(null);
+  const latest = useRef({ pose, facing, speaking, halo });
+  latest.current = { pose, facing, speaking, halo };
+  useEffect(() => {
+    const c = ref.current;
+    if (!c) return;
+    handle.current = mountFigure(who, c, latest.current);
+    return () => {
+      handle.current?.dispose();
+      handle.current = null;
+    };
+  }, [who]);
+  useEffect(() => {
+    handle.current?.update({ pose, facing, speaking, halo });
+  }, [pose, facing, speaking, halo]);
+  return <canvas ref={ref} className="detective-rig3d-canvas" aria-hidden="true" data-testid="detective-rig3d" />;
+}
+
+/** The SVG rig, with the 3D figure painted over it once it is live.
+ * The SVG stays in the DOM (transparent) so size, anchors and every
+ * data-* hook are the same either way. */
+function withRig3D(who: Who3D, svg: ReactElement, p: Omit<Rig3DProps, "who">, live: boolean): ReactElement {
+  if (!live) return svg;
+  return (
+    <span className="detective-rig3d" data-rig3d={who}>
+      {svg}
+      <Rig3DCanvas who={who} {...p} />
+    </span>
+  );
+}
+
+export function HolmesRig(props: HolmesRigProps): ReactElement {
+  const live = usePair3dLive();
+  const { pose, facing = "right", speaking = false, halo = false } = props;
+  return withRig3D("holmes", <HolmesRigSvg {...props} />, { pose, facing, speaking, halo }, live);
+}
+
+export function WatsonRig(props: WatsonRigProps): ReactElement {
+  const live = usePair3dLive();
+  const { pose, facing = "right", speaking = false, halo = false } = props;
+  return withRig3D("watson", <WatsonRigSvg {...props} />, { pose, facing, speaking, halo }, live);
 }
