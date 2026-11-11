@@ -2,7 +2,7 @@
 
 Owner rule (2026-11-10): the orchestrator uses the strongest model the
 builder can afford; worker roles use the cheapest capable model,
-orchestrated as subagents; design calls go to a council of experts that
+orchestrated as helper agents; design calls go to a council of experts that
 reviews summaries and diffs, not bulk output. No role names a vendor or
 model, so any agent runtime can follow this file.
 
