@@ -2,7 +2,7 @@
   {
     "id": "general-knowledge:mixed:opera-years-ago",
     "group": "7-10",
-    "objective": "After this, a child can compute how many years ago a landmark opened by subtracting its opening year from this year, shown by entering the difference.",
+    "objective": "After this, a child can compute how many years ago a landmark opened by subtracting its opening year from the current year, shown by entering currentYear − 1973, where currentYear is read from the device clock at play time.",
     "standard": {
       "code": "4.NBT.B.4",
       "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
@@ -95,7 +95,7 @@
     },
     "why": "A visitor wants a photo of the tower with the shortest shadow. When should she go? Guessing a time wastes the trip; the pattern of shadows through the day answers it.",
     "buildsOn": [
-      "physics:light:shadow-noon",
+      "physics:shadow:blocks",
       "geography:globe:eiffel-tower"
     ],
     "useElsewhere": [

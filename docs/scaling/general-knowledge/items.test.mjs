@@ -12,14 +12,18 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const read = (...p) => JSON.parse(fs.readFileSync(path.join(here, ...p), "utf8"));
 
 const gk = read("items.json");
-const fixtures = [...read("fixtures", "geography.items.json"), ...read("fixtures", "physics.items.json")];
+const fixtures = read("fixtures", "geography.items.json");
 // Real I2 items already on main: the math number strand. Read, never copied.
 const math = read("..", "math", "number", "items.json");
+// Real physics I2 items on main (PR 398). Read, never copied. When the file is
+// absent, links into physics are not resolved (the check is skipped, not passed).
+const PHYSICS_FILE = path.join(here, "..", "physics", "items.json");
+const physics = fs.existsSync(PHYSICS_FILE) ? JSON.parse(fs.readFileSync(PHYSICS_FILE, "utf8")) : null;
 const rounds = read("rounds.json");
 const spec = fs.readFileSync(path.join(here, "..", "general-knowledge-spec.md"), "utf8");
 
 const owned = [...gk, ...fixtures];
-const all = [...owned, ...math];
+const all = [...owned, ...math, ...(physics ?? [])];
 const byId = new Map(all.map((i) => [i.id, i]));
 const subjectOf = (id) => id.split(":")[0];
 
@@ -106,6 +110,7 @@ test("group matches the standard's grade: 7-10 is grades 2-5, 10-18 is grades 5-
 test("buildsOn resolves, never climbs to a higher group, and has no cycle", () => {
   for (const i of owned) {
     for (const b of i.buildsOn) {
+      if (physics === null && subjectOf(b) === "physics") continue;
       const t = byId.get(b);
       assert.ok(t, `${i.id}: buildsOn ${b} does not exist`);
       assert.ok(RANK[t.group] <= RANK[i.group], `${i.id} builds on higher-group ${b}`);
@@ -116,7 +121,7 @@ test("buildsOn resolves, never climbs to a higher group, and has no cycle", () =
     if (state.get(id) === 2) return;
     assert.notEqual(state.get(id), 1, `cycle: ${[...stack, id].join(" -> ")}`);
     state.set(id, 1);
-    for (const b of byId.get(id).buildsOn) visit(b, [...stack, id]);
+    for (const b of byId.get(id).buildsOn) if (byId.has(b)) visit(b, [...stack, id]);
     state.set(id, 2);
   };
   for (const i of owned) visit(i.id, []);
@@ -130,6 +135,19 @@ test("every mixed-review item re-uses something the child met in another subject
   // Across the set, one skill shows up in several places: at least three source subjects.
   const sources = new Set(gk.flatMap((i) => i.buildsOn.map(subjectOf)));
   for (const s of ["math-number", "geography", "physics"]) assert.ok(sources.has(s), s);
+});
+
+test("physics links resolve against docs/scaling/physics/items.json", { skip: physics === null && "docs/scaling/physics/items.json is absent" }, () => {
+  const ids = new Set(physics.map((p) => p.id));
+  for (const i of gk) for (const b of i.buildsOn) if (subjectOf(b) === "physics") assert.ok(ids.has(b), `${i.id}: ${b} is not a physics item`);
+});
+
+test("year-gap answers use the current year at play time, never a literal year", () => {
+  for (const i of gk) {
+    if (!/years ago|how long ago/i.test(text(i))) continue;
+    assert.match(i.objective, /currentYear − \d{4}/, `${i.id}: answer must be currentYear − X`);
+    assert.match(i.objective, /at play time/, `${i.id}: currentYear must be read at play time`);
+  }
 });
 
 test("7-10 items use no algebra, trigonometry, rates or formulas", () => {

@@ -35,7 +35,7 @@ question G7 in the spec).
 | Item | Working | Result |
 |---|---|---|
 | `general-knowledge:mixed:eiffel-antennas` | 1,083 − 1,024 (F2) | 59 feet |
-| `general-knowledge:mixed:opera-years-ago` | device year − 1973 (F3) | computed at play time from the device clock; never stored, never asks the child's age |
+| `general-knowledge:mixed:opera-years-ago` | currentYear − 1973 (F3), currentYear read from the device clock at play time (owner ruling, 2026-11-10) | never a literal year; never stored; never asks the child's age |
 | `general-knowledge:mixed:falls-in-km` | 2 km = 2,000 m > 1,708 m (F4) | less than 2 km |
 | `general-knowledge:mixed:everest-vs-falls` | 8,848.86 ÷ 108 (F4, F5) | 81.9, "about 80" |
 | `general-knowledge:mixed:paris-sydney-flight` | haversine on F8 pins with R = 6,371 km (F7) = 16,964 km; 17,000 ÷ 850 | about 20 hours. 850 km/h is a round number for the problem, not a fact |

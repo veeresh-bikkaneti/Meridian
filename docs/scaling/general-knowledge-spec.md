@@ -13,8 +13,8 @@
 | Status | **GATED.** Stage A (spec and data) done on this branch; Stage B (build) waits for the owner to lift the build gate for this branch. Educator seat vacant: no named educator has signed the rubric. |
 | Branch | `feat/general-knowledge-spec` (stays open until dev work is complete) |
 | Contract | I2 unit items (`docs/scaling/contracts.md`); I1 subject module and I3/I4 for Stage B only |
-| Item counts | **PROPOSED:** 11 mixed-review items (6 for 7-10, 3 for 10-18, 2 for 18+), 5 subject fixtures, 5 example rounds. Not decided; the educator and owner set the real counts. |
-| Data | `docs/scaling/general-knowledge/items.json` (mixed-review items), `fixtures/geography.items.json`, `fixtures/physics.items.json`, `rounds.json`; validator `items.test.mjs`; sources `sources.md`; council `council.md` |
+| Item counts | **PROPOSED:** 11 mixed-review items (6 for 7-10, 3 for 10-18, 2 for 18+), 4 geography fixtures, 5 example rounds. Not decided; the educator and owner set the real counts. |
+| Data | `docs/scaling/general-knowledge/items.json` (mixed-review items), `fixtures/geography.items.json`, `rounds.json`; validator `items.test.mjs`; sources `sources.md`; council `council.md` |
 | Spec date | 2026-11-10 |
 
 ## 1. The reframe — what a general-knowledge round is
@@ -30,8 +30,9 @@ the globe (standard §4, "Interleave"; map, cross-application web):
 - A **physics / earth-science** idea (shadows through the day) is applied to
   the same places.
 - Each card's `buildsOn` points by id at the items it re-uses. Math links to
-  the real number-strand data on main (`docs/scaling/math/number/items.json`);
-  geography and physics link to fixtures in `docs/scaling/general-knowledge/fixtures/`
+  the real number-strand data on main (`docs/scaling/math/number/items.json`)
+  and physics to the real physics data on main (`docs/scaling/physics/items.json`,
+  PR 398); geography links to fixtures in `docs/scaling/general-knowledge/fixtures/`
   until those subjects publish their own I2 items (contracts "copy the shape
   until the owning stream merges"). When they land, the fixture ids are
   swapped for the real ones and the fixtures are deleted.
@@ -62,7 +63,7 @@ The table is generated from the data; the data wins if they ever differ.
 | `general-knowledge:mixed:older-landmark` | 7-10 | 4.NBT.A.2 | geography, math-number | `math-number:place:compare`, `geography:globe:eiffel-tower`, `geography:globe:sydney-opera-house` | geography: putting two events in time order on a timeline |
 | `general-knowledge:mixed:falls-in-km` | 7-10 | 4.MD.A.1 | geography, math-number | `geography:globe:victoria-falls`, `math-number:place:compare` | everyday life: reading a trail sign in kilometres next to a map scale in metres |
 | `general-knowledge:mixed:trip-buses` | 7-10 | 4.OA.A.3 | geography, math-number | `math-number:division:remainders`, `geography:globe:victoria-falls` | geography: planning a class trip to a place on the map |
-| `general-knowledge:mixed:noon-shadow` | 7-10 | 5-ESS1-2 | geography, physics | `physics:light:shadow-noon`, `geography:globe:eiffel-tower` | everyday life: reading the time from a sundial shadow |
+| `general-knowledge:mixed:noon-shadow` | 7-10 | 5-ESS1-2 | geography, physics | `physics:shadow:blocks`, `geography:globe:eiffel-tower` | everyday life: reading the time from a sundial shadow |
 | `general-knowledge:mixed:everest-vs-falls` | 10-18 | 6.RP.A.3 | geography, math-number | `geography:globe:everest`, `geography:globe:victoria-falls`, `math-number:division:two-digit-divisors` | geography: comparing the sizes of landforms on the globe |
 | `general-knowledge:mixed:paris-sydney-flight` | 10-18 | 6.RP.A.3 | geography, math-number | `geography:globe:eiffel-tower`, `geography:globe:sydney-opera-house`, `math-number:fractions:percent` | physics: speed = distance ÷ time for a ball rolling down a ramp |
 | `general-knowledge:mixed:tower-angle` | 10-18 | HSG-SRT.C.8 | geography | `geography:globe:eiffel-tower`, `general-knowledge:mixed:eiffel-antennas` | geography: finding the height of a mountain from an angle and a distance |
@@ -77,14 +78,14 @@ The table is generated from the data; the data wins if they ever differ.
 | `geography:globe:sydney-opera-house` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: using a globe to tell which half of the world a city is in |
 | `geography:globe:victoria-falls` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: following a river on a map to the place where it falls |
 | `geography:globe:everest` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: finding mountain ranges on a relief map |
-| `physics:light:shadow-noon` | 7-10 | 5-ESS1-2 | physics fixture | everyday life: reading the time from a sundial shadow |
 
 Geography fixture ids map to the live globe deck: `geography:globe:eiffel-tower`
 = `globe-eiffel-tower`, `geography:globe:sydney-opera-house` =
 `globe-sydney-opera-house`, `geography:globe:victoria-falls` =
-`globe-victoria`, `geography:globe:everest` = `globe-everest`. The physics
-fixture `physics:light:shadow-noon` stands in for map step Ph4 (light and
-shadow) until the physics spec publishes items.
+`globe-victoria`, `geography:globe:everest` = `globe-everest`. The earlier
+physics fixture `physics:light:shadow-noon` was removed (integrator fix,
+2026-11-10): `noon-shadow` now builds on the real `physics:shadow:blocks`
+(light is blocked to make a shadow, 4-PS4-2) from `docs/scaling/physics/items.json`.
 
 ### Example rounds (`rounds.json`, PROPOSED)
 
@@ -135,7 +136,7 @@ K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
 - Post-clip retrieval check (journal + any video): [n/a] no clips in this mode; the host wrap-up follows an answered card, so the card itself is the retrieval
 - Motion tiers: Full / Lite / Flat described, learning parity stated: [x] §5
 - Accessibility: captions, tap alternative, no-timer default, SR live region: [x] §5
-- Privacy: no PII, no identifiers, local-only records: [x] §5; "years ago" uses only the device year and never asks an age
+- Privacy: no PII, no identifiers, local-only records: [x] §5; "years ago" answers are `currentYear − X`, with currentYear read from the device clock at play time (owner ruling, 2026-11-10), never a literal year; no item asks an age
 - Content screen (§7a) passed; cut items logged with reason: [x] §6 CUT log
 - Free: no revenue features; asset licences recorded: [x] no new assets in Stage A; Stage B reuses the globe and house art
 - Educator rubric (docs/scaling/educator-gate-rubric.md) attached: [ ] OPEN — no named educator; sign-off block in §9 is blank
@@ -242,5 +243,4 @@ Signature (typed name is fine): [ ]
 - `general-knowledge:mixed:great-circle` and `general-knowledge:mixed:falls-flow`: standard UNVERIFIED (18+, no single school code; Fit notes in the data).
 - Mount Everest height: MEDIUM confidence (secondary source citing the 2020 joint survey reports).
 - Earth's mean radius: MEDIUM confidence (secondary source citing IUGG).
-- Physics fixture stands in for an item the physics spec has not published.
 - Readability of host lines: not measured in Stage A (no host lines written yet).
