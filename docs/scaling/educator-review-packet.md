@@ -382,9 +382,9 @@ Spec: [humanities-definitions-spec.md on PR 399](https://github.com/veeresh-bikk
 | H21 | 7-10, 10-18, 18+ | GK trivia: school general knowledge per group | After this, a learner can answer a school-level question on a screened topic, shown by an exact answer. | per question | TO CONFIRM | PR 399 |
 | H23 | 10-18, 18+ | GK Detective cases (P12), cross-subject | After this, a learner can use three clues to reach the one answer they point to, shown by a correct guess within the cap. | per case | UNVERIFIED | PR 399 |
 | angkor | 7-10, 10-18, 18+ | Place only: size, age, materials, and the math in the reword file | This huge stone complex near Siem Reap in Cambodia was built in the early 12th century. | — (sources in the reword file; no new code) | PROPOSED | PR 399 |
-| potala | 7-10, 10-18, 18+ | Architecture only: settled building facts (size, age, materials) and the math in the reword file; nothing about who governs the region. Owner decided: keep Potala. | The palace sits on Red Mountain in the Lhasa Valley, about 3,700 metres above sea level. | — (sources in the reword file; no new code) | PROPOSED | PR 399 |
+| potala | 7-10, 10-18, 18+ | Architecture only: settled building facts (size, age, materials) and the math in the reword file; nothing about who governs the region. Owner decided: keep Potala. | The palace sits on Red Mountain in the middle of the Lhasa Valley. | — (sources in the reword file; no new code) | PROPOSED | PR 399 |
 | timbuktu | 7-10, 10-18, 18+ | Place only: size, age, materials, and the math in the reword file | The city in Mali stands at the edge of the Sahara Desert. | — (sources in the reword file; no new code) | PROPOSED | PR 399 |
-| uluru | 7-10, 10-18, 18+ | Place only: size, age, materials, and the math in the reword file | The huge red sandstone rock rises from the desert in Australia's Northern Territory. | — (sources in the reword file; no new code) | PROPOSED | PR 399 |
+| uluru | 7-10, 10-18, 18+ | Place only: size, age, materials, and the math in the reword file | The huge red sandstone rock rises alone from the desert in Australia's Northern Territory. | — (sources in the reword file; no new code) | PROPOSED | PR 399 |
 
 ## Needs your judgement
 
