@@ -3,7 +3,7 @@
 - **Topic:** Great leaders, told through the places that honour them
 - **Status:** GATED. Stage A (screen, spec and data) done 2026-11-10; Stage B (clips) waits for the owner to lift the build gate, and for a named human educator to sign `educator-gate-rubric.md`.
 - **Branch:** `feat/journal-great-leaders-spec`
-- **Proposed clip count:** 2 proposed; after the §7a screen, **1 kept, 1 cut**. The owner then added Robben Island (from PR 407, after it merges) and two leaders that have no rows until sourced ("Owner decisions"), so up to 4 (3 rows in `clips.json` now: 2 PROPOSED, 1 UNVERIFIED). All counts stay PROPOSED, pending owner approval; never presented as decided.
+- **Proposed clip count:** 2 proposed; after the §7a screen, **1 kept, 1 cut**. The owner then added Robben Island (from PR 407, after it merges) and two leaders that have no rows until sourced ("Owner decisions"), so up to 4 (3 rows in `clips.json` now, all PROPOSED). All counts stay PROPOSED, pending owner approval; never presented as decided.
 - **Clip data (contract I5):** `docs/scaling/journals/great-leaders/clips.json`
 - **Fact ledger:** `docs/scaling/journals/great-leaders/sources.md` (every fact with source, access date and confidence; conflicts, cuts and screened facts logged)
 - **Draft captions and transcript:** `docs/scaling/journals/great-leaders/captions/lincoln-memorial.vtt`, `docs/scaling/journals/great-leaders/transcripts.md`
@@ -177,15 +177,15 @@ screen above, and where they differ, the owner's call wins.
 
    | Row | Group | Narration after the opener | Card (years ago, worked out at play time) | Status | Why |
    |---|---|---|---|---|---|
-   | `great-leaders:jhansi-fort` | 10-18 (18+ stretch TO CONFIRM) | "Queen Lakshmibai led Jhansi's army, her little son on her back." | 1858 → current year − 1858 | **UNVERIFIED** | "On her back" is disputed: S9, S21, S22 and S23 say back (most as belief or tradition), but S10 says waist (R-C4). Your rule: a disagreeing source keeps the row UNVERIFIED. Every other fact (queen, army, 1858) has 2–3 agreeing sources. |
+   | `great-leaders:jhansi-fort` | 10-18 (18+ stretch TO CONFIRM) | "Queen Lakshmibai led Jhansi's army and rode out with her young son." (owner's revision, 2026-11-10) | 1858 → current year − 1858 | **PROPOSED** | Every fact has agreeing sources: queen (R-1), led the army (R-4), 1858 (R-7), rode out of the fort with Damodar (R-11, five sources), "young" (R-N1: about 8 to 10 in 1858). The earlier "on her back" was disputed (R-C4, still logged) and is dropped, along with "little". |
    | `great-leaders:netaji-bhawan` | 10-18 (18+ stretch TO CONFIRM) | "Netaji Subhas Bose lived here. He led an army and made 'Jai Hind' famous." | 1943 → current year − 1943 | **PROPOSED** | Each fact has 2 or more agreeing sources: Netaji (B-1), lived here (B-12), led an army (B-13), made "Jai Hind" famous (B-3), 1943 command (B-6). Who coined "Jai Hind" is disputed, but no source says Bose did, and the line doesn't claim it (B-C2). |
 
    Both rows use C3 D2.His.3.6-8 (live, S7). The card math (subtracting
    years) is grade 4 (4.NBT.B.4), in rows you placed in 10-18. Your stretch
    questions were not given, and no sourced fact supports a clean adult
    computation yet (the siege length and army sizes conflict), so both stay
-   TO CONFIRM. Narration lengths are 19 and 22 words; 22 is the check's limit,
-   so the Netaji line passes with no room to spare.
+   TO CONFIRM. Narration lengths are 20 (Jhansi) and 22 (Netaji) words; 22 is the
+   check's limit, so the Netaji line passes with no room to spare.
 
 ## Stage B (not started: build gate not lifted)
 

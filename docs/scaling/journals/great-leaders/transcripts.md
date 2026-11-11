@@ -42,28 +42,30 @@ so a column is 25 feet taller.)* [L-14]
 march, no inscriptions, no murals, nothing about the reason for the 36 columns.
 See `sources.md` L-X1 to L-X5.
 
-## great-leaders:jhansi-fort (group 10-18) — row UNVERIFIED
+## great-leaders:jhansi-fort (group 10-18) — row PROPOSED
 
-Owner-approved wording (t330u, 2026-11-10), used verbatim after the opener.
-The row is UNVERIFIED because one source disagrees with "on her back"
-(`sources.md` R-C4; `row-status.json`).
+Owner-approved wording (revised by the owner on 2026-11-10), used verbatim
+after the opener. "Little" and "on her back" were dropped; the back-vs-waist
+dispute stays logged in `sources.md` (R-C4) but is no longer narrated or shown.
 
 **Opening card (read aloud, before play):** She led her forces in 1858. How
 many years ago was that? *(Answer: current year − 1858, worked out on the
 device at play time; never a literal number.)* [R-7] Detail line, if used:
 "Lakshmibai, queen of Jhansi." [R-1]
 
-**Narration (19 spoken words):**
+**Narration (20 spoken words):**
 > Hey kids, have you heard about this place? Queen Lakshmibai led Jhansi's
-> army, her little son on her back. [R-1, R-2, R-4, R-8]
+> army and rode out with her young son. [R-1, R-2, R-4, R-11, R-N1]
 
 **What the picture shows:** Jhansi Fort on its hilltop; the queen riding out
-on horseback with her young son Damodar tied to her. No fighting, wounds,
+of the fort on horseback with her young son Damodar held close. Don't show
+whether he is tied at her back or her waist (R-C4), and don't show a leap from
+the wall (R-C5). No fighting, wounds,
 blood, fire, crowds or opposing soldiers are shown. [R-8, R-9]
 
-**Retrieval check (read aloud, tap one):** Who rode with Queen Lakshmibai?
-Choices: *Her little son* (correct) · *A king* · *Nobody*. Hint on a miss:
-"Look at who she carried."
+**Retrieval check (read aloud, tap one):** Who rode out with Queen
+Lakshmibai? Choices: *Her young son* (correct) · *A king* · *Nobody*. Hint on a
+miss: "Look at who rode with her."
 
 **18+ stretch:** TO CONFIRM. The sourced siege length conflicts ("two weeks",
 S21, vs "17 days" of shelling, S22), and the ride to Kalpi is partly legend

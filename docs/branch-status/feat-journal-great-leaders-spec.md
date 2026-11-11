@@ -64,7 +64,7 @@ the owner lifts the build gate.
 ### Owner-approved wording, round 3 (t330u, 2026-11-10)
 
 - [x] `great-leaders:jhansi-fort` row added, 10-18, owner narration verbatim.
-      **UNVERIFIED:** "on her back" is disputed (back: S9, S21, S22, S23;
+      **UNVERIFIED** at the time (superseded in round 4): "on her back" was disputed (back: S9, S21, S22, S23;
       waist: S10).
 - [x] `great-leaders:netaji-bhawan` row added, 10-18, owner narration
       verbatim. **PROPOSED:** each fact has two or more agreeing sources.
@@ -77,6 +77,16 @@ the owner lifts the build gate.
 - [x] `row-status.json` (status and reason per row). `check-clips.mjs`
       requires it, and checks that a years-ago card names the year it counts
       from.
+
+### Owner revision, round 4 (2026-11-10)
+
+- [x] Jhansi narration changed, verbatim, to "Queen Lakshmibai led Jhansi's
+      army and rode out with her young son." (20 words with the opener).
+      Updated in captions, transcript, spec and the retrieval answer.
+- [x] Re-sourced: rode out of the fort with Damodar in 1858 (R-11: S9, S10,
+      S21, S22, S23 agree); "young" fits his age, 8 to 10 depending on the
+      source (R-N1). **Row now PROPOSED.** Back vs waist stays logged in
+      `sources.md` (R-C4) and is no longer narrated.
 
 ## Gates
 
@@ -96,7 +106,6 @@ is not created yet (Stage B).
   listen check; "opened" vs "dedicated" wording.
 - Narration timing (20 words for about 8 s) is TO CONFIRM when rendered.
 - Robben Island row: open until PR 407 merges.
-- Jhansi row UNVERIFIED until the owner settles back vs waist (R-C4).
 - 18+ stretch questions for Jhansi and Netaji: TO CONFIRM (no clean sourced fact).
 
 ## Needs the integrator (outside this branch's paths)

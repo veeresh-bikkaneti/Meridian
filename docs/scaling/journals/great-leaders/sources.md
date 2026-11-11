@@ -139,7 +139,8 @@ or screened below is added to the wording. All sources were fetched on
 | R-5 | She took charge of the forces in the wider region, and fighters from nearby areas came to Jhansi to support her. | S9 | MEDIUM (one source) for "rallied" | rallied them |
 | R-6 | During the siege of Jhansi's fort she did not surrender, even after her forces were overwhelmed. | S9 | HIGH (one source, plainly stated) | stood her ground |
 | R-7 | The siege of the fort was in March and April 1858. | S9 ("turned toward Jhansi in March" 1858); S10 ("March and April 1858"); S21 (siege from March 1858) | HIGH | card "She led her forces in 1858" |
-| R-8 | She left the fort with Damodar tied to her **back**. | Back: S9 ("is believed to"), S21 ("it is said"), S22, S23 ("according to tradition"). **Waist: S10** (citing two published histories). | **DISAGREE (R-C4). Row UNVERIFIED.** | narration "her little son on her back" |
+| R-8 | She left the fort with Damodar tied to her **back**. | Back: S9 ("is believed to"), S21 ("it is said"), S22, S23 ("according to tradition"). **Waist: S10** (citing two published histories). | **DISAGREE (R-C4).** No longer narrated (owner, 2026-11-10). | not used |
+| R-11 | In 1858 she rode out of the besieged Jhansi fort with her son Damodar. | S9 (fled the fort on horseback "with her son, Damodar"; escaped "with a small force of palace guards"); S10 ("escaped the siege on horseback… with her adopted son Damodar Rao", reaching Kalpi on 5 April 1858); S21 (escaped "accompanied by her guards and, it is said, her son"); S22 (rode out on horseback with her son, April 1858); S23 (by tradition on horseback with Damodar; "more probably she escaped in the night with her son, surrounded by guards") | HIGH that she left the fort with her son in 1858; HIGH that she rode (S9, S10, S22, S23; S21 doesn't mention a horse and doesn't contradict it). How she got out (a leap or not) is disputed (R-C5) and isn't narrated. | narration "rode out with her young son" |
 | R-9 | Jhansi Fort stands on a hilltop called Bangira, in the middle of Jhansi city, Uttar Pradesh. | S11 | MEDIUM (one source) | place |
 | R-10 | Coordinates 25.45809, 78.57544. | S12 | HIGH | place |
 
@@ -155,19 +156,20 @@ Conflicts for the owner (none may be narrated until settled):
   and says she trained an all-female regiment "if it existed". So **"trained
   her own forces" is UNVERIFIED**; "organised and led her forces" (R-4) is the
   sourced line.
-- **R-C4 Back vs waist (keeps the Jhansi row UNVERIFIED).** The owner's
-  narration says "her little son on her back". Four sources say back: S9
+- **R-C4 Back vs waist (logged; no longer narrated).** The owner's earlier
+  narration said "her little son on her back"; on 2026-11-10 the owner changed
+  it to "rode out with her young son", which avoids this dispute. Four sources say back: S9
   ("is believed to"), S21 ("it is said"), S22 (plain statement) and S23
   ("according to tradition"; it adds that "more probably she escaped in the
   night with her son, surrounded by guards"). S10 says "tied to her waist",
   citing two published histories. Every "back" source except S22 hedges it
-  as belief or tradition. Owner options: (1) accept the row as told by
-  tradition and override UNVERIFIED in writing; (2) change one word, e.g.
-  "her little son held close", which every source supports; (3) keep the row
-  out.
-- **R-N1 "Little" son (a note, not a conflict):** Damodar was five when
-  adopted in 1853 (S9; S10), so about ten in 1858. "Little" is the owner's
-  word; no source gives his exact age in 1858.
+  as belief or tradition. Resolved by rewording, not by choosing a source.
+- **R-N1 "Young" son (a note, not a conflict):** S9 and S10 say Damodar was
+  five when adopted in November 1853, which makes him about nine or ten in
+  April 1858. S23 gives his birth date as 15 November 1849, which makes him
+  eight in April 1858 (and four, not five, at the adoption). The sources differ
+  by a year or two on his exact age, but every reading gives a boy of about
+  8 to 10, so "young" fits all of them. No age is narrated.
 - **R-C5** The ride out: S9 tells the leap from the walls on horseback as a
   belief; S10 says "there are multiple accounts" (a leap, being lowered onto
   a horse, or a gap left in the lines). A clip can say she rode out of the
