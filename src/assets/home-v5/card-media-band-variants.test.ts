@@ -63,15 +63,17 @@ after(() => {
 });
 
 describe("coldtrailMediaForBand — full matrix", () => {
-  it('"5-7" (Little Explorer) gets the softer variant, by identity', () => {
-    assert.equal(mod.coldtrailMediaForBand("5-7"), mod.COLDTRAIL_FILM_LITTLE_EXPLORER);
+  it("the softer Little Explorer asset stays in place but is no longer selected for any band", () => {
+    for (const band of ["5-7", "7-10", "10-18", "18+"]) {
+      assert.notEqual(mod.coldtrailMediaForBand(band), mod.COLDTRAIL_FILM_LITTLE_EXPLORER, band);
+    }
     assert.ok(mod.COLDTRAIL_FILM_LITTLE_EXPLORER.videoUrl.endsWith("coldtrail-film-little-explorer.mp4"));
     assert.ok(mod.COLDTRAIL_FILM_LITTLE_EXPLORER.posterUrl.endsWith("coldtrail-poster-little-explorer.webp"));
     assert.ok(mod.COLDTRAIL_FILM_LITTLE_EXPLORER.stillUrl.endsWith("coldtrail-still-little-explorer.webp"));
   });
 
   it("every other value gets the standard record, by identity", () => {
-    for (const band of ["8-10", "11-13", null, undefined, "", "5–7", "5-7 ", " 5-7", "5", "little-explorer", "garbage"] as const) {
+    for (const band of ["7-10", "10-18", "18+", "5-7", "8-10", "11-13", null, undefined, "", "5–7", "5", "little-explorer", "garbage"] as const) {
       assert.equal(
         mod.coldtrailMediaForBand(band as string | null | undefined),
         mod.COLDTRAIL_FILM,
@@ -82,20 +84,20 @@ describe("coldtrailMediaForBand — full matrix", () => {
   });
 
   it("is pure: repeated calls return the identical record object", () => {
-    assert.equal(mod.coldtrailMediaForBand("5-7"), mod.coldtrailMediaForBand("5-7"));
-    assert.equal(mod.coldtrailMediaForBand("11-13"), mod.coldtrailMediaForBand(null));
+    assert.equal(mod.coldtrailMediaForBand("7-10"), mod.coldtrailMediaForBand("7-10"));
+    assert.equal(mod.coldtrailMediaForBand("10-18"), mod.coldtrailMediaForBand(null));
   });
 });
 
 describe("reviewMediaForBand — full matrix", () => {
-  it('"8-10" (Trail Scout) gets the regenerated variant, by identity', () => {
-    assert.equal(mod.reviewMediaForBand("8-10"), mod.REVIEW_FILM_TRAIL_SCOUT);
+  it('"7-10" (Trail Scout) gets the regenerated variant, by identity', () => {
+    assert.equal(mod.reviewMediaForBand("7-10"), mod.REVIEW_FILM_TRAIL_SCOUT);
     assert.ok(mod.REVIEW_FILM_TRAIL_SCOUT.videoUrl.endsWith("review-film-trail-scout.mp4"));
     assert.ok(mod.REVIEW_FILM_TRAIL_SCOUT.posterUrl.endsWith("review-poster-trail-scout.webp"));
   });
 
   it("every other value gets the standard record, by identity", () => {
-    for (const band of ["5-7", "11-13", null, undefined, "", "8–10", "8-10 ", " 8-10", "8", "trail-scout", "garbage"] as const) {
+    for (const band of ["10-18", "18+", "5-7", "8-10", "11-13", null, undefined, "", "7–10", "7-10 ", " 7-10", "7", "trail-scout", "garbage"] as const) {
       assert.equal(
         mod.reviewMediaForBand(band as string | null | undefined),
         mod.REVIEW_FILM,
@@ -106,8 +108,8 @@ describe("reviewMediaForBand — full matrix", () => {
   });
 
   it("is pure: repeated calls return the identical record object", () => {
-    assert.equal(mod.reviewMediaForBand("8-10"), mod.reviewMediaForBand("8-10"));
-    assert.equal(mod.reviewMediaForBand("5-7"), mod.reviewMediaForBand(undefined));
+    assert.equal(mod.reviewMediaForBand("7-10"), mod.reviewMediaForBand("7-10"));
+    assert.equal(mod.reviewMediaForBand("10-18"), mod.reviewMediaForBand(undefined));
   });
 
   it("the Trail Scout record's still is the shared archive-tools.webp import, not a copy", () => {

@@ -1,0 +1,51 @@
+{
+  "status": "PROPOSED",
+  "note": "Example rounds only. The v1 round deals from the child's own due and mastered items; these show the interleave rule.",
+  "rounds": [
+    {
+      "id": "general-knowledge:round:7-10-a",
+      "group": "7-10",
+      "items": [
+        "general-knowledge:mixed:older-landmark",
+        "general-knowledge:mixed:noon-shadow",
+        "general-knowledge:mixed:trip-buses"
+      ]
+    },
+    {
+      "id": "general-knowledge:round:7-10-b",
+      "group": "7-10",
+      "items": [
+        "general-knowledge:mixed:eiffel-antennas",
+        "general-knowledge:mixed:falls-in-km",
+        "general-knowledge:mixed:opera-years-ago"
+      ]
+    },
+    {
+      "id": "general-knowledge:round:10-18-a",
+      "group": "10-18",
+      "items": [
+        "general-knowledge:mixed:everest-vs-falls",
+        "general-knowledge:mixed:noon-shadow",
+        "general-knowledge:mixed:paris-sydney-flight"
+      ]
+    },
+    {
+      "id": "general-knowledge:round:10-18-b",
+      "group": "10-18",
+      "items": [
+        "general-knowledge:mixed:tower-angle",
+        "general-knowledge:mixed:falls-in-km",
+        "general-knowledge:mixed:opera-years-ago"
+      ]
+    },
+    {
+      "id": "general-knowledge:round:18-plus-a",
+      "group": "18+",
+      "items": [
+        "general-knowledge:mixed:great-circle",
+        "general-knowledge:mixed:falls-flow",
+        "general-knowledge:mixed:tower-angle"
+      ]
+    }
+  ]
+}

@@ -19,7 +19,7 @@ export type Starter = {
   storyRung?: StoryRung;
   /**
    * Read-aloud should auto-play when this card is revealed (true for the
-   * 5-7 band). Set by the age-profile rung mapper at card compose time.
+   * former 5-7 band). Set by the age-profile rung mapper at card compose time.
    */
   audioAutoplay?: boolean;
   /**
@@ -3565,7 +3565,7 @@ export const STARTERS: Starter[] = [
     "Potala Palace",
     91.117,
     29.658,
-    "The Potala climbs a hill above Lhasa in white and red blocks. It was a winter seat of the Dalai Lamas and still dominates the city.",
+    "The Potala climbs a hill above Lhasa in white and red blocks. It has more than 1,000 rooms and still dominates the city.",
     "Potala_Palace",
     2,
     undefined,
@@ -3667,7 +3667,7 @@ export const STARTERS: Starter[] = [
     "Uluru",
     131.037,
     -25.345,
-    "A sandstone monolith stands alone on the desert plain at the center of the continent. The rock changes color with the light, and the base is lined with sacred sites.",
+    "A sandstone monolith stands alone on the desert plain at the center of the continent. The rock changes color with the light, and its sandstone is about half a billion years old.",
     "Uluru",
     1,
     undefined,
@@ -3771,7 +3771,7 @@ export const STARTERS: Starter[] = [
     "Angkor Wat",
     103.867,
     13.412,
-    "A temple mountain of galleries and towers rises inside a wide moat. Bas-reliefs along the walls tell episodes from Hindu epic poems.",
+    "A great stone complex of galleries and towers rises inside a wide moat. Its five central towers are reached through three galleries.",
     "Angkor_Wat",
     1,
     "KH",

@@ -1,0 +1,93 @@
+{
+  "journal": "modern-world",
+  "status": "PROPOSED",
+  "proposedClipCount": 3,
+  "countConfidence": "PROPOSED",
+  "stage": "A-spec",
+  "buildGate": "CLOSED",
+  "screened": "2026-11-10",
+  "notes": "Shape is contract I5 plus the optional stretch added on main (2026-11-10). One stretch only. 18+ gets that same stretch; a second older question is not stored. standardSource, captionsDraft, and transcript are local. file points at the Stage B path. No mp4 yet. deviceYear is the clock year, never a birthday.",
+  "clips": [
+    {
+      "id": "modern-world:greenwich-zero",
+      "group": "7-10",
+      "objective": "After this, a child in 7-10 can locate the zero line on a map, shown by a correct pin on the Royal Observatory at Greenwich.",
+      "standard": "D2.Geo.1.3-5",
+      "standardSource": "https://content.esri.com/esripress/steam-at-work/en/sam/sam-c3.pdf",
+      "why": "Where is the line maps call zero?",
+      "place": {
+        "lat": 51.47687,
+        "lon": -0.00041,
+        "name": "Royal Observatory, Greenwich"
+      },
+      "file": "public/videos/journals/modern-world/greenwich-zero.mp4",
+      "captions": "greenwich-zero.vtt",
+      "captionsDraft": "docs/scaling/journals/modern-world/greenwich-zero.vtt",
+      "transcript": "docs/scaling/journals/modern-world/greenwich-zero.transcript.md",
+      "retrieval": {
+        "question": "Where is the zero line?",
+        "answer": "Greenwich, at the Royal Observatory"
+      },
+      "stretch": {
+        "group": "10-18",
+        "question": "A full turn is 360 degrees. The clock day has 24 hours. How many degrees is one hour?",
+        "answer": "15",
+        "fact": "clock-model-15-degrees"
+      }
+    },
+    {
+      "id": "modern-world:liverpool-manchester",
+      "group": "7-10",
+      "objective": "After this, a child in 7-10 can compute how many years ago 1830 was, shown by tapping the device year minus 1830.",
+      "standard": "D2.His.2.3-5",
+      "standardSource": "https://www.oregon.gov/ode/educator-resources/standards/socialsciences/Documents/C3-Framework-for-Social-Studies.pdf",
+      "why": "How many years ago did a steam railway join Liverpool and Manchester?",
+      "place": {
+        "lat": 53.410556,
+        "lon": -2.977778,
+        "name": "Liverpool, England"
+      },
+      "file": "public/videos/journals/modern-world/liverpool-manchester.mp4",
+      "captions": "liverpool-manchester.vtt",
+      "captionsDraft": "docs/scaling/journals/modern-world/liverpool-manchester.vtt",
+      "transcript": "docs/scaling/journals/modern-world/liverpool-manchester.transcript.md",
+      "retrieval": {
+        "question": "The railway opened in 1830. How many years ago is that?",
+        "answer": "COMPUTED: deviceYear - 1830"
+      },
+      "stretch": {
+        "group": "10-18",
+        "question": "In an 1829 trial the Rocket went 36 miles in one hour. At that speed, how many miles in 2 hours?",
+        "answer": "72",
+        "fact": "rocket-trial-36-mph"
+      }
+    },
+    {
+      "id": "modern-world:hearts-content-cable",
+      "group": "7-10",
+      "objective": "After this, a child in 7-10 can locate where the 1866 cable came ashore, shown by a correct pin on Heart's Content.",
+      "standard": "D2.Geo.1.3-5",
+      "standardSource": "https://content.esri.com/esripress/steam-at-work/en/sam/sam-c3.pdf",
+      "why": "How far did a message have to go under the ocean to cross from Ireland to Newfoundland?",
+      "place": {
+        "lat": 47.872528,
+        "lon": -53.368639,
+        "name": "Heart's Content Cable Station, Newfoundland and Labrador"
+      },
+      "file": "public/videos/journals/modern-world/hearts-content-cable.mp4",
+      "captions": "hearts-content-cable.vtt",
+      "captionsDraft": "docs/scaling/journals/modern-world/hearts-content-cable.vtt",
+      "transcript": "docs/scaling/journals/modern-world/hearts-content-cable.transcript.md",
+      "retrieval": {
+        "question": "Where did the 1866 cable come ashore in Newfoundland?",
+        "answer": "Heart's Content"
+      },
+      "stretch": {
+        "group": "10-18",
+        "question": "1,852 miles of cable were laid in 14 days. Which is closest to the miles per day: 100, 130, or 200?",
+        "answer": "130",
+        "fact": "cable-1852-miles-14-days"
+      }
+    }
+  ]
+}

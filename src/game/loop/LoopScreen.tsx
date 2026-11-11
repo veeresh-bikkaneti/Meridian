@@ -71,7 +71,21 @@ import {
   type LoopPackMeta,
 } from "./packs";
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
-import { geodetectiveConfig, getBandConfig, canUseHint, resolveBand, type AgeBandId, type GeoDetectiveConfig } from "@/game/age-profile";
+import { geodetectiveConfig, getBandConfig, canUseHint, resolveBand, type AgeBandId, type BandRunConfig, type GeoDetectiveConfig } from "@/game/age-profile";
+
+type LegacySnapshotBand = Exclude<BandRunConfig["band"], AgeBandId>;
+
+/**
+ * A persisted run-config snapshot (meridian.loop.v2) may still carry a
+ * pre-age-groups id. Map it to the current group wherever an AgeGroup is
+ * needed; the snapshot itself is never rewritten or rejected.
+ */
+function normalizeSnapshotBand(b: AgeBandId | LegacySnapshotBand): AgeBandId {
+  if (b === "5-7" || b === "8-10") return "7-10";
+  if (b === "11-13") return "10-18";
+  return b;
+}
+
 import { HintPanel } from "@/components/hint-panel";
 import { PackShelf } from "@/components/pack-shelf";
 import { CORE_DECK_ID as SHELF_CORE_DECK_ID, deckLabelForId, toShelfDeckId } from "@/components/pack-shelf-data";
@@ -120,11 +134,11 @@ const CLUE_PRESENT_WATCHDOG_MS = 30_000;
 const hookNarratedPuzzles = new Set<string>();
 /**
  * Fail-safe deal when the band has no GeoDetective config (the loop is
- * locked for the band — reachable via a mid-run band change to 5-7):
- * the EASIEST unlocked deal (8-10), never the hardest. Dealing the
- * near-blind 11-13 config to the youngest band was a real bug.
+ * locked for the band — reachable via a mid-run band change to a group
+ * that locks it): the EASIEST unlocked deal (7-10), never the hardest.
+ * Dealing the near-blind 10-18 config to the youngest group was a real bug.
  */
-const SAFE_DEAL_FALLBACK: GeoDetectiveConfig = geodetectiveConfig("8-10") ?? {
+const SAFE_DEAL_FALLBACK: GeoDetectiveConfig = geodetectiveConfig("7-10") ?? {
   startingClues: 3,
   cluePerWrongGuess: 1 as const,
   maxClues: 5 as const,
@@ -134,8 +148,8 @@ const SAFE_DEAL_FALLBACK: GeoDetectiveConfig = geodetectiveConfig("8-10") ?? {
 /**
  * Deal-time config persisted on the open mystery (P0-2): survives
  * remount/resume, so a mid-mystery band change can never soft-lock the
- * mystery under a smaller cap (an 8-10 mystery at 5 wrong guesses resumed
- * under 11-13 keeps its cap of 6 — the 6th guess still wins or loses it).
+ * mystery under a smaller cap (a 7-10 mystery at 5 wrong guesses resumed
+ * under 10-18 keeps its cap of 6 — the 6th guess still wins or loses it).
  * Null for pre-snapshot stores — the caller falls back to the live band.
  */
 function persistedDealConfig(puzzle: LoopPuzzleState | null): GeoDetectiveConfig | null {
@@ -539,9 +553,9 @@ export function LoopScreen({
   const [dealConfig, setDealConfig] = useState<GeoDetectiveConfig | null>(null);
   // Deal-time band snapshot for the hint policy (follow-up Item B).
   // Captured alongside the deal config so a mid-mystery band change never
-  // swaps the hint surface mid-deal. Note: GeoDetective is locked for 5-7
-  // (bands.ts), so in practice this is 8-10 ("one-per-round", hint shown)
-  // vs 11-13 ("none", no button) — the policy table decides, not the loop.
+  // swaps the hint surface mid-deal. Note: GeoDetective is available to every
+  // group (bands.ts); the hint policy is 7-10 "free", 10-18 "one-per-round",
+  // 18+ ("none", no button) — the policy table decides, not the loop.
   const [dealBand, setDealBand] = useState<AgeBandId | null>(null);
   const captureDealConfig = (): GeoDetectiveConfig => {
     const config = geodetectiveConfig(resolveBand()) ?? SAFE_DEAL_FALLBACK;
@@ -770,7 +784,7 @@ export function LoopScreen({
       // #113 BLOCK 2: only wins earn it — the award copy celebrates figuring
       // it out, which mismatches a failed round.
       const earnedBadge = awardCleanRoundBadge({
-        band: progressed.dealBandConfig?.band,
+        band: progressed.dealBandConfig?.band ? normalizeSnapshotBand(progressed.dealBandConfig.band) : undefined,
         hintsUsed: progressed.hintsUsed ?? 0,
         loopId: "geodetective",
         won: progressed.status === "won",
@@ -915,11 +929,12 @@ export function LoopScreen({
   const packBriefing = packEntry ? packBriefingText(packEntry) : null;
   // Deal-time band for the hint policy FALLBACK (never live): in-memory
   // snapshot → persisted dealBandConfig.band (survives remount/resume) →
-  // "11-13" (fails closed: policy "none" hides the button). LoopGame
+  // "18+" (fails closed: policy "none" hides the button). LoopGame
   // prefers the mystery's own dealBandConfig.hintPolicy; this prop only
   // serves pre-snapshot puzzles, which carry no policy of their own.
   const dealBandResolved: AgeBandId =
-    dealBand ?? current?.dealBandConfig?.band ?? "11-13";
+    dealBand ??
+    (current?.dealBandConfig?.band ? normalizeSnapshotBand(current.dealBandConfig.band) : "18+");
 
   return (
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
@@ -1249,7 +1264,7 @@ function LoopGame({
   dealConfig: GeoDetectiveConfig;
   /**
    * Deal-time band for the hint policy — resolved by the parent (snapshot →
-   * persisted → "11-13" fails-closed). Never the live band.
+   * persisted → "18+" fails-closed). Never the live band.
    */
   dealBand: AgeBandId;
   /** Just-earned Clean Round badge, forwarded to the win reveal. */
@@ -1276,9 +1291,9 @@ function LoopGame({
   const guessesAnimateRef = useAutoAnimate<HTMLOListElement>();
 
   // Hint UI for GeoDetective (follow-up Item B, owner 2026-10-09).
-  // Policy comes from the DEAL-TIME band snapshot (never live): 8-10 gets
-  // one hint per mystery ("one-per-round"); an explicit 11-13 gets none
-  // ("none" hides the button); 5-7 can't reach this loop (locked in
+  // Policy comes from the DEAL-TIME band snapshot (never live): 10-18 gets
+  // one hint per mystery ("one-per-round"); an explicit 18+ gets none
+  // ("none" hides the button); 7-10 is "free" (policy table decides; formerly locked in
   // bands.ts). Hints NEVER touch points. The nudge is the same mechanical
   // quadrant hint as the quiz loops (hint-logic.ts) — coarse, never
   // pinpoints.
@@ -1287,7 +1302,7 @@ function LoopGame({
   // with no age profile set it carries the on-by-default policy, owner
   // 2026-10-20; see run-config.ts DEFAULT_HINT_POLICY). Only a
   // pre-snapshot puzzle (no dealBandConfig) falls back to recomputing
-  // from the deal band prop, whose chain fails closed at "11-13".
+  // from the deal band prop, whose chain fails closed at "18+".
   // NEVER the live band.
   const hintPolicy =
     puzzle.dealBandConfig?.hintPolicy ?? getBandConfig(dealBand).hintPolicy;
@@ -1331,8 +1346,8 @@ function LoopGame({
     // there or the badge logic reads stale (always-zero) data.
     onHintUsed(nextCount);
   }
-  // Wrong guesses drive the 5-7 mascot offer (policy-gated inside HintPanel;
-  // unreachable here since the loop is 5-7-locked, but the policy decides).
+  // Wrong guesses drive the 7-10 mascot offer (policy-gated inside HintPanel;
+  // unreachable here even though the loop is open to all groups, but the policy decides).
   const geoMissCount = puzzle.guesses.filter((g) => g.distKm !== 0).length;
 
   // Storyteller v1 (hook only): voice on the tier-4 "The Hook" clue reveal,
@@ -1497,8 +1512,8 @@ function LoopGame({
           Guess {finished ? puzzle.guesses.length : puzzle.guesses.length + 1} of {dealConfig.guessCap}
           {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
         </p>
-        {/* Hint UI (follow-up Item B): 8-10 and no-profile runs get one
-            hint per mystery; an explicit 11-13 renders nothing (policy
+        {/* Hint UI (follow-up Item B): 10-18 and no-profile runs get one
+            hint per mystery; an explicit 18+ renders nothing (policy
             "none" → HintPanel returns null); hidden once the case is
             closed. Right-aligned, in-flow — never overlapping the map
             or the guess input. */}

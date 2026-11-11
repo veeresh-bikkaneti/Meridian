@@ -67,6 +67,9 @@ Read docs/scaling/plans/feat-phase0-shell-split.md and follow it. You may edit O
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/phase0-shell-split. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -84,6 +87,9 @@ Read docs/scaling/plans/feat-age-groups.md and follow it. You may edit ONLY:
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/age-groups. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -102,6 +108,9 @@ Read docs/scaling/plans/feat-math-definition.md and follow it. You may edit ONLY
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/math-definition. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -120,6 +129,9 @@ Read docs/scaling/plans/feat-math-spec.md and follow it. You may edit ONLY:
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/math-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -140,6 +152,9 @@ Read docs/scaling/plans/feat-science-definitions.md and follow it. You may edit 
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/science-definitions. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -158,6 +173,9 @@ Read docs/scaling/plans/feat-physics-spec.md and follow it. You may edit ONLY:
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/physics-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -176,6 +194,9 @@ Read docs/scaling/plans/feat-chemistry-spec.md and follow it. You may edit ONLY:
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/chemistry-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -194,6 +215,9 @@ Read docs/scaling/plans/feat-social-studies-spec.md and follow it. You may edit 
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/social-studies-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -211,6 +235,9 @@ Read docs/scaling/plans/feat-humanities-definitions.md and follow it. You may ed
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/humanities-definitions. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -229,6 +256,9 @@ Read docs/scaling/plans/feat-journal-people-places-spec.md and follow it. You ma
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-people-places-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -247,6 +277,9 @@ Read docs/scaling/plans/feat-journal-technology-spec.md and follow it. You may e
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-technology-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -265,6 +298,9 @@ Read docs/scaling/plans/feat-journal-ww2-monuments-spec.md and follow it. You ma
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-ww2-monuments-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -283,6 +319,9 @@ Read docs/scaling/plans/feat-journal-world-wars-spec.md and follow it. You may e
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-world-wars-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -301,6 +340,9 @@ Read docs/scaling/plans/feat-journal-modern-world-spec.md and follow it. You may
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-modern-world-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -319,6 +361,9 @@ Read docs/scaling/plans/feat-journal-great-leaders-spec.md and follow it. You ma
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-great-leaders-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -337,6 +382,9 @@ Read docs/scaling/plans/feat-journal-freedom-fighters-spec.md and follow it. You
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/journal-freedom-fighters-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -355,6 +403,9 @@ Read docs/scaling/plans/feat-general-knowledge-spec.md and follow it. You may ed
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only feat/general-knowledge-spec. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
@@ -372,6 +423,9 @@ Read docs/scaling/plans/chore-model-neutral-agents.md and follow it. You may edi
 Anything else: ask the integrator first (say which file and why); never edit it.
 MISSION: kids see why they learn each skill (multiplication, division,
 algebra, trigonometry) through real problems, across subject boundaries.
+AGE GROUPS: 7-10 = grades 2-5, 10-18 = grades 5-12, 18+ = adults beyond grade 12.
+Tag each item by its standard's grade (grade 5 may go in either). No algebra or
+trigonometry in 7-10. Never ask for an exact age or birth date.
 Merge origin/main into your branch at start, after each merge to main and before a PR.
 Push only chore/model-neutral-agents. Never push to main, merge a PR, rebase, force-push or delete a branch.
 This branch stays open until dev work is complete, even after a PR from it merges (owner rule).
