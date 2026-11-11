@@ -17,17 +17,18 @@
 
 - Second owner message (2026-11-10), logged in the spec as the owner rule (verbatim, [sic]) plus decisions 6-11:
   - Potala KEEP, architecture only: about 13 storeys, sourced; politics flag closed.
-  - Alamo KEEP, architecture only: 1718 is the mission's founding; the stone church's start year is UNVERIFIED (sources disagree), so it is not narrated.
+  - Alamo KEEP, architecture only: 1718 is the mission's founding. Owner fix: the building's start year is removed; the only hook is currentYear − 1718 from the device clock.
   - Sagrada Família, Fushimi Inari, Christ the Redeemer, Robber's Cave reworded as architecture, geography and math only.
   - PROPOSED for balance: Kailasa (Ellora), Konark, Brihadeeswarar (Thanjavur), Ram Setu, also called Adam's Bridge; each with a math hook and an age group.
   - Home-folder note paths removed from the spec.
+- Owner fix (2026-11-10, evening): decision 12, Ram Setu, also called Adam's Bridge narrated only as a 48 km chain of shoals between India and Sri Lanka (no rock type, no origin); decision 13, proper names kept, story text architecture only.
 
 ## Open
 1. Named human educator to sign (spec stays GATED).
 2. C3 indicator numbers other than the three civics codes still UNVERIFIED; the official PDF is now reachable, so they can be checked.
 3. Integrator (outside my paths): apply the place rewording to `src/components/home-journal.data.ts`, `src/game/catalog.ts`, `scripts/journal-art-manifest.json`, `public/videos/journal-transcripts.json`; re-voice the narration of Angkor, Potala, Timbuktu, Uluru and Fushimi (Stage B); a Potala image without pilgrims.
 4. Integrator: `docs/scaling/k12-learning-design-standard.md` §7a still uses the label retired by owner decision 3 ("Historical people (leaders, … inventors)").
-5. Owner: proper names that point to a faith are kept and flagged, not renamed (Christ the Redeemer, Sagrada Família, Fushimi Inari, Kailasa / Konark / Brihadeeswarar "Temple", Ram Setu, also called Adam's Bridge, Alamo "mission").
-6. Owner: Ram Setu, also called Adam's Bridge is publicly disputed; keep as PROPOSED geography or hold.
-7. Owner: pick a source (or leave out) for each UNVERIFIED figure: Konark sundial claim; 200,000 tonnes (sources: 150,000-200,000); 66 m tower (59.82 / 61 / 63.4 / 65.83 / 66 m); Ram Setu, also called Adam's Bridge "limestone"; the Alamo church's start year (1755 / 1756 / about 1758); Potala height in metres.
+5. Closed: proper names kept unchanged (owner decision 13) (Christ the Redeemer, Sagrada Família, Fushimi Inari, Kailasa / Konark / Brihadeeswarar "Temple", Ram Setu, also called Adam's Bridge, Alamo "mission").
+6. Closed: Ram Setu, also called Adam's Bridge kept as geography only (owner decision 12).
+7. Owner: pick a source (or leave out) for each UNVERIFIED figure: Konark sundial claim; 200,000 tonnes (sources: 150,000-200,000); 66 m tower (59.82 / 61 / 63.4 / 65.83 / 66 m); Potala height in metres.
 8. The four balance places need a journal branch to own them (not in the live 106).

@@ -66,7 +66,7 @@ screened with it.
 | H15 | World War monuments | KEEP-LIMITS | 10-18, 18+ | D2.His | After this, a learner can say what a monument remembers and where it stands, shown by a pin and a retrieval answer. | Remembrance tone only. Each story is tone-reviewed. A gap in the 106 (none today). |
 | H16 | Great leaders (historical) | KEEP-LIMITS | 10-18, 18+ | D2.His | After this, a learner can describe one documented achievement of a historical figure and where it happened, shown by a retrieval answer. | Deceased figures only. The story is the achievement or the place, never their politics. A person whose story cannot be told without a contested view is left out. Screened person by person. |
 | H17 | Covered by Great leaders (feat/journal-great-leaders-spec) | — | — | — | — | — |
-| H18 | Himalayas and other landform geography | KEEP | 7-10, 10-18 | D2.Geo | After this, a child can locate a mountain range and describe it in plain words, shown by a pin and a choice. | The one item from the 2026-11-07 list that is not religious. PROPOSED for balance (decision 10): "Ram Setu, also called Adam's Bridge", always both names, geography only: a natural chain of shoals about 48 km long, too shallow for ships; never called built, no story of who made it. Flagged: its origin is publicly disputed, so the owner may still hold it. |
+| H18 | Himalayas and other landform geography | KEEP | 7-10, 10-18 | D2.Geo | After this, a child can locate a mountain range and describe it in plain words, shown by a pin and a choice. | The one item from the 2026-11-07 list that is not religious. PROPOSED for balance (decision 10): "Ram Setu, also called Adam's Bridge", always both names, geography only (owner decision 12): narrated only as a chain of shoals about 48 km long between India and Sri Lanka; no rock type, no claim about how it formed or who made it. "Kept as geography only. Origin is disputed, so it is not narrated." |
 | H19 | Religious sites, pilgrimage destinations, scriptures and epics | **CUT** | n/a | n/a | n/a | Religion is out of the plan (owner, 2026-11-10). See "Confirmed removals". |
 | H20 | Mythology and legends | **CUT** | n/a | n/a | n/a | Mythology is out of the plan (owner, 2026-11-10). See "Confirmed removals". |
 
@@ -126,6 +126,6 @@ belong in the items when they are written, each with a source.
 1. **Educator:** named human to sign; nothing here is signed.
 2. **Sources:** C3 indicator numbers other than the three H12 codes still need checking against the official PDF.
 3. **Integrator:** apply the place rewording in `journal-places-reword.md` (live text for nine places, transcripts, narration audio, the Potala image).
-4. **Owner:** proper names that themselves point to a faith (Christ the Redeemer, Sagrada Família, Fushimi Inari, the three "Temple" names, Ram Setu, also called Adam's Bridge, the Alamo "mission") are kept and flagged; say if any is a problem in itself.
-5. **Owner:** Ram Setu, also called Adam's Bridge is publicly disputed; keep as PROPOSED geography or hold it.
-6. **Owner:** UNVERIFIED figures you asked about (Konark sundial, 200,000 tonnes, 66 m, limestone, the Alamo building's start year) stay out until you pick a source.
+4. **Owner:** proper names that themselves point to a faith (Christ the Redeemer, Sagrada Família, Fushimi Inari, the three "Temple" names, Ram Setu, also called Adam's Bridge, the Alamo "mission") are kept (owner decision 13: "Proper names kept; story text stays architecture only.").
+5. **Closed (owner decision 12):** Ram Setu, also called Adam's Bridge kept as geography only; its origin is not narrated.
+6. **Owner:** UNVERIFIED figures you asked about (Konark sundial, 200,000 tonnes, 66 m) stay out until you pick a source.

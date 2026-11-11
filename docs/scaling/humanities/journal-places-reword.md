@@ -148,15 +148,11 @@ the Anangu people" / "Sacred to the Anangu people".
 
 | Group | Math hook | Answer | Fact |
 |---|---|---|---|
-| 7-10 | "The mission was founded in 1718. The stone over the front door is carved with 1758. How many years apart is that?" | 40 | AL1, AL4 |
-| 10-18 | "The keystone says 1758. How many years ago was that?" | `currentYear − 1758` | AL4 |
+| 7-10 | "How long ago was the mission founded?" | `currentYear − 1718`, with `currentYear` read from the device clock at play time; never hardcoded (owner, 2026-11-10) | AL1 |
 
-**Checked as asked, and corrected:** "begun in 1718" is the **mission's
-founding**, not the standing building. The present stone church was begun
-later; sources disagree on the year (AL3: 1755, 1756, about 1758), so no
-start year for the building is narrated. "Stone and adobe" holds for the
-mission (AL2): the church is limestone; the first church and the homes were
-adobe. Wall thickness is UNVERIFIED (AL5).
+**Checked as asked:** 1718 is the **mission's founding** (AL1); the
+building's own start year is not used anywhere (owner, 2026-11-10). "Stone
+and adobe" holds for the mission (AL2). Wall thickness is UNVERIFIED (AL5).
 
 ### 6. Sagrada Família (`sagrada`)
 
@@ -308,35 +304,30 @@ metres is narrated.
 
 ### 13. Ram Setu, also called Adam's Bridge
 
-Both names are always used together, in that order. Geography only: it is a
-natural chain of shoals; it is never called built, and no story of who made
-it is told.
+Both names are always used together, in that order. Geography only (owner
+decision 12): only that it is a chain of shoals about 48 km long between
+India and Sri Lanka is narrated. No rock type, and no claim about how it
+formed or who made it.
 
 | Field | Proposed text |
 |---|---|
 | place | Ram Setu, also called Adam's Bridge (between Rameswaram Island, India, and Mannar Island, Sri Lanka) |
-| story | "Ram Setu, also called Adam's Bridge, is a natural chain of shoals about 48 kilometres long between India and Sri Lanka. Much of the water over it is less than 1 metre deep, too shallow for big ships." |
-| narration (after the opener) | "A line of sandbanks across the sea! Ram Setu, also called Adam's Bridge. So shallow, big ships go around!" |
+| story | "Ram Setu, also called Adam's Bridge, is a chain of shoals about 48 kilometres long between India and Sri Lanka." |
+| narration (after the opener) | "A chain of shoals across the sea! Ram Setu, also called Adam's Bridge, about 48 kilometres long, between India and Sri Lanka." |
 
 | Group | Math hook | Answer | Fact |
 |---|---|---|---|
 | 7-10 | "Ram Setu, also called Adam's Bridge, is about 48 km long. If you could walk 4 km each hour (a model), how many hours would it take?" | 12 hours | RS1 |
-| 10-18 | "A big ship needs about 10 m of water (a model). Much of the water over the shoals is less than 1 m deep. How many times deeper must the water be for the ship?" | at least 10 times | RS2 |
-| 18+ | "In the last ice age the sea was up to 120 m lower than today. The deepest part of the Palk Strait is 35 m. Would the strait have been dry land?" | Yes (35 m < 120 m) | RS4 |
+| 10-18 | "The chain of shoals is about 48 km long. How many metres is that?" | 48,000 m | RS1 |
+| 18+ | "About 48 km is about how many miles, if 1 mile is about 1.6 km?" | about 30 miles | RS1 |
 
-**Checked as asked:** about 48 km (RS1), between India and Sri Lanka (RS1),
-natural (RS3) and too shallow for ships (RS2) are sourced. **"Limestone" is
-UNVERIFIED:** the Wikipedia lead says "natural limestone shoals", but the same
-article says it mostly consists of sandstone and conglomerates and 103 small
-patch reefs, and Britannica says sand trapped by coral. The story says
-"shoals" only. One dissenting length: a NASA official quoted in a 2007
-Hindustan Times piece (via Wikipedia, not read directly) said 30 km.
+**Checked as asked:** about 48 km and between India and Sri Lanka (RS1)
+are sourced. Every hook uses only RS1. One dissenting length: a NASA
+official quoted in a 2007 Hindustan Times piece (via Wikipedia, not read
+directly) said 30 km.
 
-**Extra screen note (owner's call):** this place's origin and name are an
-active public and political dispute (court cases and a shipping-canal fight
-over it). The wording above stays on the agreed geography, as the owner asked.
-Under §7a "when in doubt, leave it out", the owner may still prefer to hold
-it; flagged, not decided here.
+**Owner decision 12 (2026-11-10):** "Kept as geography only. Origin is
+disputed, so it is not narrated."
 
 ---
 
@@ -383,8 +374,6 @@ none confirms.
 | U3 | In Australia's Northern Territory | Parks Australia (park pages), already the live entry's cited source | HIGH |
 | AL1 | Mission founded 1718 | The Alamo, 7th-grade lesson plan timeline, https://www.thealamo.org/fileadmin/assets/educator/educators_pdfs/alamo-7th-grade-lesson-plan.pdf; City of San Antonio, Mission Trails page; Texas Almanac, "The Alamo: The Building"; Wikipedia, "Alamo Mission" | HIGH |
 | AL2 | Church of local limestone blocks; first church and homes adobe | Texas Almanac (limestone walls); City of San Antonio, https://www.sanantonio.gov/Mission-Trails/Mission-Trails-Historic-Sites/Detail-Page/ArtMID/16185/ArticleID/4459/Mission-San-Antonio-de-Valero-The-Alamo (adobe church, adobe homes); Wikipedia (limestone, adobe barracks) | HIGH |
-| AL3 | Start year of the present stone church | thealamo.org church page: 1755; Alamo lesson plan and City of San Antonio: 1756; Texas Almanac: about 1758; Wikipedia: 1758 | **UNVERIFIED** (not used) |
-| AL4 | Keystone above the church entrance inscribed "1758" | The Alamo lesson plan, as AL1 | MEDIUM |
 | AL5 | Church wall thickness | Texas Almanac: more than 3.5 feet; Wikipedia: 4-foot blocks | **UNVERIFIED** (not used) |
 | S1 | Under construction since 1882 | Guinness World Records, https://www.guinnessworldrecords.com/world-records/69127-tallest-cathedral-spire ("144 years after it was started", 2026); live entry's own source sagradafamilia.org | HIGH |
 | S2 | Tallest tower reached 172.5 m on 20 February 2026 (exterior complete) | Guinness, as S1; Sagrada Família official news, sagradafamilia.org | HIGH |
@@ -415,10 +404,10 @@ none confirms.
 | B4 | Site about 240.79 m × 121.92 m | Wikipedia, as B1 (citing Balasubrahmanyam 1975) | MEDIUM |
 | B5 | Tower height | UNESCO English 59.82 m; UNESCO Russian 61 m; Wikipedia 65.83 m, 63.4 m, 66 m | **UNVERIFIED** (not used) |
 | RS1 | Chain of shoals about 48 km (30 mi) long, between Rameswaram Island (India) and Mannar Island (Sri Lanka) | Britannica, https://www.britannica.com/place/Adams-Bridge; Wikipedia, https://en.wikipedia.org/wiki/Adam%27s_Bridge | HIGH |
-| RS2 | Many shoals under 1 m deep; hinders navigation | Britannica, as RS1; Wikipedia, as RS1 | HIGH |
-| RS3 | A natural formation | Britannica, as RS1 ("the bridge is a natural formation") | HIGH |
-| RS4 | Sea up to 120 m lower in the last glacial period; Palk Strait at most 35 m deep | Wikipedia, as RS1 (citing Quaternary Research, 2023) | MEDIUM |
-| RS5 | Made of limestone | Wikipedia lead says limestone; same article says sandstone, conglomerates and patch reefs; Britannica says sand and coral | **UNVERIFIED** (not used) |
+| RS2 | Many shoals under 1 m deep; hinders navigation | Britannica, as RS1; Wikipedia, as RS1 | HIGH (not narrated: owner decision 12) |
+| RS3 | How it formed | Britannica, as RS1 | Not narrated: origin is disputed (owner decision 12) |
+| RS4 | Past sea levels and strait depth | Wikipedia, as RS1 (citing Quaternary Research, 2023) | MEDIUM (not narrated: owner decision 12) |
+| RS5 | Rock type | Sources disagree | **UNVERIFIED**; not narrated (owner decision 12) |
 
 ## Files the integrator must change (outside this branch's paths)
 
