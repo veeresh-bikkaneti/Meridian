@@ -76,18 +76,52 @@ test("7-10 has no algebra or trigonometry, and child lines skip the screen list"
 
 test("worked answers are the sourced arithmetic", () => {
   const byId = Object.fromEntries(data.clips.map((c) => [c.clip, c]));
-  assert.equal(byId["school-morning"].predict.answer, "87");
+  assert.equal(byId["school-morning"].predict.answer, "currentYear - 1939");
   assert.equal(byId["school-morning"].retrieval.answer, "1939");
-  assert.equal(byId["school-morning"].elsewhere.answer, "26");
+  assert.equal(byId["school-morning"].elsewhere.answer, "currentYear - 2000");
   assert.equal(byId["quiet-hour"].predict.answer, "21");
   assert.equal(byId["quiet-hour"].retrieval.answer, "11");
   assert.equal(byId["quiet-hour"].elsewhere.answer, "20");
-  assert.equal(byId["quiet-hour"].stretch.answer, "none");
-  assert.equal(byId["quiet-hour"].stretch.group, "18+");
+  const stretch = byId["quiet-hour"].stretch;
+  assert.equal(stretch.group, "18+");
   const sources = fs.readFileSync(path.join(here, "sources.md"), "utf8");
-  assert.ok(sources.includes(byId["quiet-hour"].stretch.fact));
+  assert.match(sources, new RegExp(`^## ${stretch.fact}$`, "m"));
+  // The stretch answer follows from the two times in its cited fact.
+  const block = sources.split(/^## /m).find((b) => b.startsWith(stretch.fact));
+  assert.ok(block.includes("5:45 am") && block.includes("11:00 am"));
+  assert.equal(Number(stretch.answer), 11 * 60 - (5 * 60 + 45));
   const taught = childText(byId["school-morning"]) + " " + childText(byId["quiet-hour"]);
   assert.equal(/1\.5 million|800,000|3 million/.test(taught), false);
+});
+
+test("no literal current year: years-ago answers are computed at play time", () => {
+  assert.equal("countingYear" in data, false);
+  const raw = fs.readFileSync(path.join(here, "clips.json"), "utf8");
+  // Strip date stamps like 2026-11-10; any other 2020s year is a stored "now".
+  const undated = raw.replace(/\b20\d\d-\d\d-\d\d\b/g, "");
+  assert.equal(/\b20[2-9]\d\b/.test(undated), false, "a literal current year is stored");
+  for (const clip of data.clips) {
+    const caps = ["vtt", "txt"].map((ext) =>
+      fs.readFileSync(path.join(here, "captions", clip.captions.replace(/\.vtt$/, `.${ext}`)), "utf8"),
+    );
+    for (const text of [childText(clip), ...caps]) {
+      assert.equal(/\b20[2-9]\d\b/.test(text), false, clip.id);
+      assert.equal(/counting year/i.test(text), false, clip.id);
+    }
+    for (const item of [clip.predict, clip.elsewhere]) {
+      if (/years ago/i.test(item.prompt)) {
+        assert.match(item.answer, /^currentYear - \d{4}$/, `${clip.id}: ${item.prompt}`);
+        assert.equal(item.computedAtPlay, true, clip.id);
+      }
+    }
+  }
+});
+
+test("narration stays about 20 words and keeps the opener", () => {
+  for (const clip of data.clips) {
+    const n = clip.narration.split(/\s+/).length;
+    assert.ok(n >= 18 && n <= 21, `${clip.id} narration is ${n} words`);
+  }
 });
 
 test("child-facing lines sit at or below the band top grade", () => {

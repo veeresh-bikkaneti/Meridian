@@ -6,7 +6,7 @@
 - **Proposed clip count:** 2 — PROPOSED, not decided.
 - **Screened:** 2026-11-10 against standard §7a. Neither earlier draft is kept as written.
 - **Contract rows:** [`journals/world-wars/clips.json`](journals/world-wars/clips.json). If this prose and that file disagree, the file wins.
-- **Counting year for any "years ago" line:** 2026, named in the problem, never a hidden "now".
+- **Year rule (owner, 2026-11-10):** a "years ago" answer is stored as `currentYear - <year>`. `currentYear` is read from the device clock at play time and the card shows the computed number. No total and no counting year is stored. The clip test fails on a literal current year.
 
 Mission: a child should see why a year calculation is useful before the story plays. Each clip opens on a real question — how many years ago — then a place on the globe. Standard §0 and §2. No algebra and no trigonometry in the 7-10 group (standard §1, progression map age note). Tone: remembrance. No graphic detail. No battle re-enactment.
 
@@ -28,9 +28,11 @@ Also left out of every child-facing line: gas masks, bombs, soldiers, guns, a na
 | `school-morning` | 7-10 | subtraction | how many years ago | D2.His.2.3-5 |
 | `quiet-hour` | 10-18 | subtraction | how many years ago | D2.His.1.6-8 |
 
+C3 codes cite the live C3 Framework PDF (NCSS, socialstudies.org, Dimension 2 History table, PDF page 46; `c3-history-indicators` in `sources.md`), not a school-board copy.
+
 Grade check: the 3–5 code matches 7-10 (grades 2–5). The 6–8 code matches 10-18 (grades 5–12). Grade 5 may sit in either group; the school-morning item stays in 7-10 because the work is one subtraction, not a formula. C3 pathways inspected on 2026-11-10 stop at grade 12, so the 18+ stretch is UNVERIFIED rather than given a 9–12 code.
 
-**18+ is a stretch, not a third film.** Contract I5 allows one `stretch` for an older group on the same clip. On `quiet-hour` only, an 18+ player is asked which people-count to teach. The answer is none (`evac-counts-conflict` in `sources.md`). A 10-18 player does not see that question. The stretch has no C3 code of its own.
+**18+ is a stretch, not a third film.** Contract I5 allows one `stretch` for an older group on the same clip. On `quiet-hour` only, an 18+ player is asked how many minutes passed between the signing at 5:45 am and 11:00 am, when it took effect. The answer is **315** (5 h 15 min; `quiet-hour-1918` in `sources.md`, Britannica). The people-counts still conflict and stay untaught. A 10-18 player does not see that question. The stretch has no C3 code of its own.
 
 **`school-morning` is the closest call.** The 7-10 narration does not say "war". The explain line does: "It was wartime. This clip shows the school, not the war." That is so the morning is not mistaken for an ordinary school day with no reason. An educator may still Fail rubric item 4 or 17a (children leaving home). Until then it stays, flagged. The narration says they met at school at 5 in the morning. It does not say a train was on this street.
 
@@ -38,8 +40,8 @@ Grade check: the 3–5 code matches 7-10 (grades 2–5). The 6–8 code matches 
 
 Numbers below are the ones the game may say. Sources, conflicts, and "do not teach" lists are on the clip in `clips.json`.
 
-1. **School morning** (7-10). How many years ago was 1939 in the counting year 2026? **87.** The narration says the date and the school. Retrieval asks the year: **1939.** Pin: Myrdle Street, Stepney, London, 51.5166 N, 0.0634 W (street center, rounded; not a surveyed school door). No train at this pin. No distance. No count of children.
-2. **Quiet hour** (10-18). How many years from 1918 to 1939? **21.** The narration says 11 in the morning on 11 November 1918, when the war there went quiet. Retrieval asks the hour: **11.** Pin: the clearing at Compiègne, 49.4279 N, 2.9057 E. Not a battlefield.
+1. **School morning** (7-10). How many years ago was 1939? **currentYear − 1939**, worked out at play time and shown on the card. The narration says the date and the school. Retrieval asks the year: **1939.** Pin: Myrdle Street, Stepney, London, 51.5166 N, 0.0634 W (street center, rounded; not a surveyed school door). No train at this pin. No distance. No count of children.
+2. **Quiet hour** (10-18). How many years from 1918 to 1939? **21.** The narration says 11 in the morning on 11 November 1918, when the war there went quiet. Retrieval asks the hour: **11.** 18+ stretch: **315** minutes. Pin: the clearing at Compiègne, 49.4279 N, 2.9057 E. Not a battlefield.
 
 ## Globe
 
@@ -54,11 +56,11 @@ For every clip, in order:
 3. **Explain.** One or two sentences (`explain`), read aloud on demand.
 4. **Retrieval.** One read-aloud question about a fact the narration said. A correct first try with no hint is the confident bar (standard §4, journal).
 5. **Retry.** One hint (`hint`), then the same review deck and the same `[0, 1, 3, 7, 14, 30]`-day ladder. No second deck. No timer in 7-10. Timers off unless the player opts in.
-6. **Use it elsewhere.** A later card (`elsewhere`) uses the same subtraction on a bridge or a ship log. Those numbers are the game's, and the file says so.
+6. **Use it elsewhere.** A later card (`elsewhere`) uses the same subtraction on a bridge (currentYear − 2000, at play time) or a ship log. Those numbers are the game's, and the file says so.
 
 ## Captions and transcript
 
-Every narration opens with "Hey kids, have you heard about this place?" (`docs/journal-movies.md`). Spoken words are the `narration` string. Captions (timings PROPOSED until a real voice exists):
+Each narration is 20 words (trimmed from 22 on 2026-11-10). Every narration opens with "Hey kids, have you heard about this place?" (`docs/journal-movies.md`). Spoken words are the `narration` string. Captions (timings PROPOSED until a real voice exists):
 
 - `docs/scaling/journals/world-wars/captions/<clip>.vtt`
 - transcript: `docs/scaling/journals/world-wars/captions/<clip>.txt`
@@ -134,4 +136,5 @@ The signer should look hardest at `school-morning` for a 7-year-old (rubric item
 - [ ] Owner: Stage B stays shut. Only the math definition and the Phase 0 shell split are approved to build. No mp4 and no `public/videos/journals/world-wars/manifest.json` until that gate lifts.
 - [ ] Owner: a non-European human story is not in this pair. None was sourced that stayed inside §7a. Not invented.
 - [ ] Integrator, at Stage B only: merge manifest entries into `public/videos/journal-manifest.json`. The fly-to is not in the player yet; that change is `src/components/journal-player.tsx` (and the globe), which this branch must not edit. Not requested now.
+- [ ] Integrator, at Stage B only: the player computes `currentYear - <year>` from the device clock and shows it on the card. That is player code, not this branch.
 - [ ] v3-versus-v4 listen question from the old draft: still open, and only matters at Stage B.

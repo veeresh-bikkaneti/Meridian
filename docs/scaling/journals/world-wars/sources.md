@@ -16,7 +16,7 @@ The same blog says the start moved over 1.5 million people from urban areas, of 
 
 - Sources: the blog above; https://www.bbc.com/history/british/britain_wwtwo/evacuees_01.shtml
 - Confidence: HIGH that the pages disagree. Neither count is taught.
-- Used by: `quiet-hour` stretch. The answer is none.
+- Used by: the `notTaught` lists only. No count is said to any group.
 
 ## quiet-hour-1918
 
@@ -24,7 +24,15 @@ The armistice was signed at 5:45 am on 11 November 1918 at Compiègne and took e
 
 - Source: https://www.britannica.com/topic/Armistice-Day
 - Confidence: HIGH
-- Used by: `quiet-hour` narration (11 November 1918, 11 in the morning, the war went quiet). The 5:45 signing time is not asked.
+- Used by: `quiet-hour` narration (11 November 1918, 11 am, the war went quiet), and the `quiet-hour` 18+ stretch: from 5:45 am to 11:00 am is 5 h 15 min = 315 minutes. The 5:45 time is asked only in that stretch.
+
+## c3-history-indicators
+
+D2.His.2.3-5: "Compare life in specific historical time periods to life today." D2.His.1.6-8: "Analyze connections among events and developments in broader historical contexts."
+
+- Source: NCSS, The College, Career, and Civic Life (C3) Framework for Social Studies State Standards (2013), Dimension 2 History table, PDF page 46. https://www.socialstudies.org/sites/default/files/c3/C3-Framework-for-Social-Studies.pdf
+- Confidence: HIGH (text matched word for word, checked 2026-11-10). Replaces an earlier school-board PDF citation.
+- Used by: `standard` on `school-morning` and `quiet-hour`. The 18+ stretch has no C3 code (pathways stop at grade 12): UNVERIFIED.
 
 ## christmas-truce-cut
 
