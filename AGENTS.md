@@ -68,7 +68,7 @@ Routine work does not convene a council.
 
 | Tier | Scope | Process |
 | :--- | :--- | :--- |
-| **0 — Direct** | Docs, `BRANCH_STATUS.md`, config, or copy that is not locked or owner-approved in this file or the Handbook | Make the change, run the gates. Any change to locked or owner-approved copy — even a typo, a punctuation mark, an emoji, or whitespace — is not Tier 0: stop, ask, and proceed only on the owner's explicit word for that exact change. Exception — this file: a change to `AGENTS.md` itself, or to any reusable prompt, skill, or council/persona definition, is never Tier 0 — not even a typo or a docs-only edit — and follows Prompt, skill, and persona changes — eval discipline in full. |
+| **0 — Direct** | Docs, the branch's own status record (`docs/branch-status/<branch>.md`), config, or copy that is not locked or owner-approved in this file or the Handbook | Make the change, run the gates. Any change to locked or owner-approved copy — even a typo, a punctuation mark, an emoji, or whitespace — is not Tier 0: stop, ask, and proceed only on the owner's explicit word for that exact change. Exception — this file: a change to `AGENTS.md` itself, or to any reusable prompt, skill, or council/persona definition, is never Tier 0 — not even a typo or a docs-only edit — and follows Prompt, skill, and persona changes — eval discipline in full. |
 | **1 — Solo TDD** | One bug, one function, a clear repro | Failing test first, then the minimal fix. |
 | **2 — Council** | New feature or module, 3+ files, API/storage/schema, anything under `src/game/data/`, security or privacy | Full protocol: `docs/ops/agent-council-protocol.md` |
 
@@ -208,7 +208,7 @@ If a task cannot be done within these rules, stop and ask first.
 ## Task capsule and the bounded loop
 
 Every task starts from a brief plan. Tier 2 uses the Consensus Manifest;
-Tier 0/1 use this capsule (in the PR body or `BRANCH_STATUS.md`; full protocol: `docs/ops/agent-council-protocol.md`):
+Tier 0/1 use this capsule (in the PR body or the branch's `docs/branch-status/<branch>.md`; full protocol: `docs/ops/agent-council-protocol.md`):
 
 ```text
 TASK / requested outcome:
@@ -329,8 +329,7 @@ escalation path — never a single green run.
 
 Orchestrate; do not do every role yourself. Any role whose job is to **run
 something and report what happened** is delegated to a subagent on the
-cheapest model that can do it (`haiku` first, `sonnet` only if `haiku`
-cannot):
+cheapest model that can do it:
 
 - tester
 - pen tester
@@ -349,11 +348,16 @@ panel seat, architecture calls, security judgement — are not delegated on
 cost grounds. They turn on judgement, and a cheap mistake there is the
 dearest kind.
 
-The orchestrator stays on `opus` and reads conclusions, not bulk output.
+**Model rule (vendor-neutral).** The orchestrator uses the strongest model the builder can afford; worker roles use the cheapest capable model, orchestrated as subagents; design calls go to a council of experts that reviews summaries and diffs, not bulk output.
+This file names roles, never a vendor or model: pick the actual models from
+whatever the builder has, by that rule. The orchestrator reads conclusions,
+not bulk output.
+
 Give each worker a brief that names the branch, what is already built, the
 exact commands, and what to report — it has no other context. Match the
-model to the size of the job: a one-command check does not need `sonnet`,
-and a long multi-step run on `haiku` that has to be redone saves nothing.
+model to the size of the job: a one-command check does not need a mid-tier
+model, and a long multi-step run on the smallest model that has to be redone
+saves nothing.
 
 Delegation helps because the worker's reading stays in the worker's
 context, but it is the **third** of four savings levers — after the tier
@@ -399,12 +403,16 @@ gate and narrow context resolution, and ahead of model tier. See
 - **Stage named files only, never `git add -A`** — and check `git status`
   plus the staged diff before committing on any branch a second crew
   shares; a dirty shared index sweeps other work into your commit.
-- **Push early and often — standing authorization.** The owner's assignment of a task on a named branch is standing authorization to commit named files on that branch and to push that branch, and only that branch, to origin as the work lands — including updates to that branch's `BRANCH_STATUS.md` and cure commits to the same PR branch. The VM is not durable storage for unpushed work, so use this authorization; do not hoard commits locally. It covers no other action in the "No unapproved side effects" bullet: opening a PR (unless the assignment itself says to open one), merge, publish, release, install, external message, production write, remote-setting change, and force-push each still need authorization for that exact action. If no branch was assigned, or the task was assigned as read-only, no push authorization exists.
-- Every feature branch carries `BRANCH_STATUS.md` at the repo root tracking
-  done vs pending; update and push it with the work. (Known structural
-  cost: concurrent branches conflict on this one file by construction.
-  The per-branch record — `docs/branch-status/<branch>.md` — is the
-  owner's pending decision, not a convention an agent may adopt alone.) A PR whose scope is one file records its capsule and status in the PR body under the same exception.
+- **Push early and often — standing authorization.** The owner's assignment of a task on a named branch is standing authorization to commit named files on that branch and to push that branch, and only that branch, to origin as the work lands — including updates to that branch's `docs/branch-status/<branch>.md` and cure commits to the same PR branch. The VM is not durable storage for unpushed work, so use this authorization; do not hoard commits locally. It covers no other action in the "No unapproved side effects" bullet: opening a PR (unless the assignment itself says to open one), merge, publish, release, install, external message, production write, remote-setting change, and force-push each still need authorization for that exact action. If no branch was assigned, or the task was assigned as read-only, no push authorization exists.
+- **Per-branch status record.** Every feature branch carries its own record,
+  `docs/branch-status/<branch>.md` (the branch name with `/` replaced by
+  `-`, e.g. `feat/math-spec` → `docs/branch-status/feat-math-spec.md`),
+  tracking task, scope, done vs pending; update and push it with the work.
+  Each branch edits only its own file, so concurrent branches never collide
+  (owner's no-collision ask, 2026-11-10, recorded in
+  `docs/scaling/plans/chore-model-neutral-agents.md`). Root
+  `BRANCH_STATUS.md` is not a per-branch file: branches do not edit it; it
+  is integrator-only (`docs/branch-status/README.md`). A PR whose scope is one file records its capsule and status in the PR body under the same exception.
 - **A merged branch is deleted, not left behind.** Cleanup is part of the task,
   not a follow-up someone has to ask for. Keep *Settings -> General -> Pull
   Requests -> Automatically delete head branches* switched on so this happens
