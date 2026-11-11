@@ -16,7 +16,7 @@ const ledger = fs.readFileSync(path.join(here, "sources.md"), "utf8");
 const I5_KEYS = ["id", "group", "objective", "standard", "why", "place", "file", "captions", "retrieval"];
 const GROUPS = new Set(["7-10", "10-18", "18+"]);
 const MAX_GRADE = { "7-10": 5, "10-18": 12, "18+": 16 }; // top grade of each group (standard §1)
-const SCREEN = /\b(god|church|pray\w*|sermon\w*|bible|faith|relig\w*|vote\w*|election\w*|party|parties|politic\w*|protest\w*|march\w*|rights|race|racial|slave\w*|war|wars|battle\w*|assassin\w*|killed|shot|died|death)\b/i;
+const SCREEN = /\b(god|church|pray\w*|sermon\w*|bible|faith|relig\w*|vote\w*|election\w*|party|parties|politic\w*|protest\w*|march\w*|rights|race|racial|slave\w*|war|wars|battle\w*|assassin\w*|killed|shot|died|death|blood\w*|enem\w*|freedom fighters?)\b/i;
 const VERBS = /can (identify|locate|sort|predict|explain|compare|compute|estimate|solve)\b/;
 
 const syl = (w) => {
@@ -72,6 +72,12 @@ for (const c of clips) {
     if (!st.question || !st.answer) fail(id, "stretch needs question and answer");
     if (!st.fact || !new RegExp(`\\| ${st.fact} \\|`).test(ledger)) fail(id, `stretch fact ${st.fact} not found in sources.md`);
   }
+  // Owner calls (2026-11-10): every clip opens with the fixed line, for every
+  // group, and the narration stays at about 20 words (fail above 22).
+  if (!cueText.startsWith("Hey kids, have you heard about this place?")) fail(id, "captions must open with the fixed line");
+  const words = cueText.split(/\s+/).filter((w) => /[a-z0-9]/i.test(w)).length;
+  console.log(`| ${id} | ${c.group} | narration words | ${words} | 22 | ${words <= 22 ? "yes" : "NO"} |`);
+  if (words > 22) fail(id, `narration is ${words} words; keep it to about 20`);
   const spoken = `${cueText} ${c.why} ${c.retrieval?.question} ${c.retrieval?.answer} ${st?.question ?? ""} ${st?.answer ?? ""}`;
   const hit = spoken.match(SCREEN);
   if (hit) fail(id, `§7a screen term in spoken or shown text: "${hit[0]}"`);

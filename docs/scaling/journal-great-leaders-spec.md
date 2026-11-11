@@ -3,7 +3,7 @@
 - **Topic:** Great leaders, told through the places that honour them
 - **Status:** GATED. Stage A (screen, spec and data) done 2026-11-10; Stage B (clips) waits for the owner to lift the build gate, and for a named human educator to sign `educator-gate-rubric.md`.
 - **Branch:** `feat/journal-great-leaders-spec`
-- **Proposed clip count:** 2 proposed; after the §7a screen, **1 kept, 1 cut**. Both counts stay PROPOSED, pending owner approval; never presented as decided.
+- **Proposed clip count:** 2 proposed; after the §7a screen, **1 kept, 1 cut**. The owner then added Robben Island (from PR 407, after it merges) and two leaders that have no rows until sourced ("Owner decisions"), so up to 4. All counts stay PROPOSED, pending owner approval; never presented as decided.
 - **Clip data (contract I5):** `docs/scaling/journals/great-leaders/clips.json`
 - **Fact ledger:** `docs/scaling/journals/great-leaders/sources.md` (every fact with source, access date and confidence; conflicts, cuts and screened facts logged)
 - **Draft captions and transcript:** `docs/scaling/journals/great-leaders/captions/lincoln-memorial.vtt`, `docs/scaling/journals/great-leaders/transcripts.md`
@@ -111,8 +111,8 @@ sign the gate.
 | Keep the "I Have a Dream" steps in the Lincoln clip? | It is the best-known moment there. | Cut: a political rally. | Cut: it turns the clip into the march's story, which is politics. | **Cut, 2–1.** Logged as L-X1. |
 | Keep the MLK Memorial? | Keep, reframed as a place: "a 30-foot stone figure, opened in 2011". | Cut: sermon wall (religion), civil-rights laws (politics), and public disputes over the memorial itself. | Cut: a truthful telling needs the movement and his ministry; without them the clip misleads (rubric A1). | **Cut, 2–1.** The educator's reframe is recorded here for the owner (O2); it is not adopted. |
 | Group | Subtracting years is grade 4 (4.NBT.B.4), so 7-10. A 10-18 stretch on sourced heights fits 6.EE.B.7. | Fine: heights only. | Use the two-source heights (L-14), not the one-source 28 ft (L-9). | 7-10, plus a 10-18 stretch. 18+ open (O5). |
-| Replacement leader? | Wants a second clip. | Only an achievement-or-place story with no politics. | The earlier draft says no further US-only leaders without the owner. | **None added.** Owner's call (O3). |
-| Narration length | 22 words may not fit 8 s. | — | — | Keep. Measure in Stage B and cut, never rush. |
+| Replacement leader? | Wants a second clip. | Only an achievement-or-place story with no politics. | The earlier draft says no further US-only leaders without the owner. | **None added by the council.** The owner then added three on 2026-11-10 (see "Owner decisions"). |
+| Narration length | 22 words may not fit 8 s. | — | — | Trimmed to 20 words (owner call, 2026-11-10). Measure in Stage B; if it runs long, cut words rather than speed up the voice. |
 
 ### K-12 standard checklist (§9)
 
@@ -135,6 +135,40 @@ K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
 - Free: no revenue features; asset licences recorded: [x] free; licences TO CONFIRM in Stage B
 - Educator rubric attached: [ ] not signed; no named educator yet
 ```
+
+## Owner decisions (2026-11-10)
+
+Relayed by the integrator on 2026-11-10. They apply on top of the Stage A
+screen above, and where they differ, the owner's call wins.
+
+1. **Stream merged in.** The owner folded the stream in PR 407 into Great
+   leaders on 2026-11-10. That stream's old label is not used anywhere in this
+   journal: no file, caption, card or line.
+2. **Robben Island (Nelson Mandela)** is a clip this journal takes over once
+   PR 407 merges. Its row, sources and captions are already kept and sourced
+   in PR 407 and are not copied here before that merge, to avoid two copies.
+   After 407 merges, the row moves to `great-leaders:robben-island` (integrator
+   or this branch, whichever the owner names).
+3. **Two leaders added, no clip rows yet.** No row is added for either until
+   every fact a clip would use is sourced in `sources.md`, and nothing
+   unsourced is narrated. What could be sourced now is in `sources.md`
+   ("Owner-added leaders"), with every year and wording conflict logged.
+
+   | Leader and place | Owner frame | Sourced / UNVERIFIED / conflicts | Wording the owner must settle |
+   |---|---|---|---|
+   | (a) Rani Lakshmibai, Jhansi Fort | A leader, not a fort-only place: mother, queen and leader. She ruled Jhansi, led her own forces, rallied them and stood her ground. Picture: riding out with her young son Damodar tied to her. No graphic battle detail, no deaths or blood, no "enemy" or us-versus-them wording. | 10 (3 MEDIUM) / 2 / 6 | Year check confirmed: took charge 1857, siege and ride out 1858. "Trained her own forces" is UNVERIFIED (use "organised and led"). Damodar "on her back" (S9) vs "at her waist" (S10). The leap from the wall is one of several accounts, so never state it as fact. |
+   | (b) Subhas Chandra Bose, Netaji Bhawan, Kolkata | Known as "Netaji"; made "Jai Hind" popular; the Indian National Army had a women's regiment. Never call him the founder of the INA or of today's Indian Army. Leave out wartime alliances and the mystery of his death. | 11 (2 MEDIUM) / 2 / 2 | "Founded the INA in 1943" is contradicted: a first INA was formed in 1942; he took over and rebuilt it from 4 July 1943. **Use "led the Indian National Army from 1943".** He did not coin "Jai Hind" (coined 1907 by Chempakaraman Pillai), so confirm "popularised". |
+
+   The women's regiment was named after Rani Lakshmibai (B-5), so the two
+   clips can link without adding any facts.
+
+4. **Openers and year gaps (all journals).** Every clip, in every group, opens
+   with "Hey kids, have you heard about this place?" and stays at about 20
+   words; the Lincoln narration is now 20 words, and `check-clips.mjs` fails a
+   caption track that lacks the opener or runs over 22 words. Any "how many
+   years ago" answer is computed from the current year at play time, never a
+   literal year. The Lincoln question is a gap between two past years
+   (1922 − 1914), so it is unaffected.
 
 ## Stage B (not started: build gate not lifted)
 
@@ -163,9 +197,9 @@ work is:
    pick across the P8 specs is also still open.
 2. **O2 MLK Memorial:** cut 2–1 under §7a. The educator's place-only reframe
    is on record. Only you can overrule the cut.
-3. **O3 Replacement:** any new leader must pass the same screen (an
-   achievement or a place, no politics). The earlier draft asks that no further
-   US-only leaders be added without your call.
+3. **O3 Replacement:** answered on 2026-11-10. Robben Island comes over from
+   PR 407; Lakshmibai and Bose were added, with their wording calls listed
+   under "Owner decisions".
 4. **O4 Educator:** who is the named educator who signs this topic in writing?
 5. **O5 Groups:** no 18+ question, and 10-18 has only the stretch. No sourced
    distance or angle was found for an 18+ question (for example a sight-line
@@ -184,6 +218,6 @@ work is:
       sourced facts with confidence, draft captions and transcript; the cut is
       logged with reasons.
 - [ ] Educator sign-off in writing on file.
-- [ ] Owner decisions O1–O8.
+- [ ] Owner decisions O1, O2 and O4–O8 (O3 answered 2026-11-10), and the wording calls for Lakshmibai and Bose.
 - [ ] Stage B: clip, captions and manifest produced and verified (gate not lifted).
 - [ ] Additive only: no existing story changed (holds for Stage A).

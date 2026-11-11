@@ -15,7 +15,7 @@ the owner lifts the build gate.
 - `public/videos/journals/great-leaders/**` (untouched: Stage B)
 - this file
 
-## Done (2026-11-10, synced with origin/main `a265f5f6`)
+## Done (2026-11-10, synced with origin/main `424cff9b`)
 
 - [x] §7a screen of both clips, strict reading (highest politics risk).
       **Lincoln Memorial: kept, reframed as a place** (building, 1914–1922,
@@ -45,6 +45,22 @@ the owner lifts the build gate.
       planted "war", and the stretch rules with a bad fact id and a younger
       group; each failed as expected.
 
+### Integrator fixes, round 2 (2026-11-10)
+
+- [x] Removed the local working-file path from `sources.md`.
+- [x] Narration trimmed from 22 to 20 words; it opens with the fixed line
+      (owner call for all journals). `check-clips.mjs` now fails a caption
+      track without the opener or over 22 words, and its §7a tripwire also
+      catches "enemy", "blood" and the old stream label.
+- [x] Spec section "Owner decisions (2026-11-10)": the PR 407 stream folded in;
+      Robben Island taken over after 407 merges; Lakshmibai and Bose added
+      with no clip rows yet.
+- [x] Sourcing for the two new leaders in `sources.md` (S9–S20, fetched
+      live). Lakshmibai: 10 sourced, 2 UNVERIFIED, 6 conflicts. Bose: 11
+      sourced, 2 UNVERIFIED, 2 conflicts. Year check confirmed (1857 charge,
+      1858 siege and ride). "Founded the INA" is flagged; the recommended line
+      is "led the Indian National Army from 1943".
+
 ## Gates
 
 No code gates ran (docs only). `npm run lint:content` did not run: it needs
@@ -58,10 +74,13 @@ is not created yet (Stage B).
 - Stage B clip and manifest: blocked. The owner has not lifted the build
   gate; no record of a lift was found on main.
 - Educator sign-off: blocked. No named educator yet.
-- Owner questions O1–O8 in the spec: count; overrule the MLK cut or not; a
-  replacement leader; educator name; no 18+ question; extra questions;
+- Owner questions O1, O2 and O4–O8 in the spec (O3 answered): count;
+  overrule the MLK cut or not; educator name; no 18+ question; extra questions;
   listen check; "opened" vs "dedicated" wording.
-- Narration timing (22 words for about 8 s) is TO CONFIRM when rendered.
+- Narration timing (20 words for about 8 s) is TO CONFIRM when rendered.
+- Lakshmibai and Bose clip rows: open until the owner settles the wording
+  calls and the MEDIUM facts get a second source.
+- Robben Island row: open until PR 407 merges.
 
 ## Needs the integrator (outside this branch's paths)
 

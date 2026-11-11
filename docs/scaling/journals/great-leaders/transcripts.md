@@ -12,13 +12,16 @@ not the video frame (the recipe keeps text off the frame).
 
 **Opening question (read aloud, before play):** Work on the Lincoln Memorial
 began in 1914. It opened in 1922. How many years did it take to build?
-*(Answer: 1922 − 1914 = 8. The answer does not depend on the current year.)*
+*(Answer: 1922 − 1914 = 8. This is a gap between two past years, so it does
+not use the current year. Any "how many years ago" question added later must
+compute from the current year at play time, never a literal year: owner call,
+2026-11-10.)*
 [L-2, L-3]
 
-**Narration (22 spoken words, PROPOSED):**
+**Narration (20 spoken words, PROPOSED):**
 > Hey kids, have you heard about this place? Washington, D.C., 1922.
-> Thirty-six columns outside. Inside, Abraham Lincoln sits. He is carved from
-> marble. [L-3, L-4, L-7, L-8, L-12]
+> Thirty-six columns outside. Inside, Lincoln sits, carved in marble.
+> [L-3, L-4, L-7, L-8, L-12]
 
 **What the picture shows (for the transcript):** the white marble memorial at
 the end of the National Mall, ringed by its columns; the camera moves through

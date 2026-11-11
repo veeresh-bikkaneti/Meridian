@@ -21,9 +21,8 @@ UNVERIFIED, and the fact is not narrated, shown or asked.
 
 The earlier draft cited `https://en.wikipedia.org/wiki/Memorials_to_Martin_Luther_King_Jr.`
 for the "1964" address. That title is now a redirect to a list page; the fact
-is re-sourced to S5 below. The earlier draft also relied on a local candidates
-file (`~/workspace/journal-p8-candidates.md`) that is not in the repo and was
-not found on this machine, so no fact rests on it any more.
+is re-sourced to S5 below. The earlier draft also relied on a working file
+outside the repo; it could not be checked, so no fact rests on it any more.
 
 ## great-leaders:lincoln-memorial (KEPT, reframed as a place)
 
@@ -97,6 +96,131 @@ Why it is cut (standard §7a; council record in the spec):
 4. **A place-only reframe would mislead.** A clip about "a 30-foot stone
    figure" with no word on why it stands there fails rubric item A1 ("nothing
    taught is wrong or misleading").
+
+## Owner-added leaders (2026-11-10): sourcing only, no clip rows yet
+
+The owner added these two leaders on 2026-11-10 (spec, "Owner decisions").
+No clip row exists for either until every fact a clip would use is sourced
+here, and nothing below marked UNVERIFIED, conflicting or screened is narrated.
+All sources were fetched on 2026-11-10.
+
+| Id | Source | URL |
+|---|---|---|
+| S9 | Britannica, "Lakshmi Bai" | https://www.britannica.com/biography/Lakshmi-Bai |
+| S10 | Wikipedia, "Lakshmibai, Rani of Jhansi" | https://en.wikipedia.org/wiki/Lakshmibai,_Rani_of_Jhansi |
+| S11 | Wikipedia, "Jhansi Fort" | https://en.wikipedia.org/wiki/Jhansi_Fort |
+| S12 | Wikipedia coordinates for "Jhansi Fort" and "Netaji Bhawan" (MediaWiki API) | https://en.wikipedia.org/w/api.php?action=query&prop=coordinates&titles=Jhansi_Fort%7CNetaji_Bhawan&format=json |
+| S13 | Wikipedia, "Subhas Chandra Bose" | https://en.wikipedia.org/wiki/Subhas_Chandra_Bose |
+| S14 | Wikipedia, "Indian National Army" | https://en.wikipedia.org/wiki/Indian_National_Army |
+| S15 | Britannica, "Indian National Army" (topic page; its only text is an automatically generated summary that the page itself says may contain mistakes) | https://www.britannica.com/topic/Indian-National-Army |
+| S16 | Wikipedia, "Rani of Jhansi Regiment" | https://en.wikipedia.org/wiki/Rani_of_Jhansi_Regiment |
+| S17 | Wikipedia, "Jai Hind" | https://en.wikipedia.org/wiki/Jai_Hind |
+| S18 | Wikipedia, "Netaji Bhawan" | https://en.wikipedia.org/wiki/Netaji_Bhawan |
+| S19 | Incredible India (Government of India tourism), "Netaji Bhawan" | https://www.incredibleindia.gov.in/en/west-bengal/kolkata/netaji-bhawan |
+| S20 | Asia InCH, "Netaji Bhawan, Kolkata" | https://asiainch.org/museum/netaji-bhawan/ |
+
+### Rani Lakshmibai, Jhansi Fort (owner frame: mother, queen and leader)
+
+| Id | Fact | Source | Confidence | Owner frame it supports |
+|---|---|---|---|---|
+| R-1 | She was the rani (queen) of Jhansi. | S9; S10 | HIGH | queen |
+| R-2 | Her husband adopted a five-year-old relative, renamed Damodar Rao, as heir in 1853; she was his mother by adoption. | S9; S10 | HIGH | mother |
+| R-3 | In 1857 she took over the rule of Jhansi, ruling on behalf of her young son. | S9 ("proclaimed the regent… ruled on behalf of her minor son"); S10 ("took over the rulership of Jhansi") | HIGH for 1857 | ruled Jhansi |
+| R-4 | She organised her troops (S9) and recruited an army (S10). | S9; S10 | HIGH | led her own forces |
+| R-5 | She took charge of the forces in the wider region, and fighters from nearby areas came to Jhansi to support her. | S9 | MEDIUM (one source) for "rallied" | rallied them |
+| R-6 | During the siege of Jhansi's fort she did not surrender, even after her forces were overwhelmed. | S9 | HIGH (one source, plainly stated) | stood her ground |
+| R-7 | The siege of the fort was in March and April 1858. | S9 ("turned toward Jhansi in March" 1858); S10 ("March and April 1858") | HIGH | year check |
+| R-8 | She left the fort on horseback with Damodar tied to her. | S9; S10 | MEDIUM: how is disputed (R-C4, R-C5) | picture |
+| R-9 | Jhansi Fort stands on a hilltop called Bangira, in the middle of Jhansi city, Uttar Pradesh. | S11 | MEDIUM (one source) | place |
+| R-10 | Coordinates 25.45809, 78.57544. | S12 | HIGH | place |
+
+Year check (integrator item): **confirmed.** She took charge of Jhansi in
+1857 (R-3); the siege and her ride out of the fort were in 1858 (R-7). A clip
+must not put the ride in 1857.
+
+Conflicts for the owner (none may be narrated until settled):
+- **R-C1** Birth year: about 1828, disputed (S9); "1827–30, or 1835" (S10). Not needed.
+- **R-C2** Marriage year: 1842 or 1852 (S9); S10 gives her as queen consort 1843–1853. Not needed.
+- **R-C3** Training: S9 says she was trained as a girl in sword fighting and
+  riding; S10 calls these childhood stories "uncorroborated popular legend",
+  and says she trained an all-female regiment "if it existed". So **"trained
+  her own forces" is UNVERIFIED**; "organised and led her forces" (R-4) is the
+  sourced line.
+- **R-C4** Damodar's position: "tied to her back" (S9, "is believed to") vs
+  "tied to her waist" (S10, citing two histories). The owner's picture says
+  back. Owner to choose the wording, or show him held close without naming
+  back or waist.
+- **R-C5** The ride out: S9 tells the leap from the walls on horseback as a
+  belief; S10 says "there are multiple accounts" (a leap, being lowered onto
+  a horse, or a gap left in the lines). A clip can say she rode out of the
+  fort; it must not assert the leap as fact.
+- **R-C6** Ride to Kalpi: a legend of one night (S10) vs arrival at midnight
+  on 5 April after a longer ride (S10, "more reliable sources"). Not needed.
+
+UNVERIFIED: "trained her own forces" (R-C3); any number of soldiers with her
+(S10 gives "around three hundred" from one history; not used).
+
+§7a risk notes for the owner (facts are true and sourced; they are logged,
+not told):
+- Her story is set in the 1857–58 uprising, a war. The frame avoids battle
+  detail, deaths, blood and "enemy" wording, as directed. The sources use
+  "enemy" (S10), "rebels" and "invading forces" (S9); none of these words may
+  be used, and `check-clips.mjs` fails on "enemy".
+- S10 says her part in the June 1857 killings of British residents at Jhansi
+  "was and remains contested" (S9 says rebels carried them out). Not told.
+- S10 records a present-day dispute over her legacy in caste politics, and
+  folk traditions that link her with Hindu deities. Neither is told.
+- Her death in battle in June 1858 (S9; S10) is not told.
+
+### Subhas Chandra Bose, Netaji Bhawan, Kolkata
+
+| Id | Fact | Source | Confidence | Owner frame it supports |
+|---|---|---|---|---|
+| B-1 | He is known as "Netaji". | S13; S18; S19 | HIGH | Netaji |
+| B-2 | "Netaji" is Hindustani for "Respected Leader". | S13 | MEDIUM (one source) | Netaji |
+| B-3 | "Jai Hind" was coined by Chempakaraman Pillai (S17, 1907). It reached new popularity when, under Bose, it was adopted as the official slogan of the Indian National Army. | S17 | MEDIUM (one source; see B-C2) | popularised "Jai Hind" |
+| B-4 | The INA had a women's regiment, the Rani of Jhansi Regiment, led by Captain Lakshmi Swaminathan (Lakshmi Sahgal) and raised in July 1943. | S13; S14; S16; S9 | HIGH | women's regiment |
+| B-5 | The regiment was named after Rani Lakshmibai of Jhansi. | S9; S13; S16 | HIGH | links the two clips |
+| B-6 | On 4 July 1943, in Singapore, Bose took over leadership of the (second) INA. | S14 | HIGH for 1943 (one source for the day) | "led the INA from 1943" |
+| B-7 | The INA surrendered to Allied forces in August 1945, so it is not today's Indian Army (the second half is an inference from S14, not a quoted line). | S14 | HIGH for 1945 | never "founder of the army" |
+| B-8 | Netaji Bhawan, his family home, was built by his father, Janakinath Bose, in 1909. | S18; S19 | HIGH | place |
+| B-9 | It has been a museum since 1961, run by the Netaji Research Bureau. | S19; S20 | HIGH | place |
+| B-10 | Address: 38/2 Lala Lajpat Rai Sarani (formerly Elgin Road), Kolkata. | S20; S19 (Elgin Road); S18 | HIGH | place |
+| B-11 | Coordinates 22.53758333, 88.35125. | S12 | HIGH | place |
+
+Conflicts for the owner:
+- **B-C1 "Founded the INA in 1943": flagged; the sources disagree.** S14:
+  an earlier INA was founded in 1942 by Mohan Singh and Iwaichi Fujiwara and
+  then disbanded; Bose took over leadership of the second INA on 4 July 1943
+  and "refounded" it. S16: the INA was "formed… in 1942". S15 (an automatic
+  summary) says "formed in 1943 by Subhas Chandra Bose". **Recommended line:
+  "led the Indian National Army from 1943" (B-6).** Never "founded" and never
+  "founder of the Indian Army".
+- **B-C2 "Jai Hind":** he did not coin it (S17, Pillai, 1907). S17 itself
+  differs on who suggested it as the INA's slogan: "Abid Hasan" in one
+  paragraph, "Bose and Abid Hasan" in the next. Safe wording: "made 'Jai Hind'
+  famous" or "used 'Jai Hind' as a greeting"; owner to confirm "popularised".
+- **B-N1 Dates for the house (a note, not a conflict):** built 1909 (S18;
+  S19); museum since 1961 (S19; S20). A 1947 dedication to the nation appears
+  only in a search snippet of the Netaji Research Bureau's site, which could
+  not be fetched as readable text, so it is UNVERIFIED and not used.
+
+UNVERIFIED: anything from the Netaji Research Bureau's own site (it returned
+no readable text to a direct fetch), including the 1947 dedication (B-N1).
+B-2 and B-3 rest on one source each (MEDIUM): a second source is needed
+before either is narrated.
+
+§7a risk notes for the owner (true and sourced; logged, not told):
+- The INA was an armed force in the Second World War, allied to and supported
+  by Japan (S14; S15), and S17 calls "Jai Hind" a "battle cry". As directed, the
+  wartime alliances are left out. That leaves little of the INA itself that
+  can be shown, so a clip should centre on the house, the name "Netaji", the
+  greeting and the women's regiment, with no fighting shown.
+- His death in 1945 and the myths around it (S13; S15) are left out, as
+  directed.
+- His 1941 escape from house arrest at this house (S13; S18) is a famous
+  exhibit (the car), but it is a political act against the government of the
+  day. Left out unless the owner says otherwise.
 
 ## Standard codes (live source, fetched 2026-11-10)
 
