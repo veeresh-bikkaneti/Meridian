@@ -1,0 +1,381 @@
+[
+  {
+    "id": "physics:push:which-way",
+    "group": "7-10",
+    "objective": "After this, a child can predict which way a box moves when one push is stronger than the push on the other side, shown by tapping that direction before the box moves.",
+    "standard": {
+      "code": "3-PS2-1",
+      "source": "https://www.nextgenscience.org/pe/3-ps2-1-motion-and-stability-forces-and-interactions"
+    },
+    "why": "A box of books blocks a door. Pushing both sides the same amount does not open the door. Which way does the box move when one push is stronger?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "everyday life: two people pushing a stuck gate from opposite sides"
+    ]
+  },
+  {
+    "id": "physics:push:equal-pushes",
+    "group": "7-10",
+    "objective": "After this, a child can compute how many tiles a box moves after a counted number of equal pushes, shown by entering that tile count before the box finishes moving.",
+    "standard": {
+      "code": "3-PS2-2",
+      "source": "https://www.nextgenscience.org/pe/3-ps2-2-motion-and-stability-forces-and-interactions"
+    },
+    "why": "The box must reach a line 8 tiles away. The first push moved it 2 tiles, and each push matches that one. How many tiles do 4 equal pushes cover?",
+    "buildsOn": [
+      "math-number:tables:facts",
+      "physics:push:which-way"
+    ],
+    "useElsewhere": [
+      "geography: how many equal steps fit along a short path on a map"
+    ]
+  },
+  {
+    "id": "physics:drop:down",
+    "group": "7-10",
+    "objective": "After this, a child can predict that a dropped ball moves down, shown by tapping down before the ball moves.",
+    "standard": {
+      "code": "5-PS2-1",
+      "source": "https://www.nextgenscience.org/pe/5-ps2-1-motion-and-stability-forces-and-interactions"
+    },
+    "why": "A ball sits on a shelf above a bucket. Letting go should land it in the bucket. Which way does it move?",
+    "buildsOn": [
+      "physics:push:which-way"
+    ],
+    "useElsewhere": [
+      "everyday life: water tipped from a jug goes down into a bowl"
+    ]
+  },
+  {
+    "id": "physics:friction:measure-slide",
+    "group": "7-10",
+    "objective": "After this, a child can measure how far a block slid and predict that the next equal push on the same floor matches that measurement, shown by entering the centimetre reading before the second slide.",
+    "standard": {
+      "code": "3-PS2-2",
+      "source": "https://www.nextgenscience.org/pe/3-ps2-2-motion-and-stability-forces-and-interactions"
+    },
+    "why": "A crate must stop before a glass pane. The first slide was measured on this floor. Will the next equal push stop at the same mark?",
+    "buildsOn": [
+      "math-applied:measure:length-cm",
+      "physics:push:which-way"
+    ],
+    "useElsewhere": [
+      "everyday life: measuring how far a chair slides before it meets a table leg"
+    ]
+  },
+  {
+    "id": "physics:ramp:faster-hits-harder",
+    "group": "7-10",
+    "objective": "After this, a child can predict that the faster ball moves a cup farther than the slower ball, shown by tapping the faster ball before the cups slide.",
+    "standard": {
+      "code": "4-PS3-1",
+      "source": "https://www.nextgenscience.org/pe/4-ps3-1-energy"
+    },
+    "why": "A ball rolling into a cup must not shove the cup off the table. Two balls reach the cup. One is moving faster. Which cup slides farther?",
+    "buildsOn": [
+      "physics:push:which-way",
+      "math-applied:measure:longer-than"
+    ],
+    "useElsewhere": [
+      "everyday life: a faster wagon bumping a bucket moves it farther than a slower wagon"
+    ]
+  },
+  {
+    "id": "physics:arrive:equal-steps",
+    "group": "7-10",
+    "objective": "After this, a child can predict which cart reaches a line first when each cart moves the same number of tiles on every step, shown by tapping that cart before they move.",
+    "standard": {
+      "code": "3-PS2-2",
+      "source": "https://www.nextgenscience.org/pe/3-ps2-2-motion-and-stability-forces-and-interactions"
+    },
+    "why": "Two carts leave for the same line. One moves 3 tiles each step. The other moves 1 tile each step. Which cart reaches the line first?",
+    "buildsOn": [
+      "math-number:tables:facts",
+      "physics:push:equal-pushes"
+    ],
+    "useElsewhere": [
+      "geography: which walker reaches a bridge first when one takes longer equal steps"
+    ]
+  },
+  {
+    "id": "physics:lever:seesaw",
+    "group": "7-10",
+    "objective": "After this, a child can predict which end of a see-saw goes down when that end is pushed down, shown by tapping that end before it moves.",
+    "standard": {
+      "code": "3-PS2-2",
+      "source": "https://www.nextgenscience.org/pe/3-ps2-2-motion-and-stability-forces-and-interactions"
+    },
+    "why": "A board over a log must lift a box. You push one end down. Which end goes down?",
+    "buildsOn": [
+      "physics:push:which-way"
+    ],
+    "useElsewhere": [
+      "everyday life: the playground see-saw end that is pushed goes down"
+    ]
+  },
+  {
+    "id": "physics:balance:tug",
+    "group": "7-10",
+    "objective": "After this, a child can predict that a box stays still when the two pushes match, and moves toward the weaker side when they do not, shown by tapping still or that direction before the box moves.",
+    "standard": {
+      "code": "3-PS2-1",
+      "source": "https://www.nextgenscience.org/pe/3-ps2-1-motion-and-stability-forces-and-interactions"
+    },
+    "why": "A gate is stuck. Two people push from opposite sides. When the pushes match, which way does the gate go?",
+    "buildsOn": [
+      "physics:push:which-way"
+    ],
+    "useElsewhere": [
+      "everyday life: two people pushing a stuck gate from opposite sides"
+    ]
+  },
+  {
+    "id": "physics:energy:wound-moves",
+    "group": "7-10",
+    "objective": "After this, a child can predict that a wound-up toy car moves and an unwound one stays still, shown by tapping the wound car before either car moves.",
+    "standard": {
+      "code": "4-PS3-4",
+      "source": "https://www.nextgenscience.org/pe/4-ps3-4-energy"
+    },
+    "why": "A toy car must cross a mat to a friend. One car is wound up. One is not. Which car moves?",
+    "buildsOn": [
+      "physics:push:which-way"
+    ],
+    "useElsewhere": [
+      "everyday life: a wound music box that turns, beside one that was not wound"
+    ]
+  },
+  {
+    "id": "physics:shadow:blocks",
+    "group": "7-10",
+    "objective": "After this, a child can predict that a book is seen only when light reflected from it enters the eye, and that a sheet in that path blocks the light, shown by tapping the open path before the scene marks it.",
+    "standard": {
+      "code": "4-PS4-2",
+      "source": "https://www.nextgenscience.org/pe/4-ps4-2-waves-and-their-applications-technologies-information-transfer"
+    },
+    "why": "A lamp is on, and a book sits where a child can look at it. A sheet can go in the path between the book and the eye. When is the book seen?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "everyday life: a book seen when nothing blocks the light from it to the eye"
+    ]
+  },
+  {
+    "id": "physics:mirror:sends-back",
+    "group": "7-10",
+    "objective": "After this, a child can predict that a mirror is seen because it sends reflected light into the eye, shown by tapping the mirror before the scene marks it.",
+    "standard": {
+      "code": "4-PS4-2",
+      "source": "https://www.nextgenscience.org/pe/4-ps4-2-waves-and-their-applications-technologies-information-transfer"
+    },
+    "why": "A book sits on the same side of a shelf as a lamp. A mirror and a bare board are the two choices. Which one sends reflected light into the eye so the book can be seen?",
+    "buildsOn": [
+      "physics:shadow:blocks"
+    ],
+    "useElsewhere": [
+      "everyday life: a mirror used so lamp light reflected from a book reaches the eye"
+    ]
+  },
+  {
+    "id": "physics:magnet:flip",
+    "group": "7-10",
+    "objective": "After this, a child can predict that turning one magnet around changes the direction of the push or pull, shown by not tapping stays-the-same before the magnets move.",
+    "standard": {
+      "code": "3-PS2-3",
+      "source": "https://www.nextgenscience.org/pe/3-ps2-3-motion-and-stability-forces-and-interactions"
+    },
+    "why": "A cabinet uses two magnets to stay shut. Someone turns one magnet around. Does the pull stay the same, or does the direction change?",
+    "buildsOn": [
+      "physics:push:which-way"
+    ],
+    "useElsewhere": [
+      "everyday life: a cabinet door after one magnet is turned around"
+    ]
+  },
+  {
+    "id": "physics:push:mass",
+    "group": "10-18",
+    "objective": "After this, a child can predict that the same push changes the motion of a heavier box less than a lighter box, shown by tapping the lighter box before they move.",
+    "standard": {
+      "code": "MS-PS2-2",
+      "source": "https://www.nextgenscience.org/dci-arrangement/ms-ps2-motion-and-stability-forces-and-interactions"
+    },
+    "why": "Two carts must start with the same push. One cart holds more boxes. Which cart's motion changes more?",
+    "buildsOn": [
+      "physics:push:which-way"
+    ],
+    "useElsewhere": [
+      "economics: a heavier delivery cart needs a stronger push for the same start"
+    ]
+  },
+  {
+    "id": "physics:push:table",
+    "group": "10-18",
+    "objective": "After this, a child can compare rows of net force, mass, and acceleration and predict which row has the larger acceleration when the mass matches and the net force is larger, shown by tapping that row before the carts move.",
+    "standard": {
+      "code": "HS-PS2-1",
+      "source": "https://www.nextgenscience.org/pe/hs-ps2-1-motion-and-stability-forces-and-interactions"
+    },
+    "why": "A dock cart's card lists net force, mass, and acceleration for two one-dimensional trials. The mass matches. The net force does not. Which trial's motion changes more?",
+    "buildsOn": [
+      "physics:push:mass",
+      "math-applied:rates:one-step"
+    ],
+    "useElsewhere": [
+      "geography: the same one-dimensional comparison for a sled on a straight path"
+    ]
+  },
+  {
+    "id": "physics:ramp:higher-stored",
+    "group": "10-18",
+    "objective": "After this, a child can predict that a cart higher on a hill has more stored energy than a cart lower on the same hill, shown by tapping the higher cart before either is released.",
+    "standard": {
+      "code": "MS-PS3-2",
+      "source": "https://www.nextgenscience.org/pe/ms-ps3-2-energy"
+    },
+    "why": "Two carts sit on one hill, one higher than the other. Which cart-and-Earth pair has more stored energy? The round asks only for more or less.",
+    "buildsOn": [
+      "physics:ramp:faster-hits-harder"
+    ],
+    "useElsewhere": [
+      "everyday life: a book on a high shelf versus a low shelf, more stored energy higher, relative only"
+    ]
+  },
+  {
+    "id": "physics:ramp:slope-ratio",
+    "group": "10-18",
+    "objective": "After this, a child can compute which of two ramps is steeper from the rise and the run, using a trigonometric ratio, shown by entering the ratio and tapping that ramp before a ball is shown on it.",
+    "standard": {
+      "code": "HSG.SRT.C.8",
+      "source": "https://www.thecorestandards.org/Math/Content/HSG/SRT/C/8/"
+    },
+    "why": "A loading ramp must meet a door. Ramp A rises 2 for a run of 4. Ramp B rises 2 for a run of 2. The taller picture is not the question. Which ramp is steeper?",
+    "buildsOn": [
+      "math-applied:trig:missing-side",
+      "physics:ramp:faster-hits-harder",
+      "math-applied:measure:right-angle"
+    ],
+    "useElsewhere": [
+      "geography: the height of a tower from the length of its shadow, using the same ratio, with both lengths given in the problem"
+    ]
+  },
+  {
+    "id": "physics:arrive:unit-rate",
+    "group": "10-18",
+    "objective": "After this, a child can compute a constant speed as a unit rate and predict which cart reaches a bridge first, shown by tapping that cart before the carts move.",
+    "standard": {
+      "code": "6.RP.A.3b",
+      "source": "https://www.thecorestandards.org/Math/Content/6/RP/A/3/b/"
+    },
+    "why": "One cart's card says 8 metres in 2 seconds. The other's says 9 metres in 3 seconds. They leave together for the same bridge. Comparing the two totals does not answer it. Who arrives first?",
+    "buildsOn": [
+      "math-applied:rates:constant-speed",
+      "physics:arrive:equal-steps"
+    ],
+    "useElsewhere": [
+      "economics: which stall is cheaper for one metre of rope, using the same unit-rate step"
+    ]
+  },
+  {
+    "id": "physics:energy:transfer",
+    "group": "10-18",
+    "objective": "After this, a child can predict that when a moving ball stops against a cup, energy has transferred to the cup, shown by tapping the cup's new motion before the replay.",
+    "standard": {
+      "code": "MS-PS3-5",
+      "source": "https://www.nextgenscience.org/pe/ms-ps3-5-energy"
+    },
+    "why": "A ball rolls into a cup and stops. The cup starts to slide. Where did the ball's motion go?",
+    "buildsOn": [
+      "physics:ramp:faster-hits-harder"
+    ],
+    "useElsewhere": [
+      "everyday life: a rolling ball that stops when it hits a cup, and the cup starts moving"
+    ]
+  },
+  {
+    "id": "physics:sound:medium",
+    "group": "10-18",
+    "objective": "After this, a child can predict that a sound reaches the listener through a material and not across an empty gap, shown by tapping the path that has air before the bell mark plays.",
+    "standard": {
+      "code": "MS-PS4-2",
+      "source": "https://www.nextgenscience.org/pe/ms-ps4-2-waves-and-their-applications-technologies-information-transfer"
+    },
+    "why": "A bell must be heard across a gap. One path is air. One path is drawn as empty. Which path carries the sound?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "geography: a shout between two people still needs air between them; no real valley is measured"
+    ]
+  },
+  {
+    "id": "physics:mirror:three-ways",
+    "group": "10-18",
+    "objective": "After this, a child can sort a material as reflecting, absorbing, or transmitting light, shown by tapping the label that matches the problem's model key before the beam plays.",
+    "standard": {
+      "code": "MS-PS4-2",
+      "source": "https://www.nextgenscience.org/pe/ms-ps4-2-waves-and-their-applications-technologies-information-transfer"
+    },
+    "why": "A lamp, a dark cloth, a clear sheet, and a mirror are on the table. The card's model key names which does which. Which material reflects?",
+    "buildsOn": [
+      "physics:mirror:sends-back"
+    ],
+    "useElsewhere": [
+      "everyday life: sorting a window, a curtain, and a mirror by what lamp light does"
+    ]
+  },
+  {
+    "id": "physics:magnet:closer",
+    "group": "10-18",
+    "objective": "After this, a child can predict that two magnets pull harder when they are closer, shown by tapping the closer pair before they move.",
+    "standard": {
+      "code": "MS-PS2-3",
+      "source": "https://www.nextgenscience.org/pe/ms-ps2-3-motion-and-stability-forces-and-interactions"
+    },
+    "why": "A latch must hold. Two pairs of magnets match, but one pair sits closer together. Which pair pulls harder?",
+    "buildsOn": [
+      "physics:magnet:flip"
+    ],
+    "useElsewhere": [
+      "everyday life: a knife sitting closer to a rack magnet is held more firmly"
+    ]
+  },
+  {
+    "id": "physics:ramp:adult-ratio",
+    "group": "18+",
+    "objective": "After this, an adult can compute which crane boom is steeper from a given rise and run, using a trigonometric ratio, shown by entering the ratio before that boom is marked.",
+    "standard": "UNVERIFIED",
+    "why": "A crane drawing gives two booms. Boom A rises 3 for a run of 6. Boom B rises 4 for a run of 6. The longer boom is not the question. Which boom is steeper? Fit: this adult round extends HSG.SRT.C.8, and no single code covers it.",
+    "buildsOn": [
+      "physics:ramp:slope-ratio"
+    ],
+    "useElsewhere": [
+      "economics: the same ratio compares two roof slopes when the problem also gives a cost for each step of steepness; no shop price is used"
+    ]
+  },
+  {
+    "id": "physics:arrive:adult-time",
+    "group": "18+",
+    "objective": "After this, an adult can rearrange the card's rule distance = speed × time to compute the missing time, shown by entering that time before the cart is shown at the mark.",
+    "standard": "UNVERIFIED",
+    "why": "A supply cart's card states distance = speed × time. The distance is 12 kilometres and the speed is 4 kilometres per hour. The time is missing. How long is the trip? Fit: this adult round extends HSA.CED.A.4, and no single code covers it.",
+    "buildsOn": [
+      "math-applied:rates:rearrange",
+      "physics:arrive:unit-rate"
+    ],
+    "useElsewhere": [
+      "economics: the time a delivery takes when the card states the same relationship; no wage is set"
+    ]
+  },
+  {
+    "id": "physics:energy:missing",
+    "group": "18+",
+    "objective": "After this, an adult can compute the missing energy change from the expression the card states, shown by entering that change before the scene marks it.",
+    "standard": "UNVERIFIED",
+    "why": "A two-part energy log states this expression: missing = known − outflow. The known change is 5 units and the outflow is 2 units. What is the missing change? Fit: this adult round extends HS-PS3-1, and no single code covers it.",
+    "buildsOn": [
+      "physics:energy:transfer",
+      "math-applied:rates:rearrange"
+    ],
+    "useElsewhere": [
+      "everyday life: a workshop lift whose energy card has one missing change, using the expression printed on the card"
+    ]
+  }
+]
