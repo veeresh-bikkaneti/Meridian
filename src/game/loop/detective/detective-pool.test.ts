@@ -115,14 +115,14 @@ test("pool: in-machine, a whole case of four acks never repeats and records the 
   assert.equal(state.acksPlayed, 4);
 });
 
-test("pool: suspicion on a guess is the single fixed clip, regardless of the ack pool", () => {
+test("pool: a guess draws the next unused ack, not the single suspicion clip", () => {
   const s = { ...initialDetectiveState(), phase: "SEARCH_IDLE" as const, clueIndex: 1, acksUsed: ["ack-1"] };
-  const out = transition(s, { type: "guessConfirmed", placeId: "geonames:5" });
+  const out = transition(s, { type: "guessConfirmed", placeId: "geonames:5" }, () => 0);
   const ids = out.effects
     .filter((e) => e.type === "speak")
     .map((e) => JSON.stringify((e as Extract<DetectiveEffect, { type: "speak" }>).ref));
   assert.deepEqual(ids, [
     JSON.stringify({ kind: "name", placeId: "geonames:5" }),
-    JSON.stringify({ kind: "fixed", id: "suspicion" }),
+    JSON.stringify({ kind: "fixed", id: "ack-2" }),
   ]);
 });

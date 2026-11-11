@@ -479,6 +479,8 @@ export function createDetectiveSpeech(
     if (processing) return;
     processing = true;
     let hadItems = false;
+    let playedAny = false;
+    let skippedUnreadClue = false;
     try {
       while (queue.length > 0) {
         if (gen !== generation || disposed) return;
@@ -495,6 +497,12 @@ export function createDetectiveSpeech(
         if (speechMode === "off") continue;
         if (speechMode === "tap" && !isGesture) {
           recordHeld(ref);
+          // A skipped clue question must not drain. Draining here
+          // opened every starting card before Watson read any of them
+          // (7-10 tap mode, a 3-clue deal). The ladder stays on this
+          // card until Listen plays the question. Sound off still
+          // drains: there is no read to wait for.
+          if (ref.kind === "clue" && isSoundOn()) skippedUnreadClue = true;
           continue;
         }
         // Gates at play time: sound off or the read-aloud preference
@@ -509,6 +517,7 @@ export function createDetectiveSpeech(
         const clip = resolveDetectiveClip(manifest, ref, caseIndex);
         if (!clip) continue; // uncovered → silent skip
         onSpeakingChange(clip.who);
+        playedAny = true;
         try {
           await playClip(clip);
         } catch {
@@ -522,7 +531,7 @@ export function createDetectiveSpeech(
       // ladder must advance silently rather than stall — the visual
       // game is identical with or without audio (fallback law).
       // stopAll bumps the generation, so a stopped queue never drains.
-      if (gen === generation && !disposed && hadItems) {
+      if (gen === generation && !disposed && hadItems && !(skippedUnreadClue && !playedAny)) {
         onSpeakingChange(null);
       }
       // Items enqueued while this loop was finishing (e.g. a drain
@@ -636,7 +645,7 @@ export function createDetectiveSpeech(
       // burst is held before its first clip starts, so a mid-play
       // replay restarts the complete chain, not just the clip in
       // flight. "off" mode holds nothing.
-      if (speechMode !== "off") recordHeld(ref);
+      if (speechMode !== "off" && !guessReadArmed) recordHeld(ref);
       // PR 2a cure 3: refs enqueued while the host's guess-read arm
       // stands are the guess read — mark them so tap mode plays
       // them for real (the confirm tap is the kid's gesture). The

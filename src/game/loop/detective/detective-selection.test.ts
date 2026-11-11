@@ -53,13 +53,16 @@ const B = "geonames:2643743";
 
 /* ---------------------------- state machine --------------------------- */
 
-test("selection: at rest, a pick is a name-only read — no suspicion, no ack, phase unchanged", () => {
+test("selection: at rest, a pick names the place and draws one ack — no guess spent", () => {
   const rest = lastOf(fold(CLUE1_AT_REST));
   assert.equal(rest.phase, "SEARCH_IDLE");
   const out = transition(rest.state, { type: "selectionNamed", placeId: A }, rng);
-  assert.deepEqual(speakRefs(out.effects), [{ kind: "name", placeId: A, selection: true }]);
+  assert.deepEqual(speakRefs(out.effects), [
+    { kind: "name", placeId: A, selection: true },
+    { kind: "fixed", id: "ack-2" },
+  ]);
   assert.equal(out.view.phase, "SEARCH_IDLE");
-  assert.equal(out.state.acksPlayed, rest.state.acksPlayed, "no ack spent");
+  assert.equal(out.state.acksPlayed, rest.state.acksPlayed + 1, "one ack spent");
   assert.equal(out.state.guessesConfirmed, 0, "no guess spent");
 });
 
@@ -85,7 +88,7 @@ test("selection: dedup — re-naming the same place in one clue cycle is a no-op
     { type: "selectionNamed", placeId: A },
     { type: "selectionNamed", placeId: A },
   ]);
-  assert.deepEqual(ids(steps[4]!.effects), [`name:${A}`]);
+  assert.deepEqual(ids(steps[4]!.effects), [`name:${A}`, "fixed:ack-2"]);
   assert.deepEqual(steps[5]!.effects, []);
   assert.strictEqual(steps[5]!.state, steps[4]!.state);
 });
@@ -97,7 +100,7 @@ test("selection: dedup keys on the LAST pick — A, B, A names A again", () => {
     { type: "selectionNamed", placeId: B },
     { type: "selectionNamed", placeId: A },
   ]);
-  assert.deepEqual(ids(steps[6]!.effects), [`name:${A}`]);
+  assert.deepEqual(ids(steps[6]!.effects), [`name:${A}`, "fixed:ack-4"]);
 });
 
 test("selection: a new clue cycle re-opens the dedup key", () => {
@@ -107,32 +110,32 @@ test("selection: a new clue cycle re-opens the dedup key", () => {
     ...[{ type: "clueUnlocked", clueIndex: 2 }, { type: "speechEnded" }, { type: "beatElapsed" }, { type: "speechEnded" }] as DetectiveEvent[],
     { type: "selectionNamed", placeId: A },
   ]);
-  assert.deepEqual(ids(lastOf(steps).effects), [`name:${A}`]);
+  assert.deepEqual(ids(lastOf(steps).effects), [`name:${A}`, "fixed:ack-4"]);
 });
 
-test("selection: confirming the just-named place speaks suspicion only — never the name twice", () => {
+test("selection: confirming the just-named place speaks nothing more — the queued name + ack is the line", () => {
   const steps = fold([
     ...CLUE1_AT_REST,
     { type: "selectionNamed", placeId: A },
     { type: "guessConfirmed", placeId: A },
   ]);
-  assert.deepEqual(ids(lastOf(steps).effects), ["fixed:suspicion"]);
+  assert.deepEqual(ids(lastOf(steps).effects), []);
   assert.equal(lastOf(steps).phase, "SELECTION_READ");
   assert.equal(lastOf(steps).state.ringAnimating, true);
 });
 
-test("selection: confirming a DIFFERENT place than the one named is unchanged — name + suspicion", () => {
+test("selection: confirming a DIFFERENT place than the one named speaks that name + the next ack", () => {
   const steps = fold([
     ...CLUE1_AT_REST,
     { type: "selectionNamed", placeId: A },
     { type: "guessConfirmed", placeId: B },
   ]);
-  assert.deepEqual(ids(lastOf(steps).effects), [`name:${B}`, "fixed:suspicion"]);
+  assert.deepEqual(ids(lastOf(steps).effects), [`name:${B}`, "fixed:ack-3"]);
 });
 
-test("selection: a guess with no prior selection is exactly today's name + suspicion", () => {
+test("selection: a guess with no prior selection is the place name + the next ack", () => {
   const steps = fold([...CLUE1_AT_REST, { type: "guessConfirmed", placeId: A }]);
-  assert.deepEqual(ids(lastOf(steps).effects), [`name:${A}`, "fixed:suspicion"]);
+  assert.deepEqual(ids(lastOf(steps).effects), [`name:${A}`, "fixed:ack-2"]);
 });
 
 test("selection: after a guess, the same place can be named again (guesses-used moved the key)", () => {
@@ -144,42 +147,35 @@ test("selection: after a guess, the same place can be named again (guesses-used 
     { type: "speechEnded" }, // → SEARCH_IDLE (selectionReadDone)
     { type: "selectionNamed", placeId: A },
   ]);
-  assert.deepEqual(ids(lastOf(steps).effects), [`name:${A}`]);
+  assert.deepEqual(ids(lastOf(steps).effects), [`name:${A}`, "fixed:ack-3"]);
 });
 
-test("selection: never lands mid-chain — during READING / THINKING_BEAT it waits, speaks nothing", () => {
+test("selection: during Watson's question the pick cuts the read — name + ack, no overlap", () => {
   const steps = fold([
-    { type: "clueUnlocked", clueIndex: 1 }, // Watson reads
-    { type: "selectionNamed", placeId: A },
-    { type: "speechEnded" }, // read drained → thinking beat
-    { type: "selectionNamed", placeId: A },
-    { type: "beatElapsed" }, // ack + decode
+    { type: "clueUnlocked", clueIndex: 1 },
     { type: "selectionNamed", placeId: A },
   ]);
-  for (const s of steps) {
-    assert.ok(
-      !ids(s.effects).some((i) => i === `name:${A}`),
-      `no selection name leaked at phase ${s.phase}`,
-    );
-  }
-  assert.equal(lastOf(steps).state.pendingSelection, A);
-  // The chain drains → only then does the read fire.
-  const drained = transition(lastOf(steps).state, { type: "speechEnded" }, rng);
+  const cut = lastOf(steps);
+  assert.equal(cut.phase, "SEARCH_IDLE");
+  assert.equal(cut.state.readingStep, "cut");
+  assert.equal(cut.state.openTarget, 0);
+  assert.equal(cut.effects[0]!.type, "stopSpeech");
+  assert.deepEqual(ids(cut.effects), [`name:${A}`, "fixed:ack-1"]);
+  const drained = transition(cut.state, { type: "speechEnded" }, rng);
   assert.equal(drained.view.phase, "SEARCH_IDLE");
-  assert.deepEqual(speakRefs(drained.effects), [{ kind: "name", placeId: A, selection: true }]);
-  assert.equal(drained.state.pendingSelection, null);
+  assert.deepEqual(ids(drained.effects), []);
 });
 
 test("selection: pending slot is depth-1, latest wins", () => {
   const steps = fold([
     { type: "clueUnlocked", clueIndex: 1 },
+    { type: "speechEnded" }, // → THINKING_BEAT; Watson is not mid-question
     { type: "selectionNamed", placeId: A },
     { type: "selectionNamed", placeId: B },
-    { type: "speechEnded" },
     { type: "beatElapsed" },
     { type: "speechEnded" },
   ]);
-  assert.deepEqual(ids(lastOf(steps).effects), [`name:${B}`]);
+  assert.deepEqual(ids(lastOf(steps).effects), [`name:${B}`, "fixed:ack-2"]);
   const all = steps.flatMap((s) => ids(s.effects));
   assert.ok(!all.includes(`name:${A}`), "the superseded read never speaks");
 });
@@ -190,6 +186,7 @@ test("selection: a guess confirmation discards a pending read (and still names t
   const live = fold(
     [
       { type: "clueUnlocked", clueIndex: 2 },
+      { type: "speechEnded" }, // thinking beat — not a mid-question cut
       { type: "selectionNamed", placeId: A },
     ],
     rest,
@@ -200,12 +197,13 @@ test("selection: a guess confirmation discards a pending read (and still names t
   const resting: DetectiveState = { ...rest, pendingSelection: A, lastNamed: null };
   const out = transition(resting, { type: "guessConfirmed", placeId: A }, rng);
   assert.equal(out.state.pendingSelection, null);
-  assert.deepEqual(ids(out.effects), [`name:${A}`, "fixed:suspicion"], "never named yet, so the guess names it");
+  assert.deepEqual(ids(out.effects), [`name:${A}`, "fixed:ack-2"], "never named yet, so the guess names it");
 });
 
 test("selection: a clue unlock discards a pending read", () => {
   const steps = fold([
     { type: "clueUnlocked", clueIndex: 1 },
+    { type: "speechEnded" }, // thinking beat, so the pick waits instead of cutting
     { type: "selectionNamed", placeId: A },
     { type: "clueUnlocked", clueIndex: 2 },
   ]);
@@ -217,6 +215,7 @@ test("selection: a case ending discards a pending read (solved and failed)", () 
   for (const end of [{ type: "caseSolved", answerPlaceId: "geonames:9" }, { type: "caseFailed" }] as DetectiveEvent[]) {
     const steps = fold([
       { type: "clueUnlocked", clueIndex: 1 },
+      { type: "speechEnded" }, // thinking beat, so the pick waits instead of cutting
       { type: "selectionNamed", placeId: A },
       end,
     ]);

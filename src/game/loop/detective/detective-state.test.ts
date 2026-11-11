@@ -360,14 +360,14 @@ test("full ladder: open → 5 clues with selection reads → solve → debrief",
   for (const p of ["READING", "THINKING_BEAT", "SEARCH_IDLE", "SELECTION_READ", "NOTE_MARK", "ASK_NEXT", "CELEBRATE", "DEBRIEF"]) {
     assert.ok(phases.includes(p), `ladder visits ${p}`);
   }
-  // Selection reads spoke the player's own pick + the suspicion line.
+  // Selection reads spoke the player's own pick + one ack from the pool.
   const selectionSteps = steps.filter((s) => s.phase === "SELECTION_READ" && s.effects.length > 0);
   assert.ok(selectionSteps.length >= 4);
   for (const s of selectionSteps) {
     const ids = speakIds(s.effects);
     assert.equal(ids.length, 2);
     assert.ok(ids[0]!.startsWith("name:geonames:"));
-    assert.equal(ids[1], "fixed:suspicion");
+    assert.match(ids[1]!, /^fixed:ack-\d+$/);
   }
   // Ask-next bridges each unlock.
   const askSteps = steps.filter((s) => s.effects.some((e) => e.type === "speak" && e.ref.kind === "fixed" && e.ref.id === "ask-next"));
@@ -385,14 +385,14 @@ test("full ladder: open → 5 clues with selection reads → solve → debrief",
   assert.deepEqual(speakIds(last(steps).effects), ["fixed:debrief-frame", "fixed:debrief-close"]);
 });
 
-test("selection read: guessConfirmed speaks name + suspicion; rings hide the pair", () => {
+test("selection read: guessConfirmed speaks name + one ack; rings hide the pair", () => {
   const steps = run([
     ...normalClue(1),
     { type: "guessConfirmed", placeId: "geonames:42" },
   ]);
   const sel = last(steps);
   assert.equal(sel.phase, "SELECTION_READ");
-  assert.deepEqual(speakIds(sel.effects), ["name:geonames:42", "fixed:suspicion"]);
+  assert.deepEqual(speakIds(sel.effects), ["name:geonames:42", "fixed:ack-2"]);
   // The pair stays on screen through the rings (owner, 2026-11-10).
   assert.equal(viewForState(sel.state).hidden, false);
   const after = run([{ type: "ringAnimationEnded" }], sel.state);
@@ -598,33 +598,34 @@ function fivePicksThen(end: "solved" | "failed"): Step[] {
   return run(events);
 }
 
-test("U7: every selection read enqueues the SAME single suspicion ref — picks 1..5, win or lose", () => {
+test("U7: every selection read draws a distinct ack — picks 1..5, win or lose, answer-blind", () => {
+  const sequences: string[][] = [];
   for (const end of ["solved", "failed"] as const) {
     const steps = fivePicksThen(end);
     const selections = steps.filter(
       (s) => s.phase === "SELECTION_READ" && s.effects.length > 0,
     );
     assert.equal(selections.length, 5, `${end}: five selection reads`);
-    const suspicions = selections.map((s) => {
+    const acks = selections.map((s) => {
       const refs = speakRefs(s.effects);
-      assert.equal(refs.length, 2, "name + suspicion, nothing else");
+      assert.equal(refs.length, 2, "name + ack, nothing else");
       assert.equal(refs[0]!.kind, "name");
-      return refs[1]!;
+      const ack = refs[1]!;
+      assert.equal(ack.kind, "fixed");
+      return ack.kind === "fixed" ? ack.id : "";
     });
-    // The suspicion ref is the identical fixed entry every time — the
-    // answer-blindness of the line is this equality, not a comment.
-    for (const ref of suspicions) {
-      assert.deepEqual(ref, { kind: "fixed", id: "suspicion" });
-      assert.deepEqual(ref, suspicions[0]);
-    }
+    assert.equal(new Set(acks).size, 5, `${end}: no ack repeats`);
+    for (const id of acks) assert.match(id, /^ack-\d+$/);
+    sequences.push(acks);
   }
+  assert.deepEqual(sequences[0], sequences[1], "win and lose draw the same acks");
 });
 
 test("U7: uncovered pick — machine effects are identical minus the name ref", () => {
   // The machine cannot know coverage (entry presence lives in the
   // manifest, player-side), so a covered and an uncovered pick produce
   // the same machine step; stripping the name ref leaves exactly the
-  // one suspicion effect the player will actually sound.
+  // one ack effect the player will actually sound (clue 1 already took ack-1).
   const covered = run([
     ...normalClue(1),
     { type: "guessConfirmed", placeId: "geonames:5506956" }, // Las Vegas: covered
@@ -640,7 +641,7 @@ test("U7: uncovered pick — machine effects are identical minus the name ref", 
   const minusName = (effects: DetectiveEffect[]) =>
     speakRefs(effects).filter((r) => r.kind !== "name");
   assert.deepEqual(minusName(a.effects), minusName(b.effects));
-  assert.deepEqual(minusName(a.effects), [{ kind: "fixed", id: "suspicion" }]);
+  assert.deepEqual(minusName(a.effects), [{ kind: "fixed", id: "ack-2" }]);
 });
 
 test("U7: ask-next fires exactly once per unlock across a full 5-guess game — 4 total, never on the final clue", () => {
@@ -1077,7 +1078,7 @@ test("pin before Watson finishes: speech stops, Watson says 'You beat me to it!'
   assert.deepEqual(speakIds(pin.effects), [
     "fixed:beat-me",
     "name:geonames:42",
-    "fixed:suspicion",
+    "fixed:ack-1",
   ]);
   // The opening sequence ends: the next clue comes from the guess.
   assert.equal(pin.state.openTarget, 0);
@@ -1115,7 +1116,7 @@ test("pin during the thinking beat also beats Watson; a pin during ask-next does
   const pin = last(ask);
   assert.equal(pin.phase, "SELECTION_READ");
   assert.equal(speakIds(pin.effects).includes("fixed:beat-me"), false);
-  assert.deepEqual(speakIds(pin.effects), ["name:geonames:2", "fixed:suspicion"]);
+  assert.deepEqual(speakIds(pin.effects), ["name:geonames:2", "fixed:ack-3"]);
 });
 
 test("solve: the celebration says 'We did it together!' with a bubble over Holmes", () => {
