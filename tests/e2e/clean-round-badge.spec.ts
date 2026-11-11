@@ -4,7 +4,7 @@ import { loopNameIndex, openMysteryPlaceId, serveBuiltArtifact } from "./helpers
 /**
  * Clean Round badge E2E (#113 BLOCK 1 + BLOCK 2).
  *
- * - The badge is earned ONLY on an 11-13 no-hint WIN, awarded from the
+ * - The badge is earned ONLY on a 10-18 or 18+ no-hint WIN, awarded from the
  *   deal-time band snapshot (never the live band).
  * - Losses never earn it (the award copy celebrates figuring it out —
  *   it must not fire on a failed round).
@@ -26,7 +26,7 @@ test.beforeEach(async ({ context }) => {
 /** Seed an active age profile before page load. */
 async function seedProfile(
   context: import("playwright/test").BrowserContext,
-  band: "5-7" | "8-10" | "11-13",
+  band: "7-10" | "10-18" | "18+",
 ) {
   await context.addInitScript((b: string) => {
     window.localStorage.setItem(
@@ -36,7 +36,7 @@ async function seedProfile(
         band: b,
         updatedAt: new Date().toISOString(),
         changeCount: 0,
-        schemaVersion: 1,
+        schemaVersion: 2,
       }),
     );
   }, band);
@@ -117,10 +117,10 @@ async function earnedBadgeIds(page: import("playwright/test").Page): Promise<str
   }, BADGES_KEY);
 }
 
-test("Clean Round: 11-13 no-hint win earns it and shows it in the reveal", async ({
+test("Clean Round: 10-18 no-hint win earns it and shows it in the reveal", async ({
   page,
 }) => {
-  // No profile seeded → unset resolves to the 11-13 full-access band.
+  // No profile seeded → unset resolves to the 10-18 full-access band.
   await openLoop(page, "218"); // Ankara
   const entry = await targetEntry(page);
   await guessTarget(page, entry); // one correct guess, zero hints
@@ -158,7 +158,7 @@ test("Clean Round badge never overlaps the win-reveal CTA", async ({ page }) => 
   expect(ix * iy).toBe(0);
 });
 
-test("Clean Round: a loss never earns it, even hint-free on 11-13", async ({ page }) => {
+test("Clean Round: a loss never earns it, even hint-free on 10-18", async ({ page }) => {
   await openLoop(page, "218"); // Ankara
   const entry = await targetEntry(page);
   for (const q of wrongQueries(entry.id)) {
@@ -174,25 +174,25 @@ test("Clean Round: mid-run band change cannot mis-award (#113 BLOCK 1)", async (
   page,
   context,
 }) => {
-  // Deal the mystery on 8-10 (snapshot band = 8-10).
-  await seedProfile(context, "8-10");
+  // Deal the mystery on 7-10 (snapshot band = 7-10).
+  await seedProfile(context, "7-10");
   await openLoop(page, "218"); // Ankara
 
-  // Grown-up flips to 11-13 mid-mystery. The deal-time snapshot must govern.
+  // Grown-up flips to 10-18 mid-mystery. The deal-time snapshot must govern.
   await page.evaluate(() => {
     window.localStorage.setItem(
       "meridian.ageProfile.v1",
       JSON.stringify({
         status: "active",
-        band: "11-13",
+        band: "10-18",
         updatedAt: new Date().toISOString(),
         changeCount: 1,
-        schemaVersion: 1,
+        schemaVersion: 2,
       }),
     );
   });
 
-  // Win with zero hints — the live band is 11-13, but the deal band was 8-10.
+  // Win with zero hints — the live band is 10-18, but the deal band was 7-10.
   const entry = await targetEntry(page);
   await guessTarget(page, entry);
   await expect(page.getByText("🎯 You found it!")).toBeVisible({ timeout: 15_000 });

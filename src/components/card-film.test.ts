@@ -271,14 +271,14 @@ describe("home wiring — five cards, one component, nothing else moves", () => 
     );
     assert.ok(
       gameApp.includes('<CardFilm className="hv5-pic" media={coldtrailMediaForBand(ageBand)} testId="card-film-coldtrail" band={ageBand} />'),
-      "Cold Trail slot (band-variant selector, Units 2–3 — the selector returns the standard entry for every band but 5-7)",
+      "Cold Trail slot (band-variant selector, Units 2–3 — the selector returns the standard entry for every band; the 5-7 softer film is no longer selected)",
     );
   });
 
   it("all three .hv5-art slots render CardFilm with their card-media entries", () => {
     assert.ok(
       gameApp.includes('<CardFilm className="hv5-art" media={reviewMediaForBand(ageBand)} testId="card-film-review" band={ageBand} />'),
-      "Review slot (band-variant selector, Units 2–3 — the selector returns the standard entry for every band but 8-10)",
+      "Review slot (band-variant selector, Units 2–3 — the selector returns the standard entry for every band but 7-10)",
     );
     assert.ok(
       gameApp.includes('<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />'),
