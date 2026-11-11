@@ -1102,7 +1102,7 @@ export const PLACES: Place[] = [
     reveal: [103.86699, 13.41247],
     shape: point(103.86699, 13.41247),
     story:
-      "The temple complex in Cambodia was built in the 12th century as a Hindu monument and later became a Buddhist one. Its five towers are the aim point.",
+      "This huge stone complex near Siem Reap in Cambodia was built in the early 12th century. It covers about 160 hectares, and its five towers are the aim point.",
     source: src("UNESCO", "https://whc.unesco.org/en/list/668/"),
   },
   {
@@ -1135,7 +1135,7 @@ export const PLACES: Place[] = [
     reveal: [131.03688, -25.34443],
     shape: point(131.03688, -25.34443),
     story:
-      "The sandstone monolith in Australia's Northern Territory is a sacred place for the Anangu people. The rock itself, not the resort to the north, is the point.",
+      "The huge red sandstone rock rises alone from the desert in Australia's Northern Territory. The rock itself, not the resort to the north, is the point.",
     source: src("Parks Australia", "https://parksaustralia.gov.au/uluru/"),
   },
   {
@@ -1190,7 +1190,7 @@ export const PLACES: Place[] = [
     reveal: [91.11694, 29.65778],
     shape: point(91.11694, 29.65778),
     story:
-      "The palace rises above Lhasa on a hill that was already sacred before the present buildings. It was the winter home of the Dalai Lamas for centuries.",
+      "The palace sits on Red Mountain in the middle of the Lhasa Valley. Its thick walls of rammed earth and stone hold more than 1,000 rooms.",
     source: src("UNESCO", "https://whc.unesco.org/en/list/707/"),
   },
   {
@@ -1201,7 +1201,7 @@ export const PLACES: Place[] = [
     reveal: [-3.00742, 16.77348],
     shape: point(-3.00742, 16.77348),
     story:
-      "The city in Mali was a hub of the trans-Saharan trade and of Islamic learning. Its mosques and manuscript libraries still mark the historic center.",
+      "The city in Mali stands at the edge of the Sahara Desert. It was a trading crossroads where salt, gold and books were bought and sold, and its great mud-brick buildings still mark the old center.",
     source: src("UNESCO", "https://whc.unesco.org/en/list/119/"),
   },
   {

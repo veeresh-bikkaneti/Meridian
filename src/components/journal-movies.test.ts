@@ -23,7 +23,8 @@ test("parseJournalMovieManifest accepts the real manifest", () => {
   assert.ok(parsed !== null);
   assert.equal(parsed!.baseUrl, "https://veeresh-bikkaneti.github.io/meridian-media/journal/");
   assert.equal(parsed!.baseUrl, JOURNAL_MOVIE_BASE_URL);
-  assert.equal(Object.keys(parsed!.movies).length, 106);
+  // 106 places, 4 movies withheld (angkor, potala, timbuktu, uluru).
+  assert.equal(Object.keys(parsed!.movies).length, 102);
   assert.equal(parsed!.version, 1);
 });
 
