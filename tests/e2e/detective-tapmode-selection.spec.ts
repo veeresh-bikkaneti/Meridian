@@ -82,6 +82,18 @@ async function playCount(page: Page, clipPart: string): Promise<number> {
  * host hunt's proven tap-mode entry (the station-root opener cannot
  * be used: in flank mode that root is display:none). */
 async function openTapCase(page: Page, index: number): Promise<void> {
+  // Set before navigation so it survives any page load on the way in.
+  await page.addInitScript(() => {
+    const w = window as unknown as { __benchSeen?: boolean };
+    w.__benchSeen = false;
+    const obs = new MutationObserver(() => {
+      if (document.querySelector('[data-testid="detective-bench"]')) {
+        w.__benchSeen = true;
+        obs.disconnect();
+      }
+    });
+    obs.observe(document.documentElement, { childList: true, subtree: true });
+  });
   await page.goto(`${BASE}?loop-puzzle=${index}`);
   await page
     .getByRole("button", { name: "GeoDetective: Solve a mystery" })
@@ -89,22 +101,20 @@ async function openTapCase(page: Page, index: number): Promise<void> {
   await expect(
     page.getByRole("article", { name: /Clue 1:/ }),
   ).toBeVisible({ timeout: 30_000 });
-  // Wait for the staging stage itself to reach "gone" rather than
-  // catching the bench on screen: at 4x playback the intro can finish
-  // before a visibility check lands.
+  // The bench can come and go faster than a visibility check at 4x
+  // playback, so a page-side flag records that it ever showed.
   await expect
     .poll(
       () =>
         page.evaluate(
-          () =>
-            document
-              .querySelector("[data-staging]")
-              ?.getAttribute("data-staging") ?? null,
+          () => (window as unknown as { __benchSeen?: boolean }).__benchSeen === true,
         ),
-      { timeout: 60_000 },
+      { timeout: 20_000 },
     )
-    .toBe("gone");
-  await expect(page.getByTestId("detective-bench")).toHaveCount(0);
+    .toBe(true);
+  await expect(page.getByTestId("detective-bench")).toHaveCount(0, {
+    timeout: 60_000,
+  });
 }
 
 /** One tap on Watson releases the held chain for the current clue
