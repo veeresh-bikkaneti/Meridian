@@ -329,8 +329,21 @@ test("real berth: post-throttle recovery — kill latches, re-qualifies, berths 
     const point = berthPointFor(1280, mapBox!);
 
     /* -- Throttle in SEARCH until the FG-5 latch provably fires --- */
+    // CPU throttling alone does not starve frames on a headless CI
+    // runner (nothing heavy paints, so rAF keeps its rate and the
+    // latch never fires). Add real main-thread jank as well: a 160 ms
+    // busy task every 400 ms is a long task (> KILL_LONGTASK_MS) that
+    // also drags the frame rate, the load the latch exists to catch.
     const cdp = await context.newCDPSession(page);
     await cdp.send("Emulation.setCPUThrottlingRate", { rate: 8 });
+    await page.evaluate(() => {
+      (window as unknown as { __jank?: number }).__jank = window.setInterval(() => {
+        const t0 = performance.now();
+        while (performance.now() - t0 < 160) {
+          /* busy: a real long task */
+        }
+      }, 400);
+    });
     await expect
       .poll(() => companionMode(page), { timeout: 120_000 })
       .toBe("killed");
@@ -347,6 +360,9 @@ test("real berth: post-throttle recovery — kill latches, re-qualifies, berths 
     ).not.toBe("berth");
 
     /* -- Unthrottle: the companion must RE-QUALIFY ------------------ */
+    await page.evaluate(() => {
+      window.clearInterval((window as unknown as { __jank?: number }).__jank);
+    });
     await cdp.send("Emulation.setCPUThrottlingRate", { rate: 1 });
     await expect
       .poll(() => companionMode(page), { timeout: 180_000 })
