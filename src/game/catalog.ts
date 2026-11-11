@@ -1135,7 +1135,7 @@ export const PLACES: Place[] = [
     reveal: [131.03688, -25.34443],
     shape: point(131.03688, -25.34443),
     story:
-      "The huge red sandstone rock rises alone from the desert in Australia's Northern Territory. The rock itself, not the resort to the north, is the point.",
+      "The huge red sandstone rock rises alone from the desert in Australia's Northern Territory.",
     source: src("Parks Australia", "https://parksaustralia.gov.au/uluru/"),
   },
   {

@@ -1517,7 +1517,7 @@ export const JOURNAL_NOTES: JournalNote[] = [
     "place": "Uluru",
     "ring": "world",
     "where": "The World",
-    "story": "The huge red sandstone rock rises alone from the desert in Australia's Northern Territory. The rock itself, not the resort to the north, is the point.",
+    "story": "The huge red sandstone rock rises alone from the desert in Australia's Northern Territory.",
     "sourceLabel": "Parks Australia",
     "sourceHref": "https://parksaustralia.gov.au/uluru/",
     "confidence": {
