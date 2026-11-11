@@ -44,8 +44,8 @@ See `sources.md` L-X1 to L-X5.
 
 ## great-leaders:jhansi-fort (group 10-18) — row PROPOSED
 
-Gentler wording proposed on 2026-11-11, after the owner asked for a
-child-friendly tone that fits the theme. It waits on the owner's yes. The
+Gentler wording, approved on 2026-11-11, after the owner asked for a
+child-friendly tone that fits the theme. The owner approved it the same day. The
 earlier owner wording (2026-11-10) was "Queen Lakshmibai led Jhansi's army and
 rode out with her young son", with the card "She led her forces in 1858". The
 army, the siege and the ride are no longer narrated or carded; R-4, R-7, R-11
@@ -75,8 +75,8 @@ S21, vs "17 days" of shelling, S22), and the ride to Kalpi is partly legend
 
 ## great-leaders:netaji-bhawan (group 10-18) — row PROPOSED
 
-Gentler wording proposed on 2026-11-11, after the owner asked for a
-child-friendly tone that fits the theme. It waits on the owner's yes. The
+Gentler wording, approved on 2026-11-11, after the owner asked for a
+child-friendly tone that fits the theme. The owner approved it the same day. The
 earlier owner wording (t330u, 2026-11-10) was "Netaji Subhas Bose lived here.
 He led an army and made 'Jai Hind' famous", with the card "He took command of
 the army in 1943". The army is no longer narrated or carded; B-6, B-7 and B-13

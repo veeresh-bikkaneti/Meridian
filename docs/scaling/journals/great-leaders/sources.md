@@ -148,7 +148,7 @@ Year check (integrator item): **confirmed.** She took charge of Jhansi in
 1857 (R-3); the siege and her ride out of the fort were in 1858 (R-7). A clip
 must not put the ride in 1857.
 
-Gentler wording (proposed 2026-11-11, waits on the owner's yes): the card now
+Gentler wording (approved by the owner 2026-11-11): the card now
 counts from 1857, when she began to rule Jhansi for her young son (R-3), and
 the narration is "Queen Lakshmibai ruled Jhansi for her young son" (R-1, R-2,
 R-3, R-N1). R-4 to R-7 and R-11 are kept as logged facts but are no longer
