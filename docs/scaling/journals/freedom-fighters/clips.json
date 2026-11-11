@@ -1,0 +1,29 @@
+[
+  {
+    "id": "freedom-fighters:robben-island",
+    "group": "10-18",
+    "objective": "After this, a child in group 10-18 can solve 1964 + x = 1982 to find the years between Nelson Mandela's arrival on Robben Island and his move away from it, and identify that the island's old prison is a museum today, shown by a correct value of x and a correct tap on the post-clip retrieval check.",
+    "standard": {
+      "code": "D2.His.2.6-8",
+      "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
+    },
+    "why": "Nelson Mandela was brought to Robben Island in 1964. He was moved away in 1982. How many years apart are those dates? Solve 1964 + x = 1982.",
+    "place": {
+      "lat": -33.805,
+      "lon": 18.37,
+      "name": "Robben Island, Table Bay, near Cape Town, South Africa"
+    },
+    "file": "public/videos/journals/freedom-fighters/robben-island.mp4",
+    "captions": "robben-island.vtt",
+    "retrieval": {
+      "question": "What is the old prison on Robben Island today?",
+      "answer": "A museum"
+    },
+    "stretch": {
+      "group": "18+",
+      "question": "Robben Island is about 3.3 km long and 1.9 km wide. Treat it as an ellipse. About what area is that?",
+      "answer": "About 4.9 square km (pi x 1.65 x 0.95)",
+      "fact": "F1-8"
+    }
+  }
+]

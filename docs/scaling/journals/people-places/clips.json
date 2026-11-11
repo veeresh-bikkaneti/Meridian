@@ -1,0 +1,366 @@
+{
+  "journal": "people-places",
+  "count": "PROPOSED",
+  "proposedCount": 5,
+  "countingYear": 2026,
+  "stage": "A",
+  "buildGate": "closed",
+  "maxGrade": { "7-10": 5, "10-18": 12, "18+": 14 },
+  "screenedOn": "2026-11-10",
+  "cuts": [
+    {
+      "id": "maya-culture",
+      "verdict": "CUT",
+      "reason": "§7a religion and religious practice. Britannica frames Tikal as a ceremonial center with temples and stelae of priests, and the draft sacred 260-day calendar is religious practice. Time-counting could not be separated from that frame without softening a cut item. The draft's Britannica URL was an Aztec article, and population figures conflict across sources, so they were not reused."
+    },
+    {
+      "id": "shaolin",
+      "verdict": "CUT",
+      "reason": "§7a religion and religious practice. A Chan Buddhist monastery, monks praying, and a temple founding are religious practice. Owner ruling: religion is out of the plan."
+    },
+    {
+      "id": "bodhidharma",
+      "verdict": "CUT",
+      "reason": "§7a religion. The story is the transmission of Chan (Zen) Buddhism. It cannot be told without religious practice. The nine-years-facing-a-wall tale is legend and stays out."
+    },
+    {
+      "id": "vivekananda",
+      "verdict": "CUT",
+      "reason": "§7a religion. The Chicago speech was at the World's Parliament of Religions and its theme was religious tolerance. The story cannot be told without that gathering."
+    },
+    {
+      "id": "zeus",
+      "verdict": "CUT",
+      "reason": "Mythology. Owner ruling: religion, pilgrimage, and mythology are out entirely. §7a: do not soften a cut into a parable."
+    }
+  ],
+  "clips": [
+    {
+      "id": "people-places:akashi-span",
+      "clip": "akashi-span",
+      "group": "7-10",
+      "gradeNote": "C3 indicator is end of grade 5. Grade 5 may sit in 7-10 (grades 2-5).",
+      "skill": "multiplication",
+      "objective": "After this, a child in band 7-10 can compute the combined length of two equal side spans and can state the middle span, shown by a correct product and a correct post-clip tap.",
+      "standard": "D2.Geo.2.3-5",
+      "standardText": "Use maps, satellite images, photographs, and other representations to explain relationships between the locations of places and regions and their environmental characteristics.",
+      "standardSource": "https://www.socialstudies.org/sites/default/files/c3/C3-Framework-for-Social-Studies.pdf",
+      "standardChecked": "2026-11-10",
+      "why": "The two side spans are the same length. How long are they together, and how does that compare with the middle span?",
+      "opensWith": "how far",
+      "place": {
+        "lat": 34.616,
+        "lon": 135.021,
+        "name": "Akashi Kaikyo Bridge, between Kobe and Awaji Island, Japan"
+      },
+      "placeConfidence": "MEDIUM",
+      "placeSource": "https://en.wikipedia.org/wiki/Akashi_Kaikyo_Bridge",
+      "placeNote": "Pin rounded from 34.6162 N, 135.0205 E on that page. The place and the span lengths do not depend on this pin.",
+      "file": "public/videos/journals/people-places/akashi-span.mp4",
+      "captions": "akashi-span.vtt",
+      "captionsSpec": "docs/scaling/journals/people-places/captions/akashi-span.vtt",
+      "narration": "Hey kids, have you heard about this place? Its middle span is 1,991 meters long.",
+      "predict": {
+        "prompt": "Each side span is 960 meters. How long are the two sides together?",
+        "answer": "1920",
+        "unit": "meters"
+      },
+      "explain": "Multiply 960 by 2. That is 1,920 meters. The middle span is 1,991 meters, so it is longer.",
+      "hint": "The two sides match. Use 960 two times.",
+      "retrieval": {
+        "question": "How many meters is the middle span?",
+        "answer": "1991"
+      },
+      "elsewhere": {
+        "subject": "geography",
+        "prompt": "Each map step is 2 kilometers. There are 4 steps. How far is that?",
+        "answer": "8",
+        "note": "Same skill, map scale. These step numbers are the game's key, not a fact about the bridge."
+      },
+      "buildsOn": "multiplication of a one-digit factor",
+      "realLife": "comparing lengths of a bridge you could cross",
+      "environmentLink": "The span is a measured distance over a strait of water.",
+      "facts": [
+        {
+          "text": "Central span 1,991 meters; each side span 960 meters; total length 3,911 meters; opened 5 April 1998; links Kobe on Honshu to Awaji Island.",
+          "source": "https://www.britannica.com/topic/Akashi-Strait-Bridge",
+          "also": "https://www.jb-honshi.co.jp/english/bridgeworld/bridge.html",
+          "confidence": "HIGH",
+          "checked": "2026-11-10"
+        }
+      ],
+      "notTaught": [
+        "Tower height: Britannica says 297 meters above the water; the operator page says about 300 meters; another page says 282.8 meters. No tower height is taught.",
+        "The 1995 earthquake is not narrated. The length taught is the finished 1,991 meter span."
+      ],
+      "motion": "Shared globe in the spec. Flat tier is a 2D pin at this lat/lon. Same question on every tier."
+    },
+    {
+      "id": "people-places:pont-du-gard",
+      "clip": "pont-du-gard",
+      "group": "7-10",
+      "gradeNote": "C3 indicator is end of grade 5. Grade 5 may sit in 7-10 (grades 2-5).",
+      "skill": "multiplication",
+      "objective": "After this, a child in band 7-10 can multiply 5 by 7 and can state the top-row arch count, shown by a correct product and a correct post-clip tap.",
+      "standard": "D2.Geo.1.3-5",
+      "standardText": "Construct maps and other graphic representations of both familiar and unfamiliar places.",
+      "standardSource": "https://www.socialstudies.org/sites/default/files/c3/C3-Framework-for-Social-Studies.pdf",
+      "standardChecked": "2026-11-10",
+      "why": "How many arches are on the top row? Multiplication turns equal groups into that count.",
+      "opensWith": "how many",
+      "place": {
+        "lat": 43.947,
+        "lon": 4.535,
+        "name": "Pont du Gard, over the Gard River, southern France"
+      },
+      "placeConfidence": "HIGH",
+      "placeSource": "https://ancientlocations.net/Placemark.aspx?sp=1388",
+      "placeNote": "Rounded from 43.947416 N, 4.535009 E. A second pin, 43.947242 N, 4.535229 E, agrees to about 0.001 degree (https://geohack.toolforge.org/geohack.php?params=43.94724200_N_4.53522900_E).",
+      "file": "public/videos/journals/people-places/pont-du-gard.mp4",
+      "captions": "pont-du-gard.vtt",
+      "captionsSpec": "docs/scaling/journals/people-places/captions/pont-du-gard.vtt",
+      "narration": "Hey kids, have you heard about this place? This bridge in France has 35 arches on its top row.",
+      "predict": {
+        "prompt": "Look at the top row as 5 groups of 7 arches. How many arches is that? This grouping is a practice frame, not a claim about the builders.",
+        "answer": "35",
+        "unit": "arches"
+      },
+      "explain": "5 times 7 is 35. Britannica counts 35 arches on the top row, 11 on the middle, and 6 on the bottom.",
+      "hint": "Five groups. Seven in each group.",
+      "retrieval": {
+        "question": "How many arches are on the top row?",
+        "answer": "35"
+      },
+      "elsewhere": {
+        "subject": "everyday",
+        "prompt": "A wall has 4 rows of 3 bricks. How many bricks is that?",
+        "answer": "12",
+        "note": "Same skill, rows of bricks. Not a fact about this bridge."
+      },
+      "buildsOn": "multiplication with equal groups",
+      "realLife": "counting repeated arches or bricks",
+      "environmentLink": "The bridge carries water across the Gard River toward Nîmes.",
+      "facts": [
+        {
+          "text": "Roman bridge-aqueduct over the Gard River in southern France, built to carry water to Nîmes. Three tiers. Bottom row 6 arches, middle row 11 arches, top row 35 smaller arches. Top arches are 4.6 meters wide. Height given on this page as 47 meters.",
+          "source": "https://www.britannica.com/topic/Pont-du-Gard",
+          "confidence": "HIGH",
+          "checked": "2026-11-10"
+        },
+        {
+          "text": "UNESCO: stands almost 50 meters high; longest level measuring 275 meters; water channel about 50.02 kilometers; nearly 48.77 meters in the brief synthesis. Date on that page: middle of the 1st century.",
+          "source": "https://whc.unesco.org/en/list/344/",
+          "confidence": "HIGH",
+          "checked": "2026-11-10"
+        }
+      ],
+      "notTaught": [
+        "Height is not taught: Britannica 47 meters, UNESCO almost 50 meters and nearly 48.77 meters.",
+        "Build year is not taught: Britannica says about 19 BCE; UNESCO says the middle of the 1st century.",
+        "Marcus Agrippa and Augustus are not named. That credit is political framing, not the arch count.",
+        "The 5-by-7 grouping is a practice frame for the sourced count 35. It is not a historical claim."
+      ],
+      "motion": "Shared globe in the spec. Flat tier is a 2D pin at this lat/lon. Same question on every tier."
+    },
+    {
+      "id": "people-places:eratosthenes-earth",
+      "clip": "eratosthenes-earth",
+      "group": "10-18",
+      "gradeNote": "Multi-step proportion. C3 indicator is grades 9-12, inside 10-18 (grades 5-12). Not used for 7-10.",
+      "skill": "proportion",
+      "objective": "After this, a learner in band 10-18 can multiply the 5,000-stadia distance by 50 and can say why a kilometer answer is not given, shown by the product 250,000 and a correct post-clip tap.",
+      "standard": "D2.Geo.3.9-12",
+      "standardText": "Use geographic data to analyze variations in the spatial patterns of cultural and environmental characteristics at multiple scales.",
+      "standardSource": "https://www.socialstudies.org/sites/default/files/c3/C3-Framework-for-Social-Studies.pdf",
+      "standardChecked": "2026-11-10",
+      "why": "How far is it from Alexandria to Syene, and how big does that make the Earth? One fiftieth of a circle means the whole is 50 times the part.",
+      "opensWith": "how far",
+      "place": {
+        "lat": 31.202,
+        "lon": 29.916,
+        "name": "Alexandria, Egypt"
+      },
+      "placeConfidence": "MEDIUM",
+      "placeSource": "https://www.latlongfinder.net/coordinates/egypt/alexandria",
+      "placeNote": "Modern city center, 31.2018 N, 29.9158 E, rounded. Not a surveyed point for the ancient library. Syene (Aswan) is the other city, about 24.09 N, 32.90 E (https://www.getamap.net/maps/egypt/aswan/_syene/), and is named in the narration, not pinned.",
+      "file": "public/videos/journals/people-places/eratosthenes-earth.mp4",
+      "captions": "eratosthenes-earth.vtt",
+      "captionsSpec": "docs/scaling/journals/people-places/captions/eratosthenes-earth.vtt",
+      "narration": "Hey kids, have you heard about this place? In Alexandria, Eratosthenes multiplied 5,000 stadia by 50.",
+      "predict": {
+        "prompt": "What is 50 times 5,000?",
+        "answer": "250000",
+        "unit": "stadia"
+      },
+      "explain": "One fiftieth of a full circle means multiply the distance by 50. That account gives 250,000 stadia. Other old accounts say 252,000. A stadion's length in meters is not agreed, so this clip never converts to kilometers.",
+      "hint": "The part is one fiftieth. Multiply by 50, not by 5.",
+      "retrieval": {
+        "question": "What number did he multiply 5,000 by?",
+        "answer": "50"
+      },
+      "elsewhere": {
+        "subject": "geography",
+        "prompt": "A route is 20 kilometers, and that is one tenth of the whole trip. How long is the whole trip?",
+        "answer": "200",
+        "note": "Same proportion in kilometers on a made-up route. Not a second Earth measurement."
+      },
+      "buildsOn": "multiplication; fraction of a whole",
+      "realLife": "finding a full distance from one measured piece",
+      "environmentLink": "The distance is a slice of the way around the Earth, along the Nile between two cities.",
+      "facts": [
+        {
+          "text": "Cleomedes' account: Syene and Alexandria treated as on the same meridian; the arc is 5,000 stades and 1/50 of the circle; circumference 50 times 5,000 = 250,000 stades. Other ancient writers give 252,000 stades.",
+          "source": "https://scispace.com/pdf/the-two-earths-of-eratosthenes-aunpnvv96e.pdf",
+          "confidence": "HIGH",
+          "checked": "2026-11-10"
+        },
+        {
+          "text": "The length of the stadion is disputed, so a kilometer or mile conversion is not a single fact.",
+          "source": "https://www.khanacademy.org/humanities/big-history-project/solar-system-and-earth/knowing-solar-system-earth/a/eratosthenes-of-cyrene",
+          "confidence": "HIGH",
+          "checked": "2026-11-10"
+        }
+      ],
+      "notTaught": [
+        "No kilometer or mile circumference. Conversions such as 40,000 kilometers assume a stadion length.",
+        "No single year. '240 BCE' is not used.",
+        "The two cities are not exactly on one meridian. The clip teaches the account's arithmetic, not a modern survey correction."
+      ],
+      "motion": "Shared globe in the spec. Flat tier is a 2D pin at Alexandria. Same question on every tier."
+    },
+    {
+      "id": "people-places:andean-roads",
+      "clip": "andean-roads",
+      "group": "10-18",
+      "gradeNote": "Rate formula days = distance ÷ daily distance. C3 indicator is grades 6-8, inside 10-18. Not used for 7-10: no formula in that group.",
+      "skill": "rate",
+      "objective": "After this, a learner in band 10-18 can divide a distance by a stated daily distance and can state the network length, shown by the quotient 300 and a correct post-clip tap.",
+      "standard": "D2.Geo.3.6-8",
+      "standardText": "Use paper-based and electronic mapping and graphing techniques to represent and analyze spatial patterns of different environmental and cultural characteristics.",
+      "standardSource": "https://www.socialstudies.org/sites/default/files/c3/C3-Framework-for-Social-Studies.pdf",
+      "standardChecked": "2026-11-10",
+      "why": "How far is this road network, and how many days would a walker need at a chosen daily distance? Predict first, then work it out.",
+      "opensWith": "how far",
+      "place": {
+        "lat": -13.517,
+        "lon": -71.979,
+        "name": "Cusco, Peru (one city on the Andean road network, not the whole network)"
+      },
+      "placeConfidence": "MEDIUM",
+      "placeSource": "https://en.wikipedia.org/wiki/Cusco",
+      "placeNote": "Pin rounded from 13.5169 S, 71.9786 W. Wikipedia says a road led from the city toward each quarter of the Inca realm. That is a gazetteer link, not a surveyed center of the 30,000 kilometers. UNESCO does not give one lat/lon for the serial site.",
+      "file": "public/videos/journals/people-places/andean-roads.mp4",
+      "captions": "andean-roads.vtt",
+      "captionsSpec": "docs/scaling/journals/people-places/captions/andean-roads.vtt",
+      "narration": "Hey kids, have you heard about this place? These Andean roads stretch about 30,000 kilometers.",
+      "predict": {
+        "prompt": "Use 100 kilometers as one day on this map. That speed is practice, not a historical claim. How many days is 30,000 kilometers?",
+        "answer": "300",
+        "unit": "days"
+      },
+      "explain": "Days equal distance divided by the daily distance. 30,000 divided by 100 is 300. The roads cross Argentina, Bolivia, Chile, Colombia, Ecuador, and Peru.",
+      "hint": "Divide 30,000 by 100. Drop two zeros.",
+      "retrieval": {
+        "question": "About how many kilometers is the road network?",
+        "answer": "30000"
+      },
+      "elsewhere": {
+        "subject": "physics",
+        "prompt": "A trip is 120 kilometers. At 60 kilometers an hour, how many hours is that?",
+        "answer": "2",
+        "note": "Same rate formula as time = distance ÷ speed, now on a made-up trip. Not a fact about the roads."
+      },
+      "buildsOn": "division; the Andean length",
+      "realLife": "planning days for a long trip",
+      "environmentLink": "The roads cross high mountains and dry deserts. Rainforest and living-things wording is left out.",
+      "facts": [
+        {
+          "text": "UNESCO list page: an Andean road system covering 30,000 km; brief synthesis says more than 30,000 kilometres; widest in the 15th century.",
+          "source": "https://whc.unesco.org/en/list/1459/",
+          "confidence": "HIGH",
+          "checked": "2026-11-10"
+        },
+        {
+          "text": "Countries named for the inscription: Argentina, Bolivia, Colombia, Chile, Ecuador, and Peru.",
+          "source": "https://www.unesco.org/en/articles/exhibition-chile-unesco-and-la-moneda-cultural-center-commemorate-10-years-qhapaq-nan-world-heritage",
+          "confidence": "HIGH",
+          "checked": "2026-11-10"
+        }
+      ],
+      "notTaught": [
+        "Closest §7a call. UNESCO also calls the network a defence system and mentions sites of religious significance. Narration, predict, explain, and retrieval do not teach religion, conquest, armies, or defence.",
+        "The 100 kilometers per day figure is a practice rate, not a sourced walking speed.",
+        "Say about 30,000. The list page says 30,000 km; the brief says more than 30,000 kilometres."
+      ],
+      "motion": "Shared globe in the spec. Flat tier is a 2D pin at Cusco, labeled as one city on the network. Same question on every tier."
+    },
+    {
+      "id": "people-places:aconcagua-height",
+      "clip": "aconcagua-height",
+      "group": "18+",
+      "gradeNote": "Trigonometry is 10-18 and up, never 7-10. This clip is 18+ because the task is to refuse a single height when sources disagree. C3 pathways found in the framework stop at grade 12, so the code is UNVERIFIED for an adult item.",
+      "skill": "trigonometry",
+      "objective": "After this, an adult can compute a practice height as ground distance times the tangent of the angle, and can say that Aconcagua's published heights do not agree, shown by the practice product and a correct post-clip tap.",
+      "standard": "UNVERIFIED",
+      "standardText": "",
+      "standardSource": "",
+      "standardChecked": "2026-11-10",
+      "standardGap": "No C3 indicator above grade 12 was found in the framework text checked on 2026-11-10. The geography skill sits near D2.Geo.3.9-12, but that code's band is grades 9-12, so it is not cited as this item's code. The tangent step is an adult extension of the math code HSG-SRT.C.8 (named by two reviewers on 2026-11-11); 18+ rows carry no school code, so it is named here only. standardChecked is the date the framework was searched, not a check of a code.",
+      "why": "Where is this peak, and how tall is it? Surveyors use a ground distance and an angle. Tangent turns those two measures into a height. Here the published heights disagree, so the clip does not pretend one meter figure is the height.",
+      "opensWith": "where",
+      "place": {
+        "lat": -32.653,
+        "lon": -70.012,
+        "name": "Aconcagua, Mendoza, Argentina, on the Chilean border"
+      },
+      "placeConfidence": "MEDIUM",
+      "placeSource": "https://en.wikipedia.org/wiki/Aconcagua",
+      "placeNote": "Pin rounded from 32°39′11″ S, 70°00′42″ W (32.65306 S, 70.01167 W). The country and range are from Britannica, which did not print this pin.",
+      "file": "public/videos/journals/people-places/aconcagua-height.mp4",
+      "captions": "aconcagua-height.vtt",
+      "captionsSpec": "docs/scaling/journals/people-places/captions/aconcagua-height.vtt",
+      "narration": "Hey kids, have you heard about this place? Aconcagua, in Argentina, is the Americas' tallest peak. Its published heights disagree.",
+      "predict": {
+        "prompt": "Practice triangle, not a real survey. Ground distance 100 meters. Angle up 45 degrees. Tangent of 45 degrees is 1. How many meters tall is the practice triangle?",
+        "answer": "100",
+        "unit": "meters"
+      },
+      "explain": "Height equals ground distance times the tangent of the angle. 100 times 1 is 100 meters. That is the practice triangle only. Britannica records 6,959 meters and a 2001 report of 6,962 meters that Argentina has not adopted. Do not pick one.",
+      "hint": "Tangent of 45 degrees is 1. Multiply the ground distance by 1.",
+      "retrieval": {
+        "question": "Do the published heights agree on one number?",
+        "answer": "no"
+      },
+      "elsewhere": {
+        "subject": "physics",
+        "prompt": "A ramp runs 2 meters along the ground at 45 degrees. Tangent of 45 degrees is 1. How many meters does the ramp rise?",
+        "answer": "2",
+        "note": "Same tangent step on a ramp. Not a measurement of the mountain."
+      },
+      "buildsOn": "right-triangle tangent; place on a map",
+      "realLife": "finding a height you cannot tape, such as a ramp or a tower",
+      "environmentLink": "A mountain's surveyed height is an Earth measurement. No plants, animals, or climbing politics are used.",
+      "facts": [
+        {
+          "text": "Highest point in the Western Hemisphere; western Mendoza, Argentina, on the Chilean border; Southern Andes. Military Geographical Institute of Argentina: 22,831 feet (6,959 metres). A 2001 GPS report of 22,840 feet (6,962 metres), plus or minus 5 metres, is not officially recognized by Argentina or by the National Geographic Society.",
+          "source": "https://www.britannica.com/place/Mount-Aconcagua",
+          "confidence": "HIGH",
+          "checked": "2026-11-10"
+        },
+        {
+          "text": "A later airborne-gravity paper says it confirms a triangulated summit height of 6,960 meters. That is a third figure, not a tie-breaker taught as the answer.",
+          "source": "https://link.springer.com/chapter/10.1007/978-3-319-10837-7_23",
+          "confidence": "MEDIUM",
+          "checked": "2026-11-10"
+        }
+      ],
+      "notTaught": [
+        "No single meter height is the retrieval answer.",
+        "The 100 meter, 45 degree triangle is practice. It is not a historical survey of this peak.",
+        "Possible Quechua name origin is not taught (Britannica says possibly).",
+        "No first-ascent story and no human remains."
+      ],
+      "motion": "Shared globe in the spec. Flat tier is a 2D pin at this lat/lon. Same question on every tier. No camera swoop on Flat or reduced motion."
+    }
+  ]
+}

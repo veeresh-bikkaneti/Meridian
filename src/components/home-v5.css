@@ -54,6 +54,29 @@ body:has(.home-v5) {
 }
 
 /* ---------- nav ---------- */
+/* Skip link (WCAG 2.4.1): visually hidden until focused, then a visible
+   pill at the top of the page. */
+.home-v5 .hv5-skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--hv5-brown-deep);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.home-v5 .hv5-skip-link:focus-visible {
+  top: 12px;
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
 .home-v5 .hv5-nav {
   position: relative;
   z-index: 5;
@@ -273,30 +296,6 @@ body:has(.home-v5) {
   margin-top: 30px;
   flex-wrap: wrap;
 }
-.home-v5 .hv5-mountain {
-  position: relative;
-  right: auto;
-  bottom: auto;
-  width: auto;
-  max-width: none;
-  flex: 1 1 180px;
-  min-height: 180px;
-  margin: 20px -40px -40px;
-  object-fit: cover;
-  object-position: right bottom;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to top, #000 72%, transparent);
-  mask-image: linear-gradient(to top, #000 72%, transparent);
-  animation: hv5-kenburns 26s ease-in-out infinite alternate;
-}
-@keyframes hv5-kenburns {
-  from {
-    transform: scale(1) translateY(0);
-  }
-  to {
-    transform: scale(1.055) translateY(-5px);
-  }
-}
 .home-v5 .hv5-storyteller {
   position: relative;
   flex: none;
@@ -483,10 +482,229 @@ body:has(.home-v5) {
   object-fit: cover;
   border-radius: 16px;
 }
+/* Journal movie player: the still picture is the button — tapping it
+   swaps the picture for that entry's movie in the same 3/2 box.
+   Controls stay at the 44px accessibility floor; the badge is white on
+   dark translucent, clearing 4.5:1. Reduced motion never changes the
+   layout, only the loop (see journal-player.tsx). */
+.home-v5 .hv5-journal-art {
+  position: relative;
+}
+.home-v5 .hv5-journal-play {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+.home-v5 .hv5-journal-play:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
+.home-v5 .hv5-journal-play-badge {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: rgba(20, 16, 12, 0.72);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+.home-v5 .hv5-journal-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #000;
+}
+.home-v5 .hv5-journal-video:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
+/* Tap-to-pause flash: a big pause glyph centred on the video for ~600ms
+   after a tap pauses playback. Decorative only; never intercepts taps. */
+.home-v5 .hv5-journal-pause-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+.home-v5 .hv5-journal-status {
+  margin: 12px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+/* Loading spinner: decorative ring beside the "Loading the movie…"
+   text. Reduced motion never renders it (journal-player.tsx gates the
+   element); the media query below is belt-and-braces so a forced
+   render still cannot animate. */
+.home-v5 .hv5-journal-spinner {
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin-top: 12px;
+  border-radius: 50%;
+  border: 3px solid currentColor;
+  border-top-color: transparent;
+  opacity: 0.7;
+  animation: hv5-journal-spin 0.8s linear infinite;
+}
+@keyframes hv5-journal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-v5 .hv5-journal-spinner {
+    animation: none;
+  }
+}
+.home-v5 .hv5-journal-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+/* Progress on its own full-width row above the buttons, at every width:
+   the old shared row squeezed it to 27px on a 390px phone. The time
+   rides with the bar, not with the buttons. */
+.home-v5 .hv5-journal-progress-row {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 20px;
+}
+.home-v5 .hv5-journal-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.home-v5 .hv5-journal-toggle,
+.home-v5 .hv5-journal-mute,
+.home-v5 .hv5-journal-close,
+.home-v5 .hv5-journal-cc,
+.home-v5 .hv5-journal-transcript-btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--hv5-brown-deep);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.home-v5 .hv5-journal-toggle:focus-visible,
+.home-v5 .hv5-journal-mute:focus-visible,
+.home-v5 .hv5-journal-close:focus-visible,
+.home-v5 .hv5-journal-cc:focus-visible,
+.home-v5 .hv5-journal-transcript-btn:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
+/* Toggled-on CC / Story text read as active: deep green, white text —
+   same 4.5:1-clear pairing as the brown buttons. */
+.home-v5 .hv5-journal-cc[aria-pressed="true"],
+.home-v5 .hv5-journal-transcript-btn[aria-pressed="true"] {
+  background: var(--hv5-forest-deep);
+}
+/* Transcript panel: the narration as tappable lines under the player.
+   Lines are buttons (keyboard-accessible); the line being spoken is
+   highlighted, and during the voice-free gap no line is. */
+.home-v5 .hv5-journal-transcript {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+}
+.home-v5 .hv5-journal-transcript-line {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--hv5-ink);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.45;
+  text-align: left;
+  cursor: pointer;
+}
+.home-v5 .hv5-journal-transcript-line:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 2px;
+}
+.home-v5 .hv5-journal-transcript-line-active {
+  background: #f1ead3;
+  font-weight: 700;
+}
+.home-v5 .hv5-journal-progress {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--hv5-line);
+  overflow: hidden;
+}
+.home-v5 .hv5-journal-progress span {
+  display: block;
+  height: 100%;
+  background: var(--hv5-brown-deep);
+}
+.home-v5 .hv5-journal-time {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
 .home-v5 .hv5-entry h3 {
   font-family: var(--hv5-display);
   font-size: 22px;
   font-weight: 560;
+}
+/* Desktop two-column journal entry (approved mockup, 2026-11-09):
+   storybook art LEFT, title / story / cited fact in a RIGHT RAIL, so
+   art + play badge + status + controls fit one 1280x800 viewport. The
+   player (open state included) stays in the art column; the rail holds
+   the entry text. Mobile (<=680px) keeps the stacked layout exactly
+   as before — this rule only exists at >=681px. */
+@media (min-width: 681px) {
+  .home-v5 .hv5-entry {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .home-v5 .hv5-entry-art {
+    grid-column: 1;
+    margin: 0;
+  }
+  .home-v5 .hv5-entry-text {
+    grid-column: 2;
+    min-width: 0;
+  }
 }
 .home-v5 .hv5-entry a {
   color: var(--hv5-brown-deep);
@@ -857,9 +1075,6 @@ body:has(.home-v5) {
     aspect-ratio: 1;
     margin: 0 auto;
   }
-  .home-v5 .hv5-mountain {
-    display: none;
-  }
 }
 @media (max-width: 860px) {
   .home-v5 .hv5-nav {
@@ -886,12 +1101,12 @@ body:has(.home-v5) {
     order: 3;
     flex-basis: 100%;
     gap: 10px;
-    overflow-x: auto;
+    /* Narrow widths: wrap onto two rows instead of scrolling — the
+       last item (GET INVOLVED) sat 83px past the 390px viewport edge
+       in the old scrollable row. Every item stays reachable with no
+       strip scroll; desktop is untouched (this block is <=680px only). */
+    flex-wrap: wrap;
     margin: 2px 0 0;
-    /* Right-edge fade: the visible scroll affordance for the clipped
-       final item (GET INVOLVED) in this scrollable row. */
-    -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
-    mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
   }
   .home-v5 .hv5-nav nav button,
   .home-v5 .hv5-nav nav a {
@@ -940,9 +1155,6 @@ body:has(.home-v5) {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .home-v5 .hv5-mountain {
-    animation: none;
-  }
   .home-v5 .hv5-card,
   .home-v5 .hv5-btn,
   .home-v5 .hv5-edition {
@@ -1428,4 +1640,168 @@ body:has(.home-v5) {
    keeps its native aspect, and the card grows to fit both. */
 .home-v5 .hv5-spot .hv5-txt {
   height: auto;
+}
+
+/* ---------- home rework (owner-approved designs, composed) ----------
+   Owner findings, 2026-11-04: (1) the hero reads as motionless — the
+   shipped Ken Burns is 26s at scale 1.055 (imperceptible) and the art
+   is display:none at ≤1080px; (2) the Capitals & Flags doorway did
+   not speak the hv5 card language; (3) its placement moves beside the
+   About card, without crowding the page. The designs were prototyped
+   behind a variant harness on design branches; this section is
+   the production composition — the harness is gone and everything
+   below applies unconditionally.
+   Doorway removal, 2026-11-05: the doorway composed here in #352
+   (theme restyle, beside-About placement, then signpost-only) was
+   removed from Home entirely on the owner's word (Veeresh,
+   2026-11-05: "card is not clickable. if its not clickable then
+   there is no point of putting it on home page."). Every
+   .hv5-doorway* rule, the .hv5-about-row two-column placement, and
+   the consumer-less .hv5-btn-ghost rules went with it; the About
+   card stands alone in .hv5-pages at full width again. */
+
+/* Hero mountain wrap. The wrap takes over the shipped img's box
+   (flex, margins, top-fade mask) so the overlays can sit on the art. */
+.home-v5 .hv5-mtn-wrap {
+  position: relative;
+  /* flex-basis must stay auto: a definite basis (the shipped
+     180px) overrides aspect-ratio below and the wrap collapses
+     back to the foothills crop. */
+  flex: 1 1 auto;
+  min-height: 180px;
+  /* Framing (production composition): the wrap keeps the painted
+     art's own 800/533 ratio, so the sliced overlays show the WHOLE
+     painting — summit + flag at the top, the trekker's full climb
+     leg and the trail's foot at the bottom — exactly as framed in
+     the owner's approved V1 capture. Letting flex shrink the wrap
+     to its 180px floor instead crops the slice to the foothills
+     (visible viewBox y from ~359 of 533): the summit, the flag and
+     most of the climb leg fall outside the crop. Flex may still
+     GROW the wrap when the rail runs taller; growing only widens
+     the visible slice, never misaligns it (both overlays and the
+     img slice from the same box). Cost: the hero card runs ~377px
+     taller at desktop widths (~1,212px tall, was 835) and the rows
+     below start lower — the trade the approved capture already
+     makes. */
+  aspect-ratio: 800 / 533;
+  margin: 20px -40px -40px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to top, #000 72%, transparent);
+  mask-image: linear-gradient(to top, #000 72%, transparent);
+}
+/* The sliced mountain art itself. It must never gain a transform
+   or an animation: the trail + trekker overlays slice the exact
+   same box, and any movement of the img would drift it out from
+   under them and break the overlay alignment. (The old bare-img
+   path that carried the Ken Burns zoom was removed by this PR —
+   see the trail comment below.) */
+.home-v5 .hv5-mtn-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: right bottom;
+}
+/* The trail overlay (SVG in game-app.tsx, sliced like the art).
+   The wrapped art carries no Ken Burns: a transform on the img
+   would drift it under the sliced overlays and break their
+   pixel-exact alignment with the painting. The old bare-img
+   .hv5-mountain rule and its hv5-kenburns keyframes were removed
+   in the panel cure round: no element renders that class, and
+   every rule that named it was a single-selector rule, so the
+   removal touched nothing live. */
+.home-v5 .hv5-trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.home-v5 .hv5-trail-dots {
+  animation: hv5-trailmarch 3s linear infinite;
+}
+@keyframes hv5-trailmarch {
+  to {
+    stroke-dashoffset: -111;
+  }
+}
+/* V1b clouds (owner's pick, 2026-11-04): two banks of blurred
+   watercolor cloud forms drifting in front of the upper slopes.
+   Each bank is 1600 units wide — the viewBox pattern doubled — and
+   translates ±800, so the 28s / 40s loops are seamless. The pulse
+   trail runs later in the SVG, so the climber stays in front of the
+   weather. Periods are long but the travel is a full scene width,
+   which keeps the drift clearly perceptible at capture size. */
+.home-v5 .hv5-cloud-drift-a {
+  animation: hv5-clouddrift-a 28s linear infinite;
+}
+.home-v5 .hv5-cloud-drift-b {
+  animation: hv5-clouddrift-b 40s linear infinite;
+}
+@keyframes hv5-clouddrift-a {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-800px);
+  }
+}
+@keyframes hv5-clouddrift-b {
+  from {
+    transform: translateX(-800px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.home-v5 .hv5-trail-flag {
+  transform-box: view-box;
+  transform-origin: 523px 116px;
+  animation: hv5-flagwave 2.2s ease-in-out infinite alternate;
+}
+@keyframes hv5-flagwave {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(8deg);
+  }
+}
+/* Still gate from the JS side (Save-Data / deviceMemory ≤ 2, where
+   no OS reduced-motion media query fires): HeroTrailOverlay
+   reflects its `reduced` state as .hv5-trail-still on the trail
+   SVG, and these rules kill the dot march + flag wave under it,
+   mirroring the prefers-reduced-motion rules at the end of this
+   section. (The pulse + clouds are never rendered under the gate,
+   so they need no rule here.) */
+.home-v5 .hv5-trail-still .hv5-trail-dots,
+.home-v5 .hv5-trail-still .hv5-trail-flag {
+  animation: none;
+}
+/* Trekker overlay (SVG in game-app.tsx): a second SVG stacked over
+   the trail overlay, sliced identically. All of its motion is SMIL
+   on one 18s master clock inside the component; its still gate
+   pauses that clock on the mid-climb frame, so no CSS animation
+   needs to reach it here. */
+.home-v5 .hv5-trekker {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+@media (max-width: 1080px) {
+  /* No mountain art at these widths — the wrap is display:none,
+     so neither overlay inside it can render or leak there either. */
+  .home-v5 .hv5-mtn-wrap {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-v5 .hv5-trail-dots,
+  .home-v5 .hv5-trail-flag,
+  .home-v5 .hv5-cloud-drift-a,
+  .home-v5 .hv5-cloud-drift-b {
+    animation: none;
+  }
 }

@@ -1,1237 +1,1107 @@
-# Branch status — fix/band-cluster-films-toast (band-cluster fix set)
+> **Integrator-only (2026-11-10).** Branches keep their own record in
+> `docs/branch-status/<branch>.md` (AGENTS.md, stream 18). This file is a
+> historical record of `claude/k12-plan-review`; do not write to it from a
+> feature branch.
 
-- **Branch:** `fix/band-cluster-films-toast`
-- **Base:** `main` @ `e1cf6fe`
-- **Authority:** Veeresh, 2026-11-04: "Commission all: latch fix + locked-film loop + band toast + E2E"
+# BRANCH_STATUS — claude/k12-plan-review
 
-## Task capsule
+**Branch:** `claude/k12-plan-review` · **Base:** main `2688d8b8`
+**Task:** Owner, 2026-11-10: review the repo and the scaling plan as a K-12
+learning-game expert, make the required changes, push, and set a priority
+order. Steers: agent-neutral (no model names), cheaper models as subagents plus
+a council of experts, rich three.js and motion with old-device fallbacks, free
+for everyone (no revenue).
+**Scope (Tier 0, docs only):** new files under `docs/scaling/` —
+`k12-plan-review.md` (findings, owner decisions, priority order, spec gap
+table), `k12-learning-design-standard.md` (shared learning bar, incl. the
+house stack and theme to reuse), `educator-gate-rubric.md` (human educator
+sign-off checklist), `agent-instructions.md` (agent-neutral shared rules),
+`branch-prompts.md` (one copy-paste prompt per branch, in priority order),
+`subject-progression-map.md` (how subjects connect and apply). Owner rulings
+captured: D1 age groups 7-10 / 10-18 / 18+, D2 no controversial topics, D8 no
+biology (final). Mission (owner): kids see why they learn each skill;
+every unit opens with a real problem that needs it ("why first"). No code, no
+spec branch edited, `AGENTS.md` not edited (model-neutral wording is proposed
+as its own eval-gated PR).
+Council review (learning designer, parallel-streams lead, adversarial
+skeptic) applied. Added `docs/scaling/plans/` with one self-contained plan
+and launch prompt per branch, start-after order, owned files, collisions and
+the keep-up-with-main rule.
+**Status:** draft PR open for owner review. Code gates not run (no code
+changed). No panel verdict on this tip (not self-certified). Merge: owner's
+word only.
 
-- TASK: four commissioned fixes from the 2026-11-04 band-cluster diagnosis — (1) CardFilm/LockedTileFilm video-error latch: reset on media change + one bounded retry before latching; (2) LockedTileFilm loops under CardFilm's exact governance (R1 still holds: no control of any kind on the tile); (3) the age-profile confirm-change toast names the band (built from `getBand`, no hardcoded names/ranges), both run states; (4) a new in-session band-switch E2E driving the real UI flow with no seeded band.
-- Tier: 1 shape (clear repro + locked fix shapes) run as a builder silo; independent Silo QA + the 12-role panel review the final tip separately. Builder stops at PR open — NO MERGE.
-- Files in scope: `src/components/card-film.tsx` + `src/components/card-film.test.ts`, `src/components/age-profile/LockedTileFilm.tsx` + `locked-tile-film.test.ts`, `src/components/age-profile/AgeProfileSettings.tsx`, `tests/e2e/age-profile-gate.desktop.spec.ts` (one pin), `tests/e2e/band-switch-in-session.desktop.spec.ts` (new), docs the changes make stale (README locked-tile paragraph, `locked-tile-media.ts` header), this file.
-- Protected / out of scope: band locks, the band table's data, which loops each band gets; copy beyond item 3's two confirmChange toasts (first-save + reset toasts stay byte-identical); CardFilm/Review/Journal/Grown-ups behaviour beyond item 1.
-- Verification: pins fail on pre-fix code (stash check per item); full gates on the tip (`npm ci`, tsc, typecheck:worker, `npm test`, test:worker, lint-cards, build:pages); targeted E2E under `flock ~/workspace/.e2e.lock`, `--workers=1`, chromium-1243; the new spec also run against an unmodified-main build to prove it bites.
+# BRANCH_STATUS — fix/journal-manifest-note
+
+**Branch:** `fix/journal-manifest-note` · **Base:** main `9cf9e64f` (#388 + #389 merged)
+**Task:** Remove the stale top-level `note` from `public/videos/journal-manifest.json`
+("No player loads this file yet…" — written 2026-11-08 when no player existed;
+the #388 player merged 2026-11-10 loads the manifest on tap). Owner order on
+voice call 2026-11-10: "Remove it then."
+**Scope (synchronized, one change):** manifest JSON (drop the `note` key;
+106 per-entry `note` fields untouched) + `scripts/validate-journal-manifest.mjs`
+(top-level keys now exactly { baseUrl, movies, version }; top-level `note`
+check removed; per-entry `note` validation unchanged) +
+`scripts/journal-manifest.test.mjs` (case 21 rewritten: note-less manifest
+validates clean; new case 21b: a top-level note is now an extra key; old
+21b/21c removed; suite 133 → 132). The 30-minute / one-entry rotation (B8)
+is already live on main — verified in `src/components/home-journal.ts`
+(`JOURNAL_WINDOW_MS = 1_800_000`, singleton sets, 106 × 30 min = 53-hour
+cycle, wall-clock derivation, no server state); no rotation change in this PR.
+**Status:** edits landed; gates running. No panel verdict on this tip yet
+(not self-certified). Merge: owner's word only.
+**Assumption recorded:** no branch was assigned for this fix; this branch
+was cut from main `9cf9e64f` to carry it, and the PR is opened under the
+owner's standing "complete the work, open the PR, never merge" policy.
+
+# BRANCH_STATUS — feat/journal-prefetch
+
+**Branch:** `feat/journal-prefetch` · **Base:** current main `10e8121d` (PR #369 merged; was frozen main `f2bbf1a2`; stacked on player `feat/journal-player` @ `af7ec7c1`, which is a separate live branch)
+**Task:** Meridian lazy-load scenario 2 — background prefetch of journal movies WHILE the user is playing the game. Tap-to-load stays the primary path.
+**Status:** Rebased onto current main `10e8121d` (clean, 48 commits, zero conflicts; tip `72b5569f` before the fix commit); Option 1 spec filter implemented (endgame-share `expectCleanConsole` also filters `net::ERR_TUNNEL_CONNECTION_FAILED` only, Dinesh's explicit approval 2026-11-09 ~20:49 CT); gates + E2E re-run on the fix tip — see "Rebase + Option 1 fix" section. No PR, no merge.
+**Rebased:** 2026-11-09 — onto current main `10e8121d`; zero conflicts. The unanimous APPROVE on `c19f8dfc` does NOT transfer to the new head. The Edge verdict NO (endgame-share 0/2) on `0a08007e` does NOT transfer either — this is a new tip; panel (GATE/Chitti) re-verifies.
+
+## Rebase + Option 1 fix — onto current main 10e8121d, this run (2026-11-09 evening)
+
+- Plain `git rebase origin/main` (48 commits, zero conflicts). The branch is stacked on the player branch (`feat/journal-player` @ `af7ec7c1`, separate live branch), so the delta vs main is 163 files — the player feature + the prefetch feature. The prefetch commits alone cannot rebase onto main: they modify `journal-player.tsx` / `journal-movies.ts`, which do not exist on main. The validator/wiring from #369 (on main) and the prefetch changes are both present in the rebased tree (verified: `scripts/validate-journal-manifest.mjs` + `src/components/journal-prefetch.ts` both present; `package.json` prebuild runs the validator; manifest has 106 movies).
+- Option 1 (Dinesh's pick, 2026-11-09 ~20:49 CT — explicit approval + recorded rationale for weakening the endgame-share gate): `tests/e2e/endgame-share.spec.ts` `expectCleanConsole` now also filters `net::ERR_TUNNEL_CONNECTION_FAILED` only, with a comment citing the prefetch failure contract (`journal-prefetch.ts:35-36`) and the `globe-promotion-offline` precedent (`:180-186`). Touch ONLY that spec file (+ this file). No src changes, no other spec changes.
+- Gates + E2E on the fix tip `d6c5985c` (builder-side evidence; panel re-verifies): tsc exit 0 clean; `npm test` exit 0 (scripts 1161 pass / 11 skipped / 0 fail of 1172; src 2322 pass / 0 fail); `test:worker` 145 pass / 0 fail; lint-cards GATE PASSED; `npm run build:pages` exit 0, buildId `d6c5985c`; `endgame-share` **2/2 pass** (the Option 1 filter cures the Edge NO); targeted E2E **34/34 pass** (prefetch 12/12, boot-home 3/3, footer-close 1/1, geodetective 18/18). Logs: `~/workspace/journal-prefetch-fix/{npm-ci,tsc,npm-test,test-worker,lint-cards,build-pages,e2e-endgame-share,e2e-targeted}.log`.
+- This commit adds only this BRANCH_STATUS.md text on top of the fix tip. Pushed head = this commit.
+
+## Rebase verification — onto player head af7ec7c1 (movies 84fa3a0a, frozen main f2bbf1a2), this run (2026-11-09)
+
+- Plain `git rebase af7ec7c1` replayed already-applied movies/player commits, so the rebase used `--onto af7ec7c1 86624dde` (26 prefetch-only commits). Every conflict was this file only (docs-only), resolved by keeping both sides' records.
+- Content check: same 47 files in the prefetch delta; all 46 non-status files byte-identical diffs vs the old head. B7/B8/share verified in code at the new head (boot `useState<boolean>(false)`; `journalSetCount()` = 106 singletons, window 30 min; `WORKERS_ORIGIN` = `https://meridian.knowledgetest.workers.dev/`).
+- Gates + E2E + recording as in Status. Logs: `~/workspace/journal-prefetch-r3-{tsc,npmtest,worker,lintcards,build,e2e-union,mux}.log`. Recording: `~/workspace/journal-prefetch-record/prefetch-desktop.mp4` (take 3, entry giza; prefetch warmed giza + cn-tower before the tap).
+- mux.sh probe windows [35,45]/[0,34] are take-2 geometry; take 3 was probed at the correct windows [25,33] (playing, −19.5 dB) / [0,24] (pre-play, −91 dB).
+- The unanimous APPROVE on `c19f8dfc` does NOT transfer. Re-check by the three blocking seats pending on this head.
+
+## Base record — feat/journal-player (rebased onto movies head 84fa3a0a, frozen main f2bbf1a2)
+
+
+**Branch:** `feat/journal-player` · **Base:** `feat/journal-movies` @ `84fa3a0a` (stacked on frozen main `f2bbf1a2` #370)
+**Rebased:** 2026-11-09 — onto movies head `84fa3a0a`; only conflict was this file (docs-only). Historian-block clearance on `86624dde` does NOT transfer to the new head.
+
+## Rebase verification — onto movies head 84fa3a0a (frozen main f2bbf1a2), this run (2026-11-09)
+
+- Gates ran on `576e1e06` (rebase-record commit); this commit adds only this
+  BRANCH_STATUS.md text on top. Pushed head = this commit.
+- Gates on `576e1e06`: `npx tsc --noEmit` exit 0; `npm test` exit 0 (scripts
+  1161 pass / 11 skipped / 0 fail of 1172; src 2302 pass / 0 fail);
+  lint-cards GATE PASSED; `npm run build:pages` exit 0, buildId `576e1e06`.
+  No workers/ changes, so no test:worker. Logs:
+  `~/workspace/gjm-player-r2-{tsc,npmtest,lintcards,build}.log`.
+- Docs-only: `git diff 84fa3a0a..HEAD --stat` = BRANCH_STATUS.md + the 136
+  player files; no other files. All 136 branch files byte-identical to old
+  head `86624dde` (`git diff 86624dde HEAD -- <files>` empty). 5 corrected
+  Historian facts verified intact in `public/videos/journal-transcripts.json`
+  and the VTT files (alamo 1718, cadillac winter-only, joslyn IN Omaha,
+  niagara New York meets Canada, homestead 1862 law); old wordings absent.
+- Historian-block clearance on `86624dde` does NOT transfer. This head is
+  ready for Firefox (testing prompt:
+  `~/workspace/journal-testing-prompts-duckduck-firefox-edge.md`). No E2E /
+  panel / recording in this run (gates only, per the split).
+**Owner order:** 2026-11-07 — "Build all journals" (Old Faithful pilot approved)
+**Status:** 106/106 clips BUILT and HOSTED (incl. pilot) — not "all
+verified". All 12 batches delivered (batch 08 is 8/8 new + pilot); nothing
+unbuilt. What is actually established (detail: `docs/journal-movies.md` →
+"Verification actually done"):
+- Verified: 106-id mapping to `JOURNAL_NOTES`, URLs serve 200 and match
+  meridian-media `08c8308`, ffprobe format + full decode on all 106.
+- Sampled still frames and automated video descriptions exist (8 original
+  clips in an earlier automated watch; then all 106, 26 full-quality + 80
+  compressed). They do not establish full visual/factual clearance.
+- Reliable narration verification across 106 remains incomplete: automated
+  tools were inconsistent about audio access, so trusted listening is 0/106.
+  No scripts/transcripts kept. Owner's listen is the final check.
+- Manifest notes are self-reported. A wording heuristic (note opens with
+  Clean/Cleanest/Best clip) splits them 26 / 80; the 80 is NOT a verified
+  defect count. Known fallbacks: haymarket, university-place (still +
+  narration). Shipping is the owner's call.
+- Not built: no app code reads the manifest; no movie plays in the app.
+"Done" items below mean the coordinator's per-batch check ran — not that a
+clip passed every recipe gate.
+Next: see Pending. PR #369 is open; never merge without the owner's word,
+per PR, per head.
+
+## Done
+- [x] Step 0a — CORS gate: `curl` on old-faithful.mp4 shows `Access-Control-Allow-Origin: *` (plus `Cache-Control: max-age=600`, ETag, `Accept-Ranges: bytes`). Prefetch can work.
+- [x] Step 0b — Cache-reuse experiment (real-server probe, `~/workspace/journal-prefetch-probe/`, driver `probe-production-clip.mjs`, log `exp4-production-clip.log`): production clip `southpointe.mp4` (3,623,177 bytes) fetched via CORS + drain, then a `<video preload="none">` tap — server-side clip hits stayed at 1 before AND after the tap (1→1, zero additional transfers); video played (paused=false, currentTime 2.04). Hidden-`<video preload="auto">` warm scored the same 1→1; fetch wins on simplicity. Route interception CANNOT observe cache reuse (fulfilled responses bypass the cache) — E2E under interception asserts prefetch requests happen, reuse is proven by the probe.
+- [x] Step 1 — `src/components/journal-prefetch.ts` (gating, entry selection, bounded runner ≤2 concurrent, per-fetch AbortController, never rejects) + 17 unit tests (16 + the B1 manifest-retry test); GameApp wiring (`run !== null || loopOpen` trigger, stops on round end / tab hidden / unmount) with the follow-up fixes: skip warming when the tab is already hidden at round start, warmed ids keyed per journal set (a set rotation gets a fresh set), manifest cache reset on null so a transient failure cannot poison the tap path (B1), and the manifest baseUrl re-pinned to the validator's pinned value; tsc clean.
+- [x] Step 2 — Loading spinner on the player's loading state (decorative, aria-hidden, keeps the text; the loading text carries `role="status"`; never renders under reduced motion) + CSS + 2 unit tests.
+- [x] Step 3 — E2E `tests/e2e/journal-prefetch.desktop.spec.ts`: (i)–(xi), 12 tests. First run (`~/workspace/journal-prefetch-e2e1.log`) 7 passed / 2 failed — (vii) and (viii-a) both timed out waiting for the movie element, because the manifest-delay helper's `route.continue()` goes to the real network, not to serveBuiltArtifact's route; fixed by fulfilling the manifest from the built file after the delay, and the re-run of the 2 (`~/workspace/journal-prefetch-e2e2.log`) passed 2/2.
+- [x] Step 3 (final pass, code head `05b8f506`) — E2E regression union, sequential (`--workers=1`, `flock ~/workspace/.e2e.lock`, `PLAYWRIGHT_CHROMIUM_EXECUTABLE=$HOME/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome`, `VITE_KOFI_URL=https://ko-fi.com/thesaltandpepperguy` at build + test time), log `~/workspace/journal-prefetch-final-e2e.log`: **87 passed / 1 failed (25.9 m)**. Per spec: journal-prefetch.desktop 12/12, journal.spec 5/5, journal-player.desktop 4/4, journal-player.mobile 1/1, journal-player.reduced 1/1, captions.desktop 4/4, captions.mobile 2/2, fixes.desktop 8/8, fixes.mobile 2/2, journal-art.desktop 1/1, geodetective-boot-home.desktop 3/3, geodetective.spec 17 passed / 1 failed, geodetective-hint.spec 7/7, pack-deal-fallback.desktop 3/3, reset-history.desktop 6/6, scout-toggle.desktop 11/11.
+- [x] Step 3 — ONE FAILURE, deterministic, pre-existing (not a B1–B8 regression): `tests/e2e/geodetective.spec.ts:199` "win path: seam deal…" fails at line 256 — expects the share text to contain `https://meridian.knowledgetest.workers.dev/`, but the app produced `https://veeresh-bikkaneti.github.io/Meridian/`. Isolated re-run (`~/workspace/journal-prefetch-final-e2e-rerun.log`) fails identically (exit 1, same assertion, same received text). Root cause: `build:pages` bakes `BASE_URL=/Meridian/`, so `shareOrigin()` (`src/lib/og/share-meta.ts`) returns the Pages origin; #128 changed `BRAND.siteUrl` + the test expectation to workers.dev but left `shareOrigin`'s Pages branch intact. B1–B8 changed nothing in `src/game/share.ts`, `src/lib/og/share-meta.ts`, `src/game/brand.ts`, or `vite.config.ts` (zero diff `86624dde..HEAD`), and B7's edit to this spec touched only the reload tests — the share assertion is untouched. No prior branch log shows this test passing under a `build:pages` artifact. **FIXED by owner ruling 2026-11-09 — see "Share-URL fix" below; :199 passes, union is 88/88.**
+- [x] Step 4 — Full gates on the final CODE head `05b8f506` (final pass, logs `~/workspace/journal-prefetch-final-*.log`): `npx tsc --noEmit` exit 0 (clean); `npm test` exit 0 — scripts 1154 pass / 11 skipped / 0 fail (1165 tests, 55 suites), src 2322 pass / 0 fail / 0 skipped (171 suites); `npm run test:worker` exit 0 — 145 pass / 0 fail; `node scripts/lint-cards.mjs` exit 0 — GATE PASSED; `npm run build:pages` exit 0 — buildId `05b8f506`. (Previous full-gates green was `f4b1639d`: scripts 1154 pass / 11 skipped / 0 fail; src 2320 pass / 0 fail — the +2 src tests are the B7/B8 additions.)
+- [x] B7 — Boot always lands on Home, never auto-opens GeoDetective (owner ruling, 2026-11-09; fix `b81ae06d`, E2E `78038be1` + `b247057a` + `cb128987`): a saved loop (`loopOpen` flag + saved mystery) resumes only on tap-in ("GeoDetective: Resume your case" / "Solve a mystery"), same clue/guess state, no re-deal; a finished-but-unacknowledged reveal re-renders. Recorded in the Handbook, `docs/handbook/02-game-design-decisions.md` §2 (final pass — the B7 agent had flagged it as missing). The B4 law question is MOOTED by B7: reload lands on Home, so no restored loop warms and there is no reload-time prefetch question. Cold Trail restore left alone as intentional per PR #203 (its persisted open flag restores its screen on reload — see the comment at the Cold Trail render branch in `src/components/game-app.tsx`).
+- [x] B8 — One entry per 30-minute window (fix `cb66339f`, unit `2dd98b52`, E2E `05b8f506`): 106 entries × 30 min = a 53-hour cycle; footer reads "Entry X of 106"; prefetch warms the current + next window's entries. The old set-boundary straddle (a set spanning two windows) no longer exists. `docs/handbook/06-design-and-ux-decisions.md` already updated for the journal by B8 — not duplicated here.
+- [x] B5 (Reality Checker) — "89 → 88 on player close" in the take-2 video: NOT an app bug — a Playwright screencast-capture artifact, proven, no code change. The DOM never renders 88: a `MutationObserver` over the whole record journey (body-scoped, so it survives the Home unmount/remount round-trip) logged exactly 3 footer-text states — `Entry 89 of 106` at load, `<none>` while Home is unmounted during the round, `Entry 89 of 106` on return — and zero further changes through close + 3 s; a 100 ms DOM poll across the close likewise read 89 at every sample (logs `~/workspace/journal-prefetch-observer2.log`, `~/workspace/journal-prefetch-videoprobe.log`, `~/workspace/journal-prefetch-shot.log`). The same instant, captured two other ways, reads 89: `page.screenshot` (`test-results/footer-after-close.png`, "ENTRY 89 OF 106") vs the screencast frame at the same wall-clock moment ("ENTRY 88"). The video's 88 is real pixels in the capture (pixel-diff vs the 89/88 reference strips: d88 ≈ 1.5–1.8, d89 ≈ 36; present even in an intra-coded keyframe at 40.96 s in take 5, so it is in the screencast source frames, not VP8 interframe prediction) — but the app cannot produce it: note and footer come from the one `journalEntry` object (`src/components/game-app.tsx:4603-4604`, footer `:5193-5195`), and giza is index 88 (display 89) while index 87 is sagrada (`node --experimental-strip-types` import of `home-journal.ts`), so a genuine 88 would show Sagrada Família as the note — the video still shows Giza. The mocked clock cannot explain it either (`journalSetIndexAt(2026-10-16T12:00Z)` = 88; the take never leaves that window; the real-clock index at record time is 83, not 87). Boundary: screencast-only, post-close only (video→poster transition), in 4 takes (take 2 delivered mp4 + raw, re-runs take 3/4/5/6); no DOM, screenshot, or unit observation ever shows it, and production has no screencast — a real user sees 89. Regression guard: `tests/e2e/journal-footer-close.desktop.spec.ts` asserts the DOM footer is identical before open and after close on the same entry. Standing lesson: video frames are not a reliable oracle for footer text — DOM/screenshot win on disagreement. Fix-pass verification on code+test head `76b8c16c` (logs `~/workspace/journal-prefetch-b5-*.log`): `npx tsc --noEmit` exit 0; `npm test` exit 0 — scripts 1154 pass / 11 skipped / 0 fail, src 2322 pass / 0 fail; `npm run test:worker` exit 0 — 145 pass / 0 fail; `node scripts/lint-cards.mjs` exit 0 — GATE PASSED; `npm run build:pages` exit 0 — buildId `76b8c16c`; E2E journal family 41 passed / 0 failed (7.6 m): footer-close 1/1, journal-prefetch.desktop 12/12, journal.spec 5/5, journal-player.desktop 4/4, journal-player.mobile 1/1, journal-player.reduced 1/1, captions.desktop 4/4, captions.mobile 2/2, fixes.desktop 8/8, fixes.mobile 2/2, journal-art.desktop 1/1.
+- [x] B6 (Reality Checker) — BRANCH_STATUS head lines: the tip was `2b196516` (docs-only over code head `05b8f506`), not `05b8f506`. Status + Head lines corrected in this pass; the Step 3/4/5 lines still cite `05b8f506` deliberately — that is the code head the gates / E2E / record actually ran on, not the tip. Audio figure corrected in the same pass (see Step 5 final-pass line): take-2 [35, 45] is −19.1 dB (re-probed 2026-11-09 by the B5/B6 fix pass and re-verified by mux.sh's own probe + atrim cross-check; −25.6 dB is the whole-file mean, not the segment figure).
+- [x] Share-URL fix (owner ruling, 2026-11-09; fix `0cf449d7`): the share text must point at workers.dev, not the Pages origin. **Scope check first:** `shareOrigin()` served four consumers; the share path is `src/game/share.ts:53` (`shareText`) and `:117` (`shareLoopText`) — the share text (ruling target) — plus `src/game/share-action.ts:120` (`SHARE_URL`, the `url` of the `navigator.share` payload); `src/routes/__root.tsx:127` is OG meta (`og:url`/`og:image`), where the Pages origin is CORRECT as the canonical URL of the served page. So `shareOrigin()` itself and `__root.tsx` are UNTOUCHED; only the share path changed — `shareText`/`shareLoopText` now use `WORKERS_ORIGIN` (`src/game/share.ts:53`, `:117`) and `SHARE_URL = WORKERS_ORIGIN` (`src/game/share-action.ts:120`), superseding the Wave 1 P0 Item 4E/4F build-aware share for shares only. The `baseUrl` params are retained for call-site compatibility (the updated Pages-input unit tests still prove Pages input → workers.dev output). **Tests updated to the ruling (named, not silent):** `src/game/share.test.ts:153` — "Pages build share carries the Workers link (owner ruling 2026-11-09)" and `:189` — "Pages build geodetective share carries the Workers link (owner ruling 2026-11-09)"; `src/game/share-action.test.ts:202` — "Pages build share carries the Workers link (owner ruling 2026-11-09)" (sessionShareText) plus `:191` — the SHARE_URL test, "SHARE_URL is the single canonical workers.dev URL (owner ruling 2026-11-09)" (assertions unchanged); `tests/e2e/endgame-share.spec.ts:42` — `SITE_URL` github.io → workers.dev (its text assertion `:240` and `url:` assertion `:313` follow from it). `src/lib/og/share-meta.test.ts` unchanged (`shareOrigin` + OG behaviour intact). **Verification on `0cf449d7`** (logs `~/workspace/journal-prefetch-sharefix-*.log`): `npx tsc --noEmit` exit 0; `npm test` exit 0 — scripts 1154 pass / 11 skipped / 0 fail, src 2322 pass / 0 fail; `npm run test:worker` exit 0 — 145 pass / 0 fail; `node scripts/lint-cards.mjs` exit 0 — GATE PASSED; `npm run build:pages` exit 0 (VITE_KOFI_URL set at build + test time). E2E geodetective spec first (`~/workspace/journal-prefetch-sharefix-e2e-geodetective.log`): **18/18 passed (4.4 m), :199 win path passes**. Full union (`~/workspace/journal-prefetch-sharefix-e2e-union.log`, sequential `--workers=1`, `flock ~/workspace/.e2e.lock`, same 16 specs): **88 passed / 0 failed (20.9 m)** — geodetective.spec 18/18 (was 17/1), all other per-spec counts identical to the 87/1 run. No screen recording: the share flow's user-visible surface (the share-text line) is asserted by the E2E specs above; no record-spec coverage exists for it.
+
+## Design corrections vs the brief (verified from code, not re-litigated)
+- The effect lives in **GameApp**, not in Choose/home: GameApp returns early with `<Play>`/`<LoopScreen>` while a round is active, so Choose is unmounted during gameplay and no effect inside it could run. The set is derived from the wall clock (same derivation Choose initialises from).
+- The effect keys on the round-active **boolean**, not on `run` itself: `run` is a new object on every pin drop / phase change, so keying on it would abort and restart the warm mid-round.
+
+## History — feat/journal-player Part 3 (restored)
+
+The player-branch history below was deleted from this file; restored from `feat/journal-player`'s `BRANCH_STATUS.md` (`86624dde`) and its git log — no facts invented. Part 3: 5 Historian-blocked facts corrected (text + audio) at head `a7191e3e` (verified `86624dde`): cue 2 only, in `public/videos/captions/<id>.vtt` + `public/videos/journal-transcripts.json` (VTT↔JSON 0 mismatches, 20 cues) — alamo "An old mission, from 1718." (was "from 1836"), cadillac "In winter, it catches the first sunrise!" (was "It catches the first sunrise in the country!"), joslyn "Joslyn's museum stands right in Omaha." (was "...stands north of Omaha."), niagara "They drop where New York meets Canada!" (was "They drop over a cliff in New York."), homestead "One of the first claims, under the 1862 law." (was "One of the first claims, back in 1862."); manifest untouched. The audio fix lives on meridian-media `fix/journal-facts-5` @ `70b2e95` (separate repo, NOT merged — the live site still serves the old clips). Verification: E2E facts specs 6/6 desktop + 2/2 mobile, regression 31/31; recording `~/workspace/journal-player-facts-play/facts-desktop.webm` (94.6 s, all 5 corrected lines legible on-video).
+
+## Pending
+- [ ] endgame-share E2E (NOT in the union; pre-existing, NOT a share-fix regression): `tests/e2e/endgame-share.spec.ts` fails 2/2 on BOTH `228467d2` (pre-fix head) and `0cf449d7` (share-fix head) with the identical signature — `expectCleanConsole` fails on two `Failed to load resource: net::ERR_TUNNEL_CONNECTION_FAILED` console errors. Trace proves the failed fetches are the journal-prefetch mp4s (`meridian-media/journal/redeemer.mp4`, `sagrada.mp4`) fetched for real during gameplay — VM Chromium via the egress proxy cannot reach github.io (standing VM limitation), and this spec has no mp4 route interception (unlike the journal-prefetch spec). The share assertions themselves PASS on the new head (clipboard exact text `:240`, `navigator.share` call `:313` — execution reaches the console check after them). Logs: `~/workspace/journal-prefetch-sharefix-e2e-endgame-share.log` (new head), `...-rerun.log` (identical re-run), `...-prefix.log` (pre-fix head, identical failure). Fix is a separate decision — intercept the mp4s in this spec as the journal-prefetch spec does, or scope the console check — NOT done here; the share fix touches no prefetch or console-check behaviour.
+- [x] Step 5 — Screen recording (gameplay → prefetch → instant tap-play) + network trace, audio-probed per the video-audio law. Record spec: `tests/e2e/journal-prefetch.record.desktop.spec.ts` (1 passed, 39 s, first take). Recording: `~/workspace/journal-prefetch-record/prefetch-desktop.mp4` (37 s, 800×500, h264 + aac) — raw Playwright capture `prefetch-desktop-raw.webm`, timeline `timeline.json`, mux script `mux.sh`. Audio gate on the OUTPUT: ffprobe shows h264 + aac; volumedetect playing segment [26.4, 36.4] mean −19.1 dB / max −1.0 dB (audible narration), pre-play [0, 26] mean −91.0 dB (silent). Frames verified: t=12 s globe round in progress, t=30 s movie playing 0:03/0:10 with entry text on, t=36 s player closed, still + badge back. Timeline proof: round started t=9186 ms → manifest t=9188 → southpointe prefetch t=9843 → havelock prefetch t=9860 → back home t=21577 → tap t=25742 → movie playing t=26964. One fix found: the spec's first audio-delay estimate used performance.timeOrigin under the mocked clock and collapsed to 0; recomputed from eval wall time minus video currentTime (26,374 ms).
+- [x] Step 5 (final pass, code head `05b8f506`) — RE-RECORDED on the final head, log `~/workspace/journal-prefetch-final-record.log`: record spec 1 passed (48.4 s). New take, `~/workspace/journal-prefetch-record/`: `prefetch-desktop.mp4` (45 s, 800×500, h264 + aac, 1,519,685 bytes) from raw `prefetch-desktop-raw.webm` (46.48 s); `mux.sh` default `DELAY_MS` updated 26374 → **34927** (new timeline `audioDelayMs`), `-t` 37 → 45, probe windows moved to the new beats. Timeline proof (entry this take: giza — window-dependent): manifest t=11720 → round started t=12577 → giza prefetch t=12887 → cn-tower prefetch t=13093 → back home t=30779 → tap t=34287 → movie playing t=36013 (audioDelayMs=34927) → closed t=44393. Audio gate on the OUTPUT (re-probed 2026-11-09 by the B5/B6 fix pass and re-verified by mux.sh's own probe + atrim cross-check: the −19.1 dB quoted here before was correct for take 2; −25.6 dB is the whole-file mean, not the segment figure): ffprobe shows h264 + aac; volumedetect playing segment [35, 45] mean **−19.1 dB** / max −0.9 dB (audible narration), pre-play [0, 34] mean −91.0 dB (silent). Frames verified: t=20 s Globe round in progress (Kriva Palanka card, Drop pin), t=38 s movie playing 0:02/0:10 with entry text on ("Great Pyramid of Giza", footer "ENTRY 89 OF 106 · NEXT ENTRY IN 0:30"), t=44.6 s player closed, still + "Watch the movie · 10 sec" back (footer in the VIDEO then reads "ENTRY 88 OF 106" — see B5 below: a screencast-capture artifact, the DOM reads 89; not an app bug, no re-record). Near-miss caught: the record spec writes the video only under `test-results/…/video.webm` — the first mux of this take ran against the STALE 12:55 raw (37 s) with the new delay; caught by the duration check, raw re-copied from `test-results/journal-prefetch.record.de-dffb5-fetches-tap-plays-instantly-desktop/video.webm`, mux re-run. The stale first-take frames (frame-12/30/36) were replaced with the new take's frame-20/38/44.
+
+## Never
+- Never merge — merge word stays the owner's, per PR, per head.
+- Never rebuild the pilot. Never bundle all 106 into the app (lazy-load only).
+- No ear-verification here — owner's listen is the final check per clip.
+
+---
+
+# BRANCH_STATUS — feat/pivot-ack-renders (Agent VOICE)
+
+- **Branch:** `feat/pivot-ack-renders` · **Base:** `main` @ `5e6af2f9` (#340)
+- **What landed (2026-11-09):** Holmes's ack pool grows 4 → 10. Six new
+  fixed lines added to `scripts/detective/render-plan.mjs` (ack-5…ack-10,
+  frozen text, receipt-only register) and rendered through the pipeline
+  (`render-audio.mjs --fixed`) in Holmes's cast voice `avocado_v2:atlas`
+  (voice field verified per render by the renderer — a mismatch aborts):
+  ack-5 "Heard, Watson." · ack-6 "I'll take that, Watson." · ack-7 "Filed,
+  Watson." · ack-8 "Received, Watson." · ack-9 "Set it down, Watson." ·
+  ack-10 "One moment, Watson."
+- **Gates:** manifest gate clean (2,538 entries verified) · scripts suite
+  1,032 tests, 0 fail (render-plan count expectations updated 4 → 10 acks,
+  fixed-lines total 20 → 26).
+- **Flags (pipeline's own, kept honestly):** ack-7 flagged — final take
+  111.1 Hz, below the 110–160 family band's floor edge after the pitch
+  ladder (speed 112); ack-8 flagged on pace only (85 wpm vs the 90 floor,
+  pitch in target at 123.7 Hz). ack-5/6/9/10 ok. Human ear check owed on
+  ack-7/ack-8 at panel time. *(Resolved 2026-11-09: the measurement ear
+  check in the next capsule kept both clips, and the owner ear-approved
+  ack-7.)*
+- **Untouched on purpose:** ack-1…4, suspicion, and every other fixed
+  line are byte-identical to main (the render run's collateral re-renders
+  were restored); at this branch's own tip `detective-state.ts` still
+  rotates 4 at this branch's own tip — the random picker is Agent
+  HERALD's piece, stacked on this branch (it landed in PR #386).
+- **Pending (at capsule time):** GATE opens the PR and runs integration +
+  panel. No PR opened by this branch's builder. *(Done since: PR #385 was
+  opened; its final tip after the merge-up is `c8f40692`.)*
+
+## GROK-REWORK — independent verification + ear check (2026-11-09)
+
+- **Re-verified at tip `de612a41`:** tip + clean tree confirmed; all ten
+  ack clips present and playable (ffprobe); manifest gate clean (2,538
+  entries); manifest diff vs main = only the six new entries (+75/−0
+  lines); all 20 pre-existing fixed clips md5-identical to main; every
+  ack manifest entry's text = the frozen text, voice `avocado_v2:atlas`,
+  measuredHz = the record's pitch table.
+- **Voice tool confirmed on this machine:** a throwaway probe render via
+  `/opt/hatch/bin/tts speak --voice avocado_v2:atlas` returned the voice
+  field `"avocado_v2:atlas"` — the exact cast voice is reachable here.
+- **Ear check (measurement-based — no human hearing claimed):** two
+  independent pitch trackers (YIN + HPS) reproduce the pipeline's Hz
+  within ~5 Hz on all ten clips; pace = words/total-duration (reproduces
+  manifest wpm exactly); plus ebur128 loudness, spectral centroid, and
+  terminal-contour measures per clip.
+- **ack-7 "Filed, Watson." — KEEP.** YIN 111.6 Hz ≈ pipeline 111.1 Hz:
+  ~2 semitones below the set median but bracketed by shipped ack-3
+  (114.0 Hz), pace identical to its 2-word peers (89.3 wpm), loudness
+  mid-set, narrowest pitch spread of the ten — the same man at the
+  family's low end, not a different, gruffer Holmes. (The manifest note
+  cites the first take's 107.8 Hz; the shipped take measures 111.1.)
+- **ack-8 "Received, Watson." — KEEP.** 84.7 wpm vs 89–91 for the other
+  2-word lines (+72–96 ms on a ~1.35 s clip, ≈5–7% — at the edge of
+  tempo perceptibility); pitch in target (YIN 128.4 Hz), widest pitch
+  movement and bright timbre — deliberate, not dragging.
+- **Set picture:** ack-4 stays the warm ceiling (highest pitch,
+  brightest, flattest ending); no clip exceeds it, so no draw can sound
+  more encouraging than the shipped reference. Panel observation only:
+  ack-3 is the set's quietest (−30.5 LUFS) — pre-existing on main,
+  byte-identical, left untouched.
+- **No cures:** no clip was convicted, so zero re-renders and zero
+  audio/manifest changes; this capsule is the only change in its commit.
+
+## GATE integration cure — ack-pool spec pins (2026-11-09, on feat/pivot-speech @ 891031da)
+
+- **Why:** GATE verification of HERALD's random ack picker (pool
+  ack-1…ack-10, no repeat within a case) found 7 E2E failures, all one
+  class — older specs pinned the exact file `fixed/ack-1.mp3` (or
+  `ack-2.mp3`) the retired rotation always played. Live behaviour was
+  correct in every failure: the chain fired in position with a lawful
+  pool draw. The specs now assert the pool contract instead of the
+  retired rotation; no assertion was weakened or deleted.
+- **What changed (specs + shared harness only, no `src/`):**
+  `tests/e2e/detective-u10.ts` gains the shared pool matcher
+  (`ACK_POOL` = /fixed\/ack-\d+\.mp3/, plus `countAcks` / `ackFiles`)
+  and `assertSubsequence` accepts RegExp needles alongside substrings.
+  `detective-replay.spec.ts`: every played/network ack pin is now a
+  pool count (first pass exactly 1 · after replay exactly 2 · restart
+  exactly 1 · chain tail still clue → ack → decode in order); ack-1
+  remains only as test (c)'s absence needle (mid-read: no ack at all).
+  `detective-watson-walk.spec.ts`: the full-walk order array takes the
+  pool matcher in the ack slot (order + count unchanged); the mid-walk
+  arrival pin now asserts exactly 2 acks in the case so far, ALL
+  DISTINCT — the no-repeat rule, stronger than the old ack-2 pin; the
+  sheet test's deferred drain asserts exactly one pool ack.
+  `detective-sound.spec.ts` untouched (verified pool-safe).
+- **Gates:** `npx tsc --noEmit` clean; the two cured specs + the sound
+  spec re-run E2E after this commit (counts in the GATE report).
+
+---
+
+# BRANCH_STATUS — feat/geodetective-end-game
+## Merged main record — feat/watson-station (PR #372, main @ 63d82869)
+
+Preserved from main during the rebase onto 63d82869: the watson-station
+branch-status record that main carried at the merge. It is not this
+branch's work; it is kept here so the rebase does not silently drop it.
+
+### feat/watson-station record
+
+- **Branch:** `feat/watson-station` · **Base:** `main` @ `9e49da3` (PR #365 merged + live)
+- **Task:** Watson holds the clue-card station through the guessing phases.
+- **Owner defect:** 2026-11-08 ~00:53 CST — Watson standing large at the
+  map's bottom-left corner on the owner's phone during guessing.
+- **Diagnosis of record:** `~/workspace/meridian-detective-evidence/diag-watson-corner/DIAGNOSIS.md`
+  — the walk works on live production; when a clue read ends, the state
+  machine enters `SEARCH_IDLE`, whose view parked Watson at placement
+  "dock" (rendered inside the map, bottom-left), and `SEARCH_AREA` /
+  `SELECTION_READ` / `ASK_NEXT` kept him docked. Owner's standing ruling
+  (2026-11-07): "Watson stays at the clues once play starts."
+
+TASK / requested outcome: change Watson's placement from "dock" to
+"station" in exactly four phases of `viewForState`
+(`src/game/loop/detective/detective-state.ts`) — SEARCH_IDLE,
+SEARCH_AREA, SELECTION_READ, ASK_NEXT — poses unchanged, no Holmes
+placement or pose changed anywhere. Verify DetectiveHost needs no
+logic change (it renders purely from the machine's placement), update
+the unit + E2E pins that required Watson at the dock in the FULL
+(non-degraded) path, and record the cure in the handbook.
+
+Tier and rationale: Tier 1 builder silo under the coordinator's brief —
+one proven mechanism, one view-table change. Independent clean-context
+QA + panel verification are run by other agents, not the builder.
+
+Done condition / evidence:
+- Unit (TDD, RED first): the search-view pin flips dock → station; a
+  new per-phase test pins SEARCH_AREA / SELECTION_READ / ASK_NEXT with
+  Holmes-placement guards in all four phases. RED confirmed
+  (dock ≠ station) before the cure; GREEN after.
+- Host check: every `view.watson.placement === "dock"` consumer traced
+  (`watsonOnMap`, `watsonReplayDockEl`, `mapSoundEl` guard, the map
+  portal block) — all are placement-generic; in the cured phases the
+  station cluster (figure, gutter transform, replay-at-station,
+  station sound cluster) takes Watson and the map portal renders
+  Holmes alone (the dock cluster markup is already conditional on
+  `watsonOnMap`, so it tolerates Watson's absence). **Zero host logic
+  changes** — only two stale comments updated.
+- Degraded path untouched by design: dock-only companion
+  (`data-companion="dock"` — Holmes's berth verdict), tap speech mode,
+  and the "dock" member of `WatsonPlacement` (host fallback) all stay;
+  E2E pins for that path were not modified.
+- Gates: see Status below (real results, filled by the builder).
+
+Files in scope: `src/game/loop/detective/detective-state.ts`,
+`src/game/loop/detective/detective-state.test.ts`,
+`src/game/loop/detective/DetectiveHost.tsx` (comments only),
+`tests/e2e/detective-replay.spec.ts`, `tests/e2e/detective-sound.spec.ts`,
+`tests/e2e/detective-visibility.spec.ts`,
+`tests/e2e/detective-watson-walk.spec.ts`,
+`tests/e2e/detective-endings.spec.ts` (gap-closure round),
+`tests/e2e/detective-staging.spec.ts` (comment only),
+`docs/handbook/10-holmes-and-watson-pair.md` (new dated record section),
+this file.
+
+Collision note: the #364 lane (`feat/holmes-follow`) touches the same
+two source files (`detective-state.ts`, `DetectiveHost.tsx`). This
+branch is off `main` @ `9e49da3` and merges independently; whichever
+lane merges second rebases over the other.
 
 ## Status
 
-- [x] Unit 1 — CardFilm latch fix + pins (27/27 with fix; 24/27 with the src change stashed — the 2 new pins + the updated gate pin fail pre-fix)
-- [x] Unit 2 — LockedTileFilm: latch retry + loop governance (loop attr, threshold-0 off-screen pause observer, play() rejections dropped) + header rewrite (R1 holds: no control added; stop story = the gates + off-screen pause; stale CardFilm-toggle claim removed). Tests re-pinned: 16/16 with fix, 12/16 pre-fix (loop/off-screen/retry/gate pins fail); R1 describe passes both ways. Docs cured in-unit: README locked-tile paragraph + `locked-tile-media.ts` header now record the loop ruling (play-once marked superseded, not deleted)
-- [x] Unit 3 — Band-naming confirm toast: `Saved — {label} (ages {ageMin}–{ageMax}) ✅` / in-progress `Saved — {label} (ages {ageMin}–{ageMax}); takes effect on the next card. ✅`, built from `getBand(confirmTarget)`; first-save + reset toasts byte-identical; stale band-invisibility comment replaced with the 2026-11-04 ruling. Gate spec pin updated to its switch (8-10 → 11-13): `Saved — GeoDetective (ages 11–13) ✅`
-- [x] Unit 4 — New in-session switch E2E (`band-switch-in-session.desktop.spec.ts`, 1 test): real UI flow, no seeded band (unset → UI first-set 11–13 → Trail Scout → Little Explorer → back to 11–13); passes on the branch build (1/1). Bite proof against an unmodified-main build (scratch worktree @ e1cf6fe, removed after): the committed spec fails at the Trail Scout toast (expected `Saved — Trail Scout (ages 8–10) ✅`, main shows `Saved ✅`); a scratch variant with main's toast text substituted (evidence only, never committed) proceeds and fails at `locked film loop attribute — Expected: true, Received: false`
-- [x] Docs cured (README, locked-tile-media header — in Unit 2) — docs grep found no other play-once/band-invisible text: the ws-4 spec named in the brief does not mention LockedTileFilm, and the Handbook carries no locked-film or band-toast description
-- [x] Full gates on the final tip: `npm ci` ✓ · `npx tsc --noEmit` clean · `npm run typecheck:worker` clean · `npm test` — scripts 1016 (1005 pass, 11 skipped, 0 fail, unchanged from baseline), src 2123/2123 (baseline 2119 + exactly the 4 new pins) · `npm run test:worker` 117/117 (no worker code touched) · `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green (one prerender attempt OOM-died under VM contention with another agent's build; the sealed re-run completed, exit 0)
-- [x] PR opened (NO MERGE — Silo QA + 12-role panel approve the final tip, then the owner's per-PR word is the merge gate)
+- [x] Diagnosis read in full; mechanism confirmed in code
+- [x] Unit test RED (dock ≠ station in the four phases)
+- [x] Cure: four placements → "station" + plain-tone why-comments — `63879d8`, pushed
+- [x] Host audit: zero logic changes needed; stale header + map-render comments updated — `45865ff`, pushed
+- [x] E2E pins updated (full path only; degraded pins untouched) — `c142574`, pushed
+- [x] Handbook: "Watson station cure (2026-11-08)" record section — `d732610`, pushed
+- [x] Builder gates:
+  - `npx tsc --noEmit` — clean
+  - `npm test` — PASS (final suite 2267/2267, 0 fail; command exit 0)
+  - `npm run test:worker` — PASS (145/145, 0 fail)
+  - `node scripts/lint-cards.mjs` — GATE PASSED
+  - `npm run build:pages` — PASS (exit 0; prerender + fingerprint-sw
+    completed. Two earlier local attempts were killed by VM restarts
+    mid-build — environment, not build errors — and the gate was
+    re-run clean to this result.)
+- [x] PR opened — PR #372 (opened by the pipeline finisher; the
+  builder brief forbade the builder from opening it)
+- [ ] Merge — on the owner's word / coordinator only, never the builder
 
-## Verification record (builder, on the tip)
+## GATES STATE (finisher session, 2026-11-08 — updated after every gate)
 
-- Baseline (unmodified `e1cf6fe`): `npm test` — scripts 1016 tests (1005 pass, 11 skipped, 0 fail); src 2119/2119 pass.
-- Unit pins: card-film.test.ts 27/27 with fix, 24/27 pre-fix (stash check); locked-tile-film.test.ts 16/16 with fix, 12/16 pre-fix, R1 pins pass both ways.
-- Targeted E2E (flock, --workers=1, chromium-1243, branch build): band-switch-in-session 1/1; age-profile-gate 1/1 (new toast pin); band-media-variants 4/4. card-redesign full file: 3 whole-test 240 s timeouts under VM contention (no assertion failures); the 3 tests + 1 name-matched neighbour passed 4/4 on a clean sequential re-run — contention flake, dispositioned.
-- Full gate numbers recorded in the PR body.
+Finisher: pipeline-finisher subagent (lane 1 of the owner's sequential
+pipeline law). Base verified against **origin/main `9e49da3`** — the
+local `main` ref is stale (#361-era `97d1dcf`); origin/main IS an
+ancestor of this branch and the true branch diff is 11 files (709+/185−, measured at 3f3eaf0; later commits are docs-only).
 
-## Panel round-1 cure — 2026-11-04 (verdict on `2b2410b`: 2 APPROVE / 6 AWN / 4 BLOCK)
+- [x] Chromium launch RE-TEST: the WebGL-policy outage is OVER for the
+  real spec path — Playwright + bundled chromium-1243 launches and
+  renders the app. Two environment facts every E2E run here needs:
+  (1) `PLAYWRIGHT_CHROMIUM_EXECUTABLE` must point at the bundled 1243
+  binary (the config default `/opt/meta-chromium/chrome` refuses to
+  launch); (2) runs go with `TMPDIR=$HOME/playwright-tmp` — the VM's
+  /tmp is a 512 MB tmpfs that LANDED AT 100% under other lanes'
+  profile/cache junk (since freed), and the home volume carries an
+  EDQUOT **file-count** quota: Chromium dies with SIGBUS
+  (`BUS_ADRERR`, "Creating shared memory … Disk quota exceeded (122)")
+  once renderer shared-memory creation hits it.
+- [x] **Gate 1a — `detective-endings.spec.ts`: RUN, 0 passed / 2 failed**
+  (full reporter output read; logs in
+  `~/workspace/meridian-detective-evidence/station-e2e-2026-11-08/`).
+  Runs 1–3 died at the first click on environment (full /tmp, then the
+  EDQUOT crash). **Run 4 (clean environment) played both tests end to
+  end** — the complete WIN path and the full 5-guess FAIL path ran —
+  and both failed on the NEW N2 audit windows only:
+  - WIN: `WIN celebrate→debrief @ endings` — worst
+    `map:high-five` over clue-2 text ("This is a hot desert cit…"),
+    max overlap 4,777.5 px² over 2,900 samples.
+  - FAIL: `FAIL fail-read→pout @ endings` — worst `map:think` over
+    clue-4 text ("After the PEPCON disaste…"), max overlap 4,777.5 px²
+    over 11,920 samples.
+  - **N7 VERIFIED PASSING inside the WIN run:** no clue-3/4/5 clip in
+    the play record or the network list after the guess-2 solve (the
+    test reached and passed that assertion before failing at the N2
+    absorb; absence checks fail loudly, so reaching the absorb proves
+    them).
+  - **What the failure IS (screenshots read first-hand):** at the
+    1440 px endings viewport, Watson stands at his clue-card STATION
+    (left gutter beside the active card — the cure working) and Holmes
+    stands on the card's LEFT EDGE, his painted box overlapping the
+    card's first text column. Holmes is the CELEBRATE/FAIL_READ layout
+    partner placed beside Watson by the host's existing celebration
+    layout — a phase this branch never touched (CELEBRATE was already
+    "station" for Watson before the cure; FAIL_READ likewise). The
+    sampler's "map:" prefix is its cluster label for Holmes, not a map
+    position — in both failure screenshots **neither figure is on the
+    map**; both stand at the clue cards. So: **pre-existing
+    celebration/fail-read layout overlap, exposed by the NEW N2
+    windows (Silo QA's own gap), not a regression of this cure.**
+    Per the finisher brief (pin exposes a product bug → flag before
+    touching production code) this is flagged to the parent for a
+    routing decision; the pins are NOT loosened and production code
+    is NOT touched by this session.
+- [x] **Gate 1b — `detective-watson-walk.spec.ts`: 9 passed / 0 failed**
+  (PLAYWRIGHT_EXIT=0, full output read; log `e2e-walk1.log` in the
+  evidence dir). The main walk test at 390/768/1280 carries BOTH the
+  N2 guessing-chain window (SELECTION_READ → NOTE_MARK → ASK_NEXT →
+  READING sampled in order; window absorbed at 0 px²) and the clue-2
+  walk window — **N2 guessing-chain half: PASSING**. The new mid-walk
+  tap test passed — **N6: PASSING**. Kill-switch (watsonWalk OFF) and
+  reduced-motion tests also passed.
+- [x] **Gate 2 — nit-5 measurement TAKEN: maxOverlap 0 px²**
+  (watsonWalk OFF via `fulfillFlagsStaging`, 390 px; throwaway probe,
+  written → run → deleted; log `e2e-nit5b.log`). 9,600 figure/text
+  pair samples across two 4 s windows: the first right after the
+  unlock gesture (host not yet mounted — phase null, bench/CASE_OPEN
+  window), the second starting 2.5 s after the guess commit (phase
+  SELECTION_READ, spanning the guessing-chain into the clue-2 read).
+  **No overlap anywhere on the walk-off path at 390 — nothing to
+  route.** Caveat for the record: the probe's strict READING-phase
+  gate never latched in the walk-off flow (the host mounts only after
+  the duet drains), so the windows are labelled by their actual
+  phases above, not by the intended READING label; the zero stands
+  for the windows sampled.
+- [x] Gate 3 — Silo QA delta re-key: the tip moved past `034535e`
+  ONLY by this file's GATES-STATE commits (records, zero code/test
+  changes) — the existing PASS-WITH-NITS + the now-run-verified gaps
+  stand; no code delta exists to re-key. Stated per the finisher
+  brief's either/or.
+- [x] Gate 4 — PR opened: PR #372; the parent's routing decision
+  (a) is recorded — the N2-endings failure is routed to its own
+  follow-up (issue #371) and this PR proceeds with the failure
+  recorded honestly in the PR body.
+- [ ] Gates 5–7 — panel + DevEx + benchmark ran on `3f3eaf0`
+  (panel 13/13 in: 1 APPROVE, 10 APPROVE-WITH-NITS, 2 BLOCKs both
+  adjudicated pre-existing/out-of-scope — game audio → PR #370/PR 2,
+  game player → issues #371/#373 + PR #370/PR 2; DevEx records cure
+  applied after the panel, confirmation re-vote follows); merge
+  awaits the panel verdict on the cured tip + the parent's merge
+  call on the standing audio BLOCK.
 
-Cure builder (not the round-1 builder). Both BLOCKs cured; the cured
-tip returns for fresh Silo QA + a full panel re-vote before any
-merge word. NO MERGE.
+> **SUPERSEDED — records cure, 2026-11-08 (pipeline finisher).**
+> This capsule's per-gap run statuses below are STALE: they were written
+> before the re-runs and claim several gaps are "NOT YET RUN", nit-5 is
+> "not taken", and the Chromium outage is current. All three are wrong
+> now. The **GATES-STATE section above is the current record**: GAP 4
+> (N7) RUN VERIFIED PASSING; GAP 2 endings windows RUN — FAILED on the
+> pre-existing CELEBRATE/FAIL_READ overlap (issue #371); GAP 2
+> guessing-chain + GAP 3 (N6) RUN VERIFIED PASSING (walk spec 9/9);
+> nit-5 MEASUREMENT TAKEN (maxOverlap 0 px²); the Chromium outage is
+> OVER. Where this capsule and GATES-STATE disagree, GATES-STATE wins.
 
-- **B1 — off-screen-pause observer orphaned by the retry remount
-  (4 seats).** In `card-film.tsx` + `LockedTileFilm.tsx` the
-  threshold-0 observer now resolves `videoRef.current` inside its
-  callback (event time), immune to every remount path. Folded nit:
-  the retry/latch state is now URL+band-scoped DERIVED state
-  (`spentScope`/`failedScope` hold the scope string; `attempt`/
-  `failed` derived) — no post-render reset effect, no double fetch
-  start on a swap, no stale error charged to a new film.
-- **B2 — latch reset keyed only on URL (Office Hours).**
-  `CardFilm` takes a `band` prop (wired at all five game-app call
-  sites, all with `ageBand` in scope); the scope is band + videoUrl,
-  so ANY band change revives a latched slot in its first render —
-  including the constant-media slots (GeoDetective/Journal/
-  Grown-ups) and fail-closed variant slots. LockedTileFilm needs
-  no band prop (5–7 only, constant media).
-- **Proof.** New behavioural E2E `band-film-error-path.desktop.spec.ts`
-  (page.route aborts the GeoDetective film request): fail-once →
-  retry succeeds → film plays; fail-always → latch → band switch
-  11–13 → 8–10 → the same constant-media slot revives and plays;
-  after a successful retry, scrolling off-screen pauses the CURRENT
-  element. Bite vs the round-1 tip (scratch builds): the revival
-  case fails there (no video mounts after the switch); the unit
-  pins fail 8/51 there (observer-resolution + scope-derivation +
-  wiring pins), 51/51 on the cured tip. In-progress toast: proven
-  unreachable behaviourally (AgeProfileSettings renders only in
-  game-app's Home branch, reached only when run === null &&
-  !loopOpen, so runInProgress is never true at its only render
-  site) — covered instead by the new source/behaviour pin file
-  `age-profile-settings-toast.test.ts` (exact templates + composed
-  strings from the real band table, all three bands).
-- **Docs cures (all six).** AgeProfileSettings post-gate comment
-  deleted (toast renders ~3.5 s on home; owner ruled it names the
-  band anyway, 2026-11-04); types.ts band `label` gloss gains the
-  toast exception; AgePicker header scoped to durable surfaces +
-  the same exception; LockedTileFilm header gains the explicit
-  WCAG 2.2.2 sentence (no stop exists; owner accepted the gates);
-  locked-tile-media.ts ~105-char line rewrapped; card-film header
-  states the cured retry budget (one retry per media+band scope).
-- **Pin re-points (shape genuinely changed, nothing weakened).**
-  The exact CardFilm call-string pins in card-film.test.ts (5),
-  `card-media-band-variants.test.ts` (5) and
-  `home-smooth-cards.test.ts` (3) now include `band={ageBand}`.
-- **Merge-ups.** main `0b4e270` (#348) merged, then main `70e1be6`
-  (#347) merged when it landed mid-cure; sole conflict both times:
-  this file (both-records stack). Final diff vs main: this PR's
-  17 files only.
-- **Environment.** ~/workspace hit its btrfs quota (EDQUOT) during
-  the cure; builds + the final gate run were executed in a roomy
-  overlay-fs clone of the same tip. VM renderer crashes ("Target
-  crashed") hit the heavy E2E specs repeatedly in this window on
-  BOTH the cured build and a round-1-tip control build
-  (band-media-variants 0/4 and band-switch 0/1 there) — environment
-  class, dispositioned with sequential/control runs; the new
-  error-path spec passed 2/2 on the cured build in a quiet window.
-  Fresh Silo QA should re-run the two heavy specs in its own pass.
+## Gap-closure round (2026-11-08, Silo QA PASS-WITH-NITS follow-up)
 
-## Merge-up — 2026-11-04 (main `0b4e270` merged in, PR #350 panel-cure round)
+Test-only pins for Silo QA's N1–N7 gaps; zero production-code changes.
 
-- Sole conflict: this file. Resolved both-records: this branch's record above, main's #348 record below it; the accumulated records from main follow after.
-- Code files auto-merged with no conflicts (#348 removed dead auth only; no overlap with this branch's scope).
-
-## Merge-up — 2026-11-04 (main `70e1be6` merged in, PR #350 panel-cure round)
-
-- Sole conflict: this file. Resolved both-records: this branch's accumulated record above, main's #347 record below it; earlier accumulated records follow after.
-- Code files auto-merged with no conflicts (#347 touched only crash-watchdog scripts + the crash-report worker + observability docs; no overlap with this branch's scope).
-
-## Panel round-2 cure — 2026-11-04 (verdict on `7139160`: 5 APPROVE / 6 AWN / 1 BLOCK)
-
-Cure builder (not the round-1 cure builder). The cured tip returns
-for fresh Silo QA + a full panel re-vote before any merge word.
-NO MERGE.
-
-- **BLOCK (Game Developer; root shared with Senior Developer
-  NIT-4) — a remount never re-observes.** The round-1 B1 cure
-  resolved the video element inside the pause observer's
-  callback, but the effect's deps stayed `[gated, near]`: a film
-  that errors and remounts (retry key change) while its slot is
-  NON-intersecting is never re-observed — the deps don't change
-  on remount and IntersectionObserver fires no callback without
-  a threshold crossing — so the remounted film is never paused
-  and (in a browser that starts off-screen films) autoplays and
-  loops off-screen indefinitely, falsifying the headers' "never
-  decode off-screen" invariant. Same shape in both components,
-  and for a non-latched media swap below the fold. **Cure (the
-  seat's minimal cure, verbatim):** CardFilm pause-effect deps
-  → `[gated, near, attempt, media.videoUrl]`; LockedTileFilm →
-  `[gated, near, attempt]`. A remount now re-runs the effect,
-  and the fresh observer's initial delivery pauses/plays the
-  new element correctly. Header/code comments in both files
-  record why the deps carry the remount signals.
-- **Folded MAJOR nit (Office Hours; parent decision: fold in,
-  same mechanism) — band round-trip re-latch.** Derivation alone
-  revives a slot only while a different scope is showing: latch
-  in band A → switch to B (revives) → back to A in the same home
-  session rendered latched immediately, because `failedScope`
-  still equalled A's scope. **Cure:** leaving a scope clears
-  its record — CardFilm now tracks the last-rendered scope and,
-  on an actual scope transition (during render, React's
-  adjust-state pattern; still no reset effect), clears
-  `spentScope`/`failedScope`, so every arrival at a scope starts
-  fresh. LockedTileFilm needs no clearing: its scope can never
-  change while mounted, and leaving 5–7 unmounts it — now stated
-  in its scope comment. The PR body's "any band change revives"
-  wording is corrected to these real semantics.
-- **Proof.** Unit pins (source-pinning style): the deps pin in
-  each film test file + the round-trip pin in
-  `card-film.test.ts`. Bite (scratch worktree @ `7139160`, the
-  new test files over the voted components): exactly the 3 new
-  pins fail, 46/49 pass; on the cured tree 49/49. E2E: two new
-  variants in `band-film-error-path.desktop.spec.ts` — the error
-  fires BEFORE the slot first intersects (slot parked below the
-  fold, inside the lazy margin), CardFilm (Journal slot) and
-  LockedTileFilm. Witness design, recorded honestly: this
-  Chromium defers off-screen autoplay (probe-verified: a
-  below-fold film sits paused at t=0 with no observer at all),
-  so a paused-state assertion cannot separate the tips here;
-  the variants witness the DELIVERY — a `pause()` call landing
-  on the remounted element, recorded via an init script — which
-  is exactly the mechanism the BLOCK names, plus the final
-  paused-state assertions as the user-facing invariant. The
-  first failure is delayed 2.5 s so the original observer's
-  initial delivery is spent on the first element (an instant
-  abort can let that delivery land on the new element and mask
-  the bug — measured in this run: the first version of the
-  variant passed on the voted build for exactly that reason).
-- **PR-body record correction (QA nit).** The round-1 cure's
-  bite figures were overstated: under the stated scratch method
-  it is 6 pins fail / 45 pass across all 3 test files (40 pass
-  films-only), not "8 fail / 43 pass" — the 51 total only arises
-  including the 5 toast tests. The body is corrected.
-- **Gates (cure tree):** tsc clean · `npm test` — scripts 986
-  pass / 0 fail / 11 skipped, src 2107/2107 (2104 + the 3 new
-  pins: card-film 29 → 31, locked-tile 17 → 18) · lint-cards
-  GATE PASSED · build:pages green. E2E on the cured build:
-  band-film-error-path 4/4 (both new variants included, earlier
-  paused-state-only version — re-run with the delivery witness
-  sealed in the PR body). NOT in this cure: the dead
-  `runInProgress` deferral branch (owner decision owed outside
-  the PR — untouched), any other refactor.
-
-## Merge-up — 2026-11-04 (main `d3202a9` merged in, PR #350 round-2 cure round)
-
-- Main moved during the cure (#349, chunk-failure cascade,
-  merged live). Sole conflict: this file. Resolved both-records:
-  this branch's accumulated record above, main's #349 record
-  below it; earlier accumulated records follow after.
-- Code files auto-merged with no conflicts (#349 touched only
-  crash-watchdog scripts, `src/lib/chunk-recovery.ts`,
-  observability docs and its E2E spec; no overlap with this
-  branch's scope). Delta audit: after this merge-up the
-  branch-vs-main diff is exactly this PR's scope plus the
-  round-2 cure commit `6c5fb9f`, which the merge-up does not
-  change.
+- [x] **GAP 1 (N1) — pinned + PASSING** (`49f210d`): unit test
+  "station law past guessing: THINKING_BEAT, FAIL_READ, POUT,
+  DEBRIEF and CELEBRATE never dock Watson (owner ruling 2026-11-07)"
+  in `detective-state.test.ts` — Watson's placement asserted
+  "station" in all five phases (CELEBRATE across all four
+  choreography steps). Full suite: `npm test` 2268/2268.
+- [x] **GAP 4 (N7) — pinned, RUN VERIFIED PASSING (GATES-STATE Gate 1a)** (`35db604`): endings
+  spec "WIN in 2" asserts, after a 2 s settle, that no
+  `case-137/clue-3.mp3`, `clue-4.mp3` or `clue-5.mp3` appears in
+  either the play record or the network request list. RUN: verified
+  passing inside the Gate 1a endings run — the test reached and
+  passed this assertion before the run's N2-window failure (absence
+  checks fail loudly, so reaching the absorb proves them).
+  (Correction, same day: an earlier version of this capsule
+  claimed this and the N2
+  endings windows were PASSING on a "2 passed" endings run.
+  That was a misread of truncated, piped output: the run's full
+  output shows **2 failed**, both at browser launch. No endings
+  test has passed in this round.)
+- [x] **GAP 2 (N2), endings half — pinned, RUN (windows FAILED on the pre-existing overlap, issue #371)**
+  (`35db604`): audit windows "WIN celebrate→debrief @ endings"
+  (9 s, opens at CELEBRATE) and "FAIL fail-read→pout @ endings"
+  (12 s, opens at the final miss) absorbed through `AuditTrail`
+  at 0 px². RUN (GATES-STATE Gate 1a): both windows absorbed
+  overlap up to 4,777.5 px² from Holmes's pre-existing
+  celebration/fail-read placement (issue #371).
+- [x] **GAP 2 (N2), guessing-chain half — pinned, RUN VERIFIED PASSING (walk spec 9/9, GATES-STATE Gate 1b)**
+  (`368c201`): in the watson-walk main test (all 3 widths), a
+  12 s audit window "guessing chain selection→note→ask-next"
+  opens once SELECTION_READ is live + 300 ms (the documented
+  ~200 ms guess-commit FLIP exclusion kept exactly), with a
+  trace assertion that SELECTION_READ → NOTE_MARK → ASK_NEXT →
+  READING were sampled in order and a play-order subsequence
+  (name → suspicion → ask-next → clue-2). RUN: the window
+  absorbed at 0 px² at all three widths.
+- [x] **GAP 3 (N6) — pinned, RUN VERIFIED PASSING (GATES-STATE Gate 1b)** (`368c201`): new
+  watson-walk test "watson walk: tap on Watson MID-WALK is
+  ignored — one figure, walk arrives, held clue read fires
+  exactly once (phone 390)". Pins the shipped behaviour: during
+  a speech-gated walk the replay cue is hidden and the figure
+  cluster is pointer-events:none, so the tap is a no-op — walk
+  still "walking" after the tap, exactly one
+  `[data-detective="watson"]` in every walking sample (never >1
+  anywhere), clue-2 read + ack-2 each exactly once. RUN: passing
+  in the Gate 1b walk-spec run (9/9).
+- [x] **OBSERVATION (nit 5) — MEASUREMENT TAKEN: maxOverlap 0 px² (GATES-STATE Gate 2).**
+  The finisher re-ran the probe (audit sampler + per-frame
+  phase, watsonWalk OFF via `fulfillFlagsStaging`, 390px, two
+  4 s windows, 9,600 pair samples): maxOverlap 0 px² (log
+  `e2e-nit5b.log`). The probe's strict READING gate never latched
+  in the walk-off flow, so the windows are recorded under their
+  actual phases in GATES-STATE Gate 2.
+- **Chromium outage — RESOLVED (see GATES-STATE Gate 1).** At the
+  time this capsule was written, every NEW Chromium launch on
+  this VM failed with `Hatch WebGL domain policy is required
+  for browser startup` (chrome_main_delegate.cc:1283) — a
+  runtime policy delivery break, not a code issue. The finisher
+  re-test found the outage OVER on the real spec path
+  (Playwright + bundled chromium-1243 launches and renders).
+  The re-runs prescribed here are DONE — GATES-STATE Gates 1a/1b
+  record the results. Historical detail, kept for the record:
+  the endings run started 10:42 (VM clock) **failed both tests at
+  browserType.launch** with exactly this error (full output in
+  the run log; error contexts under `test-results/`); a bare
+  `chrome --headless --dump-dom about:blank` reproduced it and
+  was still failing at 11:38. The binary's strings show it
+  requires `--hatch-webgl-allowed-domains-file` + `-sha256`
+  switches that are not present on disk. Re-run prescription
+  (DONE):
+  `npx playwright test tests/e2e/detective-endings.spec.ts --workers=1`
+  then `npx playwright test tests/e2e/detective-watson-walk.spec.ts --workers=1`
+  (read the full reporter output — a piped `tail` masks the
+  playwright exit code; that masking caused the correction
+  above).
+- [x] Gap-round gates: `npx tsc --noEmit` clean ·
+  `npm test` PASS 2268/2268 · `npm run test:worker` PASS 145/145 ·
+  `node scripts/lint-cards.mjs` GATE PASSED ·
+  `npm run build:pages` PASS (exit 0)
 
 ---
-# Branch status — fix/chunk-failure-cascade (watchdog stand-down on stalled recovery reloads)
 
-- **Branch:** `fix/chunk-failure-cascade`
-- **Base:** `main` @ `e1cf6fe`
-- **Authority:** owner, 2026-11-04, in the meridian side chat: "Fix the chunk-failure cascade"
-- **Diagnosis of record:** `~/workspace/meridian-geodetective-diag/diagnostic-evidence/results*.json` (2026-11-04)
+## feat/journal-player — Impeccable follow-up, Part 1 (6 small fixes)
+
+**Branch:** `feat/journal-player` · **Base:** `0f06a852` (stacked on #369's `4964a727`)
+**Owner order:** "Yes. Keep going" — implement the 6 fixes, no merge, no PR.
+**Status:** all 6 done, all gates green, recordings delivered. Head `fc64a897`.
+
+- [x] 1. Mute (`f1ce6c99`): mute toggle in the controls (`journal-player-mute-<id>`,
+      ≥44px, aria-pressed, toggles `video.muted` — synced onto the element
+      directly since React's muted attribute doesn't reliably update the
+      property). Badge is now "▶ Watch the movie · 10 sec 🔊" (aria-hidden);
+      play button aria-label warns of sound ("10 seconds with sound").
+      The header comment's "Audio is never muted" line updated.
+- [x] 2. Tap-to-pause (`97e504d7`): clicking the video toggles play/pause;
+      a tap-pause flashes a large ⏸ overlay for ~600ms
+      (`journal-player-pause-flash-<id>`); toggle button untouched.
+- [x] 3. Focus, WCAG 2.4.3 (`7ab25178`): on open, focus moves into the player
+      (video, tabIndex -1, once ready; Close button while loading/on error).
+      On close — Close button, Escape, or any path — focus returns to that
+      entry's `journal-play-<id>` button instead of landing on BODY.
+- [x] 4. Error retry (`6a1eeb0a`): "Try again" button
+      (`journal-player-retry-<id>`) on the error state; adds
+      `resetJournalMovieManifestCache()` (unit-tested: fetch → reset → fetch
+      again) because the memoized loader would otherwise cache the failed
+      fetch for the whole page load.
+- [x] 5. Skip link, WCAG 2.4.1 (`d49a8bc6`): first focusable element on the
+      home page, visually hidden until focused, jumps to `#home-journal`
+      via the existing scrollTo (focus lands in the section): 1 Tab + Enter.
+- [x] 6. GET INVOLVED nav at 390px (`996bdb31`): the ≤680px nav row wrapped
+      instead of scrolling (was 83px past the right edge, scrollWidth 453
+      vs clientWidth 350). All 6 items in-bounds, no strip scroll; desktop
+      rules untouched.
+- [x] E2E (`d0d8bd4c`, fixed in `3fc78134`): 10 new tests
+      (journal-player.fixes.desktop/mobile.spec.ts) — all 6 fixes at 1280
+      and 390, media fulfilled with the real 10 s Old Faithful clip
+      (`stubJournalMediaRealClip`). First run 7/10: the retry stub's
+      `route.continue()` sends the request to the real network (nothing
+      listens on 4123 — the artifact is served from disk), so the second
+      fetch failed; probe-verified, test now fulfills the real manifest
+      bytes. The nav `boundingBox()` nulls were a transient measurement
+      flake (probe re-measured GET INVOLVED right=953.5 at 1280); tests now
+      read getBoundingClientRect. Re-run: 10/10.
+- [x] Recordings (`fc64a897`): one continuous take per viewport
+      (journal-player.fixes.record.*.spec.ts) — nav, skip link (desktop),
+      retry, mute, tap-to-pause + flash, Escape/close focus return,
+      keyboard reopen + Tab through controls.
+      `~/workspace/journal-player-fixes-play/fixes-desktop.webm` (41.5 s,
+      800x500) and `fixes-mobile.webm` (21.9 s, 368x800). Video-only, no
+      audio. Frames spot-checked: skip pill, playing movie with Sound
+      button, Muted state, new badge on close.
+- [x] Gates (buildId `996bdb31`): `npx tsc --noEmit` clean ·
+      `npm test` scripts 1154 pass / 0 fail / 11 skip, src 2282 pass /
+      0 fail / 0 skip (baseline src 2281, +1 new reset test) ·
+      `node scripts/lint-cards.mjs` GATE PASSED ·
+      `npm run build:pages` green (VITE_KOFI_URL set) ·
+      pre-existing journal-player E2E 7/7 (desktop, mobile, Old Faithful,
+      reduced). Logs: `~/workspace/gjm-player-fixes-{gates,e2e,e2e2,
+      e2e-regress,record,build,probe}.log`.
+
+Out of scope, NOT done (separate items): mobile progress bar 27px wide
+(Impeccable P1); loop/end-card issue (loop makes onEnded/Play-again
+unreachable). The 106 clips' narration/audio/visuals are NOT verified
+by this work. No merge, no PR opened.
+
+## feat/journal-player — Part 2: desktop two-column layout + captions/transcript (approved mockup)
+
+**Branch:** `feat/journal-player` · **Base:** `0f06a852` (stacked on #369's `4964a727`) · **Head:** `12dce717` (pushed) · **Owner approval:** mockup `journal-desktop-captions-mockup` approved 2026-11-09 03:06 CST.
+
+- [x] Captions recovered for all 106 clips (`c5cc7ecf`): narration scripts from `journal-movies-batches/batch-*/NOTES.md` (+ Old Faithful from pilot NOTE-v4.md). `public/videos/captions/<id>.vtt` (106) + `public/videos/journal-transcripts.json` (v1, 106 entries, 430 cues). VTT↔JSON agreement checked: 0 mismatches. No narration text invented. Coverage report: `~/workspace/journal-captions-coverage.md`.
+- [x] Desktop two-column layout + captions/transcript UI (`3688a134`): entries ≥681px two-column (art left, title/story/source right rail); mobile stacked. New `src/components/journal-transcripts.ts` (memoized lazy loader, `activeCue`, `captionUrl`). Player: `crossOrigin="anonymous"` + `<track kind="captions">`, CC toggle, Story-text transcript panel (live highlight, tap-to-seek + play), full-width progress row on all widths. Coverage-honest gating: entries absent from the JSON get no CC/Story-text button. Mobile progress bar now 216.5px (was 27px — Part 1 out-of-scope item, now done).
+- [x] E2E + gates (`12dce717`, 9 files: 6 captions specs, helpers, 2 fixes-spec updates). Gates (buildId `3688a134`): `npx tsc --noEmit` clean · `npm test` scripts 1154 pass / 0 fail / 11 skip, src 2302 pass / 0 fail / 0 skip · `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green. E2E (sequential, flock lock, chromium-1243, route-intercepted real Old Faithful clip): captions specs 8/8 green; regression 21 tests 19 pass / 2 fail on first run (both failures were the old tab-order tests — the new CC/Story-text buttons change Tab order, an intended consequence; specs updated to assert the new 5-stop order and re-run green per file). Recordings (video-only): `~/workspace/journal-player-captions-play/captions-desktop.webm` (29.0 s) + `captions-mobile.webm` (20.1 s); frame-difference checked, real motion. Logs: `~/workspace/gjm-captions-{gates,build,e2e,e2e2,e2e3,e2e4,e2e5}.log`.
+- [ ] OPEN JUDGMENT CALL (not resolved by the build): the mockup's text says "all controls in a right rail", but the build puts the player + all controls in the art column (measured: controls row x=65–722 inside art column x=65–722; right rail holds 0 buttons). Needs the owner's read against the mockup.
+- [ ] Out of scope, NOT done: loop/end-card issue (loop makes onEnded/Play-again unreachable). The 106 clips' narration/audio/visuals are NOT verified by this work. No merge, no PR opened. Panel review follows (not part of this task).
+
+## feat/journal-player — Part 3: 5 Historian-blocked facts corrected (text + audio)
+
+**Branch:** `feat/journal-player` · **Head:** `a7191e3e` (text fix, pushed) · **Audio:** meridian-media `fix/journal-facts-5` @ `70b2e95` (separate repo, NOT merged, NOT on the live Pages site — the live site still serves the old clips).
+
+- [x] Text fix (`a7191e3e`): cue 2 only, in `public/videos/captions/<id>.vtt` + `public/videos/journal-transcripts.json` (VTT↔JSON 0 mismatches, 20 cues):
+  - alamo: "An old mission, from 1718." 2.23–4.53 (was "from 1836", 2.23–4.13)
+  - cadillac: "In winter, it catches the first sunrise!" 2.61–4.61 (was "It catches the first sunrise in the country!", 2.61–4.60)
+  - joslyn: "Joslyn's museum stands right in Omaha." 2.86–5.49 (was "...stands north of Omaha.", 2.86–5.59)
+  - niagara: "They drop where New York meets Canada!" 2.86–5.06 (was "They drop over a cliff in New York.", 2.86–4.52)
+  - homestead: "One of the first claims, under the 1862 law." 2.89–5.64 (was "One of the first claims, back in 1862.", 2.89–5.10)
+  Manifest untouched. Source scripts in `journal-movies-batches` batch-04/07/08/09 NOTES.md corrected with fix notes (unversioned working files, not in this repo).
+- [x] Verification (this commit): gates — `npx tsc --noEmit` clean · `npm test` scripts 1154 pass / 0 fail / 11 skip, src 2302 pass / 0 fail / 0 skip · `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green, buildId `a7191e3e` · worker suite 145/145 (bonus, not in the assigned gate set). E2E (sequential, flock lock, chromium-1243, VITE_KOFI_URL set at build + test): new facts specs 6/6 desktop + 2/2 mobile — each entry plays with its corrected cue-2 line as the active caption inside its window, the same line highlights in the transcript panel, and the 5 old wordings appear nowhere on the page; source check 5/5 VTT + JSON corrected. Regression: existing journal-player + captions specs 31/31. Media: the fixed mp4s were fulfilled locally from the `fix/journal-facts-5` branch files (`git show origin/fix/journal-facts-5:journal/<id>.mp4`, media clone's branch untouched); the video src stays the real meridian-media URL — VM Chromium cannot reach github.io, and the live Pages site still serves the OLD clips, so local fulfillment is the only way to test the fix. Recording (video-only, Playwright video has no audio): `~/workspace/journal-player-facts-play/facts-desktop.webm` (94.6 s, 800x500) — one continuous take, all 5 corrected entries playing; frames spot-checked by eye, each corrected caption legible on-video (alamo ~0:15, cadillac ~0:34, joslyn ~0:53, niagara ~1:12, homestead ~1:29.5). New specs: `tests/e2e/journal-player.facts.{desktop,mobile,record.desktop}.spec.ts` + `journal-player.facts.data.ts`; helper `stubJournalMediaFixedClips` in `journal-player.helpers.ts`. Logs: `~/workspace/journal-facts-{gates,unittest,worker,tsc2,build,e2e-desktop,e2e-mobile,e2e-record,e2e-regress}.log`. No merge, no PR opened.
+- [ ] Out of scope, NOT done: the other 101 clips' narration/audio/visuals are NOT verified by this work; the media branch `fix/journal-facts-5` still needs merging/deploying before the live site serves the corrected audio.
+
+---
+
+## Merged main record — fix/337-guess-counter (PR #340, main @ 5e6af2f9)
+
+Preserved from main during the rebase onto 5e6af2f9: the #340
+branch-status record that main carried at the merge. It is not this
+branch's work; it is kept here so the rebase does not silently drop it.
+
+### fix/337-guess-counter record (verbatim from main @ 5e6af2f9)
+
+# BRANCH_STATUS — fix/337-guess-counter
+
+- **Branch:** `fix/337-guess-counter`
+- **Base:** `main` @ `775d8b4` (#329 merged) · synced with `main` @ `9e49da3` on 2026-11-08 (merge commit; see Sync below)
 
 ## Task capsule
 
-- TASK / defect: on the GeoDetective open path, a screen chunk (or its
-  CSS preload) fails at tap time → MapErrorBoundary shows its
-  recoverable card (correct) → `src/lib/chunk-recovery.ts` auto-reloads
-  once (owner-approved, PR #245) → if that recovery reload's boot
-  stalls past the crash watchdog's 28 s timer, the watchdog showed
-  "The game couldn't start on this phone." and POSTed a `boot_failure`
-  — the wrong surface (a boot-failure screen for a mid-session chunk
-  failure) and false telemetry, for a session that had already reached
-  home and set `window.__meridian_ready` on the previous page. The
-  mechanism is shared (TrailScreen, SatelliteMap, HomeGlobe ride the
-  same lazy + withChunkTimeout + MapErrorBoundary + chunk-recovery
-  path; the watchdog is global), so the fix lands once, in the watchdog.
-- FIX: in `scripts/crash-watchdog.mjs`, `crashWatchdogMain`'s
-  `onTimer()` sets a recovery flag when
-  sessionStorage key `meridian.chunkReloadNotice` holds a numeric
-  timestamp whose age at timer-fire time is ≤ 900_000 ms (mirrors
-  `CHUNK_RELOAD_NOTICE_MAX_AGE_MS` in `src/lib/chunk-recovery.ts`;
-  keep-in-sync comments on both sides). Why it proves the case: the
-  key is written ONLY immediately before a chunk-recovery reload — by
-  chunk-recovery's `decide()` (`writeNotice`) before an auto-reload,
-  and by MapErrorBoundary's manual "Try again"
-  (`markChunkReloadNotice`) — and both writers run only inside an app
-  that already booted and reached home (verified by grep before
-  building: those are the only two writers; the only consumer is
-  `consumeChunkReloadNotice` at app init in `game-app.tsx`). If the
-  recovery reload boots, the app consumes the notice and
-  `__meridian_ready` stands the watchdog down anyway; a fresh notice
-  SURVIVING to timer-fire with ready unset can therefore only be a
-  stalled chunk-recovery reload. Malformed / stale / absent notice →
-  today's behaviour, unchanged (fail closed toward the fallback).
-- Path division (nothing else moves):
-  - version skew → the app's stale offer + Refresh, as today;
-  - plain chunk failure → recoverable card + one bounded auto-reload, as today;
-  - stalled recovery reload → the `boot_failure` report stands down on the fresh chunk-reload notice, and the player gets the recovery card ("The reload didn't finish loading.", panel round-1 cure — the report stands down, the player does not);
-  - fresh-boot stall → watchdog unchanged.
-- Redundancy audit: no parallel recovery surface was created — the
-  fix reuses the existing notice key and the watchdog's existing
-  guarded storage helper; no new key, no new pipeline.
-- Byte budget: the ES5 check is folded into onTimer's existing guard
-  (`+ss("meridian.chunkReloadNotice") >= Date.now() - 9e5`), +51
-  rendered bytes: worst case (14-char build id) 6,104 → 6,155. That
-  exceeds the old 6,144 budget by 11, so the budget constant (module
-  docstring + `scripts/crash-watchdog.test.mjs`) rises to 6,200 —
-  the smallest round number that fits with margin (~45 bytes, like
-  the ~40 bytes of headroom 6,144 carried). No unrelated watchdog
-  code was shaved. (These are the pre-cure round-1 figures; the
-  cure and the merge-up moved the budget again — final merged
-  figures: measured worst case 6,551, budget 6,600; see the
-  Merge-up section below.)
+TASK / requested outcome: Fix issue #337 — the GeoDetective header
+counter overstates by one once a case is finished: a case lost on
+its 6th guess read "Guess 7 of 6" (owner screenshot, 2026-11-03),
+a 1-guess win read "Guess 2 of 5". Finished case: show the guesses
+actually made. Playing state unchanged. Builder silo: build, open
+the PR, stop. NO MERGE without the owner's per-PR word; Silo QA and
+the panel follow as separate silos.
 
-## Files touched
+Tier and rationale: Tier 1 — Solo TDD. One bug, one expression, a
+clear repro (the owner's screenshot + the seeded finished cases
+below).
 
-- `scripts/crash-watchdog.mjs` — the stand-down in `onTimer()`, module
-  docstring, budget figures (commit `ff43bbc`).
-- `scripts/crash-watchdog.test.mjs` — 3 new unit cases (fresh notice
-  stands down; stale and malformed are controls) + the budget raise
-  (commit `ff43bbc`).
-- `src/lib/chunk-recovery.ts` — comment only: the watchdog reads the
-  notice key as a stand-down proof; keep the 900_000 ms values in
-  sync (commit `ff43bbc`).
-- `tests/e2e/crash-watchdog.spec.ts` — one new case driving the real
-  two-page cascade (commit `ac6c24d`).
-- `docs/observability.md` — `boot_failure` row note + a new
-  "When the boot watchdog stands down" section with the path-division
-  table (docs commit, this record's commit).
-- `BRANCH_STATUS.md` — this section, prepended; the records below are
-  main's accumulated records, kept intact.
+Done condition / evidence: a new E2E spec seeds finished cases and
+asserts the truthful header — it fails on the unmodified build with
+the exact pre-fix strings, and passes after the fix; the shipped
+playing-state pins in geodetective.spec.ts stay green; all gates
+green (tsc, npm test, lint-cards, build:pages).
 
-## Fail-first evidence
+Files in scope: `src/game/loop/LoopScreen.tsx` (the counter
+expression on the LoopGame header line only),
+`tests/e2e/guess-counter.desktop.spec.ts` (new), this file.
+Protected / untouched: LoopScreen's deal paths and the "Case #N"
+header block (owned by the parallel #336 run), every other surface.
+Redundancy: grep-verified — the header counter at this line is the
+only surface that renders "Guess N of {cap}" from
+`guesses.length + 1`; the reveal's "Solved in X of Y guesses."
+already counts actual guesses and is untouched.
 
-- Unit: the 3 new tests against the UNMODIFIED module — 50 tests,
-  49 pass / 1 fail: the fresh-notice case failed because the overlay
-  WAS inserted (veil object vs expected undefined); the stale and
-  malformed controls passed, pinning today's behaviour. With the fix:
-  50/50 pass.
-- E2E: the new spec against a build of unmodified `e1cf6fe` — failed
-  at the intended assertion, `page.locator("#mv")` resolved to 1
-  element after the watchdog timer (the overlay appeared on the
-  stalled recovery reload), with every anti-vacuity pin green first
-  (card shown, reload's time-origin move observed, reloaded page
-  stalled with no app UI, fresh notice surviving unconsumed). Two
-  earlier attempts died in Chromium itself ("Target crashed" /
-  browser-closed at context creation) under VM load shared with
-  parallel crews — environment class, dispositioned by the later
-  clean runs, not counted as evidence either way. With the fixed
-  build: the case passes (in the full-file run below).
-
-## Gates (final tip; actuals)
-
-- `npm ci` — 384 packages, exit 0.
-- `npx tsc --noEmit` — clean, exit 0.
-- `npm run typecheck:worker` — clean, exit 0.
-- `npm test` — exit 0: scripts 1,019 tests (1,008 pass / 0 fail /
-  11 skipped); src 2,119 / 2,119 pass.
-- `npm run test:worker` — 117 / 117 pass.
-- `node scripts/lint-cards.mjs` — GATE PASSED.
-- `npm run build:pages` — exit 0; the shipped `_shell.html` inline
-  watchdog carries the stand-down check (verified in the artifact).
-- E2E spot (flock `~/workspace/.e2e.lock`, `--workers=1`,
-  chromium-1243): `crash-watchdog.spec.ts` full file 4 passed /
-  1 failed — the new stalled-reload case PASSES; the failure is the
-  pre-existing "stale build" case (breadcrumb `lastMilestone`
-  expected `data_chunk_load_start`, received `storyteller_ready`),
-  which fails IDENTICALLY on a control build of unmodified
-  `e1cf6fe` (watchdog file restored from base, rebuilt, same
-  expected/received) — pre-existing on main in this environment,
-  not a regression; the watchdog never writes the breadcrumb.
-  `chunk-boundary-copy.desktop.spec.ts` + `card-redesign.desktop.spec.ts`
-  — 13 / 13 passed.
-- Rendered watchdog size: 6,104 bytes worst case before → 6,155
-  after (14-char build id); budget 6,144 → 6,200.
+Assumptions: the rendered cap for a resumed case comes from the
+puzzle's deal snapshot (`dealStartClues` / `dealMaxGuesses` →
+`persistedDealConfig`); the spec's seeds stamp those fields so the
+asserted caps (6 for the loss, 5 for the win) are the caps the
+header actually renders — confirmed by the red run's page snapshots.
 
 ## Status
 
-- [x] Fix + unit tests (`ff43bbc`), pushed
-- [x] E2E case (`ac6c24d`), pushed
-- [x] Docs + this record (docs commit), pushed
-- [x] PR opened — NO MERGE (pipeline continues: Silo QA + panel; merge only on the owner's per-PR word)
+- [x] Fresh clone at `~/workspace/meridian-counter-fix`, branch cut
+      at `775d8b4`
+- [x] RED: new spec on the unmodified build — 2 failed, both on the
+      header assertion. Page snapshots in the Playwright error
+      contexts show the exact pre-fix headers: `- status: Guess 7
+      of 6` (lost seed) and `- status: Guess 2 of 5` (won seed).
+      Both seeds validated cleanly: each case restored as its
+      reveal ("Out of guesses" / "🎯 You found it!") before the
+      header assertion failed
+- [x] FIX: one line — `finished ? puzzle.guesses.length :
+      puzzle.guesses.length + 1` (the `finished` value already in
+      scope on LoopGame; the neighbouring "— N left" suffix was
+      already gated on it)
+- [x] GREEN + gates on the tip: `npx tsc --noEmit` exit 0 ·
+      `npm test` exit 0 (scripts 943 pass / 11 skip / 0 fail;
+      src 2016/2016) · `node scripts/lint-cards.mjs` GATE PASSED ·
+      `npm run build:pages` exit 0 · E2E under
+      `flock ~/workspace/.e2e.lock`, `--workers=1`, against the
+      Pages build: **19 passed / 1 failed of 20** — new spec 2/2,
+      `geodetective.spec.ts` 17/18. Every counter pin stays green
+      (playing state: "Guess 2 of 5" after one guess, "Guess 1 of
+      5" on a fresh deal; the win-path snapshot shows the finished
+      2-guess win header reading "Guess 2 of 5" — post-fix truth;
+      pre-fix it read "Guess 3 of 5"), so the playing state is
+      untouched. The 1 failure is NOT the counter — see next item
+- [x] Pre-existing failure, proven on unmodified main: the
+      geodetective win-path test (spec:199) fails at its share-text
+      assertion (spec:256) — expected
+      `https://meridian.knowledgetest.workers.dev/`, received the
+      Pages URL `https://veeresh-bikkaneti.github.io/Meridian/`.
+      Cause: the share origin follows the build's baked base
+      (`shareOrigin` in `src/lib/og/share-meta.ts`); the harness
+      serves the Pages build (base `/Meridian/`), while the pin
+      expects the Workers origin (PR #128). Proven pre-existing:
+      the identical test on unmodified main `775d8b4` (worktree,
+      same Pages build recipe) fails with a byte-identical
+      received share string. (One main run also flaked earlier on
+      a sheet/reveal heading strict-mode race — transient timing,
+      unrelated.) Out of scope for #337; flagged for the owner as
+      a separate test-pin/build mismatch. Correction note: the
+      first status commit claimed "21/21" — that was a misread of
+      a piped E2E summary (the pipe masked Playwright's exit
+      code); the true counts are as stated here
+- [x] Redundancy grep on the tip: line 1134 is the only
+      "Guess N of {cap}" render in `src/`; the only other
+      cap-denominated surface, the reveal's "Solved in X of Y
+      guesses." (line 1633), already counts actual guesses
+- [x] PR opened against main — #340, still NO MERGE (owner's
+      word only). The "now ticked" line in the PR body was false
+      through `16daa5ad` (unchecked at `528df01` and `8e3ccda` too).
 
-## Panel round 1 + cure — 2026-11-04 (verdict on `417a5ab`)
+## Sync with main (2026-11-08, Rock — not a re-approval)
 
-Panel tally: **2 APPROVE / 8 APPROVE-WITH-NITS / 2 BLOCK**; DevEx
-PASS-WITH-NITS. The two BLOCKs (UX Designer + UX Researcher lenses)
-share one finding: suppressing the `boot_failure` POST was right,
-but suppressing the ONLY recovery surface was not — on a stalled
-recovery reload the player (a child, possibly in the standalone PWA,
-which has no browser reload button) was left on a blank shell: no
-text, no button, no `role=alert` announcement, no exit. The round-1
-E2E pinned exactly that state.
+- Merged `origin/main` @ `9e49da3e` into this branch normally (no
+  rebase, no force). The only conflict was this file (main carried
+  another branch's status); resolved by keeping this PR's record.
+  `LoopScreen.tsx` auto-merged; the fix line is now at line 1441
+  (was 1134 at the original tip — main grew the file); it is still
+  the only "Guess N of {cap}" render in `src/`.
+- The panel's votes were on `8e3ccda`; this merge creates a new tip,
+  so the panel must refresh on it. No merge without the owner's word.
 
-Cure (this round, commits `5a61551` + `b6a72ab` + the docs commit):
+- Gates on the merge tip `53a59b5` (2026-11-08, logs on the
+  builder VM at /workspace/rock-pr340-logs): `npm ci` 0 · `tsc
+  --noEmit` 0 · `typecheck:worker` 0 · `build` 0 · `npm test` 0
+  (scripts 1023 pass / 9 skip / 0 fail; src 2266/2266) ·
+  `test:worker` 145/145 · `lint-cards` GATE PASSED · `build:pages`
+  0 · `lint:content` GATE PASSED · `check:flags` 0.
+- E2E (`flock ~/workspace/.e2e.lock`, `--workers=1 --retries=0`,
+  built Pages artifact). Browser: Playwright's bundled Chromium
+  v1243 is NOT installed on this VM (it needs a download, not
+  approved); ran with the config's documented override
+  `PLAYWRIGHT_CHROMIUM_EXECUTABLE=/usr/bin/google-chrome` (Chrome
+  156). `guess-counter.desktop.spec.ts` 2/2 pass;
+  `geodetective.spec.ts` 17/18 — spec:199 (win path) fails at
+  line 238: strict-mode violation, `heading "Ankara, Türkiye"`
+  matches both the guess sheet's h2 and the reveal's h2.
+  Pre-existing, not this PR: the identical test on unmodified main
+  `9e49da3` fails 3/3 with the same error (`--repeat-each=3`); this
+  tip also 3/3. This masks the older share-origin failure at
+  spec:256 recorded above (not reached).
+- GitHub's e2e job runs a fixed list of 6 specs that includes
+  neither `guess-counter.desktop.spec.ts` nor
+  `geodetective.spec.ts`, so CI green does not exercise this fix.
 
-- `scripts/crash-watchdog.mjs` — `onTimer()` now sets a short flag
-  (`rcv`) when the fresh-notice condition holds instead of returning;
-  `show()` reads it: the SAME overlay (role=alert, heading focus,
-  Try again, Reload + ?nosw=1 links, ASKED latch) with the recovery
-  heading **"The reload didn't finish loading."** (the existing body
-  line "The game didn't finish loading." is shared — true for both
-  cards, zero extra body cost; the WebGL-less heading variant does
-  not apply) and **no `send()`** — no `boot_failure` POST, no "Crash
-  note sent" line. Telemetry suppression from round 1 is unchanged;
-  stale/malformed notices keep the generic card + report.
-- Honesty wording (Office Hours nit): the notice proof is stated as
-  "in practice" in the watchdog docstring + `onTimer` comment,
-  `src/lib/chunk-recovery.ts`, and `docs/observability.md` — the
-  flag's removal at consume time is best-effort (the 13-Uf
-  surviving-flag case) and the check is one-sided on future
-  timestamps; both are accepted residuals, now worded honestly.
-- Tests: unit fresh-notice case updated (overlay IS inserted,
-  recovery heading present, generic + WebGL headings absent, zero
-  POSTs, no "Crash note sent") + a new Try-again case (reloads once,
-  still no report) — 51 tests. E2E cascade case retitled ("the
-  watchdog shows the reload card and files no boot_failure") and now
-  asserts #mv present + recovery heading visible + generic heading
-  absent + zero `boot_failure`; all anti-vacuity pins kept.
-- Fail-first: updated unit cases vs the `417a5ab` module — 51 tests,
-  48 pass / 3 fail (fresh-notice case: no overlay; Try-again case: no
-  veil; no-drift needle: heading string absent). Updated E2E vs the
-  `417a5ab` build — failed at `expect(#mv).toHaveCount(1)`: the old
-  tip shows nothing. With the cure both are green (below).
-- Docs: `docs/observability.md` row 3 rewritten (player sees the
-  reload card + Try again; no `boot_failure`), row 2's quote fixed
-  to the curly apostrophe the boundary actually renders
-  (`Couldn’t`, U+2019 from `&rsquo;`, byte-checked), proof paragraph
-  softened to "in practice" with the best-effort-removal residual
-  stated.
-- Byte budget: the cure adds 58 rendered bytes — worst case (14-char
-  build id) 6,155 → **6,213** — over the 6,200 budget, so the budget
-  rises to **6,250** (smallest round fit keeping the established
-  ~40-byte headroom pattern: 37 bytes margin; rationale recorded in
-  the test comment, the RENAME comment, and the module figures).
+## P-Stack swarm on `16daa5ad` (2026-11-08 — not a 12-seat panel)
 
-Cured-tip gates:
+Owner ordered `/pstack:swarm` because the handbook persona pack
+and `~/workspace/custom-skills/local-meridian-review-pipeline/SKILL.md`
+are not on this machine. Role titles were not improvised as those
+12 seats. Resolver `check-models-config.py` is not installed, so
+each arm inherited the session model. The work model is unknown,
+so this review may be same-model. Not a merge approval.
 
-- `node --test scripts/crash-watchdog.test.mjs` — 51 / 51.
-- `npm test` — exit 0: scripts 1,020 tests (1,009 pass / 0 fail /
-  11 skipped); src 2,119 / 2,119.
-- `npx tsc --noEmit` — clean. `npm run typecheck:worker` — clean.
-- `npm run test:worker` — 117 / 117.
-- `node scripts/lint-cards.mjs` — GATE PASSED.
-- `npm run build:pages` — exit 0; the recovery heading verified
-  present in the shipped `_shell.html` watchdog block.
-- E2E (flock, `--workers=1`, chromium-1243): `crash-watchdog.spec.ts`
-  full file — 4 passed / 1 failed. The cured cascade case PASSES.
-  The one failure is the pre-existing "stale build" case with its
-  signature unchanged (expected `data_chunk_load_start`, received
-  `storyteller_ready`; control-proven pre-existing on unmodified
-  `e1cf6fe` in round 1) — not chased, per the cure brief.
-- Recorded follow-ups NOT built (panel's list): the
-  future-timestamp upper bound, an S3-style drift-guard test for the
-  mirrored key/age, an exact-boundary 900,000 ms unit pin.
+| Slice | SHA checked | Verdict |
+|---|---|---|
+| scope-and-regression | `16daa5ad` | PASS — 3 files; one counter line; merge-base `9e49da3` |
+| counter-correctness | `16daa5ad` | PASS (SHA recorded; case table was thin — parent is re-checking the comment commit) |
+| e2e-spec | `16daa5ad` | PASS |
+| records-honesty | `16daa5ad` | ISSUES |
 
-## Merge-up — 2026-11-04 (Silo QA, main `70e1be6` merged in)
+Kept from records-honesty (parent dropped two BLOCKs that treated
+"not re-run in this session" as proof the builder VM log was false;
+GitHub `build (22.x)` on `16daa5ad` is success and includes
+`npm run build` + `npm test`):
 
-- Conflicts: this file (both-records: this #349 record on top,
-  main's #347/#348 records and the accumulated stack intact
-  below), `docs/observability.md` (auto-merged clean — #347's
-  severity/INFERRED content AND this branch's stand-down section
-  both present, verified), `scripts/crash-watchdog.mjs` + its
-  test (budget figures only — the code itself auto-merged).
-- Watchdog budget reconciliation: both features survive in the
-  merged module (the #347 read-only boot-health stamp AND the
-  #349 stand-down + recovery card). The rendered worst case
-  MEASURES 6,551 bytes (14-char build id) on the merged tree —
-  exactly 6,104 base + 338 (stamp) + 109 (stand-down + card) —
-  so the budget is 6,600 bytes (smallest round fit, 49 bytes of
-  margin, the established ~40-byte headroom pattern), recorded
-  in the module docstring, the RENAME comment, and the test.
-  Watchdog suite on the merged tree: 61/61.
-- Gates + E2E on the merged tip `0190262` (Silo QA, fresh clone):
-  npm test exit 0 — scripts 990 pass / 0 fail / 11 skipped, src
-  2,092/2,092, worker 145/145, watchdog file 61/61; tsc +
-  typecheck:worker clean; lint-cards GATE PASSED; build:pages
-  green. E2E crash-watchdog.spec.ts 4 passed / 1 failed — the
-  failure is the pre-existing "stale build" storyteller_ready
-  race, control-proven identical on unmodified main; the cascade
-  case PASSES here and FAILS on unmodified main at the
-  recovery-heading assertion (pre-fix bite, first-hand).
-- Panel re-vote on `0190262` (2026-11-04): READY-WITH-NITS —
-  3 APPROVE / 9 APPROVE-WITH-NITS / 0 BLOCK (both round-1 UX
-  BLOCKs verified cured first-hand); Silo QA PASS-WITH-NOTES;
-  DevEx PASS-WITH-NITS; benchmark PASS (largest delta +1.71%,
-  the watchdog bytes). Recorded follow-ups (not built): the
-  future-timestamp upper bound, an S3-style drift-guard test for
-  the mirrored key/age, an exact-boundary 900,000 ms pin, and
-  the ASKED-latch second-stall note. No merge — the owner's
-  per-PR word follows this verdict.
+- The PR body said a JSX why-comment was added. It was not in
+  `16daa5ad`. This commit adds it above the counter. The expression
+  is unchanged. It now sits under that comment (line moves by the
+  comment only).
+- The PR-opened checkbox was unticked. It is ticked above. PR #340
+  is open. Still no merge.
+- GitHub reviews API on #340 was empty. The "9 APPROVE / 3
+  APPROVE-WITH-NITS on `8e3ccda`" sentence is PR-body prose, not a
+  review object, and it does not cover this tip.
+
+Independent re-run beside the builder log, not a replacement of it:
+`tsc` 0, `test:worker` 145/145, `typecheck:worker` 0, lint-cards
+GATE PASSED, lint-content GATE PASSED, `build:pages` 0,
+`guess-counter.desktop.spec.ts` 2/2. Browser: Chrome for Testing
+156.0.8078.4 (headless shell). `/usr/bin/google-chrome` was absent.
+`npm test`: scripts 1021 pass / 11 skip / 0 fail, src 2266/2266.
+The two extra skips versus 1023/9 are the SSR pins; `npm run build`
+was not re-run here. `geodetective.spec.ts:199` was not re-run.
+No Cloudflare Workers build result for `16daa5ad`.
+
+## Sync with main (2026-11-08, verification-gate crew — not a re-approval)
+
+- Merged `origin/main` @ `63d82869` (#372) into this branch (no
+  rebase, no force; pushed by GitHub API replay — the created tree
+  `e6ce631f` matched the local merge tree exactly). Merge commit
+  `78b258e9`, parents `835ad2ef` + `63d82869`. The only conflict was
+  this file; resolved by keeping this PR's record, per the standing
+  per-branch convention. Branch diff vs main is now exactly 3 files:
+  this file, `src/game/loop/LoopScreen.tsx`, and
+  `tests/e2e/guess-counter.desktop.spec.ts` — the counter fix is
+  unchanged (the expression sits at LoopScreen.tsx:1444 on this
+  tip). GitHub reports the PR mergeable again.
+- Gates on the merge tip `78b258e9` (2026-11-08, logs at
+  `~/workspace/meridian-pr340-e2e/logs-gate/t340/` on this VM):
+  `tsc --noEmit` 0 · `npm test` 0 (scripts 1021 pass / 11 skip /
+  0 fail of 1032; src 2268/2268) · `test:worker` 145/145 ·
+  `typecheck:worker` 0 · `lint-cards` GATE PASSED · `build:pages` 0.
+- E2E (`flock ~/workspace/.e2e.lock`, `--workers=1`, built Pages
+  artifact; browser = Playwright's bundled Chromium 1243 via the
+  config's documented `PLAYWRIGHT_CHROMIUM_EXECUTABLE` override —
+  it IS installed on this VM): `guess-counter.desktop.spec.ts`
+  **2/2 pass**. The 6 leftover failures from the original full-suite
+  run were baseline-matched on pristine main `63d82869` first: ALL
+  SIX are pre-existing, zero are regressions from this PR — five
+  fail signature-identically on unmodified main
+  (tutorial.spec.ts:125/166/174 strict-mode 'Take the tour' ×2;
+  crash-watchdog.spec.ts:164 lastMilestone; offline-content
+  .spec.ts:203 heading timeout), and offline-content.spec.ts:181 is
+  a proven flake on both trees (storyteller-CSS preload console
+  error; trace-settled as the test's own offline choreography).
+  On this tip the same six fail with identical signatures
+  (`logs-gate/t340/e2e-six.log`), plus the pre-existing
+  telemetry-spill teardown error also present on main. Fixes for
+  the four clusters were built under a signed Tier 2 council
+  manifest on their OWN branches off main (this PR stays purely
+  the counter fix): `fix/e2e-tutorial-tour-names` @ `acbd506d`,
+  `fix/e2e-watchdog-milestone-assertion` @ `ed13b47f`,
+  `fix/e2e-offline-loop-scenario` @ `ff0d2628`,
+  `fix/e2e-offline-preload-assertion` @ `8cbe1b99` — each gated
+  green on its own scope; no PRs opened for them.
+- GitHub CI on `78b258e9`: `build (22.x)` SUCCESS · `e2e` (the
+  fixed 6-spec job — still neither guess-counter nor geodetective)
+  SUCCESS · GitGuardian SUCCESS. No Workers Builds result exists
+  for this or any branch: branch builds are off account-wide
+  (platform tag mismatch, fixed during PR #351 by disabling
+  non-production branch builds); production Workers state is
+  untouched by this work.
+- This tip supersedes every earlier tip the panel or swarm looked
+  at; the 12-seat panel + Reality Checker refresh on this tip is
+  recorded in `~/workspace/meridian-pr340-e2e/CREW-REPORT-2.md`.
+  Still NO MERGE without the owner's per-PR word.
+
 
 ---
 
-# Branch status — feat/345-crash-severity (issue #345: crash-report severity grades + watchdog stamp)
 
-- **Branch:** `feat/345-crash-severity`
-- **Base:** `main` @ `0b4e270`
-- **Authority:** issue #345 + the owner-adopted swarm design (2026-11-04, Slice B): grades S1/S2a/S2b/S3, threshold ≥3 (owner's pick over the draft's ≥2), ungraded absolutes, and the watchdog-stamp client fix commissioned in the same decision.
-- **State:** CURED + MERGED UP over main `0b4e270` (via `e1cf6fe`) — panel re-vote on the cured tip pending; no merge (owner's word follows the re-vote).
+---
+
+## Merged main record — feat/u11-clue-renders (PR #370, main @ f2bbf1a2)
+
+# BRANCH_STATUS — feat/u11-clue-renders
+
+- **Branch:** `feat/u11-clue-renders` · **Base:** `main` @ `9e49da3` (PR #365 merged + live)
+- **Design of record:** clue-read diagnosis (evidence folder
+  `clue-read-diagnosis/DIAGNOSIS.md`) + owner approval (Veeresh,
+  2026-11-08 ~03:02 CST, in the `meridian` side chat): "Approve the
+  full render — all 386 core cases."
 
 ## Task capsule
 
-- TASK: worker-side `severityOf` (inputs: the re-derived verdict + the stamped `unfinishedBoots` streak only; first-match, fail-closed); the alert's priority line leads with the grade and its why line gains one `Severity: …` clause; the digest gains one counted `severities` dimension and severity-led headers; the boot watchdog stamps the durable boot-health streak read-only onto `boot_failure` so those reports can grade S1.
-- Tier: 2-shaped (worker + client telemetry surfaces, 3+ files). The owner-adopted design is the manifest of record for this task; the panel reviews the final tip after this PR opens.
-- Protected/out of scope: the verdict derivation itself (severity consumes it, never alters it), the P1–P4 mapping, other PRs, branch protection.
-- Model-vs-code note: the inline watchdog's byte budget could not absorb the stamp (worst case was 6,104 of 6,144 bytes) — the budget rose to 6,656 (new worst case 6,441), documented in `scripts/crash-watchdog.mjs` and its test. No telemetry-manifest change was needed: `unfinishedBoots` was already a manifest field, so client + worker + parity stayed in lockstep with no field added.
+TASK / requested outcome: Phase A rendered clue audio for the
+Capitals pack only, so 386 of the 387 core-deck cases had empty clue
+entries in the audio manifest and their clues were never read aloud
+(handbook ch.10 gate FG-3). Render all five clue reads for every core
+case in Watson's cast voice, extend the manifest gate so an empty
+core clue entry fails the build, and prove by ear-level E2E that a
+core case's clues fetch and play.
 
-## Record
+OWNER APPROVAL (Veeresh, 2026-11-08): the full render of all 386
+core cases, on the diagnosis that the playback machinery already
+worked and only the renders were missing.
 
-- [x] Worker (`workers/crash-report/src/index.ts`): `severityOf` + `SEVERITY_STREAK_THRESHOLD = 3`; `buildAlert` severity lead + clause in Discord and email; `CountBucket.severities` (read-tolerant for pre-#345 buckets), counted in `recordTelemetry`, rendered in type blocks, worst-grade lead in the digest priority line. Tests 109 → 127 (+18: every grade boundary incl. exactly 3, absent-streak fallback wording, stamped-zero wording, ungraded absoluteness at streak 99 for both ungraded verdicts, alert rendering, severities counting, old-bucket tolerance, ungraded-only digest).
-- [x] Watchdog stamp (`scripts/crash-watchdog.mjs`): read-only `ds()` localStorage reader; send-time parse of `meridian:boot-health` (v:1 shape required, floor, 0..99 clamp — mirrors `readBootHealth`); stamps only when a value was read; never writes the record (the §4.4 invariant stands). Inline budget 6,144 → 6,656 with the reason recorded in the module. Tests +8 stamp cases (watchdog file 55/55).
-- [x] Docs: worker README gains a Severity grades section, the updated digest example, the bucket field, and the test count; `docs/observability.md` alert/digest examples and reading notes updated to the new rendering.
-- [x] Gates: worker 127/127 + `typecheck:worker` clean; `npm test` — scripts 1011 pass / 0 fail, src 2119/2119; `tsc` clean; lint-cards GATE PASSED; `build:pages` green. Redundancy audit: one severity derivation (`severityOf`; counting routes through `severityKeyOf` → `severityOf`), one watchdog stamp path.
-- [x] E2E (flock, workers=1, chromium-1243): crash-watchdog + crash-classification + crash-loop-breaker + observability — 12 passed, 2 failed on the pre-existing `storyteller_ready` milestone race: `crash-watchdog:164` fails identically on unmodified main in a clean sequential run, `crash-classification:169` passes in an isolated A/B on both builds, and the two production dists are byte-identical except `_shell.html`. Not a #345 regression.
-- [x] Visuals (owner addition, 2026-11-04): production build at 6 viewports (360×740, 390×844, 430×932, 768×1024, 1440×900, 1920×1080) — boot path exercised, first paint complete 6/6, no watchdog veil; home byte-identical to main at 360/390 and visually identical at 430; the real WebGL globe renders at 360/390/430/1440. Globe captures at 768/1920 are blocked by renderer crashes that hit unmodified main identically (VM SwiftShader + /tmp at 93%) — environment, not a regression. Satellite imagery tiles do not load from sandbox Chromium (no external network); the globe renders its boundary/starfield state with Esri attribution. Evidence: `evidence/visuals-345/` in this worktree (untracked) + Discord samples rendered by both worker versions; links in the PR body.
+## Done
 
-## Panel cure + merge-up — 2026-11-04 (PR #347, verdict on `0a7f182`: 2 BLOCKs)
+- [x] Pilot (cases 0–19): 105 rendered, 19% flagged, worst case
+  479,225 B of the 500,000 B budget, ≈16.9 s/case at concurrency 4.
+- [x] Full batch: 387/387 core cases carry all five clue reads
+  (1,935 reads; case 137's five pre-existed). Core clue audio totals
+  141.9 MB; the detective audio tree is 239 MB. Audio loads lazily
+  per case — the entry JS chunk is unchanged (457,847 B).
+- [x] Budget cures: five cases (28, 54, 87, 144, 289) busted the
+  500,000 B budget on one very slow take each; re-encoding the
+  affected clips at 32 kbit/s brought every case back under budget
+  with pitch and duration measurements unchanged. Zero cases held.
+- [x] Flagged disposition (explicit, not silent): 314 of 1,935 reads
+  ship flagged by the pipeline's pitch/pace ladders — 103 outside
+  Watson's family band (78–127 Hz), 6 under the 100 wpm pace floor,
+  the rest inside-band pitch flags. A cure pass re-rendered the 103
+  outside-band lines fresh: 0 landed inside the band, so the shipped
+  takes stand. The Capitals pack ships the same flagged state
+  (85 of 550) — flagged is the pipeline's designed "accepted with a
+  note" state, and every flagged line is named in the PR body.
+- [x] Manifest gate extended: `checkCoreCoverage` fails the build
+  when a core case is neither claimed with all five reads nor on
+  the explicit hold list (`coverage.coreHolds`, currently empty).
+  Sabotage controls proven: an emptied entry (case 42), an
+  over-budget case (case 10), and a dropped case (case 77) each
+  fail the gate by name. Real tree: gate clean, 4,462 entries
+  verified.
+- [x] Handbook ch.10: FG-3 marked CLOSED by U11; the flip checklist's
+  core-case item ticked with the closing E2E named.
+- [x] Gates on the finished tree: typecheck clean · unit suites
+  1,028 pass / 0 fail (scripts) + 2,266 / 2,266 (src) · worker
+  145 / 145 · lint-cards GATE PASSED · build:pages green.
 
-- [x] BLOCK 1 (Senior Developer) — watchdog stamp shape check is now strict (`hp.v === 1`, was loose `==`): a record like `{"v":"1","unfinished":5}` or `v:true` is streak 0 to the app (`readBootHealth` discards it) but stamped 5 by the old watchdog, inflating the grade to a false S1. Regression tests pin string `"1"` and boolean `true` versions stamping nothing (they fail on the pre-cure code, pass cured); valid v:1 and v:2 behaviour stay pinned. Worst-case rendered size 6,441 → 6,442 B, within the 6,656 B budget. Riders: `severityOf` direct-caller edge pins (negative streak clamps to 0, non-integer floors, string/non-finite reads as not stamped) + the ungraded-P4 alert pin — no grading behaviour changed.
-- [x] BLOCK 2 (UX Researcher) — the hourly digest now carries exactly one gloss line directly under the priority line when the hour counted any S1: `S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.` Absent in any hour with no S1; both directions pinned, golden digest updated.
-- [x] Doc riders — grade precedence (S1 > S2a > S2b > S3) documented in the worker README severity section and in `docs/observability.md`'s digest reading notes; the observability alert walkthrough's S1 paraphrase again carries the INFERRED label matching the alert/email wording; the `severities:` note now also states the priority lead's worst grade is counted across all types in the hour and that counts inside one type block sort by count, not grade.
-- [x] Merge-up over main `e1cf6fe` (#311): exactly one content conflict — `workers/crash-report/README.md` (the Tests count line) — resolved keeping both intents: #311's audit corrections and funnel content stay, #347's severity section stays accurate against the cured code, test count re-measured on the merged tree (145). `docs/observability.md` and this file auto-merged; both records kept (this #347 record on top, main's stack below intact). Delta audit: branch-vs-main diff is exactly the #345 scope + this cure — no #311 content in the branch's own delta beyond the merge itself.
-- [x] Gates on the cured, merged-up tip (the `87a49ff` merge tree): fresh `npm ci`; worker 145/145 + `typecheck:worker` clean; `npm test` — scripts 1015 pass / 0 fail / 11 skipped, src 2119/2119; `npx tsc --noEmit` clean; `lint-cards` GATE PASSED; `build:pages` green; watchdog budget worst case 6,442 ≤ 6,656 B. E2E not re-run locally in this pass (Silo QA + CI cover the cured tip). Records correction: the sealed gate logs for the `87a49ff` merge tree show scripts 1015 / src 2119 — those figures supersede the scripts 1011 / src 2127 figures stated in that merge commit's message.
-- [x] Second merge-up over main `0b4e270` (#348 auth removal landed while the first merged tip was gating): sole conflict this file — resolved both-records (this #347 record on top, #348's record below it, main's stack intact). #348's code auto-merged with no overlap into the #347 delta; gates re-run on the new merged tree (figures in the PR body merge-up note).
-- [ ] Panel re-vote on the cured tip, then the owner's merge word. NO MERGE in this pass.
+## Pending
 
----
+- [x] E2E `tests/e2e/detective-core-audio.spec.ts` — **RUN AND
+  PASSED 2026-11-09** (close-out below): all 3 tests by name —
+  (a) all five clue clips fetched (HTTP 200) and play, in order ·
+  (b) tap-Watson repeats the clue itself, not the ack or decode ·
+  (c) solving at guess 2 flushes the queue.
+- [x] Silo QA PASS @ `93a8fe52` (isolated worktree: manifest gate
+  clean, typecheck, lint-cards, all suites green, silo's own
+  sabotage control bites). **Key VOIDED by the close-out tip
+  `fb46cf55` — Silo re-key is the next step.**
+- [ ] Silo re-key, 13-seat panel vote, DevEx, benchmark; merge on
+  READY under ship-when-ready; live check on both hosts.
+- **LANE STOOD DOWN 2026-11-08** (owner's sequential pipeline
+  law): queue position 3, behind the Watson-station cure and
+  PR #364. (The lane later resumed and closed out in this file —
+  see the Close-out section below; the old `RESUME-STATE.md`
+  worktree file was retired 2026-11-09, its record lives in
+  this file and the PR #370 body.)
 
-# Branch status — chore/remove-dead-auth (Remove dead auth)
+## Close-out (2026-11-09, Agent ARCHIVE)
 
-- **Branch:** `chore/remove-dead-auth`
-- **Base:** `main` @ `68ff2c70013746cee55204f5248ffa612270a21f`
-- **Authority:** Owner, 2026-11-04: "remove auth"
-
-## Task capsule
-
-- TASK: remove Meridian's dead auth code and open a READY-for-review PR (no merge). Sign-in (better-auth/OAuth under `src/lib/auth/`) is leftover template code from the first commit (`abb9748`); the live site 404s `/api/auth/*` and nobody will ever be asked to log in. This PR unblocks closing #326/#327 — those PRs are not touched by this work.
-- Tier: 2 (security-adjacent removal across 3+ files, dependency change). Rationale: the deletion surface touches the root route, the Vite config, the smoke tooling and the lockfile, so it carries the full gate contract below even though every edit is a removal.
-- Done condition: the exact removal scope below is complete; the tree-wide grep gate is clean (see the migrations note under Coupling findings); every gate in the verification contract passes; test-count deltas against the pre-removal baseline are accounted for test-by-test; a local runtime smoke on the `build:pages` output passes.
-- Files in scope: `src/lib/auth/**` (delete, except the isolation move), `src/lib/isolation.server.ts` (moved file), `src/lib/app-data/client.server.ts` (one import line), `src/routes/__root.tsx`, `src/lib/credits.ts`, `package.json` + `package-lock.json`, `vite.config.ts`, `scripts/check-auth-invariant.mjs` + test (delete), `scripts/sign-out-plan.mjs` + test (delete), `scripts/browser-smoke.mjs`, `scripts/app-env-plugin.mjs` (one comment), `BRANCH_STATUS.md`.
-- Protected / out of scope (NOT touched): the embedded-DB stack — `src/lib/db.ts`, `migrations/`, `scripts/migrate.mjs`, `db:migrate`, `pgliteBootstrapPlugin`, the `VITE_AUTH_ENABLED`/app-env flag machinery (`with-app-env.mjs` etc.), and `src/lib/app-data/` beyond the one import line. No other dependency is removed.
-- Verification contract: tree-wide grep = 0 for `better-auth`, `lib/auth`, `AuthProvider`, `check-auth-invariant`, `sign-out-plan`, `auth/popup`, `popup.server` (excluding `.git`, `node_modules`, this record — and `migrations/`, see below); `npm ci`; `npx tsc --noEmit`; `npm run typecheck:worker`; `npm run build`; `npm test`; `npm run test:worker`; `node scripts/lint-cards.mjs` (GATE PASSED); `npm run build:pages`; local Playwright smoke on the built artifact.
-
-## Coupling findings
-
-- **browser-smoke coupling:** `scripts/browser-smoke.mjs` imported the auth-invariant check and published an `authWarnings` verdict field. Removed: the import block, the `authWarnings` computation, the verdict field and the warnings spread. Brand warnings, viewports and baseline behaviour unchanged. (`browser-smoke-verdict.mjs` and its test carry no auth references — re-verified.)
-- **authPopupPlugin coupling:** `vite.config.ts` carried a dev-only plugin that `ssrLoadModule`'d the deleted `src/lib/auth/popup.server.ts` to serve `/auth/popup`. Removed: the function, its registration, and the ordering comment above the registration. The neighbouring registration comment also named the deleted `check-auth-invariant` script, so it was cured in the same pass (the grep gate requires zero references). Every other plugin is untouched — `pgliteBootstrapPlugin` and `appEnvPlugin` stay.
-- **isolation move (the one judgement joint):** `src/lib/auth/isolation.server.ts` is a generic Fetch-Metadata same-site guard — it exports `CrossSiteRequestError` + `assertSameSiteRequest`, imports only `@tanstack/react-start/server`, and has no better-auth dependency — with one live outside importer. It moved to `src/lib/isolation.server.ts` (`git mv`); the import in `src/lib/app-data/client.server.ts` was updated. Its header comment no longer claims enforcement at the deleted `authMiddleware` chokepoint or alongside Better Auth's `trustedOrigins`; it now says the guard serves the app-data server path. The `.server`-suffix warning is intact.
-- **migrations note:** `migrations/auth/0001_auth.sql` is a dormant, never-applied Better Auth schema (the migration appliers do not descend into subdirectories) whose comments name the deleted code. It sits inside the protected embedded-DB stack this task must not touch, so it is the one place the removed names still appear; it is listed as a follow-up below instead of being edited here.
-- **Docs sweep:** README.md + `docs/` were grepped for sign-in/auth presented as a live feature — none found, nothing to cure. Historical/review docs that merely record the past are not stale and were left alone.
-
-## Follow-ups (orphaned by this removal — NOT done here)
-
-- `jose` — zero code usage anywhere on the post-removal tree; only its `src/lib/credits.ts` listing remains. Candidate for a follow-up dependency removal.
-- `kysely` — zero code usage; only its credits listing remains. Its only consumer was the deleted auth pglite dialect. Candidate for a follow-up dependency removal.
-- `@electric-sql/pglite` — still used by the protected `src/lib/db.ts`; only the credits listing appears outside the DB stack. Not orphaned as a package.
-- `pg` — still used by `scripts/migrate.mjs` and by `src/lib/db.ts`; credits listing besides. Not orphaned.
-- `migrations/auth/0001_auth.sql` — dormant Better Auth schema + stale comments (incl. one in protected `src/lib/db.ts`); a follow-up decision, inside the DB stack this PR must not touch.
-- `VITE_AUTH_ENABLED` / app-env machinery — the flag now has no consumer in `src/`; the machinery stays per this task's scope and is a follow-up decision.
-
-## Status
-
-- [x] Baseline on unmodified main recorded (scripts + src + worker suites, tsc).
-- [x] Auth folder deleted (18 files) + isolation guard moved; `__root.tsx` AuthProvider wrap removed.
-- [x] Auth scripts deleted; browser-smoke unhooked; app-env comment cured.
-- [x] `better-auth` dependency + `check:auth` script removed; lockfile regenerated (better-auth gone); credits line removed.
-- [x] `authPopupPlugin` removed from `vite.config.ts`.
-- [x] Full gate run on the branch tip + test-count accounting — grep gate clean (only this record + protected `migrations/` retain the names); `npm ci` clean; tsc clean; `typecheck:worker` clean; `npm run build` green; lint-cards GATE PASSED; `build:pages` green (first attempt was killed at exit 137 during prerender under VM contention; the no-change retry passed). Counts: scripts 985 tests / 976 pass / 9 skipped / 0 fail, src 2119 → 2092 (all pass), worker 109 → 109 (all pass). Two tests in `scripts/ssr-build-shape.test.mjs` skip until a production build exists, so the post-build run (976 pass / 9 skipped) is the canonical count. Every delta test is accounted for by the deleted suites: scripts −29 = check-auth-invariant (11) + sign-out-plan (18); src −27 = gate-identity (24) + sign-in-gate (3). No other delta.
-- [x] Runtime smoke on the `build:pages` output — PASSED 7/7: home 200 + renders, GeoDetective card visible, Cold Trail card visible, zero console/page errors, `GET /api/auth/session` → 404. Evidence under `.smoke-evidence/` (not committed). Environment notes: port 4124 (4123 held by a sibling crew's server), `TMPDIR` on workspace disk (shared `/tmp` tmpfs was 94% full and crashed Chromium profiles — a control run against an unmodified main build crashed identically), `--disable-dev-shm-usage` as in `playwright.config.ts`.
-- [x] PR opened READY for review — PR #348 — no merge.
----
-
-# Branch status — feat/capitals-flags-phase1 (Capitals & Flags, Phase 1)
-
-- **Branch:** `feat/capitals-flags-phase1`
-- **Base:** `main` @ `7a35cbf`
-- **Authority:** issue #344 + owner decisions comment (2026-11-04, Veeresh: "All as recommended by the council chair")
-- **Design of record:** `~/workspace/meridian-capitals-flags/DESIGN.md` (arena C2 pack-grown, 16/18) + SYNTHESIS.md + SOURCES.md
-
-## Task capsule
-
-- TASK: grow the shipped Capitals pack in place — Wave 1: licence-verified flag layer on the existing 72 cases (relabel "Capitals & Flags", doorway strip on Home, flags only where the land's name is already on screen in text); Wave 2: +38 cases append-only at loop indexes 459–496 (22 state capitals → 50, 16 country capitals → 60), deck top-up migration, celebration target 72 → 110.
-- Tier: 2 (new feature, data + schema). The signed design package (#344 swarm → arena → owner ratification) is the Consensus Manifest for this task.
-- Ratified lines NOT to cross: no standalone edition; no flag as a hunt target; no manufactured flags or facts (per-file licence gate, unsourceable = flagless); challenges + shared session score stay OUT of v1; Cold Trail generation follows DESIGN.md §7 default (append-only; no silent reset).
-- Adjacency: PR #341 touches LoopScreen/pack-shelf on its own branch — this branch builds on current main and does not wait for it; a merge-up will reconcile.
-- Verification: packs:validate (Hyderabad gate), check-flags gate (Flagstaff), full unit suites, targeted + neighbour E2E (flock, workers=1), tsc, lint-cards, build:pages, bundle check on flag assets.
-
-## Wave record
-
-- [x] Wave 1 — licence research pass (72 lands): **72/72 licence-verified** on Commons (all Public domain per-file), identity cross-checked vs Wikidata P41 (historical-value traps caught for FR/GR/US). **55 ship** (68,366 bytes total); **17 are flagless on the design's ≤10 KB/file hard cap** — detailed seal/arms path data (100–644 KB) with no faithful simplified rendition published (Egypt + Portugal rescued via design-named flag-icons renditions, MIT). Flagless lands are recorded with reasons in the registry + `docs/flags-curation.md`; they ship the day an SVG optimisation step is approved (owner decision queued in the PR body).
-- [x] Wave 1 — schema/composer flagKey derivation (build-time, unmapped subdivision throws), sidecar flagKey for verified lands only, registry + resolver (`src/lib/flag-registry.ts`, lazy glob, 0 bytes precached — verified in dist), surfaces: GeoDetective briefing + Giveaway rung + reveal identity card (flag + sourced story), Cold Trail sighting stamps (163/180; composition byte-stable vs HEAD after stripping stamps) + reveal country line, doorway strip under the Expeditions Map card (with the design's three swatches), relabel "Capitals & Flags" (shelf chips; deck id unchanged).
-- [x] Wave 1 — deck top-up in `ensurePackDeck` (built-from size = undealt + completed + open mystery; new cases tier-banded into the remainder) + tests; existing "never rebuilds" pin intact.
-- [x] Wave 2 — +38 authored cases (22 state capitals → 50, 16 country capitals → 60), append-only at indexes 459–496; `packs:validate` 110/110 (Hyderabad 100%); published 387–458 clue files + sidecar entries byte-identical to Wave 1 (append-only composer guard enforced; a removal test pins it). **Curation correction:** five picked capitals were dropped for duplicating core-deck targets by GeoNames placeId — Islamabad, Amman, Montevideo and Riga from the authored batch, plus Kuala Lumpur, picked in the first swap round and dropped in a second round for the same reason — and the four replacements that shipped are Dhaka, Algiers, Quito and Tunis, Tunis taking Kuala Lumpur's slot, so all 16 country cases are accounted for (+22 states unchanged); all 38 new targets verified distinct across core + pack (497 distinct targets, build-loop gate). The 16 original country cases needed a validator cure round (59 clues rewritten as plain-words paraphrases inside their verbatim quotes; zero quotes changed, zero facts invented; 5 over-quoted facts dropped).
-- [x] Wave 2 — flags for the 38 new lands through the same Flagstaff gate: **69 shipped pack-wide (80,552 bytes)**, 41 flagless recorded (40 size-cap — seal/arms path data, incl. Ecuador at 279,145 B; Mississippi licence-only: "Copyrighted free use" ∉ allowlist; Spain/Mexico + 15 Wave-1 states unchanged). Celebration copy 72 → 110. Cold Trail deck 60 → 85 cases (first-60 composition byte-stable vs Wave 1 after stripping stamps; 61 of 110 pack capitals taught as witness anchors).
-- [x] Gates + screenshots + PR to READY (panel runs after; no merge) — scripts 1003/1003, src 2109/2109, worker 109/109, tsc clean, lint-cards PASSED, build:pages green; bundle: 69/69 flags verified in dist as lazy chunks, 0 in the SW precache; E2E (flock, workers=1): capitals-flags 3/3 + pack-shelf mobile/desktop 11/11 combined incl. the two deck-count expectations updated 60 → 85. Eye gate passed on the 20 Wave-2 shipped flags (contact sheets, checker ≠ builders). Shots: `~/workspace/meridian-capitals-flags/build-shots/w2-1-abuja-briefing-flag.png`, `w2-2-tunis-briefing-flag.png` (+ the 6 Wave-1 shots).
-
-## Flagstaff gate
-
-`npm run check:flags` (wired into prebuild) pins registry ⇔ files
-(SHA-256, bytes, licence class, SVG sanity, aspect), registry ⇔ pack
-subjects both ways, the composed sidecar, and the Cold Trail stamps.
-Contact-sheet eye gate (checker ≠ builder) passed on the 55 shipped
-flags, 2026-11-04, and on the 20 Wave-2 additions (15 + bd/dz/my/tn
-minus the swapped-out lands), 2026-11-04. Final registry: 69 shipped
-(80,552 bytes), 41 flagless with recorded reasons, 110 lands.
-
-
-## Merge-up — 2026-11-04 (main `06dddb1` merged in)
-
-- Sole conflict: this file. Resolved both-records: this branch's record above, main's #341 record appended below it; the accumulated records from main follow verbatim after it.
-- Code files auto-merged with no conflicts; the merged tree carries both #341's case-source sentence behaviour and this branch's flag layer (delta audit in the PR body merge-up note).
-
-## Composition cure — 2026-11-04 (owner word: "cure it")
-
-The merge-up's delta audit caught a semantic composition conflict —
-auto-merge was textually clean, but #341's fallback spec went red on
-the merged tree for two linked reasons. The merge-up stopped unpushed
-and the owner approved this cure:
-
-- **Ratified relabel vs #341's pins.** #341's case-source sentences
-  derive the deck name dynamically (`deckLabelForId`), so the
-  ratified "Capitals & Flags" relabel correctly flows into them;
-  #341's pinned expectations still said "Capitals". Cured by updating
-  the pins only (unit literal in `pack-shelf-data.test.ts`, the two
-  sentence constants in `pack-deal-fallback.desktop.spec.ts`, and the
-  §0 quotes in `docs/story-packs.md`). Production strings stay
-  dynamic; nothing was hardcoded.
-- **Two UI consumers, one manifest URL.** The Home doorway (#346)
-  and the pack shelf (#341's surface) each fetched the pack manifest
-  with no sharing, so under a first-request-succeeds/rest-fail
-  network the doorway consumed the good response and the shelf's
-  chip never rendered in the fallback state. Cured in
-  `fetchPackManifest` (`pack-shelf-data.ts`): UI callers on the
-  default path share one session-level load per pack (in-flight +
-  settled success cached); a load that settles to null is evicted so
-  the next mount retries. A caller passing its own fetcher always
-  gets a fresh uncached load, and the deal path is untouched — it
-  resolves the manifest with its own fetch in LoopScreen
-  (`resolveActivePack`), fresh at each deal, so a deal-time failure
-  still falls back to core with #341's notice.
-- **Proof:** the fallback spec passes 3/3 under its ORIGINAL
-  choreography (first manifest request fulfilled, every later one
-  aborted) — only its two string constants changed. Four new unit
-  tests pin the dedupe: shared in-flight load, settled-success reuse,
-  failure eviction + retry, injected-fetcher bypass both ways.
-
-## Panel round-1 cure — 2026-11-04 (verdict on `d7ae3b7`: BLOCKED)
-
-The 12-role panel + DevEx voted on the composition-cured tip:
-11/12 seats APPROVE / APPROVE-WITH-NITS, Senior Developer BLOCK
-(code), DevEx FAIL (docs only), benchmark PASS. Both blocks cured
-here; the cured tip returns for a panel re-vote before any merge
-word.
-
-- **Block 1 (code) — top-up double-counted a finished mystery.**
-  `completePuzzle` counts a finished case in `cycleCompleted` and
-  keeps it in `store.current`; `ensurePackDeck`'s
-  `openFromThisDeck` counted that same case again as open, so the
-  top-up slice skipped exactly one appended case (index 459, the
-  first Wave-2 case) for a player who exited on a pack reveal
-  screen when the pack grew. Cured: `openFromThisDeck` counts
-  `current` only when its status is "playing" (`store.ts`); no
-  other accounting changed. Regression test added in
-  `store-topup.test.ts` (finished won AND lost currents preserve
-  every appended case incl. 459); the panel's repro pair now
-  agrees — finished-current and playing-current top-ups both yield
-  `[389, 388, 460, 461, 459]` (finished-current yielded
-  `[389, 388, 460, 461]` before the cure, reproduced first-hand).
-- **Block 2 (docs) — story-packs stated pre-Wave-2 truth.**
-  `docs/story-packs.md`: intro now 110 cases (60 country + 50
-  state), pack named Capitals & Flags; flowchart + §1 pack range
-  387–496 (§8's "387–458 stay frozen" untouched — that is the
-  original range the growth appends after); §6 quotes the shipped
-  celebration string verbatim (`celebration-copy.ts:166`); §7
-  gains one sentence on the session-cached UI manifest (QA note 1
-  disposition). `scripts/packs/README.md`: generated clue range
-  now ends at 496.
-- **QA note 3 (MAJOR) — the swap sentence, corrected.** The old
-  "5 swapped out / 4 replacements in" phrasing could not be
-  reconciled (16−5+4=15≠16). Derived from the curation data (the
-  panel's slate count: 39 candidates → 38 shipped; the
-  one-candidate gap is Kuala Lumpur, which sits on both sides of
-  the old sentence): five picked capitals were dropped for
-  duplicating core-deck targets by GeoNames placeId (Islamabad,
-  Amman, Montevideo and Riga from the authored batch, plus Kuala
-  Lumpur, picked in the first swap round and dropped in a second
-  round for the same reason — all five placeIds verified present
-  in the core clue files, none in the shipped pack), and the four
-  replacements that shipped are Dhaka, Algiers, Quito and Tunis,
-  Tunis taking Kuala Lumpur's slot, so all 16 country cases are
-  accounted for. The corrected
-  sentence now reads the same in `docs/flags-curation.md`, this
-  record, and a correction note appended to the PR body. Also
-  fixed in this record: the flagless split is 40 size-cap + 1
-  licence = 41 (registry count), not "39 size-cap".
-
-## Panel re-vote — 2026-11-04 (on cured tip `b3fc61c`): READY-WITH-NITS, 0 BLOCKs
-
-The 12-role panel + DevEx re-voted the cured tip: 10
-APPROVE-WITH-NITS / 2 APPROVE, 0 BLOCKs; DevEx PASS-WITH-NITS
-(the round-1 docs BLOCK is cured); benchmark PASS vs main
-`3bc57e8` (client total +0.32%, JS +0.34%, entry chunk
-unchanged, 0 flags precached — gate ≤5%). Both round-1 BLOCKs
-verified cured first-hand: Senior Developer APPROVE — its
-reproduction re-run on both tips (finished won/lost currents
-dropped case 459 on `d7ae3b7`; on `b3fc61c` they yield
-`[389, 388, 460, 461, 459]` with `cycleCompleted` intact, and
-the new regression test fails pre-cure, passes cured); DevEx
-re-checked every docs item against sources (§6 quote byte-equal
-to `src/components/celebration-copy.ts:166`; the 40 size + 1
-licence flagless split proven against the registry). QA notes
-(a) curation-sentence copies and (b) probe G hand-crafted state
-both ACCEPTED unanimously (12/12 + DevEx). Verdict comment:
-https://github.com/veeresh-bikkaneti/Meridian/pull/346#issuecomment-6637312564
-This entry is applied in the merge-up commit over main
-`3bc57e8`: it was deliberately not committed on the voted tip,
-since committing would have moved it. Remaining nits are
-recorded follow-ups (FlagImg transient flash on reused Cold
-Trail sighting slots, the "100–644 KB" range in the curation
-docs, the doorway tagline — owner's call); none block. Merge
-follows on the owner's per-PR word.
-
----
-
-# BRANCH_STATUS — fix/336-deck-identity
-
-- **Branch:** `fix/336-deck-identity`
-- **Base:** `main` @ `775d8b4` (#329 band-variant card films, merged)
-
-## Task capsule
-
-TASK / requested outcome: Fix issue #336 (GeoDetective deck leak).
-When the player's pick is a pack (activeDeckId "capitals") and the
-pack manifest fetch fails at deal time, `resolveActivePack` swallows
-the failure and `dealActiveDeck` silently deals a CORE case while the
-chip/pick still say Capitals. The fallback itself is design-of-record
-(docs/story-packs.md §0: "pack code may never block play") — the
-defect is the SILENCE. Locked fix shape (panel reviews it; the
-fail-closed alternative is on the record in issue #336 for the
-panel, not built here):
-1. DECK IDENTITY — the case screen names the OPEN case's deck, in
-   shelf vocabulary ("All cases" / "Capitals"), visible while
-   playing AND on the reveal. Derived from the open case
-   (`deckIdOfPuzzle(current)`), never from the pick. Label helper
-   `deckLabelForId` in src/components/pack-shelf-data.ts reuses the
-   existing category-label logic, with unit pins.
-   PRESENTATION CURED (owner, 2026-11-04 — see the cure record
-   below): the first version's `Deck: X` header line
-   (`data-testid="case-deck-label"`) is REMOVED. In its place, one
-   plain sentence in one place (`data-testid="case-source-line"`,
-   under the shelf) names where the open case came from:
-   "This case is from your Capitals deck." / "This case is from
-   All cases."
-2. FALLBACK NOTICE — when a deal actually falls back (a pack was
-   picked AND the deal came from the core deck; detected at both
-   deal sites: mount effect and onNextMystery), the case-source
-   sentence spot carries the fallback notice instead: "Capitals
-   couldn’t load just now — this case is from All cases instead.
-   Your next case will try Capitals again." While it is up, the
-   shelf's own status line stays empty (PackShelf's
-   `statusLineSuppressed`), so only one message speaks. Cleared on
-   the next deal and on a deck pick. No notice for resumed/revealed
-   cases, healthy pack deals, or core picks.
-3. REGRESSION SPEC — tests/e2e/pack-deal-fallback.desktop.spec.ts,
-   ported from the investigation repro and converted to the locked
-   expectation: (a) control — healthy manifest deals 431,
-   deckId "capitals", label reads Capitals; (b) fallback — core 186
-   IS dealt (§0) BUT the label reads "All cases" and the notice is
-   visible; the screen never presents the case as Capitals;
-   (c) the pick remains "capitals" after a fallback deal.
-
-Interpretations considered and selected reading: fallback detection
-keys on the dealt result (picked deck is a pack AND dealt deckId is
-core), which is exactly "resolution returned no pack" at both deal
-sites and also covers any other silent-fallback path. The label
-renders when a case is open (playing and reveal share the header
-block); before the first deal there is no open case to name.
-
-Tier and rationale: Tier 1 shape (one bug, proven repro) run as a
-builder silo under the coordinator's brief; independent Silo QA and
-the 12-role panel follow separately. Builder stops at PR open —
-NO MERGE without the owner's per-PR word.
-
-Files and interfaces in scope: `src/game/loop/LoopScreen.tsx`
-(header block near "Case #N", deal sites, onPickDeck, one new state
-+ one copy helper), `src/components/pack-shelf-data.ts`
-(`deckLabelForId`), `src/components/pack-shelf-data.test.ts` (unit
-pins), `tests/e2e/pack-deal-fallback.desktop.spec.ts` (new),
-`docs/story-packs.md` (ONE clarifying sentence in §0/§7; the §0
-principle itself untouched), this file.
-Protected / out of scope: `dealActiveDeck`'s fallback itself
-(stays), the store dealer (sound), TrailScreen / Cold Trail
-(untouched), the Guess-counter line ~1134 and its immediate block
-(claimed by the #337 branch), locked copy elsewhere.
-
-Verification contract (gates on the tip, real exit codes):
-`npx tsc --noEmit` · `npm test` · `node scripts/lint-cards.mjs`
-(GATE PASSED) · `npm run build:pages` · targeted E2E under
-`flock ~/workspace/.e2e.lock`, PLAYWRIGHT_CHROMIUM_EXECUTABLE=
-~/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome,
---workers=1: the new spec + pack-shelf.desktop.spec.ts +
-geodetective.spec.ts.
-
-Assumptions, risks, unknowns: notice/label copy is minimal and
-factual per the brief's draft; the panel finalizes copy. The shelf's
-next-case status line and the new case-deck label are different
-subjects (pick for the NEXT case vs deck of the OPEN case) — both
-stay; redundancy audit in the PR body.
-
-## Status
-
-- [x] Fresh clone at `~/workspace/meridian-deck-fix`, branch cut at `775d8b4`
-- [x] `deckLabelForId` helper + unit pins in pack-shelf-data
-- [x] LoopScreen: case-deck label in the header block
-- [x] LoopScreen: fallback detection at both deal sites + notice
-- [x] Regression spec ported + converted to the locked expectation
-- [x] docs/story-packs.md clarifying sentence
-- [x] Gates: tsc / npm test / lint-cards / build:pages / targeted E2E
-- [x] PR opened against main: #341 https://github.com/veeresh-bikkaneti/Meridian/pull/341 (NO MERGE — Silo QA + panel follow)
-- [x] Owner wording cure (2026-11-04): one-sentence deck signal,
-  `Deck:` header removed, shelf line suppressed during fallback;
-  tests + docs updated; cured screenshots in
-  ~/workspace/meridian-341-visuals/cured/ (independent Silo QA +
-  panel re-vote on the cured tip follow)
-
-## Verification record (builder, on the tip)
-
-- `npx tsc --noEmit` — exit 0 (run before and after the spec landed).
-- `npm test` — exit 0; src suite 2019 pass / 0 fail (includes the 3
-  new `deckLabelForId` pins; pack-shelf-data file alone: 29/29).
-- `node scripts/lint-cards.mjs` — exit 0, GATE PASSED.
-- `npm run build:pages` — exit 0.
-- Targeted E2E under `flock ~/workspace/.e2e.lock`,
-  PLAYWRIGHT_CHROMIUM_EXECUTABLE=~/.cache/ms-playwright/
-  chromium-1243/chrome-linux64/chrome, --workers=1, against the
-  build:pages artifact: pack-deal-fallback (3) + pack-shelf (7) +
-  geodetective (18) = 28 tests, 27 passed / 1 failed. The one
-  failure — geodetective win-path share assertion expecting the
-  Workers origin while the Pages artifact's share line carries the
-  Pages origin — reproduces IDENTICALLY on unmodified main
-  `775d8b4` (verified by a worktree build + single-test run, same
-  expected/received strings): a pre-existing spec/artifact
-  mismatch, not a regression from this change. All 3 new tests and
-  all 7 pack-shelf tests pass.
-
-## Cure record — owner wording fix (2026-11-04, on top of `e94c0f0`)
-
-The owner reviewed real screenshots of `e94c0f0` and called the
-fallback screen confusing: the Capitals chip, the "Deck: All
-cases" header, the shelf's "Your next case comes from Capitals."
-line, and the fallback notice all spoke at once. He approved one
-simpler shape, and this cure implements exactly that:
-
-- The `Case # · Deck:` header is gone; the header is just
-  "Case #N" again.
-- One plain sentence, in one place under the shelf, names where
-  the open case came from: "This case is from your Capitals
-  deck." (the pack's own name, so other packs read the same way)
-  or "This case is from All cases."
-- A fallback case gets the notice in that same spot instead:
-  "Capitals couldn’t load just now — this case is from All cases
-  instead. Your next case will try Capitals again." While it is
-  up, the shelf's status line stays empty, so only the notice
-  speaks. The picked chip stays pressed — it is the player's pick.
-- Nothing about dealing changed: same fallback detection at both
-  deal sites, same §0 fallback, same pick/retry behaviour.
-
-Files in the cure: `src/game/loop/LoopScreen.tsx`,
-`src/components/pack-shelf.tsx` (one new optional prop),
-`src/components/pack-shelf.test.ts` (new one-signal pins),
-`tests/e2e/pack-deal-fallback.desktop.spec.ts` (same three
-scenarios, new strings + shelf-silence and no-header pins),
-`docs/story-packs.md` (§0 note rewritten to match), this file.
-
-Verification (cure builder, on the cured tree):
-- `npx tsc --noEmit` — exit 0.
-- `npm test` — exit 0; src suite 2021 pass / 0 fail (2019 + the 2
-  new one-signal pins).
-- `node scripts/lint-cards.mjs` — exit 0, GATE PASSED.
-- `npm run build:pages` — exit 0.
-- Targeted E2E under `flock ~/workspace/.e2e.lock`, bundled
-  chromium-1243, --workers=1, sealed full-log run:
-  pack-deal-fallback (3) + pack-shelf (7) = 10 passed / 0 failed,
-  exit 0. (One earlier reporter-only re-run flashed failures with
-  no captured log; the sealed run is the record.)
-- Neighbour E2E: geodetective.spec.ts 17 passed / 1 failed — the
-  failure is the same pre-existing share-origin mismatch recorded
-  above (expects the Workers origin, the Pages artifact carries
-  the Pages origin; identical on unmodified main).
-- Screenshots: ~/workspace/meridian-341-visuals/cured/ — all three
-  states from the cured build at 390px, driven through the real
-  deal path, eyeballed by the cure builder (header clean, chip
-  pressed, shelf line blank, one sentence only).
-
----
-
-## Panel verdict — 2026-11-04 (on cured tip `b184a23`): READY, 0 BLOCKs
-
-The 12-role panel + DevEx reviewed the delta at
-`b184a2362926aca2c3a647aceb1bfd08e2ef7b2b` (personas loaded verbatim
-from `~/.codex/agents/`; Game Developer = mechanics_developer.toml,
-UX Designer = ux-architect.toml, Office Hours = reality-checker.toml
-— disclosed nearest matches). Verdict comment:
-https://github.com/veeresh-bikkaneti/Meridian/pull/341#issuecomment-6630725540
-
-- **Tally: 2 APPROVE / 10 APPROVE-WITH-NITS / 0 BLOCK; DevEx
-  PASS-WITH-NITS. Verdict: READY on this delta.**
-- Independent Silo QA preceded the vote: PASS-WITH-NOTES keyed to
-  `b184a23` (diff = exactly the 8 files; approved strings byte-exact;
-  QA's own fallback re-render byte-identical to the builder's cured
-  screenshot).
-- Owner citation (verbatim): the owner called the pre-cure fallback
-  screen "Its confusing" (2026-11-04) and approved the cure by
-  tapping "Apply the simpler wording"; the three sentences in code
-  are the ones he approved.
-- Annotation (panel nit, applied at this merge-up): the pre-cure
-  lines in the task capsule and checklist above (the `Deck: X`
-  header label, `data-testid="case-deck-label"`) describe the first
-  presentation and are superseded by the cure record above and this
-  verdict wherever they conflict. They are kept as history, not
-  rewritten.
-- Caveats recorded with the verdict: no `build (22.x)` or `e2e`
-  check runs existed on `b184a23` (GitHub produced none for that
-  SHA); the merge-up + substantive push is what runs CI on the
-  merged tip, with a fresh check read before any merge. Merge only
-  on the owner's explicit per-PR word.
-
-## Merge-up — 2026-11-04 (main `7a35cbf` merged in)
-
-- Sole conflict: this file. Resolved both-records: this branch's
-  record above, main's accumulated records appended below the
-  separator; the panel-verdict entry above was added here (it was
-  deliberately left uncommitted so the voted tip would not move).
-- Delta audit on the merged tree: branch-vs-main diff is exactly
-  the voted 8 files; every code/test file byte-identical to the
-  voted tip `b184a23`. (Figures recorded in the PR body merge-up
-  note.)
+- **Merge-up done:** `origin/main` @ `5e6af2f9` merged in (merge
+  commit `02798fd3`) — the two main commits past the old base
+  `9e49da3` are `63d82869` (#372 Watson-station cure) and
+  `5e6af2f9` (#340 guess counter). Sole conflict:
+  `BRANCH_STATUS.md`, resolved keeping BOTH records (this U11
+  capsule and main's #340 capsule both stand below). Handbook
+  ch.10 auto-merged as a faithful union: main's Watson-station
+  section came in, and this branch's FG-3 CLOSED record replaced
+  main's open FG-3 text.
+- **Playwright project added** (commit `6d4ad8e4`):
+  `detective-core-audio` registered in `playwright.config.ts`
+  immediately after `detective-berth` — the registration gap was
+  why the spec never ran locally or in CI.
+- **Fast gates on the merged + config tree, all PASS:**
+  typecheck clean · `npm test` — scripts 1,028 pass / 0 fail,
+  src 2,268 / 2,268 · worker 145 / 145 · lint-cards GATE PASSED ·
+  audio manifest gate clean (4,462 entries verified) ·
+  build:pages green (buildId `6d4ad8e4`).
+- **E2E run 1** (log
+  `~/workspace/meridian-detective-evidence/u11/e2e-core-audio.log`):
+  2 passed, test (b) FAILED — a spec defect, not a product
+  defect: test (b) scoped its `detective-watson-replay` locator
+  inside the `loop-map` subtree, but the button renders at the
+  station (the failure snapshot shows "Ask Watson to repeat this
+  clue" below the map region); every other spec using this
+  button scopes it page-wide. Fixed in commit `fb46cf55`
+  (locator scope only — same button, same count assertion, same
+  click; no assertion loosened).
+- **E2E run 2** (log
+  `~/workspace/meridian-detective-evidence/u11/e2e-core-audio-run2.log`):
+  **3 passed (2.9 m), exit 0** — (a) core case: all five clue
+  clips are fetched (HTTP 200) and play, in order · (b) core
+  case: tap-Watson repeats the clue itself, not the ack or
+  decode (replay started with `case-5/clue-1.mp3`) · (c) core
+  case: solving at guess 2 flushes the queue — no clue audio
+  fires after the solve.
+- **Tip after close-out: `fb46cf55`.** Remaining: Silo re-key →
+  panel → DevEx → benchmark → merge on the owner's word →
+  live verification on both hosts.
 
 
 ---
 
-# Accumulated records from main (kept verbatim at the 2026-11-04 merge-up)
-
-# Branch status — feat/crash-telemetry-stamps (combined crash-telemetry PR)
-
-- **Branch:** `feat/crash-telemetry-stamps`
-- **Base:** `fix/330-ios-unknown-memory-scout-first` @ `c890f80` (PR #331 merges first; this PR merges immediately after, with a merge-up and fresh CI)
-- **PR:** #339 — https://github.com/veeresh-bikkaneti/Meridian/pull/339
-- **Spec of record:** `~/workspace/meridian-crash-telemetry-evidence/DESIGN-FINAL.md` (arena Candidate B + 10 grafts)
-
-## Cure round 2 (DevEx FAIL F1 + factual nits, 2026-11-03)
-
-Docs/comments only — no behaviour changes anywhere. Each item is its
-own atomic commit, pushed as it landed:
-
-- [x] F1 (the FAIL) — worker README hourly digest, `0e870ee`: the
-  worked example now renders the **v2 digest**, taken verbatim from
-  the `renderDigest` full-string golden in
-  `workers/crash-report/src/index.test.ts` (checked
-  character-for-character against the golden, and against the same
-  example in `docs/observability.md`): `(receipt hour)` header,
-  `priority:` line, per-type blocks. The prose now names what a type
-  block carries — regions, groups, verdicts, modes, steps, errors,
-  first/last receipt times, and labelled caps (`(+N more)`).
-- [x] Worker README factual nits, `f9a67c8`: (a) the
-  `recovery_outcome` tier rule is now stated in the intro and in the
-  Severity tiers table — crash-class **only** for `repeat_failure`,
-  counted-only otherwise (matching `tierOf` in
-  `workers/crash-report/src/index.ts`); (b) the dry-run example
-  response now carries `counted`, the real ingest shape:
-  `{"ok":true,"forwarded":false,"counted":true}`.
-- [x] `docs/observability.md`, `d845077`: (a) the "add a field"
-  recipe now lists the fourth edit site — the literal
-  `DEVICE_FIELD_KEYS` array in `src/lib/telemetry-manifest.ts`;
-  (b) the manifest table rows for `screen` and `touchPoints` now
-  include the `"unknown"` form the code stamps.
-- [x] Comment corrections (comments only, no code tokens changed),
-  `d2eba98`: (a) `workers/crash-report/src/index.ts` parity-guard
-  comment now names the shipped
-  `scripts/observability-field-parity.test.mjs`; (b) that guard's
-  header now states the present truth — it runs on the combined
-  branch and must pass — with its history (written on the client
-  unit, where the worker side did not exist yet); (c) the
-  `src/lib/telemetry-manifest.ts` header recipe gains the same
-  fourth edit site (`DEVICE_FIELD_KEYS`).
-- [x] This file, in the final cure-round-2 commit: this section,
-  plus the finisher record's gate figures below labelled as
-  PRE-CURE round-1 numbers with the current totals beside them.
-- [x] Gates after all items (unpiped):
-  - `npx tsc --noEmit` — clean (exit 0)
-  - `npm run test:worker` — 109/109 pass; `typecheck:worker` —
-    clean (the worker `tsc -p` run is clean; the comment-only change
-    in that file kept the suite at 109/109)
-  - Parity guard (`scripts/observability-field-parity.test.mjs`) — 1/1
-  - `npm test` — scripts: 949 pass, 0 fail, 11 skipped;
-    src: 2,078 tests, 2,078 pass, 0 fail
-  - Watchdog suite (`scripts/crash-watchdog.test.mjs`) — 47/47
-
-## Cure round (panel verdict on PR #339, 2026-11-03)
-
-Panel tally that caused this round: **11 APPROVE-WITH-NITS + 1 BLOCK**
-(the BLOCK from the Office Hours seat, over an AGENTS.md tension).
-Each item is its own atomic commit, pushed as it landed:
-
-- [x] Item 1 — BLOCK cure, `4aabcb0`: `AGENTS.md` Player-facing locks
-  harmonised — the preceding raw-UA sentence now states the code-true
-  posture (the telemetry code does not store the raw UA; it is read
-  in page memory only to derive the parsed fields, and never leaves
-  the device). Diff vs `c890f80` verified: exactly that paragraph's
-  two sentences, nothing else.
-- [x] Item 2 — watchdog-recovery shortfall, `628ebec`: the worker now
-  fills a dropped `engine` for `boot_failure` only, via the E-rule
-  table over the event's parsed fields (never overwriting a present
-  engine, never for other types); `deviceClass` is NOT recovered and
-  stays "unknown" on watchdog events. Watchdog comments corrected to
-  that truth (comments only; rendered size unchanged at 6,104 bytes,
-  suite 47/47). Worker suite grew to 109.
-- [x] Item 3 — UA-parser traps, `e2cefa3`: `EdgA/` added to B2;
-  a `Chromium/` rule (chrome/blink) added before the Safari rules;
-  the Android frozen-token denylist now treats "10" and "10.0" as
-  the frozen shape when a witness is present. One corpus row per
-  fix. ua-parse suite 39/39, observability suite 92/92.
-- [x] Item 4 — worker README stale cluster, `f02ff0b`: schema
-  sentence now states the 17-key manifest allowlist; crash-class
-  alerts described in the v2 format; test count re-measured
-  (42 → 109); privacy line now states sessionId and the raw UA are
-  never forwarded/logged/stored, while the parsed coarse device
-  facts ARE forwarded in the alert by design.
-- [x] Item 6 — docs label, `b6927a3`: `docs/observability.md`
-  walkthrough now labels the worked example's `cores 6` as a worker
-  test-fixture value, not a handset measurement.
-- [x] Item 5 — this file: the client unit's STOP section below is
-  rewritten as the resolved record (see "Resolved — watchdog byte
-  budget" under the client unit record).
-
-## Finisher record (integrator, 2026-11-03)
-
-- [x] Merged `unit/crash-telemetry-client` (tip `0361e02`, U1–U3) — clean merge.
-- [x] Merged `unit/crash-telemetry-worker` (tip `fd83292`, U4) — the only
-  conflict was this file; resolved by keeping BOTH unit records (below).
-- [x] Gated decision taken as its own commit (`4098735`): watchdog byte
-  budget 5120 → 6144 per DESIGN-FINAL §7.5 — the ladder was exhausted
-  (subset parser → browserVersion major-only → engine dropped →
-  deviceClass dropped) and the rendered watchdog measures 6,104 bytes
-  worst case, ≤ 6,144. Cost: +1 KB inline per page load. The owner
-  rules on it with this PR's merge word; it is a decision item in the
-  PR body. Watchdog suite after the raise: 47/47.
-- [x] Parity guard green on the combined tree (1/1). Integrator edit:
-  the guard's extractor did not match the worker's
-  `Object.freeze([...])` allowlist declaration ("list declaration not
-  found"); the extractor now allows the freeze wrapper. The field
-  lists themselves matched exactly — 17 keys each, `webgl1`/`webgl2`
-  included on both sides — so no field exception was encoded.
-- [x] U5 docs: `docs/observability.md` (honest counts — client emits
-  14 types, the worker on main accepts 8, the 6 engagement types land
-  with PR #311; manifest field table; formats as built; the v1
-  log-tail section marked superseded; "How to read a crash alert"
-  walkthrough; privacy statement updated), `workers/crash-report/README.md`
-  (bucket v2 shape, reachable fire-time threshold example),
-  `AGENTS.md` (the §6.3 safeguard sentence only).
-- [x] Follow-up filed: issue #338 — crash-report KV buckets have no
-  retention (no `expirationTtl`); deliberately not bundled into this PR.
-- [x] Combined gates on the combined tree — **PRE-CURE round-1
-  numbers** (recorded before cure rounds 1–2; current totals after
-  Cure Round 2 are beside them, and in the Cure Round 2 section at
-  the top of this file):
-  - `npx tsc --noEmit` — clean (exit 0)
-  - `npm test` — scripts: 960 tests, 949 pass, 0 fail, 11 skipped
-    (unchanged in Cure Round 2: 949 pass, 0 fail, 11 skipped);
-    src: 2,075 tests, 2,075 pass, 0 fail — PRE-CURE round-1;
-    current total: **src 2,078 tests, 2,078 pass, 0 fail**
-  - `npm run test:worker` — 106/106 pass — PRE-CURE round-1;
-    current total: **worker 109/109 pass**
-  - `npm run typecheck:worker` — clean (exit 0)
-  - Watchdog suite — 47/47; parity guard — 1/1
-- [ ] Merge — owner's word only, after the panel approves the final
-  tip. Post-merge owner step: manual crash-worker version upload.
-
-The two unit records follow, kept whole.
 
 ---
 
-# Branch status — unit/crash-telemetry-client
+## Merged main record — fix/credits-wait-for-content (PR #376, main @ f2bbf1a2)
 
-- **Branch:** `unit/crash-telemetry-client`
-- **Base:** `origin/fix/330-ios-unknown-memory-scout-first` @ `c890f809fe48efb5da3519c636861372f633f0db`
-- **Spec of record:** `~/workspace/meridian-crash-telemetry-evidence/DESIGN-FINAL.md` (Candidate B + grafts)
-- **Scope:** Builder A (client) — Units U1 + U2 + U3 only. No PR, no merge.
-TASK: enriched crash telemetry client — parsed RuntimeFacts snapshot persisted in the breadcrumb, persisted classifier state stamps, #335 mapMode fix, durable unfinished-boot counter, watchdog parity.
-Tier: 2 shape, single builder under the parent orchestrator; QA + panel are separate agents after this branch.
-Done condition: unit suites for the claimed files green, `tsc --noEmit` clean, watchdog rendered size ≤ 5120 bytes (ladder per §7.5), worst-case enriched suspected_crash measured against the 4096 cap.
+## Capsule — fix/credits-wait-for-content (2026-11-09)
 
-## Claims (exclusive)
-
-- U1 (new): `src/lib/ua-parse.ts`, `src/lib/ua-corpus.json`, `src/lib/ua-parse.test.ts`, `src/lib/telemetry-manifest.ts`
-- U2: `src/lib/observability.ts`, `src/lib/observability.test.ts`
-- U3: `scripts/crash-watchdog.mjs`, `scripts/crash-watchdog.test.mjs`
-- Guard (from U5's guard half): `scripts/observability-field-parity.test.mjs` (new)
-- This file.
-- NOT claimed: `src/components/game-app.tsx`, `src/map/capability.ts` (read-only), anything under `workers/`.
-
-## Status
-
-- [x] U1 — parser (§3 B/E/O/P rules + §2.3 denylist), corpus (30 rows incl. incident, denylist, tripwire), manifest (§8.1). Suite: 36/36 pass.
-- [x] U2 — observability session truth (§§2.1–2.2, 4.1–4.3 as grafted, §7.4 trim). Suite: 92/92 pass. [measured] worst-case enriched suspected_crash = 2,164 bytes raw vs the 4,096 cap — fits untrimmed, all 15 device keys + mapMode + msSinceBootStart survive.
-- [x] U3 — watchdog parity (§4.4: lcV "2", storageOk, mapMode, msSinceBootStart, subset parser, other new keys literal "unknown", unfinishedBoots absent) + second-canvas WebGL1 fix. Suite at the time: 46/47 pass — the single failure was the byte-budget test, the STOP item below (since resolved; see the resolved record below).
-- [x] Parity guard — written and run; at the time it FAILED as expected on this branch (worker allowlist not found — see below). Since resolved on the combined branch (see the resolved record below).
-- [ ] Gates — tsc + claimed suites run at the tip; recorded in the builder report.
-
-## Resolved — watchdog byte budget (§7.5 gated decision, taken)
-
-Historical record, in past tense: at the client-unit stage this was
-a STOP item. [measured] Rendered watchdog size, worst-case 14-char
-build id, as measured then:
-- Base (before U3): 5,104 bytes (16 bytes of headroom under 5,120).
-- With §4.4 parity + subset parser, before the ladder: 6,210 bytes.
-- After the FULL §7.5 ladder (step 1 browserVersion major-only, step 2 engine dropped, step 3 deviceClass dropped): **6,104 bytes** — still 984 bytes over the then-held 5,120 budget.
-
-The ladder was exhausted and the builder did not raise the budget:
-the raise to 6,144 was an explicit owner-visible decision
-(DESIGN-FINAL §7.5), not the builder's to take, and the byte-budget
-test was left at 5,120 and failing on purpose as the stop signal.
-
-Resolution: the gated decision was taken on the combined branch as
-its own commit (`4098735`): the budget was raised 5120 → 6144, the
-byte-budget test was updated to 6,144, and the watchdog suite went
-green (47/47; rendered size 6,104 ≤ 6,144). The owner rules on the
-raise with this PR's merge word; it is a decision item in the PR
-body.
-
-## Parity guard — resolved
-
-`scripts/observability-field-parity.test.mjs` extracts the client manifest's device keys vs the worker's `DEVICE_FIELD_ALLOWLIST` from `workers/crash-report/src/index.ts`. On the client unit branch the worker side was still main's code, which had no `DEVICE_FIELD_ALLOWLIST` export, so the guard failed by design until the worker unit (U4) landed; it was not weakened to pass. Resolution: on the combined branch the guard went green after commit `a13b035` (the guard's extractor now reads the worker's frozen allowlist declaration; the field lists themselves matched exactly — 17 keys each).
+- **Branch:** `fix/credits-wait-for-content` · **Base:** `origin/main` @ `5e6af2f9`
+- **Owner's word:** "Land the credits cure now as a tiny PR" (2026-11-09 14:36 CST).
+- **Tier:** Tier 0/1 — one E2E spec file, no product code.
+- **TASK:** Cure the no-wait race in `tests/e2e/credits.desktop.spec.ts`: `expectCreditsContent` read the body text once, immediately after the click/navigation, and asserted the credits strings — the credits route had not always rendered yet, so the test failed intermittently.
+- **Evidence it is a spec race, not a product bug** (identical failure on unmodified main / other branches): main run `42511936129` (2026-11-08) · PR #370 tip run `42662167590` · `feat/journal-movies` run `42692238457` (2026-11-09) — while main passes other runs.
+- **Cure:** `expectCreditsContent` now `expect.poll`s the body text (repo idiom, cf. band-film specs) until it carries the credits strings, then runs the original assertions unchanged — every assertion string kept at the same strength; only the waiting changed.
+- **Files:** `tests/e2e/credits.desktop.spec.ts` + this capsule. Nothing else.
+- **Proof:** build:pages green · credits spec 5 consecutive passes by name · full CI six-file set green once · tsc clean · lint-cards GATE PASSED (numbers in the PR body).
+- **Merge:** NO MERGE without the owner's per-PR word. Once merged, PR #370 merges up and its red e2e check clears.
 
 ---
 
-# Branch status — unit/crash-telemetry-worker (crash-telemetry U4, worker)
+# BRANCH_STATUS — feat/pivot-flank (PR 2a integration, GATE, 2026-11-09)
 
-- **Branch:** `unit/crash-telemetry-worker`
-- **Base:** `fix/330-ios-unknown-memory-scout-first` @ `c890f809fe48efb5da3519c636861372f633f0db`
-- **Spec of record:** `~/workspace/meridian-crash-telemetry-evidence/DESIGN-FINAL.md` §5 (worker unit U4)
-- **Files claimed (exclusive):** `workers/crash-report/src/index.ts`, `workers/crash-report/src/index.test.ts`, `BRANCH_STATUS.md`
+- **Current tips (after the later merge-up onto main `10e8121d`, #369):** `feat/pivot-ack-renders` @ `c8f40692` (PR #385) → `feat/pivot-speech` @ `8475c111` (PR #386) → this branch @ `b8bfc8d4` (PR #387), the panel's final voting tip. The capsules below are the chronological record; where a capsule names an older tip, that tip was current when it was written.
+- **Accuracy pass (pipeline tail, 2026-11-10):** the three PR 2a branch capsules in this file were re-read against the actual branch tips and diffs. The flank capsule chain below (panel → selection cure → instant-confirm cure → cure 2 → cure 3) is accurate, including its closing status line (panel complete, 0 BLOCKs on `b8bfc8d4`). The ack-renders capsule's two stale lines are annotated in place: the ack-7/ack-8 ear-check flag now carries its resolution (measurement ear check kept both clips; owner ear-approved ack-7, 2026-11-09), and its "Pending: GATE opens the PR" line is marked done (PR #385, final tip `c8f40692`). The speech piece's own capsule in this union file is the "GATE integration cure" capsule (the ack-pool spec pins landed on `feat/pivot-speech`); its gates line is historical — the cured specs were re-run repeatedly downstream, most recently in the Silo QA re-key battery on `b8bfc8d4` (replay 3/3 · watson-walk 8/9 + re-run 9/9 · sound 10/10).
+- **Stack state:** the PR 2a train was rebased onto main `f2bbf1a2` (#370 + #376 merged) after #370's CSO sweep: `feat/pivot-ack-renders` @ `dcd4f717` → `feat/pivot-speech` @ `86ecbef7` → this branch. Manifest union verified: gate clean, 4,468 entries (main's 4,462 + ack-5…ack-10); fixed table 26, ack-1…ack-10 all present, `suspicion` single.
+- **This commit (integration):** `playwright.config.ts` gains the `detective-flank` project (beside `detective-core-audio`, mirroring `detective-staging`), and the stale "TWO taps by design" comment in `tests/e2e/detective-sound.spec.ts` (f) is cured — the STAGE first-tap cure arms the gesture listener at player creation, so the first Listen tap now plays; assertions unchanged, second tap kept as belt-and-braces.
+- **Pending:** GATE fast gates + the detective E2E set on this tip, then stacked PRs and the 13-seat panel on the final tip. No merge without the owner's per-PR word.
 
-## Status checklist
+## Selection-read cure (PR 2a panel BLOCK cure, 2026-11-09)
 
-- [x] Commit A — intake + counting: `normaliseEvent` before `validateEvent`
-  (§5.1 strip-and-continue, `DEVICE_FIELD_ALLOWLIST` export, caps
-  unchanged), counting v2 (§5.2: groups with 32-key hard cap, verdicts
-  from the hoisted shared re-derivation, milestones, modes, errorNames,
-  receipt firstAt/lastAt, late counter, old-bucket read tolerance).
-  Gates: test:worker 95/95, typecheck:worker clean.
-- [x] Commit B — surfaces (§5.3): priorityRead (P1 requires
-  buildReplaced === false + gameplay last step), enriched alert
-  (priority line 3, why-code, time, collective (UA-parsed) device line,
-  runtime/mode/boots lines; email gains the same lines incl. device:),
-  evidence line for missing_fields from missingStampNames (§5.4,
-  presentation-only), digest v2 (per-type blocks, labelled caps with
-  (+N more), count-desc/key-asc, receipt first/last, late-arrival
-  label, "receipt hour" header), threshold fire-time caveat.
-  Full-string goldens for buildAlert (Discord + email),
-  buildThresholdAlert, renderDigest; alert/email parity test;
-  missingStampNames iff-property test; classifier fixture tables
-  re-asserted (classifier region byte-identical to base, verified by
-  diff). Gates: test:worker 106/106, typecheck:worker clean.
-- [x] Final gates re-run + branch pushed. No PR, no merge (owner's word).
-- 2026-11-04: merge-up onto main `ddc0709` (#331) at the owner's merge word for #339 ("339 by rebasing as needed"). Conflicts: six #331-side files (game-app.tsx, capability.ts/.test.ts, satellite-map.tsx, scout-upgrade-lifecycle.test.ts, scout-offer-policy.md) resolved to main's final #331 blobs, verified byte-equal; observability.ts/.test.ts resolved to the panel-voted telemetry blobs (main's post-`c890f80` delta to both files is zero, blob-proven); BRANCH_STATUS.md keeps both records. Delta audit: branch-vs-main = exactly the 15 voted telemetry files, patch line-sets identical to the voted delta `c890f80..ac45e6b` — no code beyond the voted delta, no delta re-vote triggered. Checks re-read on the new tip before merging.
-- 2026-11-04: second merge-up onto main `5fe34d6` (#320 landed during the #339 gate run). Sole conflict BRANCH_STATUS.md, resolved keeping both records; the telemetry delta is unchanged (re-audited: branch-vs-main = the same 15 voted files, blobs identical to `ac45e6b`). Checks re-read on the new tip before merging.
+- **Defect:** the speech piece's `selectionNamed` event had NO production dispatcher — `DetectiveHost` never sent it, so Holmes stayed silent from the player's pick until the guess was spent (the owner's core pivot promise: "when the player makes a selection on the map, Holmes reads it out loud acknowledging"). The shipped SELECTION_READ phase was driven only by `guessConfirmed` (the post-guess name + suspicion read) — picks (search + map tap) reached no machine input at all.
+- **Cure:** the props whitelist gains `selectedPlaceId` (the player's CURRENT pick, null when nothing is picked). LoopScreen feeds it re-derived exactly as the sheet render and `onPick` re-derive it (`unlabeledSpotEntry(lon, lat).id` for `tap:` entries), so the read names the id the guess records under and the machine's dedup holds (confirming the just-named place speaks suspicion only). DetectiveHost dispatches `selectionNamed` once per pick landing (change to a new non-null id; never on clear or re-render). A clip-less pick (open water: `tap:` ids resolve to no name clip) is skipped by the player without stalling, as before.
+- **Tests:** props builder unit tests (key pinned at 8, value pass-through, null default) + NEW E2E `tests/e2e/detective-selection-read.spec.ts` (registered as the `detective-selection-read` Playwright project): (a) the pick is named aloud BEFORE the guess is confirmed and the confirming guess speaks suspicion only; (b) flank ON — a pick made mid-clue-chain is held in the pending slot and named when the chain drains, before its guess is spent.
+- **Records cures in the same run:** stale "count rotation" comments at the ack draw call site + the `acksPlayed` field doc now describe the random pool-minus-played draw; the `flags.ts` kill-switch comment no longer claims flag-off restores the two-tap Listen flow (the first-tap cure is ungated and stays). PR #387's body carries the "Post-merge flip — OWNED STEP" section (flip after the one-sitting train merges; kid read test n≥30 is the gate ON THE FLIP).
+- **E2E on the cured tip [measured]:** selection-read **2/2** · flank 7/7 · replay 3/3 · staging 11/11 · core-audio 3/3 · sound 10/10 (one (g) failure in the batch run passed on its sequential re-run) · watson-walk 9/9 (the phone-390 main test failed twice in batch runs — its SELECTION_READ phase poll timed out at SEARCH_IDLE while the trace's network record shows the full chain playing in order (name → suspicion → ask-next → clue-2 → ack → decode) and the failure screenshot shows Clue 2 revealed with Watson stationed at it; it passed 5/5 on the next sequential run — a phase-window flake under VM load, same class as the sound (g) flake; no product defect found, no assertion touched).
+- **Pending:** the panel re-vote on the cured tip. No merge without the owner's per-PR word.
 
----
+## Follow-up cure — guess confirmed during the pick read (2026-11-10)
 
-# BRANCH_STATUS — test/stub-crash-report-in-e2e (PR #320)
+- **Defect:** a guess confirmed while the pick read is still playing lost its spoken reaction chain. Reproduced on the merge-up tip as the watson-walk phase poll timing out at SEARCH_IDLE, twice identical. **Verified mechanism [measured from the code]:** `speakSelection` does NOT change the phase, so the confirming `guessConfirmed` IS handled (from SEARCH_IDLE) — it enters SELECTION_READ and emits the guess read (suspicion only; the pick was just named) into the SAME player queue, behind the still-playing name clip. The player fires `speechEnded` ONCE per queue drain, not per clip, so the pick read and the guess read are one ladder step, never two. (The dispatch brief's inference — guessConfirmed dropped inside SELECTION_READ — does not hold; it is never sent there.)
+- **Cure (final model):** a clue unlock landing in SELECTION_READ while a PICK read owns the voice (`selectionReadInFlight === false`) is stored as the deferred guess's payload PAIR — `pendingClue` (the payload) + `pendingGuessConfirm` (the marker recording whose clue it is). The single queue drain then runs the ordinary shipped bridge off `pendingClue` (miss beat → ask-next → clue); the marker starts the clue from the ASK_NEXT drain without a second ask, is cleared by a case ending or by the clue starting, and a `sheetClosed` finding it standing alone at rest reopens the bridge from it (split-drain safety net). **Suspicion is spoken exactly once** — by `guessConfirmed` at confirm time; the bridge speaks the plain ask (a unit pin counts name ×1 and suspicion ×1 across the whole flow). A guess read already in flight keeps the shipped behaviour untouched (pendingClue only, no marker). Endings keep precedence: `pendingEnd` at the drain, or the ending's direct entry once the bridge stands — the marker is cleared either way.
+- **First model corrected by its own E2E:** an earlier shape of this cure settled the ladder at SEARCH_IDLE on the pick drain and opened the bridge from a LATER `sheetClosed` — but the confirm already closed the sheet before the drain, so no trigger remained and the clue never started (selection-read (b) and the new (c) timed out at the clue-2 audio poll while the name/suspicion assertions passed). The pair + drain-triggered bridge above is the correction; the `beatElapsed` suspicion arm of the first model was also removed (it would have played the suspicion a second time in real play).
+- **Sibling decision:** `selectionNamed` DURING SELECTION_READ stays DROPPED (default no-op), unchanged — a guess owns the voice; that pick is still named at its own confirm via the normal guess read. The defer slot does not fit it cleanly: `pendingSelection` is discarded on guess/clue-unlock/case-end by law, and a second selection read queued behind a guess read would break those discard laws.
+- **Tests:** NEW unit pins `src/game/loop/detective/detective-deferred-guess.test.ts` (6: the pair + the drain running the bridge · the bridge asks, never a second suspicion, then the clue starts · guess-read-in-flight keeps the shipped bridge · solve/fail while the bridge stands still win · solve mid-reads defers via pendingEnd and wins at the drain). NEW E2E case (c) in `tests/e2e/detective-selection-read.spec.ts`: pick → confirm INSTANTLY (no wait for the name clip) → suspicion still plays after the name, the name plays exactly once, and the case continues to clue 2. The watson-walk spec is UNMODIFIED — its assertions are the contract.
+- **Gates on the cured tip [measured]:** tsc clean · `npm test` **2,315/2,315** · worker 145/145 · lint-cards GATE PASSED · manifest clean 4,468 · build green. **E2E [measured]:** selection-read **3/3** · watson-walk **9/9** (the tablet-768 main test failed the batch run at the SELECTION_READ phase poll — at recorder rate 3 that phase window is sub-second — and passed its sequential re-run; a deterministic stall cannot pass a re-run, and the audio-asserting selection-read (b)/(c) pass, so this is the known phase-window poll flake under VM contention, named as such) · flank 7/7 · replay 3/3 · sound 10/10.
+- **Pending:** the panel re-vote on the final tip (touched seats) + the staged Game Player + the owner-config playthrough gate. No merge without the owner's per-PR word; merges #385 → #386 → #387 in one sitting.
 
-- **Branch:** `test/stub-crash-report-in-e2e` · **PR:** #320
-- **Refreshed 2026-11-03** onto main `490fab0` (merge commit `541555a`, clean merge, no conflicts). The PR's three-file change (tests/e2e/helpers.ts, pinch-zoom.spec.ts, storyteller.spec.ts, +38/−2) is byte-identical to the original tip `c0a3ffc`'s change: hunk-for-hunk diff comparison identical except blob index lines.
-- **Owner order (2026-11-03 22:38 CST):** "Refresh and pstack swarm and architecture and arena interrogate." This run: Phase 0 refresh (done) → swarm (posting inventory / refresh integrity / dependent surfaces) → architect + arena over the stub design → interrogate the final diff → stop at READY. No merge without the owner's per-PR word.
-- **Supersession [observed]:** not superseded — current main stubs nothing for the crash-report host in serveBuiltArtifact or pinch-zoom; the observability specs pin the prod endpoint and intercept only for their own inspection, and storyteller's clean-console check still filters the beacon's network error instead of preventing the post.
-- **Status:** refresh pushed; swarm / arena / interrogate in progress under the coordinator. Prior record for this branch (below the divider) is main's carried record and is kept intact.
+## Follow-up cure 2 — guess confirmed just after the pick read ends (2026-11-10)
 
-## 2026-11-04 — Arena synthesis implemented (builder run)
+- **Defect:** the Game Player re-vote on `65629760` BLOCKED (leg 4): the pick (Las Vegas) was named, the player tapped "Guess this place" immediately AFTER the name clip finished, and the guess committed visibly in silence — `fixed/suspicion.mp3` never played, no ask-next, the machine sat in SEARCH_IDLE at +10/+30/+60 s. The deferred-guess pair (follow-up cure 1) covered a confirm DURING the pick read; the reaction did not provably survive the read's exit instant.
+- **Verified mechanism [measured from the code + RED pins]:** a pick read never changes the phase (`speakSelection` stays in SEARCH), so its drain reaches the machine as a `speechEnded` in SEARCH_IDLE/SEARCH_AREA — an event the shipped machine drops as a no-op. `selectionReadInFlight` (set false by `speakSelection`) is therefore NEVER restored at rest: the machine carries a stale "pick read in flight" kind indefinitely, and a post-name confirm's routing depended on that stale flag instead of on any recorded arming history. The new pins (i) and (iii) fail on the unmodified tip on exactly this restoration assertion (stash-verified RED), and pass with the cure (GREEN).
+- **Cure (state logic only, timing-independent):** the `speechEnded` handler gains a pre-check — a drain in SEARCH_IDLE/SEARCH_AREA with a pick read outstanding restores `selectionReadInFlight` AND leaves the arming trace standing in a new field, `selectionReadKind: "post-pick"`. `guessConfirmed` preserves a standing `"post-pick"` (a pick still playing ahead of it also arms `"post-pick"`; an ordinary at-rest guess arms `"direct"`), and `clueUnlocked` routes a `"post-pick"` read's unlock to the SAME deferred-guess pair branch as the during-read window — one mechanism, no parallel path: suspicion exactly once, then the ordinary bridge (miss beat → ask-next → clue). Endings keep precedence (`pendingEnd` at the drain, per the shipped semantics). `selectionReadDone` keeps its single shipped meaning (the sheetClosed ASK_NEXT trigger): its one writer of true stays `afterSelectionRead` on a guess read's exit — an earlier cure-2 draft overloaded it and broke the shipped U7/sheet-flow pins (`detective-state.test.ts` :402/:674 class); that draft was corrected, and those pins pass untouched.
+- **Three-window law (the contract this cure pins):** (1) confirm DURING the name clip — the cure-1 pair, unchanged; (2) confirm JUST AFTER the name clip ends — the pre-check restores the kind and leaves the post-pick trace, so the confirm defers exactly as in window 1; (3) confirm at rest — the ordinary shipped path, `"direct"`, untouched. A solved confirm at the exit instant defers via `pendingEnd` and celebrates at the drain (pin (ii) — a contract pin for the shipped deferral semantics, corrected from a first draft that wrongly expected an immediate CELEBRATE from SELECTION_READ).
+- **Player layer investigated and exonerated [measured]:** a candidate player-side cure (an `inFlight` guard on the selection latest-wins splice in `detective-audio.ts`) was built, then stash-tested: the pin written for it passes with the player change REMOVED (the in-flight ref is never in the queue array — the player shifts before it plays — so the splice cannot eat it). Both player files were reverted; NO player change lands in this cure. **Stated plainly:** the Game Player freeze additionally required, in that run, a drain that never reached the machine at all (it sat in SEARCH_IDLE, where a dispatched `guessConfirmed` always enters SELECTION_READ) — a host-layer path this repo has no test pattern to reach (no host-render tests exist). The machine contract is now correct for every event ordering; the staged Game Player re-play on this tip (owner tap-mode config, BOTH confirm timings) is the judge of the host path.
+- **Tests:** 3 NEW unit pins in `detective-deferred-guess.test.ts` (post-name confirm keeps its reaction: suspicion ×1, name ×1, pair stored, bridge runs · solved confirm at the exit instant celebrates at the drain, no guess read into a closed case · the exit drain alone never mistakes itself for a guess read and the dedup survives it) — file now 9 pins, all green; the 6 cure-1 pins and the shipped detective-state/selection suites (97 tests across the four detective files) all pass. NEW E2E case (d) in `tests/e2e/detective-selection-read.spec.ts`: pick → wait for the name clip's own `ended` flag → confirm immediately → suspicion plays after the name, name exactly once, case continues to clue 2. Case (c) UNMODIFIED; the watson-walk spec UNTOUCHED.
+- **Gates on the cured tip [measured]:** tsc clean · `npm test` scripts 1,161 pass / 0 fail · src **2,318/2,318** (2,315 + 3 new pins) · worker 145/145 · lint-cards GATE PASSED · manifest clean 4,468 · build green.
+- **E2E [measured, sequential `--workers=1` under flock, chromium-1243]:** selection-read **4/4** (incl. new (d), 26.5 s) · flank **7/7** · replay **3/3** · sound **10/10** ((g) failed the batch run, passed its sequential re-run — the named flake) · watson-walk **8/9 in every run this session** — the phone-390 main test fails at the SELECTION_READ phase poll (spec line 256: 60 s poll, phase stays SEARCH_IDLE). **Control [measured]: the identical failure reproduces on the UNMODIFIED `65629760` build (stash + rebuild + same test: 1 failed / 4 passed, same signature)** — pre-existing in this environment, the same phase-window poll class cure 1's capsule recorded (it passed 5/5 sequentially in that run); NOT a cure-2 regression, and no assertion was touched. The guess path itself is proven deterministically by the audio-asserting selection-read (c)+(d) pins.
+- **Pending:** Game Player RE-PLAY on this tip (both timings, owner config) → DevEx + benchmark stages → verdict to the owner. No merge without the owner's per-PR word; merges #385 → #386 → #387 in one sitting; the `detectiveFlank` flip stays gated on the kid read test.
 
-Implemented `~/workspace/meridian-pr320-arena/SYNTHESIS.md` (candidate-1 base + grafts G1–G3 + fixes F1–F4) on this branch:
+## Follow-up cure 3 — the tap-mode silent guess (2026-11-10)
 
-- `tests/e2e/helpers.ts`: `TelemetryEvent`/`TelemetryEscape`/`TelemetryLedger` + `createTelemetryLedger()` (F2: `payloads()` returns a copy); `TELEMETRY_ENDPOINT` derived from `OBSERVABILITY_INGEST_HOSTS[0]`; `handleTelemetry(route, ledger)` as the one policy entry point; `serveBuiltArtifact` returns the per-context ledger (WeakMap, G3 idempotent), registers once-per-context escape listeners (`response` status ≠ 204 + `requestfailed`) that also append JSON lines to the spill file at `MERIDIAN_E2E_TELEMETRY_SPILL`; `collectTelemetry(context, {flags?, endpoint?})` throws on an unserved context; `telemetryGuard(getLedger, {silent?})` for `test.afterEach` (G2). Header comment on `serveBuiltArtifact` states the contract once (serve first → collectors win dispatch → hand-rolled handlers call `handleTelemetry` before `continue()` → stubbed surfaces may show "sent" copy, assert on the ledger).
-- `tests/e2e/pinch-zoom.spec.ts` (F3): call-site swap to `handleTelemetry` with a module-scope ledger; its own handler/spoof behaviour unchanged.
-- `tests/e2e/storyteller.spec.ts`: bespoke `unstubbedTelemetry` listener + afterEach deleted; `tel = await serveBuiltArtifact(context)` + `test.afterEach(telemetryGuard(() => tel))`.
-- Spill hooks (F4): `playwright.config.ts` gains `globalSetup`/`globalTeardown` → new `tests/e2e/telemetry-spill-setup.ts` / `telemetry-spill-teardown.ts`.
-- `scripts/e2e-telemetry-guard.test.mjs`: source-scan rules (a)–(d) in the `npm test` scripts suite; `COLLECTOR_FILES` = the 4 inspecting specs.
-- `tests/e2e/telemetry-harness.desktop.spec.ts` (G1): forced-`js_error` recorded via stub (A) and via collector (C); plain boot has no escapes (B). 3/3 pass [measured].
+- **Defect:** the Game Player BLOCKED the stack twice in the owner's own configuration (read-aloud pref "sometimes" = TAP MODE): a guess confirmed after Holmes named the pick — DURING the name clip and in the first instant AFTER it ended — committed visibly in silence; `fixed/suspicion.mp3` never played. Cures 1 and 2 fixed the machine's routing for both windows and the auto-mode E2E proved them, but every played failure was tap-mode-only and every passing spec ran auto mode — the loss was never in the machine.
+- **Verified mechanism [measured — step-0 instrumented run, evidence `pr2a/cure3/step0-probe-log.md`]:** a temporary probe in the host logged every machine dispatch and every player drain's guard inputs across a full played tap-mode session (Listen → pick → confirm, both windows). Findings: (1) the host's `onSpeakingChange` guard (`heldClueRef || deferredDrainRef`) was NEVER up — every drain logged `held=null deferred=false -> DISPATCHED`; there is no swallowed drain (the host hunt's one inferred link does not hold: `heldClueRef` is only ever set by the walk gate in AUTO mode, and `deferredDrainRef` only when a held clue is dropped, so in tap mode neither can stand). (2) `guessConfirmed` IS dispatched in tap mode and the machine answers it correctly — SELECTION_READ, `speak:fixed:suspicion` emitted, the pick drain delivered beforehand (cure 2's pre-check fires, kind "post-pick"), and the ladder bridges NOTE_MARK → ASK_NEXT → the next clue exactly as designed. (3) The emitted suspicion (and ask-next) clips NEVER reach `play()`: the player's tap branch resolves every non-selection item as skipped, and the guess read's refs (name without the selection flag, suspicion a plain fixed ref) were never marked as what they are — gesture-initiated speech, caused by the kid's own confirm tap, exactly like the pick read the selecting tap already exempts. The machine spoke; the player declined to play it, in tap mode only.
+- **Cure (player marking, host-armed; the machine untouched):** `detective-audio.ts` gains a guess-read window — `armGuessRead()` / `disarmGuessRead()` on the player. Refs enqueued while armed join a `guessItems` set and take the same tap-mode path as selection reads (play for real; the sound gate still applies, the autoplay veto does not). The set is SEPARATE from `selectionItems` on purpose: the selection path's latest-wins splice removes queued items by set membership, and a guess already spent must never be spliced out by a later pick (a unit pin holds exactly that queue shape). `DetectiveHost.tsx` arms the player around its ONE `guessConfirmed` dispatch (the guess effect) and disarms immediately after — the dispatch is synchronous, so the window brackets exactly the guess read's burst and nothing else. Drain accounting is untouched: guess reads drain through the ordinary `onSpeakingChange` path. "off" mode still skips everything; auto mode is byte-for-byte the shipped behaviour (the mark is inert there).
+- **Deviation from the cure brief, stated plainly:** the brief (from the host hunt) prescribed host-side drain accounting and no audio change. Step 0's measurement killed that premise — there is no swallowed drain to account for — and the hunt's own §5 set the burden for an audio change: a failing played-level pin the prescribed cure cannot fix. The pin below fails pre-cure on both beats, and drain accounting provably cannot move it (zero swallows in the session). The change therefore lands where the loss is measured to be: the player's tap-mode skip, armed from the host. `detective-state.ts` untouched, as ordered.
+- **Tests:** NEW played-level pin `tests/e2e/detective-tapmode-selection.spec.ts` (registered as the `detective-tapmode-selection` Playwright project): the OWNER'S configuration — pref "sometimes" seeded before first load, flank on, 390 px, held chains released by one Listen tap — (during) pick Las Vegas, confirm while the name clip is still playing; (after) pick Paris, wait for the name element's own `ended` flag, confirm in the next breath. Both assert: suspicion plays, the name was read exactly once, the counter shows Guess 2, and clue 2's chain is what Listen releases next. **Pre-cure RED [measured]: both tests fail on the suspicion assertion (30 s poll timeout) against the unmodified `99de79f1` build** (log: `pr2a/cure3/pin-precure-red.log`). Post-cure GREEN [measured]: 2/2 (log: `pr2a/cure3/pin-postcure-green.log`). NEW unit pins in `detective-audio.test.ts` (4): armed guess read (name + suspicion) plays for real in tap mode, in order, unarmed stays skipped · the sound gate still silences an armed guess read · a pick read never splices a queued guess read · arming is inert in auto mode.
+- **Gates on the cured tip [measured]:** tsc clean · `npm test` scripts 1,161 pass / 0 fail · src **2,322/2,322** (2,318 + 4 new pins) · worker 145/145 · lint-cards GATE PASSED · manifest clean 4,468 · build green. **E2E [measured, sequential `--workers=1` under flock, chromium-1243]:** the full detective battery in ONE run — selection-read **4/4** · watson-walk **9/9** · flank **7/7** · replay **3/3** · sound **10/10** · staging **11/11** · core-audio **3/3** = **47/47** (log: `pr2a/cure3/e2e-regression.log`) — plus the new tap-mode pin **2/2** above. Two adjudication re-runs were also done because the runtime's delivery of the battery output carried failure blocks that appear nowhere in the run's own log (no ✘ marks; stale test-results content): selection-read re-run **4/4** · watson-walk re-run **8/9** — the phone-390 main test failed the standalone re-run at the SELECTION_READ phase poll, the same intermittent signature control-proven pre-existing on the UNMODIFIED `65629760` build in cure 2's capsule (it passed in this cure's battery at 46.0 s); no assertion touched, and cure 3's surface (tap-mode marking + one wrapped dispatch) cannot move an auto-mode phase window.
+- **Pending:** Game Player RE-PLAY on this tip (both timings, owner tap-mode config — the re-play wins any disagreement with the spec, per the hunt) → panel re-vote (touched seats) → DevEx + benchmark → verdict to the owner. No merge without the owner's per-PR word; merges #385 → #386 → #387 in one sitting; the `detectiveFlank` flip stays gated on the kid read test.
+- **Status update (pipeline tail, 2026-11-10):** the re-vote round 3 code seats (Senior Developer + Game Developer) both returned APPROVE-WITH-NITS on this tip, and the Game Player re-play round 3 passed the owner-config gate — the panel is complete with 0 BLOCKs on `b8bfc8d4`. The remaining pipeline stages (Silo QA re-key, benchmark, DevEx/records) run on this tip; the verdict then goes to the owner. Merges stay the owner's hand, one sitting, #385 → #386 → #387.
+- **Silo QA re-key on `b8bfc8d4` (pipeline tail, 2026-11-10) — PASS-WITH-NITS:** fast gates all green (tsc clean · scripts 1,161/0 · src 2,322/2,322 · worker 145/145 · lint-cards GATE PASSED · manifest clean 4,468 · build green, buildId `b8bfc8d4`). E2E battery (49 tests, sequential, flock, chromium-1243): **47 passed / 2 failed** — both failures were the watson-walk main test at phone 390 and desktop 1280, both on the SELECTION_READ phase poll at spec line 256 (phase stays SEARCH_IDLE), the known phase-window poll signature; the sanctioned single sequential re-run of the suite passed **9/9**. Sabotage control BITES: removing `public/audio/detective/fixed/ack-7.mp3` makes the manifest gate exit 2 naming `fixed.ack-7`; restore returns the gate to clean (4,468). CI glance: #385 fully green at `c8f40692` (build + e2e + GitGuardian); #386/#387 GitGuardian PASS, Node CI unlisted (branch-base PRs — expected). Benchmark vs main `10e8121d`: JS gzip +0.021% · CSS gzip +0.31% — **PASS** vs the ≤5% gate; manifest +2,349 B (the 6 ack entries, exactly as forecast); audio tree +78,027 B (the 6 ack clips).
 
-**Deviations recorded, not absorbed:**
-- Guard EXEMPT does **not** start empty (contra F1): `tap-verify.spec.ts` [measured] imports nothing from `./helpers` — it inlines its own `serveBuiltArtifact` (written when helpers was untracked) and does not stub telemetry. It is the EXEMPT list's single entry, with the reason in the guard test; migrating it is a follow-up outside this scope. The arena inventory missed it.
-- F4 demo spec was named `telemetry-spill-demo.desktop.spec.ts` (deleted after the run): the plain `.spec.ts` name matches no project `testMatch` in `playwright.config.ts`, so it would never have run.
+## Third-review adjudication (2026-11-10) — no production defect on this tip
 
-**F4 demonstration [measured]:** the temporary demo spec (later 500 route on `TELEMETRY_ENDPOINT` + forced `js_error`) — the test itself passed, the run exited 1 at `globalTeardown` with the escape listed (`{"url":"https://meridian-crash-report.knowledgetest.workers.dev/ingest","status":500,"kind":"response"}`). A teardown throw **does** fail the run at this Playwright version; the `process.exitCode` fallback was not needed. Demo spec deleted.
-
-**Guard negative proof [measured]:** a temporary spec importing nothing from `./helpers` failed rule (a) naming the file + fix; deleted, guard back to 4/4 green.
-
-**Gates [measured]:** `npx tsc --noEmit` clean · `npm test` green (scripts 947 pass / 0 fail incl. the new guard; src 2016/2016) · `node scripts/lint-cards.mjs` GATE PASSED · `npm run build:pages` green (exit 0; two earlier attempts OOM-killed at prerender under VM contention, third completed) · Targeted E2E (flock, --workers=1, chromium-1243): telemetry-harness 3/3 · storyteller `-g "text-first render"` 1/1 · observability first test 1/1 · pinch-zoom full file 9 passed / 3 failed — the 3 globe zoom-step failures reproduce identically on the unmodified tip `1b88892` in a detached worktree (same dist, same Chromium), so they are pre-existing in this environment, not a regression of this change [measured]. Full E2E suite not run locally (CI's job, per brief).
-
-**Environment note:** this worktree had no `node_modules`; `npm ci` aborted under VM contention, so `node_modules` was copied from a sibling worktree whose `package-lock.json` is byte-identical (md5 `bf080315…`). `dist/` and `node_modules/` are gitignored; nothing of either is committed.
-
-## 2026-11-04 — Interrogation cure round (α/β/γ findings on tip `fbdcada`)
-
-Cured, per the three adversary reports + coordinator synthesis:
-
-- **α-F1** — `tap-verify.spec.ts` now routes telemetry through the shared helpers policy (`createTelemetryLedger` + `handleTelemetry` before its non-loopback `route.continue()`, `watchTelemetryEscapes` on its context); its stale "helpers untracked" header premise is corrected. The guard's EXEMPT list is now EMPTY.
-- **α-F3 / cure for pinch-zoom escapes** — escape-listener registration extracted from `serveBuiltArtifact` into exported `watchTelemetryEscapes(context, ledger)` (idempotent per context+ledger pair); `serveBuiltArtifact` calls it; `pinch-zoom.spec.ts` and `tap-verify.spec.ts` call it on their contexts.
-- **γ-F2** — pinch-zoom's ledger is per-test: created in `beforeEach` before route registration (no module-scope accumulation), watcher registered there.
-- **β-F1** — escape correlation in the watcher: a telemetry request that received a response records no `requestfailed` escape, and one request records at most one escape (per-context answered-Request tracking; a 204 landing after a `requestfailed` retracts it; `requestfailed` spill writes are deferred one macrotask and skipped when retracted).
-- **β-F2 + β-F3** — spill path is run-unique (`-<pid>-<Date.now()>`) with a `MERIDIAN_E2E_TELEMETRY_SPILL_FALLBACK` path exported by setup; a failed append is `console.error`-logged (never silent) and retried to the fallback; teardown reads BOTH files and throws listing all lines from either.
-- **β-F4** — ledger read APIs deep-copy: `all()`/`ofType()`/`first()`/`payloads()` return `structuredClone`d events/payloads (escapes copied too); mutating a returned object cannot change `count()`/`ofType()`.
-- **β-F5** — `serveBuiltArtifact` tracks effective `spoofCapableDevice` per context: same-value re-serve returns the ledger; a different value throws naming both values. Double-serve call sites found in the tree are all same-value (storyteller's in-test re-serve of its fixture context; qa-evidence's beforeEach + per-test serves) — no design adjustment needed.
-- **β-F6** — `collectTelemetry` is idempotent per context per endpoint: same-endpoint second call is a no-op returning the ledger; a different endpoint throws naming both.
-- **β-F7** — new `telemetryGuardFor(context, opts?)` resolves the context's own ledger (throws if never served); `storyteller.spec.ts` migrated to it; `telemetryGuard` stays, doc-commented as advanced/unbound.
-- **β-F8** — telemetry-harness Test A now also asserts the recorded `js_error` payload's `error.message === "telemetry-harness-probe"`.
-- **β-F9** — `TelemetryEvent.raw?: string`: on parse failure the raw body text is stored (what `postData()` returns; truncated at 2048 chars); `type` stays null, `parseError` stays true.
-- **γ-F3/F4/F5/F6/F7** — guard hardening: comment-stripped scanning (state machine respecting string/template/regex literals) for all rules; rules (b)/(d) scan ALL `tests/e2e/*.ts`, rules (a)/(c) specs only; (a) requires an import (aliases resolved) AND a call; (b) requires `handleTelemetry(` before the first `route.continue()` or a `serveBuiltArtifact(` delegation; (c) requires `CONTEXT_FILES` listing + rule (a), with a pin test asserting CONTEXT_FILES equals exactly the derived `browser.newContext(` set (12 files); (d) keeps the literal ban + `COLLECTOR_FILES`, with a pin test asserting it equals exactly the 4 inspecting specs.
-
-**Residuals (recorded, not cured):**
-- **γ-F1** — mis-ordered hand-rolled collectors: a hand-rolled collector registered BEFORE `serveBuiltArtifact` is silently starved (the later serve catch-all wins dispatch) and its posts are re-labelled `via="stub"`. No enumerable-routes cure exists in Playwright — there is no API to list a context's registered routes and check their order. The sanctioned path (`collectTelemetry`) throws when called before serve; a mis-ordered hand-rolled spec fails its own capture assertions loudly rather than passing vacuously, and the 4 inspecting specs keep their verified serve-first order.
-- **γ-F7 (split-string half)** — a hostname assembled by string concatenation (`"meridian-crash-report." + "knowledgetest…"`) evades the textual literal ban. Textual only: while serving goes through the shared helpers, the runtime stub keys off the real hostname (`OBSERVABILITY_INGEST_HOSTS`), so the split string alone leaks nothing; the runtime escape/spill backstop, not the text scan, is the layer that catches an actual post.
-
-**tap-verify EXEMPT removal:** the guard's EXEMPT mechanism stays, its list is now empty — tap-verify satisfies rule (a) by importing and calling `handleTelemetry` from `./helpers` (see α-F1 above).
-- 2026-11-04: merge-up onto main `ddc0709` (#331) at the owner's merge word. Sole conflict BRANCH_STATUS.md, resolved keeping both records; the PR's harness code is unchanged from the interrogated tip `11a7764`. Checks re-read on the new tip before merging.
+- **Trigger:** after #385/#386 merged (squash `b172e316`, `2688d8b8`), the owner merged current main into this branch (`a9714cd6`) and his third review reported: the watson-walk main test fails at every viewport (phase stays SEARCH_IDLE, never SELECTION_READ), `detective-stations` case-387 fails, and both pass on main. The review named the guess-read/selection-read change (`armGuessRead`, cure 3) as prime suspect. The owner ordered: fix the code, not the tests.
+- **Merge cleared [measured, blob comparison]:** on every detective source file (`DetectiveHost.tsx`, `detective-audio.ts`, `detective-state.ts`, `detective-host-props.ts`, `LoopScreen.tsx`, `watson-walk.ts` + tests) the merge result `a9714cd6` is byte-identical to this branch's parent `58de2f6d` (the panel-voted tip). The merge's delta vs this branch is only main's journal lane; it dropped or duplicated no detective hunk. Both specs are byte-identical between main and this tip.
+- **Fast gates on `a9714cd6` [measured]:** tsc clean · `npm test` scripts 1,161 pass / 0 fail · src 2,322/2,322 · worker 145/145 · lint-cards GATE PASSED · manifest clean 4,468 · build green, buildId `a9714cd6`.
+- **E2E on `a9714cd6` [measured]:** selection-read **4/4** · tapmode-selection **2/2** (the tap-mode pin the owner added — the cure-3 surface is intact) · watson-walk **8/9** — the ONE failure is phone 390 on the SELECTION_READ phase poll, the documented phase-window flake below; tablet 768 and desktop 1280 PASSED, contradicting "fails at every viewport". flank **7/7** · replay **3/3** · sound **10/10** · staging **11/11** · core-audio **3/3**.
+- **Watson-walk adjudication [measured]:** probe run on this build (10 ms in-page sampler): on a guess, the sheet opens and the station root unmounts entirely for ~2.7 s (the bench stage suppresses Watson's station figure while the sheet is open, so no phase root exists in that window); the station remounts already at SELECTION_READ, which dwells ~500 ms on it while the name clip plays, then the ladder advances NOTE_MARK → ASK_NEXT → READING exactly as designed. The failing run's trace shows 218 frame snapshots with SELECTION_READ observed 0 times while its network record shows the full chain (name → suspicion) playing — a phase-window observation miss under load, the exact class the cure-1/2/3 capsules above already control-proved on unmodified builds (`65629760`, stash + rebuild, same signature) and the Silo QA re-key above adjudicated PASS-WITH-NITS. No assertion was touched; no production change was made, because none is supported by evidence.
+- **MAIN CONTROL [measured]:** watson-walk on unmodified main `2688d8b8` (buildId `2688d8b8`) fails 8/9 with the identical phone-390 SELECTION_READ signature. The review's "passes on main" does not hold in this environment for this test, on either branch.
+- **Stations adjudication [measured]:** this tip and the main control BOTH fail the case-387 test on the same assertion — the play-order pin names `fixed/ack-1.mp3` and the received record carries `fixed/ack-4.mp3`. Since #386 the acknowledgement is a random draw from the 10-line pool; ack-4 is a lawful draw, so the pin fails ~9 times in 10 on ANY branch. It is a stale test from before the pool — the u10 harness and the replay/watson-walk specs were cured to the pool matcher (`ACK_POOL` in `detective-u10.ts`) when #386 landed; stations never was. It is owed on main, not on this branch, and is fixed at full assertion strength in the separate main-debt PR (review: `detective-e2e-main-debt`).
+- **Record:** builder log `~/workspace/meridian-detective-evidence/pr387-fix/BUILDER-LOG.md` (steps 1-9). NO production-code change lands on this branch for the third review — the evidence does not support one, and a speculative change to the guess-read path would risk the panel-approved cure-3 surface the tap-mode pin proves intact. The owner's re-check + quick playtest on this tip remains the next gate; merges stay the owner's hand, this PR only.
+## Notes
+- CSP: was NOT changed by this branch itself (repo CSP had no meridian-media in `media-src`/`connect-src`) — SUPERSEDED by the merge below: the player CSP fix (`da43a03f` + `8d4475e9`) adds the host to both directives, so this branch now carries it too. GitHub Pages ignores `_headers`, so live Pages is unaffected by the file; the worker-served CSP is what matters.
+- No PR opened; merging stays the owner's decision.
+- Head: this commit (docs-only over share-fix code head `0cf449d7`; all gates / E2E union ran on `0cf449d7`; verified this session: `git rev-parse HEAD`, worktree clean, remote tip matches; B5/B6 fix pass 2026-11-09, share-URL fix pass 2026-11-09).
+- Final-pass verdict: unit gates + `build:pages` green on head `0cf449d7`; E2E union **88 passed / 0 failed** — the former share-URL failure (Step 3) is cured by the owner's 2026-11-09 ruling (see Share-URL fix). The three blocking seats re-vote with the green union on the record. One open item remains outside the union: endgame-share E2E (see Pending).
 
 ---
 
-# Prior record preserved on merge: crash-report README audit (PR #308, docs/221-crash-readme-audit)
+## CSP fix — journal media host (PR #388 follow-up, 2026-11-09, owner-ordered)
 
-# BRANCH_STATUS — docs/221-crash-readme-audit (Wave 2, #221)
-
-- **Branch:** `docs/221-crash-readme-audit` · **Base:** `main` @ `2a0527f`
-- **Task:** #221 REOPENED as PARTLY fixed — audit `workers/crash-report/README.md` line-by-line against the worker's current code, fix every documentation gap, open a small docs PR. STOP at PR-open (no Silo QA, no panel, no merge — separate dispatches).
-- **Tier:** 0 (docs-only). Worker code is FROZEN on this branch: a code-wrong finding is reported, never fixed here.
-- **Audit:** sealed at `~/workspace/meridian-issue-wave/evidence/221/AUDIT.md` — 24 gap rows fixed (incl. owner's `counted` at the dry-run example), 1 already-correct group, 2 out-of-scope, 1 code-wrong finding (C1: client emits `storyteller_*`/`narration_*` types the worker 400s — that is the #194 crew's event-acceptance surface).
-- **Biggest gaps fixed:** `recovery_outcome` (8th event type, conditional tier) undocumented everywhere; the entire verdict classifier undocumented; `results` response field missing; all error shapes missing; test count stale (42 → 85).
-- **Files changed:** `workers/crash-report/README.md`, this file. Nothing else.
-- **Done:** [x] audit sealed · [x] README fixed · [x] gates sealed at `~/workspace/meridian-issue-wave/evidence/221/` (test:worker 0 · typecheck:worker 0 · tsc 0 · lint-cards 0 · build:pages 0 · npm test: src suite 1879/1879 pass; scripts suite 851 pass / 1 fail / 9 skip — the 1 fail is `ssr-build-shape` configPath pointing at the sibling `repo/` clone because this worktree's `node_modules` is a symlink to `repo/node_modules`; the same test passes 2/2 on unmodified main in the `repo/` clone, sealed as `ssr-shape-main-control.log`, so it is a worktree-environment artifact, not this docs change) · [ ] PR opened (filled in by the PR-open commit's successor record in the PR body)
-
----
-
-# Prior record preserved on merge: crash-report worker accepts all 14 event types (PR #311, fix/194-event-type-mismatch)
-
-# BRANCH_STATUS — fix/194-event-type-mismatch (Wave 2, #194 REOPENED)
-
-- **Branch:** `fix/194-event-type-mismatch`
-- **Base:** `main` @ `2a0527f` (#295 merged tip at branch start).
-
-## Task capsule
-
-TASK / requested outcome: Fix the three-way observability event-type
-mismatch behind reopened issue #194. Owner's facts (verified from
-source, 2026-11-02): the app sends 14 event types, the crash-report
-worker accepts 8, the docs say 7 — the 6 storyteller/narration types
-the app emits are rejected (400) by the worker in production and
-silently dropped. Wave 1's docs-only closure in #251 was wrong: it
-claimed those 6 "stay client-side and are not sent", and its counts
-(13 client / 7 worker) were already stale the day it landed (Slice 2,
-#250, had added `recovery_outcome` the day before).
-
-Interpretations considered and selected reading: each app-only type is
-either LEGITIMATE (live emission, worker must accept) or DEAD (app
-must stop sending). Evidence verdict: **all 6 are legitimate** — built
-as COPPA-clean telemetry in #108, emitted on live Storyteller paths,
-sent through the same `emit()` transport to the live endpoint in
-`public/flags.json`, with no client-side consumer anywhere. Full
-per-type evidence: `~/workspace/meridian-issue-wave/evidence/194/DIAGNOSIS.md`.
-
-Tier and rationale: Tier 1 — one clear contract bug, diagnosed from
-source first; fix at the worker layer + a drift guard + docs sync.
-
-Done condition / evidence: worker accepts all 14 types; the 6 funnel
-types are counted-only (never forwarded individually, like
-hiccup-class); per-type acceptance tests + unknown-type rejection
-pinned; a drift test in `npm test` keeps the client union and the
-worker list equal; every doc list reads 14; gates sealed under
-`~/workspace/meridian-issue-wave/evidence/194/` (tsc · npm test ·
-test:worker · typecheck:worker · lint-cards · build:pages); PR open.
-STOP at PR-open — no Silo QA, no panel, no merge by this run.
-
-Files in scope: `workers/crash-report/src/index.ts` +
-`src/index.test.ts`, new `scripts/observability-event-types.test.mjs`,
-`docs/observability.md`, `docs/handbook/07-engineering-and-ops.md`,
-`workers/crash-report/README.md`, `worker/observability/README.md`
-(cross-reference count only), this file. App source: NO change (no
-dead types). Frozen PRs #297/#299/#302/#305 and #231/#265/#270/#292/#293
-untouched. Claim recorded in the coordination ledger 2026-11-02: Wave 2
-claims the crash-report worker surface for #194/#221 per the owner's
-express assignment (historically Rock's surface — noted for his round).
-
-## Status
-
-- [x] Diagnosis sealed (evidence/194/DIAGNOSIS.md) — counts 14/8/7 confirmed; all 6 app-only types LEGITIMATE
-- [x] Worker fix + tests (worker suite 85 → 90; commit 9f8635c)
-- [x] Drift-guard script test (mutation-proven; commit 9f8635c)
-- [x] Docs sync (4 files: docs/observability.md, handbook ch07, workers/crash-report/README.md, worker/observability/README.md cross-ref)
-- [x] Gates sealed (evidence/194/gates/, on tip 3fb41de): tsc 0 · npm test 0 (scripts 852 pass / 11 skipped; src 1879/1879) · test:worker 0 (90/90) · typecheck:worker 0 · lint-cards GATE PASSED · build:pages 0. E2E not run — no client emission changed (app source untouched). Note: the resume run re-sealed npm test + build:pages after the first sealing attempts lost their exit files when their shell sessions were killed mid-run; the re-run logs are the sealed ones (identical pass counts).
-- [x] PR open — PR #311 (2026-11-02, resume run after the prior crew died in a daemon restart; reconciliation found this branch/worktree + sealed DIAGNOSIS.md sound and resumed from them, no restart). STOP at PR-open — no Silo QA, no panel, no merge by this run.
-
+- **Problem:** the journal clips live on meridian-media Pages
+  (`https://veeresh-bikkaneti.github.io/meridian-media/journal/`), but CSP
+  had no `veeresh-bikkaneti.github.io` in `media-src` or `connect-src` —
+  in production the player would show "This story's movie isn't ready
+  yet." and prefetch would silently warm nothing. Proven by the negative
+  controls below (not assumed).
+- **Fix:** added the host to BOTH directives in
+  `src/lib/security-headers.ts` AND `public/_headers` (drift test pins
+  them identical), plus the matching lines in `docs/security-headers.md`
+  (quotes the CSP verbatim) and a rationale bullet in the .ts CSP notes.
+- **Tests:** new unit test in `src/lib/security-headers.test.ts` asserts
+  both directives contain the host (src 2302 → 2303). New E2E
+  `tests/e2e/journal-player.csp.desktop.spec.ts` serves the app shell
+  with the real production CSP read from `public/_headers` and asserts
+  the Old Faithful movie's `currentTime` advances (0.54 s in the run).
+  Negative controls, both fail as designed: (1) old `_headers` restored
+  → spec fails at the CSP-contains-host assertion; (2) old CSP served
+  with the file fixed → the player shows "This story's movie isn't
+  ready yet.", no `<video>` mounts, spec fails at `openEntry`.
+- **Also:** `tests/e2e/journal-player.facts.data.ts` comment fixed to the
+  30-minute window / mod 106 (wording copied from the prefetch branch so
+  the merge stays clean). Pinned times untouched — they are the 2h-based
+  instants this branch's rotation uses; B8's times arrive with the
+  prefetch merge.
+- **Gates (this commit):** tsc 0; `npm test` scripts 1161/11 skipped/0,
+  src 2303/0; lint-cards GATE PASSED; `build:pages` ok; `test:worker`
+  145/0. E2E targeted player set 39/39 (38 + new CSP spec).
+  Logs: `~/workspace/journal-player-csp/`.
+- **Merge:** NO MERGE without the owner's per-PR word. This commit moves
+  the #388 tip; the old validator YES on `af7ec7c1` does not transfer.
+  Next: merge this tip into `feat/journal-prefetch` (#389) per the
+  owner's order.
+- **Follow-up (same evening):** the first merge attempt into prefetch
+  caught a spec bug — the CSP spec asserted the player's 3-entry set,
+  but prefetch B8 shows 1 entry per 30-minute window (`wagon-train` at
+  the pinned instant), so the spec failed there on the rotation
+  assertion, not on CSP. Fixed by making the spec rotation-agnostic: it
+  plays whichever entry the pinned instant shows (`ids[0]`). Re-run on
+  the player branch: CSP + facts specs 9/9, movie `currentTime` 0.51 s
+  (entry old-faithful). This lands as a second commit on this branch
+  before the prefetch merge is redone.
+- **Repair (2026-11-10, owner-ordered):** Lotus rebased this branch onto main `10e8121d` overnight (`6dcdcfc7`), orphaning the first merge (`60c16460`) and dropping the CSP fix — the rebased tip had no `github.io` in either CSP directive and #389 went CONFLICTING vs base. This merge re-merges the player tip `8d4475e9`. Resolution, all 21 conflicts: kept the prefetch (B8/B7) version of every player file whose two sides diverged — `game-app.tsx` (B7 boot-Home + prefetch effect; player's `readLoopOpen` boot-restore would regress B7), `journal-movies.ts` (baseUrl re-pin restored by prefetch follow-up `13844336`), the spinner (`journal-player.tsx`, `home-v5.css`, unit tests), and all rotation-sensitive specs (B8 1-entry/30-min assertions, incl. `facts.data.ts` B8 times + the fixed 30-min comment); took the player's CSP fix (security-headers files + docs, merged clean), the CSP spec, and this section. The player's 3-per-set spec wording and 2-hour language were NOT taken — they describe the old rotation.

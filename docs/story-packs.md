@@ -240,8 +240,8 @@ as chips the player can switch between.
 - **One shared list.** `buildDeckList` builds the chip list for both
   editions from the manifest data, so the two shelves cannot drift
   apart.
-- **One manifest load per session.** The shelf and the home doorway
-  share a single manifest load: a manifest that loads fine is kept
+- **One manifest load per session.** The shelf mounts in both
+  editions share a single manifest load: a manifest that loads fine is kept
   for the rest of the session, a failed load is thrown away so the
   next screen tries again, and dealing a case always fetches fresh —
   so a pack that cannot load at deal time still falls back to the
@@ -296,7 +296,15 @@ edition — and adds a flag layer under one rule:
   open mystery and the cycle count untouched. Cold Trail generation
   stays composition-stable the same way: new cases append after the
   shipped ones, and flag stamps are additive metadata only.
-- **The doorway.** Home carries a "Capitals & Flags" strip directly
-  under the Expeditions Map card with a door into each mode; each
-  door selects the pack before opening, so the player lands in the
-  pack, not on the shelf.
+- **The doorway — removed from Home.** The pack has no home-page
+  surface at all: its only entry point is the deck shelf inside
+  each mode, where the player picks the Capitals deck on the
+  shelf chip. (Superseded record: issue #344 shipped a "Capitals &
+  Flags" strip on Home with a door into each mode, each door
+  selecting the pack before opening; the owner then replaced the
+  doors with a pure signpost beside the About card — Veeresh,
+  2026-11-05: "Option C — signpost only, no buttons" — after
+  flagging the two Play buttons as redundant to the mode cards
+  below; and later the same day he removed the strip outright —
+  Veeresh, 2026-11-05: "card is not clickable. if its not
+  clickable then there is no point of putting it on home page.")

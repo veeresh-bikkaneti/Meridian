@@ -364,7 +364,7 @@
   border: none;
 }
 
-/* Icon-only ghost speaker (8-10 and 11-13): 44px, no text label —
+/* Icon-only ghost speaker (all groups): 44px, no text label —
    identical chrome across bands so the band stays invisible. */
 .agep-listen-icon {
   width: 44px;

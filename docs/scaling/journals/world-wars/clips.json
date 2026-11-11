@@ -1,0 +1,162 @@
+{
+  "journal": "world-wars",
+  "count": "PROPOSED",
+  "proposedCount": 2,
+  "yearRule": "Any 'how many years ago' answer is stored as currentYear - <year>. currentYear is read from the device clock at play time and the card shows the computed number. No total and no counting year is stored.",
+  "stage": "A",
+  "buildGate": "closed",
+  "maxGrade": {
+    "7-10": 5,
+    "10-18": 12,
+    "18+": 14
+  },
+  "screenedOn": "2026-11-10",
+  "cuts": [
+    {
+      "id": "christmas-truce",
+      "verdict": "CUT",
+      "reason": "§7a religion and religious practice. Britannica (checked 2026-11-10) describes an unofficial cease-fire on 24–25 December 1914, Christmas trees, the hymn Stille Nacht, answering carols, and an appeal from Pope Benedict XV. The story cannot be told without that religious day. Football and gifts do not save it. Cut, not softened."
+    },
+    {
+      "id": "letters-home",
+      "verdict": "CUT",
+      "reason": "§7a plus the no-invented-facts rule. The draft quote 'I miss you' had no primary source. A US museum letter page and a British evacuation were mixed into one child. The draft said about 1.5 million civilians, 'the overwhelming majority' children, in three days. The UK government history blog (30 Aug 2019) says over 1.5 million people, of whom 800,000 were children. A BBC History page says nearly 3 million people in four days. The counts conflict, so none is taught. The folktale codename is omitted (mythology is out). The sourced morning is kept as school-morning, not as this draft."
+    }
+  ],
+  "clips": [
+    {
+      "id": "world-wars:school-morning",
+      "clip": "school-morning",
+      "group": "7-10",
+      "gradeNote": "C3 indicator is end of grade 5. Grade 5 may sit in 7-10 (grades 2–5). The arithmetic is subtraction of two given years, not a formula.",
+      "skill": "subtraction",
+      "objective": "After this, a child in band 7-10 can find how many years ago 1939 was by taking 1939 away from this year, shown by entering currentYear - 1939 (worked out at play time), and can name the year the narration said, shown by the answer 1939.",
+      "standard": "D2.His.2.3-5",
+      "standardText": "Compare life in specific historical time periods to life today.",
+      "standardSource": "https://www.socialstudies.org/sites/default/files/c3/C3-Framework-for-Social-Studies.pdf",
+      "standardChecked": "2026-11-10",
+      "why": "The children met in 1939. How many years ago was that?",
+      "opensWith": "how many years ago",
+      "place": {
+        "lat": 51.5166,
+        "lon": -0.0634,
+        "name": "Myrdle Street, Stepney, London, England"
+      },
+      "placeConfidence": "MEDIUM",
+      "placeSource": "https://nominatim.openstreetmap.org/search?q=Myrdle%20Street%2C%20London&format=json",
+      "placeNote": "Pin rounded from the OSM way center 51.5165719, -0.0633966 (checked 2026-11-10). It is the street, not a surveyed school door. The school name and the 5am assembly are from the government history blog, not from the map.",
+      "file": "public/videos/journals/world-wars/school-morning.mp4",
+      "captions": "school-morning.vtt",
+      "captionsSpec": "docs/scaling/journals/world-wars/captions/school-morning.vtt",
+      "narration": "Hey kids, have you heard about this place? On 1 September 1939, children met at school here at 5 am.",
+      "predict": {
+        "prompt": "The children met in 1939. How many years ago was that?",
+        "answer": "currentYear - 1939",
+        "computedAtPlay": true,
+        "unit": "years"
+      },
+      "explain": "Take 1939 away from this year. The card shows the answer. This was a school morning in 1939.",
+      "hint": "Start at this year. Take away 1939.",
+      "retrieval": {
+        "question": "In what year did the children meet at school?",
+        "answer": "1939"
+      },
+      "elsewhere": {
+        "subject": "geography",
+        "prompt": "A bridge opened in 2000. How many years ago was that?",
+        "answer": "currentYear - 2000",
+        "computedAtPlay": true,
+        "note": "Same subtraction, a built place. The bridge and the year 2000 are the game's key, not a fact about this street."
+      },
+      "buildsOn": "subtraction of whole numbers",
+      "realLife": "finding how many years ago a dated morning was",
+      "environmentLink": "The pin is one city street. The clip does not claim a distance to the countryside.",
+      "facts": [
+        {
+          "text": "On 1 September 1939 the government began the evacuation. Children of Myrdle School in Stepney assembled at school at 5am that Friday. The same start moved over 1.5 million people from urban target areas, of whom 800,000 were children, including from Manchester, Birmingham, and Glasgow, not only London.",
+          "source": "https://history.blog.gov.uk/2019/08/30/child-evacuees-in-the-second-world-war-operation-pied-piper-at-80/",
+          "confidence": "HIGH",
+          "checked": "2026-11-10"
+        }
+      ],
+      "notTaught": [
+        "No count of people or children. A BBC History page says nearly 3 million people in the first four days (https://www.bbc.com/history/british/britain_wwtwo/evacuees_01.shtml). That conflicts with the government blog's over 1.5 million people, of whom 800,000 were children. Neither number is said to the child.",
+        "No letter text. 'I miss you' was not sourced. A museum catalogue of letters from a Canada evacuation is a different journey and is not used.",
+        "No folktale codename, gas masks, bombs, soldiers, or a nation named as an enemy.",
+        "No kilometers. No train on this street: the blog says they assembled at the school at 5am. A photograph shows a walk with cases. It does not show a train here, so the clip does not."
+      ],
+      "motion": "Full and Lite: the existing three.js globe, loaded with import(\"three\") inside the scene, flies to this lat/lon. Flat, Save-Data, and prefers-reduced-motion: a 2D pin at the same point, no swoop. Same question and the same answer on every tier.",
+      "standardSourceNote": "C3 Framework (NCSS, 2013), Dimension 2 History table, PDF page 46. Indicator text matched word for word on 2026-11-10."
+    },
+    {
+      "id": "world-wars:quiet-hour",
+      "clip": "quiet-hour",
+      "group": "10-18",
+      "gradeNote": "C3 indicator is end of grade 8, inside 10-18 (grades 5–12). The arithmetic is subtraction of two given years. No algebra and no trigonometry.",
+      "skill": "subtraction",
+      "objective": "After this, a child in band 10-18 can subtract 1918 from 1939, shown by the answer 21, and can state the morning hour the narration said, shown by the answer 11.",
+      "standard": "D2.His.1.6-8",
+      "standardText": "Analyze connections among events and developments in broader historical contexts.",
+      "standardSource": "https://www.socialstudies.org/sites/default/files/c3/C3-Framework-for-Social-Studies.pdf",
+      "standardChecked": "2026-11-10",
+      "why": "One quiet morning was in 1918. The school morning was in 1939. How many years later was the school morning?",
+      "opensWith": "how many years ago",
+      "place": {
+        "lat": 49.4279,
+        "lon": 2.9057,
+        "name": "Clairière de l'Armistice, Compiègne, France"
+      },
+      "placeConfidence": "MEDIUM",
+      "placeSource": "https://nominatim.openstreetmap.org/search?q=Clairiere%20de%20l%27Armistice%2C%20Compiegne&format=json",
+      "placeNote": "Pin rounded from the OSM attraction 49.4278578, 2.9056857 (checked 2026-11-10). French Wikipedia gives 49°25′38″N, 2°54′23″E for the same clearing (about 100 m away). The pin is the 1918 morning. The site today has a memorial, and the clearing was reused in 1940. Neither is shown or asked.",
+      "file": "public/videos/journals/world-wars/quiet-hour.mp4",
+      "captions": "quiet-hour.vtt",
+      "captionsSpec": "docs/scaling/journals/world-wars/captions/quiet-hour.vtt",
+      "narration": "Hey kids, have you heard about this place? On 11 November 1918, at 11 am, the war here went quiet.",
+      "predict": {
+        "prompt": "Start at 1918. End at 1939. How many years is that?",
+        "answer": "21",
+        "unit": "years"
+      },
+      "explain": "Subtract 1918 from 1939. That is 21 years. The pin is a forest clearing at Compiègne, not a battlefield.",
+      "hint": "Use 1939 minus 1918.",
+      "retrieval": {
+        "question": "At what hour in the morning did the war go quiet?",
+        "answer": "11"
+      },
+      "elsewhere": {
+        "subject": "geography",
+        "prompt": "A ship log starts in 1900 and ends in 1920. How many years is that?",
+        "answer": "20",
+        "note": "Same subtraction, a trip. The ship, 1900, and 1920 are the game's key, not a voyage from this clearing."
+      },
+      "stretch": {
+        "group": "18+",
+        "question": "The paper was signed at 5:45 in the morning. It took effect at 11:00. How many minutes passed in between?",
+        "answer": "315",
+        "unit": "minutes",
+        "fact": "quiet-hour-1918",
+        "worked": "From 5:45 to 11:00 is 5 hours and 15 minutes. 5 x 60 + 15 = 315."
+      },
+      "buildsOn": "subtraction of whole numbers, including the school-morning year gap",
+      "realLife": "finding how many years passed between two dated mornings",
+      "environmentLink": "The pin is a forest clearing. The clip does not measure the trees or the path.",
+      "facts": [
+        {
+          "text": "The armistice was signed at 5:45 am on 11 November 1918 at Compiègne, France, and took effect at 11:00 am, ending the war on the Western Front.",
+          "source": "https://www.britannica.com/topic/Armistice-Day",
+          "confidence": "HIGH",
+          "checked": "2026-11-10"
+        }
+      ],
+      "notTaught": [
+        "The 5:45 signing time is a source fact. Only the 18+ stretch asks about it. The narration teaches 11 in the morning, when it went quiet.",
+        "No who-won line, no signing table, no flags, no soldiers, no guns, no poppies, no monument. Poppies and stone memorials stay with the monuments journal.",
+        "The 1940 reuse of this clearing is not mentioned to the player.",
+        "No count of people. The evacuation counts conflict (evac-counts-conflict in sources.md), so none is taught."
+      ],
+      "motion": "Full and Lite: the existing three.js globe, loaded with import(\"three\") inside the scene, flies to this lat/lon. Flat, Save-Data, and prefers-reduced-motion: a 2D pin at the same point, no swoop. Same question and the same answer on every tier.",
+      "standardSourceNote": "C3 Framework (NCSS, 2013), Dimension 2 History table, PDF page 46. Indicator text matched word for word on 2026-11-10."
+    }
+  ]
+}

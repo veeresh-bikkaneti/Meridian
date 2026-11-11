@@ -3,6 +3,12 @@ import { Suspense, lazy, useEffect, useRef } from "react";
 
 // The Storyteller mascot stays out of the initial bundle (lazy chunk).
 const StorytellerNarration = lazy(() => import("./storyteller"));
+// Unit B: the detective pair's game-end celebration also stays out of
+// the initial bundle — and out of the DOM entirely unless the
+// detectivePair flag is on (the prop below is the only door).
+const SummaryDetectiveCelebration = lazy(
+  () => import("./summary-detective-celebration"),
+);
 import { formatLength, unitForSessionSummary } from "@/game/units";
 import {
   DIFFICULTY_LABELS,
@@ -53,6 +59,13 @@ export function RunSummaryCard(props: {
   dateKey: string;
   /** Growth data, flag-gated. Null when the flag is off. */
   growth?: GrowthSummary | null;
+  /**
+   * Unit B (flag-gated, the growth pattern): when the detectivePair
+   * flag is on, Holmes & Watson mount on this card and celebrate the
+   * final session score. Absent/false = the summary is exactly
+   * today's — no pair DOM, and the lazy chunk is never requested.
+   */
+  detectiveCelebration?: boolean;
   onDone: () => void;
   onPlayAgain: () => void;
   /**
@@ -84,7 +97,7 @@ export function RunSummaryCard(props: {
   /** Opens the exact-route preview sheet (owner renders the sheet). */
   onChallengePrimaryPreview?: () => void;
 }): JSX.Element {
-  const { summary, regionName, dateKey, growth, onDone, onPlayAgain, onReview, reviewDueCount, challengePrimary, challengeSecondary, onChallengePrimaryPreview } = props;
+  const { summary, regionName, dateKey, growth, detectiveCelebration, onDone, onPlayAgain, onReview, reviewDueCount, challengePrimary, challengeSecondary, onChallengePrimaryPreview } = props;
   // One unit for the whole card: miles only when EVERY played region is a
   // USA context (state edition, or the United States country run);
   // mixed or empty sessions fail closed to kilometers (owner ruling 2026-10-11).
@@ -241,6 +254,19 @@ export function RunSummaryCard(props: {
             />
           </Suspense>
         </div>
+        {/* Unit B: the game-end celebration frame (flag-gated). It
+            sits under the narration slot because the narration yields
+            to it while it plays (the celebration handshake — see
+            summary-detective-celebration.tsx). Flag off: nothing here
+            at all, not even the lazy chunk request. */}
+        {detectiveCelebration ? (
+          <Suspense fallback={null}>
+            <SummaryDetectiveCelebration
+              totalScore={summary.totalScore}
+              byEdition={summary.byEdition}
+            />
+          </Suspense>
+        ) : null}
         <p className="text-[11px] tracking-wider text-white/60 uppercase">{regionName}</p>
         <h2 className="mt-1 font-display text-2xl">Game over</h2>
 

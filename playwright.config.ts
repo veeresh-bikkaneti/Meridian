@@ -156,6 +156,147 @@ export default defineConfig({
       testMatch: /pwa\.spec\.ts/,
     },
     {
+      // U9: the detectivePair flag gate (host absent at the committed
+      // false, mounted when an intercepted flags.json flips it true).
+      name: "detective-flag",
+      testMatch: /detective-flag\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // U10 gates pack: one project per detective gate spec (the U9
+      // one-project-per-spec convention).
+      name: "detective-stations",
+      testMatch: /detective-stations\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      name: "detective-companion",
+      testMatch: /detective-companion\.spec\.ts/,
+      use: { viewport: { width: 768, height: 1024 } },
+    },
+    {
+      name: "detective-swap",
+      testMatch: /detective-swap\.spec\.ts/,
+      use: { viewport: { width: 800, height: 700 } },
+    },
+    {
+      name: "detective-endings",
+      testMatch: /detective-endings\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // Unit A (fold-in): tap-Watson replay — auto-mode retention,
+      // elsewhere-tap negative, mid-read restart.
+      name: "detective-replay",
+      testMatch: /detective-replay\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // Unit B (fold-in): game-end celebration on the run summary in
+      // every edition. The reduced-motion variant rides the shared
+      // `reduced` project (detective-summary.reduced.spec.ts).
+      name: "detective-summary",
+      testMatch: /detective-summary\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // PR C (Sound Everywhere): in-screen toggles in GeoDetective +
+      // Cold Trail, tap-Holmes instant mute + badge, tap-Watson replay
+      // separation, pair speaker chip — one project, shared fixture
+      // context (no CONTEXT_FILES entry, the Unit A/B convention).
+      name: "detective-sound",
+      testMatch: /detective-sound\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // Prod-pair visibility fix (2026-11-06): the pair must be
+      // VISIBLE — inside the player's viewport and never painted over
+      // each other. Presence-only assertions are how the live dock
+      // occlusion shipped. The spec drives its own 1280 px and 390 px
+      // contexts; the project viewport is only a default.
+      name: "detective-visibility",
+      testMatch: /detective-visibility\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // PR A (staging rework): bench + coffee + watch, slot collapse,
+      // entry walk, berth walks, zero clue-text overlap, mute taps —
+      // every assertion at 390 / 768 / 1280 (owner per-device gate).
+      // The spec drives its own per-width contexts; the project
+      // viewport is only a default.
+      name: "detective-staging",
+      testMatch: /detective-staging\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // PR B (Watson Walks): arrival-gated reads, the case-open
+      // announcement, silent clue-2 walks, instant replay, sheet
+      // cancellation, reduced-motion instant placement, and the
+      // zero-overlap law — every assertion at 390 / 768 / 1280
+      // (owner per-device gate). The spec drives its own per-width
+      // contexts; the project viewport is only a default.
+      name: "detective-watson-walk",
+      testMatch: /detective-watson-walk\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      name: "detective-closed-state",
+      testMatch: /detective-closed-state\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      name: "detective-berth",
+      testMatch: /detective-berth\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      name: "detective-core-audio",
+      testMatch: /detective-core-audio\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // PR 2a (STAGE flank): Holmes/Watson flank the clue card at
+      // 768/1280, bookend strip above the card at 390, zero clue-text
+      // overlap, Listen plays on the first tap in tap mode, and the
+      // detectiveFlank flag-off path reproduces the shipped layout.
+      // The spec drives its own per-width contexts; the project
+      // viewport is only a default.
+      name: "detective-flank",
+      testMatch: /detective-flank\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // The owner's restated spec (2026-11-10): clues one at a time,
+      // an ack per clue, no pair speaker, mute top-left, beat-me-to-it.
+      // Phone width — where he plays it.
+      name: "detective-owner-spec",
+      testMatch: /detective-owner-spec\.spec\.ts/,
+      use: { viewport: { width: 390, height: 844 } },
+    },
+    {
+      // PR 2a cure (selection read wiring): the real pick path —
+      // LoopScreen → props whitelist → host → machine → audio —
+      // Holmes names the player's map pick aloud before any guess is
+      // spent, suspicion-only on the confirming guess, and the
+      // pending-slot law for a pick made mid-clue-chain. The spec
+      // drives its own contexts; the project viewport is a default.
+      name: "detective-selection-read",
+      testMatch: /detective-selection-read\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // PR 2a cure 3 (the tap-mode silent guess): the selection-read
+      // beats replayed in the OWNER'S configuration — read-aloud
+      // preference "sometimes" (tap mode), flank on, 390 px, held
+      // chains released by Listen — confirming DURING the pick's name
+      // clip and JUST AFTER it ends; the guess's spoken reaction must
+      // play both times. The spec drives its own viewport; the
+      // project viewport is a default.
+      name: "detective-tapmode-selection",
+      testMatch: /detective-tapmode-selection\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },
@@ -202,6 +343,16 @@ export default defineConfig({
     {
       name: "geodetective",
       testMatch: /geodetective\.spec\.ts/,
+    },
+    {
+      // GeoDetective End game (owner ruling, 2026-11-07): header
+      // button at four widths, both fates (pause / outright) at 390 +
+      // desktop, counts-once after a pause-end, Esc / Keep playing.
+      // The spec drives its own per-width viewports; the project
+      // viewport is only a default.
+      name: "geodetective-endgame",
+      testMatch: /geodetective-endgame\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
     },
     {
       // Owner directive 2026-10-12: every map tap registers a guess —

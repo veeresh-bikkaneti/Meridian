@@ -56,7 +56,6 @@ import {
   type PlaceFacts,
 } from "./age-profile/index.ts";
 import type { Difficulty } from "./scoring.ts";
-import { kidStoryVersion } from "./kid-story.ts";
 // Import attribute: required by Node's module loader (unit tests run under
 // node --experimental-strip-types); bundlers accept it as well. The manifest
 // is ~7 KB — the only generated-data file in the initial bundle.
@@ -266,7 +265,7 @@ function toStarter(
   // fact > Wikipedia history hook > bare geographic blurb (same order as
   // composeCardStory() in scripts/card-compose.mjs) — but the ladder rung
   // actually SHOWN is picked by the age-profile rung mapper: it walks DOWN
-  // from the band's ceiling (5-7 → hook only) and degrades to history,
+  // from the band's ceiling (7-10 → up to wikitext) and degrades to history,
   // then the blurb. The profile is read at each card boundary, so a
   // mid-session band change applies to the next card, never the current.
   const hasHistory = typeof place.history === "string" && place.history.length > 0;
@@ -290,7 +289,7 @@ function toStarter(
     story,
     // Which rung the band's ceiling selected for this card (age-profile).
     storyRung,
-    // Read-aloud should auto-play this card (true for the 5-7 band).
+    // Read-aloud should auto-play this card (per the band audioMode).
     audioAutoplay,
     // The ladder rung of the record's fact (null when none/unknown) — lets
     // the story be re-mapped when a staged band change hits a card boundary
@@ -330,11 +329,10 @@ function toStarter(
  */
 export function storyForBand(place: Starter, band: AgeBandId): string {
   // Curated starters (WI-14): the hand-written story IS the reviewed card
-  // text — there are no rung parts to re-map. Bands 8-10 / 11-13 get it
-  // whole; band 5-7 gets the sentence-shortened kid version derived from
-  // that same text (kid-story.ts — shortening only, never new text).
+  // text — there are no rung parts to re-map. Every group gets it
+  // whole (the former 5-7 sentence-shortening no longer applies).
   if (place.curated === true) {
-    return band === "5-7" ? kidStoryVersion(place.story) : place.story;
+    return place.story;
   }
   const hookText = place.fact ?? place.history ?? "";
   const blurb =

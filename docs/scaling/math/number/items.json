@@ -1,0 +1,481 @@
+[
+  {
+    "id": "math-number:groups:skip-count",
+    "group": "7-10",
+    "objective": "After this, a child can count a pile of up to 1000 objects by 5s, 10s and 100s, shown by tapping the next number in the sequence and the total at the end.",
+    "standard": {
+      "code": "2.NBT.A.2",
+      "source": "https://www.thecorestandards.org/Math/Content/2/NBT/"
+    },
+    "why": "Forty coins are spilled on the shop counter. Counting them one by one takes ages and slips; counting in 5s is quick.",
+    "buildsOn": [],
+    "useElsewhere": [
+      "economics: counting out change in coins by 5s and 10s"
+    ]
+  },
+  {
+    "id": "math-number:groups:arrays",
+    "group": "7-10",
+    "objective": "After this, a child can find the total in a rectangle of up to 5 rows and 5 columns by adding the rows, shown by tapping the row totals and the final total.",
+    "standard": {
+      "code": "2.OA.C.4",
+      "source": "https://www.thecorestandards.org/Math/Content/2/OA/"
+    },
+    "why": "A wall is built from rows of bricks and the builder needs the total without counting every brick.",
+    "buildsOn": [
+      "math-number:groups:skip-count"
+    ],
+    "useElsewhere": [
+      "everyday life: rows of bricks in a wall, rows of chairs in a hall"
+    ]
+  },
+  {
+    "id": "math-number:groups:equal-groups",
+    "group": "7-10",
+    "objective": "After this, a child can explain a product as a number of equal groups of a given size, shown by choosing the picture of 5 groups of 7 for 5 × 7.",
+    "standard": {
+      "code": "3.OA.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/3/OA/"
+    },
+    "why": "Four boxes hold 6 pencils each. How many pencils is that, and what is a short way to say it?",
+    "buildsOn": [
+      "math-number:groups:skip-count"
+    ],
+    "useElsewhere": [
+      "economics: price per item, packs of the same size on a shelf"
+    ]
+  },
+  {
+    "id": "math-number:place:hundreds-tens-ones",
+    "group": "7-10",
+    "objective": "After this, a child can say how many hundreds, tens and ones are in a three-digit number, shown by building the number from hundreds, tens and ones tiles.",
+    "standard": {
+      "code": "2.NBT.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/2/NBT/"
+    },
+    "why": "A cashier is handed 3 hundred notes, 4 tens and 5 ones. Which number is that, and why is the 3 worth more than the 5?",
+    "buildsOn": [
+      "math-number:groups:skip-count"
+    ],
+    "useElsewhere": [
+      "economics: making change from notes and coins"
+    ]
+  },
+  {
+    "id": "math-number:place:compare",
+    "group": "7-10",
+    "objective": "After this, a child can compare two three-digit numbers, shown by tapping the larger one and choosing the right sign: greater than, equal to or less than.",
+    "standard": {
+      "code": "2.NBT.A.4",
+      "source": "https://www.thecorestandards.org/Math/Content/2/NBT/"
+    },
+    "why": "Two routes to the lake: one is 358 steps, one is 385. Which is the longer walk, and how can you tell without counting?",
+    "buildsOn": [
+      "math-number:place:hundreds-tens-ones"
+    ],
+    "useElsewhere": [
+      "geography: comparing two distances on a map"
+    ]
+  },
+  {
+    "id": "math-number:place:round",
+    "group": "7-10",
+    "objective": "After this, a child can round a whole number to the nearest 10 or 100, shown by placing it on a number line and tapping the nearer 10 or 100.",
+    "standard": {
+      "code": "3.NBT.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/3/NBT/"
+    },
+    "why": "A school fair has 287 visitors and the sign-maker wants a round number for the banner. Is it about 200 or about 300?",
+    "buildsOn": [
+      "math-number:place:compare"
+    ],
+    "useElsewhere": [
+      "geography: about how many people live in a small town (populations)"
+    ]
+  },
+  {
+    "id": "math-number:place:ten-times",
+    "group": "7-10",
+    "objective": "After this, a child can explain that a digit in one place is worth ten times the same digit one place to its right, shown by sliding digit tiles one place and naming the new value.",
+    "standard": {
+      "code": "4.NBT.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/4/NBT/"
+    },
+    "why": "A path of 70 steps is stretched by a mapmaker to ten times as long. How many steps is that, and what happened to each digit?",
+    "buildsOn": [
+      "math-number:place:hundreds-tens-ones"
+    ],
+    "useElsewhere": [
+      "geography: a map where each square stands for ten times the distance"
+    ]
+  },
+  {
+    "id": "math-number:tables:buses",
+    "group": "7-10",
+    "objective": "After this, a child can solve a word problem about equal groups using multiplication or division within 100, shown by tapping the number of buses for 24 children with 6 seats a bus.",
+    "standard": {
+      "code": "3.OA.A.3",
+      "source": "https://www.thecorestandards.org/Math/Content/3/OA/"
+    },
+    "why": "The class trip has 24 children and each bus seats 6. How many buses do we book? Counting seats one by one is slow; groups of 6 are fast.",
+    "buildsOn": [
+      "math-number:groups:equal-groups"
+    ],
+    "useElsewhere": [
+      "geography: how many buses a school trip across the region needs"
+    ]
+  },
+  {
+    "id": "math-number:tables:facts",
+    "group": "7-10",
+    "objective": "After this, a child can multiply and divide within 100 using the times tables, shown by giving the exact answer without a hint.",
+    "standard": {
+      "code": "3.OA.C.7",
+      "source": "https://www.thecorestandards.org/Math/Content/3/OA/"
+    },
+    "why": "A shop sells pencils in packs of 4 and a customer wants 7 packs. The answer is already known if the 4 times table is known, so there is no need to count them again.",
+    "buildsOn": [
+      "math-number:tables:buses"
+    ],
+    "useElsewhere": [
+      "physics: a gear with 8 teeth turns 6 times, so how many teeth pass the mark"
+    ]
+  },
+  {
+    "id": "math-number:tables:patterns",
+    "group": "7-10",
+    "objective": "After this, a child can spot and explain a pattern in the multiplication table, shown by tapping the cells that follow the pattern and checking an answer with it.",
+    "standard": {
+      "code": "3.OA.D.9",
+      "source": "https://www.thecorestandards.org/Math/Content/3/OA/"
+    },
+    "why": "A stall-holder wants a quick way to check their counting of packs. A pattern in the table is a free double-check.",
+    "buildsOn": [
+      "math-number:tables:facts"
+    ],
+    "useElsewhere": [
+      "economics: checking a total at a stall before giving change"
+    ]
+  },
+  {
+    "id": "math-number:tables:big-products",
+    "group": "7-10",
+    "objective": "After this, a child can multiply a number of up to four digits by a one-digit number, shown by building the product from place-value parts and entering the exact answer.",
+    "standard": {
+      "code": "4.NBT.B.5",
+      "source": "https://www.thecorestandards.org/Math/Content/4/NBT/"
+    },
+    "why": "A hall has 8 rows of 126 chairs for a concert. The caretaker needs the total number of seats to print the tickets.",
+    "buildsOn": [
+      "math-number:tables:facts",
+      "math-number:place:hundreds-tens-ones"
+    ],
+    "useElsewhere": [
+      "economics: the cost of 8 tickets at 126 each at a small show"
+    ]
+  },
+  {
+    "id": "math-number:tables:multi-digit",
+    "group": "10-18",
+    "objective": "After this, a child can multiply multi-digit whole numbers with the standard method, shown by entering the exact product and checking it with an estimate.",
+    "standard": {
+      "code": "5.NBT.B.5",
+      "source": "https://www.thecorestandards.org/Math/Content/5/NBT/"
+    },
+    "why": "A floor is tiled in 23 rows of 47 tiles. Ordering by guessing wastes money; the exact total decides the order.",
+    "buildsOn": [
+      "math-number:tables:big-products"
+    ],
+    "useElsewhere": [
+      "economics: the cost of 47 items at a price of 23 each, then checking it by rounding"
+    ]
+  },
+  {
+    "id": "math-number:tables:mental-strategies",
+    "group": "18+",
+    "objective": "After this, an adult can multiply two-digit numbers in their head by splitting, doubling and halving, shown by giving the exact answer and naming the strategy used.",
+    "standard": "UNVERIFIED",
+    "why": "Splitting a bill or comparing two quotes at a counter, where there is no calculator in hand, goes faster with a clean mental method. Fit: no code fits; this is an adult extension (the nearest school code is 5.NBT.B.5).",
+    "buildsOn": [
+      "math-number:tables:multi-digit"
+    ],
+    "useElsewhere": [
+      "economics: splitting a bill in your head"
+    ]
+  },
+  {
+    "id": "math-number:place:decimal-shifts",
+    "group": "10-18",
+    "objective": "After this, a child can explain how a digit's value changes by a factor of 10 in both directions, shown by moving digits across a decimal point on a place-value chart and reading the new number.",
+    "standard": {
+      "code": "5.NBT.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/5/NBT/"
+    },
+    "why": "A mapmaker draws a map at 1 cm for 10 km. The same land is then drawn ten times larger, so 1 cm stands for 1 km. Every distance must shift one place; where does each digit land?",
+    "buildsOn": [
+      "math-number:place:ten-times"
+    ],
+    "useElsewhere": [
+      "geography: changing the scale of a map by a factor of 10"
+    ]
+  },
+  {
+    "id": "math-number:place:scientific",
+    "group": "10-18",
+    "objective": "After this, a child can write a very large or very small number as a single digit times a power of 10 and compare two such numbers, shown by choosing the matching form and the larger one.",
+    "standard": {
+      "code": "8.EE.A.3",
+      "source": "https://www.thecorestandards.org/Math/Content/8/EE/"
+    },
+    "why": "Two quantities on the globe differ by many zeros and a long string of zeros hides which is larger. A power of 10 makes the gap visible.",
+    "buildsOn": [
+      "math-number:place:decimal-shifts"
+    ],
+    "useElsewhere": [
+      "geography: comparing the size of two areas on the globe, with real figures taken from a sourced list when the unit is built"
+    ]
+  },
+  {
+    "id": "math-number:division:fair-share",
+    "group": "7-10",
+    "objective": "After this, a child can interpret a division as the size of each fair share, shown by dealing 12 snacks to 4 friends on screen and entering the share each friend gets.",
+    "standard": {
+      "code": "3.OA.A.2",
+      "source": "https://www.thecorestandards.org/Math/Content/3/OA/"
+    },
+    "why": "Twelve snacks and four friends: is it fair, and how many does each get?",
+    "buildsOn": [
+      "math-number:groups:equal-groups"
+    ],
+    "useElsewhere": [
+      "economics: splitting a bill fairly among friends"
+    ]
+  },
+  {
+    "id": "math-number:division:unknown-factor",
+    "group": "7-10",
+    "objective": "After this, a child can find a missing factor by thinking of a division as the opposite of multiplication, shown by completing 8 × ? = 40 and checking it by multiplying.",
+    "standard": {
+      "code": "3.OA.B.6",
+      "source": "https://www.thecorestandards.org/Math/Content/3/OA/"
+    },
+    "why": "A box holds 8 pencils and there are 40 pencils to pack. How many boxes? Asking what times 8 makes 40 solves it.",
+    "buildsOn": [
+      "math-number:division:fair-share",
+      "math-number:tables:facts"
+    ],
+    "useElsewhere": [
+      "everyday life: packing boxes of equal size"
+    ]
+  },
+  {
+    "id": "math-number:division:remainders",
+    "group": "7-10",
+    "objective": "After this, a child can solve a division problem that leaves a remainder and say what the remainder means, shown by choosing whether to round up for 26 children and 6-seat buses.",
+    "standard": {
+      "code": "4.OA.A.3",
+      "source": "https://www.thecorestandards.org/Math/Content/4/OA/"
+    },
+    "why": "There are 26 children and each bus seats 6. Four buses leave two children behind, so what do we book?",
+    "buildsOn": [
+      "math-number:division:unknown-factor",
+      "math-number:tables:buses"
+    ],
+    "useElsewhere": [
+      "geography: how many vans a school trip needs when the last van is not full"
+    ]
+  },
+  {
+    "id": "math-number:division:big-quotients",
+    "group": "7-10",
+    "objective": "After this, a child can divide a number of up to four digits by one digit and give the quotient and remainder, shown by entering both and checking them by multiplying.",
+    "standard": {
+      "code": "4.NBT.B.6",
+      "source": "https://www.thecorestandards.org/Math/Content/4/NBT/"
+    },
+    "why": "A school library has 1,248 books to put on 8 shelves, evenly. How many go on each shelf, and does any book get left over?",
+    "buildsOn": [
+      "math-number:division:remainders",
+      "math-number:tables:big-products"
+    ],
+    "useElsewhere": [
+      "economics: splitting a bill, or a prize shared evenly"
+    ]
+  },
+  {
+    "id": "math-number:division:two-digit-divisors",
+    "group": "10-18",
+    "objective": "After this, a child can divide a number of up to four digits by a two-digit number, shown by entering the quotient and remainder and checking it by multiplying.",
+    "standard": {
+      "code": "5.NBT.B.6",
+      "source": "https://www.thecorestandards.org/Math/Content/5/NBT/"
+    },
+    "why": "A builder has 157 bricks to load onto pallets of 12 and needs the number of pallets and bricks left over.",
+    "buildsOn": [
+      "math-number:division:big-quotients"
+    ],
+    "useElsewhere": [
+      "everyday life: packing boxes, and what is left over"
+    ]
+  },
+  {
+    "id": "math-number:division:standard-algorithm",
+    "group": "10-18",
+    "objective": "After this, a child can divide multi-digit numbers with the standard method, shown by entering an exact quotient and checking it by estimation.",
+    "standard": {
+      "code": "6.NS.B.2",
+      "source": "https://www.thecorestandards.org/Math/Content/6/NS/"
+    },
+    "why": "A trip costs 4,368 in total and 28 people share the cost equally. What does each person pay?",
+    "buildsOn": [
+      "math-number:division:two-digit-divisors"
+    ],
+    "useElsewhere": [
+      "economics: splitting the cost of a trip among a group"
+    ]
+  },
+  {
+    "id": "math-number:fractions:fair-parts",
+    "group": "7-10",
+    "objective": "After this, a child can name a unit fraction as one of several equal parts of a whole, shown by cutting a pizza into equal parts on screen and naming one part.",
+    "standard": {
+      "code": "3.NF.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/3/NF/"
+    },
+    "why": "Four friends share one pizza. Cut it so nobody gets a bigger piece. What do we call one piece?",
+    "buildsOn": [
+      "math-number:division:fair-share"
+    ],
+    "useElsewhere": [
+      "geography: share of land, a map cut into 4 equal parts"
+    ]
+  },
+  {
+    "id": "math-number:fractions:number-line",
+    "group": "7-10",
+    "objective": "After this, a child can place a fraction on a number line between 0 and 1, shown by tapping the point on a line divided into equal parts.",
+    "standard": {
+      "code": "3.NF.A.2",
+      "source": "https://www.thecorestandards.org/Math/Content/3/NF/"
+    },
+    "why": "A hiker walks 3 of 4 equal parts of a trail. Where on the trail are they now?",
+    "buildsOn": [
+      "math-number:fractions:fair-parts"
+    ],
+    "useElsewhere": [
+      "geography: map scale, how far along a route in equal parts"
+    ]
+  },
+  {
+    "id": "math-number:fractions:equivalent",
+    "group": "7-10",
+    "objective": "After this, a child can identify two fractions that are the same size, shown by matching 1/2 to 2/4 on a pair of equal strips.",
+    "standard": {
+      "code": "3.NF.A.3",
+      "source": "https://www.thecorestandards.org/Math/Content/3/NF/"
+    },
+    "why": "Both pizzas are the same size. One friend cut a pizza into 2 pieces and took 1; another cut theirs into 4 pieces and took 2. Who has more, or do they have the same amount?",
+    "buildsOn": [
+      "math-number:fractions:number-line"
+    ],
+    "useElsewhere": [
+      "chemistry: two jugs of juice mix are the same strength when they show the same fraction of juice"
+    ]
+  },
+  {
+    "id": "math-number:fractions:compare-unlike",
+    "group": "7-10",
+    "objective": "After this, a child can compare two fractions with different denominators, shown by tapping the larger of 3/4 and 2/3 and choosing a common-denominator picture.",
+    "standard": {
+      "code": "4.NF.A.2",
+      "source": "https://www.thecorestandards.org/Math/Content/4/NF/"
+    },
+    "why": "Two bottles of the same size are 3/4 full and 2/3 full. Which one holds more water?",
+    "buildsOn": [
+      "math-number:fractions:equivalent"
+    ],
+    "useElsewhere": [
+      "chemistry: which of two mixes has more of the dissolved ingredient"
+    ]
+  },
+  {
+    "id": "math-number:fractions:add-unlike",
+    "group": "10-18",
+    "objective": "After this, a child can add fractions with unlike denominators, shown by entering the exact sum and drawing it on a fraction bar.",
+    "standard": {
+      "code": "5.NF.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/5/NF/"
+    },
+    "why": "A recipe wants 1/2 cup of one thing and 1/3 cup of another. How much is that altogether, so the bowl is big enough?",
+    "buildsOn": [
+      "math-number:fractions:compare-unlike"
+    ],
+    "useElsewhere": [
+      "everyday life: recipes"
+    ]
+  },
+  {
+    "id": "math-number:fractions:multiply",
+    "group": "10-18",
+    "objective": "After this, a child can multiply a fraction by a whole number or a fraction, shown by shading an area model and entering the product.",
+    "standard": {
+      "code": "5.NF.B.4",
+      "source": "https://www.thecorestandards.org/Math/Content/5/NF/"
+    },
+    "why": "A recipe needs 2/3 cup, but only half of the recipe is being made. How much is needed?",
+    "buildsOn": [
+      "math-number:fractions:add-unlike",
+      "math-number:division:fair-share"
+    ],
+    "useElsewhere": [
+      "chemistry: scaling a mixture down to half the batch"
+    ]
+  },
+  {
+    "id": "math-number:fractions:divide",
+    "group": "10-18",
+    "objective": "After this, a child can divide a whole number by a fraction and a fraction by a fraction in a real situation, shown by entering how many pieces of a given size fit.",
+    "standard": {
+      "code": "6.NS.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/6/NS/"
+    },
+    "why": "A roll of ribbon is 6 metres long and each ribbon takes 3/4 of a metre. How many ribbons?",
+    "buildsOn": [
+      "math-number:fractions:multiply",
+      "math-number:division:standard-algorithm"
+    ],
+    "useElsewhere": [
+      "economics: a budget split into portions of a fraction each"
+    ]
+  },
+  {
+    "id": "math-number:fractions:percent",
+    "group": "10-18",
+    "objective": "After this, a child can find a percent of a quantity as a rate per 100, shown by entering 30% of 80 and checking it on a hundred grid.",
+    "standard": {
+      "code": "6.RP.A.3c",
+      "source": "https://www.thecorestandards.org/Math/Content/6/RP/"
+    },
+    "why": "A shop takes 30% off a price of 80. What do you pay, and how much did you save?",
+    "buildsOn": [
+      "math-number:fractions:multiply"
+    ],
+    "useElsewhere": [
+      "economics: discounts at a shop and a stall"
+    ]
+  },
+  {
+    "id": "math-number:fractions:combine-shares",
+    "group": "18+",
+    "objective": "After this, an adult can combine fractions, percents and a division in one multi-step situation, shown by entering the final amount and the order of steps used.",
+    "standard": "UNVERIFIED",
+    "why": "Four friends split a 120-coin bill: one pays 1/2, one pays 1/4, and the last two split the rest equally. One of those two equal shares gets 10% off. Who pays how much? Fit: no code fits; this is an adult extension.",
+    "buildsOn": [
+      "math-number:fractions:percent",
+      "math-number:fractions:divide"
+    ],
+    "useElsewhere": [
+      "economics: sharing a group budget when some items are discounted"
+    ]
+  }
+]

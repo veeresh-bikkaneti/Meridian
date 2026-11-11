@@ -12,7 +12,7 @@ import {
   stampCleanExitDirty,
 } from "@/game/clean-exit";
 import type { Starter } from "@/game/starters";
-import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm, type Region, type RegionBounds } from "@/game/regions";
+import { ADMIN1_BY_COUNTRY, COUNTRIES, findRegion, STATES, greaterSideKm, type Region } from "@/game/regions";
 import { rewriteStory } from "@/game/rewrite";
 import { shouldFireAiStory } from "@/game/story-ai";
 import { backfillDifficultyChoice, continueRun, dropPin, endRun, isResumable, resumeRun, startRun, type Edition, type Run, type RunPhase, type PlaceResult } from "@/game/run";
@@ -42,7 +42,26 @@ import {
   type SessionSummary,
 } from "@/game/session";
 import { scoreRingForEdition } from "@/game/score";
-import { SCORING_VERSION, scorePlace, type Difficulty, type ScoredPlace } from "@/game/scoring";
+// Phase 0 shell split (slice 1): pure helpers moved verbatim to
+// src/game/shell-helpers.ts; the shell imports them back.
+import {
+  boundsFor,
+  discardedNoticeText,
+  isChallengeRun,
+  isDrop,
+  isEdition,
+  isPhase,
+  isPlaceResult,
+  isReviewRun,
+  isScoredPlace,
+  runResultsTotals,
+  trailDate,
+  type DiscardedNotice,
+  type Drop,
+} from "@/game/shell-helpers";
+export { isChallengeRun } from "@/game/shell-helpers";
+export type { Drop } from "@/game/shell-helpers";
+import { SCORING_VERSION, scorePlace, type Difficulty } from "@/game/scoring";
 import { createDealer, poolForNewRun, seenStoreFor, mintSeed, wasClearedCelebrated, markClearedCelebrated, clearClearedMark, memorySeenStore, isBandCleared } from "@/game/trail";
 import { resolveRunPool } from "@/game/pool";
 import { loadedForKey, placesLoadKey, type LoadedFor } from "@/game/places-load-key";
@@ -59,7 +78,8 @@ import {
 import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand } from "@/assets/home-v5/card-media";
 import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
-import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal, Volume2, VolumeX } from "lucide-react";
+import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
+import { SoundToggle } from "./SoundToggle";
 import {
   initAudio,
   isSoundEnabled,
@@ -68,7 +88,6 @@ import {
   playEditionEntrance,
   playLose,
   playWin,
-  setSoundEnabled,
 } from "@/game/audio/sfx";
 import { playCelebrationSound, safePlay, soundAudible } from "@/game/audio/play-guards";
 import {
@@ -101,6 +120,13 @@ import {
   journalSetIndexAt,
   nextEntryCountdown,
 } from "./home-journal";
+import { JournalPlayer } from "./journal-player";
+import {
+  isJournalPrefetchAllowedNow,
+  resolveJournalPrefetchEntries,
+  startJournalPrefetch,
+  type JournalPrefetchHandle,
+} from "./journal-prefetch";
 // Storyteller banner host (owner directive 2026-10-09): the Storyteller
 // sits IN THE BANNER beside the Meridian branding — always visible, mobile
 // and desktop. React.lazy — the host (and its copy chunk) never lands in
@@ -113,7 +139,7 @@ import {
   StorytellerBannerBoundary,
   StorytellerBannerSkeleton,
 } from "./storyteller-banner-shell";
-// Age-profile system: the parent-set band (5-7 / 8-10 / 11-13). Game
+// Age-profile system: the parent-set group (7-10 / 10-18 / 18+). Game
 // screens use ONLY this facade — the store is never imported directly.
 // The settings screen is React.lazy: zero initial-bundle cost.
 import "./age-profile/age-profile.css";
@@ -121,7 +147,6 @@ import { LockedLoop } from "./age-profile/LockedLoop";
 import { ReadAloudPrefPrompt } from "./age-profile/ReadAloudPrefPrompt";
 import { ReadAloudPrefSettings } from "./age-profile/ReadAloudPrefSettings";
 import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
-import { LazyHomeImage } from "./lazy-home-image";
 import {
   applyPendingAtBoundary,
   audioMode,
@@ -131,7 +156,21 @@ import {
   pinToleranceKm,
   resolveBand,
   type AgeBandId,
+  type BandRunConfig,
 } from "@/game/age-profile";
+
+type LegacySnapshotBand = Exclude<BandRunConfig["band"], AgeBandId>;
+
+/**
+ * A persisted run-config snapshot (meridian.loop.v2) may still carry a
+ * pre-age-groups id. Map it to the current group wherever an AgeGroup is
+ * needed; the snapshot itself is never rewritten or rejected.
+ */
+function normalizeSnapshotBand(b: AgeBandId | LegacySnapshotBand): AgeBandId {
+  if (b === "5-7" || b === "8-10") return "7-10";
+  if (b === "11-13") return "10-18";
+  return b;
+}
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
 // v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
@@ -225,24 +264,13 @@ import {
   type LearningStore,
 } from "@/game/learning";
 import {
-  readLoopOpen,
   writeLoopOpen,
   peekLoopProgress,
-  readLoopStoreV2,
-  loadLoopStore,
-  setActiveDeck,
-  writeLoopStoreV2,
 } from "@/game/loop/store";
-import { PackDoorway } from "./pack-doorway";
-import {
-  FIRST_PACK_ID,
-  fetchLoopDeckSize,
-  writeSelectedDeck,
-} from "./pack-shelf-data";
 import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // F2 bundle split: GeoDetective (Loop) and Cold Trail are play-intent
-// screens — they render only when the player opens them (or when a saved
-// loopOpen flag restores GeoDetective on boot). Both screens statically
+// screens — they render only when the player opens them (B7: never on
+// boot from a saved loopOpen flag — tap-in only). Both screens statically
 // import LoopMap, which value-imports maplibre-gl (~1.1 MB) and its
 // stylesheet, so a static import here pulled the whole map library into
 // the preloaded route chunk. They are React.lazy instead — the
@@ -345,13 +373,6 @@ declare global {
   }
 }
 
-/**
- * A review-deck session is a Run with this regionId (typed edition "globe")
- * so the PlayLoaded game loop is reused instead of forked. Every
- * review-specific branch keys off this predicate. Review runs never consult
- * the no-repeat history of real regions and never bank into the session —
- * review is practice, not scoring.
- */
 import {
   buildCreationSources,
   buildFreshChallengeShareText,
@@ -415,81 +436,6 @@ import {
   VERDICT_ICONS,
   type VerdictClass,
 } from "@/game/challenge-verdict";
-
-function isReviewRun(run: Run): boolean {
-  return run.regionId === REVIEW_DECK_REGION_ID;
-}
-
-/**
- * A friend-challenge run is identified by its region id alone — the run
- * carries no other marker. Every isolation guard in this file keys off
- * this one check, so there is exactly one place to get it right:
- * challenge runs never bank into the session, never write learning
- * records or review-deck cards, and never touch the persistent
- * no-repeat history (see the dealer, the flag effect, and onConfirm).
- * Why isolate them? The places were chosen by a FRIEND, not dealt to
- * this player — letting them into the player's own history, deck, or
- * score would teach the game the wrong lessons about what this player
- * has seen and how well they are doing.
- */
-export function isChallengeRun(run: Run): boolean {
-  return run.regionId === CHALLENGE_REGION_ID;
-}
-
-/**
- * Speaker toggle (SFX audio spec §4): persisted under `meridian.sound`,
- * default ON, and the single control for ALL sounds (the 7 shipped + the
- * 9 celebration recipes — every play call goes through the
- * `isSoundEnabled()` gate). Turning ON plays the card tap as confirmation;
- * OFF is silent. This toggle is the "reduced sound" control — reduced
- * motion never mutes audio (spec §4.6).
- *
- * One instance lives in the Chart Room home header; a second lives in the
- * game chrome so sound is reachable mid-game (Veeresh's explicit ask).
- * The two never co-mount — each reads the persisted value on mount, so a
- * toggle flipped on one screen is correct on the next.
- */
-function SoundToggle({
-  testId,
-  className,
-  style,
-  iconClassName = "size-5",
-}: {
-  testId: string;
-  className?: string;
-  style?: CSSProperties;
-  iconClassName?: string;
-}) {
-  const [soundOn, setSoundOn] = useState<boolean>(() => isSoundEnabled());
-  const toggleSound = () => {
-    try {
-      const next = !soundOn;
-      setSoundEnabled(next);
-      setSoundOn(next);
-      if (next) playCardTap();
-    } catch {
-      // Sound is enhancement-only; the toggle itself never throws.
-    }
-  };
-  return (
-    <button
-      type="button"
-      data-testid={testId}
-      aria-pressed={soundOn}
-      aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
-      title={soundOn ? "Sound on" : "Sound off"}
-      onClick={toggleSound}
-      className={className}
-      style={style}
-    >
-      {soundOn ? (
-        <Volume2 className={iconClassName} aria-hidden="true" />
-      ) : (
-        <VolumeX className={iconClassName} aria-hidden="true" />
-      )}
-    </button>
-  );
-}
 
 /**
  * High-contrast view toggle (manifest 2026-10-27): the SoundToggle
@@ -688,17 +634,6 @@ function SessionLoadingFallback({ label }: { label: string }) {
   );
 }
 
-export type Drop = {
-  lon: number;
-  lat: number;
-  distanceKm: number;
-  placeId: string;
-  /** The v3 breakdown for the reveal; null on a miss. */
-  breakdown: ScoredPlace | null;
-  /** Consecutive hits before this place (for the miss "streak reset" note). */
-  streakBefore: number;
-};
-
 type ModelAvailability = "available" | "downloadable" | "downloading" | "unavailable";
 
 type NanoSession = {
@@ -710,89 +645,6 @@ type LanguageModelGlobal = {
   availability: () => Promise<string>;
   create: () => Promise<NanoSession>;
 };
-
-function trailDate(): string {
-  return new Date().toISOString().slice(0, 10);
-}
-
-/**
- * Wave 1 P0 Item 1: what the shared discarded-run notice shows. Totals
- * are always whole-session totals (summarizeSession) or the discarded
- * run's own results — never recomputed, never invented. A 0-place
- * discard carries no numbers at all: the honest "nothing scored yet".
- */
-type DiscardedNotice = {
-  reason: "inactivity" | "new-day" | "scoring" | "challenges";
-  totalScore: number;
-  placesPlayed: number;
-};
-
-function discardedNoticeText(notice: DiscardedNotice): string {
-  const reason =
-    notice.reason === "inactivity"
-      ? "Your game ended after 2 minutes of inactivity."
-      : notice.reason === "new-day"
-        ? "A new day started, so your saved game could not be resumed."
-        : notice.reason === "scoring"
-          ? "The scoring changed, so your saved game could not be resumed."
-          : "Friend challenges are switched off, so your saved game could not be resumed.";
-  const summary =
-    notice.placesPlayed === 0
-      ? "You had not scored anything yet."
-      : `You played ${notice.placesPlayed} ${notice.placesPlayed === 1 ? "place" : "places"} and scored ${notice.totalScore.toLocaleString("en-US")} points.`;
-  return `${reason} ${summary}`;
-}
-
-/** Sum a run's own results — the fallback when no session survives. */
-function runResultsTotals(run: Run | null): { totalScore: number; placesPlayed: number } {
-  const results = run?.results ?? [];
-  return {
-    totalScore: results.reduce((sum, r) => sum + r.score, 0),
-    placesPlayed: results.length,
-  };
-}
-
-function boundsFor(run: Run): RegionBounds {
-  if (run.regionId === CHALLENGE_REGION_ID) {
-    // A challenge run's sentinel regionId names no real place; its
-    // bounds are the REAL region's (the route's own region), so the
-    // map frames and the territory resolves for the place the route is
-    // actually about. Legacy mc1 saves carry no region: the globe.
-    const regionId = run.challengeRegionId ?? "globe";
-    if (run.edition === "state") {
-      const regions = Object.values(ADMIN1_BY_COUNTRY).flat();
-      return regions.find((region) => region.id === regionId)?.bounds ?? [0, 0, 0, 0];
-    }
-    if (run.edition === "country") {
-      return COUNTRIES.find((region) => region.id === regionId)?.bounds ?? [0, 0, 0, 0];
-    }
-    return [0, 0, 0, 0];
-  }
-  if (run.edition === "state") {
-    // States can drill from any country that maps subdivisions; look across all of them.
-    const regions = Object.values(ADMIN1_BY_COUNTRY).flat();
-    return regions.find((region) => region.id === run.regionId)?.bounds ?? [0, 0, 0, 0];
-  }
-  return COUNTRIES.find((region) => region.id === run.regionId)?.bounds ?? [0, 0, 0, 0];
-}
-
-function isEdition(value: unknown): value is Edition {
-  return value === "state" || value === "country" || value === "globe";
-}
-
-function isPhase(value: unknown): value is RunPhase {
-  return value === "aim" || value === "story" || value === "done" || value === "summary";
-}
-
-function isPlaceResult(value: unknown): value is PlaceResult {
-  if (!value || typeof value !== "object") return false;
-  const r = value as Record<string, unknown>;
-  return (
-    typeof r.distanceKm === "number" &&
-    typeof r.hit === "boolean" &&
-    typeof r.score === "number"
-  );
-}
 
 const DIFFICULTY_KEY = "meridian.difficulty";
 
@@ -1059,39 +911,6 @@ function writeRun(run: Run) {
   } catch {
     // The run still lives in memory when storage is blocked.
   }
-}
-
-/** Loose ScoredPlace shape check: enough to render the reveal card. */
-function isScoredPlace(value: unknown): value is ScoredPlace {
-  if (!value || typeof value !== "object") return false;
-  const b = value as Record<string, unknown>;
-  return (
-    typeof b.base === "number" &&
-    typeof b.diffMult === "number" &&
-    typeof b.combo === "number" &&
-    typeof b.streak === "number" &&
-    typeof b.score === "number"
-  );
-}
-
-function isDrop(value: unknown): value is Drop {
-  if (!value || typeof value !== "object") return false;
-  const d = value as Record<string, unknown>;
-  return (
-    typeof d.lon === "number" &&
-    Number.isFinite(d.lon) &&
-    typeof d.lat === "number" &&
-    Number.isFinite(d.lat) &&
-    typeof d.distanceKm === "number" &&
-    Number.isFinite(d.distanceKm) &&
-    d.distanceKm >= 0 &&
-    typeof d.placeId === "string" &&
-    d.placeId.length > 0 &&
-    typeof d.streakBefore === "number" &&
-    Number.isInteger(d.streakBefore) &&
-    d.streakBefore >= 0 &&
-    (d.breakdown === null || isScoredPlace(d.breakdown))
-  );
 }
 
 /** Fail closed to null on anything malformed or tampered. */
@@ -1590,9 +1409,121 @@ export function GameApp() {
   }, [applySessionMapMode]);
   // GeoDetective mounts its own screen outside the endless-run state
   // machine; it persists under meridian.loop.v2 and never touches the
-  // run/drop keys. The open flag (meridian.loop.open) restores the screen
-  // after a reload so a mid-game refresh resumes the mystery, not the menu.
-  const [loopOpen, setLoopOpen] = useState<boolean>(() => readLoopOpen());
+  // run/drop keys. B7 (owner ruling, 2026-11-09): a new session always
+  // lands on Home — the loop NEVER auto-opens from the persisted open
+  // flag (meridian.loop.open). The flag is still written on tap-in /
+  // leave, and the saved loop (deck/progress/streak in meridian.loop.v2)
+  // stays intact, so tapping in resumes the saved mystery where it left
+  // off; only the boot auto-open is gone.
+  const [loopOpen, setLoopOpen] = useState<boolean>(false);
+  // Journal prefetch (lazy-load scenario 2): while a round is active,
+  // warm the current entry's movie and the next window's (B8: one entry
+  // per 30-minute window, so "the next 1–2 in the current set" is the
+  // current window + the next window) in the background so a later tap
+  // plays instantly. Tap-to-load is unchanged — this only pre-warms the
+  // plain HTTP cache (CORS fetch + drain; see journal-prefetch.ts for
+  // the real-server probe that proved zero additional transfers on the
+  // tap). Warmed ids are tracked per window so an entry is never warmed
+  // twice; a failed warm means the tap fetches cold, as today.
+  //
+  // Placement matters: the effect MUST live here in GameApp, not in
+  // Choose (home). GameApp returns early with <Play>/<LoopScreen>
+  // while a round is active, so Choose — which owns the journal state
+  // — is unmounted during gameplay and no effect inside it could ever
+  // run while playing. The entry here is therefore derived from the wall
+  // clock (the same derivation Choose initialises from), not read from
+  // Choose's state; it matches the displayed entry except at a window
+  // boundary where Choose deferred a rotation for focus — then the
+  // warm simply misses and the tap fetches cold, as today. No player
+  // can be open during a run (Choose is unmounted), so there is no
+  // playing entry to skip.
+  //
+  // The effect keys on the round-active boolean, not on `run` itself:
+  // `run` is a new object on every pin drop / phase change, so keying
+  // on it would abort and restart the warm mid-round. The trigger is
+  // the brief's — `run !== null || loopOpen` first becoming true.
+  // Warmed ids, keyed by journal window index: a rotation gets a fresh
+  // window (no re-warm of the old window, no skip of the new one), and
+  // a later round in the same window never re-warms what is already
+  // cached. The next window's note was possibly warmed as "next"
+  // during the previous window, so the previous window's warmed ids
+  // also count as warmed — no entry is ever warmed twice.
+  const warmedJournalIdsRef = useRef<Map<number, Set<string>>>(new Map());
+  const roundActive = run !== null || loopOpen;
+  useEffect(() => {
+    if (!roundActive) return;
+    if (!isJournalPrefetchAllowedNow()) return;
+    // A round that starts in an already-hidden tab must not warm: the
+    // visibilitychange listener below only fires on a transition.
+    if (document.visibilityState === "hidden") return;
+    const windowIndex = journalSetIndexAt(Date.now());
+    const currentNotes =
+      journalSetByIndex(windowIndex) ?? journalSetAt(Date.now());
+    // B8: the current window's entry plus the next window's — the
+    // selection limit (2) caps this at two warms.
+    const nextNotes = journalSetByIndex(windowIndex + 1);
+    const noteIds = [
+      ...(currentNotes?.notes ?? []),
+      ...(nextNotes?.notes ?? []),
+    ].map((note) => note.id);
+    const warmedIds =
+      warmedJournalIdsRef.current.get(windowIndex) ?? new Set<string>();
+    warmedJournalIdsRef.current.set(windowIndex, warmedIds);
+    // A note warmed as "next" in the previous window must not warm
+    // again as "current" now (B8 singletons: every note is the next
+    // window's note once before it is the current one).
+    const prevIndex =
+      (windowIndex - 1 + journalSetCount()) % journalSetCount();
+    const prevWarmed = warmedJournalIdsRef.current.get(prevIndex);
+    const skipIds = prevWarmed
+      ? new Set([...warmedIds, ...prevWarmed])
+      : warmedIds;
+    let cancelled = false;
+    let handle: JournalPrefetchHandle | null = null;
+    const abortController = new AbortController();
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        cancelled = true;
+        handle?.abort();
+        abortController.abort();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    void resolveJournalPrefetchEntries(noteIds, {
+      playingJournalId: null,
+      warmedIds: skipIds,
+    }).then((entries) => {
+      if (cancelled || entries.length === 0) return;
+      const idByUrl = new Map(entries.map((entry) => [entry.url, entry.noteId]));
+      handle = startJournalPrefetch(
+        entries.map((entry) => entry.url),
+        {
+          signal: abortController.signal,
+          onWarmed: (url, warmed) => {
+            if (!warmed) return;
+            const id = idByUrl.get(url);
+            if (id) warmedIds.add(id);
+          },
+        },
+      );
+    });
+    return () => {
+      // Abort landmark: this cleanup runs when roundActive flips false —
+      // at summary Done, not at End game (run stays non-null while the
+      // summary is up, so warms keep progressing during the summary
+      // and only abort at Done).
+      cancelled = true;
+      document.removeEventListener("visibilitychange", onVisibility);
+      handle?.abort();
+      abortController.abort();
+    };
+    // Deps are intentionally [roundActive]: `run` churns identity
+    // mid-round (see above); the set is derived from the clock at
+    // trigger time, and a mid-round window crossing simply leaves the
+    // older set warmed — the tap after the round recomputes from the
+    // clock, so a stale warm can only miss, never mislead.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [roundActive]);
   // Cold Trail (vertical slice): its own screen outside the run machine,
   // persisted under meridian.coldtrail.v2. The open flag
   // (meridian.coldtrail.open) restores the screen after a reload — PR
@@ -2185,10 +2116,11 @@ export function GameApp() {
    * it closes every other full-screen state, because the render
    * branches below run in precedence order and ANY lurking flag
    * would render its screen instead of Home. loopOpen is the sharp
-   * case: it rehydrates from a persisted flag, and the Editions exit
-   * keeps the run record, so a restored run can sit on top of a
-   * persisted GeoDetective flag — without the clears, the flip would
-   * drop the run and land on LoopScreen, stranding the focus landing
+   * case: it can only be true in-session now (B7 — tap-in sets it,
+   * boot never restores it), and the Editions exit keeps the run
+   * record, so a restored run can sit on top of an in-session
+   * GeoDetective flag — without the clears, the flip would drop
+   * the run and land on LoopScreen, stranding the focus landing
    * and hiding the notice.
    */
   const handleManualMapMode = useCallback((mode: MapMode) => {
@@ -3880,41 +3812,6 @@ export function GameApp() {
   // away — and it appears at most once ever (the seen-flag persists).
   const showTutorialInvite = !inviteDismissed && !hasSeenTutorial();
 
-  // Capitals & Flags doorway (issue #344): each door opens its mode
-  // with the pack already selected, so the strip is a real entrance,
-  // not a signpost to the shelf. GeoDetective's selection lives in the
-  // loop store's active deck; Cold Trail reads the shared shelf
-  // selection at deal time. If the GeoDetective store cannot be
-  // prepared (no store yet and the manifest is unreachable), the door
-  // still opens GeoDetective — the shelf inside offers the pack.
-  const openLoopWithCapitalsPack = async () => {
-    if (isLoopLocked(ageBand, "geodetective")) return;
-    try {
-      const stored = readLoopStoreV2();
-      if (stored) {
-        writeLoopStoreV2(setActiveDeck(stored, FIRST_PACK_ID));
-      } else {
-        const size = await fetchLoopDeckSize();
-        if (size !== null) {
-          writeLoopStoreV2(setActiveDeck(loadLoopStore(size), FIRST_PACK_ID));
-        }
-      }
-    } catch {
-      // Selection is a convenience; opening the mode never waits on it.
-    }
-    window.dispatchEvent(
-      new CustomEvent("meridian:storyteller-sendoff", {
-        detail: { loop: "geodetective" },
-      }),
-    );
-    writeLoopOpen(true);
-    setLoopOpen(true);
-  };
-  const openTrailWithCapitalsPack = () => {
-    writeSelectedDeck("coldtrail", FIRST_PACK_ID);
-    writeColdTrailOpen(true);
-    setColdTrailOpen(true);
-  };
   return (
     <>
     {mapModeAnnouncer}
@@ -3946,14 +3843,6 @@ export function GameApp() {
         setLoopOpen(true);
       })}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
-      doorway={
-        isLoopLocked(ageBand, "geodetective") ? null : (
-          <PackDoorway
-            onGeoDetective={() => void openLoopWithCapitalsPack()}
-            onColdTrail={openTrailWithCapitalsPack}
-          />
-        )
-      }
       challengeEnabled={friendChallengesOn}
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
@@ -4050,6 +3939,409 @@ function startNoticeTarget(
     : { label: target.regionId === "globe" ? "the Globe" : target.regionName, scope: "region" };
 }
 
+/**
+ * Hero motion V1 — "the journey up": an SVG overlay that tracks the
+ * painted mountain art exactly (same 800×533 viewBox, sliced like the
+ * img's object-fit: cover / right-bottom) — a dotted trail whose dots
+ * march along the painted switchbacks, a gold pulse that climbs the
+ * trail to the summit, a waving flag on the peak, and soft cloud
+ * forms drifting in front of the upper slopes (owner's V1b pick,
+ * 2026-11-04: the painted summits already sit in mist bands, so the
+ * clouds move — "the mountains are in the cloud"). V1b also answers
+ * his "very subtle" note: bigger pulse core + halo + comet tail,
+ * larger/brisker trail dots, wider flag wave. Zero new assets.
+ *
+ * Motion gates mirror CardFilm (card-film.tsx), the same pattern
+ * the trekker overlay below uses: prefers-reduced-motion (the
+ * shared hook, so an OS flip mid-session lands on the still too),
+ * Save-Data, or deviceMemory ≤ 2 — any of them means the pulse and
+ * clouds are never rendered, and the CSS kills the march + wave:
+ * the JS `reduced` state is reflected onto this SVG as the
+ * `hv5-trail-still` class, and home-v5.css sets `animation: none`
+ * on the dots + flag under that class (mirroring its
+ * prefers-reduced-motion rules, which only cover the OS gate),
+ * leaving a static dotted trail. The loops otherwise run
+ * continuously; no timer ever stops them.
+ *
+ * The tradeoff, stated plainly (the same one CardFilm records):
+ * WCAG 2.2.2 asks for a stop on moving content that lasts more
+ * than five seconds. These hero loops are continuous looping
+ * decorative motion with no pause button — the hero has no pause
+ * button by the owner's autoloop order (2026-11-03: "we dont need
+ * playbutton it should be in autoloop"). The stops that remain
+ * are the gates above: a player who prefers reduced motion, or
+ * is saving data, or is on a low-memory device never gets the
+ * motion at all, only the still. Do not add a button back
+ * without a new owner order.
+ */
+function HeroTrailOverlay() {
+  const reducedMotion = usePrefersReducedMotion();
+  const [staticGate] = useState<boolean>(heroStaticGateAtMount);
+  const reduced = reducedMotion || staticGate;
+  const trail =
+    "M322 528 C 305 500, 345 480, 350 460 C 355 438, 300 432, 292 408 C 284 384, 312 362, 340 350 C 375 336, 415 340, 408 318 C 402 298, 380 285, 402 268 C 428 248, 486 240, 512 226 C 532 215, 500 200, 492 182 C 486 166, 498 148, 503 134";
+  return (
+    <svg
+      className={reduced ? "hv5-trail hv5-trail-still" : "hv5-trail"}
+      viewBox="0 0 800 533"
+      preserveAspectRatio="xMaxYMax slice"
+      aria-hidden="true"
+    >
+      <defs>
+        <filter id="hv5-cloud-soft" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="9" />
+        </filter>
+      </defs>
+      <path
+        d={trail}
+        fill="none"
+        stroke="#7c5a1e"
+        strokeWidth="5.5"
+        strokeLinecap="round"
+        strokeDasharray="0.1 11"
+        className="hv5-trail-dots"
+        opacity="0.95"
+      />
+      {!reduced ? (
+        <g className="hv5-clouds" aria-hidden="true">
+          <g className="hv5-cloud-drift-a" filter="url(#hv5-cloud-soft)" fill="#fdfbf3">
+            <ellipse cx="0" cy="118" rx="120" ry="17" opacity="0.32" />
+            <ellipse cx="85" cy="106" rx="80" ry="13" opacity="0.26" />
+            <ellipse cx="-80" cy="108" rx="70" ry="12" opacity="0.22" />
+            <ellipse cx="560" cy="238" rx="130" ry="15" opacity="0.2" />
+            <ellipse cx="645" cy="228" rx="75" ry="11" opacity="0.16" />
+            {/* The same bank again, +800: the drift translates one
+                full pattern width, so this copy lands exactly where
+                the first sat at loop reset — no empty bank, no pop. */}
+            <g transform="translate(800 0)">
+              <ellipse cx="0" cy="118" rx="120" ry="17" opacity="0.32" />
+              <ellipse cx="85" cy="106" rx="80" ry="13" opacity="0.26" />
+              <ellipse cx="-80" cy="108" rx="70" ry="12" opacity="0.22" />
+              <ellipse cx="560" cy="238" rx="130" ry="15" opacity="0.2" />
+              <ellipse cx="645" cy="228" rx="75" ry="11" opacity="0.16" />
+            </g>
+          </g>
+          <g className="hv5-cloud-drift-b" filter="url(#hv5-cloud-soft)" fill="#fdfbf3">
+            <ellipse cx="330" cy="168" rx="105" ry="14" opacity="0.24" />
+            <ellipse cx="405" cy="158" rx="65" ry="10" opacity="0.19" />
+            <ellipse cx="60" cy="268" rx="95" ry="12" opacity="0.15" />
+            <g transform="translate(800 0)">
+              <ellipse cx="330" cy="168" rx="105" ry="14" opacity="0.24" />
+              <ellipse cx="405" cy="158" rx="65" ry="10" opacity="0.19" />
+              <ellipse cx="60" cy="268" rx="95" ry="12" opacity="0.15" />
+            </g>
+          </g>
+        </g>
+      ) : null}
+      {!reduced ? (
+        <g className="hv5-trail-pulse">
+          <path
+            d={trail}
+            fill="none"
+            stroke="#e9cd7d"
+            strokeWidth="7"
+            strokeLinecap="round"
+            pathLength={100}
+            strokeDasharray="10 90"
+            opacity="0.55"
+            className="hv5-pulse-tail"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              from="10"
+              to="-90"
+              dur="9s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0;0.55;0.55;0"
+              keyTimes="0;0.05;0.93;1"
+              dur="9s"
+              repeatCount="indefinite"
+            />
+          </path>
+          <circle r="13" fill="#b8932f" opacity="0.28" className="hv5-pulse-halo">
+            <animateMotion dur="9s" repeatCount="indefinite" path={trail} />
+            <animate
+              attributeName="opacity"
+              values="0;0.28;0.28;0"
+              keyTimes="0;0.06;0.92;1"
+              dur="9s"
+              repeatCount="indefinite"
+            />
+          </circle>
+          <circle
+            r="8.5"
+            fill="#b8932f"
+            stroke="#fffdf6"
+            strokeWidth="2.5"
+            className="hv5-pulse-core"
+          >
+            <animateMotion dur="9s" repeatCount="indefinite" path={trail} />
+            <animate
+              attributeName="opacity"
+              values="0;1;1;0"
+              keyTimes="0;0.06;0.92;1"
+              dur="9s"
+              repeatCount="indefinite"
+            />
+          </circle>
+        </g>
+      ) : null}
+      <g transform="translate(20 6)">
+        <g className="hv5-trail-flag">
+          <line x1="503" y1="134" x2="503" y2="106" stroke="#4c3a14" strokeWidth="2.5" strokeLinecap="round" />
+          <path d="M503 107 L525 112 L503 118 Z" fill="#8a6d2f" />
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+/**
+ * Hero trekker — "Just a child, trekking" (prototype v2 from
+ * branch design/hero-trekker-prototype, composed into production
+ * on the owner's ship word, 2026-11-04 21:15: "Ship it — fold the
+ * simple trekker into the home build"). Owner's simplification
+ * ruling, 2026-11-04 20:29, on
+ * the v1 "Catch It, Pin It" prototype: "Reduce the size of the
+ * animated cartoon guy, this is supposed be a child walking the
+ * trail and let just keep it to that. No more complexities, but
+ * while trekking you need sticks and make it realistic trekking
+ * please and wind blowing, climbing slowly."
+ *
+ * So v2 is ONLY a child trekking. The paper, the gust event, the
+ * tumble, the catch, the hold-up map reveal, the tuck and the point
+ * are all DELETED. What remains, on ONE 18s SMIL master clock:
+ *   0–1.1s    he fades in inside the valley mist at the leg's foot
+ *   1.1–15.3s slow climb up ONE painted switchback leg (leg 3 of the
+ *             v1 spline), two trekking poles working the whole way
+ *   15.3–16.7s he fades into the mist bank at the leg's top end
+ *   16.7–18s  reset happens invisible inside the mist — no jump cut
+ *
+ * The figure is a CHILD, drawn ~44 units tall (v1's adult was ~69.5;
+ * ≈63%), with child proportions: head ≈27% of height, shorter legs.
+ * He keeps the identity the brainstorm chose: rust-orange headwrap,
+ * teal backpack. He leans ~6° into the slope.
+ *
+ * The pole gait is the realism core. Legs, arms and poles are all
+ * keyframed path shapes on one 1.8s step clock, opposite pairing
+ * like a real climber: each pole PLANTS on the trail ahead at the
+ * same beat as the OPPOSITE foot, stays grounded while the body
+ * passes over it (the tip sweeps back relative to the body), pushes
+ * off behind, then swings forward lifted for the next plant. Pole
+ * tips pass through y=0 (the trail under his feet) at every stance
+ * keyframe — a floating pole would fail the owner's ask.
+ *
+ * Wind is an always-on layer, not an event: the headwrap's two tail
+ * strands stream and flutter on their own fast clocks, the jacket
+ * hem flutters, and the valley mist drifts on the climb leg. The
+ * prototype's own ambient peak/summit clouds are NOT ported: the
+ * trail overlay's drifting clouds are the hero's one cloud layer.
+ * The mist stays — it is this figure's fade staging (he fades in
+ * and out inside it), sitting on the leg, not a second weather
+ * layer.
+ *
+ * Gates mirror CardFilm (card-film.tsx): prefers-reduced-motion
+ * (the shared hook), Save-Data, or deviceMemory ≤ 2 get the STILL
+ * instead — the same SVG with its clock paused mid-climb
+ * (t = 7.25s: both poles on the ground, front planted, rear at
+ * push-off, headwrap streaming). The loop itself never stops on a
+ * timer; like the V1 overlay it is ambient, aria-hidden art.
+ * When the gate lifts mid-session (the shared hook is live, so an
+ * OS flip lands here), the effect below un-pauses the clock and
+ * the climb resumes from the still frame.
+ *
+ * The tradeoff, stated plainly (the same one CardFilm records):
+ * WCAG 2.2.2 asks for a stop on moving content that lasts more
+ * than five seconds. This loop is continuous looping decorative
+ * motion with no pause button — the hero has no pause button by
+ * the owner's autoloop order (2026-11-03: "we dont need
+ * playbutton it should be in autoloop"). The stops that remain
+ * are the gates above: a player who prefers reduced motion, or
+ * is saving data, or is on a low-memory device never gets the
+ * motion at all, only the still. Do not add a button back
+ * without a new owner order.
+ */
+const TREKKER_CLIMB_PATH =
+  "M294 406 C 288 386, 315 362, 342 351 C 368 340, 398 336, 402 321";
+
+/** Save-Data / low-memory gate, mirroring CardFilm's mount read.
+ * Shared by both hero overlays (trail + trekker). */
+function heroStaticGateAtMount(): boolean {
+  if (typeof navigator === "undefined") return false;
+  const nav = navigator as Navigator & {
+    connection?: { saveData?: boolean };
+    deviceMemory?: number;
+  };
+  if (nav.connection?.saveData) return true;
+  const mem = nav.deviceMemory;
+  return typeof mem === "number" && mem > 0 && mem <= 2;
+}
+
+function HeroTrekkerOverlay() {
+  const reducedMotion = usePrefersReducedMotion();
+  const [staticGate] = useState<boolean>(heroStaticGateAtMount);
+  const still = reducedMotion || staticGate;
+  const svgRef = useRef<SVGSVGElement | null>(null);
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg) return;
+    if (!still) {
+      // The gate lifted mid-session: resume the master clock from
+      // wherever the still froze it — without this the clock stays
+      // paused at 7.25 forever even though `still` is false again.
+      svg.unpauseAnimations();
+      return;
+    }
+    // The still IS the mid-climb frame: freeze the master clock on it.
+    svg.pauseAnimations();
+    svg.setCurrentTime(7.25);
+  }, [still]);
+  return (
+    <svg
+      ref={svgRef}
+      className="hv5-trekker"
+      viewBox="0 0 800 533"
+      preserveAspectRatio="xMaxYMax slice"
+      aria-hidden="true"
+    >
+      <defs>
+        <radialGradient id="tk-mist" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#fffdf6" stopOpacity="0.95" />
+          <stop offset="60%" stopColor="#fffdf6" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#fffdf6" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+
+      {/* The trekker rig: one small group climbing the leg on the 18s
+          clock. Fades in inside the foot mist, fades out inside the
+          top mist; the position reset rides the invisible window. */}
+      <g opacity="0">
+        <animate attributeName="opacity" values="0;1;1;0;0" keyTimes="0;0.06;0.85;0.93;1" dur="18s" repeatCount="indefinite" />
+        <animateMotion
+          path={TREKKER_CLIMB_PATH}
+          keyPoints="0;1;1;0"
+          keyTimes="0;0.92;0.97;1"
+          calcMode="linear"
+          dur="18s"
+          repeatCount="indefinite"
+        />
+        {/* ~6° forward lean into the slope, pivoting on the ground
+            point; inside it, the step bob (two bobs per step cycle). */}
+        <g transform="rotate(6)">
+          <g>
+            <animateTransform attributeName="transform" type="translate" values="0 0;0 -0.8;0 0;0 -0.8;0 0" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" />
+
+            {/* Far leg (darker): stance in the second half-cycle,
+                swing in the first — opposite the near leg. */}
+            <path fill="none" stroke="#4a3826" strokeWidth="3.6" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M-1 -18 L0 -9 L-4.5 -1;M-1 -18 L4.5 -10 L0 -3.5;M-1 -18 L4 -9 L5 0;M-1 -18 L3 -9.5 L0.5 0;M-1 -18 L0 -9 L-4.5 -1" />
+            </path>
+            <ellipse rx="2.7" ry="1.5" fill="#3d2c12">
+              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-4.5;0;5;0.5;-4.5" />
+              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-1;-3.5;0;0;-1" />
+            </ellipse>
+
+            {/* Far arm + its pole: plants WITH the near foot (opposite
+                pairing) — tip grounded ahead at cycle start, sweeps
+                back, pushes off at mid-cycle, swings forward lifted. */}
+            <path fill="none" stroke="#8a3f1f" strokeWidth="3.4" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M-3 -29 L-7 -26 L-5 -21.5;M-3 -29 L-8 -25.5 L-6 -21;M-3 -29 L-6 -25 L-4 -20;M-3 -29 L-6.5 -25 L-4.5 -20.5;M-3 -29 L-7 -26 L-5 -21.5" />
+            </path>
+            <circle r="2" fill="#caa06a">
+              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-5;-6;-4;-4.5;-5" />
+              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-21.5;-21;-20;-20.5;-21.5" />
+            </circle>
+
+            {/* Teal backpack behind the torso; torso over it, with a
+                wind-fluttered hem at its back-bottom corner. */}
+            <rect x="-13.5" y="-31" width="8.5" height="14.5" rx="4" fill="#177e70" />
+            <rect x="-14.5" y="-32.5" width="7" height="4" rx="2" fill="#12685c" />
+            <rect x="-5" y="-32" width="12" height="14" rx="5" fill="#9c4a24" />
+            <path d="M-5 -19.5 C -8 -18.5, -9 -16.5, -8.2 -14.5" fill="none" stroke="#7e3a1c" strokeWidth="2.4" strokeLinecap="round">
+              <animateTransform attributeName="transform" type="rotate" values="-3 -5 -19.5;4 -5 -19.5;-3 -5 -19.5" keyTimes="0;0.5;1" dur="0.7s" repeatCount="indefinite" />
+            </path>
+
+            {/* Near leg: stance in the first half-cycle (foot planted,
+                body passes over it), swing in the second. */}
+            <path fill="none" stroke="#5a4632" strokeWidth="3.6" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M1 -18 L4 -9 L5 0;M1 -18 L3 -9.5 L0.5 0;M1 -18 L0 -9 L-4.5 -1;M1 -18 L4.5 -10 L0 -3.5;M1 -18 L4 -9 L5 0" />
+            </path>
+            <ellipse rx="2.7" ry="1.5" fill="#4c3a14">
+              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="5;0.5;-4.5;0;5" />
+              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="0;0;-1;-3.5;0" />
+            </ellipse>
+
+            {/* The far pole, drawn after the legs on purpose: its
+                shaft crosses behind the body from the back hand, and
+                at this size the plant only reads if the lower shaft
+                and tip stay visible against the trail. */}
+            <path fill="none" stroke="#4a5058" strokeWidth="1.9" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M-5 -21.5 L8 0;M-6 -21 L1 0;M-4 -20 L-6 -0.5;M-4.5 -20.5 L0 -4.5;M-5 -21.5 L8 0" />
+            </path>
+
+            {/* Near arm + its pole: plants WITH the far foot at
+                mid-cycle, pushes off as the cycle wraps. Elbow stays
+                bent; the hand rides the pole grip. */}
+            <path fill="none" stroke="#9c4a24" strokeWidth="3.4" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M4 -29 L7 -25.5 L5.5 -20;M4 -29 L8.5 -25.5 L6.5 -20.5;M4 -29 L10 -26 L8 -21.5;M4 -29 L9 -25.5 L7 -21;M4 -29 L7 -25.5 L5.5 -20" />
+            </path>
+            <path fill="none" stroke="#565d66" strokeWidth="1.9" strokeLinecap="round">
+              <animate attributeName="d" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite"
+                values="M5.5 -20 L-6 -0.5;M6.5 -20.5 L1 -4.5;M8 -21.5 L10 0;M7 -21 L2 0;M5.5 -20 L-6 -0.5" />
+            </path>
+            <circle r="2" fill="#caa06a">
+              <animate attributeName="cx" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="5.5;6.5;8;7;5.5" />
+              <animate attributeName="cy" calcMode="linear" keyTimes="0;0.25;0.5;0.75;1" dur="1.8s" repeatCount="indefinite" values="-20;-20.5;-21.5;-21;-20" />
+            </circle>
+
+            {/* Headwrap tails: two strands streaming behind the head,
+                fluttering on their own fast clocks — the wind never
+                stops, the whole loop long. */}
+            <g transform="translate(-4.2 -38.5)">
+              <path d="M0 0 C -5 0.5, -9 3, -12.5 6.5" fill="none" stroke="#e07b2a" strokeWidth="3" strokeLinecap="round">
+                <animateTransform attributeName="transform" type="rotate" values="-4;6;-4" keyTimes="0;0.5;1" dur="0.6s" repeatCount="indefinite" />
+              </path>
+              <path d="M0 1.5 C -4 2, -7 4.5, -9.5 7" fill="none" stroke="#c25e2e" strokeWidth="2.2" strokeLinecap="round">
+                <animateTransform attributeName="transform" type="rotate" values="5;-5;5" keyTimes="0;0.5;1" dur="0.45s" repeatCount="indefinite" />
+              </path>
+            </g>
+            {/* Head + rust-orange headwrap (child: head ≈27% of height). */}
+            <circle cx="1.5" cy="-37.5" r="5.9" fill="#caa06a" />
+            <path d="M-4.4 -37.5 A 5.9 5.9 0 0 1 7.4 -37.5 Z" fill="#e07b2a" />
+            <rect x="-4.4" y="-39.8" width="11.8" height="2.4" rx="1.2" fill="#c25e2e" />
+          </g>
+        </g>
+      </g>
+
+      {/* Valley mist over the leg's foot: thick at the loop point
+          (his entrance), thin while he climbs. Front of the figure. */}
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="-6 0;6 0;-6 0" keyTimes="0;0.5;1" dur="18s" repeatCount="indefinite" />
+        <ellipse cx="330" cy="452" rx="150" ry="62" fill="url(#tk-mist)">
+          <animate attributeName="opacity" values="0.95;0.5;0.22;0.22;0.75;1" keyTimes="0;0.09;0.22;0.9;0.97;1" dur="18s" repeatCount="indefinite" />
+        </ellipse>
+      </g>
+
+      {/* Mist bank at the leg's top end: thin while he climbs, thick
+          at the exit so the reset happens inside it — no jump cut. */}
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="-5 0;5 0;-5 0" keyTimes="0;0.5;1" dur="18s" repeatCount="indefinite" />
+        <ellipse cx="415" cy="312" rx="95" ry="30" fill="url(#tk-mist)">
+          <animate attributeName="opacity" values="0.35;0.15;0.15;0.7;1;0.35" keyTimes="0;0.1;0.8;0.88;0.95;1" dur="18s" repeatCount="indefinite" />
+        </ellipse>
+      </g>
+    </svg>
+  );
+}
+
 /** Kid-friendly hints for each learning path, shown under the picker. */
 const DIFFICULTY_HINTS: Record<PickerDifficulty, string> = {
   easy: "Famous places — the spots every explorer starts with.",
@@ -4081,7 +4373,6 @@ function Choose({
   onGrownUpOpen,
   headingRef,
   mapModeControl,
-  doorway,
 }: {
   onState: (e: ReactMouseEvent) => void;
   onCountry: (e: ReactMouseEvent) => void;
@@ -4115,7 +4406,7 @@ function Choose({
   /** True while a blocking boot dialog is open or boot qualification hasn't
       settled — the storyteller greeting waits (UX review 2026-10-12). */
   suppressGreeting?: boolean;
-  /** Effective age band (parent-set; "11-13" when unset). */
+  /** Effective age band (parent-set; "10-18" when unset). */
   ageBand: AgeBandId;
   /** Open the grown-up gate (footer link + locked-tile link). */
   onGrownUpOpen: () => void;
@@ -4126,25 +4417,25 @@ function Choose({
    * hero's top row (Block C cure). GameApp owns the mode state and
    * the handlers; Choose only places the control. */
   mapModeControl?: ReactNode;
-  /** Capitals & Flags doorway strip, rendered directly under the
-   * Expeditions Map card (issue #344). Null for bands where
-   * GeoDetective is locked. */
-  doorway?: ReactNode;}) {
+}) {
   // GeoDetective progress for the edition card: the resume variant and the
   // streak line. Read on mount (the menu remounts when the loop screen
   // closes, so this is always fresh on return).
   const [loopProgress] = useState(() => peekLoopProgress());
   // Journal ("What the land remembers", docs/journal-spec.md §3/§5/§6):
-  // the displayed set index is state, driven by the auto-switch rotation
+  // the displayed entry index is state, driven by the auto-switch rotation
   // (createJournalRotation in ./home-journal): a boundary timeout at the
   // next window start + a 30s safety interval recompute it, as do
   // visibilitychange (tab visible again) and focusin. A new index is
   // DEFERRED while focus is inside the home Journal card or inside the
   // inline journal section — content is never swapped under a reader
   // (§6, focus-only per owner ruling Q3). The footer countdown ticks on
-  // its own 60s clock so it stays live without re-rendering the set.
+  // its own 60s clock so it stays live without re-rendering the entry.
   const [journalIndex, setJournalIndex] = useState(() => journalSetIndexAt(Date.now()));
   const [journalNowMs, setJournalNowMs] = useState(() => Date.now());
+  // Journal movie player: the single open note id, or null. One movie
+  // plays at a time; opening another entry closes the first.
+  const [playingJournalId, setPlayingJournalId] = useState<string | null>(null);
   const focusInsideJournalCard = useCallback(() => {
     const active = document.activeElement;
     const card = document.querySelector('[data-testid="journal-card"]');
@@ -4190,6 +4481,10 @@ function Choose({
   }, [journalRotation]);
   const journalEntry = journalSetByIndex(journalIndex) ?? journalSetAt(Date.now());
   const journalNotes = journalEntry?.notes ?? [];
+  // A movie stops when its window rotates away — the note is no longer shown.
+  useEffect(() => {
+    setPlayingJournalId(null);
+  }, [journalIndex]);
   // Stagger order for the orchestrated entrance (110ms steps in CSS).
   // motionmaxxing M7: the atlas entrance cascade's stagger gaps, retuned
   // uneven (60–100ms) so the cards don't land on a metronome. Keyframes,
@@ -4224,9 +4519,43 @@ function Choose({
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
   };
+  // The About card. It stands alone in the pages band at full
+  // width: the Capitals & Flags doorway that rode beside it was
+  // removed from Home entirely (owner's word, Veeresh, 2026-11-05:
+  // "card is not clickable. if its not clickable then there is no
+  // point of putting it on home page."). The pack's only entry is
+  // the deck shelf inside each mode.
+  const aboutSection = (
+    <section id="home-about" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="about-title">
+      <span className="hv5-label">About</span>
+      <h2 id="about-title">How a round works</h2>
+      <p>
+        A place name, then one pin on an unlabeled map. Right or wrong, the round opens a short
+        story about that place. Pick the globe, a country, or a state. Your score keeps adding
+        up until you end the game, or after 2 minutes with nothing tapped.
+      </p>
+      <p>
+        No account. The run stays in this browser. A coffee for Grandpa is optional and never
+        locks a game.
+      </p>
+    </section>
+  );
   return (
     <>
     <main className="atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-5 py-8 md:px-9">
+      {/* Skip link (WCAG 2.4.1): the first focusable element on the home
+          page, visually hidden until focused; jumps to the journal
+          section (scrollTo moves focus there as well as scrolling). */}
+      <a
+        href="#home-journal"
+        className="hv5-skip-link"
+        onClick={(event) => {
+          event.preventDefault();
+          scrollTo("home-journal");
+        }}
+      >
+        Skip to journal
+      </a>
       <AtlasBackdrop />
       <svg className="hv5-sprig" viewBox="0 0 120 150" fill="none" stroke="#8FA382" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
         <path d="M14 148 C20 100 34 60 62 22" strokeOpacity=".7" />
@@ -4383,7 +4712,16 @@ function Choose({
               <svg width="15" height="11" viewBox="0 0 15 11" aria-hidden="true"><path d="M1 5.5h12M9 1l4.5 4.5L9 10" stroke="currentColor" fill="none" strokeWidth="1.7" /></svg>
             </button>
           </div>
-          <img className="hv5-mountain" src={heroMountainUrl} alt="" aria-hidden="true" />
+          {/* The composed hero (owner ship word, 2026-11-04): the
+              painted mountain, the V1b trail overlay (marching dots,
+              climbing pulse, summit flag, drifting clouds) and the
+              trekking-kid overlay stacked on the same sliced box, so
+              both overlays track the art exactly. */}
+          <div className="hv5-mtn-wrap" aria-hidden="true">
+            <img className="hv5-mtn-img" src={heroMountainUrl} alt="" />
+            <HeroTrailOverlay />
+            <HeroTrekkerOverlay />
+          </div>
         </section>
         <div className="hv5-rail">
         <div className="hv5-globe-zone">
@@ -4458,14 +4796,18 @@ function Choose({
             </Button>
           ) : null}
         </div>
-        {/* Capitals & Flags doorway: directly under the Expeditions
-            Map card, per the ratified design (issue #344). */}
-        {doorway}
+        {/* The Capitals & Flags doorway no longer renders anywhere
+            on Home: it began under this map card (issue #344), moved
+            beside the About card below (2026-11-04), became a
+            signpost (2026-11-05), and was then removed entirely on
+            the owner's word (Veeresh, 2026-11-05: "card is not
+            clickable. if its not clickable then there is no point
+            of putting it on home page."). */}
         </div>
 
       <div className="hv5-grid2" id="home-cases" tabIndex={-1}>
         {/* GeoDetective leads: the flagship case file, unlimited mysteries.
-            Age-profile: for bands where the loop is locked (5-7), the SAME
+            Age-profile: for bands where the loop is locked (no current group locks it), the SAME
             footprint renders the locked variant in place. */}
         {isLoopLocked(ageBand, "geodetective") ? (
           <LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />
@@ -4643,9 +4985,9 @@ function Choose({
         ) : (
           <div aria-hidden="true" />
         )}
-        {/* Journal — the card names the currently-rotating set and
-            jumps to the field notes below; the set rotates every 2 hours,
-            deferred while focus is inside this card or the journal
+        {/* Journal — the card names the currently-rotating entry and
+            jumps to the field note below; the entry rotates every
+            30 minutes, deferred while focus is inside this card or the journal
             section (spec §6). */}
         <article className="hv5-card hv5-spot hv5-journal home-rise" style={rise(7)} data-testid="journal-card">
           <CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />
@@ -4662,7 +5004,7 @@ function Choose({
               <p className="hv5-journal-now" data-testid="journal-now-showing">
                 {journalEntry.mixed
                   ? "Now showing: Field Notes"
-                  : `Now showing: ${journalEntry.geography} · ${journalEntry.notes.length} field notes`}
+                  : `Now showing: ${journalEntry.geography} · ${journalEntry.notes.length === 1 ? "1 field note" : `${journalEntry.notes.length} field notes`}`}
               </p>
             ) : null}
             <button type="button" className="hv5-go hv5-stretch" data-testid="journal-open" onClick={() => scrollTo("home-journal")}>
@@ -4694,19 +5036,7 @@ function Choose({
       </div>
 
       <div className="hv5-pages">
-        <section id="home-about" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="about-title">
-          <span className="hv5-label">About</span>
-          <h2 id="about-title">How a round works</h2>
-          <p>
-            A place name, then one pin on an unlabeled map. Right or wrong, the round opens a short
-            story about that place. Pick the globe, a country, or a state. Your score keeps adding
-            up until you end the game, or after 2 minutes with nothing tapped.
-          </p>
-          <p>
-            No account. The run stays in this browser. A coffee for Grandpa is optional and never
-            locks a game.
-          </p>
-        </section>
+        {aboutSection}
         <section id="home-journal" tabIndex={-1} className="hv5-card hv5-page" aria-labelledby="journal-title" data-testid="journal-section">
           <span className="hv5-label">Journal</span>
           <h2 id="journal-title">What the land remembers</h2>
@@ -4716,19 +5046,27 @@ function Choose({
           {journalNotes.map((note) => (
             <article key={note.id} className="hv5-entry" data-testid="journal-note">
               {note.image && note.imageAlt && (
-                <figure className="hv5-entry-art">
-                  <LazyHomeImage src={journalImageUrl(note.image)} alt={note.imageAlt} />
-                </figure>
+                <JournalPlayer
+                  noteId={note.id}
+                  place={note.place}
+                  imageSrc={journalImageUrl(note.image)}
+                  imageAlt={note.imageAlt}
+                  open={playingJournalId === note.id}
+                  onOpen={setPlayingJournalId}
+                  onClose={() => setPlayingJournalId(null)}
+                />
               )}
-              <h3>{note.place}</h3>
-              <p className="hv5-label" style={{ marginTop: 4 }}>{note.where}</p>
-              <p style={{ marginTop: 8 }}>{note.story}</p>
-              <p style={{ marginTop: 8 }}>
-                <a href={note.sourceHref} target="_blank" rel="noopener noreferrer">
-                  {note.sourceLabel}
-                </a>
-                <span className="hv5-journal-confidence">{confidenceText(note)}</span>
-              </p>
+              <div className="hv5-entry-text">
+                <h3>{note.place}</h3>
+                <p className="hv5-label" style={{ marginTop: 4 }}>{note.where}</p>
+                <p style={{ marginTop: 8 }}>{note.story}</p>
+                <p style={{ marginTop: 8 }}>
+                  <a href={note.sourceHref} target="_blank" rel="noopener noreferrer">
+                    {note.sourceLabel}
+                  </a>
+                  <span className="hv5-journal-confidence">{confidenceText(note)}</span>
+                </p>
+              </div>
             </article>
           ))}
           {journalEntry ? (
@@ -6458,7 +6796,7 @@ function PlayLoaded({
   const userCollapsedBubbleRef = useRef(false);
   const [cardDismissed, setCardDismissed] = useState(false);
   // Hint UI (follow-up Item A — hints are a REAL feature, owner 2026-10-09).
-  // Hints NEVER touch points. Per-place usage drives the 8-10 one-per-place
+  // Hints NEVER touch points. Per-place usage drives the 10-18 one-per-place
   // policy; the run-level hintsUsed accumulates for the snapshot. The
   // mascot offer dismissal resets per run (not per place) — no nagging.
   const [hintsUsedThisPlace, setHintsUsedThisPlace] = useState(0);
@@ -6574,6 +6912,10 @@ function PlayLoaded({
   // no reads, no writes, no traces — dealing/scoring/session byte-identical.
   const [learningEnabled, setLearningEnabled] = useState(false);
   const [friendChallengesEnabled, setFriendChallengesEnabled] = useState(false);
+  // Unit B: the detectivePair flag also gates the pair's game-end
+  // celebration on the run summary (every edition). Boot-time value,
+  // like the other flag reads here; off = the summary is today's.
+  const [detectivePairEnabled, setDetectivePairEnabled] = useState(false);
   const [learningStore, setLearningStore] = useState<LearningStore | null>(null);
   useEffect(() => {
     let active = true;
@@ -6587,6 +6929,7 @@ function PlayLoaded({
       setLearningEnabled(on);
       if (on) setLearningStore(readLearningStore() ?? emptyLearningStore());
       setFriendChallengesEnabled(isEnabled("friendChallenges"));
+      setDetectivePairEnabled(isEnabled("detectivePair"));
     });
     return () => {
       active = false;
@@ -6655,7 +6998,7 @@ function PlayLoaded({
       setBubble("collapsed");
     }
     setCardDismissed(false);
-    // Hint UI resets per place (8-10: one hint per place).
+    // Hint UI resets per place (10-18: one hint per place).
     setHintsUsedThisPlace(0);
     setHintMessage(null);
   }, [place?.id]);
@@ -6787,7 +7130,7 @@ function PlayLoaded({
         ? challengeRadiusOf(run)
         : review
           ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-          : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run))),
+          : pinToleranceKm(run.bandConfig?.band ? normalizeSnapshotBand(run.bandConfig.band) : ageBand, run.edition, greaterSideKm(boundsFor(run))),
       // Same unit as the result headline — USA plays read miles (owner ruling 2026-10-11).
       unit: unitForEdition(run.edition, run.regionId),
     };
@@ -6829,7 +7172,7 @@ function PlayLoaded({
       ? challengeRadiusOf(run)
       : review
         ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-        : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run)));
+        : pinToleranceKm(run.bandConfig?.band ? normalizeSnapshotBand(run.bandConfig.band) : ageBand, run.edition, greaterSideKm(boundsFor(run)));
     const hit = isHit(distance, radius);
     // v3: the place is scored with the streak engine + difficulty multiplier;
     // a miss scores 0 and resets the streak (handled in dropPin). Review is
@@ -6960,7 +7303,7 @@ function PlayLoaded({
 
   // Hint UI (follow-up Item A): a hint reveals a directional nudge —
   // never points, never the answer. The policy comes from the run's
-  // band snapshot (deal-time); the button state is per-place for 8-10.
+  // band snapshot (deal-time); the button state is per-place for 10-18.
   // Fail closed: no place or no bounds = no hint.
   function onUseHint() {
     if (!run || !place) return;
@@ -8129,6 +8472,7 @@ function PlayLoaded({
               ? growthSummary(learningStore ?? emptyLearningStore(), Date.now())
               : null
           }
+          detectiveCelebration={detectivePairEnabled}
           onDone={onSummaryDone}
           onPlayAgain={onSummaryPlayAgain}
           onReview={onReviewDeck}
