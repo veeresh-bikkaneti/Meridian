@@ -1,0 +1,8 @@
+# BRANCH_STATUS — feat/physics-spec
+
+**Branch:** `feat/physics-spec` · **Base:** `origin/main` merged (commit 1a319a69)
+**Task:** Stage A physics spec. The 14 families from retired `feat/science-spec` are predict-then-see scenes in `docs/scaling/physics/items.json`. Build is gated. Stage B has not started.
+**Scope:** `docs/scaling/physics-spec.md`, `docs/scaling/physics/**`, `docs/branch-status/feat-physics-spec.md`. No `src/subjects/physics/**` yet.
+**Done:** §9 block filled. PROPOSED 24 I2 rows. Sources fetched 2026-11-10. Pulley and wheel are open items, not rows. `physics:sound:pluck` was dropped after the live 4-PS4-1 read. Light rows are re-anchored to 4-PS4-2. The three 18+ standards are UNVERIFIED, and the spec names the high-school code each extends (HSG.SRT.C.8, HSA.CED.A.4, HS-PS3-1). Number `items.json` is on this branch via main (`docs/scaling/math/number/items.json`). No AGENTS.md code gates (docs only).
+**Open:** Educator still has not signed. Owner has not lifted the build gate. Host cartoon clip versus scene-only explain is owner decision D3. Readability script not run. Applied items are still absent (`docs/scaling/math/applied/items.json`). `node --test docs/scaling/physics/items.test.mjs` on 2026-11-10: 7 pass, 0 fail. It prints SKIP math-applied because that file is absent.
+**Update 2026-11-10 (owner):** Scientist seat filled — Spatial Data Scientist (`spatial-data-scientist.toml`), the only science persona in the installed packs; imperfect fit disclosed (spatial statistics, not physics/chemistry). Children's-language + verify-every-fact requirements still bind.
