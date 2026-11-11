@@ -26,7 +26,7 @@ const RADIUS_LIMITS = {
   country: { minKm: 40, maxKm: 450 },
 } as const;
 
-/** Band multiplier on the pin-hit radius: ×1.5 / ×1.25 / ×1.0 (Phase 1 §3a). */
+/** Band multiplier on the pin-hit radius. 7-10 is ×1.25; 10-18 and 18+ are ×1.0. */
 export function toleranceMultiplier(band: AgeBandId): number {
   return AGE_BANDS[band].difficulty.toleranceMultiplier;
 }
@@ -59,9 +59,9 @@ export interface GeoDetectiveConfig {
 
 /**
  * GeoDetective clue deal for a band (Phase 1 §3b), or null when the loop
- * is locked for the band (5-7). 8-10 starts with 3/5 clues and a cap of 6;
- * 11-13 starts near-blind (1) with a tighter cap of 5. Caps live in the
- * band table (bands.ts) — retune there, never here.
+ * is locked for the band. 7-10 starts with 3/5 clues and a cap of 6;
+ * 10-18 and 18+ start near-blind (1) with a tighter cap of 5. Caps live
+ * in the band table (bands.ts) — retune there, never here.
  */
 export function geodetectiveConfig(band: AgeBandId | null): GeoDetectiveConfig | null {
   const effective: AgeBandId = band ?? FULL_ACCESS_BAND;
@@ -77,9 +77,9 @@ export function geodetectiveConfig(band: AgeBandId | null): GeoDetectiveConfig |
 
 /**
  * The largest guess cap any band's deal can legally produce (currently 6,
- * from the 8-10 deal). The loop store validator bounds `guesses.length` by
+ * from the 7-10 deal). The loop store validator bounds `guesses.length` by
  * this — NOT by the shipped LOOP_MAX_GUESSES default — so a mystery
- * resolved on the 8-10 deal's 6th guess always persists instead of being
+ * resolved on the 7-10 deal's 6th guess always persists instead of being
  * silently dropped. Derived from the band table: retuning a cap in
  * bands.ts automatically moves the validation bound.
  */
@@ -124,7 +124,7 @@ export function roundLengths(band: AgeBandId | null): RoundLengths {
   };
 }
 
-/** Read-aloud mode for the band (Phase 1 §3d): 5-7 auto, 8-10 button, 11-13 off-but-available. */
+/** Read-aloud mode for the band (Phase 1 §3d). Read from the band table. */
 export function audioMode(band: AgeBandId | null): AudioMode {
   const effective: AgeBandId = band ?? FULL_ACCESS_BAND;
   return AGE_BANDS[effective].audioMode;
