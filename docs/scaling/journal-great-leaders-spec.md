@@ -3,7 +3,7 @@
 - **Topic:** Great leaders, told through the places that honour them
 - **Status:** GATED. Stage A (screen, spec and data) done 2026-11-10; Stage B (clips) waits for the owner to lift the build gate, and for a named human educator to sign `educator-gate-rubric.md`.
 - **Branch:** `feat/journal-great-leaders-spec`
-- **Proposed clip count:** 2 proposed; after the §7a screen, **1 kept, 1 cut**. The owner then added Robben Island (from PR 407, after it merges) and two leaders that have no rows until sourced ("Owner decisions"), so up to 4 (3 rows in `clips.json` now, all PROPOSED). All counts stay PROPOSED, pending owner approval; never presented as decided.
+- **Proposed clip count:** 3 rows in `clips.json`, all PROPOSED: Lincoln Memorial, Jhansi Fort, Netaji Bhawan. The §7a screen proposed 2 and kept 1 (Lincoln Memorial); the MLK Memorial was cut (O2 answered 2026-11-10: the cut stays). Robben Island is not a row until PR 407 merges. Counts stay PROPOSED, not decided.
 - **Clip data (contract I5):** `docs/scaling/journals/great-leaders/clips.json`
 - **Fact ledger:** `docs/scaling/journals/great-leaders/sources.md` (every fact with source, access date and confidence; conflicts, cuts and screened facts logged)
 - **Draft captions and transcript:** `docs/scaling/journals/great-leaders/captions/lincoln-memorial.vtt`, `docs/scaling/journals/great-leaders/transcripts.md`
@@ -109,7 +109,7 @@ sign the gate.
 |---|---|---|---|---|
 | Keep the Lincoln Memorial? | Keep: a real build span to work out, and a statue a child can recognise. | Keep only as a place: no speech, no rally, no inscriptions, no death. | Keep: the building, year, columns and statue are uncontested and sourced. | **Keep, 3–0, reframed as a place.** |
 | Keep the "I Have a Dream" steps in the Lincoln clip? | It is the best-known moment there. | Cut: a political rally. | Cut: it turns the clip into the march's story, which is politics. | **Cut, 2–1.** Logged as L-X1. |
-| Keep the MLK Memorial? | Keep, reframed as a place: "a 30-foot stone figure, opened in 2011". | Cut: sermon wall (religion), civil-rights laws (politics), and public disputes over the memorial itself. | Cut: a truthful telling needs the movement and his ministry; without them the clip misleads (rubric A1). | **Cut, 2–1.** The educator's reframe is recorded here for the owner (O2); it is not adopted. |
+| Keep the MLK Memorial? | Keep, reframed as a place: "a 30-foot stone figure, opened in 2011". | Cut: sermon wall (religion), civil-rights laws (politics), and public disputes over the memorial itself. | Cut: a truthful telling needs the movement and his ministry; without them the clip misleads (rubric A1). | **Cut, 2–1.** **ANSWERED (2026-11-10): the cut stays.** The place-only reframe is not adopted. |
 | Group | Subtracting years is grade 4 (4.NBT.B.4), so 7-10. A 10-18 stretch on sourced heights fits 6.EE.B.7. | Fine: heights only. | Use the two-source heights (L-14), not the one-source 28 ft (L-9). | 7-10, plus a 10-18 stretch. 18+ open (O5). |
 | Replacement leader? | Wants a second clip. | Only an achievement-or-place story with no politics. | The earlier draft says no further US-only leaders without the owner. | **None added by the council.** The owner then added three on 2026-11-10 (see "Owner decisions"). |
 | Narration length | 22 words may not fit 8 s. | — | — | Trimmed to 20 words (owner call, 2026-11-10). Measure in Stage B; if it runs long, cut words rather than speed up the voice. |
@@ -209,11 +209,8 @@ work is:
 
 ## Open questions for the owner
 
-1. **O1 Count:** 2 were proposed; 1 is kept. Is one Great Leaders clip
-   enough, or should the topic be refilled (see O3)? The earlier "5 vs 10"
-   pick across the P8 specs is also still open.
-2. **O2 MLK Memorial:** cut 2–1 under §7a. The educator's place-only reframe
-   is on record. Only you can overrule the cut.
+1. **O1 Count:** `clips.json` has 3 PROPOSED rows: Lincoln Memorial, Jhansi Fort, and Netaji Bhawan. The §7a screen proposed 2 and kept 1 (Lincoln); the MLK Memorial stayed cut. Is 3 enough, or should the topic be refilled (see O3)? The earlier "5 vs 10" pick across the P8 specs is also still open.
+2. **O2 MLK Memorial:** **ANSWERED (2026-11-10).** The cut stays. The place-only reframe is not adopted.
 3. **O3 Replacement:** answered on 2026-11-10. Robben Island comes over from
    PR 407; Lakshmibai and Bose were added, with their wording calls listed
    under "Owner decisions".
@@ -235,6 +232,6 @@ work is:
       sourced facts with confidence, draft captions and transcript; the cut is
       logged with reasons.
 - [ ] Educator sign-off in writing on file.
-- [ ] Owner decisions O1, O2 and O4–O8 (O3 answered 2026-11-10), and the wording calls for Lakshmibai and Bose.
+- [ ] Owner decisions O1 and O4–O8 (O2 answered 2026-11-10: the MLK cut stays; O3 answered 2026-11-10), and the wording calls for Lakshmibai and Bose.
 - [ ] Stage B: clip, captions and manifest produced and verified (gate not lifted).
 - [ ] Additive only: no existing story changed (holds for Stage A).
