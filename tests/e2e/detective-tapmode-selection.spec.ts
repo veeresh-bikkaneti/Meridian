@@ -101,17 +101,20 @@ async function openTapCase(page: Page, index: number): Promise<void> {
   await expect(
     page.getByRole("article", { name: /Clue 1:/ }),
   ).toBeVisible({ timeout: 30_000 });
-  // The bench can come and go faster than a visibility check at 4x
-  // playback, so a page-side flag records that it ever showed.
+  // This spec is about the pick read, not the intro: give the bench a
+  // moment to show (a page-side flag catches even a brief showing),
+  // then wait until it is gone. A case that opens without the bench
+  // goes straight on.
   await expect
     .poll(
       () =>
         page.evaluate(
           () => (window as unknown as { __benchSeen?: boolean }).__benchSeen === true,
         ),
-      { timeout: 20_000 },
+      { timeout: 8_000 },
     )
-    .toBe(true);
+    .toBe(true)
+    .catch(() => undefined);
   await expect(page.getByTestId("detective-bench")).toHaveCount(0, {
     timeout: 60_000,
   });
