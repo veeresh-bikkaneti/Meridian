@@ -20,7 +20,10 @@ argued over.
 Later owner decisions applied here (same log): 7, Potala KEEP, architecture
 only; 8, Alamo mission KEEP, architecture only; 9, reword Sagrada Família,
 Fushimi Inari, Christ the Redeemer and Robber's Cave as architecture,
-geography and math only; 10, four new PROPOSED places for balance (part B).
+geography and math only; 10, four new PROPOSED places for balance (part B);
+14-18 (t334u, 2026-11-10), sources for the Redeemer 30 m / 28 m hook and
+for Potala's 13 storeys, Konark wheel hook with no part count, Uluru story
+cut to its first sentence, Alamo hook confirmed as currentYear − 1718.
 
 ## Rules applied to every line
 
@@ -87,8 +90,12 @@ Per the owner: nothing about who governs the region, religion or leaders.
 | 10-18 | "The palace is about 13 storeys tall and has more than 1,000 rooms. If every storey had the same number of rooms, at least how many rooms would each storey have? Round up." | at least 77 (1,000 ÷ 13 ≈ 76.9; equal storeys is a model) | P5, P7 |
 | 18+ | "The palace has more than 1,000 rooms. If you spent 15 minutes in each room, at least how many hours would you need?" | at least 250 hours (1,000 × 15 = 15,000 minutes) | P5 |
 
-**Verified as asked:** "about 13 storeys" (P7) and "on a hill in Lhasa" (P1)
-are both sourced. **Height in metres stays UNVERIFIED** (P6: sources give
+**Verified as asked (re-fetched 2026-11-10):** "about 13 storeys" (P7) and
+"on a hill in Lhasa" (P1) are both sourced. P7 now cites the UNESCO
+Japanese brief on the official World Heritage page (13-storey building)
+and the China.org.cn English page ("main building has 13 floors"). The
+narration keeps "Thirteen storeys tall!" (19 words after the opener,
+within 16-22). **Height in metres stays UNVERIFIED** (P6: sources give
 119 m, 130 m, 110 m and "over 300 m" for different baselines); no height in
 metres is narrated.
 
@@ -122,7 +129,7 @@ the Anangu people" / "Sacred to the Anangu people".
 
 | Field | Proposed text |
 |---|---|
-| story | "The huge red sandstone rock rises alone from the desert in Australia's Northern Territory. The rock itself, not the resort to the north, is the point." |
+| story | "The huge red sandstone rock rises alone from the desert in Australia's Northern Territory." |
 | imageAlt | unchanged: "Storybook drawing of Uluru, the great red sandstone monolith glowing at sunset with visitors viewing from afar." |
 | narration (after the opener) | "A giant red rock in the desert. Look! The rock glows in the sunset! Quiet and gold." |
 
@@ -268,7 +275,7 @@ is narrated.
 |---|---|---|---|
 | 7-10 | "There are 12 pairs of carved wheels. How many wheels is that?" | 24 | KO1 |
 | 7-10 | "It was built around 1250. How many years ago was that?" | about `currentYear − 1250` | KO2 |
-| 10-18 (HELD) | Time from a shadow: "If a wheel were marked into 8 equal parts (a model) to split a 24-hour day, how many hours would each part show?" | 3 hours | **HELD**: depends on KO3 (UNVERIFIED) |
+| 10-18 | "The chariot has 24 carved wheels, 12 on each side. How many wheels would 2 such buildings have?" | 48 | KO1 |
 
 **Checked as asked: "the wheels work as sundials" is UNVERIFIED.** The
 Government of India tourism site (Incredible India) says four of the 24
@@ -279,8 +286,9 @@ guides. The UNESCO page and the Archaeological Survey of India page describe
 the wheels as decorated chariot wheels and do not call them sundials. The
 spoke count also differs (ASI: 16 spokes, 8 broad and 8 thin; a Wikipedia
 caption: 8 spokes), and wheel diameter differs (about 3 m on UNESCO, 2.97 m
-and 3.7 m on Wikipedia). The shadow-time hook stays held, and no wheel size
-is narrated, until the owner accepts a source.
+and 3.7 m on Wikipedia). The 8-equal-parts model is removed (owner,
+2026-11-10). Wheel hooks use no number of parts. The shadow-time hook is
+not used. No wheel size is narrated, until the owner accepts a source.
 
 ### 12. Brihadeeswarar Temple, Thanjavur
 
@@ -363,7 +371,7 @@ none confirms.
 | P4 | Red Palace 1694 | Britannica, as P3 (Wikipedia gives 1690-1694) | HIGH |
 | P5 | More than 1,000 rooms | Britannica, as P3; Wikipedia, https://en.wikipedia.org/wiki/Potala_Palace | HIGH |
 | P6 | Height in metres | Britannica 130 m (425 ft) above the valley; UNESCO Japanese summary 110 m; Wikipedia 119 m above the mountain and over 300 m above the valley floor | **UNVERIFIED** (sources disagree; not used) |
-| P7 | Rises 13 storeys | Wikipedia, as P5 ("Rising 13 stories"); UNESCO Japanese summary on the P1 page (13 levels) | HIGH |
+| P7 | Rises 13 storeys | UNESCO World Heritage Centre, Historic Ensemble of the Potala Palace, Lhasa, Japanese brief on https://whc.unesco.org/en/list/707/ (fetched 2026-11-10: "谷から110mの山の斜面に13層の高層建築物が建ち", a 13-storey building on the slope); Academy of Contemporary China and World Studies / China.org.cn, https://keywords.china.org.cn/2024-08/28/content_117376850.html (fetched 2026-11-10: "Its main building has 13 floors") | HIGH |
 | T1 | Founded in the 5th century | UNESCO, https://whc.unesco.org/en/list/119/ | HIGH |
 | T2 | At the gateway to the Sahara; a crossroads and market for manuscripts, salt from Teghaza, gold, cattle and grain | UNESCO, as T1 | HIGH |
 | T3 | About 100,000 inhabitants in the 16th century | UNESCO, as T1 | HIGH |
@@ -383,9 +391,9 @@ none confirms.
 | F1 | Mount Inari 233 m above sea level | Wikipedia, https://en.wikipedia.org/wiki/Fushimi_Inari-taisha | MEDIUM |
 | F2 | About 10,000 gates; about 800 in one row | Wikipedia, as F1 (citing the National Diet Library reference database) | MEDIUM |
 | F3 | Trails about 4 km, about 2 hours to walk up | Wikipedia, as F1 | MEDIUM |
-| R1 | Statue 30 m tall plus an 8 m pedestal; arms 28 m | Wikipedia, https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue) (citing Britannica) | MEDIUM |
-| R2 | Built 1922 to 1931; reinforced concrete and soapstone | Wikipedia, as R1; live entry already cites 1931 | MEDIUM |
-| R3 | Corcovado is 700 m high | Wikipedia, as R1 | MEDIUM |
+| R1 | Statue 30 m tall plus an 8 m pedestal; arms 28 m | Encyclopaedia Britannica, "Christ the Redeemer", https://www.britannica.com/topic/Christ-the-Redeemer (fetched 2026-11-10: "stands 98 feet (30 metres) tall, its horizontally outstretched arms spanning 92 feet (28 metres)"; pedestal "about 26 feet (8 metres) high"); Paul Landowski official page, https://www.paul-landowski.com/en/le-christ-de-rio/ (fetched 2026-11-10: "Height: 30 meters"; "Distance between the two hands: 28 meters") | HIGH |
+| R2 | Built 1922 to 1931; reinforced concrete and soapstone | Wikipedia, https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue); live entry already cites 1931 | MEDIUM |
+| R3 | Corcovado is 700 m high | Wikipedia, https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue) | MEDIUM |
 | RC1 | Hand-dug in soft Dakota Sandstone, widened from a shallow natural tunnel | History Nebraska, https://history.nebraska.gov/history-nebraska-funding-digital-map-of-lincolns-robbers-cave/ | HIGH |
 | RC2 | Three parallel chambers | History Nebraska, as RC1 | HIGH |
 | RC3 | Passage lengths in the National Register nomination add up to 489.5 feet | Journal of Spelean History 162, https://caves.org/wp-content/uploads/Publications/journal-of-spelean-history/162.pdf | MEDIUM |

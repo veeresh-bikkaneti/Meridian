@@ -38,7 +38,8 @@
 Decisions from the owner, applied on this branch on 2026-11-10. Each is
 logged here and reflected in `humanities/screened-topics.md`. Decisions 1-5
 came in the first brief; the owner rule and decisions 6-11 came in a second
-message the same day.
+message the same day; 12-13 later that evening; 14-18 from t334u the same
+evening.
 
 **Owner rule (logged verbatim, typo kept):** "sometime history can be
 controversial too, we just have to stirke the balance." [sic] Applied as:
@@ -60,6 +61,11 @@ and leave out anything still argued over.
 | 11 | **Remove the home-folder note paths** | Every home-folder path to the owner's working notes is gone from this spec; those notes are now named by file name only and marked "owner's working notes, not in the repo". | They are not in the repo, so a reader cannot follow them. |
 | 12 | **Ram Setu, also called Adam's Bridge: geography only.** Owner's log text: "Kept as geography only. Origin is disputed, so it is not narrated." | Reword file §13: story and narration say only that it is a chain of shoals about 48 km long between India and Sri Lanka. Rock type, depth, how it formed and who made it are left out; every math hook uses only the 48 km length. | Origin is disputed. |
 | 13 | **Proper names (Temple, Christ, mission) stay unchanged.** Owner's log text: "Proper names kept; story text stays architecture only." | No name renamed; descriptions stay architecture, geography and math only. | Owner decision. |
+| 14 | **Christ the Redeemer hook kept:** "The statue is 30 m tall and its arms stretch 28 m. How much taller is it than it is wide?" Answer 2 m. | Reword file §8 and source row R1: both figures fetched and in agreement from Encyclopaedia Britannica (https://www.britannica.com/topic/Christ-the-Redeemer) and the sculptor's official page (https://www.paul-landowski.com/en/le-christ-de-rio/). R1 raised to HIGH. Hook kept, not held. | t334u: cite a source for 30 m and 28 m, or mark UNVERIFIED and hold. |
+| 15 | **Konark: remove the "8 equal parts" model.** The wheel hook uses no number of parts. | Reword file §11: the held shadow-time hook with 8 equal parts is removed. The 10-18 wheel hook is now "24 carved wheels, 12 on each side; how many wheels would 2 such buildings have?" (48), sourced as KO1. Sundial claim stays UNVERIFIED and unused. | t334u. |
+| 16 | **Uluru story: first sentence only.** | Reword file §4: deleted "The rock itself, not the resort to the north, is the point." Story is now only "The huge red sandstone rock rises alone from the desert in Australia's Northern Territory." | t334u. |
+| 17 | **Potala narration keeps "Thirteen storeys tall!"** | Reword file §2 and source row P7: 13 storeys re-fetched and in agreement from the UNESCO Japanese brief on https://whc.unesco.org/en/list/707/ and the China.org.cn English page https://keywords.china.org.cn/2024-08/28/content_117376850.html ("main building has 13 floors"). Narration word count after the opener is 19 (within 16-22). Height in metres stays UNVERIFIED. | t334u: cite a source, or mark UNVERIFIED and remove it from the narration. |
+| 18 | **Alamo hook confirmed.** No 1758 in this branch's docs or in the diff from main; the only hook is currentYear − 1718 (founded), with currentYear from the device clock at play time. | Already in reword file §5 from the earlier owner fix; no further edit needed. Pre-existing 1758 strings on main (unrelated places in live game files) were not touched; this branch is docs only. | t334u: confirm the fix is in; if it isn't, apply it. |
 
 **Branch:** `feat/humanities-definitions`
 **Base:** `origin/main` @ `f37dea50` (verified 2026-11-10)
