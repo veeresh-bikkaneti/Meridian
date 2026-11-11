@@ -1,0 +1,282 @@
+[
+  {
+    "id": "chemistry:states:solid-liquid",
+    "group": "7-10",
+    "objective": "After this, a child can sort water as solid ice or liquid water when it is warmed or cooled, shown by a first-try tap on the matching picture.",
+    "standard": {
+      "code": "2-PS1-4",
+      "source": "https://www.nextgenscience.org/pe/2-ps1-4-matter-and-its-interactions"
+    },
+    "why": "The ice pop is hard in the cold and drips when the room is warm. What changed it?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "geography: glaciers and sea ice on the globe"
+    ]
+  },
+  {
+    "id": "chemistry:states:melt-freeze",
+    "group": "7-10",
+    "objective": "After this, a child can predict that warming ice makes liquid water and cooling that water makes ice again, shown by a first-try tap before the picture plays.",
+    "standard": {
+      "code": "2-PS1-4",
+      "source": "https://www.nextgenscience.org/pe/2-ps1-4-matter-and-its-interactions"
+    },
+    "why": "The puddle was ice this morning and water at lunch. Can it turn back into ice?",
+    "buildsOn": [
+      "chemistry:states:solid-liquid"
+    ],
+    "useElsewhere": [
+      "everyday: freezing a drink on screen so it stays cold"
+    ]
+  },
+  {
+    "id": "chemistry:water:where",
+    "group": "7-10",
+    "objective": "After this, a child can point to oceans, rivers, lakes, and ponds as liquid water, and to ice as solid water, shown by taps on the globe.",
+    "standard": {
+      "code": "2-ESS2-3",
+      "source": "https://www.nextgenscience.org/pe/2-ess2-3-earths-systems"
+    },
+    "why": "The puddle is gone, but the lake is still there. Where is the water, and is it ice or liquid?",
+    "buildsOn": [
+      "chemistry:states:solid-liquid"
+    ],
+    "useElsewhere": [
+      "geography: oceans, rivers, lakes, and ice on the globe"
+    ]
+  },
+  {
+    "id": "chemistry:materials:sort",
+    "group": "7-10",
+    "objective": "After this, a child can sort materials by color, texture, hardness, or flexibility, shown by a first-try sort of on-screen samples.",
+    "standard": {
+      "code": "2-PS1-1",
+      "source": "https://www.nextgenscience.org/pe/2-ps1-1-matter-and-its-interactions"
+    },
+    "why": "Two spoons look the same until you notice one bends and one does not. Which property did you use?",
+    "buildsOn": [
+      "chemistry:states:solid-liquid"
+    ],
+    "useElsewhere": [
+      "everyday: picking a material you can see for a job on screen"
+    ]
+  },
+  {
+    "id": "chemistry:materials:magnet",
+    "group": "7-10",
+    "objective": "After this, a child can predict whether a magnet pulls a material without touching it, shown by a first-try tap before the magnet moves.",
+    "standard": {
+      "code": "3-PS2-3",
+      "source": "https://www.nextgenscience.org/pe/3-ps2-3-motion-and-stability-forces-and-interactions"
+    },
+    "why": "A pile of bits looks the same. Which ones will jump to the magnet?",
+    "buildsOn": [
+      "chemistry:materials:sort",
+      "physics:magnet:flip"
+    ],
+    "useElsewhere": [
+      "physics: a magnet sorting metals on screen"
+    ]
+  },
+  {
+    "id": "chemistry:pieces:rebuild",
+    "group": "7-10",
+    "objective": "After this, a child can take an on-screen model apart and build a new shape from the same pieces, shown by using every piece and adding none.",
+    "standard": {
+      "code": "2-PS1-3",
+      "source": "https://www.nextgenscience.org/pe/2-ps1-3-matter-and-its-interactions"
+    },
+    "why": "The bridge model is too short. Can the same pieces make a longer one?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "math: counting the same pieces in a new build"
+    ]
+  },
+  {
+    "id": "chemistry:states:particles",
+    "group": "10-18",
+    "objective": "After this, a learner can predict whether adding or removing warmth turns water among solid, liquid, and gas, shown by a first-try choice of the particle picture.",
+    "standard": {
+      "code": "MS-PS1-4",
+      "source": "https://www.nextgenscience.org/pe/ms-ps1-4-matter-and-its-interactions"
+    },
+    "why": "The kettle picture goes from ice, to water, to a cloud above the water. What did the warmth change?",
+    "buildsOn": [
+      "chemistry:states:melt-freeze"
+    ],
+    "useElsewhere": [
+      "physics: particles moving faster when something is warmed"
+    ]
+  },
+  {
+    "id": "chemistry:states:road-salt",
+    "group": "10-18",
+    "objective": "After this, a learner can predict that salt on ice changes whether the ice stays solid and stuck, shown by a first-try tap before the road scene plays.",
+    "standard": "UNVERIFIED",
+    "why": "The road is icy. Crews spread salt. Why does the ice change?",
+    "buildsOn": [
+      "chemistry:states:melt-freeze",
+      "chemistry:mixtures:dissolve"
+    ],
+    "useElsewhere": [
+      "economics: the cost of keeping a road usable, as a plain money fact"
+    ]
+  },
+  {
+    "id": "chemistry:water:cycle",
+    "group": "10-18",
+    "objective": "After this, a learner can order an on-screen path of water as ice or liquid, into the air, into a cloud, and back as rain or snow, shown by a correct picture order.",
+    "standard": {
+      "code": "MS-ESS2-4",
+      "source": "https://www.nextgenscience.org/pe/ms-ess2-4-earths-systems"
+    },
+    "why": "The puddle disappeared and the sky has a cloud. Where did the water go, and how does it come back?",
+    "buildsOn": [
+      "chemistry:water:where",
+      "chemistry:states:particles"
+    ],
+    "useElsewhere": [
+      "geography: clouds, rain, and ice on the globe"
+    ]
+  },
+  {
+    "id": "chemistry:mixtures:dissolve",
+    "group": "10-18",
+    "objective": "After this, a learner can pick the model that says a dissolved solid is still there as pieces too small to see, shown by a first-try choice. The scene does not ask anyone to taste it.",
+    "standard": {
+      "code": "5-PS1-1",
+      "source": "https://www.nextgenscience.org/pe/5-ps1-1-matter-and-its-interactions"
+    },
+    "why": "The solid in the glass picture is gone from sight. Is it gone, or still there?",
+    "buildsOn": [
+      "chemistry:states:solid-liquid",
+      "math-number:fractions:fair-parts"
+    ],
+    "useElsewhere": [
+      "geography: salt seas and lakes on the globe"
+    ]
+  },
+  {
+    "id": "chemistry:reactions:new-look",
+    "group": "10-18",
+    "objective": "After this, a learner can predict whether an on-screen mix keeps the old look or shows a new one, shown by a first-try tap before the scene plays.",
+    "standard": {
+      "code": "5-PS1-4",
+      "source": "https://www.nextgenscience.org/pe/5-ps1-4-matter-and-its-interactions"
+    },
+    "why": "A shop counter on the screen stirs two plain substances. The picture may bubble. Is that still the same stuff?",
+    "buildsOn": [
+      "chemistry:mixtures:dissolve"
+    ],
+    "useElsewhere": [
+      "economics: a shop measures a drink mix on screen"
+    ]
+  },
+  {
+    "id": "chemistry:reactions:rust",
+    "group": "10-18",
+    "objective": "After this, a learner can compare a metal's look before and after rain and say the properties changed, shown by a first-try choice that a reaction may have happened.",
+    "standard": {
+      "code": "MS-PS1-2",
+      "source": "https://www.nextgenscience.org/pe/ms-ps1-2-matter-and-its-interactions"
+    },
+    "why": "A metal bike sat out in the rain. It looks different. Did the material change?",
+    "buildsOn": [
+      "chemistry:reactions:new-look"
+    ],
+    "useElsewhere": [
+      "economics: repair and replacement costs, as a plain money fact"
+    ]
+  },
+  {
+    "id": "chemistry:materials:identify",
+    "group": "10-18",
+    "objective": "After this, a learner can identify a material by properties they observe, including whether it dissolves, shown by a first-try name from the on-screen tests. Floating is not scored.",
+    "standard": {
+      "code": "5-PS1-3",
+      "source": "https://www.nextgenscience.org/pe/5-ps1-3-matter-and-its-interactions"
+    },
+    "why": "Three unmarked blocks could be three different materials. Which test tells them apart?",
+    "buildsOn": [
+      "chemistry:materials:sort"
+    ],
+    "useElsewhere": [
+      "everyday: whether a solid disappears into water, on screen"
+    ]
+  },
+  {
+    "id": "chemistry:elements:detective",
+    "group": "10-18",
+    "objective": "After this, a learner can use a column of the periodic table to predict which of two materials is more likely to react, shown by a first-try tap. No electron-counting is required on this row.",
+    "standard": {
+      "code": "HS-PS1-1",
+      "source": "https://www.nextgenscience.org/pe/hs-ps1-1-matter-and-its-interactions"
+    },
+    "why": "Two materials look alike. The table's pattern is the clue for which one reacts with oxygen.",
+    "buildsOn": [
+      "chemistry:pieces:rebuild",
+      "chemistry:reactions:new-look"
+    ],
+    "useElsewhere": [
+      "geography: weathering of landmarks and rocks, as a visible change"
+    ]
+  },
+  {
+    "id": "chemistry:reactions:weight",
+    "group": "10-18",
+    "objective": "After this, a learner can predict that the total weight stays the same when the on-screen substances are heated, cooled, or mixed, shown by reading the before-and-after scale.",
+    "standard": {
+      "code": "5-PS1-2",
+      "source": "https://www.nextgenscience.org/pe/5-ps1-2-matter-and-its-interactions"
+    },
+    "why": "The mix looks different. Did any of it disappear, or does the scale still match?",
+    "buildsOn": [
+      "chemistry:mixtures:dissolve",
+      "math-number:place:compare"
+    ],
+    "useElsewhere": [
+      "economics: a shop batch weighs the same before and after, on screen"
+    ]
+  },
+  {
+    "id": "chemistry:reactions:explain",
+    "group": "18+",
+    "objective": "After this, an adult learner can revise a prediction for a simple main-group reaction drawn as a tally, using the periodic pattern, shown by a first-try revision. Iron rust is not the example: the page limits assessment to main-group elements and combustion.",
+    "standard": "UNVERIFIED",
+    "why": "The tally on the screen does not match the first guess. Which column pattern explains it? Fit: adult extension of HS-PS1-2; no code covers beyond grade 12.",
+    "buildsOn": [
+      "chemistry:elements:detective"
+    ],
+    "useElsewhere": [
+      "physics: energy in or out of a reaction, on screen, with no flame demo"
+    ]
+  },
+  {
+    "id": "chemistry:reactions:mass",
+    "group": "18+",
+    "objective": "After this, an adult learner can show that the count of atoms, and so the mass, matches on both sides of a simple on-screen reaction, shown by a balanced tally.",
+    "standard": "UNVERIFIED",
+    "why": "A simple reaction on the screen changes the look. Count the pieces on each side. Did any piece vanish? Fit: adult extension of HS-PS1-7; no code covers beyond grade 12.",
+    "buildsOn": [
+      "chemistry:reactions:weight",
+      "chemistry:states:particles"
+    ],
+    "useElsewhere": [
+      "math: the same tally as a proportion, on a simple reaction only"
+    ]
+  },
+  {
+    "id": "chemistry:reactions:rate",
+    "group": "18+",
+    "objective": "After this, an adult learner can predict that a warmer mix, or a more crowded one, changes how fast the on-screen reaction finishes, shown by a first-try choice of which scene finishes first.",
+    "standard": "UNVERIFIED",
+    "why": "The same reaction is on two screens. One is warmer. Which one finishes first, and why? Fit: adult extension of HS-PS1-5; no code covers beyond grade 12.",
+    "buildsOn": [
+      "chemistry:reactions:new-look",
+      "chemistry:states:particles"
+    ],
+    "useElsewhere": [
+      "everyday: a warmer on-screen mix finishes sooner"
+    ]
+  }
+]
