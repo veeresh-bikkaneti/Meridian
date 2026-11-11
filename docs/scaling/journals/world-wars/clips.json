@@ -55,7 +55,7 @@
         "computedAtPlay": true,
         "unit": "years"
       },
-      "explain": "Take 1939 away from this year. The card shows the answer. It was wartime. This clip shows the school, not the war.",
+      "explain": "Take 1939 away from this year. The card shows the answer. This was a school morning in 1939.",
       "hint": "Start at this year. Take away 1939.",
       "retrieval": {
         "question": "In what year did the children meet at school?",

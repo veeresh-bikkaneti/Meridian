@@ -239,7 +239,7 @@
       "standardText": "Use paper-based and electronic mapping and graphing techniques to represent and analyze spatial patterns of different environmental and cultural characteristics.",
       "standardSource": "https://www.socialstudies.org/sites/default/files/c3/C3-Framework-for-Social-Studies.pdf",
       "standardChecked": "2026-11-10",
-      "why": "How far is this road network, and how many days would a chosen daily distance take? Time is distance divided by the daily distance.",
+      "why": "How far is this road network, and how many days would a walker need at a chosen daily distance? Predict first, then work it out.",
       "opensWith": "how far",
       "place": {
         "lat": -13.517,
@@ -305,7 +305,7 @@
       "standardText": "",
       "standardSource": "",
       "standardChecked": "2026-11-10",
-      "standardGap": "No C3 indicator above grade 12 was found in the framework text checked on 2026-11-10. The geography skill sits near D2.Geo.3.9-12, but that code's band is grades 9-12, so it is not cited as this item's code.",
+      "standardGap": "No C3 indicator above grade 12 was found in the framework text checked on 2026-11-10. The geography skill sits near D2.Geo.3.9-12, but that code's band is grades 9-12, so it is not cited as this item's code. The tangent step is an adult extension of the math code HSG-SRT.C.8 (named by two reviewers on 2026-11-11); 18+ rows carry no school code, so it is named here only. standardChecked is the date the framework was searched, not a check of a code.",
       "why": "Where is this peak, and how tall is it? Surveyors use a ground distance and an angle. Tangent turns those two measures into a height. Here the published heights disagree, so the clip does not pretend one meter figure is the height.",
       "opensWith": "where",
       "place": {

@@ -68,7 +68,7 @@
       "objective": "After this, a child in 7-10 can locate where the 1866 cable came ashore, shown by a correct pin on Heart's Content.",
       "standard": "D2.Geo.1.3-5",
       "standardSource": "https://content.esri.com/esripress/steam-at-work/en/sam/sam-c3.pdf",
-      "why": "How far did a message have to go under the ocean to cross from Ireland to Newfoundland?",
+      "why": "A message once crossed under the Atlantic from Ireland. Find the place in Newfoundland where the cable came ashore.",
       "place": {
         "lat": 47.872528,
         "lon": -53.368639,
