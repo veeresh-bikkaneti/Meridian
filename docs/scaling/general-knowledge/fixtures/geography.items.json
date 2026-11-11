@@ -54,5 +54,33 @@
     "useElsewhere": [
       "geography: finding mountain ranges on a relief map"
     ]
+  },
+  {
+    "id": "geography:globe:angkor",
+    "group": "7-10",
+    "objective": "After this, a child can locate Angkor Wat on the globe, shown by dropping a pin inside the hit radius on the first or second try.",
+    "standard": {
+      "code": "D2.Geo.3.3-5",
+      "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
+    },
+    "why": "This huge stone complex near Siem Reap in Cambodia was built in the early 12th century. Its five towers are the aim point. Which city is it near, and where is that on the globe?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "geography: locating a stone complex on a map of Cambodia"
+    ]
+  },
+  {
+    "id": "geography:globe:uluru",
+    "group": "7-10",
+    "objective": "After this, a child can locate Uluru on the globe, shown by dropping a pin inside the hit radius on the first or second try.",
+    "standard": {
+      "code": "D2.Geo.3.3-5",
+      "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
+    },
+    "why": "The huge red sandstone rock rises alone from the desert in Australia's Northern Territory. Where on the globe does that rock stand?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "geography: finding a desert landform on a map of Australia"
+    ]
   }
 ]

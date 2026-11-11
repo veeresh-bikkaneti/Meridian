@@ -22,9 +22,19 @@ educator sign-off) · **CS** child-safety and content-screen reviewer.
 | C7 | 18+ items with no school code | Keep: adults need depth (haversine, powers of ten) | Mark UNVERIFIED with a Fit note, as the math strand does | No view | **Adopted 3–0.** |
 | C8 | Remove vendor and voice names from the earlier spec text | — | — | Keep the spec agent-neutral (standard §8, owner rule) | **Adopted.** Earlier tooling names in the agent prompt are replaced by the house pipeline names. |
 
+## Owner answers
+
+- **G2 ANSWERED (2026-11-10):** P11 current affairs is out of scope under
+  §7a and is dropped. P10 (replaced by the mixed-review round for v1) and
+  P12 (later mode, unchanged) stay as recorded in the spec §7.
+- **Angkor Wat and Uluru (2026-11-10, PRs 399 and 416):** the owner kept
+  both as place-only entries. They are restored as geography fixtures
+  (architecture and geography only; no religion, belief, ritual or sacred
+  status; no distance, height or depth in any story line). Council C3 had
+  cut them; this owner decision overrides that cut for these two places
+  only. Other C3 cuts stand.
+
 ## What the council could not decide (goes to the owner)
 
-- Whether P11 current affairs stays in scope at all after ruling D2 (§7a bans
-  current or contested politics). Recorded, not decided: spec G2.
 - Whether general knowledge is its own subject card or only a review mode
   inside the existing review deck. Spec G3.

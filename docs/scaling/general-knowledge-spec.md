@@ -13,7 +13,7 @@
 | Status | **GATED.** Stage A (spec and data) done on this branch; Stage B (build) waits for the owner to lift the build gate for this branch. Educator seat vacant: no named educator has signed the rubric. |
 | Branch | `feat/general-knowledge-spec` (stays open until dev work is complete) |
 | Contract | I2 unit items (`docs/scaling/contracts.md`); I1 subject module and I3/I4 for Stage B only |
-| Item counts | **PROPOSED:** 11 mixed-review items (6 for 7-10, 3 for 10-18, 2 for 18+), 4 geography fixtures, 5 example rounds. Not decided; the educator and owner set the real counts. |
+| Item counts | **PROPOSED:** 11 mixed-review items (6 for 7-10, 3 for 10-18, 2 for 18+), 6 geography fixtures, 5 example rounds. Not decided; the educator and owner set the real counts. |
 | Data | `docs/scaling/general-knowledge/items.json` (mixed-review items), `fixtures/geography.items.json`, `rounds.json`; validator `items.test.mjs`; sources `sources.md`; council `council.md` |
 | Spec date | 2026-11-10 |
 
@@ -78,11 +78,15 @@ The table is generated from the data; the data wins if they ever differ.
 | `geography:globe:sydney-opera-house` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: using a globe to tell which half of the world a city is in |
 | `geography:globe:victoria-falls` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: following a river on a map to the place where it falls |
 | `geography:globe:everest` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: finding mountain ranges on a relief map |
+| `geography:globe:angkor` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: locating a stone complex on a map of Cambodia |
+| `geography:globe:uluru` | 7-10 | D2.Geo.3.3-5 | geography fixture | geography: finding a desert landform on a map of Australia |
 
 Geography fixture ids map to the live globe deck: `geography:globe:eiffel-tower`
 = `globe-eiffel-tower`, `geography:globe:sydney-opera-house` =
 `globe-sydney-opera-house`, `geography:globe:victoria-falls` =
-`globe-victoria`, `geography:globe:everest` = `globe-everest`. The earlier
+`globe-victoria`, `geography:globe:everest` = `globe-everest`,
+`geography:globe:angkor` = `globe-angkor`, `geography:globe:uluru` =
+`globe-uluru`. The earlier
 physics fixture `physics:light:shadow-noon` was removed (integrator fix,
 2026-11-10): `noon-shadow` now builds on the real `physics:shadow:blocks`
 (light is blocked to make a shadow, 4-PS4-2) from `docs/scaling/physics/items.json`.
@@ -161,16 +165,19 @@ K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
 
 ## 6. Content screen (§7a) and CUT log
 
-The four fixtures passed the screen: each is a place and an achievement told
-through a sourced number. Mount Everest is kept 2–1 on the condition that
-only the 2020 survey height and the location are used (council C6).
+The six fixtures passed the screen. The original four are each a place and
+an achievement told through a sourced number. Angkor Wat and Uluru are kept
+as place-only entries (owner, 2026-11-10, PRs 399 and 416): architecture and
+geography only, with no religion, belief, ritual or sacred status, and no
+distance, height or depth in any story line. Mount Everest is kept 2–1 on
+the condition that only the 2020 survey height and the location are used
+(council C6).
 
 Globe-deck places **cut** from fixtures (when in doubt, leave it out):
 
 | Place in the deck | Reason |
 |---|---|
-| Angkor Wat, Ahu Tongariki, Chichén Itzá, Machu Picchu | Story centres on temples, epics or ceremonial sites (religion) |
-| Uluru | Deck text mentions sacred sites (religion) |
+| Ahu Tongariki, Chichén Itzá, Machu Picchu | Story centres on temples, epics or ceremonial sites (religion) |
 | Giza Plateau | Royal burial monuments; the story is hard to tell without belief (doubt) |
 | Petra | Not needed for v1; facades include tombs (doubt) |
 | Serengeti, Puerto Ayora | Wildlife and tortoises (no biology) |
@@ -181,22 +188,18 @@ No item mentions religion, sexuality or gender identity, current or contested
 politics, living things, war, or a child's age; the validator bans those
 words in item text.
 
-## 7. Earlier scope (P10 / P11 / P12) — recorded, not decided
+## 7. Earlier scope (P10 / P11 / P12)
 
 The earlier version of this spec (2026-11-10) defined three owner-picked
 options ("All 3", 2026-11-07): P10 trivia quiz, P11 current affairs, P12 GK
 detective. The reframe above replaces the P10 trivia bank with the mixed
-review round for v1 (council C1). The rest is kept as the owner's open
-choice:
+review round for v1 (council C1).
 
 - **P12 GK detective** stays a later mode on the GeoDetective machine; its
   game design document remains a signed gate before any code.
-- **P11 current affairs** — the tension is recorded exactly as before:
-
-{p11}
-
-  New since then: owner ruling D2 (standard §7a) puts current or contested
-  politics out of scope. Whether P11 survives D2 at all is open question G2.
+- **P11 current affairs** is dropped. **G2 ANSWERED (2026-11-10):** P11 is
+  out of scope under §7a (current or contested politics). The `{p11}`
+  placeholder is removed.
 
 ## 8. Stage B (build) — GATED
 
@@ -222,19 +225,20 @@ Signature (typed name is fine): [ ]
 
 ## 10. Open questions for the owner
 
+**G2 ANSWERED (2026-11-10):** P11 current affairs is out of scope under §7a
+and is dropped. See §7.
+
 1. **G1 (educator):** who signs the rubric for general knowledge? The signer
    must cover math, geography and earth science, or two signers sign.
-2. **G2 (P11):** does P11 current affairs stay in scope after ruling D2? If
-   yes, the earlier (a)/(b) ruling is still needed in writing.
-3. **G3 (placement):** is general knowledge its own subject card, or a mode
+2. **G3 (placement):** is general knowledge its own subject card, or a mode
    inside the existing "Review my misses" deck?
-4. **G4 (counts):** the item, fixture and round counts are PROPOSED.
-5. **G5 (curriculum):** CCSS, C3 and NGSS are US frameworks; which non-US
+3. **G4 (counts):** the item, fixture and round counts are PROPOSED.
+4. **G5 (curriculum):** CCSS, C3 and NGSS are US frameworks; which non-US
    equivalent should the topic map also name (standard §2 world-view rule)?
-6. **G6 (units):** the official Eiffel Tower heights are in feet on its
+5. **G6 (units):** the official Eiffel Tower heights are in feet on its
    English page; the other places use metres. Keep each fact in its source's
    unit, or convert?
-7. **G7 (source host):** this branch cites the CCSSO PDF for CCSS because the
+6. **G7 (source host):** this branch cites the CCSSO PDF for CCSS because the
    math strand's host blocked this agent; should all subjects use one host?
 
 ## 11. UNVERIFIED log
