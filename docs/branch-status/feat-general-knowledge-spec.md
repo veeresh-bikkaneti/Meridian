@@ -64,6 +64,6 @@ Approvals needed: owner lifts the Stage B gate; a named human educator signs.
 
 1. Stage B build: gated until the owner lifts the build gate for this branch.
 2. Educator sign-off: no named educator (rubric not attached).
-3. Owner questions G1 and G3–G7 in the spec (placement, units, counts, world-view curriculum, source host).
+3. Owner questions G1, G4 and G5 in the spec (educator, counts, world-view curriculum), all with the educator. Answered 2026-11-11: G3 (a mode inside "Review my misses"), G6 (keep source units), G7 (cite the official standards documents).
 4. Geography fixtures are swapped for real geography items when that subject publishes I2 data.
 5. Host-line readability: not measured (no host lines written in Stage A).

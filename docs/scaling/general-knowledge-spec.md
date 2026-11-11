@@ -228,18 +228,17 @@ Signature (typed name is fine): [ ]
 **G2 ANSWERED (2026-11-10):** P11 current affairs is out of scope under §7a
 and is dropped. See §7.
 
-1. **G1 (educator):** who signs the rubric for general knowledge? The signer
+1. **G1 (educator, sent to the educator 2026-11-11):** who signs the rubric for general knowledge? The signer
    must cover math, geography and earth science, or two signers sign.
-2. **G3 (placement):** is general knowledge its own subject card, or a mode
-   inside the existing "Review my misses" deck?
-3. **G4 (counts):** the item, fixture and round counts are PROPOSED.
-4. **G5 (curriculum):** CCSS, C3 and NGSS are US frameworks; which non-US
+2. **G3 (placement):** **ANSWERED (2026-11-11).** A mode inside the existing
+   "Review my misses" deck, not its own subject card.
+3. **G4 (counts, sent to the educator 2026-11-11):** the item, fixture and round counts are PROPOSED.
+4. **G5 (curriculum, sent to the educator 2026-11-11):** CCSS, C3 and NGSS are US frameworks; which non-US
    equivalent should the topic map also name (standard §2 world-view rule)?
-5. **G6 (units):** the official Eiffel Tower heights are in feet on its
-   English page; the other places use metres. Keep each fact in its source's
-   unit, or convert?
-6. **G7 (source host):** this branch cites the CCSSO PDF for CCSS because the
-   math strand's host blocked this agent; should all subjects use one host?
+5. **G6 (units):** **ANSWERED (2026-11-11).** Keep each fact in its source's
+   unit (the Eiffel Tower's English page gives feet; the others use metres).
+6. **G7 (source host):** **ANSWERED (2026-11-11).** Every subject cites the
+   official standards documents (for CCSS, the CCSSO PDF).
 
 ## 11. UNVERIFIED log
 

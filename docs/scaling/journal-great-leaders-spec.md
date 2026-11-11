@@ -76,7 +76,7 @@ record so the owner can overrule it.
 The group follows the grade of the math the clip uses (owner rule: tag by the
 standard's grade). 10-18 is served only by the optional stretch question that
 `contracts.md` I5 added on main in #403 (asked after the retrieval check, no
-new video). No 18+ question yet (open item O5). The 7-10 questions use no
+new video). No 18+ question yet (O5, answered 2026-11-11). The 7-10 questions use no
 algebra or trigonometry, and `check-clips.mjs` fails if a 7-10 clip does.
 
 **Use it elsewhere (map, cross-application web):** elapsed years on a
@@ -121,7 +121,7 @@ K-12 STANDARD (docs/scaling/k12-learning-design-standard.md)
 - Why first (§0): the clip opens with a real number question before play: [x]
 - Headline goal (§0): bridge + real-life application: [x] as a journal (no unit chain); elapsed-years bridge noted
 - Use-it-elsewhere round in another subject: [x] proposed (history timeline); not built
-- Bands served: [x] 7-10 (1 clip); 10-18 by the optional I5 stretch; 18+ none yet (O5)
+- Bands served: [x] 7-10 (1 clip); 10-18 by the optional I5 stretch; 18+ none yet (O5 answered: not yet)
 - Objective per item, observable verb, "shown by": [x] clips.json
 - Standards cited per item (C3, plus CCSS for the math): [x] live sources S7, S8
 - Loop mapped: hook (opening question) / predict (answer before play) / see (movie, pin) / explain (narration) / retry (one hint, then review deck): [x]
@@ -209,22 +209,22 @@ work is:
 
 ## Open questions for the owner
 
-1. **O1 Count:** `clips.json` has 3 PROPOSED rows: Lincoln Memorial, Jhansi Fort, and Netaji Bhawan. The §7a screen proposed 2 and kept 1 (Lincoln); the MLK Memorial stayed cut. Is 3 enough, or should the topic be refilled (see O3)? The earlier "5 vs 10" pick across the P8 specs is also still open.
+1. **O1 Count:** **ANSWERED (2026-11-11).** Three leaders for now (Lincoln Memorial, Jhansi Fort, Netaji Bhawan); Robben Island joins later. The earlier "5 vs 10" pick across the P8 specs stays open.
 2. **O2 MLK Memorial:** **ANSWERED (2026-11-10).** The cut stays. The place-only reframe is not adopted.
 3. **O3 Replacement:** answered on 2026-11-10. Robben Island comes over from
    PR 407; Lakshmibai and Bose were added, with their wording calls listed
    under "Owner decisions".
 4. **O4 Educator:** who is the named educator who signs this topic in writing?
-5. **O5 Groups:** no 18+ question, and 10-18 has only the stretch. No sourced
-   distance or angle was found for an 18+ question (for example a sight-line
-   angle to the roof), so none is invented.
-6. **O6 Extra questions:** the step counts (58 and 87, L-11) could be a second
-   question. Not added without your word.
+5. **O5 Groups:** **ANSWERED (2026-11-11).** No 18+ question yet; 10-18 keeps
+   only the stretch. No sourced distance or angle was found, so none is invented.
+6. **O6 Extra questions:** **ANSWERED (2026-11-11).** Not now: the step counts
+   (58 and 87, L-11) are not added as a second question.
 7. **O7 Listen check:** the earlier draft records an unresolved question
    about which recipe version's listen verdict satisfies the gate. Still yours
    to answer.
 8. **O8 "Opened" vs "dedicated":** the clip says the memorial "opened" in 1922
-   for the dedication ceremony (L-3). Educator to confirm the wording.
+   for the dedication ceremony (L-3). Owner sent this to the educator
+   (2026-11-11).
 
 ## Definition of done
 
@@ -232,6 +232,6 @@ work is:
       sourced facts with confidence, draft captions and transcript; the cut is
       logged with reasons.
 - [ ] Educator sign-off in writing on file.
-- [ ] Owner decisions O1 and O4–O8 (O2 answered 2026-11-10: the MLK cut stays; O3 answered 2026-11-10), and the wording calls for Lakshmibai and Bose.
+- [ ] Owner decisions O4, O7 and O8 (O2 and O3 answered 2026-11-10; O1, O5 and O6 answered 2026-11-11; O8 is with the educator). The Lakshmibai and Bose wording calls are answered (owner round 4).
 - [ ] Stage B: clip, captions and manifest produced and verified (gate not lifted).
 - [ ] Additive only: no existing story changed (holds for Stage A).

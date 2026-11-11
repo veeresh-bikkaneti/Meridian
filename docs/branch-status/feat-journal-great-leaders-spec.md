@@ -101,7 +101,7 @@ is not created yet (Stage B).
 - Stage B clip and manifest: blocked. The owner has not lifted the build
   gate; no record of a lift was found on main.
 - Educator sign-off: blocked. No named educator yet.
-- Owner questions O1 and O4–O8 in the spec (O2 answered 2026-11-10: the MLK cut stays; O3 answered): count; educator name; no 18+ question; extra questions; listen check; "opened" vs "dedicated" wording.
+- Owner questions O4, O7 and O8 in the spec: educator name; listen check; "opened" vs "dedicated" wording (with the educator). Answered: O2 and O3 (2026-11-10: MLK cut stays; Robben Island, Lakshmibai and Bose added); O1, O5 and O6 (2026-11-11: three leaders for now, Robben Island later; no 18+ question yet; no step-count question now).
 - Narration timing (20 words for about 8 s) is TO CONFIRM when rendered.
 - Robben Island row: open until PR 407 merges.
 - 18+ stretch questions for Jhansi and Netaji: TO CONFIRM (no clean sourced fact).
