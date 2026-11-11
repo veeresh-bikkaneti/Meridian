@@ -7,7 +7,7 @@
  *
  * Owns localStorage key `meridian.passport.badges.v1` (works fully offline).
  * Integration: Item A's hintPolicy wiring records `hintsUsed` in run state;
- * the round-end hook calls awardCleanRoundBadge() for 11-13 no-hint WINS,
+ * the round-end hook calls awardCleanRoundBadge() for 10-18 and 18+ no-hint WINS,
  * passing the deal-time snapshot band (never the live band).
  */
 
@@ -16,7 +16,7 @@ import type { AgeBandId, LoopId } from "@/game/age-profile/types.ts";
 export const PASSPORT_BADGES_KEY = "meridian.passport.badges.v1";
 const BADGE_SCHEMA_VERSION = 1;
 
-/** The "Clean Round" badge — 11-13 no-hint recognition, cosmetic only. */
+/** The "Clean Round" badge — 10-18 / 18+ no-hint recognition, cosmetic only. */
 export const CLEAN_ROUND_BADGE_ID = "clean-round";
 
 /** A cosmetic badge definition. Band-invisible: no age numbers, no easy/hard. */
@@ -127,8 +127,9 @@ export interface CleanRoundSummary {
 }
 
 /**
- * Clean Round: for 11-13 no-hint WINS only (11-13 has no hint button, so a
- * zero-hint win is recognisable). Cosmetic ONLY — never points, never
+ * Clean Round: for 10-18 and 18+ no-hint WINS only (18+ has hint policy
+ * "none"; 10-18 gets one hint per round, so a zero-hint win is a real choice).
+ * Former "11-13" deal snapshots are normalised by the caller to 10-18. Cosmetic ONLY — never points, never
  * scoring. The badge copy is band-invisible: nothing tells the child which
  * band earned it.
  *
@@ -136,7 +137,7 @@ export interface CleanRoundSummary {
  */
 export function awardCleanRoundBadge(summary: CleanRoundSummary): PassportBadge | null {
   if (!summary.won) return null;
-  if (summary.band !== "11-13") return null;
+  if (summary.band !== "10-18" && summary.band !== "18+") return null;
   if (summary.hintsUsed > 0) return null;
   // #113 BLOCK: the reveal panel must fire ONCE at earn, not on every
   // subsequent qualifying win. awardPassportBadge is storage-idempotent but

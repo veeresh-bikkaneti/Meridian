@@ -44,9 +44,9 @@ const CASES = JSON.parse(
 const CASE1 = CASES[0]!;
 
 const EYEBROWS: Record<string, string> = {
-  "5-7": "🐶 Cold Trail · Puppy Search",
-  "8-10": "🗺️ Cold Trail · Map Mystery",
-  "11-13": "🕵️ Cold Trail · Case file",
+  "7-10": "🗺️ Cold Trail · Map Mystery",
+  "10-18": "🕵️ Cold Trail · Case file",
+  "18+": "🕵️ Cold Trail · Case file",
 };
 
 async function seedBand(context: BrowserContext, band: string) {
@@ -58,7 +58,7 @@ async function seedBand(context: BrowserContext, band: string) {
         band: b,
         updatedAt: new Date().toISOString(),
         changeCount: 0,
-        schemaVersion: 1,
+        schemaVersion: 2,
       }),
     );
   }, band);
@@ -305,7 +305,7 @@ test.describe("WI-13 layout", () => {
 
 /* ---------------- Per-band walkthroughs: E3 shots + E4 transcripts ------- */
 
-for (const band of ["5-7", "8-10", "11-13"]) {
+for (const band of ["7-10", "10-18", "18+"]) {
   for (const outcome of ["win", "far-miss"] as const) {
     test(`band ${band} ${outcome}: walkthrough + transcript`, async ({ context, page }) => {
       test.setTimeout(300_000);
@@ -362,9 +362,6 @@ for (const band of ["5-7", "8-10", "11-13"]) {
       } else {
         await reveal.scrollIntoViewIfNeeded();
         await page.screenshot({ path: path.join(BAND_DIR, `${band}-reveal-far-miss.png`) });
-        if (band === "5-7") {
-          await page.screenshot({ path: path.join(BAND_DIR, `5-7-far-miss-reveal-extra.png`) });
-        }
       }
       writeFileSync(path.join(LOG_DIR, `wi13-transcript-${band}-${outcome}.txt`), transcript.join("\n\n"));
     });

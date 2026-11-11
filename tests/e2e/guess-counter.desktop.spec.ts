@@ -23,7 +23,7 @@ import { serveBuiltArtifact } from "./helpers";
  * the store. The rendered cap comes from the puzzle's deal snapshot
  * (dealStartClues / dealMaxGuesses → persistedDealConfig in
  * LoopScreen.tsx), so each seed stamps the snapshot it asserts
- * against: cap 6 for the loss (an 8-10 deal), cap 5 for the win.
+ * against: cap 6 for the loss (a 7-10 deal), cap 5 for the win.
  */
 
 const BASE = "http://127.0.0.1:4123/Meridian/";
