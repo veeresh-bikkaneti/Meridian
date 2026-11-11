@@ -826,8 +826,10 @@ function speakSelection(
 }
 
 /** Watson is mid-question. The pick wins the voice: his read stops,
- * Holmes names the place and acknowledges, and the opening continues
- * with the next starting clue only after that line drains. */
+ * Holmes names the place and acknowledges. The next opening clue waits
+ * until this pin is confirmed, or until the sheet is dismissed and this
+ * line has drained — never while the sheet is still open, or the
+ * confirm would cut the new clue and say beat-me a second time. */
 function cutWatsonRead(
   state: DetectiveState,
   placeId: string,
@@ -976,6 +978,22 @@ export function transition(
       // a completed selection read (selectionReadDone), only when a next
       // clue can exist, and only once — a sheet cycle during ordinary
       // searching (e.g. a cancelled pick) never fires it.
+      // A pick cut the opening and the sheet is going away without a
+      // guess. The line has already drained (readingStep is no longer
+      // "cut"); continue with the next starting card. While the line
+      // is still playing, speechEnded does this once the sheet is shut.
+      if (
+        (closed.phase === "SEARCH_IDLE" || closed.phase === "SEARCH_AREA") &&
+        closed.readingStep !== "cut" &&
+        closed.selectionReadKind === "post-pick" &&
+        closed.openTarget > closed.clueIndex &&
+        closed.clueIndex >= 1 &&
+        closed.pendingClue === null &&
+        closed.pendingGuessConfirm === null &&
+        closed.pendingEnd === null
+      ) {
+        return startClue(closed, closed.clueIndex + 1, true);
+      }
       if (
         closed.phase === "SEARCH_IDLE" &&
         closed.selectionReadDone &&
@@ -1223,11 +1241,13 @@ export function transition(
         !state.selectionReadInFlight &&
         state.pendingSelection === null
       ) {
-        // Watson's question was cut for this pick. After Holmes names
-        // the place, the next starting clue opens — one card, not the
-        // rest of the deal.
+        // Watson's question was cut for this pick. The next starting
+        // card opens only once the sheet is gone. While it is open the
+        // confirm of this same pin must not land in READING, or it
+        // would say beat-me, the name, and an ack again.
         if (
           state.readingStep === "cut" &&
+          !state.sheetOpen &&
           state.openTarget > state.clueIndex &&
           state.clueIndex >= 1
         ) {
