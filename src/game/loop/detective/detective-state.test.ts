@@ -1159,6 +1159,60 @@ test("pick after Watson has finished the clue: no beat-me on the pick or the con
   assert.equal(beatCaptions.length, 0);
 });
 
+test("a cut pick that finishes under the open sheet says beat-me once; the confirm does not say it again", () => {
+  const steps = run([
+    { type: "caseOpened", freshDeal: true, intro: false, openTarget: 3 },
+    { type: "clueUnlocked", clueIndex: 1 },
+    { type: "sheetOpened" },
+    { type: "selectionNamed", placeId: "geonames:42" },
+    { type: "speechEnded" },
+  ]);
+  const drained = last(steps);
+  assert.equal(drained.phase, "SEARCH_IDLE");
+  assert.equal(drained.state.clueIndex, 1);
+  assert.equal(presented(steps).includes(2), false);
+  const confirmed = last(
+    run([{ type: "guessConfirmed", placeId: "geonames:42" }], drained.state),
+  );
+  const spoken = allSpeakIds([...steps, confirmed]);
+  assert.equal(spoken.filter((id) => id === "fixed:beat-me").length, 1);
+  assert.equal(spoken.filter((id) => id === "name:geonames:42").length, 1);
+  assert.equal(spoken.filter((id) => id.startsWith("fixed:ack-")).length, 1);
+  assert.equal(spoken.includes("fixed:suspicion"), false);
+  assert.equal(confirmed.state.openTarget, 3);
+  assert.deepEqual(speakIds(confirmed.effects), []);
+  const next = last(run([{ type: "speechEnded" }], confirmed.state));
+  assert.equal(next.state.clueIndex, 2);
+  assert.equal(next.phase, "READING");
+  assert.ok(speakIds(next.effects).includes("clue:2"));
+});
+
+test("dismissing a cut pick continues the opening, after the pin's line has drained", () => {
+  const held = run([
+    { type: "caseOpened", freshDeal: true, intro: false, openTarget: 3 },
+    { type: "clueUnlocked", clueIndex: 1 },
+    { type: "sheetOpened" },
+    { type: "selectionNamed", placeId: "geonames:42" },
+    { type: "sheetClosed" },
+  ]);
+  assert.equal(last(held).state.clueIndex, 1);
+  const afterLine = last(run([{ type: "speechEnded" }], last(held).state));
+  assert.equal(afterLine.state.clueIndex, 2);
+  assert.ok(speakIds(afterLine.effects).includes("clue:2"));
+
+  const drainedFirst = run([
+    { type: "caseOpened", freshDeal: true, intro: false, openTarget: 3 },
+    { type: "clueUnlocked", clueIndex: 1 },
+    { type: "sheetOpened" },
+    { type: "selectionNamed", placeId: "geonames:42" },
+    { type: "speechEnded" },
+    { type: "sheetClosed" },
+  ]);
+  assert.equal(last(drainedFirst).state.clueIndex, 2);
+  assert.equal(last(drainedFirst).phase, "READING");
+  assert.equal(allSpeakIds(drainedFirst).filter((id) => id === "fixed:beat-me").length, 1);
+});
+
 test("early guess during the opening leaves openTarget and the next clue still starts", () => {
   const steps = run([
     { type: "caseOpened", freshDeal: true, intro: false, openTarget: 3 },
