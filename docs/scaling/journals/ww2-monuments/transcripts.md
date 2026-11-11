@@ -8,13 +8,20 @@ No on-screen text in the movie (journal movie recipe).
 
 Clip:
 
-People are remembered at this quiet place above the beach.
-The year is nineteen fifty-six. How many years ago is that?
+Hey kids, have you heard about this place?
+Above the beach, it was dedicated in nineteen fifty-six.
+How many years ago?
 
 Host explain, after the answer:
 
-This place is in France, in Colleville-sur-Mer. Take nineteen fifty-six away
-from this year. That is how many years ago.
+This place is in France, in Colleville-sur-Mer. A cemetery is a place where
+people are remembered.
+Take nineteen fifty-six away from this year. That is how many years ago.
+
+Question card (on screen and read aloud), with the year filled in at play time:
+
+This year is {currentYear}. How many years ago was this place dedicated in
+nineteen fifty-six?
 
 Hint on a miss:
 
@@ -28,8 +35,9 @@ How many tens are in that year gap, and how many years are left over?
 
 Clip:
 
-This white memorial in Hawaii is one hundred eighty-four feet long.
-How many steps of ten feet is that?
+Hey kids, have you heard about this place?
+This Hawaii memorial is one hundred eighty-four feet long.
+How many ten-foot steps is that?
 
 Host explain, after the answer:
 

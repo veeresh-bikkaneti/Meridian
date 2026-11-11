@@ -66,7 +66,7 @@ test("groups, codes, and answers stay inside the rules", () => {
   assert.equal(arizona.group, "10-18");
   assert.equal(normandy.standard, "D2.Geo.1.3-5");
   assert.equal(arizona.standard, "D2.Geo.1.6-8");
-  assert.equal(normandy.retrieval.answer, "labeledYear - 1956");
+  assert.equal(normandy.retrieval.answer, "currentYear - 1956");
   assert.equal(arizona.retrieval.answer, "18 steps, with 4 feet left");
   assert.equal(184, 18 * 10 + 4);
   assert.equal(184, 23 * 8);
@@ -81,4 +81,57 @@ test("stage B media is not in this folder", () => {
   const names = fs.readdirSync(here);
   assert.equal(names.some((n) => n.endsWith(".mp4")), false);
   assert.equal(names.includes("manifest.json"), false);
+});
+
+const OPENER = "Hey kids, have you heard about this place?";
+
+function cueText(vtt) {
+  return vtt
+    .split(/\r?\n/)
+    .filter((l) => l && l !== "WEBVTT" && !l.includes("-->"))
+    .join(" ");
+}
+
+function clipSpeech(id) {
+  const md = fs.readFileSync(path.join(here, "transcripts.md"), "utf8");
+  const section = md.split(`## ${id} `)[1];
+  assert.ok(section, `${id} missing from transcripts.md`);
+  return section.split("Clip:")[1].split(/\n\s*\n/).filter(Boolean)[0].replace(/\s+/g, " ").trim();
+}
+
+test("every clip opens with the owner's line and stays near 20 words", () => {
+  for (const clip of clips) {
+    const vtt = cueText(fs.readFileSync(path.join(here, clip.captions), "utf8"));
+    const speech = clipSpeech(clip.id);
+    for (const text of [vtt, speech]) {
+      assert.ok(text.startsWith(OPENER), `${clip.id}: "${text}"`);
+      const words = text.match(/[A-Za-z0-9'-]+/g).length;
+      assert.ok(words >= 16 && words <= 24, `${clip.id}: ${words} words`);
+    }
+    assert.equal(vtt, speech, `${clip.id}: captions and transcript differ`);
+  }
+});
+
+// Owner rule: a year gap is currentYear - <year>, computed at play time.
+// An answer may name a sourced event year only as "currentYear - <year>".
+// Any other four-digit year (such as 2026) is a stored total and fails.
+function literalYears(text) {
+  return [...String(text).replace(/currentYear\s*-\s*\d{4}/g, "").matchAll(/\b(1[0-9]{3}|2[0-9]{3})\b/g)].map((m) => m[1]);
+}
+
+test("no answer holds a literal year", () => {
+  for (const clip of clips) {
+    for (const answer of [clip.retrieval.answer, clip.stretch.answer]) {
+      assert.deepEqual(literalYears(answer), [], `${clip.id}: literal year in "${answer}"`);
+    }
+  }
+  assert.deepEqual(literalYears("2026 - 1956"), ["2026", "1956"], "self-check");
+  assert.deepEqual(literalYears("currentYear - 1956"), [], "self-check");
+});
+
+test("the year-gap question card shows the year the game counts to", () => {
+  for (const clip of clips) {
+    if (!/currentYear/.test(clip.retrieval.answer)) continue;
+    assert.match(clip.retrieval.question, /\{currentYear\}/, clip.id);
+  }
 });

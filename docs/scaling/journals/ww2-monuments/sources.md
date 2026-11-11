@@ -6,8 +6,8 @@ across pages are listed so they are not taught.
 | id | Fact | Source | In a clip? |
 |---|---|---|---|
 | normandy-place-name | Normandy American Cemetery, Colleville-sur-Mer, France | https://www.abmc.gov/normandy | Pin and host line |
-| normandy-dedicated-1956 | Dedicated 1956 | same page, "Dedicated 1956" | Clip year. Stretch uses this id. |
-| normandy-above-beach | An orientation table overlooking the beach | same page | Gloss "above the beach" |
+| normandy-dedicated-1956 | Dedicated 1956 | same page, heading block "Colleville-sur-Mer, France Dedicated 1956". Re-fetched 2026-11-10; it agrees with the clip. | Clip says "dedicated in nineteen fifty-six". Stretch uses this id. |
+| normandy-above-beach | "An orientation table overlooking the beach…" | same page | Gloss "above the beach" in the clip |
 | normandy-acres | 172.5 acres | same page | No |
 | normandy-half-mile-road | half mile access road | same page | No |
 | normandy-burials-9389 | Burials 9389. The same page also says "almost 9,400". An older snippet said 9,380. | same page | No. Do not teach a burial count. |
@@ -20,5 +20,13 @@ across pages are listed so they are not taught.
 | arizona-1102-not-used | 1,102 | Not on the NPS page fetched this date | No. Do not teach. |
 | arizona-pin | 21.364817, -157.949918 | OpenStreetMap Nominatim memorial node 14133830914 | Pin |
 
-`labeledYear` is the year the game prints that day. It is not a site fact.
-The Normandy stretch divides (labeledYear − 1956) by 10.
+`currentYear` is the calendar year on the player's device at play time. The
+question card prints it ("This year is {currentYear}."). It is not a site fact
+and no file stores a total. The Normandy stretch divides (currentYear − 1956) by 10.
+
+## Cut for lack of a source (2026-11-10)
+
+| Word | Was in | Check | Result |
+|---|---|---|---|
+| "quiet" (Normandy) | clip, captions, `why` | Not on https://www.abmc.gov/normandy, fetched 2026-11-10 (no "quiet", "peaceful", "tranquil", "serene"). | Cut everywhere. |
+| "white" (Arizona) | clip, captions | Not on https://www.nps.gov/places/uss-arizona-memorial.htm, fetched 2026-11-10. Two other NPS URLs tried returned 404. | Cut everywhere. |

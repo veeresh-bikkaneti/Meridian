@@ -7,7 +7,7 @@
 - **Contract:** I5 in `docs/scaling/contracts.md`, including the optional `stretch` for an older group. Rows: `docs/scaling/journals/ww2-monuments/clips.json`. Fact ids: `docs/scaling/journals/ww2-monuments/sources.md`.
 - **Standard:** cite `docs/scaling/k12-learning-design-standard.md` by section. Do not copy it.
 
-Both kept places are quiet places of remembrance. The clip teaches a math question a child can check. It does not replay a battle.
+Both kept places are places of remembrance. The clip teaches a math question a child can check. It does not replay a battle.
 
 ## What changed from the previous draft
 
@@ -17,10 +17,10 @@ The previous draft on this branch led with rows of white crosses, D-Day landings
 
 | id | group | opens with | scored check |
 |---|---|---|---|
-| `ww2-monuments:normandy-where` | 7-10 | how many years ago, and where | `labeledYear - 1956` |
+| `ww2-monuments:normandy-where` | 7-10 | how many years ago, and where | `currentYear - 1956` |
 | `ww2-monuments:arizona-how-far` | 10-18 | how far, and where | 18 steps of 10 feet, 4 feet left |
 
-`labeledYear` is the calendar year the game shows on that day. The spec does not store a fixed gap. Example only, not a fact: if the label is 2026, then 2026 − 1956 = 70. 184 = 18 × 10 + 4.
+`currentYear` is the calendar year on the player's device at play time (owner rule, 2026-11-10). No file stores a fixed gap. The question card prints the year the game counts to: "This year is {currentYear}." The player fills the token at play time. Example only, not a fact: in 2026 the card reads "This year is 2026" and the answer is 2026 − 1956 = 70. `clips.test.mjs` fails if any answer holds a literal year. 184 = 18 × 10 + 4.
 
 18+ is not a third movie. It is the I5 `stretch` on the same clip (contract, 2026-11-10). The stretch group is older than the clip's group. Eight feet is a problem unit, not a site fact. The Normandy stretch uses fact `normandy-dedicated-1956`. The Arizona stretch uses fact `arizona-length-feet`.
 
@@ -42,13 +42,14 @@ Machine-checked by `docs/scaling/journals/ww2-monuments/clips.test.mjs`.
 
 - **id:** `ww2-monuments:normandy-where`
 - **group:** 7-10
-- **objective:** After this, a child in the 7-10 group can compute how many years ago nineteen fifty-six was, shown by a year-difference equal to the labeled year minus 1956.
+- **objective:** After this, a child in the 7-10 group can compute how many years ago nineteen fifty-six was, shown by a year-difference equal to the current year minus 1956.
 - **standard:** `D2.Geo.1.3-5` (partial fit, below). Math code: UNVERIFIED.
-- **why:** How many years ago was this quiet place above the beach dedicated, and where is it?
+- **why:** How many years ago was this place above the beach dedicated, and where is it?
 - **place:** 49.358627, −0.854686 — Normandy American Cemetery, Colleville-sur-Mer, France
 - **file (not made):** `public/videos/journals/ww2-monuments/normandy-where.mp4`
 - **captions:** `docs/scaling/journals/ww2-monuments/normandy-where.vtt`
-- **retrieval (read aloud):** "How many years ago was this place dedicated?" Answer rule: `labeledYear - 1956`. Tap choices, never free text. Distractors: the true gap plus 10, the true gap minus 10, and the true gap plus 1. No timer.
+- **clip opens with:** "Hey kids, have you heard about this place?" Then "Above the beach, it was dedicated in nineteen fifty-six. How many years ago?" (21 words.)
+- **retrieval (read aloud):** "This year is {currentYear}. How many years ago was this place dedicated in nineteen fifty-six?" The card shows the filled-in year. Answer rule: `currentYear - 1956`. Tap choices, never free text. Distractors: the true gap plus 10, the true gap minus 10, and the true gap plus 1. No timer.
 
 ### 2. USS Arizona Memorial
 
@@ -60,6 +61,7 @@ Machine-checked by `docs/scaling/journals/ww2-monuments/clips.test.mjs`.
 - **place:** 21.364817, −157.949918 — USS Arizona Memorial, Pearl Harbor, Hawaiʻi
 - **file (not made):** `public/videos/journals/ww2-monuments/arizona-how-far.mp4`
 - **captions:** `docs/scaling/journals/ww2-monuments/arizona-how-far.vtt`
+- **clip opens with:** "Hey kids, have you heard about this place?" Then "This Hawaii memorial is one hundred eighty-four feet long. How many ten-foot steps is that?" (23 words.)
 - **retrieval (read aloud):** "How many steps of ten feet is one hundred eighty-four feet, and what is left over?" Answer: "18 steps, with 4 feet left." Ten feet is the problem's step, not a claim about how visitors walk.
 
 ## Sources (accessed 2026-11-10)
@@ -110,7 +112,7 @@ Same place and the same fact on every tier. Beauty changes. The question does no
 Art for Stage B, if the gate opens: in-house storybook frames from the spoken facts. Not a download of ABMC or NPS photos.
 
 - Normandy frame: cliff, grass, a path, the beach below. No marker shapes, no crosses, no stars, no chapel, no flags, no boats, no soldiers.
-- Arizona frame: a white span over blue water. No hull, no wreck, no smoke, no explosion.
+- Arizona frame: a long span over blue water. No hull, no wreck, no smoke, no explosion.
 
 ## Bridge and use-it-elsewhere (standard §0)
 
@@ -139,7 +141,8 @@ Cut, and why:
 | D-Day landings, boats, guns, soldiers, explosions, the hull of the ship | Battle re-enactment and graphic aftermath. Out. |
 | Naming an attacking country, victory, defeat, presidents, Congress | Praising or blaming a nation, or a political story. Out. |
 | Burial counts, "over 900", 1,177, 1,102, "killed", "dead" | Not needed for the question. Counts also disagree across ABMC pages. Death arithmetic is the wrong tone. |
-| "70 years ago" as a site fact | Not on the ABMC page. The gap is computed from the labeled year. |
+| "70 years ago" as a site fact | Not on the ABMC page. The gap is computed from the current year at play time. |
+| "quiet" (Normandy), "white" (Arizona) | Not on the ABMC or NPS pages fetched 2026-11-10. Never narrate an unsourced fact. Logged in `sources.md`. |
 | Flags, the statue "Spirit of American Youth", visitor-center cost | Not needed, and easy to turn into praise. Out. |
 | A trigonometry item | No sourced angle. Inventing one is forbidden. |
 
@@ -153,7 +156,7 @@ When both are true, produce clips with `docs/journal-movies.md` into `public/vid
 
 Recipe tensions to confirm before any render, not resolved here:
 
-1. The 106-movie recipe opens "Hey kids, have you heard about this place?" A 10-second learning clip cannot fit that and the question. These drafts open with the question (standard §0). Owner's call.
+1. Resolved by the owner, 2026-11-10: every clip opens "Hey kids, have you heard about this place?" The question follows in the same clip. Each clip is about 20 words (21 and 23). Check the read-aloud fits about 9.5 seconds at render time; if not, trim words rather than speed up the voice.
 2. Voice, 1152×768, 24 fps, h264 + AAC, bed at 30%, limiter −1 dB: follow the recipe. No vendor names in this spec.
 3. The old draft's v3-versus-v4 listen question is still open. Do not treat it as answered.
 

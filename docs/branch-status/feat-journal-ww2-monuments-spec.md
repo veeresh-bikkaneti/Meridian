@@ -22,12 +22,25 @@ remembrance. No graphic detail. No battle re-enactment. Proposed count: 2.
 - [x] Captions, transcripts, Full / Lite / Flat pin, §9 block, unsigned educator block.
 - [x] `node --test docs/scaling/journals/ww2-monuments/clips.test.mjs` — run this session.
 - [x] No code gates. No `src/` edits. No mp4. No `manifest.json`.
+- [x] Owner fixes, 2026-11-10 (PR 410), after merging `origin/main`:
+      1. Both clips, both `.vtt` files and `transcripts.md` open with "Hey kids,
+         have you heard about this place?" Normandy 21 words, Arizona 23.
+      2. Normandy says "dedicated in nineteen fifty-six". ABMC page re-fetched
+         2026-11-10 reads "Dedicated 1956"; it agrees.
+      3. "quiet" and "white" had no source on the ABMC or NPS pages fetched
+         2026-11-10. Cut, and logged in `sources.md`.
+      4. `labeledYear` renamed `currentYear` (play time). The question card
+         reads "This year is {currentYear}." New checks in `clips.test.mjs`:
+         opener and word count, no literal year in any answer, year shown on
+         the card. A planted `2026 - 1956` answer failed the check; plant removed.
+      `node --test docs/scaling/journals/ww2-monuments/clips.test.mjs`: 6/6 pass.
 
 ## Open
 
 - [ ] Educator sign-off. Nobody named. No agent may sign.
 - [ ] Owner lifts the build gate. Until then, no movies.
-- [ ] Owner: "Hey kids…" opener versus the why-first question in a 10-second clip.
+- [ ] Render-time check: the 21 and 23 word clips must fit about 9.5 s. Trim, do not speed up.
+- [ ] Integrator, at Stage B: the journal player must fill `{currentYear}` in the retrieval question from the device clock.
 - [ ] Owner: v3-versus-v4 listen verdict, carried forward, not answered here.
 - [ ] Both places are US sites. A non-US monument would change the count of 2.
 - [ ] C3 codes are a partial fit (the scored check is arithmetic). Math codes UNVERIFIED.
