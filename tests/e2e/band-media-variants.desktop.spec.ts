@@ -7,10 +7,10 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  *
  * The home page picks two of its five card films by age band,
  * through the pure selectors in src/assets/home-v5/card-media.ts:
- * Little Explorer ("5-7") gets the softer Cold Trail film, Trail
- * Scout ("8-10") gets the regenerated Review film, and every
- * other band — including an unset profile, which resolves to
- * "11-13" — gets the standard films.
+ * the "7-10" group gets the regenerated Trail Scout Review film, and
+ * every other group ("10-18", "18+", an unset profile, which resolves
+ * to "10-18") gets the standard films. The softer Little Explorer
+ * Cold Trail film (former "5-7") is no longer selected for anyone.
  *
  * Per-band lazy loading is the point under test, so each case
  * watches the network: the band's own variant .mp4 must be
@@ -42,9 +42,13 @@ async function setupContext(context: BrowserContext) {
   });
 }
 
-async function seedBand(context: BrowserContext, band: "5-7" | "8-10" | "11-13") {
+async function seedBand(
+  context: BrowserContext,
+  band: "7-10" | "10-18" | "18+" | "5-7",
+  schemaVersion: 1 | 2 = 2,
+) {
   await context.addInitScript(
-    ({ key, b }) => {
+    ({ key, b, v }) => {
       window.localStorage.setItem(
         key,
         JSON.stringify({
@@ -52,11 +56,11 @@ async function seedBand(context: BrowserContext, band: "5-7" | "8-10" | "11-13")
           band: b,
           updatedAt: new Date().toISOString(),
           changeCount: 0,
-          schemaVersion: 1,
+          schemaVersion: v,
         }),
       );
     },
-    { key: PROFILE_KEY, b: band },
+    { key: PROFILE_KEY, b: band, v: schemaVersion },
   );
 }
 
@@ -89,32 +93,11 @@ test.beforeEach(async ({ context }) => {
   await setupContext(context);
 });
 
-test("5-7 (Little Explorer): Cold Trail fetches the LE variant, never the standard; Review stays standard", async ({
+test("7-10 (Trail Scout): Review fetches the TS variant, never the standard; Cold Trail stays standard", async ({
   context,
   page,
 }) => {
-  await seedBand(context, "5-7");
-  const mp4s = watchMp4s(context);
-  await page.goto(APP_NO_IDLE);
-  await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
-
-  const ctSrc = await mountFilm(page, "card-film-coldtrail");
-  expect(ctSrc).toContain("coldtrail-film-little-explorer");
-  const rvSrc = await mountFilm(page, "card-film-review");
-  expect(rvSrc).toContain("review-film");
-  expect(rvSrc).not.toContain("trail-scout");
-
-  await expect.poll(() => mp4s.some(isLeColdtrail), { timeout: 10_000 }).toBe(true);
-  await expect.poll(() => mp4s.some(isStdReview), { timeout: 10_000 }).toBe(true);
-  expect(mp4s.filter(isStdColdtrail), "standard Cold Trail must never be fetched for 5-7").toEqual([]);
-  expect(mp4s.filter(isTsReview), "Trail Scout Review must never be fetched for 5-7").toEqual([]);
-});
-
-test("8-10 (Trail Scout): Review fetches the TS variant, never the standard; Cold Trail stays standard", async ({
-  context,
-  page,
-}) => {
-  await seedBand(context, "8-10");
+  await seedBand(context, "7-10");
   const mp4s = watchMp4s(context);
   await page.goto(APP_NO_IDLE);
   await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
@@ -127,12 +110,12 @@ test("8-10 (Trail Scout): Review fetches the TS variant, never the standard; Col
 
   await expect.poll(() => mp4s.some(isTsReview), { timeout: 10_000 }).toBe(true);
   await expect.poll(() => mp4s.some(isStdColdtrail), { timeout: 10_000 }).toBe(true);
-  expect(mp4s.filter(isLeColdtrail), "LE Cold Trail must never be fetched for 8-10").toEqual([]);
-  expect(mp4s.filter(isStdReview), "standard Review must never be fetched for 8-10").toEqual([]);
+  expect(mp4s.filter(isLeColdtrail), "LE Cold Trail must never be fetched for 7-10").toEqual([]);
+  expect(mp4s.filter(isStdReview), "standard Review must never be fetched for 7-10").toEqual([]);
 });
 
-test("11-13: neither variant is fetched; both standard films load", async ({ context, page }) => {
-  await seedBand(context, "11-13");
+test("10-18: neither variant is fetched; both standard films load", async ({ context, page }) => {
+  await seedBand(context, "10-18");
   const mp4s = watchMp4s(context);
   await page.goto(APP_NO_IDLE);
   await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
@@ -144,11 +127,46 @@ test("11-13: neither variant is fetched; both standard films load", async ({ con
 
   await expect.poll(() => mp4s.some(isStdColdtrail), { timeout: 10_000 }).toBe(true);
   await expect.poll(() => mp4s.some(isStdReview), { timeout: 10_000 }).toBe(true);
-  expect(mp4s.filter(isLeColdtrail), "LE variant must never be fetched for 11-13").toEqual([]);
-  expect(mp4s.filter(isTsReview), "TS variant must never be fetched for 11-13").toEqual([]);
+  expect(mp4s.filter(isLeColdtrail), "LE variant must never be fetched for 10-18").toEqual([]);
+  expect(mp4s.filter(isTsReview), "TS variant must never be fetched for 10-18").toEqual([]);
 });
 
-test("unset profile (resolves to 11-13): neither variant is fetched; both standard films load", async ({
+test("18+: neither variant is fetched; both standard films load", async ({ context, page }) => {
+  await seedBand(context, "18+");
+  const mp4s = watchMp4s(context);
+  await page.goto(APP_NO_IDLE);
+  await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
+
+  const ctSrc = await mountFilm(page, "card-film-coldtrail");
+  expect(ctSrc).not.toContain("little-explorer");
+  const rvSrc = await mountFilm(page, "card-film-review");
+  expect(rvSrc).not.toContain("trail-scout");
+
+  await expect.poll(() => mp4s.some(isStdColdtrail), { timeout: 10_000 }).toBe(true);
+  await expect.poll(() => mp4s.some(isStdReview), { timeout: 10_000 }).toBe(true);
+  expect(mp4s.filter(isLeColdtrail), "LE variant must never be fetched for 18+").toEqual([]);
+  expect(mp4s.filter(isTsReview), "TS variant must never be fetched for 18+").toEqual([]);
+});
+
+test("legacy schema-1 \"5-7\" profile migrates to 7-10: Trail Scout Review, standard Cold Trail", async ({
+  context,
+  page,
+}) => {
+  await seedBand(context, "5-7", 1);
+  const mp4s = watchMp4s(context);
+  await page.goto(APP_NO_IDLE);
+  await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
+
+  const ctSrc = await mountFilm(page, "card-film-coldtrail");
+  expect(ctSrc).not.toContain("little-explorer");
+  const rvSrc = await mountFilm(page, "card-film-review");
+  expect(rvSrc).toContain("review-film-trail-scout");
+
+  await expect.poll(() => mp4s.some(isTsReview), { timeout: 10_000 }).toBe(true);
+  expect(mp4s.filter(isLeColdtrail), "LE Cold Trail must never be fetched").toEqual([]);
+});
+
+test("unset profile (resolves to 10-18): neither variant is fetched; both standard films load", async ({
   context,
   page,
 }) => {

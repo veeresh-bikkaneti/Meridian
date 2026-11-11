@@ -4,8 +4,8 @@ import { serveBuiltArtifact, startGlobeRun, commitHit } from "./helpers";
 /**
  * Read-aloud "Always" E2E (owner 2026-10-09: honor "Always" across ALL bands).
  *
- * The old code gated auto-play on `mode === "auto"` (5-7 only), so a kid who
- * chose "Always" on 8-10/11-13 never heard anything — a broken promise.
+ * The old code gated auto-play on `mode === "auto"` (former 5-7 only), so a kid who
+ * chose "Always" on 7-10/10-18 never heard anything — a broken promise.
  * Fixed: "always" auto-plays on every card in every band when sound is on;
  * the sound toggle is the only off switch (it cancels speechSynthesis).
  *
@@ -43,7 +43,7 @@ test.beforeEach(async ({ context }) => {
 
 async function seedProfileAndPref(
   context: import("playwright/test").BrowserContext,
-  band: "5-7" | "8-10" | "11-13",
+  band: "7-10" | "10-18" | "18+",
   pref: "always" | "sometimes" | "never",
 ) {
   await context.addInitScript(
@@ -55,7 +55,7 @@ async function seedProfileAndPref(
           band: b,
           updatedAt: new Date().toISOString(),
           changeCount: 0,
-          schemaVersion: 1,
+          schemaVersion: 2,
         }),
       );
       window.localStorage.setItem(
@@ -89,24 +89,24 @@ async function revealCard(page: import("playwright/test").Page) {
   ).toBeVisible({ timeout: 20_000 });
 }
 
-test("Always on 11-13: auto-play is attempted on card reveal", async ({
+test("Always on 10-18: auto-play is attempted on card reveal", async ({
   page,
   context,
 }) => {
-  await seedProfileAndPref(context, "11-13", "always");
+  await seedProfileAndPref(context, "10-18", "always");
   await page.setViewportSize({ width: 1440, height: 900 });
   await revealCard(page);
-  // The broken promise: 11-13 (mode "off") never attempted speak before.
+  // The broken promise: 10-18 (mode "off") never attempted speak before.
   await expect
     .poll(async () => (await speechCalls(page)).speak, { timeout: 10_000 })
     .toBeGreaterThan(0);
 });
 
-test("Always on 8-10: auto-play is attempted on card reveal", async ({
+test("Always on 7-10: auto-play is attempted on card reveal", async ({
   page,
   context,
 }) => {
-  await seedProfileAndPref(context, "8-10", "always");
+  await seedProfileAndPref(context, "7-10", "always");
   await page.setViewportSize({ width: 1440, height: 900 });
   await revealCard(page);
   await expect
@@ -118,7 +118,7 @@ test("Mute toggle cancels in-progress narration (the only off switch)", async ({
   page,
   context,
 }) => {
-  await seedProfileAndPref(context, "11-13", "always");
+  await seedProfileAndPref(context, "10-18", "always");
   await page.setViewportSize({ width: 1440, height: 900 });
   await revealCard(page);
   await expect
@@ -138,11 +138,11 @@ test("Mute toggle cancels in-progress narration (the only off switch)", async ({
     .toBeGreaterThan(0);
 });
 
-test("Sometimes on 11-13: no auto-play (tap-to-play only)", async ({
+test("Sometimes on 10-18: no auto-play (tap-to-play only)", async ({
   page,
   context,
 }) => {
-  await seedProfileAndPref(context, "11-13", "sometimes");
+  await seedProfileAndPref(context, "10-18", "sometimes");
   await page.setViewportSize({ width: 1440, height: 900 });
   await revealCard(page);
   // Give any would-be autoplay a chance to fire, then assert silence.

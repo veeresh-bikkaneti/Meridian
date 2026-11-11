@@ -19,7 +19,7 @@ export type Starter = {
   storyRung?: StoryRung;
   /**
    * Read-aloud should auto-play when this card is revealed (true for the
-   * 5-7 band). Set by the age-profile rung mapper at card compose time.
+   * former 5-7 band). Set by the age-profile rung mapper at card compose time.
    */
   audioAutoplay?: boolean;
   /**

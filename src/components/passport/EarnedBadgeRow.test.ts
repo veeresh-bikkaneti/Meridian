@@ -98,7 +98,7 @@ test("chip is band-invisible: no ages, no easy/hard language", () => {
   clearStorage();
   awardPassportBadge(CLEAN_ROUND_BADGE_ID);
   const html = render();
-  assert.ok(!/11-13|8-10|5-7/.test(html), "no age numbers");
+  assert.ok(!/18\+|10-18|7-10|11-13|8-10|5-7/.test(html), "no age numbers");
   assert.ok(!/easy|hard/i.test(html), "no easy/hard language");
 });
 

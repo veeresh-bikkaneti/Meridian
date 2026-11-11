@@ -19,21 +19,21 @@ import type { AgeBandId } from "./types.ts";
 import { AGE_BANDS, AGE_BAND_IDS, FULL_ACCESS_BAND } from "./bands.ts";
 
 /**
- * Hint policy per band (follow-up Item A §hintPolicy).
- * - "free": hint button always free (5-7).
- * - "one-per-round": 1 hint/round, button disables after use (8-10).
- * - "none": no hint button at all (11-13).
+ * Hint policy per band (follow-up Item A §hintPolicy; owner 2026-11-10).
+ * - "free": hint button always free (7-10).
+ * - "one-per-round": 1 hint/round, button disables after use (10-18).
+ * - "none": no hint button at all (18+).
  */
 export type HintPolicy = "free" | "one-per-round" | "none";
 
 /**
  * The hint policy for each EXPLICITLY chosen band. The no-profile
- * default is not this table's 11-13 row — see DEFAULT_HINT_POLICY.
+ * default is not read from this table — see DEFAULT_HINT_POLICY.
  */
 const HINT_POLICIES: Record<AgeBandId, HintPolicy> = {
-  "5-7": "free",
-  "8-10": "one-per-round",
-  "11-13": "none",
+  "7-10": "free",
+  "10-18": "one-per-round",
+  "18+": "none",
 };
 
 /**
@@ -41,36 +41,45 @@ const HINT_POLICIES: Record<AgeBandId, HintPolicy> = {
  *
  * Why this exists: the game never checks the player's age — the band
  * comes from a parent-set profile, and most players never set one.
- * Resolving "no profile" through the 11-13 row above silently gave
- * every one of those players the no-hints policy, so the hint bulb
- * never appeared for them. Owner, 2026-10-20: "we dont check the age
- * of the player, so we need the hints on by default" — "Change the
- * default so everyone gets the hint bulb".
+ * Resolving "no profile" through an explicit no-hints row silently hid
+ * the hint bulb. Owner, 2026-10-20: "we dont check the age of the
+ * player, so we need the hints on by default" — "Change the default so
+ * everyone gets the hint bulb".
  *
  * The default is the middle policy: the bulb shows, one hint per
- * place, and the 5-7 mascot offer stays off (it is "free"-only — see
- * mascotOffersHint). A profile EXPLICITLY set to 11-13 still gets
- * "none": that is a parent's deliberate choice, and this default
- * must not override it.
+ * place, and the free-band mascot offer stays off (it is "free"-only —
+ * see mascotOffersHint). Unset keeps reading this constant, not
+ * HINT_POLICIES, so a later explicit-band change cannot move it.
+ * Today an explicit 10-18 is also one-per-round. An explicit 18+ is
+ * "none": that is a parent's deliberate choice.
  */
 export const DEFAULT_HINT_POLICY: HintPolicy = "one-per-round";
 
 /**
  * The immutable per-run config snapshot. `band = null` (unset profile)
- * resolves to the "11-13" band: today's production numbers, byte-for-byte
- * (regression-gated per loop in run-config.test.ts) — with ONE exception:
- * the hint policy. An unset profile carries DEFAULT_HINT_POLICY instead
- * of 11-13's "none" (owner, 2026-10-20: hints on by default). The
- * `band` field below still records "11-13" for the unset case.
+ * resolves to FULL_ACCESS_BAND ("10-18"): today's full-game numbers
+ * (regression-gated per loop in run-config.test.ts). The hint policy for
+ * null still comes from DEFAULT_HINT_POLICY, not from the band table.
+ * The `band` field records "10-18" for the unset case.
+ *
+ * A persisted snapshot may still say "5-7", "8-10", or "11-13". Those
+ * ids are not current groups. isBandRunConfig keeps accepting them so
+ * meridian.loop.v2 does not fail-closed and wipe a streak.
  */
+export type LegacySnapshotBand = "5-7" | "8-10" | "11-13";
+
+const LEGACY_SNAPSHOT_BANDS: readonly LegacySnapshotBand[] = ["5-7", "8-10", "11-13"];
+
 export interface BandRunConfig {
   /**
    * The effective band this snapshot was computed for (null input resolves
    * to FULL_ACCESS_BAND). This is the DEAL-TIME band: badge award and any
    * other band-scoped recognition MUST use this field, never the live
    * `resolveBand()` — a mid-run band change must not mis-award (#113 BLOCK 1).
+   * Legacy snapshot ids are accepted by the guard only; getBandConfig never
+   * writes them.
    */
-  band: AgeBandId;
+  band: AgeBandId | LegacySnapshotBand;
   /** Quiz questions per round (design target; the endless run does not cap). */
   quizQs: number;
   /** Terrain Detective images per round. */
@@ -82,7 +91,7 @@ export interface BandRunConfig {
   /** Hint policy for this band. */
   hintPolicy: HintPolicy;
   /**
-   * Pin-hit radius multiplier (×1.5 / ×1.25 / ×1.0). The km tolerance is
+   * Pin-hit radius multiplier (×1.25 for 7-10, ×1.0 for 10-18 and 18+). The km tolerance is
    * computed from this in difficulty.ts (pinToleranceKm — clamps apply
    * AFTER scaling).
    */
@@ -95,11 +104,10 @@ export interface BandRunConfig {
 
 /**
  * The run config for a band (follow-up Item A).
- * `null` (unset profile) → the "11-13" full-access values = today's
- * production numbers, EXCEPT the hint policy: `null` carries
- * DEFAULT_HINT_POLICY ("one-per-round") so the hint bulb shows for
- * players who never set a profile (owner, 2026-10-20). An explicit
- * "11-13" keeps "none".
+ * `null` (unset profile) → FULL_ACCESS_BAND numbers. The hint policy is
+ * the exception: `null` carries DEFAULT_HINT_POLICY ("one-per-round")
+ * so the hint bulb shows for players who never set a profile
+ * (owner, 2026-10-20). An explicit band uses HINT_POLICIES.
  */
 export function getBandConfig(band: AgeBandId | null): BandRunConfig {
   const effective: AgeBandId = band ?? FULL_ACCESS_BAND;
@@ -123,7 +131,8 @@ export function isBandRunConfig(value: unknown): value is BandRunConfig {
   const c = value as Record<string, unknown>;
   return (
     (typeof c.band === "string" &&
-      (AGE_BAND_IDS as readonly string[]).includes(c.band)) &&
+      ((AGE_BAND_IDS as readonly string[]).includes(c.band) ||
+        (LEGACY_SNAPSHOT_BANDS as readonly string[]).includes(c.band))) &&
     Number.isInteger(c.quizQs) &&
     Number.isInteger(c.terrainImages) &&
     (c.capitalQs === null || Number.isInteger(c.capitalQs)) &&
@@ -145,8 +154,8 @@ export function isBandRunConfig(value: unknown): value is BandRunConfig {
 export type HintButtonState = "enabled" | "disabled-used" | "hidden";
 
 /**
- * The hint button's state: 5-7 always free; 8-10 disables after the one
- * hint is used; 11-13 hides the button entirely.
+ * The hint button's state: free stays enabled; one-per-round disables
+ * after the one hint is used; none hides the button entirely.
  */
 export function hintButtonState(policy: HintPolicy, hintsUsed: number): HintButtonState {
   switch (policy) {
@@ -165,7 +174,7 @@ export function canUseHint(policy: HintPolicy, hintsUsed: number): boolean {
 }
 
 /**
- * Mascot auto-offer rule (5-7 only): after 2 misses in the run's OWN miss
+ * Mascot auto-offer rule (free policy only): after 2 misses in the run's OWN miss
  * counter the mascot may OFFER a hint. The offer is an opt-in tap — never
  * an auto-interrupt. Offer dismissal/nag state stays in the UI, not here.
  */
