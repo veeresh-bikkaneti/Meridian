@@ -4,7 +4,7 @@ Draft for the 10-second film. Not recorded. Stage B copies this into the clip an
 
 ## Narration
 
-Hey kids — have you heard about this place? This line at Greenwich is the zero line on maps. It was set in 1884.
+Hey kids, have you heard about this place? The Greenwich line is the zero line on maps, set in 1884.
 
 ## On-screen
 

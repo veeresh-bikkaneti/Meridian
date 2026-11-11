@@ -19,14 +19,15 @@ May edit only:
 
 ## Done
 
-- [x] Merged `origin/main` at session start (main was `8dee5bad`).
+- [x] Merged `origin/main` at session start (main was `8dee5bad`) and again on 2026-11-10 after owner trim notes (main was `424cff9b`).
 - [x] §7a screen. Three political or contested tellings cut and logged. Three measurement stories kept, count still PROPOSED.
-- [x] `docs/scaling/journals/modern-world/clips.json` — I5 fields plus the one `stretch` main added. Fact ids in `sources.md`.
-- [x] Draft VTT and transcript for each kept clip.
+- [x] `docs/scaling/journals/modern-world/clips.json` — I5 fields plus the one `stretch` main added. Fact ids in `sources.md`. Year-gap answers stay `deviceYear - <year>`, computed at play time.
+- [x] Draft VTT and transcript for each kept clip. The three tracks stay in sync. This journal has no separate narration `.txt`; the spoken line lives in the `.transcript.md` and the `.vtt`.
+- [x] Narration trimmed to about 20 words for a 10-second clip, and every clip opens with "Hey kids, have you heard about this place?" Greenwich 23→20; Heart's Content 25→18 (kept 1866, the cable under the sea, and Heart's Content for the retrieval check; the "message could cross the ocean" clause stays in the host line after the film). Liverpool stayed at 17; opener punctuation only.
 - [x] Globe: Full / Lite fly-to, Flat 2D pin, same question. Specified, not coded.
 - [x] K-12 §9 block and unsigned educator block in the spec.
 - [x] No mp4, no journal manifest, no `src/` edits.
-- [x] No AGENTS.md code gates ran (docs only).
+- [x] No AGENTS.md code gates ran (docs only). No `check-clips.mjs` on this branch; word counts, the opener, and transcript/VTT sync were checked locally.
 
 ## Open
 
@@ -42,4 +43,4 @@ May edit only:
 
 ## Readability (local, not a CI gate)
 
-Run: local Flesch-Kincaid on the three narrations and the three 7-10 questions (2026-11-10). Grades: 0.2, 3.7, 3.5 and 0.5, 2.7, 2.3. All at or under grade 5. Not a CI gate.
+Run: local Flesch-Kincaid on the three narrations and the three 7-10 questions (2026-11-10, after the word-count trim). Grades: 1.9, 3.7, 2.3 (narration) and 0.5, 2.7, 2.3 (questions). All at or under grade 5. Not a CI gate.

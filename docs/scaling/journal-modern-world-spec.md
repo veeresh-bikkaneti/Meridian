@@ -28,7 +28,7 @@ The previous draft had three stories: England's kingdoms becoming one country, t
 
 Same rules for each. Narration is the 7-10 film (short, read aloud). Contract I5 allows one `stretch`: a harder question after the retrieval, for 10-18, from a fact id in `sources.md`. 18+ gets that same stretch. A second older question is not stored. No algebra and no trigonometry in 7-10. No trigonometry anywhere here: no sourced angle, so none was invented. The stretch is multiplication, division, or a closest-estimate.
 
-The film opens "Hey kids — have you heard about this place?" because `docs/journal-movies.md` requires that line. 18+ may skip the host sentence after the film (`k12-learning-design-standard.md` §1). The baked-in opening is an owner question (below), not a second film.
+The film opens "Hey kids, have you heard about this place?" because `docs/journal-movies.md` requires that line. 18+ may skip the host sentence after the film (`k12-learning-design-standard.md` §1). The baked-in opening is an owner question (below), not a second film.
 
 Loop (`k12-learning-design-standard.md` §3), same on every clip: the why-question (hook) → tap a guess (predict) → film (see) → one or two host sentences (explain) → one read-aloud retrieval. 10-18 and 18+ then get the stretch, also read aloud. A miss retries once with the host sentence, then the review deck. No timer in 7-10. No timer by default in any group.
 
@@ -41,7 +41,7 @@ Mastery (`k12-learning-design-standard.md` §4): confident = the post-clip check
 - **C3:** `D2.Geo.1.3-5` — "Construct maps and other graphic representations of both familiar and unfamiliar places." Live 2026-11-10: [ESRI C3 excerpt](https://content.esri.com/esripress/steam-at-work/en/sam/sam-c3.pdf). That code matches the pin. The stretch is arithmetic, not a second code. 9-12 wording: UNVERIFIED (not fetched).
 - **Place:** Royal Observatory, Greenwich. Pin 51.47687, −0.00041. [GeoNames 6295636](https://www.geonames.org/6295636/royal-greenwich-observatory.html). HIGH. The pin is the building. Kid copy does not say the GPS dot is exactly 0.
 - **Facts the film may say:**
-  - This line at Greenwich is the zero line on maps. It was set in 1884. [Royal Museums Greenwich](https://www.rmg.co.uk/stories/time/what-prime-meridian-why-it-greenwich). HIGH for the place and the year. The page also describes a vote. The vote is not in the film.
+  - The Greenwich line is the zero line on maps, set in 1884. [Royal Museums Greenwich](https://www.rmg.co.uk/stories/time/what-prime-meridian-why-it-greenwich). HIGH for the place and the year. The page also describes a vote. The vote is not in the film.
   - Not spoken, for the source note only: the observatory was founded in 1675 to measure longitude at sea; Airy's transit circle defined the Greenwich meridian from January 1851. Same RMG page. HIGH. Cut from the 10 seconds for length, not for doubt.
 - **Retrieval (read aloud):** "Where is the zero line?" Answer: Greenwich, at the Royal Observatory.
 - **Stretch (10-18, and 18+ get the same):** "A full turn is 360 degrees. The clock day has 24 hours. How many degrees is one hour?" Answer: 15. Fact `clock-model-15-degrees`. The 360 and the 24 are in the question. Clock model, not a claim about the exact spin of the Earth.
@@ -71,7 +71,7 @@ Mastery (`k12-learning-design-standard.md` §4): confident = the post-clip check
 - **C3:** `D2.Geo.1.3-5`, same source as clip 1. The stretch is an estimate, not a second code. 9-12 wording: UNVERIFIED.
 - **Place:** Heart's Content Cable Station. Pin 47.872528, −53.368639. [Wikipedia](https://en.wikipedia.org/wiki/Heart%27s_Content_Cable_Station). MEDIUM. [HistoricPlaces.ca](https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=3057) confirms the station and does not give a lat/lon. The heritage district page confirms a successful landing in Heart's Content in 1866.
 - **Facts the film may say:**
-  - In 1866 a cable under the sea reached Heart's Content, so a message could cross the ocean. Date and place: [IEEE milestone](https://ethw.org/Milestones:Landing_of_the_Transatlantic_Cable,_1866) (landed 27 July 1866; ship left Valentia, Ireland, 13 July 1866). HIGH.
+  - In 1866 a cable under the sea reached Heart's Content. Date and place: [IEEE milestone](https://ethw.org/Milestones:Landing_of_the_Transatlantic_Cable,_1866) (landed 27 July 1866; ship left Valentia, Ireland, 13 July 1866). HIGH. The cable's purpose (a message crossing the ocean) is in the host line after the film, not in the 10-second narration.
   - Host line: this cable made an electrical link between Ireland and Newfoundland. HIGH, from the same milestone ("permanent electrical communications link"), said without "old world and new."
   - Older checks only, on the question card: 1,852 miles of that cable lay on the ocean floor after fourteen days. Same IEEE page. HIGH for those two figures. They are not converted into nautical miles here.
 - **Retrieval (read aloud):** "Where did the 1866 cable come ashore in Newfoundland?" Answer: Heart's Content.
@@ -95,7 +95,7 @@ One scene description for all three clips. Full: dynamic `import("three")`, came
 
 ## Readability
 
-Local count on 2026-11-10, not a CI gate. Flesch-Kincaid grade (0.39 × words/sentences + 11.8 × syllables/words − 15.59) on the three narrations and the three 7-10 retrieval questions: 0.2, 3.7, 3.5 (narration) and 0.5, 2.7, 2.3 (questions). All under grade 5. Host lines stay one sentence. If a Stage B line scores over grade 5, cut it before anyone records.
+Local count on 2026-11-10, not a CI gate. Flesch-Kincaid grade (0.39 × words/sentences + 11.8 × syllables/words − 15.59) on the three narrations and the three 7-10 retrieval questions: 1.9, 3.7, 2.3 (narration; 20, 17, and 18 words) and 0.5, 2.7, 2.3 (questions). All under grade 5. Host lines stay one sentence. If a Stage B line scores over grade 5, cut it before anyone records.
 
 ## Bridges (subject map)
 

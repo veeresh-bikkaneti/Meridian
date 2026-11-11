@@ -4,7 +4,7 @@ Draft for the 10-second film. Not recorded. Stage B copies this into the clip an
 
 ## Narration
 
-Hey kids — have you heard about this place? In 1830 a steam railway joined Liverpool and Manchester.
+Hey kids, have you heard about this place? In 1830 a steam railway joined Liverpool and Manchester.
 
 ## On-screen
 
