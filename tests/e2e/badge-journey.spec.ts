@@ -10,7 +10,7 @@ import { loopNameIndex, openMysteryPlaceId, serveBuiltArtifact } from "./helpers
  * end after the storyteller narration/mute + Ko-fi cloud changes.
  *
  * Asserted user-visible outcomes (not DOM internals):
- *  - A real GeoDetective win (11-13, no hints) shows the "Clean Round"
+ *  - A real GeoDetective win (10-18, no hints) shows the "Clean Round"
  *    badge in the win reveal, and the badge shows up on the home
  *    GeoDetective card when the kid returns.
  *  - Tapping the badge chip on the home card reveals its blurb
@@ -131,7 +131,7 @@ for (const [w, h] of [[390, 844], [1280, 800]] as const) {
     page,
   }) => {
     await page.setViewportSize({ width: w, height: h });
-    // No profile seeded → unset resolves to the 11-13 full-access band.
+    // No profile seeded → unset resolves to the 10-18 full-access band.
     await openLoop(page, "218"); // Ankara
     const entry = await targetEntry(page);
     await guessTarget(page, entry); // one correct guess, zero hints

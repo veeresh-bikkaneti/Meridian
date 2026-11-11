@@ -60,6 +60,6 @@ stream.
 
 ## Status
 
-Each stream keeps its status in `docs/branch-status/<branch>.md`. Root
-`BRANCH_STATUS.md` is integrator-only until `AGENTS.md` is updated by stream
-18 (`chore/model-neutral-agents`).
+Each stream keeps its status in `docs/branch-status/<branch>.md`, as
+`AGENTS.md` requires (stream 18, 2026-11-10). Root `BRANCH_STATUS.md` is
+integrator-only.
