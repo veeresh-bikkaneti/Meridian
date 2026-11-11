@@ -47,3 +47,12 @@ id = "34884ed9aa46437f871278a517882e72"
 name = "CRASH_RATE_LIMITER"
 namespace_id = "72073"
 simple = { limit = 10, period = 60 }
+
+# Workers Logs + traces (2026-11-04). The dashboard had these on; a
+# `wrangler deploy` applies this file and turned them off because this
+# block was missing. Keep it so logs survive every deploy.
+[observability]
+enabled = true
+
+[observability.traces]
+enabled = true
