@@ -100,7 +100,7 @@
       "code": "MS-PS1-4",
       "source": "https://www.nextgenscience.org/pe/ms-ps1-4-matter-and-its-interactions"
     },
-    "why": "The kettle picture goes from ice, to water, to a cloud above the water. What did the warmth change?",
+    "why": "The kettle picture goes from ice, to water, to invisible water vapour above the spout. What did the warmth change?",
     "buildsOn": [
       "chemistry:states:melt-freeze"
     ],
@@ -111,9 +111,9 @@
   {
     "id": "chemistry:states:road-salt",
     "group": "10-18",
-    "objective": "After this, a learner can predict that salt on ice changes whether the ice stays solid and stuck, shown by a first-try tap before the road scene plays.",
+    "objective": "After this, a learner can predict that salt on ice makes the ice melt at a temperature where plain ice would stay frozen, shown by a first-try tap before the road scene plays.",
     "standard": "UNVERIFIED",
-    "why": "The road is icy. Crews spread salt. Why does the ice change?",
+    "why": "The road is icy. Crews spread salt. Why does the ice change? Fit: no exact code; MS-PS1-4 is the nearest.",
     "buildsOn": [
       "chemistry:states:melt-freeze",
       "chemistry:mixtures:dissolve"
@@ -212,7 +212,7 @@
       "code": "HS-PS1-1",
       "source": "https://www.nextgenscience.org/pe/hs-ps1-1-matter-and-its-interactions"
     },
-    "why": "Two materials look alike. The table's pattern is the clue for which one reacts with oxygen.",
+    "why": "Sodium and potassium are both soft, shiny metals in the same column of the periodic table. Which one reacts more with oxygen?",
     "buildsOn": [
       "chemistry:pieces:rebuild",
       "chemistry:reactions:new-look"
@@ -268,9 +268,9 @@
   {
     "id": "chemistry:reactions:rate",
     "group": "18+",
-    "objective": "After this, an adult learner can predict that a warmer mix, or a more crowded one, changes how fast the on-screen reaction finishes, shown by a first-try choice of which scene finishes first.",
+    "objective": "After this, an adult learner can predict that a warmer mix, or a more crowded one, changes how fast a reaction runs, shown by a first-try choice of which glow stick fades first.",
     "standard": "UNVERIFIED",
-    "why": "The same reaction is on two screens. One is warmer. Which one finishes first, and why? Fit: adult extension of HS-PS1-5; no code covers beyond grade 12.",
+    "why": "Two glow sticks are the same, but one sits in warm water and one in ice water. Which one fades first, and why? Fit: adult extension of HS-PS1-5; no code covers beyond grade 12.",
     "buildsOn": [
       "chemistry:reactions:new-look",
       "chemistry:states:particles"

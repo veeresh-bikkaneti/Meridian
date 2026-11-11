@@ -71,7 +71,7 @@
       "code": "4-PS3-1",
       "source": "https://www.nextgenscience.org/pe/4-ps3-1-energy"
     },
-    "why": "A ball rolling into a cup must not shove the cup off the table. Two balls reach the cup. One is moving faster. Which cup slides farther?",
+    "why": "A ball rolling into a cup must not shove the cup off the table. Two balls roll into the same cup, one after the other. One ball is moving faster. After which ball does the cup slide farther?",
     "buildsOn": [
       "physics:push:which-way",
       "math-applied:measure:longer-than"
@@ -116,12 +116,12 @@
   {
     "id": "physics:balance:tug",
     "group": "7-10",
-    "objective": "After this, a child can predict that a box stays still when the two pushes match, and moves toward the weaker side when they do not, shown by tapping still or that direction before the box moves.",
+    "objective": "After this, a child can predict that a gate stays still when the two pushes match, and moves in the direction of the stronger push when they do not, shown by tapping still or that direction before the gate moves.",
     "standard": {
       "code": "3-PS2-1",
       "source": "https://www.nextgenscience.org/pe/3-ps2-1-motion-and-stability-forces-and-interactions"
     },
-    "why": "A gate is stuck. Two people push from opposite sides. When the pushes match, which way does the gate go?",
+    "why": "A gate is stuck. Two people push from opposite sides. When the pushes match, does the gate move? When one push is stronger, which way does the gate go?",
     "buildsOn": [
       "physics:push:which-way"
     ],
@@ -153,7 +153,7 @@
       "code": "4-PS4-2",
       "source": "https://www.nextgenscience.org/pe/4-ps4-2-waves-and-their-applications-technologies-information-transfer"
     },
-    "why": "A lamp is on, and a book sits where a child can look at it. A sheet can go in the path between the book and the eye. When is the book seen?",
+    "why": "A lamp is on, and a book sits where a child can look at it. A sheet of cardboard, which you cannot see through, can go in the path between the book and the eye. When is the book seen?",
     "buildsOn": [],
     "useElsewhere": [
       "everyday life: a book seen when nothing blocks the light from it to the eye"
@@ -162,12 +162,12 @@
   {
     "id": "physics:mirror:sends-back",
     "group": "7-10",
-    "objective": "After this, a child can predict that a mirror is seen because it sends reflected light into the eye, shown by tapping the mirror before the scene marks it.",
+    "objective": "After this, a child can predict that a book is seen when light bounces off it into the eye, shown by tapping the light bouncing off the book before the scene marks it.",
     "standard": {
       "code": "4-PS4-2",
       "source": "https://www.nextgenscience.org/pe/4-ps4-2-waves-and-their-applications-technologies-information-transfer"
     },
-    "why": "A book sits on the same side of a shelf as a lamp. A mirror and a bare board are the two choices. Which one sends reflected light into the eye so the book can be seen?",
+    "why": "A lamp lights a book on a shelf. Light bounces off the book into your eye, and that is how you see it. Which light is that: light bouncing off the book, or light that only shines on the shelf?",
     "buildsOn": [
       "physics:shadow:blocks"
     ],
@@ -183,7 +183,7 @@
       "code": "3-PS2-3",
       "source": "https://www.nextgenscience.org/pe/3-ps2-3-motion-and-stability-forces-and-interactions"
     },
-    "why": "A cabinet uses two magnets to stay shut. Someone turns one magnet around. Does the pull stay the same, or does the direction change?",
+    "why": "A cabinet uses two magnets to stay shut. Someone turns one magnet around. Does the magnet still pull the other one, or does it now push it away?",
     "buildsOn": [
       "physics:push:which-way"
     ],
@@ -313,7 +313,7 @@
       "code": "MS-PS4-2",
       "source": "https://www.nextgenscience.org/pe/ms-ps4-2-waves-and-their-applications-technologies-information-transfer"
     },
-    "why": "A lamp, a dark cloth, a clear sheet, and a mirror are on the table. The card's model key names which does which. Which material reflects?",
+    "why": "A dark cloth, a clear sheet, and a mirror are on the table, and a lamp shines on them. The card's model key names which does which. Which material reflects?",
     "buildsOn": [
       "physics:mirror:sends-back"
     ],
@@ -367,9 +367,9 @@
   {
     "id": "physics:energy:missing",
     "group": "18+",
-    "objective": "After this, an adult can compute the missing energy change from the expression the card states, shown by entering that change before the scene marks it.",
+    "objective": "After this, an adult can compute the missing energy input from the rule the log states, shown by entering that amount before the scene marks it.",
     "standard": "UNVERIFIED",
-    "why": "A two-part energy log states this expression: missing = known − outflow. The known change is 5 units and the outflow is 2 units. What is the missing change? Fit: this adult round extends HS-PS3-1, and no single code covers it.",
+    "why": "A home battery log says: change in stored energy = energy in − energy out. The stored energy rose by 3 units and the house drew 2 units. How many units did the solar panels put in? Fit: this adult round extends HS-PS3-1, and no single code covers it.",
     "buildsOn": [
       "physics:energy:transfer",
       "math-applied:rates:rearrange"

@@ -195,7 +195,7 @@
     "group": "18+",
     "objective": "After this, an adult can multiply two-digit numbers in their head by splitting, doubling and halving, shown by giving the exact answer and naming the strategy used.",
     "standard": "UNVERIFIED",
-    "why": "Splitting a bill or comparing two quotes at a counter, where there is no calculator in hand, goes faster with a clean mental method. Fit: mental strategies are an adult extension of 5.NBT.B.5 that no single code covers.",
+    "why": "Splitting a bill or comparing two quotes at a counter, where there is no calculator in hand, goes faster with a clean mental method. Fit: no code fits; this is an adult extension (the nearest school code is 5.NBT.B.5).",
     "buildsOn": [
       "math-number:tables:multi-digit"
     ],
@@ -211,7 +211,7 @@
       "code": "5.NBT.A.1",
       "source": "https://www.thecorestandards.org/Math/Content/5/NBT/"
     },
-    "why": "A mapmaker draws 1 cm for 10 km and then wants a map ten times closer in. Every distance must shift one place; where does each digit land?",
+    "why": "A mapmaker draws a map at 1 cm for 10 km. The same land is then drawn ten times larger, so 1 cm stands for 1 km. Every distance must shift one place; where does each digit land?",
     "buildsOn": [
       "math-number:place:ten-times"
     ],
@@ -310,7 +310,7 @@
       "code": "5.NBT.B.6",
       "source": "https://www.thecorestandards.org/Math/Content/5/NBT/"
     },
-    "why": "A builder has 156 bricks to load onto pallets of 12 and needs the number of pallets and bricks left over.",
+    "why": "A builder has 157 bricks to load onto pallets of 12 and needs the number of pallets and bricks left over.",
     "buildsOn": [
       "math-number:division:big-quotients"
     ],
@@ -374,7 +374,7 @@
       "code": "3.NF.A.3",
       "source": "https://www.thecorestandards.org/Math/Content/3/NF/"
     },
-    "why": "One friend cut a pizza into 2 pieces and took 1; another cut into 4 pieces and took 2. Who has more?",
+    "why": "Both pizzas are the same size. One friend cut a pizza into 2 pieces and took 1; another cut theirs into 4 pieces and took 2. Who has more, or do they have the same amount?",
     "buildsOn": [
       "math-number:fractions:number-line"
     ],
@@ -390,7 +390,7 @@
       "code": "4.NF.A.2",
       "source": "https://www.thecorestandards.org/Math/Content/4/NF/"
     },
-    "why": "Two water bottles are 3/4 full and 2/3 full. Which one holds more water?",
+    "why": "Two bottles of the same size are 3/4 full and 2/3 full. Which one holds more water?",
     "buildsOn": [
       "math-number:fractions:equivalent"
     ],
@@ -453,7 +453,7 @@
     "group": "10-18",
     "objective": "After this, a child can find a percent of a quantity as a rate per 100, shown by entering 30% of 80 and checking it on a hundred grid.",
     "standard": {
-      "code": "6.RP.A.3",
+      "code": "6.RP.A.3c",
       "source": "https://www.thecorestandards.org/Math/Content/6/RP/"
     },
     "why": "A shop takes 30% off a price of 80. What do you pay, and how much did you save?",
@@ -469,7 +469,7 @@
     "group": "18+",
     "objective": "After this, an adult can combine fractions, percents and a division in one multi-step situation, shown by entering the final amount and the order of steps used.",
     "standard": "UNVERIFIED",
-    "why": "A group budget is shared by fractions of the total and some shares carry a discount. The real question is who pays what once everything is combined. Fit: no single code covers multi-step fraction and percent reasoning for adults.",
+    "why": "Four friends split a 120-coin bill: one pays 1/2, one pays 1/4, and the last two split the rest equally. One of those two equal shares gets 10% off. Who pays how much? Fit: no code fits; this is an adult extension.",
     "buildsOn": [
       "math-number:fractions:percent",
       "math-number:fractions:divide"

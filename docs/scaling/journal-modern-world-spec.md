@@ -66,7 +66,7 @@ Mastery (`k12-learning-design-standard.md` §4): confident = the post-clip check
 
 ### 3. modern-world:hearts-content-cable — how far
 
-- **Why:** How far did a message have to go under the ocean to cross from Ireland to Newfoundland?
+- **Why:** A message once crossed under the Atlantic from Ireland. Find the place in Newfoundland where the cable came ashore. (Changed 2026-11-11: the old question asked for a distance the clip never gives.)
 - **Objective (7-10):** After this, a child in 7-10 can locate where the 1866 cable came ashore, shown by a pin on Heart's Content.
 - **C3:** `D2.Geo.1.3-5`, same source as clip 1. The stretch is an estimate, not a second code. 9-12 wording: UNVERIFIED.
 - **Place:** Heart's Content Cable Station. Pin 47.872528, −53.368639. [Wikipedia](https://en.wikipedia.org/wiki/Heart%27s_Content_Cable_Station). MEDIUM. [HistoricPlaces.ca](https://www.historicplaces.ca/en/rep-reg/place-lieu.aspx?id=3057) confirms the station and does not give a lat/lon. The heritage district page confirms a successful landing in Heart's Content in 1866.

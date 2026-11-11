@@ -24,7 +24,7 @@
       "code": "4.NBT.B.4",
       "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
     },
-    "why": "The Eiffel Tower was 1,024 feet tall without its antennas. With them it is 1,083 feet. How much did the antennas add? Guessing from a photo cannot tell you.",
+    "why": "When it opened in 1889, the Eiffel Tower was 1,024 feet tall. With today's antennas it is 1,083 feet. How much taller is it now? Guessing from a photo cannot tell you.",
     "buildsOn": [
       "geography:globe:eiffel-tower",
       "math-number:place:hundreds-tens-ones"
@@ -105,12 +105,12 @@
   {
     "id": "general-knowledge:mixed:everest-vs-falls",
     "group": "10-18",
-    "objective": "After this, a child can estimate how many times one height fits into another by dividing, shown by choosing 'about 80' for Mount Everest against the deepest drop of Victoria Falls.",
+    "objective": "After this, a child can estimate how many times one height fits into another by dividing, shown by choosing 'about 80' for Mount Everest against the main drop of Victoria Falls.",
     "standard": {
       "code": "6.RP.A.3",
       "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
     },
-    "why": "Mount Everest is 8,848.86 m high. The deepest drop at Victoria Falls is 108 m. How many of those drops stacked up would reach the top of Everest? A picture cannot show both at once, so you need a ratio.",
+    "why": "Mount Everest is 8,848.86 m high. The main drop at Victoria Falls is 108 m high. How many of those drops stacked up would reach the top of Everest? A picture cannot show both at once, so you need a ratio.",
     "buildsOn": [
       "geography:globe:everest",
       "geography:globe:victoria-falls",
@@ -128,7 +128,7 @@
       "code": "6.RP.A.3",
       "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
     },
-    "why": "Paris to Sydney is about 17,000 km over the globe, worked out from the game's own pins. If a plane kept a steady 850 km/h (a round number for the problem, not a real flight), about how long is the trip? You need a rate to plan when you land.",
+    "why": "Paris to Sydney is about 17,000 km over the globe. If a plane kept a steady 850 km/h (a round number for the problem, not a real flight), about how long is the trip? You need a rate to plan when you land.",
     "buildsOn": [
       "geography:globe:eiffel-tower",
       "geography:globe:sydney-opera-house",
@@ -146,7 +146,7 @@
       "code": "HSG-SRT.C.8",
       "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf"
     },
-    "why": "No one can drop a tape measure from the top of the Eiffel Tower. Standing 1,000 feet from its centre, the top is about 47 degrees up. How tall is it? The distance and the angle are enough, with trigonometry. These two numbers are for the problem.",
+    "why": "No one can drop a tape measure from the top of the Eiffel Tower. Standing 1,000 feet from its centre, the top is about 47 degrees up. How tall is it? The distance and the angle are enough, with trigonometry. These two numbers are for the problem, and the answer is only about the height, since it leaves out your eye height.",
     "buildsOn": [
       "geography:globe:eiffel-tower",
       "general-knowledge:mixed:eiffel-antennas"
@@ -160,7 +160,7 @@
     "group": "18+",
     "objective": "After this, an adult can estimate the distance between two places on the globe from their latitude and longitude with the haversine formula, shown by choosing the right band (8,000 to 8,500 km) for Mount Everest to Victoria Falls.",
     "standard": "UNVERIFIED",
-    "why": "A straight line on a flat map is not the shortest route over a round Earth. How far is it from Everest to Victoria Falls, really? The pins give latitude and longitude; spherical trigonometry turns them into kilometres. Fit: spherical distance goes past HSG-SRT.C.8 and no single school code covers it.",
+    "why": "A straight line on a flat map is not the shortest route over a round Earth. How far is it from Everest to Victoria Falls, really? The pins give latitude and longitude; spherical trigonometry turns them into kilometres. Fit: no code fits; this is 18+ enrichment, past HSG.SRT.C.8.",
     "buildsOn": [
       "general-knowledge:mixed:tower-angle",
       "geography:globe:everest",
@@ -175,7 +175,7 @@
     "group": "18+",
     "objective": "After this, an adult can convert a flow of up to 500 million litres per minute into litres per day in scientific notation, shown by choosing 7.2 × 10^11.",
     "standard": "UNVERIFIED",
-    "why": "Up to 500 million litres of water a minute go over Victoria Falls. How much is that in a day? The number is too big to picture, so powers of ten keep it readable. Fit: an adult extension of 8.EE.A.4 that no single school code covers.",
+    "why": "At its highest flood, up to about 500 million litres of water a minute can go over Victoria Falls. How much is that in a day? The number is too big to picture, so powers of ten keep it readable. Fit: an adult extension of 8.EE.A.4 that no single school code covers.",
     "buildsOn": [
       "math-number:place:scientific",
       "geography:globe:victoria-falls"
