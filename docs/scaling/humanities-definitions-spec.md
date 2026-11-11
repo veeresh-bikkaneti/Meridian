@@ -6,8 +6,9 @@
 > [`humanities/screened-topics.md`](humanities/screened-topics.md). Where
 > that list conflicts with the text below, **the list wins** and the text
 > below is superseded (kept for the record, not deleted):
-> - **P11 current affairs (§4): CUT** by the screen. Owner to confirm the packet is closed (the revision-rule ruling Q16 becomes moot).
-> - **P5 constitution picker (§1): CUT** (picker and "which right protects this?" cards). A neutral school-rules civics topic is held as REVIEW.
+> - **P11 current affairs (§4): CLOSED** by the owner (decision 1, 2026-11-10). Removed from the topic list.
+> - **P5 constitution picker (§1): CUT** by the owner (decision 2, 2026-11-10): picker and "which right protects this?" cards removed. School-rules civics for 7-10 replaces it (decision 4).
+> - **Owner decisions (2026-11-10):** five decisions applied and logged in the section right after this block.
 > - **Audience:** "5th grade and up" is replaced by the three groups 7-10, 10-18, 18+ (standard §1).
 > - **Religion and mythology:** confirmed removed from all planned content; they appear below only as a removal record.
 > - Status stays **GATED**: no named educator has signed `educator-gate-rubric.md`.
@@ -18,8 +19,8 @@
 > - Headline goal (§0): bridge + playable application: [ ] pending, per unit (map mode covers routes and directions)
 > - Use-it-elsewhere round: [ ] pending, per unit
 > - Bands served: 7-10, 10-18, 18+, per topic in screened-topics.md; why: each topic row names its groups
-> - Objective per item, observable verb, "shown by": [x] one per topic (18 topics not cut: 16 usable, 2 REVIEW; the 7 cut rows carry none)
-> - Standards cited per item: [ ] C3 families named; indicator numbers UNVERIFIED (official site returned 403); D2.Civ.3.3-5 MEDIUM
+> - Objective per item, observable verb, "shown by": [x] one per topic (17 usable: KEEP 4, KEEP-LIMITS 13; 0 REVIEW; the 4 cut rows carry none)
+> - Standards cited per item: [ ] C3 families named; the three school-rules civics codes HIGH (official C3 PDF, pp. 32-33); other indicator numbers UNVERIFIED
 > - Loop mapped (hook / predict / see / explain / retry): [ ] pending, per mode
 > - Mastery "confident" bar: [ ] pending, per mode
 > - Review-deck hookup: [ ] pending, per mode
@@ -27,10 +28,23 @@
 > - Motion tiers Full / Lite / Flat: [ ] pending, per mode
 > - Accessibility (captions, tap alternative, no timers in 7-10, SR live region): [ ] pending, per mode
 > - Privacy (no PII, local records only): [x] no data collected by this spec
-> - Content screen (§7a) passed; cuts logged with reason: [x] 25 screened, 7 cut, 2 REVIEW
+> - Content screen (§7a) passed; cuts logged with reason: [x] 25 screened: 4 cut by the screen, 3 removed by owner decision, 1 folded into Great leaders, 0 REVIEW
 > - Free (no revenue features; asset licences recorded): [x]
 > - Educator rubric attached: [ ] NOT SIGNED, spec stays GATED
 > ```
+
+## Owner decisions (2026-11-10)
+
+Five decisions from the owner, applied on this branch on 2026-11-10. Each
+is logged here and reflected in `humanities/screened-topics.md`.
+
+| # | Decision | What changed in this spec and the screened list | Reason logged |
+|---|---|---|---|
+| 1 | **Current affairs (P11): CLOSED** | §4 reduced to a closure record; §0 scope, §7 (Q16) and §8 flag 12 updated; former H22 removed from the topic list and logged as cut. | Cut under the no-current-politics rule (standard §7a). |
+| 2 | **Constitution picker: CUT** | §1 rewritten without the picker, the "which right protects this?" cards, the "defend the clause" case, the constitution sourcing plan and the constitution-first ordering; Q9 and P5-1 closed in §7; former H09 and H10 removed and logged. | Contested politics: constitutions cannot be told neutrally for every country. |
+| 3 | **Third P8 category from the 2026-11-10 voice call: folded into the Great leaders journal (PR 408)** | §2.2 and §2.8 no longer list it as its own category; the topic row (former H17) now reads "Covered by Great leaders (feat/journal-great-leaders-spec)". The old label is retired and is not used in any file on this branch. | Owner decision; people in that group are screened person by person on the Great leaders branch. |
+| 4 | **Civics for ages 7-10: school-rules civics** | §1.1 item 3 and H12 (now KEEP-LIMITS): why classes have rules, taking turns, voting for a class pet or a game. No government, parties or elections. Codes D2.Civ.3.K-2, D2.Civ.7.3-5 and D2.Civ.9.3-5, HIGH from the official C3 Framework PDF. | Keeps civics for the youngest group while staying out of politics. |
+| 5 | **Journal places: keep the live ones; reword Angkor, Potala, Timbuktu and Uluru to talk only about the place** | New file `humanities/journal-places-reword.md`: proposed story, image alt and narration for each, math questions per group, and a source per number (two numbers UNVERIFIED and unused). §2.8 points to it. The live text, transcripts, narration audio and the Potala image are outside this branch; that file lists them for the integrator. | No religion, belief, ritual, sacred status or conflict is named. Potala carries an extra politics flag for the owner (see that file, §2). |
 
 **Branch:** `feat/humanities-definitions`
 **Base:** `origin/main` @ `f37dea50` (verified 2026-11-10)
@@ -69,10 +83,12 @@ source docs they point at, `meridian-platform-project-description.md` and
 ### In scope (approved only)
 
 1. **P5 brief** — social studies definition: road rules + history +
-   constitution picker (two branches under one definition).
+   school-rules civics for 7-10 (the constitution picker is cut, owner
+   decision 2).
 2. **P8 brief** — journal global expansion definition (re-based on B8).
 3. **P10 brief** — GK Trivia Quiz definition.
-4. **P11 brief** — GK Current Affairs definition (ruling recorded open).
+4. **P11** — GK Current Affairs: CLOSED (owner decision 1); kept only as
+   a closure record in §4.
 5. **P12 brief** — GK Detective definition.
 6. **Cross-cutting definitions** — the 7-stage release pipeline, the host
    wrap-up rule, the lazy-load guardrail.
@@ -109,7 +125,8 @@ source docs they point at, `meridian-platform-project-description.md` and
 
 This workstream is done when, on branch `feat/humanities-definitions`:
 
-1. §1–§5 hold the five packet briefs (P5, P8, P10, P11, P12), each with
+1. §1–§5 hold the packet briefs (P5, P8, P10, P12; P11 is a closure
+   record since owner decision 1), each with
    status, gate, scope in/out, acceptance criteria, educator sign-off
    block, open owner questions, and verification.
 2. §6 holds the three cross-cutting definitions transcribed verbatim in
@@ -145,56 +162,54 @@ A partial landing reported honestly beats a false "done".
   ear", never as an educator approval of a brief).
 - [x] Every factual claim in §1–§6 has a source URL + access date or a
   confidence level. Claims from the workspace docs cite the doc + section.
-  Live sources accessed 2026-11-10: C3 Framework grades 3–5 planning
-  tool, National Archives Constitution transcription, NHTSA Child
-  Pedestrian Safety Curriculum, Common Sense Media kids'-news list.
+  Live sources accessed 2026-11-10: C3 Framework (official PDF), NHTSA
+  Child Pedestrian Safety Curriculum, and the place sources in
+  `humanities/journal-places-reword.md`. The constitution and kids'-news
+  sources were dropped with the cut sections (owner decisions 1 and 2).
 - [x] No code files touched. `git status` in the worktree shows only
   `docs/scaling/humanities-definitions-spec.md` and `BRANCH_STATUS.md`.
 
 ---
 
-## §1. P5 — Social studies: road rules + history + constitution picker
+## §1. P5 — Social studies: road rules + history + school-rules civics
 
 **Status: PREPARED — AWAITING EDUCATOR SIGN-OFF. GATED — do not build.**
-Branches (from the debate): `feat/social-road-rules` (road rules + history)
-and `feat/constitution-picker` (constitution) — two PRs, either order, once
-the definition is signed. **Gate to clear first:** P2 landed AND its own
-definition signed. Leaf packet.
+Branch (from the debate): `feat/social-road-rules` (road rules + history,
+plus school-rules civics for 7-10). **Gate to clear first:** P2 landed AND
+its own definition signed. Leaf packet.
 
-> **Constitution-first conditional (recorded, not a commitment):** the
-> Researcher's conditional — a single jurisdiction, fully sourced/dated/
-> verified, may clear the readiness audit before P3 and go first. That is a
-> possibility, not a commitment, and it depends on a definition that does
-> not exist yet. Build order changes only if it clears the audit first.
+> **Constitution picker: CUT (owner decision 2, 2026-11-10).** The picker,
+> the "which right protects this?" scenario cards, the "defend the clause" /
+> "You are the judge" case, the per-jurisdiction constitution sourcing plan
+> and the constitution-first ordering are removed from this brief. Reason:
+> contested politics (standard §7a). Constitutions cannot be told neutrally
+> for every country, and many of their provisions are actively disputed. The
+> proposed `feat/constitution-picker` branch is not part of this packet. See
+> "Owner decisions (2026-11-10)" at the top of this spec.
 
 ### 1.1 What the definition must contain (the signed definition)
 
 The definition is the gate-maker for P5. It must contain, in writing:
 
-1. **Social-studies topic map per band** — road rules, history, social
-   economy — for 5th grade and up. Any 5–7 content is out of scope until
-   Q2 is answered in writing (owner, 2026-11-07 correction: audience is
-   5th grade and up; the description's 5–7 games and the study's "math
-   ages 8–10 first" are superseded — see §8 flags 1–2).
+1. **Social-studies topic map per group** — road rules, history, social
+   economy, and school-rules civics — for the three groups 7-10, 10-18 and
+   18+ (standard §1; the earlier "5th grade and up" audience is superseded).
+   The screened topics and their groups are in
+   `humanities/screened-topics.md`.
 2. **Road-rules verb** — navigate / decide / avoid: a spatial decision
    under uncertainty, close to pin-dropping, with a decision, a
    consequence, and a fail state stated in writing. A loop missing any of
    the three is not a game.
-3. **Constitution verb-or-shelf decision** — the playable verb (match
-   flag → article; "which right protects this?" scenario cards; a
-   timeline; or a "defend the clause" detective case — "You are the
-   judge": scenario → governing clause → consequence), proven in a
-   mockup (a decision, a fail state, a loop). If no verb can be built
-   honestly, the deliverable is the game-vs-shelf question for the owner,
-   not a shipped reader. The constitution picker as described is NOT a
-   game yet (council, all seats).
-4. **Per-jurisdiction sourcing plan** — every constitution fact cited and
-   dated; the schema must require a citation + date per fact. A fact
-   record with no citation field cannot be stored.
-5. **Judging rule** — road-rules decisions judged by the rules of the
-   road; constitution answers judged against cited text. A test must walk
-   the judging path (right, wrong, near-miss).
-6. **History fact-sharing mechanism** — one fact, one source, shared
+3. **School-rules civics for 7-10 (owner decision 4)** — why classes have
+   rules, taking turns, and voting for a class pet or a game. Classroom and
+   playground only: no government, parties, politicians or elections. The
+   verbs are choose (the reason a rule exists), order (whose turn is next)
+   and count (the votes, to find the winning choice). Topic H12 in the
+   screened list.
+4. **Judging rule** — road-rules decisions judged by the rules of the
+   road; civics answers judged against the stated class rule or the vote
+   count. A test must walk the judging path (right, wrong, near-miss).
+5. **History fact-sharing mechanism** — one fact, one source, shared
    between the journal (story surface) and this packet (game surface).
    The mechanism must be named (shared file, shared lint, or shared
    review); a sharing rule with no mechanism is a wish. Every history
@@ -204,56 +219,45 @@ The definition is the gate-maker for P5. It must contain, in writing:
 
 **In:** road-rules game (navigate/decide/avoid, mockup first at 390px and
 1280px); history game surface, journal-linked (shared facts, no
-duplication); constitution picker (country/state selection, flag paired
-with that jurisdiction's constitution, per-jurisdiction cited + dated
-sourcing); social economy topics per the signed topic map; host story clip
-after every question (§6.2); funnel events + E2E specs; lazy loading per
-the guardrail (§6.3).
+duplication); school-rules civics for 7-10; social economy topics per the
+signed topic map; host story clip after every question (§6.2); funnel
+events + E2E specs; lazy loading per the guardrail (§6.3).
 
-**Out:** any constitution fact without a cited, dated source; any
-flag-as-hunt-target mechanic (forbidden by the existing flag rule — the
-flag appears only beside an already-visible land/jurisdiction name);
-any tiny-model use (P9, parked); any behaviour change to geography or math.
+**Out:** the constitution picker and everything that came with it (owner
+decision 2); government, parties, elections and any contested rule or law
+debate; any flag-as-hunt-target mechanic (forbidden by the existing flag
+rule — the flag appears only beside an already-visible land name); any
+tiny-model use (P9, parked); any behaviour change to geography or math.
 
 ### 1.3 Acceptance criteria
 
-(a) Definition signed before either branch; (b) fact-sharing mechanism
-named; (c) constitution schema enforces citation + date; (d) load budget
-met on measured numbers from P2 (the 250 KB / 500 KB gzip figures are
-proposals, not measurements — §8 flag 11); (e) road-rules surface mocked
-at 390px and 1280px; (f) constitution verb proven in the mockup, or the
-shelf decision returned to the owner; (g) flag rule honoured in every
-mock; (h) per-band presentation mocked (5th-grade end and 16–18 end);
-(i) audit's four points demonstrated, not promised (§6.1).
+(a) Definition signed before the branch; (b) fact-sharing mechanism
+named; (c) load budget met on measured numbers from P2 (the 250 KB / 500 KB
+gzip figures are proposals, not measurements — §8 flag 11); (d) road-rules
+surface mocked at 390px and 1280px; (e) school-rules civics mocked for 7-10
+with no government, party or election content; (f) flag rule honoured in
+every mock; (g) per-group presentation mocked (7-10 and 18+ ends);
+(h) audit's four points demonstrated, not promised (§6.1).
 
 ### 1.4 Grounding notes — what source would verify the topic map
 
 These are candidate sources the definition's author must check and the
 educator must confirm. They are NOT the chosen curriculum (Q1 is open) and
-NOT evidence for the topic map — they name where the boundary research
-starts. All accessed 2026-11-10.
+NOT evidence for the whole topic map — they name where the boundary
+research starts. All accessed 2026-11-10.
 
-- **Civics per band (candidate, MEDIUM):** the College, Career, and Civic
-  Life (C3) Framework for Social Studies State Standards (National
-  Council for the Social Studies, 2013) sets grade 3–5 civics indicators
-  — by the end of grade 5 students examine the origins and purposes of
-  rules, laws, and key U.S. constitutional provisions (indicator
-  D2.Civ.3.3-5). Source:
-  https://ugc.padletcdn.com/uploads/padlet-uploads/2145377777/b68e27efe567818d6af3923b7f0fb0c0/Grade_3_5_Planning_Tool.pdf
-  (C3 Framework Instructional Planning Guide, grades 3–5). State
-  frameworks (e.g. Maryland Grade 5 Social Studies Framework;
-  New York State K-12 Social Studies Framework) implement the same
-  standards per state — the definition must name which state's framework
-  it follows, because the map varies by state. Confidence MEDIUM: the
-  C3 Framework is the national guidance states build on, but no state
-  has been chosen.
-- **Constitution text (HIGH):** the official transcription of the U.S.
-  Constitution is published by the National Archives:
-  https://www.archives.gov/founding-docs/constitution-transcript
-  (accessed 2026-11-10). This is the HIGH-confidence verbatim source for
-  the U.S. jurisdiction. Every other jurisdiction needs its own named
-  official text; a jurisdiction with no named source is UNVERIFIED and
-  out of scope.
+- **School-rules civics (HIGH for the codes):** the College, Career, and
+  Civic Life (C3) Framework for Social Studies State Standards (National
+  Council for the Social Studies, rev. 2017), pp. 32-33,
+  https://www.socialstudies.org/sites/default/files/c3/c3-framework-for-social-studies-rev0617.pdf
+  (downloaded and read 2026-11-10). D2.Civ.3.K-2: "Explain the need for
+  and purposes of rules in various settings inside and outside of school."
+  D2.Civ.7.3-5: "Apply civic virtues and democratic principles in school
+  settings." D2.Civ.9.3-5: "Use deliberative processes when making
+  decisions or reaching judgments as a group." State frameworks implement
+  the same standards per state; the definition must name which state's
+  framework it follows. (The third-party padlet copy cited here before
+  returned an empty file on 2026-11-10 and is dropped.)
 - **Road rules / pedestrian safety (HIGH):** NHTSA publishes a Child
   Pedestrian Safety Curriculum — a 5-lesson curriculum for grades K–5
   covering walking near traffic, crossing streets, intersections, parking
@@ -262,44 +266,34 @@ starts. All accessed 2026-11-10.
   https://www.nhtsa.gov/pedestrian-safety/child-pedestrian-safety-curriculum
   (accessed 2026-11-10). HIGH as the source for the road-rules topic
   map's U.S. pedestrian content; driving-direction and sign content for
-  older bands still needs its own named source (the definition must name
+  older groups still needs its own named source (the definition must name
   it).
-- **Verbatim vs paraphrase (research, not a decision):** the definition
-  must cost both options — verbatim needs a plain-language layer;
-  paraphrase needs per-fact citation and risks wrong civics. The decision
-  is the owner's (Q9) with the educator. A wrong paraphrase teaches wrong
-  civics silently — the cited-and-dated rule is the mitigation, and it
-  must be demonstrated per jurisdiction, not asserted.
 
 ### 1.5 Educator sign-off — BLOCKED (UNSTAFFED)
 
 No educator persona exists. Nothing in this lens is approved. The named
 human educator / SME must sign IN WRITING, before P5 can build:
 
-1. The social-studies topic map per band (road rules, history, social
-   economy).
-2. The constitution sourcing plan + the verbatim-vs-paraphrase decision.
+1. The social-studies topic map per group (road rules, history, social
+   economy, school-rules civics).
+2. That the school-rules civics items stay neutral (classroom only).
 3. The judging rule for this subject.
 4. The machine-verification gate, demonstrated on one complete mode.
-5. Per-jurisdiction constitution content — a civics/social-studies signer
-   is required; a math educator's signature does not cover this packet.
 
-**Blocked items:** all five.
+A social-studies signer is required; a math educator's signature does not
+cover this packet. **Blocked items:** all four.
 
 ### 1.6 Open owner questions blocking P5
 
-Q9 (constitution verbatim vs paraphrase; game or shelf), Q1 (educator +
-curriculum), Q6 (home order — which jurisdiction goes first is a
-definition decision). See §7.
+Q1 (educator + curriculum), Q6 (home order). Q9 (constitution verbatim vs
+paraphrase) is closed by owner decision 2. See §7.
 
 ### 1.7 Deliverable / definition of done
 
-Deliverables: road-rules surface mockup; constitution verb mockup (or
-shelf question); sourcing plan with named sources per jurisdiction;
-history fact-sharing mechanism; judging test plan. Done when the
+Deliverables: road-rules surface mockup; school-rules civics mockup for
+7-10; history fact-sharing mechanism; judging test plan. Done when the
 acceptance criteria above are met, the audit's four points are
-demonstrated, the game-or-shelf decision carries the owner's word, and
-the educator signature is on file.
+demonstrated, and the educator signature is on file.
 
 ## §2. P8 — Journal global expansion
 
@@ -358,8 +352,9 @@ this plainly) — do not claim it was.
    places and forcing a movie onto each would be slow pans.
    - **EXTENDED 2026-11-10 (owner, voice call) — the journal set must
      include these categories:** historical places,
-     famous spots, World War monuments, great leaders, and freedom
-     fighters. This EXTENDS
+     famous spots, World War monuments and great leaders. (The call's
+     third people category is covered by Great leaders,
+     `feat/journal-great-leaders-spec`: owner decision 3.) This EXTENDS
      the 2026-11-07 list above — keep everything built, add on top. Both
      lists stand in this brief. **Scope note:** the current 106 entries
      (81 US + 25 global landmarks) are the BUILT set — these categories
@@ -377,8 +372,7 @@ this plainly) — do not claim it was.
    clause (10 s fits ~8 s of speech); not a seamless loop; crowd drift in
    the final frame. Each limit has a fix in the process; a limit carried
    into 106 movies is a process failure.
-5. **Tone review** for historical content (world wars, leaders,
-   freedom fighters): tone and respect, not just fact-checking. A story
+5. **Tone review** for historical content (world wars, leaders): tone and respect, not just fact-checking. A story
    with facts right and tone wrong is a failure.
 6. **Batch size** — curated tiers of 10–15 entries first, each with a
    real visible verb. 106 movies is ~3× the "36" first imagined. Batch
@@ -467,8 +461,11 @@ transcribed from that audit, not re-derived here.
   Vatican, Bodh Gaya, Amritsar, Santiago. Audit fact only — no
   expansion: religion was removed from the plan by the owner 2026-11-10;
   the pilgrimage and religions-epics spec branches were deleted.
-- **Mythology:** essentially missing — only Uluru (sacred to the Anangu)
-  and Robber's Cave (local legend) touch it. No Greek, Norse, Hindu or
+  **Owner decision 5 (2026-11-10):** Angkor, Potala, Timbuktu and Uluru
+  stay live and are reworded to talk only about the place; wording and
+  sources in `humanities/journal-places-reword.md`.
+- **Mythology:** essentially missing — only Uluru (its live story carries
+  a sacred-site note) and Robber's Cave (local legend) touch it. No Greek, Norse, Hindu or
   other mythology entry. Audit fact only — no expansion: mythology was
   removed from the plan by the owner 2026-11-10; the mythology spec
   branch was deleted.
@@ -481,15 +478,15 @@ transcribed from that audit, not re-derived here.
 - **Great leaders:** no entry is about a leader. Closest is Rushmore's
   four faces (entry is about the carving, not the men); Arbor Lodge
   names J. Sterling Morton (Arbor Day founder).
-- **Freedom fighters:** nothing. Closest is one line on Crazy Horse's
-  death at Fort Robinson.
+- Covered by Great leaders (feat/journal-great-leaders-spec).
 
 > **RULE FOR P8 (binding on the expansion): only add what is NOT in
-> the 106.** The three gaps are: (1) World War monuments, (2) great
-> leaders, (3) freedom fighters. Do NOT duplicate historical places or famous spots —
+> the 106.** The gaps are: (1) World War monuments, (2) great
+> leaders (which also covers the call's third people category, owner
+> decision 3). Do NOT duplicate historical places or famous spots —
 > only add one of those if it fills a named gap (e.g. a WWII monument
 > that is also a famous spot counts as a monument, not as a famous
-> spot). The first batch (owner's choice, §2.6) is shaped by these three
+> spot). The first batch (owner's choice, §2.6) is shaped by these
 > gaps, not by re-covering what the 106 already has.
 
 P8 stays GATED (no building; educator sign-off before final). Everything
@@ -544,7 +541,7 @@ events + E2E specs; lazy loading per the guardrail (§6.3) — the GK chunk
 loads only when a kid picks GK; inside GK, prefetch of the next 1–2 items
 is allowed.
 
-**Out:** current affairs (P11); detective format (P12); any GK beyond
+**Out:** current affairs (P11, closed); detective format (P12); any GK beyond
 the signed school topic map; any new teaching (revision only — this is
 the rule the packet exists under); any tiny-model use (P9, parked); any
 behaviour change to geography or math.
@@ -585,150 +582,18 @@ boundary; mode mockup; judging test plan; overlap-resolution table
 (P5/P7/P8). Done when the acceptance criteria above are met, the audit's
 four points are demonstrated, and the educator signature is on file.
 
-## §4. P11 — GK Current Affairs (option B)
+## §4. P11 — GK Current Affairs (option B): CLOSED
 
-**Status: PREPARED — AWAITING EDUCATOR SIGN-OFF. GATED — and carries an
-extra gate no other packet has.** Branch (proposed, confirm before use):
-`feat/gk-current-affairs`. **Gate to clear first:** P2 landed AND its own
-definition signed AND the owner's WRITTEN ruling on the revision-rule
-tension (option (a) or (b) below). Until the owner rules, this packet is
-definition-only. Leaf packet.
-
-### 4.1 The tension (do not soften, do not drop)
-
-**This packet FAILS the standing "revision, not new teaching" rule.**
-Current affairs, by definition, teaches what just happened — new content,
-not revision of what school already taught. The owner picked it anyway
-("All 3", 2026-11-07). Two honest resolutions; the owner must pick one in
-writing before any build:
-
-- **(a) Explicit recorded override** — the owner waives the revision rule
-  for this packet only, carried as a named risk.
-- **(b) Reframe as revision** — every item anchored to a civics/history
-  topic the child already met in school; items with no school anchor are
-  out of scope.
-
-**An agent may never record the waiver itself. This spec records the two
-options and the fact that neither is chosen. The ruling is OPEN (Q16) —
-see §7.**
-
-Also open: what counts as school GK per band, and the staleness period
-(how fast items retire). A stale fact presented as current is wrong —
-this is the standing warning that defines this packet (a president from
-10–15 years ago presented as current is not contextual anymore). Every
-item must be dated; no undated "current" claims anywhere. Audience is
-5th grade and up.
-
-### 4.2 What the definition must contain
-
-1. **Fresh-content pipeline design, written FIRST** — sourcing, dating,
-   review, publication, retirement — with the staleness period stated as
-   a number with a rationale (e.g. "retire after N days unless
-   re-verified"); a period stated as "when it feels stale" is not a rule.
-   The pipeline is a deliverable, not an afterthought; a mode built
-   before the pipeline exists is out of order.
-2. **Sourcing rules** — trusted sources only (named list), every item
-   cited; aggregators and social sources excluded. The named list is
-   written with each source's publisher and why it is trusted; a source
-   with no stated reason is LOW.
-3. **Recency rules** — every item dated at publication; stale items
-   retire automatically — demonstrated by a test that walks an expired
-   item being withheld, not asserted.
-4. **Operator statement** — who operates the pipeline after launch?
-   Recorded even if the answer is "no operator named" — that is a
-   finding, and without an operator the mode rots in weeks. A mode with
-   an expiry that visibly retires it is the fallback, not a silent
-   rotting feed.
-5. **Mode format** — one current-affairs mode (quiz loop or short news
-   card; mockup first at 390px and 1280px). Every item shows its date;
-   stale items are visibly retired, never silently served. Per-band
-   presentation mocked at both widths for both ends.
-6. **Judging rule** per the definition — a test walks right answer,
-   wrong answer, near-miss.
-7. **Per-item sign-off flow** — every item educator-signed before it
-   ships (see §4.5). The flow is a gate in the pipeline, not a checkbox
-   after publication.
-8. **Option (b) costed** — what "the news behind what you learned in
-   school" would require in practice (school anchors per item). The
-   deliverable is the costed shape of option (b); the choice between (a)
-   and (b) is the owner's, in writing.
-
-### 4.3 Scope
-
-**In:** fresh-content pipeline design (written first); sourcing rules
-(trusted sources only, named list); recency rules (every item dated;
-staleness/expiry rule; no undated "current" claims); one current-affairs
-mode (format per the definition; mockup first); every item
-educator-signed before it ships; expiry/retirement behaviour
-(demonstrated by test); host story clip after every question (§6.2);
-funnel events + E2E specs; lazy loading per the guardrail (§6.3).
-
-**Out:** anything presented as current without a date; evergreen trivia
-(P10); detective format (P12); any item without a trusted source or
-without educator sign-off; any tiny-model use (P9, parked); any behaviour
-change to other games.
-
-### 4.4 Acceptance criteria
-
-(a) Pipeline design written with staleness period stated; (b) retirement
-test walks the path; (c) operator named or the expiry fallback stated;
-(d) load budget met on measured numbers from P2; (e) format mocked at
-both widths; (f) dates visible on every item; (g) retired state mocked;
-(h) per-band presentation mocked; (i) mode plays end to end under the
-ruling; (j) judging test walks all cases; (k) per-item sign-off is a
-pipeline gate; (l) host clip after every question; (m) owner's written
-ruling on file; (n) audit four points demonstrated — noting the audit
-cannot pass until the ruling is on file.
-
-### 4.5 Grounding notes — background only, never evidence for the ruling
-
-Accessed 2026-11-10. These name the kind of sources a definition author
-would study when writing the trusted-source list. They do NOT choose the
-list (that is the definition's job, with the educator) and they do NOT
-resolve the tension.
-
-- Kids'-news products exist as background comparables: TIME for Kids
-  (https://www.timeforkids.com/ — news written for students K–6, editions
-  by grade), Newsela (https://newsela.com/ — leveled articles, ages 8+),
-  DOGOnews (https://www.dogonews.com/ — kids' current-events articles,
-  K–12). Source: Common Sense Media, "Best News Sources for Kids",
-  updated 2026-04-13,
-  https://aiprot.commonsensemedia.org/lists/best-news-sources-for-kids
-  (accessed 2026-11-10). Confidence MEDIUM as background: these are
-  products, not the packet's trusted-source list; inclusion here does not
-  endorse any of them.
-
-### 4.6 Educator sign-off — BLOCKED (UNSTAFFED)
-
-No educator persona exists. Nothing in this lens is approved. The named
-human educator / SME (a current-affairs educator) must sign IN WRITING,
-before P11 can build — and **per item, not just per topic map**:
-
-1. The topic map + pipeline design (signed once).
-2. **Every published item** (signed, or signed-off in a reviewed batch)
-   before it ships. A math educator's signature does not cover this
-   packet.
-
-**Blocked items:** both. The per-item sign-off is the mitigation for the
-revision-rule tension — it is not optional. Freshness is a permanent
-operational cost, not a one-time build: without per-item sign-off, a
-wrong or outdated "fact" taught to children is the silent failure this
-packet cannot absorb.
-
-### 4.7 Open owner questions blocking P11
-
-Q16 (ruling (a) or (b), in writing, before any build; staleness period),
-Q1 (educator + curriculum). **This packet cannot build without Q16
-answered in writing.** See §7.
-
-### 4.8 Deliverable / definition of done
-
-Deliverables: pipeline design (sourcing, dating, review, publication,
-retirement, staleness period); trusted-source list; ruling question for
-the owner with option (b) costed; format mockup with dates visible;
-operator statement. Done when the acceptance criteria above are met, the
-audit's four points are demonstrated, the owner's written ruling is on
-file, and the per-item sign-off flow is a pipeline gate.
+**Status: CLOSED and CUT (owner decision 1, 2026-11-10).** Removed from the
+topic list (`humanities/screened-topics.md`, former H22). Reason: no current
+politics (standard §7a). News is current by nature and often contested, and
+the packet also failed the standing "revision, not new teaching" rule
+(§6.4). The owner closed the packet rather than choosing between the
+recorded override and the "reframe as revision" option, so that ruling
+(the P11 part of Q16) is moot. The proposed `feat/gk-current-affairs`
+branch is not part of this workstream. No pipeline, trusted-source list,
+mode or item is to be designed. The earlier brief is in git history
+(this file before 2026-11-10's owner-decision commit) if it is ever needed.
 
 ## §5. P12 — General Knowledge Detective (option C)
 
@@ -784,7 +649,7 @@ per the signed topic map, every case verified (solution path checked);
 host story clip after every question/case (§6.2); funnel events + E2E
 specs; lazy loading per the guardrail (§6.3).
 
-**Out:** quiz-loop GK (P10); current affairs (P11); any case without
+**Out:** quiz-loop GK (P10); current affairs (P11, closed); any case without
 cited facts; any detective skin over a trivia loop (the deduction verb
 must be real — if the design cannot prove it, the packet returns to the
 owner); any tiny-model use (P9, parked); any behaviour change to other
@@ -921,7 +786,7 @@ exists.
 - No fabrication, ever — no LLM near place/content data. For math: no
   wrong answers — every generated problem machine-verified.
 - Revision, not new teaching: games practise what school already taught.
-  (P11's tension with this rule is recorded in §4.1, not softened.)
+  (P11, which failed this rule, is closed: owner decision 1, §4.)
 - A child must get it just by looking. Free, no paywalls, COPPA-safe (no
   accounts, no PII, no identifiers).
 - **Educator gap — the binding constraint:** no educator persona exists
@@ -957,11 +822,12 @@ confirmation is still open (Q15, §7).
 
 ## §7. Open owner questions (recorded, never decided)
 
-14 open questions (spec-breakdown §4 rows 30–42, 45). Q14 and Q15 are
+14 questions (spec-breakdown §4 rows 30–42, 45); Q9 and the P11 part of
+Q16 are closed by owner decisions 2 and 1 (2026-11-10). Q14 and Q15 are
 recorded as decided-by-direction / council resolution, with written
 confirmation still open — they are listed here so they are not lost.
-**The binding ones:** Q1 (educator) blocks every subject GO; Q16 (P11
-ruling) is the other hard block. Answering one unblocks the packet that
+**The binding one:** Q1 (educator) blocks every subject GO. (Q16's P11
+ruling was the other hard block until P11 was closed.) Answering one unblocks the packet that
 needs it.
 
 | Q | Question | Blocks | Decider |
@@ -974,12 +840,12 @@ needs it.
 | Q6 | Home order — what sits above the fold at 390px | P1 mockup, P8 placement | Owner |
 | Q7 | 16–18 register — same brand or different? | P1 presentation specs | Owner |
 | Q8 | Age-band split — two bands or one 14–18; years vs ages? | P1 | Owner |
-| Q9 | Constitution verbatim vs paraphrase; game or shelf? | P5 | Owner + educator |
+| Q9 | ~~Constitution verbatim vs paraphrase; game or shelf?~~ **CLOSED** — constitution picker cut (owner decision 2, 2026-11-10) | — | Owner |
 | Q10 | Olympiad placement — mode, difficulty, or separate subject? | P1, P3 | Educator (owner picks with educator input) |
 | Q11 | Science spike authorization | P2 spike, P7 | Owner |
 | Q12 | Model trigger acceptance + eligibility bar + parity | P9 (parked) | Owner |
 | Q13 | One-app tripwire acceptance | P2 | Owner |
-| Q16 | P11 ruling (a) override or (b) reframe; school-GK per band; staleness period | P11 (blocks build), P10/P12 definitions | Owner, in writing |
+| Q16 | ~~P11 ruling (a) override or (b) reframe; staleness period~~ **CLOSED** — P11 closed (owner decision 1, 2026-11-10). Still open: what counts as school GK per group | P10/P12 definitions | Owner, in writing |
 | Q14† | Lazy-load acceptance — decided by direction, no written answer | All subjects | Owner (confirm if re-ask wanted) |
 | Q15† | Passport ownership — council resolution (thin contract in P2), owner confirmation open | P2 | Owner |
 
@@ -996,10 +862,9 @@ neither has a written owner answer. They are carried here as
   Do not assume the gate is met.
 - **P8-2 (batch size):** does the owner choose 10–15 entries for the
   first global tier, or another size? **Open — owner.**
-- **P5-1 (constitution-first ordering):** the Researcher's conditional —
-  if a single-jurisdiction constitution clears the audit before math,
-  build order changes. **Conditional, not a plan** — it is a possibility
-  to record, not a commitment to act on.
+- **P5-1 (constitution-first ordering):** **CLOSED** — the constitution
+  picker is cut (owner decision 2, 2026-11-10), so the ordering question
+  no longer exists.
 
 ### Gaps with no owning packet (carried, not fixed by this workstream)
 
@@ -1035,7 +900,7 @@ is annotated, not rewritten.
 | 9 | Alert policy for new games | **Unassigned — no packet owns it** (study §10 Q7) | NO EDIT — there is no stale text to correct; this is a gap, not a wrong fact. Carried in §7 as an owner decision still needed before any subject's funnel types are defined. |
 | 10 | Family / social features | **Deliberately no packet** (COPPA decision must come first) | NO EDIT — no stale text to correct; deliberately omitted by the packets. Carried in §7. No packet may be written until the owner decides. |
 | 11 | Load-budget numbers | **Proposals, not measurements** (250 KB / 500 KB gzip) | NO EDIT — verified on 2026-11-10 that every occurrence already labels them "proposed" (debate lines 107, 331–332, 538–539; plan line 135; packets gap #9). No doc cites them as measured. This spec's §6.3 repeats the PROPOSED status. |
-| 12 | P11 revision-rule tension | **Rule-vs-decision conflict, not doc-vs-doc** ("All 3" pick vs revision rule) | NO EDIT — no stale text to correct; the tension is already recorded in packets P11 and spec-breakdown §5. Carried in §4.1 and §7 (Q16) as OPEN. |
+| 12 | P11 revision-rule tension | **Rule-vs-decision conflict, not doc-vs-doc** ("All 3" pick vs revision rule) | NO EDIT — no stale text to correct; the tension is already recorded in packets P11 and spec-breakdown §5. Was carried as OPEN; **CLOSED 2026-11-10** — the owner closed P11 (decision 1), see §4. |
 
 **Files edited in place (workspace, outside the repo):**
 
