@@ -21,7 +21,7 @@ Then pick one tiny OPEN issue (not a feature) and walk the full change flow belo
 
 - **The repo:** `veeresh-bikkaneti/Meridian` on GitHub. Vite + React + TypeScript. Everything ships from `main`.
 - **`docs/`** — the permanent record: ADRs, specs, ops runbooks. When a decision gets made, it lands here.
-- **`BRANCH_STATUS.md`** — every feature branch carries one at the repo root. It's the branch's active work flag: done vs pending, updated as work lands, committed and pushed with the work. If you're picking up someone else's branch, read this first — then verify every claim in it independently (chapter 8, §5).
+- **`docs/branch-status/<branch>.md`** — every feature branch carries one (since 2026-11-10; the root `BRANCH_STATUS.md` is integrator-only). It's the branch's active work flag: done vs pending, updated as work lands, committed and pushed with the work. If you're picking up someone else's branch, read this first — then verify every claim in it independently (chapter 8, §5).
 - **`public/flags.json`** — feature flags. Experimental work must never break production code; flags exist for exactly that reason. (Tier split shipped as `globeTierSplit: true`.)
 - **This handbook** — `docs/handbook/` in this repo (the copy you're reading). Chitti's VM also keeps a working copy at `~/workspace/your_files/meridian-handbook/`.
 - **Worktrees** — work happens in persistent checkouts under `~/workspace/bench-wt/` (one per branch/PR) and `~/workspace/ci-runner-fix` (ops checkout). Never in `/tmp` — a VM reboot wipes it.
@@ -55,7 +55,7 @@ After merging, the Comprehensive System Overview runs on main (conflict-marker g
 ## 4. How to propose a change
 
 1. **Cut a branch from latest main.** `git fetch origin`, new worktree or branch. Branch name starts with its kind: `feat/`, `fix/`, `docs/`, `chore/`.
-2. **Write `BRANCH_STATUS.md`.** What's the job, what's done, what's pending. Keep it current — it's how everyone else follows you.
+2. **Write `docs/branch-status/<branch>.md`.** What's the job, what's done, what's pending. Keep it current — it's how everyone else follows you.
 3. **Work in small commits.** Every completed unit gets an atomic commit immediately. Never leave a day's work uncommitted. Stage named files only — **never `git add -A`**.
 4. **Run the gates** (§3) and fix what fails. No exceptions for "it's just docs" (docs still get `npm test` — #157's precedent).
 5. **Run E2E on the surfaces you touched** — and if you changed the home page, take screenshots at 390px, 1440px, 320px, and reduced-motion. Look at them. Really look.
@@ -89,7 +89,7 @@ Memorize these. Each one has happened, and each one is still an open invitation 
 
 **WS-\*.** The workstream program. The ones you'll see referenced: WS-0 test harness (recommended first), WS-2 social previews (shipped via #155 — the `og:`/`twitter:` share tags), WS-3 Scout toggle regression test, WS-4 satellite-failure phase 1 (shipped via #148), WS-5 home weight (the 377 kB `grandpa-directions.webp`).
 
-**BRANCH_STATUS.md.** The per-branch active work flag — see §2. Read it, then verify it.
+**docs/branch-status/<branch>.md.** The per-branch active work flag — see §2. Read it, then verify it.
 
 **The Hyderabad rule.** The permanent hard gate: every place's coordinates must match its claimed location. Enforced at build time (`src/game/validate-places.ts` + tests). Zero mismatches in the one-time 433-place audit.
 
