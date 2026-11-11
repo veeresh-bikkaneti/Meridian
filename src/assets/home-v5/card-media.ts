@@ -266,13 +266,14 @@ import grownupsStillUrl from "./binoculars-hat.webp";
  * selector, and every other slot keeps its plain record. A
  * selector matches its band exactly and fails closed — the
  * standard record comes back for every other value, including
- * "11-13", null, undefined, and any string that is not the one
- * band id. CardFilm itself does not change: it receives whichever
+ * "10-18", "18+", null, undefined, and any string that is not the
+ * one band id. CardFilm itself does not change: it receives whichever
  * record the selector returned, with the same gates, the same
  * lazy mount, and the same slot box, so a variant costs its band
  * one film download and costs every other band nothing.
  *
- * Little Explorer Cold Trail (band "5-7" only) —
+ * Little Explorer Cold Trail (formerly band "5-7"; NO LONGER SELECTED —
+ * there is no group under 7, so every band gets the standard film) —
  * COLDTRAIL_FILM_LITTLE_EXPLORER. The softer-tone take of the
  * same walk: Jolly on the footprint trail, at the mock's slower
  * pacing. Provenance: generated for the age-band motion mockups
@@ -299,7 +300,7 @@ import grownupsStillUrl from "./binoculars-hat.webp";
  * take whose first and resting frames differ swaps each on its
  * own (the locked tile's media module made the same call).
  *
- * Trail Scout Review (band "8-10" only) — REVIEW_FILM_TRAIL_SCOUT.
+ * Trail Scout Review (band "7-10" only; formerly "8-10") — REVIEW_FILM_TRAIL_SCOUT.
  * A regenerated take of the Review card's sweep beat, made as
  * this band's tone: the magnifying glass sweeps out and back
  * over the satchel, then the picture settles on the shipped
@@ -386,22 +387,23 @@ export const REVIEW_FILM_TRAIL_SCOUT = {
 } as const;
 
 /**
- * The only band→media path for the Cold Trail card: the Little
- * Explorer ("5-7") band gets the softer film; every other value —
- * "8-10", "11-13", null, undefined, any other string — gets the
- * standard film. Exact match, fail closed on every doubt.
+ * The only band→media path for the Cold Trail card. The softer
+ * Little Explorer film (former "5-7") is no longer selected: every
+ * value — "7-10", "10-18", "18+", null, undefined, any other
+ * string — gets the standard film. The asset constant stays for a
+ * future under-7 or softer-tone variant.
  */
-export function coldtrailMediaForBand(band: string | null | undefined) {
-  return band === "5-7" ? COLDTRAIL_FILM_LITTLE_EXPLORER : COLDTRAIL_FILM;
+export function coldtrailMediaForBand(_band: string | null | undefined) {
+  return COLDTRAIL_FILM;
 }
 
 /**
  * The only band→media path for the Review card: the Trail Scout
- * ("8-10") band gets the regenerated sweep film; every other
- * value — "5-7", "11-13", null, undefined, any other string —
+ * ("7-10") band gets the regenerated sweep film; every other
+ * value — "10-18", "18+", null, undefined, any other string —
  * gets the standard film. Exact match, fail closed on every
  * doubt.
  */
 export function reviewMediaForBand(band: string | null | undefined) {
-  return band === "8-10" ? REVIEW_FILM_TRAIL_SCOUT : REVIEW_FILM;
+  return band === "7-10" ? REVIEW_FILM_TRAIL_SCOUT : REVIEW_FILM;
 }

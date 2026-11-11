@@ -1,7 +1,7 @@
 /**
  * age-profile/store.ts — the SOLE owner of the age-profile storage.
  *
- * Owns localStorage key `meridian.ageProfile.v1` (schemaVersion 1) and the
+ * Owns localStorage key `meridian.ageProfile.v1` (schemaVersion 2) and the
  * lifecycle state machine (Phase 1 §4; follow-up Item B simplified it to
  * two states):
  *
@@ -25,12 +25,14 @@
  * index.ts (resolveBand / onAgeProfileChanged).
  */
 
-import type { AgeBandId, AgeProfile, ProfileStatus } from "./types.ts";
+import type { AgeBandId, AgeGroup, AgeProfile, ProfileStatus } from "./types.ts";
 import { FULL_ACCESS_BAND, AGE_BAND_IDS } from "./bands.ts";
 import { emitAgeProfileChanged } from "./events.ts";
 
 export const PROFILE_STORAGE_KEY = "meridian.ageProfile.v1";
-export const PROFILE_SCHEMA_VERSION = 1;
+export const PROFILE_SCHEMA_VERSION = 2;
+/** Blobs written before the 7-10 / 10-18 / 18+ groups. Mapped, never rejected for version alone. */
+const LEGACY_SCHEMA_VERSION = 1;
 
 const unsetProfile = (): AgeProfile => ({
   status: "unset",
@@ -45,6 +47,35 @@ function isAgeBandId(value: unknown): value is AgeBandId {
 }
 
 /**
+ * Legacy ids on a schema-1 blob only. 18+ is never produced here.
+ * Returns undefined when the band is not a legacy id (caller rejects).
+ */
+function mapLegacyBand(band: string): AgeBandId | undefined {
+  if (band === "5-7" || band === "8-10") return "7-10";
+  if (band === "11-13") return "10-18";
+  return undefined;
+}
+
+/**
+ * Resolve a stored band BEFORE any schema-version reject.
+ * Schema 1 maps 5-7 and 8-10 → 7-10, and 11-13 → 10-18.
+ * Schema 2 accepts only the current ids. A legacy id on schema 2 is rejected.
+ * Any other version is rejected. undefined means reject.
+ */
+function resolveStoredBand(schemaVersion: unknown, band: unknown): AgeBandId | null | undefined {
+  if (schemaVersion === LEGACY_SCHEMA_VERSION) {
+    if (band === null) return null;
+    if (typeof band !== "string") return undefined;
+    return mapLegacyBand(band);
+  }
+  if (schemaVersion === PROFILE_SCHEMA_VERSION) {
+    if (band === null || isAgeBandId(band)) return band;
+    return undefined;
+  }
+  return undefined;
+}
+
+/**
  * Runtime validation of a stored blob. Returns a valid profile, or null
  * when the blob is corrupt/wrong-version/wrong-shape. Corrupt → treated as
  * unset by loadProfile (fail-closed to full access).
@@ -56,13 +87,14 @@ function isAgeBandId(value: unknown): value is AgeBandId {
 export function validateProfile(blob: unknown): AgeProfile | null {
   if (typeof blob !== "object" || blob === null) return null;
   const b = blob as Record<string, unknown>;
-  if (b.schemaVersion !== PROFILE_SCHEMA_VERSION) return null;
+  // Map legacy bands before rejecting the schema version. A version bump
+  // that skips this drops a stored 5-7 / 8-10 / 11-13 choice.
+  const band = resolveStoredBand(b.schemaVersion, b.band);
+  if (band === undefined) return null;
   let status = b.status;
   // Legacy staging state (Item B): a staged-but-unapplied change applies now.
   if (status === "pending-change") status = "active";
   if (status !== "unset" && status !== "active") return null;
-  const band = b.band;
-  if (!(band === null || isAgeBandId(band))) return null;
   if (typeof b.updatedAt !== "string" || Number.isNaN(Date.parse(b.updatedAt))) return null;
   if (typeof b.changeCount !== "number" || !Number.isInteger(b.changeCount) || b.changeCount < 0)
     return null;
@@ -72,8 +104,8 @@ export function validateProfile(blob: unknown): AgeProfile | null {
   return {
     status: status as ProfileStatus,
     band,
-    updatedAt: b.updatedAt as string,
-    changeCount: b.changeCount as number,
+    updatedAt: b.updatedAt,
+    changeCount: b.changeCount,
     schemaVersion: PROFILE_SCHEMA_VERSION,
   };
 }
@@ -82,12 +114,24 @@ export function validateProfile(blob: unknown): AgeProfile | null {
 // for the session so the parent's choice still works until reload.
 let memoryFallback: AgeProfile | null = null;
 
+function storedBlobNeedsRewrite(parsed: unknown, profile: AgeProfile): boolean {
+  if (typeof parsed !== "object" || parsed === null) return false;
+  const b = parsed as Record<string, unknown>;
+  return b.schemaVersion !== profile.schemaVersion || b.band !== profile.band || b.status !== profile.status;
+}
+
 function readStorage(): AgeProfile | null {
   try {
     if (typeof localStorage === "undefined") return null;
     const raw = localStorage.getItem(PROFILE_STORAGE_KEY);
     if (raw === null) return null;
-    return validateProfile(JSON.parse(raw));
+    const parsed = JSON.parse(raw) as unknown;
+    const profile = validateProfile(parsed);
+    // Silent rewrite after a successful map. Does not call setBand/saveBand
+    // and does not emit a change event. changeCount and updatedAt are already
+    // copied on `profile`.
+    if (profile && storedBlobNeedsRewrite(parsed, profile)) writeStorage(profile);
+    return profile;
   } catch {
     // getItem/parse throw (private mode, corrupt JSON) → corrupt.
     return null;
@@ -231,12 +275,17 @@ export function resetProfile(): AgeProfile {
 
 /**
  * The effective band for rendering/config. `unset` resolves to the
- * full-access default "11-13" (the profile only ever *simplifies* on
- * explicit parent intent).
+ * full-access default "10-18" (the profile only ever *simplifies* on
+ * explicit parent intent). Never 18+.
  */
 export function resolveBand(profile?: AgeProfile): AgeBandId {
   const p = profile ?? loadProfile();
   return p.band ?? FULL_ACCESS_BAND;
+}
+
+/** Contract I3. No argument: the stored group, or full access when unset. */
+export function getAgeGroup(): AgeGroup {
+  return resolveBand();
 }
 
 /** Exported for tests: reset the in-memory write-failure fallback + deferred state. */

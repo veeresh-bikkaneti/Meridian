@@ -1,3 +1,8 @@
+> **Integrator-only (2026-11-10).** Branches keep their own record in
+> `docs/branch-status/<branch>.md` (AGENTS.md, stream 18). This file is a
+> historical record of `claude/k12-plan-review`; do not write to it from a
+> feature branch.
+
 # BRANCH_STATUS — claude/k12-plan-review
 
 **Branch:** `claude/k12-plan-review` · **Base:** main `2688d8b8`

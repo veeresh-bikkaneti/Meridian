@@ -23,24 +23,24 @@ test("directionalHint picks the stronger axis for east/west", () => {
   assert.ok(directionalHint(-120, 37, bounds).includes("western"));
 });
 
-test("5-7 free: button always enabled", () => {
+test("7-10 free: button always enabled", () => {
   assert.equal(hintButtonState("free", 0), "enabled");
   assert.equal(hintButtonState("free", 5), "enabled");
   assert.equal(canUseHint("free", 3), true);
 });
 
-test("8-10 one-per-round: disables after one use", () => {
+test("10-18 one-per-round: disables after one use", () => {
   assert.equal(hintButtonState("one-per-round", 0), "enabled");
   assert.equal(hintButtonState("one-per-round", 1), "disabled-used");
   assert.equal(canUseHint("one-per-round", 1), false);
 });
 
-test("11-13 none: button hidden", () => {
+test("18+ none: button hidden", () => {
   assert.equal(hintButtonState("none", 0), "hidden");
   assert.equal(canUseHint("none", 0), false);
 });
 
-test("mascot offers after 2 misses (5-7 only)", () => {
+test("mascot offers after 2 misses (7-10 only)", () => {
   assert.equal(mascotOffersHint("free", 2), true);
   assert.equal(mascotOffersHint("free", 1), false);
   assert.equal(mascotOffersHint("one-per-round", 5), false);

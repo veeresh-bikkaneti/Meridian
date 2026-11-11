@@ -6,8 +6,14 @@
  * behavior, no storage, no clock — import freely anywhere.
  */
 
-/** Parent-set age bands. Coarse ids only — never a birthdate, never PII. */
-export type AgeBandId = "5-7" | "8-10" | "11-13";
+/**
+ * Parent-set age groups. Coarse ids only — never a birth date, never an
+ * exact age, never PII. Contract I3.
+ */
+export type AgeGroup = "7-10" | "10-18" | "18+";
+
+/** Same three ids. Kept so existing age-profile call sites stay on one name. */
+export type AgeBandId = AgeGroup;
 
 /**
  * Fact-ladder rungs in difficulty order (contract with
@@ -58,7 +64,7 @@ export interface BandDifficulty {
    * NOT consume this — retuning the table never changes game structure.
    */
   pinsPerRun: number;
-  /** Duel seconds per turn; null when locked (timers only at 11-13). */
+  /** Duel seconds per turn; null when the duel loop is locked. */
   duelSecondsPerTurn: number | null;
 }
 
@@ -71,8 +77,13 @@ export interface AgeBand {
    * 2026-11-04 ruling (see AgeProfileSettings.confirmChange).
    */
   label: string;
+  /** Inclusive lower bound of the group. Not a player's age. */
   ageMin: number;
-  ageMax: number;
+  /**
+   * Inclusive upper bound of the group, or null when the group has no
+   * ceiling (18+). Not a player's age. Do not invent a number.
+   */
+  ageMax: number | null;
   /** Parent-facing description, <=140 chars, verbatim from Phase 1 §1. */
   description: string;
   /** Kid-voice "what changes" line for the picker card. */
@@ -91,8 +102,9 @@ export interface AgeBand {
 
 /**
  * The persisted profile (Phase 1 §4). localStorage key
- * `meridian.ageProfile.v1`, schemaVersion 1. No PII — the band id is the
- * only content, plus lifecycle bookkeeping.
+ * `meridian.ageProfile.v1`, schemaVersion 2. No PII — the group id is the
+ * only content, plus lifecycle bookkeeping. Schema 1 blobs are mapped on
+ * load; the stored write is schema 2.
  */
 export interface AgeProfile {
   status: ProfileStatus;
@@ -102,7 +114,7 @@ export interface AgeProfile {
   updatedAt: string;
   /** Anti-flail counter + parent visibility. */
   changeCount: number;
-  schemaVersion: 1;
+  schemaVersion: 2;
 }
 
 /** Inputs to the rung mapper (Phase 1 §2). `blurb` is always present. */
@@ -116,7 +128,7 @@ export interface PlaceFacts {
 export interface MappedStory {
   text: string;
   rung: StoryRung;
-  /** True for 5-7: the story card should auto-play read-aloud. */
+  /** True when the group's audioMode is "auto". */
   autoplayAudio: boolean;
 }
 
