@@ -3,7 +3,7 @@
 - **Topic:** Great leaders, told through the places that honour them
 - **Status:** GATED. Stage A (screen, spec and data) done 2026-11-10; Stage B (clips) waits for the owner to lift the build gate, and for a named human educator to sign `educator-gate-rubric.md`.
 - **Branch:** `feat/journal-great-leaders-spec`
-- **Proposed clip count:** 2 proposed; after the §7a screen, **1 kept, 1 cut**. The owner then added Robben Island (from PR 407, after it merges) and two leaders that have no rows until sourced ("Owner decisions"), so up to 4. All counts stay PROPOSED, pending owner approval; never presented as decided.
+- **Proposed clip count:** 2 proposed; after the §7a screen, **1 kept, 1 cut**. The owner then added Robben Island (from PR 407, after it merges) and two leaders that have no rows until sourced ("Owner decisions"), so up to 4 (3 rows in `clips.json` now: 2 PROPOSED, 1 UNVERIFIED). All counts stay PROPOSED, pending owner approval; never presented as decided.
 - **Clip data (contract I5):** `docs/scaling/journals/great-leaders/clips.json`
 - **Fact ledger:** `docs/scaling/journals/great-leaders/sources.md` (every fact with source, access date and confidence; conflicts, cuts and screened facts logged)
 - **Draft captions and transcript:** `docs/scaling/journals/great-leaders/captions/lincoln-memorial.vtt`, `docs/scaling/journals/great-leaders/transcripts.md`
@@ -149,9 +149,9 @@ screen above, and where they differ, the owner's call wins.
    in PR 407 and are not copied here before that merge, to avoid two copies.
    After 407 merges, the row moves to `great-leaders:robben-island` (integrator
    or this branch, whichever the owner names).
-3. **Two leaders added, no clip rows yet.** No row is added for either until
-   every fact a clip would use is sourced in `sources.md`, and nothing
-   unsourced is narrated. What could be sourced now is in `sources.md`
+3. **Two leaders added.** Rows were held back until the wording was approved
+   and the facts sourced (rows now added; see item 5). Nothing unsourced is
+   narrated. What could be sourced now is in `sources.md`
    ("Owner-added leaders"), with every year and wording conflict logged.
 
    | Leader and place | Owner frame | Sourced / UNVERIFIED / conflicts | Wording the owner must settle |
@@ -169,6 +169,23 @@ screen above, and where they differ, the owner's call wins.
    years ago" answer is computed from the current year at play time, never a
    literal year. The Lincoln question is a gap between two past years
    (1922 − 1914), so it is unaffected.
+
+5. **Approved wording and rows (owner, t330u, 2026-11-10).** The owner
+   approved the wording for both added leaders, and two PROPOSED rows are now
+   in `clips.json`, used verbatim after the opener. Each row's status and
+   reason are in `row-status.json`, which `check-clips.mjs` requires.
+
+   | Row | Group | Narration after the opener | Card (years ago, worked out at play time) | Status | Why |
+   |---|---|---|---|---|---|
+   | `great-leaders:jhansi-fort` | 10-18 (18+ stretch TO CONFIRM) | "Queen Lakshmibai led Jhansi's army, her little son on her back." | 1858 → current year − 1858 | **UNVERIFIED** | "On her back" is disputed: S9, S21, S22 and S23 say back (most as belief or tradition), but S10 says waist (R-C4). Your rule: a disagreeing source keeps the row UNVERIFIED. Every other fact (queen, army, 1858) has 2–3 agreeing sources. |
+   | `great-leaders:netaji-bhawan` | 10-18 (18+ stretch TO CONFIRM) | "Netaji Subhas Bose lived here. He led an army and made 'Jai Hind' famous." | 1943 → current year − 1943 | **PROPOSED** | Each fact has 2 or more agreeing sources: Netaji (B-1), lived here (B-12), led an army (B-13), made "Jai Hind" famous (B-3), 1943 command (B-6). Who coined "Jai Hind" is disputed, but no source says Bose did, and the line doesn't claim it (B-C2). |
+
+   Both rows use C3 D2.His.3.6-8 (live, S7). The card math (subtracting
+   years) is grade 4 (4.NBT.B.4), in rows you placed in 10-18. Your stretch
+   questions were not given, and no sourced fact supports a clean adult
+   computation yet (the siege length and army sizes conflict), so both stay
+   TO CONFIRM. Narration lengths are 19 and 22 words; 22 is the check's limit,
+   so the Netaji line passes with no room to spare.
 
 ## Stage B (not started: build gate not lifted)
 

@@ -97,12 +97,15 @@ Why it is cut (standard §7a; council record in the spec):
    figure" with no word on why it stands there fails rubric item A1 ("nothing
    taught is wrong or misleading").
 
-## Owner-added leaders (2026-11-10): sourcing only, no clip rows yet
+## Owner-added leaders (2026-11-10): Jhansi Fort and Netaji Bhawan
 
-The owner added these two leaders on 2026-11-10 (spec, "Owner decisions").
-No clip row exists for either until every fact a clip would use is sourced
-here, and nothing below marked UNVERIFIED, conflicting or screened is narrated.
-All sources were fetched on 2026-11-10.
+The owner added these two leaders on 2026-11-10 and approved the clip wording
+the same day (t330u; spec, "Owner decisions"). Both rows are now in
+`clips.json`, and each row's status (PROPOSED or UNVERIFIED) and reason are in
+`row-status.json`. Owner rule: if any source disagrees with a narrated or
+carded fact, the row stays UNVERIFIED. Nothing marked UNVERIFIED, conflicting
+or screened below is added to the wording. All sources were fetched on
+2026-11-10.
 
 | Id | Source | URL |
 |---|---|---|
@@ -118,6 +121,12 @@ All sources were fetched on 2026-11-10.
 | S18 | Wikipedia, "Netaji Bhawan" | https://en.wikipedia.org/wiki/Netaji_Bhawan |
 | S19 | Incredible India (Government of India tourism), "Netaji Bhawan" | https://www.incredibleindia.gov.in/en/west-bengal/kolkata/netaji-bhawan |
 | S20 | Asia InCH, "Netaji Bhawan, Kolkata" | https://asiainch.org/museum/netaji-bhawan/ |
+| S21 | National Geographic, "Lakshmi Bai, India's warrior queen who fought the British" | https://www.nationalgeographic.com/history/history-magazine/article/india-warrior-queen-lakshmi-bai-fought-british-rule |
+| S22 | The Times of India, "160 years on, walls that made a queen immortal stand strong" | https://timesofindia.indiatimes.com/city/kanpur/160-years-on-walls-that-made-a-queen-immortal-stand-strong/articleshow/65087134.cms |
+| S23 | Wikipedia, "Damodar Rao of Jhansi" | https://en.wikipedia.org/wiki/Damodar_Rao_of_Jhansi |
+| S24 | The Indian Express, "Explained: The history of popular slogans raised during the Indian independence movement" | https://indianexpress.com/article/explained/explained-history-of-popular-slogans-raised-during-indian-independence-8082629/ |
+| S25 | The Times of India (TimesTravel), "Netaji Bhawan, Kolkata" | https://timesofindia.indiatimes.com/travel/destinations/netaji-bhawan/articleshow/52946894.cms |
+| S26 | Britannica, "Subhas Chandra Bose" | https://www.britannica.com/biography/Subhas-Chandra-Bose |
 
 ### Rani Lakshmibai, Jhansi Fort (owner frame: mother, queen and leader)
 
@@ -126,11 +135,11 @@ All sources were fetched on 2026-11-10.
 | R-1 | She was the rani (queen) of Jhansi. | S9; S10 | HIGH | queen |
 | R-2 | Her husband adopted a five-year-old relative, renamed Damodar Rao, as heir in 1853; she was his mother by adoption. | S9; S10 | HIGH | mother |
 | R-3 | In 1857 she took over the rule of Jhansi, ruling on behalf of her young son. | S9 ("proclaimed the regent… ruled on behalf of her minor son"); S10 ("took over the rulership of Jhansi") | HIGH for 1857 | ruled Jhansi |
-| R-4 | She organised her troops (S9) and recruited an army (S10). | S9; S10 | HIGH | led her own forces |
+| R-4 | She organised her troops (S9), recruited an army (S10) and rallied her defenders during the siege (S21). | S9; S10; S21 | HIGH | narration "led Jhansi's army" |
 | R-5 | She took charge of the forces in the wider region, and fighters from nearby areas came to Jhansi to support her. | S9 | MEDIUM (one source) for "rallied" | rallied them |
 | R-6 | During the siege of Jhansi's fort she did not surrender, even after her forces were overwhelmed. | S9 | HIGH (one source, plainly stated) | stood her ground |
-| R-7 | The siege of the fort was in March and April 1858. | S9 ("turned toward Jhansi in March" 1858); S10 ("March and April 1858") | HIGH | year check |
-| R-8 | She left the fort on horseback with Damodar tied to her. | S9; S10 | MEDIUM: how is disputed (R-C4, R-C5) | picture |
+| R-7 | The siege of the fort was in March and April 1858. | S9 ("turned toward Jhansi in March" 1858); S10 ("March and April 1858"); S21 (siege from March 1858) | HIGH | card "She led her forces in 1858" |
+| R-8 | She left the fort with Damodar tied to her **back**. | Back: S9 ("is believed to"), S21 ("it is said"), S22, S23 ("according to tradition"). **Waist: S10** (citing two published histories). | **DISAGREE (R-C4). Row UNVERIFIED.** | narration "her little son on her back" |
 | R-9 | Jhansi Fort stands on a hilltop called Bangira, in the middle of Jhansi city, Uttar Pradesh. | S11 | MEDIUM (one source) | place |
 | R-10 | Coordinates 25.45809, 78.57544. | S12 | HIGH | place |
 
@@ -146,10 +155,19 @@ Conflicts for the owner (none may be narrated until settled):
   and says she trained an all-female regiment "if it existed". So **"trained
   her own forces" is UNVERIFIED**; "organised and led her forces" (R-4) is the
   sourced line.
-- **R-C4** Damodar's position: "tied to her back" (S9, "is believed to") vs
-  "tied to her waist" (S10, citing two histories). The owner's picture says
-  back. Owner to choose the wording, or show him held close without naming
-  back or waist.
+- **R-C4 Back vs waist (keeps the Jhansi row UNVERIFIED).** The owner's
+  narration says "her little son on her back". Four sources say back: S9
+  ("is believed to"), S21 ("it is said"), S22 (plain statement) and S23
+  ("according to tradition"; it adds that "more probably she escaped in the
+  night with her son, surrounded by guards"). S10 says "tied to her waist",
+  citing two published histories. Every "back" source except S22 hedges it
+  as belief or tradition. Owner options: (1) accept the row as told by
+  tradition and override UNVERIFIED in writing; (2) change one word, e.g.
+  "her little son held close", which every source supports; (3) keep the row
+  out.
+- **R-N1 "Little" son (a note, not a conflict):** Damodar was five when
+  adopted in 1853 (S9; S10), so about ten in 1858. "Little" is the owner's
+  word; no source gives his exact age in 1858.
 - **R-C5** The ride out: S9 tells the leap from the walls on horseback as a
   belief; S10 says "there are multiple accounts" (a leap, being lowered onto
   a horse, or a gap left in the lines). A clip can say she rode out of the
@@ -176,17 +194,19 @@ not told):
 
 | Id | Fact | Source | Confidence | Owner frame it supports |
 |---|---|---|---|---|
-| B-1 | He is known as "Netaji". | S13; S18; S19 | HIGH | Netaji |
-| B-2 | "Netaji" is Hindustani for "Respected Leader". | S13 | MEDIUM (one source) | Netaji |
-| B-3 | "Jai Hind" was coined by Chempakaraman Pillai (S17, 1907). It reached new popularity when, under Bose, it was adopted as the official slogan of the Indian National Army. | S17 | MEDIUM (one source; see B-C2) | popularised "Jai Hind" |
+| B-1 | He is known as "Netaji". | S13; S18; S19; S26 ("Popularly known as Netaji") | HIGH | narration "Netaji" |
+| B-2 | "Netaji" means "Respected Leader". | S13 (Hindustani); S26 (Hindi) | HIGH for the meaning (the two name the language differently) | card detail only |
+| B-3 | Bose made "Jai Hind" popular: it reached new popularity when, under him, it became the INA's official slogan (S17); he "popularised 'Jai Hind' as a salutation" for INA soldiers (S24). | S17; S24 | HIGH for "made famous" | narration "made 'Jai Hind' famous" |
 | B-4 | The INA had a women's regiment, the Rani of Jhansi Regiment, led by Captain Lakshmi Swaminathan (Lakshmi Sahgal) and raised in July 1943. | S13; S14; S16; S9 | HIGH | women's regiment |
 | B-5 | The regiment was named after Rani Lakshmibai of Jhansi. | S9; S13; S16 | HIGH | links the two clips |
-| B-6 | On 4 July 1943, in Singapore, Bose took over leadership of the (second) INA. | S14 | HIGH for 1943 (one source for the day) | "led the INA from 1943" |
-| B-7 | The INA surrendered to Allied forces in August 1945, so it is not today's Indian Army (the second half is an inference from S14, not a quoted line). | S14 | HIGH for 1945 | never "founder of the army" |
+| B-6 | On 4 July 1943 Bose took over leadership of the (second) INA in Singapore (S14); on 4 July 1943 he took over leadership of the independence movement in East Asia and organised the INA (S26). | S14; S26 | HIGH for 1943 | card "took command of the army in 1943" |
+| B-7 | The INA was "an armed unit distinct from the official British Indian Army" (S26) and surrendered in August 1945 (S14), so it is not today's Indian Army. | S26; S14 | HIGH | never "founder of the army" |
 | B-8 | Netaji Bhawan, his family home, was built by his father, Janakinath Bose, in 1909. | S18; S19 | HIGH | place |
 | B-9 | It has been a museum since 1961, run by the Netaji Research Bureau. | S19; S20 | HIGH | place |
 | B-10 | Address: 38/2 Lala Lajpat Rai Sarani (formerly Elgin Road), Kolkata. | S20; S19 (Elgin Road); S18 | HIGH | place |
 | B-11 | Coordinates 22.53758333, 88.35125. | S12 | HIGH | place |
+| B-12 | He lived in this house: it was "his own home" (S19); he "spent the formative years of his life here and also lived here" (S25); it is his ancestral house (S20); he escaped from this house in 1941 (S13, the Elgin Road house; S26, "his residence in Calcutta"). | S19; S25; S20; S13; S26 | HIGH | narration "lived here" |
+| B-13 | He led an armed force, the Indian National Army. | S26 ("he led an armed force… The Indian National Army"); S14 ("led by… Subhas Chandra Bose") | HIGH | narration "He led an army" |
 
 Conflicts for the owner:
 - **B-C1 "Founded the INA in 1943": flagged; the sources disagree.** S14:
@@ -196,10 +216,12 @@ Conflicts for the owner:
   summary) says "formed in 1943 by Subhas Chandra Bose". **Recommended line:
   "led the Indian National Army from 1943" (B-6).** Never "founded" and never
   "founder of the Indian Army".
-- **B-C2 "Jai Hind":** he did not coin it (S17, Pillai, 1907). S17 itself
-  differs on who suggested it as the INA's slogan: "Abid Hasan" in one
-  paragraph, "Bose and Abid Hasan" in the next. Safe wording: "made 'Jai Hind'
-  famous" or "used 'Jai Hind' as a greeting"; owner to confirm "popularised".
+- **B-C2 "Jai Hind": who coined it is disputed, but the narration doesn't
+  depend on it.** S17 says Chempakaraman Pillai coined it in 1907. S24
+  reports a 2014 book saying Abid Hasan coined it, and S17 itself differs on
+  who suggested it to the INA ("Abid Hasan" vs "Bose and Abid Hasan"). No
+  source says Bose coined it. Two sources (S17, S24) agree he popularised it,
+  so "made 'Jai Hind' famous" is supported. Never say he coined or invented it.
 - **B-N1 Dates for the house (a note, not a conflict):** built 1909 (S18;
   S19); museum since 1961 (S19; S20). A 1947 dedication to the nation appears
   only in a search snippet of the Netaji Research Bureau's site, which could
@@ -207,8 +229,10 @@ Conflicts for the owner:
 
 UNVERIFIED: anything from the Netaji Research Bureau's own site (it returned
 no readable text to a direct fetch), including the 1947 dedication (B-N1).
-B-2 and B-3 rest on one source each (MEDIUM): a second source is needed
-before either is narrated.
+B-2 and B-3 now have second sources (S26; S24).
+
+Screened from S26 (true, sourced, not used): his wartime alliances, a famous
+quotation about blood, and the continuing debate over his death.
 
 §7a risk notes for the owner (true and sourced; logged, not told):
 - The INA was an armed force in the Second World War, allied to and supported
@@ -229,3 +253,5 @@ before either is narrated.
 | D2.His.1.3-5 | C3 History | by end of grade 5 | build and use a time order of related events | S7 Table 20 | lincoln-memorial |
 | 4.NBT.B.4 | CCSS Math | grade 4 | add and subtract multi-digit whole numbers with the standard algorithm | S8 | lincoln-memorial opening question (1922 − 1914) |
 | 6.EE.B.7 | CCSS Math | grade 6 | write and solve equations of the form x + p = q | S8 | lincoln-memorial stretch (10-18 only) |
+| D2.His.3.6-8 | C3 History | by end of grade 8 | use questions about individuals and groups to analyse why they, and what they shaped, are seen as historically significant | S7 Table 20 | jhansi-fort, netaji-bhawan |
+| 4.NBT.B.4 | CCSS Math | grade 4 | (as above) | S8 | jhansi-fort and netaji-bhawan cards (current year − 1858, current year − 1943); the math is grade 4 in rows the owner placed in 10-18 |

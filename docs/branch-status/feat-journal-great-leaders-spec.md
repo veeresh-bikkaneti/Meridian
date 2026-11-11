@@ -15,7 +15,7 @@ the owner lifts the build gate.
 - `public/videos/journals/great-leaders/**` (untouched: Stage B)
 - this file
 
-## Done (2026-11-10, synced with origin/main `424cff9b`)
+## Done (2026-11-10, synced with origin/main `18d8ae24`)
 
 - [x] §7a screen of both clips, strict reading (highest politics risk).
       **Lincoln Memorial: kept, reframed as a place** (building, 1914–1922,
@@ -61,6 +61,23 @@ the owner lifts the build gate.
       1858 siege and ride). "Founded the INA" is flagged; the recommended line
       is "led the Indian National Army from 1943".
 
+### Owner-approved wording, round 3 (t330u, 2026-11-10)
+
+- [x] `great-leaders:jhansi-fort` row added, 10-18, owner narration verbatim.
+      **UNVERIFIED:** "on her back" is disputed (back: S9, S21, S22, S23;
+      waist: S10).
+- [x] `great-leaders:netaji-bhawan` row added, 10-18, owner narration
+      verbatim. **PROPOSED:** each fact has two or more agreeing sources.
+- [x] New sources S21–S26 fetched live. Second sources were found for
+      "Netaji" means "Respected Leader" (S26) and "made 'Jai Hind' famous"
+      (S24). Who coined "Jai Hind" remains disputed and is not narrated.
+- [x] Captions (`jhansi-fort.vtt`, `netaji-bhawan.vtt`) and transcripts.
+      Cards answer the current year minus 1858 or 1943, worked out at play
+      time.
+- [x] `row-status.json` (status and reason per row). `check-clips.mjs`
+      requires it, and checks that a years-ago card names the year it counts
+      from.
+
 ## Gates
 
 No code gates ran (docs only). `npm run lint:content` did not run: it needs
@@ -78,9 +95,9 @@ is not created yet (Stage B).
   overrule the MLK cut or not; educator name; no 18+ question; extra questions;
   listen check; "opened" vs "dedicated" wording.
 - Narration timing (20 words for about 8 s) is TO CONFIRM when rendered.
-- Lakshmibai and Bose clip rows: open until the owner settles the wording
-  calls and the MEDIUM facts get a second source.
 - Robben Island row: open until PR 407 merges.
+- Jhansi row UNVERIFIED until the owner settles back vs waist (R-C4).
+- 18+ stretch questions for Jhansi and Netaji: TO CONFIRM (no clean sourced fact).
 
 ## Needs the integrator (outside this branch's paths)
 

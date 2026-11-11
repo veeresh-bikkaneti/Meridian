@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 const here = path.dirname(fileURLToPath(import.meta.url));
 const clips = JSON.parse(fs.readFileSync(path.join(here, "clips.json"), "utf8"));
 const ledger = fs.readFileSync(path.join(here, "sources.md"), "utf8");
+const rowStatus = JSON.parse(fs.readFileSync(path.join(here, "row-status.json"), "utf8"));
 const I5_KEYS = ["id", "group", "objective", "standard", "why", "place", "file", "captions", "retrieval"];
 const GROUPS = new Set(["7-10", "10-18", "18+"]);
 const MAX_GRADE = { "7-10": 5, "10-18": 12, "18+": 16 }; // top grade of each group (standard §1)
@@ -64,6 +65,15 @@ for (const c of clips) {
   if (c.group === "7-10" && /[a-z]\s*[+=]\s*\d|\bsolve\b.*=|\b(sin|cos|tan)\b/i.test(`${c.why} ${c.retrieval?.question}`))
     fail(id, "no algebra or trigonometry in 7-10");
   const cueText = vtt.split(/\r?\n/).filter((l) => l && !/^(WEBVTT|NOTE|\d+$|\d\d:)/.test(l)).join(" ");
+  // Row status (PROPOSED or UNVERIFIED, with a reason). A "years ago" question
+  // must name the year it counts from; the answer is the current year minus
+  // that year, worked out at play time, never a literal (owner call).
+  const rs = rowStatus[id];
+  if (!rs || !["PROPOSED", "UNVERIFIED"].includes(rs.status) || !rs.reason) fail(id, "row-status.json needs status PROPOSED or UNVERIFIED and a reason");
+  if (/years ago/i.test(c.why ?? "")) {
+    if (!(rs && Number.isInteger(rs.yearsAgoFrom) && (c.why ?? "").includes(String(rs.yearsAgoFrom))))
+      fail(id, "years-ago question needs yearsAgoFrom in row-status.json, matching the year in the question");
+  }
   // Optional I5 stretch: an older group, a question and answer, and a fact id in sources.md.
   const ORDER = ["7-10", "10-18", "18+"];
   const st = c.stretch;
@@ -96,4 +106,10 @@ if (errors.length) {
   console.error(`\nFAILED (${errors.length})\n- ${errors.join("\n- ")}`);
   process.exit(1);
 }
-console.log(`\nPASSED: ${clips.length} clips`);
+for (const k of Object.keys(rowStatus)) if (!seen.has(k)) errors.push(`${k}: in row-status.json but not in clips.json`);
+if (errors.length) {
+  console.error(`\nFAILED (${errors.length})\n- ${errors.join("\n- ")}`);
+  process.exit(1);
+}
+const counts = Object.values(rowStatus).reduce((m, r) => ((m[r.status] = (m[r.status] ?? 0) + 1), m), {});
+console.log(`\nPASSED: ${clips.length} clips (${Object.entries(counts).map(([k, v]) => `${v} ${k}`).join(", ")})`);

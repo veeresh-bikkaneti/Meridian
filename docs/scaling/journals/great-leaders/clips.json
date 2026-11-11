@@ -25,5 +25,47 @@
       "answer": "x = 25, so a column is 25 feet taller",
       "fact": "L-14"
     }
+  },
+  {
+    "id": "great-leaders:jhansi-fort",
+    "group": "10-18",
+    "objective": "After this, a child in group 10-18 can compute how many years ago Queen Lakshmibai led her forces at Jhansi (the current year minus 1858, worked out at play time) and identify who rode with her, shown by a correct answer to the opening years-ago question and a correct tap on the post-clip retrieval check.",
+    "standard": {
+      "code": "D2.His.3.6-8",
+      "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
+    },
+    "why": "She led her forces in 1858. How many years ago was that?",
+    "place": {
+      "lat": 25.45809,
+      "lon": 78.57544,
+      "name": "Jhansi Fort, Jhansi, Uttar Pradesh, India"
+    },
+    "file": "public/videos/journals/great-leaders/jhansi-fort.mp4",
+    "captions": "jhansi-fort.vtt",
+    "retrieval": {
+      "question": "Who rode with Queen Lakshmibai?",
+      "answer": "Her little son"
+    }
+  },
+  {
+    "id": "great-leaders:netaji-bhawan",
+    "group": "10-18",
+    "objective": "After this, a child in group 10-18 can compute how many years ago Subhas Chandra Bose took command of the Indian National Army (the current year minus 1943, worked out at play time) and identify the greeting he made famous, shown by a correct answer to the opening years-ago question and a correct tap on the post-clip retrieval check.",
+    "standard": {
+      "code": "D2.His.3.6-8",
+      "source": "https://www.socialstudies.org/sites/default/files/2017/Jun/c3-framework-for-social-studies-rev0617.pdf"
+    },
+    "why": "He took command of the army in 1943. How many years ago was that?",
+    "place": {
+      "lat": 22.53758333,
+      "lon": 88.35125,
+      "name": "Netaji Bhawan, Kolkata, West Bengal, India"
+    },
+    "file": "public/videos/journals/great-leaders/netaji-bhawan.mp4",
+    "captions": "netaji-bhawan.vtt",
+    "retrieval": {
+      "question": "What words did Netaji make famous?",
+      "answer": "Jai Hind"
+    }
   }
 ]

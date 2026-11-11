@@ -1,0 +1,17 @@
+{
+  "great-leaders:lincoln-memorial": {
+    "status": "PROPOSED",
+    "reason": "Every narrated fact has two agreeing sources (sources.md L-ids).",
+    "yearsAgoFrom": null
+  },
+  "great-leaders:jhansi-fort": {
+    "status": "UNVERIFIED",
+    "reason": "Narrated fact 'her little son on her back' (R-8): back in S9, S21, S22, S23; waist in S10. Owner rule: a disagreeing source keeps the row UNVERIFIED. Every account is also hedged as belief or tradition.",
+    "yearsAgoFrom": 1858
+  },
+  "great-leaders:netaji-bhawan": {
+    "status": "PROPOSED",
+    "reason": "Every narrated or carded fact has at least two agreeing sources (B-1, B-3, B-6, B-8, B-12). Who coined 'Jai Hind' is disputed, but the narration says only 'made famous', which two sources support.",
+    "yearsAgoFrom": 1943
+  }
+}
