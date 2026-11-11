@@ -469,8 +469,8 @@ export function ResultCard({
                   >
                     <PlaceNameText name={placeLabel} />
                   </BoundedText>
-                  {/* Age-profile read-aloud (Phase 2 §4, Item C/B3): 5-7 filled +
-                      auto; 8-10 and 11-13 render the identical ghost speaker
+                  {/* Age-profile read-aloud (Phase 2 §4, Item C/B3): auto mode is filled +
+                      auto; button and off modes render the identical ghost speaker
                       icon (44px, no text label) so the band stays invisible.
                       The mode reads the effective band; the kid's onboarding
                       preference gates auto-read; autoplay only on fresh

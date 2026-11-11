@@ -80,7 +80,7 @@ export function buildLoopGuess(
  * the engine — not the input — is authoritative.
  *
  * The optional config wires the age-profile band's GeoDetective deal
- * (Phase 1 §3b: 8-10 starts with 3 clues and a cap of 6; 11-13 starts
+ * (Phase 1 §3b: 7-10 starts with 3 clues and a cap of 6; 10-18 starts
  * near-blind with a cap of 5). Defaults preserve the shipped tuning.
  */
 export interface SubmitGuessOptions {

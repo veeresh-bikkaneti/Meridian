@@ -56,7 +56,7 @@ What is established, and by what evidence — do not read more into it:
 - **Mapping:** 106 manifest ids = the 106 `JOURNAL_NOTES` ids = the 106
   images in `public/images/journal/`; every `file` is `<id>.mp4`. Checked by
   an independent review script, not yet by a repo gate (see Pending in
-  `BRANCH_STATUS.md`).
+  that branch's status record).
 - **Assets:** all 106 URLs served HTTP 200 `video/mp4` from meridian-media
   `08c8308`, byte-identical to that commit; ffprobe 10.000 s, h264 High
   1152×768 24 fps + one AAC-LC track; full decode exit 0 (independent

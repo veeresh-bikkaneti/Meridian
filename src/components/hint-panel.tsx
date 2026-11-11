@@ -5,15 +5,15 @@
  * hints are a REAL feature). The policy enum rides in the run's band
  * snapshot; this component is the reader (AGENTS.md rule #6).
  *
- * - 5-7 ("free"): button always visible and free. After 2 misses in the
+ * - 7-10 ("free"): button always visible and free. After 2 misses in the
  *   run, a mascot offer appears (opt-in tap, never auto-interrupt).
- * - 8-10 ("one-per-round"): button visible; 1 hint per place — disables
+ * - 10-18 ("one-per-round"): button visible; 1 hint per place — disables
  *   after use, re-enables on the next place.
- * - 11-13 ("none"): no button at all (Clean Round stays earnable).
+ * - 18+ ("none"): no button at all (Clean Round stays earnable).
  * - No profile set: the run snapshot carries the default policy
  *   ("one-per-round", owner 2026-10-20 — hints on by default, since the
  *   game never checks the player's age), so the button shows exactly
- *   like 8-10. Only an EXPLICIT 11-13 profile hides it.
+ *   like 10-18. Only an EXPLICIT 18+ profile hides it.
  *
  * Hints NEVER touch points. The hint message itself comes from
  * hint-logic.ts (mechanical directional nudge — no fabrication).
@@ -29,9 +29,9 @@ import {
 export type HintPanelProps = {
   /** Hint policy from the run's band snapshot (deal-time, never live). */
   policy: HintPolicy;
-  /** Hints used on the current place (drives 8-10 one-per-place). */
+  /** Hints used on the current place (drives 10-18 one-per-place). */
   hintsUsedThisPlace: number;
-  /** Misses in the run (drives the 5-7 mascot offer). */
+  /** Misses in the run (drives the 7-10 mascot offer). */
   missCount: number;
   /** The hint message to display after a hint is used (null = none yet). */
   hintMessage: string | null;
@@ -65,7 +65,7 @@ export function HintPanel({
     // "Hide question" control behind it (#113 overlap BLOCK).
     // items-end: children hug the right edge, away from the bubble's lane.
     <div className="pointer-events-none mt-2 flex flex-col items-end gap-2" data-testid="hint-panel">
-      {/* Mascot offer (5-7 only): opt-in, never auto-interrupt. */}
+      {/* Mascot offer (7-10 only): opt-in, never auto-interrupt. */}
       {showOffer ? (
         <div
           className="rounded-2xl border border-white/10 bg-[rgba(10,12,16,0.72)] p-3 shadow-lg backdrop-blur-[14px]"

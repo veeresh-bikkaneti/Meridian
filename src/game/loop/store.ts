@@ -110,8 +110,8 @@ export function isLoopPuzzleState(value: unknown): value is LoopPuzzleState {
     (s.cycle as number) >= 1 &&
     Array.isArray(s.guesses) &&
     // P0-1: bound by the largest cap any band's deal can legally produce
-    // (the 8-10 deal plays 6 guesses), NOT the shipped LOOP_MAX_GUESSES
-    // default — a 6-guess 8-10 mystery is legal and must persist.
+    // (the 7-10 deal plays 6 guesses), NOT the shipped LOOP_MAX_GUESSES
+    // default — a 6-guess 7-10 mystery is legal and must persist.
     s.guesses.length <= MAX_DEAL_GUESS_CAP &&
     (s.guesses as unknown[]).every(isLoopGuess) &&
     isLoopStatus(s.status) &&

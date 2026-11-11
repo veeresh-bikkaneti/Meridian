@@ -139,7 +139,7 @@ import {
   StorytellerBannerBoundary,
   StorytellerBannerSkeleton,
 } from "./storyteller-banner-shell";
-// Age-profile system: the parent-set band (5-7 / 8-10 / 11-13). Game
+// Age-profile system: the parent-set group (7-10 / 10-18 / 18+). Game
 // screens use ONLY this facade — the store is never imported directly.
 // The settings screen is React.lazy: zero initial-bundle cost.
 import "./age-profile/age-profile.css";
@@ -156,7 +156,21 @@ import {
   pinToleranceKm,
   resolveBand,
   type AgeBandId,
+  type BandRunConfig,
 } from "@/game/age-profile";
+
+type LegacySnapshotBand = Exclude<BandRunConfig["band"], AgeBandId>;
+
+/**
+ * A persisted run-config snapshot (meridian.loop.v2) may still carry a
+ * pre-age-groups id. Map it to the current group wherever an AgeGroup is
+ * needed; the snapshot itself is never rewritten or rejected.
+ */
+function normalizeSnapshotBand(b: AgeBandId | LegacySnapshotBand): AgeBandId {
+  if (b === "5-7" || b === "8-10") return "7-10";
+  if (b === "11-13") return "10-18";
+  return b;
+}
 const AgeProfileSettings = lazy(() => import("./age-profile/AgeProfileSettings"));
 const StorytellerHomeHost = lazy(() => import("./storyteller-home"));
 // v5 hero globe: React.lazy like the storyteller host — the Three.js chunk
@@ -4392,7 +4406,7 @@ function Choose({
   /** True while a blocking boot dialog is open or boot qualification hasn't
       settled — the storyteller greeting waits (UX review 2026-10-12). */
   suppressGreeting?: boolean;
-  /** Effective age band (parent-set; "11-13" when unset). */
+  /** Effective age band (parent-set; "10-18" when unset). */
   ageBand: AgeBandId;
   /** Open the grown-up gate (footer link + locked-tile link). */
   onGrownUpOpen: () => void;
@@ -4793,7 +4807,7 @@ function Choose({
 
       <div className="hv5-grid2" id="home-cases" tabIndex={-1}>
         {/* GeoDetective leads: the flagship case file, unlimited mysteries.
-            Age-profile: for bands where the loop is locked (5-7), the SAME
+            Age-profile: for bands where the loop is locked (no current group locks it), the SAME
             footprint renders the locked variant in place. */}
         {isLoopLocked(ageBand, "geodetective") ? (
           <LockedLoop title="GeoDetective" onGrownUpOpen={onGrownUpOpen} />
@@ -6782,7 +6796,7 @@ function PlayLoaded({
   const userCollapsedBubbleRef = useRef(false);
   const [cardDismissed, setCardDismissed] = useState(false);
   // Hint UI (follow-up Item A — hints are a REAL feature, owner 2026-10-09).
-  // Hints NEVER touch points. Per-place usage drives the 8-10 one-per-place
+  // Hints NEVER touch points. Per-place usage drives the 10-18 one-per-place
   // policy; the run-level hintsUsed accumulates for the snapshot. The
   // mascot offer dismissal resets per run (not per place) — no nagging.
   const [hintsUsedThisPlace, setHintsUsedThisPlace] = useState(0);
@@ -6984,7 +6998,7 @@ function PlayLoaded({
       setBubble("collapsed");
     }
     setCardDismissed(false);
-    // Hint UI resets per place (8-10: one hint per place).
+    // Hint UI resets per place (10-18: one hint per place).
     setHintsUsedThisPlace(0);
     setHintMessage(null);
   }, [place?.id]);
@@ -7116,7 +7130,7 @@ function PlayLoaded({
         ? challengeRadiusOf(run)
         : review
           ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-          : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run))),
+          : pinToleranceKm(run.bandConfig?.band ? normalizeSnapshotBand(run.bandConfig.band) : ageBand, run.edition, greaterSideKm(boundsFor(run))),
       // Same unit as the result headline — USA plays read miles (owner ruling 2026-10-11).
       unit: unitForEdition(run.edition, run.regionId),
     };
@@ -7158,7 +7172,7 @@ function PlayLoaded({
       ? challengeRadiusOf(run)
       : review
         ? (reviewEntry?.place.radiusKm ?? radiusKm("globe", 0))
-        : pinToleranceKm(run.bandConfig?.band ?? ageBand, run.edition, greaterSideKm(boundsFor(run)));
+        : pinToleranceKm(run.bandConfig?.band ? normalizeSnapshotBand(run.bandConfig.band) : ageBand, run.edition, greaterSideKm(boundsFor(run)));
     const hit = isHit(distance, radius);
     // v3: the place is scored with the streak engine + difficulty multiplier;
     // a miss scores 0 and resets the streak (handled in dropPin). Review is
@@ -7289,7 +7303,7 @@ function PlayLoaded({
 
   // Hint UI (follow-up Item A): a hint reveals a directional nudge —
   // never points, never the answer. The policy comes from the run's
-  // band snapshot (deal-time); the button state is per-place for 8-10.
+  // band snapshot (deal-time); the button state is per-place for 10-18.
   // Fail closed: no place or no bounds = no hint.
   function onUseHint() {
     if (!run || !place) return;

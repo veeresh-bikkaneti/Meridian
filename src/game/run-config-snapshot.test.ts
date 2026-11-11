@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { resumeRun, startRun, type Run } from "./run.ts";
 import { getBandConfig } from "./age-profile/run-config.ts";
+import type { AgeBandId } from "./age-profile/types.ts";
 import { PROFILE_STORAGE_KEY, resolveBand } from "./age-profile/store.ts";
 
 /**
@@ -17,7 +18,7 @@ const storageBacking = new Map<string, string>();
 const hadLocalStorage = "localStorage" in globalThis;
 const savedLocalStorage = (globalThis as Record<string, unknown>).localStorage;
 
-function seedProfileBand(band: "5-7" | "8-10" | "11-13" | null): void {
+function seedProfileBand(band: AgeBandId | null): void {
   (globalThis as Record<string, unknown>).localStorage = {
     getItem: (k: string) => (storageBacking.has(k) ? storageBacking.get(k)! : null),
     setItem: (k: string, v: string) => {
@@ -37,7 +38,7 @@ function seedProfileBand(band: "5-7" | "8-10" | "11-13" | null): void {
         band,
         updatedAt: new Date().toISOString(),
         changeCount: 0,
-        schemaVersion: 1,
+        schemaVersion: 2,
       }),
     );
   }
@@ -61,11 +62,11 @@ const today = {
 
 test("startRun snapshots the band config once; hints start unused", () => {
   try {
-    seedProfileBand("5-7");
-    assert.equal(resolveBand(), "5-7");
+    seedProfileBand("7-10");
+    assert.equal(resolveBand(), "7-10");
     const run = startRun(today, ["p1", "p2", "p3"]);
-    assert.deepEqual(run.bandConfig!, getBandConfig("5-7"));
-    assert.equal(run.bandConfig!.quizQs, 5);
+    assert.deepEqual(run.bandConfig!, getBandConfig("7-10"));
+    assert.equal(run.bandConfig!.quizQs, 8);
     assert.equal(run.bandConfig!.hintPolicy, "free");
     assert.equal(run.hintsUsed!, 0);
   } finally {
@@ -75,16 +76,16 @@ test("startRun snapshots the band config once; hints start unused", () => {
 
 test("a resumed run keeps its deal-time snapshot — a mid-run band flip cannot warp it", () => {
   try {
-    seedProfileBand("5-7");
+    seedProfileBand("7-10");
     const run = startRun(today, ["p1", "p2", "p3"]);
-    assert.equal(run.bandConfig!.quizQs, 5);
+    assert.equal(run.bandConfig!.quizQs, 8);
     // The parent flips the band mid-run: the save writes immediately...
-    seedProfileBand("11-13");
-    assert.equal(resolveBand(), "11-13");
-    // ...but the resumed run keeps its 5-7 snapshot.
+    seedProfileBand("10-18");
+    assert.equal(resolveBand(), "10-18");
+    // ...but the resumed run keeps its 7-10 snapshot.
     const resumed = resumeRun({ ...run }, today, ["p1", "p2", "p3"]);
-    assert.equal(resumed.bandConfig!.quizQs, 5);
-    assert.deepEqual(resumed.bandConfig!, getBandConfig("5-7"));
+    assert.equal(resumed.bandConfig!.quizQs, 8);
+    assert.deepEqual(resumed.bandConfig!, getBandConfig("7-10"));
     assert.equal(resumed.hintsUsed!, 0);
   } finally {
     restoreLocalStorage();
@@ -111,22 +112,22 @@ test("unset profile: startRun snapshot carries hints ON by default (owner 2026-1
   try {
     seedProfileBand(null); // no age profile — the fresh-visitor case
     const run = startRun(today, ["p1", "p2"]);
-    // The snapshot is the unset config: 11-13 numbers, band field
-    // "11-13", but the hint policy is the on-by-default one — the raw
+    // The snapshot is the unset config: 10-18 numbers, band field
+    // "10-18", but the hint policy is the on-by-default one — the raw
     // (null) band must reach getBandConfig, not the resolved band.
     assert.deepEqual(run.bandConfig!, getBandConfig(null));
-    assert.equal(run.bandConfig!.band, "11-13");
+    assert.equal(run.bandConfig!.band, "10-18");
     assert.equal(run.bandConfig!.hintPolicy, "one-per-round");
   } finally {
     restoreLocalStorage();
   }
 });
 
-test("explicit 11-13 profile: startRun snapshot keeps hints OFF (parent's choice)", () => {
+test("explicit 18+ profile: startRun snapshot keeps hints OFF (parent's choice)", () => {
   try {
-    seedProfileBand("11-13");
+    seedProfileBand("18+");
     const run = startRun(today, ["p1", "p2"]);
-    assert.deepEqual(run.bandConfig!, getBandConfig("11-13"));
+    assert.deepEqual(run.bandConfig!, getBandConfig("18+"));
     assert.equal(run.bandConfig!.hintPolicy, "none");
   } finally {
     restoreLocalStorage();
