@@ -381,7 +381,7 @@
   },
   "angkor": {
     "image": "images/journal/angkor.webp",
-    "imageAlt": "Storybook drawing of Angkor Wat, the great temple with its five towers reflected in the lotus pond at sunrise."
+    "imageAlt": "Storybook drawing of Angkor Wat, the great stone complex with its five towers reflected in the pond at sunrise."
   },
   "petra": {
     "image": "images/journal/petra.webp",
@@ -413,11 +413,11 @@
   },
   "potala": {
     "image": "images/journal/potala.webp",
-    "imageAlt": "Storybook drawing of the Potala Palace, the great palace rising on its sacred hill above Lhasa with pilgrims below."
+    "imageAlt": "Storybook drawing of the Potala Palace, the great white and red palace rising on its rocky hill above Lhasa."
   },
   "timbuktu": {
     "image": "images/journal/timbuktu.webp",
-    "imageAlt": "Storybook drawing of Timbuktu, the ancient mud-brick mosques and manuscript library with a camel caravan in the desert."
+    "imageAlt": "Storybook drawing of Timbuktu, the ancient mud-brick buildings and a library with a camel caravan in the desert."
   },
   "galapagos": {
     "image": "images/journal/galapagos.webp",
