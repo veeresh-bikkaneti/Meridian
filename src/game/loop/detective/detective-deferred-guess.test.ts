@@ -95,11 +95,11 @@ test("deferred guess: the single queue drain runs the shipped bridge off the pai
     2,
     "pendingClue carries the bridge payload (the marker/payload pair)",
   );
-  // The pick was named exactly once — by the pick read itself.
-  assert.deepEqual(ids(steps[CLUE1_AT_REST.length]!.effects), [`name:${A}`]);
-  // The confirm spoke the guess read's suspicion into the same queue,
-  // behind the name clip (dedup: the just-named pick is not re-named).
-  assert.deepEqual(ids(steps[CLUE1_AT_REST.length + 1]!.effects), ["fixed:suspicion"]);
+  // The pick was named once, with one ack — by the pick read itself.
+  assert.deepEqual(ids(steps[CLUE1_AT_REST.length]!.effects), [`name:${A}`, "fixed:ack-2"]);
+  // The confirm adds no second line: the name + ack is still queued,
+  // and that one drain is the bridge.
+  assert.deepEqual(ids(steps[CLUE1_AT_REST.length + 1]!.effects), []);
   // The ONE queue drain (name clip + guess read) opens the miss beat
   // directly — settling at rest here would strand the clue: the
   // confirm's sheet cycle has already closed and no second drain
@@ -133,18 +133,15 @@ test("deferred guess: the bridge asks — never a second suspicion — then star
   assert.equal(clue.view.phase, "READING");
   assert.deepEqual(ids(clue.effects), ["clue"]);
   assert.equal(clue.state.pendingGuessConfirm, null, "the clue start clears the marker");
-  // Across the whole flow the name was read once and the suspicion once.
+  // Across the whole flow the name was read once and one ack once.
   const all = [
     ...steps.flatMap((s) => ids(s.effects)),
     ...ids(ask.effects),
     ...ids(clue.effects),
   ];
   assert.equal(all.filter((x) => x === `name:${A}`).length, 1, "the pick is named once");
-  assert.equal(
-    all.filter((x) => x === "fixed:suspicion").length,
-    1,
-    "the guess reaction plays once",
-  );
+  assert.equal(all.filter((x) => x === "fixed:ack-2").length, 1, "the ack plays once");
+  assert.equal(all.filter((x) => x === "fixed:suspicion").length, 0, "no suspicion line");
 });
 
 test("deferred guess: a guess read already in flight keeps the shipped bridge (no deferral)", () => {
@@ -214,8 +211,8 @@ test("post-name window: a confirm landing at the pick read's exit instant keeps 
     { type: "guessConfirmed", placeId: A }, // the player confirms just after
     { type: "clueUnlocked", clueIndex: 2 }, // the guess's clue lands
   ]);
-  // The pick was named exactly once — by the pick read itself.
-  assert.deepEqual(ids(steps[CLUE1_AT_REST.length]!.effects), [`name:${A}`]);
+  // The pick was named once, with one ack — by the pick read itself.
+  assert.deepEqual(ids(steps[CLUE1_AT_REST.length]!.effects), [`name:${A}`, "fixed:ack-2"]);
   // The exit drain is a no-op for effects, but it must restore the
   // in-flight kind: after the pick read drains, no GUESS read is
   // pending, so the next unlock keys off the guess branch again.
@@ -232,10 +229,11 @@ test("post-name window: a confirm landing at the pick read's exit instant keeps 
     false,
     "no guess read completed — selectionReadDone stays down",
   );
-  // The confirm speaks the guess read's suspicion (dedup: the
-  // just-named pick is not re-named).
+  // The pick already drained, so the confirm speaks nothing. The host
+  // takes the speechEnded step itself (continue) or the miss beat never starts.
   const confirmed = steps[CLUE1_AT_REST.length + 2]!;
-  assert.deepEqual(ids(confirmed.effects), ["fixed:suspicion"]);
+  assert.ok(confirmed.effects.some((e) => e.type === "continue"));
+  assert.deepEqual(ids(confirmed.effects), []);
   // The unlock is marked as the deferred guess's payload — the pair,
   // exactly as in the during-read window.
   const armed = lastOf(steps);
@@ -259,7 +257,7 @@ test("post-name window: a confirm landing at the pick read's exit instant keeps 
   assert.equal(clue.view.phase, "READING");
   assert.deepEqual(ids(clue.effects), ["clue"]);
   assert.equal(clue.state.pendingGuessConfirm, null, "the clue start clears the marker");
-  // Across the whole flow the name was read once and the suspicion once.
+  // Across the whole flow the name was read once and one ack once.
   const all = [
     ...steps.flatMap((s) => ids(s.effects)),
     ...ids(drained.effects),
@@ -267,11 +265,8 @@ test("post-name window: a confirm landing at the pick read's exit instant keeps 
     ...ids(clue.effects),
   ];
   assert.equal(all.filter((x) => x === `name:${A}`).length, 1, "the pick is named once");
-  assert.equal(
-    all.filter((x) => x === "fixed:suspicion").length,
-    1,
-    "the guess reaction plays once",
-  );
+  assert.equal(all.filter((x) => x === "fixed:ack-2").length, 1, "the ack plays once");
+  assert.equal(all.filter((x) => x === "fixed:suspicion").length, 0, "no suspicion line");
 });
 
 test("post-name window: a SOLVED confirm at the exit instant celebrates at the drain — no guess read into a closed case", () => {

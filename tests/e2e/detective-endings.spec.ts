@@ -3,6 +3,7 @@ import { serveBuiltArtifact } from "./helpers";
 import {
   AuditTrail,
   type AuditStats,
+  ACK_POOL,
   assertSubsequence,
   collectAudioRequests,
   collectAuditWindow,
@@ -103,7 +104,7 @@ test("WIN in 2: NOTE_MARK + ask-next after the miss, CELEBRATE, debrief in order
   const playsAfterMiss = await detectivePlays(page);
   assertSubsequence(playsAfterMiss, [
     "names/5506956.mp3",
-    "fixed/suspicion.mp3",
+    ACK_POOL,
     "fixed/ask-next.mp3",
   ]);
   const phaseLog = await readPhaseLog();
@@ -149,7 +150,7 @@ test("WIN in 2: NOTE_MARK + ask-next after the miss, CELEBRATE, debrief in order
   const plays = await detectivePlays(page);
   const winIdx = assertSubsequence(plays, [
     "names/5505411.mp3",
-    "fixed/suspicion.mp3",
+    ACK_POOL,
     "fixed/win-holmes.mp3",
     "fixed/win-watson.mp3",
     ...debriefNeedles,

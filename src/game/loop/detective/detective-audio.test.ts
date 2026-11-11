@@ -332,13 +332,13 @@ function modeHarness(
   return { player, played, speaking };
 }
 
-test("U9 tap mode: clue chain resolves skipped (drains) but is held — read + ack, in order", async () => {
+test("U9 tap mode: a skipped clue does not drain — the chain is held until Listen", async () => {
   const { player, played, speaking } = modeHarness("tap");
   player.enqueue({ kind: "clue", clueIndex: 1 });
   player.enqueue({ kind: "fixed", id: "ack-1" });
   await tick();
   assert.deepEqual(played, []); // nothing auto-plays
-  assert.deepEqual(speaking, [null]); // drain still fires — ladder advances silently
+  assert.deepEqual(speaking, []); // no drain — the ladder stays on this card
   assert.deepEqual(player.heldRefs(), [
     { kind: "clue", clueIndex: 1 },
     { kind: "fixed", id: "ack-1" },

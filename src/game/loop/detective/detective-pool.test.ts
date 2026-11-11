@@ -44,13 +44,16 @@ test("pool: suspicion is never part of the ack pool (one single clip)", () => {
   for (const id of ACK_POOL_IDS) assert.ok(id.startsWith("ack-"));
 });
 
-test("pool: candidates are the pool minus the played-set; exhausted → full pool", () => {
+test("pool: candidates are the pool minus the played-set; exhausted → pool minus the line just said", () => {
   assert.deepEqual(ackCandidates([]), ACK_POOL_IDS);
   assert.deepEqual(
     ackCandidates(["ack-1", "ack-5"]),
     ACK_POOL_IDS.filter((id) => id !== "ack-1" && id !== "ack-5"),
   );
-  assert.deepEqual(ackCandidates(ACK_POOL_IDS), ACK_POOL_IDS);
+  assert.deepEqual(
+    ackCandidates(ACK_POOL_IDS),
+    ACK_POOL_IDS.filter((id) => id !== "ack-10"),
+  );
 });
 
 test("pool: the draw is state-independent — same played-set, same candidates and same pick, whatever the guesses, clue or last pick", () => {
@@ -115,14 +118,28 @@ test("pool: in-machine, a whole case of four acks never repeats and records the 
   assert.equal(state.acksPlayed, 4);
 });
 
-test("pool: suspicion on a guess is the single fixed clip, regardless of the ack pool", () => {
+test("pool: twelve draws in one case are unique for the first ten and never back-to-back", () => {
+  const played: string[] = [];
+  const draws: string[] = [];
+  for (let i = 0; i < 12; i++) {
+    const id = drawAckId(played, () => 0);
+    draws.push(id);
+    played.push(id);
+  }
+  assert.equal(new Set(draws.slice(0, ACK_POOL_SIZE)).size, ACK_POOL_SIZE);
+  for (let i = 1; i < draws.length; i++) {
+    assert.notEqual(draws[i], draws[i - 1], `draw ${i} repeated ${draws[i - 1]}`);
+  }
+});
+
+test("pool: a guess draws the next unused ack, not the single suspicion clip", () => {
   const s = { ...initialDetectiveState(), phase: "SEARCH_IDLE" as const, clueIndex: 1, acksUsed: ["ack-1"] };
-  const out = transition(s, { type: "guessConfirmed", placeId: "geonames:5" });
+  const out = transition(s, { type: "guessConfirmed", placeId: "geonames:5" }, () => 0);
   const ids = out.effects
     .filter((e) => e.type === "speak")
     .map((e) => JSON.stringify((e as Extract<DetectiveEffect, { type: "speak" }>).ref));
   assert.deepEqual(ids, [
     JSON.stringify({ kind: "name", placeId: "geonames:5" }),
-    JSON.stringify({ kind: "fixed", id: "suspicion" }),
+    JSON.stringify({ kind: "fixed", id: "ack-2" }),
   ]);
 });

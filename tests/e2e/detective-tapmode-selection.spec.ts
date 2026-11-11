@@ -1,12 +1,12 @@
 import { test, expect, type BrowserContext, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 import {
+  ACK_POOL,
   BASE,
   detectivePlays,
   entryByName,
   fulfillFlagsFlank,
   installDetectiveRecorder,
-  waitForPhase,
   watchdogSeeks,
 } from "./detective-u10";
 
@@ -50,7 +50,6 @@ import {
 test.setTimeout(600_000);
 
 const CASE = 137; // Henderson, Nevada — the seam case.
-const SUSPICION = "fixed/suspicion.mp3";
 
 /** The owner's read-aloud preference, seeded before first load (the
  * Game Player's seed): "sometimes" puts the surface in tap mode. */
@@ -156,15 +155,22 @@ async function expectReactionAndContinuation(
   nameClip: string,
 ): Promise<void> {
   await expect
-    .poll(async () => (await playCount(page, SUSPICION)) > 0, {
-      timeout: 30_000,
-    })
+    .poll(async () => {
+      const plays = await detectiveOnly(page);
+      const nameAt = plays.findIndex((u) => u.includes(nameClip));
+      if (nameAt < 0) return false;
+      return plays.slice(nameAt + 1).some((u) => ACK_POOL.test(u));
+    }, { timeout: 30_000 })
     .toBe(true);
   expect(await playCount(page, nameClip)).toBe(1);
   await expect(page.getByText(/Guess 2 of/).first()).toBeVisible({
     timeout: 30_000,
   });
-  await waitForPhase(page, "SEARCH_IDLE", 60_000);
+  // Tap mode holds the next clue's read until Listen, so the ladder
+  // stays on that read instead of resting in SEARCH_IDLE.
+  await expect(page.getByRole("article", { name: /^Clue 2: Climate$/ })).toBeVisible({
+    timeout: 60_000,
+  });
   await releaseHeldClue(page, `case-${CASE}/clue-2.mp3`);
   expect(await watchdogSeeks(page)).toBe(0);
 }
@@ -239,4 +245,42 @@ test("(after) tap mode: a guess confirmed just after the pick's name ends keeps 
   await page.getByRole("button", { name: "Guess this place" }).click();
 
   await expectReactionAndContinuation(page, NAME_CLIP);
+});
+
+test("tap mode: opening cards stay shut past the clue watchdog until Watson is heard", async ({
+  page,
+  context,
+}) => {
+  await seedOwnerPref(context);
+  await context.addInitScript(() => {
+    localStorage.setItem(
+      "meridian.ageProfile.v1",
+      JSON.stringify({
+        status: "active",
+        band: "7-10",
+        updatedAt: new Date().toISOString(),
+        changeCount: 0,
+        schemaVersion: 2,
+      }),
+    );
+  });
+  await fulfillFlagsFlank(context);
+  await installDetectiveRecorder(context);
+  await page.setViewportSize({ width: 390, height: 844 });
+
+  await openTapCase(page, CASE);
+  await expect(page.getByRole("article", { name: /^Clue 1: Geography$/ })).toBeVisible();
+  await expect(page.getByRole("article", { name: "Clue 2: Climate (locked)" })).toBeVisible();
+  await expect(page.getByRole("article", { name: "Clue 3: History (locked)" })).toBeVisible();
+
+  // Past CLUE_PRESENT_WATCHDOG_MS (30s). The opening must still be one card.
+  await page.waitForTimeout(32_000);
+  await expect(page.getByRole("article", { name: /^Clue 1: Geography$/ })).toBeVisible();
+  await expect(page.getByRole("article", { name: "Clue 2: Climate (locked)" })).toBeVisible();
+  await expect(page.getByRole("article", { name: "Clue 3: History (locked)" })).toBeVisible();
+
+  await releaseHeldClue(page, `case-${CASE}/clue-1.mp3`);
+  await expect(page.getByRole("article", { name: /^Clue 2: Climate$/ })).toBeVisible({
+    timeout: 120_000,
+  });
 });

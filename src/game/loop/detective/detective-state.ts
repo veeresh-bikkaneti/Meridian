@@ -93,6 +93,10 @@ export type DetectiveEffect =
   /** Cut whatever is playing and flush the queue (the player pinned
    * before Watson finished — the pin wins the voice). */
   | { type: "stopSpeech" }
+  /** No clip was queued, but the ladder still needs its speechEnded
+   * step (a confirm whose name and ack already played). The host
+   * dispatches speechEnded on a microtask. */
+  | { type: "continue" }
   /** A short speech bubble over one figure (moment lines). The text
    * always shows; the voice plays when the line's clip is rendered. */
   | { type: "caption"; who: "holmes" | "watson"; text: string; ms: number };
@@ -155,7 +159,7 @@ export interface DetectiveView {
 
 /** Which step inside READING the ladder is on (the phase alone cannot
  * distinguish Watson's read from Holmes's ack+decode). */
-export type ReadingStep = "announce" | "watson-read" | "ack-decode";
+export type ReadingStep = "announce" | "watson-read" | "ack-decode" | "cut";
 
 /** CASE_OPEN's instruction duet (U8, council Q4): played on a FRESH deal
  * only, before clue 1. "awaiting" = the host has not yet reported
@@ -363,11 +367,16 @@ export const ACK_POOL_IDS: readonly string[] = Array.from(
 /** The lines still on offer: the pool minus what already played this
  * case. Takes the played-set and NOTHING else — no guesses, no
  * correctness, no clue index — which is what keeps the draw
- * answer-blind. Pool exhausted (cannot happen at ≤4 acks a case) →
- * the full pool again. */
+ * answer-blind. Pool exhausted → every line except the one just said
+ * (played's last entry), so a wrap is never back-to-back. An empty
+ * played-set is the full pool. */
 export function ackCandidates(played: readonly string[]): readonly string[] {
   const left = ACK_POOL_IDS.filter((id) => !played.includes(id));
-  return left.length > 0 ? left : ACK_POOL_IDS;
+  if (left.length > 0) return left;
+  const last = played[played.length - 1];
+  if (last === undefined) return ACK_POOL_IDS;
+  const wrapped = ACK_POOL_IDS.filter((id) => id !== last);
+  return wrapped.length > 0 ? wrapped : ACK_POOL_IDS;
 }
 
 /** Random draw from the candidates. `rng` is injectable (0 ≤ r < 1). */
@@ -605,6 +614,18 @@ interface Step {
   effects: DetectiveEffect[];
 }
 
+function takeAck(
+  state: DetectiveState,
+  rng: () => number,
+): { ackId: string; acksPlayed: number; acksUsed: readonly string[] } {
+  const ackId = drawAckId(state.acksUsed, rng);
+  return {
+    ackId,
+    acksPlayed: state.acksPlayed + 1,
+    acksUsed: [...state.acksUsed, ackId],
+  };
+}
+
 function result(state: DetectiveState, effects: DetectiveEffect[] = []): Step & { view: DetectiveView } {
   return { state, effects, view: viewForState(state) };
 }
@@ -758,6 +779,9 @@ function afterSelectionRead(state: DetectiveState): Step & { view: DetectiveView
     // clue with no trigger left to start it.
     return enterNoteMark(state, state.selectionReadInFlight);
   }
+  if (state.openTarget > state.clueIndex && state.clueIndex >= 1) {
+    return startClue(state, state.clueIndex + 1, state.selectionReadInFlight);
+  }
   return result({
     ...state,
     phase: "SEARCH_IDLE",
@@ -775,29 +799,75 @@ function afterSelectionRead(state: DetectiveState): Step & { view: DetectiveView
   });
 }
 
-/** Emit a selection read: name only — no suspicion, no ack spent — and
- * remember it for the dedup rule. Stays in the current phase: it spends
- * no guess, so it never arms the miss beat / ASK_NEXT path and never
- * touches ringAnimating. */
-function speakSelection(state: DetectiveState, placeId: string): Step & { view: DetectiveView } {
+/** Emit a selection read: the place name, then one ack from the pool
+ * (never the single "it could be it" line). Stays in the current phase
+ * when the ladder is at rest: it spends no guess, so it never arms the
+ * miss beat / ASK_NEXT path and never touches ringAnimating. */
+function speakSelection(
+  state: DetectiveState,
+  placeId: string,
+  rng: () => number,
+): Step & { view: DetectiveView } {
+  const ack = takeAck(state, rng);
   return result(
     {
       ...state,
       pendingSelection: null,
       selectionReadInFlight: false,
       lastNamed: { placeId, guesses: state.guessesConfirmed, clue: state.clueIndex },
+      acksPlayed: ack.acksPlayed,
+      acksUsed: ack.acksUsed,
     },
-    [speak({ kind: "name", placeId, selection: true })],
+    [
+      speak({ kind: "name", placeId, selection: true }),
+      speak({ kind: "fixed", id: ack.ackId }),
+    ],
+  );
+}
+
+/** Watson is mid-question. The pick wins the voice: his read stops,
+ * Holmes names the place and acknowledges, and the opening continues
+ * with the next starting clue only after that line drains. */
+function cutWatsonRead(
+  state: DetectiveState,
+  placeId: string,
+  rng: () => number,
+): Step & { view: DetectiveView } {
+  const ack = takeAck(state, rng);
+  return result(
+    {
+      ...state,
+      phase: "SEARCH_IDLE",
+      readingStep: "cut",
+      pendingSelection: null,
+      pendingClue: null,
+      pendingGuessConfirm: null,
+      selectionReadInFlight: false,
+      selectionReadKind: null,
+      askNextSpoken: false,
+      lastNamed: { placeId, guesses: state.guessesConfirmed, clue: state.clueIndex },
+      acksPlayed: ack.acksPlayed,
+      acksUsed: ack.acksUsed,
+    },
+    [
+      { type: "stopSpeech" },
+      ...momentEffects("beatMe"),
+      speak({ kind: "name", placeId, selection: true }),
+      speak({ kind: "fixed", id: ack.ackId }),
+    ],
   );
 }
 
 /** The ladder just came to rest: a read held back during the clue chain
  * fires now. With nothing pending this is just `result(state)`. */
-function restingResult(state: DetectiveState): Step & { view: DetectiveView } {
+function restingResult(
+  state: DetectiveState,
+  rng: () => number,
+): Step & { view: DetectiveView } {
   if (state.pendingSelection === null) {
     return result({ ...state, selectionReadInFlight: true });
   }
-  return speakSelection(state, state.pendingSelection);
+  return speakSelection(state, state.pendingSelection, rng);
 }
 
 /** Phases where a clue chain (or the opening duet) still owns the
@@ -815,6 +885,7 @@ const INTERRUPTIBLE_PHASES: ReadonlySet<DetectivePhase> = new Set([
 function interruptWithGuess(
   state: DetectiveState,
   placeId: string,
+  rng: () => number,
 ): Step & { view: DetectiveView } {
   if (state.phase === "CASE_OPEN" && state.instructionsStep === "awaiting") {
     return noOp(state);
@@ -823,6 +894,7 @@ function interruptWithGuess(
     state.phase === "READING" ||
     state.phase === "THINKING_BEAT" ||
     state.openTarget > state.clueIndex;
+  const ack = takeAck(state, rng);
   return result(
     {
       ...state,
@@ -844,12 +916,14 @@ function interruptWithGuess(
       askNextSpoken: false,
       lastNamed: null,
       guessesConfirmed: state.guessesConfirmed + 1,
+      acksPlayed: ack.acksPlayed,
+      acksUsed: ack.acksUsed,
     },
     [
       { type: "stopSpeech" },
       ...(midClue ? momentEffects("beatMe") : []),
       speak({ kind: "name", placeId }),
-      speak({ kind: "fixed", id: "suspicion" }),
+      speak({ kind: "fixed", id: ack.ackId }),
     ],
   );
 }
@@ -943,7 +1017,7 @@ export function transition(
       if (!event.freshDeal) {
         // Resumed case: instructions are skipped, the ladder proceeds
         // as U5 whenever its clue arrives (the current clue only).
-        return restingResult({ ...base, instructionsStep: "skipped", openTarget: 0 });
+        return restingResult({ ...base, instructionsStep: "skipped", openTarget: 0 }, rng);
       }
       const target =
         typeof event.openTarget === "number" &&
@@ -954,7 +1028,7 @@ export function transition(
       const opened: DetectiveState = { ...base, openTarget: target };
       if (event.intro === false) {
         // Case 2+ of the session: no duet (first entry only).
-        return restingResult({ ...opened, instructionsStep: "done" });
+        return restingResult({ ...opened, instructionsStep: "done" }, rng);
       }
       // Fresh deal: Holmes's instruction line first (Q4 case open).
       return result({ ...opened, instructionsStep: "holmes" }, [
@@ -1011,48 +1085,40 @@ export function transition(
 
     case "guessConfirmed": {
       if (INTERRUPTIBLE_PHASES.has(state.phase)) {
-        return interruptWithGuess(state, event.placeId);
+        return interruptWithGuess(state, event.placeId, rng);
       }
       if (state.phase !== "SEARCH_IDLE" && state.phase !== "SEARCH_AREA") {
         return noOp(state);
       }
-      // Dedup: the pick was just named in this very clue cycle (same
-      // guesses-used, same clue) -> suspicion only, never the name twice.
+      // Dedup: the pick was just named in this clue cycle -> do not
+      // say the name again. If that name+ack is still queued, add
+      // nothing (its drain is the bridge). If it already drained, ask
+      // the host to take the speechEnded step with no second line.
+      // Never the fixed "it could be it" line.
       const alreadyNamed =
         state.lastNamed !== null &&
         state.lastNamed.placeId === event.placeId &&
         state.lastNamed.guesses === state.guessesConfirmed &&
         state.lastNamed.clue === state.clueIndex;
-      // The ring animation owns the screen next; the pair is absent for
-      // it (ringAnimating) until the host fires ringAnimationEnded.
-      // A guess supersedes and discards any pending selection read.
+      const ack = alreadyNamed ? null : takeAck(state, rng);
+      const lines: DetectiveEffect[] = alreadyNamed
+        ? state.selectionReadInFlight
+          ? [{ type: "continue" }]
+          : []
+        : [
+            speak({ kind: "name", placeId: event.placeId }),
+            speak({ kind: "fixed", id: ack!.ackId }),
+          ];
       return result(
         {
           ...state,
           phase: "SELECTION_READ",
+          // A non-interrupting guess leaves the opening in place.
+          readingStep: null,
           ringAnimating: true,
           lastPausePoint: null,
           pendingSelection: null,
-          // The in-flight kind from here is THIS guess read — unless
-          // a pick read is still audibly playing ahead of it in the
-          // player queue, in which case the pick read's kind stands
-          // until the ladder settles (the unlock decides by it).
           selectionReadInFlight: state.selectionReadInFlight,
-          // Follow-up cure 2: selectionReadKind records how THIS
-          // read was armed, so clueUnlocked can route this read's
-          // unlock to the deferred-guess branch. Three armings:
-          // a pick read is still playing ahead of this guess read
-          // (flag false) — "post-pick" (the unlock would take the
-          // pair branch on the flag alone anyway); the confirm lands
-          // directly on a pick read's exit drain — the pre-check in
-          // speechEnded restored the flag AND left "post-pick"
-          // standing, and it is preserved here (the restored flag
-          // alone cannot distinguish that rest from an ordinary
-          // one); anything else is an ordinary at-rest guess —
-          // "direct", the shipped kind. selectionReadDone is set
-          // false here: resting with it true is the ASK_NEXT
-          // trigger, and afterSelectionRead sets it at this read's
-          // exit.
           selectionReadDone: false,
           selectionReadKind:
             state.selectionReadKind === "post-pick" || !state.selectionReadInFlight
@@ -1060,13 +1126,10 @@ export function transition(
               : "direct",
           lastNamed: null,
           guessesConfirmed: state.guessesConfirmed + 1,
+          acksPlayed: ack ? ack.acksPlayed : state.acksPlayed,
+          acksUsed: ack ? ack.acksUsed : state.acksUsed,
         },
-        alreadyNamed
-          ? [speak({ kind: "fixed", id: "suspicion" })]
-          : [
-              speak({ kind: "name", placeId: event.placeId }),
-              speak({ kind: "fixed", id: "suspicion" }),
-            ],
+        lines,
       );
     }
 
@@ -1089,6 +1152,7 @@ export function transition(
           return speakSelection(
             { ...state, selectionReadInFlight: false },
             event.placeId,
+            rng,
           );
         case "CASE_OPEN":
           // Instructions may still be playing / not yet decided.
@@ -1096,6 +1160,7 @@ export function transition(
             return speakSelection(
               { ...state, selectionReadInFlight: false },
               event.placeId,
+              rng,
             );
           }
           return result({
@@ -1104,6 +1169,11 @@ export function transition(
             selectionReadInFlight: true,
           });
         case "READING":
+          if (state.readingStep === "watson-read") {
+            return cutWatsonRead(state, event.placeId, rng);
+          }
+          if (state.pendingSelection === event.placeId) return noOp(state);
+          return result({ ...state, pendingSelection: event.placeId });
         case "THINKING_BEAT":
         case "NOTE_MARK":
         case "ASK_NEXT":
@@ -1153,15 +1223,20 @@ export function transition(
         !state.selectionReadInFlight &&
         state.pendingSelection === null
       ) {
+        // Watson's question was cut for this pick. After Holmes names
+        // the place, the next starting clue opens — one card, not the
+        // rest of the deal.
+        if (
+          state.readingStep === "cut" &&
+          state.openTarget > state.clueIndex &&
+          state.clueIndex >= 1
+        ) {
+          return startClue({ ...state, readingStep: null }, state.clueIndex + 1, true);
+        }
         return result({
           ...state,
+          readingStep: null,
           selectionReadInFlight: true,
-          // The arming trace (follow-up cure 2): this drain IS a pick
-          // read's exit, so a guess confirmed next was armed on top of
-          // a completed pick read. guessConfirmed preserves a standing
-          // "post-pick" (the restored flag alone cannot distinguish
-          // this rest from an ordinary one), and clueUnlocked routes
-          // that kind to the deferred-guess branch.
           selectionReadKind: "post-pick",
         });
       }
@@ -1206,7 +1281,7 @@ export function transition(
             ...state,
             phase: "SEARCH_IDLE",
             readingStep: null,
-          });
+          }, rng);
         case "SELECTION_READ":
           return afterSelectionRead(state);
         case "ASK_NEXT": {
@@ -1225,7 +1300,7 @@ export function transition(
           // Ask spoken via the sheetClosed path; the game's clueUnlocked
           // is still coming. Wait in SEARCH_IDLE (askNextSpoken marks
           // that the next clueUnlocked needs no second ask).
-          return restingResult({ ...state, phase: "SEARCH_IDLE", askNextSpoken: true });
+          return restingResult({ ...state, phase: "SEARCH_IDLE", askNextSpoken: true }, rng);
         }
         case "CASE_OPEN":
           // The instruction duet drains one line at a time (U8).
@@ -1238,7 +1313,7 @@ export function transition(
             const done: DetectiveState = { ...state, instructionsStep: "done" };
             // A clue that unlocked mid-duet starts now (pending pattern).
             if (done.pendingClue !== null) return startClue(done, done.pendingClue);
-            return restingResult(done);
+            return restingResult(done, rng);
           }
           return noOp(state);
         case "CELEBRATE":

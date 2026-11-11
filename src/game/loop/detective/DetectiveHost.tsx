@@ -376,10 +376,17 @@ export default function DetectiveHost(
       presentClue(effect.clueIndex);
       return;
     }
+    if (effect.type === "continue") {
+      queueMicrotask(() => dispatchRef.current({ type: "speechEnded" }));
+      return;
+    }
     if (effect.type === "stopSpeech") {
       // The pin wins the voice: a walk-held read is dropped, the
       // current clip stops, the queue flushes — silently for the
-      // ladder (the machine is already in SELECTION_READ).
+      // ladder (the machine is already past the cut). A sheet-open
+      // cancel may have deferred a drain; this cut owns the next
+      // drain, so that deferred one must not also fire.
+      deferredDrainRef.current = false;
       cancelWatsonWalkRef.current(false);
       suppressDrainRef.current = true;
       try {
@@ -800,7 +807,12 @@ export default function DetectiveHost(
   useEffect(() => {
     if (!selectedPlaceId || selectedPlaceId === seenPickRef.current) return;
     seenPickRef.current = selectedPlaceId;
+    // Same window as a guess confirm: the ack that follows the place
+    // name is gesture speech, so tap mode plays it instead of holding
+    // it on the clue's Listen chain.
+    playerRef.current?.armGuessRead();
     dispatch({ type: "selectionNamed", placeId: selectedPlaceId });
+    playerRef.current?.disarmGuessRead();
   }, [selectedPlaceId, dispatch]);
 
   /* PR B: the sheet opening mid-walk cancels the walk (the council's

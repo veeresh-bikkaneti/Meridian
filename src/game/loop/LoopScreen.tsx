@@ -1397,11 +1397,17 @@ function LoopGame({
   );
   useEffect(() => {
     if (!pairOn || finished || visibleClues >= puzzle.cluesRevealed) return;
+    // A fresh multi-clue deal opens one card as Watson reads it. Do not
+    // dump the rest while he is still on the first question.
+    const opening =
+      puzzle.guesses.length === 0 &&
+      puzzle.cluesRevealed <= dealConfig.startingClues;
+    if (opening) return;
     const timer = setTimeout(() => {
       setPresentedClues({ key: puzzleKey, n: puzzle.cluesRevealed });
     }, CLUE_PRESENT_WATCHDOG_MS);
     return () => clearTimeout(timer);
-  }, [pairOn, finished, visibleClues, puzzle.cluesRevealed, puzzleKey]);
+  }, [pairOn, finished, visibleClues, puzzle.cluesRevealed, puzzle.guesses.length, dealConfig.startingClues, puzzleKey]);
 
   // Length unit for every distance on this screen: a USA mystery reads
   // miles, the rest of the world reads kilometers — derived from the
