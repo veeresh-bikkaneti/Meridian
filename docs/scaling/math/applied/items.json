@@ -99,7 +99,7 @@
       "code": "3.MD.A.2",
       "source": "https://www.thecorestandards.org/Math/Content/3/MD/"
     },
-    "why": "A recipe asks for 250 millilitres of water. Which line on the jug is that amount?",
+    "why": "A recipe asks for 250 millilitres (a quarter of a litre) of water. Which line on the jug is that amount?",
     "buildsOn": [
       "math-applied:measure:choose-unit"
     ],
@@ -210,7 +210,7 @@
     "group": "18+",
     "objective": "After this, an adult can compare two beam measurements with the tape's smallest mark, shown by choosing a remeasure when they disagree by more than that mark.",
     "standard": "UNVERIFIED",
-    "why": "Two crews measure one beam and disagree by more than the tape's smallest mark. Which report can a buyer use? Fit: no single code covers choosing between two disagreeing measurements. The nearest code is HSN.Q.A.3, already used by measure:accuracy for how many digits to report.",
+    "why": "Two crews measure one beam and disagree by more than the tape's smallest mark. Which report can a buyer use? Fit: reviewers split. One says no code fits; one says HSN.Q.A.3, which measure:accuracy already uses for how many digits to report. The human signer picks.",
     "buildsOn": [
       "math-applied:measure:accuracy"
     ],

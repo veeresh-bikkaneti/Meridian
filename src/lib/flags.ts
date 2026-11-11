@@ -39,7 +39,9 @@ export type FlagName =
   | "scoutUpgradeTrial"
   | "detectivePair"
   | "hostsStaging"
-  | "watsonWalk";
+  | "watsonWalk"
+  | "detectiveFlank"
+  | "pair3d";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -109,6 +111,29 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // stage starts at "standing"). The baked default stays false so a
   // failed flags fetch falls back to the PR A pair.
   watsonWalk: false,
+  // Holmes's frozen flank (STAGE, pair pivot): Holmes stands at the
+  // clue card's left side — the frozen flank slot mirroring Watson's
+  // right station — through the guessing phases instead of docking /
+  // berthing on the map, and the Listen button plays the held clue
+  // sequence on the FIRST tap in tap mode. A sub-flag of the
+  // staging: it acts only when detectivePair AND hostsStaging are
+  // also on. false = the kill-switch: redeploy flags.json with
+  // detectiveFlank false and Holmes docks/berths as shipped —
+  // exactly the pre-STAGE staging behaviour. One piece is NOT behind
+  // this switch: the Listen first-tap cure (the gesture listener is
+  // armed at player creation) ships ungated and stays in both
+  // worlds — flag-off does not restore the old two-tap flow. The
+  // baked default stays false so a failed flags fetch falls back
+  // to the shipped pair.
+  detectiveFlank: false,
+  // 3D Holmes & Watson (owner request 2026-11-10, look approved from
+  // the Blender renders): the GLB pair is painted over the SVG rigs,
+  // which stay in the DOM as the fallback and the layout source. Acts
+  // only where the rigs render (detectivePair on), and only on devices
+  // that pass the pair3d gate (WebGL, not Save-Data, not low-memory).
+  // false = the kill-switch: the SVG rigs exactly as shipped. The baked
+  // default stays false so a failed flags fetch falls back to them.
+  pair3d: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;

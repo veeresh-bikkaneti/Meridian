@@ -20,6 +20,8 @@ const VERIFIED = new Set([
   "4.OA.A.3", "4.NBT.A.1", "4.NBT.B.5", "4.NBT.B.6", "4.NF.A.2",
   "5.NBT.A.1", "5.NBT.B.5", "5.NBT.B.6", "5.NF.A.1", "5.NF.B.4",
   "6.NS.A.1", "6.NS.B.2", "6.RP.A.3", "8.EE.A.3",
+  // Read live on 2026-11-11 (6/RP page): the rate-per-100 part of 6.RP.A.3.
+  "6.RP.A.3c",
 ]);
 const GROUPS = ["7-10", "10-18", "18+"];
 const RANK = { "7-10": 0, "10-18": 1, "18+": 2 };

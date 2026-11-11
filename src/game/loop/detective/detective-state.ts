@@ -83,7 +83,19 @@ export type SpeakRef =
  * effects — they ride the view (see header). */
 export type DetectiveEffect =
   | { type: "speak"; ref: SpeakRef }
-  | { type: "dwell"; beatMs: number };
+  | { type: "dwell"; beatMs: number }
+  /** Show clue card `clueIndex` (1-based) now: the deal opens its
+   * starting clues ONE AT A TIME, each card appearing as Watson starts
+   * reading it (owner, 2026-11-10: "clues should open 1 at a time and
+   * watson should read it aloud"). The host reports it to the game,
+   * which reveals cards up to the highest index presented. */
+  | { type: "presentClue"; clueIndex: number }
+  /** Cut whatever is playing and flush the queue (the player pinned
+   * before Watson finished — the pin wins the voice). */
+  | { type: "stopSpeech" }
+  /** A short speech bubble over one figure (moment lines). The text
+   * always shows; the voice plays when the line's clip is rendered. */
+  | { type: "caption"; who: "holmes" | "watson"; text: string; ms: number };
 
 /** The ONLY inputs. Payloads are answer-blind by construction (header).
  * The two U8 exceptions are fenced: `freshDeal` says only whether this
@@ -92,7 +104,17 @@ export type DetectiveEffect =
  * untouched and consumed solely by the DEBRIEF effect (see the state
  * field); it cannot influence any pre-solve transition. */
 export type DetectiveEvent =
-  | { type: "caseOpened"; freshDeal: boolean }
+  | {
+      type: "caseOpened";
+      freshDeal: boolean;
+      /** Play the instruction duet. Defaults to `freshDeal`; the host
+       * passes false after the session's first case (the duet and
+       * bench intro are first entry only — plan of record §2). */
+      intro?: boolean;
+      /** The deal's starting clue count: the opening reads clues
+       * 1..openTarget one after another (fresh deal only). */
+      openTarget?: number;
+    }
   | { type: "clueUnlocked"; clueIndex: number }
   | { type: "speechEnded" }
   | { type: "beatElapsed" }
@@ -163,19 +185,77 @@ export interface DetectiveState {
    * (the pick-swap test's U8 extension pins this). Cleared on entry to
    * DEBRIEF, once the effect has captured it. */
   answerPlaceId: string | null;
-  /** A clue the game unlocked while a selection read was in flight; the
-   * ladder visits it via ASK_NEXT once the read drains. */
+  /** A clue the game unlocked while a GUESS read was in flight; the
+   * ladder visits it via ASK_NEXT once the guess read drains. (An
+   * unlock that lands while a PICK read is in flight is remembered
+   * here too, with the deferred-guess marker set beside it — see
+   * pendingGuessConfirm: the marker/payload pair marks the clue as
+   * the deferred guess's bridge payload.) */
   pendingClue: number | null;
   /** A case ending that arrived mid-selection-read; applied when the
    * read drains so Holmes never talks over his own selection line. */
   pendingEnd: "solved" | "failed" | null;
+  /** A guess whose clue unlocked while the PICK read was still
+   * audibly in flight. Set TOGETHER with pendingClue (the pair):
+   * pendingClue is the bridge payload, this marker records that
+   * the payload belongs to a guess confirmed during the pick read.
+   * In the shipped player the pick clip and the guess read queue
+   * back-to-back and drain as ONE queue event, so the single drain
+   * runs the ordinary bridge (miss beat → ask-next → clue) off
+   * pendingClue; the marker's own jobs are to start the clue from
+   * the ASK_NEXT drain without a second ask, to be cleared by a
+   * case ending or by the clue starting, and to let a sheetClosed
+   * that somehow finds it standing alone reopen the bridge. The
+   * guess read's suspicion is spoken exactly once — by
+   * guessConfirmed, into that same queue — and the bridge never
+   * speaks it again. */
+  pendingGuessConfirm: number | null;
+  /** Which read the ladder last armed: false while the read that
+   * drains next is a PICK read (armed via speakSelection) with a
+   * guess read queued behind it in the player; true while a GUESS
+   * read (armed via guessConfirmed) owns the voice, and whenever no
+   * read is pending. clueUnlocked consults it — together with
+   * selectionReadDone's arming-marker job — to mark an unlock that
+   * lands mid-selection-read as a deferred guess's payload (the
+   * pendingGuessConfirm pair) rather than a plain pending clue.
+   * A PICK read's own drain restores it to true (speechEnded at
+   * rest, follow-up cure 2) — the exit instant is part of the read's
+   * lifecycle, and a guess confirmed there still defers.
+   * CAVEAT: guards suppress drained-while-held signals (e.g. the
+   * deferred-drain consumption on sheet close), so a read can
+   * drain without a speechEnded the ladder sees; hosts only ever
+   * emit clueUnlocked/guess events off audible queue drains, so in
+   * play the flag tracks the audible state faithfully. */
+  selectionReadInFlight: boolean;
+  /** How the CURRENT SELECTION_READ was armed (follow-up cure 2):
+   * "direct" = a guess read armed at rest or mid clue chain (the
+   * shipped kind); "post-pick" = a guess read armed while a PICK
+   * read was playing ahead of it, or directly on a PICK read's
+   * exit drain; null = no selection read stands. Two writers:
+   * guessConfirmed, and the speechEnded pre-check in the SEARCH
+   * phases — the pre-check is the only transition that knows a
+   * pick read just drained at rest, so it leaves "post-pick"
+   * standing as the arming trace and guessConfirmed preserves it.
+   * The selection-read exit and every phase entry that clears the
+   * read clear it. clueUnlocked reads it (never selectionReadDone,
+   * whose resting meaning is the sheetClosed ASK_NEXT trigger) to
+   * route a post-pick guess read's unlock to the deferred-guess
+   * branch. */
+  selectionReadKind: "direct" | "post-pick" | null;
   /** Ask-next was already spoken for the pending unlock (sheetClosed
    * path), so the arriving clueUnlocked goes straight to READING. */
   askNextSpoken: boolean;
-  /** A selection read has completed this clue and the ladder is waiting
-   * in SEARCH_IDLE: a sheetClosed here is the task's ASK_NEXT trigger.
-   * Cleared by the next guess, clue, or ending so a stray sheet cycle
-   * during ordinary searching can never fire ask-next. */
+  /** A guess read has completed this clue (its drain ran the
+   * selection-read exit) and the ladder waits in SEARCH_IDLE: a
+   * sheetClosed here is the task's ASK_NEXT trigger. Cleared by the
+   * next guess, clue, or ending so a stray sheet cycle during
+   * ordinary searching can never fire ask-next. ONE writer of true:
+   * afterSelectionRead, on a guess read's exit. A PICK read's drain
+   * never reaches that exit (a pick read never enters
+   * SELECTION_READ; its at-rest drain is the speechEnded pre-check
+   * in the SEARCH phases) and never sets it. The post-name arming
+   * information lives in selectionReadKind instead — never overload
+   * this flag with it again. */
   selectionReadDone: boolean;
   // Absence flags — state inputs, set/cleared only by their events.
   sheetOpen: boolean;
@@ -183,10 +263,13 @@ export interface DetectiveState {
   ringAnimating: boolean;
   /** Last pointer-pause point (kinematics only — U6's berth solver input). */
   lastPausePoint: { x: number; y: number } | null;
-  /** How many acknowledgements have actually played in this case. The
-   * ack rotation is driven by THIS count, never by the clue index:
-   * the Hook (clue 4) plays no ack, so an index-keyed rotation repeated
-   * ack-1 on the Giveaway and never played ack-4 (cure pass, item 7). */
+  /** How many acknowledgements have actually played in this case.
+   * The count is bookkeeping only — it never picks the line: the ack
+   * is a random draw from the pool minus this case's played-set
+   * (acksUsed below; drawAckId), so no line repeats inside a case
+   * and the draw takes no clue or game state as input. (The retired
+   * count rotation keyed the line to this count and repeated lines;
+   * the Hook, clue 4, plays no ack at all.) */
   acksPlayed: number;
   /** The pool line ids already played this case — the played-set the
    * random ack draw excludes (never a repeat inside a case). */
@@ -202,6 +285,12 @@ export interface DetectiveState {
    * latest-wins). Flushed when the ladder rests in SEARCH_IDLE; discarded
    * by a guess confirmation, a clue unlock, or a case ending. */
   pendingSelection: string | null;
+  /** The opening sequence's last clue: while clueIndex < openTarget
+   * the ladder reads the next starting clue as soon as Holmes's ack
+   * for the current one drains, with no ask in between. 0 = no
+   * opening sequence (a resumed case, or one clue dealt). A pin
+   * during the opening ends the sequence. */
+  openTarget: number;
 }
 
 export function initialDetectiveState(
@@ -217,6 +306,9 @@ export function initialDetectiveState(
     answerPlaceId: null,
     pendingClue: null,
     pendingEnd: null,
+    pendingGuessConfirm: null,
+    selectionReadInFlight: false,
+    selectionReadKind: null,
     askNextSpoken: false,
     selectionReadDone: false,
     sheetOpen: false,
@@ -228,6 +320,7 @@ export function initialDetectiveState(
     guessesConfirmed: 0,
     lastNamed: null,
     pendingSelection: null,
+    openTarget: 0,
   };
 }
 
@@ -296,12 +389,38 @@ export function decodeIdForClue(clueIndex: number): string {
 /* View — a pure derivation from state                                 */
 /* ------------------------------------------------------------------ */
 
+/** Moment lines (owner, 2026-11-10). Each shows as a bubble at once;
+ * its voice plays once the clip is rendered with the pinned voice
+ * (an id the manifest lacks is skipped silently by the player — the
+ * fallback law), so the bubble alone carries the line until then.
+ * DRAFT wording: owner review. The player is Holmes's partner here —
+ * "player is the holmes" — so Watson speaks to the player. */
+export const MOMENT_LINES = Object.freeze({
+  beatMe: { id: "beat-me", who: "watson", text: "You beat me to it!" },
+  together: { id: "win-together", who: "holmes", text: "We did it together!" },
+  truce: {
+    id: "truce-watson",
+    who: "watson",
+    text: "Good try! We'll crack the next one together.",
+  },
+} as const);
+export type MomentLineKey = keyof typeof MOMENT_LINES;
+export const MOMENT_CAPTION_MS = 2600;
+
+const momentEffects = (key: MomentLineKey): DetectiveEffect[] => {
+  const line = MOMENT_LINES[key];
+  return [
+    { type: "caption", who: line.who, text: line.text, ms: MOMENT_CAPTION_MS },
+    { type: "speak", ref: { kind: "fixed", id: line.id } },
+  ];
+};
+
 export function viewForState(state: DetectiveState): DetectiveView {
-  const hidden =
-    state.phase === "OFF" ||
-    state.sheetOpen ||
-    state.externalSpeech ||
-    state.ringAnimating;
+  // The pair stays on screen while the guess sheet is open and while
+  // the ring plays (plan of record §2: they never vanish mid-case —
+  // the zero-overlap layout keeps them off the clue text instead).
+  // Only another surface's own speech still clears the stage.
+  const hidden = state.phase === "OFF" || state.externalSpeech;
   const base = { phase: state.phase, hidden };
   switch (state.phase) {
     case "OFF":
@@ -455,10 +574,12 @@ export function viewForState(state: DetectiveState): DetectiveView {
         watson: { pose: "think", placement: "station", speaking: false },
       };
     case "POUT":
+      // The truce (plan of record §5): no pout — Holmes nods, Watson
+      // cheers the player on (his line rides the POUT entry).
       return {
         ...base,
-        holmes: { pose: "pout", placement: "station", speaking: false },
-        watson: { pose: "pout", placement: "station", speaking: false },
+        holmes: { pose: "ack", placement: "station", speaking: false },
+        watson: { pose: "station-idle", placement: "station", speaking: false },
       };
     case "DEBRIEF":
       // Holmes delivers the deduction (frame → the answer's name →
@@ -495,30 +616,41 @@ function noOp(state: DetectiveState): Step & { view: DetectiveView } {
 /** Begin the ladder for clue n (shared by clueUnlocked and the ASK_NEXT
  * drain path). The Hook (n=4) opens with its long silence + Holmes's
  * announcement BEFORE Watson reads; every other clue starts with the read. */
-function startClue(state: DetectiveState, clueIndex: number): Step & { view: DetectiveView } {
+function startClue(
+  state: DetectiveState,
+  clueIndex: number,
+  selectionReadInFlight = true,
+): Step & { view: DetectiveView } {
   const next: DetectiveState = {
     ...state,
     clueIndex,
     pendingClue: null,
+    pendingGuessConfirm: null,
+    selectionReadInFlight,
+    selectionReadKind: null,
     askNextSpoken: false,
     selectionReadDone: false,
     pendingSelection: null, // a clue unlock discards a pending read
     celebrateStep: null,
     celebrateSpeechDone: false,
   };
+  const present: DetectiveEffect = { type: "presentClue", clueIndex };
   if (clueIndex === 4) {
     return result(
       { ...next, phase: "THINKING_BEAT", readingStep: "announce" },
-      [dwell(HOOK_BEAT_MS)],
+      [present, dwell(HOOK_BEAT_MS)],
     );
   }
   return result(
     { ...next, phase: "READING", readingStep: "watson-read" },
-    [speak({ kind: "clue", clueIndex })],
+    [present, speak({ kind: "clue", clueIndex })],
   );
 }
 
-function enterCelebrate(state: DetectiveState): Step & { view: DetectiveView } {
+function enterCelebrate(
+  state: DetectiveState,
+  selectionReadInFlight = true,
+): Step & { view: DetectiveView } {
   // The win lines queue on the speech player while the choreography
   // dwell chain runs in parallel (jump first); DEBRIEF waits for BOTH
   // to finish — see the CELEBRATE speechEnded / beatElapsed handlers.
@@ -529,13 +661,18 @@ function enterCelebrate(state: DetectiveState): Step & { view: DetectiveView } {
       readingStep: null,
       pendingEnd: null,
       pendingClue: null,
+      pendingGuessConfirm: null,
+      selectionReadInFlight,
+      selectionReadKind: null,
       pendingSelection: null,
       selectionReadDone: false,
       celebrateStep: "jump",
       celebrateSpeechDone: false,
+      openTarget: 0,
     },
     [
       speak({ kind: "fixed", id: "win-holmes" }),
+      ...momentEffects("together"),
       speak({ kind: "fixed", id: "win-watson" }),
       dwell(CELEBRATE_JUMP_MS),
     ],
@@ -567,16 +704,40 @@ function enterDebrief(state: DetectiveState): Step & { view: DetectiveView } {
 
 /** The miss beat (U8): a silent dwell before ASK_NEXT, entered from
  * both ask-next paths so the beat can never be skipped by one of them. */
-function enterNoteMark(state: DetectiveState): Step & { view: DetectiveView } {
+function enterNoteMark(
+  state: DetectiveState,
+  selectionReadInFlight = true,
+): Step & { view: DetectiveView } {
   return result(
-    { ...state, phase: "NOTE_MARK", selectionReadDone: false },
+    {
+      ...state,
+      phase: "NOTE_MARK",
+      selectionReadDone: false,
+      selectionReadKind: null,
+      selectionReadInFlight,
+    },
     [dwell(NOTE_MARK_MS)],
   );
 }
 
-function enterFailRead(state: DetectiveState): Step & { view: DetectiveView } {
+function enterFailRead(
+  state: DetectiveState,
+  selectionReadInFlight = true,
+): Step & { view: DetectiveView } {
   return result(
-    { ...state, phase: "FAIL_READ", readingStep: null, pendingEnd: null, pendingClue: null, pendingSelection: null, selectionReadDone: false },
+    {
+      ...state,
+      phase: "FAIL_READ",
+      readingStep: null,
+      pendingEnd: null,
+      pendingClue: null,
+      pendingGuessConfirm: null,
+      selectionReadInFlight,
+      selectionReadKind: null,
+      pendingSelection: null,
+      selectionReadDone: false,
+      openTarget: 0,
+    },
     [speak({ kind: "answer" })],
   );
 }
@@ -584,14 +745,34 @@ function enterFailRead(state: DetectiveState): Step & { view: DetectiveView } {
 /** After a selection read drains: a pending ending wins, then a pending
  * clue goes through ASK_NEXT, otherwise back to searching. */
 function afterSelectionRead(state: DetectiveState): Step & { view: DetectiveView } {
-  if (state.pendingEnd === "solved") return enterCelebrate(state);
-  if (state.pendingEnd === "failed") return enterFailRead(state);
+  if (state.pendingEnd === "solved") return enterCelebrate(state, state.selectionReadInFlight);
+  if (state.pendingEnd === "failed") return enterFailRead(state, state.selectionReadInFlight);
   if (state.pendingClue !== null && state.pendingClue > state.clueIndex) {
     // A next clue is pending: the voiceless miss beat comes first,
     // then ASK_NEXT bridges to it (NOTE_MARK's beatElapsed handler).
-    return enterNoteMark(state);
+    // A deferred-guess pair (marker standing beside pendingClue)
+    // takes this same bridge: in the shipped player the pick clip
+    // and the guess read drain as ONE queue event — there is no
+    // second drain to wait for, and the confirm's sheet cycle has
+    // already closed — so settling at rest here would strand the
+    // clue with no trigger left to start it.
+    return enterNoteMark(state, state.selectionReadInFlight);
   }
-  return result({ ...state, phase: "SEARCH_IDLE", selectionReadDone: true });
+  return result({
+    ...state,
+    phase: "SEARCH_IDLE",
+    // Every exit through here is a GUESS read's exit: SELECTION_READ
+    // is entered only by guessConfirmed (a PICK read never changes
+    // the phase — its at-rest drain is the speechEnded pre-check in
+    // the SEARCH phases, which never touches this flag). So the
+    // completion flag is set unconditionally, exactly as shipped:
+    // resting with it true is the sheetClosed ASK_NEXT trigger.
+    // The arming kind is always cleared here: no selection read
+    // stands once its exit has run.
+    selectionReadDone: true,
+    selectionReadKind: null,
+    selectionReadInFlight: true,
+  });
 }
 
 /** Emit a selection read: name only — no suspicion, no ack spent — and
@@ -603,6 +784,7 @@ function speakSelection(state: DetectiveState, placeId: string): Step & { view: 
     {
       ...state,
       pendingSelection: null,
+      selectionReadInFlight: false,
       lastNamed: { placeId, guesses: state.guessesConfirmed, clue: state.clueIndex },
     },
     [speak({ kind: "name", placeId, selection: true })],
@@ -612,8 +794,64 @@ function speakSelection(state: DetectiveState, placeId: string): Step & { view: 
 /** The ladder just came to rest: a read held back during the clue chain
  * fires now. With nothing pending this is just `result(state)`. */
 function restingResult(state: DetectiveState): Step & { view: DetectiveView } {
-  if (state.pendingSelection === null) return result(state);
+  if (state.pendingSelection === null) {
+    return result({ ...state, selectionReadInFlight: true });
+  }
   return speakSelection(state, state.pendingSelection);
+}
+
+/** Phases where a clue chain (or the opening duet) still owns the
+ * voice. A pin here used to be dropped on the floor (the guess read
+ * never played); now the pin wins: speech stops, Watson says "You beat
+ * me to it!" if he was still on a clue, and Holmes reads the pick. */
+const INTERRUPTIBLE_PHASES: ReadonlySet<DetectivePhase> = new Set([
+  "CASE_OPEN",
+  "READING",
+  "THINKING_BEAT",
+  "NOTE_MARK",
+  "ASK_NEXT",
+]);
+
+function interruptWithGuess(
+  state: DetectiveState,
+  placeId: string,
+): Step & { view: DetectiveView } {
+  if (state.phase === "CASE_OPEN" && state.instructionsStep === "awaiting") {
+    return noOp(state);
+  }
+  const midClue =
+    state.phase === "READING" ||
+    state.phase === "THINKING_BEAT" ||
+    state.openTarget > state.clueIndex;
+  return result(
+    {
+      ...state,
+      phase: "SELECTION_READ",
+      instructionsStep:
+        state.instructionsStep === "holmes" || state.instructionsStep === "watson"
+          ? "done"
+          : state.instructionsStep,
+      readingStep: null,
+      openTarget: 0,
+      pendingClue: null,
+      pendingGuessConfirm: null,
+      ringAnimating: true,
+      lastPausePoint: null,
+      pendingSelection: null,
+      selectionReadInFlight: true,
+      selectionReadDone: false,
+      selectionReadKind: "direct",
+      askNextSpoken: false,
+      lastNamed: null,
+      guessesConfirmed: state.guessesConfirmed + 1,
+    },
+    [
+      { type: "stopSpeech" },
+      ...(midClue ? momentEffects("beatMe") : []),
+      speak({ kind: "name", placeId }),
+      speak({ kind: "fixed", id: "suspicion" }),
+    ],
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -633,9 +871,32 @@ export function transition(
   // Absence flags are phase-independent state inputs.
   switch (event.type) {
     case "sheetOpened":
+      // The guess sheet is the player's focus now: a thinking pause
+      // that was confirmed on the map ends here, so Holmes is back at
+      // the dock while the sheet is up (the pair stays visible under
+      // the sheet since 2026-11-10, so a berth would show).
+      if (state.phase === "SEARCH_AREA") {
+        return result({ ...state, sheetOpen: true, phase: "SEARCH_IDLE", lastPausePoint: null });
+      }
       return result({ ...state, sheetOpen: true });
     case "sheetClosed": {
       const closed = { ...state, sheetOpen: false };
+      // Safety net: a deferred-guess marker somehow standing alone
+      // at rest (its clue unlocked while the pick read was playing;
+      // the guess read has since played from the queue) — a sheet
+      // cycle reopens its bridge from the marker: the miss beat
+      // first, then the plain ask (the suspicion already played).
+      // The marker remembers which clue waits behind the guess read.
+      if (
+        closed.phase === "SEARCH_IDLE" &&
+        closed.pendingGuessConfirm !== null &&
+        closed.pendingEnd === null
+      ) {
+        return enterNoteMark(
+          { ...closed, pendingClue: closed.pendingGuessConfirm },
+          false,
+        );
+      }
       // Task flow: sheetClosed → if more clues, ASK_NEXT (Holmes asks for
       // the next question; the game then fires clueUnlocked). Only after
       // a completed selection read (selectionReadDone), only when a next
@@ -651,7 +912,7 @@ export function transition(
       ) {
         // The miss beat first (U8), then ASK_NEXT — same bridge as the
         // pending-clue path, so the beat exists on every non-final miss.
-        return enterNoteMark(closed);
+        return enterNoteMark(closed, false);
       }
       return result(closed);
     }
@@ -681,11 +942,22 @@ export function transition(
       }
       if (!event.freshDeal) {
         // Resumed case: instructions are skipped, the ladder proceeds
-        // as U5 whenever its clue arrives.
-        return restingResult({ ...base, instructionsStep: "skipped" });
+        // as U5 whenever its clue arrives (the current clue only).
+        return restingResult({ ...base, instructionsStep: "skipped", openTarget: 0 });
+      }
+      const target =
+        typeof event.openTarget === "number" &&
+        Number.isInteger(event.openTarget) &&
+        event.openTarget > 1
+          ? Math.min(5, event.openTarget)
+          : 0;
+      const opened: DetectiveState = { ...base, openTarget: target };
+      if (event.intro === false) {
+        // Case 2+ of the session: no duet (first entry only).
+        return restingResult({ ...opened, instructionsStep: "done" });
       }
       // Fresh deal: Holmes's instruction line first (Q4 case open).
-      return result({ ...base, instructionsStep: "holmes" }, [
+      return result({ ...opened, instructionsStep: "holmes" }, [
         speak({ kind: "fixed", id: "instructions-holmes" }),
       ]);
     }
@@ -710,14 +982,37 @@ export function transition(
       // Mid-selection-read unlocks are remembered, not acted on: Holmes
       // finishes the selection line, then ASK_NEXT bridges to the clue.
       if (state.phase === "SELECTION_READ") {
+        if (!state.selectionReadInFlight || state.selectionReadKind === "post-pick") {
+          // The deferred-guess branch: EITHER a PICK read owns the
+          // voice and the guess read is queued behind it in the
+          // player (selectionReadInFlight = false), OR the confirm
+          // landed just AFTER the pick read drained (follow-up
+          // cure 2): the pick read's exit drain already restored
+          // the kind flag to true, but selectionReadKind marks this
+          // SELECTION_READ as the guess read armed on top of a
+          // completed pick read — the kind field is the only thing
+          // distinguishing it from a shipped guess-read-in-flight
+          // (selectionReadDone cannot be: its resting meaning is
+          // the sheetClosed ASK_NEXT trigger, and overloading it
+          // broke the shipped sheet-flow pins).
+          // Remember the unlock as the deferred guess's bridge
+          // payload — pendingClue carries the clue, the marker
+          // beside it records whose it is. The clips drain as one
+          // queue event and that drain runs the ordinary bridge off
+          // pendingClue (afterSelectionRead).
+          return result({ ...state, pendingGuessConfirm: n, pendingClue: n });
+        }
         return result({ ...state, pendingClue: n });
       }
       // From ASK_NEXT the ask was already spoken (sheetClosed path or
       // the pending path) — go straight to the clue.
-      return startClue(state, n);
+      return startClue(state, n, state.selectionReadInFlight);
     }
 
     case "guessConfirmed": {
+      if (INTERRUPTIBLE_PHASES.has(state.phase)) {
+        return interruptWithGuess(state, event.placeId);
+      }
       if (state.phase !== "SEARCH_IDLE" && state.phase !== "SEARCH_AREA") {
         return noOp(state);
       }
@@ -737,8 +1032,32 @@ export function transition(
           phase: "SELECTION_READ",
           ringAnimating: true,
           lastPausePoint: null,
-          selectionReadDone: false,
           pendingSelection: null,
+          // The in-flight kind from here is THIS guess read — unless
+          // a pick read is still audibly playing ahead of it in the
+          // player queue, in which case the pick read's kind stands
+          // until the ladder settles (the unlock decides by it).
+          selectionReadInFlight: state.selectionReadInFlight,
+          // Follow-up cure 2: selectionReadKind records how THIS
+          // read was armed, so clueUnlocked can route this read's
+          // unlock to the deferred-guess branch. Three armings:
+          // a pick read is still playing ahead of this guess read
+          // (flag false) — "post-pick" (the unlock would take the
+          // pair branch on the flag alone anyway); the confirm lands
+          // directly on a pick read's exit drain — the pre-check in
+          // speechEnded restored the flag AND left "post-pick"
+          // standing, and it is preserved here (the restored flag
+          // alone cannot distinguish that rest from an ordinary
+          // one); anything else is an ordinary at-rest guess —
+          // "direct", the shipped kind. selectionReadDone is set
+          // false here: resting with it true is the ASK_NEXT
+          // trigger, and afterSelectionRead sets it at this read's
+          // exit.
+          selectionReadDone: false,
+          selectionReadKind:
+            state.selectionReadKind === "post-pick" || !state.selectionReadInFlight
+              ? "post-pick"
+              : "direct",
           lastNamed: null,
           guessesConfirmed: state.guessesConfirmed + 1,
         },
@@ -767,13 +1086,23 @@ export function transition(
       switch (state.phase) {
         case "SEARCH_IDLE":
         case "SEARCH_AREA":
-          return speakSelection(state, event.placeId);
+          return speakSelection(
+            { ...state, selectionReadInFlight: false },
+            event.placeId,
+          );
         case "CASE_OPEN":
           // Instructions may still be playing / not yet decided.
           if (state.instructionsStep === "done" || state.instructionsStep === "skipped") {
-            return speakSelection(state, event.placeId);
+            return speakSelection(
+              { ...state, selectionReadInFlight: false },
+              event.placeId,
+            );
           }
-          return result({ ...state, pendingSelection: event.placeId });
+          return result({
+            ...state,
+            pendingSelection: event.placeId,
+            selectionReadInFlight: true,
+          });
         case "READING":
         case "THINKING_BEAT":
         case "NOTE_MARK":
@@ -799,7 +1128,7 @@ export function transition(
         return result({ ...withAnswer, pendingEnd: "solved", pendingSelection: null });
       }
       if (state.phase === "CELEBRATE" || state.phase === "DEBRIEF") return noOp(state);
-      return enterCelebrate(withAnswer);
+      return enterCelebrate(withAnswer, state.selectionReadInFlight);
     }
 
     case "caseFailed":
@@ -807,9 +1136,35 @@ export function transition(
         return result({ ...state, pendingEnd: "failed", pendingSelection: null });
       }
       if (state.phase === "FAIL_READ" || state.phase === "POUT") return noOp(state);
-      return enterFailRead(state);
+      return enterFailRead(state, state.selectionReadInFlight);
 
     case "speechEnded": {
+      // Follow-up cure 2 — a PICK read drains while the machine
+      // rests in a SEARCH phase (speakSelection never changes the
+      // phase): that drain is the read's exit instant, and the
+      // ladder must mark the kind restored — no GUESS read pending —
+      // so a guessConfirmed landing right after it keeps the
+      // shipped deferral behaviour (its clue unlock is stored as
+      // the deferred guess's payload, not as a plain pending clue
+      // behind a stale completion flag whose sheet cycle already
+      // closed at the spend). The drain itself advances nothing.
+      if (
+        (state.phase === "SEARCH_IDLE" || state.phase === "SEARCH_AREA") &&
+        !state.selectionReadInFlight &&
+        state.pendingSelection === null
+      ) {
+        return result({
+          ...state,
+          selectionReadInFlight: true,
+          // The arming trace (follow-up cure 2): this drain IS a pick
+          // read's exit, so a guess confirmed next was armed on top of
+          // a completed pick read. guessConfirmed preserves a standing
+          // "post-pick" (the restored flag alone cannot distinguish
+          // this rest from an ordinary one), and clueUnlocked routes
+          // that kind to the deferred-guess branch.
+          selectionReadKind: "post-pick",
+        });
+      }
       switch (state.phase) {
         case "READING":
           if (state.readingStep === "announce") {
@@ -841,6 +1196,11 @@ export function transition(
               [dwell(THINKING_BEAT_MS)],
             );
           }
+          // The opening sequence: the next starting clue follows
+          // Holmes's ack straight away — no ask in between.
+          if (state.openTarget > state.clueIndex && state.clueIndex >= 1) {
+            return startClue(state, state.clueIndex + 1, state.selectionReadInFlight);
+          }
           // ack-decode drained → guessing phase, Holmes to the dock.
           return restingResult({
             ...state,
@@ -850,8 +1210,17 @@ export function transition(
         case "SELECTION_READ":
           return afterSelectionRead(state);
         case "ASK_NEXT": {
+          if (state.pendingGuessConfirm !== null) {
+            // The guess bridge's ASK_NEXT just spoke (suspicion):
+            // its clue starts now — no second ask.
+            return startClue(
+              { ...state, askNextSpoken: true },
+              state.pendingGuessConfirm,
+              state.selectionReadInFlight,
+            );
+          }
           if (state.pendingClue !== null) {
-            return startClue(state, state.pendingClue);
+            return startClue(state, state.pendingClue, state.selectionReadInFlight);
           }
           // Ask spoken via the sheetClosed path; the game's clueUnlocked
           // is still coming. Wait in SEARCH_IDLE (askNextSpoken marks
@@ -883,10 +1252,11 @@ export function transition(
           // (the host resets the machine wholesale on the next case).
           return result({ ...state, phase: "CASE_OPEN", instructionsStep: "done" });
         case "FAIL_READ":
-          // POUT is sticky (U8): no dwell, no auto-advance — the pair
-          // stays pouting while the case stays lost. Exits are only a
+          // The truce (plan of record §5): after the answer, Watson
+          // cheers the player up — no pout. POUT stays the sticky rest
+          // phase (its view is the kind truce pose); exits are only a
           // new case (caseOpened / clueUnlocked / the host's reset).
-          return result({ ...state, phase: "POUT" });
+          return result({ ...state, phase: "POUT" }, momentEffects("truce"));
         default:
           return noOp(state);
       }
@@ -897,6 +1267,10 @@ export function transition(
         // Miss beat over → Holmes asks for the next question. A pending
         // clue then starts on the ask's speechEnded; without one the
         // ASK_NEXT handler waits in SEARCH_IDLE (sheetClosed path).
+        // A deferred-guess pair takes the plain ask too: the guess
+        // read's suspicion was already spoken by guessConfirmed into
+        // the same queue drain that opened this beat, so speaking it
+        // here would play the reaction twice.
         return result({ ...state, phase: "ASK_NEXT" }, [
           speak({ kind: "fixed", id: "ask-next" }),
         ]);
@@ -929,10 +1303,12 @@ export function transition(
             [speak({ kind: "fixed", id: "hook-announcement" })],
           );
         }
-        // Thinking beat over → Holmes acknowledges (next ack in the
-        // count rotation) and delivers the clue-type decode; both
-        // queue sequentially. The count advances here, at the one
-        // place an ack is actually spoken.
+        // Thinking beat over → Holmes acknowledges (a random draw
+        // from the ack pool minus the lines already played this
+        // case — drawAckId; the draw sees only the played-set) and
+        // delivers the clue-type decode; both queue sequentially.
+        // The count advances here, at the one place an ack is
+        // actually spoken.
         const ackId = drawAckId(state.acksUsed, rng);
         return result(
           {
@@ -953,7 +1329,9 @@ export function transition(
     }
 
     case "pointerPaused":
-      if (state.phase === "SEARCH_IDLE") {
+      // A pointer resting on the map while the guess sheet is up is
+      // not a thinking pause: the player is answering the sheet.
+      if (state.phase === "SEARCH_IDLE" && !state.sheetOpen) {
         return result({
           ...state,
           phase: "SEARCH_AREA",

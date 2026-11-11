@@ -10,11 +10,11 @@ it never relaxes a Constitution rule.
 
 ## 1. Seats
 
-A "seat" is a subagent spawned by the agent runtime. One agent may hold several
+A "seat" is one agent session, in any tool. One agent may hold several
 seats on a small Tier 2 task, but Councilor C is always a separate agent: its
 value is in not having written the thing it reviews.
 
-Model rule (from `AGENTS.md`, vendor-neutral): The orchestrator uses the strongest model the builder can afford; worker roles use the cheapest capable model, orchestrated as subagents; design calls go to a council of experts that reviews summaries and diffs, not bulk output.
+Model rule (from `AGENTS.md`, vendor-neutral): The orchestrator uses the strongest model the builder can afford; worker roles use the cheapest capable model, orchestrated as helper agents; design calls go to a council of experts that reviews summaries and diffs, not bulk output.
 This protocol names roles, never a vendor or model.
 
 | Seat | Model tier | Duty |
@@ -46,9 +46,9 @@ This protocol names roles, never a vendor or model.
 ## 3. Epistemic rigor and token economy
 
 1. **Resolve context narrowly.** Use text search, file-pattern search, and a
-   read-only exploration subagent to find what you need. Never load a directory tree to answer a question a
-   search would answer. If a graph or index plugin is available in the session,
-   prefer it; none is installed in this repo today, so do not wait for one.
+   read-only exploration helper agent to find what you need. Never load a directory tree to answer a question a
+   search would answer. Check `docs/knowledge/graph.json` first (`AGENTS.md`
+   §7); it maps branches, specs, governing docs and owner decisions.
 2. **Verify external facts, read internal ones.**
    - External library or API behaviour, version syntax, platform limits →
      verify by web search against current official documentation. Do not answer
