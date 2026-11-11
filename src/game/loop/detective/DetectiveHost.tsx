@@ -74,11 +74,9 @@ import {
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { isEnabled } from "@/lib/flags";
 import { VolumeX } from "lucide-react";
-import { SoundToggle } from "@/components/SoundToggle";
 import {
   isSoundEnabled,
   onSoundChanged,
-  setSoundEnabled,
 } from "@/game/audio/sfx";
 import type { DetectiveHostProps } from "./detective-host-props";
 import {
@@ -92,6 +90,8 @@ import {
   ANNOUNCEMENT_FIXED_ID,
   CASE_OPEN_WALK_MS,
   CASE_OPEN_WALK_START_OFFSET_PX,
+  flankHolmesX,
+  flankModeForCardLeft,
   GUTTER_BELOW_FIGURE_PX,
   GUTTER_CARD_GAP_PX,
   GUTTER_CHIP_BELOW_LISTEN_PX,
@@ -170,8 +170,44 @@ interface StationAnchor {
   height: number;
 }
 
-export default function DetectiveHost(props: DetectiveHostProps): ReactElement | null {
-  const { caseIndex, cluesRevealed, status, sheetOpen, lastGuessPlaceId, freshDeal, answerPlaceId } = props;
+/** The session's first case gets the bench + instruction duet; every
+ * later case opens straight onto the clues (plan of record §2: bench
+ * and intro on first entry only). Module scope = one page session. */
+let introPlayedThisSession = false;
+/** Test-only: forget the session's intro. */
+export function __resetDetectiveSessionIntro(): void {
+  introPlayedThisSession = false;
+}
+
+export interface DetectiveHostCallbacks {
+  /** The pair presented clue card `n` (1-based): the screen reveals
+   * cards up to the highest n reported (one at a time on a deal). */
+  onCluePresented?: (n: number) => void;
+}
+
+export default function DetectiveHost(
+  props: DetectiveHostProps & DetectiveHostCallbacks,
+): ReactElement | null {
+  const { caseIndex, cluesRevealed, status, sheetOpen, lastGuessPlaceId, freshDeal, answerPlaceId, selectedPlaceId } = props;
+  const onCluePresentedRef = useRef(props.onCluePresented);
+  onCluePresentedRef.current = props.onCluePresented;
+  /** The highest clue card the pair has presented this case. Anchors
+   * (Watson's station, the flank slot) follow it, not the game's raw
+   * count, so Watson stands at the card he is actually reading. */
+  const [presentedClue, setPresentedClue] = useState<number>(() =>
+    freshDeal ? 1 : cluesRevealed,
+  );
+  const presentClue = (n: number) => {
+    setPresentedClue((prev) => (n > prev ? n : prev));
+    onCluePresentedRef.current?.(n);
+  };
+  const anchorClue = Math.max(1, Math.min(presentedClue, cluesRevealed));
+  /** Moment-line bubble (beat-me, together, truce). */
+  const [caption, setCaption] = useState<{ who: "holmes" | "watson"; text: string } | null>(null);
+  const captionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  /** stopSpeech effects flush the player; that flush's drain is not the
+   * ladder's speechEnded (the machine already moved on). */
+  const suppressDrainRef = useRef(false);
 
   /* -- machine instance: ref-held state, React state only for the view */
   const machineRef = useRef<DetectiveState>(initialDetectiveState());
@@ -189,6 +225,11 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * the machine's view, and the degradation matrix — no new props,
    * so the answer-blindness whitelist is untouched. */
   const stagingOn = isEnabled("hostsStaging");
+  /* Flank (STAGE): Holmes's frozen slot at the clue card + the
+   * Listen first-tap cure. A sub-flag of the staging: it acts
+   * only when hostsStaging is also on — flag-off is today's
+   * proven behaviour, in every branch below. */
+  const flankOn = stagingOn && isEnabled("detectiveFlank");
   /* Carry-in (f) cure: a RESUMED case's questions are already loaded,
    * so the bench beat must not flash — the stage starts at "standing"
    * whenever this mount is not a fresh deal, here and on case change
@@ -331,6 +372,32 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   // machine, player, and timers all live in refs, so a fresh closure is
   // always current); effects and listeners reach them via dispatchRef.
   const runEffect = (effect: DetectiveEffect) => {
+    if (effect.type === "presentClue") {
+      presentClue(effect.clueIndex);
+      return;
+    }
+    if (effect.type === "stopSpeech") {
+      // The pin wins the voice: a walk-held read is dropped, the
+      // current clip stops, the queue flushes — silently for the
+      // ladder (the machine is already in SELECTION_READ).
+      cancelWatsonWalkRef.current(false);
+      suppressDrainRef.current = true;
+      try {
+        playerRef.current?.stopAll();
+      } finally {
+        suppressDrainRef.current = false;
+      }
+      return;
+    }
+    if (effect.type === "caption") {
+      if (captionTimerRef.current) clearTimeout(captionTimerRef.current);
+      setCaption({ who: effect.who, text: effect.text });
+      captionTimerRef.current = setTimeout(() => {
+        captionTimerRef.current = null;
+        setCaption(null);
+      }, effect.ms);
+      return;
+    }
     if (effect.type === "speak") {
       // PR B: a clue read may be held by Watson's walk (arrival-
       // gated). beginWatsonWalk returns true only when it took the
@@ -529,6 +596,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           // sheet-close effect consumes deferredDrainRef and
           // dispatches the one real speechEnded itself.
           if (heldClueRef.current || deferredDrainRef.current) return;
+          if (suppressDrainRef.current) return;
           dispatchRef.current({ type: "speechEnded" });
         }
       },
@@ -573,6 +641,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     return () => {
       if (dwellTimerRef.current) clearTimeout(dwellTimerRef.current);
       if (ringTimerRef.current) clearTimeout(ringTimerRef.current);
+      if (captionTimerRef.current) clearTimeout(captionTimerRef.current);
     };
   }, []);
 
@@ -593,7 +662,14 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     const fresh = viewForState(machineRef.current);
     viewRef.current = fresh;
     setView(fresh);
-    setStagingStage(freshDeal ? "bench" : "standing");
+    // Bench + intro duet: the session's first fresh case only.
+    const intro = freshDeal && !introPlayedThisSession;
+    if (intro) introPlayedThisSession = true;
+    setStagingStage(intro ? "bench" : "standing");
+    setPresentedClue(freshDeal ? 1 : cluesRevealed);
+    if (captionTimerRef.current) clearTimeout(captionTimerRef.current);
+    captionTimerRef.current = null;
+    setCaption(null);
     entryPendingRef.current = false;
     /* Carry-in (e): entry intent recorded during a previous case's
      * bench must not fire into this case — reset it with the other
@@ -627,9 +703,12 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     // skips the duet. freshDeal flips false after the first guess, but
     // the seenCase guard above makes this effect once-per-case, so the
     // value read here is the one from the case's first render.
-    dispatch({ type: "caseOpened", freshDeal });
+    dispatch({ type: "caseOpened", freshDeal, intro, openTarget: cluesRevealed });
     if (cluesRevealed >= 1) {
-      dispatch({ type: "clueUnlocked", clueIndex: cluesRevealed });
+      // A fresh deal opens its starting clues one at a time from
+      // clue 1 (the machine's opening sequence); a resumed case
+      // re-reads only the clue it stands on.
+      dispatch({ type: "clueUnlocked", clueIndex: freshDeal ? 1 : cluesRevealed });
     }
     // cluesRevealed at case-open time is the starting rung; later
     // increments arrive through the clue effect below.
@@ -648,7 +727,20 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   useEffect(() => {
     if (!lastGuessPlaceId || lastGuessPlaceId === seenGuessRef.current) return;
     seenGuessRef.current = lastGuessPlaceId;
+    // PR 2a cure 3 (the tap-mode silent guess): the guess read this
+    // dispatch emits is the kid's own confirm tap made audible, so
+    // the player is armed for exactly this synchronous dispatch —
+    // every speak effect it produces is the guess read, and nothing
+    // else enqueues inside the window. In tap mode the armed refs
+    // play for real instead of resolving as skipped; the drain
+    // accounting is untouched (this dispatch's read drains through
+    // the ordinary onSpeakingChange path like any other).
+    // A pin during the opening shows every card the deal holds —
+    // the clue the guess just unlocked waits for its own read.
+    presentClue(Math.max(1, cluesRevealed - 1));
+    playerRef.current?.armGuessRead();
     dispatch({ type: "guessConfirmed", placeId: lastGuessPlaceId });
+    playerRef.current?.disarmGuessRead();
     if (ringTimerRef.current) clearTimeout(ringTimerRef.current);
     ringTimerRef.current = setTimeout(() => {
       ringTimerRef.current = null;
@@ -686,7 +778,30 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     if (seenSheetRef.current === sheetOpen) return;
     seenSheetRef.current = sheetOpen;
     dispatch({ type: sheetOpen ? "sheetOpened" : "sheetClosed" });
+    // The pair stays visible under the sheet (2026-11-10), so a
+    // berthed Holmes walks home to the dock when the sheet opens:
+    // the player is answering the sheet, not pausing over the map.
+    if (sheetOpen && berthedRef.current) exitToDockRef.current(false);
   }, [sheetOpen, dispatch]);
+
+  // The player's current pick → the selection read (PR 2a cure: the
+  // machine's selectionNamed event had no production dispatcher —
+  // Holmes stayed silent from the pick until the guess was spent).
+  // One dispatch per pick LANDING: a change to a new non-null id.
+  // Re-renders with the same pick, and the pick clearing (cancel /
+  // confirm), dispatch nothing — the machine dedups re-names itself,
+  // and a confirmed guess rides guessConfirmed, never this path.
+  // ORDER: this effect is declared AFTER the sheet effect above on
+  // purpose — a pick always arrives WITH the sheet opening (same
+  // render), so sheetOpened lands first; the machine stores the pick
+  // as its pending selection (sheetOpened never discards it) and the
+  // read then waits for the clue chain exactly as designed.
+  const seenPickRef = useRef<string | null>(null);
+  useEffect(() => {
+    if (!selectedPlaceId || selectedPlaceId === seenPickRef.current) return;
+    seenPickRef.current = selectedPlaceId;
+    dispatch({ type: "selectionNamed", placeId: selectedPlaceId });
+  }, [selectedPlaceId, dispatch]);
 
   /* PR B: the sheet opening mid-walk cancels the walk (the council's
    * stale-read condition): a held read is dropped and must NEVER
@@ -723,13 +838,18 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   /* Staging: the bench holds only while the case opens. The moment
    * the machine leaves CASE_OPEN (the case's questions loading),
    * the pair rise: Watson goes to his station,
-   * Holmes stands in the slot until the first map interaction. */
+   * Holmes stands in the slot until the first map interaction.
+   * Flank (STAGE): no slot, no entry walk — the bench unmounts
+   * and Holmes is at the flank from the first clue (a resumed
+   * deal, which starts at "standing", goes straight there too). */
   useEffect(() => {
     if (!stagingOn) return;
     if (stagingStage === "bench" && view.phase !== "CASE_OPEN") {
-      setStagingStage("standing");
+      setStagingStage(flankOn ? "gone" : "standing");
+    } else if (flankOn && stagingStage === "standing") {
+      setStagingStage("gone");
     }
-  }, [stagingOn, stagingStage, view.phase]);
+  }, [stagingOn, stagingStage, view.phase, flankOn]);
 
   /* Staging: once Holmes enters the map, the bench slot finishes
    * collapsing and unmounts — zero height, nothing reserved. */
@@ -818,6 +938,12 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     setAnchorMeasured(false);
   }
   const [mapEl, setMapEl] = useState<Element | null>(null);
+  /** The flank strip's in-flow slot (LoopScreen renders it above
+   * the active clue card when the flank flag is on; the strip
+   * portals into it in strip mode). Measured with the anchor, on
+   * the same discrete changes — the slot moves with the active
+   * card, so a stale element would portal into a detached node. */
+  const [stripSlotEl, setStripSlotEl] = useState<Element | null>(null);
   const mapElRef = useRef<Element | null>(null);
   /** Cached map container rect (client coords): measured HERE, on
    * resize / phase / clue changes only — the companion reads the
@@ -828,6 +954,9 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     const measure = () => {
       const mapNode = document.querySelector('[data-testid="loop-map"]');
       setMapEl(mapNode);
+      setStripSlotEl(
+        document.querySelector('[data-testid="detective-strip-slot"]'),
+      );
       mapElRef.current = mapNode;
       if (mapNode) {
         const mr = mapNode.getBoundingClientRect();
@@ -838,7 +967,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       // The ACTIVE clue card: the article whose aria-label names the
       // latest revealed clue ("Clue 4: The Hook").
       const card = document.querySelector(
-        `article[aria-label^="Clue ${cluesRevealed}:"]`,
+        `article[aria-label^="Clue ${anchorClue}:"]`,
       );
       if (card) {
         const rect = card.getBoundingClientRect();
@@ -867,7 +996,12 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       window.removeEventListener("resize", measure);
       window.removeEventListener("scroll", measure);
     };
-  }, [cluesRevealed, phase, status, caseIndex]);
+    // flankOn in the deps (STAGE): flipping the flag changes the
+    // card's CSS margins (68/98 row, 0 strip) and renders the
+    // strip slot — the anchor and the slot must re-measure on
+    // the flip, or the mode would be decided from the pre-flank
+    // card rect.
+  }, [cluesRevealed, anchorClue, phase, status, caseIndex, flankOn]);
 
   /* -- the reading moment comes to the player (prod-pair fix, RC2) --
    * On the shipped layout the clue cards render BELOW the map, past a
@@ -887,7 +1021,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     if (readingScrollKeyRef.current === key) return;
     readingScrollKeyRef.current = key;
     const card = document.querySelector(
-      `article[aria-label^="Clue ${cluesRevealed}:"]`,
+      `article[aria-label^="Clue ${anchorClue}:"]`,
     );
     if (!card) return;
     /* Scroll the minimum so the card AND the station above it are in
@@ -913,7 +1047,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       "scrollBehavior" in document.documentElement.style;
     if (smooth) window.scrollBy({ top: dy, behavior: "smooth" });
     else window.scrollBy(0, dy);
-  }, [phase, cluesRevealed, caseIndex]);
+  }, [phase, cluesRevealed, anchorClue, caseIndex]);
 
   /* -- waypoint companion (U6) -----------------------------------------
    * Performance shape (council Q2 §10): ONE passive listener set on
@@ -1024,6 +1158,10 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * on to the berth instead. */
   const enterMap = () => {
     if (!stagingOn) return;
+    /* Flank (STAGE): Holmes never enters the map — no entry walk,
+     * no dock, no berth. Every entry path (interaction handlers,
+     * C2 intent, C3 forced entry) runs through here. */
+    if (flankOn) return;
     /* Cure C2: during "bench" the interaction only records intent —
      * the stage must not jump bench -> entering mid-duet. The
      * standing effect above fires the entry when the duet ends. */
@@ -1292,6 +1430,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     const attemptConfirm = (triesLeft: number) => {
       pauseTimerRef.current = null;
       if (viewRef.current.phase !== "SEARCH_IDLE") return;
+      if (seenSheetRef.current) return; // the guess sheet is up: no thinking pause
       if (companionModeRef.current === "killed") return;
       const now = performance.now();
       const point = detector.check(now, now - lastMapActivity);
@@ -1461,9 +1600,17 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * CASE_OPEN duet (see benchEl). Holmes's station suppression
    * below already had this shape; Watson's is now symmetric. */
   const benchStage = stagingOn && stagingStage === "bench";
+  /** Moment-line bubble over the figure that says it. */
+  const bubbleFor = (who: "holmes" | "watson") =>
+    caption?.who === who ? (
+      <span className="detective-bubble" data-testid="detective-bubble" data-who={who}>
+        {caption.text}
+      </span>
+    ) : null;
   const holmesEl =
     view.holmes.placement !== "hidden" ? (
       <div className="detective-host-figure" data-detective="holmes">
+        {bubbleFor("holmes")}
         <HolmesRig
           pose={view.holmes.pose}
           facing="right"
@@ -1475,6 +1622,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   const watsonEl =
     view.watson.placement !== "hidden" ? (
       <div className="detective-host-figure" data-detective="watson">
+        {bubbleFor("watson")}
         <WatsonRig
           pose={
             watsonWalking && view.watson.placement === "station"
@@ -1494,11 +1642,41 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     view.watson.placement === "station" &&
     holmesEl !== null &&
     watsonEl !== null;
+  /* Flank (STAGE): Holmes's frozen slot at the clue card. The mode
+   * comes from the MEASURED card left (watson-walk.ts): row when
+   * the card leaves room for Holmes + the gaps, else the bookend
+   * strip above the card. No anchor, no flank — the anchor-null
+   * state keeps today's behaviour until the measure lands. The
+   * flank engages once the bench is gone (stage "gone"): during
+   * bench the pair are on the bench, and a resumed deal passes
+   * through "standing" for one frame before the effect above
+   * sends it to "gone" — the stage gate keeps Holmes
+   * single-cast through both. CELEBRATE keeps its shipped
+   * cluster (celebratingEarly); every other phase flanks him,
+   * including the endings (DEBRIEF / FAIL_READ / POUT) — he
+   * stays at the clue's side. */
+  const flankMode =
+    flankOn && anchor ? flankModeForCardLeft(anchor.left) : null;
+  const holmesFlanked =
+    flankOn &&
+    flankMode !== null &&
+    !celebratingEarly &&
+    !benchStage &&
+    stagingStage === "gone" &&
+    view.holmes.placement !== "hidden";
   const stationFigures: ReactElement[] = [];
   /* Cure C1: during the bench stage Watson's station figure is
    * suppressed with the rest of his cluster — the bench Watson is
    * the only Watson on the page. */
-  if (view.watson.placement === "station" && watsonEl && !benchStage) stationFigures.push(<span key="w">{watsonEl}</span>);
+  /* Flank strip: Watson leaves the gutter for the strip (below) —
+   * the station cluster must not also cast him. */
+  if (
+    view.watson.placement === "station" &&
+    watsonEl &&
+    !benchStage &&
+    flankMode !== "strip"
+  )
+    stationFigures.push(<span key="w">{watsonEl}</span>);
   /* Staging (PR A): Holmes NEVER joins the station cluster — that is
    * what keeps the zero-overlap law: Watson alone stands in the
    * gutter beside the card, Holmes waits in the bench slot (before
@@ -1515,6 +1693,31 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * The spark sits ABOVE the contact point (its box ends 8 px over the
    * hands): it crowns the contact, it never masks it. */
   const celebrating = celebratingEarly;
+  /* #371 cure: the celebration plays ON THE MAP (bottom-left, the dock
+   * corner), never at the clue column. At the station its 147×104
+   * cluster sat over the card above the active one — and on a solve
+   * every card is revealed, so it always covered clue text. The map
+   * corner is open ground (the zero-overlap law). Without a map
+   * element the shipped station cluster remains the fallback. */
+  const celebrateOnMap = celebrating && mapEl !== null;
+  /* #371, the loss half (owner order 2026-11-10): the fail read and the
+   * cheer-up play in the same map corner as the celebration. On a loss
+   * every card is revealed too, so Watson's station spot always sat on
+   * clue text. Both figures stand together in the dock for the
+   * cheer-up; without a map element the station stays the fallback. */
+  /* …and the rest of the closed case (2026-11-10 review): from the
+   * moment the case closes (the game's own status, the same render that
+   * shows "Case closed") every card is revealed, so any station spot sits
+   * on clue text — the closing pick read (SELECTION_READ), the debrief
+   * after a solve, the fail read and the cheer-up all play in the map
+   * corner. */
+  const failOnMap =
+    !celebrating &&
+    (status !== "playing" ||
+      view.phase === "FAIL_READ" ||
+      view.phase === "POUT" ||
+      view.phase === "DEBRIEF") &&
+    mapEl !== null;
   const celebrateEl = celebrating ? (
     <div
       className="detective-host-celebrate"
@@ -1560,6 +1763,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * dock instead of the station cluster (see stationFigures). */
   const holmesDockFallback =
     stagingOn &&
+    !flankOn &&
     holmesEntered &&
     view.holmes.placement === "station" &&
     !celebrating;
@@ -1567,7 +1771,10 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     (view.holmes.placement === "dock" ||
       view.holmes.placement === "berth" ||
       holmesDockFallback) &&
-    (!stagingOn || holmesEntered);
+    (!stagingOn || holmesEntered) &&
+    /* Flank (STAGE): no guessing-phase dock/berth presence — he
+     * holds the flank slot instead (row or strip, below). */
+    !flankOn;
   const watsonOnMap = view.watson.placement === "dock";
   const effectivePlacement = berthHidden
     ? "hidden"
@@ -1592,6 +1799,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       }}
     >
       <div className="detective-host-figure" data-detective="holmes">
+        {bubbleFor("holmes")}
         <HolmesRig
           pose={walking ? "walk" : view.holmes.pose}
           facing="right"
@@ -1609,7 +1817,12 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * replays the player's held clue sequence; the sound gate is
    * re-checked inside the player at play time. */
   const stationReady = !stagingOn || anchorMeasured;
+  /* Owner, 2026-11-10: "there is no speaker" — the Listen chip is
+   * retired; tapping either figure repeats the line instead, and the
+   * one mute lives in the screen's top-left controls. */
+  const LISTEN_BUTTON_RETIRED = true;
   const showListen =
+    !LISTEN_BUTTON_RETIRED &&
     degradation.speechMode === "tap" &&
     !view.hidden &&
     !benchStage &&
@@ -1624,7 +1837,13 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    * 12 edge clear), vertically centred on the active card — never
    * over its text. */
   const gutterStation =
-    stagingOn && !celebrating && anchor !== null && view.watson.placement === "station";
+    stagingOn &&
+    !celebrating &&
+    anchor !== null &&
+    view.watson.placement === "station" &&
+    /* Flank strip: no gutter station — Watson stands in the strip
+     * above the card, and the side controls ride with him there. */
+    flankMode !== "strip";
   const gutterLeft = anchor ? anchor.left + anchor.width + GUTTER_CARD_GAP_PX : 0;
   const gutterCentreTop = anchor ? anchor.top + anchor.height / 2 : 0;
   /* PR B: while Watson walks, the whole gutter cluster (figure,
@@ -1640,7 +1859,22 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     watsonWalkMs > 0
       ? `transform ${watsonWalkMs}ms cubic-bezier(0.22, 0.61, 0.36, 1)`
       : undefined;
-  const listenEl = showListen ? (
+  /* The Listen button itself (factored: in strip mode it rides
+   * inside the strip portal, in the middle of the bookend strip,
+   * instead of its fixed wrapper here). */
+  const listenButton = (
+    <button
+      type="button"
+      className="detective-listen-button"
+      aria-label="Listen to this clue"
+      onClick={() => {
+        void playerRef.current?.playHeldSequence();
+      }}
+    >
+      <span aria-hidden="true">🔊</span> Listen
+    </button>
+  );
+  const listenEl = showListen && flankMode !== "strip" ? (
     <div
       className="detective-host-listen"
       data-testid="detective-listen"
@@ -1657,16 +1891,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
             : { left: 164, bottom: 96, top: "auto", transform: "none" }
       }
     >
-      <button
-        type="button"
-        className="detective-listen-button"
-        aria-label="Listen to this clue"
-        onClick={() => {
-          void playerRef.current?.playHeldSequence();
-        }}
-      >
-        <span aria-hidden="true">🔊</span> Listen
-      </button>
+      {listenButton}
     </div>
   ) : null;
 
@@ -1710,7 +1935,14 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
     </span>
   );
   const watsonReplayStationEl =
-    showWatsonReplay && view.watson.placement === "station" && stationReady && !benchStage ? (
+    showWatsonReplay &&
+    view.watson.placement === "station" &&
+    stationReady &&
+    !benchStage &&
+    /* Flank strip: the replay rides inside the strip portal over
+     * Watson's strip figure — the fixed station wrapper below
+     * would paint it over the card's top-left instead. */
+    flankMode !== "strip" ? (
       <div
         className={
           gutterStation
@@ -1780,20 +2012,13 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
    *    replay and a Watson tap can never mute. Muting stops the
    *    speaking clip in the same event via the onSoundChanged
    *    subscription above. */
+  /* Owner, 2026-11-10: "tapping on character will repeat the line
+   * and the mute is on the top left side" — a tap on Holmes repeats
+   * the current clue chain like a tap on Watson; muting moved to the
+   * screen's own top-left SoundToggle. The alias buttons keep their geometry and testids. */
   const toggleSoundFromHolmes = (e: { stopPropagation(): void }) => {
     e.stopPropagation();
-    try {
-      // Derive from the host's SUBSCRIBED soundOn state, never from a
-      // fresh storage read (cure, Senior Developer): where setItem
-      // throws (private mode) storage can disagree with the live
-      // state, and an alias reading storage could mute but never
-      // unmute. soundOn is kept current by the onSoundChanged
-      // subscription above, so the alias always flips the truth the
-      // player sees.
-      setSoundEnabled(!soundOn);
-    } catch {
-      // Sound is enhancement-only; the alias never throws into play.
-    }
+    void playerRef.current?.playHeldSequence();
   };
   const mutedBadge = !soundOn ? (
     <span
@@ -1804,9 +2029,9 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
       <VolumeX className="size-4" aria-hidden="true" />
     </span>
   ) : null;
-  const soundChip = (
-    <SoundToggle testId="detective-sound-chip" className="detective-sound-chip" />
-  );
+  /* The pair's own speaker chip is retired (no speaker by the pair);
+   * the screen's top-left SoundToggle is the one mute. */
+  const soundChip = null;
   const watsonAtStation = view.watson.placement === "station";
   const holmesAtStation = view.holmes.placement === "station";
   // Station geometry (rendered boxes at 104 px tall): Watson
@@ -1924,8 +2149,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
             : "detective-holmes-mute"
         }
         data-testid="detective-holmes-mute"
-        aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
-        aria-pressed={soundOn}
+        aria-label="Ask Holmes to repeat this clue"
         onClick={toggleSoundFromHolmes}
       />
     </div>
@@ -1949,8 +2173,7 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
         type="button"
         className="detective-holmes-mute detective-holmes-mute-map"
         data-testid="detective-holmes-mute"
-        aria-label={soundOn ? "Turn sound off" : "Turn sound on"}
-        aria-pressed={soundOn}
+        aria-label="Ask Holmes to repeat this clue"
         onClick={toggleSoundFromHolmes}
         style={{
           transform: `translate3d(${holmesXY.x}px, ${holmesXY.y}px, 0)`,
@@ -1960,6 +2183,109 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
               : "none",
         }}
       />
+    ) : null;
+
+  /* Flank row (STAGE): Holmes at the left of the clue card,
+   * vertically centred on it like Watson's station — the same
+   * top as the gutter station (translateY(-50%)), only the left
+   * differs (flankHolmesX, watson-walk.ts). Frozen: no walk
+   * transform, no transition — he appears at his post. The mute
+   * alias rides over his figure, preserving the tap-Holmes mute
+   * from the map dock he no longer visits. */
+  const flankHolmesEl =
+    holmesFlanked && flankMode === "row" && anchor ? (
+      <div
+        className="detective-host-flank"
+        data-testid="detective-flank"
+        data-flank-mode="row"
+        data-holmes-placement={effectivePlacement}
+        data-phase={view.phase}
+        aria-hidden="true"
+        style={{
+          left: flankHolmesX(anchor.left),
+          top: gutterCentreTop,
+          transform: "translateY(-50%)",
+        }}
+      >
+        {holmesEl}
+      </div>
+    ) : null;
+  const flankHolmesMuteEl =
+    holmesFlanked && flankMode === "row" && anchor ? (
+      <div
+        className="detective-host-flank-mute"
+        style={{
+          left: flankHolmesX(anchor.left),
+          top: gutterCentreTop,
+          transform: "translateY(-50%)",
+        }}
+      >
+        <button
+          type="button"
+          className="detective-holmes-mute"
+          data-testid="detective-holmes-mute"
+          aria-label="Ask Holmes to repeat this clue"
+          onClick={toggleSoundFromHolmes}
+        />
+      </div>
+    ) : null;
+
+  /* Flank strip (STAGE): the bookend strip above the active clue
+   * card, in-flow via the LoopScreen slot — Holmes at the left
+   * end, Watson at the right end (his station side), Listen +
+   * the sound chip in the clear middle. Plain page flow: no
+   * transition, no animation, no travel — the figures are simply
+   * there when the clue opens. The tap aliases ride over their
+   * figures (mute over Holmes, replay over Watson), preserving
+   * the tap behaviours from the dock/station they replace. The
+   * strip renders exactly when the flank engages in strip mode;
+   * the slot stays empty (zero height) otherwise. */
+  const stripEl =
+    holmesFlanked && flankMode === "strip" && stripSlotEl ? (
+      createPortal(
+        <div
+          className="detective-flank-strip"
+          data-testid="detective-flank-strip"
+          data-flank-mode="strip"
+          data-holmes-placement={effectivePlacement}
+          data-phase={view.phase}
+        >
+          <div className="detective-flank-strip-figure">
+            {holmesEl}
+            <button
+              type="button"
+              className="detective-holmes-mute detective-flank-strip-alias"
+              data-testid="detective-holmes-mute"
+              aria-label="Ask Holmes to repeat this clue"
+              onClick={toggleSoundFromHolmes}
+            />
+          </div>
+          <div className="detective-flank-strip-middle">
+            {showListen ? (
+              <div data-testid="detective-listen">{listenButton}</div>
+            ) : null}
+            <div className="detective-flank-strip-sound">
+              {soundChip}
+              {mutedBadge}
+            </div>
+          </div>
+          <div className="detective-flank-strip-figure">
+            {watsonEl}
+            {showWatsonReplay ? (
+              <button
+                type="button"
+                className="detective-watson-replay detective-flank-strip-alias"
+                data-testid="detective-watson-replay"
+                aria-label="Ask Watson to repeat this clue"
+                onClick={onWatsonReplay}
+              >
+                {watsonReplayBadge}
+              </button>
+            ) : null}
+          </div>
+        </div>,
+        stripSlotEl,
+      )
     ) : null;
 
   /* The bench (staging): in-flow, rendered where LoopScreen mounts
@@ -2071,11 +2397,17 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
   return (
     <>
       {benchEl}
+      <p className="sr-only" role="status" aria-live="polite" data-testid="detective-caption-live">
+        {caption?.text ?? ""}
+      </p>
       {listenEl}
       {watsonReplayStationEl}
       {stationSoundEl}
       {stationHolmesMuteEl}
-      {stationReady && (stationFigures.length > 0 || celebrateEl) ? (
+      {flankHolmesEl}
+      {flankHolmesMuteEl}
+      {stripEl}
+      {stationReady && !celebrateOnMap && !failOnMap && (stationFigures.length > 0 || celebrateEl) ? (
         <div
           className={
             gutterStation
@@ -2121,9 +2453,32 @@ export default function DetectiveHost(props: DetectiveHostProps): ReactElement |
           {celebrateEl ?? stationFigures}
         </div>
       ) : null}
-      {(holmesOnMap || watsonOnMap) && mapEl
+      {(holmesOnMap || watsonOnMap || celebrateOnMap || failOnMap) && mapEl
         ? createPortal(
             <>
+              {failOnMap ? (
+                <div
+                  className="detective-host-map detective-host-map-celebrate"
+                  data-testid="detective-ending-map"
+                  data-phase={view.phase}
+                  aria-hidden="true"
+                >
+                  <div className="detective-host-dock">
+                    {holmesEl && !holmesOnMap && !holmesFlanked ? <span key="h">{holmesEl}</span> : null}
+                    {watsonEl && !watsonOnMap ? <span key="w">{watsonEl}</span> : null}
+                  </div>
+                </div>
+              ) : null}
+              {celebrateOnMap ? (
+                <div
+                  className="detective-host-map detective-host-map-celebrate"
+                  data-testid="detective-celebrate-map"
+                  data-phase={view.phase}
+                  aria-hidden="true"
+                >
+                  <div className="detective-host-dock">{celebrateEl}</div>
+                </div>
+              ) : null}
               <div
                 className="detective-host-map"
                 data-testid="detective-host"
