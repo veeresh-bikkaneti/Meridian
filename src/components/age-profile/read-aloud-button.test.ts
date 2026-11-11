@@ -61,10 +61,10 @@ function renderButton(mode: "auto" | "button" | "off") {
 
 // --- Uniform ghost speaker icon across bands ---
 
-test("8-10 and 11-13 render the identical control (no band-revealing differences)", () => {
+test("button and off modes render the identical control (no band-revealing differences)", () => {
   const for810 = renderButton("button");
   const for1113 = renderButton("off");
-  assert.equal(for1113, for810, "identical chrome for 8-10 and 11-13");
+  assert.equal(for1113, for810, "identical chrome for button and off");
 });
 
 test("the ghost icon control is 44px, icon-only, no text label", () => {
@@ -77,11 +77,11 @@ test("the ghost icon control is 44px, icon-only, no text label", () => {
   assert.ok(html.includes('type="button"'), "still a tappable button");
 });
 
-test("5-7 keeps its filled auto variant (documenting the one intentional difference)", () => {
+test("auto mode keeps its filled variant (documenting the one intentional difference)", () => {
   const html = renderButton("auto");
   assert.ok(html.includes("agep-listen-auto"), "filled variant");
-  assert.ok(/>🔊 Listen</.test(html), "5-7 keeps the filled + label button");
-  assert.ok(!html.includes("agep-listen-icon"), "5-7 is not the ghost icon");
+  assert.ok(/>🔊 Listen</.test(html), "auto keeps the filled + label button");
+  assert.ok(!html.includes("agep-listen-icon"), "auto is not the ghost icon");
 });
 
 test("no speech on this device: the button still renders for every mode", () => {
@@ -99,7 +99,7 @@ test("the unavailable-speech message is the exact locked copy", () => {
 test("read-aloud control reveals no band: no age numbers, no easy/hard", () => {
   for (const mode of ["auto", "button", "off"] as const) {
     const html = renderButton(mode);
-    assert.ok(!/11-13|8-10|5-7/.test(html), `mode ${mode} leaks a band`);
+    assert.ok(!/18\+|10-18|7-10|11-13|8-10|5-7/.test(html), `mode ${mode} leaks a band`);
     assert.ok(!/easy|hard/i.test(html), `mode ${mode} leaks difficulty`);
   }
 });
@@ -112,6 +112,6 @@ test("the prompt asks the exact question once, with the three choices", () => {
   assert.ok(html.includes(">Always<"), "Always choice");
   assert.ok(html.includes(">Sometimes<"), "Sometimes choice");
   assert.ok(html.includes(">Never<"), "Never choice");
-  assert.ok(!/11-13|8-10|5-7/.test(html), "no age numbers in the prompt");
+  assert.ok(!/18\+|10-18|7-10|11-13|8-10|5-7/.test(html), "no age numbers in the prompt");
   assert.ok(!/easy|hard/i.test(html), "no easy/hard in the prompt");
 });

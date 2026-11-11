@@ -1,5 +1,5 @@
 /**
- * Kid story version for band 5-7 (WI-14): sentence-prefix shortening of a
+ * Kid story version for the former band 5-7 (WI-14; no longer selected by storyForBand): sentence-prefix shortening of a
  * place's own reviewed story text — shortening only, never new text.
  *
  * Sentence rules mirror src/components/story-lede.ts. Duplicated
@@ -53,7 +53,7 @@ export function splitSentences(text: string): string[] {
 export const KID_TARGET_MIN_CHARS = 50;
 
 /**
- * The band 5-7 version of a reviewed story: whole sentences from the
+ * The former band 5-7 version of a reviewed story: whole sentences from the
  * start of the story, taken until the accumulated text reaches
  * KID_TARGET_MIN_CHARS — but always leaving at least one sentence
  * untaken, so the result is strictly shorter whenever the story has

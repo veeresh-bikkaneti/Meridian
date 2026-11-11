@@ -20,9 +20,9 @@ export const RUNG_ORDER: LadderRung[] = ["hook", "wikitext", "eb1911", "wikidata
 
 /** Highest rung index each band may see (Phase 1 §2 CEILING_INDEX). */
 const CEILING_INDEX: Record<AgeBandId, number> = {
-  "5-7": 0,
-  "8-10": 1,
-  "11-13": 3,
+  "7-10": 1, // wikitext
+  "10-18": 3, // wikidata
+  "18+": 3, // wikidata — same ceiling as 10-18; not yet tuned for adults
 };
 
 /**
@@ -47,7 +47,7 @@ function cleanText(text: string | undefined): string | null {
  */
 export function mapStory(band: AgeBandId | null, facts: PlaceFacts): MappedStory {
   const effective: AgeBandId = band ?? FULL_ACCESS_BAND;
-  const autoplayAudio = effective === "5-7";
+  const autoplayAudio = AGE_BANDS[effective].audioMode === "auto";
   const ceiling = CEILING_INDEX[effective];
   const blurb = (facts.blurb ?? "").trim();
 

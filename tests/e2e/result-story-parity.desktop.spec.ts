@@ -20,8 +20,8 @@ import {
  * pool id (helpers.seedSeenExcept / poolIds), so hit and miss are
  * asserted against the same authored, reviewed story text, deterministically:
  * the place's story in src/game/starters.ts. The default age band in a
- * fresh profile is 11-13, so both cards must show the FULL story (the
- * 5-7 shortening is proven by src/game/story-card-coverage.test.ts).
+ * fresh profile is 10-18, so both cards must show the FULL story (the
+ * former 5-7 shortening no longer applies; see src/game/story-card-coverage.test.ts).
  *
  * The miss card renders its story split (lede inside the miss-subscript,
  * the rest in the .result-story paragraph), so the miss assertion

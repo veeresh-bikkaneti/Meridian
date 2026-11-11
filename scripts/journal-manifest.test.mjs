@@ -9,6 +9,7 @@
 import { strict as assert } from "node:assert";
 import { spawnSync } from "node:child_process";
 import {
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readFileSync,
@@ -24,6 +25,7 @@ import { test } from "node:test";
 import { fileURLToPath } from "node:url";
 import {
   UsageError,
+  WITHHELD_IDS,
   parseArgs,
   validate,
 } from "./validate-journal-manifest.mjs";
@@ -258,11 +260,11 @@ function withEnv(assignments, fn) {
 test("case 1: invalid JSON fails fast", () => {
   withTempManifest(case1Text(), (manifestPath) => {
     const actual = snippetActual(case1Text());
-    assert.equal(actual, "tly out of frame at ");
+    assert.equal(actual, "t flag: static landm");
     const result = validate({ manifestPath, imagesDir: REAL_IMAGES });
     assertExact(
       result,
-      [err("invalid-json", "manifest", manifestPath, "tly out of frame at ")],
+      [err("invalid-json", "manifest", manifestPath, "t flag: static landm")],
       3,
     );
   });
@@ -1280,7 +1282,8 @@ test("case 16g: empty movies object", () => {
         IDS.map((id) => err("missing-id", id, `movies.${id}`, "absent")),
         2,
       );
-      assert.equal(result.errors.length, 106);
+      // 106 images, 4 withheld on purpose (WITHHELD_IDS).
+      assert.equal(result.errors.length, 102);
     },
   );
 });
@@ -2046,4 +2049,34 @@ test("wiring: prebuild and prebuild:pages invoke the validator", () => {
   );
   assert.ok(pkg.scripts.prebuild.includes(VALIDATOR_STEP));
   assert.ok(pkg.scripts["prebuild:pages"].includes(VALIDATOR_STEP));
+});
+
+// --- Withheld movies (owner, 2026-11-10) --------------------------------
+
+test("withheld: exactly angkor, potala, timbuktu and uluru", () => {
+  assert.deepEqual([...WITHHELD_IDS].sort(), ["angkor", "potala", "timbuktu", "uluru"]);
+});
+
+test("withheld: each has its image but no movie in the real manifest", () => {
+  for (const id of WITHHELD_IDS) {
+    assert.ok(existsSync(join(REAL_IMAGES, `${id}.webp`)), `${id}.webp still ships`);
+    assert.equal(Object.hasOwn(DATA.movies, id), false, `${id} has no movie entry`);
+  }
+});
+
+test("withheld: the real manifest passes without them", () => {
+  const result = validate({ manifestPath: REAL_MANIFEST, imagesDir: REAL_IMAGES });
+  assert.deepEqual(result.errors, []);
+});
+
+test("withheld: any other image without a movie is still missing-id", () => {
+  withTempManifest(
+    mutated((obj) => {
+      delete obj.movies[ID];
+    }),
+    (manifestPath) => {
+      const result = validate({ manifestPath, imagesDir: REAL_IMAGES });
+      assertExact(result, [err("missing-id", ID, `movies.${ID}`, "absent")], 2);
+    },
+  );
 });
