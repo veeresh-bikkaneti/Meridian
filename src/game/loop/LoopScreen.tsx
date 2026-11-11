@@ -1564,6 +1564,13 @@ function LoopGame({
           (detective-host-props.ts): the pair never receives the puzzle,
           the clue file, a target, or any evaluation. */}
       {isEnabled("detectivePair") ? (
+        /* display:contents keeps layout identical (the bench slot still
+         * sits in the screen's flex column under the map) while taking
+         * the host's own elements out of the screen's auto-animate:
+         * that library keeps a REMOVED direct child painted for its
+         * exit animation, so the bench lingered over the closed case
+         * and a re-mounted station showed two Watsons for a moment. */
+        <div style={{ display: "contents" }} data-testid="detective-host-slot">
         <Suspense fallback={null}>
           <DetectiveHost
             {...buildDetectiveHostProps({
@@ -1591,6 +1598,7 @@ function LoopGame({
             onCluePresented={onCluePresented}
           />
         </Suspense>
+        </div>
       ) : null}
 
       {selected && !finished ? (

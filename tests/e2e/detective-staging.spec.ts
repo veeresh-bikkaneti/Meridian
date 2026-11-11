@@ -593,8 +593,8 @@ test("staging samples: Holmes-alone berth separation + FORCED anchor-null fallba
     expect(boxes.mute).not.toBeNull();
     expect(boxes.mute!.right - boxes.mute!.left).toBeGreaterThanOrEqual(68);
     expect(overlap(boxes.mute, boxes.replay)).toBe(0);
-    expect(overlap(boxes.mute, boxes.chip)).toBe(0);
-    expect(overlap(boxes.replay, boxes.chip)).toBe(0);
+    // The pair's sound chip is retired (owner, 2026-11-10).
+    expect(boxes.chip).toBeNull();
 
     // No closing audit window here by design: the anchor-null
     // step above REMOVED the clue articles, so there is no clue

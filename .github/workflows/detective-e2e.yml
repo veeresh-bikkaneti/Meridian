@@ -24,6 +24,8 @@ jobs:
   detective:
     timeout-minutes: 75
     runs-on: ubuntu-24.04
+    # main is the known baseline: its result is shown, never blocks.
+    continue-on-error: ${{ matrix.side == 'main' }}
     strategy:
       fail-fast: false
       matrix:
