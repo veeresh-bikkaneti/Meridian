@@ -8,7 +8,7 @@
 > below is superseded (kept for the record, not deleted):
 > - **P11 current affairs (§4): CLOSED** by the owner (decision 1, 2026-11-10). Removed from the topic list.
 > - **P5 constitution picker (§1): CUT** by the owner (decision 2, 2026-11-10): picker and "which right protects this?" cards removed. School-rules civics for 7-10 replaces it (decision 4).
-> - **Owner decisions (2026-11-10):** five decisions applied and logged in the section right after this block.
+> - **Owner decisions (2026-11-10):** ten decisions and one owner rule applied and logged in the section right after this block.
 > - **Audience:** "5th grade and up" is replaced by the three groups 7-10, 10-18, 18+ (standard §1).
 > - **Religion and mythology:** confirmed removed from all planned content; they appear below only as a removal record.
 > - Status stays **GATED**: no named educator has signed `educator-gate-rubric.md`.
@@ -35,8 +35,15 @@
 
 ## Owner decisions (2026-11-10)
 
-Five decisions from the owner, applied on this branch on 2026-11-10. Each
-is logged here and reflected in `humanities/screened-topics.md`.
+Decisions from the owner, applied on this branch on 2026-11-10. Each is
+logged here and reflected in `humanities/screened-topics.md`. Decisions 1-5
+came in the first brief; the owner rule and decisions 6-11 came in a second
+message the same day.
+
+**Owner rule (logged verbatim, typo kept):** "sometime history can be
+controversial too, we just have to stirke the balance." [sic] Applied as:
+keep the place, teach only settled facts (when built, how big, what from),
+and leave out anything still argued over.
 
 | # | Decision | What changed in this spec and the screened list | Reason logged |
 |---|---|---|---|
@@ -44,7 +51,13 @@ is logged here and reflected in `humanities/screened-topics.md`.
 | 2 | **Constitution picker: CUT** | §1 rewritten without the picker, the "which right protects this?" cards, the "defend the clause" case, the constitution sourcing plan and the constitution-first ordering; Q9 and P5-1 closed in §7; former H09 and H10 removed and logged. | Contested politics: constitutions cannot be told neutrally for every country. |
 | 3 | **Third P8 category from the 2026-11-10 voice call: folded into the Great leaders journal (PR 408)** | §2.2 and §2.8 no longer list it as its own category; the topic row (former H17) now reads "Covered by Great leaders (feat/journal-great-leaders-spec)". The old label is retired and is not used in any file on this branch. | Owner decision; people in that group are screened person by person on the Great leaders branch. |
 | 4 | **Civics for ages 7-10: school-rules civics** | §1.1 item 3 and H12 (now KEEP-LIMITS): why classes have rules, taking turns, voting for a class pet or a game. No government, parties or elections. Codes D2.Civ.3.K-2, D2.Civ.7.3-5 and D2.Civ.9.3-5, HIGH from the official C3 Framework PDF. | Keeps civics for the youngest group while staying out of politics. |
-| 5 | **Journal places: keep the live ones; reword Angkor, Potala, Timbuktu and Uluru to talk only about the place** | New file `humanities/journal-places-reword.md`: proposed story, image alt and narration for each, math questions per group, and a source per number (two numbers UNVERIFIED and unused). §2.8 points to it. The live text, transcripts, narration audio and the Potala image are outside this branch; that file lists them for the integrator. | No religion, belief, ritual, sacred status or conflict is named. Potala carries an extra politics flag for the owner (see that file, §2). |
+| 5 | **Journal places: keep the live ones; reword Angkor, Potala, Timbuktu and Uluru to talk only about the place** | New file `humanities/journal-places-reword.md`: proposed story, image alt and narration for each, math questions per group, and a source per number (two numbers UNVERIFIED and unused). §2.8 points to it. The live text, transcripts, narration audio and the Potala image are outside this branch; that file lists them for the integrator. | No religion, belief, ritual, sacred status or conflict is named. Potala's politics flag is closed by decision 7. |
+| 6 | **Owner rule: "strike the balance"** (verbatim above) | Applied to every place in `humanities/journal-places-reword.md` and recorded in `humanities/screened-topics.md`: only settled facts; any figure the sources disagree on is marked UNVERIFIED and never narrated. | History can be controversial; the place stays, the argued-over parts go. |
+| 7 | **Potala: KEEP, architecture only.** About 13 storeys on a hill in Lhasa | Reword file §2: story now says about 13 storeys (sourced: Wikipedia, UNESCO Japanese summary); politics flag closed. Height in metres stays UNVERIFIED (sources give 110, 119, 130 and over 300 m on different baselines). | Nothing about who governs the region, religion or leaders. |
+| 8 | **Alamo mission: KEEP, architecture only.** "Begun in 1718, stone and adobe" | Reword file §5. Checked: 1718 is the mission's founding (sourced); the standing stone church was begun later and sources disagree on the year (1755, 1756, about 1758), so the line says "founded in 1718". Limestone church and adobe homes: sourced. | Nothing about the battle. |
+| 9 | **Sagrada Família, Fushimi Inari, Christ the Redeemer, Robber's Cave: reword as architecture, geography and math only** | Reword file §6-§9, each with story, alt, narration, math by group and sources. Robber's Cave drops the legend angle. Proper names kept and flagged, not renamed. | Name no religion, belief, ritual or sacred status. |
+| 10 | **Balance: four new PROPOSED places**, same framing: Kailasa Temple (Ellora), Konark Sun Temple, Brihadeeswarar Temple (Thanjavur), "Ram Setu, also called Adam's Bridge" | Reword file part B (§10-§13): each has a math hook and an age group by the skill's grade. UNVERIFIED and not narrated: 200,000 tonnes as one figure (sources give 150,000-200,000), the Konark sundial claim, the 66 m tower (sources give 59.82-66 m), "limestone" for Ram Setu, also called Adam's Bridge. Sourced: 8th century, top-down from one rock, 24 wheels, granite, about 1010, 13 tiers, about 48 km, too shallow for ships, natural. | Balance across regions. Ram Setu, also called Adam's Bridge always carries both names, is never called built, and has an extra flag (public dispute over its origin). |
+| 11 | **Remove the home-folder note paths** | Every home-folder path to the owner's working notes is gone from this spec; those notes are now named by file name only and marked "owner's working notes, not in the repo". | They are not in the repo, so a reader cannot follow them. |
 
 **Branch:** `feat/humanities-definitions`
 **Base:** `origin/main` @ `f37dea50` (verified 2026-11-10)
@@ -56,23 +69,24 @@ of the Meridian scaling-plan push (2026-11-10). It transcribes the council
 verdict of 2026-11-07 (CONDITIONAL GO for definition work and Phase 0 only;
 subject feature branches are NOT GO) into definition briefs for five packets
 plus the three cross-cutting definitions, and it records the correction of 12
-stale-doc spots in the workspace docs.
+stale-doc spots in the owner's working notes (not in the repo).
 
-**Sources transcribed (not re-decided):**
+**Sources transcribed (not re-decided).** All four are the owner's working
+notes, not in the repo:
 
-- `~/workspace/meridian-scaling-work-packets.md` — packets P5, P8, P10, P11, P12
+- `meridian-scaling-work-packets.md` — packets P5, P8, P10, P11, P12
   (2026-11-07).
-- `~/workspace/meridian-scaling-lens-breakdown.md` — §4 P5, §7 P8, §8 P10,
+- `meridian-scaling-lens-breakdown.md` — §4 P5, §7 P8, §8 P10,
   §9 P11, §10 P12, §12 staleness flags, §13 open owner questions (2026-11-10).
-- `~/workspace/meridian-scaling-spec-breakdown.md` — §2 platform decisions,
+- `meridian-scaling-spec-breakdown.md` — §2 platform decisions,
   §5 staleness flags (2026-11-10).
-- `~/workspace/meridian-scaling-debate.md` — council debate + verdict
+- `meridian-scaling-debate.md` — council debate + verdict
   (2026-11-07).
 
 Where a source doc states a fact that current main supersedes, this spec
 records the corrected fact and the superseded source — it never silently
-rewrites the source's history. Workspace-file corrections are listed in §8
-and applied in place in `~/workspace/meridian-scaling-*.md` (and the two
+rewrites the source's history. Working-notes corrections are listed in §8
+and applied in place in the `meridian-scaling-*.md` notes (and the two
 source docs they point at, `meridian-platform-project-description.md` and
 `meridian-end-to-end-study.md`).
 
@@ -93,7 +107,7 @@ source docs they point at, `meridian-platform-project-description.md` and
 6. **Cross-cutting definitions** — the 7-stage release pipeline, the host
    wrap-up rule, the lazy-load guardrail.
 7. **Stale-doc corrections** — the 12 flags of spec-breakdown §5, fixed in
-   place in the workspace docs and recorded here (§8).
+   place in the owner's working notes and recorded here (§8).
 
 ### Out of scope (never in this workstream)
 
@@ -101,8 +115,8 @@ source docs they point at, `meridian-platform-project-description.md` and
 - Any educator sign-off (no educator exists; the seat is UNSTAFFED).
 - Any decision the owner has not made (see §7 open questions — recorded,
   never settled).
-- Any change to `~/workspace/meridian-main`'s working tree (another branch
-  with pre-existing state — left alone).
+- Any change to another local checkout of the repo (pre-existing state,
+  left alone).
 - Merges, PRs, force-pushes. Merging stays the owner's word, per PR per head.
 
 ---
@@ -133,7 +147,7 @@ This workstream is done when, on branch `feat/humanities-definitions`:
    substance from the packets/shared gates.
 3. §7 holds the open owner questions (recorded, not decided).
 4. §8 holds the correction record for all 12 stale-doc flags, with the
-   workspace-file edit for each (or an explicit statement that a flag is a
+   working-notes edit for each (or an explicit statement that a flag is a
    gap with no stale text to correct, and why).
 5. Every research/factual claim in §1–§6 carries a live web source
    (URL + date accessed 2026-11-10) or an explicit confidence level.
@@ -154,14 +168,14 @@ A partial landing reported honestly beats a false "done".
 - [x] `docs/scaling/humanities-definitions-spec.md` is the only file added
   in the first commit; later commits add sections to the same file only
   (plus `BRANCH_STATUS.md`, per the repo's branch convention, and the
-  workspace-file corrections, which live outside the repo).
+  working-notes corrections, which live outside the repo).
 - [x] Every brief marked PREPARED — AWAITING EDUCATOR SIGN-OFF; the word
   "approved" appears nowhere as a claim about any brief (checked by grep
   on the final file: "approved" occurs only in "approved pilot pattern /
   approved video" for the journal v4 keeper and "approved by the owner's
   ear", never as an educator approval of a brief).
 - [x] Every factual claim in §1–§6 has a source URL + access date or a
-  confidence level. Claims from the workspace docs cite the doc + section.
+  confidence level. Claims from the owner's working notes cite the doc + section.
   Live sources accessed 2026-11-10: C3 Framework (official PDF), NHTSA
   Child Pedestrian Safety Curriculum, and the place sources in
   `humanities/journal-places-reword.md`. The constitution and kids'-news
@@ -439,7 +453,8 @@ sign-off is on file.
 Audited against the actual 106 on main `f37dea50`: sources
 `public/videos/journal-manifest.json` (106 movies) and
 `src/components/home-journal.data.ts` (id, place, story — verbatim).
-Full audit: `~/workspace/journal-106-coverage.md`. The verdict below is
+Full audit: `journal-106-coverage.md` (owner's working notes, not in the
+repo). The verdict below is
 transcribed from that audit, not re-derived here.
 
 **COVERED — do not re-add:**
@@ -461,11 +476,14 @@ transcribed from that audit, not re-derived here.
   Vatican, Bodh Gaya, Amritsar, Santiago. Audit fact only — no
   expansion: religion was removed from the plan by the owner 2026-11-10;
   the pilgrimage and religions-epics spec branches were deleted.
-  **Owner decision 5 (2026-11-10):** Angkor, Potala, Timbuktu and Uluru
-  stay live and are reworded to talk only about the place; wording and
-  sources in `humanities/journal-places-reword.md`.
+  **Owner decisions 5, 7, 8 and 9 (2026-11-10):** every one of these
+  sites stays live and is reworded as architecture, geography and math
+  only (Potala and the Alamo explicitly KEEP); Uluru too. Decision 10
+  adds four PROPOSED places for balance. Wording and sources in
+  `humanities/journal-places-reword.md`.
 - **Mythology:** essentially missing — only Uluru (its live story carries
-  a sacred-site note) and Robber's Cave (local legend) touch it. No Greek, Norse, Hindu or
+  a sacred-site note) and Robber's Cave (local legend) touch it; both are
+  reworded to drop that angle (decisions 5 and 9). No Greek, Norse, Hindu or
   other mythology entry. Audit fact only — no expansion: mythology was
   removed from the plan by the owner 2026-11-10; the mythology spec
   branch was deleted.
@@ -882,12 +900,12 @@ neither has a written owner answer. They are carried here as
 All 12 flags are from `meridian-scaling-spec-breakdown.md` §5 (and
 `meridian-scaling-lens-breakdown.md` §12). Each flag below states the
 corrected fact, where the stale text lived, what edit was made in place
-in the workspace files on 2026-11-10 (workstream 4), and what was
+in the owner's working notes on 2026-11-10 (workstream 4), and what was
 deliberately NOT changed. Nothing was silently resolved; the original
 wording is preserved with a dated correction marker next to it — history
 is annotated, not rewritten.
 
-| # | Flag | Corrected fact (wins) | Workspace edit (2026-11-10) |
+| # | Flag | Corrected fact (wins) | Working-notes edit (2026-11-10) |
 |---|---|---|---|
 | 1 | Audience 5–7 | **5th grade and up only** (owner, 2026-11-07) | `meridian-platform-project-description.md`: correction banner added after the intro; the two Maths 5–7 rows in the §4 chart marked `[SUPERSEDED 2026-11-10]`. NOT changed: the §3 age-band table (5–7 / 8–10 / 11–13) — it describes what Meridian ALREADY does in code today, a verified code fact. The Maths 8–10 rows were not flagged stale by any source and were left alone. Also fixed in the scaling docs themselves: "8–10 and 16–18 ends" → "5th-grade and 16–18 ends" in `meridian-scaling-work-packets.md` (P1), `meridian-scaling-debate.md`, and `meridian-scaling-lens-breakdown.md` (P1 UI/UX lens). |
 | 2 | Math first band | **5th grade and up** (owner correction) | `meridian-end-to-end-study.md`: correction banner added at top; §9.6 Phase 1 row marked `[SUPERSEDED 2026-11-10]` in place. |
@@ -902,20 +920,20 @@ is annotated, not rewritten.
 | 11 | Load-budget numbers | **Proposals, not measurements** (250 KB / 500 KB gzip) | NO EDIT — verified on 2026-11-10 that every occurrence already labels them "proposed" (debate lines 107, 331–332, 538–539; plan line 135; packets gap #9). No doc cites them as measured. This spec's §6.3 repeats the PROPOSED status. |
 | 12 | P11 revision-rule tension | **Rule-vs-decision conflict, not doc-vs-doc** ("All 3" pick vs revision rule) | NO EDIT — no stale text to correct; the tension is already recorded in packets P11 and spec-breakdown §5. Was carried as OPEN; **CLOSED 2026-11-10** — the owner closed P11 (decision 1), see §4. |
 
-**Files edited in place (workspace, outside the repo):**
+**Files edited in place (owner's working notes, not in the repo):**
 
-- `~/workspace/meridian-platform-project-description.md` — banner + 2
+- `meridian-platform-project-description.md` — banner + 2
   superseded chart rows + Q8 resolved + 2 passport corrections.
-- `~/workspace/meridian-end-to-end-study.md` — banner + journal bullet +
+- `meridian-end-to-end-study.md` — banner + journal bullet +
   Phase 1 row + Phase 4 row.
-- `~/workspace/meridian-scaling-work-packets.md` — sources line, P1
+- `meridian-scaling-work-packets.md` — sources line, P1
   band ends, P8 status/objective/current-state/pattern/limits/scope
   arithmetic/dependencies/acceptance/educator note/gap #7, Q14.
-- `~/workspace/meridian-scaling-debate.md` — age-band ends, Q14.
-- `~/workspace/meridian-scaling-lens-breakdown.md` — P1 band ends.
-- `~/workspace/meridian-scaling-plan.md` — checked: no stale fact stated
+- `meridian-scaling-debate.md` — age-band ends, Q14.
+- `meridian-scaling-lens-breakdown.md` — P1 band ends.
+- `meridian-scaling-plan.md` — checked: no stale fact stated
   as current (its 5–7 mention is already a correction record). No edit.
-- `~/workspace/meridian-scaling-spec-breakdown.md` — the flag register
+- `meridian-scaling-spec-breakdown.md` — the flag register
   itself; no edit (it is the record these corrections implement).
 
 **Verification of the corrections (2026-11-10):** after the edits, a grep

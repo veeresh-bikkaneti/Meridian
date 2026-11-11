@@ -10,7 +10,9 @@ contested politics. Also applied: no biology and no mythology (owner,
 **Owner decisions (2026-11-10) applied here:** current affairs (P11) closed
 and removed; the constitution picker cut and removed; the third P8 category
 from the voice call folded into Great leaders; school-rules civics for ages
-7-10; four live journal places reworded to talk only about the place. The
+7-10; four live journal places reworded to talk only about the place; then
+the owner rule below, Potala and the Alamo kept as architecture only, four
+more live places reworded, and four PROPOSED places added for balance. The
 full log is in `humanities-definitions-spec.md`, "Owner decisions
 (2026-11-10)", and in "Removed by owner decision" below.
 
@@ -18,6 +20,12 @@ Think of this page as the bouncer at the door: every topic the humanities
 spec wants to teach showed its ID, and the verdict is below. Journal and
 other branches screen their own clips against §7a and do not wait for this
 list; it is here so they can reuse the same verdict words.
+
+**Owner rule (2026-11-10), verbatim:** "sometime history can be
+controversial too, we just have to stirke the balance." [sic] Keep the
+place, teach only settled facts (when built, how big, what from), and leave
+out anything still argued over. Every place item under H13, H14 and H18 is
+screened with it.
 
 ## Verdict words
 
@@ -53,12 +61,12 @@ list; it is here so they can reuse the same verdict words.
 
 | ID | Topic | Verdict | Group | C3 family | Objective | Reason / limits |
 |---|---|---|---|---|---|---|
-| H13 | Historical places | KEEP | 7-10, 10-18, 18+ | D2.His / D2.Geo | After this, a child can place a historical site on the map and tell one thing that happened there, shown by a pin and a retrieval answer. | Already the bulk of the 106 entries. Add only what fills a gap. Told as the place only (owner decision 5): Angkor, Potala, Timbuktu and Uluru get the reworded text in [`journal-places-reword.md`](journal-places-reword.md). |
+| H13 | Historical places | KEEP | 7-10, 10-18, 18+ | D2.His / D2.Geo | After this, a child can place a historical site on the map and tell one thing that happened there, shown by a pin and a retrieval answer. | Already the bulk of the 106 entries. Add only what fills a gap. Told as architecture, geography and math only, settled facts only (owner rule; decisions 5, 7, 8, 9): Angkor, Potala (KEEP), Timbuktu, Uluru, the Alamo (KEEP, nothing about the battle), Sagrada Família, Fushimi Inari, Christ the Redeemer and Robber's Cave get the reworded text in [`journal-places-reword.md`](journal-places-reword.md). PROPOSED for balance (decision 10, same file, part B): Kailasa Temple (Ellora), Konark Sun Temple, Brihadeeswarar Temple (Thanjavur). Proper names are kept and flagged to the owner, not renamed. |
 | H14 | Famous spots (landmarks) | KEEP | 7-10, 10-18, 18+ | D2.Geo | After this, a child can locate a famous landmark and say what it is for, shown by a pin and a retrieval answer. | Already covered. No new work. |
 | H15 | World War monuments | KEEP-LIMITS | 10-18, 18+ | D2.His | After this, a learner can say what a monument remembers and where it stands, shown by a pin and a retrieval answer. | Remembrance tone only. Each story is tone-reviewed. A gap in the 106 (none today). |
 | H16 | Great leaders (historical) | KEEP-LIMITS | 10-18, 18+ | D2.His | After this, a learner can describe one documented achievement of a historical figure and where it happened, shown by a retrieval answer. | Deceased figures only. The story is the achievement or the place, never their politics. A person whose story cannot be told without a contested view is left out. Screened person by person. |
 | H17 | Covered by Great leaders (feat/journal-great-leaders-spec) | — | — | — | — | — |
-| H18 | Himalayas and other landform geography | KEEP | 7-10, 10-18 | D2.Geo | After this, a child can locate a mountain range and describe it in plain words, shown by a pin and a choice. | The one item from the 2026-11-07 list that is not religious. |
+| H18 | Himalayas and other landform geography | KEEP | 7-10, 10-18 | D2.Geo | After this, a child can locate a mountain range and describe it in plain words, shown by a pin and a choice. | The one item from the 2026-11-07 list that is not religious. PROPOSED for balance (decision 10): "Ram Setu, also called Adam's Bridge", always both names, geography only: a natural chain of shoals about 48 km long, too shallow for ships; never called built, no story of who made it. Flagged: its origin is publicly disputed, so the owner may still hold it. |
 | H19 | Religious sites, pilgrimage destinations, scriptures and epics | **CUT** | n/a | n/a | n/a | Religion is out of the plan (owner, 2026-11-10). See "Confirmed removals". |
 | H20 | Mythology and legends | **CUT** | n/a | n/a | n/a | Mythology is out of the plan (owner, 2026-11-10). See "Confirmed removals". |
 
@@ -97,7 +105,8 @@ Checked on this branch, 2026-11-10:
 - No topic in the list above teaches religion, religious practice, pilgrimage, scripture or mythology. H19 and H20 are cut.
 - In `humanities-definitions-spec.md`, religion and mythology appear only as a **removal record**: the struck 2026-11-07 list (§2.2) and the coverage audit (§2.8). They are not planned content. They stay as history of the decision.
 - **Owner decision 5 (2026-11-10):** Angkor, Potala, Timbuktu and Uluru stay live and are reworded to talk only about the place. The proposed wording, the math each place supports and a source per number are in [`journal-places-reword.md`](journal-places-reword.md). The live text, transcripts, narration audio and one image sit outside this branch; that file lists what the integrator must change.
-- **Still open (not covered by decision 5):** other live entries the coverage audit names with a religious or legend angle: Sagrada Família, Fushimi Inari, Christ the Redeemer, the Alamo as a former mission, and Robber's Cave (local legend). Whether to reword them the same way is the owner's call.
+- **Owner decisions 7, 8 and 9 (2026-11-10), resolving the entries left open by decision 5:** Potala KEEP and the Alamo mission KEEP, architecture only; Sagrada Família, Fushimi Inari, Christ the Redeemer and Robber's Cave reworded as architecture, geography and math only (Robber's Cave drops its legend angle). Wording and sources in [`journal-places-reword.md`](journal-places-reword.md). No live entry with a religious or legend angle is left open.
+- **Owner decision 10:** four PROPOSED places for balance (part B of that file). Their descriptions name no religion, belief, ritual or sacred status; their proper names are kept and flagged.
 
 ## Sources and confidence
 
@@ -105,7 +114,7 @@ Checked on this branch, 2026-11-10:
 |---|---|---|
 | H12 codes: D2.Civ.3.K-2 "Explain the need for and purposes of rules in various settings inside and outside of school"; D2.Civ.7.3-5 "Apply civic virtues and democratic principles in school settings"; D2.Civ.9.3-5 "Use deliberative processes when making decisions or reaching judgments as a group" | Official C3 Framework (NCSS, rev. 2017), pp. 32-33, https://www.socialstudies.org/sites/default/files/c3/c3-framework-for-social-studies-rev0617.pdf (downloaded and read 2026-11-10) | HIGH |
 | All other C3 indicator numbers on this page | Not re-checked this session. The official PDF above is now reachable, so they can be checked; until then they stay as recorded | UNVERIFIED |
-| Journal place facts (decision 5) | Per-fact source table in `journal-places-reword.md` | HIGH per row, two rows UNVERIFIED and unused |
+| Journal place facts (decisions 5, 7-10) | Per-fact source table in `journal-places-reword.md` | HIGH or MEDIUM per row; 10 rows UNVERIFIED and unused (sources disagree or none confirms) |
 | US pedestrian safety content for H01 and H02 | NHTSA Child Pedestrian Safety Curriculum, https://www.nhtsa.gov/pedestrian-safety/child-pedestrian-safety-curriculum (cited in the spec §1.4) | HIGH for US only |
 | §7a rules | `k12-learning-design-standard.md` §7a, owner ruling D2 | Owner ruling |
 
@@ -116,5 +125,7 @@ belong in the items when they are written, each with a source.
 
 1. **Educator:** named human to sign; nothing here is signed.
 2. **Sources:** C3 indicator numbers other than the three H12 codes still need checking against the official PDF.
-3. **Integrator:** apply the place rewording in `journal-places-reword.md` (live text, transcripts, narration audio, Potala image), and the owner's call on the other religious-angle entries listed above.
-4. **Owner:** Potala carries an extra politics flag (see `journal-places-reword.md` §2); keep it reworded or drop it.
+3. **Integrator:** apply the place rewording in `journal-places-reword.md` (live text for nine places, transcripts, narration audio, the Potala image).
+4. **Owner:** proper names that themselves point to a faith (Christ the Redeemer, Sagrada Família, Fushimi Inari, the three "Temple" names, Ram Setu, also called Adam's Bridge, the Alamo "mission") are kept and flagged; say if any is a problem in itself.
+5. **Owner:** Ram Setu, also called Adam's Bridge is publicly disputed; keep as PROPOSED geography or hold it.
+6. **Owner:** UNVERIFIED figures you asked about (Konark sundial, 200,000 tonnes, 66 m, limestone, the Alamo building's start year) stay out until you pick a source.

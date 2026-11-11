@@ -1,6 +1,6 @@
 # Status — feat/humanities-definitions
 
-**Task:** add the §9 block; an objective and C3 family per topic; confirm religion and mythology stay removed; screen every topic against standard §7a and log cuts; publish the screened list. Then (2026-11-10) apply the owner's five decisions and log each one.
+**Task:** add the §9 block; an objective and C3 family per topic; confirm religion and mythology stay removed; screen every topic against standard §7a and log cuts; publish the screened list. Then (2026-11-10) apply the owner's five decisions and log each one; then the owner's second message the same day (balance rule, decisions 6-11).
 
 **Scope (owned paths):** `docs/scaling/humanities-definitions-spec.md`, `docs/scaling/humanities/**`, this file. Docs only; no code gates ran.
 
@@ -15,9 +15,19 @@
   4. School-rules civics for 7-10 (class rules, taking turns, a class vote on a pet or a game; no government, parties or elections). H12 now KEEP-LIMITS with three C3 codes, HIGH from the official C3 Framework PDF pp. 32-33.
   5. New `docs/scaling/humanities/journal-places-reword.md`: place-only wording for Angkor, Potala, Timbuktu and Uluru, math questions per group, a source per number (two UNVERIFIED and unused).
 
+- Second owner message (2026-11-10), logged in the spec as the owner rule (verbatim, [sic]) plus decisions 6-11:
+  - Potala KEEP, architecture only: about 13 storeys, sourced; politics flag closed.
+  - Alamo KEEP, architecture only: 1718 is the mission's founding; the stone church's start year is UNVERIFIED (sources disagree), so it is not narrated.
+  - Sagrada Família, Fushimi Inari, Christ the Redeemer, Robber's Cave reworded as architecture, geography and math only.
+  - PROPOSED for balance: Kailasa (Ellora), Konark, Brihadeeswarar (Thanjavur), Ram Setu, also called Adam's Bridge; each with a math hook and an age group.
+  - Home-folder note paths removed from the spec.
+
 ## Open
 1. Named human educator to sign (spec stays GATED).
 2. C3 indicator numbers other than the three civics codes still UNVERIFIED; the official PDF is now reachable, so they can be checked.
-3. Integrator (outside my paths): apply the place rewording to `src/components/home-journal.data.ts`, `src/game/catalog.ts`, `scripts/journal-art-manifest.json`, `public/videos/journal-transcripts.json`; re-voice the four movies' narration (Stage B); a Potala image without pilgrims.
+3. Integrator (outside my paths): apply the place rewording to `src/components/home-journal.data.ts`, `src/game/catalog.ts`, `scripts/journal-art-manifest.json`, `public/videos/journal-transcripts.json`; re-voice the narration of Angkor, Potala, Timbuktu, Uluru and Fushimi (Stage B); a Potala image without pilgrims.
 4. Integrator: `docs/scaling/k12-learning-design-standard.md` §7a still uses the label retired by owner decision 3 ("Historical people (leaders, … inventors)").
-5. Owner: Potala's extra politics flag (keep reworded or drop); whether to reword the other religious-angle entries (Sagrada Família, Fushimi Inari, Christ the Redeemer, Alamo mission, Robber's Cave).
+5. Owner: proper names that point to a faith are kept and flagged, not renamed (Christ the Redeemer, Sagrada Família, Fushimi Inari, Kailasa / Konark / Brihadeeswarar "Temple", Ram Setu, also called Adam's Bridge, Alamo "mission").
+6. Owner: Ram Setu, also called Adam's Bridge is publicly disputed; keep as PROPOSED geography or hold.
+7. Owner: pick a source (or leave out) for each UNVERIFIED figure: Konark sundial claim; 200,000 tonnes (sources: 150,000-200,000); 66 m tower (59.82 / 61 / 63.4 / 65.83 / 66 m); Ram Setu, also called Adam's Bridge "limestone"; the Alamo church's start year (1755 / 1756 / about 1758); Potala height in metres.
+8. The four balance places need a journal branch to own them (not in the live 106).
