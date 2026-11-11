@@ -176,12 +176,12 @@ test("resetJournalTranscriptsCache lets the next call fetch again", async () => 
 
 // --- The real file (captions worker, c5cc7ecf): 106/106 covered --------
 
-test("real transcripts file: version 1, 106 entries, 430 cues", () => {
+test("real transcripts file: version 1, 102 entries (4 withheld), 412 cues", () => {
   const parsed = parseJournalTranscripts(REAL_TRANSCRIPTS);
   assert.ok(parsed !== null);
   assert.equal(parsed!.version, 1);
-  assert.equal(Object.keys(parsed!.transcripts).length, 106);
-  assert.equal(REAL_CUE_TOTAL, 430);
+  assert.equal(Object.keys(parsed!.transcripts).length, 102);
+  assert.equal(REAL_CUE_TOTAL, 412);
 });
 
 test("real Old Faithful: the 4 approved lines, 2.1 s voice-free gap 4.50-6.60", () => {
@@ -217,7 +217,7 @@ test("real file: every entry's cues sit inside the 10 s clip, sorted, non-overla
 
 test("real file: the known cue-count exceptions (robbers-cave 3, split-L1 entries 5)", () => {
   assert.equal(REAL_TRANSCRIPTS.transcripts["robbers-cave"]!.cues.length, 3);
-  for (const id of ["victoria-falls", "fushimi", "iguazu", "tongariki", "potala", "timbuktu", "galapagos"]) {
+  for (const id of ["victoria-falls", "fushimi", "iguazu", "tongariki", "galapagos"]) {
     assert.equal(REAL_TRANSCRIPTS.transcripts[id]!.cues.length, 5, `${id} keeps two L1 cues`);
   }
 });
@@ -246,7 +246,7 @@ function parseVttCues(vtt: string): { start: number; end: number; text: string }
 
 test("real files: every VTT matches its JSON entry cue-for-cue (count, boundaries, text)", () => {
   const vttFiles = readdirSync("public/videos/captions").filter((f) => f.endsWith(".vtt"));
-  assert.equal(vttFiles.length, 106);
+  assert.equal(vttFiles.length, 102);
   for (const [id, t] of Object.entries(REAL_TRANSCRIPTS.transcripts)) {
     const vtt = readFileSync(`public/videos/captions/${id}.vtt`, "utf8");
     assert.ok(vtt.startsWith("WEBVTT"), `${id}: WEBVTT header`);

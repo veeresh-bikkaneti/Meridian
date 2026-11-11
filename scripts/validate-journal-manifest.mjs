@@ -28,6 +28,13 @@ const KNOWN_VOICES = new Set([
   "avocado_v2:vdc_5723",
 ]);
 
+// Journal places whose movie is withheld on purpose: the picture stays
+// and the player shows "This story's movie isn't ready yet." Their
+// narration named religious buildings or sacred status, which the owner
+// ruled out (2026-11-10). Each needs a new voice track before its entry
+// comes back. An image basename listed here may have no movies entry.
+export const WITHHELD_IDS = new Set(["angkor", "potala", "timbuktu", "uluru"]);
+
 const TOP_KEYS = ["baseUrl", "movies", "version"];
 const ENTRY_KEYS = ["file", "duration", "voice", "note", "verified"];
 
@@ -467,7 +474,7 @@ export function validate(options = {}) {
   // Checks 3/4 run only with a usable movies object AND a passing guard.
   if (moviesOk && gt.error === null) {
     for (const basename of gt.set) {
-      if (!has(data.movies, basename)) {
+      if (!has(data.movies, basename) && !WITHHELD_IDS.has(basename)) {
         errors.push(makeError("missing-id", basename, `movies.${basename}`, "absent"));
       }
     }
