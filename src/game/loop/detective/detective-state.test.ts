@@ -1119,6 +1119,61 @@ test("pin during the thinking beat also beats Watson; a pin during ask-next does
   assert.deepEqual(speakIds(pin.effects), ["name:geonames:2", "fixed:ack-3"]);
 });
 
+test("pick while Watson is reading: one beat-me, one name, one ack; the confirm adds none", () => {
+  const steps = run([
+    { type: "caseOpened", freshDeal: true, intro: false, openTarget: 3 },
+    { type: "clueUnlocked", clueIndex: 1 },
+    { type: "selectionNamed", placeId: "geonames:42" },
+    { type: "guessConfirmed", placeId: "geonames:42" },
+  ]);
+  const spoken = allSpeakIds(steps);
+  const beatCaptions = steps.flatMap((s) =>
+    s.effects.filter(
+      (e) => e.type === "caption" && e.who === "watson" && /beat me to it/i.test(e.text),
+    ),
+  );
+  assert.equal(beatCaptions.length, 1);
+  assert.equal(spoken.filter((id) => id === "fixed:beat-me").length, 1);
+  assert.equal(spoken.filter((id) => id === "name:geonames:42").length, 1);
+  assert.equal(spoken.filter((id) => id.startsWith("fixed:ack-")).length, 1);
+  assert.equal(spoken.includes("fixed:suspicion"), false);
+  assert.equal(last(steps).state.guessesConfirmed, 1);
+  assert.deepEqual(speakIds(last(steps).effects), []);
+});
+
+test("pick after Watson has finished the clue: no beat-me on the pick or the confirm", () => {
+  const steps = run([
+    { type: "caseOpened", freshDeal: true, intro: false, openTarget: 1 },
+    { type: "clueUnlocked", clueIndex: 1 },
+    { type: "speechEnded" }, // read done → thinking beat
+    { type: "selectionNamed", placeId: "geonames:42" },
+    { type: "beatElapsed" },
+    { type: "speechEnded" }, // chain drains; the pending pick speaks
+    { type: "guessConfirmed", placeId: "geonames:42" },
+  ]);
+  const spoken = allSpeakIds(steps);
+  assert.equal(spoken.includes("fixed:beat-me"), false);
+  const beatCaptions = steps.flatMap((s) =>
+    s.effects.filter((e) => e.type === "caption" && /beat me to it/i.test(e.text)),
+  );
+  assert.equal(beatCaptions.length, 0);
+});
+
+test("early guess during the opening leaves openTarget and the next clue still starts", () => {
+  const steps = run([
+    { type: "caseOpened", freshDeal: true, intro: false, openTarget: 3 },
+    { type: "clueUnlocked", clueIndex: 1 },
+    { type: "selectionNamed", placeId: "geonames:42" },
+    { type: "guessConfirmed", placeId: "geonames:42" },
+  ]);
+  const confirmed = last(steps);
+  assert.equal(confirmed.state.openTarget, 3);
+  const next = last(run([{ type: "speechEnded" }], confirmed.state));
+  assert.equal(next.state.clueIndex, 2);
+  assert.equal(next.phase, "READING");
+  assert.ok(speakIds(next.effects).includes("clue:2"));
+});
+
 test("solve: the celebration says 'We did it together!' with a bubble over Holmes", () => {
   const steps = run([...normalClue(1), { type: "caseSolved", answerPlaceId: null }]);
   const enter = last(steps);

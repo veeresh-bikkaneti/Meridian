@@ -160,7 +160,7 @@ test("selection: during Watson's question the pick cuts the read — name + ack,
   assert.equal(cut.state.readingStep, "cut");
   assert.equal(cut.state.openTarget, 0);
   assert.equal(cut.effects[0]!.type, "stopSpeech");
-  assert.deepEqual(ids(cut.effects), [`name:${A}`, "fixed:ack-1"]);
+  assert.deepEqual(ids(cut.effects), ["fixed:beat-me", `name:${A}`, "fixed:ack-1"]);
   const drained = transition(cut.state, { type: "speechEnded" }, rng);
   assert.equal(drained.view.phase, "SEARCH_IDLE");
   assert.deepEqual(ids(drained.effects), []);

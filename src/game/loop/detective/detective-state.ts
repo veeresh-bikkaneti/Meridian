@@ -367,11 +367,16 @@ export const ACK_POOL_IDS: readonly string[] = Array.from(
 /** The lines still on offer: the pool minus what already played this
  * case. Takes the played-set and NOTHING else — no guesses, no
  * correctness, no clue index — which is what keeps the draw
- * answer-blind. Pool exhausted (cannot happen at ≤4 acks a case) →
- * the full pool again. */
+ * answer-blind. Pool exhausted → every line except the one just said
+ * (played's last entry), so a wrap is never back-to-back. An empty
+ * played-set is the full pool. */
 export function ackCandidates(played: readonly string[]): readonly string[] {
   const left = ACK_POOL_IDS.filter((id) => !played.includes(id));
-  return left.length > 0 ? left : ACK_POOL_IDS;
+  if (left.length > 0) return left;
+  const last = played[played.length - 1];
+  if (last === undefined) return ACK_POOL_IDS;
+  const wrapped = ACK_POOL_IDS.filter((id) => id !== last);
+  return wrapped.length > 0 ? wrapped : ACK_POOL_IDS;
 }
 
 /** Random draw from the candidates. `rng` is injectable (0 ≤ r < 1). */
@@ -774,6 +779,9 @@ function afterSelectionRead(state: DetectiveState): Step & { view: DetectiveView
     // clue with no trigger left to start it.
     return enterNoteMark(state, state.selectionReadInFlight);
   }
+  if (state.openTarget > state.clueIndex && state.clueIndex >= 1) {
+    return startClue(state, state.clueIndex + 1, state.selectionReadInFlight);
+  }
   return result({
     ...state,
     phase: "SEARCH_IDLE",
@@ -843,6 +851,7 @@ function cutWatsonRead(
     },
     [
       { type: "stopSpeech" },
+      ...momentEffects("beatMe"),
       speak({ kind: "name", placeId, selection: true }),
       speak({ kind: "fixed", id: ack.ackId }),
     ],
@@ -1104,7 +1113,7 @@ export function transition(
         {
           ...state,
           phase: "SELECTION_READ",
-          openTarget: 0,
+          // A non-interrupting guess leaves the opening in place.
           readingStep: null,
           ringAnimating: true,
           lastPausePoint: null,

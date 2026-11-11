@@ -315,7 +315,7 @@ for (const w of WIDTHS) {
       // all fired exactly in chain order while the window sampled.
       assertSubsequence(
         plays2.map((u) => u.split("/").slice(-2).join("/")),
-        ["names/5506956.mp3", "fixed/suspicion.mp3", "fixed/ask-next.mp3", CLUE2],
+        ["names/5506956.mp3", ACK_POOL, "fixed/ask-next.mp3", CLUE2],
       );
       expect(
         countIn(plays2, ANNOUNCE),
@@ -508,16 +508,15 @@ test("watson walk: tap on Watson MID-WALK is ignored — one figure, walk arrive
     // …and it fired exactly once on arrival, ack included.
     const plays = await detectiveOnly(page);
     expect(countIn(plays, CLUE2)).toBe(1);
-    // Pool contract (HERALD): the case's acks so far are clue 1's and
-    // this arrival's — exactly two plays, and DISTINCT files (the old
-    // rotation pinned the second one as ack-2; the pool forbids a
-    // repeat within a case, which is the stronger pin).
+    // Pool contract (HERALD): the case's acks so far are clue 1's, the
+    // pick's, and this arrival's — exactly three plays, and DISTINCT
+    // files (the pool forbids a repeat within a case).
     const acksSoFar = ackFiles(plays);
-    expect(acksSoFar.length, "two acks played in the case so far").toBe(2);
+    expect(acksSoFar.length, "three acks played in the case so far").toBe(3);
     expect(
       new Set(acksSoFar).size,
       "no ack repeats within a case",
-    ).toBe(2);
+    ).toBe(3);
   } finally {
     await context.close();
   }
@@ -580,10 +579,20 @@ test("watson walk: sheet opens mid-walk — walk cancels, held read never fires 
       { timeout: 5_000 },
     );
     // While the sheet is open, the dropped read's chain must NOT
-    // advance: no ack, no decode — the ladder waits, silently.
-    await page.waitForTimeout(2_500);
+    // advance: no clue, no decode. The pick's own ack follows the
+    // place name (beat-me has no clip, so it is absent here).
+    await expect
+      .poll(async () => {
+        const files = (await detectiveOnly(page)).map(
+          (u) => u.split("/audio/detective/")[1] ?? u,
+        );
+        const nameAt = files.findIndex((n) => n.startsWith("names/"));
+        if (nameAt < 0) return false;
+        return (files[nameAt + 1] ?? "").includes("fixed/ack-");
+      }, { timeout: 20_000 })
+      .toBe(true);
     const duringSheet = await detectiveOnly(page);
-    expect(countIn(duringSheet, "fixed/ack-")).toBe(0);
+    expect(countIn(duringSheet, "fixed/ack-")).toBe(1);
     expect(countIn(duringSheet, "fixed/decode-")).toBe(0);
     expect(
       countIn(duringSheet, CLUE1),

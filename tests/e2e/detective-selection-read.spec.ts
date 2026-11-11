@@ -7,6 +7,7 @@ import {
   entryByName,
   fulfillFlagsFlank,
   fulfillFlagsOn,
+  ACK_POOL,
   guessByEntryId,
   installDetectiveRecorder,
   openSeamCase,
@@ -159,16 +160,16 @@ test("(a) a pick is named aloud before the guess is spent; confirming it speaks 
   // The read preceded the spend: the case is still on guess 1.
   await expect(page.getByText(/Guess 1 of/).first()).toBeVisible();
 
-  // Confirm the just-named place: suspicion ONLY, no second name read.
+  // Confirm the just-named place: the pick already said the name and
+  // one ack, and the confirm does not say the name again.
   await page.getByRole("button", { name: "Guess this place" }).click();
   await expect
-    .poll(
-      async () =>
-        (await detectiveOnly(page)).some((u) =>
-          u.includes("fixed/suspicion.mp3"),
-        ),
-      { timeout: 60_000 },
-    )
+    .poll(async () => {
+      const plays = await detectiveOnly(page);
+      const nameAt = plays.findIndex((u) => u.includes(NAME_CLIP));
+      if (nameAt < 0) return false;
+      return plays.slice(nameAt + 1).some((u) => ACK_POOL.test(u));
+    }, { timeout: 60_000 })
     .toBe(true);
   const nameReads = (await detectiveOnly(page)).filter((u) =>
     u.includes(NAME_CLIP),
@@ -241,27 +242,27 @@ test("(c) a pick confirmed while its name clip is still playing keeps the guess 
 
   const shanghai = entryByName("shanghai");
   const NAME_CLIP = "names/1796236.mp3"; // Shanghai, China — has a clip.
-  const SUSPICION = "fixed/suspicion.mp3";
 
   // The instant-confirm race: pick, then confirm in the same breath —
   // no wait for the name clip to finish (a kid's natural one-tap move).
   await pickOnly(page, shanghai.id, "Shanghai");
   await page.getByRole("button", { name: "Guess this place" }).click();
 
-  // The guess reaction still plays: suspicion, AFTER the name clip.
+  // The pick's ack still plays, AFTER the name clip. The confirm adds none.
   await expect
-    .poll(
-      async () =>
-        (await detectiveOnly(page)).some((u) => u.includes(SUSPICION)),
-      { timeout: 90_000 },
-    )
+    .poll(async () => {
+      const plays = await detectiveOnly(page);
+      const nameAt = plays.findIndex((u) => u.includes(NAME_CLIP));
+      if (nameAt < 0) return false;
+      return plays.slice(nameAt + 1).some((u) => ACK_POOL.test(u));
+    }, { timeout: 90_000 })
     .toBe(true);
   const plays = await detectiveOnly(page);
   const nameAt = plays.findIndex((u) => u.includes(NAME_CLIP));
-  const suspicionAt = plays.findIndex((u) => u.includes(SUSPICION));
+  const ackAt = plays.findIndex((u, i) => i > nameAt && ACK_POOL.test(u));
   expect(nameAt).toBeGreaterThan(-1);
-  expect(suspicionAt).toBeGreaterThan(nameAt);
-  expect(requests.some((u) => u.includes(SUSPICION))).toBe(true);
+  expect(ackAt).toBeGreaterThan(nameAt);
+  expect(requests.some((u) => ACK_POOL.test(u))).toBe(true);
   // The name is never read twice.
   expect(plays.filter((u) => u.includes(NAME_CLIP))).toHaveLength(1);
 
@@ -290,7 +291,6 @@ test("(d) a pick confirmed just after its name clip ends keeps the guess reactio
 
   const shanghai = entryByName("shanghai");
   const NAME_CLIP = "names/1796236.mp3"; // Shanghai, China — has a clip.
-  const SUSPICION = "fixed/suspicion.mp3";
 
   // The post-name window: pick, then WAIT for the name clip to fully
   // end (the tracked element's own `ended` flag — the same signal the
@@ -314,21 +314,22 @@ test("(d) a pick confirmed just after its name clip ends keeps the guess reactio
     .toBe(true);
   await page.getByRole("button", { name: "Guess this place" }).click();
 
-  // The guess reaction still plays: suspicion, AFTER the name clip,
-  // and the name itself was read exactly once (never re-named).
+  // The pick's ack still plays, AFTER the name clip, and the name
+  // itself was read exactly once (never re-named).
   await expect
-    .poll(
-      async () =>
-        (await detectiveOnly(page)).some((u) => u.includes(SUSPICION)),
-      { timeout: 90_000 },
-    )
+    .poll(async () => {
+      const plays = await detectiveOnly(page);
+      const nameAt = plays.findIndex((u) => u.includes(NAME_CLIP));
+      if (nameAt < 0) return false;
+      return plays.slice(nameAt + 1).some((u) => ACK_POOL.test(u));
+    }, { timeout: 90_000 })
     .toBe(true);
   const plays = await detectiveOnly(page);
   const nameAt = plays.findIndex((u) => u.includes(NAME_CLIP));
-  const suspicionAt = plays.findIndex((u) => u.includes(SUSPICION));
+  const ackAt = plays.findIndex((u, i) => i > nameAt && ACK_POOL.test(u));
   expect(nameAt).toBeGreaterThan(-1);
-  expect(suspicionAt).toBeGreaterThan(nameAt);
-  expect(requests.some((u) => u.includes(SUSPICION))).toBe(true);
+  expect(ackAt).toBeGreaterThan(nameAt);
+  expect(requests.some((u) => ACK_POOL.test(u))).toBe(true);
   expect(plays.filter((u) => u.includes(NAME_CLIP))).toHaveLength(1);
 
   // The case continues normally: clue 2 arrives with its read chain.

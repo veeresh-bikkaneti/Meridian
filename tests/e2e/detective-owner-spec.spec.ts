@@ -158,14 +158,17 @@ test("pinning before Watson finishes: 'You beat me to it!' and Holmes reads the 
   await box.click();
   await box.fill("Paris");
   await page.locator('li[role="option"]').first().click();
-  await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
-  await page.getByRole("button", { name: "Guess this place" }).click();
   await expect(page.getByTestId("detective-bubble").first()).toHaveText(/beat me to it/i, {
     timeout: 10_000,
   });
+  await expect(page.getByRole("dialog")).toBeVisible({ timeout: 15_000 });
+  await page.getByRole("button", { name: "Guess this place" }).click();
   await expect
-    .poll(async () => (await clipNames(page)).some((n) => n === "fixed/suspicion.mp3"), {
-      timeout: 30_000,
-    })
+    .poll(async () => {
+      const names = await clipNames(page);
+      const nameAt = names.findIndex((n) => n.startsWith("names/"));
+      if (nameAt < 0) return false;
+      return ACK_POOL.test(names[nameAt + 1] ?? "");
+    }, { timeout: 30_000 })
     .toBe(true);
 });
