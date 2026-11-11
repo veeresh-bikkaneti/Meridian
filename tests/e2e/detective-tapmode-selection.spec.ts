@@ -89,12 +89,22 @@ async function openTapCase(page: Page, index: number): Promise<void> {
   await expect(
     page.getByRole("article", { name: /Clue 1:/ }),
   ).toBeVisible({ timeout: 30_000 });
-  await expect(page.getByTestId("detective-bench")).toBeVisible({
-    timeout: 20_000,
-  });
-  await expect(page.getByTestId("detective-bench")).toHaveCount(0, {
-    timeout: 60_000,
-  });
+  // Wait for the staging stage itself to reach "gone" rather than
+  // catching the bench on screen: at 4x playback the intro can finish
+  // before a visibility check lands.
+  await expect
+    .poll(
+      () =>
+        page.evaluate(
+          () =>
+            document
+              .querySelector("[data-staging]")
+              ?.getAttribute("data-staging") ?? null,
+        ),
+      { timeout: 60_000 },
+    )
+    .toBe("gone");
+  await expect(page.getByTestId("detective-bench")).toHaveCount(0);
 }
 
 /** One tap on Watson releases the held chain for the current clue
