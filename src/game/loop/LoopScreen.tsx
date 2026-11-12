@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { SoundToggle } from "@/components/SoundToggle";
 import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
+import { nextWatchdogCount, shouldArmClueWatchdog } from "./clue-watchdog";
 import { LoopSessionSummaryPanel } from "./LoopSessionSummary.tsx";
 import { displayLoopName, fetchLoopIndex, isDuplicateGuess, unlabeledSpotEntry } from "./evaluate";
 import { LoopMap, ringAnnouncement, type LoopMapHandle } from "./LoopMap";
@@ -1395,19 +1396,32 @@ function LoopGame({
     },
     [puzzleKey],
   );
+  // Tap speech mode (the 7-10 default): Watson's read waits for the
+  // player's Listen / Watson tap. That wait is not a stall.
+  const [readHeld, setReadHeld] = useState(false);
   useEffect(() => {
-    if (!pairOn || finished || visibleClues >= puzzle.cluesRevealed) return;
-    // A fresh multi-clue deal opens one card as Watson reads it. Do not
-    // dump the rest while he is still on the first question.
-    const opening =
-      puzzle.guesses.length === 0 &&
-      puzzle.cluesRevealed <= dealConfig.startingClues;
-    if (opening) return;
+    if (
+      !shouldArmClueWatchdog({
+        pairOn,
+        finished,
+        visibleClues,
+        cluesRevealed: puzzle.cluesRevealed,
+        guessCount: puzzle.guesses.length,
+        startingClues: dealConfig.startingClues,
+        readHeld,
+      })
+    ) {
+      return;
+    }
+    // One card per firing; the effect re-arms as visibleClues grows.
     const timer = setTimeout(() => {
-      setPresentedClues({ key: puzzleKey, n: puzzle.cluesRevealed });
+      setPresentedClues({
+        key: puzzleKey,
+        n: nextWatchdogCount(visibleClues, puzzle.cluesRevealed),
+      });
     }, CLUE_PRESENT_WATCHDOG_MS);
     return () => clearTimeout(timer);
-  }, [pairOn, finished, visibleClues, puzzle.cluesRevealed, puzzle.guesses.length, dealConfig.startingClues, puzzleKey]);
+  }, [pairOn, finished, visibleClues, puzzle.cluesRevealed, puzzle.guesses.length, dealConfig.startingClues, puzzleKey, readHeld]);
 
   // Length unit for every distance on this screen: a USA mystery reads
   // miles, the rest of the world reads kilometers — derived from the
@@ -1617,6 +1631,7 @@ function LoopGame({
               answerPlaceId: clue.placeId, // U8: the props builder gates this to the post-solve reveal only
             })}
             onCluePresented={onCluePresented}
+            onReadHeldChange={setReadHeld}
           />
         </Suspense>
         </div>

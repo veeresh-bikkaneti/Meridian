@@ -913,3 +913,177 @@ test("isEndingRef: win/debrief/answer/truce and the debrief name; never clues, a
   assert.equal(isEndingRef({ kind: "clue", clueIndex: 2 }), false);
   assert.equal(isEndingRef({ kind: "fixed", id: "ack-3" }), false);
 });
+
+/* ------------------------------------------------------------------ */
+/* One voice at a time (the owner's rule: "if one speak the other      */
+/* needs to shut up")                                                  */
+/* ------------------------------------------------------------------ */
+
+/** A fake clip player that stays "open" until it is aborted or the test
+ * finishes it by hand, and records every start and stop. `open` is the
+ * set of clips sounding right now — it must never hold two. */
+function openClipHarness() {
+  const log: string[] = [];
+  const open = new Set<string>();
+  let maxOpen = 0;
+  const finishers = new Map<string, () => void>();
+  const speaking: Array<DetectiveSpeaker | null> = [];
+  const player = createDetectiveSpeech({
+    caseIndex: 387,
+    loadManifest: async () => MANIFEST,
+    isSoundOn: () => true,
+    canAutoPlay: () => true,
+    onSpeakingChange: (who) => speaking.push(who),
+    playClip: (clip, signal) =>
+      new Promise<void>((resolveClip) => {
+        const name = clip.url.split("/").pop()!;
+        open.add(name);
+        maxOpen = Math.max(maxOpen, open.size);
+        log.push(`start ${name}`);
+        const end = (why: string) => {
+          if (!open.delete(name)) return;
+          log.push(`${why} ${name}`);
+          resolveClip();
+        };
+        finishers.set(name, () => end("end"));
+        signal.addEventListener("abort", () => end("stop"), { once: true });
+      }),
+  });
+  return {
+    player,
+    log,
+    open,
+    speaking,
+    maxOpen: () => maxOpen,
+    finish: (name: string) => finishers.get(name)?.(),
+  };
+}
+
+test("one voice: a pick while the replay plays Watson stops Watson before Holmes starts", async () => {
+  const h = openClipHarness();
+  h.player.setSpeechMode("tap");
+  h.player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  const replay = h.player.playHeldSequence();
+  await tick();
+  assert.deepEqual([...h.open], ["clue-1.mp3"]);
+  h.player.enqueue({ kind: "name", placeId: "geonames:323786", selection: true });
+  await tick();
+  assert.deepEqual(h.log, [
+    "start clue-1.mp3",
+    "stop clue-1.mp3",
+    "start 323786.mp3",
+  ]);
+  assert.equal(h.maxOpen(), 1, "never two clips open at once");
+  h.finish("323786.mp3");
+  await replay;
+  await tick();
+  assert.deepEqual(h.speaking, ["watson", "holmes", null], "exactly one drain");
+  h.player.dispose();
+});
+
+test("one voice: a pick while the queue plays Watson stops Watson, then Holmes answers", async () => {
+  const h = openClipHarness();
+  h.player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  assert.deepEqual([...h.open], ["clue-1.mp3"]);
+  h.player.enqueue({ kind: "name", placeId: "geonames:323786", selection: true });
+  await tick();
+  assert.deepEqual(h.log.slice(0, 3), [
+    "start clue-1.mp3",
+    "stop clue-1.mp3",
+    "start 323786.mp3",
+  ]);
+  assert.equal(h.maxOpen(), 1);
+  h.player.dispose();
+});
+
+test("one voice: a pick never interrupts Holmes (only Watson is cut)", async () => {
+  const h = openClipHarness();
+  h.player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  h.player.enqueue({ kind: "name", placeId: "geonames:323786", selection: true });
+  await tick();
+  assert.deepEqual(h.log, ["start ack-1.mp3"], "Holmes finishes first");
+  h.finish("ack-1.mp3");
+  await tick();
+  assert.deepEqual(h.log.slice(1), ["end ack-1.mp3", "start 323786.mp3"]);
+  assert.equal(h.maxOpen(), 1);
+  h.player.dispose();
+});
+
+test("one voice: a replay while Holmes speaks stops Holmes before Watson starts", async () => {
+  const h = openClipHarness();
+  h.player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  h.finish("clue-1.mp3");
+  await tick();
+  h.player.enqueue({ kind: "fixed", id: "ack-1" });
+  await tick();
+  assert.deepEqual([...h.open], ["ack-1.mp3"]);
+  const replay = h.player.playHeldSequence();
+  await tick();
+  assert.deepEqual(h.log.slice(-3), [
+    "start ack-1.mp3",
+    "stop ack-1.mp3",
+    "start clue-1.mp3",
+  ]);
+  assert.equal(h.maxOpen(), 1);
+  h.player.stopAll();
+  await replay;
+  h.player.dispose();
+});
+
+test("one voice: after a replay and then a pick, stopAll stops every open clip", async () => {
+  const h = openClipHarness();
+  h.player.setSpeechMode("tap");
+  h.player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  const replay = h.player.playHeldSequence();
+  await tick();
+  h.player.enqueue({ kind: "name", placeId: "geonames:323786", selection: true });
+  await tick();
+  assert.deepEqual([...h.open], ["323786.mp3"]);
+  h.player.stopAll();
+  await replay;
+  assert.equal(h.open.size, 0, "nothing is left sounding");
+  assert.equal(h.maxOpen(), 1);
+  h.player.dispose();
+});
+
+test("one voice: a confirmed guess burst cuts Watson and keeps its own order", async () => {
+  const h = openClipHarness();
+  h.player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  h.player.armGuessRead();
+  h.player.enqueue({ kind: "name", placeId: "geonames:323786" });
+  h.player.enqueue({ kind: "fixed", id: "suspicion" });
+  h.player.disarmGuessRead();
+  await tick();
+  assert.deepEqual(h.log.slice(0, 3), [
+    "start clue-1.mp3",
+    "stop clue-1.mp3",
+    "start 323786.mp3",
+  ]);
+  h.finish("323786.mp3");
+  await tick();
+  assert.equal(h.log.at(-1), "start suspicion.mp3");
+  assert.equal(h.maxOpen(), 1);
+  h.player.dispose();
+});
+
+test("one voice: exactly one drain per finished line, none from a superseded loop", async () => {
+  const h = openClipHarness();
+  h.player.setSpeechMode("tap");
+  h.player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  const first = h.player.playHeldSequence();
+  await tick();
+  const second = h.player.playHeldSequence(); // restart: first is superseded
+  await tick();
+  h.finish("clue-1.mp3");
+  await Promise.all([first, second]);
+  await tick();
+  assert.equal(h.speaking.filter((w) => w === null).length, 1);
+  h.player.dispose();
+});

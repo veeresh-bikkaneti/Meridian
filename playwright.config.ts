@@ -209,6 +209,12 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      // One voice at a time across the Home page (voice channel).
+      name: "one-voice-home",
+      testMatch: /one-voice-home\.spec\.ts/,
+      use: { viewport: { width: 1280, height: 800 } },
+    },
+    {
       // Prod-pair visibility fix (2026-11-06): the pair must be
       // VISIBLE — inside the player's viewport and never painted over
       // each other. Presence-only assertions are how the live dock
