@@ -70,11 +70,19 @@ export default function AgeProfileSettings({
     if (confirmTarget === null) return;
     saveBand(confirmTarget, { runInProgress });
     setProfile(loadProfile());
+    // The settings flow is post-gate, but this toast itself
+    // renders briefly on home (~3.5 s) once the flow closes —
+    // and the owner ruled on 2026-11-04 that it names the band
+    // anyway, superseding the earlier band-invisible toast
+    // design ("Saved ✅"). The label comes from the band table via
+    // getBand (the single source). It already reads "Ages 7-10" /
+    // "Ages 18+", so 18+ never shows a made-up ceiling.
+    const band = getBand(confirmTarget);
+    const bandName = band.label;
     if (runInProgress) {
-      onToast("Saved — takes effect on the next card. ✅");
+      onToast(`Saved — ${bandName}; takes effect on the next card. ✅`);
     } else {
-      // Child-visible: never names the band (band-invisible design pillar).
-      onToast("Saved ✅");
+      onToast(`Saved — ${bandName} ✅`);
     }
     onClose();
   };

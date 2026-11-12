@@ -335,7 +335,7 @@ describe("manifest fetches", () => {
   });
 });
 
-describe("fetchPackManifest shared UI load (shelf + doorway dedupe)", () => {
+describe("fetchPackManifest shared UI load (shelf dedupe)", () => {
   const realFetch = globalThis.fetch;
 
   function manifestFor(id: string): PackManifest {
@@ -360,14 +360,15 @@ describe("fetchPackManifest shared UI load (shelf + doorway dedupe)", () => {
   it("two UI callers mounting together share one underlying load", async () => {
     const calls = stubNetwork((id) => ({ ok: true, body: manifestFor(id) }));
     try {
-      // Fired back-to-back, as the doorway and the shelf mount in the
-      // same session: only the first may touch the network.
-      const [doorway, shelf] = await Promise.all([
+      // Fired back-to-back, as two shelf mounts in the same
+      // session (one per mode screen): only the first may touch
+      // the network.
+      const [first, second] = await Promise.all([
         fetchPackManifest("probe-shared"),
         fetchPackManifest("probe-shared"),
       ]);
-      assert.deepEqual(doorway, manifestFor("probe-shared"));
-      assert.deepEqual(shelf, manifestFor("probe-shared"));
+      assert.deepEqual(first, manifestFor("probe-shared"));
+      assert.deepEqual(second, manifestFor("probe-shared"));
       assert.equal(calls(), 1);
     } finally {
       globalThis.fetch = realFetch;

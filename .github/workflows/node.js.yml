@@ -74,6 +74,9 @@ jobs:
     - run: npm ci
     - run: npx playwright install --with-deps chromium
     - run: npm run build:pages
+    # Entry JS budget (owner, 2026-11-10): the Phase 0 starting measurement,
+    # 323,865 B gzip. Subjects load lazily, so first load should not grow.
+    - run: npm run check:entry-size
     # Convention: an e2e test whose title contains @local-only is skipped here
     # (--grep-invert below). tests/e2e/scout-harness-suppression.desktop.spec.ts
     # holds a pair: test 1 mounts the 3D map, which this runner cannot render

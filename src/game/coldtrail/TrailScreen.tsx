@@ -3,6 +3,7 @@ import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
+import { SoundToggle } from "@/components/SoundToggle";
 import { FlagImg } from "@/components/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
 import { PackShelf } from "@/components/pack-shelf";
@@ -492,12 +493,21 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8 lg:max-w-6xl" data-testid="coldtrail-screen">
       <header>
         <div className="flex items-start justify-between gap-3">
-          <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
-            ← All games
-          </Button>
-          <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
-            ⭐ {store.stars}
-          </p>
+          <div className="flex items-center gap-2">
+            <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
+              ← All games
+            </Button>
+            {/* The one mute, top-left beside the screen's own buttons —
+                the home page's placement (owner, 2026-11-10). Same
+                master toggle everywhere: one persisted key
+                (meridian.sound), one implementation (SoundToggle.tsx). */}
+            <SoundToggle testId="sound-toggle-trail" className="atlas-sound-toggle" />
+          </div>
+          <div className="flex items-center gap-2">
+            <p data-testid="coldtrail-stars" className="text-sm text-fg" aria-label={`${store.stars} stars`}>
+              ⭐ {store.stars}
+            </p>
+          </div>
         </div>
         <p className="name-eyebrow mt-4">{theme.eyebrow}</p>
         <h1 ref={caseHeadingRef} tabIndex={-1} className="mode-title mt-1 text-3xl text-fg">

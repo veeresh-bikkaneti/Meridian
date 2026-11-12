@@ -382,14 +382,17 @@ async function fetchJsonOrNull(url: string, fetcher?: Fetcher): Promise<unknown>
 /**
  * Session-level cache of UI manifest loads, keyed by pack id.
  *
- * The shelf and the Home doorway both read the manifest for display.
- * Without sharing, each makes its own request for the same URL, so
- * on a flaky connection the two UI consumers compete: the doorway's
- * fetch can consume the one good response and leave the shelf's
- * fetch to fail, and then the pack chip never renders — including
- * in the fallback state the chip exists to explain (PR #346
- * merge-up finding, issue #336's regression surface). One shared
- * load per pack removes the competition.
+ * The deck shelf reads the manifest for display — once per mode
+ * screen, so the two editions mount two consumers of the same URL.
+ * Without sharing, each makes its own request, so on a flaky
+ * connection the two UI consumers compete: one screen's fetch can
+ * consume the one good response and leave the other screen's fetch
+ * to fail, and then the pack chip never renders — including in the
+ * fallback state the chip exists to explain (PR #346 merge-up
+ * finding, issue #336's regression surface). One shared load per
+ * pack removes the competition. (The Home doorway was a third
+ * consumer until the owner removed it from Home entirely,
+ * 2026-11-05; the sharing contract is unchanged.)
  *
  * Only the default path is cached. A caller that passes its own
  * fetcher always gets a fresh, uncached load — and the GeoDetective

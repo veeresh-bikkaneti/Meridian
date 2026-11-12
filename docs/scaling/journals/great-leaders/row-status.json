@@ -1,0 +1,17 @@
+{
+  "great-leaders:lincoln-memorial": {
+    "status": "PROPOSED",
+    "reason": "Every narrated fact has two agreeing sources (sources.md L-ids).",
+    "yearsAgoFrom": null
+  },
+  "great-leaders:jhansi-fort": {
+    "status": "PROPOSED",
+    "reason": "Every narrated or carded fact has agreeing sources: queen (R-1), mother by adoption (R-2), began to rule Jhansi for her young son in 1857 (R-3: S9, S10). Rephrased on 2026-11-11 in a gentler tone: no army, siege or ride is narrated or carded.",
+    "yearsAgoFrom": 1857
+  },
+  "great-leaders:netaji-bhawan": {
+    "status": "PROPOSED",
+    "reason": "Every narrated or carded fact has at least two agreeing sources (B-1, B-3, B-8, B-9, B-12). Rephrased on 2026-11-11 in a gentler tone: the home and the greeting only, no army. Who coined 'Jai Hind' is disputed, but the narration says only 'made famous', which two sources support.",
+    "yearsAgoFrom": 1909
+  }
+}

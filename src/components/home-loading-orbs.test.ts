@@ -21,6 +21,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const read = (name: string) => readFileSync(join(here, name), "utf8");
 
 const lazy = read("lazy-home-image.tsx");
+const player = read("journal-player.tsx");
 const globe = read("home-globe.tsx");
 const css = read("home-v5.css");
 const styles = readFileSync(join(here, "../styles.css"), "utf8");
@@ -89,22 +90,26 @@ describe("LazyHomeImage — shared card-image orb", () => {
   });
 });
 
-describe("home page wiring — one lazy site left, nothing else", () => {
+describe("home page wiring — journal figures are the player now, nothing else", () => {
   // feat/home-card-films: the two .hv5-pic sites left this wrapper —
   // they are governed films now (CardFilm, pinned in
   // card-film.test.ts). feat/smooth-cards (Part 2 redo, 2026-11-03):
   // the three .hv5-art sites left too, for the same CardFilm system.
-  // The journal entry figures are the one lazy site that remains:
-  // they are content pictures, not card art, and keep the orb.
-  const sites = [
-    "<LazyHomeImage src={journalImageUrl(note.image)} alt={note.imageAlt} />",
-  ];
-  it("the remaining home lazy image uses the shared wrapper with exact attrs", () => {
-    for (const site of sites) {
-      assert.ok(gameApp.includes(site), `missing home site: ${site}`);
-    }
-    assert.equal((gameApp.match(/<LazyHomeImage/g) || []).length, 1,
-      "exactly one LazyHomeImage site remains (the journal entry figures)");
+  // feat/journal-player: the journal entry figures left as well — they
+  // are a tap-to-play movie now (JournalPlayer, pinned in
+  // journal-player.test.ts). The orb lives INSIDE the player: its
+  // closed, loading, and error states all render the same still
+  // through LazyHomeImage, with the same attrs the journal site had.
+  const site = "<JournalPlayer\n                  noteId={note.id}\n                  place={note.place}\n                  imageSrc={journalImageUrl(note.image)}\n                  imageAlt={note.imageAlt}";
+  it("the journal figures go through the player, whose stills use the shared wrapper with exact attrs", () => {
+    assert.ok(gameApp.includes(site), `missing home site: ${site}`);
+    assert.equal((gameApp.match(/<JournalPlayer/g) || []).length, 1,
+      "exactly one JournalPlayer site (the journal entry figures)");
+    assert.equal(
+      (player.match(/<LazyHomeImage src={imageSrc} alt={imageAlt} \/>/g) || []).length,
+      3,
+      "the player's three still states (closed, loading, error) all use the shared wrapper",
+    );
   });
 
   it("no bare lazy <img> remains on the home page", () => {
@@ -123,7 +128,7 @@ describe("home page wiring — one lazy site left, nothing else", () => {
 
   it("no other wait is touched: edition maps, stories, BootSplash unchanged", () => {
     const lazyUses = (gameApp.match(/<LazyHomeImage/g) || []).length;
-    assert.equal(lazyUses, 1, "exactly one wrapper use — no orbs anywhere else");
+    assert.equal(lazyUses, 0, "no LazyHomeImage site left in game-app — the journal orb lives in the player");
   });
 });
 

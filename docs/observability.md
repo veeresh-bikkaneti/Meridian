@@ -150,23 +150,37 @@ their device surface does not grow.
 | Type | When |
 |---|---|
 | `suspected_crash` | Next boot after an unclean shutdown with a previous breadcrumb (above). |
-| `boot_failure` | The crash watchdog's fallback fired: the app never signalled ready, so the boot is treated as failed. |
+| `boot_failure` | The crash watchdog's fallback fired: the app never signalled ready, so the boot is treated as failed. (One exception: a stalled chunk-recovery reload never files this — see "When the boot watchdog stands down" below.) |
 | `recovery_outcome` | A chunk-recovery attempt from a previous session resolved, one way or the other. |
 | `js_error` | `window` error event (installed once, guarded). |
 | `unhandled_rejection` | `unhandledrejection` event. |
 | `map_error` | `MapErrorBoundary.componentDidCatch`. |
 | `tile_failed` | A map tile failed to load (hiccup-class: counted, not forwarded on its own). |
 | `webgl_context_lost` | `webglcontextlost` on the MapLibre canvas. |
+| `recovery_outcome` | A chunk-recovery attempt resolved (Slice 2): the app reports whether the self-reload worked (`confirmed`), failed again (`repeat_failure` — the only outcome forwarded on its own), stood down, or was never confirmed. |
+| `storyteller_shown` | The storyteller caption appeared (funnel-class: counted, not forwarded on its own). |
+| `narration_started` | Narration audio started playing. |
+| `narration_completed` | Narration audio played to the end. |
+| `narration_replayed` | The player tapped the replay button. |
+| `narration_failed` | Narration audio failed to play (the card falls back to silent text). A spike here is the field signal that storyteller audio is broken. |
+| `narration_dismissed` | The caption was dismissed — tapped away, or the screen exited mid-play. |
 
-The numbers, stated plainly because they have been wrong in this doc
-before: **the client emits 14 types** (`ObservabilityEventType` in
-`src/lib/observability.ts`) — the 8 above plus `storyteller_shown`
-and the five `narration_*` engagement types. **The worker on `main`
-accepts 8** — the 8 in the table. The other 6 types are currently
-refused by the worker; their acceptance is a separate change (PR
-#311) and does **not** land with the telemetry work described here.
-No version of this doc should ever say "14 accepted" — that is not
-true on any branch yet.
+These 14 are the full set: the client event type
+(`ObservabilityEventType` in `src/lib/observability.ts`) and the
+crash-report worker's accepted list (`EVENT_TYPES` in
+`workers/crash-report/src/index.ts`) are the same 14, and a drift test
+(`scripts/observability-event-types.test.mjs`, in `npm test`) fails if
+they ever disagree again. Every type is sent to the worker when an
+endpoint is configured — there are no client-side-only types.
+
+> **History — read this before trusting an older copy of this page:**
+> the six storyteller/narration types were emitted from #108 (Oct
+> 2026) on, but the worker did not accept them until #194 wave 2
+> (this PR, #311), so every one was answered 400 and silently dropped.
+> An earlier version of this page called them "client-side only and
+> not sent to the worker" — that was wrong; they were always sent.
+> They are funnel telemetry, so the worker counts them like
+> hiccup-class events instead of forwarding each one as an alert.
 
 ## Privacy statement
 
@@ -218,6 +232,53 @@ until an endpoint is explicitly configured (below).
   (`https://meridian-crash-report.knowledgetest.workers.dev/ingest`), so
   production sends events today.
 
+## When the boot watchdog stands down
+
+The inline boot watchdog (`scripts/crash-watchdog.mjs`) exists for one
+job: a page whose app bundle never runs. It arms a single 28-second
+timer, and if the app has not signalled readiness
+(`window.__meridian_ready`) when the timer fires, it shows its fallback
+card and files one `boot_failure`. Four situations can look alike from
+the timer's seat; they are handled differently, on purpose:
+
+| What happened | What the player sees | What is filed |
+|---|---|---|
+| A deploy replaced the assets mid-session (version skew) | The app's own "A new version of Meridian is available." offer with a Refresh button | No `boot_failure` — the watchdog treats that offer's text as a stand-down signal, and readiness is set anyway |
+| A chunk fails mid-session, nothing else wrong | The error boundary's recoverable card ("Couldn’t load GeoDetective." and friends), then chunk-recovery's one bounded auto-reload | No `boot_failure` — the session already booted |
+| That auto-reload itself stalls (assets still failing, network still down) | The watchdog's recovery card — "The reload didn't finish loading." with the same Try again button — never a blank screen, and never the "couldn't start" claim (the game *did* start; this session reached home before the reload) | No `boot_failure` — the report stands down, the player does not; see the proof below |
+| A fresh boot stalls (the bundle never loads on a first visit) | The watchdog's fallback card ("The game couldn't start on this phone.") | One `boot_failure` — this is the case the watchdog exists for |
+
+The third row is the subtle one. How does the watchdog know a stalled
+page is a *recovery reload* and not a fresh boot? Before any
+chunk-recovery reload — the automatic one, and the error card's manual
+"Try again" — the app writes a timestamp to session storage under the
+key `meridian.chunkReloadNotice`. In practice, only code inside an app
+that already booted and reached home writes that key. A healthy reload
+consumes (removes) the notice as it boots; so if a *fresh* notice (at
+most 15 minutes old — `CHUNK_RELOAD_NOTICE_MAX_AGE_MS` in
+`src/lib/chunk-recovery.ts`, mirrored by the watchdog) is still there
+when the 28-second timer fires and readiness was never signalled, this
+page load is, in practice, the recovery reload, stalled. "In practice"
+is the honest phrase: the notice's removal at consume time is
+best-effort, so a flag can survive a healthy boot in rare cases — a
+surviving fresh flag is strong evidence, not proof. That residual is
+accepted: the worst it costs is one recovery card shown (with no
+report) on a page that might have been a fresh stall. The report
+stands down; the player never does — the watchdog shows its recovery
+card instead of the generic boot-failure card, because leaving a
+child on a blank shell (possibly in the standalone PWA, which has no
+browser reload button) is worse than showing a card that says, truly,
+that the reload didn't finish. A notice that is missing, unreadable,
+or older than 15 minutes proves nothing, and the watchdog behaves
+exactly as it always did — when in doubt, it shows the generic
+fallback and files the report.
+
+Pinned by `scripts/crash-watchdog.test.mjs` (a fresh notice gets the
+recovery card and no report; stale and malformed notices keep the
+generic card and the report) and by the "stalled chunk-recovery
+reload" case in `tests/e2e/crash-watchdog.spec.ts`, which drives the
+real two-page sequence end to end.
+
 ## How to enable — already live in production (2026-10)
 
 The receiver is deployed and `public/flags.json` on main points
@@ -263,9 +324,9 @@ words:
 ```text
 🚨 FIX — Developer action needed
 Meridian crash report
-priority: P1 — current build, foreground kill at map loading, phone-class iOS 16
+priority: S1 · P1 — current build, foreground kill at map loading, phone-class iOS 16
 verdict: developer action needed
-why: App stopped mid-game on the current build; no error was captured, so the cause is unknown.
+why: App stopped mid-game on the current build; no error was captured, so the cause is unknown. Severity: S1 — 3 unfinished boots in a row with no clean boot since; the player most likely left and never got back in (player-left is INFERRED from the missing clean boot, not observed).
 why-code: fg_kill_current
 action: Read the error below.
 type: suspected_crash · build: c6853be
@@ -283,18 +344,33 @@ How to read it, top to bottom:
 1. **The first line is the headline.** 🚨 FIX means a person needs
    to act. ❔ WAIT means the report itself is missing evidence, so
    nobody can tell yet whether it matters.
-2. **`priority:` is the sort order.** P1 is the most urgent: the
-   current build, a real crash, during gameplay. P2 is a developer
-   problem of any other shape, or a failed recovery. P3 means the
-   evidence was incomplete — a reporting problem, not proof that
-   players are affected. P4 means the report turned out to be
-   harmless or already fixed. The words after the code say which
-   facts earned that priority.
+2. **`priority:` is the sort order, led by the severity grade
+   (issue #345).** The first code is the grade — **S1** is the
+   worst: a developer problem after 3 or more unfinished boots in a
+   row, which most likely means the player left and never got back
+   in (player-left is INFERRED from the missing clean boot, not
+   observed). **S2a** means it recovered, but only after such a streak;
+   **S2b** is a developer problem without the repeat evidence;
+   **S3** fixed itself. Reports whose verdict is "can't tell" or
+   "not a real problem" carry no grade — the line starts
+   `ungraded ·` instead. After the grade comes the P-code: P1 is
+   the most urgent — the current build, a real crash, during
+   gameplay. P2 is a developer problem of any other shape, or a
+   failed recovery. P3 means the evidence was incomplete — a
+   reporting problem, not proof that players are affected. P4
+   means the report turned out to be harmless or already fixed.
+   The words after the codes say which facts earned them.
 3. **`verdict:` and `why:` say what the worker concluded, in plain
    words.** `why-code:` is the same conclusion as a short code
    (`fg_kill_current` = the app was killed in the foreground on the
    current build). Keep the code when filing a follow-up; it is how
-   the next person finds this exact case again.
+   the next person finds this exact case again. When the report is
+   graded, the `why:` line ends with one `Severity: …` sentence
+   carrying the grade's evidence — the boot streak, or the fact
+   that no streak was stamped. The S1 sentence labels the
+   player-left reading **INFERRED**: nobody saw the player leave;
+   the missing clean boot is the evidence, and the sentence says
+   exactly that.
 4. **If the verdict is "can't tell", one extra line appears:**
    `evidence: bgTerminal ✗ · buildReplaced ✓ · trailStuck ✓ · lcV ✓`.
    It names, one by one, the four facts the classifier needed and
@@ -338,16 +414,17 @@ Discord. Nothing is posted for an empty hour. The shape, as built:
 ```text
 📊 Meridian telemetry — hourly digest
 hour: 2026-11-03 17:00–18:00 UTC (receipt hour) (2 events)
-priority: P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone
+priority: S1 · P1 — 1× developer_needed/fg_kill_current on c6853be · ios 16 · phone
+S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.
 
 suspected_crash 1 · first 17:42 · last 17:42
   builds: c6853be ×1 · editions: state ×1 · regions: nebraska ×1
   groups: c6853be|ios|16|phone ×1
-  verdicts: developer_needed/fg_kill_current ×1 · modes: scout ×1 · steps: map_init_start ×1
+  verdicts: developer_needed/fg_kill_current ×1 · severities: S1 ×1 · modes: scout ×1 · steps: map_init_start ×1
 js_error 1 · first 17:05 · last 17:05
   builds: 2a0527f ×1 · editions: state ×1 · regions: nebraska ×1
   groups: 2a0527f|android|unknown|phone ×1
-  verdicts: developer_needed/captured_error ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1
+  verdicts: developer_needed/captured_error ×1 · severities: S2b ×1 · modes: full ×1 · steps: game_loaded ×1 · errors: TypeError ×1
 
 alerts this hour: none
 ```
@@ -366,6 +443,18 @@ Reading notes:
   device?": build | OS | OS major version | device class. Groups are
   capped at 32 distinct keys per hour-bucket; anything beyond that
   tallies under `other`.
+- **`severities:`** counts the hour's severity grades per type
+  (issue #345), including `ungraded` for reports whose verdict
+  carries no grade. Grade precedence, worst first, is
+  **S1 > S2a > S2b > S3**: the digest's `priority:` line leads with
+  the hour's worst grade — counted across all types in the hour,
+  so it can come from a different type than the verdict the line
+  names — when any graded report arrived. Inside one type block
+  the counts sort by count, not by grade, so a lower grade can
+  list first there when it happened more often. When the hour
+  counted any S1, exactly one gloss line follows the priority
+  line: `S1 = player-left INFERRED from ≥3 unfinished boots with
+  no clean boot — not observed.`
 - **Caps are labelled, never silent.** Each list shows its top few
   entries; when entries are cut, the line ends with the true
   remainder, like `(+2 more)`. Ties sort by count, then by name, so
@@ -378,7 +467,9 @@ Reading notes:
 Hiccup-class events are not forwarded one by one. When one type
 crosses a threshold inside an hour (default: 20 in the hour across
 all builds, or 10 from a single build), the worker posts one alert
-for that type and hour:
+for that type and hour. Routine funnel-class types never trip this
+alert — they surface via the hourly digest only (`narration_failed`
+keeps the threshold alert; see the crash-report README):
 
 ```text
 🚨 Meridian telemetry alert

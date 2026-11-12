@@ -47,6 +47,25 @@ Engineering notes that survive the change: the `meridian.loop.v1` namespace stay
 - Finish all 387 cases and you get a **completion celebration**.
 - Share text: date kept, streak shown per the rule above, **skip-case NO**, and the emoji strip is spoiler-free.
 
+### End game — ending a GeoDetective session (Veeresh, 2026-11-07)
+
+GeoDetective shipped with **no End game control, no end-session action, and no session summary**: the only way out mid-case was the Editions button, and leaving that way is only a pause — Home offers resume and the case stays `playing`. (The map editions got their equivalent fix in #264.) Veeresh ruled on 2026-11-07 that GeoDetective gets a real end, and **amended the ruling within the minute: the End game flow offers BOTH capabilities and the player picks** — neither is a stray-tap default.
+
+- **End outright** — the session closes and the summary shows; the in-flight case's **progress is discarded**: not resumable, **not counted solved or lost, and the streak is untouched** (discarding is not a loss). The case itself **returns to the bottom (tail) of its own deck**, so the deck's cycle counting stays exact (closed + open + in-deck = cycle size) and the case may be dealt again fresh later in the cycle; a cycle completes only when every case has truly been closed. (Corrected in the panel round 1 cure: an earlier draft of this record said the case was "consumed from its cycle" — that broke the deck accounting and could deal a duplicate; see the PR body's "Panel round 1 — cure" section.)
+- **Pause & resume later** — the session closes and the summary shows; the in-flight case is **preserved exactly** (same clue/guess state), Home offers resume afterwards, and it **counts once, when it later closes**.
+- **The summary counts closed cases only**: cases closed, the solved/lost split, the current streak and best streak, and per-deck progress (cycle, cases closed in the cycle, cases remaining, whether a case is open). The pair's game-end celebration (the #355 machinery) fires on the summary.
+- With no case in flight (ending from a reveal), there is nothing to pick: a single confirm ends the session, and the summary counts the case that just closed.
+
+Cold Trail is **not** covered here: it has its own store and screen (`src/game/coldtrail/`), so its equivalent End game is a follow-up on the owner's word.
+
+### Boot always lands on Home — no auto-open (Veeresh, 2026-11-09 / B7)
+
+Every boot lands on Home. A saved GeoDetective loop — the persisted open flag plus the saved mystery — **never auto-opens GeoDetective** on boot or on reload. The saved loop resumes only on tap-in: Home offers "GeoDetective: Resume your case" (or "Solve a mystery" after a finished reveal), and tapping it resumes the exact saved mystery — same clue/guess state, no re-deal — while a finished-but-unacknowledged reveal re-renders instead of dealing fresh. `bestStreak` survives the reload the same way.
+
+- **Superseded (kept for history):** until 2026-11-09 a reload re-opened the in-progress mystery (or the finished reveal) directly, without landing on Home first. That behavior is gone: reload now lands on Home, and the loop waits for the tap.
+- **Consequence:** the journal-prefetch question of whether a restored loop warms movies on reload is moot — no restored loop warms, because no loop is restored at boot.
+- **Cold Trail is not covered here either:** its persisted open flag still restores its screen on reload, intentionally (PR #203 panel: reload-retry parity — see the comment at the Cold Trail render branch in `src/components/game-app.tsx`). Do not "fix" it to match GeoDetective without the owner's word.
+
 ## 3. Cold Trail — the triangulation edition
 
 Three **sightings**, three **rings**, one **interception**. Each sighting gives a distance + bearing from a named anchor place ("575 km southwest of Umraniye"); the player taps where the rings cross to make the interception.

@@ -13,7 +13,9 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  * - keyboard Enter on the gate input checks exactly once (no double-fire);
  * - the picker selection ring follows the tapped card;
  * - Esc backs out of the change-confirm dialog;
- * - the change toast never names the band ("Saved ✅");
+ * - the change toast names the band it saved ("Saved — Ages 10-18 ✅"
+ *   for this spec's 7-10 → 10-18 switch; the owner's
+ *   2026-11-04 ruling superseded the earlier band-invisible toast);
  * - focus returns to the invoking "For grown-ups" control on close.
  */
 test.setTimeout(180_000);
@@ -21,7 +23,9 @@ test.setTimeout(180_000);
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
   // Pre-seed an ACTIVE profile so Save stages the change-confirm dialog
-  // (a fresh/unset profile saves straight through with no confirm).
+  // (a fresh/unset profile saves straight through with no confirm). The
+  // seed is a LEGACY schema-1 blob with band "8-10" on purpose: the load
+  // migration maps it to the active "7-10" group (card 0).
   await context.addInitScript(() => {
     window.localStorage.setItem(
       "meridian.ageProfile.v1",
@@ -37,7 +41,7 @@ test.beforeEach(async ({ context }) => {
   });
 });
 
-test("grown-ups gate opens as a viewport overlay; picker flow is band-invisible", async ({
+test("grown-ups gate opens as a viewport overlay; toast names the saved band", async ({
   page,
 }) => {
   await page.goto(APP_NO_IDLE);
@@ -75,14 +79,14 @@ test("grown-ups gate opens as a viewport overlay; picker flow is band-invisible"
   const picker = page.getByTestId("age-picker");
   await expect(picker).toBeVisible();
 
-  // P1: the selection ring follows the tapped card (8-10 preselected → tap
-  // the third card, the ring moves off the preselected one).
+  // P1: the selection ring follows the tapped card (the migrated 7-10
+  // group is preselected → tap the second card, the ring moves off it).
   const cards = picker.locator(".agep-card");
   await expect(cards).toHaveCount(3);
+  await expect(cards.nth(0)).toHaveClass(/agep-card-checked/);
+  await cards.nth(1).click();
   await expect(cards.nth(1)).toHaveClass(/agep-card-checked/);
-  await cards.nth(2).click();
-  await expect(cards.nth(2)).toHaveClass(/agep-card-checked/);
-  await expect(cards.nth(1)).not.toHaveClass(/agep-card-checked/);
+  await expect(cards.nth(0)).not.toHaveClass(/agep-card-checked/);
 
   // Save → confirm dialog carries the per-band consequence line; Esc backs
   // out to the picker with no change.
@@ -94,13 +98,14 @@ test("grown-ups gate opens as a viewport overlay; picker flow is band-invisible"
   await expect(confirm).not.toBeVisible();
   await expect(picker).toBeVisible();
 
-  // Save → Switch → the toast never names the band, and focus returns to
-  // the invoking control.
+  // Save → Switch → the toast names the band just saved (this spec
+  // switches 7-10 → 10-18), and focus returns
+  // to the invoking control.
   await page.getByTestId("agep-save").click();
   await page.getByTestId("agep-confirm-switch").click();
   const toast = page.getByTestId("agep-toast");
   await expect(toast).toBeVisible();
-  await expect(toast).toHaveText("Saved ✅");
+  await expect(toast).toHaveText("Saved — Ages 10-18 ✅");
   await expect(picker).not.toBeVisible();
   await expect(page.locator("div[inert]")).toHaveCount(0);
   await expect(footerLink).toBeFocused();

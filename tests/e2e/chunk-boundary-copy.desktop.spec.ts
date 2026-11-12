@@ -11,10 +11,13 @@
  * the boundary — not a test double — renders the card.
  *
  * Note on chunk-recovery (#245): a real chunk failure may also fire
- * the one-shot auto-reload. Both legs are written reload-tolerant:
- * after a reload the persisted loop-open flag restores GeoDetective,
- * the chunk fails again, and the same card reappears (the recovery
- * latch blocks further reloads). Assertions poll for the settled
+ * the one-shot auto-reload. B7 removed the tolerance these legs used
+ * to have for that: a mid-leg auto-reload now boots to Home (the
+ * persisted loop-open flag no longer restores GeoDetective), so the
+ * card would not reappear on its own. No reload occurs in these legs
+ * as written — they assert the card on entry — so they stand as-is;
+ * if the auto-reload ever fires mid-leg, the leg fails at the card
+ * assertion instead of recovering. Assertions poll for the settled
  * state, never a first paint.
  */
 import { test, expect } from "playwright/test";

@@ -55,10 +55,18 @@ const COLLECTOR_FILES = Object.freeze([
 // Pinned by test (c2) below: exactly that derived set, no more, no less.
 const CONTEXT_FILES = Object.freeze([
   "card-redesign.desktop.spec.ts",
+  "detective-companion.spec.ts",
+  "detective-berth.spec.ts",
+  "detective-closed-state.spec.ts",
+  "detective-staging.spec.ts",
+  "detective-watson-walk.spec.ts",
+  "detective-swap.spec.ts",
+  "detective-visibility.spec.ts",
   "discarded-notice.spec.ts",
   "endgame-share.spec.ts",
   "friend-challenge-mc3-verdict.desktop.spec.ts",
   "home-greeting-keyboard.desktop.spec.ts",
+  "home-hero-trekker.desktop.spec.ts",
   "home-visual-layout.desktop.spec.ts",
   "loading-orbs.desktop.spec.ts",
   "reset-history.desktop.spec.ts",

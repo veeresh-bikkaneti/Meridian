@@ -65,49 +65,49 @@ test("journalImageUrl uses the deploy base like the storyteller audio URLs", () 
 });
 
 // ---------------------------------------------------------------------------
-// Window → set index (spec §3): deterministic, boundary-exact.
+// Window → entry index (spec §3, B8): deterministic, boundary-exact.
 // (Adapted from v2 src/game/journal.test.ts; merged field names.)
 // ---------------------------------------------------------------------------
 
-test("JOURNAL_WINDOW_MS is 2 hours; the cycle is 36 sets / 72 hours", () => {
-  assert.equal(JOURNAL_WINDOW_MS, 7_200_000);
-  assert.equal(journalSetCount(), 36);
-  assert.equal(journalSetCount() * JOURNAL_WINDOW_MS, 72 * 3_600_000);
+test("JOURNAL_WINDOW_MS is 30 minutes; the cycle is 106 entries / 53 hours", () => {
+  assert.equal(JOURNAL_WINDOW_MS, 1_800_000);
+  assert.equal(journalSetCount(), 106);
+  assert.equal(journalSetCount() * JOURNAL_WINDOW_MS, 53 * 3_600_000);
 });
 
 test("journalSetIndexAt: window boundaries", () => {
   assert.equal(journalSetIndexAt(0), 0);
   assert.equal(journalSetIndexAt(JOURNAL_WINDOW_MS - 1), 0);
   assert.equal(journalSetIndexAt(JOURNAL_WINDOW_MS), 1);
-  assert.equal(journalSetIndexAt(JOURNAL_WINDOW_MS * 35), 35);
-  assert.equal(journalSetIndexAt(JOURNAL_WINDOW_MS * 36 - 1), 35);
-  assert.equal(journalSetIndexAt(JOURNAL_WINDOW_MS * 36), 0);
-  assert.equal(journalSetIndexAt(JOURNAL_WINDOW_MS * 36 + JOURNAL_WINDOW_MS), 1);
+  assert.equal(journalSetIndexAt(JOURNAL_WINDOW_MS * 105), 105);
+  assert.equal(journalSetIndexAt(JOURNAL_WINDOW_MS * 106 - 1), 105);
+  assert.equal(journalSetIndexAt(JOURNAL_WINDOW_MS * 106), 0);
+  assert.equal(journalSetIndexAt(JOURNAL_WINDOW_MS * 106 + JOURNAL_WINDOW_MS), 1);
 });
 
 test("journalSetIndexAt: same instant → same index (any client)", () => {
   const t = 1_761_234_567_890;
   assert.equal(journalSetIndexAt(t), journalSetIndexAt(t));
   assert.equal(journalSetAt(t)?.index, journalSetIndexAt(t));
-  assert.equal(journalSetAt(t + JOURNAL_WINDOW_MS)?.index, (journalSetIndexAt(t) + 1) % 36);
+  assert.equal(journalSetAt(t + JOURNAL_WINDOW_MS)?.index, (journalSetIndexAt(t) + 1) % 106);
 });
 
 test("journalSetIndexAt: negative times wrap to the cycle's tail", () => {
-  // floor(-1ms / WINDOW) is window -1 → the last set; a whole negative
-  // window lands on the same tail set, two back lands on the one before.
-  assert.equal(journalSetIndexAt(-1), 35);
-  assert.equal(journalSetIndexAt(-JOURNAL_WINDOW_MS), 35);
-  assert.equal(journalSetIndexAt(-JOURNAL_WINDOW_MS - 1), 34);
+  // floor(-1ms / WINDOW) is window -1 → the last entry; a whole negative
+  // window lands on the same tail entry, two back lands on the one before.
+  assert.equal(journalSetIndexAt(-1), 105);
+  assert.equal(journalSetIndexAt(-JOURNAL_WINDOW_MS), 105);
+  assert.equal(journalSetIndexAt(-JOURNAL_WINDOW_MS - 1), 104);
 });
 
 test("journalSetByIndex: wraps in both directions", () => {
   assert.equal(journalSetByIndex(0)?.index, 0);
-  assert.equal(journalSetByIndex(35)?.index, 35);
-  assert.equal(journalSetByIndex(36)?.index, 0);
-  assert.equal(journalSetByIndex(37)?.index, 1);
-  assert.equal(journalSetByIndex(-1)?.index, 35);
+  assert.equal(journalSetByIndex(105)?.index, 105);
+  assert.equal(journalSetByIndex(106)?.index, 0);
+  assert.equal(journalSetByIndex(107)?.index, 1);
+  assert.equal(journalSetByIndex(-1)?.index, 105);
   assert.deepEqual(
-    journalSetByIndex(36)?.notes.map((n) => n.id),
+    journalSetByIndex(106)?.notes.map((n) => n.id),
     journalSetByIndex(0)?.notes.map((n) => n.id),
   );
 });
@@ -119,86 +119,67 @@ test("nextWindowStart: start of the following window", () => {
 });
 
 test("nextEntryCountdown: h:mm to the next window", () => {
-  assert.equal(nextEntryCountdown(0), "2:00");
-  assert.equal(nextEntryCountdown(JOURNAL_WINDOW_MS / 2), "1:00");
-  assert.equal(nextEntryCountdown(JOURNAL_WINDOW_MS - 30 * 60_000), "0:30");
+  assert.equal(nextEntryCountdown(0), "0:30");
+  assert.equal(nextEntryCountdown(JOURNAL_WINDOW_MS / 2), "0:15");
+  assert.equal(nextEntryCountdown(JOURNAL_WINDOW_MS - 60_000), "0:01");
   assert.equal(nextEntryCountdown(JOURNAL_WINDOW_MS - 1), "0:01");
 });
 
 // ---------------------------------------------------------------------------
-// Set formation + remainder rule (spec §3)
+// Singleton formation (spec §3, B8): one note per window, no remainder.
 // ---------------------------------------------------------------------------
 
-test("sets: 36 total — 35 triples and one single", () => {
+test("windows: 106 total — one note each (B8 singletons)", () => {
   const sets = journalSets();
-  assert.equal(sets.length, 36);
-  assert.equal(sets.filter((s) => s.notes.length === 3).length, 35);
-  assert.equal(sets.filter((s) => s.notes.length === 1).length, 1);
-  assert.equal(sets[35]!.notes.length, 1);
-});
-
-test("sets: first 33 are ring-pure, in ring order, with the §2 labels", () => {
-  const sets = journalSets();
-  const expectedLabels: string[] = [
-    ...Array(9).fill(GEOGRAPHY_BY_RING.lincoln),
-    ...Array(4).fill(GEOGRAPHY_BY_RING.region),
-    ...Array(6).fill(GEOGRAPHY_BY_RING.nebraska),
-    ...Array(6).fill(GEOGRAPHY_BY_RING.usa),
-    ...Array(8).fill(GEOGRAPHY_BY_RING.world),
-  ];
-  assert.equal(expectedLabels.length, 33);
-  for (let i = 0; i < 33; i++) {
-    const set = sets[i]!;
-    assert.equal(set.mixed, false, `set ${i} must be pure`);
-    assert.equal(set.geography, expectedLabels[i], `set ${i} geography`);
-    const rings = new Set(set.notes.map((n) => n.ring));
-    assert.equal(rings.size, 1, `set ${i} must share one ring`);
-    // Pure sets follow catalog order within the ring.
-    const ringPlaces = PLACES.filter((p) => p.ring === set.notes[0]!.ring);
-    const offset = ringPlaces.findIndex((p) => p.id === set.notes[0]!.id);
-    assert.deepEqual(
-      set.notes.map((n) => n.id),
-      ringPlaces.slice(offset, offset + 3).map((p) => p.id),
-    );
+  assert.equal(sets.length, 106);
+  for (const set of sets) {
+    assert.equal(set.notes.length, 1, `window ${set.index} holds one note`);
+    assert.equal(set.mixed, false, `window ${set.index} is never mixed`);
   }
 });
 
-test("sets: every place appears exactly once across the cycle", () => {
+test("windows: each singleton's geography is its note's ring label, in ring order", () => {
+  const sets = journalSets();
+  // Catalog order is ring order (lincoln → region → nebraska → usa →
+  // world), so the geography sequence never goes back a ring.
+  let lastRing = -1;
+  for (const set of sets) {
+    const note = set.notes[0]!;
+    assert.equal(set.geography, GEOGRAPHY_BY_RING[note.ring]);
+    assert.equal(set.geography, note.where);
+    const ring = RING_ORDER.indexOf(note.ring);
+    assert.ok(ring >= lastRing, `window ${set.index} breaks ring order`);
+    lastRing = ring;
+  }
+  // Ring sizes: the geography counts match the catalog's rings.
+  const counts = new Map<string, number>();
+  for (const set of sets) {
+    counts.set(set.geography, (counts.get(set.geography) ?? 0) + 1);
+  }
+  assert.equal(counts.get(GEOGRAPHY_BY_RING.lincoln), 29);
+  assert.equal(counts.get(GEOGRAPHY_BY_RING.region), 14);
+  assert.equal(counts.get(GEOGRAPHY_BY_RING.nebraska), 19);
+  assert.equal(counts.get(GEOGRAPHY_BY_RING.usa), 19);
+  assert.equal(counts.get(GEOGRAPHY_BY_RING.world), 25);
+});
+
+test("windows: every place appears exactly once across the cycle", () => {
   const ids = journalSets().flatMap((s) => s.notes.map((n) => n.id));
   assert.equal(ids.length, 106);
   assert.equal(new Set(ids).size, 106);
   assert.deepEqual(new Set(ids), new Set(PLACES.map((p) => p.id)));
+  // Windows follow catalog order note for note.
+  assert.deepEqual(ids, JOURNAL_NOTES.map((n) => n.id));
 });
 
-test("sets: remainder sets are the ring leftovers in ring order (3, 3, 1)", () => {
-  // Recompute the leftovers straight from the catalog: within each ring,
-  // the places past the last full triple, rings in RING_ORDER.
-  const leftovers: string[] = [];
-  for (const ring of RING_ORDER) {
-    const inRing = PLACES.filter((p) => p.ring === ring);
-    leftovers.push(...inRing.slice(Math.floor(inRing.length / 3) * 3).map((p) => p.id));
-  }
-  assert.equal(leftovers.length, 7);
+test("windows: no remainder sets, no Field Notes label (B8)", () => {
+  // With singletons there is no straddle: a window can never show part
+  // of a set, and no window mixes geographies.
   const sets = journalSets();
-  const remainder = sets.slice(33);
-  assert.equal(remainder.length, 3);
-  for (const set of remainder) {
-    assert.equal(set.mixed, true);
-    assert.equal(set.geography, "Field Notes");
-  }
-  assert.deepEqual(remainder[0]!.notes.map((n) => n.id), leftovers.slice(0, 3));
-  assert.deepEqual(remainder[1]!.notes.map((n) => n.id), leftovers.slice(3, 6));
-  assert.deepEqual(remainder[2]!.notes.map((n) => n.id), leftovers.slice(6, 7));
-  // Each remainder note keeps its own geography (no false shared claim).
-  for (const set of remainder) {
-    for (const note of set.notes) {
-      assert.equal(note.where, GEOGRAPHY_BY_RING[note.ring]);
-    }
-  }
-  // The raw generated sets agree with the resolved view.
-  assert.deepEqual(
-    JOURNAL_SETS.slice(33).map((s) => s.noteIds),
-    remainder.map((s) => s.notes.map((n) => n.id)),
+  assert.equal(sets.filter((s) => s.mixed).length, 0);
+  assert.equal(
+    sets.filter((s) => s.geography === "Field Notes").length,
+    0,
   );
 });
 
@@ -376,8 +357,8 @@ function fakeRotation(startMs: number) {
   return { clock, timers, applied, blockers, rotation };
 }
 
-test("auto-switch: boundary timeout fires at the next window start and applies the next set", () => {
-  // Start 1s into window 10 → current set index 10.
+test("auto-switch: boundary timeout fires at the next window start and applies the next entry", () => {
+  // Start 1s into window 10 → current entry index 10.
   const { clock, timers, applied, rotation } = fakeRotation(JOURNAL_WINDOW_MS * 10 + 1_000);
   assert.equal(rotation.getCurrentIndex(), 10);
   rotation.start();
@@ -422,7 +403,7 @@ test("auto-switch: focus inside the section defers the swap until focus leaves",
   blockers.focusInsideSection = true;
   clock.now = JOURNAL_WINDOW_MS * 8;
   timers.fireTimeout();
-  // The new set is computed but NOT applied under the reader (§6).
+  // The new entry is computed but NOT applied under the reader (§6).
   assert.deepEqual(applied, []);
   assert.equal(rotation.getCurrentIndex(), 7);
   assert.equal(rotation.getPendingIndex(), 8);
@@ -430,7 +411,7 @@ test("auto-switch: focus inside the section defers the swap until focus leaves",
   rotation.recompute();
   assert.deepEqual(applied, []);
   assert.equal(rotation.getPendingIndex(), 8);
-  // Focus leaves → the component's focusin recompute lands the set.
+  // Focus leaves → the component's focusin recompute lands the entry.
   blockers.focusInsideSection = false;
   rotation.recompute();
   assert.deepEqual(applied, [8]);

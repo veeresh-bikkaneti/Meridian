@@ -5,7 +5,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
-import { HTML_CACHE_CONTROL, SECURITY_HEADERS, withHtmlCacheControl, withSecurityHeaders } from "./security-headers.ts";
+import { HTML_CACHE_CONTROL, CONTENT_SECURITY_POLICY, SECURITY_HEADERS, withHtmlCacheControl, withSecurityHeaders } from "./security-headers.ts";
 
 function globalBlock(): Map<string, string> {
   const text = readFileSync(new URL("../../public/_headers", import.meta.url), "utf8");
@@ -26,6 +26,26 @@ function globalBlock(): Map<string, string> {
 
 test("public/_headers /* block matches SECURITY_HEADERS exactly", () => {
   assert.deepEqual(Object.fromEntries(globalBlock()), { ...SECURITY_HEADERS });
+});
+
+test("CSP allows the journal media host in media-src and connect-src", () => {
+  // The journal clips live on meridian-media Pages; the <video> element
+  // needs media-src and prefetch fetch() needs connect-src. Without both,
+  // CSP blocks journal movies in production. The drift test above pins
+  // public/_headers to SECURITY_HEADERS, so asserting on the constant
+  // covers both files.
+  const directives = new Map(
+    CONTENT_SECURITY_POLICY.split(";").map((d) => {
+      const [name, ...sources] = d.trim().split(/\s+/);
+      return [name, sources] as const;
+    }),
+  );
+  for (const name of ["media-src", "connect-src"]) {
+    assert.ok(
+      directives.get(name)?.includes("https://veeresh-bikkaneti.github.io"),
+      `${name} must allow the journal media host`,
+    );
+  }
 });
 
 test("withSecurityHeaders adds every header to a worker response", () => {

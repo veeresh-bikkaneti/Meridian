@@ -3,11 +3,20 @@
 Status: SPEC for implementation on `feat/homepage-premium-v5` (base:
 `origin/main` @ `6cd3bc3`, which already contains the merged PR #158 v5
 homepage). Commissioned by Liz, 2026-10-16: "Journal rotates through 106
-real catalog notes, three at a time, every 2 hours. The page switches to
-the next set on its own." Plus her citation requirement (2026-10-16):
+real catalog notes, one at a time, every 30 minutes. The page switches to
+the next entry on its own." Plus her citation requirement (2026-10-16):
 "These specs should provide citation and confidence vote on facts
 describing."
 
+> **Amendment — B8 singletons + 30-minute window (2026-11-09,
+> owner-ordered).** Each rotation window now shows ONE note (no more
+> sets of three, no remainder sets, no "Field Notes" label), and the
+> window is 30 minutes, not 2 hours: `floor(Date.now() / 1_800_000)
+> mod 106`, full cycle 106 × 30 min = 53 hours, footer `Entry {k} of
+> 106`. Sections 3, 5, 6, and 8 below are updated for singletons; the
+> wall-clock derivation (no server state) and the §6 focus-only
+> deferral are unchanged.
+>
 > **Amendment — Journal consolidation, Phase 2 (2026-10-16,
 > owner-approved, plan Q1).** The original text of this spec described
 > a full-viewport overlay / dialog journal view. **That description no
@@ -56,7 +65,7 @@ describing."
 
 ## 2. Geography
 
-A set's shared geography is the catalog `ring` — the game's own geography
+An entry's geography is the catalog `ring` — the game's own geography
 tier. Labels (factual for every member, verified against the entries):
 
 | ring | label | places |
@@ -67,24 +76,17 @@ tier. Labels (factual for every member, verified against the entries):
 | `usa` | United States | 19 |
 | `world` | The World | 25 |
 
-## 3. Sets and rotation
+## 3. Entries and rotation
 
-- **Set formation:** within each ring, in catalog order, chunk into
-  triples. Pure-geography sets: lincoln 9, region 4, nebraska 6, usa 6,
-  world 8 = **33 sets / 99 notes**.
-- **Remainder rule (106 = 35×3 + 1), stated exactly:** ring leftovers in
-  ring order (lincoln 2, region 2, nebraska 1, usa 1, world 1 = 7 notes)
-  form remainder sets of 3, then 3, then **1**: sets R1, R2 (mixed
-  geography, labeled "Field Notes", each note keeping its own geography
-  eyebrow so no false shared-geography claim is made) and R3, a single
-  final note. Totals: **36 sets; 35 full triples + 1 single; every note
-  appears exactly once per cycle.**
-- **Rotation order:** pure sets in ring order (lincoln → region →
-  nebraska → usa → world), then R1, R2, R3.
-- **Window:** 2 hours (7,200,000 ms). Current set index =
-  `floor(Date.now() / 7_200_000) mod 36` — derived from the wall-clock
-  epoch, so every visitor sees the same set in the same window with no
-  server state. Full cycle = 36 × 2h = **72 hours (3 days)**.
+- **Formation (B8):** one note per window, in catalog order (which is
+  ring order: lincoln → region → nebraska → usa → world). There are
+  no sets, no triples, and no remainder rule — every note appears
+  exactly once per cycle, and a window can never show part of a set
+  (no straddle). Each entry's geography is its own ring label (§2).
+- **Window:** 30 minutes (1,800,000 ms). Current entry index =
+  `floor(Date.now() / 1_800_000) mod 106` — derived from the wall-clock
+  epoch, so every visitor sees the same entry in the same window with no
+  server state. Full cycle = 106 × 30 min = **53 hours**.
 - **Auto-switch while open:** a timer set for the next window boundary
   recomputes the index when it fires; returning to a visible tab
   (`visibilitychange`) recomputes immediately. No reload, no polling
@@ -116,9 +118,8 @@ matches what ships and is replaced by the inline host below.*
 
 - **Home Journal card** (existing v5 card, design unchanged): eyebrow
   "Latest Journal Entry", title "What the land remembers", the existing
-  subcopy, and one added quiet line naming the current set:
-  `Now showing: {geography} · {n} field notes` (for remainder sets:
-  `Now showing: Field Notes`, no count). **READ THE ENTRY is a real
+  subcopy, and one added quiet line naming the current entry:
+  `Now showing: {geography} · 1 field note`. **READ THE ENTRY is a real
   button** that scroll-jumps to the inline journal section and moves
   focus to it. The nav **JOURNAL** button likewise is a real button
   and uses the same scroll-jump + focus to the section.
@@ -128,8 +129,8 @@ matches what ships and is replaced by the inline host below.*
   `tabIndex={-1}` as the scroll-jump focus target. There is **no
   dialog/overlay** — no `role="dialog"`, no `aria-modal`, no close
   button, and nothing to open or close. Content: eyebrow `Journal`,
-  title "What the land remembers", the set's geography line, then the
-  set's notes in order, each: a storybook-art figure first (all 106 notes
+  title "What the land remembers", the entry's geography line, then the
+  single note, each: a storybook-art figure first (all 106 notes
   carry art since 2026-10-17 — wave 2, PR #169, illustrated the remaining
   103; art integrates only through `scripts/journal-art-manifest.json` +
   the dataset generator, never hand-edited), note title (heading),
@@ -139,7 +140,7 @@ matches what ships and is replaced by the inline host below.*
   followed by the confidence as text —
   `Confidence: Verified — government or university source.` /
   `Confidence: Cited — named source recorded in the catalog.`
-  Footer line: `Entry {k} of 36 · Next entry in {h:mm}` (plain text).
+  Footer line: `Entry {k} of 106 · Next entry in {h:mm}` (plain text).
 - **The citation link is the only per-note link.** No in-app place
   navigation is invented; the catalog defines no such handler from the
   home screen.
@@ -154,7 +155,7 @@ host's blockers below replace them.*
   updated at most once per minute.
 - **Content is never swapped under focus:** if the window boundary
   passes while focus is inside the home Journal card, **or inside the
-  inline journal section**, the new set is computed but **not applied**
+  inline journal section**, the new entry is computed but **not applied**
   until focus leaves both the card and the section. A screen-reader
   user is never yanked mid-read.
 - Deferral is **focus-only** (owner ruling Q3): a reader who is merely
@@ -162,7 +163,7 @@ host's blockers below replace them.*
   section, is not a blocker, and a swap can still occur under them at a
   window boundary. That residual is accepted as disclosed; it is not
   coded against.
-- Reduced motion (`prefers-reduced-motion`): set changes are instant —
+- Reduced motion (`prefers-reduced-motion`): entry changes are instant —
   no crossfade or other transition is applied — and the card/nav
   scroll-jumps to the section are likewise instant.
 - The confidence marker is text (§4); any icon/color is decorative
@@ -187,10 +188,10 @@ the E2E surface below is the inline section, not a view. The unit
 fake-timer requirement is **not** weakened by this rewrite — it stays,
 and it is now satisfied, as stated in the unit bullet.*
 
-- Unit: window→set-index derivation (deterministic; boundary values;
-  same instant → same index on any client), set formation + remainder
-  rule (36 sets, sizes 35×3+1, ring purity of the 33, every place
-  exactly once), confidence rubric (tier counts 49/57/0 + spot checks),
+- Unit: window→entry-index derivation (deterministic; boundary values;
+  same instant → same index on any client), singleton formation (106
+  windows, one note each, ring order, every place exactly once),
+  confidence rubric (tier counts 49/57/0 + spot checks),
   dataset-vs-catalog integrity (all fields traceable), auto-switch
   timer behavior with fake timers, focus-deferral of swaps. The
   fake-timer requirement is satisfied by unit-testing the wiring
@@ -206,17 +207,16 @@ and it is now satisfied, as stated in the unit bullet.*
   `visibilitychange` and `focusin` listeners call its `recompute()` —
   so the unit tests pin the production mechanism, not a copy of it.
 - E2E (adapted spec, `tests/e2e/journal.spec.ts`, run under the
-  `journal` Playwright project): the current set renders **inline** in
+  `journal` Playwright project): the current entry renders **inline** in
   the `#home-journal` section — the card's now-showing line, the
-  section's geography header, the set's notes (3, or the set's size)
-  with per-note confidence lines and dataset-exact citation hrefs, and
-  the `Entry {k} of 36` footer; READ THE ENTRY scrolls to the section
-  and focuses it; with the browser clock mocked forward 2h the set
-  advances on its own without a reload; focus inside the section
-  defers a swap until focus leaves; the 1-note remainder set renders
-  as "Field Notes". There is no view to open, no Esc close, and no
-  focus return to test — that machinery does not exist on the inline
-  host.
+  section's geography header, the single note with per-note confidence
+  line and dataset-exact citation href, and the `Entry {k} of 106`
+  footer; READ THE ENTRY scrolls to the section and focuses it; with
+  the browser clock mocked forward 30 min the entry advances on its own
+  without a reload; focus inside the section defers a swap until focus
+  leaves; the final window wraps to the first entry. There is no view
+  to open, no Esc close, and no focus return to test — that machinery
+  does not exist on the inline host.
 
 ## 9. Out of scope
 

@@ -5,8 +5,8 @@
  * logging-only receiver — it validates events and writes one structured
  * JSON log line per event (read via `wrangler tail`). THIS worker is a
  * separate, forwarding sibling in a NEW directory on purpose (the old
- * directory is untouched): it accepts the same event schema (plus
- * `boot_failure`) and forwards a compact, PII-free alert to Discord
+ * directory is untouched): it accepts the full client event schema
+ * (see EVENT_TYPES below) and forwards a compact, PII-free alert to Discord
  * and/or email instead of logging the full event. Deploy ONE of them as
  * the `observabilityEndpoint` target; this one is the recommended
  * production choice because it pages a human instead of relying on
@@ -16,10 +16,12 @@
  * - GET  /health        → 200 { ok: true }
  * - POST /  or /ingest  → validate one observability event; crash-class
  *                         events forward a compact alert immediately and
- *                         are counted; hiccup-class events are counted but
- *                         NOT forwarded individually (they surface via the
- *                         threshold alert + hourly digest). → 200
- *                         { ok, forwarded, counted }.
+ *                         are counted; hiccup-class and funnel-class
+ *                         events are counted but NOT forwarded individually
+ *                         (hiccup-class surfaces via the threshold alert +
+ *                         hourly digest; routine funnel-class types via the
+ *                         hourly digest only — `narration_failed` keeps the
+ *                         threshold alert; see the funnel-class comment).
  * - Non-POST on an ingest path → 405. Unknown paths → 404.
  * - POST without an allow-listed Origin → 403 (review S4; see CORS).
  * - Bodies over 8 KB → 413, enforced while streaming (a chunked body is
@@ -70,7 +72,20 @@
  * see README.md).
  */
 
-/** Event types this worker accepts: the v1 set plus `boot_failure`, `tile_failed`, and (Slice 2) `recovery_outcome`. */
+/**
+ * Event types this worker accepts — the full client set, no more and no
+ * less. This list MUST stay equal to `ObservabilityEventType` in
+ * src/lib/observability.ts: the client posts every type it can emit to
+ * this worker, so any type missing here is telemetry silently dropped
+ * with a 400 (that is exactly how the six storyteller/narration types
+ * were lost until #194 wave 2). A drift test in `npm test`
+ * (scripts/observability-event-types.test.mjs) pins the two lists equal.
+ *
+ * History: the v1 set plus `boot_failure` and `tile_failed`, then
+ * (Slice 2) `recovery_outcome`, then (#194 wave 2, 2026-11-02) the six
+ * funnel types `storyteller_shown` + `narration_*` — real telemetry the
+ * app had emitted since #108 through the same transport.
+ */
 export const EVENT_TYPES = [
   "suspected_crash",
   "boot_failure",
@@ -80,6 +95,12 @@ export const EVENT_TYPES = [
   "tile_failed",
   "webgl_context_lost",
   "recovery_outcome",
+  "storyteller_shown",
+  "narration_started",
+  "narration_completed",
+  "narration_replayed",
+  "narration_failed",
+  "narration_dismissed",
 ] as const;
 
 export type CrashReportEventType = (typeof EVENT_TYPES)[number];
@@ -1118,6 +1139,99 @@ export function priorityRead(event: CrashReportEvent): PriorityRead {
   return { code, text: parts.join(", ") };
 }
 
+// --- Severity grades (issue #345) ---------------------------------------
+//
+// The verdict says WHETHER a human is needed; the severity grade says
+// HOW BAD it is, in player-impact terms. severityOf consumes the
+// worker's own re-derived verdict plus one stamped fact — the durable
+// unfinished-boot streak (unfinishedBoots, §4.3) — and nothing else:
+// first match wins, and it fails closed. insufficient_evidence and
+// not_a_real_issue are NEVER graded, whatever the streak: a missing-
+// evidence report must not be inflated into an impact claim, and a
+// positively benign one needs no grade. Severity never feeds back
+// into the verdict or the P1–P4 triage mapping; it only leads them.
+//
+// The streak is the honest proxy for "the player left": under the
+// counts-only privacy model a literal no-return is unobservable, so
+// S1's wording labels the inference as inferred, never observed
+// (owner sourcing rule, 2026-11-04).
+
+export type SeverityGrade = "S1" | "S2a" | "S2b" | "S3";
+
+/** The S1/S2a streak threshold (owner pick, 2026-11-04: ≥3, not ≥2). */
+export const SEVERITY_STREAK_THRESHOLD = 3;
+
+export interface SeverityRead {
+  grade: SeverityGrade;
+  /** The one `Severity: …` clause the alert's why line gains. */
+  clause: string;
+  /** The stamped streak the grade derived from (null = not stamped). */
+  streak: number | null;
+}
+
+/**
+ * Grade one event's severity from its re-derived verdict + streak.
+ * Returns null for the two ungraded verdicts — absolutely, at any
+ * streak.
+ */
+export function severityOf(event: CrashReportEvent): SeverityRead | null {
+  const { verdict } = deriveVerdict(event);
+  if (verdict !== "developer_needed" && verdict !== "auto_fixed") return null;
+  // normaliseEvent already clamps the stamp to an integer 0..999 and
+  // deletes non-numbers; re-checking here keeps direct callers honest.
+  const streak =
+    typeof event.unfinishedBoots === "number" && Number.isFinite(event.unfinishedBoots)
+      ? Math.max(0, Math.floor(event.unfinishedBoots))
+      : null;
+  const repeated = streak !== null && streak >= SEVERITY_STREAK_THRESHOLD;
+  if (verdict === "developer_needed") {
+    if (repeated) {
+      return {
+        grade: "S1",
+        streak,
+        clause:
+          `Severity: S1 — ${streak} unfinished boots in a row with no clean boot since; ` +
+          `the player most likely left and never got back in (player-left is INFERRED ` +
+          `from the missing clean boot, not observed).`,
+      };
+    }
+    return {
+      grade: "S2b",
+      streak,
+      clause:
+        streak === null
+          ? `Severity: S2b — a developer is needed, but the boot streak was not stamped ` +
+            `on this report, so it cannot be graded S1.`
+          : `Severity: S2b — a developer is needed; the boot streak is ${streak}, ` +
+            `below the S1 threshold of ${SEVERITY_STREAK_THRESHOLD} unfinished boots in a row.`,
+    };
+  }
+  // verdict === "auto_fixed": a confirmed recovery. The grade splits
+  // on whether the recovery came only after a repeated-failure streak.
+  if (repeated) {
+    return {
+      grade: "S2a",
+      streak,
+      clause:
+        `Severity: S2a — it recovered, but only after ${streak} unfinished boots in a row.`,
+    };
+  }
+  return {
+    grade: "S3",
+    streak,
+    clause:
+      streak === null
+        ? `Severity: S3 — it fixed itself; no boot streak was stamped on this report.`
+        : `Severity: S3 — it fixed itself; the boot streak was ${streak}, ` +
+          `below the repeat threshold of ${SEVERITY_STREAK_THRESHOLD}.`,
+  };
+}
+
+/** Bucket key for the digest's counted severities dimension (#345). */
+export function severityKeyOf(event: CrashReportEvent): string {
+  return severityOf(event)?.grade ?? "ungraded";
+}
+
 /**
  * The evidence line (§5.3 graft): one ✓/✗ per classifier stamp, as
  * received, using the same predicates rule 4 checks. Rendered only
@@ -1170,7 +1284,12 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   // untrusted cross-check and is never rendered (design §2.5/F9).
   const { verdict, whyKey } = deriveVerdict(event);
   const presentation = VERDICT_PRESENTATION[verdict];
+  // Issue #345: the why line gains one Severity clause when the
+  // verdict is graded; ungraded verdicts gain none (their why already
+  // says why no grade exists).
+  const severity = severityOf(event);
   const why = whyLineFor(whyKey, event);
+  const whyText = severity ? `${why} ${severity.clause}` : why;
   const actionLine = verdict === "developer_needed" ? "action: Read the error below.\n" : "";
   // The 🚨 stays in the no-action title for findability (design §5.1) —
   // the verdict line above it carries the real signal.
@@ -1179,7 +1298,10 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   // §5.3 lines. priority: is always line 3 of the Discord alert; the
   // evidence: line appears only for missing_fields, right after why:.
   const priority = priorityRead(event);
-  const priorityText = `${priority.code} — ${priority.text}`;
+  // Issue #345: severity leads the priority line; an ungraded verdict
+  // renders the literal "ungraded" (that is the absence of a grade,
+  // not a fifth grade). The P1–P4 code and its text are unchanged.
+  const priorityText = `${severity ? severity.grade : "ungraded"} · ${priority.code} — ${priority.text}`;
   const evidenceLine = whyKey === "missing_fields" ? `evidence: ${evidenceText(event)}\n` : "";
   const eventTime = new Date(event.ts).toISOString();
   const modeText =
@@ -1200,7 +1322,7 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
     `${title}\n` +
     `priority: ${priorityText}\n` +
     `verdict: ${presentation.label}\n` +
-    `why: ${why}\n` +
+    `why: ${whyText}\n` +
     evidenceLine +
     `why-code: ${whyKey}\n` +
     actionLine +
@@ -1219,7 +1341,7 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
     `Meridian crash report\n\n` +
     `verdict: ${presentation.label}\n` +
     `priority: ${priorityText}\n` +
-    `why: ${why}\n` +
+    `why: ${whyText}\n` +
     evidenceLine +
     `why-code: ${whyKey}\n` +
     actionLine +
@@ -1323,6 +1445,14 @@ async function forwardToEmail(
  *   a mobile OS reclaims the GPU context on backgrounding — both are
  *   usually benign/transient). Counted, NOT forwarded individually;
  *   they surface through the threshold alert and the hourly digest.
+ * - funnel-class (#194 wave 2): the storyteller/narration funnel
+ *   (`storyteller_shown`, `narration_*`) — engagement telemetry, not a
+ *   failure signal. Same counted-only handling as hiccup-class: never
+ *   forwarded individually (a 🚨 per narration would train readers to
+ *   ignore the channel). Routine funnel types surface via the hourly
+ *   digest only — they never trip the threshold alert (#311); the one
+ *   exception is `narration_failed`, whose spikes keep the threshold
+ *   alert. The tier name stays "hiccup" — it means counted-only.
  */
 export const CRASH_CLASS_TYPES = [
   "suspected_crash",
@@ -1334,18 +1464,43 @@ export const CRASH_CLASS_TYPES = [
 
 export const HICCUP_CLASS_TYPES = ["tile_failed", "webgl_context_lost"] as const;
 
+/** Funnel-class types (#194 wave 2): counted only, via the hiccup tier. */
+export const FUNNEL_CLASS_TYPES = [
+  "storyteller_shown",
+  "narration_started",
+  "narration_completed",
+  "narration_replayed",
+  "narration_failed",
+  "narration_dismissed",
+] as const;
+
+/**
+ * Routine funnel types exempt from the threshold alert (#311). They are
+ * engagement volume, not failures: paging Discord for them trained
+ * readers to ignore the channel. `narration_failed` is DELIBERATELY
+ * excluded — a spike in it is real signal, and the threshold alert is
+ * how it surfaces (see the funnel-class comment above and the README
+ * rationale). Exempt types are still counted and still appear in the
+ * hourly digest; only the threshold alert is suppressed.
+ */
+const THRESHOLD_EXEMPT_FUNNEL_TYPES = FUNNEL_CLASS_TYPES.filter(
+  (type) => type !== "narration_failed",
+);
+
 export type TelemetryTier = "crash" | "hiccup";
 
 /**
  * Classify an event type into its severity tier. Slice 2:
  * `recovery_outcome` is crash-class ONLY for `repeat_failure`; every
  * other outcome value — and a missing/invalid one — is counted-only
- * (fail closed, Manifest A6/F8). Non-outcome types are unchanged.
+ * (fail closed, Manifest A6/F8). Funnel-class types (#194 wave 2) are
+ * counted-only like hiccup-class. All other types are crash-class.
  */
 export function tierOf(type: CrashReportEventType, recoveryOutcome?: string): TelemetryTier {
   if (type === "recovery_outcome") {
     return recoveryOutcome === "repeat_failure" ? "crash" : "hiccup";
   }
+  if ((FUNNEL_CLASS_TYPES as readonly string[]).includes(type)) return "hiccup";
   return (HICCUP_CLASS_TYPES as readonly string[]).includes(type) ? "hiccup" : "crash";
 }
 
@@ -1382,6 +1537,8 @@ export interface CountBucket {
   groups: Record<string, number>;
   /** "<verdict>/<whyKey>" from the worker's re-derived verdict. */
   verdicts: Record<string, number>;
+  /** Severity grades (#345): "S1" | "S2a" | "S2b" | "S3" | "ungraded". */
+  severities: Record<string, number>;
   milestones: Record<string, number>;
   modes: Record<string, number>;
   /** Error names only — never messages. */
@@ -1407,6 +1564,7 @@ export function emptyBucket(): CountBucket {
     devices: {},
     groups: {},
     verdicts: {},
+    severities: {},
     milestones: {},
     modes: {},
     errorNames: {},
@@ -1468,6 +1626,7 @@ export function kvTelemetryStore(kv: KvLike): TelemetryStore {
             devices: parsed.devices ?? {},
             groups: parsed.groups ?? {},
             verdicts: parsed.verdicts ?? {},
+            severities: parsed.severities ?? {},
             milestones: parsed.milestones ?? {},
             modes: parsed.modes ?? {},
             errorNames: parsed.errorNames ?? {},
@@ -1561,6 +1720,11 @@ export async function recordTelemetry(
     bumpGroup(bucket.groups, groupKeyOf(event));
     const { verdict, whyKey } = deriveVerdict(event);
     bump(bucket.verdicts, `${verdict}/${whyKey}`);
+    // Counting (#345): the severity grade rides the same one
+    // derivation per request — severityOf re-derives the verdict
+    // internally, so the counted grade and the alert's grade are the
+    // same function of the same event.
+    bump(bucket.severities, severityKeyOf(event));
     bump(bucket.milestones, event.lastMilestone ?? "—");
     bump(bucket.modes, typeof event.mapMode === "string" && event.mapMode ? event.mapMode : "unknown");
     bump(bucket.errorNames, event.error ? truncate(event.error.name, 80) : "none");
@@ -1579,6 +1743,7 @@ export async function recordTelemetry(
     const alertId = `threshold:${event.type}:${hour}`;
     const perBuild = bucket.builds[event.buildId] ?? 0;
     if (
+      !(THRESHOLD_EXEMPT_FUNNEL_TYPES as readonly string[]).includes(event.type) &&
       !bucket.alerts.includes(alertId) &&
       (bucket.total >= cfg.perHour || perBuild >= cfg.perBuild)
     ) {
@@ -1670,14 +1835,53 @@ function renderTypeBlock(
     `${type} ${bucket.total} · first ${hhmmOf(bucket.firstAt)} · last ${hhmmOf(bucket.lastAt)}${late}${flag}\n` +
     `  builds: ${labelledTop(bucket.builds, 3)} · editions: ${labelledTop(bucket.editions, 2)} · regions: ${labelledTop(bucket.regions, 2)}\n` +
     `  groups: ${labelledTop(bucket.groups, 3)}\n` +
-    `  verdicts: ${labelledTop(bucket.verdicts, 3)} · modes: ${labelledTop(bucket.modes, 2)} · steps: ${labelledTop(bucket.milestones, 2)}${errorsPart}`
+    `  verdicts: ${labelledTop(bucket.verdicts, 3)} · severities: ${labelledTop(bucket.severities ?? {}, 5)} · modes: ${labelledTop(bucket.modes, 2)} · steps: ${labelledTop(bucket.milestones, 2)}${errorsPart}`
   );
+}
+
+/**
+ * The digest's one-line S1 gloss (#347 cure): the alert and email label
+ * player-left INFERRED in the same sentence as the grade, but a digest
+ * hour can carry bare `S1 ×N` counts with no such sentence — so when
+ * the hour counted any S1, the digest gains this line, exactly once.
+ */
+export const S1_DIGEST_GLOSS =
+  "S1 = player-left INFERRED from ≥3 unfinished boots with no clean boot — not observed.";
+
+/** Whether any type in the hour counted at least one S1 event. */
+function hourCountsS1(rows: Array<{ type: string; bucket: CountBucket }>): boolean {
+  return rows.some(({ bucket }) => (bucket.severities?.S1 ?? 0) > 0);
+}
+
+/** Severity rank for the digest lead (#345): worst grade first. */
+const SEVERITY_RANK: Record<string, number> = { S1: 0, S2a: 1, S2b: 2, S3: 3 };
+
+/** The worst graded severity counted anywhere in the hour, if any. */
+function worstSeverityOf(
+  rows: Array<{ type: string; bucket: CountBucket }>,
+): SeverityGrade | null {
+  let worst: SeverityGrade | null = null;
+  for (const { bucket } of rows) {
+    for (const key of Object.keys(bucket.severities ?? {})) {
+      const grade = key as SeverityGrade;
+      if (
+        (bucket.severities[key] ?? 0) > 0 &&
+        key in SEVERITY_RANK &&
+        (worst === null || SEVERITY_RANK[key] < SEVERITY_RANK[worst])
+      ) {
+        worst = grade;
+      }
+    }
+  }
+  return worst;
 }
 
 /**
  * The digest's priority line (§5.3): the highest-priority verdict in
  * the hour, with its top group. P1 needs a developer_needed verdict in
- * a bucket that also counted a gameplay last step.
+ * a bucket that also counted a gameplay last step. Issue #345: the
+ * line leads with the hour's worst severity grade when the hour
+ * counted any graded event (`S1 · P1 — …`), mirroring the alert.
  */
 function digestPriorityLine(
   rows: Array<{ type: string; bucket: CountBucket }>,
@@ -1732,7 +1936,9 @@ function digestPriorityLine(
     const [build, os, osMajor, deviceClass] = group[0].split("|");
     suffix = ` on ${build} · ${os} ${osMajor} · ${deviceClass}`;
   }
-  return `priority: ${chosen.code} — ${chosen.count}× ${chosen.key}${suffix}`;
+  const worst = worstSeverityOf(rows);
+  const lead = worst ? `${worst} · ` : "";
+  return `priority: ${lead}${chosen.code} — ${chosen.count}× ${chosen.key}${suffix}`;
 }
 
 /**
@@ -1786,6 +1992,9 @@ export async function renderDigest(
       `📊 Meridian telemetry — hourly digest\n` +
       `hour: ${from}–${to} UTC (receipt hour) (${grandTotal} events)\n` +
       (priority ? `${priority}\n` : "") +
+      // The S1 gloss rides directly under the priority lead — the
+      // first place S1 appears — and only in an hour that counted S1.
+      (hourCountsS1(rows) ? `${S1_DIGEST_GLOSS}\n` : "") +
       `\n` +
       lines.join("\n") +
       `\n\nalerts this hour: ${firedAlerts.length > 0 ? firedAlerts.map((t) => `${t} threshold`).join(", ") : "none"}`
@@ -1942,7 +2151,8 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
       }
     }
     // Hiccup-class: counted above; individual forwards are replaced by
-    // the threshold alert + hourly digest (no per-event pings).
+    // the threshold alert + hourly digest (no per-event pings) — except
+    // routine funnel types, which never trip the threshold alert (#311).
 
     if (attempts.length === 0) {
       // No-op mode: safe to deploy before secrets exist.

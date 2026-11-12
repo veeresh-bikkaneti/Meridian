@@ -36,7 +36,12 @@ export type FlagName =
   | "learningOutcomes"
   | "globeTierSplit"
   | "friendChallenges"
-  | "scoutUpgradeTrial";
+  | "scoutUpgradeTrial"
+  | "detectivePair"
+  | "hostsStaging"
+  | "watsonWalk"
+  | "detectiveFlank"
+  | "pair3d";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -66,6 +71,69 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // and every other path are untouched. Disarm by redeploying
   // public/flags.json with this flag false; no code change needed.
   scoutUpgradeTrial: true,
+  // Holmes & Watson detective pair in GeoDetective (BUILD-SCOPE §2.6).
+  // false = today's behavior: the pair is never mounted and the game is
+  // byte-identical. true = the pair mounts in LoopScreen. Ships dark;
+  // the flip is a separate owner-gated flags.json redeploy (U9).
+  detectivePair: false,
+  // Holmes & Watson staging rework (PR A, "Found at a Glance"): the
+  // bench scene before a case's questions load, the makeover sizes,
+  // the entry walk onto the map, and the gutter station. false =
+  // the kill-switch: redeploy flags.json with hostsStaging false
+  // and staging disappears — the pair renders its pre-A rigs (the
+  // makeover halo is gated by this flag in DetectivePair, cure C5,
+  // on every surface including the summary celebration). Two
+  // accepted permanent deltas apply in BOTH modes and are not
+  // undone by the kill-switch: (1) Holmes's dock mute alias is the
+  // restored full 70 px (PR A decision; PR C shipped a 44 px
+  // strip), and (2) LoopScreen mounts the detective host below
+  // the map section (mount order only — the host's fixed/portal
+  // surfaces are unaffected). Everything else with the flag off
+  // is the pair as PR #355–#358 shipped it. The baked default
+  // stays false so a failed flags fetch falls back to the shipped
+  // pair, never to half-proven staging.
+  hostsStaging: false,
+  // Holmes & Watson staging rework (PR B, "Watson Walks"): Watson
+  // walks the reserved gutter to each clue card and the clue read is
+  // released only when he arrives; "Let's find some clues" plays
+  // during the case-open walk only (session cap 2). A sub-flag of
+  // the staging: it acts only when detectivePair AND hostsStaging
+  // are also on. false = the kill-switch: redeploy flags.json with
+  // watsonWalk false and Watson teleports to the active card and
+  // reads at reveal again — exactly the PR A behaviour. The
+  // announcement render (fixed/lets-find-clues.mp3) stays in the
+  // audio manifest in both modes but is only ever enqueued while
+  // this flag is on. Two host fixes from PR A's carry-ins land with
+  // this PR and apply whenever hostsStaging is on, in BOTH watsonWalk
+  // modes — they are staging fixes, not walk behaviour, and the
+  // kill-switch does not undo them: (1) entryIntent is reset on case
+  // change, and (2) a resumed case no longer flashes the bench (its
+  // stage starts at "standing"). The baked default stays false so a
+  // failed flags fetch falls back to the PR A pair.
+  watsonWalk: false,
+  // Holmes's frozen flank (STAGE, pair pivot): Holmes stands at the
+  // clue card's left side — the frozen flank slot mirroring Watson's
+  // right station — through the guessing phases instead of docking /
+  // berthing on the map, and the Listen button plays the held clue
+  // sequence on the FIRST tap in tap mode. A sub-flag of the
+  // staging: it acts only when detectivePair AND hostsStaging are
+  // also on. false = the kill-switch: redeploy flags.json with
+  // detectiveFlank false and Holmes docks/berths as shipped —
+  // exactly the pre-STAGE staging behaviour. One piece is NOT behind
+  // this switch: the Listen first-tap cure (the gesture listener is
+  // armed at player creation) ships ungated and stays in both
+  // worlds — flag-off does not restore the old two-tap flow. The
+  // baked default stays false so a failed flags fetch falls back
+  // to the shipped pair.
+  detectiveFlank: false,
+  // 3D Holmes & Watson (owner request 2026-11-10, look approved from
+  // the Blender renders): the GLB pair is painted over the SVG rigs,
+  // which stay in the DOM as the fallback and the layout source. Acts
+  // only where the rigs render (detectivePair on), and only on devices
+  // that pass the pair3d gate (WebGL, not Save-Data, not low-memory).
+  // false = the kill-switch: the SVG rigs exactly as shipped. The baked
+  // default stays false so a failed flags fetch falls back to them.
+  pair3d: false,
 };
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;
