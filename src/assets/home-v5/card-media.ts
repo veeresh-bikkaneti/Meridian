@@ -18,6 +18,15 @@ import journalStillUrl from "./journal-tree.webp";
 import grownupsVideoUrl from "./grownups-film.mp4";
 import grownupsPosterUrl from "./grownups-poster.webp";
 import grownupsStillUrl from "./binoculars-hat.webp";
+import whyLearnVideoUrl from "./why-learn-film.mp4";
+import whyLearnPosterUrl from "./why-learn-poster.webp";
+import whyLearnStillUrl from "./why-learn-still.webp";
+import whyLearnTrailScoutVideoUrl from "./why-learn-film-trail-scout.mp4";
+import whyLearnTrailScoutPosterUrl from "./why-learn-poster-trail-scout.webp";
+import whyLearnTrailScoutStillUrl from "./why-learn-still-trail-scout.webp";
+import whyLearnAdultVideoUrl from "./why-learn-film-adult.mp4";
+import whyLearnAdultPosterUrl from "./why-learn-poster-adult.webp";
+import whyLearnAdultStillUrl from "./why-learn-still-adult.webp";
 
 /**
  * THE swap point for the five home cards' animated pictures:
@@ -406,4 +415,53 @@ export function coldtrailMediaForBand(_band: string | null | undefined) {
  */
 export function reviewMediaForBand(band: string | null | undefined) {
   return band === "7-10" ? REVIEW_FILM_TRAIL_SCOUT : REVIEW_FILM;
+}
+
+/**
+ * "Why Do We Learn This?" card (scale-play, behind the scalePlay
+ * flag). One film per age band, same five beats and timings in all
+ * three: Holmes's lens finds the hidden math in an everyday street
+ * (an arc, a right triangle, equal shares), then the "it's all
+ * connected" door montage hints at physics, chemistry and history.
+ *
+ * Provenance: rendered from scripts/why-learn-film/ (three.js scene,
+ * one band module each) on branch feat/why-learn-film-redo, SOURCE SHA
+ * TODO (v4). Only the encoded media come into this branch; the scripts
+ * and .film-work/ stay on the film branch. Every frame is a pure
+ * function of t, so a re-capture gives the same pixels.
+ * Encode: 1094x616, 24 fps, H.264, silent (-an), faststart,
+ * preset veryslow, CRF TODO. Loop: TODO (crossfade or natural).
+ * Bytes: 10-18 base TODO, 7-10 Trail Scout TODO, 18+ adult TODO
+ * (cap ~400 KB each). Poster = frame 0 (WebP 1094x616). Still = the
+ * settled shape beat at t=4 (WebP 1094x616), a different file from
+ * the poster on purpose: reduced-motion and Save-Data show it.
+ */
+export const WHY_LEARN_FILM = {
+  videoUrl: whyLearnVideoUrl,
+  posterUrl: whyLearnPosterUrl,
+  stillUrl: whyLearnStillUrl,
+} as const;
+
+export const WHY_LEARN_FILM_TRAIL_SCOUT = {
+  videoUrl: whyLearnTrailScoutVideoUrl,
+  posterUrl: whyLearnTrailScoutPosterUrl,
+  stillUrl: whyLearnTrailScoutStillUrl,
+} as const;
+
+export const WHY_LEARN_FILM_ADULT = {
+  videoUrl: whyLearnAdultVideoUrl,
+  posterUrl: whyLearnAdultPosterUrl,
+  stillUrl: whyLearnAdultStillUrl,
+} as const;
+
+/**
+ * The only band->media path for the Why Do We Learn This? card:
+ * "7-10" gets the Trail Scout film, "18+" the adult film, and every
+ * other value ("10-18", null, undefined, any other string) the base
+ * film. Exact match, fail closed.
+ */
+export function whyLearnMediaForBand(band: string | null | undefined) {
+  if (band === "7-10") return WHY_LEARN_FILM_TRAIL_SCOUT;
+  if (band === "18+") return WHY_LEARN_FILM_ADULT;
+  return WHY_LEARN_FILM;
 }

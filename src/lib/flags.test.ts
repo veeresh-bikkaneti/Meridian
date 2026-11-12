@@ -12,6 +12,7 @@ import {
   OBSERVABILITY_INGEST_HOSTS,
   loadFlags,
   resetFlags,
+  scaleParamOn,
   type FlagName,
   type LoadFlagsEnv,
 } from "./flags.ts";
@@ -586,5 +587,27 @@ describe("contactEndpoint (grown-ups contact form, /api/contact)", () => {
     const b = fakeFetch(okResponse({ flags: {}, contactEndpoint: "http://contact.example.com/contact" }));
     await loadFlags({ ...BASE, fetch: b.fn });
     assert.equal(getContactEndpoint(), null);
+  });
+});
+
+describe("scalePlay flag (Why Do We Learn This? card)", () => {
+  it("ships dark: the baked default is false", () => {
+    assert.equal(FLAG_DEFAULTS.scalePlay, false);
+    resetFlags();
+    assert.equal(isEnabled("scalePlay"), false, "no window, no override -> off");
+  });
+
+  it("?scale=1 is the only URL turn-on", () => {
+    assert.equal(scaleParamOn("?scale=1"), true);
+    assert.equal(scaleParamOn("?foo=2&scale=1"), true);
+    for (const s of ["", "?scale=0", "?scale=true", "?scale=", "?scale=11", "?Scale=1", "?scales=1"]) {
+      assert.equal(scaleParamOn(s), false, s);
+    }
+  });
+
+  it("the URL param touches no other flag", () => {
+    const src = readFileSync(new URL("./flags.ts", import.meta.url), "utf8");
+    assert.equal((src.match(/scaleParamOn\(\)/g) || []).length, 1);
+    assert.ok(src.includes('if (flag === "scalePlay" && scaleParamOn()) return true;'));
   });
 });
