@@ -17,6 +17,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
+import * as B710 from "./band-7-10.js";
 
 const W = 1094, H = 616, DURATION = 10.0, FPS = 24, SS = 2; // SS: render-target supersampling, so the lens magnifies crisply
 const q = new URLSearchParams(location.search);
@@ -523,6 +524,7 @@ async function build() {
   const table = toonify(P["cafe-table"]);
   table.position.copy(SET.table);
   scene.add(table);
+  S.table = table;
   // A café chair outside the shopfront, for the street-life feel.
   const chair = new THREE.Group();
   mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.04, 16), 0x3e9c8c, [0, 0.46, 0], { parent: chair });
@@ -597,6 +599,7 @@ async function build() {
 
   buildDoorRow();
   buildLines();
+  if (BAND === "7-10") S.b = B710.setup({ THREE, scene, linesScene, S, mesh, SET, ramp, smooth, lerp, clamp01, arcAt, D, applyPose, mixPose, POSES, CATCH, HOLD });
   if (B1018) calibrateDoor();
 }
 
@@ -872,6 +875,7 @@ function updateScene(t) {
     S.bowl[2].position.copy(S.bowlHome[2]);
   }
   if (BAND !== "18+") updatePie(t, B1018 ? smooth(ramp(t, 4.75, 5.4)) * (1 - smooth(ramp(t, 6.95, 7.5))) : kLift);
+  if (S.b) S.b.update(t);
   if (S.win) updateDoor(t);
   if (S.clouds) S.clouds.children.forEach((c) => { c.userData.x0 ??= c.position.x; c.position.x = c.userData.x0 + Math.sin(t * Math.PI / 5) * c.userData.speed * 4; });
 }
@@ -1065,8 +1069,8 @@ function renderFrame(t) {
   }
   const shapeTarget = toScreen(S.shapeFocus), shapeR = pxRadius(S.shapeFocus, S.shapeR);
   const pieC = new THREE.Vector3(); S.pie.getWorldPosition(pieC);
-  const splitTarget = BAND === "18+" ? toScreen(S.splitFocus) : toScreen(pieC.clone().add(B1018 ? new THREE.Vector3(0.06, 0.1, 0) : new THREE.Vector3(0.1, 0.18, 0)));
-  const splitR = BAND === "18+" ? pxRadius(S.splitFocus, S.splitR) : pxRadius(pieC, B1018 ? 0.78 : 0.84);
+  const splitTarget = BAND === "18+" ? toScreen(S.splitFocus) : S.b ? dockC.clone() : toScreen(pieC.clone().add(B1018 ? new THREE.Vector3(0.06, 0.1, 0) : new THREE.Vector3(0.1, 0.18, 0)));
+  const splitR = BAND === "18+" ? pxRadius(S.splitFocus, S.splitR) : S.b ? dockR : pxRadius(pieC, B1018 ? 0.78 : 0.84);
   const lift = ramp(t, 1.0, 1.45);
   tgt = dockC.clone().lerp(arcTarget, lift); R = lerp(dockR, arcR, lift);
   const toShape = ramp(t, 3.0, 3.45);
@@ -1083,7 +1087,8 @@ function renderFrame(t) {
   tgt.lerp(doorPos, toDoor); R = lerp(R, doorR, toDoor);
   const home = ramp(t, 9.0, 9.55);
   tgt.lerp(dockC, home); R = lerp(R, dockR, home);
-  const on = ramp(t, 1.0, 1.25) * (1 - ramp(t, 9.4, 9.65));
+  // 7-10: the lens rests in Holmes's hand while the shares are laid out.
+  const on = ramp(t, 1.0, 1.25) * (1 - ramp(t, 9.4, 9.65)) * (S.b ? 1 - ramp(t, 4.85, 5.1) * (1 - ramp(t, 6.6, 6.95)) : 1);
   const ms = 1.16 + (B1018 ? -0.08 : 0.14) * lensKind(t, "split") + 0.24 * lensKind(t, "door");
   // One lens: the travelling view grows out of the glass in Holmes's
   // hand, so the prop is hidden while the view is out (only the hand
@@ -1107,6 +1112,7 @@ function renderFrame(t) {
   reveal(ln.ring, (t - 5.45) / 0.35, fade * 0.8);
 
   const handleK = B1018 ? ramp(t, 7.3, 7.45) * (1 - home) : 0;
+  if (S.b) S.b.lines(t);
   const u = comp.uniforms;
   u.handC.value.copy(toScreen(handW)); u.handle.value = handleK;
   u.lensC.value.copy(tgt); u.lensR.value = R; u.lensOn.value = on; u.mag.value = ms;
