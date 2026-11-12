@@ -35,25 +35,23 @@ export const cartsPredictSeeScene: PredictSeeScene = {
     if (tier === "lite") {
       el.innerHTML = `
         <div style="padding: 16px; background: rgba(16, 34, 42, 0.8); border: 1px solid rgba(232, 182, 76, 0.3); border-radius: 8px; color: #f0e7d2; font-family: Karla, sans-serif;">
-          <div style="margin-bottom: 12px; position: relative; height: 36px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
-            <div id="cart-a-lite" style="position: absolute; left: 0; top: 4px; width: 48px; height: 28px; background: #e8b64c; color: #070e12; font-weight: bold; font-size: 11px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);">A</div>
-            <div style="position: absolute; right: 8px; top: 6px; color: #e8b64c; font-size: 14px;">🏁</div>
-          </div>
-          <div style="position: relative; height: 36px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
-            <div id="cart-b-lite" style="position: absolute; left: 0; top: 4px; width: 48px; height: 28px; background: #5db7e8; color: #070e12; font-weight: bold; font-size: 11px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);">B</div>
-            <div style="position: absolute; right: 8px; top: 6px; color: #5db7e8; font-size: 14px;">🏁</div>
+          <div style="position: relative; height: 80px; background: #0c181f; border-radius: 6px; overflow: hidden; margin-bottom: 8px;">
+            <div id="lite-cart-a" style="position: absolute; top: 12px; left: 10px; width: 44px; height: 24px; background: #e8b64c; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; color: #10222a; transition: left 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);">
+              Cart A
+            </div>
+            <div id="lite-cart-b" style="position: absolute; top: 44px; left: 10px; width: 44px; height: 24px; background: #5db7e8; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; color: #10222a; transition: left 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);">
+              Cart B
+            </div>
+            <div style="position: absolute; right: 15px; top: 0; bottom: 0; width: 4px; background: repeating-linear-gradient(to bottom, #e8b64c, #e8b64c 8px, #10222a 8px, #10222a 16px);"></div>
           </div>
         </div>
       `;
       return {
         play: async () => {
-          const cartA = el.querySelector("#cart-a-lite") as HTMLElement | null;
-          const cartB = el.querySelector("#cart-b-lite") as HTMLElement | null;
-          if (cartA && cartB) {
-            cartA.style.transform = "translateX(280px)";
-            cartB.style.transform = "translateX(93px)";
-          }
-          await new Promise((r) => setTimeout(r, 1300));
+          const a = el.querySelector("#lite-cart-a") as HTMLElement | null;
+          const b = el.querySelector("#lite-cart-b") as HTMLElement | null;
+          if (a) a.style.left = "calc(100% - 65px)";
+          if (b) b.style.left = "calc(33% - 15px)";
         },
         dispose: () => {
           el.innerHTML = "";
@@ -61,43 +59,49 @@ export const cartsPredictSeeScene: PredictSeeScene = {
       };
     }
 
-    // Full 3D WebGL tier with dynamic Three.js
+    // Full 3D Three.js simulation with spinning wheels and particle celebration
     const THREE = await import("three");
+
     let disposed = false;
     let animFrameId: number | null = null;
+    let playAnimId: number | null = null;
 
-    const width = el.clientWidth || 480;
-    const height = 220;
+    const width = el.clientWidth || 400;
+    const height = 180;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 500);
-    camera.position.set(0, 32, 64);
+    scene.background = new THREE.Color(0x0c181f);
+
+    const camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 1000);
+    camera.position.set(0, 22, 42);
     camera.lookAt(0, 0, 0);
 
     let renderer: THREE.WebGLRenderer | null = null;
     try {
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(width, height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-      renderer.setClearColor(0x000000, 0);
       el.appendChild(renderer.domElement);
     } catch {
       return { play: async () => {}, dispose: () => {} };
     }
 
-    // Ambient + directional light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xfff1da, 0.9);
     scene.add(ambientLight);
-
-    const dirLight = new THREE.DirectionalLight(0xe8b64c, 1.2);
-    dirLight.position.set(20, 40, 20);
+    const dirLight = new THREE.DirectionalLight(0xffe9c4, 1.4);
+    dirLight.position.set(10, 25, 20);
     scene.add(dirLight);
 
-    // Track platform
-    const trackWidth = 72;
-    const trackGeo = new THREE.BoxGeometry(trackWidth, 1, 24);
-    const trackMat = new THREE.MeshBasicMaterial({ color: 0x10222a });
+    // Track surface
+    const trackWidth = 70;
+    const trackGeo = new THREE.PlaneGeometry(trackWidth, 22);
+    const trackMat = new THREE.MeshStandardMaterial({
+      color: 0x142b35,
+      roughness: 0.8,
+    });
     const trackMesh = new THREE.Mesh(trackGeo, trackMat);
+    trackMesh.rotation.x = -Math.PI / 2;
     trackMesh.position.y = -0.5;
     scene.add(trackMesh);
 
@@ -110,42 +114,139 @@ export const cartsPredictSeeScene: PredictSeeScene = {
       scene.add(railMesh);
     });
 
-    // Finish line (checkered / bright brass post)
-    const finishGeo = new THREE.BoxGeometry(0.8, 6, 24);
-    const finishMat = new THREE.MeshBasicMaterial({ color: 0xe8b64c });
+    // Finish line structure with glowing banner
+    const finishLineX = trackWidth / 2 - 5;
+    const finishGeo = new THREE.BoxGeometry(0.8, 0.2, 22);
+    const finishMat = new THREE.MeshStandardMaterial({
+      color: 0xe8b64c,
+      emissive: 0xe8b64c,
+      emissiveIntensity: 0.5,
+    });
     const finishMesh = new THREE.Mesh(finishGeo, finishMat);
-    finishMesh.position.set(trackWidth / 2 - 4, 3, 0);
+    finishMesh.position.set(finishLineX, 0.1, 0);
     scene.add(finishMesh);
 
-    // Cart A (Lane 1, z = -6) - moves 3 tiles / step
-    const cartAGeo = new THREE.BoxGeometry(6, 4, 4);
-    const cartAMat = new THREE.MeshStandardMaterial({ color: 0xe8b64c, roughness: 0.3 });
-    const cartA = new THREE.Mesh(cartAGeo, cartAMat);
+    const finishPostGeo = new THREE.CylinderGeometry(0.5, 0.5, 10);
+    const postMat = new THREE.MeshStandardMaterial({ color: 0xe8b64c, metalness: 0.6 });
+    [-10, 10].forEach((z) => {
+      const post = new THREE.Mesh(finishPostGeo, postMat);
+      post.position.set(finishLineX, 5, z);
+      scene.add(post);
+    });
+
+    const bannerGeo = new THREE.BoxGeometry(0.6, 2, 21);
+    const bannerMat = new THREE.MeshStandardMaterial({
+      color: 0xe8b64c,
+      emissive: 0xb8932f,
+      emissiveIntensity: 0.4,
+    });
+    const bannerMesh = new THREE.Mesh(bannerGeo, bannerMat);
+    bannerMesh.position.set(finishLineX, 9, 0);
+    scene.add(bannerMesh);
+
+    // Helper to create cart with rotating wheels
+    const wheelGeo = new THREE.CylinderGeometry(1.2, 1.2, 0.6, 16);
+    wheelGeo.rotateX(Math.PI / 2);
+    const wheelMat = new THREE.MeshStandardMaterial({ color: 0x243b44, metalness: 0.8 });
+
+    function createCart(bodyColor: number) {
+      const group = new THREE.Group();
+      const bodyGeo = new THREE.BoxGeometry(6, 3, 4);
+      const bodyMat = new THREE.MeshStandardMaterial({ color: bodyColor, roughness: 0.3, metalness: 0.2 });
+      const body = new THREE.Mesh(bodyGeo, bodyMat);
+      body.position.y = 1.6;
+      group.add(body);
+
+      const wheels: THREE.Mesh[] = [];
+      const wheelOffsets = [
+        [-2.0, 0.6, -2.2],
+        [2.0, 0.6, -2.2],
+        [-2.0, 0.6, 2.2],
+        [2.0, 0.6, 2.2],
+      ];
+
+      wheelOffsets.forEach(([wx, wy, wz]) => {
+        const wheel = new THREE.Mesh(wheelGeo, wheelMat);
+        wheel.position.set(wx, wy, wz);
+        group.add(wheel);
+        wheels.push(wheel);
+      });
+
+      return { group, body, wheels, bodyGeo, bodyMat };
+    }
+
     const startX = -trackWidth / 2 + 6;
-    cartA.position.set(startX, 2.5, -6);
+
+    // Cart A (Lane 1, z = -6) - 3 tiles/step (Gold)
+    const cartAData = createCart(0xe8b64c);
+    const cartA = cartAData.group;
+    cartA.position.set(startX, 0.8, -6);
     scene.add(cartA);
 
-    // Cart B (Lane 2, z = 6) - moves 1 tile / step
-    const cartBGeo = new THREE.BoxGeometry(6, 4, 4);
-    const cartBMat = new THREE.MeshStandardMaterial({ color: 0x5db7e8, roughness: 0.3 });
-    const cartB = new THREE.Mesh(cartBGeo, cartBMat);
-    cartB.position.set(startX, 2.5, 6);
+    // Cart B (Lane 2, z = 6) - 1 tile/step (Blue)
+    const cartBData = createCart(0x5db7e8);
+    const cartB = cartBData.group;
+    cartB.position.set(startX, 0.8, 6);
     scene.add(cartB);
+
+    // Celebration burst particles at finish line
+    const particleCount = 45;
+    const particlePositions = new Float32Array(particleCount * 3);
+    const particleVelocities: THREE.Vector3[] = [];
+    for (let i = 0; i < particleCount; i++) {
+      particlePositions[i * 3] = finishLineX;
+      particlePositions[i * 3 + 1] = 6;
+      particlePositions[i * 3 + 2] = -6;
+      particleVelocities.push(
+        new THREE.Vector3(
+          (Math.random() - 0.5) * 8,
+          Math.random() * 8 + 3,
+          (Math.random() - 0.5) * 8,
+        ),
+      );
+    }
+    const particleGeo = new THREE.BufferGeometry();
+    particleGeo.setAttribute("position", new THREE.BufferAttribute(particlePositions, 3));
+    const particleMat = new THREE.PointsMaterial({
+      color: 0xffe9c4,
+      size: 1.6,
+      transparent: true,
+      opacity: 0,
+    });
+    const particles = new THREE.Points(particleGeo, particleMat);
+    scene.add(particles);
+
+    let celebrating = false;
 
     function animate() {
       if (disposed || !renderer) return;
       animFrameId = requestAnimationFrame(animate);
+
+      if (celebrating) {
+        particleMat.opacity = Math.max(0, particleMat.opacity - 0.015);
+        const positions = particleGeo.attributes.position.array as Float32Array;
+        for (let i = 0; i < particleCount; i++) {
+          positions[i * 3] += particleVelocities[i].x * 0.03;
+          positions[i * 3 + 1] += particleVelocities[i].y * 0.03;
+          positions[i * 3 + 2] += particleVelocities[i].z * 0.03;
+          particleVelocities[i].y -= 0.12; // gravity
+        }
+        particleGeo.attributes.position.needsUpdate = true;
+      }
+
       renderer.render(scene, camera);
     }
     animate();
 
     return {
       play: async () => {
-        const targetA = trackWidth / 2 - 8;
+        const targetA = finishLineX - 4;
         const targetB = startX + (targetA - startX) / 3;
 
         const duration = 1600;
         const startTime = performance.now();
+        let lastAx = startX;
+        let lastBx = startX;
 
         await new Promise<void>((resolve) => {
           function step(now: number) {
@@ -156,24 +257,41 @@ export const cartsPredictSeeScene: PredictSeeScene = {
             const elapsed = now - startTime;
             const progress = Math.min(1, elapsed / duration);
 
-            // Ease soft-land
+            // Ease soft-land curve
             const ease = 1 - Math.pow(1 - progress, 3);
 
-            cartA.position.x = startX + (targetA - startX) * ease;
-            cartB.position.x = startX + (targetB - startX) * ease;
+            const newAx = startX + (targetA - startX) * ease;
+            const newBx = startX + (targetB - startX) * ease;
+
+            // Spin wheels proportionally to movement distance
+            const deltaA = newAx - lastAx;
+            const deltaB = newBx - lastBx;
+            cartAData.wheels.forEach((w) => (w.rotation.x -= deltaA / 1.2));
+            cartBData.wheels.forEach((w) => (w.rotation.x -= deltaB / 1.2));
+
+            cartA.position.x = newAx;
+            cartB.position.x = newBx;
+
+            lastAx = newAx;
+            lastBx = newBx;
 
             if (progress < 1) {
-              requestAnimationFrame(step);
+              playAnimId = requestAnimationFrame(step);
             } else {
+              // Trigger finish celebration starburst
+              celebrating = true;
+              particleMat.opacity = 1.0;
               resolve();
             }
           }
-          requestAnimationFrame(step);
+          playAnimId = requestAnimationFrame(step);
         });
       },
       dispose: () => {
         disposed = true;
         if (animFrameId !== null) cancelAnimationFrame(animFrameId);
+        if (playAnimId !== null) cancelAnimationFrame(playAnimId);
+
         if (renderer) {
           if (renderer.domElement.parentElement) {
             renderer.domElement.parentElement.removeChild(renderer.domElement);
@@ -181,15 +299,26 @@ export const cartsPredictSeeScene: PredictSeeScene = {
           renderer.dispose();
           renderer.forceContextLoss();
         }
+
         trackGeo.dispose();
         trackMat.dispose();
         railMat.dispose();
         finishGeo.dispose();
         finishMat.dispose();
-        cartAGeo.dispose();
-        cartAMat.dispose();
-        cartBGeo.dispose();
-        cartBMat.dispose();
+        finishPostGeo.dispose();
+        postMat.dispose();
+        bannerGeo.dispose();
+        bannerMat.dispose();
+
+        cartAData.bodyGeo.dispose();
+        cartAData.bodyMat.dispose();
+        cartBData.bodyGeo.dispose();
+        cartBData.bodyMat.dispose();
+        wheelGeo.dispose();
+        wheelMat.dispose();
+
+        particleGeo.dispose();
+        particleMat.dispose();
       },
     };
   },

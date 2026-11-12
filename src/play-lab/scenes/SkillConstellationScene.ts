@@ -37,13 +37,32 @@ export async function mountSkillConstellation(
     container.appendChild(renderer.domElement);
   } catch {
     return {
-      updateAgeGroup: () => {},
-      selectItem: () => {},
-      dispose: () => {},
+      updateAgeGroup: () => { },
+      selectItem: () => { },
+      dispose: () => { },
     };
   }
 
-  // Node layout: arrange items in an aesthetically spaced 3D cloud
+  // Deep ambient starfield
+  const starCount = 350;
+  const starPositions = new Float32Array(starCount * 3);
+  for (let i = 0; i < starCount; i++) {
+    starPositions[i * 3] = (Math.random() - 0.5) * 420;
+    starPositions[i * 3 + 1] = (Math.random() - 0.5) * 420;
+    starPositions[i * 3 + 2] = (Math.random() - 0.5) * 300 - 40;
+  }
+  const starGeo = new THREE.BufferGeometry();
+  starGeo.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
+  const starMat = new THREE.PointsMaterial({
+    color: 0x9db3ad,
+    size: 1.2,
+    transparent: true,
+    opacity: 0.5,
+  });
+  const starPoints = new THREE.Points(starGeo, starMat);
+  scene.add(starPoints);
+
+  // Node layout: arrange items in an aesthetically spaced 3D celestial cluster
   const nodesGroup = new THREE.Group();
   scene.add(nodesGroup);
 
@@ -53,7 +72,7 @@ export async function mountSkillConstellation(
   // Deterministic positions based on item index and buildsOn hierarchy
   const count = items.length;
   items.forEach((item, index) => {
-    // Spherical / spiral arrangement with organic depth
+    // Spherical spiral arrangement with organic depth
     const phi = Math.acos(-1 + (2 * index) / Math.max(1, count - 1));
     const theta = Math.sqrt(count * Math.PI) * phi;
     const radius = 60 + (index % 3) * 12;
@@ -117,32 +136,66 @@ export async function mountSkillConstellation(
     nodesGroup.add(lineSegments);
   }
 
-  // Raycaster for star taps
+  // Interactive rotation with smooth inertia & drag threshold
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2();
 
-  function onPointerDown(event: MouseEvent | TouchEvent) {
+  let isDragging = false;
+  let previousPointer = { x: 0, y: 0 };
+  let dragDistance = 0;
+  let rotationVelocity = { x: 0.0006, y: 0.0015 };
+
+  function onPointerDown(event: PointerEvent) {
     if (!renderer) return;
-    const rect = renderer.domElement.getBoundingClientRect();
-    const clientX = "touches" in event ? event.touches[0].clientX : event.clientX;
-    const clientY = "touches" in event ? event.touches[0].clientY : event.clientY;
+    isDragging = true;
+    dragDistance = 0;
+    previousPointer = { x: event.clientX, y: event.clientY };
+  }
 
-    mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+  function onPointerMove(event: PointerEvent) {
+    if (!isDragging) return;
+    const deltaX = event.clientX - previousPointer.x;
+    const deltaY = event.clientY - previousPointer.y;
+    dragDistance += Math.hypot(deltaX, deltaY);
 
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(nodeMeshes);
+    nodesGroup.rotation.y += deltaX * 0.004;
+    nodesGroup.rotation.x += deltaY * 0.004;
 
-    if (intersects.length > 0) {
-      const hit = intersects[0].object as THREE.Mesh;
-      const clickedItem = hit.userData.item as UnitItem;
-      if (clickedItem) {
-        onItemSelect(clickedItem);
+    rotationVelocity = {
+      x: deltaY * 0.0008,
+      y: deltaX * 0.0008,
+    };
+
+    previousPointer = { x: event.clientX, y: event.clientY };
+  }
+
+  function onPointerUp(event: PointerEvent) {
+    if (!renderer) return;
+    isDragging = false;
+
+    // Only select on tap/click if drag threshold <= 5px
+    if (dragDistance <= 5) {
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(nodeMeshes);
+
+      if (intersects.length > 0) {
+        const hit = intersects[0].object as THREE.Mesh;
+        const clickedItem = hit.userData.item as UnitItem;
+        if (clickedItem) {
+          onItemSelect(clickedItem);
+        }
       }
     }
   }
 
-  renderer.domElement.addEventListener("click", onPointerDown);
+  renderer.domElement.style.touchAction = "none";
+  renderer.domElement.addEventListener("pointerdown", onPointerDown);
+  window.addEventListener("pointermove", onPointerMove);
+  window.addEventListener("pointerup", onPointerUp);
 
   // Resize handler
   function handleResize() {
@@ -156,13 +209,38 @@ export async function mountSkillConstellation(
 
   window.addEventListener("resize", handleResize);
 
-  // Animation loop with subtle celestial drift
+  // Animation loop with celestial drift and harmonic pulses
+  let clock = 0;
   function animate() {
     if (disposed || !renderer) return;
     animFrameId = requestAnimationFrame(animate);
+    clock += 0.02;
 
-    nodesGroup.rotation.y += 0.0018;
-    nodesGroup.rotation.x += 0.0007;
+    if (!isDragging) {
+      nodesGroup.rotation.y += rotationVelocity.y;
+      nodesGroup.rotation.x += rotationVelocity.x;
+      // Damping towards nominal drift
+      rotationVelocity.y = rotationVelocity.y * 0.95 + 0.0015 * 0.05;
+      rotationVelocity.x = rotationVelocity.x * 0.95 + 0.0006 * 0.05;
+    }
+
+    // Slow ambient starfield drift
+    starPoints.rotation.y -= 0.00025;
+
+    // Harmonic pulse on active age-band stars
+    nodeMeshes.forEach((mesh, idx) => {
+      const item = mesh.userData.item as UnitItem;
+      const isMatch = item.group === activeAgeGroup || activeAgeGroup === "18+";
+      const isSelected = item.id === selectedItemId;
+
+      if (isSelected) {
+        const scale = 1.5 + 0.12 * Math.sin(clock * 3.5);
+        mesh.scale.set(scale, scale, scale);
+      } else if (isMatch) {
+        const pulse = 1.1 + 0.06 * Math.sin(clock * 2 + idx * 0.35);
+        mesh.scale.set(pulse, pulse, pulse);
+      }
+    });
 
     renderer.render(scene, camera);
   }
@@ -204,15 +282,20 @@ export async function mountSkillConstellation(
       disposed = true;
       if (animFrameId !== null) cancelAnimationFrame(animFrameId);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerUp);
 
       if (renderer) {
-        renderer.domElement.removeEventListener("click", onPointerDown);
+        renderer.domElement.removeEventListener("pointerdown", onPointerDown);
         if (renderer.domElement.parentElement) {
           renderer.domElement.parentElement.removeChild(renderer.domElement);
         }
         renderer.dispose();
         renderer.forceContextLoss();
       }
+
+      starGeo.dispose();
+      starMat.dispose();
 
       nodeMeshes.forEach((mesh) => {
         mesh.geometry.dispose();
@@ -226,4 +309,3 @@ export async function mountSkillConstellation(
     },
   };
 }
-

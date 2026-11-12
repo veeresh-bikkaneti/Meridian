@@ -19,7 +19,7 @@ export async function mountMiniJournalGlobe(
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-  camera.position.set(0, 10, 110);
+  camera.position.set(0, 8, 115);
 
   let renderer: THREE.WebGLRenderer | null = null;
   try {
@@ -40,7 +40,7 @@ export async function mountMiniJournalGlobe(
   const sphereMat = new THREE.MeshBasicMaterial({
     color: 0x10222a,
     transparent: true,
-    opacity: 0.9,
+    opacity: 0.92,
   });
   const sphereMesh = new THREE.Mesh(sphereGeo, sphereMat);
   globeGroup.add(sphereMesh);
@@ -50,22 +50,33 @@ export async function mountMiniJournalGlobe(
     color: 0xe8b64c,
     wireframe: true,
     transparent: true,
-    opacity: 0.14,
+    opacity: 0.15,
   });
   const wireMesh = new THREE.Mesh(sphereGeo, wireMat);
   globeGroup.add(wireMesh);
 
-  // Equator ring
-  const ringGeo = new THREE.RingGeometry(35.2, 35.6, 64);
+  // Equator orbital brass ring
+  const ringGeo = new THREE.RingGeometry(35.2, 35.8, 64);
   const ringMat = new THREE.MeshBasicMaterial({
     color: 0xe8b64c,
     side: THREE.DoubleSide,
     transparent: true,
-    opacity: 0.28,
+    opacity: 0.3,
   });
   const ringMesh = new THREE.Mesh(ringGeo, ringMat);
   ringMesh.rotation.x = Math.PI / 2;
   globeGroup.add(ringMesh);
+
+  // Atmospheric glow rim
+  const atmoGeo = new THREE.RingGeometry(36.0, 38.5, 64);
+  const atmoMat = new THREE.MeshBasicMaterial({
+    color: 0x5db7e8,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.18,
+  });
+  const atmoMesh = new THREE.Mesh(atmoGeo, atmoMat);
+  globeGroup.add(atmoMesh);
 
   // Pins for journals
   const pinMeshes: THREE.Mesh[] = [];
@@ -82,51 +93,120 @@ export async function mountMiniJournalGlobe(
     const z = radius * Math.sin(phi) * Math.sin(theta);
     const y = radius * Math.cos(phi);
 
-    const pinGeo = new THREE.SphereGeometry(1.8, 12, 12);
+    const pinGeo = new THREE.SphereGeometry(1.9, 12, 12);
     const isSpecial = clip.id === "great-leaders:lincoln-memorial";
     const pinMat = new THREE.MeshBasicMaterial({
       color: isSpecial ? 0xffffff : 0xe8b64c,
     });
     const pinMesh = new THREE.Mesh(pinGeo, pinMat);
     pinMesh.position.set(x, y, z);
-    pinMesh.userData = { clip };
+    pinMesh.userData = { clip, isSpecial, basePos: new THREE.Vector3(x, y, z) };
 
     globeGroup.add(pinMesh);
     pinMeshes.push(pinMesh);
   });
 
-  // Raycaster for pin clicks
+  // Inertial drag-to-spin and tap raycasting
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2();
 
-  function onPointerDown(event: MouseEvent | TouchEvent) {
+  let isDragging = false;
+  let dragDistance = 0;
+  let previousPointer = { x: 0, y: 0 };
+  let spinVelocity = { x: 0, y: 0.003 };
+
+  function onPointerDown(event: PointerEvent) {
     if (!renderer) return;
-    const rect = renderer.domElement.getBoundingClientRect();
-    const clientX = "touches" in event ? event.touches[0].clientX : event.clientX;
-    const clientY = "touches" in event ? event.touches[0].clientY : event.clientY;
+    isDragging = true;
+    dragDistance = 0;
+    previousPointer = { x: event.clientX, y: event.clientY };
+  }
 
-    mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
-    mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+  function onPointerMove(event: PointerEvent) {
+    if (!isDragging) return;
+    const deltaX = event.clientX - previousPointer.x;
+    const deltaY = event.clientY - previousPointer.y;
+    dragDistance += Math.hypot(deltaX, deltaY);
 
-    raycaster.setFromCamera(mouse, camera);
-    const intersects = raycaster.intersectObjects(pinMeshes);
+    globeGroup.rotation.y += deltaX * 0.006;
+    globeGroup.rotation.x += deltaY * 0.006;
 
-    if (intersects.length > 0) {
-      const hit = intersects[0].object as THREE.Mesh;
-      const clickedClip = hit.userData.clip as JournalClip;
-      if (clickedClip) {
-        onClipSelect(clickedClip);
+    spinVelocity = {
+      x: deltaY * 0.001,
+      y: deltaX * 0.001,
+    };
+
+    previousPointer = { x: event.clientX, y: event.clientY };
+  }
+
+  function onPointerUp(event: PointerEvent) {
+    if (!renderer) return;
+    isDragging = false;
+
+    // Only select pin on true tap (threshold <= 5px)
+    if (dragDistance <= 5) {
+      const rect = renderer.domElement.getBoundingClientRect();
+      mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(pinMeshes);
+
+      if (intersects.length > 0) {
+        const hit = intersects[0].object as THREE.Mesh;
+        const clickedClip = hit.userData.clip as JournalClip;
+        if (clickedClip) {
+          onClipSelect(clickedClip);
+        }
       }
     }
   }
 
-  renderer.domElement.addEventListener("click", onPointerDown);
+  renderer.domElement.style.touchAction = "none";
+  renderer.domElement.addEventListener("pointerdown", onPointerDown);
+  window.addEventListener("pointermove", onPointerMove);
+  window.addEventListener("pointerup", onPointerUp);
 
+  // Resize handler
+  function handleResize() {
+    if (!renderer || disposed) return;
+    const w = container.clientWidth || 320;
+    const h = container.clientHeight || 320;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  }
+
+  window.addEventListener("resize", handleResize);
+
+  let clock = 0;
   function animate() {
     if (disposed || !renderer) return;
     animFrameId = requestAnimationFrame(animate);
+    clock += 0.02;
 
-    globeGroup.rotation.y += 0.0035;
+    if (!isDragging) {
+      globeGroup.rotation.y += spinVelocity.y;
+      globeGroup.rotation.x += spinVelocity.x;
+
+      // Inertia damping towards nominal slow spin
+      spinVelocity.y = spinVelocity.y * 0.95 + 0.0028 * 0.05;
+      spinVelocity.x = spinVelocity.x * 0.95;
+    }
+
+    // Keep atmosphere facing camera
+    atmoMesh.quaternion.copy(camera.quaternion);
+
+    // Pulse playable/highlighted pins
+    pinMeshes.forEach((mesh, idx) => {
+      if (mesh.userData.isSpecial) {
+        const pulse = 1.2 + 0.25 * Math.sin(clock * 3.5);
+        mesh.scale.set(pulse, pulse, pulse);
+      } else {
+        const pulse = 1.0 + 0.08 * Math.sin(clock * 2 + idx);
+        mesh.scale.set(pulse, pulse, pulse);
+      }
+    });
 
     renderer.render(scene, camera);
   }
@@ -137,9 +217,12 @@ export async function mountMiniJournalGlobe(
     dispose: () => {
       disposed = true;
       if (animFrameId !== null) cancelAnimationFrame(animFrameId);
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerup", onPointerUp);
 
       if (renderer) {
-        renderer.domElement.removeEventListener("click", onPointerDown);
+        renderer.domElement.removeEventListener("pointerdown", onPointerDown);
         if (renderer.domElement.parentElement) {
           renderer.domElement.parentElement.removeChild(renderer.domElement);
         }
@@ -152,6 +235,8 @@ export async function mountMiniJournalGlobe(
       wireMat.dispose();
       ringGeo.dispose();
       ringMat.dispose();
+      atmoGeo.dispose();
+      atmoMat.dispose();
 
       pinMeshes.forEach((mesh) => {
         mesh.geometry.dispose();
@@ -160,4 +245,3 @@ export async function mountMiniJournalGlobe(
     },
   };
 }
-

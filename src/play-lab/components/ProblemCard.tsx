@@ -27,7 +27,16 @@ export function ProblemCard({
 
   // Predict-see scene mount container
   const sceneMountRef = useRef<HTMLDivElement | null>(null);
+  const sceneHandleRef = useRef<{ dispose: () => void } | null>(null);
   const [scenePlaying, setScenePlaying] = useState(false);
+
+  // Clean up any mounted predict-see scene on unmount
+  useEffect(() => {
+    return () => {
+      sceneHandleRef.current?.dispose();
+      sceneHandleRef.current = null;
+    };
+  }, []);
 
   // Standard code & source
   const standardCode =
@@ -52,7 +61,9 @@ export function ProblemCard({
 
       if (sceneMountRef.current) {
         setScenePlaying(true);
+        sceneHandleRef.current?.dispose();
         const handle = await cartsPredictSeeScene.mount(sceneMountRef.current, motionTier);
+        sceneHandleRef.current = handle;
         await handle.play(value === "cart-a" ? 0 : 1);
         setScenePlaying(false);
       }
