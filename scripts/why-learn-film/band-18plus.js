@@ -64,6 +64,7 @@ export function createBand18(c) {
   const HOSE_SCALE = 1.6;
   const GRIP = V(0, -0.05, 0.17).multiplyScalar(HOSE_SCALE);
   const rest = new THREE.Quaternion().setFromUnitVectors(V(0, 0, -1), V(-0.45, -0.7, 0.4).normalize());
+  const restSplit = new THREE.Quaternion().setFromUnitVectors(V(0, 0, -1), V(0.1, -1, 0.05).normalize()); // nozzle hangs straight down while Watson stands at the frame's right side
   let aim = new THREE.Quaternion().setFromUnitVectors(V(0, 0, -1), V(-0.7, 0.6, 0.1).normalize());
 
   // Parabola through a and b with a given apex height, x and z linear in k.
@@ -143,9 +144,9 @@ export function createBand18(c) {
     S.bowl = [0, 1, 2].map((i) => S.bowls.getObjectByName(`bowl-${i}`));
 
     // Recipe card standing on the counter, behind and beside the middle bowl.
-    const rc = recipeCard(0.34, 0.45);
+    const rc = recipeCard(0.7, 1.16);
     const card = new THREE.Group();
-    card.position.set(CTR.x + 0.55, TOP, CTR.z - 0.12);
+    card.position.set(CTR.x - 0.9, TOP, CTR.z - 0.3);
     card.rotation.x = -0.12;
     scene.add(card);
     mesh(new THREE.BoxGeometry(rc.w + 0.03, rc.h + 0.03, 0.02), 0x2a1f17, [0, rc.h / 2, -0.012], { parent: card, ink: false });
@@ -207,7 +208,7 @@ export function createBand18(c) {
     // Hose: pointing down at rest, up along the water's tangent while it runs.
     if (S.hose && S.arc) {
       const k = ramp(t, 0.9, 1.3) * (1 - ramp(t, 3.2, 3.7));
-      const q = rest.clone().slerp(aim, k);
+      const q = rest.clone().slerp(restSplit, ramp(t, 5.0, 5.6) * (1 - ramp(t, 7.0, 7.4))).slerp(aim, k);
       S.hose.quaternion.copy(q);
       Wt.handR.getWorldPosition(hand);
       S.hose.position.copy(hand).sub(GRIP.clone().applyQuaternion(q));

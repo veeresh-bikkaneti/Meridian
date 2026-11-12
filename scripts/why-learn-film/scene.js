@@ -937,7 +937,7 @@ function renderFrame(t) {
   // Door beat: the lens lands on the montage stage and stays there.
   const handW = new THREE.Vector3(); S.H.handR.getWorldPosition(handW);
   const doorR = LENS_R, doorPos = S.mont.screen;
-  const toDoor = ramp(t, 6.95, 7.2);
+  const toDoor = B1018 ? ramp(t, 6.8, 7.0) : ramp(t, 6.95, 7.2); // 10-18: the lens leaves Watson's torso a beat sooner
   tgt.lerp(doorPos, toDoor); R = lerp(R, doorR, toDoor);
   const home = ramp(t, 9.0, 9.55);
   tgt.lerp(dockC, home); R = lerp(R, dockR, home);
