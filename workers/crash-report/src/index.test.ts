@@ -12,6 +12,7 @@ import assert from "node:assert/strict";
 import test, { beforeEach, afterEach } from "node:test";
 import {
   buildAlert,
+  buildCantTellAlert,
   buildThresholdAlert,
   classifyCrashVerdict,
   type CrashVerdictFacts,
@@ -23,6 +24,7 @@ import {
   MAX_GROUP_KEYS,
   missingStampNames,
   normaliseEvent,
+  provenanceOf,
   severityKeyOf,
   severityOf,
   verdictFactsOf,
@@ -34,6 +36,17 @@ import {
   renderDigest,
   runHourlyDigest,
   resetRateLimitsForTests,
+  scrubErrorText,
+  resetIngestStateForTests,
+  lastIngestOutcomeForTests,
+  setSleepForTests,
+  UncorroboratedSummary,
+  COUNT_BUCKET_TTL_SECONDS,
+  evaluateHealth,
+  runScheduledHealth,
+  HEALTH_CRON,
+  HEALTH_RECORD_KEY,
+  REQUIRED_CHECKS,
   thresholdConfig,
   tierOf,
   validateEvent,
@@ -44,11 +57,13 @@ import {
   RATE_LIMIT_BINDING,
   bindingClientKey,
   readBodyCapped,
+  BODY_READ_TIMEOUT_MS,
   type CrashReportEnv,
   type CrashReportEvent,
   type KvLike,
   type TelemetryStore,
 } from "./index.ts";
+import { BREADCRUMB_KEY, createObservability, sanitizeError } from "../../../src/lib/observability.ts";
 
 /** An allow-listed origin (review S4). Every browser POST carries one. */
 const GAME_ORIGIN = "https://meridian.knowledgetest.workers.dev";
@@ -232,6 +247,56 @@ function tileEvent(overrides: Record<string, unknown> = {}): Record<string, unkn
   });
 }
 
+// --- Provenance gate fixtures (post-normalise shapes) --------------------
+
+/** A full client device (P3′-client named fields, 15 keys). */
+function fullClientDevice(overrides: Record<string, unknown> = {}): Record<string, unknown> {
+  return {
+    browser: "chrome",
+    browserVersion: "120.0",
+    engine: "blink",
+    os: "android",
+    osVersion: "13.0",
+    deviceClass: "phone",
+    form: "mobile",
+    screen: "md",
+    dpr: 2,
+    touchPoints: "2-5",
+    displayMode: "browser",
+    connection: "4g",
+    locale: "en-US",
+    hardwareConcurrency: 8,
+    deviceMemory: 4,
+    ...overrides,
+  };
+}
+
+/** A fully corroborated suspected_crash: full breadcrumb trail (P4a′). */
+function corroboratedSuspected(overrides: Record<string, unknown> = {}): Record<string, unknown> {
+  return {
+    type: "suspected_crash",
+    ts: Date.now(),
+    buildId: "a1b2c3d4e5f6",
+    sessionId: "sess-1",
+    lastMilestone: "game_loaded",
+    lcV: "2",
+    storageOk: true,
+    deviceSource: "crashed_session",
+    device: fullClientDevice(),
+    breadcrumb: {
+      sessionId: "sess-1",
+      buildId: "a1b2c3d4e5f6",
+      startedAt: 1000,
+      lastMilestone: "game_loaded",
+      history: [
+        { name: "boot_start", at: 1000 },
+        { name: "game_loaded", at: 2000 },
+      ],
+    },
+    ...overrides,
+  };
+}
+
 test("tierOf: crash-class vs hiccup-class classification", () => {
   for (const t of ["suspected_crash", "boot_failure", "js_error", "unhandled_rejection", "map_error"]) {
     assert.equal(tierOf(t as never), "crash", t);
@@ -272,7 +337,7 @@ test("counting: increments per dimension", async () => {
   ]) {
     const res = await handleRequest(postEvent(body), env);
     assert.equal(res.status, 200);
-    const json = (await res.json()) as { counted: boolean; forwarded: boolean };
+    const json = outcomeJson();
     assert.equal(json.counted, true);
     assert.equal(json.forwarded, false, "no webhook configured");
   }
@@ -304,9 +369,9 @@ test("telemetry: hostile event leaks nothing into bucket, threshold alert, or di
   const cfg = thresholdConfig({});
   let alertText = "";
   for (let i = 0; i < 10; i++) {
-    const r = await recordTelemetry(store, hostile as never, t0, cfg);
+    const r = await recordTelemetry(store, hostile as never, t0, cfg, "corroborated");
     assert.equal(r.counted, true);
-    if (r.alertText) alertText = r.alertText;
+    if (r.alertTexts[0]) alertText = r.alertTexts[0];
   }
   // Non-vacuous: the per-build threshold fired and all three surfaces
   // really do carry this event type's data.
@@ -329,16 +394,17 @@ test("crash-class event: counted AND forwarded immediately, verdict-first format
     return new Response("{}", { status: 200 });
   }) as typeof fetch;
   const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
-  const res = await handleRequest(postEvent(validEvent({ type: "suspected_crash" })), env);
+  const res = await handleRequest(postEvent(corroboratedSuspected()), env);
   assert.equal(res.status, 200);
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  const json = outcomeJson();
   assert.equal(json.forwarded, true);
   assert.equal(json.counted, true);
   assert.equal(fetchCalls.length, 1);
   const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
-  // Slice 1: the verdict line is FIRST. This event carries no stamps and
-  // no error, so it fails closed to "can't tell" (design §2.2/F8) — and
-  // Slice 1 changes no forwarding policy, so it still forwards.
+  // Slice 1: the verdict line is FIRST. This event carries no classifier
+  // stamps and no error, so it fails closed to "can't tell" (design
+  // §2.2/F8) — but its provenance corroborates (full trail), so the
+  // provenance gate passes it and it still forwards.
   assert.ok(sent.startsWith("❔ WAIT — Can't tell from this report"), "verdict line first, fail closed without stamps");
 });
 
@@ -351,7 +417,7 @@ test("hiccup-class event: counted but NOT forwarded individually", async () => {
   const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
   const res = await handleRequest(postEvent(tileEvent()), env);
   assert.equal(res.status, 200);
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  const json = outcomeJson();
   assert.equal(json.forwarded, false);
   assert.equal(json.counted, true);
   assert.equal(fetchCalls.length, 0, "no individual forward for hiccup-class");
@@ -370,7 +436,7 @@ test("funnel-class event: accepted, counted, NOT forwarded individually (#194)",
     env,
   );
   assert.equal(res.status, 200, "previously a 400 — the event was dropped");
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
+  const json = outcomeJson();
   assert.equal(json.forwarded, false);
   assert.equal(json.counted, true);
   assert.equal(fetchCalls.length, 0, "no individual forward for funnel-class");
@@ -394,10 +460,13 @@ test("threshold alert: fires exactly once per type+hour", async () => {
       store,
       tileEvent({ buildId: `build-${i % 10}` }) as CrashReportEvent,
       now,
-      cfg,
+      cfg, "corroborated"
     );
   }
-  const res20 = await handleRequest(postEvent(tileEvent({ buildId: "build-0" })), env);
+  const res20 = await handleRequest(
+    postEvent(tileEvent({ buildId: "a1b2c3d4", lcV: "2", storageOk: true, device: fullClientDevice() })),
+    env,
+  );
   assert.equal(res20.status, 200);
   assert.equal(fetchCalls.length, 1, "alert fires on the 20th event");
   const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
@@ -423,9 +492,12 @@ test("threshold alert: per-build threshold (10/hour from one build)", async () =
   const now = Date.now();
   const cfg = thresholdConfig({});
   for (let i = 0; i < 9; i++) {
-    await recordTelemetry(store, tileEvent() as CrashReportEvent, now, cfg);
+    await recordTelemetry(store, tileEvent() as CrashReportEvent, now, cfg, "corroborated");
   }
-  const res = await handleRequest(postEvent(tileEvent()), env);
+  const res = await handleRequest(
+    postEvent(tileEvent({ lcV: "2", storageOk: true, device: fullClientDevice() })),
+    env,
+  );
   assert.equal(res.status, 200);
   assert.equal(fetchCalls.length, 1, "alert fires on the 10th event from one build");
   const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
@@ -442,7 +514,7 @@ test("threshold alert: routine funnel types never alert, even past both threshol
       store,
       tileEvent({ type: "storyteller_shown" }) as CrashReportEvent,
       now,
-      cfg,
+      cfg, "corroborated"
     );
     assert.equal(r.alerted, false, `storyteller_shown #${i + 1} must not alert`);
   }
@@ -453,7 +525,7 @@ test("threshold alert: routine funnel types never alert, even past both threshol
       store2,
       tileEvent({ type: "storyteller_shown", buildId: `build-${i}` }) as CrashReportEvent,
       now,
-      cfg,
+      cfg, "corroborated"
     );
     assert.equal(r.alerted, false, `cross-build storyteller_shown #${i + 1} must not alert`);
   }
@@ -464,7 +536,7 @@ test("threshold alert: routine funnel types never alert, even past both threshol
       store3,
       tileEvent({ type: "narration_started" }) as CrashReportEvent,
       now,
-      cfg,
+      cfg, "corroborated"
     );
     assert.equal(r.alerted, false, `narration_started #${i + 1} must not alert`);
   }
@@ -484,7 +556,7 @@ test("threshold alert: 10 storyteller_shown via ingest post no Discord alert (#3
       store,
       tileEvent({ type: "storyteller_shown" }) as CrashReportEvent,
       now,
-      cfg,
+      cfg, "corroborated"
     );
   }
   const res = await handleRequest(
@@ -504,7 +576,7 @@ test("threshold alert: narration_failed still alerts at the per-build threshold 
       store,
       tileEvent({ type: "narration_failed" }) as CrashReportEvent,
       now,
-      cfg,
+      cfg, "corroborated"
     );
     assert.equal(r.alerted, false, `narration_failed #${i + 1} below threshold`);
   }
@@ -512,33 +584,37 @@ test("threshold alert: narration_failed still alerts at the per-build threshold 
     store,
     tileEvent({ type: "narration_failed" }) as CrashReportEvent,
     now,
-    cfg,
+    cfg, "corroborated"
   );
   assert.equal(r10.alerted, true, "narration_failed trips at 10 from one build");
-  assert.ok(r10.alertText?.includes("narration_failed"), "alert names the type");
+  assert.ok(r10.alertTexts.join("\n").includes("narration_failed"), "alert names the type");
 });
 
 test("threshold alert: suspected_crash still alerts at the per-build threshold (#311)", async () => {
   const { store } = memoryStore();
   const cfg = thresholdConfig({});
   const now = 1_729_000_000_000;
+  // A captured error keeps this fixture developer_needed, so it is not
+  // a can't-tell candidate — this test pins the threshold alert only.
+  const crashTile = () =>
+    tileEvent({ type: "suspected_crash", error: { name: "Error", message: "boom" } }) as CrashReportEvent;
   for (let i = 0; i < 9; i++) {
     const r = await recordTelemetry(
       store,
-      tileEvent({ type: "suspected_crash" }) as CrashReportEvent,
+      crashTile(),
       now,
-      cfg,
+      cfg, "corroborated"
     );
     assert.equal(r.alerted, false, `suspected_crash #${i + 1} below threshold`);
   }
   const r10 = await recordTelemetry(
     store,
-    tileEvent({ type: "suspected_crash" }) as CrashReportEvent,
+    crashTile(),
     now,
-    cfg,
+    cfg, "corroborated"
   );
   assert.equal(r10.alerted, true, "suspected_crash trips at 10 from one build");
-  assert.ok(r10.alertText?.includes("suspected_crash"), "alert names the type");
+  assert.ok(r10.alertTexts.join("\n").includes("suspected_crash"), "alert names the type");
 });
 
 test("threshold: env override lowers the trip point", async () => {
@@ -551,9 +627,11 @@ test("threshold: env override lowers the trip point", async () => {
     DISCORD_WEBHOOK_URL: "https://discord.test/hook",
     TELEMETRY_THRESHOLD_PER_HOUR: "2",
   });
-  await handleRequest(postEvent(tileEvent()), env);
+  const corrTile = () =>
+    tileEvent({ lcV: "2", storageOk: true, device: fullClientDevice({ os: "linux", form: "desktop" }) });
+  await handleRequest(postEvent(corrTile()), env);
   assert.equal(fetchCalls.length, 0, "first event under the override");
-  await handleRequest(postEvent(tileEvent()), env);
+  await handleRequest(postEvent(corrTile()), env);
   assert.equal(fetchCalls.length, 1, "second event trips the overridden threshold");
 });
 
@@ -576,10 +654,12 @@ test("fail-open: store errors never break ingest or crash-class forwards", async
   };
   const res = await handleRequest(postEvent(validEvent({ type: "suspected_crash" })), env);
   assert.equal(res.status, 200, "client never sees a 500 for a counting failure");
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
-  assert.equal(json.forwarded, true, "crash-class forward still fires");
+  const json = outcomeJson();
+  assert.equal(json.forwarded, false, "council fix T2: an uncorroborated crash is never paged just because counting failed");
+  assert.equal(json.route, "summarized_kv_unavailable");
   assert.equal(json.counted, false);
-  assert.equal(fetchCalls.length, 1);
+  assert.equal(fetchCalls.length, 1, "one bounded unverified summary");
+  assert.ok(String((fetchCalls[0].init as RequestInit).body).includes("Unverified crash-type reports"));
 });
 
 test("no KV binding: counting skipped, crash-class still forwards", async () => {
@@ -591,8 +671,9 @@ test("no KV binding: counting skipped, crash-class still forwards", async () => 
     DISCORD_WEBHOOK_URL: "https://discord.test/hook",
   });
   assert.equal(res.status, 200);
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
-  assert.equal(json.forwarded, true);
+  const json = outcomeJson();
+  assert.equal(json.forwarded, false, "council fix T2: no KV-state bypass of the provenance gate");
+  assert.equal(json.route, "summarized_kv_unavailable");
   assert.equal(json.counted, false);
 });
 
@@ -615,19 +696,19 @@ async function seedDigest(store: TelemetryStore): Promise<void> {
         device: { os: "android", form: "mobile" },
       }) as CrashReportEvent,
       at(i),
-      cfg,
+      cfg, "corroborated"
     );
   }
   // tile_failed ×22 (builds f331846 ×20 + other ×2), baseline avg 20 → not anomalous.
   for (let i = 0; i < 20; i++) {
-    await recordTelemetry(store, tileEvent({ buildId: "f331846" }) as CrashReportEvent, at(i), cfg);
+    await recordTelemetry(store, tileEvent({ buildId: "f331846" }) as CrashReportEvent, at(i), cfg, "corroborated");
   }
   for (let i = 0; i < 2; i++) {
     await recordTelemetry(
       store,
       tileEvent({ buildId: "other-build" }) as CrashReportEvent,
       at(i),
-      cfg,
+      cfg, "corroborated"
     );
   }
   // suspected_crash ×3, zero baseline → not flagged (below the 3-event floor).
@@ -636,7 +717,7 @@ async function seedDigest(store: TelemetryStore): Promise<void> {
       store,
       validEvent({ type: "suspected_crash", buildId: "f331846" }) as CrashReportEvent,
       at(i),
-      cfg,
+      cfg, "corroborated"
     );
   }
   // Trailing 24h baselines (hours before the previous one).
@@ -646,10 +727,10 @@ async function seedDigest(store: TelemetryStore): Promise<void> {
       store,
       validEvent({ type: "js_error", buildId: "f331846" }) as CrashReportEvent,
       t,
-      cfg,
+      cfg, "corroborated"
     );
     for (let i = 0; i < 20; i++) {
-      await recordTelemetry(store, tileEvent({ buildId: "f331846" }) as CrashReportEvent, t, cfg);
+      await recordTelemetry(store, tileEvent({ buildId: "f331846" }) as CrashReportEvent, t, cfg, "corroborated");
     }
   }
 }
@@ -722,12 +803,25 @@ test("renderDigest: fail-open on store errors", async () => {
 
 // --- handleRequest: routing, CORS, limits ---------------------------------
 
+/** Council fix T2/A9: routing is no longer in the HTTP body; tests read it here. */
+function outcomeJson(): { counted: boolean; forwarded: boolean; route: string } {
+  const o = lastIngestOutcomeForTests();
+  assert.ok(o, "an ingest outcome was recorded");
+  return {
+    counted: o.counted,
+    route: o.route,
+    forwarded: o.route === "paged" && Object.values(o.deliveries).some((d) => d !== "not_configured"),
+  };
+}
+
 const realFetch = globalThis.fetch;
 let fetchCalls: Array<{ url: string; init: unknown }>;
 
 beforeEach(() => {
   fetchCalls = [];
   resetRateLimitsForTests();
+  resetIngestStateForTests();
+  setSleepForTests(async () => {});
 });
 
 afterEach(() => {
@@ -738,7 +832,10 @@ test("GET /health returns 200 (no CORS: it is for curl and monitors)", async () 
   const res = await handleRequest(new Request("https://worker.test/health"), {});
   assert.equal(res.status, 200);
   assert.equal(res.headers.get("access-control-allow-origin"), null);
-  assert.deepEqual(await res.json(), { ok: true });
+  const body = (await res.json()) as { ok: boolean; live: boolean; health: string };
+  assert.equal(body.ok, true, "liveness kept for existing monitors");
+  assert.equal(body.live, true);
+  assert.equal(body.health, "unknown", "no store, no evidence: never healthy");
 });
 
 test("unknown path returns 404", async () => {
@@ -820,7 +917,9 @@ test("S4: a sendBeacon-style text/plain POST from the game is accepted (no prefl
     {},
   );
   assert.equal(res.status, 200);
-  assert.deepEqual(await res.json(), { ok: true, forwarded: false, counted: false });
+  assert.deepEqual(await res.json(), { ok: true });
+  assert.equal(outcomeJson().forwarded, false);
+  assert.equal(outcomeJson().counted, false);
 });
 
 test("S4: a chunked body over the cap is cancelled mid-stream with 413", async () => {
@@ -963,20 +1062,21 @@ test("no-op mode: no secrets → 200 forwarded:false, fetch never called", async
   }) as typeof fetch;
   const res = await handleRequest(postEvent(validEvent()), {});
   assert.equal(res.status, 200);
-  assert.deepEqual(await res.json(), { ok: true, forwarded: false, counted: false });
+  assert.deepEqual(await res.json(), { ok: true });
+  assert.equal(outcomeJson().forwarded, false);
+  assert.equal(outcomeJson().counted, false);
 });
 
-test("forwarding: Discord webhook called, 200 forwarded:true", async () => {
+test("forwarding: Discord webhook called, stable {ok:true} body, outcome paged", async () => {
   globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
     fetchCalls.push({ url: String(url), init });
     return new Response("{}", { status: 200 });
   }) as typeof fetch;
   const env: CrashReportEnv = { DISCORD_WEBHOOK_URL: "https://discord.test/hook" };
-  const res = await handleRequest(postEvent(validEvent({ edition: "globe" })), env);
+  const res = await handleRequest(postEvent(provJsError({ edition: "globe" })), env);
   assert.equal(res.status, 200);
-  const body = (await res.json()) as { ok: boolean; forwarded: boolean };
-  assert.equal(body.ok, true);
-  assert.equal(body.forwarded, true);
+  assert.deepEqual(await res.json(), { ok: true });
+  assert.equal(outcomeJson().forwarded, true);
   assert.equal(fetchCalls.length, 1);
   assert.equal(fetchCalls[0].url, "https://discord.test/hook");
 });
@@ -1289,25 +1389,33 @@ test("handleRequest: a shape A suspected_crash is still forwarded individually i
   }) as typeof fetch;
   const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
   const res = await handleRequest(
-    postEvent({
-      type: "suspected_crash",
-      ts: Date.now(),
-      buildId: "28c5fea",
-      edition: "state",
-      regionId: "nebraska",
-      lastMilestone: "backgrounded",
-      device: { os: "android", form: "mobile" },
-      bgTerminal: true,
-      buildReplaced: false,
-      trailStuck: false,
-      storageOk: true,
-      lcV: "1",
-    }),
+    postEvent(
+      corroboratedSuspected({
+        buildId: "28c5fea",
+        edition: "state",
+        regionId: "nebraska",
+        lastMilestone: "backgrounded",
+        bgTerminal: true,
+        buildReplaced: false,
+        trailStuck: false,
+        lcV: "1",
+        breadcrumb: {
+          sessionId: "sess-1",
+          buildId: "28c5fea",
+          startedAt: 1000,
+          lastMilestone: "backgrounded",
+          history: [
+            { name: "boot_start", at: 1000 },
+            { name: "backgrounded", at: 2000 },
+          ],
+        },
+      }),
+    ),
     env,
   );
   assert.equal(res.status, 200);
-  const json = (await res.json()) as { forwarded: boolean; counted: boolean };
-  assert.equal(json.forwarded, true, "Slice 1 changes no forwarding policy");
+  const json = outcomeJson();
+  assert.equal(json.forwarded, true, "a corroborated crash forwards exactly as in Slice 1");
   assert.equal(json.counted, true);
   assert.equal(fetchCalls.length, 1);
   const sent = JSON.parse((fetchCalls[0].init as { body: string }).body).content as string;
@@ -1465,11 +1573,19 @@ test("handleRequest (Slice 2): repeat_failure forwards immediately (crash tier);
   const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
 
   const failed = await handleRequest(
-    postEvent({ type: "recovery_outcome", ts: Date.now(), buildId: "28c5fea", recoveryOutcome: "repeat_failure", lcV: "2" }),
+    postEvent({
+      type: "recovery_outcome",
+      ts: Date.now(),
+      buildId: "28c5fea",
+      recoveryOutcome: "repeat_failure",
+      lcV: "2",
+      storageOk: true,
+      device: fullClientDevice(),
+    }),
     env,
   );
   assert.equal(failed.status, 200);
-  const failedJson = (await failed.json()) as { forwarded: boolean; counted: boolean };
+  const failedJson = outcomeJson();
   assert.equal(failedJson.forwarded, true, "repeat_failure is the one crash-class outcome");
   assert.equal(failedJson.counted, true);
   assert.equal(fetchCalls.length, 1);
@@ -1481,7 +1597,7 @@ test("handleRequest (Slice 2): repeat_failure forwards immediately (crash tier);
     env,
   );
   assert.equal(confirmed.status, 200);
-  const confirmedJson = (await confirmed.json()) as { forwarded: boolean; counted: boolean };
+  const confirmedJson = outcomeJson();
   assert.equal(confirmedJson.forwarded, false, "confirmed outcomes are counted only in Slice 2 (policy is Slice 3)");
   assert.equal(confirmedJson.counted, true);
   assert.equal(fetchCalls.length, 1, "no second forward");
@@ -1641,7 +1757,7 @@ test("normaliseEvent: watchdog-shaped boot_failure (no engine) gains the E-rule 
   const cfg = thresholdConfig({});
   const t0 = Date.UTC(2026, 10, 3, 17, 5, 0);
   const normalised = { ...out, ts: t0 } as unknown as CrashReportEvent;
-  const counted = await recordTelemetry(store, normalised, t0, cfg);
+  const counted = await recordTelemetry(store, normalised, t0, cfg, "corroborated");
   assert.equal(counted.counted, true);
   const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "boot_failure")))!;
   assert.equal(bucket.total, 1);
@@ -1717,10 +1833,10 @@ test("counting v2: groups, verdicts, milestones, modes, errorNames, first/last r
       lcV: "2",
       ...over,
     }) as unknown as CrashReportEvent;
-  await recordTelemetry(store, ev(), t0, cfg);
-  await recordTelemetry(store, ev(), t0 + 37 * 60_000, cfg);
+  await recordTelemetry(store, ev(), t0, cfg, "corroborated");
+  await recordTelemetry(store, ev(), t0 + 37 * 60_000, cfg, "corroborated");
   // A late arrival: receipt in the 17:00 hour, client ts in the 15:00 hour.
-  await recordTelemetry(store, ev({ ts: t0 - 2 * HOUR_MS }), t0 + 40 * 60_000, cfg);
+  await recordTelemetry(store, ev({ ts: t0 - 2 * HOUR_MS }), t0 + 40 * 60_000, cfg, "corroborated");
   const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "suspected_crash")))!;
   assert.equal(bucket.total, 3);
   assert.equal(bucket.groups["c6853be|ios|16|phone"], 3);
@@ -1743,7 +1859,7 @@ test("counting v2: the 33rd distinct group tallies under other (hard cap 32)", a
       store,
       validEvent({ type: "tile_failed", buildId: `build-${i}` }) as unknown as CrashReportEvent,
       t0,
-      cfg,
+      cfg, "corroborated"
     );
   }
   const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "tile_failed")))!;
@@ -1789,13 +1905,22 @@ test("telemetry: hostile event with secrets planted in the new fields leaks noth
       locale: "SECRET!!LOCALE",
       deviceMemory: "SECRET-MEM",
       hardwareConcurrency: "SECRET-CORES",
+      deviceClass: "SECRET-CLASS",
     },
-    breadcrumb: { device: { ua: "SECRET-BC-UA" }, history: [] },
+    breadcrumb: {
+      sessionId: "SECRET-SESSION",
+      buildId: "f331846",
+      startedAt: 1000,
+      lastMilestone: "map_init_start",
+      history: [{ name: "boot_start", at: 1000 }],
+      device: { ua: "SECRET-BC-UA" },
+    },
     unfinishedBoots: "SECRET-BOOTS",
     msSinceBootStart: "SECRET-MS",
     bgTerminal: false,
     buildReplaced: false,
     trailStuck: false,
+    storageOk: true,
     lcV: "2",
   };
   const res = await handleRequest(postEvent(hostile), env);
@@ -1882,6 +2007,7 @@ test("golden: buildAlert Discord for the #330 event (§5.5 shape, #345 severity 
       "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown. Severity: S1 — 3 unfinished boots in a row with no clean boot since; the player most likely left and never got back in (player-left is INFERRED from the missing clean boot, not observed).",
       "why-code: fg_kill_current",
       "action: Read the error below.",
+      "failure(v1): domain client (reported) · origin client-shaped, not authenticated · last reported step map loading · error absent · boot age 4,210 ms · device facts present · cause unconfirmed · not collected: request status, server timing, phase timeline",
       "type: suspected_crash · build: c6853be",
       "time: 2026-11-03T17:42:00.000Z",
       "device: ios/mobile · phone · Safari 16.4 · WebKit · iOS 16.4.1 (UA-parsed)",
@@ -1907,6 +2033,7 @@ test("golden: buildAlert email body for the #330 event (full string)", () => {
       "why: App stopped mid-game on the current build; no error was captured, so the cause is unknown. Severity: S1 — 3 unfinished boots in a row with no clean boot since; the player most likely left and never got back in (player-left is INFERRED from the missing clean boot, not observed).",
       "why-code: fg_kill_current",
       "action: Read the error below.",
+      "failure(v1): domain client (reported) · origin client-shaped, not authenticated · last reported step map loading · error absent · boot age 4,210 ms · device facts present · cause unconfirmed · not collected: request status, server timing, phase timeline",
       "type:            suspected_crash",
       "build:           c6853be",
       "event time:      2026-11-03T17:42:00.000Z",
@@ -2013,7 +2140,7 @@ test("golden: renderDigest for the §5.3 two-event hour (full string)", async ()
   const { store } = memoryStore();
   const cfg = thresholdConfig({});
   const hourStart = Date.UTC(2026, 10, 3, 17, 0, 0);
-  await recordTelemetry(store, incident330Event(), hourStart + 42 * 60_000, cfg);
+  await recordTelemetry(store, incident330Event(), hourStart + 42 * 60_000, cfg, "corroborated");
   await recordTelemetry(
     store,
     {
@@ -2028,7 +2155,7 @@ test("golden: renderDigest for the §5.3 two-event hour (full string)", async ()
       mapMode: "full",
     } as unknown as CrashReportEvent,
     hourStart + 5 * 60_000,
-    cfg,
+    cfg, "corroborated"
   );
   const digest = await renderDigest(store, hourStart + HOUR_MS + 30 * 60_000);
   assert.equal(
@@ -2062,7 +2189,7 @@ test("digest: caps are labelled with (+N more) remainders and ties break key-asc
       store,
       validEvent({ type: "tile_failed", buildId }) as unknown as CrashReportEvent,
       t0,
-      cfg,
+      cfg, "corroborated"
     );
   }
   const digest = await renderDigest(store, t0 + HOUR_MS);
@@ -2082,7 +2209,7 @@ test("digest: a counted event outside the receipt hour labels its type line as l
     store,
     validEvent({ type: "tile_failed", ts: t0 - 2 * HOUR_MS }) as unknown as CrashReportEvent,
     t0,
-    cfg,
+    cfg, "corroborated"
   );
   const digest = await renderDigest(store, t0 + HOUR_MS);
   assert.ok(digest?.includes("tile_failed 1 · first 17:10 · last 17:10 (some reports arrived late)"));
@@ -2274,10 +2401,10 @@ test("severity counting: recordTelemetry tallies grades per bucket, ungraded inc
   const { store } = memoryStore();
   const cfg = thresholdConfig({});
   const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
-  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 3 }), t0, cfg);
-  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 4 }), t0, cfg);
-  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 1 }), t0, cfg);
-  await recordTelemetry(store, bootFailureEvent(), t0, cfg);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 3 }), t0, cfg, "corroborated");
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 4 }), t0, cfg, "corroborated");
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 1 }), t0, cfg, "corroborated");
+  await recordTelemetry(store, bootFailureEvent(), t0, cfg, "corroborated");
   const bucket = (await store.readBucket(bucketKey(hourLabelOf(t0), "boot_failure")))!;
   assert.deepEqual(bucket.severities, { S1: 2, S2b: 2 });
 });
@@ -2296,8 +2423,8 @@ test("severity digest: an S1 hour carries the INFERRED gloss exactly once", asyn
   const { store } = memoryStore();
   const cfg = thresholdConfig({});
   const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
-  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 3 }), t0, cfg);
-  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 4 }), t0, cfg);
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 3 }), t0, cfg, "corroborated");
+  await recordTelemetry(store, bootFailureEvent({ unfinishedBoots: 4 }), t0, cfg, "corroborated");
   const digest = await renderDigest(store, t0 + HOUR_MS);
   assert.ok(digest, "digest produced");
   const gloss =
@@ -2316,8 +2443,8 @@ test("severity digest: an hour with NO S1 carries no INFERRED gloss", async () =
   const t0 = Date.UTC(2026, 10, 3, 17, 10, 0);
   // S2b (developer_needed, no streak) + S3 (auto_fixed, low streak):
   // graded, but neither is S1, so no gloss may appear.
-  await recordTelemetry(store, bootFailureEvent(), t0, cfg);
-  await recordTelemetry(store, recoveryEvent({ unfinishedBoots: 1 }), t0, cfg);
+  await recordTelemetry(store, bootFailureEvent(), t0, cfg, "corroborated");
+  await recordTelemetry(store, recoveryEvent({ unfinishedBoots: 1 }), t0, cfg, "corroborated");
   const digest = await renderDigest(store, t0 + HOUR_MS);
   assert.ok(digest, "digest produced");
   assert.ok(!digest.includes("INFERRED"), "no S1 in the hour → no player-left gloss");
@@ -2332,7 +2459,7 @@ test("severity digest: an hour of only ungraded events keeps the plain priority 
     store,
     validEvent({ type: "tile_failed" }) as unknown as CrashReportEvent,
     t0,
-    cfg,
+    cfg, "corroborated"
   );
   const digest = await renderDigest(store, t0 + HOUR_MS);
   assert.ok(digest, "digest produced");
@@ -2351,4 +2478,1773 @@ test("classifier freeze: the fixture tables still classify exactly as pinned (by
       row.name,
     );
   }
+});
+
+// --- Provenance gate (Slices 1+2, manifest 2026-11-05) --------------------
+//
+// W9′/T1 test titles name the spec check they pin (P1′, P2, P3′-client,
+// P3′-watchdog, P3′-funnel, P4a′, P4b′) so a golden-table failure names
+// its check. All should-not-surface assertions use stubbed fetch counts
+// + the bucket provenance dim, never the response body.
+
+const PROV_T0 = Date.UTC(2026, 10, 5, 17, 0, 0); // 2026-11-05T17:00Z
+
+function provJsError(overrides: Record<string, unknown> = {}): Record<string, unknown> {
+  return {
+    type: "js_error",
+    ts: 1_729_000_000_000,
+    buildId: "a1b2c3d4e5f6",
+    sessionId: "sess-1",
+    lastMilestone: "game_loaded",
+    lcV: "2",
+    storageOk: true,
+    deviceSource: "live",
+    msSinceBootStart: 1234,
+    device: fullClientDevice(),
+    error: { name: "TypeError", message: "boom" },
+    ...overrides,
+  };
+}
+
+function provSuspected(overrides: Record<string, unknown> = {}): Record<string, unknown> {
+  return {
+    type: "suspected_crash",
+    ts: 1_729_000_000_000,
+    buildId: "a1b2c3d4e5f6",
+    sessionId: "sess-1",
+    lastMilestone: "game_loaded",
+    lcV: "2",
+    storageOk: true,
+    deviceSource: "crashed_session",
+    device: fullClientDevice(),
+    breadcrumb: {
+      sessionId: "sess-1",
+      buildId: "a1b2c3d4e5f6",
+      startedAt: 1000,
+      lastMilestone: "game_loaded",
+      history: [
+        { name: "boot_start", at: 1000 },
+        { name: "game_loaded", at: 2000 },
+      ],
+    },
+    ...overrides,
+  };
+}
+
+test("W9′(i) P4a′ full-trail suspected_crash (history ≥1) → corroborated, and forwards via handleRequest", async () => {
+  assert.equal(provenanceOf(provSuspected() as never), "corroborated", "P4a′ full trail");
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const res = await handleRequest(postEvent(corroboratedSuspected()), env);
+  assert.equal(res.status, 200);
+  assert.equal(fetchCalls.length, 1, "corroborated crash forwards once (Discord)");
+});
+
+test("W9′(ii) P4a′ truncation-stub suspected_crash → corroborated (history [] or absent; graft: stub arm requires it)", async () => {
+  const stub = {
+    sessionId: "sess-1",
+    buildId: "a1b2c3d4e5f6",
+    startedAt: 1000,
+    lastMilestone: "game_loaded",
+    history: [] as Array<{ name: string; at: number }>,
+  };
+  assert.equal(
+    provenanceOf(provSuspected({ breadcrumb: stub }) as never),
+    "corroborated",
+    "P4a′ truncation stub, history []",
+  );
+  const { history: _dropped, ...stubNoHistory } = stub;
+  assert.equal(
+    provenanceOf(provSuspected({ breadcrumb: stubNoHistory }) as never),
+    "corroborated",
+    "P4a′ truncation stub, history absent",
+  );
+  assert.equal(
+    provenanceOf(provSuspected({ breadcrumb: { ...stub, history: "junk" } }) as never),
+    "uncorroborated",
+    "P4a′ graft: stub arm rejects a non-array, non-empty history",
+  );
+  // Gate outcome: the same stub payloads forward via handleRequest.
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const resStub = await handleRequest(postEvent(provSuspected({ breadcrumb: stub })), env);
+  assert.equal(resStub.status, 200);
+  assert.ok(fetchCalls.length >= 1, "corroborated truncation stub (history []) forwards");
+  const resNoHistory = await handleRequest(postEvent(provSuspected({ breadcrumb: stubNoHistory })), env);
+  assert.equal(resNoHistory.status, 200);
+  assert.equal(fetchCalls.length, 2, "corroborated truncation stub (history absent) forwards");
+});
+
+test("W9′(iii) P4a′ core-only suspected_crash (no breadcrumb) → uncorroborated", async () => {
+  const ev = provSuspected();
+  delete ev.breadcrumb;
+  assert.equal(provenanceOf(ev as never), "uncorroborated", "P4a′ breadcrumb required");
+  // Gate outcome: the same payload is gated via handleRequest.
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const res = await handleRequest(postEvent(ev), env);
+  assert.equal(res.status, 200);
+  assert.equal(fetchCalls.length, 0, "uncorroborated crash is gated — no forward");
+});
+
+test("W9′(iv) P3′-watchdog boot_failure (webgl pair, no deviceClass, 10 keys) → corroborated; 9 keys → uncorroborated", async () => {
+  const watchdogDevice = {
+    browser: "safari",
+    browserVersion: "16.4",
+    engine: "webkit",
+    os: "ios",
+    osVersion: "16.4.1",
+    form: "mobile",
+    screen: "md",
+    dpr: 2,
+    webgl1: true,
+    webgl2: true,
+  };
+  const ev = {
+    type: "boot_failure",
+    ts: 1_729_000_000_000,
+    buildId: "a1b2c3d4e5f6",
+    lcV: "1",
+    storageOk: true,
+    device: watchdogDevice,
+    error: { name: "Error", message: "boot timeout" },
+  };
+  assert.equal(provenanceOf(ev as never), "corroborated", "P3′-watchdog floor");
+  const { dpr: _dpr, ...nineKeys } = watchdogDevice;
+  assert.equal(
+    provenanceOf({ ...ev, device: nineKeys } as never),
+    "uncorroborated",
+    "P3′-watchdog key-count floor (≥10)",
+  );
+  // Gate outcome: boot_failure is crash-class — corroborated forwards,
+  // the 9-key variant is gated.
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const res = await handleRequest(postEvent(ev), env);
+  assert.equal(res.status, 200);
+  assert.ok(fetchCalls.length >= 1, "corroborated watchdog boot_failure forwards");
+  const res9 = await handleRequest(postEvent({ ...ev, device: nineKeys }), env);
+  assert.equal(res9.status, 200);
+  assert.equal(fetchCalls.length, 1, "9-key watchdog variant is gated — no further forward");
+});
+
+test("W9′(v) P3′-funnel narration_failed with device exactly {os, form} → corroborated; missing form → uncorroborated", async () => {
+  const ev = {
+    type: "narration_failed",
+    ts: 1_729_000_000_000,
+    buildId: "a1b2c3d4e5f6",
+    lcV: "2",
+    storageOk: false,
+    device: { os: "android", form: "mobile" },
+  };
+  assert.equal(provenanceOf(ev as never), "corroborated", "P3′-funnel named-only floor (storageOk false still passes P2)");
+  assert.equal(
+    provenanceOf({ ...ev, device: { os: "android" } } as never),
+    "uncorroborated",
+    "P3′-funnel requires form",
+  );
+  // Gate outcome: funnel never forwards — the same payload is counted
+  // with its provenance dim.
+  const { map, store } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const res = await handleRequest(postEvent(ev), env);
+  assert.equal(res.status, 200);
+  assert.equal(fetchCalls.length, 0, "funnel-class is counted only — no individual forward");
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(Date.now()), "narration_failed")))!;
+  assert.equal(bucket.total, 1, "funnel event counted");
+  assert.equal(bucket.provenance.corroborated, 1, "counted with the corroborated provenance dim");
+});
+
+test("W9′(vi) P4b′ pre-init js_error (exact signature, graft: no sessionId, lastMilestone undefined) → corroborated; hybrid shapes → uncorroborated", async () => {
+  const preInit = {
+    type: "js_error",
+    ts: 1_729_000_000_000,
+    buildId: "a1b2c3d4e5f6",
+    lcV: "2",
+    storageOk: true,
+    deviceSource: "live",
+    msSinceBootStart: "unknown",
+    device: fullClientDevice(),
+    error: { name: "Error", message: "early boom" },
+  };
+  assert.equal(provenanceOf(preInit as never), "corroborated", "P4b′ pre-init signature");
+  assert.equal(
+    provenanceOf({ ...preInit, sessionId: "sess-9" } as never),
+    "uncorroborated",
+    "P4b′ graft: pre-init arm forbids a sessionId (hybrid is unproducible)",
+  );
+  assert.equal(
+    provenanceOf({ ...preInit, lastMilestone: "boot_start" } as never),
+    "uncorroborated",
+    "P4b′ graft: pre-init arm requires lastMilestone undefined",
+  );
+  assert.equal(
+    provenanceOf(provJsError({ lastMilestone: undefined }) as never),
+    "corroborated",
+    "P4b′ linked arm: sessionId + numeric msSinceBootStart links without lastMilestone (route error / chunk-load emit none)",
+  );
+  assert.equal(
+    provenanceOf(provJsError({ lastMilestone: undefined, msSinceBootStart: "unknown" }) as never),
+    "uncorroborated",
+    "P4b′ hybrid: sessionId with neither lastMilestone nor numeric msSinceBootStart is unproducible",
+  );
+  // Gate outcome: js_error is crash-class — the same pre-init payload forwards.
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const res = await handleRequest(postEvent(preInit), env);
+  assert.equal(res.status, 200);
+  assert.ok(fetchCalls.length >= 1, "corroborated pre-init js_error forwards");
+});
+
+test("W9′(vii) P4a′ full trail with session mismatch → uncorroborated", async () => {
+  const ev = provSuspected({
+    breadcrumb: {
+      sessionId: "other-session",
+      buildId: "a1b2c3d4e5f6",
+      startedAt: 1000,
+      lastMilestone: "game_loaded",
+      history: [{ name: "boot_start", at: 1000 }],
+    },
+  });
+  assert.equal(provenanceOf(ev as never), "uncorroborated", "P4a′ session linkage");
+  // Gate outcome: the same payload is gated via handleRequest.
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const res = await handleRequest(postEvent(ev), env);
+  assert.equal(res.status, 200);
+  assert.equal(fetchCalls.length, 0, "session-mismatched crash is gated — no forward");
+});
+
+test("W9′ P4a′ truncation stub with session mismatch → uncorroborated", async () => {
+  const stubMismatch = {
+    sessionId: "other-session",
+    buildId: "a1b2c3d4e5f6",
+    startedAt: 1000,
+    lastMilestone: "game_loaded",
+    history: [] as Array<{ name: string; at: number }>,
+  };
+  assert.equal(
+    provenanceOf(provSuspected({ breadcrumb: stubMismatch }) as never),
+    "uncorroborated",
+    "P4a′ stub arm session linkage (history [])",
+  );
+  const { history: _dropped, ...stubMismatchNoHistory } = stubMismatch;
+  assert.equal(
+    provenanceOf(provSuspected({ breadcrumb: stubMismatchNoHistory }) as never),
+    "uncorroborated",
+    "P4a′ stub arm session linkage (history absent)",
+  );
+  // Gate outcome: the same stub payload is gated via handleRequest.
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const res = await handleRequest(postEvent(provSuspected({ breadcrumb: stubMismatch })), env);
+  assert.equal(res.status, 200);
+  assert.equal(fetchCalls.length, 0, "stub session-mismatched crash is gated — no forward");
+});
+
+test("W9′(viii) P1′ local-<base36> and \"dev\" builds, rest valid → corroborated", async () => {
+  assert.equal(provenanceOf(provJsError({ buildId: "local-abc123" }) as never), "corroborated", "P1′ local- shape");
+  assert.equal(provenanceOf(provJsError({ buildId: "dev" }) as never), "corroborated", "P1′ dev shape");
+  // Gate outcome: js_error is crash-class — both shapes forward.
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const resLocal = await handleRequest(postEvent(provJsError({ buildId: "local-abc123" })), env);
+  assert.equal(resLocal.status, 200);
+  assert.ok(fetchCalls.length >= 1, "corroborated local- build forwards");
+  const resDev = await handleRequest(postEvent(provJsError({ buildId: "dev" })), env);
+  assert.equal(resDev.status, 200);
+  assert.equal(fetchCalls.length, 2, "corroborated dev build forwards");
+});
+
+test("W9′(ix) P1′ buildId \"!!!\" → uncorroborated; probe-style buildId → uncorroborated", async () => {
+  assert.equal(provenanceOf(provJsError({ buildId: "!!!" }) as never), "uncorroborated", "P1′ build shape");
+  assert.equal(provenanceOf(provJsError({ buildId: "chitti-verify" }) as never), "uncorroborated", "P1′ probe build");
+  // Gate outcome: both shapes are gated via handleRequest.
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const res = await handleRequest(postEvent(provJsError({ buildId: "!!!" })), env);
+  assert.equal(res.status, 200);
+  assert.equal(fetchCalls.length, 0, "invalid build shape is gated — no forward");
+  const resProbe = await handleRequest(postEvent(provJsError({ buildId: "chitti-verify" })), env);
+  assert.equal(resProbe.status, 200);
+  assert.equal(fetchCalls.length, 0, "probe-style build is gated — no forward");
+});
+
+test("W9′ P2 stamps: missing storageOk or empty lcV → uncorroborated", () => {
+  const noStorage = provJsError();
+  delete noStorage.storageOk;
+  assert.equal(provenanceOf(noStorage as never), "uncorroborated", "P2 storageOk boolean required");
+  assert.equal(provenanceOf(provJsError({ lcV: "" }) as never), "uncorroborated", "P2 lcV non-empty required");
+});
+
+test("W9′ P3′-client: device missing deviceClass → uncorroborated", () => {
+  const dev = fullClientDevice();
+  delete dev.deviceClass;
+  assert.equal(provenanceOf(provJsError({ device: dev }) as never), "uncorroborated", "P3′-client named fields");
+});
+
+test("W15a KV-up: uncorroborated crash is gated — zero Discord/email stub calls, provenance.uncorroborated +1", async () => {
+  const { map, store } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, {
+    DISCORD_WEBHOOK_URL: "https://discord.test/hook",
+    RESEND_API_KEY: "rk-test",
+    REPORT_EMAIL: "alerts@example.com",
+  });
+  const res = await handleRequest(
+    postEvent({ type: "js_error", ts: Date.now(), buildId: "probe-verify", error: { name: "Error", message: "boom" } }),
+    env,
+  );
+  assert.equal(res.status, 200);
+  assert.equal(fetchCalls.length, 0, "gated event reaches neither Discord nor email");
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(Date.now()), "js_error")))!;
+  assert.equal(bucket.provenance.uncorroborated, 1, "counted as uncorroborated");
+  assert.equal(bucket.provenance.corroborated ?? 0, 0);
+});
+
+test("W15b KV-down (council fix T2): the same uncorroborated crash payload is summarized, not paged", async () => {
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const brokenKv: KvLike = {
+    get: async () => {
+      throw new Error("kv down");
+    },
+    put: async () => {
+      throw new Error("kv down");
+    },
+  };
+  const env: CrashReportEnv = {
+    DISCORD_WEBHOOK_URL: "https://discord.test/hook",
+    TELEMETRY_COUNTS: brokenKv,
+  };
+  const res = await handleRequest(
+    postEvent({ type: "js_error", ts: Date.now(), buildId: "probe-verify", error: { name: "Error", message: "boom" } }),
+    env,
+  );
+  assert.equal(res.status, 200);
+  const json = outcomeJson();
+  assert.equal(json.counted, false);
+  assert.equal(json.forwarded, false, "KV failure no longer opens the gate");
+  assert.equal(json.route, "summarized_kv_unavailable", "but it is not silently lost either");
+  assert.equal(fetchCalls.length, 1);
+});
+
+test("T1 totality: provenanceOf never throws on malformed shapes (P1′/P2/P3′/P4a′/P4b′ guards) and returns uncorroborated", () => {
+  const malformed: unknown[] = [
+    null,
+    undefined,
+    42,
+    "x",
+    [],
+    {},
+    { type: "bogus" },
+    { type: "js_error" },
+    provJsError({ device: 42 }),
+    provJsError({ device: null }),
+    provSuspected({ breadcrumb: "nope" }),
+    provSuspected({ breadcrumb: { history: "nope" } }),
+    provSuspected({ breadcrumb: { sessionId: 7, history: [null] } }),
+    provJsError({ sessionId: undefined, msSinceBootStart: 5 }),
+  ];
+  for (const m of malformed) {
+    assert.equal(provenanceOf(m as never), "uncorroborated", JSON.stringify(m)?.slice(0, 60));
+  }
+});
+
+test("T1 totality: a validation-passing malformed event through handleRequest returns HTTP 200 (and is gated)", async () => {
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  const res = await handleRequest(
+    postEvent({ type: "suspected_crash", ts: Date.now(), buildId: "a1b2c3d4e5f6", breadcrumb: { sessionId: 123 } }),
+    env,
+  );
+  assert.equal(res.status, 200, "gate never throws the request path");
+  assert.equal(fetchCalls.length, 0, "malformed crash is gated, not forwarded");
+});
+
+// --- C1′/C2′: live init() drive (ruling a) ---------------------------------
+
+function makeObsStorage(initial: Record<string, string> = {}) {
+  const raw = new Map(Object.entries(initial));
+  return {
+    getItem: (k: string) => (raw.has(k) ? (raw.get(k) as string) : null),
+    setItem: (k: string, v: string) => void raw.set(k, v),
+    removeItem: (k: string) => void raw.delete(k),
+  };
+}
+
+const CRASHED_RUNTIME = {
+  browser: "safari",
+  browserVersion: "16.4",
+  engine: "webkit",
+  os: "ios",
+  osVersion: "16.4.1",
+  deviceClass: "phone",
+  hardwareConcurrency: 6,
+  deviceMemory: "unknown",
+  form: "mobile",
+  dpr: 2,
+  screen: "md",
+  touchPoints: "2-5",
+  displayMode: "unknown",
+  connection: "unknown",
+  locale: "en-US",
+};
+
+function driveInitEmittedSuspectedCrash(
+  history: Array<{ name: string; at: number }>,
+  lastMilestone: string,
+): Record<string, unknown> {
+  const prev = {
+    sessionId: "prev-session",
+    buildId: "a1b2c3d4e5f6",
+    startedAt: 1000,
+    lastMilestone,
+    history,
+    edition: "globe",
+    regionId: "globe",
+    runtime: CRASHED_RUNTIME,
+    bgTerminal: false,
+    trailStuck: false,
+    vis: true,
+  };
+  const beacons: string[] = [];
+  const obs = createObservability({
+    storage: makeObsStorage({ [BREADCRUMB_KEY]: JSON.stringify(prev) }),
+    durableStorage: makeObsStorage(),
+    transport: {
+      sendBeacon: (_url: string, body: string) => {
+        beacons.push(body);
+        return true;
+      },
+    },
+    endpoint: "https://example.com/ingest",
+    now: () => 9000,
+    randomId: () => "new-session",
+    buildId: "a1b2c3d4e5f6",
+    isUnclean: () => true,
+    document: null,
+  });
+  obs.init();
+  assert.equal(beacons.length, 1, "init() emitted exactly one suspected_crash");
+  return JSON.parse(beacons[0]) as Record<string, unknown>;
+}
+
+test("C1′ real init() drive (P4a′): the actually-emitted suspected_crash corroborates", () => {
+  const payload = driveInitEmittedSuspectedCrash(
+    [
+      { name: "boot_start", at: 1000 },
+      { name: "game_loaded", at: 3000 },
+    ],
+    "game_loaded",
+  );
+  assert.equal(payload.type, "suspected_crash");
+  assert.equal(
+    (payload.breadcrumb as { history: unknown[] }).history.length,
+    2,
+    "C1′ emitted trail carries the seeded 2 entries",
+  );
+  assert.equal(provenanceOf(payload as never), "corroborated", "P4a′ full trail on the emitted event");
+});
+
+test("C2′ real init() drive (P4a′): trail history length exactly 1 (boot_start only) corroborates", () => {
+  const payload = driveInitEmittedSuspectedCrash([{ name: "boot_start", at: 1000 }], "boot_start");
+  assert.equal(payload.type, "suspected_crash");
+  assert.equal(
+    (payload.breadcrumb as { history: unknown[] }).history.length,
+    1,
+    "C2′ emitted trail carries exactly the seeded 1 entry (boot_start)",
+  );
+  assert.equal(provenanceOf(payload as never), "corroborated", "P4a′ history ≥1, never game_loaded");
+});
+
+// --- R1/R2: fail-closed param + corroborated-only threshold ---------------
+
+test("R1: recordTelemetry with invalid/missing provenance counts the event as uncorroborated in all dims (fail-closed)", async () => {
+  const cfg = thresholdConfig({});
+  for (const bad of ["bogus", undefined] as unknown[]) {
+    const { store } = memoryStore();
+    const r = await recordTelemetry(store, tileEvent() as CrashReportEvent, PROV_T0, cfg, bad as never);
+    assert.equal(r.counted, true);
+    const bucket = (await store.readBucket(bucketKey(hourLabelOf(PROV_T0), "tile_failed")))!;
+    assert.equal(bucket.provenance.uncorroborated, 1, `provenance=${String(bad)} counts uncorroborated`);
+    assert.equal(bucket.provenance.corroborated ?? 0, 0);
+    assert.deepEqual(bucket.corrBuilds, {}, "no corroborated build counted");
+  }
+});
+
+test("R2: threshold reads corroborated counts only — 25 uncorroborated same-build fire nothing and don't burn the slot; the 10th corroborated fires", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  for (let i = 0; i < 25; i++) {
+    const r = await recordTelemetry(store, tileEvent() as CrashReportEvent, PROV_T0, cfg, "uncorroborated");
+    assert.deepEqual(r.alertTexts, [], `uncorroborated #${i + 1} fires nothing`);
+  }
+  let bucket = (await store.readBucket(bucketKey(hourLabelOf(PROV_T0), "tile_failed")))!;
+  assert.deepEqual(bucket.alerts, [], "threshold slot unburned by uncorroborated traffic");
+  assert.equal(bucket.provenance.uncorroborated, 25);
+  for (let i = 0; i < 9; i++) {
+    const r = await recordTelemetry(store, tileEvent() as CrashReportEvent, PROV_T0, cfg, "corroborated");
+    assert.deepEqual(r.alertTexts, [], `corroborated #${i + 1} below the per-build threshold`);
+  }
+  const r10 = await recordTelemetry(store, tileEvent() as CrashReportEvent, PROV_T0, cfg, "corroborated");
+  assert.equal(r10.alertTexts.length, 1, "10th corroborated fires the per-build threshold");
+  assert.ok(r10.alertTexts[0].includes("crossed the hiccup threshold"));
+  bucket = (await store.readBucket(bucketKey(hourLabelOf(PROV_T0), "tile_failed")))!;
+  assert.equal(bucket.alerts.length, 1);
+  assert.ok(bucket.alerts[0].startsWith("threshold:"));
+});
+
+// --- E1–E7: can't-tell escalation ------------------------------------------
+
+/** A crash-tier can't-tell candidate: suspected_crash, insufficient_evidence. */
+function cantTellCandidate(overrides: Record<string, unknown> = {}): CrashReportEvent {
+  return {
+    type: "suspected_crash",
+    ts: PROV_T0,
+    buildId: "build-a",
+    lastMilestone: "boot_start",
+    device: { os: "ios", osVersion: "16.4.1", deviceClass: "phone" },
+    ...overrides,
+  } as unknown as CrashReportEvent;
+}
+
+const PATTERN_A = "build-a|ios|16|phone";
+const PATTERN_B = "build-b|android|13|tablet";
+
+function cantTellCandidateB(): CrashReportEvent {
+  return cantTellCandidate({
+    buildId: "build-b",
+    device: { os: "android", osVersion: "13.0", deviceClass: "tablet" },
+  });
+}
+
+test("E1: conjunctive legs block independently — pattern ×3 with total <5 no; second pattern reaching total 5 at count 2 no; first pattern's next candidate fires", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  for (let i = 0; i < 3; i++) {
+    const r = await recordTelemetry(store, cantTellCandidate(), PROV_T0, cfg, "uncorroborated");
+    assert.deepEqual(r.alertTexts, [], `pattern A #${i + 1}: candidate total <5 blocks`);
+  }
+  for (let i = 0; i < 2; i++) {
+    const r = await recordTelemetry(store, cantTellCandidateB(), PROV_T0, cfg, "uncorroborated");
+    assert.deepEqual(r.alertTexts, [], `pattern B #${i + 1}: pattern count <3 blocks (total reaches 5)`);
+  }
+  const fired = await recordTelemetry(store, cantTellCandidate(), PROV_T0, cfg, "uncorroborated");
+  assert.equal(fired.alertTexts.length, 1, "pattern A at count 4 with total ≥5 fires");
+  assert.ok(fired.alertTexts[0].includes("❔"), "can't-tell dress, never 🚨");
+  assert.ok(fired.alertTexts[0].includes(PATTERN_A), "alert names the pattern");
+  assert.ok(buildCantTellAlert("suspected_crash", "2026-11-05T17", PATTERN_A, 4, 6, 0).startsWith("❔"));
+});
+
+test("E2: trailing leg blocks — seeded pattern average 2 (needs >6): pattern at 5 no, at 7 yes", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  for (let h = 1; h <= 24; h++) {
+    const seed = emptyBucket();
+    seed.total = 2;
+    seed.cantTellGroups[PATTERN_A] = 2;
+    await store.writeBucket(bucketKey(hourLabelOf(PROV_T0 - h * HOUR_MS), "suspected_crash"), seed);
+  }
+  let last;
+  for (let i = 1; i <= 7; i++) {
+    last = await recordTelemetry(store, cantTellCandidate(), PROV_T0, cfg, "uncorroborated");
+    if (i <= 6) assert.deepEqual(last.alertTexts, [], `pattern at ${i}: trailing leg blocks (needs >6)`);
+  }
+  assert.equal(last!.alertTexts.length, 1, "pattern at 7 exceeds 3× the trailing average of 2");
+});
+
+test("E3: read economy — exactly 1 readBucket below the cheap legs; ≤25 on the evaluating event", async () => {
+  const { store: inner } = memoryStore();
+  let reads = 0;
+  const store: TelemetryStore = {
+    readBucket: async (k: string) => {
+      reads += 1;
+      return inner.readBucket(k);
+    },
+    writeBucket: (k: string, b) => inner.writeBucket(k, b),
+  };
+  const cfg = thresholdConfig({});
+  await recordTelemetry(store, cantTellCandidate(), PROV_T0, cfg, "uncorroborated");
+  assert.equal(reads, 1, "cheap legs fail → zero trailing reads");
+  for (let i = 0; i < 3; i++) {
+    await recordTelemetry(store, cantTellCandidate(), PROV_T0, cfg, "uncorroborated");
+  }
+  const before = reads;
+  const fired = await recordTelemetry(store, cantTellCandidate(), PROV_T0, cfg, "uncorroborated");
+  assert.equal(fired.alertTexts.length, 1, "5th candidate evaluates and fires (trailing average 0)");
+  assert.ok(reads - before <= 25, `evaluating event spent ${reads - before} reads (≤25)`);
+  assert.equal(reads - before, 25, "1 current-bucket read + 24 trailing reads");
+});
+
+test("E4: once per pattern+hour — same pattern adds no second text; a different pattern fires independently", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  let firedA = 0;
+  for (let i = 0; i < 7; i++) {
+    const r = await recordTelemetry(store, cantTellCandidate(), PROV_T0, cfg, "uncorroborated");
+    firedA += r.alertTexts.length;
+  }
+  assert.equal(firedA, 1, "pattern A fires exactly once despite 7 candidates");
+  let firedB = 0;
+  for (let i = 0; i < 3; i++) {
+    const r = await recordTelemetry(store, cantTellCandidateB(), PROV_T0, cfg, "uncorroborated");
+    firedB += r.alertTexts.length;
+  }
+  assert.equal(firedB, 1, "pattern B (count 3, total already ≥5) fires independently");
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(PROV_T0), "suspected_crash")))!;
+  assert.equal(bucket.alerts.filter((a) => a.startsWith("canttell:")).length, 2);
+});
+
+test("E5 scope: corroborated developer_needed ×6 same pattern → no can't-tell alert", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  for (let i = 0; i < 6; i++) {
+    const r = await recordTelemetry(
+      store,
+      provJsError() as unknown as CrashReportEvent,
+      PROV_T0,
+      cfg,
+      "corroborated",
+    );
+    assert.deepEqual(r.alertTexts, [], `corroborated developer_needed #${i + 1} is not a candidate`);
+  }
+});
+
+test("E5 scope: uncorroborated hiccup/funnel ×6 → no can't-tell alert", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  for (const type of ["tile_failed", "narration_failed"] as const) {
+    for (let i = 0; i < 6; i++) {
+      const r = await recordTelemetry(
+        store,
+        tileEvent({ type }) as CrashReportEvent,
+        PROV_T0,
+        cfg,
+        "uncorroborated",
+      );
+      assert.deepEqual(r.alertTexts, [], `${type} #${i + 1}: non-crash tier never escalates`);
+    }
+  }
+});
+
+test("E5 scope: corroborated insufficient_evidence recovery_outcome (non-repeat_failure) ×6 → no can't-tell alert", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  for (let i = 0; i < 6; i++) {
+    const r = await recordTelemetry(
+      store,
+      outcomeEvent({ recoveryOutcome: "stood_down" }),
+      PROV_T0,
+      cfg,
+      "corroborated",
+    );
+    assert.deepEqual(r.alertTexts, [], `stood_down #${i + 1}: hiccup tier, not a candidate`);
+  }
+});
+
+test("E6 privacy: SECRET-SESSION is absent from can't-tell + threshold alert texts and every bucket", async () => {
+  const { map, store } = memoryStore();
+  const cfg = thresholdConfig({});
+  // logLine emits via console.log — capture that channel for both flows.
+  const capturedLogs: string[] = [];
+  const originalLog = console.log;
+  console.log = (...args: unknown[]) => {
+    capturedLogs.push(args.map((a) => String(a)).join(" "));
+  };
+  try {
+    let cantTell = "";
+    for (let i = 0; i < 5; i++) {
+      const r = await recordTelemetry(
+        store,
+        cantTellCandidate({ sessionId: "SECRET-SESSION" }),
+        PROV_T0,
+        cfg,
+        "uncorroborated",
+      );
+      if (r.alertTexts[0]) cantTell = r.alertTexts[0];
+    }
+    assert.ok(cantTell.includes("❔"), "can't-tell alert fired (non-vacuous)");
+    assert.ok(!cantTell.includes("SECRET-SESSION"), "can't-tell text carries no sessionId");
+    let threshold = "";
+    for (let i = 0; i < 10; i++) {
+      const r = await recordTelemetry(
+        store,
+        tileEvent({ sessionId: "SECRET-SESSION" }) as CrashReportEvent,
+        PROV_T0,
+        cfg,
+        "corroborated",
+      );
+      if (r.alertTexts[0]) threshold = r.alertTexts[0];
+    }
+    assert.ok(threshold.includes("crossed the hiccup threshold"), "threshold alert fired (non-vacuous)");
+    assert.ok(!threshold.includes("SECRET-SESSION"), "threshold text carries no sessionId");
+    const rawBuckets = [...map.values()].join("\n");
+    assert.ok(!rawBuckets.includes("SECRET-SESSION"), "no bucket carries a sessionId");
+    assert.ok(
+      !capturedLogs.join("\n").includes("SECRET-SESSION"),
+      "worker logs during the can't-tell + threshold flows carry no sessionId",
+    );
+  } finally {
+    console.log = originalLog;
+  }
+});
+
+test("E7: the \"other\" overflow pattern (33rd distinct group) never escalates", async () => {
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  for (let i = 0; i < 35; i++) {
+    const r = await recordTelemetry(
+      store,
+      cantTellCandidate({ buildId: `build-${i}` }),
+      PROV_T0,
+      cfg,
+      "uncorroborated",
+    );
+    assert.deepEqual(r.alertTexts, [], `distinct pattern #${i + 1} must not escalate`);
+  }
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(PROV_T0), "suspected_crash")))!;
+  assert.equal(bucket.cantTellGroups["other"], 3, "patterns 33–35 tallied under other (count 3, total 35)");
+  assert.deepEqual(bucket.alerts, [], "\"other\" never fires, even at count ≥3 with total ≥5");
+});
+
+test("W16 legacy pre-Slice-1 event: counted-only + escalation-eligible — Liz's 2026-11-05 Q1 ruling (fail-closed)", async () => {
+  const legacy = {
+    type: "suspected_crash",
+    ts: PROV_T0,
+    buildId: "legacybuild",
+  } as unknown as CrashReportEvent;
+  assert.equal(
+    provenanceOf(legacy as never),
+    "uncorroborated",
+    "bare legacy shape fails the provenance checks (unverifiable, never 'not real')",
+  );
+  const { store } = memoryStore();
+  const cfg = thresholdConfig({});
+  let fired = "";
+  for (let i = 0; i < 5; i++) {
+    const r = await recordTelemetry(store, legacy, PROV_T0, cfg, provenanceOf(legacy as never));
+    if (r.alertTexts[0]) fired = r.alertTexts[0];
+  }
+  const bucket = (await store.readBucket(bucketKey(hourLabelOf(PROV_T0), "suspected_crash")))!;
+  assert.equal(bucket.total, 5, "legacy events are counted, never dropped");
+  assert.equal(bucket.provenance.uncorroborated, 5);
+  assert.ok(fired.includes("❔"), "a widespread legacy failure surfaces only via the can't-tell escalation");
+});
+
+// --- P4b′ real-client drive: live errors emitted WITHOUT lastMilestone ------
+//
+// Regression pin for the #353 blocker: the route error boundary
+// (src/lib/error-component.tsx) and the region-chunk load failure
+// (src/components/game-app.tsx) emit js_error after init() with a
+// sessionId but no lastMilestone. Those are real kid crashes and must
+// stay corroborated + forwarded.
+
+function driveLiveEmittedJsError(err: unknown): Record<string, unknown> {
+  const beacons: string[] = [];
+  let t = 5000;
+  const obs = createObservability({
+    storage: makeObsStorage(),
+    durableStorage: makeObsStorage(),
+    transport: {
+      sendBeacon: (_url: string, body: string) => {
+        beacons.push(body);
+        return true;
+      },
+    },
+    endpoint: "https://example.com/ingest",
+    now: () => (t += 250),
+    randomId: () => "live-session",
+    buildId: "a1b2c3d4e5f6",
+    isUnclean: () => false,
+    document: null,
+  });
+  obs.init();
+  // Exact call shape of both client sites: buildId "" and no lastMilestone.
+  obs.emit({ type: "js_error", ts: Date.now(), buildId: "", error: sanitizeError(err) });
+  const sent = beacons.map((b) => JSON.parse(b) as Record<string, unknown>).filter((p) => p.type === "js_error");
+  assert.equal(sent.length, 1, "exactly one js_error left the client");
+  return sent[0];
+}
+
+for (const [label, err] of [
+  ["route error boundary (error-component.tsx)", new TypeError("Cannot read properties of undefined (reading 'map')")],
+  [
+    "region-chunk load failure (game-app.tsx)",
+    new Error("We couldn't open the Globe right now. Check that you're online, then tap Play again."),
+  ],
+] as const) {
+  test(`P4b′ real client drive: ${label} js_error (sessionId, no lastMilestone) → corroborated and forwards once`, async () => {
+    const payload = driveLiveEmittedJsError(err);
+    assert.equal(payload.sessionId, "live-session", "emit() stamped the live sessionId");
+    assert.equal(payload.lastMilestone, undefined, "the real client sends no lastMilestone on this path");
+    assert.equal(typeof payload.msSinceBootStart, "number", "emit() couples a numeric msSinceBootStart");
+    assert.equal(provenanceOf(payload as never), "corroborated", "P4b′ live linkage");
+    const { map, store } = memoryStore();
+    globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+      fetchCalls.push({ url: String(url), init });
+      return new Response("{}", { status: 200 });
+    }) as typeof fetch;
+    const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+    const res = await handleRequest(postEvent(payload), env);
+    assert.equal(res.status, 200);
+    assert.equal(fetchCalls.length, 1, "real crash pages Discord exactly once");
+    assert.equal(fetchCalls[0].url, "https://discord.test/hook");
+    const bucket = (await store.readBucket(bucketKey(hourLabelOf(Date.now()), "js_error")))!;
+    assert.equal(bucket.provenance.corroborated, 1, "counted as corroborated");
+  });
+}
+
+// The probes that paged on 2026-11-05/06 ("periodic-probe", "wake-check"):
+// js_error with a non-generator buildId, no device, no error. Both the
+// bare shape and a strengthened one (session + numeric ms + stamps) stay
+// uncorroborated and do NOT forward while KV is up.
+for (const buildId of ["wake-check", "periodic-probe"]) {
+  const bare = { type: "js_error", ts: Date.now(), buildId };
+  const strengthened = {
+    type: "js_error",
+    ts: Date.now(),
+    buildId,
+    sessionId: "probe-session",
+    msSinceBootStart: 1234,
+    lcV: "2",
+    storageOk: true,
+    deviceSource: "live",
+  };
+  for (const [shape, ev] of [
+    ["bare", bare],
+    ["session+ms+stamps, no device", strengthened],
+  ] as const) {
+    test(`P1′/P3′ probe js_error buildId=${buildId} (${shape}) → uncorroborated, counted, not forwarded`, async () => {
+      assert.equal(provenanceOf(ev as never), "uncorroborated");
+      const { map, store } = memoryStore();
+      globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+        fetchCalls.push({ url: String(url), init });
+        return new Response("{}", { status: 200 });
+      }) as typeof fetch;
+      const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+      const res = await handleRequest(postEvent(ev), env);
+      assert.equal(res.status, 200);
+      assert.equal(fetchCalls.length, 0, "probe does not page");
+      const bucket = (await store.readBucket(bucketKey(hourLabelOf(Date.now()), "js_error")))!;
+      assert.equal(bucket.provenance.uncorroborated, 1, "probe counted as uncorroborated");
+    });
+  }
+}
+
+// --- Council fix T1 (2026-11-08): privacy scrubbing of error text ---------
+//
+// Synthetic, obviously-fake tokens only. Rules: URL keeps scheme/host/path
+// and drops ?query / #fragment; emails, UUIDs, long hex and long mixed
+// token runs are replaced; file:line:col and identifiers survive.
+
+const FAKE_HEX = "deadbeef".repeat(4); // 32 hex chars
+const FAKE_TOKEN = "FAKEtok3nFAKEtok3nFAKEtok3nFAKEtok3n"; // 36 mixed chars, not a real token
+const FAKE_UUID = "00000000-0000-4000-8000-000000000000";
+
+test("T1 P1 scrubErrorText drops URL query and fragment but keeps origin + path + line:col", () => {
+  const out = scrubErrorText(
+    "Failed to fetch dynamically imported module: https://meridian.example/assets/region-ab12cd.js?token=abc&kid=1#player=Kid",
+    300,
+  );
+  assert.equal(out, "Failed to fetch dynamically imported module: https://meridian.example/assets/region-ab12cd.js");
+  // Round 3 premise correction: anything after a query/fragment delimiter
+  // is query data, never stack metadata — a ":line:col" there is dropped.
+  assert.equal(
+    scrubErrorText("at renderGlobe (https://x.example/assets/index-Bk3x9.js?v=2:12:345)", 300),
+    "at renderGlobe (https://x.example/assets/index-Bk3x9.js",
+  );
+  assert.equal(
+    scrubErrorText("at renderGlobe (https://x.example/assets/index-Bk3x9.js:12:345)", 300),
+    "at renderGlobe (https://x.example/assets/index-Bk3x9.js:12:345)",
+    "a genuine line:col BEFORE any delimiter survives",
+  );
+});
+
+test("T1 P1 scrubErrorText redacts emails, UUIDs, long hex and long token runs; keeps identifiers", () => {
+  const out = scrubErrorText(
+    `user kid@example.com id ${FAKE_UUID} sig ${FAKE_HEX} bearer ${FAKE_TOKEN} in mapInitWebgl2Context`,
+    300,
+  );
+  assert.ok(!out.includes("kid@example.com"), out);
+  assert.ok(!out.includes(FAKE_UUID), out);
+  assert.ok(!out.includes(FAKE_HEX), out);
+  assert.ok(!out.includes(FAKE_TOKEN), out);
+  assert.ok(out.includes("mapInitWebgl2Context"), "code identifiers survive");
+  assert.ok(out.includes("<email>") && out.includes("<id>") && out.includes("<redacted>"), out);
+  // Short build hashes and ordinary words are not over-redacted.
+  assert.equal(scrubErrorText("TypeError: Cannot read properties of undefined (reading 'map') build a1b2c3d", 300),
+    "TypeError: Cannot read properties of undefined (reading 'map') build a1b2c3d");
+});
+
+test("T1 P1 scrubErrorText is bounded and neutralises @everyone/@here", () => {
+  const out = scrubErrorText("@everyone " + "x".repeat(1000), 140);
+  assert.ok(out.length <= 140, `len ${out.length}`);
+  assert.ok(!out.includes("@everyone"), out);
+  assert.equal(scrubErrorText(undefined as unknown as string, 50), "");
+});
+
+test("T1 P1 normaliseEvent scrubs error text and keeps only name/message (stack, cause, nested dropped)", () => {
+  const ev = normaliseEvent({
+    type: "js_error", ts: Date.now(), buildId: "a1b2c3d",
+    error: {
+      name: "TypeError",
+      message: `boom https://x.example/a.js?secret=${FAKE_TOKEN}#frag`,
+      stack: `at f (https://x.example/a.js?secret=${FAKE_TOKEN}:1:2)`,
+      cause: { message: FAKE_TOKEN },
+      nested: { deep: FAKE_HEX },
+    },
+  }) as Record<string, unknown>;
+  const err = ev.error as Record<string, unknown>;
+  assert.deepEqual(Object.keys(err).sort(), ["message", "name"]);
+  assert.equal(err.message, "boom https://x.example/a.js");
+  assert.deepEqual(validateEvent(ev), [], "scrubbed legacy event still validates");
+});
+
+test("T1 P1 Discord + email never carry the query secret, token, or mention; allowed_mentions parse is empty", async () => {
+  const { map } = memoryStore();
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status: 200 });
+  }) as typeof fetch;
+  const env = storeEnv(map, {
+    DISCORD_WEBHOOK_URL: "https://discord.test/hook",
+    RESEND_API_KEY: "test-key",
+    REPORT_EMAIL: "owner@example.test",
+  });
+  const ev = provJsError({
+    error: { name: "TypeError", message: `Failed to fetch https://m.example/assets/r.js?token=${FAKE_TOKEN}#player=Kid @everyone` },
+  });
+  const res = await handleRequest(postEvent(ev), env);
+  assert.equal(res.status, 200);
+  const discord = fetchCalls.find((c) => c.url === "https://discord.test/hook");
+  const email = fetchCalls.find((c) => c.url.includes("resend"));
+  assert.ok(discord && email, "both channels attempted");
+  for (const c of [discord!, email!]) {
+    const body = String((c.init as RequestInit).body);
+    assert.ok(!body.includes(FAKE_TOKEN), "token stripped");
+    assert.ok(!body.includes("player=Kid"), "fragment stripped");
+    assert.ok(!body.includes("?token"), "query stripped");
+    assert.ok(!body.includes("@everyone"), "mention neutralised");
+    assert.ok(body.includes("https://m.example/assets/r.js"), "useful path kept");
+  }
+  const payload = JSON.parse(String((discord!.init as RequestInit).body)) as { allowed_mentions?: { parse: unknown[] } };
+  assert.deepEqual(payload.allowed_mentions, { parse: [] });
+});
+
+test("T1 P1 client sanitizeError scrubs the same way and stays bounded (parity with worker)", () => {
+  const raw = new TypeError(`Failed to fetch https://m.example/assets/r.js?token=${FAKE_TOKEN}#frag id ${FAKE_UUID}`);
+  const c = sanitizeError(raw);
+  assert.equal(c.name, "TypeError");
+  assert.equal(c.message, scrubErrorText(raw.message, 300), "client and worker scrub identically");
+  assert.ok(!c.message.includes(FAKE_TOKEN) && !c.message.includes(FAKE_UUID));
+  assert.ok(sanitizeError("x".repeat(5000)).message.length <= 300);
+  assert.deepEqual(sanitizeError(new Error("plain message")), { name: "Error", message: "plain message" });
+});
+
+// --- Council fix T2 (2026-11-08): provenance never bypassed by KV state ---
+
+function throwingKv(): KvLike {
+  return {
+    get: async () => {
+      throw new Error("kv down");
+    },
+    put: async () => {
+      throw new Error("kv down");
+    },
+  };
+}
+
+function okFetch(status = 200, headers: Record<string, string> = {}) {
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    return new Response("{}", { status, headers });
+  }) as typeof fetch;
+}
+
+const PROBE = (buildId = "wake-check") => ({ type: "js_error", ts: Date.now(), buildId });
+
+function discordBodies(): string[] {
+  return fetchCalls
+    .filter((c) => c.url === "https://discord.test/hook")
+    .map((c) => (JSON.parse(String((c.init as RequestInit).body)) as { content: string }).content);
+}
+
+for (const [label, kvEnv] of [
+  ["KV binding absent", (): Partial<CrashReportEnv> => ({})],
+  ["KV throwing", (): Partial<CrashReportEnv> => ({ TELEMETRY_COUNTS: throwingKv() })],
+] as const) {
+  test(`T2 ${label}: probe js_error is NOT individually paged; one bounded unverified summary instead`, async () => {
+    okFetch();
+    const env: CrashReportEnv = { DISCORD_WEBHOOK_URL: "https://discord.test/hook", ...kvEnv() };
+    for (let i = 0; i < 5; i++) {
+      const res = await handleRequest(postEvent(PROBE(i % 2 ? "periodic-probe" : "wake-check")), env);
+      assert.equal(res.status, 200);
+    }
+    const bodies = discordBodies();
+    assert.equal(bodies.length, 1, "exactly one summary per window per isolate");
+    assert.ok(bodies[0].includes("Unverified crash-type reports"), bodies[0]);
+    assert.ok(!bodies[0].includes("FIX — Developer action needed"), "never rendered as a player crash");
+    assert.equal(lastIngestOutcomeForTests()?.route, "summary_suppressed", "5th report: tallied, not re-sent");
+  });
+
+  test(`T2 ${label}: a real-client-shaped crash still pages individually`, async () => {
+    okFetch();
+    const env: CrashReportEnv = { DISCORD_WEBHOOK_URL: "https://discord.test/hook", ...kvEnv() };
+    const res = await handleRequest(postEvent(provJsError({ lastMilestone: undefined })), env);
+    assert.equal(res.status, 200);
+    const bodies = discordBodies();
+    assert.equal(bodies.length, 1);
+    assert.ok(bodies[0].startsWith("🚨 FIX — Developer action needed"), bodies[0]);
+    assert.equal(lastIngestOutcomeForTests()?.route, "paged");
+    assert.equal(lastIngestOutcomeForTests()?.counted, false);
+  });
+}
+
+test("T2 concurrent probes with KV down in one isolate produce at most one summary", async () => {
+  okFetch();
+  const env: CrashReportEnv = { DISCORD_WEBHOOK_URL: "https://discord.test/hook", TELEMETRY_COUNTS: throwingKv() };
+  await Promise.all(Array.from({ length: 20 }, () => handleRequest(postEvent(PROBE()), env)));
+  assert.equal(discordBodies().length, 1);
+});
+
+test("T2 UncorroboratedSummary: <=1 text per 15-min window, lower-bound counts, capped pattern keys", () => {
+  const sum = new UncorroboratedSummary();
+  const t0 = Date.UTC(2026, 10, 8, 12, 0, 0);
+  const texts: string[] = [];
+  for (let i = 0; i < 50; i++) {
+    const t = sum.record({ type: "js_error", buildId: `b${i}` } as never, t0 + i * 1000);
+    if (t) texts.push(t);
+  }
+  assert.equal(texts.length, 1, "one per window");
+  const next = sum.record({ type: "js_error", buildId: "b0" } as never, t0 + 15 * 60_000);
+  assert.ok(next, "next window sends one");
+  assert.ok(next!.includes("previous window: ≥50"), next!);
+  assert.ok(next!.length <= 1800, "Discord-size bound");
+  assert.ok((next!.match(/×/g) ?? []).length <= 17, "≤16 pattern keys + other");
+});
+
+test("T2 forged full real-client shape still pages with KV down (documented limit, not authentication)", async () => {
+  okFetch();
+  const env: CrashReportEnv = { DISCORD_WEBHOOK_URL: "https://discord.test/hook", TELEMETRY_COUNTS: throwingKv() };
+  await handleRequest(postEvent(provJsError({ sessionId: "forged", error: { name: "Error", message: "forged" } })), env);
+  assert.equal(discordBodies().length, 1);
+});
+
+test("T2/A9 stable public body: paged, gated, KV-down summary and no-forwarder outcomes all return {ok:true}", async () => {
+  okFetch();
+  const { map } = memoryStore();
+  const cases: Array<[Request, CrashReportEnv]> = [
+    [postEvent(provJsError()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" })],
+    [postEvent(PROBE()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" })],
+    [postEvent(PROBE()), { DISCORD_WEBHOOK_URL: "https://discord.test/hook", TELEMETRY_COUNTS: throwingKv() }],
+    [postEvent(provJsError()), {}],
+    [postEvent(tileEvent()), storeEnv(map)],
+  ];
+  for (const [req, env] of cases) {
+    const res = await handleRequest(req, env);
+    assert.equal(res.status, 200);
+    assert.deepEqual(await res.json(), { ok: true });
+  }
+});
+
+// --- Council fix T3 (2026-11-08): delivery lifecycle ----------------------
+
+function ctxSpy() {
+  const pending: Promise<unknown>[] = [];
+  return {
+    pending,
+    ctx: { waitUntil: (p: Promise<unknown>) => void pending.push(p) },
+  };
+}
+
+test("T3 with an execution context, deliveries run via ctx.waitUntil (background) and complete", async () => {
+  okFetch();
+  const { map } = memoryStore();
+  const { ctx, pending } = ctxSpy();
+  const res = await handleRequest(postEvent(provJsError()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }), ctx);
+  assert.equal(res.status, 200);
+  assert.ok(pending.length >= 1, "background work registered with waitUntil");
+  await Promise.all(pending);
+  assert.equal(discordBodies().length, 1);
+});
+
+test("T3 Discord 429 with Retry-After is retried exactly once, then accepted", async () => {
+  let n = 0;
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    n++;
+    return new Response("{}", { status: n === 1 ? 429 : 200, headers: { "retry-after": "1" } });
+  }) as typeof fetch;
+  const { map } = memoryStore();
+  await handleRequest(postEvent(provJsError()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }));
+  assert.equal(discordBodies().length, 2);
+  assert.equal(lastIngestOutcomeForTests()?.deliveries.discord, "provider_accepted");
+  const rec = JSON.parse(map.get("ops:delivery:last") ?? "null") as { discord: string } | null;
+  assert.equal(rec?.discord, "provider_accepted");
+});
+
+test("T3 persistent 5xx: one retry, recorded as failed, no recursive alert", async () => {
+  okFetch(503);
+  const { map } = memoryStore();
+  await handleRequest(postEvent(provJsError()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }));
+  assert.equal(fetchCalls.length, 2, "original + one retry, nothing else");
+  assert.equal(lastIngestOutcomeForTests()?.deliveries.discord, "failed");
+  const rec = JSON.parse(map.get("ops:delivery:last") ?? "null") as { discord: string; v: number } | null;
+  assert.equal(rec?.discord, "failed");
+  assert.equal(rec?.v, 1);
+  assert.ok(!(map.get("ops:delivery:last") ?? "").includes("discord.test"), "no webhook URL stored");
+});
+
+test("T3 timeout/abort is 'unknown' (provider may have it), never retried, never reported as success", async () => {
+  globalThis.fetch = (async (url: string | URL | Request, init?: RequestInit) => {
+    fetchCalls.push({ url: String(url), init });
+    const e = new Error("aborted");
+    e.name = "AbortError";
+    throw e;
+  }) as typeof fetch;
+  const { map } = memoryStore();
+  await handleRequest(postEvent(provJsError()), storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }));
+  assert.equal(fetchCalls.length, 1);
+  assert.equal(lastIngestOutcomeForTests()?.deliveries.discord, "unknown");
+});
+
+test("T3 default export passes ctx through (fetch signature matches dev-entry re-export)", async () => {
+  const mod = await import("./index.ts");
+  const devMod = await import("./dev-entry.ts");
+  assert.equal(devMod.default, mod.default, "dev-entry re-exports the same handler");
+  assert.equal(mod.default.fetch.length, 3, "fetch(request, env, ctx)");
+  assert.equal(mod.default.scheduled.length, 3, "scheduled(event, env, ctx)");
+});
+
+// --- Council fix T4 (2026-11-08): retention + numeric count maps ----------
+
+test("T4 every counter write sets expirationTtl (90 days); ops records 7 days", async () => {
+  const puts: Array<{ k: string; o?: { expirationTtl?: number } }> = [];
+  const map = new Map<string, string>();
+  const kv: KvLike = {
+    get: async (k: string) => map.get(k) ?? null,
+    put: async (k: string, v: string, o?: { expirationTtl?: number }) => {
+      puts.push({ k, o });
+      map.set(k, v);
+    },
+  };
+  okFetch();
+  await handleRequest(postEvent(tileEvent()), { TELEMETRY_COUNTS: kv });
+  await handleRequest(postEvent(provJsError()), { TELEMETRY_COUNTS: kv, DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(COUNT_BUCKET_TTL_SECONDS, 90 * 24 * 3600);
+  assert.ok(puts.length >= 3);
+  for (const p of puts) {
+    assert.ok(typeof p.o?.expirationTtl === "number" && p.o.expirationTtl >= 60, `ttl on ${p.k}`);
+    if (p.k.startsWith("tel:counts:")) assert.equal(p.o!.expirationTtl, COUNT_BUCKET_TTL_SECONDS);
+    if (p.k.startsWith("ops:")) assert.equal(p.o!.expirationTtl, 7 * 24 * 3600);
+  }
+});
+
+test("T4 stored count maps are numerically normalised on read (corrBuilds/cantTellGroups/others); old buckets still read", async () => {
+  const map = new Map<string, string>();
+  const kv: KvLike = { get: async (k: string) => map.get(k) ?? null, put: async (k: string, v: string) => void map.set(k, v) };
+  map.set("k", JSON.stringify({
+    total: 3,
+    builds: { a: 2, b: "x" },
+    corrBuilds: { a: "9", b: 1, c: null, d: Infinity },
+    cantTellGroups: { g: { nested: 1 }, h: 2 },
+    provenance: { corroborated: "5", uncorroborated: 1 },
+    verdicts: "garbage",
+  }));
+  const b = (await kvTelemetryStore(kv).readBucket("k"))!;
+  assert.deepEqual(b.builds, { a: 2 });
+  assert.deepEqual(b.corrBuilds, { b: 1 });
+  assert.deepEqual(b.cantTellGroups, { h: 2 });
+  assert.deepEqual(b.provenance, { uncorroborated: 1 });
+  assert.deepEqual(b.verdicts, {});
+  assert.deepEqual(b.alerts, []);
+  map.set("old", JSON.stringify({ total: 1, builds: { a: 1 } }));
+  const old = (await kvTelemetryStore(kv).readBucket("old"))!;
+  assert.equal(old.total, 1);
+  assert.deepEqual(old.corrBuilds, {});
+});
+
+// --- Council fix T5 (2026-11-08): honest failure wording -------------------
+
+test("T5 a js_error with no error details and no last step does not claim the app failed to start", () => {
+  const alert = buildAlert({ type: "js_error", ts: Date.now(), buildId: "a1b2c3d" } as CrashReportEvent);
+  for (const text of [alert.discord, alert.emailBody]) {
+    assert.ok(!text.includes("failed to start"), text);
+    assert.ok(text.includes("no error details"), text);
+    assert.ok(text.includes("failure(v1):"), "structured, versioned failure line");
+    assert.ok(text.includes("phase unavailable (no last step stamped)"), text);
+    assert.ok(text.includes("error absent"), text);
+    assert.ok(text.includes("boot age unavailable"), text);
+    assert.ok(text.includes("cause unconfirmed"), text);
+    assert.ok(text.includes("not collected: request status, server timing, phase timeline"), "deferred metrics named as not collected");
+  }
+});
+
+test("T5 the real route-boundary error renders observed facts and keeps phase honest", () => {
+  const alert = buildAlert(provJsError({ lastMilestone: undefined, msSinceBootStart: 3200 }) as CrashReportEvent);
+  assert.ok(alert.discord.includes("error present"), alert.discord);
+  assert.ok(alert.discord.includes("boot age 3,200 ms"), alert.discord);
+  assert.ok(alert.discord.includes("phase unavailable (no last step stamped)"));
+  assert.ok(alert.discord.includes("origin client-shaped, not authenticated"));
+  const withStep = buildAlert(provJsError({ lastMilestone: "map_init_start" }) as CrashReportEvent);
+  assert.ok(withStep.discord.includes("last reported step map loading"), withStep.discord);
+  assert.ok(!withStep.discord.includes("pending"), "no inferred pending phase claimed");
+});
+
+// --- Council fix T6 (2026-11-08): truthful, versioned ops health ---------
+
+const H_T0 = Date.UTC(2026, 10, 8, 18, 0, 0);
+
+function healthRecord(overrides: Record<string, unknown> = {}, checkOverrides: Record<string, string> = {}) {
+  return {
+    v: 1,
+    kind: "health_run",
+    trigger: "platform_schedule",
+    sampledAt: new Date(H_T0).toISOString(),
+    checks: REQUIRED_CHECKS.map((name) => ({
+      name,
+      result: checkOverrides[name] ?? "passed",
+      expected: "x",
+      observed: "x",
+      reason: "ok",
+      durationMs: 1,
+    })),
+    ...overrides,
+  };
+}
+
+test("T6 evaluateHealth: healthy only for the complete, fresh, required set", () => {
+  assert.equal(evaluateHealth(healthRecord(), H_T0 + 60_000).health, "healthy");
+  assert.equal(evaluateHealth(healthRecord({}, { kv_write: "failed" }), H_T0).health, "unhealthy");
+  assert.equal(evaluateHealth(healthRecord({}, { kv_read: "unknown" }), H_T0).health, "unknown");
+});
+
+test("T6 evaluateHealth totality: empty/missing/duplicate/unknown checks, stale, future, malformed → unknown, never throws", () => {
+  const base = healthRecord();
+  const bad: unknown[] = [
+    null, undefined, "x", 42, [], {},
+    { ...base, v: 2 },
+    { ...base, kind: "player_crash" },
+    { ...base, checks: [] },
+    { ...base, checks: base.checks.slice(1) },
+    { ...base, checks: [...base.checks, base.checks[0]] },
+    { ...base, checks: [...base.checks.slice(1), { ...base.checks[0], name: "made_up" }] },
+    { ...base, sampledAt: "not a date" },
+    { ...base, checks: "nope" },
+    { ...base, checks: [null, 1, "a", ...base.checks.slice(3)] },
+  ];
+  for (const b of bad) assert.equal(evaluateHealth(b, H_T0).health, "unknown", JSON.stringify(b)?.slice(0, 80));
+  assert.equal(evaluateHealth(base, H_T0 + 35 * 60_000).health, "healthy", "35 min is still fresh");
+  assert.equal(evaluateHealth(base, H_T0 + 35 * 60_000 + 1).health, "unknown", "stale after 35 min");
+  assert.equal(evaluateHealth(base, H_T0 - 60_001).health, "unknown", "future-dated sample");
+  const trap = Object.defineProperty({ ...base }, "checks", { get() { throw new Error("boom"); } });
+  assert.equal(evaluateHealth(trap, H_T0).health, "unknown");
+});
+
+function healthEnv(kv?: KvLike, extra: Partial<CrashReportEnv> = {}): CrashReportEnv {
+  return { DISCORD_WEBHOOK_URL: "https://discord.test/hook", ...(kv ? { TELEMETRY_COUNTS: kv } : {}), ...extra };
+}
+
+test("T6 healthy scheduled run: writes the status record (TTL), sends NOTHING to Discord", async () => {
+  okFetch();
+  const { map, kv } = memoryStore();
+  const run = await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  assert.equal(run.health, "healthy");
+  assert.equal(run.ranChecks, REQUIRED_CHECKS.length);
+  assert.equal(fetchCalls.length, 0, "no healthy spam");
+  const stored = JSON.parse(map.get(HEALTH_RECORD_KEY) ?? "null");
+  assert.equal(stored.kind, "health_run");
+  const res = await handleRequest(new Request("https://worker.test/health"), healthEnv(kv));
+  const body = (await res.json()) as Record<string, unknown>;
+  assert.equal(res.headers.get("cache-control"), "no-store");
+  // Real Date.now() is far from H_T0, so the record reads as stale/future: honest unknown.
+  assert.equal(body.health, "unknown");
+  assert.equal(body.scope, "crash-report-worker");
+  assert.ok(!JSON.stringify(body).includes("discord.test"), "no secret values in /health");
+});
+
+test("T6 /health reports healthy only when the stored run is fresh", async () => {
+  const { kv } = memoryStore();
+  okFetch();
+  const now = Date.now();
+  await runScheduledHealth(healthEnv(kv), now, HEALTH_CRON);
+  const body = (await (await handleRequest(new Request("https://worker.test/health"), healthEnv(kv))).json()) as Record<string, unknown>;
+  assert.equal(body.health, "healthy");
+  assert.deepEqual(body.failing, []);
+  assert.equal(typeof body.ageSec, "number");
+});
+
+test("T6 KV write throws: unhealthy; first failure stores but does not page; second consecutive failure pages once; third does not", async () => {
+  okFetch();
+  const map = new Map<string, string>();
+  let failPut = true;
+  const kv: KvLike = {
+    get: async (k: string) => map.get(k) ?? null,
+    put: async (k: string, v: string) => {
+      if (failPut && k === "ops:health:probe") throw new Error("kv put");
+      map.set(k, v);
+    },
+  };
+  const r1 = await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  assert.equal(r1.health, "unhealthy");
+  assert.equal(discordBodies().length, 0, "1 failure → no page");
+  await runScheduledHealth(healthEnv(kv), H_T0 + 15 * 60_000, HEALTH_CRON);
+  assert.equal(discordBodies().length, 1, "2 consecutive → 1 page");
+  const msg = discordBodies()[0];
+  assert.ok(msg.includes("kv_write") && msg.includes("expected") && msg.includes("observed"), msg);
+  assert.ok(msg.includes("scope: crash-report worker only"), msg);
+  assert.ok(!msg.includes("discord.test"), "no secret values");
+  await runScheduledHealth(healthEnv(kv), H_T0 + 30 * 60_000, HEALTH_CRON);
+  assert.equal(discordBodies().length, 1, "still open → no repeat");
+  failPut = false;
+  await runScheduledHealth(healthEnv(kv), H_T0 + 45 * 60_000, HEALTH_CRON);
+  assert.equal(discordBodies().length, 1, "1 pass → no recovery yet");
+  await runScheduledHealth(healthEnv(kv), H_T0 + 60 * 60_000, HEALTH_CRON);
+  assert.equal(discordBodies().length, 2, "2 passes → one recovered message");
+  assert.ok(discordBodies()[1].includes("recovered"), discordBodies()[1]);
+});
+
+test("T6 missing binding pages on the first run (no waiting for a second)", async () => {
+  okFetch();
+  const run = await runScheduledHealth(healthEnv(undefined), H_T0, HEALTH_CRON);
+  assert.equal(run.health, "unhealthy");
+  assert.equal(discordBodies().length, 1);
+  assert.ok(discordBodies()[0].includes("bindings_present"));
+});
+
+test("T6 KV fully unreadable: incident state unknown → at most one page per scheduled hour", async () => {
+  okFetch();
+  let pages = 0;
+  for (let q = 0; q < 8; q++) {
+    await runScheduledHealth(healthEnv(throwingKv()), H_T0 + q * 15 * 60_000, HEALTH_CRON);
+    pages = discordBodies().length;
+  }
+  assert.equal(pages, 2, "8 quarter-hour runs over 2 hours → 2 pages");
+});
+
+test("T6 a KV readback miss (eventual consistency) is not a failure", async () => {
+  okFetch();
+  const kv: KvLike = { get: async () => null, put: async () => {} };
+  const run = await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  assert.equal(run.health, "healthy");
+  const read = run.checks.find((c) => c.name === "kv_read")!;
+  assert.equal(read.result, "passed");
+  assert.ok(read.observed.includes("visibility unconfirmed"), read.observed);
+});
+
+test("T6 ingress can never write health: a posted health_run / source=cron touches no ops:health key", async () => {
+  okFetch();
+  const { map } = memoryStore();
+  const env = storeEnv(map, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  await handleRequest(postEvent({ kind: "health_run", type: "js_error", ts: Date.now(), buildId: "wake-check", source: "cron", trigger: "cron" }), env);
+  await handleRequest(postEvent({ kind: "health_run", health: "healthy" }), env);
+  assert.ok(![...map.keys()].some((k) => k.startsWith("ops:health")), [...map.keys()].join(","));
+});
+
+test("T6 scheduled() dispatch: digest cron keeps the digest path; health cron runs health (no digest)", async () => {
+  okFetch();
+  const mod = await import("./index.ts");
+  const { map, kv } = memoryStore();
+  await mod.default.scheduled({ cron: "15 * * * *", scheduledTime: H_T0 }, healthEnv(kv), { waitUntil: () => {} });
+  assert.ok(!map.has(HEALTH_RECORD_KEY), "digest cron does not run health");
+  await mod.default.scheduled({ cron: HEALTH_CRON, scheduledTime: H_T0 }, healthEnv(kv), { waitUntil: () => {} });
+  assert.ok(map.has(HEALTH_RECORD_KEY), "health cron writes the record");
+  assert.equal(HEALTH_CRON, "*/15 * * * *");
+});
+
+// --- Council fix round 2 (2026-11-08): independent verifier F1–F5 -------
+
+const R2_SCRUB_CASES: Array<{ input: string; secrets: string[]; keeps: string[] }> = [
+  { input: "https://host/a?token=(SECRET123)", secrets: ["SECRET123", "token"], keeps: ["https://host/a"] },
+  { input: "[docs](https://host/a?t=S1ECRET)", secrets: ["S1ECRET"], keeps: ["[docs](https://host/a"] },
+  { input: "see https://a.test/p?x=S2ECRET and https://b.test/q#S3ECRET\nnext line", secrets: ["S2ECRET", "S3ECRET"], keeps: ["https://a.test/p", "https://b.test/q", "\nnext line"] },
+  { input: "https://h.test/a\\?t=S4ECRET", secrets: ["S4ECRET"], keeps: ["https://h.test/a"] },
+  { input: "GET /api/v1?token=S5ECRET failed", secrets: ["S5ECRET"], keeps: ["GET /api/v1", "failed"] },
+  { input: "https://h.test/p%3Ftoken%3DS6ECRET", secrets: ["S6ECRET"], keeps: ["https://h.test/p"] },
+  { input: "(https://h.test/a?t=(S7ECRET)).", secrets: ["S7ECRET"], keeps: ["(https://h.test/a"] },
+  { input: "https://h.test/a#access_token=S8ECRET", secrets: ["S8ECRET"], keeps: ["https://h.test/a"] },
+  { input: "x(https://a.test/?u=https://b.test/c?k=S9ECRET)", secrets: ["S9ECRET"], keeps: ["x(https://a.test/"] },
+];
+
+test("R2-F1 URL queries/fragments are removed across parentheses, markdown, escapes, encodings, relative paths and lines — worker and client identical", () => {
+  for (const c of R2_SCRUB_CASES) {
+    const w = scrubErrorText(c.input, 1000);
+    const client = sanitizeError(new Error(c.input)).message;
+    assert.equal(client, w, `client/worker parity for ${JSON.stringify(c.input)}`);
+    for (const s of c.secrets) assert.ok(!w.includes(s), `${s} survived in ${JSON.stringify(w)}`);
+    for (const k of c.keeps) assert.ok(w.includes(k), `${JSON.stringify(k)} lost from ${JSON.stringify(w)}`);
+  }
+  const benign = "TypeError at https://cdn.test/app.js:10:5 (render) a?b c#1 foo(bar) [x](y) 50% done";
+  assert.equal(scrubErrorText(benign, 1000), benign, "benign symbols and stack positions untouched");
+  assert.equal(sanitizeError(new Error(benign)).message, benign);
+});
+
+test("R2-F1 a parenthesised query value never reaches Discord via real ingress", async () => {
+  okFetch();
+  const ev = provJsError({ error: sanitizeError(new Error("load failed https://host/a?token=(SECRET123)")) });
+  await handleRequest(postEvent(ev), { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(fetchCalls.length, 1);
+  assert.ok(!String((fetchCalls[0].init as { body: string }).body).includes("SECRET123"));
+});
+
+const hang = () => new Promise<never>(() => {});
+function hangingKv(): KvLike & { puts: number } {
+  const kv = { puts: 0, get: () => hang(), put: () => { kv.puts++; return hang(); } };
+  return kv as unknown as KvLike & { puts: number };
+}
+
+test("R2-F2 a hanging counter store does not delay paging a real-client crash; response is bounded", { timeout: 15_000 }, async () => {
+  okFetch(200);
+  const pending: Promise<unknown>[] = [];
+  const t0 = Date.now();
+  const resP = handleRequest(postEvent(provJsError()), { TELEMETRY_COUNTS: hangingKv(), DISCORD_WEBHOOK_URL: "https://discord.test/hook" }, { waitUntil: (p) => pending.push(p) });
+  await new Promise((r) => setTimeout(r, 50));
+  assert.equal(pending.length >= 1, true, "paging work registered before counting finishes");
+  await Promise.all(pending);
+  assert.equal(fetchCalls.length, 1, "paged once despite a hanging store");
+  const res = await resP;
+  assert.deepEqual(await res.json(), { ok: true });
+  assert.ok(Date.now() - t0 < 3_500, "response bounded by the counting deadline");
+  assert.equal(lastIngestOutcomeForTests()?.counted, false);
+});
+
+test("R2-F2 a hanging store never turns a probe into an individual page (summary only), and no write starts after the deadline", { timeout: 15_000 }, async () => {
+  okFetch(200);
+  const kv = hangingKv();
+  await handleRequest(postEvent({ type: "js_error", ts: Date.now(), buildId: "wake-check" }), { TELEMETRY_COUNTS: kv, DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(lastIngestOutcomeForTests()?.route, "summarized_kv_unavailable");
+  assert.equal(fetchCalls.length, 1);
+  assert.ok(String((fetchCalls[0].init as { body: string }).body).toLowerCase().includes("unverified crash-type reports"), "summary, not a crash alert");
+  // A store whose read answers only after the deadline: the late answer must not start a write.
+  let lateWrites = 0;
+  let closedAt = 0;
+  const slow: KvLike = {
+    get: () => new Promise((r) => setTimeout(() => r(null), 2_600)),
+    put: async () => { if (closedAt && Date.now() >= closedAt) lateWrites++; },
+  };
+  await handleRequest(postEvent(provJsError()), { TELEMETRY_COUNTS: slow });
+  closedAt = Date.now();
+  await new Promise((r) => setTimeout(r, 900));
+  assert.equal(lateWrites, 0, "no counter write started after the request gave up on the store");
+});
+
+test("R2-F3 health: a hanging store cannot suppress its own outage alert; the run is bounded", { timeout: 15_000 }, async () => {
+  okFetch(200);
+  const { kv, map } = memoryStore();
+  map.set("ops:health:incident", JSON.stringify({ v: 1, open: false, consecutiveFailures: 1 }));
+  kv.put = () => hang();
+  const t0 = Date.now();
+  await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 1, "second consecutive failure paged");
+  assert.ok(Date.now() - t0 < 4_000, "publication writes are bounded");
+});
+
+test("R2-F4 health: a definitely failed notification is retried next run; an accepted one is not repeated", { timeout: 15_000 }, async () => {
+  const { kv } = memoryStore();
+  const put = kv.put.bind(kv);
+  kv.put = (k, v, o) => (k === "ops:health:probe" ? Promise.reject(new Error("outage")) : put(k, v, o));
+  okFetch(503);
+  await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  await runScheduledHealth(healthEnv(kv), H_T0 + 15 * 60_000, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 2, "one send + one bounded retry, both 503");
+  okFetch(200);
+  fetchCalls = [];
+  await runScheduledHealth(healthEnv(kv), H_T0 + 30 * 60_000, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 1, "retried at the next run");
+  await runScheduledHealth(healthEnv(kv), H_T0 + 45 * 60_000, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 1, "accepted: not repeated before the 24 h reminder");
+  await runScheduledHealth(healthEnv(kv), H_T0 + 30 * 60_000 + 24 * HOUR_MS, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 2, "24 h reminder");
+});
+
+test("R2-F4 health: a failed recovered message keeps the incident open and is retried", { timeout: 15_000 }, async () => {
+  const { kv, map } = memoryStore();
+  map.set("ops:health:incident", JSON.stringify({ v: 1, open: true, failing: ["kv_write"], consecutiveFailures: 3, consecutivePasses: 1, openedAt: "x", lastNotifiedAt: H_T0 - HOUR_MS }));
+  okFetch(503);
+  await runScheduledHealth(healthEnv(kv), H_T0, HEALTH_CRON);
+  assert.equal(JSON.parse(map.get("ops:health:incident") ?? "{}").open, true, "still open after failed recovered send");
+  okFetch(200);
+  fetchCalls = [];
+  await runScheduledHealth(healthEnv(kv), H_T0 + 15 * 60_000, HEALTH_CRON);
+  assert.equal(fetchCalls.length, 1);
+  assert.ok(String((fetchCalls[0].init as { body: string }).body).includes("recovered"));
+  assert.equal(JSON.parse(map.get("ops:health:incident") ?? "{}").open, false);
+});
+
+test("R3 ops channel is Discord only: email-only config is unhealthy (explicit reason) and sends NO health email", { timeout: 15_000 }, async () => {
+  okFetch(200);
+  const { kv } = memoryStore();
+  const emailOnly = { TELEMETRY_COUNTS: kv, RESEND_API_KEY: "synthetic", REPORT_EMAIL: "ops@example.invalid" };
+  const now = Date.now(); // /health evaluates freshness against the real clock
+  await runScheduledHealth(emailOnly, now - 15 * 60_000, HEALTH_CRON);
+  const r1 = await runScheduledHealth(emailOnly, now, HEALTH_CRON);
+  const b = r1.checks.find((c) => c.name === "bindings_present");
+  assert.equal(r1.health, "unhealthy");
+  assert.equal(b?.result, "failed");
+  assert.equal(b?.reason, "ops_discord_missing");
+  assert.equal(fetchCalls.length, 0, "no ops email, no other send");
+  const res = await handleRequest(new Request("https://worker.test/health"), emailOnly);
+  const body = (await res.json()) as { health: string; failing: string[] };
+  assert.equal(body.health, "unhealthy", "never claims a healthy deliverable ops channel");
+  assert.deepEqual(body.failing, ["bindings_present"]);
+  // Both configured: health goes to Discord only.
+  const { kv: kv2 } = memoryStore();
+  const put = kv2.put.bind(kv2);
+  kv2.put = (k, v, o) => (k === "ops:health:probe" ? Promise.reject(new Error("outage")) : put(k, v, o));
+  const both = healthEnv(kv2, { RESEND_API_KEY: "synthetic", REPORT_EMAIL: "ops@example.invalid" });
+  await runScheduledHealth(both, H_T0, HEALTH_CRON);
+  await runScheduledHealth(both, H_T0 + 15 * 60_000, HEALTH_CRON);
+  assert.deepEqual(fetchCalls.map((c) => c.url), ["https://discord.test/hook"]);
+});
+
+test("R3 existing ingest email channel unchanged: a real crash still emails when email is configured", async () => {
+  okFetch(200);
+  await handleRequest(postEvent(provJsError()), { RESEND_API_KEY: "synthetic", REPORT_EMAIL: "ops@example.invalid" });
+  assert.deepEqual(fetchCalls.map((c) => c.url), ["https://api.resend.com/emails"]);
+});
+
+// --- Council fix round 3 (2026-11-08): delimiter-boundary scrub, bounded admission ---
+//
+// Premise retired: "after a query/fragment delimiter we can keep a safe
+// suffix" and "a token is URL-like only with a scheme or ?k=v". Rule now:
+// once a token crosses a query/fragment boundary (?, #, or their percent-
+// encodings at any nesting depth) and the token is path-like (has / or
+// %2F), uses an encoded delimiter, or carries k=v after it, EVERYTHING
+// from the boundary to the token end is removed — no suffix is rescued.
+
+const R3_SECRET = "Z9SECRETz";
+const R3_CORPUS: Array<[string, string]> = [
+  // [input, exact expected output]
+  ["https://host/a?recovery_code=:612345:789012", "https://host/a"],
+  ["/map#session=Z9SECRETz", "/map"],
+  ["https%3A%2F%2Fhost%2Fmap%23session%3DZ9SECRETz", "https%3A%2F%2Fhost%2Fmap"],
+  ["/api?Z9SECRETz", "/api"],
+  ["https://h/p%253Ftoken%253DZ9SECRETz", "https://h/p"],
+  ["https://h/p%25253FZ9SECRETz", "https://h/p"],
+  ["https://h/a?t=1#frag=Z9SECRETz", "https://h/a"],
+  ["https://h/a#?t=Z9SECRETz", "https://h/a"],
+  ["https://h/a??t=Z9SECRETz", "https://h/a"],
+  ["?token=Z9SECRETz", ""],
+  ["#access_token=Z9SECRETz", ""],
+  ["at f (https://cdn.test/app.js?v=2:10:5)", "at f (https://cdn.test/app.js"],
+  ["[x](https://h/a?t=Z9SECRETz) next", "[x](https://h/a next"],
+  ["one https://a/p?x=Z9SECRETz\ntwo /b#y=Z9SECRETz", "one https://a/p\ntwo /b"],
+  ["host.test/a?Z9SECRETz", "host.test/a"],
+  ["?token%3DZ9SECRETz", ""],
+  ["#k%253DZ9SECRETz", ""],
+  ["note:?pin%3d612345", "note:"],
+  // benign: no boundary crossed, or a bare non-path token without k=v
+  ["at f (https://cdn.test/app.js:10:5)", "at f (https://cdn.test/app.js:10:5)"],
+  ["what? c#1 a?b foo(bar) 50% done [x](y)", "what? c#1 a?b foo(bar) 50% done [x](y)"],
+  ["Failed: https://h/assets/region-ab12.js", "Failed: https://h/assets/region-ab12.js"],
+];
+
+test("R3 scrub corpus: exact outputs, worker and client identical", () => {
+  for (const [input, expected] of R3_CORPUS) {
+    const w = scrubErrorText(input, 1000);
+    assert.equal(w, expected, `worker ${JSON.stringify(input)}`);
+    assert.equal(sanitizeError(new Error(input)).message, expected, `client ${JSON.stringify(input)}`);
+  }
+});
+
+test("R3 scrub property: a value after any query/fragment boundary never survives, in any context", () => {
+  const prefixes = ["", "(", "[l](", "at f (", "x=", "\"", "<"];
+  const bases = ["https://h.test/a", "/rel/p", "h.test/p", "https%3A%2F%2Fh%2Fp", "blob:https://h/x", "wss://h/s", "file:///C:/a"];
+  const delims = ["?", "#", "%3F", "%23", "%3f", "%253F", "%2523", "\\?", "??", "#?", "?#"];
+  const mids = ["", "k=", ":", "(", "k=(", ":61:", "%3D", "k=v&j="];
+  const suffixes = ["", ")", ":1:2", ").", ":1:2)", "\nnext", ")]"];
+  let n = 0;
+  for (const p of prefixes) for (const b of bases) for (const d of delims) for (const m of mids) for (const x of suffixes) {
+    const input = `${p}${b}${d}${m}${R3_SECRET}${x}`;
+    const w = scrubErrorText(input, 1000);
+    assert.ok(!w.includes(R3_SECRET), `leak: ${JSON.stringify(input)} -> ${JSON.stringify(w)}`);
+    assert.ok(!w.includes(":1:2") || !x.includes(":1:2"), `query suffix rescued: ${JSON.stringify(input)} -> ${JSON.stringify(w)}`);
+    if (n++ % 37 === 0) assert.equal(sanitizeError(new Error(input)).message, w, "client parity");
+  }
+  assert.ok(n > 10_000);
+});
+
+test("R3 numeric query value never reaches Discord via real ingress", async () => {
+  okFetch(200);
+  await handleRequest(postEvent(provJsError({ error: sanitizeError(new Error("https://host/a?recovery_code=:612345:789012")) })), { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(fetchCalls.length, 1);
+  assert.ok(!String((fetchCalls[0].init as { body: string }).body).includes("612345"));
+});
+
+function hangingLimiter(): { limit: () => Promise<{ success: boolean }>; calls: number } {
+  const b = { calls: 0, limit: () => { b.calls++; return new Promise<{ success: boolean }>(() => {}); } };
+  return b;
+}
+
+test("R3 a hanging admission rate-limit binding: real crash pages once, response bounded, in-memory limit still enforced", { timeout: 20_000 }, async () => {
+  okFetch(200);
+  const pending: Promise<unknown>[] = [];
+  const limiter = hangingLimiter();
+  const env = { DISCORD_WEBHOOK_URL: "https://discord.test/hook", CRASH_RATE_LIMITER: limiter };
+  const t0 = Date.now();
+  const res = await handleRequest(postEvent(provJsError()), env, { waitUntil: (p) => pending.push(p) });
+  assert.ok(Date.now() - t0 < 2_500, "admission is bounded");
+  assert.equal(res.status, 200);
+  assert.deepEqual(await res.json(), { ok: true });
+  assert.equal(pending.length, 1, "exactly one background delivery registered");
+  await Promise.all(pending);
+  assert.equal(fetchCalls.length, 1, "exactly one send");
+  assert.equal(limiter.calls, 1);
+  // The in-memory layer (first) still caps one client while the binding hangs.
+  resetRateLimitsForTests();
+  const codes: number[] = [];
+  for (let i = 0; i < 11; i++) {
+    const r = await handleRequest(postEvent(tileEvent(), "/ingest", { "cf-connecting-ip": "203.0.113.9" }), { CRASH_RATE_LIMITER: hangingLimiter() });
+    codes.push(r.status);
+  }
+  assert.equal(codes.filter((c) => c === 429).length, 1, "11th request from one client is limited by the in-memory layer");
+});
+
+test("R3 a hanging admission binding never turns a probe into an individual send", { timeout: 20_000 }, async () => {
+  okFetch(200);
+  const { kv } = memoryStore();
+  await handleRequest(postEvent({ type: "js_error", ts: Date.now(), buildId: "wake-check" }), { TELEMETRY_COUNTS: kv, DISCORD_WEBHOOK_URL: "https://discord.test/hook", CRASH_RATE_LIMITER: hangingLimiter() });
+  assert.equal(fetchCalls.length, 0);
+  assert.equal(lastIngestOutcomeForTests()?.route, "counted_only");
+});
+
+test("R3 a late binding answer after the admission deadline has no effect", { timeout: 20_000 }, async () => {
+  okFetch(200);
+  const late = { limit: () => new Promise<{ success: boolean }>((r) => setTimeout(() => r({ success: false }), 1_500)) };
+  const res = await handleRequest(postEvent(provJsError()), { DISCORD_WEBHOOK_URL: "https://discord.test/hook", CRASH_RATE_LIMITER: late });
+  assert.equal(res.status, 200);
+  await new Promise((r) => setTimeout(r, 900));
+  assert.equal(fetchCalls.length, 1, "paged once; the late 'limited' answer neither blocks nor re-sends");
+});
+
+test("R3 a request body that never finishes is answered 408 within the bound and sends nothing", { timeout: 20_000 }, async () => {
+  okFetch(200);
+  const stalled = new ReadableStream<Uint8Array>({ start(c) { c.enqueue(new TextEncoder().encode("{")); } });
+  const req = new Request("https://worker.test/ingest", { method: "POST", headers: { "content-type": "application/json", origin: GAME_ORIGIN }, body: stalled, duplex: "half" } as RequestInit);
+  const t0 = Date.now();
+  const res = await handleRequest(req, { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(res.status, 408);
+  assert.ok(Date.now() - t0 < 12_000);
+  assert.equal(fetchCalls.length, 0);
+});
+
+// --- Council fix round 4 (2026-11-08): body cancellation never delays 408/413 ---
+
+function cancelSource(cancel: () => Promise<void>, chunks: Uint8Array[] = [new TextEncoder().encode("{")]) {
+  let calls = 0;
+  const body = new ReadableStream<Uint8Array>({
+    start(c) { for (const ch of chunks) c.enqueue(ch); },
+    cancel() { calls++; return cancel(); },
+  });
+  return { body, get calls() { return calls; } };
+}
+const r4Request = (body: ReadableStream<Uint8Array>) =>
+  new Request("https://worker.test/ingest", { method: "POST", headers: { "content-type": "application/json", origin: GAME_ORIGIN }, body, duplex: "half" } as RequestInit);
+const settleWithin = <T>(p: Promise<T>, ms: number) =>
+  Promise.race([p.then((value) => ({ settled: true as const, value })), new Promise<{ settled: false }>((r) => setTimeout(() => r({ settled: false }), ms))]);
+
+test("R4 body deadline: a cancel() that never settles does not delay the timeout result", { timeout: 5_000 }, async () => {
+  const s = cancelSource(() => new Promise(() => {}));
+  const r = await settleWithin(readBodyCapped(r4Request(s.body), 8192, 20), 250);
+  assert.deepEqual(r, { settled: true, value: undefined });
+  assert.equal(s.calls, 1, "cancellation was started (best effort)");
+});
+
+test("R4 body deadline: a cancel() that rejects is swallowed (no unhandled rejection)", { timeout: 5_000 }, async () => {
+  const seen: unknown[] = [];
+  const onUnhandled = (e: unknown) => seen.push(e);
+  process.on("unhandledRejection", onUnhandled);
+  try {
+    const s = cancelSource(() => Promise.reject(new Error("cancel failed")));
+    const r = await settleWithin(readBodyCapped(r4Request(s.body), 8192, 20), 250);
+    assert.deepEqual(r, { settled: true, value: undefined });
+    await new Promise((res) => setTimeout(res, 50));
+    assert.deepEqual(seen, []);
+  } finally {
+    process.off("unhandledRejection", onUnhandled);
+  }
+});
+
+test("R4 oversized body: 413 at once even when cancel() never settles; nothing sent", { timeout: 5_000 }, async () => {
+  okFetch(200);
+  const big = new Uint8Array(70_000).fill(32);
+  const s = cancelSource(() => new Promise(() => {}), [big]);
+  const r = await settleWithin(handleRequest(r4Request(s.body), { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }), 500);
+  assert.equal(r.settled, true);
+  assert.equal(r.settled && r.value.status, 413);
+  assert.equal(s.calls, 1);
+  assert.equal(fetchCalls.length, 0);
+});
+
+test("R4 full handler: stalled body with a never-settling cancel() still answers 408 within the deadline; nothing sent", { timeout: 15_000 }, async () => {
+  okFetch(200);
+  const pending: Promise<unknown>[] = [];
+  const s = cancelSource(() => new Promise(() => {}));
+  const r = await settleWithin(handleRequest(r4Request(s.body), { DISCORD_WEBHOOK_URL: "https://discord.test/hook" }, { waitUntil: (p) => pending.push(p) }), BODY_READ_TIMEOUT_MS + 400);
+  assert.equal(r.settled, true);
+  assert.equal(r.settled && r.value.status, 408);
+  assert.equal(fetchCalls.length, 0);
+  assert.equal(pending.length, 0);
+});
+
+test("R4 normal body: read completes, lock released; an erroring stream answers 408 and sends nothing", { timeout: 5_000 }, async () => {
+  const text = JSON.stringify({ hello: "world" });
+  const req = r4Request(new ReadableStream<Uint8Array>({ start(c) { c.enqueue(new TextEncoder().encode(text)); c.close(); } }));
+  assert.equal(await readBodyCapped(req, 8192, 1_000), text);
+  assert.equal(req.body?.locked, false, "reader lock released after a completed read");
+  okFetch(200);
+  const errored = new ReadableStream<Uint8Array>({ pull(c) { c.error(new Error("network reset")); } });
+  const res = await handleRequest(r4Request(errored), { DISCORD_WEBHOOK_URL: "https://discord.test/hook" });
+  assert.equal(res.status, 408);
+  assert.equal(fetchCalls.length, 0);
 });
