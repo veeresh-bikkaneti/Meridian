@@ -19,6 +19,7 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
 import * as B710 from "./band-7-10.js";
 import { createBand18 } from "./band-18plus.js";
+import { createMontage, LENS_R } from "./door-montage.js";
 
 const W = 1094, H = 616, DURATION = 10.0, FPS = 24, SS = 2; // SS: render-target supersampling, so the lens magnifies crisply
 const q = new URLSearchParams(location.search);
@@ -473,14 +474,14 @@ function watsonPos1018(t) {
   p.lerp(WP.start, ramp(t, 9.0, 9.8));
   return p;
 }
-// Holmes follows the lens along the facade during the door beat. S.hs holds
-// the calibrated stop x per window (see calibrateDoor); S.hOverride forces x.
+// Holmes steps to one calibrated stop (S.hs) while the lens lands on the
+// montage stage, stays put through the montage, then returns home.
+// S.hOverride forces x (used by calibrateDoor).
 function holmesX1018(t) {
   if (S.hOverride !== undefined) return S.hOverride;
   let x = SET.holmes.x;
   if (!S.hs) return x;
-  x = lerp(x, S.hs[0], ramp(t, 6.9, 7.4));
-  for (let i = 0; i < 3; i++) x = lerp(x, S.hs[i + 1], ramp(t, DOOR_T[i] + 0.12, DOOR_T[i + 1] - 0.12));
+  x = lerp(x, S.hs, ramp(t, 6.9, 7.4));
   return lerp(x, SET.holmes.x, ramp(t, 9.0, 9.7));
 }
 
@@ -578,30 +579,26 @@ async function build() {
   buildDoorRow();
   buildLines();
   if (BAND === "7-10") S.b = B710.setup({ THREE, scene, linesScene, S, mesh, SET, ramp, smooth, lerp, clamp01, arcAt, D, applyPose, mixPose, POSES, CATCH, HOLD });
+  S.mont = await createMontage({ scene, camera, W, H, mesh, toon, toonify, goldLine, reveal, ramp, smooth, clamp01, lerp, pxRadius, load, band: BAND });
   calibrateDoor();
 }
 
-// Door beat (10-18): find where Holmes must stand so the lens, held at the
-// end of a short brass handle, sits on each window. Hand lands about 60 px
-// left of the window centre; the view hangs up-right of the hand.
-const DOOR_HAND_DX = -60;
+// Door beat: find where Holmes must stand so the lens, held at the end of
+// a short brass handle, sits on the montage stage. The hand lands about
+// 235 px left of the stage centre.
+const DOOR_HAND_DX = -235;
 function calibrateDoor() {
   S.hs = null;
-  const stops = [];
-  for (let i = 0; i < 4; i++) {
-    let x = SET.holmes.x;
-    for (let it = 0; it < 4; it++) {
-      S.hOverride = x;
-      updateScene(DOOR_T[i]);
-      const hand = new THREE.Vector3(); S.H.handR.getWorldPosition(hand);
-      const win = toScreen(S.win[i].center);
-      const err = toScreen(hand).x - (win.x + DOOR_HAND_DX);
-      x -= err / 134;
-    }
-    stops.push(x);
+  let x = SET.holmes.x;
+  for (let it = 0; it < 4; it++) {
+    S.hOverride = x;
+    updateScene(7.8);
+    const hand = new THREE.Vector3(); S.H.handR.getWorldPosition(hand);
+    const err = toScreen(hand).x - (S.mont.screen.x + DOOR_HAND_DX);
+    x -= err / 134;
   }
   S.hOverride = undefined;
-  S.hs = stops;
+  S.hs = x;
 }
 
 // ── Paths and gold line geometry per band ──────────────────────────────
@@ -833,7 +830,7 @@ function updateScene(t) {
   if (S.swingPivot) S.swingPivot.rotation.z = Math.sin(t * Math.PI) * (S.swingAmp ?? 0.6) * 0.95;
   if (BAND !== "18+") updatePie(t, B1018 ? smooth(ramp(t, 4.75, 5.4)) * (1 - smooth(ramp(t, 6.95, 7.5))) : kLift);
   if (S.b) S.b.update(t);
-  if (S.win) updateDoor(t);
+  if (S.mont) S.mont.update(t);
   if (S.clouds) S.clouds.children.forEach((c) => { c.userData.x0 ??= c.position.x; c.position.x = c.userData.x0 + Math.sin(t * Math.PI / 5) * c.userData.speed * 4; });
 }
 
@@ -867,13 +864,10 @@ function updatePie(t, kLift) {
   for (const l of S.pieLines) { l.matrixAutoUpdate = false; l.matrix.copy(S.pie.matrixWorld); l.matrixWorldNeedsUpdate = true; }
 }
 
-// ── Door beat: four cafe windows, each lights ~0.4 s with one glimpse ──
-const DOOR_T = [7.6, 8.0, 8.4, 8.8]; // glimpse centres (s)
-const GOLDMAT = () => toon(0xffc23a, { emissive: new THREE.Color(0xffa000), emissiveIntensity: 0.6 });
+// ── Facade windows: wall dressing; the door beat itself lives in door-montage.js ──
 function buildDoorRow() {
-  S.win = [];
   const dark = 0x5a3b28, w = 1.25, h = 1.35, th = 0.13;
-  [-1.93, -0.73, 0.47, 1.67].forEach((off, i) => {
+  [-1.93, -0.73, 0.47, 1.67].forEach((off) => {
     const g = new THREE.Group();
     g.position.set(SET.post.x + off, 2.8, -2.97);
     g.scale.setScalar(0.92);
@@ -885,101 +879,7 @@ function buildDoorRow() {
     mesh(new THREE.BoxGeometry(w + 0.2, 0.1, 0.24), 0xf7ead2, [0, -h / 2 - 0.04, 0.07], { parent: g });
     const paneMat = toon(0x35505f, { emissive: new THREE.Color(0x0a1218), emissiveIntensity: 1 });
     mesh(new THREE.BoxGeometry(w - 2 * th, h - 2 * th, 0.04), 0, [0, 0, -0.03], { material: paneMat, parent: g, ink: false, cast: false });
-    const prop = new THREE.Group();
-    prop.position.set(0, 0, 0.1);
-    g.add(prop);
-    S.win.push({ g, paneMat, prop, i, center: g.position.clone() });
   });
-  // 0 pendulum (physics)
-  { const pr = S.win[0].prop;
-    mesh(new THREE.BoxGeometry(0.56, 0.06, 0.08), 0xd9a531, [0, 0.5, 0], { parent: pr });
-    const L = 0.8, amp = 0.55;
-    const sw = new THREE.Group(); sw.position.set(0, 0.5, 0.02); pr.add(sw);
-    mesh(new THREE.CylinderGeometry(0.014, 0.014, L, 6), 0xfff0c0, [0, -L / 2, 0], { parent: sw, ink: false, cast: false });
-    mesh(new THREE.SphereGeometry(0.13, 18, 14), 0, [0, -L, 0], { material: GOLDMAT(), parent: sw });
-    S.win[0].sw = sw; S.win[0].amp = amp;
-    for (let k = -3; k <= 3; k++) { // dotted path of the swing
-      const a = (k / 3) * amp;
-      mesh(new THREE.SphereGeometry(0.03, 8, 6), 0xffe9a0, [Math.sin(a) * L, 0.5 - Math.cos(a) * L, -0.01], { parent: pr, ink: false, cast: false, mat: { emissive: new THREE.Color(0xffc060), emissiveIntensity: 0.7 } });
-    } }
-  // 1 bubbles in a glass (chemistry)
-  { const pr = S.win[1].prop, c = S.win[1];
-    const glassMat = toon(0xdff6ff, { transparent: true, opacity: 0.35, side: THREE.DoubleSide, depthWrite: false, emissive: new THREE.Color(0x9fd8ee), emissiveIntensity: 0.4 });
-    mesh(new THREE.CylinderGeometry(0.31, 0.25, 0.86, 20, 1, true), 0, [0, 0, 0], { material: glassMat, parent: pr, cast: false });
-    mesh(new THREE.CylinderGeometry(0.28, 0.245, 0.6, 20), 0x8fe0ee, [0, -0.12, 0], { parent: pr, ink: false, mat: { emissive: new THREE.Color(0x3a9cae), emissiveIntensity: 0.7 } });
-    mesh(new THREE.CylinderGeometry(0.255, 0.255, 0.04, 20), 0xdff6ff, [0, -0.44, 0], { parent: pr });
-    c.bub = [];
-    for (let k = 0; k < 7; k++) {
-      const r = 0.06 + (k % 3) * 0.03;
-      const b = mesh(new THREE.SphereGeometry(r, 14, 10), 0, [0, 0, 0.27], { material: toon(0xfff6cc, { emissive: new THREE.Color(0xffc040), emissiveIntensity: 0.55 }), parent: pr });
-      b.userData = { x: [-0.17, 0.05, 0.18, -0.06, 0.13, -0.19, 0.0][k], ph: k / 7, sp: 0.6 + (k % 3) * 0.12 };
-      c.bub.push(b);
-    } }
-  // 2 route on a folded map (social studies): generic terrain, dotted route, no marks
-  { const pr = S.win[2].prop, c = S.win[2];
-    const map = new THREE.Group(); map.rotation.x = -0.1; pr.add(map);
-    const panels = [];
-    for (let k = 0; k < 3; k++) {
-      const pn = new THREE.Group();
-      pn.position.set((k - 1) * 0.33, 0, 0); pn.rotation.y = k === 1 ? -0.3 : 0.3; map.add(pn);
-      mesh(new THREE.BoxGeometry(0.34, 0.8, 0.02), k === 1 ? 0xe8d4a0 : 0xf6e7c0, [0, 0, 0], { parent: pn });
-      panels.push(pn);
-    }
-    const flat = (pn, col, w2, h2, x, y) => mesh(new THREE.BoxGeometry(w2, h2, 0.012), col, [x, y, 0.014], { parent: pn, ink: false, cast: false });
-    flat(panels[0], 0x8cc063, 0.24, 0.22, 0, 0.22); flat(panels[0], 0x6fb7e0, 0.07, 0.5, 0.08, -0.12);
-    flat(panels[1], 0x6fb7e0, 0.07, 0.42, -0.02, 0.1); flat(panels[1], 0x8cc063, 0.22, 0.2, 0.0, -0.24);
-    flat(panels[2], 0xb98a55, 0.2, 0.18, 0, 0.18); flat(panels[2], 0x8cc063, 0.22, 0.24, 0.0, -0.2);
-    for (const [pn, x, y] of [[panels[2], -0.03, 0.2], [panels[2], 0.07, 0.16]]) mesh(new THREE.ConeGeometry(0.06, 0.1, 5), 0x8a6238, [x, y, 0.03], { parent: pn });
-    // dotted route winding across all three panels
-    c.dots = [];
-    const N = 15;
-    for (let k = 0; k < N; k++) {
-      const s = k / (N - 1), x = -0.5 + s * 1.0, y = -0.26 + 0.5 * s + 0.12 * Math.sin(s * 9);
-      const pn = panels[Math.min(2, Math.floor((x + 0.5) / 0.333))];
-      const d = mesh(new THREE.SphereGeometry(0.048, 10, 8), 0, [x - pn.position.x, y, 0.04], { material: GOLDMAT(), parent: pn, ink: false, cast: false });
-      c.dots.push(d);
-    }
-    // destination: a gold pin (sphere on a cone), not a cross or letter
-    const pin = new THREE.Group(); pin.position.set(0.17, 0.4, 0.05); panels[2].add(pin);
-    mesh(new THREE.SphereGeometry(0.085, 12, 10), 0, [0, 0.09, 0], { material: GOLDMAT(), parent: pin });
-    mesh(new THREE.ConeGeometry(0.055, 0.13, 8), 0, [0, 0, 0], { material: GOLDMAT(), parent: pin, rot: [Math.PI, 0, 0] });
-    c.pin = pin; }
-  // 3 old clock tower (history): face unmarked
-  { const pr = S.win[3].prop;
-    const tw = new THREE.Group(); tw.scale.setScalar(0.62); tw.position.set(0, -0.12, 0); pr.add(tw);
-    mesh(new THREE.BoxGeometry(0.62, 1.3, 0.55), 0xcdb48d, [0, 0, 0], { parent: tw });
-    mesh(new THREE.BoxGeometry(0.72, 0.1, 0.65), 0xa68d68, [0, 0.7, 0], { parent: tw });
-    mesh(new THREE.ConeGeometry(0.5, 0.55, 4), 0xa6493a, [0, 1.02, 0], { parent: tw, rot: [0, Math.PI / 4, 0] });
-    mesh(new THREE.CylinderGeometry(0.23, 0.23, 0.05, 28), 0xfff5dc, [0, 0.33, 0.29], { parent: tw, rot: [Math.PI / 2, 0, 0], mat: { emissive: new THREE.Color(0xffd070), emissiveIntensity: 0.55 } });
-    mesh(new THREE.TorusGeometry(0.235, 0.03, 8, 28), 0x5a3b28, [0, 0.33, 0.3], { parent: tw });
-    mesh(new THREE.BoxGeometry(0.035, 0.17, 0.02), 0x3a2a20, [0, 0.4, 0.33], { parent: tw, ink: false });
-    mesh(new THREE.BoxGeometry(0.03, 0.13, 0.02), 0x3a2a20, [0.06, 0.31, 0.335], { parent: tw, ink: false, rot: [0, 0, 1.1] });
-    mesh(new THREE.BoxGeometry(0.16, 0.34, 0.03), 0x4a3a30, [0, -0.3, 0.28], { parent: tw });
-    mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.03, 12), 0x4a3a30, [0, -0.13, 0.28], { parent: tw, rot: [Math.PI / 2, 0, 0] });
-  }
-}
-
-function winLit(i, t) {
-  const c = DOOR_T[i];
-  return ramp(t, c - 0.22, c - 0.1) * (1 - ramp(t, c + 0.1, c + 0.22));
-}
-function updateDoor(t) {
-  for (const w of S.win) {
-    const lit = winLit(w.i, t), c = DOOR_T[w.i];
-    w.paneMat.emissive.setRGB(lerp(0.04, 0.2, lit), lerp(0.07, 0.42, lit), lerp(0.09, 0.62, lit));
-    w.prop.visible = lit > 0.02;
-    w.prop.scale.setScalar(0.88 + 0.12 * lit);
-    if (w.sw) w.sw.rotation.z = w.amp * Math.cos((t - c) * Math.PI * 2 / 0.8 + 0.7);
-    if (w.bub) w.bub.forEach((b) => {
-      const k = (t * b.userData.sp + b.userData.ph) % 1;
-      b.position.set(b.userData.x + Math.sin(k * 12 + b.userData.ph * 6) * 0.03, -0.4 + k * 0.62, 0.27);
-    });
-    if (w.dots) {
-      const n = clamp01((t - (c - 0.18)) / 0.28) * w.dots.length;
-      w.dots.forEach((d, k) => { d.visible = k < n; });
-      w.pin.visible = n >= w.dots.length - 0.5;
-    }
-  }
 }
 
 // Where the lens view sits and how Holmes aims it, per moment.
@@ -1034,12 +934,9 @@ function renderFrame(t) {
   tgt.lerp(shapeTarget, toShape); R = lerp(R, shapeR, toShape);
   const toSplit = ramp(t, 5.0, 5.6);
   tgt.lerp(splitTarget, toSplit); R = lerp(R, splitR, toSplit);
-  // Door beat: the lens hops window to window and holds on each glimpse.
-  const wc = S.win.map((w) => toScreen(w.center));
+  // Door beat: the lens lands on the montage stage and stays there.
   const handW = new THREE.Vector3(); S.H.handR.getWorldPosition(handW);
-  const doorR = pxRadius(S.win[0].center, 0.98);
-  const doorPos = wc[0].clone();
-  for (let i = 0; i < 3; i++) doorPos.lerp(wc[i + 1], ramp(t, DOOR_T[i] + 0.1, DOOR_T[i + 1] - 0.1));
+  const doorR = LENS_R, doorPos = S.mont.screen;
   const toDoor = ramp(t, 6.95, 7.4);
   tgt.lerp(doorPos, toDoor); R = lerp(R, doorR, toDoor);
   const home = ramp(t, 9.0, 9.55);
