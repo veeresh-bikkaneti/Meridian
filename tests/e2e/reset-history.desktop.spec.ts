@@ -340,19 +340,17 @@ test("reload proof: wiped open flags do not auto-open an edition after reload", 
     },
     { deck: deckSeed(0), loop: LOOP_SEED, coldtrail: COLDTRAIL_SEED },
   );
-  // Pre-reset proof the seed is live: the loop open flag auto-opens
-  // GeoDetective on boot (GameApp restores the screen from the flag).
+  // Pre-reset proof the seed is live: B7 — the loop open flag no longer
+  // auto-opens GeoDetective on boot, so the reload lands on Cold Trail
+  // (its flag still restores the screen, PR #203); the loop flag itself
+  // is still set, just no longer honored at boot.
   await page.reload();
-  await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
-    timeout: 20_000,
-  });
-  // Leave GeoDetective (leaving clears the loop flag itself). The
-  // seeded coldtrail flag is still live, so the app routes to Cold
-  // Trail next — GameApp's precedence is loop > coldtrail > home;
-  // landing there is itself proof the second flag was live. Leave it
-  // too ("← All games" clears its flag), then Home renders.
-  await page.getByRole("button", { name: "Editions" }).click();
   await expect(page.getByTestId("coldtrail-screen")).toBeVisible({ timeout: 20_000 });
+  // GeoDetective did not auto-open: no loop screen. (No loop-map
+  // assertion here: Cold Trail renders a loop-map of its own.)
+  await expect(page.getByTestId("loop-screen")).toHaveCount(0);
+  expect(await localGet(page, "meridian.loop.open")).toBe("1");
+  // Leave Cold Trail ("← All games" clears its flag), then Home renders.
   await page.getByRole("button", { name: "← All games" }).click();
   await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
   await expect(page.getByTestId("deck-due-count")).toHaveText("1 card due");

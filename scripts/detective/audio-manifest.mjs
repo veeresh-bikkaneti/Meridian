@@ -14,7 +14,7 @@
  * textHash = sha256 hex of `voice|speed|gainDb|text`.
  */
 import { createHash } from "node:crypto";
-import { existsSync, readFileSync, renameSync, statSync, writeFileSync } from "node:fs";
+import { closeSync, existsSync, openSync, readFileSync, readSync, readdirSync, renameSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { FIXED_LINES, VOICES, casePlan, displayName, selectionNamePlan } from "./render-plan.mjs";
 
@@ -25,6 +25,57 @@ export const NAMES_MIN_POPULATION = 500000;
 export const CAPITALS_INDEXES = Object.freeze(
   Array.from({ length: 110 }, (_, i) => 387 + i),
 );
+/** Core-deck case indexes: audio 0–386 (the default "All cases" deck).
+ * The gate derives the set from disk (coreIndexesFromDisk) and a unit
+ * test pins this literal to that derivation, so neither can drift (#382). */
+export const CORE_INDEXES = Object.freeze(
+  Array.from({ length: 387 }, (_, i) => i),
+);
+
+/**
+ * The core deck as the files on disk define it (#382): every case with
+ * a clue file in public/loop/clues/, minus the cases that belong to a
+ * pack (public/packs/<pack>/manifest.json loopIndexes). Sorted.
+ */
+export function coreIndexesFromDisk(root) {
+  const clueDir = join(root, "public/loop/clues");
+  const all = readdirSync(clueDir)
+    .map((f) => /^(\d+)\.json$/.exec(f)?.[1])
+    .filter((n) => n !== undefined)
+    .map(Number);
+  const packed = new Set();
+  const packsDir = join(root, "public/packs");
+  if (existsSync(packsDir)) {
+    for (const pack of readdirSync(packsDir)) {
+      const mf = join(packsDir, pack, "manifest.json");
+      if (!existsSync(mf)) continue;
+      for (const i of JSON.parse(readFileSync(mf, "utf8")).loopIndexes ?? []) packed.add(i);
+    }
+  }
+  return all.filter((i) => !packed.has(i)).sort((a, b) => a - b);
+}
+
+/**
+ * Render by-products that must never ship (#381): the pace ladder's
+ * scratch takes (e.g. clue-3.mp3.pace-best.mp3) and any other file in
+ * the audio tree that is not a plain .mp3 clip or the manifest.
+ * Returns the offending paths relative to the audio root.
+ */
+export function strayAudioFiles(root) {
+  const base = join(root, AUDIO_REL);
+  const out = [];
+  if (!existsSync(base)) return out;
+  const walk = (dir, rel) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const r = rel ? `${rel}/${e.name}` : e.name;
+      if (e.isDirectory()) walk(join(dir, e.name), r);
+      else if (r === "manifest.json") continue;
+      else if (!/^[^.]+\.mp3$/.test(e.name)) out.push(r);
+    }
+  };
+  walk(base, "");
+  return out.sort();
+}
 
 export function textHash({ voice, speed, gainDb, text }) {
   return createHash("sha256").update(`${voice}|${speed}|${gainDb}|${text}`).digest("hex");
@@ -37,10 +88,17 @@ export function createManifest() {
     coverage: {
       // Claimed coverage grows as units land: U1 renders the dev case
       // only (below, under cases), U2 claims `fixed`, U3 fills
-      // `capitals` + `answers`. The CI gate fails on any CLAIMED entry
+      // `capitals` + `answers`, U11 fills `core` (the 387 core-deck
+      // cases) and closes FG-3. The CI gate fails on any CLAIMED entry
       // that is missing or stale — an empty list claims nothing.
+      // `coreHolds` is the explicit exception list for core coverage:
+      // a core case listed there ships without clue reads ON PURPOSE
+      // (named in the U11 PR body); every other core case must be
+      // claimed — see checkCoreCoverage below.
       capitals: [],
       answers: [],
+      core: [],
+      coreHolds: [],
       fixed: false,
       namesMinPopulation: NAMES_MIN_POPULATION,
       namesTierComplete: false,
@@ -211,6 +269,7 @@ export function collectExpectedSpecs(root, manifest) {
     for (const s of FIXED_LINES) expected.set(entryKey(s), s);
   }
   for (const i of manifest.coverage?.capitals ?? []) addCase(i);
+  for (const i of manifest.coverage?.core ?? []) addCase(i);
   for (const i of manifest.coverage?.answers ?? []) addCase(i, { clues: false });
   if (manifest.coverage?.namesTierComplete) {
     const min = manifest.coverage.namesMinPopulation ?? NAMES_MIN_POPULATION;
@@ -251,6 +310,31 @@ export function collectExpectedSpecs(root, manifest) {
  * @returns {{ ok: boolean, checked: number,
  *   problems: { key: string, kind: "missing"|"stale"|"missing-file"|"orphan", detail: string }[] }}
  */
+/** Smallest clip that can hold audio: the shortest shipped read (a
+ * one-word ack) is several KB, so anything under this is a broken write. */
+export const MIN_CLIP_BYTES = 1024;
+
+/**
+ * Why an audio file is not a usable MP3, or null when it looks fine
+ * (#380). Checks the size floor and the start of the file: an ID3 tag
+ * or an MPEG audio frame sync (11 set bits).
+ */
+export function audioFileProblem(filePath) {
+  const size = statSync(filePath).size;
+  if (size === 0) return "file is empty (0 bytes)";
+  if (size < MIN_CLIP_BYTES) return `file is only ${size} bytes`;
+  const fd = openSync(filePath, "r");
+  const head = Buffer.alloc(3);
+  try {
+    readSync(fd, head, 0, 3, 0);
+  } finally {
+    closeSync(fd);
+  }
+  const id3 = head[0] === 0x49 && head[1] === 0x44 && head[2] === 0x33;
+  const sync = head[0] === 0xff && (head[1] & 0xe0) === 0xe0;
+  return id3 || sync ? null : "file does not start like an MP3 (no ID3 tag or frame sync)";
+}
+
 export function verifyManifest(root, manifest) {
   const expected = collectExpectedSpecs(root, manifest);
   const problems = [];
@@ -298,9 +382,15 @@ export function verifyManifest(root, manifest) {
       });
       continue;
     }
-    if (!existsSync(join(root, AUDIO_REL, stored.file))) {
+    const filePath = join(root, AUDIO_REL, stored.file);
+    if (!existsSync(filePath)) {
       problems.push({ key, kind: "missing-file", detail: `audio file missing: ${AUDIO_REL}/${stored.file}` });
+      continue;
     }
+    // #380: a zero-byte or corrupt clip used to pass every layer. The
+    // file must be big enough to hold audio and start like an MP3.
+    const bad = audioFileProblem(filePath);
+    if (bad) problems.push({ key, kind: "corrupt-file", detail: `${AUDIO_REL}/${stored.file}: ${bad}` });
   }
   return { ok: problems.length === 0, checked, problems };
 }
@@ -327,6 +417,76 @@ export const CLUES_ONLY_BUDGET_BYTES = 500_000;
  * verifyManifest already reports them as missing-file problems.
  * @returns {{ key: string, kind: "over-budget", detail: string }[]}
  */
+/* ------------------------------------------------------------------ */
+/* Core-deck coverage completeness (U11 — closes FG-3)                */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The core deck ("All cases", audio indexes 0–386) must never ship
+ * silent again. Phase A rendered the Capitals pack only, and the flip
+ * proceeded with core cases playing the full visual ritual over
+ * silent clue reads (handbook gate FG-3) because nothing in the gate
+ * required a core case to HAVE clue reads — verifyManifest only ever
+ * checks entries the manifest claims or already holds.
+ *
+ * This check makes core coverage itself the claim: every core case
+ * must be either (a) claimed in coverage.core with all five clue
+ * reads present in the manifest, or (b) named in coverage.coreHolds —
+ * the explicit, on-the-record exception list for cases that ship
+ * without clue reads on purpose (each hold is named in the U11 PR
+ * body). Anything else fails: an unclaimed case, a claimed case with
+ * a clue read missing, a hold outside the core range, or a hold that
+ * contradicts itself by carrying full audio anyway.
+ *
+ * @returns {{ key: string, kind: string, detail: string }[]}
+ */
+export function checkCoreCoverage(manifest, indexes = CORE_INDEXES) {
+  const problems = [];
+  const claimed = new Set(manifest.coverage?.core ?? []);
+  const holds = new Set(manifest.coverage?.coreHolds ?? []);
+  const inRange = new Set(indexes);
+  for (const h of holds) {
+    if (!inRange.has(h)) {
+      problems.push({
+        key: `coverage.coreHolds.${h}`,
+        kind: "hold-out-of-range",
+        detail: `core hold ${h} is not a core case index (${indexes[0]}–${indexes[indexes.length - 1]}) — remove it or fix the index`,
+      });
+    }
+  }
+  for (const i of indexes) {
+    const clueCount = Array.isArray(manifest.cases?.[i]?.clues)
+      ? manifest.cases[i].clues.filter(Boolean).length
+      : 0;
+    if (holds.has(i)) {
+      if (clueCount === 5) {
+        problems.push({
+          key: `cases.${i}.clues`,
+          kind: "hold-with-audio",
+          detail: `core case ${i} is on the hold list (ships without clue reads) but all 5 clue reads are in the manifest — remove the hold; a hold must name a real gap`,
+        });
+      }
+      continue;
+    }
+    if (!claimed.has(i)) {
+      problems.push({
+        key: `cases.${i}.clues`,
+        kind: "uncovered",
+        detail: `core case ${i} is neither claimed in coverage.core nor on the explicit hold list (coverage.coreHolds) — render its five clue reads, or record it as a hold with the reason in the PR body`,
+      });
+      continue;
+    }
+    if (clueCount !== 5) {
+      problems.push({
+        key: `cases.${i}.clues`,
+        kind: "incomplete-coverage",
+        detail: `core case ${i} is claimed in coverage.core but only ${clueCount} of its 5 clue reads are in the manifest — a claimed case must carry all five`,
+      });
+    }
+  }
+  return problems;
+}
+
 export function checkClueBudgets(root, manifest) {
   const problems = [];
   for (const [caseIndex, bucket] of Object.entries(manifest.cases ?? {})) {

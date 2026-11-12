@@ -79,7 +79,7 @@ export interface LoopPuzzleState extends LoopPuzzleProgress {
    * `startingClues` / `guessCap` in effect when this mystery was dealt.
    * Resume reads these instead of the live band's deal, so a mid-mystery
    * band change can never soft-lock the mystery under a smaller cap (an
-   * 8-10 mystery at 5 wrong guesses resumed under 11-13 kept its cap of
+   * 7-10 mystery at 5 wrong guesses resumed under 10-18 kept its cap of
    * 6 — it still wins or loses on the 6th guess). Optional for backward
    * compatibility: stores dealt before the snapshot fall back to the live
    * band (previous behavior).

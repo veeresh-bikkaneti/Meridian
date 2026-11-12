@@ -15,59 +15,59 @@ const HISTORY = "A Wikipedia-extract fallback sentence, plenty long enough.";
 
 const fullFacts: PlaceFacts = { ladder: LADDER, history: HISTORY, blurb: BLURB };
 
-test("5-7 ceiling: hook rung wins over a full ladder", () => {
-  const m = mapStory("5-7", fullFacts);
-  assert.equal(m.rung, "hook");
-  assert.ok(m.text.startsWith(LADDER.hook!.text));
-  assert.ok(m.text.endsWith(BLURB));
-  assert.equal(m.autoplayAudio, true);
-});
-
-test("8-10 ceiling: wikitext rung wins over a full ladder", () => {
-  const m = mapStory("8-10", fullFacts);
+test("7-10 ceiling: wikitext rung wins over a full ladder", () => {
+  const m = mapStory("7-10", fullFacts);
   assert.equal(m.rung, "wikitext");
   assert.ok(m.text.startsWith(LADDER.wikitext!.text));
+  assert.ok(m.text.endsWith(BLURB));
   assert.equal(m.autoplayAudio, false);
 });
 
-test("11-13 ceiling: wikidata rung wins over a full ladder", () => {
-  const m = mapStory("11-13", fullFacts);
+test("10-18 ceiling: wikidata rung wins over a full ladder", () => {
+  const m = mapStory("10-18", fullFacts);
   assert.equal(m.rung, "wikidata");
   assert.equal(m.autoplayAudio, false);
 });
 
-test("unset band → full-access default (11-13 mapping, never restricts)", () => {
+test("18+ ceiling matches 10-18", () => {
+  const m = mapStory("18+", fullFacts);
+  assert.equal(m.rung, "wikidata");
+  assert.equal(m.autoplayAudio, false);
+});
+
+test("unset band → full-access default (10-18 mapping, never restricts)", () => {
   const m = mapStory(null, fullFacts);
   assert.equal(m.rung, "wikidata");
   assert.equal(m.autoplayAudio, false);
 });
 
-test("8-10 with hook-only ladder degrades gracefully to hook", () => {
-  const m = mapStory("8-10", { ladder: { hook: LADDER.hook }, blurb: BLURB });
+test("7-10 with hook-only ladder degrades gracefully to hook", () => {
+  const m = mapStory("7-10", { ladder: { hook: LADDER.hook }, blurb: BLURB });
   assert.equal(m.rung, "hook");
   assert.ok(m.text.includes(BLURB));
 });
 
-test("rung above ceiling is never shown: 5-7 + wikidata-only falls to history", () => {
-  const m = mapStory("5-7", { ladder: { wikidata: LADDER.wikidata }, history: HISTORY, blurb: BLURB });
+test("rung above ceiling is never shown: 7-10 + wikidata-only falls to history", () => {
+  const m = mapStory("7-10", { ladder: { wikidata: LADDER.wikidata }, history: HISTORY, blurb: BLURB });
   assert.equal(m.rung, "history");
   assert.ok(m.text.startsWith(HISTORY));
+  assert.equal(m.autoplayAudio, false);
 });
 
-test("5-7 + no ladder + history → history + blurb + autoplay", () => {
-  const m = mapStory("5-7", { ladder: {}, history: HISTORY, blurb: BLURB });
+test("7-10 + no ladder + history → history + blurb, no autoplay", () => {
+  const m = mapStory("7-10", { ladder: {}, history: HISTORY, blurb: BLURB });
   assert.equal(m.rung, "history");
-  assert.equal(m.autoplayAudio, true);
+  assert.equal(m.autoplayAudio, false);
 });
 
 test("nothing but a blurb → blurb-only (truthful, no fabrication)", () => {
-  const m = mapStory("8-10", { ladder: {}, blurb: BLURB });
+  const m = mapStory("7-10", { ladder: {}, blurb: BLURB });
   assert.equal(m.rung, "blurb-only");
   assert.equal(m.text, BLURB);
 });
 
 test("short entries (< HOOK_MIN_CHARS) are skipped", () => {
-  const m = mapStory("5-7", {
+  const m = mapStory("7-10", {
     ladder: { hook: { text: "too short", source: "x" } },
     history: HISTORY,
     blurb: BLURB,
@@ -77,7 +77,7 @@ test("short entries (< HOOK_MIN_CHARS) are skipped", () => {
 });
 
 test("empty blurb is tolerated (no trailing space invented)", () => {
-  const m = mapStory("11-13", { ladder: LADDER, blurb: "" });
+  const m = mapStory("10-18", { ladder: LADDER, blurb: "" });
   assert.equal(m.text, LADDER.wikidata!.text);
 });
 

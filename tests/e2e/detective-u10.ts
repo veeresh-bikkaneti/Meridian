@@ -93,6 +93,33 @@ export async function fulfillFlagsWalk(context: BrowserContext): Promise<void> {
   });
 }
 
+/** STAGE flank twin of fulfillFlagsWalk: detectivePair AND
+ * hostsStaging AND detectiveFlank on, served by interception.
+ * watsonWalk stays off here — the flank's walk-free layout is
+ * the piece under test, and Watson teleports to the active card
+ * instead of walking (the PR A behaviour). */
+export async function fulfillFlagsFlank(context: BrowserContext): Promise<void> {
+  await context.route("**/flags.json", async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json; charset=utf-8",
+      body: JSON.stringify({
+        version: 1,
+        flags: {
+          globeTierSplit: true,
+          learningOutcomes: true,
+          pwaUpdateToast: true,
+          friendChallenges: true,
+          scoutUpgradeTrial: true,
+          detectivePair: true,
+          hostsStaging: true,
+          detectiveFlank: true,
+        },
+      }),
+    });
+  });
+}
+
 /** The OFF twin of fulfillFlagsOn: the same flag set with
  * detectivePair false, served by interception. A spec that needs
  * the flag OFF must say so explicitly — it must never rely on the
@@ -366,13 +393,18 @@ export function collectAudioRequests(page: Page): string[] {
 
 /** The pair's current phase, from whichever host root is mounted
  * (the station root carries clue phases, the map root carries the
- * guessing phases; both expose data-phase). Null when the pair is
- * fully absent (sheet / rings / speech-owned screen). */
+ * guessing phases; both expose data-phase). In flank mode the
+ * station/map roots are absent, so the flank row and the strip
+ * carry the same attributes — they are the pair's station there.
+ * Null when the pair is fully absent (sheet / rings /
+ * speech-owned screen). */
 export async function currentPhase(page: Page): Promise<string | null> {
   return page.evaluate(() => {
     const el =
       document.querySelector('[data-testid="detective-host"]') ??
-      document.querySelector('[data-testid="detective-station"]');
+      document.querySelector('[data-testid="detective-station"]') ??
+      document.querySelector('[data-testid="detective-flank-strip"]') ??
+      document.querySelector('[data-testid="detective-flank"]');
     return el?.getAttribute("data-phase") ?? null;
   });
 }
@@ -392,7 +424,9 @@ export async function currentPlacement(page: Page): Promise<string | null> {
   return page.evaluate(() => {
     const el =
       document.querySelector('[data-testid="detective-host"]') ??
-      document.querySelector('[data-testid="detective-station"]');
+      document.querySelector('[data-testid="detective-station"]') ??
+      document.querySelector('[data-testid="detective-flank-strip"]') ??
+      document.querySelector('[data-testid="detective-flank"]');
     return el?.getAttribute("data-holmes-placement") ?? null;
   });
 }
@@ -401,7 +435,9 @@ export async function companionMode(page: Page): Promise<string | null> {
   return page.evaluate(() => {
     const el =
       document.querySelector('[data-testid="detective-host"]') ??
-      document.querySelector('[data-testid="detective-station"]');
+      document.querySelector('[data-testid="detective-station"]') ??
+      document.querySelector('[data-testid="detective-flank-strip"]') ??
+      document.querySelector('[data-testid="detective-flank"]');
     return el?.getAttribute("data-companion") ?? null;
   });
 }
@@ -543,13 +579,39 @@ export function firstIndexOf(list: string[], needle: string): number {
   return list.findIndex((u) => u.includes(needle));
 }
 
-/** Assert every needle appears in `list`, in the given order. Returns
- * the matched indices so callers can report them. */
-export function assertSubsequence(list: string[], needles: string[]): number[] {
+/** Holmes's ack is a random draw from the ack pool (fixed/ack-1.mp3 …
+ * fixed/ack-10.mp3, no repeat within a case — HERALD). Specs match the
+ * pool, never one file id: the retired rotation's exact-id pins broke
+ * on every lawful draw. */
+export const ACK_POOL = /fixed\/ack-\d+\.mp3/;
+
+/** How many pool acks a play (or request) record holds. */
+export function countAcks(list: string[]): number {
+  return list.filter((u) => ACK_POOL.test(u)).length;
+}
+
+/** The pool files a record played, in play order (for distinctness). */
+export function ackFiles(list: string[]): string[] {
+  return list
+    .map((u) => u.match(ACK_POOL)?.[0])
+    .filter((m): m is string => m !== undefined);
+}
+
+/** Assert every needle appears in `list`, in the given order. A needle
+ * is a substring, or a RegExp matched against the entry (the ack pool).
+ * Returns the matched indices so callers can report them. */
+export function assertSubsequence(
+  list: string[],
+  needles: (string | RegExp)[],
+): number[] {
   const idx: number[] = [];
   let from = 0;
   for (const needle of needles) {
-    const found = list.slice(from).findIndex((u) => u.includes(needle));
+    const found = list
+      .slice(from)
+      .findIndex((u) =>
+        typeof needle === "string" ? u.includes(needle) : needle.test(u),
+      );
     if (found === -1) {
       throw new Error(
         `subsequence broken: "${needle}" not found after index ${from} in [${list.join(", ")}]`,

@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   createDetectiveSpeech,
+  isEndingRef,
   resolveDetectiveClip,
   type DetectiveManifest,
   type DetectiveSpeaker,
@@ -331,13 +332,13 @@ function modeHarness(
   return { player, played, speaking };
 }
 
-test("U9 tap mode: clue chain resolves skipped (drains) but is held — read + ack, in order", async () => {
+test("U9 tap mode: a skipped clue does not drain — the chain is held until Listen", async () => {
   const { player, played, speaking } = modeHarness("tap");
   player.enqueue({ kind: "clue", clueIndex: 1 });
   player.enqueue({ kind: "fixed", id: "ack-1" });
   await tick();
   assert.deepEqual(played, []); // nothing auto-plays
-  assert.deepEqual(speaking, [null]); // drain still fires — ladder advances silently
+  assert.deepEqual(speaking, []); // no drain — the ladder stays on this card
   assert.deepEqual(player.heldRefs(), [
     { kind: "clue", clueIndex: 1 },
     { kind: "fixed", id: "ack-1" },
@@ -432,6 +433,111 @@ test("U9 setSpeechMode: leaving tap for off drops the hold (Unit A: auto retains
   // mode-switch behaviour this test was written for (off drops the
   // hold, auto plays again) is unchanged.
   assert.deepEqual(player.heldRefs(), [{ kind: "clue", clueIndex: 1 }]);
+  player.dispose();
+});
+
+/* ------------------------------------------------------------------ */
+/* Cure 3 — tap mode: the guess read is gesture-initiated speech.      */
+/* The host arms the player around its guessConfirmed dispatch; the    */
+/* refs enqueued inside the window are the guess read (name +          */
+/* suspicion) and must PLAY in tap mode — before the cure they         */
+/* resolved as skipped like ambient speech, so a confirmed guess in    */
+/* the owner's tap-mode configuration landed in silence.               */
+/* ------------------------------------------------------------------ */
+
+test("cure 3 tap mode: an armed guess read (name + suspicion) plays for real, in order, and drains once", async () => {
+  const { player, played, speaking } = modeHarness("tap");
+  // Unarmed, the shipped tap rule stands: suspicion resolves skipped.
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  await tick();
+  assert.deepEqual(played, []);
+  // Armed (the host's guessConfirmed window): the whole burst plays.
+  player.armGuessRead();
+  player.enqueue({ kind: "name", placeId: "geonames:323786" });
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  player.disarmGuessRead();
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/names/323786.mp3",
+    "/audio/detective/fixed/suspicion.mp3",
+  ]);
+  // Disarmed again: ambient refs are skipped as before.
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  await tick();
+  assert.equal(played.length, 2);
+  // The ladder is never left with a stuck speaker: the last
+  // speaking change is a drain.
+  assert.equal(speaking[speaking.length - 1], null);
+  player.dispose();
+});
+
+test("cure 3 tap mode: the sound gate still silences an armed guess read", async () => {
+  const { player, played } = modeHarness("tap", {
+    isSoundOn: () => false,
+  });
+  player.armGuessRead();
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  player.disarmGuessRead();
+  await tick();
+  assert.deepEqual(played, []); // gesture-initiated ≠ ungated
+  player.dispose();
+});
+
+test("cure 3 tap mode: a pick read never splices out a queued guess read", async () => {
+  // A slow first clip keeps the queue occupied: the guess read waits
+  // unstarted behind it while a NEW pick read arrives. The selection
+  // path's latest-wins splice may only remove a queued SELECTION
+  // item — the spent guess's suspicion must survive and play.
+  const played: string[] = [];
+  let releaseFirst: () => void = () => {};
+  const firstGate = new Promise<void>((r) => {
+    releaseFirst = r;
+  });
+  let first = true;
+  const player = createDetectiveSpeech({
+    caseIndex: 387,
+    speechMode: "tap",
+    loadManifest: async () => MANIFEST,
+    playClip: async (clip) => {
+      played.push(clip.url);
+      if (first) {
+        first = false;
+        await firstGate;
+      }
+    },
+    isSoundOn: () => true,
+    canAutoPlay: () => true,
+    onSpeakingChange: () => {},
+  });
+  player.enqueue({ kind: "name", placeId: "geonames:323786", selection: true });
+  await tick(); // the pick read is now playing (blocked on the gate)
+  player.armGuessRead();
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  player.disarmGuessRead();
+  // A second pick lands while suspicion is still queued.
+  player.enqueue({ kind: "name", placeId: "geonames:323786", selection: true });
+  releaseFirst();
+  await tick();
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/names/323786.mp3", // the first pick read
+    "/audio/detective/fixed/suspicion.mp3", // the guess read — NOT spliced
+    "/audio/detective/names/323786.mp3", // the second pick read
+  ]);
+  player.dispose();
+});
+
+test("cure 3 auto mode: arming changes nothing — the guess read plays as shipped", async () => {
+  const { player, played } = modeHarness("auto");
+  player.armGuessRead();
+  player.enqueue({ kind: "name", placeId: "geonames:323786" });
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  player.disarmGuessRead();
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/names/323786.mp3",
+    "/audio/detective/fixed/suspicion.mp3",
+  ]);
   player.dispose();
 });
 
@@ -748,4 +854,62 @@ test("gesture wait: a sound gate closed at wake (no stopAll) keeps the parked cl
   } finally {
     unplugBrowserAudio();
   }
+});
+
+/* ------------------------------------------------------------------ */
+/* Owner fixes, 2026-11-10                                             */
+/* ------------------------------------------------------------------ */
+
+test("stopAll then an immediate enqueue: the new line still plays (no stranded queue)", async () => {
+  const played: string[] = [];
+  let releaseFirst: (() => void) | null = null;
+  const { player } = harness({
+    playClip: (clip) => {
+      played.push(clip.url);
+      if (played.length === 1) {
+        return new Promise<void>((r) => {
+          releaseFirst = r;
+        });
+      }
+      return Promise.resolve();
+    },
+  });
+  player.enqueue({ kind: "clue", clueIndex: 1 });
+  await tick();
+  // A pin lands mid-read: stop, then the pick's lines queue at once
+  // (the old loop still holds `processing` at this instant).
+  player.stopAll();
+  player.enqueue({ kind: "fixed", id: "suspicion" });
+  releaseFirst!();
+  await tick();
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/case-387/clue-1.mp3",
+    "/audio/detective/fixed/suspicion.mp3",
+  ]);
+  player.dispose();
+});
+
+test("tap mode: ending lines play for real (they follow the kid's confirm tap)", async () => {
+  const { player, played } = harness();
+  player.setSpeechMode("tap");
+  player.enqueue({ kind: "clue", clueIndex: 1 }); // held, not played
+  player.enqueue({ kind: "fixed", id: "debrief-frame" });
+  player.enqueue({ kind: "fixed", id: "debrief-close" });
+  await tick();
+  assert.deepEqual(played, [
+    "/audio/detective/fixed/debrief-frame.mp3",
+    "/audio/detective/fixed/debrief-close.mp3",
+  ]);
+  player.dispose();
+});
+
+test("isEndingRef: win/debrief/answer/truce and the debrief name; never clues, acks or pick reads", () => {
+  assert.equal(isEndingRef({ kind: "fixed", id: "win-holmes" }), true);
+  assert.equal(isEndingRef({ kind: "fixed", id: "truce-watson" }), true);
+  assert.equal(isEndingRef({ kind: "answer" }), true);
+  assert.equal(isEndingRef({ kind: "name", placeId: "geonames:1" }), true);
+  assert.equal(isEndingRef({ kind: "name", placeId: "geonames:1", selection: true }), false);
+  assert.equal(isEndingRef({ kind: "clue", clueIndex: 2 }), false);
+  assert.equal(isEndingRef({ kind: "fixed", id: "ack-3" }), false);
 });

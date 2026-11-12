@@ -10,6 +10,7 @@
  */
 
 export type {
+  AgeGroup,
   AgeBandId,
   AgeBand,
   AgeProfile,
@@ -71,6 +72,7 @@ export {
   loadProfile,
   resolveBand,
   validateProfile,
+  getAgeGroup,
 } from "./store.ts";
 // Boundary-only event path. Game screens call this at card/round
 // boundaries to fire a DEFERRED mid-run save's change event (the save

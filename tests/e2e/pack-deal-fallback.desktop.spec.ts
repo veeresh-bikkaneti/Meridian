@@ -254,6 +254,12 @@ test("pick survives a fallback deal: the next deal retries the pack and deals it
   }, clue186.placeId);
   manifestState.recovered = true;
   await page.reload();
+  // B7: the reload lands on Home; the finished-but-unacknowledged
+  // reveal re-renders on tap-in (LoopScreen never deals fresh over it).
+  await expect(page.getByRole("button", { name: "GeoDetective: Solve a mystery" })).toBeVisible({
+    timeout: 30_000,
+  });
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByText("🎯 You found it!")).toBeVisible({ timeout: 30_000 });
   // The reveal of the fallback case still names its real source:
   // the plain core sentence (the deal-time notice itself belongs to

@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { serveBuiltArtifact } from "./helpers";
 import {
+  ACK_POOL,
   assertSubsequence,
   collectAudioRequests,
   detectivePlays,
@@ -116,16 +117,24 @@ test("Capitals case via the shelf: duet → clue 1 → ack → decode, Watson at
   await page.getByRole("heading", { name: "GeoDetective" }).click();
 
   // --- speech order: duet → clue 1 → ack → decode-geography --------
-  const needles = [
+  // Holmes's ack is a random pool draw (HERALD, PR #386), so the ack
+  // needle matches the pool, never one file id.
+  const needles: (string | RegExp)[] = [
     "fixed/instructions-holmes.mp3",
     "fixed/instructions-watson.mp3",
     "case-387/clue-1.mp3",
-    "fixed/ack-1.mp3",
+    ACK_POOL,
     "fixed/decode-geography.mp3",
   ];
   await expect
     .poll(() => detectivePlays(page), { timeout: 90_000 })
-    .toEqual(expect.arrayContaining(needles.map((n) => expect.stringContaining(n))));
+    .toEqual(
+      expect.arrayContaining(
+        needles.map((n) =>
+          typeof n === "string" ? expect.stringContaining(n) : expect.stringMatching(n),
+        ),
+      ),
+    );
   const plays = await detectivePlays(page);
   const playIdx = assertSubsequence(plays, needles);
   // The network log must tell the same story, in the same order.

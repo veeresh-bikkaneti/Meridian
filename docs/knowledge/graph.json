@@ -1,0 +1,543 @@
+{
+  "version": 1,
+  "about": "Map of branches, specs, governing docs and owner decisions. Integrator-only writes; see AGENTS.md section 7.",
+  "nodes": [
+    {
+      "id": "doc:agents",
+      "kind": "doc",
+      "path": "AGENTS.md",
+      "summary": "Agent rules: authority, safeguards, tiers, token economy, seats, loop, graph"
+    },
+    {
+      "id": "doc:agents-reference",
+      "kind": "doc",
+      "path": "docs/ops/agents-reference.md",
+      "summary": "Detail moved out of AGENTS.md"
+    },
+    {
+      "id": "doc:council-protocol",
+      "kind": "doc",
+      "path": "docs/ops/agent-council-protocol.md",
+      "summary": "Tier 2 council process"
+    },
+    {
+      "id": "doc:panel-loop",
+      "kind": "doc",
+      "path": "docs/ops/council-panel-loop.md",
+      "summary": "Token-optimised panel seating loop"
+    },
+    {
+      "id": "doc:agent-roles",
+      "kind": "doc",
+      "path": "docs/ops/agent-roles.md",
+      "summary": "Architect, worker, QA and reviewer briefs"
+    },
+    {
+      "id": "doc:handbook",
+      "kind": "doc",
+      "path": "docs/handbook/README.md",
+      "summary": "Product decisions of record"
+    },
+    {
+      "id": "doc:integrator-runbook",
+      "kind": "doc",
+      "path": "docs/scaling/integrator-runbook.md",
+      "summary": "How stream PRs are reviewed and merged"
+    },
+    {
+      "id": "doc:k12-standard",
+      "kind": "doc",
+      "path": "docs/scaling/k12-learning-design-standard.md",
+      "summary": "Learning design standard for every subject"
+    },
+    {
+      "id": "doc:progression-map",
+      "kind": "doc",
+      "path": "docs/scaling/subject-progression-map.md",
+      "summary": "Math to physics to chemistry progression"
+    },
+    {
+      "id": "doc:educator-packet",
+      "kind": "doc",
+      "path": "docs/scaling/educator-review-packet.md",
+      "summary": "Rows an educator signs before any build"
+    },
+    {
+      "id": "doc:educator-rubric",
+      "kind": "doc",
+      "path": "docs/scaling/educator-gate-rubric.md",
+      "summary": "Educator sign-off rubric"
+    },
+    {
+      "id": "spec:chemistry",
+      "kind": "spec",
+      "path": "docs/scaling/chemistry-spec.md"
+    },
+    {
+      "id": "spec:general-knowledge",
+      "kind": "spec",
+      "path": "docs/scaling/general-knowledge-spec.md"
+    },
+    {
+      "id": "spec:humanities-definitions",
+      "kind": "spec",
+      "path": "docs/scaling/humanities-definitions-spec.md"
+    },
+    {
+      "id": "spec:journal-freedom-fighters",
+      "kind": "spec",
+      "path": "docs/scaling/journal-freedom-fighters-spec.md"
+    },
+    {
+      "id": "spec:journal-great-leaders",
+      "kind": "spec",
+      "path": "docs/scaling/journal-great-leaders-spec.md"
+    },
+    {
+      "id": "spec:journal-modern-world",
+      "kind": "spec",
+      "path": "docs/scaling/journal-modern-world-spec.md"
+    },
+    {
+      "id": "spec:journal-people-places",
+      "kind": "spec",
+      "path": "docs/scaling/journal-people-places-spec.md"
+    },
+    {
+      "id": "spec:journal-technology",
+      "kind": "spec",
+      "path": "docs/scaling/journal-technology-spec.md"
+    },
+    {
+      "id": "spec:journal-world-wars",
+      "kind": "spec",
+      "path": "docs/scaling/journal-world-wars-spec.md"
+    },
+    {
+      "id": "spec:journal-ww2-monuments",
+      "kind": "spec",
+      "path": "docs/scaling/journal-ww2-monuments-spec.md"
+    },
+    {
+      "id": "spec:math-definition",
+      "kind": "spec",
+      "path": "docs/scaling/math-definition-spec.md"
+    },
+    {
+      "id": "spec:math",
+      "kind": "spec",
+      "path": "docs/scaling/math-spec.md"
+    },
+    {
+      "id": "spec:phase0-shell-split",
+      "kind": "spec",
+      "path": "docs/scaling/phase0-shell-split-spec.md"
+    },
+    {
+      "id": "spec:physics",
+      "kind": "spec",
+      "path": "docs/scaling/physics-spec.md"
+    },
+    {
+      "id": "spec:science-definitions",
+      "kind": "spec",
+      "path": "docs/scaling/science-definitions-spec.md"
+    },
+    {
+      "id": "spec:social-studies",
+      "kind": "spec",
+      "path": "docs/scaling/social-studies-spec.md"
+    },
+    {
+      "id": "spec:age-groups-manifest",
+      "kind": "spec",
+      "path": "docs/scaling/age-groups-manifest.md"
+    },
+    {
+      "id": "branch:chore/model-neutral-agents",
+      "kind": "branch",
+      "name": "chore/model-neutral-agents",
+      "path": "docs/branch-status/chore-model-neutral-agents.md"
+    },
+    {
+      "id": "branch:feat/age-groups",
+      "kind": "branch",
+      "name": "feat/age-groups",
+      "path": "docs/branch-status/feat-age-groups.md"
+    },
+    {
+      "id": "branch:feat/chemistry-spec",
+      "kind": "branch",
+      "name": "feat/chemistry-spec",
+      "path": "docs/branch-status/feat-chemistry-spec.md"
+    },
+    {
+      "id": "branch:feat/general-knowledge-spec",
+      "kind": "branch",
+      "name": "feat/general-knowledge-spec",
+      "path": "docs/branch-status/feat-general-knowledge-spec.md"
+    },
+    {
+      "id": "branch:feat/humanities-definitions",
+      "kind": "branch",
+      "name": "feat/humanities-definitions",
+      "path": "docs/branch-status/feat-humanities-definitions.md"
+    },
+    {
+      "id": "branch:feat/journal-freedom-fighters-spec",
+      "kind": "branch",
+      "name": "feat/journal-freedom-fighters-spec",
+      "path": "docs/branch-status/feat-journal-freedom-fighters-spec.md"
+    },
+    {
+      "id": "branch:feat/journal-great-leaders-spec",
+      "kind": "branch",
+      "name": "feat/journal-great-leaders-spec",
+      "path": "docs/branch-status/feat-journal-great-leaders-spec.md"
+    },
+    {
+      "id": "branch:feat/journal-modern-world-spec",
+      "kind": "branch",
+      "name": "feat/journal-modern-world-spec",
+      "path": "docs/branch-status/feat-journal-modern-world-spec.md"
+    },
+    {
+      "id": "branch:feat/journal-people-places-spec",
+      "kind": "branch",
+      "name": "feat/journal-people-places-spec",
+      "path": "docs/branch-status/feat-journal-people-places-spec.md"
+    },
+    {
+      "id": "branch:feat/journal-technology-spec",
+      "kind": "branch",
+      "name": "feat/journal-technology-spec",
+      "path": "docs/branch-status/feat-journal-technology-spec.md"
+    },
+    {
+      "id": "branch:feat/journal-world-wars-spec",
+      "kind": "branch",
+      "name": "feat/journal-world-wars-spec",
+      "path": "docs/branch-status/feat-journal-world-wars-spec.md"
+    },
+    {
+      "id": "branch:feat/journal-ww2-monuments-spec",
+      "kind": "branch",
+      "name": "feat/journal-ww2-monuments-spec",
+      "path": "docs/branch-status/feat-journal-ww2-monuments-spec.md"
+    },
+    {
+      "id": "branch:feat/math-definition",
+      "kind": "branch",
+      "name": "feat/math-definition",
+      "path": "docs/branch-status/feat-math-definition.md"
+    },
+    {
+      "id": "branch:feat/math-spec",
+      "kind": "branch",
+      "name": "feat/math-spec",
+      "path": "docs/branch-status/feat-math-spec.md"
+    },
+    {
+      "id": "branch:feat/phase0-shell-split",
+      "kind": "branch",
+      "name": "feat/phase0-shell-split",
+      "path": "docs/branch-status/feat-phase0-shell-split.md"
+    },
+    {
+      "id": "branch:feat/physics-spec",
+      "kind": "branch",
+      "name": "feat/physics-spec",
+      "path": "docs/branch-status/feat-physics-spec.md"
+    },
+    {
+      "id": "branch:feat/science-definitions",
+      "kind": "branch",
+      "name": "feat/science-definitions",
+      "path": "docs/branch-status/feat-science-definitions.md"
+    },
+    {
+      "id": "branch:feat/social-studies-spec",
+      "kind": "branch",
+      "name": "feat/social-studies-spec",
+      "path": "docs/branch-status/feat-social-studies-spec.md"
+    },
+    {
+      "id": "decision:age-groups",
+      "kind": "decision",
+      "quote": "1. 7-10 2. 10-18 3.18 and above",
+      "source": "owner, 2026-11-10, project chat"
+    },
+    {
+      "id": "decision:no-biology",
+      "kind": "decision",
+      "quote": "no bilogy",
+      "source": "owner, 2026-11-10, project chat"
+    },
+    {
+      "id": "decision:balance",
+      "kind": "decision",
+      "quote": "sometime history can be controversial too, we just have to stirke the balance.",
+      "source": "owner, 2026-11-10, project chat"
+    },
+    {
+      "id": "decision:model-neutral",
+      "kind": "decision",
+      "quote": "dont hard code the model names just say cheaper models ot orchestrate as sub agents and council of experts",
+      "source": "owner, 2026-11-10, project chat"
+    },
+    {
+      "id": "decision:free",
+      "kind": "decision",
+      "quote": "this is a free to all we are not charhing or making any revenue on this project",
+      "source": "owner, 2026-11-10, project chat"
+    },
+    {
+      "id": "decision:progressive-merge",
+      "kind": "decision",
+      "quote": "in that case we should progressively keep merging without breaking main.",
+      "source": "owner, 2026-11-10, project chat"
+    }
+  ],
+  "edges": [
+    {
+      "from": "doc:agents",
+      "type": "governs",
+      "to": "doc:agents-reference"
+    },
+    {
+      "from": "doc:agents",
+      "type": "governs",
+      "to": "doc:council-protocol"
+    },
+    {
+      "from": "doc:agents",
+      "type": "governs",
+      "to": "doc:panel-loop"
+    },
+    {
+      "from": "doc:agents",
+      "type": "governs",
+      "to": "doc:agent-roles"
+    },
+    {
+      "from": "spec:chemistry",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:general-knowledge",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:humanities-definitions",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:journal-freedom-fighters",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:journal-great-leaders",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:journal-modern-world",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:journal-people-places",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:journal-technology",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:journal-world-wars",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:journal-ww2-monuments",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:math-definition",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:math",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:phase0-shell-split",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:physics",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:science-definitions",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:social-studies",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "spec:age-groups-manifest",
+      "type": "depends-on",
+      "to": "doc:k12-standard"
+    },
+    {
+      "from": "branch:chore/model-neutral-agents",
+      "type": "documents",
+      "to": "doc:agents"
+    },
+    {
+      "from": "branch:feat/age-groups",
+      "type": "documents",
+      "to": "spec:age-groups-manifest"
+    },
+    {
+      "from": "branch:feat/chemistry-spec",
+      "type": "documents",
+      "to": "spec:chemistry"
+    },
+    {
+      "from": "branch:feat/general-knowledge-spec",
+      "type": "documents",
+      "to": "spec:general-knowledge"
+    },
+    {
+      "from": "branch:feat/humanities-definitions",
+      "type": "documents",
+      "to": "spec:humanities-definitions"
+    },
+    {
+      "from": "branch:feat/journal-freedom-fighters-spec",
+      "type": "documents",
+      "to": "spec:journal-freedom-fighters"
+    },
+    {
+      "from": "branch:feat/journal-great-leaders-spec",
+      "type": "documents",
+      "to": "spec:journal-great-leaders"
+    },
+    {
+      "from": "branch:feat/journal-modern-world-spec",
+      "type": "documents",
+      "to": "spec:journal-modern-world"
+    },
+    {
+      "from": "branch:feat/journal-people-places-spec",
+      "type": "documents",
+      "to": "spec:journal-people-places"
+    },
+    {
+      "from": "branch:feat/journal-technology-spec",
+      "type": "documents",
+      "to": "spec:journal-technology"
+    },
+    {
+      "from": "branch:feat/journal-world-wars-spec",
+      "type": "documents",
+      "to": "spec:journal-world-wars"
+    },
+    {
+      "from": "branch:feat/journal-ww2-monuments-spec",
+      "type": "documents",
+      "to": "spec:journal-ww2-monuments"
+    },
+    {
+      "from": "branch:feat/math-definition",
+      "type": "documents",
+      "to": "spec:math-definition"
+    },
+    {
+      "from": "branch:feat/math-spec",
+      "type": "documents",
+      "to": "spec:math"
+    },
+    {
+      "from": "branch:feat/phase0-shell-split",
+      "type": "documents",
+      "to": "spec:phase0-shell-split"
+    },
+    {
+      "from": "branch:feat/physics-spec",
+      "type": "documents",
+      "to": "spec:physics"
+    },
+    {
+      "from": "branch:feat/science-definitions",
+      "type": "documents",
+      "to": "spec:science-definitions"
+    },
+    {
+      "from": "branch:feat/social-studies-spec",
+      "type": "documents",
+      "to": "spec:social-studies"
+    },
+    {
+      "from": "spec:age-groups-manifest",
+      "type": "decided-by",
+      "to": "decision:age-groups"
+    },
+    {
+      "from": "doc:agents",
+      "type": "decided-by",
+      "to": "decision:age-groups"
+    },
+    {
+      "from": "doc:progression-map",
+      "type": "decided-by",
+      "to": "decision:no-biology"
+    },
+    {
+      "from": "spec:humanities-definitions",
+      "type": "decided-by",
+      "to": "decision:balance"
+    },
+    {
+      "from": "doc:educator-packet",
+      "type": "decided-by",
+      "to": "decision:balance"
+    },
+    {
+      "from": "doc:agents",
+      "type": "decided-by",
+      "to": "decision:model-neutral"
+    },
+    {
+      "from": "doc:agent-roles",
+      "type": "decided-by",
+      "to": "decision:model-neutral"
+    },
+    {
+      "from": "doc:agents",
+      "type": "decided-by",
+      "to": "decision:free"
+    },
+    {
+      "from": "doc:integrator-runbook",
+      "type": "decided-by",
+      "to": "decision:progressive-merge"
+    }
+  ]
+}

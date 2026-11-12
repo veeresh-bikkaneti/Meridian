@@ -1,7 +1,9 @@
 import { test, expect } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 import {
+  ACK_POOL,
   collectAudioRequests,
+  countAcks,
   detectivePlays,
   fulfillFlagsOn,
   installDetectiveRecorder,
@@ -16,8 +18,10 @@ import {
  *
  * - (a) In AUTO speech mode (this spec never forces tap mode — the
  *   default profile in this harness auto-plays, exactly as the
- *   stations spec proves), a tap on Watson's figure at the map dock
- *   replays the current clue's full sequence (read → ack → decode)
+ *   stations spec proves), a tap on Watson's figure at his clue-card
+ *   station — where he now stands through the guessing phases too
+ *   (station cure, 2026-11-08) — replays the current clue's full
+ *   sequence (read → ack → decode)
  *   from the top; keyboard activation of the same control replays it
  *   again. The control is a real button ≥44×44 px with the owner's
  *   aria-label, NOT inside any aria-hidden cluster, carrying the ↻
@@ -41,9 +45,13 @@ import {
 test.setTimeout(240_000);
 
 const CLUE = "case-137/clue-1.mp3";
-const ACK = "fixed/ack-1.mp3";
 const DECODE = "fixed/decode-geography.mp3";
-const CHAIN = [CLUE, ACK, DECODE];
+// The chain is clue → ack → decode, but the ack is a random pool draw
+// (ACK_POOL / countAcks, detective-u10) — played assertions match the
+// pool, never one file. ACK (ack-1, the old rotation's first draw)
+// survives ONLY as test (c)'s absence needle below: mid-read, no ack
+// may exist on the record at all.
+const ACK = "fixed/ack-1.mp3";
 
 async function detectiveOnly(page: import("playwright/test").Page): Promise<string[]> {
   return (await detectivePlays(page)).filter((u) => u.includes("/audio/detective/"));
@@ -73,27 +81,27 @@ test("(a) tap on Watson replays the current clue sequence in auto mode", async (
     .toBe("auto");
 
   const before = await detectiveOnly(page);
-  for (const needle of CHAIN) {
-    expect(countIn(before, needle), `first pass played ${needle}`).toBe(1);
-  }
+  expect(countIn(before, CLUE), `first pass played ${CLUE}`).toBe(1);
+  expect(countAcks(before), "first pass played exactly one pool ack").toBe(1);
+  expect(countIn(before, DECODE), `first pass played ${DECODE}`).toBe(1);
   // The network log saw the same first pass (the stations pattern).
-  for (const needle of CHAIN) {
-    expect(countIn(requests, needle), `network saw ${needle}`).toBeGreaterThanOrEqual(1);
-  }
+  expect(countIn(requests, CLUE), `network saw ${CLUE}`).toBeGreaterThanOrEqual(1);
+  expect(countAcks(requests), "network saw the pool ack").toBeGreaterThanOrEqual(1);
+  expect(countIn(requests, DECODE), `network saw ${DECODE}`).toBeGreaterThanOrEqual(1);
 
   // --- the control: a real, labelled, ≥44×44 button over Watson,
   //     outside every aria-hidden cluster, with the ↻ cue badge ---
-  // Settle first: at the READING→SEARCH handoff the pair's station
-  // and dock figures coexist briefly (a pre-existing mount overlap —
-  // the U10 harness polls through the same window), so wait until
-  // exactly one replay control remains, then scope to Watson's dock
-  // button inside the map.
+  // Settle first: at the READING→SEARCH handoff the pair's figures
+  // coexist briefly (a pre-existing mount overlap — the U10 harness
+  // polls through the same window), so wait until exactly one
+  // replay control remains. In SEARCH_IDLE that control is the
+  // STATION form: Watson holds the clue-card station through the
+  // guessing phases (station cure, 2026-11-08), so the button is
+  // page-scoped — it no longer lives inside the map.
   await expect(page.getByTestId("detective-watson-replay")).toHaveCount(1, {
     timeout: 30_000,
   });
-  const btn = page
-    .getByTestId("loop-map")
-    .getByTestId("detective-watson-replay");
+  const btn = page.getByTestId("detective-watson-replay");
   await expect(btn).toBeVisible({ timeout: 15_000 });
   await expect(btn).toHaveAttribute("aria-label", "Ask Watson to repeat this clue");
   const geo = await btn.evaluate((el) => {
@@ -119,12 +127,14 @@ test("(a) tap on Watson replays the current clue sequence in auto mode", async (
     .poll(async () => countIn(await detectiveOnly(page), DECODE), { timeout: 60_000 })
     .toBe(2);
   const afterTap = await detectiveOnly(page);
-  for (const needle of CHAIN) {
-    expect(countIn(afterTap, needle), `replay played ${needle}`).toBe(2);
-  }
+  expect(countIn(afterTap, CLUE), `replay played ${CLUE}`).toBe(2);
+  expect(countAcks(afterTap), "replay played a second pool ack").toBe(2);
+  expect(countIn(afterTap, DECODE), `replay played ${DECODE}`).toBe(2);
   // …and the replay's three clips are the tail of the record, in
   // chain order (read → ack → decode, from the top).
-  const tail = afterTap.slice(-3).map((u) => CHAIN.findIndex((n) => u.includes(n)));
+  const tail = afterTap
+    .slice(-3)
+    .map((u) => (u.includes(CLUE) ? 0 : ACK_POOL.test(u) ? 1 : u.includes(DECODE) ? 2 : -1));
   expect(tail).toEqual([0, 1, 2]);
   console.log(
     `[replay-a] pointer tap replayed the chain; watchdogSeeks=${await watchdogSeeks(page)}`,
@@ -161,11 +171,11 @@ test("(b) taps elsewhere on the screen do NOT replay", async ({
 
   const after = await detectiveOnly(page);
   expect(after.length).toBe(before.length);
-  for (const needle of CHAIN) {
-    expect(countIn(after, needle), `no replay of ${needle}`).toBe(
-      countIn(before, needle),
-    );
-  }
+  expect(countIn(after, CLUE), `no replay of ${CLUE}`).toBe(countIn(before, CLUE));
+  expect(countAcks(after), "no replay of a pool ack").toBe(countAcks(before));
+  expect(countIn(after, DECODE), `no replay of ${DECODE}`).toBe(
+    countIn(before, DECODE),
+  );
   console.log(
     `[replay-b] elsewhere taps replayed nothing (plays ${before.length} → ${after.length})`,
   );
@@ -232,13 +242,13 @@ test("(c) tap during an in-progress read restarts it from item 1", async ({
   const plays = await detectiveOnly(page);
   const firstClue = plays.findIndex((u) => u.includes(CLUE));
   const secondClue = plays.findIndex((u, i) => i > firstClue && u.includes(CLUE));
-  const ack = plays.findIndex((u, i) => i > secondClue && u.includes(ACK));
+  const ack = plays.findIndex((u, i) => i > secondClue && ACK_POOL.test(u));
   const decode = plays.findIndex((u, i) => i > secondClue && u.includes(DECODE));
   expect(firstClue).toBeGreaterThanOrEqual(0);
   expect(secondClue).toBeGreaterThan(firstClue);
   expect(ack).toBeGreaterThan(secondClue);
   expect(decode).toBeGreaterThan(ack);
-  expect(countIn(plays, ACK)).toBe(1);
+  expect(countAcks(plays)).toBe(1);
   expect(countIn(plays, DECODE)).toBe(1);
   console.log(
     `[replay-c] restart order clue@${firstClue} → clue@${secondClue} → ack@${ack} → decode@${decode}; watchdogSeeks=${await watchdogSeeks(page)}`,

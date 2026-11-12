@@ -133,6 +133,50 @@ async function showMap(page: Page) {
   await page.waitForTimeout(700);
 }
 
+/** Scroll the active clue card into view — Watson's station stands
+ * in the gutter beside it, so this is how a player sees him during
+ * the guessing phases after the station cure (2026-11-08). */
+async function showStation(page: Page) {
+  await page.evaluate(() => {
+    document
+      .querySelector('article[aria-label^="Clue 1:"]')
+      ?.scrollIntoView({ block: "center" });
+  });
+  await page.waitForTimeout(700);
+}
+
+/** Poll until ONE named figure is substantially inside the viewport
+ * and shares zero pixels with the other. Used for the guessing
+ * phases, where the pair is split (Holmes at the map dock, Watson
+ * at the clue-card station) and no single scroll position frames
+ * both — each figure is proven in its own place instead. */
+async function expectFigureInView(
+  page: Page,
+  who: "holmes" | "watson",
+  label: string,
+  minInView = 0.9,
+) {
+  let last: PairGeometry | null = null;
+  await expect
+    .poll(
+      async () => {
+        last = await pairGeometry(page);
+        const rect = who === "holmes" ? last.holmes : last.watson;
+        const frac = who === "holmes" ? last.holmesInView : last.watsonInView;
+        return rect !== null && frac >= minInView && last.overlapArea === 0;
+      },
+      { timeout: 45_000 },
+    )
+    .toBe(true)
+    .catch(() => false);
+  const l = last as PairGeometry | null;
+  const frac = l ? (who === "holmes" ? l.holmesInView : l.watsonInView) : 0;
+  expect(
+    l !== null && frac >= minInView && l.overlapArea === 0,
+    `${label}: ${who} must be in the viewport and unoccluded — last geometry: ${JSON.stringify(last)}`,
+  ).toBe(true);
+}
+
 const WIDTHS = [
   { name: "desktop 1280", width: 1280, height: 950 },
   { name: "phone 390", width: 390, height: 844 },
@@ -159,13 +203,22 @@ for (const w of WIDTHS) {
       // side by side, sharing no pixels.
       await expectPairVisibleAndSeparate(page, `station @ ${w.name}`);
 
-      // Search: the player scrolls to the map; at the dock BOTH
-      // figures stand in view, Holmes beside Watson — never behind
-      // him.
+      // Search: the pair SPLITS (station cure, 2026-11-08) — Holmes
+      // alone at the map dock, Watson holding his station beside
+      // the clue card. The player scrolls to the map to guess:
+      // Holmes stands in view there, alone and unoccluded. Then
+      // the player scrolls back to the clues: Watson stands in
+      // view at his station. (Before the cure both figures stood
+      // at the dock together; that shared-dock expectation is what
+      // the owner's defect report retired.)
       await waitForSearchIdle(page, 120_000);
       expect(await currentPhase(page)).toBe("SEARCH_IDLE");
       await showMap(page);
-      await expectPairVisibleAndSeparate(page, `dock @ ${w.name}`, 0.9);
+      await expectFigureInView(page, "holmes", `search dock @ ${w.name}`, 0.9);
+      // Watson must NOT be on the map in the guessing phase.
+      await expect(page.getByTestId("detective-dock")).toHaveCount(0);
+      await showStation(page);
+      await expectFigureInView(page, "watson", `search station @ ${w.name}`, 0.9);
     } finally {
       await context.close();
     }
@@ -260,8 +313,13 @@ for (const w of WIDTHS) {
 
       await waitForSearchIdle(page, 120_000);
       expect(await currentPhase(page)).toBe("SEARCH_IDLE");
+      // Same split as the core case: Holmes alone at the map dock,
+      // Watson at his clue-card station (station cure, 2026-11-08).
       await showMap(page);
-      await expectPairVisibleAndSeparate(page, `pack dock @ ${w.name}`, 0.9);
+      await expectFigureInView(page, "holmes", `pack search dock @ ${w.name}`, 0.9);
+      await expect(page.getByTestId("detective-dock")).toHaveCount(0);
+      await showStation(page);
+      await expectFigureInView(page, "watson", `pack search station @ ${w.name}`, 0.9);
     } finally {
       await context.close();
     }

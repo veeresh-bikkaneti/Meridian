@@ -110,8 +110,8 @@ export function isLoopPuzzleState(value: unknown): value is LoopPuzzleState {
     (s.cycle as number) >= 1 &&
     Array.isArray(s.guesses) &&
     // P0-1: bound by the largest cap any band's deal can legally produce
-    // (the 8-10 deal plays 6 guesses), NOT the shipped LOOP_MAX_GUESSES
-    // default — a 6-guess 8-10 mystery is legal and must persist.
+    // (the 7-10 deal plays 6 guesses), NOT the shipped LOOP_MAX_GUESSES
+    // default — a 6-guess 7-10 mystery is legal and must persist.
     s.guesses.length <= MAX_DEAL_GUESS_CAP &&
     (s.guesses as unknown[]).every(isLoopGuess) &&
     isLoopStatus(s.status) &&
@@ -790,8 +790,10 @@ function storageAvailable(): boolean {
 
 /**
  * Whether the loop screen was open when the tab last closed/reloaded.
- * Unchanged in the unlimited era: a mid-game reload reopens the screen
- * and the screen itself resumes-or-deals instead of day-keying.
+ * B7 (owner ruling, 2026-11-09): boot no longer reads this — a new
+ * session always lands on Home. The flag is still written on tap-in /
+ * leave, and the screen itself resumes-or-deals from the saved store
+ * when the player taps back in.
  */
 export function readLoopOpen(): boolean {
   if (!storageAvailable()) return false;

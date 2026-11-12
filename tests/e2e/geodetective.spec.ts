@@ -375,14 +375,22 @@ test("ocean tap selects an Open Water guess (owner directive 2026-10-12)", async
   expect(await guessCount(page)).toBe(0);
 });
 
-test("reload mid-game resumes the open mystery without re-dealing", async ({ page }) => {
+test("reload mid-game lands on Home; tapping in resumes the open mystery without re-dealing (B7)", async ({ page }) => {
   await openLoop(page, "218");
   await guessViaMap(page, "tokyo");
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
   expect(await ringFeatureCount(page)).toBeGreaterThan(0);
 
   await page.reload();
-  // Reload-restore: the in-progress mystery comes back, not a reset.
+  // B7 (owner ruling, 2026-11-09): the reload lands on Home — the
+  // persisted loop-open flag no longer auto-opens GeoDetective.
+  await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible({
+    timeout: 30_000,
+  });
+  await expect(page.getByTestId("loop-map")).toHaveCount(0);
+
+  // Tapping in resumes the in-progress mystery, not a reset.
+  await page.getByRole("button", { name: "GeoDetective: Resume your case" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible();
   await expect(page.getByRole("article", { name: /Clue 1: Geography/ })).toBeVisible();
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
@@ -401,7 +409,7 @@ test("reload mid-game resumes the open mystery without re-dealing", async ({ pag
   expect(store.deck.deck).toHaveLength(387);
 });
 
-test("reload on a finished reveal re-renders the reveal, not a fresh deal", async ({
+test("reload on a finished reveal lands on Home; tapping in re-renders the reveal, not a fresh deal (B7)", async ({
   page,
 }) => {
   await openLoop(page, "218");
@@ -409,7 +417,15 @@ test("reload on a finished reveal re-renders the reveal, not a fresh deal", asyn
   await expect(page.getByText("🎯 You found it!")).toBeVisible();
 
   await page.reload();
-  // The reveal re-renders: same mystery acknowledged, streak intact.
+  // B7: the reload lands on Home, not on the reveal.
+  await expect(page.getByRole("button", { name: "GeoDetective: Solve a mystery" })).toBeVisible({
+    timeout: 30_000,
+  });
+  await expect(page.getByTestId("loop-map")).toHaveCount(0);
+
+  // Tapping in re-renders the finished-but-unacknowledged reveal:
+  // same mystery acknowledged, streak intact.
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByText("🎯 You found it!")).toBeVisible({ timeout: 30_000 });
   await expect(page.getByText("Solved in 1 of 5 guesses.")).toBeVisible();
   await expect(page.getByText("🔥 Streak: 1")).toBeVisible();
@@ -421,7 +437,7 @@ test("reload on a finished reveal re-renders the reveal, not a fresh deal", asyn
   expect(store.current.status).toBe("won");
 });
 
-test("bestStreak persists across a reload: win raises the best, the best survives reload", async ({
+test("bestStreak persists across a reload: win raises the best, the best survives reload (B7)", async ({
   page,
 }) => {
   await openLoop(page, "218"); // Ankara
@@ -435,7 +451,11 @@ test("bestStreak persists across a reload: win raises the best, the best survive
   expect(won.bestStreak).toBe(1);
 
   await page.reload();
-  // The reveal re-renders from the persisted blob — the best is untouched.
+  // B7: the reload lands on Home; the reveal re-renders on tap-in.
+  await expect(page.getByRole("button", { name: "GeoDetective: Solve a mystery" })).toBeVisible({
+    timeout: 30_000,
+  });
+  await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByText("🎯 You found it!")).toBeVisible({ timeout: 30_000 });
   const afterReload = await loopStore(page);
   expect(afterReload.bestStreak).toBe(1);

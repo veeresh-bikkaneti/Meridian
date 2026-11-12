@@ -1,4 +1,4 @@
-import { Fragment, Suspense, lazy, useEffect, useRef, useState } from "react";
+import { Fragment, Suspense, lazy, useCallback, useEffect, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useOnlineStatus } from "@/hooks/use-online-status";
 import { useAutoAnimate } from "@/hooks/use-auto-animate";
@@ -71,7 +71,21 @@ import {
   type LoopPackMeta,
 } from "./packs";
 import { buildLoopGuess, submitGuess, OCTANT_ARROWS } from "./engine";
-import { geodetectiveConfig, getBandConfig, canUseHint, resolveBand, type AgeBandId, type GeoDetectiveConfig } from "@/game/age-profile";
+import { geodetectiveConfig, getBandConfig, canUseHint, resolveBand, type AgeBandId, type BandRunConfig, type GeoDetectiveConfig } from "@/game/age-profile";
+
+type LegacySnapshotBand = Exclude<BandRunConfig["band"], AgeBandId>;
+
+/**
+ * A persisted run-config snapshot (meridian.loop.v2) may still carry a
+ * pre-age-groups id. Map it to the current group wherever an AgeGroup is
+ * needed; the snapshot itself is never rewritten or rejected.
+ */
+function normalizeSnapshotBand(b: AgeBandId | LegacySnapshotBand): AgeBandId {
+  if (b === "5-7" || b === "8-10") return "7-10";
+  if (b === "11-13") return "10-18";
+  return b;
+}
+
 import { HintPanel } from "@/components/hint-panel";
 import { PackShelf } from "@/components/pack-shelf";
 import { CORE_DECK_ID as SHELF_CORE_DECK_ID, deckLabelForId, toShelfDeckId } from "@/components/pack-shelf-data";
@@ -112,15 +126,19 @@ const StorytellerNarration = lazy(() => import("@/components/storyteller"));
 // flag-off session never even fetches the chunk.
 const DetectiveHost = lazy(() => import("./detective/DetectiveHost"));
 
+/** Clues-one-at-a-time watchdog: if the pair has not presented the
+ * next starting clue within this long, show every dealt card anyway
+ * (a clue read + Holmes's ack runs well under it). */
+const CLUE_PRESENT_WATCHDOG_MS = 30_000;
 /** Puzzles whose hook narration already played this session (auto once per puzzle). */
 const hookNarratedPuzzles = new Set<string>();
 /**
  * Fail-safe deal when the band has no GeoDetective config (the loop is
- * locked for the band — reachable via a mid-run band change to 5-7):
- * the EASIEST unlocked deal (8-10), never the hardest. Dealing the
- * near-blind 11-13 config to the youngest band was a real bug.
+ * locked for the band — reachable via a mid-run band change to a group
+ * that locks it): the EASIEST unlocked deal (7-10), never the hardest.
+ * Dealing the near-blind 10-18 config to the youngest group was a real bug.
  */
-const SAFE_DEAL_FALLBACK: GeoDetectiveConfig = geodetectiveConfig("8-10") ?? {
+const SAFE_DEAL_FALLBACK: GeoDetectiveConfig = geodetectiveConfig("7-10") ?? {
   startingClues: 3,
   cluePerWrongGuess: 1 as const,
   maxClues: 5 as const,
@@ -130,8 +148,8 @@ const SAFE_DEAL_FALLBACK: GeoDetectiveConfig = geodetectiveConfig("8-10") ?? {
 /**
  * Deal-time config persisted on the open mystery (P0-2): survives
  * remount/resume, so a mid-mystery band change can never soft-lock the
- * mystery under a smaller cap (an 8-10 mystery at 5 wrong guesses resumed
- * under 11-13 keeps its cap of 6 — the 6th guess still wins or loses it).
+ * mystery under a smaller cap (a 7-10 mystery at 5 wrong guesses resumed
+ * under 10-18 keeps its cap of 6 — the 6th guess still wins or loses it).
  * Null for pre-snapshot stores — the caller falls back to the live band.
  */
 function persistedDealConfig(puzzle: LoopPuzzleState | null): GeoDetectiveConfig | null {
@@ -535,9 +553,9 @@ export function LoopScreen({
   const [dealConfig, setDealConfig] = useState<GeoDetectiveConfig | null>(null);
   // Deal-time band snapshot for the hint policy (follow-up Item B).
   // Captured alongside the deal config so a mid-mystery band change never
-  // swaps the hint surface mid-deal. Note: GeoDetective is locked for 5-7
-  // (bands.ts), so in practice this is 8-10 ("one-per-round", hint shown)
-  // vs 11-13 ("none", no button) — the policy table decides, not the loop.
+  // swaps the hint surface mid-deal. Note: GeoDetective is available to every
+  // group (bands.ts); the hint policy is 7-10 "free", 10-18 "one-per-round",
+  // 18+ ("none", no button) — the policy table decides, not the loop.
   const [dealBand, setDealBand] = useState<AgeBandId | null>(null);
   const captureDealConfig = (): GeoDetectiveConfig => {
     const config = geodetectiveConfig(resolveBand()) ?? SAFE_DEAL_FALLBACK;
@@ -766,7 +784,7 @@ export function LoopScreen({
       // #113 BLOCK 2: only wins earn it — the award copy celebrates figuring
       // it out, which mismatches a failed round.
       const earnedBadge = awardCleanRoundBadge({
-        band: progressed.dealBandConfig?.band,
+        band: progressed.dealBandConfig?.band ? normalizeSnapshotBand(progressed.dealBandConfig.band) : undefined,
         hintsUsed: progressed.hintsUsed ?? 0,
         loopId: "geodetective",
         won: progressed.status === "won",
@@ -911,11 +929,12 @@ export function LoopScreen({
   const packBriefing = packEntry ? packBriefingText(packEntry) : null;
   // Deal-time band for the hint policy FALLBACK (never live): in-memory
   // snapshot → persisted dealBandConfig.band (survives remount/resume) →
-  // "11-13" (fails closed: policy "none" hides the button). LoopGame
+  // "18+" (fails closed: policy "none" hides the button). LoopGame
   // prefers the mystery's own dealBandConfig.hintPolicy; this prop only
   // serves pre-snapshot puzzles, which carry no policy of their own.
   const dealBandResolved: AgeBandId =
-    dealBand ?? current?.dealBandConfig?.band ?? "11-13";
+    dealBand ??
+    (current?.dealBandConfig?.band ? normalizeSnapshotBand(current.dealBandConfig.band) : "18+");
 
   return (
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
@@ -935,14 +954,16 @@ export function LoopScreen({
               End game
             </Button>
           ) : null}
+          {/* The one mute, top-left beside the screen's other two
+              buttons — the same placement as the home page and the
+              map-quiz chrome (owner, 2026-11-10). Same master toggle
+              everywhere: one persisted key (meridian.sound), one
+              implementation (SoundToggle.tsx). The pair has no
+              speaker of its own. */}
+          <SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />
         </div>
         <div className="flex items-center gap-2">
           <p className="text-sm text-fg">Case #{caseNo}</p>
-          {/* Sound Everywhere (PR C, council Q6): the same master
-              SoundToggle as home and the map-quiz chrome — GeoDetective
-              had no in-screen mute before this. One persisted key
-              (meridian.sound), one implementation (SoundToggle.tsx). */}
-          <SoundToggle testId="sound-toggle-loop" className="atlas-sound-toggle" />
         </div>
       </div>
       <header className="mt-4">
@@ -1243,7 +1264,7 @@ function LoopGame({
   dealConfig: GeoDetectiveConfig;
   /**
    * Deal-time band for the hint policy — resolved by the parent (snapshot →
-   * persisted → "11-13" fails-closed). Never the live band.
+   * persisted → "18+" fails-closed). Never the live band.
    */
   dealBand: AgeBandId;
   /** Just-earned Clean Round badge, forwarded to the win reveal. */
@@ -1270,9 +1291,9 @@ function LoopGame({
   const guessesAnimateRef = useAutoAnimate<HTMLOListElement>();
 
   // Hint UI for GeoDetective (follow-up Item B, owner 2026-10-09).
-  // Policy comes from the DEAL-TIME band snapshot (never live): 8-10 gets
-  // one hint per mystery ("one-per-round"); an explicit 11-13 gets none
-  // ("none" hides the button); 5-7 can't reach this loop (locked in
+  // Policy comes from the DEAL-TIME band snapshot (never live): 10-18 gets
+  // one hint per mystery ("one-per-round"); an explicit 18+ gets none
+  // ("none" hides the button); 7-10 is "free" (policy table decides; formerly locked in
   // bands.ts). Hints NEVER touch points. The nudge is the same mechanical
   // quadrant hint as the quiz loops (hint-logic.ts) — coarse, never
   // pinpoints.
@@ -1281,7 +1302,7 @@ function LoopGame({
   // with no age profile set it carries the on-by-default policy, owner
   // 2026-10-20; see run-config.ts DEFAULT_HINT_POLICY). Only a
   // pre-snapshot puzzle (no dealBandConfig) falls back to recomputing
-  // from the deal band prop, whose chain fails closed at "11-13".
+  // from the deal band prop, whose chain fails closed at "18+".
   // NEVER the live band.
   const hintPolicy =
     puzzle.dealBandConfig?.hintPolicy ?? getBandConfig(dealBand).hintPolicy;
@@ -1325,16 +1346,68 @@ function LoopGame({
     // there or the badge logic reads stale (always-zero) data.
     onHintUsed(nextCount);
   }
-  // Wrong guesses drive the 5-7 mascot offer (policy-gated inside HintPanel;
-  // unreachable here since the loop is 5-7-locked, but the policy decides).
+  // Wrong guesses drive the 7-10 mascot offer (policy-gated inside HintPanel;
+  // unreachable here even though the loop is open to all groups, but the policy decides).
   const geoMissCount = puzzle.guesses.filter((g) => g.distKm !== 0).length;
 
   // Storyteller v1 (hook only): voice on the tier-4 "The Hook" clue reveal,
   // auto once per puzzle on the T1 gesture model. No persistent figure —
   // caption + speaker button, inline with the clue cards.
   const puzzleKey = `${puzzle.cycle}:${puzzle.index}`;
+  const pairOn = isEnabled("detectivePair");
+  // Holmes & Watson own the clue reads when the pair is on (Watson
+  // reads every clue, the Hook included): the storyteller's own Hook
+  // voice and its speaker button would be a second reader of the same
+  // card, so it stays off under the pair (owner, 2026-11-10: "there is
+  // no speaker").
   const hookRevealed = finished || puzzle.cluesRevealed > HOOK_TIER_INDEX;
-  const hookVisible = hookRevealed && !hookNarratedPuzzles.has(puzzleKey);
+  const hookVisible = !pairOn && hookRevealed && !hookNarratedPuzzles.has(puzzleKey);
+
+  // Clues open ONE AT A TIME under the pair (owner, 2026-11-10): a
+  // 3-clue deal shows card 1 while Watson reads it, then card 2, then
+  // card 3 — the pair reports each card as Watson starts it
+  // (onCluePresented). The game's own count (puzzle.cluesRevealed) is
+  // untouched; only what is painted waits. A watchdog shows the rest
+  // if the pair ever stops reporting (no audio stack, a load failure)
+  // so play can never stall behind a hidden card.
+  const freshDealNow =
+    puzzle.guesses.length === 0 && puzzle.cluesRevealed <= dealConfig.startingClues;
+  const [presentedClues, setPresentedClues] = useState<{ key: string; n: number }>(() => ({
+    key: puzzleKey,
+    n: freshDealNow ? 1 : puzzle.cluesRevealed,
+  }));
+  const presentedN =
+    presentedClues.key === puzzleKey
+      ? presentedClues.n
+      : freshDealNow
+        ? 1
+        : puzzle.cluesRevealed;
+  const visibleClues =
+    pairOn && !finished
+      ? Math.max(1, Math.min(puzzle.cluesRevealed, presentedN))
+      : puzzle.cluesRevealed;
+  const onCluePresented = useCallback(
+    (n: number) => {
+      setPresentedClues((prev) => ({
+        key: puzzleKey,
+        n: prev.key === puzzleKey ? Math.max(prev.n, n) : n,
+      }));
+    },
+    [puzzleKey],
+  );
+  useEffect(() => {
+    if (!pairOn || finished || visibleClues >= puzzle.cluesRevealed) return;
+    // A fresh multi-clue deal opens one card as Watson reads it. Do not
+    // dump the rest while he is still on the first question.
+    const opening =
+      puzzle.guesses.length === 0 &&
+      puzzle.cluesRevealed <= dealConfig.startingClues;
+    if (opening) return;
+    const timer = setTimeout(() => {
+      setPresentedClues({ key: puzzleKey, n: puzzle.cluesRevealed });
+    }, CLUE_PRESENT_WATCHDOG_MS);
+    return () => clearTimeout(timer);
+  }, [pairOn, finished, visibleClues, puzzle.cluesRevealed, puzzle.guesses.length, dealConfig.startingClues, puzzleKey]);
 
   // Length unit for every distance on this screen: a USA mystery reads
   // miles, the rest of the world reads kilometers — derived from the
@@ -1428,7 +1501,8 @@ function LoopGame({
       className={
         "mt-8 flex flex-col gap-6" +
         (isEnabled("detectivePair") && isEnabled("hostsStaging")
-          ? " detective-staging-on"
+          ? " detective-staging-on" +
+            (isEnabled("detectiveFlank") ? " detective-flank-on" : "")
           : "")
       }
     >
@@ -1438,11 +1512,14 @@ function LoopGame({
         className="flex flex-col gap-3"
       >
         <p className="text-sm text-fg" role="status">
-          Guess {puzzle.guesses.length + 1} of {dealConfig.guessCap}
+          {/* #337: while playing, the number is the next guess
+              (guesses made + 1). Once the case is finished there is
+              no next guess, so count the guesses actually made. */}
+          Guess {finished ? puzzle.guesses.length : puzzle.guesses.length + 1} of {dealConfig.guessCap}
           {guessesLeft <= 2 && !finished ? ` — ${guessesLeft} left` : ""}
         </p>
-        {/* Hint UI (follow-up Item B): 8-10 and no-profile runs get one
-            hint per mystery; an explicit 11-13 renders nothing (policy
+        {/* Hint UI (follow-up Item B): 10-18 and no-profile runs get one
+            hint per mystery; an explicit 18+ renders nothing (policy
             "none" → HintPanel returns null); hidden once the case is
             closed. Right-aligned, in-flow — never overlapping the map
             or the guess input. */}
@@ -1508,6 +1585,13 @@ function LoopGame({
           (detective-host-props.ts): the pair never receives the puzzle,
           the clue file, a target, or any evaluation. */}
       {isEnabled("detectivePair") ? (
+        /* display:contents keeps layout identical (the bench slot still
+         * sits in the screen's flex column under the map) while taking
+         * the host's own elements out of the screen's auto-animate:
+         * that library keeps a REMOVED direct child painted for its
+         * exit animation, so the bench lingered over the closed case
+         * and a re-mounted station showed two Watsons for a moment. */
+        <div style={{ display: "contents" }} data-testid="detective-host-slot">
         <Suspense fallback={null}>
           <DetectiveHost
             {...buildDetectiveHostProps({
@@ -1517,11 +1601,25 @@ function LoopGame({
               sheetOpen: selected !== null,
               lastGuessPlaceId:
                 puzzle.guesses[puzzle.guesses.length - 1]?.placeId ?? null,
-              freshDeal: puzzle.guesses.length === 0 && puzzle.cluesRevealed <= dealConfig.startingClues,
+              // The CURRENT pick for the selection read: the same
+              // re-derivation the sheet below renders (a tap entry's
+              // id is rebuilt from its coordinates), so Holmes names
+              // the id the guess will record under — the machine's
+              // dedup keys on that identity. Null when nothing is
+              // picked.
+              selectedPlaceId:
+                selected && !finished
+                  ? selected.id.startsWith("tap:")
+                    ? unlabeledSpotEntry(selected.lon, selected.lat).id
+                    : selected.id
+                  : null,
+              freshDeal: freshDealNow,
               answerPlaceId: clue.placeId, // U8: the props builder gates this to the post-solve reveal only
             })}
+            onCluePresented={onCluePresented}
           />
         </Suspense>
+        </div>
       ) : null}
 
       {selected && !finished ? (
@@ -1556,16 +1654,29 @@ function LoopGame({
       <section aria-label="Clues" className="flex flex-col gap-3">
         {clue.clues.map((text, i) => (
           <Fragment key={i}>
+            {/* Flank strip slot (STAGE): the in-flow home for the
+                bookend strip — Holmes left, Listen middle, Watson
+                right, directly above the ACTIVE clue card (the one
+                the host anchors on, index cluesRevealed - 1).
+                Empty (zero height) unless the host portals the
+                strip into it in strip mode; gated on the flank
+                flag so flag-off is byte-identical. */}
+            {isEnabled("detectivePair") &&
+            isEnabled("hostsStaging") &&
+            isEnabled("detectiveFlank") &&
+            i === visibleClues - 1 ? (
+              <div data-testid="detective-strip-slot" />
+            ) : null}
             <ClueCard
               tier={CLUE_TIERS[i]!}
               index={i}
               text={text}
               // When the mystery is over there is no "next guess" — reveal every
               // clue so the locked cards never promise one.
-              revealed={finished || i < puzzle.cluesRevealed}
+              revealed={finished || i < visibleClues}
               reduced={reduced}
             />
-            {i === CLUE_TIERS.length - 1 && packFlagKey && (finished || i < puzzle.cluesRevealed) ? (
+            {i === CLUE_TIERS.length - 1 && packFlagKey && (finished || i < visibleClues) ? (
               <p className="flex items-center gap-2 pl-1 text-xs text-muted" data-testid="loop-giveaway-flag">
                 <FlagImg flagKey={packFlagKey} className="h-6" />
                 <span>The flag of {flagEntry(packFlagKey)?.land ?? "this land"}</span>

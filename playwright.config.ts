@@ -260,6 +260,53 @@ export default defineConfig({
       use: { viewport: { width: 1440, height: 900 } },
     },
     {
+      name: "detective-core-audio",
+      testMatch: /detective-core-audio\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // PR 2a (STAGE flank): Holmes/Watson flank the clue card at
+      // 768/1280, bookend strip above the card at 390, zero clue-text
+      // overlap, Listen plays on the first tap in tap mode, and the
+      // detectiveFlank flag-off path reproduces the shipped layout.
+      // The spec drives its own per-width contexts; the project
+      // viewport is only a default.
+      name: "detective-flank",
+      testMatch: /detective-flank\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // The owner's restated spec (2026-11-10): clues one at a time,
+      // an ack per clue, no pair speaker, mute top-left, beat-me-to-it.
+      // Phone width — where he plays it.
+      name: "detective-owner-spec",
+      testMatch: /detective-owner-spec\.spec\.ts/,
+      use: { viewport: { width: 390, height: 844 } },
+    },
+    {
+      // PR 2a cure (selection read wiring): the real pick path —
+      // LoopScreen → props whitelist → host → machine → audio —
+      // Holmes names the player's map pick aloud before any guess is
+      // spent, suspicion-only on the confirming guess, and the
+      // pending-slot law for a pick made mid-clue-chain. The spec
+      // drives its own contexts; the project viewport is a default.
+      name: "detective-selection-read",
+      testMatch: /detective-selection-read\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
+      // PR 2a cure 3 (the tap-mode silent guess): the selection-read
+      // beats replayed in the OWNER'S configuration — read-aloud
+      // preference "sometimes" (tap mode), flank on, 390 px, held
+      // chains released by Listen — confirming DURING the pick's name
+      // clip and JUST AFTER it ends; the guess's spoken reaction must
+      // play both times. The spec drives its own viewport; the
+      // project viewport is a default.
+      name: "detective-tapmode-selection",
+      testMatch: /detective-tapmode-selection\.spec\.ts/,
+      use: { viewport: { width: 1440, height: 900 } },
+    },
+    {
       name: "feature-flags",
       testMatch: /feature-flags\.spec\.ts/,
     },

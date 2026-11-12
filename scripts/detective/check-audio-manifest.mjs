@@ -9,17 +9,30 @@
  * fails the build when a render is stale or missing. It also enforces
  * the per-case CLUES-ONLY size budget (checkClueBudgets in
  * audio-manifest.mjs): a case whose five clue reads together exceed
- * 500,000 B on disk fails the gate. Node-only: no python, no ffmpeg,
- * safe for the prebuild chain.
+ * 500,000 B on disk fails the gate. And since U11 it enforces core
+ * coverage completeness (checkCoreCoverage): every core-deck case
+ * (audio 0–386) must be claimed with all five clue reads present, or
+ * named on the explicit hold list — an empty clue entry can never
+ * ship silently again (that silence was handbook gate FG-3).
+ * Node-only: no python, no ffmpeg, safe for the prebuild chain.
  *
  * Exit codes: 0 clean · 2 stale/missing (each line named) · 3 manifest
  * unreadable. Usage: check-audio-manifest.mjs [--root <dir>] [--json]
  * (--root exists so the gate can be demonstrated against a copied tree.)
  */
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { MANIFEST_REL, checkClueBudgets, readManifest, verifyManifest } from "./audio-manifest.mjs";
+import {
+  AUDIO_REL,
+  MANIFEST_REL,
+  checkClueBudgets,
+  checkCoreCoverage,
+  coreIndexesFromDisk,
+  readManifest,
+  strayAudioFiles,
+  verifyManifest,
+} from "./audio-manifest.mjs";
 
 const args = process.argv.slice(2);
 let root = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -39,8 +52,15 @@ for (let i = 0; i < args.length; i++) {
 let manifest;
 try {
   if (!existsSync(join(root, MANIFEST_REL))) {
-    // No manifest yet = nothing claimed, nothing to gate. (The renderer
-    // creates it on first use; coverage claims begin with real renders.)
+    // #378: rendered case folders with no manifest means the manifest
+    // was lost, not that nothing was claimed — fail closed. A tree with
+    // no renders at all (fresh checkout of a fork) still passes.
+    const audioDir = join(root, AUDIO_REL);
+    const rendered = existsSync(audioDir) && readdirSync(audioDir).some((d) => /^case-\d+$/.test(d));
+    if (rendered) {
+      console.error(`error: ${MANIFEST_REL} is missing but rendered case folders exist in ${AUDIO_REL} — restore the manifest (git checkout) or re-render`);
+      process.exit(2);
+    }
     if (json) console.log(JSON.stringify({ ok: true, checked: 0, problems: [], note: "no manifest present" }));
     else console.log("detective audio: no manifest present — nothing claimed, gate passes");
     process.exit(0);
@@ -55,10 +75,15 @@ let result;
 try {
   const verified = verifyManifest(root, manifest);
   const budgetProblems = checkClueBudgets(root, manifest);
+  const coverageProblems = checkCoreCoverage(manifest, coreIndexesFromDisk(root));
+  // #381: render scratch (e.g. *.pace-best.mp3) must never ship.
+  for (const f of strayAudioFiles(root)) {
+    coverageProblems.push({ key: f, kind: "stray-file", detail: `${AUDIO_REL}/${f} is not a clip the manifest can name (render scratch?) — delete it` });
+  }
   result = {
     ...verified,
-    ok: verified.ok && budgetProblems.length === 0,
-    problems: [...verified.problems, ...budgetProblems],
+    ok: verified.ok && budgetProblems.length === 0 && coverageProblems.length === 0,
+    problems: [...verified.problems, ...budgetProblems, ...coverageProblems],
   };
 } catch (e) {
   console.error(`error: could not recompute expected renders: ${e.message}`);

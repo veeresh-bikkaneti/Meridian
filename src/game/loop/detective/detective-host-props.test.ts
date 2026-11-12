@@ -20,6 +20,7 @@ const BENIGN = {
   lastGuessPlaceId: null,
   freshDeal: false,
   answerPlaceId: null,
+  selectedPlaceId: null,
 };
 
 test("builder returns exactly the whitelisted keys, in order", () => {
@@ -55,6 +56,7 @@ test("values pass through untouched (status, pick id, sheet flag)", () => {
     lastGuessPlaceId: "geonames:323786",
     freshDeal: true,
     answerPlaceId: "geonames:323786",
+    selectedPlaceId: null,
   });
   assert.equal(props.caseIndex, 42);
   assert.equal(props.cluesRevealed, 5);
@@ -89,7 +91,9 @@ test("U8 whitelist: answerPlaceId crosses ONLY on the post-solve reveal — null
     answerPlaceId: "geonames:5505411",
   });
   assert.equal(won.answerPlaceId, "geonames:5505411");
-  // The whitelist grew by exactly the two U8 fields, nothing else.
+  // The whitelist at this point: the U5 fields + the two U8 fields.
+  // (The selection-read cure adds selectedPlaceId after these — its
+  // own test below pins the final key list deliberately.)
   assert.deepEqual(Object.keys(won), [
     "caseIndex",
     "cluesRevealed",
@@ -98,5 +102,30 @@ test("U8 whitelist: answerPlaceId crosses ONLY on the post-solve reveal — null
     "lastGuessPlaceId",
     "freshDeal",
     "answerPlaceId",
+    "selectedPlaceId",
+  ]);
+});
+
+test("selection-read cure: selectedPlaceId carries the player's CURRENT pick, null when nothing is picked", () => {
+  // A live pick passes through untouched — it is the player's own
+  // input (the id their guess will record under), never an evaluation.
+  const picked = buildDetectiveHostProps({
+    ...BENIGN,
+    selectedPlaceId: "geonames:1796236",
+  });
+  assert.equal(picked.selectedPlaceId, "geonames:1796236");
+  // No pick → null (the builder never invents a pick).
+  const none = buildDetectiveHostProps({ ...BENIGN, selectedPlaceId: null });
+  assert.equal(none.selectedPlaceId, null);
+  // The pinned key list, final shape: 7 keys + selectedPlaceId last.
+  assert.deepEqual(Object.keys(picked), [
+    "caseIndex",
+    "cluesRevealed",
+    "status",
+    "sheetOpen",
+    "lastGuessPlaceId",
+    "freshDeal",
+    "answerPlaceId",
+    "selectedPlaceId",
   ]);
 });

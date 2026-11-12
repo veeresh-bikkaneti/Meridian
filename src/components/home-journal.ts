@@ -6,7 +6,7 @@
  *
  * The dataset is static and bundled (generated from the catalog).
  * Rotation is derived from the wall-clock epoch — every visitor sees the
- * same set in the same 2-hour window, no server state. The pure
+ * same entry in the same 30-minute window, no server state. The pure
  * functions here never read Date.now() inside; the current time is
  * always passed in. The auto-switch wiring the home component runs is
  * factored into `createJournalRotation` below so spec §8's fake-timer
@@ -14,14 +14,14 @@
  */
 import {
   JOURNAL_NOTES,
-  JOURNAL_SETS,
   type JournalNote,
   type JournalSetData,
 } from "./home-journal.data.ts";
 import { assetBase } from "./storyteller-lines.ts";
 
-/** One journal window: 2 hours. Full cycle = 36 sets × 2h = 72 hours. */
-export const JOURNAL_WINDOW_MS = 7_200_000;
+/** One journal window: 30 minutes (B8 amendment, owner 2026-11-09).
+ *  Full cycle = 106 entries × 30 min = 53 hours. */
+export const JOURNAL_WINDOW_MS = 1_800_000;
 
 export type { JournalNote, JournalSetData };
 
@@ -32,42 +32,45 @@ export function journalImageUrl(image: string): string {
   return `${assetBase()}${image}`;
 }
 
-/** A set with its notes resolved, in set order. */
+/**
+ * One rotation window, resolved to its note. B8 (owner 2026-11-09):
+ * each window shows a SINGLE note — the "set" is a singleton, so the
+ * JournalSet shape stays (one-element `notes`) and every consumer
+ * keeps working. Geography is the note's own ring label (`where`); a
+ * singleton can never mix geographies, so `mixed` is always false.
+ * (The generated `JOURNAL_SETS` triples in home-journal.data.ts are
+ * no longer read by the rotation; they remain as generator output.)
+ */
 export interface JournalSet {
   /** 0-based position in the cycle (footer shows index + 1). */
   index: number;
-  /** Shared geography label, or "Field Notes" for mixed remainder sets. */
+  /** The note's geography (its ring label). */
   geography: string;
-  /** True for the mixed-geography remainder sets (spec §3). */
+  /** Always false since B8: a singleton cannot mix geographies. */
   mixed: boolean;
+  /** Exactly one note — the entry showing in this window. */
   notes: JournalNote[];
 }
-
-const NOTES_BY_ID: ReadonlyMap<string, JournalNote> = new Map(
-  JOURNAL_NOTES.map((note) => [note.id, note]),
-);
 
 export function journalNoteCount(): number {
   return JOURNAL_NOTES.length;
 }
 
 export function journalSetCount(): number {
-  return JOURNAL_SETS.length;
+  return JOURNAL_NOTES.length;
 }
 
-/** All sets in rotation order, notes resolved. */
+/** All windows in rotation order, one singleton set per note. */
 export function journalSets(): JournalSet[] {
-  return JOURNAL_SETS.map((set, index) => resolveSet(set, index));
+  return JOURNAL_NOTES.map((note, index) => singletonSet(note, index));
 }
 
-function resolveSet(set: JournalSetData, index: number): JournalSet {
+function singletonSet(note: JournalNote, index: number): JournalSet {
   return {
     index,
-    geography: set.geography,
-    mixed: set.mixed,
-    notes: set.noteIds
-      .map((id) => NOTES_BY_ID.get(id))
-      .filter((note): note is JournalNote => note !== undefined),
+    geography: note.where,
+    mixed: false,
+    notes: [note],
   };
 }
 
@@ -98,31 +101,31 @@ export function confidenceText(note: JournalNote): string {
 }
 
 /**
- * Index of the set showing at `timeMs` (epoch ms):
- * floor(timeMs / JOURNAL_WINDOW_MS) mod setCount. Deterministic — the
+ * Index of the entry showing at `timeMs` (epoch ms):
+ * floor(timeMs / JOURNAL_WINDOW_MS) mod noteCount. Deterministic — the
  * same instant yields the same index on any client. Returns -1 when the
- * dataset is empty (spec §7: no current set).
+ * dataset is empty (spec §7: no current entry).
  */
 export function journalSetIndexAt(timeMs: number): number {
-  const count = JOURNAL_SETS.length;
+  const count = JOURNAL_NOTES.length;
   if (count === 0) return -1;
   const window = Math.floor(timeMs / JOURNAL_WINDOW_MS);
   return ((window % count) + count) % count;
 }
 
-/** The set showing at `timeMs`, or null when the dataset is empty (§7). */
+/** The entry showing at `timeMs`, or null when the dataset is empty (§7). */
 export function journalSetAt(timeMs: number): JournalSet | null {
   const index = journalSetIndexAt(timeMs);
   if (index < 0) return null;
-  return resolveSet(JOURNAL_SETS[index]!, index);
+  return journalSetByIndex(index);
 }
 
-/** The set at an explicit cycle index (wraps), or null when empty. */
+/** The entry at an explicit cycle index (wraps), or null when empty. */
 export function journalSetByIndex(index: number): JournalSet | null {
-  const count = JOURNAL_SETS.length;
+  const count = JOURNAL_NOTES.length;
   if (count === 0) return null;
   const wrapped = ((index % count) + count) % count;
-  return resolveSet(JOURNAL_SETS[wrapped]!, wrapped);
+  return singletonSet(JOURNAL_NOTES[wrapped]!, wrapped);
 }
 
 /** Epoch ms at which the window containing `timeMs` ends / the next begins. */
@@ -132,7 +135,7 @@ export function nextWindowStart(timeMs: number): number {
 
 /**
  * "h:mm" countdown to the next window (spec §5 footer). Rounds up to the
- * next whole minute so a fresh window reads "2:00", never "1:60"/"0:00"
+ * next whole minute so a fresh window reads "0:30", never "0:00"
  * while time remains.
  */
 export function nextEntryCountdown(timeMs: number): string {
@@ -144,7 +147,7 @@ export function nextEntryCountdown(timeMs: number): string {
 }
 
 /**
- * Deferral rule (spec §6, inline-host form): a newly computed set is
+ * Deferral rule (spec §6, inline-host form): a newly computed entry is
  * applied only when neither blocker holds — focus is not inside the
  * home Journal card, and focus is not inside the inline journal
  * section. Content is never swapped under a reader.
@@ -187,7 +190,7 @@ const systemTimers: JournalTimerHost = {
 };
 
 export interface JournalRotation {
-  /** Index of the set currently applied. */
+  /** Index of the entry currently applied. */
   getCurrentIndex: () => number;
   /** Index computed but deferred under a §6 blocker, or null. */
   getPendingIndex: () => number | null;
@@ -200,7 +203,7 @@ export interface JournalRotation {
 }
 
 export function createJournalRotation(options: {
-  /** Called whenever a new set index is applied. */
+  /** Called whenever a new entry index is applied. */
   onApply: (index: number) => void;
   /** The §6 blockers, probed fresh at every recompute. */
   blockers: () => { focusInsideCard: boolean; focusInsideSection: boolean };
