@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Why Do We Learn This? film scene</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  html, body { margin: 0; background: #1d1a16; }
+  body { display: grid; place-items: center; min-height: 100vh; }
+  canvas { display: block; width: 1094px; height: 616px; }
+  body.capture { display: block; min-height: 0; }
+</style>
+<!-- Served from the repo root (see README): three comes from the repo's
+     own node_modules, so the preview uses the same three ^0.160 as the
+     game. Nothing here is part of the app bundle. -->
+<script type="importmap">
+{ "imports": {
+  "three": "/node_modules/three/build/three.module.js",
+  "three/addons/": "/node_modules/three/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<canvas id="film" width="1094" height="616" aria-hidden="true"></canvas>
+<script type="module" src="./scene.js"></script>
+</body>
+</html>
