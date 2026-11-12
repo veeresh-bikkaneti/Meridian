@@ -43,6 +43,15 @@ jobs:
         name: why-learn-shots
         path: why-learn-shots/
         retention-days: 7
+    - name: Base check - mobile-home-overlap on main (is it red there too?)
+      if: always()
+      run: |
+        git fetch --depth=1 origin main
+        git worktree add ../base FETCH_HEAD
+        cd ../base
+        npm ci
+        npm run build:pages
+        npx playwright test tests/e2e/mobile-home-overlap.spec.ts --workers=1 --reporter=line
     - name: Upload the Playwright report on failure
       if: failure()
       uses: actions/upload-artifact@v4
