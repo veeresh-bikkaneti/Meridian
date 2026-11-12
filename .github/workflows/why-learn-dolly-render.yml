@@ -15,10 +15,10 @@ permissions:
 
 jobs:
   render:
-    timeout-minutes: 40
+    timeout-minutes: 75
     runs-on: ubuntu-24.04
     env:
-      BANDS: "10-18"
+      BANDS: "7-10 10-18 18+"
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -47,6 +47,10 @@ jobs:
           cp "frames-$tag/f0000.png" "tmp-dolly-render/first-$tag.png"
           last=$(ls frames-$tag/f*.png | tail -1)
           cp "$last" "tmp-dolly-render/last-$tag.png"
+          # poster = frame 0, still = the split beat at 6.2 s, both 1094x616 webp q82
+          node scripts/why-learn-film/capture.mjs "$band" "stills-$tag" --at=6.2
+          ffmpeg -v error -y -i "frames-$tag/f0000.png" -vf scale=1094:616 -c:v libwebp -quality 82 -compression_level 6 "tmp-dolly-render/why-learn-poster-$tag.webp"
+          ffmpeg -v error -y -i "stills-$tag/t-6.2.png" -vf scale=1094:616 -c:v libwebp -quality 82 -compression_level 6 "tmp-dolly-render/why-learn-still-$tag.webp"
         done
     - name: Commit results to the branch
       run: |

@@ -912,13 +912,33 @@ function lensPlan(t) {
 // seam is untouched.
 const DOLLY_GROW = 1.82;  // montage props grow 1.82x (lens unit 170 px -> ~310 px), so every link still fits the frame height
 const DOLLY_OVER = 2.35;  // lens radius / prop unit at full push-in: rim off-frame, backing disc covers the corners
-const ZOOM = { arc: 1.8, shape: 1.75, split: 1.85, door: DOLLY_GROW }; // each keeps the lens circle inside the frame height
+const LENS_FIT = 285;      // px: each beat's lens radius when the camera is fully in, so the rim stays inside the frame height
+const ZOOM = { door: DOLLY_GROW }; // per-beat push, measured from the home camera in setupDolly
 const DOL = {};
 function setupDolly() {
   camera.updateMatrixWorld(true);
   DOL.c0 = camera.position.clone();
   DOL.f = new THREE.Vector3(0, 0, -1).applyQuaternion(camera.quaternion);
   DOL.depth0 = S.mont.stage.position.clone().sub(DOL.c0).dot(DOL.f);
+  const fit = (r0, max) => Math.min(max, Math.max(1, LENS_FIT / r0));
+  // Throw: one still view centred on the whole flight, so the ball and its
+  // path sit in the middle of the lens and fill it.
+  if (S.b18) { DOL.arcC = S.b18.arcMid.clone(); DOL.arcR0 = S.b18.arcR; }
+  else {
+    const pts = []; for (let i = 0; i <= 40; i++) pts.push(arcAt(i / 40));
+    const box = new THREE.Box3().setFromPoints(pts);
+    DOL.arcC = box.getCenter(new THREE.Vector3());
+    const rW = Math.max(...pts.map((q) => q.distanceTo(DOL.arcC))) + 0.16; // + the ball
+    DOL.arcR0 = 1.16 * pxRadius(DOL.arcC, rW); // the lens magnifies 1.16x on this beat
+  }
+  ZOOM.arc = fit(DOL.arcR0, 2.6);
+  ZOOM.shape = fit(pxRadius(S.shapeFocus, S.shapeR), 1.9);
+  updateScene(6.2);
+  const pieC = new THREE.Vector3(); S.pie.getWorldPosition(pieC);
+  // 7-10 lays the shares out across the whole street, so that beat goes back to the home view.
+  DOL.home = DOL.c0.clone().addScaledVector(DOL.f, 8);
+  ZOOM.split = S.b ? 1 : fit(BAND === "18+" ? pxRadius(S.splitFocus, S.splitR) : pxRadius(pieC, 0.78), 1.9);
+  console.log("dolly zoom", JSON.stringify(ZOOM));
 }
 const depthOf = (p, c) => p.clone().sub(c).dot(DOL.f);
 // Camera pose that puts world point P dead centre, Z times nearer than
@@ -949,14 +969,9 @@ function renderFrame(t) {
   // World points first (camera independent), then the camera, then screen space.
   const g = new THREE.Vector3(); S.lensGlass.getWorldPosition(g);
   const ballPos = BAND === "18+" ? arcAt(clamp01((t - S.arc.t0) / (S.arc.t1 - S.arc.t0 - 0.35))) : S.ball.position.clone();
-  let arcW = S.b18 ? S.b18.arcMid.clone() : ballPos.clone().add(new THREE.Vector3(0.12, -0.08, 0));
-  if (B1018) {
-    // Centre the view a little behind the ball so the gold parabola shows on both sides of it.
-    const kk = clamp01((t - S.arc.t0) / (S.arc.t1 - S.arc.t0));
-    arcW = arcAt(clamp01(kk - 0.22)).add(ballPos).multiplyScalar(0.5).add(new THREE.Vector3(-0.1, -0.4, 0));
-  }
+  const arcW = DOL.arcC;
   const pieC = new THREE.Vector3(); S.pie.getWorldPosition(pieC);
-  const splitW = BAND === "18+" ? S.splitFocus.clone() : S.b ? g.clone() : pieC.clone().add(B1018 ? new THREE.Vector3(0.06, 0.1, 0) : new THREE.Vector3(0.1, 0.18, 0));
+  const splitW = BAND === "18+" ? S.splitFocus.clone() : S.b ? DOL.home : pieC.clone().add(B1018 ? new THREE.Vector3(0.06, 0.1, 0) : new THREE.Vector3(0.1, 0.18, 0));
   const lift = ramp(t, 1.0, 1.45), toShape = ramp(t, 3.0, 3.45), toSplit = ramp(t, 5.0, 5.6);
   const toDoor = B1018 ? ramp(t, 6.8, 7.0) : ramp(t, 6.95, 7.2); // 10-18: the lens leaves Watson's torso a beat sooner
   const camDoor = B1018 ? ramp(t, 6.8, 7.3) : ramp(t, 6.95, 7.4);
@@ -968,10 +983,10 @@ function renderFrame(t) {
   const dockC = toScreen(g), dockR = pxRadius(g, 0.1 * 1.7);
   // Targets of the travelling lens view.
   let tgt = dockC.clone(), R = dockR;
-  let arcTarget = S.b18 ? S.b18.arcTarget() : toScreen(arcW);
-  let arcR = (S.b18 ? S.b18.arcR : B1018 ? 140 : 108) * gainAt(arcW);
+  let arcTarget = toScreen(arcW);
+  let arcR = DOL.arcR0 * gainAt(arcW);
   const shapeTarget = toScreen(S.shapeFocus), shapeR = pxRadius(S.shapeFocus, S.shapeR);
-  const splitTarget = toScreen(splitW);
+  const splitTarget = S.b ? dockC.clone() : toScreen(splitW);
   const splitR = BAND === "18+" ? pxRadius(S.splitFocus, S.splitR) : S.b ? dockR : pxRadius(pieC, B1018 ? 0.78 : 0.84);
   tgt = dockC.clone().lerp(arcTarget, lift); R = lerp(dockR, arcR, lift);
   tgt.lerp(shapeTarget, toShape); R = lerp(R, shapeR, toShape);
