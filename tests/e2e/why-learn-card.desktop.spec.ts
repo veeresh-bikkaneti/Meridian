@@ -154,3 +154,25 @@ for (const vp of [
     await card.screenshot({ path: `${SHOTS}/card-${vp.name}-still-frame.png` });
   });
 }
+
+// Whole-card action (Form S, same as GeoDetective): a tap anywhere on the
+// card opens its target. Until the scale-play subject picker lands the
+// target is GeoDetective (WHY_LEARN_OPENS in game-app.tsx).
+for (const point of ["image", "heading", "paragraph"] as const) {
+  test(`?scale=1 whole-card click (${point}) leaves Home`, async ({ page }) => {
+    await page.goto(`${APP_URL}&scale=1`);
+    const card = page.getByTestId("home-card-why-learn");
+    await expect(card).toBeVisible();
+    await card.scrollIntoViewIfNeeded();
+    const target =
+      point === "image"
+        ? card.getByTestId("card-film-why-learn")
+        : point === "heading"
+          ? card.getByRole("heading", { name: /Why Do We Learn This\?/ })
+          : card.locator(".hv5-txt p").first();
+    const box = (await target.boundingBox())!;
+    await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+    await expect(card).toHaveCount(0, { timeout: 20_000 });
+    await expect(page.getByTestId("home-heading")).toHaveCount(0);
+  });
+}

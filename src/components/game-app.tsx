@@ -77,6 +77,16 @@ import {
 } from "@/assets/verdict/grandpa-media";
 import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand, whyLearnMediaForBand } from "@/assets/home-v5/card-media";
 import { CardFilm } from "./card-film";
+
+/**
+ * Where a tap on the "Why Do We Learn This?" Home card goes (flag
+ * scalePlay / ?scale=1 only, so kids never see it). Main has no
+ * scale-play subject picker yet, so the card opens GeoDetective as a
+ * stand-in (coordinator call, 2026-11-12).
+ * TODO(scale-play v2, mockup/scale-play-v2): when the subject picker
+ * lands, add its opener to WHY_LEARN_TARGETS and point this at it.
+ */
+const WHY_LEARN_OPENS = "geodetective" as const;
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
 import { SoundToggle } from "./SoundToggle";
@@ -1644,6 +1654,26 @@ export function GameApp() {
     writeDifficultyChoice(choice);
   }, []);
   /** Edition card press: the cartographer's tap, then open (SFX audio spec §2.6). */
+  /** Open GeoDetective (the Home card's action; also the "Why Do We
+   * Learn This?" card's stand-in target, see WHY_LEARN_OPENS). */
+  const openGeoDetective = useCallback(() => {
+    // Locked for young bands (age-profile): the dossier renders the
+    // locked variant instead, so this guard is belt-and-braces.
+    if (isLoopLocked(ageBand, "geodetective")) return;
+    // Storyteller home handoff (H1): the loop's locked send-off line
+    // rides along ≤2.5s while the loop loads — navigation never waits
+    // (copy G3). No locked line exists for Cold Trail, so none is sent.
+    window.dispatchEvent(
+      new CustomEvent("meridian:storyteller-sendoff", {
+        detail: { loop: "geodetective" },
+      }),
+    );
+    writeLoopOpen(true);
+    setLoopOpen(true);
+  }, [ageBand]);
+  const WHY_LEARN_TARGETS: Record<typeof WHY_LEARN_OPENS, () => void> = {
+    geodetective: openGeoDetective,
+  };
   const withCardTap = useCallback(
     (edition: string, open: () => void) => (e: ReactMouseEvent) => {
       playCardTap();
@@ -3841,24 +3871,11 @@ export function GameApp() {
       onGlobe={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
       onBegin={withCardTap("Globe", () => openRun("globe", "globe", "Globe", difficultyChoice))}
       onTakeTour={onTakeTour}
-      onLoop={withCardTap("mystery", () => {
-        // Locked for young bands (age-profile): the dossier renders the
-        // locked variant instead, so this guard is belt-and-braces.
-        if (isLoopLocked(ageBand, "geodetective")) return;
-        // Storyteller home handoff (H1): the loop's locked send-off line
-        // rides along ≤2.5s while the loop loads — navigation never waits
-        // (copy G3). No locked line exists for Cold Trail, so none is sent.
-        window.dispatchEvent(
-          new CustomEvent("meridian:storyteller-sendoff", {
-            detail: { loop: "geodetective" },
-          }),
-        );
-        writeLoopOpen(true);
-        setLoopOpen(true);
-      })}
+      onLoop={withCardTap("mystery", openGeoDetective)}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       challengeEnabled={friendChallengesOn}
       whyLearnEnabled={scalePlayOn}
+      onWhyLearn={withCardTap("why-learn", WHY_LEARN_TARGETS[WHY_LEARN_OPENS])}
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
       deck={deckStatus}
@@ -4412,9 +4429,9 @@ function Choose({
   onChallenge?: (e: ReactMouseEvent) => void;
   /** scalePlay flag on: show the "Why Do We Learn This?" card. */
   whyLearnEnabled?: boolean;
-  /** Open the scale-play subject picker. Not on main yet: until the
-   * scale-play screen lands and passes this, the card's button is
-   * rendered disabled. */
+  /** The card's action (whole card, Form S stretched CTA, same as
+   * GeoDetective). Opens GeoDetective until the scale-play subject
+   * picker lands; see WHY_LEARN_OPENS. */
   onWhyLearn?: (e: ReactMouseEvent) => void;
   /** Deck entry status (flag-gated; see useDeckStatus). */
   deck: { enabled: boolean; due: number; total: number };
@@ -4919,7 +4936,9 @@ function Choose({
               type="button"
               className="hv5-go hv5-stretch"
               onClick={onWhyLearn}
-              disabled={!onWhyLearn}
+              onPointerEnter={prefetchTerritoryData}
+              onPointerDown={prefetchTerritoryData}
+              onFocus={prefetchTerritoryDataOnFocus}
               aria-label="Why Do We Learn This?: Start exploring"
             >
               <span aria-hidden="true">🔍</span>{" "}Start exploring
