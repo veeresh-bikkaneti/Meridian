@@ -425,31 +425,41 @@ export function reviewMediaForBand(band: string | null | undefined) {
  * connected" door montage hints at physics, chemistry and history.
  *
  * Provenance: rendered from scripts/why-learn-film/ (three.js scene,
- * one band module each) on branch feat/why-learn-film-redo, v4, frozen
- * by the owner. Media copied byte-for-byte from that branch's
- * public/media/why-learn/ at SOURCE SHA 7c93a516 (renamed to this
- * folder's band names: 10-18 = base, 7-10 = trail-scout, 18plus =
- * adult). Only the media come into this branch; the scripts and
- * .film-work/ stay on the film branch. Every frame is a pure function
- * of t, so a re-capture gives the same pixels.
- * Encode (read from each file's x264 header): 1094x616, 24 fps,
- * 240 frames, 10.0 s, H.264, silent, rc=crf. Loop: the take returns
- * to its frame-0 pose; the film session recorded no crossfade, and its
- * seam score is listed under weak spots below.
- *   why-learn-film.mp4             10-18  CRF 26  399,856 bytes
- *   why-learn-film-trail-scout.mp4  7-10  CRF 28  399,478 bytes
- *   why-learn-film-adult.mp4        18+   CRF 26  398,313 bytes
- * Poster = frame 0, WebP 1094x616: 33,198 / 30,426 / 32,586 bytes
+ * one band module each) on branch feat/why-learn-film-dolly, SOURCE SHA
+ * 0d8de7e9 (v4 plus the owner's camera move; branch head after the
+ * temporary render workflow was removed: 4bf5d106). Rendered headless
+ * with capture.mjs in a temporary GitHub Actions job and copied
+ * byte-for-byte here (renamed to this folder's band names: 10-18 =
+ * base, 7-10 = trail-scout, 18plus = adult). Only the media come into
+ * this branch; the scripts stay on the film branch. Every frame is a
+ * pure function of t, so a re-capture gives the same pixels.
+ * Camera (owner's request, Nov 12; the one exception to the locked Home
+ * shot): the camera pushes in the moment Holmes's lens lifts and follows
+ * it, so the throw (one still view centred on the whole flight), the
+ * right triangle and the shared pie read big; 7-10 returns to the home
+ * view for its sharing beat because the shares spread across the street.
+ * At the montage it pushes in until the links fill the frame, then
+ * pulls back to the full stage with Holmes and Watson. Position only,
+ * home by 9.8 s.
+ * Encode: 1094x616, 24 fps, 240 frames, 10.0 s, H.264 High, silent,
+ * veryslow, faststart, CRF searched upward from 26 until under 400,000
+ * bytes (the camera move costs bits, so these sit higher than v4's 26-28):
+ *   why-learn-film.mp4             10-18  CRF 35  378,844 bytes
+ *   why-learn-film-trail-scout.mp4  7-10  CRF 36  399,549 bytes
+ *   why-learn-film-adult.mp4        18+   CRF 34  377,832 bytes
+ * Poster = frame 0, WebP q82 1094x616: 32,440 / 31,836 / 32,774 bytes
  * (base / trail-scout / adult). Still = the split beat held (t = 6.2 s),
- * WebP 1094x616: 40,834 / 45,564 / 41,914 bytes. The still is a
+ * WebP q82 1094x616: 47,346 / 46,008 / 45,938 bytes. The still is a
  * different file from the poster on purpose: reduced-motion and
  * Save-Data show it.
- * Known weak spots at v4 (independent frame checks, owner froze v4
- * anyway): seam 37-39 dB against a 55-60 dB baseline, cause
- * unresolved; origin link reads clean only 0.30-0.35 s in every band;
- * the lens ring covers Holmes's fingertips at ~9.2-9.3 s; 10-18 pie
- * plate hides Watson at 7.0 s; 18+ hose is cut at the right edge from
- * 5.3 to 7.0 s.
+ * Loop: frame 0 against the last frame, lossless PNG: 10-18 40.5 dB,
+ * 18+ 62.4 dB, 7-10 34.2 dB (the camera is home by then, so the 7-10
+ * gap is the band's own animation, carried over from v4).
+ * Known weak spots: the origin link reads clean only 0.30-0.35 s; after
+ * the curl the montage backdrop shrinks as a flat circle for about a
+ * quarter second before the street returns; the throw is as big as the
+ * frame height allows but still the smallest beat; encodes are softer
+ * than v4 (higher CRF).
  */
 export const WHY_LEARN_FILM = {
   videoUrl: whyLearnVideoUrl,
