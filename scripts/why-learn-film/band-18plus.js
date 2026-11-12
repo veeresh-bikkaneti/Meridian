@@ -163,7 +163,7 @@ export function createBand18(c) {
   B.update = (t) => {
     const Wt = S.W;
     // Watson steps back to the right while the lens is on the three bowls, so the rim never half-hides him.
-    Wt.root.position.x += WATSON_DX + WATSON_STEP * smooth(ramp(t, 5.0, 5.6)) * (1 - smooth(ramp(t, 6.95, 7.4)));
+    Wt.root.position.x += WATSON_DX + WATSON_STEP * smooth(ramp(t, 5.0, 5.6)) * (1 - smooth(ramp(t, 6.95, 7.2)));
     Wt.root.updateMatrixWorld(true);
     // Hose: pointing down at rest, up along the water's tangent while it runs.
     if (S.hose && S.arc) {

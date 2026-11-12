@@ -470,7 +470,7 @@ function watsonPos1018(t) {
   const p = WP.start.clone().lerp(WP.catch, ramp(t, 1.6, 3.4));
   p.lerp(WP.pick, ramp(t, 4.0, 4.5));
   p.lerp(WP.hold, ramp(t, 4.9, 5.5));
-  p.lerp(WP.pick, ramp(t, 6.9, 7.4));
+  p.lerp(WP.pick, ramp(t, 6.9, 7.15));
   p.lerp(WP.start, ramp(t, 9.0, 9.8));
   return p;
 }
@@ -481,7 +481,7 @@ function holmesX1018(t) {
   if (S.hOverride !== undefined) return S.hOverride;
   let x = SET.holmes.x;
   if (!S.hs) return x;
-  x = lerp(x, S.hs, ramp(t, 6.9, 7.4));
+  x = lerp(x, S.hs, ramp(t, 6.9, 7.15));
   return lerp(x, SET.holmes.x, ramp(t, 9.0, 9.7));
 }
 
@@ -755,14 +755,14 @@ function updateScene(t) {
   // Watson.
   const walkTo = ramp(t, 1.6, 3.4), walkBack = ramp(t, 9.0, 9.8);
   // Split beat: Watson steps forward to hold the pie face-on to the camera.
-  const kLift = ramp(t, 5.0, 5.6) * (1 - ramp(t, 6.9, 7.4));
+  const kLift = ramp(t, 5.0, 5.6) * (1 - ramp(t, 6.9, 7.15));
   const pos = BAND === "18+" ? SET.watsonCatch.clone() : SET.watsonStart.clone().lerp(SET.watsonCatch, walkTo * (1 - walkBack));
   if (BAND !== "18+" && !B1018) pos.lerp(SET.watsonHold, kLift);
   if (B1018) pos.copy(watsonPos1018(t));
   Wt.root.position.copy(pos);
-  const kHold = B1018 ? ramp(t, 4.9, 5.5) * (1 - ramp(t, 6.9, 7.4)) : kLift;
+  const kHold = B1018 ? ramp(t, 4.9, 5.5) * (1 - ramp(t, 6.9, 7.15)) : kLift;
   const walking = B1018 ? watsonPos1018(t + 0.03).distanceTo(pos) / 0.03 > 0.25
-    : BAND !== "18+" && ((t > 1.6 && t < 3.4) || (t > 5.0 && t < 5.6) || (t > 6.9 && t < 7.4) || (t > 9.0 && t < 9.8));
+    : BAND !== "18+" && ((t > 1.6 && t < 3.4) || (t > 5.0 && t < 5.6) || (t > 6.9 && t < 7.15) || (t > 9.0 && t < 9.8));
   const stride = walking ? Math.sin(t * 14) : 0;
   let p, headX = 0, lean = 0;
   if (BAND !== "18+") {
@@ -772,15 +772,15 @@ function updateScene(t) {
     p = mixPose(p, HOLD, ramp(t, 3.72, 3.98)); // ball down to the chest, face clear
     if (B1018) {
       p = mixPose(p, POSES.watson["hold-pie-wide"], ramp(t, 4.75, 5.4));
-      p = mixPose(p, HOLD, ramp(t, 6.95, 7.5));
+      p = mixPose(p, HOLD, ramp(t, 6.95, 7.25));
     } else {
       p = mixPose(p, POSES.watson["lift-pie"], ramp(t, 5.0, 5.6));
-      p = mixPose(p, HOLD, ramp(t, 6.9, 7.4));
+      p = mixPose(p, HOLD, ramp(t, 6.9, 7.15));
     }
   } else {
     p = mixPose(HOLD, AIM, ramp(t, 0.9, 1.3));
     p = mixPose(p, POSES.watson["lean-in"], ramp(t, 5.1, 5.6));
-    p = mixPose(p, HOLD, ramp(t, 6.9, 7.4));
+    p = mixPose(p, HOLD, ramp(t, 6.9, 7.15));
   }
   lean = kHold;
   const nod = ramp(t, 9.45, 9.6) * (1 - ramp(t, 9.65, 9.85));
@@ -828,7 +828,7 @@ function updateScene(t) {
   if (S.b18) S.b18.update(t);
   // Swing: a 2 s pendulum, four full swings per loop.
   if (S.swingPivot) S.swingPivot.rotation.z = Math.sin(t * Math.PI) * (S.swingAmp ?? 0.6) * 0.95;
-  if (BAND !== "18+") updatePie(t, B1018 ? smooth(ramp(t, 4.75, 5.4)) * (1 - smooth(ramp(t, 6.95, 7.5))) : kLift);
+  if (BAND !== "18+") updatePie(t, B1018 ? smooth(ramp(t, 4.75, 5.4)) * (1 - smooth(ramp(t, 6.95, 7.25))) : kLift);
   if (S.b) S.b.update(t);
   if (S.mont) S.mont.update(t);
   if (S.clouds) S.clouds.children.forEach((c) => { c.userData.x0 ??= c.position.x; c.position.x = c.userData.x0 + Math.sin(t * Math.PI / 5) * c.userData.speed * 4; });
@@ -887,8 +887,8 @@ function lensPlan(t) {
   // Turn/arm offsets (degrees) toward each beat's target.
   const kArc = ramp(t, 1.0, 1.5) * (1 - ramp(t, 3.0, 3.4));
   const kShape = ramp(t, 3.0, 3.4) * (1 - ramp(t, 5.0, 5.35));
-  const kSplit = ramp(t, 5.0, 5.35) * (1 - ramp(t, 6.9, 7.2));
-  const kDoor = ramp(t, 6.9, 7.3) * (1 - ramp(t, 9.0, 9.5));
+  const kSplit = ramp(t, 5.0, 5.35) * (1 - ramp(t, 6.9, 7.1));
+  const kDoor = ramp(t, 6.9, 7.15) * (1 - ramp(t, 9.0, 9.5));
   return {
     turn: kArc * 14 + kShape * 6 + kSplit * 14 + kDoor * 12,
     armX: -kArc * 22 - kShape * 14 + kSplit * 18 - kDoor * 20,
@@ -902,7 +902,7 @@ function lensPlan(t) {
 
 // Weight of the lens being on the split or door beat (sets magnification).
 function lensKind(t, k) {
-  return k === "split" ? ramp(t, 5.0, 5.6) * (1 - ramp(t, 6.95, 7.4)) : ramp(t, 6.95, 7.4) * (1 - ramp(t, 9.0, 9.55));
+  return k === "split" ? ramp(t, 5.0, 5.6) * (1 - ramp(t, 6.95, 7.2)) : ramp(t, 6.95, 7.2) * (1 - ramp(t, 9.0, 9.55));
 }
 
 function renderFrame(t) {
@@ -937,7 +937,7 @@ function renderFrame(t) {
   // Door beat: the lens lands on the montage stage and stays there.
   const handW = new THREE.Vector3(); S.H.handR.getWorldPosition(handW);
   const doorR = LENS_R, doorPos = S.mont.screen;
-  const toDoor = ramp(t, 6.95, 7.4);
+  const toDoor = ramp(t, 6.95, 7.2);
   tgt.lerp(doorPos, toDoor); R = lerp(R, doorR, toDoor);
   const home = ramp(t, 9.0, 9.55);
   tgt.lerp(dockC, home); R = lerp(R, dockR, home);
@@ -967,7 +967,7 @@ function renderFrame(t) {
   reveal(ln.ring, (t - 5.45) / 0.35, fade * 0.8);
   }
 
-  const handleK = ramp(t, 7.3, 7.45) * (1 - home);
+  const handleK = ramp(t, 7.12, 7.22) * (1 - home);
   if (S.b) S.b.lines(t);
   const u = comp.uniforms;
   u.handC.value.copy(toScreen(handW)); u.handle.value = handleK;

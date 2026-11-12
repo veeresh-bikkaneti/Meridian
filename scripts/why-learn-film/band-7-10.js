@@ -108,8 +108,8 @@ export function setup(c) {
     B.slices.push(s);
   }
   const T_SLIDE = [5.15, 5.5], T_SLICE = 5.5, SLICE_DUR = 0.4, SLICE_STAGGER = 0.08;
-  const T_UP = [4.5, 5.0], T_DOWN = [6.85, 7.4];
-  const T_RUN = [3.85, 5.15], T_LEAVE = [6.8, 7.2];
+  const T_UP = [4.5, 5.0], T_DOWN = [6.85, 7.15];
+  const T_RUN = [3.85, 5.15], T_LEAVE = [6.8, 7.05];
 
   // ── Friends: two simple children (no text) ────────────────────────────
   const skin = [0xf4c6a0, 0xb97a4e], shirt = [0xf08a4b, 0x8f6fd6], hair = [0x5a3b28, 0x2b1d17], pants = [0x3b5b8c, 0x3b5b8c];
@@ -137,7 +137,7 @@ export function setup(c) {
 
   B.update = (t) => {
     const Wt = S.W, H = S.H;
-    const inSplit = t >= 4.6 && t <= 7.45;
+    const inSplit = t >= 4.6 && t <= 7.2;
 
     // The swing really rocks in the picture plane (about the pivot X axis once the set faces the camera).
     if (S.swingPivot) { S.swingPivot.rotation.z = 0; S.swingPivot.rotation.x = Math.cos(PI * (t - 4.2)) * 0.55; }
@@ -187,25 +187,25 @@ export function setup(c) {
 
     if (!inSplit) return;
     // Weight of the sharing set-up being on stage.
-    const w = ramp(t, 4.7, 5.2) * (1 - ramp(t, 6.9, 7.4));
+    const w = ramp(t, 4.7, 5.2) * (1 - ramp(t, 6.9, 7.15));
 
     // Watson: from the catch spot to the end of the board, shows the shares, returns.
     // (Replaces scene.js's lift-pie walk for this band: baseline is the catch spot.)
     Wt.root.position.copy(SET.watsonCatch).lerp(V(1.8, 0, 0.1), w);
-    const moving = (t > 4.7 && t < 5.2) || (t > 6.9 && t < 7.4);
+    const moving = (t > 4.7 && t < 5.2) || (t > 6.9 && t < 7.15);
     const stride = moving ? Math.sin(t * 14) : 0;
     Wt.root.position.y = moving ? Math.abs(Math.cos(t * 14)) * 0.025 : 0;
     Wt.root.rotation.set(0, lerp(-22, -6, w) * D, 0);
-    const present = ramp(t, 5.55, 5.9) * (1 - ramp(t, 6.9, 7.25));
+    const present = ramp(t, 5.55, 5.9) * (1 - ramp(t, 6.9, 7.1));
     const open = { ...POSES.watson.toss, shoulderR: [-96, 0, 24], shoulderL: [-96, 0, -24], elbowR: -14, elbowL: -14, head: [8, 0, 0] };
-    const pose = mixPose(mixPose(HOLD, CATCH, ramp(t, 4.75, 5.1) * (1 - ramp(t, 6.9, 7.3))), open, present);
+    const pose = mixPose(mixPose(HOLD, CATCH, ramp(t, 4.75, 5.1) * (1 - ramp(t, 6.9, 7.12))), open, present);
     applyPose(Wt, pose, { headX: Math.sin(t * PI * 2 / 5 + 1) * 1.2, hipL: 22 * stride, hipR: -22 * stride });
 
     // Holmes turns more toward the camera to watch the plates.
     H.root.rotation.y = lerp(H.root.rotation.y, 12 * D, w);
 
     // Ball: Watson sets it down at his feet for the sharing, picks it up after.
-    const down = ramp(t, 4.7, 5.15) * (1 - ramp(t, 7.0, 7.45));
+    const down = ramp(t, 4.7, 5.15) * (1 - ramp(t, 6.95, 7.2));
     if (down > 0.001) {
       Wt.handR.getWorldPosition(tmp);
       const hand = tmp.clone().add(V(0, 0.06, 0.06));
