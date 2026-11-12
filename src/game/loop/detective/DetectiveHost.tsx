@@ -45,6 +45,7 @@ import {
   useState,
   type ReactElement,
 } from "react";
+import { guessPresentTarget } from "../clue-watchdog";
 import { createPortal } from "react-dom";
 import { CELEBRATE_LAYOUT, HolmesRig, WatsonRig } from "./DetectivePair";
 import {
@@ -751,9 +752,10 @@ export default function DetectiveHost(
     // play for real instead of resolving as skipped; the drain
     // accounting is untouched (this dispatch's read drains through
     // the ordinary onSpeakingChange path like any other).
-    // A pin during the opening shows every card the deal holds —
-    // the clue the guess just unlocked waits for its own read.
-    presentClue(Math.max(1, cluesRevealed - 1));
+    // A pin during the opening opens ONE more starting card, not the
+    // whole deal (owner, 2026-11-11: clues open one at a time). The
+    // clue the guess just unlocked waits for its own read.
+    presentClue(guessPresentTarget(presentedClue, cluesRevealed));
     playerRef.current?.armGuessRead();
     dispatch({ type: "guessConfirmed", placeId: lastGuessPlaceId });
     playerRef.current?.disarmGuessRead();

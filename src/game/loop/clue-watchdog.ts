@@ -42,3 +42,14 @@ export function nextWatchdogCount(
 ): number {
   return Math.min(cluesRevealed, visibleClues + 1);
 }
+
+/** A guess confirmed while starting cards are still shut: open at most
+ * ONE more card (the next in order), never the whole deal. The card the
+ * guess just unlocked (`cluesRevealed`) waits for its own read. Returns
+ * the highest card number to report as presented. */
+export function guessPresentTarget(
+  presented: number,
+  cluesRevealed: number,
+): number {
+  return Math.max(1, Math.min(cluesRevealed - 1, presented + 1));
+}

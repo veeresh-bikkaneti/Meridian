@@ -43,3 +43,16 @@ test("no watchdog when the pair is off, the case is over, or every card is open"
   assert.equal(shouldArmClueWatchdog({ ...base, finished: true }), false);
   assert.equal(shouldArmClueWatchdog({ ...base, visibleClues: 4 }), false);
 });
+
+import { guessPresentTarget } from "./clue-watchdog.ts";
+
+test("a first guess opens ONE more starting card, not the whole deal (was: cluesRevealed - 1 = 3)", () => {
+  // 3-card deal, only card 1 presented, the guess unlocked card 4.
+  assert.equal(guessPresentTarget(1, 4), 2);
+});
+
+test("a guess never reaches the card it just unlocked, and never goes below 1", () => {
+  assert.equal(guessPresentTarget(3, 4), 3); // all starting cards already open
+  assert.equal(guessPresentTarget(1, 2), 1);
+  assert.equal(guessPresentTarget(0, 1), 1);
+});
