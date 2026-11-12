@@ -4909,7 +4909,11 @@ function Choose({
               <span className="hv5-label">Case file · Why it matters</span>
             </div>
             <h2 id="why-learn-title">
-              Why Do We Learn This?<span className="hv5-chip">New</span>
+              Why Do We Learn{" "}
+              {/* Keeps "New" with the last word so the tag never sits alone on a phone line. */}
+              <span className="whitespace-nowrap">
+                This?<span className="hv5-chip">New</span>
+              </span>
             </h2>
             <p>
               See where math, science and history show up in everyday life, then use them to crack

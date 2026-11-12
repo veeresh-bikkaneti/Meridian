@@ -131,6 +131,16 @@ for (const vp of [
     });
     expect(spill, "children inside the card box").toBe(0);
 
+    // The "New" tag stays on the same line as "This?" (never alone on a line).
+    const tagLine = await card.locator("h2 .whitespace-nowrap").evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      const c = el.querySelector(".hv5-chip")!.getBoundingClientRect();
+      return { h: r.height, chipMid: c.top + c.height / 2, top: r.top, bottom: r.bottom };
+    });
+    expect(tagLine.h, "This? + New on one line").toBeLessThanOrEqual(40);
+    expect(tagLine.chipMid).toBeGreaterThan(tagLine.top);
+    expect(tagLine.chipMid).toBeLessThan(tagLine.bottom);
+
     await page.screenshot({ path: `${SHOTS}/home-scale-${vp.name}-viewport.png` });
     await card.screenshot({ path: `${SHOTS}/card-${vp.name}-film-frame.png` });
     await page
