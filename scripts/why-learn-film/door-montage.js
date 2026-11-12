@@ -219,12 +219,13 @@ export async function createMontage(c) {
     return [base * (1 - dev), base * (1 + dev)];
   };
 
+  let over = 1; // set by the dolly: the backing disc grows with the lens so it always fills the glass
   function update(t) {
-    const on = t > START[0] - 0.02 && t < CURL[1] + 0.02;
+    const on = t > START[0] - 0.02 && t < CURL[1] + 0.2;
     stage.visible = on;
     for (const l of [...ins, ...outs, curl]) if (l) l.visible = false;
     if (!on) return;
-    disc.scale.setScalar(ramp(t, START[0] - 0.01, START[0] + 0.1) * (1 - ramp(t, CURL[1] - 0.08, CURL[1])));
+    disc.scale.setScalar(Math.max(1e-3, ramp(t, START[0] - 0.01, START[0] + 0.1) * (1 - ramp(t, CURL[1] - 0.08, CURL[1] + 0.18)) * over));
     for (let k = 0; k < 4; k++) {
       const [sx, sy] = pop(t, START[k]);
       const out = k < 3 ? ramp(t, START[k + 1] - GONE, START[k + 1] - 0.001) : ramp(t, CURL[0], CURL[0] + 0.12);
@@ -252,5 +253,5 @@ export async function createMontage(c) {
     });
   }
 
-  return { update, screen: new THREE.Vector2(SCREEN[0], H - SCREEN[1]), stage };
+  return { update, setOver: (o) => { over = o; }, screen: new THREE.Vector2(SCREEN[0], H - SCREEN[1]), stage };
 }

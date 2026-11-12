@@ -581,6 +581,7 @@ async function build() {
   if (BAND === "7-10") S.b = B710.setup({ THREE, scene, linesScene, S, mesh, SET, ramp, smooth, lerp, clamp01, arcAt, D, applyPose, mixPose, POSES, CATCH, HOLD });
   S.mont = await createMontage({ scene, camera, W, H, mesh, toon, toonify, goldLine, reveal, ramp, smooth, clamp01, lerp, pxRadius, load, band: BAND });
   calibrateDoor();
+  setupDolly();
 }
 
 // Door beat: find where Holmes must stand so the lens, held at the end of
@@ -900,12 +901,44 @@ function lensPlan(t) {
   };
 }
 
+// ── Montage dolly ──────────────────────────────────────────────────────
+// The one camera move in this film (an owner-approved exception to the
+// locked Home shot): as the lens lands on the montage stage the camera
+// pushes in until the montage fills the frame, the lens rim sweeping out
+// past the edges, then pulls back to the full stage with Holmes and Watson
+// after the curl. Orientation never changes, only position, and the camera
+// is home again well before the last frame, so the loop seam is untouched.
+const DOLLY_GROW = 1.82;  // stage props grow 1.82x (lens unit 170 px -> ~310 px), so every link still fits the frame height
+const DOLLY_OVER = 2.35;  // lens radius / prop unit at full push-in: rim off-frame, backing disc covers the corners
+const DOL = {};
+function setupDolly() {
+  camera.updateMatrixWorld(true);
+  DOL.c0 = camera.position.clone();
+  DOL.f = new THREE.Vector3(0, 0, -1).applyQuaternion(camera.quaternion);
+  const sp = S.mont.stage.position;
+  DOL.depth0 = sp.clone().sub(DOL.c0).dot(DOL.f);
+  // end pose: the stage dead centre at 1/GROW of its first depth
+  DOL.c1 = sp.clone().addScaledVector(DOL.f, -DOL.depth0 / DOLLY_GROW);
+}
+function dollyK(t) {
+  const kin = B1018 ? ramp(t, 6.8, 7.3) : ramp(t, 6.95, 7.4);
+  return kin * (1 - ramp(t, 9.08, 9.8));
+}
+function setCamera(k) {
+  camera.position.lerpVectors(DOL.c0, DOL.c1, k);
+  camera.updateMatrixWorld(true);
+}
+
 // Weight of the lens being on the split or door beat (sets magnification).
 function lensKind(t, k) {
   return k === "split" ? ramp(t, 5.0, 5.6) * (1 - ramp(t, 6.95, 7.2)) : ramp(t, 6.95, 7.2) * (1 - ramp(t, 9.0, 9.55));
 }
 
 function renderFrame(t) {
+  const dk = dollyK(t);
+  setCamera(dk);
+  const over = 1 + (DOLLY_OVER - 1) * dk * dk;
+  S.mont.setOver(over);
   updateScene(t);
   const look = lensPlan(t);
 
@@ -936,7 +969,8 @@ function renderFrame(t) {
   tgt.lerp(splitTarget, toSplit); R = lerp(R, splitR, toSplit);
   // Door beat: the lens lands on the montage stage and stays there.
   const handW = new THREE.Vector3(); S.H.handR.getWorldPosition(handW);
-  const doorR = LENS_R, doorPos = S.mont.screen;
+  const grow = DOL.depth0 / S.mont.stage.position.clone().sub(camera.position).dot(DOL.f);
+  const doorR = LENS_R * grow * over, doorPos = toScreen(S.mont.stage.position);
   const toDoor = B1018 ? ramp(t, 6.8, 7.0) : ramp(t, 6.95, 7.2); // 10-18: the lens leaves Watson's torso a beat sooner
   tgt.lerp(doorPos, toDoor); R = lerp(R, doorR, toDoor);
   const home = ramp(t, 9.0, 9.55);
@@ -970,7 +1004,7 @@ function renderFrame(t) {
   const handleK = ramp(t, 7.12, 7.22) * (1 - home);
   if (S.b) S.b.lines(t);
   const u = comp.uniforms;
-  u.handC.value.copy(toScreen(handW)); u.handle.value = handleK;
+  u.handC.value.copy(toScreen(handW)); u.handle.value = handleK * (1 - dk);
   u.lensC.value.copy(tgt); u.lensR.value = R; u.lensOn.value = on; u.mag.value = ms;
   u.dockC.value.copy(dockC); u.dockR.value = dockR * 1.1;
   u.beam.value = on * Math.min(1, tgt.distanceTo(dockC) / 60) * (look.kArc + look.kShape + look.kSplit > 0 ? 1 : 0.6) * (1 - handleK);
