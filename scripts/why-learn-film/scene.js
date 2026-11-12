@@ -614,9 +614,9 @@ function buildLines() {
   if (BAND !== "18+") {
     // Ball flight: released over Watson's head at 1.3 s, caught at 3.7 s
     // after he scoots left under it. A true parabola (constant x speed).
-    const a = new THREE.Vector3(SET.watsonStart.x - 0.15, 2.0, SET.watsonStart.z + 0.1);
+    const a = new THREE.Vector3(SET.watsonStart.x - 0.15 + (B1018 ? 0.35 : 0), 2.0, SET.watsonStart.z + 0.1);
     const b = new THREE.Vector3(SET.watsonCatch.x - 0.05, 1.0, SET.watsonCatch.z + 0.32);
-    S.arc = { a, b, apex: BAND === "10-18" ? 2.6 : 3.0, t0: 1.3, t1: 3.7 };
+    S.arc = { a, b, apex: BAND === "10-18" ? 2.3 : 3.0, t0: 1.3, t1: 3.7 };
   } else {
     // Hose water: from the nozzle in Watson's hand into the bucket.
     const a = new THREE.Vector3(SET.watsonCatch.x - 0.45, 1.05, SET.watsonCatch.z + 0.3);
@@ -625,7 +625,7 @@ function buildLines() {
   }
   const arcPts = [];
   for (let i = 0; i <= 48; i++) arcPts.push(arcAt(i / 48).toArray());
-  S.L.arc = goldLine(arcPts, { segs: 96 });
+  S.L.arc = goldLine(arcPts, B1018 ? { segs: 96, radius: 0.03 } : { segs: 96 });
 
   if (BAND === "10-18") {
     // Ladder, post and ground as a right triangle; arc at the foot.
@@ -1020,9 +1020,9 @@ function renderFrame(t) {
   if (B1018) {
     // Centre the view a little behind the ball so the gold parabola shows on both sides of it.
     const kk = clamp01((t - S.arc.t0) / (S.arc.t1 - S.arc.t0));
-    const back = arcAt(clamp01(kk - 0.1)).add(ballPos).multiplyScalar(0.5);
+    const back = arcAt(clamp01(kk - 0.22)).add(ballPos).multiplyScalar(0.5).add(new THREE.Vector3(-0.1, -0.4, 0));
     arcTarget = toScreen(back);
-    arcR = 128;
+    arcR = 140;
   }
   const shapeTarget = toScreen(S.shapeFocus), shapeR = pxRadius(S.shapeFocus, S.shapeR);
   const pieC = new THREE.Vector3(); S.pie.getWorldPosition(pieC);

@@ -24,10 +24,11 @@ export function createBand18(c) {
   const TOP = 0.7;                       // counter top height
   const CTR = V(0.4, TOP, 1.6);          // middle bowl, on the counter
   const SCALE = 2.3;                     // bowls.glb is tiny: bowl radius 0.11 m
-  const BIG = 1.45;                      // the one big bowl, before it divides
-  const GAP = 0.95;                      // centre-to-centre of the split bowls
+  const BIG = 2.2;                       // the one big bowl, before it divides
+  const FIN = 1.55;                      // each of the three bowls once divided
+  const GAP = 1.02;                      // centre-to-centre of the split bowls
   const BUCKET = V(-1.25, 0, 1.6);
-  const WATSON_DX = 0.33;                // Watson stands clear of the counter's right end
+  const WATSON_DX = 0.33, WATSON_STEP = 0.95;                // Watson stands clear of the counter's right end
   const BUCKET_H = 0.5, BUCKET_R = 0.27, WATER_Y = 0.4;
   const T0 = 1.3, T1 = 3.1;              // water leaves the nozzle / front lands
 
@@ -103,10 +104,10 @@ export function createBand18(c) {
     const counter = new THREE.Group();
     counter.position.set(CTR.x, 0, CTR.z);
     scene.add(counter);
-    mesh(new THREE.BoxGeometry(2.5, 0.07, 0.8), 0xa8794a, [0, TOP - 0.035, 0], { parent: counter });
-    mesh(new THREE.BoxGeometry(2.4, 0.5, 0.06), 0xf0e2c4, [0, TOP - 0.32, 0.3], { parent: counter });
-    for (const x of [-1.15, 1.15]) mesh(new THREE.BoxGeometry(0.08, TOP - 0.07, 0.7), 0x5a3b28, [x, (TOP - 0.07) / 2, 0], { parent: counter });
-    mesh(new THREE.BoxGeometry(2.3, 0.04, 0.6), 0x8f6538, [0, 0.12, 0], { parent: counter, ink: false });
+    mesh(new THREE.BoxGeometry(2.9, 0.07, 0.8), 0xa8794a, [0, TOP - 0.035, 0], { parent: counter });
+    mesh(new THREE.BoxGeometry(2.8, 0.5, 0.06), 0xf0e2c4, [0, TOP - 0.32, 0.3], { parent: counter });
+    for (const x of [-1.35, 1.35]) mesh(new THREE.BoxGeometry(0.08, TOP - 0.07, 0.7), 0x5a3b28, [x, (TOP - 0.07) / 2, 0], { parent: counter });
+    mesh(new THREE.BoxGeometry(2.7, 0.04, 0.6), 0x8f6538, [0, 0.12, 0], { parent: counter, ink: false });
 
     S.bowls = toonify(P.bowls);
     S.bowls.position.copy(CTR);
@@ -155,13 +156,14 @@ export function createBand18(c) {
     B.rings = [0, 1, 2].map(() => goldLine(circle(rr, ry), { closed: true, segs: 64, radius: 0.017 }));
     B.thirds = [-1, 1].map((s) => goldLine(poly([[s * rr / 3, ry, rr * 0.9], [s * rr / 3, 0.03, rr * 0.75]]), { segs: 12, radius: 0.017 }));
     S.splitFocus = V(CTR.x, 1.2, CTR.z);
-    S.splitR = 1.37;
+    S.splitR = 1.5;
   };
 
   // ── Per frame ──────────────────────────────────────────────────────────
   B.update = (t) => {
     const Wt = S.W;
-    Wt.root.position.x += WATSON_DX;
+    // Watson steps back to the right while the lens is on the three bowls, so the rim never half-hides him.
+    Wt.root.position.x += WATSON_DX + WATSON_STEP * smooth(ramp(t, 5.0, 5.6)) * (1 - smooth(ramp(t, 6.95, 7.4)));
     Wt.root.updateMatrixWorld(true);
     // Hose: pointing down at rest, up along the water's tangent while it runs.
     if (S.hose && S.arc) {
@@ -198,12 +200,12 @@ export function createBand18(c) {
     // Bowls: one big bowl divides into three equal bowls that slide apart.
     const e = ramp(t, 5.7, 6.15) * (1 - ramp(t, 6.75, 7.25));
     const ks = smooth(clamp01(e * 2.2));
-    S.bowl[0].scale.setScalar(lerp(BIG, 1, e));
+    S.bowl[0].scale.setScalar(lerp(BIG, FIN, e));
     S.bowl[0].position.x = 0;
     [1, 2].forEach((i, n) => {
       const b = S.bowl[i];
       b.visible = ks > 0.01;
-      b.scale.setScalar(Math.max(0.001, ks));
+      b.scale.setScalar(Math.max(0.001, ks * FIN));
       b.position.x = (n === 0 ? -1 : 1) * GAP * e / SCALE;
     });
     B.e = e;

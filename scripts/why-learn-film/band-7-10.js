@@ -109,7 +109,7 @@ export function setup(c) {
   }
   const T_SLIDE = [5.15, 5.5], T_SLICE = 5.5, SLICE_DUR = 0.4, SLICE_STAGGER = 0.08;
   const T_UP = [4.5, 5.0], T_DOWN = [6.85, 7.4];
-  const T_RUN = [3.85, 5.15], T_LEAVE = [6.95, 7.9];
+  const T_RUN = [3.85, 5.15], T_LEAVE = [6.8, 7.2];
 
   // ── Friends: two simple children (no text) ────────────────────────────
   const skin = [0xf4c6a0, 0xb97a4e], shirt = [0xf08a4b, 0x8f6fd6], hair = [0x5a3b28, 0x2b1d17], pants = [0x3b5b8c, 0x3b5b8c];
@@ -168,8 +168,8 @@ export function setup(c) {
     // Friends run in behind the pair, wait, cheer when the shares land, run out.
     B.kids.forEach((kd, i) => {
       const side = i === 0 ? -1 : 1, off = i * 0.12;
-      const inK = smooth(ramp(t, T_RUN[0] + off, T_RUN[1] + off)), outK = smooth(ramp(t, T_LEAVE[0] + off, T_LEAVE[1] + off));
-      const x = lerp(side * 5.2, kd.x, inK) + (outK > 0 ? lerp(0, side * 5.2 - kd.x, outK) : 0);
+      const inK = smooth(ramp(t, T_RUN[0] + off, T_RUN[1] + off)), outK = smooth(ramp(t, T_LEAVE[0] + off * 0.5, T_LEAVE[1] + off * 0.5));
+      const x = lerp(side * 5.2, kd.x, inK) + (outK > 0 ? lerp(0, side * 6 - kd.x, outK) : 0);
       const z = lerp(-0.7, 0.05, smooth(ramp(t, T_RUN[0] + 0.55, T_RUN[1] + 0.05))) * (1 - outK) + -0.7 * outK;
       const moving = (inK > 0.001 && inK < 0.999) || (outK > 0.001 && outK < 0.999);
       kd.root.visible = inK > 0.001 && outK < 0.999;
