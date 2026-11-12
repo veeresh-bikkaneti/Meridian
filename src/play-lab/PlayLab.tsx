@@ -4,15 +4,32 @@ import { getSystemMotionTier } from "./motion.ts";
 import { PlayLabHeader } from "./components/PlayLabHeader.tsx";
 import { FlowACaseFile } from "./components/FlowACaseFile.tsx";
 import { FlowBAtlasSkills } from "./components/FlowBAtlasSkills.tsx";
-import { getAgeGroup, loadProfile } from "@/game/age-profile/store.ts";
+import { getAgeGroup, loadProfile, saveBand } from "@/game/age-profile/store.ts";
 import type { AgeBandId, AgeProfile } from "@/game/age-profile/types.ts";
 import { AgePicker } from "@/components/age-profile/AgePicker.tsx";
 import { CelebrationOverlay } from "@/components/celebration-overlay.tsx";
 import "./play-lab.css";
 
+declare global {
+  interface Window {
+    __meridian_ready?: boolean;
+  }
+}
+
 export function PlayLab() {
   const [activeTab, setActiveTab] = useState<PlayLabTab>("case-file");
   const [motionTier, setMotionTier] = useState<MotionTier>(() => getSystemMotionTier());
+
+  // Signal ready to _shell.html crash watchdog
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      try {
+        window.__meridian_ready = true;
+      } catch {
+        /* best-effort */
+      }
+    }
+  }, []);
 
   // Listen to prefers-reduced-motion setting changes
   useEffect(() => {
@@ -45,11 +62,8 @@ export function PlayLab() {
   function handleSaveAgePicker() {
     if (pendingBand) {
       setAgeGroup(pendingBand as AgeGroup);
-      setProfile((prev: AgeProfile) => ({
-        ...prev,
-        status: "active",
-        band: pendingBand,
-      }));
+      const updated = saveBand(pendingBand, { runInProgress: false });
+      setProfile(updated);
     }
     setShowAgePicker(false);
   }

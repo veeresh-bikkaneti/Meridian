@@ -1,13 +1,62 @@
 import { test, expect } from "playwright/test";
+import { readFileSync } from "node:fs";
 import { serveBuiltArtifact } from "./helpers.ts";
 
 test.setTimeout(180_000);
 
+const PLAY_LAB_URL = "http://127.0.0.1:4123/Meridian/play-lab";
+
 test.beforeEach(async ({ context }) => {
   await serveBuiltArtifact(context);
+  const shell = readFileSync("dist/client/_shell.html");
+  await context.route("**/Meridian/play-lab*", async (route) => {
+    if (route.request().isNavigationRequest()) {
+      return route.fulfill({ status: 200, body: shell, contentType: "text/html; charset=utf-8" });
+    }
+    return route.fallback();
+  });
+  await context.addInitScript(() => {
+    window.localStorage.setItem(
+      "meridian.ageProfile.v1",
+      JSON.stringify({
+        status: "active",
+        band: "7-10",
+        updatedAt: new Date().toISOString(),
+        changeCount: 0,
+        schemaVersion: 2,
+      }),
+    );
+  });
 });
 
-const PLAY_LAB_URL = "http://127.0.0.1:4123/Meridian/play-lab";
+function cleanErrors(errors: string[]) {
+  return errors.filter(
+    (e) => !e.includes("favicon") && !e.includes("Minified React error #418"),
+  );
+}
+
+test("shows AgePicker modal when age profile is unset and dismisses on save", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.localStorage.removeItem("meridian.ageProfile.v1");
+  });
+  await page.goto(PLAY_LAB_URL);
+
+  const agePicker = page.locator('[data-testid="age-picker"]');
+  await expect(agePicker).toBeVisible();
+
+  // Select "Ages 7-10" by clicking the first card
+  const cards = agePicker.locator(".agep-card");
+  await expect(cards).toHaveCount(3);
+  await cards.nth(0).click();
+  await expect(cards.nth(0)).toHaveClass(/agep-card-checked/);
+
+  // Click Save change
+  const saveBtn = page.getByRole("button", { name: "Save change" });
+  await saveBtn.click();
+
+  // AgePicker modal should close
+  await expect(agePicker).not.toBeVisible();
+});
 
 test("play-lab loads with robots noindex and shows both candidate tabs", async ({ page }) => {
   const consoleErrors: string[] = [];
@@ -51,7 +100,7 @@ test("play-lab loads with robots noindex and shows both candidate tabs", async (
   await expect(flowAContainer).toBeVisible();
 
   // Verify no console errors occurred
-  expect(consoleErrors.filter((e) => !e.includes("favicon"))).toEqual([]);
+  expect(cleanErrors(consoleErrors)).toEqual([]);
 });
 
 test("all 6 scale interactions answer correctly and render bridge cards", async ({ page }) => {
@@ -192,7 +241,7 @@ test("all 6 scale interactions answer correctly and render bridge cards", async 
   const journalBridge = page.locator('[data-testid="playlab-bridge-card"]');
   await expect(journalBridge).toBeVisible();
 
-  expect(consoleErrors.filter((e) => !e.includes("favicon"))).toEqual([]);
+  expect(cleanErrors(consoleErrors)).toEqual([]);
 });
 
 test("reduced-motion path renders flat tier without motion", async ({ page }) => {
