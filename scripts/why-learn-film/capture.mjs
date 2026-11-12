@@ -36,11 +36,12 @@ if (times) {
     await canvas.screenshot({ path: join(out, `${name}.png`) });
   }
 } else {
-  const fps = 24, n = Math.round(8 * fps);
+  const { duration, fps } = await page.evaluate(() => ({ duration: window.film.duration, fps: window.film.fps }));
+  const n = Math.round(duration * fps);
   for (let i = 0; i < n; i++) {
     await page.evaluate((t) => window.film.render(t), i / fps);
     await canvas.screenshot({ path: join(out, `f${String(i).padStart(4, "0")}.png`) });
   }
 }
 await browser.close();
-console.log(`wrote ${times ? times.length : 192} frame(s) to ${out}`);
+console.log(`wrote ${times ? times.length : "all"} frame(s) to ${out}`);

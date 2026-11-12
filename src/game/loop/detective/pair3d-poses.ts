@@ -67,6 +67,9 @@ export const WATSON_POSES_3D: Record<string, Pose3D> = {
   // forward over the table, hands near the knees, delighted.
   toss: { shoulderL: [-28, 0, -14], shoulderR: [-158, 0, 16], elbowL: -24, elbowR: -10, head: [-20, 0, 0], anim: "idle" },
   "lean-in": { shoulderL: [-34, 0, -12], shoulderR: [-34, 0, 12], elbowL: -34, elbowR: -34, head: [22, 0, 4], anim: "idle" },
+  // lift-pie: both arms forward and up, hands under a pie held face-on
+  // to the viewer, head a touch back so the face stays clear of it.
+  "lift-pie": { shoulderL: [-92, 0, -6], shoulderR: [-92, 0, 6], elbowL: -52, elbowR: -52, head: [-8, 0, 0], anim: "idle" },
 };
 
 /** The figure turns this far toward the side it faces (degrees about Y). */

@@ -18,7 +18,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
 
-const W = 1094, H = 616, DURATION = 8.0, FPS = 24;
+const W = 1094, H = 616, DURATION = 10.0, FPS = 24, SS = 2; // SS: render-target supersampling, so the lens magnifies crisply
 const q = new URLSearchParams(location.search);
 const BAND = ["7-10", "10-18", "18+"].includes(q.get("band")) ? q.get("band") : "10-18";
 const FREEZE = q.has("t") ? Math.min(DURATION, Math.max(0, parseFloat(q.get("t")) || 0)) : null;
@@ -41,6 +41,7 @@ export const POSES = {
     read: { shoulderL: [-55, 0, 10], shoulderR: [0, 0, 6], elbowL: -60, elbowR: -8, head: [12, 0, 0] },
     toss: { shoulderL: [-28, 0, -14], shoulderR: [-158, 0, 16], elbowL: -24, elbowR: -10, head: [-20, 0, 0] },
     "lean-in": { shoulderL: [-34, 0, -12], shoulderR: [-34, 0, 12], elbowL: -34, elbowR: -34, head: [22, 0, 4] },
+    "lift-pie": { shoulderL: [-92, 0, -6], shoulderR: [-92, 0, 6], elbowL: -52, elbowR: -52, head: [-8, 0, 0] },
   },
 };
 // Film-only in-between holds (not game poses): Watson holding the ball
@@ -90,8 +91,8 @@ const scene = new THREE.Scene();
 scene.fog = new THREE.Fog(LOOK.fog, 14, 46);
 const linesScene = new THREE.Scene();
 
-const rtBase = new THREE.WebGLRenderTarget(W, H, { samples: 4, type: THREE.HalfFloatType });
-const rtLines = new THREE.WebGLRenderTarget(W, H, { samples: 4, type: THREE.HalfFloatType });
+const rtBase = new THREE.WebGLRenderTarget(W * SS, H * SS, { samples: 4, type: THREE.HalfFloatType });
+const rtLines = new THREE.WebGLRenderTarget(W * SS, H * SS, { samples: 4, type: THREE.HalfFloatType });
 
 // ── Toon materials + ink outlines ──────────────────────────────────────
 const gradient = (() => {
@@ -233,7 +234,9 @@ function buildBackdrop() {
   // Main facade, left half, set back behind the pair.
   mesh(new THREE.BoxGeometry(6.2, 5.6, 0.4), wallCol, [-3.6, 2.8, -3.2], { parent: wall });
   mesh(new THREE.BoxGeometry(6.4, 0.25, 0.6), 0xf7ead2, [-3.6, 5.65, -3.15], { parent: wall });
-  mesh(new THREE.BoxGeometry(6.3, 0.18, 0.5), 0xf7ead2, [-3.6, 3.15, -3.1], { parent: wall });
+  // Annex wall continuing the facade to the right: the four cafe windows of the door beat sit across both.
+  mesh(new THREE.BoxGeometry(5.4, 5.6, 0.4), wallCol, [2.2, 2.8, -3.2], { parent: wall });
+  mesh(new THREE.BoxGeometry(5.6, 0.25, 0.6), 0xf7ead2, [2.2, 5.65, -3.15], { parent: wall });
   // Shopfront: big window, door, striped awning (no lettering anywhere).
   const glass = toon(0x8fc3d6, { emissive: new THREE.Color(0x3f6f80), emissiveIntensity: 0.35 });
   mesh(new THREE.BoxGeometry(2.4, 1.7, 0.08), 0, [-4.6, 1.35, -2.98], { material: glass, parent: wall });
@@ -244,10 +247,10 @@ function buildBackdrop() {
     for (let i = 0; i < 8; i++) { g.fillStyle = i % 2 ? "#fbf3df" : BAND === "18+" ? "#4f7f8c" : "#3e9c8c"; g.fillRect(i * 32, 0, 32, h); }
   });
   // Sloped striped awning over the shopfront, with a short valance.
-  mesh(new THREE.BoxGeometry(3.9, 0.04, 0.95), 0xffffff, [-3.75, 2.62, -2.62], { rot: [0.5, 0, 0], mat: { map: stripes }, parent: wall });
-  mesh(new THREE.BoxGeometry(3.9, 0.2, 0.03), 0xffffff, [-3.75, 2.32, -2.2], { mat: { map: stripes }, parent: wall });
+  mesh(new THREE.BoxGeometry(3.1, 0.04, 0.95), 0xffffff, [-4.15, 2.62, -2.62], { rot: [0.5, 0, 0], mat: { map: stripes }, parent: wall });
+  mesh(new THREE.BoxGeometry(3.1, 0.2, 0.03), 0xffffff, [-4.15, 2.32, -2.2], { mat: { map: stripes }, parent: wall });
   // Upper windows with flower-free sills and shutters.
-  for (const x of [-5.6, -4.2, -2.8, -1.4]) {
+  for (const x of [-5.6, -4.2]) {
     mesh(new THREE.BoxGeometry(0.75, 1.0, 0.06), 0, [x, 4.35, -2.98], { material: glass, parent: wall });
     mesh(new THREE.BoxGeometry(0.95, 0.1, 0.22), 0xf7ead2, [x, 3.8, -2.92], { parent: wall });
     mesh(new THREE.BoxGeometry(0.2, 1.05, 0.06), 0x4f8a7a, [x - 0.5, 4.35, -2.95], { parent: wall });
@@ -438,6 +441,7 @@ const SET = {
   holmes: new THREE.Vector3(-1.95, 0, 0.35),
   watsonStart: new THREE.Vector3(2.5, 0, 0.0),
   watsonCatch: new THREE.Vector3(1.72, 0, 0.5),
+  watsonHold: new THREE.Vector3(1.7, 0, 1.9),
   post: new THREE.Vector3(0.55, 0, -1.5),
   table: new THREE.Vector3(0.72, 0, 1.6),
 };
@@ -555,6 +559,7 @@ async function build() {
     }
   }
 
+  buildDoorRow();
   buildLines();
 }
 
@@ -637,18 +642,21 @@ function buildLines() {
   }
 
   // Split beat: equal slices on the pie or pizza; or one bowl to three.
+  // Pie lines are built in the pie's own frame and follow it every frame.
   if (BAND !== "18+") {
-    S.pie.updateMatrixWorld(true);
-    const c = new THREE.Vector3(); S.pie.getWorldPosition(c); c.y += 0.075;
+    S.pieLines = [];
+    S.slices = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => S.pie.getObjectByName("slice-" + i));
+    const y = 0.072, RR = 0.205;
     S.L.slices = [];
     for (let i = 0; i < 4; i++) {
-      const a = i * Math.PI / 4 + 0.2, rr = 0.235;
-      S.L.slices.push(goldLine([[c.x - Math.cos(a) * rr, c.y, c.z + Math.sin(a) * rr], [c.x + Math.cos(a) * rr, c.y, c.z - Math.sin(a) * rr]], { segs: 24, radius: 0.008 }));
+      const a = (i * Math.PI) / 4;
+      S.L.slices.push(goldLine([[-Math.cos(a) * RR, y, Math.sin(a) * RR], [Math.cos(a) * RR, y, -Math.sin(a) * RR]], { segs: 24, radius: 0.0075 }));
     }
     const ring = [];
-    for (let i = 0; i <= 40; i++) { const a = (i / 40) * Math.PI * 2; ring.push([c.x + Math.cos(a) * 0.235, c.y, c.z + Math.sin(a) * 0.235]); }
-    S.L.ring = goldLine(ring, { segs: 80, radius: 0.008 });
-    S.splitFocus = c.clone().add(new THREE.Vector3(0, 0.02, 0));
+    for (let i = 0; i <= 40; i++) { const a = (i / 40) * Math.PI * 2; ring.push([Math.cos(a) * RR, y, Math.sin(a) * RR]); }
+    S.L.ring = goldLine(ring, { segs: 80, radius: 0.0075 });
+    S.pieLines.push(...S.L.slices, S.L.ring);
+    S.splitFocus = new THREE.Vector3();
     S.splitR = 0.5;
   } else {
     S.bowls.updateMatrixWorld(true);
@@ -690,18 +698,21 @@ function updateScene(t) {
   const look = lensPlan(t);
   const hTurn = 28 + look.turn;
   H.root.rotation.y = hTurn * D;
-  const breathe = Math.sin(t * Math.PI * 2 / 4) * 1.2; // 4 s period, loops at 8 s
-  const glance = ramp(t, 6.6, 7.0) * (1 - ramp(t, 7.35, 7.75));
+  const breathe = Math.sin(t * Math.PI * 2 / 5) * 1.2; // 5 s period, loops at 10 s
+  const glance = ramp(t, 9.05, 9.4) * (1 - ramp(t, 9.55, 9.85));
   applyPose(H, {
     ...sweep,
     shoulderR: [sweep.shoulderR[0] + look.armX, sweep.shoulderR[1] + look.armY, sweep.shoulderR[2]],
   }, { headX: look.headX + breathe, headY: look.headY + glance * 22 });
 
   // Watson.
-  const walkTo = ramp(t, 1.6, 3.4), walkBack = ramp(t, 6.5, 7.6);
+  const walkTo = ramp(t, 1.6, 3.4), walkBack = ramp(t, 9.0, 9.8);
+  // Split beat: Watson steps forward to hold the pie face-on to the camera.
+  const kLift = ramp(t, 5.0, 5.6) * (1 - ramp(t, 6.9, 7.4));
   const pos = BAND === "18+" ? SET.watsonCatch.clone() : SET.watsonStart.clone().lerp(SET.watsonCatch, walkTo * (1 - walkBack));
+  if (BAND !== "18+") pos.lerp(SET.watsonHold, kLift);
   Wt.root.position.copy(pos);
-  const walking = BAND !== "18+" && ((t > 1.6 && t < 3.4) || (t > 6.5 && t < 7.6));
+  const walking = BAND !== "18+" && ((t > 1.6 && t < 3.4) || (t > 5.0 && t < 5.6) || (t > 6.9 && t < 7.4) || (t > 9.0 && t < 9.8));
   const stride = walking ? Math.sin(t * 14) : 0;
   let p, headX = 0, lean = 0;
   if (BAND !== "18+") {
@@ -709,21 +720,21 @@ function updateScene(t) {
     p = mixPose(p, mixPose(POSES.watson.walk, { ...POSES.watson.walk, head: [-22, 0, 0] }, 1), ramp(t, 1.7, 2.2));
     p = mixPose(p, CATCH, ramp(t, 3.3, 3.65));
     p = mixPose(p, HOLD, ramp(t, 3.72, 3.98)); // ball down to the chest, face clear
-    p = mixPose(p, POSES.watson["lean-in"], ramp(t, 5.1, 5.6));
-    p = mixPose(p, HOLD, ramp(t, 6.5, 7.2));
+    p = mixPose(p, POSES.watson["lift-pie"], ramp(t, 5.0, 5.6));
+    p = mixPose(p, HOLD, ramp(t, 6.9, 7.4));
   } else {
     p = mixPose(HOLD, AIM, ramp(t, 0.9, 1.3));
     p = mixPose(p, POSES.watson["lean-in"], ramp(t, 5.1, 5.6));
-    p = mixPose(p, HOLD, ramp(t, 6.5, 7.2));
+    p = mixPose(p, HOLD, ramp(t, 6.9, 7.4));
   }
-  lean = ramp(t, 5.1, 5.6) * (1 - ramp(t, 6.4, 6.9));
-  const nod = ramp(t, 7.0, 7.15) * (1 - ramp(t, 7.25, 7.5));
-  headX = nod * 12 + Math.sin(t * Math.PI * 2 / 4 + 1) * 1.2;
+  lean = kLift;
+  const nod = ramp(t, 9.45, 9.6) * (1 - ramp(t, 9.65, 9.85));
+  headX = nod * 12 + Math.sin(t * Math.PI * 2 / 5 + 1) * 1.2;
   // Watson turns toward the table to lean in, then back to Holmes.
-  Wt.root.rotation.set(lean * 14 * D, (-28 - lean * 22 + walkTo * (1 - walkBack) * 6) * D, 0);
+  Wt.root.rotation.set(lean * (BAND === "18+" ? 14 : 3) * D, (-28 + (BAND === "18+" ? -lean * 22 : -lean * 12) + walkTo * (1 - walkBack) * 6) * D, 0);
   Wt.root.position.y = walking ? Math.abs(Math.cos(t * 14)) * 0.025 : 0;
   // A small delighted bounce while leaning in.
-  Wt.root.position.y += lean * Math.max(0, Math.sin((t - 5.6) * 9)) * 0.03 * ramp(t, 5.6, 5.8);
+  if (BAND === "18+") Wt.root.position.y += lean * Math.max(0, Math.sin((t - 5.6) * 9)) * 0.03 * ramp(t, 5.6, 5.8);
   applyPose(Wt, p, { headX, hipL: 22 * stride, hipR: -22 * stride });
 
   scene.updateMatrixWorld(true);
@@ -749,6 +760,7 @@ function updateScene(t) {
       S.ball.position.lerp(tmp.add(new THREE.Vector3(0, 0.06, 0.06)), ramp(t, 3.72, 3.98));
     }
     S.ball.rotation.set(t * 4, t * 2.5, 0);
+    S.ball.visible = t < 5.0 || t > 7.2; // tucked away while Watson holds the pie
   }
   if (BAND === "18+" && S.hose && S.arc) {
     Wt.handR.getWorldPosition(tmp);
@@ -775,7 +787,151 @@ function updateScene(t) {
     S.bowl[1].position.copy(S.bowlHome[1]);
     S.bowl[2].position.copy(S.bowlHome[2]);
   }
-  if (S.clouds) S.clouds.children.forEach((c) => { c.userData.x0 ??= c.position.x; c.position.x = c.userData.x0 + Math.sin(t * Math.PI / 8) * c.userData.speed * 4; });
+  if (BAND !== "18+") updatePie(t, kLift);
+  if (S.win) updateDoor(t);
+  if (S.clouds) S.clouds.children.forEach((c) => { c.userData.x0 ??= c.position.x; c.position.x = c.userData.x0 + Math.sin(t * Math.PI / 5) * c.userData.speed * 4; });
+}
+
+// ── Split beat (pie / pizza bands): the pie is lifted and held face-on ──
+// Slice k spans angles k*45..(k+1)*45 deg in the pie's own frame (see
+// build_props.py); turned up 90 deg about X, local (cos a, y, -sin a)
+// lands at screen (cos a, sin a), so the angles read anticlockwise.
+const PIE_SCALE_TABLE = 1.1, PIE_SCALE_HELD = 2.0, LIFTED = 1;
+function updatePie(t, kLift) {
+  if (!S.slices) return; // first call happens while lines are still being built
+  const tablePos = new THREE.Vector3(SET.table.x, 0.77, SET.table.z);
+  const Wt = S.W;
+  const hl = new THREE.Vector3(), hr = new THREE.Vector3();
+  Wt.handL.getWorldPosition(hl); Wt.handR.getWorldPosition(hr);
+  const held = hl.add(hr).multiplyScalar(0.5).add(new THREE.Vector3(-0.62, 0.45, 0.3));
+  const e = smooth(kLift);
+  S.pie.position.copy(tablePos).lerp(held, e);
+  S.pie.position.y += Math.sin(Math.PI * clamp01(e)) * 0.12; // little arc as it rises
+  S.pie.rotation.set(e * Math.PI / 2, 0.2 * (1 - e), 0);
+  S.pie.scale.setScalar(lerp(PIE_SCALE_TABLE, PIE_SCALE_HELD, e));
+  // Cuts open a hair, then one slice lifts out and holds.
+  const spread = ramp(t, 5.75, 5.95) * (1 - ramp(t, 6.8, 7.0));
+  const out = ramp(t, 5.95, 6.2) * (1 - ramp(t, 6.75, 7.0));
+  S.slices.forEach((sl, i) => {
+    const a = (i + 0.5) * Math.PI / 4, d = 0.012 * spread + (i === LIFTED ? 0.11 * out : 0);
+    sl.position.set(Math.cos(a) * d, i === LIFTED ? 0.07 * out : 0, -Math.sin(a) * d);
+  });
+  S.pie.updateMatrixWorld(true);
+  for (const l of S.pieLines) { l.matrixAutoUpdate = false; l.matrix.copy(S.pie.matrixWorld); l.matrixWorldNeedsUpdate = true; }
+}
+
+// ── Door beat: four cafe windows, each lights ~0.4 s with one glimpse ──
+const DOOR_T = [7.6, 8.0, 8.4, 8.8]; // glimpse centres (s)
+const GOLDMAT = () => toon(0xffc23a, { emissive: new THREE.Color(0xffa000), emissiveIntensity: 0.6 });
+function buildDoorRow() {
+  S.win = [];
+  const dark = 0x5a3b28, w = 1.25, h = 1.35, th = 0.13;
+  [-2.25, -0.75, 0.75, 2.25].forEach((off, i) => {
+    const g = new THREE.Group();
+    g.position.set(SET.post.x + off, 2.8, -2.97);
+    scene.add(g);
+    mesh(new THREE.BoxGeometry(w, th, 0.14), dark, [0, h / 2 - th / 2, 0.02], { parent: g });
+    mesh(new THREE.BoxGeometry(w, th, 0.14), dark, [0, -h / 2 + th / 2, 0.02], { parent: g });
+    mesh(new THREE.BoxGeometry(th, h, 0.14), dark, [-w / 2 + th / 2, 0, 0.02], { parent: g });
+    mesh(new THREE.BoxGeometry(th, h, 0.14), dark, [w / 2 - th / 2, 0, 0.02], { parent: g });
+    mesh(new THREE.BoxGeometry(w + 0.2, 0.1, 0.24), 0xf7ead2, [0, -h / 2 - 0.04, 0.07], { parent: g });
+    const paneMat = toon(0x35505f, { emissive: new THREE.Color(0x0a1218), emissiveIntensity: 1 });
+    mesh(new THREE.BoxGeometry(w - 2 * th, h - 2 * th, 0.04), 0, [0, 0, -0.03], { material: paneMat, parent: g, ink: false, cast: false });
+    const prop = new THREE.Group();
+    prop.position.set(0, 0, 0.1);
+    g.add(prop);
+    S.win.push({ g, paneMat, prop, i, center: g.position.clone() });
+  });
+  // 0 pendulum (physics)
+  { const pr = S.win[0].prop;
+    mesh(new THREE.BoxGeometry(0.56, 0.06, 0.08), 0xd9a531, [0, 0.5, 0], { parent: pr });
+    const L = 0.8, amp = 0.55;
+    const sw = new THREE.Group(); sw.position.set(0, 0.5, 0.02); pr.add(sw);
+    mesh(new THREE.CylinderGeometry(0.014, 0.014, L, 6), 0xfff0c0, [0, -L / 2, 0], { parent: sw, ink: false, cast: false });
+    mesh(new THREE.SphereGeometry(0.13, 18, 14), 0, [0, -L, 0], { material: GOLDMAT(), parent: sw });
+    S.win[0].sw = sw; S.win[0].amp = amp;
+    for (let k = -3; k <= 3; k++) { // dotted path of the swing
+      const a = (k / 3) * amp;
+      mesh(new THREE.SphereGeometry(0.03, 8, 6), 0xffe9a0, [Math.sin(a) * L, 0.5 - Math.cos(a) * L, -0.01], { parent: pr, ink: false, cast: false, mat: { emissive: new THREE.Color(0xffc060), emissiveIntensity: 0.7 } });
+    } }
+  // 1 bubbles in a glass (chemistry)
+  { const pr = S.win[1].prop, c = S.win[1];
+    const glassMat = toon(0xdff6ff, { transparent: true, opacity: 0.35, side: THREE.DoubleSide, depthWrite: false, emissive: new THREE.Color(0x9fd8ee), emissiveIntensity: 0.4 });
+    mesh(new THREE.CylinderGeometry(0.31, 0.25, 0.86, 20, 1, true), 0, [0, 0, 0], { material: glassMat, parent: pr, cast: false });
+    mesh(new THREE.CylinderGeometry(0.28, 0.245, 0.6, 20), 0x8fe0ee, [0, -0.12, 0], { parent: pr, ink: false, mat: { emissive: new THREE.Color(0x3a9cae), emissiveIntensity: 0.7 } });
+    mesh(new THREE.CylinderGeometry(0.255, 0.255, 0.04, 20), 0xdff6ff, [0, -0.44, 0], { parent: pr });
+    c.bub = [];
+    for (let k = 0; k < 7; k++) {
+      const r = 0.04 + (k % 3) * 0.02;
+      const b = mesh(new THREE.SphereGeometry(r, 14, 10), 0, [0, 0, 0.27], { material: toon(0xfff6cc, { emissive: new THREE.Color(0xffc040), emissiveIntensity: 0.55 }), parent: pr });
+      b.userData = { x: [-0.17, 0.05, 0.18, -0.06, 0.13, -0.19, 0.0][k], ph: k / 7, sp: 0.6 + (k % 3) * 0.12 };
+      c.bub.push(b);
+    } }
+  // 2 route on a folded map (social studies): generic terrain, dotted route, no marks
+  { const pr = S.win[2].prop, c = S.win[2];
+    const map = new THREE.Group(); map.rotation.x = -0.1; pr.add(map);
+    const panels = [];
+    for (let k = 0; k < 3; k++) {
+      const pn = new THREE.Group();
+      pn.position.set((k - 1) * 0.33, 0, 0); pn.rotation.y = k === 1 ? -0.3 : 0.3; map.add(pn);
+      mesh(new THREE.BoxGeometry(0.34, 0.8, 0.02), k === 1 ? 0xe8d4a0 : 0xf6e7c0, [0, 0, 0], { parent: pn });
+      panels.push(pn);
+    }
+    const flat = (pn, col, w2, h2, x, y) => mesh(new THREE.BoxGeometry(w2, h2, 0.012), col, [x, y, 0.014], { parent: pn, ink: false, cast: false });
+    flat(panels[0], 0x8cc063, 0.24, 0.22, 0, 0.22); flat(panels[0], 0x6fb7e0, 0.07, 0.5, 0.08, -0.12);
+    flat(panels[1], 0x6fb7e0, 0.07, 0.42, -0.02, 0.1); flat(panels[1], 0x8cc063, 0.22, 0.2, 0.0, -0.24);
+    flat(panels[2], 0xb98a55, 0.2, 0.18, 0, 0.18); flat(panels[2], 0x8cc063, 0.22, 0.24, 0.0, -0.2);
+    for (const [pn, x, y] of [[panels[2], -0.03, 0.2], [panels[2], 0.07, 0.16]]) mesh(new THREE.ConeGeometry(0.06, 0.1, 5), 0x8a6238, [x, y, 0.03], { parent: pn });
+    // dotted route winding across all three panels
+    c.dots = [];
+    const N = 15;
+    for (let k = 0; k < N; k++) {
+      const s = k / (N - 1), x = -0.5 + s * 1.0, y = -0.26 + 0.5 * s + 0.12 * Math.sin(s * 9);
+      const pn = panels[Math.min(2, Math.floor((x + 0.5) / 0.333))];
+      const d = mesh(new THREE.SphereGeometry(0.032, 8, 6), 0, [x - pn.position.x, y, 0.04], { material: GOLDMAT(), parent: pn, ink: false, cast: false });
+      c.dots.push(d);
+    }
+    // destination: a gold pin (sphere on a cone), not a cross or letter
+    const pin = new THREE.Group(); pin.position.set(0.17, 0.4, 0.05); panels[2].add(pin);
+    mesh(new THREE.SphereGeometry(0.06, 12, 10), 0, [0, 0.07, 0], { material: GOLDMAT(), parent: pin });
+    mesh(new THREE.ConeGeometry(0.04, 0.1, 8), 0, [0, 0, 0], { material: GOLDMAT(), parent: pin, rot: [Math.PI, 0, 0] });
+    c.pin = pin; }
+  // 3 old clock tower (history): face unmarked
+  { const pr = S.win[3].prop;
+    const tw = new THREE.Group(); tw.scale.setScalar(0.62); tw.position.set(0, -0.12, 0); pr.add(tw);
+    mesh(new THREE.BoxGeometry(0.62, 1.3, 0.55), 0xcdb48d, [0, 0, 0], { parent: tw });
+    mesh(new THREE.BoxGeometry(0.72, 0.1, 0.65), 0xa68d68, [0, 0.7, 0], { parent: tw });
+    mesh(new THREE.ConeGeometry(0.5, 0.55, 4), 0xa6493a, [0, 1.02, 0], { parent: tw, rot: [0, Math.PI / 4, 0] });
+    mesh(new THREE.CylinderGeometry(0.23, 0.23, 0.05, 28), 0xfff5dc, [0, 0.33, 0.29], { parent: tw, rot: [Math.PI / 2, 0, 0], mat: { emissive: new THREE.Color(0xffd070), emissiveIntensity: 0.55 } });
+    mesh(new THREE.TorusGeometry(0.235, 0.03, 8, 28), 0x5a3b28, [0, 0.33, 0.3], { parent: tw });
+    mesh(new THREE.BoxGeometry(0.035, 0.17, 0.02), 0x3a2a20, [0, 0.4, 0.33], { parent: tw, ink: false });
+    mesh(new THREE.BoxGeometry(0.03, 0.13, 0.02), 0x3a2a20, [0.06, 0.31, 0.335], { parent: tw, ink: false, rot: [0, 0, 1.1] });
+    mesh(new THREE.BoxGeometry(0.16, 0.34, 0.03), 0x4a3a30, [0, -0.3, 0.28], { parent: tw });
+    mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.03, 12), 0x4a3a30, [0, -0.13, 0.28], { parent: tw, rot: [Math.PI / 2, 0, 0] });
+  }
+}
+
+function winLit(i, t) {
+  const c = DOOR_T[i];
+  return ramp(t, c - 0.22, c - 0.1) * (1 - ramp(t, c + 0.1, c + 0.22));
+}
+function updateDoor(t) {
+  for (const w of S.win) {
+    const lit = winLit(w.i, t), c = DOOR_T[w.i];
+    w.paneMat.emissive.setRGB(lerp(0.04, 0.2, lit), lerp(0.07, 0.42, lit), lerp(0.09, 0.62, lit));
+    w.prop.visible = lit > 0.02;
+    w.prop.scale.setScalar(0.88 + 0.12 * lit);
+    if (w.sw) w.sw.rotation.z = w.amp * Math.cos((t - c) * Math.PI * 2 / 0.8 + 0.7);
+    if (w.bub) w.bub.forEach((b) => {
+      const k = (t * b.userData.sp + b.userData.ph) % 1;
+      b.position.set(b.userData.x + Math.sin(k * 12 + b.userData.ph * 6) * 0.03, -0.4 + k * 0.62, 0.27);
+    });
+    if (w.dots) {
+      const n = clamp01((t - (c - 0.18)) / 0.28) * w.dots.length;
+      w.dots.forEach((d, k) => { d.visible = k < n; });
+      w.pin.visible = n >= w.dots.length - 0.5;
+    }
+  }
 }
 
 // Where the lens view sits and how Holmes aims it, per moment.
@@ -783,16 +939,22 @@ function lensPlan(t) {
   // Turn/arm offsets (degrees) toward each beat's target.
   const kArc = ramp(t, 1.0, 1.5) * (1 - ramp(t, 3.0, 3.4));
   const kShape = ramp(t, 3.0, 3.4) * (1 - ramp(t, 5.0, 5.35));
-  const kSplit = ramp(t, 5.0, 5.35) * (1 - ramp(t, 6.5, 7.1));
+  const kSplit = ramp(t, 5.0, 5.35) * (1 - ramp(t, 6.9, 7.2));
+  const kDoor = ramp(t, 6.9, 7.3) * (1 - ramp(t, 9.0, 9.5));
   return {
-    turn: kArc * 14 + kShape * 6 + kSplit * 14,
-    armX: -kArc * 22 - kShape * 14 + kSplit * 18,
-    armY: kArc * 10 + kShape * 4 + kSplit * 8,
-    headX: -kArc * 16 - kShape * 10 + kSplit * 10,
-    headY: kArc * 10 + kShape * 4 + kSplit * 8,
-    lensTilt: kArc * -0.2 + kSplit * 0.2,
-    kArc, kShape, kSplit,
+    turn: kArc * 14 + kShape * 6 + kSplit * 14 + kDoor * 12,
+    armX: -kArc * 22 - kShape * 14 + kSplit * 18 - kDoor * 20,
+    armY: kArc * 10 + kShape * 4 + kSplit * 8 + kDoor * 8,
+    headX: -kArc * 16 - kShape * 10 + kSplit * 10 - kDoor * 14,
+    headY: kArc * 10 + kShape * 4 + kSplit * 8 + kDoor * 6,
+    lensTilt: kArc * -0.2 + kSplit * 0.2 - kDoor * 0.1,
+    kArc, kShape, kSplit, kDoor,
   };
+}
+
+// Weight of the lens being on the split or door beat (sets magnification).
+function lensKind(t, k) {
+  return k === "split" ? ramp(t, 5.0, 5.6) * (1 - ramp(t, 6.95, 7.4)) : ramp(t, 6.95, 7.4) * (1 - ramp(t, 9.0, 9.55));
 }
 
 function renderFrame(t) {
@@ -808,23 +970,33 @@ function renderFrame(t) {
   const arcTarget = toScreen(ballPos.clone().add(new THREE.Vector3(0.12, -0.08, 0)));
   const arcR = 108;
   const shapeTarget = toScreen(S.shapeFocus), shapeR = pxRadius(S.shapeFocus, S.shapeR);
-  const splitTarget = toScreen(S.splitFocus), splitR = pxRadius(S.splitFocus, S.splitR);
+  const pieC = new THREE.Vector3(); S.pie.getWorldPosition(pieC);
+  const splitTarget = BAND === "18+" ? toScreen(S.splitFocus) : toScreen(pieC.clone().add(new THREE.Vector3(0.1, 0.18, 0)));
+  const splitR = BAND === "18+" ? pxRadius(S.splitFocus, S.splitR) : pxRadius(pieC, 0.84);
   const lift = ramp(t, 1.0, 1.45);
   tgt = dockC.clone().lerp(arcTarget, lift); R = lerp(dockR, arcR, lift);
   const toShape = ramp(t, 3.0, 3.45);
   tgt.lerp(shapeTarget, toShape); R = lerp(R, shapeR, toShape);
-  const toSplit = ramp(t, 5.0, 5.4);
+  const toSplit = ramp(t, 5.0, 5.6);
   tgt.lerp(splitTarget, toSplit); R = lerp(R, splitR, toSplit);
-  const home = ramp(t, 6.55, 7.2);
+  // Door beat: the lens hops window to window and holds on each glimpse.
+  const wc = S.win.map((w) => toScreen(w.center));
+  const doorR = pxRadius(S.win[0].center, 0.98);
+  const doorPos = wc[0].clone();
+  for (let i = 0; i < 3; i++) doorPos.lerp(wc[i + 1], ramp(t, DOOR_T[i] + 0.1, DOOR_T[i + 1] - 0.1));
+  const toDoor = ramp(t, 6.95, 7.4);
+  tgt.lerp(doorPos, toDoor); R = lerp(R, doorR, toDoor);
+  const home = ramp(t, 9.0, 9.55);
   tgt.lerp(dockC, home); R = lerp(R, dockR, home);
-  const on = ramp(t, 1.0, 1.25) * (1 - ramp(t, 7.0, 7.25));
+  const on = ramp(t, 1.0, 1.25) * (1 - ramp(t, 9.4, 9.65));
+  const ms = 1.16 + 0.14 * lensKind(t, "split") + 0.24 * lensKind(t, "door");
   // One lens: the travelling view grows out of the glass in Holmes's
   // hand, so the prop is hidden while the view is out (only the hand
   // and the beam link them) and comes back as the view docks.
   S.lens.visible = on < 0.15;
 
   // Lines: draw on in time with the action, fade together at the end.
-  const fade = 1 - ramp(t, 6.5, 7.0);
+  const fade = 1 - ramp(t, 6.7, 7.0);
   const ln = S.L;
   // Each beat's lines ease out as the lens leaves it, so a later beat
   // never shows an earlier beat's lines through the glass.
@@ -836,11 +1008,11 @@ function renderFrame(t) {
   reveal(ln.tri, (t - 3.3) / 0.6, shapeFade);
   reveal(ln.angle, (t - 3.75) / 0.3, shapeFade);
   reveal(ln.square, (t - 3.8) / 0.25, shapeFade);
-  ln.slices.forEach((s, i) => reveal(s, (t - 5.35 - i * 0.16) / 0.3, fade));
-  reveal(ln.ring, (t - 5.3) / 0.5, fade * 0.8);
+  ln.slices.forEach((s, i) => reveal(s, (t - 5.5 - i * 0.1) / 0.2, fade));
+  reveal(ln.ring, (t - 5.45) / 0.35, fade * 0.8);
 
   const u = comp.uniforms;
-  u.lensC.value.copy(tgt); u.lensR.value = R; u.lensOn.value = on;
+  u.lensC.value.copy(tgt); u.lensR.value = R; u.lensOn.value = on; u.mag.value = ms;
   u.dockC.value.copy(dockC); u.dockR.value = dockR * 1.1;
   u.beam.value = on * Math.min(1, tgt.distanceTo(dockC) / 60) * (look.kArc + look.kShape + look.kSplit > 0 ? 1 : 0.6);
 
