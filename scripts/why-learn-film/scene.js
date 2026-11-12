@@ -578,7 +578,7 @@ async function build() {
   buildDoorRow();
   buildLines();
   if (BAND === "7-10") S.b = B710.setup({ THREE, scene, linesScene, S, mesh, SET, ramp, smooth, lerp, clamp01, arcAt, D, applyPose, mixPose, POSES, CATCH, HOLD });
-  if (B1018) calibrateDoor();
+  calibrateDoor();
 }
 
 // Door beat (10-18): find where Holmes must stand so the lens, held at the
@@ -741,7 +741,7 @@ function updateScene(t) {
   const hTurn = 28 + look.turn;
   H.root.rotation.y = hTurn * D;
   let hStride = 0;
-  if (B1018) {
+  { // Door beat, all bands: Holmes sidesteps along the facade with the lens in hand.
     const hx = holmesX1018(t), hx2 = holmesX1018(t + 0.03);
     H.root.position.x = hx;
     const moving = Math.abs(hx2 - hx) / 0.03 > 0.25;
@@ -873,10 +873,10 @@ const GOLDMAT = () => toon(0xffc23a, { emissive: new THREE.Color(0xffa000), emis
 function buildDoorRow() {
   S.win = [];
   const dark = 0x5a3b28, w = 1.25, h = 1.35, th = 0.13;
-  (B1018 ? [-1.93, -0.73, 0.47, 1.67] : [-2.25, -0.75, 0.75, 2.25]).forEach((off, i) => {
+  [-1.93, -0.73, 0.47, 1.67].forEach((off, i) => {
     const g = new THREE.Group();
     g.position.set(SET.post.x + off, 2.8, -2.97);
-    if (B1018) g.scale.setScalar(0.92);
+    g.scale.setScalar(0.92);
     scene.add(g);
     mesh(new THREE.BoxGeometry(w, th, 0.14), dark, [0, h / 2 - th / 2, 0.02], { parent: g });
     mesh(new THREE.BoxGeometry(w, th, 0.14), dark, [0, -h / 2 + th / 2, 0.02], { parent: g });
@@ -1070,7 +1070,7 @@ function renderFrame(t) {
   reveal(ln.ring, (t - 5.45) / 0.35, fade * 0.8);
   }
 
-  const handleK = B1018 ? ramp(t, 7.3, 7.45) * (1 - home) : 0;
+  const handleK = ramp(t, 7.3, 7.45) * (1 - home);
   if (S.b) S.b.lines(t);
   const u = comp.uniforms;
   u.handC.value.copy(toScreen(handW)); u.handle.value = handleK;
