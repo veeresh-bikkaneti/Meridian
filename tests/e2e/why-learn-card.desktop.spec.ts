@@ -138,20 +138,9 @@ for (const vp of [
       .screenshot({ path: `${SHOTS}/home-cases-${vp.name}-film-frame.png` });
   });
 
-  test(`?scale=1 still frame at ${vp.name} (reduced motion)`, async ({ browser }) => {
-    const context = await browser.newContext({
-      viewport: { width: vp.width, height: vp.height },
-      reducedMotion: "reduce",
-    });
-    await serveBuiltArtifact(context);
-    await context.route("**/flags.json", (route) =>
-      route.fulfill({
-        status: 200,
-        body: JSON.stringify({ version: 1, flags: { pwaUpdateToast: true } }),
-        contentType: "application/json; charset=utf-8",
-      }),
-    );
-    const page = await context.newPage();
+  test(`?scale=1 still frame at ${vp.name} (reduced motion)`, async ({ page }) => {
+    await page.setViewportSize({ width: vp.width, height: vp.height });
+    await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto(`${APP_URL}&scale=1`);
     const card = page.getByTestId("home-card-why-learn");
     await expect(card).toBeVisible();
@@ -163,6 +152,5 @@ for (const vp of [
       .poll(() => img.evaluate((i: HTMLImageElement) => i.complete && i.naturalWidth > 0))
       .toBe(true);
     await card.screenshot({ path: `${SHOTS}/card-${vp.name}-still-frame.png` });
-    await context.close();
   });
 }
