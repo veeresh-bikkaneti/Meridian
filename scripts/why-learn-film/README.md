@@ -62,7 +62,7 @@ node scripts/why-learn-film/capture.mjs 10-18 stills --stills    # poster.png (t
 ffmpeg -framerate 24 -i frames-base/f%04d.png -vf scale=1094:616 -c:v libx264 -crf 36 -preset veryslow -an -movflags +faststart -pix_fmt yuv420p why-learn-film.mp4
 ```
 
-`capture.mjs` uses the repo's `playwright`. If its browser isn't installed, point `CHROME_PATH` at any local Chrome or Chromium. A test encode of the base band at CRF 36 came to 121,487 bytes, well under the 400 KB cap. A Chrome agent can equally record the live page (it loops in real time) and encode the take with the prompt's ffmpeg line.
+`capture.mjs` uses the repo's `playwright`. If its browser isn't installed, point `CHROME_PATH` at any local Chrome or Chromium. A test encode of the base band at CRF 36 came to 121,873 bytes, well under the 400 KB cap. A Chrome agent can equally record the live page (it loops in real time) and encode the take with the prompt's ffmpeg line.
 
 ## Look: how it matches the shipped Home films
 
