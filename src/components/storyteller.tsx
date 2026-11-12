@@ -7,7 +7,8 @@ import {
 } from "react";
 import { RotateCcw, Volume2, VolumeX } from "lucide-react";
 import { isSoundEnabled } from "@/game/audio/sfx";
-import { claimVoice, type VoiceClaim } from "@/game/audio/voice-channel";
+import { type VoiceClaim } from "@/game/audio/voice-channel";
+import { claimStorytellerVoice } from "./storyteller-voice";
 import { CURRENT_BUILD_ID } from "@/game/build-staleness";
 import {
   getObservability,
@@ -335,13 +336,11 @@ export function StorytellerNarration({
       // A replay stops the current line first.
       audioRef.current?.pause();
       audioRef.current = null;
-      voiceRef.current?.release();
-      voiceRef.current = null;
       // One voice at a time: a tap (speaker, replay) takes the channel
       // from whoever is speaking; the automatic lines wait their turn and
       // stay text-only if someone else has it.
-      const claim = claimVoice(
-        "storyteller",
+      const claim = claimStorytellerVoice(
+        voiceRef.current,
         () => {
           // Another voice took over: pause (not mute) so a tap can resume.
           audioRef.current?.pause();
@@ -352,7 +351,10 @@ export function StorytellerNarration({
             telemetryTrigger === "speaker" || telemetryTrigger === "replay",
         },
       );
-      if (!claim) return;
+      if (!claim) {
+        voiceRef.current = null;
+        return;
+      }
       voiceRef.current = claim;
       window.clearTimeout(dismissTimer.current);
       audioStartTimeRef.current = Date.now();
@@ -633,6 +635,22 @@ export function StorytellerNarration({
       audio.pause();
       setAudioState("paused");
     } else if (audioState === "paused") {
+      // Reclaim first: if another voice took over while we were paused,
+      // play() alone would talk over them. A figure tap is a user
+      // gesture, so this stops whoever is speaking.
+      const claim = claimStorytellerVoice(
+        voiceRef.current,
+        () => {
+          audioRef.current?.pause();
+          setAudioState("paused");
+        },
+        { userInitiated: true },
+      );
+      if (!claim) {
+        voiceRef.current = null;
+        return;
+      }
+      voiceRef.current = claim;
       // Non-blocking concern #1 (scrum 2026-10-11): guard the resume
       // play() with the hang watchdog — a hung resume must not strand
       // "playing" with no recovery (speaker/replay/figure all bail while
