@@ -10,8 +10,8 @@ import { installSfxStub, oscRecords } from "./sfx-stub";
  * The sprint's entry-gate fixes make the app survive offline: the service
  * worker serves the shell from cache, loop edition data cached during an
  * online visit replays offline (runtime cache-first in public/sw.js), and
- * uncached loop content shows the designed offline notice — never a blank
- * screen, never a console error.
+ * uncached clue data shows the designed offline notice when the loop
+ * chunk was warmed online; unwarmed, the boundary card shows instead.
  *
  * Offline simulation: the suite's `serveBuiltArtifact` fulfills every app
  * URL from disk, which masks real offline behavior (Playwright routes still
@@ -207,13 +207,41 @@ test("offline loop, uncached: exact offline headline in the error-card slot", as
   const page = await context.newPage();
   collectErrors(page, sink);
 
-  // ONLINE: install the SW (it precaches loop/manifest.json at install) and
-  // warm the chunk cache. Fresh loop store, no seam: whatever the deck deals
-  // is uncached (the uncached case).
+  // ONLINE: install the SW (it precaches loop/manifest.json at install).
+  // warmOnline warms the shell only — the LoopScreen chunk is warmed by
+  // the online open below (Clue 1 renders = the chunk was provably
+  // fetched). The loop store is then reset and the dealt clue file is
+  // evicted from every SW cache, so offline the chunk loads but its clue
+  // data is genuinely uncached (the uncached case). No seam: whatever
+  // the deck deals is the mystery whose clue file gets evicted.
   await warmOnline(page);
-  await page.evaluate(() => {
+  await openLoopViaButton(page);
+  await expect(
+    page.getByRole("article", { name: /Clue 1: Geography/ }),
+  ).toBeVisible({ timeout: 30_000 });
+
+  // Back home, THEN reset the loop store (exactly the two loop keys) and
+  // evict every cached clue file, so the offline deal — whichever case
+  // it is — finds no clue data in the SW caches.
+  await page.getByRole("button", { name: "Editions" }).click();
+  await expect(page.getByRole("heading", { name: "Meridian" })).toBeVisible({
+    timeout: 15_000,
+  });
+  await page.evaluate(async () => {
     localStorage.removeItem("meridian.loop.v2");
     localStorage.removeItem("meridian.loop.open");
+    const names = await caches.keys();
+    await Promise.all(
+      names.map(async (name) => {
+        const cache = await caches.open(name);
+        const requests = await cache.keys();
+        await Promise.all(
+          requests
+            .filter((r) => r.url.includes("/loop/clues/"))
+            .map((r) => cache.delete(r)),
+        );
+      }),
+    );
   });
 
   // OFFLINE, then open the loop in-page (no document navigation, so
@@ -236,6 +264,52 @@ test("offline loop, uncached: exact offline headline in the error-card slot", as
   await expect(alert.getByRole("button", { name: "Try again" })).toBeVisible();
 
   expectNoErrors(sink);
+});
+
+test("offline loop, chunk never warmed: boundary card instead of the offline notice", async ({
+  context,
+}) => {
+  test.setTimeout(240_000);
+  const page = await context.newPage();
+
+  // The ORIGINAL never-warmed setup: warmOnline warms the shell only —
+  // the LoopScreen chunk is never fetched online, so offline it cannot
+  // load at all, and the designed offline notice (which lives inside
+  // that chunk) is unreachable. Fresh loop store, as in the original
+  // setup above.
+  await warmOnline(page);
+  await page.evaluate(() => {
+    localStorage.removeItem("meridian.loop.v2");
+    localStorage.removeItem("meridian.loop.open");
+  });
+
+  // OFFLINE, then open the loop via the home button locator directly
+  // (not openLoopViaButton — the GeoDetective heading it waits for
+  // never renders in this scenario).
+  await goOffline(context);
+  await page
+    .getByRole("button", { name: /Solve a mystery|Resume your case/ })
+    .click();
+
+  // Reload-tolerant, in the manner of chunk-boundary-copy.desktop.spec.ts:
+  // chunk-recovery may fire its single latched reload after the ≈11.5s
+  // announcement dwell, after which the same card reappears — poll for
+  // the settled state, never a first paint.
+  const card = page.getByRole("alert").filter({
+    hasText: "Couldn’t load GeoDetective.",
+  });
+  await expect(card).toBeVisible({ timeout: 90_000 });
+  await expect(card.getByRole("button", { name: "Try again" })).toBeVisible();
+
+  // The loop screen never mounted: no GeoDetective heading, and the
+  // offline headline never appears.
+  await expect(
+    page.getByRole("heading", { name: "GeoDetective" }),
+  ).toHaveCount(0);
+  await expect(page.getByText(OFFLINE_HEADLINE)).toHaveCount(0);
+
+  // Deliberately NO zero-errors assertion here: the boundary's
+  // componentDidCatch logs console errors by design in this scenario.
 });
 
 test("offline loop, cached: a mystery played online replays with zero notices", async ({
