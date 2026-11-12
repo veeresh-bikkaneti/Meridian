@@ -17,6 +17,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
+import { createBand18 } from "./band-18plus.js";
 
 const W = 1094, H = 616, DURATION = 10.0, FPS = 24, SS = 2; // SS: render-target supersampling, so the lens magnifies crisply
 const q = new URLSearchParams(location.search);
@@ -485,6 +486,7 @@ async function build() {
   scene.add(post);
 
   const table = toonify(P["cafe-table"]);
+  S.table = table;
   table.position.copy(SET.table);
   scene.add(table);
   // A café chair outside the shopfront, for the street-life feel.
@@ -530,33 +532,9 @@ async function build() {
     S.ladder = toonify(P.ladder);
     scene.add(S.ladder);
   } else {
-    S.hose = toonify(P["hose-nozzle"]);
-    S.hose.scale.setScalar(1.3);
-    scene.add(S.hose);
-    S.ball.visible = false;
-    // A bucket the water lands in.
-    S.bucket = mesh(new THREE.CylinderGeometry(0.19, 0.15, 0.32, 16, 1, true), 0x7b8a96, [-0.25, 0.16, 0.75], { mat: { side: THREE.DoubleSide } });
-    S.bridge = toonify(P.bridge);
-    S.bridge.position.set(0.25, 0.9, -2.2);
-    scene.add(S.bridge);
-    // Stone parapet the bridge rises behind (it spans the river beyond).
-    mesh(new THREE.BoxGeometry(5.2, 0.7, 0.35), 0xb9b2a5, [0.8, 0.35, -1.65]);
-    mesh(new THREE.PlaneGeometry(14, 6), 0x6f9fb8, [2, 0.02, -5], { rot: [-Math.PI / 2, 0, 0], ink: false, cast: false });
-    S.pie.visible = false;
-    S.bowls = toonify(P.bowls);
-    S.bowls.position.set(SET.table.x, 0.77, SET.table.z);
-    S.bowls.scale.setScalar(1.25);
-    scene.add(S.bowls);
-    S.bowl = [0, 1, 2].map((i) => S.bowls.getObjectByName(`bowl-${i}`));
-    S.bowlHome = S.bowl.map((b) => b.position.clone());
-    // Water droplets along the arc.
-    S.drops = [];
-    const dropMat = toon(0x8fd3f4, { transparent: true, opacity: 0.9, emissive: new THREE.Color(0x2f6f9a), emissiveIntensity: 0.3 });
-    for (let i = 0; i < 46; i++) {
-      const d = new THREE.Mesh(new THREE.SphereGeometry(0.035, 8, 6), dropMat);
-      scene.add(d);
-      S.drops.push(d);
-    }
+    // 18+: hose, bucket, bridge and bowls live in band-18plus.js
+    S.b18 = createBand18({ scene, S, mesh, toon, toonify, goldLine, poly, reveal, ramp, smooth, clamp01, lerp, toScreen, updateScene });
+    S.b18.build(P);
   }
 
   buildDoorRow();
@@ -568,6 +546,7 @@ function buildLines() {
   S.L = {};
   updateScene(0); // put hands where they start, to read release points
   scene.updateMatrixWorld(true);
+  if (S.b18) { S.b18.buildLines(); return; }
 
   if (BAND !== "18+") {
     // Ball flight: released over Watson's head at 1.3 s, caught at 3.7 s
@@ -762,31 +741,9 @@ function updateScene(t) {
     S.ball.rotation.set(t * 4, t * 2.5, 0);
     S.ball.visible = t < 5.0 || t > 7.2; // tucked away while Watson holds the pie
   }
-  if (BAND === "18+" && S.hose && S.arc) {
-    Wt.handR.getWorldPosition(tmp);
-    S.hose.position.copy(tmp);
-    S.hose.rotation.set(-0.35 - ramp(t, 0.9, 1.3) * 0.25 * (1 - ramp(t, 3.2, 3.6)), (-62 - lean * 22) * D, 0);
-    // Water: droplets stream along the arc from 1.3 s to 3.1 s.
-    const { t0, t1 } = S.arc;
-    const on = ramp(t, t0, t0 + 0.05) * (1 - ramp(t, t1 + 0.6, t1 + 0.9));
-    S.drops.forEach((d, i) => {
-      const lead = clamp01((t - t0) / (t1 - t0 - 0.6));
-      const k = ((i / S.drops.length) + t * 1.4) % 1;
-      d.visible = on > 0.01 && k <= lead && t < t1 + 0.9;
-      d.position.copy(arcAt(k));
-      d.scale.setScalar(0.7 + 0.3 * Math.sin(i * 2.1));
-    });
-  }
+  if (S.b18) S.b18.update(t);
   // Swing: a 2 s pendulum, four full swings per loop.
   if (S.swingPivot) S.swingPivot.rotation.z = Math.sin(t * Math.PI) * (S.swingAmp ?? 0.6) * 0.95;
-  if (S.bowl) {
-    const k = ramp(t, 5.55, 6.05) * (1 - ramp(t, 6.6, 7.2));
-    S.bowl[1].visible = S.bowl[2].visible = k > 0.01;
-    S.bowl[1].scale.setScalar(Math.max(0.001, k));
-    S.bowl[2].scale.setScalar(Math.max(0.001, k));
-    S.bowl[1].position.copy(S.bowlHome[1]);
-    S.bowl[2].position.copy(S.bowlHome[2]);
-  }
   if (BAND !== "18+") updatePie(t, kLift);
   if (S.win) updateDoor(t);
   if (S.clouds) S.clouds.children.forEach((c) => { c.userData.x0 ??= c.position.x; c.position.x = c.userData.x0 + Math.sin(t * Math.PI / 5) * c.userData.speed * 4; });
@@ -967,8 +924,8 @@ function renderFrame(t) {
   // Targets of the travelling lens view.
   let tgt = dockC.clone(), R = dockR;
   const ballPos = BAND === "18+" ? arcAt(clamp01((t - S.arc.t0) / (S.arc.t1 - S.arc.t0 - 0.35))) : S.ball.position.clone();
-  const arcTarget = toScreen(ballPos.clone().add(new THREE.Vector3(0.12, -0.08, 0)));
-  const arcR = 108;
+  const arcTarget = S.b18 ? S.b18.arcTarget() : toScreen(ballPos.clone().add(new THREE.Vector3(0.12, -0.08, 0)));
+  const arcR = S.b18 ? S.b18.arcR : 108;
   const shapeTarget = toScreen(S.shapeFocus), shapeR = pxRadius(S.shapeFocus, S.shapeR);
   const pieC = new THREE.Vector3(); S.pie.getWorldPosition(pieC);
   const splitTarget = BAND === "18+" ? toScreen(S.splitFocus) : toScreen(pieC.clone().add(new THREE.Vector3(0.1, 0.18, 0)));
@@ -989,7 +946,7 @@ function renderFrame(t) {
   const home = ramp(t, 9.0, 9.55);
   tgt.lerp(dockC, home); R = lerp(R, dockR, home);
   const on = ramp(t, 1.0, 1.25) * (1 - ramp(t, 9.4, 9.65));
-  const ms = 1.16 + 0.14 * lensKind(t, "split") + 0.24 * lensKind(t, "door");
+  const ms = 1.16 + (S.b18 ? -0.11 : 0.14) * lensKind(t, "split") + 0.24 * lensKind(t, "door");
   // One lens: the travelling view grows out of the glass in Holmes's
   // hand, so the prop is hidden while the view is out (only the hand
   // and the beam link them) and comes back as the view docks.
@@ -1001,8 +958,9 @@ function renderFrame(t) {
   // Each beat's lines ease out as the lens leaves it, so a later beat
   // never shows an earlier beat's lines through the glass.
   const arcFade = 1 - ramp(t, 3.15, 3.6), shapeFade = 1 - ramp(t, 5.05, 5.45);
-  if (BAND !== "18+") reveal(ln.arc, (t - 1.3) / (S.arc.t1 - 1.3), arcFade);
-  else reveal(ln.arc, (t - 1.3) / (S.arc.t1 - 1.3 - 0.35), arcFade);
+  if (S.b18) S.b18.reveal(t);
+  else {
+  reveal(ln.arc, (t - 1.3) / (S.arc.t1 - 1.3), arcFade);
   // All three sides are down by 3.9 s and the angle arc by 4.05 s, so
   // the still (t=4) shows the whole triangle.
   reveal(ln.tri, (t - 3.3) / 0.6, shapeFade);
@@ -1010,6 +968,7 @@ function renderFrame(t) {
   reveal(ln.square, (t - 3.8) / 0.25, shapeFade);
   ln.slices.forEach((s, i) => reveal(s, (t - 5.5 - i * 0.1) / 0.2, fade));
   reveal(ln.ring, (t - 5.45) / 0.35, fade * 0.8);
+  }
 
   const u = comp.uniforms;
   u.lensC.value.copy(tgt); u.lensR.value = R; u.lensOn.value = on; u.mag.value = ms;
