@@ -70,6 +70,9 @@ export const WATSON_POSES_3D: Record<string, Pose3D> = {
   // lift-pie: both arms forward and up, hands under a pie held face-on
   // to the viewer, head a touch back so the face stays clear of it.
   "lift-pie": { shoulderL: [-92, 0, -6], shoulderR: [-92, 0, 6], elbowL: -52, elbowR: -52, head: [-8, 0, 0], anim: "idle" },
+  // hold-pie-wide (10-18 film): arms low and wide, hands at the sides of
+  // a pie held face-on at the belly, head up so the face stays clear.
+  "hold-pie-wide": { shoulderL: [-8, 0, -30], shoulderR: [-8, 0, 30], elbowL: -30, elbowR: -30, head: [-2, 0, 0], anim: "idle" },
 };
 
 /** The figure turns this far toward the side it faces (degrees about Y). */

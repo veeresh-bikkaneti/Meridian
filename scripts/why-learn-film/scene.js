@@ -21,6 +21,7 @@ import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
 const W = 1094, H = 616, DURATION = 10.0, FPS = 24, SS = 2; // SS: render-target supersampling, so the lens magnifies crisply
 const q = new URLSearchParams(location.search);
 const BAND = ["7-10", "10-18", "18+"].includes(q.get("band")) ? q.get("band") : "10-18";
+const B1018 = BAND === "10-18";
 const FREEZE = q.has("t") ? Math.min(DURATION, Math.max(0, parseFloat(q.get("t")) || 0)) : null;
 const CAPTURE = q.has("capture");
 if (CAPTURE) document.body.classList.add("capture");
@@ -42,6 +43,7 @@ export const POSES = {
     toss: { shoulderL: [-28, 0, -14], shoulderR: [-158, 0, 16], elbowL: -24, elbowR: -10, head: [-20, 0, 0] },
     "lean-in": { shoulderL: [-34, 0, -12], shoulderR: [-34, 0, 12], elbowL: -34, elbowR: -34, head: [22, 0, 4] },
     "lift-pie": { shoulderL: [-92, 0, -6], shoulderR: [-92, 0, 6], elbowL: -52, elbowR: -52, head: [-8, 0, 0] },
+    "hold-pie-wide": { shoulderL: [-8, 0, -30], shoulderR: [-8, 0, 30], elbowL: -30, elbowR: -30, head: [-2, 0, 0] },
   },
 };
 // Film-only in-between holds (not game poses): Watson holding the ball
@@ -354,12 +356,12 @@ const comp = new THREE.ShaderMaterial({
     base: { value: rtBase.texture }, lines: { value: rtLines.texture },
     res: { value: new THREE.Vector2(W, H) },
     lensC: { value: new THREE.Vector2() }, lensR: { value: 0 }, lensOn: { value: 0 },
-    dockC: { value: new THREE.Vector2() }, dockR: { value: 0 }, beam: { value: 0 },
+    dockC: { value: new THREE.Vector2() }, dockR: { value: 0 }, beam: { value: 0 }, handC: { value: new THREE.Vector2() }, handle: { value: 0 },
     mag: { value: 1.16 }, grade: { value: new THREE.Vector3(...LOOK.grade) }, sat: { value: LOOK.sat },
   },
   vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }`,
   fragmentShader: `
-    uniform sampler2D base, lines; uniform vec2 res, lensC, dockC; uniform float lensR, lensOn, dockR, beam, mag, sat;
+    uniform sampler2D base, lines; uniform vec2 res, lensC, dockC, handC; uniform float lensR, lensOn, dockR, beam, mag, sat, handle;
     uniform vec3 grade; varying vec2 vUv;
     vec3 toSRGB(vec3 c){ c = max(c, 0.0); return mix(c * 12.92, 1.055 * pow(c, vec3(1.0/2.4)) - 0.055, step(0.0031308, c)); }
     vec3 glowAt(vec2 uv){
@@ -398,6 +400,16 @@ const comp = new THREE.ShaderMaterial({
         float hl = smoothstep(0.82, 0.7, length(q - vec2(-0.18, 0.2))) * smoothstep(0.55, 0.75, length(q - vec2(-0.05, 0.05)));
         inside += vec3(1.0) * 0.18 * hl;
         col = mix(col, inside, lensOn);
+      }
+      if (handle > 0.001){
+        // Brass handle from the lens rim to Holmes's hand (the lens stays in his grip).
+        vec2 ab = handC - lensC; float L = length(ab); vec2 dir = ab / max(L, 1.0);
+        vec2 A = lensC + dir * (lensR + 4.0); vec2 ba = handC - A;
+        float h = clamp(dot(px - A, ba) / max(dot(ba, ba), 1.0), 0.0, 1.0);
+        float d = length(px - A - ba * h);
+        float body = 1.0 - smoothstep(6.0, 7.0, d), edge = 1.0 - smoothstep(9.0, 10.0, d);
+        vec3 hc = mix(vec3(0.16, 0.12, 0.09), mix(vec3(0.62, 0.38, 0.1), vec3(1.0, 0.8, 0.35), 0.5 + 0.5 * clamp((px.y - handC.y) * 0.05, -1.0, 1.0)), body);
+        col = mix(col, hc, edge * handle * step(lensR + 6.0, L));
       }
       if (lensOn > 0.001){
         // Brass rim with ink lines, cartoon style.
@@ -443,8 +455,32 @@ const SET = {
   watsonCatch: new THREE.Vector3(1.72, 0, 0.5),
   watsonHold: new THREE.Vector3(1.7, 0, 1.9),
   post: new THREE.Vector3(0.55, 0, -1.5),
-  table: new THREE.Vector3(0.72, 0, 1.6),
+  table: BAND === "10-18" ? new THREE.Vector3(3.0, 0, 1.2) : new THREE.Vector3(0.72, 0, 1.6),
 };
+// 10-18 staging: Watson fetches the pie from the side table, then holds it
+// face-on near x 1.0; the table stays out of the picture's middle.
+const WP = {
+  start: SET.watsonStart, catch: SET.watsonCatch,
+  pick: new THREE.Vector3(2.2, 0, 1.15), hold: new THREE.Vector3(1.0, 0, 2.15),
+};
+function watsonPos1018(t) {
+  const p = WP.start.clone().lerp(WP.catch, ramp(t, 1.6, 3.4));
+  p.lerp(WP.pick, ramp(t, 4.0, 4.5));
+  p.lerp(WP.hold, ramp(t, 4.9, 5.5));
+  p.lerp(WP.pick, ramp(t, 6.9, 7.4));
+  p.lerp(WP.start, ramp(t, 9.0, 9.8));
+  return p;
+}
+// Holmes follows the lens along the facade during the door beat. S.hs holds
+// the calibrated stop x per window (see calibrateDoor); S.hOverride forces x.
+function holmesX1018(t) {
+  if (S.hOverride !== undefined) return S.hOverride;
+  let x = SET.holmes.x;
+  if (!S.hs) return x;
+  x = lerp(x, S.hs[0], ramp(t, 6.9, 7.4));
+  for (let i = 0; i < 3; i++) x = lerp(x, S.hs[i + 1], ramp(t, DOOR_T[i] + 0.12, DOOR_T[i + 1] - 0.12));
+  return lerp(x, SET.holmes.x, ramp(t, 9.0, 9.7));
+}
 
 const S = {};
 
@@ -561,6 +597,30 @@ async function build() {
 
   buildDoorRow();
   buildLines();
+  if (B1018) calibrateDoor();
+}
+
+// Door beat (10-18): find where Holmes must stand so the lens, held at the
+// end of a short brass handle, sits on each window. Hand lands about 60 px
+// left of the window centre; the view hangs up-right of the hand.
+const DOOR_HAND_DX = -60;
+function calibrateDoor() {
+  S.hs = null;
+  const stops = [];
+  for (let i = 0; i < 4; i++) {
+    let x = SET.holmes.x;
+    for (let it = 0; it < 4; it++) {
+      S.hOverride = x;
+      updateScene(DOOR_T[i]);
+      const hand = new THREE.Vector3(); S.H.handR.getWorldPosition(hand);
+      const win = toScreen(S.win[i].center);
+      const err = toScreen(hand).x - (win.x + DOOR_HAND_DX);
+      x -= err / 134;
+    }
+    stops.push(x);
+  }
+  S.hOverride = undefined;
+  S.hs = stops;
 }
 
 // ── Paths and gold line geometry per band ──────────────────────────────
@@ -574,7 +634,7 @@ function buildLines() {
     // after he scoots left under it. A true parabola (constant x speed).
     const a = new THREE.Vector3(SET.watsonStart.x - 0.15, 2.0, SET.watsonStart.z + 0.1);
     const b = new THREE.Vector3(SET.watsonCatch.x - 0.05, 1.0, SET.watsonCatch.z + 0.32);
-    S.arc = { a, b, apex: 3.0, t0: 1.3, t1: 3.7 };
+    S.arc = { a, b, apex: BAND === "10-18" ? 2.6 : 3.0, t0: 1.3, t1: 3.7 };
   } else {
     // Hose water: from the nozzle in Watson's hand into the bucket.
     const a = new THREE.Vector3(SET.watsonCatch.x - 0.45, 1.05, SET.watsonCatch.z + 0.3);
@@ -698,21 +758,32 @@ function updateScene(t) {
   const look = lensPlan(t);
   const hTurn = 28 + look.turn;
   H.root.rotation.y = hTurn * D;
+  let hStride = 0;
+  if (B1018) {
+    const hx = holmesX1018(t), hx2 = holmesX1018(t + 0.03);
+    H.root.position.x = hx;
+    const moving = Math.abs(hx2 - hx) / 0.03 > 0.25;
+    hStride = moving ? Math.sin(t * 14) : 0;
+    H.root.position.y = moving ? Math.abs(Math.cos(t * 14)) * 0.02 : 0;
+  }
   const breathe = Math.sin(t * Math.PI * 2 / 5) * 1.2; // 5 s period, loops at 10 s
   const glance = ramp(t, 9.05, 9.4) * (1 - ramp(t, 9.55, 9.85));
   applyPose(H, {
     ...sweep,
     shoulderR: [sweep.shoulderR[0] + look.armX, sweep.shoulderR[1] + look.armY, sweep.shoulderR[2]],
-  }, { headX: look.headX + breathe, headY: look.headY + glance * 22 });
+  }, { headX: look.headX + breathe, headY: look.headY + glance * 22, hipL: 20 * hStride, hipR: -20 * hStride });
 
   // Watson.
   const walkTo = ramp(t, 1.6, 3.4), walkBack = ramp(t, 9.0, 9.8);
   // Split beat: Watson steps forward to hold the pie face-on to the camera.
   const kLift = ramp(t, 5.0, 5.6) * (1 - ramp(t, 6.9, 7.4));
   const pos = BAND === "18+" ? SET.watsonCatch.clone() : SET.watsonStart.clone().lerp(SET.watsonCatch, walkTo * (1 - walkBack));
-  if (BAND !== "18+") pos.lerp(SET.watsonHold, kLift);
+  if (BAND !== "18+" && !B1018) pos.lerp(SET.watsonHold, kLift);
+  if (B1018) pos.copy(watsonPos1018(t));
   Wt.root.position.copy(pos);
-  const walking = BAND !== "18+" && ((t > 1.6 && t < 3.4) || (t > 5.0 && t < 5.6) || (t > 6.9 && t < 7.4) || (t > 9.0 && t < 9.8));
+  const kHold = B1018 ? ramp(t, 4.9, 5.5) * (1 - ramp(t, 6.9, 7.4)) : kLift;
+  const walking = B1018 ? watsonPos1018(t + 0.03).distanceTo(pos) / 0.03 > 0.25
+    : BAND !== "18+" && ((t > 1.6 && t < 3.4) || (t > 5.0 && t < 5.6) || (t > 6.9 && t < 7.4) || (t > 9.0 && t < 9.8));
   const stride = walking ? Math.sin(t * 14) : 0;
   let p, headX = 0, lean = 0;
   if (BAND !== "18+") {
@@ -720,18 +791,23 @@ function updateScene(t) {
     p = mixPose(p, mixPose(POSES.watson.walk, { ...POSES.watson.walk, head: [-22, 0, 0] }, 1), ramp(t, 1.7, 2.2));
     p = mixPose(p, CATCH, ramp(t, 3.3, 3.65));
     p = mixPose(p, HOLD, ramp(t, 3.72, 3.98)); // ball down to the chest, face clear
-    p = mixPose(p, POSES.watson["lift-pie"], ramp(t, 5.0, 5.6));
-    p = mixPose(p, HOLD, ramp(t, 6.9, 7.4));
+    if (B1018) {
+      p = mixPose(p, POSES.watson["hold-pie-wide"], ramp(t, 4.75, 5.4));
+      p = mixPose(p, HOLD, ramp(t, 6.95, 7.5));
+    } else {
+      p = mixPose(p, POSES.watson["lift-pie"], ramp(t, 5.0, 5.6));
+      p = mixPose(p, HOLD, ramp(t, 6.9, 7.4));
+    }
   } else {
     p = mixPose(HOLD, AIM, ramp(t, 0.9, 1.3));
     p = mixPose(p, POSES.watson["lean-in"], ramp(t, 5.1, 5.6));
     p = mixPose(p, HOLD, ramp(t, 6.9, 7.4));
   }
-  lean = kLift;
+  lean = kHold;
   const nod = ramp(t, 9.45, 9.6) * (1 - ramp(t, 9.65, 9.85));
   headX = nod * 12 + Math.sin(t * Math.PI * 2 / 5 + 1) * 1.2;
   // Watson turns toward the table to lean in, then back to Holmes.
-  Wt.root.rotation.set(lean * (BAND === "18+" ? 14 : 3) * D, (-28 + (BAND === "18+" ? -lean * 22 : -lean * 12) + walkTo * (1 - walkBack) * 6) * D, 0);
+  Wt.root.rotation.set(lean * (BAND === "18+" ? 14 : 3) * D, (-28 + (BAND === "18+" ? -lean * 22 : B1018 ? lean * 28 : -lean * 12) + walkTo * (1 - walkBack) * 6 * (B1018 ? 0 : 1)) * D, 0);
   Wt.root.position.y = walking ? Math.abs(Math.cos(t * 14)) * 0.025 : 0;
   // A small delighted bounce while leaning in.
   if (BAND === "18+") Wt.root.position.y += lean * Math.max(0, Math.sin((t - 5.6) * 9)) * 0.03 * ramp(t, 5.6, 5.8);
@@ -759,8 +835,16 @@ function updateScene(t) {
       Wt.handR.getWorldPosition(tmp);
       S.ball.position.lerp(tmp.add(new THREE.Vector3(0, 0.06, 0.06)), ramp(t, 3.72, 3.98));
     }
+    if (B1018) {
+      // Tucked under Watson's arm while he works with the pie: no pop.
+      const rest = Wt.root.localToWorld(new THREE.Vector3(-0.3, 0.86, 0.14));
+      Wt.handR.getWorldPosition(tmp); tmp.add(new THREE.Vector3(0, 0.06, 0.06));
+      const away = ramp(t, 4.05, 4.6) * (1 - ramp(t, 8.9, 9.4));
+      if (t >= 3.98) S.ball.position.copy(tmp).lerp(rest, away);
+      if (t >= 3.98) S.ball.position.y += Math.sin(Math.PI * clamp01(ramp(t, 4.05, 4.6))) * 0.1 + Math.sin(Math.PI * clamp01(ramp(t, 8.9, 9.4))) * 0.1;
+      S.ball.visible = true;
+    } else S.ball.visible = t < 5.0 || t > 7.2; // tucked away while Watson holds the pie
     S.ball.rotation.set(t * 4, t * 2.5, 0);
-    S.ball.visible = t < 5.0 || t > 7.2; // tucked away while Watson holds the pie
   }
   if (BAND === "18+" && S.hose && S.arc) {
     Wt.handR.getWorldPosition(tmp);
@@ -787,7 +871,7 @@ function updateScene(t) {
     S.bowl[1].position.copy(S.bowlHome[1]);
     S.bowl[2].position.copy(S.bowlHome[2]);
   }
-  if (BAND !== "18+") updatePie(t, kLift);
+  if (BAND !== "18+") updatePie(t, B1018 ? smooth(ramp(t, 4.75, 5.4)) * (1 - smooth(ramp(t, 6.95, 7.5))) : kLift);
   if (S.win) updateDoor(t);
   if (S.clouds) S.clouds.children.forEach((c) => { c.userData.x0 ??= c.position.x; c.position.x = c.userData.x0 + Math.sin(t * Math.PI / 5) * c.userData.speed * 4; });
 }
@@ -796,19 +880,21 @@ function updateScene(t) {
 // Slice k spans angles k*45..(k+1)*45 deg in the pie's own frame (see
 // build_props.py); turned up 90 deg about X, local (cos a, y, -sin a)
 // lands at screen (cos a, sin a), so the angles read anticlockwise.
-const PIE_SCALE_TABLE = 1.1, PIE_SCALE_HELD = 2.0, LIFTED = 1;
+const PIE_SCALE_TABLE = 1.1, PIE_SCALE_HELD = 2.0, PIE_SCALE_HELD_1018 = 1.8, LIFTED = B1018 ? 0 : 1;
 function updatePie(t, kLift) {
   if (!S.slices) return; // first call happens while lines are still being built
   const tablePos = new THREE.Vector3(SET.table.x, 0.77, SET.table.z);
   const Wt = S.W;
   const hl = new THREE.Vector3(), hr = new THREE.Vector3();
   Wt.handL.getWorldPosition(hl); Wt.handR.getWorldPosition(hr);
-  const held = hl.add(hr).multiplyScalar(0.5).add(new THREE.Vector3(-0.62, 0.45, 0.3));
+  const held = B1018 ? hl.clone().add(hr).multiplyScalar(0.5).add(new THREE.Vector3(0, -0.05, 0.1))
+    : hl.add(hr).multiplyScalar(0.5).add(new THREE.Vector3(-0.62, 0.45, 0.3));
   const e = smooth(kLift);
   S.pie.position.copy(tablePos).lerp(held, e);
   S.pie.position.y += Math.sin(Math.PI * clamp01(e)) * 0.12; // little arc as it rises
-  S.pie.rotation.set(e * Math.PI / 2, 0.2 * (1 - e), 0);
-  S.pie.scale.setScalar(lerp(PIE_SCALE_TABLE, PIE_SCALE_HELD, e));
+  // Held pie tips a touch back toward the camera so the face-on disc is a full ellipse.
+  S.pie.rotation.set(e * (Math.PI / 2 - (B1018 ? 0.5 : 0)), 0.2 * (1 - e), 0);
+  S.pie.scale.setScalar(lerp(PIE_SCALE_TABLE, B1018 ? PIE_SCALE_HELD_1018 : PIE_SCALE_HELD, e));
   // Cuts open a hair, then one slice lifts out and holds.
   const spread = ramp(t, 5.75, 5.95) * (1 - ramp(t, 6.8, 7.0));
   const out = ramp(t, 5.95, 6.2) * (1 - ramp(t, 6.75, 7.0));
@@ -826,9 +912,10 @@ const GOLDMAT = () => toon(0xffc23a, { emissive: new THREE.Color(0xffa000), emis
 function buildDoorRow() {
   S.win = [];
   const dark = 0x5a3b28, w = 1.25, h = 1.35, th = 0.13;
-  [-2.25, -0.75, 0.75, 2.25].forEach((off, i) => {
+  (B1018 ? [-1.93, -0.73, 0.47, 1.67] : [-2.25, -0.75, 0.75, 2.25]).forEach((off, i) => {
     const g = new THREE.Group();
     g.position.set(SET.post.x + off, 2.8, -2.97);
+    if (B1018) g.scale.setScalar(0.92);
     scene.add(g);
     mesh(new THREE.BoxGeometry(w, th, 0.14), dark, [0, h / 2 - th / 2, 0.02], { parent: g });
     mesh(new THREE.BoxGeometry(w, th, 0.14), dark, [0, -h / 2 + th / 2, 0.02], { parent: g });
@@ -862,7 +949,7 @@ function buildDoorRow() {
     mesh(new THREE.CylinderGeometry(0.255, 0.255, 0.04, 20), 0xdff6ff, [0, -0.44, 0], { parent: pr });
     c.bub = [];
     for (let k = 0; k < 7; k++) {
-      const r = 0.04 + (k % 3) * 0.02;
+      const r = 0.06 + (k % 3) * 0.03;
       const b = mesh(new THREE.SphereGeometry(r, 14, 10), 0, [0, 0, 0.27], { material: toon(0xfff6cc, { emissive: new THREE.Color(0xffc040), emissiveIntensity: 0.55 }), parent: pr });
       b.userData = { x: [-0.17, 0.05, 0.18, -0.06, 0.13, -0.19, 0.0][k], ph: k / 7, sp: 0.6 + (k % 3) * 0.12 };
       c.bub.push(b);
@@ -888,13 +975,13 @@ function buildDoorRow() {
     for (let k = 0; k < N; k++) {
       const s = k / (N - 1), x = -0.5 + s * 1.0, y = -0.26 + 0.5 * s + 0.12 * Math.sin(s * 9);
       const pn = panels[Math.min(2, Math.floor((x + 0.5) / 0.333))];
-      const d = mesh(new THREE.SphereGeometry(0.032, 8, 6), 0, [x - pn.position.x, y, 0.04], { material: GOLDMAT(), parent: pn, ink: false, cast: false });
+      const d = mesh(new THREE.SphereGeometry(0.048, 10, 8), 0, [x - pn.position.x, y, 0.04], { material: GOLDMAT(), parent: pn, ink: false, cast: false });
       c.dots.push(d);
     }
     // destination: a gold pin (sphere on a cone), not a cross or letter
     const pin = new THREE.Group(); pin.position.set(0.17, 0.4, 0.05); panels[2].add(pin);
-    mesh(new THREE.SphereGeometry(0.06, 12, 10), 0, [0, 0.07, 0], { material: GOLDMAT(), parent: pin });
-    mesh(new THREE.ConeGeometry(0.04, 0.1, 8), 0, [0, 0, 0], { material: GOLDMAT(), parent: pin, rot: [Math.PI, 0, 0] });
+    mesh(new THREE.SphereGeometry(0.085, 12, 10), 0, [0, 0.09, 0], { material: GOLDMAT(), parent: pin });
+    mesh(new THREE.ConeGeometry(0.055, 0.13, 8), 0, [0, 0, 0], { material: GOLDMAT(), parent: pin, rot: [Math.PI, 0, 0] });
     c.pin = pin; }
   // 3 old clock tower (history): face unmarked
   { const pr = S.win[3].prop;
@@ -967,12 +1054,19 @@ function renderFrame(t) {
   // Targets of the travelling lens view.
   let tgt = dockC.clone(), R = dockR;
   const ballPos = BAND === "18+" ? arcAt(clamp01((t - S.arc.t0) / (S.arc.t1 - S.arc.t0 - 0.35))) : S.ball.position.clone();
-  const arcTarget = toScreen(ballPos.clone().add(new THREE.Vector3(0.12, -0.08, 0)));
-  const arcR = 108;
+  let arcTarget = toScreen(ballPos.clone().add(new THREE.Vector3(0.12, -0.08, 0)));
+  let arcR = 108;
+  if (B1018) {
+    // Centre the view a little behind the ball so the gold parabola shows on both sides of it.
+    const kk = clamp01((t - S.arc.t0) / (S.arc.t1 - S.arc.t0));
+    const back = arcAt(clamp01(kk - 0.1)).add(ballPos).multiplyScalar(0.5);
+    arcTarget = toScreen(back);
+    arcR = 128;
+  }
   const shapeTarget = toScreen(S.shapeFocus), shapeR = pxRadius(S.shapeFocus, S.shapeR);
   const pieC = new THREE.Vector3(); S.pie.getWorldPosition(pieC);
-  const splitTarget = BAND === "18+" ? toScreen(S.splitFocus) : toScreen(pieC.clone().add(new THREE.Vector3(0.1, 0.18, 0)));
-  const splitR = BAND === "18+" ? pxRadius(S.splitFocus, S.splitR) : pxRadius(pieC, 0.84);
+  const splitTarget = BAND === "18+" ? toScreen(S.splitFocus) : toScreen(pieC.clone().add(B1018 ? new THREE.Vector3(0.06, 0.1, 0) : new THREE.Vector3(0.1, 0.18, 0)));
+  const splitR = BAND === "18+" ? pxRadius(S.splitFocus, S.splitR) : pxRadius(pieC, B1018 ? 0.78 : 0.84);
   const lift = ramp(t, 1.0, 1.45);
   tgt = dockC.clone().lerp(arcTarget, lift); R = lerp(dockR, arcR, lift);
   const toShape = ramp(t, 3.0, 3.45);
@@ -981,6 +1075,7 @@ function renderFrame(t) {
   tgt.lerp(splitTarget, toSplit); R = lerp(R, splitR, toSplit);
   // Door beat: the lens hops window to window and holds on each glimpse.
   const wc = S.win.map((w) => toScreen(w.center));
+  const handW = new THREE.Vector3(); S.H.handR.getWorldPosition(handW);
   const doorR = pxRadius(S.win[0].center, 0.98);
   const doorPos = wc[0].clone();
   for (let i = 0; i < 3; i++) doorPos.lerp(wc[i + 1], ramp(t, DOOR_T[i] + 0.1, DOOR_T[i + 1] - 0.1));
@@ -989,7 +1084,7 @@ function renderFrame(t) {
   const home = ramp(t, 9.0, 9.55);
   tgt.lerp(dockC, home); R = lerp(R, dockR, home);
   const on = ramp(t, 1.0, 1.25) * (1 - ramp(t, 9.4, 9.65));
-  const ms = 1.16 + 0.14 * lensKind(t, "split") + 0.24 * lensKind(t, "door");
+  const ms = 1.16 + (B1018 ? -0.08 : 0.14) * lensKind(t, "split") + 0.24 * lensKind(t, "door");
   // One lens: the travelling view grows out of the glass in Holmes's
   // hand, so the prop is hidden while the view is out (only the hand
   // and the beam link them) and comes back as the view docks.
@@ -1011,10 +1106,12 @@ function renderFrame(t) {
   ln.slices.forEach((s, i) => reveal(s, (t - 5.5 - i * 0.1) / 0.2, fade));
   reveal(ln.ring, (t - 5.45) / 0.35, fade * 0.8);
 
+  const handleK = B1018 ? ramp(t, 7.3, 7.45) * (1 - home) : 0;
   const u = comp.uniforms;
+  u.handC.value.copy(toScreen(handW)); u.handle.value = handleK;
   u.lensC.value.copy(tgt); u.lensR.value = R; u.lensOn.value = on; u.mag.value = ms;
   u.dockC.value.copy(dockC); u.dockR.value = dockR * 1.1;
-  u.beam.value = on * Math.min(1, tgt.distanceTo(dockC) / 60) * (look.kArc + look.kShape + look.kSplit > 0 ? 1 : 0.6);
+  u.beam.value = on * Math.min(1, tgt.distanceTo(dockC) / 60) * (look.kArc + look.kShape + look.kSplit > 0 ? 1 : 0.6) * (1 - handleK);
 
   renderer.setRenderTarget(rtBase);
   renderer.render(scene, camera);
