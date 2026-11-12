@@ -4,14 +4,14 @@ import { serveBuiltArtifact } from "./helpers";
 /**
  * GeoDetective hint UI E2E (follow-up Item B, owner 2026-10-09).
  *
- * GeoDetective is locked for 5-7 (bands.ts), so the hint surface serves the
- * bands that can actually reach the loop, driven by the deal-time band
- * snapshot's hint policy:
- * - 8-10 ("one-per-round"): hint button visible; one hint per mystery —
+ * The hint surface is driven by the deal-time band snapshot's hint policy
+ * (7-10 "free", 10-18 "one-per-round", 18+ "none"); these specs pin the
+ * one-per-round and none policies:
+ * - 10-18 ("one-per-round"): hint button visible; one hint per mystery —
  *   disables after use.
- * - 11-13 ("none"): NO hint button at all.
+ * - 18+ ("none"): NO hint button at all.
  * - No profile set (the default): hints ON (owner 2026-10-20) — the deal
- *   snapshot carries "one-per-round", so the bulb shows like 8-10.
+ *   snapshot carries "one-per-round", so the bulb shows like 10-18.
  *
  * The hint itself is the same mechanical quadrant nudge as the quiz loops
  * (hint-logic.ts) — coarse, never pinpoints. Hints never touch points.
@@ -29,7 +29,7 @@ test.beforeEach(async ({ context }) => {
 /** Seed an active age profile before page load. */
 async function seedProfile(
   context: import("playwright/test").BrowserContext,
-  band: "5-7" | "8-10" | "11-13",
+  band: "7-10" | "10-18" | "18+",
 ) {
   await context.addInitScript((b: string) => {
     window.localStorage.setItem(
@@ -39,7 +39,7 @@ async function seedProfile(
         band: b,
         updatedAt: new Date().toISOString(),
         changeCount: 0,
-        schemaVersion: 1,
+        schemaVersion: 2,
       }),
     );
   }, band);
@@ -55,11 +55,11 @@ async function openLoop(page: import("playwright/test").Page) {
   await expect(page.getByTestId("loop-map")).toBeVisible({ timeout: 30_000 });
 }
 
-test("8-10: hint button visible, shows a directional hint, then disables", async ({
+test("10-18: hint button visible, shows a directional hint, then disables", async ({
   page,
   context,
 }) => {
-  await seedProfile(context, "8-10");
+  await seedProfile(context, "10-18");
   await page.setViewportSize({ width: 390, height: 844 });
   await openLoop(page);
 
@@ -78,11 +78,11 @@ test("8-10: hint button visible, shows a directional hint, then disables", async
   await expect(button).toHaveAccessibleName(/Hint used/i);
 });
 
-test("8-10: hint stays used after a mid-mystery reload (#185)", async ({
+test("10-18: hint stays used after a mid-mystery reload (#185, B7)", async ({
   page,
   context,
 }) => {
-  await seedProfile(context, "8-10");
+  await seedProfile(context, "10-18");
   await page.setViewportSize({ width: 390, height: 844 });
   await openLoop(page);
 
@@ -92,11 +92,16 @@ test("8-10: hint stays used after a mid-mystery reload (#185)", async ({
   await expect(button).toBeDisabled();
   await expect(button).toHaveAccessibleName(/Hint used/i);
 
-  // Reload mid-mystery: the persisted loop-open flag restores the
-  // screen and the persisted puzzle carries hintsUsed = 1. Pre-#185 the
-  // local counter remounted at zero and the button came back enabled —
-  // a second hint for a one-per-round player.
+  // Reload mid-mystery: B7 lands on Home (no auto-open from the saved
+  // flag); tapping the resume variant reopens the mystery, and the
+  // persisted puzzle carries hintsUsed = 1. Pre-#185 the local counter
+  // remounted at zero and the button came back enabled — a second hint
+  // for a one-per-round player.
   await page.reload();
+  await expect(
+    page.getByRole("button", { name: "GeoDetective: Resume your case" }),
+  ).toBeVisible({ timeout: 30_000 });
+  await page.getByRole("button", { name: "GeoDetective: Resume your case" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 30_000,
   });
@@ -106,11 +111,11 @@ test("8-10: hint stays used after a mid-mystery reload (#185)", async ({
   await expect(afterReload).toHaveAccessibleName(/Hint used/i);
 });
 
-test("8-10: a reload BEFORE any hint keeps the button enabled (#185 negative control)", async ({
+test("10-18: a reload BEFORE any hint keeps the button enabled (#185 negative control, B7)", async ({
   page,
   context,
 }) => {
-  await seedProfile(context, "8-10");
+  await seedProfile(context, "10-18");
   await page.setViewportSize({ width: 390, height: 844 });
   await openLoop(page);
 
@@ -120,8 +125,13 @@ test("8-10: a reload BEFORE any hint keeps the button enabled (#185 negative con
 
   // Hydration must restore the persisted count — zero here — not a
   // sticky "used". Guards against an over-eager fix that disables the
-  // button after any reload.
+  // button after any reload. B7: the reload lands on Home; the button
+  // is checked after tapping back into the resumed mystery.
   await page.reload();
+  await expect(
+    page.getByRole("button", { name: "GeoDetective: Resume your case" }),
+  ).toBeVisible({ timeout: 30_000 });
+  await page.getByRole("button", { name: "GeoDetective: Resume your case" }).click();
   await expect(page.getByRole("heading", { name: "GeoDetective" })).toBeVisible({
     timeout: 30_000,
   });
@@ -130,8 +140,8 @@ test("8-10: a reload BEFORE any hint keeps the button enabled (#185 negative con
   await expect(afterReload).toBeEnabled();
 });
 
-test("11-13: no hint button at all", async ({ page, context }) => {
-  await seedProfile(context, "11-13");
+test("18+: no hint button at all", async ({ page, context }) => {
+  await seedProfile(context, "18+");
   await page.setViewportSize({ width: 390, height: 844 });
   await openLoop(page);
 
@@ -170,7 +180,7 @@ for (const [w, h] of [[360, 740], [390, 844]] as const) {
     page,
     context,
   }) => {
-    await seedProfile(context, "8-10");
+    await seedProfile(context, "10-18");
     await page.setViewportSize({ width: w, height: h });
     await openLoop(page);
 

@@ -50,7 +50,7 @@ production missions run in waves with a checkpoint after each phase.
 Chitti verifies the checkpoint **from origin** — branch tip, tree
 contents, counts — before the next phase gets its go; the crew's "done"
 report is a claim until that verification lands. Nobody merges. Branch
-docs (`BRANCH_STATUS.md`) are claims, not facts.
+docs (`docs/branch-status/<branch>.md`) are claims, not facts.
 
 ### The Scrum team — the review panel
 
@@ -83,7 +83,7 @@ The standing playbook is `~/workspace/custom-skills/local-meridian-review-pipeli
 
 1. **Browser setup** — Playwright chromium installed, fixtures seeded, external tile servers stubbed (`serveBuiltArtifact` serves the built artifact at `http://127.0.0.1:4123/Meridian/`).
 2. **12-role expert panel** — fanned out in parallel: Game Designer, Game Developer, Game Audio Designer, Game Narrative Designer, Game Economy Designer, Game Level Architect, Senior Architect, Senior Developer, Frontend Developer, UX Researcher, UX Designer, and **Office Hours** (fresh-eyes: what did everyone miss?). Verdict contract: APPROVE / APPROVE-WITH-NITS (nits listed by severity) / BLOCK (exact reason). Zero BLOCKs = ready. Any BLOCK = not ready.
-3. **DevEx review** — is it maintainable by a stranger? Are complex sections commented? Does BRANCH_STATUS.md describe the work honestly?
+3. **DevEx review** — is it maintainable by a stranger? Are complex sections commented? Does the branch's status record (`docs/branch-status/<branch>.md`) describe the work honestly?
 4. **Benchmarks** — build sizes, first load, FPS (target 60, floor 30). **Gate: ≤5% regression vs main on any metric; a regression is a BLOCK.**
 5. **Doc generation** — BRANCH_STATUS corrected if stale; new systems get Mermaid architecture diagrams; behavior changes get changelog entries.
 6. **Autoplan** — merge sequencing across open PRs (never #34), oldest first, dependency-aware, with predicted conflict files.
@@ -133,7 +133,7 @@ flowchart TD
 
 These are enforced, not suggested. Every one has a story behind it — the story is usually "someone learned this the hard way."
 
-- **BRANCH_STATUS.md on every feature branch** (Veeresh, 2026-10-02): an active work flag at the repo root — done vs pending, updated as work lands, committed and pushed with the work. The branch tells its own story.
+- ~~**BRANCH_STATUS.md on every feature branch** (Veeresh, 2026-10-02): an active work flag at the repo root — done vs pending, updated as work lands, committed and pushed with the work. The branch tells its own story.~~ Superseded 2026-11-10 (owner, stream 18): each branch keeps its record in `docs/branch-status/<branch>.md`, so parallel branches never collide on one root file. Root `BRANCH_STATUS.md` is integrator-only.
 - **Never `git add -A`.** Stage named files only. A sibling crew's blanket add once dirtied a shared worktree index; a "docs" commit landed with someone else's dataset rebuild in it. Inspect `git status` and the index before every commit.
 - **Push early, push often** (2026-09-30): the VM is not durable storage. No long-running local-only branches. PR when green.
 - **Commit early and often** (2026-09-29): every completed unit gets an atomic commit immediately. Local commits are the durability mechanism.

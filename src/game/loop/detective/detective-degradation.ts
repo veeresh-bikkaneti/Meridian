@@ -84,9 +84,14 @@ export function resolveDetectiveDegradation(
   input: DegradationInputs,
 ): DetectiveDegradation {
   const constrained = resourceConstrained(input);
+  // Owner, 2026-11-10: Watson reads every clue aloud — a low-memory
+  // or data-saver phone keeps the voice (the clips are small and
+  // pre-rendered); constraint still cuts the companion's motion
+  // (dock-only), never the speech. Tap mode is now only the kid's own
+  // read-aloud choice ("never" / "sometimes").
   const speechMode: SpeechMode = !input.soundOn
     ? "off"
-    : !input.autoSpeechAllowed || constrained
+    : !input.autoSpeechAllowed
       ? "tap"
       : "auto";
   return {

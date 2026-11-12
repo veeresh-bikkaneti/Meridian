@@ -104,92 +104,10 @@ const STATUS_READY_NO_CROSS =
 const LEGEND_DRAFT = "your draft — not locked yet";
 const LEGEND_NO_CROSS = "use ↩ Move on a sighting card to shift a ring closer";
 
-export const THEMES: Record<AgeBandId, ColdTrailTheme> = {
-  "5-7": {
-    id: "T57-A",
-    band: "5-7",
-    subject: "Pip the puppy",
-    // T57-A-S1 (heading APPROVED WITH EDIT by the gate: no case number).
-    eyebrow: "🐶 Cold Trail · Puppy Search",
-    heading: () => "Find Pip the Puppy",
-    // T57-A-S2
-    intro:
-      "Pip the puppy has wandered off. Three friends spotted Pip. Three rings on the map will show where Pip is waiting.",
-    // T57-A-S3
-    sightingEyebrow: (n, timestamp) => `🐾 Sighting ${n} · ${timestamp}`,
-    // T57-A-S4 (= SP-NEUTRAL, puppy form)
-    sightingSentence: (s) =>
-      `Pip was spotted ${fmtRadius(s.radiusKm)} ${octantWord(s.octant)} of ${s.cityName}.`,
-    // T57-A-S5 (all four parts)
-    helper: {
-      button: "🦉 Wise Owl: make this ring smaller (1⭐)",
-      ariaAffordable: "Wise Owl: make ring half as big, costs 1 star",
-      ariaUnavailable: (cost, stars) =>
-        `Wise Owl unavailable: needs ${cost} star, you have ${stars}`,
-      hint: "🦉 The Wise Owl made that ring smaller.",
-      suffix: " (owl made it smaller)",
-    },
-    map: {
-      // T57-A-S6
-      ariaLabel:
-        "Cold Trail map. Place each ring where Pip was spotted, then tap where the rings cross to show where Pip is.",
-      // T57-A-S6 status (done)
-      statusDone: "All done — the gold star shows where Pip was waiting.",
-      // T57-A-S6-statusReadyCross (gate rewrite, verbatim)
-      statusReadyCross: "All 3 rings are down — tap where they cross to show where Pip is.",
-      // T57-A-S6-statusReadyNoCross (retain verbatim)
-      statusReadyNoCross: STATUS_READY_NO_CROSS,
-      // T57-A-S6b (rendered after "gold ring =")
-      legendRing: "where Pip was spotted",
-      // T57-A-S6b-draft (rendered after "dashed ring =")
-      legendDraft: LEGEND_DRAFT,
-      // T57-A-S6b-nocross (retain verbatim)
-      legendNoCross: LEGEND_NO_CROSS,
-      // T57-A-S6b-cross (gate rewrite, verbatim)
-      legendCross: "tap where the rings cross to show your guess",
-      // T57-A-S6-hintAllCross (gate rewrite, verbatim)
-      hintAllCross: "All 3 rings are down — tap where they cross to show where Pip is.",
-      // T57-A-S6-hintAllNoCross (retain verbatim)
-      hintAllNoCross: STATUS_READY_NO_CROSS,
-    },
-    confirm: {
-      // T57-A-S7-aria (gate rewrite, verbatim)
-      ariaLabel: "Confirm your guess",
-      // T57-A-S7
-      eyebrow: "Your guess",
-      heading: "Is Pip here?",
-      body: "One guess — then we will see where Pip was waiting all along.",
-      button: "📍 Show my guess",
-    },
-    reveal: {
-      // T57-A-S8c
-      eyebrow: "All done",
-      // T57-A-S8 reveal
-      targetLine: (name) => `Pip was waiting in ${name}.`,
-      // T57-A-S8b
-      missLine: (distance) => `Your guess was ${distance} away.`,
-      // T57-A-S8 closing
-      closing: "+1⭐ for finding Pip",
-      // T57-A-S8 next
-      nextButton: "🐶 Next search",
-    },
-    // T57-A-S8 (Near line APPROVED WITH EDIT by the gate, verbatim below)
-    verdicts: [
-      { title: "You found Pip!", line: "Pip was waiting right there, tail wagging." },
-      { title: "So close!", line: "You were very close. One more ring would have found Pip." },
-      {
-        title: "Not here — keep looking.",
-        line: "Pip was a little further away. Look at the rings and try the next search.",
-      },
-      {
-        title: "Pip was far away.",
-        line: "That was a different part of the map. Look at the rings and try the next search.",
-      },
-    ],
-  },
-  "8-10": {
+const BASE_THEMES: Record<"7-10" | "10-18", ColdTrailTheme> = {
+  "7-10": {
     id: "T810-A",
-    band: "8-10",
+    band: "7-10",
     subject: "The treasure map",
     // T810-A-S1
     eyebrow: "🗺️ Cold Trail · Map Mystery",
@@ -269,9 +187,9 @@ export const THEMES: Record<AgeBandId, ColdTrailTheme> = {
       },
     ],
   },
-  "11-13": {
+  "10-18": {
     id: "T1113-A",
-    band: "11-13",
+    band: "10-18",
     subject: "the trail",
     // T1113-A-S1
     eyebrow: "🕵️ Cold Trail · Case file",
@@ -354,6 +272,16 @@ export const THEMES: Record<AgeBandId, ColdTrailTheme> = {
       },
     ],
   },
+};
+
+/**
+ * 7-10 uses the former 8-10 theme; 10-18 the former 11-13 theme. 18+ copies
+ * the 10-18 theme (same id and copy) with its own band. There is no theme for
+ * under-7s.
+ */
+export const THEMES: Record<AgeBandId, ColdTrailTheme> = {
+  ...BASE_THEMES,
+  "18+": { ...BASE_THEMES["10-18"], band: "18+" },
 };
 
 export function themeForBand(band: AgeBandId): ColdTrailTheme {

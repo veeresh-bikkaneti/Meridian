@@ -10,16 +10,19 @@ it never relaxes a Constitution rule.
 
 ## 1. Seats
 
-A "seat" is a subagent spawned with the `Agent` tool. One agent may hold several
+A "seat" is one agent session, in any tool. One agent may hold several
 seats on a small Tier 2 task, but Councilor C is always a separate agent: its
 value is in not having written the thing it reviews.
 
-| Seat | Model | Duty |
+Model rule (from `AGENTS.md`, vendor-neutral): The orchestrator uses the strongest model the builder can afford; worker roles use the cheapest capable model, orchestrated as helper agents; design calls go to a council of experts that reviews summaries and diffs, not bulk output.
+This protocol names roles, never a vendor or model.
+
+| Seat | Model tier | Duty |
 | :--- | :--- | :--- |
-| **Chair / Arbiter** | `opus` | Lead architect and security officer. Owns system boundaries, non-functional requirements (privacy, latency, bundle size), deadlock resolution, and the veto. |
-| **Councilor A** | `sonnet` or `haiku` | ATDD / customer advocate. Writes acceptance criteria as declarative `Given-When-Then`. Owns user journeys and edge cases. For Meridian, the user is a child: a criterion a child could not observe is not a criterion. |
-| **Councilor B** | `sonnet` or `haiku` | TDD / unit and contract lead. Turns A's criteria into failing test contracts, mock boundaries, and interfaces. Test logic only, never production skeletons. |
-| **Councilor C** | `sonnet` or `haiku` | Adversarial skeptic. Attacks assumptions, hunts boundary blind spots, flags scope creep, blocks premature refactoring. Must end with `CHALLENGE: <reasons>` or `NO OBJECTION`. |
+| **Chair / Arbiter** | Strongest model the builder can afford | Lead architect and security officer. Owns system boundaries, non-functional requirements (privacy, latency, bundle size), deadlock resolution, and the veto. |
+| **Councilor A** | Cheapest capable model | ATDD / customer advocate. Writes acceptance criteria as declarative `Given-When-Then`. Owns user journeys and edge cases. For Meridian, the user is a child: a criterion a child could not observe is not a criterion. |
+| **Councilor B** | Cheapest capable model | TDD / unit and contract lead. Turns A's criteria into failing test contracts, mock boundaries, and interfaces. Test logic only, never production skeletons. |
+| **Councilor C** | Cheapest capable model | Adversarial skeptic. Attacks assumptions, hunts boundary blind spots, flags scope creep, blocks premature refactoring. Must end with `CHALLENGE: <reasons>` or `NO OBJECTION`. |
 
 ---
 
@@ -42,10 +45,10 @@ value is in not having written the thing it reviews.
 
 ## 3. Epistemic rigor and token economy
 
-1. **Resolve context narrowly.** Use `Grep`, `Glob`, and the `Explore` agent to
-   find what you need. Never load a directory tree to answer a question a
-   search would answer. If a graph or index plugin is available in the session,
-   prefer it; none is installed in this repo today, so do not wait for one.
+1. **Resolve context narrowly.** Use text search, file-pattern search, and a
+   read-only exploration helper agent to find what you need. Never load a directory tree to answer a question a
+   search would answer. Check `docs/knowledge/graph.json` first (`AGENTS.md`
+   §7); it maps branches, specs, governing docs and owner decisions.
 2. **Verify external facts, read internal ones.**
    - External library or API behaviour, version syntax, platform limits →
      verify by web search against current official documentation. Do not answer
@@ -67,8 +70,8 @@ value is in not having written the thing it reviews.
 5. **A council is not free.** Every seat re-pays the task setup, so four seats
    pay it four times. Below Tier 2 a council costs more total tokens than doing
    the work directly, whatever model the seats run. Cheap councilors make that
-   waste cheaper; only the tier gate prevents it. The Chair stays on `opus`
-   because it reads summaries rather than bulk files and makes the binding
+   waste cheaper; only the tier gate prevents it. The Chair stays on the
+   strongest model the builder can afford because it reads summaries rather than bulk files and makes the binding
    architecture and security calls, where a cheap mistake is dearest.
 
 ---
@@ -170,5 +173,6 @@ with npm, never hand-edit), `.scratch/`, and any other branch's worktree.
 3. **Verify.** Run the full gate list in `AGENTS.md`: `npx tsc --noEmit`,
    `npm test`, `node scripts/lint-cards.mjs`, `npm run build:pages`, and the
    Playwright specs that cover the changed surface. Zero regressions.
-4. **Deliver.** Present the change as a unified git diff. Update
-   `BRANCH_STATUS.md`, and record in it any manifest item that went unmet.
+4. **Deliver.** Present the change as a unified git diff. Update the
+   branch's own status record, `docs/branch-status/<branch>.md` (never the
+   root `BRANCH_STATUS.md`), and record in it any manifest item that went unmet.

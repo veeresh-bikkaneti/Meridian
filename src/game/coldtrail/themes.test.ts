@@ -178,11 +178,11 @@ test("registry shape: exactly one theme per age band", () => {
   for (const band of AGE_BAND_IDS) {
     assert.equal(themeForBand(band).band, band);
   }
-  assert.equal(themeForBand("5-7").id, "T57-A");
-  assert.equal(themeForBand("8-10").id, "T810-A");
-  assert.equal(themeForBand("11-13").id, "T1113-A");
+  assert.equal(themeForBand("7-10").id, "T810-A");
+  assert.equal(themeForBand("10-18").id, "T1113-A");
+  assert.equal(themeForBand("18+").id, "T1113-A");
   // Unset profile -> existing FULL_ACCESS_BAND default serves T1113-A.
-  assert.equal(FULL_ACCESS_BAND, "11-13");
+  assert.equal(FULL_ACCESS_BAND, "10-18");
   assert.equal(themeForBand(FULL_ACCESS_BAND).id, "T1113-A");
 });
 
@@ -197,9 +197,9 @@ test("no collected string in any band matches the banned lexicon", () => {
 
 test("younger bands never get the adult theme", () => {
   // The charter sentence, as its own named test (ADR-13 assertion 4).
-  for (const band of ["5-7", "8-10"] as const) {
+  for (const band of ["7-10"] as const) {
     const theme = themeForBand(band);
-    assert.equal(theme.id, band === "5-7" ? "T57-A" : "T810-A");
+    assert.equal(theme.id, "T810-A");
     for (const value of collectStrings(theme)) {
       assert.equal(bannedHit(value), null, `band ${band}: "${value}"`);
     }
@@ -221,7 +221,7 @@ test("none of the 12 sighting verbs appears in any collected string", () => {
 
 test("sighting sentences: all 8 octant mappings pinned, generator format", () => {
   assert.equal(fmtRadius(1275), "1,275 km");
-  const theme = themeForBand("11-13");
+  const theme = themeForBand("10-18");
   for (const [octant, word] of OCTANTS) {
     assert.equal(
       theme.sightingSentence(sighting(octant)),
@@ -232,12 +232,11 @@ test("sighting sentences: all 8 octant mappings pinned, generator format", () =>
 
 test("format pins: sentence per theme at 1275 km north-east of Denver", () => {
   const s = sighting("north-east");
-  assert.equal(themeForBand("5-7").sightingSentence(s), "Pip was spotted 1,275 km northeast of Denver.");
   assert.equal(
-    themeForBand("8-10").sightingSentence(s),
+    themeForBand("7-10").sightingSentence(s),
     "The treasure map was spotted 1,275 km northeast of Denver.",
   );
-  assert.equal(themeForBand("11-13").sightingSentence(s), "Last spotted 1,275 km northeast of Denver.");
+  assert.equal(themeForBand("10-18").sightingSentence(s), "Last spotted 1,275 km northeast of Denver.");
 });
 
 test("verdict caught equivalence is true,true,false,false per theme", () => {
@@ -260,57 +259,7 @@ test("verdict caught equivalence is true,true,false,false per theme", () => {
 // and (1, 3), target "Testville", miss "42 km", verdict scores
 // 50/200/500/5000, and all 8 octants at 1,275 km from Denver.
 const EXPECTED_STRINGS: Record<string, string[]> = {
-  "5-7": [
-    "T57-A",
-    "Pip the puppy",
-    "🐶 Cold Trail · Puppy Search",
-    "Find Pip the Puppy",
-    "Pip the puppy has wandered off. Three friends spotted Pip. Three rings on the map will show where Pip is waiting.",
-    "🐾 Sighting 1 · Tue 08:14",
-    "🦉 Wise Owl: make this ring smaller (1⭐)",
-    "Wise Owl: make ring half as big, costs 1 star",
-    "Wise Owl unavailable: needs 1 star, you have 0",
-    "Wise Owl unavailable: needs 1 star, you have 3",
-    "🦉 The Wise Owl made that ring smaller.",
-    " (owl made it smaller)",
-    "Cold Trail map. Place each ring where Pip was spotted, then tap where the rings cross to show where Pip is.",
-    "All done — the gold star shows where Pip was waiting.",
-    "All 3 rings are down — tap where they cross to show where Pip is.",
-    "All 3 rings are down, but they don't cross — use ↩ Move on a ring to shift it closer.",
-    "gold ring = where Pip was spotted",
-    "dashed ring = your draft — not locked yet",
-    "use ↩ Move on a sighting card to shift a ring closer",
-    "tap where the rings cross to show your guess",
-    "All 3 rings are down — tap where they cross to show where Pip is.",
-    "All 3 rings are down, but they don't cross — use ↩ Move on a ring to shift it closer.",
-    "Confirm your guess",
-    "Your guess",
-    "Is Pip here?",
-    "One guess — then we will see where Pip was waiting all along.",
-    "📍 Show my guess",
-    "All done",
-    "Pip was waiting in Testville.",
-    "Your guess was 42 km away.",
-    "+1⭐ for finding Pip",
-    "🐶 Next search",
-    "You found Pip!",
-    "Pip was waiting right there, tail wagging.",
-    "So close!",
-    "You were very close. One more ring would have found Pip.",
-    "Not here — keep looking.",
-    "Pip was a little further away. Look at the rings and try the next search.",
-    "Pip was far away.",
-    "That was a different part of the map. Look at the rings and try the next search.",
-    "Pip was spotted 1,275 km north of Denver.",
-    "Pip was spotted 1,275 km northeast of Denver.",
-    "Pip was spotted 1,275 km east of Denver.",
-    "Pip was spotted 1,275 km southeast of Denver.",
-    "Pip was spotted 1,275 km south of Denver.",
-    "Pip was spotted 1,275 km southwest of Denver.",
-    "Pip was spotted 1,275 km west of Denver.",
-    "Pip was spotted 1,275 km northwest of Denver.",
-  ],
-  "8-10": [
+  "7-10": [
     "T810-A",
     "The treasure map",
     "🗺️ Cold Trail · Map Mystery",
@@ -360,7 +309,7 @@ const EXPECTED_STRINGS: Record<string, string[]> = {
     "The treasure map was spotted 1,275 km west of Denver.",
     "The treasure map was spotted 1,275 km northwest of Denver.",
   ],
-  "11-13": [
+  "10-18": [
     "T1113-A",
     "the trail",
     "🕵️ Cold Trail · Case file",
@@ -411,6 +360,8 @@ const EXPECTED_STRINGS: Record<string, string[]> = {
     "Last spotted 1,275 km northwest of Denver.",
   ],
 };
+// 18+ copies the 10-18 theme (same id and copy, band field differs).
+EXPECTED_STRINGS["18+"] = EXPECTED_STRINGS["10-18"]!;
 
 test("every rendered theme string matches the gate-approved text exactly", () => {
   for (const band of AGE_BAND_IDS) {

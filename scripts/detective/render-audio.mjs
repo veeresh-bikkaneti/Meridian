@@ -31,6 +31,7 @@ import { promisify } from "node:util";
 import {
   AUDIO_REL,
   CAPITALS_INDEXES,
+  CORE_INDEXES,
   NAMES_MIN_POPULATION,
   entryFromSpec,
   entryKey,
@@ -408,6 +409,19 @@ async function main() {
     }
   }
   await Promise.all(Array.from({ length: Math.min(opts.concurrency, jobs.length) }, worker));
+  writeManifest(ROOT, manifest);
+
+  // U11 (closes FG-3): coverage.core mirrors reality after every run —
+  // a core-deck case (0–386) is claimed exactly when all five of its
+  // clue reads are in the manifest. check-audio-manifest.mjs then
+  // holds every claimed case accountable (stale/missing fails) and
+  // fails any core case that is neither claimed nor on the explicit
+  // hold list (coverage.coreHolds), so an empty clue entry can never
+  // ship silently again.
+  manifest.coverage.core = CORE_INDEXES.filter((i) => {
+    const clues = manifest.cases?.[i]?.clues;
+    return Array.isArray(clues) && clues.filter(Boolean).length === 5;
+  });
   writeManifest(ROOT, manifest);
 
   // Strict gates (batch-level; no flagged acceptance). Baseline = the

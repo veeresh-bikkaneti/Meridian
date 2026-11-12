@@ -39,20 +39,20 @@ test("matrix: reducedMotion alone → walk cut, audio unaffected", () => {
   });
 });
 
-test("matrix: saveData alone → dock-only + speech tap", () => {
+test("matrix: saveData alone → dock-only, speech stays auto (owner 2026-11-10)", () => {
   assert.deepEqual(resolve({ saveData: true }), {
     companionMode: "dock-only",
     walkMode: "animated",
-    speechMode: "tap",
+    speechMode: "auto",
   });
 });
 
-test("matrix: deviceMemory ≤ 4 alone → dock-only + speech tap", () => {
+test("matrix: deviceMemory ≤ 4 alone → dock-only, speech stays auto (owner 2026-11-10)", () => {
   for (const deviceMemory of [4, 2, 1]) {
     assert.deepEqual(resolve({ deviceMemory }), {
       companionMode: "dock-only",
       walkMode: "animated",
-      speechMode: "tap",
+      speechMode: "auto",
     });
   }
   // Above the threshold, and the unknown (null) read, stay full.
@@ -61,11 +61,11 @@ test("matrix: deviceMemory ≤ 4 alone → dock-only + speech tap", () => {
   assert.equal(resolve({ deviceMemory: null }).speechMode, "auto");
 });
 
-test("matrix: batterySaver alone → dock-only + speech tap; null is no signal", () => {
+test("matrix: batterySaver alone → dock-only, speech stays auto (owner 2026-11-10); null is no signal", () => {
   assert.deepEqual(resolve({ batterySaver: true }), {
     companionMode: "dock-only",
     walkMode: "animated",
-    speechMode: "tap",
+    speechMode: "auto",
   });
   assert.deepEqual(resolve({ batterySaver: null }), {
     companionMode: "full",

@@ -24,7 +24,7 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  *
  * Test 2 — a latched constant-media slot revives on band switch:
  *   (b) the film request fails ALWAYS → the slot latches to the
- *       still → switch band 11–13 → 8–10 with the route now
+ *       still → switch group 10-18 -> 7-10 with the route now
  *       allowing → the SAME slot revives and plays. On the round-1 tip the latch reset was keyed
  *       only on media change, so the slot stays latched and this
  *       test fails at the revival (panel B2); on unmodified main
@@ -60,11 +60,11 @@ import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
  *   before the remount; without the delay that delivery can
  *   land on the new element and mask the bug on the voted tip.
  *
- * Test 4 — the same shape on LockedTileFilm (the Frontend
- *   seat's behavioural-coverage gap): the locked film fails
- *   once while the tile is parked below the fold; the delivery
- *   must reach the remounted element. LockedTileFilm's cure
- *   adds `attempt` to the pause effect's deps.
+ * (Former test 4, the LockedTileFilm variant of test 3, was removed:
+ *   it needed the locked GeoDetective tile, which only the old 5-7
+ *   band produced. No current group (7-10, 10-18, 18+) locks
+ *   GeoDetective, so that tile cannot be reached through the UI.
+ *   LockedTileFilm itself is unchanged.)
  */
 
 test.setTimeout(300_000);
@@ -105,12 +105,12 @@ async function openSettings(page: Page): Promise<void> {
   await solveGate(page);
 }
 
-/** Establish an ACTIVE 11–13 profile through the real UI (first save). */
-async function firstSetGeoDetective(page: Page): Promise<void> {
+/** Establish an ACTIVE 10-18 profile through the real UI (first save). */
+async function firstSetTenToEighteen(page: Page): Promise<void> {
   await openSettings(page);
   const picker = page.getByTestId("age-picker");
   const cards = picker.locator(".agep-card");
-  await cards.nth(2).click();
+  await cards.nth(1).click();
   await page.getByTestId("agep-save").click();
   await expect(page.getByTestId("agep-toast")).toHaveText("Saved — enjoy the trail. 🌿");
   await expect(picker).not.toBeVisible();
@@ -150,17 +150,6 @@ async function expectPlaying(video: Locator): Promise<void> {
   await expect
     .poll(() => video.evaluate((v) => v.currentTime), { timeout: 20_000 })
     .toBeGreaterThan(t1);
-}
-
-/** Establish an ACTIVE Little Explorer (5–7) profile through the real UI (first save). */
-async function firstSetLittleExplorer(page: Page): Promise<void> {
-  await openSettings(page);
-  const picker = page.getByTestId("age-picker");
-  const cards = picker.locator(".agep-card");
-  await cards.nth(0).click();
-  await page.getByTestId("agep-save").click();
-  await expect(page.getByTestId("agep-toast")).toHaveText("Saved — enjoy the trail. 🌿");
-  await expect(picker).not.toBeVisible();
 }
 
 /**
@@ -284,9 +273,9 @@ test("film error path: a latched constant-media slot revives on band switch", as
   await page.goto(APP_NO_IDLE);
   await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
 
-  // Establish an active 11–13 profile through the real UI while
+  // Establish an active 10-18 profile through the real UI while
   // the film keeps failing.
-  await firstSetGeoDetective(page);
+  await firstSetTenToEighteen(page);
 
   // The slot latches to the still: the film was attempted (at
   // least one intercepted request), then the slot settles on the
@@ -304,12 +293,12 @@ test("film error path: a latched constant-media slot revives on band switch", as
     .poll(() => slot.locator("img").getAttribute("src"), { timeout: 20_000 })
     .toContain("geodetective-still");
 
-  // Allow the film again and switch band 11–13 → 8–10. The media
+  // Allow the film again and switch group 10-18 -> 7-10. The media
   // does NOT change (GeoDetective is constant across bands) — the
   // band change itself must revive the slot.
   geoBlocked = false;
   await openSettings(page);
-  await switchBand(page, 1, "Saved — Trail Scout (ages 8–10) ✅");
+  await switchBand(page, 0, "Saved — Ages 7-10 ✅");
 
   const video = await mountFilm(page, "card-film-geodetective");
   expect(await video.getAttribute("src")).toContain("geodetective-film");
@@ -362,51 +351,5 @@ test("film error path: a retry remount before the slot first intersects stays pa
   await expectPauseCallOn(video);
 
   // And the user-facing invariant: the film is paused, clock frozen.
-  await expectPausedOffScreen(video);
-});
-
-test("film error path: a retry remount before the tile first intersects stays paused off-screen (LockedTileFilm)", async ({
-  page,
-  context,
-}) => {
-  await recordMediaCalls(page);
-  await page.goto(APP_NO_IDLE);
-  await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
-
-  // Establish the 5–7 band through the real UI: the locked tile
-  // replaces the GeoDetective card. (The settings flow leaves
-  // the page scrolled to the footer, far from the tile, so the
-  // locked film has not mounted yet.)
-  await firstSetLittleExplorer(page);
-  const slot = page.getByTestId("locked-tile-film");
-  await expect(slot.locator("video")).toHaveCount(0);
-
-  // A short viewport guarantees the tile can be parked below
-  // the fold (it sits high on the page).
-  const size = page.viewportSize() ?? { width: 1280, height: 720 };
-  await page.setViewportSize({ width: size.width, height: 360 });
-  await expect(slot.locator("video")).toHaveCount(0);
-
-  // Fail the locked film's FIRST request; allow the retry. The
-  // first failure is delayed 2.5 s for the same ordering reason
-  // as the CardFilm variant above: the pause observer's initial
-  // delivery must land on the first element before the remount.
-  let lockedRequests = 0;
-  await context.route("**/*geodetective-locked-film*.mp4", async (route) => {
-    lockedRequests += 1;
-    if (lockedRequests === 1) {
-      await new Promise((r) => setTimeout(r, 2500));
-      await route.abort("failed");
-    } else await route.fallback();
-  });
-
-  await parkBelowFold(page, "locked-tile-film");
-  const video = slot.locator("video");
-  await expect(video).toHaveCount(1, { timeout: 20_000 });
-  await expect.poll(() => lockedRequests, { timeout: 20_000 }).toBe(2);
-
-  // Same witness as the CardFilm variant: the re-observation
-  // delivery must reach the remounted element with a pause().
-  await expectPauseCallOn(video);
   await expectPausedOffScreen(video);
 });

@@ -54,6 +54,29 @@ body:has(.home-v5) {
 }
 
 /* ---------- nav ---------- */
+/* Skip link (WCAG 2.4.1): visually hidden until focused, then a visible
+   pill at the top of the page. */
+.home-v5 .hv5-skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--hv5-brown-deep);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.home-v5 .hv5-skip-link:focus-visible {
+  top: 12px;
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
 .home-v5 .hv5-nav {
   position: relative;
   z-index: 5;
@@ -459,10 +482,229 @@ body:has(.home-v5) {
   object-fit: cover;
   border-radius: 16px;
 }
+/* Journal movie player: the still picture is the button — tapping it
+   swaps the picture for that entry's movie in the same 3/2 box.
+   Controls stay at the 44px accessibility floor; the badge is white on
+   dark translucent, clearing 4.5:1. Reduced motion never changes the
+   layout, only the loop (see journal-player.tsx). */
+.home-v5 .hv5-journal-art {
+  position: relative;
+}
+.home-v5 .hv5-journal-play {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+.home-v5 .hv5-journal-play:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
+.home-v5 .hv5-journal-play-badge {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 16px;
+  border-radius: 999px;
+  background: rgba(20, 16, 12, 0.72);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+}
+.home-v5 .hv5-journal-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #000;
+}
+.home-v5 .hv5-journal-video:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
+/* Tap-to-pause flash: a big pause glyph centred on the video for ~600ms
+   after a tap pauses playback. Decorative only; never intercepts taps. */
+.home-v5 .hv5-journal-pause-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+.home-v5 .hv5-journal-status {
+  margin: 12px 0 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+/* Loading spinner: decorative ring beside the "Loading the movie…"
+   text. Reduced motion never renders it (journal-player.tsx gates the
+   element); the media query below is belt-and-braces so a forced
+   render still cannot animate. */
+.home-v5 .hv5-journal-spinner {
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin-top: 12px;
+  border-radius: 50%;
+  border: 3px solid currentColor;
+  border-top-color: transparent;
+  opacity: 0.7;
+  animation: hv5-journal-spin 0.8s linear infinite;
+}
+@keyframes hv5-journal-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-v5 .hv5-journal-spinner {
+    animation: none;
+  }
+}
+.home-v5 .hv5-journal-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+/* Progress on its own full-width row above the buttons, at every width:
+   the old shared row squeezed it to 27px on a 390px phone. The time
+   rides with the bar, not with the buttons. */
+.home-v5 .hv5-journal-progress-row {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 20px;
+}
+.home-v5 .hv5-journal-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.home-v5 .hv5-journal-toggle,
+.home-v5 .hv5-journal-mute,
+.home-v5 .hv5-journal-close,
+.home-v5 .hv5-journal-cc,
+.home-v5 .hv5-journal-transcript-btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--hv5-brown-deep);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.home-v5 .hv5-journal-toggle:focus-visible,
+.home-v5 .hv5-journal-mute:focus-visible,
+.home-v5 .hv5-journal-close:focus-visible,
+.home-v5 .hv5-journal-cc:focus-visible,
+.home-v5 .hv5-journal-transcript-btn:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 3px;
+}
+/* Toggled-on CC / Story text read as active: deep green, white text —
+   same 4.5:1-clear pairing as the brown buttons. */
+.home-v5 .hv5-journal-cc[aria-pressed="true"],
+.home-v5 .hv5-journal-transcript-btn[aria-pressed="true"] {
+  background: var(--hv5-forest-deep);
+}
+/* Transcript panel: the narration as tappable lines under the player.
+   Lines are buttons (keyboard-accessible); the line being spoken is
+   highlighted, and during the voice-free gap no line is. */
+.home-v5 .hv5-journal-transcript {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 10px;
+}
+.home-v5 .hv5-journal-transcript-line {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--hv5-ink);
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.45;
+  text-align: left;
+  cursor: pointer;
+}
+.home-v5 .hv5-journal-transcript-line:focus-visible {
+  outline: 3px solid var(--hv5-brown-deep);
+  outline-offset: 2px;
+}
+.home-v5 .hv5-journal-transcript-line-active {
+  background: #f1ead3;
+  font-weight: 700;
+}
+.home-v5 .hv5-journal-progress {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--hv5-line);
+  overflow: hidden;
+}
+.home-v5 .hv5-journal-progress span {
+  display: block;
+  height: 100%;
+  background: var(--hv5-brown-deep);
+}
+.home-v5 .hv5-journal-time {
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
 .home-v5 .hv5-entry h3 {
   font-family: var(--hv5-display);
   font-size: 22px;
   font-weight: 560;
+}
+/* Desktop two-column journal entry (approved mockup, 2026-11-09):
+   storybook art LEFT, title / story / cited fact in a RIGHT RAIL, so
+   art + play badge + status + controls fit one 1280x800 viewport. The
+   player (open state included) stays in the art column; the rail holds
+   the entry text. Mobile (<=680px) keeps the stacked layout exactly
+   as before — this rule only exists at >=681px. */
+@media (min-width: 681px) {
+  .home-v5 .hv5-entry {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 24px;
+    align-items: start;
+  }
+  .home-v5 .hv5-entry-art {
+    grid-column: 1;
+    margin: 0;
+  }
+  .home-v5 .hv5-entry-text {
+    grid-column: 2;
+    min-width: 0;
+  }
 }
 .home-v5 .hv5-entry a {
   color: var(--hv5-brown-deep);
@@ -859,12 +1101,12 @@ body:has(.home-v5) {
     order: 3;
     flex-basis: 100%;
     gap: 10px;
-    overflow-x: auto;
+    /* Narrow widths: wrap onto two rows instead of scrolling — the
+       last item (GET INVOLVED) sat 83px past the 390px viewport edge
+       in the old scrollable row. Every item stays reachable with no
+       strip scroll; desktop is untouched (this block is <=680px only). */
+    flex-wrap: wrap;
     margin: 2px 0 0;
-    /* Right-edge fade: the visible scroll affordance for the clipped
-       final item (GET INVOLVED) in this scrollable row. */
-    -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
-    mask-image: linear-gradient(90deg, #000 88%, transparent 100%);
   }
   .home-v5 .hv5-nav nav button,
   .home-v5 .hv5-nav nav a {

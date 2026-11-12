@@ -411,12 +411,13 @@ for (const w of WIDTHS) {
       await berthAt(page, berthPoint, dockPos!);
       trail.absorb(await berthWindow, `berth @ ${w.name}`);
 
-      /* -- MUTE TAP at three widths: full-width Holmes alias ----- */
-      const mute = page.getByTestId("detective-holmes-mute");
+      /* -- MUTE at three widths: the screen's top-left toggle ---- *
+       * Owner, 2026-11-10: a tap on Holmes repeats the line and the
+       * one mute is the top-left SoundToggle (the Holmes alias keeps
+       * its geometry but no longer mutes). */
+      const mute = page.getByTestId("sound-toggle-loop");
       await expect(mute).toBeVisible();
-      const muteBox = await mute.boundingBox();
-      expect(muteBox!.width).toBeGreaterThanOrEqual(68); // full 70px alias, not the old 44px strip
-      await mute.click({ position: { x: 60, y: 52 } }); // the restored rightmost strip owns its tap
+      await mute.click();
       await expect(page.getByTestId("detective-muted-badge")).toBeVisible({
         timeout: 10_000,
       });
@@ -426,7 +427,7 @@ for (const w of WIDTHS) {
         localStorage.getItem("meridian.sound"),
       );
       expect(soundKey).toBe("off");
-      await mute.click({ position: { x: 35, y: 52 } });
+      await mute.click();
       await expect(page.getByTestId("detective-muted-badge")).toHaveCount(0, {
         timeout: 10_000,
       });
@@ -532,16 +533,9 @@ test("staging samples: Holmes-alone berth separation + FORCED anchor-null fallba
     });
     expect(fallback.stationLeft).toBe(12);
     expect(fallback.watson).not.toBeNull();
-    expect(fallback.chip).not.toBeNull();
-    {
-      const ox =
-        Math.min(fallback.watson!.right, fallback.chip!.right) -
-        Math.max(fallback.watson!.left, fallback.chip!.left);
-      const oy =
-        Math.min(fallback.watson!.bottom, fallback.chip!.bottom) -
-        Math.max(fallback.watson!.top, fallback.chip!.top);
-      expect(ox > 0 && oy > 0 ? ox * oy : 0).toBe(0);
-    }
+    // The pair's own sound chip is retired (owner, 2026-11-10: no
+    // speaker by the pair), so there is nothing beside Watson to clear.
+    expect(fallback.chip).toBeNull();
 
     await showMap(page);
     const mapBox = await page.getByTestId("loop-map").boundingBox();
@@ -558,14 +552,15 @@ test("staging samples: Holmes-alone berth separation + FORCED anchor-null fallba
       "companion must be full (not auto-killed) for the berth sample",
     ).toBe("full");
 
-    /* Holmes-alone sample: at a berth Holmes stands ALONE (Watson
-     * stays at the dock) — the reachable Holmes-alone geometry. (The
+    /* Holmes-alone sample: at a berth Holmes stands ALONE on the
+     * map (Watson stays at his clue-card station — station cure,
+     * 2026-11-08) — the reachable Holmes-alone geometry. (The
      * station chip-offset "Holmes alone" case in PR C's arithmetic
      * is unreachable from the machine's view table: every station
      * phase pairs Holmes with Watson or shows neither — verified in
      * detective-state.ts viewForState. The berth is the honest
      * sample.) Assert his full-width alias, Watson's replay box and
-     * the map chip are pairwise disjoint. */
+     * the pair chip are pairwise disjoint. */
     const berthPoint = {
       x: mapBox!.x + mapBox!.width * 0.72,
       y: mapBox!.y + mapBox!.height * 0.3,
@@ -598,8 +593,8 @@ test("staging samples: Holmes-alone berth separation + FORCED anchor-null fallba
     expect(boxes.mute).not.toBeNull();
     expect(boxes.mute!.right - boxes.mute!.left).toBeGreaterThanOrEqual(68);
     expect(overlap(boxes.mute, boxes.replay)).toBe(0);
-    expect(overlap(boxes.mute, boxes.chip)).toBe(0);
-    expect(overlap(boxes.replay, boxes.chip)).toBe(0);
+    // The pair's sound chip is retired (owner, 2026-11-10).
+    expect(boxes.chip).toBeNull();
 
     // No closing audit window here by design: the anchor-null
     // step above REMOVED the clue articles, so there is no clue
@@ -723,11 +718,15 @@ for (const w of WIDTHS) {
       const bench = page.getByTestId("detective-bench");
       await expect(bench).toHaveAttribute("data-staging-stage", "bench");
       await page.getByTestId("sound-toggle-loop").click();
+      /* Since 2026-11-10 the speech queue no longer strands after a
+       * stopAll (a pin's read used to sit silent), so a mute during
+       * the bench lets the instruction duet finish silently and the
+       * pair rise: muting must never hold the case on the bench. The
+       * badge latches on whichever surface carries the pair. */
       await expect(
-        bench.getByTestId("detective-muted-badge"),
-        "muted badge latched on the bench slot after toggling mute during bench",
+        page.getByTestId("detective-muted-badge").first(),
+        "muted badge latched on the pair after toggling mute during bench",
       ).toBeVisible({ timeout: 10_000 });
-      await expect(bench).toHaveAttribute("data-staging-stage", "bench");
       await expect(
         page.getByTestId("detective-sound-chip"),
         "no sound chip anywhere during bench (exactly-one-chip invariant)",

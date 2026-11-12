@@ -14,11 +14,14 @@
  *
  * game-app.tsx is a large component with no unit-render harness in this
  * repo, so — like the boot-wiring pin in src/map/capability.test.ts —
- * the wiring is pinned by reading the source. The runtime restore path
- * itself (a saved meridian.loop.open flag reopening GeoDetective across
- * this boundary after a reload) is walked end-to-end by the Playwright
- * spec "reload mid-game resumes the open mystery without re-dealing"
- * in tests/e2e/geodetective.spec.ts.
+ * the wiring is pinned by reading the source. The runtime resume path
+ * itself (tapping the GeoDetective card reopens the saved mystery
+ * without re-dealing) is walked end-to-end by the Playwright specs
+ * "reload mid-game lands on Home; tapping in resumes the open mystery
+ * without re-dealing" in tests/e2e/geodetective.spec.ts and the boot
+ * spec tests/e2e/geodetective-boot-home.desktop.spec.ts. B7 (owner
+ * ruling, 2026-11-09): boot NEVER auto-opens from the saved
+ * meridian.loop.open flag — the flag restores nothing on boot.
  */
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
@@ -82,10 +85,22 @@ describe("F2 lazy boundary — Loop/Trail are not eagerly imported", () => {
 });
 
 describe("F2 lazy boundary — restore path crosses Suspense + error boundary", () => {
-  it("the saved loopOpen flag still restores GeoDetective on boot", () => {
+  it("boot never auto-opens GeoDetective from the saved loopOpen flag (B7)", () => {
     assert.ok(
-      gameAppSource.includes("useState<boolean>(() => readLoopOpen())"),
-      "loopOpen must keep initializing from the persisted flag",
+      gameAppSource.includes(
+        "const [loopOpen, setLoopOpen] = useState<boolean>(false);",
+      ),
+      "loopOpen must initialize closed on boot, never from the persisted flag",
+    );
+    assert.ok(
+      !gameAppSource.includes("useState<boolean>(() => readLoopOpen())"),
+      "boot must not read the persisted open flag for its landing",
+    );
+    // The flag itself still exists: tap-in writes it, leave clears it —
+    // only the boot restore is gone.
+    assert.ok(
+      gameAppSource.includes("writeLoopOpen(true);"),
+      "tap-in must still record the open flag",
     );
   });
 
@@ -129,10 +144,14 @@ describe("F2 lazy boundary — restore path crosses Suspense + error boundary", 
         gameAppSource.includes("return <BootSplash />;"),
       "the boot !ready gate keeps the BootSplash",
     );
+    // Phase 0 slice 1: `export type Drop` moved verbatim to
+    // src/game/shell-helpers.ts, so the segment now ends at the next
+    // declaration after the fallback (ModelAvailability). What the
+    // segment pins — the fallback's role="status" + spinner — is unchanged.
     const fallback = segment(
       gameAppSource,
       "function SessionLoadingFallback",
-      "export type Drop = {",
+      'type ModelAvailability = "available"',
     );
     assert.ok(fallback.includes('role="status"'), "the session fallback must announce");
     assert.ok(

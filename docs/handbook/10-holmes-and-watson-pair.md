@@ -96,11 +96,21 @@ the re-run panel and the flip owner can check them off one by one.
   narration (`LoopScreen.tsx`) can overlap the pair's speech.
   **Trigger/cure:** wire the dispatch + an E2E proving the pair goes
   absent / silent during external speech, before the flip.
-- **FG-3 · Core-387 silence.** Phase A audio covers the Capitals
-  pack only. If the flag flips before U11, core-deck cases play the
-  full visual ritual over silent clue reads. **Trigger:** U11
-  complete OR coverage-gated speech (no ritual without its reads)
-  is required before the flip.
+- **FG-3 · Core-387 silence — CLOSED by U11 (2026-11-08).** Phase A
+  audio covered the Capitals pack only, so core-deck cases played
+  the full visual ritual over silent clue reads. U11 rendered all
+  five clue reads for every one of the 387 core cases in Watson's
+  cast voice (387/387 cases, 1,935 clue reads, no holds), and the
+  manifest gate now fails the build if a core case's clue entries
+  are ever empty again (`checkCoreCoverage` in
+  `scripts/detective/audio-manifest.mjs`, enforced by
+  `check-audio-manifest.mjs`; sabotage controls — an emptied entry,
+  an over-budget case, a dropped case — each fail the gate by
+  name). 314 of the 1,935 reads ship flagged by the render
+  pipeline's own pitch/pace ladders (103 outside Watson's family
+  band, 6 under the pace floor); the flagged list is named in the
+  U11 PR body, and fresh re-renders of those lines measured no
+  better, so the shipped takes stand as the explicit disposition.
 - **FG-4 · The 88 missing names hit famous places.** The render
   backend deterministically refuses 88 planned name reads, and they
   are not obscure: **Lahore (13.0M), Karachi (11.6M), Baghdad
@@ -584,6 +594,44 @@ the re-run panel and the flip owner can check them off one by one.
   resolved as faithful unions) plus the `353072e` brace cure,
   and its review pipeline ran on the merged tip.
 
+## Watson station cure (2026-11-08)
+
+- **The defect:** the owner, playing the live build on his phone
+  (2026-11-08 ~00:53 CST), found Watson standing large at the map's
+  bottom-left corner during the guessing part of a case. A measured
+  diagnosis (live relay + real input at 390/768/1280/1920, both
+  themes; `DIAGNOSIS.md` in the detective evidence folder,
+  `diag-watson-corner/`) proved the walk itself works: Watson walks
+  to the clue-card station and reads there, but the moment a read
+  ends, the state machine's view parked him at the map dock for the
+  whole guessing stretch — `SEARCH_IDLE`, `SEARCH_AREA`,
+  `SELECTION_READ` and `ASK_NEXT` all carried Watson's placement
+  "dock". That was the shipped station split from the pair's first
+  build, and it contradicts the owner's standing ruling of
+  2026-11-07: **Watson stays at the clues once play starts.**
+- **The cure:** those four phases now carry Watson's placement
+  "station" in `viewForState` (`detective-state.ts`) — same poses
+  as before. Watson holds his station beside the active clue card
+  for the whole case; only Holmes uses the map dock. No Holmes
+  placement or pose changed anywhere, and no host logic changed:
+  `DetectiveHost` already renders purely from the machine's
+  placement, so the station cluster (figure, gutter transform,
+  replay-at-station, station sound cluster) takes Watson in the
+  guessing phases and the map portal renders Holmes alone. The
+  "dock" placement stays in the type and in the host as the
+  fallback it always was; the degraded path (dock-only companion
+  on constrained devices, `data-companion="dock"`, tap speech) is
+  a separate by-design verdict and is untouched.
+- **What a player sees now:** while guessing, Watson stands beside
+  the clue card he last read — tap him there to hear the clue
+  again — and Holmes works the map alone, docking at the bottom
+  of the map and walking to a berth when the player pauses over
+  an area. The pair comes back together for the celebration.
+- Earlier sections of this chapter that describe Watson at the
+  dock during search (the Phase A build, the 2026-11-06 incident,
+  PRs #357/#361/#363) are the historical record of how the game
+  behaved then; this section supersedes them for current play.
+
 ## Audio: pre-rendered, with honest coverage
 
 - Runtime speech synthesis was rejected for this pair (BUILD-SCOPE
@@ -651,9 +699,9 @@ checkable by playing, not by reading code.
   and re-check the two items above — placement re-settles clear.
 - [ ] **External speech:** trigger the storyteller hook narration
   mid-case — the pair does not speak over it (FG-2).
-- [ ] **Core-case behaviour:** open a core-deck (non-Capitals) case —
-  either its clues are read aloud (U11 done) or the pair does not
-  perform the silent ritual (FG-3).
+- [x] **Core-case behaviour:** open a core-deck (non-Capitals) case —
+  its clues are read aloud (U11 done, FG-3 closed 2026-11-08;
+  proven by `tests/e2e/detective-core-audio.spec.ts`).
 - [ ] **Dock + attribution at 390 px:** at phone width, the dock and
   the MapLibre attribution are both fully readable, never stacked
   (FG-8).

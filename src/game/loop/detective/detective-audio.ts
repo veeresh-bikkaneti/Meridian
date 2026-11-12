@@ -39,7 +39,13 @@
  *   the tap-Watson control both call playHeldSequence() to play
  *   those held refs for real; the sound gate still applies at that
  *   play time, the read-aloud autoplay veto does NOT (a tap is the
- *   kid choosing to listen).
+ *   kid choosing to listen). Two kinds of speech are gesture-
+ *   initiated and play for real in tap mode for the same reason:
+ *   selection reads (the selecting tap) and guess reads (the
+ *   confirm tap — the host marks them via armGuessRead around its
+ *   guessConfirmed dispatch; PR 2a cure 3: before that marking, a
+ *   tap-mode guess read resolved as skipped like ambient speech,
+ *   so the reaction to a confirmed guess never sounded).
  * - "off": items resolve skipped and nothing is held.
  *
  * Retention happens at ENQUEUE time (Unit A), not play time: a clue
@@ -236,12 +242,44 @@ export interface DetectiveSpeechPlayer {
    * sequence from its first item (Unit A: an explicit repeat request
    * interrupts whatever is in flight). */
   playHeldSequence(): Promise<void>;
+  /** PR 2a cure 3: arm/disarm the guess-read window. The host arms
+   * immediately before dispatching guessConfirmed to the machine
+   * and disarms immediately after; every speak ref enqueued inside
+   * that synchronous window IS the guess read (the machine emits it
+   * as one burst: the guess's name where it was not just named,
+   * then suspicion). Marked refs play for real in "tap" mode — the
+   * confirm tap is the kid's own gesture, exactly like the
+   * selecting tap behind a selection read — instead of resolving
+   * as skipped. No observable effect in "auto" (everything plays)
+   * or "off" (nothing does). */
+  armGuessRead(): void;
+  disarmGuessRead(): void;
 }
 
 /** Is this ref part of a clue sequence — the chain the tap-mode hold
  * keeps (a clue's read + its ack + its decode)? Selection reads,
  * ask-next, instructions, endings and the debrief are NOT held: the
  * Listen button replays the current clue, not the whole case. */
+/** Case-ending lines (the solve's win lines + debrief, the loss's
+ * answer + cheer-up). They follow straight from the kid's own confirm
+ * tap, so tap speech mode plays them for real instead of skipping
+ * them (plan of record §5: "ending lines must speak in tap mode").
+ * A non-selection name read outside the guess-read arm is the
+ * debrief's answer name — an ending line too. */
+const ENDING_FIXED_IDS: ReadonlySet<string> = new Set([
+  "win-holmes",
+  "win-watson",
+  "win-together",
+  "debrief-frame",
+  "debrief-close",
+  "truce-watson",
+]);
+export function isEndingRef(ref: SpeakRef): boolean {
+  if (ref.kind === "answer" || ref.kind === "debrief") return true;
+  if (ref.kind === "name") return ref.selection !== true;
+  return ref.kind === "fixed" && ENDING_FIXED_IDS.has(ref.id);
+}
+
 function isClueSequenceRef(ref: SpeakRef): boolean {
   if (ref.kind === "clue") return true;
   if (ref.kind === "fixed") {
@@ -269,6 +307,21 @@ export function createDetectiveSpeech(
   let caseIndex = opts.caseIndex ?? 0;
   let queue: SpeakRef[] = [];
   let processing = false;
+  /* -- selection reads (user-initiated name reads) -------------------
+   * The set marks queue items that are selection reads. They are never
+   * held for replay, and in "tap" mode they play for real (the
+   * selecting tap is the gesture) instead of resolving as skipped. */
+  const selectionItems = new WeakSet<SpeakRef>();
+  /* -- guess reads (PR 2a cure 3) ------------------------------------
+   * The same tap-mode treatment as selection reads — the confirm tap
+   * is the kid's gesture too — but a SEPARATE set: the selection
+   * path's latest-wins splice removes a queued selection item by
+   * set membership, and a guess already spent must never be spliced
+   * out by a later pick. Refs join this set only while the host's
+   * guess-read arm stands (armGuessRead), which brackets exactly
+   * the machine's guess-read burst. */
+  const guessItems = new WeakSet<SpeakRef>();
+  let guessReadArmed = false;
   /* -- U9 speech mode + clue-sequence hold (Unit A: auto too) ------- */
   let speechMode: SpeechMode = opts.speechMode ?? "auto";
   /** The most recent clue sequence, remembered in "tap" and "auto"
@@ -341,6 +394,23 @@ export function createDetectiveSpeech(
     return new Promise((resolve) => gestureWaiters.push(resolve));
   }
 
+  /* -- Listen first-tap cure (STAGE step 6) -------------------------
+   * Arm the first-gesture listener EAGERLY, at player creation —
+   * not lazily inside the first playClip. In tap mode nothing ever
+   * calls playClip before the kid taps Listen (the queue skips
+   * every item without playing), so a lazy listener meant the
+   * first Listen tap only armed it and nothing played until a
+   * second tap (the owner's live defect; the two-tap flow is
+   * recorded as "by design" in tests/e2e/detective-sound.spec.ts
+   * (f)). Arming early only moves the unlock to the first
+   * pointerdown anywhere — exactly the storyteller pattern — and
+   * the listener still consumes only when sound is on
+   * (decideFirstGesture); it never starts playback by itself.
+   * Auto mode is unchanged: its first clip armed the same
+   * listener before playing, and an earlier arm unlocks no
+   * sooner than the first gesture either way. */
+  armGestureListener();
+
   /* -- default clip playback: one HTMLAudioElement chain ------------- */
   let currentStop: (() => void) | null = null;
   async function defaultPlayClip(clip: ResolvedClip): Promise<void> {
@@ -409,6 +479,8 @@ export function createDetectiveSpeech(
     if (processing) return;
     processing = true;
     let hadItems = false;
+    let playedAny = false;
+    let skippedUnreadClue = false;
     try {
       while (queue.length > 0) {
         if (gen !== generation || disposed) return;
@@ -420,18 +492,32 @@ export function createDetectiveSpeech(
         // clue-sequence hold itself is recorded at enqueue time (see
         // enqueue below) — recordHeld here is the idempotent backstop
         // for a mode that flipped to "tap" mid-burst.
-        if (speechMode !== "auto") {
-          if (speechMode === "tap") recordHeld(ref);
+        const isGesture =
+          selectionItems.has(ref) || guessItems.has(ref) || isEndingRef(ref);
+        if (speechMode === "off") continue;
+        if (speechMode === "tap" && !isGesture) {
+          recordHeld(ref);
+          // A skipped clue question must not drain. Draining here
+          // opened every starting card before Watson read any of them
+          // (7-10 tap mode, a 3-clue deal). The ladder stays on this
+          // card until Listen plays the question. Sound off still
+          // drains: there is no read to wait for.
+          if (ref.kind === "clue" && isSoundOn()) skippedUnreadClue = true;
           continue;
         }
         // Gates at play time: sound off or the read-aloud preference
         // vetoes autoplay → the item is dropped, the queue moves on.
-        if (!isSoundOn() || !canAutoPlay()) continue;
+        // A tap-mode gesture-initiated read (a pick read, a guess
+        // read, or the held replay) is the kid's own tap at work:
+        // the sound gate applies, the autoplay veto does not.
+        if (!isSoundOn()) continue;
+        if (speechMode === "auto" && !canAutoPlay()) continue;
         const manifest = await loadManifest();
         if (gen !== generation || disposed) return;
         const clip = resolveDetectiveClip(manifest, ref, caseIndex);
         if (!clip) continue; // uncovered → silent skip
         onSpeakingChange(clip.who);
+        playedAny = true;
         try {
           await playClip(clip);
         } catch {
@@ -445,13 +531,20 @@ export function createDetectiveSpeech(
       // ladder must advance silently rather than stall — the visual
       // game is identical with or without audio (fallback law).
       // stopAll bumps the generation, so a stopped queue never drains.
-      if (gen === generation && !disposed && hadItems) {
+      if (gen === generation && !disposed && hadItems && !(skippedUnreadClue && !playedAny)) {
         onSpeakingChange(null);
       }
       // Items enqueued while this loop was finishing (e.g. a drain
       // callback that immediately enqueued the next line) restart it.
-      if (gen === generation && !disposed && queue.length > 0) {
-        void processQueue(gen);
+      // That includes items enqueued right after a stopAll / replay
+      // superseded THIS loop: their kick() was refused while this
+      // loop still held `processing`, and stopAll already cleared
+      // every older item — so whatever is queued now belongs to the
+      // CURRENT generation and must not be stranded (the owner's
+      // "doesn't play in time": a pin's read sat silent until the
+      // next unrelated line kicked the queue).
+      if (!disposed && queue.length > 0) {
+        void processQueue(generation);
       }
     }
   }
@@ -535,13 +628,37 @@ export function createDetectiveSpeech(
   return {
     enqueue(ref: SpeakRef): void {
       if (disposed) return;
+      // A selection read (the player's own pick, no guess spent) takes
+      // its own path: it never interrupts a playing clip, and a second
+      // one that has not started yet replaces the first (latest wins).
+      if (ref.kind === "name" && ref.selection === true) {
+        if (speechMode === "off") return;
+        const item: SpeakRef = { ...ref };
+        selectionItems.add(item);
+        const stale = queue.findIndex((q) => selectionItems.has(q));
+        if (stale !== -1) queue.splice(stale, 1);
+        queue.push(item);
+        kick();
+        return;
+      }
       // Retention at enqueue time (Unit A — see the header): the full
       // burst is held before its first clip starts, so a mid-play
       // replay restarts the complete chain, not just the clip in
       // flight. "off" mode holds nothing.
-      if (speechMode !== "off") recordHeld(ref);
+      if (speechMode !== "off" && !guessReadArmed) recordHeld(ref);
+      // PR 2a cure 3: refs enqueued while the host's guess-read arm
+      // stands are the guess read — mark them so tap mode plays
+      // them for real (the confirm tap is the kid's gesture). The
+      // mark is inert in the other modes (see armGuessRead).
+      if (guessReadArmed) guessItems.add(ref);
       queue.push(ref);
       kick();
+    },
+    armGuessRead(): void {
+      guessReadArmed = true;
+    },
+    disarmGuessRead(): void {
+      guessReadArmed = false;
     },
     setSpeechMode(mode: SpeechMode): void {
       if (mode === speechMode) return;

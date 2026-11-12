@@ -1,0 +1,164 @@
+[
+  {
+    "id": "social-studies:place:compass-clue",
+    "group": "7-10",
+    "objective": "After this, a child in 7-10 can locate a place by following two compass clues (north, south, east, west) from a landmark already on the map, shown by a pin dropped within the round's tolerance.",
+    "standard": "UNVERIFIED",
+    "why": "A treasure map says: two steps east of the fountain, then one step north. Where is the treasure?",
+    "buildsOn": [],
+    "useElsewhere": ["Everyday life: giving a friend directions around school", "Math: counting equal steps on a grid"]
+  },
+  {
+    "id": "social-studies:place:grid-reference",
+    "group": "7-10",
+    "objective": "After this, a child in 7-10 can locate a place from a grid reference such as C-4, shown by tapping the correct square on a gridded map.",
+    "standard": "UNVERIFIED",
+    "why": "A treasure map says the chest is in square C-4. Without a way to name squares, you would have to describe it in a paragraph.",
+    "buildsOn": ["social-studies:place:compass-clue"],
+    "useElsewhere": ["Math: reading a coordinate grid (rows and columns)", "Everyday life: finding a seat in a stadium or a street in an atlas index"]
+  },
+  {
+    "id": "social-studies:place:latlon-pin",
+    "group": "10-18",
+    "objective": "After this, a child in 10-18 can locate a place from its latitude and longitude, shown by a pin within the round's tolerance of the true point.",
+    "standard": "UNVERIFIED",
+    "why": "A ship's radio gives only two numbers for where it needs help. Which patch of ocean do you send the rescue boat to?",
+    "buildsOn": ["social-studies:place:grid-reference"],
+    "useElsewhere": ["Math: ordered pairs on a coordinate plane", "Physics: locating a sound or signal source by two measurements"]
+  },
+  {
+    "id": "social-studies:region:landform-sort",
+    "group": "7-10",
+    "objective": "After this, a child in 7-10 can sort six pictured places on a satellite map into mountains, plains, coast or desert, shown by correct placement of each card.",
+    "standard": "UNVERIFIED",
+    "why": "A new village needs flat land and fresh water close by. Where on the map would you build it, and where would you not?",
+    "buildsOn": [],
+    "useElsewhere": ["Physics: why rivers run downhill and rockfalls happen on steep slopes", "Everyday life: choosing a safe place to build or camp"]
+  },
+  {
+    "id": "social-studies:region:area-by-squares",
+    "group": "7-10",
+    "objective": "After this, a child in 7-10 can estimate and compare the areas of two regions by counting grid squares in rows, shown by choosing the larger region and the number of squares.",
+    "standard": "UNVERIFIED",
+    "why": "Two farmers each claim the bigger field. Counting every square one at a time is slow; counting rows of equal squares is quick.",
+    "buildsOn": ["social-studies:place:grid-reference", "math-number:groups:arrays", "math-applied:measure:area-tiles"],
+    "useElsewhere": ["Math: area as rows times columns (multiplication)", "Economics: how many floor tiles or how much paint a room needs"]
+  },
+  {
+    "id": "social-studies:region:density",
+    "group": "10-18",
+    "objective": "After this, a child in 10-18 can compare how crowded two regions are by dividing a count of people by an area, shown by choosing the more crowded region and giving the rate.",
+    "standard": "UNVERIFIED",
+    "why": "Town A has 1,000 people in 2 square km. Town B has 1,000 people in 8 square km. Which town is more crowded, and how do you know?",
+    "buildsOn": ["social-studies:region:area-by-squares", "math-applied:rates:unit-rate"],
+    "useElsewhere": ["Math: rates as division", "Economics: price per item, cost per person", "Chemistry: concentration as amount per volume (same idea, different setting)"]
+  },
+  {
+    "id": "social-studies:region:flat-map-area",
+    "group": "18+",
+    "objective": "After this, an adult learner can explain why a flat world map makes regions near the poles look larger than they are, shown by ranking pairs of regions by true area against how big they appear.",
+    "standard": "UNVERIFIED",
+    "why": "On a common wall map Greenland looks about as large as Africa, which is far bigger. Plan a paint shipment by the picture and you order the wrong amount.",
+    "buildsOn": ["social-studies:region:density", "social-studies:place:latlon-pin"],
+    "useElsewhere": ["Math: spheres versus flat sheets", "Physics: why the same sunlight spreads over a bigger area near the poles"]
+  },
+  {
+    "id": "social-studies:route:count-the-steps",
+    "group": "7-10",
+    "objective": "After this, a child in 7-10 can find the distance between two places by counting how many scale-bar lengths fit along the route and multiplying, shown by entering the correct distance in whole units.",
+    "standard": "UNVERIFIED",
+    "why": "The class trip bus leaves at 9. The teacher wants to know how far it is from school to the museum, and the map only shows a little bar marked \"10 km\".",
+    "buildsOn": ["social-studies:place:grid-reference", "math-number:groups:equal-groups"],
+    "useElsewhere": ["Math: equal groups, skip counting, multiplication", "Everyday life: how many blocks to the shop at 100 m each"]
+  },
+  {
+    "id": "social-studies:route:trip-clock",
+    "group": "7-10",
+    "objective": "After this, a child in 7-10 can work out how many whole hours a trip takes when the bus covers the same distance each hour, shown by choosing the correct arrival time on a clock.",
+    "standard": { "code": "CCSS.MATH.CONTENT.4.MD.A.2", "source": "Fragment of the standard's opening seen in a published alignment document (https://www.firstinspires.org/hubfs/Education_Resources/standards-alignment/fll-challenge/fll-challenge-alignments-CC-Math.pdf). Full text not fetched from corestandards.org (404 on 2026-11-10). Confidence MEDIUM." },
+    "why": "The bus drives 40 km every hour and the museum is 120 km away. Will you be back before the lunch bell?",
+    "buildsOn": ["social-studies:route:count-the-steps"],
+    "useElsewhere": ["Math: division as sharing 120 into groups of 40", "Physics: later, speed = distance divided by time", "Everyday life: planning when to leave for a match"]
+  },
+  {
+    "id": "social-studies:route:scale-ratio",
+    "group": "10-18",
+    "objective": "After this, a child in 10-18 can convert a length measured on a map to a real distance using a ratio scale such as 1:50 000, shown by entering the correct distance in km.",
+    "standard": {
+      "code": "CCSS.MATH.CONTENT.7.G.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/7/G/ (read live on 2026-11-11: solve problems involving scale drawings, including computing actual lengths from a scale drawing)."
+    },
+    "why": "Your hiking map is drawn at 1:50 000, and the trail is 7 cm long on the map. How far is the real walk, and is it a stroll or an all-day climb?",
+    "buildsOn": ["social-studies:route:count-the-steps", "math-applied:geometry:scale-drawing", "math-applied:measure:convert-metric"],
+    "useElsewhere": ["Math: ratios and proportional reasoning", "Physics: scale models and drawings", "Economics: unit price (price per kilo scales the same way)"]
+  },
+  {
+    "id": "social-studies:route:travel-time",
+    "group": "10-18",
+    "objective": "After this, a child in 10-18 can solve time = distance / speed for a planned route, including rearranging it to find the speed or the distance, shown by the correct time on a clock and the correct departure time.",
+    "standard": {
+      "code": "CCSS.MATH.CONTENT.6.RP.A.3.B",
+      "source": "https://www.thecorestandards.org/Math/Content/6/RP/ (read live on 2026-11-11: solve unit rate problems including those involving unit pricing and constant speed)."
+    },
+    "why": "A friend's train arrives at 3:40 pm, and you live 90 km away. If you ride at a steady 15 km/h, how long is the ride, and when must you leave?",
+    "buildsOn": ["social-studies:route:scale-ratio", "social-studies:route:trip-clock", "math-applied:rates:constant-speed", "math-applied:rates:rearrange"],
+    "useElsewhere": ["Physics: speed, velocity and motion graphs", "Economics: price x quantity, cost of a trip", "Environment: fuel used per trip"]
+  },
+  {
+    "id": "social-studies:route:fastest-or-shortest",
+    "group": "10-18",
+    "objective": "After this, a child in 10-18 can choose between a short slow road and a long fast road by computing both travel times, shown by the correct choice and both times.",
+    "standard": "UNVERIFIED",
+    "why": "The mountain pass is 60 km, and you ride it at 20 km/h. The valley road is 90 km, and you ride it at 60 km/h. Which road gets you home first?",
+    "buildsOn": ["social-studies:route:travel-time"],
+    "useElsewhere": ["Math: comparing two linear rates", "Physics: average speed over several legs", "Economics: toll roads and fuel costs versus time saved"]
+  },
+  {
+    "id": "social-studies:route:compass-bearing",
+    "group": "10-18",
+    "objective": "After this, a child in 10-18 can find the compass bearing from one place to another and split a trip into its north-south and east-west parts using sine and cosine, shown by the correct bearing and the two component distances.",
+    "standard": {
+      "code": "HSG-SRT.C.8",
+      "source": "https://learning.ccsso.org/wp-content/uploads/2022/11/ADA-Compliant-Math-Standards.pdf (the same live read the general-knowledge tower-angle row cites)."
+    },
+    "why": "A pilot must say which way to turn to reach an island 200 km away. Saying \"somewhere that way\" is not enough for a plan.",
+    "buildsOn": ["social-studies:route:travel-time", "social-studies:place:latlon-pin", "math-applied:trig:bearings"],
+    "useElsewhere": ["Math: right triangles, sine and cosine", "Physics: splitting a force or velocity into parts", "Everyday life: setting a safe ladder angle or ramp slope"]
+  },
+  {
+    "id": "social-studies:route:great-circle",
+    "group": "18+",
+    "objective": "After this, an adult learner can explain why the shortest flight between two far-apart places looks curved on a flat map, shown by comparing a great-circle distance with a straight line drawn on a flat map and choosing the shorter.",
+    "standard": "UNVERIFIED",
+    "why": "A flight from one continent to another takes a path that bends toward the pole on the wall map. Surely a straight line is shorter?",
+    "buildsOn": ["social-studies:region:flat-map-area", "social-studies:route:compass-bearing"],
+    "useElsewhere": ["Math: geometry on a sphere", "Physics: why shortest paths on curved surfaces differ from flat ones", "Economics: fuel cost of long-haul routes"]
+  },
+  {
+    "id": "social-studies:compare:farther-or-nearer",
+    "group": "7-10",
+    "objective": "After this, a child in 7-10 can compare two distances on a map by eye and with the scale bar, shown by tapping the farther of two places from a start point and then checking with the bar.",
+    "standard": "UNVERIFIED",
+    "why": "You get to choose a picnic spot: the lake or the hill. Which one is the shorter walk from home?",
+    "buildsOn": ["social-studies:route:count-the-steps"],
+    "useElsewhere": ["Math: estimating and comparing lengths", "Everyday life: choosing the closest shop"]
+  },
+  {
+    "id": "social-studies:compare:time-zones",
+    "group": "10-18",
+    "objective": "After this, a child in 10-18 can work out the clock-time difference between two places from their positions east or west of each other, shown by the correct local time at the second place.",
+    "standard": "UNVERIFIED",
+    "why": "Your cousin lives 6 time zones east of you. When it is 8 pm where you are, what time is it where your cousin lives?",
+    "buildsOn": ["social-studies:place:latlon-pin", "math-applied:measure:elapsed-time", "math-applied:rates:unit-rate"],
+    "useElsewhere": ["Math: addition and subtraction with a 24-hour cycle", "Physics: Earth turns 15 degrees every hour (360 / 24)", "Economics: when markets and shops open across the world"]
+  },
+  {
+    "id": "social-studies:compare:trip-cost",
+    "group": "18+",
+    "objective": "After this, an adult learner can compare the total cost of two routes by combining distance, fuel use, a fare or toll and time, shown by the correct cheaper option and the cost difference.",
+    "standard": "UNVERIFIED",
+    "why": "A delivery van can take the toll road or the free road. The toll saves an hour, but is an hour worth the fee and the fuel?",
+    "buildsOn": ["social-studies:route:fastest-or-shortest", "social-studies:route:great-circle"],
+    "useElsewhere": ["Economics: break-even and comparing costs", "Math: linear models with two variables", "Environment: fuel use per route"]
+  }
+]

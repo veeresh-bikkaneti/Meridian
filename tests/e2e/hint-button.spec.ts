@@ -4,15 +4,15 @@ import { serveBuiltArtifact, startGlobeRun } from "./helpers";
 /**
  * Hint button E2E (follow-up Item A — hints are a REAL feature).
  *
- * - 5-7 ("free"): hint button visible and enabled; tapping shows a
+ * - 7-10 ("free"): hint button visible and enabled; tapping shows a
  *   directional hint; multiple hints allowed.
- * - 8-10 ("one-per-round"): button visible and enabled initially;
+ * - 10-18 ("one-per-round"): button visible and enabled initially;
  *   disables after one use on the place.
- * - 11-13 ("none"): NO hint button at all (Clean Round stays earnable).
+ * - 18+ ("none"): NO hint button at all (Clean Round stays earnable).
  * - No profile set (the default): hints ON (owner 2026-10-20 — "we dont
  *   check the age of the player, so we need the hints on by default").
- *   The bulb shows with the "one-per-round" policy, like 8-10.
- * - 5-7 mascot offer: after 2 misses, an opt-in offer appears.
+ *   The bulb shows with the "one-per-round" policy, like 10-18.
+ * - 7-10 mascot offer: after 2 misses, an opt-in offer appears.
  */
 
 const PROFILE_KEY = "meridian.ageProfile.v1";
@@ -24,7 +24,7 @@ test.beforeEach(async ({ context }) => {
 /** Seed an active age profile before page load. */
 async function seedProfile(
   context: import("playwright/test").BrowserContext,
-  band: "5-7" | "8-10" | "11-13",
+  band: "7-10" | "10-18" | "18+",
 ) {
   await context.addInitScript((b: string) => {
     window.localStorage.setItem(
@@ -34,20 +34,20 @@ async function seedProfile(
         band: b,
         updatedAt: new Date().toISOString(),
         changeCount: 0,
-        schemaVersion: 1,
+        schemaVersion: 2,
       }),
     );
   }, band);
 }
 
-/** Seed a 5-7 profile, size the viewport, and start a globe run. */
+/** Seed a 7-10 profile, size the viewport, and start a globe run. */
 async function startSizedRun(
   page: import("playwright/test").Page,
   context: import("playwright/test").BrowserContext,
   w: number,
   h: number,
 ) {
-  await seedProfile(context, "5-7");
+  await seedProfile(context, "7-10");
   await page.setViewportSize({ width: w, height: h });
   await startGlobeRun(page);
 }
@@ -101,11 +101,11 @@ async function doTwoMisses(
   }
 }
 
-test("5-7: hint button visible, tap shows a directional hint", async ({
+test("7-10: hint button visible, tap shows a directional hint", async ({
   page,
   context,
 }) => {
-  await seedProfile(context, "5-7");
+  await seedProfile(context, "7-10");
   await startGlobeRun(page);
 
   const button = page.getByTestId("hint-button");
@@ -122,8 +122,8 @@ test("5-7: hint button visible, tap shows a directional hint", async ({
   await expect(button).toBeEnabled();
 });
 
-test("8-10: hint button disables after one use", async ({ page, context }) => {
-  await seedProfile(context, "8-10");
+test("10-18: hint button disables after one use", async ({ page, context }) => {
+  await seedProfile(context, "10-18");
   await startGlobeRun(page);
 
   const button = page.getByTestId("hint-button");
@@ -136,8 +136,8 @@ test("8-10: hint button disables after one use", async ({ page, context }) => {
   await expect(button).toHaveAccessibleName(/hint used/i);
 });
 
-test("11-13: no hint button at all", async ({ page, context }) => {
-  await seedProfile(context, "11-13");
+test("18+: no hint button at all", async ({ page, context }) => {
+  await seedProfile(context, "18+");
   await startGlobeRun(page);
 
   await expect(page.getByTestId("hint-button")).toHaveCount(0);
@@ -169,8 +169,8 @@ test("no profile (default): hint button visible in the dock, one hint per place"
   await expect(button).toHaveAccessibleName(/hint used/i);
 });
 
-test("5-7: mascot offer appears after 2 misses", async ({ page, context }) => {
-  await seedProfile(context, "5-7");
+test("7-10: mascot offer appears after 2 misses", async ({ page, context }) => {
+  await seedProfile(context, "7-10");
   await startGlobeRun(page);
 
   // Miss twice: drop a pin far from the target, twice. The miss flow

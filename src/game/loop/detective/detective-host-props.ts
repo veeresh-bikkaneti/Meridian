@@ -29,6 +29,17 @@
  *                     forced to null while playing or lost, whatever
  *                     the caller passes. Pre-solve, the pair cannot
  *                     hold the answer's id — structurally.
+ * - selectedPlaceId:  (PR 2a cure) the player's CURRENT pick — the id
+ *                     their guess will record under (LoopScreen
+ *                     re-derives tap entries exactly as the sheet and
+ *                     onPick do, so the read names the same id the
+ *                     guess records; the machine's dedup keys on it).
+ *                     The player's OWN input again, like
+ *                     lastGuessPlaceId: nothing about whether the
+ *                     pick is right. Null whenever nothing is picked
+ *                     (no sheet up). Holmes reads it aloud as the
+ *                     selection acknowledgement — the pick itself is
+ *                     the whole payload.
  */
 
 import type { LoopStatus } from "../types.ts";
@@ -41,6 +52,7 @@ export interface DetectiveHostProps {
   lastGuessPlaceId: string | null;
   freshDeal: boolean;
   answerPlaceId: string | null;
+  selectedPlaceId: string | null;
 }
 
 /** The exact key set, in construction order — pinned by the props test. */
@@ -52,6 +64,7 @@ export const DETECTIVE_HOST_PROP_KEYS = [
   "lastGuessPlaceId",
   "freshDeal",
   "answerPlaceId",
+  "selectedPlaceId",
 ] as const;
 
 /**
@@ -72,5 +85,8 @@ export function buildDetectiveHostProps(input: DetectiveHostProps): DetectiveHos
     // Post-solve ONLY: while the case is playing (or lost — the debrief
     // is a solve-only speech), the answer's id does not cross.
     answerPlaceId: input.status === "won" ? input.answerPlaceId : null,
+    // The player's own current pick — passes through as-is (null when
+    // nothing is picked); the id carries no evaluation.
+    selectedPlaceId: input.selectedPlaceId,
   };
 }

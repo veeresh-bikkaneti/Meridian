@@ -188,17 +188,18 @@ describe("sessionShareText — session payload contract", () => {
     assert.ok(!text.includes("Manhattan"), "payload must not include place names");
   });
 
-  it("SHARE_URL follows the default build base (base-parameterised, not one canonical URL)", () => {
-    // Node has no Vite BASE_URL, so the default base "/" applies and the
-    // Workers origin is the value here. The Pages-build value is covered
-    // by the baseUrl share-text tests below and the Pages E2E artifact.
+  it("SHARE_URL is the single canonical workers.dev URL (owner ruling 2026-11-09)", () => {
+    // The share payload always points at workers.dev, in every build —
+    // the old build-aware behaviour (Pages build → Pages URL) is
+    // superseded for shares. The Pages-build value is covered by the
+    // baseUrl share-text tests below and the Pages E2E artifact.
     assert.equal(SHARE_URL, shareOrigin("/"));
     assert.equal(SHARE_URL, BRAND.siteUrl);
   });
 });
 
 describe("sessionShareText — build origin", () => {
-  it("Pages build share carries the Pages link, never Workers", () => {
+  it("Pages build share carries the Workers link (owner ruling 2026-11-09)", () => {
     const text = sessionShareText({
       summary,
       regionName: "Nebraska",
@@ -208,9 +209,9 @@ describe("sessionShareText — build origin", () => {
     });
     assert.equal(
       text,
-      "meridian October 3\nhttps://veeresh-bikkaneti.github.io/Meridian/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
+      "meridian October 3\nhttps://meridian.knowledgetest.workers.dev/\n12,480 over 60 places · 208 avg/place · 🔥 14 best streak · Nebraska",
     );
-    assert.equal(text.includes("workers.dev"), false);
+    assert.equal(text.includes("github.io"), false);
   });
 
   it("Workers build share carries the Workers link, never Pages", () => {

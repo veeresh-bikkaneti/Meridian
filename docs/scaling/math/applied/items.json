@@ -1,0 +1,573 @@
+[
+  {
+    "id": "math-applied:measure:length-cm",
+    "group": "7-10",
+    "objective": "After this, a child can measure the length of a shelf in centimetres, shown by lining a ruler up with the shelf and entering the centimetre reading.",
+    "standard": {
+      "code": "2.MD.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/2/MD/"
+    },
+    "why": "A shelf must reach from one bracket to the other. Guessing the length wastes the board. What length does the ruler show?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "environment: centimetres of rain in a straight gauge, read off the scale"
+    ]
+  },
+  {
+    "id": "math-applied:measure:longer-than",
+    "group": "7-10",
+    "objective": "After this, a child can compare two measured lengths and compute how much longer one is, shown by entering the centimetre gap between a board and a shelf.",
+    "standard": {
+      "code": "2.MD.A.4",
+      "source": "https://www.thecorestandards.org/Math/Content/2/MD/"
+    },
+    "why": "A board and a shelf are both measured. If the board is shorter, it does not reach. How many centimetres longer or shorter is it?",
+    "buildsOn": [
+      "math-applied:measure:length-cm"
+    ],
+    "useElsewhere": [
+      "everyday life: picking a board that reaches a shelf, and by how many centimetres"
+    ]
+  },
+  {
+    "id": "math-applied:measure:choose-unit",
+    "group": "7-10",
+    "objective": "After this, a child can estimate a length and choose centimetres or metres, shown by picking the unit for a short shelf and for a long path before measuring.",
+    "standard": {
+      "code": "2.MD.A.3",
+      "source": "https://www.thecorestandards.org/Math/Content/2/MD/"
+    },
+    "why": "A shelf is short and the path to the river is long. A centimetre ruler is the wrong tool for the path. Which unit fits each one?",
+    "buildsOn": [
+      "math-applied:measure:length-cm"
+    ],
+    "useElsewhere": [
+      "geography: metres for a river path, centimetres for a short gap on a map"
+    ]
+  },
+  {
+    "id": "math-applied:measure:elapsed-time",
+    "group": "7-10",
+    "objective": "After this, a child can compute the minutes between two clock times, shown by tapping the minute count on a line of minutes.",
+    "standard": {
+      "code": "3.MD.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/3/MD/"
+    },
+    "why": "The clock shows when a walk starts and when it must end. How many minutes sit between those two times?",
+    "buildsOn": [],
+    "useElsewhere": [
+      "geography: minutes between two clock times on a short walk"
+    ]
+  },
+  {
+    "id": "math-applied:measure:perimeter",
+    "group": "7-10",
+    "objective": "After this, a child can compute the distance around a polygon from its side lengths, shown by entering the total of the sides of a sandbox border.",
+    "standard": {
+      "code": "3.MD.D.8",
+      "source": "https://www.thecorestandards.org/Math/Content/3/MD/"
+    },
+    "why": "A sandbox needs a border all the way around. Measuring one side does not tell how much border to cut.",
+    "buildsOn": [
+      "math-applied:measure:length-cm"
+    ],
+    "useElsewhere": [
+      "everyday life: border around a sandbox or a picture frame"
+    ]
+  },
+  {
+    "id": "math-applied:measure:area-tiles",
+    "group": "7-10",
+    "objective": "After this, a child can find an area by counting unit squares with no gaps, shown by tapping each square on a floor and entering the count.",
+    "standard": {
+      "code": "3.MD.C.6",
+      "source": "https://www.thecorestandards.org/Math/Content/3/MD/"
+    },
+    "why": "A floor must be covered with square tiles. Gaps and overlaps waste tiles. How many tiles cover it with none left over and none missing?",
+    "buildsOn": [
+      "math-applied:measure:length-cm"
+    ],
+    "useElsewhere": [
+      "chemistry: how many square tiles cover the bottom of a tray"
+    ]
+  },
+  {
+    "id": "math-applied:measure:liquid-marks",
+    "group": "7-10",
+    "objective": "After this, a child can read a liquid volume in millilitres on a jug, shown by tapping the mark that matches 250 millilitres.",
+    "standard": {
+      "code": "3.MD.A.2",
+      "source": "https://www.thecorestandards.org/Math/Content/3/MD/"
+    },
+    "why": "A recipe asks for 250 millilitres (a quarter of a litre) of water. Which line on the jug is that amount?",
+    "buildsOn": [
+      "math-applied:measure:choose-unit"
+    ],
+    "useElsewhere": [
+      "chemistry: reading millilitres of liquid on a jug"
+    ]
+  },
+  {
+    "id": "math-applied:measure:right-angle",
+    "group": "7-10",
+    "objective": "After this, a child can sort a corner as a right angle, sharper than a right angle, or more open than a right angle, shown by placing three corners into those three groups.",
+    "standard": {
+      "code": "4.G.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/4/G/"
+    },
+    "why": "A picture frame needs square corners. A corner that is too sharp or too open makes the frame crooked.",
+    "buildsOn": [],
+    "useElsewhere": [
+      "physics: sorting a ramp corner with the floor as square, sharper, or more open"
+    ]
+  },
+  {
+    "id": "math-applied:measure:angle-degrees",
+    "group": "7-10",
+    "objective": "After this, a child can measure an angle in whole-number degrees with a protractor, shown by entering the degree reading for a ladder set against a wall.",
+    "standard": {
+      "code": "4.MD.C.6",
+      "source": "https://www.thecorestandards.org/Math/Content/4/MD/"
+    },
+    "why": "A card beside a ladder shows 75. Only a protractor tells whether the ladder matches that number.",
+    "buildsOn": [
+      "math-applied:measure:right-angle"
+    ],
+    "useElsewhere": [
+      "physics: the degree reading of a ramp, compared with a number printed on a card"
+    ]
+  },
+  {
+    "id": "math-applied:measure:rect-area",
+    "group": "7-10",
+    "objective": "After this, a child can compute the area of a rectangle from its length and its width, shown by entering the number that matches a full tile count.",
+    "standard": {
+      "code": "4.MD.A.3",
+      "source": "https://www.thecorestandards.org/Math/Content/4/MD/"
+    },
+    "why": "Counting every tile on a long floor is slow. The length and the width are known. Which multiplication gives the same count?",
+    "buildsOn": [
+      "math-applied:measure:area-tiles",
+      "math-number:tables:facts"
+    ],
+    "useElsewhere": [
+      "economics: how many tiles a rectangular floor needs, from its length and its width"
+    ]
+  },
+  {
+    "id": "math-applied:measure:convert-metric",
+    "group": "10-18",
+    "objective": "After this, a child can compute a length in metres from a length in kilometres, shown by entering the metres for a map label of 2.4 kilometres.",
+    "standard": {
+      "code": "5.MD.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/5/MD/"
+    },
+    "why": "A map labels a river stretch 2.4 kilometres. The tape is marked in metres. How many metres is that walk?",
+    "buildsOn": [
+      "math-applied:measure:choose-unit",
+      "math-number:place:decimal-shifts"
+    ],
+    "useElsewhere": [
+      "geography: a map distance converted from kilometres to metres"
+    ]
+  },
+  {
+    "id": "math-applied:measure:volume-box",
+    "group": "10-18",
+    "objective": "After this, a child can compute how many unit cubes fill a rectangular box, shown by packing the box on screen and entering the same number the edge lengths give.",
+    "standard": {
+      "code": "5.MD.C.5a",
+      "source": "https://www.thecorestandards.org/Math/Content/5/MD/"
+    },
+    "why": "A crate must hold boxes. How many unit cubes fit inside before the crate is built?",
+    "buildsOn": [
+      "math-applied:measure:area-tiles",
+      "math-number:tables:multi-digit"
+    ],
+    "useElsewhere": [
+      "chemistry: how much liquid a rectangular tank holds, in unit cubes"
+    ]
+  },
+  {
+    "id": "math-applied:measure:accuracy",
+    "group": "10-18",
+    "objective": "After this, a child can compare a reported length with the smallest mark on the tape, shown by rejecting 2.4837 metres when the tape shows centimetres and entering the reading the tape can support.",
+    "standard": {
+      "code": "HSN.Q.A.3",
+      "source": "https://www.thecorestandards.org/Math/Content/HSN/Q/"
+    },
+    "why": "A tape shows centimetres. A report writes 2.4837 metres for a beam. Those extra digits are smaller than the tape can show. What should the report say?",
+    "buildsOn": [
+      "math-applied:measure:length-cm",
+      "math-applied:measure:convert-metric"
+    ],
+    "useElsewhere": [
+      "economics: a timber order that does not pretend more precision than the tape"
+    ]
+  },
+  {
+    "id": "math-applied:measure:survey-check",
+    "group": "18+",
+    "objective": "After this, an adult can compare two beam measurements with the tape's smallest mark, shown by choosing a remeasure when they disagree by more than that mark.",
+    "standard": "UNVERIFIED",
+    "why": "Two crews measure one beam and disagree by more than the tape's smallest mark. Which report can a buyer use? Fit: reviewers split. One says no code fits; one says HSN.Q.A.3, which measure:accuracy already uses for how many digits to report. The human signer picks.",
+    "buildsOn": [
+      "math-applied:measure:accuracy"
+    ],
+    "useElsewhere": [
+      "everyday life: measuring a beam again before an order is placed"
+    ]
+  },
+  {
+    "id": "math-applied:geometry:shape-sort",
+    "group": "7-10",
+    "objective": "After this, a child can sort rectangles out of other shapes, shown by tapping only the shapes with four square corners.",
+    "standard": {
+      "code": "2.G.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/2/G/"
+    },
+    "why": "A frame needs a piece with four square corners. Which of these pieces is that shape?",
+    "buildsOn": [
+      "math-applied:measure:right-angle"
+    ],
+    "useElsewhere": [
+      "everyday life: choosing the piece for a picture frame"
+    ]
+  },
+  {
+    "id": "math-applied:geometry:scale-drawing",
+    "group": "10-18",
+    "objective": "After this, a child can compute a real length from a scale drawing, shown by entering the ground length when the map says 1 centimetre stands for 2 kilometres and the drawing is 4 centimetres.",
+    "standard": {
+      "code": "7.G.A.1",
+      "source": "https://www.thecorestandards.org/Math/Content/7/G/"
+    },
+    "why": "A map says 1 centimetre stands for 2 kilometres. The river on the map is 4 centimetres long. The picture length is not the river length. How long is it on the ground?",
+    "buildsOn": [
+      "math-applied:measure:convert-metric",
+      "math-number:place:decimal-shifts",
+      "math-number:tables:facts"
+    ],
+    "useElsewhere": [
+      "geography: map scale, the real distance from a drawing"
+    ]
+  },
+  {
+    "id": "math-applied:geometry:coordinates",
+    "group": "10-18",
+    "objective": "After this, a child can compute the length of a horizontal or vertical side on a coordinate grid, shown by entering the distance between a bridge and a camp that share one coordinate.",
+    "standard": {
+      "code": "6.G.A.3",
+      "source": "https://www.thecorestandards.org/Math/Content/6/G/"
+    },
+    "why": "A grid map places a bridge and a camp on the same horizontal line. How long is the side between them, using the coordinates, without walking it?",
+    "buildsOn": [
+      "math-applied:measure:length-cm",
+      "math-number:place:compare"
+    ],
+    "useElsewhere": [
+      "geography: the length of a route side on a coordinate map"
+    ]
+  },
+  {
+    "id": "math-applied:geometry:pythagoras",
+    "group": "10-18",
+    "objective": "After this, a child can compute the sloping side of a right triangle, shown by entering the board length of a ramp whose rise, ground run, and square ground corner are given.",
+    "standard": {
+      "code": "8.G.B.7",
+      "source": "https://www.thecorestandards.org/Math/Content/8/G/"
+    },
+    "why": "A ramp must reach a door. The rise and the ground run are known, and the corner on the ground is square. How long is the sloping board, before it is cut?",
+    "buildsOn": [
+      "math-applied:measure:right-angle",
+      "math-applied:measure:length-cm",
+      "math-number:tables:multi-digit"
+    ],
+    "useElsewhere": [
+      "physics: the distance a ball travels along a straight ramp, which is the sloping side"
+    ]
+  },
+  {
+    "id": "math-applied:geometry:distance-points",
+    "group": "10-18",
+    "objective": "After this, a child can compute the straight-line distance between two coordinate points, shown by entering the distance between a bridge and a camp that do not share a grid line.",
+    "standard": {
+      "code": "8.G.B.8",
+      "source": "https://www.thecorestandards.org/Math/Content/8/G/"
+    },
+    "why": "A bridge and a camp sit at two grid points that do not share a line. How long is the straight line between them?",
+    "buildsOn": [
+      "math-applied:geometry:pythagoras",
+      "math-applied:geometry:coordinates"
+    ],
+    "useElsewhere": [
+      "geography: straight-line distance between two places on a coordinate map"
+    ]
+  },
+  {
+    "id": "math-applied:geometry:cylinder-volume",
+    "group": "10-18",
+    "objective": "After this, a child can compute the volume of a cylinder, shown by entering the volume of a rain barrel when the problem says to use 3.14 in the circle rule.",
+    "standard": {
+      "code": "8.G.C.9",
+      "source": "https://www.thecorestandards.org/Math/Content/8/G/"
+    },
+    "why": "A rain barrel is a cylinder. How much water fits? Packing cubes leaves gaps at the round wall.",
+    "buildsOn": [
+      "math-applied:measure:volume-box",
+      "math-number:tables:multi-digit"
+    ],
+    "useElsewhere": [
+      "environment: how much water a cylindrical barrel holds, using the problem's stated 3.14, which is not claimed as exact"
+    ]
+  },
+  {
+    "id": "math-applied:rates:unit-rate",
+    "group": "10-18",
+    "objective": "After this, a child can compute a unit rate, shown by entering the coins for one metre of rope and tapping the cheaper stall.",
+    "standard": {
+      "code": "6.RP.A.2",
+      "source": "https://www.thecorestandards.org/Math/Content/6/RP/"
+    },
+    "why": "One stall sells 3 metres of rope for 6 coins. Another sells 5 metres for 8 coins. Which is cheaper for one metre? Comparing the two totals does not answer it.",
+    "buildsOn": [
+      "math-number:division:standard-algorithm"
+    ],
+    "useElsewhere": [
+      "physics: metres travelled in one second, from a stated distance and a stated time"
+    ]
+  },
+  {
+    "id": "math-applied:rates:constant-speed",
+    "group": "10-18",
+    "objective": "After this, a child can compute a steady pace and use it on a longer path, shown by entering kilometres in one hour and the hours for 20 kilometres.",
+    "standard": {
+      "code": "6.RP.A.3b",
+      "source": "https://www.thecorestandards.org/Math/Content/6/RP/"
+    },
+    "why": "A path is 12 kilometres and takes 3 hours at one steady pace. How far in one hour, and how long for a path of 20 kilometres?",
+    "buildsOn": [
+      "math-applied:rates:unit-rate"
+    ],
+    "useElsewhere": [
+      "environment: litres of water each day, from a stated total and a stated number of days"
+    ]
+  },
+  {
+    "id": "math-applied:rates:proportion",
+    "group": "10-18",
+    "objective": "After this, a child can identify the constant of proportionality in a table, shown by entering the single number that fills every missing row of hours and kilometres.",
+    "standard": {
+      "code": "7.RP.A.2b",
+      "source": "https://www.thecorestandards.org/Math/Content/7/RP/"
+    },
+    "why": "A walk covers the same distance each hour. A table shows hours and kilometres. Guessing a new total for each row is the slow way. What single number fills every missing row?",
+    "buildsOn": [
+      "math-applied:rates:constant-speed"
+    ],
+    "useElsewhere": [
+      "geography: travel time between two places when the pace stays the same"
+    ]
+  },
+  {
+    "id": "math-applied:rates:one-step",
+    "group": "10-18",
+    "objective": "After this, a child can compute the missing part of a one-step trail problem, shown by selecting the matching number sentence and entering how far the walker has gone on a 12 kilometre trail when 5 kilometres remain.",
+    "standard": {
+      "code": "6.EE.B.7",
+      "source": "https://www.thecorestandards.org/Math/Content/6/EE/"
+    },
+    "why": "A trail is 12 kilometres and 5 kilometres are still ahead. How far has the walker already gone? Counting the whole trail again does not name the missing part.",
+    "buildsOn": [
+      "math-number:place:compare"
+    ],
+    "useElsewhere": [
+      "economics: a count of items times a price in coins equals a total; find the missing price"
+    ]
+  },
+  {
+    "id": "math-applied:rates:two-step",
+    "group": "10-18",
+    "objective": "After this, a child can compute how many cups fit a budget that has a one-time charge plus a charge per cup, shown by entering the cup count for 4 coins once, 3 coins per cup, and a budget of 19 coins.",
+    "standard": {
+      "code": "7.EE.B.4a",
+      "source": "https://www.thecorestandards.org/Math/Content/7/EE/"
+    },
+    "why": "A stall adds 4 coins once, then 3 coins for each cup. The budget is 19 coins. How many cups fit? Adding the 4 once does not answer it.",
+    "buildsOn": [
+      "math-applied:rates:one-step"
+    ],
+    "useElsewhere": [
+      "economics: a fixed charge plus a price per metre, and how many metres fit a budget"
+    ]
+  },
+  {
+    "id": "math-applied:rates:slope-speed",
+    "group": "10-18",
+    "objective": "After this, a child can compare two distance-time lines and compute the speed the steeper line names, shown by tapping the faster trip and entering that speed.",
+    "standard": {
+      "code": "8.EE.B.5",
+      "source": "https://www.thecorestandards.org/Math/Content/8/EE/"
+    },
+    "why": "Two trips are drawn as lines of distance against time. The steeper line is the faster trip. Which line, and what speed does the steepness name?",
+    "buildsOn": [
+      "math-applied:rates:proportion"
+    ],
+    "useElsewhere": [
+      "physics: on a straight track, the steeper distance-time line is the faster motion; no force is taught"
+    ]
+  },
+  {
+    "id": "math-applied:rates:rearrange",
+    "group": "10-18",
+    "objective": "After this, a child can rearrange the problem's rule distance = speed × time to find the missing time, shown by entering the time when distance and speed are given.",
+    "standard": {
+      "code": "HSA.CED.A.4",
+      "source": "https://www.thecorestandards.org/Math/Content/HSA/CED/"
+    },
+    "why": "The problem states distance = speed × time. Distance and speed are known. Time is the missing number, so the rule has to be turned around.",
+    "buildsOn": [
+      "math-applied:rates:one-step",
+      "math-applied:rates:constant-speed"
+    ],
+    "useElsewhere": [
+      "environment: the problem states fuel = use per hour × hours; find the hours from the fuel and the use per hour"
+    ]
+  },
+  {
+    "id": "math-applied:rates:linear-model",
+    "group": "10-18",
+    "objective": "After this, a child can explain the starting amount and the daily change in a linear tank rule, shown by tapping which number is the start, which number is the daily change, and entering the day the tank reaches empty for the problem's givens.",
+    "standard": {
+      "code": "HSF.LE.B.5",
+      "source": "https://www.thecorestandards.org/Math/Content/HSF/LE/"
+    },
+    "why": "A tank starts with a stated amount of water and loses a stated amount each day. What does the starting number mean, and what does the daily number mean, for the day the tank runs out?",
+    "buildsOn": [
+      "math-applied:rates:two-step",
+      "math-applied:rates:rearrange"
+    ],
+    "useElsewhere": [
+      "environment: water leaving a tank each day, as the two numbers in a linear rule"
+    ]
+  },
+  {
+    "id": "math-applied:rates:break-even",
+    "group": "10-18",
+    "objective": "After this, a child can compute the length where two linear quotes cost the same, shown by entering that length from a graph of the two quotes.",
+    "standard": {
+      "code": "HSA.REI.C.6",
+      "source": "https://www.thecorestandards.org/Math/Content/HSA/REI/"
+    },
+    "why": "Two workshops price a ramp. One charges more to show up and less per metre. The other does the reverse. At what length do they cost the same?",
+    "buildsOn": [
+      "math-applied:rates:two-step",
+      "math-applied:rates:slope-speed"
+    ],
+    "useElsewhere": [
+      "economics: the length where two price rules cost the same, with no price stated as a real quote"
+    ]
+  },
+  {
+    "id": "math-applied:trig:ratios",
+    "group": "10-18",
+    "objective": "After this, a child can compute a side ratio for an acute angle and show it stays the same when the ramp is scaled, shown by entering rise divided by the sloping side for two ramps of the same steepness.",
+    "standard": {
+      "code": "HSG.SRT.C.6",
+      "source": "https://www.thecorestandards.org/Math/Content/HSG/SRT/"
+    },
+    "why": "Two ramps have the same steepness and different sizes. Rise divided by the sloping side is the same number on both. That number belongs to the angle, not to the size.",
+    "buildsOn": [
+      "math-applied:geometry:pythagoras",
+      "math-applied:geometry:scale-drawing",
+      "math-number:fractions:divide"
+    ],
+    "useElsewhere": [
+      "physics: a small model ramp and a full-size ramp with the same angle share the same side ratio"
+    ]
+  },
+  {
+    "id": "math-applied:trig:missing-side",
+    "group": "10-18",
+    "objective": "After this, a child can compute a missing side of a right triangle from an acute angle and one side, shown by entering the height of a pole from its shadow length and the sun's angle.",
+    "standard": {
+      "code": "HSG.SRT.C.8",
+      "source": "https://www.thecorestandards.org/Math/Content/HSG/SRT/"
+    },
+    "why": "A pole casts a shadow. The shadow length and the sun's angle above the ground are both given. How tall is the pole, without climbing it?",
+    "buildsOn": [
+      "math-applied:trig:ratios",
+      "math-applied:measure:angle-degrees"
+    ],
+    "useElsewhere": [
+      "environment: the height of a tower from its shadow, by the same method, with no real tower height stated"
+    ]
+  },
+  {
+    "id": "math-applied:trig:missing-angle",
+    "group": "10-18",
+    "objective": "After this, a child can compute an acute angle from two sides of a right triangle, shown by entering the degree steepness of a ramp from its rise and its run.",
+    "standard": {
+      "code": "HSG.SRT.C.8",
+      "source": "https://www.thecorestandards.org/Math/Content/HSG/SRT/"
+    },
+    "why": "A ramp rises 1 metre over a 4 metre run. How steep is it in degrees, when a protractor cannot span the ramp?",
+    "buildsOn": [
+      "math-applied:trig:ratios",
+      "math-applied:measure:angle-degrees"
+    ],
+    "useElsewhere": [
+      "economics: the angle a roof order needs, with no price stated"
+    ]
+  },
+  {
+    "id": "math-applied:trig:bearings",
+    "group": "10-18",
+    "objective": "After this, a child can compute a direction angle from two perpendicular distances, shown by entering the angle from north for 6 kilometres east and 8 kilometres north.",
+    "standard": {
+      "code": "HSG.SRT.C.8",
+      "source": "https://www.thecorestandards.org/Math/Content/HSG/SRT/"
+    },
+    "why": "A boat must go 6 kilometres east and 8 kilometres north. Which angle from north does it point along?",
+    "buildsOn": [
+      "math-applied:trig:missing-angle"
+    ],
+    "useElsewhere": [
+      "geography: a direction angle between two places from two perpendicular distances"
+    ]
+  },
+  {
+    "id": "math-applied:trig:triangle-area",
+    "group": "10-18",
+    "objective": "After this, a child can compute the area of a triangle that is not a right triangle, from two sides and the included angle, shown by drawing the perpendicular and entering the area.",
+    "standard": {
+      "code": "HSG.SRT.D.9",
+      "source": "https://www.thecorestandards.org/Math/Content/HSG/SRT/"
+    },
+    "why": "A roof panel is a triangle that is not a right triangle. Two sides and the angle between them are known. How much sheet is needed?",
+    "buildsOn": [
+      "math-applied:trig:missing-side",
+      "math-applied:measure:rect-area"
+    ],
+    "useElsewhere": [
+      "economics: the sheet area a roof order needs, with no price stated"
+    ]
+  },
+  {
+    "id": "math-applied:trig:law-of-sines",
+    "group": "10-18",
+    "objective": "After this, a child can compute a tower height from two angles and the distance between them, shown by entering the height when neither viewpoint is square-on to the tower.",
+    "standard": {
+      "code": "HSG.SRT.D.11",
+      "source": "https://www.thecorestandards.org/Math/Content/HSG/SRT/"
+    },
+    "why": "A surveyor stands at two points on a straight path and measures the angles up to a tower. Neither spot is square-on to the tower. How tall is it?",
+    "buildsOn": [
+      "math-applied:trig:missing-side",
+      "math-applied:trig:missing-angle"
+    ],
+    "useElsewhere": [
+      "geography: the height of a tower that cannot be stood opposite, from two angles and the gap between them"
+    ]
+  }
+]

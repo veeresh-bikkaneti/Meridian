@@ -1,8 +1,12 @@
 import { test, expect } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 import {
+  AuditTrail,
+  type AuditStats,
+  ACK_POOL,
   assertSubsequence,
   collectAudioRequests,
+  collectAuditWindow,
   currentPhase,
   detectivePlays,
   entryByName,
@@ -72,6 +76,7 @@ test("WIN in 2: NOTE_MARK + ask-next after the miss, CELEBRATE, debrief in order
 }) => {
   await fulfillFlagsOn(context);
   const requests = collectAudioRequests(page);
+  const trail = new AuditTrail();
   await openSeamCase(page, 137);
   const readPhaseLog = await startPhaseLog(page);
   await waitForSearchIdle(page);
@@ -81,7 +86,14 @@ test("WIN in 2: NOTE_MARK + ask-next after the miss, CELEBRATE, debrief in order
   await guessByEntryId(page, lasVegas.id, "las vegas");
   // The selection read plays (name → suspicion), then the NOTE_MARK
   // beat, then ask-next — sampled on the phase log + the play record.
-  await waitForPhase(page, "NOTE_MARK", 60_000);
+  // NOTE_MARK is a short beat: read it from the 40 ms phase log, not
+  // a slower point poll that can step over it (the failure prints the
+  // whole timeline).
+  await expect
+    .poll(async () => (await readPhaseLog()).map((p) => p.phase), {
+      timeout: 60_000,
+    })
+    .toContain("NOTE_MARK");
   await expect
     .poll(() => detectivePlays(page), { timeout: 60_000 })
     .toEqual(
@@ -92,7 +104,7 @@ test("WIN in 2: NOTE_MARK + ask-next after the miss, CELEBRATE, debrief in order
   const playsAfterMiss = await detectivePlays(page);
   assertSubsequence(playsAfterMiss, [
     "names/5506956.mp3",
-    "fixed/suspicion.mp3",
+    ACK_POOL,
     "fixed/ask-next.mp3",
   ]);
   const phaseLog = await readPhaseLog();
@@ -114,6 +126,12 @@ test("WIN in 2: NOTE_MARK + ask-next after the miss, CELEBRATE, debrief in order
   await guessByEntryId(page, "geonames:5505411", "henderson");
   await waitForPhase(page, "CELEBRATE", 60_000);
   console.log("[endings WIN] CELEBRATE phase reached");
+  /* Zero-overlap audit, endings transitions (Silo QA gap N2): the
+   * window opens the moment CELEBRATE is reached and samples every
+   * frame across the whole celebration choreography (jump →
+   * high-five → clap → settle) into the DEBRIEF — neither figure's
+   * painted box may touch clue-article leaf text (0 px²). */
+  const celebrateWindow = collectAuditWindow(page, 9_000);
 
   // Debrief order: frame → the answer's name → close, after the win
   // lines. Asserted on the play record, cross-checked on the network.
@@ -132,7 +150,7 @@ test("WIN in 2: NOTE_MARK + ask-next after the miss, CELEBRATE, debrief in order
   const plays = await detectivePlays(page);
   const winIdx = assertSubsequence(plays, [
     "names/5505411.mp3",
-    "fixed/suspicion.mp3",
+    ACK_POOL,
     "fixed/win-holmes.mp3",
     "fixed/win-watson.mp3",
     ...debriefNeedles,
@@ -144,6 +162,27 @@ test("WIN in 2: NOTE_MARK + ask-next after the miss, CELEBRATE, debrief in order
   console.log(
     `[endings WIN] win+debrief play idx=${winIdx.join(",")} debrief network idx=${netIdx.join(",")} watchdogSeeks=${await watchdogSeeks(page)}`,
   );
+  trail.absorb(await celebrateWindow, "WIN celebrate→debrief @ endings");
+
+  /* Negative pin (Silo QA gap N7): the case was solved on guess 2,
+   * so NO clue-3, clue-4 or clue-5 clip may ever fire — not in the
+   * play record and not on the network. assertSubsequence above
+   * cannot forbid extra clips; this absence assertion can. A short
+   * settle window runs first so a late, wrongly-queued clip would
+   * have time to surface before the lists are read. */
+  await page.waitForTimeout(2_000);
+  const finalPlays = await detectivePlays(page);
+  for (const n of [3, 4, 5]) {
+    const needle = `case-137/clue-${n}.mp3`;
+    expect(
+      finalPlays.some((u) => u.includes(needle)),
+      `WIN in 2: ${needle} must never play after a guess-2 solve`,
+    ).toBe(false);
+    expect(
+      requests.some((u) => u.includes(needle)),
+      `WIN in 2: ${needle} must never be requested after a guess-2 solve`,
+    ).toBe(false);
+  }
 });
 
 test("FAIL in 5: the answer is read aloud and POUT holds ≥3 s", async ({
@@ -152,6 +191,7 @@ test("FAIL in 5: the answer is read aloud and POUT holds ≥3 s", async ({
 }) => {
   await fulfillFlagsOn(context);
   const requests = collectAudioRequests(page);
+  const trail = new AuditTrail();
   await openSeamCase(page, 137);
   const readPhaseLog = await startPhaseLog(page);
   await waitForSearchIdle(page);
@@ -164,6 +204,7 @@ test("FAIL in 5: the answer is read aloud and POUT holds ≥3 s", async ({
     ["cairo", ""],
   ];
   const used = new Set<string>();
+  let failWindow: Promise<AuditStats> | null = null;
   for (let i = 0; i < misses.length; i++) {
     const [name] = misses[i]!;
     const entry = entryByName(name);
@@ -172,6 +213,13 @@ test("FAIL in 5: the answer is read aloud and POUT holds ≥3 s", async ({
     await guessByEntryId(page, entry.id, name);
     if (i < misses.length - 1) {
       await waitForSearchIdle(page, 150_000);
+    } else {
+      /* Zero-overlap audit, endings transitions (Silo QA gap N2):
+       * the window opens as the final miss commits and samples
+       * every frame across SELECTION_READ → FAIL_READ → POUT —
+       * neither figure's painted box may touch clue-article leaf
+       * text (0 px²). */
+      failWindow = collectAuditWindow(page, 12_000);
     }
   }
 
@@ -202,4 +250,6 @@ test("FAIL in 5: the answer is read aloud and POUT holds ≥3 s", async ({
   const phaseLog = await readPhaseLog();
   expect(phaseLog.map((p) => p.phase)).toContain("FAIL_READ");
   console.log(`[endings FAIL] watchdogSeeks=${await watchdogSeeks(page)}`);
+  expect(failWindow, "the FAIL_READ→POUT audit window must have opened").not.toBeNull();
+  trail.absorb(await failWindow!, "FAIL fail-read→pout @ endings");
 });

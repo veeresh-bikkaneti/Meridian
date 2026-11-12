@@ -24,6 +24,24 @@ const ESRI_ATTRIBUTION =
 const EMAIL_SHAPED = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/;
 
 async function expectCreditsContent(page: import("playwright/test").Page) {
+  // The credits route renders after the click/navigation lands, so a
+  // single immediate body read races the render (intermittent failure
+  // on unmodified main: runs 42511936129, 42662167590, 42692238457).
+  // Poll the body text until it carries the credits — same assertions,
+  // same strength, only the waiting changes.
+  await expect
+    .poll(async () => {
+      const text = await page.locator("body").innerText();
+      return (
+        text.includes("GeoNames") &&
+        text.includes("CC BY 4.0") &&
+        text.includes("Wikipedia") &&
+        text.includes("CC BY-SA") &&
+        text.includes(ESRI_ATTRIBUTION) &&
+        text.includes("MapLibre")
+      );
+    })
+    .toBe(true);
   const text = await page.locator("body").innerText();
   expect(text).toContain("GeoNames");
   expect(text).toContain("CC BY 4.0");

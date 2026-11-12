@@ -15,24 +15,22 @@ import { AGE_BANDS } from "./bands.ts";
 
 /**
  * Follow-up Item A regression gate: getBandConfig(null) (unset profile)
- * deep-equals TODAY's production numbers — the "11-13" full-access band —
- * byte-for-byte, per loop. If the band table retunes, these tests pin the
- * production contract: any intentional change must update the gate.
+ * deep-equals the 10-18 full-access numbers. If the band table retunes,
+ * these tests pin the production contract: any intentional change must
+ * update the gate.
  *
- * Intentional change (owner, 2026-10-20 — "we dont check the age of the
- * player, so we need the hints on by default"): the unset config now
- * differs from the explicit 11-13 config in EXACTLY ONE field — the hint
- * policy is "one-per-round" instead of "none", so the hint bulb shows
- * for players who never set a profile. PRODUCTION_CONFIG below remains
- * the explicit 11-13 contract; UNSET_CONFIG is the unset contract.
+ * Owner, 2026-10-20: hints on by default for an unset profile. Owner,
+ * 2026-11-10: an explicit 10-18 is also one-per-round, so the two configs
+ * match today. Unset still reads DEFAULT_HINT_POLICY, not the 10-18 row.
+ * An explicit 18+ is "none". The numeric row is the previous 11-13 row.
  */
 const PRODUCTION_CONFIG: BandRunConfig = {
-  band: "11-13",
+  band: "10-18",
   quizQs: 12,
   terrainImages: 8,
   capitalQs: 12,
   duelSeconds: 60,
-  hintPolicy: "none",
+  hintPolicy: "one-per-round",
   pinTolerance: 1.0,
   startingClues: 1,
   guessCap: 5,
@@ -82,54 +80,47 @@ test("geodetective: unset config == today's production deal (1 clue, cap 5)", ()
 
 test("expedition-trails: unset config == full-access production numbers", () => {
   const config = getBandConfig(null);
-  assert.ok(AGE_BANDS["11-13"].loops.includes("expedition-trails"));
+  assert.ok(AGE_BANDS["10-18"].loops.includes("expedition-trails"));
   assert.deepEqual(config, UNSET_CONFIG);
 });
 
 test("passport-stamps: unset config == full-access production numbers", () => {
   const config = getBandConfig(null);
-  assert.ok(AGE_BANDS["11-13"].loops.includes("passport-stamps"));
+  assert.ok(AGE_BANDS["10-18"].loops.includes("passport-stamps"));
   assert.deepEqual(config, UNSET_CONFIG);
 });
 
 // --- per-band values ---
 
-test("band values: 5-7 / 8-10 short rounds, free/limited hints", () => {
-  assert.deepEqual(getBandConfig("5-7"), {
-    band: "5-7",
-    quizQs: 5,
-    terrainImages: 4,
-    capitalQs: null,
-    duelSeconds: null,
-    hintPolicy: "free",
-    pinTolerance: 1.5,
-    startingClues: null,
-    guessCap: null,
-  });
-  assert.deepEqual(getBandConfig("8-10"), {
-    band: "8-10",
+test("band values: 7-10 free hints; 10-18 one-per-round; 18+ none", () => {
+  assert.deepEqual(getBandConfig("7-10"), {
+    band: "7-10",
     quizQs: 8,
     terrainImages: 6,
     capitalQs: 8,
     duelSeconds: null,
-    hintPolicy: "one-per-round",
+    hintPolicy: "free",
     pinTolerance: 1.25,
     startingClues: 3,
     guessCap: 6,
   });
-  assert.deepEqual(getBandConfig("11-13"), PRODUCTION_CONFIG);
+  assert.deepEqual(getBandConfig("10-18"), PRODUCTION_CONFIG);
+  assert.deepEqual(getBandConfig("18+"), {
+    ...PRODUCTION_CONFIG,
+    band: "18+",
+    hintPolicy: "none",
+  });
 });
 
-test("null band vs explicit 11-13: identical except the hint policy (owner 2026-10-20)", () => {
+test("null band vs explicit 10-18: same hint policy today, unset still uses the default", () => {
   const unset = getBandConfig(null);
-  const explicit = getBandConfig("11-13");
-  // The ONLY delta: hints on by default for the unset profile.
+  const explicit = getBandConfig("10-18");
   assert.equal(unset.hintPolicy, "one-per-round");
-  assert.equal(explicit.hintPolicy, "none");
-  assert.deepEqual(unset, { ...explicit, hintPolicy: "one-per-round" });
-  // The snapshot's band field stays "11-13" either way (badge award keys
-  // off it — see the #113 BLOCK 1 test at the bottom of this file).
-  assert.equal(unset.band, "11-13");
+  assert.equal(explicit.hintPolicy, "one-per-round");
+  assert.equal(unset.hintPolicy, DEFAULT_HINT_POLICY);
+  assert.deepEqual(unset, explicit);
+  assert.equal(unset.band, "10-18");
+  assert.equal(getBandConfig("18+").hintPolicy, "none");
 });
 
 test("default (unset) hint policy: bulb visible, one per place, no mascot offer", () => {
@@ -192,11 +183,15 @@ test("isBandRunConfig validates the snapshot shape", () => {
   );
   assert.equal(isBandRunConfig({ ...getBandConfig(null), quizQs: "12" }), false);
   assert.equal(isBandRunConfig({ ...getBandConfig(null), band: "9-99" }), false);
+  // Legacy meridian.loop.v2 snapshots must still pass, or the streak is wiped.
+  for (const legacy of ["5-7", "8-10", "11-13"]) {
+    assert.equal(isBandRunConfig({ ...getBandConfig(null), band: legacy }), true, legacy);
+  }
 });
 
 test("snapshot records the deal-time band (#113 BLOCK 1: badge award must use this, never the live band)", () => {
-  assert.equal(getBandConfig("5-7").band, "5-7");
-  assert.equal(getBandConfig("8-10").band, "8-10");
-  assert.equal(getBandConfig("11-13").band, "11-13");
-  assert.equal(getBandConfig(null).band, "11-13"); // unset → full-access band
+  assert.equal(getBandConfig("7-10").band, "7-10");
+  assert.equal(getBandConfig("10-18").band, "10-18");
+  assert.equal(getBandConfig("18+").band, "18+");
+  assert.equal(getBandConfig(null).band, "10-18"); // unset → full-access band
 });

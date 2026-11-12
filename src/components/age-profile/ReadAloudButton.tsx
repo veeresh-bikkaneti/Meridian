@@ -2,9 +2,9 @@
  * ReadAloudButton.tsx — the read-aloud control with three visual states
  * (Phase 2 §4), driven by the band's `audioMode`.
  *
- * - auto (5-7): filled "🔊 Listen" button; auto-plays on card reveal.
- * - button (8-10): ghost speaker ICON, 44px, no text label; tap-to-play.
- * - off (11-13): the SAME ghost speaker icon as 8-10 — identical chrome
+ * - auto (no current group; mode kept): filled "🔊 Listen" button; auto-plays on card reveal.
+ * - button (7-10): ghost speaker ICON, 44px, no text label; tap-to-play.
+ * - off (10-18, 18+): the SAME ghost speaker icon as 7-10 — identical chrome
  *   across bands, so the band stays invisible to the child (Item C/B3).
  *
  * The kid-set onboarding preference (read-aloud-pref.ts) gates auto-read:
@@ -47,7 +47,7 @@ function speechAvailable(): boolean {
   return typeof window !== "undefined" && "speechSynthesis" in window;
 }
 
-/** Speaker icon (shared by 8-10 and 11-13 — byte-identical chrome). */
+/** Speaker icon (shared by all groups — byte-identical chrome). */
 function SpeakerIcon() {
   return (
     <svg
@@ -116,8 +116,8 @@ export function ReadAloudButton({ text, mode, autoplay, speakKey, pref }: ReadAl
   // mid-session band changes never restart speech. The kid's preference
   // gates it: "sometimes"/"never" disable auto-read; "always" plays on
   // EVERY card in EVERY band when sound is on (owner 2026-10-09 — the old
-  // `mode === "auto"` gate silently broke the promise for 8-10/11-13);
-  // unset keeps today's per-card band default (5-7 only).
+  // `mode === "auto"` gate silently broke the promise for every group);
+  // unset keeps today's per-card band default (auto mode only).
   useEffect(() => {
     setShowReadAlong(false);
     const bandWantsAuto = mode === "auto" && autoplay;
