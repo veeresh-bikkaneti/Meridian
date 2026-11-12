@@ -49,9 +49,9 @@ URL switches:
 
 Every frame is a pure function of `t`, so a capture gives the same pixels every run. Frame 0 and the last frame (t = 7.958) differ only by breathing (PSNR 40.9 dB), so the take loops; the build agent can still add the 0.4 s crossfade from the prompt.
 
-Timeline (base band): 0 to 1 s poster hold. 1.0 to 3.7 s Watson tosses the ball, scoots left and catches it; the lens lifts off Holmes's glass and follows the ball while the gold parabola draws behind it. 3.0 to 5.0 s the lens slides onto the ladder; the right triangle (ladder, post, ground), the angle arc at the foot and a right-angle mark draw on. 5.0 to 6.5 s the lens dips to the pie; four gold diameters cut it into 8 equal slices while Watson leans in with a small bounce. 6.5 to 8.0 s lines fade, the lens returns to Holmes's hand, Holmes glances at Watson, Watson nods and walks back to his frame-0 spot.
+Timeline (base band): 0 to 1 s poster hold. 1.0 to 3.7 s Watson tosses the ball, scoots left and catches it; the lens lifts off Holmes's glass and follows the ball while the gold parabola draws behind it. 3.0 to 5.0 s the lens slides onto the ladder; all three sides of the right triangle (ladder, post, ground) are down by 3.9 s, then the angle arc at the foot and a right-angle mark, so the still at t=4 shows the whole triangle. Watson stands clear of the table and post for this beat. 5.0 to 6.5 s the lens dips to the pie; four gold diameters cut it into 8 equal slices while Watson leans in with a small bounce. 6.5 to 8.0 s lines fade, the lens returns to Holmes's hand, Holmes glances at Watson, Watson nods and walks back to his frame-0 spot.
 
-The lens effect: the scene renders to one target and the gold lines (tube meshes) to a second. A composite pass shows the lines only inside the lens circle, magnifies the view 1.16× inside the glass, adds a soft glow around the lines, draws the brass rim and its shadow, and a faint light beam from Holmes's lens to the travelling lens view (the same device as the torch beam in the Cold Trail film). Outside the lens the street is ordinary.
+The lens effect: the scene renders to one target and the gold lines (tube meshes) to a second. A composite pass shows the lines only inside the lens circle, magnifies the view 1.16× inside the glass, adds a soft glow around the lines, draws the brass rim and its shadow, and a faint light beam from Holmes's hand to the travelling lens view (the same device as the torch beam in the Cold Trail film). There is only ever one lens: the view grows out of the glass in his hand, the prop is hidden while the view is out, and it reappears as the view docks back. Outside the lens the street is ordinary.
 
 ## Recording
 
@@ -62,7 +62,7 @@ node scripts/why-learn-film/capture.mjs 10-18 stills --stills    # poster.png (t
 ffmpeg -framerate 24 -i frames-base/f%04d.png -vf scale=1094:616 -c:v libx264 -crf 36 -preset veryslow -an -movflags +faststart -pix_fmt yuv420p why-learn-film.mp4
 ```
 
-`capture.mjs` uses the repo's `playwright`. If its browser isn't installed, point `CHROME_PATH` at any local Chrome or Chromium. A test encode of the base band at CRF 36 came to 121,873 bytes, well under the 400 KB cap. A Chrome agent can equally record the live page (it loops in real time) and encode the take with the prompt's ffmpeg line.
+`capture.mjs` uses the repo's `playwright`. If its browser isn't installed, point `CHROME_PATH` at any local Chrome or Chromium. A test encode of the base band at CRF 36 came to 121,782 bytes, well under the 400 KB cap. A Chrome agent can equally record the live page (it loops in real time) and encode the take with the prompt's ffmpeg line.
 
 ## Look: how it matches the shipped Home films
 

@@ -436,10 +436,10 @@ const pxRadius = (v, r) => {
 // the centre 60% of the frame (phones crop to full width × 180 px).
 const SET = {
   holmes: new THREE.Vector3(-1.95, 0, 0.35),
-  watsonStart: new THREE.Vector3(2.15, 0, 0.0),
-  watsonCatch: new THREE.Vector3(1.3, 0, 0.35),
+  watsonStart: new THREE.Vector3(2.5, 0, 0.0),
+  watsonCatch: new THREE.Vector3(1.72, 0, 0.5),
   post: new THREE.Vector3(0.55, 0, -1.5),
-  table: new THREE.Vector3(0.62, 0, 1.45),
+  table: new THREE.Vector3(0.72, 0, 1.6),
 };
 
 const S = {};
@@ -531,9 +531,9 @@ async function build() {
     scene.add(S.hose);
     S.ball.visible = false;
     // A bucket the water lands in.
-    S.bucket = mesh(new THREE.CylinderGeometry(0.19, 0.15, 0.32, 16, 1, true), 0x7b8a96, [0.15, 0.16, 0.65], { mat: { side: THREE.DoubleSide } });
+    S.bucket = mesh(new THREE.CylinderGeometry(0.19, 0.15, 0.32, 16, 1, true), 0x7b8a96, [-0.25, 0.16, 0.75], { mat: { side: THREE.DoubleSide } });
     S.bridge = toonify(P.bridge);
-    S.bridge.position.set(0.55, 0.9, -2.2);
+    S.bridge.position.set(0.25, 0.9, -2.2);
     scene.add(S.bridge);
     // Stone parapet the bridge rises behind (it spans the river beyond).
     mesh(new THREE.BoxGeometry(5.2, 0.7, 0.35), 0xb9b2a5, [0.8, 0.35, -1.65]);
@@ -572,8 +572,8 @@ function buildLines() {
     S.arc = { a, b, apex: 3.0, t0: 1.3, t1: 3.7 };
   } else {
     // Hose water: from the nozzle in Watson's hand into the bucket.
-    const a = new THREE.Vector3(SET.watsonStart.x - 0.45, 1.05, SET.watsonStart.z + 0.3);
-    const b = new THREE.Vector3(0.15, 0.3, 0.65);
+    const a = new THREE.Vector3(SET.watsonCatch.x - 0.45, 1.05, SET.watsonCatch.z + 0.3);
+    const b = new THREE.Vector3(-0.25, 0.3, 0.75);
     S.arc = { a, b, apex: 2.45, t0: 1.3, t1: 3.1 };
   }
   const arcPts = [];
@@ -633,7 +633,7 @@ function buildLines() {
     for (let i = 0; i <= 20; i++) { const k = (i / 20) * ang; arc.push([l.x + Math.cos(k) * 0.42, l.y + Math.sin(k) * 0.42, l.z]); }
     S.L.angle = goldLine(arc, { segs: 40, radius: 0.02 });
     S.shapeFocus = top.clone().add(l).add(r).multiplyScalar(1 / 3).add(new THREE.Vector3(0, 0.08, 0));
-    S.shapeR = 1.75;
+    S.shapeR = 1.55;
   }
 
   // Split beat: equal slices on the pie or pizza; or one bowl to three.
@@ -699,7 +699,7 @@ function updateScene(t) {
 
   // Watson.
   const walkTo = ramp(t, 1.6, 3.4), walkBack = ramp(t, 6.5, 7.6);
-  const pos = BAND === "18+" ? SET.watsonStart.clone() : SET.watsonStart.clone().lerp(SET.watsonCatch, walkTo * (1 - walkBack));
+  const pos = BAND === "18+" ? SET.watsonCatch.clone() : SET.watsonStart.clone().lerp(SET.watsonCatch, walkTo * (1 - walkBack));
   Wt.root.position.copy(pos);
   const walking = BAND !== "18+" && ((t > 1.6 && t < 3.4) || (t > 6.5 && t < 7.6));
   const stride = walking ? Math.sin(t * 14) : 0;
@@ -708,6 +708,7 @@ function updateScene(t) {
     p = mixPose(HOLD, POSES.watson.toss, ramp(t, 1.0, 1.3));
     p = mixPose(p, mixPose(POSES.watson.walk, { ...POSES.watson.walk, head: [-22, 0, 0] }, 1), ramp(t, 1.7, 2.2));
     p = mixPose(p, CATCH, ramp(t, 3.3, 3.65));
+    p = mixPose(p, HOLD, ramp(t, 3.72, 3.98)); // ball down to the chest, face clear
     p = mixPose(p, POSES.watson["lean-in"], ramp(t, 5.1, 5.6));
     p = mixPose(p, HOLD, ramp(t, 6.5, 7.2));
   } else {
@@ -735,7 +736,7 @@ function updateScene(t) {
   // Ball: in Watson's right hand, in flight, caught, then held.
   if (S.arc && BAND !== "18+") {
     const { t0, t1 } = S.arc;
-    if (t < t0 || t >= 6.9) { Wt.handR.getWorldPosition(tmp); S.ball.position.copy(tmp).add(new THREE.Vector3(0, 0.06, 0.06)); }
+    if (t < t0 || t >= 3.98) { Wt.handR.getWorldPosition(tmp); S.ball.position.copy(tmp).add(new THREE.Vector3(0, 0.06, 0.06)); }
     else if (t < t1) S.ball.position.copy(arcAt((t - t0) / (t1 - t0)));
     else {
       const l = new THREE.Vector3(), r = new THREE.Vector3();
@@ -743,6 +744,9 @@ function updateScene(t) {
       const held = l.add(r).multiplyScalar(0.5).add(new THREE.Vector3(0, 0.05, 0.08));
       // Settle in from the catch point over 0.15 s.
       S.ball.position.copy(arcAt(1)).lerp(held, ramp(t, t1, t1 + 0.15));
+      // Then into the right hand as the arms come down to the chest.
+      Wt.handR.getWorldPosition(tmp);
+      S.ball.position.lerp(tmp.add(new THREE.Vector3(0, 0.06, 0.06)), ramp(t, 3.72, 3.98));
     }
     S.ball.rotation.set(t * 4, t * 2.5, 0);
   }
@@ -814,6 +818,10 @@ function renderFrame(t) {
   const home = ramp(t, 6.55, 7.2);
   tgt.lerp(dockC, home); R = lerp(R, dockR, home);
   const on = ramp(t, 1.0, 1.25) * (1 - ramp(t, 7.0, 7.25));
+  // One lens: the travelling view grows out of the glass in Holmes's
+  // hand, so the prop is hidden while the view is out (only the hand
+  // and the beam link them) and comes back as the view docks.
+  S.lens.visible = on < 0.15;
 
   // Lines: draw on in time with the action, fade together at the end.
   const fade = 1 - ramp(t, 6.5, 7.0);
@@ -823,9 +831,11 @@ function renderFrame(t) {
   const arcFade = 1 - ramp(t, 3.15, 3.6), shapeFade = 1 - ramp(t, 5.05, 5.45);
   if (BAND !== "18+") reveal(ln.arc, (t - 1.3) / (S.arc.t1 - 1.3), arcFade);
   else reveal(ln.arc, (t - 1.3) / (S.arc.t1 - 1.3 - 0.35), arcFade);
-  reveal(ln.tri, (t - 3.25) / 0.9, shapeFade);
-  reveal(ln.angle, (t - 4.05) / 0.5, shapeFade);
-  reveal(ln.square, (t - 4.2) / 0.4, shapeFade);
+  // All three sides are down by 3.9 s and the angle arc by 4.05 s, so
+  // the still (t=4) shows the whole triangle.
+  reveal(ln.tri, (t - 3.3) / 0.6, shapeFade);
+  reveal(ln.angle, (t - 3.75) / 0.3, shapeFade);
+  reveal(ln.square, (t - 3.8) / 0.25, shapeFade);
   ln.slices.forEach((s, i) => reveal(s, (t - 5.35 - i * 0.16) / 0.3, fade));
   reveal(ln.ring, (t - 5.3) / 0.5, fade * 0.8);
 
