@@ -16,6 +16,33 @@ import * as THREE from "three";
 
 const V = (x, y, z) => new THREE.Vector3(x, y, z);
 
+// A recipe card with no words: a bowl-and-spoon picture over four wavy
+// "text-like" lines. Drawn on a canvas (no letters, digits or symbols).
+export function recipeCard(w = 0.3, h = 0.4) {
+  const cv = document.createElement("canvas");
+  cv.width = 300; cv.height = 400;
+  const g = cv.getContext("2d");
+  g.fillStyle = "#f7ecd2"; g.fillRect(0, 0, 300, 400);
+  g.strokeStyle = "#c98f52"; g.lineWidth = 14; g.strokeRect(7, 7, 286, 386);
+  // bowl
+  g.fillStyle = "#5fa6c8"; g.strokeStyle = "#2a1f17"; g.lineWidth = 9; g.lineJoin = "round"; g.lineCap = "round";
+  g.beginPath(); g.moveTo(60, 98); g.lineTo(190, 98); g.quadraticCurveTo(188, 168, 125, 170); g.quadraticCurveTo(62, 168, 60, 98); g.closePath(); g.fill(); g.stroke();
+  g.fillStyle = "#fff1d0"; g.beginPath(); g.ellipse(125, 98, 65, 12, 0, 0, Math.PI * 2); g.fill(); g.stroke();
+  // spoon
+  g.beginPath(); g.moveTo(215, 150); g.lineTo(250, 66); g.stroke();
+  g.fillStyle = "#d9a531"; g.beginPath(); g.ellipse(255, 54, 13, 20, 0.4, 0, Math.PI * 2); g.fill(); g.stroke();
+  // wavy lines
+  g.strokeStyle = "#7a5a3c"; g.lineWidth = 10;
+  [[222, 232], [268, 212], [314, 232], [360, 150]].forEach(([y, len], i) => {
+    g.beginPath();
+    for (let x = 0; x <= len; x += 4) { const yy = y + Math.sin(x / 14 + i) * 5; if (x === 0) g.moveTo(40, yy); else g.lineTo(40 + x, yy); }
+    g.stroke();
+  });
+  const tex = new THREE.CanvasTexture(cv);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return { tex, w, h };
+}
+
 export function createBand18(c) {
   const { scene, S, mesh, toon, toonify, goldLine, poly, reveal, ramp, smooth, clamp01, lerp, toScreen } = c;
   const B = { arcR: 215 };
@@ -114,6 +141,18 @@ export function createBand18(c) {
     S.bowls.scale.setScalar(SCALE);
     scene.add(S.bowls);
     S.bowl = [0, 1, 2].map((i) => S.bowls.getObjectByName(`bowl-${i}`));
+
+    // Recipe card standing on the counter, behind and beside the middle bowl.
+    const rc = recipeCard(0.34, 0.45);
+    const card = new THREE.Group();
+    card.position.set(CTR.x + 0.55, TOP, CTR.z - 0.12);
+    card.rotation.x = -0.12;
+    scene.add(card);
+    mesh(new THREE.BoxGeometry(rc.w + 0.03, rc.h + 0.03, 0.02), 0x2a1f17, [0, rc.h / 2, -0.012], { parent: card, ink: false });
+    const face = new THREE.Mesh(new THREE.PlaneGeometry(rc.w, rc.h), new THREE.MeshBasicMaterial({ map: rc.tex }));
+    face.position.set(0, rc.h / 2, 0.002);
+    card.add(face);
+    S.recipeCard = card;
   };
 
   // ── Gold lines ─────────────────────────────────────────────────────────

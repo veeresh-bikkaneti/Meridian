@@ -10,13 +10,15 @@
 // frame at a fixed screen spot; every prop is a pure function of t.
 // scene.js calls createMontage(ctx) once, then update(t) every frame.
 import * as THREE from "three";
+import { recipeCard } from "./band-18plus.js";
 
 export const LENS_R = 170;  // lens radius in px while it sits on the stage
 export const MAG = 1.4;     // lens magnification at the door beat (1.16 + 0.24, see renderFrame)
 const SCREEN = [560, 288];  // stage centre on the 1094x616 frame (inside the safe zone)
-const START = [7.34, 7.66, 7.98, 8.30, 8.62]; // pop start per link: origin, ball, bridge, flask, map
+const START = [7.12, 7.20, 7.60, 8.00, 8.40]; // pop start per link: origin, ball, bridge, flask, map (each link holds ~0.4 s at full size)
+const OFF = 0.24;           // previous link starts leaving once the next is nearly full
 const POP = 0.26;           // each pop lasts about a quarter second, ease-in
-const CURL = [9.0, 9.14];   // thread curls into the lens, stage empties before the lens leaves
+const CURL = [9.06, 9.18];   // thread curls into the lens, stage empties before the lens leaves
 
 const INKC = 0x2a1f17;
 
@@ -61,6 +63,7 @@ export async function createMontage(c) {
   // ── Backing disc (hidden under the lens, so nothing shows round it) ──
   const disc = m(new THREE.CylinderGeometry(0.985, 0.985, 0.05, 48), 0x2c6a80, [0, 0, -0.35], stage, { rot: [Math.PI / 2, 0, 0], ink: false });
   const objs = [grp(), grp(), grp(), grp(), grp()];
+  objs.forEach((o, k) => { o.position.z = 0.14 * k; }); // later links pop in front of the one leaving
   const T = {}; // per-link animated bits
 
   // ── 0: the band's maths object ──
@@ -102,7 +105,13 @@ export async function createMontage(c) {
     const s = 1.55 / (bb.max.x - bb.min.x);
     bowls.scale.setScalar(s);
     bowls.position.set(-cn.x * s, -cn.y * s, -cn.z * s);
-    h.add(bowls); h.rotation.x = 0.5; o0.add(h);
+    h.add(bowls); h.rotation.x = 0.5; h.scale.setScalar(0.78); h.position.x = -0.32; o0.add(h);
+    // the recipe card stands beside the bowl, so the bowl reads as a recipe
+    const rc = recipeCard(0.5, 0.66);
+    const card = new THREE.Group(); card.position.set(0.62, -0.28, 0.05); card.rotation.z = -0.06; o0.add(card);
+    m(new THREE.BoxGeometry(rc.w + 0.05, rc.h + 0.05, 0.04), 0x2a1f17, [0, rc.h / 2, -0.02], card, { ink: false });
+    const face = new THREE.Mesh(new THREE.PlaneGeometry(rc.w, rc.h), new THREE.MeshBasicMaterial({ map: rc.tex }));
+    face.position.set(0, rc.h / 2, 0.01); card.add(face);
   }
 
   // ── 1: a thrown ball on its arc (physics) ──
@@ -219,19 +228,19 @@ export async function createMontage(c) {
   };
 
   function update(t) {
-    const on = t > START[0] - 0.05 && t < CURL[1] + 0.02;
+    const on = t > START[0] - 0.02 && t < CURL[1] + 0.02;
     stage.visible = on;
     for (const l of [...ins, ...outs, curl]) if (l) l.visible = false;
     if (!on) return;
-    disc.scale.setScalar(ramp(t, START[0] - 0.03, START[0] + 0.1) * (1 - ramp(t, CURL[1] - 0.08, CURL[1])));
+    disc.scale.setScalar(ramp(t, START[0] - 0.01, START[0] + 0.1) * (1 - ramp(t, CURL[1] - 0.08, CURL[1])));
     for (let k = 0; k < 5; k++) {
       const [sx, sy] = pop(t, START[k]);
-      const out = k < 4 ? ramp(t, START[k + 1] + 0.1, START[k + 1] + 0.18) : ramp(t, CURL[0], CURL[0] + 0.12);
+      const out = k < 4 ? ramp(t, START[k + 1] + OFF, START[k + 1] + OFF + 0.08) : ramp(t, CURL[0], CURL[0] + 0.12);
       const s = 1 - out;
       objs[k].visible = sx * s > 0.01;
       objs[k].scale.set(Math.max(1e-3, sx * s), Math.max(1e-3, sy * s), Math.max(1e-3, ((sx + sy) / 2) * s));
       // thread: in during the first half of the pop, out in the second; both ease away with the prop
-      const lo = (START[k + 1] ?? CURL[0]) + 0.08;
+      const lo = (START[k + 1] ?? CURL[0]) + (k < 4 ? OFF : 0.0);
       const fade = 1 - ramp(t, lo, lo + 0.1);
       if (ins[k]) reveal(ins[k], (t - START[k] + 0.12) / 0.16, fade);
       if (outs[k]) reveal(outs[k], (t - START[k] - 0.1) / 0.18, fade);
@@ -239,7 +248,7 @@ export async function createMontage(c) {
     // curl into the lens
     reveal(curl, (t - CURL[0]) / 0.1, 1 - ramp(t, CURL[1] - 0.06, CURL[1]));
     // ball flies along its arc
-    { const u = lerp(0.04, 0.66, smooth((t - START[1]) / 0.34)); const [x, y] = T.arc(u);
+    { const u = lerp(0.04, 0.66, smooth((t - START[1]) / 0.5)); const [x, y] = T.arc(u);
       T.ball.position.set(x, y, 0.1); T.ball.rotation.z = -u * 5;
       T.dots.forEach((d, i) => { d.visible = i / 11 < u - 0.05; }); }
     // bubbles rise and pop out of the neck
