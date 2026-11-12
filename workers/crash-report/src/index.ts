@@ -123,6 +123,10 @@ export const RATE_LIMIT_BINDING = "CRASH_RATE_LIMITER";
 
 const RATE_LIMIT_MAX = 10;
 const RATE_LIMIT_WINDOW_MS = 60_000;
+/** Round 3: deadline for the shared rate-limit binding at admission. */
+export const RATE_LIMIT_BINDING_TIMEOUT_MS = 1_000;
+/** Round 3: deadline for reading the client's request body. */
+export const BODY_READ_TIMEOUT_MS = 10_000;
 
 const FORWARD_TIMEOUT_MS = 5_000;
 
@@ -459,13 +463,15 @@ export function normaliseEvent(raw: unknown): unknown {
     if (typeof v === "string" && v.length > cap) event[key] = v.slice(0, cap);
   }
   if (isPlainObject(event.error)) {
-    const error = { ...event.error };
-    if (typeof error.name === "string" && error.name.length > 80) {
-      error.name = error.name.slice(0, 80);
-    }
-    if (typeof error.message === "string" && error.message.length > 300) {
-      error.message = error.message.slice(0, 300);
-    }
+    // Council fix T1: keep ONLY name/message (stack, cause and nested
+    // objects never travel further) and scrub both before anything —
+    // alert, email, log line or counter — can read them.
+    const raw = event.error;
+    const error: Record<string, unknown> = {};
+    if (typeof raw.name === "string") error.name = scrubErrorText(raw.name, 80);
+    else if (raw.name !== undefined) error.name = raw.name;
+    if (typeof raw.message === "string") error.message = scrubErrorText(raw.message, 300);
+    else if (raw.message !== undefined) error.message = raw.message;
     event.error = error;
   }
   if (isPlainObject(event.device)) event.device = normaliseDevice(event.device);
@@ -639,12 +645,20 @@ export class BindingRateLimiter implements IngestRateLimiter {
     this.binding = binding;
   }
 
+  /**
+   * Round 3: the shared binding is bounded. Policy: a binding that throws,
+   * rejects OR does not answer within RATE_LIMIT_BINDING_TIMEOUT_MS fails
+   * open to the in-memory layer (which runs first and still caps each
+   * client per isolate). A late answer after the deadline is ignored —
+   * it can neither block nor re-route the request.
+   */
   async check(ip: string, now: number): Promise<RateDecision> {
     try {
-      const { success } = await this.binding.limit({ key: await bindingClientKey(ip, now) });
+      const key = await bindingClientKey(ip, now);
+      const { success } = await withTimeout(Promise.resolve(this.binding.limit({ key })), RATE_LIMIT_BINDING_TIMEOUT_MS);
       return success ? ALLOW : { allowed: false, retryAfterSec: RATE_LIMIT_WINDOW_MS / 1000 };
     } catch (err) {
-      logLine("rate-limit binding failed (fail-open)", err instanceof Error ? err.name : "unknown");
+      logLine("rate-limit binding failed or timed out (fail-open to in-memory layer)", err instanceof Error ? err.name : "unknown");
       return ALLOW;
     }
   }
@@ -716,20 +730,59 @@ const originPolicy = new OriginPolicy();
  * `max` bytes. Returns null when over the cap. A chunked upload without a
  * Content-Length is never buffered beyond the cap.
  */
-export async function readBodyCapped(request: Request, max: number): Promise<string | null> {
+/**
+ * Round 4: start cancellation but never wait for it. A stream's cancel()
+ * may return a promise that settles late or never (allowed by the Streams
+ * contract), so it must not hold the 408/413 response. A rejection or a
+ * synchronous throw is swallowed; the lock is released afterwards (a read
+ * still pending at that moment rejects into an already-handled race).
+ */
+function abandonReader(reader: ReadableStreamDefaultReader<Uint8Array>): void {
+  try {
+    reader.cancel().catch(() => {});
+  } catch {
+    // Best effort only.
+  }
+  try {
+    reader.releaseLock();
+  } catch {
+    // Best effort only.
+  }
+}
+
+/**
+ * Read at most `max` bytes: null when over the cap, undefined when the
+ * body does not finish within `timeoutMs` (round 3: a stalled body can
+ * no longer hold the request open; the reader is cancelled).
+ */
+export async function readBodyCapped(request: Request, max: number, timeoutMs: number = BODY_READ_TIMEOUT_MS): Promise<string | null | undefined> {
   if (!request.body) return "";
   const reader = request.body.getReader();
   const chunks: Uint8Array[] = [];
   let total = 0;
+  const deadline = Date.now() + timeoutMs;
   for (;;) {
-    const { done, value } = await reader.read();
+    let chunk: ReadableStreamReadResult<Uint8Array>;
+    try {
+      chunk = await withTimeout(reader.read(), Math.max(1, deadline - Date.now()));
+    } catch {
+      // Deadline passed or the stream errored: 408, cancellation not awaited.
+      abandonReader(reader);
+      return undefined;
+    }
+    const { done, value } = chunk;
     if (done) break;
     total += value.byteLength;
     if (total > max) {
-      await reader.cancel().catch(() => {});
+      abandonReader(reader);
       return null;
     }
     chunks.push(value);
+  }
+  try {
+    reader.releaseLock();
+  } catch {
+    // Already released.
   }
   const bytes = new Uint8Array(total);
   let offset = 0;
@@ -890,8 +943,10 @@ function whyLineFor(whyKey: CrashWhyKey, event: CrashReportEvent): string {
       return "App stopped mid-game on the current build; no error was captured, so the cause is unknown.";
     case "captured_error":
       return event.error
-        ? `The app hit a real error and did not recover from it. Error captured: ${truncate(event.error.name, 60)} — ${truncate(event.error.message, 140)}.`
-        : "The app failed to start; that failure was captured and it did not recover.";
+        ? `The app hit a real error and did not recover from it. Error captured: ${scrubErrorText(event.error.name, 60) || "—"} — ${scrubErrorText(event.error.message, 140) || "—"}.`
+        : // Council fix T5: a captured-error TYPE with no details is not
+          // evidence of a failed startup; say what was observed.
+          `A ${event.type} report arrived with no error details attached. That alone is not evidence of a failed startup; the failure phase is ${event.lastMilestone ? `last reported step ${lastStepWords(event.lastMilestone)}` : "unavailable (no last step stamped)"}.`;
     case "missing_fields":
       return "This report is missing the evidence needed to classify it, so it can't be called harmless.";
     case "recovery_confirmed":
@@ -929,6 +984,59 @@ function lastStepWords(rawMilestone: string | undefined): string {
 
 // --- Compact, PII-free alert -------------------------------------------
 
+/**
+ * Council fix round 3: delimiter-boundary query/fragment removal. A token
+ * is a run without whitespace, quotes, angle brackets or backticks (so
+ * parentheses, brackets and markdown stay inside it). Its boundary is the
+ * first "?", "#", or percent-encoded ?/# at any nesting depth (%3F, %253F,
+ * %2523, ...). The tail from the boundary to the token end is removed —
+ * nothing after it is ever kept (no line:col or punctuation rescue: query
+ * and fragment content is never stack metadata) — when the boundary is
+ * encoded, the head is path-like (contains / or an encoded /), or the tail
+ * holds a key=value (= or an encoded =). Otherwise the token is plain
+ * prose ("what?", "c#1", "a?b") and is kept. Finite single pass; nothing
+ * is decoded. Limits: URL paths are kept; a bare prose token like
+ * "?SECRET" or "#SECRET" with no path and no "=" survives; HTML-entity
+ * delimiters (&#63;) are not recognised.
+ */
+function stripUrlQueries(s: string): string {
+  return s.replace(/[^\s'"<>`]+/g, (tok) => {
+    const boundary = tok.search(/[?#]|%(?:25)*(?:3f|23)/i);
+    if (boundary < 0) return tok;
+    const head = tok.slice(0, boundary);
+    const tail = tok.slice(boundary);
+    const encoded = tail.startsWith("%");
+    const pathLike = /\/|%(?:25)*2f/i.test(head);
+    const keyValue = /=|%(?:25)*3d/i.test(tail);
+    return encoded || pathLike || keyValue ? head : tok;
+  });
+}
+
+/**
+ * Privacy scrub for error text (council fix T1, 2026-11-08). Mirrored in
+ * src/lib/observability.ts (sanitizeError) and pinned identical by the
+ * worker test "client sanitizeError scrubs the same way". Rules, in order:
+ * URLs keep scheme/host/path and drop ?query and #fragment (stripUrlQueries); emails become
+ * <email>; UUIDs and hex runs >= 20 become <id>; mixed letter+digit token
+ * runs >= 32 become <redacted>; @everyone/@here lose their mention form.
+ * file:line:col and code identifiers survive. Output is capped at `max`.
+ */
+export function scrubErrorText(value: unknown, max: number): string {
+  if (typeof value !== "string" || value.length === 0) return "";
+  // Bound the work before regexes run (inputs are already capped upstream).
+  let s = value.slice(0, 2048);
+  s = stripUrlQueries(s);
+  s = s.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "<email>");
+  s = s.replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, "<id>");
+  s = s.replace(/\b[0-9a-f]{20,}\b/gi, "<id>");
+  s = s.replace(/[A-Za-z0-9_\-+/=]{32,}/g, (run) =>
+    /[0-9]/.test(run) && /[A-Za-z]/.test(run) ? "<redacted>" : run,
+  );
+  s = s.replace(/@(everyone|here)\b/gi, "@\u200b$1");
+  return s.length > max ? `${s.slice(0, Math.max(0, max - 1))}…` : s;
+}
+
+
 function truncate(value: string | undefined, max: number): string {
   if (!value) return "—";
   const s = String(value);
@@ -956,6 +1064,120 @@ export function verdictFactsOf(event: CrashReportEvent): CrashVerdictFacts {
 /** The worker's own re-derived verdict for one event (§5.2/§5.4). */
 export function deriveVerdict(event: CrashReportEvent): { verdict: CrashVerdict; whyKey: CrashWhyKey } {
   return classifyCrashVerdict(verdictFactsOf(event));
+}
+
+// --- Provenance corroboration gate (2026-11-05) ---------------------------
+//
+// Provenance is an orthogonal axis to the verdict: it asks whether the
+// payload corroborates itself as a real client session's report — right
+// build shape, right stamps, a session trail (or a recognised boot /
+// watchdog shape) consistent inside the single event. It never feeds
+// the classifier. The gate is stateless: a pure function of the single
+// normalised event, no KV reads, so a KV outage cannot reopen paging.
+
+export type Provenance = "corroborated" | "uncorroborated";
+
+/** Every named device field is a present, non-empty string. */
+function hasFields(dev: Record<string, unknown>, fields: readonly string[]): boolean {
+  return fields.every((f) => typeof dev[f] === "string" && (dev[f] as string).length > 0);
+}
+
+/**
+ * Corroboration checks, in order (the first failure decides):
+ * P1′ build shape — the real generator's output union; P2 stamps —
+ * lcV present (never version-pinned), storageOk boolean either value;
+ * P3′ device floor — per class (client / watchdog / funnel); P4a′/P4b′
+ * session linkage for suspected_crash and the live error types.
+ * Total by construction: every read is narrowed before use, so a
+ * malformed shape returns "uncorroborated" instead of throwing.
+ */
+export function provenanceOf(event: CrashReportEvent): Provenance {
+  if (!isPlainObject(event)) return "uncorroborated";
+  if (!(EVENT_TYPES as readonly string[]).includes(event.type)) return "uncorroborated";
+
+  // P1′ build shape.
+  if (typeof event.buildId !== "string") return "uncorroborated";
+  if (
+    !(
+      /^[0-9a-f]{7,40}$/.test(event.buildId) ||
+      /^local-[0-9a-z]{6,12}$/.test(event.buildId) ||
+      event.buildId === "dev"
+    )
+  ) {
+    return "uncorroborated";
+  }
+
+  // P2 stamps.
+  if (typeof event.lcV !== "string" || event.lcV.length === 0) return "uncorroborated";
+  if (typeof event.storageOk !== "boolean") return "uncorroborated";
+
+  // P3′ device floor (the watchdog floor binds ALL boot_failure).
+  const dev = event.device;
+  if (!isPlainObject(dev)) return "uncorroborated";
+  if ((FUNNEL_CLASS_TYPES as readonly string[]).includes(event.type)) {
+    if (!hasFields(dev, ["os", "form"])) return "uncorroborated";
+  } else if (event.type === "boot_failure") {
+    if (!hasFields(dev, ["browser", "os", "form"])) return "uncorroborated";
+    if (Object.keys(dev).length < 10) return "uncorroborated";
+  } else {
+    if (!hasFields(dev, ["browser", "os", "osVersion", "deviceClass", "form"])) {
+      return "uncorroborated";
+    }
+    if (Object.keys(dev).length < 8) return "uncorroborated";
+  }
+
+  // P4a′ — suspected_crash: full trail or the payload-cap truncation stub.
+  if (event.type === "suspected_crash") {
+    if (typeof event.sessionId !== "string" || event.sessionId.length === 0) {
+      return "uncorroborated";
+    }
+    const bc = event.breadcrumb;
+    if (!isPlainObject(bc)) return "uncorroborated";
+    const fullTrail =
+      bc.sessionId === event.sessionId &&
+      bc.buildId === event.buildId &&
+      Array.isArray(bc.history) &&
+      bc.history.length >= 1;
+    const truncationStub =
+      bc.sessionId === event.sessionId &&
+      bc.buildId === event.buildId &&
+      bc.lastMilestone === event.lastMilestone &&
+      typeof bc.startedAt === "number" &&
+      (bc.history === undefined || (Array.isArray(bc.history) && bc.history.length === 0));
+    if (!fullTrail && !truncationStub) return "uncorroborated";
+  } else if (
+    // P4b′ — live errors: session linkage, or the exact pre-init shape.
+    event.type === "js_error" ||
+    event.type === "unhandled_rejection" ||
+    event.type === "map_error"
+  ) {
+    // Linked: a sessionId plus either a lastMilestone or the numeric
+    // msSinceBootStart that emit() derives from the SAME live breadcrumb
+    // that supplies the sessionId. lastMilestone alone is not enough to
+    // require: the route error boundary and the region-chunk load
+    // failure emit js_error post-init with no lastMilestone (#353 fix).
+    const linked =
+      typeof event.sessionId === "string" &&
+      event.sessionId.length > 0 &&
+      ((typeof event.lastMilestone === "string" && event.lastMilestone.length > 0) ||
+        typeof event.msSinceBootStart === "number");
+    // Exact pre-init wire signature: emit() couples a sessionId and a
+    // numeric msSinceBootStart through the same breadcrumb, so a hybrid
+    // (sessionId present ∧ msSinceBootStart "unknown") is unproducible
+    // by the real client and does not pass.
+    const preInit =
+      (typeof event.sessionId !== "string" || event.sessionId.length === 0) &&
+      event.lastMilestone === undefined &&
+      event.deviceSource === "live" &&
+      event.msSinceBootStart === "unknown" &&
+      isPlainObject(event.error);
+    if (!linked && !preInit) return "uncorroborated";
+  }
+
+  // No P4 leg for the remaining types: recovery_outcome's P4d is
+  // P1′∧P2∧P3′-client (tierOf still decides that only repeat_failure
+  // pages); boot_failure, hiccup and funnel types are P1′∧P2∧P3′ only.
+  return "corroborated";
 }
 
 const VALID_RECOVERY_OUTCOMES = new Set([
@@ -1107,7 +1329,7 @@ export function priorityRead(event: CrashReportEvent): PriorityRead {
       parts.push(
         event.error
           ? `captured error at ${lastStepWords(event.lastMilestone)}`
-          : "app failed to start",
+          : "captured-error type with no error details",
       );
       break;
     case "recovery_failed":
@@ -1266,6 +1488,29 @@ export interface CrashAlert {
  * lastMilestone, and a truncated error name/message. sessionId, UA,
  * device facts, breadcrumb history, and coordinates are NEVER included.
  */
+/**
+ * Council fix T5: versioned, structured failure line built ONLY from
+ * fields the client already sends (manifest). It separates what was
+ * observed from what is unknown and never names a root cause. Fields
+ * that would need new collection are listed as not collected.
+ */
+export function failureLine(event: CrashReportEvent): string {
+  const phase = event.lastMilestone
+    ? `last reported step ${lastStepWords(event.lastMilestone)}`
+    : "phase unavailable (no last step stamped)";
+  const age =
+    typeof event.msSinceBootStart === "number"
+      ? `boot age ${event.msSinceBootStart.toLocaleString("en-US")} ms`
+      : "boot age unavailable";
+  const dev = deviceRecord(event);
+  const deviceKnown = deviceString(dev, "os") !== "unknown" || deviceString(dev, "browser") !== "unknown";
+  return (
+    `failure(v1): domain client (reported) · origin client-shaped, not authenticated · ${phase} · ` +
+    `error ${event.error ? "present" : "absent"} · ${age} · device facts ${deviceKnown ? "present" : "absent"} · ` +
+    `cause unconfirmed · not collected: request status, server timing, phase timeline`
+  );
+}
+
 export function buildAlert(event: CrashReportEvent): CrashAlert {
   const type = event.type;
   const buildId = truncate(event.buildId, 64);
@@ -1273,7 +1518,7 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   const region = truncate(event.regionId, 64);
   const lastStep = lastStepWords(event.lastMilestone);
   const errorLine = event.error
-    ? `${truncate(event.error.name, 60)} — ${truncate(event.error.message, 140)}`
+    ? `${scrubErrorText(event.error.name, 60) || "—"} — ${scrubErrorText(event.error.message, 140) || "—"}`
     : "none captured";
   // The device line starts from the coarse os/form bucket (COPPA) and
   // adds the parsed manifest facts — never raw UA or precise facts.
@@ -1290,7 +1535,12 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
   const severity = severityOf(event);
   const why = whyLineFor(whyKey, event);
   const whyText = severity ? `${why} ${severity.clause}` : why;
-  const actionLine = verdict === "developer_needed" ? "action: Read the error below.\n" : "";
+  const actionLine =
+    verdict !== "developer_needed"
+      ? ""
+      : whyKey === "captured_error" && !event.error
+        ? "action: No error details were captured; read the facts below.\n"
+        : "action: Read the error below.\n";
   // The 🚨 stays in the no-action title for findability (design §5.1) —
   // the verdict line above it carries the real signal.
   const title = verdict === "not_a_real_issue" ? "🚨 Meridian crash report" : "Meridian crash report";
@@ -1326,6 +1576,7 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
     evidenceLine +
     `why-code: ${whyKey}\n` +
     actionLine +
+    `${failureLine(event)}\n` +
     `type: ${type} · build: ${buildId}\n` +
     `time: ${eventTime}\n` +
     `device: ${deviceText}\n` +
@@ -1345,6 +1596,7 @@ export function buildAlert(event: CrashReportEvent): CrashAlert {
     evidenceLine +
     `why-code: ${whyKey}\n` +
     actionLine +
+    `${failureLine(event)}\n` +
     `type:            ${type}\n` +
     `build:           ${buildId}\n` +
     `event time:      ${eventTime}\n` +
@@ -1388,52 +1640,201 @@ async function fetchWithTimeout(url: string, init: RequestInit): Promise<Respons
   }
 }
 
-async function forwardToDiscord(webhookUrl: string, content: string): Promise<boolean> {
-  try {
-    const res = await fetchWithTimeout(webhookUrl, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ content }),
-    });
-    if (!res.ok) {
-      logLine("discord forward failed", res.status);
-      return false;
+// Council fix T3 (2026-11-08): every send reports what actually
+// happened. "provider_accepted" = the provider returned 2xx (not proof a
+// human read it); "failed" = a definite non-2xx or a rejected request;
+// "unknown" = timed out / aborted, so the provider may or may not have it.
+// One bounded retry, only on 429/5xx (a definite "not taken"), never on
+// "unknown" (that could duplicate a page). Failures are logged and
+// recorded; they never trigger another alert (no recursion).
+export type DeliveryState = "provider_accepted" | "failed" | "unknown" | "not_configured";
+
+const RETRY_STATUSES = new Set([429, 500, 502, 503, 504]);
+const MAX_RETRY_WAIT_MS = 2_000;
+const DEFAULT_RETRY_WAIT_MS = 500;
+
+let sleepFn: (ms: number) => Promise<void> = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** Test hook: replace the retry back-off sleep (tests pass a no-op). */
+export function setSleepForTests(fn: (ms: number) => Promise<void>): void {
+  sleepFn = fn;
+}
+
+function retryWaitMs(res: Response): number {
+  const h = Number(res.headers.get("retry-after"));
+  return Number.isFinite(h) && h >= 0 ? Math.min(h * 1000, MAX_RETRY_WAIT_MS) : DEFAULT_RETRY_WAIT_MS;
+}
+
+async function postWithRetry(label: string, url: string, init: RequestInit): Promise<DeliveryState> {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const res = await fetchWithTimeout(url, init);
+      if (res.ok) return "provider_accepted";
+      logLine(`${label} forward failed`, res.status);
+      if (attempt === 0 && RETRY_STATUSES.has(res.status)) {
+        await sleepFn(retryWaitMs(res));
+        continue;
+      }
+      return "failed";
+    } catch (err) {
+      const name = err instanceof Error ? err.name : "unknown";
+      logLine(`${label} forward error`, name);
+      return name === "AbortError" || name === "TimeoutError" ? "unknown" : "failed";
     }
-    return true;
-  } catch (err) {
-    logLine("discord forward error", err instanceof Error ? err.name : "unknown");
-    return false;
   }
+  return "failed";
+}
+
+async function forwardToDiscord(webhookUrl: string, content: string): Promise<DeliveryState> {
+  return postWithRetry("discord", webhookUrl, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    // Council fix T1: never let report text ping @everyone/@here/users.
+    body: JSON.stringify({ content, allowed_mentions: { parse: [] } }),
+  });
 }
 
 async function forwardToEmail(
   env: CrashReportEnv,
   subject: string,
   text: string,
-): Promise<boolean> {
+): Promise<DeliveryState> {
+  return postWithRetry("email", RESEND_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      authorization: `Bearer ${env.RESEND_API_KEY}`,
+    },
+    body: JSON.stringify({
+      from: env.REPORT_FROM?.trim() || DEFAULT_REPORT_FROM,
+      to: [env.REPORT_EMAIL],
+      subject,
+      text,
+    }),
+  });
+}
+
+/** KV key + TTL for the last real-crash delivery outcome (ops evidence). */
+export const DELIVERY_RECORD_KEY = "ops:delivery:last";
+export const OPS_RECORD_TTL_SECONDS = 7 * 24 * 3600;
+
+/**
+ * Best-effort record of the last real-crash delivery outcome. Holds only
+ * channel states and a time — no webhook URL, no event content. A write
+ * failure is logged and swallowed (never an alert).
+ */
+async function recordDelivery(
+  kv: KvLike | undefined,
+  results: Partial<Record<"discord" | "email", DeliveryState>>,
+  now: number,
+): Promise<void> {
+  if (!kv) return;
   try {
-    const res = await fetchWithTimeout(RESEND_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${env.RESEND_API_KEY}`,
-      },
-      body: JSON.stringify({
-        from: env.REPORT_FROM?.trim() || DEFAULT_REPORT_FROM,
-        to: [env.REPORT_EMAIL],
-        subject,
-        text,
-      }),
-    });
-    if (!res.ok) {
-      logLine("email forward failed", res.status);
-      return false;
-    }
-    return true;
+    await kv.put(
+      DELIVERY_RECORD_KEY,
+      JSON.stringify({ v: 1, at: new Date(now).toISOString(), ...results }),
+      { expirationTtl: OPS_RECORD_TTL_SECONDS },
+    );
   } catch (err) {
-    logLine("email forward error", err instanceof Error ? err.name : "unknown");
-    return false;
+    logLine("delivery record failed", err instanceof Error ? err.name : "unknown");
   }
+}
+
+// --- Council fix T2 (2026-11-08): bounded unverified summary ------------
+//
+// When the counter store is missing or failing, an uncorroborated
+// crash-tier report can neither be counted nor escalated through the
+// can't-tell leg. Paging it individually (the old !counted fail-open)
+// let any probe page; dropping it silently would lose legacy clients.
+// Instead each worker isolate keeps an in-memory tally and sends at most
+// one summary per 15-minute window. Honest bound: <= 4/hour PER ISOLATE
+// (isolates are not countable from inside), counts are lower bounds
+// (an evicted isolate loses its tally), and the optional
+// CRASH_RATE_LIMITER binding adds a best-effort cross-isolate ceiling.
+
+export const SUMMARY_WINDOW_MS = 15 * 60_000;
+const MAX_SUMMARY_PATTERNS = 16;
+
+export class UncorroboratedSummary {
+  private windowStart = -1;
+  private sent = false;
+  private counts = new Map<string, number>();
+  private total = 0;
+  private previousTotal = 0;
+
+  /** Tally one report; returns summary text when this window has not sent yet. */
+  record(event: CrashReportEvent, now: number): string | null {
+    const ws = Math.floor(now / SUMMARY_WINDOW_MS) * SUMMARY_WINDOW_MS;
+    if (ws !== this.windowStart) {
+      this.previousTotal = this.windowStart < 0 ? 0 : this.total;
+      this.windowStart = ws;
+      this.sent = false;
+      this.counts = new Map();
+      this.total = 0;
+    }
+    const key = `${event.type} · ${scrubErrorText(String(event.buildId), 24) || "—"}`;
+    const k = this.counts.has(key) || this.counts.size < MAX_SUMMARY_PATTERNS ? key : "other";
+    this.counts.set(k, (this.counts.get(k) ?? 0) + 1);
+    this.total += 1;
+    if (this.sent) return null;
+    this.sent = true;
+    const from = new Date(ws).toISOString().slice(11, 16);
+    const to = new Date(ws + SUMMARY_WINDOW_MS).toISOString().slice(11, 16);
+    const patterns = [...this.counts.entries()].map(([p, n]) => `${p} ×${n}`).join(", ");
+    const text =
+      `❔ Unverified crash-type reports while telemetry storage is unavailable\n` +
+      `window: ${from}–${to} UTC (this worker instance only, best-effort)\n` +
+      `this window so far: ≥${this.total} (${patterns})\n` +
+      (this.previousTotal > 0 ? `previous window: ≥${this.previousTotal}\n` : "") +
+      `Not paged one by one: they did not match a real client's report shape. ` +
+      `Real-client-shaped crashes still page. Sender not identified. ` +
+      `Counts are lower bounds and could not be stored.`;
+    return text.length > 1800 ? `${text.slice(0, 1799)}…` : text;
+  }
+}
+
+let uncorroboratedSummary = new UncorroboratedSummary();
+
+export type IngestRoute =
+  | "paged"
+  | "counted_only"
+  | "summarized_kv_unavailable"
+  | "summary_suppressed";
+
+export interface IngestOutcome {
+  provenance: Provenance;
+  counted: boolean;
+  route: IngestRoute;
+  deliveries: Partial<Record<"discord" | "email", DeliveryState>>;
+}
+
+let lastIngestOutcome: IngestOutcome | null = null;
+
+/** Test hook: the last /ingest routing outcome (never in the HTTP body). */
+export function lastIngestOutcomeForTests(): IngestOutcome | null {
+  return lastIngestOutcome;
+}
+
+/** Test hook: reset per-isolate ingest state between tests. */
+export function resetIngestStateForTests(): void {
+  uncorroboratedSummary = new UncorroboratedSummary();
+  lastIngestOutcome = null;
+}
+
+/** Minimal ExecutionContext surface (Cloudflare passes the real one). */
+export interface ExecutionContextLike {
+  waitUntil(promise: Promise<unknown>): void;
+}
+
+/**
+ * Run background work: with a real context it continues after the
+ * response via waitUntil; without one (tests, direct callers) it is
+ * awaited so nothing is silently dropped.
+ */
+async function runInBackground(ctx: ExecutionContextLike | undefined, work: Promise<unknown>): Promise<void> {
+  const guarded = work.catch((err) => logLine("background task failed", err instanceof Error ? err.name : "unknown"));
+  if (ctx) ctx.waitUntil(guarded);
+  else await guarded;
 }
 
 /** Severity tiers (Phase 1 telemetry, 2026-10-17).
@@ -1520,6 +1921,8 @@ export function tierOf(type: CrashReportEventType, recoveryOutcome?: string): Te
 // os/form device bucket). No sessionId, no UA, no IPs, no payloads.
 
 export const HOUR_MS = 3_600_000;
+/** Council fix T4: counter retention (proposal default, documented in README). */
+export const COUNT_BUCKET_TTL_SECONDS = 90 * 24 * 3600;
 export const TRAILING_BASELINE_HOURS = 24;
 export const ANOMALY_RATIO = 3;
 export const ANOMALY_MIN_COUNT = 3;
@@ -1550,6 +1953,12 @@ export interface CountBucket {
   late: number;
   /** Alert ids already fired for this bucket (exact-once per type+hour). */
   alerts: string[];
+  /** Provenance dim: keys are exactly "corroborated" | "uncorroborated". */
+  provenance: Record<string, number>;
+  /** Builds map, corroborated events only — the threshold predicate's input. */
+  corrBuilds: Record<string, number>;
+  /** Candidate-only group counts (pattern counts for the can't-tell legs). */
+  cantTellGroups: Record<string, number>;
 }
 
 /** Hard cap on distinct group keys per bucket; the next tallies "other". */
@@ -1572,13 +1981,57 @@ export function emptyBucket(): CountBucket {
     lastAt: 0,
     late: 0,
     alerts: [],
+    provenance: {},
+    corrBuilds: {},
+    cantTellGroups: {},
   };
 }
 
 /** Minimal KV surface — structurally satisfied by the real KVNamespace. */
 export interface KvLike {
   get(key: string): Promise<string | null>;
-  put(key: string, value: string): Promise<void>;
+  put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>;
+}
+
+/**
+ * Council fix round 2 (F2/F3): every KV operation this worker awaits is
+ * bounded. Each op races a per-op deadline; with a budget, the wrapper
+ * also refuses any op once the budget is spent, and close() refuses all
+ * later ops — so a request that has given up on the store can never START
+ * a late write (an op already in flight cannot be cancelled: KV has no
+ * abort, so a late in-flight write may still land). A timed-out op throws
+ * TimeoutError, which every caller already treats as "store failing".
+ */
+export const KV_OP_TIMEOUT_MS = 1_500;
+export const INGEST_COUNT_BUDGET_MS = 2_000;
+
+export interface BoundedKv extends KvLike {
+  close(): void;
+}
+
+export function boundedKv(kv: KvLike, opMs: number = KV_OP_TIMEOUT_MS, budgetMs?: number): BoundedKv {
+  const startedAt = Date.now();
+  let closed = false;
+  const guard = <T>(op: () => Promise<T>): Promise<T> => {
+    const left = budgetMs === undefined ? opMs : Math.min(opMs, budgetMs - (Date.now() - startedAt));
+    if (closed || left <= 0) {
+      return Promise.reject(Object.assign(new Error("store deadline passed"), { name: "TimeoutError" }));
+    }
+    let p: Promise<T>;
+    try {
+      p = Promise.resolve(op());
+    } catch (err) {
+      p = Promise.reject(err);
+    }
+    return withTimeout(p, left);
+  };
+  return {
+    get: (key) => guard(() => kv.get(key)),
+    put: (key, value, options) => guard(() => kv.put(key, value, options)),
+    close: () => {
+      closed = true;
+    },
+  };
 }
 
 /** Telemetry store abstraction (KV-backed in prod, in-memory in tests). */
@@ -1608,6 +2061,16 @@ export function deviceBucketOf(event: CrashReportEvent): string {
   return dev ? `${truncate(dev.os ?? "?", 24)}/${truncate(dev.form ?? "?", 24)}` : "—";
 }
 
+/** Per-key numeric guard for a stored count map (provenance dim). */
+function numericRecord(value: unknown): Record<string, number> {
+  if (!isPlainObject(value)) return {};
+  const out: Record<string, number> = {};
+  for (const [k, v] of Object.entries(value)) {
+    if (typeof v === "number" && Number.isFinite(v)) out[k] = v;
+  }
+  return out;
+}
+
 export function kvTelemetryStore(kv: KvLike): TelemetryStore {
   return {
     async readBucket(key: string): Promise<CountBucket | null> {
@@ -1618,22 +2081,30 @@ export function kvTelemetryStore(kv: KvLike): TelemetryStore {
         if (parsed && typeof parsed.total === "number") {
           // Read-tolerant (§5.2): buckets written by older code lack
           // the v2 fields and default to empty maps / zero times.
+          // Council fix T4: every count map is numerically normalised
+          // (a corrupt or hand-edited value can never feed the threshold
+          // or can't-tell predicates as a string/object).
           return {
             total: parsed.total,
-            builds: parsed.builds ?? {},
-            editions: parsed.editions ?? {},
-            regions: parsed.regions ?? {},
-            devices: parsed.devices ?? {},
-            groups: parsed.groups ?? {},
-            verdicts: parsed.verdicts ?? {},
-            severities: parsed.severities ?? {},
-            milestones: parsed.milestones ?? {},
-            modes: parsed.modes ?? {},
-            errorNames: parsed.errorNames ?? {},
+            builds: numericRecord(parsed.builds),
+            editions: numericRecord(parsed.editions),
+            regions: numericRecord(parsed.regions),
+            devices: numericRecord(parsed.devices),
+            groups: numericRecord(parsed.groups),
+            verdicts: numericRecord(parsed.verdicts),
+            severities: numericRecord(parsed.severities),
+            milestones: numericRecord(parsed.milestones),
+            modes: numericRecord(parsed.modes),
+            errorNames: numericRecord(parsed.errorNames),
             firstAt: typeof parsed.firstAt === "number" ? parsed.firstAt : 0,
             lastAt: typeof parsed.lastAt === "number" ? parsed.lastAt : 0,
             late: typeof parsed.late === "number" ? parsed.late : 0,
-            alerts: Array.isArray(parsed.alerts) ? parsed.alerts : [],
+            alerts: Array.isArray(parsed.alerts)
+              ? parsed.alerts.filter((a): a is string => typeof a === "string").slice(0, 256)
+              : [],
+            provenance: numericRecord(parsed.provenance),
+            corrBuilds: numericRecord(parsed.corrBuilds),
+            cantTellGroups: numericRecord(parsed.cantTellGroups),
           };
         }
       } catch {
@@ -1642,7 +2113,10 @@ export function kvTelemetryStore(kv: KvLike): TelemetryStore {
       return null;
     },
     async writeBucket(key: string, bucket: CountBucket): Promise<void> {
-      await kv.put(key, JSON.stringify(bucket));
+      // Council fix T4: hour buckets expire (they are inert after the
+      // digest + 24 h trailing window). Existing keys written before this
+      // change keep no TTL; nothing here deletes historical data.
+      await kv.put(key, JSON.stringify(bucket), { expirationTtl: COUNT_BUCKET_TTL_SECONDS });
     },
   };
 }
@@ -1682,16 +2156,24 @@ export function groupKeyOf(event: CrashReportEvent): string {
   return `${event.buildId}|${os}|${osMajor}|${deviceClass}`;
 }
 
-/** Bump a group key under the hard cap: a 33rd distinct key is "other". */
-function bumpGroup(groups: Record<string, number>, key: string): void {
-  if (key in groups || Object.keys(groups).length < MAX_GROUP_KEYS) bump(groups, key);
-  else bump(groups, "other");
+/**
+ * Bump a group key under the hard cap: a 33rd distinct key is "other".
+ * Returns the key actually tallied ("other" included) so the caller
+ * reads the cap decision from its one owner.
+ */
+function bumpGroup(groups: Record<string, number>, key: string): string {
+  if (key in groups || Object.keys(groups).length < MAX_GROUP_KEYS) {
+    bump(groups, key);
+    return key;
+  }
+  bump(groups, "other");
+  return "other";
 }
 
 export interface TelemetryRecordResult {
   counted: boolean;
   alerted: boolean;
-  alertText?: string;
+  alertTexts: string[];
 }
 
 /**
@@ -1704,8 +2186,11 @@ export async function recordTelemetry(
   event: CrashReportEvent,
   now: number,
   cfg: ThresholdConfig,
+  provenance: Provenance,
 ): Promise<TelemetryRecordResult> {
-  if (!store) return { counted: false, alerted: false };
+  // Fail-closed (R1): an invalid/missing provenance counts uncorroborated.
+  const prov: Provenance = provenance === "corroborated" ? "corroborated" : "uncorroborated";
+  if (!store) return { counted: false, alerted: false, alertTexts: [] };
   try {
     const hour = hourLabelOf(now);
     const key = bucketKey(hour, event.type);
@@ -1717,8 +2202,25 @@ export async function recordTelemetry(
     bump(bucket.devices, deviceBucketOf(event));
     // Counting v2 (§5.2): groups, the shared re-derived verdict,
     // milestones, modes, error names, and receipt-time first/last.
-    bumpGroup(bucket.groups, groupKeyOf(event));
+    const groupKey = groupKeyOf(event);
+    bumpGroup(bucket.groups, groupKey);
+    // Provenance dims: every event counts under its provenance; only
+    // corroborated events count toward the threshold predicate's builds.
+    bump(bucket.provenance, prov);
+    if (prov === "corroborated") bump(bucket.corrBuilds, event.buildId);
     const { verdict, whyKey } = deriveVerdict(event);
+    // Can't-tell candidates: crash-tier events that are uncorroborated,
+    // or corroborated with an insufficient_evidence verdict. Their group
+    // counts feed the escalation legs — and nothing else reads them.
+    const isCandidate =
+      tierOf(event.type, typeof event.recoveryOutcome === "string" ? event.recoveryOutcome : undefined) === "crash" &&
+      (prov === "uncorroborated" || verdict === "insufficient_evidence");
+    let pattern: string | undefined;
+    let candidateTotal = 0;
+    if (isCandidate) {
+      pattern = bumpGroup(bucket.cantTellGroups, groupKey);
+      candidateTotal = Object.values(bucket.cantTellGroups).reduce((a, b) => a + b, 0);
+    }
     bump(bucket.verdicts, `${verdict}/${whyKey}`);
     // Counting (#345): the severity grade rides the same one
     // derivation per request — severityOf re-derives the verdict
@@ -1727,7 +2229,7 @@ export async function recordTelemetry(
     bump(bucket.severities, severityKeyOf(event));
     bump(bucket.milestones, event.lastMilestone ?? "—");
     bump(bucket.modes, typeof event.mapMode === "string" && event.mapMode ? event.mapMode : "unknown");
-    bump(bucket.errorNames, event.error ? truncate(event.error.name, 80) : "none");
+    bump(bucket.errorNames, event.error ? scrubErrorText(event.error.name, 80) || "—" : "none");
     bucket.firstAt = bucket.firstAt === 0 ? now : Math.min(bucket.firstAt, now);
     bucket.lastAt = Math.max(bucket.lastAt, now);
     const hourStart = hourBucketStart(now);
@@ -1738,24 +2240,56 @@ export async function recordTelemetry(
       bucket.late += 1;
     }
 
-    let alerted = false;
-    let alertText: string | undefined;
+    const alertTexts: string[] = [];
     const alertId = `threshold:${event.type}:${hour}`;
-    const perBuild = bucket.builds[event.buildId] ?? 0;
+    // Threshold predicate reads corroborated counts only (R2):
+    // uncorroborated events can neither trip it nor burn its slot.
+    const corrPerBuild = bucket.corrBuilds[event.buildId] ?? 0;
     if (
       !(THRESHOLD_EXEMPT_FUNNEL_TYPES as readonly string[]).includes(event.type) &&
       !bucket.alerts.includes(alertId) &&
-      (bucket.total >= cfg.perHour || perBuild >= cfg.perBuild)
+      ((bucket.provenance.corroborated ?? 0) >= cfg.perHour || corrPerBuild >= cfg.perBuild)
     ) {
       bucket.alerts.push(alertId);
-      alerted = true;
-      alertText = buildThresholdAlert(event.type, hour, bucket, cfg, perBuild);
+      alertTexts.push(buildThresholdAlert(event.type, hour, bucket, cfg, corrPerBuild));
+    }
+
+    // Can't-tell escalation leg — cheapest legs first, in this order:
+    // "other" never escalates · pattern count ≥3 · candidate total ≥5 ·
+    // once per pattern+hour · trailing leg (>3× the pattern's trailing
+    // 24h average). The 24 trailing reads are spent ONLY after the
+    // cheap legs pass (read economy: ≤25 reads on an evaluating event).
+    if (isCandidate && pattern !== undefined && pattern !== "other") {
+      const patternCount = bucket.cantTellGroups[pattern] ?? 0;
+      const cantTellId = `canttell:${event.type}:${hour}:${pattern}`;
+      if (patternCount >= 3 && candidateTotal >= 5 && !bucket.alerts.includes(cantTellId)) {
+        try {
+          let trailing = 0;
+          for (let h = 1; h <= TRAILING_BASELINE_HOURS; h++) {
+            const older = await store.readBucket(
+              bucketKey(hourLabelOf(now - h * HOUR_MS), event.type),
+            );
+            trailing += older?.cantTellGroups?.[pattern] ?? 0;
+          }
+          const trailingAvg = trailing / TRAILING_BASELINE_HOURS;
+          if (patternCount > ANOMALY_RATIO * trailingAvg) {
+            bucket.alerts.push(cantTellId);
+            alertTexts.push(
+              buildCantTellAlert(event.type, hour, pattern, patternCount, candidateTotal, trailingAvg),
+            );
+          }
+        } catch {
+          // A trailing-read failure skips the escalation for this event
+          // only — it must not discard the count via the outer fail-open
+          // catch (which would also flip counted and ungate the event).
+        }
+      }
     }
     await store.writeBucket(key, bucket);
-    return { counted: true, alerted, alertText };
+    return { counted: true, alerted: alertTexts.length > 0, alertTexts };
   } catch (err) {
     logLine("telemetry count failed (fail-open)", event.type, err instanceof Error ? err.name : "unknown");
-    return { counted: false, alerted: false };
+    return { counted: false, alerted: false, alertTexts: [] };
   }
 }
 
@@ -1782,6 +2316,27 @@ export function buildThresholdAlert(
     `hour: ${hourLabel} UTC · counts: ${bucket.total} total (${topBuilds})\n` +
     `one alert per type+hour — further events this hour only raise the counts\n` +
     `counts are at fire time; the hourly digest carries the final total`
+  );
+}
+
+/**
+ * Discord text for the can't-tell escalation. ❔ dress, Discord only,
+ * never email. Carries no sessionId by construction — no such input.
+ */
+export function buildCantTellAlert(
+  type: string,
+  hourLabel: string,
+  pattern: string,
+  patternCount: number,
+  candidateTotal: number,
+  trailingAvg: number,
+): string {
+  return (
+    `❔ Meridian can't-tell escalation\n` +
+    `type: ${type} · pattern: ${pattern}\n` +
+    `hour: ${hourLabel} UTC · pattern count: ${patternCount} · can't-tell candidates this hour: ${candidateTotal}\n` +
+    `trailing 24h average for this pattern: ${trailingAvg.toFixed(1)} — this pattern is now more than ${ANOMALY_RATIO}× that\n` +
+    `these reports could not be corroborated as real client sessions, so they were counted, not paged individually`
   );
 }
 
@@ -2021,8 +2576,422 @@ export async function runHourlyDigest(
     logLine("digest ready but no Discord webhook configured");
     return null;
   }
-  await forwardToDiscord(discordUrl, message);
+  const state = await forwardToDiscord(discordUrl, message);
+  if (state !== "provider_accepted") logLine("digest delivery", state);
   return message;
+}
+
+// --- Council fix T6 (2026-11-08): trusted scheduled ops health ----------
+//
+// Only the platform-invoked scheduled() handler produces a health run;
+// /ingest can never write one (it never touches ops:health:* keys).
+// Scope is the crash-report worker ONLY: bindings, its KV, and its own
+// provenance gate. It says nothing about the game, browsers or WebGL.
+// Healthy runs write one status record + one log line and send nothing.
+// Failed checks send one detailed Discord message per incident (best
+// effort: incident state lives in KV, which is not atomic; when it is
+// unreadable the cap degrades to <= 1 message per scheduled hour).
+// PROPOSED cron, not live until a separately approved deploy uploads it.
+
+export const HEALTH_CRON = "*/15 * * * *";
+export const HEALTH_RECORD_KEY = "ops:health:last";
+const HEALTH_INCIDENT_KEY = "ops:health:incident";
+const HEALTH_PROBE_KEY = "ops:health:probe";
+export const HEALTH_FRESH_MS = 35 * 60_000;
+const HEALTH_FUTURE_SKEW_MS = 60_000;
+const HEALTH_CHECK_TIMEOUT_MS = 2_000;
+const HEALTH_INCIDENT_TTL_SECONDS = 30 * 24 * 3600;
+const KV_MIN_TTL_SECONDS = 60;
+const HEALTH_PAGE_AFTER_FAILURES = 2;
+const HEALTH_RECOVER_AFTER_PASSES = 2;
+const HEALTH_REMINDER_MS = 24 * HOUR_MS;
+
+export const REQUIRED_CHECKS = ["bindings_present", "kv_write", "kv_read", "provenance_selftest"] as const;
+export type HealthCheckName = (typeof REQUIRED_CHECKS)[number];
+export type HealthState = "healthy" | "unhealthy" | "unknown";
+
+export interface HealthCheckResult {
+  name: HealthCheckName;
+  result: "passed" | "failed" | "unknown";
+  expected: string;
+  observed: string;
+  reason: string;
+  durationMs: number;
+}
+
+export interface HealthRunV1 {
+  v: 1;
+  kind: "health_run";
+  trigger: "platform_schedule";
+  cron: string;
+  scheduledAt: string;
+  sampledAt: string;
+  durationMs: number;
+  health: HealthState;
+  requiredChecks: number;
+  ranChecks: number;
+  checks: HealthCheckResult[];
+  worker: { versionId: "unavailable" };
+}
+
+export interface HealthEvaluation {
+  health: HealthState;
+  reason: string;
+  sampledAt: string | null;
+  ageSec: number | null;
+  failing: string[];
+  ranChecks: number;
+}
+
+/**
+ * Total evaluator: healthy ONLY when every required check is present
+ * once, passed, and the sample is fresh (<= 35 min old, <= 60 s ahead).
+ * Anything missing, duplicated, unknown, stale, future or malformed is
+ * "unknown"; a failed required check is "unhealthy". Never throws.
+ */
+export function evaluateHealth(record: unknown, now: number): HealthEvaluation {
+  const unknown = (reason: string, sampledAt: string | null = null, ageSec: number | null = null): HealthEvaluation => ({
+    health: "unknown", reason, sampledAt, ageSec, failing: [], ranChecks: 0,
+  });
+  try {
+    if (!isPlainObject(record) || record.v !== 1 || record.kind !== "health_run") return unknown("invalid");
+    const sampledAt = typeof record.sampledAt === "string" ? record.sampledAt : null;
+    const t = sampledAt ? Date.parse(sampledAt) : Number.NaN;
+    if (!Number.isFinite(t)) return unknown("invalid");
+    const ageSec = Math.round((now - t) / 1000);
+    if (t - now > HEALTH_FUTURE_SKEW_MS) return unknown("future", sampledAt, ageSec);
+    if (now - t > HEALTH_FRESH_MS) return unknown("stale", sampledAt, ageSec);
+    const checks = record.checks;
+    if (!Array.isArray(checks) || checks.length === 0 || checks.length > 8) return unknown("invalid", sampledAt, ageSec);
+    const seen = new Map<string, string>();
+    for (const c of checks) {
+      if (!isPlainObject(c) || typeof c.name !== "string" || typeof c.result !== "string") {
+        return unknown("invalid", sampledAt, ageSec);
+      }
+      if (!(REQUIRED_CHECKS as readonly string[]).includes(c.name) || seen.has(c.name)) {
+        return unknown("invalid", sampledAt, ageSec);
+      }
+      if (c.result !== "passed" && c.result !== "failed" && c.result !== "unknown") {
+        return unknown("invalid", sampledAt, ageSec);
+      }
+      seen.set(c.name, c.result);
+    }
+    if (REQUIRED_CHECKS.some((n) => !seen.has(n))) return unknown("incomplete", sampledAt, ageSec);
+    const failing = REQUIRED_CHECKS.filter((n) => seen.get(n) === "failed");
+    const ranChecks = [...seen.values()].filter((r) => r !== "unknown").length;
+    if (failing.length > 0) return { health: "unhealthy", reason: "check_failed", sampledAt, ageSec, failing: [...failing], ranChecks };
+    if ([...seen.values()].some((r) => r === "unknown")) {
+      return { health: "unknown", reason: "check_unknown", sampledAt, ageSec, failing: [], ranChecks };
+    }
+    return { health: "healthy", reason: "ok", sampledAt, ageSec, failing: [], ranChecks };
+  } catch {
+    return unknown("invalid");
+  }
+}
+
+async function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([
+      p,
+      new Promise<T>((_, reject) => {
+        timer = setTimeout(() => reject(Object.assign(new Error("timeout"), { name: "TimeoutError" })), ms);
+      }),
+    ]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+}
+
+async function timedCheck(
+  name: HealthCheckName,
+  expected: string,
+  fn: () => Promise<{ result: HealthCheckResult["result"]; observed: string; reason: string }>,
+): Promise<HealthCheckResult> {
+  const t0 = Date.now();
+  try {
+    const r = await withTimeout(fn(), HEALTH_CHECK_TIMEOUT_MS);
+    return { name, expected, ...r, durationMs: Date.now() - t0 };
+  } catch (err) {
+    const timedOut = err instanceof Error && err.name === "TimeoutError";
+    return {
+      name,
+      expected,
+      result: "failed",
+      observed: timedOut ? `no answer within ${HEALTH_CHECK_TIMEOUT_MS} ms` : "operation threw",
+      reason: timedOut ? "timeout" : "threw",
+      durationMs: Date.now() - t0,
+    };
+  }
+}
+
+/** Built-in fixtures: a real live-client error shape and a known probe shape. */
+function provenanceSelfTestPasses(): boolean {
+  const device = {
+    browser: "safari", browserVersion: "17.4", engine: "webkit", os: "ios", osVersion: "17.4",
+    deviceClass: "phone", form: "mobile", screen: "md", dpr: 2, touchPoints: "2-5",
+  };
+  const real = {
+    type: "js_error", ts: 0, buildId: "a1b2c3d", sessionId: "selftest", lcV: "2", storageOk: true,
+    deviceSource: "live", msSinceBootStart: 1200, device, error: { name: "Error", message: "selftest" },
+  } as unknown as CrashReportEvent;
+  const probe = { type: "js_error", ts: 0, buildId: "wake-check" } as unknown as CrashReportEvent;
+  return provenanceOf(real) === "corroborated" && provenanceOf(probe) === "uncorroborated";
+}
+
+/** Run the required checks once (no side effects beyond its own KV keys). */
+export async function runHealthChecks(env: CrashReportEnv, now: number, cron: string, scheduledTime: number): Promise<HealthRunV1> {
+  const t0 = Date.now();
+  const kv = env.TELEMETRY_COUNTS;
+  const hasKv = !!kv;
+  const hasDiscord = !!env.DISCORD_WEBHOOK_URL?.trim();
+  const hasEmail = !!(env.RESEND_API_KEY?.trim() && env.REPORT_EMAIL?.trim());
+  const sampledIso = new Date(now).toISOString();
+  const checks: HealthCheckResult[] = [];
+  const bindingsReason = !hasKv ? "binding_missing" : !hasDiscord ? "ops_discord_missing" : "ok";
+  checks.push({
+    name: "bindings_present",
+    expected: "counter store bound and Discord ops webhook configured (ops alerts are Discord only)",
+    observed: `store ${hasKv ? "yes" : "no"} · discord ${hasDiscord ? "yes" : "no"} · crash-alert email ${hasEmail ? "yes" : "no"} (not an ops channel) · limiter ${env.CRASH_RATE_LIMITER ? "yes" : "no"}`,
+    result: bindingsReason === "ok" ? "passed" : "failed",
+    reason: bindingsReason,
+    durationMs: 0,
+  });
+
+  if (!kv) {
+    for (const name of ["kv_write", "kv_read"] as const) {
+      checks.push({ name, expected: "counter store reachable", observed: "not run: store not bound", result: "unknown", reason: "not_run", durationMs: 0 });
+    }
+  } else {
+    checks.push(
+      await timedCheck("kv_write", "write acknowledged", async () => {
+        await kv.put(HEALTH_PROBE_KEY, sampledIso, { expirationTtl: KV_MIN_TTL_SECONDS });
+        return { result: "passed", observed: "write acknowledged", reason: "ok" };
+      }),
+    );
+    // A read that returns nothing is NOT a failure: KV is eventually
+    // consistent, so visibility of a fresh write is unconfirmed by design.
+    checks.push(
+      await timedCheck("kv_read", "read completes", async () => {
+        const v = await kv.get(HEALTH_RECORD_KEY);
+        return {
+          result: "passed",
+          observed: v ? "read ok · previous record visible" : "read ok · no previous record visible (visibility unconfirmed)",
+          reason: "ok",
+        };
+      }),
+    );
+  }
+  const selftest = provenanceSelfTestPasses();
+  checks.push({
+    name: "provenance_selftest",
+    expected: "real-client fixture corroborated, probe fixture uncorroborated",
+    observed: selftest ? "as expected" : "fixture mismatch",
+    result: selftest ? "passed" : "failed",
+    reason: selftest ? "ok" : "selftest_failed",
+    durationMs: 0,
+  });
+  const run: HealthRunV1 = {
+    v: 1,
+    kind: "health_run",
+    trigger: "platform_schedule",
+    cron,
+    scheduledAt: new Date(scheduledTime).toISOString(),
+    sampledAt: sampledIso,
+    durationMs: Date.now() - t0,
+    health: "unknown",
+    requiredChecks: REQUIRED_CHECKS.length,
+    ranChecks: 0,
+    checks,
+    worker: { versionId: "unavailable" },
+  };
+  const ev = evaluateHealth(run, now);
+  run.health = ev.health;
+  run.ranChecks = ev.ranChecks;
+  return run;
+}
+
+interface HealthIncidentState {
+  v: 1;
+  open: boolean;
+  failing: string[];
+  consecutiveFailures: number;
+  consecutivePasses: number;
+  openedAt: string | null;
+  lastNotifiedAt: number;
+  lastHealthyAt: string | null;
+}
+
+function emptyIncident(): HealthIncidentState {
+  return { v: 1, open: false, failing: [], consecutiveFailures: 0, consecutivePasses: 0, openedAt: null, lastNotifiedAt: 0, lastHealthyAt: null };
+}
+
+function parseIncident(raw: string | null): HealthIncidentState {
+  if (!raw) return emptyIncident();
+  try {
+    const p = JSON.parse(raw) as Partial<HealthIncidentState>;
+    const n = (x: unknown) => (typeof x === "number" && Number.isFinite(x) && x >= 0 ? Math.floor(x) : 0);
+    return {
+      v: 1,
+      open: p.open === true,
+      failing: Array.isArray(p.failing) ? p.failing.filter((f): f is string => typeof f === "string").slice(0, 8) : [],
+      consecutiveFailures: n(p.consecutiveFailures),
+      consecutivePasses: n(p.consecutivePasses),
+      openedAt: typeof p.openedAt === "string" ? p.openedAt : null,
+      lastNotifiedAt: n(p.lastNotifiedAt),
+      lastHealthyAt: typeof p.lastHealthyAt === "string" ? p.lastHealthyAt : null,
+    };
+  } catch {
+    return emptyIncident();
+  }
+}
+
+export function buildHealthFailureText(run: HealthRunV1, incident: HealthIncidentState | null, reminder: boolean): string {
+  const failed = run.checks.filter((c) => c.result !== "passed");
+  const lines = failed.map(
+    (c) => `• ${c.name}: ${c.result} — expected ${c.expected}; observed ${c.observed} (${c.reason}, ${c.durationMs} ms)`,
+  );
+  const text =
+    `🛠️ Crash-report worker check ${reminder ? "STILL FAILING (24 h reminder)" : "FAILED"}\n` +
+    `scope: crash-report worker only — not the game, not browsers or WebGL\n` +
+    lines.join("\n") +
+    `\nsampled: ${run.sampledAt} · run ${run.durationMs} ms · checks ran ${run.ranChecks}/${run.requiredChecks}` +
+    `\nlast healthy: ${incident?.lastHealthyAt ?? "unknown"} · incident state: ${incident ? "tracked" : "unreadable (best-effort cap: 1 message per hour)"}` +
+    `\ncause: unconfirmed · real-client-shaped crashes still page while this is open`;
+  return text.length > 1800 ? `${text.slice(0, 1799)}…` : text;
+}
+
+/**
+ * Ops-channel delivery for health messages. Round 3: the ops channel is
+ * Discord ONLY (a new email category was not approved). Without a
+ * webhook nothing is sent ("not_configured"), bindings_present fails with
+ * reason "ops_discord_missing", and /health reports unhealthy — it never
+ * claims a deliverable ops channel. Real-crash email at /ingest is
+ * unchanged.
+ */
+async function sendOpsMessage(env: CrashReportEnv, text: string): Promise<DeliveryState> {
+  const discordUrl = env.DISCORD_WEBHOOK_URL?.trim();
+  return discordUrl ? forwardToDiscord(discordUrl, text) : "not_configured";
+}
+
+const HEALTH_BROKEN_WRITE_TIMEOUT_MS = 500;
+
+/**
+ * Scheduled health entry point: run checks, decide, SEND, then store.
+ * Round 2 (F3/F4): the message is sent before any publication write, so
+ * storage can never suppress its own outage alert, and every KV op is
+ * bounded. The incident ledger records a notification only when the
+ * provider accepted it (lastNotifiedAt = 0 means "open, not yet
+ * delivered"): a failed or unknown send is retried at the next run
+ * (<= 1 send + 1 bounded retry per 15-min run; an "unknown" timeout may
+ * duplicate). Policy: page after 2 consecutive failures (a missing
+ * binding at once), 24 h reminder after a delivered page, and one
+ * recovered message after 2 passes — the incident closes only once that
+ * message is accepted. Unreadable incident state: <= 1 message per hour.
+ */
+export async function runScheduledHealth(env: CrashReportEnv, scheduledTime: number, cron: string): Promise<HealthRunV1> {
+  const rawKv = env.TELEMETRY_COUNTS;
+  const kv = rawKv ? boundedKv(rawKv, HEALTH_CHECK_TIMEOUT_MS) : undefined;
+  const run = await runHealthChecks(kv ? { ...env, TELEMETRY_COUNTS: kv } : env, scheduledTime, cron, scheduledTime);
+  let incident: HealthIncidentState | null = null;
+  if (kv) {
+    try {
+      incident = parseIncident(await kv.get(HEALTH_INCIDENT_KEY));
+    } catch {
+      incident = null;
+    }
+  }
+  let message: string | null = null;
+  let onAccepted: (() => void) | null = null;
+  if (run.health === "unhealthy") {
+    const bindingMissing = run.checks.some((c) => c.name === "bindings_present" && c.result === "failed");
+    if (incident) {
+      const inc = incident;
+      inc.consecutiveFailures += 1;
+      inc.consecutivePasses = 0;
+      inc.failing = run.checks.filter((c) => c.result === "failed").map((c) => c.name);
+      if (!inc.open && (bindingMissing || inc.consecutiveFailures >= HEALTH_PAGE_AFTER_FAILURES)) {
+        inc.open = true;
+        inc.openedAt = run.sampledAt;
+        inc.lastNotifiedAt = 0;
+      }
+      if (inc.open && inc.lastNotifiedAt === 0) {
+        message = buildHealthFailureText(run, inc, false);
+      } else if (inc.open && scheduledTime - inc.lastNotifiedAt >= HEALTH_REMINDER_MS) {
+        message = buildHealthFailureText(run, inc, true);
+      }
+      if (message) onAccepted = () => { inc.lastNotifiedAt = scheduledTime; };
+    } else if (new Date(scheduledTime).getUTCMinutes() < 15) {
+      // No readable incident state: at most one message per scheduled hour.
+      message = buildHealthFailureText(run, null, false);
+    }
+  } else if (run.health === "healthy") {
+    logLine("health ok", `${run.ranChecks}/${run.requiredChecks}`, `${run.durationMs} ms`);
+    if (incident) {
+      const inc = incident;
+      inc.consecutiveFailures = 0;
+      inc.consecutivePasses += 1;
+      inc.lastHealthyAt = run.sampledAt;
+      if (inc.open && inc.consecutivePasses >= HEALTH_RECOVER_AFTER_PASSES) {
+        message =
+          `✅ Crash-report worker checks recovered (scope: crash-report worker only)\n` +
+          `failing since: ${inc.openedAt ?? "unknown"} · ${inc.consecutivePasses} healthy runs in a row · sampled ${run.sampledAt}`;
+        onAccepted = () => {
+          inc.open = false;
+          inc.failing = [];
+          inc.openedAt = null;
+          inc.lastNotifiedAt = 0;
+        };
+      }
+    }
+  } else {
+    logLine("health unknown", `${run.ranChecks}/${run.requiredChecks}`);
+  }
+  if (message) {
+    const state = await sendOpsMessage(env, message);
+    if (state === "provider_accepted") onAccepted?.();
+    else logLine("health message not delivered (retried next run)", state);
+  }
+  if (kv) {
+    // Publication writes run in parallel and are bounded; when this run
+    // already saw the store fail to write, they get a short deadline.
+    const writeBroken = run.checks.some((c) => c.name === "kv_write" && c.result !== "passed");
+    const ms = writeBroken ? HEALTH_BROKEN_WRITE_TIMEOUT_MS : HEALTH_CHECK_TIMEOUT_MS;
+    const writes: Array<[string, Promise<void>]> = [
+      ["health record", withTimeout(kv.put(HEALTH_RECORD_KEY, JSON.stringify(run), { expirationTtl: OPS_RECORD_TTL_SECONDS }), ms)],
+    ];
+    if (incident) {
+      writes.push(["health incident", withTimeout(kv.put(HEALTH_INCIDENT_KEY, JSON.stringify(incident), { expirationTtl: HEALTH_INCIDENT_TTL_SECONDS }), ms)]);
+    }
+    const results = await Promise.allSettled(writes.map(([, w]) => w));
+    results.forEach((r, i) => {
+      if (r.status === "rejected") logLine(`${writes[i][0]} write failed`, r.reason instanceof Error ? r.reason.name : "unknown");
+    });
+    kv.close();
+  }
+  return run;
+}
+
+/** GET /health body: liveness plus the stored evidence summary (no secrets). */
+async function healthStatusBody(env: CrashReportEnv): Promise<Record<string, unknown>> {
+  const base = { ok: true, v: 1, live: true, scope: "crash-report-worker", requiredChecks: REQUIRED_CHECKS.length };
+  const kv = env.TELEMETRY_COUNTS;
+  if (!kv) return { ...base, health: "unknown", reason: "no_store", sampledAt: null, ageSec: null, failing: [], ranChecks: 0 };
+  let raw: string | null;
+  try {
+    raw = await withTimeout(kv.get(HEALTH_RECORD_KEY), HEALTH_CHECK_TIMEOUT_MS);
+  } catch {
+    return { ...base, health: "unknown", reason: "store_unreadable", sampledAt: null, ageSec: null, failing: [], ranChecks: 0 };
+  }
+  if (!raw) return { ...base, health: "unknown", reason: "no_record", sampledAt: null, ageSec: null, failing: [], ranChecks: 0 };
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    parsed = null;
+  }
+  const ev = evaluateHealth(parsed, Date.now());
+  return { ...base, ...ev };
 }
 
 // --- Request handling --------------------------------------------------
@@ -2065,7 +3034,11 @@ function optionsResponse(origin: string | null): Response {
  * Pure request handler (testable without a Workers runtime).
  * Never throws for client errors — every failure path is a 4xx.
  */
-export async function handleRequest(request: Request, env: CrashReportEnv): Promise<Response> {
+export async function handleRequest(
+  request: Request,
+  env: CrashReportEnv,
+  ctx?: ExecutionContextLike,
+): Promise<Response> {
   const url = new URL(request.url);
   const path = url.pathname;
   const origin = originPolicy.allowedOrigin(request);
@@ -2077,7 +3050,10 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
   if (path === "/health") {
     // Health is for humans and monitors (curl), not browsers: no CORS.
     if (request.method !== "GET") return jsonResponse(405, { error: "method not allowed" });
-    return jsonResponse(200, { ok: true });
+    // Council fix T6: liveness (this answered) is separate from
+    // dependency health (the last trusted scheduled run, freshness-checked).
+    // HTTP 200 means "alive"; monitors must read body.health.
+    return jsonResponse(200, await healthStatusBody(env), { "cache-control": "no-store" });
   }
 
   if (path === "/" || path === "/ingest") {
@@ -2103,6 +3079,7 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
     }
     const body = await readBodyCapped(request, MAX_BODY_BYTES);
     if (body === null) return jsonResponse(413, { error: "body too large" }, cors);
+    if (body === undefined) return jsonResponse(408, { error: "body timeout" }, cors);
 
     let event: unknown;
     try {
@@ -2124,68 +3101,109 @@ export async function handleRequest(request: Request, env: CrashReportEnv): Prom
     const resendKey = env.RESEND_API_KEY?.trim();
     const reportEmail = env.REPORT_EMAIL?.trim();
 
-    // Phase 1: count every accepted event, best-effort (fail-open).
-    const store = env.TELEMETRY_COUNTS ? kvTelemetryStore(env.TELEMETRY_COUNTS) : null;
-    const tele = await recordTelemetry(store, valid, Date.now(), thresholdConfig(env));
-    if (tele.alerted && tele.alertText && discordUrl) {
-      // Threshold alert: exactly one per type+hour. Fire-and-forget —
-      // a failed alert post must never fail the client request.
-      forwardToDiscord(discordUrl, tele.alertText).catch(() => {});
-    }
-
+    // Council fix T2 + round 2 (F2): routing is provenance only, and a real
+    // corroborated crash is paged BEFORE counting starts, so a missing,
+    // throwing or hanging counter store can never delay or block it.
+    // Every accepted event gets the same public body, so the response
+    // reveals neither routing nor store health.
+    const provenance = provenanceOf(valid);
     const tier = tierOf(
       valid.type,
       typeof valid.recoveryOutcome === "string" ? valid.recoveryOutcome : undefined,
     );
-    const alert = buildAlert(valid);
-    const attempts: Array<{ channel: "discord" | "email"; promise: Promise<boolean> }> = [];
-    if (tier === "crash") {
-      // Crash-class: immediate individual forward, unchanged from before.
-      if (discordUrl)
-        attempts.push({ channel: "discord", promise: forwardToDiscord(discordUrl, alert.discord) });
-      if (resendKey && reportEmail) {
-        attempts.push({
-          channel: "email",
-          promise: forwardToEmail(env, alert.emailSubject, alert.emailBody),
-        });
+    const outcome: IngestOutcome = { provenance, counted: false, route: "counted_only", deliveries: {} };
+    const paged = tier === "crash" && provenance === "corroborated";
+    if (paged) {
+      outcome.route = "paged";
+      const alert = buildAlert(valid);
+      const now = Date.now();
+      const work = (async () => {
+        const [discord, email] = await Promise.all([
+          discordUrl ? forwardToDiscord(discordUrl, alert.discord) : Promise.resolve<DeliveryState>("not_configured"),
+          resendKey && reportEmail
+            ? forwardToEmail(env, alert.emailSubject, alert.emailBody)
+            : Promise.resolve<DeliveryState>("not_configured"),
+        ]);
+        outcome.deliveries = { discord, email };
+        logLine("forwarded", valid.type, valid.buildId, valid.edition ?? "—", outcome.deliveries);
+        if (env.TELEMETRY_COUNTS && (discordUrl || (resendKey && reportEmail))) {
+          await recordDelivery(boundedKv(env.TELEMETRY_COUNTS), outcome.deliveries, now);
+        }
+      })();
+      await runInBackground(ctx, work);
+    }
+
+    // Phase 1: count every accepted event, best-effort, under a hard
+    // budget (round 2, F2). On timeout the store is closed, so the
+    // abandoned count cannot start new writes, and its alert texts are
+    // dropped — no late or duplicate notification from it.
+    const kvb = env.TELEMETRY_COUNTS ? boundedKv(env.TELEMETRY_COUNTS, KV_OP_TIMEOUT_MS, INGEST_COUNT_BUDGET_MS) : null;
+    const store = kvb ? kvTelemetryStore(kvb) : null;
+    const notCounted: TelemetryRecordResult = { counted: false, alerted: false, alertTexts: [] };
+    const tele = await withTimeout(
+      recordTelemetry(store, valid, Date.now(), thresholdConfig(env), provenance),
+      INGEST_COUNT_BUDGET_MS + 250,
+    ).catch(() => notCounted);
+    kvb?.close();
+    outcome.counted = tele.counted;
+    if (discordUrl && tele.alertTexts.length > 0) {
+      // Threshold + can't-tell alerts: Discord only, in the background —
+      // a failed alert post must never fail the client request.
+      const texts = tele.alertTexts;
+      await runInBackground(ctx, Promise.all(texts.map((t) => forwardToDiscord(discordUrl, t))));
+    }
+
+    if (paged) {
+      // Already handled above.
+    } else if (tier === "crash" && !tele.counted) {
+      // Uncorroborated + store unavailable: bounded summary, never a page.
+      const text = uncorroboratedSummary.record(valid, Date.now());
+      outcome.route = text ? "summarized_kv_unavailable" : "summary_suppressed";
+      if (text && discordUrl) {
+        const work = (async () => {
+          if (env.CRASH_RATE_LIMITER) {
+            try {
+              const r = await withTimeout(env.CRASH_RATE_LIMITER.limit({ key: "kvdown-summary" }), KV_OP_TIMEOUT_MS);
+              if (!r.success) return;
+            } catch {
+              // A throwing limiter falls back to the per-isolate window.
+            }
+          }
+          outcome.deliveries = { discord: await forwardToDiscord(discordUrl, text) };
+        })();
+        await runInBackground(ctx, work);
       }
+      logLine("uncorroborated crash, store unavailable", valid.type, outcome.route);
+    } else {
+      // Hiccup/funnel, or an uncorroborated crash that WAS counted
+      // (it feeds the threshold / can't-tell legs and the digest).
+      logLine("accepted (counted only)", valid.type, valid.buildId, valid.edition ?? "—");
     }
-    // Hiccup-class: counted above; individual forwards are replaced by
-    // the threshold alert + hourly digest (no per-event pings) — except
-    // routine funnel types, which never trip the threshold alert (#311).
-
-    if (attempts.length === 0) {
-      // No-op mode: safe to deploy before secrets exist.
-      logLine(
-        "accepted (no forwarders configured)",
-        valid.type,
-        valid.buildId,
-        valid.edition ?? "—",
-      );
-      return jsonResponse(200, { ok: true, forwarded: false, counted: tele.counted }, cors);
-    }
-
-    // One forwarder failing must not fail the request (or the other).
-    const settled = await Promise.allSettled(attempts.map((a) => a.promise));
-    const results: Record<string, boolean> = {};
-    settled.forEach((s, i) => {
-      results[attempts[i].channel] = s.status === "fulfilled" && s.value === true;
-    });
-    logLine("forwarded", valid.type, valid.buildId, valid.edition ?? "—", results);
-    return jsonResponse(200, { ok: true, forwarded: true, counted: tele.counted, results }, cors);
+    lastIngestOutcome = outcome;
+    return jsonResponse(200, { ok: true }, cors);
   }
 
   return jsonResponse(404, { error: "not found" });
 }
 
 export default {
-  fetch: (request: Request, env: CrashReportEnv): Promise<Response> => handleRequest(request, env),
+  fetch: (request: Request, env: CrashReportEnv, ctx: ExecutionContextLike): Promise<Response> =>
+    handleRequest(request, env, ctx),
   // Phase 1: hourly digest cron (see [triggers] in wrangler.toml).
   scheduled: async (
     event: { cron: string; scheduledTime: number },
     env: CrashReportEnv,
+    _ctx?: ExecutionContextLike,
   ): Promise<void> => {
-    const store = env.TELEMETRY_COUNTS ? kvTelemetryStore(env.TELEMETRY_COUNTS) : null;
+    // Council fix T6: dispatch on the cron expression. The health cron
+    // runs ONLY health; every other cron (the "15 * * * *" digest)
+    // keeps the unchanged digest path.
+    if (event.cron === HEALTH_CRON) {
+      await runScheduledHealth(env, event.scheduledTime, event.cron);
+      return;
+    }
+    // Round 2: every digest store op is bounded (per op, no total budget).
+    const store = env.TELEMETRY_COUNTS ? kvTelemetryStore(boundedKv(env.TELEMETRY_COUNTS)) : null;
     await runHourlyDigest(event.scheduledTime, env, store);
   },
 };

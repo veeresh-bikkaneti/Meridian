@@ -5105,6 +5105,7 @@ function Choose({
           className="agep-footer-link"
           onClick={onTakeTour}
           data-testid="take-tour-link"
+          aria-label="Take the tour again"
         >
           🗺️ Take the tour
         </button>
