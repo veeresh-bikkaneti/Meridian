@@ -1187,3 +1187,35 @@
   overflow-y: auto;
 }
 
+.playlab-journal-still-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: #f6f1e3;
+}
+
+.playlab-journal-still-frame .hv5-card-film {
+  position: absolute;
+  inset: 0;
+}
+
+.playlab-journal-still-frame .hv5-card-film > img,
+.playlab-journal-still-frame .hv5-card-film > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playlab-journal-place,
+.playlab-journal-caption {
+  margin: 0.75rem 0 0;
+}
+
+.playlab-journal-audio {
+  display: block;
+  width: 100%;
+  margin-top: 0.75rem;
+}
+

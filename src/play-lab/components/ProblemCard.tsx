@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import type { JournalClip, MotionTier, UnitItem } from "../types.ts";
-import { checkAnswer, getInteractiveSpec, isInteractiveItem } from "../interactions.ts";
+import { checkAnswer, getInteractiveSpec, playLabSurface } from "../interactions.ts";
 import { BridgeCard } from "./BridgeCard.tsx";
+import { JournalStillPanel } from "./JournalStillPanel.tsx";
 import { cartsPredictSeeScene } from "../scenes/CartsPredictSee.ts";
 
 export interface ProblemCardProps {
@@ -17,8 +18,8 @@ export function ProblemCard({
   onCorrectAnswer,
   onClose,
 }: ProblemCardProps) {
-  const isInteractive = isInteractiveItem(item.id);
-  const spec = isInteractive ? getInteractiveSpec(item.id) : null;
+  const surface = playLabSurface(item.id);
+  const spec = surface === "quiz" ? getInteractiveSpec(item.id) : null;
 
   const [selectedChoice, setSelectedChoice] = useState<string | number | null>(null);
   const [feedback, setFeedback] = useState<{ correct: boolean; reason: string } | null>(null);
@@ -144,7 +145,9 @@ export function ProblemCard({
 
       {/* Interaction Body */}
       <div className="playlab-interaction-area">
-        {isInteractive && spec ? (
+        {surface === "still" ? (
+          <JournalStillPanel clipId={item.id} />
+        ) : surface === "quiz" && spec ? (
           <div className="playlab-active-interaction" data-testid="active-interaction">
             {/* Step indicator for 2-step journal */}
             {spec.stepTwo && (

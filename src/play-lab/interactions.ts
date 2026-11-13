@@ -1,4 +1,5 @@
 import type { AnswerCheckResult, InteractiveItemSpec } from "./types.ts";
+import { isJournalStillClip, type JournalStillClipId } from "./journal-still.ts";
 
 export const INTERACTIVE_ITEM_IDS = [
   "math-number:groups:skip-count",
@@ -11,8 +12,10 @@ export const INTERACTIVE_ITEM_IDS = [
 
 export type InteractiveItemId = (typeof INTERACTIVE_ITEM_IDS)[number];
 
-export function isInteractiveItem(id: string): id is InteractiveItemId {
-  return (INTERACTIVE_ITEM_IDS as readonly string[]).includes(id);
+export type PlayableItemId = InteractiveItemId | JournalStillClipId;
+
+export function isInteractiveItem(id: string): id is PlayableItemId {
+  return (INTERACTIVE_ITEM_IDS as readonly string[]).includes(id) || isJournalStillClip(id);
 }
 
 /**
@@ -143,6 +146,14 @@ export function getInteractiveSpec(id: string): InteractiveItemSpec | null {
     default:
       return null;
   }
+}
+
+export function playLabSurface(id: string): "still" | "quiz" | "soon" {
+  if (isJournalStillClip(id)) return "still";
+  if ((INTERACTIVE_ITEM_IDS as readonly string[]).includes(id) && getInteractiveSpec(id)) {
+    return "quiz";
+  }
+  return "soon";
 }
 
 export function checkAnswer(

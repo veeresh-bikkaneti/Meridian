@@ -18,6 +18,7 @@ import {
   getInteractiveSpec,
   isInteractiveItem,
   INTERACTIVE_ITEM_IDS,
+  playLabSurface,
 } from "./interactions.ts";
 
 import { getSystemMotionTier } from "./motion.ts";
@@ -69,6 +70,18 @@ test("exactly 6 interactive items are registered", () => {
   assert.ok(isInteractiveItem("social-studies:route:trip-clock"));
   assert.ok(isInteractiveItem("general-knowledge:mixed:opera-years-ago"));
   assert.ok(isInteractiveItem("great-leaders:lincoln-memorial"));
+});
+
+test("world-wars still clips leave Coming soon and have no quiz", () => {
+  assert.equal(playLabSurface("world-wars:school-morning"), "still");
+  assert.equal(playLabSurface("world-wars:quiet-hour"), "still");
+  assert.equal(isInteractiveItem("world-wars:school-morning"), true);
+  assert.equal(isInteractiveItem("world-wars:quiet-hour"), true);
+  assert.equal(getInteractiveSpec("world-wars:school-morning"), null);
+  assert.equal(getInteractiveSpec("world-wars:quiet-hour"), null);
+  assert.equal(playLabSurface("christmas-truce"), "soon");
+  assert.equal(playLabSurface("letters-home"), "soon");
+  assert.equal(playLabSurface("great-leaders:lincoln-memorial"), "quiz");
 });
 
 test("math skip-count answer check verifies 40 and rejects distractors", () => {

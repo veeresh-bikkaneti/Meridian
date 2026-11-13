@@ -26,3 +26,6 @@ why-learn-shots/
 
 # Generated at build time (prebuild) — never commit
 public/build-meta.json
+
+# Local journal movie renders. The app repo does not store mp4 files.
+docs/scaling/journals/world-wars/render-out/
