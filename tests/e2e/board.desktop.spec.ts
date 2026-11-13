@@ -663,6 +663,26 @@ test("celebration: two newly closed cases still toast only once", async ({ page,
   await expect(toast).toContainText(JITTER_TITLE);
 });
 
+test("celebration: no live data means no toast, whatever the baseline says", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  // Baseline present but EMPTY (a valid array missing every snapshot-
+  // done id). GitHub stays aborted (the beforeEach route), so the
+  // overlay supplies no PR data: the comparison must never run —
+  // against this baseline every snapshot-done case would otherwise
+  // look "newly closed" and toast spuriously. Pins the board effect's
+  // prs.length > 0 guard.
+  await page.addInitScript(
+    ({ key }: { key: string }) => {
+      localStorage.setItem(key, "[]");
+    },
+    { key: SEEN_CLOSED_KEY },
+  );
+  await openBoard(page);
+
+  await page.waitForTimeout(500);
+  await expect(page.getByTestId("board-celebration")).toHaveCount(0);
+});
+
 test("celebration: first visit sets the baseline silently", async ({ page, context }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   // No localStorage seed: with no baseline the app must set one
