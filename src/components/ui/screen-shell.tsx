@@ -64,7 +64,7 @@ export function ScreenShell({
       {...data}
     >
       <header>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="screen-home-bar -mx-5 flex flex-wrap items-center gap-2 px-5 py-2">
           {onHome ? (
             <HomeButton onHome={onHome} className="-ml-3" />
           ) : (

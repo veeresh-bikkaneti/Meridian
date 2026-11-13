@@ -2008,6 +2008,16 @@
     linear-gradient(180deg, var(--atlas-bg-1) 0%, var(--atlas-bg-2) 100%);
 }
 
+.screen-home-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg, var(--atlas-bg-1));
+}
+.mode-screen:not(.why-learn-screen) .screen-home-bar {
+  background: var(--atlas-bg-1);
+}
+
 .mode-title {
   font-family: var(--font-atlas-display);
 }

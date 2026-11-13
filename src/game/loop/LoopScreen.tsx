@@ -423,7 +423,7 @@ export function LoopScreen({
     // typeof guard: non-DOM renderers (react-test-renderer) hand back
     // ref objects without a focus method.
     const el = headingRef.current;
-    if (el && typeof el.focus === "function") el.focus();
+    if (el && typeof el.focus === "function") el.focus({ preventScroll: true });
   }, []);
   const [store, setStore] = useState<LoopUnlimitedStore | null>(null);
   // Ref mirror so event handlers always see the latest store without
@@ -939,7 +939,7 @@ export function LoopScreen({
 
   return (
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
-      <div className="flex items-center justify-between gap-3">
+      <div className="screen-home-bar -mx-5 flex items-center justify-between gap-3 px-5 py-2">
         <div className="flex items-center gap-2">
           <HomeButton onHome={onLeave} />
           {store && load.phase === "ready" && !endedSummary ? (

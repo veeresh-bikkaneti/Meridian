@@ -95,7 +95,7 @@ import {
   isHighContrastEnabled,
   setHighContrastEnabled,
 } from "@/game/palette-preference";
-import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
+import { Suspense, lazy, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent as ReactMouseEvent, type ReactNode, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -3317,6 +3317,30 @@ export function GameApp() {
       }
     />
   ) : null;
+
+  // One shared scroll reset when the in-app screen changes (not when
+  // focus merely moves inside the same screen). Instant, so reduced
+  // motion is already honoured. Nested subject cases remount
+  // ScreenShell and reset there too.
+  const inAppScreen = !ready
+    ? "boot"
+    : run
+      ? "globe"
+      : loopOpen
+        ? "geodetective"
+        : coldTrailOpen
+          ? "coldtrail"
+          : subjectsOpen
+            ? "subjects"
+            : starting
+              ? "starting"
+              : menu
+                ? `menu:${menu.kind}`
+                : "home";
+  useLayoutEffect(() => {
+    if (inAppScreen === "boot") return;
+    window.scrollTo(0, 0);
+  }, [inAppScreen]);
 
   if (!ready) {
     // The boot splash lives in boot-splash.tsx: the index route

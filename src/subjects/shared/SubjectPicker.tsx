@@ -79,7 +79,7 @@ export default function SubjectPicker({
   useEffect(() => {
     if (opened) return;
     const el = headingRef.current;
-    if (el && typeof el.focus === "function") el.focus();
+    if (el && typeof el.focus === "function") el.focus({ preventScroll: true });
   }, [opened]);
 
   if (opened) {

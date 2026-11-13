@@ -74,7 +74,7 @@ export function SubjectCase({
   // it is never stranded on the Home card that opened the case.
   useEffect(() => {
     const el = headingRef.current;
-    if (el && typeof el.focus === "function") el.focus();
+    if (el && typeof el.focus === "function") el.focus({ preventScroll: true });
   }, []);
 
   const item = items[index] ?? null;
