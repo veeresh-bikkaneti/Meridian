@@ -184,6 +184,22 @@ let observabilityEndpointValue: string | null = null;
 let contactEndpointValue: string | null = null;
 
 /**
+ * Feature-request endpoint from the top-level `featureRequestEndpoint`
+ * field of flags.json (the /api/feature-request route on the main
+ * worker), used by the /board page's grown-ups form on the GitHub Pages
+ * mirror. Same validation as the contact endpoint.
+ */
+let featureRequestEndpointValue: string | null = null;
+
+/**
+ * Turnstile site key from the top-level `featureRequestTurnstileSiteKey`
+ * field of flags.json. A site key is public (it ships in page HTML by
+ * design). Null = the owner has not created a Turnstile widget yet, so
+ * the form renders without one and the endpoint stays closed.
+ */
+let featureTurnstileSiteKeyValue: string | null = null;
+
+/**
  * Memoized production load promise: concurrent `loadFlags()` callers share
  * one fetch. Cleared when the load settles, so a later explicit call
  * re-fetches rather than returning a stale promise. The `testEnv` seam
@@ -199,6 +215,8 @@ export function resetFlags(): void {
   overrides = {};
   observabilityEndpointValue = null;
   contactEndpointValue = null;
+  featureRequestEndpointValue = null;
+  featureTurnstileSiteKeyValue = null;
   inflight = null;
 }
 
@@ -284,6 +302,24 @@ export function getContactEndpoint(): string | null {
   }
 }
 
+/** Current feature-request endpoint, or null when unset/invalid. Never throws. */
+export function getFeatureRequestEndpoint(): string | null {
+  try {
+    return featureRequestEndpointValue;
+  } catch {
+    return null;
+  }
+}
+
+/** Current Turnstile site key for the feature-request form, or null. Never throws. */
+export function getFeatureTurnstileSiteKey(): string | null {
+  try {
+    return featureTurnstileSiteKeyValue;
+  } catch {
+    return null;
+  }
+}
+
 function viteBaseUrl(): string | undefined {
   const env = (import.meta as unknown as { env?: { BASE_URL?: string } })
     .env;
@@ -330,6 +366,8 @@ interface FlagsPayload {
   flags?: unknown;
   observabilityEndpoint?: unknown;
   contactEndpoint?: unknown;
+  featureRequestEndpoint?: unknown;
+  featureRequestTurnstileSiteKey?: unknown;
 }
 
 /**
@@ -350,6 +388,18 @@ function applyPayload(data: unknown): void {
   contactEndpointValue = isValidEndpointShape(contactCandidate)
     ? (contactCandidate as string).trim()
     : null;
+  const featureCandidate = (data as FlagsPayload).featureRequestEndpoint;
+  featureRequestEndpointValue = isValidEndpointShape(featureCandidate)
+    ? (featureCandidate as string).trim()
+    : null;
+  const turnstileCandidate = (data as FlagsPayload).featureRequestTurnstileSiteKey;
+  featureTurnstileSiteKeyValue =
+    typeof turnstileCandidate === "string" &&
+    turnstileCandidate.trim().length > 0 &&
+    turnstileCandidate.trim().length <= 128 &&
+    !/[\s\\]/.test(turnstileCandidate)
+      ? turnstileCandidate.trim()
+      : null;
   const flags = (data as FlagsPayload).flags;
   if (typeof flags !== "object" || flags === null) return;
   const next: Partial<Record<FlagName, boolean>> = {};
