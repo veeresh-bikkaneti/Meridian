@@ -146,7 +146,7 @@ test("home: card tap fires on gesture-created context; toggle persists and silen
   expect(tap.freq).toBeLessThanOrEqual(587.33 * 1.02);
 
   // Back home; the speaker toggle persists meridian.sound and silences play.
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   const toggle = page.getByTestId("sound-toggle");
   await expect(toggle).toBeVisible();
   await toggle.click();
@@ -163,7 +163,7 @@ test("home: card tap fires on gesture-created context; toggle persists and silen
   expect(await page.getByTestId("loop-map")).toBeVisible({ timeout: 30_000 });
 
   // Turning ON confirms with the card tap; persistence round-trips.
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await page.getByTestId("sound-toggle").click();
   expect(await page.evaluate(() => localStorage.getItem("meridian.sound"))).toBe("on");
   await expect

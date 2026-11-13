@@ -20,6 +20,7 @@
     "check:contact": "node --experimental-strip-types scripts/contact-readiness.mjs",
     "check:detective-audio": "node scripts/detective/check-audio-manifest.mjs",
     "lint:content": "node --experimental-strip-types scripts/lint-content.mjs",
+    "lint:nav": "eslint --no-inline-config --max-warnings 0 -c eslint.nav.config.mjs src",
     "packs:validate": "node --experimental-strip-types scripts/packs/validate-pack.mjs --all",
     "packs:compose": "node scripts/packs/compose-packs.mjs capitals",
     "packs:coldtrail": "node --experimental-strip-types scripts/build-coldtrail-capitals.mjs",

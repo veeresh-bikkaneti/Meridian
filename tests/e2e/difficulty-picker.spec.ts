@@ -192,7 +192,7 @@ test("picker renders three options; the choice persists across reload and editio
   expect((await readRunChoice(page)).difficultyChoice).toBe("easy");
 
   // Leaving the run for the picker (an edition switch) keeps the choice.
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
   await expect(difficultyGroup(page).getByRole("button", { name: "Easy" })).toHaveAttribute(
     "aria-pressed",
@@ -284,7 +284,7 @@ test("switching difficulty mid-flow starts a fresh run, not a resume", async ({ 
   expect(easyRun.index, "one answered question advanced the run").toBeGreaterThan(0);
 
   // Switch bands mid-flow: back to the picker, pick Medium, play the globe.
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
   await pickDifficulty(page, "Medium");
   await page.getByRole("button", { name: "Play the globe" }).click();

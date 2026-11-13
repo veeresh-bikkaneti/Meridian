@@ -309,3 +309,14 @@ an unavailable checker) are in the reference, §G.
 - Do not touch `.scratch/` or other branches' worktrees.
 - **Installs** go through the audit gate (purpose, source, known
   vulnerabilities, owner approve/deny) before they land. Free options first.
+
+### Enforced rules
+
+Each rule is paired with the check that fails when it is broken. Fix the
+code the error names; never weaken the check.
+
+| Rule | Enforcer | Fails with |
+| :--- | :--- | :--- |
+| One home control, named exactly `Home`, on every screen | `HomeButton` + `HOME_LABEL` (`src/components/ui/home-button.ts`); `npm run lint:nav` (CI) | `Hand-written home label … use <HomeButton>` |
+| Home card grids: no empty cell, one column count per row, equal heights per row, Home ≥ 44×44 | `tests/e2e/home-layout.spec.ts` (6 viewports) | the viewport, grid and measured gap |
+| Screen changes reset scroll in one shared place and Home stays sticky | `tests/e2e/home-layout.desktop.spec.ts` (Home stays in the viewport) | `Home top … is above the viewport` |

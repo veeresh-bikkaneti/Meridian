@@ -223,7 +223,7 @@ test("offline loop, uncached: exact offline headline in the error-card slot", as
   // Back home, THEN reset the loop store (exactly the two loop keys) and
   // evict every cached clue file, so the offline deal — whichever case
   // it is — finds no clue data in the SW caches.
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Meridian" })).toBeVisible({
     timeout: 15_000,
   });
@@ -328,7 +328,7 @@ test("offline loop, cached: a mystery played online replays with zero notices", 
   await expect(page.getByTestId("loop-map")).toBeVisible({ timeout: 30_000 });
 
   // Leave the loop (the in-progress mystery persists in the loop store).
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Meridian" })).toBeVisible({
     timeout: 15_000,
   });

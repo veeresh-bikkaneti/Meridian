@@ -3,6 +3,7 @@ import { clampLat, normalizeLon } from "@/game/geo";
 import { formatLength, unitForLoopTarget } from "@/game/units";
 import { preloadTerritory } from "@/game/territory";
 import { Button } from "@/components/ui/button";
+import { HomeButton } from "@/components/ui/home-button";
 import { SoundToggle } from "@/components/SoundToggle";
 import { FlagImg } from "@/components/flag-img";
 import { flagEntry } from "@/lib/flag-registry";
@@ -196,9 +197,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
         <p className="mt-4 text-fg" role="alert">
           The case files didn&rsquo;t load. No case to play right now.
         </p>
-        <Button type="button" variant="secondary" onClick={onLeave} className="mt-6 min-h-[44px] self-start">
-          ← Back
-        </Button>
+        <HomeButton onHome={onLeave} variant="secondary" className="mt-6 self-start" />
       </main>
     );
   }
@@ -494,9 +493,7 @@ export function TrailScreen({ onLeave }: { onLeave: () => void }): JSX.Element {
       <header>
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-2">
-            <Button type="button" variant="ghost" onClick={onLeave} className="min-h-[44px] px-2">
-              ← All games
-            </Button>
+            <HomeButton onHome={onLeave} className="px-2" />
             {/* The one mute, top-left beside the screen's own buttons —
                 the home page's placement (owner, 2026-11-10). Same
                 master toggle everywhere: one persisted key

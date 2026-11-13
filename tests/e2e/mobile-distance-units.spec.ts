@@ -197,7 +197,7 @@ test("Red-team — mixed USA+France session summary reads kilometers", async ({
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
   // Switch editions mid-session (no End game) and play France.
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await page.getByRole("button", { name: "Choose a country" }).click();
   await page.getByRole("button", { name: "France" }).click();
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
