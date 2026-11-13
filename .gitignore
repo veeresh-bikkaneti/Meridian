@@ -26,3 +26,6 @@ why-learn-shots/
 
 # Generated at build time (prebuild) — never commit
 public/build-meta.json
+
+# Rendered journal mp4s stay out of this repo.
+docs/scaling/journals/ww2-monuments/render-out/
