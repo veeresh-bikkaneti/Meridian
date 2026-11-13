@@ -2,7 +2,7 @@
 
 One clip, `freedom-fighters:robben-island`, leaves Coming soon on `/play-lab` with its still, caption, and narration.
 
-Status is STILLS READY. The motion script ships on `feat/journal-freedom-fighters-clips-video`.
+Status is STILLS READY. Draft PR is https://github.com/veeresh-bikkaneti/Meridian/pull/448. The motion script ships on `feat/journal-freedom-fighters-clips-video`.
 
 ## Task
 
@@ -30,6 +30,7 @@ Build the kept Robben Island clip from the screened caption and `clips.json`. Sp
 - Caption and narration are the same three sentences.
 - `/play-lab` shows the card through `CardFilm`. Any other id stays Coming soon.
 - The mp4 stays in the gitignored render folder. `CardFilm` shows the still when that file is absent.
+- Narration commit `925d0a23f4474b192b1c5258f1f3eab2311abcd2` replaces the first encode. Measured on the local mp4 after that pass: -18.0 LUFS, true peak -2.7 dBFS.
 
 ## Gates
 
@@ -45,4 +46,4 @@ Build the kept Robben Island clip from the screened caption and `clips.json`. Sp
 ## Open
 
 - Veeresh listens to the narration. This file cannot certify the voice by ear.
-- Draft PR URL is recorded in `docs/scaling/journals/freedom-fighters/SWARM_RESULT.md` on the video branch.
+- The video draft PR URL is recorded in `docs/scaling/journals/freedom-fighters/SWARM_RESULT.md` on the video branch.
