@@ -17,7 +17,7 @@ Stills branch `feat/journal-technology-clips` tip `ee08ee20742ede757321bd037e28a
 - `1030b9d552b0f53b85d8991daf6e96c47c9a669a` Play Lab `journal-watch`.
 - `ee08ee20742ede757321bd037e28a3b5f91a8460` branch status.
 
-Video branch `feat/journal-technology-clips-video` script commit `03d8becb03ab64948b0c87c2da2ab8a16925b4fe`. This result file is the commit after that script commit. `git rebase` is denied in this session, so the video branch was not replayed onto the status commit. Pull request 458 targets the stills branch, so the stack on GitHub still has the status commit as its base. This checkout also carries `docs/branch-status/feat-journal-technology-clips.md` with the same bytes as `ee08ee20742ede757321bd037e28a3b5f91a8460`.
+Video branch `feat/journal-technology-clips-video` script commit `03d8becb03ab64948b0c87c2da2ab8a16925b4fe`. The commit that added this result file is `e931b926caffd085e669d9b3f97f80855479cc67`. `git rebase` is denied in this session, so the video branch was not replayed onto the status commit. Pull request 458 targets the stills branch, so the stack on GitHub still has the status commit as its base. This checkout also carries `docs/branch-status/feat-journal-technology-clips.md` with the same bytes as `ee08ee20742ede757321bd037e28a3b5f91a8460`.
 
 ## Method
 
