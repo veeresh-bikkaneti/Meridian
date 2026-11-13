@@ -2,12 +2,14 @@ import { test, expect } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * "Why Do We Learn This?" Home card (scale-play) — flag gate only.
+ * "Why Do We Learn This?" Home card — live for everyone.
  *
- * The card ships dark behind the scalePlay flag. Without `?scale=1` Home
- * is today's Home (no card); with it, the card renders in #home-cases
- * right after GeoDetective, with its band film slot and its CTA.
- * flags.json is pinned so a live remote value can't turn it on.
+ * The card used to ship dark behind the scalePlay flag; since the
+ * subjects launch (owner rule, Nov 13: release progressively) it
+ * renders for every player in #home-cases right after GeoDetective,
+ * with its band film slot and its CTA, with or without `?scale=1`.
+ * flags.json is pinned so a live remote value can't change behaviour
+ * mid-test.
  */
 test.setTimeout(120_000);
 
@@ -24,15 +26,18 @@ test.beforeEach(async ({ context }) => {
   );
 });
 
-test("card is absent without ?scale=1", async ({ page }) => {
+test("card is present without ?scale=1", async ({ page }) => {
   await page.goto(APP_URL);
   await expect(page.getByTestId("tour-stop-geodetective")).toBeVisible();
-  await expect(page.getByTestId("home-card-why-learn")).toHaveCount(0);
-  await expect(page.getByTestId("card-film-why-learn")).toHaveCount(0);
+  const card = page.getByTestId("home-card-why-learn");
+  await expect(card).toBeVisible();
+  await expect(card.getByTestId("card-film-why-learn")).toHaveCount(1);
+  const cta = card.getByRole("button", { name: "Why Do We Learn This?: Start exploring" });
+  await expect(cta).toBeEnabled();
 });
 
-test("card is present with ?scale=1, right after GeoDetective", async ({ page }) => {
-  await page.goto(`${APP_URL}&scale=1`);
+test("card sits right after GeoDetective", async ({ page }) => {
+  await page.goto(APP_URL);
   const card = page.getByTestId("home-card-why-learn");
   await expect(card).toBeVisible();
   await expect(card.getByRole("heading", { name: /Why Do We Learn This\?/ })).toBeVisible();
@@ -52,7 +57,7 @@ test("card is present with ?scale=1, right after GeoDetective", async ({ page })
   expect(order[geo + 1]).toBe("home-card-why-learn");
 });
 
-// ── Layout proof + screenshots (Home with ?scale=1) ──
+// ── Layout proof + screenshots (Home, card live for everyone) ──
 // Saved under why-learn-shots/ (outside test-results, which Playwright clears per run) so CI can upload them.
 
 type Box = { x: number; y: number; width: number; height: number };
@@ -84,11 +89,11 @@ for (const vp of [
   { name: "desktop", width: 1440, height: 900 },
   { name: "390", width: 390, height: 844 },
 ]) {
-  test(`?scale=1 layout at ${vp.name}: in line with GeoDetective, no overlap, film frame`, async ({
+  test(`layout at ${vp.name}: in line with GeoDetective, no overlap, film frame`, async ({
     page,
   }) => {
     await page.setViewportSize({ width: vp.width, height: vp.height });
-    await page.goto(`${APP_URL}&scale=1`);
+    await page.goto(APP_URL);
     const card = page.getByTestId("home-card-why-learn");
     await expect(card).toBeVisible();
     await card.scrollIntoViewIfNeeded();
@@ -149,10 +154,10 @@ for (const vp of [
       .screenshot({ path: `${SHOTS}/home-cases-${vp.name}-film-frame.png` });
   });
 
-  test(`?scale=1 still frame at ${vp.name} (reduced motion)`, async ({ page }) => {
+  test(`still frame at ${vp.name} (reduced motion)`, async ({ page }) => {
     await page.setViewportSize({ width: vp.width, height: vp.height });
     await page.emulateMedia({ reducedMotion: "reduce" });
-    await page.goto(`${APP_URL}&scale=1`);
+    await page.goto(APP_URL);
     const card = page.getByTestId("home-card-why-learn");
     await expect(card).toBeVisible();
     await card.scrollIntoViewIfNeeded();
@@ -166,12 +171,11 @@ for (const vp of [
   });
 }
 
-// Wave 1 (math subject screen): GameApp now passes onWhyLearn while the
-// scalePlay flag is on, so the CTA is enabled ("Start exploring") and a
-// tap opens the math case. The full per-band playthrough lives in
-// math-subject.spec.ts.
-test("?scale=1 card opens the math case", async ({ page }) => {
-  await page.goto(`${APP_URL}&scale=1`);
+// Subjects launch: the CTA is enabled ("Start exploring") and a tap
+// opens the subject picker; the Math row opens the math case. The full
+// per-band playthrough lives in math-subject.spec.ts.
+test("card opens the subject picker, and Math opens the math case", async ({ page }) => {
+  await page.goto(APP_URL);
   const card = page.getByTestId("home-card-why-learn");
   await expect(card).toBeVisible();
   await card.scrollIntoViewIfNeeded();
@@ -179,6 +183,8 @@ test("?scale=1 card opens the math case", async ({ page }) => {
   await expect(cta).toBeEnabled();
   await expect(cta).toHaveText(/Start exploring/);
   await cta.click();
+  await expect(page.getByTestId("subject-picker")).toBeVisible();
+  await page.getByTestId("subject-row-math").click();
   await expect(page.getByTestId("math-case")).toBeVisible();
   await expect(page.getByTestId("math-answer-card")).toBeVisible();
   await expect(page.getByTestId("home-card-why-learn")).toHaveCount(0);
