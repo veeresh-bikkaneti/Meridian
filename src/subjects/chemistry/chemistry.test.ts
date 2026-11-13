@@ -1,0 +1,76 @@
+/**
+ * Chemistry subject — adapter, answers, band filtering, the fact-note
+ * wording limits, and the module contract. Plain Node test runner,
+ * relative imports only.
+ */
+import { it } from "node:test";
+import assert from "node:assert/strict";
+import { allChemistryRows, itemsForGroup, chemistryUnits, CHEMISTRY_ITEM_IDS } from "./items.ts";
+import { CHEMISTRY_ANSWERS, answerFor } from "./answers.ts";
+import chemistryModule from "./index.ts";
+
+it("adapter reads every curated chemistry row", () => {
+  const rows = allChemistryRows();
+  // docs/scaling/chemistry/items.json.
+  assert.equal(rows.length, 18);
+  for (const row of rows) {
+    assert.ok(row.id.length > 0);
+    assert.ok(["7-10", "10-18", "18+"].includes(row.group));
+    assert.ok(row.why.length > 0);
+    assert.ok(row.objective.length > 0);
+  }
+});
+
+it("the live slice holds up to 3 items per band, each in its own band", () => {
+  const units = chemistryUnits();
+  assert.equal(units.length, CHEMISTRY_ITEM_IDS.length);
+  assert.equal(units.length, 9);
+  for (const group of ["7-10", "10-18", "18+"] as const) {
+    const items = itemsForGroup(group);
+    assert.equal(items.length, 3, group);
+    for (const item of items) assert.equal(item.group, group);
+  }
+});
+
+it("every live item has an answer, and every answer belongs to an item", () => {
+  const unitIds = new Set(chemistryUnits().map((u) => u.id));
+  for (const id of unitIds) {
+    const entry = answerFor(id);
+    assert.ok(entry, `missing answer for ${id}`);
+    assert.ok(entry.choices.includes(entry.correct), id);
+    assert.ok(entry.choices.length >= 3, id);
+    assert.ok(entry.derivation.length > 0, id);
+    assert.ok(entry.prompt.length > 0, id);
+  }
+  for (const id of Object.keys(CHEMISTRY_ANSWERS)) {
+    assert.ok(unitIds.has(id), `answer without item: ${id}`);
+  }
+  assert.equal(answerFor("chemistry:nope"), null);
+});
+
+it("road-salt wording stays inside the fact-notes limit", () => {
+  // fact-notes.md: salt is supported only as "deicers lower water's
+  // freezing point" — never a melt speed, never a stated temperature.
+  const entry = answerFor("chemistry:states:road-salt");
+  assert.ok(entry);
+  const text = `${entry.prompt} ${entry.correct} ${entry.derivation}`.toLowerCase();
+  assert.ok(text.includes("lowers") && text.includes("freezing point"));
+  assert.ok(!/faster|faster|speed/.test(text), "no melt-speed claim");
+  assert.ok(!/\d+\s*°|degrees/.test(text), "no stated temperature");
+});
+
+it("no shipped question or answer carries biology", () => {
+  const banned = /\b(plant|animal|body|blood|cell|seed|leaf|tree|flower|insect|bird|fish)\b/i;
+  for (const entry of Object.values(CHEMISTRY_ANSWERS)) {
+    const text = `${entry.prompt} ${entry.choices.join(" ")} ${entry.derivation}`;
+    assert.ok(!banned.test(text), text);
+  }
+});
+
+it("the subject module matches contract I1 and is released", () => {
+  assert.equal(chemistryModule.id, "chemistry");
+  assert.equal(chemistryModule.released, true);
+  assert.deepEqual(chemistryModule.groups, ["7-10", "10-18", "18+"]);
+  assert.equal(chemistryModule.units.length, 9);
+  assert.equal(typeof chemistryModule.load, "function");
+});
