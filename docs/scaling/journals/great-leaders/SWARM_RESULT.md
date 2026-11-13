@@ -10,6 +10,7 @@ The goal was to show the three KEEP clips with a still, the real caption, and na
 - Parent not carried: `0487d67db0b7f9fbcae818cfe27cdf237f07040d` (dirty `mockup/scale-play`).
 - Stills branch commit: `f291891b7c0177890699f020ccde48f799661b92`.
 - Video branch commit: `f5328ec048675e00ea57bcf5c050ae3128bda938`.
+- Video branch tip when pull request 451 opened: `aa1ade99fbc0fad7932cbc6548698954e61a332e`.
 
 ## Method
 
@@ -42,7 +43,7 @@ Cut, not built:
 ## PRs
 
 - Stills draft against main: https://github.com/veeresh-bikkaneti/Meridian/pull/447
-- Video draft against the stills branch: filled after the draft PR exists.
+- Video draft against the stills branch: https://github.com/veeresh-bikkaneti/Meridian/pull/451
 
 ## Council
 
