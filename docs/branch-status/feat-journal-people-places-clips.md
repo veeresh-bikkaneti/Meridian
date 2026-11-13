@@ -78,6 +78,17 @@ These clips are not in `public/videos/journal-manifest.json`, so the live player
 - `bm_george` and `am_fenrir` for these journals.
 - Detective clips `beat-me`, `win-together`, and `truce-watson` (they need the hatch TTS, which is not on this machine).
 
+## Council
+
+Round 1, 2026-11-13. No second round.
+
+- Child-safety: MUST-FIX, not applied. akashi-span's opening question multiplies 960 by 2, and pont-du-gard's question points at a top row this clip does not show. Both prompts are the existing clips.json items, and the journal already places grade 5 inside the 7-10 band. Spoken captions were not rewritten. The seat's note that this journal has no screenplay is wrong: the five screenplays are on this branch.
+- History: PASS. The cut clips were not narrated.
+- Accessibility: PASS. No persona file exists for this seat. Cue words match the narration, and there is no video, so nothing flashes.
+- QA: MUST-FIX. No still is in this pull request. A local open-weight image model did not run.
+
+The missing still cannot be fixed on this machine. Spoken words were left as the screened caption.
+
 ## Graph
 
 - Adds node: branch `feat/journal-people-places-clips` (docs/branch-status/feat-journal-people-places-clips.md), documents the people-places narration files above. Depends-on the people-places journal spec. No `graph.json` edit on this branch.
