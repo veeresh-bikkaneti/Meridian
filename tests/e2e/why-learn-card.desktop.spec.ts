@@ -180,6 +180,14 @@ test("?scale=1 card is not clickable yet (button disabled, tap stays on Home)", 
   await expect(cta).toBeDisabled();
   await expect(cta).toHaveAttribute("aria-disabled", "true");
   await expect(cta).toHaveText(/Coming soon/);
+  // Muted but readable (owner: at least 4.5:1). The label is solid
+  // --hv5-ink-soft (7.1:1 on the card), not faded by opacity.
+  const look = await cta.evaluate((el) => {
+    const cs = getComputedStyle(el);
+    return { opacity: cs.opacity, color: cs.color };
+  });
+  expect(look.opacity).toBe("1");
+  expect(look.color).toBe("rgb(92, 86, 74)");
   const box = (await card.getByRole("heading", { name: /Why Do We Learn This\?/ }).boundingBox())!;
   await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
   await page.waitForTimeout(1500);
