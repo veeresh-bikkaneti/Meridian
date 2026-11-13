@@ -42,10 +42,12 @@
   ],
   "stories": [
     {
+      "id": "detective-core/holmes-and-watson-pair-in-the-game",
       "lane": "Detective core",
       "title": "Holmes and Watson pair in the game",
       "status": "done",
       "waitsOn": "Shipped",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         355,
@@ -56,10 +58,12 @@
       "inferred": false
     },
     {
+      "id": "detective-core/age-groups-7-10-10-18-18-in-code",
       "lane": "Detective core",
       "title": "Age groups 7-10, 10-18, 18+ in code",
       "status": "done",
       "waitsOn": "Shipped",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         393,
@@ -68,10 +72,12 @@
       "inferred": false
     },
     {
+      "id": "detective-core/held-finger-jitter-fix-on-the-clue-berth",
       "lane": "Detective core",
       "title": "Held-finger jitter fix on the clue berth",
       "status": "in-progress",
       "waitsOn": "Your playtest, update from main, merge",
+      "waitsOnIds": [],
       "owner": "You",
       "prs": [
         431
@@ -79,10 +85,14 @@
       "inferred": false
     },
     {
+      "id": "detective-core/clue-pacing-and-one-voice-at-a-time",
       "lane": "Detective core",
       "title": "Clue pacing and one voice at a time",
       "status": "in-progress",
       "waitsOn": "PR 431 first, update from main (47 behind), fix the two-voices test gap",
+      "waitsOnIds": [
+        "detective-core/held-finger-jitter-fix-on-the-clue-berth"
+      ],
       "owner": "Your agent",
       "prs": [
         430
@@ -90,10 +100,14 @@
       "inferred": false
     },
     {
+      "id": "detective-core/pair-art-sheets-and-endings",
       "lane": "Detective core",
       "title": "Pair art sheets and endings",
       "status": "in-progress",
       "waitsOn": "Failed endings check; re-test after PR 431",
+      "waitsOnIds": [
+        "detective-core/held-finger-jitter-fix-on-the-clue-berth"
+      ],
       "owner": "Your agent",
       "prs": [
         366
@@ -101,28 +115,37 @@
       "inferred": true
     },
     {
+      "id": "detective-core/truce-pennant-port",
       "lane": "Detective core",
       "title": "Truce pennant port",
       "status": "not-started",
       "waitsOn": "PR 430 merged. Prompt is ready; old branch kept",
+      "waitsOnIds": [
+        "detective-core/clue-pacing-and-one-voice-at-a-time",
+        "audio-and-clips/shared-voice-channel-one-speaker-at-a-time"
+      ],
       "owner": "Your agent",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "detective-core/clue-4-opening-cards-2-and-3",
       "lane": "Detective core",
       "title": "Clue 4 opening cards 2 and 3",
       "status": "not-started",
       "waitsOn": "Pennant port",
+      "waitsOnIds": [],
       "owner": "Your agent",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "detective-core/holmes-follow-and-home-first-landing",
       "lane": "Detective core",
       "title": "Holmes follow and Home-first landing",
       "status": "in-progress",
       "waitsOn": "About 460 commits behind main. Rebase or close, your call",
+      "waitsOnIds": [],
       "owner": "You",
       "prs": [
         364,
@@ -131,10 +154,12 @@
       "inferred": true
     },
     {
+      "id": "why-do-we-learn-this-card/films-v4-dolly-camera",
       "lane": "Why Do We Learn This? card",
       "title": "Films (v4, dolly camera)",
       "status": "done",
       "waitsOn": "Shipped",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         433
@@ -142,10 +167,12 @@
       "inferred": false
     },
     {
+      "id": "why-do-we-learn-this-card/card-on-home-behind-scale-1-button-reads-coming-soon",
       "lane": "Why Do We Learn This? card",
       "title": "Card on Home behind ?scale=1, button reads Coming soon",
       "status": "done",
       "waitsOn": "Shipped",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         433
@@ -153,10 +180,12 @@
       "inferred": false
     },
     {
+      "id": "why-do-we-learn-this-card/cloudflare-deploy-fix",
       "lane": "Why Do We Learn This? card",
       "title": "Cloudflare deploy fix",
       "status": "done",
       "waitsOn": "Shipped Nov 13",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         435
@@ -164,10 +193,12 @@
       "inferred": false
     },
     {
+      "id": "why-do-we-learn-this-card/3d-film-source-files-branch",
       "lane": "Why Do We Learn This? card",
       "title": "3D film source files branch",
       "status": "in-progress",
       "waitsOn": "Films already on main; close it or merge for the source files",
+      "waitsOnIds": [],
       "owner": "You",
       "prs": [
         432
@@ -175,28 +206,36 @@
       "inferred": true
     },
     {
+      "id": "why-do-we-learn-this-card/button-opens-a-subject-instead-of-coming-soon",
       "lane": "Why Do We Learn This? card",
       "title": "Button opens a subject instead of Coming soon",
       "status": "not-started",
       "waitsOn": "PR 434 merged",
+      "waitsOnIds": [
+        "math/math-subject-screen-3-items-per-age-group"
+      ],
       "owner": "You",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "why-do-we-learn-this-card/card-shown-to-kids-without-scale-1",
       "lane": "Why Do We Learn This? card",
       "title": "Card shown to kids without ?scale=1",
       "status": "not-started",
       "waitsOn": "Math signed off by a named educator, then a small release PR",
+      "waitsOnIds": [],
       "owner": "Educator",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "math/number-strand-spec",
       "lane": "Math",
       "title": "Number strand spec",
       "status": "done",
       "waitsOn": "Merged; build gated",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         395
@@ -204,10 +243,12 @@
       "inferred": false
     },
     {
+      "id": "math/applied-strand-spec",
       "lane": "Math",
       "title": "Applied strand spec",
       "status": "done",
       "waitsOn": "Merged; build gated",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         405
@@ -215,10 +256,12 @@
       "inferred": false
     },
     {
+      "id": "math/subject-registry-shell-split",
       "lane": "Math",
       "title": "Subject registry (shell split)",
       "status": "done",
       "waitsOn": "On main; lists released subjects only",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         394
@@ -226,10 +269,12 @@
       "inferred": false
     },
     {
+      "id": "math/math-subject-screen-3-items-per-age-group",
       "lane": "Math",
       "title": "Math subject screen, 3 items per age group",
       "status": "in-progress",
       "waitsOn": "Shipped Nov 13",
+      "waitsOnIds": [],
       "owner": "You",
       "prs": [
         434
@@ -237,28 +282,38 @@
       "inferred": false
     },
     {
+      "id": "math/math-sign-off-and-release-pr",
       "lane": "Math",
       "title": "Math sign-off and release PR",
       "status": "not-started",
       "waitsOn": "Named educator signs the rubric, then released: true",
+      "waitsOnIds": [],
       "owner": "Educator",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "math/holmes-and-watson-in-math",
       "lane": "Math",
       "title": "Holmes and Watson in math",
       "status": "not-started",
       "waitsOn": "PR 434 and PR 430 merged. Prompt written",
+      "waitsOnIds": [
+        "detective-core/clue-pacing-and-one-voice-at-a-time",
+        "math/math-subject-screen-3-items-per-age-group",
+        "audio-and-clips/shared-voice-channel-one-speaker-at-a-time"
+      ],
       "owner": "Your agent",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "physics-and-chemistry/physics-spec",
       "lane": "Physics and Chemistry",
       "title": "Physics spec",
       "status": "done",
       "waitsOn": "Merged; gated",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         398
@@ -266,10 +321,12 @@
       "inferred": false
     },
     {
+      "id": "physics-and-chemistry/chemistry-spec",
       "lane": "Physics and Chemistry",
       "title": "Chemistry spec",
       "status": "done",
       "waitsOn": "Merged; gated",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         400
@@ -277,10 +334,12 @@
       "inferred": false
     },
     {
+      "id": "physics-and-chemistry/science-definitions-and-scene-engine-spec",
       "lane": "Physics and Chemistry",
       "title": "Science definitions and scene engine spec",
       "status": "done",
       "waitsOn": "Merged; gated",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         404
@@ -288,10 +347,12 @@
       "inferred": false
     },
     {
+      "id": "physics-and-chemistry/science-expansion-spec",
       "lane": "Physics and Chemistry",
       "title": "Science expansion spec",
       "status": "in-progress",
       "waitsOn": "Educator and subject expert review",
+      "waitsOnIds": [],
       "owner": "Educator",
       "prs": [
         429
@@ -299,37 +360,45 @@
       "inferred": false
     },
     {
+      "id": "physics-and-chemistry/predict-and-see-scene-engine-code",
       "lane": "Physics and Chemistry",
       "title": "Predict-and-see scene engine (code)",
       "status": "not-started",
       "waitsOn": "Math live first; your go to build",
+      "waitsOnIds": [],
       "owner": "Your agent",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "physics-and-chemistry/physics-and-chemistry-screens",
       "lane": "Physics and Chemistry",
       "title": "Physics and Chemistry screens",
       "status": "not-started",
       "waitsOn": "Scene engine",
+      "waitsOnIds": [],
       "owner": "Your agent",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "physics-and-chemistry/wave-2-sign-off-and-release",
       "lane": "Physics and Chemistry",
       "title": "Wave 2 sign-off and release",
       "status": "not-started",
       "waitsOn": "Screens built",
+      "waitsOnIds": [],
       "owner": "Educator",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "social-studies-and-gk/social-studies-economics-civics-spec",
       "lane": "Social studies and GK",
       "title": "Social studies, economics, civics spec",
       "status": "done",
       "waitsOn": "Merged; gated",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         397
@@ -337,10 +406,12 @@
       "inferred": false
     },
     {
+      "id": "social-studies-and-gk/general-knowledge-spec",
       "lane": "Social studies and GK",
       "title": "General knowledge spec",
       "status": "done",
       "waitsOn": "Merged; items G1, G4, G5 open for the educator",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         409
@@ -348,10 +419,12 @@
       "inferred": false
     },
     {
+      "id": "social-studies-and-gk/humanities-definitions-spec",
       "lane": "Social studies and GK",
       "title": "Humanities definitions spec",
       "status": "done",
       "waitsOn": "Merged; gated",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         399
@@ -359,28 +432,34 @@
       "inferred": false
     },
     {
+      "id": "social-studies-and-gk/social-studies-and-gk-screens",
       "lane": "Social studies and GK",
       "title": "Social studies and GK screens",
       "status": "not-started",
       "waitsOn": "Wave 2 live; your go to build",
+      "waitsOnIds": [],
       "owner": "Your agent",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "social-studies-and-gk/wave-3-sign-off-and-release",
       "lane": "Social studies and GK",
       "title": "Wave 3 sign-off and release",
       "status": "not-started",
       "waitsOn": "Screens built",
+      "waitsOnIds": [],
       "owner": "Educator",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "journals/7-journal-specs-people-and-places-technology-ww2-monuments-world-wars-modern-world-great-leaders-freedom-fighters",
       "lane": "Journals",
       "title": "7 journal specs (people and places, technology, WW2 monuments, world wars, modern world, great leaders, freedom fighters)",
       "status": "done",
       "waitsOn": "Merged; clips gated",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         402,
@@ -394,10 +473,12 @@
       "inferred": false
     },
     {
+      "id": "journals/religious-journal-movies-hidden",
       "lane": "Journals",
       "title": "Religious journal movies hidden",
       "status": "done",
       "waitsOn": "Shipped",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         416
@@ -405,28 +486,34 @@
       "inferred": false
     },
     {
+      "id": "journals/journal-clips-stage-b-video-files",
       "lane": "Journals",
       "title": "Journal clips (Stage B video files)",
       "status": "not-started",
       "waitsOn": "Educator sign-off and your build go",
+      "waitsOnIds": [],
       "owner": "You",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "journals/journals-release",
       "lane": "Journals",
       "title": "Journals release",
       "status": "not-started",
       "waitsOn": "Clips made and checked",
+      "waitsOnIds": [],
       "owner": "Educator",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "audio-and-clips/shared-voice-channel-one-speaker-at-a-time",
       "lane": "Audio and clips",
       "title": "Shared voice channel (one speaker at a time)",
       "status": "in-progress",
       "waitsOn": "See Detective core",
+      "waitsOnIds": [],
       "owner": "Your agent",
       "prs": [
         430
@@ -434,28 +521,34 @@
       "inferred": false
     },
     {
+      "id": "audio-and-clips/3-unrendered-clips-beat-me-win-together-truce-watson",
       "lane": "Audio and clips",
       "title": "3 unrendered clips: beat-me, win-together, truce-watson",
       "status": "not-started",
       "waitsOn": "Render machine",
+      "waitsOnIds": [],
       "owner": "Your agent",
       "prs": [],
       "inferred": true
     },
     {
+      "id": "audio-and-clips/88-place-names-with-no-holmes-voice",
       "lane": "Audio and clips",
       "title": "88 place names with no Holmes voice",
       "status": "not-started",
       "waitsOn": "Name probe run on the render machine",
+      "waitsOnIds": [],
       "owner": "Your agent",
       "prs": [],
       "inferred": true
     },
     {
+      "id": "infra-and-process/lean-test-strategy-in-agents-md",
       "lane": "Infra and process",
       "title": "Lean test strategy in AGENTS.md",
       "status": "done",
       "waitsOn": "Shipped",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         423
@@ -463,10 +556,12 @@
       "inferred": false
     },
     {
+      "id": "infra-and-process/model-neutral-agent-rules",
       "lane": "Infra and process",
       "title": "Model-neutral agent rules",
       "status": "done",
       "waitsOn": "Shipped",
+      "waitsOnIds": [],
       "owner": null,
       "prs": [
         406
@@ -474,10 +569,12 @@
       "inferred": false
     },
     {
+      "id": "infra-and-process/scale-play-mockup",
       "lane": "Infra and process",
       "title": "Scale-play mockup",
       "status": "in-progress",
       "waitsOn": "You rejected it Nov 11; close it",
+      "waitsOnIds": [],
       "owner": "You",
       "prs": [
         425
@@ -485,37 +582,45 @@
       "inferred": true
     },
     {
+      "id": "infra-and-process/scale-play-v2-plan-inside-the-prod-ui",
       "lane": "Infra and process",
       "title": "Scale-play v2 plan (inside the prod UI)",
       "status": "in-progress",
       "waitsOn": "Docs only on its branch; no PR yet",
+      "waitsOnIds": [],
       "owner": "You",
       "prs": [],
       "inferred": false
     },
     {
+      "id": "infra-and-process/windows-scripts-build-pages-npm-test-under-cmd-line-endings-on-globe-data",
       "lane": "Infra and process",
       "title": "Windows scripts: build:pages, npm test under cmd, line endings on globe data",
       "status": "not-started",
       "waitsOn": "Nothing; ready to start",
+      "waitsOnIds": [],
       "owner": "Your agent",
       "prs": [],
       "inferred": true
     },
     {
+      "id": "infra-and-process/turn-the-scaling-streams-ruleset-back-on",
       "lane": "Infra and process",
       "title": "Turn the Scaling streams ruleset back on",
       "status": "not-started",
       "waitsOn": "Your GitHub settings",
+      "waitsOnIds": [],
       "owner": "You",
       "prs": [],
       "inferred": true
     },
     {
+      "id": "infra-and-process/open-issues-344-and-319-real-unbuilt-work",
       "lane": "Infra and process",
       "title": "Open issues 344 and 319 (real unbuilt work)",
       "status": "not-started",
       "waitsOn": "Not yet placed in a stream",
+      "waitsOnIds": [],
       "owner": "You",
       "prs": [],
       "inferred": true

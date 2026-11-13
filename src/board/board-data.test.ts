@@ -9,6 +9,7 @@ import {
   CACHE_KEY,
   CACHE_TTL_MS,
   dependencyDepths,
+  dependencyRows,
   deriveStatus,
   donePathMatch,
   explicitIssueNumbers,
@@ -34,10 +35,12 @@ const snapshot = snapshotJson as unknown as SnapshotData;
 
 function story(partial: Partial<SnapshotStory>): SnapshotStory {
   return {
+    id: "math/a-story",
     lane: "Math",
     title: "A story",
     status: "not-started",
     waitsOn: "—",
+    waitsOnIds: [],
     owner: null,
     prs: [],
     inferred: false,
@@ -73,6 +76,50 @@ describe("snapshot", () => {
     }
     assert.ok(snapshot.donePath.some((g) => g.type === "gate"));
     assert.ok(snapshot.donePath.some((g) => g.type === "stage"));
+  });
+
+  it("every story has a non-empty unique id in <lane-slug>/<title-slug> form", () => {
+    const slug = (s: string) =>
+      s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+    const ids = snapshot.stories.map((s) => s.id);
+    for (const s of snapshot.stories) {
+      assert.ok(typeof s.id === "string" && s.id.length > 0, s.title);
+      assert.equal(s.id, `${slug(s.lane)}/${slug(s.title)}`, s.title);
+    }
+    assert.equal(new Set(ids).size, ids.length, "ids must be unique");
+  });
+
+  it("every waitsOnIds entry is an existing story id", () => {
+    const ids = new Set(snapshot.stories.map((s) => s.id));
+    for (const s of snapshot.stories) {
+      assert.ok(Array.isArray(s.waitsOnIds), s.title);
+      for (const id of s.waitsOnIds) assert.ok(ids.has(id), `${s.title} -> ${id}`);
+    }
+  });
+
+  it("waitsOnIds is exactly consistent with buildDependencyEdges output", () => {
+    const edges = buildDependencyEdges(snapshot.stories);
+    snapshot.stories.forEach((s, to) => {
+      const expected = [...new Set(edges.filter((e) => e.to === to).map((e) => snapshot.stories[e.from].id))].sort(
+        (a, b) => snapshot.stories.findIndex((x) => x.id === a) - snapshot.stories.findIndex((x) => x.id === b),
+      );
+      assert.deepEqual([...s.waitsOnIds].sort(), [...expected].sort(), s.title);
+      // snapshot order, not just set equality
+      assert.deepEqual(s.waitsOnIds, expected, s.title);
+    });
+  });
+
+  it("waitsOn text is unchanged for sampled stories", () => {
+    const byTitle = new Map(snapshot.stories.map((s) => [s.title, s]));
+    assert.equal(
+      byTitle.get("Clue pacing and one voice at a time")?.waitsOn,
+      "PR 431 first, update from main (47 behind), fix the two-voices test gap",
+    );
+    assert.equal(
+      byTitle.get("Holmes and Watson in math")?.waitsOn,
+      "PR 434 and PR 430 merged. Prompt written",
+    );
+    assert.equal(byTitle.get("Truce pennant port")?.waitsOn, "PR 430 merged. Prompt is ready; old branch kept");
   });
 });
 
@@ -444,6 +491,43 @@ describe("dependency edges (explicit PR waits only)", () => {
         );
       }
     }
+  });
+});
+
+describe("dependency rows", () => {
+  it("snapshot: row count equals total waitsOnIds entries", () => {
+    const rows = dependencyRows(snapshot.stories);
+    const total = snapshot.stories.reduce((n, s) => n + s.waitsOnIds.length, 0);
+    assert.equal(rows.length, total);
+    assert.equal(rows.length, 8);
+  });
+
+  it("fixture: impact counts and viaPrs are correct", () => {
+    const stories = [
+      story({ id: "x/prereq", title: "Prereq", prs: [100] }),
+      story({ id: "x/other-prereq", title: "Other prereq", prs: [200] }),
+      story({ id: "x/waiter-one", title: "Waiter one", waitsOn: "PR 100 first", waitsOnIds: ["x/prereq"] }),
+      story({
+        id: "x/waiter-two",
+        title: "Waiter two",
+        waitsOn: "PR 100 and PR 200",
+        waitsOnIds: ["x/prereq", "x/other-prereq"],
+      }),
+    ];
+    const rows = dependencyRows(stories);
+    assert.equal(rows.length, 3);
+    assert.deepEqual(
+      rows.map((r) => [r.from.title, r.to.title, r.viaPrs, r.blocks]),
+      [
+        ["Prereq", "Waiter one", [100], 2],
+        ["Prereq", "Waiter two", [100], 2],
+        ["Other prereq", "Waiter two", [200], 1],
+      ],
+    );
+  });
+
+  it("returns no rows when no story waits on another", () => {
+    assert.deepEqual(dependencyRows([story({ id: "x/a", title: "A" }), story({ id: "x/b", title: "B" })]), []);
   });
 });
 

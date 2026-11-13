@@ -11,10 +11,12 @@
 export type StoryStatus = "not-started" | "in-progress" | "done";
 
 export interface SnapshotStory {
+  id: string;
   lane: string;
   title: string;
   status: StoryStatus;
   waitsOn: string;
+  waitsOnIds: string[];
   owner: string | null;
   prs: number[];
   inferred: boolean;
@@ -284,6 +286,53 @@ export function buildDependencyEdges(stories: readonly SnapshotStory[]): Depende
     }
   });
   return edges.sort((a, b) => a.to - b.to || a.from - b.from || a.viaPr - b.viaPr);
+}
+
+export interface DependencyRow<T extends SnapshotStory = SnapshotStory> {
+  /** The prerequisite story (must land first). */
+  from: T;
+  /** The waiting story. */
+  to: T;
+  /** PR numbers linking from → to, from buildDependencyEdges (display only). */
+  viaPrs: number[];
+  /** Distinct stories whose waitsOnIds include `from` (its blocking impact). */
+  blocks: number;
+}
+
+/**
+ * One row per waitsOnIds relation (set semantics: duplicate ids in a
+ * story collapse). viaPrs are looked up from buildDependencyEdges for
+ * the same from→to pair; a relation with no explicit PR edge gets [].
+ * Rows follow snapshot order of the waiting story, then the order of
+ * its waitsOnIds. Unknown ids are skipped (snapshot tests forbid them).
+ */
+export function dependencyRows<T extends SnapshotStory>(stories: readonly T[]): DependencyRow<T>[] {
+  const byId = new Map(stories.map((s) => [s.id, s]));
+  const byIndex = new Map(stories.map((s, i) => [s.id, i]));
+  const blocks = new Map<string, number>();
+  for (const s of stories) {
+    for (const id of new Set(s.waitsOnIds ?? [])) blocks.set(id, (blocks.get(id) ?? 0) + 1);
+  }
+  const via = new Map<string, number[]>();
+  for (const e of buildDependencyEdges(stories)) {
+    const key = `${e.from}->${e.to}`;
+    via.set(key, [...(via.get(key) ?? []), e.viaPr]);
+  }
+  const rows: DependencyRow<T>[] = [];
+  stories.forEach((to, toIdx) => {
+    for (const id of new Set(to.waitsOnIds ?? [])) {
+      const from = byId.get(id);
+      if (!from) continue;
+      const fromIdx = byIndex.get(id) ?? -1;
+      rows.push({
+        from,
+        to,
+        viaPrs: (via.get(`${fromIdx}->${toIdx}`) ?? []).sort((a, b) => a - b),
+        blocks: blocks.get(id) ?? 0,
+      });
+    }
+  });
+  return rows;
 }
 
 /** Longest chain of prerequisites behind each story (0 = waits on no story). */

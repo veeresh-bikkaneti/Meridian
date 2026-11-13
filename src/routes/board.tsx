@@ -3,6 +3,7 @@ import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } fro
 import snapshotJson from "@/board/snapshot.json";
 import {
   applyLiveData,
+  dependencyRows,
   fetchLivePrs,
   filterStories,
   groupByLane,
@@ -130,6 +131,7 @@ function BoardPage() {
   const selectedStory = stories.find((s) => `${s.lane}:${s.title}` === selectedKey) ?? null;
   const columns = useMemo(() => groupByStatus(visibleStories), [visibleStories]);
   const lanes = useMemo(() => groupByLane(visibleStories, snapshot.lanes), [visibleStories]);
+  const depRows = useMemo(() => dependencyRows(stories), [stories]);
 
   const liveLine =
     liveSource === "live" && fetchedAt
@@ -320,6 +322,40 @@ function BoardPage() {
             <p className="board-muted">
               The list view is shown automatically when 3D is unavailable or reduced motion is on.
             </p>
+          )}
+        </section>
+
+        <section className="board-section" aria-labelledby="board-deps-heading">
+          <h2 id="board-deps-heading">Dependencies</h2>
+          {depRows.length === 0 ? (
+            <p className="board-muted">No story dependencies are recorded in the snapshot.</p>
+          ) : (
+            <ul className="board-deps">
+              {depRows.map((row) => (
+                <li className="board-dep-row" key={`${row.from.id}->${row.to.id}`}>
+                  <button
+                    type="button"
+                    className="board-dep-button"
+                    onClick={(e) => handleSelect(row.from, e.currentTarget)}
+                  >
+                    {row.from.title}
+                  </button>
+                  <span> must land before </span>
+                  <button
+                    type="button"
+                    className="board-dep-button"
+                    onClick={(e) => handleSelect(row.to, e.currentTarget)}
+                  >
+                    {row.to.title}
+                  </button>
+                  <span className="board-muted">
+                    {" "}
+                    · {row.viaPrs.length > 0 ? row.viaPrs.map((n) => `via PR ${n}`).join(", ") : "no PR link"} ·
+                    blocks {row.blocks} {row.blocks === 1 ? "story" : "stories"}
+                  </span>
+                </li>
+              ))}
+            </ul>
           )}
         </section>
 
