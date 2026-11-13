@@ -16,6 +16,7 @@ import { getAgeGroup } from "@/game/age-profile";
 import { withChunkTimeout } from "@/lib/chunk-timeout";
 import type { CelebrationSpec } from "@/components/celebration-copy";
 import { pickerRows } from "./picker-rows";
+import { ScreenShell } from "@/components/ui/screen-shell";
 
 type CaseComponent = ComponentType<
   SubjectProps & { onCelebrate?: (spec: CelebrationSpec) => void }
@@ -77,18 +78,16 @@ export default function SubjectPicker({
   const rows = released ? pickerRows(released, band) : [];
 
   return (
-    <main
-      className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8"
-      data-testid="subject-picker"
-      data-band={band}
+    <ScreenShell
+      onHome={onExit}
+      testId="subject-picker"
+      data={{ "data-band": band }}
+      eyebrow="Case file · Why it matters"
+      title="Why Do We Learn This?"
+      titleRef={headingRef}
+      sub={`Pick a subject · Ages ${band}`}
     >
-      <p className="name-eyebrow">Case file · Why it matters</p>
-      <h1 ref={headingRef} tabIndex={-1} className="mt-1 font-display text-3xl text-fg">
-        Why Do We Learn This?
-      </h1>
-      <p className="mt-2 text-sm text-muted">Pick a subject · Ages {band}</p>
-
-      <div className="mt-6 grid gap-2">
+      <div className="mode-card mt-6 grid gap-2 p-3 sm:p-4">
         {released === null && !listFailed ? (
           <p className="text-muted">Loading subjects…</p>
         ) : null}
@@ -130,14 +129,6 @@ export default function SubjectPicker({
           </p>
         ) : null}
       </div>
-
-      <button
-        type="button"
-        className="mt-6 min-h-[44px] rounded-xl border border-line bg-bg px-4 py-2 text-fg"
-        onClick={onExit}
-      >
-        Back to Home
-      </button>
-    </main>
+    </ScreenShell>
   );
 }

@@ -17,6 +17,7 @@ import { shareLoopText } from "@/game/share";
 import { isNewBuildDeployed } from "@/game/build-staleness";
 import { calendarDate } from "@/game/daily";
 import { Button } from "@/components/ui/button";
+import { HomeButton } from "@/components/ui/home-button";
 import { SoundToggle } from "@/components/SoundToggle";
 import { ShareButton } from "@/components/share-button";
 import { GuessInput } from "./guess-input";
@@ -940,9 +941,7 @@ export function LoopScreen({
     <main className="mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <Button variant="ghost" className="self-start" onClick={onLeave}>
-            Editions
-          </Button>
+          <HomeButton onHome={onLeave} />
           {store && load.phase === "ready" && !endedSummary ? (
             <Button
               variant="secondary"
@@ -2210,9 +2209,7 @@ function LoopReveal({
             🔎 Next mystery
           </Button>
           <p className="text-center text-sm text-muted">Case #{caseNo} is on your desk.</p>
-          <Button variant="ghost" onClick={onLeave} className="min-h-[48px]">
-            Back to editions
-          </Button>
+          <HomeButton onHome={onLeave} testId="home-button-end" className="min-h-[48px]" />
         </div>
         <p role="status" aria-live="polite" className="sr-only">
           {revealAnnouncement}

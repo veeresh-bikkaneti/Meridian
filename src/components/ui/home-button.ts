@@ -58,7 +58,9 @@ export function HomeButton({ variant = "ghost", className, testId = "home-button
   const cls = cn(BASE, VARIANT[variant], className);
   const icon = createElement(House, { "aria-hidden": true, focusable: "false", className: "size-4" });
   if ("to" in rest && rest.to) {
-    return createElement(Link, { to: rest.to, className: cls, "data-testid": testId }, icon, HOME_LABEL);
+    // Link's prop types omit data-* attributes; it forwards them to the <a>.
+    const linkProps = { to: rest.to, className: cls, "data-testid": testId } as { to: "/"; className: string };
+    return createElement(Link, linkProps, icon, HOME_LABEL);
   }
   return createElement(
     "button",
