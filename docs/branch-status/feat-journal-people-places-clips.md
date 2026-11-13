@@ -4,7 +4,7 @@ Stream: People and places journal. Stills shelf, then a silent local render on t
 
 **Status: BLOCKED. Spoken caption is missing. Draft PRs, not merged.**
 
-Base: `origin/main` at `8eb34cb4305719f88ef8c2568e4dd624cbaf8608`. Dirty `mockup/scale-play` was not carried.
+Base: `origin/main` at `8eb34cb4305719f88ef8c2568e4dd624cbaf8608`. Dirty `mockup/scale-play` was not carried. Later main is `c62a9b6b1a9daab7c6757c70bad7b8a7dc17d279`. PR 449 is behind and MERGEABLE. Not rebased.
 
 ## This pass
 

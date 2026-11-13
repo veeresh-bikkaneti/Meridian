@@ -13,6 +13,8 @@ Spoken captions were not produced. The shelf can show the still and the written 
 
 Dirty `mockup/scale-play` at `0487d67db0b7f9fbcae818cfe27cdf237f07040d` was not carried.
 
+After these branches were pushed, `origin/main` moved to `c62a9b6b1a9daab7c6757c70bad7b8a7dc17d279` (`fix(detective): held finger jitter no longer blocks the pause (#431)`). PR 449 is behind that commit and GitHub reports it MERGEABLE. It was not rebased. PR 450 is CLEAN against the stills branch.
+
 ## Method
 
 Play Lab is not on `origin/main`, so these five clips are a home shelf, not six new Play Lab ids. The shelf reuses `CardFilm`. `card-film.tsx` was not edited. There is no second fallback. Reduced motion still lands on `stillUrl` inside `CardFilm`.
