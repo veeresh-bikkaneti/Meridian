@@ -84,6 +84,7 @@ import {
   berthFor,
   createAutoKillTracker,
   createPauseDetector,
+  shouldRestartPauseTimer,
   type AutoKillTracker,
   type PauseDetector,
 } from "./companion";
@@ -1355,6 +1356,8 @@ export default function DetectiveHost(
     let lastMapActivity = 0; // last time the MAP may have moved
     let gestureActive = false;
     let pausePoint: { x: number; y: number } | null = null;
+    /** Where the pending pause-confirm timer was scheduled (touch). */
+    let confirmAnchor: { x: number; y: number } | null = null;
 
     const clearPauseTimer = () => {
       if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
@@ -1530,7 +1533,22 @@ export default function DetectiveHost(
         pointersDown:
           e.pointerType === "touch" ? cache.size : e.buttons > 0 ? 1 : 0,
       });
-      if (viewRef.current.phase === "SEARCH_IDLE") scheduleConfirm();
+      if (viewRef.current.phase === "SEARCH_IDLE") {
+        // A held finger jitters; restarting the timer on each tiny move
+        // would mean a held finger never confirms its pause.
+        if (
+          shouldRestartPauseTimer({
+            pointerType: e.pointerType,
+            timerPending: pauseTimerRef.current !== null,
+            anchor: confirmAnchor,
+            x: e.clientX,
+            y: e.clientY,
+          })
+        ) {
+          confirmAnchor = { x: e.clientX, y: e.clientY };
+          scheduleConfirm();
+        }
+      }
     };
 
     const onDown = (e: PointerEvent) => {

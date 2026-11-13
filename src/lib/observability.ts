@@ -528,12 +528,67 @@ export function coarseDeviceFacts(): DeviceInfo {
   return runtimeFacts();
 }
 
+/**
+ * Council fix round 3: delimiter-boundary query/fragment removal. A token
+ * is a run without whitespace, quotes, angle brackets or backticks (so
+ * parentheses, brackets and markdown stay inside it). Its boundary is the
+ * first "?", "#", or percent-encoded ?/# at any nesting depth (%3F, %253F,
+ * %2523, ...). The tail from the boundary to the token end is removed —
+ * nothing after it is ever kept (no line:col or punctuation rescue: query
+ * and fragment content is never stack metadata) — when the boundary is
+ * encoded, the head is path-like (contains / or an encoded /), or the tail
+ * holds a key=value (= or an encoded =). Otherwise the token is plain
+ * prose ("what?", "c#1", "a?b") and is kept. Finite single pass; nothing
+ * is decoded. Limits: URL paths are kept; a bare prose token like
+ * "?SECRET" or "#SECRET" with no path and no "=" survives; HTML-entity
+ * delimiters (&#63;) are not recognised.
+ */
+function stripUrlQueries(s: string): string {
+  return s.replace(/[^\s'"<>`]+/g, (tok) => {
+    const boundary = tok.search(/[?#]|%(?:25)*(?:3f|23)/i);
+    if (boundary < 0) return tok;
+    const head = tok.slice(0, boundary);
+    const tail = tok.slice(boundary);
+    const encoded = tail.startsWith("%");
+    const pathLike = /\/|%(?:25)*2f/i.test(head);
+    const keyValue = /=|%(?:25)*3d/i.test(tail);
+    return encoded || pathLike || keyValue ? head : tok;
+  });
+}
+
+/**
+ * Privacy scrub for error text (council fix T1, 2026-11-08). Mirrored in
+ * workers/crash-report/src/index.ts (scrubErrorText) and pinned identical by the
+ * worker test "client sanitizeError scrubs the same way". Rules, in order:
+ * URLs keep scheme/host/path and drop ?query and #fragment (stripUrlQueries); emails become
+ * <email>; UUIDs and hex runs >= 20 become <id>; mixed letter+digit token
+ * runs >= 32 become <redacted>; @everyone/@here lose their mention form.
+ * file:line:col and code identifiers survive. Output is capped at `max`.
+ */
+export function scrubErrorText(value: unknown, max: number): string {
+  if (typeof value !== "string" || value.length === 0) return "";
+  // Bound the work before regexes run (inputs are already capped upstream).
+  let s = value.slice(0, 2048);
+  s = stripUrlQueries(s);
+  s = s.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi, "<email>");
+  s = s.replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, "<id>");
+  s = s.replace(/\b[0-9a-f]{20,}\b/gi, "<id>");
+  s = s.replace(/[A-Za-z0-9_\-+/=]{32,}/g, (run) =>
+    /[0-9]/.test(run) && /[A-Za-z]/.test(run) ? "<redacted>" : run,
+  );
+  s = s.replace(/@(everyone|here)\b/gi, "@\u200b$1");
+  return s.length > max ? `${s.slice(0, Math.max(0, max - 1))}…` : s;
+}
+
 export function sanitizeError(err: unknown): { name: string; message: string } {
   try {
     if (err instanceof Error) {
-      return { name: String(err.name || "Error").slice(0, 80), message: String(err.message || "").slice(0, MAX_ERROR_CHARS) };
+      return {
+        name: scrubErrorText(String(err.name || "Error"), 80) || "Error",
+        message: scrubErrorText(String(err.message || ""), MAX_ERROR_CHARS),
+      };
     }
-    return { name: "Error", message: String(err).slice(0, MAX_ERROR_CHARS) };
+    return { name: "Error", message: scrubErrorText(String(err), MAX_ERROR_CHARS) };
   } catch {
     return { name: "Error", message: "" };
   }

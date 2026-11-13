@@ -288,7 +288,7 @@ describe("home wiring — five cards, one component, nothing else moves", () => 
       gameApp.includes('<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" band={ageBand} />'),
       "Grown-ups slot",
     );
-    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 5, "exactly five film slots — one motion system");
+    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 6, "exactly six film slots (five shipped + the flag-gated Why Do We Learn This? card) — one motion system");
     assert.ok(!gameApp.includes('className="hv5-art" src='), "no .hv5-art slot renders a bare still anymore");
   });
 

@@ -75,7 +75,7 @@ import {
   VERDICT_GRANDPA_POSTER_URL,
   VERDICT_GRANDPA_VIDEO_URL,
 } from "@/assets/verdict/grandpa-media";
-import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand } from "@/assets/home-v5/card-media";
+import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand, whyLearnMediaForBand } from "@/assets/home-v5/card-media";
 import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
@@ -150,6 +150,7 @@ import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
 import {
   applyPendingAtBoundary,
   audioMode,
+  getAgeGroup,
   isLoopLocked,
   loadProfile,
   onAgeProfileChanged,
@@ -280,6 +281,7 @@ import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // HomeGlobe idiom above).
 const loadLoopScreen = () => import("@/game/loop/LoopScreen");
 const loadTrailScreen = () => import("@/game/coldtrail/TrailScreen");
+const loadMathCase = () => import("@/subjects/math/MathCase");
 // #209: each lazy load is raced against CHUNK_LOAD_TIMEOUT_MS (inside
 // withChunkTimeout) — a HUNG import never settles, so without the race
 // the Suspense fallback below would spin forever; with it, the race
@@ -292,6 +294,13 @@ const LoopScreen = lazy(() =>
 const TrailScreen = lazy(() =>
   withChunkTimeout(loadTrailScreen(), "Cold Trail screen").then((m) => ({
     default: m.TrailScreen,
+  })),
+);
+// Math subject case (scale-play wave 1): same lazy discipline — it loads
+// only when the why-learn card is tapped behind the scalePlay flag.
+const MathCaseScreen = lazy(() =>
+  withChunkTimeout(loadMathCase(), "Math case screen").then((m) => ({
+    default: m.default,
   })),
 );
 /**
@@ -1322,6 +1331,20 @@ export function GameApp() {
     };
   }, []);
 
+  /** "Why Do We Learn This?" Home card (scale-play), flag-gated: off by
+   * default, `?scale=1` turns it on for testers. Read after mount so
+   * the server render and the first client render match. */
+  const [scalePlayOn, setScalePlayOn] = useState(false);
+  useEffect(() => {
+    let active = true;
+    void loadFlags().then(() => {
+      if (active) setScalePlayOn(isEnabled("scalePlay"));
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
   /** A minted challenge waiting on its preview sheet (picker flow). */
   const [challengePreview, setChallengePreview] = useState<{
     creation: ChallengeCreation;
@@ -1416,6 +1439,10 @@ export function GameApp() {
   // stays intact, so tapping in resumes the saved mystery where it left
   // off; only the boot auto-open is gone.
   const [loopOpen, setLoopOpen] = useState<boolean>(false);
+  // Math subject case (scale-play wave 1): session-only open state, set
+  // by the why-learn card tap when the scalePlay flag is on. Never
+  // persisted — a reload lands on Home, like the loop's tap-in rule.
+  const [mathOpen, setMathOpen] = useState<boolean>(false);
   // Journal prefetch (lazy-load scenario 2): while a round is active,
   // warm the current entry's movie and the next window's (B8: one entry
   // per 30-minute window, so "the next 1–2 in the current set" is the
@@ -3444,6 +3471,30 @@ export function GameApp() {
     );
   }
 
+  // Math subject case (scale-play wave 1) lives beside the loop screens:
+  // its own early return, reached only from the why-learn card while the
+  // scalePlay flag is on. With the flag off this state is never set and
+  // Home is exactly as today.
+  if (mathOpen) {
+    return (
+      <>
+        {mapModeAnnouncer}
+        <MapErrorBoundary surface="Math case">
+          <Suspense fallback={<SessionLoadingFallback label="Loading math case…" />}>
+            <MathCaseScreen
+              group={getAgeGroup()}
+              tier="full"
+              onExit={() => setMathOpen(false)}
+              onCelebrate={(spec) => setCelebration(spec)}
+            />
+          </Suspense>
+        </MapErrorBoundary>
+        {celebrationOverlay}
+        {idleToast}
+      </>
+    );
+  }
+
   // Chunk loading state: the region's places are being fetched. The menu is
   // replaced (no double-taps) until the load resolves or fails closed.
   if (starting) {
@@ -3844,6 +3895,10 @@ export function GameApp() {
       })}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       challengeEnabled={friendChallengesOn}
+      whyLearnEnabled={scalePlayOn}
+      onWhyLearn={
+        scalePlayOn ? withCardTap("why-learn", () => setMathOpen(true)) : undefined
+      }
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
       deck={deckStatus}
@@ -4360,6 +4415,8 @@ function Choose({
   onReview,
   onResetHistory,
   challengeEnabled,
+  whyLearnEnabled,
+  onWhyLearn,
   onChallenge,
   deck,
   notice,
@@ -4393,6 +4450,12 @@ function Choose({
   challengeEnabled?: boolean;
   /** Open the challenge region picker. */
   onChallenge?: (e: ReactMouseEvent) => void;
+  /** scalePlay flag on: show the "Why Do We Learn This?" card. */
+  whyLearnEnabled?: boolean;
+  /** Open the scale-play math case. GameApp passes this only when the
+   * scalePlay flag is on; without it the card's button renders disabled
+   * ("Coming soon"). */
+  onWhyLearn?: (e: ReactMouseEvent) => void;
   /** Deck entry status (flag-gated; see useDeckStatus). */
   deck: { enabled: boolean; due: number; total: number };
   notice?: ReactNode;
@@ -4866,6 +4929,54 @@ function Choose({
           </div>
         </article>
         )}
+        {/* "Why Do We Learn This?" (scale-play, flag scalePlay / ?scale=1):
+            the door to every subject case (math, science, history).
+            Same card markup as GeoDetective, no new styles. Film per
+            age band through whyLearnMediaForBand. Media: card-media.ts. */}
+        {whyLearnEnabled ? (
+        <article
+          className="hv5-card hv5-split hv5-stack hv5-case home-rise"
+          style={rise(5)}
+          data-testid="home-card-why-learn"
+          aria-labelledby="why-learn-title"
+        >
+          <CardFilm className="hv5-pic" media={whyLearnMediaForBand(ageBand)} testId="card-film-why-learn" band={ageBand} />
+          <div className="hv5-txt">
+            <div className="hv5-head">
+              <span className="hv5-badge">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" /><path d="M15 15 L20.5 20.5" /></svg>
+              </span>
+              <span className="hv5-label">Case file · Why it matters</span>
+            </div>
+            <h2 id="why-learn-title">
+              Why Do We Learn{" "}
+              {/* Keeps "New" with the last word so the tag never sits alone on a phone line. */}
+              <span className="whitespace-nowrap">
+                This?<span className="hv5-chip">New</span>
+              </span>
+            </h2>
+            <p>
+              See where math, science and history show up in everyday life, then use them to crack
+              the case.
+            </p>
+            <button
+              type="button"
+              className="hv5-go hv5-stretch"
+              onClick={onWhyLearn}
+              disabled={!onWhyLearn}
+              aria-disabled={!onWhyLearn ? "true" : undefined}
+              aria-label={
+                onWhyLearn
+                  ? "Why Do We Learn This?: Start exploring"
+                  : "Why Do We Learn This?: Coming soon"
+              }
+            >
+              <span aria-hidden="true">🔍</span>{" "}
+              {onWhyLearn ? "Start exploring" : "Coming soon"}
+            </button>
+          </div>
+        </article>
+        ) : null}
         {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
         <article
           className="hv5-card hv5-split hv5-stack hv5-dispatch home-rise"
@@ -5105,6 +5216,7 @@ function Choose({
           className="agep-footer-link"
           onClick={onTakeTour}
           data-testid="take-tour-link"
+          aria-label="Take the tour again"
         >
           🗺️ Take the tour
         </button>

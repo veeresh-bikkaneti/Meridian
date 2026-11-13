@@ -1927,7 +1927,7 @@ function PlaceSheet({
   );
 }
 
-function ClueCard({
+export function ClueCard({
   tier,
   index,
   text,

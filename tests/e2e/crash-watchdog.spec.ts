@@ -201,9 +201,9 @@ test("stale build: the app's refresh UI wins, the watchdog stands down, and the 
   // The chunk failure emits exactly one js_error to the observability
   // pipeline (openRun's catch calls setStartError AND emits — the
   // previously-silent error class). The watchdog still stands down: no
-  // boot_failure. The breadcrumb trail in sessionStorage (lastMilestone
-  // "data_chunk_load_start") is what a *later* kill's next boot would
-  // carry inside suspected_crash.
+  // boot_failure. The breadcrumb trail in sessionStorage still carries
+  // "data_chunk_load_start" in its history — that history is what a
+  // *later* kill's next boot would carry inside suspected_crash.
   // Slice 2 (PR-time pin update, Liz's word 2026-10-26): the run-start
   // stand-down now also resolves the recovery marker, ingesting exactly
   // one recovery_outcome (stood_down) alongside the one js_error.
@@ -217,11 +217,22 @@ test("stale build: the app's refresh UI wins, the watchdog stands down, and the 
   expect((ingested[0].error as { message: string }).message).toContain(
     "Could not load places for Globe",
   );
-  const crumbMilestone = await page.evaluate(() => {
+  // Assert on the breadcrumb HISTORY, not lastMilestone:
+  // recordMilestone (src/lib/observability.ts:1451–1471) is
+  // last-write-wins, and a menu remount legitimately records
+  // storyteller_ready after the chunk milestone — a storyteller_ready
+  // lastMilestone is explicitly not a failure.
+  const crumbHistory = await page.evaluate(() => {
     const raw = sessionStorage.getItem("meridian.breadcrumb");
-    return raw ? ((JSON.parse(raw) as { lastMilestone?: string }).lastMilestone ?? null) : null;
+    if (!raw) return null;
+    const trail = JSON.parse(raw) as { history?: Array<{ name: string }> };
+    return (trail.history ?? []).map((entry) => entry.name);
   });
-  expect(crumbMilestone).toBe("data_chunk_load_start");
+  expect(crumbHistory).not.toBeNull();
+  const chunkIdx = crumbHistory!.indexOf("data_chunk_load_start");
+  expect(chunkIdx).toBeGreaterThanOrEqual(0);
+  const storytellerIdx = crumbHistory!.lastIndexOf("storyteller_ready");
+  expect(storytellerIdx === -1 || storytellerIdx > chunkIdx).toBe(true);
 
   // No double recovery screen: the app booted fine (__meridian_ready was
   // set via rAF after first paint, long before the timer), and the
