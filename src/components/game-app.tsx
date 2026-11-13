@@ -5086,9 +5086,7 @@ function Choose({
               )}
             </div>
           </section>
-        ) : (
-          <div aria-hidden="true" />
-        )}
+        ) : null}
         {/* Journal — the card names the currently-rotating entry and
             jumps to the field note below; the entry rotates every
             30 minutes, deferred while focus is inside this card or the journal
