@@ -26,3 +26,6 @@ why-learn-shots/
 
 # Generated at build time (prebuild) — never commit
 public/build-meta.json
+
+# Local journal render. The mp4 stays out of this repo.
+docs/scaling/journals/freedom-fighters/render-out/

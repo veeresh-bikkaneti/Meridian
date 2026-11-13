@@ -1,0 +1,52 @@
+.journal-clip-card {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.journal-clip-place {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+}
+
+.journal-clip-card h1 {
+  font-size: 1.35rem;
+  line-height: 1.4;
+  font-weight: 650;
+}
+
+.journal-clip-film.hv5-card-film {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.journal-clip-film.hv5-card-film > img,
+.journal-clip-film.hv5-card-film > video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.journal-clip-caption {
+  margin-top: 16px;
+  font-size: 1.15rem;
+  line-height: 1.45;
+}
+
+.journal-clip-card audio {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.journal-clip-soon {
+  max-width: 40rem;
+  margin: 48px auto;
+  text-align: center;
+}
