@@ -51,6 +51,6 @@ Open:
 - [ ] Veeresh listen. The silent track is not the listen. Hear each caption once a real Kokoro file exists.
 - [ ] Council NOT RUN.
 - [x] Draft stills PR against main: https://github.com/veeresh-bikkaneti/Meridian/pull/449 at `2c9c1f64baa3088019a26a2f1694bbee1eb7df39`.
-- [x] Draft video PR against the stills branch: https://github.com/veeresh-bikkaneti/Meridian/pull/450. Motion commit `1bdfc2dd3272ca3c2583d9caa91ccc75aa123d22`. Not merged.
+- [x] Draft video PR against the stills branch: https://github.com/veeresh-bikkaneti/Meridian/pull/450. Motion commit `1bdfc2dd3272ca3c2583d9caa91ccc75aa123d22`. Result commit `4e79f6374bea185e09d38df58c6a6cadea6f5921`. Not merged.
 
 Resume: `git fetch origin`, check out `feat/journal-people-places-clips`, then the node commands above. Do not run `scripts/render-storyteller-voice.mjs`. Do not `npm test`.

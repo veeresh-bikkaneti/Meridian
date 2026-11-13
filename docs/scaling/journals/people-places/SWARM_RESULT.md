@@ -9,7 +9,7 @@ Spoken captions were not produced. The shelf can show the still and the written 
 - Base `origin/main`: `8eb34cb4305719f88ef8c2568e4dd624cbaf8608`
 - Stills branch `feat/journal-people-places-clips`: `2c9c1f64baa3088019a26a2f1694bbee1eb7df39`
 - Video motion commit on `feat/journal-people-places-clips-video`: `1bdfc2dd3272ca3c2583d9caa91ccc75aa123d22`
-- This file is the commit after that motion commit. The video branch head is that commit.
+- Swarm result commit: `4e79f6374bea185e09d38df58c6a6cadea6f5921`
 
 Dirty `mockup/scale-play` at `0487d67db0b7f9fbcae818cfe27cdf237f07040d` was not carried.
 
