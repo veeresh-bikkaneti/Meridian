@@ -54,6 +54,7 @@ const COLLECTOR_FILES = Object.freeze([
 // contexts today (derived by grepping the tree for browser.newContext().
 // Pinned by test (c2) below: exactly that derived set, no more, no less.
 const CONTEXT_FILES = Object.freeze([
+  "board.desktop.spec.ts",
   "card-redesign.desktop.spec.ts",
   "detective-companion.spec.ts",
   "detective-berth.spec.ts",
