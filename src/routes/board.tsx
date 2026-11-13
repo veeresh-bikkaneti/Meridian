@@ -297,6 +297,7 @@ function BoardPage() {
                 stories={visibleStories}
                 donePath={snapshot.donePath}
                 onUnavailable={onMapUnavailable}
+                onSelect={(story) => handleSelect(story)}
               />
             </Suspense>
           ) : (

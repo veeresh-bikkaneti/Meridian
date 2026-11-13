@@ -71,15 +71,24 @@ export default function FeatureMap({
   stories,
   donePath,
   onUnavailable,
+  onSelect,
 }: {
   lanes: readonly SnapshotLane[];
   stories: readonly LiveStory[];
   donePath: readonly DonePathItem[];
   onUnavailable: () => void;
+  onSelect?: (story: LiveStory) => void;
 }) {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const failedRef = useRef(false);
   const selectionRef = useRef<HTMLParagraphElement | null>(null);
+  // The parent passes an inline wrapper, so keep the latest callback in
+  // a ref instead of adding it to the scene effect's deps (which would
+  // rebuild the whole scene on every parent render).
+  const onSelectRef = useRef(onSelect);
+  useEffect(() => {
+    onSelectRef.current = onSelect;
+  }, [onSelect]);
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -164,6 +173,23 @@ export default function FeatureMap({
           camera.position.set(0, 10.5, Math.max(15, sceneHalfWidth * 1.55));
           camera.lookAt(0, 0, 0);
 
+          // Terrain plates: one flat plate under each lane's row of
+          // blocks, sized to that lane's slots, in a muted terrain
+          // colour darkened from the existing muted token.
+          const plateMat = new THREE.MeshStandardMaterial({
+            color: new THREE.Color(muted).multiplyScalar(0.35),
+          });
+          lanes.forEach((_, laneIndex) => {
+            const count = laneCounts[laneIndex] ?? 0;
+            if (count === 0) return;
+            const plate = new THREE.Mesh(
+              new THREE.BoxGeometry(count * 1.24, 0.16, 1.5),
+              plateMat,
+            );
+            plate.position.set(0, -0.09, laneZ(laneIndex));
+            world.add(plate);
+          });
+
           // Story blocks.
           const nodePos: InstanceType<typeof THREE.Vector3>[] = [];
           const nodeMeshes: InstanceType<typeof THREE.Mesh>[] = [];
@@ -176,10 +202,29 @@ export default function FeatureMap({
             const mat = new THREE.MeshStandardMaterial({
               color,
               emissive: color,
-              emissiveIntensity: 0.18,
+              emissiveIntensity: story.status === "in-progress" ? 0.55 : 0.18,
               transparent: true,
             });
             const box = new THREE.Mesh(geo, mat);
+            // Case closed: a small brass flag on a pole, as children of
+            // the block so dragging the block carries the flag with it.
+            if (story.status === "done") {
+              const pole = new THREE.Mesh(
+                new THREE.CylinderGeometry(0.03, 0.03, 0.5, 8),
+                new THREE.MeshStandardMaterial({ color: new THREE.Color(brass) }),
+              );
+              pole.position.set(0.22, h / 2 + 0.25, 0);
+              box.add(pole);
+              const flag = new THREE.Mesh(
+                new THREE.PlaneGeometry(0.34, 0.22),
+                new THREE.MeshBasicMaterial({
+                  color: new THREE.Color(brass),
+                  side: THREE.DoubleSide,
+                }),
+              );
+              flag.position.set(0.22 + 0.17, h / 2 + 0.39, 0);
+              box.add(flag);
+            }
             const pos = new THREE.Vector3(
               (layouts[i].slot - (count - 1) / 2) * 1.24,
               h / 2,
@@ -210,12 +255,16 @@ export default function FeatureMap({
           edges.forEach((edge) => {
             const line = new THREE.Line(
               new THREE.BufferGeometry().setFromPoints(edgePath(edge.from, edge.to)),
-              new THREE.LineBasicMaterial({
+              new THREE.LineDashedMaterial({
                 color: new THREE.Color(brass),
                 transparent: true,
                 opacity: 0.5,
+                dashSize: 0.14,
+                gapSize: 0.1,
               }),
             );
+            // Dashed materials render solid without line distances.
+            line.computeLineDistances();
             edgeGroup.add(line);
             edgeLines.push(line);
             const cone = new THREE.Mesh(
@@ -245,6 +294,7 @@ export default function FeatureMap({
             edgeLines[edgeIndex].geometry = new THREE.BufferGeometry().setFromPoints(
               edgePath(edge.from, edge.to),
             );
+            edgeLines[edgeIndex].computeLineDistances();
             placeCone(edgeIndex);
           };
           edges.forEach((_, i) => placeCone(i));
@@ -338,12 +388,15 @@ export default function FeatureMap({
             nodeMeshes.forEach((mesh, i) => {
               const mat = mesh.material as InstanceType<typeof THREE.MeshStandardMaterial>;
               const inChain = selected === null || chain.has(i);
+              // On the trail blocks stay lit: their unselected base is
+              // brighter, selection / chain / dim states still override.
+              const base = stories[i].status === "in-progress" ? 0.55 : 0.18;
               targetOpacity[i] = selected === null ? 1 : inChain ? 1 : 0.13;
-              mat.emissiveIntensity = selected === null ? 0.18 : i === selected ? 0.75 : inChain ? 0.4 : 0.05;
+              mat.emissiveIntensity = selected === null ? base : i === selected ? 0.75 : inChain ? 0.4 : 0.05;
               if (!animate) mat.opacity = targetOpacity[i];
             });
             edgeLines.forEach((line, ei) => {
-              const mat = line.material as InstanceType<typeof THREE.LineBasicMaterial>;
+              const mat = line.material as InstanceType<typeof THREE.LineDashedMaterial>;
               targetEdgeOpacity[ei] = selected === null ? 0.5 : chainEdges.has(ei) ? 1 : 0.05;
               if (!animate) mat.opacity = targetEdgeOpacity[ei];
             });
@@ -445,6 +498,7 @@ export default function FeatureMap({
                   selected = pickNode(event);
                   applySelection(!reduced);
                   if (reduced) renderer?.render(scene, camera);
+                  if (selected !== null) onSelectRef.current?.(stories[selected]);
                 }
               }
               downAt = null;
@@ -473,7 +527,7 @@ export default function FeatureMap({
               if (Math.abs(delta) > 0.01) mat.opacity += delta * 0.2;
             });
             edgeLines.forEach((line, ei) => {
-              const mat = line.material as InstanceType<typeof THREE.LineBasicMaterial>;
+              const mat = line.material as InstanceType<typeof THREE.LineDashedMaterial>;
               const delta = targetEdgeOpacity[ei] - mat.opacity;
               if (Math.abs(delta) > 0.01) mat.opacity += delta * 0.2;
             });
