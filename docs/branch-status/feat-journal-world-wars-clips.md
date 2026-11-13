@@ -10,11 +10,13 @@ A child can open school-morning and quiet-hour in Play Lab and see that clip's s
 - Play Lab treats `world-wars:school-morning` and `world-wars:quiet-hour` as ready. They do not show Coming soon, and they have no quiz.
 - Narration was rendered locally for both captions. The files are not in git. They sit in `docs/scaling/journals/world-wars/render-out/` on the machine that rendered them. Voice id `am_fenrir`. No background bed.
 
+- `scripts/journal-still-motion.mjs` renders a 10.0 s, 1152x768, 24 fps movie from a still and a narration file.
+- Local movies for school-morning and quiet-hour are in `docs/scaling/journals/world-wars/render-out/`. Probe numbers are in `docs/scaling/journals/world-wars/movie-notes.md`. No background bed.
+
 ## Next
 
-1. Branch `feat/journal-world-wars-clips-video` from this branch.
-2. Render the 10 second movies with `scripts/journal-still-motion.mjs`.
-3. Open a second draft pull request whose base is this branch.
+1. Open the video draft pull request. Base is `feat/journal-world-wars-clips`.
+2. Listen to both narration files and both movies.
 
 ## Open questions
 
@@ -26,7 +28,7 @@ A child can open school-morning and quiet-hour in Play Lab and see that clip's s
 
 - `christmas-truce` and `letters-home`. Do not build them and do not narrate them.
 - A second film fallback. `CardFilm` already has one.
-- Movies in this repo.
+- Committing the mp4 files. They stay in the gitignored render folder.
 - A paid image or video model.
 - Cloning `meridian-media`. It was not already on disk.
 
@@ -34,7 +36,7 @@ A child can open school-morning and quiet-hour in Play Lab and see that clip's s
 
 ```
 git fetch origin
-git checkout feat/journal-world-wars-clips
+git checkout feat/journal-world-wars-clips-video
 node --experimental-strip-types --test src/play-lab/play-lab.test.ts src/play-lab/journal-still.test.ts
 ```
 
