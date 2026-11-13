@@ -2,14 +2,15 @@ import { test, expect, type BrowserContext, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
 
 /**
- * Math subject screen (scale-play wave 1) — behind the why-learn card.
+ * Math subject screen — through the why-learn card and subject picker.
  *
- * With `?scale=1`, the card's CTA opens a math case dealt for the
- * player's age band (profile seeded in localStorage, the
+ * The card is live for everyone (subjects launch, Nov 13). Its CTA
+ * opens the subject picker; the Math row opens a math case dealt for
+ * the player's age band (profile seeded in localStorage, the
  * band-media-variants pattern). One case per band is played through to
- * the result, which must carry the "You just used this in…" line. With
- * the flag off, Home is today's Home and no case can open. Screenshots
- * land in math-shots/ (outside test-results, which Playwright clears).
+ * the result, which must carry the "You just used this in…" line.
+ * Screenshots land in math-shots/ (outside test-results, which
+ * Playwright clears).
  */
 test.setTimeout(120_000);
 
@@ -57,13 +58,15 @@ function watchErrors(page: Page): string[] {
 }
 
 async function openCase(page: Page) {
-  await page.goto(`${APP_URL}&scale=1`);
+  await page.goto(APP_URL);
   const card = page.getByTestId("home-card-why-learn");
   await expect(card).toBeVisible();
   await card.scrollIntoViewIfNeeded();
   await card
     .getByRole("button", { name: "Why Do We Learn This?: Start exploring" })
     .click();
+  await expect(page.getByTestId("subject-picker")).toBeVisible();
+  await page.getByTestId("subject-row-math").click();
   await expect(page.getByTestId("math-case")).toBeVisible();
   await expect(page.getByTestId("math-answer-card")).toBeVisible();
 }
@@ -86,13 +89,26 @@ async function solveCase(page: Page, correct: string) {
   await expect(page.getByTestId("math-used-in")).toContainText("You just used this in…");
 }
 
-test("flag off: Home matches today — no card, no math case", async ({ page, context }) => {
-  await setup(context);
+test("no flag needed: the card is live and the picker shows the map", async ({
+  page,
+  context,
+}) => {
+  await setup(context, "7-10");
   const errors = watchErrors(page);
   await page.goto(APP_URL);
   await expect(page.getByTestId("tour-stop-geodetective")).toBeVisible();
-  await expect(page.getByTestId("home-card-why-learn")).toHaveCount(0);
-  await expect(page.getByTestId("math-case")).toHaveCount(0);
+  const card = page.getByTestId("home-card-why-learn");
+  await expect(card).toBeVisible();
+  await card.scrollIntoViewIfNeeded();
+  await card
+    .getByRole("button", { name: "Why Do We Learn This?: Start exploring" })
+    .click();
+  await expect(page.getByTestId("subject-picker")).toBeVisible();
+  await expect(page.getByTestId("subject-row-math")).toBeEnabled();
+  // Journals are not built yet: a disabled "Coming soon" row.
+  const journals = page.getByTestId("subject-row-journals");
+  await expect(journals).toBeDisabled();
+  await expect(journals).toContainText("Coming soon");
   expect(errors).toEqual([]);
 });
 
@@ -156,12 +172,14 @@ test("390px: Home card, case, answer card and result render on a phone", async (
   await setup(context, "7-10");
   await page.setViewportSize({ width: 390, height: 844 });
   const errors = watchErrors(page);
-  await page.goto(`${APP_URL}&scale=1`);
+  await page.goto(APP_URL);
   const card = page.getByTestId("home-card-why-learn");
   await expect(card).toBeVisible();
   await card.scrollIntoViewIfNeeded();
   await card.screenshot({ path: `${SHOTS}/home-card-390.png` });
   await card.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
+  await expect(page.getByTestId("subject-picker")).toBeVisible();
+  await page.getByTestId("subject-row-math").click();
   await expect(page.getByTestId("math-case")).toBeVisible();
   await page.screenshot({ path: `${SHOTS}/case-7-10-390.png` });
   await solveCase(page, "8");

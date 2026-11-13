@@ -3,8 +3,11 @@
  *
  * Each subject lives at src/subjects/<id>/index.ts and is discovered
  * here, so adding one never edits a shared file. Only default exports
- * with released === true are listed. load() is not called: three.js
- * stays inside the subject's own loader (learning standard §5.1).
+ * with released === true are listed. A subject sets released once a
+ * playable slice exists (owner rule, Nov 13: release progressively);
+ * educator review runs alongside, after release. load() is not
+ * called: three.js stays inside the subject's own loader (learning
+ * standard §5.1).
  *
  * The glob runs inside a function, the same way src/lib/flag-registry.ts
  * does, so plain Node can import selectReleased.

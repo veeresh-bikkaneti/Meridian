@@ -4,26 +4,17 @@
  * objective (plan §4 option (a): derive + document + educator sign-off).
  * Every derivation is listed in the PR body for the educator.
  *
- * Each entry is one multiple-choice question. Numeric answers also carry
- * their value so unit tests can recompute them from the derivation
- * inputs. A year-based answer is expressed as { kind: "yearsSince" } and
- * resolved from the device's current year at play time — no wave-1 math
- * row is year-based, so no shipped entry uses it yet; the mechanism is
- * here for the waves that need it (e.g. general knowledge).
+ * Each entry is one multiple-choice question in the shared AnswerEntry
+ * shape (src/subjects/shared/answer.ts). A year-based answer is resolved
+ * from the device's current year at play time through the shared
+ * yearsSince mechanism — no wave-1 math row is year-based, so no
+ * shipped entry uses it yet; general knowledge does.
  */
+import type { AnswerEntry } from "../shared/answer.ts";
 
-export type MathAnswerEntry = {
-  /** The one question asked, with its numbers (numbers live here and in
-   * the answer, never in story copy). */
-  prompt: string;
-  choices: string[];
-  correct: string;
-  /** One-line derivation, shown after a correct answer and listed in
-   * the PR for educator sign-off. */
-  derivation: string;
-  /** Numeric value of the correct answer, when the answer is a number. */
-  value?: number;
-};
+export type MathAnswerEntry = AnswerEntry;
+
+export { yearsSince, currentYear } from "../shared/years.ts";
 
 export const MATH_ANSWERS: Record<string, MathAnswerEntry> = {
   "math-number:groups:skip-count": {
@@ -96,18 +87,4 @@ export const MATH_ANSWERS: Record<string, MathAnswerEntry> = {
 
 export function answerFor(itemId: string): MathAnswerEntry | null {
   return MATH_ANSWERS[itemId] ?? null;
-}
-
-/**
- * Resolve a year-based answer at play time: how many years have passed
- * since `eventYear`, counted with the device's current year. Kept pure
- * (the year is a parameter) so tests can pin the clock.
- */
-export function yearsSince(eventYear: number, currentYear: number): number {
-  return currentYear - eventYear;
-}
-
-/** The device's current year, read at play time. */
-export function currentYear(now: Date = new Date()): number {
-  return now.getFullYear();
 }

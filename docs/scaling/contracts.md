@@ -18,7 +18,7 @@ export type SubjectModule = {
   id: string;                     // folder name, e.g. "math-number"
   title: string;                  // owner copy: TODO until approved
   groups: AgeGroup[];             // which of the three groups it serves
-  released: boolean;              // false until educator sign-off + owner go
+  released: boolean;              // true once a playable slice exists (owner rule, Nov 13: release progressively); educator review runs alongside
   units: UnitItem[];              // I2 data
   load: () => Promise<{ default: React.ComponentType<SubjectProps> }>;
 };
