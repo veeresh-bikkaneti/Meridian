@@ -19,6 +19,7 @@ export function ScreenShell({
   onHome,
   onBack,
   sound,
+  hero,
   eyebrow,
   title,
   titleRef,
@@ -34,6 +35,9 @@ export function ScreenShell({
 ) & {
   /** A SoundToggle, only when the screen plays sound. */
   sound?: ReactNode;
+  /** Optional decorative picture above the titles; the titles then sit on
+   *  an opaque band under it (never text over picture pixels). */
+  hero?: ReactNode;
   eyebrow?: ReactNode;
   title: ReactNode;
   titleRef?: Ref<HTMLHeadingElement>;
@@ -44,6 +48,15 @@ export function ScreenShell({
   /** Extra data-* attributes for the <main> (e.g. { "data-band": "7-10" }). */
   data?: Record<`data-${string}`, string>;
 }) {
+  const titles = (top: string) => (
+    <>
+      {eyebrow ? <p className={cn("name-eyebrow", top)}>{eyebrow}</p> : null}
+      <h1 ref={titleRef} tabIndex={-1} className={cn("mode-title text-3xl text-fg", eyebrow ? "mt-1" : top)}>
+        {title}
+      </h1>
+      {sub ? <p className="mt-2 text-fg">{sub}</p> : null}
+    </>
+  );
   return (
     <main
       className={cn("mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8", className)}
@@ -61,11 +74,14 @@ export function ScreenShell({
           )}
           {sound}
         </div>
-        {eyebrow ? <p className="name-eyebrow mt-4">{eyebrow}</p> : null}
-        <h1 ref={titleRef} tabIndex={-1} className={cn("mode-title text-3xl text-fg", eyebrow ? "mt-1" : "mt-4")}>
-          {title}
-        </h1>
-        {sub ? <p className="mt-2 text-fg">{sub}</p> : null}
+        {hero ? (
+          <div className="screen-hero mode-card mt-4 overflow-hidden">
+            {hero}
+            <div className="screen-hero-band px-5 pt-1 pb-5">{titles("mt-4")}</div>
+          </div>
+        ) : (
+          titles("mt-4")
+        )}
       </header>
       {children}
     </main>

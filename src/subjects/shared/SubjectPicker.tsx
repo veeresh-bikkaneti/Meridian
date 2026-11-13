@@ -17,7 +17,8 @@ import { withChunkTimeout } from "@/lib/chunk-timeout";
 import type { CelebrationSpec } from "@/components/celebration-copy";
 import { pickerRows } from "./picker-rows";
 import { ScreenShell } from "@/components/ui/screen-shell";
-import { Atom, BookOpen, Calculator, FlaskConical, Globe2, Users, type LucideIcon } from "lucide-react";
+import { ArrowRight, Atom, BookOpen, Calculator, FlaskConical, Globe2, Users, type LucideIcon } from "lucide-react";
+import { WHY_LEARN_HERO_URL } from "@/assets/why-learn/why-learn-art";
 
 /** Decorative card icons by subject id (aria-hidden; the name is the text). */
 const SUBJECT_ICONS: Record<string, LucideIcon> = {
@@ -27,6 +28,17 @@ const SUBJECT_ICONS: Record<string, LucideIcon> = {
   "general-knowledge": Globe2,
   "social-studies": Users,
   journals: BookOpen,
+};
+
+/** One line per subject card. EDITABLE PLACEHOLDERS (written for the A+B
+ *  blend, 2026-11-13): short, neutral, factual; the owner may reword. */
+const SUBJECT_ONE_LINERS: Record<string, string> = {
+  math: "Why triangles hold up bridges",
+  physics: "Why a ball always comes back down",
+  chemistry: "Why bread rises and iron rusts",
+  "general-knowledge": "Why places are where they are",
+  "social-studies": "Why towns grew beside rivers",
+  journals: "New journals are on the way.",
 };
 
 type CaseComponent = ComponentType<
@@ -91,8 +103,19 @@ export default function SubjectPicker({
   return (
     <ScreenShell
       onHome={onExit}
-      className="lg:max-w-6xl"
+      className="why-learn-screen lg:max-w-6xl"
       testId="subject-picker"
+      hero={
+        <img
+          className="why-learn-hero"
+          src={WHY_LEARN_HERO_URL}
+          alt=""
+          aria-hidden="true"
+          width={1280}
+          height={720}
+          decoding="async"
+        />
+      }
       data={{ "data-band": band }}
       eyebrow="Case file · Why it matters"
       title="Why Do We Learn This?"
@@ -107,12 +130,12 @@ export default function SubjectPicker({
           Subjects could not load just now. Head back to Home and try again in a moment.
         </p>
       ) : null}
-      {/* Subject cards (nav-home council): one button per card, its text is
-          its name (no heading inside the button, no arrow glyph). Columns:
-          1 on phones, 2 at 681–1080px, 3 from 1081px; with six subjects
-          every row is full. No background art yet: the owner is still
-          choosing the Why Learn art. */}
-      <ul className="mt-6 grid gap-3 min-[681px]:grid-cols-2 min-[1081px]:grid-cols-3" data-testid="subject-cards">
+      {/* Subject cards (nav-home council + the owner's A+B blend): one
+          button per card; its text is its name (no heading inside the
+          button). Icon and arrow are aria-hidden SVG, never glyphs.
+          Columns: 1 on phones, 2 at 681–1080px, 3 from 1081px; with six
+          subjects every row is full. */}
+      <ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-3 min-[681px]:grid-cols-2 min-[1081px]:grid-cols-3 min-[681px]:gap-4" data-testid="subject-cards">
         {rows.map((row) => {
           const Icon = SUBJECT_ICONS[row.id] ?? BookOpen;
           const ready = row.state === "ready" && row.module;
@@ -120,22 +143,27 @@ export default function SubjectPicker({
             <li key={row.id} className="flex">
               <button
                 type="button"
-                className={`mode-card flex min-h-[88px] w-full items-center gap-3 px-4 py-3 text-left ${
-                  ready ? "text-fg hover:brightness-105" : "cursor-default border-dashed text-fg"
-                }`}
+                className={`why-learn-card flex w-full items-start gap-3.5 p-4 text-left text-fg${ready ? "" : " is-soon"}`}
                 data-testid={`subject-row-${row.id}`}
                 disabled={!ready}
                 aria-disabled={ready ? undefined : "true"}
                 onClick={ready ? () => openSubject(row.module!) : undefined}
               >
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-line bg-bg" aria-hidden="true">
-                  <Icon className="size-5" />
+                <span className="why-learn-badge" aria-hidden="true">
+                  <Icon className="size-6" />
                 </span>
-                <span className="flex min-w-0 flex-col">
-                  <span className="mode-title text-lg leading-tight">{row.title}</span>
-                  <span className="text-sm text-fg">
+                <span className="flex min-w-0 flex-col [overflow-wrap:anywhere]">
+                  <span className="mode-title text-xl leading-tight">{row.title}</span>
+                  <span className="mt-1 text-sm text-muted">{SUBJECT_ONE_LINERS[row.id] ?? ""}</span>
+                  <span className="why-learn-chip mt-2.5 self-start">
                     {ready ? `${row.caseCount} ${row.caseCount === 1 ? "case" : "cases"}` : "Coming soon"}
                   </span>
+                  {ready ? (
+                    <span className="why-learn-go mt-2.5">
+                      Open case
+                      <ArrowRight className="size-3.5" aria-hidden="true" focusable="false" />
+                    </span>
+                  ) : null}
                 </span>
               </button>
             </li>
