@@ -60,5 +60,74 @@ authorization (`AGENTS.md` §2).
 
 ## Enforcement proof
 
-Recorded below by the builder after the fix landed (see
-"Proof of failure").
+Recorded by the builder after the fix landed.
+
+### Lint (`lint:nav`) on past mistakes
+
+Each file is the version that shipped a hand-written home label,
+piped through the new rule. All 7 exit 1 (13 errors); the branch
+itself passes `npm run lint:nav` with exit 0.
+
+```text
+== git show 1b4e02dc:src/subjects/shared/SubjectPicker.tsx | eslint --no-inline-config -c eslint.nav.config.mjs --stdin
+src/subjects/shared/SubjectPicker.tsx
+  138:8  error  Hand-written home label. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts  no-restricted-syntax
+✖ 1 problem (1 error, 0 warnings)
+exit=1
+== git show 4ed32319:src/game/coldtrail/TrailScreen.tsx | eslint --no-inline-config -c eslint.nav.config.mjs --stdin
+src/game/coldtrail/TrailScreen.tsx
+  199:110  error  Hand-written home label. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts  no-restricted-syntax
+  497:99   error  Hand-written home label. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts  no-restricted-syntax
+✖ 2 problems (2 errors, 0 warnings)
+exit=1
+== git show 4ed32319:src/game/loop/LoopScreen.tsx | eslint --no-inline-config -c eslint.nav.config.mjs --stdin
+src/game/loop/LoopScreen.tsx
+   943:76  error  Hand-written home label. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts  no-restricted-syntax
+  2213:78  error  Hand-written home label. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts  no-restricted-syntax
+✖ 2 problems (2 errors, 0 warnings)
+exit=1
+== git show 4ed32319:src/components/grownups/info-page.tsx | eslint --no-inline-config -c eslint.nav.config.mjs --stdin
+src/components/grownups/info-page.tsx
+  15:100  error  Hand-written home label. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts  no-restricted-syntax
+✖ 1 problem (1 error, 0 warnings)
+exit=1
+== git show 4ed32319:src/components/game-app.tsx | eslint --no-inline-config -c eslint.nav.config.mjs --stdin
+src/components/game-app.tsx
+  6345:71  error  Hand-written home label. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts         no-restricted-syntax
+  6619:40  error  Hand-written home label. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts         no-restricted-syntax
+  8138:55  error  Hand-written home label string. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts  no-restricted-syntax
+✖ 3 problems (3 errors, 0 warnings)
+exit=1
+== git show 4ed32319:src/game/review-deck.ts | eslint --no-inline-config -c eslint.nav.config.mjs --stdin
+src/game/review-deck.ts
+  132:19  error  Hand-written home label string. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts  no-restricted-syntax
+✖ 1 problem (1 error, 0 warnings)
+exit=1
+== git show 4ed32319:src/subjects/shared/SubjectCase.tsx | eslint --no-inline-config -c eslint.nav.config.mjs --stdin
+src/subjects/shared/SubjectCase.tsx
+   94:10  error  Hand-written home label. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts  no-restricted-syntax
+  173:16  error  Hand-written home label. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts  no-restricted-syntax
+  184:12  error  Hand-written home label. Fix: use <HomeButton> (HOME_LABEL = "Home") from src/components/ui/home-button.ts  no-restricted-syntax
+✖ 3 problems (3 errors, 0 warnings)
+exit=1
+```
+
+### Layout spec on main
+
+`tests/e2e/home-layout.desktop.spec.ts` against a build of main
+(`a4677f4d`, docs only on top of `4ed32319`): **12 failed, 0 passed**.
+
+| Viewports | Grid test fails on | Home test fails on |
+| :--- | :--- | :--- |
+| 320, 375, 390 | Review off: the hidden slot holder is counted as a card (3, expected 2) | Why Learn: no button named exactly "Home" |
+| 768, 1024, 1280 | Review on: game row 2 has an empty cell (1 card in 2 columns) | Why Learn: no button named exactly "Home" |
+
+The same spec on the branch: **12 passed**.
+
+### Why Learn page (owner checklist t352u)
+
+`tests/e2e/why-learn-page.desktop.spec.ts`: 8 tests (3 ages × 1280/390,
+320/1440 overflow, reduced motion), 8 passed. Worst text contrast,
+measured as the minimum over every background pixel under each text box
+with the montage showing: 5.64:1 at all six viewports and at 200% zoom.
+
