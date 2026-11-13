@@ -150,6 +150,7 @@ import { EarnedBadgeRow } from "./passport/EarnedBadgeRow";
 import {
   applyPendingAtBoundary,
   audioMode,
+  getAgeGroup,
   isLoopLocked,
   loadProfile,
   onAgeProfileChanged,
@@ -280,6 +281,7 @@ import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // HomeGlobe idiom above).
 const loadLoopScreen = () => import("@/game/loop/LoopScreen");
 const loadTrailScreen = () => import("@/game/coldtrail/TrailScreen");
+const loadMathCase = () => import("@/subjects/math/MathCase");
 // #209: each lazy load is raced against CHUNK_LOAD_TIMEOUT_MS (inside
 // withChunkTimeout) — a HUNG import never settles, so without the race
 // the Suspense fallback below would spin forever; with it, the race
@@ -292,6 +294,13 @@ const LoopScreen = lazy(() =>
 const TrailScreen = lazy(() =>
   withChunkTimeout(loadTrailScreen(), "Cold Trail screen").then((m) => ({
     default: m.TrailScreen,
+  })),
+);
+// Math subject case (scale-play wave 1): same lazy discipline — it loads
+// only when the why-learn card is tapped behind the scalePlay flag.
+const MathCaseScreen = lazy(() =>
+  withChunkTimeout(loadMathCase(), "Math case screen").then((m) => ({
+    default: m.default,
   })),
 );
 /**
@@ -1430,6 +1439,10 @@ export function GameApp() {
   // stays intact, so tapping in resumes the saved mystery where it left
   // off; only the boot auto-open is gone.
   const [loopOpen, setLoopOpen] = useState<boolean>(false);
+  // Math subject case (scale-play wave 1): session-only open state, set
+  // by the why-learn card tap when the scalePlay flag is on. Never
+  // persisted — a reload lands on Home, like the loop's tap-in rule.
+  const [mathOpen, setMathOpen] = useState<boolean>(false);
   // Journal prefetch (lazy-load scenario 2): while a round is active,
   // warm the current entry's movie and the next window's (B8: one entry
   // per 30-minute window, so "the next 1–2 in the current set" is the
@@ -3458,6 +3471,30 @@ export function GameApp() {
     );
   }
 
+  // Math subject case (scale-play wave 1) lives beside the loop screens:
+  // its own early return, reached only from the why-learn card while the
+  // scalePlay flag is on. With the flag off this state is never set and
+  // Home is exactly as today.
+  if (mathOpen) {
+    return (
+      <>
+        {mapModeAnnouncer}
+        <MapErrorBoundary surface="Math case">
+          <Suspense fallback={<SessionLoadingFallback label="Loading math case…" />}>
+            <MathCaseScreen
+              group={getAgeGroup()}
+              tier="full"
+              onExit={() => setMathOpen(false)}
+              onCelebrate={(spec) => setCelebration(spec)}
+            />
+          </Suspense>
+        </MapErrorBoundary>
+        {celebrationOverlay}
+        {idleToast}
+      </>
+    );
+  }
+
   // Chunk loading state: the region's places are being fetched. The menu is
   // replaced (no double-taps) until the load resolves or fails closed.
   if (starting) {
@@ -3859,6 +3896,9 @@ export function GameApp() {
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       challengeEnabled={friendChallengesOn}
       whyLearnEnabled={scalePlayOn}
+      onWhyLearn={
+        scalePlayOn ? withCardTap("why-learn", () => setMathOpen(true)) : undefined
+      }
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
       deck={deckStatus}
@@ -4412,9 +4452,9 @@ function Choose({
   onChallenge?: (e: ReactMouseEvent) => void;
   /** scalePlay flag on: show the "Why Do We Learn This?" card. */
   whyLearnEnabled?: boolean;
-  /** Open the scale-play subject picker. Not on main yet: until the
-   * scale-play screen lands and passes this, the card's button is
-   * rendered disabled. */
+  /** Open the scale-play math case. GameApp passes this only when the
+   * scalePlay flag is on; without it the card's button renders disabled
+   * ("Coming soon"). */
   onWhyLearn?: (e: ReactMouseEvent) => void;
   /** Deck entry status (flag-gated; see useDeckStatus). */
   deck: { enabled: boolean; due: number; total: number };
