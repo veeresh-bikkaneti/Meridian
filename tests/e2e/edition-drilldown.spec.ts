@@ -137,11 +137,11 @@ test("globe still starts a globe run straight from Choose", async ({ page }) => 
 
 test("back navigation returns one level at a time", async ({ page }) => {
   await openUsStateList(page);
-  // State list -> country list.
-  await page.getByRole("button", { name: "Editions" }).click();
+  // State list -> country list: a one-step back, labelled "Back".
+  await page.getByRole("button", { name: "Back", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Country" })).toBeVisible();
-  // Country list -> choose screen.
-  await page.getByRole("button", { name: "Editions" }).click();
+  // Country list -> choose screen: the one Home control.
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Choose a country" }),
   ).toBeVisible();
@@ -172,11 +172,11 @@ test("State path back navigation returns through the state country list", async 
   await page.goto("http://127.0.0.1:4123/Meridian/");
   await page.getByRole("button", { name: "Choose a state" }).click();
   await page.getByRole("button", { name: "United States" }).click();
-  // State list -> state country list (not the full country list).
-  await page.getByRole("button", { name: "Editions" }).click();
+  // State list -> state country list (not the full country list): "Back".
+  await page.getByRole("button", { name: "Back", exact: true }).click();
   await expect(page.getByRole("heading", { name: "State" })).toBeVisible();
-  // State country list -> choose screen.
-  await page.getByRole("button", { name: "Editions" }).click();
+  // State country list -> choose screen: the one Home control.
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Choose a state" }),
   ).toBeVisible();

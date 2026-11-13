@@ -353,7 +353,7 @@ test("manual switch lands HOME even with a persisted GeoDetective flag under the
 
   // Editions exit: back to the picker WITHOUT ending the game — the
   // persisted run record deliberately survives (pause semantics).
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Play the globe" }),
   ).toBeVisible({ timeout: 30_000 });

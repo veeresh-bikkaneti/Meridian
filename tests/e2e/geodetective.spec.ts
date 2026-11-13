@@ -471,7 +471,7 @@ test("leave and return: menu shows the resume variant; reload doesn't hijack", a
   await expect(page.getByText("Guess 2 of 5")).toBeVisible();
 
   // Leave explicitly: the menu offers to resume the case.
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible();
   await page.reload();
   await expect(page.getByRole("button", { name: "GeoDetective: Resume your case" })).toBeVisible({
@@ -494,9 +494,9 @@ test("edition card shows the streak after a win", async ({ page }) => {
   await guessViaMap(page, "ankara");
   await expect(page.getByText("🎯 You found it!")).toBeVisible();
 
-  // Leave via the reveal's button (the header "Editions" and the reveal's
-  // "Back to editions" both match a bare "Editions" locator — disambiguate).
-  await page.getByRole("button", { name: "Back to editions" }).click();
+  // Leave via the reveal's Home (the header and the reveal each carry a
+  // Home control with the same name — the reveal's has its own test id).
+  await page.getByTestId("home-button-end").click();
   const card = page.getByRole("article").filter({ hasText: "GeoDetective" });
   await expect(card.getByText("🔥 Streak: 1")).toBeVisible();
   // The finished mystery is acknowledged: fresh deal, not resume.

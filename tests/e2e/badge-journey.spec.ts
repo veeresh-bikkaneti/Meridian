@@ -149,7 +149,7 @@ for (const [w, h] of [[390, 844], [1280, 800]] as const) {
     expect(await earnedBadgeIds(page)).toContain("clean-round");
 
     // Back home: the badge lives on the GeoDetective dossier card.
-    await page.getByRole("button", { name: "Back to editions" }).click();
+    await page.getByTestId("home-button-end").click();
     const card = page.locator('[data-testid="tour-stop-geodetective"]');
     await expect(card).toBeVisible({ timeout: 15_000 });
     const row = card.getByTestId("earned-badges");
@@ -200,7 +200,7 @@ for (const [w, h] of [[390, 844], [1280, 800]] as const) {
     expect(await earnedBadgeIds(page)).not.toContain("clean-round");
 
     // And no badge row on the home card afterwards.
-    await page.getByRole("button", { name: "Back to editions" }).click();
+    await page.getByTestId("home-button-end").click();
     const card = page.locator('[data-testid="tour-stop-geodetective"]');
     await expect(card).toBeVisible({ timeout: 15_000 });
     await expect(card.getByTestId("earned-badges")).toHaveCount(0);
