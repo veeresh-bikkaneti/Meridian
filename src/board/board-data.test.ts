@@ -13,12 +13,14 @@ import {
   explicitIssueNumbers,
   fetchLiveIssues,
   fetchLivePrs,
+  filterStories,
   headerMetrics,
   mapWorkToStories,
   parseGithubIssues,
   parseGithubPrs,
   readCache,
   storyMapLayouts,
+  storyMatchesQuery,
   writeCache,
   type GithubPr,
   type KeyValueStorage,
@@ -162,6 +164,57 @@ describe("header metrics", () => {
     // Without live data the PR 200 story is not done, so both stories
     // waiting on a not-done story count as blocked (Done waiter excluded).
     assert.deepEqual(metrics, { notStarted: 3, inProgress: 2, done: 1, openPrs: 0, blocked: 2 });
+  });
+});
+
+describe("search + blocked-only filter", () => {
+  const fixture = () =>
+    applyLiveData(
+      [
+        story({ title: "Clue pacing and one voice at a time", lane: "Detective core", owner: "Your agent", prs: [430], status: "not-started" }),
+        story({ title: "Math subject screen", lane: "Math", owner: "You", prs: [434], status: "in-progress" }),
+        story({ title: "Truce pennant port", lane: "Detective core", owner: "Your agent", prs: [], status: "not-started", waitsOn: "PR 430 merged" }),
+        story({ title: "Quiet story", lane: "Journals", owner: null, prs: [], status: "done" }),
+      ],
+      [],
+    );
+  const titles = (list: { title: string }[]) => list.map((s) => s.title);
+
+  it("matches title, lane and owner case-insensitively", () => {
+    const [a, b] = fixture();
+    assert.equal(storyMatchesQuery(a, "CLUE PACING"), true);
+    assert.equal(storyMatchesQuery(b, "math"), true); // lane (and title)
+    assert.equal(storyMatchesQuery(a, "your AGENT"), true);
+    assert.equal(storyMatchesQuery(b, "detective"), false);
+    assert.equal(storyMatchesQuery(a, ""), true);
+  });
+
+  it("matches PR numbers in plain, 'PR 430' and '#430' forms", () => {
+    const stories = fixture();
+    assert.deepEqual(titles(filterStories(stories, { query: "430", blockedOnly: false })), [
+      "Clue pacing and one voice at a time",
+    ]);
+    assert.deepEqual(titles(filterStories(stories, { query: "PR 430", blockedOnly: false })), [
+      "Clue pacing and one voice at a time",
+    ]);
+    assert.deepEqual(titles(filterStories(stories, { query: "#434", blockedOnly: false })), [
+      "Math subject screen",
+    ]);
+  });
+
+  it("blockedOnly keeps only blocked stories", () => {
+    assert.deepEqual(titles(filterStories(fixture(), { query: "", blockedOnly: true })), [
+      "Truce pennant port",
+    ]);
+  });
+
+  it("combines query and blockedOnly, and can return nothing", () => {
+    const stories = fixture();
+    assert.deepEqual(titles(filterStories(stories, { query: "detective", blockedOnly: true })), [
+      "Truce pennant port",
+    ]);
+    assert.deepEqual(filterStories(stories, { query: "math", blockedOnly: true }), []);
+    assert.deepEqual(filterStories(stories, { query: "no such thing", blockedOnly: false }), []);
   });
 });
 

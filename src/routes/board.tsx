@@ -4,6 +4,7 @@ import snapshotJson from "@/board/snapshot.json";
 import {
   applyLiveData,
   fetchLivePrs,
+  filterStories,
   groupByLane,
   groupByStatus,
   headerMetrics,
@@ -71,6 +72,8 @@ function BoardPage() {
   // missing; the toggle can force either view afterwards.
   const [mapView, setMapView] = useState<MapView>("list");
   const [mapChosen, setMapChosen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [blockedOnly, setBlockedOnly] = useState(false);
 
   useEffect(() => {
     const reduced = prefersReducedMotion();
@@ -107,8 +110,13 @@ function BoardPage() {
     done: metrics.done,
   };
 
-  const columns = useMemo(() => groupByStatus(stories), [stories]);
-  const lanes = useMemo(() => groupByLane(stories, snapshot.lanes), [stories]);
+  const visibleStories = useMemo(
+    () => filterStories(stories, { query, blockedOnly }),
+    [stories, query, blockedOnly],
+  );
+  const filterActive = query.trim() !== "" || blockedOnly;
+  const columns = useMemo(() => groupByStatus(visibleStories), [visibleStories]);
+  const lanes = useMemo(() => groupByLane(visibleStories, snapshot.lanes), [visibleStories]);
 
   const liveLine =
     liveSource === "live" && fetchedAt
@@ -161,6 +169,30 @@ function BoardPage() {
             ))}
           </ol>
         </section>
+
+        <div className="board-controls">
+          <label className="board-search">
+            Search stories
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Title, lane, owner, or PR number"
+            />
+          </label>
+          <button
+            type="button"
+            aria-pressed={blockedOnly}
+            onClick={() => setBlockedOnly((v) => !v)}
+          >
+            Blocked only
+          </button>
+          {filterActive ? (
+            <p className="board-muted" role="status">
+              Showing {visibleStories.length} of {stories.length} stories
+            </p>
+          ) : null}
+        </div>
 
         <section className="board-section" aria-labelledby="board-scrum-heading">
           <h2 id="board-scrum-heading">Scrum board</h2>
@@ -226,7 +258,7 @@ function BoardPage() {
             <Suspense fallback={<p className="board-muted">Loading the 3D map…</p>}>
               <FeatureMap
                 lanes={snapshot.lanes}
-                stories={stories}
+                stories={visibleStories}
                 donePath={snapshot.donePath}
                 onUnavailable={onMapUnavailable}
               />
@@ -245,8 +277,8 @@ function BoardPage() {
                       </p>
                     </div>
                     <div className="board-bar" aria-hidden="true">
-                      <i className="b-done" style={{ width: `${(done / inLane.length) * 100}%` }} />
-                      <i className="b-prog" style={{ width: `${(prog / inLane.length) * 100}%` }} />
+                      <i className="b-done" style={{ width: `${inLane.length ? (done / inLane.length) * 100 : 0}%` }} />
+                      <i className="b-prog" style={{ width: `${inLane.length ? (prog / inLane.length) * 100 : 0}%` }} />
                     </div>
                     <ul className="board-cards">
                       {inLane.map((story) => (

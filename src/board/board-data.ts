@@ -588,6 +588,19 @@ export interface HeaderMetrics {
  *    on a story that is not done. Waiting on a done story is not blocked,
  *    and a done story is never blocked.
  */
+/**
+ * Indexes of blocked stories: not done, and waiting (via
+ * buildDependencyEdges) on a story that is not done. The single source
+ * of truth for "blocked" — headerMetrics and the board filter use it.
+ */
+export function blockedIndexes(stories: readonly LiveStory[]): Set<number> {
+  const blocked = new Set<number>();
+  for (const e of buildDependencyEdges(stories)) {
+    if (stories[e.to].status !== "done" && stories[e.from].status !== "done") blocked.add(e.to);
+  }
+  return blocked;
+}
+
 export function headerMetrics(stories: readonly LiveStory[]): HeaderMetrics {
   const out: HeaderMetrics = { notStarted: 0, inProgress: 0, done: 0, openPrs: 0, blocked: 0 };
   const openPrs = new Set<number>();
@@ -600,10 +613,29 @@ export function headerMetrics(stories: readonly LiveStory[]): HeaderMetrics {
     }
   }
   out.openPrs = openPrs.size;
-  const blocked = new Set<number>();
-  for (const e of buildDependencyEdges(stories)) {
-    if (stories[e.to].status !== "done" && stories[e.from].status !== "done") blocked.add(e.to);
-  }
-  out.blocked = blocked.size;
+  out.blocked = blockedIndexes(stories).size;
   return out;
+}
+
+/**
+ * Case-insensitive substring match on title, lane and owner. A numeric
+ * query ("430", "PR 430", "#430") also matches story.prs numbers.
+ */
+export function storyMatchesQuery(story: SnapshotStory, query: string): boolean {
+  const q = query.trim().toLowerCase();
+  if (!q) return true;
+  const numeric = q.match(/^(?:pr\s*)?#?(\d+)$/);
+  if (numeric && story.prs.includes(Number(numeric[1]))) return true;
+  return [story.title, story.lane, story.owner ?? ""].some((f) => f.toLowerCase().includes(q));
+}
+
+/** The visible subset under a search query + blocked-only filter (order kept). */
+export function filterStories<T extends LiveStory>(
+  stories: readonly T[],
+  filter: { query: string; blockedOnly: boolean },
+): T[] {
+  const blocked = filter.blockedOnly ? blockedIndexes(stories) : null;
+  return stories.filter(
+    (s, i) => storyMatchesQuery(s, filter.query) && (!blocked || blocked.has(i)),
+  );
 }
