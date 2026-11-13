@@ -13,7 +13,7 @@ The voice is local Kokoro `am_michael`. It is not the voice on the live journal 
 - [x] Captions retimed to the speech. first-phone and mobile-phone stay the screened caption, character for character. ENIAC's last cue is the owner line below.
 - [x] Narration committed under `public/audio/journals/technology/`.
 - [x] One voice for every journal in this fix pass: Kokoro `am_michael`.
-- [x] Owner, 2026-11-13: the ENIAC spoken line is now "stood in a big room", same word count. `eniac.m4a` was re-rendered. `first-phone` and `mobile-phone` audio were left as they were. `transcripts.md` was not edited.
+- [x] Owner, 2026-11-13: the ENIAC cue is now "ENIAC, an early computer, needed a big room." (8 words, 18 in all, at the cap). Caption, screenplay and `transcripts.md` match. `eniac.m4a` re-rendered with Kokoro `am_michael` at -18.5 LUFS, peak -2.2 dBFS. `check-clips.mjs` passes.
 
 Voice check on "Hey kids, have you heard about this place?" at speed 1.0:
 
@@ -66,7 +66,7 @@ These clips are not in `public/videos/journal-manifest.json`, so the live player
 
 ## Open questions
 
-- The changed cue is 9 words, under the cap of 18. The full narration is 19 spoken words, so `check-clips.mjs` fails. The owner called "stood in a big room" the same word count. Leave the extra word, or change the phrase?
+- Resolved 2026-11-13: the cue now reads "needed a big room" and `check-clips.mjs` passes at 18 words.
 - `git rebase origin/main` was denied by the agent permission rule, so this branch was not rebased onto `eb7f91a3` (chemistry live). That commit does not touch these files.
 
 ## Ruled out
@@ -80,7 +80,7 @@ These clips are not in `public/videos/journal-manifest.json`, so the live player
 Round 1, 2026-11-13. No second round.
 
 - Child-safety: MUST-FIX, not applied. The first-phone and eniac opening questions are the grade-4 items sources.md already assigns (4.NBT.B.4 and 4.MD.A.3). The spoken captions do not ask that arithmetic.
-- History: owner call, 2026-11-13. Spoken line is now "stood in a big room", same word count. The changed cue, "ENIAC, an early computer, stood in a big room.", is 9 words. The cap is 18. Measured again: "stood in a big room" is 5 words and "filled a big room" was 4, so the full narration is 19 spoken words, one over check-clips.mjs. transcripts.md stays the screened source.
+- History: the owner first asked for "stood in a big room" (19 words, over the cap), then changed it to "needed a big room" (18 words) on 2026-11-13.
 - Accessibility: PASS. No persona file exists for this seat. Cue words match the narration, and there is no video, so nothing flashes.
 - QA: MUST-FIX. No still is in this pull request. A local open-weight image model did not run.
 
