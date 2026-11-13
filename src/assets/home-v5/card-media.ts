@@ -18,6 +18,15 @@ import journalStillUrl from "./journal-tree.webp";
 import grownupsVideoUrl from "./grownups-film.mp4";
 import grownupsPosterUrl from "./grownups-poster.webp";
 import grownupsStillUrl from "./binoculars-hat.webp";
+import whyLearnVideoUrl from "./why-learn-film.mp4";
+import whyLearnPosterUrl from "./why-learn-poster.webp";
+import whyLearnStillUrl from "./why-learn-still.webp";
+import whyLearnTrailScoutVideoUrl from "./why-learn-film-trail-scout.mp4";
+import whyLearnTrailScoutPosterUrl from "./why-learn-poster-trail-scout.webp";
+import whyLearnTrailScoutStillUrl from "./why-learn-still-trail-scout.webp";
+import whyLearnAdultVideoUrl from "./why-learn-film-adult.mp4";
+import whyLearnAdultPosterUrl from "./why-learn-poster-adult.webp";
+import whyLearnAdultStillUrl from "./why-learn-still-adult.webp";
 
 /**
  * THE swap point for the five home cards' animated pictures:
@@ -406,4 +415,78 @@ export function coldtrailMediaForBand(_band: string | null | undefined) {
  */
 export function reviewMediaForBand(band: string | null | undefined) {
   return band === "7-10" ? REVIEW_FILM_TRAIL_SCOUT : REVIEW_FILM;
+}
+
+/**
+ * "Why Do We Learn This?" card (scale-play, behind the scalePlay
+ * flag). One film per age band, same five beats and timings in all
+ * three: Holmes's lens finds the hidden math in an everyday street
+ * (an arc, a right triangle, equal shares), then the "it's all
+ * connected" door montage hints at physics, chemistry and history.
+ *
+ * Provenance: rendered from scripts/why-learn-film/ (three.js scene,
+ * one band module each) on branch feat/why-learn-film-dolly, SOURCE SHA
+ * 0d8de7e9 (v4 plus the owner's camera move; branch head after the
+ * temporary render workflow was removed: 4bf5d106). Rendered headless
+ * with capture.mjs in a temporary GitHub Actions job and copied
+ * byte-for-byte here (renamed to this folder's band names: 10-18 =
+ * base, 7-10 = trail-scout, 18plus = adult). Only the media come into
+ * this branch; the scripts stay on the film branch. Every frame is a
+ * pure function of t, so a re-capture gives the same pixels.
+ * Camera (owner's request, Nov 12; the one exception to the locked Home
+ * shot): the camera pushes in the moment Holmes's lens lifts and follows
+ * it, so the throw (one still view centred on the whole flight), the
+ * right triangle and the shared pie read big; 7-10 returns to the home
+ * view for its sharing beat because the shares spread across the street.
+ * At the montage it pushes in until the links fill the frame, then
+ * pulls back to the full stage with Holmes and Watson. Position only,
+ * home by 9.8 s.
+ * Encode: 1094x616, 24 fps, 240 frames, 10.0 s, H.264 High, silent,
+ * veryslow, faststart, CRF searched upward from 26 until under 400,000
+ * bytes (the camera move costs bits, so these sit higher than v4's 26-28):
+ *   why-learn-film.mp4             10-18  CRF 35  378,844 bytes
+ *   why-learn-film-trail-scout.mp4  7-10  CRF 36  399,549 bytes
+ *   why-learn-film-adult.mp4        18+   CRF 34  377,832 bytes
+ * Poster = frame 0, WebP q82 1094x616: 32,440 / 31,836 / 32,774 bytes
+ * (base / trail-scout / adult). Still = the split beat held (t = 6.2 s),
+ * WebP q82 1094x616: 47,346 / 46,008 / 45,938 bytes. The still is a
+ * different file from the poster on purpose: reduced-motion and
+ * Save-Data show it.
+ * Loop: frame 0 against the last frame, lossless PNG: 10-18 40.5 dB,
+ * 18+ 62.4 dB, 7-10 34.2 dB (the camera is home by then, so the 7-10
+ * gap is the band's own animation, carried over from v4).
+ * Known weak spots: the origin link reads clean only 0.30-0.35 s; after
+ * the curl the montage backdrop shrinks as a flat circle for about a
+ * quarter second before the street returns; the throw is as big as the
+ * frame height allows but still the smallest beat; encodes are softer
+ * than v4 (higher CRF).
+ */
+export const WHY_LEARN_FILM = {
+  videoUrl: whyLearnVideoUrl,
+  posterUrl: whyLearnPosterUrl,
+  stillUrl: whyLearnStillUrl,
+} as const;
+
+export const WHY_LEARN_FILM_TRAIL_SCOUT = {
+  videoUrl: whyLearnTrailScoutVideoUrl,
+  posterUrl: whyLearnTrailScoutPosterUrl,
+  stillUrl: whyLearnTrailScoutStillUrl,
+} as const;
+
+export const WHY_LEARN_FILM_ADULT = {
+  videoUrl: whyLearnAdultVideoUrl,
+  posterUrl: whyLearnAdultPosterUrl,
+  stillUrl: whyLearnAdultStillUrl,
+} as const;
+
+/**
+ * The only band->media path for the Why Do We Learn This? card:
+ * "7-10" gets the Trail Scout film, "18+" the adult film, and every
+ * other value ("10-18", null, undefined, any other string) the base
+ * film. Exact match, fail closed.
+ */
+export function whyLearnMediaForBand(band: string | null | undefined) {
+  if (band === "7-10") return WHY_LEARN_FILM_TRAIL_SCOUT;
+  if (band === "18+") return WHY_LEARN_FILM_ADULT;
+  return WHY_LEARN_FILM;
 }

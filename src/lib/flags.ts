@@ -41,7 +41,8 @@ export type FlagName =
   | "hostsStaging"
   | "watsonWalk"
   | "detectiveFlank"
-  | "pair3d";
+  | "pair3d"
+  | "scalePlay";
 
 /**
  * Baked-in defaults — MUST equal current production behavior for every
@@ -134,7 +135,32 @@ export const FLAG_DEFAULTS: Record<FlagName, boolean> = {
   // false = the kill-switch: the SVG rigs exactly as shipped. The baked
   // default stays false so a failed flags fetch falls back to them.
   pair3d: false,
+  // "Why Do We Learn This?" (scale-play): the Home card that opens the
+  // subject cases (math, science, history). Ships dark: false = today's
+  // Home, byte-identical. A tester turns it on for one page load with
+  // `?scale=1` in the URL (see scaleParamOn below); the remote
+  // flags.json can also turn it on once educator review signs off.
+  // The baked default stays false so a failed flags fetch never shows
+  // an unreviewed card to kids.
+  scalePlay: false,
 };
+
+/** The one URL turn-on: `?scale=1` turns scalePlay on, nothing else. */
+export const SCALE_PLAY_PARAM = "scale";
+
+/**
+ * True only when the current page URL carries `?scale=1` exactly.
+ * Never throws; false on the server (no window) and on any odd value.
+ */
+export function scaleParamOn(search?: string): boolean {
+  try {
+    const raw =
+      search ?? (typeof window !== "undefined" ? window.location.search : "");
+    return new URLSearchParams(raw).get(SCALE_PLAY_PARAM) === "1";
+  } catch {
+    return false;
+  }
+}
 
 export const FLAGS_FETCH_TIMEOUT_MS = 1500;
 const FLAGS_FILE = "flags.json";
@@ -288,6 +314,7 @@ export interface LoadFlagsEnv {
  */
 export function isEnabled(flag: FlagName): boolean {
   try {
+    if (flag === "scalePlay" && scaleParamOn()) return true;
     const override = overrides[flag];
     if (typeof override === "boolean") return override;
     const def = FLAG_DEFAULTS[flag];

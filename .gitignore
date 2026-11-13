@@ -21,6 +21,7 @@ attachments
 *.tmp.mjs
 playwright-report/
 test-results/
+why-learn-shots/
 .scratch/
 
 # Generated at build time (prebuild) — never commit

@@ -808,9 +808,15 @@ body:has(.home-v5) {
 .home-v5 .hv5-go:hover:not([aria-disabled="true"]) {
   color: var(--hv5-brown);
 }
+/* Disabled CTA: muted but still readable. Text uses --hv5-ink-soft
+   (7.1:1 on --hv5-card, owner 2026-11-12 asked for at least 4.5:1;
+   the old opacity: 0.5 gave 2.87:1). Only the decorative icon fades. */
 .home-v5 .hv5-go[aria-disabled="true"] {
-  opacity: 0.5;
+  color: var(--hv5-ink-soft);
   cursor: default;
+}
+.home-v5 .hv5-go[aria-disabled="true"] > [aria-hidden="true"] {
+  opacity: 0.5;
 }
 .home-v5 .hv5-split {
   flex-direction: row;

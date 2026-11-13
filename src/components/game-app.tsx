@@ -75,7 +75,7 @@ import {
   VERDICT_GRANDPA_POSTER_URL,
   VERDICT_GRANDPA_VIDEO_URL,
 } from "@/assets/verdict/grandpa-media";
-import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand } from "@/assets/home-v5/card-media";
+import { GEODETECTIVE_FILM, GROWNUPS_FILM, JOURNAL_FILM, coldtrailMediaForBand, reviewMediaForBand, whyLearnMediaForBand } from "@/assets/home-v5/card-media";
 import { CardFilm } from "./card-film";
 import { usePrefersReducedMotion } from "../hooks/use-prefers-reduced-motion";
 import { Compass, Contrast, Flag, Globe2, MapPin, MoreHorizontal } from "lucide-react";
@@ -1316,6 +1316,20 @@ export function GameApp() {
     let active = true;
     void loadFlags().then(() => {
       if (active) setFriendChallengesOn(isEnabled("friendChallenges"));
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  /** "Why Do We Learn This?" Home card (scale-play), flag-gated: off by
+   * default, `?scale=1` turns it on for testers. Read after mount so
+   * the server render and the first client render match. */
+  const [scalePlayOn, setScalePlayOn] = useState(false);
+  useEffect(() => {
+    let active = true;
+    void loadFlags().then(() => {
+      if (active) setScalePlayOn(isEnabled("scalePlay"));
     });
     return () => {
       active = false;
@@ -3844,6 +3858,7 @@ export function GameApp() {
       })}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       challengeEnabled={friendChallengesOn}
+      whyLearnEnabled={scalePlayOn}
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
       deck={deckStatus}
@@ -4360,6 +4375,8 @@ function Choose({
   onReview,
   onResetHistory,
   challengeEnabled,
+  whyLearnEnabled,
+  onWhyLearn,
   onChallenge,
   deck,
   notice,
@@ -4393,6 +4410,12 @@ function Choose({
   challengeEnabled?: boolean;
   /** Open the challenge region picker. */
   onChallenge?: (e: ReactMouseEvent) => void;
+  /** scalePlay flag on: show the "Why Do We Learn This?" card. */
+  whyLearnEnabled?: boolean;
+  /** Open the scale-play subject picker. Not on main yet: until the
+   * scale-play screen lands and passes this, the card's button is
+   * rendered disabled. */
+  onWhyLearn?: (e: ReactMouseEvent) => void;
   /** Deck entry status (flag-gated; see useDeckStatus). */
   deck: { enabled: boolean; due: number; total: number };
   notice?: ReactNode;
@@ -4866,6 +4889,54 @@ function Choose({
           </div>
         </article>
         )}
+        {/* "Why Do We Learn This?" (scale-play, flag scalePlay / ?scale=1):
+            the door to every subject case (math, science, history).
+            Same card markup as GeoDetective, no new styles. Film per
+            age band through whyLearnMediaForBand. Media: card-media.ts. */}
+        {whyLearnEnabled ? (
+        <article
+          className="hv5-card hv5-split hv5-stack hv5-case home-rise"
+          style={rise(5)}
+          data-testid="home-card-why-learn"
+          aria-labelledby="why-learn-title"
+        >
+          <CardFilm className="hv5-pic" media={whyLearnMediaForBand(ageBand)} testId="card-film-why-learn" band={ageBand} />
+          <div className="hv5-txt">
+            <div className="hv5-head">
+              <span className="hv5-badge">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" /><path d="M15 15 L20.5 20.5" /></svg>
+              </span>
+              <span className="hv5-label">Case file · Why it matters</span>
+            </div>
+            <h2 id="why-learn-title">
+              Why Do We Learn{" "}
+              {/* Keeps "New" with the last word so the tag never sits alone on a phone line. */}
+              <span className="whitespace-nowrap">
+                This?<span className="hv5-chip">New</span>
+              </span>
+            </h2>
+            <p>
+              See where math, science and history show up in everyday life, then use them to crack
+              the case.
+            </p>
+            <button
+              type="button"
+              className="hv5-go hv5-stretch"
+              onClick={onWhyLearn}
+              disabled={!onWhyLearn}
+              aria-disabled={!onWhyLearn ? "true" : undefined}
+              aria-label={
+                onWhyLearn
+                  ? "Why Do We Learn This?: Start exploring"
+                  : "Why Do We Learn This?: Coming soon"
+              }
+            >
+              <span aria-hidden="true">🔍</span>{" "}
+              {onWhyLearn ? "Start exploring" : "Coming soon"}
+            </button>
+          </div>
+        </article>
+        ) : null}
         {/* Cold Trail vertical slice: 3 sightings, 3 rings, one interception. */}
         <article
           className="hv5-card hv5-split hv5-stack hv5-dispatch home-rise"

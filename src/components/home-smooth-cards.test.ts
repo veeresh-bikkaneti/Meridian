@@ -180,8 +180,8 @@ describe("art films — the three spot cards joined the CardFilm system", () => 
     ]) {
       assert.ok(gameApp.includes(site), `art film site: ${site}`);
     }
-    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 5,
-      "five film slots total — one motion system for every illustrated card");
+    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 6,
+      "six film slots total (five shipped + the flag-gated Why Do We Learn This? card) — one motion system for every illustrated card");
   });
 
   it("the art stills are the original illustrations, imported by card-media only", () => {
