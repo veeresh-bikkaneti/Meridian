@@ -10,6 +10,7 @@ STATUS is PASS.
 - Narration loudness follow-up `925d0a23f4474b192b1c5258f1f3eab2311abcd2`.
 - Stills branch tip that records the draft PR `e857fdeeb70e417eff10122fdf272d979ee6012c`.
 - Motion script `1589f680599b761f386ab50a87cd35f01e296ef1` on `feat/journal-freedom-fighters-clips-video`.
+- Result note `de37306a8a01902cce2605e7b291a51616652ab5`. Video branch tip is the commit that adds this line.
 
 ## Method
 
