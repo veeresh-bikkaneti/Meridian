@@ -480,3 +480,35 @@ export function createAutoKillTracker(): AutoKillTracker {
     },
   };
 }
+
+/* ------------------------------------------------------------------ */
+/* Pause-confirm scheduling                                            */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Should a pointer move (re)start the host's pause-confirm timer?
+ *
+ * The timer waits ~460 ms for the pointer to settle, then asks the
+ * detector. Restarting it on EVERY move is right for a mouse, but a
+ * held finger never lies perfectly still: it emits tiny moves, faster
+ * than the timer's wait, so every one restarted it and the pause never
+ * confirmed until the finger lifted (by then a tap had opened the
+ * place sheet and the pause was dropped). A touch move that stays
+ * inside the detector's own stillness radius of the point the pending
+ * timer was scheduled for is jitter, not motion: let the timer run.
+ * The detector still judges stillness and path velocity itself.
+ */
+export function shouldRestartPauseTimer(input: {
+  pointerType: string;
+  timerPending: boolean;
+  anchor: { x: number; y: number } | null;
+  x: number;
+  y: number;
+}): boolean {
+  if (input.pointerType !== "touch") return true;
+  if (!input.timerPending || !input.anchor) return true;
+  return (
+    Math.hypot(input.x - input.anchor.x, input.y - input.anchor.y) >=
+    PAUSE_TOUCH_DISP_PX
+  );
+}

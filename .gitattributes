@@ -1,0 +1,19 @@
+# Keep generated data byte-identical on every platform. Hash and validation
+# checks (check-generated-places, manifests) read these files, so Windows
+# autocrlf must never rewrite their line endings.
+# Scoped on purpose: older docs/flags files already committed with CRLF are
+# left alone so this file does not renormalize the repo.
+src/game/data/**/*.json   text eol=lf
+src/game/data/**/*.jsonl  text eol=lf
+public/**/*.json          text eol=lf
+public/**/*.jsonl         text eol=lf
+scripts/**/*.json         text eol=lf
+package-lock.json         text eol=lf
+*.webmanifest             text eol=lf
+
+# Media and fonts are binary: never convert, never diff as text.
+*.mp3   binary
+*.mp4   binary
+*.webp  binary
+*.png   binary
+*.woff2 binary

@@ -1,15 +1,15 @@
 WEBVTT
 
-NOTE DRAFT, Stage A. Cue times are PROPOSED; re-time against the rendered narration in Stage B.
+NOTE Cue times match the committed Kokoro narration. Owner, 2026-11-13: the last cue says "needed a big room". transcripts.md says the same.
 
 1
-00:00:00.000 --> 00:00:03.000
+00:00:00.000 --> 00:00:02.283
 Hey kids, have you heard about this place?
 
 2
-00:00:03.000 --> 00:00:05.200
+00:00:02.463 --> 00:00:05.151
 Philadelphia, 1946.
 
 3
-00:00:05.200 --> 00:00:09.500
-ENIAC, an early computer, filled a big room.
+00:00:05.331 --> 00:00:08.595
+ENIAC, an early computer, needed a big room.

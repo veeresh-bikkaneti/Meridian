@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { strict as assert } from "node:assert";
 import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -26,7 +27,7 @@ function fakeMp3(bytes) {
 }
 import { casePlan } from "./render-plan.mjs";
 
-const ROOT = new URL("../..", import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL("../..", import.meta.url));
 
 test("textHash changes when text, speed, voice or gain changes", () => {
   const base = { voice: "avocado_v2:atlas", speed: 100, gainDb: 0, text: "Hello." };

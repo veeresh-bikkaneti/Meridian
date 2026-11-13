@@ -281,7 +281,7 @@ import { readColdTrailOpen, writeColdTrailOpen } from "@/game/coldtrail/store";
 // HomeGlobe idiom above).
 const loadLoopScreen = () => import("@/game/loop/LoopScreen");
 const loadTrailScreen = () => import("@/game/coldtrail/TrailScreen");
-const loadMathCase = () => import("@/subjects/math/MathCase");
+const loadSubjectPicker = () => import("@/subjects/shared/SubjectPicker");
 // #209: each lazy load is raced against CHUNK_LOAD_TIMEOUT_MS (inside
 // withChunkTimeout) — a HUNG import never settles, so without the race
 // the Suspense fallback below would spin forever; with it, the race
@@ -296,10 +296,11 @@ const TrailScreen = lazy(() =>
     default: m.TrailScreen,
   })),
 );
-// Math subject case (scale-play wave 1): same lazy discipline — it loads
-// only when the why-learn card is tapped behind the scalePlay flag.
-const MathCaseScreen = lazy(() =>
-  withChunkTimeout(loadMathCase(), "Math case screen").then((m) => ({
+// Subject picker (why-learn card): same lazy discipline — it loads
+// only when the why-learn card is tapped, and each subject's case
+// loads only when its picker row is tapped.
+const SubjectPickerScreen = lazy(() =>
+  withChunkTimeout(loadSubjectPicker(), "Subject picker screen").then((m) => ({
     default: m.default,
   })),
 );
@@ -1331,19 +1332,10 @@ export function GameApp() {
     };
   }, []);
 
-  /** "Why Do We Learn This?" Home card (scale-play), flag-gated: off by
-   * default, `?scale=1` turns it on for testers. Read after mount so
-   * the server render and the first client render match. */
-  const [scalePlayOn, setScalePlayOn] = useState(false);
-  useEffect(() => {
-    let active = true;
-    void loadFlags().then(() => {
-      if (active) setScalePlayOn(isEnabled("scalePlay"));
-    });
-    return () => {
-      active = false;
-    };
-  }, []);
+  /** "Why Do We Learn This?" Home card: live for everyone since the
+   * subjects launch (owner rule, Nov 13: release progressively). It
+   * used to be flag-gated behind scalePlay / ?scale=1; the card no
+   * longer reads that flag. */
 
   /** A minted challenge waiting on its preview sheet (picker flow). */
   const [challengePreview, setChallengePreview] = useState<{
@@ -1439,10 +1431,10 @@ export function GameApp() {
   // stays intact, so tapping in resumes the saved mystery where it left
   // off; only the boot auto-open is gone.
   const [loopOpen, setLoopOpen] = useState<boolean>(false);
-  // Math subject case (scale-play wave 1): session-only open state, set
-  // by the why-learn card tap when the scalePlay flag is on. Never
-  // persisted — a reload lands on Home, like the loop's tap-in rule.
-  const [mathOpen, setMathOpen] = useState<boolean>(false);
+  // Subject picker: session-only open state, set by the why-learn
+  // card tap. Never persisted — a reload lands on Home, like the
+  // loop's tap-in rule.
+  const [subjectsOpen, setSubjectsOpen] = useState<boolean>(false);
   // Journal prefetch (lazy-load scenario 2): while a round is active,
   // warm the current entry's movie and the next window's (B8: one entry
   // per 30-minute window, so "the next 1–2 in the current set" is the
@@ -3471,20 +3463,19 @@ export function GameApp() {
     );
   }
 
-  // Math subject case (scale-play wave 1) lives beside the loop screens:
-  // its own early return, reached only from the why-learn card while the
-  // scalePlay flag is on. With the flag off this state is never set and
-  // Home is exactly as today.
-  if (mathOpen) {
+  // Subject picker lives beside the loop screens: its own early
+  // return, reached from the why-learn card. The picker lists the
+  // released subjects and opens the tapped subject's case itself.
+  if (subjectsOpen) {
     return (
       <>
         {mapModeAnnouncer}
-        <MapErrorBoundary surface="Math case">
-          <Suspense fallback={<SessionLoadingFallback label="Loading math case…" />}>
-            <MathCaseScreen
+        <MapErrorBoundary surface="Subjects">
+          <Suspense fallback={<SessionLoadingFallback label="Loading subjects…" />}>
+            <SubjectPickerScreen
               group={getAgeGroup()}
               tier="full"
-              onExit={() => setMathOpen(false)}
+              onExit={() => setSubjectsOpen(false)}
               onCelebrate={(spec) => setCelebration(spec)}
             />
           </Suspense>
@@ -3895,10 +3886,8 @@ export function GameApp() {
       })}
       onColdTrail={withCardTap("coldtrail", () => { writeColdTrailOpen(true); setColdTrailOpen(true); })}      onReview={startReview}
       challengeEnabled={friendChallengesOn}
-      whyLearnEnabled={scalePlayOn}
-      onWhyLearn={
-        scalePlayOn ? withCardTap("why-learn", () => setMathOpen(true)) : undefined
-      }
+      whyLearnEnabled
+      onWhyLearn={withCardTap("why-learn", () => setSubjectsOpen(true))}
       onChallenge={withCardTap("challenge", openChallengePicker)}
       onResetHistory={handleResetHistory}
       deck={deckStatus}
@@ -4450,11 +4439,11 @@ function Choose({
   challengeEnabled?: boolean;
   /** Open the challenge region picker. */
   onChallenge?: (e: ReactMouseEvent) => void;
-  /** scalePlay flag on: show the "Why Do We Learn This?" card. */
+  /** Show the "Why Do We Learn This?" card. Live for everyone since
+   * the subjects launch (owner rule, Nov 13: release progressively). */
   whyLearnEnabled?: boolean;
-  /** Open the scale-play math case. GameApp passes this only when the
-   * scalePlay flag is on; without it the card's button renders disabled
-   * ("Coming soon"). */
+  /** Open the subject picker. Without it the card's button renders
+   * disabled ("Coming soon"). */
   onWhyLearn?: (e: ReactMouseEvent) => void;
   /** Deck entry status (flag-gated; see useDeckStatus). */
   deck: { enabled: boolean; due: number; total: number };
@@ -4929,10 +4918,11 @@ function Choose({
           </div>
         </article>
         )}
-        {/* "Why Do We Learn This?" (scale-play, flag scalePlay / ?scale=1):
-            the door to every subject case (math, science, history).
-            Same card markup as GeoDetective, no new styles. Film per
-            age band through whyLearnMediaForBand. Media: card-media.ts. */}
+        {/* "Why Do We Learn This?" (subjects launch): the door to every
+            subject case (math, science, history). Live for everyone;
+            the button opens the subject picker. Same card markup as
+            GeoDetective, no new styles. Film per age band through
+            whyLearnMediaForBand. Media: card-media.ts. */}
         {whyLearnEnabled ? (
         <article
           className="hv5-card hv5-split hv5-stack hv5-case home-rise"
