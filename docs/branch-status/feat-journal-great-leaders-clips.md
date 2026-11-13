@@ -18,6 +18,10 @@ Build the three KEEP great-leaders clips so a child sees the still, the real cap
 - `scripts/journal-still-motion.mjs` and `scripts/paint-great-leaders-stills.mjs`.
 - `docs/scaling/journals/great-leaders/render-out/` is gitignored. No mp4 is committed.
 
+## Video branch
+
+`feat/journal-great-leaders-clips-video` starts from the stills commit. `docs/scaling/journals/great-leaders/video-attempt.md` records the blocked render. No clip mp4 was produced.
+
 ## Not done
 
 - Narration audio is BLOCKED. The Kokoro ONNX cache used by `scripts/render-storyteller-voice.mjs` is missing at `C:\Users\veere\.cache\huggingface\transformersjs\onnx-community\Kokoro-82M-v1.0-ONNX\onnx`. `kokoro-js` is not resolvable from `C:\Users\veere\workspace\aidemo-pilot\engine`. `/opt/hatch/bin/tts` is absent. Nothing was downloaded.
