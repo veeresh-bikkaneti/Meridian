@@ -1,0 +1,1220 @@
+/* Play Lab — Scale Mockup Stylesheet */
+
+.playlab-root {
+  min-height: 100vh;
+  background: radial-gradient(110% 70% at 50% -10%, var(--atlas-glow), transparent 60%),
+    linear-gradient(180deg, var(--atlas-bg-1) 0%, var(--atlas-bg-2) 100%);
+  color: var(--atlas-ink);
+  font-family: Karla, -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 0 0 4rem 0;
+  box-sizing: border-box;
+}
+
+/* Header */
+.playlab-header {
+  border-bottom: 1px solid var(--atlas-card-line);
+  background: color-mix(in srgb, var(--atlas-bg-1) 85%, transparent);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  padding: 1rem 1.5rem 0 1.5rem;
+}
+
+.playlab-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.playlab-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.playlab-logo-pill {
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--atlas-brass);
+  background: rgba(232, 182, 76, 0.12);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 4px;
+  padding: 2px 6px;
+  width: fit-content;
+}
+
+.playlab-title {
+  font-family: Fraunces, serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--atlas-ink);
+  letter-spacing: -0.02em;
+}
+
+.playlab-tagline {
+  font-size: 0.85rem;
+  color: var(--atlas-muted);
+}
+
+.playlab-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.playlab-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.playlab-control-label {
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--atlas-faint);
+  letter-spacing: 0.05em;
+}
+
+.playlab-pill-btn {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  color: var(--atlas-ink);
+  font-family: Karla, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-soft-land);
+}
+
+.playlab-pill-btn:hover {
+  border-color: var(--atlas-brass);
+  color: var(--atlas-brass);
+}
+
+.playlab-pill-btn:focus-visible {
+  outline: 2px solid var(--atlas-brass);
+  outline-offset: 2px;
+}
+
+.playlab-tier-toggle {
+  display: inline-flex;
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.playlab-tier-btn {
+  min-height: 44px;
+  padding: 0 0.75rem;
+  font-size: 0.8rem;
+  font-family: "Space Mono", monospace;
+  background: transparent;
+  border: none;
+  color: var(--atlas-muted);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s var(--ease-soft-land);
+}
+
+.playlab-tier-btn:hover {
+  color: var(--atlas-ink);
+}
+
+.playlab-tier-btn.active {
+  background: var(--atlas-brass);
+  color: var(--atlas-brass-ink);
+  font-weight: 700;
+}
+
+/* Tabs */
+.playlab-tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(232, 182, 76, 0.1);
+  padding-top: 0.5rem;
+}
+
+.playlab-tab-btn {
+  min-height: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5rem 1.25rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--atlas-muted);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s var(--ease-soft-land);
+}
+
+.playlab-tab-btn:hover {
+  color: var(--atlas-ink);
+}
+
+.playlab-tab-btn.active {
+  color: var(--atlas-brass);
+  border-bottom-color: var(--atlas-brass);
+}
+
+.playlab-tab-num {
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.playlab-tab-title {
+  font-family: Fraunces, serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.playlab-tab-sub {
+  font-size: 0.75rem;
+  color: var(--atlas-faint);
+}
+
+/* Main Content */
+.playlab-content {
+  max-width: 1200px;
+  margin: 1.5rem auto 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* Flow A: Detectives Stage */
+.playlab-detectives-stage {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.playlab-detective-figures {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.playlab-rig-wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+
+.playlab-rig-wrapper.holmes {
+  width: 90px;
+  height: 120px;
+}
+
+.playlab-rig-wrapper.watson {
+  width: 75px;
+  height: 95px;
+}
+
+.playlab-dialogue-bubble {
+  background: rgba(7, 14, 18, 0.7);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  position: relative;
+  flex: 1;
+}
+
+.playlab-dialogue-speaker {
+  font-family: Fraunces, serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--atlas-brass);
+  margin-bottom: 0.25rem;
+}
+
+.playlab-dialogue-text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--atlas-ink);
+}
+
+/* Case Ledger */
+.playlab-ledger-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.playlab-ledger-title {
+  font-family: Fraunces, serif;
+  font-size: 1.5rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.playlab-ledger-sub {
+  font-size: 0.9rem;
+  color: var(--atlas-muted);
+  margin: 0;
+}
+
+.playlab-filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.playlab-filter-pills .playlab-pill-btn.active {
+  background: var(--atlas-brass);
+  color: var(--atlas-brass-ink);
+  border-color: var(--atlas-brass);
+  font-weight: 600;
+}
+
+.playlab-docket-section {
+  margin-bottom: 2.5rem;
+}
+
+.playlab-docket-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.playlab-docket-section-header h3 {
+  font-family: Fraunces, serif;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.playlab-stamp-badge {
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background: rgba(232, 106, 92, 0.15);
+  color: var(--atlas-stamp);
+  border: 1px solid var(--atlas-stamp);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+
+.playlab-stamp-badge.faint {
+  background: rgba(157, 179, 173, 0.1);
+  color: var(--atlas-muted);
+  border-color: var(--atlas-faint);
+}
+
+.playlab-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.playlab-case-docket-card {
+  min-height: 180px;
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 10px;
+  padding: 1.25rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-soft-land);
+}
+
+.playlab-case-docket-card:hover {
+  border-color: var(--atlas-brass);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px var(--atlas-glow);
+}
+
+.playlab-case-docket-card.featured {
+  border-color: rgba(232, 182, 76, 0.45);
+  background: linear-gradient(180deg, rgba(16, 34, 42, 0.9) 0%, rgba(7, 14, 18, 0.9) 100%);
+}
+
+.playlab-case-docket-card.featured.journal {
+  border-color: rgba(93, 183, 232, 0.45);
+}
+
+.playlab-card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.playlab-case-subject-tag {
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--atlas-faint);
+}
+
+.playlab-badge-interactive {
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--atlas-brass-ink);
+  background: var(--atlas-brass);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.playlab-badge-preview {
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  color: var(--atlas-muted);
+  border: 1px solid var(--atlas-card-line);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.playlab-card-why {
+  font-family: Fraunces, serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--atlas-ink);
+  margin: 0 0 0.5rem 0;
+}
+
+.playlab-card-objective {
+  font-size: 0.8rem;
+  color: var(--atlas-muted);
+  line-height: 1.4;
+  margin: 0 0 1rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.playlab-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  border-top: 1px solid rgba(232, 182, 76, 0.1);
+  padding-top: 0.5rem;
+}
+
+.playlab-card-standard {
+  font-family: "Space Mono", monospace;
+  color: var(--atlas-faint);
+}
+
+.playlab-card-cta {
+  color: var(--atlas-brass);
+  font-weight: 600;
+}
+
+/* Open Case View */
+.playlab-case-top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.playlab-back-ledger-btn {
+  min-height: 44px;
+  background: transparent;
+  border: 1px solid var(--atlas-card-line);
+  color: var(--atlas-ink);
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  font-family: Karla, sans-serif;
+  font-weight: 500;
+}
+
+.playlab-back-ledger-btn:hover {
+  border-color: var(--atlas-brass);
+  color: var(--atlas-brass);
+}
+
+.playlab-case-id-tag {
+  font-family: "Space Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--atlas-faint);
+}
+
+/* Problem Card */
+.playlab-problem-card {
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 16px 40px -16px rgba(0, 0, 0, 0.6);
+  position: relative;
+}
+
+.playlab-problem-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.playlab-subject-badge {
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--atlas-brass);
+}
+
+.playlab-close-btn {
+  min-height: 44px;
+  min-width: 44px;
+  background: transparent;
+  border: none;
+  color: var(--atlas-muted);
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.playlab-close-btn:hover {
+  color: var(--atlas-ink);
+}
+
+.playlab-problem-why {
+  font-family: Fraunces, serif;
+  font-size: 1.6rem;
+  line-height: 1.35;
+  color: var(--atlas-ink);
+  margin: 0 0 1rem 0;
+  font-style: italic;
+}
+
+.playlab-problem-skill {
+  background: rgba(7, 14, 18, 0.4);
+  border-left: 3px solid var(--atlas-brass);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.playlab-skill-label {
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: var(--atlas-brass);
+}
+
+.playlab-skill-objective {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.95rem;
+  color: var(--atlas-muted);
+}
+
+.playlab-interaction-area {
+  margin: 2rem 0;
+}
+
+.playlab-prompt-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--atlas-ink);
+  margin-bottom: 1.25rem;
+}
+
+.playlab-choices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.playlab-choice-btn {
+  min-height: 52px;
+  min-width: 44px;
+  padding: 0.75rem 1.25rem;
+  background: rgba(232, 182, 76, 0.05);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 8px;
+  color: var(--atlas-ink);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-soft-land);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playlab-choice-btn:hover:not(:disabled) {
+  border-color: var(--atlas-brass);
+  background: rgba(232, 182, 76, 0.12);
+  color: var(--atlas-brass);
+}
+
+.playlab-choice-btn:focus-visible {
+  outline: 2px solid var(--atlas-brass);
+  outline-offset: 2px;
+}
+
+.playlab-choice-btn.selected {
+  border-color: var(--atlas-brass);
+  background: rgba(232, 182, 76, 0.2);
+}
+
+.playlab-choice-btn.correct {
+  border-color: #68d391;
+  background: rgba(104, 211, 145, 0.2);
+  color: #68d391;
+  font-weight: bold;
+}
+
+/* Predict-See canvas mount */
+.playlab-predict-see-mount {
+  width: 100%;
+  height: 220px;
+  background: rgba(7, 14, 18, 0.6);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  overflow: hidden;
+}
+
+/* Journal Video Slot */
+.playlab-video-slot {
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  background: #000;
+}
+
+.playlab-video-poster {
+  height: 180px;
+  background: radial-gradient(circle at center, #1b3542 0%, #070e12 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.playlab-video-badge {
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  background: rgba(232, 106, 92, 0.2);
+  border: 1px solid var(--atlas-stamp);
+  color: var(--atlas-stamp);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.playlab-video-place {
+  font-family: Fraunces, serif;
+  font-size: 1.1rem;
+  color: var(--atlas-ink);
+}
+
+.playlab-video-captions {
+  padding: 0.75rem 1rem;
+  background: rgba(16, 34, 42, 0.8);
+  border-top: 1px solid var(--atlas-card-line);
+}
+
+.playlab-caption-tag {
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--atlas-brass);
+}
+
+.playlab-video-captions p {
+  margin: 0.25rem 0 0 0;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--atlas-ink);
+}
+
+.playlab-step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  font-family: "Space Mono", monospace;
+}
+
+.playlab-step-dot {
+  color: var(--atlas-muted);
+}
+
+.playlab-step-dot.active {
+  color: var(--atlas-brass);
+  font-weight: bold;
+}
+
+.playlab-step-dot.done {
+  color: #68d391;
+}
+
+/* Feedback Banner */
+.playlab-feedback-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  animation: feedbackSlideIn 0.3s var(--ease-soft-land);
+}
+
+@keyframes feedbackSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.playlab-feedback-banner.feedback-success {
+  background: rgba(104, 211, 145, 0.15);
+  border: 1px solid #68d391;
+  color: #f0e7d2;
+}
+
+.playlab-feedback-banner.feedback-retry {
+  background: rgba(232, 106, 92, 0.15);
+  border: 1px solid var(--atlas-stamp);
+  color: #f0e7d2;
+}
+
+.playlab-feedback-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.playlab-coming-soon-box {
+  border: 1px dashed var(--atlas-card-line);
+  border-radius: 8px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  background: rgba(7, 14, 18, 0.3);
+}
+
+.playlab-stamp-seal {
+  display: inline-block;
+  font-family: "Space Mono", monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--atlas-stamp);
+  border: 2px solid var(--atlas-stamp);
+  padding: 4px 12px;
+  border-radius: 4px;
+  transform: rotate(-2deg);
+  margin-bottom: 0.75rem;
+}
+
+.playlab-stamp-note {
+  max-width: 480px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+  color: var(--atlas-muted);
+}
+
+.playlab-standard-footnote {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(232, 182, 76, 0.15);
+  padding-top: 0.75rem;
+  margin-top: 1.5rem;
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--atlas-faint);
+}
+
+.playlab-standard-tag {
+  color: var(--atlas-brass);
+  font-weight: 700;
+}
+
+/* Bridge Card */
+.playlab-bridge-card {
+  margin-top: 2rem;
+  border-top: 2px solid var(--atlas-brass);
+  background: linear-gradient(180deg, rgba(232, 182, 76, 0.08) 0%, transparent 100%);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.playlab-bridge-banner {
+  margin-bottom: 1.25rem;
+}
+
+.playlab-bridge-kicker {
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--atlas-brass);
+}
+
+.playlab-bridge-headline {
+  font-family: Fraunces, serif;
+  font-size: 1.4rem;
+  margin: 0.25rem 0 0.5rem 0;
+  color: var(--atlas-ink);
+}
+
+.playlab-bridge-sub {
+  font-size: 0.9rem;
+  color: var(--atlas-muted);
+  margin: 0;
+}
+
+.playlab-bridge-stage {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.playlab-brass-thread-svg {
+  width: 100%;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.playlab-thread-path {
+  stroke-dashoffset: 100;
+  animation: threadDraw 1.8s var(--ease-soft-land) forwards;
+}
+
+@keyframes threadDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.playlab-bridge-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.playlab-bridge-node {
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.playlab-bridge-node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.playlab-bridge-target-pill {
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--atlas-brass-ink);
+  background: var(--atlas-brass);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.playlab-bridge-arrow {
+  color: var(--atlas-brass);
+}
+
+.playlab-bridge-node-desc {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--atlas-ink);
+}
+
+.playlab-bridge-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.playlab-btn {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-family: Karla, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+
+.playlab-btn-primary {
+  background: var(--atlas-brass);
+  color: var(--atlas-brass-ink);
+}
+
+.playlab-btn-primary:hover {
+  filter: brightness(1.1);
+}
+
+/* Flow B: Shelf */
+.playlab-shelf-section {
+  margin-bottom: 2rem;
+}
+
+.playlab-shelf-header {
+  margin-bottom: 1.25rem;
+}
+
+.playlab-shelf-header h2 {
+  font-family: Fraunces, serif;
+  font-size: 1.5rem;
+  margin: 0.25rem 0 0.25rem 0;
+}
+
+.playlab-shelf-header p {
+  color: var(--atlas-muted);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.playlab-subject-cards-shelf {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.playlab-subject-card {
+  min-height: 130px;
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 10px;
+  padding: 1.25rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-soft-land);
+}
+
+.playlab-subject-card:hover {
+  border-color: var(--atlas-brass);
+  transform: translateY(-2px);
+}
+
+.playlab-subject-card.selected {
+  border-color: var(--atlas-brass);
+  background: linear-gradient(180deg, rgba(232, 182, 76, 0.15) 0%, rgba(16, 34, 42, 0.8) 100%);
+  box-shadow: 0 0 0 1px var(--atlas-brass);
+}
+
+.playlab-subject-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.playlab-subject-title {
+  font-family: Fraunces, serif;
+  font-size: 1.15rem;
+  margin: 0 0 0.25rem 0;
+  color: var(--atlas-ink);
+}
+
+.playlab-subject-tagline {
+  font-size: 0.75rem;
+  color: var(--atlas-muted);
+  line-height: 1.35;
+  margin: 0 0 0.75rem 0;
+}
+
+.playlab-subject-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  font-family: "Space Mono", monospace;
+  border-top: 1px solid rgba(232, 182, 76, 0.1);
+  padding-top: 0.4rem;
+}
+
+.playlab-stars-count {
+  color: var(--atlas-brass);
+}
+
+.playlab-total-units {
+  color: var(--atlas-faint);
+}
+
+/* Atlas Visual Stage: Constellation & Globe */
+.playlab-atlas-visual-stage {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 900px) {
+  .playlab-atlas-visual-stage {
+    grid-template-columns: 1fr;
+  }
+}
+
+.playlab-constellation-box,
+.playlab-globe-box {
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.playlab-visual-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.playlab-visual-box-header h3 {
+  font-family: Fraunces, serif;
+  font-size: 1.2rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.playlab-visual-hint {
+  font-size: 0.75rem;
+  color: var(--atlas-muted);
+}
+
+.playlab-tier-badge,
+.playlab-pin-count {
+  font-family: "Space Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--atlas-brass);
+  background: rgba(232, 182, 76, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.playlab-three-mount {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #0e1c22 0%, #070e12 100%);
+}
+
+.playlab-three-mount.constellation-canvas {
+  height: 380px;
+}
+
+.playlab-three-mount.globe-canvas {
+  height: 280px;
+}
+
+.playlab-lite-constellation,
+.playlab-lite-globe {
+  height: 280px;
+  background: rgba(7, 14, 18, 0.5);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playlab-lite-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.playlab-star-accessibility-list {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(232, 182, 76, 0.1);
+}
+
+.playlab-quick-label {
+  font-size: 0.75rem;
+  color: var(--atlas-faint);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.playlab-quick-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.playlab-chip-btn {
+  min-height: 44px;
+  font-family: "Space Mono", monospace;
+  font-size: 0.75rem;
+  background: rgba(232, 182, 76, 0.08);
+  border: 1px solid var(--atlas-card-line);
+  color: var(--atlas-ink);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.playlab-chip-btn:hover {
+  border-color: var(--atlas-brass);
+  color: var(--atlas-brass);
+}
+
+.playlab-chip-btn.interactive {
+  border-color: var(--atlas-brass);
+  color: var(--atlas-brass);
+  font-weight: 700;
+}
+
+.playlab-globe-pins-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.playlab-pin-row {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(7, 14, 18, 0.5);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  color: var(--atlas-ink);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.playlab-pin-row:hover {
+  border-color: var(--atlas-brass);
+}
+
+.playlab-pin-row.highlight {
+  border-color: rgba(232, 182, 76, 0.6);
+  background: rgba(232, 182, 76, 0.08);
+}
+
+.playlab-pin-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.playlab-pin-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.playlab-pin-sub {
+  font-size: 0.7rem;
+  color: var(--atlas-muted);
+}
+
+.playlab-pin-badge {
+  font-family: "Space Mono", monospace;
+  font-size: 0.65rem;
+  background: var(--atlas-brass);
+  color: var(--atlas-brass-ink);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* Modal Backdrop */
+.playlab-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 14, 18, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.playlab-modal-content {
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Journal film slot. CardFilm owns the still when motion is reduced. */
+.hv5-card-film.playlab-film-frame {
+  position: relative;
+  display: block;
+  width: min(100%, 36rem);
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #14222a;
+}
+
+.hv5-card-film.playlab-film-frame > img,
+.hv5-card-film.playlab-film-frame > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.playlab-film-caption {
+  margin: 0.75rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.playlab-film-audio {
+  display: block;
+  width: min(100%, 36rem);
+  margin-top: 0.75rem;
+}
+
