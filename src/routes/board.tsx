@@ -13,7 +13,10 @@ import {
   groupByStatus,
   headerMetrics,
   nextToCrack,
+  newlyClosedIds,
+  readSeenClosed,
   STATUS_LABEL,
+  writeSeenClosed,
   type LiveSource,
   type LiveStory,
   type SnapshotData,
@@ -81,6 +84,7 @@ function BoardPage() {
   const [query, setQuery] = useState("");
   const [blockedOnly, setBlockedOnly] = useState(false);
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
+  const [celebration, setCelebration] = useState<LiveStory | null>(null);
   const openerRef = useRef<HTMLElement | null>(null);
 
   const handleSelect = useCallback((story: LiveStory, opener?: HTMLElement) => {
@@ -105,7 +109,23 @@ function BoardPage() {
         if (!active) return;
         setLiveSource(result.source);
         setFetchedAt(result.fetchedAt);
-        if (result.prs.length > 0) setStories(applyLiveData(snapshot.stories, result.prs));
+        if (result.prs.length > 0) {
+          const nextStories = applyLiveData(snapshot.stories, result.prs);
+          // Celebration (step 12): only on a real live load. Read the
+          // baseline, celebrate at most the first newly closed case,
+          // and always refresh the baseline to the current closed ids
+          // (a null baseline is a first visit — set it silently).
+          const baseline = readSeenClosed();
+          const newly = newlyClosedIds(baseline, nextStories);
+          writeSeenClosed(
+            nextStories.filter((s) => s.status === "done").map((s) => s.id),
+          );
+          if (baseline !== null && newly && newly.length > 0) {
+            const first = nextStories.find((s) => s.id === newly[0]);
+            if (first) setCelebration(first);
+          }
+          setStories(nextStories);
+        }
       })
       .catch(() => {
         // fetchLivePrs never throws by design; this is a last-resort
@@ -217,6 +237,18 @@ function BoardPage() {
           </section>
         </header>
 
+        {celebration ? (
+          <div className="board-toast" role="status" data-testid="board-celebration">
+            <p className="board-toast-text">
+              Case closed: {celebration.title}{" "}
+              <span className="board-plain">(a case was finished since your last visit)</span>
+            </p>
+            <button type="button" className="board-toast-close" onClick={() => setCelebration(null)}>
+              Close
+            </button>
+          </div>
+        ) : null}
+
         <section className="board-section" aria-labelledby="board-next-heading">
           <h2 id="board-next-heading">Next 3 moves</h2>
           <ol className="board-next">
@@ -277,6 +309,7 @@ function BoardPage() {
                         <StoryCard
                           story={story}
                           caseNo={caseNumber(story, stories)}
+                          celebrated={celebration?.id === story.id}
                           onSelect={handleSelect}
                         />
                       </li>
@@ -362,6 +395,7 @@ function BoardPage() {
                           <StoryCard
                             story={story}
                             caseNo={caseNumber(story, stories)}
+                            celebrated={celebration?.id === story.id}
                             onSelect={handleSelect}
                           />
                         </li>

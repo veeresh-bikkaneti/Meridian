@@ -22,13 +22,17 @@ import {
   leadCounts,
   mapWorkToStories,
   nextToCrack,
+  newlyClosedIds,
   parseGithubIssues,
   parseGithubPrs,
   readCache,
+  readSeenClosed,
+  SEEN_CLOSED_KEY,
   statusWhy,
   storyMapLayouts,
   storyMatchesQuery,
   writeCache,
+  writeSeenClosed,
   type GithubPr,
   type KeyValueStorage,
   type SnapshotData,
@@ -353,6 +357,64 @@ describe("expedition progress + next to crack", () => {
       { id: "math/c", lane: "Math", title: "C", status: "done", waitsOnIds: [] },
     ]);
     assert.equal(nextToCrack(stories), null);
+  });
+});
+
+describe("seen-closed celebration baseline", () => {
+  const live = (partials: Partial<SnapshotStory>[]) => applyLiveData(partials.map((p) => story(p)), []);
+
+  it("no baseline returns null from newlyClosedIds", () => {
+    const current = live([{ id: "math/a", lane: "Math", title: "A", status: "done" }]);
+    assert.equal(newlyClosedIds(null, current), null);
+  });
+
+  it("baseline plus one newly done returns that id", () => {
+    const current = live([
+      { id: "math/a", lane: "Math", title: "A", status: "done" },
+      { id: "math/b", lane: "Math", title: "B", status: "done" },
+      { id: "math/c", lane: "Math", title: "C", status: "in-progress" },
+    ]);
+    assert.deepEqual(newlyClosedIds(["math/a"], current), ["math/b"]);
+  });
+
+  it("baseline plus none newly done returns []", () => {
+    const current = live([
+      { id: "math/a", lane: "Math", title: "A", status: "done" },
+      { id: "math/c", lane: "Math", title: "C", status: "in-progress" },
+    ]);
+    assert.deepEqual(newlyClosedIds(["math/a"], current), []);
+  });
+
+  it("a story that was done but is no longer in current is ignored", () => {
+    const current = live([{ id: "math/a", lane: "Math", title: "A", status: "done" }]);
+    assert.deepEqual(newlyClosedIds(["math/a", "math/removed"], current), []);
+  });
+
+  it("unparseable storage reads as null baseline", () => {
+    const storage = memoryStorage();
+    storage.setItem(SEEN_CLOSED_KEY, "{not json");
+    assert.equal(readSeenClosed(storage), null);
+    storage.setItem(SEEN_CLOSED_KEY, JSON.stringify({ ids: ["math/a"] }));
+    assert.equal(readSeenClosed(storage), null);
+    storage.setItem(SEEN_CLOSED_KEY, JSON.stringify(["math/a", 42]));
+    assert.equal(readSeenClosed(storage), null);
+    assert.equal(readSeenClosed(memoryStorage()), null);
+  });
+
+  it("writeSeenClosed/readSeenClosed round-trips, and a throwing storage never throws", () => {
+    const storage = memoryStorage();
+    writeSeenClosed(["math/a", "math/b"], storage);
+    assert.deepEqual(readSeenClosed(storage), ["math/a", "math/b"]);
+    const broken: KeyValueStorage = {
+      getItem: () => {
+        throw new Error("denied");
+      },
+      setItem: () => {
+        throw new Error("denied");
+      },
+    };
+    assert.equal(readSeenClosed(broken), null);
+    writeSeenClosed(["math/a"], broken); // must not throw
   });
 });
 

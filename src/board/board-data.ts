@@ -181,6 +181,56 @@ export function writeCache(cache: BoardCache, storage?: KeyValueStorage | null):
   }
 }
 
+// --- Seen-closed baseline (celebration, step 12) ---------------------------
+
+export const SEEN_CLOSED_KEY = "meridian-board-seen-closed:v1";
+
+/**
+ * Ids of cases already seen closed on a previous visit, or null when
+ * there is no usable baseline (absent, unparseable, not an array of
+ * strings, or no storage). Null means "first visit": set a baseline
+ * silently, never celebrate.
+ */
+export function readSeenClosed(storage?: KeyValueStorage | null): string[] | null {
+  const store = safeStorage(storage);
+  if (!store) return null;
+  try {
+    const raw = store.getItem(SEEN_CLOSED_KEY);
+    if (!raw) return null;
+    const parsed: unknown = JSON.parse(raw);
+    if (!Array.isArray(parsed) || !parsed.every((v) => typeof v === "string")) return null;
+    return parsed as string[];
+  } catch {
+    return null;
+  }
+}
+
+export function writeSeenClosed(ids: readonly string[], storage?: KeyValueStorage | null): void {
+  const store = safeStorage(storage);
+  if (!store) return;
+  try {
+    store.setItem(SEEN_CLOSED_KEY, JSON.stringify([...ids]));
+  } catch {
+    // Quota / private mode: best-effort, never fatal.
+  }
+}
+
+/**
+ * Cases closed now that were not in the previous baseline, in current
+ * (snapshot) order. Returns null when previous is null (no baseline —
+ * the caller sets one silently and does not celebrate). A story that
+ * was done before but is absent from `current` is ignored: only
+ * stories present now can be newly closed.
+ */
+export function newlyClosedIds(
+  previous: readonly string[] | null,
+  current: readonly LiveStory[],
+): string[] | null {
+  if (previous === null) return null;
+  const seen = new Set(previous);
+  return current.filter((s) => s.status === "done" && !seen.has(s.id)).map((s) => s.id);
+}
+
 // --- Live fetch --------------------------------------------------------------
 
 export type LiveSource = "live" | "cache" | "snapshot";

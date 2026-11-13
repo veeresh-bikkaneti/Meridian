@@ -220,6 +220,12 @@
   .board-case-stamp {
     animation: none;
   }
+  .board-card-celebrated .board-case-stamp {
+    animation: none;
+  }
+  .board-toast {
+    animation: none;
+  }
 }
 
 .board-card-top {
@@ -920,8 +926,63 @@
   outline-offset: 2px;
 }
 
+/* Celebration (step 12): the celebrated card's stamp replays once;
+ * the toast is silent and, under reduced motion, fully static. */
+.board-card-celebrated .board-case-stamp {
+  animation: atlas-stamp-in 0.4s cubic-bezier(0.2, 1.4, 0.4, 1) backwards;
+}
+
+.board-toast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+}
+
+.board-toast-text {
+  margin: 0;
+  font-weight: 600;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.board-toast-close {
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--atlas-card-line);
+  background: var(--surface);
+  color: var(--fg);
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.board-toast-close:focus-visible {
+  outline: 3px solid var(--atlas-brass);
+  outline-offset: 2px;
+}
+
+@keyframes board-toast-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .board-bar i {
     transition: width 0.4s var(--ease-soft-land);
+  }
+  .board-toast {
+    animation: board-toast-in 0.3s var(--ease-soft-land);
   }
 }

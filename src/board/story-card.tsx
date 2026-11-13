@@ -17,16 +17,24 @@ import {
 export function StoryCard({
   story,
   caseNo,
+  celebrated,
   onSelect,
 }: {
   story: LiveStory;
   /** 1-based position within the story's lane (see caseNumber in board-data). */
   caseNo?: number;
+  /** True only for the one case celebrated on this visit (step 12). */
+  celebrated?: boolean;
   onSelect?: (story: LiveStory, opener: HTMLElement) => void;
 }) {
   const leads = leadCounts(story);
   return (
-    <article className="board-card" data-testid="story-card" data-status={story.status}>
+    <article
+      className={celebrated ? "board-card board-card-celebrated" : "board-card"}
+      data-testid="story-card"
+      data-status={story.status}
+      {...(celebrated ? { "data-celebrated": "true" } : {})}
+    >
       <div className="board-card-top">
         {caseNo != null ? <span className="board-case-no">Case {caseNo}</span> : null}
         <span className="board-region-badge">{story.lane}</span>
