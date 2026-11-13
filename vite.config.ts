@@ -121,6 +121,52 @@ function omitCanonicalGlobeChunkPlugin(): Plugin {
   };
 }
 
+/**
+ * Keep the GeoNames place data out of the SERVER (ssr) bundle.
+ *
+ * `src/game/generated-places.ts` loads region chunks, globe tiers and fact
+ * indexes with dynamic `import()`s — a client-side, after-region-selection
+ * concern; the server never deals a pool (see that file's header: chunks
+ * are fetched the first time a player picks a region). The bundler still
+ * emits one lazy module per data file into the ssr output (~37 MB of the
+ * ~46 MB Worker script), and `wrangler deploy` uploads every emitted
+ * module. On 2026-11-13 Cloudflare's startup validation began rejecting
+ * the script with "Script startup exceeded memory limits" (code 10021):
+ * a byte-identical re-upload of the then-deployed version (built from
+ * 901a3e1, uploaded fine on 2026-11-12) fails the same check, and the
+ * cf930de9 build passes it once these data modules are removed — the data
+ * is what pushes startup over the limit. Stubbing the data modules in
+ * the ssr environment only (the manifest stays — picker counts are read
+ * server-side) mirrors `omitCanonicalGlobeChunkPlugin` above: if a server
+ * path ever did call a chunk loader, the empty stub fails the loader's
+ * meta check (fail closed) instead of dealing a partial pool. The client
+ * bundle is untouched and keeps loading the real chunks as static assets.
+ */
+function ssrGeonamesDataStubPlugin(): Plugin {
+  const STUB_ID = "\0meridian:ssr-geonames-data-stub";
+  return {
+    name: "meridian:ssr-geonames-data-stub",
+    apply: "build",
+    enforce: "pre",
+    resolveId(source) {
+      const environment = (this as { environment?: { name?: string } }).environment?.name;
+      if (environment !== "ssr") return null;
+      // Match on the specifier itself, not a resolve round-trip: the only
+      // import sites are the three dynamic-import globs in
+      // src/game/generated-places.ts (chunks/, tiers/, facts/), and a
+      // round-trip through the neighbouring omit plugin's own resolveId
+      // left chunks/globe.json unstubbed in this environment.
+      const spec = source.replace(/\\/g, "/");
+      if (!spec.endsWith(".json") || !spec.includes("data/geonames/")) return null;
+      if (spec.endsWith("data/geonames/manifest.json")) return null;
+      return STUB_ID;
+    },
+    load(id) {
+      return id === STUB_ID ? "export default {};" : null;
+    },
+  };
+}
+
 function pgliteBootstrapPlugin(): Plugin {
   return {
     name: "app-builder:pglite-bootstrap",
@@ -251,5 +297,6 @@ export default defineConfig(({ command, isPreview }) => ({
     viteReact(),
     maplibreWorkerPlugin(),
     omitCanonicalGlobeChunkPlugin(),
+    ssrGeonamesDataStubPlugin(),
   ],
 }));
