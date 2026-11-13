@@ -1,8 +1,10 @@
 import { useEffect, useRef } from "react";
 import {
   buildDependencyEdges,
+  caseNumber,
   dependencyDepths,
   donePathMatch,
+  GAME_STATUS_LABEL,
   PR_URL_BASE,
   STATUS_LABEL,
   statusWhy,
@@ -49,9 +51,14 @@ export function StoryInspector({
   const waiting = edges.filter((e) => e.from === index).map((e) => stories[e.to]);
   const depth = index >= 0 ? (dependencyDepths(stories, edges)[index] ?? 0) : 0;
   const donePathLabel = donePathMatch(story, donePath);
+  const caseNo = caseNumber(story, stories);
 
   return (
-    <aside className="board-inspector" aria-label="Story inspector">
+    <aside className="board-inspector" aria-label="Case dossier">
+      <div className="board-inspector-eyebrow">
+        <span>Case file · {story.lane}</span>
+        {caseNo > 0 ? <span className="board-case-no">Case {caseNo}</span> : null}
+      </div>
       <div className="board-inspector-top">
         <h3 ref={headingRef} tabIndex={-1}>
           {story.title}
@@ -61,20 +68,52 @@ export function StoryInspector({
         </button>
       </div>
       <p className="board-inspector-row">
-        <span className={`board-pill board-pill-${story.status}`}>{STATUS_LABEL[story.status]}</span>
-        <span>{story.lane}</span>
+        <span className={`board-pill board-pill-${story.status}`}>
+          {GAME_STATUS_LABEL[story.status]}{" "}
+          <span className="board-plain">({STATUS_LABEL[story.status].toLowerCase()})</span>
+        </span>
+        {story.status === "done" ? (
+          <span className="board-case-stamp" aria-hidden="true">
+            Case closed
+          </span>
+        ) : null}
       </p>
       <p>
         <strong>Why this status:</strong> {statusWhy(story)}
       </p>
-      <p>
-        <strong>Owner:</strong> {story.owner ?? "Unassigned"}
-      </p>
-      <p>
-        <strong>Waits on:</strong> {story.waitsOn}
-      </p>
       <div>
-        <h4>Prerequisite stories</h4>
+        <h4>Leads</h4>
+        {story.prs.length === 0 ? (
+          <p className="board-muted">No linked PRs.</p>
+        ) : (
+          <ul className="board-prs">
+            {story.prs.map((n) => {
+              const state = story.prStates[n];
+              return (
+                <li key={n}>
+                  <span>{state === "merged" ? "Lead solved" : "Lead"}</span>{" "}
+                  <a href={`${PR_URL_BASE}${n}`} target="_blank" rel="noopener noreferrer">
+                    PR {n}
+                  </a>
+                  {state ? (
+                    <span className="board-pr-title">
+                      {state === "closed" ? "closed without merging" : state}
+                      {story.prTitles[n] ? <> — {story.prTitles[n]}</> : null}
+                    </span>
+                  ) : (
+                    <span className="board-pr-title">state not loaded</span>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
+      <div>
+        <h4>Clues needed</h4>
+        <p>
+          <strong>Waits on:</strong> {story.waitsOn}
+        </p>
         {prerequisites.length === 0 ? (
           <p className="board-muted">No prerequisite stories in the snapshot.</p>
         ) : (
@@ -90,7 +129,7 @@ export function StoryInspector({
         )}
       </div>
       <div>
-        <h4>What waits on this story</h4>
+        <h4>Cases this unlocks</h4>
         {waiting.length === 0 ? (
           <p className="board-muted">No story waits on this one.</p>
         ) : (
@@ -105,38 +144,17 @@ export function StoryInspector({
           </ul>
         )}
       </div>
-      <div>
-        <h4>Linked PRs</h4>
-        {story.prs.length === 0 ? (
-          <p className="board-muted">No linked PRs.</p>
-        ) : (
-          <ul className="board-prs">
-            {story.prs.map((n) => (
-              <li key={n}>
-                <a href={`${PR_URL_BASE}${n}`} target="_blank" rel="noopener noreferrer">
-                  PR {n}
-                </a>
-                {story.prStates[n] ? (
-                  <span className="board-pr-title">
-                    {story.prStates[n]}
-                    {story.prTitles[n] ? <> — {story.prTitles[n]}</> : null}
-                  </span>
-                ) : (
-                  <span className="board-pr-title">state not loaded</span>
-                )}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <p>
-        <strong>Dependency chain depth:</strong> {depth}
-      </p>
       {donePathLabel ? (
         <p>
-          <strong>Done path:</strong> {donePathLabel}
+          <strong>Trail to release:</strong> {donePathLabel}
         </p>
       ) : null}
+      <p>
+        <strong>Owner:</strong> {story.owner ?? "Unassigned"}
+      </p>
+      <p>
+        <strong>Clue chain depth:</strong> {depth}
+      </p>
     </aside>
   );
 }

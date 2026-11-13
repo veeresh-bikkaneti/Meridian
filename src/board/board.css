@@ -278,11 +278,31 @@
   background: var(--surface);
   color: var(--fg);
   border: 1px solid var(--line);
+  border-top: 3px solid var(--atlas-card-line);
   border-radius: var(--radius-lg);
   padding: 14px;
   display: grid;
   gap: 10px;
   min-width: 0;
+}
+
+/* Case dossier eyebrow: mono, muted, uppercase — case number keeps
+ * the card's plain "Case {n}" casing (see .board-case-no). */
+.board-inspector-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  align-items: baseline;
+  font-family: var(--font-atlas-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.board-inspector-eyebrow .board-case-no {
+  text-transform: none;
+  margin-left: auto;
 }
 
 .board-inspector p {
