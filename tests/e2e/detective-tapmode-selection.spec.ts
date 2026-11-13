@@ -345,7 +345,7 @@ test("tap mode, 7-10: past the clue watchdog after a wrong first guess, no extra
 test("tap mode: tap Watson, then pick a place while he is still reading — never two voices at once", async ({
   page,
   context,
-}) => {
+}, testInfo) => {
   await seedOwnerPref(context);
   await fulfillFlagsFlank(context);
   // Real-time playback (rate 1) so Watson is still reading at the pick.
@@ -353,19 +353,34 @@ test("tap mode: tap Watson, then pick a place while he is still reading — neve
   await context.addInitScript(() => {
     const w = window as unknown as {
       __voiceMax: number;
+      __voiceOverlap: Array<{ started: string; others: string[] }>;
       __watsonCutAtPick?: boolean;
       __detectiveAudios?: HTMLMediaElement[];
     };
     w.__voiceMax = 0;
+    w.__voiceOverlap = [];
     // At every speech start, count the OTHER clips still sounding.
     document.addEventListener(
       "play",
       (e) => {
-        const started = e.target as HTMLMediaElement;
+        const startedEl = e.target as HTMLMediaElement;
+        const started = startedEl.currentSrc || startedEl.src || "";
         const others = (w.__detectiveAudios ?? []).filter(
-          (a) => a !== started && !a.paused && !a.ended,
+          (a) => a !== startedEl && !a.paused && !a.ended,
         );
-        w.__voiceMax = Math.max(w.__voiceMax, others.length + 1);
+        w.__voiceOverlap.push({
+          started,
+          others: others.map((a) => a.currentSrc || a.src || ""),
+        });
+        // Voice clips live under case-*/ and names/. Home-screen
+        // films and sfx can overlap; they must not count as voices.
+        const isVoice = (src: string) =>
+          /\/names\//.test(src) || /\/case-\d+\//.test(src);
+        const voiceOthers = others.filter((a) =>
+          isVoice(a.currentSrc || a.src || ""),
+        );
+        const voiceCount = (isVoice(started) ? 1 : 0) + voiceOthers.length;
+        w.__voiceMax = Math.max(w.__voiceMax, voiceCount);
       },
       true,
     );
@@ -391,7 +406,18 @@ test("tap mode: tap Watson, then pick a place while he is still reading — neve
     );
   });
   expect(watsonSounding).toBe(false);
-  expect(
-    await page.evaluate(() => (window as unknown as { __voiceMax: number }).__voiceMax),
-  ).toBeLessThanOrEqual(1);
+  const voice = await page.evaluate(() => {
+    const w = window as unknown as {
+      __voiceMax: number;
+      __voiceOverlap: Array<{ started: string; others: string[] }>;
+    };
+    return { voiceMax: w.__voiceMax, overlap: w.__voiceOverlap ?? [] };
+  });
+  const overlapJson = JSON.stringify(voice.overlap, null, 2);
+  console.log("voice overlap", overlapJson);
+  await testInfo.attach("voice-overlap", {
+    body: overlapJson,
+    contentType: "application/json",
+  });
+  expect(voice.voiceMax, `overlaps: ${overlapJson}`).toBeLessThanOrEqual(1);
 });
