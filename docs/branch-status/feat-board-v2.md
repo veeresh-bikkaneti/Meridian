@@ -109,8 +109,43 @@ Base: origin/main `44d921d7377c8f907fd7211ebff1a9131ba4a603`
   - NOT done (future cleanup, noted only): inspector/map selection
     still keys on `${lane}:${title}`; no refactor to ids this step.
 
+- Step 5 — responsive rules (CSS only, `src/board/board.css`):
+  - Inspector: `.board-scrum-layout` is explicitly single-column
+    (`minmax(0, 1fr)`) below 1180px — inspector stacks under the scrum
+    board at full width; the existing ≥1180px rule (board + 320px
+    sticky inspector) is kept and now documented as the counterpart.
+  - Scrum columns below 900px form one horizontal scroll container:
+    `grid-auto-flow: column; grid-auto-columns: 272px; overflow-x:
+    auto; scroll-snap-type: x proximity` (+ `scroll-snap-align: start`
+    on columns), capped by `min-width: 0; max-width: 100%` so the
+    scroll stays inside the container and the PAGE gains no
+    horizontal scrollbar. At ≥900px the container reverts to the
+    3-column grid with no scrolling. The lane list is not in this
+    container, so the existing 390px e2e ("list view renders all 8
+    lanes, no sideways scroll", which asserts
+    `documentElement.scrollWidth - clientWidth <= 0`) still holds by
+    construction — that assertion measures the document, not the
+    scrum container's own scroll width.
+  - Compact lane rail at ≤899px: lane gap 16→10px, lane padding
+    14→10px 12px, lane gap 10→8px, header becomes a wrapping flex row
+    (name + note/counts on one line when they fit), lane note clamped
+    to 2 lines (`-webkit-line-clamp: 2`), in-lane card gap 10→6px and
+    card padding-top 10→6px / gap 4→2px. No text colour, card text,
+    or touch target changes.
+  - Tap-target audit: toggle buttons, card title button, "Blocked
+    only", search input, dep-row buttons, inspector close and
+    inspector story buttons, form fields/submit all already ≥44px
+    (verified rule by rule in board.css) — no change needed. PR links
+    and the in-sentence "/board/issues" link are inline text links
+    and are deliberately NOT inflated.
+  - Guards: `.board-tile` and `.board-dep-row` gained `min-width: 0`
+    so tiles and dep rows wrap instead of overflowing at 390px.
+  - Tests: `node --test src/board/board-data.test.ts` — 47 pass,
+    0 fail (unchanged). `npx tsc --noEmit` — clean. Real 390px render
+    check is the coordinator's verification pass (not run here).
+
 ## Next step
-- Step 5 — coordinator to specify.
+- Step 6 — card hover/focus lift with perspective (same branch).
 
 ## Open questions
 - None for steps 1–4.
