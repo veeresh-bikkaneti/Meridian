@@ -1,6 +1,6 @@
 # BRANCH_STATUS — feat/journal-people-places-clips
 
-Narration for the kept people-places clips. Rebuilt from origin/main `07caf92d`.
+Narration for the kept people-places clips. Rebuilt from origin/main `160e987d`.
 
 **Status: NARRATION IN. STILLS MISSING. VIDEO LATER. DO NOT MERGE.**
 
