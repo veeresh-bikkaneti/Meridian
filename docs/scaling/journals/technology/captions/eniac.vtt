@@ -1,6 +1,6 @@
 WEBVTT
 
-NOTE Cue times match the committed Kokoro narration. The words are the screened caption.
+NOTE Cue times match the committed Kokoro narration. Owner, 2026-11-13: the last cue says "stood in a big room". transcripts.md stays the screened source.
 
 1
 00:00:00.000 --> 00:00:02.283
@@ -11,5 +11,5 @@ Hey kids, have you heard about this place?
 Philadelphia, 1946.
 
 3
-00:00:05.331 --> 00:00:08.445
-ENIAC, an early computer, filled a big room.
+00:00:05.331 --> 00:00:08.424
+ENIAC, an early computer, stood in a big room.

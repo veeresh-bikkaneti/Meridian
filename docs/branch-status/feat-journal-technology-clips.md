@@ -10,9 +10,10 @@ The voice is local Kokoro `am_michael`. It is not the voice on the live journal 
 
 - [x] Branch rebuilt from origin/main. No `src/play-lab/`. No `mockup/scale-play`.
 - [x] Kept clips only. Cut clips were not rendered.
-- [x] Captions retimed to the speech. The words are the screened caption, character for character.
+- [x] Captions retimed to the speech. first-phone and mobile-phone stay the screened caption, character for character. ENIAC's last cue is the owner line below.
 - [x] Narration committed under `public/audio/journals/technology/`.
 - [x] One voice for every journal in this fix pass: Kokoro `am_michael`.
+- [x] Owner, 2026-11-13: the ENIAC spoken line is now "stood in a big room", same word count. `eniac.m4a` was re-rendered. `first-phone` and `mobile-phone` audio were left as they were. `transcripts.md` was not edited.
 
 Voice check on "Hey kids, have you heard about this place?" at speed 1.0:
 
@@ -24,7 +25,7 @@ Voice check on "Hey kids, have you heard about this place?" at speed 1.0:
 
 Loudness, measured on the committed m4a with ffmpeg ebur128:
 
-- `eniac`: -18.8 LUFS, true peak -2.8 dBFS, 8.445 s
+- `eniac`: -18.5 LUFS, true peak -1.8 dBFS, cue end 8.424 s (re-rendered 2026-11-13)
 - `first-phone`: -18.8 LUFS, true peak -2.9 dBFS, 7.549 s
 - `mobile-phone`: -18.7 LUFS, true peak -2.0 dBFS, 7.229 s
 
@@ -59,27 +60,31 @@ These clips are not in `public/videos/journal-manifest.json`, so the live player
 
 ## Next
 
-- Veeresh listens to each m4a above.
-- Stills still need a local open-weight model. Do not ship a flat wash.
-- Video follows after a real still exists.
+- Stills and film are still waiting on the FLUX worker. Do not ship a flat wash.
+- Veeresh listens to the new `eniac.m4a`.
 - Do not merge. Do not upload.
+
+## Open questions
+
+- The changed cue is 9 words, under the cap of 18. The full narration is 19 spoken words, so `check-clips.mjs` fails. The owner called "stood in a big room" the same word count. Leave the extra word, or change the phrase?
+- `git rebase origin/main` was denied by the agent permission rule, so this branch was not rebased onto `eb7f91a3` (chemistry live). That commit does not touch these files.
 
 ## Ruled out
 
 - Play Lab and the mockup/scale-play tree.
 - `bm_george` and `am_fenrir` for these journals.
-- Detective clips `beat-me`, `win-together`, and `truce-watson` (they need the hatch TTS, which is not on this machine).
+- Magnus hatch TTS is not on this machine, so the voice stays Kokoro `am_michael`. Detective clips `beat-me`, `win-together`, and `truce-watson` stay out for the same reason.
 
 ## Council
 
 Round 1, 2026-11-13. No second round.
 
 - Child-safety: MUST-FIX, not applied. The first-phone and eniac opening questions are the grade-4 items sources.md already assigns (4.NBT.B.4 and 4.MD.A.3). The spoken captions do not ask that arithmetic.
-- History: MUST-FIX, not applied. The spoken line is "ENIAC, an early computer, filled a big room." That is the screened narration in transcripts.md. sources.md T3-3 says the panels did not cover the whole basement floor. The suggested "was kept in a big room" adds a word and would fail the 18-word cap in check-clips.mjs. Left for Veeresh.
+- History: owner call, 2026-11-13. Spoken line is now "stood in a big room", same word count. The changed cue, "ENIAC, an early computer, stood in a big room.", is 9 words. The cap is 18. Measured again: "stood in a big room" is 5 words and "filled a big room" was 4, so the full narration is 19 spoken words, one over check-clips.mjs. transcripts.md stays the screened source.
 - Accessibility: PASS. No persona file exists for this seat. Cue words match the narration, and there is no video, so nothing flashes.
 - QA: MUST-FIX. No still is in this pull request. A local open-weight image model did not run.
 
-The missing still cannot be fixed on this machine. Spoken words were left as the screened caption.
+The missing still cannot be fixed on this machine. The owner changed only the ENIAC spoken line on 2026-11-13. transcripts.md is still the screened source.
 
 ## Graph
 
