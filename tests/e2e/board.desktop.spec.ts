@@ -495,18 +495,26 @@ test("board v2 game layer: next to crack is the open case that unblocks the most
   await openBoard(page);
 
   const stories = snapshotStoriesForGame();
+  // Mirror production nextToCrack (board-data.ts) exactly: a candidate
+  // with unblocks === 0 can never win — best stays null unless some
+  // open case unblocks at least one other case. Max wins; ties keep
+  // the first candidate in snapshot order (strict > comparison).
   let best: { story: SnapshotStoryForGame; unblocks: number } | null = null;
   for (const candidate of stories) {
     if (candidate.status === "done") continue;
     const unblocks = stories.filter((s) => (s.waitsOnIds ?? []).includes(candidate.id)).length;
-    if (best === null || unblocks > best.unblocks) best = { story: candidate, unblocks };
+    if (unblocks > 0 && (best === null || unblocks > best.unblocks)) {
+      best = { story: candidate, unblocks };
+    }
   }
-  if (!best) throw new Error("snapshot has no open story to crack next");
-  const winner: { story: SnapshotStoryForGame; unblocks: number } = best;
 
   const chip = page.getByTestId("next-to-crack");
-  await expect(chip).toContainText(winner.story.title);
-  await expect(chip).toContainText(`unblocks ${winner.unblocks}`);
+  if (best === null) {
+    await expect(chip).toHaveCount(0);
+  } else {
+    await expect(chip).toContainText(best.story.title);
+    await expect(chip).toContainText(`unblocks ${best.unblocks}`);
+  }
 });
 
 test("board v2 game layer: reduced motion done card stamp is visible with no animation", async ({
@@ -558,4 +566,120 @@ test("board v2 game layer: clicking a map block opens its inspector", async ({ p
   const aside = page.locator(".board-inspector");
   await expect(aside).toBeVisible();
   await expect(aside).toContainText("Holmes and Watson in math");
+});
+
+// ---------------------------------------------------------------------------
+// Celebration (step 12). Unlike the tests above, these need the live
+// GitHub overlay to LAND: the board's GitHub route is aborted in
+// beforeEach, so each test registers its own pulls route AFTER it
+// (later registration wins in Playwright) fulfilling the pulls URL
+// with merged PRs. Snapshot facts relied on here:
+//  - "Held-finger jitter fix on the clue berth" is in-progress, prs [431]
+//  - "Clue pacing and one voice at a time" is in-progress, prs [430]
+//  - "Shared voice channel (one speaker at a time)" is in-progress, prs [430]
+// A merged 431 closes only the jitter case; merged 431 + 430 closes
+// all three. parseGithubPrs treats a PR as merged when state is
+// "closed" and merged_at is a non-empty string.
+// ---------------------------------------------------------------------------
+
+const SEEN_CLOSED_KEY = "meridian-board-seen-closed:v1";
+const JITTER_TITLE = "Held-finger jitter fix on the clue berth";
+
+/** Like openBoard(), but for a fulfilled pulls route: the live line
+ *  says "Live from GitHub", never "snapshot". */
+async function openBoardLive(page: import("playwright/test").Page) {
+  await page.goto(BOARD_URL);
+  await expect(page.getByTestId("board-page")).toBeVisible();
+  await expect(page.getByTestId("board-live-line")).toContainText("Live");
+}
+
+/** Fulfil the pulls endpoint with the given PR numbers, all merged. */
+async function mockMergedPulls(
+  context: import("playwright/test").BrowserContext,
+  prNumbers: readonly number[],
+) {
+  await context.route(
+    "https://api.github.com/repos/veeresh-bikkaneti/Meridian/pulls*",
+    async (route) => {
+      const body = prNumbers.map((n) => ({
+        number: n,
+        state: "closed",
+        merged_at: "2026-11-13T10:00:00Z",
+        title: `Merged PR ${n}`,
+      }));
+      return route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify(body),
+      });
+    },
+  );
+}
+
+/** Seed the seen-closed baseline (ids of all snapshot-done stories)
+ *  before the app loads, so any further closure is "newly closed". */
+async function seedSeenClosedBaseline(page: import("playwright/test").Page) {
+  const doneIds = snapshotStoriesForGame()
+    .filter((s) => s.status === "done")
+    .map((s) => s.id);
+  await page.addInitScript(
+    ({ key, ids }: { key: string; ids: string[] }) => {
+      localStorage.setItem(key, JSON.stringify(ids));
+    },
+    { key: SEEN_CLOSED_KEY, ids: doneIds },
+  );
+}
+
+test("celebration: a newly closed case toasts once", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await seedSeenClosedBaseline(page);
+  await mockMergedPulls(context, [431]);
+  await openBoardLive(page);
+
+  const toast = page.getByTestId("board-celebration");
+  await expect(toast).toHaveCount(1);
+  await expect(toast).toContainText("Case closed");
+  await expect(toast).toContainText(JITTER_TITLE);
+
+  const jitterCard = page
+    .getByTestId("story-card")
+    .filter({ hasText: JITTER_TITLE })
+    .first();
+  await expect(jitterCard).toHaveAttribute("data-celebrated", "true");
+});
+
+test("celebration: two newly closed cases still toast only once", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await seedSeenClosedBaseline(page);
+  // 431 + 430 merged newly closes THREE cases (jitter, clue pacing,
+  // shared voice channel) — the board celebrates at most one, the
+  // first newly closed in snapshot order: the jitter case.
+  await mockMergedPulls(context, [431, 430]);
+  await openBoardLive(page);
+
+  const toast = page.getByTestId("board-celebration");
+  await expect(toast).toHaveCount(1);
+  await expect(toast).toContainText("Case closed");
+  await expect(toast).toContainText(JITTER_TITLE);
+});
+
+test("celebration: first visit sets the baseline silently", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  // No localStorage seed: with no baseline the app must set one
+  // silently and never celebrate, even though 431 merged closes the
+  // jitter case on this very load.
+  await mockMergedPulls(context, [431]);
+  await openBoardLive(page);
+
+  // The live overlay really landed (the jitter case is now in the
+  // done column), so the absence of a toast is the baseline rule,
+  // not a failed fetch.
+  await expect(
+    page
+      .getByTestId("scrum-column-done")
+      .getByTestId("story-card")
+      .filter({ hasText: JITTER_TITLE }),
+  ).toHaveCount(1);
+  await page.waitForTimeout(500);
+  await expect(page.getByTestId("board-celebration")).toHaveCount(0);
 });
