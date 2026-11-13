@@ -26,3 +26,6 @@ why-learn-shots/
 
 # Generated at build time (prebuild) — never commit
 public/build-meta.json
+
+# People-and-places mp4s stay out of this repo. No local meridian-media checkout.
+docs/scaling/journals/people-places/render-out/
