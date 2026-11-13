@@ -26,3 +26,6 @@ why-learn-shots/
 
 # Generated at build time (prebuild) — never commit
 public/build-meta.json
+
+# Local knowledge graph (graphify). Never commit.
+graphify-out/

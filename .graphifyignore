@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.worktrees/
+.skill-scan/
+.skill-scans/
+public/
+src/assets/
+**/*.mp3
+**/*.mp4
+**/*.webp
+**/*.png
+**/*.jpg
+**/*.glb
+test-results/
+playwright-report/
