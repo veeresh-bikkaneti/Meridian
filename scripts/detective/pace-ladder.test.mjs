@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { strict as assert } from "node:assert";
 import { readFileSync } from "node:fs";
 import { test } from "node:test";
@@ -13,7 +14,7 @@ import {
 } from "./pace-ladder.mjs";
 import { VOICES, casePlan, fixedLine, selectionNamePlan } from "./render-plan.mjs";
 
-const ROOT = new URL("../..", import.meta.url).pathname;
+const ROOT = fileURLToPath(new URL("../..", import.meta.url));
 const clue137 = JSON.parse(readFileSync(`${ROOT}public/loop/clues/137.json`, "utf8"));
 const plan137 = casePlan(clue137, "Henderson, Nevada, United States", 137);
 
