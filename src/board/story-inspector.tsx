@@ -82,7 +82,9 @@ export function StoryInspector({
         <strong>Why this status:</strong> {statusWhy(story)}
       </p>
       <div>
-        <h4>Leads</h4>
+        <h4>
+          Leads <span className="board-plain">(pull requests)</span>
+        </h4>
         {story.prs.length === 0 ? (
           <p className="board-muted">No linked PRs.</p>
         ) : (
@@ -91,7 +93,17 @@ export function StoryInspector({
               const state = story.prStates[n];
               return (
                 <li key={n}>
-                  <span>{state === "merged" ? "Lead solved" : "Lead"}</span>{" "}
+                  <span>
+                    {state === "merged" ? (
+                      <>
+                        Lead solved <span className="board-plain">(merged)</span>
+                      </>
+                    ) : (
+                      <>
+                        Lead <span className="board-plain">(pull request)</span>
+                      </>
+                    )}
+                  </span>{" "}
                   <a href={`${PR_URL_BASE}${n}`} target="_blank" rel="noopener noreferrer">
                     PR {n}
                   </a>
@@ -146,7 +158,8 @@ export function StoryInspector({
       </div>
       {donePathLabel ? (
         <p>
-          <strong>Trail to release:</strong> {donePathLabel}
+          <strong>Trail to release:</strong>{" "}
+          <span className="board-plain">(definition of all done)</span> {donePathLabel}
         </p>
       ) : null}
       <p>

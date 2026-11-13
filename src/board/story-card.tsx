@@ -63,16 +63,20 @@ export function StoryCard({
       </h4>
       <p className="board-card-wait">
         {story.status === "done" ? (
-          story.waitsOn
+          <>
+            <strong>Note:</strong> {story.waitsOn}
+          </>
         ) : (
           <>
-            <strong>Needs a clue from:</strong> {story.waitsOn}
+            <strong>Needs a clue from:</strong> <span className="board-plain">(waits on)</span>{" "}
+            {story.waitsOn}
           </>
         )}
       </p>
       {leads.total > 0 ? (
         <p className="board-card-leads" title="Leads are pull requests; solved means merged">
-          {leads.total} lead{leads.total === 1 ? "" : "s"}, {leads.solved} solved
+          {leads.total} lead{leads.total === 1 ? "" : "s"}, {leads.solved} solved{" "}
+          <span className="board-plain">(pull requests; solved = merged)</span>
         </p>
       ) : null}
       <div className="board-card-meta">
