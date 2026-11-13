@@ -56,3 +56,18 @@ test("a guess never reaches the card it just unlocked, and never goes below 1", 
   assert.equal(guessPresentTarget(1, 2), 1);
   assert.equal(guessPresentTarget(0, 1), 1);
 });
+
+import { readFileSync } from "node:fs";
+
+test("DetectiveHost presents the guess-pin clue through guessPresentTarget", () => {
+  // Source-shape wiring check (same pattern as hint-hydration.test.ts):
+  // the helper is unit-tested above, this fails if the host stops calling it.
+  const host = readFileSync(
+    new URL("./detective/DetectiveHost.tsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(
+    host,
+    /presentClue\(\s*guessPresentTarget\(\s*presentedClue\s*,\s*cluesRevealed\s*\)\s*\)/,
+  );
+});
