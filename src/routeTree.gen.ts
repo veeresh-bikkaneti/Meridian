@@ -14,6 +14,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CreditsRouteImport } from './routes/credits'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
+import { Route as PlayLabRouteImport } from './routes/play-lab'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,11 @@ const ApiContactRoute = ApiContactRouteImport.update({
   path: '/api/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlayLabRoute = PlayLabRouteImport.update({
+  id: '/play-lab',
+  path: '/play-lab',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/credits': typeof CreditsRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
+  '/play-lab': typeof PlayLabRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/credits': typeof CreditsRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
+  '/play-lab': typeof PlayLabRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,13 +70,14 @@ export interface FileRoutesById {
   '/credits': typeof CreditsRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
+  '/play-lab': typeof PlayLabRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/credits' | '/privacy' | '/api/contact'
+  fullPaths: '/' | '/contact' | '/credits' | '/privacy' | '/api/contact' | '/play-lab'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/credits' | '/privacy' | '/api/contact'
-  id: '__root__' | '/' | '/contact' | '/credits' | '/privacy' | '/api/contact'
+  to: '/' | '/contact' | '/credits' | '/privacy' | '/api/contact' | '/play-lab'
+  id: '__root__' | '/' | '/contact' | '/credits' | '/privacy' | '/api/contact' | '/play-lab'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,6 +86,7 @@ export interface RootRouteChildren {
   CreditsRoute: typeof CreditsRoute
   PrivacyRoute: typeof PrivacyRoute
   ApiContactRoute: typeof ApiContactRoute
+  PlayLabRoute: typeof PlayLabRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -116,6 +126,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/play-lab': {
+      id: '/play-lab'
+      path: '/play-lab'
+      fullPath: '/play-lab'
+      preLoaderRoute: typeof PlayLabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -125,6 +142,7 @@ const rootRouteChildren: RootRouteChildren = {
   CreditsRoute: CreditsRoute,
   PrivacyRoute: PrivacyRoute,
   ApiContactRoute: ApiContactRoute,
+  PlayLabRoute: PlayLabRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -26,3 +26,6 @@ why-learn-shots/
 
 # Generated at build time (prebuild) — never commit
 public/build-meta.json
+
+# Journal clip mp4s stay out of this repo. Render locally, do not commit.
+docs/scaling/journals/great-leaders/render-out/

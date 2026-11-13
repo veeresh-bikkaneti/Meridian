@@ -1,0 +1,24 @@
+{
+  "journal": "great-leaders",
+  "cut": ["great-leaders:mlk-memorial"],
+  "clips": {
+    "great-leaders:lincoln-memorial": {
+      "still": "images/journals/great-leaders/lincoln-memorial.webp",
+      "captions": "videos/journals/great-leaders/lincoln-memorial.vtt",
+      "file": "videos/journals/great-leaders/lincoln-memorial.mp4",
+      "narration": null
+    },
+    "great-leaders:jhansi-fort": {
+      "still": "images/journals/great-leaders/jhansi-fort.webp",
+      "captions": "videos/journals/great-leaders/jhansi-fort.vtt",
+      "file": "videos/journals/great-leaders/jhansi-fort.mp4",
+      "narration": null
+    },
+    "great-leaders:netaji-bhawan": {
+      "still": "images/journals/great-leaders/netaji-bhawan.webp",
+      "captions": "videos/journals/great-leaders/netaji-bhawan.vtt",
+      "file": "videos/journals/great-leaders/netaji-bhawan.mp4",
+      "narration": null
+    }
+  }
+}
