@@ -1,5 +1,6 @@
 import { test, expect, type BrowserContext, type Page } from "playwright/test";
 import { serveBuiltArtifact } from "./helpers";
+import { fulfillFlagsOn } from "./detective-u10";
 
 /**
  * Home layout + one Home control (nav-home council, 2026-11-13).
@@ -147,6 +148,108 @@ for (const vp of VIEWPORTS) {
     await page.getByTestId("credits-link").click();
     await expect(page).toHaveURL(/\/credits$/);
     await expectHomeControl(page, `${tag} /credits`, "link");
+    await context.close();
+  });
+}
+
+async function expectHomeFullyInViewport(page: Page, label: string) {
+  const home = page.getByTestId("home-button");
+  await expect(home, `${label}: Home present`).toBeVisible({ timeout: 45_000 });
+  const box = await home.evaluate((el) => {
+    const b = el.getBoundingClientRect();
+    return { top: b.top, left: b.left, bottom: b.bottom, right: b.right, iw: innerWidth, ih: innerHeight };
+  });
+  expect(box.top, `${label}: Home top ${box.top.toFixed(1)} is above the viewport`).toBeGreaterThanOrEqual(0);
+  expect(box.left, `${label}: Home left ${box.left.toFixed(1)} is left of the viewport`).toBeGreaterThanOrEqual(0);
+  expect(box.bottom, `${label}: Home bottom ${box.bottom.toFixed(1)} is below the viewport (${box.ih})`).toBeLessThanOrEqual(box.ih);
+  expect(box.right, `${label}: Home right ${box.right.toFixed(1)} is past the viewport (${box.iw})`).toBeLessThanOrEqual(box.iw);
+}
+
+async function expectClickHomeLandsOnHome(page: Page, label: string) {
+  await page.getByTestId("home-button").click();
+  await expect(page.getByTestId("home-card-why-learn"), `${label}: click Home returns to Home`).toBeVisible({
+    timeout: 15_000,
+  });
+}
+
+/**
+ * Playtest item 2 (PR #459): after a screen opens, Home must be fully
+ * inside the viewport and clickable — Playwright's toBeVisible() does
+ * not require that (the GeoDetective case-open scroll left Home at
+ * y ≈ -551 while still "visible"). Also, after the player scrolls a
+ * subject screen, sticky Home must stay on screen.
+ */
+for (const vp of [
+  { width: 1280, height: 800 },
+  { width: 390, height: 844 },
+]) {
+  test(`Home stays in the viewport on globe, a case, Why Learn and a subject at ${vp.width}`, async ({
+    browser,
+  }) => {
+    const context = await browser.newContext({ viewport: vp, serviceWorkers: "block" });
+    await serveBuiltArtifact(context);
+    await fulfillFlagsOn(context);
+    await context.addInitScript(() => {
+      window.localStorage.setItem(
+        "meridian.ageProfile.v1",
+        JSON.stringify({
+          status: "active",
+          band: "7-10",
+          updatedAt: new Date().toISOString(),
+          changeCount: 0,
+          schemaVersion: 2,
+        }),
+      );
+    });
+    const page = await context.newPage();
+    const tag = `${vp.width}x${vp.height}`;
+
+    await page.goto(APP_URL);
+    await expect(page.getByTestId("home-card-why-learn")).toBeVisible({ timeout: 30_000 });
+
+    await page.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
+    await expect(page.getByTestId("subject-picker")).toBeVisible();
+    await expect(page.getByTestId("subject-row-math")).toBeVisible({ timeout: 30_000 });
+    await expectHomeFullyInViewport(page, `${tag} Why Learn`);
+    await expectClickHomeLandsOnHome(page, `${tag} Why Learn`);
+
+    await page.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }).click();
+    await expect(page.getByTestId("subject-row-math")).toBeVisible({ timeout: 30_000 });
+    await page.getByTestId("subject-row-math").click();
+    await expect(page.getByRole("heading", { name: /Math/ })).toBeVisible({ timeout: 30_000 });
+    await expectHomeFullyInViewport(page, `${tag} subject`);
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    await expectHomeFullyInViewport(page, `${tag} subject scrolled to the bottom`);
+    await expectClickHomeLandsOnHome(page, `${tag} subject`);
+
+    await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
+    await expect(page.getByTestId("end-game-button")).toBeVisible({ timeout: 45_000 });
+    // The case-open reading scroll (DetectiveHost, #358) is what parked
+    // Home above the viewport; wait until the clue is on screen and the
+    // window has stopped moving, then measure.
+    await expect(page.getByRole("article", { name: /^Clue 1:/ })).toBeVisible({ timeout: 45_000 });
+    // Prod has detectivePair on; the case-open reading scroll then
+    // moves the window (scrollY was 583 at 1280 on bb31ef95). Wait
+    // for that move, then for it to settle, before measuring Home.
+    await page.waitForFunction(() => window.scrollY > 100, null, { timeout: 15_000 });
+    await page.waitForFunction(
+      () => {
+        const y = window.scrollY;
+        return new Promise((resolve) => {
+          window.setTimeout(() => resolve(Math.abs(window.scrollY - y) < 1), 500);
+        });
+      },
+      null,
+      { timeout: 15_000 },
+    );
+    await expectHomeFullyInViewport(page, `${tag} GeoDetective case`);
+    await expectClickHomeLandsOnHome(page, `${tag} GeoDetective case`);
+
+    await page.getByRole("button", { name: "Play the globe" }).click();
+    await expect(page.getByTestId("home-button")).toBeVisible({ timeout: 45_000 });
+    await expectHomeFullyInViewport(page, `${tag} globe`);
+    await expectClickHomeLandsOnHome(page, `${tag} globe`);
+
     await context.close();
   });
 }
