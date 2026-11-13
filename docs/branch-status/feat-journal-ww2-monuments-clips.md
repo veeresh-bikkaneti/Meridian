@@ -4,6 +4,8 @@ Two kept World War monument clips show a still and their caption in Play Lab. Th
 
 **Status: STILLS WIRED. NARRATION BLOCKED. VIDEO LOCAL ONLY.**
 
+Stills draft is https://github.com/veeresh-bikkaneti/Meridian/pull/452. Video draft is https://github.com/veeresh-bikkaneti/Meridian/pull/453. The motion script commit is `3fd90ef10a34bb02927e738a8a790b4c61c3d90e`.
+
 ## Base
 
 Branched from `origin/main` at `8eb34cb4305719f88ef8c2568e4dd624cbaf8608`. The dirty `mockup/scale-play` commits are not in this branch. Play Lab files that already existed on that branch were copied so the stamp has a place to leave.
