@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import snapshotJson from "@/board/snapshot.json";
 import {
@@ -179,6 +179,12 @@ function BoardPage() {
 
         <section className="board-section" aria-labelledby="board-map-heading">
           <h2 id="board-map-heading">Feature map</h2>
+          <p className="board-muted">
+            The lines on the 3D map are the dependency waits the snapshot itself records: a story
+            whose “waits on” names a PR is linked to the story that PR belongs to. Drag to look
+            around, drag a block to move it, click a block to highlight its chain.{" "}
+            <Link to="/board/issues">See issues and pull requests grouped by story →</Link>
+          </p>
           <div className="board-toggle" role="group" aria-label="Feature map view">
             <button
               type="button"

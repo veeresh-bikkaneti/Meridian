@@ -77,3 +77,89 @@ Do not merge — the owner reviews with a second agent and merges himself.
 - Ruled out: adding FEATURE_DISCORD_WEBHOOK_URL to wrangler
   `secrets.required` (a required secret would break deploys until the
   owner sets it; the endpoint must instead answer "not open yet").
+
+## Upgrade — 2026-11-13 (owner's word in chat, same PR)
+
+Owner asked for: a draggable 3D dependency map (modern three.js +
+motion), and a separate page showing issues and PRs mapped to stories.
+Also cures the independent review's blocker B1 and minor S7, and the
+stale PR 434 copy in S6.
+
+- **Step 0 (data reality check).** No structured dependency data exists:
+  every story has only `lane/title/status/waitsOn/owner/prs/inferred`,
+  and there is no `dependsOn`/`blockedBy` anywhere in the repo. The one
+  mechanical signal is a `waitsOn` that explicitly names a PR number;
+  mapped back through the stories' own `prs` lists that yields exactly
+  8 edges (5 waiting stories). Prose waits naming no PR ("Pennant port",
+  "Scene engine", educator sign-off…) were NOT turned into edges — that
+  would need a looser matcher. A complete graph needs a structured
+  `dependsOn` per story in the snapshot/story-map source.
+- **Map (`feature-map.tsx`).** OrbitControls via dynamic import (three
+  stays in its lazy chunk; a separate OrbitControls chunk) — damped
+  rotate / pan / zoom. Dragging a story block moves it and its lines
+  follow; clicking a block highlights its transitive chain (ancestors +
+  descendants) and dims the rest, with a plain-text summary under the
+  canvas naming the selected story and its explicit PR waits. Edges are
+  directed lines with arrow cones, laid out so chains read left to
+  right (inside a lane: dependency depth, then status, then snapshot
+  order). Turntable removed — no auto-rotation; the only non-user
+  motion is the highlight ease. Reduced motion: static frame, no
+  controls, as before. Lane labels are measured and right-edge
+  anchored inside a scene frame shifted by the widest label — S7
+  (left-edge clipping) fixed; verified in screenshots. The canvas
+  publishes `data-edge-count`, `data-selected-story` and projected
+  `data-node-points` for tests/debugging.
+- **Issues page (`src/routes/board_.issues.tsx` → `/board/issues`).**
+  noindex, linked only from /board. Live GitHub issues + PRs grouped by
+  story: a PR maps by the snapshot's `prs` membership (the board's own
+  rule, unchanged); an issue maps only when a story explicitly names it
+  (`explicitIssueNumbers` — today only "Open issues 344 and 319");
+  everything else is an explicit Unmapped group. Issues come from the
+  issues endpoint with PR-shaped items filtered out (`pull_request`
+  key); PRs reuse `fetchLivePrs`. `fetchLiveIssues` mirrors the overlay
+  pattern (ETag, 10-minute cache, one attempt, stale/snapshot fallback)
+  under its own cache key.
+- **B1 cure (`scripts/static-wellknown.test.mjs`).** The sitemap test
+  now scans page routes recursively (dots and slashes as separators,
+  pathless `_` segments handled), excludes an explicit `NOINDEX_ROUTES`
+  list (`/board`, `/board/issues`), asserts each excluded route's
+  source declares `noindex`, and asserts excluded routes are NOT in the
+  sitemap — a public route missing from the sitemap still fails. (Both
+  pages are deliberately noindex; listing them in a sitemap would
+  contradict the noindex.)
+- **S6 copy.** snapshot.json: `next[1]` and the done-path gate now say
+  PR 434 merged Nov 13; story "Math subject screen" `waitsOn` now
+  "Shipped Nov 13" (statuses still derive live from PR state).
+- **Gates (this tip).** `npx tsc --noEmit` clean; `npm test` green —
+  scripts 1192 tests / 0 fail (was 1 fail = B1), src 2472/2472
+  (includes 9 new board-data tests: edges, depths, layout, issue
+  parsing/mapping, issues fetch); `test:worker` 235/235;
+  `lint-cards` GATE PASSED; `lint:content` GATE PASSED (0 new);
+  `build:pages` green; entry JS gzip 325,182 B — +374 B over the
+  review's locally measured base of 324,808 B (the 323,865 B budget
+  overage is pre-existing; CI passed the size check on the prior tip);
+  board Playwright spec 7/7 on the built artifact (3 original + drag
+  changes the view, click highlights the chain, /board/issues groups
+  incl. Unmapped with the network mocked, reduced motion lands on the
+  list view). Screenshots are in the PR record (chain highlighted,
+  390px map, issues page both sizes).
+- **Not checked / observed.** A React #418 hydration pageerror (root
+  `<html>` attributes) appears in the local harness when the shell is
+  fulfilled for /board; it is a shell-harness artifact pattern, not
+  board content — worth a glance on the real deploy. E2E ran only the
+  board spec locally per the testing-on-a-budget rule; CI carries the
+  full suite. The issues page was verified with mocked GitHub payloads,
+  not the live API.
+- **Next step:** owner's second-agent review of the new tip, then owner
+  merge. Still owner's separate calls: the `fix/turnstile-csp` PR
+  stacked on this branch's previous head, and the feature-request
+  secrets/site-key setup.
+
+## Graph (upgrade additions, for the integrator)
+
+- Adds node: route `/board/issues` (depends-on: snapshot, GitHub issues
+  API, GitHub pulls API via the board overlay fetch).
+- Adds edges: story → story "waits-on (explicit PR)" ×8, derived from
+  snapshot `waitsOn` PR references through `prs` membership — data of
+  record is `src/board/snapshot.json`, builder is
+  `buildDependencyEdges` in `src/board/board-data.ts`.

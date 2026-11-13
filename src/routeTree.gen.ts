@@ -16,6 +16,7 @@ import { Route as CreditsRouteImport } from './routes/credits'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
 import { Route as ApiFeatureRequestRouteImport } from './routes/api/feature-request'
+import { Route as BoardIssuesRouteImport } from './routes/board_.issues'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +53,11 @@ const ApiFeatureRequestRoute = ApiFeatureRequestRouteImport.update({
   path: '/api/feature-request',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BoardIssuesRoute = BoardIssuesRouteImport.update({
+  id: '/board_/issues',
+  path: '/board/issues',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
   '/api/feature-request': typeof ApiFeatureRequestRoute
+  '/board/issues': typeof BoardIssuesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
   '/api/feature-request': typeof ApiFeatureRequestRoute
+  '/board/issues': typeof BoardIssuesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
   '/api/feature-request': typeof ApiFeatureRequestRoute
+  '/board_/issues': typeof BoardIssuesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/api/contact'
     | '/api/feature-request'
+    | '/board/issues'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/api/contact'
     | '/api/feature-request'
+    | '/board/issues'
   id:
     | '__root__'
     | '/'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/api/contact'
     | '/api/feature-request'
+    | '/board_/issues'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ApiContactRoute: typeof ApiContactRoute
   ApiFeatureRequestRoute: typeof ApiFeatureRequestRoute
+  BoardIssuesRoute: typeof BoardIssuesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -172,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiFeatureRequestRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/board_/issues': {
+      id: '/board_/issues'
+      path: '/board/issues'
+      fullPath: '/board/issues'
+      preLoaderRoute: typeof BoardIssuesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -183,6 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ApiContactRoute: ApiContactRoute,
   ApiFeatureRequestRoute: ApiFeatureRequestRoute,
+  BoardIssuesRoute: BoardIssuesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

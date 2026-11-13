@@ -5,12 +5,19 @@ import { renderToString } from "react-dom/server";
 import snapshotJson from "./snapshot.json" with { type: "json" };
 import {
   applyLiveData,
+  buildDependencyEdges,
   CACHE_KEY,
   CACHE_TTL_MS,
+  dependencyDepths,
   deriveStatus,
+  explicitIssueNumbers,
+  fetchLiveIssues,
   fetchLivePrs,
+  mapWorkToStories,
+  parseGithubIssues,
   parseGithubPrs,
   readCache,
+  storyMapLayouts,
   writeCache,
   type GithubPr,
   type KeyValueStorage,
@@ -238,6 +245,136 @@ describe("cache + fallback", () => {
     assert.ok(cachedRaw, "a cache entry must be stored");
     assert.equal((JSON.parse(cachedRaw) as { etag: string }).etag, '"fresh"');
     assert.deepEqual(result.prs.map((p) => p.title), ["Live one"]);
+  });
+});
+
+describe("dependency edges (explicit PR waits only)", () => {
+  it("builds exactly the 8 edges the snapshot's waitsOn PR references encode", () => {
+    const edges = buildDependencyEdges(snapshot.stories);
+    const asText = edges.map((e) => `${e.from}->${e.to}:${e.viaPr}`);
+    assert.deepEqual(asText, [
+      "2->3:431",
+      "2->4:431",
+      "3->5:430",
+      "36->5:430",
+      "17->12:434",
+      "3->19:430",
+      "17->19:434",
+      "36->19:430",
+    ]);
+  });
+
+  it("never derives an edge from prose that names no PR number", () => {
+    const stories = [
+      story({ title: "Pennant port", prs: [] }),
+      story({ title: "Clue 4", prs: [], waitsOn: "Pennant port" }),
+      story({ title: "Screens", prs: [], waitsOn: "Scene engine" }),
+    ];
+    assert.deepEqual(buildDependencyEdges(stories), []);
+  });
+
+  it("depths follow the longest prerequisite chain", () => {
+    const depths = dependencyDepths(snapshot.stories);
+    assert.equal(depths[2], 0);
+    assert.equal(depths[3], 1);
+    assert.equal(depths[5], 2);
+    assert.equal(depths[17], 0);
+    assert.equal(depths[12], 1);
+    assert.equal(depths[19], 2);
+    assert.equal(depths.filter((d) => d > 0).length, 5);
+  });
+
+  it("lane layout puts every prerequisite in an earlier slot than its dependent", () => {
+    const layouts = storyMapLayouts(snapshot.stories, snapshot.lanes);
+    for (const e of buildDependencyEdges(snapshot.stories)) {
+      if (snapshot.stories[e.from].lane === snapshot.stories[e.to].lane) {
+        assert.ok(
+          layouts[e.from].slot < layouts[e.to].slot,
+          `${snapshot.stories[e.from].title} must sit left of ${snapshot.stories[e.to].title}`,
+        );
+      }
+    }
+  });
+});
+
+describe("issues + PR map", () => {
+  it("parseGithubIssues drops PR-shaped items and keeps real issues", () => {
+    const parsed = parseGithubIssues([
+      { number: 344, state: "open", title: "Real issue", html_url: "https://github.com/veeresh-bikkaneti/Meridian/issues/344" },
+      { number: 434, state: "closed", title: "A PR in disguise", pull_request: { url: "https://api.github.com/x" } },
+      { number: "x", state: "open" },
+      null,
+    ]);
+    assert.deepEqual(parsed.map((i) => i.number), [344]);
+    assert.equal(parsed[0].url, "https://github.com/veeresh-bikkaneti/Meridian/issues/344");
+  });
+
+  it("only the snapshot's explicit issue references map an issue to a story", () => {
+    assert.deepEqual(explicitIssueNumbers(snapshot.stories[45]), [319, 344]);
+    assert.deepEqual(explicitIssueNumbers(snapshot.stories[0]), []);
+  });
+
+  it("maps PRs by prs membership, issues by explicit reference, the rest unmapped", () => {
+    const { groups, unmapped } = mapWorkToStories(
+      snapshot.stories,
+      [pr(434, "closed", true, "Math screen"), pr(430, "open", false, "Voice channel"), pr(999, "open", false, "Unknown PR")],
+      [
+        { number: 344, state: "open", title: "Known issue", url: "https://github.com/veeresh-bikkaneti/Meridian/issues/344" },
+        { number: 999, state: "open", title: "Unknown issue", url: "https://github.com/veeresh-bikkaneti/Meridian/issues/999" },
+      ],
+    );
+    const byTitle = new Map(groups.map((g) => [g.story.title, g.items.map((i) => `${i.kind}:${i.number}`)]));
+    assert.deepEqual(byTitle.get("Math subject screen, 3 items per age group"), ["pr:434"]);
+    // PR 430 belongs to both stories that list it — the board's own rule.
+    assert.deepEqual(byTitle.get("Clue pacing and one voice at a time"), ["pr:430"]);
+    assert.deepEqual(byTitle.get("Shared voice channel (one speaker at a time)"), ["pr:430"]);
+    assert.deepEqual(byTitle.get("Open issues 344 and 319 (real unbuilt work)"), ["issue:344"]);
+    assert.deepEqual(
+      unmapped.map((i) => `${i.kind}:${i.number}`),
+      ["pr:999", "issue:999"],
+    );
+  });
+
+  it("fetchLiveIssues: 403 with no cache falls back to snapshot, one attempt", async () => {
+    let calls = 0;
+    const result = await fetchLiveIssues({
+      storage: memoryStorage(),
+      now: NOW,
+      fetchFn: async () => {
+        calls += 1;
+        return new Response("rate limited", { status: 403 });
+      },
+    });
+    assert.equal(calls, 1);
+    assert.equal(result.source, "snapshot");
+    assert.deepEqual(result.issues, []);
+  });
+
+  it("fetchLiveIssues: a 200 is parsed (PRs filtered out) and cached", async () => {
+    const storage = memoryStorage();
+    const result = await fetchLiveIssues({
+      storage,
+      now: NOW,
+      fetchFn: async () =>
+        new Response(
+          JSON.stringify([
+            { number: 319, state: "open", title: "Issue", html_url: "https://github.com/veeresh-bikkaneti/Meridian/issues/319" },
+            { number: 436, state: "open", title: "PR", pull_request: {} },
+          ]),
+          { status: 200, headers: { etag: '"iss1"', "content-type": "application/json" } },
+        ),
+    });
+    assert.equal(result.source, "live");
+    assert.deepEqual(result.issues.map((i) => i.number), [319]);
+    const again = await fetchLiveIssues({
+      storage,
+      now: NOW + 60_000,
+      fetchFn: async () => {
+        throw new Error("should not be called — fresh cache");
+      },
+    });
+    assert.equal(again.source, "cache");
+    assert.deepEqual(again.issues.map((i) => i.number), [319]);
   });
 });
 

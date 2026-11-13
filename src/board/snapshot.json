@@ -3,7 +3,7 @@
   "main": "10affd0e",
   "next": [
     "Merge PR 431 (touch fix) after your playtest. It is 1 commit, so updating from main is easy.",
-    "Second review and merge PR 434 (math screen). The Why card's button then opens Math behind ?scale=1.",
+    "PR 434 (math screen) merged Nov 13. The Why card's button now opens Math behind ?scale=1.",
     "Update PR 430 from main, close its two-voices test gap, then merge. Pennant port and clue 4 wait on it."
   ],
   "lanes": [
@@ -229,7 +229,7 @@
       "lane": "Math",
       "title": "Math subject screen, 3 items per age group",
       "status": "in-progress",
-      "waitsOn": "Second reviewer, your merge. Draft, 1 behind main",
+      "waitsOn": "Shipped Nov 13",
       "owner": "You",
       "prs": [
         434
@@ -534,8 +534,8 @@
     },
     {
       "type": "gate",
-      "title": "Merge PR 434",
-      "description": "Math screen lands behind ?scale=1; the card button works.",
+      "title": "PR 434 merged",
+      "description": "Math screen is on main behind ?scale=1; the card button works.",
       "live": false
     },
     {
