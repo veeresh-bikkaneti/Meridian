@@ -52,6 +52,27 @@
   font-size: 12.5px;
 }
 
+/* Plain word riding alongside a game word: always small, muted and
+ * sentence-case, even inside uppercase labels, tiles and pills. */
+.board-plain {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--atlas-muted);
+}
+
+.board-tile .board-plain {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.board-pill .board-plain {
+  font-size: 10.5px;
+}
+
 .board-tiles {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

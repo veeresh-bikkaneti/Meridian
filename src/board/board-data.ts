@@ -54,6 +54,13 @@ export const STATUS_LABEL: Record<StoryStatus, string> = {
   done: "Done",
 };
 
+/** Game words for the same statuses; the plain STATUS_LABEL always rides alongside. */
+export const GAME_STATUS_LABEL: Record<StoryStatus, string> = {
+  "not-started": "Sealed",
+  "in-progress": "On the trail",
+  done: "Case closed",
+};
+
 export const GITHUB_PULLS_URL =
   "https://api.github.com/repos/veeresh-bikkaneti/Meridian/pulls?state=all&per_page=100&sort=updated";
 

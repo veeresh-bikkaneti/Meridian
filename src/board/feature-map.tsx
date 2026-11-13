@@ -305,11 +305,11 @@ export default function FeatureMap({
             const story = stories[i];
             const waits = edges.filter((e) => e.to === i).map((e) => stories[e.from].title);
             const unlocks = edges.filter((e) => e.from === i).map((e) => stories[e.to].title);
-            const parts = [`Selected: ${story.title}.`];
+            const parts = [`Selected case: ${story.title}.`];
             parts.push(
               waits.length > 0
-                ? `Waits on (explicit PR waits): ${waits.join("; ")}.`
-                : "Waits on no story in the snapshot — its “waits on” names no PR.",
+                ? `Needs a clue from (explicit PR waits): ${waits.join("; ")}.`
+                : "Needs a clue from no case in the snapshot — its “waits on” names no PR.",
             );
             if (unlocks.length > 0) parts.push(`Waited on by: ${unlocks.join("; ")}.`);
             return parts.join(" ");
@@ -355,7 +355,7 @@ export default function FeatureMap({
             if (selectionRef.current) {
               selectionRef.current.textContent =
                 selected === null
-                  ? "Drag to look around. Click a story block to highlight what it waits on."
+                  ? "Drag to look around. Click a case block to highlight what it waits on."
                   : describeSelection(selected);
             }
           };
@@ -508,7 +508,7 @@ export default function FeatureMap({
     <div>
       <div ref={mountRef} className="board-map-mount" aria-hidden="true" />
       <p ref={selectionRef} className="board-muted" data-testid="map-selection">
-        Drag to look around. Click a story block to highlight what it waits on.
+        Drag to look around. Click a case block to highlight what it waits on.
       </p>
     </div>
   );

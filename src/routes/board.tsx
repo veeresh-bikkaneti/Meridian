@@ -6,6 +6,7 @@ import {
   dependencyRows,
   fetchLivePrs,
   filterStories,
+  GAME_STATUS_LABEL,
   groupByLane,
   groupByStatus,
   headerMetrics,
@@ -160,12 +161,14 @@ function BoardPage() {
             {(Object.keys(STATUS_LABEL) as StoryStatus[]).map((status) => (
               <div className="board-tile" key={status}>
                 <b>{counts[status]}</b>
-                <span>{STATUS_LABEL[status]}</span>
+                <span>{GAME_STATUS_LABEL[status]}</span>
+                <span className="board-plain">({STATUS_LABEL[status].toLowerCase()})</span>
               </div>
             ))}
             <div className="board-tile">
               <b>{metrics.openPrs}</b>
-              <span>Open PRs</span>
+              <span>Leads</span>
+              <span className="board-plain">(open PRs)</span>
             </div>
             <div className="board-tile">
               <b>{metrics.blocked}</b>
@@ -221,7 +224,9 @@ function BoardPage() {
                 aria-label={STATUS_LABEL[status]}
               >
                 <h3>
-                  {STATUS_LABEL[status]} ({columns[status].length})
+                  {GAME_STATUS_LABEL[status]}{" "}
+                  <span className="board-plain">({STATUS_LABEL[status].toLowerCase()})</span> (
+                  {columns[status].length})
                 </h3>
                 {columns[status].length === 0 ? (
                   <p className="board-empty">Nothing here yet.</p>
@@ -252,10 +257,10 @@ function BoardPage() {
         <section className="board-section" aria-labelledby="board-map-heading">
           <h2 id="board-map-heading">Feature map</h2>
           <p className="board-muted">
-            The lines on the 3D map are the dependency waits the snapshot itself records: a story
-            whose “waits on” names a PR is linked to the story that PR belongs to. Drag to look
-            around, drag a block to move it, click a block to highlight its chain.{" "}
-            <Link to="/board/issues">See issues and pull requests grouped by story →</Link>
+            The lines on the 3D map are the dependency waits the snapshot itself records: a case
+            whose “waits on” names a PR is linked to the case that PR belongs to. Drag to look
+            around, drag a block to move it, click a case block to highlight its chain.{" "}
+            <Link to="/board/issues">See issues and pull requests grouped by case →</Link>
           </p>
           <div className="board-toggle" role="group" aria-label="Feature map view">
             <button
@@ -326,7 +331,8 @@ function BoardPage() {
         </section>
 
         <section className="board-section" aria-labelledby="board-deps-heading">
-          <h2 id="board-deps-heading">Dependencies</h2>
+          <h2 id="board-deps-heading">Dependency trails</h2>
+          <p className="board-muted">(which case waits on which)</p>
           {depRows.length === 0 ? (
             <p className="board-muted">No story dependencies are recorded in the snapshot.</p>
           ) : (
@@ -360,7 +366,9 @@ function BoardPage() {
         </section>
 
         <section className="board-section" aria-labelledby="board-done-heading">
-          <h2 id="board-done-heading">Definition of all done</h2>
+          <h2 id="board-done-heading">
+            Trail to release <span className="board-plain">(definition of all done)</span>
+          </h2>
           <p className="board-muted" style={{ maxWidth: "65ch" }}>
             All done means every subject is released, the ?scale=1 gate is gone so kids see it on
             prod, no feature PR is open, and no clip is missing. The gates below come in this order.

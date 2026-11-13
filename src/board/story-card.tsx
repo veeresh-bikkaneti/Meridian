@@ -1,4 +1,4 @@
-import { PR_URL_BASE, STATUS_LABEL, type LiveStory } from "./board-data";
+import { GAME_STATUS_LABEL, PR_URL_BASE, STATUS_LABEL, type LiveStory } from "./board-data";
 
 /**
  * One story card. Every dynamic string — the snapshot title and, in
@@ -26,7 +26,10 @@ export function StoryCard({
             {story.title}
           </button>
         </h4>
-        <span className={`board-pill board-pill-${story.status}`}>{STATUS_LABEL[story.status]}</span>
+        <span className={`board-pill board-pill-${story.status}`}>
+          {GAME_STATUS_LABEL[story.status]}{" "}
+          <span className="board-plain">({STATUS_LABEL[story.status].toLowerCase()})</span>
+        </span>
       </div>
       <p className="board-card-lane">{story.lane}</p>
       <p className="board-card-wait">
@@ -34,7 +37,7 @@ export function StoryCard({
           story.waitsOn
         ) : (
           <>
-            <strong>Waits on:</strong> {story.waitsOn}
+            <strong>Needs a clue from:</strong> {story.waitsOn}
           </>
         )}
       </p>
