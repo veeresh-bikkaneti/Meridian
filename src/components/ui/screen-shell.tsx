@@ -11,11 +11,13 @@
  * background so ink and page always come from the same theme.
  */
 import type { ReactNode, Ref } from "react";
+import { Button } from "./button";
 import { HomeButton } from "./home-button";
 import { cn } from "@/lib/cn";
 
 export function ScreenShell({
   onHome,
+  onBack,
   sound,
   eyebrow,
   title,
@@ -25,8 +27,11 @@ export function ScreenShell({
   className,
   testId,
   data,
-}: {
-  onHome: () => void;
+}: (
+  | { onHome: () => void; onBack?: never }
+  /** A one-step back inside a drill-down (not home): labelled "Back". */
+  | { onBack: () => void; onHome?: never }
+) & {
   /** A SoundToggle, only when the screen plays sound. */
   sound?: ReactNode;
   eyebrow?: ReactNode;
@@ -47,7 +52,13 @@ export function ScreenShell({
     >
       <header>
         <div className="flex items-center gap-2">
-          <HomeButton onHome={onHome} className="-ml-3" />
+          {onHome ? (
+            <HomeButton onHome={onHome} className="-ml-3" />
+          ) : (
+            <Button variant="ghost" className="-ml-3 px-3" onClick={onBack} data-testid="back-button">
+              Back
+            </Button>
+          )}
           {sound}
         </div>
         {eyebrow ? <p className="name-eyebrow mt-4">{eyebrow}</p> : null}

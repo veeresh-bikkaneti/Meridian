@@ -99,6 +99,8 @@ import { Suspense, lazy, useCallback, useEffect, useMemo, useRef, useState, type
 import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { HomeButton } from "@/components/ui/home-button";
+import { ScreenShell } from "@/components/ui/screen-shell";
 import { RunStartNotice } from "@/components/run-start-notice";
 import { QuestionBubble, type BubbleViewState } from "./question-bubble";
 import { HintPanel } from "./hint-panel";
@@ -3733,9 +3735,7 @@ export function GameApp() {
       <>
         {mapModeAnnouncer}
         <main className="mx-auto w-full max-w-3xl px-5 py-8">
-          <Button variant="secondary" onClick={() => setMenu(null)}>
-            Back
-          </Button>
+          <HomeButton onHome={() => setMenu(null)} variant="secondary" />
           <h1
             ref={challengeMenuHeadingRef}
             tabIndex={-1}
@@ -3781,6 +3781,7 @@ export function GameApp() {
         subtitle="Play a country whole — or drill into its states where available."
         regions={regions}
         notice={<>{challengeBootNoticeEl}{loadNotice}</>}
+        kind="home"
         onBack={() => setMenu(null)}
         onChoose={(region) => {
           const subdivisions = ADMIN1_BY_COUNTRY[region.id] ?? [];
@@ -3815,6 +3816,7 @@ export function GameApp() {
         title="State"
         subtitle="Choose a country, then one of its states."
         regions={regions}
+        kind="home"
         onBack={() => setMenu(null)}
         onChoose={(region) =>
           setMenu({ kind: "admin1", countryId: region.id, countryName: region.name, from: "states" })
@@ -3840,6 +3842,7 @@ export function GameApp() {
           label: `Play entire ${menu.countryName}`,
           onClick: () => openRun("country", menu.countryId, menu.countryName, difficultyChoice),
         }}
+        kind="back"
         onBack={() => setMenu({ kind: menu.from })}
         onChoose={(region) => openRun("state", region.id, region.name, difficultyChoice)}
       />
@@ -5458,7 +5461,7 @@ function ReviewComplete({
             : "The ones you missed are due again right away. One more round locks them in."}
       </p>
       <div className="mt-6 flex flex-col items-start gap-3">
-        <Button onClick={onDone}>{REVIEW_DECK_COPY.backToEditions}</Button>
+        <HomeButton onHome={onDone} variant="primary" />
         {/* "Challenge a friend — pick a map" (manifest §1(e)): the
             review is finished, so this door leaves it — the GameApp
             handler runs the Editions exit and opens the shipped
@@ -6314,9 +6317,7 @@ function ChallengeComplete({
             Try this route again
           </Button>
         ) : null}
-        <Button onClick={onDone} data-testid="challenge-done">
-          {REVIEW_DECK_COPY.backToEditions}
-        </Button>
+        <HomeButton onHome={onDone} variant="primary" testId="challenge-done" />
       </div>
     </main>
   );
@@ -6328,6 +6329,7 @@ function RegionList({
   regions,
   headerAction,
   notice,
+  kind,
   onBack,
   onChoose,
 }: {
@@ -6336,17 +6338,15 @@ function RegionList({
   regions: Region[];
   headerAction?: { label: string; onClick: () => void };
   notice?: ReactNode;
+  /** "home": the top list (its button is Home); "back": one step up a drill-down (Back). */
+  kind: "home" | "back";
   onBack: () => void;
   onChoose: (region: Region) => void;
 }) {
+  const nav = kind === "home" ? { onHome: onBack } : { onBack };
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 py-8">
+    <ScreenShell {...nav} className="max-w-xl" title={title} sub={subtitle}>
       {notice}
-      <Button variant="ghost" className="self-start" onClick={onBack}>
-        Editions
-      </Button>
-      <h1 className="mt-4 font-display text-4xl text-fg">{title}</h1>
-      {subtitle ? <p className="mt-2 text-muted">{subtitle}</p> : null}
       {headerAction ? (
         <Button variant="secondary" className="mt-6 w-full" onClick={headerAction.onClick}>
           {headerAction.label}
@@ -6365,7 +6365,7 @@ function RegionList({
           </li>
         ))}
       </ul>
-    </main>
+    </ScreenShell>
   );
 }
 
@@ -6616,7 +6616,7 @@ function Play({
           {poolError} The run was not started with a partial pool — pick the region again to retry.
         </p>
         <div className="mt-6">
-          <Button onClick={onEditions}>Back to editions</Button>
+          <HomeButton onHome={onEditions} variant="primary" />
         </div>
       </main>
     );
@@ -8134,9 +8134,13 @@ function PlayLoaded({
         </MapErrorBoundary>
         <div className="pointer-events-none absolute top-2 right-2.5 left-2.5 z-30 flex items-start justify-between gap-2 sm:top-3 sm:right-3 sm:left-3 sm:gap-3">
           <div className="flex items-start gap-1.5 sm:gap-2">
-            <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
-              {review ? REVIEW_DECK_COPY.exitReview : "Editions"}
-            </Button>
+            {review ? (
+              <Button variant="secondary" className="pointer-events-auto" onClick={onEditions}>
+                {REVIEW_DECK_COPY.exitReview}
+              </Button>
+            ) : (
+              <HomeButton onHome={onEditions} variant="secondary" className="pointer-events-auto" />
+            )}
             {/* In-game mute (Veeresh's ask): the same meridian.sound toggle
                 as the home header, reachable mid-game. Mutes every sound —
                 all play calls go through the isSoundEnabled() gate. */}
