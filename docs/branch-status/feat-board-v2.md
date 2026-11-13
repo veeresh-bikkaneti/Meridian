@@ -209,17 +209,71 @@ Base: origin/main `44d921d7377c8f907fd7211ebff1a9131ba4a603`
   `~/workspace/board-v2/screenshots-A/` (board-desktop, board-390,
   inspector-open, dependency-list). No src changes; no src bug found.
 
+- Phase B (game layer, steps 8–15) — the same data reframed as a
+  detective expedition, one commit per step, all pushed (remote heads
+  in ~/workspace/board-v2/REPORT-B.md):
+  - Step 8: game words (Region/Case/Sealed/On the trail/Case closed/
+    Needs a clue from/Trail to release/Lead/Lead solved), plain word
+    always alongside in small text.
+  - Step 9: case-file cards — computed case number (position in
+    region), region badge, lead counter from live PR states,
+    "Case closed" ink stamp (prod --atlas-stamp token + atlas-stamp-in
+    keyframes; static under reduced motion).
+  - Step 10: expedition map — terrain plates per region, lit
+    in-progress markers, flagged done markers, dotted (dashed)
+    dependency trails for the 8 real edges only, click a marker opens
+    the same inspector. three stays lazy; no ambient camera motion.
+  - Step 11: XP bar "Cases closed {closed} / {total}" overall +
+    per-region, computed only; "Next to crack" chip = open case with
+    the most waitsOnIds dependents (tie → snapshot order; none → no
+    chip). Only a merge closes a case; opening a PR earns nothing.
+  - Step 12: celebration — localStorage baseline of closed case ids
+    (data-only); first visit sets it silently; a live load showing a
+    newly closed case toasts once (at most one per visit, silent,
+    static under reduced motion) and stamps that case's card.
+  - Step 13: inspector reframed as a case dossier (Leads / Clues
+    needed / Cases this unlocks / Trail to release); all Phase A
+    behaviours preserved (Escape, focus return, status-why honesty).
+  - Step 14: intake retitled "Send a tip to the detectives" — same
+    Worker + Turnstile + Discord form, fields and server unchanged.
+  - Step 15: public "What's coming" — snapshot hand-written notes
+    reviewed (15 waitsOn rewrites with every PR token preserved,
+    owners "Your agent"→"Project team", "You"→"Project owner", public
+    `next` list, donePath gate titles plain-first); "What's coming"
+    links added on /credits and /contact only; /board + /board/issues
+    stay noindex.
+  - Council (4 seats, clean contexts, 3 rounds): round 1 — security
+    PASS; UX 2 must-fixes (plain words for Lead/clue labels); QA
+    NEEDS WORK 3 must-fixes (e2e run record, celebration integration
+    tests, next-to-crack oracle guard). Fixes landed as labelled
+    council-fix commits. Round 2 — UX PASS; QA 1 item left (the
+    prs.length > 0 celebration guard unpinned). Round 3 — QA PASS
+    after the no-live-data guard test, with the seat reproducing the
+    mutation proof itself (guard deleted → test fails on the spurious
+    toast; restored → passes).
+  - Phase B verification (final head): unit board-data 64/64,
+    security-headers 10/10, credits 4/4, tsc clean, build:pages
+    green, e2e board spec 21/21 (13 Phase A + 4 game-layer +
+    4 celebration) against the built artifact, board code-split out
+    of the entry chunk verified. Screenshots:
+    ~/workspace/board-v2/screenshots-B/.
+
 ## Next step
-- Panel review of steps 5–7; merge remains the owner's word.
+- Merge remains the owner's word. PR #462 stays draft.
 
 ## Open questions
-- None for steps 1–4.
+- None for steps 1–15. (Phase A question on steps 5–7 panel review is
+  superseded by the Phase B council above.)
 
 ## Ruled out
 - No fallback/invented open-PR count when live data is absent (honest 0
   from the data actually shown).
 - No new dependencies, components, or palette; existing `.board-tiles` /
   `.board-tile` styles reused (5-across at ≥900px).
+- Game layer: no leaderboards, no points to people, owners stay plain
+  text, Holmes and Watson never appear on the board, no invented
+  dependency edges (only the 8 mechanical waitsOnIds relations), no
+  celebration without live data.
 
 ## Graph
 - No graph nodes/edges added by this step.
