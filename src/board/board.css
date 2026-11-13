@@ -861,6 +861,65 @@
   }
 }
 
+/* Expedition progress (XP bar): cases only, never people. Reuses
+ * .board-bar / .b-done; the per-region rows are compact bars. */
+.board-xp {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.board-xp-line {
+  margin: 0;
+  font-family: var(--font-atlas-display);
+  font-weight: 600;
+}
+
+.board-xp-lanes {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.board-xp-lane {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(80px, 160px);
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.board-xp-lane-name {
+  overflow-wrap: anywhere;
+}
+
+.board-xp-lane-count {
+  font-variant-numeric: tabular-nums;
+  color: var(--atlas-muted);
+}
+
+.board-xp-next {
+  justify-self: start;
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--atlas-card-line);
+  background: var(--atlas-card);
+  color: var(--atlas-ink);
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 18px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.board-xp-next:focus-visible {
+  outline: 3px solid var(--atlas-brass);
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .board-bar i {
     transition: width 0.4s var(--ease-soft-land);

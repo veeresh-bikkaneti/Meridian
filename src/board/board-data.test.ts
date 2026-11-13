@@ -13,6 +13,7 @@ import {
   dependencyRows,
   deriveStatus,
   donePathMatch,
+  expeditionProgress,
   explicitIssueNumbers,
   fetchLiveIssues,
   fetchLivePrs,
@@ -20,6 +21,7 @@ import {
   headerMetrics,
   leadCounts,
   mapWorkToStories,
+  nextToCrack,
   parseGithubIssues,
   parseGithubPrs,
   readCache,
@@ -274,6 +276,83 @@ describe("case numbers + lead counts", () => {
     assert.deepEqual(leadCounts(none), { total: 0, solved: 0 });
     const [all] = applyLiveData([story({ prs: [1, 2] })], [pr(1, "closed", true), pr(2, "closed", true)]);
     assert.deepEqual(leadCounts(all), { total: 2, solved: 2 });
+  });
+});
+
+describe("expedition progress + next to crack", () => {
+  const live = (partials: Partial<SnapshotStory>[]) => applyLiveData(partials.map((p) => story(p)), []);
+  const lanes = [
+    { name: "Math", note: "math note" },
+    { name: "Journals", note: "journals note" },
+    { name: "Empty lane", note: "nothing here" },
+  ];
+
+  it("progress counts closed overall and per lane, including an empty lane", () => {
+    const stories = live([
+      { id: "math/a", lane: "Math", title: "A", status: "done" },
+      { id: "math/b", lane: "Math", title: "B", status: "in-progress" },
+      { id: "math/c", lane: "Math", title: "C", status: "not-started" },
+      { id: "journals/d", lane: "Journals", title: "D", status: "done" },
+      { id: "journals/e", lane: "Journals", title: "E", status: "done" },
+    ]);
+    const progress = expeditionProgress(stories, lanes);
+    assert.equal(progress.total, 5);
+    assert.equal(progress.closed, 3); // A, D, E
+    assert.deepEqual(
+      progress.perLane.map(({ lane, closed, total }) => [lane.name, closed, total]),
+      [
+        ["Math", 1, 3],
+        ["Journals", 2, 2],
+        ["Empty lane", 0, 0],
+      ],
+    );
+  });
+
+  it("nextToCrack picks the open case that unblocks the most", () => {
+    const stories = live([
+      { id: "math/a", lane: "Math", title: "A", status: "in-progress" },
+      { id: "math/b", lane: "Math", title: "B", status: "not-started" },
+      { id: "math/c", lane: "Math", title: "C", status: "not-started", waitsOnIds: ["math/a"] },
+      { id: "math/d", lane: "Math", title: "D", status: "not-started", waitsOnIds: ["math/a", "math/b"] },
+      { id: "math/e", lane: "Math", title: "E", status: "not-started", waitsOnIds: ["math/a"] },
+    ]);
+    const next = nextToCrack(stories);
+    assert.equal(next?.story.title, "A");
+    assert.equal(next?.unblocks, 3);
+  });
+
+  it("nextToCrack tie breaks by snapshot order (first wins)", () => {
+    const stories = live([
+      { id: "math/a", lane: "Math", title: "First", status: "not-started" },
+      { id: "math/b", lane: "Math", title: "Second", status: "not-started" },
+      { id: "math/c", lane: "Math", title: "C", status: "not-started", waitsOnIds: ["math/a"] },
+      { id: "math/d", lane: "Math", title: "D", status: "not-started", waitsOnIds: ["math/b"] },
+    ]);
+    const next = nextToCrack(stories);
+    assert.equal(next?.story.title, "First");
+    assert.equal(next?.unblocks, 1);
+  });
+
+  it("nextToCrack excludes a done leader", () => {
+    const stories = live([
+      { id: "math/a", lane: "Math", title: "Done leader", status: "done" },
+      { id: "math/b", lane: "Math", title: "Open runner-up", status: "in-progress" },
+      { id: "math/c", lane: "Math", title: "C", status: "not-started", waitsOnIds: ["math/a"] },
+      { id: "math/d", lane: "Math", title: "D", status: "not-started", waitsOnIds: ["math/a", "math/b"] },
+      { id: "math/e", lane: "Math", title: "E", status: "not-started", waitsOnIds: ["math/a"] },
+    ]);
+    const next = nextToCrack(stories);
+    assert.equal(next?.story.title, "Open runner-up");
+    assert.equal(next?.unblocks, 1);
+  });
+
+  it("nextToCrack returns null when no open case unblocks anything", () => {
+    const stories = live([
+      { id: "math/a", lane: "Math", title: "A", status: "not-started" },
+      { id: "math/b", lane: "Math", title: "B", status: "in-progress" },
+      { id: "math/c", lane: "Math", title: "C", status: "done", waitsOnIds: [] },
+    ]);
+    assert.equal(nextToCrack(stories), null);
   });
 });
 

@@ -5,12 +5,14 @@ import {
   applyLiveData,
   caseNumber,
   dependencyRows,
+  expeditionProgress,
   fetchLivePrs,
   filterStories,
   GAME_STATUS_LABEL,
   groupByLane,
   groupByStatus,
   headerMetrics,
+  nextToCrack,
   STATUS_LABEL,
   type LiveSource,
   type LiveStory,
@@ -119,6 +121,8 @@ function BoardPage() {
   }, []);
 
   const metrics = useMemo(() => headerMetrics(stories), [stories]);
+  const progress = useMemo(() => expeditionProgress(stories, snapshot.lanes), [stories]);
+  const nextCrack = useMemo(() => nextToCrack(stories), [stories]);
   const counts: Record<StoryStatus, number> = {
     "not-started": metrics.notStarted,
     "in-progress": metrics.inProgress,
@@ -176,6 +180,41 @@ function BoardPage() {
               <span>Blocked</span>
             </div>
           </div>
+          <section className="board-xp" data-testid="xp-progress" aria-label="Expedition progress">
+            <p className="board-xp-line">
+              Cases closed {progress.closed} / {progress.total}
+            </p>
+            <div className="board-bar" aria-hidden="true">
+              <i
+                className="b-done"
+                style={{ width: `${progress.total ? (progress.closed / progress.total) * 100 : 0}%` }}
+              />
+            </div>
+            <ul className="board-xp-lanes">
+              {progress.perLane.map(({ lane, closed, total }) => (
+                <li className="board-xp-lane" key={lane.name}>
+                  <span className="board-xp-lane-name">{lane.name}</span>
+                  <span className="board-xp-lane-count">
+                    {closed}/{total}
+                  </span>
+                  <div className="board-bar" aria-hidden="true">
+                    <i className="b-done" style={{ width: `${total ? (closed / total) * 100 : 0}%` }} />
+                  </div>
+                </li>
+              ))}
+            </ul>
+            {nextCrack ? (
+              <button
+                type="button"
+                className="board-xp-next"
+                data-testid="next-to-crack"
+                onClick={(e) => handleSelect(nextCrack.story, e.currentTarget)}
+              >
+                Next to crack: {nextCrack.story.title} — closing it unblocks {nextCrack.unblocks} other
+                case{nextCrack.unblocks === 1 ? "" : "s"}
+              </button>
+            ) : null}
+          </section>
         </header>
 
         <section className="board-section" aria-labelledby="board-next-heading">

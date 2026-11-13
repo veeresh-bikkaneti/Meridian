@@ -695,6 +695,51 @@ export function headerMetrics(stories: readonly LiveStory[]): HeaderMetrics {
   return out;
 }
 
+export interface ExpeditionProgress {
+  total: number;
+  closed: number;
+  perLane: { lane: SnapshotLane; closed: number; total: number }[];
+}
+
+/**
+ * Expedition progress: cases closed (derived status === "done") over
+ * all cases, overall and per lane. The bar measures cases, never
+ * people — owners play no part here.
+ */
+export function expeditionProgress(
+  stories: readonly LiveStory[],
+  lanes: readonly SnapshotLane[],
+): ExpeditionProgress {
+  const perLane = groupByLane(stories, lanes).map(({ lane, stories: inLane }) => ({
+    lane,
+    closed: inLane.filter((s) => s.status === "done").length,
+    total: inLane.length,
+  }));
+  return {
+    total: stories.length,
+    closed: stories.filter((s) => s.status === "done").length,
+    perLane,
+  };
+}
+
+/**
+ * The open case whose closing unblocks the most other cases (direct
+ * dependents only: stories whose waitsOnIds include the candidate's
+ * id). Ties break by snapshot order (first wins). Returns null when
+ * no open case unblocks anything — an honest absence, not a guess.
+ */
+export function nextToCrack<T extends LiveStory>(stories: readonly T[]): { story: T; unblocks: number } | null {
+  let best: { story: T; unblocks: number } | null = null;
+  for (const candidate of stories) {
+    if (candidate.status === "done") continue;
+    const unblocks = stories.filter((s) => (s.waitsOnIds ?? []).includes(candidate.id)).length;
+    if (unblocks > 0 && (best === null || unblocks > best.unblocks)) {
+      best = { story: candidate, unblocks };
+    }
+  }
+  return best;
+}
+
 /**
  * Case-insensitive substring match on title, lane and owner. A numeric
  * query ("430", "PR 430", "#430") also matches story.prs numbers.
