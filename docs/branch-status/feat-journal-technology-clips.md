@@ -70,6 +70,17 @@ These clips are not in `public/videos/journal-manifest.json`, so the live player
 - `bm_george` and `am_fenrir` for these journals.
 - Detective clips `beat-me`, `win-together`, and `truce-watson` (they need the hatch TTS, which is not on this machine).
 
+## Council
+
+Round 1, 2026-11-13. No second round.
+
+- Child-safety: MUST-FIX, not applied. The first-phone and eniac opening questions are the grade-4 items sources.md already assigns (4.NBT.B.4 and 4.MD.A.3). The spoken captions do not ask that arithmetic.
+- History: MUST-FIX, not applied. The spoken line is "ENIAC, an early computer, filled a big room." That is the screened narration in transcripts.md. sources.md T3-3 says the panels did not cover the whole basement floor. The suggested "was kept in a big room" adds a word and would fail the 18-word cap in check-clips.mjs. Left for Veeresh.
+- Accessibility: PASS. No persona file exists for this seat. Cue words match the narration, and there is no video, so nothing flashes.
+- QA: MUST-FIX. No still is in this pull request. A local open-weight image model did not run.
+
+The missing still cannot be fixed on this machine. Spoken words were left as the screened caption.
+
 ## Graph
 
 - Adds node: branch `feat/journal-technology-clips` (docs/branch-status/feat-journal-technology-clips.md), documents the technology narration files above. Depends-on the technology journal spec. No `graph.json` edit on this branch.
