@@ -1,6 +1,6 @@
 {
-  "asOf": "Read from the repo Nov 13, 2026, 5:20 AM Central",
-  "main": "10affd0e",
+  "asOf": "Read from the repo Nov 13, 2026, 4:38 PM Central",
+  "main": "44d921d7",
   "next": [
     "Merge PR 431 (touch fix) after your playtest. It is 1 commit, so updating from main is easy.",
     "PR 434 (math screen) merged Nov 13. The Why card's button now opens Math behind ?scale=1.",

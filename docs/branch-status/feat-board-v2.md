@@ -162,9 +162,44 @@ Base: origin/main `44d921d7377c8f907fd7211ebff1a9131ba4a603`
   - Tests: `node --test src/board/board-data.test.ts` — 47 pass,
     0 fail (unchanged). `npx tsc --noEmit` — clean.
 
+- Step 7 — snapshot refresh script (`scripts/board/refresh-snapshot.mjs`):
+  - Refreshes ONLY `asOf` + `main` in `src/board/snapshot.json`:
+    `main` = `git rev-parse --short=8 origin/main` (8 chars, matching
+    the existing value's style); `asOf` regenerated in the existing
+    "Read from the repo <Mon D, YYYY, h:MM AM/PM Central>" shape via
+    Intl.DateTimeFormat in America/Chicago. The script never fetches
+    (header says run `git fetch origin` first) and fails loudly when
+    origin/main is unavailable.
+  - Everything else is hand-written and preserved: the file is
+    re-serialized as 2-space JSON + trailing newline, which
+    round-trips the current file byte-for-byte, so the refresh diff
+    is only the two refreshed lines.
+  - Story `prs` lists are validated, never rewritten: structural
+    checks mirroring the snapshot tests (top-level keys, non-empty
+    lanes/stories, unique ids, waitsOnIds ⊆ ids, waitsOnIds exactly
+    consistent with a standalone re-implementation of
+    buildDependencyEdges' PR-naming rule, positive-integer prs), plus
+    every referenced PR must exist in the public unauthenticated
+    GitHub pulls payload (paginated, per_page=100 until a short page).
+  - Fail-loud: any validation failure, a missing referenced PR, or an
+    unreachable / non-200 (403/429 included) API response prints to
+    stderr, exits non-zero and writes nothing. Write is atomic
+    (snapshot.json.tmp + rename; tmp removed on error).
+  - Docs: `docs/board-snapshot-refresh.md` (what it refreshes / never
+    touches, how to run, fail-loud behaviour).
+  - Run once as its own test: refreshed `main` 10affd0e -> 44d921d7
+    and `asOf` to "Nov 13, 2026, 4:38 PM Central"; 46 stories, 36
+    referenced PRs verified (7 open / 29 merged / 0 closed-unmerged).
+    The snapshot diff was ONLY those two lines. (The public API's
+    unauthenticated rate limit is per-egress-IP on this VM: several
+    invocations correctly failed loud with 403 and wrote nothing
+    before one succeeded — the script itself never retries.)
+  - Tests: `node --test src/board/board-data.test.ts` — 47 pass,
+    0 fail (unchanged). `npx tsc --noEmit` — clean.
+
 ## Next step
 - Coordinator verification (real 390px render + full gates) and
-  panel review of steps 5–6; merge remains the owner's word.
+  panel review of steps 5–7; merge remains the owner's word.
 
 ## Open questions
 - None for steps 1–4.
