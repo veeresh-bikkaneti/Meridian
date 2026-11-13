@@ -44,10 +44,33 @@ test("CSP: frame-ancestors none, only the allowed third parties, no trackers", (
   assert.match(csp, /script-src [^;]*https:\/\/static\.cloudflareinsights\.com/);
   assert.match(csp, /connect-src [^;]*https:\/\/cloudflareinsights\.com/);
   assert.match(csp, /connect-src [^;]*https:\/\/server\.arcgisonline\.com/);
+  assert.match(csp, /connect-src [^;]*https:\/\/api\.github\.com/);
   assert.match(csp, /connect-src 'self'/);
   for (const banned of ["google", "clarity", "doubleclick", "facebook"]) {
     assert.ok(!csp.toLowerCase().includes(banned), `CSP must not allow ${banned}`);
   }
+});
+
+test("CSP: Turnstile host in script-src and child-src, and no other hosts", () => {
+  // The /board feature-request form loads the Cloudflare Turnstile
+  // widget: a script and an iframe, both from challenges.cloudflare.com.
+  // script-src covers the script; child-src is the frame-src fallback
+  // that covers the iframe (no separate frame-src directive is set).
+  const csp = header("Content-Security-Policy") ?? "";
+  assert.match(csp, /script-src [^;]*https:\/\/challenges\.cloudflare\.com/);
+  assert.match(csp, /child-src [^;]*https:\/\/challenges\.cloudflare\.com/);
+  // Pin the FULL set of third-party hosts in the policy, so widening it
+  // for Turnstile cannot smuggle in any other host unnoticed.
+  const hosts = [...new Set([...csp.matchAll(/https:\/\/[a-z0-9.-]+/gi)].map((m) => m[0]))].sort();
+  assert.deepEqual(hosts, [
+    "https://api.github.com",
+    "https://challenges.cloudflare.com",
+    "https://cloudflareinsights.com",
+    "https://meridian-crash-report.knowledgetest.workers.dev",
+    "https://server.arcgisonline.com",
+    "https://static.cloudflareinsights.com",
+    "https://veeresh-bikkaneti.github.io",
+  ]);
 });
 
 test("hashed /assets/* are immutable; sw.js and flags.json always revalidate", () => {

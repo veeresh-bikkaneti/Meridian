@@ -227,7 +227,7 @@ export const DEFAULT_ALLOWED_ORIGINS = ["https://veeresh-bikkaneti.github.io"];
  * for an allowed same-origin request (no CORS header needed), or null to
  * refuse. Never "*".
  */
-function corsOrigin(request: Request, env: ContactEnv): string | null {
+export function corsOrigin(request: Request, env: ContactEnv): string | null {
   const origin = request.headers.get("origin");
   if (!origin) return ""; // no CORS header needed; POST without Origin is refused in the handler
   if (origin === new URL(request.url).origin) return "";
@@ -236,7 +236,7 @@ function corsOrigin(request: Request, env: ContactEnv): string | null {
   return list.includes(origin) ? origin : null;
 }
 
-function json(status: number, body: unknown, origin: string | null, extra?: Record<string, string>): Response {
+export function json(status: number, body: unknown, origin: string | null, extra?: Record<string, string>): Response {
   const headers: Record<string, string> = {
     "content-type": "application/json",
     "cache-control": "no-store",

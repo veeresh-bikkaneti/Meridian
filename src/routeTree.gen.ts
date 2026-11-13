@@ -10,14 +10,22 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BoardRouteImport } from './routes/board'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CreditsRouteImport } from './routes/credits'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
+import { Route as ApiFeatureRequestRouteImport } from './routes/api/feature-request'
+import { Route as BoardIssuesRouteImport } from './routes/board_.issues'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BoardRoute = BoardRouteImport.update({
+  id: '/board',
+  path: '/board',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -40,43 +48,90 @@ const ApiContactRoute = ApiContactRouteImport.update({
   path: '/api/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiFeatureRequestRoute = ApiFeatureRequestRouteImport.update({
+  id: '/api/feature-request',
+  path: '/api/feature-request',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BoardIssuesRoute = BoardIssuesRouteImport.update({
+  id: '/board_/issues',
+  path: '/board/issues',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/board': typeof BoardRoute
   '/contact': typeof ContactRoute
   '/credits': typeof CreditsRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
+  '/api/feature-request': typeof ApiFeatureRequestRoute
+  '/board/issues': typeof BoardIssuesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/board': typeof BoardRoute
   '/contact': typeof ContactRoute
   '/credits': typeof CreditsRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
+  '/api/feature-request': typeof ApiFeatureRequestRoute
+  '/board/issues': typeof BoardIssuesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/board': typeof BoardRoute
   '/contact': typeof ContactRoute
   '/credits': typeof CreditsRoute
   '/privacy': typeof PrivacyRoute
   '/api/contact': typeof ApiContactRoute
+  '/api/feature-request': typeof ApiFeatureRequestRoute
+  '/board_/issues': typeof BoardIssuesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/credits' | '/privacy' | '/api/contact'
+  fullPaths:
+    | '/'
+    | '/board'
+    | '/contact'
+    | '/credits'
+    | '/privacy'
+    | '/api/contact'
+    | '/api/feature-request'
+    | '/board/issues'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/credits' | '/privacy' | '/api/contact'
-  id: '__root__' | '/' | '/contact' | '/credits' | '/privacy' | '/api/contact'
+  to:
+    | '/'
+    | '/board'
+    | '/contact'
+    | '/credits'
+    | '/privacy'
+    | '/api/contact'
+    | '/api/feature-request'
+    | '/board/issues'
+  id:
+    | '__root__'
+    | '/'
+    | '/board'
+    | '/contact'
+    | '/credits'
+    | '/privacy'
+    | '/api/contact'
+    | '/api/feature-request'
+    | '/board_/issues'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BoardRoute: typeof BoardRoute
   ContactRoute: typeof ContactRoute
   CreditsRoute: typeof CreditsRoute
   PrivacyRoute: typeof PrivacyRoute
   ApiContactRoute: typeof ApiContactRoute
+  ApiFeatureRequestRoute: typeof ApiFeatureRequestRoute
+  BoardIssuesRoute: typeof BoardIssuesRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -86,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/board': {
+      id: '/board'
+      path: '/board'
+      fullPath: '/board'
+      preLoaderRoute: typeof BoardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -116,15 +178,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/feature-request': {
+      id: '/api/feature-request'
+      path: '/api/feature-request'
+      fullPath: '/api/feature-request'
+      preLoaderRoute: typeof ApiFeatureRequestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/board_/issues': {
+      id: '/board_/issues'
+      path: '/board/issues'
+      fullPath: '/board/issues'
+      preLoaderRoute: typeof BoardIssuesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BoardRoute: BoardRoute,
   ContactRoute: ContactRoute,
   CreditsRoute: CreditsRoute,
   PrivacyRoute: PrivacyRoute,
   ApiContactRoute: ApiContactRoute,
+  ApiFeatureRequestRoute: ApiFeatureRequestRoute,
+  BoardIssuesRoute: BoardIssuesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

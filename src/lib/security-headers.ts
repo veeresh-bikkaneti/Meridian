@@ -36,19 +36,27 @@
  *   journal prefetch fetch() them. Without both, CSP blocks journal movies
  *   in production — the player shows the still, prefetch silently warms
  *   nothing.
+ * - api.github.com: the /board page fetches public pull-request state
+ *   from the GitHub REST API (no auth, no token). Nothing else about
+ *   the board leaves the browser.
+ *
  * - blob: workers: MapLibre starts its tile worker from a blob URL.
+ * - challenges.cloudflare.com: the Cloudflare Turnstile widget (script +
+ *   iframe) for the grown-ups feature-request form. The script is loaded
+ *   only by src/board/feature-request-form.tsx, i.e. only on /board —
+ *   the game's pages never request it.
  */
 
 export const CONTENT_SECURITY_POLICY = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com",
+  "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://challenges.cloudflare.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://server.arcgisonline.com",
   "font-src 'self' data:",
   "media-src 'self' data: blob: https://veeresh-bikkaneti.github.io",
-  "connect-src 'self' https://server.arcgisonline.com https://meridian-crash-report.knowledgetest.workers.dev https://cloudflareinsights.com https://veeresh-bikkaneti.github.io",
+  "connect-src 'self' https://server.arcgisonline.com https://meridian-crash-report.knowledgetest.workers.dev https://cloudflareinsights.com https://veeresh-bikkaneti.github.io https://api.github.com",
   "worker-src 'self' blob:",
-  "child-src 'self' blob:",
+  "child-src 'self' blob: https://challenges.cloudflare.com",
   "manifest-src 'self'",
   "object-src 'none'",
   "base-uri 'self'",
