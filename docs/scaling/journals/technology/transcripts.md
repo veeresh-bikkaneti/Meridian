@@ -55,7 +55,7 @@ room cover? *(Answer: 50 × 30 = 1,500 square feet.)* [T3-3]
 
 **Narration (18 spoken words, PROPOSED):**
 > Hey kids, have you heard about this place? Philadelphia, 1946. ENIAC, an
-> early computer, filled a big room. [T3-2, T3-3, T3-6, T3-8]
+> early computer, needed a big room. [T3-2, T3-3, T3-6, T3-8]
 
 **What the picture shows:** long rows of tall machine panels around a
 basement room, with many small tubes. No people added, no glowing effect, no
