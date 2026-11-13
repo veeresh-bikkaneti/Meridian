@@ -33,7 +33,7 @@ export function ScreenShell({
   /** A one-step back inside a drill-down (not home): labelled "Back". */
   | { onBack: () => void; onHome?: never }
 ) & {
-  /** A SoundToggle, only when the screen plays sound. */
+  /** Trailing header item: a SoundToggle, or a non-interactive wordmark. */
   sound?: ReactNode;
   /** Optional decorative picture above the titles; the titles then sit on
    *  an opaque band under it (never text over picture pixels). */
@@ -64,7 +64,7 @@ export function ScreenShell({
       {...data}
     >
       <header>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           {onHome ? (
             <HomeButton onHome={onHome} className="-ml-3" />
           ) : (

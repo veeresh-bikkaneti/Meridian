@@ -68,6 +68,7 @@ const CONTEXT_FILES = Object.freeze([
   "home-greeting-keyboard.desktop.spec.ts",
   "home-hero-trekker.desktop.spec.ts",
   "home-layout.desktop.spec.ts",
+  "why-learn-page.desktop.spec.ts",
   "home-visual-layout.desktop.spec.ts",
   "loading-orbs.desktop.spec.ts",
   "reset-history.desktop.spec.ts",

@@ -2241,12 +2241,39 @@
   background: #fdfaf2;
   border-radius: 18px;
 }
+/* Fixed aspect ratio per breakpoint (plus width/height attributes): the
+   box is sized before the picture loads, so there is no layout shift. */
 .why-learn-hero {
   display: block;
   width: 100%;
-  height: clamp(150px, 28vw, 300px);
+  height: auto;
+  aspect-ratio: 16 / 7;
   object-fit: cover;
-  object-position: 50% 45%;
+  object-position: 50% 50%;
+}
+@media (min-width: 681px) {
+  .why-learn-hero {
+    aspect-ratio: 32 / 9;
+  }
+}
+.why-learn-wordmark {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(253, 250, 242, 0.92);
+  color: #1b2b31;
+  font-family: var(--font-atlas-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+.why-learn-wordmark svg {
+  width: 22px;
+  height: 22px;
 }
 .why-learn-card {
   min-height: 88px;
