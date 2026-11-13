@@ -104,14 +104,30 @@ export function isMainModule(moduleUrl) {
   }
 }
 
+/**
+ * On Windows a bare tool name such as `vite` is a `.cmd` shim that spawn()
+ * cannot find without a shell. Full paths and `node` spawn directly.
+ */
+function needsShell(command) {
+  return process.platform === "win32" && !/[\\/]/.test(command) && command !== "node";
+}
+
 function main(argv) {
+  // Leading `--env KEY=VALUE` pairs set extra variables for the child, so
+  // `GITHUB_PAGES=1 cmd` works the same under cmd.exe and POSIX shells.
+  const extra = {};
+  while (argv[0] === "--env" && /^[A-Za-z_][A-Za-z0-9_]*=/.test(argv[1] ?? "")) {
+    const [pair] = argv.splice(0, 2).slice(1);
+    const eq = pair.indexOf("=");
+    extra[pair.slice(0, eq)] = pair.slice(eq + 1);
+  }
   const [command, ...args] = argv;
   if (!command) {
-    console.error("usage: node scripts/with-app-env.mjs <command> [args…]");
+    console.error("usage: node scripts/with-app-env.mjs [--env KEY=VALUE]… <command> [args…]");
     process.exit(2);
   }
-  const env = mergeAppEnv(readAppEnv(projectRoot()), process.env);
-  const child = spawn(command, args, { stdio: "inherit", env });
+  const env = { ...mergeAppEnv(readAppEnv(projectRoot()), process.env), ...extra };
+  const child = spawn(command, args, { stdio: "inherit", env, shell: needsShell(command) });
   // The dev server is long-running and is stopped by signalling this wrapper.
   for (const signal of ["SIGINT", "SIGTERM", "SIGHUP"]) {
     process.on(signal, () => child.kill(signal));

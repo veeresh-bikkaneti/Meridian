@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "node scripts/with-app-env.mjs vite dev --host 0.0.0.0 --port 8080",
     "build": "node scripts/with-app-env.mjs vite build && npm run db:migrate",
-    "build:pages": "GITHUB_PAGES=1 node scripts/with-app-env.mjs vite build",
+    "build:pages": "node scripts/with-app-env.mjs --env GITHUB_PAGES=1 vite build",
     "db:migrate": "node scripts/migrate.mjs",
     "build:dev": "node scripts/with-app-env.mjs vite build --mode development",
     "preview": "node scripts/with-app-env.mjs vite preview",
@@ -23,7 +23,7 @@
     "packs:validate": "node --experimental-strip-types scripts/packs/validate-pack.mjs --all",
     "packs:compose": "node scripts/packs/compose-packs.mjs capitals",
     "packs:coldtrail": "node --experimental-strip-types scripts/build-coldtrail-capitals.mjs",
-    "test": "node --test 'scripts/**/*.test.mjs'; S1=$?; node --experimental-strip-types --test 'src/**/*.test.ts'; S2=$?; test $S1 -eq 0 -a $S2 -eq 0",
+    "test": "node scripts/run-tests.mjs",
     "format": "prettier --write .",
     "prebuild": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs && node scripts/packs/check-flags.mjs && node scripts/detective/check-audio-manifest.mjs && node scripts/validate-journal-manifest.mjs --manifest public/videos/journal-manifest.json --images-dir public/images/journal",
     "prebuild:pages": "node scripts/write-build-meta.mjs && node --experimental-strip-types scripts/check-generated-places.mjs && node scripts/lint-cards.mjs && node scripts/packs/check-flags.mjs && node scripts/detective/check-audio-manifest.mjs && node scripts/validate-journal-manifest.mjs --manifest public/videos/journal-manifest.json --images-dir public/images/journal",
