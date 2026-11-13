@@ -82,7 +82,7 @@ test("board at desktop: form posts to /api/feature-request (mocked)", async ({ p
   await form.locator("textarea").fill("A quiz about famous rivers, please");
   await form.locator("select").first().selectOption("7-10");
   await form.locator("select").nth(1).selectOption("Geography");
-  await form.getByRole("button", { name: "Send idea" }).click();
+  await form.getByRole("button", { name: "Send tip" }).click();
 
   await expect(page.getByTestId("feature-request-sent")).toBeVisible();
   expect(postedUrl).toContain("/api/feature-request");
@@ -146,14 +146,14 @@ test("board 3D map: clicking a story block highlights its dependency chain", asy
     found = await page.evaluate(
       () => document.querySelector('[data-testid="map-selection"]')?.textContent ?? "",
     );
-    if (found.startsWith("Selected: Holmes and Watson in math.")) break;
+    if (found.startsWith("Selected case: Holmes and Watson in math.")) break;
   }
-  expect(found).toContain("Waits on (explicit PR waits):");
+  expect(found).toContain("Needs a clue from (explicit PR waits):");
   expect(found).toContain("Clue pacing and one voice at a time");
   expect(found).toContain("Math subject screen, 3 items per age group");
   expect(found).toContain("Shared voice channel (one speaker at a time)");
   await expect(canvas).toHaveAttribute("data-selected-story", "Holmes and Watson in math");
-  await expect(selection).toContainText("Waits on (explicit PR waits):");
+  await expect(selection).toContainText("Needs a clue from (explicit PR waits):");
 });
 
 test("board issues page at 390px: groups by story, unmapped stays unmapped (network mocked)", async ({
@@ -420,7 +420,7 @@ test("board v2 phase A screenshots (snapshot data, GitHub mocked off)", async ({
   await page.keyboard.press("Escape");
   await expect(aside).toHaveCount(0);
 
-  await page.getByRole("heading", { name: "Dependencies" }).scrollIntoViewIfNeeded();
+  await page.getByRole("heading", { name: "Dependency trails" }).scrollIntoViewIfNeeded();
   await expect(page.locator(".board-dep-row").first()).toBeVisible();
   await page.screenshot({ path: path.join(dir, "dependency-list.png") });
 
@@ -437,7 +437,7 @@ test("board v2 phase A screenshots (snapshot data, GitHub mocked off)", async ({
       }),
     )
     .toBe(true);
-  // Frame the scrum board itself: at 390px the header + Next 3 moves
+  // Frame the scrum board itself: at 390px the header + Coming next
   // fill the first screen, so scroll the columns into view — the
   // second column peeking at the right edge is the scroll cue.
   await page.getByRole("heading", { name: "Scrum board" }).scrollIntoViewIfNeeded();
@@ -455,4 +455,107 @@ test("no Home or game screen links to /board", async ({ page }) => {
     ).length;
   });
   expect(boardLinks).toBe(0);
+});
+
+// ---------------------------------------------------------------------------
+// Phase B game layer. Expected values are computed from the snapshot file
+// itself, never hardcoded: GitHub is aborted in this spec, so the page is
+// rendering exactly this snapshot.
+// ---------------------------------------------------------------------------
+
+interface SnapshotStoryForGame {
+  id: string;
+  title: string;
+  status: string;
+  waitsOnIds?: string[];
+}
+
+function snapshotStoriesForGame(): SnapshotStoryForGame[] {
+  const parsed = JSON.parse(readFileSync("src/board/snapshot.json", "utf8")) as {
+    stories: SnapshotStoryForGame[];
+  };
+  return parsed.stories;
+}
+
+test("board v2 game layer: XP bar counts cases closed from the snapshot", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+
+  const stories = snapshotStoriesForGame();
+  const closed = stories.filter((s) => s.status === "done").length;
+  const total = stories.length;
+
+  await expect(page.getByTestId("xp-progress")).toContainText(`Cases closed ${closed} / ${total}`);
+});
+
+test("board v2 game layer: next to crack is the open case that unblocks the most", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+
+  const stories = snapshotStoriesForGame();
+  let best: { story: SnapshotStoryForGame; unblocks: number } | null = null;
+  for (const candidate of stories) {
+    if (candidate.status === "done") continue;
+    const unblocks = stories.filter((s) => (s.waitsOnIds ?? []).includes(candidate.id)).length;
+    if (best === null || unblocks > best.unblocks) best = { story: candidate, unblocks };
+  }
+  if (!best) throw new Error("snapshot has no open story to crack next");
+  const winner: { story: SnapshotStoryForGame; unblocks: number } = best;
+
+  const chip = page.getByTestId("next-to-crack");
+  await expect(chip).toContainText(winner.story.title);
+  await expect(chip).toContainText(`unblocks ${winner.unblocks}`);
+});
+
+test("board v2 game layer: reduced motion done card stamp is visible with no animation", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+
+  const card = page.locator('[data-testid="story-card"][data-status="done"]').first();
+  await expect(card).toBeVisible();
+  const stamp = card.locator(".board-case-stamp");
+  await expect(stamp).toBeVisible();
+  const animationName = await stamp.evaluate((el) => getComputedStyle(el).animationName);
+  expect(animationName).toBe("none");
+});
+
+test("board v2 game layer: clicking a map block opens its inspector", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+
+  const canvas = page.getByTestId("feature-map-canvas");
+  await expect(canvas).toBeVisible();
+  await canvas.scrollIntoViewIfNeeded();
+  const box = await canvas.boundingBox();
+  if (!box) throw new Error("canvas has no box");
+
+  // Same aiming pattern as the chain-highlight test above: use the
+  // projected node points the map publishes on the canvas.
+  await page.waitForTimeout(800);
+  const rawPoints = await canvas.getAttribute("data-node-points");
+  if (!rawPoints) throw new Error("map published no node points");
+  const points = JSON.parse(rawPoints) as { t: string; x: number; y: number }[];
+  const target = points.find((p) => p.t === "Holmes and Watson in math");
+  if (!target) throw new Error("node points do not include the math story");
+  const selection = page.getByTestId("map-selection");
+  let found = "";
+  for (const dy of [0, -0.012, 0.012, -0.025, 0.025]) {
+    await page.mouse.click(box.x + box.width * target.x, box.y + box.height * (target.y + dy));
+    await page.waitForTimeout(250);
+    found = await page.evaluate(
+      () => document.querySelector('[data-testid="map-selection"]')?.textContent ?? "",
+    );
+    if (found.startsWith("Selected case: Holmes and Watson in math.")) break;
+  }
+  expect(found.startsWith("Selected case: Holmes and Watson in math.")).toBe(true);
+  await expect(selection).toContainText("Selected case: Holmes and Watson in math.");
+
+  const aside = page.locator(".board-inspector");
+  await expect(aside).toBeVisible();
+  await expect(aside).toContainText("Holmes and Watson in math");
 });
