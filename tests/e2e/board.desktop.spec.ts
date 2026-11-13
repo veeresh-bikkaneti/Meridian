@@ -1,5 +1,6 @@
 import { test, expect } from "playwright/test";
-import { readFileSync } from "node:fs";
+import { mkdirSync, readFileSync } from "node:fs";
+import path from "node:path";
 import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
 
 /**
@@ -253,6 +254,194 @@ test("board with reduced motion: lands on the list view, no 3D canvas", async ({
   } finally {
     await context.close();
   }
+});
+
+/** Total story cards across the three scrum columns. */
+async function scrumCardCount(page: import("playwright/test").Page): Promise<number> {
+  let n = 0;
+  for (const status of ["not-started", "in-progress", "done"]) {
+    n += await page.getByTestId(`scrum-column-${status}`).getByTestId("story-card").count();
+  }
+  return n;
+}
+
+/** The number in the header's Blocked tile (the fifth tile). */
+async function readBlockedTile(page: import("playwright/test").Page): Promise<number> {
+  const tile = page.locator(".board-tile").filter({ hasText: "Blocked" });
+  await expect(tile).toHaveCount(1);
+  return Number(((await tile.locator("b").textContent()) ?? "").trim());
+}
+
+test("board v2 search: a distinctive title word narrows the scrum columns", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+  const total = await scrumCardCount(page);
+  expect(total).toBe(46);
+
+  // "jitter" matches exactly one story across title/lane/owner in the
+  // snapshot (verified against snapshot.json): "Held-finger jitter fix
+  // on the clue berth". GitHub is aborted in this spec, so the snapshot
+  // set is the set being searched.
+  await page.locator(".board-search input").fill("jitter");
+  const line = page.getByText(/Showing \d+ of \d+ stories/);
+  await expect(line).toHaveText(`Showing 1 of ${total} stories`);
+  const columns = page.locator(".board-columns");
+  await expect(columns.getByTestId("story-card")).toHaveCount(1);
+  await expect(columns).toContainText("Held-finger jitter fix on the clue berth");
+  await expect(columns).not.toContainText("Physics spec");
+
+  await page.locator(".board-search input").fill("");
+  await expect(line).toHaveCount(0);
+  await expect.poll(() => scrumCardCount(page)).toBe(total);
+});
+
+test("board v2 blocked-only filter: visible cards match the Blocked tile count", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+  const total = await scrumCardCount(page);
+  const blocked = await readBlockedTile(page);
+  expect(blocked).toBeGreaterThan(0);
+  expect(blocked).toBeLessThan(total);
+
+  const toggle = page.getByRole("button", { name: "Blocked only" });
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByText(/Showing \d+ of \d+ stories/)).toHaveText(
+    `Showing ${blocked} of ${total} stories`,
+  );
+  await expect.poll(() => scrumCardCount(page)).toBe(blocked);
+
+  // Snapshot-specific title check, safe here because GitHub is aborted
+  // in this spec so no live overlay can land: "Truce pennant port" has
+  // no linked PRs of its own and waits (snapshot waitsOnIds) on two
+  // in-progress stories, so it is blocked; "Physics spec" is done.
+  const columns = page.locator(".board-columns");
+  await expect(columns).toContainText("Truce pennant port");
+  await expect(columns).not.toContainText("Physics spec");
+});
+
+test("board v2 inspector: card title opens it, Escape closes and returns focus", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+
+  const card = page.getByTestId("scrum-column-not-started").getByTestId("story-card").first();
+  const titleButton = card.locator(".board-card-title-button");
+  const title = ((await titleButton.textContent()) ?? "").trim();
+  expect(title.length).toBeGreaterThan(0);
+  await titleButton.click();
+
+  const aside = page.locator(".board-inspector");
+  await expect(aside).toBeVisible();
+  await expect(aside.locator("h3")).toHaveText(title);
+  await expect(aside).toContainText("Why this status:");
+  await expect(aside).toContainText(
+    /Snapshot status|Done —|In progress —|Keeps the snapshot status/,
+  );
+  await expect(aside.getByRole("button", { name: "Close story inspector" })).toBeVisible();
+
+  await page.keyboard.press("Escape");
+  await expect(aside).toHaveCount(0);
+  await expect
+    .poll(() => page.evaluate(() => document.activeElement?.textContent?.trim() ?? ""))
+    .toBe(title);
+});
+
+test("board v2 at 390px: columns scroll inside their container, inspector stacks below", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openBoard(page);
+
+  const overflow = await page.evaluate(() => {
+    return document.documentElement.scrollWidth - document.documentElement.clientWidth;
+  });
+  expect(overflow).toBeLessThanOrEqual(0);
+  const internal = await page.evaluate(() => {
+    const el = document.querySelector(".board-columns")!;
+    return { scroll: el.scrollWidth, client: el.clientWidth };
+  });
+  expect(internal.scroll).toBeGreaterThan(internal.client);
+
+  const card = page.getByTestId("scrum-column-not-started").getByTestId("story-card").first();
+  await card.locator(".board-card-title-button").click();
+  const aside = page.locator(".board-inspector");
+  await expect(aside).toBeVisible();
+  const boxes = await page.evaluate(() => {
+    const cols = document.querySelector(".board-columns")!.getBoundingClientRect();
+    const ins = document.querySelector(".board-inspector")!.getBoundingClientRect();
+    return { colsBottom: cols.bottom, asideTop: ins.top };
+  });
+  expect(boxes.asideTop).toBeGreaterThanOrEqual(boxes.colsBottom - 4);
+  await page.keyboard.press("Escape");
+  await expect(aside).toHaveCount(0);
+
+  await page.getByTestId("list-view-toggle").click();
+  const list = page.getByTestId("board-list-view");
+  await expect(list.getByTestId("board-lane")).toHaveCount(8);
+});
+
+test("home loads no board code: no board chunks, feature-map chunk, or Turnstile requests", async ({
+  page,
+}) => {
+  const urls: string[] = [];
+  page.on("request", (req) => urls.push(req.url()));
+  await page.goto(APP_NO_IDLE);
+  await page.waitForTimeout(3000);
+  expect(urls.filter((u) => /board-[A-Za-z0-9_-]+\.js/.test(u) || /feature-map-/.test(u))).toEqual(
+    [],
+  );
+  expect(urls.filter((u) => u.includes("challenges.cloudflare.com"))).toEqual([]);
+});
+
+test("board v2 phase A screenshots (snapshot data, GitHub mocked off)", async ({ page }) => {
+  const dir = path.resolve("..", "screenshots-A");
+  mkdirSync(dir, { recursive: true });
+
+  await page.setViewportSize({ width: 1280, height: 1600 });
+  await openBoard(page);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(dir, "board-desktop.png") });
+
+  // A story with linked PRs (355–358) and a status-why line.
+  const doneCard = page
+    .getByTestId("scrum-column-done")
+    .getByTestId("story-card")
+    .filter({ hasText: "Holmes and Watson pair in the game" });
+  await doneCard.locator(".board-card-title-button").click();
+  const aside = page.locator(".board-inspector");
+  await expect(aside).toBeVisible();
+  await expect(aside).toContainText("PR 355");
+  await aside.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: path.join(dir, "inspector-open.png") });
+  await page.keyboard.press("Escape");
+  await expect(aside).toHaveCount(0);
+
+  await page.getByRole("heading", { name: "Dependencies" }).scrollIntoViewIfNeeded();
+  await expect(page.locator(".board-dep-row").first()).toBeVisible();
+  await page.screenshot({ path: path.join(dir, "dependency-list.png") });
+
+  // Resize the loaded page instead of re-navigating to the same URL:
+  // a second goto lands on the app service worker and serves its 404
+  // body in this harness. The responsive rules are pure CSS, so a
+  // resize is the honest 390px render of the same page.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect
+    .poll(() =>
+      page.evaluate(() => {
+        const el = document.querySelector(".board-columns")!;
+        return el.scrollWidth > el.clientWidth;
+      }),
+    )
+    .toBe(true);
+  // Frame the scrum board itself: at 390px the header + Next 3 moves
+  // fill the first screen, so scroll the columns into view — the
+  // second column peeking at the right edge is the scroll cue.
+  await page.getByRole("heading", { name: "Scrum board" }).scrollIntoViewIfNeeded();
+  await page.screenshot({ path: path.join(dir, "board-390.png") });
 });
 
 test("no Home or game screen links to /board", async ({ page }) => {

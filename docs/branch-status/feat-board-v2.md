@@ -197,9 +197,20 @@ Base: origin/main `44d921d7377c8f907fd7211ebff1a9131ba4a603`
   - Tests: `node --test src/board/board-data.test.ts` — 47 pass,
     0 fail (unchanged). `npx tsc --noEmit` — clean.
 
+- Phase A verification (coordinator pass, 2026-11-13): e2e coverage for
+  steps 1–7 added to `tests/e2e/board.desktop.spec.ts` (6 new tests:
+  search narrowing, Blocked-only filter vs the header tile count,
+  inspector open / Escape / focus-return, 390px internal scrum scroll +
+  inspector stacking + 8 lanes, Home loads no board/feature-map chunk
+  and no Turnstile request, and a screenshots test). Baseline on the
+  unmodified spec: 7/7. Final full board spec against the built
+  artifact (buildId f69da1f0, GitHub mocked to fail — snapshot data
+  throughout): 13/13 passed. Screenshots eyeballed in
+  `~/workspace/board-v2/screenshots-A/` (board-desktop, board-390,
+  inspector-open, dependency-list). No src changes; no src bug found.
+
 ## Next step
-- Coordinator verification (real 390px render + full gates) and
-  panel review of steps 5–7; merge remains the owner's word.
+- Panel review of steps 5–7; merge remains the owner's word.
 
 ## Open questions
 - None for steps 1–4.
