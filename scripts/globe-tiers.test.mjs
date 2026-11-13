@@ -67,5 +67,6 @@ test("checkGlobeTiers detects a stale, missing or extra tier file", () => {
   assert.ok(checkGlobeTiers(canonical, out).some((p) => /globe-t1\.json: differs/.test(p)));
   writeFileSync(join(out, "stray.json"), "{}");
   assert.ok(checkGlobeTiers(canonical, out).some((p) => /unexpected file/.test(p)));
-  assert.ok(GLOBE_CHUNK_PATH.endsWith("chunks/globe.json") && TIERS_DIR.endsWith("geonames/tiers"));
+  const posix = (p) => p.replaceAll("\\", "/");
+  assert.ok(posix(GLOBE_CHUNK_PATH).endsWith("chunks/globe.json") && posix(TIERS_DIR).endsWith("geonames/tiers"));
 });

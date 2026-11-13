@@ -6,7 +6,7 @@
  */
 import assert from "node:assert/strict";
 import test from "node:test";
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
 
 const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), "utf8");
 const SITE = "https://meridian.knowledgetest.workers.dev";
@@ -50,12 +50,62 @@ test("robots.txt allows crawling and points at the sitemap", () => {
   assert.match(text, new RegExp(`^Sitemap: ${SITE}/sitemap.xml$`, "m"));
 });
 
-test("sitemap.xml lists every page route", () => {
+/**
+ * Page routes that are deliberately noindex (owner-only surfaces: the
+ * story board and its issues map). They must NOT appear in the sitemap —
+ * listing a URL there while its page says noindex would contradict the
+ * noindex. Every other page route MUST be in the sitemap.
+ */
+const NOINDEX_ROUTES = new Map([
+  ["/board", "../src/routes/board.tsx"],
+  ["/board/issues", "../src/routes/board_.issues.tsx"],
+]);
+
+/** Recursively list page routes (.tsx pages only; api/*.ts are server routes). */
+function pageRoutes(dirUrl, prefix = "") {
+  const out = [];
+  for (const name of readdirSync(dirUrl)) {
+    if (statSync(new URL(name, dirUrl)).isDirectory()) {
+      out.push(...pageRoutes(new URL(`${name}/`, dirUrl), `${prefix}${name}/`));
+      continue;
+    }
+    if (!name.endsWith(".tsx") || name.startsWith("__")) continue;
+    const base = `${prefix}${name.replace(/\.tsx$/, "")}`;
+    // File-routing path for a page: dots and slashes both separate
+    // segments, index → its directory, and a segment ending in "_" is
+    // pathless (board_.issues.tsx → /board/issues).
+    const segments = base.split(/[/.]/).filter(Boolean);
+    const path =
+      segments[segments.length - 1] === "index"
+        ? `/${segments.slice(0, -1).join("/")}`
+        : `/${segments.map((s) => s.replace(/_$/, "")).join("/")}`;
+    out.push(path === "" ? "/" : path.replace(/\/$/, "") || "/");
+  }
+  return out;
+}
+
+test("sitemap.xml lists every public page route", () => {
   const xml = read("public/sitemap.xml");
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  const pages = readdirSync(new URL("../src/routes", import.meta.url))
-    .filter((n) => n.endsWith(".tsx") && !n.startsWith("__"))
-    .map((n) => (n === "index.tsx" ? "/" : `/${n.replace(/\.tsx$/, "")}`));
-  for (const p of pages) assert.ok(locs.includes(`${SITE}${p}`), `sitemap is missing ${p}`);
+  const pages = pageRoutes(new URL("../src/routes/", import.meta.url));
+  assert.ok(pages.length > 0, "route scan found no pages — the scan itself is broken");
+  for (const p of pages) {
+    if (NOINDEX_ROUTES.has(p)) {
+      assert.ok(!locs.includes(`${SITE}${p}`), `noindex route ${p} must not be listed in the sitemap`);
+    } else {
+      assert.ok(locs.includes(`${SITE}${p}`), `sitemap is missing ${p}`);
+    }
+  }
   for (const l of locs) assert.ok(l.startsWith(`${SITE}/`), `sitemap URL off-site: ${l}`);
+});
+
+test("every sitemap-excluded route really is noindex", () => {
+  for (const [path, file] of NOINDEX_ROUTES) {
+    const source = readFileSync(new URL(file, import.meta.url), "utf8");
+    assert.match(
+      source,
+      /name:\s*"robots",\s*content:\s*"noindex"/,
+      `${path} is excluded from the sitemap but its route does not declare noindex`,
+    );
+  }
 });

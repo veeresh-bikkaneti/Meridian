@@ -1,0 +1,604 @@
+{
+  "asOf": "Read from the repo Nov 13, 2026, 5:20 AM Central",
+  "main": "10affd0e",
+  "next": [
+    "Merge PR 431 (touch fix) after your playtest. It is 1 commit, so updating from main is easy.",
+    "PR 434 (math screen) merged Nov 13. The Why card's button now opens Math behind ?scale=1.",
+    "Update PR 430 from main, close its two-voices test gap, then merge. Pennant port and clue 4 wait on it."
+  ],
+  "lanes": [
+    {
+      "name": "Detective core",
+      "note": "GeoDetective with Holmes and Watson"
+    },
+    {
+      "name": "Why Do We Learn This? card",
+      "note": "Home card that opens the subjects"
+    },
+    {
+      "name": "Math",
+      "note": "Wave 1"
+    },
+    {
+      "name": "Physics and Chemistry",
+      "note": "Wave 2"
+    },
+    {
+      "name": "Social studies and GK",
+      "note": "Wave 3"
+    },
+    {
+      "name": "Journals",
+      "note": "Last wave"
+    },
+    {
+      "name": "Audio and clips",
+      "note": "Holmes and Watson voices"
+    },
+    {
+      "name": "Infra and process",
+      "note": "CI, scripts, repo rules"
+    }
+  ],
+  "stories": [
+    {
+      "lane": "Detective core",
+      "title": "Holmes and Watson pair in the game",
+      "status": "done",
+      "waitsOn": "Shipped",
+      "owner": null,
+      "prs": [
+        355,
+        356,
+        357,
+        358
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Detective core",
+      "title": "Age groups 7-10, 10-18, 18+ in code",
+      "status": "done",
+      "waitsOn": "Shipped",
+      "owner": null,
+      "prs": [
+        393,
+        414
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Detective core",
+      "title": "Held-finger jitter fix on the clue berth",
+      "status": "in-progress",
+      "waitsOn": "Your playtest, update from main, merge",
+      "owner": "You",
+      "prs": [
+        431
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Detective core",
+      "title": "Clue pacing and one voice at a time",
+      "status": "in-progress",
+      "waitsOn": "PR 431 first, update from main (47 behind), fix the two-voices test gap",
+      "owner": "Your agent",
+      "prs": [
+        430
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Detective core",
+      "title": "Pair art sheets and endings",
+      "status": "in-progress",
+      "waitsOn": "Failed endings check; re-test after PR 431",
+      "owner": "Your agent",
+      "prs": [
+        366
+      ],
+      "inferred": true
+    },
+    {
+      "lane": "Detective core",
+      "title": "Truce pennant port",
+      "status": "not-started",
+      "waitsOn": "PR 430 merged. Prompt is ready; old branch kept",
+      "owner": "Your agent",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Detective core",
+      "title": "Clue 4 opening cards 2 and 3",
+      "status": "not-started",
+      "waitsOn": "Pennant port",
+      "owner": "Your agent",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Detective core",
+      "title": "Holmes follow and Home-first landing",
+      "status": "in-progress",
+      "waitsOn": "About 460 commits behind main. Rebase or close, your call",
+      "owner": "You",
+      "prs": [
+        364,
+        368
+      ],
+      "inferred": true
+    },
+    {
+      "lane": "Why Do We Learn This? card",
+      "title": "Films (v4, dolly camera)",
+      "status": "done",
+      "waitsOn": "Shipped",
+      "owner": null,
+      "prs": [
+        433
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Why Do We Learn This? card",
+      "title": "Card on Home behind ?scale=1, button reads Coming soon",
+      "status": "done",
+      "waitsOn": "Shipped",
+      "owner": null,
+      "prs": [
+        433
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Why Do We Learn This? card",
+      "title": "Cloudflare deploy fix",
+      "status": "done",
+      "waitsOn": "Shipped Nov 13",
+      "owner": null,
+      "prs": [
+        435
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Why Do We Learn This? card",
+      "title": "3D film source files branch",
+      "status": "in-progress",
+      "waitsOn": "Films already on main; close it or merge for the source files",
+      "owner": "You",
+      "prs": [
+        432
+      ],
+      "inferred": true
+    },
+    {
+      "lane": "Why Do We Learn This? card",
+      "title": "Button opens a subject instead of Coming soon",
+      "status": "not-started",
+      "waitsOn": "PR 434 merged",
+      "owner": "You",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Why Do We Learn This? card",
+      "title": "Card shown to kids without ?scale=1",
+      "status": "not-started",
+      "waitsOn": "Math signed off by a named educator, then a small release PR",
+      "owner": "Educator",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Math",
+      "title": "Number strand spec",
+      "status": "done",
+      "waitsOn": "Merged; build gated",
+      "owner": null,
+      "prs": [
+        395
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Math",
+      "title": "Applied strand spec",
+      "status": "done",
+      "waitsOn": "Merged; build gated",
+      "owner": null,
+      "prs": [
+        405
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Math",
+      "title": "Subject registry (shell split)",
+      "status": "done",
+      "waitsOn": "On main; lists released subjects only",
+      "owner": null,
+      "prs": [
+        394
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Math",
+      "title": "Math subject screen, 3 items per age group",
+      "status": "in-progress",
+      "waitsOn": "Shipped Nov 13",
+      "owner": "You",
+      "prs": [
+        434
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Math",
+      "title": "Math sign-off and release PR",
+      "status": "not-started",
+      "waitsOn": "Named educator signs the rubric, then released: true",
+      "owner": "Educator",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Math",
+      "title": "Holmes and Watson in math",
+      "status": "not-started",
+      "waitsOn": "PR 434 and PR 430 merged. Prompt written",
+      "owner": "Your agent",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Physics and Chemistry",
+      "title": "Physics spec",
+      "status": "done",
+      "waitsOn": "Merged; gated",
+      "owner": null,
+      "prs": [
+        398
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Physics and Chemistry",
+      "title": "Chemistry spec",
+      "status": "done",
+      "waitsOn": "Merged; gated",
+      "owner": null,
+      "prs": [
+        400
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Physics and Chemistry",
+      "title": "Science definitions and scene engine spec",
+      "status": "done",
+      "waitsOn": "Merged; gated",
+      "owner": null,
+      "prs": [
+        404
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Physics and Chemistry",
+      "title": "Science expansion spec",
+      "status": "in-progress",
+      "waitsOn": "Educator and subject expert review",
+      "owner": "Educator",
+      "prs": [
+        429
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Physics and Chemistry",
+      "title": "Predict-and-see scene engine (code)",
+      "status": "not-started",
+      "waitsOn": "Math live first; your go to build",
+      "owner": "Your agent",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Physics and Chemistry",
+      "title": "Physics and Chemistry screens",
+      "status": "not-started",
+      "waitsOn": "Scene engine",
+      "owner": "Your agent",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Physics and Chemistry",
+      "title": "Wave 2 sign-off and release",
+      "status": "not-started",
+      "waitsOn": "Screens built",
+      "owner": "Educator",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Social studies and GK",
+      "title": "Social studies, economics, civics spec",
+      "status": "done",
+      "waitsOn": "Merged; gated",
+      "owner": null,
+      "prs": [
+        397
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Social studies and GK",
+      "title": "General knowledge spec",
+      "status": "done",
+      "waitsOn": "Merged; items G1, G4, G5 open for the educator",
+      "owner": null,
+      "prs": [
+        409
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Social studies and GK",
+      "title": "Humanities definitions spec",
+      "status": "done",
+      "waitsOn": "Merged; gated",
+      "owner": null,
+      "prs": [
+        399
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Social studies and GK",
+      "title": "Social studies and GK screens",
+      "status": "not-started",
+      "waitsOn": "Wave 2 live; your go to build",
+      "owner": "Your agent",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Social studies and GK",
+      "title": "Wave 3 sign-off and release",
+      "status": "not-started",
+      "waitsOn": "Screens built",
+      "owner": "Educator",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Journals",
+      "title": "7 journal specs (people and places, technology, WW2 monuments, world wars, modern world, great leaders, freedom fighters)",
+      "status": "done",
+      "waitsOn": "Merged; clips gated",
+      "owner": null,
+      "prs": [
+        402,
+        401,
+        410,
+        412,
+        411,
+        408,
+        407
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Journals",
+      "title": "Religious journal movies hidden",
+      "status": "done",
+      "waitsOn": "Shipped",
+      "owner": null,
+      "prs": [
+        416
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Journals",
+      "title": "Journal clips (Stage B video files)",
+      "status": "not-started",
+      "waitsOn": "Educator sign-off and your build go",
+      "owner": "You",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Journals",
+      "title": "Journals release",
+      "status": "not-started",
+      "waitsOn": "Clips made and checked",
+      "owner": "Educator",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Audio and clips",
+      "title": "Shared voice channel (one speaker at a time)",
+      "status": "in-progress",
+      "waitsOn": "See Detective core",
+      "owner": "Your agent",
+      "prs": [
+        430
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Audio and clips",
+      "title": "3 unrendered clips: beat-me, win-together, truce-watson",
+      "status": "not-started",
+      "waitsOn": "Render machine",
+      "owner": "Your agent",
+      "prs": [],
+      "inferred": true
+    },
+    {
+      "lane": "Audio and clips",
+      "title": "88 place names with no Holmes voice",
+      "status": "not-started",
+      "waitsOn": "Name probe run on the render machine",
+      "owner": "Your agent",
+      "prs": [],
+      "inferred": true
+    },
+    {
+      "lane": "Infra and process",
+      "title": "Lean test strategy in AGENTS.md",
+      "status": "done",
+      "waitsOn": "Shipped",
+      "owner": null,
+      "prs": [
+        423
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Infra and process",
+      "title": "Model-neutral agent rules",
+      "status": "done",
+      "waitsOn": "Shipped",
+      "owner": null,
+      "prs": [
+        406
+      ],
+      "inferred": false
+    },
+    {
+      "lane": "Infra and process",
+      "title": "Scale-play mockup",
+      "status": "in-progress",
+      "waitsOn": "You rejected it Nov 11; close it",
+      "owner": "You",
+      "prs": [
+        425
+      ],
+      "inferred": true
+    },
+    {
+      "lane": "Infra and process",
+      "title": "Scale-play v2 plan (inside the prod UI)",
+      "status": "in-progress",
+      "waitsOn": "Docs only on its branch; no PR yet",
+      "owner": "You",
+      "prs": [],
+      "inferred": false
+    },
+    {
+      "lane": "Infra and process",
+      "title": "Windows scripts: build:pages, npm test under cmd, line endings on globe data",
+      "status": "not-started",
+      "waitsOn": "Nothing; ready to start",
+      "owner": "Your agent",
+      "prs": [],
+      "inferred": true
+    },
+    {
+      "lane": "Infra and process",
+      "title": "Turn the Scaling streams ruleset back on",
+      "status": "not-started",
+      "waitsOn": "Your GitHub settings",
+      "owner": "You",
+      "prs": [],
+      "inferred": true
+    },
+    {
+      "lane": "Infra and process",
+      "title": "Open issues 344 and 319 (real unbuilt work)",
+      "status": "not-started",
+      "waitsOn": "Not yet placed in a stream",
+      "owner": "You",
+      "prs": [],
+      "inferred": true
+    }
+  ],
+  "donePath": [
+    {
+      "type": "stage",
+      "label": "Finish the open PRs"
+    },
+    {
+      "type": "gate",
+      "title": "Merge PR 431, then PR 430",
+      "description": "Touch fix, then one voice at a time.",
+      "live": false
+    },
+    {
+      "type": "gate",
+      "title": "PR 434 merged",
+      "description": "Math screen is on main behind ?scale=1; the card button works.",
+      "live": false
+    },
+    {
+      "type": "gate",
+      "title": "Pennant port, clue 4 fix, re-test PR 366",
+      "description": "In that order, each on fresh main.",
+      "live": false
+    },
+    {
+      "type": "gate",
+      "title": "Clear the stale PRs",
+      "description": "Decide 364, 368, 425, 432: rebase or close.",
+      "live": false
+    },
+    {
+      "type": "gate",
+      "title": "Render the missing voices",
+      "description": "3 clips plus the 88 place names.",
+      "live": false
+    },
+    {
+      "type": "stage",
+      "label": "Math live for kids"
+    },
+    {
+      "type": "gate",
+      "title": "Find one named educator",
+      "description": "A certified teacher signs the gate rubric for math.",
+      "live": false
+    },
+    {
+      "type": "gate",
+      "title": "Math release PR",
+      "description": "released: true, then ?scale=1 comes off so kids see the card.",
+      "live": true
+    },
+    {
+      "type": "gate",
+      "title": "Holmes and Watson join math",
+      "description": "Follow-up PR from the prompt already written.",
+      "live": false
+    },
+    {
+      "type": "stage",
+      "label": "Later waves, one at a time"
+    },
+    {
+      "type": "gate",
+      "title": "Wave 2: Physics and Chemistry",
+      "description": "Scene engine, two screens, PR 429 review, sign-off, release.",
+      "live": true
+    },
+    {
+      "type": "gate",
+      "title": "Wave 3: Social studies and GK",
+      "description": "Screens, sign-off, release.",
+      "live": true
+    },
+    {
+      "type": "gate",
+      "title": "Journals",
+      "description": "Clips, sign-off, release. Then it is all done.",
+      "live": true
+    }
+  ]
+}

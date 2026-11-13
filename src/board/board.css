@@ -1,0 +1,463 @@
+/* /board — live scrum board + feature map.
+ * Uses only the existing design tokens from src/styles.css
+ * (--atlas-*, --color-* via the base vars, --surface, --line, …) and
+ * the motion curves from src/styles/motion-tokens.css. No new palette,
+ * no new fonts. Phone first: everything stacks at 390px with no
+ * sideways scroll; columns appear on wide screens. */
+
+.board-page {
+  background: var(--atlas-bg-1);
+  color: var(--atlas-ink);
+  font-family: var(--font-atlas-body);
+  min-height: 100%;
+  padding: 20px 16px 48px;
+}
+
+.board-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  gap: 28px;
+  min-width: 0;
+}
+
+.board-page h1,
+.board-page h2,
+.board-page h3 {
+  font-family: var(--font-atlas-display);
+  margin: 0;
+  text-wrap: balance;
+}
+
+.board-page h1 {
+  font-size: clamp(26px, 5vw, 36px);
+}
+.board-page h2 {
+  font-size: 20px;
+}
+.board-page h3 {
+  font-size: 16px;
+}
+
+.board-asof,
+.board-muted {
+  color: var(--atlas-muted);
+  font-size: 13.5px;
+}
+
+.board-mono {
+  font-family: var(--font-atlas-mono);
+  font-size: 12.5px;
+}
+
+.board-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.board-tile {
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  display: grid;
+  gap: 2px;
+}
+
+.board-tile b {
+  font-family: var(--font-atlas-display);
+  font-size: 28px;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.board-tile span {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--atlas-muted);
+  font-weight: 600;
+}
+
+.board-section {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.board-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .board-columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .board-lanes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.board-column {
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.board-cards {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.board-card {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.board-card:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.board-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  align-items: baseline;
+}
+
+.board-card-title {
+  font-weight: 600;
+  flex: 1 1 200px;
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.board-pill {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 2px 8px;
+  white-space: nowrap;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.board-pill-done {
+  background: var(--atlas-brass);
+  border-color: var(--atlas-brass);
+  color: var(--atlas-brass-ink);
+}
+
+.board-pill-in-progress {
+  border-color: var(--atlas-brass);
+  color: inherit;
+}
+
+.board-card-lane {
+  margin: 0;
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.board-card-wait {
+  margin: 0;
+  font-size: 13.5px;
+  overflow-wrap: anywhere;
+}
+
+.board-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.board-inferred {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--atlas-stamp);
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  padding: 0 4px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.board-prs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2px;
+  font-size: 13px;
+}
+
+.board-prs a {
+  color: var(--atlas-brass-text);
+  font-family: var(--font-atlas-mono);
+  font-size: 12.5px;
+}
+
+.board-pr-title {
+  margin-left: 8px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.board-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.board-toggle button,
+.board-submit {
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--atlas-card-line);
+  background: var(--atlas-card);
+  color: var(--atlas-ink);
+  font: inherit;
+  font-weight: 600;
+  padding: 8px 18px;
+  cursor: pointer;
+}
+
+.board-toggle button[aria-pressed="true"] {
+  background: var(--atlas-brass);
+  border-color: var(--atlas-brass);
+  color: var(--atlas-brass-ink);
+}
+
+.board-map-mount {
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.board-map-mount canvas {
+  display: block;
+  max-width: 100%;
+}
+
+.board-lanes {
+  display: grid;
+  gap: 16px;
+  align-items: start;
+}
+
+.board-lane {
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.board-lane p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.board-bar {
+  display: flex;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.board-bar i {
+  display: block;
+  height: 100%;
+}
+
+.board-bar .b-done {
+  background: var(--atlas-brass);
+}
+.board-bar .b-prog {
+  background: var(--atlas-stamp);
+}
+
+.board-path {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 22px;
+  display: grid;
+  position: relative;
+}
+
+.board-path::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--atlas-card-line);
+}
+
+.board-path li {
+  position: relative;
+  padding: 8px 0 12px 12px;
+}
+
+.board-path li::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 13px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--atlas-bg-1);
+  border: 2px solid var(--atlas-muted);
+}
+
+.board-path li.g-live::before {
+  background: var(--atlas-brass);
+  border-color: var(--atlas-brass);
+}
+
+.board-path .stage {
+  font-family: var(--font-atlas-display);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--atlas-brass-text);
+  font-weight: 650;
+  padding-top: 14px;
+}
+
+.board-path .stage::before {
+  display: none;
+}
+
+.board-path .gt {
+  font-weight: 600;
+}
+.board-path .gd {
+  font-size: 13.5px;
+  color: var(--atlas-muted);
+}
+
+.board-next {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: n;
+}
+
+.board-next li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 10px;
+  align-items: start;
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  counter-increment: n;
+}
+
+.board-next li::before {
+  content: counter(n);
+  font-family: var(--font-atlas-display);
+  font-weight: 700;
+  color: var(--atlas-brass-text);
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.board-form {
+  display: grid;
+  gap: 14px;
+  max-width: 560px;
+}
+
+.board-field {
+  display: grid;
+  gap: 4px;
+  font-weight: 600;
+}
+
+.board-field textarea,
+.board-field select {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--fg);
+  font: inherit;
+  font-weight: 400;
+  padding: 10px;
+  min-height: 44px;
+  width: 100%;
+  min-width: 0;
+}
+
+.board-notice {
+  background: var(--atlas-card);
+  border: 1px solid var(--atlas-card-line);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.board-problems {
+  color: var(--error);
+  margin: 0;
+}
+
+.board-submit {
+  justify-self: start;
+  background: var(--atlas-brass);
+  border-color: var(--atlas-brass);
+  color: var(--atlas-brass-ink);
+}
+
+.board-submit:disabled {
+  opacity: 0.6;
+}
+
+.board-empty {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .board-bar i {
+    transition: width 0.4s var(--ease-soft-land);
+  }
+}
