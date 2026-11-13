@@ -1,0 +1,488 @@
+[
+ {
+  "name": "home",
+  "w": 390,
+  "h": 844,
+  "mainCls": "atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-5 py-8 md:px-9",
+  "mainMaxW": "1280px",
+  "mainW": 390,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Meridian — Explore. Understand.Make sens",
+   "font": "36px Fraunces",
+   "cls": "hv5-h1"
+  },
+  "eyebrow": "WELCOME TO MERIDIANField atlas · 2026-11-13 UTCSco",
+  "docH": 7129,
+  "back": [
+   {
+    "text": "MERIDIAN",
+    "aria": "Meridian home",
+    "x": 20,
+    "y": 353,
+    "w": 183,
+    "h": 44,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(51, 48, 42)",
+    "radius": "0px",
+    "font": "16px Karla"
+   },
+   {
+    "text": "EXPEDITIONS",
+    "aria": null,
+    "x": 20,
+    "y": 477,
+    "w": 97,
+    "h": 44,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(51, 48, 42)",
+    "radius": "0px",
+    "font": "11px Karla"
+   }
+  ]
+ },
+ {
+  "name": "geodetective",
+  "w": 390,
+  "h": 844,
+  "mainCls": "mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8",
+  "mainMaxW": "768px",
+  "mainW": 390,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "GeoDetective",
+   "font": "36px Fraunces",
+   "cls": "mode-title text-4xl text-fg sm:text-5xl"
+  },
+  "eyebrow": null,
+  "docH": 2013,
+  "back": [
+   {
+    "text": "Editions",
+    "aria": null,
+    "x": 20,
+    "y": 32,
+    "w": 86,
+    "h": 44,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(28, 36, 32)",
+    "radius": "12px",
+    "font": "14px Karla"
+   }
+  ]
+ },
+ {
+  "name": "coldtrail",
+  "w": 390,
+  "h": 844,
+  "mainCls": "mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8 lg:max-w-6xl",
+  "mainMaxW": "768px",
+  "mainW": 390,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Case #001",
+   "font": "30px Fraunces",
+   "cls": "mode-title mt-1 text-3xl text-fg"
+  },
+  "eyebrow": "🕵️ Cold Trail · Case file",
+  "docH": 1619,
+  "back": [
+   {
+    "text": "← All games",
+    "aria": null,
+    "x": 20,
+    "y": 32,
+    "w": 97,
+    "h": 44,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(28, 36, 32)",
+    "radius": "12px",
+    "font": "14px Karla"
+   }
+  ]
+ },
+ {
+  "name": "whylearn",
+  "w": 390,
+  "h": 844,
+  "mainCls": "mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8",
+  "mainMaxW": "768px",
+  "mainW": 390,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Why Do We Learn This?",
+   "font": "30px \"Iowan Old Style\"",
+   "cls": "mt-1 font-display text-3xl text-fg"
+  },
+  "eyebrow": "Case file · Why it matters",
+  "docH": 844,
+  "back": [
+   {
+    "text": "Back to Home",
+    "aria": null,
+    "x": 20,
+    "y": 469,
+    "w": 350,
+    "h": 44,
+    "bg": "rgb(244, 241, 234)",
+    "border": "1px oklab(0.250951 -0.0131324 0.00386763 / 0.14)",
+    "radius": "28px",
+    "font": "16px \"Avenir Next\""
+   }
+  ]
+ },
+ {
+  "name": "country-list",
+  "w": 390,
+  "h": 844,
+  "mainCls": "mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 py-8",
+  "mainMaxW": "576px",
+  "mainW": 390,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Country",
+   "font": "36px \"Iowan Old Style\"",
+   "cls": "mt-4 font-display text-4xl text-fg"
+  },
+  "eyebrow": "Editions",
+  "docH": 912,
+  "back": [
+   {
+    "text": "Editions",
+    "aria": null,
+    "x": 20,
+    "y": 32,
+    "w": 84,
+    "h": 44,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(28, 36, 32)",
+    "radius": "12px",
+    "font": "14px \"Avenir Next\""
+   }
+  ]
+ },
+ {
+  "name": "credits",
+  "w": 390,
+  "h": 844,
+  "mainCls": "mx-auto flex min-h-dvh w-full max-w-2xl flex-col gap-5 px-5 py-10 text-fg",
+  "mainMaxW": "672px",
+  "mainW": 390,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Credits",
+   "font": "30px \"Avenir Next\"",
+   "cls": "text-3xl font-semibold"
+  },
+  "eyebrow": "← Back to the game",
+  "docH": 1864,
+  "back": [
+   {
+    "text": "← Back to the game",
+    "aria": null,
+    "x": 20,
+    "y": 44,
+    "w": 127,
+    "h": 16,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(28, 36, 32)",
+    "radius": "0px",
+    "font": "14px \"Avenir Next\""
+   }
+  ]
+ },
+ {
+  "name": "privacy",
+  "w": 390,
+  "h": 844,
+  "mainCls": "mx-auto flex min-h-dvh w-full max-w-2xl flex-col gap-5 px-5 py-10 text-fg",
+  "mainMaxW": "672px",
+  "mainW": 390,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Privacy",
+   "font": "30px \"Avenir Next\"",
+   "cls": "text-3xl font-semibold"
+  },
+  "eyebrow": "← Back to the game",
+  "docH": 3354,
+  "back": [
+   {
+    "text": "← Back to the game",
+    "aria": null,
+    "x": 20,
+    "y": 44,
+    "w": 127,
+    "h": 16,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(28, 36, 32)",
+    "radius": "0px",
+    "font": "14px \"Avenir Next\""
+   }
+  ]
+ },
+ {
+  "name": "home",
+  "w": 1280,
+  "h": 800,
+  "mainCls": "atlas-home home-v5 relative mx-auto flex min-h-dvh w-full max-w-7xl flex-col px-5 py-8 md:px-9",
+  "mainMaxW": "1280px",
+  "mainW": 1280,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Meridian — Explore. Understand.Make sens",
+   "font": "46.08px Fraunces",
+   "cls": "hv5-h1"
+  },
+  "eyebrow": "WELCOME TO MERIDIANField atlas · 2026-11-13 UTCSco",
+  "docH": 4841,
+  "back": [
+   {
+    "text": "MERIDIAN",
+    "aria": "Meridian home",
+    "x": 36,
+    "y": 266,
+    "w": 228,
+    "h": 44,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(51, 48, 42)",
+    "radius": "0px",
+    "font": "16px Karla"
+   },
+   {
+    "text": "EXPEDITIONS",
+    "aria": null,
+    "x": 325,
+    "y": 266,
+    "w": 116,
+    "h": 44,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(51, 48, 42)",
+    "radius": "0px",
+    "font": "12.5px Karla"
+   }
+  ]
+ },
+ {
+  "name": "geodetective",
+  "w": 1280,
+  "h": 800,
+  "mainCls": "mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8",
+  "mainMaxW": "768px",
+  "mainW": 768,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "GeoDetective",
+   "font": "48px Fraunces",
+   "cls": "mode-title text-4xl text-fg sm:text-5xl"
+  },
+  "eyebrow": null,
+  "docH": 1753,
+  "back": [
+   {
+    "text": "Editions",
+    "aria": null,
+    "x": 276,
+    "y": 32,
+    "w": 86,
+    "h": 44,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(28, 36, 32)",
+    "radius": "12px",
+    "font": "14px Karla"
+   }
+  ]
+ },
+ {
+  "name": "coldtrail",
+  "w": 1280,
+  "h": 800,
+  "mainCls": "mode-screen mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8 lg:max-w-6xl",
+  "mainMaxW": "1152px",
+  "mainW": 1152,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Case #001",
+   "font": "30px Fraunces",
+   "cls": "mode-title mt-1 text-3xl text-fg"
+  },
+  "eyebrow": "🕵️ Cold Trail · Case file",
+  "docH": 1019,
+  "back": [
+   {
+    "text": "← All games",
+    "aria": null,
+    "x": 84,
+    "y": 32,
+    "w": 97,
+    "h": 44,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(28, 36, 32)",
+    "radius": "12px",
+    "font": "14px Karla"
+   }
+  ]
+ },
+ {
+  "name": "whylearn",
+  "w": 1280,
+  "h": 800,
+  "mainCls": "mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8",
+  "mainMaxW": "768px",
+  "mainW": 768,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Why Do We Learn This?",
+   "font": "30px \"Iowan Old Style\"",
+   "cls": "mt-1 font-display text-3xl text-fg"
+  },
+  "eyebrow": "Case file · Why it matters",
+  "docH": 800,
+  "back": [
+   {
+    "text": "Back to Home",
+    "aria": null,
+    "x": 276,
+    "y": 469,
+    "w": 728,
+    "h": 44,
+    "bg": "rgb(244, 241, 234)",
+    "border": "1px oklab(0.250951 -0.0131324 0.00386763 / 0.14)",
+    "radius": "28px",
+    "font": "16px \"Avenir Next\""
+   }
+  ]
+ },
+ {
+  "name": "country-list",
+  "w": 1280,
+  "h": 800,
+  "mainCls": "mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 py-8",
+  "mainMaxW": "576px",
+  "mainW": 576,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Country",
+   "font": "36px \"Iowan Old Style\"",
+   "cls": "mt-4 font-display text-4xl text-fg"
+  },
+  "eyebrow": "Editions",
+  "docH": 888,
+  "back": [
+   {
+    "text": "Editions",
+    "aria": null,
+    "x": 372,
+    "y": 32,
+    "w": 84,
+    "h": 44,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(28, 36, 32)",
+    "radius": "12px",
+    "font": "14px \"Avenir Next\""
+   }
+  ]
+ },
+ {
+  "name": "credits",
+  "w": 1280,
+  "h": 800,
+  "mainCls": "mx-auto flex min-h-dvh w-full max-w-2xl flex-col gap-5 px-5 py-10 text-fg",
+  "mainMaxW": "672px",
+  "mainW": 672,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Credits",
+   "font": "30px \"Avenir Next\"",
+   "cls": "text-3xl font-semibold"
+  },
+  "eyebrow": "← Back to the game",
+  "docH": 1656,
+  "back": [
+   {
+    "text": "← Back to the game",
+    "aria": null,
+    "x": 324,
+    "y": 44,
+    "w": 127,
+    "h": 16,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(28, 36, 32)",
+    "radius": "0px",
+    "font": "14px \"Avenir Next\""
+   }
+  ]
+ },
+ {
+  "name": "privacy",
+  "w": 1280,
+  "h": 800,
+  "mainCls": "mx-auto flex min-h-dvh w-full max-w-2xl flex-col gap-5 px-5 py-10 text-fg",
+  "mainMaxW": "672px",
+  "mainW": 672,
+  "mainBg": "rgba(0, 0, 0, 0)",
+  "mainBgImg": "none",
+  "bodyBg": "rgb(244, 241, 234)",
+  "bodyBgImg": "none",
+  "h1": {
+   "text": "Privacy",
+   "font": "30px \"Avenir Next\"",
+   "cls": "text-3xl font-semibold"
+  },
+  "eyebrow": "← Back to the game",
+  "docH": 2294,
+  "back": [
+   {
+    "text": "← Back to the game",
+    "aria": null,
+    "x": 324,
+    "y": 44,
+    "w": 127,
+    "h": 16,
+    "bg": "rgba(0, 0, 0, 0)",
+    "border": "0px rgb(28, 36, 32)",
+    "radius": "0px",
+    "font": "14px \"Avenir Next\""
+   }
+  ]
+ }
+]

@@ -128,8 +128,6 @@ export const REVIEW_DECK_COPY = {
   progressOf: "Review",
   /** Review complete headline. */
   completeTitle: "Review complete!",
-  /** Back to the edition picker. */
-  backToEditions: "Back to editions",
   /** Exit-review button (replaces "End game" during review). */
   exitReview: "Exit review",
 } as const;

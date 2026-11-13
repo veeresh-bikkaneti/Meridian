@@ -206,7 +206,7 @@ test("mid-session edition switch updates the header", async ({ page }) => {
   ).toBeVisible({ timeout: 15_000 });
 
   // Switch editions mid-session (cumulative session stays alive).
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await playCountryUS(page);
   await expect(
     page.getByText("Country · United States", { exact: true }),
@@ -276,7 +276,7 @@ test("globe overlap fix: compact 296px card at top 58px, no false 'more below', 
     expect(box!.y, `box.y <= 62 at ${vp.width}x${vp.height}`).toBeLessThanOrEqual(62);
 
     const hudLocators: [string, ReturnType<Page["locator"]>][] = [
-      ["Editions", page.getByRole("button", { name: "Editions" })],
+      ["Home", page.getByRole("button", { name: "Home", exact: true })],
       ["sound-toggle-game", page.getByTestId("sound-toggle-game")],
       ["map-mode-button", page.getByTestId("map-mode-button")],
       ["score-total", page.getByTestId("score-total")],

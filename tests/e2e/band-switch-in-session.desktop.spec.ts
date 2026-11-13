@@ -160,7 +160,7 @@ test("band switches apply in-session: films swap, toasts name the group", async 
   // Clicking the GeoDetective card opens the loop screen.
   await page.getByRole("button", { name: "GeoDetective: Solve a mystery" }).click();
   await expect(page.getByTestId("loop-screen")).toBeVisible({ timeout: 30_000 });
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByTestId("home-heading")).toBeVisible({ timeout: 20_000 });
 
   // ── (2) Switch to 18+ ─────────────────────────────────────────

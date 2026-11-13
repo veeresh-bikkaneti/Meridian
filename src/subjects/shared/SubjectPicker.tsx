@@ -4,8 +4,8 @@
  * Lists the released subjects from the registry (listReleasedSubjects)
  * merged with the plan (picker-rows): ready subjects open their case,
  * everything else shows as a disabled "Coming soon" row, so the kid
- * sees the map of what is coming. Rows reuse the case screens' button
- * styling — no new look. Subject code loads only when a row is tapped:
+ * sees the map of what is coming. Rows are subject cards on the shared
+ * ScreenShell page style. Subject code loads only when a row is tapped:
  * the registry never calls load() for the list, and the tap races the
  * load against withChunkTimeout like every other lazy screen (#209).
  */
@@ -16,6 +16,30 @@ import { getAgeGroup } from "@/game/age-profile";
 import { withChunkTimeout } from "@/lib/chunk-timeout";
 import type { CelebrationSpec } from "@/components/celebration-copy";
 import { pickerRows } from "./picker-rows";
+import { ScreenShell } from "@/components/ui/screen-shell";
+import { ArrowRight, Atom, BookOpen, Calculator, FlaskConical, Globe2, Users, type LucideIcon } from "lucide-react";
+import { WHY_LEARN_HERO_ALT, WHY_LEARN_HERO_URL } from "@/assets/why-learn/why-learn-art";
+
+/** Decorative card icons by subject id (aria-hidden; the name is the text). */
+const SUBJECT_ICONS: Record<string, LucideIcon> = {
+  math: Calculator,
+  physics: Atom,
+  chemistry: FlaskConical,
+  "general-knowledge": Globe2,
+  "social-studies": Users,
+  journals: BookOpen,
+};
+
+/** One line per subject card. EDITABLE PLACEHOLDERS (written for the A+B
+ *  blend, 2026-11-13): short, neutral, factual; the owner may reword. */
+const SUBJECT_ONE_LINERS: Record<string, string> = {
+  math: "Why triangles hold up bridges",
+  physics: "Why a ball always comes back down",
+  chemistry: "Why bread rises and iron rusts",
+  "general-knowledge": "Why places are where they are",
+  "social-studies": "Why towns grew beside rivers",
+  journals: "New journals are on the way.",
+};
 
 type CaseComponent = ComponentType<
   SubjectProps & { onCelebrate?: (spec: CelebrationSpec) => void }
@@ -55,7 +79,7 @@ export default function SubjectPicker({
   useEffect(() => {
     if (opened) return;
     const el = headingRef.current;
-    if (el && typeof el.focus === "function") el.focus();
+    if (el && typeof el.focus === "function") el.focus({ preventScroll: true });
   }, [opened]);
 
   if (opened) {
@@ -77,67 +101,86 @@ export default function SubjectPicker({
   const rows = released ? pickerRows(released, band) : [];
 
   return (
-    <main
-      className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8"
-      data-testid="subject-picker"
-      data-band={band}
+    <ScreenShell
+      onHome={onExit}
+      className="why-learn-screen lg:max-w-6xl"
+      testId="subject-picker"
+      hero={
+        <img
+          className="why-learn-hero"
+          src={WHY_LEARN_HERO_URL}
+          alt={WHY_LEARN_HERO_ALT}
+          width={1280}
+          height={720}
+          loading="eager"
+          decoding="async"
+        />
+      }
+      sound={
+        <span className="why-learn-wordmark">
+          <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="21.5" fill="none" stroke="#8A6D2F" strokeWidth="1.6" /><path d="M24 6 L27.2 20.8 L42 24 L27.2 27.2 L24 42 L20.8 27.2 L6 24 L20.8 20.8 Z" fill="#8A6D2F" /><circle cx="24" cy="24" r="3.4" fill="#F6F1E3" stroke="#8A6D2F" strokeWidth="1.2" /></svg>
+          MERIDIAN
+        </span>
+      }
+      data={{ "data-band": band }}
+      eyebrow="Case file · Why it matters"
+      title="Why Do We Learn This?"
+      titleRef={headingRef}
+      sub={`Pick a subject · Ages ${band}`}
     >
-      <p className="name-eyebrow">Case file · Why it matters</p>
-      <h1 ref={headingRef} tabIndex={-1} className="mt-1 font-display text-3xl text-fg">
-        Why Do We Learn This?
-      </h1>
-      <p className="mt-2 text-sm text-muted">Pick a subject · Ages {band}</p>
-
-      <div className="mt-6 grid gap-2">
-        {released === null && !listFailed ? (
-          <p className="text-muted">Loading subjects…</p>
-        ) : null}
-        {listFailed ? (
-          <p className="text-muted">
-            Subjects could not load just now. Head back to Home and try again in a moment.
-          </p>
-        ) : null}
-        {rows.map((row) =>
-          row.state === "ready" && row.module ? (
-            <button
-              key={row.id}
-              type="button"
-              className="min-h-[44px] w-full rounded-xl border border-line bg-bg px-4 py-2 text-left text-fg"
-              data-testid={`subject-row-${row.id}`}
-              onClick={() => openSubject(row.module!)}
-            >
-              {row.title}{" "}
-              <span className="text-muted">
-                · {row.caseCount} {row.caseCount === 1 ? "case" : "cases"}
-              </span>
-            </button>
-          ) : (
-            <button
-              key={row.id}
-              type="button"
-              disabled
-              className="min-h-[44px] w-full rounded-xl border border-line bg-bg px-4 py-2 text-left text-muted"
-              data-testid={`subject-row-${row.id}`}
-              aria-disabled="true"
-            >
-              {row.title} <span>· Coming soon</span>
-            </button>
-          ),
-        )}
-        {openFailed ? (
-          <p className="text-sm text-muted" role="status">
-            {openFailed} could not load just now. Try again in a moment.
-          </p>
-        ) : null}
-      </div>
-
-      <button
-        type="button"
-        className="mt-6 min-h-[44px] rounded-xl border border-line bg-bg px-4 py-2 text-fg"
-        onClick={onExit}
-      >
-        Back to Home
-      </button>
-    </main>
+      {released === null && !listFailed ? (
+        <p className="mt-6 text-fg">Loading subjects…</p>
+      ) : null}
+      {listFailed ? (
+        <p className="mt-6 text-fg">
+          Subjects could not load just now. Head back to Home and try again in a moment.
+        </p>
+      ) : null}
+      {/* Subject cards (nav-home council + the owner's A+B blend): one
+          button per card; its text is its name (no heading inside the
+          button). Icon and arrow are aria-hidden SVG, never glyphs.
+          Columns: 1 on phones, 2 at 681–1080px, 3 from 1081px; with six
+          subjects every row is full. */}
+      <ul className="mt-5 grid grid-cols-[minmax(0,1fr)] gap-3 min-[681px]:grid-cols-2 min-[1081px]:grid-cols-3 min-[681px]:gap-4" data-testid="subject-cards">
+        {rows.map((row) => {
+          const Icon = SUBJECT_ICONS[row.id] ?? BookOpen;
+          const ready = row.state === "ready" && row.module;
+          return (
+            <li key={row.id} className="flex">
+              <button
+                type="button"
+                className={`why-learn-card flex w-full items-start gap-3.5 p-4 text-left text-fg${ready ? "" : " is-soon"}`}
+                data-testid={`subject-row-${row.id}`}
+                disabled={!ready}
+                aria-disabled={ready ? undefined : "true"}
+                onClick={ready ? () => openSubject(row.module!) : undefined}
+              >
+                <span className="why-learn-badge" aria-hidden="true">
+                  <Icon className="size-6" />
+                </span>
+                <span className="flex min-w-0 flex-col [overflow-wrap:anywhere]">
+                  <span className="mode-title text-xl leading-tight">{row.title}</span>
+                  <span className="mt-1 text-sm text-muted">{SUBJECT_ONE_LINERS[row.id] ?? ""}</span>
+                  <span className="why-learn-chip mt-2.5 self-start">
+                    {ready ? `${row.caseCount} ${row.caseCount === 1 ? "case" : "cases"}` : "Coming soon"}
+                  </span>
+                  {ready ? (
+                    <span className="why-learn-go mt-2.5">
+                      Open case
+                      <ArrowRight className="size-3.5" aria-hidden="true" focusable="false" />
+                    </span>
+                  ) : null}
+                </span>
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {openFailed ? (
+        <p className="mt-3 text-sm text-fg" role="status">
+          {openFailed} could not load just now. Try again in a moment.
+        </p>
+      ) : null}
+    </ScreenShell>
   );
 }
