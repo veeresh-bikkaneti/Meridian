@@ -186,11 +186,11 @@ async function masterAudio(src, dest) {
     mastered = await measure(dest);
     const loudErr = TARGET_LUFS - mastered.integ;
     const hot = mastered.tpk > -1.4;
-    if (!hot && Math.abs(loudErr) <= 0.45) break;
+    if (!hot && Math.abs(loudErr) <= 0.05) break;
     if (hot) limit = Math.min(limit, 10 ** (-1.8 / 20));
     gain += hot ? Math.min(loudErr, 0) : loudErr;
   }
-  return { gain, limit, source, mastered };
+  return { gain, limit, source, mastered, padded };
 }
 
 async function probe(path) {
@@ -237,34 +237,55 @@ async function main() {
       videoOnly,
     ]);
     const audio = await masterAudio(narration, mastered);
-    await ffmpeg([
-      "-y",
-      "-i",
-      videoOnly,
-      "-i",
-      mastered,
-      "-map",
-      "0:v:0",
-      "-map",
-      "1:a:0",
-      "-c:v",
-      "copy",
-      "-c:a",
-      "aac",
-      "-b:a",
-      "160k",
-      "-ar",
-      "48000",
-      "-ac",
-      "1",
-      "-t",
-      String(DURATION),
-      "-movflags",
-      "+faststart",
-      args.out,
-    ]);
+    const mux = () =>
+      ffmpeg([
+        "-y",
+        "-i",
+        videoOnly,
+        "-i",
+        mastered,
+        "-map",
+        "0:v:0",
+        "-map",
+        "1:a:0",
+        "-c:v",
+        "copy",
+        "-c:a",
+        "aac",
+        "-b:a",
+        "160k",
+        "-ar",
+        "48000",
+        "-ac",
+        "1",
+        "-t",
+        String(DURATION),
+        "-movflags",
+        "+faststart",
+        args.out,
+      ]);
+    await mux();
+    let loud = await measure(args.out);
+    if (Math.abs(TARGET_LUFS - loud.integ) > 0.05 && loud.tpk < -1.2) {
+      audio.gain += TARGET_LUFS - loud.integ;
+      await ffmpeg([
+        "-y",
+        "-i",
+        audio.padded,
+        "-af",
+        `volume=${audio.gain.toFixed(3)}dB,alimiter=limit=${audio.limit.toFixed(4)}:attack=5:release=50:level=0`,
+        "-ar",
+        "48000",
+        "-ac",
+        "1",
+        "-t",
+        String(DURATION),
+        mastered,
+      ]);
+      await mux();
+      loud = await measure(args.out);
+    }
     const info = await probe(args.out);
-    const loud = await measure(args.out);
     const video = info.streams.find((stream) => stream.codec_type === "video");
     const audioStream = info.streams.find((stream) => stream.codec_type === "audio");
     const duration = Number(info.format.duration);

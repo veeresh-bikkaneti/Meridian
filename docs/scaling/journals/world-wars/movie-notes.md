@@ -40,7 +40,7 @@ Frames at 2 s, 6 s, and 9.5 s are the school still. The 6 s frame is a closer cr
 - Still `public/images/journals/world-wars/quiet-hour.webp`
 - Narration `docs/scaling/journals/world-wars/render-out/quiet-hour.mp3`
 - Movie `docs/scaling/journals/world-wars/render-out/quiet-hour.mp4`
-- Gain +0.20 dB from -18.2 LUFS. Source peak -1.3 dBFS.
+- Gain +0.30 dB from -18.2 LUFS. Source peak -1.3 dBFS.
 
 ```
 ffprobe -v error -show_entries format=duration:stream=codec_name,codec_type,width,height,pix_fmt,avg_frame_rate,nb_frames,sample_rate,channels -of json docs/scaling/journals/world-wars/render-out/quiet-hour.mp4
@@ -58,9 +58,7 @@ Exit 0.
 ffmpeg -hide_banner -nostats -i docs/scaling/journals/world-wars/render-out/quiet-hour.mp4 -af ebur128=peak=true:framelog=quiet -f null -
 ```
 
-I -18.1 LUFS. True peak -1.6 dBFS.
-
-The 0.1 LUFS gap is the limiter after the +0.20 dB gain. The reading is one tenth below -18.
+I -18.0 LUFS. True peak -1.6 dBFS.
 
 Frames at 2 s, 6 s, and 9.5 s are the clearing still. The 6 s frame is a closer crop with darker edges. No new objects. No text.
 

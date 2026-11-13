@@ -13,10 +13,12 @@ A child can open school-morning and quiet-hour in Play Lab and see that clip's s
 - `scripts/journal-still-motion.mjs` renders a 10.0 s, 1152x768, 24 fps movie from a still and a narration file.
 - Local movies for school-morning and quiet-hour are in `docs/scaling/journals/world-wars/render-out/`. Probe numbers are in `docs/scaling/journals/world-wars/movie-notes.md`. No background bed.
 
+- Stills draft pull request: https://github.com/veeresh-bikkaneti/Meridian/pull/446
+- Video draft pull request: https://github.com/veeresh-bikkaneti/Meridian/pull/456
+
 ## Next
 
-1. Open the video draft pull request. Base is `feat/journal-world-wars-clips`.
-2. Listen to both narration files and both movies.
+1. Listen to both narration files and both movies.
 
 ## Open questions
 
