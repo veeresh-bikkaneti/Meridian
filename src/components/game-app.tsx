@@ -121,6 +121,7 @@ import {
   nextEntryCountdown,
 } from "./home-journal";
 import { JournalPlayer } from "./journal-player";
+import { PeoplePlacesShelf } from "./people-places-shelf";
 import {
   isJournalPrefetchAllowedNow,
   resolveJournalPrefetchEntries,
@@ -5186,6 +5187,7 @@ function Choose({
             </p>
           ) : null}
         </section>
+        <PeoplePlacesShelf band={ageBand} />
       </div>
 
       {/* Age-profile footer entry (Phase 2 §1a): the COPPA-standard

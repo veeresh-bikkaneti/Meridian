@@ -85,6 +85,19 @@ test("child-facing lines sit at or below the band top grade", () => {
   }
 });
 
+test("each kept caption file matches the narration character for character and a still exists", () => {
+  for (const clip of data.clips) {
+    const txt = fs.readFileSync(path.join(here, "captions", `${clip.clip}.txt`), "utf8").trim();
+    assert.equal(txt, clip.narration, clip.clip);
+    const still = path.join(here, "..", "..", "..", "..", "public", "images", "journals", "people-places", `${clip.clip}.webp`);
+    assert.equal(fs.existsSync(still), true, still);
+  }
+  for (const cut of data.cuts) {
+    const still = path.join(here, "..", "..", "..", "..", "public", "images", "journals", "people-places", `${cut.id}.webp`);
+    assert.equal(fs.existsSync(still), false, cut.id);
+  }
+});
+
 test("worked answers are the sourced arithmetic, not a converted Earth size", () => {
   const byId = Object.fromEntries(data.clips.map((c) => [c.clip, c]));
   assert.equal(byId["akashi-span"].predict.answer, "1920");

@@ -1811,3 +1811,13 @@ body:has(.home-v5) {
     animation: none;
   }
 }
+
+/* People and places clips. CardFilm's picture is absolute, so the
+   slot needs a 3/2 box or the still collapses. This is the box, not
+   a second still fallback. */
+.home-v5 .hv5-card-film.hv5-people-places {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  margin: 0 0 12px;
+  border-radius: 16px;
+}
