@@ -9,7 +9,7 @@ The goal was to show the three KEEP clips with a still, the real caption, and na
 - Base: `8eb34cb4305719f88ef8c2568e4dd624cbaf8608` (`origin/main`).
 - Parent not carried: `0487d67db0b7f9fbcae818cfe27cdf237f07040d` (dirty `mockup/scale-play`).
 - Stills branch commit: `f291891b7c0177890699f020ccde48f799661b92`.
-- Video branch commit: filled after the video commit.
+- Video branch commit: `f5328ec048675e00ea57bcf5c050ae3128bda938`.
 
 ## Method
 
