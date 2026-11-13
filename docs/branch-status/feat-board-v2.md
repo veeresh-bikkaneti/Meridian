@@ -144,8 +144,27 @@ Base: origin/main `44d921d7377c8f907fd7211ebff1a9131ba4a603`
     0 fail (unchanged). `npx tsc --noEmit` — clean. Real 390px render
     check is the coordinator's verification pass (not run here).
 
+- Step 6 — card feel (CSS only, `src/board/board.css`):
+  - `.board-card` gains `transition: transform 0.18s ease, box-shadow
+    0.18s ease`. On `:hover` and `:focus-within` (keyboard focus on
+    the card's title button included) the card lifts:
+    `translateY(-2px)` + `box-shadow: 0 12px 28px -12px rgba(0, 0, 0,
+    0.35)` (no shadow token exists in the board/prod tokens, so a
+    modest neutral shadow in the prod palette's style).
+  - Tilt: `perspective: 700px` on the card's actual parent,
+    `.board-cards > li`, and `rotateX(1.2deg) rotateY(-1.2deg)` on
+    the card in the same hover/focus rule. Both render sites (scrum
+    columns + lane list) share the `.board-cards > li > .board-card`
+    structure, so both get the effect; the 3D map canvas is untouched.
+  - `@media (prefers-reduced-motion: reduce)`: transition none,
+    transform none, box-shadow none on hover/focus — cards static.
+  - No JS, no markup change.
+  - Tests: `node --test src/board/board-data.test.ts` — 47 pass,
+    0 fail (unchanged). `npx tsc --noEmit` — clean.
+
 ## Next step
-- Step 6 — card hover/focus lift with perspective (same branch).
+- Coordinator verification (real 390px render + full gates) and
+  panel review of steps 5–6; merge remains the owner's word.
 
 ## Open questions
 - None for steps 1–4.

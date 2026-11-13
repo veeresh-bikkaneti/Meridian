@@ -154,11 +154,45 @@
   display: grid;
   gap: 4px;
   min-width: 0;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
 .board-card:first-child {
   border-top: 0;
   padding-top: 0;
+}
+
+/* Card feel: the card's parent is the <li> in .board-cards (both
+ * render sites — scrum columns and the lane list — use that same
+ * <ul>/<li> structure), so the perspective lives on the <li> and the
+ * card itself does the moving: a 2px lift, a deeper soft shadow, and
+ * a tilt of just over a degree on each axis — enough to read as a
+ * real card picking up, not a gimmick. Triggered by hover AND by
+ * keyboard focus landing inside the card (:focus-within covers the
+ * title button's focus). */
+.board-cards > li {
+  perspective: 700px;
+  min-width: 0;
+}
+
+.board-card:hover,
+.board-card:focus-within {
+  transform: translateY(-2px) rotateX(1.2deg) rotateY(-1.2deg);
+  box-shadow: 0 12px 28px -12px rgba(0, 0, 0, 0.35);
+}
+
+/* Reduced motion: no lift, no tilt, no transition — cards are static. */
+@media (prefers-reduced-motion: reduce) {
+  .board-card {
+    transition: none;
+  }
+  .board-card:hover,
+  .board-card:focus-within {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 .board-card-top {
