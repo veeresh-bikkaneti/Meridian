@@ -243,3 +243,24 @@ it('pins import.meta.glob("./*/index.ts") and has no eager', () => {
   const gameApp = readFileSync(new URL("../components/game-app.tsx", import.meta.url), "utf8");
   assert.equal(gameApp.includes("subjects/registry"), false);
 });
+
+it("the picker's released list includes the real math module", async () => {
+  // The picker lists what selectReleased returns for the discovered
+  // modules. Math is released (owner rule, Nov 13: a playable slice
+  // exists for every band), so it must appear with its wave-1 units.
+  const listed = await selectReleased({
+    "./math/index.ts": () => import("./math/index.ts"),
+  });
+  assert.deepEqual(
+    listed.map((s) => s.id),
+    ["math"],
+  );
+  assert.equal(listed[0]?.title, "Math");
+  assert.equal(listed[0]?.units.length, 9);
+  for (const group of ["7-10", "10-18", "18+"] as const) {
+    assert.ok(
+      listed[0]?.units.some((unit) => unit.group === group),
+      `math has a playable item for ${group}`,
+    );
+  }
+});

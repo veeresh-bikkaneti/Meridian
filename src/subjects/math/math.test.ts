@@ -98,7 +98,7 @@ it("year math uses the current year", () => {
   assert.equal(yearsSince(1973, currentYear()), new Date().getFullYear() - 1973);
 });
 
-it("flag off changes nothing: scalePlay defaults off without ?scale=1", () => {
+it("the scalePlay flag itself still defaults off (the card no longer reads it)", () => {
   assert.equal(scaleParamOn(""), false);
   assert.equal(scaleParamOn("?scale=0"), false);
   assert.equal(scaleParamOn("?scale=1"), true);
@@ -108,9 +108,11 @@ it("flag off changes nothing: scalePlay defaults off without ?scale=1", () => {
   assert.equal(isEnabled("scalePlay"), false);
 });
 
-it("the subject module matches contract I1 and stays unreleased", () => {
+it("the subject module matches contract I1 and is released", () => {
   assert.equal(mathModule.id, "math");
-  assert.equal(mathModule.released, false);
+  // Owner rule, Nov 13: a playable slice exists for every band, so math
+  // ships; educator review runs alongside, after release.
+  assert.equal(mathModule.released, true);
   assert.deepEqual(mathModule.groups, ["7-10", "10-18", "18+"]);
   assert.equal(mathModule.units.length, 9);
   assert.equal(typeof mathModule.load, "function");
