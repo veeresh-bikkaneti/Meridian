@@ -8,9 +8,9 @@ There is no video in this pull request. Nothing flashes. The picture, when it ex
 
 | seconds start | seconds end | narrator | sound |
 | --- | --- | --- | --- |
-| 0.000 | 2.283 | Hey kids, have you heard about this place? | narration |
-| 2.463 | 5.599 | Washington, D.C., 1922. | narration |
-| 5.779 | 7.741 | Thirty-six columns outside. | narration |
-| 7.921 | 10.887 | Inside, Lincoln sits, carved in marble. | narration |
+| 0.000 | 2.069 | Hey kids, have you heard about this place? | narration |
+| 2.249 | 5.001 | Washington, D.C., 1922. | narration |
+| 5.181 | 6.952 | Thirty-six columns outside. | narration |
+| 7.132 | 9.756 | Inside, Lincoln sits, carved in marble. | narration |
 
-Loudness on the committed file: -18.7 LUFS, true peak -2.3 dBFS. Voice is local Kokoro `am_michael`, not the voice used on the live journal films.
+Loudness on the committed file: -18.6 LUFS, true peak -2.1 dBFS. The clip is 9.76 s, under the 10 s limit. It was re-rendered at Kokoro speed 1.15 because the first render ran 10.89 s. Voice is local Kokoro `am_michael`, not the voice used on the live journal films.

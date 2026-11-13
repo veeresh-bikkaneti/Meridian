@@ -25,7 +25,7 @@ Voice check on "Hey kids, have you heard about this place?" at speed 1.0:
 Loudness, measured on the committed m4a with ffmpeg ebur128:
 
 - `jhansi-fort`: -18.3 LUFS, true peak -2.8 dBFS, 6.312 s
-- `lincoln-memorial`: -18.7 LUFS, true peak -2.3 dBFS, 10.886 s
+- `lincoln-memorial`: -18.6 LUFS, true peak -2.1 dBFS, 9.756 s (re-rendered at Kokoro speed 1.15; the first render ran 10.886 s, over the 10 s limit)
 - `netaji-bhawan`: -18.5 LUFS, true peak -2.8 dBFS, 7.964 s
 
 Target was -18 LUFS and a true peak of -1.5 dBFS or lower.
