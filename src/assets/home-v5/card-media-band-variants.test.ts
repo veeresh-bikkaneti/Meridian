@@ -41,6 +41,10 @@ type CardMediaModule = {
   REVIEW_FILM_TRAIL_SCOUT: MediaRecord;
   coldtrailMediaForBand: (band: string | null | undefined) => MediaRecord;
   reviewMediaForBand: (band: string | null | undefined) => MediaRecord;
+  WHY_LEARN_FILM: MediaRecord;
+  WHY_LEARN_FILM_TRAIL_SCOUT: MediaRecord;
+  WHY_LEARN_FILM_ADULT: MediaRecord;
+  whyLearnMediaForBand: (band: string | null | undefined) => MediaRecord;
 };
 
 let mod: CardMediaModule;
@@ -123,6 +127,45 @@ describe("reviewMediaForBand — full matrix", () => {
   });
 });
 
+describe("whyLearnMediaForBand — full matrix (scale-play card)", () => {
+  it('"7-10" gets Trail Scout, "18+" gets adult, by identity', () => {
+    assert.equal(mod.whyLearnMediaForBand("7-10"), mod.WHY_LEARN_FILM_TRAIL_SCOUT);
+    assert.equal(mod.whyLearnMediaForBand("18+"), mod.WHY_LEARN_FILM_ADULT);
+    assert.ok(mod.WHY_LEARN_FILM_TRAIL_SCOUT.videoUrl.endsWith("why-learn-film-trail-scout.mp4"));
+    assert.ok(mod.WHY_LEARN_FILM_ADULT.videoUrl.endsWith("why-learn-film-adult.mp4"));
+  });
+
+  it("every other value gets the base film, by identity", () => {
+    for (const band of ["10-18", null, undefined, "", "7–10", " 7-10", "18", "18 +", "5-7", "garbage"] as const) {
+      assert.equal(
+        mod.whyLearnMediaForBand(band as string | null | undefined),
+        mod.WHY_LEARN_FILM,
+        `band=${JSON.stringify(band)} must fail closed to the base film`,
+      );
+    }
+    assert.ok(mod.WHY_LEARN_FILM.videoUrl.endsWith("why-learn-film.mp4"));
+  });
+
+  it("each band has its own poster and a separate still", () => {
+    for (const rec of [mod.WHY_LEARN_FILM, mod.WHY_LEARN_FILM_TRAIL_SCOUT, mod.WHY_LEARN_FILM_ADULT]) {
+      assert.notEqual(rec.posterUrl, rec.stillUrl);
+      assert.ok(rec.posterUrl.includes("why-learn-poster"));
+      assert.ok(rec.stillUrl.includes("why-learn-still"));
+    }
+  });
+
+  it("game-app reaches the records only through the selector", () => {
+    assert.ok(gameApp.includes('<CardFilm className="hv5-pic" media={whyLearnMediaForBand(ageBand)} testId="card-film-why-learn" band={ageBand} />'));
+    assert.ok(!/WHY_LEARN_FILM/.test(gameApp), "no direct record in game-app");
+  });
+
+  it("all three films stay under the ~400 KB cap", () => {
+    for (const f of ["why-learn-film.mp4", "why-learn-film-trail-scout.mp4", "why-learn-film-adult.mp4"]) {
+      assert.ok(assetBytes(f) <= 400_000, `${f}: ${assetBytes(f)}`);
+    }
+  });
+});
+
 describe("band variants — byte caps on the real files", () => {
   it("both variant films are <= ~400 KB (the verdict league)", () => {
     assert.ok(assetBytes("coldtrail-film-little-explorer.mp4") <= 400_000,
@@ -169,7 +212,7 @@ describe("game-app wiring — the selectors are the only band→media path", () 
     assert.ok(gameApp.includes('<CardFilm className="hv5-pic" media={GEODETECTIVE_FILM} testId="card-film-geodetective" band={ageBand} />'));
     assert.ok(gameApp.includes('<CardFilm className="hv5-art" media={JOURNAL_FILM} testId="card-film-journal" band={ageBand} />'));
     assert.ok(gameApp.includes('<CardFilm className="hv5-art" media={GROWNUPS_FILM} testId="card-film-grownups" band={ageBand} />'));
-    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 5, "still exactly five film slots");
+    assert.equal((gameApp.match(/<CardFilm/g) || []).length, 6, "five shipped film slots + the flag-gated Why Do We Learn This? card");
   });
 
   it("card-media exports the two variant records and both selectors", () => {
