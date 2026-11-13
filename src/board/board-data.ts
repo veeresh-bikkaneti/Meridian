@@ -75,20 +75,28 @@ export function deriveStatus(story: SnapshotStory, prsByNumber: ReadonlyMap<numb
   return story.status;
 }
 
-/** A story after the live overlay: derived status + live PR titles by number. */
+/** Live state of one PR: GitHub's open/closed, with merged split out. */
+export type PrLiveState = "open" | "merged" | "closed";
+
+/** A story after the live overlay: derived status + live PR titles/states by number. */
 export interface LiveStory extends SnapshotStory {
   prTitles: Record<number, string>;
+  prStates: Record<number, PrLiveState>;
 }
 
 export function applyLiveData(stories: readonly SnapshotStory[], prs: readonly GithubPr[]): LiveStory[] {
   const byNumber = new Map(prs.map((p) => [p.number, p]));
   return stories.map((story) => {
     const prTitles: Record<number, string> = {};
+    const prStates: Record<number, PrLiveState> = {};
     for (const n of story.prs) {
       const pr = byNumber.get(n);
-      if (pr) prTitles[n] = pr.title;
+      if (pr) {
+        prTitles[n] = pr.title;
+        prStates[n] = pr.state === "open" ? "open" : pr.merged ? "merged" : "closed";
+      }
     }
-    return { ...story, status: deriveStatus(story, byNumber), prTitles };
+    return { ...story, status: deriveStatus(story, byNumber), prTitles, prStates };
   });
 }
 
@@ -557,5 +565,45 @@ export function groupByLane<T extends { lane: string }>(stories: readonly T[], l
 export function groupByStatus(stories: readonly LiveStory[]): Record<StoryStatus, LiveStory[]> {
   const out: Record<StoryStatus, LiveStory[]> = { "not-started": [], "in-progress": [], done: [] };
   for (const s of stories) out[s.status].push(s);
+  return out;
+}
+
+export interface HeaderMetrics {
+  notStarted: number;
+  inProgress: number;
+  done: number;
+  openPrs: number;
+  blocked: number;
+}
+
+/**
+ * The five /board header metrics, all computed from the stories as shown
+ * (snapshot + live overlay):
+ *  - status counts come from each story's (derived) status;
+ *  - openPrs is the number of DISTINCT PR numbers linked from any story
+ *    whose live state is "open" — a PR no live payload has seen (e.g. a
+ *    snapshot-only render) carries no state and is never counted open;
+ *  - blocked counts stories that are not done and wait, via
+ *    buildDependencyEdges (edge.from = prerequisite, edge.to = waiter),
+ *    on a story that is not done. Waiting on a done story is not blocked,
+ *    and a done story is never blocked.
+ */
+export function headerMetrics(stories: readonly LiveStory[]): HeaderMetrics {
+  const out: HeaderMetrics = { notStarted: 0, inProgress: 0, done: 0, openPrs: 0, blocked: 0 };
+  const openPrs = new Set<number>();
+  for (const s of stories) {
+    if (s.status === "not-started") out.notStarted += 1;
+    else if (s.status === "in-progress") out.inProgress += 1;
+    else out.done += 1;
+    for (const n of s.prs) {
+      if (s.prStates?.[n] === "open") openPrs.add(n);
+    }
+  }
+  out.openPrs = openPrs.size;
+  const blocked = new Set<number>();
+  for (const e of buildDependencyEdges(stories)) {
+    if (stories[e.to].status !== "done" && stories[e.from].status !== "done") blocked.add(e.to);
+  }
+  out.blocked = blocked.size;
   return out;
 }

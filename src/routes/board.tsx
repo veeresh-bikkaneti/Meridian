@@ -6,6 +6,7 @@ import {
   fetchLivePrs,
   groupByLane,
   groupByStatus,
+  headerMetrics,
   STATUS_LABEL,
   type LiveSource,
   type LiveStory,
@@ -99,11 +100,12 @@ function BoardPage() {
     setMapView("list");
   }, []);
 
-  const counts = useMemo(() => {
-    const out: Record<StoryStatus, number> = { "not-started": 0, "in-progress": 0, done: 0 };
-    for (const s of stories) out[s.status] += 1;
-    return out;
-  }, [stories]);
+  const metrics = useMemo(() => headerMetrics(stories), [stories]);
+  const counts: Record<StoryStatus, number> = {
+    "not-started": metrics.notStarted,
+    "in-progress": metrics.inProgress,
+    done: metrics.done,
+  };
 
   const columns = useMemo(() => groupByStatus(stories), [stories]);
   const lanes = useMemo(() => groupByLane(stories, snapshot.lanes), [stories]);
@@ -127,13 +129,25 @@ function BoardPage() {
               <span data-testid="board-live-line">{liveLine}</span>
             </p>
           </div>
-          <div className="board-tiles" role="group" aria-label="Story counts by status">
+          <div
+            className="board-tiles"
+            role="group"
+            aria-label="Header metrics: story counts by status, open pull requests, and blocked stories"
+          >
             {(Object.keys(STATUS_LABEL) as StoryStatus[]).map((status) => (
               <div className="board-tile" key={status}>
                 <b>{counts[status]}</b>
                 <span>{STATUS_LABEL[status]}</span>
               </div>
             ))}
+            <div className="board-tile">
+              <b>{metrics.openPrs}</b>
+              <span>Open PRs</span>
+            </div>
+            <div className="board-tile">
+              <b>{metrics.blocked}</b>
+              <span>Blocked</span>
+            </div>
           </div>
         </header>
 

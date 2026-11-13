@@ -94,6 +94,9 @@
 }
 
 @media (min-width: 900px) {
+  .board-tiles {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
   .board-columns {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

@@ -13,6 +13,7 @@ import {
   explicitIssueNumbers,
   fetchLiveIssues,
   fetchLivePrs,
+  headerMetrics,
   mapWorkToStories,
   parseGithubIssues,
   parseGithubPrs,
@@ -112,6 +113,55 @@ describe("status rule", () => {
     ]);
     assert.equal(out[0].status, "done");
     assert.equal(out[0].prTitles[7], "Ship it");
+  });
+});
+
+describe("header metrics", () => {
+  // Hand-counted fixture: PR 100 is open and shared by two stories,
+  // PR 200 is merged. Edges (buildDependencyEdges): Blocked story and
+  // Done waiter wait on PR 100's stories; Waiting-on-done waits on
+  // PR 200's (done) story.
+  const fixture = () => [
+    story({ title: "Prereq", prs: [100], status: "not-started" }),
+    story({ title: "Blocked story", prs: [], status: "in-progress", waitsOn: "PR 100 first" }),
+    story({ title: "Waiting on done", prs: [], status: "not-started", waitsOn: "PR 200 merged" }),
+    story({ title: "Done prereq", prs: [200], status: "in-progress" }),
+    story({ title: "Done waiter", prs: [], status: "done", waitsOn: "PR 100 first" }),
+    story({ title: "Also on PR 100", prs: [100], status: "not-started" }),
+  ];
+  const livePrs = () => [pr(100, "open", false, "Open one"), pr(200, "closed", true, "Merged one")];
+
+  it("applyLiveData exposes per-PR live states (open / merged / closed)", () => {
+    const out = applyLiveData([story({ prs: [7, 8, 9] })], [
+      pr(7, "open", false),
+      pr(8, "closed", true),
+      pr(9, "closed", false),
+    ]);
+    assert.deepEqual(out[0].prStates, { 7: "open", 8: "merged", 9: "closed" });
+  });
+
+  it("counts statuses, distinct open PRs (duplicates once), and blocked stories", () => {
+    // Live: Prereq + Also on PR 100 -> in-progress (open PR); Blocked story
+    // stays in-progress; Waiting on done stays not-started; Done prereq ->
+    // done (merged); Done waiter stays done.
+    // Blocked: only "Blocked story" (not done, waits on not-done stories).
+    // "Waiting on done" waits on a done story; "Done waiter" is done.
+    assert.deepEqual(headerMetrics(applyLiveData(fixture(), livePrs())), {
+      notStarted: 1,
+      inProgress: 3,
+      done: 2,
+      openPrs: 1,
+      blocked: 1,
+    });
+  });
+
+  it("snapshot-only stories carry no PR states, so openPrs is 0", () => {
+    const metrics = headerMetrics(applyLiveData(fixture(), []));
+    assert.equal(metrics.openPrs, 0);
+    // Snapshot statuses stand: not-started x3, in-progress x2, done x1.
+    // Without live data the PR 200 story is not done, so both stories
+    // waiting on a not-done story count as blocked (Done waiter excluded).
+    assert.deepEqual(metrics, { notStarted: 3, inProgress: 2, done: 1, openPrs: 0, blocked: 2 });
   });
 });
 
