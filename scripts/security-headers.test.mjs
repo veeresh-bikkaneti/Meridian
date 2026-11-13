@@ -44,6 +44,7 @@ test("CSP: frame-ancestors none, only the allowed third parties, no trackers", (
   assert.match(csp, /script-src [^;]*https:\/\/static\.cloudflareinsights\.com/);
   assert.match(csp, /connect-src [^;]*https:\/\/cloudflareinsights\.com/);
   assert.match(csp, /connect-src [^;]*https:\/\/server\.arcgisonline\.com/);
+  assert.match(csp, /connect-src [^;]*https:\/\/api\.github\.com/);
   assert.match(csp, /connect-src 'self'/);
   for (const banned of ["google", "clarity", "doubleclick", "facebook"]) {
     assert.ok(!csp.toLowerCase().includes(banned), `CSP must not allow ${banned}`);

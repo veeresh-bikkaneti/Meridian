@@ -36,6 +36,10 @@
  *   journal prefetch fetch() them. Without both, CSP blocks journal movies
  *   in production — the player shows the still, prefetch silently warms
  *   nothing.
+ * - api.github.com: the /board page fetches public pull-request state
+ *   from the GitHub REST API (no auth, no token). Nothing else about
+ *   the board leaves the browser.
+ *
  * - blob: workers: MapLibre starts its tile worker from a blob URL.
  */
 
@@ -46,7 +50,7 @@ export const CONTENT_SECURITY_POLICY = [
   "img-src 'self' data: blob: https://server.arcgisonline.com",
   "font-src 'self' data:",
   "media-src 'self' data: blob: https://veeresh-bikkaneti.github.io",
-  "connect-src 'self' https://server.arcgisonline.com https://meridian-crash-report.knowledgetest.workers.dev https://cloudflareinsights.com https://veeresh-bikkaneti.github.io",
+  "connect-src 'self' https://server.arcgisonline.com https://meridian-crash-report.knowledgetest.workers.dev https://cloudflareinsights.com https://veeresh-bikkaneti.github.io https://api.github.com",
   "worker-src 'self' blob:",
   "child-src 'self' blob:",
   "manifest-src 'self'",
