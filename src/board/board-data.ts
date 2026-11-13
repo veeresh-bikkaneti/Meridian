@@ -624,6 +624,28 @@ export function groupByStatus(stories: readonly LiveStory[]): Record<StoryStatus
   return out;
 }
 
+/**
+ * A story's case number: its 1-based position within its lane, in
+ * snapshot order. Matched by id, so a live-overlay copy of the story
+ * resolves to the same number; a story absent from the list gets 0.
+ */
+export function caseNumber(story: SnapshotStory, stories: readonly SnapshotStory[]): number {
+  const index = stories.filter((s) => s.lane === story.lane).findIndex((s) => s.id === story.id);
+  return index + 1;
+}
+
+/**
+ * Lead counts for a story: a lead is a linked PR, and a lead is solved
+ * only when its live state is "merged". A PR with no live state yet is
+ * a lead that is not solved — it can never inflate the solved count.
+ */
+export function leadCounts(story: LiveStory): { total: number; solved: number } {
+  return {
+    total: story.prs.length,
+    solved: story.prs.filter((n) => story.prStates?.[n] === "merged").length,
+  };
+}
+
 export interface HeaderMetrics {
   notStarted: number;
   inProgress: number;

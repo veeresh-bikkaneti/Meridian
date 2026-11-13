@@ -8,6 +8,7 @@ import {
   buildDependencyEdges,
   CACHE_KEY,
   CACHE_TTL_MS,
+  caseNumber,
   dependencyDepths,
   dependencyRows,
   deriveStatus,
@@ -17,6 +18,7 @@ import {
   fetchLivePrs,
   filterStories,
   headerMetrics,
+  leadCounts,
   mapWorkToStories,
   parseGithubIssues,
   parseGithubPrs,
@@ -213,6 +215,65 @@ describe("header metrics", () => {
     // Without live data the PR 200 story is not done, so both stories
     // waiting on a not-done story count as blocked (Done waiter excluded).
     assert.deepEqual(metrics, { notStarted: 3, inProgress: 2, done: 1, openPrs: 0, blocked: 2 });
+  });
+});
+
+describe("case numbers + lead counts", () => {
+  it("caseNumber is the 1-based position within the story's own lane, in snapshot order", () => {
+    const stories = [
+      story({ id: "math/a", lane: "Math", title: "A" }),
+      story({ id: "journals/b", lane: "Journals", title: "B" }),
+      story({ id: "math/c", lane: "Math", title: "C" }),
+      story({ id: "math/d", lane: "Math", title: "D" }),
+      story({ id: "journals/e", lane: "Journals", title: "E" }),
+    ];
+    assert.equal(caseNumber(stories[0], stories), 1);
+    assert.equal(caseNumber(stories[1], stories), 1); // first case of its own lane
+    assert.equal(caseNumber(stories[2], stories), 2);
+    assert.equal(caseNumber(stories[3], stories), 3);
+    assert.equal(caseNumber(stories[4], stories), 2);
+  });
+
+  it("caseNumber matches by id, not by object identity or title", () => {
+    const stories = [
+      story({ id: "math/a", lane: "Math", title: "A" }),
+      story({ id: "math/c", lane: "Math", title: "C" }),
+    ];
+    const overlayCopy = { ...stories[1], title: "C (live copy)" };
+    assert.equal(caseNumber(overlayCopy, stories), 2);
+    assert.equal(caseNumber(story({ id: "math/absent", lane: "Math" }), stories), 0);
+  });
+
+  it("leadCounts counts every linked PR, solved only when its live state is merged", () => {
+    const [s] = applyLiveData([story({ prs: [10, 11, 12] })], [
+      pr(10, "closed", true),
+      pr(11, "open", false),
+      pr(12, "closed", false),
+    ]);
+    assert.deepEqual(leadCounts(s), { total: 3, solved: 1 });
+  });
+
+  it("leadCounts: a PR shared by two stories counts as a solved lead for both", () => {
+    const [a, b] = applyLiveData(
+      [story({ id: "math/a", prs: [100, 101] }), story({ id: "math/b", prs: [100] })],
+      [pr(100, "closed", true), pr(101, "open", false)],
+    );
+    assert.deepEqual(leadCounts(a), { total: 2, solved: 1 });
+    assert.deepEqual(leadCounts(b), { total: 1, solved: 1 });
+  });
+
+  it("leadCounts: PRs with no live state are leads, never solved", () => {
+    const [partial] = applyLiveData([story({ prs: [200, 201] })], [pr(200, "closed", false)]);
+    assert.deepEqual(leadCounts(partial), { total: 2, solved: 0 });
+    const [snapshotOnly] = applyLiveData([story({ prs: [200, 201] })], []);
+    assert.deepEqual(leadCounts(snapshotOnly), { total: 2, solved: 0 });
+  });
+
+  it("leadCounts: no PRs means no leads; all merged means all solved", () => {
+    const [none] = applyLiveData([story({ prs: [] })], []);
+    assert.deepEqual(leadCounts(none), { total: 0, solved: 0 });
+    const [all] = applyLiveData([story({ prs: [1, 2] })], [pr(1, "closed", true), pr(2, "closed", true)]);
+    assert.deepEqual(leadCounts(all), { total: 2, solved: 2 });
   });
 });
 

@@ -3,6 +3,7 @@ import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } fro
 import snapshotJson from "@/board/snapshot.json";
 import {
   applyLiveData,
+  caseNumber,
   dependencyRows,
   fetchLivePrs,
   filterStories,
@@ -234,7 +235,11 @@ function BoardPage() {
                   <ul className="board-cards">
                     {columns[status].map((story) => (
                       <li key={`${story.lane}:${story.title}`}>
-                        <StoryCard story={story} onSelect={handleSelect} />
+                        <StoryCard
+                          story={story}
+                          caseNo={caseNumber(story, stories)}
+                          onSelect={handleSelect}
+                        />
                       </li>
                     ))}
                   </ul>
@@ -314,7 +319,11 @@ function BoardPage() {
                     <ul className="board-cards">
                       {inLane.map((story) => (
                         <li key={`${story.lane}:${story.title}`}>
-                          <StoryCard story={story} onSelect={handleSelect} />
+                          <StoryCard
+                            story={story}
+                            caseNo={caseNumber(story, stories)}
+                            onSelect={handleSelect}
+                          />
                         </li>
                       ))}
                     </ul>
