@@ -37,11 +37,42 @@ Base: origin/main `44d921d7377c8f907fd7211ebff1a9131ba4a603`
   - Tests: `node --test src/board/board-data.test.ts` — 34 pass, 0 fail
     (4 new filter tests). `npx tsc --noEmit` — clean.
 
+- Step 3 — story inspector:
+  - Selection by existing key `${lane}:${title}` (no ids — those arrive
+    in step 4). `StoryCard` title is now a real `<button type="button">`
+    (board.css `.board-card-title-button`, ≥44px hit area, focus-visible
+    outline); both render sites (columns + lanes) pass `onSelect`.
+  - New `src/board/story-inspector.tsx`: `<aside aria-label="Story
+    inspector">` with title, lane, status pill, status WHY, owner (or
+    "Unassigned"), waitsOn text + clickable prerequisite stories,
+    clickable stories waiting on it, linked PRs with live title + live
+    state (no live data → number + "state not loaded", never a guess),
+    and "Dependency chain depth" from `dependencyDepths`. Labelled
+    Close button; Escape closes while open; on open focus moves to the
+    panel heading (`tabIndex={-1}`); on close focus returns to the card
+    button that opened it (opener element kept in a ref in board.tsx).
+    Read-only: no status-changing controls. All dynamic strings are
+    React text children.
+  - `statusWhy(story)` pure helper in `board-data.ts`, built from the
+    same live PR facts as `deriveStatus`: all merged / any open /
+    closed-unmerged / no PRs / partial ("PR n has no live data yet").
+  - Done path: stories are NOT donePath items. New `donePathMatch`
+    helper shows a "Done path" line ONLY on an exact substring match
+    (case-insensitive) between the story title and a gate title/
+    description (or a gate title inside the story title); otherwise the
+    field is omitted entirely — no fabricated position.
+  - Layout: `.board-scrum-layout` — inspector stacks below the scrum
+    board on narrow screens, sits beside it (320px, sticky) at
+    ≥1180px. Step 5 will formalize breakpoints.
+  - Tests: `node --test src/board/board-data.test.ts` — 40 pass, 0 fail
+    (6 new statusWhy/donePathMatch tests; inspector added to the
+    no-raw-HTML source check). `npx tsc --noEmit` — clean.
+
 ## Next step
-- Step 3 — story inspector (coordinator spec in hand, building next).
+- Step 4 — coordinator to specify.
 
 ## Open questions
-- None for steps 1–2.
+- None for steps 1–3.
 
 ## Ruled out
 - No fallback/invented open-PR count when live data is absent (honest 0

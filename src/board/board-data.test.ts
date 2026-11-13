@@ -10,6 +10,7 @@ import {
   CACHE_TTL_MS,
   dependencyDepths,
   deriveStatus,
+  donePathMatch,
   explicitIssueNumbers,
   fetchLiveIssues,
   fetchLivePrs,
@@ -19,6 +20,7 @@ import {
   parseGithubIssues,
   parseGithubPrs,
   readCache,
+  statusWhy,
   storyMapLayouts,
   storyMatchesQuery,
   writeCache,
@@ -215,6 +217,51 @@ describe("search + blocked-only filter", () => {
     ]);
     assert.deepEqual(filterStories(stories, { query: "math", blockedOnly: true }), []);
     assert.deepEqual(filterStories(stories, { query: "no such thing", blockedOnly: false }), []);
+  });
+});
+
+describe("statusWhy + done path match", () => {
+  const live = (partial: Partial<SnapshotStory>, prs: GithubPr[]) =>
+    applyLiveData([story(partial)], prs)[0];
+
+  it("all PRs merged explains Done", () => {
+    const s = live({ prs: [10, 11] }, [pr(10, "closed", true), pr(11, "closed", true)]);
+    assert.equal(statusWhy(s), "Done — all 2 linked PRs are merged (PR 10, PR 11)");
+  });
+
+  it("an open PR explains In progress", () => {
+    const s = live({ prs: [430] }, [pr(430, "open", false)]);
+    assert.equal(statusWhy(s), "In progress — PR 430 is open");
+  });
+
+  it("a closed-unmerged PR says the snapshot status is kept", () => {
+    const s = live({ prs: [10], status: "in-progress" }, [pr(10, "closed", false)]);
+    assert.equal(statusWhy(s), "Keeps the snapshot status — PR 10 closed without merging");
+  });
+
+  it("no PRs says snapshot status", () => {
+    assert.equal(statusWhy(live({ prs: [] }, [])), "Snapshot status — no linked PRs");
+  });
+
+  it("partial live data names what is unknown, never Done", () => {
+    const s = live({ prs: [10, 11] }, [pr(10, "closed", true)]);
+    const why = statusWhy(s);
+    assert.ok(why.includes("PR 11 has no live data yet"), why);
+    assert.ok(!why.startsWith("Done"), why);
+    const none = live({ prs: [10] }, []);
+    assert.equal(statusWhy(none), "Snapshot status — PR 10 has no live data yet");
+  });
+
+  it("donePathMatch only fires on a verbatim substring match", () => {
+    assert.equal(
+      donePathMatch(story({ title: "Render the missing voices" }), snapshot.donePath),
+      "Render the missing voices",
+    );
+    assert.equal(donePathMatch(story({ title: "Journals release" }), snapshot.donePath), "Journals");
+    assert.equal(
+      donePathMatch(story({ title: "Math subject screen, 3 items per age group" }), snapshot.donePath),
+      null,
+    );
   });
 });
 
@@ -494,7 +541,7 @@ describe("PR titles render as plain text", () => {
 
   it("the board sources never inject PR titles as HTML", async () => {
     const { readFileSync } = await import("node:fs");
-    for (const file of ["story-card.tsx", "board-data.ts"]) {
+    for (const file of ["story-card.tsx", "board-data.ts", "story-inspector.tsx"]) {
       const src = readFileSync(new URL(file, import.meta.url), "utf8");
       assert.ok(!src.includes("dangerouslySetInnerHTML"), `${file} must not use dangerouslySetInnerHTML`);
       assert.ok(!src.includes("innerHTML"), `${file} must not use innerHTML`);

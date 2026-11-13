@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import snapshotJson from "@/board/snapshot.json";
 import {
   applyLiveData,
@@ -15,6 +15,7 @@ import {
   type StoryStatus,
 } from "@/board/board-data";
 import { StoryCard } from "@/board/story-card";
+import { StoryInspector } from "@/board/story-inspector";
 import { FeatureRequestForm } from "@/board/feature-request-form";
 import { prefersReducedMotion, webglAvailable } from "@/board/view-helpers";
 import "@/board/board.css";
@@ -74,6 +75,17 @@ function BoardPage() {
   const [mapChosen, setMapChosen] = useState(false);
   const [query, setQuery] = useState("");
   const [blockedOnly, setBlockedOnly] = useState(false);
+  const [selectedKey, setSelectedKey] = useState<string | null>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
+
+  const handleSelect = useCallback((story: LiveStory, opener?: HTMLElement) => {
+    if (opener) openerRef.current = opener;
+    setSelectedKey(`${story.lane}:${story.title}`);
+  }, []);
+  const handleCloseInspector = useCallback(() => {
+    setSelectedKey(null);
+    openerRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     const reduced = prefersReducedMotion();
@@ -115,6 +127,7 @@ function BoardPage() {
     [stories, query, blockedOnly],
   );
   const filterActive = query.trim() !== "" || blockedOnly;
+  const selectedStory = stories.find((s) => `${s.lane}:${s.title}` === selectedKey) ?? null;
   const columns = useMemo(() => groupByStatus(visibleStories), [visibleStories]);
   const lanes = useMemo(() => groupByLane(visibleStories, snapshot.lanes), [visibleStories]);
 
@@ -194,6 +207,7 @@ function BoardPage() {
           ) : null}
         </div>
 
+        <div className="board-scrum-layout">
         <section className="board-section" aria-labelledby="board-scrum-heading">
           <h2 id="board-scrum-heading">Scrum board</h2>
           <div className="board-columns">
@@ -213,7 +227,7 @@ function BoardPage() {
                   <ul className="board-cards">
                     {columns[status].map((story) => (
                       <li key={`${story.lane}:${story.title}`}>
-                        <StoryCard story={story} />
+                        <StoryCard story={story} onSelect={handleSelect} />
                       </li>
                     ))}
                   </ul>
@@ -222,6 +236,16 @@ function BoardPage() {
             ))}
           </div>
         </section>
+        {selectedStory ? (
+          <StoryInspector
+            story={selectedStory}
+            stories={stories}
+            donePath={snapshot.donePath}
+            onClose={handleCloseInspector}
+            onSelect={(s) => handleSelect(s)}
+          />
+        ) : null}
+        </div>
 
         <section className="board-section" aria-labelledby="board-map-heading">
           <h2 id="board-map-heading">Feature map</h2>
@@ -283,7 +307,7 @@ function BoardPage() {
                     <ul className="board-cards">
                       {inLane.map((story) => (
                         <li key={`${story.lane}:${story.title}`}>
-                          <StoryCard story={story} />
+                          <StoryCard story={story} onSelect={handleSelect} />
                         </li>
                       ))}
                     </ul>

@@ -7,11 +7,25 @@ import { PR_URL_BASE, STATUS_LABEL, type LiveStory } from "./board-data";
  * containing markup renders as plain text, never as HTML. No raw-HTML
  * injection API is used anywhere on this page.
  */
-export function StoryCard({ story }: { story: LiveStory }) {
+export function StoryCard({
+  story,
+  onSelect,
+}: {
+  story: LiveStory;
+  onSelect?: (story: LiveStory, opener: HTMLElement) => void;
+}) {
   return (
     <article className="board-card" data-testid="story-card" data-status={story.status}>
       <div className="board-card-top">
-        <h4 className="board-card-title">{story.title}</h4>
+        <h4 className="board-card-title">
+          <button
+            type="button"
+            className="board-card-title-button"
+            onClick={(e) => onSelect?.(story, e.currentTarget)}
+          >
+            {story.title}
+          </button>
+        </h4>
         <span className={`board-pill board-pill-${story.status}`}>{STATUS_LABEL[story.status]}</span>
       </div>
       <p className="board-card-lane">{story.lane}</p>

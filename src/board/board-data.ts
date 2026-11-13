@@ -629,6 +629,67 @@ export function storyMatchesQuery(story: SnapshotStory, query: string): boolean 
   return [story.title, story.lane, story.owner ?? ""].some((f) => f.toLowerCase().includes(q));
 }
 
+/**
+ * Why a story has its (derived) status, from the same live PR facts
+ * deriveStatus uses. Partial live data is said out loud: a PR with no
+ * live state "has no live data yet" and can never support a Done claim.
+ */
+export function statusWhy(story: LiveStory): string {
+  if (story.prs.length === 0) return "Snapshot status — no linked PRs";
+  const states = story.prStates ?? {};
+  const fmt = (ns: number[]) => ns.map((n) => `PR ${n}`).join(", ");
+  const unknownNote = (ns: number[]) =>
+    `${fmt(ns)} ${ns.length === 1 ? "has" : "have"} no live data yet`;
+  const open = story.prs.filter((n) => states[n] === "open");
+  const merged = story.prs.filter((n) => states[n] === "merged");
+  const closed = story.prs.filter((n) => states[n] === "closed");
+  const unknown = story.prs.filter((n) => !(n in states));
+  if (unknown.length === 0 && merged.length === story.prs.length) {
+    return `Done — all ${story.prs.length} linked PRs are merged (${fmt(story.prs)})`;
+  }
+  if (open.length > 0) {
+    const base = `In progress — ${fmt(open)} ${open.length === 1 ? "is" : "are"} open`;
+    return unknown.length > 0 ? `${base}; ${unknownNote(unknown)}` : base;
+  }
+  if (closed.length > 0) {
+    const base = `Keeps the snapshot status — ${fmt(closed)} closed without merging`;
+    return unknown.length > 0 ? `${base}; ${unknownNote(unknown)}` : base;
+  }
+  if (unknown.length > 0) {
+    const base = `Snapshot status — ${unknownNote(unknown)}`;
+    return merged.length > 0
+      ? `${base}; ${fmt(merged)} merged, but Done needs every linked PR`
+      : base;
+  }
+  return "Snapshot status — no linked PRs";
+}
+
+/**
+ * The done-path gate a story verbatim-matches, if any: the story title
+ * appears in a gate's title/description, or a gate's title appears in
+ * the story title (exact substring, case-insensitive). Stories are not
+ * done-path items, so most stories match nothing and get no line.
+ */
+export function donePathMatch(
+  story: SnapshotStory,
+  donePath: readonly DonePathItem[],
+): string | null {
+  const title = story.title.trim().toLowerCase();
+  if (!title) return null;
+  for (const item of donePath) {
+    if (item.type !== "gate") continue;
+    const gateTitle = item.title.trim().toLowerCase();
+    if (
+      gateTitle.includes(title) ||
+      item.description.toLowerCase().includes(title) ||
+      title.includes(gateTitle)
+    ) {
+      return item.title;
+    }
+  }
+  return null;
+}
+
 /** The visible subset under a search query + blocked-only filter (order kept). */
 export function filterStories<T extends LiveStory>(
   stories: readonly T[],
