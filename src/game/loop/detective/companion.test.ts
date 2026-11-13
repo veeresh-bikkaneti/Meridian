@@ -306,3 +306,59 @@ test("kill: 3 long tasks > 100 ms within 10 s fire; 2 do not; spread-out do not"
   for (let i = 0; i < 5; i++) short.feedLongTask(50, i * 1000);
   assert.equal(short.killed, false);
 });
+
+/* ------------------------------------------------------------------ */
+/* Pause-confirm scheduling: a held finger's jitter must not keep      */
+/* restarting the confirm timer (the touch berth never landed)         */
+/* ------------------------------------------------------------------ */
+
+import { shouldRestartPauseTimer } from "./companion.ts";
+
+test("touch: jitter inside the stillness radius leaves a pending confirm timer running", () => {
+  const anchor = { x: 272, y: 334 };
+  for (const [x, y] of [[273, 334], [272, 335], [271, 333], [275, 336]]) {
+    assert.equal(
+      shouldRestartPauseTimer({ pointerType: "touch", timerPending: true, anchor, x, y }),
+      false,
+      `a ${x - anchor.x},${y - anchor.y} px wobble is jitter`,
+    );
+  }
+});
+
+test("touch: a real move out of the stillness radius restarts the timer", () => {
+  assert.equal(
+    shouldRestartPauseTimer({
+      pointerType: "touch",
+      timerPending: true,
+      anchor: { x: 272, y: 334 },
+      x: 280,
+      y: 334,
+    }),
+    true,
+  );
+});
+
+test("touch: no pending timer (or no anchor yet) always schedules", () => {
+  const anchor = { x: 272, y: 334 };
+  assert.equal(
+    shouldRestartPauseTimer({ pointerType: "touch", timerPending: false, anchor, x: 272, y: 334 }),
+    true,
+  );
+  assert.equal(
+    shouldRestartPauseTimer({ pointerType: "touch", timerPending: true, anchor: null, x: 272, y: 334 }),
+    true,
+  );
+});
+
+test("mouse: every move restarts the timer, exactly as before", () => {
+  assert.equal(
+    shouldRestartPauseTimer({
+      pointerType: "mouse",
+      timerPending: true,
+      anchor: { x: 100, y: 100 },
+      x: 100,
+      y: 101,
+    }),
+    true,
+  );
+});
