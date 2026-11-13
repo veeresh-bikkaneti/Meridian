@@ -2,9 +2,9 @@
   "asOf": "Read from the repo Nov 13, 2026, 4:38 PM Central",
   "main": "44d921d7",
   "next": [
-    "Merge PR 431 (touch fix) after your playtest. It is 1 commit, so updating from main is easy.",
-    "PR 434 (math screen) merged Nov 13. The Why card's button now opens Math behind ?scale=1.",
-    "Update PR 430 from main, close its two-voices test gap, then merge. Pennant port and clue 4 wait on it."
+    "A touch fix for the detective clue screen is being playtested (PR 431).",
+    "The Math screen joined the site on Nov 13 and is being checked before kids see it (PR 434).",
+    "One voice at a time for Holmes and Watson (PR 430); the pennant port and clue 4 follow it."
   ],
   "lanes": [
     {
@@ -76,9 +76,9 @@
       "lane": "Detective core",
       "title": "Held-finger jitter fix on the clue berth",
       "status": "in-progress",
-      "waitsOn": "Your playtest, update from main, merge",
+      "waitsOn": "A playtest pass, then merge",
       "waitsOnIds": [],
-      "owner": "You",
+      "owner": "Project owner",
       "prs": [
         431
       ],
@@ -89,11 +89,11 @@
       "lane": "Detective core",
       "title": "Clue pacing and one voice at a time",
       "status": "in-progress",
-      "waitsOn": "PR 431 first, update from main (47 behind), fix the two-voices test gap",
+      "waitsOn": "PR 431 first, then a fix for the two-voices test",
       "waitsOnIds": [
         "detective-core/held-finger-jitter-fix-on-the-clue-berth"
       ],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [
         430
       ],
@@ -108,7 +108,7 @@
       "waitsOnIds": [
         "detective-core/held-finger-jitter-fix-on-the-clue-berth"
       ],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [
         366
       ],
@@ -119,12 +119,12 @@
       "lane": "Detective core",
       "title": "Truce pennant port",
       "status": "not-started",
-      "waitsOn": "PR 430 merged. Prompt is ready; old branch kept",
+      "waitsOn": "PR 430 merged",
       "waitsOnIds": [
         "detective-core/clue-pacing-and-one-voice-at-a-time",
         "audio-and-clips/shared-voice-channel-one-speaker-at-a-time"
       ],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [],
       "inferred": false
     },
@@ -135,7 +135,7 @@
       "status": "not-started",
       "waitsOn": "Pennant port",
       "waitsOnIds": [],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [],
       "inferred": false
     },
@@ -144,9 +144,9 @@
       "lane": "Detective core",
       "title": "Holmes follow and Home-first landing",
       "status": "in-progress",
-      "waitsOn": "About 460 commits behind main. Rebase or close, your call",
+      "waitsOn": "An older branch that needs updating or closing",
       "waitsOnIds": [],
-      "owner": "You",
+      "owner": "Project owner",
       "prs": [
         364,
         368
@@ -197,9 +197,9 @@
       "lane": "Why Do We Learn This? card",
       "title": "3D film source files branch",
       "status": "in-progress",
-      "waitsOn": "Films already on main; close it or merge for the source files",
+      "waitsOn": "The films are on main; this branch holds the source files",
       "waitsOnIds": [],
-      "owner": "You",
+      "owner": "Project owner",
       "prs": [
         432
       ],
@@ -214,7 +214,7 @@
       "waitsOnIds": [
         "math/math-subject-screen-3-items-per-age-group"
       ],
-      "owner": "You",
+      "owner": "Project owner",
       "prs": [],
       "inferred": false
     },
@@ -275,7 +275,7 @@
       "status": "in-progress",
       "waitsOn": "Shipped Nov 13",
       "waitsOnIds": [],
-      "owner": "You",
+      "owner": "Project owner",
       "prs": [
         434
       ],
@@ -286,7 +286,7 @@
       "lane": "Math",
       "title": "Math sign-off and release PR",
       "status": "not-started",
-      "waitsOn": "Named educator signs the rubric, then released: true",
+      "waitsOn": "A named educator signs the rubric, then release",
       "waitsOnIds": [],
       "owner": "Educator",
       "prs": [],
@@ -297,13 +297,13 @@
       "lane": "Math",
       "title": "Holmes and Watson in math",
       "status": "not-started",
-      "waitsOn": "PR 434 and PR 430 merged. Prompt written",
+      "waitsOn": "PR 434 and PR 430 merged",
       "waitsOnIds": [
         "detective-core/clue-pacing-and-one-voice-at-a-time",
         "math/math-subject-screen-3-items-per-age-group",
         "audio-and-clips/shared-voice-channel-one-speaker-at-a-time"
       ],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [],
       "inferred": false
     },
@@ -364,9 +364,9 @@
       "lane": "Physics and Chemistry",
       "title": "Predict-and-see scene engine (code)",
       "status": "not-started",
-      "waitsOn": "Math live first; your go to build",
+      "waitsOn": "Math live first",
       "waitsOnIds": [],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [],
       "inferred": false
     },
@@ -377,7 +377,7 @@
       "status": "not-started",
       "waitsOn": "Scene engine",
       "waitsOnIds": [],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [],
       "inferred": false
     },
@@ -436,9 +436,9 @@
       "lane": "Social studies and GK",
       "title": "Social studies and GK screens",
       "status": "not-started",
-      "waitsOn": "Wave 2 live; your go to build",
+      "waitsOn": "Wave 2 live first",
       "waitsOnIds": [],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [],
       "inferred": false
     },
@@ -490,9 +490,9 @@
       "lane": "Journals",
       "title": "Journal clips (Stage B video files)",
       "status": "not-started",
-      "waitsOn": "Educator sign-off and your build go",
+      "waitsOn": "Educator sign-off, then the clips are made",
       "waitsOnIds": [],
-      "owner": "You",
+      "owner": "Project owner",
       "prs": [],
       "inferred": false
     },
@@ -514,7 +514,7 @@
       "status": "in-progress",
       "waitsOn": "See Detective core",
       "waitsOnIds": [],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [
         430
       ],
@@ -525,9 +525,9 @@
       "lane": "Audio and clips",
       "title": "3 unrendered clips: beat-me, win-together, truce-watson",
       "status": "not-started",
-      "waitsOn": "Render machine",
+      "waitsOn": "The clips still need rendering",
       "waitsOnIds": [],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [],
       "inferred": true
     },
@@ -536,9 +536,9 @@
       "lane": "Audio and clips",
       "title": "88 place names with no Holmes voice",
       "status": "not-started",
-      "waitsOn": "Name probe run on the render machine",
+      "waitsOn": "A name check, then recording",
       "waitsOnIds": [],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [],
       "inferred": true
     },
@@ -573,9 +573,9 @@
       "lane": "Infra and process",
       "title": "Scale-play mockup",
       "status": "in-progress",
-      "waitsOn": "You rejected it Nov 11; close it",
+      "waitsOn": "Set aside on Nov 11; to be closed",
       "waitsOnIds": [],
-      "owner": "You",
+      "owner": "Project owner",
       "prs": [
         425
       ],
@@ -586,9 +586,9 @@
       "lane": "Infra and process",
       "title": "Scale-play v2 plan (inside the prod UI)",
       "status": "in-progress",
-      "waitsOn": "Docs only on its branch; no PR yet",
+      "waitsOn": "Plan written; building not started",
       "waitsOnIds": [],
-      "owner": "You",
+      "owner": "Project owner",
       "prs": [],
       "inferred": false
     },
@@ -599,7 +599,7 @@
       "status": "not-started",
       "waitsOn": "Nothing; ready to start",
       "waitsOnIds": [],
-      "owner": "Your agent",
+      "owner": "Project team",
       "prs": [],
       "inferred": true
     },
@@ -608,9 +608,9 @@
       "lane": "Infra and process",
       "title": "Turn the Scaling streams ruleset back on",
       "status": "not-started",
-      "waitsOn": "Your GitHub settings",
+      "waitsOn": "A change in GitHub settings",
       "waitsOnIds": [],
-      "owner": "You",
+      "owner": "Project owner",
       "prs": [],
       "inferred": true
     },
@@ -621,7 +621,7 @@
       "status": "not-started",
       "waitsOn": "Not yet placed in a stream",
       "waitsOnIds": [],
-      "owner": "You",
+      "owner": "Project owner",
       "prs": [],
       "inferred": true
     }
@@ -633,26 +633,26 @@
     },
     {
       "type": "gate",
-      "title": "Merge PR 431, then PR 430",
-      "description": "Touch fix, then one voice at a time.",
+      "title": "Touch fix, then one voice at a time",
+      "description": "The touch fix lands first (PR 431), then Holmes and Watson speak one at a time (PR 430).",
       "live": false
     },
     {
       "type": "gate",
-      "title": "PR 434 merged",
-      "description": "Math screen is on main behind ?scale=1; the card button works.",
+      "title": "Math screen built",
+      "description": "The Math screen is on main and the card button works (PR 434).",
       "live": false
     },
     {
       "type": "gate",
-      "title": "Pennant port, clue 4 fix, re-test PR 366",
-      "description": "In that order, each on fresh main.",
+      "title": "Pennant port, clue 4 fix, endings re-test",
+      "description": "In that order, each on fresh main (PR 366).",
       "live": false
     },
     {
       "type": "gate",
-      "title": "Clear the stale PRs",
-      "description": "Decide 364, 368, 425, 432: rebase or close.",
+      "title": "Clear the older pull requests",
+      "description": "Decide on PRs 364, 368, 425, 432: update or close.",
       "live": false
     },
     {
@@ -673,8 +673,8 @@
     },
     {
       "type": "gate",
-      "title": "Math release PR",
-      "description": "released: true, then ?scale=1 comes off so kids see the card.",
+      "title": "Math release",
+      "description": "Released for kids; the preview gate comes off so kids see the card.",
       "live": true
     },
     {

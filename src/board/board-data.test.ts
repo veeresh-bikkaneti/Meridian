@@ -121,13 +121,13 @@ describe("snapshot", () => {
     const byTitle = new Map(snapshot.stories.map((s) => [s.title, s]));
     assert.equal(
       byTitle.get("Clue pacing and one voice at a time")?.waitsOn,
-      "PR 431 first, update from main (47 behind), fix the two-voices test gap",
+      "PR 431 first, then a fix for the two-voices test",
     );
     assert.equal(
       byTitle.get("Holmes and Watson in math")?.waitsOn,
-      "PR 434 and PR 430 merged. Prompt written",
+      "PR 434 and PR 430 merged",
     );
-    assert.equal(byTitle.get("Truce pennant port")?.waitsOn, "PR 430 merged. Prompt is ready; old branch kept");
+    assert.equal(byTitle.get("Truce pennant port")?.waitsOn, "PR 430 merged");
   });
 });
 

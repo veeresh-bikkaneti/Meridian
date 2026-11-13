@@ -250,7 +250,7 @@ function BoardPage() {
         ) : null}
 
         <section className="board-section" aria-labelledby="board-next-heading">
-          <h2 id="board-next-heading">Next 3 moves</h2>
+          <h2 id="board-next-heading">Coming next</h2>
           <ol className="board-next">
             {snapshot.next.map((n) => (
               <li key={n}>
@@ -453,8 +453,8 @@ function BoardPage() {
             Trail to release <span className="board-plain">(definition of all done)</span>
           </h2>
           <p className="board-muted" style={{ maxWidth: "65ch" }}>
-            All done means every subject is released, the ?scale=1 gate is gone so kids see it on
-            prod, no feature PR is open, and no clip is missing. The gates below come in this order.
+            All done means every subject is released for kids, no feature work is still open, and
+            no clip is missing. The steps below come in this order.
           </p>
           <ol className="board-path">
             {snapshot.donePath.map((item, i) =>
