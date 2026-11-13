@@ -46,4 +46,4 @@ Build the kept Robben Island clip from the screened caption and `clips.json`. Sp
 ## Open
 
 - Veeresh listens to the narration. This file cannot certify the voice by ear.
-- The video draft PR URL is recorded in `docs/scaling/journals/freedom-fighters/SWARM_RESULT.md` on the video branch.
+- Video draft PR is https://github.com/veeresh-bikkaneti/Meridian/pull/454. The result note is `docs/scaling/journals/freedom-fighters/SWARM_RESULT.md`.
