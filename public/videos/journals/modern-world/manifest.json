@@ -1,0 +1,27 @@
+{
+  "journal": "modern-world",
+  "videoInGit": false,
+  "clips": [
+    {
+      "id": "modern-world:greenwich-zero",
+      "still": "public/images/journals/modern-world/greenwich-zero.webp",
+      "captions": "public/videos/journals/modern-world/greenwich-zero.vtt",
+      "audio": "public/audio/journals/modern-world/greenwich-zero.wav",
+      "video": "docs/scaling/journals/modern-world/render-out/greenwich-zero.mp4"
+    },
+    {
+      "id": "modern-world:liverpool-manchester",
+      "still": "public/images/journals/modern-world/liverpool-manchester.webp",
+      "captions": "public/videos/journals/modern-world/liverpool-manchester.vtt",
+      "audio": "public/audio/journals/modern-world/liverpool-manchester.wav",
+      "video": "docs/scaling/journals/modern-world/render-out/liverpool-manchester.mp4"
+    },
+    {
+      "id": "modern-world:hearts-content-cable",
+      "still": "public/images/journals/modern-world/hearts-content-cable.webp",
+      "captions": "public/videos/journals/modern-world/hearts-content-cable.vtt",
+      "audio": "public/audio/journals/modern-world/hearts-content-cable.wav",
+      "video": "docs/scaling/journals/modern-world/render-out/hearts-content-cable.mp4"
+    }
+  ]
+}

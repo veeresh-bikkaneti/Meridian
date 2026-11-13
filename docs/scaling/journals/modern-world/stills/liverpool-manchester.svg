@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1152" height="768" viewBox="0 0 1152 768">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9ec0d8"/>
+      <stop offset="1" stop-color="#f0e2c4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1152" height="768" fill="url(#sky)"/>
+  <ellipse cx="240" cy="130" rx="100" ry="30" fill="#f7f4ee" opacity="0.7"/>
+  <rect x="0" y="470" width="1152" height="298" fill="#7da06a"/>
+  <ellipse cx="300" cy="500" rx="260" ry="40" fill="#6b9158"/>
+  <ellipse cx="860" cy="490" rx="240" ry="36" fill="#6b9158"/>
+  <rect x="80" y="400" width="70" height="90" fill="#e7d7b8"/>
+  <polygon points="70,400 115,350 160,400" fill="#a3543c"/>
+  <rect x="170" y="420" width="50" height="70" fill="#efe4cc"/>
+  <polygon points="162,420 195,378 228,420" fill="#8d4634"/>
+  <rect x="40" y="430" width="36" height="60" fill="#d9c7a4"/>
+  <polygon points="32,430 58,392 84,430" fill="#8d4634"/>
+  <rect x="900" y="390" width="80" height="100" fill="#eadcc0"/>
+  <polygon points="888,390 940,336 992,390" fill="#9a4e38"/>
+  <rect x="990" y="420" width="46" height="70" fill="#f3e7cf"/>
+  <polygon points="982,420 1013,382 1044,420" fill="#8d4634"/>
+  <rect x="860" y="440" width="34" height="50" fill="#dcc9a6"/>
+  <polygon points="852,440 877,404 902,440" fill="#8d4634"/>
+  <rect x="250" y="520" width="700" height="10" fill="#c4b48a"/>
+  <g transform="translate(430,470)">
+    <rect x="0" y="28" width="120" height="36" rx="6" fill="#2c3338"/>
+    <rect x="78" y="8" width="28" height="28" fill="#3d464c"/>
+    <rect x="86" y="-18" width="12" height="28" fill="#4a555c"/>
+    <ellipse cx="100" cy="-28" rx="22" ry="12" fill="#f4f1ea" opacity="0.8"/>
+    <circle cx="28" cy="68" r="16" fill="#1c2124"/>
+    <circle cx="28" cy="68" r="7" fill="#8d6a45"/>
+    <circle cx="92" cy="68" r="16" fill="#1c2124"/>
+    <circle cx="92" cy="68" r="7" fill="#8d6a45"/>
+  </g>
+</svg>
