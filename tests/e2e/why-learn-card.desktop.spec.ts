@@ -37,9 +37,10 @@ test("card is present with ?scale=1, right after GeoDetective", async ({ page })
   await expect(card).toBeVisible();
   await expect(card.getByRole("heading", { name: /Why Do We Learn This\?/ })).toBeVisible();
   await expect(card.getByText("Case file · Why it matters")).toBeVisible();
-  await expect(
-    card.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }),
-  ).toBeVisible();
+  const cta = card.getByRole("button", { name: "Why Do We Learn This?: Coming soon" });
+  await expect(cta).toBeVisible();
+  await expect(cta).toBeDisabled();
+  await expect(cta).toHaveText(/Coming soon/);
   await expect(card.getByTestId("card-film-why-learn")).toHaveCount(1);
   const order = await page
     .locator("#home-cases > article")
@@ -175,9 +176,10 @@ test("?scale=1 card is not clickable yet (button disabled, tap stays on Home)", 
   const card = page.getByTestId("home-card-why-learn");
   await expect(card).toBeVisible();
   await card.scrollIntoViewIfNeeded();
-  await expect(
-    card.getByRole("button", { name: "Why Do We Learn This?: Start exploring" }),
-  ).toBeDisabled();
+  const cta = card.getByRole("button", { name: "Why Do We Learn This?: Coming soon" });
+  await expect(cta).toBeDisabled();
+  await expect(cta).toHaveAttribute("aria-disabled", "true");
+  await expect(cta).toHaveText(/Coming soon/);
   const box = (await card.getByRole("heading", { name: /Why Do We Learn This\?/ }).boundingBox())!;
   await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
   await page.waitForTimeout(1500);

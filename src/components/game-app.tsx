@@ -4924,9 +4924,15 @@ function Choose({
               className="hv5-go hv5-stretch"
               onClick={onWhyLearn}
               disabled={!onWhyLearn}
-              aria-label="Why Do We Learn This?: Start exploring"
+              aria-disabled={!onWhyLearn ? "true" : undefined}
+              aria-label={
+                onWhyLearn
+                  ? "Why Do We Learn This?: Start exploring"
+                  : "Why Do We Learn This?: Coming soon"
+              }
             >
-              <span aria-hidden="true">🔍</span>{" "}Start exploring
+              <span aria-hidden="true">🔍</span>{" "}
+              {onWhyLearn ? "Start exploring" : "Coming soon"}
             </button>
           </div>
         </article>
