@@ -24,6 +24,8 @@
 // Pure distance → frequency mapping (no AudioContext needed — unit-testable).
 // ---------------------------------------------------------------------------
 
+import { stopAllVoices } from "./voice-channel.ts";
+
 /**
  * Pitch = distance, mapped logarithmically (power law = linear in log–log
  * space). d clamps to [1, 20000] km.
@@ -131,6 +133,8 @@ export function setSoundEnabled(on: boolean): void {
     // Toggling sound OFF stops any active loop (globe spin) immediately —
     // spec §7.1. The registry lives in the voice-management section below;
     // referenced here at call time, so declaration order is irrelevant.
+    // Every character voice goes quiet too (the one-voice channel).
+    stopAllVoices();
     const stops = [...activeLoops.values()];
     activeLoops.clear();
     for (const stop of stops) {

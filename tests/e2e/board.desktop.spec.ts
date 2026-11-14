@@ -1,16 +1,21 @@
 import { test, expect } from "playwright/test";
-import { readFileSync } from "node:fs";
+import { mkdirSync, readFileSync } from "node:fs";
+import path from "node:path";
 import { serveBuiltArtifact, APP_NO_IDLE } from "./helpers";
 
 /**
- * /board — live scrum board + feature map (feat/live-scrum-board).
+ * /board — the story board (feat/board-v2; Sprintbound shell adopted
+ * in Phase C: sidebar views over one story list).
  *
  * Runs against the built Pages artifact. The GitHub API is mocked to
- * FAIL in every test here: the board must render all 8 lanes and all 46
- * stories from the snapshot alone, say it is showing the snapshot, and
- * never depend on the live fetch. The feature-request endpoint is
- * mocked too — the spec proves the form posts to /api/feature-request,
- * not that Discord received anything.
+ * FAIL in every test here (except the celebration block, which fulfils
+ * it): the board must render all 8 regions and all 46 stories from the
+ * snapshot alone, say it is showing the snapshot, and never depend on
+ * the live fetch. The feature-request endpoint is mocked too — the
+ * spec proves the form posts to /api/feature-request, not that Discord
+ * received anything. Live-overlay behaviour against the REAL API is
+ * verified separately (see REPORT-C) with a just-captured payload
+ * replayed byte-for-byte — never by these snapshot tests.
  */
 test.setTimeout(180_000);
 
@@ -37,7 +42,7 @@ async function openBoard(page: import("playwright/test").Page) {
   await expect(page.getByTestId("board-live-line")).toContainText("snapshot");
 }
 
-test("board at 390px: list view renders all 8 lanes from the snapshot, no sideways scroll", async ({
+test("board at 390px: story map renders all 8 regions from the snapshot, no sideways scroll", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -49,12 +54,15 @@ test("board at 390px: list view renders all 8 lanes from the snapshot, no sidewa
   await expect(page.getByTestId("scrum-column-in-progress").getByTestId("story-card")).toHaveCount(10);
   await expect(page.getByTestId("scrum-column-not-started").getByTestId("story-card")).toHaveCount(18);
 
-  await page.getByTestId("list-view-toggle").click();
-  const list = page.getByTestId("board-list-view");
-  await expect(list.getByTestId("board-lane")).toHaveCount(8);
-  await expect(list.getByTestId("story-card")).toHaveCount(46);
-  await expect(list).toContainText("Detective core");
-  await expect(list).toContainText("Infra and process");
+  // Phase C: the old 3D/list toggle is gone — the lane list is now the
+  // Story map view (Sprintbound system: one row per region, case
+  // slices instead of full cards).
+  await page.getByTestId("board-nav-map").click();
+  const map = page.getByTestId("story-map-view");
+  await expect(map.getByTestId("map-region-row")).toHaveCount(8);
+  await expect(map.locator(".board-slice")).toHaveCount(46);
+  await expect(map).toContainText("Detective core");
+  await expect(map).toContainText("Infra and process");
 
   const overflow = await page.evaluate(() => {
     return document.documentElement.scrollWidth - document.documentElement.clientWidth;
@@ -77,11 +85,13 @@ test("board at desktop: form posts to /api/feature-request (mocked)", async ({ p
   });
   await openBoard(page);
 
+  // Phase C: the form is the shell's Send-a-tip view now.
+  await page.getByTestId("board-nav-intake").click();
   const form = page.getByTestId("feature-request-form");
   await form.locator("textarea").fill("A quiz about famous rivers, please");
   await form.locator("select").first().selectOption("7-10");
   await form.locator("select").nth(1).selectOption("Geography");
-  await form.getByRole("button", { name: "Send idea" }).click();
+  await form.getByRole("button", { name: "Send tip" }).click();
 
   await expect(page.getByTestId("feature-request-sent")).toBeVisible();
   expect(postedUrl).toContain("/api/feature-request");
@@ -93,66 +103,61 @@ test("board at desktop: form posts to /api/feature-request (mocked)", async ({ p
   expect(Object.keys(payload).sort()).toEqual(["ageGroup", "idea", "subject", "turnstileToken", "website"]);
 });
 
-test("board 3D map: dragging the canvas changes the view, edges are drawn", async ({ page }) => {
+test("board story map: region rows carry computed rollups, a slice opens its inspector", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await openBoard(page);
 
-  const canvas = page.getByTestId("feature-map-canvas");
-  await expect(canvas).toBeVisible();
-  // The snapshot encodes exactly 8 explicit PR-wait dependency edges.
-  await expect(canvas).toHaveAttribute("data-edge-count", "8");
+  // Phase C replaces the deleted 3D-map tests: the board's map is now
+  // the Sprintbound story map (region rows + case slices). Expected
+  // rollups are computed from the snapshot file, never hardcoded —
+  // GitHub is aborted in this spec, so the page renders this snapshot.
+  const snapshot = JSON.parse(readFileSync("src/board/snapshot.json", "utf8")) as {
+    lanes: { name: string }[];
+    stories: { lane: string; status: string }[];
+  };
+  await page.getByTestId("board-nav-map").click();
+  const map = page.getByTestId("story-map-view");
+  await expect(map.getByTestId("map-region-row")).toHaveCount(snapshot.lanes.length);
+  await expect(map.locator(".board-slice")).toHaveCount(snapshot.stories.length);
+  for (const lane of snapshot.lanes) {
+    const inLane = snapshot.stories.filter((s) => s.lane === lane.name);
+    const closed = inLane.filter((s) => s.status === "done").length;
+    const row = map.getByTestId("map-region-row").filter({ hasText: lane.name });
+    await expect(row).toContainText(`${inLane.length} cases · ${closed} closed`);
+  }
 
-  await canvas.scrollIntoViewIfNeeded();
-  const box = await canvas.boundingBox();
-  if (!box) throw new Error("canvas has no box");
-  const clip = { x: box.x, y: box.y, width: box.width, height: box.height };
-  await page.waitForTimeout(600);
-  const before = await page.screenshot({ clip });
-  await page.mouse.move(box.x + box.width * 0.5, box.y + box.height * 0.5);
-  await page.mouse.down();
-  await page.mouse.move(box.x + box.width * 0.72, box.y + box.height * 0.38, { steps: 12 });
-  await page.mouse.up();
-  await page.waitForTimeout(700);
-  const after = await page.screenshot({ clip });
-  expect(before.equals(after)).toBe(false);
+  // Clicking a slice lands on the Live board with that case inspected.
+  const slice = map.locator(".board-slice").filter({ hasText: "Math subject screen" });
+  await slice.click();
+  const aside = page.locator(".board-inspector");
+  await expect(aside).toBeVisible();
+  await expect(aside).toContainText("Math subject screen, 3 items per age group");
 });
 
-test("board 3D map: clicking a story block highlights its dependency chain", async ({ page }) => {
+test("board dependencies view: graph draws the 8 recorded edges, node opens the inspector", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1280, height: 900 });
   await openBoard(page);
 
-  const canvas = page.getByTestId("feature-map-canvas");
-  await expect(canvas).toBeVisible();
-  await canvas.scrollIntoViewIfNeeded();
-  const box = await canvas.boundingBox();
-  if (!box) throw new Error("canvas has no box");
+  await page.getByTestId("board-nav-dependencies").click();
+  const graph = page.getByTestId("dependency-graph");
+  await expect(graph).toBeVisible();
+  // The snapshot encodes exactly 8 explicit PR-wait dependency edges
+  // across 8 cases (locked by the board-data unit tests).
+  await expect(graph.locator(".board-graph-line")).toHaveCount(8);
+  await expect(graph.locator(".board-graph-node")).toHaveCount(8);
+  await expect(page.locator(".board-dep-row")).toHaveCount(8);
 
-  // Aim at the "Holmes and Watson in math" block using the projected
-  // node points the map publishes on the canvas — the story with the
-  // richest recorded chain (it waits on PR 434 + PR 430). A couple of
-  // nearby retries cover a front block shadowing the exact pixel.
-  await page.waitForTimeout(800);
-  const rawPoints = await canvas.getAttribute("data-node-points");
-  if (!rawPoints) throw new Error("map published no node points");
-  const points = JSON.parse(rawPoints) as { t: string; x: number; y: number }[];
-  const target = points.find((p) => p.t === "Holmes and Watson in math");
-  if (!target) throw new Error("node points do not include the math story");
-  const selection = page.getByTestId("map-selection");
-  let found = "";
-  for (const dy of [0, -0.012, 0.012, -0.025, 0.025]) {
-    await page.mouse.click(box.x + box.width * target.x, box.y + box.height * (target.y + dy));
-    await page.waitForTimeout(250);
-    found = await page.evaluate(
-      () => document.querySelector('[data-testid="map-selection"]')?.textContent ?? "",
-    );
-    if (found.startsWith("Selected: Holmes and Watson in math.")) break;
-  }
-  expect(found).toContain("Waits on (explicit PR waits):");
-  expect(found).toContain("Clue pacing and one voice at a time");
-  expect(found).toContain("Math subject screen, 3 items per age group");
-  expect(found).toContain("Shared voice channel (one speaker at a time)");
-  await expect(canvas).toHaveAttribute("data-selected-story", "Holmes and Watson in math");
-  await expect(selection).toContainText("Waits on (explicit PR waits):");
+  // "Holmes and Watson in math" is the case with the richest recorded
+  // chain (it waits on PR 434 + PR 430 stories).
+  await graph.locator(".board-graph-node").filter({ hasText: "Holmes and Watson in math" }).click();
+  const aside = page.locator(".board-inspector");
+  await expect(aside).toBeVisible();
+  await expect(aside).toContainText("Holmes and Watson in math");
+  await expect(aside).toContainText("Clue pacing and one voice at a time");
 });
 
 test("board issues page at 390px: groups by story, unmapped stays unmapped (network mocked)", async ({
@@ -232,7 +237,7 @@ test("board issues page at 390px: groups by story, unmapped stays unmapped (netw
   expect(overflow).toBeLessThanOrEqual(0);
 });
 
-test("board with reduced motion: lands on the list view, no 3D canvas", async ({ browser }) => {
+test("board with reduced motion: board renders, no canvas anywhere", async ({ browser }) => {
   const context = await browser.newContext({ reducedMotion: "reduce" });
   try {
     await serveBuiltArtifact(context);
@@ -247,12 +252,217 @@ test("board with reduced motion: lands on the list view, no 3D canvas", async ({
     const page = await context.newPage();
     await page.goto(BOARD_URL);
     await expect(page.getByTestId("board-page")).toBeVisible();
-    await expect(page.getByTestId("board-list-view")).toBeVisible();
-    await expect(page.getByTestId("board-list-view").getByTestId("story-card")).toHaveCount(46);
-    await expect(page.getByTestId("feature-map-canvas")).toHaveCount(0);
+    // Phase C: there is no 3D view at all anymore (the expedition map
+    // was retired), so reduced motion changes nothing structural — the
+    // story map carries all 46 cases as plain buttons.
+    await page.getByTestId("board-nav-map").click();
+    await expect(page.getByTestId("story-map-view").locator(".board-slice")).toHaveCount(46);
+    await expect(page.locator("canvas")).toHaveCount(0);
   } finally {
     await context.close();
   }
+});
+
+/** Total story cards across the three scrum columns. */
+async function scrumCardCount(page: import("playwright/test").Page): Promise<number> {
+  let n = 0;
+  for (const status of ["not-started", "in-progress", "done"]) {
+    n += await page.getByTestId(`scrum-column-${status}`).getByTestId("story-card").count();
+  }
+  return n;
+}
+
+/** The number in the header's Blocked tile (the fifth tile). */
+async function readBlockedTile(page: import("playwright/test").Page): Promise<number> {
+  const tile = page.locator(".board-tile").filter({ hasText: "Blocked" });
+  await expect(tile).toHaveCount(1);
+  return Number(((await tile.locator("b").textContent()) ?? "").trim());
+}
+
+test("board v2 search: a distinctive title word narrows the scrum columns", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+  const total = await scrumCardCount(page);
+  expect(total).toBe(46);
+
+  // "jitter" matches exactly one story across title/lane/owner in the
+  // snapshot (verified against snapshot.json): "Held-finger jitter fix
+  // on the clue berth". GitHub is aborted in this spec, so the snapshot
+  // set is the set being searched.
+  await page.locator(".board-search input").fill("jitter");
+  const line = page.getByText(/Showing \d+ of \d+ stories/);
+  await expect(line).toHaveText(`Showing 1 of ${total} stories`);
+  const columns = page.locator(".board-columns");
+  await expect(columns.getByTestId("story-card")).toHaveCount(1);
+  await expect(columns).toContainText("Held-finger jitter fix on the clue berth");
+  await expect(columns).not.toContainText("Physics spec");
+
+  await page.locator(".board-search input").fill("");
+  await expect(line).toHaveCount(0);
+  await expect.poll(() => scrumCardCount(page)).toBe(total);
+});
+
+test("board v2 blocked-only filter: visible cards match the Blocked tile count", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+  const total = await scrumCardCount(page);
+  const blocked = await readBlockedTile(page);
+  expect(blocked).toBeGreaterThan(0);
+  expect(blocked).toBeLessThan(total);
+
+  const toggle = page.getByRole("button", { name: "Blocked only" });
+  await toggle.click();
+  await expect(toggle).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByText(/Showing \d+ of \d+ stories/)).toHaveText(
+    `Showing ${blocked} of ${total} stories`,
+  );
+  await expect.poll(() => scrumCardCount(page)).toBe(blocked);
+
+  // Snapshot-specific title check, safe here because GitHub is aborted
+  // in this spec so no live overlay can land: "Truce pennant port" has
+  // no linked PRs of its own and waits (snapshot waitsOnIds) on two
+  // in-progress stories, so it is blocked; "Physics spec" is done.
+  const columns = page.locator(".board-columns");
+  await expect(columns).toContainText("Truce pennant port");
+  await expect(columns).not.toContainText("Physics spec");
+});
+
+test("board v2 inspector: card title opens it, Escape closes and returns focus", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+
+  const card = page.getByTestId("scrum-column-not-started").getByTestId("story-card").first();
+  const titleButton = card.locator(".board-card-title-button");
+  const title = ((await titleButton.textContent()) ?? "").trim();
+  expect(title.length).toBeGreaterThan(0);
+  await titleButton.click();
+
+  const aside = page.locator(".board-inspector");
+  await expect(aside).toBeVisible();
+  await expect(aside.locator("h3")).toHaveText(title);
+  await expect(aside).toContainText("Why this status:");
+  await expect(aside).toContainText(
+    /Snapshot status|Done —|In progress —|Keeps the snapshot status/,
+  );
+  await expect(aside.getByRole("button", { name: "Close story inspector" })).toBeVisible();
+
+  await page.keyboard.press("Escape");
+  await expect(aside).toHaveCount(0);
+  await expect
+    .poll(() => page.evaluate(() => document.activeElement?.textContent?.trim() ?? ""))
+    .toBe(title);
+});
+
+test("board v2 at 390px: columns scroll inside their container, inspector stacks below", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await openBoard(page);
+
+  const overflow = await page.evaluate(() => {
+    return document.documentElement.scrollWidth - document.documentElement.clientWidth;
+  });
+  expect(overflow).toBeLessThanOrEqual(0);
+  const internal = await page.evaluate(() => {
+    const el = document.querySelector(".board-columns")!;
+    return { scroll: el.scrollWidth, client: el.clientWidth };
+  });
+  expect(internal.scroll).toBeGreaterThan(internal.client);
+
+  const card = page.getByTestId("scrum-column-not-started").getByTestId("story-card").first();
+  await card.locator(".board-card-title-button").click();
+  const aside = page.locator(".board-inspector");
+  await expect(aside).toBeVisible();
+  const boxes = await page.evaluate(() => {
+    const cols = document.querySelector(".board-columns")!.getBoundingClientRect();
+    const ins = document.querySelector(".board-inspector")!.getBoundingClientRect();
+    return { colsBottom: cols.bottom, asideTop: ins.top };
+  });
+  expect(boxes.asideTop).toBeGreaterThanOrEqual(boxes.colsBottom - 4);
+  await page.keyboard.press("Escape");
+  await expect(aside).toHaveCount(0);
+
+  // Phase C: the lane list lives on the Story map view now.
+  await page.getByTestId("board-nav-map").click();
+  const map = page.getByTestId("story-map-view");
+  await expect(map.getByTestId("map-region-row")).toHaveCount(8);
+});
+
+test("home loads no board code: no board chunks, feature-map chunk, or Turnstile requests", async ({
+  page,
+}) => {
+  const urls: string[] = [];
+  page.on("request", (req) => urls.push(req.url()));
+  await page.goto(APP_NO_IDLE);
+  await page.waitForTimeout(3000);
+  expect(urls.filter((u) => /board-[A-Za-z0-9_-]+\.js/.test(u) || /feature-map-/.test(u))).toEqual(
+    [],
+  );
+  expect(urls.filter((u) => u.includes("challenges.cloudflare.com"))).toEqual([]);
+});
+
+test("board phase C screenshots (snapshot data, GitHub mocked off)", async ({ page }) => {
+  const dir = path.resolve("..", "screenshots-C");
+  mkdirSync(dir, { recursive: true });
+
+  await page.setViewportSize({ width: 1280, height: 1600 });
+  await openBoard(page);
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(dir, "board-desktop.png") });
+
+  // A story with linked PRs (355-358) and a status-why line.
+  const doneCard = page
+    .getByTestId("scrum-column-done")
+    .getByTestId("story-card")
+    .filter({ hasText: "Holmes and Watson pair in the game" });
+  await doneCard.locator(".board-card-title-button").click();
+  const aside = page.locator(".board-inspector");
+  await expect(aside).toBeVisible();
+  await expect(aside).toContainText("PR 355");
+  await aside.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: path.join(dir, "inspector-open.png") });
+  await page.keyboard.press("Escape");
+  await expect(aside).toHaveCount(0);
+
+  await page.getByTestId("board-nav-map").click();
+  await expect(page.getByTestId("story-map-view")).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(dir, "story-map.png") });
+
+  await page.getByTestId("board-nav-dependencies").click();
+  await expect(page.getByTestId("dependency-graph")).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(dir, "dependencies.png") });
+
+  await page.getByTestId("board-nav-releases").click();
+  await expect(page.getByTestId("xp-progress")).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: path.join(dir, "releases.png") });
+
+  await page.getByTestId("board-nav-board").click();
+  await expect(page.getByTestId("board-live-line")).toContainText("snapshot");
+  // Resize the loaded page instead of re-navigating to the same URL:
+  // a second goto lands on the app service worker and serves its 404
+  // body in this harness. The responsive rules are pure CSS, so a
+  // resize is the honest 390px render of the same page.
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect
+    .poll(() =>
+      page.evaluate(() => {
+        const el = document.querySelector(".board-columns")!;
+        return el.scrollWidth > el.clientWidth;
+      }),
+    )
+    .toBe(true);
+  // Frame the scrum board itself: at 390px the shell header + intro
+  // fill the first screen, so scroll the stage into view — the second
+  // column peeking at the right edge is the scroll cue.
+  await page.getByRole("heading", { name: /Scrum board/ }).scrollIntoViewIfNeeded();
+  await page.screenshot({ path: path.join(dir, "board-390.png") });
 });
 
 test("no Home or game screen links to /board", async ({ page }) => {
@@ -266,4 +476,267 @@ test("no Home or game screen links to /board", async ({ page }) => {
     ).length;
   });
   expect(boardLinks).toBe(0);
+});
+
+// ---------------------------------------------------------------------------
+// Phase B game layer. Expected values are computed from the snapshot file
+// itself, never hardcoded: GitHub is aborted in this spec, so the page is
+// rendering exactly this snapshot.
+// ---------------------------------------------------------------------------
+
+interface SnapshotStoryForGame {
+  id: string;
+  title: string;
+  status: string;
+  waitsOnIds?: string[];
+}
+
+function snapshotStoriesForGame(): SnapshotStoryForGame[] {
+  const parsed = JSON.parse(readFileSync("src/board/snapshot.json", "utf8")) as {
+    stories: SnapshotStoryForGame[];
+  };
+  return parsed.stories;
+}
+
+test("board v2 game layer: XP bar counts cases closed from the snapshot", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+
+  const stories = snapshotStoriesForGame();
+  const closed = stories.filter((s) => s.status === "done").length;
+  const total = stories.length;
+
+  // Phase C: progress is the Releases view's score card now.
+  await page.getByTestId("board-nav-releases").click();
+  await expect(page.getByTestId("xp-progress")).toContainText(`Cases closed ${closed} / ${total}`);
+});
+
+test("board v2 game layer: next to crack is the open case that unblocks the most", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+
+  const stories = snapshotStoriesForGame();
+  // Mirror production nextToCrack (board-data.ts) exactly: a candidate
+  // with unblocks === 0 can never win — best stays null unless some
+  // open case unblocks at least one other case. Max wins; ties keep
+  // the first candidate in snapshot order (strict > comparison).
+  let best: { story: SnapshotStoryForGame; unblocks: number } | null = null;
+  for (const candidate of stories) {
+    if (candidate.status === "done") continue;
+    const unblocks = stories.filter((s) => (s.waitsOnIds ?? []).includes(candidate.id)).length;
+    if (unblocks > 0 && (best === null || unblocks > best.unblocks)) {
+      best = { story: candidate, unblocks };
+    }
+  }
+
+  // Phase C: Next to crack is the Dependencies view's recommended-
+  // move callout now.
+  await page.getByTestId("board-nav-dependencies").click();
+  const chip = page.getByTestId("next-to-crack");
+  if (best === null) {
+    await expect(chip).toHaveCount(0);
+  } else {
+    await expect(chip).toContainText(best.story.title);
+    await expect(chip).toContainText(`unblocks ${best.unblocks}`);
+  }
+});
+
+test("board card characters: every card carries one, animated live, still under reduced motion", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+
+  const cards = page.getByTestId("story-card");
+  await expect(cards).toHaveCount(46);
+  const characters = page.locator('[data-testid="story-card"] [data-character]');
+  await expect(characters).toHaveCount(46);
+  // A real mix of themes is on show, not one glyph repeated.
+  const kinds = await characters.evaluateAll((els) => [
+    ...new Set(els.map((e) => e.getAttribute("data-character"))),
+  ]);
+  expect(kinds.length).toBeGreaterThanOrEqual(5);
+
+  // Combined styles (owner, 2026-11-13): every card ALSO carries
+  // exactly one flat icon chip, for the SAME theme as its mascot.
+  const chips = page.locator('[data-testid="story-card"] [data-theme-chip]');
+  await expect(chips).toHaveCount(46);
+  const pairs = await cards.evaluateAll((cardEls) =>
+    cardEls.map((card) => ({
+      mascots: card.querySelectorAll("[data-character]").length,
+      mascot: card.querySelector("[data-character]")?.getAttribute("data-character"),
+      chipCount: card.querySelectorAll("[data-theme-chip]").length,
+      chip: card.querySelector("[data-theme-chip]")?.getAttribute("data-theme-chip"),
+      icon: card.querySelector("[data-theme-icon]")?.getAttribute("data-theme-icon"),
+    })),
+  );
+  for (const pair of pairs) {
+    expect(pair.mascots).toBe(1);
+    expect(pair.chipCount).toBe(1);
+    expect(pair.chip).toBe(pair.mascot);
+    expect(pair.icon).toBe(pair.mascot);
+  }
+
+  // Motion is live by default on the animated part…
+  const part = page.locator('[data-testid="story-card"] .cc-anim').first();
+  const liveName = await part.evaluate((el) => getComputedStyle(el).animationName);
+  expect(liveName).not.toBe("none");
+
+  // …and reduced motion stills every character.
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const stillName = await part.evaluate((el) => getComputedStyle(el).animationName);
+  expect(stillName).toBe("none");
+});
+
+test("board v2 game layer: reduced motion done card stamp is visible with no animation", async ({
+  page,
+}) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await openBoard(page);
+
+  const card = page.locator('[data-testid="story-card"][data-status="done"]').first();
+  await expect(card).toBeVisible();
+  const stamp = card.locator(".board-case-stamp");
+  await expect(stamp).toBeVisible();
+  const animationName = await stamp.evaluate((el) => getComputedStyle(el).animationName);
+  expect(animationName).toBe("none");
+});
+
+// ---------------------------------------------------------------------------
+// Celebration (step 12). Unlike the tests above, these need the live
+// GitHub overlay to LAND: the board's GitHub route is aborted in
+// beforeEach, so each test registers its own pulls route AFTER it
+// (later registration wins in Playwright) fulfilling the pulls URL
+// with merged PRs. Snapshot facts relied on here:
+//  - "Held-finger jitter fix on the clue berth" is in-progress, prs [431]
+//  - "Clue pacing and one voice at a time" is in-progress, prs [430]
+//  - "Shared voice channel (one speaker at a time)" is in-progress, prs [430]
+// A merged 431 closes only the jitter case; merged 431 + 430 closes
+// all three. parseGithubPrs treats a PR as merged when state is
+// "closed" and merged_at is a non-empty string.
+// ---------------------------------------------------------------------------
+
+const SEEN_CLOSED_KEY = "meridian-board-seen-closed:v1";
+const JITTER_TITLE = "Held-finger jitter fix on the clue berth";
+
+/** Like openBoard(), but for a fulfilled pulls route: the live line
+ *  says "Live from GitHub", never "snapshot". */
+async function openBoardLive(page: import("playwright/test").Page) {
+  await page.goto(BOARD_URL);
+  await expect(page.getByTestId("board-page")).toBeVisible();
+  await expect(page.getByTestId("board-live-line")).toContainText("Live");
+}
+
+/** Fulfil the pulls endpoint with the given PR numbers, all merged. */
+async function mockMergedPulls(
+  context: import("playwright/test").BrowserContext,
+  prNumbers: readonly number[],
+) {
+  await context.route(
+    "https://api.github.com/repos/veeresh-bikkaneti/Meridian/pulls*",
+    async (route) => {
+      const body = prNumbers.map((n) => ({
+        number: n,
+        state: "closed",
+        merged_at: "2026-11-13T10:00:00Z",
+        title: `Merged PR ${n}`,
+      }));
+      return route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify(body),
+      });
+    },
+  );
+}
+
+/** Seed the seen-closed baseline (ids of all snapshot-done stories)
+ *  before the app loads, so any further closure is "newly closed". */
+async function seedSeenClosedBaseline(page: import("playwright/test").Page) {
+  const doneIds = snapshotStoriesForGame()
+    .filter((s) => s.status === "done")
+    .map((s) => s.id);
+  await page.addInitScript(
+    ({ key, ids }: { key: string; ids: string[] }) => {
+      localStorage.setItem(key, JSON.stringify(ids));
+    },
+    { key: SEEN_CLOSED_KEY, ids: doneIds },
+  );
+}
+
+test("celebration: a newly closed case toasts once", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await seedSeenClosedBaseline(page);
+  await mockMergedPulls(context, [431]);
+  await openBoardLive(page);
+
+  const toast = page.getByTestId("board-celebration");
+  await expect(toast).toHaveCount(1);
+  await expect(toast).toContainText("Case closed");
+  await expect(toast).toContainText(JITTER_TITLE);
+
+  const jitterCard = page
+    .getByTestId("story-card")
+    .filter({ hasText: JITTER_TITLE })
+    .first();
+  await expect(jitterCard).toHaveAttribute("data-celebrated", "true");
+});
+
+test("celebration: two newly closed cases still toast only once", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await seedSeenClosedBaseline(page);
+  // 431 + 430 merged newly closes THREE cases (jitter, clue pacing,
+  // shared voice channel) — the board celebrates at most one, the
+  // first newly closed in snapshot order: the jitter case.
+  await mockMergedPulls(context, [431, 430]);
+  await openBoardLive(page);
+
+  const toast = page.getByTestId("board-celebration");
+  await expect(toast).toHaveCount(1);
+  await expect(toast).toContainText("Case closed");
+  await expect(toast).toContainText(JITTER_TITLE);
+});
+
+test("celebration: no live data means no toast, whatever the baseline says", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  // Baseline present but EMPTY (a valid array missing every snapshot-
+  // done id). GitHub stays aborted (the beforeEach route), so the
+  // overlay supplies no PR data: the comparison must never run —
+  // against this baseline every snapshot-done case would otherwise
+  // look "newly closed" and toast spuriously. Pins the board effect's
+  // prs.length > 0 guard.
+  await page.addInitScript(
+    ({ key }: { key: string }) => {
+      localStorage.setItem(key, "[]");
+    },
+    { key: SEEN_CLOSED_KEY },
+  );
+  await openBoard(page);
+
+  await page.waitForTimeout(500);
+  await expect(page.getByTestId("board-celebration")).toHaveCount(0);
+});
+
+test("celebration: first visit sets the baseline silently", async ({ page, context }) => {
+  await page.setViewportSize({ width: 1280, height: 900 });
+  // No localStorage seed: with no baseline the app must set one
+  // silently and never celebrate, even though 431 merged closes the
+  // jitter case on this very load.
+  await mockMergedPulls(context, [431]);
+  await openBoardLive(page);
+
+  // The live overlay really landed (the jitter case is now in the
+  // done column), so the absence of a toast is the baseline rule,
+  // not a failed fetch.
+  await expect(
+    page
+      .getByTestId("scrum-column-done")
+      .getByTestId("story-card")
+      .filter({ hasText: JITTER_TITLE }),
+  ).toHaveCount(1);
+  await page.waitForTimeout(500);
+  await expect(page.getByTestId("board-celebration")).toHaveCount(0);
 });

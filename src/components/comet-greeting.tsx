@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouse
 import { createPortal } from "react-dom";
 import { Volume2 } from "lucide-react";
 import { isSoundEnabled } from "@/game/audio/sfx";
+import { claimVoice, type VoiceClaim } from "@/game/audio/voice-channel";
 import {
   COMET_GREETING_LINES,
   greetingAudioUrl,
@@ -63,6 +64,12 @@ export function CometGreeting({
   const revealTimer = useRef(0);
   const dismissTimer = useRef(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  /** The app-wide voice channel claim for the clip now sounding. */
+  const voiceRef = useRef<VoiceClaim | null>(null);
+  const releaseVoice = () => {
+    voiceRef.current?.release();
+    voiceRef.current = null;
+  };
   // Veeresh 2026-10-06: the tap that starts audio must not dismiss the bubble.
   // pointerdown starts audio, click dismisses — same tap would kill it.
   const audioStartTimeRef = useRef(0);
@@ -74,6 +81,8 @@ export function CometGreeting({
     window.clearTimeout(dismissTimer.current);
     audioRef.current?.pause();
     audioRef.current = null;
+    voiceRef.current?.release();
+    voiceRef.current = null;
     setVisible(false);
     onOpenChange?.(false);
   }, [onOpenChange]);
@@ -115,15 +124,36 @@ export function CometGreeting({
       window.clearTimeout(dismissTimer.current);
       // Bug A fix: record when audio starts so the tap that started it doesn't dismiss.
       audioStartTimeRef.current = Date.now();
+      // One voice at a time: the greeting is automatic, so it waits its
+      // turn. If someone is speaking it degrades to the text-only path.
+      const claim = claimVoice(
+        "comet-greeting",
+        () => {
+          audioRef.current?.pause();
+          audioRef.current = null;
+          setAudioState("ended");
+          if (!dismissedRef.current) scheduleDismiss(DISMISS_AFTER_AUDIO_MS);
+        },
+        { userInitiated: false },
+      );
+      if (!claim) {
+        setAudioState("failed");
+        modeRef.current = "text";
+        if (!dismissedRef.current) beginReveal(FALLBACK_WORD_MS);
+        return;
+      }
+      voiceRef.current = claim;
       const audio = new Audio(greetingAudioUrl(indexRef.current));
       audioRef.current = audio;
       setAudioState("playing");
       const onEnded = () => {
+        releaseVoice();
         setAudioState("ended");
         if (!dismissedRef.current) scheduleDismiss(DISMISS_AFTER_AUDIO_MS);
       };
       const onFail = () => {
         // Audio unavailable — degrade to the text-only path, never silence the greeting.
+        releaseVoice();
         setAudioState("failed");
         audioRef.current = null;
         modeRef.current = "text";
@@ -224,6 +254,8 @@ export function CometGreeting({
       window.clearTimeout(dismissTimer.current);
       audioRef.current?.pause();
       audioRef.current = null;
+      voiceRef.current?.release();
+      voiceRef.current = null;
     };
     // Mount-once orchestration; all live values flow through refs.
     // Re-runs once when suppressAuto flips false (tutorial invite dismissed).
@@ -235,6 +267,18 @@ export function CometGreeting({
   const handleSpeaker = (e: ReactMouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     if (speakerPlaying || dismissedRef.current) return;
+    // A tap wins: it stops whoever is speaking, then takes the channel.
+    const claim = claimVoice(
+      "comet-greeting",
+      () => {
+        audioRef.current?.pause();
+        audioRef.current = null;
+        setSpeakerPlaying(false);
+        setAudioState("ended");
+      },
+      { userInitiated: true },
+    );
+    voiceRef.current = claim;
     const audio = new Audio(greetingAudioUrl(indexRef.current));
     audioRef.current = audio;
     setSpeakerPlaying(true);
@@ -243,6 +287,7 @@ export function CometGreeting({
     audio.addEventListener(
       "ended",
       () => {
+        releaseVoice();
         setSpeakerPlaying(false);
         setAudioState("ended");
         if (!dismissedRef.current) scheduleDismiss(DISMISS_AFTER_SPEAKER_MS);
@@ -250,6 +295,7 @@ export function CometGreeting({
       { once: true },
     );
     const onFail = () => {
+      releaseVoice();
       setSpeakerPlaying(false);
       setAudioState("failed");
       audioRef.current = null;

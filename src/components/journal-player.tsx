@@ -17,6 +17,7 @@
  */
 import { useEffect, useRef, useState } from "react";
 import { LazyHomeImage } from "./lazy-home-image";
+import { claimVoice, type VoiceClaim } from "@/game/audio/voice-channel";
 import {
   getJournalMovieManifest,
   journalMovieUrl,
@@ -188,6 +189,37 @@ export function JournalPlayer({
     if (attempt && typeof attempt.catch === "function") {
       attempt.catch(() => setPaused(true));
     }
+  }, [phase]);
+
+  // One voice at a time: a movie with sound on holds the app-wide voice
+  // channel while it plays. Pressing Play is a tap, so it takes the
+  // channel from whoever is speaking; when another voice takes it, the
+  // movie PAUSES (it does not mute). A muted movie makes no sound, so it
+  // holds nothing.
+  useEffect(() => {
+    if (phase !== "ready") return;
+    const video = videoRef.current;
+    if (!video) return;
+    let claim: VoiceClaim | null = null;
+    const sync = () => {
+      const sounding = !video.paused && !video.ended && !video.muted;
+      if (sounding && !claim) {
+        claim = claimVoice("journal-movie", () => video.pause(), {
+          userInitiated: true,
+        });
+      } else if (!sounding && claim) {
+        claim.release();
+        claim = null;
+      }
+    };
+    const events = ["play", "pause", "ended", "volumechange"] as const;
+    for (const e of events) video.addEventListener(e, sync);
+    sync();
+    return () => {
+      for (const e of events) video.removeEventListener(e, sync);
+      claim?.release();
+      claim = null;
+    };
   }, [phase]);
 
   // Keep the video's muted flag in sync with the toggle: React's
