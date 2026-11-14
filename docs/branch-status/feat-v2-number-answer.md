@@ -90,18 +90,9 @@ in the card; autoFocus would fight the arrival-focus pattern).
 
 ## Next step
 
-Push BLOCKED 2026-11-14 ~02:45 UTC: `git push` fails "Invalid
-username or token" and the GitHub API helper 401s — the stored
-credential is invalid (same class as the Nov 11 triage). Do NOT
-paste a token in chat; do NOT retry blindly. Recovery left in
-place: verified thin bundle
-`~/workspace/meridian-v2-number-answer-thin.bundle` (38 KB, ref
-7811901, prerequisite 8a12ff6) + worktree
-`~/workspace/meridian-v2-number-answer`. Owner re-auths (fresh
-token on the secure page, as on 2026-11-09), then pushes the branch
-and opens the draft PR ("Shared case: typed-number answers and a
-follow-up question (v2)") with the reviewer verdict pasted verbatim.
-Never merge; owner merges after CI is green.
+Push the branch, open the draft PR ("Shared case: typed-number
+answers and a follow-up question (v2)"), paste the reviewer verdict
+verbatim in the body. Never merge; owner merges after CI is green.
 
 ## Graph
 
