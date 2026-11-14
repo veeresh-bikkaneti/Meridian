@@ -247,3 +247,14 @@ and is dropped. See §7.
 - Mount Everest height: MEDIUM confidence (secondary source citing the 2020 joint survey reports).
 - Earth's mean radius: MEDIUM confidence (secondary source citing IUGG).
 - Readability of host lines: not measured in Stage A (no host lines written yet).
+
+## Adult (18+) rows, Stream F (PROPOSED)
+
+These 18+ rows are proposed in v2 Stream F. Each is an UNVERIFIED adult round with a Fit note; educator review runs alongside, not as a gate.
+
+- `general-knowledge:mixed:map-scale-route`
+- `general-knowledge:mixed:trail-walk-time`
+- `general-knowledge:mixed:bridge-spans`
+- `general-knowledge:mixed:flight-arrival-clock`
+- `general-knowledge:mixed:field-area`
+- `general-knowledge:mixed:ferry-tickets`

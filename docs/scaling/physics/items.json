@@ -377,5 +377,83 @@
     "useElsewhere": [
       "everyday life: a workshop lift whose energy card has one missing change, using the expression printed on the card"
     ]
+  },
+  {
+    "id": "physics:force:sling-share",
+    "group": "18+",
+    "objective": "After this, an adult can compute each sling's share of a total force, shown by entering each sling's force before the load is lowered.",
+    "standard": "UNVERIFIED",
+    "why": "A load weighs 500 newtons. In an ideal case, two identical slings share it evenly. How many newtons does each sling carry? Fit: no code fits; this is 18+ enrichment past MS-PS2-2.",
+    "buildsOn": [
+      "physics:push:table"
+    ],
+    "useElsewhere": [
+      "math: sharing a total evenly between equal parts is the division step used in every share problem"
+    ]
+  },
+  {
+    "id": "physics:energy:efficiency-share",
+    "group": "18+",
+    "objective": "After this, an adult can compute the useful fraction of an energy input, shown by entering the fraction before the motor's log is checked.",
+    "standard": "UNVERIFIED",
+    "why": "A pump motor takes in 500 joules of energy. It delivers 300 joules of useful work. What fraction of the energy is useful? Fit: this adult round extends HS-PS3-1, and no single code covers it.",
+    "buildsOn": [
+      "physics:energy:transfer"
+    ],
+    "useElsewhere": [
+      "chemistry: the share of a mass that is kept after a reaction is the same fraction step used to report a yield"
+    ]
+  },
+  {
+    "id": "physics:sound:echo-distance",
+    "group": "18+",
+    "objective": "After this, an adult can compute a distance from speed and a round-trip time, shown by entering the distance to the wall before the echo is played.",
+    "standard": "UNVERIFIED",
+    "why": "A card says sound travels 340 metres each second in air. A shout returns as an echo 2 seconds after it is made, having travelled to the wall and back. How far away is the wall? Fit: no exact code; MS-PS1-4 is the nearest.",
+    "buildsOn": [
+      "physics:sound:medium"
+    ],
+    "useElsewhere": [
+      "geography: a distance found from a timed trip is the same measure a map scale turns into a real route length"
+    ]
+  },
+  {
+    "id": "physics:ramp:lift-work",
+    "group": "18+",
+    "objective": "After this, an adult can compute the work done by a force over a distance, shown by entering the joules before the crane's log is closed.",
+    "standard": "UNVERIFIED",
+    "why": "A crate weighing 400 newtons is lifted 1.5 metres straight up. The work done is force times distance. How many joules of work are done? Fit: this adult round extends HS-PS3-1, and no single code covers it.",
+    "buildsOn": [
+      "physics:ramp:higher-stored"
+    ],
+    "useElsewhere": [
+      "math: a force times a distance is a plain product, the same multiplication step as an area"
+    ]
+  },
+  {
+    "id": "physics:arrive:two-leg-trip",
+    "group": "18+",
+    "objective": "After this, an adult can compute the total time of a two-leg trip, shown by entering the total hours before the route is confirmed.",
+    "standard": "UNVERIFIED",
+    "why": "A delivery van drives 12 kilometres at 6 kilometres per hour, then 9 kilometres at 3 kilometres per hour. How many hours is the whole trip? Fit: no code fits; this is 18+ enrichment past 8.EE.A.4.",
+    "buildsOn": [
+      "physics:arrive:unit-rate"
+    ],
+    "useElsewhere": [
+      "everyday life: a planned trip with two legs adds the time of each leg, as it adds up its distances"
+    ]
+  },
+  {
+    "id": "physics:push:speed-up",
+    "group": "18+",
+    "objective": "After this, an adult can compute the speed of a cart after a steady speed-up, shown by entering the speed before the cart's timer is started.",
+    "standard": "UNVERIFIED",
+    "why": "A cart starts from rest and speeds up by 2 metres per second every second. How fast is it moving after 5 seconds? Fit: this adult round extends HS-PS3-1, and no single code covers it.",
+    "buildsOn": [
+      "physics:push:mass"
+    ],
+    "useElsewhere": [
+      "chemistry: a steady rate of change times a time gives the amount changed, the same step as a reaction's rate"
+    ]
   }
 ]

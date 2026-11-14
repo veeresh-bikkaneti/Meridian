@@ -569,5 +569,44 @@
     "useElsewhere": [
       "geography: the height of a tower that cannot be stood opposite, from two angles and the gap between them"
     ]
+  },
+  {
+    "id": "math-applied:rates:tank-fill",
+    "group": "18+",
+    "objective": "After this, an adult can compute the minutes to fill a tank at a steady flow rate, shown by entering the minutes before the timer is started.",
+    "standard": "UNVERIFIED",
+    "why": "A water tank holds 1,500 litres. A pump fills it at a steady 25 litres a minute. How many minutes until it is full? Fit: no code fits; this is 18+ enrichment past 7.RP.A.2.",
+    "buildsOn": [
+      "math-applied:rates:constant-speed"
+    ],
+    "useElsewhere": [
+      "physics: a steady flow rate and a steady speed use the same divide-by-rate step"
+    ]
+  },
+  {
+    "id": "math-applied:geometry:fence-posts",
+    "group": "18+",
+    "objective": "After this, an adult can compute the perimeter of a rectangle and the posts it needs, shown by entering the post count before the fence is marked.",
+    "standard": "UNVERIFIED",
+    "why": "A rectangular yard is 12 metres long and 9 metres wide. A fence post goes every 3 metres around the edge, with one post at each corner. How many posts are needed? Fit: no code fits; this is 18+ enrichment past 6.G.A.1.",
+    "buildsOn": [
+      "math-applied:geometry:scale-drawing"
+    ],
+    "useElsewhere": [
+      "geography: a yard plan drawn to a scale turns the same edge lengths into a route to walk around"
+    ]
+  },
+  {
+    "id": "math-applied:trig:slope-ratio",
+    "group": "18+",
+    "objective": "After this, an adult can compute a ramp's slope as rise over run, shown by entering the ratio before the ramp's drawing is checked.",
+    "standard": "UNVERIFIED",
+    "why": "A loading ramp rises 1.2 metres over a level run of 4 metres. What is its slope as a plain ratio, rise divided by run? Fit: this adult round extends HSG.SRT.C.8, and no single code covers it.",
+    "buildsOn": [
+      "math-applied:trig:ratios"
+    ],
+    "useElsewhere": [
+      "physics: the same rise-over-run ratio says how steep a ramp is before any force is worked out"
+    ]
   }
 ]

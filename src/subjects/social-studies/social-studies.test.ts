@@ -17,7 +17,7 @@ import socialStudiesModule from "./index.ts";
 it("adapter reads every curated social-studies row", () => {
   const rows = allSocialStudiesRows();
   // docs/scaling/social-studies/items.json.
-  assert.equal(rows.length, 17);
+  assert.equal(rows.length, 23);
   for (const row of rows) {
     assert.ok(row.id.length > 0);
     assert.ok(["7-10", "10-18", "18+"].includes(row.group));

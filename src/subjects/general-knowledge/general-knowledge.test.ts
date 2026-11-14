@@ -23,7 +23,7 @@ import generalKnowledgeModule from "./index.ts";
 it("adapter reads every curated general-knowledge row", () => {
   const rows = allGeneralKnowledgeRows();
   // docs/scaling/general-knowledge/items.json.
-  assert.equal(rows.length, 11);
+  assert.equal(rows.length, 17);
   for (const row of rows) {
     assert.ok(row.id.length > 0);
     assert.ok(["7-10", "10-18", "18+"].includes(row.group));

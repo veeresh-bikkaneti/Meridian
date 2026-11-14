@@ -1091,3 +1091,11 @@ Numbered `N1` to `N7` so they do not collide with Q1 to Q15 in §9.
 The unsigned sign-off blocks above (§8 and the block at the end of this file)
 and the rubric's own block in the evidence pack stay blank. No agent signed
 anything.
+
+## Adult (18+) rows, Stream F (PROPOSED)
+
+These 18+ rows are proposed in v2 Stream F. Each is an UNVERIFIED adult round with a Fit note; educator review runs alongside, not as a gate.
+
+- `math-number:fractions:cloth-multiply`
+- `math-number:fractions:discount-percent`
+- `math-number:division:bulk-cases`
