@@ -50,6 +50,21 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
     assert.ok(art.includes('WHY_LEARN_MONTAGE_POSTER_PATH = "videos/why-learn-montage-poster.webp"'), "poster beside it");
   });
 
+  it("the play window skips the film's defective first and last beats", () => {
+    assert.ok(art.includes("WHY_LEARN_MONTAGE_LOOP_START_S = 2.8"), "window start constant in the art module");
+    assert.ok(art.includes("WHY_LEARN_MONTAGE_LOOP_END_S = 8.6"), "window end constant in the art module");
+    assert.ok(hero.includes("onLoadedMetadata={enterWindow}"), "the player lands inside the window once it can seek");
+    assert.ok(hero.includes("onTimeUpdate={keepInWindow}"), "the player folds back before the collage ending");
+    assert.ok(
+      hero.includes("film.currentTime >= WHY_LEARN_MONTAGE_LOOP_END_S"),
+      "the fold-back compares against the window end",
+    );
+    assert.ok(
+      hero.includes("film.currentTime < WHY_LEARN_MONTAGE_LOOP_START_S"),
+      "entering the window never seeks a film already inside it backwards",
+    );
+  });
+
   it("media URLs are built through the assetBase seam, never bundled imports", () => {
     assert.ok(hero.includes("assetBase()"), "assetBase seam (same as the journal manifest)");
     assert.ok(!hero.includes(".mp4\""), "no hard-coded file path in the component");
@@ -58,7 +73,10 @@ describe("WhyLearnHero — the montage in the hero slot", () => {
   it("controls: pause/play, replay, and a sound toggle that flips the muted property", () => {
     assert.ok(hero.includes('aria-label={playing ? "Pause montage" : "Play montage"}'), "pause/play with a spoken label");
     assert.ok(hero.includes('aria-label="Replay montage"'), "replay with a spoken label");
-    assert.ok(hero.includes("film.currentTime = 0"), "replay restarts the film");
+    assert.ok(
+      hero.includes("film.currentTime = WHY_LEARN_MONTAGE_LOOP_START_S"),
+      "replay restarts the film at the play window's start",
+    );
     assert.ok(hero.includes('aria-pressed={soundOn}'), "sound toggle exposes its state");
     assert.ok(hero.includes("film.muted = !soundOn"), "the toggle drives the element's muted property");
     assert.ok(hero.includes('data-testid="why-learn-hero-video"'), "video testid for the E2E spec");

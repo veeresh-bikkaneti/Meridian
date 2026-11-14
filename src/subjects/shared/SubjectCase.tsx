@@ -24,6 +24,14 @@
  *
  * Each subject's own case component is a thin wrapper that passes its
  * title, its test-id prefix, its band items and its answer lookup.
+ *
+ * Living Atlas (feat/why-learn-living-atlas): the case screens carry
+ * the picker's world — both shells take the why-learn-screen scope
+ * (the montage wash and the light atlas tokens) plus
+ * subject-case-screen, whose rules in styles.css restyle the clue
+ * card, the answer card and the result band into the atlas card
+ * anatomy. Presentation only: items, answers, phases and flow are
+ * exactly as before.
  */
 import { Suspense, lazy, useEffect, useRef, useState, type ReactNode } from "react";
 import type { AgeGroup, SubjectProps, UnitItem } from "../registry";
@@ -100,7 +108,12 @@ export function SubjectCase({
 
   if (!item || !answer) {
     return (
-      <ScreenShell onHome={onExit} title={`${title} case`} titleRef={headingRef}>
+      <ScreenShell
+        onHome={onExit}
+        className="why-learn-screen subject-case-screen"
+        title={`${title} case`}
+        titleRef={headingRef}
+      >
         <p className="mt-4 text-fg">
           No {title.toLowerCase()} case is ready for this age band yet.
         </p>
@@ -152,6 +165,7 @@ export function SubjectCase({
   return (
     <ScreenShell
       onHome={onExit}
+      className="why-learn-screen subject-case-screen"
       testId={`${testIdPrefix}-case`}
       data={{ "data-band": band, "data-item": item.id }}
       eyebrow="Case file · Why it matters"

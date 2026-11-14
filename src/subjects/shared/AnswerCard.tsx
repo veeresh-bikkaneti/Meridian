@@ -115,14 +115,20 @@ export function AnswerCard({
         </form>
       ) : (
         <div className="mt-3 grid gap-2">
-          {choices.map((choice) => (
+          {choices.map((choice, i) => (
             <button
               key={choice}
               type="button"
-              className="min-h-[44px] w-full rounded-xl border border-line bg-bg px-4 py-2 text-left text-fg"
+              className="wl-choice min-h-[44px] w-full rounded-xl border border-line bg-bg px-4 py-2 text-left text-fg"
               aria-pressed={picked === choice}
               onClick={() => pick(choice)}
             >
+              {/* Letter badge (Living Atlas case anatomy): pure
+                  decoration — aria-hidden, so the button's name
+                  stays the choice itself. */}
+              <span className="wl-choice-letter" aria-hidden="true">
+                {"ABCD"[i] ?? ""}
+              </span>
               {choice}
             </button>
           ))}

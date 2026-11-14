@@ -2250,6 +2250,133 @@
 .why-learn-screen .screen-hero {
   background: #fdfaf2;
   border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(94, 76, 32, 0.05), 0 14px 34px -18px rgba(94, 76, 32, 0.28);
+}
+/* The Living Atlas world band (feat/why-learn-living-atlas): the
+   home hero's mountain painting across the top of the screen,
+   behind the header and the hero card, over the montage wash that
+   continues below it (the ::after above). Same full-viewport-width
+   trick as ::after; the band's bottom edge feathers into the wash.
+   The header, cards and status lines ride above it (the z-index
+   lift below already covers header / ul / p). Height steps follow
+   the hero's own tall-screen steps so the hero card always lands
+   across the painting's lower slopes. The painting never moves —
+   the overlays sliced over it (WhyLearnWorld.tsx, the home hero's
+   own components) carry every second of motion, with the home
+   values: trail dots march 3s, cloud banks drift 28s / 40s, the
+   summit flag waves 2.2s. */
+.wl-world {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  height: 236px;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent);
+  mask-image: linear-gradient(to bottom, #000 78%, transparent);
+}
+@media (max-width: 680px) and (min-height: 700px) {
+  .wl-world {
+    height: 292px;
+  }
+}
+@media (max-width: 680px) and (min-height: 1000px) {
+  .wl-world {
+    height: 330px;
+  }
+}
+@media (min-width: 681px) {
+  .wl-world {
+    height: clamp(250px, 30vw, 400px);
+  }
+}
+@media (min-width: 681px) and (min-height: 1100px) {
+  .wl-world {
+    height: clamp(320px, 34vw, 470px);
+  }
+}
+@media (min-width: 681px) and (min-height: 1500px) {
+  .wl-world {
+    height: clamp(360px, 36vw, 540px);
+  }
+}
+.wl-world-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: right bottom;
+}
+.wl-trail,
+.wl-trekker {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.wl-trail-dots {
+  animation: wl-trailmarch 3s linear infinite;
+}
+@keyframes wl-trailmarch {
+  to {
+    stroke-dashoffset: -111;
+  }
+}
+/* The banks drift ±24 units and back on the home hero's 28 s /
+   40 s clocks (the short travel keeps every overlay rect inside
+   the page box — see the banks in WhyLearnWorld.tsx). */
+.wl-cloud-drift-a {
+  animation: wl-clouddrift-a 28s ease-in-out infinite alternate;
+}
+.wl-cloud-drift-b {
+  animation: wl-clouddrift-b 40s ease-in-out infinite alternate;
+}
+@keyframes wl-clouddrift-a {
+  from {
+    transform: translateX(-24px);
+  }
+  to {
+    transform: translateX(24px);
+  }
+}
+@keyframes wl-clouddrift-b {
+  from {
+    transform: translateX(24px);
+  }
+  to {
+    transform: translateX(-24px);
+  }
+}
+.wl-trail-flag {
+  transform-box: view-box;
+  transform-origin: 523px 116px;
+  animation: wl-flagwave 2.2s ease-in-out infinite alternate;
+}
+@keyframes wl-flagwave {
+  from {
+    transform: rotate(-5deg);
+  }
+  to {
+    transform: rotate(8deg);
+  }
+}
+/* The JS still gate (Save-Data / low-memory): the trail keeps its
+   drawn dots and flag, unmoving — the home hero's own still. */
+.wl-trail-still .wl-trail-dots,
+.wl-trail-still .wl-trail-flag {
+  animation: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wl-trail-dots,
+  .wl-trail-flag,
+  .wl-cloud-drift-a,
+  .wl-cloud-drift-b {
+    animation: none;
+  }
 }
 /* Fixed aspect ratio per breakpoint (plus width/height attributes): the
    box is sized before the picture loads, so there is no layout shift. */
@@ -2434,52 +2561,359 @@
   width: 22px;
   height: 22px;
 }
+/* Subject cards, Living Atlas anatomy (the home card's): a 16:9
+   picture slot bleeding to the card's top edges, then badge +
+   kicker, title + stamp chip, one-liner, and the go row pinned to
+   the bottom. Card surface, shadow and ease are the home tokens
+   (--hv5-card / --hv5-shadow-card / --hv5-ease values, quoted in
+   docs from home-v5.css). */
 .why-learn-card {
-  min-height: 88px;
-  border-radius: 16px;
+  border-radius: 18px;
   border: 1px solid var(--atlas-card-line);
-  background: #fdfaf2;
-  box-shadow: 0 1px 2px rgba(27, 43, 49, 0.08);
-  transition: transform 120ms ease, box-shadow 120ms ease;
+  background: var(--atlas-card);
+  box-shadow: 0 1px 2px rgba(94, 76, 32, 0.05), 0 14px 34px -18px rgba(94, 76, 32, 0.28);
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(0.16, 0.8, 0.26, 1), box-shadow 0.6s cubic-bezier(0.16, 0.8, 0.26, 1);
 }
 .why-learn-card:not(:disabled):hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(27, 43, 49, 0.14);
+  transform: translateY(-3px);
+  box-shadow: 0 2px 3px rgba(94, 76, 32, 0.06), 0 24px 44px -18px rgba(94, 76, 32, 0.34);
 }
 .why-learn-card:focus-visible {
   outline: 3px solid var(--atlas-ink);
   outline-offset: 3px;
 }
-.why-learn-card.is-soon {
-  border-style: dashed;
-  box-shadow: none;
+/* The spotlight's gold bloom for the card whose turn it is (the
+   meridian-ready-pulse bloom, box-shadow only, fired once per turn
+   as the class lands). */
+.why-learn-card.is-spot {
+  animation: wl-spot-pulse 600ms ease-out;
+}
+@keyframes wl-spot-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(242, 193, 78, 0.55), 0 1px 2px rgba(94, 76, 32, 0.05),
+      0 14px 34px -18px rgba(94, 76, 32, 0.28);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(242, 193, 78, 0), 0 1px 2px rgba(94, 76, 32, 0.05),
+      0 14px 34px -18px rgba(94, 76, 32, 0.28);
+  }
+}
+.wl-card-pic {
+  position: relative;
+  display: block;
+  width: calc(100% + 40px);
+  max-width: none;
+  aspect-ratio: 16 / 9;
+  margin: -20px -20px 16px;
+  overflow: hidden;
+  flex: none;
+  background: #d9cfb2;
+}
+.wl-card-still {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* CardFilm inside the picker slot: on Home the wrapper IS the slot
+   (.hv5-pic / .hv5-art geometry in home-v5.css); here the wrapper
+   fills the slot and its media fills the wrapper, the same rules
+   re-scoped to this page. */
+.why-learn-screen .wl-card-film {
+  position: absolute;
+  inset: 0;
+}
+.why-learn-screen .hv5-card-film {
+  overflow: hidden;
+}
+.why-learn-screen .hv5-card-film > img,
+.why-learn-screen .hv5-card-film > video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.wl-card-kickrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
 }
 .why-learn-badge {
   display: grid;
   place-items: center;
   flex: none;
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  color: #6e4a0e;
-  background: #f1e6c8;
-  border: 1px solid rgba(110, 74, 14, 0.25);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: #77591f;
+  background: radial-gradient(circle at 35% 30%, #fffdf6, #f1e9d2);
+  border: 1px solid #e3d9c3;
+}
+.wl-card-kicker {
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #77591f;
+}
+.wl-card-titlerow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.why-learn-card .mode-title {
+  font-size: 23px;
 }
 .why-learn-chip {
-  border-radius: 999px;
-  padding: 2px 10px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #1c2420;
-  background: #ece5d3;
+  border-radius: 6px;
+  border: 1px solid #e2d096;
+  padding: 3px 8px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #77591f;
+  background: #efe3bc;
+  transform: rotate(-2deg);
+}
+/* The chip stamps in like the home dossier's stamp: the shared
+   atlas-stamp-in keyframes on the card's own rise delay + 380ms. */
+.wl-chip-stamp {
+  animation: atlas-stamp-in 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) backwards;
+  animation-delay: calc(var(--rise-delay, 0ms) + 380ms);
 }
 .why-learn-go {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
-  color: #6e4a0e;
+  letter-spacing: 0.13em;
+  color: #77591f;
+}
+/* General knowledge overlay (GkGlobeOverlay.tsx): motion ABOVE the
+   pristine globe still, the home hero's recipe — cloud banks at
+   28s / 40s linear, route dots marching 3s, the pin dropping 450ms
+   with the home overshoot curve plus exactly one 600ms pulse ring.
+   The still itself gets no filter, no tint, no transform. */
+.wl-gk-over {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.wl-gk-over svg {
+  position: absolute;
+  display: block;
+}
+.wl-gk-cloud {
+  top: 0;
+  left: 0;
+  height: 52%;
+  width: 100%;
+  filter: blur(2.5px);
+}
+.wl-gk-cloud-a {
+  opacity: 0.5;
+  animation: wl-gk-cloud-a 28s ease-in-out infinite alternate;
+}
+.wl-gk-cloud-b {
+  opacity: 0.32;
+  animation: wl-gk-cloud-b 40s ease-in-out infinite alternate;
+}
+@keyframes wl-gk-cloud-a {
+  from {
+    transform: translateX(-8px);
+  }
+  to {
+    transform: translateX(8px);
+  }
+}
+@keyframes wl-gk-cloud-b {
+  from {
+    transform: translateX(8px);
+  }
+  to {
+    transform: translateX(-8px);
+  }
+}
+.wl-gk-map {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.wl-gk-dots {
+  animation: wl-gk-trailmarch 3s linear infinite;
+}
+@keyframes wl-gk-trailmarch {
+  to {
+    stroke-dashoffset: -56;
+  }
+}
+/* On the card's spotlight turn the route draws itself in, Iberia
+   to the port, over 1.5 s on the soft-land curve. */
+.why-learn-card.is-spot .wl-gk-cliprect {
+  animation: wl-gk-route-draw 1.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes wl-gk-route-draw {
+  from {
+    x: 91px;
+    width: 0;
+  }
+  to {
+    x: 43px;
+    width: 52px;
+  }
+}
+.wl-gk-pin,
+.wl-gk-ring {
+  opacity: 0;
+}
+.wl-gk-pinwrap.dropping .wl-gk-pin {
+  animation: wl-gk-pin-drop 450ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.wl-gk-pinwrap.dropping .wl-gk-ring {
+  animation: wl-gk-pulse-ring 600ms ease-out 320ms both;
+}
+@keyframes wl-gk-pin-drop {
+  0% {
+    transform: translateY(-13px);
+    opacity: 0;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes wl-gk-pulse-ring {
+  0% {
+    r: 2px;
+    opacity: 0.55;
+  }
+  100% {
+    r: 11px;
+    opacity: 0;
+  }
+}
+/* Off screen, every overlay animation holds still (the component
+   toggles the class from its IntersectionObserver). */
+.wl-gk-paused .wl-gk-cloud-a,
+.wl-gk-paused .wl-gk-cloud-b,
+.wl-gk-paused .wl-gk-dots,
+.wl-gk-paused .wl-gk-pin,
+.wl-gk-paused .wl-gk-ring,
+.wl-gk-paused .wl-gk-cliprect {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wl-gk-cloud-a,
+  .wl-gk-cloud-b,
+  .wl-gk-dots,
+  .wl-gk-pin,
+  .wl-gk-ring,
+  .wl-gk-cliprect {
+    animation: none;
+  }
+}
+/* ── Subject case screens, Living Atlas (SubjectCase.tsx) ─────────
+   The clue card, answer card and result band restyled into the
+   atlas card anatomy on the picker's wash. Presentation only —
+   every rule is scoped to .subject-case-screen, and the shared
+   components (ClueCard, AnswerCard) keep their own markup, content
+   and behaviour. */
+.subject-case-screen .mode-card {
+  background: #fdfbf3;
+  border: 1px solid #e3d9c3;
+  border-radius: 24px;
+  box-shadow: 0 1px 2px rgba(94, 76, 32, 0.05), 0 14px 34px -18px rgba(94, 76, 32, 0.28);
+  padding: 24px;
+}
+.subject-case-screen article[aria-label^="Clue"] > p:last-child {
+  font-family: var(--font-atlas-display);
+  font-size: 20px;
+  line-height: 1.45;
+  color: #33302a;
+}
+.subject-case-screen article[aria-label="Answer the question"] h2 {
+  font-family: var(--font-atlas-display);
+  font-weight: 600;
+  font-size: 18.5px;
+  color: #33302a;
+}
+.wl-choice {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.subject-case-screen .wl-choice {
+  background: #fffdf6;
+  border: 1.5px solid #e3d9c3;
+  border-radius: 14px;
+  min-height: 48px;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: #33302a;
+}
+.subject-case-screen .wl-choice:hover {
+  border-color: #8a6d2f;
+}
+.wl-choice-letter {
+  flex: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1.5px solid #8a6d2f;
+  color: #77591f;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+/* A visible wrong pick (a correct one advances the case, so a
+   pressed choice still on screen is the wrong one) takes the
+   stamp-red state, letter filled. */
+.subject-case-screen .wl-choice[aria-pressed="true"] {
+  border-color: #b3372a;
+  background: #f9ece7;
+}
+.subject-case-screen .wl-choice[aria-pressed="true"] .wl-choice-letter {
+  background: #b3372a;
+  border-color: #b3372a;
+  color: #fbf7ea;
+}
+.subject-case-screen article[aria-label="Answer the question"] input,
+.subject-case-screen article[aria-label="Answer the question"] button[type="submit"] {
+  background: #fffdf6;
+  border-color: #e3d9c3;
+  border-radius: 14px;
+}
+.subject-case-screen article[aria-label="Answer the question"] p[role="status"] {
+  background: #fffdf6;
+  border: 1px dashed #d8cbae;
+  border-radius: 12px;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  color: #5c564a;
+}
+.subject-case-screen .loop-reveal {
+  background: #edf2e2;
+  border: 1px solid #ccd6ba;
+  border-radius: 24px;
+  box-shadow: 0 1px 2px rgba(94, 76, 32, 0.05), 0 14px 34px -18px rgba(94, 76, 32, 0.28);
+  padding: 24px;
+}
+.subject-case-screen .loop-reveal button {
+  background: #fffdf6;
+  border-color: #d8cbae;
+  border-radius: 14px;
 }
 @media (prefers-reduced-motion: reduce) {
   .why-learn-card {
@@ -2493,14 +2927,18 @@
 :root[data-palette="high-contrast"] .why-learn-screen::after,
 :root[data-palette="high-contrast"] .why-learn-hero,
 :root[data-palette="high-contrast"] .why-learn-hero-wrap,
-:root[data-palette="high-contrast"] .why-learn-drift {
+:root[data-palette="high-contrast"] .why-learn-drift,
+:root[data-palette="high-contrast"] .wl-world,
+:root[data-palette="high-contrast"] .wl-gk-over {
   display: none;
 }
 @media (prefers-contrast: more) {
   .why-learn-screen::after,
   .why-learn-hero,
   .why-learn-hero-wrap,
-  .why-learn-drift {
+  .why-learn-drift,
+  .wl-world,
+  .wl-gk-over {
     display: none;
   }
 }
@@ -2508,7 +2946,9 @@
   .why-learn-screen::after,
   .why-learn-hero,
   .why-learn-hero-wrap,
-  .why-learn-drift {
+  .why-learn-drift,
+  .wl-world,
+  .wl-gk-over {
     display: none;
   }
   .why-learn-card,
