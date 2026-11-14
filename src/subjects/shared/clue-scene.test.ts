@@ -84,3 +84,51 @@ describe("clue scene wiring", () => {
     assert.ok(scene.includes('data-testid="clue-scene"'));
   });
 });
+
+describe("clue scene summary (act 3)", () => {
+  it("the summary is read only in the solved phase", () => {
+    // The one render-path read of the summary data is phase-gated,
+    // and the performance itself refuses to start pre-solve — so
+    // no script line, caption or clip reference renders in setup.
+    assert.ok(scene.includes('phase === "solved" ? description.summary : undefined'));
+    assert.ok(scene.includes('if (!sum || phase !== "solved") return;'));
+    assert.ok(scene.includes('data-testid="clue-scene-caption"'));
+    assert.ok(scene.includes('data-testid="clue-summary-play"'));
+  });
+
+  it("the narration plays only through the shared voice channel", () => {
+    assert.ok(scene.includes('claimVoice('), "the summary claims the voice channel");
+    assert.ok(scene.includes('"clue-summary"'), "under its own owner name");
+    assert.ok(scene.includes("audio/subjects/"), "clips ship under public/audio/subjects/");
+    assert.ok(scene.includes("isSoundEnabled()"), "the sound toggle gates the voice");
+  });
+
+  it("autoplay respects the kid's read-aloud choice", () => {
+    assert.ok(scene.includes("getReadAloudPref()"));
+    assert.ok(
+      scene.includes('pref !== "sometimes" && pref !== "never"'),
+      "sometimes/never are tap-to-play: no automatic narration",
+    );
+  });
+
+  it("autoplay never fires under reduced motion", () => {
+    assert.ok(
+      scene.includes('description.summary && !reduced && pref !== "sometimes"'),
+      "reduced motion: the summary waits for the Hear button",
+    );
+    assert.ok(
+      scene.includes("setCaptionStep(finished && sum ? sum.lines.length - 1 : -1)"),
+      "a natural finish leaves the closing caption standing",
+    );
+  });
+
+  it("the full script stands in the result section, via the post-solve hook only", () => {
+    const resultAt = subjectCase.indexOf('aria-label="You solved it"');
+    const extraAt = subjectCase.indexOf("resultExtra ? resultExtra(item, reduced, band) : null");
+    assert.ok(resultAt >= 0, "the result section exists");
+    assert.ok(extraAt > resultAt, "resultExtra renders only inside the solved result section");
+    assert.ok(mathCase.includes("resultExtra={"), "math passes the hook");
+    assert.ok(mathCase.includes("ClueSummaryText"), "as the summary's standing text");
+    assert.ok(scene.includes('data-testid="clue-summary-text"'));
+  });
+});

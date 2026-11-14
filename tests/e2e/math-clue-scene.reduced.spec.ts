@@ -8,6 +8,11 @@ import { serveBuiltArtifact } from "./helpers";
  * of the current phase: the setup still before the pick, the
  * solved still after it, and no Replay control (nothing can move).
  * Pins the first pilot item (the coin scene) end to end.
+ *
+ * Act 3 under reduced motion: the summary never auto-plays. The
+ * solved still stands, the full script stands as text in the
+ * result section, and the summary's own play control is offered —
+ * tapping it runs the voice and captions against the still.
  */
 test.setTimeout(120_000);
 
@@ -85,7 +90,26 @@ test("reduced motion: still frames of both phases, no replay control", async ({ 
   await expect(page.getByTestId("math-result")).toBeVisible();
   await expect(scene).toHaveAttribute("data-phase", "solved");
   await expect(scene).toHaveAttribute("data-still", "true");
+  // Act 3, reduced: the film's replay stays absent (nothing can
+  // move), the summary does NOT auto-play, its full script stands
+  // in the result, and its play control waits for a tap.
+  await expect(page.getByRole("button", { name: "↻ Replay the film" })).toHaveCount(0);
+  await expect(scene).toHaveAttribute("data-summary", "idle");
+  const summaryText = page.getByTestId("clue-summary-text");
+  await expect(summaryText).toBeVisible();
+  await expect(summaryText).toContainText("Counting in fives finds the groups fast");
   await scene.screenshot({ path: `${SHOTS}/skip-count-solved-reduced.png` });
+  // A tap runs the performance against the still: voice and
+  // captions move, the picture does not.
+  await page.getByTestId("clue-summary-play").click();
+  await expect(scene).toHaveAttribute("data-summary", "playing");
+  await expect(scene).toHaveAttribute("data-still", "true");
+  await expect
+    .poll(async () => (await page.getByTestId("clue-scene-caption").innerText()).trim().length, {
+      timeout: 12_000,
+    })
+    .toBeGreaterThan(0);
+  await scene.screenshot({ path: `${SHOTS}/skip-count-summary-reduced.png` });
 
   expect(errors).toEqual([]);
 });

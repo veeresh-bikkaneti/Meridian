@@ -3088,6 +3088,42 @@
 .clue-scene-replay:hover {
   border-color: #77591f;
 }
+/* The scene's controls row: the film's replay and the summary's
+   play/stop side by side, wrapping on narrow screens. */
+.clue-scene-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.clue-scene-controls .clue-scene-replay {
+  margin-top: 0;
+}
+/* Act 3: the summary's stepping caption — the line being spoken,
+   word for word the script standing in the result section. Its
+   space is reserved so the card never jumps as lines change. */
+.clue-scene-caption {
+  margin: 10px 0 0;
+  min-height: 2.9em;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #33302a;
+}
+/* Act 3: the summary's full script, standing in the result
+   section (ClueSummaryText) — every line, always, once solved. */
+.clue-summary-text {
+  margin-top: 12px;
+}
+.clue-summary-heading {
+  font-weight: 700;
+}
+.clue-summary-text ol {
+  margin: 4px 0 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 2px;
+}
 /* Off screen or a hidden tab: every scene animation holds still
    (the component toggles data-paused from its observers). */
 .clue-scene[data-paused="true"] svg * {

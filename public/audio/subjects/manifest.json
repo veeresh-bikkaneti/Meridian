@@ -1,0 +1,25 @@
+{
+  "v": 1,
+  "voice": "am_michael",
+  "note": "Narrated solved summaries for the math clue scenes (act 3). One clip per pilot item; the script and per-line timings in src/subjects/math/scenes.ts are the source of truth and match the clips line for line. Rendered locally with the same voice and loudness targets as the journal narration (-18 LUFS, true peak -1.5 dBFS), 24 kHz mono MP3 at 64 kbps like the other in-app clips.",
+  "clips": {
+    "skip-count": {
+      "file": "skip-count.mp3",
+      "item": "math-number:groups:skip-count",
+      "duration": 18.77,
+      "lines": 7
+    },
+    "pencil-packs": {
+      "file": "pencil-packs.mp3",
+      "item": "math-number:tables:facts",
+      "duration": 17.22,
+      "lines": 6
+    },
+    "fair-share": {
+      "file": "fair-share.mp3",
+      "item": "math-number:division:fair-share",
+      "duration": 18.74,
+      "lines": 5
+    }
+  }
+}

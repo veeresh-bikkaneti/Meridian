@@ -39,6 +39,13 @@
  * this flow's state, the reduced-motion flag and the band, never
  * the answer — and the text clue stays below the film as the
  * readable fallback. Math is the pilot; other subjects pass none.
+ *
+ * Act 3 (the narrated summary): a subject may also pass a
+ * `resultExtra` hook, rendered ONLY inside the solved result
+ * section — the one place post-solve content may live. Math uses
+ * it for the summary's full script as standing text. Because the
+ * section itself renders only when the case is done, nothing the
+ * hook returns can be reached before the pick.
  */
 import { Suspense, lazy, useEffect, useRef, useState, type ReactNode } from "react";
 import type { AgeGroup, SubjectProps, UnitItem } from "../registry";
@@ -82,6 +89,13 @@ export type SubjectCaseConfig = {
    * reduced-motion flag and the band — never the answer, a choice,
    * or a pick. Absent for every other subject: no change. */
   scene?: (item: UnitItem, phase: "setup" | "solved", reduced: boolean, band: AgeGroup) => ReactNode;
+  /** Optional extra block inside the SOLVED result section
+   * (act 3: the summary's full script as standing text). The
+   * section renders only once the case is done, so this hook is
+   * the post-solve counterpart of `lead` — it receives the item,
+   * the reduced-motion flag and the band. Absent for subjects
+   * without post-solve extras: no change. */
+  resultExtra?: (item: UnitItem, reduced: boolean, band: AgeGroup) => ReactNode;
 };
 
 export function SubjectCase({
@@ -91,6 +105,7 @@ export function SubjectCase({
   answerFor,
   lead,
   scene,
+  resultExtra,
   group,
   onExit,
   onCelebrate,
@@ -239,6 +254,7 @@ export function SubjectCase({
                 {answer.followUp.derivation}
               </p>
             ) : null}
+            {resultExtra ? resultExtra(item, reduced, band) : null}
             <p className="mt-3 text-fg" data-testid={`${testIdPrefix}-used-in`}>
               You just used this in… {item.useElsewhere[0] ?? "everyday life"}.
             </p>

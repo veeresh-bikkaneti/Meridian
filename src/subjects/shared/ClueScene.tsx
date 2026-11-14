@@ -2,7 +2,7 @@
  * ClueScene — a short film for a subject case's clue, drawn live
  * in the browser as ink line-art on paper (feat/clue-scene-pilot).
  * It sits above the text clue, which stays as the readable
- * fallback and caption; no new screen, no video file, no sound.
+ * fallback and caption; no new screen, no video file.
  *
  * Answer-blind, structurally (the subject-host-props.ts pattern):
  * this component receives ONLY a scene description (the givens
@@ -12,6 +12,20 @@
  * film sets the scene only; the solved beat computes its grouping
  * from the givens at solve time, the derivation the result card
  * prints a moment later.
+ *
+ * Act 3 — the narrated summary. A description may carry a summary
+ * (its script and clip, in the solved-phase data path). This
+ * component reads it ONLY in the solved phase: after a correct
+ * pick the same solved beat runs again, re-paced so each step
+ * lands with its narration line, the clip playing through the
+ * app-wide voice channel (voice-channel.ts — one voice at a
+ * time, never over another speaker) while the captions step
+ * under the film. The full script also stands as text in the
+ * case's result section (ClueSummaryText, below), so the summary
+ * is fully present with the sound off, the clip unavailable, or
+ * motion reduced. Under reduced motion nothing auto-plays: the
+ * still frame stands, and the Hear button plays the voice and
+ * captions against the still.
  *
  * Motion discipline: CSS keyframes only (transform / opacity /
  * stroke draw-on), authored so every element's resting state IS
@@ -32,10 +46,16 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import {
   countingTicks,
   dealOrder,
+  summaryStepStart,
   type ClueSceneDescription,
   type ClueScenePhase,
+  type ClueSceneSummary,
 } from "./clue-scene-types";
 import { seeded } from "./clue-scene-easing";
+import { claimVoice, type VoiceClaim } from "../../game/audio/voice-channel";
+import { isSoundEnabled } from "../../game/audio/sfx";
+import { soundAudible } from "../../game/audio/play-guards";
+import { getReadAloudPref } from "../../game/age-profile/read-aloud-pref";
 
 export type { ClueScenePhase };
 
@@ -67,9 +87,13 @@ function groupSlot(slot: number, groupSize: number): { x: number; y: number } {
 function CoinGroupsScene({
   description,
   phase,
+  stepDelay,
 }: {
   description: Extract<ClueSceneDescription, { kind: "coin-groups" }>;
   phase: ClueScenePhase;
+  /** Summary pacing: when present, group g's beat starts at
+   * stepDelay(g) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
 }) {
   const pile = coinPile(description.total);
   const ticks = countingTicks(description);
@@ -103,7 +127,11 @@ function CoinGroupsScene({
               <g key={i} transform={`translate(${fin.x.toFixed(1)} ${fin.y.toFixed(1)})`}>
                 <g
                   className="cs-slide"
-                  style={slideFrom(start.x - fin.x, start.y - fin.y, 0.3 + g * 0.55 + slot * 0.07)}
+                  style={slideFrom(
+                    start.x - fin.x,
+                    start.y - fin.y,
+                    stepDelay ? stepDelay(g) + slot * 0.07 : 0.3 + g * 0.55 + slot * 0.07,
+                  )}
                 >
                   <circle className="cs-coin" r="8.5" />
                   <circle className="cs-coin-inner" r="4.4" />
@@ -123,7 +151,11 @@ function CoinGroupsScene({
                 cy={c.y}
                 rx="25"
                 ry="22"
-                style={delay(0.3 + g * 0.55 + description.groupSize * 0.07 + 0.65)}
+                style={delay(
+                  stepDelay
+                    ? stepDelay(g) + 0.85
+                    : 0.3 + g * 0.55 + description.groupSize * 0.07 + 0.65,
+                )}
               />
             );
           })}
@@ -133,7 +165,11 @@ function CoinGroupsScene({
               className={`cs-tick${ti === ticks.length - 1 ? " cs-tick-final" : ""}`}
               x={30 + ti * (260 / Math.max(ticks.length - 1, 1))}
               y="24"
-              style={delay(0.3 + ti * 0.55 + description.groupSize * 0.07 + 0.8)}
+              style={delay(
+                stepDelay
+                  ? stepDelay(ti) + 0.75
+                  : 0.3 + ti * 0.55 + description.groupSize * 0.07 + 0.8,
+              )}
             >
               {t}
             </text>
@@ -147,9 +183,13 @@ function CoinGroupsScene({
 function PencilPacksScene({
   description,
   phase,
+  stepDelay,
 }: {
   description: Extract<ClueSceneDescription, { kind: "pencil-packs" }>;
   phase: ClueScenePhase;
+  /** Summary pacing: when present, pack g's beat starts at
+   * stepDelay(g) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
 }) {
   const ticks = countingTicks(description);
   const packX = (g: number) => 38 + g * 36;
@@ -188,7 +228,10 @@ function PencilPacksScene({
               const x = packX(g) + 4 + s * 6.2;
               return (
                 <g key={`pencil-${g}-${s}`} transform={`translate(${x.toFixed(1)} 165)`}>
-                  <g className="cs-pop" style={delay(0.4 + g * 0.6 + s * 0.05)}>
+                  <g
+                    className="cs-pop"
+                    style={delay(stepDelay ? stepDelay(g) + 0.1 + s * 0.05 : 0.4 + g * 0.6 + s * 0.05)}
+                  >
                     <path className="cs-tip" d="M0 0 L4.6 0 L2.3 -6 Z" />
                     <rect className="cs-pencil" x="0" y="0" width="4.6" height="19" />
                   </g>
@@ -204,7 +247,7 @@ function PencilPacksScene({
               className={`cs-tick${ti === ticks.length - 1 ? " cs-tick-final" : ""}`}
               x={packX(ti) + 14}
               y="26"
-              style={delay(0.4 + ti * 0.6 + 0.35)}
+              style={delay(stepDelay ? stepDelay(ti) + 0.8 : 0.4 + ti * 0.6 + 0.35)}
             >
               {t}
             </text>
@@ -249,13 +292,19 @@ function SnackArt() {
 function FairShareScene({
   description,
   phase,
+  stepDelay,
 }: {
   description: Extract<ClueSceneDescription, { kind: "fair-share" }>;
   phase: ClueScenePhase;
+  /** Summary pacing: when present, snack i's deal starts at
+   * stepDelay(i) instead of the film's own stagger. */
+  stepDelay?: (step: number) => number;
 }) {
   const pile = snackPile(description.total);
   const order = dealOrder(description);
-  const cheerDelay = 0.35 + description.total * 0.42 + 0.25;
+  const cheerDelay = stepDelay
+    ? stepDelay(description.total - 1) + 1.0
+    : 0.35 + description.total * 0.42 + 0.25;
   return (
     <>
       <path className="cs-line cs-soft cs-draw" pathLength={1} d="M24 38 Q160 34 296 38" style={delay(0.1)} />
@@ -307,13 +356,54 @@ function FairShareScene({
             const fin = { x: (FRIEND_X[friend] ?? 160) + off.x, y: 131 + off.y };
             return (
               <g key={i} transform={`translate(${fin.x} ${fin.y})`}>
-                <g className="cs-deal" style={slideFrom(p.x - fin.x, p.y - fin.y, 0.35 + i * 0.42)}>
+                <g
+                  className="cs-deal"
+                  style={slideFrom(p.x - fin.x, p.y - fin.y, stepDelay ? stepDelay(i) : 0.35 + i * 0.42)}
+                >
                   <SnackArt />
                 </g>
               </g>
             );
           })}
     </>
+  );
+}
+
+/** Seconds between two animation steps that share one narration
+ * line, per scene kind — groups land slower than single snacks. */
+const SUMMARY_STAGGER: Record<ClueSceneDescription["kind"], number> = {
+  "coin-groups": 0.62,
+  "pencil-packs": 0.62,
+  "fair-share": 0.34,
+};
+
+/** The summary clip's URL (public/audio/subjects/, manifest.json). */
+function summaryClipUrl(clip: string): string {
+  const base = import.meta.env.BASE_URL ?? "/";
+  const withSlash = base.endsWith("/") ? base : `${base}/`;
+  return `${withSlash}audio/subjects/${clip}`;
+}
+
+type SummaryState = "idle" | "playing" | "done";
+
+/**
+ * The summary's full script as standing text — rendered by the
+ * case flow inside the result section, so the walk-through is
+ * fully present once the case is solved: sound off, clip
+ * unavailable, reduced motion, or a screen reader all get every
+ * line. Static by design; the stepping captions live in the
+ * scene card, beside the film they pace.
+ */
+export function ClueSummaryText({ summary }: { summary: ClueSceneSummary }) {
+  return (
+    <div className="clue-summary-text" data-testid="clue-summary-text">
+      <p className="clue-summary-heading">The solving, step by step</p>
+      <ol>
+        {summary.lines.map((line, i) => (
+          <li key={i}>{line.text}</li>
+        ))}
+      </ol>
+    </div>
   );
 }
 
@@ -331,10 +421,146 @@ export function ClueScene({
   const [tabHidden, setTabHidden] = useState(false);
   const rootRef = useRef<HTMLDivElement | null>(null);
 
-  // A phase change (the correct pick lands) starts the new beat.
-  useEffect(() => {
+  // ── Act 3: the narrated summary performance ──────────────────
+  const [summaryState, setSummaryState] = useState<SummaryState>("idle");
+  const [captionStep, setCaptionStep] = useState(-1);
+  const [paced, setPaced] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const claimRef = useRef<VoiceClaim | null>(null);
+  const timersRef = useRef<number[]>([]);
+  const perfRef = useRef(0);
+
+  /** Tear a performance down without touching state (unmount,
+   * channel stop): silence the clip, clear its timers, give the
+   * voice channel back. A stale release is a no-op by the
+   * channel's own contract. */
+  const clearPerformance = () => {
+    for (const t of timersRef.current) window.clearTimeout(t);
+    timersRef.current = [];
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.removeAttribute("src");
+      audioRef.current = null;
+    }
+    claimRef.current?.release();
+    claimRef.current = null;
+  };
+
+  const stopPerformance = (finished: boolean) => {
+    perfRef.current += 1;
+    clearPerformance();
+    // A natural finish leaves the closing line standing under
+    // the film (the method's payoff stays on screen); a stop
+    // clears the caption.
+    const sum = description.summary;
+    setCaptionStep(finished && sum ? sum.lines.length - 1 : -1);
+    setSummaryState(finished ? "done" : "idle");
+  };
+  const stopRef = useRef(stopPerformance);
+  stopRef.current = stopPerformance;
+
+  /** Captions on timers — the fallback when the clip cannot play
+   * (codec, network, autoplay refusal) and the silent run when
+   * the sound is off. The pacing still lands on the same offsets. */
+  const runCaptionTimers = (id: number, sum: ClueSceneSummary) => {
+    sum.lines.forEach((line, i) => {
+      timersRef.current.push(
+        window.setTimeout(() => {
+          if (perfRef.current === id) setCaptionStep(i);
+        }, line.at * 1000),
+      );
+    });
+  };
+
+  const startPerformance = (userInitiated: boolean) => {
+    const sum = description.summary;
+    if (!sum || phase !== "solved") return;
+    stopPerformance(false);
+    const id = perfRef.current;
+    // Re-run the solved beat paced to the narration. Under
+    // reduced motion the still stands; only voice + captions run.
+    setPaced(!reduced);
     setRunKey((k) => k + 1);
-  }, [phase]);
+    setSummaryState("playing");
+    let audioStarted = false;
+    if (isSoundEnabled() && soundAudible()) {
+      // One voice at a time: the summary claims the shared
+      // channel like every other speaker. A tap takes the
+      // channel; the automatic start waits its turn — if another
+      // voice holds it, the performance runs on captions alone
+      // and the Hear button can replay it with the voice later.
+      const claim = claimVoice(
+        "clue-summary",
+        () => {
+          if (perfRef.current === id) stopRef.current(false);
+        },
+        { userInitiated },
+      );
+      if (claim) {
+        claimRef.current = claim;
+        const audio = new Audio(summaryClipUrl(sum.clip));
+        audioRef.current = audio;
+        let fellBack = false;
+        const fallBackToCaptions = () => {
+          if (fellBack || perfRef.current !== id) return;
+          fellBack = true;
+          claimRef.current?.release();
+          claimRef.current = null;
+          if (audioRef.current === audio) audioRef.current = null;
+          runCaptionTimers(id, sum);
+        };
+        audio.addEventListener("timeupdate", () => {
+          if (perfRef.current !== id) return;
+          const t = audio.currentTime;
+          let step = -1;
+          for (let i = 0; i < sum.lines.length; i++) {
+            if (t >= (sum.lines[i]?.at ?? 0)) step = i;
+          }
+          setCaptionStep((prev) => (prev === step ? prev : step));
+        });
+        audio.addEventListener("ended", () => {
+          if (perfRef.current === id) stopRef.current(true);
+        });
+        audio.addEventListener("error", fallBackToCaptions);
+        audioStarted = true;
+        void audio.play().catch(fallBackToCaptions);
+      }
+    }
+    if (!audioStarted) runCaptionTimers(id, sum);
+    // The performance ends with its last line even if the clip's
+    // own end event is ever missed.
+    timersRef.current.push(
+      window.setTimeout(() => {
+        if (perfRef.current === id) stopRef.current(true);
+      }, (sum.duration + 0.6) * 1000),
+    );
+  };
+  const startRef = useRef(startPerformance);
+  startRef.current = startPerformance;
+
+  // A phase change (the correct pick lands) starts the new beat.
+  // In the solved phase the summary also starts itself — unless
+  // reduced motion is on (nothing auto-plays then: the still, the
+  // standing text, and the Hear button wait for a tap) or the
+  // kid's read-aloud choice says tap-to-play: "sometimes" and
+  // "never" never auto-play (read-aloud-pref's own semantics);
+  // "always" and "unset" do, this surface's solved moment being
+  // its own, like the detective pair's auto mode inside a case.
+  useEffect(() => {
+    if (phase !== "solved") {
+      stopRef.current(false);
+      setPaced(false);
+      setRunKey((k) => k + 1);
+      return;
+    }
+    const pref = getReadAloudPref();
+    if (description.summary && !reduced && pref !== "sometimes" && pref !== "never") {
+      startRef.current(false);
+    } else {
+      setRunKey((k) => k + 1);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase, reduced]);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -346,7 +572,12 @@ export function ClueScene({
       { threshold: 0 },
     );
     io.observe(root);
-    const onVisibility = () => setTabHidden(document.hidden);
+    const onVisibility = () => {
+      setTabHidden(document.hidden);
+      // No sound while the tab is hidden (the play-guards rule) —
+      // a hidden tab ends the performance, voice included.
+      if (document.hidden) stopRef.current(false);
+    };
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
       io.disconnect();
@@ -354,7 +585,27 @@ export function ClueScene({
     };
   }, []);
 
+  // Leaving the case silences the summary and frees the channel.
+  useEffect(
+    () => () => {
+      perfRef.current += 1;
+      clearPerformance();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+
   const label = phase === "setup" ? description.labelSetup : description.labelSolved;
+  const summary = phase === "solved" ? description.summary : undefined;
+  const stepDelay =
+    paced && summary
+      ? (step: number) => summaryStepStart(summary, step, SUMMARY_STAGGER[description.kind])
+      : undefined;
+
+  const onSummaryTap = () => {
+    if (summaryState === "playing") stopPerformance(false);
+    else startPerformance(true);
+  };
 
   return (
     <div
@@ -364,21 +615,51 @@ export function ClueScene({
       data-phase={phase}
       data-paused={offScreen || tabHidden ? "true" : undefined}
       data-still={reduced ? "true" : undefined}
+      data-summary={summary ? summaryState : undefined}
     >
       <svg key={runKey} viewBox="0 0 320 190" role="img" aria-label={label}>
         {description.kind === "coin-groups" ? (
-          <CoinGroupsScene description={description} phase={phase} />
+          <CoinGroupsScene description={description} phase={phase} stepDelay={stepDelay} />
         ) : description.kind === "pencil-packs" ? (
-          <PencilPacksScene description={description} phase={phase} />
+          <PencilPacksScene description={description} phase={phase} stepDelay={stepDelay} />
         ) : (
-          <FairShareScene description={description} phase={phase} />
+          <FairShareScene description={description} phase={phase} stepDelay={stepDelay} />
         )}
       </svg>
-      {!reduced ? (
-        <button type="button" className="clue-scene-replay" onClick={() => setRunKey((k) => k + 1)}>
-          ↻ Replay the film
-        </button>
+      {summary ? (
+        <p className="clue-scene-caption" data-testid="clue-scene-caption" aria-hidden="true">
+          {captionStep >= 0 ? (summary.lines[captionStep]?.text ?? "") : ""}
+        </p>
       ) : null}
+      <div className="clue-scene-controls">
+        {!reduced ? (
+          <button
+            type="button"
+            className="clue-scene-replay"
+            onClick={() => {
+              stopPerformance(false);
+              setPaced(false);
+              setRunKey((k) => k + 1);
+            }}
+          >
+            ↻ Replay the film
+          </button>
+        ) : null}
+        {summary ? (
+          <button
+            type="button"
+            className="clue-scene-replay"
+            data-testid="clue-summary-play"
+            onClick={onSummaryTap}
+          >
+            {summaryState === "playing"
+              ? "⏸ Stop the summary"
+              : summaryState === "done"
+                ? "↻ Replay the summary"
+                : "▶ Hear the summary"}
+          </button>
+        ) : null}
+      </div>
     </div>
   );
 }
