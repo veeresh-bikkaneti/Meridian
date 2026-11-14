@@ -100,8 +100,10 @@ export function journalAnswers(year: number): Record<string, AnswerEntry> {
       derivation: "360 ÷ 24 = 15 degrees per hour.",
       value: 15,
     },
+    // Fact rocket-trial-36-mph (Britannica, HIGH): in the 1829 trials
+    // the Rocket won with a speed of 36 miles per hour.
     "modern-world:liverpool-manchester:stretch": {
-      prompt: "In an 1829 trial the Rocket went 36 miles in one hour. That was a trial speed. If it kept that speed for 2 hours, how many miles would it go?",
+      prompt: "In an 1829 trial the Rocket reached a speed of 36 miles per hour. That was a trial speed, not a timetable. If it kept that speed for 2 hours, how many miles would it go?",
       choices: ["36", "72", "38"],
       correct: "72",
       derivation: "36 × 2 = 72 miles.",
@@ -121,19 +123,22 @@ export function journalAnswers(year: number): Record<string, AnswerEntry> {
       derivation: "50 × 5,000 = 250,000 stadia. No kilometer conversion is given.",
       value: 250000,
     },
+    // 30,000 km is the sourced network length. No sourced daily
+    // walking or relay distance is in the repo, so 100 km a day is a
+    // made-up practice number, stated as such in the question.
     "people-places:andean-roads": {
-      prompt: "The road network is about 30,000 kilometers. At a practice rate of 100 kilometers a day, how many days is that?",
+      prompt: "The road network is about 30,000 kilometers. 100 kilometers a day is a made-up practice number, not a sourced walking or relay rate. At that practice rate, how many days is that?",
       choices: ["30", "3,000", "300"],
       correct: "300",
-      derivation: "30,000 ÷ 100 = 300 days, at a practice rate.",
+      derivation: "30,000 ÷ 100 = 300 days, at the made-up practice rate.",
       value: 300,
     },
     // ---- 18+ ----
     "people-places:aconcagua-height": {
-      prompt: "Practice triangle: the ground distance is 100 meters and the angle is 45 degrees. Tangent of 45 degrees is 1. How tall is the practice triangle?",
+      prompt: "Practice triangle only — not the peak's height. The ground distance is 100 meters and the angle is 45 degrees. Tangent of 45 degrees is 1. How tall is the practice triangle?",
       choices: ["45 meters", "141 meters", "100 meters"],
       correct: "100 meters",
-      derivation: "Height = ground distance × tangent = 100 × 1 = 100 meters, for the practice triangle only.",
+      derivation: "Height = ground distance × tangent = 100 × 1 = 100 meters, for the practice triangle only, not the peak.",
       value: 100,
     },
   };

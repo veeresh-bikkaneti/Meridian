@@ -61,6 +61,39 @@ const USED_IN: Record<string, string> = {
   "people-places:aconcagua-height": "Finding a height from a distance and an angle, like a ramp.",
 };
 
+/**
+ * Items whose caption would give away the answer, or whose caption
+ * carries a measurement. The .vtt files under docs/scaling are
+ * read-only, so these items show no caption lead.
+ */
+const HIDE_CAPTION_LEAD: ReadonlySet<string> = new Set([
+  "modern-world:greenwich-zero", // caption names Greenwich as the zero line
+  "modern-world:hearts-content-cable", // caption names Heart's Content
+  "people-places:pont-du-gard", // caption says "35 arches"
+  "people-places:akashi-span", // caption says "1,991 meters"
+  "people-places:eratosthenes-earth", // caption says "5,000 stadia"
+  "people-places:andean-roads", // caption says "30,000 kilometers"
+]);
+
+/**
+ * Measurement-free "why" lines shown on the clue card. Numbers live
+ * only in the answer prompt (the math hook). Aconcagua's clip why
+ * asks for the peak's height; the scored answer is a practice
+ * triangle, so the shown why matches that triangle.
+ */
+const WHY_OVERRIDE: Record<string, string> = {
+  "great-leaders:lincoln-memorial:stretch":
+    "Each outside column is taller than the seated statue. How much taller is a column?",
+  "technology:eniac":
+    "ENIAC, an early computer, was kept in a basement room. How much floor did that room cover?",
+  "modern-world:liverpool-manchester:stretch":
+    "In an 1829 trial the Rocket held a steady trial speed for one hour. If it kept that speed for 2 hours, how many miles would it go?",
+  "modern-world:hearts-content-cable:stretch":
+    "A length of cable was laid in 14 days. Which of the listed figures is closest to the miles per day?",
+  "people-places:aconcagua-height":
+    "Surveyors can find a height from a ground distance and an angle. Published heights for this peak disagree, so this case uses a practice triangle, not the peak's height. How tall is the practice triangle?",
+};
+
 /** Where an item's caption file lives, relative to docs/scaling/journals. */
 export type CaptionRef = { journal: string; file: string };
 
@@ -150,7 +183,7 @@ export function journalUnits(): UnitItem[] {
     if (!row) continue;
     const isStretch = unitId.endsWith(":stretch");
     const group = isStretch ? row.stretch?.group : row.group;
-    const why = isStretch ? row.stretch?.question : row.why;
+    const why = WHY_OVERRIDE[unitId] ?? (isStretch ? row.stretch?.question : row.why);
     if (!group || !why) continue;
     units.push({
       id: unitId,
@@ -173,6 +206,7 @@ export function itemsForGroup(group: AgeGroup): UnitItem[] {
  * and rows without captions show only their question). */
 export function captionRefFor(unitId: string): CaptionRef | null {
   if (unitId.endsWith(":stretch")) return null;
+  if (HIDE_CAPTION_LEAD.has(unitId)) return null;
   const row = rowFor(unitId);
   if (!row || !row.captions) return null;
   return { journal: journalOf(row.id), file: row.captions };

@@ -86,13 +86,15 @@ it("Lincoln: the opening question matches the row (1922 − 1914 = 8)", () => {
   assert.equal(entry.value, 8);
 });
 
-it("Lincoln 10-18 stretch: 19 + x = 44 gives x = 25, as the row says", () => {
+it("Lincoln 10-18 stretch: 19 + x = 44 gives x = 25; numbers stay in the prompt, not the why", () => {
   const unit = journalUnits().find((u) => u.id === "great-leaders:lincoln-memorial:stretch");
   assert.ok(unit);
-  assert.match(unit.why, /19 feet/);
-  assert.match(unit.why, /44 feet/);
+  const entry = journalAnswers(2026)[unit.id];
+  assert.match(entry.prompt, /19 feet/);
+  assert.match(entry.prompt, /44 feet/);
+  assert.doesNotMatch(unit.why, /19 feet|44 feet|\d+\s*(feet|ft|meters?|metres?|km|miles?)/i);
   assert.equal(44 - 19, 25);
-  assert.equal(journalAnswers(2026)[unit.id].correct, "25");
+  assert.equal(entry.correct, "25");
 });
 
 it("years-ago answers are computed from the pinned clock, never typed", () => {
@@ -150,15 +152,30 @@ it("caption parse keeps cue payloads that look like headers or numbers", () => {
   assert.equal(cueText(vtt), "1973 NOTE the bell rang next line");
 });
 
-it("caption refs: base rows with a caption file resolve, stretch and caption-less rows do not", () => {
+it("caption refs: safe base rows resolve; stretch, caption-less, leaky, and measured captions do not", () => {
   assert.deepEqual(captionRefFor("technology:first-phone"), {
     journal: "technology",
     file: "first-phone.vtt",
   });
-  assert.deepEqual(captionRefFor("modern-world:greenwich-zero"), {
-    journal: "modern-world",
-    file: "greenwich-zero.vtt",
+  assert.deepEqual(captionRefFor("great-leaders:lincoln-memorial"), {
+    journal: "great-leaders",
+    file: "lincoln-memorial.vtt",
   });
+  assert.deepEqual(captionRefFor("technology:eniac"), {
+    journal: "technology",
+    file: "eniac.vtt",
+  });
+  // Caption names the answer or carries a measurement; lead is hidden.
+  for (const id of [
+    "modern-world:greenwich-zero",
+    "modern-world:hearts-content-cable",
+    "people-places:pont-du-gard",
+    "people-places:akashi-span",
+    "people-places:eratosthenes-earth",
+    "people-places:andean-roads",
+  ]) {
+    assert.equal(captionRefFor(id), null, `${id} should hide its caption lead`);
+  }
   assert.equal(captionRefFor("technology:mobile-phone:stretch"), null);
   assert.equal(captionRefFor("great-leaders:lincoln-memorial:stretch"), null);
 });
@@ -168,4 +185,40 @@ it("'You just used this in…' is one short line for every unit, with no measure
     assert.equal(unit.useElsewhere.length, 1);
     assert.doesNotMatch(unit.useElsewhere[0], /\d/, `${unit.id} line has a number`);
   }
+});
+
+it("clue-card why lines carry no distance, height, or depth measurements", () => {
+  const measurement = /\b\d[\d,]*\s*-?\s*(kilometers?|kilometres?|km|miles?|mi|feet|ft|meters?|metres?|m)\b/i;
+  for (const unit of journalUnits()) {
+    assert.doesNotMatch(unit.why, measurement, `${unit.id} why has a measurement`);
+  }
+});
+
+it("Rocket stretch uses the sourced 36 miles per hour trial speed", () => {
+  const entry = journalAnswers(2026)["modern-world:liverpool-manchester:stretch"];
+  assert.match(entry.prompt, /36 miles per hour/);
+  assert.match(entry.prompt, /trial speed/);
+  assert.equal(entry.correct, "72");
+  assert.equal(entry.value, 72);
+});
+
+it("Andean days use a made-up practice daily distance, stated in the question", () => {
+  const entry = journalAnswers(2026)["people-places:andean-roads"];
+  assert.match(entry.prompt, /made-up practice number/);
+  assert.match(entry.prompt, /30,000 kilometers/);
+  assert.match(entry.prompt, /100 kilometers a day/);
+  assert.equal(entry.correct, "300");
+  assert.equal(entry.value, 300);
+});
+
+it("Aconcagua asks for the practice triangle, not the peak's height", () => {
+  const unit = journalUnits().find((u) => u.id === "people-places:aconcagua-height");
+  assert.ok(unit);
+  assert.match(unit.why, /practice triangle/);
+  assert.doesNotMatch(unit.why, /how tall is (this |the )?peak/i);
+  const entry = journalAnswers(2026)[unit.id];
+  assert.match(entry.prompt, /practice triangle/i);
+  assert.match(entry.prompt, /not the peak/);
+  assert.equal(entry.correct, "100 meters");
+  assert.equal(entry.value, 100);
 });
