@@ -1,0 +1,1370 @@
+[
+ {
+  "q": "",
+  "w": 320,
+  "h": 568,
+  "shot": "home-320x568.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 1,
+    "tmpl": "280px",
+    "gridW": 280,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2406,
+      "w": 280,
+      "h": 401,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2407,
+       "w": 278,
+       "h": 156
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2829,
+      "w": 280,
+      "h": 428,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2830,
+       "w": 278,
+       "h": 156
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 20,
+      "y": 3280,
+      "w": 280,
+      "h": 430,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 3281,
+       "w": 278,
+       "h": 156
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 1,
+    "tmpl": "280px",
+    "gridW": 280,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 20,
+      "y": 3732,
+      "w": 280,
+      "h": 405,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 3733,
+       "w": 278,
+       "h": 187
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 20,
+      "y": 4158,
+      "w": 280,
+      "h": 611,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4159,
+       "w": 278,
+       "h": 278
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 20,
+      "y": 4791,
+      "w": 280,
+      "h": 572,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4792,
+       "w": 278,
+       "h": 278
+      }
+     }
+    ]
+   }
+  },
+  "docW": 320,
+  "globe": false
+ },
+ {
+  "q": "",
+  "w": 375,
+  "h": 667,
+  "shot": "home-375x667.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 1,
+    "tmpl": "335px",
+    "gridW": 335,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2260,
+      "w": 335,
+      "h": 432,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2261,
+       "w": 333,
+       "h": 187
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2715,
+      "w": 335,
+      "h": 459,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2716,
+       "w": 333,
+       "h": 187
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 20,
+      "y": 3196,
+      "w": 335,
+      "h": 438,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 3197,
+       "w": 333,
+       "h": 187
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 1,
+    "tmpl": "335px",
+    "gridW": 335,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 20,
+      "y": 3656,
+      "w": 335,
+      "h": 386,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 3657,
+       "w": 333,
+       "h": 224
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 20,
+      "y": 4065,
+      "w": 335,
+      "h": 624,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4066,
+       "w": 333,
+       "h": 333
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 20,
+      "y": 4710,
+      "w": 335,
+      "h": 629,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4711,
+       "w": 333,
+       "h": 333
+      }
+     }
+    ]
+   }
+  },
+  "docW": 375,
+  "globe": false
+ },
+ {
+  "q": "",
+  "w": 390,
+  "h": 844,
+  "shot": "home-390x844.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 1,
+    "tmpl": "350px",
+    "gridW": 350,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2247,
+      "w": 350,
+      "h": 441,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2248,
+       "w": 348,
+       "h": 196
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2710,
+      "w": 350,
+      "h": 468,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2711,
+       "w": 348,
+       "h": 196
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 20,
+      "y": 3200,
+      "w": 350,
+      "h": 447,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 3201,
+       "w": 348,
+       "h": 196
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 1,
+    "tmpl": "350px",
+    "gridW": 350,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 20,
+      "y": 3668,
+      "w": 350,
+      "h": 396,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 3669,
+       "w": 348,
+       "h": 234
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 20,
+      "y": 4087,
+      "w": 350,
+      "h": 639,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4088,
+       "w": 348,
+       "h": 348
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 20,
+      "y": 4747,
+      "w": 350,
+      "h": 620,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4748,
+       "w": 348,
+       "h": 348
+      }
+     }
+    ]
+   }
+  },
+  "docW": 390,
+  "globe": false
+ },
+ {
+  "q": "",
+  "w": 768,
+  "h": 1024,
+  "shot": "home-768x1024.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 2,
+    "tmpl": "337px 337px",
+    "gridW": 696,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 36,
+      "y": 2009,
+      "w": 337,
+      "h": 460,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 2010,
+       "w": 335,
+       "h": 188
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 395,
+      "y": 2009,
+      "w": 337,
+      "h": 460,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 396,
+       "y": 2010,
+       "w": 335,
+       "h": 188
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 36,
+      "y": 2491,
+      "w": 337,
+      "h": 440,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 2492,
+       "w": 335,
+       "h": 188
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 2,
+    "tmpl": "337px 337px",
+    "gridW": 696,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 36,
+      "y": 2953,
+      "w": 337,
+      "h": 626,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 37,
+       "y": 2954,
+       "w": 335,
+       "h": 225
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 395,
+      "y": 2953,
+      "w": 337,
+      "h": 626,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 396,
+       "y": 2954,
+       "w": 335,
+       "h": 335
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 36,
+      "y": 3601,
+      "w": 337,
+      "h": 631,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 37,
+       "y": 3602,
+       "w": 335,
+       "h": 335
+      }
+     }
+    ]
+   }
+  },
+  "docW": 768,
+  "globe": true
+ },
+ {
+  "q": "",
+  "w": 1024,
+  "h": 768,
+  "shot": "home-1024x768.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 2,
+    "tmpl": "465px 465px",
+    "gridW": 952,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 36,
+      "y": 2012,
+      "w": 465,
+      "h": 483,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 2013,
+       "w": 463,
+       "h": 260
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 523,
+      "y": 2012,
+      "w": 465,
+      "h": 483,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 524,
+       "y": 2013,
+       "w": 463,
+       "h": 260
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 36,
+      "y": 2517,
+      "w": 465,
+      "h": 489,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 2518,
+       "w": 463,
+       "h": 260
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 2,
+    "tmpl": "465px 465px",
+    "gridW": 952,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 36,
+      "y": 3028,
+      "w": 465,
+      "h": 721,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 37,
+       "y": 3029,
+       "w": 463,
+       "h": 311
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 523,
+      "y": 3028,
+      "w": 465,
+      "h": 721,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 524,
+       "y": 3029,
+       "w": 463,
+       "h": 463
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 36,
+      "y": 3771,
+      "w": 465,
+      "h": 737,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 37,
+       "y": 3772,
+       "w": 463,
+       "h": 463
+      }
+     }
+    ]
+   }
+  },
+  "docW": 1024,
+  "globe": true
+ },
+ {
+  "q": "",
+  "w": 1280,
+  "h": 800,
+  "shot": "home-1280x800.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 2,
+    "tmpl": "592.984px 593px",
+    "gridW": 1208,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 36,
+      "y": 1550,
+      "w": 593,
+      "h": 555,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 1551,
+       "w": 591,
+       "h": 332
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 651,
+      "y": 1550,
+      "w": 593,
+      "h": 555,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 652,
+       "y": 1551,
+       "w": 591,
+       "h": 332
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 36,
+      "y": 2127,
+      "w": 593,
+      "h": 561,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 2128,
+       "w": 591,
+       "h": 332
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 3,
+    "tmpl": "388px 388px 388px",
+    "gridW": 1208,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 36,
+      "y": 2710,
+      "w": 388,
+      "h": 677,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 37,
+       "y": 2711,
+       "w": 386,
+       "h": 260
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 446,
+      "y": 2710,
+      "w": 388,
+      "h": 677,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 447,
+       "y": 2711,
+       "w": 386,
+       "h": 386
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 856,
+      "y": 2710,
+      "w": 388,
+      "h": 677,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 857,
+       "y": 2711,
+       "w": 386,
+       "h": 386
+      }
+     }
+    ]
+   }
+  },
+  "docW": 1280,
+  "globe": true
+ },
+ {
+  "q": "?scale=1",
+  "w": 320,
+  "h": 568,
+  "shot": "home-scale-320x568.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 1,
+    "tmpl": "280px",
+    "gridW": 280,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2406,
+      "w": 280,
+      "h": 401,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2407,
+       "w": 278,
+       "h": 156
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2829,
+      "w": 280,
+      "h": 428,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2830,
+       "w": 278,
+       "h": 156
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 20,
+      "y": 3280,
+      "w": 280,
+      "h": 430,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 3281,
+       "w": 278,
+       "h": 156
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 1,
+    "tmpl": "280px",
+    "gridW": 280,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 20,
+      "y": 3732,
+      "w": 280,
+      "h": 405,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 3733,
+       "w": 278,
+       "h": 187
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 20,
+      "y": 4158,
+      "w": 280,
+      "h": 611,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4159,
+       "w": 278,
+       "h": 278
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 20,
+      "y": 4791,
+      "w": 280,
+      "h": 572,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4792,
+       "w": 278,
+       "h": 278
+      }
+     }
+    ]
+   }
+  },
+  "docW": 320,
+  "globe": false
+ },
+ {
+  "q": "?scale=1",
+  "w": 375,
+  "h": 667,
+  "shot": "home-scale-375x667.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 1,
+    "tmpl": "335px",
+    "gridW": 335,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2260,
+      "w": 335,
+      "h": 432,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2261,
+       "w": 333,
+       "h": 187
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2715,
+      "w": 335,
+      "h": 459,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2716,
+       "w": 333,
+       "h": 187
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 20,
+      "y": 3196,
+      "w": 335,
+      "h": 438,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 3197,
+       "w": 333,
+       "h": 187
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 1,
+    "tmpl": "335px",
+    "gridW": 335,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 20,
+      "y": 3656,
+      "w": 335,
+      "h": 386,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 3657,
+       "w": 333,
+       "h": 224
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 20,
+      "y": 4065,
+      "w": 335,
+      "h": 624,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4066,
+       "w": 333,
+       "h": 333
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 20,
+      "y": 4710,
+      "w": 335,
+      "h": 629,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4711,
+       "w": 333,
+       "h": 333
+      }
+     }
+    ]
+   }
+  },
+  "docW": 375,
+  "globe": false
+ },
+ {
+  "q": "?scale=1",
+  "w": 390,
+  "h": 844,
+  "shot": "home-scale-390x844.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 1,
+    "tmpl": "350px",
+    "gridW": 350,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2247,
+      "w": 350,
+      "h": 441,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2248,
+       "w": 348,
+       "h": 196
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 20,
+      "y": 2710,
+      "w": 350,
+      "h": 468,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 2711,
+       "w": 348,
+       "h": 196
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 20,
+      "y": 3200,
+      "w": 350,
+      "h": 447,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 21,
+       "y": 3201,
+       "w": 348,
+       "h": 196
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 1,
+    "tmpl": "350px",
+    "gridW": 350,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 20,
+      "y": 3668,
+      "w": 350,
+      "h": 396,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 3669,
+       "w": 348,
+       "h": 234
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 20,
+      "y": 4087,
+      "w": 350,
+      "h": 639,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4088,
+       "w": 348,
+       "h": 348
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 20,
+      "y": 4747,
+      "w": 350,
+      "h": 620,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 21,
+       "y": 4748,
+       "w": 348,
+       "h": 348
+      }
+     }
+    ]
+   }
+  },
+  "docW": 390,
+  "globe": false
+ },
+ {
+  "q": "?scale=1",
+  "w": 768,
+  "h": 1024,
+  "shot": "home-scale-768x1024.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 2,
+    "tmpl": "337px 337px",
+    "gridW": 696,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 36,
+      "y": 2009,
+      "w": 337,
+      "h": 460,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 2010,
+       "w": 335,
+       "h": 188
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 395,
+      "y": 2009,
+      "w": 337,
+      "h": 460,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 396,
+       "y": 2010,
+       "w": 335,
+       "h": 188
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 36,
+      "y": 2491,
+      "w": 337,
+      "h": 440,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 2492,
+       "w": 335,
+       "h": 188
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 2,
+    "tmpl": "337px 337px",
+    "gridW": 696,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 36,
+      "y": 2953,
+      "w": 337,
+      "h": 626,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 37,
+       "y": 2954,
+       "w": 335,
+       "h": 225
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 395,
+      "y": 2953,
+      "w": 337,
+      "h": 626,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 396,
+       "y": 2954,
+       "w": 335,
+       "h": 335
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 36,
+      "y": 3601,
+      "w": 337,
+      "h": 631,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 37,
+       "y": 3602,
+       "w": 335,
+       "h": 335
+      }
+     }
+    ]
+   }
+  },
+  "docW": 768,
+  "globe": true
+ },
+ {
+  "q": "?scale=1",
+  "w": 1024,
+  "h": 768,
+  "shot": "home-scale-1024x768.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 2,
+    "tmpl": "465px 465px",
+    "gridW": 952,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 36,
+      "y": 2012,
+      "w": 465,
+      "h": 483,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 2013,
+       "w": 463,
+       "h": 260
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 523,
+      "y": 2012,
+      "w": 465,
+      "h": 483,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 524,
+       "y": 2013,
+       "w": 463,
+       "h": 260
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 36,
+      "y": 2517,
+      "w": 465,
+      "h": 489,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 2518,
+       "w": 463,
+       "h": 260
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 2,
+    "tmpl": "465px 465px",
+    "gridW": 952,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 36,
+      "y": 3028,
+      "w": 465,
+      "h": 721,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 37,
+       "y": 3029,
+       "w": 463,
+       "h": 311
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 523,
+      "y": 3028,
+      "w": 465,
+      "h": 721,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 524,
+       "y": 3029,
+       "w": 463,
+       "h": 463
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 36,
+      "y": 3771,
+      "w": 465,
+      "h": 737,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 37,
+       "y": 3772,
+       "w": 463,
+       "h": 463
+      }
+     }
+    ]
+   }
+  },
+  "docW": 1024,
+  "globe": true
+ },
+ {
+  "q": "?scale=1",
+  "w": 1280,
+  "h": 800,
+  "shot": "home-scale-1280x800.png",
+  "grids": {
+   ".hv5-grid2": {
+    "cols": 2,
+    "tmpl": "592.984px 593px",
+    "gridW": 1208,
+    "items": [
+     {
+      "id": "tour-stop-geodetective",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 36,
+      "y": 1550,
+      "w": 593,
+      "h": 555,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 1551,
+       "w": 591,
+       "h": 332
+      }
+     },
+     {
+      "id": "home-card-why-learn",
+      "cls": "hv5-card hv5-split hv5-stack hv5-case home-rise",
+      "x": 651,
+      "y": 1550,
+      "w": 593,
+      "h": 555,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 652,
+       "y": 1551,
+       "w": 591,
+       "h": 332
+      }
+     },
+     {
+      "id": "coldtrail-title",
+      "cls": "hv5-card hv5-split hv5-stack hv5-dispatch home-rise",
+      "x": 36,
+      "y": 2127,
+      "w": 593,
+      "h": 561,
+      "pic": {
+       "cls": "hv5-card-film hv5-pic",
+       "x": 37,
+       "y": 2128,
+       "w": 591,
+       "h": 332
+      }
+     }
+    ]
+   },
+   ".hv5-grid3": {
+    "cols": 3,
+    "tmpl": "388px 388px 388px",
+    "gridW": 1208,
+    "items": [
+     {
+      "id": "tour-stop-review",
+      "cls": "hv5-card hv5-spot home-rise hv5-review-empty",
+      "x": 36,
+      "y": 2710,
+      "w": 388,
+      "h": 677,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 37,
+       "y": 2711,
+       "w": 386,
+       "h": 260
+      }
+     },
+     {
+      "id": "journal-card",
+      "cls": "hv5-card hv5-spot hv5-journal home-rise",
+      "x": 446,
+      "y": 2710,
+      "w": 388,
+      "h": 677,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 447,
+       "y": 2711,
+       "w": 386,
+       "h": 386
+      }
+     },
+     {
+      "id": "grownups-card",
+      "cls": "hv5-card hv5-spot hv5-involved home-rise",
+      "x": 856,
+      "y": 2710,
+      "w": 388,
+      "h": 677,
+      "pic": {
+       "cls": "hv5-card-film hv5-art",
+       "x": 857,
+       "y": 2711,
+       "w": 386,
+       "h": 386
+      }
+     }
+    ]
+   }
+  },
+  "docW": 1280,
+  "globe": true
+ }
+]

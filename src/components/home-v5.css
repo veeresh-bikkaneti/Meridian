@@ -1811,3 +1811,88 @@ body:has(.home-v5) {
     animation: none;
   }
 }
+
+/* ---------- one column rhythm (nav-home council, 2026-11-13) ----------
+   Owner: "home page card layouts have to be fixed." Measured before this
+   block (docs/reviews/2026-11-13-nav-home-council/pack.md §4): three game
+   cards in a fixed 2-column grid left Cold Trail alone on its row at every
+   width > 680px; the spot grid dropped to 2 columns at ≤1080px and left
+   Grown-ups alone; the two rows used different column counts at 1280; the
+   deck-off placeholder <div aria-hidden> held a slot open.
+   Now the column count comes from the number of cards, both rows use the
+   same columns and gap, and every card has a 16:9 picture on top:
+   - ≤680px: one column.
+   - >680px: 3 cards → 3 equal columns (681–1080px is the compact form:
+     tighter padding, titles capped at two lines); 2 cards → 2 equal
+     columns; 1 card → one column no wider than a 3-column card.
+   Cards keep DOM order: no `order`, no `grid-auto-flow: dense`. Grid
+   items stretch, so cards in one row share one height. Appended last so
+   it wins the same-specificity ties with the fixed-count rules above. */
+.home-v5 .hv5-grid2,
+.home-v5 .hv5-grid3 {
+  --hv5-cols: 3;
+  grid-template-columns: repeat(var(--hv5-cols), minmax(0, 1fr));
+  align-items: stretch;
+  gap: 22px;
+}
+.home-v5 .hv5-grid2:has(> :nth-child(2):last-child),
+.home-v5 .hv5-grid3:has(> :nth-child(2):last-child) {
+  --hv5-cols: 2;
+}
+.home-v5 .hv5-grid2:has(> :only-child),
+.home-v5 .hv5-grid3:has(> :only-child) {
+  --hv5-cols: 1;
+  max-width: calc((100% - 44px) / 3);
+}
+/* Every card: one 16:9 picture on top. The spot films keep their own
+   files (400/269 and square); the box crops them with object-fit: cover
+   (set on the media in the card-film block above), never a stretch. */
+.home-v5 .hv5-spot .hv5-card-film.hv5-art {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+.home-v5 .hv5-journal .hv5-card-film.hv5-art > img,
+.home-v5 .hv5-journal .hv5-card-film.hv5-art > video,
+.home-v5 .hv5-involved .hv5-card-film.hv5-art > img,
+.home-v5 .hv5-involved .hv5-card-film.hv5-art > video {
+  object-position: 50% 45%;
+}
+@media (min-width: 681px) and (max-width: 1080px) {
+  .home-v5 .hv5-grid2,
+  .home-v5 .hv5-grid3 {
+    gap: 16px;
+  }
+  /* Compact cards: less padding, and the full-bleed pictures follow it
+     (their negative margins cancel the card padding). */
+  .home-v5 .hv5-grid2 > .hv5-card,
+  .home-v5 .hv5-grid3 > .hv5-card {
+    padding: 20px 18px;
+  }
+  .home-v5 .hv5-grid2 > .hv5-stack .hv5-pic,
+  .home-v5 .hv5-grid3 > .hv5-spot .hv5-card-film.hv5-art {
+    width: calc(100% + 36px);
+    margin: -20px -18px 14px;
+  }
+  /* Titles sized so the longest ("Why Do We Learn This?") fits two
+     lines at 768; the clamp is the guard, not the layout. */
+  .home-v5 .hv5-grid2 > .hv5-card h2,
+  .home-v5 .hv5-grid3 > .hv5-card h2 {
+    font-size: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+  }
+}
+@media (max-width: 680px) {
+  .home-v5 .hv5-grid2,
+  .home-v5 .hv5-grid3,
+  .home-v5 .hv5-grid2:has(> :nth-child(2):last-child),
+  .home-v5 .hv5-grid3:has(> :nth-child(2):last-child),
+  .home-v5 .hv5-grid2:has(> :only-child),
+  .home-v5 .hv5-grid3:has(> :only-child) {
+    --hv5-cols: 1;
+    max-width: none;
+  }
+}

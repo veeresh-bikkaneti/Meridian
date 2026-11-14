@@ -32,6 +32,8 @@ import {
   type CelebrationSpec,
 } from "@/components/celebration-copy";
 import { AnswerCard } from "./AnswerCard";
+import { HomeButton } from "@/components/ui/home-button";
+import { ScreenShell } from "@/components/ui/screen-shell";
 import type { AnswerFor } from "./answer";
 
 export type SubjectCaseConfig = {
@@ -72,7 +74,7 @@ export function SubjectCase({
   // it is never stranded on the Home card that opened the case.
   useEffect(() => {
     const el = headingRef.current;
-    if (el && typeof el.focus === "function") el.focus();
+    if (el && typeof el.focus === "function") el.focus({ preventScroll: true });
   }, []);
 
   const item = items[index] ?? null;
@@ -80,21 +82,11 @@ export function SubjectCase({
 
   if (!item || !answer) {
     return (
-      <main className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8">
-        <h1 ref={headingRef} tabIndex={-1} className="font-display text-3xl text-fg">
-          {title} case
-        </h1>
-        <p className="mt-4 text-muted">
+      <ScreenShell onHome={onExit} title={`${title} case`} titleRef={headingRef}>
+        <p className="mt-4 text-fg">
           No {title.toLowerCase()} case is ready for this age band yet.
         </p>
-        <button
-          type="button"
-          className="mt-6 min-h-[44px] rounded-xl border border-line bg-bg px-4 py-2 text-fg"
-          onClick={onExit}
-        >
-          Back to Home
-        </button>
-      </main>
+      </ScreenShell>
     );
   }
 
@@ -119,19 +111,15 @@ export function SubjectCase({
   };
 
   return (
-    <main
-      className="mx-auto flex min-h-dvh w-full max-w-3xl flex-col px-5 py-8"
-      data-testid={`${testIdPrefix}-case`}
-      data-band={band}
-      data-item={item.id}
+    <ScreenShell
+      onHome={onExit}
+      testId={`${testIdPrefix}-case`}
+      data={{ "data-band": band, "data-item": item.id }}
+      eyebrow="Case file · Why it matters"
+      title={`Why Do We Learn This? — ${title}`}
+      titleRef={headingRef}
+      sub={`Case ${index + 1} of ${items.length} · Ages ${band}`}
     >
-      <p className="name-eyebrow">Case file · Why it matters</p>
-      <h1 ref={headingRef} tabIndex={-1} className="mt-1 font-display text-3xl text-fg">
-        Why Do We Learn This? — {title}
-      </h1>
-      <p className="mt-2 text-sm text-muted">
-        Case {index + 1} of {items.length} · Ages {band}
-      </p>
 
       <div className="mt-6 grid gap-4">
         <ClueCard tier={title} index={0} text={item.why} revealed reduced={reduced} />
@@ -166,26 +154,11 @@ export function SubjectCase({
                   🔎 Next case
                 </button>
               ) : null}
-              <button
-                type="button"
-                className="min-h-[44px] w-full rounded-xl border border-line bg-bg px-4 py-2 text-fg"
-                onClick={onExit}
-              >
-                Back to Home
-              </button>
+              <HomeButton onHome={onExit} testId="home-button-end" variant="secondary" className="w-full rounded-xl" />
             </div>
           </section>
         )}
-        {!solved ? (
-          <button
-            type="button"
-            className="min-h-[44px] rounded-xl border border-line bg-bg px-4 py-2 text-fg"
-            onClick={onExit}
-          >
-            Back to Home
-          </button>
-        ) : null}
       </div>
-    </main>
+    </ScreenShell>
   );
 }

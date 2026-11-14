@@ -2008,6 +2008,16 @@
     linear-gradient(180deg, var(--atlas-bg-1) 0%, var(--atlas-bg-2) 100%);
 }
 
+.screen-home-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg, var(--atlas-bg-1));
+}
+.mode-screen:not(.why-learn-screen) .screen-home-bar {
+  background: var(--atlas-bg-1);
+}
+
 .mode-title {
   font-family: var(--font-atlas-display);
 }
@@ -2188,5 +2198,282 @@
   .verdict-last,
   .verdict-pulse {
     animation: none;
+  }
+}
+
+/* ── Why Learn page (owner pick 2026-11-13: the A+B blend) ──────────────
+   A parchment page like home: the light ink tokens are scoped here so
+   the page reads the same in every theme. The montage is option A's art
+   shown faint (a 62% parchment veil ≈ 38% opacity) under a warm wash; it
+   scrolls with the page (position: absolute, not fixed). Contrast rule:
+   grey secondary text never sits on the wallpaper (it measures 3.7:1
+   there) — it lives on a card, the hero band or the frosted Home strip.
+   Art module and provenance: src/assets/why-learn/why-learn-art.ts. */
+.why-learn-screen {
+  --bg: #f4f1ea;
+  --fg: #1c2420;
+  --muted: #5c6762;
+  --subtle: #6e7873;
+  --surface: #fffdf8;
+  --surface-2: #e7e2d6;
+  --atlas-ink: #1b2b31;
+  --atlas-brass: #a5761f;
+  --atlas-brass-text-sm: #6e4a0e;
+  --atlas-card: rgba(255, 253, 246, 0.96);
+  --atlas-card-line: rgba(27, 43, 49, 0.2);
+  --wl-parch: #f6f1e3;
+  color-scheme: light;
+  isolation: isolate;
+}
+.why-learn-screen::before {
+  background: var(--wl-parch);
+}
+.why-learn-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(246, 241, 227, 0.55), rgba(246, 241, 227, 0.25) 40%, rgba(246, 241, 227, 0.6)),
+    linear-gradient(rgba(246, 241, 227, 0.62), rgba(246, 241, 227, 0.62)),
+    url("./assets/why-learn/why-learn-montage.webp") center top / cover no-repeat;
+}
+/* The Home strip gets a frosted backing so its label never sits on art. */
+.why-learn-screen [data-testid="home-button"] {
+  background: rgba(253, 250, 242, 0.92);
+  box-shadow: 0 0 0 1px var(--atlas-card-line);
+}
+.why-learn-screen .screen-hero {
+  background: #fdfaf2;
+  border-radius: 18px;
+}
+/* Fixed aspect ratio per breakpoint (plus width/height attributes): the
+   box is sized before the picture loads, so there is no layout shift. */
+.why-learn-hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+@media (min-width: 681px) {
+  .why-learn-hero {
+    aspect-ratio: 32 / 9;
+  }
+}
+/* The montage film in the hero slot (feat/why-learn-montage): the
+   <video> carries .why-learn-hero, so it fills the same fixed box
+   the still did; the controls ride its bottom-right corner on the
+   page's frosted-chip recipe (cf. .why-learn-wordmark). */
+.why-learn-hero-wrap {
+  position: relative;
+}
+.why-learn-hero-controls {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  gap: 8px;
+}
+.why-learn-hero-controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(253, 250, 242, 0.92);
+  box-shadow: 0 0 0 1px var(--atlas-card-line);
+  color: #1b2b31;
+  cursor: pointer;
+}
+.why-learn-hero-controls button:focus-visible {
+  outline: 3px solid var(--atlas-ink);
+  outline-offset: 2px;
+}
+/* Background drift (feat/why-learn-montage): formulas and diagrams
+   from the card's topics floating at a tenth opacity behind the
+   picker — texture only. The layer never takes clicks, and the
+   page's real content (header, cards, status lines) is lifted
+   above it, solid surfaces unchanged. Off entirely where the
+   user asked for plain surfaces (the art-off rules below). */
+.why-learn-drift {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+  color: #6e4a0e;
+  opacity: 0.1;
+}
+.why-learn-screen > header,
+.why-learn-screen > ul,
+.why-learn-screen > p {
+  position: relative;
+  z-index: 1;
+}
+.wl-drift-item {
+  position: absolute;
+  font-family: var(--font-atlas-display);
+  font-style: italic;
+  white-space: nowrap;
+  animation: wl-drift 38s ease-in-out infinite alternate;
+}
+.wl-drift-a {
+  top: 330px;
+  left: 28px;
+  font-size: 30px;
+}
+.wl-drift-b {
+  top: 46%;
+  right: 30px;
+  font-size: 20px;
+  animation-duration: 30s;
+  animation-delay: -8s;
+}
+.wl-drift-c {
+  top: 64%;
+  left: 30px;
+  font-size: 19px;
+  animation-duration: 44s;
+  animation-delay: -16s;
+}
+.wl-drift-d {
+  bottom: 110px;
+  right: 34px;
+  font-size: 15px;
+  animation-duration: 27s;
+  animation-delay: -4s;
+}
+.wl-drift-e {
+  bottom: 210px;
+  left: 26px;
+  animation-duration: 48s;
+  animation-delay: -11s;
+}
+.wl-drift-f {
+  top: 120px;
+  right: 28px;
+  animation-duration: 34s;
+  animation-delay: -20s;
+}
+@keyframes wl-drift {
+  from {
+    transform: translate3d(0, 0, 0) rotate(-1.2deg);
+  }
+  to {
+    transform: translate3d(8px, -10px, 0) rotate(1.2deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wl-drift-item {
+    animation: none;
+  }
+}
+.why-learn-wordmark {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(253, 250, 242, 0.92);
+  color: #1b2b31;
+  font-family: var(--font-atlas-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+.why-learn-wordmark svg {
+  width: 22px;
+  height: 22px;
+}
+.why-learn-card {
+  min-height: 88px;
+  border-radius: 16px;
+  border: 1px solid var(--atlas-card-line);
+  background: #fdfaf2;
+  box-shadow: 0 1px 2px rgba(27, 43, 49, 0.08);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+.why-learn-card:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(27, 43, 49, 0.14);
+}
+.why-learn-card:focus-visible {
+  outline: 3px solid var(--atlas-ink);
+  outline-offset: 3px;
+}
+.why-learn-card.is-soon {
+  border-style: dashed;
+  box-shadow: none;
+}
+.why-learn-badge {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  color: #6e4a0e;
+  background: #f1e6c8;
+  border: 1px solid rgba(110, 74, 14, 0.25);
+}
+.why-learn-chip {
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1c2420;
+  background: #ece5d3;
+}
+.why-learn-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #6e4a0e;
+}
+@media (prefers-reduced-motion: reduce) {
+  .why-learn-card {
+    transition: none;
+  }
+  .why-learn-card:not(:disabled):hover {
+    transform: none;
+  }
+}
+/* Art off wherever the user asked for plain, high-contrast surfaces. */
+:root[data-palette="high-contrast"] .why-learn-screen::after,
+:root[data-palette="high-contrast"] .why-learn-hero,
+:root[data-palette="high-contrast"] .why-learn-hero-wrap,
+:root[data-palette="high-contrast"] .why-learn-drift {
+  display: none;
+}
+@media (prefers-contrast: more) {
+  .why-learn-screen::after,
+  .why-learn-hero,
+  .why-learn-hero-wrap,
+  .why-learn-drift {
+    display: none;
+  }
+}
+@media (forced-colors: active) {
+  .why-learn-screen::after,
+  .why-learn-hero,
+  .why-learn-hero-wrap,
+  .why-learn-drift {
+    display: none;
+  }
+  .why-learn-card,
+  .why-learn-badge,
+  .why-learn-chip {
+    border: 1px solid CanvasText;
   }
 }

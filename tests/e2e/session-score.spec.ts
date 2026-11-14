@@ -50,7 +50,7 @@ test("edition switch keeps the accumulated score (no reset to 0)", async ({ page
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
   // Switch editions mid-session via the Editions button (no End game).
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
 
   // Start a country run: the globe score must survive the switch.
@@ -108,7 +108,7 @@ test("end-game summary shows the session total with per-edition breakdown", asyn
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
   // Play one place in a second edition, then end the game.
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await page.getByRole("button", { name: "Choose a country" }).click();
   await page.getByRole("button", { name: "United States" }).click();
   await page.getByRole("button", { name: "Play entire United States" }).click();
@@ -284,7 +284,7 @@ test("HUD placed-counter accumulates across an edition switch", async ({
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
   // Switch editions mid-session via the Editions button (no End game).
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
   await page.getByRole("button", { name: "Choose a country" }).click();
   await page.getByRole("button", { name: "United States" }).click();
@@ -315,7 +315,7 @@ test("end-game summary shows per-difficulty and per-region breakdown", async ({
   await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
   // Medium country run: switch the band on the edition menu, then play.
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
   const group = difficultyGroup(page);
   await group.getByRole("button", { name: "Medium" }).click();
@@ -522,7 +522,7 @@ test("share text contains the breakdown", async ({
     await expect.poll(() => readPhase(page), { timeout: 20_000 }).toBe("aim");
 
     // Second edition, so the breakdown has region + difficulty rows.
-    await page.getByRole("button", { name: "Editions" }).click();
+    await page.getByRole("button", { name: "Home", exact: true }).click();
     await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
     await page.getByRole("button", { name: "Choose a country" }).click();
     await page.getByRole("button", { name: "United States" }).click();

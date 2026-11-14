@@ -130,12 +130,12 @@ test("no speaker by the pair; the one mute is top-left beside the other two butt
   await expect(page.getByTestId("detective-sound-chip")).toHaveCount(0);
 
   const mute = await page.getByTestId("sound-toggle-loop").boundingBox();
-  const editions = await page.getByRole("button", { name: "Editions" }).boundingBox();
+  const editions = await page.getByRole("button", { name: "Home", exact: true }).boundingBox();
   const viewport = page.viewportSize()!;
   expect(mute).not.toBeNull();
   expect(editions).not.toBeNull();
-  // Same row as Editions, in the left-hand button group: right of
-  // Editions and left of the "Case #" label on the right.
+  // Same row as Home, in the left-hand button group: right of
+  // Home and left of the "Case #" label on the right.
   const caseLabel = await page.getByText(/^Case #\d+$/).first().boundingBox();
   expect(caseLabel).not.toBeNull();
   expect(Math.abs(mute!.y - editions!.y)).toBeLessThan(24);

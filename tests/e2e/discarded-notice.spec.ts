@@ -351,7 +351,7 @@ test("1I(2) discarded notice covers the whole session, not just the last run", a
   await startGlobeRunClocked(page, APP);
   await playAtLeast(page, 1);
   // Switch editions mid-session (no End game): the session banks both.
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
   await page.getByRole("button", { name: "Choose a country" }).click();
   await page.getByRole("button", { name: "United States" }).click();
@@ -375,7 +375,7 @@ test("1I(2)-boot reload after idle expiry shows whole-session totals, not last-r
   await startGlobeRunClocked(page, APP);
   await playAtLeast(page, 1);
   // Switch editions mid-session (no End game): the session banks both.
-  await page.getByRole("button", { name: "Editions" }).click();
+  await page.getByRole("button", { name: "Home", exact: true }).click();
   await expect(page.getByRole("button", { name: "Play the globe" })).toBeVisible();
   await page.getByRole("button", { name: "Choose a country" }).click();
   await page.getByRole("button", { name: "United States" }).click();
