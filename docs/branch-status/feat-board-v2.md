@@ -348,3 +348,30 @@ status-move buttons, story points (rationale in REPORT-C, agent-side).
   screenshots-E/ (v1 sheets in screenshots-D/).
 - Next step: owner rules on the v2 look from the screenshots;
   merge remains the owner's word.
+
+### Combined styles: mascot + flat icon chip (2026-11-13, owner's word: "Combine both styles — the icon and details on card")
+
+- Every card now carries BOTH representations of its theme: the v2
+  mascot (header row, unchanged) and a new flat icon — the same
+  object drawn icon-style (bold 3.2-unit strokes or a filled
+  silhouette, no face, no shadow) in `src/board/card-icons.tsx`,
+  on a 26px brass chip (atlas-brass surface, brass-ink glyph)
+  beside the status stamp/pill in a right-aligned status group at
+  the header row's right end. Same `characterForStory` mapping —
+  never forked; the chip is static (the mascot stays the card's
+  one moving element) and decorative (title + sr-only theme name).
+- Placement evidence: at desktop widths the group right-aligns on
+  its wrapped line (measured: group right == card content right).
+  In the 1180–1440px inspector squeeze the group wraps internally
+  (chip stacks above the pill, right-aligned) — before that fix
+  the in-progress cluster overflowed the card's right border by
+  29px (measured); now contained at every measured width.
+- Verification: board unit suites 77/77 (2 new: both registries
+  cover all 11 themes; all 46 stories resolve a pair),
+  security-headers 10/10, tsc clean, build:pages green (icon code
+  only in the lazy board chunk), board e2e 21/21 on the built
+  artifact — the character test now also asserts 46 chips and
+  mascot theme == chip theme on every card. Screenshots:
+  ~/workspace/board-v2/screenshots-F/.
+- Next step: owner rules on the pairing from the screenshots;
+  merge remains the owner's word.

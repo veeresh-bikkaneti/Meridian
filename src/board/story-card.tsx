@@ -6,6 +6,7 @@ import {
   type LiveStory,
 } from "./board-data";
 import { CardCharacter } from "./card-characters";
+import { CardThemeChip } from "./card-icons";
 
 /**
  * One story card, styled as a case file. Every dynamic string — the
@@ -43,19 +44,22 @@ export function StoryCard({
         <CardCharacter story={story} />
         {caseNo != null ? <span className="board-case-no">Case {caseNo}</span> : null}
         <span className="board-region-badge">{story.lane}</span>
-        {story.status === "done" ? (
-          <>
-            <span className="board-case-stamp" aria-hidden="true">
-              Case closed
+        <span className="board-card-status-group">
+          <CardThemeChip story={story} />
+          {story.status === "done" ? (
+            <>
+              <span className="board-case-stamp" aria-hidden="true">
+                Case closed
+              </span>
+              <span className="sr-only">Case closed (done)</span>
+            </>
+          ) : (
+            <span className={`board-pill board-pill-${story.status} board-card-status`}>
+              {GAME_STATUS_LABEL[story.status]}{" "}
+              <span className="board-plain">({STATUS_LABEL[story.status].toLowerCase()})</span>
             </span>
-            <span className="sr-only">Case closed (done)</span>
-          </>
-        ) : (
-          <span className={`board-pill board-pill-${story.status} board-card-status`}>
-            {GAME_STATUS_LABEL[story.status]}{" "}
-            <span className="board-plain">({STATUS_LABEL[story.status].toLowerCase()})</span>
-          </span>
-        )}
+          )}
+        </span>
       </div>
       <h4 className="board-card-title">
         <button

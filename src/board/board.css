@@ -452,6 +452,66 @@
   margin-left: auto;
 }
 
+/* Status cluster at the header row's right end: the theme icon chip
+ * sits beside the status stamp/pill (theme = what kind of work,
+ * status = what state it is in). The group carries the auto margin
+ * the stamp and pill used to carry themselves. It wraps internally,
+ * right-aligned: in the 1180–1440px squeeze (inspector rail open,
+ * ~176px cards) chip + pill are wider than the card, and stacking
+ * the chip above the pill keeps the cluster inside the card instead
+ * of poking past its right edge. */
+.board-card-status-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px 8px;
+  margin-left: auto;
+  min-width: 0;
+}
+
+/* The flat icon chip (card-icons.tsx): the mascot's theme drawn
+ * icon-style on a small brass chip — the same brass + brass-ink
+ * pairing as the done pill, so it belongs to the card's existing
+ * colour language. Static by design: the mascot is the card's one
+ * moving element. */
+.board-theme-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  background: var(--atlas-brass);
+  color: var(--atlas-brass-ink);
+}
+
+.board-card-theme-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.board-card-theme-icon .ci-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.board-card-theme-icon .ci-bold {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.board-card-theme-icon .ci-fill {
+  fill: currentColor;
+}
+
 /* Rubber stamp for a closed case, reusing the atlas-stamp-in slam
  * from src/styles.css (the keyframes live there, not redefined here). */
 .board-case-stamp {

@@ -559,6 +559,26 @@ test("board card characters: every card carries one, animated live, still under 
   ]);
   expect(kinds.length).toBeGreaterThanOrEqual(5);
 
+  // Combined styles (owner, 2026-11-13): every card ALSO carries
+  // exactly one flat icon chip, for the SAME theme as its mascot.
+  const chips = page.locator('[data-testid="story-card"] [data-theme-chip]');
+  await expect(chips).toHaveCount(46);
+  const pairs = await cards.evaluateAll((cardEls) =>
+    cardEls.map((card) => ({
+      mascots: card.querySelectorAll("[data-character]").length,
+      mascot: card.querySelector("[data-character]")?.getAttribute("data-character"),
+      chipCount: card.querySelectorAll("[data-theme-chip]").length,
+      chip: card.querySelector("[data-theme-chip]")?.getAttribute("data-theme-chip"),
+      icon: card.querySelector("[data-theme-icon]")?.getAttribute("data-theme-icon"),
+    })),
+  );
+  for (const pair of pairs) {
+    expect(pair.mascots).toBe(1);
+    expect(pair.chipCount).toBe(1);
+    expect(pair.chip).toBe(pair.mascot);
+    expect(pair.icon).toBe(pair.mascot);
+  }
+
   // Motion is live by default on the animated part…
   const part = page.locator('[data-testid="story-card"] .cc-anim').first();
   const liveName = await part.evaluate((el) => getComputedStyle(el).animationName);
