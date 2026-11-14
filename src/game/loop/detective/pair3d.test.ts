@@ -15,7 +15,7 @@ function poseList(name: string): string[] {
 const HOLMES_POSES = poseList("HOLMES_POSES");
 const WATSON_POSES = poseList("WATSON_POSES");
 
-const ok = { flagOn: true, webgl: true, saveData: false, deviceMemory: 8, cores: 8 };
+const ok = { flagOn: true, webgl: true, saveData: false, deviceMemory: 8, cores: 8, reducedMotion: false };
 
 test("pair3d gate: needs the flag, WebGL and a device that isn't weak", () => {
   assert.equal(pair3dAllowed(ok), true);
@@ -26,6 +26,8 @@ test("pair3d gate: needs the flag, WebGL and a device that isn't weak", () => {
   assert.equal(pair3dAllowed({ ...ok, cores: 2 }), false);
   // Browsers that don't report memory or cores still get it.
   assert.equal(pair3dAllowed({ ...ok, deviceMemory: undefined, cores: undefined }), true);
+  // Reduced motion: the 3D layer must not start at all.
+  assert.equal(pair3dAllowed({ ...ok, reducedMotion: true }), false);
 });
 
 test("every rig pose has a 3D pose (no silent fallback in play)", () => {

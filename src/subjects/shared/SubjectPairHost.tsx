@@ -24,6 +24,8 @@
  *
  * Reduced motion: still poses, no walk, no jump — the win goes straight
  * to the high-five (detective.css also freezes every rig animation).
+ * The 3D layer is not started at all then (HolmesRig/WatsonRig skip
+ * it, and pair3d's gate refuses reduced motion).
  */
 import { useEffect, useRef, useState } from "react";
 import {
@@ -67,7 +69,13 @@ export default function SubjectPairHost({ caseIndex, state }: SubjectPairProps) 
   useEffect(() => {
     const voice = createSubjectPairVoice();
     voiceRef.current = voice;
+    // Fetch the manifest and prime the audio element now, so a later
+    // pick can call play() without waiting on the network (iOS).
+    void voice.preload();
+    const onTap = () => voice.unlockFromUserGesture();
+    document.addEventListener("pointerdown", onTap, true);
     return () => {
+      document.removeEventListener("pointerdown", onTap, true);
       voice.dispose();
       if (voiceRef.current === voice) voiceRef.current = null;
       setSpeaking(null);

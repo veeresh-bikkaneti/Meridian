@@ -19,8 +19,8 @@
  * - One WebGL context for every figure on the page: each figure owns a
  *   plain 2D canvas, and a shared renderer draws each figure's scene and
  *   copies it across, capped at 30 fps and paused while the tab is
- *   hidden. Under reduced motion the poses hold still (no idle, walk or
- *   jump motion) and change without easing.
+ *   hidden. Under reduced motion the 3D layer does not start at all
+ *   (no WebGL renderer, no canvas): the SVG rigs stay visible and still.
  * - three is imported dynamically, only once the flag is on and a rig
  *   mounts, so it never touches the initial bundle or node unit tests.
  */
@@ -42,11 +42,13 @@ export interface Pair3DEnv {
   saveData: boolean;
   deviceMemory: number | undefined;
   cores: number | undefined;
+  /** When true the 3D layer must not start (still SVG rigs only). */
+  reducedMotion: boolean;
 }
 
 /** Pure gate (unit-tested): may this device draw the 3D pair? */
 export function pair3dAllowed(env: Pair3DEnv): boolean {
-  if (!env.flagOn || !env.webgl || env.saveData) return false;
+  if (!env.flagOn || !env.webgl || env.saveData || env.reducedMotion) return false;
   if (typeof env.deviceMemory === "number" && env.deviceMemory > 0 && env.deviceMemory <= 2) return false;
   if (typeof env.cores === "number" && env.cores > 0 && env.cores <= 2) return false;
   return true;
@@ -99,6 +101,9 @@ function readEnv(): Pair3DEnv {
     saveData: Boolean(nav.connection?.saveData),
     deviceMemory: nav.deviceMemory,
     cores: nav.hardwareConcurrency,
+    reducedMotion:
+      typeof window !== "undefined" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true,
   };
 }
 
@@ -117,10 +122,10 @@ let engine: Engine | null = null;
 export function ensurePair3d(): void {
   if (status !== "idle" || typeof window === "undefined") return;
   const env = readEnv();
-  // Flag off: stay idle so a later mount re-checks (flags.json may
-  // still be loading on a deep link). A device that fails the gate is
-  // final for the session.
-  if (!env.flagOn) return;
+  // Flag off or reduced motion: stay idle so a later mount re-checks
+  // (flags.json may still be loading; the motion preference can change).
+  // A device that fails the other gates is final for the session.
+  if (!env.flagOn || env.reducedMotion) return;
   if (!pair3dAllowed(env)) {
     setStatus("failed");
     return;

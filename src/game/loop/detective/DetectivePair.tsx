@@ -44,6 +44,7 @@
  * for each rig's facing flip and scale).
  */
 import { useEffect, useRef, useSyncExternalStore, type CSSProperties, type ReactElement } from "react";
+import { usePrefersReducedMotion } from "../../../hooks/use-prefers-reduced-motion";
 import {
   ensurePair3d,
   mountFigure,
@@ -644,17 +645,20 @@ function WatsonRigSvg({ pose, facing = "right", speaking = false, halo = false }
 const noopUnsub = () => () => {};
 
 /** True once the 3D pair has loaded on this device (flag pair3d on,
- * gate passed). Always false on the server and in unit tests. */
+ * gate passed). Always false under reduced motion — the 3D layer
+ * must not start then (the SVG rig stays visible and still). Always
+ * false on the server and in unit tests. */
 function usePair3dLive(): boolean {
+  const reducedMotion = usePrefersReducedMotion();
   const live = useSyncExternalStore(
     typeof window === "undefined" ? noopUnsub : subscribePair3d,
     () => pair3dStatus() === "ready",
     () => false,
   );
   useEffect(() => {
-    ensurePair3d();
-  }, []);
-  return live;
+    if (!reducedMotion) ensurePair3d();
+  }, [reducedMotion]);
+  return live && !reducedMotion;
 }
 
 interface Rig3DProps {

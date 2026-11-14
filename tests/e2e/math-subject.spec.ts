@@ -395,6 +395,7 @@ test("pair on, reduced motion: still poses, the win goes straight to the high-fi
   await openCase(page);
   const pair = page.getByTestId("subject-pair");
   await expect(pair).toBeVisible();
+  await expect(page.getByTestId("detective-rig3d")).toHaveCount(0);
   await page.getByTestId("math-answer-card").getByRole("button", { name: "1,081", exact: true }).click();
   await dismissCelebration(page);
   // No jump beat: the first win frame is already the high-five.
@@ -404,6 +405,10 @@ test("pair on, reduced motion: still poses, the win goes straight to the high-fi
     .first();
   await expect(holmesPose).toHaveAttribute("data-pose", "high-five", { timeout: 500 });
   await expect(page.locator("[data-testid=subject-pair] .detective-celebrate-spark")).toHaveCount(0);
+  // The 3D layer must not start at all under reduced motion (not only
+  // CSS animations off): no WebGL canvas over the SVG rigs.
+  await expect(page.getByTestId("detective-rig3d")).toHaveCount(0);
+  await expect(page.locator("[data-testid=subject-pair] canvas")).toHaveCount(0);
   await expect(page.getByTestId("math-result")).toBeVisible();
   expect(errors).toEqual([]);
 });
