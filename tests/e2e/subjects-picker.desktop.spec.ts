@@ -66,7 +66,7 @@ async function openPicker(page: Page) {
   await expect(page.getByTestId("subject-picker")).toBeVisible();
 }
 
-test("picker lists Math ready and Journals as Coming soon", async ({ page, context }) => {
+test("picker lists Math and Journals ready for 10-18", async ({ page, context }) => {
   await setup(context, "10-18");
   const errors = watchErrors(page);
   await openPicker(page);
@@ -76,9 +76,11 @@ test("picker lists Math ready and Journals as Coming soon", async ({ page, conte
   await expect(math).toBeEnabled();
   await expect(math).toContainText("Math");
   await expect(math).toContainText("3 cases");
+  // Journals (Stream D, PR D1) is playable: 7 cases for 10-18.
   const journals = page.getByTestId("subject-row-journals");
-  await expect(journals).toBeDisabled();
-  await expect(journals).toContainText("Coming soon");
+  await expect(journals).toBeEnabled();
+  await expect(journals).toContainText("Journals");
+  await expect(journals).toContainText("7 cases");
   expect(errors).toEqual([]);
 });
 

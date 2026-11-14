@@ -20,7 +20,7 @@
  * Each subject's own case component is a thin wrapper that passes its
  * title, its test-id prefix, its band items and its answer lookup.
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import type { AgeGroup, SubjectProps, UnitItem } from "../registry";
 import { getAgeGroup } from "@/game/age-profile";
 import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
@@ -45,6 +45,9 @@ export type SubjectCaseConfig = {
   itemsForGroup: (group: AgeGroup) => UnitItem[];
   /** The subject's answer lookup, keyed by item id. */
   answerFor: AnswerFor;
+  /** Optional card shown above the question (Journals: the clip's
+   * caption text). Absent for every other subject: no change. */
+  lead?: (item: UnitItem, reduced: boolean) => ReactNode;
 };
 
 export function SubjectCase({
@@ -52,6 +55,7 @@ export function SubjectCase({
   testIdPrefix,
   itemsForGroup,
   answerFor,
+  lead,
   group,
   onExit,
   onCelebrate,
@@ -122,6 +126,7 @@ export function SubjectCase({
     >
 
       <div className="mt-6 grid gap-4">
+        {lead ? lead(item, reduced) : null}
         <ClueCard tier={title} index={0} text={item.why} revealed reduced={reduced} />
         {!solved ? (
           <AnswerCard
